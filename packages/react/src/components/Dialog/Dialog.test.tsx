@@ -2,25 +2,25 @@ import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
 
-import type { ModalProps } from './';
-import { Modal } from './';
+import type { DialogProps } from '.';
+import { Dialog } from '.';
 
 const CLOSE_LABEL = 'Lukk dialogvindu';
-const HEADER_TITLE = 'Modal header title';
-const OPEN_MODAL = 'Open Modal';
+const HEADER_TITLE = 'Dialog header title';
+const OPEN_Dialog = 'Open Dialog';
 
-const Comp = (args: Partial<ModalProps>) => {
+const Comp = (args: Partial<DialogProps>) => {
   return (
     <>
-      <Modal.TriggerContext>
-        <Modal.Trigger>{OPEN_MODAL}</Modal.Trigger>
-        <Modal {...args} />
-      </Modal.TriggerContext>
+      <Dialog.TriggerContext>
+        <Dialog.Trigger>{OPEN_Dialog}</Dialog.Trigger>
+        <Dialog {...args} />
+      </Dialog.TriggerContext>
     </>
   );
 };
 
-const render = async (props: Partial<ModalProps> = {}) => {
+const render = async (props: Partial<DialogProps> = {}) => {
   /* Flush microtasks */
   await act(async () => {});
   const user = userEvent.setup();
@@ -31,16 +31,16 @@ const render = async (props: Partial<ModalProps> = {}) => {
   };
 };
 
-describe('Modal', () => {
+describe('Dialog', () => {
   afterEach(() => {
     vi.restoreAllMocks();
   });
 
-  it('should open the modal', async () => {
+  it('should open the Dialog', async () => {
     const { user } = await render({
       children: (
         <>
-          <Modal.Block>{HEADER_TITLE}</Modal.Block>
+          <Dialog.Block>{HEADER_TITLE}</Dialog.Block>
         </>
       ),
     });
@@ -48,7 +48,7 @@ describe('Modal', () => {
 
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
 
-    const button = screen.getByRole('button', { name: OPEN_MODAL });
+    const button = screen.getByRole('button', { name: OPEN_Dialog });
     await act(async () => await user.click(button));
 
     expect(spy).toHaveBeenCalledTimes(1);
@@ -56,12 +56,12 @@ describe('Modal', () => {
     expect(screen.queryByRole('dialog')).toBeInTheDocument();
   });
 
-  it('should open and close the modal', async () => {
+  it('should open and close the Dialog', async () => {
     const { user } = await render();
 
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
 
-    const button = screen.getByRole('button', { name: OPEN_MODAL });
+    const button = screen.getByRole('button', { name: OPEN_Dialog });
     await act(async () => await user.click(button));
 
     expect(screen.queryByRole('dialog')).toBeInTheDocument();
@@ -72,7 +72,7 @@ describe('Modal', () => {
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
 
-  it('should render the modal', async () => {
+  it('should render the Dialog', async () => {
     await render({ open: true });
     expect(screen.getByRole('dialog')).toBeInTheDocument();
   });
@@ -99,7 +99,7 @@ describe('Modal', () => {
       open: true,
       children: (
         <>
-          <Modal.Block>{HEADER_TITLE}</Modal.Block>
+          <Dialog.Block>{HEADER_TITLE}</Dialog.Block>
         </>
       ),
     });
@@ -107,12 +107,12 @@ describe('Modal', () => {
   });
 
   it('should render the children', async () => {
-    const children = 'Modal children';
+    const children = 'Dialog children';
     await render({ children, open: true });
     expect(screen.getByText(children)).toBeInTheDocument();
   });
 
-  it('should call onClose when the modal is closed with ESC', async () => {
+  it('should call onClose when the Dialog is closed with ESC', async () => {
     const onClose = vi.fn();
     await render({ open: true, onClose });
     const dialog = screen.getByRole('dialog');
@@ -121,7 +121,7 @@ describe('Modal', () => {
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 
-  it('should call onClose when the modal is closed with the close button', async () => {
+  it('should call onClose when the Dialog is closed with the close button', async () => {
     const onClose = vi.fn();
     await render({ open: true, onClose });
     const closeButton = screen.getByRole('button', { name: CLOSE_LABEL });

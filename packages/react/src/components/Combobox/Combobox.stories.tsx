@@ -5,8 +5,8 @@ import type { FormEvent } from 'react';
 
 import { Button } from '../Button';
 import { Chip } from '../Chip';
+import { Dialog } from '../Dialog';
 import { Heading } from '../Heading';
-import { Modal } from '../Modal';
 import { Paragraph } from '../Paragraph';
 import { Switch } from '../Switch';
 
@@ -42,7 +42,7 @@ export default {
   },
   play: async (ctx) => {
     const storyRoot = ctx.canvasElement;
-    // Refactored out the play function for easier reuse in the InModal story
+    // Refactored out the play function for easier reuse in the InDialog story
     await testCombobox(storyRoot);
   },
 } satisfies Meta;
@@ -314,15 +314,15 @@ InForm.args = {
   label: 'Hvor går reisen?',
 };
 
-export const InModal: StoryFn<typeof Combobox> = (args) => {
+export const InDialog: StoryFn<typeof Combobox> = (args) => {
   const [value, setValue] = useState<string[]>([]);
 
   return (
-    <Modal.TriggerContext>
-      <Modal.Trigger>Open Modal</Modal.Trigger>
-      <Modal style={{ overflow: 'visible' }}>
+    <Dialog.TriggerContext>
+      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+      <Dialog style={{ overflow: 'visible' }}>
         <Heading data-size='xs' style={{ marginBottom: 'var(--ds-size-2)' }}>
-          Combobox i Modal
+          Combobox i Dialog
         </Heading>
         <Combobox
           {...args}
@@ -342,11 +342,11 @@ export const InModal: StoryFn<typeof Combobox> = (args) => {
             </Combobox.Option>
           ))}
         </Combobox>
-      </Modal>
-    </Modal.TriggerContext>
+      </Dialog>
+    </Dialog.TriggerContext>
   );
 };
-InModal.play = async (ctx) => {
+InDialog.play = async (ctx) => {
   // When not in Docs mode, automatically open the modal
   const canvas = within(ctx.canvasElement);
   const button = canvas.getByRole('button');
