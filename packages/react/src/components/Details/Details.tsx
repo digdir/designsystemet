@@ -3,18 +3,12 @@ import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useEffect, useRef } from 'react';
 import '@u-elements/u-details';
-import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
 export type DetailsProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDetailsElement>,
   {
-    /**
-     * Specify which color palette to use.
-     * If left unspecified, the color is inherited from the nearest ancestor with data-color.
-     */
-    'data-color'?: 'subtle' | Color;
     /**
      * Change the background color of the details.
      *
