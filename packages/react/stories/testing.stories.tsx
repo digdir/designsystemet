@@ -12,6 +12,7 @@ import {
   Chip,
   Combobox,
   Details,
+  Dialog,
   Dropdown,
   ErrorSummary,
   Field,
@@ -20,7 +21,6 @@ import {
   Label,
   Link,
   List,
-  Modal,
   Pagination,
   Paragraph,
   Popover,
@@ -337,18 +337,18 @@ export const Sizes: StoryFn = () => {
       ))}
       {sizes.map((size) => (
         <div key={size} data-size={size}>
-          <Modal.TriggerContext>
-            <Modal.Trigger>Open Modal</Modal.Trigger>
-            <Modal>
+          <Dialog.TriggerContext>
+            <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+            <Dialog>
               <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
-                Modal header
+                Dialog header
               </Heading>
               <Paragraph style={{ marginBottom: 'var(--ds-size-2)' }}>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 Blanditiis doloremque obcaecati assumenda odio ducimus sunt et.
               </Paragraph>
-            </Modal>
-          </Modal.TriggerContext>
+            </Dialog>
+          </Dialog.TriggerContext>
         </div>
       ))}
       {sizes.map((size) => (
