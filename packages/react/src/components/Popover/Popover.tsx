@@ -49,6 +49,12 @@ export type PopoverProps = MergeRight<
      */
     open?: boolean;
     /**
+     * Change the background color of the popover.
+     *
+     * @default 'default'
+     */
+    'data-variant'?: 'default' | 'tinted';
+    /**
      * Callback when the popover wants to open.
      */
     onOpen?: () => void;
@@ -94,6 +100,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       onClose,
       onOpen,
       open,
+      'data-variant': variant = 'default',
       placement = 'top',
       autoPlacement = true,
       asChild = false,
@@ -187,6 +194,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         id={id || popoverId}
         // @ts-ignore @types/react-dom does not understand popover yet
         popover='manual'
+        data-variant={variant}
         ref={mergedRefs}
         {...rest}
       />
