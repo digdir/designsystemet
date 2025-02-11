@@ -1,11 +1,11 @@
 'use client';
 
 import {
+  Dialog,
   Divider,
   Heading,
   Input,
   Link,
-  Modal,
   Paragraph,
 } from '@digdir/designsystemet-react';
 import { cliOptions } from '@digdir/designsystemet/tokens';
@@ -46,8 +46,8 @@ export const TokenModal = () => {
     .join(' \\\n');
 
   return (
-    <Modal.TriggerContext>
-      <Modal.Trigger
+    <Dialog.TriggerContext>
+      <Dialog.Trigger
         className={classes.trigger}
         onClick={() => {
           return modalRef.current?.showModal();
@@ -55,21 +55,21 @@ export const TokenModal = () => {
       >
         <StarIcon title='a11y-title' fontSize='1.5rem' />
         Ta i bruk tema
-      </Modal.Trigger>
-      <Modal
+      </Dialog.Trigger>
+      <Dialog
         className={classes.modal}
         style={{ maxWidth: 1000 }}
         ref={modalRef}
         backdropClose={true}
       >
-        <Modal.Block>
+        <Dialog.Block>
           <Heading className={classes.modalHeader} data-size='2xs'>
             <img src='img/emblem.svg' alt='' className={classes.emblem} />
             <span className={classes.headerText}>Ta i bruk tema</span>
           </Heading>
-        </Modal.Block>
+        </Dialog.Block>
 
-        <Modal.Block>
+        <Dialog.Block>
           <Heading className={classes.modalHeader} data-size='xs' level={3}>
             Gi temaet ditt et navn
           </Heading>
@@ -93,9 +93,9 @@ export const TokenModal = () => {
               marginTop: 'var(--ds-size-6)',
             }}
           />
-        </Modal.Block>
+        </Dialog.Block>
 
-        <Modal.Block>
+        <Dialog.Block>
           <div className={classes.content}>
             <div className={classes.rightSection}>
               <div className={classes.step}>
@@ -177,8 +177,8 @@ export const TokenModal = () => {
               </div>
             </div>
           </div>
-        </Modal.Block>
-      </Modal>
-    </Modal.TriggerContext>
+        </Dialog.Block>
+      </Dialog>
+    </Dialog.TriggerContext>
   );
 };

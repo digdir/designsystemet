@@ -85,9 +85,9 @@ export const data = [
     url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-loaders-skeleton--docs',
   },
   {
-    title: 'Modal',
-    image: 'Modal.svg',
-    url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-modal--docs',
+    title: 'Dialog',
+    image: 'Dialog.svg',
+    url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-dialog--docs',
   },
   {
     title: 'Select',

@@ -5,7 +5,7 @@
   --dsc-chip-background--checked: var(--ds-color-base-default);
   --dsc-chip-background--checked--hover: var(--ds-color-base-hover);
   --dsc-chip-background--checked--active: var(--ds-color-base-active);
-  --dsc-chip-border-width: 1px;
+  --dsc-chip-border-width: var(--ds-border-width-default);
   --dsc-chip-border-style: solid;
   --dsc-chip-border-color: var(--ds-color-border-subtle);
   --dsc-chip-border-color--checked: transparent;

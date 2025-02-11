@@ -3,23 +3,23 @@ import { forwardRef, useContext } from 'react';
 import type { ComponentPropsWithRef } from 'react';
 
 import { Button } from '../Button/Button';
-import { Context } from './ModalTriggerContext';
+import { Context } from './DialogTriggerContext';
 
-export type ModalTriggerProps = ComponentPropsWithRef<typeof Button>;
+export type DialogTriggerProps = ComponentPropsWithRef<typeof Button>;
 
 /**
- * ModalTrigger component, used within a Modal.TriggerContext to open a modal.
+ * DialogTrigger component, used within a Dialog.TriggerContext to open a dialog.
  *
  * @example
- * <Modal.TriggerContext>
- *   <Modal.Trigger>Open Modal</Modal.Trigger>
- *   <Modal>
+ * <Dialog.TriggerContext>
+ *   <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+ *   <Dialog>
  *     Content
- *   </Modal>
- * </Modal.TriggerContext>
+ *   </Dialog>
+ * </Dialog.TriggerContext>
  */
-export const ModalTrigger = forwardRef<HTMLButtonElement, ModalTriggerProps>(
-  function ModalTrigger({ asChild, ...rest }, ref) {
+export const DialogTrigger = forwardRef<HTMLButtonElement, DialogTriggerProps>(
+  function DialogTrigger({ asChild, ...rest }, ref) {
     const contextRef = useContext(Context);
     const Component = asChild ? Slot : Button;
 

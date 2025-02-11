@@ -12,11 +12,8 @@
   width: 1px;
 }
 
-:root,
-[data-color-scheme] {
+:root {
   --dsc-focus-border-width: 3px; /* Default focus border width */
-  --dsc-focus-boxShadow: 0 0 0 var(--dsc-focus-border-width) var(--ds-color-focus-inner);
-  --dsc-focus-outline: var(--ds-color-focus-outer) solid var(--dsc-focus-border-width);
   --ds-font-size-minus-1: max(.9em, .875rem); /* Default to 90% of font-size, but minimum 14px */
   --ds-font-size-plus-1: 1.1em; /* Default to 110% */
 
@@ -25,6 +22,12 @@
     --ds-font-size-minus-1: round(down, max(.9em, .875rem), 0.0625rem); /* Default to 90% of font-size, but minimum 14px */
     --ds-font-size-plus-1: round(down, 1.1em, 0.0625rem); /* Default to 110% */
   }
+}
+
+:root,
+[data-color-scheme] {
+  --dsc-focus-boxShadow: 0 0 0 var(--dsc-focus-border-width) var(--ds-color-focus-inner);
+  --dsc-focus-outline: var(--ds-color-focus-outer) solid var(--dsc-focus-border-width);
 }
 
 /* Set default background and color on <body> (not :root) to align with best practice */
