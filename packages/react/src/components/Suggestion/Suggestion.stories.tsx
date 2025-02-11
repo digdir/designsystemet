@@ -17,6 +17,9 @@ export default {
     ),
   ],
   parameters: {
+    chromatic: {
+      disableSnapshot: false,
+    },
     a11y: {
       // TODO: these rules should be enabled after figuring out why they occur.
       // for some reason it says `aria-expanded` is not allowed
