@@ -38,7 +38,7 @@
     "build:tokens:debug": "tsx --inspect-brk ./bin/designsystemet.ts tokens build -p -t ../../design-tokens -o ../../packages/theme/brand --clean",
     "build": "tsup && yarn build:types && yarn build:json-schema",
     "build:types": "tsc --emitDeclarationOnly --declaration",
-    "build:json-schema": "tsx ./src/build-scripts/createJsonSchema.ts",
+    "build:json-schema": "tsx ./src/scripts/createJsonSchema.ts",
     "types": "tsc --noEmit",
     "test:tokens-create-options": "yarn designsystemet tokens create -m dominant:#007682  -n #003333 -b 99 -o ./test-tokens-create --theme options-test --clean",
     "test:tokens-create-config": "yarn designsystemet tokens create --config ./test-tokens-create-complex.config.json",
@@ -48,7 +48,7 @@
     "test": "yarn test:tokens-create-and-build-options && yarn test:tokens-create-and-build-config",
     "update:template": "tsx ./src/tokens/template.ts",
     "internal:tokens-create": "yarn designsystemet tokens create --config ./internal.config.json",
-    "update:design-tokens": "yarn internal:tokens-create && tsx ./src/build-scripts/copy-internal-tokens.ts"
+    "update:design-tokens": "yarn internal:tokens-create && tsx ./src/scripts/copy-internal-tokens.ts"
   },
   "dependencies": {
     "@commander-js/extra-typings": "^13.0.0",
