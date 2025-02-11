@@ -18,6 +18,9 @@ export default {
       placeContent: 'center',
       padding: '1rem 2rem',
     },
+    chromatic: {
+      disableSnapshot: false,
+    },
   },
   play: async (ctx) => {
     // When not in Docs mode, automatically open the popover
