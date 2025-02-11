@@ -11,6 +11,7 @@ import {
   getColorInfoFromPosition,
   getLightnessFromHex,
   getLuminanceFromLightness,
+  getSaturationFromHex,
 } from '@digdir/designsystemet/color';
 import chroma from 'chroma-js';
 import type { ThemeSettingsType } from '../debugStore';
@@ -59,8 +60,12 @@ export const generateColorScale = (
         name: colorInfo.name,
         displayName: colorInfo.displayName,
         group: colorInfo.group,
-        hex: chroma(baseColors.baseDefault)
-          .luminance(value, themeSettings?.interpolation?.mode)
+        hex: chroma(
+          colorScheme === 'light'
+            ? baseColors.baseDefault
+            : getDarkModeBaseRef(color, baseColors.baseDefault),
+        )
+          .luminance(value)
           .hex() as CssColor,
         position,
       };
@@ -145,19 +150,38 @@ const getBaseColors = (
       : baseModifier;
   const calculateLightness = (base: number, mod: number) => base - mod;
 
+  let baseRefColor =
+    colorScheme === 'light'
+      ? color
+      : (chroma(color)
+          .luminance(getLuminanceFromLightness(colorLightness))
+          .hex() as CssColor);
+
+  // Reduce the saturation of the base color if it is too high in dark mode
+  if (colorScheme === 'dark') {
+    const saturation = getSaturationFromHex(baseRefColor);
+    const lightness = getLightnessFromHex(baseRefColor);
+    if (saturation >= 70 && lightness >= 45) {
+      const saturationModifier = 1 * ((saturation - 70) / 30);
+      baseRefColor = chroma(baseRefColor)
+        .desaturate(saturationModifier)
+        .hex() as CssColor;
+    }
+  }
+
   return {
     baseDefault:
       colorScheme === 'light'
         ? color
-        : (chroma(color)
+        : (chroma(baseRefColor)
             .luminance(getLuminanceFromLightness(colorLightness))
             .hex() as CssColor),
-    baseHover: chroma(color)
+    baseHover: chroma(baseRefColor)
       .luminance(
         getLuminanceFromLightness(calculateLightness(colorLightness, modifier)),
       )
       .hex() as CssColor,
-    baseActive: chroma(color)
+    baseActive: chroma(baseRefColor)
       .luminance(
         getLuminanceFromLightness(
           calculateLightness(colorLightness, modifier * 2),
@@ -165,6 +189,37 @@ const getBaseColors = (
       )
       .hex() as CssColor,
   };
+};
+
+/**
+ * Returns the color to be used to generate the luminance colors for dark mode
+ *
+ * @param color The original base color
+ * @param baseDefault The new base default color
+ */
+const getDarkModeBaseRef = (
+  color: CssColor,
+  baseDefault: CssColor,
+): CssColor => {
+  const colorLightness = getLightnessFromHex(color);
+  const colorSaturation = getSaturationFromHex(color);
+  let targetLightness: number | null = null;
+
+  if (colorLightness <= 30) {
+    targetLightness = colorSaturation >= 70 ? 30 : 40;
+  } else if (colorLightness <= 45) {
+    targetLightness = colorSaturation >= 80 ? 45 : 55;
+  } else if (colorLightness <= 60) {
+    targetLightness = colorSaturation >= 80 ? 55 : 65;
+  }
+
+  if (targetLightness === null) {
+    return baseDefault;
+  }
+
+  return chroma(color)
+    .luminance(getLuminanceFromLightness(targetLightness))
+    .hex() as CssColor;
 };
 
 /**

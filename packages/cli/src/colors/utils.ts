@@ -171,6 +171,14 @@ export const getLightnessFromHex = (hex: string) => {
   return conv.hsluv_l;
 };
 
+export const getSaturationFromHex = (hex: string) => {
+  const conv = new Hsluv();
+  conv.hex = hex;
+  conv.hexToHsluv();
+
+  return conv.hsluv_s;
+};
+
 /**
  *
  * This function returns the color number based on the color name.

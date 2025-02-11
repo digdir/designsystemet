@@ -3,7 +3,12 @@ import type { CssColor } from './types.js';
 import chroma from 'chroma-js';
 import { luminance } from './luminance.js';
 import type { ColorInfo, ColorNumber, ColorScheme, ThemeInfo } from './types.js';
-import { getColorInfoFromPosition, getLightnessFromHex, getLuminanceFromLightness } from './utils.js';
+import {
+  getColorInfoFromPosition,
+  getLightnessFromHex,
+  getLuminanceFromLightness,
+  getSaturationFromHex,
+} from './utils.js';
 
 /**
  * Generates a color scale based on a base color and a color mode.
@@ -15,7 +20,7 @@ export const generateColorScale = (color: CssColor, colorScheme: ColorScheme): C
   const baseColors = getBaseColors(color, colorScheme);
   const luminanceValues = luminance[colorScheme];
 
-  // Create the color scale based on the luminance values. The chroma().luminance function uses RGB interpolation by default.
+  // Create the color scale based on luminance values. The chroma().luminance function uses RGB interpolation by default.
   const outputArray: ColorInfo[] = Object.entries(luminanceValues).map(([, value], index) => {
     const position = (index + 1) as ColorNumber;
     const colorInfo = getColorInfoFromPosition(position);
@@ -23,7 +28,9 @@ export const generateColorScale = (color: CssColor, colorScheme: ColorScheme): C
       name: colorInfo.name,
       displayName: colorInfo.displayName,
       group: colorInfo.group,
-      hex: chroma(baseColors.baseDefault).luminance(value).hex() as CssColor,
+      hex: chroma(colorScheme === 'light' ? baseColors.baseDefault : getDarkModeRefColor(color, baseColors.baseDefault))
+        .luminance(value)
+        .hex() as CssColor,
       position,
     };
   });
@@ -87,18 +94,85 @@ const getBaseColors = (color: CssColor, colorScheme: ColorScheme) => {
   const modifier = colorLightness <= 30 || (colorLightness >= 49 && colorLightness <= 65) ? -8 : 8;
   const calculateLightness = (base: number, mod: number) => base - mod;
 
+  let baseRefColor =
+    colorScheme === 'light'
+      ? color
+      : (chroma(color).luminance(getLuminanceFromLightness(colorLightness)).hex() as CssColor);
+
+  // Reduce saturation if it is too high in dark mode
+  if (colorScheme === 'dark') {
+    const saturation = getSaturationFromHex(baseRefColor);
+    const lightness = getLightnessFromHex(baseRefColor);
+    if (saturation >= 70 && lightness >= 45) {
+      const saturationModifier = 1.5 * ((saturation - 70) / 30);
+      baseRefColor = chroma(baseRefColor).desaturate(saturationModifier).hex() as CssColor;
+    }
+  }
+
   return {
     baseDefault:
       colorScheme === 'light'
         ? color
-        : (chroma(color).luminance(getLuminanceFromLightness(colorLightness)).hex() as CssColor),
-    baseHover: chroma(color)
+        : (chroma(baseRefColor).luminance(getLuminanceFromLightness(colorLightness)).hex() as CssColor),
+    baseHover: chroma(baseRefColor)
       .luminance(getLuminanceFromLightness(calculateLightness(colorLightness, modifier)))
       .hex() as CssColor,
-    baseActive: chroma(color)
+    baseActive: chroma(baseRefColor)
       .luminance(getLuminanceFromLightness(calculateLightness(colorLightness, modifier * 2)))
       .hex() as CssColor,
   };
+};
+
+/**
+ * Returns the reference color used to generate the luminance values for dark mode
+ *
+ * @param originalBase The original base color
+ * @param processedBase The processed base default color
+ */
+const getDarkModeRefColor = (originalBase: CssColor, processedBase: CssColor) => {
+  const colorLightness = getLightnessFromHex(originalBase);
+  const colorSaturation = getSaturationFromHex(originalBase);
+  let lightness = 0;
+
+  if (colorLightness <= 30) {
+    lightness = colorSaturation >= 70 ? 30 : 40;
+  } else if (colorLightness <= 60) {
+    if (colorSaturation < 75) {
+      return processedBase;
+    }
+    const minLight = colorLightness <= 45 ? 33 : 45;
+    const maxLight = colorLightness <= 45 ? 48 : 60;
+    lightness = getLightnessInterpol(colorSaturation, 75, 100, minLight, maxLight);
+  } else {
+    return processedBase;
+  }
+
+  return chroma(originalBase).luminance(getLuminanceFromLightness(lightness)).hex();
+};
+
+/**
+ * Returns the lightness value for a given saturation value
+ *
+ * @param saturation
+ * @param minSat
+ * @param maxSat
+ * @param minLight
+ * @param maxLight
+ * @returns
+ */
+const getLightnessInterpol = (
+  saturation: number,
+  minSat: number,
+  maxSat: number,
+  minLight: number,
+  maxLight: number,
+) => {
+  if (saturation >= maxSat) return maxLight;
+  if (saturation <= minSat) return minLight;
+
+  // Linear interpolation formula
+  const ratio = (saturation - minSat) / (maxSat - minSat);
+  return minLight + ratio * (maxLight - minLight);
 };
 
 /**
