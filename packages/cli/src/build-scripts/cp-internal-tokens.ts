@@ -20,6 +20,14 @@ async function copyFiles() {
     recursive: true,
   });
 
+  await fs.cp(
+    path.join(INTERNAL, 'primitives/modes/typography/size'),
+    path.join(TARGET, 'primitives/modes/typography/size'),
+    {
+      recursive: true,
+    },
+  );
+
   await fs.cp(path.join(INTERNAL, 'primitives/globals.json'), path.join(TARGET, 'primitives/globals.json'));
 
   await fs.cp(path.join(INTERNAL, 'semantic'), path.join(TARGET, 'semantic'), { recursive: true });
