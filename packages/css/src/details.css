@@ -1,4 +1,6 @@
 .ds-details {
+  --dsc-details-border-block-wdith: var(--ds-border-width-default);
+  --dsc-details-border-block-style: solid;
   --dsc-details-border-color: var(--ds-color-border-subtle);
   --dsc-details-icon-gap: var(--ds-size-2);
   --dsc-details-icon-size: var(--ds-size-6);
@@ -11,7 +13,8 @@
   --dsc-details-heading-background: var(--ds-color-background-default);
 
   background: var(--dsc-details-background);
-  border-block: 1px solid;
+  border-block-width: var(--dsc-details-border-block-wdith);
+  border-block-style: var(--dsc-details-border-block-style);
   border-color: var(--dsc-details-border-color);
   box-sizing: border-box;
 

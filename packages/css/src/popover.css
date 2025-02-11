@@ -1,6 +1,6 @@
 .ds-popover {
   --dsc-popover-background: var(--ds-color-surface-tinted);
-  --dsc-popover-border-width: 1px;
+  --dsc-popover-border-width: var(--ds-border-width-default);
   --dsc-popover-border-style: solid;
   --dsc-popover-border-color: var(--ds-color-border-default);
   --dsc-popover-color: var(--ds-color-text-default);
