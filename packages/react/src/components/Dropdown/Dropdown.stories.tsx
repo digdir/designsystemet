@@ -23,6 +23,9 @@ export default {
         maxHeight: '800px',
       },
     },
+    chromatic: {
+      disableSnapshot: false,
+    },
   },
   play: async (ctx) => {
     // When not in Docs mode, automatically open the dropdown
