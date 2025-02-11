@@ -3,6 +3,7 @@ import cat5 from '@assets/img/cats/Cat 5.jpg';
 import { PlusIcon, TrashFillIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react';
 
+import { Fragment } from 'react/jsx-runtime';
 import {
   Button,
   Card,
@@ -52,30 +53,34 @@ const VariantsMap: {
 } = {
   neutralDefault: {
     'data-color': 'neutral',
+    'data-variant': 'default',
   },
   neutralTinted: {
     'data-color': 'neutral',
     'data-variant': 'tinted',
   },
-  dangerDefault: {
-    'data-color': 'danger',
+  brand1Default: {
+    'data-color': 'brand1',
+    'data-variant': 'default',
   },
-  dangerTinted: {
-    'data-color': 'danger',
+  brand1Tinted: {
+    'data-color': 'brand1',
     'data-variant': 'tinted',
   },
-  infoDefault: {
-    'data-color': 'info',
+  brand2Default: {
+    'data-color': 'brand2',
+    'data-variant': 'default',
   },
-  infoTinted: {
-    'data-color': 'info',
+  brand2Tinted: {
+    'data-color': 'brand2',
     'data-variant': 'tinted',
   },
-  warningDefault: {
-    'data-color': 'warning',
+  brand3Default: {
+    'data-color': 'brand3',
+    'data-variant': 'default',
   },
-  warningTinted: {
-    'data-color': 'warning',
+  brand3Tinted: {
+    'data-color': 'brand3',
     'data-variant': 'tinted',
   },
 };
@@ -85,7 +90,14 @@ export const Variants: StoryFn<typeof Card> = () => (
     {Object.entries(VariantsMap).map(([key, value]) => (
       <Card key={key} {...value}>
         <Card.Block>
-          <Paragraph>{key}</Paragraph>
+          <Paragraph>
+            {Object.entries(value).map(([v, k]) => (
+              <Fragment key={v}>
+                {v}: {k}
+                <br />
+              </Fragment>
+            ))}
+          </Paragraph>
         </Card.Block>
       </Card>
     ))}
