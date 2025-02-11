@@ -35,7 +35,7 @@ export default {
 
 export const Preview: Story = (args) => (
   <Card {...args} style={{ maxWidth: '320px' }}>
-    <Heading>Card Neutral</Heading>
+    <Heading>Card</Heading>
     <Paragraph>
       Most provide as with carried business are much better more the perfected
       designer. Writing slightly explain desk unable at supposedly about this
@@ -106,7 +106,7 @@ export const Variants: StoryFn<typeof Card> = () => (
 
 export const Media: Story = () => (
   <>
-    <Card>
+    <Card data-color='neutral'>
       <Card.Block>
         <img src={cat1} alt='katt' />
       </Card.Block>
@@ -119,7 +119,7 @@ export const Media: Story = () => (
         </Paragraph>
       </Card.Block>
     </Card>
-    <Card>
+    <Card data-color='neutral'>
       <Card.Block>
         <Heading>Card Neutral</Heading>
         <Paragraph>
@@ -218,7 +218,7 @@ export const Composed: Story = () => (
         </Button>
       </Card.Block>
     </Card>
-    <Card>
+    <Card data-color='neutral'>
       <Card.Block>
         <img src={cat1} alt='katt' />
       </Card.Block>
