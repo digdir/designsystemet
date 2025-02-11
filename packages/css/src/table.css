@@ -9,7 +9,7 @@
   --dsc-table-color: var(--ds-color-neutral-text-default);
   --dsc-table-divider-border-color: var(--dsc-table-border-color);
   --dsc-table-divider-border-style: solid;
-  --dsc-table-divider-border-width: 2px;
+  --dsc-table-divider-border-width: calc(var(--ds-border-width-default) + 1px);
   --dsc-table-header-background--hover: var(--ds-color-neutral-surface-tinted);
   --dsc-table-header-background--sorted: var(--ds-color-neutral-background-tinted);
   --dsc-table-header-background: var(--ds-color-neutral-background-default);
