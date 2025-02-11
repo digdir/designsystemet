@@ -16,6 +16,12 @@ export type DetailsProps = MergeRight<
      */
     'data-color'?: 'subtle' | Color;
     /**
+     * Change the background color of the details.
+     *
+     * @default 'default'
+     */
+    'data-variant'?: 'default' | 'tinted';
+    /**
      * Controls open-state.
      *
      * Using this removes automatic control of open-state
@@ -54,7 +60,14 @@ export type DetailsProps = MergeRight<
  */
 export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
   function Details(
-    { className, open, defaultOpen = false, onToggle, ...rest },
+    {
+      className,
+      open,
+      defaultOpen = false,
+      'data-variant': variant = 'default',
+      onToggle,
+      ...rest
+    },
     ref,
   ) {
     const detailsRef = useRef<HTMLDetailsElement>(null);
@@ -82,6 +95,7 @@ export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
       <u-details
         class={cl('ds-details', className)} // Using class since React does not translate className on custom elements
         open={(open ?? initialOpen.current) || undefined} // Fallback to undefined to prevent rendering open="false"
+        data-variant={variant}
         ref={mergedRefs}
         {...rest}
       />
