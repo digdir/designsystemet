@@ -14,7 +14,7 @@ import semanticColorTemplate from './design-tokens/template/semantic/semantic-co
 import themeBaseFile from './design-tokens/template/themes/theme-base-file.json' with { type: 'json' };
 import themeColorTemplate from './design-tokens/template/themes/theme-color-template.json' with { type: 'json' };
 import type { Collection, File, Theme, Tokens, TokensSet, TypographyModes } from './types.js';
-import { cleanDir, cp, mkdir, writeFile } from './utils.js';
+import { cp, mkdir, writeFile } from './utils.js';
 import { generateMetadataJson } from './write/generate$metadata.js';
 import { generateThemesJson } from './write/generate$themes.js';
 
@@ -53,8 +53,6 @@ type WriteTokensOptions = {
   theme: Theme;
   /** Dry run, no files will be written */
   dry?: boolean;
-  /** Clean output directory before writing tokens */
-  clean?: boolean;
 };
 
 export const writeTokens = async (options: WriteTokensOptions) => {
@@ -63,16 +61,11 @@ export const writeTokens = async (options: WriteTokensOptions) => {
     tokens,
     theme: { name: themeName, colors, borderRadius },
     dry,
-    clean,
   } = options;
   const targetDir = path.resolve(process.cwd(), String(outDir));
   const $themesPath = path.join(targetDir, '$themes.json');
   const $metadataPath = path.join(targetDir, '$metadata.json');
   let themes = [themeName];
-
-  if (clean) {
-    await cleanDir(targetDir, dry);
-  }
 
   await mkdir(targetDir, dry);
 
