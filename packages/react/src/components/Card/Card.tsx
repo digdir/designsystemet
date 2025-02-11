@@ -17,9 +17,9 @@ export type CardProps = MergeRight<
     /**
      * Change the background color of the card.
      *
-     * @default 'base'
+     * @default 'default'
      */
-    'data-variant'?: 'base' | 'tinted';
+    'data-variant'?: 'default' | 'tinted';
     /**
      * Change the default rendered element for the one passed as a child, merging their props and behavior.
      * @default false
