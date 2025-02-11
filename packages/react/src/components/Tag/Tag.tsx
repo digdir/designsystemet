@@ -3,7 +3,14 @@ import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 
-export type TagProps = DefaultProps & HTMLAttributes<HTMLSpanElement>;
+export type TagProps = DefaultProps & {
+  /**
+   * Change the background color of the tag.
+   *
+   * @default 'default'
+   */
+  'data-variant'?: 'default' | 'tinted';
+} & HTMLAttributes<HTMLSpanElement>;
 
 /**
  * Use `Tag` to display categories or statuses.
@@ -12,8 +19,15 @@ export type TagProps = DefaultProps & HTMLAttributes<HTMLSpanElement>;
  * <Tag>Melk</Tag>
  */
 export const Tag = forwardRef<HTMLSpanElement, TagProps>(function Tag(
-  { className, ...rest },
+  { 'data-variant': variant = 'default', className, ...rest },
   ref,
 ) {
-  return <span className={cl('ds-tag', className)} ref={ref} {...rest} />;
+  return (
+    <span
+      className={cl('ds-tag', className)}
+      data-variant={variant}
+      ref={ref}
+      {...rest}
+    />
+  );
 });

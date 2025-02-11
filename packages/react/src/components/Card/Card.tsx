@@ -15,6 +15,12 @@ export type CardProps = MergeRight<
      */
     'data-color'?: 'subtle' | DefaultProps['data-color'];
     /**
+     * Change the background color of the card.
+     *
+     * @default 'base'
+     */
+    'data-variant'?: 'base' | 'tinted';
+    /**
      * Change the default rendered element for the one passed as a child, merging their props and behavior.
      * @default false
      */
@@ -35,7 +41,13 @@ export type CardProps = MergeRight<
  * </Card>
  */
 export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
-  { asChild = false, 'data-color': color = 'neutral', className, ...rest },
+  {
+    asChild = false,
+    'data-color': color = 'neutral',
+    'data-variant': variant = 'default',
+    className,
+    ...rest
+  },
   ref,
 ) {
   const Component = asChild ? Slot : 'div';
@@ -64,6 +76,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
     <Component
       className={cl(`ds-card`, className)}
       data-color={color}
+      data-variant={variant}
       ref={mergedRefs}
       {...rest}
     />
