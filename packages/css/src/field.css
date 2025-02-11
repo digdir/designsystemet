@@ -87,7 +87,7 @@
  * Affix
  */
 .ds-field-affixes {
-  --dsc-field-affix-border-width: 1px;
+  --dsc-field-affix-border-width: var(--ds-border-width-default);
   --dsc-field-affix-border-style: solid;
   --dsc-field-affix-border-color: var(--ds-color-neutral-border-default);
   --dsc-field-affix-padding-inline: var(--ds-size-4);

@@ -1,5 +1,5 @@
 .ds-divider {
-  --dsc-divider-border-width: 1px;
+  --dsc-divider-border-width: var(--ds-border-width-default);
   --dsc-divider-border-style: solid;
   --dsc-divider-border-color: var(--ds-color-neutral-border-subtle);
 

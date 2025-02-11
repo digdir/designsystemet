@@ -18,7 +18,7 @@
 @import url('./skiplink.css') layer(ds.components);
 @import url('./details.css') layer(ds.components);
 @import url('./search.css') layer(ds.components);
-@import url('./modal.css') layer(ds.components);
+@import url('./dialog.css') layer(ds.components);
 @import url('./list.css') layer(ds.components);
 @import url('./card.css') layer(ds.components);
 @import url('./dropdown.css') layer(ds.components);
