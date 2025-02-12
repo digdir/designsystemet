@@ -134,13 +134,14 @@ const getDarkModeRefColor = (originalBase: CssColor, processedBase: CssColor) =>
   const colorSaturation = getSaturationFromHex(originalBase);
   let lightness = 0;
 
-  if (colorLightness <= 30) {
+  if (colorLightness <= 28) {
     lightness = colorSaturation >= 70 ? 30 : 40;
+    lightness = colorSaturation >= 90 ? 32 : 40;
   } else if (colorLightness <= 60) {
     if (colorSaturation < 75) {
       return processedBase;
     }
-    const minLight = colorLightness <= 45 ? 33 : 45;
+    const minLight = colorLightness <= 45 ? 33 : 50;
     const maxLight = colorLightness <= 45 ? 48 : 60;
     lightness = getLightnessInterpol(colorSaturation, 75, 100, minLight, maxLight);
   } else {
