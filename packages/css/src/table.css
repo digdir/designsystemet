@@ -63,6 +63,7 @@
   & > caption {
     @composes ds-heading from './heading.css';
     text-align: inherit;
+    margin-bottom: var(--ds-size-1);
   }
 
   /**
