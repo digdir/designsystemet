@@ -2,7 +2,6 @@ import { Meta, Controls, Primary, Canvas, ArgTypes } from '@storybook/blocks';
 import { CssVariables } from '@doc-components';
 import css from '@digdir/designsystemet-css/pagination.css?inline';
 import * as PaginationStories from './Pagination.stories';
-import { usePagination } from './usePagination';
 
 <Meta of={PaginationStories} />
 
@@ -68,29 +67,8 @@ const { pages, prevButtonProps, nextButtonProps, hasNext, hasPrevious } = usePag
 ## Paginering med `usePagination`
 
 Bruk `usePagination` for paginering-logikk sammen med de enkelt del-komponentene.
-Du kan sende inn:
+Les mer om `usePagination` [her](/docs/utilities-usepagination--docs).
 
-
-## Props
-
-<ArgTypes of={PaginationStories.Preview} include={['currentPage', 'totalPages', 'onChange', 'setCurrentPage', 'showPages']} />
-
-<br />
-I respons får du objektet:
-
-```ts
-{
-  hasPrev: boolean, // Indikererer om det finnes en forrige side
-  hasNext: boolean, // Indikererer om det finnes en neste side
-  prevButtonProps: PaginationButtonProps, // Properties du kan spre på forrie-knappen
-  nextButtonProps: PaginationButtonProps, // Properties du kan spre på neste-knappen
-  pages: Array<{
-    page: number | string; // Tall for side, eller tom streng dersom knappen skal være ...
-    itemKey: string; // key du kan sende til Pagination.Item for å sikre riktig fokus håndtering
-    buttonProps: PaginationButtonProps; // Properties du kan spre på Pagination.Button
-  }>
-}
-```
 
 ### Pagenering med lenker
 
