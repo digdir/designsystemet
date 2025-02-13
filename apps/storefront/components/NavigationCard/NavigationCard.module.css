@@ -19,7 +19,7 @@
   transition: none;
   box-shadow: var(--dsc-focus-boxShadow);
   outline: var(--dsc-focus-outline);
-  outline-offset: var(--dsc-focus-border-width);
+  outline-offset: var(--ds-border-width-focus);
 }
 
 .iconContainer {
