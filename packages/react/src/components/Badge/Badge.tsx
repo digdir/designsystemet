@@ -14,6 +14,12 @@ export type BadgeProps = MergeRight<
      * The maximum number to display in the badge, when the count exceeds this number, the badge will display `{max}+`
      */
     maxCount?: number;
+    /**
+     * Change the background color of the badge.
+     *
+     * @default 'base'
+     */
+    'data-variant'?: 'base' | 'tinted';
     children?: never;
   }
 >;
@@ -30,7 +36,7 @@ export type BadgeProps = MergeRight<
  * </Badge>
  */
 export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
-  { className, count, maxCount, ...rest },
+  { className, count, maxCount, 'data-variant': variant = 'base', ...rest },
   ref,
 ) {
   return (
@@ -39,6 +45,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
       data-count={
         count && maxCount && count > maxCount ? `${maxCount}+` : count
       }
+      data-variant={variant}
       ref={ref}
       {...rest}
     />

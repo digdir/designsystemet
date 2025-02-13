@@ -189,3 +189,52 @@ export const InButton: Story = (args) => (
     </Button>
   </div>
 );
+
+const VariantsMap: {
+  [key: string]: { [key: string]: string };
+} = {
+  neutralBase: {
+    'data-color': 'neutral',
+  },
+  neutralTinted: {
+    'data-color': 'neutral',
+    'data-variant': 'tinted',
+  },
+  dangerBase: {
+    'data-color': 'danger',
+  },
+  dangerTinted: {
+    'data-color': 'danger',
+    'data-variant': 'tinted',
+  },
+  infoBase: {
+    'data-color': 'info',
+  },
+  infoTinted: {
+    'data-color': 'info',
+    'data-variant': 'tinted',
+  },
+  warningBase: {
+    'data-color': 'warning',
+  },
+  warningTinted: {
+    'data-color': 'warning',
+    'data-variant': 'tinted',
+  },
+};
+
+export const Variants: Story = () => (
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(4, 1fr)',
+      gap: 'var(--ds-size-2)',
+      height: '100%',
+      width: '100%',
+    }}
+  >
+    {Object.entries(VariantsMap).map(([key, value]) => (
+      <Badge key={key} {...value} count={15} maxCount={9} />
+    ))}
+  </div>
+);

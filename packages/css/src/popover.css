@@ -53,9 +53,12 @@
     rotate: -135deg;
   }
 
-  /* What do we do here? */
-  &[data-color='neutral'] {
-    --dsc-popover-background: var(--ds-color-neutral-background-default);
+  &[data-variant='default'] {
+    --dsc-popover-background: var(--ds-color-background-default);
+  }
+
+  &[data-variant='tinted'] {
+    --dsc-popover-background: var(--ds-color-background-tinted);
   }
 }
 
