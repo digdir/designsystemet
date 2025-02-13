@@ -14,7 +14,7 @@ En react hook for å håndtere paginering.
 
 ## Props
 
-<ArgTypes of={Stories.Preview} include={['currentPage', 'totalPages', 'onChange', 'setCurrentPage', 'showPages']} />
+<ArgTypes of={Stories.Props} include={['currentPage', 'totalPages', 'onChange', 'setCurrentPage', 'showPages']} />
 
 <br />
 I respons får du objektet:
@@ -45,4 +45,25 @@ const { pages, prevButtonProps, nextButtonProps, hasNext, hasPrevious } = usePag
   totalPages: 10,
   showPages: 7,
 });
+```
+
+### På `Pagination.Button`
+
+Du looper gjennom `pages` fra respons-objektet, og sender `buttonProps` til `Pagination.Button`.
+Legg merke til at vi sjekker `typoeof` på `page`. Dette er fordi ellipser skal være en tom `li`.
+
+```tsx
+{pages.map(({ page, itemKey, buttonProps }) => (
+  <Pagination.Item key={itemKey}>
+    {typeof page === 'number' && (
+      <Pagination.Button
+        asChild
+        aria-label={`Side ${page}`}
+        {...buttonProps}
+      >
+        <a href={`#side-${page}`}>{page}</a>
+      </Pagination.Button>
+    )}
+  </Pagination.Item>
+))}
 ```
