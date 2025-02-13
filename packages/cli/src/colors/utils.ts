@@ -206,11 +206,11 @@ export const canTextBeUsedOnColors = (baseDefaultColor: CssColor, baseActiveColo
  * @param color
  * @returns
  */
-export const convertToHex = (color?: CssColor): HexColor => {
+export const convertToHex = (color?: string): HexColor => {
   if (!color) {
     return '#000000';
   }
-  if (typeof color === 'string' && /^#[0-9A-Fa-f]{6}$/.test(color)) {
+  if (/^#[0-9A-Fa-f]{6}$/.test(color)) {
     return color as HexColor;
   }
   return chroma(color).hex() as HexColor;

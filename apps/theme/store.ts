@@ -55,12 +55,6 @@ export const useThemeStore = create(
         name: 'Default',
         displayName: 'Default',
         group: 'neutral',
-        description: '',
-        luminance: {
-          light: 0.12,
-          dark: 0.36,
-          contrast: 0.57,
-        },
       },
       name: 'Default',
     },
