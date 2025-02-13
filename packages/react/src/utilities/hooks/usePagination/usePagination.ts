@@ -21,14 +21,6 @@ export type UsePaginationProps = {
    */
   currentPage: number;
   /**
-   * Callback to set the current page
-   */
-  setCurrentPage?: (page: number) => void;
-  /**
-   * Callback when the page changes
-   */
-  onChange?: (event: MouseEvent<HTMLElement>, page: number) => void;
-  /**
    * The total number of pages
    * @default 1
    */
@@ -38,6 +30,14 @@ export type UsePaginationProps = {
    * @default 7
    */
   showPages?: number;
+  /**
+   * Callback to set the current page
+   */
+  setCurrentPage?: (page: number) => void;
+  /**
+   * Callback when the page changes
+   */
+  onChange?: (event: MouseEvent<HTMLElement>, page: number) => void;
 };
 
 /**
