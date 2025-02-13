@@ -2755,20 +2755,20 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "2px",
+    $value: "3px",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{border-width.2}"
+      $value: "{border-width.3}"
     },
-    name: "--ds-border-width-highlight",
+    name: "--ds-border-width-focus",
     attributes: {},
     path: [
       "border-width",
-      "highlight"
+      "focus"
     ],
-    key: "{border-width.highlight}"
+    key: "{border-width.focus}"
   },
   {
     $type: "dimension",
@@ -3130,7 +3130,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.11}",
+        fontSize: "{font-size.10}",
         letterSpacing: "{letter-spacing.1}"
       }
     },
@@ -3160,7 +3160,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.10}",
+        fontSize: "{font-size.9}",
         letterSpacing: "{letter-spacing.1}"
       }
     },
@@ -3190,7 +3190,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.9}",
+        fontSize: "{font-size.8}",
         letterSpacing: "{letter-spacing.2}"
       }
     },
@@ -3220,7 +3220,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.8}",
+        fontSize: "{font-size.7}",
         letterSpacing: "{letter-spacing.3}"
       }
     },
@@ -3250,7 +3250,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.7}",
+        fontSize: "{font-size.6}",
         letterSpacing: "{letter-spacing.5}"
       }
     },
@@ -3280,7 +3280,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.6}",
+        fontSize: "{font-size.5}",
         letterSpacing: "{letter-spacing.6}"
       }
     },
@@ -3310,7 +3310,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.5}",
+        fontSize: "{font-size.4}",
         letterSpacing: "{letter-spacing.6}"
       }
     },
@@ -3340,7 +3340,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.md}",
-        fontSize: "{font-size.7}",
+        fontSize: "{font-size.6}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3370,7 +3370,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.md}",
-        fontSize: "{font-size.6}",
+        fontSize: "{font-size.5}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3400,7 +3400,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.md}",
-        fontSize: "{font-size.5}",
+        fontSize: "{font-size.4}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3430,7 +3430,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.md}",
-        fontSize: "{font-size.4}",
+        fontSize: "{font-size.3}",
         letterSpacing: "{letter-spacing.7}"
       }
     },
@@ -3460,7 +3460,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.md}",
-        fontSize: "{font-size.3}",
+        fontSize: "{font-size.2}",
         letterSpacing: "{letter-spacing.6}"
       }
     },
@@ -3490,7 +3490,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.7}",
+        fontSize: "{font-size.6}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3521,7 +3521,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.6}",
+        fontSize: "{font-size.5}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3552,7 +3552,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.5}",
+        fontSize: "{font-size.4}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3583,7 +3583,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.4}",
+        fontSize: "{font-size.3}",
         letterSpacing: "{letter-spacing.7}"
       }
     },
@@ -3614,7 +3614,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.3}",
+        fontSize: "{font-size.2}",
         letterSpacing: "{letter-spacing.6}"
       }
     },
@@ -3645,7 +3645,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.7}",
+        fontSize: "{font-size.6}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3676,7 +3676,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.6}",
+        fontSize: "{font-size.5}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3707,7 +3707,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.5}",
+        fontSize: "{font-size.4}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3738,7 +3738,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.4}",
+        fontSize: "{font-size.3}",
         letterSpacing: "{letter-spacing.7}"
       }
     },
@@ -3769,7 +3769,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.3}",
+        fontSize: "{font-size.2}",
         letterSpacing: "{letter-spacing.6}"
       }
     },
