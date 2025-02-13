@@ -55,34 +55,22 @@ export const Preview: StoryFn<UsePaginationProps> = (args) => {
     <Pagination aria-label='Sidenavigering'>
       <Pagination.List>
         <Pagination.Item>
-          <Pagination.Button
-            asChild
-            aria-label='Forrige side'
-            {...prevButtonProps}
-          >
-            <a href='#forrige-side'>Forrige</a>
+          <Pagination.Button aria-label='Forrige side' {...prevButtonProps}>
+            Forrige
           </Pagination.Button>
         </Pagination.Item>
         {pages.map(({ page, itemKey, buttonProps }) => (
           <Pagination.Item key={itemKey}>
             {typeof page === 'number' && (
-              <Pagination.Button
-                asChild
-                aria-label={`Side ${page}`}
-                {...buttonProps}
-              >
-                <a href={`#side-${page}`}>{page}</a>
+              <Pagination.Button aria-label={`Side ${page}`} {...buttonProps}>
+                {page}
               </Pagination.Button>
             )}
           </Pagination.Item>
         ))}
         <Pagination.Item>
-          <Pagination.Button
-            asChild
-            aria-label='Neste side'
-            {...nextButtonProps}
-          >
-            <a href='#neste-side'>Neste</a>
+          <Pagination.Button aria-label='Neste side' {...nextButtonProps}>
+            Neste
           </Pagination.Button>
         </Pagination.Item>
       </Pagination.List>
