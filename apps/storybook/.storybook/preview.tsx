@@ -96,6 +96,7 @@ const components = {
       className='sb-unstyled'
       style={{ width: '100%' }}
       data-color-scheme='light'
+      data-color='neutral'
     />
   ),
   thead: (props: Props) => (

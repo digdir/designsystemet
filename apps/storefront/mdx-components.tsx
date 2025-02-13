@@ -61,7 +61,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h6: (props) => (
       <Heading {...(props as HeadingProps)} level={6} data-size='xs' />
     ),
-    table: (props) => <Table {...(props as TableProps)} border zebra />,
+    table: (props) => (
+      <Table {...(props as TableProps)} border zebra data-color='neutral' />
+    ),
     thead: (props) => <TableHead {...(props as TableHeadProps)} />,
     tbody: (props) => <TableBody {...(props as TableBodyProps)} />,
     tr: (props) => <TableRow {...(props as TableRowProps)} />,
