@@ -53,7 +53,7 @@ body,
    */
   box-shadow: var(--_ds--focus, var(--dsc-focus-boxShadow));
   outline: var(--_ds--focus, var(--dsc-focus-outline));
-  outline-offset: var(--_ds--focus, var(--dsc-focus-border-width));
+  outline-offset: var(--_ds--focus, var(--ds-border-width-focus));
 
   /**
    * Using CSS custom properties toggle trick to ensure focus-visible is only shown on outermost element
