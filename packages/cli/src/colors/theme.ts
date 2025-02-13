@@ -17,7 +17,7 @@ export const generateColorScale = (color: CssColor, colorScheme: ColorScheme): C
     return {
       ...colorData,
       hex: chroma(color).luminance(luminance).hex() as CssColor,
-      position: parseInt(key) as ColorNumber,
+      number: parseInt(key) as ColorNumber,
     };
   }, colorMetadata);
 

@@ -17,7 +17,7 @@ export type ColorMetadata = {
 };
 
 export type ColorInfo = Partial<ColorMetadata> & {
-  position: ColorNumber;
+  number: ColorNumber;
   hex: CssColor;
 };
 
