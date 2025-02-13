@@ -11,9 +11,11 @@ import type { CssColor } from '../src/colors/types.js';
 import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
 import { cliOptions, createTokens } from '../src/tokens/create.js';
+import type { Theme } from '../src/tokens/types.js';
+import { cleanDir } from '../src/tokens/utils.js';
 import { writeTokens } from '../src/tokens/write.js';
 import { type CombinedConfigSchema, combinedConfigSchema, configFileSchema, mapPathToOptionName } from './config.js';
-import { type OptionGetter, getDefaultOrExplicitOption, getExplicitOptionOnly } from './options.js';
+import { type OptionGetter, getDefaultOrExplicitOption } from './options.js';
 
 program.name('designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
 
@@ -138,7 +140,7 @@ function makeTokenCommands() {
         themes: propsFromJson?.themes
           ? // For each theme specified in the JSON config, we override the config values
             // with the explicitly set options from the CLI.
-            R.map((theme) => R.mergeDeepRight(theme, getThemeOptions(getExplicitOptionOnly)), propsFromJson.themes)
+            R.map((theme) => R.mergeDeepRight(theme, getThemeOptions(getDefaultOrExplicitOption)), propsFromJson.themes)
           : // If there are no themes specified in the JSON config, we use both explicit
             // and default theme options from the CLI.
             {
@@ -162,12 +164,20 @@ function makeTokenCommands() {
       console.log(`Creating tokens with configuration ${chalk.green(JSON.stringify(config, null, 2))}`);
 
       /*
+       * Clean the output directory if requested. Only clean once for multiple themes
+       */
+      if (config.clean) {
+        await cleanDir(config.outDir, opts.dry);
+      }
+      /*
        * Create and write tokens for each theme
        */
       for (const [name, themeWithoutName] of Object.entries(config.themes)) {
-        const theme = { name, ...themeWithoutName };
+        // Casting as missing properties should be validated by `getDefaultOrExplicitOption` to default values
+        const theme = { name, ...themeWithoutName } as Theme;
+
         const tokens = createTokens(theme);
-        await writeTokens({ outDir: config.outDir, tokens, theme, dry: opts.dry, clean: config.clean });
+        await writeTokens({ outDir: config.outDir, tokens, theme, dry: opts.dry });
       }
     });
 
