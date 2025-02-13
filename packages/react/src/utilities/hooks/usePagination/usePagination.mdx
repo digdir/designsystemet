@@ -49,8 +49,8 @@ const { pages, prevButtonProps, nextButtonProps, hasNext, hasPrevious } = usePag
 
 ### På `Pagination.Button`
 
-Du looper gjennom `pages` fra respons-objektet, og sender `buttonProps` til `Pagination.Button`.
-Legg merke til at vi sjekker `typoeof` på `page`. Dette er fordi ellipser skal være en tom `li`.
+Du looper gjennom `pages` fra respons-objektet, og sprer `buttonProps` på `Pagination.Button`.
+Legg merke til at vi sjekker `typeof` på `page`. Dette er fordi ellipser skal være en tom `li`.
 
 ```tsx
 {pages.map(({ page, itemKey, buttonProps }) => (
