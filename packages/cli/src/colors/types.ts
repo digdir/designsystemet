@@ -28,26 +28,14 @@ export type ThemeInfo = {
 };
 
 /**
- * A valid CSS color.
+ * Supported CSS color i designsystemet/color
  */
-export type CssColor =
-  | RgbHexColor
-  | RgbColor
-  | HslColor
-  | HsvColor
-  | HsluvColor
-  | LabColor
-  | LchColor
-  | OkLabColor
-  | OkLchColor
-  | Cam02Color
-  | rgbaColor
-  | Cam02pColor;
+export type CssColor = HexColor;
 
 /**
  * Different color formats.
  */
-type RgbHexColor = `#${string}`;
+type HexColor = `#${string}`;
 type RgbColor = `rgb(${number} ${number} ${number})`;
 type HslColor = `hsl(${Degrees} ${Percent} ${Percent})`;
 type HsvColor = `hsv(${Degrees} ${Percent} ${Percent})`;
@@ -58,7 +46,7 @@ type OkLabColor = `oklab(${Percent} ${number} ${number})`;
 type OkLchColor = `oklch(${Percent} ${number} ${Degrees})`;
 type Cam02Color = `jab(${Percent} ${number} ${number})`;
 type Cam02pColor = `jch(${Percent} ${number} ${Degrees})`;
-type rgbaColor = `rgba(${number}, ${number}, ${number}, ${number})`;
+type RgbaColor = `rgba(${number}, ${number}, ${number}, ${number})`;
 
 type Percent = `${number}%`;
 type Degrees = `${number}deg`;
