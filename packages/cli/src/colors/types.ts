@@ -4,10 +4,19 @@ export type ColorNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 
 export type GlobalColors = 'red' | 'blue' | 'green' | 'orange' | 'purple';
 export type ColorError = 'none' | 'decorative' | 'interaction';
 
-export type ColorInfo = {
+export type ColorMetadata = {
   name: string;
   displayName: string;
+  description: string;
   group: string;
+  luminance: {
+    light: number;
+    dark: number;
+    contrast: number;
+  };
+};
+
+export type ColorInfo = ColorMetadata & {
   position: ColorNumber;
   hex: CssColor;
 };

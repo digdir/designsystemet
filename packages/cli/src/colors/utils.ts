@@ -1,5 +1,6 @@
 import chroma from 'chroma-js';
 import { Hsluv } from 'hsluv';
+import { colorMetadata } from './colorMetadata.js';
 import type { ColorNumber, CssColor } from './types.js';
 
 /**
@@ -171,118 +172,8 @@ export const getLightnessFromHex = (hex: string) => {
   return conv.hsluv_l;
 };
 
-/**
- *
- * This function returns the color number based on the color name.
- *
- * @param name The name of the color
- */
-export const getColorNumberFromName = (name: string): ColorNumber => {
-  const colorMap: Record<string, ColorNumber> = {
-    'Background Default': 1,
-    'Background Tinted': 2,
-    'Surface Default': 3,
-    'Surface Tinted': 4,
-    'Surface Hover': 5,
-    'Surface Active': 6,
-    'Border Subtle': 7,
-    'Border Default': 8,
-    'Border Strong': 9,
-    'Text Subtle': 10,
-    'Text Default': 11,
-    'Base Default': 12,
-    'Base Hover': 13,
-    'Base Active': 14,
-    'Contrast Subtle': 15,
-    'Contrast Default': 16,
-  };
-  return colorMap[name];
-};
-
 export const getColorInfoFromPosition = (position: ColorNumber) => {
-  const colorMap = {
-    1: {
-      name: 'backgroundDefault',
-      displayName: 'Background Default',
-      group: 'background',
-    },
-    2: {
-      name: 'backgroundTinted',
-      displayName: 'Background Tinted',
-      group: 'background',
-    },
-    3: {
-      name: 'surfaceDefault',
-      displayName: 'Surface Default',
-      group: 'surface',
-    },
-    4: {
-      name: 'surfaceTinted',
-      displayName: 'Surface Tinted',
-      group: 'surface',
-    },
-    5: {
-      name: 'surfaceHover',
-      displayName: 'Surface Hover',
-      group: 'surface',
-    },
-    6: {
-      name: 'surfaceActive',
-      displayName: 'Surface Active',
-      group: 'surface',
-    },
-    7: {
-      name: 'borderSubtle',
-      displayName: 'Border Subtle',
-      group: 'border',
-    },
-    8: {
-      name: 'borderDefault',
-      displayName: 'Border Default',
-      group: 'border',
-    },
-    9: {
-      name: 'borderStrong',
-      displayName: 'Border Strong',
-      group: 'border',
-    },
-    10: {
-      name: 'textSubtle',
-      displayName: 'Text Subtle',
-      group: 'text',
-    },
-    11: {
-      name: 'textDefault',
-      displayName: 'Text Default',
-      group: 'text',
-    },
-    12: {
-      name: 'baseDefault',
-      displayName: 'Base Default',
-      group: 'base',
-    },
-    13: {
-      name: 'baseHover',
-      displayName: 'Base Hover',
-      group: 'base',
-    },
-    14: {
-      name: 'baseActive',
-      displayName: 'Base Active',
-      group: 'base',
-    },
-    15: {
-      name: 'baseContrastSubtle',
-      displayName: 'Base Contrast Subtle',
-      group: 'base',
-    },
-    16: {
-      name: 'baseContrastDefault',
-      displayName: 'Base Contrast Default',
-      group: 'base',
-    },
-  } as const;
-  return colorMap[position];
+  return colorMetadata[position];
 };
 
 /**
