@@ -72,7 +72,7 @@ export const HSLToHex = (h: number, s: number, l: number): HexColor => {
  * @param type The type of RGB values to return
  * @returns RGB values in an array
  */
-export const hexToRgb = (hex: HexColor, type: '255' | '1' = '255') => {
+export const hexToRgb = (hex: string, type: '255' | '1' = '255') => {
   const rgb = chroma(hex).rgb();
   return {
     r: type === '255' ? rgb[0] : rgb[0] / 255,
