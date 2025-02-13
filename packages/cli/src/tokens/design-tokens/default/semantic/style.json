@@ -240,9 +240,9 @@
       "$type": "borderWidth",
       "$value": "{border-width.1}"
     },
-    "highlight": {
+    "focus": {
       "$type": "borderWidth",
-      "$value": "{border-width.2}"
+      "$value": "{border-width.3}"
     }
   },
   "shadow": {
