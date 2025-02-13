@@ -6,6 +6,40 @@ import { type UsePaginationProps, usePagination } from './usePagination';
 const meta: Meta = {
   title: 'Utilities/usePagination',
   parameters: { chromatic: { disableSnapshot: true } },
+  argTypes: {
+    currentPage: {
+      control: {
+        type: 'number',
+      },
+      defaultValue: 1,
+      description: 'The current page number',
+      type: { name: 'number' },
+    },
+    totalPages: {
+      control: {
+        type: 'number',
+      },
+      defaultValue: 1,
+      description: 'The total number of pages',
+      type: { name: 'number' },
+    },
+    showPages: {
+      control: {
+        type: 'number',
+      },
+      defaultValue: 7,
+      description: 'The maximum number of pages to show',
+      type: { name: 'number' },
+    },
+    setCurrentPage: {
+      description: 'Callback to set the current page',
+      type: { name: 'function' },
+    },
+    onChange: {
+      description: 'Callback when the page changes',
+      type: { name: 'function' },
+    },
+  },
 };
 
 export default meta;
@@ -60,4 +94,8 @@ Preview.args = {
   currentPage: 2,
   totalPages: 10,
   showPages: 7,
+};
+
+export const Props: StoryFn<UsePaginationProps> = (args) => {
+  return <></>;
 };
