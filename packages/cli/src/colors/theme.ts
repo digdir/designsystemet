@@ -130,25 +130,70 @@ const getBaseColors = (color: CssColor, colorScheme: ColorScheme) => {
  * @param processedBase The processed base default color
  */
 const getDarkModeRefColor = (originalBase: CssColor, processedBase: CssColor) => {
-  const colorLightness = getLightnessFromHex(originalBase);
-  const colorSaturation = getSaturationFromHex(originalBase);
-  let lightness = 0;
+  const [L, C, H] = chroma(originalBase).oklch();
+  let newC = C; // Start with the original chroma
+  const upperChroma = 0.21; // The upper limit for chroma reduction
+  const middleChroma = 0.15; // The middle limit for chroma reduction
+  const lowerChroma = 0.09; // The lower limit for chroma reduction
 
-  if (colorLightness <= 28) {
-    lightness = colorSaturation >= 70 ? 30 : 40;
-    lightness = colorSaturation >= 90 ? 32 : 40;
-  } else if (colorLightness <= 60) {
-    if (colorSaturation < 75) {
-      return processedBase;
+  return processedBase;
+
+  // === Very light colors (L > 85) ===
+  if (L > 0.85) {
+    if (C > upperChroma) {
+      newC *= 0.5; // Reduce strongly for very saturated colors
+    } else if (C > middleChroma) {
+      newC *= 0.7; // Moderate reduction
+    } else if (C > lowerChroma) {
+      newC *= 0.9; // Slight reduction
     }
-    const minLight = colorLightness <= 45 ? 33 : 50;
-    const maxLight = colorLightness <= 45 ? 48 : 60;
-    lightness = getLightnessInterpol(colorSaturation, 75, 100, minLight, maxLight);
-  } else {
-    return processedBase;
   }
 
-  return chroma(originalBase).luminance(getLuminanceFromLightness(lightness)).hex();
+  // === Light colors (L 70-85) ===
+  else if (L > 0.7) {
+    if (C > upperChroma) {
+      newC *= 0.6;
+    } else if (C > middleChroma) {
+      newC *= 0.8;
+    } else if (C > lowerChroma) {
+      newC *= 0.95;
+    }
+  }
+
+  // === Mid-tone colors (L 40-70) ===
+  else if (L > 0.4) {
+    if (C > upperChroma) {
+      newC *= 0.7;
+    } else if (C > middleChroma) {
+      newC *= 0.7;
+    } else if (C > lowerChroma) {
+      newC *= 0.98;
+    }
+  }
+
+  // === Dark colors (L 20-40) ===
+  else if (L > 0.2) {
+    if (C > upperChroma) {
+      newC *= 0.8;
+    } else if (C > middleChroma) {
+      newC *= 0.7;
+    } else if (C > lowerChroma) {
+      newC *= 1.0; // Keep low-chroma darks mostly unchanged
+    }
+  }
+
+  // === Very dark colors (L < 20) ===
+  else {
+    if (C > upperChroma) {
+      newC *= 0.85;
+    } else if (C > middleChroma) {
+      newC *= 0.97;
+    } else if (C > lowerChroma) {
+      newC *= 1.0; // No change
+    }
+  }
+
+  return chroma.oklch(L, newC, H).hex();
 };
 
 /**

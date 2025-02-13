@@ -22,27 +22,51 @@ import classes from './page.module.css';
 export default function Home() {
   const luminance = useDebugStore((state) => state.luminance);
   const colorScales = useDebugStore((state) => state.colorScales);
+  const flatColorScales = useDebugStore((state) => state.flatColorScales);
+  const setFlatColorScale = useDebugStore((state) => state.setFlatColorScales);
   const setColorScales = useDebugStore((state) => state.setColorScales);
   const themeSettings = useDebugStore((state) => state.themeSettings);
   const statusColors = useDebugStore((state) => state.statusColors);
   const setColorScale = useDebugStore((state) => state.setColorScale);
   const hues = [0, 22, 37, 55, 76, 124, 177, 208, 235, 278, 308];
-  const blackHues = [0, 33, 116, 210, 282];
+
   const steps = [
     { s: 100, l: 100 },
     { s: 100, l: 80 },
     { s: 100, l: 60 },
     { s: 100, l: 40 },
+    { s: 100, l: 20 },
+    { s: 100, l: 10 },
     { s: 80, l: 100 },
     { s: 80, l: 80 },
     { s: 80, l: 60 },
+    { s: 80, l: 40 },
+    { s: 80, l: 20 },
+    { s: 80, l: 10 },
     { s: 60, l: 100 },
     { s: 60, l: 80 },
+    { s: 60, l: 60 },
+    { s: 60, l: 40 },
+    { s: 60, l: 20 },
+    { s: 60, l: 10 },
+    { s: 40, l: 100 },
+    { s: 40, l: 80 },
+    { s: 40, l: 60 },
+    { s: 40, l: 40 },
+    { s: 40, l: 20 },
+    { s: 40, l: 10 },
+    { s: 20, l: 100 },
+    { s: 20, l: 80 },
+    { s: 20, l: 60 },
+    { s: 20, l: 40 },
+    { s: 20, l: 20 },
+    { s: 20, l: 10 },
   ];
   const pageType = useDebugStore((state) => state.pageType);
 
   useEffect(() => {
     const themes: ThemeInfo[][] = [];
+    const flatThemes = [];
     for (let i = 0; i < hues.length; i++) {
       const hue = hues[i];
       const innerThemes = [];
@@ -56,7 +80,7 @@ export default function Home() {
         ).hex() as CssColor;
 
         const theme = generateColorSchemes(color, luminance, themeSettings);
-
+        flatThemes.push(theme);
         innerThemes.push(theme);
       }
       themes.push(innerThemes);
@@ -69,11 +93,12 @@ export default function Home() {
         themeSettings,
       ),
     );
-    for (let i = 0; i < blackHues.length; i++) {
-      const hue = blackHues[i];
-      const color = chroma(hue, 0.5, 0.26, 'hsv').hex() as CssColor;
+    for (let i = 0; i < hues.length; i++) {
+      const hue = hues[i];
+      const color = chroma(hue, 0.5, 0.25, 'hsv').hex() as CssColor;
       const theme = generateColorSchemes(color, luminance, themeSettings);
       themes[11].push(theme);
+      flatThemes.push(theme);
     }
 
     themes[12] = [];
@@ -108,6 +133,16 @@ export default function Home() {
 
     setColorScales(themes);
     setColorScale(themes[0][0]);
+
+    const flatThemesSorted = flatThemes.sort((a, b) => {
+      const aL = chroma(a.light[11].hex).oklch()[0];
+      const bL = chroma(b.light[11].hex).oklch()[0];
+      return aL - bL;
+    });
+
+    const groups = sortColorsByLightnessAndChroma(flatThemesSorted);
+
+    setFlatColorScale(groups);
   }, [
     luminance,
     themeSettings.base.modifier,
@@ -117,11 +152,51 @@ export default function Home() {
 
   useEffect(() => {
     const items = document.getElementsByClassName('content');
-    console.log(items);
     for (let i = 0; i < items.length; i++) {
       (items[i] as HTMLElement).style.minHeight = '20svh';
     }
   }, []);
+
+  const sortColorsByLightnessAndChroma = (themes: ThemeInfo[]) => {
+    const groups: {
+      [key: string]: {
+        low: ThemeInfo[];
+        medium: ThemeInfo[];
+        high: ThemeInfo[];
+      };
+    } = {
+      veryDarkColors: { low: [], medium: [], high: [] },
+      darkColors: { low: [], medium: [], high: [] },
+      midColors: { low: [], medium: [], high: [] },
+      lightColors: { low: [], medium: [], high: [] },
+      veryLightColors: { low: [], medium: [], high: [] },
+    };
+
+    for (const theme of themes) {
+      const [L, C, H] = chroma(theme.light[11].hex).oklch(); // Convert HEX to OKLCH
+
+      let category:
+        | 'veryDarkColors'
+        | 'darkColors'
+        | 'midColors'
+        | 'lightColors'
+        | 'veryLightColors';
+      if (L < 0.2) category = 'veryDarkColors';
+      else if (L >= 0.2 && L < 0.3) category = 'darkColors';
+      else if (L >= 0.3 && L < 0.5) category = 'midColors';
+      else if (L >= 0.5 && L < 0.7) category = 'lightColors';
+      else category = 'veryLightColors';
+
+      let chromaLevel: 'low' | 'medium' | 'high';
+      if (C < 0.08) chromaLevel = 'low';
+      else if (C < 0.17) chromaLevel = 'medium';
+      else chromaLevel = 'high';
+
+      groups[category][chromaLevel].push(theme);
+    }
+
+    return groups;
+  };
 
   return (
     <div className={classes.page} data-color-scheme='light'>
@@ -150,7 +225,7 @@ export default function Home() {
         {pageType === 'article' && <ArticlePage colorScales={colorScales} />}
         {pageType === 'status' && <StatusPage />}
         {pageType === 'saturation' && (
-          <SaturationPage colorScales={colorScales} />
+          <SaturationPage colorScales={flatColorScales} />
         )}
       </div>
       <Sidebar />

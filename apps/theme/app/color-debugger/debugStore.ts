@@ -54,6 +54,16 @@ type ColorStore = {
   setDarkLuminance: (luminance: LuminanceType) => void;
   colorScales: ThemeInfo[][];
   setColorScales: (colorScales: ThemeInfo[][]) => void;
+  flatColorScales: {
+    [key: string]: {
+      low: ThemeInfo[];
+      medium: ThemeInfo[];
+      high: ThemeInfo[];
+    };
+  };
+  setFlatColorScales: (flatColorScales: {
+    [key: string]: { low: ThemeInfo[]; medium: ThemeInfo[]; high: ThemeInfo[] };
+  }) => void;
   colorScale: ThemeInfo;
   setColorScale: (colorScale: ThemeInfo) => void;
   statusColors: {
@@ -112,5 +122,7 @@ export const useDebugStore = create(
     setColorScale: (colorScale) => set({ colorScale }),
     setLightLuminance: (luminance) => set({ luminance }),
     setDarkLuminance: (luminance) => set({ luminance }),
+    flatColorScales: {},
+    setFlatColorScales: (flatColorScales) => set({ flatColorScales }),
   })),
 );

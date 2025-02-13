@@ -205,6 +205,8 @@ const getDarkModeBaseRef = (
   const colorSaturation = getSaturationFromHex(color);
   let targetLightness: number | null = null;
 
+  return baseDefault;
+
   if (colorLightness <= 30) {
     targetLightness = colorSaturation >= 70 ? 30 : 40;
   } else if (colorLightness <= 45) {
