@@ -1,7 +1,7 @@
 import chroma from 'chroma-js';
 import { Hsluv } from 'hsluv';
 import { colorMetadata } from './colorMetadata.js';
-import type { ColorNumber, CssColor } from './types.js';
+import type { ColorNumber, CssColor, HexColor } from './types.js';
 
 /**
  * Converts a HEX color '#xxxxxx' into a CSS HSL string 'hsl(x,x,x)'
@@ -10,7 +10,7 @@ import type { ColorNumber, CssColor } from './types.js';
  * @param valuesOnly If true, only the values are returned
  * @returns A CSS HSL string
  */
-export const hexToCssHsl = (hex: string, valuesOnly = false) => {
+export const hexToCssHsl = (hex: HexColor, valuesOnly = false) => {
   const [h, s, l] = chroma(hex).hsl();
   const hRounded = Math.round(h);
   const sRounded = Math.round(s * 100);
@@ -25,7 +25,7 @@ export const hexToCssHsl = (hex: string, valuesOnly = false) => {
  * @param H A Hex color string
  * @returns HSL values in an array
  */
-export const hexToHSL = (hex: string) => {
+export const hexToHSL = (hex: HexColor) => {
   const [h, s, l] = chroma(hex).hsl();
   return [Math.round(h), Math.round(s * 100), Math.round(l * 100)];
 };
@@ -36,7 +36,7 @@ export const hexToHSL = (hex: string) => {
  * @param hex A hex color string
  * @returns
  */
-export const hexToHsluv = (hex: string) => {
+export const hexToHsluv = (hex: HexColor) => {
   const conv = new Hsluv();
   conv.hex = hex;
   conv.hexToHsluv();
@@ -61,8 +61,8 @@ export const hslArrToCss = (HSL: number[]) => {
  * @param l The HSL lightness
  * @returns HEX color string
  */
-export const HSLToHex = (h: number, s: number, l: number) => {
-  return chroma.hsl(h, s / 100, l / 100).hex();
+export const HSLToHex = (h: number, s: number, l: number): HexColor => {
+  return chroma.hsl(h, s / 100, l / 100).hex() as HexColor;
 };
 
 /**
@@ -72,7 +72,7 @@ export const HSLToHex = (h: number, s: number, l: number) => {
  * @param type The type of RGB values to return
  * @returns RGB values in an array
  */
-export const hexToRgb = (hex: string, type: '255' | '1' = '255') => {
+export const hexToRgb = (hex: HexColor, type: '255' | '1' = '255') => {
   const rgb = chroma(hex).rgb();
   return {
     r: type === '255' ? rgb[0] : rgb[0] / 255,
@@ -88,7 +88,7 @@ export const hexToRgb = (hex: string, type: '255' | '1' = '255') => {
  * @param color2 The second color to compare
  * @returns
  */
-export const getContrastFromHex = (color1: CssColor, color2: CssColor) => {
+export const getContrastFromHex = (color1: HexColor, color2: HexColor) => {
   const lum1 = chroma(color1).luminance();
   const lum2 = chroma(color2).luminance();
   return (Math.max(lum1, lum2) + 0.05) / (Math.min(lum1, lum2) + 0.05);
@@ -164,7 +164,7 @@ export const getLuminanceFromLightness = (lightness: number) => {
  *
  * @param hex The hex color
  */
-export const getLightnessFromHex = (hex: string) => {
+export const getLightnessFromHex = (hex: HexColor) => {
   const conv = new Hsluv();
   conv.hex = hex;
   conv.hexToHsluv();
@@ -206,24 +206,21 @@ export const canTextBeUsedOnColors = (baseDefaultColor: CssColor, baseActiveColo
  * @param color
  * @returns
  */
-export const convertToHex = (color?: string): CssColor => {
+export const convertToHex = (color?: CssColor): HexColor => {
   if (!color) {
     return '#000000';
   }
-  if (color.startsWith('#')) {
-    return color as CssColor;
+  if (typeof color === 'string' && /^#[0-9A-Fa-f]{6}$/.test(color)) {
+    return color as HexColor;
   }
-  return chroma(color).hex() as CssColor;
+  return chroma(color).hex() as HexColor;
 };
 
-export const rgbToHex = (rgb: { r: number; g: number; b: number }) => {
-  return (
-    '#' +
-    [rgb.r, rgb.g, rgb.b]
-      .map((x) => {
-        const hex = Math.round(x * 255).toString(16);
-        return hex.length === 1 ? '0' + hex : hex;
-      })
-      .join('')
-  );
+export const rgbToHex = (rgb: { r: number; g: number; b: number }): HexColor => {
+  return `#${[rgb.r, rgb.g, rgb.b]
+    .map((x) => {
+      const hex = Math.round(x * 255).toString(16);
+      return hex.length === 1 ? '0' + hex : hex;
+    })
+    .join('')}`;
 };

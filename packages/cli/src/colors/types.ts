@@ -28,14 +28,14 @@ export type ThemeInfo = {
 };
 
 /**
- * Supported CSS color i designsystemet/color
+ * Supported CSS colors in `designsystemet/color`
  */
 export type CssColor = HexColor;
 
 /**
  * Different color formats.
  */
-type HexColor = `#${string}`;
+export type HexColor = `#${string}`;
 type RgbColor = `rgb(${number} ${number} ${number})`;
 type HslColor = `hsl(${Degrees} ${Percent} ${Percent})`;
 type HsvColor = `hsv(${Degrees} ${Percent} ${Percent})`;
