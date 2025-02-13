@@ -24,7 +24,7 @@
 
   @media screen and (max-width: 860px) {
     & h1 {
-      font-size: var(--ds-font-size-9);
+      font-size: var(--ds-font-size-8);
     }
   }
 }
