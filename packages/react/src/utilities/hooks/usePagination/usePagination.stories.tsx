@@ -83,7 +83,3 @@ Preview.args = {
   totalPages: 10,
   showPages: 7,
 };
-
-export const Props: StoryFn<UsePaginationProps> = (args) => {
-  return <></>;
-};
