@@ -1,6 +1,7 @@
 import { Dialog, Heading, Paragraph } from '@digdir/designsystemet-react';
 import type { ColorNumber } from '@digdir/designsystemet/color';
 import {
+  colorMetadata,
   getColorInfoFromPosition,
   getCssVariable,
   hexToHsluv,
@@ -8,11 +9,7 @@ import {
 import { ClipboardButton } from '@repo/components';
 
 import classes from './ColorModal.module.css';
-import {
-  capitalizeFirstLetter,
-  getColorCombinations,
-  getColorDescription,
-} from './colorModalUtils';
+import { capitalizeFirstLetter, getColorCombinations } from './colorModalUtils';
 
 const Field = ({
   label,
@@ -66,10 +63,7 @@ export const ColorModal = ({
       </Dialog.Block>
       <Dialog.Block className={classes.modalContent}>
         <div className={classes.description}>
-          {getColorDescription({
-            weight,
-            namespace,
-          })}
+          {colorMetadata[weight].description}
         </div>
         <div className={classes.container}>
           <table className={classes.infoTable}>
