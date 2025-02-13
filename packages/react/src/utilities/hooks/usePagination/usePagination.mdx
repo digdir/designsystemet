@@ -1,0 +1,48 @@
+import { Meta, Primary, ArgTypes, Controls } from '@storybook/blocks';
+
+import * as Stories from './usePagination.stories';
+import { usePagination } from '../';
+
+<Meta of={Stories} />
+
+# usePagination
+
+En react hook for å håndtere paginering.
+
+<Primary />
+<Controls of={Stories.Preview} />
+
+## Props
+
+<ArgTypes of={Stories.Preview} include={['currentPage', 'totalPages', 'onChange', 'setCurrentPage', 'showPages']} />
+
+<br />
+I respons får du objektet:
+
+```ts
+{
+  hasPrev: boolean, // Indikererer om det finnes en forrige side
+  hasNext: boolean, // Indikererer om det finnes en neste side
+  prevButtonProps: PaginationButtonProps, // Properties du kan spre på forrie-knappen
+  nextButtonProps: PaginationButtonProps, // Properties du kan spre på neste-knappen
+  pages: Array<{
+    page: number | string; // Tall for side, eller "ellipsis" streng dersom knappen skal være ...
+    itemKey: string; // key du kan sende til Pagination.Item for å sikre riktig fokus håndtering
+    buttonProps: PaginationButtonProps; // Properties du kan spre på Pagination.Button
+  }>
+}
+```
+
+## Bruk
+
+```tsx
+const onChange = (event, page: number) => console.log(`Going to page ${page}`);
+const [currentPage, setCurrentPage] = useState(4);
+const { pages, prevButtonProps, nextButtonProps, hasNext, hasPrevious } = usePagination({
+  currentPage,
+  setCurrentPage,
+  onChange,
+  totalPages: 10,
+  showPages: 7,
+});
+```

@@ -35,7 +35,5 @@ export type { PaginationProps } from './Pagination';
 export type { PaginationButtonProps } from './PaginationButton';
 export type { PaginationListProps } from './PaginationList';
 export type { PaginationItemProps } from './PaginationItem';
-export type { UsePaginationProps } from './usePagination';
 
 export { Pagination, PaginationList, PaginationItem, PaginationButton };
-export { usePagination } from './usePagination';
