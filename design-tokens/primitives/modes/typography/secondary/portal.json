@@ -1,5 +1,5 @@
 {
-  "theme4": {
+  "portal": {
     "main": {
       "$type": "fontFamilies",
       "$value": "IBM Plex Mono"

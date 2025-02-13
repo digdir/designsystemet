@@ -1,5 +1,5 @@
 {
-  "theme": {
+  "digdir": {
     "main": {
       "$type": "fontFamilies",
       "$value": "IBM Plex Mono"
