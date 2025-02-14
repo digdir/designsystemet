@@ -1,20 +1,22 @@
 {
-  "portal": {
-    "main": {
-      "$type": "fontFamilies",
-      "$value": "IBM Plex Mono"
-    },
-    "bold": {
-      "$type": "fontWeights",
-      "$value": "Regular"
-    },
-    "extra-bold": {
-      "$type": "fontWeights",
-      "$value": "Bold"
-    },
-    "regular": {
-      "$type": "fontWeights",
-      "$value": "Regular"
+  "primitives": {
+    "portal": {
+      "main": {
+        "$type": "fontFamilies",
+        "$value": "IBM Plex Mono"
+      },
+      "bold": {
+        "$type": "fontWeights",
+        "$value": "Regular"
+      },
+      "extra-bold": {
+        "$type": "fontWeights",
+        "$value": "Bold"
+      },
+      "regular": {
+        "$type": "fontWeights",
+        "$value": "Regular"
+      }
     }
   }
 }
