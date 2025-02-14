@@ -272,10 +272,12 @@ const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }, { 
                     '_size',
                     'border-width',
                     'border-radius',
-                    'theme',
-                    'theme2',
-                    'theme3',
-                    'theme4',
+                    // TODO make this work for multiple themes
+                    theme,
+                    'digdir',
+                    'altinn',
+                    'portal',
+                    'uutilsynet',
                   ],
                   token,
                 )
