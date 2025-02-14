@@ -39,7 +39,7 @@ type ColorStore = {
   baseBorderRadius: BaseBorderRadius;
   setBaseBorderRadius: (radius: BaseBorderRadius) => void;
   colorScheme: ColorScheme;
-  setAppearance: (appearance: ColorScheme) => void;
+  setColorScheme: (colorScheme: ColorScheme) => void;
   themeTab: 'overview' | 'colorsystem';
   setThemeTab: (tab: 'overview' | 'colorsystem') => void;
 };
@@ -91,7 +91,7 @@ export const useThemeStore = create(
         const updatedColors = state.colors[type].filter((_, i) => i !== index);
         return { colors: { ...state.colors, [type]: updatedColors } };
       }),
-    setAppearance: (appearance) => set({ colorScheme: appearance }),
+    setColorScheme: (colorScheme) => set({ colorScheme }),
     setBaseBorderRadius: (radius) => set({ baseBorderRadius: radius }),
     setSelectedColor: (color, name) =>
       set({ selectedColor: { color: color, name: name } }),
