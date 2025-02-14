@@ -1,8 +1,8 @@
 {
-  "theme2": {
+  "digdir": {
     "main": {
       "$type": "fontFamilies",
-      "$value": "Inter"
+      "$value": "IBM Plex Mono"
     },
     "bold": {
       "$type": "fontWeights",
@@ -10,7 +10,7 @@
     },
     "extra-bold": {
       "$type": "fontWeights",
-      "$value": "Semi bold"
+      "$value": "SemiBold"
     },
     "regular": {
       "$type": "fontWeights",

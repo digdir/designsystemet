@@ -1,5 +1,5 @@
 {
-  "theme3": {
+  "portal": {
     "main": {
       "$type": "fontFamilies",
       "$value": "Inter"
