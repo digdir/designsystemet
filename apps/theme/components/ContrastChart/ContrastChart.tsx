@@ -16,10 +16,10 @@ export const ContrastChart = ({ type = 'light' }: ContrastChartProps) => {
   const theme = generateColorSchemes('#0062BA');
   const includedColorIndexes = [1, 2, 3, 4, 5, 6, 7, 8, 12, 13];
   const reducedLight = theme.light.filter((color) =>
-    includedColorIndexes.includes(color.position),
+    includedColorIndexes.includes(color.number),
   );
   const reducedDark = theme.dark.filter((color) =>
-    includedColorIndexes.includes(color.position),
+    includedColorIndexes.includes(color.number),
   );
 
   const Tag = ({
@@ -71,7 +71,7 @@ export const ContrastChart = ({ type = 'light' }: ContrastChartProps) => {
     return (
       <th className={classes.th}>
         <div className={classes.header}>
-          {getColorInfoFromPosition(color.position).displayName}
+          {getColorInfoFromPosition(color.number).displayName}
           <div className={classes.headerHex}>{color.hex}</div>
         </div>
       </th>
