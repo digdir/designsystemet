@@ -3,7 +3,6 @@ import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useEffect, useRef } from 'react';
 import '@u-elements/u-details';
-import type { Color } from '../../colors';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
@@ -11,10 +10,11 @@ export type DetailsProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDetailsElement>,
   {
     /**
-     * Specify which color palette to use.
-     * If left unspecified, the color is inherited from the nearest ancestor with data-color.
+     * Change the background color of the details.
+     *
+     * @default 'default'
      */
-    'data-color'?: 'subtle' | Color;
+    'data-variant'?: 'default' | 'tinted';
     /**
      * Controls open-state.
      *
@@ -54,7 +54,14 @@ export type DetailsProps = MergeRight<
  */
 export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
   function Details(
-    { className, open, defaultOpen = false, onToggle, ...rest },
+    {
+      className,
+      open,
+      defaultOpen = false,
+      'data-variant': variant = 'default',
+      onToggle,
+      ...rest
+    },
     ref,
   ) {
     const detailsRef = useRef<HTMLDetailsElement>(null);
@@ -82,6 +89,7 @@ export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
       <u-details
         class={cl('ds-details', className)} // Using class since React does not translate className on custom elements
         open={(open ?? initialOpen.current) || undefined} // Fallback to undefined to prevent rendering open="false"
+        data-variant={variant}
         ref={mergedRefs}
         {...rest}
       />
