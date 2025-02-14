@@ -1,6 +1,7 @@
 import { ComponentIcon } from '@navikt/aksel-icons';
 
 import { MenuPageLayout } from '@layouts';
+import { Image } from '@components';
 
 import { Details, Card, DetailsContent, DetailsSummary } from '@digdir/designsystemet-react';
 
@@ -42,16 +43,25 @@ Designsystemet bør brukes som et fundament, der du har din egen visuelle profil
 
 Noen velger å bygge sitt eget designsystem på toppen av Designsystemet, mens andre bruker det direkte i løsninger. 
 
+<Image
+  src='/img/lagvis-bruk.png'
+  alt='Skjermbildet viser Designsystemet som et lag i bunnen. Du har din egen profil på toppen. Du kan velge å bruke Designsystemet direkte i løsninger, eller bygge ditt eget designsystem på toppen.'
+  boxShadow={false}
+/>
+
 
 ## Hva består Designsystemet av?
 
 Designsystemet består av grunnleggende designelementer, UI-komponenter, mønstre og god praksis. Du kan ta i bruk det du trenger, i den grad du ønsker.
 
 - **Design Tokens** \
-  "[Design Tokens](/grunnleggende/designelementer/design-tokens)" er variabler som styrer farger, typografi, størrelser, avstander og former. Variablene er lagt opp til å være tema-baserte, det vil si at de tar utgangspunkt i din merkevare med de fargene og preferansene du selv velger. Design Tokens sørger også for at det er de samme verdiene vi jobber med i design og kode.
+  [Design Tokens](/grunnleggende/designelementer/design-tokens) er variabler som styrer farger, typografi, størrelser, avstander og former. Variablene er lagt opp til å være tema-baserte, det vil si at de tar utgangspunkt i din merkevare med de fargene og preferansene du selv velger i [Temabyggeren](https://theme.designsystemet.no/). Design Tokens sørger også for at det er de samme verdiene vi jobber med i design og kode.
 
 - **UI-komponenter** \
   Designsystemet inneholder de mest grunnleggende UI-komponentene som gir verdi å dele på tvers. Vi dokumenterer hvordan komponentene bør brukes og oppdatererer retningslinjene etter hvert som vi får mer innsikt. UI-komponentene finnes foreløpig i [Figma](https://www.figma.com/@designsystemet) og [React](https://storybook.designsystemet.no).
+
+- **Temabygger** \
+[Temabyggeren](https://theme.designsystemet.no/) gjør det enkelt å ta i bruk Designsystemet i din egen organisasjon med dine egne profilfarger og preferanser. Etter at du har tilpasset temaet, kopierer du en kodesnutt og limer den inn i terminalen eller Figma. På 2 minutter har du alle komponentene i Figma og kode med ditt eget design. 
 
 - **Mønstre og god praksis** \
   Designsystemet er en samarbeidsarena for å utvikle gjenkjennbare [mønstre](/monstre) og felles [anbefalinger](/god-praksis). Med mønstre mener vi for eksempel hvor sentrale elementer skal plasseres i grensesnittet, og hvordan navigasjon, feilmeldinger og andre gjentagende brukeroppgaver skal oppføre seg. Vi kan samarbeide om mønstre selv om vi ikke bruker de samme tekniske komponentene eller designelementene.
