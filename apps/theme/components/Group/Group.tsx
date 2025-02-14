@@ -26,7 +26,7 @@ export const Group = ({
   colorScale,
   namespace,
 }: GroupProps) => {
-  const colorScheme = useThemeStore((state) => state.appearance);
+  const colorScheme = useThemeStore((state) => state.colorScheme);
 
   const colorModalRefs = useRef<React.RefObject<HTMLDialogElement | null>[]>(
     [],

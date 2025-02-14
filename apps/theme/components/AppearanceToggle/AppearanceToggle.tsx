@@ -20,14 +20,14 @@ const items: {
 export const AppearanceToggle = ({
   showLabel = false,
 }: AppearanceToggleProps) => {
-  const appearance = useThemeStore((state) => state.appearance);
+  const colorScheme = useThemeStore((state) => state.colorScheme);
   const setAppearance = useThemeStore((state) => state.setAppearance);
 
-  const [active, setActive] = useState(appearance);
+  const [active, setActive] = useState(colorScheme);
 
   useEffect(() => {
-    setActive(appearance);
-  }, [appearance]);
+    setActive(colorScheme);
+  }, [colorScheme]);
 
   return (
     <div className={classes.toggle} role='radiogroup'>
