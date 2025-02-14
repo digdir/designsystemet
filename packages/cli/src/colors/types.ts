@@ -4,11 +4,20 @@ export type ColorNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 
 export type GlobalColors = 'red' | 'blue' | 'green' | 'orange' | 'purple';
 export type ColorError = 'none' | 'decorative' | 'interaction';
 
-export type ColorInfo = {
+export type ColorMetadata = {
   name: string;
   displayName: string;
+  description: string;
   group: string;
-  position: ColorNumber;
+  luminance: {
+    light: number;
+    dark: number;
+    contrast: number;
+  };
+};
+
+export type ColorInfo = Partial<ColorMetadata> & {
+  number: ColorNumber;
   hex: CssColor;
 };
 
@@ -19,26 +28,14 @@ export type ThemeInfo = {
 };
 
 /**
- * A valid CSS color.
+ * Supported CSS colors in `designsystemet/color`
  */
-export type CssColor =
-  | RgbHexColor
-  | RgbColor
-  | HslColor
-  | HsvColor
-  | HsluvColor
-  | LabColor
-  | LchColor
-  | OkLabColor
-  | OkLchColor
-  | Cam02Color
-  | rgbaColor
-  | Cam02pColor;
+export type CssColor = HexColor;
 
 /**
  * Different color formats.
  */
-type RgbHexColor = `#${string}`;
+export type HexColor = `#${string}`;
 type RgbColor = `rgb(${number} ${number} ${number})`;
 type HslColor = `hsl(${Degrees} ${Percent} ${Percent})`;
 type HsvColor = `hsv(${Degrees} ${Percent} ${Percent})`;
@@ -49,7 +46,7 @@ type OkLabColor = `oklab(${Percent} ${number} ${number})`;
 type OkLchColor = `oklch(${Percent} ${number} ${Degrees})`;
 type Cam02Color = `jab(${Percent} ${number} ${number})`;
 type Cam02pColor = `jch(${Percent} ${number} ${Degrees})`;
-type rgbaColor = `rgba(${number}, ${number}, ${number}, ${number})`;
+type RgbaColor = `rgba(${number}, ${number}, ${number}, ${number})`;
 
 type Percent = `${number}%`;
 type Degrees = `${number}deg`;

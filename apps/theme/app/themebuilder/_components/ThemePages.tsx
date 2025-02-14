@@ -17,7 +17,7 @@ export const ThemePages = () => {
   const colors = useThemeStore((state) => state.colors);
   const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
   const themeTab = useThemeStore((state) => state.themeTab);
-  const appearance = useThemeStore((state) => state.appearance);
+  const colorScheme = useThemeStore((state) => state.colorScheme);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -52,7 +52,7 @@ export const ThemePages = () => {
 
     let lightColors = colors.light;
 
-    if (appearance === 'dark') {
+    if (colorScheme === 'dark') {
       lightColors = colors.dark;
     }
 
@@ -76,7 +76,7 @@ export const ThemePages = () => {
 
     let lightColors = colors.light;
 
-    if (appearance === 'dark') {
+    if (colorScheme === 'dark') {
       lightColors = colors.dark;
     }
 
@@ -109,7 +109,7 @@ export const ThemePages = () => {
     <>
       <div
         className={classes.basicPanel}
-        data-color-scheme={appearance}
+        data-color-scheme={colorScheme}
         hidden={!(themeTab === 'overview')}
         style={style()}
       >
@@ -117,7 +117,7 @@ export const ThemePages = () => {
       </div>
       <div
         className={cl(classes.basicPanel, classes.colorsContainer)}
-        data-color-scheme={appearance}
+        data-color-scheme={colorScheme}
         hidden={!(themeTab === 'colorsystem')}
       >
         <Colors />
@@ -126,14 +126,14 @@ export const ThemePages = () => {
       <>
         <div
           className={classes.panel}
-          data-color-scheme={appearance}
+          data-color-scheme={colorScheme}
           hidden={!(themeTab === 'colorsystem')}
         >
           <ColorPreview />
         </div>
         <div
           className={classes.panel}
-          data-color-scheme={appearance}
+          data-color-scheme={colorScheme}
           hidden={!(themeTab === 'colorsystem')}
         >
           <ColorTokens />
@@ -141,7 +141,7 @@ export const ThemePages = () => {
 
         <div
           className={classes.panel}
-          data-color-scheme={appearance}
+          data-color-scheme={colorScheme}
           hidden={!(themeTab === 'colorsystem')}
         >
           <ColorContrasts />
