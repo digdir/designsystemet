@@ -1,4 +1,4 @@
-import type { ColorMetadata, CssColor, GlobalColors } from './types.js';
+import type { ColorMetadata, ColorNumber, CssColor, GlobalColors } from './types.js';
 
 export const baseColors: Record<GlobalColors, CssColor> = {
   blue: '#0A71C0',
@@ -8,7 +8,7 @@ export const baseColors: Record<GlobalColors, CssColor> = {
   red: '#C01B1B',
 };
 
-export const colorMetadata: Record<number, ColorMetadata> = {
+export const colorMetadata: Record<ColorNumber, ColorMetadata> = {
   1: {
     name: 'backgroundDefault',
     group: 'background',
