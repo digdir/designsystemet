@@ -2,8 +2,10 @@ import { ComponentIcon } from '@navikt/aksel-icons';
 
 import { MenuPageLayout } from '@layouts';
 
+import { Details, Card, DetailsContent, DetailsSummary } from '@digdir/designsystemet-react';
+
 export const metadata = {
-  title: 'Om designsystemet',
+  title: 'Om Designsystemet',
   description:
     'Designsystemet er en felles verktøykasse med grunnleggende UI-komponenter, retningslinjer og mønstre som det er verdifullt å dele på tvers av offentlig sektor.',
 };
@@ -12,7 +14,7 @@ export default ({ children }) => (
   <MenuPageLayout
     content={children}
     data={{
-      title: 'Om designsystemet',
+      title: 'Om Designsystemet',
       date: '5. mars 2023',
       icon: <ComponentIcon />,
       color: 'blue',
@@ -20,32 +22,33 @@ export default ({ children }) => (
   />
 );
 
-Designsystemet er en felles verktøykasse med grunnleggende UI-komponenter, retningslinjer og mønstre som det er verdifullt å dele på tvers av offentlig sektor. Designsystemet skal bidra til effektiv produktutvikling og helhetlige brukeropplevelser.
+## Hva er Designsystemet?
+Designsystemet er en felles verktøykasse med grunnleggende UI-komponenter, retningslinjer og mønstre. Designsystemet skal bidra til helhetlige brukeropplevelser og effektiv produktutvikling.
 
-## Hva er et designsystem?
+Designsystemet er et kollektivt gode gjennom åpen kildekode, og kan benyttes av alle i den grad de ønsker.
 
-Et designsystem består av UI-komponenter og mønstre som sikrer gjennomtenkte og konsistente brukeropplevelser i digitale tjenester.
+### Hvorfor et _felles_ designsystem?
+Det er mange grunner til å ha et felles designsystem, men her er to av de viktigste.
 
-Ved å bruke grunnleggende byggeklosser fra designsystemet kan produktteamene selv bygge mer sammensatte komponenter som dekker spesifikke behov.
+1. **Helhetlige tjenester på tvers** \
+Gjennom å samarbeide om et felles designsystem kan vi i større grad sikre helhetlige, tilgjengelige og gjenkjennelige brukeropplevelser på tvers av etater.  Regjeringen vil jobbe for at _"offentlige digitale tjenester skal ha et brukervennlig og gjenkjennbart design på tvers av ulike etater slik at innbyggere med lav digital kompetanse kan benytte tjenesten"_. <sup>1</sup>
 
-Et designsystem fungerer som en bro mellom design og utvikling, og sørger for at det er de samme verdiene vi jobber med.
+2. **Mindre dobbeltarbeid** \
+I stedet for å lage de samme grunnkomponentene om og om igjen, kan vi lage dem skikkelig én gang og sikre god kvalitet ved at at tilgjengelighetskrav og testing er godt ivaretatt. Best av alt - da har vi kun ett sted å vedlikeholde dem når det kommer nye teknologier, standarder, krav og behov. Det betyr optimalisert ressursbruk i offentlig sektor og redusert utviklingskostnad. Det betyr også mer tid til å løse viktigere problem for brukerne våre. 🎉 
 
-## Hvorfor et _felles_ designsystem?
+## Hvordan bruke Designsystemet? 
 
-Regjeringen vil jobbe for at _"offentlige digitale tjenester skal ha et brukervennlig og gjenkjennbart design på tvers av ulike etater slik at innbyggere med lav digital kompetanse kan benytte tjenesten"_. <sup>1</sup>
+Designsystemet bør brukes som et fundament, der du har din egen visuelle profil på toppen. Ved å bruke grunnleggende byggeklosser fra Designsystemet kan du selv bygge mer sammensatte komponenter som dekker dine spesifikke behov. 
 
-Gjennom å samarbeide om et felles designsystem kan vi i større grad sikre helhetlige og gjenkjennelige brukeropplevelser på tvers av etater. I stedet for å lage de samme grunnkomponentene om og om igjen, kan vi lage dem skikkelig én gang og sikre god kvalitet ved at at tilgjengelighetskrav og testing er godt ivaretatt. Best av alt - da har vi kun ett sted å vedlikeholde dem når det kommer nye teknologier, standarder, krav og behov. Det betyr mer tid til å løse viktigere problem for brukerne våre. 🎉
+Noen velger å bygge sitt eget designsystem på toppen av Designsystemet, mens andre bruker det direkte i løsninger. 
 
-## Hvem bruker designsystemet?
 
-Designsystemet er i bruk i [Altinn Studio](https://altinn.studio/), der 70 ulike etater utvikler sine tjenester. Flere offentlige virksomheter har også tatt designsystemet i bruk utover tjenester de lager i Altinn.
-
-## Hva består designsystemet av?
+## Hva består Designsystemet av?
 
 Designsystemet består av grunnleggende designelementer, UI-komponenter, mønstre og god praksis. Du kan ta i bruk det du trenger, i den grad du ønsker.
 
-- **Grunnleggende designelementer** \
-  De grunnleggende designelementene i designsystemet, som vi kaller "[Design Tokens](/grunnleggende/designelementer/design-tokens)", styrer hvordan komponentene skal se ut, blant annet med tanke på farger, typografi, størrelser, avstander og former. Noen av variablene er lagt opp til å være tema-baserte, det vil si at de tar utgangspunkt i din merkevare med de fargene og preferansene du selv velger.
+- **Design Tokens** \
+  "[Design Tokens](/grunnleggende/designelementer/design-tokens)" er variabler som styrer farger, typografi, størrelser, avstander og former. Variablene er lagt opp til å være tema-baserte, det vil si at de tar utgangspunkt i din merkevare med de fargene og preferansene du selv velger. Design Tokens sørger også for at det er de samme verdiene vi jobber med i design og kode.
 
 - **UI-komponenter** \
   Designsystemet inneholder de mest grunnleggende UI-komponentene som gir verdi å dele på tvers. Vi dokumenterer hvordan komponentene bør brukes og oppdatererer retningslinjene etter hvert som vi får mer innsikt. UI-komponentene finnes foreløpig i [Figma](https://www.figma.com/@designsystemet) og [React](https://storybook.designsystemet.no).
@@ -54,11 +57,51 @@ Designsystemet består av grunnleggende designelementer, UI-komponenter, mønstr
   Designsystemet er en samarbeidsarena for å utvikle gjenkjennbare [mønstre](/monstre) og felles [anbefalinger](/god-praksis). Med mønstre mener vi for eksempel hvor sentrale elementer skal plasseres i grensesnittet, og hvordan navigasjon, feilmeldinger og andre gjentagende brukeroppgaver skal oppføre seg. Vi kan samarbeide om mønstre selv om vi ikke bruker de samme tekniske komponentene eller designelementene.
 
 - **Blogg** \
-  I bloggen kan vi fortelle om nye oppdateringer og dele historier. Vi håper flere vil bruke bloggen til å skrive om hvordan de har tatt i bruk designsystemet.
+  I bloggen kan vi fortelle om nye oppdateringer og dele historier. Vi håper flere vil bruke bloggen til å skrive om hvordan de har tatt i bruk Designsystemet.
 
-## Hvem kan bruke og bidra til designsystemet?
+## Hvem kan bruke og bidra til Designsystemet?
 
-Alle som lager digitale løsninger for innbyggere kan bruke designsystemet. Det er åpen kildekode og vi setter pris på at du bidrar til å gjøre designsystemet bedre. [Si gjerne ifra](https://github.com/digdir/designsystemet/issues/new/choose) hvis du finner en feil eller vil foreslå en forbedring. Spørsmål kan du stille i Slack-kanalen [#Designsystemet](https://designsystemet.no/slack), der hjelper vi hverandre.
+Alle som lager digitale løsninger for innbyggere kan bruke Designsystemet. Det er åpen kildekode og vi setter pris på at du bidrar til å gjøre Designsystemet bedre. [Si gjerne ifra](https://github.com/digdir/designsystemet/issues/new/choose) hvis du finner en feil eller vil foreslå en forbedring. Spørsmål kan du stille i Slack-kanalen [#Designsystemet](https://designsystemet.no/slack), der hjelper vi hverandre.
+
+## Hvem bruker Designsystemet i dag?
+
+Designsystemet er blant annet i bruk i [Altinn Studio](https://altinn.studio/), der 70 ulike etater utvikler sine tjenester. Flere offentlige virksomheter har også tatt Designsystemet i bruk i egne tjenester. 
+
+<Card data-color='neutral'>
+  <Details>
+    <DetailsSummary>Eksempler på bruk</DetailsSummary>
+    <DetailsContent>
+    - [Mattilsynet](https://www.mattilsynet.no/) bygger sitt designsystem oppå Designsystemet.
+- [Utdanningsdirektoratet](https://www.udir.no/) bygger sitt designsystem oppå Designsystemet.
+- [Brønnøysundregistrene](https://www.brreg.no/) har tatt i bruk Designsystemet på bl.a. [Virksomhetsopplysninger](https://virksomhet.brreg.no/nb/oppslag/enheter) og [Støtteregister](https://stotte.brreg.no/nb/oppslag/stoettetildeling).
+- [Data.norge.no](https://data.norge.no) bruker tokens, komponenter og mønstre fra Designsystemet.
+- [Tolletaten](https://www.toll.no/) har tatt i bruk Designsystemet på sine nettsider.
+- [KS Digital](https://ksdigital.no/) har tatt i bruk Designsystemet på blant annet [ledsagerbevis.no](https://ledsagerbevis.no/).
+- [Arbeidstilsynet](https://www.arbeidstilsynet.no/) har tatt i bruk Designsystemet på sine nettsider. 
+- [Hjelpeside for fellesløsninger](https://eid.difi.no/nb) bruker tokens og komponenter fra Designsystemet.
+- [Digdir.no](https://www.digdir.no/), [UU-tilsynet](https://www.uutilsynet.no/), [UU-status](https://uustatus.no/), [samarbeidsportalen](https://samarbeid.digdir.no/) bruker tokens fra Designsystemet. 
+
+<br/>
+
+Vet du om en annen løsning som bruker Designsystemet? \
+Vi vil gjerne høre fra deg, [send oss en epost](mailto:designsystem@digdir.no)! 
+    </DetailsContent>
+  </Details>
+</Card>
+
+
+
+
+
+## Hvordan samarbeider vi på tvers?
+
+En viktig verdi for oss er å være åpne og transparente, og vi tror dette er avgjørende for å få til et samarbeid på tvers. Alt vi gjør deler vi åpent - [kildekode](https://github.com/digdir/designsystemet), [backlog](https://github.com/orgs/digdir/projects/3/views/1), [roadmap](https://github.com/digdir/designsystemet/issues/1435), [Figma](https://www.figma.com/@designsystemet), [Storybook](https://storybook.designsystemet.no).
+
+En gang i måneden har vi "Demo og samarbeidsforum" som er åpen for alle interessenter. Her forteller vi om hva vi har jobbet med siden sist. [Ta kontakt](mailto:designsystem@digdir.no) om du vil ha tilsendt en møteinvitasjon.
+
+Teamet i dag består hovedsakelig av designsystem-teamet i Digdir, med god hjelp fra designere og utviklere i Brønnøysundregistrene, Mattilsynet og Udir. Vi håper Designsystemet blir et tverretatlig team i enda større grad og vi jobber for mer ordnede rammer i det offentlige for å kunne jobbe på denne måten.
+
+Designsystemet har et tett samarbeid med [Altinn Studio](https://altinn.studio/) - et verktøy for å utvikle digitale tjenester til innbyggere og næringsliv. Bruker du Altinn studio til å utvikle tjenester, bruker du automatisk komponenter fra Designsystemet.
 
 ### Hvordan kan du bidra?
 
@@ -69,21 +112,12 @@ Vi har ingen bestemt måte du må gå fram på for å bidra, men ta gjerne konta
 - [Bidra med innsikt](https://github.com/digdir/innsiktsbibliotek)
 - Skriv en artikkel
 
-## Hvordan samarbeider vi på tvers?
+### Vil du være tettere på samarbeidet?
 
-En viktig verdi for oss er å være åpne og transparente, og vi tror dette er avgjørende for å få til et samarbeid på tvers. Alt vi gjør deler vi åpent - [kildekode](https://github.com/digdir/designsystemet), [backlog](https://github.com/orgs/digdir/projects/3/views/1), [roadmap](https://github.com/digdir/designsystemet/issues/1435), [Figma](https://www.figma.com/@designsystemet), [Storybook](https://storybook.designsystemet.no).
-
-En gang i måneden har vi "Demo og samarbeidsforum" som er åpen for alle interessenter. Her forteller vi om hva vi har jobbet med siden sist og tar imot innspill og behov. [Ta kontakt](mailto:designsystem@digdir.no) om du vil ha tilsendt en møteinvitasjon.
-
-Teamet i dag består hovedsakelig av designsystem-teamet i Digdir, med god hjelp fra designere og utviklere i Brønnøysundregistrene, Mattilsynet og Udir. Vi håper designsystemet blir et tverretatlig team i enda større grad og vi jobber for mer ordnede rammer i det offentlige for å kunne jobbe på denne måten.
-
-Designsystemet har et tett samarbeid med [Altinn Studio](https://altinn.studio/) - et verktøy for å utvikle digitale tjenester til innbyggere og næringsliv. Bruker du Altinn studio til å utvikle tjenester, bruker du automatisk designsystemet.
-
-## Vil du være med på samarbeidet?
-
-Heier du også på mer gjenbruk og mindre dobbeltarbeid? Send oss en e-post på:
+Heier du også på mer gjenbruk og mindre dobbeltarbeid? Ønsker din virksomhet å være tettere på samarbeidet? Send oss en e-post på:
 [designsystem@digdir.no](mailto:designsystem@digdir.no)
 
+<br />
 <br />
 <br />
 
