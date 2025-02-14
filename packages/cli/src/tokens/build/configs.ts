@@ -262,25 +262,12 @@ const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }, { 
                 token,
               );
 
+              // Remove primitive typgography tokens
+              if (/primitives\/modes\/typography\/(primary|secondary)/.test(token.filePath)) return false;
+
               return (
                 included &&
-                !pathStartsWithOneOf(
-                  [
-                    'spacing',
-                    'sizing',
-                    'size',
-                    '_size',
-                    'border-width',
-                    'border-radius',
-                    // TODO make this work for multiple themes
-                    theme,
-                    'digdir',
-                    'altinn',
-                    'portal',
-                    'uutilsynet',
-                  ],
-                  token,
-                )
+                !pathStartsWithOneOf(['spacing', 'sizing', 'size', '_size', 'border-width', 'border-radius'], token)
               );
             },
           },
