@@ -18,7 +18,7 @@
   --_dsc-dialog-icon-top-right-margin: calc(var(--dsc-dialog-spacing) * -1 + var(--dsc-dialog-icon-spacing));
 
   /* Center with top+left+translate to support placement inside display: flex */
-  animation: _fadein .2s forwards;
+  animation: fade-in .2s forwards;
   background: var(--dsc-dialog-background);
   border-color: var(--dsc-dialog-border-color);
   border-radius: var(--ds-border-radius-lg);
