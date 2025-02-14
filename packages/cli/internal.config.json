@@ -3,7 +3,7 @@
   "outDir": "./internal/design-tokens",
   "clean": true,
   "themes": {
-    "theme": {
+    "digdir": {
       "colors": {
         "main": {
           "accent": "#0062BA"
@@ -16,7 +16,7 @@
         "neutral": "#1E2B3C"
       }
     },
-    "theme2": {
+    "altinn": {
       "colors": {
         "main": {
           "accent": "#0062BA"
@@ -29,7 +29,7 @@
         "neutral": "#1E2B3C"
       }
     },
-    "theme3": {
+    "uutilsynet": {
       "colors": {
         "main": {
           "accent": "#0062BA"
@@ -42,7 +42,7 @@
         "neutral": "#1E2B3C"
       }
     },
-    "theme4": {
+    "portal": {
       "colors": {
         "main": {
           "accent": "#4D107D"

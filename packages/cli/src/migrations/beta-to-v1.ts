@@ -29,7 +29,7 @@ export default (glob?: string) =>
         '--border-radius': '--dsc-table-border-radius',
         '--fds-tabs': '--dsc-tabs',
         '--fds-tag': '--dsc-tag',
-        '--fds-focus-border-width': '--dsc-focus-border-width',
+        '--fds-focus-border-width': '--ds-border-width-focus',
       }),
       // New tokens
       cssVarRename({

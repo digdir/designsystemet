@@ -1,16 +1,16 @@
 {
-  "theme": {
+  "altinn": {
     "main": {
       "$type": "fontFamilies",
-      "$value": "Inter"
+      "$value": "IBM Plex Mono"
     },
     "bold": {
       "$type": "fontWeights",
-      "$value": "Medium"
+      "$value": "Regular"
     },
     "extra-bold": {
       "$type": "fontWeights",
-      "$value": "Semi bold"
+      "$value": "Bold"
     },
     "regular": {
       "$type": "fontWeights",

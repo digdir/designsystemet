@@ -1,6 +1,7 @@
 import { Dialog, Heading, Paragraph } from '@digdir/designsystemet-react';
-import type { ColorNumber } from '@digdir/designsystemet/color';
+import type { ColorNumber, HexColor } from '@digdir/designsystemet/color';
 import {
+  colorMetadata,
   getColorInfoFromPosition,
   getCssVariable,
   hexToHsluv,
@@ -8,11 +9,7 @@ import {
 import { ClipboardButton } from '@repo/components';
 
 import classes from './ColorModal.module.css';
-import {
-  capitalizeFirstLetter,
-  getColorCombinations,
-  getColorDescription,
-} from './colorModalUtils';
+import { capitalizeFirstLetter, getColorCombinations } from './colorModalUtils';
 
 const Field = ({
   label,
@@ -40,16 +37,16 @@ const Field = ({
 
 type ColorModalProps = {
   colorModalRef: React.Ref<HTMLDialogElement> | null;
-  hex: string;
+  hex: HexColor;
   namespace: string;
-  weight: ColorNumber;
+  number: ColorNumber;
 };
 
 export const ColorModal = ({
   colorModalRef,
   hex,
   namespace,
-  weight,
+  number,
 }: ColorModalProps) => {
   return (
     <Dialog
@@ -61,15 +58,12 @@ export const ColorModal = ({
     >
       <Dialog.Block>
         <Heading data-size='xs'>
-          {`${capitalizeFirstLetter(namespace)} ${capitalizeFirstLetter(getColorInfoFromPosition(weight).displayName)}`}
+          {`${capitalizeFirstLetter(namespace)} ${capitalizeFirstLetter(getColorInfoFromPosition(number).displayName)}`}
         </Heading>
       </Dialog.Block>
       <Dialog.Block className={classes.modalContent}>
         <div className={classes.description}>
-          {getColorDescription({
-            weight,
-            namespace,
-          })}
+          {colorMetadata[number].description}
         </div>
         <div className={classes.container}>
           <table className={classes.infoTable}>
@@ -94,15 +88,15 @@ export const ColorModal = ({
               </tr>
               <tr>
                 <th scope='row'>CSS variabel:</th>
-                <td>{getCssVariable(namespace, weight)}</td>
+                <td>{getCssVariable(namespace, number)}</td>
                 <td>
-                  <ClipboardButton value={getCssVariable(namespace, weight)} />
+                  <ClipboardButton value={getCssVariable(namespace, number)} />
                 </td>
               </tr>
-              {weight !== 9 && weight !== 10 && weight !== 11 && (
+              {number !== 9 && number !== 10 && number !== 11 && (
                 <tr>
                   <th scope='row'>Brukes mot:</th>
-                  <td colSpan={2}>{getColorCombinations(weight)}</td>
+                  <td colSpan={2}>{getColorCombinations(number)}</td>
                 </tr>
               )}
             </tbody>

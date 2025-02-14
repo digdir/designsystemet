@@ -17,7 +17,7 @@ import classes from './ColorContrasts.module.css';
 
 export const ColorContrasts = () => {
   const colors = useThemeStore((state) => state.colors);
-  const appearance = useThemeStore((state) => state.appearance);
+  const colorScheme = useThemeStore((state) => state.colorScheme);
   const [selectedColor, setSelectedColor] = useState('dominant');
   const [selectedBaseColor, setSelectedBaseColor] = useState('dominant');
 
@@ -27,22 +27,22 @@ export const ColorContrasts = () => {
   const indexOne = [1, 2, 3, 4, 5];
   const indexTwo = [7, 8, 9, 10, 11];
   const [reducedLight, setReducedLight] = useState({
-    themeRange1: initialTheme[appearance].filter((color) =>
-      indexOne.includes(color.position),
+    themeRange1: initialTheme[colorScheme].filter((color) =>
+      indexOne.includes(color.number),
     ),
-    themeRange2: initialTheme[appearance].filter((color) =>
-      indexTwo.includes(color.position),
+    themeRange2: initialTheme[colorScheme].filter((color) =>
+      indexTwo.includes(color.number),
     ),
   });
 
   const indexBaseOne = [1, 2, 4, 15, 16];
   const indexBaseTwo = [12, 13, 14];
   const [reducedBaseLight, setReducedBaseLight] = useState({
-    themeRange1: initialTheme[appearance].filter((color) =>
-      indexBaseOne.includes(color.position),
+    themeRange1: initialTheme[colorScheme].filter((color) =>
+      indexBaseOne.includes(color.number),
     ),
-    themeRange2: initialTheme[appearance].filter((color) =>
-      indexBaseTwo.includes(color.position),
+    themeRange2: initialTheme[colorScheme].filter((color) =>
+      indexBaseTwo.includes(color.number),
     ),
   });
 
@@ -53,14 +53,14 @@ export const ColorContrasts = () => {
         .find((color) => color.name === selectedColor)?.colors || initialTheme;
 
     setReducedLight({
-      themeRange1: newTheme[appearance].filter((color) =>
-        indexOne.includes(color.position),
+      themeRange1: newTheme[colorScheme].filter((color) =>
+        indexOne.includes(color.number),
       ),
-      themeRange2: newTheme[appearance].filter((color) =>
-        indexTwo.includes(color.position),
+      themeRange2: newTheme[colorScheme].filter((color) =>
+        indexTwo.includes(color.number),
       ),
     });
-  }, [selectedColor, colors, appearance]);
+  }, [selectedColor, colors, colorScheme]);
 
   useEffect(() => {
     const newTheme =
@@ -70,20 +70,20 @@ export const ColorContrasts = () => {
       initialTheme;
 
     setReducedBaseLight({
-      themeRange1: newTheme[appearance].filter((color) =>
-        indexBaseOne.includes(color.position),
+      themeRange1: newTheme[colorScheme].filter((color) =>
+        indexBaseOne.includes(color.number),
       ),
-      themeRange2: newTheme[appearance].filter((color) =>
-        indexBaseTwo.includes(color.position),
+      themeRange2: newTheme[colorScheme].filter((color) =>
+        indexBaseTwo.includes(color.number),
       ),
     });
-  }, [selectedBaseColor, colors, appearance]);
+  }, [selectedBaseColor, colors, colorScheme]);
 
   const ThCell = ({ color }: { color: ColorInfo }) => {
     return (
       <th className={classes.th}>
         <div className={classes.header}>
-          {getColorInfoFromPosition(color.position).displayName}
+          {getColorInfoFromPosition(color.number).displayName}
           <div className={classes.headerHex}>{color.hex}</div>
         </div>
       </th>

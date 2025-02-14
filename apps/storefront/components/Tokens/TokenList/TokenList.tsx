@@ -14,6 +14,7 @@ import { TokenFontSize } from '../TokenFontSize/TokenFontSize';
 import { TokenShadow } from '../TokenShadow/TokenShadow';
 import { TokenSize } from '../TokenSize/TokenSize';
 
+import type { HexColor } from '@digdir/designsystemet/color';
 import { TokenBorderRadius } from '../TokenBorderRadius/TokenBorderRadius';
 import classes from './TokenList.module.css';
 
@@ -142,7 +143,7 @@ type TokenCardProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
-  const val = token.$value as string;
+  const val = token.$value as HexColor;
   const title = token.path
     .slice(token.path.length - 1, token.path.length)
     .toString();
