@@ -23,7 +23,7 @@ const createColorTokens = (colorArray: ColorInfo[]): Tokens1ary => {
   const obj: Tokens1ary = {};
   const $type = 'color';
   for (const index in colorArray) {
-    obj[Number(index) + 1] = { $type, $value: colorArray[index].hex };
+    obj[Number(index) + 1] = { $type, $value: colorArray[index].hex, $description: colorArray[index].description };
   }
   return obj;
 };

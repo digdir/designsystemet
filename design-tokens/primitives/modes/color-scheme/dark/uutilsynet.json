@@ -3,331 +3,411 @@
     "accent": {
       "1": {
         "$type": "color",
-        "$value": "#001c35"
+        "$value": "#001c35",
+        "$description": "Background Default er den mest nøytrale bakgrunnsfargen."
       },
       "2": {
         "$type": "color",
-        "$value": "#002445"
+        "$value": "#002445",
+        "$description": "Background Tinted er en bakgrunnsfarge som har et hint av farge i seg."
       },
       "3": {
         "$type": "color",
-        "$value": "#002d55"
+        "$value": "#002d55",
+        "$description": "Surface Default brukes på flater som ligger oppå bakgrunnsfargene. Dette er den mest nøytrale surface fargen."
       },
       "4": {
         "$type": "color",
-        "$value": "#003565"
+        "$value": "#003565",
+        "$description": "Surface Tinted brukes på flater som ligger oppå bakgrunnsfargene. Denne har et hint av farge i seg."
       },
       "5": {
         "$type": "color",
-        "$value": "#003c71"
+        "$value": "#003c71",
+        "$description": "Surface Hover brukes på interaktive flater som ligger oppå bakgrunnsfargene i en hover state."
       },
       "6": {
         "$type": "color",
-        "$value": "#004481"
+        "$value": "#004481",
+        "$description": "Surface Active brukes på interaktive flater som ligger oppå bakgrunnsfargene i en active state."
       },
       "7": {
         "$type": "color",
-        "$value": "#00519a"
+        "$value": "#00519a",
+        "$description": "Border Subtle er den lyseste border-fargen og brukes for å skille elementer fra hverandre."
       },
       "8": {
         "$type": "color",
-        "$value": "#307fc7"
+        "$value": "#307fc7",
+        "$description": "Border Default er en border-farge som brukes når man ønsker god kontrast mot bakgrunnsfargene."
       },
       "9": {
         "$type": "color",
-        "$value": "#70a7d8"
+        "$value": "#70a7d8",
+        "$description": "Border Strong er den mørkeste border-fargen og brukes når man ønsker en veldig tydelig og sterk border."
       },
       "10": {
         "$type": "color",
-        "$value": "#70a7d8"
+        "$value": "#70a7d8",
+        "$description": "Text Subtle er den lyseste tekstfargen og brukes på tekst som skal være litt mindre synlig eller for å skape variasjon i typografien."
       },
       "11": {
         "$type": "color",
-        "$value": "#d7e7f4"
+        "$value": "#d7e7f4",
+        "$description": "Text Default er den mørkeste tekstfargen og brukes på tekst som skal være mest synlig. Denne fargen bør brukes på mesteparten av teksten på en side."
       },
       "12": {
         "$type": "color",
-        "$value": "#4c91cf"
+        "$value": "#4c91cf",
+        "$description": "Base Default fargen får den samme hex koden som fargen som er valgt i verktøyet. Brukes ofte som farge på viktige elementer og på flater som skal fange brukerens oppmerksomhet."
       },
       "13": {
         "$type": "color",
-        "$value": "#6fa6d8"
+        "$value": "#6fa6d8",
+        "$description": "Base Hover brukes som hover farge på elementer som bruker Base Default fargen."
       },
       "14": {
         "$type": "color",
-        "$value": "#92bce1"
+        "$value": "#92bce1",
+        "$description": "Base Active brukes som active farge på elementer som bruker Base Default fargen."
       },
       "15": {
         "$type": "color",
-        "$value": "#0d1924"
+        "$value": "#0d1924",
+        "$description": "Contrast Subtle brukes som en viktig meningsbærende farge oppå Base Default fargen."
       },
       "16": {
         "$type": "color",
-        "$value": "#000000"
+        "$value": "#000000",
+        "$description": "Contrast Default brukes som en viktig meningsbærende farge oppå alle Base fargane."
       }
     },
     "brand1": {
       "1": {
         "$type": "color",
-        "$value": "#171835"
+        "$value": "#171835",
+        "$description": "Background Default er den mest nøytrale bakgrunnsfargen."
       },
       "2": {
         "$type": "color",
-        "$value": "#1e1f44"
+        "$value": "#1e1f44",
+        "$description": "Background Tinted er en bakgrunnsfarge som har et hint av farge i seg."
       },
       "3": {
         "$type": "color",
-        "$value": "#252755"
+        "$value": "#252755",
+        "$description": "Surface Default brukes på flater som ligger oppå bakgrunnsfargene. Dette er den mest nøytrale surface fargen."
       },
       "4": {
         "$type": "color",
-        "$value": "#2c2f66"
+        "$value": "#2c2f66",
+        "$description": "Surface Tinted brukes på flater som ligger oppå bakgrunnsfargene. Denne har et hint av farge i seg."
       },
       "5": {
         "$type": "color",
-        "$value": "#323572"
+        "$value": "#323572",
+        "$description": "Surface Hover brukes på interaktive flater som ligger oppå bakgrunnsfargene i en hover state."
       },
       "6": {
         "$type": "color",
-        "$value": "#393c82"
+        "$value": "#393c82",
+        "$description": "Surface Active brukes på interaktive flater som ligger oppå bakgrunnsfargene i en active state."
       },
       "7": {
         "$type": "color",
-        "$value": "#44489c"
+        "$value": "#44489c",
+        "$description": "Border Subtle er den lyseste border-fargen og brukes for å skille elementer fra hverandre."
       },
       "8": {
         "$type": "color",
-        "$value": "#6d71d6"
+        "$value": "#6d71d6",
+        "$description": "Border Default er en border-farge som brukes når man ønsker god kontrast mot bakgrunnsfargene."
       },
       "9": {
         "$type": "color",
-        "$value": "#999ce2"
+        "$value": "#999ce2",
+        "$description": "Border Strong er den mørkeste border-fargen og brukes når man ønsker en veldig tydelig og sterk border."
       },
       "10": {
         "$type": "color",
-        "$value": "#999ce2"
+        "$value": "#999ce2",
+        "$description": "Text Subtle er den lyseste tekstfargen og brukes på tekst som skal være litt mindre synlig eller for å skape variasjon i typografien."
       },
       "11": {
         "$type": "color",
-        "$value": "#e2e3f7"
+        "$value": "#e2e3f7",
+        "$description": "Text Default er den mørkeste tekstfargen og brukes på tekst som skal være mest synlig. Denne fargen bør brukes på mesteparten av teksten på en side."
       },
       "12": {
         "$type": "color",
-        "$value": "#7378d8"
+        "$value": "#7378d8",
+        "$description": "Base Default fargen får den samme hex koden som fargen som er valgt i verktøyet. Brukes ofte som farge på viktige elementer og på flater som skal fange brukerens oppmerksomhet."
       },
       "13": {
         "$type": "color",
-        "$value": "#8c8fdf"
+        "$value": "#8c8fdf",
+        "$description": "Base Hover brukes som hover farge på elementer som bruker Base Default fargen."
       },
       "14": {
         "$type": "color",
-        "$value": "#a3a6e5"
+        "$value": "#a3a6e5",
+        "$description": "Base Active brukes som active farge på elementer som bruker Base Default fargen."
       },
       "15": {
         "$type": "color",
-        "$value": "#0d0d18"
+        "$value": "#0d0d18",
+        "$description": "Contrast Subtle brukes som en viktig meningsbærende farge oppå Base Default fargen."
       },
       "16": {
         "$type": "color",
-        "$value": "#000000"
+        "$value": "#000000",
+        "$description": "Contrast Default brukes som en viktig meningsbærende farge oppå alle Base fargane."
       }
     },
     "brand2": {
       "1": {
         "$type": "color",
-        "$value": "#25180f"
+        "$value": "#25180f",
+        "$description": "Background Default er den mest nøytrale bakgrunnsfargen."
       },
       "2": {
         "$type": "color",
-        "$value": "#302014"
+        "$value": "#302014",
+        "$description": "Background Tinted er en bakgrunnsfarge som har et hint av farge i seg."
       },
       "3": {
         "$type": "color",
-        "$value": "#3c2719"
+        "$value": "#3c2719",
+        "$description": "Surface Default brukes på flater som ligger oppå bakgrunnsfargene. Dette er den mest nøytrale surface fargen."
       },
       "4": {
         "$type": "color",
-        "$value": "#482f1e"
+        "$value": "#482f1e",
+        "$description": "Surface Tinted brukes på flater som ligger oppå bakgrunnsfargene. Denne har et hint av farge i seg."
       },
       "5": {
         "$type": "color",
-        "$value": "#513521"
+        "$value": "#513521",
+        "$description": "Surface Hover brukes på interaktive flater som ligger oppå bakgrunnsfargene i en hover state."
       },
       "6": {
         "$type": "color",
-        "$value": "#5c3c26"
+        "$value": "#5c3c26",
+        "$description": "Surface Active brukes på interaktive flater som ligger oppå bakgrunnsfargene i en active state."
       },
       "7": {
         "$type": "color",
-        "$value": "#6e482e"
+        "$value": "#6e482e",
+        "$description": "Border Subtle er den lyseste border-fargen og brukes for å skille elementer fra hverandre."
       },
       "8": {
         "$type": "color",
-        "$value": "#a86e45"
+        "$value": "#a86e45",
+        "$description": "Border Default er en border-farge som brukes når man ønsker god kontrast mot bakgrunnsfargene."
       },
       "9": {
         "$type": "color",
-        "$value": "#dc905b"
+        "$value": "#dc905b",
+        "$description": "Border Strong er den mørkeste border-fargen og brukes når man ønsker en veldig tydelig og sterk border."
       },
       "10": {
         "$type": "color",
-        "$value": "#dc905b"
+        "$value": "#dc905b",
+        "$description": "Text Subtle er den lyseste tekstfargen og brukes på tekst som skal være litt mindre synlig eller for å skape variasjon i typografien."
       },
       "11": {
         "$type": "color",
-        "$value": "#ffdfc8"
+        "$value": "#ffdfc8",
+        "$description": "Text Default er den mørkeste tekstfargen og brukes på tekst som skal være mest synlig. Denne fargen bør brukes på mesteparten av teksten på en side."
       },
       "12": {
         "$type": "color",
-        "$value": "#4e3320"
+        "$value": "#4e3320",
+        "$description": "Base Default fargen får den samme hex koden som fargen som er valgt i verktøyet. Brukes ofte som farge på viktige elementer og på flater som skal fange brukerens oppmerksomhet."
       },
       "13": {
         "$type": "color",
-        "$value": "#66432a"
+        "$value": "#66432a",
+        "$description": "Base Hover brukes som hover farge på elementer som bruker Base Default fargen."
       },
       "14": {
         "$type": "color",
-        "$value": "#805435"
+        "$value": "#805435",
+        "$description": "Base Active brukes som active farge på elementer som bruker Base Default fargen."
       },
       "15": {
         "$type": "color",
-        "$value": "#d6d0cc"
+        "$value": "#d6d0cc",
+        "$description": "Contrast Subtle brukes som en viktig meningsbærende farge oppå Base Default fargen."
       },
       "16": {
         "$type": "color",
-        "$value": "#ffffff"
+        "$value": "#ffffff",
+        "$description": "Contrast Default brukes som en viktig meningsbærende farge oppå alle Base fargane."
       }
     },
     "brand3": {
       "1": {
         "$type": "color",
-        "$value": "#111e1a"
+        "$value": "#111e1a",
+        "$description": "Background Default er den mest nøytrale bakgrunnsfargen."
       },
       "2": {
         "$type": "color",
-        "$value": "#162622"
+        "$value": "#162622",
+        "$description": "Background Tinted er en bakgrunnsfarge som har et hint av farge i seg."
       },
       "3": {
         "$type": "color",
-        "$value": "#1b302a"
+        "$value": "#1b302a",
+        "$description": "Surface Default brukes på flater som ligger oppå bakgrunnsfargene. Dette er den mest nøytrale surface fargen."
       },
       "4": {
         "$type": "color",
-        "$value": "#213933"
+        "$value": "#213933",
+        "$description": "Surface Tinted brukes på flater som ligger oppå bakgrunnsfargene. Denne har et hint av farge i seg."
       },
       "5": {
         "$type": "color",
-        "$value": "#254039"
+        "$value": "#254039",
+        "$description": "Surface Hover brukes på interaktive flater som ligger oppå bakgrunnsfargene i en hover state."
       },
       "6": {
         "$type": "color",
-        "$value": "#2a4941"
+        "$value": "#2a4941",
+        "$description": "Surface Active brukes på interaktive flater som ligger oppå bakgrunnsfargene i en active state."
       },
       "7": {
         "$type": "color",
-        "$value": "#32584e"
+        "$value": "#32584e",
+        "$description": "Border Subtle er den lyseste border-fargen og brukes for å skille elementer fra hverandre."
       },
       "8": {
         "$type": "color",
-        "$value": "#4d8677"
+        "$value": "#4d8677",
+        "$description": "Border Default er en border-farge som brukes når man ønsker god kontrast mot bakgrunnsfargene."
       },
       "9": {
         "$type": "color",
-        "$value": "#71ad9e"
+        "$value": "#71ad9e",
+        "$description": "Border Strong er den mørkeste border-fargen og brukes når man ønsker en veldig tydelig og sterk border."
       },
       "10": {
         "$type": "color",
-        "$value": "#71ad9e"
+        "$value": "#71ad9e",
+        "$description": "Text Subtle er den lyseste tekstfargen og brukes på tekst som skal være litt mindre synlig eller for å skape variasjon i typografien."
       },
       "11": {
         "$type": "color",
-        "$value": "#d7e8e4"
+        "$value": "#d7e8e4",
+        "$description": "Text Default er den mørkeste tekstfargen og brukes på tekst som skal være mest synlig. Denne fargen bør brukes på mesteparten av teksten på en side."
       },
       "12": {
         "$type": "color",
-        "$value": "#386257"
+        "$value": "#386257",
+        "$description": "Base Default fargen får den samme hex koden som fargen som er valgt i verktøyet. Brukes ofte som farge på viktige elementer og på flater som skal fange brukerens oppmerksomhet."
       },
       "13": {
         "$type": "color",
-        "$value": "#2c4d45"
+        "$value": "#2c4d45",
+        "$description": "Base Hover brukes som hover farge på elementer som bruker Base Default fargen."
       },
       "14": {
         "$type": "color",
-        "$value": "#213a33"
+        "$value": "#213a33",
+        "$description": "Base Active brukes som active farge på elementer som bruker Base Default fargen."
       },
       "15": {
         "$type": "color",
-        "$value": "#f9fafa"
+        "$value": "#f9fafa",
+        "$description": "Contrast Subtle brukes som en viktig meningsbærende farge oppå Base Default fargen."
       },
       "16": {
         "$type": "color",
-        "$value": "#ffffff"
+        "$value": "#ffffff",
+        "$description": "Contrast Default brukes som en viktig meningsbærende farge oppå alle Base fargane."
       }
     },
     "neutral": {
       "1": {
         "$type": "color",
-        "$value": "#131c27"
+        "$value": "#131c27",
+        "$description": "Background Default er den mest nøytrale bakgrunnsfargen."
       },
       "2": {
         "$type": "color",
-        "$value": "#192432"
+        "$value": "#192432",
+        "$description": "Background Tinted er en bakgrunnsfarge som har et hint av farge i seg."
       },
       "3": {
         "$type": "color",
-        "$value": "#202d3e"
+        "$value": "#202d3e",
+        "$description": "Surface Default brukes på flater som ligger oppå bakgrunnsfargene. Dette er den mest nøytrale surface fargen."
       },
       "4": {
         "$type": "color",
-        "$value": "#293546"
+        "$value": "#293546",
+        "$description": "Surface Tinted brukes på flater som ligger oppå bakgrunnsfargene. Denne har et hint av farge i seg."
       },
       "5": {
         "$type": "color",
-        "$value": "#303c4c"
+        "$value": "#303c4c",
+        "$description": "Surface Hover brukes på interaktive flater som ligger oppå bakgrunnsfargene i en hover state."
       },
       "6": {
         "$type": "color",
-        "$value": "#394553"
+        "$value": "#394553",
+        "$description": "Surface Active brukes på interaktive flater som ligger oppå bakgrunnsfargene i en active state."
       },
       "7": {
         "$type": "color",
-        "$value": "#475260"
+        "$value": "#475260",
+        "$description": "Border Subtle er den lyseste border-fargen og brukes for å skille elementer fra hverandre."
       },
       "8": {
         "$type": "color",
-        "$value": "#747c87"
+        "$value": "#747c87",
+        "$description": "Border Default er en border-farge som brukes når man ønsker god kontrast mot bakgrunnsfargene."
       },
       "9": {
         "$type": "color",
-        "$value": "#9da2aa"
+        "$value": "#9da2aa",
+        "$description": "Border Strong er den mørkeste border-fargen og brukes når man ønsker en veldig tydelig og sterk border."
       },
       "10": {
         "$type": "color",
-        "$value": "#9da2aa"
+        "$value": "#9da2aa",
+        "$description": "Text Subtle er den lyseste tekstfargen og brukes på tekst som skal være litt mindre synlig eller for å skape variasjon i typografien."
       },
       "11": {
         "$type": "color",
-        "$value": "#e3e5e7"
+        "$value": "#e3e5e7",
+        "$description": "Text Default er den mørkeste tekstfargen og brukes på tekst som skal være mest synlig. Denne fargen bør brukes på mesteparten av teksten på en side."
       },
       "12": {
         "$type": "color",
-        "$value": "#a6acb2"
+        "$value": "#a6acb2",
+        "$description": "Base Default fargen får den samme hex koden som fargen som er valgt i verktøyet. Brukes ofte som farge på viktige elementer og på flater som skal fange brukerens oppmerksomhet."
       },
       "13": {
         "$type": "color",
-        "$value": "#90979f"
+        "$value": "#90979f",
+        "$description": "Base Hover brukes som hover farge på elementer som bruker Base Default fargen."
       },
       "14": {
         "$type": "color",
-        "$value": "#7a828c"
+        "$value": "#7a828c",
+        "$description": "Base Active brukes som active farge på elementer som bruker Base Default fargen."
       },
       "15": {
         "$type": "color",
-        "$value": "#1b1c1d"
+        "$value": "#1b1c1d",
+        "$description": "Contrast Subtle brukes som en viktig meningsbærende farge oppå Base Default fargen."
       },
       "16": {
         "$type": "color",
-        "$value": "#000000"
+        "$value": "#000000",
+        "$description": "Contrast Default brukes som en viktig meningsbærende farge oppå alle Base fargane."
       }
     }
   }
