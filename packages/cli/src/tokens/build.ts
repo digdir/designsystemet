@@ -174,7 +174,7 @@ async function writeColorTypeDeclaration($themes: ProcessedThemeObject[], outPat
   const typeDeclaration = `
 import type {} from '@digdir/designsystemet-react/colors';
 
-declare module '@digdir/designsystemet-react/colors' {
+declare module '@digdir/designsystemet-react/types/colors' {
   export interface MainAndSupportColors {
 ${mainAndSupportColors.map((color) => `    ${color}: never;`).join('\n')}
   }

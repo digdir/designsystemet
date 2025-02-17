@@ -10,7 +10,10 @@
   "homepage": "https://github.com/digdir/designsystemet/tree/main/packages/theme",
   "license": "MIT",
   "exports": {
-    ".": "./brand/digdir.css",
+    ".": {
+      "types": "./brand/colors.d.ts",
+      "default": "./brand/digdir.css"
+    } ,
     "./*": "./brand/*"
   },
   "files": [
