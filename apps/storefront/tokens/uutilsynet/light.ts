@@ -2,6 +2,325 @@
  * These files are generated from design tokens defind using Token Studio
  */
 
+export const  shadow = [
+  {
+    $type: "shadow",
+    $value: "0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12)",
+    filePath: "../../design-tokens/primitives/globals.json",
+    isSource: true,
+    original: {
+      $type: "shadow",
+      $value: [
+        {
+          color: "rgba(0,0,0,0.16)",
+          blur: "1",
+          spread: "0",
+          offsetX: "0",
+          offsetY: "0"
+        },
+        {
+          blur: "2",
+          spread: "0",
+          color: "rgba(0,0,0,0.12)",
+          offsetX: "0",
+          offsetY: "1"
+        }
+      ]
+    },
+    name: "--ds-shadow-100",
+    attributes: {},
+    path: [
+      "primitives",
+      "shadow",
+      "100"
+    ],
+    key: "{primitives.shadow.100}"
+  },
+  {
+    $type: "shadow",
+    $value: "0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1)",
+    filePath: "../../design-tokens/primitives/globals.json",
+    isSource: true,
+    original: {
+      $type: "shadow",
+      $value: [
+        {
+          color: "rgba(0,0,0,0.15)",
+          blur: "1",
+          spread: "0",
+          offsetX: "0",
+          offsetY: "0"
+        },
+        {
+          color: "rgba(0,0,0,0.12)",
+          blur: "2",
+          spread: "0",
+          offsetX: "0",
+          offsetY: "1"
+        },
+        {
+          blur: "4",
+          spread: "0",
+          color: "rgba(0,0,0,0.1)",
+          offsetX: "0",
+          offsetY: "2"
+        }
+      ]
+    },
+    name: "--ds-shadow-200",
+    attributes: {},
+    path: [
+      "primitives",
+      "shadow",
+      "200"
+    ],
+    key: "{primitives.shadow.200}"
+  },
+  {
+    $type: "shadow",
+    $value: "0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12)",
+    filePath: "../../design-tokens/primitives/globals.json",
+    isSource: true,
+    original: {
+      $type: "shadow",
+      $value: [
+        {
+          color: "rgba(0,0,0,0.14)",
+          blur: "1",
+          spread: "0",
+          offsetX: "0",
+          offsetY: "0"
+        },
+        {
+          color: "rgba(0,0,0,0.12)",
+          blur: "4",
+          spread: "0",
+          offsetX: "0",
+          offsetY: "2"
+        },
+        {
+          blur: "8",
+          spread: "0",
+          color: "rgba(0,0,0,0.12)",
+          offsetX: "0",
+          offsetY: "4"
+        }
+      ]
+    },
+    name: "--ds-shadow-300",
+    attributes: {},
+    path: [
+      "primitives",
+      "shadow",
+      "300"
+    ],
+    key: "{primitives.shadow.300}"
+  },
+  {
+    $type: "shadow",
+    $value: "0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14)",
+    filePath: "../../design-tokens/primitives/globals.json",
+    isSource: true,
+    original: {
+      $type: "shadow",
+      $value: [
+        {
+          color: "rgba(0,0,0,0.13)",
+          blur: "1",
+          spread: "0",
+          offsetX: "0",
+          offsetY: "0"
+        },
+        {
+          color: "rgba(0,0,0,0.13)",
+          blur: "5",
+          spread: "0",
+          offsetX: "0",
+          offsetY: "3"
+        },
+        {
+          blur: "12",
+          spread: "0",
+          color: "rgba(0,0,0,0.14)",
+          offsetX: "0",
+          offsetY: "6"
+        }
+      ]
+    },
+    name: "--ds-shadow-400",
+    attributes: {},
+    path: [
+      "primitives",
+      "shadow",
+      "400"
+    ],
+    key: "{primitives.shadow.400}"
+  },
+  {
+    $type: "shadow",
+    $value: "0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16)",
+    filePath: "../../design-tokens/primitives/globals.json",
+    isSource: true,
+    original: {
+      $type: "shadow",
+      $value: [
+        {
+          color: "rgba(0,0,0,0.12)",
+          blur: "1",
+          spread: "0",
+          offsetX: "0",
+          offsetY: "0"
+        },
+        {
+          color: "rgba(0,0,0,0.16)",
+          blur: "8",
+          spread: "0",
+          offsetX: "0",
+          offsetY: "4"
+        },
+        {
+          blur: "24",
+          spread: "0",
+          color: "rgba(0,0,0,0.16)",
+          offsetX: "0",
+          offsetY: "12"
+        }
+      ]
+    },
+    name: "--ds-shadow-500",
+    attributes: {},
+    path: [
+      "primitives",
+      "shadow",
+      "500"
+    ],
+    key: "{primitives.shadow.500}"
+  },
+  {
+    $type: "shadow",
+    $value: "0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "shadow",
+      $value: "{primitives.shadow.100}"
+    },
+    name: "--ds-shadow-xs",
+    attributes: {},
+    path: [
+      "shadow",
+      "xs"
+    ],
+    key: "{shadow.xs}"
+  },
+  {
+    $type: "shadow",
+    $value: "0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "shadow",
+      $value: "{primitives.shadow.200}"
+    },
+    name: "--ds-shadow-sm",
+    attributes: {},
+    path: [
+      "shadow",
+      "sm"
+    ],
+    key: "{shadow.sm}"
+  },
+  {
+    $type: "shadow",
+    $value: "0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "shadow",
+      $value: "{primitives.shadow.300}"
+    },
+    name: "--ds-shadow-md",
+    attributes: {},
+    path: [
+      "shadow",
+      "md"
+    ],
+    key: "{shadow.md}"
+  },
+  {
+    $type: "shadow",
+    $value: "0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "shadow",
+      $value: "{primitives.shadow.400}"
+    },
+    name: "--ds-shadow-lg",
+    attributes: {},
+    path: [
+      "shadow",
+      "lg"
+    ],
+    key: "{shadow.lg}"
+  },
+  {
+    $type: "shadow",
+    $value: "0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16)",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "shadow",
+      $value: "{primitives.shadow.500}"
+    },
+    name: "--ds-shadow-xl",
+    attributes: {},
+    path: [
+      "shadow",
+      "xl"
+    ],
+    key: "{shadow.xl}"
+  }
+] 
+
+export const  opacity = [
+  {
+    $type: "opacity",
+    $value: "30%",
+    filePath: "../../design-tokens/primitives/globals.json",
+    isSource: true,
+    original: {
+      $type: "opacity",
+      $value: "30%"
+    },
+    name: "--ds-opacity-30",
+    attributes: {},
+    path: [
+      "primitives",
+      "opacity",
+      "30"
+    ],
+    key: "{primitives.opacity.30}"
+  },
+  {
+    $type: "opacity",
+    $value: "30%",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "opacity",
+      $value: "{primitives.opacity.30}"
+    },
+    name: "--ds-disabled-opacity",
+    attributes: {},
+    path: [
+      "disabled",
+      "opacity"
+    ],
+    key: "{disabled.opacity}"
+  }
+] 
+
 export const  color = [
   {
     $type: "color",
@@ -1450,7 +1769,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.1}"
+      $value: "{primitives.global.green.1}"
     },
     name: "--ds-color-success-background-default",
     attributes: {},
@@ -1468,7 +1787,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.2}"
+      $value: "{primitives.global.green.2}"
     },
     name: "--ds-color-success-background-tinted",
     attributes: {},
@@ -1486,7 +1805,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.3}"
+      $value: "{primitives.global.green.3}"
     },
     name: "--ds-color-success-surface-default",
     attributes: {},
@@ -1504,7 +1823,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.4}"
+      $value: "{primitives.global.green.4}"
     },
     name: "--ds-color-success-surface-tinted",
     attributes: {},
@@ -1522,7 +1841,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.5}"
+      $value: "{primitives.global.green.5}"
     },
     name: "--ds-color-success-surface-hover",
     attributes: {},
@@ -1540,7 +1859,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.6}"
+      $value: "{primitives.global.green.6}"
     },
     name: "--ds-color-success-surface-active",
     attributes: {},
@@ -1558,7 +1877,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.7}"
+      $value: "{primitives.global.green.7}"
     },
     name: "--ds-color-success-border-subtle",
     attributes: {},
@@ -1576,7 +1895,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.8}"
+      $value: "{primitives.global.green.8}"
     },
     name: "--ds-color-success-border-default",
     attributes: {},
@@ -1594,7 +1913,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.9}"
+      $value: "{primitives.global.green.9}"
     },
     name: "--ds-color-success-border-strong",
     attributes: {},
@@ -1612,7 +1931,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.10}"
+      $value: "{primitives.global.green.10}"
     },
     name: "--ds-color-success-text-subtle",
     attributes: {},
@@ -1630,7 +1949,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.11}"
+      $value: "{primitives.global.green.11}"
     },
     name: "--ds-color-success-text-default",
     attributes: {},
@@ -1648,7 +1967,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.12}"
+      $value: "{primitives.global.green.12}"
     },
     name: "--ds-color-success-base-default",
     attributes: {},
@@ -1666,7 +1985,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.13}"
+      $value: "{primitives.global.green.13}"
     },
     name: "--ds-color-success-base-hover",
     attributes: {},
@@ -1684,7 +2003,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.14}"
+      $value: "{primitives.global.green.14}"
     },
     name: "--ds-color-success-base-active",
     attributes: {},
@@ -1702,7 +2021,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.15}"
+      $value: "{primitives.global.green.15}"
     },
     name: "--ds-color-success-base-contrast-subtle",
     attributes: {},
@@ -1720,7 +2039,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.16}"
+      $value: "{primitives.global.green.16}"
     },
     name: "--ds-color-success-base-contrast-default",
     attributes: {},
@@ -1738,7 +2057,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.1}"
+      $value: "{primitives.global.red.1}"
     },
     name: "--ds-color-danger-background-default",
     attributes: {},
@@ -1756,7 +2075,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.2}"
+      $value: "{primitives.global.red.2}"
     },
     name: "--ds-color-danger-background-tinted",
     attributes: {},
@@ -1774,7 +2093,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.3}"
+      $value: "{primitives.global.red.3}"
     },
     name: "--ds-color-danger-surface-default",
     attributes: {},
@@ -1792,7 +2111,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.4}"
+      $value: "{primitives.global.red.4}"
     },
     name: "--ds-color-danger-surface-tinted",
     attributes: {},
@@ -1810,7 +2129,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.5}"
+      $value: "{primitives.global.red.5}"
     },
     name: "--ds-color-danger-surface-hover",
     attributes: {},
@@ -1828,7 +2147,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.6}"
+      $value: "{primitives.global.red.6}"
     },
     name: "--ds-color-danger-surface-active",
     attributes: {},
@@ -1846,7 +2165,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.7}"
+      $value: "{primitives.global.red.7}"
     },
     name: "--ds-color-danger-border-subtle",
     attributes: {},
@@ -1864,7 +2183,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.8}"
+      $value: "{primitives.global.red.8}"
     },
     name: "--ds-color-danger-border-default",
     attributes: {},
@@ -1882,7 +2201,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.9}"
+      $value: "{primitives.global.red.9}"
     },
     name: "--ds-color-danger-border-strong",
     attributes: {},
@@ -1900,7 +2219,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.10}"
+      $value: "{primitives.global.red.10}"
     },
     name: "--ds-color-danger-text-subtle",
     attributes: {},
@@ -1918,7 +2237,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.11}"
+      $value: "{primitives.global.red.11}"
     },
     name: "--ds-color-danger-text-default",
     attributes: {},
@@ -1936,7 +2255,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.12}"
+      $value: "{primitives.global.red.12}"
     },
     name: "--ds-color-danger-base-default",
     attributes: {},
@@ -1954,7 +2273,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.13}"
+      $value: "{primitives.global.red.13}"
     },
     name: "--ds-color-danger-base-hover",
     attributes: {},
@@ -1972,7 +2291,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.14}"
+      $value: "{primitives.global.red.14}"
     },
     name: "--ds-color-danger-base-active",
     attributes: {},
@@ -1990,7 +2309,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.15}"
+      $value: "{primitives.global.red.15}"
     },
     name: "--ds-color-danger-base-contrast-subtle",
     attributes: {},
@@ -2008,7 +2327,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.16}"
+      $value: "{primitives.global.red.16}"
     },
     name: "--ds-color-danger-base-contrast-default",
     attributes: {},
@@ -2026,7 +2345,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.1}"
+      $value: "{primitives.global.blue.1}"
     },
     name: "--ds-color-info-background-default",
     attributes: {},
@@ -2044,7 +2363,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.2}"
+      $value: "{primitives.global.blue.2}"
     },
     name: "--ds-color-info-background-tinted",
     attributes: {},
@@ -2062,7 +2381,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.3}"
+      $value: "{primitives.global.blue.3}"
     },
     name: "--ds-color-info-surface-default",
     attributes: {},
@@ -2080,7 +2399,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.4}"
+      $value: "{primitives.global.blue.4}"
     },
     name: "--ds-color-info-surface-tinted",
     attributes: {},
@@ -2098,7 +2417,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.5}"
+      $value: "{primitives.global.blue.5}"
     },
     name: "--ds-color-info-surface-hover",
     attributes: {},
@@ -2116,7 +2435,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.6}"
+      $value: "{primitives.global.blue.6}"
     },
     name: "--ds-color-info-surface-active",
     attributes: {},
@@ -2134,7 +2453,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.7}"
+      $value: "{primitives.global.blue.7}"
     },
     name: "--ds-color-info-border-subtle",
     attributes: {},
@@ -2152,7 +2471,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.8}"
+      $value: "{primitives.global.blue.8}"
     },
     name: "--ds-color-info-border-default",
     attributes: {},
@@ -2170,7 +2489,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.9}"
+      $value: "{primitives.global.blue.9}"
     },
     name: "--ds-color-info-border-strong",
     attributes: {},
@@ -2188,7 +2507,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.10}"
+      $value: "{primitives.global.blue.10}"
     },
     name: "--ds-color-info-text-subtle",
     attributes: {},
@@ -2206,7 +2525,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.11}"
+      $value: "{primitives.global.blue.11}"
     },
     name: "--ds-color-info-text-default",
     attributes: {},
@@ -2224,7 +2543,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.12}"
+      $value: "{primitives.global.blue.12}"
     },
     name: "--ds-color-info-base-default",
     attributes: {},
@@ -2242,7 +2561,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.13}"
+      $value: "{primitives.global.blue.13}"
     },
     name: "--ds-color-info-base-hover",
     attributes: {},
@@ -2260,7 +2579,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.14}"
+      $value: "{primitives.global.blue.14}"
     },
     name: "--ds-color-info-base-active",
     attributes: {},
@@ -2278,7 +2597,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.15}"
+      $value: "{primitives.global.blue.15}"
     },
     name: "--ds-color-info-base-contrast-subtle",
     attributes: {},
@@ -2296,7 +2615,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.16}"
+      $value: "{primitives.global.blue.16}"
     },
     name: "--ds-color-info-base-contrast-default",
     attributes: {},
@@ -2314,7 +2633,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.orange.1}"
+      $value: "{primitives.global.orange.1}"
     },
     name: "--ds-color-warning-background-default",
     attributes: {},
@@ -2332,7 +2651,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.orange.2}"
+      $value: "{primitives.global.orange.2}"
     },
     name: "--ds-color-warning-background-tinted",
     attributes: {},
@@ -2350,7 +2669,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.orange.3}"
+      $value: "{primitives.global.orange.3}"
     },
     name: "--ds-color-warning-surface-default",
     attributes: {},
@@ -2368,7 +2687,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.orange.4}"
+      $value: "{primitives.global.orange.4}"
     },
     name: "--ds-color-warning-surface-tinted",
     attributes: {},
@@ -2386,7 +2705,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.orange.5}"
+      $value: "{primitives.global.orange.5}"
     },
     name: "--ds-color-warning-surface-hover",
     attributes: {},
@@ -2404,7 +2723,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.orange.6}"
+      $value: "{primitives.global.orange.6}"
     },
     name: "--ds-color-warning-surface-active",
     attributes: {},
@@ -2422,7 +2741,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.orange.7}"
+      $value: "{primitives.global.orange.7}"
     },
     name: "--ds-color-warning-border-subtle",
     attributes: {},
@@ -2440,7 +2759,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.orange.8}"
+      $value: "{primitives.global.orange.8}"
     },
     name: "--ds-color-warning-border-default",
     attributes: {},
@@ -2458,7 +2777,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.orange.9}"
+      $value: "{primitives.global.orange.9}"
     },
     name: "--ds-color-warning-border-strong",
     attributes: {},
@@ -2476,7 +2795,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.orange.10}"
+      $value: "{primitives.global.orange.10}"
     },
     name: "--ds-color-warning-text-subtle",
     attributes: {},
@@ -2494,7 +2813,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.orange.11}"
+      $value: "{primitives.global.orange.11}"
     },
     name: "--ds-color-warning-text-default",
     attributes: {},
@@ -2512,7 +2831,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.orange.12}"
+      $value: "{primitives.global.orange.12}"
     },
     name: "--ds-color-warning-base-default",
     attributes: {},
@@ -2530,7 +2849,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.orange.13}"
+      $value: "{primitives.global.orange.13}"
     },
     name: "--ds-color-warning-base-hover",
     attributes: {},
@@ -2548,7 +2867,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.orange.14}"
+      $value: "{primitives.global.orange.14}"
     },
     name: "--ds-color-warning-base-active",
     attributes: {},
@@ -2566,7 +2885,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.orange.15}"
+      $value: "{primitives.global.orange.15}"
     },
     name: "--ds-color-warning-base-contrast-subtle",
     attributes: {},
@@ -2584,7 +2903,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.orange.16}"
+      $value: "{primitives.global.orange.16}"
     },
     name: "--ds-color-warning-base-contrast-default",
     attributes: {},
@@ -2743,7 +3062,7 @@ export const  dimension = [
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{border-width.1}"
+      $value: "{primitives.border-width.1}"
     },
     name: "--ds-border-width-default",
     attributes: {},
@@ -2760,7 +3079,7 @@ export const  dimension = [
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{border-width.3}"
+      $value: "{primitives.border-width.3}"
     },
     name: "--ds-border-width-focus",
     attributes: {},
@@ -2777,7 +3096,7 @@ export const  dimension = [
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *0)"
+      $value: "floor({primitives._size.step} / {primitives._size.base} * {primitives._size.mode-font-size} *0)"
     },
     name: "--ds-size-0",
     attributes: {},
@@ -2794,7 +3113,7 @@ export const  dimension = [
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *1)"
+      $value: "floor({primitives._size.step} / {primitives._size.base} * {primitives._size.mode-font-size} *1)"
     },
     name: "--ds-size-1",
     attributes: {},
@@ -2811,7 +3130,7 @@ export const  dimension = [
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *2)"
+      $value: "floor({primitives._size.step} / {primitives._size.base} * {primitives._size.mode-font-size} *2)"
     },
     name: "--ds-size-2",
     attributes: {},
@@ -2828,7 +3147,7 @@ export const  dimension = [
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *3)"
+      $value: "floor({primitives._size.step} / {primitives._size.base} * {primitives._size.mode-font-size} *3)"
     },
     name: "--ds-size-3",
     attributes: {},
@@ -2845,7 +3164,7 @@ export const  dimension = [
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *4)"
+      $value: "floor({primitives._size.step} / {primitives._size.base} * {primitives._size.mode-font-size} *4)"
     },
     name: "--ds-size-4",
     attributes: {},
@@ -2862,7 +3181,7 @@ export const  dimension = [
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *5)"
+      $value: "floor({primitives._size.step} / {primitives._size.base} * {primitives._size.mode-font-size} *5)"
     },
     name: "--ds-size-5",
     attributes: {},
@@ -2879,7 +3198,7 @@ export const  dimension = [
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *6)"
+      $value: "floor({primitives._size.step} / {primitives._size.base} * {primitives._size.mode-font-size} *6)"
     },
     name: "--ds-size-6",
     attributes: {},
@@ -2896,7 +3215,7 @@ export const  dimension = [
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *7)"
+      $value: "floor({primitives._size.step} / {primitives._size.base} * {primitives._size.mode-font-size} *7)"
     },
     name: "--ds-size-7",
     attributes: {},
@@ -2913,7 +3232,7 @@ export const  dimension = [
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *8)"
+      $value: "floor({primitives._size.step} / {primitives._size.base} * {primitives._size.mode-font-size} *8)"
     },
     name: "--ds-size-8",
     attributes: {},
@@ -2930,7 +3249,7 @@ export const  dimension = [
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *9)"
+      $value: "floor({primitives._size.step} / {primitives._size.base} * {primitives._size.mode-font-size} *9)"
     },
     name: "--ds-size-9",
     attributes: {},
@@ -2947,7 +3266,7 @@ export const  dimension = [
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *10)"
+      $value: "floor({primitives._size.step} / {primitives._size.base} * {primitives._size.mode-font-size} *10)"
     },
     name: "--ds-size-10",
     attributes: {},
@@ -2964,7 +3283,7 @@ export const  dimension = [
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *11)"
+      $value: "floor({primitives._size.step} / {primitives._size.base} * {primitives._size.mode-font-size} *11)"
     },
     name: "--ds-size-11",
     attributes: {},
@@ -2981,7 +3300,7 @@ export const  dimension = [
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *12)"
+      $value: "floor({primitives._size.step} / {primitives._size.base} * {primitives._size.mode-font-size} *12)"
     },
     name: "--ds-size-12",
     attributes: {},
@@ -2998,7 +3317,7 @@ export const  dimension = [
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *13)"
+      $value: "floor({primitives._size.step} / {primitives._size.base} * {primitives._size.mode-font-size} *13)"
     },
     name: "--ds-size-13",
     attributes: {},
@@ -3015,7 +3334,7 @@ export const  dimension = [
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *14)"
+      $value: "floor({primitives._size.step} / {primitives._size.base} * {primitives._size.mode-font-size} *14)"
     },
     name: "--ds-size-14",
     attributes: {},
@@ -3032,7 +3351,7 @@ export const  dimension = [
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *15)"
+      $value: "floor({primitives._size.step} / {primitives._size.base} * {primitives._size.mode-font-size} *15)"
     },
     name: "--ds-size-15",
     attributes: {},
@@ -3049,7 +3368,7 @@ export const  dimension = [
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *18)"
+      $value: "floor({primitives._size.step} / {primitives._size.base} * {primitives._size.mode-font-size} *18)"
     },
     name: "--ds-size-18",
     attributes: {},
@@ -3066,7 +3385,7 @@ export const  dimension = [
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *22)"
+      $value: "floor({primitives._size.step} / {primitives._size.base} * {primitives._size.mode-font-size} *22)"
     },
     name: "--ds-size-22",
     attributes: {},
@@ -3083,7 +3402,7 @@ export const  dimension = [
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *26)"
+      $value: "floor({primitives._size.step} / {primitives._size.base} * {primitives._size.mode-font-size} *26)"
     },
     name: "--ds-size-26",
     attributes: {},
@@ -3100,7 +3419,7 @@ export const  dimension = [
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "floor({_size.step} / {_size.base} * {_size.mode-font-size} *30)"
+      $value: "floor({primitives._size.step} / {primitives._size.base} * {primitives._size.mode-font-size} *30)"
     },
     name: "--ds-size-30",
     attributes: {},
@@ -3129,9 +3448,9 @@ export const  typography = [
       $value: {
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
-        lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.10}",
-        letterSpacing: "{letter-spacing.1}"
+        lineHeight: "{primitives.line-height.sm}",
+        fontSize: "{primitives.font-size.10}",
+        letterSpacing: "{primitives.letter-spacing.1}"
       }
     },
     name: "--ds-heading-2xl",
@@ -3159,9 +3478,9 @@ export const  typography = [
       $value: {
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
-        lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.9}",
-        letterSpacing: "{letter-spacing.1}"
+        lineHeight: "{primitives.line-height.sm}",
+        fontSize: "{primitives.font-size.9}",
+        letterSpacing: "{primitives.letter-spacing.1}"
       }
     },
     name: "--ds-heading-xl",
@@ -3189,9 +3508,9 @@ export const  typography = [
       $value: {
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
-        lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.8}",
-        letterSpacing: "{letter-spacing.2}"
+        lineHeight: "{primitives.line-height.sm}",
+        fontSize: "{primitives.font-size.8}",
+        letterSpacing: "{primitives.letter-spacing.2}"
       }
     },
     name: "--ds-heading-lg",
@@ -3219,9 +3538,9 @@ export const  typography = [
       $value: {
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
-        lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.7}",
-        letterSpacing: "{letter-spacing.3}"
+        lineHeight: "{primitives.line-height.sm}",
+        fontSize: "{primitives.font-size.7}",
+        letterSpacing: "{primitives.letter-spacing.3}"
       }
     },
     name: "--ds-heading-md",
@@ -3249,9 +3568,9 @@ export const  typography = [
       $value: {
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
-        lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.6}",
-        letterSpacing: "{letter-spacing.5}"
+        lineHeight: "{primitives.line-height.sm}",
+        fontSize: "{primitives.font-size.6}",
+        letterSpacing: "{primitives.letter-spacing.5}"
       }
     },
     name: "--ds-heading-sm",
@@ -3279,9 +3598,9 @@ export const  typography = [
       $value: {
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
-        lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.5}",
-        letterSpacing: "{letter-spacing.6}"
+        lineHeight: "{primitives.line-height.sm}",
+        fontSize: "{primitives.font-size.5}",
+        letterSpacing: "{primitives.letter-spacing.6}"
       }
     },
     name: "--ds-heading-xs",
@@ -3309,9 +3628,9 @@ export const  typography = [
       $value: {
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
-        lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.4}",
-        letterSpacing: "{letter-spacing.6}"
+        lineHeight: "{primitives.line-height.sm}",
+        fontSize: "{primitives.font-size.4}",
+        letterSpacing: "{primitives.letter-spacing.6}"
       }
     },
     name: "--ds-heading-2xs",
@@ -3339,9 +3658,9 @@ export const  typography = [
       $value: {
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.md}",
-        fontSize: "{font-size.6}",
-        letterSpacing: "{letter-spacing.8}"
+        lineHeight: "{primitives.line-height.md}",
+        fontSize: "{primitives.font-size.6}",
+        letterSpacing: "{primitives.letter-spacing.8}"
       }
     },
     name: "--ds-body-xl",
@@ -3369,9 +3688,9 @@ export const  typography = [
       $value: {
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.md}",
-        fontSize: "{font-size.5}",
-        letterSpacing: "{letter-spacing.8}"
+        lineHeight: "{primitives.line-height.md}",
+        fontSize: "{primitives.font-size.5}",
+        letterSpacing: "{primitives.letter-spacing.8}"
       }
     },
     name: "--ds-body-lg",
@@ -3399,9 +3718,9 @@ export const  typography = [
       $value: {
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.md}",
-        fontSize: "{font-size.4}",
-        letterSpacing: "{letter-spacing.8}"
+        lineHeight: "{primitives.line-height.md}",
+        fontSize: "{primitives.font-size.4}",
+        letterSpacing: "{primitives.letter-spacing.8}"
       }
     },
     name: "--ds-body-md",
@@ -3429,9 +3748,9 @@ export const  typography = [
       $value: {
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.md}",
-        fontSize: "{font-size.3}",
-        letterSpacing: "{letter-spacing.7}"
+        lineHeight: "{primitives.line-height.md}",
+        fontSize: "{primitives.font-size.3}",
+        letterSpacing: "{primitives.letter-spacing.7}"
       }
     },
     name: "--ds-body-sm",
@@ -3459,9 +3778,9 @@ export const  typography = [
       $value: {
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.md}",
-        fontSize: "{font-size.2}",
-        letterSpacing: "{letter-spacing.6}"
+        lineHeight: "{primitives.line-height.md}",
+        fontSize: "{primitives.font-size.2}",
+        letterSpacing: "{primitives.letter-spacing.6}"
       }
     },
     name: "--ds-body-xs",
@@ -3489,9 +3808,9 @@ export const  typography = [
       $value: {
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.6}",
-        letterSpacing: "{letter-spacing.8}"
+        lineHeight: "{primitives.line-height.sm}",
+        fontSize: "{primitives.font-size.6}",
+        letterSpacing: "{primitives.letter-spacing.8}"
       }
     },
     name: "--ds-body-short-xl",
@@ -3520,9 +3839,9 @@ export const  typography = [
       $value: {
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.5}",
-        letterSpacing: "{letter-spacing.8}"
+        lineHeight: "{primitives.line-height.sm}",
+        fontSize: "{primitives.font-size.5}",
+        letterSpacing: "{primitives.letter-spacing.8}"
       }
     },
     name: "--ds-body-short-lg",
@@ -3551,9 +3870,9 @@ export const  typography = [
       $value: {
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.4}",
-        letterSpacing: "{letter-spacing.8}"
+        lineHeight: "{primitives.line-height.sm}",
+        fontSize: "{primitives.font-size.4}",
+        letterSpacing: "{primitives.letter-spacing.8}"
       }
     },
     name: "--ds-body-short-md",
@@ -3582,9 +3901,9 @@ export const  typography = [
       $value: {
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.3}",
-        letterSpacing: "{letter-spacing.7}"
+        lineHeight: "{primitives.line-height.sm}",
+        fontSize: "{primitives.font-size.3}",
+        letterSpacing: "{primitives.letter-spacing.7}"
       }
     },
     name: "--ds-body-short-sm",
@@ -3613,9 +3932,9 @@ export const  typography = [
       $value: {
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.2}",
-        letterSpacing: "{letter-spacing.6}"
+        lineHeight: "{primitives.line-height.sm}",
+        fontSize: "{primitives.font-size.2}",
+        letterSpacing: "{primitives.letter-spacing.6}"
       }
     },
     name: "--ds-body-short-xs",
@@ -3644,9 +3963,9 @@ export const  typography = [
       $value: {
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.6}",
-        letterSpacing: "{letter-spacing.8}"
+        lineHeight: "{primitives.line-height.lg}",
+        fontSize: "{primitives.font-size.6}",
+        letterSpacing: "{primitives.letter-spacing.8}"
       }
     },
     name: "--ds-body-long-xl",
@@ -3675,9 +3994,9 @@ export const  typography = [
       $value: {
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.5}",
-        letterSpacing: "{letter-spacing.8}"
+        lineHeight: "{primitives.line-height.lg}",
+        fontSize: "{primitives.font-size.5}",
+        letterSpacing: "{primitives.letter-spacing.8}"
       }
     },
     name: "--ds-body-long-lg",
@@ -3706,9 +4025,9 @@ export const  typography = [
       $value: {
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.4}",
-        letterSpacing: "{letter-spacing.8}"
+        lineHeight: "{primitives.line-height.lg}",
+        fontSize: "{primitives.font-size.4}",
+        letterSpacing: "{primitives.letter-spacing.8}"
       }
     },
     name: "--ds-body-long-md",
@@ -3737,9 +4056,9 @@ export const  typography = [
       $value: {
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.3}",
-        letterSpacing: "{letter-spacing.7}"
+        lineHeight: "{primitives.line-height.lg}",
+        fontSize: "{primitives.font-size.3}",
+        letterSpacing: "{primitives.letter-spacing.7}"
       }
     },
     name: "--ds-body-long-sm",
@@ -3768,9 +4087,9 @@ export const  typography = [
       $value: {
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
-        lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.2}",
-        letterSpacing: "{letter-spacing.6}"
+        lineHeight: "{primitives.line-height.lg}",
+        fontSize: "{primitives.font-size.2}",
+        letterSpacing: "{primitives.letter-spacing.6}"
       }
     },
     name: "--ds-body-long-xs",
@@ -3782,318 +4101,5 @@ export const  typography = [
       "xs"
     ],
     key: "{typography.body.long.xs}"
-  }
-] 
-
-export const  opacity = [
-  {
-    $type: "opacity",
-    $value: "30%",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "opacity",
-      $value: "{opacity.30}"
-    },
-    name: "--ds-disabled-opacity",
-    attributes: {},
-    path: [
-      "disabled",
-      "opacity"
-    ],
-    key: "{disabled.opacity}"
-  },
-  {
-    $type: "opacity",
-    $value: "30%",
-    filePath: "../../design-tokens/primitives/globals.json",
-    isSource: true,
-    original: {
-      $type: "opacity",
-      $value: "30%"
-    },
-    name: "--ds-opacity-30",
-    attributes: {},
-    path: [
-      "opacity",
-      "30"
-    ],
-    key: "{opacity.30}"
-  }
-] 
-
-export const  shadow = [
-  {
-    $type: "shadow",
-    $value: "0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12)",
-    filePath: "../../design-tokens/primitives/globals.json",
-    isSource: true,
-    original: {
-      $type: "shadow",
-      $value: [
-        {
-          color: "rgba(0,0,0,0.16)",
-          blur: "1",
-          spread: "0",
-          offsetX: "0",
-          offsetY: "0"
-        },
-        {
-          blur: "2",
-          spread: "0",
-          color: "rgba(0,0,0,0.12)",
-          offsetX: "0",
-          offsetY: "1"
-        }
-      ]
-    },
-    name: "--ds-shadow-100",
-    attributes: {},
-    path: [
-      "shadow",
-      "100"
-    ],
-    key: "{shadow.100}"
-  },
-  {
-    $type: "shadow",
-    $value: "0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1)",
-    filePath: "../../design-tokens/primitives/globals.json",
-    isSource: true,
-    original: {
-      $type: "shadow",
-      $value: [
-        {
-          color: "rgba(0,0,0,0.15)",
-          blur: "1",
-          spread: "0",
-          offsetX: "0",
-          offsetY: "0"
-        },
-        {
-          color: "rgba(0,0,0,0.12)",
-          blur: "2",
-          spread: "0",
-          offsetX: "0",
-          offsetY: "1"
-        },
-        {
-          blur: "4",
-          spread: "0",
-          color: "rgba(0,0,0,0.1)",
-          offsetX: "0",
-          offsetY: "2"
-        }
-      ]
-    },
-    name: "--ds-shadow-200",
-    attributes: {},
-    path: [
-      "shadow",
-      "200"
-    ],
-    key: "{shadow.200}"
-  },
-  {
-    $type: "shadow",
-    $value: "0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12)",
-    filePath: "../../design-tokens/primitives/globals.json",
-    isSource: true,
-    original: {
-      $type: "shadow",
-      $value: [
-        {
-          color: "rgba(0,0,0,0.14)",
-          blur: "1",
-          spread: "0",
-          offsetX: "0",
-          offsetY: "0"
-        },
-        {
-          color: "rgba(0,0,0,0.12)",
-          blur: "4",
-          spread: "0",
-          offsetX: "0",
-          offsetY: "2"
-        },
-        {
-          blur: "8",
-          spread: "0",
-          color: "rgba(0,0,0,0.12)",
-          offsetX: "0",
-          offsetY: "4"
-        }
-      ]
-    },
-    name: "--ds-shadow-300",
-    attributes: {},
-    path: [
-      "shadow",
-      "300"
-    ],
-    key: "{shadow.300}"
-  },
-  {
-    $type: "shadow",
-    $value: "0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14)",
-    filePath: "../../design-tokens/primitives/globals.json",
-    isSource: true,
-    original: {
-      $type: "shadow",
-      $value: [
-        {
-          color: "rgba(0,0,0,0.13)",
-          blur: "1",
-          spread: "0",
-          offsetX: "0",
-          offsetY: "0"
-        },
-        {
-          color: "rgba(0,0,0,0.13)",
-          blur: "5",
-          spread: "0",
-          offsetX: "0",
-          offsetY: "3"
-        },
-        {
-          blur: "12",
-          spread: "0",
-          color: "rgba(0,0,0,0.14)",
-          offsetX: "0",
-          offsetY: "6"
-        }
-      ]
-    },
-    name: "--ds-shadow-400",
-    attributes: {},
-    path: [
-      "shadow",
-      "400"
-    ],
-    key: "{shadow.400}"
-  },
-  {
-    $type: "shadow",
-    $value: "0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16)",
-    filePath: "../../design-tokens/primitives/globals.json",
-    isSource: true,
-    original: {
-      $type: "shadow",
-      $value: [
-        {
-          color: "rgba(0,0,0,0.12)",
-          blur: "1",
-          spread: "0",
-          offsetX: "0",
-          offsetY: "0"
-        },
-        {
-          color: "rgba(0,0,0,0.16)",
-          blur: "8",
-          spread: "0",
-          offsetX: "0",
-          offsetY: "4"
-        },
-        {
-          blur: "24",
-          spread: "0",
-          color: "rgba(0,0,0,0.16)",
-          offsetX: "0",
-          offsetY: "12"
-        }
-      ]
-    },
-    name: "--ds-shadow-500",
-    attributes: {},
-    path: [
-      "shadow",
-      "500"
-    ],
-    key: "{shadow.500}"
-  },
-  {
-    $type: "shadow",
-    $value: "0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12)",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "shadow",
-      $value: "{shadow.100}"
-    },
-    name: "--ds-shadow-xs",
-    attributes: {},
-    path: [
-      "shadow",
-      "xs"
-    ],
-    key: "{shadow.xs}"
-  },
-  {
-    $type: "shadow",
-    $value: "0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1)",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "shadow",
-      $value: "{shadow.200}"
-    },
-    name: "--ds-shadow-sm",
-    attributes: {},
-    path: [
-      "shadow",
-      "sm"
-    ],
-    key: "{shadow.sm}"
-  },
-  {
-    $type: "shadow",
-    $value: "0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12)",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "shadow",
-      $value: "{shadow.300}"
-    },
-    name: "--ds-shadow-md",
-    attributes: {},
-    path: [
-      "shadow",
-      "md"
-    ],
-    key: "{shadow.md}"
-  },
-  {
-    $type: "shadow",
-    $value: "0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14)",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "shadow",
-      $value: "{shadow.400}"
-    },
-    name: "--ds-shadow-lg",
-    attributes: {},
-    path: [
-      "shadow",
-      "lg"
-    ],
-    key: "{shadow.lg}"
-  },
-  {
-    $type: "shadow",
-    $value: "0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16)",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "shadow",
-      $value: "{shadow.500}"
-    },
-    name: "--ds-shadow-xl",
-    attributes: {},
-    path: [
-      "shadow",
-      "xl"
-    ],
-    key: "{shadow.xl}"
   }
 ] 

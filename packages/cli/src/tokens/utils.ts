@@ -44,9 +44,11 @@ export const pathStartsWithOneOf = R.curry((paths: string[], token: TransformedT
   }
 
   const tokenPath = mapToLowerCase(token.path);
-  const matchPathsStartingWith = R.map((path) => R.startsWith([path], tokenPath), mapToLowerCase(paths));
+  const pathsLowerCase = mapToLowerCase(paths);
 
-  return hasAnyTruth(matchPathsStartingWith);
+  return hasAnyTruth(
+    R.map((path) => R.anyPass([R.startsWith(['primitives', path]), R.startsWith([path])])(tokenPath), pathsLowerCase),
+  );
 });
 
 export function isSemanticToken(token: TransformedToken): boolean {

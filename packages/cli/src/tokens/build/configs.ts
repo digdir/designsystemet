@@ -8,7 +8,7 @@ import { buildOptions } from '../build.js';
 import { isColorCategoryToken, isDigit, pathStartsWithOneOf, typeEquals } from '../utils.js';
 import { formats } from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
-import { resolveMath, sizeRem, typographyName, unitless } from './transformers.js';
+import { removePrimitivesName, resolveMath, sizeRem, typographyName, unitless } from './transformers.js';
 import type {
   ColorCategories,
   GetSdConfigOptions,
@@ -32,6 +32,7 @@ StyleDictionary.registerTransform(sizeRem);
 StyleDictionary.registerTransform(typographyName);
 StyleDictionary.registerTransform(resolveMath);
 StyleDictionary.registerTransform(unitless);
+StyleDictionary.registerTransform(removePrimitivesName);
 
 StyleDictionary.registerFormat(jsTokens);
 for (const format of Object.values(formats)) {
@@ -45,6 +46,7 @@ const dsTransformers = [
   sizeRem.name,
   unitless.name,
   'ts/typography/fontWeight',
+  removePrimitivesName.name,
   typographyName.name,
   'ts/color/modifiers',
   'ts/color/css/hexrgba',
@@ -250,6 +252,7 @@ const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }, { 
           sizeRem.name,
           'ts/size/lineheight',
           'ts/typography/fontWeight',
+          removePrimitivesName.name,
           typographyName.name,
         ],
         files: [

@@ -144,8 +144,9 @@ const colorCategory: Format = {
   },
 };
 
-const isNumericBorderRadiusToken = (t: TransformedToken) => t.path[0] === 'border-radius' && isDigit(t.path[1]);
-export const isNumericSizeToken = (t: TransformedToken) => pathStartsWithOneOf(['_size'], t) && isDigit(t.path[1]);
+const isNumericBorderRadiusToken = (t: TransformedToken) =>
+  pathStartsWithOneOf(['border-radius'], t) && isDigit(t.path[1]);
+export const isNumericSizeToken = (t: TransformedToken) => pathStartsWithOneOf(['_size'], t) && isDigit(t.path[2]);
 
 export const isSquashTokens = R.anyPass([isNumericBorderRadiusToken, isNumericSizeToken]);
 
