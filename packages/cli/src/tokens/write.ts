@@ -27,7 +27,7 @@ export const stringify = (data: unknown) => JSON.stringify(data, null, 2);
 const generateColorSchemeFile = (scheme: ColorScheme, name: Collection, tokens: TokensSet, outPath: string): File => {
   const path = `${outPath}/primitives/modes/color-scheme/${scheme}`;
   return {
-    data: stringify(tokens),
+    data: stringify({ primitives: { ...tokens } }),
     path,
     filePath: `${path}/${name}.json`,
   };
@@ -41,7 +41,7 @@ const generateTypographyFile = (
 ): File => {
   const path = `${outPath}/primitives/modes/typography/${folder}`;
   return {
-    data: stringify(tokens),
+    data: stringify({ primitives: { ...tokens } }),
     path,
     filePath: `${path}/${name}.json`,
   };

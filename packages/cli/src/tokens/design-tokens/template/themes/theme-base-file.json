@@ -3,21 +3,21 @@
   "font": {
     "family": {
       "$type": "fontFamilies",
-      "$value": "{<theme>.main}"
+      "$value": "{primitives.<theme>.main}"
     }
   },
   "font-weight": {
     "medium": {
       "$type": "fontWeights",
-      "$value": "{<theme>.bold}"
+      "$value": "{primitives.<theme>.bold}"
     },
     "semibold": {
       "$type": "fontWeights",
-      "$value": "{<theme>.extra-bold}"
+      "$value": "{primitives.<theme>.extra-bold}"
     },
     "regular": {
       "$type": "fontWeights",
-      "$value": "{<theme>.regular}"
+      "$value": "{primitives.<theme>.regular}"
     }
   },
   "border-radius": {

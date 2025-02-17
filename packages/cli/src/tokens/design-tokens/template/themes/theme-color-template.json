@@ -1,66 +1,66 @@
 {
   "1": {
     "$type": "color",
-    "$value": "{<theme>.<color>.1}"
+    "$value": "{primitives.<theme>.<color>.1}"
   },
   "2": {
     "$type": "color",
-    "$value": "{<theme>.<color>.2}"
+    "$value": "{primitives.<theme>.<color>.2}"
   },
   "3": {
     "$type": "color",
-    "$value": "{<theme>.<color>.3}"
+    "$value": "{primitives.<theme>.<color>.3}"
   },
   "4": {
     "$type": "color",
-    "$value": "{<theme>.<color>.4}"
+    "$value": "{primitives.<theme>.<color>.4}"
   },
   "5": {
     "$type": "color",
-    "$value": "{<theme>.<color>.5}"
+    "$value": "{primitives.<theme>.<color>.5}"
   },
   "6": {
     "$type": "color",
-    "$value": "{<theme>.<color>.6}"
+    "$value": "{primitives.<theme>.<color>.6}"
   },
   "7": {
     "$type": "color",
-    "$value": "{<theme>.<color>.7}"
+    "$value": "{primitives.<theme>.<color>.7}"
   },
   "8": {
     "$type": "color",
-    "$value": "{<theme>.<color>.8}"
+    "$value": "{primitives.<theme>.<color>.8}"
   },
   "9": {
     "$type": "color",
-    "$value": "{<theme>.<color>.9}"
+    "$value": "{primitives.<theme>.<color>.9}"
   },
   "10": {
     "$type": "color",
-    "$value": "{<theme>.<color>.10}"
+    "$value": "{primitives.<theme>.<color>.10}"
   },
   "11": {
     "$type": "color",
-    "$value": "{<theme>.<color>.11}"
+    "$value": "{primitives.<theme>.<color>.11}"
   },
   "12": {
     "$type": "color",
-    "$value": "{<theme>.<color>.12}"
+    "$value": "{primitives.<theme>.<color>.12}"
   },
   "13": {
     "$type": "color",
-    "$value": "{<theme>.<color>.13}"
+    "$value": "{primitives.<theme>.<color>.13}"
   },
   "14": {
     "$type": "color",
-    "$value": "{<theme>.<color>.14}"
+    "$value": "{primitives.<theme>.<color>.14}"
   },
   "15": {
     "$type": "color",
-    "$value": "{<theme>.<color>.15}"
+    "$value": "{primitives.<theme>.<color>.15}"
   },
   "16": {
     "$type": "color",
-    "$value": "{<theme>.<color>.16}"
+    "$value": "{primitives.<theme>.<color>.16}"
   }
 }
