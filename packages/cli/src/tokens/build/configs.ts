@@ -262,23 +262,12 @@ const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }, { 
                 token,
               );
 
+              // Remove primitive typgography tokens
+              if (/primitives\/modes\/typography\/(primary|secondary)/.test(token.filePath)) return false;
+
               return (
                 included &&
-                !pathStartsWithOneOf(
-                  [
-                    'spacing',
-                    'sizing',
-                    'size',
-                    '_size',
-                    'border-width',
-                    'border-radius',
-                    'theme',
-                    'theme2',
-                    'theme3',
-                    'theme4',
-                  ],
-                  token,
-                )
+                !pathStartsWithOneOf(['spacing', 'sizing', 'size', '_size', 'border-width', 'border-radius'], token)
               );
             },
           },

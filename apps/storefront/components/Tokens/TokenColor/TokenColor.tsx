@@ -4,24 +4,17 @@ import cl from 'clsx/lite';
 import { useRef } from 'react';
 import type { TransformedToken } from 'style-dictionary';
 
-import type { ColorNumber } from '@digdir/designsystemet/color';
+import type { ColorNumber, HexColor } from '@digdir/designsystemet/color';
 
 import classes from './TokenColor.module.css';
 interface TokenColorProps {
-  value: string;
+  value: HexColor;
   token: TransformedToken;
 }
 
 /* The original.value is something like "{global.yellow.1}", and we need to get the weight between the last . and } */
-export function getColorWeight(value: string): ColorNumber | undefined {
+export function getColorNumber(value: string): ColorNumber | undefined {
   const firstSplit = value.split('.').pop()?.replace('}', '');
-
-  if (firstSplit?.includes('contrast-')) {
-    if (firstSplit.includes('contrast-1')) {
-      return 14;
-    }
-    return 15;
-  }
 
   const parsed = parseInt(firstSplit as string);
 
@@ -31,14 +24,14 @@ export function getColorWeight(value: string): ColorNumber | undefined {
 const TokenColor = ({ value, token }: TokenColorProps) => {
   const colorModalRef = useRef<HTMLDialogElement>(null);
 
-  const weight = getColorWeight(token.original.$value as string);
-  const Element = weight ? 'button' : 'div';
+  const number = getColorNumber(token.original.$value as string);
+  const Element = number ? 'button' : 'div';
 
   return (
     <>
-      {weight ? (
+      {number ? (
         <ColorModal
-          weight={weight}
+          number={number}
           hex={value}
           namespace={token.path[1]}
           colorModalRef={colorModalRef}
@@ -48,10 +41,10 @@ const TokenColor = ({ value, token }: TokenColorProps) => {
         <Element
           style={{ backgroundColor: value }}
           className={cl(classes.color, 'ds-focus')}
-          onClick={() => weight && colorModalRef.current?.showModal()}
+          onClick={() => number && colorModalRef.current?.showModal()}
           aria-label={
-            weight &&
-            `Se mer om ${token.path[1]} ${getColorInfoFromPosition(weight).displayName}`
+            number &&
+            `Se mer om ${token.path[1]} ${getColorInfoFromPosition(number).displayName}`
           }
         ></Element>
       </div>

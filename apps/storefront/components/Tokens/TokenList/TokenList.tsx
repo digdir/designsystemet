@@ -14,6 +14,7 @@ import { TokenFontSize } from '../TokenFontSize/TokenFontSize';
 import { TokenShadow } from '../TokenShadow/TokenShadow';
 import { TokenSize } from '../TokenSize/TokenSize';
 
+import type { HexColor } from '@digdir/designsystemet/color';
 import { TokenBorderRadius } from '../TokenBorderRadius/TokenBorderRadius';
 import classes from './TokenList.module.css';
 
@@ -38,7 +39,6 @@ const TokensTable = ({ tokens }: TokenTableProps) => {
       <Table.Head>
         <Table.Row>
           <Table.HeaderCell>Navn</Table.HeaderCell>
-          <Table.HeaderCell>Verdi</Table.HeaderCell>
           <Table.HeaderCell>Reell verdi</Table.HeaderCell>
           <Table.HeaderCell>Visualisering</Table.HeaderCell>
         </Table.Row>
@@ -59,7 +59,6 @@ const TokensTable = ({ tokens }: TokenTableProps) => {
                     value={name}
                   />
                 </Table.Cell>
-                <Table.Cell>{value}</Table.Cell>
                 <Table.Cell>
                   <ComputedValue value={value} />
                 </Table.Cell>
@@ -94,7 +93,12 @@ const ComputedValue = ({ value }: { value: string }) => {
     setComputedValue(computedValue);
   }, [value]);
 
-  return <>{computedValue}</>;
+  const getRoundValue = (value: string) => {
+    const [value_, px] = value.split('px');
+    return Math.round(Number(value_)) + 'px';
+  };
+
+  return <>{getRoundValue(computedValue)}</>;
 };
 
 type TokenCardsProps = {
@@ -139,7 +143,7 @@ type TokenCardProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
-  const val = token.$value as string;
+  const val = token.$value as HexColor;
   const title = token.path
     .slice(token.path.length - 1, token.path.length)
     .toString();

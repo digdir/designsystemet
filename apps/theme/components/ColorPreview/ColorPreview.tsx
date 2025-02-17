@@ -22,7 +22,7 @@ type ViewType = 'list' | 'grid';
 export const ColorPreview = () => {
   const colors = useThemeStore((state) => state.colors);
   const [view, setView] = useState<ViewType>('grid');
-  const appearance = useThemeStore((state) => state.appearance);
+  const colorScheme = useThemeStore((state) => state.colorScheme);
 
   type CardProps = {
     color: {
@@ -42,7 +42,7 @@ export const ColorPreview = () => {
 
     let lightColors = colors.light;
 
-    if (appearance === 'dark') {
+    if (colorScheme === 'dark') {
       lightColors = colors.dark;
     }
 

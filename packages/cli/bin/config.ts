@@ -39,13 +39,15 @@ const themeSchema = z.object(
       },
       { description: 'Defines the colors for this theme' },
     ),
-    typography: z.object(
-      {
-        fontFamily: z.string({ description: 'Sets the font-family for this theme' }),
-      },
-      { description: 'Defines the typography for a given theme' },
-    ),
-    borderRadius: z.number({ description: 'Defines the border-radius for this theme' }),
+    typography: z
+      .object(
+        {
+          fontFamily: z.string({ description: 'Sets the font-family for this theme' }),
+        },
+        { description: 'Defines the typography for a given theme' },
+      )
+      .optional(),
+    borderRadius: z.number({ description: 'Defines the border-radius for this theme' }).optional(),
   },
   { description: 'An object defining a theme. The property name holding the object becomes the theme name.' },
 );

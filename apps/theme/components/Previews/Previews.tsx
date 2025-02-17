@@ -4,6 +4,7 @@ import { useState } from 'react';
 import {
   type ColorInfo,
   type ColorNumber,
+  type ColorScheme,
   type CssColor,
   generateColorSchemes,
   getColorInfoFromPosition,
@@ -48,7 +49,7 @@ const themes: {
 
 export const Previews = () => {
   const [theme, setTheme] = useState<keyof typeof themes>('blue');
-  const [appearance, setAppearance] = useState<'light' | 'dark'>('light');
+  const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
 
   const getDsMainVars = (colors: {
     light: ColorInfo[];
@@ -58,7 +59,7 @@ export const Previews = () => {
 
     let lightColors = colors.light;
 
-    if (appearance === 'dark') {
+    if (colorScheme === 'dark') {
       lightColors = colors.dark;
     }
 
@@ -96,8 +97,8 @@ export const Previews = () => {
           </ToggleGroup.Item>
         </ToggleGroup>
         <ToggleGroup
-          value={appearance}
-          onChange={(v) => setAppearance(v as 'light' | 'dark')}
+          value={colorScheme}
+          onChange={(v) => setColorScheme(v as ColorScheme)}
         >
           <ToggleGroup.Item value='light'>Lys</ToggleGroup.Item>
           <ToggleGroup.Item value='dark'>Mørk</ToggleGroup.Item>
@@ -106,7 +107,7 @@ export const Previews = () => {
 
       <div
         className={classes.preview}
-        data-color-scheme={appearance}
+        data-color-scheme={colorScheme}
         style={{
           ...getThemeVariables(themes[theme].hex),
           ...themes[theme].cssVars,

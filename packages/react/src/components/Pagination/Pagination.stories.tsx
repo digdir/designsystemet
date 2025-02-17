@@ -2,7 +2,8 @@ import { useArgs } from '@storybook/preview-api';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { useState } from 'react';
-import { Pagination, type UsePaginationProps, usePagination } from '.';
+import { Pagination } from '.';
+import { type UsePaginationProps, usePagination } from '../../utilities';
 
 export default {
   title: 'Komponenter/Pagination',

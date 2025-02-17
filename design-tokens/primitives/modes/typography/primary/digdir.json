@@ -1,16 +1,16 @@
 {
-  "theme4": {
+  "digdir": {
     "main": {
       "$type": "fontFamilies",
-      "$value": "IBM Plex Mono"
+      "$value": "Inter"
     },
     "bold": {
       "$type": "fontWeights",
-      "$value": "Regular"
+      "$value": "Medium"
     },
     "extra-bold": {
       "$type": "fontWeights",
-      "$value": "Bold"
+      "$value": "Semi bold"
     },
     "regular": {
       "$type": "fontWeights",

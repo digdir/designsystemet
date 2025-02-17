@@ -26,7 +26,7 @@ export const Group = ({
   colorScale,
   namespace,
 }: GroupProps) => {
-  const appearance = useThemeStore((state) => state.appearance);
+  const colorScheme = useThemeStore((state) => state.colorScheme);
 
   const colorModalRefs = useRef<React.RefObject<HTMLDialogElement | null>[]>(
     [],
@@ -54,16 +54,16 @@ export const Group = ({
             <Fragment key={index + 'fragment' + namespace}>
               <ColorModal
                 colorModalRef={colorModalRefs.current[index]}
-                hex={colorScale[appearance][item].hex}
+                hex={colorScale[colorScheme][item].hex}
                 namespace={namespace}
-                weight={colorScale[appearance][item].position}
+                number={colorScale[colorScheme][item].number}
               />
               <RovingFocusItem
-                value={namespace + colorScale[appearance][item].position}
+                value={namespace + colorScale[colorScheme][item].number}
                 asChild
               >
                 <Color
-                  color={colorScale[appearance][item].hex}
+                  color={colorScale[colorScheme][item].hex}
                   colorNumber={item}
                   contrast={'dd'}
                   lightness={'dd'}

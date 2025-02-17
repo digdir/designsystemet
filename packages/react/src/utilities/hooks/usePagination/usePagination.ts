@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import type { MouseEvent } from 'react';
-import type { PaginationButtonProps } from './PaginationButton';
+import type { PaginationButtonProps } from '../../../components';
 
 const getSteps = (now: number, max: number, show: number) => {
   const offset = (show - 1) / 2;
@@ -21,24 +21,23 @@ export type UsePaginationProps = {
    */
   currentPage: number;
   /**
-   * Function to change currentPage - typically returned from useState
-   */
-  setCurrentPage?: (page: number) => void;
-  /**
-   * Callback when the page changes
-   * (event: MouseEvent<HTMLElement>, page: number) => void
-   */
-  onChange?: (event: MouseEvent<HTMLElement>, page: number) => void;
-  /**
    * The total number of pages
    * @default 1
    */
   totalPages: number;
   /**
    * The maximum number of pages to show
-   * @default 1
+   * @default 7
    */
   showPages?: number;
+  /**
+   * Callback to set the current page
+   */
+  setCurrentPage?: (page: number) => void;
+  /**
+   * Callback when the page changes
+   */
+  onChange?: (event: MouseEvent<HTMLElement>, page: number) => void;
 };
 
 /**
@@ -74,7 +73,7 @@ export const usePagination = ({
   currentPage = 1,
   setCurrentPage,
   onChange,
-  totalPages,
+  totalPages = 1,
   showPages = 7,
 }: UsePaginationProps) =>
   useMemo(() => {
@@ -90,8 +89,17 @@ export const usePagination = ({
       /** Number of steps */
       pages: getSteps(currentPage, totalPages, showPages).map(
         (page, index) => ({
+          /**
+           * Page number or "ellipsis" for the ellipsis item
+           */
           page: page || 'ellipsis',
+          /**
+           * Unique key for the item
+           */
           itemKey: page ? `page-${page}` : `ellipsis-${index}`, // React key utility
+          /**
+           * Properties to spread on Pagination.Button
+           */
           buttonProps: (page
             ? {
                 'aria-current': page === currentPage ? 'page' : undefined,
