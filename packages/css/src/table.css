@@ -1,7 +1,7 @@
 .ds-table {
   --dsc-table-background--hover: var(--ds-color-surface-hover);
   --dsc-table-background--zebra: var(--ds-color-surface-tinted);
-  --dsc-table-background: var(--ds-color-background-default);
+  --dsc-table-background: transparent;
   --dsc-table-border-color: var(--ds-color-border-subtle);
   --dsc-table-border-radius: var(--ds-border-radius-md);
   --dsc-table-border-style: solid;
