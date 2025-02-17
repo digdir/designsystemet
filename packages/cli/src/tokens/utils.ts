@@ -44,10 +44,12 @@ export const pathStartsWithOneOf = R.curry((paths: string[], token: TransformedT
   }
 
   const tokenPath = mapToLowerCase(token.path);
-  const pathsLowerCase = mapToLowerCase(paths);
 
   return hasAnyTruth(
-    R.map((path) => R.anyPass([R.startsWith(['primitives', path]), R.startsWith([path])])(tokenPath), pathsLowerCase),
+    R.map(
+      (path) => R.anyPass([R.startsWith(['primitives', path]), R.startsWith([path])])(tokenPath),
+      mapToLowerCase(paths),
+    ),
   );
 });
 
