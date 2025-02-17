@@ -37,7 +37,6 @@ export const typographyName: Transform = {
   name: 'name/typography',
   type: 'name',
   transitive: true,
-  // expanded tokens have different type so we match on path instead
   filter: (token) => pathStartsWithOneOf(['typography'], token),
   transform: (token) => {
     return token.name.replace('-typography', '');
@@ -48,7 +47,6 @@ export const removePrimitivesName: Transform = {
   name: 'name/removePrimitives',
   type: 'name',
   transitive: true,
-  // expanded tokens have different type so we match on path instead
   filter: (token) => pathStartsWithOneOf(['primitives'], token),
   transform: (token) => {
     return token.name.replace('-primitives', '');
