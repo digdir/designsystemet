@@ -197,9 +197,8 @@ export const MultiSelect = forwardRef<UHTMLTagsElement, MultiSelectProps>(
         // Handle custom filter
         if (filter !== false) {
           let index = 0;
-          for (const option of list.children as HTMLCollectionOf<HTMLOptionElement>) {
-            // Skip <datalist> children that are not <option>
-            if ('value' in option)
+          for (const option of list.getElementsByTagName('u-option')) {
+            if (!option.hasAttribute('data-empty'))
               option.disabled = !filter({
                 index: index++, // Increment index for each <option>
                 input,

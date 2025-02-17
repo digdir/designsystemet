@@ -1,19 +1,9 @@
-import { Slot } from '@radix-ui/react-slot';
-import type { HTMLAttributes } from 'react';
+import type { OptionHTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
-import type { MergeRight } from '../../utilities';
 
-export type MultiSelectEmptyProps = MergeRight<
-  DefaultProps & HTMLAttributes<HTMLDivElement>,
-  {
-    /**
-     * Change the default rendered element for the one passed as a child, merging their props and behavior.
-     * @default false
-     */
-    asChild?: boolean;
-  }
->;
+export type MultiSelectEmptyProps = DefaultProps &
+  OptionHTMLAttributes<HTMLOptionElement>;
 
 /**
  * Component that provides an empty MultiSelect list.
@@ -26,18 +16,11 @@ export type MultiSelectEmptyProps = MergeRight<
  * </MultiSelect.List>
  */
 export const MultiSelectEmpty = forwardRef<
-  HTMLDivElement,
+  HTMLOptionElement,
   MultiSelectEmptyProps
->(function MultiSelectEmpty({ asChild, ...rest }, ref) {
-  const Component = asChild ? Slot : 'div';
-
+>(function MultiSelectEmpty(rest, ref) {
   return (
-    <Component
-      aria-disabled='true'
-      ref={ref}
-      role='option'
-      tabIndex={0}
-      {...rest}
-    />
+    // biome-ignore lint/a11y/noInteractiveElementToNoninteractiveRole: Empty option shoult not be interactive
+    <u-option data-empty role='none' ref={ref} {...rest} />
   );
 });

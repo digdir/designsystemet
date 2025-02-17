@@ -43,8 +43,12 @@
     max-height: 200px;
 
     /* Hide <multi-select.Empty> if any <multi-select.Option> is visible */
-    &:has(u-option:not([hidden]):not([aria-disabled='true'])) > :not(u-option) {
+    &:has(u-option:not([hidden]):not([aria-disabled='true'])) > u-option[data-empty] {
       display: none;
+    }
+    & > u-option[data-empty] {
+      cursor: default;
+      display: block;
     }
 
     &:not(:has(u-option:hover)) > u-option:focus-visible {
@@ -85,7 +89,7 @@
       }
 
       @media (hover: hover) and (pointer: fine) {
-        &:is(u-option):hover {
+        &:not([data-empty]):hover {
           border-left-color: var(--dsc-multi-select-option-border-color);
           background: var(--dsc-multi-select-option-background--selected);
         }
