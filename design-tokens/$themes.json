@@ -1849,8 +1849,7 @@
     },
     "selectedTokenSets": {
       "semantic/style": "enabled",
-      "semantic/color": "enabled",
-      "primitives/globals": "source"
+      "semantic/color": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:34811:5976",
     "$figmaModeId": "34811:5",

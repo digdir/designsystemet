@@ -1,6 +1,5 @@
 {
   "tokenSetOrder": [
-    "primitives/globals",
     "primitives/modes/size/small",
     "primitives/modes/size/medium",
     "primitives/modes/size/large",
