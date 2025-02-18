@@ -138,7 +138,7 @@ In the example, replace `<your-path>` with the actual path you used when running
     // ...other compilerOptions
     "types": [
       // ...other types
-      "<your-path>/colors.ts"
+      "<your-path>/colors.d.ts"
       ]
   },
 }

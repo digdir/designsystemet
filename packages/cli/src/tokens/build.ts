@@ -163,7 +163,7 @@ export async function buildTokens(options: Options): Promise<void> {
 }
 
 async function writeColorTypeDeclaration($themes: ProcessedThemeObject[], outPath: string, dry?: boolean) {
-  const colorsFileName = 'colors.ts';
+  const colorsFileName = 'colors.d.ts';
   console.log(`\n🍱 Building ${chalk.green('type declarations')}`);
   console.log(colorsFileName);
   const mainAndSupportColors = $themes
