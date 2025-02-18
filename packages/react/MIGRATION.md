@@ -5,6 +5,7 @@ This will walk you through changes done from 0.63.1 to 1.0.0
 ## General
 
 - `size` is now `data-size`
+    - `small`, `medium` and `large` have been removed as size keywords. Use `sm`, `md` and `lg`
 - `color` is now `data-color`
 - all `portal`-props have been removed
 
@@ -39,4 +40,47 @@ This component has been deprecated, use `Suggestion` for single select or `Multi
 ### DropdownMenu
 - Renamed to `Dropdown`
 - `Dropdown.Group` has been renamed to `Dropdown.List`
-- `.Item` has been split to `.Item` and `.Button`
+- `Dropdown.Item` has been split to `.Item` and `.Button`
+
+### ErrorSummary
+- `ErrorSummary.Root` is now `ErrorSummary`
+- `ErrorSummary.Item` has been split into `.Item` and `.Link`
+
+### Fieldset
+- `description` prop has been removed, it is now `<Fieldset.Description>`
+- `legend` prop has been removed, it is now `<Fieldset.Legend>`
+- `error` prop has been removed
+
+### Helptext
+This component has been removed. You can replicate this using `Popover`.
+Norwegian article: [https://www.designsystemet.no/bloggen/2025/helptext-blir-fjerna-kva-gjer-du](https://www.designsystemet.no/bloggen/2025/helptext-blir-fjerna-kva-gjer-du)
+
+### Link
+- `inverted`  prop has been removed, use `data-color-scheme="dark"`
+
+### List
+- `List.Root` has been removed
+- `List.Heading` has been removed, use `<Heading>`
+
+### Skeleton
+- `Skeleton.*` has been removed, use `variant="*"`
+
+### Spinner
+- `title`  prop has been removed, use `aria-label`
+- `variant`  prop has been removed, use `data-color="*"` or `data-color-scheme="*"`
+
+### Modal
+- Renamed to `Dialog`
+- `Modal.Header/Content/Footer` has been removed, use `Modal.Block`
+
+### NativeSelect
+- Renamed to `Select`
+- `label` prop has been removed, use `<Label>`
+    - `hideLabel` has been removed
+- `description` prop has been removed, use `Field.Description` inside `<Field>`
+- `error` prop has been removed, use `<ValidationMessage>` inside `<Field>`
+
+### Pagination
+- Using only `<Pagination />` has been removed, use compound components with `usePagination`
+- `Pagination.Previous/Next` has been removed, use `Pagination.Button`
+- `Pagination.Content` has been renamed to `Pagination.List`
