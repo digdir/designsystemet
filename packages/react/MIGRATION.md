@@ -84,3 +84,18 @@ Norwegian article: [https://www.designsystemet.no/bloggen/2025/helptext-blir-fje
 - Using only `<Pagination />` has been removed, use compound components with `usePagination`
 - `Pagination.Previous/Next` has been removed, use `Pagination.Button`
 - `Pagination.Content` has been renamed to `Pagination.List`
+
+### Popover
+- `Popover.Content` has been renamed to `Popover`
+- `onOpenChange` has been removed, use `onOpen` and `onClose`
+- `variant` has been removed, use `data-color`
+
+### Radio
+- `Radio.Group` has been removed, use `Fieldset` and `useRadioGroup` to get the same behaviour
+
+### Search
+- This component now uses compund components
+    - All props have been removed from the component due to this
+
+### Skiplink
+No changes
