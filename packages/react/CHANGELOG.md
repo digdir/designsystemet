@@ -1,5 +1,31 @@
 # Change Log
 
+## 1.0.0-next.49
+
+### Minor Changes
+
+- Disallow arbitrary strings for data-size, and only allow arbitrary strings for data-color if generated color types haven't been added to the downstream TypeScript environment. This fixes missing controls for data-size and data-color in the Storybook docs. ([#3042](https://github.com/digdir/designsystemet/pull/3042))
+
+### Patch Changes
+
+- **Card**: Add `data-variant="default/tinted"`, `default` is default ([#3131](https://github.com/digdir/designsystemet/pull/3131))
+
+- **Details**: Add `data-variant="default/tinted"`, `default` is default. ([#3131](https://github.com/digdir/designsystemet/pull/3131))
+
+  - This can also be controlled from `Card`
+
+- **Button**: `loading` type now correctly accepts a `ReactNode` ([#3074](https://github.com/digdir/designsystemet/pull/3074))
+
+- **Button**: Make loading spinner scale accordion to button size ([#3074](https://github.com/digdir/designsystemet/pull/3074))
+
+- Fix `ref` type on `useCheckboxGroup` and `useRadioGroup` ([#3111](https://github.com/digdir/designsystemet/pull/3111))
+
+- Rename to `Modal` to `Dialog` ([#3106](https://github.com/digdir/designsystemet/pull/3106))
+
+- **Popover**: Add `data-variant="default/tinted"`, `default` is default ([#3131](https://github.com/digdir/designsystemet/pull/3131))
+
+- **Badge**: Add `data-variant="base/tinted"`, `base` is default ([#3131](https://github.com/digdir/designsystemet/pull/3131))
+
 ## 1.0.0-next.48
 
 ### Minor Changes
