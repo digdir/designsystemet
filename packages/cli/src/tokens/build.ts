@@ -163,7 +163,7 @@ export async function buildTokens(options: Options): Promise<void> {
 }
 
 async function writeColorTypeDeclaration($themes: ProcessedThemeObject[], outPath: string, dry?: boolean) {
-  const colorsFileName = 'colors.d.ts';
+  const colorsFileName = 'colors.ts';
   console.log(`\n🍱 Building ${chalk.green('type declarations')}`);
   console.log(colorsFileName);
   const mainAndSupportColors = $themes
@@ -174,7 +174,7 @@ async function writeColorTypeDeclaration($themes: ProcessedThemeObject[], outPat
   const typeDeclaration = `
 import type {} from '@digdir/designsystemet-react/colors';
 
-declare module '@digdir/designsystemet-react/types/colors' {
+declare module '@digdir/designsystemet-react/colors' {
   export interface MainAndSupportColors {
 ${mainAndSupportColors.map((color) => `    ${color}: never;`).join('\n')}
   }

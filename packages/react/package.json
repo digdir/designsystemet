@@ -17,10 +17,10 @@
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js"
     },
-    "./types/colors": {
+    "./colors": {
       "types": "./dist/types/colors.d.ts"
     },
-    "./types/react": {
+    "./react-types": {
       "types": "./dist/react-types.d.ts"
     }
   },
