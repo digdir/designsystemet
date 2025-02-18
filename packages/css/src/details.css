@@ -8,6 +8,7 @@
   --dsc-details-padding: var(--ds-size-2) var(--ds-size-4);
   --dsc-details-size: var(--ds-size-14);
   --dsc-details-background: var(--ds-color-background-default);
+  --dsc-details-color: var(--ds-color-text-default);
   --dsc-details-heading-background--hover: var(--ds-color-surface-tinted);
   --dsc-details-heading-background--open: var(--ds-color-background-tinted);
   --dsc-details-heading-background: var(--ds-color-background-default);
@@ -38,6 +39,7 @@
     align-items: center;
     background: var(--dsc-details-heading-background);
     box-sizing: border-box;
+    color: var(--dsc-details-color);
     cursor: pointer;
     list-style: none;
     min-height: var(--dsc-details-size);
