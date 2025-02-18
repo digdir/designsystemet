@@ -138,7 +138,7 @@ In the example, replace `<your-path>` with the actual path you used when running
     // ...other compilerOptions
     "types": [
       // ...other types
-      "<your-path>/colors.d.ts"
+      "<your-path>/colors.ts"
       ]
   },
 }
@@ -160,7 +160,7 @@ add the following to your `tsconfig.json`:
     // ...other compilerOptions
     "types": [
       // ...other types
-      "@digdir/designsystemet-react/types/react"
+      "@digdir/designsystemet-react/react-types"
       ]
   },
 }
