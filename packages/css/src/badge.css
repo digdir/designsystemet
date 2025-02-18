@@ -5,7 +5,7 @@
   --dsc-badge-size: calc(var(--ds-size-3) + calc(var(--ds-size-1) / 2));
 
   &::before {
-    content: attr(data-count);
+    content: attr(data-count, '');
     background: var(--dsc-badge-background);
     border-radius: var(--ds-border-radius-full);
     box-sizing: border-box;
