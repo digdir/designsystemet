@@ -12,6 +12,7 @@
   --dsc-table-divider-border-width: calc(var(--ds-border-width-default) + 1px);
   --dsc-table-header-background--hover: var(--ds-color-surface-tinted);
   --dsc-table-header-background--sorted: var(--ds-color-background-tinted);
+  --dsc-table-header-background--sticky: var(--ds-color-background-default);
   --dsc-table-header-background: transparent;
   --dsc-table-padding: var(--ds-size-2) var(--ds-size-3);
   --dsc-table-sort-size: var(--ds-size-6);
@@ -173,6 +174,7 @@
     overflow: auto;
 
     & > thead > tr > :is(th, td) {
+      background: var(--dsc-table-header-background--sticky);
       position: sticky;
       top: 0;
       z-index: 2;
