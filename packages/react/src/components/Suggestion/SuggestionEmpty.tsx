@@ -1,19 +1,9 @@
-import { Slot } from '@radix-ui/react-slot';
-import type { HTMLAttributes } from 'react';
+import type { OptionHTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
-import type { MergeRight } from '../../utilities';
 
-export type SuggestionEmptyProps = MergeRight<
-  DefaultProps & HTMLAttributes<HTMLDivElement>,
-  {
-    /**
-     * Change the default rendered element for the one passed as a child, merging their props and behavior.
-     * @default false
-     */
-    asChild?: boolean;
-  }
->;
+export type SuggestionEmptyProps = DefaultProps &
+  OptionHTMLAttributes<HTMLOptionElement>;
 
 /**
  * Component that provides an empty suggestion list.
@@ -25,18 +15,12 @@ export type SuggestionEmptyProps = MergeRight<
  *   <Suggestion.Empty>Tomt</Suggestion.Empty>
  * </Suggestion.List>
  */
-export const SuggestionEmpty = forwardRef<HTMLDivElement, SuggestionEmptyProps>(
-  function SuggestionEmpty({ asChild, ...rest }, ref) {
-    const Component = asChild ? Slot : 'div';
-
-    return (
-      <Component
-        aria-disabled='true'
-        ref={ref}
-        role='option'
-        tabIndex={0}
-        {...rest}
-      />
-    );
-  },
-);
+export const SuggestionEmpty = forwardRef<
+  HTMLOptionElement,
+  SuggestionEmptyProps
+>(function SuggestionEmpty(rest, ref) {
+  return (
+    // biome-ignore lint/a11y/noInteractiveElementToNoninteractiveRole: Empty option shoult not be interactive
+    <u-option data-empty role='none' ref={ref} {...rest} />
+  );
+});
