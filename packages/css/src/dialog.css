@@ -32,6 +32,7 @@
   margin: 0;
   max-height: var(--dsc-dialog-max-height);
   max-width: var(--dsc-dialog-max-width);
+  overflow: auto;
   padding: var(--dsc-dialog-spacing);
   position: fixed;
   right: auto;
