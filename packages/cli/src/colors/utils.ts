@@ -1,6 +1,6 @@
 import chroma from 'chroma-js';
 import { Hsluv } from 'hsluv';
-import { colorMetadata } from './colorMetadata.js';
+import { colorMetadataByNumber } from './colorMetadata.js';
 import type { ColorNumber, CssColor, HexColor } from './types.js';
 
 /**
@@ -172,8 +172,8 @@ export const getLightnessFromHex = (hex: HexColor) => {
   return conv.hsluv_l;
 };
 
-export const getColorInfoFromPosition = (position: ColorNumber) => {
-  return colorMetadata[position];
+export const getColorByNumber = (position: ColorNumber) => {
+  return colorMetadataByNumber[position];
 };
 
 /**

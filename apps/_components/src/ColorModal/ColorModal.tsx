@@ -1,8 +1,7 @@
 import { Dialog, Heading, Paragraph } from '@digdir/designsystemet-react';
 import type { ColorNumber, HexColor } from '@digdir/designsystemet/color';
 import {
-  colorMetadata,
-  getColorInfoFromPosition,
+  getColorByNumber,
   getCssVariable,
   hexToHsluv,
 } from '@digdir/designsystemet/color';
@@ -48,6 +47,7 @@ export const ColorModal = ({
   namespace,
   number,
 }: ColorModalProps) => {
+  const color = getColorByNumber(number);
   return (
     <Dialog
       ref={colorModalRef}
@@ -58,13 +58,11 @@ export const ColorModal = ({
     >
       <Dialog.Block>
         <Heading data-size='xs'>
-          {`${capitalizeFirstLetter(namespace)} ${capitalizeFirstLetter(getColorInfoFromPosition(number).displayName)}`}
+          {`${capitalizeFirstLetter(namespace)} ${capitalizeFirstLetter(color.displayName)}`}
         </Heading>
       </Dialog.Block>
       <Dialog.Block className={classes.modalContent}>
-        <div className={classes.description}>
-          {colorMetadata[number].description}
-        </div>
+        <div className={classes.description}>{color.description}</div>
         <div className={classes.container}>
           <table className={classes.infoTable}>
             <tbody>

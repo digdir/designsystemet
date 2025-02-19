@@ -1,7 +1,7 @@
 import {
-  type ColorInfo,
+  type Color,
   generateColorSchemes,
-  getColorInfoFromPosition,
+  getColorByNumber,
   getContrastFromHex,
 } from '@digdir/designsystemet';
 import {
@@ -79,21 +79,18 @@ export const ColorContrasts = () => {
     });
   }, [selectedBaseColor, colors, colorScheme]);
 
-  const ThCell = ({ color }: { color: ColorInfo }) => {
+  const ThCell = ({ color }: { color: Color }) => {
     return (
       <th className={classes.th}>
         <div className={classes.header}>
-          {getColorInfoFromPosition(color.number).displayName}
+          {getColorByNumber(color.number).displayName}
           <div className={classes.headerHex}>{color.hex}</div>
         </div>
       </th>
     );
   };
 
-  const Tag = ({
-    color1,
-    color2,
-  }: { color1: ColorInfo; color2: ColorInfo }) => {
+  const Tag = ({ color1, color2 }: { color1: Color; color2: Color }) => {
     const contrast = getContrastFromHex(color1.hex, color2.hex);
     let type = 'AAA';
 
@@ -108,10 +105,7 @@ export const ColorContrasts = () => {
     return <div className={cl(classes.tag, classes[type])}>{type}</div>;
   };
 
-  const TdCell = ({
-    color1,
-    color2,
-  }: { color1: ColorInfo; color2: ColorInfo }) => {
+  const TdCell = ({ color1, color2 }: { color1: Color; color2: Color }) => {
     return (
       <div className={classes.cell}>
         <div className={classes.colors}>

@@ -1,11 +1,88 @@
 export type ColorScheme = 'light' | 'dark' | 'contrast';
 export type ContrastMode = 'aa' | 'aaa';
 export type ColorNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16;
+export type ColorNames = keyof SemanticColorMapping;
 export type GlobalColors = 'red' | 'blue' | 'green' | 'orange' | 'purple';
 export type ColorError = 'none' | 'decorative' | 'interaction';
 
+type SemanticColorMapping = {
+  'background-default': {
+    name: 'background-default';
+    number: 1;
+  };
+  'background-tinted': {
+    name: 'background-tinted';
+    number: 2;
+  };
+  'surface-default': {
+    name: 'surface-default';
+    number: 3;
+  };
+  'surface-tinted': {
+    name: 'surface-tinted';
+    number: 4;
+  };
+  'surface-hover': {
+    name: 'surface-hover';
+    number: 5;
+  };
+  'surface-active': {
+    name: 'surface-active';
+    number: 6;
+  };
+  'border-subtle': {
+    name: 'border-subtle';
+    number: 7;
+  };
+  'border-default': {
+    name: 'border-default';
+    number: 8;
+  };
+  'border-strong': {
+    name: 'border-strong';
+    number: 9;
+  };
+  'text-subtle': {
+    name: 'text-subtle';
+    number: 10;
+  };
+  'text-default': {
+    name: 'text-default';
+    number: 11;
+  };
+  'base-default': {
+    name: 'base-default';
+    number: 12;
+  };
+  'base-hover': {
+    name: 'base-hover';
+    number: 13;
+  };
+  'base-active': {
+    name: 'base-active';
+    number: 14;
+  };
+  'base-contrast-subtle': {
+    name: 'base-contrast-subtle';
+    number: 15;
+  };
+  'base-contrast-default': {
+    name: 'base-contrast-default';
+    number: 16;
+  };
+};
+
+export type ColorMetadataByName = {
+  [Property in keyof SemanticColorMapping]: SemanticColorMapping[Property] & ColorMetadata;
+};
+
+export type ColorMetadataByNumber = {
+  [Property in keyof SemanticColorMapping as SemanticColorMapping[Property]['number']]: SemanticColorMapping[Property] &
+    ColorMetadata;
+};
+
 export type ColorMetadata = {
-  name: string;
+  name: ColorNames;
   displayName: string;
   description: string;
   group: string;
@@ -16,15 +93,15 @@ export type ColorMetadata = {
   };
 };
 
-export type ColorInfo = Partial<ColorMetadata> & {
-  number: ColorNumber;
+export type Color = Partial<ColorMetadata> & {
   hex: CssColor;
+  number: ColorNumber;
 };
 
 export type ThemeInfo = {
-  light: ColorInfo[];
-  dark: ColorInfo[];
-  contrast: ColorInfo[];
+  light: Color[];
+  dark: Color[];
+  contrast: Color[];
 };
 
 /**

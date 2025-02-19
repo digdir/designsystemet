@@ -1,7 +1,7 @@
 'use client';
 
 import { Heading } from '@digdir/designsystemet-react';
-import type { ColorInfo, CssColor } from '@digdir/designsystemet/color';
+import type { Color, CssColor } from '@digdir/designsystemet/color';
 import { generateColorSchemes } from '@digdir/designsystemet/color';
 import { Container } from '@repo/components';
 import cl from 'clsx/lite';
@@ -28,7 +28,7 @@ const Box = (name: string, color1: CssColor, color2: CssColor) => {
   );
 };
 
-const Row = (title: string, colors: ColorInfo[], whiteText = false) => {
+const Row = (title: string, colors: Color[], whiteText = false) => {
   return (
     <div className={cl(whiteText && classes.whiteText)}>
       <Heading data-size='xs' className={classes.mainTitle}>

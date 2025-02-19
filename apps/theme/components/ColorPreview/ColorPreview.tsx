@@ -1,7 +1,7 @@
 import {
-  type ColorInfo,
+  type Color,
   type ColorNumber,
-  getColorInfoFromPosition,
+  getColorByNumber,
 } from '@digdir/designsystemet';
 import {
   Button,
@@ -28,15 +28,15 @@ export const ColorPreview = () => {
     color: {
       name: string;
       colors: {
-        light: ColorInfo[];
-        dark: ColorInfo[];
+        light: Color[];
+        dark: Color[];
       };
     };
   };
 
   const setStyle = (colors: {
-    light: ColorInfo[];
-    dark: ColorInfo[];
+    light: Color[];
+    dark: Color[];
   }) => {
     const style = {} as Record<string, string>;
 
@@ -49,12 +49,12 @@ export const ColorPreview = () => {
     for (let i = 0; i < lightColors.length; i++) {
       const number = (i + 1) as ColorNumber;
       style[
-        `--ds-color-accent-${getColorInfoFromPosition(number)
+        `--ds-color-accent-${getColorByNumber(number)
           .displayName.replace(/\s+/g, '-')
           .toLowerCase()}`
       ] = lightColors[i].hex;
       style[
-        `--ds-color-${getColorInfoFromPosition(number)
+        `--ds-color-${getColorByNumber(number)
           .displayName.replace(/\s+/g, '-')
           .toLowerCase()}`
       ] = lightColors[i].hex;

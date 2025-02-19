@@ -2,12 +2,12 @@
 import { useState } from 'react';
 
 import {
-  type ColorInfo,
+  type Color,
   type ColorNumber,
   type ColorScheme,
   type CssColor,
   generateColorSchemes,
-  getColorInfoFromPosition,
+  getColorByNumber,
 } from '@digdir/designsystemet';
 import { ToggleGroup } from '@digdir/designsystemet-react';
 import { OverviewComponents } from '../OverviewComponents/OverviewComponents';
@@ -52,8 +52,8 @@ export const Previews = () => {
   const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
 
   const getDsMainVars = (colors: {
-    light: ColorInfo[];
-    dark: ColorInfo[];
+    light: Color[];
+    dark: Color[];
   }) => {
     const style = {} as Record<string, string>;
 
@@ -66,7 +66,7 @@ export const Previews = () => {
     for (let i = 0; i < lightColors.length; i++) {
       const number = (i + 1) as ColorNumber;
       style[
-        `--ds-color-${getColorInfoFromPosition(number)
+        `--ds-color-${getColorByNumber(number)
           .displayName.replace(/\s+/g, '-')
           .toLowerCase()}`
       ] = lightColors[i].hex;

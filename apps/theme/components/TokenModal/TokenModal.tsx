@@ -13,10 +13,14 @@ import { InformationSquareIcon, StarIcon } from '@navikt/aksel-icons';
 import { CodeSnippet } from '@repo/components';
 import { useRef, useState } from 'react';
 
+import type { Color } from '@digdir/designsystemet/color';
 import { type ColorTheme, useThemeStore } from '../../store';
 import classes from './TokenModal.module.css';
 
 const colorCliOptions = cliOptions.theme.colors;
+
+const getBaseDefault = (colorTheme: Color[]) =>
+  colorTheme.find((color) => color.name === 'base-default');
 
 export const TokenModal = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
@@ -29,9 +33,7 @@ export const TokenModal = () => {
   const setCliColors = (colorTheme: ColorTheme[]) => {
     let str = '';
     for (const theme of colorTheme) {
-      const baseColor = theme.colors.light.find(
-        (color) => color.name === 'baseDefault',
-      );
+      const baseColor = getBaseDefault(theme.colors.light);
       str += `"${theme.name}:${baseColor?.hex}" `;
     }
     return str;
@@ -40,7 +42,7 @@ export const TokenModal = () => {
   const cliSnippet = [
     `npx @digdir/designsystemet@next tokens create`,
     `--${colorCliOptions.main} ${setCliColors(colors.main).trimEnd()}`,
-    `--${colorCliOptions.neutral} "${colors.neutral[0]?.colors.light[11].hex}"`,
+    `--${colorCliOptions.neutral} "${getBaseDefault(colors.neutral[0]?.colors.light)?.hex}"`,
     `${colors.support.length > 0 ? `--${colorCliOptions.support} ${setCliColors(colors.support).trimEnd()}` : ''}`,
     `--border-radius ${baseBorderRadius}`,
     `--theme "${themeName}"`,
