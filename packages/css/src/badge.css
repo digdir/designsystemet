@@ -19,6 +19,10 @@
     box-sizing: border-box;
     line-height: var(--ds-line-height-sm);
     width: fit-content;
+
+    @supports (content: attr(data-count, '')) {
+      content: attr(data-count, '');
+    }
   }
 
   &[data-variant='base'] {

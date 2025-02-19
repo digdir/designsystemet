@@ -10,7 +10,6 @@
 }
 
 .card:hover {
-  color: inherit;
   box-shadow: var(--ds-shadow-md);
   transform: translateY(-4px);
 }

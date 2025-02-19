@@ -44,7 +44,7 @@
     --dsc-button-color--hover: var(--ds-color-text-default);
   }
   &[data-variant='secondary'] {
-    --dsc-button-border-color: var(--ds-color-text-subtle);
+    --dsc-button-border-color: var(--ds-color-border-strong);
   }
 
   &:not([data-size]) {

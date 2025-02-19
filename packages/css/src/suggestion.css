@@ -89,6 +89,24 @@
     }
   }
 
+  &:has(input:placeholder-shown) input {
+    padding-right: 2.4em;
+    background-image: linear-gradient(
+        45deg,
+        var(--_dsc-input-diagonal-1),
+        var(--_dsc-input-diagonal-2),
+        var(--_dsc-input-diagonal-3),
+        var(--_dsc-input-diagonal-4)
+      ), linear-gradient(-45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4));
+    background-position: calc(100% - 1.2em + var(--dsc-input-stroke-width)), calc(100% - 0.8em);
+    background-size: .4em .4em;
+    background-repeat: no-repeat;
+
+    @media (forced-colors: active) {
+      appearance: auto; /* show chevron */
+    }
+  }
+
   /**
    * Clear button
    */
