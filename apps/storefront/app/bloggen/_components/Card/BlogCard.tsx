@@ -41,6 +41,8 @@ export const BlogCard = ({
     <Card
       data-featured={featured}
       className={cl(classes.card, className)}
+      data-color='neutral'
+      data-variant='tinted'
       {...props}
     >
       <CardBlock>
