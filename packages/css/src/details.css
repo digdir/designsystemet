@@ -31,7 +31,6 @@
     --dsc-details-heading-background--hover: var(--ds-color-surface-hover);
     --dsc-details-heading-background--open: var(--ds-color-surface-hover);
     --dsc-details-heading-background: var(--ds-color-surface-tinted);
-    --dsc-details-border-color: var(--ds-color-border-subtle);
   }
 
   & :is(summary, u-summary) {
