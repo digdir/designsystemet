@@ -35,7 +35,7 @@ type TokenTableProps = {
 
 const TokensTable = ({ tokens }: TokenTableProps) => {
   return (
-    <Table>
+    <Table data-color='neutral'>
       <Table.Head>
         <Table.Row>
           <Table.HeaderCell>Navn</Table.HeaderCell>

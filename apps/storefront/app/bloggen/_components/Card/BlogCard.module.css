@@ -16,13 +16,6 @@
   }
 }
 
-.card {
-  [data-color-scheme='dark'] &,
-  [data-color-scheme='auto'] & {
-    --dsc-card-background: var(--ds-color-neutral-surface-tinted);
-  }
-}
-
 .tag {
   margin-bottom: 0;
   padding: 3px 9px;
