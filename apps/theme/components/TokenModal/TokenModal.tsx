@@ -28,8 +28,11 @@ export const TokenModal = () => {
 
   const setCliColors = (colorTheme: ColorTheme[]) => {
     let str = '';
-    for (const color of colorTheme) {
-      str += `"${color.name}:${color.colors.light[8].hex}" `;
+    for (const theme of colorTheme) {
+      const baseColor = theme.colors.light.find(
+        (color) => color.name === 'baseDefault',
+      );
+      str += `"${theme.name}:${baseColor?.hex}" `;
     }
     return str;
   };
@@ -37,7 +40,7 @@ export const TokenModal = () => {
   const cliSnippet = [
     `npx @digdir/designsystemet@next tokens create`,
     `--${colorCliOptions.main} ${setCliColors(colors.main).trimEnd()}`,
-    `--${colorCliOptions.neutral} "${colors.neutral[0]?.colors.light[8].hex}"`,
+    `--${colorCliOptions.neutral} "${colors.neutral[0]?.colors.light[11].hex}"`,
     `${colors.support.length > 0 ? `--${colorCliOptions.support} ${setCliColors(colors.support).trimEnd()}` : ''}`,
     `--border-radius ${baseBorderRadius}`,
     `--theme "${themeName}"`,
