@@ -8,9 +8,10 @@
   --dsc-details-padding: var(--ds-size-2) var(--ds-size-4);
   --dsc-details-size: var(--ds-size-14);
   --dsc-details-background: var(--ds-color-background-default);
-  --dsc-details-heading-background--hover: var(--ds-color-surface-tinted);
-  --dsc-details-heading-background--open: var(--ds-color-background-tinted);
-  --dsc-details-heading-background: var(--ds-color-background-default);
+  --dsc-details-summary-color: var(--ds-color-text-default);
+  --dsc-details-summary-background--hover: var(--ds-color-surface-tinted);
+  --dsc-details-summary-background--open: var(--ds-color-background-tinted);
+  --dsc-details-summary-background: var(--ds-color-background-default);
 
   background: var(--dsc-details-background);
   border-block-width: var(--dsc-details-border-block-wdith);
@@ -20,22 +21,24 @@
 
   &[data-variant='default'] {
     --dsc-details-background: var(--ds-color-background-default);
-    --dsc-details-heading-background--hover: var(--ds-color-surface-hover);
-    --dsc-details-heading-background--open: var(--ds-color-surface-tinted);
-    --dsc-details-heading-background: var(--ds-color-background-default);
+    --dsc-details-summary-background--hover: var(--ds-color-surface-hover);
+    --dsc-details-summary-background--open: var(--ds-color-surface-tinted);
+    --dsc-details-summary-background: var(--ds-color-background-default);
   }
 
   .ds-card[data-variant='tinted'] &,
   &[data-variant='tinted'] {
     --dsc-details-background: var(--ds-color-surface-tinted);
-    --dsc-details-heading-background--hover: var(--ds-color-surface-hover);
-    --dsc-details-heading-background--open: var(--ds-color-surface-hover);
-    --dsc-details-heading-background: var(--ds-color-surface-tinted);
+    --dsc-details-summary-background--hover: var(--ds-color-surface-hover);
+    --dsc-details-summary-background--open: var(--ds-color-surface-hover);
+    --dsc-details-summary-background: var(--ds-color-surface-tinted);
+    --dsc-details-border-color: var(--ds-color-border-subtle);
   }
 
   & :is(summary, u-summary) {
+    color: var(--dsc-details-summary-color);
     align-items: center;
-    background: var(--dsc-details-heading-background);
+    background: var(--dsc-details-summary-background);
     box-sizing: border-box;
     cursor: pointer;
     list-style: none;
@@ -86,7 +89,7 @@
   }
 
   &[open] > :is(summary, u-summary) {
-    background: var(--dsc-details-heading-background--open);
+    background: var(--dsc-details-summary-background--open);
 
     &::before {
       rotate: 180deg;
@@ -95,7 +98,7 @@
 
   @media (hover: hover) and (pointer: fine) {
     & :is(summary, u-summary):hover {
-      background: var(--dsc-details-heading-background--hover);
+      background: var(--dsc-details-summary-background--hover);
     }
   }
 
