@@ -7,7 +7,9 @@ This will walk you through changes done from 0.63.1 to 1.0.0
 - `size` is now `data-size`
     - `small`, `medium` and `large` have been removed as size keywords. Use `sm`, `md` and `lg`
 - `color` is now `data-color`
-- all `portal`-props have been removed
+- All `portal`-props have been removed
+- All `inverted`-props has been removed, use `data-color-scheme="dark"`
+- All `spacing`-props has been removed
 
 ## Components
 
@@ -56,7 +58,7 @@ This component has been removed. You can replicate this using `Popover`.
 Norwegian article: [https://www.designsystemet.no/bloggen/2025/helptext-blir-fjerna-kva-gjer-du](https://www.designsystemet.no/bloggen/2025/helptext-blir-fjerna-kva-gjer-du)
 
 ### Link
-- `inverted`  prop has been removed, use `data-color-scheme="dark"`
+No changes
 
 ### List
 - `List.Root` has been removed
@@ -99,3 +101,47 @@ Norwegian article: [https://www.designsystemet.no/bloggen/2025/helptext-blir-fje
 
 ### Skiplink
 No changes
+
+### Switch
+- `label` prop has been removed, send this as children
+- `position` has changed from `right/left` to `start/end`
+
+### Table
+- `sortable` prop has been removed on `HeaderCell`. use `sort="none/ascending/descending/none"`
+
+### Tabs
+- `Tabs.Content` has been renamed to `Tabs.Panel`
+
+### Tag
+No changes
+
+### Textarea
+**This is now just a native `textarea`. Use `Textfield` to get a composed component.**
+- All props associated with this has been moved to `Textfield`
+- Set `multiline={true}` on `Textfield` to get a replacement for `Textarea`
+
+### Textfield
+- `htmlSize` has been changed to `size`
+- `characterLimit` prop has been removed, use `counter`. See storybook for allowed props
+
+### ToggleGroup
+No changes
+
+### Tooltip
+- `delay` prop has been removed, set `--dsc-tooltip-transition-delay` on the tooltip css class
+
+### ErrorMessage
+**This component has been renamed to `ValidationMessage`**
+- `error`  prop has been removed, change validation type with `data-color`
+
+### Heading
+No changes
+
+### Paragraph
+- `variant`  prop now also accepts `default`
+
+### Label
+No changes
+
+### Ingress
+This component has been removed, use `<Paragraph variant="long" />`
