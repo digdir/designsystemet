@@ -77,12 +77,10 @@ export type ColorMetadataByName = {
 };
 
 export type ColorMetadataByNumber = {
-  [P in keyof SemanticColorMapping as SemanticColorMapping[P]['number']]: SemanticColorMapping[P] &
-    Omit<ColorMetadata, 'name'>;
+  [P in keyof SemanticColorMapping as SemanticColorMapping[P]['number']]: SemanticColorMapping[P] & ColorMetadata;
 };
 
 export type ColorMetadata = {
-  name: ColorNames;
   displayName: string;
   description: string;
   group: string;
@@ -95,6 +93,7 @@ export type ColorMetadata = {
 
 export type Color = Partial<ColorMetadata> & {
   hex: CssColor;
+  name: ColorNames;
   number: ColorNumber;
 };
 

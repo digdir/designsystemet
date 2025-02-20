@@ -1,11 +1,4 @@
-import type {
-  ColorMetadata,
-  ColorMetadataByName,
-  ColorMetadataByNumber,
-  ColorNumber,
-  CssColor,
-  GlobalColors,
-} from './types.js';
+import type { ColorMetadataByName, ColorMetadataByNumber, ColorNumber, CssColor, GlobalColors } from './types.js';
 
 export const baseColors: Record<GlobalColors, CssColor> = {
   blue: '#0A71C0',
@@ -220,6 +213,6 @@ export const colorMetadataByNumber = Object.entries(colorMetadata).reduce((acc, 
   return acc;
 }, {} as ColorMetadataByNumber);
 
-export const getColorMetadataByNumber = (number: ColorNumber): ColorMetadata => {
+export const getColorMetadataByNumber = (number: ColorNumber) => {
   return colorMetadataByNumber[number];
 };
