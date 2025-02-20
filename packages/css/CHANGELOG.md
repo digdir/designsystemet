@@ -1,5 +1,54 @@
 # Change Log
 
+## 1.0.0-next.49
+
+### Minor Changes
+
+- Added token `border-width-focus` ([#3138](https://github.com/digdir/designsystemet/pull/3138))
+
+### Patch Changes
+
+- **Table**: New colors on zebra (`--ds-color-surface-tinted`) and hover (`--ds-color-surface-hover`) ([#3147](https://github.com/digdir/designsystemet/pull/3147))
+
+- **Dialog**: Add border around dialog element ([#3106](https://github.com/digdir/designsystemet/pull/3106))
+
+- **Card**: Add `data-variant="default/tinted"`, `default` is default ([#3131](https://github.com/digdir/designsystemet/pull/3131))
+
+- \*_Table_: Background is now transparent by default ([#3147](https://github.com/digdir/designsystemet/pull/3147))
+
+- **Details**: Add `data-variant="default/tinted"`, `default` is default. ([#3131](https://github.com/digdir/designsystemet/pull/3131))
+
+  - This can also be controlled from `Card`
+
+- **Details**: Change default variant colors for open and hover ([#3159](https://github.com/digdir/designsystemet/pull/3159))
+
+- **Dialog**: ([#3148](https://github.com/digdir/designsystemet/pull/3148))
+
+  - Correctly centers position also when placed in `display: flex`
+  - Only prevents scroll if opened with `.showModal()`
+
+- **Button**: Make loading spinner scale accordion to button size ([#3074](https://github.com/digdir/designsystemet/pull/3074))
+
+- **Table**: Add margin-bottom to `caption` element ([#3137](https://github.com/digdir/designsystemet/pull/3137))
+
+- **Table**: Now inherits `data-color` by default ([#3136](https://github.com/digdir/designsystemet/pull/3136))
+
+- **Breadcrumbs:** Prevent shrinking chevron ([#3103](https://github.com/digdir/designsystemet/pull/3103))
+
+- **Table**: Added component token `--dsc-table-divider-border-color` ([#3081](https://github.com/digdir/designsystemet/pull/3081))
+
+- **Popover**: Add `data-variant="default/tinted"`, `default` is default ([#3131](https://github.com/digdir/designsystemet/pull/3131))
+
+- **Suggestion**: Add chevron to empty input ([#3154](https://github.com/digdir/designsystemet/pull/3154))
+
+- **Badge**: Add `data-variant="base/tinted"`, `base` is default ([#3131](https://github.com/digdir/designsystemet/pull/3131))
+
+- Use `var(--ds-border-width-default)` for border widths ([#3125](https://github.com/digdir/designsystemet/pull/3125))
+
+- Rename `ds-modal` to `ds-dialog` ([#3106](https://github.com/digdir/designsystemet/pull/3106))
+
+- **Card**: Add css properties for `Card.Block` border (`--dsc-card-block-border-*`) ([#3093](https://github.com/digdir/designsystemet/pull/3093))
+
 ## 1.0.0-next.48
 
 ### Minor Changes

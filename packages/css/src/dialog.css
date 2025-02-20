@@ -32,11 +32,12 @@
   margin: 0;
   max-height: var(--dsc-dialog-max-height);
   max-width: var(--dsc-dialog-max-width);
+  overflow: auto;
   padding: var(--dsc-dialog-spacing);
   position: fixed;
   right: auto;
   top: 50%;
-  translate: -50% -50%;
+  transform: translate(-50%, -50%);
   width: 100%;
 
   &::backdrop {
@@ -106,7 +107,7 @@ body:has(.ds-dialog:modal) {
 
 @keyframes slide-in {
   from {
-    translate: -50% calc(-50% + 3rem);
+    translate: 0 3rem;
   }
 }
 
