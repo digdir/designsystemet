@@ -121,7 +121,7 @@ use all your colors in the components which have a `data-color` prop:
     // ...other compilerOptions
     "types": [
       // ...other types
-      "@digdir/designsystemet-theme/colors.d.ts"
+      "@digdir/designsystemet-theme"
       ]
   },
 }
@@ -160,7 +160,7 @@ add the following to your `tsconfig.json`:
     // ...other compilerOptions
     "types": [
       // ...other types
-      "@digdir/designsystemet-react/react-types.d.ts"
+      "@digdir/designsystemet-react/react-types"
       ]
   },
 }
