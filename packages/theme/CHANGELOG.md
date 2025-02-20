@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.0.0-next.50
+
+### Minor Changes
+
+- Changed alias for type declaration exports ([#3156](https://github.com/digdir/designsystemet/pull/3156))
+  - React: export alias `./react-types.d.ts` was changed to `./react-types`
+  - Theme: added `types` field to default export in package.json, so now it should be posssible to use `"@digdir/designsystemet-theme"`
+
 ## 1.0.0-next.49
 
 ### Minor Changes

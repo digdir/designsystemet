@@ -1,5 +1,19 @@
 # Change Log
 
+## 1.0.0-next.50
+
+### Patch Changes
+
+- **Details**: Change `--dsc-details-heading-*` to `--dsc-details-summary-*` ([#3166](https://github.com/digdir/designsystemet/pull/3166))
+
+- **Details:** Hide native `<summary>` arrow in Safari ([#3179](https://github.com/digdir/designsystemet/pull/3179))
+
+- **Badge**: Fix empty badge not being displayed ([#3165](https://github.com/digdir/designsystemet/pull/3165))
+
+- Dialog: ([#3163](https://github.com/digdir/designsystemet/pull/3163))
+  - Add missing `overflow: auto`
+  - Position with `transform` for easier `translate` animation
+
 ## 1.0.0-next.49
 
 ### Minor Changes
