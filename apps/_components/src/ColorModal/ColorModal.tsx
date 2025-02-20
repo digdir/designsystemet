@@ -1,11 +1,6 @@
 import { Dialog, Heading, Paragraph } from '@digdir/designsystemet-react';
-import type { ColorNumber, HexColor } from '@digdir/designsystemet/color';
-import {
-  colorMetadata,
-  getColorInfoFromPosition,
-  getCssVariable,
-  hexToHsluv,
-} from '@digdir/designsystemet/color';
+import type { Color } from '@digdir/designsystemet/color';
+import { getCssVariable, hexToHsluv } from '@digdir/designsystemet/color';
 import { ClipboardButton } from '@repo/components';
 
 import classes from './ColorModal.module.css';
@@ -37,17 +32,16 @@ const Field = ({
 
 type ColorModalProps = {
   colorModalRef: React.Ref<HTMLDialogElement> | null;
-  hex: HexColor;
   namespace: string;
-  number: ColorNumber;
+  color: Color;
 };
 
 export const ColorModal = ({
   colorModalRef,
-  hex,
   namespace,
-  number,
+  color,
 }: ColorModalProps) => {
+  const { displayName, description, number, hex } = color;
   return (
     <Dialog
       ref={colorModalRef}
@@ -58,13 +52,11 @@ export const ColorModal = ({
     >
       <Dialog.Block>
         <Heading data-size='xs'>
-          {`${capitalizeFirstLetter(namespace)} ${capitalizeFirstLetter(getColorInfoFromPosition(number).displayName)}`}
+          {`${capitalizeFirstLetter(namespace)} ${displayName}`}
         </Heading>
       </Dialog.Block>
       <Dialog.Block className={classes.modalContent}>
-        <div className={classes.description}>
-          {colorMetadata[number].description}
-        </div>
+        <div className={classes.description}>{description}</div>
         <div className={classes.container}>
           <table className={classes.infoTable}>
             <tbody>

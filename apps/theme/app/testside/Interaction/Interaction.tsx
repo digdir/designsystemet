@@ -1,6 +1,6 @@
 'use client';
 import { Heading } from '@digdir/designsystemet-react';
-import type { ColorInfo, ThemeInfo } from '@digdir/designsystemet/color';
+import type { Color, ThemeInfo } from '@digdir/designsystemet/color';
 import cl from 'clsx/lite';
 import { useEffect } from 'react';
 
@@ -96,7 +96,7 @@ export const Interaction = ({
 
 type ColumnProps = {
   title: string;
-  scales: ColorInfo[][];
+  scales: Color[][];
 };
 
 const Column = ({ title, scales }: ColumnProps) => {
@@ -128,7 +128,7 @@ const Column = ({ title, scales }: ColumnProps) => {
 
 type BoxProps = {
   colorIndex: number;
-  scales: ColorInfo[][];
+  scales: Color[][];
   type: 'base' | 'surface';
   columnTitle: string;
 };

@@ -1,8 +1,13 @@
 import { RovingFocusItem } from '@digdir/designsystemet-react';
-import type { ThemeInfo } from '@digdir/designsystemet/color';
+import {
+  type Color,
+  type ColorNumber,
+  type ThemeInfo,
+  getColorMetadataByNumber,
+} from '@digdir/designsystemet/color';
 import cl from 'clsx/lite';
 
-import { Color } from '../Color/Color';
+import { Color as ColorPreview } from '../Color/Color';
 
 import { ColorModal } from '@repo/components';
 import { Fragment, createRef, useRef } from 'react';
@@ -11,7 +16,7 @@ import classes from './Group.module.css';
 
 type GroupProps = {
   header: string;
-  colors: number[];
+  colorNumbers: ColorNumber[];
   colorScale: ThemeInfo;
   showColorMeta?: boolean;
   names?: string[];
@@ -20,7 +25,7 @@ type GroupProps = {
 
 export const Group = ({
   header,
-  colors,
+  colorNumbers,
   showColorMeta,
   names,
   colorScale,
@@ -31,8 +36,8 @@ export const Group = ({
   const colorModalRefs = useRef<React.RefObject<HTMLDialogElement | null>[]>(
     [],
   );
-  if (colorModalRefs.current.length !== colors.length) {
-    colorModalRefs.current = Array(colors.length)
+  if (colorModalRefs.current.length !== colorNumbers.length) {
+    colorModalRefs.current = Array(colorNumbers.length)
       .fill(null)
       .map(() => createRef<HTMLDialogElement>());
   }
@@ -49,22 +54,24 @@ export const Group = ({
       )}
 
       <div className={cl(classes.colors)}>
-        {colors.map((item, index) => {
+        {colorNumbers.map((colorNumber, index) => {
+          const { number, hex } = colorScale[colorScheme][colorNumber - 1];
+          const color: Color = {
+            ...getColorMetadataByNumber(number),
+            number,
+            hex,
+          };
           return (
             <Fragment key={index + 'fragment' + namespace}>
               <ColorModal
                 colorModalRef={colorModalRefs.current[index]}
-                hex={colorScale[colorScheme][item].hex}
                 namespace={namespace}
-                number={colorScale[colorScheme][item].number}
+                color={color}
               />
-              <RovingFocusItem
-                value={namespace + colorScale[colorScheme][item].number}
-                asChild
-              >
-                <Color
-                  color={colorScale[colorScheme][item].hex}
-                  colorNumber={item}
+              <RovingFocusItem value={namespace + number} asChild>
+                <ColorPreview
+                  color={hex}
+                  colorNumber={colorNumber}
                   contrast={'dd'}
                   lightness={'dd'}
                   showColorMeta={showColorMeta}

@@ -1,9 +1,9 @@
 import chroma from 'chroma-js';
 import * as R from 'ramda';
-import { colorMetadata } from './colorMetadata.js';
+import { colorMetadata, getColorMetadataByNumber } from './colorMetadata.js';
 import type { CssColor } from './types.js';
-import type { ColorInfo, ColorNumber, ColorScheme, ThemeInfo } from './types.js';
-import { getColorInfoFromPosition, getLightnessFromHex, getLuminanceFromLightness } from './utils.js';
+import type { Color, ColorNumber, ColorScheme, ThemeInfo } from './types.js';
+import { getLightnessFromHex, getLuminanceFromLightness } from './utils.js';
 
 /**
  * Generates a color scale based on a base color and a color mode.
@@ -11,23 +11,28 @@ import { getColorInfoFromPosition, getLightnessFromHex, getLuminanceFromLightnes
  * @param color The base color that is used to generate the color scale
  * @param colorScheme The color scheme to generate a scale for
  */
-export const generateColorScale = (color: CssColor, colorScheme: ColorScheme): ColorInfo[] => {
-  const colors = R.mapObjIndexed((colorData, key) => {
+export const generateColorScale = (color: CssColor, colorScheme: ColorScheme): Color[] => {
+  const colors = R.mapObjIndexed((colorData) => {
     const luminance = colorData.luminance[colorScheme];
     return {
       ...colorData,
       hex: chroma(color).luminance(luminance).hex() as CssColor,
-      number: parseInt(key) as ColorNumber,
     };
   }, colorMetadata);
 
   // Generate base colors
   const baseColors = generateBaseColors(color, colorScheme);
-  colors['12'] = { ...colors['12'], hex: baseColors.default };
-  colors['13'] = { ...colors['13'], hex: baseColors.hover };
-  colors['14'] = { ...colors['14'], hex: baseColors.active };
-  colors['15'] = { ...colors['15'], hex: generateColorContrast(baseColors.default, 'subtle') };
-  colors['16'] = { ...colors['16'], hex: generateColorContrast(baseColors.default, 'default') };
+  colors['base-default'] = { ...colors['base-default'], hex: baseColors.default };
+  colors['base-hover'] = { ...colors['base-hover'], hex: baseColors.hover };
+  colors['base-active'] = { ...colors['base-active'], hex: baseColors.active };
+  colors['base-contrast-subtle'] = {
+    ...colors['base-contrast-subtle'],
+    hex: generateColorContrast(baseColors.default, 'subtle'),
+  };
+  colors['base-contrast-default'] = {
+    ...colors['base-contrast-default'],
+    hex: generateColorContrast(baseColors.default, 'default'),
+  };
 
   return Object.values(colors);
 };
@@ -104,5 +109,5 @@ export const generateColorContrast = (color: CssColor, type: 'default' | 'subtle
  * @param colorNumber The number of the color
  */
 export const getCssVariable = (colorType: string, colorNumber: ColorNumber) => {
-  return `--ds-color-${colorType}-${getColorInfoFromPosition(colorNumber).displayName.toLowerCase().replace(/\s/g, '-')}`;
+  return `--ds-color-${colorType}-${getColorMetadataByNumber(colorNumber).displayName.toLowerCase().replace(/\s/g, '-')}`;
 };
