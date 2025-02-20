@@ -1,5 +1,7 @@
 # Change Log
 
+## 1.0.0-next.50
+
 ## 1.0.0-next.49
 
 ### Minor Changes
