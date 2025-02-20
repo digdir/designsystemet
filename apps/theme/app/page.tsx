@@ -56,8 +56,7 @@ export default function Home() {
   return (
     <div>
       <ColorModal
-        number={selectedColor.color.number}
-        hex={selectedColor.color.hex}
+        color={selectedColor.color}
         namespace={'d'}
         colorModalRef={colorModalRef}
       />
