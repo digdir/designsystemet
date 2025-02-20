@@ -16,7 +16,7 @@ import classes from './Group.module.css';
 
 type GroupProps = {
   header: string;
-  colors: ColorNumber[];
+  colorNumbers: ColorNumber[];
   colorScale: ThemeInfo;
   showColorMeta?: boolean;
   names?: string[];
@@ -25,7 +25,7 @@ type GroupProps = {
 
 export const Group = ({
   header,
-  colors,
+  colorNumbers,
   showColorMeta,
   names,
   colorScale,
@@ -36,8 +36,8 @@ export const Group = ({
   const colorModalRefs = useRef<React.RefObject<HTMLDialogElement | null>[]>(
     [],
   );
-  if (colorModalRefs.current.length !== colors.length) {
-    colorModalRefs.current = Array(colors.length)
+  if (colorModalRefs.current.length !== colorNumbers.length) {
+    colorModalRefs.current = Array(colorNumbers.length)
       .fill(null)
       .map(() => createRef<HTMLDialogElement>());
   }
@@ -54,8 +54,8 @@ export const Group = ({
       )}
 
       <div className={cl(classes.colors)}>
-        {colors.map((item, index) => {
-          const { number, hex } = colorScale[colorScheme][item];
+        {colorNumbers.map((colorNumber, index) => {
+          const { number, hex } = colorScale[colorScheme][colorNumber - 1];
           const color: Color = {
             ...getColorMetadataByNumber(number),
             number,
@@ -71,7 +71,7 @@ export const Group = ({
               <RovingFocusItem value={namespace + number} asChild>
                 <ColorPreview
                   color={hex}
-                  colorNumber={item}
+                  colorNumber={colorNumber}
                   contrast={'dd'}
                   lightness={'dd'}
                   showColorMeta={showColorMeta}

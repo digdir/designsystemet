@@ -24,7 +24,7 @@ export const Scale = ({
         <div className={classes.test}>
           <Group
             header={showHeader ? 'Background' : ''}
-            colors={[1, 2]}
+            colorNumbers={[1, 2]}
             colorScale={colorScale}
             showColorMeta={showColorMeta}
             names={['Default', 'Tinted']}
@@ -32,7 +32,7 @@ export const Scale = ({
           />
           <Group
             header={showHeader ? 'Surface' : ''}
-            colors={[3, 4, 5, 6]}
+            colorNumbers={[3, 4, 5, 6]}
             colorScale={colorScale}
             showColorMeta={showColorMeta}
             names={['Default', 'Tinted', 'Hover', 'Active']}
@@ -41,7 +41,7 @@ export const Scale = ({
           <Group
             showColorMeta={showColorMeta}
             header={showHeader ? 'Border' : ''}
-            colors={[7, 8, 9]}
+            colorNumbers={[7, 8, 9]}
             colorScale={colorScale}
             names={['Subtle', 'Default', 'Strong']}
             namespace={namespace}
@@ -49,7 +49,7 @@ export const Scale = ({
           <Group
             showColorMeta={showColorMeta}
             header={showHeader ? 'Text' : ''}
-            colors={[10, 11]}
+            colorNumbers={[10, 11]}
             colorScale={colorScale}
             names={['Subtle', 'Default']}
             namespace={namespace}
@@ -57,7 +57,7 @@ export const Scale = ({
           <Group
             showColorMeta={showColorMeta}
             header={showHeader ? 'Base' : ''}
-            colors={[12, 13, 14, 15, 16]}
+            colorNumbers={[12, 13, 14, 15, 16]}
             colorScale={colorScale}
             names={[
               'Default',
