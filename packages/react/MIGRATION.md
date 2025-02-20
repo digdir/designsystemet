@@ -138,7 +138,7 @@ No changes
 No changes
 
 ### Paragraph
-- `variant`  prop now also accepts `default`
+No changes
 
 ### Label
 No changes
