@@ -36,11 +36,11 @@
   }
 
   /* Hide default marker in Safari */
-  & summary::-webkit-details-marker {
+  & > summary::-webkit-details-marker {
     display: none;
   }
 
-  & :is(summary, u-summary) {
+  & > :is(summary, u-summary) {
     color: var(--dsc-details-summary-color);
     align-items: center;
     background: var(--dsc-details-summary-background);
