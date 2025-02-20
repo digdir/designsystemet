@@ -9,7 +9,7 @@ export const SiteConfig = {
           url: 'grunnleggende/introduksjon',
           children: [
             {
-              name: 'Om designsystemet',
+              name: 'Om Designsystemet',
               url: 'grunnleggende/introduksjon/om-designsystemet',
             },
             {
