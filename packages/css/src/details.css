@@ -35,6 +35,11 @@
     --dsc-details-border-color: var(--ds-color-border-subtle);
   }
 
+  /* Hide default marker in Safari */
+  & summary::-webkit-details-marker {
+    display: none;
+  }
+
   & :is(summary, u-summary) {
     color: var(--dsc-details-summary-color);
     align-items: center;
