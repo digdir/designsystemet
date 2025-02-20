@@ -1,9 +1,9 @@
 import chroma from 'chroma-js';
 import * as R from 'ramda';
-import { colorMetadata } from './colorMetadata.js';
+import { colorMetadata, getColorMetadataByNumber } from './colorMetadata.js';
 import type { CssColor } from './types.js';
 import type { Color, ColorNumber, ColorScheme, ThemeInfo } from './types.js';
-import { getColorByNumber, getLightnessFromHex, getLuminanceFromLightness } from './utils.js';
+import { getLightnessFromHex, getLuminanceFromLightness } from './utils.js';
 
 /**
  * Generates a color scale based on a base color and a color mode.
@@ -109,5 +109,5 @@ export const generateColorContrast = (color: CssColor, type: 'default' | 'subtle
  * @param colorNumber The number of the color
  */
 export const getCssVariable = (colorType: string, colorNumber: ColorNumber) => {
-  return `--ds-color-${colorType}-${getColorByNumber(colorNumber).displayName.toLowerCase().replace(/\s/g, '-')}`;
+  return `--ds-color-${colorType}-${getColorMetadataByNumber(colorNumber).displayName.toLowerCase().replace(/\s/g, '-')}`;
 };

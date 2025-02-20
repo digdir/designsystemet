@@ -1,7 +1,7 @@
 import {
   type Color,
   generateColorSchemes,
-  getColorByNumber,
+  getColorMetadataByNumber,
   getContrastFromHex,
 } from '@digdir/designsystemet';
 import {
@@ -83,7 +83,7 @@ export const ColorContrasts = () => {
     return (
       <th className={classes.th}>
         <div className={classes.header}>
-          {getColorByNumber(color.number).displayName}
+          {getColorMetadataByNumber(color.number).displayName}
           <div className={classes.headerHex}>{color.hex}</div>
         </div>
       </th>

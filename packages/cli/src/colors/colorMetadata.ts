@@ -1,5 +1,11 @@
-import * as R from 'ramda';
-import type { ColorMetadataByName, ColorMetadataByNumber, CssColor, GlobalColors } from './types.js';
+import type {
+  ColorMetadata,
+  ColorMetadataByName,
+  ColorMetadataByNumber,
+  ColorNumber,
+  CssColor,
+  GlobalColors,
+} from './types.js';
 
 export const baseColors: Record<GlobalColors, CssColor> = {
   blue: '#0A71C0',
@@ -209,7 +215,11 @@ export const colorMetadata: ColorMetadataByName = {
   },
 };
 
-export const colorMetadataByNumber = Object.entries(colorMetadata).reduce((acc, [, metadata]) => {
-  R.assoc(metadata.number, metadata, acc);
+export const colorMetadataByNumber = Object.entries(colorMetadata).reduce((acc, [_, metadata]) => {
+  acc[metadata.number] = metadata;
   return acc;
 }, {} as ColorMetadataByNumber);
+
+export const getColorMetadataByNumber = (number: ColorNumber): ColorMetadata => {
+  return colorMetadataByNumber[number];
+};

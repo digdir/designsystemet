@@ -18,7 +18,7 @@
   outline-offset: 2px;
 }
 
-.test {
+.colorBox {
   --color: #cfcfcf;
 
   background-color: #e5e5f7;

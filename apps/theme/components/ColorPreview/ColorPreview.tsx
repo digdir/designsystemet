@@ -1,7 +1,7 @@
 import {
   type Color,
   type ColorNumber,
-  getColorByNumber,
+  getColorMetadataByNumber,
 } from '@digdir/designsystemet';
 import {
   Button,
@@ -49,12 +49,12 @@ export const ColorPreview = () => {
     for (let i = 0; i < lightColors.length; i++) {
       const number = (i + 1) as ColorNumber;
       style[
-        `--ds-color-accent-${getColorByNumber(number)
+        `--ds-color-accent-${getColorMetadataByNumber(number)
           .displayName.replace(/\s+/g, '-')
           .toLowerCase()}`
       ] = lightColors[i].hex;
       style[
-        `--ds-color-${getColorByNumber(number)
+        `--ds-color-${getColorMetadataByNumber(number)
           .displayName.replace(/\s+/g, '-')
           .toLowerCase()}`
       ] = lightColors[i].hex;

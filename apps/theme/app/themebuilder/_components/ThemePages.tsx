@@ -3,7 +3,7 @@
 import {
   type Color,
   type ColorNumber,
-  getColorByNumber,
+  getColorMetadataByNumber,
 } from '@digdir/designsystemet';
 import cl from 'clsx/lite';
 import { useEffect, useRef } from 'react';
@@ -59,7 +59,7 @@ export const ThemePages = () => {
     for (let i = 0; i < lightColors.length; i++) {
       const number = (i + 1) as ColorNumber;
       style[
-        `--ds-color-neutral-${getColorByNumber(number)
+        `--ds-color-neutral-${getColorMetadataByNumber(number)
           .displayName.replace(/\s+/g, '-')
           .toLowerCase()}`
       ] = lightColors[i].hex;
@@ -83,7 +83,7 @@ export const ThemePages = () => {
     for (let i = 0; i < lightColors.length; i++) {
       const number = (i + 1) as ColorNumber;
       style[
-        `--ds-color-${getColorByNumber(number)
+        `--ds-color-${getColorMetadataByNumber(number)
           .displayName.replace(/\s+/g, '-')
           .toLowerCase()}`
       ] = lightColors[i].hex;

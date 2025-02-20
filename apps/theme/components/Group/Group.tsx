@@ -1,8 +1,13 @@
 import { RovingFocusItem } from '@digdir/designsystemet-react';
-import type { ThemeInfo } from '@digdir/designsystemet/color';
+import {
+  type Color,
+  type ColorNumber,
+  type ThemeInfo,
+  getColorMetadataByNumber,
+} from '@digdir/designsystemet/color';
 import cl from 'clsx/lite';
 
-import { Color } from '../Color/Color';
+import { Color as ColorPreview } from '../Color/Color';
 
 import { ColorModal } from '@repo/components';
 import { Fragment, createRef, useRef } from 'react';
@@ -11,7 +16,7 @@ import classes from './Group.module.css';
 
 type GroupProps = {
   header: string;
-  colors: number[];
+  colors: ColorNumber[];
   colorScale: ThemeInfo;
   showColorMeta?: boolean;
   names?: string[];
@@ -50,20 +55,22 @@ export const Group = ({
 
       <div className={cl(classes.colors)}>
         {colors.map((item, index) => {
+          const { number, hex } = colorScale[colorScheme][item];
+          const color: Color = {
+            ...getColorMetadataByNumber(number),
+            number,
+            hex,
+          };
           return (
             <Fragment key={index + 'fragment' + namespace}>
               <ColorModal
                 colorModalRef={colorModalRefs.current[index]}
-                hex={colorScale[colorScheme][item].hex}
                 namespace={namespace}
-                number={colorScale[colorScheme][item].number}
+                color={color}
               />
-              <RovingFocusItem
-                value={namespace + colorScale[colorScheme][item].number}
-                asChild
-              >
-                <Color
-                  color={colorScale[colorScheme][item].hex}
+              <RovingFocusItem value={namespace + number} asChild>
+                <ColorPreview
+                  color={hex}
                   colorNumber={item}
                   contrast={'dd'}
                   lightness={'dd'}

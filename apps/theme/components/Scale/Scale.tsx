@@ -18,12 +18,13 @@ export const Scale = ({
   namespace,
 }: ScaleProps) => {
   return (
+    // TODO: Use colorMetadata instead of hardcoding the names and color numbers
     <div className={classes.themes}>
       <RovingFocusRoot activeValue={namespace + '1'} asChild>
         <div className={classes.test}>
           <Group
             header={showHeader ? 'Background' : ''}
-            colors={[0, 1]}
+            colors={[1, 2]}
             colorScale={colorScale}
             showColorMeta={showColorMeta}
             names={['Default', 'Tinted']}
@@ -31,7 +32,7 @@ export const Scale = ({
           />
           <Group
             header={showHeader ? 'Surface' : ''}
-            colors={[2, 3, 4, 5]}
+            colors={[3, 4, 5, 6]}
             colorScale={colorScale}
             showColorMeta={showColorMeta}
             names={['Default', 'Tinted', 'Hover', 'Active']}
@@ -40,7 +41,7 @@ export const Scale = ({
           <Group
             showColorMeta={showColorMeta}
             header={showHeader ? 'Border' : ''}
-            colors={[6, 7, 8]}
+            colors={[7, 8, 9]}
             colorScale={colorScale}
             names={['Subtle', 'Default', 'Strong']}
             namespace={namespace}
@@ -48,7 +49,7 @@ export const Scale = ({
           <Group
             showColorMeta={showColorMeta}
             header={showHeader ? 'Text' : ''}
-            colors={[9, 10]}
+            colors={[10, 11]}
             colorScale={colorScale}
             names={['Subtle', 'Default']}
             namespace={namespace}
@@ -56,7 +57,7 @@ export const Scale = ({
           <Group
             showColorMeta={showColorMeta}
             header={showHeader ? 'Base' : ''}
-            colors={[11, 12, 13, 14, 15]}
+            colors={[12, 13, 14, 15, 16]}
             colorScale={colorScale}
             names={[
               'Default',

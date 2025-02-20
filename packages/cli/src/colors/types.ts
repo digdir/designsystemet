@@ -73,12 +73,12 @@ type SemanticColorMapping = {
 };
 
 export type ColorMetadataByName = {
-  [Property in keyof SemanticColorMapping]: SemanticColorMapping[Property] & ColorMetadata;
+  [P in keyof SemanticColorMapping]: SemanticColorMapping[P] & ColorMetadata;
 };
 
 export type ColorMetadataByNumber = {
-  [Property in keyof SemanticColorMapping as SemanticColorMapping[Property]['number']]: SemanticColorMapping[Property] &
-    ColorMetadata;
+  [P in keyof SemanticColorMapping as SemanticColorMapping[P]['number']]: SemanticColorMapping[P] &
+    Omit<ColorMetadata, 'name'>;
 };
 
 export type ColorMetadata = {
