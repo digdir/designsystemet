@@ -20,7 +20,7 @@
     "./colors": {
       "types": "./dist/types/colors.d.ts"
     },
-    "./react-types.d.ts": {
+    "./react-types": {
       "types": "./dist/react-types.d.ts"
     }
   },
