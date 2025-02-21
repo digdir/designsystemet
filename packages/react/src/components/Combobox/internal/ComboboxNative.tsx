@@ -15,16 +15,14 @@ const ComboboxNative = ({
   multiple,
   name,
 }: ComboboxNativeProps) => {
+  const VALUE = Object.keys(selectedOptions).map((key) => removePrefix(key));
+
   return (
     <select
       name={name}
       multiple={multiple}
       style={{ display: 'none' }}
-      value={
-        multiple
-          ? Object.keys(selectedOptions)
-          : Object.keys(selectedOptions)[0]
-      }
+      value={multiple ? VALUE : VALUE[0]}
       onChange={() => {}}
     >
       {VALUE.map((value) => (

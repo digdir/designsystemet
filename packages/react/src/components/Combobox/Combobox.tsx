@@ -225,7 +225,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
     useEffect(() => {
       if (value && Object.keys(options).length >= 0) {
         const updatedSelectedOptions = value.map((option) => {
-          const value = options[option];
+          const value = options[prefix(option)];
           return value;
         });
 
@@ -233,7 +233,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
           updatedSelectedOptions.reduce<{
             [key: string]: Option;
           }>((acc, value) => {
-            acc[value.value] = value;
+            acc[prefix(value.value)] = value;
             return acc;
           }, {}),
         );
@@ -258,19 +258,21 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
 
       if (remove) {
         const newSelectedOptions = { ...selectedOptions };
-        delete newSelectedOptions[option.value];
+        delete newSelectedOptions[prefix(option.value)];
         setSelectedOptions(newSelectedOptions);
-        onValueChange?.(Object.keys(newSelectedOptions));
+        onValueChange?.(
+          Object.keys(newSelectedOptions).map((key) => removePrefix(key)),
+        );
         return;
       }
 
       const newSelectedOptions = { ...selectedOptions };
 
       if (multiple) {
-        if (newSelectedOptions[option.value]) {
-          delete newSelectedOptions[option.value];
+        if (newSelectedOptions[prefix(option.value)]) {
+          delete newSelectedOptions[prefix(option.value)];
         } else {
-          newSelectedOptions[option.value] = option;
+          newSelectedOptions[prefix(option.value)] = option;
         }
         inputRef.current && setReactInputValue(inputRef.current, '');
         inputRef.current?.focus();
@@ -292,7 +294,9 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       }
 
       setSelectedOptions(newSelectedOptions);
-      onValueChange?.(Object.keys(newSelectedOptions));
+      onValueChange?.(
+        Object.keys(newSelectedOptions).map((key) => removePrefix(key)),
+      );
 
       !multiple && setOpen(false);
       refs.domReference.current?.focus();
@@ -325,7 +329,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
       measureElement: (elem) => {
         return elem.getBoundingClientRect().height;
       },
-      overscan: 1,
+      overscan: 7,
     });
 
     return (
@@ -354,7 +358,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
           onOptionClick: (value: string) => {
             if (readOnly) return;
             if (disabled) return;
-            const option = options[value];
+            const option = options[prefix(value)];
             debouncedHandleSelectOption({ option: option });
           },
           handleSelectOption: debouncedHandleSelectOption,

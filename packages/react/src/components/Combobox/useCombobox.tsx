@@ -120,7 +120,11 @@ export function useCombobox({
 
   const preSelectedOptions = useMemo(
     () =>
-      (initialValue || []).reduce<{
+      (
+        initialValue?.map((key) => {
+          return prefix(key);
+        }) || []
+      ).reduce<{
         [key: string]: Option;
       }>((acc, value) => {
         const option = options[value];
@@ -143,12 +147,12 @@ export function useCombobox({
       .map((option, index) => {
         /* If we have a selected value in single mode and the input matches an option, return all children */
         if (!multiple && Object.keys(selectedOptions).length === 1) {
-          filteredOptions.push(options[option].value);
+          filteredOptions.push(option);
           return optionsChildren[index];
         }
 
         if (multiple && selectedOptions[option]) {
-          filteredOptions.push(options[option].value);
+          filteredOptions.push(option);
           return optionsChildren[index];
         }
 

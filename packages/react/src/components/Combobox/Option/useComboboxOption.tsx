@@ -45,7 +45,7 @@ export const useComboboxOption = ({
   } = context;
 
   const index = useMemo(
-    () => filteredOptions.indexOf(value) + customIds.length,
+    () => filteredOptions.indexOf(prefix(String(value))) + customIds.length,
     [customIds.length, filteredOptions, value],
   );
 
@@ -60,7 +60,7 @@ export const useComboboxOption = ({
     throw new Error('Internal error: ComboboxOption did not find index');
   }
 
-  const selected = selectedOptions[value];
+  const selected = selectedOptions[prefix(value)];
   const active = activeIndex === index;
 
   useEffect(() => {
