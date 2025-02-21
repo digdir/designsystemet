@@ -26,7 +26,9 @@ const reservedColorsPattern = `^(?!(?:${RESERVED_COLORS.join('|')})$)`;
 export const colorRegex = new RegExp(`^${hexPatterns.join('|')}$`);
 
 const colorSchema = z
-  .string({ description: 'A hex color, which is used for creating a color scale' })
+  .string({
+    description: `A hex color, which is used for creating a color scale. Name cannot be one of ${RESERVED_COLORS.join(', ')}`,
+  })
   .regex(colorRegex)
   .transform(convertToHex);
 
