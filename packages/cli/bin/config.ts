@@ -21,6 +21,7 @@ const hexPatterns = [
   `#[0-9a-fA-F]{6}`,
   `#[0-9a-fA-F]{8}`,
 ];
+const reservedColorsPattern = `^(?!(?:${RESERVED_COLORS.join('|')})$)`;
 
 export const colorRegex = new RegExp(`^${hexPatterns.join('|')}$`);
 
@@ -30,10 +31,16 @@ const colorSchema = z
   .transform(convertToHex);
 
 const colorCategorySchema = z
-  .record(colorSchema, {
-    description: 'One or more color definitions',
-    invalid_type_error: 'Color definitions must be hex color values',
-  })
+  .record(
+    z.string().regex(new RegExp(reservedColorsPattern, 'i'), {
+      message: `Color names cannot include reserved names: ${RESERVED_COLORS.join(', ')}`,
+    }),
+    colorSchema,
+    {
+      description: 'One or more color definitions',
+      invalid_type_error: 'Color definitions must be hex color values',
+    },
+  )
   .refine((colors) => !Object.keys(colors).some((key) => RESERVED_COLORS.includes(key.toLowerCase())), {
     message: `Color names cannot include reserved names: ${RESERVED_COLORS.join(', ')}`,
   });
