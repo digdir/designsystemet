@@ -17,6 +17,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/gh-setup
+       # Only exit prerelease mode if the prerelease file is present
+        if: ${{ hashFiles('.changeset/pre.json') != '' }}
       - name: Exit prerelease mode for changesets
         if: ${{ hashFiles('.changeset/pre.json') != '' }}
         run: yarn changeset pre exit next
