@@ -1,7 +1,7 @@
 import {
-  type ColorInfo,
+  type Color,
   type ColorNumber,
-  getColorInfoFromPosition,
+  getColorMetadataByNumber,
 } from '@digdir/designsystemet';
 import {
   Button,
@@ -22,39 +22,39 @@ type ViewType = 'list' | 'grid';
 export const ColorPreview = () => {
   const colors = useThemeStore((state) => state.colors);
   const [view, setView] = useState<ViewType>('grid');
-  const appearance = useThemeStore((state) => state.appearance);
+  const colorScheme = useThemeStore((state) => state.colorScheme);
 
   type CardProps = {
     color: {
       name: string;
       colors: {
-        light: ColorInfo[];
-        dark: ColorInfo[];
+        light: Color[];
+        dark: Color[];
       };
     };
   };
 
   const setStyle = (colors: {
-    light: ColorInfo[];
-    dark: ColorInfo[];
+    light: Color[];
+    dark: Color[];
   }) => {
     const style = {} as Record<string, string>;
 
     let lightColors = colors.light;
 
-    if (appearance === 'dark') {
+    if (colorScheme === 'dark') {
       lightColors = colors.dark;
     }
 
     for (let i = 0; i < lightColors.length; i++) {
       const number = (i + 1) as ColorNumber;
       style[
-        `--ds-color-accent-${getColorInfoFromPosition(number)
+        `--ds-color-accent-${getColorMetadataByNumber(number)
           .displayName.replace(/\s+/g, '-')
           .toLowerCase()}`
       ] = lightColors[i].hex;
       style[
-        `--ds-color-${getColorInfoFromPosition(number)
+        `--ds-color-${getColorMetadataByNumber(number)
           .displayName.replace(/\s+/g, '-')
           .toLowerCase()}`
       ] = lightColors[i].hex;

@@ -1,7 +1,6 @@
 import {
-  type ColorInfo,
+  type Color,
   generateColorSchemes,
-  getColorInfoFromPosition,
   getContrastFromHex,
 } from '@digdir/designsystemet';
 
@@ -16,16 +15,13 @@ export const ContrastChart = ({ type = 'light' }: ContrastChartProps) => {
   const theme = generateColorSchemes('#0062BA');
   const includedColorIndexes = [1, 2, 3, 4, 5, 6, 7, 8, 12, 13];
   const reducedLight = theme.light.filter((color) =>
-    includedColorIndexes.includes(color.position),
+    includedColorIndexes.includes(color.number),
   );
   const reducedDark = theme.dark.filter((color) =>
-    includedColorIndexes.includes(color.position),
+    includedColorIndexes.includes(color.number),
   );
 
-  const Tag = ({
-    color1,
-    color2,
-  }: { color1: ColorInfo; color2: ColorInfo }) => {
+  const Tag = ({ color1, color2 }: { color1: Color; color2: Color }) => {
     const contrast = getContrastFromHex(color1.hex, color2.hex);
     let type = 'AAA';
 
@@ -40,10 +36,7 @@ export const ContrastChart = ({ type = 'light' }: ContrastChartProps) => {
     return <div className={cl(classes.tag, classes[type])}>{type}</div>;
   };
 
-  const TdCell = ({
-    color1,
-    color2,
-  }: { color1: ColorInfo; color2: ColorInfo }) => {
+  const TdCell = ({ color1, color2 }: { color1: Color; color2: Color }) => {
     return (
       <div className={classes.cell}>
         <div className={classes.colors}>
@@ -67,11 +60,11 @@ export const ContrastChart = ({ type = 'light' }: ContrastChartProps) => {
     );
   };
 
-  const ThCell = ({ color }: { color: ColorInfo }) => {
+  const ThCell = ({ color }: { color: Color }) => {
     return (
       <th className={classes.th}>
         <div className={classes.header}>
-          {getColorInfoFromPosition(color.position).displayName}
+          {color.displayName}
           <div className={classes.headerHex}>{color.hex}</div>
         </div>
       </th>
@@ -82,12 +75,12 @@ export const ContrastChart = ({ type = 'light' }: ContrastChartProps) => {
   const themeColors = type === 'light' ? theme.light : theme.dark;
 
   return (
-    <div data-ds-color-mode={type} className={classes.contrastChart}>
+    <div data-color-scheme={type} className={classes.contrastChart}>
       <table className={classes.table}>
         <tr>
           <th />
           {reducedColors.map((color, index) => (
-            <ThCell key={index} color={reducedColors[index]} />
+            <ThCell key={index} color={color} />
           ))}
         </tr>
 

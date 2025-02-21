@@ -13,7 +13,7 @@ export const useThemeParams = () => {
   const router = useRouter();
 
   const colors = useThemeStore((state) => state.colors);
-  const appearance = useThemeStore((state) => state.appearance);
+  const colorScheme = useThemeStore((state) => state.colorScheme);
   const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
   const setBorderRadius = useThemeStore((state) => state.setBaseBorderRadius);
 
@@ -21,7 +21,7 @@ export const useThemeParams = () => {
   useEffect(() => {
     if (query.get('appearance')) {
       useThemeStore.setState({
-        appearance: query.get('appearance') as ColorScheme,
+        colorScheme: query.get('appearance') as ColorScheme,
       });
     }
 
@@ -81,7 +81,7 @@ export const useThemeParams = () => {
       .map((color) => `${color.name}:${color.colors.light[11].hex}`)
       .join(' ');
 
-    params.set('appearance', appearance);
+    params.set('appearance', colorScheme);
     params.set('main', mainColorString);
     params.set('neutral', neutralColorString);
     params.set('support', supportColorString);
@@ -90,7 +90,7 @@ export const useThemeParams = () => {
     router.replace(pathname + '?' + params.toString(), {
       scroll: false,
     });
-  }, [colors, appearance, baseBorderRadius]);
+  }, [colors, colorScheme, baseBorderRadius]);
 
   return null;
 };

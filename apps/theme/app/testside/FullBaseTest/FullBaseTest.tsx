@@ -1,6 +1,6 @@
 import type { CssColor } from '@digdir/designsystemet/color';
 import {
-  getContrastDefault,
+  generateColorContrast,
   getLightnessFromHex,
   getLuminanceFromLightness,
 } from '@digdir/designsystemet/color';
@@ -117,7 +117,10 @@ export const FullBaseTest = () => {
     const baseHover = blueColors[lightness - modifier];
     const baseActive = blueColors[lightness - modifier * 2];
 
-    const contrastOneColor = getContrastDefault(blueColors[lightness]);
+    const contrastOneColor = generateColorContrast(
+      blueColors[lightness],
+      'default',
+    );
 
     return (
       <div

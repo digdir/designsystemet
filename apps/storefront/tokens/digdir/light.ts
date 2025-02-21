@@ -59,7 +59,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#d3e4f3",
+    $value: "#ddeaf6",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -77,7 +77,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#bad5ec",
+    $value: "#c7ddf0",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -95,7 +95,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#a3c6e6",
+    $value: "#b1cfea",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -347,7 +347,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#e0e2e4",
+    $value: "#e7e9ea",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -365,7 +365,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#cfd2d5",
+    $value: "#d8dadd",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -383,7 +383,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#bfc3c7",
+    $value: "#c9ccd0",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -635,7 +635,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#fcdadb",
+    $value: "#fde2e3",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -653,7 +653,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#fbc4c5",
+    $value: "#fccfd1",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -671,7 +671,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#f9afb1",
+    $value: "#fabcbe",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -923,7 +923,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#f6e0ae",
+    $value: "#f8e7c1",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -941,7 +941,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#f0ce7e",
+    $value: "#f3d797",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -959,7 +959,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#eabc4f",
+    $value: "#eec76c",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1211,7 +1211,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#c8e6fd",
+    $value: "#d5ecfd",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1229,7 +1229,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#a8d7fb",
+    $value: "#b9dffc",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1247,7 +1247,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#89c9fa",
+    $value: "#9cd2fb",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1499,7 +1499,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#d0e8d3",
+    $value: "#daeddd",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1517,7 +1517,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#b4dbba",
+    $value: "#c3e2c7",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1535,7 +1535,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#9bcfa2",
+    $value: "#abd6b1",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1787,7 +1787,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#f5dcdc",
+    $value: "#f8e4e4",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1805,7 +1805,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#f0c8c8",
+    $value: "#f3d2d2",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1823,7 +1823,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#ebb5b5",
+    $value: "#eec1c1",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2075,7 +2075,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#d2e5f3",
+    $value: "#dcebf6",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2093,7 +2093,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#b7d5ed",
+    $value: "#c5ddf0",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2111,7 +2111,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#9fc7e6",
+    $value: "#aed0ea",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2363,7 +2363,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#f8dfb5",
+    $value: "#fae6c6",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2381,7 +2381,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#f4cb89",
+    $value: "#f6d5a0",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2399,7 +2399,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#f0b95f",
+    $value: "#f3c479",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2755,20 +2755,20 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "2px",
+    $value: "3px",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{border-width.2}"
+      $value: "{border-width.3}"
     },
-    name: "--ds-border-width-highlight",
+    name: "--ds-border-width-focus",
     attributes: {},
     path: [
       "border-width",
-      "highlight"
+      "focus"
     ],
-    key: "{border-width.highlight}"
+    key: "{border-width.focus}"
   },
   {
     $type: "dimension",
@@ -3130,7 +3130,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.11}",
+        fontSize: "{font-size.10}",
         letterSpacing: "{letter-spacing.1}"
       }
     },
@@ -3160,7 +3160,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.10}",
+        fontSize: "{font-size.9}",
         letterSpacing: "{letter-spacing.1}"
       }
     },
@@ -3190,7 +3190,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.9}",
+        fontSize: "{font-size.8}",
         letterSpacing: "{letter-spacing.2}"
       }
     },
@@ -3220,7 +3220,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.8}",
+        fontSize: "{font-size.7}",
         letterSpacing: "{letter-spacing.3}"
       }
     },
@@ -3250,7 +3250,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.7}",
+        fontSize: "{font-size.6}",
         letterSpacing: "{letter-spacing.5}"
       }
     },
@@ -3280,7 +3280,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.6}",
+        fontSize: "{font-size.5}",
         letterSpacing: "{letter-spacing.6}"
       }
     },
@@ -3310,7 +3310,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.5}",
+        fontSize: "{font-size.4}",
         letterSpacing: "{letter-spacing.6}"
       }
     },
@@ -3340,7 +3340,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.md}",
-        fontSize: "{font-size.7}",
+        fontSize: "{font-size.6}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3370,7 +3370,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.md}",
-        fontSize: "{font-size.6}",
+        fontSize: "{font-size.5}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3400,7 +3400,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.md}",
-        fontSize: "{font-size.5}",
+        fontSize: "{font-size.4}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3430,7 +3430,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.md}",
-        fontSize: "{font-size.4}",
+        fontSize: "{font-size.3}",
         letterSpacing: "{letter-spacing.7}"
       }
     },
@@ -3460,7 +3460,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.md}",
-        fontSize: "{font-size.3}",
+        fontSize: "{font-size.2}",
         letterSpacing: "{letter-spacing.6}"
       }
     },
@@ -3490,7 +3490,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.7}",
+        fontSize: "{font-size.6}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3521,7 +3521,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.6}",
+        fontSize: "{font-size.5}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3552,7 +3552,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.5}",
+        fontSize: "{font-size.4}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3583,7 +3583,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.4}",
+        fontSize: "{font-size.3}",
         letterSpacing: "{letter-spacing.7}"
       }
     },
@@ -3614,7 +3614,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.3}",
+        fontSize: "{font-size.2}",
         letterSpacing: "{letter-spacing.6}"
       }
     },
@@ -3645,7 +3645,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.7}",
+        fontSize: "{font-size.6}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3676,7 +3676,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.6}",
+        fontSize: "{font-size.5}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3707,7 +3707,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.5}",
+        fontSize: "{font-size.4}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3738,7 +3738,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.4}",
+        fontSize: "{font-size.3}",
         letterSpacing: "{letter-spacing.7}"
       }
     },
@@ -3769,7 +3769,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.3}",
+        fontSize: "{font-size.2}",
         letterSpacing: "{letter-spacing.6}"
       }
     },

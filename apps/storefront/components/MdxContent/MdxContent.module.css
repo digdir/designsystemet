@@ -120,7 +120,7 @@
 
   & > img {
     width: 100%;
-    margin: var(--ds-size-5) 0;
+    margin: var(--ds-size-2) 0;
     border-radius: var(--ds-border-radius-md);
     box-shadow: var(--ds-shadow-md);
   }
@@ -166,7 +166,7 @@
 
     & img {
       width: 100%;
-      margin: var(--ds-size-5) 0;
+      margin: var(--ds-size-1) 0;
       border-radius: var(--ds-border-radius-md);
       box-shadow: var(--ds-shadow-md);
     }

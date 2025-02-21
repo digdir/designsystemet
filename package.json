@@ -1,7 +1,7 @@
 {
   "name": "root",
   "version": "0.0.0",
-  "packageManager": "yarn@4.2.2",
+  "packageManager": "yarn@4.6.0",
   "private": true,
   "workspaces": [
     "packages/*",
@@ -33,7 +33,9 @@
     "types:storefront": "yarn workspace storefront types",
     "version-packages": "changeset version",
     "publish": "yarn build && changeset publish",
-    "chromatic": "yarn workspace @designsystemet/storybook chromatic"
+    "chromatic": "yarn workspace @designsystemet/storybook chromatic",
+    "update:template": "yarn workspace @digdir/designsystemet update:template",
+    "update:design-tokens": "yarn workspace @digdir/designsystemet update:design-tokens"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",

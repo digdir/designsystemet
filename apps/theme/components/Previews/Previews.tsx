@@ -2,11 +2,12 @@
 import { useState } from 'react';
 
 import {
-  type ColorInfo,
+  type Color,
   type ColorNumber,
+  type ColorScheme,
   type CssColor,
   generateColorSchemes,
-  getColorInfoFromPosition,
+  getColorMetadataByNumber,
 } from '@digdir/designsystemet';
 import { ToggleGroup } from '@digdir/designsystemet-react';
 import { OverviewComponents } from '../OverviewComponents/OverviewComponents';
@@ -48,24 +49,24 @@ const themes: {
 
 export const Previews = () => {
   const [theme, setTheme] = useState<keyof typeof themes>('blue');
-  const [appearance, setAppearance] = useState<'light' | 'dark'>('light');
+  const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
 
   const getDsMainVars = (colors: {
-    light: ColorInfo[];
-    dark: ColorInfo[];
+    light: Color[];
+    dark: Color[];
   }) => {
     const style = {} as Record<string, string>;
 
     let lightColors = colors.light;
 
-    if (appearance === 'dark') {
+    if (colorScheme === 'dark') {
       lightColors = colors.dark;
     }
 
     for (let i = 0; i < lightColors.length; i++) {
       const number = (i + 1) as ColorNumber;
       style[
-        `--ds-color-${getColorInfoFromPosition(number)
+        `--ds-color-${getColorMetadataByNumber(number)
           .displayName.replace(/\s+/g, '-')
           .toLowerCase()}`
       ] = lightColors[i].hex;
@@ -96,8 +97,8 @@ export const Previews = () => {
           </ToggleGroup.Item>
         </ToggleGroup>
         <ToggleGroup
-          value={appearance}
-          onChange={(v) => setAppearance(v as 'light' | 'dark')}
+          value={colorScheme}
+          onChange={(v) => setColorScheme(v as ColorScheme)}
         >
           <ToggleGroup.Item value='light'>Lys</ToggleGroup.Item>
           <ToggleGroup.Item value='dark'>Mørk</ToggleGroup.Item>
@@ -106,7 +107,7 @@ export const Previews = () => {
 
       <div
         className={classes.preview}
-        data-color-scheme={appearance}
+        data-color-scheme={colorScheme}
         style={{
           ...getThemeVariables(themes[theme].hex),
           ...themes[theme].cssVars,

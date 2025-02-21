@@ -1,7 +1,7 @@
 'use client';
 
 import { Heading } from '@digdir/designsystemet-react';
-import type { ColorInfo, ThemeInfo } from '@digdir/designsystemet/color';
+import type { Color, ThemeInfo } from '@digdir/designsystemet/color';
 
 import classes from './BackgroundSurface.module.css';
 
@@ -75,7 +75,7 @@ export const BackgroundSurface = ({
 
 type ColumnProps = {
   title: string;
-  scales: ColorInfo[][];
+  scales: Color[][];
 };
 
 const Column = ({ title, scales }: ColumnProps) => {
@@ -94,9 +94,9 @@ const Column = ({ title, scales }: ColumnProps) => {
 };
 
 type BoxProps = {
-  colorScale: ColorInfo[];
+  colorScale: Color[];
   backgroundIndex: 0 | 1;
-  scales: ColorInfo[][];
+  scales: Color[][];
 };
 
 const Box = ({ colorScale, backgroundIndex, scales }: BoxProps) => {

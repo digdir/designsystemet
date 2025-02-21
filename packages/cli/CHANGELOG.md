@@ -1,5 +1,43 @@
 # Change Log
 
+## 1.0.0-next.50
+
+## 1.0.0-next.49
+
+### Minor Changes
+
+- Added token `border-width-focus` ([#3138](https://github.com/digdir/designsystemet/pull/3138))
+
+- Renamed background, surface and contrast color tokens and CSS variables ([#3053](https://github.com/digdir/designsystemet/pull/3053))
+
+- Increased lightness of global `orange` color ([#3094](https://github.com/digdir/designsystemet/pull/3094))
+
+- Removed token `border-width-highlight` ([#3138](https://github.com/digdir/designsystemet/pull/3138))
+
+- Renamed color step `contrast-1` to `16` ([#2911](https://github.com/digdir/designsystemet/pull/2911))
+
+- Reduced `font-size` scale by one, from 11 to 10. All sizes above and including `font-size-2` have shifted down size by one ([#3138](https://github.com/digdir/designsystemet/pull/3138))
+
+- Added new step to color scale, now with a total of 16 ([#2911](https://github.com/digdir/designsystemet/pull/2911))
+
+- Changed order for semantic color tokens in design-tokens ([#2911](https://github.com/digdir/designsystemet/pull/2911))
+
+- Changed `warning` colors to use global `orange` ([#3094](https://github.com/digdir/designsystemet/pull/3094))
+
+- Renamed color step `contrast-2` to `15` ([#2911](https://github.com/digdir/designsystemet/pull/2911))
+
+- Removed global `yellow` color. ([#3094](https://github.com/digdir/designsystemet/pull/3094))
+
+### Patch Changes
+
+- `clean` should only run once during `tokens create` when multiple themes are defined using config file ([#3104](https://github.com/digdir/designsystemet/pull/3104))
+
+- Added migration for color tokens renaming. Run `designsystemet migrate css-renames-next48-to-next49 --glob "./**/*.css"` ([#3053](https://github.com/digdir/designsystemet/pull/3053))
+
+- `typography` and `borderRadius` are now optional in config file ([#3104](https://github.com/digdir/designsystemet/pull/3104))
+
+- Increased the luminance of the Surface Tinted color in light mode and made Surface Tinted stand out more against Surface Default in dark mode. ([#3116](https://github.com/digdir/designsystemet/pull/3116))
+
 ## 1.0.0-next.48
 
 ### Minor Changes

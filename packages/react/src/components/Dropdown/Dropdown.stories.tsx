@@ -23,6 +23,9 @@ export default {
         maxHeight: '800px',
       },
     },
+    chromatic: {
+      disableSnapshot: false,
+    },
   },
   play: async (ctx) => {
     // When not in Docs mode, automatically open the dropdown
@@ -115,27 +118,13 @@ export const Controlled: StoryFn<typeof Dropdown> = () => {
       <Dropdown open={open} onClose={() => setOpen(false)}>
         <Dropdown.List>
           <Dropdown.Item>
-            <Dropdown.Button asChild>
-              <a
-                href='https://github.com/digdir/designsystemet'
-                target='_blank'
-                rel='noreferrer'
-              >
-                <LinkIcon aria-hidden />
-                Github
-              </a>
+            <Dropdown.Button onClick={() => setOpen(false)}>
+              Trykk på meg lukker
             </Dropdown.Button>
           </Dropdown.Item>
           <Dropdown.Item>
-            <Dropdown.Button asChild>
-              <a
-                href='https://designsystemet.no'
-                target='_blank'
-                rel='noreferrer'
-              >
-                <LinkIcon aria-hidden />
-                Designsystemet.no
-              </a>
+            <Dropdown.Button onClick={() => setOpen(false)}>
+              Eg lukker også
             </Dropdown.Button>
           </Dropdown.Item>
         </Dropdown.List>

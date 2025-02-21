@@ -1,9 +1,9 @@
 'use client';
 
 import {
-  type ColorInfo,
+  type Color,
   type ColorNumber,
-  getColorInfoFromPosition,
+  getColorMetadataByNumber,
 } from '@digdir/designsystemet';
 import cl from 'clsx/lite';
 import { useEffect, useRef } from 'react';
@@ -17,7 +17,7 @@ export const ThemePages = () => {
   const colors = useThemeStore((state) => state.colors);
   const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
   const themeTab = useThemeStore((state) => state.themeTab);
-  const appearance = useThemeStore((state) => state.appearance);
+  const colorScheme = useThemeStore((state) => state.colorScheme);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -45,21 +45,21 @@ export const ThemePages = () => {
   }, [baseBorderRadius]);
 
   const getDsVars = (colors: {
-    light: ColorInfo[];
-    dark: ColorInfo[];
+    light: Color[];
+    dark: Color[];
   }) => {
     const style = {} as Record<string, string>;
 
     let lightColors = colors.light;
 
-    if (appearance === 'dark') {
+    if (colorScheme === 'dark') {
       lightColors = colors.dark;
     }
 
     for (let i = 0; i < lightColors.length; i++) {
       const number = (i + 1) as ColorNumber;
       style[
-        `--ds-color-neutral-${getColorInfoFromPosition(number)
+        `--ds-color-neutral-${getColorMetadataByNumber(number)
           .displayName.replace(/\s+/g, '-')
           .toLowerCase()}`
       ] = lightColors[i].hex;
@@ -69,21 +69,21 @@ export const ThemePages = () => {
   };
 
   const getDsMainVars = (colors: {
-    light: ColorInfo[];
-    dark: ColorInfo[];
+    light: Color[];
+    dark: Color[];
   }) => {
     const style = {} as Record<string, string>;
 
     let lightColors = colors.light;
 
-    if (appearance === 'dark') {
+    if (colorScheme === 'dark') {
       lightColors = colors.dark;
     }
 
     for (let i = 0; i < lightColors.length; i++) {
       const number = (i + 1) as ColorNumber;
       style[
-        `--ds-color-${getColorInfoFromPosition(number)
+        `--ds-color-${getColorMetadataByNumber(number)
           .displayName.replace(/\s+/g, '-')
           .toLowerCase()}`
       ] = lightColors[i].hex;
@@ -109,7 +109,7 @@ export const ThemePages = () => {
     <>
       <div
         className={classes.basicPanel}
-        data-color-scheme={appearance}
+        data-color-scheme={colorScheme}
         hidden={!(themeTab === 'overview')}
         style={style()}
       >
@@ -117,7 +117,7 @@ export const ThemePages = () => {
       </div>
       <div
         className={cl(classes.basicPanel, classes.colorsContainer)}
-        data-color-scheme={appearance}
+        data-color-scheme={colorScheme}
         hidden={!(themeTab === 'colorsystem')}
       >
         <Colors />
@@ -126,14 +126,14 @@ export const ThemePages = () => {
       <>
         <div
           className={classes.panel}
-          data-color-scheme={appearance}
+          data-color-scheme={colorScheme}
           hidden={!(themeTab === 'colorsystem')}
         >
           <ColorPreview />
         </div>
         <div
           className={classes.panel}
-          data-color-scheme={appearance}
+          data-color-scheme={colorScheme}
           hidden={!(themeTab === 'colorsystem')}
         >
           <ColorTokens />
@@ -141,7 +141,7 @@ export const ThemePages = () => {
 
         <div
           className={classes.panel}
-          data-color-scheme={appearance}
+          data-color-scheme={colorScheme}
           hidden={!(themeTab === 'colorsystem')}
         >
           <ColorContrasts />

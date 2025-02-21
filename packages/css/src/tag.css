@@ -26,7 +26,7 @@
   }
 
   @media (forced-colors: active) {
-    border-width: 1px;
+    border-width: var(--ds-border-width-default);
     border-style: solid;
     border-color: CanvasText;
   }

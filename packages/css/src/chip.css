@@ -5,16 +5,17 @@
   --dsc-chip-background--checked: var(--ds-color-base-default);
   --dsc-chip-background--checked--hover: var(--ds-color-base-hover);
   --dsc-chip-background--checked--active: var(--ds-color-base-active);
-  --dsc-chip-border-width: 1px;
+  --dsc-chip-border-width: var(--ds-border-width-default);
   --dsc-chip-border-style: solid;
   --dsc-chip-border-color: var(--ds-color-border-subtle);
   --dsc-chip-border-color--checked: transparent;
   --dsc-chip-color: var(--ds-color-text-default);
-  --dsc-chip-color--checked: var(--ds-color-base-contrast-default);
-  --dsc-chip-input-color: var(--ds-color-border-strong);
-  --dsc-chip-input-color--checked: var(--ds-color-base-default);
+  --dsc-chip-input-accent-color: var(--ds-color-base-contrast-default);
+  --dsc-chip-input-color: var(--ds-color-text-subtle);
+  --dsc-chip-input-stroke-color: var(--ds-color-base-default);
   --dsc-chip-border-radius: var(--ds-border-radius-full);
   --dsc-chip-border-radius--checkbox: var(--ds-border-radius-md);
+  --dsc-chip-border-radius--checkbox-input: var(--ds-border-radius-sm);
   --dsc-chip-height: var(--ds-size-8);
   --dsc-chip-icon-size: var(--ds-size-7);
   --dsc-chip-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' fill='none' viewBox='0 0 24 24' focusable='false' role='img'%3E%3Cpath fill='currentColor' d='M6.53 5.47a.75.75 0 0 0-1.06 1.06L10.94 12l-5.47 5.47a.75.75 0 1 0 1.06 1.06L12 13.06l5.47 5.47a.75.75 0 1 0 1.06-1.06L13.06 12l5.47-5.47a.75.75 0 0 0-1.06-1.06L12 10.94z'%3E%3C/path%3E%3C/svg%3E");
@@ -79,20 +80,23 @@
   &:has(input[type='checkbox']) {
     border-radius: var(--dsc-chip-border-radius--checkbox);
     padding-inline: var(--dsc-chip-spacing);
+
+    & input {
+      border-radius: var(--dsc-chip-border-radius--checkbox-input);
+    }
   }
 
   & > input {
-    --dsc-input-background--checked: var(--dsc-chip-color--checked);
     --dsc-input-background: transparent;
-    --dsc-input-border-color--checked: var(--dsc-chip-color--checked);
     --dsc-input-border-color: var(--dsc-chip-input-color);
-    --dsc-input-color--checked: var(--dsc-chip-input-color--checked);
+    --dsc-input-accent-color: var(--dsc-chip-input-accent-color);
+    --dsc-input-stroke-color: var(--dsc-chip-input-stroke-color);
     --dsc-input-size--toggle: var(--dsc-chip-input-size);
   }
 
   &:has(input:checked),
   &[data-removable] {
-    color: var(--dsc-chip-color--checked);
+    color: var(--dsc-chip-input-accent-color);
     background: var(--dsc-chip-background--checked);
     border-color: var(--dsc-chip-border-color--checked);
   }

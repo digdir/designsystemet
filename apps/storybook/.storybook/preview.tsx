@@ -96,6 +96,7 @@ const components = {
       className='sb-unstyled'
       style={{ width: '100%' }}
       data-color-scheme='light'
+      data-color='neutral'
     />
   ),
   thead: (props: Props) => (
@@ -153,6 +154,8 @@ const preview: Preview = {
       viewports,
     },
     chromatic: {
+      // Disable snapshots by default
+      disableSnapshot: true,
       modes: {
         mobile: allModes[320],
         desktop: allModes[1200],

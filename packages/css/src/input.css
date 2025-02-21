@@ -2,31 +2,33 @@
   margin: 0; /* Reset native margin, but resepect parent selevtor `.someting > * { margin: ... }` */
 }
 .ds-input {
-  --dsc-input-background--checked: var(--dsc-input-border-color--checked);
-  --dsc-input-background--invalid: var(--dsc-input-border-color--invalid);
-  --dsc-input-background--readonly: var(--ds-color-neutral-background-tinted);
-  --dsc-input-background: var(--ds-color-neutral-background-default);
-  --dsc-input-border-color--checked: var(--ds-color-base-default);
-  --dsc-input-border-color--invalid: var(--ds-color-danger-border-strong);
-  --dsc-input-border-color--readonly: var(--ds-color-neutral-border-subtle);
-  --dsc-input-border-color: var(--ds-color-neutral-border-default);
-  --dsc-input-border-width--toggle: max(1px, calc(var(--ds-size-1) / 2)); /* Allow border-width to grow with font-size */
-  --dsc-input-border-width: 1px;
-  --dsc-input-border-style: solid;
-  --dsc-input-color--checked: var(--ds-color-base-contrast-default);
-  --dsc-input-color--invalid: var(--ds-color-danger-base-contrast-default);
-  --dsc-input-color--readonly: var(--ds-color-neutral-text-subtle);
-  --dsc-input-color: var(--ds-color-neutral-text-default);
   --dsc-input-padding: var(--ds-size-2) var(--ds-size-3);
   --dsc-input-size--toggle: var(--ds-size-6);
   --dsc-input-size: var(--ds-size-12);
-  --dsc-input-stroke: 0.05em;
-
+  /* Background */
+  --dsc-input-background--readonly: var(--ds-color-neutral-background-tinted);
+  --dsc-input-background: var(--ds-color-neutral-background-default);
+  /* Border */
+  --dsc-input-border-color--readonly: var(--ds-color-neutral-border-subtle);
+  --dsc-input-border-color: var(--ds-color-neutral-border-default);
+  --dsc-input-border-style: solid;
+  --dsc-input-border-width--toggle: max(var(--ds-border-width-default), calc(var(--ds-size-1) / 2)); /* Allow border-width to grow with font-size */
+  --dsc-input-border-width: var(--ds-border-width-default);
+  /* Color  */
+  --dsc-input-color--readonly: var(--ds-color-neutral-text-subtle);
+  --dsc-input-color: var(--ds-color-neutral-text-default);
+  /* Stroke is used as the dot in radio, and checkmark in checkboxes */
+  --dsc-input-stroke-color: var(--ds-color-base-contrast-default);
+  --dsc-input-stroke-color--invalid: var(--ds-color-danger-base-contrast-default);
+  --dsc-input-stroke-width: 0.05em;
+  /* Accent color, used in checkboxes and radio */
+  --dsc-input-accent-color: var(--ds-color-base-default);
+  --dsc-input-accent-color--invalid: var(--ds-color-danger-text-subtle);
   /* Checkmark with antialiasing is achieved by percentages 48% / 50% / 52% */
-  --_dsc-input-diagonal-1: transparent calc(48% - var(--dsc-input-stroke));
-  --_dsc-input-diagonal-2: currentcolor calc(50% - var(--dsc-input-stroke));
-  --_dsc-input-diagonal-3: currentcolor calc(50% + var(--dsc-input-stroke));
-  --_dsc-input-diagonal-4: transparent calc(52% + var(--dsc-input-stroke));
+  --_dsc-input-diagonal-1: transparent calc(48% - var(--dsc-input-stroke-width));
+  --_dsc-input-diagonal-2: currentcolor calc(50% - var(--dsc-input-stroke-width));
+  --_dsc-input-diagonal-3: currentcolor calc(50% + var(--dsc-input-stroke-width));
+  --_dsc-input-diagonal-4: transparent calc(52% + var(--dsc-input-stroke-width));
   --_dsc-input-spacing--toggle: calc(var(--ds-size-1) / 2);
 
   appearance: none;
@@ -78,7 +80,7 @@
         var(--_dsc-input-diagonal-3),
         var(--_dsc-input-diagonal-4)
       ), linear-gradient(-45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4));
-    background-position: calc(100% - 1.2em + var(--dsc-input-stroke)), calc(100% - 0.8em);
+    background-position: calc(100% - 1.2em + var(--dsc-input-stroke-width)), calc(100% - 0.8em);
     background-size: .4em .4em;
     background-repeat: no-repeat;
 
@@ -107,9 +109,9 @@
    */
   &:checked,
   &:indeterminate:where([type='checkbox']) {
-    background: var(--dsc-input-background--checked);
-    border-color: var(--dsc-input-border-color--checked);
-    color: var(--dsc-input-color--checked);
+    background: var(--dsc-input-accent-color);
+    border-color: var(--dsc-input-accent-color);
+    color: var(--dsc-input-stroke-color);
   }
 
   &:disabled,
@@ -119,11 +121,11 @@
   }
 
   &[aria-invalid='true'] {
-    border-color: var(--dsc-input-border-color--invalid);
+    border-color: var(--dsc-input-accent-color--invalid);
   }
   &[aria-invalid='true']:where(:checked, :indeterminate) {
-    background: var(--dsc-input-background--invalid);
-    color: var(--dsc-input-color--invalid);
+    background: var(--dsc-input-accent-color--invalid);
+    color: var(--dsc-input-stroke-color--invalid);
   }
 
   /* Using attribute [readonly] since pseudo selector :read-only is always true for checkbox, radio and select */
@@ -210,10 +212,10 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-image: linear-gradient(
-      transparent calc(48% - var(--dsc-input-stroke)),
-      currentcolor calc(50% - var(--dsc-input-stroke)),
-      currentcolor calc(50% + var(--dsc-input-stroke)),
-      transparent calc(52% + var(--dsc-input-stroke))
+      transparent calc(48% - var(--dsc-input-stroke-width)),
+      currentcolor calc(50% - var(--dsc-input-stroke-width)),
+      currentcolor calc(50% + var(--dsc-input-stroke-width)),
+      transparent calc(52% + var(--dsc-input-stroke-width))
     );
 
     @media (forced-colors: active) {
