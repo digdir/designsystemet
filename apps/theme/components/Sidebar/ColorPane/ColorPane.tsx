@@ -1,3 +1,4 @@
+import { RESERVED_COLORS } from '@digdir/designsystemet';
 import {
   Button,
   Heading,
@@ -25,19 +26,6 @@ type ColorPaneProps = {
   onRemove: () => void;
   colorType: 'main' | 'neutral' | 'support';
 };
-
-const SYSTEM_COLORS = [
-  'neutral',
-  'success',
-  'warning',
-  'danger',
-  'info',
-  'blue',
-  'green',
-  'orange',
-  'purple',
-  'red',
-];
 
 export const ColorPane = ({
   onClose,
@@ -67,7 +55,7 @@ export const ColorPane = ({
       return false;
     }
 
-    if (SYSTEM_COLORS.includes(name)) {
+    if (RESERVED_COLORS.includes(name)) {
       setColorError(
         'Navnet på fargen kan ikke være det samme som våre systemfarger',
       );
@@ -75,6 +63,11 @@ export const ColorPane = ({
     }
     setColorError('');
     return true;
+  };
+
+  const closeTab = () => {
+    setColorError('');
+    onClose();
   };
 
   return (
@@ -85,7 +78,7 @@ export const ColorPane = ({
         <Button
           data-size='sm'
           variant='tertiary'
-          onClick={() => onClose()}
+          onClick={closeTab}
           className={classes.back}
         >
           <ChevronLeftIcon title='a11y-title' fontSize='1.5rem' /> Gå tilbake
@@ -166,9 +159,7 @@ export const ColorPane = ({
           data-size='sm'
           color='neutral'
           variant='secondary'
-          onClick={() => {
-            onClose();
-          }}
+          onClick={closeTab}
         >
           Avbryt
         </Button>
