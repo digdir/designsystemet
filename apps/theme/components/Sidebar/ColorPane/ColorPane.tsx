@@ -32,11 +32,11 @@ const SYSTEM_COLORS = [
   'warning',
   'danger',
   'info',
-  'green',
-  'red',
-  'yellow',
-  'purple',
   'blue',
+  'green',
+  'orange',
+  'purple',
+  'red',
 ];
 
 export const ColorPane = ({
