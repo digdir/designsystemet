@@ -77,6 +77,10 @@ export const SiteConfig = {
               url: 'grunnleggende/for-designere/fargesystem',
             },
             {
+              name: 'Modes i Figma',
+              url: 'grunnleggende/for-designere/modes-i-figma',
+            },
+            {
               name: 'Hent oppdateringer',
               url: 'grunnleggende/for-designere/hent-oppdateringer',
             },
