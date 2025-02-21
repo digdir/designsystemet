@@ -1,6 +1,7 @@
 import * as R from 'ramda';
 import { z } from 'zod';
 import { convertToHex } from '../src/colors/index.js';
+import { RESERVED_COLORS } from '../src/colors/theme.js';
 import { cliOptions } from '../src/tokens/create.js';
 
 export function mapPathToOptionName(path: (string | number)[]) {
@@ -27,7 +28,15 @@ const colorSchema = z
   .string({ description: 'A hex color, which is used for creating a color scale' })
   .regex(colorRegex)
   .transform(convertToHex);
-const colorCategorySchema = z.record(colorSchema, { description: 'One or more color definitions' });
+
+const colorCategorySchema = z
+  .record(colorSchema, {
+    description: 'One or more color definitions',
+    invalid_type_error: 'Color definitions must be hex color values',
+  })
+  .refine((colors) => !Object.keys(colors).some((key) => RESERVED_COLORS.includes(key)), {
+    message: `Color names cannot include reserved names: ${RESERVED_COLORS.join(', ')}`,
+  });
 
 const themeSchema = z.object(
   {
