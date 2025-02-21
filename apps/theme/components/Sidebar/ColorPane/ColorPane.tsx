@@ -10,6 +10,7 @@ import { ColorPicker, type IColor } from 'react-color-palette';
 import { useThemeStore } from '../../../store';
 
 import cl from 'clsx/lite';
+import { useState } from 'react';
 import classes from './ColorPane.module.css';
 
 type ColorPaneProps = {
@@ -25,6 +26,19 @@ type ColorPaneProps = {
   colorType: 'main' | 'neutral' | 'support';
 };
 
+const SYSTEM_COLORS = [
+  'neutral',
+  'success',
+  'warning',
+  'danger',
+  'info',
+  'green',
+  'red',
+  'yellow',
+  'purple',
+  'blue',
+];
+
 export const ColorPane = ({
   onClose,
   onPrimaryClicked,
@@ -38,11 +52,29 @@ export const ColorPane = ({
   colorType,
 }: ColorPaneProps) => {
   const mainColors = useThemeStore((state) => state.colors.main);
+  const [colorError, setColorError] = useState('');
+
   const disableRemoveButton = colorType === 'main' && mainColors.length === 1;
 
   const getHeading = () => {
     const t = colorType === 'main' ? 'hovedfarge' : 'støttefarge';
     return type === 'addColor' ? 'Legg til ' + t : 'Rediger farge';
+  };
+
+  const checkNameIsValid = () => {
+    if (name === '') {
+      setColorError('Navnet på fargen kan ikke være tomt');
+      return false;
+    }
+
+    if (SYSTEM_COLORS.includes(name)) {
+      setColorError(
+        'Navnet på fargen kan ikke være det samme som våre systemfarger',
+      );
+      return false;
+    }
+    setColorError('');
+    return true;
   };
 
   return (
@@ -102,6 +134,7 @@ export const ColorPane = ({
               .toLowerCase();
             setName(value);
           }}
+          error={colorError}
         />
       )}
       <div className={classes.label}>Farge</div>
@@ -122,6 +155,7 @@ export const ColorPane = ({
           data-size='sm'
           color='neutral'
           onClick={() => {
+            if (!checkNameIsValid()) return;
             onPrimaryClicked(color.hex, name);
           }}
         >

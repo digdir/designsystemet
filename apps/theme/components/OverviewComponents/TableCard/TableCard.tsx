@@ -51,7 +51,7 @@ export const TableCard = () => {
           </Search>
         </div>
       </div>
-      <Table data-size='sm' border>
+      <Table data-size='sm' border data-color='neutral'>
         <Table.Head>
           <Table.Row>
             <Table.HeaderCell onClick={function Ya() {}} sort='none'>
