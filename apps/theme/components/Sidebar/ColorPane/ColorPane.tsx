@@ -55,7 +55,7 @@ export const ColorPane = ({
       return false;
     }
 
-    if (RESERVED_COLORS.includes(name)) {
+    if (RESERVED_COLORS.includes(name.toLowerCase())) {
       setColorError(
         'Navnet på fargen kan ikke være det samme som våre systemfarger',
       );

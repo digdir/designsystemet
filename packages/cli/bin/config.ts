@@ -34,7 +34,7 @@ const colorCategorySchema = z
     description: 'One or more color definitions',
     invalid_type_error: 'Color definitions must be hex color values',
   })
-  .refine((colors) => !Object.keys(colors).some((key) => RESERVED_COLORS.includes(key)), {
+  .refine((colors) => !Object.keys(colors).some((key) => RESERVED_COLORS.includes(key.toLowerCase())), {
     message: `Color names cannot include reserved names: ${RESERVED_COLORS.join(', ')}`,
   });
 
