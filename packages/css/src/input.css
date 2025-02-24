@@ -2,7 +2,7 @@
   margin: 0; /* Reset native margin, but resepect parent selevtor `.someting > * { margin: ... }` */
 }
 .ds-input {
-  --dsc-input-padding: var(--ds-size-2) var(--ds-size-3);
+  --dsc-input-padding: var(--ds-size-2) var(--ds-size-4);
   --dsc-input-size--toggle: var(--ds-size-6);
   --dsc-input-size: var(--ds-size-12);
   /* Background */
@@ -15,7 +15,7 @@
   --dsc-input-border-width--toggle: max(var(--ds-border-width-default), calc(var(--ds-size-1) / 2)); /* Allow border-width to grow with font-size */
   --dsc-input-border-width: var(--ds-border-width-default);
   /* Color  */
-  --dsc-input-color--readonly: var(--ds-color-neutral-text-subtle);
+  --dsc-input-color--readonly: var(--ds-color-neutral-text-default);
   --dsc-input-color: var(--ds-color-neutral-text-default);
   /* Stroke is used as the dot in radio, and checkmark in checkboxes */
   --dsc-input-stroke-color: var(--ds-color-base-contrast-default);
