@@ -127,6 +127,7 @@ export const ColorPane = ({
               .toLowerCase();
             setName(value);
           }}
+          onBlur={checkNameIsValid}
           error={colorError}
         />
       )}
@@ -148,6 +149,7 @@ export const ColorPane = ({
           data-size='sm'
           color='neutral'
           onClick={() => {
+            /* Check here as well to disable sending new color */
             if (!checkNameIsValid()) return;
             onPrimaryClicked(color.hex, name);
           }}
