@@ -2,4 +2,4 @@
 "@digdir/designsystemet": patch
 ---
 
-Invalidate systemcolors as name for colors (success, danger, warning, info)
+Invalidate system colors as color names (success, danger, warning, info, blue, green, orange, red, purple)
