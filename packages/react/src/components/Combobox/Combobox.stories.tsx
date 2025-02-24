@@ -16,7 +16,7 @@ import { Divider } from '../Divider';
 import { Combobox } from './index';
 
 export default {
-  title: 'Komponenter/Combobox',
+  title: 'Avviklet/Combobox',
   component: Combobox,
   parameters: {
     layout: 'fullscreen',
