@@ -27,7 +27,7 @@ export const colorRegex = new RegExp(`^${hexPatterns.join('|')}$`);
 
 const colorSchema = z
   .string({
-    description: `A hex color, which is used for creating a color scale. Name cannot be one of ${RESERVED_COLORS.join(', ')}`,
+    description: `A hex color, which is used for creating a color scale. Invalid color names: ${RESERVED_COLORS.join(', ')}`,
   })
   .regex(colorRegex)
   .transform(convertToHex);
