@@ -1,5 +1,21 @@
 # Change Log
 
+## 1.0.0-next.51
+
+### Patch Changes
+
+- **Checkbox**: Reduce border-radius by one size, making them more square. ([#3202](https://github.com/digdir/designsystemet/pull/3202))
+
+- **Popover**: Added shadow and fixed default background color ([#3188](https://github.com/digdir/designsystemet/pull/3188))
+
+- **SkipLink**: Increaed padding bottom by one size ([#3189](https://github.com/digdir/designsystemet/pull/3189))
+
+- **Dropdown**: Fix background to surface color variable ([#3185](https://github.com/digdir/designsystemet/pull/3185))
+
+- **Table**: Use correct background color variables on th ([#3190](https://github.com/digdir/designsystemet/pull/3190))
+
+- **Dialog**: Fix background to surface color variable ([#3184](https://github.com/digdir/designsystemet/pull/3184))
+
 ## 1.0.0-next.50
 
 ### Patch Changes
