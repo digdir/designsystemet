@@ -13,6 +13,9 @@ import { Dialog } from './';
 Dersom du trenger kontroll over når modalen lukkes, må du bruke `ref`.
 Les [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) for mer info.
 
+Du ender mellom non-modal og modal dialoger ved å bruke proppen `modal`, som er standard satt til `true`.
+Vi overstyrer hvordan `open` fungerer basert på `modal`-proppen.
+
 `Dialog` har native focus trap, som betyr at brukeren ikke kan tabbe til annet innhold på siden.
 
 <Primary />
@@ -89,4 +92,4 @@ Bruk `overflow: visible` for å la innhold gå utenfor dialogen.
 
 ## CSS Variabler
 
-<CssVariables css={css} />../Dialog.stories
+<CssVariables css={css} />

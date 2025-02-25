@@ -23,6 +23,18 @@ export type DialogProps = MergeRight<
      */
     backdropClose?: boolean;
     /**
+     * Toogle modal and non-modal dialog.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#creating_a_modal_dialog
+     *
+     * @default true
+     */
+    modal?: boolean;
+    /**
+     * @note Unlike standard html, where the open attribute always opens a non-modal dialog, Dialog's open prop uses the `modal` prop to determine whether the Dialog is modal or non-modal
+     */
+    open?: boolean;
+    /**
      * Callback that is called when the dialog is closed.
      */
     onClose?: (event: Event) => void;
@@ -64,8 +76,9 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
       children,
       className,
       closeButton = 'Lukk dialogvindu',
-      onClose,
+      modal = true,
       open,
+      onClose,
       backdropClose = false,
       ...rest
     },
@@ -77,7 +90,8 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
     const mergedRefs = useMergeRefs([contextRef, ref, dialogRef]);
 
     useEffect(
-      () => dialogRef.current?.[open ? 'showModal' : 'close'](),
+      () =>
+        dialogRef.current?.[open ? (modal ? 'showModal' : 'show') : 'close'](),
       [open],
     ); // Toggle open based on prop
 
@@ -122,6 +136,7 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
       <Component
         className={cl('ds-dialog', className)}
         ref={mergedRefs}
+        data-modal={modal}
         {...rest}
       >
         {closeButton !== false && (
