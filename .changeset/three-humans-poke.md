@@ -2,4 +2,4 @@
 "@digdir/designsystemet-css": patch
 ---
 
-style(Dialog): change background to surface
+**Dialog**: Fix background to surface color variable
