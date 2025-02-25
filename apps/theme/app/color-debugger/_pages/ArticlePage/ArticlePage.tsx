@@ -163,7 +163,7 @@ type ArticlePageProps = {
 };
 
 export const ArticlePage = ({ colorScales }: ArticlePageProps) => {
-  const [activeColor, setActiveColor] = useState('Alle');
+  const [activeColor, setActiveColor] = useState('Red');
   const themeSettings = useDebugStore((state) => state.themeSettings);
 
   return (
@@ -173,8 +173,7 @@ export const ArticlePage = ({ colorScales }: ArticlePageProps) => {
       <div className={classes.items}>
         {colorScales.map((innerScale, index1) => (
           <div key={index1}>
-            {(ColorScaleNames[index1] === activeColor ||
-              activeColor === 'Alle') && (
+            {ColorScaleNames[index1] === activeColor && (
               <>
                 <div className={classes.title}>{ColorScaleNames[index1]}</div>
                 <div className={classes.innerItems}>

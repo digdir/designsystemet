@@ -150,23 +150,10 @@ const getBaseColors = (
       : baseModifier;
   const calculateLightness = (base: number, mod: number) => base - mod;
 
-  let baseRefColor =
-    colorScheme === 'light'
-      ? color
-      : (chroma(color)
-          .luminance(getLuminanceFromLightness(colorLightness))
-          .hex() as CssColor);
-
-  // Reduce the saturation of the base color if it is too high in dark mode
+  const baseRefColor = color;
+  // Reduce saturation if it is too high in dark mode
   if (colorScheme === 'dark') {
-    const saturation = getSaturationFromHex(baseRefColor);
-    const lightness = getLightnessFromHex(baseRefColor);
-    if (saturation >= 70 && lightness >= 45) {
-      const saturationModifier = 1 * ((saturation - 70) / 30);
-      baseRefColor = chroma(baseRefColor)
-        .desaturate(saturationModifier)
-        .hex() as CssColor;
-    }
+    colorLightness -= 40;
   }
 
   return {

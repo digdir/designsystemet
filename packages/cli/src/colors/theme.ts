@@ -3,12 +3,7 @@ import type { CssColor } from './types.js';
 import chroma from 'chroma-js';
 import { luminance } from './luminance.js';
 import type { ColorInfo, ColorNumber, ColorScheme, ThemeInfo } from './types.js';
-import {
-  getColorInfoFromPosition,
-  getLightnessFromHex,
-  getLuminanceFromLightness,
-  getSaturationFromHex,
-} from './utils.js';
+import { getColorInfoFromPosition, getLightnessFromHex, getLuminanceFromLightness } from './utils.js';
 
 /**
  * Generates a color scale based on a base color and a color mode.
@@ -94,20 +89,7 @@ const getBaseColors = (color: CssColor, colorScheme: ColorScheme) => {
   const modifier = colorLightness <= 30 || (colorLightness >= 49 && colorLightness <= 65) ? -8 : 8;
   const calculateLightness = (base: number, mod: number) => base - mod;
 
-  let baseRefColor =
-    colorScheme === 'light'
-      ? color
-      : (chroma(color).luminance(getLuminanceFromLightness(colorLightness)).hex() as CssColor);
-
-  // Reduce saturation if it is too high in dark mode
-  if (colorScheme === 'dark') {
-    const saturation = getSaturationFromHex(baseRefColor);
-    const lightness = getLightnessFromHex(baseRefColor);
-    if (saturation >= 70 && lightness >= 45) {
-      const saturationModifier = 1.5 * ((saturation - 70) / 30);
-      baseRefColor = chroma(baseRefColor).desaturate(saturationModifier).hex() as CssColor;
-    }
-  }
+  const baseRefColor = color;
 
   return {
     baseDefault:
@@ -135,8 +117,6 @@ const getDarkModeRefColor = (originalBase: CssColor, processedBase: CssColor) =>
   const upperChroma = 0.21; // The upper limit for chroma reduction
   const middleChroma = 0.15; // The middle limit for chroma reduction
   const lowerChroma = 0.09; // The lower limit for chroma reduction
-
-  return processedBase;
 
   // === Very light colors (L > 85) ===
   if (L > 0.85) {
@@ -192,6 +172,8 @@ const getDarkModeRefColor = (originalBase: CssColor, processedBase: CssColor) =>
       newC *= 1.0; // No change
     }
   }
+
+  newC = newC * 0.1;
 
   return chroma.oklch(L, newC, H).hex();
 };

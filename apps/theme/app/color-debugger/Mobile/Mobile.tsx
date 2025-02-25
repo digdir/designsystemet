@@ -23,7 +23,7 @@ type MobileProps = {
 
 export const Mobile = ({ colorScales }: MobileProps) => {
   const greyScheme = generateColorSchemes('#000000');
-  const [activeColor, setActiveColor] = useState('Alle');
+  const [activeColor, setActiveColor] = useState('Red');
   const themeSettings = useDebugStore((state) => state.themeSettings);
 
   type ItemProps = {
