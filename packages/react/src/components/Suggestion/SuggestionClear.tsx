@@ -1,3 +1,4 @@
+import { syncDatalistState } from '@u-elements/u-datalist';
 import { forwardRef, useContext } from 'react';
 import { Button, type ButtonProps } from '../Button';
 import { SuggestionContext } from './Suggestion';
@@ -30,7 +31,7 @@ export const SuggestionClear = forwardRef<
   { 'aria-label': label = 'Tøm', onClick, ...rest },
   ref,
 ) {
-  const { inputRef } = useContext(SuggestionContext); //, handleValueChange
+  const { datalistRef, inputRef } = useContext(SuggestionContext); //, handleValueChange
 
   const handleClear = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -40,8 +41,19 @@ export const SuggestionClear = forwardRef<
     if (!(inputRef?.current instanceof HTMLInputElement))
       throw new Error('Input is not an input element');
 
+    if (!datalistRef?.current) throw new Error('Datalist is missing');
+
     event.preventDefault();
     setReactInputValue(inputRef.current, '');
+
+    /* Unselect selected option */
+    const options = datalistRef.current?.options;
+    for (const option of options || []) {
+      option.selected = false;
+    }
+
+    syncDatalistState(inputRef.current);
+
     inputRef.current.focus();
     onClick?.(event);
   };
