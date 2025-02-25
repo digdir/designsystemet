@@ -38,6 +38,7 @@ jobs:
         with:
           stable_branch: 'main'
           development_branch: 'next'
+          allow_ff: true
           user_name: github_actions
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
