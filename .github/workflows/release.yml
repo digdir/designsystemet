@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      # - main
       - next
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
@@ -18,14 +18,27 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/gh-setup
       - name: Create Release Pull Request or Publish to npm
+        id: changesets
         # https://github.com/changesets/action
         uses: changesets/action@v1
         with:
           # this expects you to have a script called release which does a build for your packages and calls changeset publish
           publish: yarn publish
           version: yarn version-packages
-          commit: 'chore: new ${{ github.base_ref }} release'
-          title: 'chore: new ${{ github.base_ref }} release'
+          commit: 'chore: new release'
+          title: 'chore: new release'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Merge next into main if we publised outside of prerelease
+        uses: robotology/gh-action-nightly-merge@v1.5.2
+        # If not pre.json is present and we published, we asume a new version to latest has been published
+        # Update main with latest changes
+        if: ${{ hashFiles('.changeset/pre.json') == '' && steps.changesets.outputs.published == 'true' }}
+        with:
+          stable_branch: 'main'
+          development_branch: 'next'
+          allow_ff: true
+          user_name: github_actions
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
