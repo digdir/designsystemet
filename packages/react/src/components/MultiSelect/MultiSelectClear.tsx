@@ -66,20 +66,22 @@ export const MultiSelectClear = forwardRef<
 // React ignores 'dispathEvent' on input/textarea, see https://github.com/facebook/react/issues/10135
 type ReactInternalHack = { _valueTracker?: { setValue: (a: string) => void } };
 
+// Copied from https://github.com/facebook/react/issues/11488#issuecomment-1300987446
 export const setReactInputValue = (
   input: HTMLInputElement & ReactInternalHack,
   value: string,
 ): void => {
-  const previousValue = input.value;
-
-  input.value = value;
-
-  const tracker = input._valueTracker;
-
-  if (typeof tracker !== 'undefined') {
-    tracker.setValue(previousValue);
+  const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+    window.HTMLInputElement.prototype,
+    'value',
+  )?.set;
+  if (nativeInputValueSetter) {
+    nativeInputValueSetter.call(input, value);
+  } else {
+    throw new Error('Unable to find the native input value setter');
   }
-
-  //'change' instead of 'input', see https://github.com/facebook/react/issues/11488#issuecomment-381590324
-  input.dispatchEvent(new Event('change', { bubbles: true }));
+  const inputEvent = new Event('input', { bubbles: true });
+  const changeEvent = new Event('change', { bubbles: true });
+  input.dispatchEvent(inputEvent);
+  input.dispatchEvent(changeEvent);
 };
