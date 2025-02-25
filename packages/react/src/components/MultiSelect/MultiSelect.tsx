@@ -160,10 +160,11 @@ export const MultiSelect = forwardRef<UHTMLTagsElement, MultiSelectProps>(
            */
           if (!allowCreate) {
             const optionExists = Array.from(
-              uTagsRef.current?.options || [],
+              uTagsRef.current?.querySelectorAll(`u-option`) || [],
               getDatalistValue,
             ).includes(item.value);
-            if (optionExists?.length === 0) return;
+
+            if (!optionExists) return;
           }
 
           setSelectedItems((prevItems) => ({
