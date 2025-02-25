@@ -5,7 +5,7 @@ export const getDummyTheme = () => {
 };
 
 const generateColorSet = () => {
-  const colors = {};
+  const colors: { [key: number]: string } = {};
   for (let i = 1; i <= 16; i++) {
     colors[i] = '#000000';
   }
