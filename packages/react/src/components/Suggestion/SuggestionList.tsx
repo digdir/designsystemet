@@ -1,7 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext, useEffect } from 'react';
 import '@u-elements/u-datalist';
-import { useMergeRefs } from '@floating-ui/react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { SuggestionContext } from './Suggestion';
@@ -40,7 +39,7 @@ export const SuggestionList = forwardRef<
   { singular = '%d forslag', plural = '%d forslag', className, id, ...rest },
   ref,
 ) {
-  const { datalistRef, inputRef, listId, setListId, handleFilter } =
+  const { inputRef, listId, setListId, handleFilter } =
     useContext(SuggestionContext);
 
   useEffect(() => handleFilter?.(inputRef?.current)); // Must run on every render
@@ -48,15 +47,13 @@ export const SuggestionList = forwardRef<
     if (id && listId !== id) setListId?.(id);
   }, [listId, id, setListId]);
 
-  const mergedRefs = useMergeRefs([datalistRef, ref]);
-
   return (
     <u-datalist
       data-sr-singular={singular}
       data-sr-plural={plural}
       class={className} // Using "class" since React does not translate className on custom elements
       id={listId}
-      ref={mergedRefs}
+      ref={ref}
       {...rest}
     />
   );

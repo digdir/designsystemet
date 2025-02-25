@@ -1,4 +1,3 @@
-import { syncDatalistState } from '@u-elements/u-datalist';
 import { forwardRef, useContext } from 'react';
 import { Button, type ButtonProps } from '../Button';
 import { SuggestionContext } from './Suggestion';
@@ -31,7 +30,7 @@ export const SuggestionClear = forwardRef<
   { 'aria-label': label = 'Tøm', onClick, ...rest },
   ref,
 ) {
-  const { datalistRef, inputRef } = useContext(SuggestionContext); //, handleValueChange
+  const { inputRef } = useContext(SuggestionContext); //, handleValueChange
 
   const handleClear = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -41,18 +40,8 @@ export const SuggestionClear = forwardRef<
     if (!(inputRef?.current instanceof HTMLInputElement))
       throw new Error('Input is not an input element');
 
-    if (!datalistRef?.current) throw new Error('Datalist is missing');
-
     event.preventDefault();
     setReactInputValue(inputRef.current, '');
-
-    /* Unselect selected option */
-    const options = datalistRef.current?.options;
-    for (const option of options || []) {
-      option.selected = false;
-    }
-
-    syncDatalistState(inputRef.current);
 
     inputRef.current.focus();
     onClick?.(event);
@@ -75,20 +64,22 @@ export const SuggestionClear = forwardRef<
 // React ignores 'dispathEvent' on input/textarea, see https://github.com/facebook/react/issues/10135
 type ReactInternalHack = { _valueTracker?: { setValue: (a: string) => void } };
 
+// Copied from https://github.com/facebook/react/issues/11488#issuecomment-1300987446
 export const setReactInputValue = (
   input: HTMLInputElement & ReactInternalHack,
   value: string,
 ): void => {
-  const previousValue = input.value;
-
-  input.value = value;
-
-  const tracker = input._valueTracker;
-
-  if (typeof tracker !== 'undefined') {
-    tracker.setValue(previousValue);
+  const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+    window.HTMLInputElement.prototype,
+    'value',
+  )?.set;
+  if (nativeInputValueSetter) {
+    nativeInputValueSetter.call(input, value);
+  } else {
+    throw new Error('Unable to find the native input value setter');
   }
-
-  //'change' instead of 'input', see https://github.com/facebook/react/issues/11488#issuecomment-381590324
-  input.dispatchEvent(new Event('change', { bubbles: true }));
+  const inputEvent = new Event('input', { bubbles: true });
+  const changeEvent = new Event('change', { bubbles: true });
+  input.dispatchEvent(inputEvent);
+  input.dispatchEvent(changeEvent);
 };

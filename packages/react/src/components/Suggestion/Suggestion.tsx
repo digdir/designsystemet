@@ -14,9 +14,8 @@ import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
 type SuggestionContextType = {
-  datalistRef?: React.RefObject<HTMLDataListElement | null>;
-  inputRef?: React.RefObject<HTMLInputElement | null>;
   listId?: string;
+  inputRef?: React.RefObject<HTMLInputElement | null>;
   setListId?: (id: string) => void;
   handleFilter?: (input?: HTMLInputElement | null) => void;
 };
@@ -87,7 +86,6 @@ export const Suggestion = forwardRef<HTMLDivElement, SuggestionProps>(
 
     const [listId, setListId] = useState(useId());
     const inputRef = useRef<HTMLInputElement | null>(null);
-    const datalistRef = useRef<HTMLDataListElement | null>(null);
 
     const handleFilter = useCallback(
       (input?: HTMLInputElement | null) => {
@@ -118,7 +116,7 @@ export const Suggestion = forwardRef<HTMLDivElement, SuggestionProps>(
 
     return (
       <SuggestionContext.Provider
-        value={{ datalistRef, inputRef, listId, setListId, handleFilter }}
+        value={{ inputRef, listId, setListId, handleFilter }}
       >
         <Component
           className={cl('ds-suggestion', className)}
