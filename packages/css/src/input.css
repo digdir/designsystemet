@@ -2,7 +2,7 @@
   margin: 0; /* Reset native margin, but resepect parent selevtor `.someting > * { margin: ... }` */
 }
 .ds-input {
-  --dsc-input-padding: var(--ds-size-2) var(--ds-size-4);
+  --dsc-input-padding: var(--ds-size-2) var(--ds-size-3);
   --dsc-input-size--toggle: var(--ds-size-6);
   --dsc-input-size: var(--ds-size-12);
   /* Background */
@@ -14,7 +14,7 @@
   --dsc-input-border-style: solid;
   --dsc-input-border-width--toggle: max(var(--ds-border-width-default), calc(var(--ds-size-1) / 2)); /* Allow border-width to grow with font-size */
   --dsc-input-border-width: var(--ds-border-width-default);
-  /* Color  */
+  /* Color */
   --dsc-input-color--readonly: var(--ds-color-neutral-text-default);
   --dsc-input-color: var(--ds-color-neutral-text-default);
   /* Stroke is used as the dot in radio, and checkmark in checkboxes */
@@ -37,7 +37,6 @@
   border-width: var(--dsc-input-border-width);
   border-style: var(--dsc-input-border-style);
   border-color: var(--dsc-input-border-color);
-  box-shadow: var(--dsc-input-box-shadow);
   box-sizing: border-box;
   color: var(--dsc-input-color);
   font-family: inherit;
@@ -153,7 +152,6 @@
   &[type='radio'] {
     border-width: var(--dsc-input-border-width--toggle);
     padding: var(--_dsc-input-spacing--toggle);
-
     flex-shrink: 0; /* Never shrink a toggle input */
     line-height: inherit; /* Inherit line height so we can use 1lh to align with first line of label */
     height: var(--dsc-input-size--toggle);
@@ -184,6 +182,10 @@
       color: Canvas;
       forced-color-adjust: none; /* To be able to draw dot */
     }
+  }
+
+  &[type='checkbox'] {
+    border-radius: var(--ds-border-radius-sm);
   }
 
   &[type='checkbox']:checked {
