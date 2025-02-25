@@ -1,7 +1,7 @@
 {
   "name": "@digdir/designsystemet-react",
   "type": "module",
-  "version": "1.0.0-next.50",
+  "version": "0.100.51-next.51",
   "description": "React components for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
