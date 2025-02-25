@@ -12,7 +12,6 @@
   border-width: var(--dsc-dropdown-border-width);
   border-style: var(--dsc-dropdown-border-style);
   border-color: var(--dsc-dropdown-border-color);
-  box-shadow: var(--ds-shadow-md);
   box-sizing: border-box;
   list-style: none;
   min-width: 15em;
