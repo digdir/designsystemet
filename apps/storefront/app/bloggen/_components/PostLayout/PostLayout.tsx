@@ -73,11 +73,15 @@ function PostLayout({
                 Ønsker du å skrive for bloggen?
               </Heading>
               <Paragraph data-size='sm'>
-                Ta kontakt med oss på{' '}
+                Vi vil gjerne ha historier om hvordan Designsystemet har blitt
+                brukt! Ta kontakt med oss i{' '}
                 <Link href='https://designsystemet.no/slack' target='_blank'>
-                  #designsystemet
+                  Slack
                 </Link>{' '}
-                i Slack kanalen vår.
+                eller{' '}
+                <Link href='mailto:designsystem@digdir.no' target='_blank'>
+                  send oss en epost.
+                </Link>{' '}
               </Paragraph>
             </div>
           </MdxContent>
