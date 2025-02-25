@@ -31,10 +31,45 @@ Fargesystemet består av globale farger som refererer til hva fargen er (eks. re
 Et semantisk fargenavn er bygget opp av 3 ledd: <br/>
 _farge - styrke - vekt_ <br/>
 
-- Background: Som regel bakgrunnen på hele siden (HTML body).
-- Surface: Bakgrunnsfargen til en ting. Eks. et panel, en knapp, en seksjon, etc.
-- Border: Fargen til en ramme (stroke).
-- Text/Icon: Fargen på tekst og ikoner.
+### Inndeling av farger
+Hver fargeskala har totalt 16 farger i seg, og er delt inn i gruppene `Background`, `Surface`, `Border`, `Base` og `Text`.
+
+#### Background
+Brukes for å fargelegge store flater og er som oftest det bakerste laget på en nettside.
+
+* `Background default` er hvit i lys modus og fungerer fint som utgangspunkt for en nøytral bakgrunn.
+* `Background tinted` får et hint av farge i seg og kan brukes for å skape variasjon.
+
+#### Surface
+Bakgrunnsfarger på elementer som ligger oppå background-fargene. Dette kan for eksempel være et panel eller kort.
+
+* `Surface default` er hvit i lys modus og brukes som standard bakgrunnsfarge på elementer.
+* `Surface tinted` får et hint av farge i seg og kan brukes for å skape variasjon i bakgrunnslaget.
+* `Surface hover` kan brukes som en hover effekt på elementer.
+* `Surface active` kan brukes som en aktiv effekt på elementer.
+
+#### Border
+Farger som kan brukes for å fargelegge rammer (strokes) på elementer.
+
+* `Border subtle` har lav kontrast som kan brukes på dekorative kanter og skillelinjer.
+* `Border default` brukes på kanter
+* `Border strong` har høy kontrast og kan brukes på elementer som trenger være ekstra synlige.
+
+#### Base
+fornuftig
+
+* `Base default` 
+* `Base hover` 
+* `Base active` 
+* `Base contrast subtle` har god kontrast mot `Base default` fargen.
+* `Base contrast default` har god kontrast mot alle base fargene.
+
+#### Text
+Farger som kan brukes på tekst og ikoner.
+
+* `Text subtle` har lav kontrast og kan kun brukes som tekst-farge.
+* `Text default` har høy kontrast og bør brukes på mesteparten av teksten på en nettside.
+
 
 ## Farge-tokens
 
