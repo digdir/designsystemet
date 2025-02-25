@@ -4,8 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      # - main
-      - next
+      - main
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -30,15 +29,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Merge next into main if we publised outside of prerelease
-        uses: robotology/gh-action-nightly-merge@v1.5.2
-        # If not pre.json is present and we published, we asume a new version to latest has been published
-        # Update main with latest changes
-        if: ${{ hashFiles('.changeset/pre.json') == '' && steps.changesets.outputs.published == 'true' }}
-        with:
-          stable_branch: 'main'
-          development_branch: 'next'
-          allow_ff: true
-          user_name: github_actions
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
