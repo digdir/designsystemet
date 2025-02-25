@@ -159,9 +159,10 @@ export const MultiSelect = forwardRef<UHTMLTagsElement, MultiSelectProps>(
            * If creating is off, check if the value is allowed to be added
            */
           if (!allowCreate) {
-            const optionExists = uTagsRef.current?.querySelectorAll(
-              `u-option[value="${item.value}"]`,
-            );
+            const optionExists = Array.from(
+              uTagsRef.current?.options || [],
+              getDatalistValue,
+            ).includes(item.value);
             if (optionExists?.length === 0) return;
           }
 
