@@ -1,6 +1,8 @@
 import { PostLayout, Contributors } from '../../_components';
 import { Image } from '@components';
 
+import { Details, Card, DetailsContent, DetailsSummary } from '@digdir/designsystemet-react';
+
 export default ({ children }) => (
   <PostLayout
     content={children}
@@ -24,7 +26,7 @@ export const metadata = {
 
 ## Hva innebærer V1?
 
-Første versjon markerer en viktig milepæl for designsystemet og inneholder flere forbedringer og nye funksjoner:
+Første versjon markerer en viktig milepæl for Designsystemet og inneholder flere forbedringer og nye funksjoner:
 
 - Forbedret tilgjengelighet: Alle komponenter er utviklet med fokus på universell utforming, og vi har gjort grundige vurderinger for å sikre at komponentene er tilgjengelige. 
 - Mer fleksible designtokens: Vi har innført en mer robust token-struktur som gjør det enklere å tilpasse farger, typografi og dimensjoner til ulike behov.
@@ -32,37 +34,66 @@ Første versjon markerer en viktig milepæl for designsystemet og inneholder fle
 - Nye og forbedrede komponenter: Basert på tilbakemeldinger fra brukere, har vi forbedret flere komponenter for å øke brukervennligheten og sikre et helhetlig komponent-API.
 - Bedre dokumentasjon: Vi har oppdatert dokumentasjonen for å gjøre det enklere for utviklere og designere å komme i gang og forstå hvordan de kan utnytte systemet best mulig.
 
-<Image
-  src='/img/bloggen/fundament.png'
-  alt='Illustrasjonen viser Designsystemet som et lag på bunnen, mens over ligger virksomhetens eget lag med utvidet funkjonalitet, egen profil og egne preferanser.'
-  boxShadow={false}
-  caption='Designsystemet skal være et godt fundament du kan bygge videre oppå, med din egen profil, egne preferanser og utvidet funksjonalitet som et lag på toppen'
-  dataUnstyled
-/>
-
 ## Hva betyr dette for deg som bruker?
 
 Lanseringen av V1 betyr at du nå har tilgang til et mer modent og stabilt designsystem som gir deg:
 
 - Enklere implementering i dine løsninger.
 - En stabil versjon med færre større endringer, noe som gir økt forutsigbarhet.
-- Enklere tilpasning av designsystemets komponenter til egen profil og preferanser.
-- En gjennomarbeidet token-struktur som gir større fleksibilitet og kontroll 
+- Enklere tilpasning av Designsystemets komponenter til egen profil og preferanser.
+- En gjennomarbeidet token-struktur som gir større fleksibilitet og kontroll.
 - Økt tilgjengelighet på tvers av digitale tjenester.
 - Mulighet for å bidra og samarbeide med et økende fellesskap av designere og utviklere.
 
 ## Overgangen fra beta til V1
-For de som allerede har tatt i bruk beta-versjonen av designsystemet, har vi utarbeidet en veiledning for å hjelpe deg med å oppdatere fra beta til V1 på en smidig måte.
+For de som allerede har tatt i bruk beta-versjonen av Designsystemet, har vi utarbeidet en veiledning for å hjelpe deg med å oppdatere fra v0.63 til v1.0.0 på en smidig måte.
 
 --> [Migration-guide](https://github.com/digdir/designsystemet/blob/next/MIGRATION.md)
 
 ## Veien videre
 
-Vi ser på lanseringen av Designsystemets første versjon som starten på en kontinuerlig forbedringsprosess. Vi vil fortsette å samle inn tilbakemeldinger, forbedre funksjonalitet og legge til nye komponenter basert på de gurnnleggende behovene som går igjen på tvers. 
+Vi ser på lanseringen av Designsystemets første versjon som starten på en kontinuerlig forbedringsprosess. Vi vil fortsette å samle inn tilbakemeldinger, forbedre funksjonalitet og legge til nye komponenter basert på de grunnleggende behovene som går igjen på tvers. Vi kommer også til å tilby Web Components for noen av komponentene etter hvert slik at de kan brukes med både Svelte, Vue, Angular, og andre teknologier.
 
-Har du innspill eller ønsker du å bidra? Ta kontakt med oss via designsystemet.no eller bli med i [vårt fellesskap på Slack]().
+Målet er at Designsystemet skal være et godt fundament du kan bygge videre oppå, med din egen profil, egne preferanser og utvidet funksjonalitet som et lag på toppen. 
 
-Vi gleder oss til å se hvordan designsystemet kan bidra til å skape bedre og mer brukervennlige digitale løsninger for alle!
+<Image
+  src='/img/lagvis-bruk.png'
+  alt='Viser Designsystemet som et lag i bunnen. Du har din egen profil på toppen. Du kan velge å bruke Designsystemet direkte i løsninger, eller bygge ditt eget designsystem på toppen.'
+  boxShadow={false}
+  caption='Noen velger å bygge sitt eget designsystem på toppen av Designsystemet, mens andre bruker det direkte i løsninger. '
+/>
+
+
+Designsystemet er i bruk av mange allerede, blant annet av [Altinn Studio](https://altinn.studio/), der 70 ulike etater utvikler sine tjenester. Bruker du Altinn studio til å utvikle tjenester, bruker du automatisk komponenter fra Designsystemet.
+
+Flere offentlige virksomheter har også tatt Designsystemet i bruk i egne tjenester. 
+
+<Card data-color='neutral'>
+  <Details>
+    <DetailsSummary>Eksempler på bruk</DetailsSummary>
+    <DetailsContent>
+    - [Mattilsynet](https://www.mattilsynet.no/) bygger sitt designsystem oppå Designsystemet.
+- [Utdanningsdirektoratet](https://www.udir.no/) bygger sitt designsystem oppå Designsystemet.
+- [Brønnøysundregistrene](https://www.brreg.no/) har tatt i bruk Designsystemet på bl.a. [Virksomhetsopplysninger](https://virksomhet.brreg.no/nb/oppslag/enheter) og [Støtteregister](https://stotte.brreg.no/nb/oppslag/stoettetildeling).
+- [Data.norge.no](https://data.norge.no) bruker tokens, komponenter og mønstre fra Designsystemet.
+- [Tolletaten](https://www.toll.no/) har tatt i bruk Designsystemet på sine nettsider.
+- [KS Digital](https://ksdigital.no/) har tatt i bruk Designsystemet på blant annet [ledsagerbevis.no](https://ledsagerbevis.no/).
+- [Arbeidstilsynet](https://www.arbeidstilsynet.no/) har tatt i bruk Designsystemet på sine nettsider. 
+- [Hjelpeside for fellesløsninger](https://eid.difi.no/nb) bruker tokens og komponenter fra Designsystemet.
+- [Digdir.no](https://www.digdir.no/), [UU-tilsynet](https://www.uutilsynet.no/), [UU-status](https://uustatus.no/), [samarbeidsportalen](https://samarbeid.digdir.no/) bruker tokens fra Designsystemet. 
+
+<br/>
+    </DetailsContent>
+  </Details>
+</Card>
+
+<br/>
+<br/>
+
+Har du innspill eller ønsker du å bidra? [Send oss en epost](mailto:designsystem@digdir.no)  eller bli med i [fellesskapet på Slack](http://designsystemet.no/slack). Gi oss gjerne en lyd om du har brukt eller vurderer å bruke Designsystemet. 
+
+Vi gleder oss til å se hvordan Designsystemet videre kan bidra til å skape bedre og mer brukervennlige digitale løsninger for alle! 
+
 
 
 <Contributors
@@ -75,6 +106,7 @@ Vi gleder oss til å se hvordan designsystemet kan bidra til å skape bedre og m
     'Une Sofie Kinn Ekroll',
     'Roy Halvor Frimanslund',
     'Viveca Krishnamoorthi',
+    'Oddbjørn Øvernes',
     'Marianne Røsvik',
   ]}
 />
