@@ -1,0 +1,28 @@
+# https://github.com/changesets/changesets/blob/main/docs/prereleases.md
+name: Exit prerelease mode
+
+on:
+  workflow_dispatch:
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  release:
+    name: Exit prerelease mode
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/gh-setup
+       # Only exit prerelease mode if the prerelease file is present
+        if: ${{ hashFiles('.changeset/pre.json') != '' }}
+      - name: Exit prerelease mode for changesets
+        if: ${{ hashFiles('.changeset/pre.json') != '' }}
+        run: yarn changeset pre exit next
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          pull: '--rebase --autostash'
+          default_author: github_actions
+          message: 'ci: 📕 Exit prerelease mode for changesets'
+          add: '.'

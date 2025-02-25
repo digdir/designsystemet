@@ -30,7 +30,7 @@ jobs:
         if: success() || failure()
         uses: davelosert/vitest-coverage-report-action@v2
       - name: Publish unit test report
-        uses: mikepenz/action-junit-report@v4
+        uses: mikepenz/action-junit-report@v5
         if: success() || failure()
         with:
           report_paths: 'test-report.xml'
@@ -43,9 +43,7 @@ jobs:
         run: yarn test:cli
 
       - name: Install Playwright
-        run: npx playwright install --with-deps
-      - name: Build storybook
-        run: yarn build:storybook
+        run: npx playwright install --with-deps chromium
       - name: Run Storybook tests
         run: yarn test:storybook
       - name: Replace relative paths in test report
@@ -57,7 +55,7 @@ jobs:
           replace: ''
           regex: false
       - name: Publish Storybook test report
-        uses: mikepenz/action-junit-report@v4
+        uses: mikepenz/action-junit-report@v5
         if: success() || failure()
         with:
           report_paths: 'apps/storybook/test-report.xml'

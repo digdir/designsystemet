@@ -1,3 +1,158 @@
+/*  TEXTFIELD IS HERE SINCE IT IS ONLY USED IN COMBOBOX */
+.ds-textfield {
+  display: grid;
+  gap: var(--ds-size-2);
+}
+
+.ds-textfield__adornment {
+  color: var(--ds-color-neutral-text-subtle);
+  background: var(--ds-color-neutral-background-tinted);
+  padding: 9px var(--ds-size-4);
+  border-radius: var(--ds-border-radius-md);
+  border: solid 1px var(--ds-color-neutral-border-default);
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.ds-textfield__input {
+  font-family: inherit;
+  position: relative;
+  box-sizing: border-box;
+  flex: 0 1 auto;
+  width: 100%;
+  appearance: none;
+  padding: 0 var(--ds-size-3);
+  border: solid 1px var(--ds-color-neutral-border-default);
+  background: var(--ds-color-neutral-background-default);
+  color: var(--ds-color-neutral-text-default);
+  border-radius: var(--ds-border-radius-md);
+}
+
+.ds-textfield__input:disabled {
+  cursor: not-allowed;
+}
+
+.ds-textfield--readonly .ds-textfield__input {
+  background: var(--ds-color-neutral-background-tinted);
+  border-color: var(--ds-color-neutral-border-strong);
+}
+
+.ds-textfield__field {
+  display: flex;
+  align-items: stretch;
+  border-radius: var(--ds-border-radius-md);
+}
+
+.ds-textfield__field > *:first-child {
+  border-top-left-radius: var(--ds-border-radius-md);
+  border-bottom-left-radius: var(--ds-border-radius-md);
+}
+
+.ds-textfield__field > *:last-child {
+  border-top-right-radius: var(--ds-border-radius-md);
+  border-bottom-right-radius: var(--ds-border-radius-md);
+}
+
+.ds-textfield--sm .ds-textfield__adornment {
+  padding: var(--ds-size-2) var(--ds-size-3);
+}
+
+.ds-textfield--md .ds-textfield__adornment {
+  padding: 0.65rem var(--ds-size-4);
+}
+
+.ds-textfield--lg .ds-textfield__adornment {
+  padding: 0.85rem var(--ds-size-5);
+}
+
+.ds-textfield--sm .ds-textfield__field {
+  height: var(--ds-size-10);
+}
+
+.ds-textfield--md .ds-textfield__field {
+  height: var(--ds-size-12);
+}
+
+.ds-textfield--lg .ds-textfield__field {
+  height: var(--ds-size-14);
+}
+
+.ds-textfield--sm .ds-textfield__input {
+  padding: 0 var(--ds-size-2);
+}
+
+.ds-textfield--md .ds-textfield__input {
+  padding: 0 var(--ds-size-3);
+}
+
+.ds-textfield--lg .ds-textfield__input {
+  padding: 0 var(--ds-size-4);
+}
+
+.ds-textfield__label {
+  min-width: min-content;
+  display: inline-flex;
+  flex-direction: row;
+  gap: var(--ds-size-1);
+  align-items: center;
+}
+
+.ds-textfield__description {
+  color: var(--ds-color-neutral-text-subtle);
+  margin-top: calc(var(--ds-size-2) * -1);
+}
+
+.ds-textfield:has(.ds-textfield__input:disabled) {
+  opacity: var(--ds-disabled-opacity);
+}
+
+.ds-textfield--error .ds-textfield__input:not(:focus-visible) {
+  border-color: var(--ds-color-danger-border-default);
+  box-shadow: inset 0 0 0 1px var(--ds-color-danger-border-default);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ds-textfield__input:not(:focus-visible, :disabled, [aria-disabled]):hover {
+    border-color: var(--ds-color-border-strong);
+    box-shadow: inset 0 0 0 1px var(--ds-color-border-strong);
+  }
+}
+
+.ds-textfield__input--with-prefix {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.ds-textfield__input--with-suffix {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.ds-textfield__prefix {
+  border-right: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  white-space: nowrap;
+}
+
+.ds-textfield__suffix {
+  border-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  white-space: nowrap;
+}
+
+.ds-textfield__readonly__icon {
+  height: 1.2em;
+  width: 1.2em;
+}
+
+.ds-textfield__error-message:empty {
+  display: none;
+}
+
+/* COMBOBOX */
+
 .ds-combobox {
   display: grid;
   background-color: transparent;
@@ -142,7 +297,7 @@
 }
 
 .ds-combobox__clear-button:not(:disabled):hover {
-  background-color: var(--ds-color-neutral-surface-default);
+  background-color: var(--ds-color-neutral-surface-tinted);
 }
 
 .ds-combobox__disabled {
@@ -216,7 +371,7 @@
 }
 
 .ds-combobox__option.ds-combobox__option--active {
-  background: var(--ds-color-background-subtle);
+  background: var(--ds-color-background-tinted);
   border-left: 5px solid var(--ds-color-base-default);
 }
 

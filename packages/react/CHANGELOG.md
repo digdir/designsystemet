@@ -1,5 +1,66 @@
 # Change Log
 
+## 1.0.0-next.50
+
+### Minor Changes
+
+- Changed alias for type declaration exports ([#3156](https://github.com/digdir/designsystemet/pull/3156))
+  - React: export alias `./react-types.d.ts` was changed to `./react-types`
+  - Theme: added `types` field to default export in package.json, so now it should be posssible to use `"@digdir/designsystemet-theme"`
+
+### Patch Changes
+
+- **Suggestion.Empty**: Remove `asChild` support ([#3162](https://github.com/digdir/designsystemet/pull/3162))
+
+## 1.0.0-next.49
+
+### Minor Changes
+
+- Disallow arbitrary strings for data-size, and only allow arbitrary strings for data-color if generated color types haven't been added to the downstream TypeScript environment. This fixes missing controls for data-size and data-color in the Storybook docs. ([#3042](https://github.com/digdir/designsystemet/pull/3042))
+
+### Patch Changes
+
+- **Card**: Add `data-variant="default/tinted"`, `default` is default ([#3131](https://github.com/digdir/designsystemet/pull/3131))
+
+- **Details**: Add `data-variant="default/tinted"`, `default` is default. ([#3131](https://github.com/digdir/designsystemet/pull/3131))
+
+  - This can also be controlled from `Card`
+
+- **Button**: `loading` type now correctly accepts a `ReactNode` ([#3074](https://github.com/digdir/designsystemet/pull/3074))
+
+- **Button**: Make loading spinner scale accordion to button size ([#3074](https://github.com/digdir/designsystemet/pull/3074))
+
+- Fix `ref` type on `useCheckboxGroup` and `useRadioGroup` ([#3111](https://github.com/digdir/designsystemet/pull/3111))
+
+- Rename to `Modal` to `Dialog` ([#3106](https://github.com/digdir/designsystemet/pull/3106))
+
+- **Popover**: Add `data-variant="default/tinted"`, `default` is default ([#3131](https://github.com/digdir/designsystemet/pull/3131))
+
+- **Badge**: Add `data-variant="base/tinted"`, `base` is default ([#3131](https://github.com/digdir/designsystemet/pull/3131))
+
+## 1.0.0-next.48
+
+### Minor Changes
+
+- :sparkles: New experimental component; **Suggestion** ([#3032](https://github.com/digdir/designsystemet/pull/3032))
+
+- **ErrorSummary**: Split `.Item` into two components ([#3040](https://github.com/digdir/designsystemet/pull/3040))
+
+  - `ErrorSummary.Item` renders a `li`
+  - `ErrorSummary.Link` renders the link
+
+- Upgrade to React 19 and other related dependencies ([#2964](https://github.com/digdir/designsystemet/pull/2964))
+
+- **Checkbox**: Rename `validation` to `error` ([#3038](https://github.com/digdir/designsystemet/pull/3038))
+
+- **Radio**: Rename `validation` to `error` ([#3038](https://github.com/digdir/designsystemet/pull/3038))
+
+### Patch Changes
+
+- **ErrorSummary**: Add support for `asChild` ([#3040](https://github.com/digdir/designsystemet/pull/3040))
+
+- fix: Use correct DOM property for Popover API when used in React 19 ([#3010](https://github.com/digdir/designsystemet/pull/3010))
+
 ## 1.0.0-next.47
 
 ## 1.0.0-next.46

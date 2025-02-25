@@ -1,9 +1,9 @@
 'use client';
 
 import {
-  type ColorInfo,
+  type Color,
   type ColorNumber,
-  getColorNameFromNumber,
+  getColorMetadataByNumber,
 } from '@digdir/designsystemet';
 import cl from 'clsx/lite';
 import { useEffect, useRef } from 'react';
@@ -17,7 +17,7 @@ export const ThemePages = () => {
   const colors = useThemeStore((state) => state.colors);
   const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
   const themeTab = useThemeStore((state) => state.themeTab);
-  const appearance = useThemeStore((state) => state.appearance);
+  const colorScheme = useThemeStore((state) => state.colorScheme);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -45,22 +45,22 @@ export const ThemePages = () => {
   }, [baseBorderRadius]);
 
   const getDsVars = (colors: {
-    light: ColorInfo[];
-    dark: ColorInfo[];
+    light: Color[];
+    dark: Color[];
   }) => {
     const style = {} as Record<string, string>;
 
     let lightColors = colors.light;
 
-    if (appearance === 'dark') {
+    if (colorScheme === 'dark') {
       lightColors = colors.dark;
     }
 
     for (let i = 0; i < lightColors.length; i++) {
       const number = (i + 1) as ColorNumber;
       style[
-        `--ds-color-neutral-${getColorNameFromNumber(number)
-          .replace(/\s+/g, '-')
+        `--ds-color-neutral-${getColorMetadataByNumber(number)
+          .displayName.replace(/\s+/g, '-')
           .toLowerCase()}`
       ] = lightColors[i].hex;
     }
@@ -69,22 +69,22 @@ export const ThemePages = () => {
   };
 
   const getDsMainVars = (colors: {
-    light: ColorInfo[];
-    dark: ColorInfo[];
+    light: Color[];
+    dark: Color[];
   }) => {
     const style = {} as Record<string, string>;
 
     let lightColors = colors.light;
 
-    if (appearance === 'dark') {
+    if (colorScheme === 'dark') {
       lightColors = colors.dark;
     }
 
     for (let i = 0; i < lightColors.length; i++) {
       const number = (i + 1) as ColorNumber;
       style[
-        `--ds-color-${getColorNameFromNumber(number)
-          .replace(/\s+/g, '-')
+        `--ds-color-${getColorMetadataByNumber(number)
+          .displayName.replace(/\s+/g, '-')
           .toLowerCase()}`
       ] = lightColors[i].hex;
     }
@@ -108,33 +108,32 @@ export const ThemePages = () => {
   return (
     <>
       <div
-        className={classes.panel}
-        data-color-scheme={appearance}
+        className={classes.basicPanel}
+        data-color-scheme={colorScheme}
         hidden={!(themeTab === 'overview')}
         style={style()}
       >
         <OverviewComponents ref={containerRef} />
       </div>
+      <div
+        className={cl(classes.basicPanel, classes.colorsContainer)}
+        data-color-scheme={colorScheme}
+        hidden={!(themeTab === 'colorsystem')}
+      >
+        <Colors />
+      </div>
 
       <>
         <div
-          className={cl(classes.panel, classes.colorsContainer)}
-          data-color-scheme={appearance}
-          hidden={!(themeTab === 'colorsystem')}
-        >
-          <Colors />
-        </div>
-
-        <div
           className={classes.panel}
-          data-color-scheme={appearance}
+          data-color-scheme={colorScheme}
           hidden={!(themeTab === 'colorsystem')}
         >
           <ColorPreview />
         </div>
         <div
           className={classes.panel}
-          data-color-scheme={appearance}
+          data-color-scheme={colorScheme}
           hidden={!(themeTab === 'colorsystem')}
         >
           <ColorTokens />
@@ -142,7 +141,7 @@ export const ThemePages = () => {
 
         <div
           className={classes.panel}
-          data-color-scheme={appearance}
+          data-color-scheme={colorScheme}
           hidden={!(themeTab === 'colorsystem')}
         >
           <ColorContrasts />

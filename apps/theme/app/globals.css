@@ -41,6 +41,9 @@ code {
   gap: 12px;
   width: 420px;
   position: relative;
+  background-color: var(--ds-color-neutral-background-default);
+  padding: 32px;
+  border-right: 1px solid var(--ds-color-neutral-border-subtle);
 }
 
 .panelRight {
@@ -50,7 +53,7 @@ code {
   width: 100%;
   gap: 12px;
   padding: 28px;
-  background-color: var(--ds-color-neutral-background-subtle);
+  background-color: var(--ds-color-neutral-background-tinted);
   border-radius: 0 8px 8px 0;
 }
 

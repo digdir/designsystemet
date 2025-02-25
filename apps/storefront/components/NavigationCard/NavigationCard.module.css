@@ -10,7 +10,6 @@
 }
 
 .card:hover {
-  color: inherit;
   box-shadow: var(--ds-shadow-md);
   transform: translateY(-4px);
 }
@@ -19,7 +18,7 @@
   transition: none;
   box-shadow: var(--dsc-focus-boxShadow);
   outline: var(--dsc-focus-outline);
-  outline-offset: var(--dsc-focus-border-width);
+  outline-offset: var(--ds-border-width-focus);
 }
 
 .iconContainer {
@@ -61,7 +60,7 @@
 
   [data-color-scheme='dark'] &,
   [data-color-scheme='auto'] & {
-    background-color: var(--ds-color-neutral-surface-default);
+    background-color: var(--ds-color-neutral-surface-tinted);
   }
 }
 
@@ -70,7 +69,7 @@
 
   [data-color-scheme='dark'] &,
   [data-color-scheme='auto'] & {
-    background-color: var(--ds-color-neutral-surface-default);
+    background-color: var(--ds-color-neutral-surface-tinted);
   }
 }
 

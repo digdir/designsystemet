@@ -1,11 +1,9 @@
 import cat1 from '@assets/img/cats/Cat 1.jpg';
-import cat2 from '@assets/img/cats/Cat 2.jpg';
-import cat3 from '@assets/img/cats/Cat 3.jpg';
-import cat4 from '@assets/img/cats/Cat 4.jpg';
 import cat5 from '@assets/img/cats/Cat 5.jpg';
 import { PlusIcon, TrashFillIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react';
 
+import { Fragment } from 'react/jsx-runtime';
 import {
   Button,
   Card,
@@ -37,7 +35,7 @@ export default {
 
 export const Preview: Story = (args) => (
   <Card {...args} style={{ maxWidth: '320px' }}>
-    <Heading>Card Neutral</Heading>
+    <Heading>Card</Heading>
     <Paragraph>
       Most provide as with carried business are much better more the perfected
       designer. Writing slightly explain desk unable at supposedly about this
@@ -50,119 +48,65 @@ Preview.args = {
   'data-color': 'neutral',
 };
 
+const VariantsMap: {
+  [key: string]: { [key: string]: string };
+} = {
+  neutralDefault: {
+    'data-color': 'neutral',
+    'data-variant': 'default',
+  },
+  neutralTinted: {
+    'data-color': 'neutral',
+    'data-variant': 'tinted',
+  },
+  brand1Default: {
+    'data-color': 'brand1',
+    'data-variant': 'default',
+  },
+  brand1Tinted: {
+    'data-color': 'brand1',
+    'data-variant': 'tinted',
+  },
+  brand2Default: {
+    'data-color': 'brand2',
+    'data-variant': 'default',
+  },
+  brand2Tinted: {
+    'data-color': 'brand2',
+    'data-variant': 'tinted',
+  },
+  brand3Default: {
+    'data-color': 'brand3',
+    'data-variant': 'default',
+  },
+  brand3Tinted: {
+    'data-color': 'brand3',
+    'data-variant': 'tinted',
+  },
+};
+
 export const Variants: StoryFn<typeof Card> = () => (
   <>
-    <Card data-color='neutral'>
-      <Card.Block>
-        <img src={cat1} alt='katt' />
-      </Card.Block>
-      <Card.Block>
-        <Heading>
-          <a
-            href='https://designsystemet.no'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Card Neutral
-          </a>
-        </Heading>
-        <Paragraph>
-          Most provide as with carried business are much better more the
-          perfected designer. Writing slightly explain desk unable at supposedly
-          about this
-        </Paragraph>
-      </Card.Block>
-    </Card>
-    <Card data-color='subtle'>
-      <Card.Block>
-        <img src={cat2} alt='katt' />
-      </Card.Block>
-      <Card.Block>
-        <Heading>
-          <a
-            href='https://designsystemet.no'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Card Subtle
-          </a>
-        </Heading>
-        <Paragraph>
-          Most provide as with carried business are much better more the
-          perfected designer. Writing slightly explain desk unable at supposedly
-          about this
-        </Paragraph>
-      </Card.Block>
-    </Card>
-    <Card data-color='brand1'>
-      <Card.Block>
-        <img src={cat3} alt='katter' />
-      </Card.Block>
-      <Card.Block>
-        <Heading>
-          <a
-            href='https://designsystemet.no'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Card First
-          </a>
-        </Heading>
-        <Paragraph>
-          Most provide as with carried business are much better more the
-          perfected designer. Writing slightly explain desk unable at supposedly
-          about this
-        </Paragraph>
-      </Card.Block>
-    </Card>
-    <Card data-color='brand2'>
-      <Card.Block>
-        <img src={cat4} alt='katt' />
-      </Card.Block>
-      <Card.Block>
-        <Heading>
-          <a
-            href='https://designsystemet.no'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Card Second
-          </a>
-        </Heading>
-        <Paragraph>
-          Most provide as with carried business are much better more the
-          perfected designer. Writing slightly explain desk unable at supposedly
-          about this
-        </Paragraph>
-      </Card.Block>
-    </Card>
-    <Card data-color='brand3'>
-      <Card.Block>
-        <img src={cat5} alt='katt' />
-      </Card.Block>
-      <Card.Block>
-        <Heading>
-          <a
-            href='https://designsystemet.no'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Card Third
-          </a>
-        </Heading>
-        <Paragraph>
-          Most provide as with carried business are much better more the
-          perfected designer. Writing slightly explain desk unable at supposedly
-          about this
-        </Paragraph>
-      </Card.Block>
-    </Card>
+    {Object.entries(VariantsMap).map(([key, value]) => (
+      <Card key={key} {...value}>
+        <Card.Block>
+          <Paragraph>
+            {Object.entries(value).map(([v, k]) => (
+              <Fragment key={v}>
+                {v}: {k}
+                <br />
+              </Fragment>
+            ))}
+          </Paragraph>
+        </Card.Block>
+      </Card>
+    ))}
   </>
 );
 
 export const Media: Story = () => (
   <>
-    <Card>
+    <Card data-color='neutral'>
       <Card.Block>
         <img src={cat1} alt='katt' />
       </Card.Block>
@@ -175,7 +119,7 @@ export const Media: Story = () => (
         </Paragraph>
       </Card.Block>
     </Card>
-    <Card>
+    <Card data-color='neutral'>
       <Card.Block>
         <Heading>Card Neutral</Heading>
         <Paragraph>
@@ -274,7 +218,7 @@ export const Composed: Story = () => (
         </Button>
       </Card.Block>
     </Card>
-    <Card>
+    <Card data-color='neutral'>
       <Card.Block>
         <img src={cat1} alt='katt' />
       </Card.Block>

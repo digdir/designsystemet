@@ -16,15 +16,8 @@
   }
 }
 
-.card {
-  [data-color-scheme='dark'] &,
-  [data-color-scheme='auto'] & {
-    --dsc-card-background: var(--ds-color-neutral-surface-default);
-  }
-}
-
 .tag {
-  margin-bottom: 11px;
+  margin-bottom: 0;
   padding: 3px 9px;
   font-size: 16px;
 }

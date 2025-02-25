@@ -1,29 +1,25 @@
-import { getColorNameFromNumber } from '@digdir/designsystemet/color';
+import { getColorMetadataByNumber } from '@digdir/designsystemet/color';
 import { ColorModal } from '@repo/components';
 import cl from 'clsx/lite';
 import { useRef } from 'react';
 import type { TransformedToken } from 'style-dictionary';
 
-import type { ColorNumber } from '@digdir/designsystemet/color';
+import type {
+  Color,
+  ColorNumber,
+  HexColor,
+} from '@digdir/designsystemet/color';
 
 import classes from './TokenColor.module.css';
 interface TokenColorProps {
-  value: string;
+  value: HexColor;
   token: TransformedToken;
 }
 
 /* The original.value is something like "{global.yellow.1}", and we need to get the weight between the last . and } */
-export function getColorWeight(value: string): ColorNumber | undefined {
-  const firstSplit = value.split('.').pop()?.replace('}', '');
-
-  if (firstSplit?.includes('contrast-')) {
-    if (firstSplit.includes('contrast-1')) {
-      return 14;
-    }
-    return 15;
-  }
-
-  const parsed = parseInt(firstSplit as string);
+export function getColorNumber(value: string): ColorNumber | undefined {
+  const digit = value.match(/^\d+$/)?.[0];
+  const parsed = parseInt(digit || '');
 
   return Number.isNaN(parsed) ? undefined : (parsed as ColorNumber);
 }
@@ -31,31 +27,40 @@ export function getColorWeight(value: string): ColorNumber | undefined {
 const TokenColor = ({ value, token }: TokenColorProps) => {
   const colorModalRef = useRef<HTMLDialogElement>(null);
 
-  const weight = getColorWeight(token.original.$value as string);
-  const Element = weight ? 'button' : 'div';
+  const number = getColorNumber(token.original.$value as string);
+  const color: Color | undefined = number
+    ? {
+        ...getColorMetadataByNumber(number),
+        number,
+        hex: value,
+      }
+    : undefined;
 
-  return (
+  const namespace = token.path[1];
+
+  return color ? (
     <>
-      {weight ? (
-        <ColorModal
-          weight={weight}
-          hex={value}
-          namespace={token.path[1]}
-          colorModalRef={colorModalRef}
-        />
-      ) : null}
-      <div className={classes.test}>
-        <Element
+      <ColorModal
+        namespace={namespace}
+        colorModalRef={colorModalRef}
+        color={color}
+      />
+      <div className={classes.colorBox}>
+        <button
           style={{ backgroundColor: value }}
           className={cl(classes.color, 'ds-focus')}
-          onClick={() => weight && colorModalRef.current?.showModal()}
-          aria-label={
-            weight &&
-            `Se mer om ${token.path[1]} ${getColorNameFromNumber(weight)}`
-          }
-        ></Element>
+          onClick={() => colorModalRef.current?.showModal()}
+          aria-label={`Se mer om ${namespace} ${color?.displayName}`}
+        ></button>
       </div>
     </>
+  ) : (
+    <div className={classes.colorBox}>
+      <div
+        style={{ backgroundColor: value }}
+        className={cl(classes.color, 'ds-focus')}
+      ></div>
+    </div>
   );
 };
 

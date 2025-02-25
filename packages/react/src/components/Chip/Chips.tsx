@@ -27,6 +27,7 @@ export type ChipCheckboxProps = MergeRight<
 
 /**
  * Chip.Button used for interaction
+ *
  * @example
  * <Chip.Button>Click me</Chip.Button>
  */

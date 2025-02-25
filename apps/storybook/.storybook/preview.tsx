@@ -96,6 +96,7 @@ const components = {
       className='sb-unstyled'
       style={{ width: '100%' }}
       data-color-scheme='light'
+      data-color='neutral'
     />
   ),
   thead: (props: Props) => (
@@ -120,10 +121,7 @@ const components = {
 };
 
 const preview: Preview = {
-  argTypes: {
-    'data-color': { control: { type: 'text' } },
-    'data-size': { control: { type: 'text' } },
-  },
+  tags: ['a11y-test'],
   parameters: {
     layout: 'centered',
     viewMode: 'docs',
@@ -156,6 +154,8 @@ const preview: Preview = {
       viewports,
     },
     chromatic: {
+      // Disable snapshots by default
+      disableSnapshot: true,
       modes: {
         mobile: allModes[320],
         desktop: allModes[1200],
@@ -163,19 +163,6 @@ const preview: Preview = {
     },
     backgrounds: {
       disable: true,
-    },
-    a11y: {
-      element: ['#storybook-root', '[data-floating-ui-portal]'],
-      config: {
-        rules: [
-          {
-            // Ignore the color-contrast rule for the ":active" pseudo-state
-            id: 'color-contrast',
-            selector:
-              '#storybook-root:not(.pseudo-active-all) *:not(.pseudo-active)',
-          },
-        ],
-      },
     },
   },
   decorators: [customStylesDecorator],

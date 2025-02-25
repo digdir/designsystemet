@@ -1,27 +1,23 @@
 .ds-card {
   --dsc-card-background--active: var(--ds-color-surface-active);
   --dsc-card-background--hover: var(--ds-color-surface-hover);
-  --dsc-card-background: var(--ds-color-surface-default);
+  --dsc-card-background: var(--ds-color-background-default);
+  --dsc-card-border-width: var(--ds-border-width-default);
+  --dsc-card-border-style: solid;
   --dsc-card-border-color: var(--ds-color-border-subtle);
+  --dsc-card-block-border-width: var(--dsc-card-border-width);
+  --dsc-card-block-border-style: var(--dsc-card-border-style);
+  --dsc-card-block-border-color: var(--dsc-card-border-color);
   --dsc-card-color: var(--ds-color-text-default);
-  --dsc-card-border: 1px solid var(--dsc-card-border-color);
-  --dsc-card-gap: var(--ds-size-3);
+  --dsc-card-content-margin-block: var(--ds-size-3) 0;
   --dsc-card-padding: var(--ds-size-6);
-
-  &[data-color='neutral'] {
-    --dsc-card-background: var(--ds-color-background-default);
-  }
-  &[data-color='subtle'] {
-    --dsc-card-background--active: var(--ds-color-neutral-surface-default);
-    --dsc-card-background--hover: var(--ds-color-neutral-background-subtle);
-    --dsc-card-background: var(--ds-color-neutral-background-subtle);
-    --dsc-card-border-color: var(--ds-color-neutral-border-subtle);
-    --dsc-card-color: var(--ds-color-neutral-text-default);
-  }
+  --dsc-card-border-radius: var(--ds-border-radius-lg);
 
   background: var(--dsc-card-background);
-  border-radius: var(--ds-border-radius-lg);
-  border: var(--dsc-card-border);
+  border-radius: var(--dsc-card-border-radius);
+  border-width: var(--dsc-card-border-width);
+  border-style: var(--dsc-card-border-style);
+  border-color: var(--dsc-card-border-color);
   box-sizing: border-box;
   color: var(--dsc-card-color);
   font-family: inherit;
@@ -29,6 +25,14 @@
   overflow: clip; /* Needed to clip media elements and and Card.Block */
   padding: var(--dsc-card-padding);
   text-align: inherit;
+
+  &[data-variant='default'] {
+    --dsc-card-background: var(--ds-color-background-default);
+  }
+
+  &[data-variant='tinted'] {
+    --dsc-card-background: var(--ds-color-surface-tinted);
+  }
 
   &:not([hidden]) {
     display: block;
@@ -88,7 +92,7 @@
   }
 
   & > * + * {
-    margin-block: var(--dsc-card-gap) 0; /* https://every-layout.dev/layouts/stack/ */
+    margin-block: var(--dsc-card-content-margin-block); /* https://every-layout.dev/layouts/stack/ */
   }
 }
 
@@ -101,7 +105,9 @@
   /* Needed to support automatic separator border between both vertical and horizontal stacking Card.Block: */
   &::before {
     content: '';
-    border-top: var(--dsc-card-border);
+    border-top-width: var(--dsc-card-block-border-width);
+    border-top-style: var(--dsc-card-block-border-style);
+    border-color: var(--dsc-card-block-border-color);
     position: absolute;
     inset: 0 0 auto;
     translate: 0 -100%;
@@ -109,7 +115,9 @@
 
   &::after {
     content: '';
-    border-left: var(--dsc-card-border);
+    border-left-width: var(--dsc-card-block-border-width);
+    border-left-style: var(--dsc-card-block-border-style);
+    border-color: var(--dsc-card-block-border-color);
     position: absolute;
     inset: 0 auto 0 0;
     translate: -100%;

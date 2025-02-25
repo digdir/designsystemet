@@ -18,53 +18,54 @@ export const Scale = ({
   namespace,
 }: ScaleProps) => {
   return (
+    // TODO: Use colorMetadata instead of hardcoding the names and color numbers
     <div className={classes.themes}>
       <RovingFocusRoot activeValue={namespace + '1'} asChild>
         <div className={classes.test}>
           <Group
             header={showHeader ? 'Background' : ''}
-            colors={[0, 1]}
+            colorNumbers={[1, 2]}
             colorScale={colorScale}
             showColorMeta={showColorMeta}
-            names={['Default', 'Subtle']}
+            names={['Default', 'Tinted']}
             namespace={namespace}
           />
           <Group
             header={showHeader ? 'Surface' : ''}
-            colors={[2, 3, 4]}
+            colorNumbers={[3, 4, 5, 6]}
             colorScale={colorScale}
             showColorMeta={showColorMeta}
-            names={['Default', 'Hover', 'Active']}
+            names={['Default', 'Tinted', 'Hover', 'Active']}
             namespace={namespace}
           />
           <Group
             showColorMeta={showColorMeta}
             header={showHeader ? 'Border' : ''}
-            colors={[5, 6, 7]}
+            colorNumbers={[7, 8, 9]}
             colorScale={colorScale}
             names={['Subtle', 'Default', 'Strong']}
             namespace={namespace}
           />
           <Group
             showColorMeta={showColorMeta}
+            header={showHeader ? 'Text' : ''}
+            colorNumbers={[10, 11]}
+            colorScale={colorScale}
+            names={['Subtle', 'Default']}
+            namespace={namespace}
+          />
+          <Group
+            showColorMeta={showColorMeta}
             header={showHeader ? 'Base' : ''}
-            colors={[8, 9, 10, 13, 14]}
+            colorNumbers={[12, 13, 14, 15, 16]}
             colorScale={colorScale}
             names={[
               'Default',
               'Hover',
               'Active',
-              'Contrast Default',
               'Contrast Subtle',
+              'Contrast Default',
             ]}
-            namespace={namespace}
-          />
-          <Group
-            showColorMeta={showColorMeta}
-            header={showHeader ? 'Text' : ''}
-            colors={[11, 12]}
-            colorScale={colorScale}
-            names={['Subtle', 'Default']}
             namespace={namespace}
           />
         </div>

@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 import { baseColors, generateColorScale } from '../colors/index.js';
-import type { ColorInfo, ColorScheme } from '../colors/types.js';
+import type { Color, ColorScheme } from '../colors/types.js';
 import type { Colors, Theme, Tokens, Tokens1ary, TokensSet, Typography } from './types.js';
 
 export const cliOptions = {
@@ -19,23 +19,11 @@ export const cliOptions = {
   },
 } as const;
 
-const createColorTokens = (colorArray: ColorInfo[]): Tokens1ary => {
+const createColorTokens = (colorArray: Color[]): Tokens1ary => {
   const obj: Tokens1ary = {};
   const $type = 'color';
-  for (let i = 0; i < colorArray.length; i++) {
-    if (i === 13 && colorArray.length >= 14) {
-      obj['contrast-1'] = {
-        $type,
-        $value: colorArray[i].hex,
-      };
-    } else if (i === 14 && colorArray.length >= 15) {
-      obj['contrast-2'] = {
-        $type,
-        $value: colorArray[i].hex,
-      };
-    } else {
-      obj[i + 1] = { $type, $value: colorArray[i].hex };
-    }
+  for (const index in colorArray) {
+    obj[Number(index) + 1] = { $type, $value: colorArray[index].hex };
   }
   return obj;
 };
@@ -83,7 +71,6 @@ const generateGlobalTokens = (colorScheme: ColorScheme) => {
   const orangeScale = generateColorScale(baseColors.orange, colorScheme);
   const purpleScale = generateColorScale(baseColors.purple, colorScheme);
   const redScale = generateColorScale(baseColors.red, colorScheme);
-  const yellowScale = generateColorScale(baseColors.yellow, colorScheme);
 
   return {
     global: {
@@ -92,7 +79,6 @@ const generateGlobalTokens = (colorScheme: ColorScheme) => {
       orange: createColorTokens(orangeScale),
       purple: createColorTokens(purpleScale),
       red: createColorTokens(redScale),
-      yellow: createColorTokens(yellowScale),
     },
   };
 };

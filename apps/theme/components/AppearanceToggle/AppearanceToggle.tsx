@@ -1,4 +1,5 @@
 import { Button } from '@digdir/designsystemet-react';
+import type { ColorScheme } from '@digdir/designsystemet/color';
 import { MoonIcon, SunIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { useEffect, useState } from 'react';
@@ -9,9 +10,9 @@ type AppearanceToggleProps = {
   showLabel?: boolean;
 };
 
-const items: {
+const colorSchemes: {
   name: string;
-  value: 'light' | 'dark';
+  value: ColorScheme;
 }[] = [
   { name: 'Lys', value: 'light' },
   { name: 'Mørk', value: 'dark' },
@@ -20,43 +21,43 @@ const items: {
 export const AppearanceToggle = ({
   showLabel = false,
 }: AppearanceToggleProps) => {
-  const appearance = useThemeStore((state) => state.appearance);
-  const setAppearance = useThemeStore((state) => state.setAppearance);
+  const colorScheme = useThemeStore((state) => state.colorScheme);
+  const setColorScheme = useThemeStore((state) => state.setColorScheme);
 
-  const [active, setActive] = useState(appearance);
+  const [active, setActive] = useState(colorScheme);
 
   useEffect(() => {
-    setActive(appearance);
-  }, [appearance]);
+    setActive(colorScheme);
+  }, [colorScheme]);
 
   return (
     <div className={classes.toggle} role='radiogroup'>
-      {items.map((item) => (
+      {colorSchemes.map((colorScheme) => (
         <Button
           data-size='sm'
           className={cl(classes.item)}
-          key={item.value}
+          key={colorScheme.value}
           onClick={() => {
-            setActive(item.value);
-            setAppearance(item.value);
+            setActive(colorScheme.value);
+            setColorScheme(colorScheme.value);
           }}
-          variant={item.value === active ? 'primary' : 'secondary'}
+          variant={colorScheme.value === active ? 'primary' : 'secondary'}
           data-color='neutral'
-          aria-label={`Sett til ${item.name} visning`}
+          aria-label={`Sett til ${colorScheme.name} visning`}
           // biome-ignore lint/a11y/useSemanticElements: <explanation>
           role='radio'
-          aria-checked={item.value === active}
-          aria-current={item.value === active}
+          aria-checked={colorScheme.value === active}
+          aria-current={colorScheme.value === active}
         >
-          {item.value === 'light' && (
+          {colorScheme.value === 'light' && (
             <SunIcon title='a11y-title' fontSize='1.5rem' />
           )}
-          {item.value === 'dark' && (
+          {colorScheme.value === 'dark' && (
             <MoonIcon title='a11y-title' fontSize='1.5rem' />
           )}
-          {item.name}
+          {colorScheme.name}
 
-          {showLabel && <>{item.name}</>}
+          {showLabel && <>{colorScheme.name}</>}
         </Button>
       ))}
     </div>

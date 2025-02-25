@@ -24,7 +24,7 @@
 
   @media screen and (max-width: 860px) {
     & h1 {
-      font-size: var(--ds-font-size-9);
+      font-size: var(--ds-font-size-8);
     }
   }
 }
@@ -57,7 +57,7 @@
 }
 
 .content {
-  --text-max-width: 640px;
+  --text-max-width: 700px;
 
   max-width: var(--text-max-width);
   margin: 0 auto;
@@ -96,7 +96,7 @@
 .wantToWrite {
   margin-top: var(--ds-size-12);
   border-radius: var(--ds-border-radius-lg);
-  background: var(--ds-color-brand1-surface-default);
+  background: var(--ds-color-brand1-surface-tinted);
   color: var(--ds-color-brand1-text-default);
   padding: var(--ds-size-8);
   display: flex;

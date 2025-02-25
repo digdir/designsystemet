@@ -9,7 +9,7 @@ export const SiteConfig = {
           url: 'grunnleggende/introduksjon',
           children: [
             {
-              name: 'Om designsystemet',
+              name: 'Om Designsystemet',
               url: 'grunnleggende/introduksjon/om-designsystemet',
             },
             {
@@ -163,15 +163,15 @@ export const SiteConfig = {
           url: 'monstre/brukeroppgaver',
           children: [
             {
-              name: 'Obligatoriske felt *',
+              name: 'Obligatoriske felt',
               url: 'monstre/obligatoriske-og-valgfrie-felt',
             },
             {
-              name: 'Feilmeldinger *',
+              name: 'Feilmeldinger',
               url: 'monstre/feilmeldinger',
             },
             {
-              name: 'Systemvarsler *',
+              name: 'Systemvarsler',
               url: 'monstre/systemvarsler',
             },
           ],
@@ -181,20 +181,12 @@ export const SiteConfig = {
           url: 'monstre/skjema',
           children: [
             {
-              name: 'Dato',
-              url: 'monstre/dato',
+              name: 'Representasjon',
+              url: 'monstre/representasjon',
             },
             {
-              name: 'Innlogging',
-              url: 'monstre/innlogging',
-            },
-            {
-              name: 'Navigering',
-              url: 'monstre/navigering',
-            },
-            {
-              name: 'Ofte brukte handlinger',
-              url: 'monstre/handlinger',
+              name: 'Eksterne lenker',
+              url: 'monstre/eksterne-lenker',
             },
           ],
         },

@@ -5,6 +5,7 @@ export type DetailsContentProps = HTMLAttributes<HTMLDivElement>;
 
 /**
  * Details content component, contains the content of the details item.
+ *
  * @example
  * <DetailsContent>Content</DetailsContent>
  */

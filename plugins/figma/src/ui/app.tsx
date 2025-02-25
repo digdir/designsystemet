@@ -1,5 +1,4 @@
 import '@digdir/designsystemet-theme';
-import './theme.css';
 import '@digdir/designsystemet-css';
 
 import './App.css';

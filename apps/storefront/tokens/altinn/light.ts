@@ -30,18 +30,18 @@ export const  color = [
       $type: "color",
       $value: "{color.accent.2}"
     },
-    name: "--ds-color-accent-background-subtle",
+    name: "--ds-color-accent-background-tinted",
     attributes: {},
     path: [
       "color",
       "accent",
-      "background-subtle"
+      "background-tinted"
     ],
-    key: "{color.accent.background-subtle}"
+    key: "{color.accent.background-tinted}"
   },
   {
     $type: "color",
-    $value: "#d4e4f3",
+    $value: "#ffffff",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -59,12 +59,30 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#bbd5ec",
+    $value: "#ddeaf6",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
       $value: "{color.accent.4}"
+    },
+    name: "--ds-color-accent-surface-tinted",
+    attributes: {},
+    path: [
+      "color",
+      "accent",
+      "surface-tinted"
+    ],
+    key: "{color.accent.surface-tinted}"
+  },
+  {
+    $type: "color",
+    $value: "#c7ddf0",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.accent.5}"
     },
     name: "--ds-color-accent-surface-hover",
     attributes: {},
@@ -77,12 +95,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#a3c6e6",
+    $value: "#b1cfea",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.accent.5}"
+      $value: "{color.accent.6}"
     },
     name: "--ds-color-accent-surface-active",
     attributes: {},
@@ -100,7 +118,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.accent.6}"
+      $value: "{color.accent.7}"
     },
     name: "--ds-color-accent-border-subtle",
     attributes: {},
@@ -118,7 +136,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.accent.7}"
+      $value: "{color.accent.8}"
     },
     name: "--ds-color-accent-border-default",
     attributes: {},
@@ -131,12 +149,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#0161b8",
+    $value: "#0061b8",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.accent.8}"
+      $value: "{color.accent.9}"
     },
     name: "--ds-color-accent-border-strong",
     attributes: {},
@@ -149,66 +167,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#0162BA",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{color.accent.9}"
-    },
-    name: "--ds-color-accent-base-default",
-    attributes: {},
-    path: [
-      "color",
-      "accent",
-      "base-default"
-    ],
-    key: "{color.accent.base-default}"
-  },
-  {
-    $type: "color",
-    $value: "#014f96",
+    $value: "#0061b8",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
       $value: "{color.accent.10}"
-    },
-    name: "--ds-color-accent-base-hover",
-    attributes: {},
-    path: [
-      "color",
-      "accent",
-      "base-hover"
-    ],
-    key: "{color.accent.base-hover}"
-  },
-  {
-    $type: "color",
-    $value: "#013d75",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{color.accent.11}"
-    },
-    name: "--ds-color-accent-base-active",
-    attributes: {},
-    path: [
-      "color",
-      "accent",
-      "base-active"
-    ],
-    key: "{color.accent.base-active}"
-  },
-  {
-    $type: "color",
-    $value: "#0161b8",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{color.accent.12}"
     },
     name: "--ds-color-accent-text-subtle",
     attributes: {},
@@ -226,7 +190,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.accent.13}"
+      $value: "{color.accent.11}"
     },
     name: "--ds-color-accent-text-default",
     attributes: {},
@@ -239,21 +203,57 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#ffffff",
+    $value: "#0062BA",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.accent.contrast-1}"
+      $value: "{color.accent.12}"
     },
-    name: "--ds-color-accent-contrast-default",
+    name: "--ds-color-accent-base-default",
     attributes: {},
     path: [
       "color",
       "accent",
-      "contrast-default"
+      "base-default"
     ],
-    key: "{color.accent.contrast-default}"
+    key: "{color.accent.base-default}"
+  },
+  {
+    $type: "color",
+    $value: "#004f96",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.accent.13}"
+    },
+    name: "--ds-color-accent-base-hover",
+    attributes: {},
+    path: [
+      "color",
+      "accent",
+      "base-hover"
+    ],
+    key: "{color.accent.base-hover}"
+  },
+  {
+    $type: "color",
+    $value: "#003d75",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.accent.14}"
+    },
+    name: "--ds-color-accent-base-active",
+    attributes: {},
+    path: [
+      "color",
+      "accent",
+      "base-active"
+    ],
+    key: "{color.accent.base-active}"
   },
   {
     $type: "color",
@@ -262,16 +262,34 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.accent.contrast-2}"
+      $value: "{color.accent.15}"
     },
-    name: "--ds-color-accent-contrast-subtle",
+    name: "--ds-color-accent-base-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "accent",
-      "contrast-subtle"
+      "base-contrast-subtle"
     ],
-    key: "{color.accent.contrast-subtle}"
+    key: "{color.accent.base-contrast-subtle}"
+  },
+  {
+    $type: "color",
+    $value: "#ffffff",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.accent.16}"
+    },
+    name: "--ds-color-accent-base-contrast-default",
+    attributes: {},
+    path: [
+      "color",
+      "accent",
+      "base-contrast-default"
+    ],
+    key: "{color.accent.base-contrast-default}"
   },
   {
     $type: "color",
@@ -300,18 +318,18 @@ export const  color = [
       $type: "color",
       $value: "{color.neutral.2}"
     },
-    name: "--ds-color-neutral-background-subtle",
+    name: "--ds-color-neutral-background-tinted",
     attributes: {},
     path: [
       "color",
       "neutral",
-      "background-subtle"
+      "background-tinted"
     ],
-    key: "{color.neutral.background-subtle}"
+    key: "{color.neutral.background-tinted}"
   },
   {
     $type: "color",
-    $value: "#e0e2e4",
+    $value: "#ffffff",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -329,12 +347,30 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#cfd2d5",
+    $value: "#e7e9ea",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
       $value: "{color.neutral.4}"
+    },
+    name: "--ds-color-neutral-surface-tinted",
+    attributes: {},
+    path: [
+      "color",
+      "neutral",
+      "surface-tinted"
+    ],
+    key: "{color.neutral.surface-tinted}"
+  },
+  {
+    $type: "color",
+    $value: "#d8dadd",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.neutral.5}"
     },
     name: "--ds-color-neutral-surface-hover",
     attributes: {},
@@ -347,12 +383,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#bfc3c7",
+    $value: "#c9ccd0",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.neutral.5}"
+      $value: "{color.neutral.6}"
     },
     name: "--ds-color-neutral-surface-active",
     attributes: {},
@@ -370,7 +406,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.neutral.6}"
+      $value: "{color.neutral.7}"
     },
     name: "--ds-color-neutral-border-subtle",
     attributes: {},
@@ -388,7 +424,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.neutral.7}"
+      $value: "{color.neutral.8}"
     },
     name: "--ds-color-neutral-border-default",
     attributes: {},
@@ -406,7 +442,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.neutral.8}"
+      $value: "{color.neutral.9}"
     },
     name: "--ds-color-neutral-border-strong",
     attributes: {},
@@ -419,66 +455,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#1E2B3C",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{color.neutral.9}"
-    },
-    name: "--ds-color-neutral-base-default",
-    attributes: {},
-    path: [
-      "color",
-      "neutral",
-      "base-default"
-    ],
-    key: "{color.neutral.base-default}"
-  },
-  {
-    $type: "color",
-    $value: "#313d4d",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{color.neutral.10}"
-    },
-    name: "--ds-color-neutral-base-hover",
-    attributes: {},
-    path: [
-      "color",
-      "neutral",
-      "base-hover"
-    ],
-    key: "{color.neutral.base-hover}"
-  },
-  {
-    $type: "color",
-    $value: "#444f5d",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{color.neutral.11}"
-    },
-    name: "--ds-color-neutral-base-active",
-    attributes: {},
-    path: [
-      "color",
-      "neutral",
-      "base-active"
-    ],
-    key: "{color.neutral.base-active}"
-  },
-  {
-    $type: "color",
     $value: "#59626f",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.neutral.12}"
+      $value: "{color.neutral.10}"
     },
     name: "--ds-color-neutral-text-subtle",
     attributes: {},
@@ -496,7 +478,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.neutral.13}"
+      $value: "{color.neutral.11}"
     },
     name: "--ds-color-neutral-text-default",
     attributes: {},
@@ -509,21 +491,57 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#ffffff",
+    $value: "#1E2B3C",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.neutral.contrast-1}"
+      $value: "{color.neutral.12}"
     },
-    name: "--ds-color-neutral-contrast-default",
+    name: "--ds-color-neutral-base-default",
     attributes: {},
     path: [
       "color",
       "neutral",
-      "contrast-default"
+      "base-default"
     ],
-    key: "{color.neutral.contrast-default}"
+    key: "{color.neutral.base-default}"
+  },
+  {
+    $type: "color",
+    $value: "#313d4d",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.neutral.13}"
+    },
+    name: "--ds-color-neutral-base-hover",
+    attributes: {},
+    path: [
+      "color",
+      "neutral",
+      "base-hover"
+    ],
+    key: "{color.neutral.base-hover}"
+  },
+  {
+    $type: "color",
+    $value: "#444f5d",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.neutral.14}"
+    },
+    name: "--ds-color-neutral-base-active",
+    attributes: {},
+    path: [
+      "color",
+      "neutral",
+      "base-active"
+    ],
+    key: "{color.neutral.base-active}"
   },
   {
     $type: "color",
@@ -532,16 +550,34 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.neutral.contrast-2}"
+      $value: "{color.neutral.15}"
     },
-    name: "--ds-color-neutral-contrast-subtle",
+    name: "--ds-color-neutral-base-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "neutral",
-      "contrast-subtle"
+      "base-contrast-subtle"
     ],
-    key: "{color.neutral.contrast-subtle}"
+    key: "{color.neutral.base-contrast-subtle}"
+  },
+  {
+    $type: "color",
+    $value: "#ffffff",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.neutral.16}"
+    },
+    name: "--ds-color-neutral-base-contrast-default",
+    attributes: {},
+    path: [
+      "color",
+      "neutral",
+      "base-contrast-default"
+    ],
+    key: "{color.neutral.base-contrast-default}"
   },
   {
     $type: "color",
@@ -570,18 +606,18 @@ export const  color = [
       $type: "color",
       $value: "{color.brand1.2}"
     },
-    name: "--ds-color-brand1-background-subtle",
+    name: "--ds-color-brand1-background-tinted",
     attributes: {},
     path: [
       "color",
       "brand1",
-      "background-subtle"
+      "background-tinted"
     ],
-    key: "{color.brand1.background-subtle}"
+    key: "{color.brand1.background-tinted}"
   },
   {
     $type: "color",
-    $value: "#d4e4f3",
+    $value: "#ffffff",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -599,12 +635,30 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#bbd5ec",
+    $value: "#ddeaf6",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
       $value: "{color.brand1.4}"
+    },
+    name: "--ds-color-brand1-surface-tinted",
+    attributes: {},
+    path: [
+      "color",
+      "brand1",
+      "surface-tinted"
+    ],
+    key: "{color.brand1.surface-tinted}"
+  },
+  {
+    $type: "color",
+    $value: "#c7ddf0",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.brand1.5}"
     },
     name: "--ds-color-brand1-surface-hover",
     attributes: {},
@@ -617,12 +671,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#a3c6e6",
+    $value: "#b1cfea",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand1.5}"
+      $value: "{color.brand1.6}"
     },
     name: "--ds-color-brand1-surface-active",
     attributes: {},
@@ -640,7 +694,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand1.6}"
+      $value: "{color.brand1.7}"
     },
     name: "--ds-color-brand1-border-subtle",
     attributes: {},
@@ -658,7 +712,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand1.7}"
+      $value: "{color.brand1.8}"
     },
     name: "--ds-color-brand1-border-default",
     attributes: {},
@@ -676,7 +730,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand1.8}"
+      $value: "{color.brand1.9}"
     },
     name: "--ds-color-brand1-border-strong",
     attributes: {},
@@ -689,66 +743,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#0162BA",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{color.brand1.9}"
-    },
-    name: "--ds-color-brand1-base-default",
-    attributes: {},
-    path: [
-      "color",
-      "brand1",
-      "base-default"
-    ],
-    key: "{color.brand1.base-default}"
-  },
-  {
-    $type: "color",
-    $value: "#014f96",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{color.brand1.10}"
-    },
-    name: "--ds-color-brand1-base-hover",
-    attributes: {},
-    path: [
-      "color",
-      "brand1",
-      "base-hover"
-    ],
-    key: "{color.brand1.base-hover}"
-  },
-  {
-    $type: "color",
-    $value: "#013d75",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{color.brand1.11}"
-    },
-    name: "--ds-color-brand1-base-active",
-    attributes: {},
-    path: [
-      "color",
-      "brand1",
-      "base-active"
-    ],
-    key: "{color.brand1.base-active}"
-  },
-  {
-    $type: "color",
     $value: "#0161b8",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand1.12}"
+      $value: "{color.brand1.10}"
     },
     name: "--ds-color-brand1-text-subtle",
     attributes: {},
@@ -766,7 +766,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand1.13}"
+      $value: "{color.brand1.11}"
     },
     name: "--ds-color-brand1-text-default",
     attributes: {},
@@ -779,21 +779,57 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#ffffff",
+    $value: "#0162BA",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand1.contrast-1}"
+      $value: "{color.brand1.12}"
     },
-    name: "--ds-color-brand1-contrast-default",
+    name: "--ds-color-brand1-base-default",
     attributes: {},
     path: [
       "color",
       "brand1",
-      "contrast-default"
+      "base-default"
     ],
-    key: "{color.brand1.contrast-default}"
+    key: "{color.brand1.base-default}"
+  },
+  {
+    $type: "color",
+    $value: "#014f96",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.brand1.13}"
+    },
+    name: "--ds-color-brand1-base-hover",
+    attributes: {},
+    path: [
+      "color",
+      "brand1",
+      "base-hover"
+    ],
+    key: "{color.brand1.base-hover}"
+  },
+  {
+    $type: "color",
+    $value: "#013d75",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.brand1.14}"
+    },
+    name: "--ds-color-brand1-base-active",
+    attributes: {},
+    path: [
+      "color",
+      "brand1",
+      "base-active"
+    ],
+    key: "{color.brand1.base-active}"
   },
   {
     $type: "color",
@@ -802,16 +838,34 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand1.contrast-2}"
+      $value: "{color.brand1.15}"
     },
-    name: "--ds-color-brand1-contrast-subtle",
+    name: "--ds-color-brand1-base-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "brand1",
-      "contrast-subtle"
+      "base-contrast-subtle"
     ],
-    key: "{color.brand1.contrast-subtle}"
+    key: "{color.brand1.base-contrast-subtle}"
+  },
+  {
+    $type: "color",
+    $value: "#ffffff",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.brand1.16}"
+    },
+    name: "--ds-color-brand1-base-contrast-default",
+    attributes: {},
+    path: [
+      "color",
+      "brand1",
+      "base-contrast-default"
+    ],
+    key: "{color.brand1.base-contrast-default}"
   },
   {
     $type: "color",
@@ -840,18 +894,18 @@ export const  color = [
       $type: "color",
       $value: "{color.brand2.2}"
     },
-    name: "--ds-color-brand2-background-subtle",
+    name: "--ds-color-brand2-background-tinted",
     attributes: {},
     path: [
       "color",
       "brand2",
-      "background-subtle"
+      "background-tinted"
     ],
-    key: "{color.brand2.background-subtle}"
+    key: "{color.brand2.background-tinted}"
   },
   {
     $type: "color",
-    $value: "#e3e1e8",
+    $value: "#ffffff",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -869,12 +923,30 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#d3d0db",
+    $value: "#e9e8ed",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
       $value: "{color.brand2.4}"
+    },
+    name: "--ds-color-brand2-surface-tinted",
+    attributes: {},
+    path: [
+      "color",
+      "brand2",
+      "surface-tinted"
+    ],
+    key: "{color.brand2.surface-tinted}"
+  },
+  {
+    $type: "color",
+    $value: "#dbd9e2",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.brand2.5}"
     },
     name: "--ds-color-brand2-surface-hover",
     attributes: {},
@@ -887,12 +959,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#c4c0cf",
+    $value: "#cdcad6",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand2.5}"
+      $value: "{color.brand2.6}"
     },
     name: "--ds-color-brand2-surface-active",
     attributes: {},
@@ -910,7 +982,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand2.6}"
+      $value: "{color.brand2.7}"
     },
     name: "--ds-color-brand2-border-subtle",
     attributes: {},
@@ -928,7 +1000,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand2.7}"
+      $value: "{color.brand2.8}"
     },
     name: "--ds-color-brand2-border-default",
     attributes: {},
@@ -946,7 +1018,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand2.8}"
+      $value: "{color.brand2.9}"
     },
     name: "--ds-color-brand2-border-strong",
     attributes: {},
@@ -959,66 +1031,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#3F3161",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{color.brand2.9}"
-    },
-    name: "--ds-color-brand2-base-default",
-    attributes: {},
-    path: [
-      "color",
-      "brand2",
-      "base-default"
-    ],
-    key: "{color.brand2.base-default}"
-  },
-  {
-    $type: "color",
-    $value: "#514470",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{color.brand2.10}"
-    },
-    name: "--ds-color-brand2-base-hover",
-    attributes: {},
-    path: [
-      "color",
-      "brand2",
-      "base-hover"
-    ],
-    key: "{color.brand2.base-hover}"
-  },
-  {
-    $type: "color",
-    $value: "#63587f",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{color.brand2.11}"
-    },
-    name: "--ds-color-brand2-base-active",
-    attributes: {},
-    path: [
-      "color",
-      "brand2",
-      "base-active"
-    ],
-    key: "{color.brand2.base-active}"
-  },
-  {
-    $type: "color",
     $value: "#675b82",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand2.12}"
+      $value: "{color.brand2.10}"
     },
     name: "--ds-color-brand2-text-subtle",
     attributes: {},
@@ -1036,7 +1054,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand2.13}"
+      $value: "{color.brand2.11}"
     },
     name: "--ds-color-brand2-text-default",
     attributes: {},
@@ -1049,21 +1067,57 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#ffffff",
+    $value: "#3F3161",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand2.contrast-1}"
+      $value: "{color.brand2.12}"
     },
-    name: "--ds-color-brand2-contrast-default",
+    name: "--ds-color-brand2-base-default",
     attributes: {},
     path: [
       "color",
       "brand2",
-      "contrast-default"
+      "base-default"
     ],
-    key: "{color.brand2.contrast-default}"
+    key: "{color.brand2.base-default}"
+  },
+  {
+    $type: "color",
+    $value: "#514470",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.brand2.13}"
+    },
+    name: "--ds-color-brand2-base-hover",
+    attributes: {},
+    path: [
+      "color",
+      "brand2",
+      "base-hover"
+    ],
+    key: "{color.brand2.base-hover}"
+  },
+  {
+    $type: "color",
+    $value: "#63587f",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.brand2.14}"
+    },
+    name: "--ds-color-brand2-base-active",
+    attributes: {},
+    path: [
+      "color",
+      "brand2",
+      "base-active"
+    ],
+    key: "{color.brand2.base-active}"
   },
   {
     $type: "color",
@@ -1072,16 +1126,34 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand2.contrast-2}"
+      $value: "{color.brand2.15}"
     },
-    name: "--ds-color-brand2-contrast-subtle",
+    name: "--ds-color-brand2-base-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "brand2",
-      "contrast-subtle"
+      "base-contrast-subtle"
     ],
-    key: "{color.brand2.contrast-subtle}"
+    key: "{color.brand2.base-contrast-subtle}"
+  },
+  {
+    $type: "color",
+    $value: "#ffffff",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.brand2.16}"
+    },
+    name: "--ds-color-brand2-base-contrast-default",
+    attributes: {},
+    path: [
+      "color",
+      "brand2",
+      "base-contrast-default"
+    ],
+    key: "{color.brand2.base-contrast-default}"
   },
   {
     $type: "color",
@@ -1110,18 +1182,18 @@ export const  color = [
       $type: "color",
       $value: "{color.brand3.2}"
     },
-    name: "--ds-color-brand3-background-subtle",
+    name: "--ds-color-brand3-background-tinted",
     attributes: {},
     path: [
       "color",
       "brand3",
-      "background-subtle"
+      "background-tinted"
     ],
-    key: "{color.brand3.background-subtle}"
+    key: "{color.brand3.background-tinted}"
   },
   {
     $type: "color",
-    $value: "#fadbdf",
+    $value: "#ffffff",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1139,12 +1211,30 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#f6c5cd",
+    $value: "#fbe3e6",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
       $value: "{color.brand3.4}"
+    },
+    name: "--ds-color-brand3-surface-tinted",
+    attributes: {},
+    path: [
+      "color",
+      "brand3",
+      "surface-tinted"
+    ],
+    key: "{color.brand3.surface-tinted}"
+  },
+  {
+    $type: "color",
+    $value: "#f8d0d6",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.brand3.5}"
     },
     name: "--ds-color-brand3-surface-hover",
     attributes: {},
@@ -1157,12 +1247,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#f3b1bb",
+    $value: "#f5bdc6",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand3.5}"
+      $value: "{color.brand3.6}"
     },
     name: "--ds-color-brand3-surface-active",
     attributes: {},
@@ -1180,7 +1270,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand3.6}"
+      $value: "{color.brand3.7}"
     },
     name: "--ds-color-brand3-border-subtle",
     attributes: {},
@@ -1198,7 +1288,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand3.7}"
+      $value: "{color.brand3.8}"
     },
     name: "--ds-color-brand3-border-default",
     attributes: {},
@@ -1216,7 +1306,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand3.8}"
+      $value: "{color.brand3.9}"
     },
     name: "--ds-color-brand3-border-strong",
     attributes: {},
@@ -1229,66 +1319,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#E02F4A",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{color.brand3.9}"
-    },
-    name: "--ds-color-brand3-base-default",
-    attributes: {},
-    path: [
-      "color",
-      "brand3",
-      "base-default"
-    ],
-    key: "{color.brand3.base-default}"
-  },
-  {
-    $type: "color",
-    $value: "#e75c71",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{color.brand3.10}"
-    },
-    name: "--ds-color-brand3-base-hover",
-    attributes: {},
-    path: [
-      "color",
-      "brand3",
-      "base-hover"
-    ],
-    key: "{color.brand3.base-hover}"
-  },
-  {
-    $type: "color",
-    $value: "#ec7f90",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{color.brand3.11}"
-    },
-    name: "--ds-color-brand3-base-active",
-    attributes: {},
-    path: [
-      "color",
-      "brand3",
-      "base-active"
-    ],
-    key: "{color.brand3.base-active}"
-  },
-  {
-    $type: "color",
     $value: "#b8273d",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand3.12}"
+      $value: "{color.brand3.10}"
     },
     name: "--ds-color-brand3-text-subtle",
     attributes: {},
@@ -1306,7 +1342,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand3.13}"
+      $value: "{color.brand3.11}"
     },
     name: "--ds-color-brand3-text-default",
     attributes: {},
@@ -1319,21 +1355,57 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#000000",
+    $value: "#E02F4A",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand3.contrast-1}"
+      $value: "{color.brand3.12}"
     },
-    name: "--ds-color-brand3-contrast-default",
+    name: "--ds-color-brand3-base-default",
     attributes: {},
     path: [
       "color",
       "brand3",
-      "contrast-default"
+      "base-default"
     ],
-    key: "{color.brand3.contrast-default}"
+    key: "{color.brand3.base-default}"
+  },
+  {
+    $type: "color",
+    $value: "#e75c71",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.brand3.13}"
+    },
+    name: "--ds-color-brand3-base-hover",
+    attributes: {},
+    path: [
+      "color",
+      "brand3",
+      "base-hover"
+    ],
+    key: "{color.brand3.base-hover}"
+  },
+  {
+    $type: "color",
+    $value: "#ec7f90",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.brand3.14}"
+    },
+    name: "--ds-color-brand3-base-active",
+    attributes: {},
+    path: [
+      "color",
+      "brand3",
+      "base-active"
+    ],
+    key: "{color.brand3.base-active}"
   },
   {
     $type: "color",
@@ -1342,16 +1414,34 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{color.brand3.contrast-2}"
+      $value: "{color.brand3.15}"
     },
-    name: "--ds-color-brand3-contrast-subtle",
+    name: "--ds-color-brand3-base-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "brand3",
-      "contrast-subtle"
+      "base-contrast-subtle"
     ],
-    key: "{color.brand3.contrast-subtle}"
+    key: "{color.brand3.base-contrast-subtle}"
+  },
+  {
+    $type: "color",
+    $value: "#000000",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{color.brand3.16}"
+    },
+    name: "--ds-color-brand3-base-contrast-default",
+    attributes: {},
+    path: [
+      "color",
+      "brand3",
+      "base-contrast-default"
+    ],
+    key: "{color.brand3.base-contrast-default}"
   },
   {
     $type: "color",
@@ -1380,18 +1470,18 @@ export const  color = [
       $type: "color",
       $value: "{global.green.2}"
     },
-    name: "--ds-color-success-background-subtle",
+    name: "--ds-color-success-background-tinted",
     attributes: {},
     path: [
       "color",
       "success",
-      "background-subtle"
+      "background-tinted"
     ],
-    key: "{color.success.background-subtle}"
+    key: "{color.success.background-tinted}"
   },
   {
     $type: "color",
-    $value: "#d0e8d3",
+    $value: "#ffffff",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1409,12 +1499,30 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#b4dbba",
+    $value: "#daeddd",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
       $value: "{global.green.4}"
+    },
+    name: "--ds-color-success-surface-tinted",
+    attributes: {},
+    path: [
+      "color",
+      "success",
+      "surface-tinted"
+    ],
+    key: "{color.success.surface-tinted}"
+  },
+  {
+    $type: "color",
+    $value: "#c3e2c7",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{global.green.5}"
     },
     name: "--ds-color-success-surface-hover",
     attributes: {},
@@ -1427,12 +1535,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#9bcfa2",
+    $value: "#abd6b1",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.5}"
+      $value: "{global.green.6}"
     },
     name: "--ds-color-success-surface-active",
     attributes: {},
@@ -1450,7 +1558,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.6}"
+      $value: "{global.green.7}"
     },
     name: "--ds-color-success-border-subtle",
     attributes: {},
@@ -1468,7 +1576,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.7}"
+      $value: "{global.green.8}"
     },
     name: "--ds-color-success-border-default",
     attributes: {},
@@ -1486,7 +1594,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.8}"
+      $value: "{global.green.9}"
     },
     name: "--ds-color-success-border-strong",
     attributes: {},
@@ -1499,66 +1607,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#068718",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{global.green.9}"
-    },
-    name: "--ds-color-success-base-default",
-    attributes: {},
-    path: [
-      "color",
-      "success",
-      "base-default"
-    ],
-    key: "{color.success.base-default}"
-  },
-  {
-    $type: "color",
-    $value: "#057014",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{global.green.10}"
-    },
-    name: "--ds-color-success-base-hover",
-    attributes: {},
-    path: [
-      "color",
-      "success",
-      "base-hover"
-    ],
-    key: "{color.success.base-hover}"
-  },
-  {
-    $type: "color",
-    $value: "#045a10",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{global.green.11}"
-    },
-    name: "--ds-color-success-base-active",
-    attributes: {},
-    path: [
-      "color",
-      "success",
-      "base-active"
-    ],
-    key: "{color.success.base-active}"
-  },
-  {
-    $type: "color",
     $value: "#057114",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.12}"
+      $value: "{global.green.10}"
     },
     name: "--ds-color-success-text-subtle",
     attributes: {},
@@ -1576,7 +1630,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.13}"
+      $value: "{global.green.11}"
     },
     name: "--ds-color-success-text-default",
     attributes: {},
@@ -1589,21 +1643,57 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#ffffff",
+    $value: "#068718",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.contrast-1}"
+      $value: "{global.green.12}"
     },
-    name: "--ds-color-success-contrast-default",
+    name: "--ds-color-success-base-default",
     attributes: {},
     path: [
       "color",
       "success",
-      "contrast-default"
+      "base-default"
     ],
-    key: "{color.success.contrast-default}"
+    key: "{color.success.base-default}"
+  },
+  {
+    $type: "color",
+    $value: "#057014",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{global.green.13}"
+    },
+    name: "--ds-color-success-base-hover",
+    attributes: {},
+    path: [
+      "color",
+      "success",
+      "base-hover"
+    ],
+    key: "{color.success.base-hover}"
+  },
+  {
+    $type: "color",
+    $value: "#045a10",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{global.green.14}"
+    },
+    name: "--ds-color-success-base-active",
+    attributes: {},
+    path: [
+      "color",
+      "success",
+      "base-active"
+    ],
+    key: "{color.success.base-active}"
   },
   {
     $type: "color",
@@ -1612,16 +1702,34 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.green.contrast-2}"
+      $value: "{global.green.15}"
     },
-    name: "--ds-color-success-contrast-subtle",
+    name: "--ds-color-success-base-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "success",
-      "contrast-subtle"
+      "base-contrast-subtle"
     ],
-    key: "{color.success.contrast-subtle}"
+    key: "{color.success.base-contrast-subtle}"
+  },
+  {
+    $type: "color",
+    $value: "#ffffff",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{global.green.16}"
+    },
+    name: "--ds-color-success-base-contrast-default",
+    attributes: {},
+    path: [
+      "color",
+      "success",
+      "base-contrast-default"
+    ],
+    key: "{color.success.base-contrast-default}"
   },
   {
     $type: "color",
@@ -1650,18 +1758,18 @@ export const  color = [
       $type: "color",
       $value: "{global.red.2}"
     },
-    name: "--ds-color-danger-background-subtle",
+    name: "--ds-color-danger-background-tinted",
     attributes: {},
     path: [
       "color",
       "danger",
-      "background-subtle"
+      "background-tinted"
     ],
-    key: "{color.danger.background-subtle}"
+    key: "{color.danger.background-tinted}"
   },
   {
     $type: "color",
-    $value: "#f5dcdc",
+    $value: "#ffffff",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1679,12 +1787,30 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#f0c8c8",
+    $value: "#f8e4e4",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
       $value: "{global.red.4}"
+    },
+    name: "--ds-color-danger-surface-tinted",
+    attributes: {},
+    path: [
+      "color",
+      "danger",
+      "surface-tinted"
+    ],
+    key: "{color.danger.surface-tinted}"
+  },
+  {
+    $type: "color",
+    $value: "#f3d2d2",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{global.red.5}"
     },
     name: "--ds-color-danger-surface-hover",
     attributes: {},
@@ -1697,12 +1823,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#ebb5b5",
+    $value: "#eec1c1",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.5}"
+      $value: "{global.red.6}"
     },
     name: "--ds-color-danger-surface-active",
     attributes: {},
@@ -1720,7 +1846,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.6}"
+      $value: "{global.red.7}"
     },
     name: "--ds-color-danger-border-subtle",
     attributes: {},
@@ -1738,7 +1864,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.7}"
+      $value: "{global.red.8}"
     },
     name: "--ds-color-danger-border-default",
     attributes: {},
@@ -1756,7 +1882,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.8}"
+      $value: "{global.red.9}"
     },
     name: "--ds-color-danger-border-strong",
     attributes: {},
@@ -1769,66 +1895,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#C01B1B",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{global.red.9}"
-    },
-    name: "--ds-color-danger-base-default",
-    attributes: {},
-    path: [
-      "color",
-      "danger",
-      "base-default"
-    ],
-    key: "{color.danger.base-default}"
-  },
-  {
-    $type: "color",
-    $value: "#9b1616",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{global.red.10}"
-    },
-    name: "--ds-color-danger-base-hover",
-    attributes: {},
-    path: [
-      "color",
-      "danger",
-      "base-hover"
-    ],
-    key: "{color.danger.base-hover}"
-  },
-  {
-    $type: "color",
-    $value: "#791111",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{global.red.11}"
-    },
-    name: "--ds-color-danger-base-active",
-    attributes: {},
-    path: [
-      "color",
-      "danger",
-      "base-active"
-    ],
-    key: "{color.danger.base-active}"
-  },
-  {
-    $type: "color",
     $value: "#bf1b1b",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.12}"
+      $value: "{global.red.10}"
     },
     name: "--ds-color-danger-text-subtle",
     attributes: {},
@@ -1846,7 +1918,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.13}"
+      $value: "{global.red.11}"
     },
     name: "--ds-color-danger-text-default",
     attributes: {},
@@ -1859,21 +1931,57 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#ffffff",
+    $value: "#C01B1B",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.contrast-1}"
+      $value: "{global.red.12}"
     },
-    name: "--ds-color-danger-contrast-default",
+    name: "--ds-color-danger-base-default",
     attributes: {},
     path: [
       "color",
       "danger",
-      "contrast-default"
+      "base-default"
     ],
-    key: "{color.danger.contrast-default}"
+    key: "{color.danger.base-default}"
+  },
+  {
+    $type: "color",
+    $value: "#9b1616",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{global.red.13}"
+    },
+    name: "--ds-color-danger-base-hover",
+    attributes: {},
+    path: [
+      "color",
+      "danger",
+      "base-hover"
+    ],
+    key: "{color.danger.base-hover}"
+  },
+  {
+    $type: "color",
+    $value: "#791111",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{global.red.14}"
+    },
+    name: "--ds-color-danger-base-active",
+    attributes: {},
+    path: [
+      "color",
+      "danger",
+      "base-active"
+    ],
+    key: "{color.danger.base-active}"
   },
   {
     $type: "color",
@@ -1882,16 +1990,34 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.red.contrast-2}"
+      $value: "{global.red.15}"
     },
-    name: "--ds-color-danger-contrast-subtle",
+    name: "--ds-color-danger-base-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "danger",
-      "contrast-subtle"
+      "base-contrast-subtle"
     ],
-    key: "{color.danger.contrast-subtle}"
+    key: "{color.danger.base-contrast-subtle}"
+  },
+  {
+    $type: "color",
+    $value: "#ffffff",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{global.red.16}"
+    },
+    name: "--ds-color-danger-base-contrast-default",
+    attributes: {},
+    path: [
+      "color",
+      "danger",
+      "base-contrast-default"
+    ],
+    key: "{color.danger.base-contrast-default}"
   },
   {
     $type: "color",
@@ -1920,18 +2046,18 @@ export const  color = [
       $type: "color",
       $value: "{global.blue.2}"
     },
-    name: "--ds-color-info-background-subtle",
+    name: "--ds-color-info-background-tinted",
     attributes: {},
     path: [
       "color",
       "info",
-      "background-subtle"
+      "background-tinted"
     ],
-    key: "{color.info.background-subtle}"
+    key: "{color.info.background-tinted}"
   },
   {
     $type: "color",
-    $value: "#d2e5f3",
+    $value: "#ffffff",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1949,12 +2075,30 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#b7d5ed",
+    $value: "#dcebf6",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
       $value: "{global.blue.4}"
+    },
+    name: "--ds-color-info-surface-tinted",
+    attributes: {},
+    path: [
+      "color",
+      "info",
+      "surface-tinted"
+    ],
+    key: "{color.info.surface-tinted}"
+  },
+  {
+    $type: "color",
+    $value: "#c5ddf0",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{global.blue.5}"
     },
     name: "--ds-color-info-surface-hover",
     attributes: {},
@@ -1967,12 +2111,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#9fc7e6",
+    $value: "#aed0ea",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.5}"
+      $value: "{global.blue.6}"
     },
     name: "--ds-color-info-surface-active",
     attributes: {},
@@ -1990,7 +2134,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.6}"
+      $value: "{global.blue.7}"
     },
     name: "--ds-color-info-border-subtle",
     attributes: {},
@@ -2008,7 +2152,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.7}"
+      $value: "{global.blue.8}"
     },
     name: "--ds-color-info-border-default",
     attributes: {},
@@ -2026,7 +2170,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.8}"
+      $value: "{global.blue.9}"
     },
     name: "--ds-color-info-border-strong",
     attributes: {},
@@ -2039,66 +2183,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#0A71C0",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{global.blue.9}"
-    },
-    name: "--ds-color-info-base-default",
-    attributes: {},
-    path: [
-      "color",
-      "info",
-      "base-default"
-    ],
-    key: "{color.info.base-default}"
-  },
-  {
-    $type: "color",
-    $value: "#085d9f",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{global.blue.10}"
-    },
-    name: "--ds-color-info-base-hover",
-    attributes: {},
-    path: [
-      "color",
-      "info",
-      "base-hover"
-    ],
-    key: "{color.info.base-hover}"
-  },
-  {
-    $type: "color",
-    $value: "#074a7e",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{global.blue.11}"
-    },
-    name: "--ds-color-info-base-active",
-    attributes: {},
-    path: [
-      "color",
-      "info",
-      "base-active"
-    ],
-    key: "{color.info.base-active}"
-  },
-  {
-    $type: "color",
     $value: "#0964a9",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.12}"
+      $value: "{global.blue.10}"
     },
     name: "--ds-color-info-text-subtle",
     attributes: {},
@@ -2116,7 +2206,7 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.13}"
+      $value: "{global.blue.11}"
     },
     name: "--ds-color-info-text-default",
     attributes: {},
@@ -2129,21 +2219,57 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#ffffff",
+    $value: "#0A71C0",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.contrast-1}"
+      $value: "{global.blue.12}"
     },
-    name: "--ds-color-info-contrast-default",
+    name: "--ds-color-info-base-default",
     attributes: {},
     path: [
       "color",
       "info",
-      "contrast-default"
+      "base-default"
     ],
-    key: "{color.info.contrast-default}"
+    key: "{color.info.base-default}"
+  },
+  {
+    $type: "color",
+    $value: "#085d9f",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{global.blue.13}"
+    },
+    name: "--ds-color-info-base-hover",
+    attributes: {},
+    path: [
+      "color",
+      "info",
+      "base-hover"
+    ],
+    key: "{color.info.base-hover}"
+  },
+  {
+    $type: "color",
+    $value: "#074a7e",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{global.blue.14}"
+    },
+    name: "--ds-color-info-base-active",
+    attributes: {},
+    path: [
+      "color",
+      "info",
+      "base-active"
+    ],
+    key: "{color.info.base-active}"
   },
   {
     $type: "color",
@@ -2152,16 +2278,16 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.blue.contrast-2}"
+      $value: "{global.blue.15}"
     },
-    name: "--ds-color-info-contrast-subtle",
+    name: "--ds-color-info-base-contrast-subtle",
     attributes: {},
     path: [
       "color",
       "info",
-      "contrast-subtle"
+      "base-contrast-subtle"
     ],
-    key: "{color.info.contrast-subtle}"
+    key: "{color.info.base-contrast-subtle}"
   },
   {
     $type: "color",
@@ -2170,7 +2296,25 @@ export const  color = [
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.yellow.1}"
+      $value: "{global.blue.16}"
+    },
+    name: "--ds-color-info-base-contrast-default",
+    attributes: {},
+    path: [
+      "color",
+      "info",
+      "base-contrast-default"
+    ],
+    key: "{color.info.base-contrast-default}"
+  },
+  {
+    $type: "color",
+    $value: "#ffffff",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{global.orange.1}"
     },
     name: "--ds-color-warning-background-default",
     attributes: {},
@@ -2183,30 +2327,30 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#f9f4e1",
+    $value: "#fcf2e2",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.yellow.2}"
+      $value: "{global.orange.2}"
     },
-    name: "--ds-color-warning-background-subtle",
+    name: "--ds-color-warning-background-tinted",
     attributes: {},
     path: [
       "color",
       "warning",
-      "background-subtle"
+      "background-tinted"
     ],
-    key: "{color.warning.background-subtle}"
+    key: "{color.warning.background-tinted}"
   },
   {
     $type: "color",
-    $value: "#efe2b2",
+    $value: "#ffffff",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.yellow.3}"
+      $value: "{global.orange.3}"
     },
     name: "--ds-color-warning-surface-default",
     attributes: {},
@@ -2219,12 +2363,30 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#e6d184",
+    $value: "#fae6c6",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.yellow.4}"
+      $value: "{global.orange.4}"
+    },
+    name: "--ds-color-warning-surface-tinted",
+    attributes: {},
+    path: [
+      "color",
+      "warning",
+      "surface-tinted"
+    ],
+    key: "{color.warning.surface-tinted}"
+  },
+  {
+    $type: "color",
+    $value: "#f6d5a0",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{global.orange.5}"
     },
     name: "--ds-color-warning-surface-hover",
     attributes: {},
@@ -2237,12 +2399,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#ddc159",
+    $value: "#f3c479",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.yellow.5}"
+      $value: "{global.orange.6}"
     },
     name: "--ds-color-warning-surface-active",
     attributes: {},
@@ -2255,12 +2417,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#d9b945",
+    $value: "#eeb04c",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.yellow.6}"
+      $value: "{global.orange.7}"
     },
     name: "--ds-color-warning-border-subtle",
     attributes: {},
@@ -2273,12 +2435,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#957c21",
+    $value: "#ad7214",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.yellow.7}"
+      $value: "{global.orange.8}"
     },
     name: "--ds-color-warning-border-default",
     attributes: {},
@@ -2291,12 +2453,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#736019",
+    $value: "#85580f",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.yellow.8}"
+      $value: "{global.orange.9}"
     },
     name: "--ds-color-warning-border-strong",
     attributes: {},
@@ -2309,66 +2471,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#B8581D",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{global.orange.9}"
-    },
-    name: "--ds-color-warning-base-default",
-    attributes: {},
-    path: [
-      "color",
-      "warning",
-      "base-default"
-    ],
-    key: "{color.warning.base-default}"
-  },
-  {
-    $type: "color",
-    $value: "#994918",
+    $value: "#85580f",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
       $value: "{global.orange.10}"
-    },
-    name: "--ds-color-warning-base-hover",
-    attributes: {},
-    path: [
-      "color",
-      "warning",
-      "base-hover"
-    ],
-    key: "{color.warning.base-hover}"
-  },
-  {
-    $type: "color",
-    $value: "#7b3b13",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{global.orange.11}"
-    },
-    name: "--ds-color-warning-base-active",
-    attributes: {},
-    path: [
-      "color",
-      "warning",
-      "base-active"
-    ],
-    key: "{color.warning.base-active}"
-  },
-  {
-    $type: "color",
-    $value: "#9b4a18",
-    filePath: "../../design-tokens/semantic/color.json",
-    isSource: false,
-    original: {
-      $type: "color",
-      $value: "{global.orange.12}"
     },
     name: "--ds-color-warning-text-subtle",
     attributes: {},
@@ -2381,12 +2489,12 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#46220b",
+    $value: "#3c2807",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.orange.13}"
+      $value: "{global.orange.11}"
     },
     name: "--ds-color-warning-text-default",
     attributes: {},
@@ -2399,39 +2507,93 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#ffffff",
+    $value: "#EA9B1B",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.orange.contrast-1}"
+      $value: "{global.orange.12}"
     },
-    name: "--ds-color-warning-contrast-default",
+    name: "--ds-color-warning-base-default",
     attributes: {},
     path: [
       "color",
       "warning",
-      "contrast-default"
+      "base-default"
     ],
-    key: "{color.warning.contrast-default}"
+    key: "{color.warning.base-default}"
   },
   {
     $type: "color",
-    $value: "#fdfbf9",
+    $value: "#cd8818",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
       $type: "color",
-      $value: "{global.orange.contrast-2}"
+      $value: "{global.orange.13}"
     },
-    name: "--ds-color-warning-contrast-subtle",
+    name: "--ds-color-warning-base-hover",
     attributes: {},
     path: [
       "color",
       "warning",
-      "contrast-subtle"
+      "base-hover"
     ],
-    key: "{color.warning.contrast-subtle}"
+    key: "{color.warning.base-hover}"
+  },
+  {
+    $type: "color",
+    $value: "#b27614",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{global.orange.14}"
+    },
+    name: "--ds-color-warning-base-active",
+    attributes: {},
+    path: [
+      "color",
+      "warning",
+      "base-active"
+    ],
+    key: "{color.warning.base-active}"
+  },
+  {
+    $type: "color",
+    $value: "#271a04",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{global.orange.15}"
+    },
+    name: "--ds-color-warning-base-contrast-subtle",
+    attributes: {},
+    path: [
+      "color",
+      "warning",
+      "base-contrast-subtle"
+    ],
+    key: "{color.warning.base-contrast-subtle}"
+  },
+  {
+    $type: "color",
+    $value: "#000000",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{global.orange.16}"
+    },
+    name: "--ds-color-warning-base-contrast-default",
+    attributes: {},
+    path: [
+      "color",
+      "warning",
+      "base-contrast-default"
+    ],
+    key: "{color.warning.base-contrast-default}"
   },
   {
     $type: "color",
@@ -2593,20 +2755,20 @@ export const  dimension = [
   },
   {
     $type: "dimension",
-    $value: "2px",
+    $value: "3px",
     filePath: "../../design-tokens/semantic/style.json",
     isSource: false,
     original: {
       $type: "dimension",
-      $value: "{border-width.2}"
+      $value: "{border-width.3}"
     },
-    name: "--ds-border-width-highlight",
+    name: "--ds-border-width-focus",
     attributes: {},
     path: [
       "border-width",
-      "highlight"
+      "focus"
     ],
-    key: "{border-width.highlight}"
+    key: "{border-width.focus}"
   },
   {
     $type: "dimension",
@@ -2954,7 +3116,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "500",
       lineHeight: 1.3,
       fontSize: "3.75rem",
@@ -2968,7 +3130,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.11}",
+        fontSize: "{font-size.10}",
         letterSpacing: "{letter-spacing.1}"
       }
     },
@@ -2984,7 +3146,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "500",
       lineHeight: 1.3,
       fontSize: "3rem",
@@ -2998,7 +3160,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.10}",
+        fontSize: "{font-size.9}",
         letterSpacing: "{letter-spacing.1}"
       }
     },
@@ -3014,7 +3176,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "500",
       lineHeight: 1.3,
       fontSize: "2.25rem",
@@ -3028,7 +3190,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.9}",
+        fontSize: "{font-size.8}",
         letterSpacing: "{letter-spacing.2}"
       }
     },
@@ -3044,7 +3206,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "500",
       lineHeight: 1.3,
       fontSize: "1.875rem",
@@ -3058,7 +3220,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.8}",
+        fontSize: "{font-size.7}",
         letterSpacing: "{letter-spacing.3}"
       }
     },
@@ -3074,7 +3236,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "500",
       lineHeight: 1.3,
       fontSize: "1.5rem",
@@ -3088,7 +3250,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.7}",
+        fontSize: "{font-size.6}",
         letterSpacing: "{letter-spacing.5}"
       }
     },
@@ -3104,7 +3266,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "500",
       lineHeight: 1.3,
       fontSize: "1.3125rem",
@@ -3118,7 +3280,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.6}",
+        fontSize: "{font-size.5}",
         letterSpacing: "{letter-spacing.6}"
       }
     },
@@ -3134,7 +3296,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "500",
       lineHeight: 1.3,
       fontSize: "1.125rem",
@@ -3148,7 +3310,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.5}",
+        fontSize: "{font-size.4}",
         letterSpacing: "{letter-spacing.6}"
       }
     },
@@ -3164,7 +3326,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.5,
       fontSize: "1.5rem",
@@ -3178,7 +3340,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.md}",
-        fontSize: "{font-size.7}",
+        fontSize: "{font-size.6}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3194,7 +3356,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.5,
       fontSize: "1.3125rem",
@@ -3208,7 +3370,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.md}",
-        fontSize: "{font-size.6}",
+        fontSize: "{font-size.5}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3224,7 +3386,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.5,
       fontSize: "1.125rem",
@@ -3238,7 +3400,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.md}",
-        fontSize: "{font-size.5}",
+        fontSize: "{font-size.4}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3254,7 +3416,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.5,
       fontSize: "1rem",
@@ -3268,7 +3430,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.md}",
-        fontSize: "{font-size.4}",
+        fontSize: "{font-size.3}",
         letterSpacing: "{letter-spacing.7}"
       }
     },
@@ -3284,7 +3446,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.5,
       fontSize: "0.875rem",
@@ -3298,7 +3460,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.md}",
-        fontSize: "{font-size.3}",
+        fontSize: "{font-size.2}",
         letterSpacing: "{letter-spacing.6}"
       }
     },
@@ -3314,7 +3476,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.3,
       fontSize: "1.5rem",
@@ -3328,7 +3490,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.7}",
+        fontSize: "{font-size.6}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3345,7 +3507,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.3,
       fontSize: "1.3125rem",
@@ -3359,7 +3521,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.6}",
+        fontSize: "{font-size.5}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3376,7 +3538,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.3,
       fontSize: "1.125rem",
@@ -3390,7 +3552,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.5}",
+        fontSize: "{font-size.4}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3407,7 +3569,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.3,
       fontSize: "1rem",
@@ -3421,7 +3583,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.4}",
+        fontSize: "{font-size.3}",
         letterSpacing: "{letter-spacing.7}"
       }
     },
@@ -3438,7 +3600,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.3,
       fontSize: "0.875rem",
@@ -3452,7 +3614,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.sm}",
-        fontSize: "{font-size.3}",
+        fontSize: "{font-size.2}",
         letterSpacing: "{letter-spacing.6}"
       }
     },
@@ -3469,7 +3631,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.7,
       fontSize: "1.5rem",
@@ -3483,7 +3645,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.7}",
+        fontSize: "{font-size.6}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3500,7 +3662,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.7,
       fontSize: "1.3125rem",
@@ -3514,7 +3676,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.6}",
+        fontSize: "{font-size.5}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3531,7 +3693,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.7,
       fontSize: "1.125rem",
@@ -3545,7 +3707,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.5}",
+        fontSize: "{font-size.4}",
         letterSpacing: "{letter-spacing.8}"
       }
     },
@@ -3562,7 +3724,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.7,
       fontSize: "1rem",
@@ -3576,7 +3738,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.4}",
+        fontSize: "{font-size.3}",
         letterSpacing: "{letter-spacing.7}"
       }
     },
@@ -3593,7 +3755,7 @@ export const  typography = [
   {
     $type: "typography",
     $value: {
-      fontFamily: "Helvetica Neue",
+      fontFamily: "Inter",
       fontWeight: "400",
       lineHeight: 1.7,
       fontSize: "0.875rem",
@@ -3607,7 +3769,7 @@ export const  typography = [
         fontFamily: "{font.family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.lg}",
-        fontSize: "{font-size.3}",
+        fontSize: "{font-size.2}",
         letterSpacing: "{letter-spacing.6}"
       }
     },

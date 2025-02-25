@@ -51,12 +51,20 @@ const colors: TagProps['data-color'][] = [
 
 export const Colors: StoryFn<typeof Tag> = ({ ...rest }) => {
   return (
-    <>
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(4, 1fr)',
+        gap: 'var(--ds-size-2)',
+        height: '100%',
+        width: '100%',
+      }}
+    >
       {colors.map((color) => (
         <Tag key={color} data-color={color} {...rest}>
           {color}
         </Tag>
       ))}
-    </>
+    </div>
   );
 };

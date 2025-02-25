@@ -42,7 +42,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         level={1}
         data-size='xl'
         style={{
-          marginBottom: 'var(--ds-spacing-4)',
+          marginBottom: 'var(--ds-size-4)',
         }}
       />
     ),
@@ -61,7 +61,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h6: (props) => (
       <Heading {...(props as HeadingProps)} level={6} data-size='xs' />
     ),
-    table: (props) => <Table {...(props as TableProps)} border zebra />,
+    table: (props) => (
+      <Table {...(props as TableProps)} border zebra data-color='neutral' />
+    ),
     thead: (props) => <TableHead {...(props as TableHeadProps)} />,
     tbody: (props) => <TableBody {...(props as TableBodyProps)} />,
     tr: (props) => <TableRow {...(props as TableRowProps)} />,

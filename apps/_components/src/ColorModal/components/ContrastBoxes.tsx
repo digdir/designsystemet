@@ -132,7 +132,7 @@ const ContrastBox = ({
 //         <ContrastBox
 //           key={colorNumber}
 //           colorNumber={weight as ColorNumber}
-//           title={getColorNameFromNumber(colorNumber)}
+//           title={getColorInfoFromPosition(colorNumber).displayName}
 //           selectedColor={hex}
 //           contrastColor={colorTheme[colorNumber - 1].hex}
 //         />

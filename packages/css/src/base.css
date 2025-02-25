@@ -12,11 +12,7 @@
   width: 1px;
 }
 
-:root,
-[data-color-scheme] {
-  --dsc-focus-border-width: 3px; /* Default focus border width */
-  --dsc-focus-boxShadow: 0 0 0 var(--dsc-focus-border-width) var(--ds-color-focus-inner);
-  --dsc-focus-outline: var(--ds-color-focus-outer) solid var(--dsc-focus-border-width);
+:root {
   --ds-font-size-minus-1: max(.9em, .875rem); /* Default to 90% of font-size, but minimum 14px */
   --ds-font-size-plus-1: 1.1em; /* Default to 110% */
 
@@ -27,11 +23,17 @@
   }
 }
 
+:root,
+[data-color-scheme] {
+  --dsc-focus-boxShadow: 0 0 0 var(--ds-border-width-focus) var(--ds-color-focus-inner);
+  --dsc-focus-outline: var(--ds-color-focus-outer) solid var(--ds-border-width-focus);
+}
+
 /* Set default background and color on <body> (not :root) to align with best practice */
 body,
 [data-color-scheme] {
   color: var(--ds-color-neutral-text-default);
-  background-color: var(--ds-color-neutral-background-default);
+  background: var(--ds-color-neutral-background-default);
 }
 
 /**
@@ -49,16 +51,16 @@ body,
    * We use both box-shadow and outline to ensure that the focus style is visible,
    * in case box-shadow is overridden.
    */
-  box-shadow: var(--ds--focus, var(--dsc-focus-boxShadow));
-  outline: var(--ds--focus, var(--dsc-focus-outline));
-  outline-offset: var(--ds--focus, var(--dsc-focus-border-width));
+  box-shadow: var(--_ds--focus, var(--dsc-focus-boxShadow));
+  outline: var(--_ds--focus, var(--dsc-focus-outline));
+  outline-offset: var(--_ds--focus, var(--ds-border-width-focus));
 
   /**
    * Using CSS custom properties toggle trick to ensure focus-visible is only shown on outermost element
    * https://css-tricks.com/the-css-custom-property-toggle-trick/
    */
   * {
-    --ds--focus: ;
+    --_ds--focus: ;
   }
 }
 

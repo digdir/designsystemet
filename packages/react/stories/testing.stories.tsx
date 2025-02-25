@@ -12,6 +12,7 @@ import {
   Chip,
   Combobox,
   Details,
+  Dialog,
   Dropdown,
   ErrorSummary,
   Field,
@@ -20,7 +21,6 @@ import {
   Label,
   Link,
   List,
-  Modal,
   Pagination,
   Paragraph,
   Popover,
@@ -277,11 +277,15 @@ export const Sizes: StoryFn = () => {
             For å gå videre må du rette opp følgende feil:
           </ErrorSummary.Heading>
           <ErrorSummary.List>
-            <ErrorSummary.Item href='#'>
-              Fødselsdato kan ikke være etter år 2005
+            <ErrorSummary.Item>
+              <ErrorSummary.Link href='#'>
+                Fødselsdato kan ikke være etter år 2005
+              </ErrorSummary.Link>
             </ErrorSummary.Item>
-            <ErrorSummary.Item href='#'>
-              E-post må være gyldig
+            <ErrorSummary.Item>
+              <ErrorSummary.Link href='#'>
+                E-post må være gyldig
+              </ErrorSummary.Link>
             </ErrorSummary.Item>
           </ErrorSummary.List>
         </ErrorSummary>
@@ -333,18 +337,18 @@ export const Sizes: StoryFn = () => {
       ))}
       {sizes.map((size) => (
         <div key={size} data-size={size}>
-          <Modal.TriggerContext>
-            <Modal.Trigger>Open Modal</Modal.Trigger>
-            <Modal>
+          <Dialog.TriggerContext>
+            <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+            <Dialog>
               <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
-                Modal header
+                Dialog header
               </Heading>
               <Paragraph style={{ marginBottom: 'var(--ds-size-2)' }}>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 Blanditiis doloremque obcaecati assumenda odio ducimus sunt et.
               </Paragraph>
-            </Modal>
-          </Modal.TriggerContext>
+            </Dialog>
+          </Dialog.TriggerContext>
         </div>
       ))}
       {sizes.map((size) => (

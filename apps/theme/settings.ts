@@ -1,15 +1,15 @@
-import type { CssColor } from '@digdir/designsystemet/color';
+import type { HexColor } from '@digdir/designsystemet/color';
 
-export const Settings = {
-  accentBaseColor: '#0062BA' as CssColor,
-  neutralBaseColor: '#1E2B3C' as CssColor,
-  brand1BaseColor: '#F45F63' as CssColor,
-  brand2BaseColor: '#E5AA20' as CssColor,
-  brand3BaseColor: '#1E98F5' as CssColor,
-  blueBaseColor: '#0A71C0' as CssColor,
-  greenBaseColor: '#068718' as CssColor,
-  orangeBaseColor: '#B8581D' as CssColor,
-  redBaseColor: '#C01B1B' as CssColor,
-  purpleBaseColor: '#663299' as CssColor,
-  yellowBaseColor: '#EABF28' as CssColor,
+export const Settings: Record<string, HexColor> = {
+  accentBaseColor: '#0062BA',
+  neutralBaseColor: '#1E2B3C',
+  brand1BaseColor: '#F45F63',
+  brand2BaseColor: '#E5AA20',
+  brand3BaseColor: '#1E98F5',
+  blueBaseColor: '#0A71C0',
+  greenBaseColor: '#068718',
+  orangeBaseColor: '#B8581D',
+  redBaseColor: '#C01B1B',
+  purpleBaseColor: '#663299',
+  yellowBaseColor: '#EABF28',
 };
