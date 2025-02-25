@@ -99,6 +99,12 @@
   &:is(:disabled, [aria-disabled='true']) {
     cursor: not-allowed;
     opacity: var(--ds-disabled-opacity);
+
+    /* When bost aria-disabled and aria-busy is true, opacity should be 1 and cursor should be progress */
+    &[aria-busy='true'] {
+      opacity: 1;
+      cursor: progress;
+    }
   }
 
   /* Using :where to prevent adding specificity */
