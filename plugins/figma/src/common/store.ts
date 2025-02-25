@@ -36,9 +36,9 @@ export type StoreTheme = {
 export type ColorTheme = {
   accent: ThemeInfo;
   neutral: ThemeInfo;
-  brand1: ThemeInfo;
-  brand2: ThemeInfo;
-  brand3: ThemeInfo;
+  primary: ThemeInfo;
+  extra1: ThemeInfo;
+  extra2: ThemeInfo;
 };
 
 export type ThemeInfo = {
