@@ -37,8 +37,9 @@ export const Sidebar = () => {
           'ds-focus-visible',
         )}
         onClick={() => setShowSidebar(!showSidebar)}
+        aria-label='Toggle sidebar'
       >
-        <CogIcon title='a11y-title' fontSize='1.5rem' />
+        <CogIcon title='tannhjul' fontSize='1.5rem' />
       </button>
       <div
         className={cl(
