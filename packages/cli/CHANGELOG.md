@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.100.51-next.52
+
+### Patch Changes
+
+- bump version ([`65c1d54`](https://github.com/digdir/designsystemet/commit/65c1d54deab3538f00f27746fefc07df181c2962))
+
 ## 1.0.0-next.51
 
 ## 1.0.0-next.50
