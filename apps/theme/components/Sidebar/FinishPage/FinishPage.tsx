@@ -36,7 +36,7 @@ export const FinishPage = ({ onPrevClick }: FinishPageProps) => {
             onClick={() => onPrevClick()}
             variant='secondary'
           >
-            <ChevronLeftIcon title='a11y-title' fontSize='1.5rem' />
+            <ChevronLeftIcon aria-hidden fontSize='1.5rem' />
             Border radius
           </Button>
           <TokenModal />

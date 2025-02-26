@@ -17,6 +17,7 @@ const ComponentCard = ({ title, image, url }: ComponentCardProps) => {
         src={'/img/component-previews/' + image}
         alt={title}
         className={classes.image}
+        aria-hidden='true'
       />
       <Heading data-size='xs' className={classes.title} level={2}>
         {title}

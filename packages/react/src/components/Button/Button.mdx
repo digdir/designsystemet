@@ -118,10 +118,11 @@ Ikon skalerer automatisk basert på knappestørrelse, men du endre denne ved å 
 ### Last inn
 
 Når vi skal vise brukeren at knappen laster noe, kan vi kombinere knappen med en `spinner`.
+I eksempelet under bruker vi proppen `loading` for å vise at knappen laster.
 
 <Canvas of={ButtonStories.Loading} />
 
-I eksempelet over har vi brukt `aria-disabled` til å deaktivere knappene. Dette er den anbefalte måten for å vise at en knapp er deaktivert. Da kan den fortsatt få fokus når noen navigerer med tastaturet. Slik vil blant annet skjermlesere og andre hjelpemidler bli informert om at knappen finnes, men ikke er aktiv.
+I eksempelet over blir `aria-disabled` satt av `loading="true"`. Dette er den anbefalte måten for å vise at en knapp er deaktivert. Da kan den fortsatt få fokus når noen navigerer med tastaturet. Slik vil blant annet skjermlesere og andre hjelpemidler bli informert om at knappen finnes, men ikke er aktiv.
 
 Denne egenskapen stopper ikke automatisk knappen fra å utløse `onClick`.
 
