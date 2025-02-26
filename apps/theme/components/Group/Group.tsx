@@ -75,6 +75,7 @@ export const Group = ({
                   contrast={'dd'}
                   lightness={'dd'}
                   showColorMeta={showColorMeta}
+                  aria-label={`Se mer om ${namespace} ${color?.displayName}`}
                   onClick={() =>
                     colorModalRefs.current[index]?.current?.showModal()
                   }
