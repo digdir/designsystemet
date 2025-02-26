@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "0.100.52-next.0",
+  "version": "0.100.52",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "engines": {
