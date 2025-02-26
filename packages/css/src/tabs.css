@@ -53,7 +53,7 @@
       @composes ds-focus from './base.css';
 
       &:focus-visible {
-        outline-offset: calc(var(--ds-border-width-focus) * -1);
+        outline-offset: calc(var(--ds-border-width-focus) * -2);
       }
 
       &:not([hidden]) {
