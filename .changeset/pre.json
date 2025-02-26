@@ -1,0 +1,16 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@repo/components": "0.0.0",
+    "storefront": "0.1.0",
+    "@designsystemet/storybook": "0.1.0",
+    "theme": "0.1.0",
+    "@digdir/designsystemet": "0.100.51",
+    "@digdir/designsystemet-css": "0.100.51",
+    "@digdir/designsystemet-react": "0.100.51",
+    "@digdir/designsystemet-theme": "0.100.51",
+    "figma-plugin": "0.3.0"
+  },
+  "changesets": []
+}
