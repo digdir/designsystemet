@@ -1,5 +1,229 @@
 # Change Log
 
+## 0.100.52
+
+## 0.100.52-next.0
+
+## 0.100.51
+
+- e9ca9b7: Pagination:
+  - Remove attributes `currentPage` and `totalPages` on `Pagination`
+  - Replace `Pagination.Root` with `Paginaton`
+  - Replace `Pagination.Next`, `Pagination.Previous` and `Pagination.Ellipsis` with `Paginaton.Button`
+  - Make `usePagination` return spreadable props for subcomponents
+  - Add support for `showPages` and `onChange` in `usePagination`
+- 0607ee0: **Details**: Change `--dsc-details-heading-*` to `--dsc-details-summary-*`
+- 037255c: Pagination: Use data attrs instead of class names
+- 2d1da9a: Testing snapshot release
+- c25b798: Chip: Support wrapping in group
+- c43a438: Accordion: Fix chevron abandoning parent in scroll container
+- 0c86e30: :sparkles: New experimental component; **Suggestion**
+- d4c1ddb: Button: add `height: fit-content`
+- 1d79992: SkipLink: New style
+- 6ba03fe: **Chip**: Make radio and checkbox smaller
+- a0b119d: Badge: Style using css attributes
+- c14441a: **Details:** Hide native `<summary>` arrow in Safari
+- 0f7418e: Added token `border-width-focus`
+- 2a51c04: SkipLink: Add css variables
+- 0efd598: ValidationMessage: Add icon when `error={true}`
+- 1c67d53: Textarea: Use `field-sizing: content`
+- d4c1ddb: Pagination: Use empty `li` for ellipsis
+- fe20145: Skiplink:
+  - Simplify DOM
+  - Add support for `forwardRef`
+- dba4376: **Table**: New colors on zebra (`--ds-color-surface-tinted`) and hover (`--ds-color-surface-hover`)
+- 630f0af: ValidationMessage: fix icon abandoning the component when scrolling
+- c00a293: **Dialog**: Add border around dialog element
+- dda5b21: TableHeaderCell: Remove `sortable` prop, `sort` now handles this
+- 722fbe4: dropdownmenu: Style using data attributes
+- 2a51c04: Accordion: Add css variable for chevron
+- 7f04d18: Chip: Text color is now `accent`
+- df0da9a: CSS: base sizing on font-size so all components can have all sizes, and naturally inherits size from context
+- 41bb41d: Link: Fix missing underline when using Tailwind
+- 529d942: **Card**: Add `data-variant="default/tinted"`, `default` is default
+- 3f7d762: **ToggleGroup**: Change height to match other form elements
+- ee4fe43: **Checkbox**: Reduce border-radius by one size, making them more square.
+- bbd8086: Table: New hover prop and class for toggling hover on rows
+- 28deb68: Accordion: Animate open/close with CSS
+  - Replace onFound with onToggle
+- bbf2994: Search: New compound API
+- bbd8086: Table: Width is now by default `100%`
+- d75ffad: CSS: Move default background-color to `<body>` element
+- 7dff650: Table:
+  - Correct footer styling
+  - Automatic focus styling for sorting buttons
+- 519fe18: Dropdown: Add `Dropdown.Button` for more explicit API
+- b8f3153: ErrorSummary: Rename ErrorSummary.Root to ErrorSummary
+- dba4376: \*_Table_: Background is now transparent by default
+- 8f9e6e5: **Badge**: Fix empty badge not being displayed
+- 529d942: **Details**: Add `data-variant="default/tinted"`, `default` is default.
+  - This can also be controlled from `Card`
+- 209e2d5: Fixes so spacing is the same in checkbox and radio groups
+- 2a51c04: Breadcrumbs: Add css variable for chevron
+- aa344ec: Remove `neutral` color on `ValidationMessage`
+- 31c036d: Input: Sufficient color contrast for readonly
+- ab20c35: **Details**: Change default variant colors for open and hover
+- ed179a1: Tabs:
+  - Renames `Tabs.Root` to `Tabs`
+  - Renames `Tabs.Content` to `Tabs.Panel`
+- 1a1b548: **Popover**: Added shadow and fixed default background color
+- 781f0ef: **Dialog**:
+  - Correctly centers position also when placed in `display: flex`
+  - Only prevents scroll if opened with `.showModal()`
+- ba2f79f: Heading:
+  - Classes with data attributes
+  - Move base style to utility classes
+- da5696a: Switch: Adjust design to better align with radio and checkbox
+- f3abcda: List: Remove `List.Root` and `List.Heading`, which changes API
+- f794c60: Rename classes from `ds-error-message*` to `ds-validation-message*`
+- f45d853: Alert, Avatar, Button, Divider, Link: Use data-attributes for variant, size and color and move icons to CSS
+- 7750ad9: Helptext: Remove component
+- f71185c: Modal: css changes
+- 24f452d: **SkipLink**: Increaed padding bottom by one size
+- ce5b845: Alert: fix icon abandoning the component when scrolling
+- 98d5423: Button: `text-align: inherit` when not in full width
+- 9587449: **Dropdown**: Fix background to surface color variable
+- 1002d87: Modal:
+  - Rename `Modal.Dialog` to `Modal`
+  - Rename `Modal.Root` to `Modal.Context`
+  - Replace `onInteractOutside` event with `backdropClose` boolean
+  - Replace `closeButton` and `closeButtonTitle` on `Modal.Header` with `closeButton` on `Modal`
+  - Add border to `Modal.Header` and `Modal.Footer`
+  - Remove `Modal.Content`
+  - Remove `onBeforeClose`
+  - Remove `subtitle` from `Modal.Header`
+- bdd9881: Box: Remove component
+- 8277775: Body/Paragraph
+  - Add body-xl token
+  - Add xl paragraph
+  - Remove ingress tokens
+- adcaece: Ingress: Remove component
+  - Use `Paragraph variant='long'` instead
+- 0f8814b: Chip: avoid reassigning custom properties
+- 40f8dc8: Heading: Fix `md` heading size
+- 6f8d6e6: **Button**: Make loading spinner scale accordion to button size
+- 48f5713: Popover:
+  - Rename `<Popover.Root>` to `<Popover.Context>`
+  - use Popover API, allowing `<Popover>` to be used without `Popover.Context`
+  - Remove `portal` prop
+- a3419cc: **Tabs**: Add overflow-x scroll to tablist
+- 2a3c4d3: Removed CSS variables `--ds-spacing-*` & `--ds-sizing-*`, use `--ds-size-*`.
+- 0dbcee5: Tooltip: Only expose background css variable
+- 2125b66: **Table**: Add margin-bottom to `caption` element
+- f9d651e: chip: Fix wrong font sizes
+- cfef668: Field: Don't show as disabled when option is disabled
+- 4abf5e6: Switch: don't show check when not checked in readonly
+- bf31bfc: Card:
+  - Allow `Card` with content placed directly inside
+  - Replace `Card.Header`, `Card.Content` and `Card.Footer` with `Card.Block`
+  - Replace `isLink` with anchor-in-heading + `click` handler for better accessibility
+- 6c35bb3: Button: Fix SVG and images shrinking in flex containers
+- 58724b7: Changed focus color to use neutral instead of accent color
+- e9b6ec1: Fieldset: Move to compound components `Fieldset.Legend` and `Fieldset.Description`
+- 12e10e6: Modal: Remove `Modal.Header` and `Modal.Footer`, replace with `Modal.Block`
+- 95f67ce: **Table**: Use `border-top` in `tbody` ensure prettier tables when no `thead`
+- 9220945: Select: Rename from `NativeSelect`
+- ffe7811: ValidationMessage: Add support for all severity colors and tweak icons
+- 780256b: Table: add `z-index` to stickhy header
+- 2a51c04: Tooltip: Add more variables
+- 220c105: Button: Use font-weight `--ds-font-weight-medium`
+- 50efed2: Field: Adds `<Field>` component wrapping and connecting internal form elements for better accessibility
+- bea7b53: AccordionHeading: Correct name on types
+- 0daa2b3: **Table**: Now inherits `data-color` by default
+- 0c60454: **Breadcrumbs:** Prevent shrinking chevron
+- 7dceadd: DropdownMenu:
+  - Rename from `DropdownMenu` to `Dropdown`
+  - Change API and structure
+  - Rename `.Root` to `.Context`
+  - Rename `.Content` to `Dropdown`
+- 3451704: Tabs: css changes
+- 39499b8: Tooltip: Use popover API
+  - Removes `delay`, this is now `--dsc-tooltip-transition-delay`
+  - Removes `defaultOpen`
+  - Removes `portal`
+  - Removes ability to hover to keep open
+- c2b78ed: ToggleGroup: Rename ToggleGroup.Root to ToggleGroup
+- 95f67ce: **Tag**: Set `height` in case it is used in `display: flex`
+- 2d841a1: New CSS variables for sizes, `--ds-size-*`
+- 1767724: React components and css now support custom colors through the `data-color` attribute.
+
+  **BREAKING CHANGE**: All React components that had a `color` prop have been changed to use `data-color`.
+
+  All<sup>1</sup> css targeting `data-color` has been changed to work with all custom colors generated by the CLI.
+
+  `Avatar`, `Badge`, `Button`, and `Link` use `--ds-color-accent-*`<sup>2</sup>, unless `data-color` is set directly on the element.
+
+  For components that had a `color` prop, but defaulted to something other than `"accent"`, `data-color` must also be set directly on the element.
+
+  All other components that defaulted to `"accent"`, or previously only existed in `"accent"` color, now support `data-color`. They will also inherit their color from the closest `data-color` attribute. If none is found, they use `--ds-color-accent-*`<sup>2</sup>.
+
+  <sup>1</sup>: ...except `Alert`, which only supports `info`, `warning`, `danger` and `success` colors.
+  <sup>2</sup>: If an `"accent"` color is not defined in the theme, the `--ds-color-accent-*` variables will point to the first `main-color`.
+
+- e93207b: **Table**: Added component token `--dsc-table-divider-border-color`
+- 43125f0: Dialog:
+  - Add missing `overflow: auto`
+  - Position with `transform` for easier `translate` animation
+- a4e8845: Badge: Only use single DOM element for rendering
+- 6998d4b: **BREAKING CHANGE**: The attribute / prop `data-ds-color-mode` has been renamed to `data-color-scheme`
+- 7520547: Radio + Checkbox:
+  - Use `label` prop instead of `children` as label text
+  - Remove `Radio.Group` and `Checkbox.Group` and use `Fieldset` instead
+- eb3f58b: PopoverTrigger: New prop `inline` for use when inline elements (such as text) need a `Popover`
+- ce23f32: Chip: Use correct `32px` height to align nicely with `<Tag>`
+- 95f67ce: `ds-input` will now by default fill width.
+- 36cefe3: Rename `Accordion` to `Details`
+- 5a77def: SkipLink: Remove ds-sr-only class
+- 03d776b: Skeleton: Replace Skeleton.Text, Skeleton.Circle and Skeleton.Rectangle with <Skeleton variant="">
+- 5d1c506: Accordion: Now uses details and summary HTML elements
+- 2238293: Combobox: fix overflow on screens narrower than ~340px
+- c43a438: Label: Fix icon abandoning parent in scroll container
+- 529d942: **Popover**: Add `data-variant="default/tinted"`, `default` is default
+- 1afa5c5: Spinner: Style using data attributes
+- 265ce6e: **Suggestion**: Add chevron to empty input
+- a1a3afd: Label: Use data attributes for styling
+
+  ValidationMessage: Use data attributes for styling
+
+- 181ea10: Select + Textarea:
+  - Remove `label`, `hideLabel`, `description`, `characterLimit` and `error` as these will be part of `Field` API
+- b884fda: Avatar: new component
+- c73d83c: Breadcrumbs: ✨ new component
+- 91bf499: **Table**: Use correct background color variables on th
+- 9d54191: Moved typography based sizing formula to design-tokens
+- 2a51c04: Pagination: Add css variable for chevron
+- 68a8c3d: Added styling for Windows High Contrast mode and [forced-colors](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/forced-colors)
+- d0288e2: Paragraph: Add css classes and style with data attributes
+- 0e2cdb5: Tag: Make neutral default color in CSS
+- a16e83e: Field.Affix:
+  - Rename `Field.AffixWrapper` to `Field.Affixes`
+  - Support inputs with `size` attribute
+- 529d942: **Badge**: Add `data-variant="base/tinted"`, `base` is default
+- 32fdbd4: Breadcrumbs: Rename `Breadcrumbs.Root` to `Breadcrumbs` and remove `Breadcrumbs.Nav`
+- d0fad1d: Chip:
+  - Add `Chip.Button`
+  - Rename `Chip.Toggle` to `Chip.Radio` and `Chip.Checkbox`
+  - Remove `Chip.Group`
+- 0e4faee: HelpText:
+  - Use Popover API
+  - Remove `portal` prop
+  - Render icon with pseudo element and require aria-label
+- 629bc43: Badge: ✨ New component
+- d3229a0: Fieldset: Style using css attributes
+- 5216b18: **Dialog**: Fix background to surface color variable
+- 5f51c95: Implemented a more flexible system of semantic border-radius tokens.
+- a1a3afd: Remove `baseline` layer and fix layerorder for typography
+- f6eb237: Modal backdrop was invisible in some browser versions. See https://caniuse.com/mdn-css_selectors_backdrop_inherit_from_originating_element for affected versions.
+- 6b56db2: Table: Add `Table.Foot` and style caption
+- 4276d94: Tabs: Rework component CSS
+- de912ae: Badge: Convert to two elements, add `Badge.Position` component for placement
+- eae29d9: Use `var(--ds-border-width-default)` for border widths
+- c00a293: Rename `ds-modal` to `ds-dialog`
+- 23450ce: Select: Add `width="auto"` option and default to full width
+- 54d3037: Card: Use data attrs
+- 2ec0118: **Card**: Add css properties for `Card.Block` border (`--dsc-card-block-border-*`)
+- 95f67ce: **Field**: Move `align-items: start` from `.ds-field` to `align-self: start` on `.ds-input` for easier styling
+
 ## 0.100.51-next.52
 
 ## 1.0.0-next.51

@@ -27,11 +27,6 @@
 
 .backBtn {
   margin-bottom: var(--ds-size-10);
-  color: inherit;
-}
-
-.backBtn:visited {
-  color: inherit;
 }
 
 .backBtn svg {

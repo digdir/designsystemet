@@ -18,6 +18,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 24px;
+  flex-direction: row-reverse;
 }
 
 .hide {

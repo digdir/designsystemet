@@ -17,7 +17,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <BannerIcon>
           <PencilIcon fontSize={34} />
         </BannerIcon>
-        <BannerHeading>Bloggen</BannerHeading>
+        <BannerHeading level={1}>Bloggen</BannerHeading>
       </Banner>
       <Container className={classes.page}>
         <main id='main' className={classes.main}>

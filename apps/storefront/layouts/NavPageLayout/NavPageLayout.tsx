@@ -32,7 +32,7 @@ const NavPageLayout = ({ content, data, banner }: NavPageLayoutProps) => {
       {banner && (
         <Banner color={banner.color}>
           <BannerIcon>{banner.icon}</BannerIcon>
-          <BannerHeading>{banner.title}</BannerHeading>
+          <BannerHeading level={1}>{banner.title}</BannerHeading>
           {banner.ingress && <BannerIngress>{banner.ingress}</BannerIngress>}
         </Banner>
       )}
