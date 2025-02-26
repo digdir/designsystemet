@@ -2,7 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { userEvent, within } from '@storybook/test';
 import { type ChangeEvent, useState } from 'react';
 import { EXPERIMENTAL_MultiSelect as MultiSelect } from '.';
-import { Field, Label, Spinner } from '..';
+import { Button, Divider, Field, Label, Paragraph, Spinner } from '..';
 import { useDebounceCallback } from '../../utilities';
 
 export default {
@@ -78,31 +78,45 @@ export const Preview: StoryFn<typeof MultiSelect> = (args) => {
 };
 
 export const Controlled: StoryFn<typeof MultiSelect> = (args) => {
-  const [value, setValue] = useState<string[]>();
+  const [value, setValue] = useState<string[]>(['Oslo']);
 
   return (
-    <Field>
-      <Label>Velg reisemål du vil besøke</Label>
-      <MultiSelect {...args} defaultValue={['Sogndal', '123']}>
-        <MultiSelect.Chips
-          render={(e) => {
-            console.log(e);
-            return e.text;
-          }}
-        />
-        <MultiSelect.Input />
-        <MultiSelect.Clear />
-        <MultiSelect.List>
-          <MultiSelect.Empty>Tomt</MultiSelect.Empty>
-          {DATA_PLACES.map((place) => (
-            <MultiSelect.Option key={place} value={place}>
-              {place}
-              <div>Kommune</div>
-            </MultiSelect.Option>
-          ))}
-        </MultiSelect.List>
-      </MultiSelect>
-    </Field>
+    <>
+      <Field>
+        <Label>Velg reisemål du vil besøke</Label>
+        <MultiSelect {...args} value={value} onValueChange={setValue}>
+          <MultiSelect.Chips
+            render={(e) => {
+              return e.text;
+            }}
+          />
+          <MultiSelect.Input />
+          <MultiSelect.Clear />
+          <MultiSelect.List>
+            <MultiSelect.Empty>Tomt</MultiSelect.Empty>
+            {DATA_PLACES.map((place) => (
+              <MultiSelect.Option key={place} value={place}>
+                {place}
+                <div>Kommune</div>
+              </MultiSelect.Option>
+            ))}
+          </MultiSelect.List>
+        </MultiSelect>
+      </Field>
+      <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
+
+      <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
+        Valgte reisemål: {value.join(', ')}
+      </Paragraph>
+
+      <Button
+        onClick={() => {
+          setValue(['Sogndal', 'Stavanger']);
+        }}
+      >
+        Sett reisemål til Sogndal, Stavanger
+      </Button>
+    </>
   );
 };
 export const CustomFilterAlt1: StoryFn<typeof MultiSelect> = (args) => {

@@ -66,17 +66,18 @@ export type MultiSelectProps = {
    */
   allowCreate?: boolean;
   /**
-   * The value of the multi-select
+   * The selected items of the multi-select.
+   * Using this makes the component controlled and it must be used in combination with onValueChange
    */
   value?: string[];
   /**
-   * Default value when uncontrolled
+   * Default selected items when uncontrolled
    */
   defaultValue?: string[];
   /**
-   * Callback when value changes
+   * Callback when selected items changes
    */
-  onChange?: (value: string[]) => void;
+  onValueChange?: (value: string[]) => void;
   /**
    * The name of the associated form control
    *
@@ -90,7 +91,7 @@ export const MultiSelect = forwardRef<UHTMLTagsElement, MultiSelectProps>(
     {
       value,
       defaultValue,
-      onChange,
+      onValueChange,
       name,
       filter = true,
       allowCreate = false,
@@ -107,14 +108,18 @@ export const MultiSelect = forwardRef<UHTMLTagsElement, MultiSelectProps>(
     const inputRef = useRef<HTMLInputElement | null>(null);
     const uTagsRef = useRef<UHTMLTagsElement>(null);
     const mergedRefs = useMergeRefs([ref, uTagsRef]);
-
-    console.log({ selectedItems });
+    const isControlled = Boolean(value);
+    const [controlledDirty, setControlledDirty] = useState(false);
 
     /**
      * If we have set a default value, set it on initial render
      */
     useEffect(() => {
       if (!defaultValue) return;
+      if (value) {
+        console.warn('defaultValue can not be used in combination with value');
+        return;
+      }
       const items = uTagsRef.current?.querySelectorAll('u-option');
       if (!items) return;
 
@@ -138,6 +143,51 @@ export const MultiSelect = forwardRef<UHTMLTagsElement, MultiSelectProps>(
         console.error('Default value changed during render');
       };
     }, [defaultValue]);
+
+    /**
+     * Controlled state management
+     */
+    useEffect(() => {
+      if (!value) return;
+      const items = inputRef.current?.list?.options;
+      if (!items) return;
+      const itemsArray = Array.from(items);
+      const itemsArrayValues = itemsArray.map((item) => item.value);
+
+      const selectedArray = Object.keys(selectedItems);
+      const validValues = value.filter((val) => itemsArrayValues.includes(val));
+      const itemsToAdd = validValues.filter(
+        (val) => !selectedArray.includes(val),
+      );
+      const itemsToRemove = selectedArray.filter(
+        (val) => !validValues.includes(val),
+      );
+
+      for (const item of itemsArray) {
+        if (itemsToAdd.includes(item.value)) {
+          uTagsRef.current?.dispatchEvent(
+            new CustomEvent('add', {
+              detail: { item },
+            }),
+          );
+          setSelectedItems((prevItems) => ({
+            ...prevItems,
+            [item.value]: item,
+          }));
+        }
+        if (itemsToRemove.includes(item.value)) {
+          uTagsRef.current?.dispatchEvent(
+            new CustomEvent('remove', {
+              detail: { item },
+            }),
+          );
+          setSelectedItems((prevItems) => {
+            const { [item.value]: _, ...rest } = prevItems;
+            return rest;
+          });
+        }
+      }
+    }, [value]);
 
     /**
      * Listerners and handling of adding/removing
@@ -174,20 +224,28 @@ export const MultiSelect = forwardRef<UHTMLTagsElement, MultiSelectProps>(
         }
 
         if (e.detail.action === 'remove') {
-          console.log('should remove');
           setSelectedItems((prevItems) => {
             const { [item.value]: _, ...rest } = prevItems;
             return rest;
           });
         }
+        if (isControlled) setControlledDirty(true);
       };
 
       uTagsRef.current.addEventListener('tags', handleItemsChange);
-
       return () => {
         uTagsRef.current?.removeEventListener('tags', handleItemsChange);
       };
     }, [uTagsRef, setSelectedItems]);
+
+    /**
+     * When controlled, trigger onValueChange callback for ordinary add/remove
+     */
+    useEffect(() => {
+      if (!controlledDirty) return;
+      onValueChange?.(Object.keys(selectedItems));
+      setControlledDirty(false);
+    }, [controlledDirty]);
 
     const handleFilter = useCallback(
       (input?: HTMLInputElement | null) => {

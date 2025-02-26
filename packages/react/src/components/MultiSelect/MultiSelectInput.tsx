@@ -26,7 +26,6 @@ export const MultiSelectInput = forwardRef<
   const updateSelected = useCallback(() => {
     const { list, value } = inputRef?.current || {};
     for (const option of list?.options || []) {
-      console.log({ dlv: getDatalistValue(option), value });
       option.selected = getDatalistValue(option) === value;
     }
   }, []);
