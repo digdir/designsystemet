@@ -79,9 +79,32 @@ export const WithoutDialogTriggerContext: StoryFn<typeof Dialog> = (args) => {
   return (
     <>
       <Button onClick={() => dialogRef.current?.showModal()}>
-        Open Dialog
+        Open Dialog with ref
       </Button>
       <Dialog {...args} ref={dialogRef}>
+        <Paragraph data-size='sm'>Dialog subtittel</Paragraph>
+        <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
+          Dialog header
+        </Heading>
+        <Paragraph style={{ marginBottom: 'var(--ds-size-2)' }}>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
+          doloremque obcaecati assumenda odio ducimus sunt et.
+        </Paragraph>
+        Dialog footer
+      </Dialog>
+    </>
+  );
+};
+
+export const DialogWithOpenProp: StoryFn<typeof Dialog> = (args) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen((prev) => !prev)}>
+        Open Dialog with prop
+      </Button>
+      <Dialog {...args} open={open} onClose={() => setOpen(false)}>
         <Paragraph data-size='sm'>Dialog subtittel</Paragraph>
         <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
           Dialog header
@@ -248,3 +271,28 @@ export const DialogWithCombobox: StoryFn<typeof Dialog> = () => {
     </>
   );
 };
+
+export const DialogNonModal: StoryFn<typeof Dialog> = () => {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
+  return (
+    <>
+      <Button onClick={() => dialogRef.current?.show()}>Open Dialog</Button>
+      <Dialog ref={dialogRef} modal={false}>
+        <Heading>Non-modal dialog</Heading>
+        <Paragraph>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
+          doloremque obcaecati assumenda odio ducimus sunt et.
+        </Paragraph>
+      </Dialog>
+    </>
+  );
+};
+
+DialogNonModal.decorators = [
+  (Story) => (
+    <div style={{ padding: 'var(--ds-size-18)' }}>
+      <Story />
+    </div>
+  ),
+];
