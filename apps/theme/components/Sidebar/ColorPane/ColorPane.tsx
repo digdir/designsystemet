@@ -1,3 +1,4 @@
+import { RESERVED_COLORS } from '@digdir/designsystemet';
 import {
   Button,
   Heading,
@@ -10,6 +11,7 @@ import { ColorPicker, type IColor } from 'react-color-palette';
 import { useThemeStore } from '../../../store';
 
 import cl from 'clsx/lite';
+import { useState } from 'react';
 import classes from './ColorPane.module.css';
 
 type ColorPaneProps = {
@@ -38,11 +40,34 @@ export const ColorPane = ({
   colorType,
 }: ColorPaneProps) => {
   const mainColors = useThemeStore((state) => state.colors.main);
+  const [colorError, setColorError] = useState('');
+
   const disableRemoveButton = colorType === 'main' && mainColors.length === 1;
 
   const getHeading = () => {
     const t = colorType === 'main' ? 'hovedfarge' : 'støttefarge';
     return type === 'addColor' ? 'Legg til ' + t : 'Rediger farge';
+  };
+
+  const checkNameIsValid = () => {
+    if (name === '') {
+      setColorError('Navnet på fargen kan ikke være tomt');
+      return false;
+    }
+
+    if (RESERVED_COLORS.includes(name.toLowerCase())) {
+      setColorError(
+        'Navnet på fargen kan ikke være det samme som våre systemfarger',
+      );
+      return false;
+    }
+    setColorError('');
+    return true;
+  };
+
+  const closeTab = () => {
+    setColorError('');
+    onClose();
   };
 
   return (
@@ -53,7 +78,7 @@ export const ColorPane = ({
         <Button
           data-size='sm'
           variant='tertiary'
-          onClick={() => onClose()}
+          onClick={closeTab}
           className={classes.back}
         >
           <ChevronLeftIcon title='a11y-title' fontSize='1.5rem' /> Gå tilbake
@@ -102,6 +127,8 @@ export const ColorPane = ({
               .toLowerCase();
             setName(value);
           }}
+          onBlur={checkNameIsValid}
+          error={colorError}
         />
       )}
       <div className={classes.label}>Farge</div>
@@ -122,6 +149,8 @@ export const ColorPane = ({
           data-size='sm'
           color='neutral'
           onClick={() => {
+            /* Check here as well to disable sending new color */
+            if (!checkNameIsValid()) return;
             onPrimaryClicked(color.hex, name);
           }}
         >
@@ -132,9 +161,7 @@ export const ColorPane = ({
           data-size='sm'
           color='neutral'
           variant='secondary'
-          onClick={() => {
-            onClose();
-          }}
+          onClick={closeTab}
         >
           Avbryt
         </Button>
