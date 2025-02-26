@@ -64,7 +64,7 @@ export type DialogProps = MergeRight<
  *
  * ...
  *
- * <Button onClick={() => dialogRef.current?.showDialog()}>Open Dialog</Button>
+ * <Button onClick={() => dialogRef.current?.showModal()}>Open Dialog</Button>
  * <Dialog ref={dialogRef}>
  *   Content
  * </Dialog>
