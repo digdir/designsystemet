@@ -1,3 +1,7 @@
+import type {
+  Color,
+  SeverityDanger,
+} from '@digdir/designsystemet-react/colors';
 import { Slot, Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
@@ -14,6 +18,10 @@ export type ButtonProps = MergeRight<
      * @default 'primary'
      */
     variant?: 'primary' | 'secondary' | 'tertiary';
+    /**
+     * Change the color scheme of the button
+     */
+    'data-color'?: Color | SeverityDanger;
     /**
      * Toggle icon only styling, pass icon as children
      * @default false
