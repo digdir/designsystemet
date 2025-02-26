@@ -52,11 +52,6 @@
 
       @composes ds-focus--inset from './base.css';
 
-      /* &:focus-visible {
-        outline-offset: calc(var(--ds-border-width-focus) * -1);
-        box-shadow: inset 0 0 0 calc(var(--ds-border-width-focus) * 2) red;
-      } */
-
       &:not([hidden]) {
         display: flex;
       }
