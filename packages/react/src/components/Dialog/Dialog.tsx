@@ -88,12 +88,9 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
     const dialogRef = useRef<HTMLDialogElement>(null); // This local ref is used to make sure the dialog works without a DialogTriggerContext
     const Component = asChild ? Slot : 'dialog';
     const mergedRefs = useMergeRefs([contextRef, ref, dialogRef]);
+    const showProp = modal ? 'showModal' : 'show';
 
-    useEffect(
-      () =>
-        dialogRef.current?.[open ? (modal ? 'showModal' : 'show') : 'close'](),
-      [open],
-    ); // Toggle open based on prop
+    useEffect(() => dialogRef.current?.[open ? showProp : 'close'](), [open]); // Toggle open based on prop
 
     useEffect(() => {
       const dialog = dialogRef.current;
