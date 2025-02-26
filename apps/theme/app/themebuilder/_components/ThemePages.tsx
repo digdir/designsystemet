@@ -1,9 +1,9 @@
 'use client';
 
 import {
-  type ColorInfo,
+  type Color,
   type ColorNumber,
-  getColorInfoFromPosition,
+  getColorMetadataByNumber,
 } from '@digdir/designsystemet';
 import cl from 'clsx/lite';
 import { useEffect, useRef } from 'react';
@@ -45,8 +45,8 @@ export const ThemePages = () => {
   }, [baseBorderRadius]);
 
   const getDsVars = (colors: {
-    light: ColorInfo[];
-    dark: ColorInfo[];
+    light: Color[];
+    dark: Color[];
   }) => {
     const style = {} as Record<string, string>;
 
@@ -59,7 +59,7 @@ export const ThemePages = () => {
     for (let i = 0; i < lightColors.length; i++) {
       const number = (i + 1) as ColorNumber;
       style[
-        `--ds-color-neutral-${getColorInfoFromPosition(number)
+        `--ds-color-neutral-${getColorMetadataByNumber(number)
           .displayName.replace(/\s+/g, '-')
           .toLowerCase()}`
       ] = lightColors[i].hex;
@@ -69,8 +69,8 @@ export const ThemePages = () => {
   };
 
   const getDsMainVars = (colors: {
-    light: ColorInfo[];
-    dark: ColorInfo[];
+    light: Color[];
+    dark: Color[];
   }) => {
     const style = {} as Record<string, string>;
 
@@ -83,7 +83,7 @@ export const ThemePages = () => {
     for (let i = 0; i < lightColors.length; i++) {
       const number = (i + 1) as ColorNumber;
       style[
-        `--ds-color-${getColorInfoFromPosition(number)
+        `--ds-color-${getColorMetadataByNumber(number)
           .displayName.replace(/\s+/g, '-')
           .toLowerCase()}`
       ] = lightColors[i].hex;

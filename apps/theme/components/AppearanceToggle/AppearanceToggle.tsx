@@ -50,10 +50,10 @@ export const AppearanceToggle = ({
           aria-current={colorScheme.value === active}
         >
           {colorScheme.value === 'light' && (
-            <SunIcon title='a11y-title' fontSize='1.5rem' />
+            <SunIcon title='sol' fontSize='1.5rem' />
           )}
           {colorScheme.value === 'dark' && (
-            <MoonIcon title='a11y-title' fontSize='1.5rem' />
+            <MoonIcon title='måne' fontSize='1.5rem' />
           )}
           {colorScheme.name}
 

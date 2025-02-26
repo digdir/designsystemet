@@ -1,5 +1,5 @@
 import {
-  type ColorInfo,
+  type Color,
   type ColorScheme,
   type ThemeInfo,
   generateColorSchemes,
@@ -34,8 +34,8 @@ type ColorStore = {
   ) => void;
   resetColors: () => void;
   removeColor: (index: number, type: 'main' | 'neutral' | 'support') => void;
-  selectedColor: { color: ColorInfo; name: string };
-  setSelectedColor: (color: ColorInfo, name: string) => void;
+  selectedColor: { color: Color; name: string };
+  setSelectedColor: (color: Color, name: string) => void;
   baseBorderRadius: BaseBorderRadius;
   setBaseBorderRadius: (radius: BaseBorderRadius) => void;
   colorScheme: ColorScheme;
@@ -52,9 +52,15 @@ export const useThemeStore = create(
       color: {
         hex: '#ffffff',
         number: 1,
-        name: 'Default',
+        name: 'background-default',
         displayName: 'Default',
         group: 'neutral',
+        description: '',
+        luminance: {
+          light: 0,
+          dark: 0,
+          contrast: 0,
+        },
       },
       name: 'Default',
     },

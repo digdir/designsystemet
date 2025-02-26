@@ -6,7 +6,7 @@ on:
     inputs:
       tag:
         description: 'NPM tag'
-        default: ''
+        default: 'next'
 
 jobs:
   snapshot:

@@ -1,11 +1,43 @@
 export type ColorScheme = 'light' | 'dark' | 'contrast';
 export type ContrastMode = 'aa' | 'aaa';
-export type ColorNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16;
+export type ColorNumber = SemanticColorNumberMap[keyof SemanticColorNumberMap];
+export type ColorNames = keyof SemanticColorNumberMap;
 export type GlobalColors = 'red' | 'blue' | 'green' | 'orange' | 'purple';
 export type ColorError = 'none' | 'decorative' | 'interaction';
 
+type SemanticColorNumberMap = {
+  'background-default': 1;
+  'background-tinted': 2;
+  'surface-default': 3;
+  'surface-tinted': 4;
+  'surface-hover': 5;
+  'surface-active': 6;
+  'border-subtle': 7;
+  'border-default': 8;
+  'border-strong': 9;
+  'text-subtle': 10;
+  'text-default': 11;
+  'base-default': 12;
+  'base-hover': 13;
+  'base-active': 14;
+  'base-contrast-subtle': 15;
+  'base-contrast-default': 16;
+};
+
+type SemanticColorMapping = {
+  [K in keyof SemanticColorNumberMap]: {
+    name: K;
+    number: SemanticColorNumberMap[K];
+  };
+};
+
+export type ColorMetadataByName = {
+  [P in keyof SemanticColorMapping]: SemanticColorMapping[P] & ColorMetadata;
+};
+
 export type ColorMetadata = {
-  name: string;
+  name: ColorNames;
+  number: ColorNumber;
   displayName: string;
   description: string;
   group: string;
@@ -16,15 +48,14 @@ export type ColorMetadata = {
   };
 };
 
-export type ColorInfo = Partial<ColorMetadata> & {
-  number: ColorNumber;
+export type Color = ColorMetadata & {
   hex: CssColor;
 };
 
 export type ThemeInfo = {
-  light: ColorInfo[];
-  dark: ColorInfo[];
-  contrast: ColorInfo[];
+  light: Color[];
+  dark: Color[];
+  contrast: Color[];
 };
 
 /**

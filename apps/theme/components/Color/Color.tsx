@@ -3,7 +3,6 @@ import { SunIcon } from '@navikt/aksel-icons';
 import { Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
-import { useThemeStore } from '../../store';
 
 import classes from './Color.module.css';
 
@@ -21,7 +20,6 @@ export const Color = forwardRef<HTMLButtonElement, ColorProps>(
     { color, contrast, featured, lightness, showColorMeta = true, ...rest },
     ref,
   ) => {
-    const setSelectedColor = useThemeStore((state) => state.setSelectedColor);
     return (
       <>
         <Slottable>
@@ -45,7 +43,7 @@ export const Color = forwardRef<HTMLButtonElement, ColorProps>(
               {contrast}
             </div>
             <div className={classes.lightness}>
-              <SunIcon title='a11y-title' fontSize='1.3rem' />
+              <SunIcon title='sol' fontSize='1.3rem' />
               {lightness}
             </div>
           </>
