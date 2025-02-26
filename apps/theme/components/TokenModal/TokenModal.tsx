@@ -58,7 +58,7 @@ export const TokenModal = () => {
           return modalRef.current?.showModal();
         }}
       >
-        <StarIcon title='a11y-title' fontSize='1.5rem' />
+        <StarIcon aria-hidden fontSize='1.5rem' />
         Ta i bruk tema
       </Dialog.Trigger>
       <Dialog

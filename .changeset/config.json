@@ -2,7 +2,9 @@
   "$schema": "https://unpkg.com/@changesets/config@3.0.2/schema.json",
   "changelog": [
     "@svitejs/changesets-changelog-github-compact",
-    { "repo": "digdir/designsystemet" }
+    {
+      "repo": "digdir/designsystemet"
+    }
   ],
   "commit": false,
   "fixed": [
