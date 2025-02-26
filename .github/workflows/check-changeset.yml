@@ -15,4 +15,4 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/gh-setup
       - name: Check if changeset status
-        run: yarn changeset status --since=main
+        run: yarn changeset status --since=${{ github.event.pull_request.base.ref}}
