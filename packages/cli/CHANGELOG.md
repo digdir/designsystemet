@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.100.52-next.0
+
+### Patch Changes
+
+- Invalidate system colors as color names (success, danger, warning, info, blue, green, orange, red, purple) ([#3194](https://github.com/digdir/designsystemet/pull/3194))
+
 ## 0.100.51
 
 - 2d1da9a: Testing snapshot release
