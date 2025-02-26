@@ -26,6 +26,7 @@
 :root,
 [data-color-scheme] {
   --dsc-focus-boxShadow: 0 0 0 var(--ds-border-width-focus) var(--ds-color-focus-inner);
+  --dsc-focus-boxShadow-inset: inset 0 0 0 calc(var(--ds-border-width-focus) * 2) var(--ds-color-focus-inner);
   --dsc-focus-outline: var(--ds-color-focus-outer) solid var(--ds-border-width-focus);
 }
 
@@ -44,6 +45,13 @@ body,
 }
 
 /**
+ * Apply a focus outline that is inset on an element when it is focused with keyboard
+ */
+.ds-focus--inset:focus-visible {
+  @composes ds-focus--visible--inset from './base.css';
+}
+
+/**
  * Focus outline that can be composed if it needs a specific selector
  */
 .ds-focus--visible {
@@ -54,6 +62,27 @@ body,
   box-shadow: var(--_ds--focus, var(--dsc-focus-boxShadow));
   outline: var(--_ds--focus, var(--dsc-focus-outline));
   outline-offset: var(--_ds--focus, var(--ds-border-width-focus));
+
+  /**
+   * Using CSS custom properties toggle trick to ensure focus-visible is only shown on outermost element
+   * https://css-tricks.com/the-css-custom-property-toggle-trick/
+   */
+  * {
+    --_ds--focus: ;
+  }
+}
+
+/**
+ * Focus outline on the inside that can be composed if it needs a specific selector
+ */
+.ds-focus--visible--inset {
+  /**
+   * We use both box-shadow and outline to ensure that the focus style is visible,
+   * in case box-shadow is overridden.
+   */
+  box-shadow: var(--_ds--focus, var(--dsc-focus-boxShadow-inset));
+  outline: var(--_ds--focus, var(--dsc-focus-outline));
+  outline-offset: calc(var(--_ds--focus, var(--ds-border-width-focus)) * -1);
 
   /**
    * Using CSS custom properties toggle trick to ensure focus-visible is only shown on outermost element
