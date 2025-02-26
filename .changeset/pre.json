@@ -12,5 +12,7 @@
     "@digdir/designsystemet-theme": "0.100.51",
     "figma-plugin": "0.3.0"
   },
-  "changesets": []
+  "changesets": [
+    "hungry-singers-fry"
+  ]
 }
