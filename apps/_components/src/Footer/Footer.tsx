@@ -68,7 +68,7 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
             </div>
             <Button
               asChild
-              variant='secondary'
+              data-variant='secondary'
               data-color='neutral'
               data-size='sm'
             >

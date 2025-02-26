@@ -10,7 +10,7 @@ export type SearchButtonProps = MergeRight<
      * Variant of the button
      * @default 'primary'
      */
-    variant?: 'primary' | 'secondary';
+    'data-variant'?: 'primary' | 'secondary';
     /**
      * Children of the button
      * @default 'Søk'

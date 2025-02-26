@@ -27,7 +27,7 @@ export const Preview: Story = (args) => <Avatar {...args} />;
 
 Preview.args = {
   'aria-label': 'Ola Nordmann',
-  variant: 'circle',
+  'data-variant': 'circle',
   children: '',
 };
 
@@ -59,12 +59,12 @@ export const ColorVariants: Story = () => (
 
 export const ShapeVariants: Story = () => (
   <>
-    <Avatar variant='circle' aria-label='variant circle' />
-    <Avatar variant='square' aria-label='variant square' />
-    <Avatar variant='circle' aria-label='Ola Nordman'>
+    <Avatar data-variant='circle' aria-label='variant circle' />
+    <Avatar data-variant='square' aria-label='variant square' />
+    <Avatar data-variant='circle' aria-label='Ola Nordman'>
       ON
     </Avatar>
-    <Avatar variant='square' aria-label='Ola Nordman'>
+    <Avatar data-variant='square' aria-label='Ola Nordman'>
       ON
     </Avatar>
   </>
@@ -78,7 +78,7 @@ export const WithImage: Story = () => (
 
 export const InDropdown: Story = () => (
   <Dropdown.TriggerContext>
-    <Dropdown.Trigger variant='tertiary'>
+    <Dropdown.Trigger data-variant='tertiary'>
       <Avatar aria-label='Ola Nordmann' data-size='sm'>
         ON
       </Avatar>

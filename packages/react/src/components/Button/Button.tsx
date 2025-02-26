@@ -13,7 +13,7 @@ export type ButtonProps = MergeRight<
      * Specify which variant to use
      * @default 'primary'
      */
-    variant?: 'primary' | 'secondary' | 'tertiary';
+    'data-variant'?: 'primary' | 'secondary' | 'tertiary';
     /**
      * Toggle icon only styling, pass icon as children
      * @default false
@@ -53,7 +53,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       icon = false,
       loading = false,
-      variant = 'primary',
+      'data-variant': variant = 'primary',
       ...rest
     },
     ref,

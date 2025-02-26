@@ -191,7 +191,7 @@ export const Composed: Story = () => (
           }}
         >
           <Heading>Rolle 1</Heading>
-          <Button variant='secondary' data-color='danger' data-size='sm'>
+          <Button data-variant='secondary' data-color='danger' data-size='sm'>
             <TrashFillIcon aria-hidden />
             Fjern
           </Button>
@@ -212,7 +212,7 @@ export const Composed: Story = () => (
         <Textfield label='Etternavn' />
       </Card.Block>
       <Card.Block>
-        <Button variant='secondary' data-color='accent' data-size='sm'>
+        <Button data-variant='secondary' data-color='accent' data-size='sm'>
           Legg til rolle
           <PlusIcon aria-hidden />
         </Button>

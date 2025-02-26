@@ -144,4 +144,4 @@ No changes
 No changes
 
 ### Ingress
-This component has been removed, use `<Paragraph variant="long" />`
+This component has been removed, use `<Paragraph data-variant="long" />`

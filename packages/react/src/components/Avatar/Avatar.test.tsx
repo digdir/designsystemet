@@ -9,7 +9,7 @@ describe('Avatar', () => {
   });
 
   it('should render correctly with custom props', () => {
-    render(<Avatar data-size='lg' variant='square' aria-label='ola' />);
+    render(<Avatar data-size='lg' data-variant='square' aria-label='ola' />);
     expect(screen.getByRole('img')).toBeInTheDocument();
     expect(screen.getByRole('img')).toHaveAttribute('data-size', 'lg');
     expect(screen.getByRole('img')).toHaveAttribute('data-variant', 'square');

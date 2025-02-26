@@ -185,7 +185,7 @@ export const DialogWithForm: StoryFn<typeof Dialog> = () => {
             Send inn skjema
           </Button>
           <Button
-            variant='secondary'
+            data-variant='secondary'
             onClick={() => dialogRef.current?.close()}
           >
             Avbryt
@@ -237,7 +237,7 @@ export const DialogWithCombobox: StoryFn<typeof Dialog> = () => {
           </Dialog.Block>
           <Dialog.Block>
             <Button
-              variant='secondary'
+              data-variant='secondary'
               onClick={() => dialogRef.current?.close()}
             >
               Avbryt

@@ -8,7 +8,7 @@ import { Popover } from '../Popover';
 import type { PopoverProps } from '../Popover';
 
 export type DropdownProps = MergeRight<
-  DefaultProps & Omit<PopoverProps, 'variant'>,
+  DefaultProps & Omit<PopoverProps, 'data-variant'>,
   {
     /**
      * The placement of the dropdown

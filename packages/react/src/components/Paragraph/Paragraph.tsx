@@ -12,7 +12,7 @@ export type ParagraphProps = {
    *  Adjusts styling for paragraph length
    *  @default 'default'
    */
-  variant?: 'long' | 'default' | 'short';
+  'data-variant'?: 'long' | 'default' | 'short';
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
@@ -29,7 +29,7 @@ export type ParagraphProps = {
  */
 export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
   function Paragraph(
-    { className, asChild, variant = 'default', ...rest },
+    { className, asChild, 'data-variant': variant = 'default', ...rest },
     ref,
   ) {
     const Component = asChild ? Slot : 'p';

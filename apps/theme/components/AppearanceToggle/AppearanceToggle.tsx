@@ -41,7 +41,7 @@ export const AppearanceToggle = ({
             setActive(colorScheme.value);
             setColorScheme(colorScheme.value);
           }}
-          variant={colorScheme.value === active ? 'primary' : 'secondary'}
+          data-variant={colorScheme.value === active ? 'primary' : 'secondary'}
           data-color='neutral'
           aria-label={`Sett til ${colorScheme.name} visning`}
           // biome-ignore lint/a11y/useSemanticElements: <explanation>

@@ -34,7 +34,7 @@ export const FinishPage = ({ onPrevClick }: FinishPageProps) => {
             data-size='sm'
             className={classes.btn}
             onClick={() => onPrevClick()}
-            variant='secondary'
+            data-variant='secondary'
           >
             <ChevronLeftIcon title='a11y-title' fontSize='1.5rem' />
             Border radius

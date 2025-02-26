@@ -162,7 +162,7 @@ function Theme() {
         </div>
       </div>
       <div className={classes.wrapper}>
-        <Paragraph variant='long'>
+        <Paragraph data-variant='long'>
           Gå til{' '}
           <Link href='https://theme.designsystemet.no/' target='_blank'>
             Temabyggeren

@@ -33,7 +33,7 @@ const PageLayout = ({ content, data }: PageLayoutProps) => {
                 {data.backText}
               </NextLink>
             </Link>
-            <Paragraph data-size='lg' variant='short' asChild>
+            <Paragraph data-size='lg' data-variant='short' asChild>
               <div className={classes.meta}>
                 <span>{data.author && <span>{data.author}</span>}</span>
                 <span className={classes.separator}> - </span>

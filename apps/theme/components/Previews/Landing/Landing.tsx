@@ -36,11 +36,11 @@ export const Landing = () => {
             </div>
           </div>
           <div className={classes.headerRight}>
-            <Button variant='tertiary'>
+            <Button data-variant='tertiary'>
               <MagnifyingGlassIcon title='a11y-title' fontSize='1.6rem' />
               Søk
             </Button>
-            <Button variant='tertiary'>
+            <Button data-variant='tertiary'>
               <MenuHamburgerIcon title='a11y-title' fontSize='1.6rem' />
               Meny
             </Button>
@@ -56,7 +56,7 @@ export const Landing = () => {
               A need explain have out been making it
             </Heading>
             <Paragraph
-              variant='long'
+              data-variant='long'
               data-size='sm'
               className={classes.bannerIngress}
             >

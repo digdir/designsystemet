@@ -33,7 +33,7 @@ type ImageBannerButtonProps = {
   text: string;
   prefix?: React.ReactNode;
   href: string;
-  variant?: ButtonProps['variant'];
+  variant?: ButtonProps['data-variant'];
   color?: ButtonProps['color'];
 };
 
@@ -108,7 +108,7 @@ const ImageBanner = ({
               {buttons.map((item, index) => (
                 <Button
                   key={index}
-                  variant={item.variant ?? 'secondary'}
+                  data-variant={item.variant ?? 'secondary'}
                   color={item.color ?? 'accent'}
                   asChild
                 >

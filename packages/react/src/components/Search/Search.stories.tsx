@@ -62,7 +62,7 @@ export const Variants: StoryFn<typeof Search> = () => (
     <Search>
       <Search.Input aria-label='Søk' />
       <Search.Clear />
-      <Search.Button variant='secondary' />
+      <Search.Button data-variant='secondary' />
     </Search>
   </div>
 );

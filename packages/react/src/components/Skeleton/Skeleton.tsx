@@ -18,7 +18,7 @@ export type SkeletonProps = {
    * The shape variant
    * @default 'rectangle'
    */
-  variant?: 'rectangle' | 'circle' | 'text';
+  'data-variant'?: 'rectangle' | 'circle' | 'text';
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
@@ -26,17 +26,17 @@ export type SkeletonProps = {
   asChild?: boolean;
 } & HTMLAttributes<HTMLSpanElement> &
   (
-    | { variant: 'text'; characters?: number }
-    | { variant?: 'rectangle' | 'circle'; characters?: never }
+    | { 'data-variant': 'text'; characters?: number }
+    | { 'data-variant'?: 'rectangle' | 'circle'; characters?: never }
   );
 
 /**
  * Skeleton is used to represent a draft of page while the content loads.
  *
  * @example
- * <Skeleton variant="circle" />
- * <Skeleton variant="text" />
- * <Skeleton variant="rectangle" />
+ * <Skeleton data-variant="circle" />
+ * <Skeleton data-variant="text" />
+ * <Skeleton data-variant="rectangle" />
  */
 export const Skeleton = forwardRef<HTMLSpanElement, SkeletonProps>(
   function Skeleton(
@@ -45,7 +45,7 @@ export const Skeleton = forwardRef<HTMLSpanElement, SkeletonProps>(
       className,
       height,
       style,
-      variant = 'rectangle',
+      'data-variant': variant = 'rectangle',
       width,
       ...rest
     },

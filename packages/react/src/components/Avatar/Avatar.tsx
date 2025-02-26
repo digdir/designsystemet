@@ -21,7 +21,7 @@ export type AvatarProps = MergeRight<
      *
      * @default 'circle'
      */
-    variant?: 'circle' | 'square';
+    'data-variant'?: 'circle' | 'square';
     /**
      * Initials to display inside the avatar.
      */
@@ -54,7 +54,7 @@ export type AvatarProps = MergeRight<
 export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
   {
     'aria-label': ariaLabel,
-    variant = 'circle',
+    'data-variant': variant = 'circle',
     className,
     children,
     initials,

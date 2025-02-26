@@ -55,7 +55,7 @@ export const ColorPage = () => {
           <Heading data-size='2xs'>Hovedfarger</Heading>
           {colors.main.length < 40 && (
             <Button
-              variant='tertiary'
+              data-variant='tertiary'
               data-size='sm'
               className={classes.AddBtn}
               onClick={() => {
@@ -102,7 +102,7 @@ export const ColorPage = () => {
           <Heading data-size='2xs'>Støttefarger</Heading>
           {colors.support.length < 40 && (
             <Button
-              variant='tertiary'
+              data-variant='tertiary'
               data-size='sm'
               className={classes.AddBtn}
               onClick={() => {

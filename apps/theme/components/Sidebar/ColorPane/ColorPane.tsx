@@ -77,7 +77,7 @@ export const ColorPane = ({
       <div className={classes.topBtnGroup}>
         <Button
           data-size='sm'
-          variant='tertiary'
+          data-variant='tertiary'
           onClick={closeTab}
           className={classes.back}
         >
@@ -89,7 +89,7 @@ export const ColorPane = ({
         >
           <Button
             data-size='sm'
-            variant='tertiary'
+            data-variant='tertiary'
             data-color='danger'
             onClick={() => {
               if (disableRemoveButton) return;
@@ -160,7 +160,7 @@ export const ColorPane = ({
         <Button
           data-size='sm'
           color='neutral'
-          variant='secondary'
+          data-variant='secondary'
           onClick={closeTab}
         >
           Avbryt

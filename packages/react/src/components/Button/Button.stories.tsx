@@ -41,14 +41,14 @@ export const Preview: Story = {
   args: {
     children: 'Knapp',
     disabled: false,
-    variant: 'primary',
+    'data-variant': 'primary',
     icon: false,
   },
 };
 
 export const Primary: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='primary' data-color='accent'>
+    <Button data-variant='primary' data-color='accent'>
       Lagre
     </Button>
   </>
@@ -56,7 +56,7 @@ export const Primary: StoryFn<typeof Button> = () => (
 
 export const Secondary: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='secondary' data-color='accent'>
+    <Button data-variant='secondary' data-color='accent'>
       Avbryt
     </Button>
   </>
@@ -64,7 +64,7 @@ export const Secondary: StoryFn<typeof Button> = () => (
 
 export const Tertiary: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='tertiary' data-color='accent'>
+    <Button data-variant='tertiary' data-color='accent'>
       <PencilWritingIcon aria-hidden />
       Rediger
     </Button>
@@ -73,13 +73,13 @@ export const Tertiary: StoryFn<typeof Button> = () => (
 
 export const Accent: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='primary' data-color='accent'>
+    <Button data-variant='primary' data-color='accent'>
       Gå videre
     </Button>
-    <Button variant='secondary' data-color='accent'>
+    <Button data-variant='secondary' data-color='accent'>
       Fortsett senere
     </Button>
-    <Button variant='tertiary' data-color='accent'>
+    <Button data-variant='tertiary' data-color='accent'>
       Avbryt
     </Button>
   </>
@@ -99,15 +99,15 @@ AccentPressed.parameters = {
 
 export const Neutral: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='primary' data-color='neutral'>
+    <Button data-variant='primary' data-color='neutral'>
       <PrinterSmallIcon aria-hidden />
       Skriv ut
     </Button>
-    <Button variant='secondary' data-color='neutral'>
+    <Button data-variant='secondary' data-color='neutral'>
       <PencilWritingIcon aria-hidden />
       Rediger
     </Button>
-    <Button variant='tertiary' data-color='neutral'>
+    <Button data-variant='tertiary' data-color='neutral'>
       <ArrowForwardIcon aria-hidden />
       Videresend
     </Button>
@@ -128,15 +128,15 @@ NeutralPressed.parameters = {
 
 export const Danger: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='primary' data-color='danger'>
+    <Button data-variant='primary' data-color='danger'>
       <TrashIcon aria-hidden />
       Slett
     </Button>
-    <Button variant='secondary' data-color='danger'>
+    <Button data-variant='secondary' data-color='danger'>
       <TrashIcon aria-hidden />
       Slett
     </Button>
-    <Button variant='tertiary' data-color='danger'>
+    <Button data-variant='tertiary' data-color='danger'>
       <TrashIcon aria-hidden />
       Slett
     </Button>
@@ -157,13 +157,13 @@ DangerPressed.parameters = {
 
 export const CombinedColors: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='primary' data-color='neutral'>
+    <Button data-variant='primary' data-color='neutral'>
       Publiser
     </Button>
-    <Button variant='secondary' data-color='neutral'>
+    <Button data-variant='secondary' data-color='neutral'>
       Lagre kladd
     </Button>
-    <Button variant='tertiary' data-color='danger'>
+    <Button data-variant='tertiary' data-color='danger'>
       Forkast
     </Button>
   </>
@@ -180,11 +180,11 @@ export const AsLink: StoryFn<typeof Button> = () => (
 
 export const TextAndIcon: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='primary' data-color='neutral'>
+    <Button data-variant='primary' data-color='neutral'>
       Start utfylling
       <ArrowRightIcon aria-hidden />
     </Button>
-    <Button variant='secondary' data-color='neutral'>
+    <Button data-variant='secondary' data-color='neutral'>
       <ArrowUndoIcon aria-hidden />
       Angre
     </Button>
@@ -193,13 +193,13 @@ export const TextAndIcon: StoryFn<typeof Button> = () => (
 
 export const Loading: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='primary' loading>
+    <Button data-variant='primary' loading>
       Laster...
     </Button>
-    <Button variant='secondary' loading>
+    <Button data-variant='secondary' loading>
       Laster...
     </Button>
-    <Button variant='tertiary' loading>
+    <Button data-variant='tertiary' loading>
       Laster...
     </Button>
   </>
@@ -207,24 +207,24 @@ export const Loading: StoryFn<typeof Button> = () => (
 
 export const Icons: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='primary' data-size='sm' icon>
+    <Button data-variant='primary' data-size='sm' icon>
       <CogIcon title='Innstillinger' />
     </Button>
-    <Button variant='primary' data-size='sm'>
+    <Button data-variant='primary' data-size='sm'>
       <CogIcon aria-hidden />
       Small
     </Button>
-    <Button variant='primary' data-size='md' icon>
+    <Button data-variant='primary' data-size='md' icon>
       <CogIcon title='Innstillinger' />
     </Button>
-    <Button variant='primary' data-size='md'>
+    <Button data-variant='primary' data-size='md'>
       <CogIcon aria-hidden />
       Medium
     </Button>
-    <Button variant='primary' data-size='lg' icon>
+    <Button data-variant='primary' data-size='lg' icon>
       <CogIcon title='Innstillinger' />
     </Button>
-    <Button variant='primary' data-size='lg'>
+    <Button data-variant='primary' data-size='lg'>
       <CogIcon aria-hidden />
       Large
     </Button>
@@ -237,7 +237,7 @@ export const IconOnly: StoryFn<typeof Button> = () => (
       <Button
         icon
         data-color='neutral'
-        variant='tertiary'
+        data-variant='tertiary'
         aria-label='Legg til ny'
       >
         <PlusCircleIcon aria-hidden />
@@ -247,7 +247,7 @@ export const IconOnly: StoryFn<typeof Button> = () => (
       <Button
         icon
         data-color='neutral'
-        variant='tertiary'
+        data-variant='tertiary'
         aria-label='Varslinger'
       >
         <BellIcon aria-hidden />
@@ -257,7 +257,7 @@ export const IconOnly: StoryFn<typeof Button> = () => (
       <Button
         icon
         data-color='neutral'
-        variant='tertiary'
+        data-variant='tertiary'
         aria-label='Innstillinger'
       >
         <CogIcon aria-hidden />
@@ -274,13 +274,13 @@ IconOnly.parameters = {
 
 export const IconsOnlyPrimary: StoryFn<typeof Button> = () => (
   <>
-    <Button icon variant='primary' data-size='sm'>
+    <Button icon data-variant='primary' data-size='sm'>
       <CogIcon title='Innstillinger' />
     </Button>
-    <Button icon variant='primary' data-size='md'>
+    <Button icon data-variant='primary' data-size='md'>
       <CogIcon title='Innstillinger' />
     </Button>
-    <Button icon variant='primary' data-size='lg'>
+    <Button icon data-variant='primary' data-size='lg'>
       <CogIcon title='Innstillinger' />
     </Button>
   </>

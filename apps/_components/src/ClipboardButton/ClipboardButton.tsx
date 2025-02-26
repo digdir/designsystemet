@@ -36,7 +36,7 @@ export const ClipboardButton = ({
           }
           onClick={() => onBtnClick(value)}
           icon={!text}
-          variant='tertiary'
+          data-variant='tertiary'
           data-color='neutral'
           data-size='sm'
           aria-label={ariaLabel}

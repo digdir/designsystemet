@@ -29,7 +29,7 @@ export const BorderRadiusInput = () => {
             key={index}
           >
             <Button
-              variant='tertiary'
+              data-variant='tertiary'
               data-color='neutral'
               className={cl(classes.box)}
               onClick={() => {

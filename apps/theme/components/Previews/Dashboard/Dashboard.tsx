@@ -44,7 +44,7 @@ export const Dashboard = () => {
           <Button
             color='neutral'
             data-size='sm'
-            variant='tertiary'
+            data-variant='tertiary'
             className={cl(classes.btn, classes.btnActive)}
           >
             <HouseIcon title='a11y-title' fontdata-size='1.5rem' />
@@ -53,7 +53,7 @@ export const Dashboard = () => {
           <Button
             color='neutral'
             data-size='sm'
-            variant='tertiary'
+            data-variant='tertiary'
             className={classes.btn}
           >
             <NewspaperIcon title='a11y-title' fontdata-size='1.5rem' />
@@ -62,7 +62,7 @@ export const Dashboard = () => {
           <Button
             color='neutral'
             data-size='sm'
-            variant='tertiary'
+            data-variant='tertiary'
             className={classes.btn}
           >
             <FileTextIcon title='a11y-title' fontdata-size='1.5rem' />
@@ -71,7 +71,7 @@ export const Dashboard = () => {
           <Button
             color='neutral'
             data-size='sm'
-            variant='tertiary'
+            data-variant='tertiary'
             className={classes.btn}
           >
             <PersonGroupIcon title='a11y-title' fontdata-size='1.7rem' />
@@ -80,7 +80,7 @@ export const Dashboard = () => {
           <Button
             color='neutral'
             data-size='sm'
-            variant='tertiary'
+            data-variant='tertiary'
             className={classes.btn}
           >
             <PadlockLockedIcon title='a11y-title' fontdata-size='1.7rem' />
@@ -89,7 +89,7 @@ export const Dashboard = () => {
           <Button
             color='neutral'
             data-size='sm'
-            variant='tertiary'
+            data-variant='tertiary'
             className={classes.btn}
           >
             <CogIcon title='a11y-title' fontdata-size='1.7rem' />

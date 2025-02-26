@@ -45,7 +45,7 @@ type BannerIngressProps = HTMLAttributes<HTMLParagraphElement>;
 const BannerIngress = ({ className, ...props }: BannerIngressProps) => {
   return (
     <Paragraph
-      variant='long'
+      data-variant='long'
       className={cl(classes.ingress, className)}
       {...props}
     />

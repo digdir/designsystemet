@@ -134,7 +134,7 @@ const Header = ({
           <nav>
             {isHamburger && (
               <Button
-                variant='tertiary'
+                data-variant='tertiary'
                 icon={true}
                 data-color='neutral'
                 aria-expanded={open}
@@ -213,7 +213,7 @@ const Header = ({
               >
                 <Button
                   aria-label={`Bytt til ${theme === 'light' ? 'mørk' : 'lys'} modus`}
-                  variant='tertiary'
+                  data-variant='tertiary'
                   icon={true}
                   data-color='neutral'
                   onClick={() => {

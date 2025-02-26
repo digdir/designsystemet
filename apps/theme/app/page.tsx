@@ -69,7 +69,11 @@ export default function Home() {
               Sett i gang med å bygge ditt
               <span className={classes.headerText}> eget tema</span>
             </Heading>
-            <Paragraph data-size='md' variant='long' className={classes.desc}>
+            <Paragraph
+              data-size='md'
+              data-variant='long'
+              className={classes.desc}
+            >
               Skal du ta i bruk Designsystemet i din egen organisasjon med dine
               egne profilfarger og preferanser? Temabyggeren hjelper deg i gang.
             </Paragraph>
@@ -80,7 +84,7 @@ export default function Home() {
                   Bygg tema
                 </NextLink>
               </Button>
-              <Button data-color='neutral' variant='secondary' asChild>
+              <Button data-color='neutral' data-variant='secondary' asChild>
                 <NextLink href='https://www.designsystemet.no/grunnleggende/for-designere/eget-tema'>
                   <BookIcon title='a11y-title' fontSize='1.5rem' />
                   Dokumentasjon

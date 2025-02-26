@@ -37,7 +37,7 @@ const NavigationCard = ({
           {title}
         </Heading>
 
-        <Paragraph data-size='sm' variant='long' className={classes.desc}>
+        <Paragraph data-size='sm' data-variant='long' className={classes.desc}>
           {description}
         </Paragraph>
       </Link>

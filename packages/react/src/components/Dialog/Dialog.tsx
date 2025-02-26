@@ -133,7 +133,7 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
               icon
               name='close'
               type='submit'
-              variant='tertiary'
+              data-variant='tertiary'
             />
           </form>
         )}

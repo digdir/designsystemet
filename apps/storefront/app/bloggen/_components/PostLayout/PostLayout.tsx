@@ -51,7 +51,7 @@ function PostLayout({
             <Heading level={1} data-size='xl'>
               {heading}
             </Heading>
-            <Paragraph className={classes.ingress} variant='long'>
+            <Paragraph className={classes.ingress} data-variant='long'>
               {ingress}
             </Paragraph>
             <Paragraph data-size='sm' className={classes.meta}>

@@ -95,7 +95,7 @@ export const ColorPreview = () => {
         </div>
         <div className={classes.btnGroup}>
           <Button data-size='sm'>Primær</Button>
-          <Button data-size='sm' variant='secondary'>
+          <Button data-size='sm' data-variant='secondary'>
             Sekundær
           </Button>
         </div>
@@ -138,7 +138,7 @@ export const ColorPreview = () => {
         </div>
         <div className={classes.btnGroup}>
           <Button data-size='sm'>Primær</Button>
-          <Button data-size='sm' variant='secondary'>
+          <Button data-size='sm' data-variant='secondary'>
             Sekundær
           </Button>
         </div>

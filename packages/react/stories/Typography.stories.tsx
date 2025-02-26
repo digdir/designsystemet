@@ -18,7 +18,7 @@ export const EksempelTekst: StoryFn = () => (
       Samordnet registermelding (H1)
     </Heading>
 
-    <Paragraph style={{ marginBottom: 'var(--ds-size-2)' }} variant='long'>
+    <Paragraph style={{ marginBottom: 'var(--ds-size-2)' }} data-variant='long'>
       Her kan du registrere nye virksomheter, som for eksempel
       enkeltpersonforetak, foreninger, aksjeselskap, ansvarlige selskap,
       samvirkeforetak og stiftelser. De aller fleste organisasjonsformene kan
@@ -49,7 +49,10 @@ export const EksempelTekst: StoryFn = () => (
       Signering (H3)
     </Heading>
 
-    <Paragraph variant='short' style={{ marginBottom: 'var(--ds-size-2)' }}>
+    <Paragraph
+      data-variant='short'
+      style={{ marginBottom: 'var(--ds-size-2)' }}
+    >
       Når du skal signere meldingen vil du motta en signeringsoppgave i
       meldingsboksen din i Altinn. Meldingen blir ikke sendt til behandling før
       alle har signert.
@@ -79,7 +82,10 @@ export const EksempelTekst: StoryFn = () => (
       Personvern (H5)
     </Heading>
 
-    <Paragraph variant='short' style={{ marginBottom: 'var(--ds-size-2)' }}>
+    <Paragraph
+      data-variant='short'
+      style={{ marginBottom: 'var(--ds-size-2)' }}
+    >
       Personvernerklæringen gir informasjon om hvilke personopplysninger vi
       behandler, hvordan disse blir behandlet og hvilke rettigheter du har.
     </Paragraph>
@@ -96,7 +102,7 @@ export const EksempelTekstDark: StoryFn = () => (
       Samordnet registermelding (H1)
     </Heading>
 
-    <Paragraph style={{ marginBottom: 'var(--ds-size-2)' }} variant='long'>
+    <Paragraph style={{ marginBottom: 'var(--ds-size-2)' }} data-variant='long'>
       Her kan du registrere nye virksomheter, som for eksempel
       enkeltpersonforetak, foreninger, aksjeselskap, ansvarlige selskap,
       samvirkeforetak og stiftelser. De aller fleste organisasjonsformene kan
@@ -127,7 +133,10 @@ export const EksempelTekstDark: StoryFn = () => (
       Signering (H3)
     </Heading>
 
-    <Paragraph variant='short' style={{ marginBottom: 'var(--ds-size-2)' }}>
+    <Paragraph
+      data-variant='short'
+      style={{ marginBottom: 'var(--ds-size-2)' }}
+    >
       Når du skal signere meldingen vil du motta en signeringsoppgave i
       meldingsboksen din i Altinn. Meldingen blir ikke sendt til behandling før
       alle har signert.
@@ -157,7 +166,10 @@ export const EksempelTekstDark: StoryFn = () => (
       Personvern (H5)
     </Heading>
 
-    <Paragraph variant='short' style={{ marginBottom: 'var(--ds-size-2)' }}>
+    <Paragraph
+      data-variant='short'
+      style={{ marginBottom: 'var(--ds-size-2)' }}
+    >
       Personvernerklæringen gir informasjon om hvilke personopplysninger vi
       behandler, hvordan disse blir behandlet og hvilke rettigheter du har.
     </Paragraph>

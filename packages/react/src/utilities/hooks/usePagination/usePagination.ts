@@ -104,7 +104,7 @@ export const usePagination = ({
             ? {
                 'aria-current': page === currentPage ? 'page' : undefined,
                 onClick: handleClick(page),
-                variant: page === currentPage ? 'primary' : 'tertiary',
+                'data-variant': page === currentPage ? 'primary' : 'tertiary',
               }
             : null) as PaginationButtonProps | null,
         }),
@@ -113,13 +113,13 @@ export const usePagination = ({
       prevButtonProps: {
         'aria-disabled': !hasPrev, // Using aria-disabled to support all HTML elements because of potential asChild
         onClick: handleClick(currentPage - 1),
-        variant: 'tertiary',
+        'data-variant': 'tertiary',
       } as PaginationButtonProps,
       /** Properties to spread on Pagination.Button used for next naviagation */
       nextButtonProps: {
         'aria-disabled': !hasNext, // Using aria-disabled to support all HTML elements because of potential asChild
         onClick: handleClick(currentPage + 1),
-        variant: 'tertiary',
+        'data-variant': 'tertiary',
       } as PaginationButtonProps,
       /** Indication if previous page action should be shown or not */
       hasPrev,

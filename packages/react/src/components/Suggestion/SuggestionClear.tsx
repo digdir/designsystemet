@@ -3,7 +3,10 @@ import { Button, type ButtonProps } from '../Button';
 import { SuggestionContext } from './Suggestion';
 
 /* We omit children since we render the icon with css */
-export type SuggestionClearProps = Omit<ButtonProps, 'variant' | 'children'> & {
+export type SuggestionClearProps = Omit<
+  ButtonProps,
+  'data-variant' | 'children'
+> & {
   /**
    * Aria label for the clear button
    * @default 'Tøm'
@@ -49,7 +52,7 @@ export const SuggestionClear = forwardRef<
   return (
     <Button
       ref={ref}
-      variant='tertiary'
+      data-variant='tertiary'
       type='reset'
       aria-label={label}
       onClick={handleClear}

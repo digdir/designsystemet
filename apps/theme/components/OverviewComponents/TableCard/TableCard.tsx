@@ -76,7 +76,7 @@ export const TableCard = () => {
                 >
                   <Avatar
                     aria-label={user.name}
-                    variant='circle'
+                    data-variant='circle'
                     className={classes.avatar}
                   >
                     <img src={user.avatar} alt='' />

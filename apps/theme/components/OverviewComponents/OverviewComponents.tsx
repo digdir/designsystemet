@@ -84,7 +84,7 @@ export const OverviewComponents = forwardRef<HTMLDivElement>(
                   <div className={classes.user} key={user.role}>
                     <Avatar
                       aria-label={user.name}
-                      variant='square'
+                      data-variant='square'
                       className={classes.avatar}
                     >
                       <img src='img/avatars/male2.png' alt='' />
@@ -95,7 +95,7 @@ export const OverviewComponents = forwardRef<HTMLDivElement>(
                     </div>
                     <Button
                       data-size='sm'
-                      variant='secondary'
+                      data-variant='secondary'
                       style={{ marginLeft: 'auto' }}
                     >
                       Følg

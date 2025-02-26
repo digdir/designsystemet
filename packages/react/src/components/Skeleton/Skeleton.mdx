@@ -15,7 +15,7 @@ import * as SkeletonStories from './Skeleton.stories';
 
 <Canvas of={SkeletonStories.Components} />
 
-Skeleton kommer i tre ulike varianter: `Skeleton variant="rectangle"`, `Skeleton variant="circle"`, og `Skeleton variant="text"`
+Skeleton kommer i tre ulike varianter: `Skeleton data-variant="rectangle"`, `Skeleton data-variant="circle"`, og `Skeleton data-variant="text"`
 Du kan bygge opp komponenter og seksjoner av siden din ved å bruke disse som byggeklosser. Målet er at resultatet skal etterligne innholdet som lastes.
 
 <Canvas of={SkeletonStories.UsageExample} />
@@ -23,7 +23,7 @@ Du kan bygge opp komponenter og seksjoner av siden din ved å bruke disse som by
 ### Skalering av komponenten
 
 Alle varianter av skeleton har `height` og `width` props, som kan brukes til å manuelt sette størrelser. Du kan oppgi størrelsene i `px`, `%`, eller andre enheter som kan settes direkte på style.
-For `Skeleton variant="text"` holder det ofte å sette kun `width` til det antallet bokstaver du antar vil oppstå, da høyden automatisk skaleres etter tekstinnholdet.
+For `Skeleton data-variant="text"` holder det ofte å sette kun `width` til det antallet bokstaver du antar vil oppstå, da høyden automatisk skaleres etter tekstinnholdet.
 
 Skeleton vil også tilpasse seg etter `children` som du sender inn til komponenten, men dette vil resultere i en høyde og bredde som matcher summen av samtlige barn.
 
@@ -31,7 +31,7 @@ Skeleton vil også tilpasse seg etter `children` som du sender inn til komponent
 
 ## Text
 
-`Skeleton variant="text"` skalerer automatisk etter den lokale fontstørrelsen, enten den kommer fra `parent`, `children` , eller fordi typografi-komponenter er satt til Skeletons gjennom `asChild`-propen.
-For best mulig resultat anbefaler vi at du bruker flere `Skeleton variant="text"` med  `width` til det antallet bokstaver du antar vil oppstå.
+`Skeleton data-variant="text"` skalerer automatisk etter den lokale fontstørrelsen, enten den kommer fra `parent`, `children` , eller fordi typografi-komponenter er satt til Skeletons gjennom `asChild`-propen.
+For best mulig resultat anbefaler vi at du bruker flere `Skeleton data-variant="text"` med  `width` til det antallet bokstaver du antar vil oppstå.
 
 <Canvas of={SkeletonStories.Text} />
