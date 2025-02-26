@@ -70,6 +70,27 @@ export const ColorPane = ({
     onClose();
   };
 
+  const checkNameIsValid = () => {
+    if (name === '') {
+      setColorError('Navnet på fargen kan ikke være tomt');
+      return false;
+    }
+
+    if (RESERVED_COLORS.includes(name.toLowerCase())) {
+      setColorError(
+        'Navnet på fargen kan ikke være det samme som våre systemfarger',
+      );
+      return false;
+    }
+    setColorError('');
+    return true;
+  };
+
+  const closeTab = () => {
+    setColorError('');
+    onClose();
+  };
+
   return (
     <div
       className={cl(classes.colorPage, type.includes('color') && classes.show)}
