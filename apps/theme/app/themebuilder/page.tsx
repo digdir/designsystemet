@@ -10,19 +10,19 @@ export default function Page() {
   useThemeParams();
 
   return (
-    <div className={classes.page} id='main'>
+    <main className={classes.page} id='main'>
       <ThemeHeader />
       <div className={classes.container}>
+        <div className={classes.sideBarContainer}>
+          <Sidebar />
+        </div>
         <div className={classes.content}>
           <div className={classes.toolbar}>
             <AppearanceToggle />
           </div>
           <ThemePages />
         </div>
-        <div className={classes.sideBarContainer}>
-          <Sidebar />
-        </div>
       </div>
-    </div>
+    </main>
   );
 }

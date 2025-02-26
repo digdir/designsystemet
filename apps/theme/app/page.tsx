@@ -65,7 +65,7 @@ export default function Home() {
         <Container>
           <div className={classes.header}>
             <Paragraph data-size='lg'>Designsystemet sin temabygger</Paragraph>
-            <Heading data-size='xl' className={classes.heading}>
+            <Heading data-size='xl' level={1} className={classes.heading}>
               Sett i gang med å bygge ditt
               <span className={classes.headerText}> eget tema</span>
             </Heading>

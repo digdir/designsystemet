@@ -25,7 +25,9 @@ export const ThemeHeader = () => {
             Gå tilbake til forsiden
           </NextLink>
         </Link>
-        <Heading data-size='md'>Temabygger</Heading>
+        <Heading data-size='md' level={1}>
+          Temabygger
+        </Heading>
       </div>
       {/* Tabs that change between overview and */}
       <div data-size='md' className={classes.tabs}>

@@ -238,6 +238,7 @@ export const ColorContrasts = () => {
             onChange={(e) => {
               setSelectedBaseColor(e.target.value);
             }}
+            aria-label='Velg farge for å se kontraster'
           >
             {(['main', 'neutral', 'support'] as Array<keyof typeof colors>).map(
               (group) =>
