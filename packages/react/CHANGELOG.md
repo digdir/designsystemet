@@ -1,5 +1,232 @@
 # Change Log
 
+## 0.100.52
+
+## 0.100.52-next.0
+
+## 0.100.51
+
+- e9ca9b7: Pagination:
+  - Remove attributes `currentPage` and `totalPages` on `Pagination`
+  - Replace `Pagination.Root` with `Paginaton`
+  - Replace `Pagination.Next`, `Pagination.Previous` and `Pagination.Ellipsis` with `Paginaton.Button`
+  - Make `usePagination` return spreadable props for subcomponents
+  - Add support for `showPages` and `onChange` in `usePagination`
+- 037255c: Pagination: Use data attrs instead of class names
+- 2d1da9a: Testing snapshot release
+- 047c9c1: Correctly mark dependencies as external. This ensures Accordion works when consumers have enabled tree-shaking.
+- 6c87035: Modal: add missing ModalRoot export
+- 0c86e30: :sparkles: New experimental component; **Suggestion**
+- 68ff033: RovingFocus: add `orientation` to support for different arrow directions, and add support home/end buttons
+  - Affects `ToggleGroup`, where up and down arrows can now be used
+  - Affects `ToggleGroup`, where home and end can now be used
+  - Affects `Tabs`, where home and end can now be used
+- 05b9ffb: **ErrorSummary**: Split `.Item` into two components
+  - `ErrorSummary.Item` renders a `li`
+  - `ErrorSummary.Link` renders the link
+- 90ca009: Accordion: Fix `defaultOpen` flicker on first render
+- a0b119d: Badge: Style using css attributes
+- 0006140: **Suggestion.Empty**: Remove `asChild` support
+- d4c1ddb: Pagination: Use empty `li` for ellipsis
+- 418b31a: chore: Fix rollup build warnings for react package
+- dacf6f0: Button: Remove `type` when `asChild={true}`
+- fe20145: Skiplink:
+  - Simplify DOM
+  - Add support for `forwardRef`
+- 436b876: Dropdown: Rename `DropdownContext` to `DropdownTriggerContext`
+- 518bf72: Input: Add whitelist for `type`
+- 6445a77: Tabs: Make arrow keys work in any direction
+- dda5b21: TableHeaderCell: Remove `sortable` prop, `sort` now handles this
+- 5601aad: Textfield: Removed `htmlSize`, you can now use native `size`
+- 722fbe4: dropdownmenu: Style using data attributes
+- 8ed875f: ValidationMessage: use `data-color="danger | success"` instead of `data-error="true | false"`
+- df0da9a: CSS: base sizing on font-size so all components can have all sizes, and naturally inherits size from context
+- 529d942: **Card**: Add `data-variant="default/tinted"`, `default` is default
+- f126c2c: Add missing `data-size` and `data-color` props to Details
+- bbd8086: Table: New hover prop and class for toggling hover on rows
+- 28deb68: Accordion: Animate open/close with CSS
+  - Replace onFound with onToggle
+- bbf2994: Search: New compound API
+- 7dff650: Table:
+  - Correct footer styling
+  - Automatic focus styling for sorting buttons
+- 9bb2fa6: Popover+Dropdown: Fix issue when combining controlled state with changing child elements
+- 519fe18: Dropdown: Add `Dropdown.Button` for more explicit API
+- b8f3153: ErrorSummary: Rename ErrorSummary.Root to ErrorSummary
+- 436b876: Modal: Rename `ModalContext` to `ModalTriggerContext`
+- 529d942: **Details**: Add `data-variant="default/tinted"`, `default` is default.
+  - This can also be controlled from `Card`
+- 209e2d5: Fixes so spacing is the same in checkbox and radio groups
+- 31c036d: Input: Sufficient color contrast for readonly
+- 8b2abdb: fix(Combobox): :bug: Button for toggling open/close should now close when open
+- ed179a1: Tabs:
+  - Renames `Tabs.Root` to `Tabs`
+  - Renames `Tabs.Content` to `Tabs.Panel`
+- 6f8d6e6: **Button**: `loading` type now correctly accepts a `ReactNode`
+- ba2f79f: Heading:
+  - Classes with data attributes
+  - Move base style to utility classes
+- 1297ddc: Field.Counter: Run on mount to support initial `defaultValue`
+- f3abcda: List: Remove `List.Root` and `List.Heading`, which changes API
+- f45d853: Alert, Avatar, Button, Divider, Link: Use data-attributes for variant, size and color and move icons to CSS
+- 7750ad9: Helptext: Remove component
+- c9c77f7: Radio, Checkbox: Spread `className` and `style` on outermost element
+- f71185c: Modal: css changes
+- 1002d87: Modal:
+  - Rename `Modal.Dialog` to `Modal`
+  - Rename `Modal.Root` to `Modal.Context`
+  - Replace `onInteractOutside` event with `backdropClose` boolean
+  - Replace `closeButton` and `closeButtonTitle` on `Modal.Header` with `closeButton` on `Modal`
+  - Add border to `Modal.Header` and `Modal.Footer`
+  - Remove `Modal.Content`
+  - Remove `onBeforeClose`
+  - Remove `subtitle` from `Modal.Header`
+- bdd9881: Box: Remove component
+- f1edfac: Popover: Make sure arrow does not leave the popover
+- 8277775: Body/Paragraph
+  - Add body-xl token
+  - Add xl paragraph
+  - Remove ingress tokens
+- adcaece: Ingress: Remove component
+  - Use `Paragraph variant='long'` instead
+- 581863a: Switch: Use `label` prop instead of `children` to render label
+- 16b2988: Modal: Fix `onClose` not being called
+- 6f8d6e6: **Button**: Make loading spinner scale accordion to button size
+- 05b9ffb: **ErrorSummary**: Add support for `asChild`
+- 2444bfe: Combobox: Make controlled input adhere to `inputValue` and send all change events
+- f242e53: Loosen default types for `data-color` and `data-size` to support accept `string`
+- 171c455: Fix `ref` type on `useCheckboxGroup` and `useRadioGroup`
+- 5601aad: Textfield: Refactored `characterLimit` to `counter` and now use new `Field.Counter` sub-component
+- 48f5713: Popover:
+  - Rename `<Popover.Root>` to `<Popover.Context>`
+  - use Popover API, allowing `<Popover>` to be used without `Popover.Context`
+  - Remove `portal` prop
+- 188bd19: `data-color` prop now supports type safety based on the token structure which was used to generate the theme CSS. Instructions for enabling this has been added to the README. An optional `react-types.d.ts` has also been added, which adds type hints for `data-color` and `data-size` to all HTML elements.
+- bf31bfc: Card:
+  - Allow `Card` with content placed directly inside
+  - Replace `Card.Header`, `Card.Content` and `Card.Footer` with `Card.Block`
+  - Replace `isLink` with anchor-in-heading + `click` handler for better accessibility
+- df037aa: Changed alias for type declaration exports
+  - React: export alias `./react-types.d.ts` was changed to `./react-types`
+  - Theme: added `types` field to default export in package.json, so now it should be posssible to use `"@digdir/designsystemet-theme"`
+- 518bf72: Textfield: Add whitelist for `type`
+- e9b6ec1: Fieldset: Move to compound components `Fieldset.Legend` and `Fieldset.Description`
+- 13b3b50: fix: Use correct DOM property for Popover API when used in React 19
+- 12e10e6: Modal: Remove `Modal.Header` and `Modal.Footer`, replace with `Modal.Block`
+- 7eebe0a: useRadioGroup: Add hook to easily control groups of `<Radio>` components
+- 7eebe0a: useCheckboxGroup: Add hook to easily control groups of `<Checkbox>` components
+- 99aa669: React: Set `"type": "module"` in `package.json`
+- a56150f: Upgrade to React 19 and other related dependencies
+- 9220945: Select: Rename from `NativeSelect`
+- ffe7811: ValidationMessage: Add support for all severity colors and tweak icons
+- 2e955f4: Export all utilities
+- a0c6744: Modal: Expose native close event object to onClose callback
+- 5601aad: Textfield: Now works as expected with `data-size`
+- f794c60: Rename `ErrorMessage` to `ValidationMessage`
+- 50efed2: Field: Adds `<Field>` component wrapping and connecting internal form elements for better accessibility
+- bea7b53: AccordionHeading: Correct name on types
+- c500f47: Field: Fix `position` not working
+- 8ad8c56: Disallow arbitrary strings for data-size, and only allow arbitrary strings for data-color if generated color types haven't been added to the downstream TypeScript environment. This fixes missing controls for data-size and data-color in the Storybook docs.
+- 5601aad: Textfield: Added `multiline` for switching between `input` and `textarea`
+- 79c8f0d: Fixes issue where all React prop types were inlined instead of referenced
+- fea6de8: **Checkbox**: Rename `validation` to `error`
+- b03692a: Table: Set sort button type to prevent form submit
+- 7dceadd: DropdownMenu:
+  - Rename from `DropdownMenu` to `Dropdown`
+  - Change API and structure
+  - Rename `.Root` to `.Context`
+  - Rename `.Content` to `Dropdown`
+- 3451704: Tabs: css changes
+- c00a293: Rename to `Modal` to `Dialog`
+- 5d1fe24: Divider: hide from screen readers
+- f1424ff: Tooltip: Be able to send `string` as children
+- 5601aad: Textfield: Removed `hideLabel`, use `aria-label` or `aria-describedby` for "hidden" labels
+- 39499b8: Tooltip: Use popover API
+  - Removes `delay`, this is now `--dsc-tooltip-transition-delay`
+  - Removes `defaultOpen`
+  - Removes `portal`
+  - Removes ability to hover to keep open
+- 4276d94: Tabs: Content will get focus when it has no focusable elements
+- c2b78ed: ToggleGroup: Rename ToggleGroup.Root to ToggleGroup
+- 8cdd5c5: Heading: default level is now 2
+- 1767724: React components and css now support custom colors through the `data-color` attribute.
+
+  **BREAKING CHANGE**: All React components that had a `color` prop have been changed to use `data-color`.
+
+  All<sup>1</sup> css targeting `data-color` has been changed to work with all custom colors generated by the CLI.
+
+  `Avatar`, `Badge`, `Button`, and `Link` use `--ds-color-accent-*`<sup>2</sup>, unless `data-color` is set directly on the element.
+
+  For components that had a `color` prop, but defaulted to something other than `"accent"`, `data-color` must also be set directly on the element.
+
+  All other components that defaulted to `"accent"`, or previously only existed in `"accent"` color, now support `data-color`. They will also inherit their color from the closest `data-color` attribute. If none is found, they use `--ds-color-accent-*`<sup>2</sup>.
+
+  <sup>1</sup>: ...except `Alert`, which only supports `info`, `warning`, `danger` and `success` colors.
+  <sup>2</sup>: If an `"accent"` color is not defined in the theme, the `--ds-color-accent-*` variables will point to the first `main-color`.
+
+- 157bb86: Input+Select: Use native HTML `size` prop instead of `htmlSize`
+- a4e8845: Badge: Only use single DOM element for rendering
+- 2a51c04: Avatar: Fix `aria-hidden` being wrongly added to a fragment
+- 795bbe1: Modal: remove `FloatingFocusManager`
+- 7f0cc0d: Select:
+  - Add Select.Option and Select.Optgroup compond components
+  - Remove `multiple` prop
+- 6998d4b: **BREAKING CHANGE**: The attribute / prop `data-ds-color-mode` has been renamed to `data-color-scheme`
+- 7520547: Radio + Checkbox:
+  - Use `label` prop instead of `children` as label text
+  - Remove `Radio.Group` and `Checkbox.Group` and use `Fieldset` instead
+- 9c02237: Badge: Export component
+- eb3f58b: PopoverTrigger: New prop `inline` for use when inline elements (such as text) need a `Popover`
+- 567329b: feat(Combobox): :sparkles: Label now supports other elements
+- ce23f32: Chip: Use correct `32px` height to align nicely with `<Tag>`
+- 36cefe3: Rename `Accordion` to `Details`
+- 5a77def: SkipLink: Remove ds-sr-only class
+- 03d776b: Skeleton: Replace Skeleton.Text, Skeleton.Circle and Skeleton.Rectangle with <Skeleton variant="">
+- 5d1c506: Accordion: Now uses details and summary HTML elements
+- 529d942: **Popover**: Add `data-variant="default/tinted"`, `default` is default
+- 1afa5c5: Spinner: Style using data attributes
+- a1a3afd: Label: Use data attributes for styling
+
+  ValidationMessage: Use data attributes for styling
+
+- 181ea10: Select + Textarea:
+  - Remove `label`, `hideLabel`, `description`, `characterLimit` and `error` as these will be part of `Field` API
+- b884fda: Avatar: new component
+- c73d83c: Breadcrumbs: ✨ new component
+- d0288e2: Paragraph: Add css classes and style with data attributes
+- 0e2cdb5: Tag: Make neutral default color in CSS
+- a16e83e: Field.Affix:
+  - Rename `Field.AffixWrapper` to `Field.Affixes`
+  - Support inputs with `size` attribute
+- 529d942: **Badge**: Add `data-variant="base/tinted"`, `base` is default
+- 32fdbd4: Breadcrumbs: Rename `Breadcrumbs.Root` to `Breadcrumbs` and remove `Breadcrumbs.Nav`
+- d0fad1d: Chip:
+  - Add `Chip.Button`
+  - Rename `Chip.Toggle` to `Chip.Radio` and `Chip.Checkbox`
+  - Remove `Chip.Group`
+- 0e4faee: HelpText:
+  - Use Popover API
+  - Remove `portal` prop
+  - Render icon with pseudo element and require aria-label
+- fea6de8: **Radio**: Rename `validation` to `error`
+- a8f80a6: Textfield: Make one of `label`, `aria-label` or `aria-labelledby` required
+- 629bc43: Badge: ✨ New component
+- 6959e9d: chore: Replace eslint with biomejs
+- dc6e910: ToggleGroup, Tabs: Active item equality check is now strict
+- d3229a0: Fieldset: Style using css attributes
+- 6b56db2: Table: Add `Table.Foot` and style caption
+- de912ae: Badge: Convert to two elements, add `Badge.Position` component for placement
+- 436b876: Popover: Rename `PopoverContext` to `PopoverTriggerContext`
+- aa344ec: `ValidationMessage` now uses the `p`-element
+- d3c58b0: Spinner: `aria-label` required instead of `title` prop
+- 23450ce: Select: Add `width="auto"` option and default to full width
+- 23192dd: NativeSelect: add focus in `readOnly` state
+- 54d3037: Card: Use data attrs
+- fce0810: Combobox: fix virtual combobox having large gap between items
+- 5601aad: Textfield: Update to use `Field` internally
+
+## 0.100.51-next.52
+
 ## 1.0.0-next.51
 
 ## 1.0.0-next.50

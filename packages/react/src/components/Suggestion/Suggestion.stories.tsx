@@ -52,13 +52,13 @@ async function testSuggestion(el: HTMLElement) {
 }
 
 const DATA_PLACES = [
-  'Lillestrøm',
   'Sogndal',
   'Oslo',
-  'Stavanger',
   'Brønnøysund',
+  'Stavanger',
   'Trondheim',
   'Bergen',
+  'Lillestrøm',
 ];
 
 export const Preview: StoryFn<typeof Suggestion> = (args) => {

@@ -37,11 +37,11 @@ export const Landing = () => {
           </div>
           <div className={classes.headerRight}>
             <Button variant='tertiary'>
-              <MagnifyingGlassIcon title='a11y-title' fontSize='1.6rem' />
+              <MagnifyingGlassIcon aria-hidden fontSize='1.6rem' />
               Søk
             </Button>
             <Button variant='tertiary'>
-              <MenuHamburgerIcon title='a11y-title' fontSize='1.6rem' />
+              <MenuHamburgerIcon aria-hidden fontSize='1.6rem' />
               Meny
             </Button>
           </div>

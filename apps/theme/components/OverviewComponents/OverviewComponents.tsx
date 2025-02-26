@@ -87,16 +87,17 @@ export const OverviewComponents = forwardRef<HTMLDivElement>(
                       variant='square'
                       className={classes.avatar}
                     >
-                      <img src='img/avatars/male2.png' alt='' />
+                      <img src={user.avatar} alt='' />
                     </Avatar>
                     <div className={classes.userText}>
-                      <div className={classes.userRole}>Designer</div>
-                      <div>Ola Normann</div>
+                      <div className={classes.userRole}>{user.role}</div>
+                      <div>{user.name}</div>
                     </div>
                     <Button
                       data-size='sm'
                       variant='secondary'
                       style={{ marginLeft: 'auto' }}
+                      aria-label={`Følg ${user.name}`}
                     >
                       Følg
                     </Button>
