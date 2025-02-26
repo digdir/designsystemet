@@ -76,13 +76,13 @@ export default function Home() {
             <div className={classes.btnGroup}>
               <Button data-color='neutral' asChild>
                 <NextLink href='/themebuilder'>
-                  <PaletteIcon title='a11y-title' fontSize='1.5rem' />
+                  <PaletteIcon fontSize='1.5rem' aria-hidden />
                   Bygg tema
                 </NextLink>
               </Button>
               <Button data-color='neutral' variant='secondary' asChild>
                 <NextLink href='https://www.designsystemet.no/grunnleggende/for-designere/eget-tema'>
-                  <BookIcon title='a11y-title' fontSize='1.5rem' />
+                  <BookIcon fontSize='1.5rem' aria-hidden />
                   Dokumentasjon
                 </NextLink>
               </Button>

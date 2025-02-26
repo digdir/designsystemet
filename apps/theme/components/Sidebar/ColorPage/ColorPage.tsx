@@ -62,9 +62,10 @@ export const ColorPage = () => {
                 setActivePanel('addColor');
                 setColorType('main');
               }}
+              aria-label='Legg til hovedfarge'
             >
               Legg til
-              <PlusIcon title='a11y-title' fontSize='1.5rem' />
+              <PlusIcon aria-hidden fontSize='1.5rem' />
             </Button>
           )}
           {colors.main.length >= 40 && (
@@ -109,9 +110,10 @@ export const ColorPage = () => {
                 setActivePanel('addColor');
                 setColorType('support');
               }}
+              aria-label='Legg til støttefarge'
             >
               Legg til
-              <PlusIcon title='a11y-title' fontSize='1.5rem' />
+              <PlusIcon aria-hidden fontSize='1.5rem' />
             </Button>
           )}
           {colors.support.length >= 40 && (

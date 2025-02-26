@@ -21,7 +21,7 @@ export const ThemeHeader = () => {
       <div className={classes.textContainer}>
         <Link data-size='sm' className={classes.backLink} asChild>
           <NextLink href='/'>
-            <ChevronLeftIcon title='a11y-title' fontSize='1.5rem' />
+            <ChevronLeftIcon aria-hidden fontSize='1.5rem' />
             Gå tilbake til forsiden
           </NextLink>
         </Link>

@@ -81,7 +81,7 @@ export const ColorPane = ({
           onClick={closeTab}
           className={classes.back}
         >
-          <ChevronLeftIcon title='a11y-title' fontSize='1.5rem' /> Gå tilbake
+          <ChevronLeftIcon aria-hidden fontSize='1.5rem' /> Gå tilbake
         </Button>
         <Tooltip
           content='Du må ha minst en hovedfarge'

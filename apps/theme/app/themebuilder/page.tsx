@@ -10,7 +10,7 @@ export default function Page() {
   useThemeParams();
 
   return (
-    <div className={classes.page} id='preview'>
+    <div className={classes.page} id='main'>
       <ThemeHeader />
       <div className={classes.container}>
         <div className={classes.content}>
