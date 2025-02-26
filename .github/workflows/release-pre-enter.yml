@@ -3,9 +3,6 @@ name: Enter prerelease mode
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - next
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
