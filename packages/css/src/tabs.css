@@ -48,6 +48,8 @@
       text-align: center;
       white-space: nowrap;
 
+      @composes ds-focus--inset from './base.css';
+
       &:not([hidden]) {
         display: flex;
       }
@@ -73,8 +75,6 @@
           border-bottom: 2px solid CanvasText;
         }
       }
-
-      @composes ds-focus from './base.css';
 
       /* We set z-index to make sure the active line does not bleed over the focus indicator */
       &:focus-visible {
