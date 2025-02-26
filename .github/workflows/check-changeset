@@ -1,11 +1,10 @@
-name: Check if changeset is present
+name: Check if changeset is present for package changes
 on:
   workflow_dispatch:
   pull_request:
-    branches: [main, next]
     paths:
       - 'packages/cli/**'
-      - 'packages/css(**'
+      - 'packages/css/**'
       - 'packages/react/**'
       - 'packages/theme/**'
 jobs:
@@ -14,5 +13,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check if changeset is present since main
+      - name: Check if changeset
         run: yarn changeset status --since=main
