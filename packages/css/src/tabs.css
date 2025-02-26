@@ -2,9 +2,8 @@
   --dsc-tabs-tab-padding: var(--ds-size-3) var(--ds-size-5);
   --dsc-tabs-tab-color: var(--ds-color-neutral-text-subtle);
   --dsc-tabs-tab-color--hover: var(--ds-color-neutral-text-default);
-  --dsc-tabs-tab-color--selected: var(--ds-color-base-default);
-  --dsc-tabs-content-padding: var(--ds-size-5);
-  --dsc-tabs-content-color: var(--ds-color-neutral-text-default);
+  --dsc-tabs-tab-color--selected: var(--ds-color-text-subtle);
+  --dsc-tabs-content-padding: var(--ds-size-4) var(--ds-size-5);
   --dsc-tabs-list-border-color: var(--ds-color-neutral-border-subtle);
   --dsc-tabs-list-border-bottom-width: var(--ds-border-width-default);
   --dsc-tabs-list-border-bottom-style: solid;
@@ -12,7 +11,6 @@
   & [role='tabpanel'],
   & u-tabpanel {
     padding: var(--dsc-tabs-content-padding);
-    color: var(--dsc-tabs-content-color);
 
     @composes ds-focus from './base.css';
   }
@@ -50,6 +48,8 @@
       text-align: center;
       white-space: nowrap;
 
+      @composes ds-focus--inset from './base.css';
+
       &:not([hidden]) {
         display: flex;
       }
@@ -75,8 +75,6 @@
           border-bottom: 2px solid CanvasText;
         }
       }
-
-      @composes ds-focus from './base.css';
 
       /* We set z-index to make sure the active line does not bleed over the focus indicator */
       &:focus-visible {

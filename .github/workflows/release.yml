@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - main
-      - next
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -18,14 +17,16 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/gh-setup
       - name: Create Release Pull Request or Publish to npm
+        id: changesets
         # https://github.com/changesets/action
         uses: changesets/action@v1
         with:
           # this expects you to have a script called release which does a build for your packages and calls changeset publish
           publish: yarn publish
           version: yarn version-packages
-          commit: 'chore: new ${{ github.base_ref }} release'
-          title: 'chore: new ${{ github.base_ref }} release'
+          commit: 'chore: new release'
+          title: 'chore: new release'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+

@@ -5,6 +5,19 @@ import type { CssColor } from './types.js';
 import type { Color, ColorNumber, ColorScheme, ThemeInfo } from './types.js';
 import { getLightnessFromHex, getLuminanceFromLightness } from './utils.js';
 
+export const RESERVED_COLORS = [
+  'neutral',
+  'success',
+  'warning',
+  'danger',
+  'info',
+  'blue',
+  'green',
+  'orange',
+  'purple',
+  'red',
+];
+
 /**
  * Generates a color scale based on a base color and a color mode.
  *

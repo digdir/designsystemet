@@ -19,7 +19,11 @@ export const BorderRadiusInput = () => {
       <Heading className={classes.heading} data-size='xs'>
         Foreslått basis Border radius
       </Heading>
-      <div className={classes.items} role='radiogroup'>
+      <div
+        className={classes.items}
+        role='radiogroup'
+        aria-label='Border radius'
+      >
         {items.map((item, index) => (
           <div
             className={cl(

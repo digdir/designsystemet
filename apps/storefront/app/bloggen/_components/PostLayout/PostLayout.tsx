@@ -68,7 +68,7 @@ function PostLayout({
           />
           <MdxContent className={classes.content}>
             {content}
-            <div className={classes.wantToWrite}>
+            <div className={classes.wantToWrite} data-color='brand1'>
               <Heading level={3} data-size='xs'>
                 Ønsker du å skrive for bloggen?
               </Heading>

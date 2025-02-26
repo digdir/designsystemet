@@ -51,9 +51,9 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
 
           <div className={cl(classes.menu, showMenu && classes.activeMenu)}>
             <Paragraph data-size='md' asChild>
-              <h3 className={classes.title}>
+              <h2 className={classes.title}>
                 {SiteConfig.menu[activeIndex].name}
-              </h3>
+              </h2>
             </Paragraph>
             <ul className={classes.list}>
               {SiteConfig.menu[activeIndex].children.map(
