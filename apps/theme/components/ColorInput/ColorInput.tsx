@@ -18,6 +18,7 @@ export const ColorInput = ({ name, color, onClick }: ColorInputProps) => {
         onClick={(e) => onClick(e)}
         variant='secondary'
         data-color='neutral'
+        aria-label={`Endre instillinger ${name}`}
       >
         <div className={classes.leftContent}>
           <div
