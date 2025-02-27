@@ -1,9 +1,4 @@
 import {
-  type Color,
-  type ColorNumber,
-  getColorMetadataByNumber,
-} from '@digdir/designsystemet';
-import {
   Button,
   Checkbox,
   Heading,
@@ -13,7 +8,8 @@ import {
 } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { useEffect, useState } from 'react';
-import { useThemeStore } from '../../store';
+import { type ColorTheme, useThemeStore } from '../../store';
+import { generateColorVars } from '../../utils/generateColorVars';
 import listClasses from './Card2.module.css';
 import classes from './ColorPreview.module.css';
 
@@ -25,42 +21,7 @@ export const ColorPreview = () => {
   const colorScheme = useThemeStore((state) => state.colorScheme);
 
   type CardProps = {
-    color: {
-      name: string;
-      colors: {
-        light: Color[];
-        dark: Color[];
-      };
-    };
-  };
-
-  const setStyle = (colors: {
-    light: Color[];
-    dark: Color[];
-  }) => {
-    const style = {} as Record<string, string>;
-
-    let lightColors = colors.light;
-
-    if (colorScheme === 'dark') {
-      lightColors = colors.dark;
-    }
-
-    for (let i = 0; i < lightColors.length; i++) {
-      const number = (i + 1) as ColorNumber;
-      style[
-        `--ds-color-accent-${getColorMetadataByNumber(number)
-          .name.replace(/\s+/g, '-')
-          .toLowerCase()}`
-      ] = lightColors[i].hex;
-      style[
-        `--ds-color-${getColorMetadataByNumber(number)
-          .name.replace(/\s+/g, '-')
-          .toLowerCase()}`
-      ] = lightColors[i].hex;
-    }
-
-    return style;
+    color: ColorTheme;
   };
 
   const CardWrapper = ({ color }: CardProps) => {
@@ -75,7 +36,11 @@ export const ColorPreview = () => {
 
     const [valueOne, setValueOne] = useState(true);
     return (
-      <div style={setStyle(color.colors)} className={classes.card} id='preview'>
+      <div
+        style={generateColorVars(color.colors, colorScheme)}
+        className={classes.card}
+        id='preview'
+      >
         <Heading className={classes.title} data-size='2xs'>
           {color.name}
         </Heading>
@@ -102,12 +67,14 @@ export const ColorPreview = () => {
       </div>
     );
   };
+
   const VerticalCard = ({ color }: CardProps) => {
     const [isChecked, setIsChecked] = useState(true);
     const [isSwitch, setIsSwitch] = useState(true);
+    console.log({ color });
     return (
       <div
-        style={setStyle(color.colors)}
+        style={generateColorVars(color.colors, colorScheme)}
         className={cl(classes.card, listClasses.card)}
       >
         <div className={listClasses.text}>
