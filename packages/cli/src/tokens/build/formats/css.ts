@@ -129,10 +129,13 @@ const colorCategory: Format = {
       }),
       (token: TransformedToken) => ({
         ...token,
-        name: token.name.replace(
-          new RegExp(`-(${colorCategories.main}|${colorCategories.support})-`),
-          replaceCategoryWith ? `-${replaceCategoryWith}-` : '-',
-        ),
+        name: token.name.replace(/color-\w+-/, 'color-'),
+        original: {
+          ...token.original,
+          $value: new RegExp(`color-(${colorCategories.main}|${colorCategories.support})-`).test(token.name)
+            ? token.original.$value
+            : `{${token.path.join('.')}}`,
+        },
       }),
     );
 

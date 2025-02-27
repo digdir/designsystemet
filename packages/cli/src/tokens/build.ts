@@ -10,7 +10,7 @@ import { configs, getConfigsForThemeDimensions } from './build/configs.js';
 import { type BuildConfig, type ThemePermutation, colorCategories } from './build/types.js';
 import { makeEntryFile } from './build/utils/entryfile.js';
 import { type ProcessedThemeObject, processThemeObject } from './build/utils/getMultidimensionalThemes.js';
-import { cleanDir, copyFile, writeFile } from './utils.js';
+import { cleanDir, writeFile } from './utils.js';
 
 type Options = {
   /** Design tokens path */
@@ -41,6 +41,11 @@ const buildConfigs = {
   'color-scheme': { getConfig: configs.colorSchemeVariables, dimensions: ['color-scheme'] },
   'main-color': { getConfig: configs.mainColorVariables, dimensions: ['main-color'] },
   'support-color': { getConfig: configs.supportColorVariables, dimensions: ['support-color'] },
+  'neutral-color': { getConfig: configs.neutralColorVariables, dimensions: ['semantic'] },
+  'success-color': { getConfig: configs.successColorVariables, dimensions: ['semantic'] },
+  'danger-color': { getConfig: configs.dangerColorVariables, dimensions: ['semantic'] },
+  'warning-color': { getConfig: configs.warningColorVariables, dimensions: ['semantic'] },
+  'info-color': { getConfig: configs.infoColorVariables, dimensions: ['semantic'] },
   semantic: { getConfig: configs.semanticVariables, dimensions: ['semantic'] },
   storefront: {
     name: 'Storefront preview tokens',
@@ -57,10 +62,6 @@ const buildConfigs = {
       await Promise.all(
         sdConfigs.map(async ({ permutation: { theme } }) => {
           console.log(`👷 ${theme}.css`);
-
-          const builtinColorsFilename = 'builtin-colors.css';
-          const builtinColors = path.resolve(import.meta.dirname, 'build', builtinColorsFilename);
-          await copyFile(builtinColors, path.resolve(outPath, theme, builtinColorsFilename), dry);
 
           return makeEntryFile({ theme, outPath, buildPath: path.resolve(outPath, theme), dry });
         }),

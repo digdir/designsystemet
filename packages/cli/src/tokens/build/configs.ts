@@ -5,7 +5,7 @@ import type { Config as StyleDictionaryConfig, TransformedToken } from 'style-di
 import { outputReferencesFilter } from 'style-dictionary/utils';
 
 import { buildOptions } from '../build.js';
-import { isColorCategoryToken, isDigit, pathStartsWithOneOf, typeEquals } from '../utils.js';
+import { isColorCategoryToken, isDigit, isSemanticToken, pathStartsWithOneOf, typeEquals } from '../utils.js';
 import { formats } from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
 import { resolveMath, sizeRem, typographyName, unitless } from './transformers.js';
@@ -99,9 +99,13 @@ const colorSchemeVariables: GetStyleDictionaryConfig = (
   };
 };
 
+type ColorCategoryOpts = { category: ColorCategories } | { category: 'builtin'; color: string };
+
 const colorCategoryVariables =
-  (category: ColorCategories): GetStyleDictionaryConfig =>
-  ({ 'color-scheme': colorScheme, theme, [`${category}-color` as const]: color }, { outPath }) => {
+  (opts: ColorCategoryOpts): GetStyleDictionaryConfig =>
+  ({ 'color-scheme': colorScheme, theme, ...permutation }, { outPath }) => {
+    const category = opts.category;
+    const color = category === 'builtin' ? opts.color : permutation[`${category}-color`];
     const layer = `ds.theme.color`;
     const isRootColor = color === buildOptions?.rootColor;
     const selector = `${isRootColor ? ':root, [data-color-scheme], ' : ''}[data-color="${color}"]`;
@@ -125,7 +129,10 @@ const colorCategoryVariables =
             {
               destination: `color/${color}.css`,
               format: formats.colorCategory.name,
-              filter: (token) => isColorCategoryToken(token, category),
+              filter: (token) =>
+                category === 'builtin'
+                  ? isSemanticToken(token) && R.startsWith(['color', color], token.path)
+                  : isColorCategoryToken(token, category),
             },
           ],
           options: {
@@ -282,8 +289,13 @@ const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }, { 
 
 export const configs = {
   colorSchemeVariables,
-  mainColorVariables: colorCategoryVariables('main'),
-  supportColorVariables: colorCategoryVariables('support'),
+  mainColorVariables: colorCategoryVariables({ category: 'main' }),
+  supportColorVariables: colorCategoryVariables({ category: 'support' }),
+  neutralColorVariables: colorCategoryVariables({ category: 'builtin', color: 'neutral' }),
+  successColorVariables: colorCategoryVariables({ category: 'builtin', color: 'success' }),
+  dangerColorVariables: colorCategoryVariables({ category: 'builtin', color: 'danger' }),
+  warningColorVariables: colorCategoryVariables({ category: 'builtin', color: 'warning' }),
+  infoColorVariables: colorCategoryVariables({ category: 'builtin', color: 'info' }),
   typographyVariables,
   semanticVariables,
   typescriptTokens,
