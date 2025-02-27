@@ -67,12 +67,14 @@ export const useThemeStore = create(
     baseBorderRadius: 4,
     colorScheme: 'light',
     colors: {
-      main: [{ name: 'accent', colors: generateColorSchemes('#0062BA') }],
+      main: [
+        { name: 'primary', colors: generateColorSchemes('#0062BA') },
+        { name: 'accent', colors: generateColorSchemes('#1E98F5') },
+      ],
       neutral: [{ name: 'neutral', colors: generateColorSchemes('#1E2B3C') }],
       support: [
-        { name: 'brand1', colors: generateColorSchemes('#F45F63') },
-        { name: 'brand2', colors: generateColorSchemes('#E5AA20') },
-        { name: 'brand3', colors: generateColorSchemes('#1E98F5') },
+        { name: 'extra1', colors: generateColorSchemes('#F45F63') },
+        { name: 'extra2', colors: generateColorSchemes('#E5AA20') },
       ],
     },
     themeTab: 'overview',
