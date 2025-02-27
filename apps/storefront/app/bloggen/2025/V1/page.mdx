@@ -1,14 +1,14 @@
 import { PostLayout, Contributors } from '../../_components';
 import { Image } from '@components';
 
-import { Details, Card, DetailsContent, DetailsSummary } from '@digdir/designsystemet-react';
+import { Details, Card, CardContent, DetailsContent, DetailsSummary } from '@digdir/designsystemet-react';
 
 export default ({ children }) => (
   <PostLayout
     content={children}
-    heading='Første versjon av Designsystemet er lansert!'
+    heading='Første versjon av Designsystemet er klar!'
     ingress='Endelig er V1 her! Etter en omfattende utviklingsprosess og tett samarbeid med flere offentlige aktører, lanserer vi nå første stabile versjon av Designsystemet!'
-    date='1. mars 2025'
+    date='3. mars 2025'
     author='Designsystemet'
     imageSrc='/img/bloggen/V1.png'
     imageAlt='Illustrasjon av V1'
@@ -16,7 +16,7 @@ export default ({ children }) => (
 );
 
 export const metadata = {
-  title: 'Første versjon av Designsystemet er lansert!',
+  title: 'Første versjon av Designsystemet er klar!',
   description:
     'Endelig er V1 her! Etter en omfattende utviklingsprosess og tett samarbeid med flere offentlige aktører, lanserer vi nå første stabile versjon av Designsystemet!',
   openGraph: {
@@ -24,9 +24,17 @@ export const metadata = {
   },
 };
 
-V1 er resultatet av en lang og lærerik reise gjennom to år. Underveis har vi gjort store endringer, og midt i prosessen har vi blitt et mer tverretatlig team, der Digdir, Mattilsynet, Udir og Brønnøysundregistrene har jobbet tett sammen om utviklingen. Sammen har vi snudd retning, tilpasset oss nye innsikter og jobbet oss frem til det som nå blir den første versjonen av Designsystemet. 
+V1 er resultatet av en lang og lærerik reise gjennom to år. Underveis har vi gjort store endringer, og midt i prosessen har vi blitt et mer tverretatlig team, der Digdir, Mattilsynet, Udir og Brønnøysundregistrene har jobbet tett sammen om utviklingen. Sammen har vi snudd retning, tilpasset oss nye innsikter og jobbet oss frem til det som nå blir den første versjonen av Designsystemet.
 
-Helt fra starten av har vi jobbet åpent. Vi har fått tilbakemeldinger tidlig, justert kursen raskt og tilpasset oss reelle behov. Den åpne tilnærmingen har gitt oss verdifull innsikt fra et bredt spekter av testere og brukere, og vi ser at jo flere som bidrar, desto sterkere blir grunnlaget. Vi lærer kontinuerlig og forvalter systemet basert på innsikt og data, slik at det alltid er i utvikling og tilpasset de faktiske behovene.
+<br/>
+
+<Card data-color='brand3' data-variant="tinted">
+  **Vi lanserer Designsystemet!** 
+ 
+  Bli med på livestream 20. mars for å lære hvordan Designsystemet kan forenkle og forbedre dine digitale løsninger.
+ 
+Meld deg på her: [lenke til arrangement-påmelding på digdir.no].
+</Card>
 
 ## Hva innebærer V1?
 
@@ -46,8 +54,8 @@ Lanseringen av V1 betyr at du nå har tilgang til et mer modent og stabilt desig
 
 - Enklere implementering i dine løsninger.
 - En stabil versjon med færre større endringer, noe som gir økt forutsigbarhet.
+- En gjennomarbeidet token-struktur som gir større fleksibilitet og kontroll. Og som sikrer at det er de samme verdiene vi jobber med i design og kode. Mange har ikke denne koblingen mellom design og kode i dag, det kan de nå få!
 - Enklere tilpasning av Designsystemets komponenter til egen profil og preferanser.
-- En gjennomarbeidet token-struktur som gir større fleksibilitet og kontroll.
 - Økt tilgjengelighet på tvers av digitale tjenester.
 - Mulighet for å bidra og samarbeide med et økende fellesskap av designere og utviklere.
 
@@ -59,9 +67,9 @@ For de som allerede har tatt i bruk beta-versjonen av Designsystemet, har vi uta
 Vær oppmerksom på at dersom du har gjort manuelle overstyringer i dine løsninger, må du selv sørge for at disse oversettes til den nye versjonen av design tokens. 
 
 ## Veien videre
-Selv om vi nå lanserer V1, er det fortsatt områder vi utforsker videre. Dark mode er for eksempel fremdeles under eksperimentering. Det vil komme oppdateringer fremover som finjusterer fargebalansen og brukeropplevelsen i mørk modus. I tillegg ser vi nærmere på hvordan vi skal løse kontrastmodus. 
+Selv om vi nå lanserer V1, er det fortsatt områder vi utforsker videre. Det vil for eksempel komme oppdateringer fremover som finjusterer fargebalansen og brukeropplevelsen i mørk modus. I tillegg ser vi nærmere på hvordan vi skal løse kontrastmodus. Vi vil fortsette å samle inn tilbakemeldinger, forbedre funksjonalitet og legge til nye komponenter basert på de grunnleggende behovene som går igjen på tvers. Vi kommer også til å tilby Web Components for noen av komponentene etter hvert slik at de kan brukes med både Svelte, Vue, Angular, og andre teknologier.
 
-Vi ser på lanseringen av Designsystemets første versjon som starten på en kontinuerlig forbedringsprosess. Vi vil fortsette å samle inn tilbakemeldinger, forbedre funksjonalitet og legge til nye komponenter basert på de grunnleggende behovene som går igjen på tvers. Vi kommer også til å tilby Web Components for noen av komponentene etter hvert slik at de kan brukes med både Svelte, Vue, Angular, og andre teknologier.
+Vi kommer til å fortsette med åpne månedlige demoer som vi har hatt de siste to årene. Vi ser det har vært veldig verdifullt å jobbe åpent fra starten. Det har gjort at vi har fått tilbakemeldinger tidlig og kunne tilpasset oss reelle behov. Den åpne tilnærmingen har gitt oss verdifull innsikt fra et bredt spekter av testere og brukere, og vi opplever at jo flere som bidrar, desto sterkere blir grunnlaget og kvaliteten. Selv om V1 lanseres, fortsetter vi å lære kontinuerlig og vil forvalte systemet basert på innsikt og data, slik at det alltid er i utvikling og tilpasset de faktiske behovene.
 
 Målet er at Designsystemet skal være et godt fundament du kan bygge videre oppå, med din egen profil, egne preferanser og utvidet funksjonalitet som et lag på toppen. 
 
@@ -101,7 +109,9 @@ Flere offentlige virksomheter har også tatt Designsystemet i bruk i egne tjenes
 
 Har du innspill eller ønsker du å bidra? [Send oss en epost](mailto:designsystem@digdir.no) eller bli med i [fellesskapet på Slack](http://designsystemet.no/slack). Gi oss gjerne en lyd om du har brukt eller vurderer å bruke Designsystemet. 
 
-Vi gleder oss til å se hvordan Designsystemet videre kan bidra til å skape bedre og mer brukervennlige digitale løsninger for alle! 
+Vi gleder oss til å se hvordan Designsystemet videre kan effektivisere produktutvikling og bidra til å skape mer brukervennlige digitale løsninger for alle! 
+
+
 
 
 <Contributors
