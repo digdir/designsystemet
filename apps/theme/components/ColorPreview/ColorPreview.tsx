@@ -71,7 +71,6 @@ export const ColorPreview = () => {
   const VerticalCard = ({ color }: CardProps) => {
     const [isChecked, setIsChecked] = useState(true);
     const [isSwitch, setIsSwitch] = useState(true);
-    console.log({ color });
     return (
       <div
         style={generateColorVars(color.colors, colorScheme)}
