@@ -2,7 +2,15 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { expect, userEvent, within } from '@storybook/test';
 import { useRef, useState } from 'react';
 
-import { Button, Combobox, Heading, Paragraph, Textfield } from '..';
+import {
+  Button,
+  Field,
+  Heading,
+  Label,
+  Paragraph,
+  EXPERIMENTAL_Suggestion as Suggestion,
+  Textfield,
+} from '..';
 
 import { Dialog } from '.';
 
@@ -234,7 +242,17 @@ export const DialogWithMaxWidth: StoryFn<typeof Dialog> = () => (
   </Dialog.TriggerContext>
 );
 
-export const DialogWithCombobox: StoryFn<typeof Dialog> = () => {
+const DATA_PLACES = [
+  'Sogndal',
+  'Oslo',
+  'Brønnøysund',
+  'Stavanger',
+  'Trondheim',
+  'Bergen',
+  'Lillestrøm',
+];
+
+export const DialogWithSuggestion: StoryFn<typeof Dialog> = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   return (
@@ -243,20 +261,25 @@ export const DialogWithCombobox: StoryFn<typeof Dialog> = () => {
         <Dialog.Trigger>Open Dialog</Dialog.Trigger>
         <Dialog style={{ overflow: 'visible' }} ref={dialogRef}>
           <Dialog.Block>
-            <Heading>Dialog med combobox</Heading>
+            <Heading>Dialog med suggestion</Heading>
           </Dialog.Block>
           <Dialog.Block>
-            <Combobox portal={false} label='Velg sted' autoFocus>
-              <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-              <Combobox.Option value='leikanger'>Leikanger</Combobox.Option>
-              <Combobox.Option value='oslo'>Oslo</Combobox.Option>
-              <Combobox.Option value='bronnoysund'>Brønnøysund</Combobox.Option>
-              <Combobox.Option value='stavanger'>Stavanger</Combobox.Option>
-              <Combobox.Option value='trondheim'>Trondheim</Combobox.Option>
-              <Combobox.Option value='tromso'>Tromsø</Combobox.Option>
-              <Combobox.Option value='bergen'>Bergen</Combobox.Option>
-              <Combobox.Option value='moirana'>Mo i Rana</Combobox.Option>
-            </Combobox>
+            <Field>
+              <Label>Velg en destinasjon</Label>
+              <Suggestion>
+                <Suggestion.Input />
+                <Suggestion.Clear />
+                <Suggestion.List>
+                  <Suggestion.Empty>Tomt</Suggestion.Empty>
+                  {DATA_PLACES.map((place) => (
+                    <Suggestion.Option key={place} value={place}>
+                      {place}
+                      <div>Kommune</div>
+                    </Suggestion.Option>
+                  ))}
+                </Suggestion.List>
+              </Suggestion>
+            </Field>
           </Dialog.Block>
           <Dialog.Block>
             <Button
