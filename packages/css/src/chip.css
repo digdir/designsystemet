@@ -58,7 +58,7 @@
   &:has(input:disabled),
   &[aria-disabled='true'] {
     cursor: not-allowed;
-    opacity: var(--ds-disabled-opacity);
+    opacity: var(--ds-opacity-disabled);
   }
 
   &[data-removable] {
