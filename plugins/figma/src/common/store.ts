@@ -21,8 +21,9 @@ export type ColorIndex =
   | '11'
   | '12'
   | '13'
-  | 'contrast-1'
-  | 'contrast-2';
+  | '14'
+  | '15'
+  | '16';
 
 export type StoreThemes = StoreTheme[];
 

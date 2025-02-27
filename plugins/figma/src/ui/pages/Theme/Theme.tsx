@@ -91,10 +91,10 @@ function Theme() {
 
     /* For now we check that we have accent, brand1, brand2, brand3 */
     const primary = result.mainColors.find(
-      (color) => color.name === 'accent',
+      (color) => color.name === 'primary',
     )?.hex;
     const accent = result.mainColors.find(
-      (color) => color.name === 'primary',
+      (color) => color.name === 'accent',
     )?.hex;
     const extra1 = result.supportColors.find(
       (color) => color.name === 'extra1',
@@ -113,7 +113,7 @@ function Theme() {
     }
 
     console.log(
-      `Primary: ${accent}, Accent: ${accent}, Neutral: ${neutral}, Extra1: ${extra1}, Extra2: ${extra2}`,
+      `Primary: ${primary}, Accent: ${accent}, Neutral: ${neutral}, Extra1: ${extra1}, Extra2: ${extra2}`,
     );
 
     const newArray = Array.from(themes);
