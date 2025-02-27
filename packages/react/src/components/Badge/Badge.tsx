@@ -23,7 +23,7 @@ export type BadgeProps = MergeRight<
      *
      * @default 'base'
      */
-    'data-variant'?: 'base' | 'tinted';
+    variant?: 'base' | 'tinted';
     /**
      * Change the color scheme of the badge
      */
@@ -44,7 +44,7 @@ export type BadgeProps = MergeRight<
  * </Badge>
  */
 export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
-  { className, count, maxCount, 'data-variant': variant = 'base', ...rest },
+  { className, count, maxCount, variant = 'base', ...rest },
   ref,
 ) {
   return (
