@@ -2,14 +2,12 @@
 import { useState } from 'react';
 
 import {
-  type Color,
-  type ColorNumber,
   type ColorScheme,
   type CssColor,
   generateColorSchemes,
-  getColorMetadataByNumber,
 } from '@digdir/designsystemet';
 import { ToggleGroup } from '@digdir/designsystemet-react';
+import { generateColorVars } from '../../utils/generateColorVars';
 import { OverviewComponents } from '../OverviewComponents/OverviewComponents';
 import classes from './Previews.module.css';
 
@@ -51,35 +49,11 @@ export const Previews = () => {
   const [theme, setTheme] = useState<keyof typeof themes>('blue');
   const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
 
-  const getDsMainVars = (colors: {
-    light: Color[];
-    dark: Color[];
-  }) => {
-    const style = {} as Record<string, string>;
-
-    let lightColors = colors.light;
-
-    if (colorScheme === 'dark') {
-      lightColors = colors.dark;
-    }
-
-    for (let i = 0; i < lightColors.length; i++) {
-      const number = (i + 1) as ColorNumber;
-      style[
-        `--ds-color-${getColorMetadataByNumber(number)
-          .displayName.replace(/\s+/g, '-')
-          .toLowerCase()}`
-      ] = lightColors[i].hex;
-    }
-
-    return style;
-  };
-
   const getThemeVariables = (hex: CssColor) => {
     const generatedTheme = generateColorSchemes(hex);
     const vars = {} as Record<string, string>;
 
-    Object.assign(vars, getDsMainVars(generatedTheme));
+    Object.assign(vars, generateColorVars(generatedTheme, colorScheme));
 
     return vars;
   };
