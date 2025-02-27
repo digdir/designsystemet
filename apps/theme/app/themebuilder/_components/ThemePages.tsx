@@ -1,6 +1,5 @@
 'use client';
 
-import {} from '@digdir/designsystemet';
 import cl from 'clsx/lite';
 import { useEffect, useRef } from 'react';
 import { ColorContrasts, ColorPreview, ColorTokens } from '../../../components';
