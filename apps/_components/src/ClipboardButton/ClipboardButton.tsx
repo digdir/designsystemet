@@ -41,7 +41,7 @@ export const ClipboardButton = ({
           data-size='sm'
           aria-label={ariaLabel}
         >
-          <ClipboardIcon fontSize={'1.4rem'} />
+          <ClipboardIcon fontSize={'1.4rem'} aria-hidden='true' />
           {text && <span className={classes.text}>{text}</span>}
         </Button>
       </Tooltip>
