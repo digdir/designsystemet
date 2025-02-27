@@ -50,6 +50,8 @@ export const ColorPane = ({
   };
 
   const checkNameIsValid = () => {
+    if (colorType === 'neutral') return true;
+
     if (name === '') {
       setColorError('Navnet på fargen kan ikke være tomt');
       return false;

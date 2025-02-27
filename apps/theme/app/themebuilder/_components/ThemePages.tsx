@@ -1,16 +1,16 @@
 'use client';
 
-import {
-  type Color,
-  type ColorNumber,
-  getColorMetadataByNumber,
-} from '@digdir/designsystemet';
+import {} from '@digdir/designsystemet';
 import cl from 'clsx/lite';
 import { useEffect, useRef } from 'react';
 import { ColorContrasts, ColorPreview, ColorTokens } from '../../../components';
 import { Colors } from '../../../components/Colors/Colors';
 import { OverviewComponents } from '../../../components/OverviewComponents/OverviewComponents';
 import { useThemeStore } from '../../../store';
+import {
+  generateColorVars,
+  generateNeutralColorVars,
+} from '../../../utils/generateColorVars';
 import classes from './ThemePages.module.css';
 
 export const ThemePages = () => {
@@ -44,63 +44,18 @@ export const ThemePages = () => {
     }
   }, [baseBorderRadius]);
 
-  const getDsVars = (colors: {
-    light: Color[];
-    dark: Color[];
-  }) => {
-    const style = {} as Record<string, string>;
-
-    let lightColors = colors.light;
-
-    if (colorScheme === 'dark') {
-      lightColors = colors.dark;
-    }
-
-    for (let i = 0; i < lightColors.length; i++) {
-      const number = (i + 1) as ColorNumber;
-      style[
-        `--ds-color-neutral-${getColorMetadataByNumber(number)
-          .name.replace(/\s+/g, '-')
-          .toLowerCase()}`
-      ] = lightColors[i].hex;
-    }
-
-    return style;
-  };
-
-  const getDsMainVars = (colors: {
-    light: Color[];
-    dark: Color[];
-  }) => {
-    const style = {} as Record<string, string>;
-
-    let lightColors = colors.light;
-
-    if (colorScheme === 'dark') {
-      lightColors = colors.dark;
-    }
-
-    for (let i = 0; i < lightColors.length; i++) {
-      const number = (i + 1) as ColorNumber;
-      style[
-        `--ds-color-${getColorMetadataByNumber(number)
-          .name.replace(/\s+/g, '-')
-          .toLowerCase()}`
-      ] = lightColors[i].hex;
-    }
-
-    return style;
-  };
-
   const style = () => {
     if (!colors) return {};
 
     const vars = {} as Record<string, string>;
 
     /* neutral */
-    Object.assign(vars, getDsVars(colors.neutral[0].colors));
+    Object.assign(
+      vars,
+      generateNeutralColorVars(colors.neutral[0].colors, colorScheme),
+    );
     /* get -ds-color-* vars */
-    Object.assign(vars, getDsMainVars(colors.main[0].colors));
+    Object.assign(vars, generateColorVars(colors.main[0].colors, colorScheme));
 
     return vars;
   };
