@@ -6,17 +6,7 @@ export const generateColorVars = (
 ) => {
   const style = {} as Record<string, string>;
 
-  let loopColors = colors.light;
-
-  if (colorScheme === 'dark') {
-    loopColors = colors.dark;
-  }
-
-  if (colorScheme === 'contrast') {
-    loopColors = colors.contrast;
-  }
-
-  for (const color of loopColors) {
+  for (const color of colors[colorScheme]) {
     style[`--ds-color-${color.name}`] = color.hex;
   }
 
