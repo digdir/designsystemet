@@ -50,12 +50,12 @@ export const ColorPreview = () => {
       const number = (i + 1) as ColorNumber;
       style[
         `--ds-color-accent-${getColorMetadataByNumber(number)
-          .displayName.replace(/\s+/g, '-')
+          .name.replace(/\s+/g, '-')
           .toLowerCase()}`
       ] = lightColors[i].hex;
       style[
         `--ds-color-${getColorMetadataByNumber(number)
-          .displayName.replace(/\s+/g, '-')
+          .name.replace(/\s+/g, '-')
           .toLowerCase()}`
       ] = lightColors[i].hex;
     }

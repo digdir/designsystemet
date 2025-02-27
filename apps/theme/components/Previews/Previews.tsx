@@ -67,7 +67,7 @@ export const Previews = () => {
       const number = (i + 1) as ColorNumber;
       style[
         `--ds-color-${getColorMetadataByNumber(number)
-          .displayName.replace(/\s+/g, '-')
+          .name.replace(/\s+/g, '-')
           .toLowerCase()}`
       ] = lightColors[i].hex;
     }
