@@ -1,3 +1,4 @@
+import { Button } from '@digdir/designsystemet-react';
 import { PencilIcon } from '@navikt/aksel-icons';
 
 import classes from './ColorInput.module.css';
@@ -12,7 +13,13 @@ export const ColorInput = ({ name, color, onClick }: ColorInputProps) => {
   return (
     <div className={classes.component}>
       <div className={classes.name}>{name}</div>
-      <button className={classes.box} onClick={(e) => onClick(e)}>
+      <Button
+        className={classes.box}
+        onClick={(e) => onClick(e)}
+        variant='secondary'
+        data-color='neutral'
+        aria-label={`Endre instillinger ${name}`}
+      >
         <div className={classes.leftContent}>
           <div
             style={{ backgroundColor: color }}
@@ -21,7 +28,7 @@ export const ColorInput = ({ name, color, onClick }: ColorInputProps) => {
           <div className={classes.hex}>{color}</div>
         </div>
         <PencilIcon className={classes.icon} aria-hidden fontSize='1.5rem' />
-      </button>
+      </Button>
     </div>
   );
 };

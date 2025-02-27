@@ -7,9 +7,9 @@ type CardProps = {
   icon?: React.ReactNode;
   url: string;
   colors?: {
-    brand1Base: string;
-    brand2Base: string;
-    brand3Base: string;
+    colorDot1: string;
+    colorDot2: string;
+    colorDot3: string;
   };
 };
 
@@ -21,15 +21,15 @@ export const Card = ({ title, icon, url, colors }: CardProps) => {
         <div className={classes.circles}>
           <div
             className={classes.circle}
-            style={{ backgroundColor: colors.brand1Base }}
+            style={{ backgroundColor: colors.colorDot1 }}
           />
           <div
             className={classes.circle}
-            style={{ backgroundColor: colors.brand2Base }}
+            style={{ backgroundColor: colors.colorDot2 }}
           />
           <div
             className={classes.circle}
-            style={{ backgroundColor: colors.brand3Base }}
+            style={{ backgroundColor: colors.colorDot3 }}
           />
         </div>
       )}
