@@ -23,6 +23,18 @@ export type DialogProps = MergeRight<
      */
     backdropClose?: boolean;
     /**
+     * Toogle modal and non-modal dialog.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#creating_a_modal_dialog
+     *
+     * @default true
+     */
+    modal?: boolean;
+    /**
+     * @note Unlike standard html, where the open attribute always opens a non-modal dialog, Dialog's open prop uses the `modal` prop to determine whether the Dialog is modal or non-modal
+     */
+    open?: boolean;
+    /**
      * Callback that is called when the dialog is closed.
      */
     onClose?: (event: Event) => void;
@@ -52,7 +64,7 @@ export type DialogProps = MergeRight<
  *
  * ...
  *
- * <Button onClick={() => dialogRef.current?.showDialog()}>Open Dialog</Button>
+ * <Button onClick={() => dialogRef.current?.showModal()}>Open Dialog</Button>
  * <Dialog ref={dialogRef}>
  *   Content
  * </Dialog>
@@ -64,8 +76,9 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
       children,
       className,
       closeButton = 'Lukk dialogvindu',
-      onClose,
+      modal = true,
       open,
+      onClose,
       backdropClose = false,
       ...rest
     },
@@ -75,11 +88,9 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
     const dialogRef = useRef<HTMLDialogElement>(null); // This local ref is used to make sure the dialog works without a DialogTriggerContext
     const Component = asChild ? Slot : 'dialog';
     const mergedRefs = useMergeRefs([contextRef, ref, dialogRef]);
+    const showProp = modal ? 'showModal' : 'show';
 
-    useEffect(
-      () => dialogRef.current?.[open ? 'showModal' : 'close'](),
-      [open],
-    ); // Toggle open based on prop
+    useEffect(() => dialogRef.current?.[open ? showProp : 'close'](), [open]); // Toggle open based on prop
 
     useEffect(() => {
       const dialog = dialogRef.current;
@@ -122,6 +133,7 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
       <Component
         className={cl('ds-dialog', className)}
         ref={mergedRefs}
+        data-modal={modal}
         {...rest}
       >
         {closeButton !== false && (
