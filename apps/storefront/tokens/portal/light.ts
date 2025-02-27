@@ -2630,6 +2630,24 @@ export const  color = [
       "outer"
     ],
     key: "{color.focus.outer}"
+  },
+  {
+    $type: "color",
+    $value: "#663299",
+    filePath: "../../design-tokens/semantic/color.json",
+    isSource: false,
+    original: {
+      $type: "color",
+      $value: "{global.purple.12}"
+    },
+    name: "--ds-color-link-visited",
+    attributes: {},
+    path: [
+      "color",
+      "link",
+      "visited"
+    ],
+    key: "{color.link.visited}"
   }
 ] 
 
@@ -3789,23 +3807,6 @@ export const  opacity = [
   {
     $type: "opacity",
     $value: "30%",
-    filePath: "../../design-tokens/semantic/style.json",
-    isSource: false,
-    original: {
-      $type: "opacity",
-      $value: "{opacity.30}"
-    },
-    name: "--ds-disabled-opacity",
-    attributes: {},
-    path: [
-      "disabled",
-      "opacity"
-    ],
-    key: "{disabled.opacity}"
-  },
-  {
-    $type: "opacity",
-    $value: "30%",
     filePath: "../../design-tokens/primitives/globals.json",
     isSource: true,
     original: {
@@ -3819,6 +3820,23 @@ export const  opacity = [
       "30"
     ],
     key: "{opacity.30}"
+  },
+  {
+    $type: "opacity",
+    $value: "30%",
+    filePath: "../../design-tokens/semantic/style.json",
+    isSource: false,
+    original: {
+      $type: "opacity",
+      $value: "{opacity.30}"
+    },
+    name: "--ds-opacity-disabled",
+    attributes: {},
+    path: [
+      "opacity",
+      "disabled"
+    ],
+    key: "{opacity.disabled}"
   }
 ] 
 
