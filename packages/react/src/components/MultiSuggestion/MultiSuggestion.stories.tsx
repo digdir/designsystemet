@@ -1,13 +1,13 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { userEvent, within } from '@storybook/test';
 import { type ChangeEvent, useState } from 'react';
-import { EXPERIMENTAL_MultiSelect as MultiSelect } from '.';
+import { EXPERIMENTAL_MultiSuggestion as MultiSuggestion } from '.';
 import { Button, Divider, Field, Label, Paragraph, Spinner } from '..';
 import { useDebounceCallback } from '../../utilities';
 
 export default {
-  title: 'Komponenter/MultiSelect',
-  component: MultiSelect,
+  title: 'Komponenter/MultiSuggestion',
+  component: MultiSuggestion,
   /* add height by default */
   decorators: [
     (Story) => (
@@ -39,12 +39,12 @@ export default {
   play: async (ctx) => {
     const storyRoot = ctx.canvasElement;
     // Refactored out the play function for easier reuse in the InModal story
-    await testMultiSelect(storyRoot);
+    await testMultiSuggestion(storyRoot);
   },
 } as Meta;
 
-async function testMultiSelect(el: HTMLElement) {
-  /* When in test mode, open MultiSelect by focusing input */
+async function testMultiSuggestion(el: HTMLElement) {
+  /* When in test mode, open MultiSuggestion by focusing input */
   const input = within(el).getByRole('combobox');
   await userEvent.click(input);
 }
@@ -58,50 +58,50 @@ const DATA_PLACES = [
   'Bergen',
 ];
 
-export const Preview: StoryFn<typeof MultiSelect> = (args) => {
+export const Preview: StoryFn<typeof MultiSuggestion> = (args) => {
   return (
-    <MultiSelect {...args}>
-      <MultiSelect.Chips />
-      <MultiSelect.Input />
-      <MultiSelect.Clear />
-      <MultiSelect.List>
-        <MultiSelect.Empty>Tomt</MultiSelect.Empty>
+    <MultiSuggestion {...args}>
+      <MultiSuggestion.Chips />
+      <MultiSuggestion.Input />
+      <MultiSuggestion.Clear />
+      <MultiSuggestion.List>
+        <MultiSuggestion.Empty>Tomt</MultiSuggestion.Empty>
         {DATA_PLACES.map((place) => (
-          <MultiSelect.Option key={place} value={place}>
+          <MultiSuggestion.Option key={place} value={place}>
             {place}
             <div>Kommune</div>
-          </MultiSelect.Option>
+          </MultiSuggestion.Option>
         ))}
-      </MultiSelect.List>
-    </MultiSelect>
+      </MultiSuggestion.List>
+    </MultiSuggestion>
   );
 };
 
-export const Controlled: StoryFn<typeof MultiSelect> = (args) => {
+export const Controlled: StoryFn<typeof MultiSuggestion> = (args) => {
   const [value, setValue] = useState<string[]>(['Oslo']);
 
   return (
     <>
       <Field>
         <Label>Velg reisemål du vil besøke</Label>
-        <MultiSelect {...args} value={value} onValueChange={setValue}>
-          <MultiSelect.Chips
+        <MultiSuggestion {...args} value={value} onValueChange={setValue}>
+          <MultiSuggestion.Chips
             render={(e) => {
               return e.text;
             }}
           />
-          <MultiSelect.Input />
-          <MultiSelect.Clear />
-          <MultiSelect.List>
-            <MultiSelect.Empty>Tomt</MultiSelect.Empty>
+          <MultiSuggestion.Input />
+          <MultiSuggestion.Clear />
+          <MultiSuggestion.List>
+            <MultiSuggestion.Empty>Tomt</MultiSuggestion.Empty>
             {DATA_PLACES.map((place) => (
-              <MultiSelect.Option key={place} value={place}>
+              <MultiSuggestion.Option key={place} value={place}>
                 {place}
                 <div>Kommune</div>
-              </MultiSelect.Option>
+              </MultiSuggestion.Option>
             ))}
-          </MultiSelect.List>
-        </MultiSelect>
+          </MultiSuggestion.List>
+        </MultiSuggestion>
       </Field>
       <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
@@ -119,84 +119,84 @@ export const Controlled: StoryFn<typeof MultiSelect> = (args) => {
     </>
   );
 };
-export const CustomFilterAlt1: StoryFn<typeof MultiSelect> = (args) => {
+export const CustomFilterAlt1: StoryFn<typeof MultiSuggestion> = (args) => {
   return (
     <Field>
       <Label>Skriv inn et tall mellom 1-6</Label>
-      <MultiSelect
+      <MultiSuggestion
         {...args}
         filter={({ index, input }) => {
           console.log(!input.value || index === Number(input.value) - 1);
           return !input.value || index === Number(input.value) - 1;
         }}
       >
-        <MultiSelect.Chips />
-        <MultiSelect.Input />
-        <MultiSelect.Clear />
-        <MultiSelect.List>
-          <MultiSelect.Empty>Tomt</MultiSelect.Empty>
+        <MultiSuggestion.Chips />
+        <MultiSuggestion.Input />
+        <MultiSuggestion.Clear />
+        <MultiSuggestion.List>
+          <MultiSuggestion.Empty>Tomt</MultiSuggestion.Empty>
           {DATA_PLACES.map((text) => (
-            <MultiSelect.Option key={text} value={text.toLowerCase()}>
+            <MultiSuggestion.Option key={text} value={text.toLowerCase()}>
               {text}
-            </MultiSelect.Option>
+            </MultiSuggestion.Option>
           ))}
-        </MultiSelect.List>
-      </MultiSelect>
+        </MultiSuggestion.List>
+      </MultiSuggestion>
     </Field>
   );
 };
 
-export const CustomFilterAlt2: StoryFn<typeof MultiSelect> = (args) => {
+export const CustomFilterAlt2: StoryFn<typeof MultiSuggestion> = (args) => {
   const [value, setValue] = useState('');
 
   return (
     <Field>
       <Label>Skriv inn et tall mellom 1-6</Label>
-      <MultiSelect {...args} filter={false}>
-        <MultiSelect.Chips />
-        <MultiSelect.Input
+      <MultiSuggestion {...args} filter={false}>
+        <MultiSuggestion.Chips />
+        <MultiSuggestion.Input
           value={value}
           onChange={(event) => setValue(event.target.value)}
         />
-        <MultiSelect.Clear />
-        <MultiSelect.List>
-          <MultiSelect.Empty>Tomt</MultiSelect.Empty>
+        <MultiSuggestion.Clear />
+        <MultiSuggestion.List>
+          <MultiSuggestion.Empty>Tomt</MultiSuggestion.Empty>
           {DATA_PLACES.filter(
             (_, index) => !value || index === Number(value) - 1,
           ).map((text) => (
-            <MultiSelect.Option key={text}>{text}</MultiSelect.Option>
+            <MultiSuggestion.Option key={text}>{text}</MultiSuggestion.Option>
           ))}
-        </MultiSelect.List>
-      </MultiSelect>
+        </MultiSuggestion.List>
+      </MultiSuggestion>
     </Field>
   );
 };
 
-export const AlwaysShowAll: StoryFn<typeof MultiSelect> = (args) => {
+export const AlwaysShowAll: StoryFn<typeof MultiSuggestion> = (args) => {
   const [value, setValue] = useState('Sogndal');
 
   return (
     <Field>
       <Label>Viser alle options også når valgt</Label>
-      <MultiSelect {...args} filter={false}>
-        <MultiSelect.Chips />
-        <MultiSelect.Input
+      <MultiSuggestion {...args} filter={false}>
+        <MultiSuggestion.Chips />
+        <MultiSuggestion.Input
           value={value}
           onChange={(event) => setValue(event.target.value)}
         />
-        <MultiSelect.Clear />
-        <MultiSelect.List>
-          <MultiSelect.Empty>Tomt</MultiSelect.Empty>
+        <MultiSuggestion.Clear />
+        <MultiSuggestion.List>
+          <MultiSuggestion.Empty>Tomt</MultiSuggestion.Empty>
           {DATA_PLACES.map((place) => (
-            <MultiSelect.Option key={place}>{place}</MultiSelect.Option>
+            <MultiSuggestion.Option key={place}>{place}</MultiSuggestion.Option>
           ))}
-        </MultiSelect.List>
-      </MultiSelect>
+        </MultiSuggestion.List>
+      </MultiSuggestion>
     </Field>
   );
 };
 
-export const FetchExternal: StoryFn<typeof MultiSelect> = (args) => {
+export const FetchExternal: StoryFn<typeof MultiSuggestion> = (args) => {
   const [value, setValue] = useState('');
   const [options, setOptions] = useState<string[] | null>(null);
 
@@ -226,13 +226,13 @@ export const FetchExternal: StoryFn<typeof MultiSelect> = (args) => {
   return (
     <Field lang='en'>
       <Label>Search for countries (in english)</Label>
-      <MultiSelect {...args} filter={false}>
-        <MultiSelect.Chips />
-        <MultiSelect.Input value={value} onChange={handleChange} />
-        <MultiSelect.Clear />
-        <MultiSelect.List singular='%d country' plural='%d countries'>
+      <MultiSuggestion {...args} filter={false}>
+        <MultiSuggestion.Chips />
+        <MultiSuggestion.Input value={value} onChange={handleChange} />
+        <MultiSuggestion.Clear />
+        <MultiSuggestion.List singular='%d country' plural='%d countries'>
           {!!value && (
-            <MultiSelect.Empty>
+            <MultiSuggestion.Empty>
               {options ? (
                 'Ingen treff'
               ) : (
@@ -240,13 +240,15 @@ export const FetchExternal: StoryFn<typeof MultiSelect> = (args) => {
                   <Spinner aria-hidden='true' data-size='sm' /> Laster...
                 </span>
               )}
-            </MultiSelect.Empty>
+            </MultiSuggestion.Empty>
           )}
           {options?.map((option) => (
-            <MultiSelect.Option key={option}>{option}</MultiSelect.Option>
+            <MultiSuggestion.Option key={option}>
+              {option}
+            </MultiSuggestion.Option>
           ))}
-        </MultiSelect.List>
-      </MultiSelect>
+        </MultiSuggestion.List>
+      </MultiSuggestion>
     </Field>
   );
 };

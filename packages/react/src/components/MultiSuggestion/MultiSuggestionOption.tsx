@@ -3,13 +3,13 @@ import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 import '@u-elements/u-datalist';
 
-export type MultiSelectOptionProps = OptionHTMLAttributes<HTMLOptionElement> &
-  DefaultProps;
+export type MultiSuggestionOptionProps =
+  OptionHTMLAttributes<HTMLOptionElement> & DefaultProps;
 
-export const MultiSelectOption = forwardRef<
+export const MultiSuggestionOption = forwardRef<
   HTMLOptionElement,
-  MultiSelectOptionProps
->(function MultiSelectOption({ className, ...rest }, ref) {
+  MultiSuggestionOptionProps
+>(function MultiSuggestionOption({ className, ...rest }, ref) {
   return (
     <u-option
       class={className} // Using "class" since React does not translate className on custom elements

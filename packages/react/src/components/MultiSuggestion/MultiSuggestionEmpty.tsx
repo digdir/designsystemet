@@ -2,23 +2,23 @@ import type { OptionHTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 
-export type MultiSelectEmptyProps = DefaultProps &
+export type MultiSuggestionEmptyProps = DefaultProps &
   OptionHTMLAttributes<HTMLOptionElement>;
 
 /**
- * Component that provides an empty MultiSelect list.
+ * Component that provides an empty MultiSuggestion list.
  *
- * Place as a descendant of `MultiSelect.List`
+ * Place as a descendant of `MultiSuggestion.List`
  *
  * @example
- * <MultiSelect.List>
- *   <MultiSelect.Empty>Tomt</MultiSelect.Empty>
- * </MultiSelect.List>
+ * <MultiSuggestion.List>
+ *   <MultiSuggestion.Empty>Tomt</MultiSuggestion.Empty>
+ * </MultiSuggestion.List>
  */
-export const MultiSelectEmpty = forwardRef<
+export const MultiSuggestionEmpty = forwardRef<
   HTMLOptionElement,
-  MultiSelectEmptyProps
->(function MultiSelectEmpty(rest, ref) {
+  MultiSuggestionEmptyProps
+>(function MultiSuggestionEmpty(rest, ref) {
   return (
     // biome-ignore lint/a11y/noInteractiveElementToNoninteractiveRole: Empty option shoult not be interactive
     <u-option data-empty role='none' ref={ref} {...rest} />

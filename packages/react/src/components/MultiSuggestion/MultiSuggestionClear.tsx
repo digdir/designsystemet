@@ -1,9 +1,9 @@
 import { forwardRef, useContext } from 'react';
 import { Button, type ButtonProps } from '../Button';
-import { MultiSelectContext } from './MultiSelect';
+import { MultiSuggestionContext } from './MultiSuggestion';
 
 /* We omit children since we render the icon with css */
-export type MultiSelectClearProps = Omit<
+export type MultiSuggestionClearProps = Omit<
   ButtonProps,
   'variant' | 'children'
 > & {
@@ -15,25 +15,25 @@ export type MultiSelectClearProps = Omit<
 };
 
 /**
- * Component that provides a clear button for the MultiSelect input.
+ * Component that provides a clear button for the MultiSuggestion input.
  *
- * Place as a descendant of `MultiSelect`
+ * Place as a descendant of `MultiSuggestion`
  *
  * @example
- * <MultiSelect>
- *   <MultiSelect.Input />
- *   <MultiSelect.Clear />
- *   <MultiSelect.List />
- * </MultiSelect>
+ * <MultiSuggestion>
+ *   <MultiSuggestion.Input />
+ *   <MultiSuggestion.Clear />
+ *   <MultiSuggestion.List />
+ * </MultiSuggestion>
  */
-export const MultiSelectClear = forwardRef<
+export const MultiSuggestionClear = forwardRef<
   HTMLButtonElement,
-  MultiSelectClearProps
->(function MultiSelectClear(
+  MultiSuggestionClearProps
+>(function MultiSuggestionClear(
   { 'aria-label': label = 'Tøm', onClick, ...rest },
   ref,
 ) {
-  const { inputRef } = useContext(MultiSelectContext); //, handleValueChange
+  const { inputRef } = useContext(MultiSuggestionContext); //, handleValueChange
 
   const handleClear = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,

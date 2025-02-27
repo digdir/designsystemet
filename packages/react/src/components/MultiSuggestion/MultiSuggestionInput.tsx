@@ -2,26 +2,26 @@ import { useMergeRefs } from '@floating-ui/react';
 import { isDatalistClick } from '@u-elements/u-datalist';
 import { forwardRef, useContext, useEffect } from 'react';
 import { Input, type InputProps } from '../Input';
-import { MultiSelectContext } from './MultiSelect';
+import { MultiSuggestionContext } from './MultiSuggestion';
 
-export type MultiSelectInputProps = InputProps;
+export type MultiSuggestionInputProps = InputProps;
 
 /**
- * Component that provides an input field for the MultiSelect list.
+ * Component that provides an input field for the MultiSuggestion list.
  *
- * Place as a descendant of `MultiSelect`
+ * Place as a descendant of `MultiSuggestion`
  *
  * @example
- * <MultiSelect>
- *   <MultiSelect.Input />
- *   <MultiSelect.List />
- * </MultiSelect>
+ * <MultiSuggestion>
+ *   <MultiSuggestion.Input />
+ *   <MultiSuggestion.List />
+ * </MultiSuggestion>
  */
-export const MultiSelectInput = forwardRef<
+export const MultiSuggestionInput = forwardRef<
   HTMLInputElement,
-  MultiSelectInputProps
->(function MultiSelectList({ value, onInput, ...rest }, ref) {
-  const { listId, inputRef, handleFilter } = useContext(MultiSelectContext);
+  MultiSuggestionInputProps
+>(function MultiSuggestionList({ value, onInput, ...rest }, ref) {
+  const { listId, inputRef, handleFilter } = useContext(MultiSuggestionContext);
   const mergedRefs = useMergeRefs([inputRef, ref]);
 
   // Update also if controlled value

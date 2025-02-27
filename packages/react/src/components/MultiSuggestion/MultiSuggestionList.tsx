@@ -3,18 +3,18 @@ import { forwardRef, useContext, useEffect } from 'react';
 import '@u-elements/u-datalist';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
-import { MultiSelectContext } from './MultiSelect';
+import { MultiSuggestionContext } from './MultiSuggestion';
 
-export type MultiSelectListProps = MergeRight<
+export type MultiSuggestionListProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDataListElement>,
   {
     /**
-     * The screen reader announcement for singular MultiSelect, where %d is the number of MultiSelects
+     * The screen reader announcement for singular MultiSuggestion, where %d is the number of MultiSuggestions
      * @default '%d forslag'
      */
     singular?: string;
     /**
-     * The screen reader announcement for plural MultiSelects, where %d is the number of MultiSelects
+     * The screen reader announcement for plural MultiSuggestions, where %d is the number of MultiSuggestions
      * @default '%d forslag'
      */
     plural?: string;
@@ -22,25 +22,26 @@ export type MultiSelectListProps = MergeRight<
 >;
 
 /**
- * Component that provides a MultiSelect list.
+ * Component that provides a MultiSuggestion list.
  *
- * Place as a descendant of `MultiSelect`
+ * Place as a descendant of `MultiSuggestion`
  *
  * @example
- * <MultiSelect>
- *   <MultiSelect.Input />
- *   <MultiSelect.List />
- * </MultiSelect>
+ * <MultiSuggestion>
+ *   <MultiSuggestion.Input />
+ *   <MultiSuggestion.List />
+ * </MultiSuggestion>
  */
-export const MultiSelectList = forwardRef<
+export const MultiSuggestionList = forwardRef<
   HTMLDataListElement,
-  MultiSelectListProps
->(function MultiSelectList(
+  MultiSuggestionListProps
+>(function MultiSuggestionList(
   { singular = '%d forslag', plural = '%d forslag', className, id, ...rest },
   ref,
 ) {
-  const { inputRef, listId, setListId, handleFilter } =
-    useContext(MultiSelectContext);
+  const { inputRef, listId, setListId, handleFilter } = useContext(
+    MultiSuggestionContext,
+  );
 
   useEffect(() => handleFilter?.(inputRef?.current)); // Must run on every render
   useEffect(() => {

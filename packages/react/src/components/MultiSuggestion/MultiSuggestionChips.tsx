@@ -3,9 +3,9 @@ import { useContext } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { Chip } from '../Chip';
-import { MultiSelectContext } from './MultiSelect';
+import { MultiSuggestionContext } from './MultiSuggestion';
 
-export type MultiSelectChipsProps = MergeRight<
+export type MultiSuggestionChipsProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDivElement>,
   {
     /**
@@ -21,10 +21,10 @@ export type MultiSelectChipsProps = MergeRight<
   }
 >;
 
-export const MultiSelectChips = ({
+export const MultiSuggestionChips = ({
   render = ({ value }) => value,
-}: MultiSelectChipsProps) => {
-  const { selectedItems } = useContext(MultiSelectContext);
+}: MultiSuggestionChipsProps) => {
+  const { selectedItems } = useContext(MultiSuggestionContext);
 
   return (
     <>
@@ -44,4 +44,4 @@ export const MultiSelectChips = ({
   );
 };
 
-MultiSelectChips.displayName = 'MultiSelectChips';
+MultiSuggestionChips.displayName = 'MultiSuggestionChips';
