@@ -3,26 +3,13 @@ Follow these steps to ensure a smooth and consistent release process.
 
 We currently use [changesets](https://github.com/changesets/changesets) for tracking changes, generating changelogs, and publishing releases.
 
-## 1. Update Main and Push Changes
+We don't use changesets prerelease mode yet as we want to avoid additonal steps when creating a new release.
 
-- Switch to the `main` branch:
+## 1. Update Main with changes from next
 
-  ```bash
-  git checkout main
-  ```
+- Make a PR from `next` into `main` branch
 
-- Rebase `main` with the latest changes from `next`:
-
-  ```bash
-  git rebase next
-  ```
-
-- Push the updates to the remote repository:
-
-  ```bash
-  git push
-  ```
-
+- Merge PR into `main` using a merge commit
 
 ## 2. Publish new package version
 
@@ -39,6 +26,12 @@ We currently use [changesets](https://github.com/changesets/changesets) for trac
   - Deploy Theme
   - Deploy Storybook
 
-### Next versions
+## 4. Update next branch with changes from main
+
+- Make a PR from `main` into `next` branch
+
+- Merge PR into `next` using a rebase merge commit
+
+### **Next**
 
 - Use Release Snapshot to publish new version for testing on `@next` before releasing to production
