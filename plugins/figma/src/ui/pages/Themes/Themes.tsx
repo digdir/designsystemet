@@ -30,9 +30,9 @@ function Themes() {
               title={theme.name}
               url={`/themes/${theme.themeModeId}`}
               colors={{
-                brand1Base: theme.colors.brand1.light?.[9] ?? '',
-                brand2Base: theme.colors.brand2.light?.[9] ?? '',
-                brand3Base: theme.colors.brand3.light?.[9] ?? '',
+                colorDot1: theme.colors.accent.light?.[12] ?? '',
+                colorDot2: theme.colors.extra1.light?.[12] ?? '',
+                colorDot3: theme.colors.extra2.light?.[12] ?? '',
               }}
             />
           );
