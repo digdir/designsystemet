@@ -273,6 +273,12 @@
         "$type": "color",
         "$value": "{color.neutral.text-default}"
       }
+    },
+    "link": {
+      "visited": {
+        "$type": "color",
+        "$value": "{global.purple.12}"
+      }
     }
   }
 }
