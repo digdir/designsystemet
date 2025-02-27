@@ -37,7 +37,7 @@ import {
   ValidationMessage,
   usePagination,
 } from '../src';
-import type { Size } from '../src/types';
+import type { Size } from '../src/sizes';
 
 export default {
   title: 'Testing',

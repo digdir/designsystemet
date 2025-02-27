@@ -2,6 +2,7 @@ import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { ElementType, HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
+import type { AllPossibleSizes } from '../../sizes';
 
 export type HeadingProps = {
   /**
@@ -13,7 +14,7 @@ export type HeadingProps = {
    * Changes text sizing
    * @default 'md'
    */
-  'data-size'?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+  'data-size'?: AllPossibleSizes;
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false

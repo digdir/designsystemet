@@ -13,7 +13,8 @@
       "packages/*": ["this/dir/does/not/exist/*"],
       // Paths matching package.json exports section in @digdir/designsystem-react
       "@digdir/designsystemet-react": ["packages/react/src/index.ts"],
-      "@digdir/designsystemet-react/colors": ["packages/react/src/colors.ts"]
+      "@digdir/designsystemet-react/colors": ["packages/react/src/colors.ts"],
+      "@digdir/designsystemet-react/sizes": ["packages/react/src/sizes.ts"],
     },
     "target": "ES2022",
     "module": "ESNext",

@@ -1,7 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "types": ["../../packages/theme/brand/colors.d.ts"]
+    "types": [
+      "./test-custom-sizes.d.ts",
+      "../../packages/theme/brand/colors.d.ts"
+    ]
   },
   "include": [
     ".",

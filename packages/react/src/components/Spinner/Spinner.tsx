@@ -1,6 +1,7 @@
 import { useMergeRefs } from '@floating-ui/react';
 import cl from 'clsx/lite';
 import { type ComponentPropsWithoutRef, forwardRef } from 'react';
+import type { GetSizes } from '../../sizes';
 import { useSynchronizedAnimation } from '../../utilities';
 
 export type SpinnerProps = {
@@ -11,7 +12,7 @@ export type SpinnerProps = {
   /**
    * Spinner size
    */
-  'data-size'?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  'data-size'?: GetSizes<'2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'>;
 } & ComponentPropsWithoutRef<'svg'> &
   (
     | { 'aria-label': string; 'aria-hidden'?: never }

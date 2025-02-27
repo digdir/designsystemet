@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react';
 import type { Color } from './colors';
-
-export type Size = 'sm' | 'md' | 'lg';
+import type { Size } from './sizes';
 
 export type DefaultProps = {
   /**

@@ -12,7 +12,7 @@ import {
 } from '../..';
 
 import { Input } from '.';
-import type { Size } from '../../types';
+import type { Size } from '../../sizes';
 
 type Story = StoryObj<typeof Input>;
 
