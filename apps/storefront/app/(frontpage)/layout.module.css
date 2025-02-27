@@ -51,7 +51,7 @@
 }
 
 .betaTag {
-  background-color: var(--ds-global-purple-5);
+  background-color: light-dark(#e0d6eb, #4f2776);
   display: inline-block;
   padding: 3px 12px;
   border-radius: 4px;
