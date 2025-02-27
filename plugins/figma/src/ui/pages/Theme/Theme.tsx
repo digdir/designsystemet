@@ -89,7 +89,7 @@ function Theme() {
       return;
     }
 
-    /* For now we check that we have accent, brand1, brand2, brand3 */
+    /* For now we check that we have primary, accent, extra1, extra2 */
     const primary = result.mainColors.find(
       (color) => color.name === 'primary',
     )?.hex;
