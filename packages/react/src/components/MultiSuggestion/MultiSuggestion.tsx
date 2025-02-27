@@ -289,7 +289,7 @@ export const MultiSuggestion = forwardRef<
       }}
     >
       <u-tags
-        class={cl('ds-multi-select', className)} // Using "class" since React does not translate className on custom elements
+        class={cl('ds-multi-suggestion', className)} // Using "class" since React does not translate className on custom elements
         ref={mergedRefs}
         {...rest}
       />

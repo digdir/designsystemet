@@ -1,4 +1,4 @@
-.ds-multi-select {
+.ds-multi-suggestion {
   --dsc-multi-select-option-background--selected: var(--ds-color-background-tinted);
   --dsc-multi-select-option-border-color: var(--ds-color-base-default);
   --dsc-multi-select-clear-gap: var(--ds-size-2);

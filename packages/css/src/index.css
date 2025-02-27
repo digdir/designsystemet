@@ -37,5 +37,5 @@
 @import url('./badge.css') layer(ds.components);
 @import url('./avatar.css') layer(ds.components);
 @import url('./suggestion.css') layer(ds.components);
-@import url('./multi-select.css') layer(ds.components);
+@import url('./multi-suggestion.css') layer(ds.components);
 @import url('./combobox.css') layer(ds.components);
