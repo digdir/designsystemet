@@ -14,7 +14,7 @@ export type DetailsProps = MergeRight<
      *
      * @default 'default'
      */
-    'data-variant'?: 'default' | 'tinted';
+    variant?: 'default' | 'tinted';
     /**
      * Controls open-state.
      *
@@ -58,7 +58,7 @@ export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
       className,
       open,
       defaultOpen = false,
-      'data-variant': variant = 'default',
+      variant = 'default',
       onToggle,
       ...rest
     },

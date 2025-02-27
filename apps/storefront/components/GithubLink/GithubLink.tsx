@@ -23,7 +23,7 @@ const GithubLink = ({
       data-unstyled
       className={cl(classes.githubLink, className)}
     >
-      <Github />
+      <Github aria-hidden='true' />
       Rediger denne siden på Github (åpnes i ny fane)
     </Link>
   );
