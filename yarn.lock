@@ -1118,8 +1118,8 @@ __metadata:
     rollup-plugin-copy: "npm:^3.5.0"
     typescript: "npm:^5.7.3"
   peerDependencies:
-    react: ">=18.3.1"
-    react-dom: ">=18.3.1"
+    react: ">=18.3.1 || ^19.0.0"
+    react-dom: ">=18.3.1 || ^19.0.0"
   languageName: unknown
   linkType: soft
 
