@@ -1,23 +1,23 @@
 {
   "color": {},
-  "font": {
-    "family": {
+  "font-family": {
+    "main": {
       "$type": "fontFamilies",
-      "$value": "{<theme>.main}"
+      "$value": "{<theme>.font-family.main}"
     }
   },
   "font-weight": {
     "medium": {
       "$type": "fontWeights",
-      "$value": "{<theme>.bold}"
+      "$value": "{<theme>.font-weight.medium}"
     },
     "semibold": {
       "$type": "fontWeights",
-      "$value": "{<theme>.extra-bold}"
+      "$value": "{<theme>.font-weight.semibold}"
     },
     "regular": {
       "$type": "fontWeights",
-      "$value": "{<theme>.regular}"
+      "$value": "{<theme>.font-weight.regular}"
     }
   },
   "border-radius": {
