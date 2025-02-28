@@ -35,7 +35,7 @@
     max-height: 200px;
 
     /* Hide <suggestion.Empty> if any <suggestion.Option> is visible */
-    &:has(u-option:not([hidden]):not([aria-disabled='true'])) > u-option[data-empty] {
+    &:has(u-option:not([hidden]):not([aria-disabled='true']):not([data-empty])) > u-option[data-empty] {
       display: none;
     }
     & > u-option[data-empty] {
