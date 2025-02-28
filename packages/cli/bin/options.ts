@@ -19,16 +19,16 @@ export type OptionGetter = ReturnType<typeof getOptionIfMatchingSource>;
  * The difference between this and using the option directly is that we return undefined
  * instead of the default value if the option was not explicitly set.
  */
-export const getExplicitOptionOnly = getOptionIfMatchingSource('cli');
+export const getSuppliedCliOption = getOptionIfMatchingSource('cli');
 
 /**
  * Get the default value specified for a CLI command option.
  * Mostly useful for getting values which may later be overridden.
  */
-export const getDefaultOptionOnly = getOptionIfMatchingSource('default');
+export const getDefaultCliOption = getOptionIfMatchingSource('default');
 
 /**
- * This function is basically the default behaviour, unlike {@link getExplicitOptionOnly}.
- * It is provided so that the program can choose its behaviour as needed.
+ * Try to get the explicitly supplied CLI option, and fall back to the default value
+ * for the option as defined in the {@link Command}
  */
-export const getDefaultOrExplicitOption = getOptionIfMatchingSource('cli', 'default');
+export const getCliOption = getOptionIfMatchingSource('cli', 'default');

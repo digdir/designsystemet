@@ -15,12 +15,7 @@ import type { Theme } from '../src/tokens/types.js';
 import { cleanDir } from '../src/tokens/utils.js';
 import { writeTokens } from '../src/tokens/write.js';
 import { type CombinedConfigSchema, combinedConfigSchema, configFileSchema, mapPathToOptionName } from './config.js';
-import {
-  type OptionGetter,
-  getDefaultOptionOnly,
-  getDefaultOrExplicitOption,
-  getExplicitOptionOnly,
-} from './options.js';
+import { type OptionGetter, getCliOption, getDefaultCliOption, getSuppliedCliOption } from './options.js';
 
 program.name('designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
 
@@ -140,8 +135,8 @@ function makeTokenCommands() {
         });
 
       const unvalidatedConfig = noUndefined({
-        outDir: propsFromJson?.outDir ?? getDefaultOrExplicitOption(cmd, 'outDir'),
-        clean: propsFromJson?.clean ?? getDefaultOrExplicitOption(cmd, 'clean'),
+        outDir: propsFromJson?.outDir ?? getCliOption(cmd, 'outDir'),
+        clean: propsFromJson?.clean ?? getCliOption(cmd, 'clean'),
         themes: propsFromJson?.themes
           ? R.map((jsonThemeValues) => {
               // For each theme specified in the JSON config, we get the options in the following order:
@@ -149,14 +144,14 @@ function makeTokenCommands() {
               // - options defined in
               // - explicitly set CLI command options
               // With later values overriding earlier values
-              const defaultThemeValues = getThemeOptions(getDefaultOptionOnly);
-              const cliThemeValues = getThemeOptions(getExplicitOptionOnly);
+              const defaultThemeValues = getThemeOptions(getDefaultCliOption);
+              const cliThemeValues = getThemeOptions(getSuppliedCliOption);
               return R.mergeDeepRight(defaultThemeValues, R.mergeDeepRight(jsonThemeValues, cliThemeValues));
             }, propsFromJson.themes)
           : // If there are no themes specified in the JSON config, we use both explicit
             // and default theme options from the CLI.
             {
-              [opts.theme]: getThemeOptions(getDefaultOrExplicitOption),
+              [opts.theme]: getThemeOptions(getCliOption),
             },
       });
 
