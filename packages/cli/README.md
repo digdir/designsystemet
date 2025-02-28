@@ -14,6 +14,14 @@ Read the Designsystemet [README](https://github.com/digdir/designsystemet) to ge
 Use `npx @digdir/designsystemet tokens create <options>` to create design tokens for use with Designsystemet.
 
 This allows you to define themes including custom colors, font-family, and border-radius.
+We recommend using the [Designsystemet theme builder](https://theme.designsystemet.no/) for generating a valid command with correct options.
+
+#### Update tokens
+
+Whenever a new version of the CLI is released, or you have done changes, we recommend to update design tokens with the `--clean` option to potentially remove any changes deprecated files or unneeded files.
+
+To update design tokens, re-run `npx @digdir/designsystemet tokens create <options> --clean`. 
+If a [config file](#using-a-config-file) you can also re-run with `"clean": true`.
 
 > ⚠️ **WARNING** ⚠️  
 > The design tokens created by this tool are considered an implementation detail, and is subject
@@ -22,10 +30,6 @@ This allows you to define themes including custom colors, font-family, and borde
 > 
 > Since tokens may be added or removed at any time, it is necessary to routinely re-run this
 > command when upgrading the libraries. This will remove any direct edits to the design tokens.
-
-For valid options, see `npx @digdir/designsystemet tokens create --help`
-
-We recommend using the [Designsystemet theme builder](https://theme.designsystemet.no/) for generating a valid command with correct options.
 
 ### Build CSS from tokens
 
@@ -37,9 +41,12 @@ Use `npx @digdir/designsystemet tokens build <options>` to build CSS from design
 > time. Therefore, it is necessary to routinely re-run this command when upgrading the libraries.
 > This will remove any direct edits to the CSS.
 
-For valid options, see `npx @digdir/designsystemet tokens build --help`
+#### Update built CSS
 
-### Using a config file (experimental)
+Whenever a new version of the CLI is released, or you have done changes, we recommend to build a new set of CSS from design tokens with the `--clean` option to potentially remove any changes deprecated files or unneeded files.
+
+
+### Using a config file
 
 > ⚠️ **WARNING** ⚠️  
 > This feature is experimental. The config schema may change at any time.
@@ -75,6 +82,7 @@ npx @digdir/designsystemet tokens create \
 ```jsonc
 {
   "$schema": "./node_modules/@digdir/designsystemet/dist/config.schema.json",
+  "outDir": "../path/to/design-tokens",
   "themes": {
     "theme": {
       "colors": {
@@ -87,68 +95,13 @@ npx @digdir/designsystemet tokens create \
   }
 }
 ```
-To generate new design tokens and CSS files, you would then run
+To generate new design tokens and CSS files, you would then run.
 
 ```
 npx @digdir/designsystemet tokens create
-npx @digdir/designsystemet tokens build --out-dir <your-css-location>
+npx @digdir/designsystemet tokens build
 ```
 
 #### Complex config example
 
-This config file has multiple themes (`first-brand` and `second-brand`), and uses all supported config options
-
-```json
-{
-  "$schema": "./node_modules/@digdir/designsystemet/dist/config.schema.json",
-  "outDir": "../path/to/design-tokens",
-  "clean": true,
-  "themes": {
-    "first-brand": {
-      "colors": {
-        "main": {
-          "dominant": "#0062BA",
-          "complimentary": "#94237C"
-        },
-        "support": {
-          "first": "#F45F63",
-          "second": "#E5AA20",
-          "third": "#1E98F5",
-          "fourth": "#F167EC"
-        },
-        "neutral": "#303030"
-      },
-      "typography": {
-        "fontFamily": "Inter"
-      },
-      "borderRadius": 8
-    },
-    "second-brand": {
-      "colors": {
-        "main": {
-          "dominant": "#ffaaaa",
-          "complimentary": "#00ff00"
-        },
-        "support": {
-          "first": "#abcdef",
-          "second": "#123456",
-          "third": "#994a22",
-          "fourth": "#3d5f30"
-        },
-        "neutral": "#c05030"
-      },
-      "typography": {
-        "fontFamily": "Roboto"
-      },
-      "borderRadius": 99
-    }
-  }
-}
-```
-
-To generate new design tokens and CSS files, you would then run
-
-```
-npx @digdir/designsystemet tokens create
-npx @digdir/designsystemet tokens build --tokens ../path/to/design-tokens --out-dir <your-css-location>
-```
+Have a look at the `*.config.json` files under the `packages/cli` in the Github repo for more complex examples.
