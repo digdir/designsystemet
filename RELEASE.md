@@ -19,6 +19,8 @@ We don't use changesets prerelease mode yet as we want to avoid additonal steps 
 
 - [Changeset bot](https://github.com/apps/changeset-bot) will now publish new a package version to npmjs and create [github releases](https://github.com/digdir/designsystemet/releases)
 
+- Verify that new version is available in [npmjs](https://www.npmjs.com/package/@digdir/designsystemet) (under `latest` tag) and on [github releases](https://github.com/digdir/designsystemet/releases)
+
 ## 3. Deploy new application version to production
 
 - Manually trigger the github action deployment to `production` environment from `main` branch: 
