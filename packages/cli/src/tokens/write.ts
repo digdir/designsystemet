@@ -144,6 +144,7 @@ export const writeTokens = async (options: WriteTokensOptions) => {
   );
 
   const semanticColors = {
+    ...semanticColorBaseFile,
     color: {
       ...Object.fromEntries(semanticColorTokens),
       ...semanticColorBaseFile.color,

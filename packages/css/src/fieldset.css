@@ -21,6 +21,6 @@
 
   &:disabled > legend,
   &:disabled > legend + p {
-    opacity: var(--ds-disabled-opacity);
+    opacity: var(--ds-opacity-disabled);
   }
 }

@@ -116,7 +116,7 @@
   &:disabled,
   &[aria-disabled='true'] {
     cursor: not-allowed;
-    opacity: var(--ds-disabled-opacity);
+    opacity: var(--ds-opacity-disabled);
   }
 
   &[aria-invalid='true'] {

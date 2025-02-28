@@ -22,7 +22,7 @@
    */
   &:has([aria-disabled='true']:not(u-option, [role='option'][aria-disabled='true']), :disabled:not(option)) > * {
     cursor: not-allowed;
-    opacity: var(--ds-disabled-opacity);
+    opacity: var(--ds-opacity-disabled);
   }
 
   &:has([aria-readonly='true'], [readonly]) label {
