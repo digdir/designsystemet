@@ -1,5 +1,6 @@
 ---
+"@digdir/designsystemet": patch
 "@digdir/designsystemet-css": patch
 ---
 
-Add `--ds-color-link-visited` for styling visited links
+Added `--ds-link-color-visited` for styling visited links
