@@ -139,10 +139,10 @@ function makeTokenCommands() {
         clean: propsFromJson?.clean ?? getCliOption(cmd, 'clean'),
         themes: propsFromJson?.themes
           ? R.map((jsonThemeValues) => {
-              // For each theme specified in the JSON config, we get the options in the following order:
-              // - default values for CLI command options
-              // - options defined in
-              // - explicitly set CLI command options
+              // For each theme specified in the JSON config, we resolve the option values in the following order:
+              // - default value
+              // - config value
+              // - CLI value
               // With later values overriding earlier values
               const defaultThemeValues = getThemeOptions(getDefaultCliOption);
               const cliThemeValues = getThemeOptions(getSuppliedCliOption);
