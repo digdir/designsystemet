@@ -60,6 +60,7 @@ const dialogRef = useRef<HTMLDialogElement>(null);
 ### Close on backdrop click
 
 Vi bruker `backdropClose={true}` proppen for å lukke dialogen når brukeren klikker utenfor.
+Dette funker kun dersom du har `modal={true}`, fordi en non-modla har ikke et backdrop.
 
 <Canvas of={DialogStories.BackdropClose} />
 
