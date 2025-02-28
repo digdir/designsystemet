@@ -99,7 +99,14 @@ En kobling gjør at du slipper å legge variablene inn i Figma, du importerer de
   - Følg Tokens Studio sin guide "[Sync your Design Tokens with code](https://docs.tokens.studio/token-storage-and-sync/sync-provider-overview)" for å sette opp kobling til ditt Git repo. 
   - Husk å sette "Token storage location" til `design-tokens` (eller det du har valgt å kalle mappen din med Design Tokens).
 
-4. Under "Tokens" i Tokens Studio skal du nå se alle fargene du generte med Temabyggeren i steg 2. I Tokens Studio velg `Styles & variables` og `Export styles & variables to Figma` og følg stegene for å eksportere tokens til variabler i Figma. 
+4. Under "Tokens" i Tokens Studio skal du nå se alle fargene du generte med Temabyggeren i steg 2. I Tokens Studio velg `Styles & variables` og `Export styles & variables to Figma` og følg stegene for å eksportere tokens til variabler i Figma. Pass på at du har disse innstillingene når du eksporterer variablene: 
+
+<Image
+  src='/img/token-studio-settings.png'
+  alt='Skjermbilde som viser valgte innstillinger i Tokens Studio. Under variabler er alt slått på. Under styles er color slått av. Under export er "Ignore first part of token name for styles" og "Prefix styles with active theme name" slått av '
+  boxShadow={false}
+  dataUnstyled
+/>
 
 5. Nå skal du se alle komponentene med dine egne profilfarger i Figma. For at andre designere i organisasjonen skal kunne bruke komponentene må du publisere filen.
 
