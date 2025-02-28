@@ -1,6 +1,6 @@
 import { hexToRgb, rgbToHex } from '@digdir/designsystemet/color';
 
-import type { ColorIndex, StoreThemes } from '../../common/store';
+import type { ColorIndex, ColorTheme, StoreThemes } from '../../common/store';
 import type { FigmaModeName, ThemeColors } from '../../common/types';
 
 const updateColors = (
@@ -21,11 +21,11 @@ const updateColors = (
   ) {
     const oldLightHex = rgbToHex(variable.valuesByMode[lightModeId] as RGB);
     const newLightHex = themes.find((theme) => theme.themeId === themeName)
-      ?.colors[themeType].light[themeIndex];
+      ?.colors[themeType as keyof ColorTheme].light[themeIndex];
 
     const oldDarkHex = rgbToHex(variable.valuesByMode[darkModeId] as RGB);
     const newDarkHex = themes.find((theme) => theme.themeId === themeName)
-      ?.colors[themeType].dark[themeIndex];
+      ?.colors[themeType as keyof ColorTheme].dark[themeIndex];
     if (newLightHex && oldLightHex !== newLightHex) {
       const lightRGB = hexToRgb(newLightHex, '1');
 

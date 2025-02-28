@@ -1,3 +1,7 @@
+import type {
+  Color,
+  SeverityColors,
+} from '@digdir/designsystemet-react/colors';
 import {
   autoUpdate,
   computePosition,
@@ -54,6 +58,10 @@ export type PopoverProps = MergeRight<
      * @default 'default'
      */
     'data-variant'?: 'default' | 'tinted';
+    /**
+     * Change the color scheme of the popover
+     */
+    'data-color'?: Color | SeverityColors;
     /**
      * Callback when the popover wants to open.
      */

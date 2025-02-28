@@ -16,13 +16,17 @@ export interface MainAndSupportColors {}
  * otherwise return the arbitrary string type.
  */
 type ColorWithFallback<T> = MainAndSupportColors extends EmptyObject
-  ? string & {}
+  ? string
   : T;
 
-export type SeverityColors = 'info' | 'success' | 'warning' | 'danger';
+export type SeverityInfo = 'info';
+export type SeveritySuccess = 'success';
+export type SeverityWarning = 'warning';
+export type SeverityDanger = 'danger';
+export type SeverityColors =
+  | SeverityInfo
+  | SeveritySuccess
+  | SeverityWarning
+  | SeverityDanger;
 
-export type CustomColors = ColorWithFallback<
-  'neutral' | keyof MainAndSupportColors
->;
-
-export type Color = CustomColors | ColorWithFallback<SeverityColors>;
+export type Color = ColorWithFallback<'neutral' | keyof MainAndSupportColors>;

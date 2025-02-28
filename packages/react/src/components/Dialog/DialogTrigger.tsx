@@ -23,10 +23,17 @@ export const DialogTrigger = forwardRef<HTMLButtonElement, DialogTriggerProps>(
     const contextRef = useContext(Context);
     const Component = asChild ? Slot : Button;
 
+    const openDialog = () => {
+      /* check if element has `data-modal`, it it has, use `showModal` */
+      contextRef.current?.getAttribute('data-modal') === 'true'
+        ? contextRef.current?.showModal()
+        : contextRef.current?.show();
+    };
+
     return (
       <Component
         aria-haspopup='dialog'
-        onClick={() => contextRef?.current?.showModal()}
+        onClick={openDialog}
         ref={ref}
         {...rest}
       />
