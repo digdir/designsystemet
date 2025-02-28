@@ -53,35 +53,35 @@ const VariantsMap: {
 } = {
   neutralDefault: {
     'data-color': 'neutral',
-    'data-variant': 'default',
+    variant: 'default',
   },
   neutralTinted: {
     'data-color': 'neutral',
-    'data-variant': 'tinted',
+    variant: 'tinted',
   },
   brand1Default: {
     'data-color': 'brand1',
-    'data-variant': 'default',
+    variant: 'default',
   },
   brand1Tinted: {
     'data-color': 'brand1',
-    'data-variant': 'tinted',
+    variant: 'tinted',
   },
   brand2Default: {
     'data-color': 'brand2',
-    'data-variant': 'default',
+    variant: 'default',
   },
   brand2Tinted: {
     'data-color': 'brand2',
-    'data-variant': 'tinted',
+    variant: 'tinted',
   },
   brand3Default: {
     'data-color': 'brand3',
-    'data-variant': 'default',
+    variant: 'default',
   },
   brand3Tinted: {
     'data-color': 'brand3',
-    'data-variant': 'tinted',
+    variant: 'tinted',
   },
 };
 
