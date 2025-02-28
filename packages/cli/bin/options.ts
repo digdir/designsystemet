@@ -22,6 +22,12 @@ export type OptionGetter = ReturnType<typeof getOptionIfMatchingSource>;
 export const getExplicitOptionOnly = getOptionIfMatchingSource('cli');
 
 /**
+ * Get the default value specified for a CLI command option.
+ * Mostly useful for getting values which may later be overridden.
+ */
+export const getDefaultOptionOnly = getOptionIfMatchingSource('default');
+
+/**
  * This function is basically the default behaviour, unlike {@link getExplicitOptionOnly}.
  * It is provided so that the program can choose its behaviour as needed.
  */

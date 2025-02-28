@@ -15,7 +15,12 @@ import type { Theme } from '../src/tokens/types.js';
 import { cleanDir } from '../src/tokens/utils.js';
 import { writeTokens } from '../src/tokens/write.js';
 import { type CombinedConfigSchema, combinedConfigSchema, configFileSchema, mapPathToOptionName } from './config.js';
-import { type OptionGetter, getDefaultOrExplicitOption } from './options.js';
+import {
+  type OptionGetter,
+  getDefaultOptionOnly,
+  getDefaultOrExplicitOption,
+  getExplicitOptionOnly,
+} from './options.js';
 
 program.name('designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
 
@@ -138,9 +143,16 @@ function makeTokenCommands() {
         outDir: propsFromJson?.outDir ?? getDefaultOrExplicitOption(cmd, 'outDir'),
         clean: propsFromJson?.clean ?? getDefaultOrExplicitOption(cmd, 'clean'),
         themes: propsFromJson?.themes
-          ? // For each theme specified in the JSON config, we override the config values
-            // with the explicitly set options from the CLI.
-            R.map((theme) => R.mergeDeepRight(theme, getThemeOptions(getDefaultOrExplicitOption)), propsFromJson.themes)
+          ? R.map((jsonThemeValues) => {
+              // For each theme specified in the JSON config, we get the options in the following order:
+              // - default values for CLI command options
+              // - options defined in
+              // - explicitly set CLI command options
+              // With later values overriding earlier values
+              const defaultThemeValues = getThemeOptions(getDefaultOptionOnly);
+              const cliThemeValues = getThemeOptions(getExplicitOptionOnly);
+              return R.mergeDeepRight(defaultThemeValues, R.mergeDeepRight(jsonThemeValues, cliThemeValues));
+            }, propsFromJson.themes)
           : // If there are no themes specified in the JSON config, we use both explicit
             // and default theme options from the CLI.
             {
