@@ -1,20 +1,24 @@
 {
   "uutilsynet": {
-    "main": {
-      "$type": "fontFamilies",
-      "$value": "Inter"
+    "font-family": {
+      "main": {
+        "$type": "fontFamilies",
+        "$value": "Inter"
+      }
     },
-    "bold": {
-      "$type": "fontWeights",
-      "$value": "Medium"
-    },
-    "extra-bold": {
-      "$type": "fontWeights",
-      "$value": "Semi bold"
-    },
-    "regular": {
-      "$type": "fontWeights",
-      "$value": "Regular"
+    "font-weight": {
+      "medium": {
+        "$type": "fontWeights",
+        "$value": "Medium"
+      },
+      "semibold": {
+        "$type": "fontWeights",
+        "$value": "Semi bold"
+      },
+      "regular": {
+        "$type": "fontWeights",
+        "$value": "Regular"
+      }
     }
   }
 }

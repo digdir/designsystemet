@@ -1,20 +1,24 @@
 {
   "digdir": {
-    "main": {
-      "$type": "fontFamilies",
-      "$value": "IBM Plex Mono"
+    "font-family": {
+      "main": {
+        "$type": "fontFamilies",
+        "$value": "IBM Plex Mono"
+      }
     },
-    "bold": {
-      "$type": "fontWeights",
-      "$value": "Medium"
-    },
-    "extra-bold": {
-      "$type": "fontWeights",
-      "$value": "SemiBold"
-    },
-    "regular": {
-      "$type": "fontWeights",
-      "$value": "Regular"
+    "font-weight": {
+      "medium": {
+        "$type": "fontWeights",
+        "$value": "Medium"
+      },
+      "semibold": {
+        "$type": "fontWeights",
+        "$value": "SemiBold"
+      },
+      "regular": {
+        "$type": "fontWeights",
+        "$value": "Regular"
+      }
     }
   }
 }

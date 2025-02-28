@@ -331,24 +331,24 @@
       }
     }
   },
-  "font": {
-    "family": {
+  "font-family": {
+    "main": {
       "$type": "fontFamilies",
-      "$value": "{uutilsynet.main}"
+      "$value": "{uutilsynet.font-family.main}"
     }
   },
   "font-weight": {
     "medium": {
       "$type": "fontWeights",
-      "$value": "{uutilsynet.bold}"
+      "$value": "{uutilsynet.font-weight.medium}"
     },
     "semibold": {
       "$type": "fontWeights",
-      "$value": "{uutilsynet.extra-bold}"
+      "$value": "{uutilsynet.font-weight.semibold}"
     },
     "regular": {
       "$type": "fontWeights",
-      "$value": "{uutilsynet.regular}"
+      "$value": "{uutilsynet.font-weight.regular}"
     }
   },
   "border-radius": {
