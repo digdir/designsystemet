@@ -41,7 +41,7 @@ const generateTypographyTokens = (themeName: string, { fontFamily }: Typography)
       },
       'extra-bold': {
         $type: 'fontWeights',
-        $value: 'Semi bold',
+        $value: 'SemiBold',
       },
       regular: {
         $type: 'fontWeights',
