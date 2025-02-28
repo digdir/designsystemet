@@ -92,12 +92,12 @@ const CodeSnippet = ({
               onMouseEnter={() => setToolTipText('Kopier')}
               onClick={() => onButtonClick()}
               className={classes.copyButton}
-              aria-label='Kopier'
+              aria-label='Kopier kodesnutt'
               icon
               data-color='neutral'
               data-size='sm'
             >
-              <FilesIcon fontSize='1.5rem' />
+              <FilesIcon fontSize='1.5rem' aria-hidden='true' />
             </Button>
           </Tooltip>
           {/* @ts-ignore -- This has yet to be updated to use react 19 */}

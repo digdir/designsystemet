@@ -57,7 +57,7 @@ export type PopoverProps = MergeRight<
      *
      * @default 'default'
      */
-    'data-variant'?: 'default' | 'tinted';
+    variant?: 'default' | 'tinted';
     /**
      * Change the color scheme of the popover
      */
@@ -108,7 +108,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       onClose,
       onOpen,
       open,
-      'data-variant': variant = 'default',
+      variant = 'default',
       placement = 'top',
       autoPlacement = true,
       asChild = false,

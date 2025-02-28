@@ -6,7 +6,6 @@
 }
 
 .box {
-  border: 1px solid var(--ds-color-neutral-border-subtle);
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -14,11 +13,6 @@
   padding: 10px;
   background-color: transparent;
   cursor: pointer;
-  transition: 0.1s all;
-}
-
-.box:hover {
-  background-color: var(--ds-color-neutral-background-tinted);
 }
 
 .leftContent {
@@ -40,8 +34,4 @@
 
 .hex {
   font-size: 16px;
-}
-
-.icon {
-  color: var(--ds-color-neutral-text-subtle);
 }

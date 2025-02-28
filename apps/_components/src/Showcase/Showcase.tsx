@@ -4,17 +4,19 @@ import {
   Button,
   Card,
   Checkbox,
-  Combobox,
   Details,
   Divider,
+  Field,
   Fieldset,
   Heading,
+  Label,
   Link,
   Pagination,
   Paragraph,
   Radio,
   Search,
   Select,
+  EXPERIMENTAL_Suggestion as Suggestion,
   Switch,
   Table,
   Tabs,
@@ -27,6 +29,16 @@ import {
 import cl from 'clsx/lite';
 import { type HTMLAttributes, useState } from 'react';
 import classes from './Showcase.module.css';
+
+const DATA_PLACES = [
+  'Sogndal',
+  'Oslo',
+  'Brønnøysund',
+  'Stavanger',
+  'Trondheim',
+  'Bergen',
+  'Lillestrøm',
+];
 
 type ShowcaseProps = HTMLAttributes<HTMLDivElement>;
 
@@ -240,22 +252,22 @@ export function Showcase({ className, ...props }: ShowcaseProps) {
             <ToggleGroup.Item value='sweden'>Sverige</ToggleGroup.Item>
             <ToggleGroup.Item value='utlandet'>Utlandet</ToggleGroup.Item>
           </ToggleGroup>
-          <Combobox
-            description='Velg et sted'
-            label='Hvor går reisen?'
-            portal={false}
-            multiple
-          >
-            <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-            <Combobox.Option value='leikanger'>Leikanger</Combobox.Option>
-            <Combobox.Option value='oslo'>Oslo</Combobox.Option>
-            <Combobox.Option value='bronnoysund'>Brønnøysund</Combobox.Option>
-            <Combobox.Option value='stavanger'>Stavanger</Combobox.Option>
-            <Combobox.Option value='trondheim'>Trondheim</Combobox.Option>
-            <Combobox.Option value='tromso'>Tromsø</Combobox.Option>
-            <Combobox.Option value='bergen'>Bergen</Combobox.Option>
-            <Combobox.Option value='moirana'>Mo i Rana</Combobox.Option>
-          </Combobox>
+          <Field>
+            <Label>Velg en destinasjon</Label>
+            <Suggestion>
+              <Suggestion.Input />
+              <Suggestion.Clear />
+              <Suggestion.List>
+                <Suggestion.Empty>Tomt</Suggestion.Empty>
+                {DATA_PLACES.map((place) => (
+                  <Suggestion.Option key={place} value={place}>
+                    {place}
+                    <div>Kommune</div>
+                  </Suggestion.Option>
+                ))}
+              </Suggestion.List>
+            </Suggestion>
+          </Field>
         </div>
       </div>
       <div className={cl(classes.card, classes.tabs)}>
