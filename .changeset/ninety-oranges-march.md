@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-Fix `peerDependencies` definition for React 19 support
+Fix `peerDependencies` definition for React 19
