@@ -53,7 +53,7 @@
 }
 
 .tag {
-  background-color: var(--ds-global-purple-4);
+  background-color: light-dark(#e0d6eb, #4f2776);
   border-radius: 4px;
   padding: 4px 10px;
   font-size: 16px;

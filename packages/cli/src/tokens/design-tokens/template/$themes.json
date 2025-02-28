@@ -1347,7 +1347,6 @@
       "color.warning.base-contrast-default": "3d38f3079fb9fd155567ec24c7fde25f68c40f42",
       "color.focus.inner": "1ec8f76f658042889b1eb4b08f3ce9bca1b7e603",
       "color.focus.outer": "09e04f0bfff8fdc309db58a0131b5d07dae6b4f8",
-      "disabled.opacity": "d94940d06b80e1cb6184ae12c5793a1ef95420ba",
       "border-width.default": "ac5b6181d17de3d25249c91674dce4fef8711216",
       "border-width.highlight": "dd40bb1cb729138762c0bfa29d26adb58b726354",
       "border-radius.sm": "7b2af5d22e01253d20184bf5c3f872a18d41a315",
@@ -1375,7 +1374,8 @@
       "size.18": "803716e7a1ab4f0ed08180713a5ddc53f5a80a13",
       "size.22": "f0e62cce260051ffae97ed9709e77fb22e2dac2e",
       "size.26": "a42e9a42d13ce2453de8005b58147b9a9b9b5dde",
-      "size.30": "600d545445deae2077866ba3953a64000a123606"
+      "size.30": "600d545445deae2077866ba3953a64000a123606",
+      "opacity.disabled": "d94940d06b80e1cb6184ae12c5793a1ef95420ba"
     },
     "group": "Semantic"
   },
