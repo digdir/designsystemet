@@ -603,8 +603,10 @@
         "$type": "color",
         "$value": "{color.neutral.text-default}"
       }
-    },
-    "link": {
+    }
+  },
+  "link": {
+    "color": {
       "visited": {
         "$type": "color",
         "$value": "{global.purple.12}"
