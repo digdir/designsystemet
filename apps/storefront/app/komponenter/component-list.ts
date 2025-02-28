@@ -84,11 +84,11 @@ export const data = [
     image: 'Loaders.svg',
     url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-loaders-skeleton--docs',
   },
-  // {
-  //   title: 'MultiSuggestion',
-  //   image: 'MultiSuggestion.svg',
-  //   url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-multisuggestion--docs',
-  // },
+  {
+    title: 'MultiSuggestion',
+    image: 'MultiSuggestion.svg',
+    url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-multisuggestion--docs',
+  },
   {
     title: 'Select',
     image: 'Select.svg',
