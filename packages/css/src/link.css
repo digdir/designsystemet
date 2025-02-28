@@ -5,7 +5,7 @@
   --dsc-link-color: var(--ds-color-text-subtle);
   --dsc-link-background--focus: var(--ds-color-focus-outer);
   --dsc-link-color--focus: var(--ds-color-focus-inner);
-  --dsc-link-color--visited: var(--ds-color-link-visited);
+  --dsc-link-color--visited: var(--ds-link-color-visited);
   --dsc-link-text-decoration-thickness--hover: 0.125em; /* 2px ish */
   --dsc-link-text-decoration-thickness: 0.0625em; /* 1px ish */
 

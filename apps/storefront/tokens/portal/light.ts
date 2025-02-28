@@ -2640,14 +2640,14 @@ export const  color = [
       $type: "color",
       $value: "{global.purple.12}"
     },
-    name: "--ds-color-link-visited",
+    name: "--ds-link-color-visited",
     attributes: {},
     path: [
-      "color",
       "link",
+      "color",
       "visited"
     ],
-    key: "{color.link.visited}"
+    key: "{link.color.visited}"
   }
 ] 
 

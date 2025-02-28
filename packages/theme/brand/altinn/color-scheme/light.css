@@ -150,7 +150,7 @@
   --ds-color-warning-base-contrast-default: #000000;
   --ds-color-focus-inner: #ffffff;
   --ds-color-focus-outer: #1f2c3d;
-  --ds-color-link-visited: #663299;
+  --ds-link-color-visited: #663299;
 
   color-scheme: light;
 }
@@ -303,7 +303,7 @@
   --ds-color-warning-base-contrast-default: #000000;
   --ds-color-focus-inner: #ffffff;
   --ds-color-focus-outer: #1f2c3d;
-  --ds-color-link-visited: #663299;
+  --ds-link-color-visited: #663299;
 
   color-scheme: light;
 }
