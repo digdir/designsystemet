@@ -15,6 +15,7 @@ import { useRef, useState } from 'react';
 
 import type { Color } from '@digdir/designsystemet/color';
 import { type ColorTheme, useThemeStore } from '../../store';
+import { isProduction } from '../../utils/is-production';
 import classes from './TokenModal.module.css';
 
 const colorCliOptions = cliOptions.theme.colors;
@@ -39,8 +40,12 @@ export const TokenModal = () => {
     return str;
   };
 
+  const packageCommand = `@digdir/designsystemet${isProduction() && '@next'}`;
+
+  const buildSnippet = `npx ${packageCommand} tokens build`;
+
   const cliSnippet = [
-    `npx @digdir/designsystemet tokens create`,
+    `npx ${packageCommand} tokens create`,
     `--${colorCliOptions.main} ${setCliColors(colors.main).trimEnd()}`,
     `--${colorCliOptions.neutral} "${getBaseDefault(colors.neutral[0]?.colors.light)?.hex}"`,
     `${colors.support.length > 0 ? `--${colorCliOptions.support} ${setCliColors(colors.support).trimEnd()}` : ''}`,
@@ -148,9 +153,7 @@ export const TokenModal = () => {
                 </Paragraph>
               </div>
               <div className={classes.snippet}>
-                <CodeSnippet language='bash'>
-                  npx @digdir/designsystemet tokens build
-                </CodeSnippet>
+                <CodeSnippet language='bash'>{buildSnippet}</CodeSnippet>
               </div>
 
               <Divider />
