@@ -127,14 +127,16 @@ export const DialogWithOpenProp: StoryFn<typeof Dialog> = (args) => {
   );
 };
 
-export const BackdropClose: StoryFn<typeof Dialog> = () => {
+export const BackdropClosedbyAny: StoryFn<typeof Dialog> = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   return (
     <Dialog.TriggerContext>
       <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-      <Dialog ref={dialogRef} closedby="none">
-        <Heading>Dialog med <code>closedby="any"</code> og en veldig lang tittel</Heading>
+      <Dialog ref={dialogRef} closedby='any'>
+        <Heading>
+          Dialog med <code>closedby="any"</code> og en veldig lang tittel
+        </Heading>
         <Paragraph>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
           doloremque obcaecati assumenda odio ducimus sunt et.
@@ -189,7 +191,7 @@ export const DialogWithForm: StoryFn<typeof Dialog> = () => {
   return (
     <Dialog.TriggerContext>
       <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-      <Dialog ref={dialogRef} onClose={() => setInput('')} closedby="any">
+      <Dialog ref={dialogRef} onClose={() => setInput('')} closedby='any'>
         <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
           Dialog med skjema
         </Heading>

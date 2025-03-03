@@ -97,9 +97,12 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
       const dialog = dialogRef.current;
       const handleClosedby = (event: Event) => {
         const { clientY: y, clientX: x, target } = event as MouseEvent;
-        if (event instanceof KeyboardEvent) {
-          return closedby === 'none' && event.key === 'Escape' && event.preventDefault(); // Skip ESC-key if closedby="none"
-        }
+        if (event instanceof KeyboardEvent)
+          return (
+            closedby === 'none' &&
+            event.key === 'Escape' &&
+            event.preventDefault()
+          ); // Skip ESC-key if closedby="none"
         if (window.getSelection()?.toString()) return; // Fix bug where if you select text spanning two divs it thinks you clicked outside
         if (dialog && target === dialog && closedby === 'any') {
           const { top, left, right, bottom } = dialog.getBoundingClientRect();
