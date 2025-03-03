@@ -38,12 +38,9 @@
     }
   }
 
-  & > :not(ol, ul)::before {
-    background: currentColor;
-  }
-
   /* When link is direct child of Breadcrumbs, make it back button */
   & > :not(ol, ul)::before {
+    background: currentColor;
     margin: 0;
     rotate: 180deg;
   }
