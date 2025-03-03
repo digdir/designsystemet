@@ -12,7 +12,7 @@ Read the Designsystemet [README](https://github.com/digdir/designsystemet) to ge
 
 ### Tailwind
 
-Make sure Tailwind loads before Designsystemet
+If you are using Tailwind with (Preflight)[https://tailwindcss.com/docs/preflight] make sure to load it before Designsystemet.
 
 #### v4
 
