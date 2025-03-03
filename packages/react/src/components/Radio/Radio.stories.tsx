@@ -70,6 +70,7 @@ export const WithError = {
     ...Group.args,
     error: 'Du må velge jordbær fordi det smaker best',
     name: 'my-error',
+    value: 'sjokolade',
   },
   render: Group,
 };

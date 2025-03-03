@@ -121,28 +121,28 @@ const VariantsMap: {
   },
   neutralTinted: {
     'data-color': 'neutral',
-    'data-variant': 'tinted',
+    variant: 'tinted',
   },
   dangerDefault: {
     'data-color': 'danger',
   },
   dangerTinted: {
     'data-color': 'danger',
-    'data-variant': 'tinted',
+    variant: 'tinted',
   },
   infoDefault: {
     'data-color': 'info',
   },
   infoTinted: {
     'data-color': 'info',
-    'data-variant': 'tinted',
+    variant: 'tinted',
   },
   warningDefault: {
     'data-color': 'warning',
   },
   warningTinted: {
     'data-color': 'warning',
-    'data-variant': 'tinted',
+    variant: 'tinted',
   },
 };
 

@@ -198,28 +198,28 @@ const VariantsMap: {
   },
   neutralTinted: {
     'data-color': 'neutral',
-    'data-variant': 'tinted',
+    variant: 'tinted',
   },
   dangerBase: {
     'data-color': 'danger',
   },
   dangerTinted: {
     'data-color': 'danger',
-    'data-variant': 'tinted',
+    variant: 'tinted',
   },
   infoBase: {
     'data-color': 'info',
   },
   infoTinted: {
     'data-color': 'info',
-    'data-variant': 'tinted',
+    variant: 'tinted',
   },
   warningBase: {
     'data-color': 'warning',
   },
   warningTinted: {
     'data-color': 'warning',
-    'data-variant': 'tinted',
+    variant: 'tinted',
   },
 };
 

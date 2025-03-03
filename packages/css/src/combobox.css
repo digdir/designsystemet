@@ -103,7 +103,7 @@
 }
 
 .ds-textfield:has(.ds-textfield__input:disabled) {
-  opacity: var(--ds-disabled-opacity);
+  opacity: var(--ds-opacity-disabled);
 }
 
 .ds-textfield--error .ds-textfield__input:not(:focus-visible) {
@@ -301,7 +301,7 @@
 }
 
 .ds-combobox__disabled {
-  opacity: var(--ds-disabled-opacity);
+  opacity: var(--ds-opacity-disabled);
 }
 
 .ds-combobox__disabled * {
