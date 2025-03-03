@@ -13,7 +13,7 @@
     color: var(--ds-color-neutral-text-subtle); /* TODO: Change to opacity or color-mix(currentColor, trasparent) to ensure contrast when parent element color changes? */
   }
 
-  & input {
+  & input:not([hidden]) {
     display: block; /* Ensure input is not placed on same line as label/description/validation */
   }
 
