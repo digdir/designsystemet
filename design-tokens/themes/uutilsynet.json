@@ -333,7 +333,7 @@
   },
   "font-family": {
     "$type": "fontFamilies",
-    "$value": "{uutilsynet.font-family.main}"
+    "$value": "{uutilsynet.font-family}"
   },
   "font-weight": {
     "medium": {

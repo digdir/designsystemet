@@ -1,10 +1,8 @@
 {
   "digdir": {
     "font-family": {
-      "main": {
-        "$type": "fontFamilies",
-        "$value": "IBM Plex Mono"
-      }
+      "$type": "fontFamilies",
+      "$value": "IBM Plex Mono"
     },
     "font-weight": {
       "medium": {

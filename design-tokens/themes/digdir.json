@@ -333,7 +333,7 @@
   },
   "font-family": {
     "$type": "fontFamilies",
-    "$value": "{digdir.font-family.main}"
+    "$value": "{digdir.font-family}"
   },
   "font-weight": {
     "medium": {

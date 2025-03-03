@@ -1,10 +1,8 @@
 {
   "portal": {
     "font-family": {
-      "main": {
-        "$type": "fontFamilies",
-        "$value": "Inter"
-      }
+      "$type": "fontFamilies",
+      "$value": "Inter"
     },
     "font-weight": {
       "medium": {

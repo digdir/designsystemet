@@ -333,7 +333,7 @@
   },
   "font-family": {
     "$type": "fontFamilies",
-    "$value": "{portal.font-family.main}"
+    "$value": "{portal.font-family}"
   },
   "font-weight": {
     "medium": {

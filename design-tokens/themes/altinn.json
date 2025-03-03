@@ -333,7 +333,7 @@
   },
   "font-family": {
     "$type": "fontFamilies",
-    "$value": "{altinn.font-family.main}"
+    "$value": "{altinn.font-family}"
   },
   "font-weight": {
     "medium": {
