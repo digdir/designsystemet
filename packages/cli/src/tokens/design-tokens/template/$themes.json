@@ -1005,10 +1005,10 @@
       "digdir.font-weight.semibold": "cbc7c1691a8a78015feaaf737170d1bad69127f3",
       "digdir.font-weight.medium": "e0ba0f14f562bd47bbbc2762b0276952bff6dc0e",
       "digdir.font-weight.regular": "428c6974bf9dfefd2b6aa6773cabb22759aa5536",
-      "digdir.font-family.main": "856b5d6abbcf6bc06b02838682edab2667c12783",
-      "altinn.font-family.main": "7efa525773ed529cfeb44e208412f02539868535",
-      "uutilsynet.font-family.main": "5e762a7b0a24e3281508b05856e24794ff01d084",
-      "portal.font-family.main": "b1f98b1619271bd779e64a70e601ed407a2d6b3f"
+      "digdir.font-family": "856b5d6abbcf6bc06b02838682edab2667c12783",
+      "altinn.font-family": "7efa525773ed529cfeb44e208412f02539868535",
+      "uutilsynet.font-family": "5e762a7b0a24e3281508b05856e24794ff01d084",
+      "portal.font-family": "b1f98b1619271bd779e64a70e601ed407a2d6b3f"
     },
     "group": "Typography"
   },
@@ -1037,10 +1037,10 @@
       "digdir.font-weight.semibold": "cbc7c1691a8a78015feaaf737170d1bad69127f3",
       "digdir.font-weight.medium": "e0ba0f14f562bd47bbbc2762b0276952bff6dc0e",
       "digdir.font-weight.regular": "428c6974bf9dfefd2b6aa6773cabb22759aa5536",
-      "digdir.font-family.main": "856b5d6abbcf6bc06b02838682edab2667c12783",
-      "altinn.font-family.main": "7efa525773ed529cfeb44e208412f02539868535",
-      "uutilsynet.font-family.main": "5e762a7b0a24e3281508b05856e24794ff01d084",
-      "portal.font-family.main": "b1f98b1619271bd779e64a70e601ed407a2d6b3f"
+      "digdir.font-family": "856b5d6abbcf6bc06b02838682edab2667c12783",
+      "altinn.font-family": "7efa525773ed529cfeb44e208412f02539868535",
+      "uutilsynet.font-family": "5e762a7b0a24e3281508b05856e24794ff01d084",
+      "portal.font-family": "b1f98b1619271bd779e64a70e601ed407a2d6b3f"
     },
     "group": "Typography"
   },
@@ -1145,7 +1145,7 @@
       "border-radius.6": "ec8f63c551a3feed56576a1030e284ea0efe7ed9",
       "border-radius.base": "80b5d08a35a320b9bd2d4ecdbe2ccf0086315b88",
       "border-radius.scale": "692a8c1f2038457a196ba0e077cdc70c6bad5e77",
-      "font-family.main": "32f399ee0e608727f1c4d02e8ceb892a6c3e79e0"
+      "font-family": "32f399ee0e608727f1c4d02e8ceb892a6c3e79e0"
     },
     "group": "Theme"
   },
