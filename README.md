@@ -31,7 +31,7 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 
 [`@digdir/designsystemet-react`](https://www.npmjs.com/package/@digdir/designsystemet-react) - React implementation of Designsystemet components.
 
-[`@digdir/designsystemet-theme`](https://www.npmjs.com/package/@digdir/designsystemet-theme) - Themes for Designsystemet used in Digdir.
+[`@digdir/designsystemet-theme`](https://www.npmjs.com/package/@digdir/designsystemet-theme) - Digdir themes for Designsystemet.
 
 
 
@@ -39,14 +39,16 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 
 Follow these steps to get started with the Designsystem in code.
 
-### 1. Install the packages
+### 1. Install
+
+Install the minimum to get started with Designsystemet 
 
 ```sh
-npm i @digdir/designsystemet
-npm i @digdir/designsystemet-css
+@digdir/designsystemet-css 
+@digdir/designsystemet-theme # or custom theme 
 ```
 
-Use [@digdir/designsystemet-theme](https://github.com/digdir/designsystemet/tree/next/packages/theme) if you need any of the predefined Digdir  themes.
+Install `@digdir/designsystemet-theme` if you need any of the Digdir themes. Uses `digdir` theme by default.
 
 #### 1.1 Custom theme
 
@@ -55,17 +57,17 @@ Create your own theme for Designsystemet by going to our [theme-builder](https:/
 Designsystemet theming is defined using [design-tokens](https://www.uxpin.com/studio/blog/what-are-design-tokens). 
 This is done so that you can use [Token Studio](https://tokens.studio/) to sync your theme in code with [Designsystemet Figma UI kit](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit), in addition to provide future flexibility.
 
-Run `npx @digdir/designsystemet tokens build` to build CSS files for your custom theme (from the design-tokens).
-Using your own built CSS theme file you can skip using the `@digdir/designsystemet-theme` package.
+Run `npx @digdir/designsystemet tokens build` to build CSS files for your custom theme (from the design-tokens) which you can then import and use with Designsystemet.
+
+Using a custom theme you can skip the `@digdir/designsystemet-theme`.
+
 
 #### 1.2 React
 
-```sh
-npm i @digdir/designsystemet-react 
-```
+Install `@digdir/designsystemet-react` if you want to use the React components.
 
 ```jsx
-import '@digdir/designsystemet-theme'; // or your custom theme css file
+import '@digdir/designsystemet-theme'; // or custom theme CSS file
 import '@digdir/designsystemet-css';
 
 import { Button } from '@digdir/designsystemet-react';
@@ -77,7 +79,7 @@ import { Button } from '@digdir/designsystemet-react';
 
 ##### Typescript 
 
-If you are using React and Typescript you can enable editor hints on HTML elements for `data-color` based on your theme.
+If you are using React and Typescript you can enable editor hints on any HTML elements for `data-color` based on your theme.
 
 This requires augmenting React's built-in types, and is therefore opt-in. 
 If you want this, add the following to your `tsconfig.json`:
