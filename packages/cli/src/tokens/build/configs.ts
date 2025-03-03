@@ -10,6 +10,7 @@ import { formats } from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
 import { resolveMath, sizeRem, typographyName, unitless } from './transformers.js';
 import type {
+  BuiltInColors,
   ColorCategories,
   GetSdConfigOptions,
   SDConfigForThemePermutation,
@@ -99,13 +100,22 @@ const colorSchemeVariables: GetStyleDictionaryConfig = (
   };
 };
 
-type ColorCategoryOpts = { category: ColorCategories } | { category: 'builtin'; color: string };
+type ColorCategoryOpts = { category: ColorCategories } | { category: 'builtin'; color: BuiltInColors };
 
 const colorCategoryVariables =
   (opts: ColorCategoryOpts): GetStyleDictionaryConfig =>
   ({ 'color-scheme': colorScheme, theme, ...permutation }, { outPath }) => {
     const category = opts.category;
     const color = category === 'builtin' ? opts.color : permutation[`${category}-color`];
+
+    if (!color) {
+      throw new Error(
+        category === 'builtin'
+          ? `Missing color for built-in color ${opts.color}`
+          : `Missing color for category ${category}`,
+      );
+    }
+
     const layer = `ds.theme.color`;
     const isRootColor = color === buildOptions?.rootColor;
     const selector = `${isRootColor ? ':root, [data-color-scheme], ' : ''}[data-color="${color}"]`;

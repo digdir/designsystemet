@@ -53,7 +53,7 @@ export function isSemanticToken(token: TransformedToken): boolean {
   return token.filePath.includes('semantic/');
 }
 
-export function isSemanticColorToken(token: TransformedToken, color?: string): boolean {
+export function isSemanticColorToken(token: TransformedToken, color: string): boolean {
   return token.filePath.includes('semantic/') && R.startsWith(['color', color], token.path);
 }
 

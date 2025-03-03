@@ -8,6 +8,8 @@ export const colorCategories = {
 
 export type ColorCategories = keyof typeof colorCategories;
 
+export type BuiltInColors = 'neutral' | 'success' | 'warning' | 'danger' | 'info';
+
 /**
  * A multi-dimensional theme is a concrete permutation of the possible theme dimensions
  */
