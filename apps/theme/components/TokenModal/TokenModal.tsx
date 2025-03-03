@@ -40,7 +40,7 @@ export const TokenModal = () => {
     return str;
   };
 
-  const packageCommand = `@digdir/designsystemet${!isProduction() && '@next'}`;
+  const packageCommand = `@digdir/designsystemet${isProduction() ? '' : '@next'}`;
 
   const buildSnippet = `npx ${packageCommand} tokens build`;
 
