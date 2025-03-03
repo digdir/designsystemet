@@ -6,5 +6,33 @@ CSS implementation of the Designsystemet components
 - Uses `@digdir/designsystemet-theme` or CSS file generated from `@digdir/designsystemet tokens build` for theming,
   - Build your own theme on https://theme.designsystemet.no/
 
-
 Read the Designsystemet [README](https://github.com/digdir/designsystemet) to get started.
+
+## Q&A
+
+### Tailwind
+
+Make sure Tailwind loads before Designsystemet
+
+#### v4
+
+```css
+@import url('@digdir/designsystemet-css');
+@import url('tailwindcss');
+```
+#### < v3
+```css
+@import url('@digdir/designsystemet-css');
+
+@layer base, ds;
+
+/**
+* Fix Tailwind Preflight specificity by using @layer:
+* See https://css-tricks.com/?p=372576
+*/
+@layer base {
+  @tailwind base;
+}
+@tailwind components;
+@tailwind utilities;
+```
