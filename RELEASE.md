@@ -32,7 +32,7 @@ We don't use changesets prerelease mode yet as we want to avoid additonal steps 
 
 - Make a PR from `main` into `next` branch
 
-- Merge PR into `next` using a rebase merge commit
+- Merge PR into `next` using a merge commit
 
 ### **Next**
 
