@@ -47,6 +47,7 @@ export const updateTemplates = async () => {
 
   // semantic/color.json
   const colorBaseFile = {
+    ...originalColorJson,
     color: R.omit(['accent', 'neutral', 'brand1', 'brand2', 'brand3'], originalColorJson.color),
   };
   await fs.writeFile(

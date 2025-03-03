@@ -1,0 +1,11 @@
+<svg width="216" height="106" viewBox="0 0 216 106" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="20.5" y="28" width="99" height="5" rx="2.5" fill="#1B88DD"/>
+<rect x="20.5" y="41" width="62" height="5" rx="2.5" fill="#4BADF7"/>
+<rect x="21.5" y="55" width="173" height="22" rx="3" fill="#D2EAFD"/>
+<rect x="21.5" y="55" width="173" height="22" rx="3" stroke="#1B88DD" stroke-width="2"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M186.418 63.1512C186.886 63.658 186.856 64.4489 186.349 64.9177L181.348 69.5426C180.869 69.9858 180.13 69.9858 179.651 69.5426L174.651 64.9176C174.144 64.4488 174.114 63.6579 174.582 63.1512C175.051 62.6444 175.842 62.6136 176.349 63.0824L180.5 66.9222L184.651 63.0823C185.158 62.6136 185.949 62.6444 186.418 63.1512Z" fill="#1B88DD"/>
+<rect x="27.5" y="60" width="32.4" height="12" rx="6" fill="#1B88DD"/>
+<rect x="33.5" y="64.2" width="20.4" height="3.6" rx="1.8" fill="#D2EAFD"/>
+<rect x="65.5" y="60" width="32.4" height="12" rx="6" fill="#1B88DD"/>
+<rect x="71.5" y="64.2" width="20.4" height="3.6" rx="1.8" fill="#D2EAFD"/>
+</svg>

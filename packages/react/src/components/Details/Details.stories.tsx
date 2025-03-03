@@ -59,7 +59,7 @@ export const InCardWithColor: StoryFn<typeof Details> = () => (
       </Details>
     </Card>
     <br />
-    <Card data-color='accent' data-variant='tinted'>
+    <Card data-color='accent' variant='tinted'>
       <Details>
         <Details.Summary>
           Hvordan får jeg tildelt et jegernummer?

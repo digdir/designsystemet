@@ -70,6 +70,11 @@
           background: var(--dsc-tabs-tab-color--selected);
         }
 
+        /* Place active line under focus */
+        &:focus-visible::after {
+          z-index: -1;
+        }
+
         @media (forced-colors: active) {
           color: CanvasText;
           border-bottom: 2px solid CanvasText;

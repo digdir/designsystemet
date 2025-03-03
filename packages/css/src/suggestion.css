@@ -13,10 +13,13 @@
   --dsc-suggestion-border-color: var(--ds-color-neutral-border-default);
 
   box-sizing: border-box;
-  display: flex;
   flex-wrap: wrap;
   gap: var(--ds-size-1);
   position: relative;
+
+  &:not([hidden]) {
+    display: flex;
+  }
 
   & u-datalist {
     background: var(--ds-color-neutral-background-default);
@@ -35,7 +38,7 @@
     max-height: 200px;
 
     /* Hide <suggestion.Empty> if any <suggestion.Option> is visible */
-    &:has(u-option:not([hidden]):not([aria-disabled='true'])) > u-option[data-empty] {
+    &:has(u-option:not([hidden]):not([aria-disabled='true']):not([data-empty])) > u-option[data-empty] {
       display: none;
     }
     & > u-option[data-empty] {

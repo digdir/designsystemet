@@ -6,6 +6,7 @@
   --dsc-dropdown-border-width: var(--ds-border-width-default);
   --dsc-dropdown-border-style: solid;
   --dsc-dropdown-border-color: var(--ds-color-neutral-border-subtle);
+  --dsc-popover-arrow-size: var(--ds-size-2);
 
   background: var(--dsc-dropdown-background);
   border-radius: var(--ds-border-radius-md);

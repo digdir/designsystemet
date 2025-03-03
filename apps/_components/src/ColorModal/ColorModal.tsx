@@ -45,10 +45,10 @@ export const ColorModal = ({
   return (
     <Dialog
       ref={colorModalRef}
+      closedby='any'
       style={{
         maxWidth: '1100px',
       }}
-      backdropClose
     >
       <Dialog.Block>
         <Heading data-size='xs'>
