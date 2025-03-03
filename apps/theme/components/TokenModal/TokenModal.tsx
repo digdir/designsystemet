@@ -40,7 +40,7 @@ export const TokenModal = () => {
   };
 
   const cliSnippet = [
-    `npx @digdir/designsystemet@next tokens create`,
+    `npx @digdir/designsystemet tokens create`,
     `--${colorCliOptions.main} ${setCliColors(colors.main).trimEnd()}`,
     `--${colorCliOptions.neutral} "${getBaseDefault(colors.neutral[0]?.colors.light)?.hex}"`,
     `${colors.support.length > 0 ? `--${colorCliOptions.support} ${setCliColors(colors.support).trimEnd()}` : ''}`,
@@ -149,7 +149,7 @@ export const TokenModal = () => {
               </div>
               <div className={classes.snippet}>
                 <CodeSnippet language='bash'>
-                  npx @digdir/designsystemet@next tokens build
+                  npx @digdir/designsystemet tokens build
                 </CodeSnippet>
               </div>
 
