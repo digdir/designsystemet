@@ -45,6 +45,6 @@
     "remark-gfm": "^4.0.0",
     "storybook": "^8.5.2",
     "storybook-addon-pseudo-states": "^4.0.2",
-    "vitest": "^3.0.5"
+    "vitest": "3.0.6"
   }
 }
