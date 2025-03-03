@@ -70,6 +70,7 @@
           background: var(--dsc-tabs-tab-color--selected);
         }
 
+        /* Place active line under focus */
         &:focus-visible::after {
           z-index: -1;
         }
