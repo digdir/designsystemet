@@ -5,7 +5,7 @@ import type { Config as StyleDictionaryConfig, TransformedToken } from 'style-di
 import { outputReferencesFilter } from 'style-dictionary/utils';
 
 import { buildOptions } from '../build.js';
-import { isColorCategoryToken, isDigit, isSemanticToken, pathStartsWithOneOf, typeEquals } from '../utils.js';
+import { isColorCategoryToken, isDigit, isSemanticColorToken, pathStartsWithOneOf, typeEquals } from '../utils.js';
 import { formats } from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
 import { resolveMath, sizeRem, typographyName, unitless } from './transformers.js';
@@ -130,9 +130,7 @@ const colorCategoryVariables =
               destination: `color/${color}.css`,
               format: formats.colorCategory.name,
               filter: (token) =>
-                category === 'builtin'
-                  ? isSemanticToken(token) && R.startsWith(['color', color], token.path)
-                  : isColorCategoryToken(token, category),
+                category === 'builtin' ? isSemanticColorToken(token, color) : isColorCategoryToken(token, category),
             },
           ],
           options: {
