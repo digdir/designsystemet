@@ -25,7 +25,7 @@ By default `digdir` is used.
 
 ### CSS
 
-All variables are prefixed with `ds` and inside [@layer](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) `ds`
+All variables are prefixed with `ds` and inside [@layer](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) `ds`.
 
 ```css
 @import url('@digdir/designsystemet-theme/altinn.css');
