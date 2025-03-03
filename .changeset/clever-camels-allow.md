@@ -2,4 +2,4 @@
 "@digdir/designsystemet": patch
 ---
 
-**tokens**: Renamed `family` to `font-family`
+**tokens**: Renamed `font.family` to `font-family`

@@ -2,4 +2,4 @@
 "@digdir/designsystemet": patch
 ---
 
-**tokens**: Renamed `weight` to `font-weight`
+**tokens**: Added `font-weight` to token name for fontWeight tokens (e.g. `font-weight.medium`)
