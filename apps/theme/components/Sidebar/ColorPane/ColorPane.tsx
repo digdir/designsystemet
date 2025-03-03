@@ -118,7 +118,7 @@ export const ColorPane = ({
         <Textfield
           placeholder='Skriv navnet her...'
           label='Navn'
-          description='Kun bokstaver, tall og bindestrek'
+          description='Bruk kun bokstavene a-z, tall og bindestrek'
           className={classes.name}
           data-size='sm'
           value={name}
