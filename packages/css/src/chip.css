@@ -36,6 +36,8 @@
   line-height: var(--ds-line-height-sm);
   margin: 0;
   min-height: var(--dsc-chip-height);
+  max-height: fit-content;
+  max-width: fit-content;
   padding: 0 var(--ds-size-3);
   text-decoration: none;
 

@@ -19,6 +19,8 @@ export type DialogProps = MergeRight<
     closeButton?: string | false;
     /**
      * Close on backdrop click.
+     * Only works when `modal` is true.
+     *
      * @default false
      */
     backdropClose?: boolean;
