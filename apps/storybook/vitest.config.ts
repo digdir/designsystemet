@@ -20,7 +20,7 @@ export default mergeConfig(
       }),
     ],
     test: {
-      exclude: ['/**/*.chromatic.tsx'],
+      exclude: ['**/*.chromatic.tsx'],
       watch: false,
       browser: {
         enabled: true,
