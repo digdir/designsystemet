@@ -18,12 +18,11 @@ export type DialogProps = MergeRight<
      */
     closeButton?: string | false;
     /**
-     * Close on backdrop click.
-     * Only works when `modal` is true.
+     * Light dismiss behavior, allowing to close on backdrop click  by setting `closedby="any"`.
      *
-     * @default false
+     * @default 'closerequest'
      */
-    backdropClose?: boolean;
+    closedby?: 'none' | 'closerequest' | 'any';
     /**
      * Toogle modal and non-modal dialog.
      *
@@ -78,10 +77,10 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
       children,
       className,
       closeButton = 'Lukk dialogvindu',
+      closedby = 'closerequest',
       modal = true,
-      open,
       onClose,
-      backdropClose = false,
+      open,
       ...rest
     },
     ref,
@@ -96,13 +95,13 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
 
     useEffect(() => {
       const dialog = dialogRef.current;
-      const handleBackdropClick = ({
-        clientY: y,
-        clientX: x,
-        target,
-      }: MouseEvent) => {
+      const handleClosedby = (event: Event) => {
+        const { clientY: y, clientX: x, target } = event as MouseEvent;
+        if (event instanceof KeyboardEvent) {
+          return closedby === 'none' && event.key === 'Escape' && event.preventDefault(); // Skip ESC-key if closedby="none"
+        }
         if (window.getSelection()?.toString()) return; // Fix bug where if you select text spanning two divs it thinks you clicked outside
-        if (dialog && target === dialog && backdropClose) {
+        if (dialog && target === dialog && closedby === 'any') {
           const { top, left, right, bottom } = dialog.getBoundingClientRect();
           const isInDialog = top <= y && y <= bottom && left <= x && x <= right;
 
@@ -116,12 +115,14 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
       };
 
       dialog?.addEventListener('animationend', handleAutoFocus);
-      dialog?.addEventListener('click', handleBackdropClick);
+      dialog?.addEventListener('click', handleClosedby);
+      dialog?.addEventListener('keydown', handleClosedby);
       return () => {
         dialog?.removeEventListener('animationend', handleAutoFocus);
-        dialog?.removeEventListener('click', handleBackdropClick);
+        dialog?.removeEventListener('click', handleClosedby);
+        dialog?.removeEventListener('keydown', handleClosedby);
       };
-    }, [backdropClose]);
+    }, [closedby]);
 
     /* handle closing */
     useEffect(() => {
