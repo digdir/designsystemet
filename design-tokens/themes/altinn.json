@@ -332,10 +332,8 @@
     }
   },
   "font-family": {
-    "main": {
-      "$type": "fontFamilies",
-      "$value": "{altinn.font-family.main}"
-    }
+    "$type": "fontFamilies",
+    "$value": "{altinn.font-family.main}"
   },
   "font-weight": {
     "medium": {

@@ -332,10 +332,8 @@
     }
   },
   "font-family": {
-    "main": {
-      "$type": "fontFamilies",
-      "$value": "{uutilsynet.font-family.main}"
-    }
+    "$type": "fontFamilies",
+    "$value": "{uutilsynet.font-family.main}"
   },
   "font-weight": {
     "medium": {

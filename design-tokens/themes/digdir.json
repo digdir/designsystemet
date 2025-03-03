@@ -332,10 +332,8 @@
     }
   },
   "font-family": {
-    "main": {
-      "$type": "fontFamilies",
-      "$value": "{digdir.font-family.main}"
-    }
+    "$type": "fontFamilies",
+    "$value": "{digdir.font-family.main}"
   },
   "font-weight": {
     "medium": {

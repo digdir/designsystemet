@@ -1145,7 +1145,7 @@
       "border-radius.6": "ec8f63c551a3feed56576a1030e284ea0efe7ed9",
       "border-radius.base": "80b5d08a35a320b9bd2d4ecdbe2ccf0086315b88",
       "border-radius.scale": "692a8c1f2038457a196ba0e077cdc70c6bad5e77",
-      "font-family.main": "32f399ee0e608727f1c4d02e8ceb892a6c3e79e0"
+      "font-family": "32f399ee0e608727f1c4d02e8ceb892a6c3e79e0"
     },
     "group": "Theme"
   },
@@ -1250,7 +1250,7 @@
       "border-radius.6": "ec8f63c551a3feed56576a1030e284ea0efe7ed9",
       "border-radius.base": "80b5d08a35a320b9bd2d4ecdbe2ccf0086315b88",
       "border-radius.scale": "692a8c1f2038457a196ba0e077cdc70c6bad5e77",
-      "font-family.main": "32f399ee0e608727f1c4d02e8ceb892a6c3e79e0"
+      "font-family": "32f399ee0e608727f1c4d02e8ceb892a6c3e79e0"
     },
     "group": "Theme"
   },
@@ -1355,7 +1355,7 @@
       "border-radius.6": "ec8f63c551a3feed56576a1030e284ea0efe7ed9",
       "border-radius.base": "80b5d08a35a320b9bd2d4ecdbe2ccf0086315b88",
       "border-radius.scale": "692a8c1f2038457a196ba0e077cdc70c6bad5e77",
-      "font-family.main": "32f399ee0e608727f1c4d02e8ceb892a6c3e79e0"
+      "font-family": "32f399ee0e608727f1c4d02e8ceb892a6c3e79e0"
     },
     "group": "Theme"
   },
@@ -1799,7 +1799,7 @@
       "border-radius.6": "ec8f63c551a3feed56576a1030e284ea0efe7ed9",
       "border-radius.base": "80b5d08a35a320b9bd2d4ecdbe2ccf0086315b88",
       "border-radius.scale": "692a8c1f2038457a196ba0e077cdc70c6bad5e77",
-      "font-family.main": "32f399ee0e608727f1c4d02e8ceb892a6c3e79e0"
+      "font-family": "32f399ee0e608727f1c4d02e8ceb892a6c3e79e0"
     },
     "group": "Theme"
   },
