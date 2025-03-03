@@ -32,10 +32,8 @@ const generateTypographyTokens = (themeName: string, { fontFamily }: Typography)
   return {
     [themeName]: {
       'font-family': {
-        main: {
-          $type: 'fontFamilies',
-          $value: fontFamily ?? 'Inter',
-        },
+        $type: 'fontFamilies',
+        $value: fontFamily ?? 'Inter',
       },
       'font-weight': {
         medium: {

@@ -1,10 +1,8 @@
 {
   "color": {},
   "font-family": {
-    "main": {
-      "$type": "fontFamilies",
-      "$value": "{<theme>.font-family.main}"
-    }
+    "$type": "fontFamilies",
+    "$value": "{<theme>.font-family}"
   },
   "font-weight": {
     "medium": {
