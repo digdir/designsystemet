@@ -116,13 +116,20 @@
   &:disabled,
   &[aria-disabled='true'] {
     cursor: not-allowed;
-    opacity: var(--ds-disabled-opacity);
+    opacity: var(--ds-opacity-disabled);
   }
 
   &[aria-invalid='true'] {
     border-color: var(--dsc-input-accent-color--invalid);
   }
-  &[aria-invalid='true']:where(:checked, :indeterminate) {
+
+  /* Radio could match here if we check :indeterminate, so we check that by itself */
+  &[aria-invalid='true']:where(:checked) {
+    background: var(--dsc-input-accent-color--invalid);
+    color: var(--dsc-input-stroke-color--invalid);
+  }
+
+  &[type='checkbox'][aria-invalid='true']:where(:indeterminate) {
     background: var(--dsc-input-accent-color--invalid);
     color: var(--dsc-input-stroke-color--invalid);
   }

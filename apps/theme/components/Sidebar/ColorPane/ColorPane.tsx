@@ -18,7 +18,7 @@ type ColorPaneProps = {
   onClose: () => void;
   onPrimaryClicked: (color: string, name: string) => void;
   show?: boolean;
-  type: 'addColor' | 'editColor' | 'none';
+  type: 'add-color' | 'edit-color' | 'none';
   color: IColor;
   setColor: (color: IColor) => void;
   name: string;
@@ -46,10 +46,12 @@ export const ColorPane = ({
 
   const getHeading = () => {
     const t = colorType === 'main' ? 'hovedfarge' : 'støttefarge';
-    return type === 'addColor' ? 'Legg til ' + t : 'Rediger farge';
+    return type === 'add-color' ? 'Legg til ' + t : 'Rediger farge';
   };
 
   const checkNameIsValid = () => {
+    if (colorType === 'neutral') return true;
+
     if (name === '') {
       setColorError('Navnet på fargen kan ikke være tomt');
       return false;
@@ -72,7 +74,7 @@ export const ColorPane = ({
 
   return (
     <div
-      className={cl(classes.colorPage, type.includes('Color') && classes.show)}
+      className={cl(classes.colorPage, type.includes('color') && classes.show)}
     >
       <div className={classes.topBtnGroup}>
         <Button
@@ -81,7 +83,7 @@ export const ColorPane = ({
           onClick={closeTab}
           className={classes.back}
         >
-          <ChevronLeftIcon title='a11y-title' fontSize='1.5rem' /> Gå tilbake
+          <ChevronLeftIcon aria-hidden fontSize='1.5rem' /> Gå tilbake
         </Button>
         <Tooltip
           content='Du må ha minst en hovedfarge'
@@ -96,7 +98,7 @@ export const ColorPane = ({
               onRemove();
             }}
             className={cl(classes.removeBtn)}
-            hidden={type !== 'editColor' || colorType === 'neutral'}
+            hidden={type !== 'edit-color' || colorType === 'neutral'}
             aria-disabled={disableRemoveButton || undefined}
           >
             Fjern farge
@@ -116,7 +118,7 @@ export const ColorPane = ({
         <Textfield
           placeholder='Skriv navnet her...'
           label='Navn'
-          description='Kun bokstaver, tall og bindestrek'
+          description='Bruk kun bokstavene a-z, tall og bindestrek'
           className={classes.name}
           data-size='sm'
           value={name}
@@ -154,7 +156,7 @@ export const ColorPane = ({
             onPrimaryClicked(color.hex, name);
           }}
         >
-          {type === 'addColor' ? 'Legg til' : 'Lagre'}
+          {type === 'add-color' ? 'Legg til' : 'Lagre'}
         </Button>
 
         <Button

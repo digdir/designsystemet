@@ -75,7 +75,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <Container className={classes.container}>
             <div className={classes.text}>
               <div className={classes.betaTag}>Next</div>
-              <Heading data-size='lg'>
+              <Heading data-size='lg' level={1}>
                 Designsystemet hjelper deg å lage gode digitale tjenester
               </Heading>
             </div>
@@ -85,7 +85,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 description='Lær hvordan du kommer i gang med designsystemet som designer.'
                 color='blue'
                 url='/grunnleggende/for-designere/kom-i-gang'
-                icon={<PaletteIcon fontSize={36} />}
+                icon={<PaletteIcon fontSize={36} aria-hidden='true' />}
                 level={2}
               ></NavigationCard>
 
@@ -94,7 +94,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 description='Lær hvordan du kommer i gang med designsystemet som utvikler.'
                 color='yellow'
                 url='/grunnleggende/for-utviklere/kom-i-gang'
-                icon={<WrenchIcon fontSize={36} />}
+                icon={<WrenchIcon fontSize={36} aria-hidden='true' />}
                 level={2}
               ></NavigationCard>
 
@@ -103,7 +103,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 description='Se oversikten over UI-komponentene som er laget i react.'
                 color='red'
                 url='/komponenter'
-                icon={<ComponentIcon fontSize={34} />}
+                icon={<ComponentIcon fontSize={34} aria-hidden='true' />}
                 level={2}
               ></NavigationCard>
             </div>

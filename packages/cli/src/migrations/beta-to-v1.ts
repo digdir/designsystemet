@@ -278,7 +278,7 @@ export default (glob?: string) =>
         '--fds-sizing-22': '--ds-size-22',
         '--fds-sizing-26': '--ds-size-26',
         '--fds-sizing-30': '--ds-size-30',
-        '--fds-opacity-disabled': '--ds-disabled-opacity',
+        '--fds-opacity-disabled': '--ds-opacity-disabled',
         '--fds-colors-blue-100': '--ds-global-blue-1',
         '--fds-colors-blue-200': '--ds-global-blue-2',
         '--fds-colors-blue-700': '--ds-global-blue-7',

@@ -87,7 +87,7 @@ const colorSchemeVariables: GetStyleDictionaryConfig = (
           {
             destination: `color-scheme/${colorScheme}.css`,
             format: formats.colorScheme.name,
-            filter: (token) => !token.isSource && typeEquals('color', token),
+            filter: (token) => !token.isSource && typeEquals('color', token) && !R.startsWith(['global'], token.path),
           },
         ],
         options: {

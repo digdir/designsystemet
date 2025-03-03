@@ -331,24 +331,22 @@
       }
     }
   },
-  "font": {
-    "family": {
-      "$type": "fontFamilies",
-      "$value": "{altinn.main}"
-    }
+  "font-family": {
+    "$type": "fontFamilies",
+    "$value": "{altinn.font-family}"
   },
   "font-weight": {
     "medium": {
       "$type": "fontWeights",
-      "$value": "{altinn.bold}"
+      "$value": "{altinn.font-weight.medium}"
     },
     "semibold": {
       "$type": "fontWeights",
-      "$value": "{altinn.extra-bold}"
+      "$value": "{altinn.font-weight.semibold}"
     },
     "regular": {
       "$type": "fontWeights",
-      "$value": "{altinn.regular}"
+      "$value": "{altinn.font-weight.regular}"
     }
   },
   "border-radius": {

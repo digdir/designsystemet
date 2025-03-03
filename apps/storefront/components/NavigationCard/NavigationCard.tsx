@@ -31,7 +31,12 @@ const NavigationCard = ({
       asChild
     >
       <Link href={url} prefetch={false}>
-        <div className={cl(classes.iconContainer, classes[color])}>{icon}</div>
+        <div
+          className={cl(classes.iconContainer, classes[color])}
+          aria-hidden='true'
+        >
+          {icon}
+        </div>
 
         <Heading level={level} data-size='sm' className={classes.title}>
           {title}
