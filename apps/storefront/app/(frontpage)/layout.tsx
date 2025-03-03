@@ -6,9 +6,12 @@ import type React from 'react';
 
 import { NavigationCard } from '@components';
 
+import { isProduction } from 'utils/is-production';
 import classes from './layout.module.css';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
+  const showNextTag = !isProduction();
+
   return (
     <main id='main'>
       <div>
@@ -74,7 +77,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         >
           <Container className={classes.container}>
             <div className={classes.text}>
-              <div className={classes.betaTag}>Next</div>
+              {showNextTag && <div className={classes.betaTag}>Next</div>}
               <Heading data-size='lg' level={1}>
                 Designsystemet hjelper deg å lage gode digitale tjenester
               </Heading>
