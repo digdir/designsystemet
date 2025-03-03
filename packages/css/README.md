@@ -20,16 +20,12 @@ Make sure Tailwind loads before Designsystemet
 @import url('@digdir/designsystemet-css');
 @import url('tailwindcss');
 ```
-#### < v3
+#### v3 and older
 ```css
 @import url('@digdir/designsystemet-css');
 
 @layer base, ds;
 
-/**
-* Fix Tailwind Preflight specificity by using @layer:
-* See https://css-tricks.com/?p=372576
-*/
 @layer base {
   @tailwind base;
 }
