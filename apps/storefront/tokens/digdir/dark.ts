@@ -3145,7 +3145,7 @@ export const  typography = [
     original: {
       $type: "typography",
       $value: {
-        fontFamily: "{font.family}",
+        fontFamily: "{font-family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
         fontSize: "{font-size.10}",
@@ -3175,7 +3175,7 @@ export const  typography = [
     original: {
       $type: "typography",
       $value: {
-        fontFamily: "{font.family}",
+        fontFamily: "{font-family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
         fontSize: "{font-size.9}",
@@ -3205,7 +3205,7 @@ export const  typography = [
     original: {
       $type: "typography",
       $value: {
-        fontFamily: "{font.family}",
+        fontFamily: "{font-family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
         fontSize: "{font-size.8}",
@@ -3235,7 +3235,7 @@ export const  typography = [
     original: {
       $type: "typography",
       $value: {
-        fontFamily: "{font.family}",
+        fontFamily: "{font-family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
         fontSize: "{font-size.7}",
@@ -3265,7 +3265,7 @@ export const  typography = [
     original: {
       $type: "typography",
       $value: {
-        fontFamily: "{font.family}",
+        fontFamily: "{font-family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
         fontSize: "{font-size.6}",
@@ -3295,7 +3295,7 @@ export const  typography = [
     original: {
       $type: "typography",
       $value: {
-        fontFamily: "{font.family}",
+        fontFamily: "{font-family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
         fontSize: "{font-size.5}",
@@ -3325,7 +3325,7 @@ export const  typography = [
     original: {
       $type: "typography",
       $value: {
-        fontFamily: "{font.family}",
+        fontFamily: "{font-family}",
         fontWeight: "{font-weight.medium}",
         lineHeight: "{line-height.sm}",
         fontSize: "{font-size.4}",
@@ -3355,7 +3355,7 @@ export const  typography = [
     original: {
       $type: "typography",
       $value: {
-        fontFamily: "{font.family}",
+        fontFamily: "{font-family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.md}",
         fontSize: "{font-size.6}",
@@ -3385,7 +3385,7 @@ export const  typography = [
     original: {
       $type: "typography",
       $value: {
-        fontFamily: "{font.family}",
+        fontFamily: "{font-family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.md}",
         fontSize: "{font-size.5}",
@@ -3415,7 +3415,7 @@ export const  typography = [
     original: {
       $type: "typography",
       $value: {
-        fontFamily: "{font.family}",
+        fontFamily: "{font-family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.md}",
         fontSize: "{font-size.4}",
@@ -3445,7 +3445,7 @@ export const  typography = [
     original: {
       $type: "typography",
       $value: {
-        fontFamily: "{font.family}",
+        fontFamily: "{font-family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.md}",
         fontSize: "{font-size.3}",
@@ -3475,7 +3475,7 @@ export const  typography = [
     original: {
       $type: "typography",
       $value: {
-        fontFamily: "{font.family}",
+        fontFamily: "{font-family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.md}",
         fontSize: "{font-size.2}",
@@ -3505,7 +3505,7 @@ export const  typography = [
     original: {
       $type: "typography",
       $value: {
-        fontFamily: "{font.family}",
+        fontFamily: "{font-family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.sm}",
         fontSize: "{font-size.6}",
@@ -3536,7 +3536,7 @@ export const  typography = [
     original: {
       $type: "typography",
       $value: {
-        fontFamily: "{font.family}",
+        fontFamily: "{font-family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.sm}",
         fontSize: "{font-size.5}",
@@ -3567,7 +3567,7 @@ export const  typography = [
     original: {
       $type: "typography",
       $value: {
-        fontFamily: "{font.family}",
+        fontFamily: "{font-family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.sm}",
         fontSize: "{font-size.4}",
@@ -3598,7 +3598,7 @@ export const  typography = [
     original: {
       $type: "typography",
       $value: {
-        fontFamily: "{font.family}",
+        fontFamily: "{font-family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.sm}",
         fontSize: "{font-size.3}",
@@ -3629,7 +3629,7 @@ export const  typography = [
     original: {
       $type: "typography",
       $value: {
-        fontFamily: "{font.family}",
+        fontFamily: "{font-family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.sm}",
         fontSize: "{font-size.2}",
@@ -3660,7 +3660,7 @@ export const  typography = [
     original: {
       $type: "typography",
       $value: {
-        fontFamily: "{font.family}",
+        fontFamily: "{font-family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.lg}",
         fontSize: "{font-size.6}",
@@ -3691,7 +3691,7 @@ export const  typography = [
     original: {
       $type: "typography",
       $value: {
-        fontFamily: "{font.family}",
+        fontFamily: "{font-family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.lg}",
         fontSize: "{font-size.5}",
@@ -3722,7 +3722,7 @@ export const  typography = [
     original: {
       $type: "typography",
       $value: {
-        fontFamily: "{font.family}",
+        fontFamily: "{font-family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.lg}",
         fontSize: "{font-size.4}",
@@ -3753,7 +3753,7 @@ export const  typography = [
     original: {
       $type: "typography",
       $value: {
-        fontFamily: "{font.family}",
+        fontFamily: "{font-family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.lg}",
         fontSize: "{font-size.3}",
@@ -3784,7 +3784,7 @@ export const  typography = [
     original: {
       $type: "typography",
       $value: {
-        fontFamily: "{font.family}",
+        fontFamily: "{font-family}",
         fontWeight: "{font-weight.regular}",
         lineHeight: "{line-height.lg}",
         fontSize: "{font-size.2}",
