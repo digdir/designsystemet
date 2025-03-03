@@ -9,11 +9,13 @@ import { Footer } from '@repo/components';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 
+const isProduction = true;
+
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.VERCEL_GIT_COMMIT_REF !== 'main'
-      ? 'https://next.designsystemet.no'
-      : 'https://designsystemet.no',
+    isProduction
+      ? 'https://designsystemet.no'
+      : 'https://next.designsystemet.no',
   ),
   title: {
     template: '%s - Designsystemet',
@@ -47,7 +49,9 @@ const menu = [
   },
   {
     name: 'Temabygger',
-    href: 'https://next.theme.designsystemet.no',
+    href: isProduction
+      ? 'https://theme.designsystemet.no'
+      : 'https://next.theme.designsystemet.no',
   },
 ];
 
