@@ -1,5 +1,21 @@
 # Change Log
 
+## 0.101.0
+
+### Patch Changes
+
+- **tokens**: Renamed `font.family` to `font-family` ([#3264](https://github.com/digdir/designsystemet/pull/3264))
+
+- **tokens**: `extra-bold` token should now have correct value according to Token Studio ([#3264](https://github.com/digdir/designsystemet/pull/3264))
+
+- **tokens**: Added `font-weight` to token name for fontWeight tokens (e.g. `font-weight.medium`) ([#3264](https://github.com/digdir/designsystemet/pull/3264))
+
+- Removed `--ds-global` colors from tokens build ([#3250](https://github.com/digdir/designsystemet/pull/3250))
+
+- Some options supplied to the CLI were being overridden by their default values ([#3267](https://github.com/digdir/designsystemet/pull/3267))
+
+- Added `--ds-link-color-visited` for styling visited links ([#3250](https://github.com/digdir/designsystemet/pull/3250))
+
 ## 0.100.52
 
 ### Patch Changes

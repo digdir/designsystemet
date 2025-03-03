@@ -1,5 +1,33 @@
 # Change Log
 
+## 0.101.0
+
+### Patch Changes
+
+- New class `ds-focus--inset` for adding a focus border on the insider of an element ([#3222](https://github.com/digdir/designsystemet/pull/3222))
+
+- **Button**: When setting both `aria-busy` and `aria-disabled`, we don't turn down opacity, and show a progress cursor ([#3211](https://github.com/digdir/designsystemet/pull/3211))
+
+- **Radio**: fix filled error state in `Fieldset` ([#3257](https://github.com/digdir/designsystemet/pull/3257))
+
+- **Tabs**: Focus now fully encompasses `Tab` ([#3270](https://github.com/digdir/designsystemet/pull/3270))
+
+- **Tabs**: change selected color and inherit color on content ([#3191](https://github.com/digdir/designsystemet/pull/3191))
+
+- **Details**: Change to inset focus ([#3271](https://github.com/digdir/designsystemet/pull/3271))
+
+- **Dropdown**: Move dropdown closer to trigger ([#3273](https://github.com/digdir/designsystemet/pull/3273))
+
+- Removed `--ds-global` colors from tokens build ([#3250](https://github.com/digdir/designsystemet/pull/3250))
+
+- **Breadcrumbs**: Fix arrow to inherit color when in a link ([#3269](https://github.com/digdir/designsystemet/pull/3269))
+
+- Rename `--ds-disabled-opacity` to `--ds-opacity-disabled` ([#3250](https://github.com/digdir/designsystemet/pull/3250))
+
+- Added `:not([hidden])` around `display` CSS properties to respect native `hidden` attribute ([#3278](https://github.com/digdir/designsystemet/pull/3278))
+
+- Added `--ds-link-color-visited` for styling visited links ([#3250](https://github.com/digdir/designsystemet/pull/3250))
+
 ## 0.100.52
 
 ## 0.100.52-next.0

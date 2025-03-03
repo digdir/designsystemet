@@ -65,7 +65,7 @@ export const TokenModal = () => {
         className={classes.modal}
         style={{ maxWidth: 1000 }}
         ref={modalRef}
-        backdropClose={true}
+        closedby='any'
       >
         <Dialog.Block>
           <Heading className={classes.modalHeader} data-size='2xs'>

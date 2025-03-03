@@ -69,7 +69,7 @@ Dette alternativet krever **ikke** Token Studio. Med dette alternativet kjører 
 
 ## Alternativ 2: Med kobling
 
-En kobling gjør at du slipper å legge variablene inn i Figma, du importerer dem i stedet fra pluginen "Tokens Studio".
+En kobling gjør at du slipper å legge variablene inn i Figma, du importerer dem i stedet fra pluginen "Tokens Studio". Dette alternativet krever kjennskap til Git.
 
  <Card
   data-color='brand2'
@@ -81,13 +81,13 @@ En kobling gjør at du slipper å legge variablene inn i Figma, du importerer de
 </Card>
 
 
-### Slik går du frem for å få det til:
+### Slik går du frem:
 
 1. Hent komponentbiblioteket fra [Figma Community](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (Trykk "Open in Figma") til din organisasjon som har mimimum pro-lisens. Merk at dette blir en kopi av komponentbiblioteket uten noen kobling mot hovedfilen. Filen har nå lagt seg i "drafts", så du må flytte den til et fornuftig sted i din organisasjon.
 
 2. Gå til [Temabyggeren](https://next.theme.designsystemet.no) og generer fargeskalaen ut i fra dine profilfarger. Klikk "Ta i bruk tema". Kopier kodesnutten og kjør den i en terminal i ditt Git repo. Sjekk inn og push filene. 
 
-3. Installer pluginen [Tokens Studio](<https://www.figma.com/community/plugin/843461159747178978/Tokens-Studio-for-Figma-(Figma-Tokens)>) for Figma. Tokens Studio sørger for kobling mellom Figma og kode, ved hjelp av Design Tokens (i json-filer). 
+3. Installer pluginen [Tokens Studio](<https://www.figma.com/community/plugin/843461159747178978/Tokens-Studio-for-Figma-(Figma-Tokens)>) for Figma. Tokens Studio sørger for kobling mellom Figma og kode, ved hjelp av Design Tokens. 
 
 <Image
   src='/img/tokenstudio.png'
@@ -99,7 +99,24 @@ En kobling gjør at du slipper å legge variablene inn i Figma, du importerer de
   - Følg Tokens Studio sin guide "[Sync your Design Tokens with code](https://docs.tokens.studio/token-storage-and-sync/sync-provider-overview)" for å sette opp kobling til ditt Git repo. 
   - Husk å sette "Token storage location" til `design-tokens` (eller det du har valgt å kalle mappen din med Design Tokens).
 
-4. Under "Tokens" i Tokens Studio skal du nå se alle fargene du generte med Temabyggeren i steg 2. I Tokens Studio velg `Styles & variables` og `Export styles & variables to Figma` og følg stegene for å eksportere tokens til variabler i Figma. 
+4. Under "Tokens" i Tokens Studio skal du nå se alle fargene du generte med Temabyggeren i steg 2. I Tokens Studio velg `Styles & variables` og `Export styles & variables to Figma` og følg stegene for å eksportere tokens til variabler i Figma. Pass på at du har disse innstillingene når du eksporterer variablene: 
+
+<Image
+  src='/img/token-studio-settings.png'
+  alt='Skjermbilde som viser valgte innstillinger i Tokens Studio. Under variabler er alt slått på. Under styles er color slått av. Under export er "Ignore first part of token name for styles" og "Prefix styles with active theme name" slått av '
+  boxShadow={false}
+  dataUnstyled
+/>
+
+Vær oppmerksom på at modes som allerede ligger i Community-filen ikke blir slettet av Token Studio. Slett temaene du ikke trenger i Figma "Local variables" under "Theme". Det samme kan skje under "Main" og "Support". 
+
+<Image
+  src='/img/brutte-referanser.png'
+  alt='Skjermbilde som viser brutte koblinger i Figma-variablene. Høyreklikk og slett temaene du ikke trenger.'
+  boxShadow={false}
+  dataUnstyled
+  
+/>
 
 5. Nå skal du se alle komponentene med dine egne profilfarger i Figma. For at andre designere i organisasjonen skal kunne bruke komponentene må du publisere filen.
 

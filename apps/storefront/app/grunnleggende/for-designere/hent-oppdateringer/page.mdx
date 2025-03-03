@@ -13,7 +13,7 @@ export default ({ children }) => (
     content={children}
     data={{
       title: 'Hent oppdateringer fra Figma',
-      date: '22. mai 2024',
+      date: '28. februar 2025',
       icon: <PaletteIcon />,
       color: 'blue',
     }}
@@ -22,8 +22,9 @@ export default ({ children }) => (
 
 Hva gjør du når det har kommet en ny versjon av Figma community-filen?
 
-Svaret er dessverre at det ikke finnes en ideell måte å gjøre det på i dag. Figma har foreløpig [ikke støtte for å hente ned endringer fra en Community-fil](https://forum.figma.com/t/need-a-way-to-get-latest-updates-or-subscribe-to-changes-from-a-published-community-file/32571). Vi håper dette vil komme, i mellomtiden kan du vurdere disse alternativene:
+Figma har foreløpig [ikke støtte for å hente ned endringer fra en Community-fil](https://forum.figma.com/t/need-a-way-to-get-latest-updates-or-subscribe-to-changes-from-a-published-community-file/32571). 
 
-1. Hent ned den siste versjonen av Community-filen og publiser den. De som tar i bruk komponentene fra nå av vil da ha de nyeste komponentene. Det er sannsynligvis lite verdi i å oppdatere gamle skisser og prototyper med nye komponenter. Om du likevel ønsker det kan du bruke "Swap"-funksjonen i Figma.
+Figma-filen du har i din organisasjon er en kopi uten kobling til hovedfilen. Du kan velge å gjøre endringer i denne og tilpasse den til din oranisasjon før du publiserer den til resten av organisasjonen. 
 
-2. Lage en [plugin](https://github.com/digdir/designsystemet/issues/289#issuecomment-2037555899) som kan hente ned siste endringer. Dette er noe vi vil vurdere å se på etter hvert.
+Når det kommer endringer i Community-filen må du selv ta stilling til om og når du evt. ønsker å oppdatere din egen versjon. Nye komponenter kan du kopiere direkte inn i filen din. Dersom det har kommet oppdateringer på eksisterende komponenter, er det mulig å bruke "Swap"-funksjonen i Figma for å erstatte en komponent med en ny versjon. Her må du vurdere om det er best å slette den gamle komponenten og legge inn en ny, slik at folk som har brukt komponenten ikke risikerer å miste innholdet sitt. 
+
