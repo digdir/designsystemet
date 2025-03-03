@@ -1,5 +1,30 @@
 # Change Log
 
+## 0.101.0
+
+### Minor Changes
+
+- `SeverityColors` is removed from `Color` type. Components where we deem severity to be relevant, now explicitly have SeverityColors added to `data-color`. `Button` component only allows `"danger"`. ([#3223](https://github.com/digdir/designsystemet/pull/3223))
+
+- **`Badge`, `Card`, `Details`, `Popover`**: Rename `data-variant` prop to `variant` ([#3241](https://github.com/digdir/designsystemet/pull/3241))
+
+- **`ToggleGroup.Item`**: Disallow setting `variant` directly, it should only be set based on which item in the group is active ([#3241](https://github.com/digdir/designsystemet/pull/3241))
+
+### Patch Changes
+
+- **Dialog**: Remove `backdropClose`, and replace with `closedby="none | closerequest | any"` to align with [upcoming browser standard](https://chromestatus.com/feature/5097714453577728) ([#3281](https://github.com/digdir/designsystemet/pull/3281))
+
+- **Suggestion**: Fix clear button not unselecting the selected option ([#3212](https://github.com/digdir/designsystemet/pull/3212))
+
+- **Button**: `loading` now sets `aria-disabled="true"` ([#3211](https://github.com/digdir/designsystemet/pull/3211))
+
+- **MultiSelect**: New experimental component replacing `Combobox` in multiple mode ([#3097](https://github.com/digdir/designsystemet/pull/3097))
+
+- Fix `peerDependencies` definition for React 19 ([#3262](https://github.com/digdir/designsystemet/pull/3262))
+
+- **Dialog**: Add prop `modal` to toggle between modal and non-modal dialogs ([#3210](https://github.com/digdir/designsystemet/pull/3210))
+  - See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#creating_a_modal_dialog
+
 ## 0.100.52
 
 ## 0.100.52-next.0
