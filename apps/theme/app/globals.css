@@ -37,6 +37,8 @@ code {
   display: flex;
 
   @media screen and (max-width: 768px) {
+    --panel-padding: var(--ds-size-6);
+
     flex-direction: column;
   }
 }

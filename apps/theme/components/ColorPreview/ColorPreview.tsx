@@ -139,7 +139,12 @@ export const ColorPreview = () => {
           </ToggleGroup>
         </div>
       </div>
-      <div className={cl('panelRight', view === 'grid' && classes.grid)}>
+      <div
+        className={cl(
+          'panelRight',
+          view === 'grid' ? classes.grid : classes.list,
+        )}
+      >
         {colors.main.map((color, index) => (
           <CardWrapper key={index} color={color} />
         ))}

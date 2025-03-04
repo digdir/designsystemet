@@ -3,6 +3,10 @@
   overflow-x: auto;
 }
 
+.list {
+  overflow-x: auto;
+}
+
 .card {
   display: flex;
   flex-direction: column;
