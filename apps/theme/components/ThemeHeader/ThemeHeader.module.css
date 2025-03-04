@@ -6,6 +6,11 @@
   flex-direction: column;
   justify-content: center;
   gap: var(--ds-size-4);
+
+  @media screen and (max-width: 768px) {
+    padding: var(--ds-size-4);
+    padding-bottom: 0;
+  }
 }
 
 .textContainer {
