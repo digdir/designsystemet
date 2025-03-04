@@ -58,11 +58,7 @@
     }
 
     /* Render focus inside so it is easier to make full window width and place in overflow: hidden containers */
-    &:focus-visible {
-      box-shadow: inset 0 0 0 var(--ds-border-width-focus) var(--ds-color-focus-outer);
-      outline: var(--ds-color-focus-inner) solid var(--ds-border-width-focus);
-      outline-offset: calc(var(--ds-border-width-focus) * -2);
-    }
+    @composes ds-focus--inset from './base.css';
 
     &::before {
       background: currentcolor;

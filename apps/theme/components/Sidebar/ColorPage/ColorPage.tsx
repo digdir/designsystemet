@@ -55,7 +55,7 @@ export const ColorPage = () => {
         <>
           <div className={classes.group}>
             <div className={classes.groupHeader}>
-              <Heading data-size='2xs'>Hovedfarger</Heading>
+              <Heading data-size='2xs'>Main</Heading>
               {colors.main.length < 40 && (
                 <Button
                   variant='tertiary'
@@ -103,7 +103,7 @@ export const ColorPage = () => {
           {/* SUPPORT COLORS */}
           <div className={classes.group}>
             <div className={classes.groupHeader}>
-              <Heading data-size='2xs'>Støttefarger</Heading>
+              <Heading data-size='2xs'>Support</Heading>
               {colors.support.length < 40 && (
                 <Button
                   variant='tertiary'

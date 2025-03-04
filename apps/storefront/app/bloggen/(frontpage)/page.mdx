@@ -1,5 +1,3 @@
-import { PencilIcon } from '@navikt/aksel-icons';
-
 import { BlogCard } from '../_components';
 
 export default ({ children }) => <>{children}</>;
@@ -10,16 +8,25 @@ export const metadata = {
 };
 
 <BlogCard
+  title='Første versjon av Designsystemet er klar!'
+  desc='Etter en omfattende utviklingsprosess i tett samarbeid med flere offentlige aktører er vi nå klare med V1!'
+  date='1. mars 2025'
+  href='/bloggen/2025/V1'
+  image='/img/bloggen/V1.png'
+  author='Designsystemet'
+  featured={true}
+/>
+
+<BlogCard
   title='Generering av fargar i fargesystemet'
   desc='Dette innlegget tek deg med på reisa me gjekk gjennom for å utvikle vår eigen tilnærming til fargegenerering, og korleis dette systemet fungerer i dag.'
   date='29. januar 2025'
   href='/bloggen/2025/generering-av-fargar-i-fargesystemet'
   image='/img/bloggen/fargepallet.png'
   author='Designsystemet'
-  featured={true}
+  featured={false}
   level={2}
 />
-
 
 <BlogCard
   title='HelpText blir fjerna, kva gjer du?'

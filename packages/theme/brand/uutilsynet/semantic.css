@@ -14,7 +14,7 @@
   --ds-border-radius-xl: min(var(--ds-border-radius-base)*3,var(--ds-border-radius-scale)*7);
   --ds-border-radius-default: var(--ds-border-radius-base);
   --ds-border-radius-full: 624.9375rem;
-  --ds-disabled-opacity: 30%;
+  --ds-opacity-disabled: 30%;
   --ds-border-width-default: 1px;
   --ds-border-width-focus: 3px;
   --ds-shadow-xs: 0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12);

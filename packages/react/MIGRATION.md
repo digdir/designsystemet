@@ -37,7 +37,7 @@ To get a bordered details, place it inside a `Card`
 - `Chip.Toggle` has been removed, use either `.Radio` or `.Checkbox`
 
 ### Combobox
-This component has been deprecated, use `Suggestion` for single select or `MultiSelect` for multi select
+This component has been deprecated, use `Suggestion` for single select or `MultiSuggestion` for multi select
 
 ### DropdownMenu
 - Renamed to `Dropdown`

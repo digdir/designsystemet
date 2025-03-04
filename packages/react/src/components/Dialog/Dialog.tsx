@@ -18,10 +18,23 @@ export type DialogProps = MergeRight<
      */
     closeButton?: string | false;
     /**
-     * Close on backdrop click.
-     * @default false
+     * Light dismiss behavior, allowing to close on backdrop click  by setting `closedby="any"`.
+     *
+     * @default 'closerequest'
      */
-    backdropClose?: boolean;
+    closedby?: 'none' | 'closerequest' | 'any';
+    /**
+     * Toogle modal and non-modal dialog.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#creating_a_modal_dialog
+     *
+     * @default true
+     */
+    modal?: boolean;
+    /**
+     * @note Unlike standard html, where the open attribute always opens a non-modal dialog, Dialog's open prop uses the `modal` prop to determine whether the Dialog is modal or non-modal
+     */
+    open?: boolean;
     /**
      * Callback that is called when the dialog is closed.
      */
@@ -52,7 +65,7 @@ export type DialogProps = MergeRight<
  *
  * ...
  *
- * <Button onClick={() => dialogRef.current?.showDialog()}>Open Dialog</Button>
+ * <Button onClick={() => dialogRef.current?.showModal()}>Open Dialog</Button>
  * <Dialog ref={dialogRef}>
  *   Content
  * </Dialog>
@@ -64,9 +77,10 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
       children,
       className,
       closeButton = 'Lukk dialogvindu',
+      closedby = 'closerequest',
+      modal = true,
       onClose,
       open,
-      backdropClose = false,
       ...rest
     },
     ref,
@@ -75,21 +89,22 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
     const dialogRef = useRef<HTMLDialogElement>(null); // This local ref is used to make sure the dialog works without a DialogTriggerContext
     const Component = asChild ? Slot : 'dialog';
     const mergedRefs = useMergeRefs([contextRef, ref, dialogRef]);
+    const showProp = modal ? 'showModal' : 'show';
 
-    useEffect(
-      () => dialogRef.current?.[open ? 'showModal' : 'close'](),
-      [open],
-    ); // Toggle open based on prop
+    useEffect(() => dialogRef.current?.[open ? showProp : 'close'](), [open]); // Toggle open based on prop
 
     useEffect(() => {
       const dialog = dialogRef.current;
-      const handleBackdropClick = ({
-        clientY: y,
-        clientX: x,
-        target,
-      }: MouseEvent) => {
+      const handleClosedby = (event: Event) => {
+        const { clientY: y, clientX: x, target } = event as MouseEvent;
+        if (event instanceof KeyboardEvent)
+          return (
+            closedby === 'none' &&
+            event.key === 'Escape' &&
+            event.preventDefault()
+          ); // Skip ESC-key if closedby="none"
         if (window.getSelection()?.toString()) return; // Fix bug where if you select text spanning two divs it thinks you clicked outside
-        if (dialog && target === dialog && backdropClose) {
+        if (dialog && target === dialog && closedby === 'any') {
           const { top, left, right, bottom } = dialog.getBoundingClientRect();
           const isInDialog = top <= y && y <= bottom && left <= x && x <= right;
 
@@ -103,12 +118,14 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
       };
 
       dialog?.addEventListener('animationend', handleAutoFocus);
-      dialog?.addEventListener('click', handleBackdropClick);
+      dialog?.addEventListener('click', handleClosedby);
+      dialog?.addEventListener('keydown', handleClosedby);
       return () => {
         dialog?.removeEventListener('animationend', handleAutoFocus);
-        dialog?.removeEventListener('click', handleBackdropClick);
+        dialog?.removeEventListener('click', handleClosedby);
+        dialog?.removeEventListener('keydown', handleClosedby);
       };
-    }, [backdropClose]);
+    }, [closedby]);
 
     /* handle closing */
     useEffect(() => {
@@ -122,6 +139,7 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
       <Component
         className={cl('ds-dialog', className)}
         ref={mergedRefs}
+        data-modal={modal}
         {...rest}
       >
         {closeButton !== false && (
