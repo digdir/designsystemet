@@ -1,5 +1,7 @@
 export function isProduction() {
-  const env = process.env.DESIGNSYSTEMET_ENV;
-  console.log(`DESIGNSYSTEMET_ENV:`, env);
-  return env === 'production';
+  return process.env.DESIGNSYSTEMET_ENV === 'production';
+}
+
+export function designsystemetEnv() {
+  return process.env.DESIGNSYSTEMET_ENV;
 }
