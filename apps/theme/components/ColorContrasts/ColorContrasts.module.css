@@ -11,10 +11,15 @@
   gap: 12px;
 }
 
+.tableContainer {
+  overflow-x: auto;
+}
+
 .table {
   background-color: #e2e2e2;
   margin-bottom: 16px;
   margin-top: 12px;
+  table-layout: fixed;
 }
 
 .cell {
@@ -31,12 +36,8 @@
   gap: 9px;
   align-items: flex-start;
   border-top: 1px solid var(--ds-color-neutral-border-subtle);
-  margin-left: -28px;
+  margin: 0 calc(var(--panel-padding) * -1);
   padding: 22px 28px;
-}
-
-.tagGroups {
-  margin-top: 12px;
 }
 
 .tagGroup:last-child {
@@ -99,7 +100,11 @@
 .th {
   height: 90px;
   width: 140px;
-  padding: 16px;
+  padding: var(--ds-size-4);
+
+  @media screen and (max-width: 768px) {
+    padding: var(--ds-size-2);
+  }
 }
 
 .td {
@@ -116,6 +121,10 @@
   flex-direction: column;
   gap: 2px;
   font-weight: 500;
+
+  @media screen and (max-width: 768px) {
+    width: auto;
+  }
 }
 
 .headerHex {
@@ -139,6 +148,10 @@
 
 .select {
   width: 25%;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 }
 
 .desc {

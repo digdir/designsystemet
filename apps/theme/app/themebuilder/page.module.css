@@ -7,6 +7,10 @@
   width: calc(100% - 550px);
   margin-bottom: 40px;
   flex-grow: 500;
+
+  @media screen and (max-width: 1500px) {
+    padding: var(--ds-size-2);
+  }
 }
 
 .sideBarContainer {

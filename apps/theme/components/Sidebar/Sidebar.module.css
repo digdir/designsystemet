@@ -94,3 +94,31 @@
     right: 440px;
   }
 }
+
+.modal {
+  /* --dsc-dialog-spacing: var(--ds-size-2); */
+
+  min-height: 90vh;
+  flex-direction: column;
+
+  & .modalBottom {
+    margin-top: auto;
+    padding: var(--ds-size-7);
+  }
+
+  & .tabsWrapper {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    padding: 0;
+  }
+
+  & .tabContent {
+    overflow-x: none;
+    overflow-y: none;
+  }
+
+  /* & .tabPanel {
+    padding: var(--ds-size-4) 0;
+  } */
+}

@@ -1,5 +1,10 @@
 .grid {
   grid-template-columns: repeat(3, 1fr) !important;
+  overflow-x: auto;
+}
+
+.list {
+  overflow-x: auto;
 }
 
 .card {
