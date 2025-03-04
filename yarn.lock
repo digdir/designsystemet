@@ -6252,13 +6252,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:^16.4.7":
-  version: 16.4.7
-  resolution: "dotenv@npm:16.4.7"
-  checksum: 10/f13bfe97db88f0df4ec505eeffb8925ec51f2d56a3d0b6d916964d8b4af494e6fb1633ba5d09089b552e77ab2a25de58d70259b2c5ed45ec148221835fc99a0c
-  languageName: node
-  linkType: hard
-
 "dotenv@npm:^8.1.0":
   version: 8.6.0
   resolution: "dotenv@npm:8.6.0"
@@ -12929,7 +12922,6 @@ __metadata:
     "@types/react-dom": "npm:^19.0.3"
     chroma-js: "npm:^3.1.2"
     clsx: "npm:^2.1.1"
-    dotenv: "npm:^16.4.7"
     next: "npm:^15.1.5"
     react: "npm:^19.0.0"
     react-color-palette: "npm:^7.3.0"
