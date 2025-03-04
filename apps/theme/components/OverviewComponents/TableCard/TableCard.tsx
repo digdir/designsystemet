@@ -51,45 +51,51 @@ export const TableCard = () => {
           </Search>
         </div>
       </div>
-      <Table data-size='sm' border data-color='neutral'>
-        <Table.Head>
-          <Table.Row>
-            <Table.HeaderCell onClick={function Ya() {}} sort='none'>
-              Navn
-            </Table.HeaderCell>
-            <Table.HeaderCell>Epost</Table.HeaderCell>
-            <Table.HeaderCell onClick={function Ya() {}} sort='none'>
-              Telefon
-            </Table.HeaderCell>
-          </Table.Row>
-        </Table.Head>
-        <Table.Body>
-          {tableData.map((user) => {
-            return (
-              <Table.Row key={user.name}>
-                <Table.Cell
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px',
-                  }}
-                >
-                  <Avatar
-                    aria-label={user.name}
-                    variant='circle'
-                    className={classes.avatar}
+      <div
+        style={{
+          overflowX: 'auto',
+        }}
+      >
+        <Table data-size='sm' border data-color='neutral'>
+          <Table.Head>
+            <Table.Row>
+              <Table.HeaderCell onClick={function Ya() {}} sort='none'>
+                Navn
+              </Table.HeaderCell>
+              <Table.HeaderCell>Epost</Table.HeaderCell>
+              <Table.HeaderCell onClick={function Ya() {}} sort='none'>
+                Telefon
+              </Table.HeaderCell>
+            </Table.Row>
+          </Table.Head>
+          <Table.Body>
+            {tableData.map((user) => {
+              return (
+                <Table.Row key={user.name}>
+                  <Table.Cell
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '12px',
+                    }}
                   >
-                    <img src={user.avatar} alt='' />
-                  </Avatar>
-                  {user.name}
-                </Table.Cell>
-                <Table.Cell>{user.email}</Table.Cell>
-                <Table.Cell>{user.phone}</Table.Cell>
-              </Table.Row>
-            );
-          })}
-        </Table.Body>
-      </Table>
+                    <Avatar
+                      aria-label={user.name}
+                      variant='circle'
+                      className={classes.avatar}
+                    >
+                      <img src={user.avatar} alt='' />
+                    </Avatar>
+                    {user.name}
+                  </Table.Cell>
+                  <Table.Cell>{user.email}</Table.Cell>
+                  <Table.Cell>{user.phone}</Table.Cell>
+                </Table.Row>
+              );
+            })}
+          </Table.Body>
+        </Table>
+      </div>
     </>
   );
 };
