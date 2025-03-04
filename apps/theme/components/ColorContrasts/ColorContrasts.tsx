@@ -134,41 +134,43 @@ export const ColorContrasts = () => {
   return (
     <div className='panelContainer'>
       <div className='panelLeft'>
-        <Heading data-size='xs'>Kontraster mellom farger</Heading>
-        <Paragraph data-size='sm'>
-          Her vises kontrastene mellom de ulike trinnene i fargeskalaene, samt
-          om fargene oppfyller WCAG-kravene.
-        </Paragraph>
+        <div className='panelTop'>
+          <Heading data-size='xs'>Kontraster mellom farger</Heading>
+          <Paragraph data-size='sm'>
+            Her vises kontrastene mellom de ulike trinnene i fargeskalaene, samt
+            om fargene oppfyller WCAG-kravene.
+          </Paragraph>
 
-        <div className={classes.tagGroups}>
-          <div className={classes.tagGroup}>
-            <div className={cl(classes.tag, classes.AAA)}>AAA</div>
-            <Paragraph data-size='sm'>
-              Tekst og bakgrunn må ha en kontrast på minst 7:1 for å oppfylle
-              WCAG AAA-kravet.
-            </Paragraph>
-          </div>
-          <div className={classes.tagGroup}>
-            <div className={cl(classes.tag, classes.AA)}>AA</div>
-            <Paragraph data-size='sm'>
-              Tekst og bakgrunn må ha en kontrast på minst 4.5:1 for å oppfylle
-              WCAG AA-kravet.
-            </Paragraph>
-          </div>
-          <div className={classes.tagGroup}>
-            <div className={cl(classes.tag, classes.AA18)}>AA18</div>
-            <Paragraph data-size='sm'>
-              Tekst og bakgrunn må ha en kontrast på minst 3:1 og en
-              skriftstørrelse på 18 px eller større for å oppfylle WCAG
-              AA-kravet.
-            </Paragraph>
-          </div>
-          <div className={classes.tagGroup}>
-            <div className={cl(classes.tag, classes.FAIL)}>DECO</div>
-            <Paragraph data-size='sm'>
-              Oppfyller ingen kontrastkrav i WCAG og bør kun brukes til
-              dekorative formål.
-            </Paragraph>
+          <div className={classes.tagGroups}>
+            <div className={classes.tagGroup}>
+              <div className={cl(classes.tag, classes.AAA)}>AAA</div>
+              <Paragraph data-size='sm'>
+                Tekst og bakgrunn må ha en kontrast på minst 7:1 for å oppfylle
+                WCAG AAA-kravet.
+              </Paragraph>
+            </div>
+            <div className={classes.tagGroup}>
+              <div className={cl(classes.tag, classes.AA)}>AA</div>
+              <Paragraph data-size='sm'>
+                Tekst og bakgrunn må ha en kontrast på minst 4.5:1 for å
+                oppfylle WCAG AA-kravet.
+              </Paragraph>
+            </div>
+            <div className={classes.tagGroup}>
+              <div className={cl(classes.tag, classes.AA18)}>AA18</div>
+              <Paragraph data-size='sm'>
+                Tekst og bakgrunn må ha en kontrast på minst 3:1 og en
+                skriftstørrelse på 18 px eller større for å oppfylle WCAG
+                AA-kravet.
+              </Paragraph>
+            </div>
+            <div className={classes.tagGroup}>
+              <div className={cl(classes.tag, classes.FAIL)}>DECO</div>
+              <Paragraph data-size='sm'>
+                Oppfyller ingen kontrastkrav i WCAG og bør kun brukes til
+                dekorative formål.
+              </Paragraph>
+            </div>
           </div>
         </div>
       </div>

@@ -31,12 +31,8 @@
   gap: 9px;
   align-items: flex-start;
   border-top: 1px solid var(--ds-color-neutral-border-subtle);
-  margin-left: -28px;
+  margin: 0 calc(var(--panel-padding) * -1);
   padding: 22px 28px;
-}
-
-.tagGroups {
-  margin-top: 12px;
 }
 
 .tagGroup:last-child {
