@@ -15,7 +15,7 @@ import { useRef, useState } from 'react';
 
 import type { Color } from '@digdir/designsystemet/color';
 import { type ColorTheme, useThemeStore } from '../../store';
-import { designsystemetEnv, isProduction } from '../../utils/is-production';
+import { isProduction } from '../../utils/is-production';
 import classes from './TokenModal.module.css';
 
 const colorCliOptions = cliOptions.theme.colors;
@@ -41,11 +41,6 @@ export const TokenModal = () => {
   };
 
   const packageWithTag = `@digdir/designsystemet${isProduction() ? '' : '@next'}`;
-
-  console.log({
-    designsystemetEnv: designsystemetEnv(),
-    isProduction: isProduction(),
-  });
 
   const buildSnippet = `npx ${packageWithTag} tokens build`;
 
