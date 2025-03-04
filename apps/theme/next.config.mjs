@@ -5,6 +5,8 @@ dotenv.config({
   path: path.resolve(process.cwd(), '.env.local'),
 });
 
+console.log('env: ', process.env);
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
