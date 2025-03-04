@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.0.1
+
+### Patch Changes
+
+- **MultiSuggestion**: Export component ([#3305](https://github.com/digdir/designsystemet/pull/3305))
+
 ## 1.0.0
 
 ### Major Changes
