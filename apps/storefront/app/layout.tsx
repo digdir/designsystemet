@@ -8,15 +8,12 @@ import { Figma, Github, Header, Slack } from '@repo/components';
 import { Footer } from '@repo/components';
 import type { Metadata } from 'next';
 import Script from 'next/script';
+import { isProduction } from '../utils/is-production';
 
-const isProduction = true;
+const subdomain = isProduction() ? '' : 'next.';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    isProduction
-      ? 'https://designsystemet.no'
-      : 'https://next.designsystemet.no',
-  ),
+  metadataBase: new URL(`https://${subdomain}designsystemet.no`),
   title: {
     template: '%s - Designsystemet',
     default: 'Designsystemet',
@@ -49,9 +46,7 @@ const menu = [
   },
   {
     name: 'Temabygger',
-    href: isProduction
-      ? 'https://theme.designsystemet.no'
-      : 'https://next.theme.designsystemet.no',
+    href: `https://${subdomain}theme.designsystemet.no`,
   },
 ];
 

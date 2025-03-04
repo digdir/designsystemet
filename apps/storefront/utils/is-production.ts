@@ -1,3 +1,3 @@
 export function isProduction() {
-  return true;
+  return process.env.DESIGNSYSTEMET_ENV === 'latest';
 }
