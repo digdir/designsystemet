@@ -1,5 +1,6 @@
 .grid {
   grid-template-columns: repeat(3, 1fr) !important;
+  overflow-x: auto;
 }
 
 .card {

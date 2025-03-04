@@ -204,26 +204,29 @@ export const ColorContrasts = () => {
             )}
           </Select>
         </Field>
-        <table className={classes.table}>
-          <tbody>
-            <tr>
-              <th />
-              {reducedLight.themeRange1.map((color, index) => (
-                <ThCell key={index} color={reducedLight.themeRange1[index]} />
-              ))}
-            </tr>
-            {reducedLight.themeRange2.map((color2, index) => (
-              <tr key={index}>
-                <ThCell color={color2} />
-                {reducedLight.themeRange1.map((color1, index) => (
-                  <td key={index} className={classes.td}>
-                    <TdCell color1={color1} color2={color2} />
-                  </td>
+
+        <div className={classes.tableContainer}>
+          <table className={classes.table}>
+            <tbody>
+              <tr>
+                <th />
+                {reducedLight.themeRange1.map((color, index) => (
+                  <ThCell key={index} color={reducedLight.themeRange1[index]} />
                 ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+              {reducedLight.themeRange2.map((color2, index) => (
+                <tr key={index}>
+                  <ThCell color={color2} />
+                  {reducedLight.themeRange1.map((color1, index) => (
+                    <td key={index} className={classes.td}>
+                      <TdCell color1={color1} color2={color2} />
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
         <Heading data-size='2xs'>Base fargene</Heading>
         <Paragraph data-size='sm' className={classes.desc}>
           Fargene som blir valgt i verktøyet får tokenet Base Default i hver
@@ -252,29 +255,31 @@ export const ColorContrasts = () => {
             )}
           </Select>
         </Field>
-        <table className={classes.table}>
-          <tbody>
-            <tr>
-              <th />
-              {reducedBaseLight.themeRange1.map((color, index) => (
-                <ThCell
-                  key={index}
-                  color={reducedBaseLight.themeRange1[index]}
-                />
-              ))}
-            </tr>
-            {reducedBaseLight.themeRange2.map((color2, index) => (
-              <tr key={index}>
-                <ThCell color={color2} />
-                {reducedBaseLight.themeRange1.map((color1, index) => (
-                  <td key={index} className={classes.td}>
-                    <TdCell color1={color1} color2={color2} />
-                  </td>
+        <div className={classes.tableContainer}>
+          <table className={classes.table}>
+            <tbody>
+              <tr>
+                <th />
+                {reducedBaseLight.themeRange1.map((color, index) => (
+                  <ThCell
+                    key={index}
+                    color={reducedBaseLight.themeRange1[index]}
+                  />
                 ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+              {reducedBaseLight.themeRange2.map((color2, index) => (
+                <tr key={index}>
+                  <ThCell color={color2} />
+                  {reducedBaseLight.themeRange1.map((color1, index) => (
+                    <td key={index} className={classes.td}>
+                      <TdCell color1={color1} color2={color2} />
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

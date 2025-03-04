@@ -35,15 +35,22 @@ code {
   --panel-gap: var(--ds-size-4);
 
   display: flex;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 
 .panelLeft {
   display: flex;
   flex-direction: column;
-  width: 420px;
   position: relative;
   background-color: var(--ds-color-neutral-background-default);
-  border-right: 1px solid var(--ds-color-neutral-border-subtle);
+
+  @media screen and (min-width: 768px) {
+    width: 420px;
+    border-right: 1px solid var(--ds-color-neutral-border-subtle);
+  }
 
   & > * {
     padding: var(--panel-padding);
