@@ -40,12 +40,12 @@ export const TokenModal = () => {
     return str;
   };
 
-  const packageCommand = `@digdir/designsystemet${isProduction() ? '' : '@next'}`;
+  const packageWithTag = `@digdir/designsystemet${isProduction() ? '' : '@next'}`;
 
-  const buildSnippet = `npx ${packageCommand} tokens build`;
+  const buildSnippet = `npx ${packageWithTag} tokens build`;
 
   const cliSnippet = [
-    `npx ${packageCommand} tokens create`,
+    `npx ${packageWithTag} tokens create`,
     `--${colorCliOptions.main} ${setCliColors(colors.main).trimEnd()}`,
     `--${colorCliOptions.neutral} "${getBaseDefault(colors.neutral[0]?.colors.light)?.hex}"`,
     `${colors.support.length > 0 ? `--${colorCliOptions.support} ${setCliColors(colors.support).trimEnd()}` : ''}`,
