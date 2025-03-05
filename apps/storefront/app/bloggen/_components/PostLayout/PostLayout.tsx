@@ -83,7 +83,7 @@ function PostLayout({
           </MdxContent>
         </main>
       </Container>
-      <style suppressHydrationWarning>
+      <style suppressHydrationWarning href='post-layout' precedence='medium'>
         {`
           header {
             [data-color-scheme='dark'] &,

@@ -79,7 +79,11 @@ const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
           </div>
         </main>
       </Container>
-      <style suppressHydrationWarning>
+      <style
+        suppressHydrationWarning
+        href='menu-page-layout'
+        precedence='medium'
+      >
         {`
           header {
             [data-color-scheme='dark'] &,
