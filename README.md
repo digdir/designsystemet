@@ -21,7 +21,7 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 
 [Storefront](https://designsystemet.no/) - General documentation.
 
-[Theme](https://theme.designsystemet.no/) - Theme-builder.
+[Theme](https://theme.designsystemet.no/) - Themebuilder.
 
 ## 📦 Packages
 
