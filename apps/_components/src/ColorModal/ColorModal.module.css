@@ -6,14 +6,23 @@
 .container {
   display: flex;
   border: 1px solid var(--ds-color-neutral-border-subtle);
-  border-radius: 8px;
+  border-radius: var(--ds-border-radius-md);
   min-height: 255px;
+  overflow: hidden;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 
 .infoTable {
   width: 50%;
   border-collapse: collapse;
   padding: 24px;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 }
 
 .infoTable th {
@@ -38,7 +47,13 @@
 .right {
   width: 50%;
   border-left: 1px solid var(--ds-color-neutral-border-subtle);
-  border-radius: 0 7px 7px 0;
+
+  @media screen and (max-width: 768px) {
+    border-left: none;
+    border-top: 1px solid var(--ds-color-neutral-border-subtle);
+    width: 100%;
+    height: var(--ds-size-26);
+  }
 }
 
 .field {

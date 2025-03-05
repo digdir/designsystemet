@@ -15,6 +15,7 @@ import { useRef, useState } from 'react';
 
 import type { Color } from '@digdir/designsystemet/color';
 import { type ColorTheme, useThemeStore } from '../../store';
+import { isProduction } from '../../utils/is-production';
 import classes from './TokenModal.module.css';
 
 const colorCliOptions = cliOptions.theme.colors;
@@ -39,8 +40,12 @@ export const TokenModal = () => {
     return str;
   };
 
+  const packageWithTag = `@digdir/designsystemet${isProduction() ? '' : '@next'}`;
+
+  const buildSnippet = `npx ${packageWithTag} tokens build`;
+
   const cliSnippet = [
-    `npx @digdir/designsystemet@next tokens create`,
+    `npx ${packageWithTag} tokens create`,
     `--${colorCliOptions.main} ${setCliColors(colors.main).trimEnd()}`,
     `--${colorCliOptions.neutral} "${getBaseDefault(colors.neutral[0]?.colors.light)?.hex}"`,
     `${colors.support.length > 0 ? `--${colorCliOptions.support} ${setCliColors(colors.support).trimEnd()}` : ''}`,
@@ -65,7 +70,7 @@ export const TokenModal = () => {
         className={classes.modal}
         style={{ maxWidth: 1000 }}
         ref={modalRef}
-        backdropClose={true}
+        closedby='any'
       >
         <Dialog.Block>
           <Heading className={classes.modalHeader} data-size='2xs'>
@@ -148,9 +153,7 @@ export const TokenModal = () => {
                 </Paragraph>
               </div>
               <div className={classes.snippet}>
-                <CodeSnippet language='bash'>
-                  npx @digdir/designsystemet@next tokens build
-                </CodeSnippet>
+                <CodeSnippet language='bash'>{buildSnippet}</CodeSnippet>
               </div>
 
               <Divider />

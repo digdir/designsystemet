@@ -31,6 +31,10 @@
   display: flex;
   gap: var(--ds-size-6);
   flex-wrap: wrap;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 
 .card {
@@ -41,6 +45,7 @@
   gap: 20px;
   display: flex;
   flex-direction: column;
+  max-width: 100%;
 }
 
 .tags {

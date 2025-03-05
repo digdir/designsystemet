@@ -1,5 +1,17 @@
 # Change Log
 
+## 1.0.1
+
+## 1.0.0
+
+### Major Changes
+
+- 🎉 Version 1.0 of Designsystemet! 🎉 ([#3290](https://github.com/digdir/designsystemet/pull/3290))
+
+  We are excited to announce the release of Version 1.0 of Designsystemet! This marks a significant milestone as we establish a solid foundation for future development. 🚀
+
+## 0.101.0
+
 ## 0.100.52
 
 ## 0.100.52-next.0

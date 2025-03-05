@@ -114,22 +114,24 @@ export const ColorPreview = () => {
   return (
     <div className='panelContainer'>
       <div className='panelLeft'>
-        <Heading data-size='xs'>Se fargene dine i bruk</Heading>
-        <Paragraph data-size='sm'>
-          Hver farge som blir valgt med verktøyet får sitt eget kort i seksjonen
-          til høyre slik at du kan se hvordan fargene harmonerer sammen.
-        </Paragraph>
-        <Paragraph data-size='sm'>
-          Merk at kontrastfargen inne i knappen endrer seg fra hvit til svart,
-          avhengig av om den valgte fargen er lys eller mørk for å oppnå best
-          mulig kontrast.
-        </Paragraph>
+        <div className='panelTop'>
+          <Heading data-size='xs'>Se fargene dine i bruk</Heading>
+          <Paragraph data-size='sm'>
+            Hver farge som blir valgt med verktøyet får sitt eget kort i
+            seksjonen til høyre slik at du kan se hvordan fargene harmonerer
+            sammen.
+          </Paragraph>
+          <Paragraph data-size='sm'>
+            Merk at kontrastfargen inne i knappen endrer seg fra hvit til svart,
+            avhengig av om den valgte fargen er lys eller mørk for å oppnå best
+            mulig kontrast.
+          </Paragraph>
+        </div>
         <div className='panelBottom'>
           <div className={classes.label}>Visning:</div>
           <ToggleGroup
             data-size='sm'
             defaultValue='grid'
-            name='toggle-group-nuts'
             onChange={(value) => setView(value as ViewType)}
           >
             <ToggleGroup.Item value='grid'>Grid</ToggleGroup.Item>
@@ -137,7 +139,12 @@ export const ColorPreview = () => {
           </ToggleGroup>
         </div>
       </div>
-      <div className={cl('panelRight', view === 'grid' && classes.grid)}>
+      <div
+        className={cl(
+          'panelRight',
+          view === 'grid' ? classes.grid : classes.list,
+        )}
+      >
         {colors.main.map((color, index) => (
           <CardWrapper key={index} color={color} />
         ))}

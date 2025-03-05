@@ -32,6 +32,10 @@
   width: 550px;
   text-align: center;
   margin-bottom: 38px;
+
+  &:not(:has(.betaTag)) h1 {
+    margin-top: var(--ds-size-6);
+  }
 }
 
 .container {
@@ -131,7 +135,7 @@
   }
 }
 
-@media (max-width: 1700px) {
+@media (max-width: 1740px) {
   .cluster {
     display: none;
   }

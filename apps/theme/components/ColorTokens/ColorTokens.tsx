@@ -5,11 +5,13 @@ export const ColorTokens = () => {
   return (
     <div className='panelContainer'>
       <div className='panelLeft'>
-        <Heading data-size='xs'>Se fargetokens</Heading>
-        <Paragraph data-size='sm'>
-          Her ser du hvilke tokens som er brukt for å lage kortene i seksjonen
-          over.
-        </Paragraph>
+        <div className='panelTop'>
+          <Heading data-size='xs'>Se fargetokens</Heading>
+          <Paragraph data-size='sm'>
+            Her ser du hvilke tokens som er brukt for å lage kortene i seksjonen
+            over.
+          </Paragraph>
+        </div>
       </div>
       <div className={cl('panelRight', classes.right)}>
         <img className={classes.img} src='img/color-tokens.png' alt='' />

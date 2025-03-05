@@ -2,21 +2,18 @@ import '../globals.css';
 import '@digdir/designsystemet-css';
 import '@digdir/designsystemet-theme';
 
-import { Figma, Github, Header, Slack } from '@repo/components';
-import type { Metadata } from 'next';
-
-import { VersionBanner } from '@components';
 import { SkipLink } from '@digdir/designsystemet-react';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
+import { Figma, Github, Header, Slack } from '@repo/components';
 import { Footer } from '@repo/components';
+import type { Metadata } from 'next';
 import Script from 'next/script';
+import { isProduction } from '../utils/is-production';
+
+const subdomain = isProduction() ? '' : 'next.';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.VERCEL_GIT_COMMIT_REF !== 'main'
-      ? 'https://next.designsystemet.no'
-      : 'https://designsystemet.no',
-  ),
+  metadataBase: new URL(`https://${subdomain}designsystemet.no`),
   title: {
     template: '%s - Designsystemet',
     default: 'Designsystemet',
@@ -49,7 +46,7 @@ const menu = [
   },
   {
     name: 'Temabygger',
-    href: 'https://next.theme.designsystemet.no',
+    href: `https://${subdomain}theme.designsystemet.no`,
   },
 ];
 
@@ -103,7 +100,6 @@ export default function RootLayout({
       <body>
         <div className='root'>
           <SkipLink href='#main'>Hopp til hovedinnhold</SkipLink>
-          <VersionBanner />
           <Header menu={menu} skipLink={false} themeSwitcher={true} />
           {children}
           <Footer centerLinks={centerLinks} rightLinks={rightLinks} />

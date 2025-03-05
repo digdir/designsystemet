@@ -13,10 +13,13 @@
   --dsc-multi-select-border-color: var(--ds-color-neutral-border-default);
 
   box-sizing: border-box;
-  display: flex;
   flex-wrap: wrap;
   gap: var(--ds-size-1);
   position: relative;
+
+  &:not([hidden]) {
+    display: flex;
+  }
 
   & > data {
     margin-bottom: var(--ds-size-1);
