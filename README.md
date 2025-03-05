@@ -41,7 +41,7 @@ Follow these steps to get started with Designsystemet in code.
 
 ### 1. Install
 
-Install the minimum to get started with Designsystemet 
+Install the essential packages to get started with Designsystemet:
 
 ```sh
 @digdir/designsystemet-css 
