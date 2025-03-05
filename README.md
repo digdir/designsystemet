@@ -127,7 +127,7 @@ body {
 ```
 
 The `font-feature-settings` adds a tail to lowercase `L`'s.
-If you choose to install the font in a different way, remember to include the `400`, `500` and `600` font weights.
+If you install the font in a different way, remember to include the `400`, `500` and `600` font weights.
 
 ## 🫶 Contributing
 
