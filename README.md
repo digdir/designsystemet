@@ -135,7 +135,7 @@ Learn how you can contribute to this project by reading our [Code of Conduct](./
 
 ## 💪 Contributors
 
-We are lucky to have a great group of people who help out with Designsystemet
+We are lucky to have a great group of people who have contributed to Designsystemet
 
 <a style="margin-top: 32px; display: block;" href="https://github.com/digdir/designsystemet/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=digdir/designsystem" />
