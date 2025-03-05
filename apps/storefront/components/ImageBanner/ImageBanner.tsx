@@ -96,7 +96,7 @@ const ImageBanner = ({
           {description && <Paragraph data-size='lg'>{description}</Paragraph>}
           {content && content}
           {link && (
-            <Link className={classes.link} color='neutral' asChild>
+            <Link className={classes.link} data-color='neutral' asChild>
               <NextLink href={link.href}>
                 {link.prefix} {link.text}
               </NextLink>
@@ -106,10 +106,11 @@ const ImageBanner = ({
           {buttons && (
             <div className={classes.buttons}>
               {buttons.map((item, index) => (
+                /* @ts-ignore */
                 <Button
                   key={index}
                   variant={item.variant ?? 'secondary'}
-                  color={item.color ?? 'accent'}
+                  data-color={item.color ?? 'accent'}
                   asChild
                 >
                   <a href={item.href} className={classes.button}>

@@ -14,7 +14,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <main id='main'>
-      <div>
+      <div id='frontpage'>
         <img
           src='/img/elements/first.svg'
           alt=''

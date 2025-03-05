@@ -19,6 +19,12 @@
   align-items: flex-start;
   gap: var(--ds-size-8);
   margin-top: var(--ds-size-8);
+
+  & svg {
+    & * {
+      fill: var(--ds-color-neutral-text-default);
+    }
+  }
 }
 
 .links {
