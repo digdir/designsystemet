@@ -27,7 +27,7 @@ const PageLayout = ({ content, data }: PageLayoutProps) => {
       <div className={classes.header}>
         <Container>
           <div className={classes.headerContent}>
-            <Link asChild className={classes.backBtn} color='neutral'>
+            <Link asChild className={classes.backBtn} data-color='neutral'>
               <NextLink href={'/' + data.backUrl} prefetch={false}>
                 <ArrowLeftIcon title='Tilbake' fontSize={28} />
                 {data.backText}
