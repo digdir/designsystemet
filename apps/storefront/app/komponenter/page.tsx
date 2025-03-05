@@ -23,21 +23,17 @@ export default function page() {
       {sortedData.map((component) => (
         <ComponentCard key={component.title} {...component} />
       ))}
-      <style
-        suppressHydrationWarning
-        href='components-page'
-        precedence='medium'
-      >
+      <style suppressHydrationWarning href='body'>
         {`
-    body {
-      background-color: var(--ds-color-neutral-background-subtle);
+          body {
+            background-color: var(--ds-color-neutral-background-subtle);
 
-        [data-color-scheme='dark'] &,
-        [data-color-scheme='auto'] & {
-          background-color: var(--ds-color-neutral-background-default);
-        }
-    }
-  `}
+              [data-color-scheme='dark'] &,
+              [data-color-scheme='auto'] & {
+                background-color: var(--ds-color-neutral-background-default);
+              }
+          }
+        `}
       </style>
     </>
   );
