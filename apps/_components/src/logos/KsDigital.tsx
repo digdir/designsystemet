@@ -4,7 +4,7 @@ export function KsDigital({ ...rest }: KsDigitalProps) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      version='1.2'
+      version='1.1'
       viewBox='0 0 1035 244'
       width='1035'
       height='244'
