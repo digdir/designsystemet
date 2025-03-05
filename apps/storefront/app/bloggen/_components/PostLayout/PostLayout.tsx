@@ -33,7 +33,7 @@ function PostLayout({
   figureCount = FIGURE_COUNT,
 }: BlogArticleLayoutProps) {
   return (
-    <div className={classes.wrapper}>
+    <div className={classes.wrapper} id='post-layout'>
       <Container className={classes.page}>
         {Array.from({ length: figureCount }).map((_, index) => (
           <Figures
@@ -87,16 +87,6 @@ function PostLayout({
           </MdxContent>
         </main>
       </Container>
-      <style suppressHydrationWarning href='header'>
-        {`
-          header {
-            [data-color-scheme='dark'] &,
-            [data-color-scheme='auto'] & {
-              background-color: var(--ds-color-neutral-background-default) !important;
-            }
-          }
-        `}
-      </style>
     </div>
   );
 }

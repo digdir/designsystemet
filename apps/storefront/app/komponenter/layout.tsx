@@ -27,7 +27,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           sammen på mange ulike måter og i forskjellige mønstre.
         </BannerIngress>
       </Banner>
-      <Container className={classes.grid}>{children}</Container>
+      <Container className={classes.grid} id='komponenter'>
+        {children}
+      </Container>
     </main>
   );
 };

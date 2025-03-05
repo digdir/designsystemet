@@ -46,7 +46,7 @@ const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
           {banner.ingress && <BannerIngress>{banner.ingress}</BannerIngress>}
         </Banner>
       )}
-      <Container className={classes.page}>
+      <Container className={classes.page} id='menu-page-layout'>
         <div className={classes.left}>
           <SidebarMenu routerPath={pathname ?? ''} />
         </div>
@@ -79,16 +79,6 @@ const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
           </div>
         </main>
       </Container>
-      <style suppressHydrationWarning href='header'>
-        {`
-          header {
-            [data-color-scheme='dark'] &,
-            [data-color-scheme='auto'] & {
-              background-color: var(--ds-color-neutral-background-default) !important;
-            }
-          }
-        `}
-      </style>
     </div>
   );
 };
