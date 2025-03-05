@@ -37,7 +37,7 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 
 ## 🚀 Get started
 
-Follow these steps to get started with the Designsystem in code.
+Follow these steps to get started with Designsystemet in code.
 
 ### 1. Install
 
