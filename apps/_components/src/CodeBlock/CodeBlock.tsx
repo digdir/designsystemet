@@ -5,11 +5,9 @@ import { useState } from 'react';
 import { CodeBlock as ReactCodeBlock } from 'react-code-block';
 import classes from './CodeBlock.module.css';
 
-import { Prism } from 'prism-react-renderer';
-
-(typeof global !== 'undefined' ? global : window).Prism = Prism;
+/* (typeof global !== 'undefined' ? global : window).Prism = Prism; */
 /* @ts-ignore - TODO: fix this */
-await import('prismjs/components/prism-bash');
+/* await import('prismjs/components/prism-bash'); */
 
 export type CodeBlockProps = {
   children: string;
