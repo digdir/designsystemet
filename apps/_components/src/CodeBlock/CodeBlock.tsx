@@ -8,6 +8,25 @@ import classes from './CodeBlock.module.css';
 export type CodeBlockProps = {
   children: string;
   className?: string;
+  /**
+   * Supported languages:
+   *  "markup"
+   *  "jsx"
+   *  "tsx"
+   *  "swift"
+   *  "kotlin"
+   *  "objectivec"
+   *  "js-extras"
+   *  "reason"
+   *  "rust"
+   *  "graphql"
+   *  "yaml"
+   *  "go"
+   *  "cpp"
+   *  "markdown"
+   *  "python"
+   *  "json"
+   */
   language?: string;
 };
 
