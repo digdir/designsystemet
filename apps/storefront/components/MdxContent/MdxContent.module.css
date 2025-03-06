@@ -125,6 +125,15 @@
     box-shadow: var(--ds-shadow-md);
   }
 
+  & > p > code {
+    padding: 0.2em 0.5em;
+    margin: 1px;
+    font-size: 0.9em;
+    white-space: break-spaces;
+    background-color: var(--ds-color-neutral-surface-tinted);
+    border-radius: var(--ds-border-radius-md);
+  }
+
   & > div + p {
     margin-top: var(--ds-size-5);
   }
