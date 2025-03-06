@@ -2237,6 +2237,7 @@ __metadata:
     clsx: "npm:^2.1.1"
     next: "npm:^15.1.5"
     prism-react-renderer: "npm:^2.4.1"
+    prismjs: "npm:^1.29.0"
     react-code-block: "npm:^1.1.3"
     typescript: "npm:^5.7.3"
   peerDependencies:
@@ -10572,6 +10573,13 @@ __metadata:
   peerDependencies:
     react: ">=16.0.0"
   checksum: 10/f76ea89b8b18c477eb74e9ddda2571b5c4d21142731f6733160723aa03567b17df315d7db68ffb1122c199750ece65578ecacb488559229b26db5474d6aae55b
+  languageName: node
+  linkType: hard
+
+"prismjs@npm:^1.29.0":
+  version: 1.29.0
+  resolution: "prismjs@npm:1.29.0"
+  checksum: 10/2080db382c2dde0cfc7693769e89b501ef1bfc8ff4f8d25c07fd4c37ca31bc443f6133d5b7c145a73309dc396e829ddb7cc18560026d862a887ae08864ef6b07
   languageName: node
   linkType: hard
 

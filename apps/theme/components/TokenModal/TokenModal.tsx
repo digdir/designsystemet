@@ -139,7 +139,7 @@ export const TokenModal = () => {
                 </Paragraph>
               </div>
               <div className={classes.snippet}>
-                <CodeBlock language='shell'>{cliSnippet}</CodeBlock>
+                <CodeBlock language='bash'>{cliSnippet}</CodeBlock>
               </div>
               <div
                 className={classes.step}
@@ -153,7 +153,7 @@ export const TokenModal = () => {
                 </Paragraph>
               </div>
               <div className={classes.snippet}>
-                <CodeBlock language='shell'>{buildSnippet}</CodeBlock>
+                <CodeBlock language='bash'>{buildSnippet}</CodeBlock>
               </div>
 
               <Divider />
