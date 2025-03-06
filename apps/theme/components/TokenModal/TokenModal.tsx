@@ -118,14 +118,14 @@ export const TokenModal = () => {
                     target='_blank'
                     href='https://www.figma.com/community/plugin/1382044395533039221/designsystemet-beta'
                   >
-                    Figma plugin
+                    Figma plugin (åpnes i ny fane)
                   </Link>{' '}
                   i{' '}
                   <Link
                     target='_blank'
                     href='https://www.figma.com/community/file/1322138390374166141'
                   >
-                    Core UI Kit
+                    Core UI Kit (åpnes i ny fane)
                   </Link>{' '}
                   for å oppdatere et tema direkte i Figma. Les mer om disse
                   alternativene på{' '}
@@ -133,7 +133,7 @@ export const TokenModal = () => {
                     target='_blank'
                     href='https://www.designsystemet.no/grunnleggende/for-designere/eget-tema'
                   >
-                    eget tema
+                    eget tema (åpnes i ny fane)
                   </Link>{' '}
                   siden.
                 </Paragraph>
@@ -170,14 +170,14 @@ export const TokenModal = () => {
                       target='_blank'
                       href='https://designsystemet.no/slack'
                     >
-                      Slack
+                      Slack (åpnes i ny fane)
                     </Link>{' '}
                     eller lag et{' '}
                     <Link
                       target='_blank'
                       href='https://github.com/digdir/designsystemet/issues/new/choose'
                     >
-                      Github issue
+                      Github issue (åpnes i ny fane)
                     </Link>
                     .
                   </Paragraph>
