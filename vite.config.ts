@@ -25,9 +25,6 @@ export default defineConfig({
   },
   // Temporary "fix" https://github.com/storybookjs/storybook/issues/28542
   optimizeDeps: {
-    exclude: [
-      './apps/storybook/node_modules/.cache/storybook',
-      './apps/storybook/docs-components',
-    ],
+    exclude: ['./node_modules/.cache/storybook'],
   },
 });

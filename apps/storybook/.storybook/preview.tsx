@@ -7,6 +7,7 @@ import isChromatic from 'chromatic/isChromatic';
 import type { LinkProps } from '@digdir/designsystemet-react';
 import { Link, List, Paragraph, Table } from '@digdir/designsystemet-react';
 
+import { CodeBlock } from '../../_components';
 import { customStylesDecorator } from '../story-utils/customStylesDecorator';
 import { fontsLoader } from '../story-utils/fontsLoader';
 import { allModes, viewportWidths } from '../story-utils/modes';
@@ -42,6 +43,20 @@ const getPath = (href: string | undefined): string => {
 };
 
 const components = {
+  pre: ({
+    children: {
+      props: { children = '', className = '' },
+    },
+  }) => {
+    return (
+      <CodeBlock
+        className={'sb-unstyled'}
+        language={className.replace('language-', '')}
+      >
+        {children}
+      </CodeBlock>
+    );
+  },
   p: (props: Props) => (
     <Paragraph
       {...props}

@@ -11,9 +11,7 @@
 
 </div>
 
-## 📖 About Designsystemet
-
-Designsystemet is a collection of important design elements, components and patterns that can be used to build public services.
+Designsystemet is a suite of tools used to create design systems.
 
 Our goal is to create consistent and user-friendly experiences in digital solutions for public services, making them more efficient and reliable.
 
@@ -21,58 +19,94 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 
 [Storybook](https://storybook.designsystemet.no/) - Preview for React components.
 
-[Storefront](https://designsystemet.no/) - General documentation about the design system.
+[Storefront](https://designsystemet.no/) - General documentation.
 
-[Theme](https://theme.designsystemet.no/) - Theme builder.
+[Theme](https://theme.designsystemet.no/) - Themebuilder.
 
 ## 📦 Packages
 
 [`@digdir/designsystemet`](https://www.npmjs.com/package/@digdir/designsystemet) - CLI for Designsystemet.
 
-[`@digdir/designsystemet-theme`](https://www.npmjs.com/package/@digdir/designsystemet-theme) - Themes for Designsystemet.
-
-[`@digdir/designsystemet-css`](https://www.npmjs.com/package/@digdir/designsystemet-css) - Styling for components.
+[`@digdir/designsystemet-css`](https://www.npmjs.com/package/@digdir/designsystemet-css) - CSS implementation of Designsystemet components.
 
 [`@digdir/designsystemet-react`](https://www.npmjs.com/package/@digdir/designsystemet-react) - React implementation of Designsystemet components.
+
+[`@digdir/designsystemet-theme`](https://www.npmjs.com/package/@digdir/designsystemet-theme) - Digdir themes for Designsystemet.
+
 
 
 ## 🚀 Get started
 
-Follow these steps to get started with the React components.
+Follow these steps to get started with Designsystemet in code.
 
-### 1. Install the packages
+### 1. Install
 
-Depending on your needs and technology stack install the relevant packages
+Install the essential packages to get started with Designsystemet:
 
 ```sh
-npm i @digdir/designsystemet
-npm i @digdir/designsystemet-css
-npm i @digdir/designsystemet-theme 
-npm i @digdir/designsystemet-react 
+@digdir/designsystemet-css 
+@digdir/designsystemet-theme # or custom theme 
 ```
+
+Install `@digdir/designsystemet-theme` if you need any of the Digdir themes. Uses `digdir` theme by default.
 
 #### 1.1 Custom theme
 
-
-You can create your own theme to use with the Designsystemet packages by going to our [theme-builder](https://theme.designsystemet.no/).
+Create your own theme for Designsystemet by going to our [theme-builder](https://theme.designsystemet.no/).
 
 Designsystemet theming is defined using [design-tokens](https://www.uxpin.com/studio/blog/what-are-design-tokens). 
 This is done so that you can use [Token Studio](https://tokens.studio/) to sync your theme in code with [Designsystemet Figma UI kit](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit), in addition to provide future flexibility.
 
-Run `npx @digdir/designsystemet tokens build` to build CSS files for your custom theme (from the design-tokens).
-Using your own built CSS theme file you can skip using the `@digdir/designsystemet-theme` package.
+Run `npx @digdir/designsystemet tokens build` to build CSS files for your custom theme (from the design-tokens) which you can then import and use with Designsystemet.
+
+Using a custom theme you can skip the `@digdir/designsystemet-theme`.
+
+
+#### 1.2 React
+
+Install `@digdir/designsystemet-react` if you want to use the React components.
+
+```jsx
+import '@digdir/designsystemet-css';
+import '@digdir/designsystemet-theme'; // or custom theme CSS file
+
+import { Button } from '@digdir/designsystemet-react';
+
+<Button variant='secondary'>I am a button!</Button>;
+```
+
+`@digdir/designsystemet-theme` and `@digdir/designsystemet-css` only needs to be imported once.
+
+##### Typescript 
+
+If you are using React and Typescript you can enable editor hints on any HTML elements for `data-color` based on your theme.
+
+This requires augmenting React's built-in types, and is therefore opt-in. 
+If you want this, add the following to your `tsconfig.json`:
+
+```jsonc
+{
+  // ...other settings
+  "compilerOptions": {
+    // ...other compilerOptions
+    "types": [
+      // ...other types
+      "@digdir/designsystemet-theme" or "<custom-theme>/colors.d.ts",
+      "@digdir/designsystemet-react/react-types",
+      ]
+  },
+}
+```
 
 ### 2. Font
 
-You are free to use any font-family with the components.
+You are free to use any font-family.
 
 The components are designed and developed using the [Inter font](https://github.com/rsms/inter) so variations might occur if a different font is used.
 
-#### Add the Inter font (optional)
+#### 2.1 Use Inter font (optional)
 
 Add the `<link>` tag in `<head>`, and set `font-family` to `Inter` in your global css file.
-
-The `font-feature-settings` adds a tail to lowercase `L`'s.
 
 ##### HTML
 
@@ -92,81 +126,8 @@ body {
 }
 ```
 
-If you choose to install the font in a different way, remember to include the `400`, `500` and `600` font weights.
-
-### 3. Use a React component
-
-```jsx
-import '@digdir/designsystemet-theme';
-import '@digdir/designsystemet-css';
-
-import { Button } from '@digdir/designsystemet-react';
-
-<Button variant='secondary'>I am a button!</Button>;
-```
-
-`@digdir/designsystemet-theme` and `@digdir/designsystemet-css` only needs to be imported once.
-
-### 4. Add TypeScript types for colors
-
-Because color names depend on which theme is being used, you have to add the following to your `tsconfig.json` to
-use all your colors in the components which have a `data-color` prop:
-
-#### When using `@digdir/designsystemet-theme`
-
-```jsonc
-{
-  // ...other settings
-  "compilerOptions": {
-    // ...other compilerOptions
-    "types": [
-      // ...other types
-      "@digdir/designsystemet-theme"
-      ]
-  },
-}
-```
-
-#### When using a custom theme
-The CLI `designsystemet tokens build` command will output a `colors.d.ts` file to your chosen output directory.
-In the example, replace `<your-path>` with the actual path you used when running the command.
-
-```jsonc
-{
-  // ...other settings
-  "compilerOptions": {
-    // ...other compilerOptions
-    "types": [
-      // ...other types
-      "<your-path>/colors.d.ts"
-      ]
-  },
-}
-```
-
-### 5. Add editor hints for data-color & data-size on HTML elements (optional)
-
-You may want editor hints for `data-color` and `data-size` attributes on HTML elements
-like `<span>` or `<div>`, since these attributes can affect components nested within
-these elements.
-
-This requires augmenting React's built-in types, and is therefore opt-in. If you want this,
-add the following to your `tsconfig.json`:
-
-```jsonc
-{
-  // ...other settings
-  "compilerOptions": {
-    // ...other compilerOptions
-    "types": [
-      // ...other types
-      "@digdir/designsystemet-react/react-types"
-      ]
-  },
-}
-```
-
-
+The `font-feature-settings` adds a tail to lowercase `L`'s.
+If you install the font in a different way, remember to include the `400`, `500` and `600` font weights.
 
 ## 🫶 Contributing
 
@@ -174,7 +135,7 @@ Learn how you can contribute to this project by reading our [Code of Conduct](./
 
 ## 💪 Contributors
 
-We are lucky to have a great group of people who help with the design system.
+We are lucky to have a great group of people who have contributed to Designsystemet
 
 <a style="margin-top: 32px; display: block;" href="https://github.com/digdir/designsystemet/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=digdir/designsystem" />
