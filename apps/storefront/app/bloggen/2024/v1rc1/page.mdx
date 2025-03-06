@@ -2,7 +2,6 @@ import { Link } from '@digdir/designsystemet-react';
 
 import { PostLayout, Contributors } from '../../_components';
 import { ResponsiveIframe } from '@components';
-import { CodeSnippet } from '@repo/components';
 
 export default ({ children }) => (
   <PostLayout
@@ -84,12 +83,11 @@ Vi kommer til å jobbe kontinuerlig med mindre forbedringer basert på tilbakeme
 
 For å lett komme i gang som utvikler med Release Candidate av Designsystemet kan installerer følgende med ditt pakkesystem:
 
-<CodeSnippet language='shell'>
-{`npm i @digdir/designsystemet-react@next
+```shell
+npm i @digdir/designsystemet-react@next
 npm i @digdir/designsystemet-theme@next
 npm i @digdir/designsystemet-css@next
-`}
-</CodeSnippet>
+```
 
 Denne installerer alle tre pakken, og inneholder tokens, CSS og React komponenter.
 
@@ -98,9 +96,9 @@ Denne installerer alle tre pakken, og inneholder tokens, CSS og React komponente
 Ønsker du å teste `dark`, `light` eller `contrast` modus kan du legge på data-atributtet `data-color-scheme="MODE"`.
 Denne kan legges hvor som helst, og endrer alle barn til modusen du har valgt.
 
-<CodeSnippet language='html'>
-  {`<Details data-color-scheme='dark'>...</Details>`}
-</CodeSnippet>
+```tsx
+<Details data-color-scheme='dark'>...</Details>
+```
 
 #### Design-tokens templat
 
@@ -122,9 +120,9 @@ Migreringsscriptet kjører automatisk på alle `.css` filer (inkl. undermapper) 
 
 _Merk at du må dobbelsjekke koden din etter scriptet har kjørt_
 
-<CodeSnippet language='shell'>
-{`npx @digdir/designsystemet migrate beta-to-v1`}
-</CodeSnippet>
+```shell
+npx @digdir/designsystemet migrate beta-to-v1
+```
 
 ## Takk for samarbeidet så langt!
 
