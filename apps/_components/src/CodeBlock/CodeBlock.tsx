@@ -8,6 +8,13 @@ import classes from './CodeBlock.module.css';
 export type CodeBlockProps = {
   children: string;
   className?: string;
+  /**
+   * Language for syntax highlighting.
+   * Only some languages give syntax highlighting, if the passed language is not supported
+   * it will default to 'text'.
+   *
+   * @todo Extend the language list with prismjs.
+   */
   language?:
     | 'markup'
     | 'jsx'
