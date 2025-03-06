@@ -10,7 +10,7 @@ import {
 } from '@digdir/designsystemet-react';
 import { cliOptions } from '@digdir/designsystemet/tokens';
 import { InformationSquareIcon, StarIcon } from '@navikt/aksel-icons';
-import { CodeSnippet } from '@repo/components';
+import { CodeBlock } from '@repo/components';
 import { useRef, useState } from 'react';
 
 import type { Color } from '@digdir/designsystemet/color';
@@ -139,7 +139,7 @@ export const TokenModal = () => {
                 </Paragraph>
               </div>
               <div className={classes.snippet}>
-                <CodeSnippet language='bash'>{cliSnippet}</CodeSnippet>
+                <CodeBlock language='bash'>{cliSnippet}</CodeBlock>
               </div>
               <div
                 className={classes.step}
@@ -153,7 +153,7 @@ export const TokenModal = () => {
                 </Paragraph>
               </div>
               <div className={classes.snippet}>
-                <CodeSnippet language='bash'>{buildSnippet}</CodeSnippet>
+                <CodeBlock language='bash'>{buildSnippet}</CodeBlock>
               </div>
 
               <Divider />

@@ -10,7 +10,7 @@ export function Github(rest: GithubProps) {
       xmlns='http://www.w3.org/2000/svg'
       {...rest}
     >
-      <g clipPath='url(#clip0_38_169)'>
+      <g>
         <path
           fillRule='evenodd'
           clipRule='evenodd'
@@ -18,16 +18,6 @@ export function Github(rest: GithubProps) {
           fill='#202C3D'
         />
       </g>
-      <defs>
-        <clipPath id='clip0_38_169'>
-          <rect
-            width='20'
-            height='20'
-            fill='white'
-            transform='translate(2 2)'
-          />
-        </clipPath>
-      </defs>
     </svg>
   );
 }

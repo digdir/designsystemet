@@ -3,7 +3,6 @@ import { Card, CardContent, Heading, Paragraph } from '@digdir/designsystemet-re
 import { Image } from '@components';
 import { MenuPageLayout } from '@layouts';
 import { Contributors } from '@blog';
-import { CodeSnippet } from '@repo/components';
 
 export const metadata = {
   title: 'Systemvarsler',
@@ -191,16 +190,14 @@ Varsler som dukker opp etter at siden er lastet, kalles dynamiske varsler. Disse
 
 **Eksempel:**
 
-<CodeSnippet language="html">
-{`
+```html
 <div role="alert" id="dynamicAlertContainer"></div>
 
 <script>
   // Når et varsel skal vises
   document.getElementById('dynamicAlertContainer').innerHTML = "<p>Kritisk oppdatering!</p>";
 </script>
-`}
-</CodeSnippet>
+```
 
 Ved å bruke en tom `alert` som kan fylles med innhold dynamisk, sikrer vi at skjermlesere oppfatter varselet så snart det fylles med tekst.
 
@@ -210,12 +207,10 @@ For kritiske varsler som må leses opp umiddelbart, bruk `role="alert"`, som sø
 
 **Eksempel:**
 
-<CodeSnippet language="html">
-{`
+```html
 <div role="alert">Kritisk feil oppstod, vennligst prøv igjen.</div>
 <div role="status">Endringen ble lagret.</div>
-`}
-</CodeSnippet>
+```
 
 Les mer på [uu-tilsynet](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152) om hvilke roller du skal bruke på ulike elementer. 
 
@@ -225,8 +220,7 @@ Når en [dialog](https://storybook.designsystemet.no/?path=/docs/komponenter-dia
 
 **Eksempel:**
 
-<CodeSnippet language="html">
-{`
+```html
 <div role="dialog" aria-labelledby="modalHeading">
   <h2 id="modalHeading" tabindex="-1">Systemvarsel</h2>
   <p>Detaljer om systemvarselet.</p>
@@ -235,8 +229,7 @@ Når en [dialog](https://storybook.designsystemet.no/?path=/docs/komponenter-dia
   // Når modalen åpnes
   document.getElementById('modalHeading').focus();
 </script>
-`}
-</CodeSnippet>
+```
 
 Dette gjør at modaltittelen kan få fokus, selv om den normalt ikke er et interaktivt element. Når modalen lukkes, bør fokuset returnere til en logisk plassering på siden. For eksempel der brukeren var før.
 

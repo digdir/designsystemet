@@ -16,29 +16,23 @@ Read the Designsystemet [README](https://github.com/digdir/designsystemet) to ge
 When importing the package make sure to specify which theme. 
 By default `digdir` is used.
 
-```tsx
-import '@digdir/designsystemet-theme/<theme>.css';
-
+```css
 // Digdir theme
-import '@digdir/designsystemet-theme';
-
-// Altinn theme
-import '@digdir/designsystemet-theme/altinn.css';
+@import url('@digdir/designsystemet-theme');
+// or 
+@import url('@digdir/designsystemet-theme/<theme>.css');
 ```
 
 ### CSS
 
-This package adds Designsystemet [css variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) to your `:root {}`.
-You only need to import this once in your application, preferably somewhere in your "root" html.
-
-All variables are prefixed with `ds`.
-
-```js
-import '@digdir/designsystemet-theme/altinn.css';
-```
+All variables are prefixed with `ds` and inside [@layer](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) `ds`.
 
 ```css
-div {
+@import url('@digdir/designsystemet-theme/altinn.css');
+
+@layer "other layers", ds;
+
+.example {
   padding: var(--ds-size-1);
 }
 ```
