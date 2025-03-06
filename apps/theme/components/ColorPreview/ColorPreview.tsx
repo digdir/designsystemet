@@ -39,7 +39,6 @@ export const ColorPreview = () => {
       <div
         style={generateColorVars(color.colors, colorScheme)}
         className={classes.card}
-        id='preview'
       >
         <Heading className={classes.title} data-size='2xs'>
           {color.name}
