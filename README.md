@@ -79,7 +79,7 @@ The `font-feature-settings` adds a tail to lowercase `L`'s.
 ```html
 <link
   rel="stylesheet"
-  href="https://altinncdn.no/fonts/inter/v4/inter.css"
+  href="https://altinncdn.no/fonts/inter/v4.1/inter.css"
 />
 ```
 
