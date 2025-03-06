@@ -96,7 +96,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en' data-color-scheme='auto'>
+    <html lang='no' data-color-scheme='auto'>
       <body>
         <div className='root'>
           <SkipLink href='#main'>Hopp til hovedinnhold</SkipLink>

@@ -6,6 +6,7 @@ import { Container } from '../';
 
 import { Bronnoysund } from '../logos/Bronnoysund';
 import { Digdir } from '../logos/Digdir';
+import { KsDigital } from '../logos/KsDigital';
 import { Mattilsynet } from '../logos/Mattilsynet';
 import { Udir } from '../logos/Udir';
 import classes from './Footer.module.css';
@@ -37,7 +38,6 @@ const LinkList = (links: LinkListItemProps[]) => {
     </ul>
   );
 };
-
 type FooterProps = {
   centerLinks: LinkListItemProps[];
   rightLinks: LinkListItemProps[];
@@ -65,6 +65,7 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
               <Bronnoysund />
               <Mattilsynet />
               <Udir className={classes.udir} />
+              <KsDigital />
             </div>
             <Button
               asChild

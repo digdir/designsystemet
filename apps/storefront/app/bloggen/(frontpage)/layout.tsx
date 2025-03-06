@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div>
+    <div id='bloggen'>
       <Banner color='red'>
         <BannerIcon>
           <PencilIcon fontSize={34} aria-hidden='true' />
