@@ -104,11 +104,6 @@ body {
     display: block;
   }
 
-  pre {
-    font-family: monospace; /* 1 */
-    font-size: 1em; /* 2 */
-  }
-
   abbr[title] {
     border-bottom: none; /* 1 */
     text-decoration: underline; /* 2 */

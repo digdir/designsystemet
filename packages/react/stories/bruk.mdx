@@ -29,30 +29,32 @@ Alle komponenter har props og typescript typer iht. underliggende element. F.eks
 
 #### Eksempel
 
-<CodeSnippet language='ts'>
-  {`
-  <Button data-attr="data" className='my-class' onClick={() => console.log('my click')}>Click me</Button>
-`}
-</CodeSnippet>
+```tsx
+<Button
+  data-attr="data"
+  className='my-class'
+  onClick={() => console.log('my click')}
+>
+  Click me
+</Button>
+```
 
 <br />
 
 Vil bli til:
 
-<CodeSnippet language='ts'>
-  {`
-  <button 
-    className='ds-btn ... my-class' 
-    onClick={() => {
-      () => {} // vår funksjon
-      rest.onClick(); // logget til konsollen kommer her
-    }}
-    data-attr="data"
-  >
-    Click me
-  </button>
-`}
-</CodeSnippet>
+```tsx
+<button 
+  className='ds-btn ... my-class' 
+  onClick={() => {
+    () => {} // vår funksjon
+    rest.onClick(); // logget til konsollen kommer her
+  }}
+  data-attr="data"
+>
+  Click me
+</button>
+```
 
 <br />
 
@@ -66,29 +68,25 @@ som ligger i en klient komponent, som `Details` er.
 
 #### I en server komponent:
 
-<CodeSnippet language='ts'>
-{`
+```tsx
 import { Details, DetailsSummary, DetailsContent } from '@digdir/designsystemet-react';
 
 <Details>
   <DetailsSummary>...</DetailsSummary>
   <DetailsContent>...</DetailsContent>
 </Details>
-`}
-</CodeSnippet>
+```
 
 #### I en klient komponent:
 
-<CodeSnippet language='ts'>
-{`
+```tsx
 import { Details } from '@digdir/designsystemet-react';
 
 <Details>
   <Details.Summary>...</Details.Summary>
   <Details.Content>...</Details.Content>
 </Details>
-`}
-</CodeSnippet>
+```
 
 ### Komponenter med `.TriggerContext`
 
@@ -114,7 +112,9 @@ Alle våre layers ligger under layer gruppen `ds`.
 Har du f.eks en css reset, så vil denne overstyre deler av det vi har gjort. Vi anbefaler å legge denne i en layer og sortere denne først.
 Dette gjør du ved å først legge reseten din i en layer, og så sortere denne layeren først:
 
-<CodeSnippet language='css'>{`@layer my-reset, ds;`}</CodeSnippet>
+```css
+@layer my-reset, ds;
+```
 
 ### Data attributter
 
@@ -139,17 +139,13 @@ Hvilken typografi som er tilknyttet `primary` eller `secondary` må defineres i 
 Dersom du skal bruke denne attributten må du huske å definere `font-family` til å bruke `--ds-font-family` CSS variabelen.
 Dette kan løses ved å f.eks bruke [attribute selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors) i CSS.
 
-<CodeSnippet language='html'>
-  {`
-  <style>
-  [data-typography='secondary'] {
-    font-family: var(--ds-font-family), monospace;
-  }
-  </style>
-  <table
-    data-typography='secondary'
-  >
-    …
-  </table>
-  `}
-</CodeSnippet>
+```html
+<style>
+[data-typography='secondary'] {
+  font-family: var(--ds-font-family), monospace;
+}
+</style>
+<table data-typography='secondary'>
+  …
+</table>
+```
