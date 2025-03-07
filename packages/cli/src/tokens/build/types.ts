@@ -46,6 +46,8 @@ export type BuildConfig = {
   build?: (sdConfigs: SDConfigForThemePermutation[], options: GetSdConfigOptions) => Promise<void>;
   /** Whether the build config is enabled. @default () => true */
   enabled?: () => boolean;
+  /** Custom log message. */
+  log?: (config: SDConfigForThemePermutation) => string;
 };
 
 export type SDConfigForThemePermutation = { permutation: ThemePermutation; config: StyleDictionaryConfig };
