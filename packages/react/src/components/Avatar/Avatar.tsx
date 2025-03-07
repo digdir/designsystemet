@@ -2,7 +2,8 @@ import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { Fragment, forwardRef } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
-import type { DefaultProps, Size } from '../../types';
+import type { GetSizes, Size } from '../../sizes';
+import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
 export type AvatarProps = MergeRight<
@@ -15,7 +16,7 @@ export type AvatarProps = MergeRight<
     /**
      * The size of the avatar.
      */
-    'data-size'?: 'xs' | Size;
+    'data-size'?: GetSizes<'xs'> | Size;
     /**
      * The shape of the avatar.
      *

@@ -2,12 +2,13 @@ import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
+import type { GetSizes } from '../../sizes';
 
 export type ParagraphProps = {
   /**
    * Changes text sizing
    */
-  'data-size'?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  'data-size'?: GetSizes<'xs' | 'sm' | 'md' | 'lg' | 'xl'>;
   /**
    *  Adjusts styling for paragraph length
    *  @default 'default'
