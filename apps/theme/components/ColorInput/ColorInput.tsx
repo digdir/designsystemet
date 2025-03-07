@@ -20,13 +20,13 @@ export const ColorInput = ({ name, color, onClick }: ColorInputProps) => {
         data-color='neutral'
         aria-label={`Endre instillinger ${name}`}
       >
-        <div className={classes.leftContent}>
-          <div
+        <span className={classes.leftContent}>
+          <span
             style={{ backgroundColor: color }}
             className={classes.color}
-          ></div>
-          <div className={classes.hex}>{color}</div>
-        </div>
+          ></span>
+          <span className={classes.hex}>{color}</span>
+        </span>
         <PencilIcon className={classes.icon} aria-hidden fontSize='1.5rem' />
       </Button>
     </div>

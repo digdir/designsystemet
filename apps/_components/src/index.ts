@@ -1,4 +1,3 @@
-export { CodeSnippet } from './CodeSnippet/CodeSnippet';
 export { Container } from './Container/Container';
 export { ClipboardButton } from './ClipboardButton/ClipboardButton';
 export { ColorModal } from './ColorModal/ColorModal';
@@ -8,3 +7,4 @@ export { Github } from './logos/Github';
 export { Slack } from './logos/Slack';
 export { Footer } from './Footer/Footer';
 export { Showcase } from './Showcase/Showcase';
+export { CodeBlock } from './CodeBlock/CodeBlock';

@@ -62,9 +62,9 @@ export const OverviewComponents = forwardRef<HTMLDivElement>(
             <img className={classes.img} src='img/city.png' alt='' />
             <div className={classes.imgText}>
               <div className={classes.tags} data-size='sm'>
-                <Tag color='brand1'>Sport</Tag>
-                <Tag color='brand2'>Nyheter</Tag>
-                <Tag color='brand3'>Innenriks</Tag>
+                <Tag data-color='brand1'>Sport</Tag>
+                <Tag data-color='brand2'>Nyheter</Tag>
+                <Tag data-color='brand3'>Innenriks</Tag>
               </div>
               <Heading data-size='2xs' className={classes.imgTitle}>
                 Reiste alene til storbyen

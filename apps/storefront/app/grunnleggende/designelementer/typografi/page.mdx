@@ -1,7 +1,6 @@
 import { TokenIcon } from '@navikt/aksel-icons';
 
 import { MenuPageLayout } from '@layouts';
-import { CodeSnippet } from '@repo/components';
 import { Image } from '@components';
 
 export const metadata = {
@@ -46,19 +45,21 @@ Fonten er tilgjengelig i Figma uten at du trenger å laste ned og installere den
 
 For hosting kan Altinn CDN benyttes:
 
-<CodeSnippet language='html'>
-  {`<link
+```html
+<link
   rel='stylesheet'
-  href='https://altinncdn.no/fonts/inter/v4/inter.css'
-/>`}
-</CodeSnippet>
+  href='https://altinncdn.no/fonts/inter/v4.1/inter.css'
+  integrity="sha384-OcHzc/By/OPw9uJREawUCjP2inbOGKtKb4A/I2iXxmknUfog2H8Adx71tWVZRscD"
+  crossorigin="anonymous"
+/>
+```
 
 For å aktivere lowercase l with tail, legg til følgende i din CSS:
 
-<CodeSnippet language='css'>
-  {`font-family: 'Inter', sans-serif;
-font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */`}
-</CodeSnippet>
+```css
+font-family: 'Inter', sans-serif;
+font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */
+```
 
 ## Tekststørrelse
 

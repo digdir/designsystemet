@@ -10,7 +10,7 @@ import {
 } from '@digdir/designsystemet-react';
 import { cliOptions } from '@digdir/designsystemet/tokens';
 import { InformationSquareIcon, StarIcon } from '@navikt/aksel-icons';
-import { CodeSnippet } from '@repo/components';
+import { CodeBlock } from '@repo/components';
 import { useRef, useState } from 'react';
 
 import type { Color } from '@digdir/designsystemet/color';
@@ -40,12 +40,12 @@ export const TokenModal = () => {
     return str;
   };
 
-  const packageCommand = `@digdir/designsystemet${isProduction() ? '' : '@next'}`;
+  const packageWithTag = `@digdir/designsystemet${isProduction() ? '' : '@next'}`;
 
-  const buildSnippet = `npx ${packageCommand} tokens build`;
+  const buildSnippet = `npx ${packageWithTag} tokens build`;
 
   const cliSnippet = [
-    `npx ${packageCommand} tokens create`,
+    `npx ${packageWithTag} tokens create`,
     `--${colorCliOptions.main} ${setCliColors(colors.main).trimEnd()}`,
     `--${colorCliOptions.neutral} "${getBaseDefault(colors.neutral[0]?.colors.light)?.hex}"`,
     `${colors.support.length > 0 ? `--${colorCliOptions.support} ${setCliColors(colors.support).trimEnd()}` : ''}`,
@@ -139,7 +139,7 @@ export const TokenModal = () => {
                 </Paragraph>
               </div>
               <div className={classes.snippet}>
-                <CodeSnippet language='bash'>{cliSnippet}</CodeSnippet>
+                <CodeBlock language='bash'>{cliSnippet}</CodeBlock>
               </div>
               <div
                 className={classes.step}
@@ -153,7 +153,7 @@ export const TokenModal = () => {
                 </Paragraph>
               </div>
               <div className={classes.snippet}>
-                <CodeSnippet language='bash'>{buildSnippet}</CodeSnippet>
+                <CodeBlock language='bash'>{buildSnippet}</CodeBlock>
               </div>
 
               <Divider />

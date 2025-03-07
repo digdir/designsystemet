@@ -22,6 +22,11 @@ div[data-color-scheme='dark'][data-theme='two'] .main {
   margin: 0 auto;
   text-align: center;
   margin-top: var(--ds-size-8);
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    padding: 0 var(--ds-size-6);
+  }
 }
 
 .heading {
@@ -38,6 +43,10 @@ div[data-color-scheme='dark'][data-theme='two'] .main {
   align-items: center;
   justify-content: center;
   margin-top: var(--ds-size-7);
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 
 .headerText {
