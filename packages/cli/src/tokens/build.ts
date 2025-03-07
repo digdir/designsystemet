@@ -7,10 +7,15 @@ import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
 
 import { configs, getConfigsForThemeDimensions } from './build/configs.js';
-import { type BuildConfig, type ThemePermutation, colorCategories } from './build/types.js';
+import {
+  type BuildConfig,
+  type SDConfigForThemePermutation,
+  type ThemePermutation,
+  colorCategories,
+} from './build/types.js';
 import { makeEntryFile } from './build/utils/entryfile.js';
 import { type ProcessedThemeObject, processThemeObject } from './build/utils/getMultidimensionalThemes.js';
-import { cleanDir, copyFile, writeFile } from './utils.js';
+import { cleanDir, writeFile } from './utils.js';
 
 type Options = {
   /** Design tokens path */
@@ -41,6 +46,31 @@ const buildConfigs = {
   'color-scheme': { getConfig: configs.colorSchemeVariables, dimensions: ['color-scheme'] },
   'main-color': { getConfig: configs.mainColorVariables, dimensions: ['main-color'] },
   'support-color': { getConfig: configs.supportColorVariables, dimensions: ['support-color'] },
+  'neutral-color': {
+    getConfig: configs.neutralColorVariables,
+    dimensions: ['semantic'],
+    log: ({ permutation: { theme } }) => `${theme} - neutral`,
+  },
+  'success-color': {
+    getConfig: configs.successColorVariables,
+    dimensions: ['semantic'],
+    log: ({ permutation: { theme } }) => `${theme} - success`,
+  },
+  'danger-color': {
+    getConfig: configs.dangerColorVariables,
+    dimensions: ['semantic'],
+    log: ({ permutation: { theme } }) => `${theme} - danger`,
+  },
+  'warning-color': {
+    getConfig: configs.warningColorVariables,
+    dimensions: ['semantic'],
+    log: ({ permutation: { theme } }) => `${theme} - warning`,
+  },
+  'info-color': {
+    getConfig: configs.infoColorVariables,
+    dimensions: ['semantic'],
+    log: ({ permutation: { theme } }) => `${theme} - info`,
+  },
   semantic: { getConfig: configs.semanticVariables, dimensions: ['semantic'] },
   storefront: {
     name: 'Storefront preview tokens',
@@ -50,18 +80,13 @@ const buildConfigs = {
     enabled: () => buildOptions?.preview ?? false,
   },
   entryFiles: {
-    name: 'CSS entry files',
+    name: 'Concatenated CSS file',
     getConfig: configs.semanticVariables,
     dimensions: ['semantic'],
+    log: ({ permutation: { theme } }: SDConfigForThemePermutation) => `${theme}.css`,
     build: async (sdConfigs, { outPath, dry }) => {
       await Promise.all(
         sdConfigs.map(async ({ permutation: { theme } }) => {
-          console.log(`👷 ${theme}.css`);
-
-          const builtinColorsFilename = 'builtin-colors.css';
-          const builtinColors = path.resolve(import.meta.dirname, 'build', builtinColorsFilename);
-          await copyFile(builtinColors, path.resolve(outPath, theme, builtinColorsFilename), dry);
-
           return makeEntryFile({ theme, outPath, buildPath: path.resolve(outPath, theme), dry });
         }),
       );
@@ -134,10 +159,12 @@ export async function buildTokens(options: Options): Promise<void> {
         }
 
         await Promise.all(
-          sdConfigs.map(async ({ config, permutation }) => {
+          sdConfigs.map(async (sdConfig) => {
+            const { config, permutation } = sdConfig;
             const modes: Array<keyof ThemePermutation> = ['theme', ...buildConfig.dimensions];
             const modeMessage = modes.map((x) => permutation[x]).join(' - ');
-            console.log(modeMessage);
+            const logMessage = R.isNil(buildConfig.log) ? modeMessage : buildConfig?.log(sdConfig);
+            console.log(logMessage);
 
             if (!dry) {
               return (await sd.extend(config)).buildAllPlatforms();
