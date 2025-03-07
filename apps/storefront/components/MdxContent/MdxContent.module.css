@@ -125,7 +125,9 @@
     box-shadow: var(--ds-shadow-md);
   }
 
-  & > p > code {
+  & > p > code,
+  & li > code,
+  & h2 > code {
     padding: 0.2em 0.5em;
     margin: 1px;
     font-size: 0.9em;

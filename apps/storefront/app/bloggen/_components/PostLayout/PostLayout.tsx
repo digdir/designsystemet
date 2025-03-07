@@ -76,11 +76,11 @@ function PostLayout({
                 Vi vil gjerne ha historier om hvordan Designsystemet har blitt
                 brukt! Ta kontakt med oss i{' '}
                 <Link href='https://designsystemet.no/slack' target='_blank'>
-                  Slack
+                  Slack (åpnes i ny fane)
                 </Link>{' '}
                 eller{' '}
                 <Link href='mailto:designsystem@digdir.no' target='_blank'>
-                  send oss en epost.
+                  send oss en epost (åpnes i ny fane).
                 </Link>{' '}
               </Paragraph>
             </div>
