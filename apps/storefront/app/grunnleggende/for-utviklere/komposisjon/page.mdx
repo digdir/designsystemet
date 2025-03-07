@@ -82,7 +82,7 @@ Dersom ein av event handlerane er avhengig av `event.defaultPrevented`, så må 
   asChild
   onClick={(event) => {
     if (!event.defaultPrevented)
-      console.log('Not logged because default is prevented.');
+      console.log('Ikkje logget til konsoll fordi default er prevented.');
   }}
 >
   <Link onClick={(e) => e.preventDefault()}>Di lenke</Link>

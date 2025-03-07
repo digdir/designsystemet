@@ -1,7 +1,7 @@
 'use client';
-import { Button } from '@digdir/designsystemet-react';
+import { Button, SkipLink } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { CodeBlock as ReactCodeBlock } from 'react-code-block';
 import classes from './CodeBlock.module.css';
 
@@ -46,22 +46,27 @@ export const CodeBlock = ({
   className,
   language = 'text',
 }: CodeBlockProps) => {
+  const randId = useId();
+
   return (
-    <ReactCodeBlock code={children} language={language}>
-      <div className={classes.codeBlockWrapper}>
-        <ReactCodeBlock.Code
-          data-color-scheme='dark'
-          className={cl(classes.codeBlock, className)}
-        >
-          <ReactCodeBlock.LineContent>
-            <ReactCodeBlock.Token />
-          </ReactCodeBlock.LineContent>
-        </ReactCodeBlock.Code>
-        <div data-color-scheme='dark' className={classes.toolbar}>
-          <CopyButton text={children} />
+    <>
+      <SkipLink href={`#${randId}`}>Hopp over kodeblokk</SkipLink>
+      <ReactCodeBlock code={children} language={language}>
+        <div className={classes.codeBlockWrapper}>
+          <ReactCodeBlock.Code
+            data-color-scheme='dark'
+            className={cl(classes.codeBlock, className)}
+          >
+            <ReactCodeBlock.LineContent>
+              <ReactCodeBlock.Token />
+            </ReactCodeBlock.LineContent>
+          </ReactCodeBlock.Code>
+          <div data-color-scheme='dark' className={classes.toolbar} id={randId}>
+            <CopyButton text={children} />
+          </div>
         </div>
-      </div>
-    </ReactCodeBlock>
+      </ReactCodeBlock>
+    </>
   );
 };
 
