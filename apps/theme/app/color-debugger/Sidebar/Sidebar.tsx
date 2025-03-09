@@ -1,9 +1,4 @@
 import { Field, Heading, Select } from '@digdir/designsystemet-react';
-
-import {
-  type ColorNumber,
-  getColorInfoFromPosition,
-} from '@digdir/designsystemet/color';
 import { DoubleInput } from '../DoubleInput/DoubleInput';
 import { RangeBar } from '../RangeBar/RangeBar';
 import { useDebugStore } from '../debugStore';
@@ -11,7 +6,9 @@ import type { InterpolationMode } from '../logic/theme';
 import classes from './Sidebar.module.css';
 
 export const Sidebar = () => {
-  const luminance = useDebugStore((state) => state.luminance);
+  const colorMetadata = useDebugStore((state) => state.colorMetadata);
+  const setLightLuminance = useDebugStore((state) => state.setLightLuminance);
+  const setDarkLuminance = useDebugStore((state) => state.setDarkLuminance);
   const themeSettings = useDebugStore((state) => state.themeSettings);
   const setThemeSettings = useDebugStore((state) => state.setThemeSettings);
 
@@ -226,7 +223,7 @@ export const Sidebar = () => {
           Luminance values
         </Heading>
         <div className={classes.group}>
-          {Object.keys(luminance.light).map((key, index) => {
+          {Object.keys(colorMetadata).map((key, index) => {
             if (
               index === 11 ||
               index === 12 ||
@@ -239,31 +236,14 @@ export const Sidebar = () => {
             return (
               <div key={key}>
                 <DoubleInput
-                  label={
-                    getColorInfoFromPosition((index + 1) as ColorNumber)
-                      .displayName
-                  }
-                  valueOne={luminance.light[
-                    key as keyof typeof luminance.light
-                  ].toString()}
-                  valueTwo={luminance.dark[
-                    key as keyof typeof luminance.light
-                  ].toString()}
+                  label={'f'}
+                  valueOne={colorMetadata[key].luminance.light[6].toString()}
+                  valueTwo={colorMetadata[key].luminance.dark[6].toString()}
                   setValueOne={(value) => {
-                    const newLuminance = { ...luminance };
-                    newLuminance.light[key as keyof typeof luminance.light] =
-                      parseFloat(value);
-                    useDebugStore.setState({
-                      luminance: newLuminance,
-                    });
+                    setLightLuminance(parseFloat(value), 'background-default');
                   }}
                   setValueTwo={(value) => {
-                    const newLuminance = { ...luminance };
-                    newLuminance.dark[key as keyof typeof luminance.light] =
-                      parseFloat(value);
-                    useDebugStore.setState({
-                      luminance: newLuminance,
-                    });
+                    setDarkLuminance(parseFloat(value), 'background-default');
                   }}
                 />
               </div>

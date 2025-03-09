@@ -1,7 +1,7 @@
 import {
   type ThemeInfo,
+  colorMetadata,
   generateColorSchemes,
-  luminance,
 } from '@digdir/designsystemet/color';
 import { ColorService, type IColor } from 'react-color-palette';
 import { create } from 'zustand';
@@ -9,7 +9,7 @@ import { subscribeWithSelector } from 'zustand/middleware';
 import type { InterpolationMode } from './logic/theme';
 
 export type BaseBorderRadius = number;
-export type LuminanceType = typeof luminance;
+export type ColorMetadataType = typeof colorMetadata;
 export type ThemeSettingsType = {
   general: {
     testMode: 'debug' | 'production';
@@ -46,12 +46,18 @@ export type PageType =
 type ColorStore = {
   themeSettings: ThemeSettingsType;
   setThemeSettings: (themeSettings: ThemeSettingsType) => void;
-  referenceLuminance: LuminanceType;
-  luminance: LuminanceType;
+  referenceColorMetadata: ColorMetadataType;
+  colorMetadata: ColorMetadataType;
   pageType: PageType;
   setPageType: (pageType: PageType) => void;
-  setLightLuminance: (luminance: LuminanceType) => void;
-  setDarkLuminance: (luminance: LuminanceType) => void;
+  setLightLuminance: (
+    luminance: number,
+    colorName: keyof ColorMetadataType,
+  ) => void;
+  setDarkLuminance: (
+    luminance: number,
+    colorName: keyof ColorMetadataType,
+  ) => void;
   colorScales: ThemeInfo[][];
   setColorScales: (colorScales: ThemeInfo[][]) => void;
   flatColorScales: {
@@ -80,6 +86,21 @@ type ColorStore = {
   }) => void;
 };
 
+interface StatusColors {
+  success: IColor;
+  warning: IColor;
+  info: IColor;
+  error: IColor;
+}
+
+interface FlatColorScales {
+  [key: string]: {
+    low: ThemeInfo[];
+    medium: ThemeInfo[];
+    high: ThemeInfo[];
+  };
+}
+
 export const useDebugStore = create(
   subscribeWithSelector<ColorStore>((set) => ({
     statusColors: {
@@ -87,8 +108,8 @@ export const useDebugStore = create(
       warning: ColorService.convert('hex', '#ea9b1b'),
       info: ColorService.convert('hex', '#0A71C0'),
       error: ColorService.convert('hex', '#C01B1B'),
-    },
-    setStatusColors: (statusColors) => set({ statusColors }),
+    } as StatusColors,
+    setStatusColors: (statusColors: StatusColors) => set({ statusColors }),
     themeSettings: {
       general: {
         testMode: 'debug',
@@ -112,17 +133,46 @@ export const useDebugStore = create(
       },
     },
     pageType: 'main',
-    setPageType: (pageType) => set({ pageType }),
-    setThemeSettings: (themeSettings) => set({ themeSettings }),
-    luminance: luminance,
-    referenceLuminance: luminance,
+    setPageType: (pageType: PageType) => set({ pageType }),
+    setThemeSettings: (themeSettings: ThemeSettingsType) =>
+      set({ themeSettings }),
+    referenceColorMetadata: colorMetadata,
+    colorMetadata: colorMetadata,
     colorScales: [],
     colorScale: generateColorSchemes('#008000'),
-    setColorScales: (colorScales) => set({ colorScales }),
-    setColorScale: (colorScale) => set({ colorScale }),
-    setLightLuminance: (luminance) => set({ luminance }),
-    setDarkLuminance: (luminance) => set({ luminance }),
-    flatColorScales: {},
-    setFlatColorScales: (flatColorScales) => set({ flatColorScales }),
+    setColorScales: (colorScales: ThemeInfo[][]) => set({ colorScales }),
+    setColorScale: (colorScale: ThemeInfo) => set({ colorScale }),
+    setLightLuminance: (
+      luminance: number,
+      colorName: keyof ColorMetadataType,
+    ) =>
+      set((state) => ({
+        colorMetadata: {
+          ...state.colorMetadata,
+          background: {
+            ...state.colorMetadata[colorName],
+            luminance: {
+              ...state.colorMetadata[colorName].luminance,
+              light: luminance,
+            },
+          },
+        },
+      })),
+    setDarkLuminance: (luminance: number, colorName: keyof ColorMetadataType) =>
+      set((state) => ({
+        colorMetadata: {
+          ...state.colorMetadata,
+          [colorName]: {
+            ...state.colorMetadata[colorName],
+            luminance: {
+              ...state.colorMetadata[colorName].luminance,
+              dark: luminance,
+            },
+          },
+        },
+      })),
+    flatColorScales: {} as FlatColorScales,
+    setFlatColorScales: (flatColorScales: FlatColorScales) =>
+      set({ flatColorScales }),
   })),
 );
