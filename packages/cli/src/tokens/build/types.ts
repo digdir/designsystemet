@@ -8,6 +8,8 @@ export const colorCategories = {
 
 export type ColorCategories = keyof typeof colorCategories;
 
+export type BuiltInColors = 'neutral' | 'success' | 'warning' | 'danger' | 'info';
+
 /**
  * A multi-dimensional theme is a concrete permutation of the possible theme dimensions
  */
@@ -44,6 +46,8 @@ export type BuildConfig = {
   build?: (sdConfigs: SDConfigForThemePermutation[], options: GetSdConfigOptions) => Promise<void>;
   /** Whether the build config is enabled. @default () => true */
   enabled?: () => boolean;
+  /** Custom log message. */
+  log?: (config: SDConfigForThemePermutation) => string;
 };
 
 export type SDConfigForThemePermutation = { permutation: ThemePermutation; config: StyleDictionaryConfig };

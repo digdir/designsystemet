@@ -11,9 +11,11 @@ import type { CssColor } from '../src/colors/types.js';
 import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
 import { cliOptions, createTokens } from '../src/tokens/create.js';
+import type { Theme } from '../src/tokens/types.js';
+import { cleanDir } from '../src/tokens/utils.js';
 import { writeTokens } from '../src/tokens/write.js';
 import { type CombinedConfigSchema, combinedConfigSchema, configFileSchema, mapPathToOptionName } from './config.js';
-import { type OptionGetter, getDefaultOrExplicitOption, getExplicitOptionOnly } from './options.js';
+import { type OptionGetter, getCliOption, getDefaultCliOption, getSuppliedCliOption } from './options.js';
 
 program.name('designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
 
@@ -65,7 +67,7 @@ function makeTokenCommands() {
     )
     .option(`--${cliOptions.clean} [boolean]`, 'Clean output directory before creating tokens', parseBoolean, false)
     .option('--dry [boolean]', `Dry run for created ${chalk.blue('design-tokens')}`, parseBoolean, false)
-    .option(`-f, --${cliOptions.theme.typography.fontFamily} <string>`, `Font family`, DEFAULT_FONT)
+    .option(`-f, --${cliOptions.theme.typography.fontFamily} <string>`, `Font family (experimental)`, DEFAULT_FONT)
     .option(
       `-b, --${cliOptions.theme.borderRadius} <number>`,
       `Unitless base border-radius in px`,
@@ -133,16 +135,23 @@ function makeTokenCommands() {
         });
 
       const unvalidatedConfig = noUndefined({
-        outDir: propsFromJson?.outDir ?? getDefaultOrExplicitOption(cmd, 'outDir'),
-        clean: propsFromJson?.clean ?? getDefaultOrExplicitOption(cmd, 'clean'),
+        outDir: propsFromJson?.outDir ?? getCliOption(cmd, 'outDir'),
+        clean: propsFromJson?.clean ?? getCliOption(cmd, 'clean'),
         themes: propsFromJson?.themes
-          ? // For each theme specified in the JSON config, we override the config values
-            // with the explicitly set options from the CLI.
-            R.map((theme) => R.mergeDeepRight(theme, getThemeOptions(getExplicitOptionOnly)), propsFromJson.themes)
+          ? R.map((jsonThemeValues) => {
+              // For each theme specified in the JSON config, we resolve the option values in the following order:
+              // - default value
+              // - config value
+              // - CLI value
+              // With later values overriding earlier values
+              const defaultThemeValues = getThemeOptions(getDefaultCliOption);
+              const cliThemeValues = getThemeOptions(getSuppliedCliOption);
+              return R.mergeDeepRight(defaultThemeValues, R.mergeDeepRight(jsonThemeValues, cliThemeValues));
+            }, propsFromJson.themes)
           : // If there are no themes specified in the JSON config, we use both explicit
             // and default theme options from the CLI.
             {
-              [opts.theme]: getThemeOptions(getDefaultOrExplicitOption),
+              [opts.theme]: getThemeOptions(getCliOption),
             },
       });
 
@@ -162,12 +171,20 @@ function makeTokenCommands() {
       console.log(`Creating tokens with configuration ${chalk.green(JSON.stringify(config, null, 2))}`);
 
       /*
+       * Clean the output directory if requested. Only clean once for multiple themes
+       */
+      if (config.clean) {
+        await cleanDir(config.outDir, opts.dry);
+      }
+      /*
        * Create and write tokens for each theme
        */
       for (const [name, themeWithoutName] of Object.entries(config.themes)) {
-        const theme = { name, ...themeWithoutName };
+        // Casting as missing properties should be validated by `getDefaultOrExplicitOption` to default values
+        const theme = { name, ...themeWithoutName } as Theme;
+
         const tokens = createTokens(theme);
-        await writeTokens({ outDir: config.outDir, tokens, theme, dry: opts.dry, clean: config.clean });
+        await writeTokens({ outDir: config.outDir, tokens, theme, dry: opts.dry });
       }
     });
 

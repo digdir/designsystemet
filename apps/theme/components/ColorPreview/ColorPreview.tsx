@@ -1,9 +1,4 @@
 import {
-  type ColorInfo,
-  type ColorNumber,
-  getColorInfoFromPosition,
-} from '@digdir/designsystemet';
-import {
   Button,
   Checkbox,
   Heading,
@@ -13,7 +8,8 @@ import {
 } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { useEffect, useState } from 'react';
-import { useThemeStore } from '../../store';
+import { type ColorTheme, useThemeStore } from '../../store';
+import { generateColorVars } from '../../utils/generateColorVars';
 import listClasses from './Card2.module.css';
 import classes from './ColorPreview.module.css';
 
@@ -22,45 +18,10 @@ type ViewType = 'list' | 'grid';
 export const ColorPreview = () => {
   const colors = useThemeStore((state) => state.colors);
   const [view, setView] = useState<ViewType>('grid');
-  const appearance = useThemeStore((state) => state.appearance);
+  const colorScheme = useThemeStore((state) => state.colorScheme);
 
   type CardProps = {
-    color: {
-      name: string;
-      colors: {
-        light: ColorInfo[];
-        dark: ColorInfo[];
-      };
-    };
-  };
-
-  const setStyle = (colors: {
-    light: ColorInfo[];
-    dark: ColorInfo[];
-  }) => {
-    const style = {} as Record<string, string>;
-
-    let lightColors = colors.light;
-
-    if (appearance === 'dark') {
-      lightColors = colors.dark;
-    }
-
-    for (let i = 0; i < lightColors.length; i++) {
-      const number = (i + 1) as ColorNumber;
-      style[
-        `--ds-color-accent-${getColorInfoFromPosition(number)
-          .displayName.replace(/\s+/g, '-')
-          .toLowerCase()}`
-      ] = lightColors[i].hex;
-      style[
-        `--ds-color-${getColorInfoFromPosition(number)
-          .displayName.replace(/\s+/g, '-')
-          .toLowerCase()}`
-      ] = lightColors[i].hex;
-    }
-
-    return style;
+    color: ColorTheme;
   };
 
   const CardWrapper = ({ color }: CardProps) => {
@@ -75,7 +36,10 @@ export const ColorPreview = () => {
 
     const [valueOne, setValueOne] = useState(true);
     return (
-      <div style={setStyle(color.colors)} className={classes.card} id='preview'>
+      <div
+        style={generateColorVars(color.colors, colorScheme)}
+        className={classes.card}
+      >
         <Heading className={classes.title} data-size='2xs'>
           {color.name}
         </Heading>
@@ -102,12 +66,13 @@ export const ColorPreview = () => {
       </div>
     );
   };
+
   const VerticalCard = ({ color }: CardProps) => {
     const [isChecked, setIsChecked] = useState(true);
     const [isSwitch, setIsSwitch] = useState(true);
     return (
       <div
-        style={setStyle(color.colors)}
+        style={generateColorVars(color.colors, colorScheme)}
         className={cl(classes.card, listClasses.card)}
       >
         <div className={listClasses.text}>
@@ -148,22 +113,24 @@ export const ColorPreview = () => {
   return (
     <div className='panelContainer'>
       <div className='panelLeft'>
-        <Heading data-size='xs'>Se fargene dine i bruk</Heading>
-        <Paragraph data-size='sm'>
-          Hver farge som blir valgt med verktøyet får sitt eget kort i seksjonen
-          til høyre slik at du kan se hvordan fargene harmonerer sammen.
-        </Paragraph>
-        <Paragraph data-size='sm'>
-          Merk at kontrastfargen inne i knappen endrer seg fra hvit til svart,
-          avhengig av om den valgte fargen er lys eller mørk for å oppnå best
-          mulig kontrast.
-        </Paragraph>
+        <div className='panelTop'>
+          <Heading data-size='xs'>Se fargene dine i bruk</Heading>
+          <Paragraph data-size='sm'>
+            Hver farge som blir valgt med verktøyet får sitt eget kort i
+            seksjonen til høyre slik at du kan se hvordan fargene harmonerer
+            sammen.
+          </Paragraph>
+          <Paragraph data-size='sm'>
+            Merk at kontrastfargen inne i knappen endrer seg fra hvit til svart,
+            avhengig av om den valgte fargen er lys eller mørk for å oppnå best
+            mulig kontrast.
+          </Paragraph>
+        </div>
         <div className='panelBottom'>
           <div className={classes.label}>Visning:</div>
           <ToggleGroup
             data-size='sm'
             defaultValue='grid'
-            name='toggle-group-nuts'
             onChange={(value) => setView(value as ViewType)}
           >
             <ToggleGroup.Item value='grid'>Grid</ToggleGroup.Item>
@@ -171,7 +138,12 @@ export const ColorPreview = () => {
           </ToggleGroup>
         </div>
       </div>
-      <div className={cl('panelRight', view === 'grid' && classes.grid)}>
+      <div
+        className={cl(
+          'panelRight',
+          view === 'grid' ? classes.grid : classes.list,
+        )}
+      >
         {colors.main.map((color, index) => (
           <CardWrapper key={index} color={color} />
         ))}

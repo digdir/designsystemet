@@ -1,0 +1,118 @@
+.ds-dialog {
+  --dsc-dialog-backdrop-background: rgb(0 0 0 / 0.5);
+  --dsc-dialog-background: var(--ds-color-neutral-surface-default);
+  --dsc-dialog-icon-spacing: var(--ds-size-3);
+  --dsc-dialog-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' fill='none' viewBox='0 0 24 24' focusable='false' role='img'%3E%3Cpath fill='currentColor' d='M6.53 5.47a.75.75 0 0 0-1.06 1.06L10.94 12l-5.47 5.47a.75.75 0 1 0 1.06 1.06L12 13.06l5.47 5.47a.75.75 0 1 0 1.06-1.06L13.06 12l5.47-5.47a.75.75 0 0 0-1.06-1.06L12 10.94z'%3E%3C/path%3E%3C/svg%3E");
+  --dsc-dialog-color: var(--ds-color-neutral-text-default);
+  --dsc-dialog-divider-border-width: var(--ds-border-width-default);
+  --dsc-dialog-divider-border-style: solid;
+  --dsc-dialog-divider-border-color: var(--ds-color-neutral-border-subtle);
+  --dsc-dialog-border-width: var(--ds-border-width-default);
+  --dsc-dialog-border-style: solid;
+  --dsc-dialog-border-color: var(--ds-color-neutral-border-subtle);
+  --dsc-dialog-max-height: 80vh;
+  --dsc-dialog-max-width: 40rem;
+  --dsc-dialog-spacing: var(--ds-size-6);
+
+  /* Internal */
+  --_dsc-dialog-icon-top-right-margin: calc(var(--dsc-dialog-spacing) * -1 + var(--dsc-dialog-icon-spacing));
+
+  /* Center with top+left+translate to support placement inside display: flex */
+  animation: fade-in .2s forwards;
+  background: var(--dsc-dialog-background);
+  border-color: var(--dsc-dialog-border-color);
+  border-radius: var(--ds-border-radius-lg);
+  border-style: var(--dsc-dialog-border-style);
+  border-width: var(--dsc-dialog-border-width);
+  bottom: auto;
+  box-shadow: var(--ds-shadow-xl);
+  box-sizing: border-box;
+  color: var(--dsc-dialog-color);
+  left: 50%;
+  margin: 0;
+  max-height: var(--dsc-dialog-max-height);
+  max-width: var(--dsc-dialog-max-width);
+  overflow: auto;
+  padding: var(--dsc-dialog-spacing);
+  position: fixed;
+  right: auto;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+
+  &::backdrop {
+    animation: fade-in 300ms ease-in-out;
+    /* we include a fallback color because ::backdrop didn't inherit
+       custom properties in Chrome until version 122 (mid-2024) */
+    background: var(--dsc-dialog-backdrop-background, rgb(0 0 0 / 0.5));
+  }
+
+  &[open] {
+    animation: slide-in 300ms ease-in-out, fade-in 300ms ease-in-out;
+  }
+
+  &:has(> .ds-dialog__block) {
+    --_dsc-dialog-icon-top-right-margin: var(--dsc-dialog-icon-spacing);
+
+    padding: 0; /* Let dialog.Block own the padding */
+  }
+
+  @media (max-width: 40rem) {
+    min-width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &[open],
+    &::backdrop {
+      animation: none;
+    }
+  }
+
+  /* Close button */
+  & > form[method='dialog']:first-child > button:only-child {
+    float: right;
+    margin: var(--_dsc-dialog-icon-top-right-margin) var(--_dsc-dialog-icon-top-right-margin) var(--dsc-dialog-icon-spacing) var(--dsc-dialog-icon-spacing);
+    color: inherit;
+
+    &::before {
+      content: '';
+      background: currentcolor;
+      height: var(--ds-size-6);
+      width: var(--ds-size-6);
+      mask: center / contain no-repeat var(--dsc-dialog-icon-url);
+
+      @media (forced-colors: active) {
+        background: ButtonText;
+      }
+    }
+  }
+}
+
+.ds-dialog__block {
+  padding: var(--dsc-dialog-spacing);
+
+  & + & {
+    border-top-width: var(--dsc-dialog-divider-border-width);
+    border-top-style: var(--dsc-dialog-divider-border-style);
+    border-top-color: var(--dsc-dialog-divider-border-color);
+  }
+}
+
+/* Prevent scroll when open */
+body:has(.ds-dialog:modal) {
+  overflow: hidden;
+}
+
+@keyframes slide-in {
+  from {
+    translate: 0 3rem;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}

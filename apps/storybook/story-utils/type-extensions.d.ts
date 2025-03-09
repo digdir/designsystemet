@@ -62,7 +62,7 @@ declare module '@storybook/types' {
      */
     chromatic?: {
       /** Disable visual snapshots at the component or story level */
-      disableSnapshot?: true;
+      disableSnapshot?: boolean;
       /**
        * By default, CSS animations are paused at the end of their animation cycle
        * when tests are run in Chromatic. Setting this to false will pause animations

@@ -58,7 +58,11 @@ const BannerIcon = ({ className, ...props }: BanneIconProps) => {
   const { color } = useContext(BannerContext);
 
   return (
-    <div className={cl(classes.icon, classes[color], className)} {...props} />
+    <div
+      className={cl(classes.icon, classes[color], className)}
+      aria-hidden='true'
+      {...props}
+    />
   );
 };
 
@@ -90,6 +94,7 @@ const BannerLogoSvg = () => {
       height='361'
       viewBox='0 0 361 361'
       fill='none'
+      aria-hidden='true'
     >
       <path
         fillRule='evenodd'

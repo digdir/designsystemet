@@ -1,0 +1,20 @@
+name: Check changeset
+on:
+  workflow_dispatch:
+  # pull_request:
+  #   paths:
+  #     - 'packages/cli/**'
+  #     - 'packages/css/**'
+  #     - 'packages/react/**'
+  #     - 'packages/theme/**'
+jobs:
+  checks:
+    name: Check if changeset is present
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/gh-setup
+      - name: Check if changeset status
+        run: yarn changeset status --since=${{ github.event.pull_request.base.ref}}

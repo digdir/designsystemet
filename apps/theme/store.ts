@@ -1,5 +1,5 @@
 import {
-  type ColorInfo,
+  type Color,
   type ColorScheme,
   type ThemeInfo,
   generateColorSchemes,
@@ -34,12 +34,12 @@ type ColorStore = {
   ) => void;
   resetColors: () => void;
   removeColor: (index: number, type: 'main' | 'neutral' | 'support') => void;
-  selectedColor: { color: ColorInfo; name: string };
-  setSelectedColor: (color: ColorInfo, name: string) => void;
+  selectedColor: { color: Color; name: string };
+  setSelectedColor: (color: Color, name: string) => void;
   baseBorderRadius: BaseBorderRadius;
   setBaseBorderRadius: (radius: BaseBorderRadius) => void;
-  appearance: ColorScheme;
-  setAppearance: (appearance: ColorScheme) => void;
+  colorScheme: ColorScheme;
+  setColorScheme: (colorScheme: ColorScheme) => void;
   themeTab: 'overview' | 'colorsystem';
   setThemeTab: (tab: 'overview' | 'colorsystem') => void;
 };
@@ -51,22 +51,30 @@ export const useThemeStore = create(
     selectedColor: {
       color: {
         hex: '#ffffff',
-        position: 1,
-        name: 'Default',
+        number: 1,
+        name: 'background-default',
         displayName: 'Default',
         group: 'neutral',
+        description: '',
+        luminance: {
+          light: 0,
+          dark: 0,
+          contrast: 0,
+        },
       },
       name: 'Default',
     },
     baseBorderRadius: 4,
-    appearance: 'light',
+    colorScheme: 'light',
     colors: {
-      main: [{ name: 'accent', colors: generateColorSchemes('#0062BA') }],
+      main: [
+        { name: 'primary', colors: generateColorSchemes('#0062BA') },
+        { name: 'accent', colors: generateColorSchemes('#1E98F5') },
+      ],
       neutral: [{ name: 'neutral', colors: generateColorSchemes('#1E2B3C') }],
       support: [
-        { name: 'brand1', colors: generateColorSchemes('#F45F63') },
-        { name: 'brand2', colors: generateColorSchemes('#E5AA20') },
-        { name: 'brand3', colors: generateColorSchemes('#1E98F5') },
+        { name: 'extra1', colors: generateColorSchemes('#F45F63') },
+        { name: 'extra2', colors: generateColorSchemes('#E5AA20') },
       ],
     },
     themeTab: 'overview',
@@ -91,7 +99,7 @@ export const useThemeStore = create(
         const updatedColors = state.colors[type].filter((_, i) => i !== index);
         return { colors: { ...state.colors, [type]: updatedColors } };
       }),
-    setAppearance: (appearance) => set({ appearance: appearance }),
+    setColorScheme: (colorScheme) => set({ colorScheme }),
     setBaseBorderRadius: (radius) => set({ baseBorderRadius: radius }),
     setSelectedColor: (color, name) =>
       set({ selectedColor: { color: color, name: name } }),

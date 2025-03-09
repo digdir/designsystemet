@@ -1,0 +1,59 @@
+{
+  "$schema": "./dist/config.schema.json",
+  "outDir": "./internal/design-tokens",
+  "clean": true,
+  "themes": {
+    "digdir": {
+      "colors": {
+        "main": {
+          "accent": "#0062BA"
+        },
+        "support": {
+          "brand1": "#F45F63",
+          "brand2": "#E5AA20",
+          "brand3": "#1E98F5"
+        },
+        "neutral": "#1E2B3C"
+      }
+    },
+    "altinn": {
+      "colors": {
+        "main": {
+          "accent": "#0062BA"
+        },
+        "support": {
+          "brand1": "#0162BA",
+          "brand2": "#3F3161",
+          "brand3": "#E02F4A"
+        },
+        "neutral": "#1E2B3C"
+      }
+    },
+    "uutilsynet": {
+      "colors": {
+        "main": {
+          "accent": "#0062BA"
+        },
+        "support": {
+          "brand1": "#5B60D1",
+          "brand2": "#FEA769",
+          "brand3": "#5DA290"
+        },
+        "neutral": "#1E2B3C"
+      }
+    },
+    "portal": {
+      "colors": {
+        "main": {
+          "accent": "#4D107D"
+        },
+        "support": {
+          "brand1": "#A259DC",
+          "brand2": "#DF73E4",
+          "brand3": "#E86ABF"
+        },
+        "neutral": "#1E2B3C"
+      }
+    }
+  }
+}

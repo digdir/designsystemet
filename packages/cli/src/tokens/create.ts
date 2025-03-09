@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 import { baseColors, generateColorScale } from '../colors/index.js';
-import type { ColorInfo, ColorScheme } from '../colors/types.js';
-import type { Colors, Theme, Tokens, Tokens1ary, TokensSet, Typography } from './types.js';
+import type { Color, ColorScheme } from '../colors/types.js';
+import type { Colors, Theme, Tokens, TokensSet, Typography } from './types.js';
 
 export const cliOptions = {
   outDir: 'out-dir',
@@ -19,8 +19,8 @@ export const cliOptions = {
   },
 } as const;
 
-const createColorTokens = (colorArray: ColorInfo[]): Tokens1ary => {
-  const obj: Tokens1ary = {};
+const createColorTokens = (colorArray: Color[]): TokensSet => {
+  const obj: TokensSet = {};
   const $type = 'color';
   for (const index in colorArray) {
     obj[Number(index) + 1] = { $type, $value: colorArray[index].hex };
@@ -31,21 +31,23 @@ const createColorTokens = (colorArray: ColorInfo[]): Tokens1ary => {
 const generateTypographyTokens = (themeName: string, { fontFamily }: Typography): TokensSet => {
   return {
     [themeName]: {
-      main: {
+      'font-family': {
         $type: 'fontFamilies',
         $value: fontFamily ?? 'Inter',
       },
-      bold: {
-        $type: 'fontWeights',
-        $value: 'Medium',
-      },
-      'extra-bold': {
-        $type: 'fontWeights',
-        $value: 'Semi bold',
-      },
-      regular: {
-        $type: 'fontWeights',
-        $value: 'Regular',
+      'font-weight': {
+        medium: {
+          $type: 'fontWeights',
+          $value: 'Medium',
+        },
+        semibold: {
+          $type: 'fontWeights',
+          $value: 'SemiBold',
+        },
+        regular: {
+          $type: 'fontWeights',
+          $value: 'Regular',
+        },
       },
     },
   };

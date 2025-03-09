@@ -10,8 +10,8 @@ import {
   Card,
   Checkbox,
   Chip,
-  Combobox,
   Details,
+  Dialog,
   Dropdown,
   ErrorSummary,
   Field,
@@ -20,13 +20,13 @@ import {
   Label,
   Link,
   List,
-  Modal,
   Pagination,
   Paragraph,
   Popover,
   Radio,
   Select,
   Spinner,
+  EXPERIMENTAL_Suggestion as Suggestion,
   Switch,
   Table,
   Tabs,
@@ -57,6 +57,16 @@ export default {
   },
 } as Meta;
 
+const DATA_PLACES = [
+  'Sogndal',
+  'Oslo',
+  'Brønnøysund',
+  'Stavanger',
+  'Trondheim',
+  'Bergen',
+  'Lillestrøm',
+];
+
 export const MediumRow: StoryFn<{
   size: 'sm' | 'md' | 'lg';
   direction: 'column' | 'row';
@@ -85,10 +95,19 @@ export const MediumRow: StoryFn<{
           <Select.Option>opt3</Select.Option>
         </Select>
         <Button data-size={size}>Knapp</Button>
-        <Combobox data-size={size}>
-          <Combobox.Option value='sogndal'>Sogndal</Combobox.Option>
-          <Combobox.Option value='stavanger'>Stavanger</Combobox.Option>
-        </Combobox>
+        <Suggestion>
+          <Suggestion.Input />
+          <Suggestion.Clear />
+          <Suggestion.List>
+            <Suggestion.Empty>Tomt</Suggestion.Empty>
+            {DATA_PLACES.map((place) => (
+              <Suggestion.Option key={place} value={place}>
+                {place}
+                <div>Kommune</div>
+              </Suggestion.Option>
+            ))}
+          </Suggestion.List>
+        </Suggestion>
       </div>
       <br />
       <div
@@ -337,18 +356,18 @@ export const Sizes: StoryFn = () => {
       ))}
       {sizes.map((size) => (
         <div key={size} data-size={size}>
-          <Modal.TriggerContext>
-            <Modal.Trigger>Open Modal</Modal.Trigger>
-            <Modal>
+          <Dialog.TriggerContext>
+            <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+            <Dialog>
               <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
-                Modal header
+                Dialog header
               </Heading>
               <Paragraph style={{ marginBottom: 'var(--ds-size-2)' }}>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 Blanditiis doloremque obcaecati assumenda odio ducimus sunt et.
               </Paragraph>
-            </Modal>
-          </Modal.TriggerContext>
+            </Dialog>
+          </Dialog.TriggerContext>
         </div>
       ))}
       {sizes.map((size) => (

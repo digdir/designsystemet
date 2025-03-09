@@ -9,7 +9,7 @@ export const SiteConfig = {
           url: 'grunnleggende/introduksjon',
           children: [
             {
-              name: 'Om designsystemet',
+              name: 'Om Designsystemet',
               url: 'grunnleggende/introduksjon/om-designsystemet',
             },
             {
@@ -75,6 +75,10 @@ export const SiteConfig = {
             {
               name: 'Fargesystem',
               url: 'grunnleggende/for-designere/fargesystem',
+            },
+            {
+              name: 'Modes i Figma',
+              url: 'grunnleggende/for-designere/modes-i-figma',
             },
             {
               name: 'Hent oppdateringer',

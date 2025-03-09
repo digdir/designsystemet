@@ -2,25 +2,8 @@ type UdirProps = React.HTMLAttributes<SVGElement>;
 
 export function Udir(rest: UdirProps) {
   return (
-    <svg
-      id='Layer_1'
-      xmlns='http://www.w3.org/2000/svg'
-      viewBox='0 0 694.96 200'
-      {...rest}
-    >
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 694.96 200' {...rest}>
       <title>Utdanningsdirektoratet logo</title>
-      <defs>
-        <style suppressHydrationWarning>
-          {`
-            .cls-1 {
-              fill: #fdfeff;
-            }
-            .cls-2 {
-              fill: #fff;
-            }
-          `}
-        </style>
-      </defs>
       <g>
         <g>
           <path

@@ -5,3 +5,23 @@
 html {
   font-family: 'Inter', sans-serif;
 }
+
+a > code {
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 0.0625em;
+  text-underline-offset: 0.27em; /* 5px ish */
+
+  /* Only use hover for non-touch devices to prevent sticky-hovering */
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: var(--ds-color-text-default);
+      text-decoration-thickness: 0.125em;
+    }
+  }
+
+  &:active {
+    background-color: var(--ds-color-surface-tinted) !important;
+    color: var(--ds-color-text-default) !important;
+  }
+}

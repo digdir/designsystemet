@@ -1,7 +1,7 @@
 import {
-  type ColorInfo,
+  type Color,
   generateColorSchemes,
-  getColorInfoFromPosition,
+  getColorMetadataByNumber,
   getContrastFromHex,
 } from '@digdir/designsystemet';
 import {
@@ -17,7 +17,7 @@ import classes from './ColorContrasts.module.css';
 
 export const ColorContrasts = () => {
   const colors = useThemeStore((state) => state.colors);
-  const appearance = useThemeStore((state) => state.appearance);
+  const colorScheme = useThemeStore((state) => state.colorScheme);
   const [selectedColor, setSelectedColor] = useState('dominant');
   const [selectedBaseColor, setSelectedBaseColor] = useState('dominant');
 
@@ -27,22 +27,22 @@ export const ColorContrasts = () => {
   const indexOne = [1, 2, 3, 4, 5];
   const indexTwo = [7, 8, 9, 10, 11];
   const [reducedLight, setReducedLight] = useState({
-    themeRange1: initialTheme[appearance].filter((color) =>
-      indexOne.includes(color.position),
+    themeRange1: initialTheme[colorScheme].filter((color) =>
+      indexOne.includes(color.number),
     ),
-    themeRange2: initialTheme[appearance].filter((color) =>
-      indexTwo.includes(color.position),
+    themeRange2: initialTheme[colorScheme].filter((color) =>
+      indexTwo.includes(color.number),
     ),
   });
 
   const indexBaseOne = [1, 2, 4, 15, 16];
   const indexBaseTwo = [12, 13, 14];
   const [reducedBaseLight, setReducedBaseLight] = useState({
-    themeRange1: initialTheme[appearance].filter((color) =>
-      indexBaseOne.includes(color.position),
+    themeRange1: initialTheme[colorScheme].filter((color) =>
+      indexBaseOne.includes(color.number),
     ),
-    themeRange2: initialTheme[appearance].filter((color) =>
-      indexBaseTwo.includes(color.position),
+    themeRange2: initialTheme[colorScheme].filter((color) =>
+      indexBaseTwo.includes(color.number),
     ),
   });
 
@@ -53,14 +53,14 @@ export const ColorContrasts = () => {
         .find((color) => color.name === selectedColor)?.colors || initialTheme;
 
     setReducedLight({
-      themeRange1: newTheme[appearance].filter((color) =>
-        indexOne.includes(color.position),
+      themeRange1: newTheme[colorScheme].filter((color) =>
+        indexOne.includes(color.number),
       ),
-      themeRange2: newTheme[appearance].filter((color) =>
-        indexTwo.includes(color.position),
+      themeRange2: newTheme[colorScheme].filter((color) =>
+        indexTwo.includes(color.number),
       ),
     });
-  }, [selectedColor, colors, appearance]);
+  }, [selectedColor, colors, colorScheme]);
 
   useEffect(() => {
     const newTheme =
@@ -70,30 +70,27 @@ export const ColorContrasts = () => {
       initialTheme;
 
     setReducedBaseLight({
-      themeRange1: newTheme[appearance].filter((color) =>
-        indexBaseOne.includes(color.position),
+      themeRange1: newTheme[colorScheme].filter((color) =>
+        indexBaseOne.includes(color.number),
       ),
-      themeRange2: newTheme[appearance].filter((color) =>
-        indexBaseTwo.includes(color.position),
+      themeRange2: newTheme[colorScheme].filter((color) =>
+        indexBaseTwo.includes(color.number),
       ),
     });
-  }, [selectedBaseColor, colors, appearance]);
+  }, [selectedBaseColor, colors, colorScheme]);
 
-  const ThCell = ({ color }: { color: ColorInfo }) => {
+  const ThCell = ({ color }: { color: Color }) => {
     return (
       <th className={classes.th}>
         <div className={classes.header}>
-          {getColorInfoFromPosition(color.position).displayName}
+          {getColorMetadataByNumber(color.number).displayName}
           <div className={classes.headerHex}>{color.hex}</div>
         </div>
       </th>
     );
   };
 
-  const Tag = ({
-    color1,
-    color2,
-  }: { color1: ColorInfo; color2: ColorInfo }) => {
+  const Tag = ({ color1, color2 }: { color1: Color; color2: Color }) => {
     const contrast = getContrastFromHex(color1.hex, color2.hex);
     let type = 'AAA';
 
@@ -108,10 +105,7 @@ export const ColorContrasts = () => {
     return <div className={cl(classes.tag, classes[type])}>{type}</div>;
   };
 
-  const TdCell = ({
-    color1,
-    color2,
-  }: { color1: ColorInfo; color2: ColorInfo }) => {
+  const TdCell = ({ color1, color2 }: { color1: Color; color2: Color }) => {
     return (
       <div className={classes.cell}>
         <div className={classes.colors}>
@@ -140,41 +134,43 @@ export const ColorContrasts = () => {
   return (
     <div className='panelContainer'>
       <div className='panelLeft'>
-        <Heading data-size='xs'>Kontraster mellom farger</Heading>
-        <Paragraph data-size='sm'>
-          Her vises kontrastene mellom de ulike trinnene i fargeskalaene, samt
-          om fargene oppfyller WCAG-kravene.
-        </Paragraph>
+        <div className='panelTop'>
+          <Heading data-size='xs'>Kontraster mellom farger</Heading>
+          <Paragraph data-size='sm'>
+            Her vises kontrastene mellom de ulike trinnene i fargeskalaene, samt
+            om fargene oppfyller WCAG-kravene.
+          </Paragraph>
 
-        <div className={classes.tagGroups}>
-          <div className={classes.tagGroup}>
-            <div className={cl(classes.tag, classes.AAA)}>AAA</div>
-            <Paragraph data-size='sm'>
-              Tekst og bakgrunn må ha en kontrast på minst 7:1 for å oppfylle
-              WCAG AAA-kravet.
-            </Paragraph>
-          </div>
-          <div className={classes.tagGroup}>
-            <div className={cl(classes.tag, classes.AA)}>AA</div>
-            <Paragraph data-size='sm'>
-              Tekst og bakgrunn må ha en kontrast på minst 4.5:1 for å oppfylle
-              WCAG AA-kravet.
-            </Paragraph>
-          </div>
-          <div className={classes.tagGroup}>
-            <div className={cl(classes.tag, classes.AA18)}>AA18</div>
-            <Paragraph data-size='sm'>
-              Tekst og bakgrunn må ha en kontrast på minst 3:1 og en
-              skriftstørrelse på 18 px eller større for å oppfylle WCAG
-              AA-kravet.
-            </Paragraph>
-          </div>
-          <div className={classes.tagGroup}>
-            <div className={cl(classes.tag, classes.FAIL)}>DECO</div>
-            <Paragraph data-size='sm'>
-              Oppfyller ingen kontrastkrav i WCAG og bør kun brukes til
-              dekorative formål.
-            </Paragraph>
+          <div className={classes.tagGroups}>
+            <div className={classes.tagGroup}>
+              <div className={cl(classes.tag, classes.AAA)}>AAA</div>
+              <Paragraph data-size='sm'>
+                Tekst og bakgrunn må ha en kontrast på minst 7:1 for å oppfylle
+                WCAG AAA-kravet.
+              </Paragraph>
+            </div>
+            <div className={classes.tagGroup}>
+              <div className={cl(classes.tag, classes.AA)}>AA</div>
+              <Paragraph data-size='sm'>
+                Tekst og bakgrunn må ha en kontrast på minst 4.5:1 for å
+                oppfylle WCAG AA-kravet.
+              </Paragraph>
+            </div>
+            <div className={classes.tagGroup}>
+              <div className={cl(classes.tag, classes.AA18)}>AA18</div>
+              <Paragraph data-size='sm'>
+                Tekst og bakgrunn må ha en kontrast på minst 3:1 og en
+                skriftstørrelse på 18 px eller større for å oppfylle WCAG
+                AA-kravet.
+              </Paragraph>
+            </div>
+            <div className={classes.tagGroup}>
+              <div className={cl(classes.tag, classes.FAIL)}>DECO</div>
+              <Paragraph data-size='sm'>
+                Oppfyller ingen kontrastkrav i WCAG og bør kun brukes til
+                dekorative formål.
+              </Paragraph>
+            </div>
           </div>
         </div>
       </div>
@@ -196,6 +192,7 @@ export const ColorContrasts = () => {
             onChange={(e) => {
               setSelectedColor(e.target.value);
             }}
+            aria-label='Velg farge for å se kontraster'
           >
             {(['main', 'neutral', 'support'] as Array<keyof typeof colors>).map(
               (group) =>
@@ -207,26 +204,29 @@ export const ColorContrasts = () => {
             )}
           </Select>
         </Field>
-        <table className={classes.table}>
-          <tbody>
-            <tr>
-              <th />
-              {reducedLight.themeRange1.map((color, index) => (
-                <ThCell key={index} color={reducedLight.themeRange1[index]} />
-              ))}
-            </tr>
-            {reducedLight.themeRange2.map((color2, index) => (
-              <tr key={index}>
-                <ThCell color={color2} />
-                {reducedLight.themeRange1.map((color1, index) => (
-                  <td key={index} className={classes.td}>
-                    <TdCell color1={color1} color2={color2} />
-                  </td>
+
+        <div className={classes.tableContainer}>
+          <table className={classes.table}>
+            <tbody>
+              <tr>
+                <th />
+                {reducedLight.themeRange1.map((color, index) => (
+                  <ThCell key={index} color={reducedLight.themeRange1[index]} />
                 ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+              {reducedLight.themeRange2.map((color2, index) => (
+                <tr key={index}>
+                  <ThCell color={color2} />
+                  {reducedLight.themeRange1.map((color1, index) => (
+                    <td key={index} className={classes.td}>
+                      <TdCell color1={color1} color2={color2} />
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
         <Heading data-size='2xs'>Base fargene</Heading>
         <Paragraph data-size='sm' className={classes.desc}>
           Fargene som blir valgt i verktøyet får tokenet Base Default i hver
@@ -243,6 +243,7 @@ export const ColorContrasts = () => {
             onChange={(e) => {
               setSelectedBaseColor(e.target.value);
             }}
+            aria-label='Velg farge for å se kontraster'
           >
             {(['main', 'neutral', 'support'] as Array<keyof typeof colors>).map(
               (group) =>
@@ -254,29 +255,31 @@ export const ColorContrasts = () => {
             )}
           </Select>
         </Field>
-        <table className={classes.table}>
-          <tbody>
-            <tr>
-              <th />
-              {reducedBaseLight.themeRange1.map((color, index) => (
-                <ThCell
-                  key={index}
-                  color={reducedBaseLight.themeRange1[index]}
-                />
-              ))}
-            </tr>
-            {reducedBaseLight.themeRange2.map((color2, index) => (
-              <tr key={index}>
-                <ThCell color={color2} />
-                {reducedBaseLight.themeRange1.map((color1, index) => (
-                  <td key={index} className={classes.td}>
-                    <TdCell color1={color1} color2={color2} />
-                  </td>
+        <div className={classes.tableContainer}>
+          <table className={classes.table}>
+            <tbody>
+              <tr>
+                <th />
+                {reducedBaseLight.themeRange1.map((color, index) => (
+                  <ThCell
+                    key={index}
+                    color={reducedBaseLight.themeRange1[index]}
+                  />
                 ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+              {reducedBaseLight.themeRange2.map((color2, index) => (
+                <tr key={index}>
+                  <ThCell color={color2} />
+                  {reducedBaseLight.themeRange1.map((color1, index) => (
+                    <td key={index} className={classes.td}>
+                      <TdCell color1={color1} color2={color2} />
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

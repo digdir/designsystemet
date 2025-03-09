@@ -2,4 +2,4 @@ export * from './utils.js';
 export * from './theme.js';
 export * from './types.js';
 export * from './luminance.js';
-export * from './colorsMetadata.js';
+export * from './colorMetadata.js';

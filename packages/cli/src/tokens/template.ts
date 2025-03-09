@@ -6,7 +6,7 @@ import originalColorJson from '../../../../design-tokens/semantic/color.json' wi
 import originalColorCategoryJson from '../../../../design-tokens/semantic/modes/main-color/accent.json' with {
   type: 'json',
 };
-import originalThemeJson from '../../../../design-tokens/themes/theme.json' with { type: 'json' };
+import originalThemeJson from '../../../../design-tokens/themes/digdir.json' with { type: 'json' };
 import { stringify } from './write.js';
 
 const DIRNAME: string = import.meta.dirname || __dirname;
@@ -47,6 +47,7 @@ export const updateTemplates = async () => {
 
   // semantic/color.json
   const colorBaseFile = {
+    ...originalColorJson,
     color: R.omit(['accent', 'neutral', 'brand1', 'brand2', 'brand3'], originalColorJson.color),
   };
   await fs.writeFile(
@@ -69,13 +70,13 @@ export const updateTemplates = async () => {
   await fs.mkdir(path.join(TEMPLATE_FILES_PATH, 'themes'), options);
   await fs.writeFile(
     path.join(TEMPLATE_FILES_PATH, `themes/theme-base-file.json`),
-    JSON.stringify(themeBaseFile, null, 2).replaceAll('theme', '<theme>'),
+    JSON.stringify(themeBaseFile, null, 2).replaceAll('digdir', '<theme>'),
   );
 
   const themeColorTemplate = originalThemeJson.color.accent;
   await fs.writeFile(
     path.join(TEMPLATE_FILES_PATH, `themes/theme-color-template.json`),
-    JSON.stringify(themeColorTemplate, null, 2).replaceAll('theme.accent', '<theme>.<color>'),
+    JSON.stringify(themeColorTemplate, null, 2).replaceAll('digdir.accent', '<theme>.<color>'),
   );
 
   // $themes.json
@@ -113,14 +114,14 @@ export const updateTemplates = async () => {
   const metadataFile = await fs.readFile(path.join(SOURCE_FILES_PATH, '$metadata.json'), 'utf-8');
   const tokenSetOrderTemplate = (JSON.parse(metadataFile) as { tokenSetOrder: string[] }).tokenSetOrder
     .filter((tokenSet) => {
-      if (endsWithOneOf(['theme2', 'theme3', 'theme4'], tokenSet)) {
+      if (endsWithOneOf(['altinn', 'portal', 'uutilsynet'], tokenSet)) {
         return false;
       }
       return true;
     })
     .map((tokenSet) => {
-      if (endsWithOneOf(['theme'], tokenSet)) {
-        return tokenSet.replace('/theme', '/<theme>');
+      if (endsWithOneOf(['digdir'], tokenSet)) {
+        return tokenSet.replace('/digdir', '/<theme>');
       }
       return tokenSet;
     });

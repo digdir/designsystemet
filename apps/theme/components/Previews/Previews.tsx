@@ -2,13 +2,12 @@
 import { useState } from 'react';
 
 import {
-  type ColorInfo,
-  type ColorNumber,
+  type ColorScheme,
   type CssColor,
   generateColorSchemes,
-  getColorInfoFromPosition,
 } from '@digdir/designsystemet';
 import { ToggleGroup } from '@digdir/designsystemet-react';
+import { generateColorVars } from '../../utils/generateColorVars';
 import { OverviewComponents } from '../OverviewComponents/OverviewComponents';
 import classes from './Previews.module.css';
 
@@ -48,37 +47,13 @@ const themes: {
 
 export const Previews = () => {
   const [theme, setTheme] = useState<keyof typeof themes>('blue');
-  const [appearance, setAppearance] = useState<'light' | 'dark'>('light');
-
-  const getDsMainVars = (colors: {
-    light: ColorInfo[];
-    dark: ColorInfo[];
-  }) => {
-    const style = {} as Record<string, string>;
-
-    let lightColors = colors.light;
-
-    if (appearance === 'dark') {
-      lightColors = colors.dark;
-    }
-
-    for (let i = 0; i < lightColors.length; i++) {
-      const number = (i + 1) as ColorNumber;
-      style[
-        `--ds-color-${getColorInfoFromPosition(number)
-          .displayName.replace(/\s+/g, '-')
-          .toLowerCase()}`
-      ] = lightColors[i].hex;
-    }
-
-    return style;
-  };
+  const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
 
   const getThemeVariables = (hex: CssColor) => {
     const generatedTheme = generateColorSchemes(hex);
     const vars = {} as Record<string, string>;
 
-    Object.assign(vars, getDsMainVars(generatedTheme));
+    Object.assign(vars, generateColorVars(generatedTheme, colorScheme));
 
     return vars;
   };
@@ -96,8 +71,8 @@ export const Previews = () => {
           </ToggleGroup.Item>
         </ToggleGroup>
         <ToggleGroup
-          value={appearance}
-          onChange={(v) => setAppearance(v as 'light' | 'dark')}
+          value={colorScheme}
+          onChange={(v) => setColorScheme(v as ColorScheme)}
         >
           <ToggleGroup.Item value='light'>Lys</ToggleGroup.Item>
           <ToggleGroup.Item value='dark'>Mørk</ToggleGroup.Item>
@@ -106,7 +81,7 @@ export const Previews = () => {
 
       <div
         className={classes.preview}
-        data-color-scheme={appearance}
+        data-color-scheme={colorScheme}
         style={{
           ...getThemeVariables(themes[theme].hex),
           ...themes[theme].cssVars,

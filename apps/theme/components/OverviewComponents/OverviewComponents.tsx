@@ -62,9 +62,9 @@ export const OverviewComponents = forwardRef<HTMLDivElement>(
             <img className={classes.img} src='img/city.png' alt='' />
             <div className={classes.imgText}>
               <div className={classes.tags} data-size='sm'>
-                <Tag color='brand1'>Sport</Tag>
-                <Tag color='brand2'>Nyheter</Tag>
-                <Tag color='brand3'>Innenriks</Tag>
+                <Tag data-color='brand1'>Sport</Tag>
+                <Tag data-color='brand2'>Nyheter</Tag>
+                <Tag data-color='brand3'>Innenriks</Tag>
               </div>
               <Heading data-size='2xs' className={classes.imgTitle}>
                 Reiste alene til storbyen
@@ -87,16 +87,17 @@ export const OverviewComponents = forwardRef<HTMLDivElement>(
                       variant='square'
                       className={classes.avatar}
                     >
-                      <img src='img/avatars/male2.png' alt='' />
+                      <img src={user.avatar} alt='' />
                     </Avatar>
                     <div className={classes.userText}>
-                      <div className={classes.userRole}>Designer</div>
-                      <div>Ola Normann</div>
+                      <div className={classes.userRole}>{user.role}</div>
+                      <div>{user.name}</div>
                     </div>
                     <Button
                       data-size='sm'
                       variant='secondary'
                       style={{ marginLeft: 'auto' }}
+                      aria-label={`Følg ${user.name}`}
                     >
                       Følg
                     </Button>

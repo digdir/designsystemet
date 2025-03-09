@@ -1,6 +1,5 @@
 import { PostLayout, Contributors } from '../../_components';
 import { ResponsiveIframe } from '@components';
-import { CodeSnippet } from '@repo/components';
 
 export default ({ children }) => (
   <PostLayout
@@ -55,8 +54,7 @@ CSS-snutten inkluderer ikon, klassen legger du på `Popover.Trigger`.
 
 ### CSS
 
-<CodeSnippet language="css">
-{`
+```css
 .ds-helptext {
   --dsc-helptext-icon-size: 65%;
   --dsc-helptext-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 8 14'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M4 11a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM4 0c2.2 0 4 1.66 4 3.7 0 .98-.42 1.9-1.17 2.6l-.6.54-.29.29c-.48.46-.87.93-.94 1.41V9.5H3v-.81c0-1.26.84-2.22 1.68-3L5.42 5C5.8 4.65 6 4.2 6 3.7 6 2.66 5.1 1.83 4 1.83c-1.06 0-1.92.75-2 1.7v.15H0C0 1.66 1.8 0 4 0Z' clip-rule='evenodd'/%3E%3C/svg%3E");
@@ -102,13 +100,11 @@ CSS-snutten inkluderer ikon, klassen legger du på `Popover.Trigger`.
     display: none;
   }
 }
-`}
-</CodeSnippet>
+```
 
 ### Markup
 
-<CodeSnippet language="tsx">
-{`
+```tsx
 export type HelpTextProps = {
   /**
    * Required descriptive label for screen readers.
@@ -142,17 +138,11 @@ export const HelpText = forwardRef<HTMLButtonElement, HelpTextProps>(
     );
   }
 );
-`}
-</CodeSnippet>
+```
 
 ### Satt saman
 
-I CodeSanboxen under kan du sjå korleis du sett kodesnuttane over saman.
-
-<ResponsiveIframe
-  title="own-helptext-example"
-  src="https://codesandbox.io/embed/xrzkvw?view=editor+%2B+preview&module=%2Fsrc%2FApp.tsx&hidenavigation=1"
-/>
+I [denne CodeSandboxen](https://codesandbox.io/p/sandbox/own-helptext-example-xrzkvw) kan du sjå korleis du sett kodesnuttane over saman.
 
 <Contributors
   authors={[

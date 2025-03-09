@@ -16,6 +16,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
       - id: get-aliases
         name: Get a list of all Vercel aliases and set it to ENV
         run: |

@@ -1,18 +1,19 @@
 .ds-table {
-  --dsc-table-background--hover: var(--ds-color-neutral-surface-tinted);
-  --dsc-table-background--zebra: var(--ds-color-neutral-background-tinted);
-  --dsc-table-background: var(--ds-color-neutral-background-default);
-  --dsc-table-border-color: var(--ds-color-neutral-border-subtle);
+  --dsc-table-background--hover: var(--ds-color-surface-hover);
+  --dsc-table-background--zebra: var(--ds-color-surface-tinted);
+  --dsc-table-background: transparent;
+  --dsc-table-border-color: var(--ds-color-border-subtle);
   --dsc-table-border-radius: var(--ds-border-radius-md);
   --dsc-table-border-style: solid;
-  --dsc-table-border-width: 1px;
-  --dsc-table-color: var(--ds-color-neutral-text-default);
+  --dsc-table-border-width: var(--ds-border-width-default);
+  --dsc-table-color: var(--ds-color-text-default);
   --dsc-table-divider-border-color: var(--dsc-table-border-color);
   --dsc-table-divider-border-style: solid;
-  --dsc-table-divider-border-width: 2px;
-  --dsc-table-header-background--hover: var(--ds-color-neutral-surface-tinted);
-  --dsc-table-header-background--sorted: var(--ds-color-neutral-background-tinted);
-  --dsc-table-header-background: var(--ds-color-neutral-background-default);
+  --dsc-table-divider-border-width: calc(var(--ds-border-width-default) + 1px);
+  --dsc-table-header-background--hover: var(--ds-color-surface-hover);
+  --dsc-table-header-background--sorted: var(--ds-color-surface-tinted);
+  --dsc-table-header-background--sticky: var(--ds-color-surface-default);
+  --dsc-table-header-background: transparent;
   --dsc-table-padding: var(--ds-size-2) var(--ds-size-3);
   --dsc-table-sort-size: var(--ds-size-6);
 
@@ -63,6 +64,7 @@
   & > caption {
     @composes ds-heading from './heading.css';
     text-align: inherit;
+    margin-bottom: var(--ds-size-1);
   }
 
   /**
@@ -172,6 +174,7 @@
     overflow: auto;
 
     & > thead > tr > :is(th, td) {
+      background: var(--dsc-table-header-background--sticky);
       position: sticky;
       top: 0;
       z-index: 2;
@@ -193,7 +196,7 @@
       background: var(--dsc-table-background--hover);
     }
 
-    & > thead > tr > [aria-sort]:hover {
+    & > thead > tr > [aria-sort]:hover button {
       background: var(--dsc-table-header-background--hover);
     }
   }

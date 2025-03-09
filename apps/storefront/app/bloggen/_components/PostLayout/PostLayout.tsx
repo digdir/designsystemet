@@ -33,7 +33,7 @@ function PostLayout({
   figureCount = FIGURE_COUNT,
 }: BlogArticleLayoutProps) {
   return (
-    <div className={classes.wrapper}>
+    <div className={classes.wrapper} id='post-layout'>
       <Container className={classes.page}>
         {Array.from({ length: figureCount }).map((_, index) => (
           <Figures
@@ -68,31 +68,25 @@ function PostLayout({
           />
           <MdxContent className={classes.content}>
             {content}
-            <div className={classes.wantToWrite}>
+            <div className={classes.wantToWrite} data-color='brand3'>
               <Heading level={3} data-size='xs'>
                 Ønsker du å skrive for bloggen?
               </Heading>
               <Paragraph data-size='sm'>
-                Ta kontakt med oss på{' '}
+                Vi vil gjerne ha historier om hvordan Designsystemet har blitt
+                brukt! Ta kontakt med oss i{' '}
                 <Link href='https://designsystemet.no/slack' target='_blank'>
-                  #designsystemet
+                  Slack (åpnes i ny fane)
                 </Link>{' '}
-                i Slack kanalen vår.
+                eller{' '}
+                <Link href='mailto:designsystem@digdir.no' target='_blank'>
+                  send oss en epost (åpnes i ny fane).
+                </Link>{' '}
               </Paragraph>
             </div>
           </MdxContent>
         </main>
       </Container>
-      <style suppressHydrationWarning>
-        {`
-          header {
-            [data-color-scheme='dark'] &,
-            [data-color-scheme='auto'] & {
-              background-color: var(--ds-color-neutral-background-default) !important;
-            }
-          }
-        `}
-      </style>
     </div>
   );
 }

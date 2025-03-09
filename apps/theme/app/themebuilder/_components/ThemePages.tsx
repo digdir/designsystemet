@@ -1,23 +1,22 @@
 'use client';
 
-import {
-  type ColorInfo,
-  type ColorNumber,
-  getColorInfoFromPosition,
-} from '@digdir/designsystemet';
 import cl from 'clsx/lite';
 import { useEffect, useRef } from 'react';
 import { ColorContrasts, ColorPreview, ColorTokens } from '../../../components';
 import { Colors } from '../../../components/Colors/Colors';
 import { OverviewComponents } from '../../../components/OverviewComponents/OverviewComponents';
 import { useThemeStore } from '../../../store';
+import {
+  generateColorVars,
+  generateNeutralColorVars,
+} from '../../../utils/generateColorVars';
 import classes from './ThemePages.module.css';
 
 export const ThemePages = () => {
   const colors = useThemeStore((state) => state.colors);
   const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
   const themeTab = useThemeStore((state) => state.themeTab);
-  const appearance = useThemeStore((state) => state.appearance);
+  const colorScheme = useThemeStore((state) => state.colorScheme);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -44,63 +43,18 @@ export const ThemePages = () => {
     }
   }, [baseBorderRadius]);
 
-  const getDsVars = (colors: {
-    light: ColorInfo[];
-    dark: ColorInfo[];
-  }) => {
-    const style = {} as Record<string, string>;
-
-    let lightColors = colors.light;
-
-    if (appearance === 'dark') {
-      lightColors = colors.dark;
-    }
-
-    for (let i = 0; i < lightColors.length; i++) {
-      const number = (i + 1) as ColorNumber;
-      style[
-        `--ds-color-neutral-${getColorInfoFromPosition(number)
-          .displayName.replace(/\s+/g, '-')
-          .toLowerCase()}`
-      ] = lightColors[i].hex;
-    }
-
-    return style;
-  };
-
-  const getDsMainVars = (colors: {
-    light: ColorInfo[];
-    dark: ColorInfo[];
-  }) => {
-    const style = {} as Record<string, string>;
-
-    let lightColors = colors.light;
-
-    if (appearance === 'dark') {
-      lightColors = colors.dark;
-    }
-
-    for (let i = 0; i < lightColors.length; i++) {
-      const number = (i + 1) as ColorNumber;
-      style[
-        `--ds-color-${getColorInfoFromPosition(number)
-          .displayName.replace(/\s+/g, '-')
-          .toLowerCase()}`
-      ] = lightColors[i].hex;
-    }
-
-    return style;
-  };
-
   const style = () => {
     if (!colors) return {};
 
     const vars = {} as Record<string, string>;
 
     /* neutral */
-    Object.assign(vars, getDsVars(colors.neutral[0].colors));
+    Object.assign(
+      vars,
+      generateNeutralColorVars(colors.neutral[0].colors, colorScheme),
+    );
     /* get -ds-color-* vars */
-    Object.assign(vars, getDsMainVars(colors.main[0].colors));
+    Object.assign(vars, generateColorVars(colors.main[0].colors, colorScheme));
 
     return vars;
   };
@@ -109,7 +63,7 @@ export const ThemePages = () => {
     <>
       <div
         className={classes.basicPanel}
-        data-color-scheme={appearance}
+        data-color-scheme={colorScheme}
         hidden={!(themeTab === 'overview')}
         style={style()}
       >
@@ -117,7 +71,7 @@ export const ThemePages = () => {
       </div>
       <div
         className={cl(classes.basicPanel, classes.colorsContainer)}
-        data-color-scheme={appearance}
+        data-color-scheme={colorScheme}
         hidden={!(themeTab === 'colorsystem')}
       >
         <Colors />
@@ -126,14 +80,14 @@ export const ThemePages = () => {
       <>
         <div
           className={classes.panel}
-          data-color-scheme={appearance}
+          data-color-scheme={colorScheme}
           hidden={!(themeTab === 'colorsystem')}
         >
           <ColorPreview />
         </div>
         <div
           className={classes.panel}
-          data-color-scheme={appearance}
+          data-color-scheme={colorScheme}
           hidden={!(themeTab === 'colorsystem')}
         >
           <ColorTokens />
@@ -141,7 +95,7 @@ export const ThemePages = () => {
 
         <div
           className={classes.panel}
-          data-color-scheme={appearance}
+          data-color-scheme={colorScheme}
           hidden={!(themeTab === 'colorsystem')}
         >
           <ColorContrasts />

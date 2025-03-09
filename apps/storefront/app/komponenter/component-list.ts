@@ -45,9 +45,9 @@ export const data = [
     url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-chip--docs',
   },
   {
-    title: 'Combobox',
-    image: 'Combobox.svg',
-    url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-combobox--docs',
+    title: 'Dialog',
+    image: 'Dialog.svg',
+    url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-dialog--docs',
   },
   {
     title: 'Divider',
@@ -85,14 +85,19 @@ export const data = [
     url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-loaders-skeleton--docs',
   },
   {
-    title: 'Modal',
-    image: 'Modal.svg',
-    url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-modal--docs',
+    title: 'MultiSuggestion',
+    image: 'MultiSuggestion.svg',
+    url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-multisuggestion--docs',
   },
   {
     title: 'Select',
     image: 'Select.svg',
     url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-select--docs',
+  },
+  {
+    title: 'Suggestion',
+    image: 'Suggestion.svg',
+    url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-suggestion--docs',
   },
   {
     title: 'Pagination',

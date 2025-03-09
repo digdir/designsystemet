@@ -1,3 +1,7 @@
+import type {
+  Color,
+  SeverityColors,
+} from '@digdir/designsystemet-react/colors';
 import cl from 'clsx/lite';
 import { type HTMLAttributes, forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
@@ -14,6 +18,16 @@ export type BadgeProps = MergeRight<
      * The maximum number to display in the badge, when the count exceeds this number, the badge will display `{max}+`
      */
     maxCount?: number;
+    /**
+     * Change the background color of the badge.
+     *
+     * @default 'base'
+     */
+    variant?: 'base' | 'tinted';
+    /**
+     * Change the color scheme of the badge
+     */
+    'data-color'?: Color | SeverityColors;
     children?: never;
   }
 >;
@@ -30,7 +44,7 @@ export type BadgeProps = MergeRight<
  * </Badge>
  */
 export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
-  { className, count, maxCount, ...rest },
+  { className, count, maxCount, variant = 'base', ...rest },
   ref,
 ) {
   return (
@@ -39,6 +53,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
       data-count={
         count && maxCount && count > maxCount ? `${maxCount}+` : count
       }
+      data-variant={variant}
       ref={ref}
       {...rest}
     />

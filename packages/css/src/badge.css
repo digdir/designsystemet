@@ -19,13 +19,20 @@
     box-sizing: border-box;
     line-height: var(--ds-line-height-sm);
     width: fit-content;
+
+    @supports (content: attr(data-count, '')) {
+      content: attr(data-count, '');
+    }
   }
 
-  /* What do we do here? */
+  &[data-variant='base'] {
+    --dsc-badge-background: var(--ds-color-base-default);
+    --dsc-badge-color: var(--ds-color-base-contrast-default);
+  }
 
-  &[data-color='neutral'] {
-    --dsc-badge-background: var(--ds-color-neutral-surface-tinted);
-    --dsc-badge-color: var(--ds-color-neutral-text-default);
+  &[data-variant='tinted'] {
+    --dsc-badge-background: var(--ds-color-surface-tinted);
+    --dsc-badge-color: var(--ds-color-text-default);
   }
 }
 

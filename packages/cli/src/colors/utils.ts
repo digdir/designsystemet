@@ -1,6 +1,6 @@
 import chroma from 'chroma-js';
 import { Hsluv } from 'hsluv';
-import type { ColorNumber, CssColor } from './types.js';
+import type { CssColor, HexColor } from './types.js';
 
 /**
  * Converts a HEX color '#xxxxxx' into a CSS HSL string 'hsl(x,x,x)'
@@ -9,7 +9,7 @@ import type { ColorNumber, CssColor } from './types.js';
  * @param valuesOnly If true, only the values are returned
  * @returns A CSS HSL string
  */
-export const hexToCssHsl = (hex: string, valuesOnly = false) => {
+export const hexToCssHsl = (hex: HexColor, valuesOnly = false) => {
   const [h, s, l] = chroma(hex).hsl();
   const hRounded = Math.round(h);
   const sRounded = Math.round(s * 100);
@@ -24,7 +24,7 @@ export const hexToCssHsl = (hex: string, valuesOnly = false) => {
  * @param H A Hex color string
  * @returns HSL values in an array
  */
-export const hexToHSL = (hex: string) => {
+export const hexToHSL = (hex: HexColor) => {
   const [h, s, l] = chroma(hex).hsl();
   return [Math.round(h), Math.round(s * 100), Math.round(l * 100)];
 };
@@ -35,7 +35,7 @@ export const hexToHSL = (hex: string) => {
  * @param hex A hex color string
  * @returns
  */
-export const hexToHsluv = (hex: string) => {
+export const hexToHsluv = (hex: HexColor) => {
   const conv = new Hsluv();
   conv.hex = hex;
   conv.hexToHsluv();
@@ -60,8 +60,8 @@ export const hslArrToCss = (HSL: number[]) => {
  * @param l The HSL lightness
  * @returns HEX color string
  */
-export const HSLToHex = (h: number, s: number, l: number) => {
-  return chroma.hsl(h, s / 100, l / 100).hex();
+export const HSLToHex = (h: number, s: number, l: number): HexColor => {
+  return chroma.hsl(h, s / 100, l / 100).hex() as HexColor;
 };
 
 /**
@@ -87,7 +87,7 @@ export const hexToRgb = (hex: string, type: '255' | '1' = '255') => {
  * @param color2 The second color to compare
  * @returns
  */
-export const getContrastFromHex = (color1: CssColor, color2: CssColor) => {
+export const getContrastFromHex = (color1: HexColor, color2: HexColor) => {
   const lum1 = chroma(color1).luminance();
   const lum2 = chroma(color2).luminance();
   return (Math.max(lum1, lum2) + 0.05) / (Math.min(lum1, lum2) + 0.05);
@@ -163,7 +163,7 @@ export const getLuminanceFromLightness = (lightness: number) => {
  *
  * @param hex The hex color
  */
-export const getLightnessFromHex = (hex: string) => {
+export const getLightnessFromHex = (hex: HexColor) => {
   const conv = new Hsluv();
   conv.hex = hex;
   conv.hexToHsluv();
@@ -177,120 +177,6 @@ export const getSaturationFromHex = (hex: string) => {
   conv.hexToHsluv();
 
   return conv.hsluv_s;
-};
-
-/**
- *
- * This function returns the color number based on the color name.
- *
- * @param name The name of the color
- */
-export const getColorNumberFromName = (name: string): ColorNumber => {
-  const colorMap: Record<string, ColorNumber> = {
-    'Background Default': 1,
-    'Background Tinted': 2,
-    'Surface Default': 3,
-    'Surface Tinted': 4,
-    'Surface Hover': 5,
-    'Surface Active': 6,
-    'Border Subtle': 7,
-    'Border Default': 8,
-    'Border Strong': 9,
-    'Text Subtle': 10,
-    'Text Default': 11,
-    'Base Default': 12,
-    'Base Hover': 13,
-    'Base Active': 14,
-    'Contrast Subtle': 15,
-    'Contrast Default': 16,
-  };
-  return colorMap[name];
-};
-
-export const getColorInfoFromPosition = (position: ColorNumber) => {
-  const colorMap = {
-    1: {
-      name: 'backgroundDefault',
-      displayName: 'Background Default',
-      group: 'background',
-    },
-    2: {
-      name: 'backgroundTinted',
-      displayName: 'Background Tinted',
-      group: 'background',
-    },
-    3: {
-      name: 'surfaceDefault',
-      displayName: 'Surface Default',
-      group: 'surface',
-    },
-    4: {
-      name: 'surfaceTinted',
-      displayName: 'Surface Tinted',
-      group: 'surface',
-    },
-    5: {
-      name: 'surfaceHover',
-      displayName: 'Surface Hover',
-      group: 'surface',
-    },
-    6: {
-      name: 'surfaceActive',
-      displayName: 'Surface Active',
-      group: 'surface',
-    },
-    7: {
-      name: 'borderSubtle',
-      displayName: 'Border Subtle',
-      group: 'border',
-    },
-    8: {
-      name: 'borderDefault',
-      displayName: 'Border Default',
-      group: 'border',
-    },
-    9: {
-      name: 'borderStrong',
-      displayName: 'Border Strong',
-      group: 'border',
-    },
-    10: {
-      name: 'textSubtle',
-      displayName: 'Text Subtle',
-      group: 'text',
-    },
-    11: {
-      name: 'textDefault',
-      displayName: 'Text Default',
-      group: 'text',
-    },
-    12: {
-      name: 'baseDefault',
-      displayName: 'Base Default',
-      group: 'base',
-    },
-    13: {
-      name: 'baseHover',
-      displayName: 'Base Hover',
-      group: 'base',
-    },
-    14: {
-      name: 'baseActive',
-      displayName: 'Base Active',
-      group: 'base',
-    },
-    15: {
-      name: 'baseContrastSubtle',
-      displayName: 'Base Contrast Subtle',
-      group: 'base',
-    },
-    16: {
-      name: 'baseContrastDefault',
-      displayName: 'Base Contrast Default',
-      group: 'base',
-    },
-  } as const;
-  return colorMap[position];
 };
 
 /**
@@ -323,24 +209,21 @@ export const canTextBeUsedOnColors = (baseDefaultColor: CssColor, baseActiveColo
  * @param color
  * @returns
  */
-export const convertToHex = (color?: string): CssColor => {
+export const convertToHex = (color?: string): HexColor => {
   if (!color) {
     return '#000000';
   }
-  if (color.startsWith('#')) {
-    return color as CssColor;
+  if (/^#[0-9A-Fa-f]{6}$/.test(color)) {
+    return color as HexColor;
   }
-  return chroma(color).hex() as CssColor;
+  return chroma(color).hex() as HexColor;
 };
 
-export const rgbToHex = (rgb: { r: number; g: number; b: number }) => {
-  return (
-    '#' +
-    [rgb.r, rgb.g, rgb.b]
-      .map((x) => {
-        const hex = Math.round(x * 255).toString(16);
-        return hex.length === 1 ? '0' + hex : hex;
-      })
-      .join('')
-  );
+export const rgbToHex = (rgb: { r: number; g: number; b: number }): HexColor => {
+  return `#${[rgb.r, rgb.g, rgb.b]
+    .map((x) => {
+      const hex = Math.round(x * 255).toString(16);
+      return hex.length === 1 ? '0' + hex : hex;
+    })
+    .join('')}`;
 };

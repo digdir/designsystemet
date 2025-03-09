@@ -12,12 +12,12 @@ export const metadata: Metadata = {
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div>
+    <div id='bloggen'>
       <Banner color='red'>
         <BannerIcon>
-          <PencilIcon fontSize={34} />
+          <PencilIcon fontSize={34} aria-hidden='true' />
         </BannerIcon>
-        <BannerHeading>Bloggen</BannerHeading>
+        <BannerHeading level={1}>Bloggen</BannerHeading>
       </Banner>
       <Container className={classes.page}>
         <main id='main' className={classes.main}>

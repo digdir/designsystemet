@@ -18,6 +18,9 @@ export default {
       placeContent: 'center',
       padding: '1rem 2rem',
     },
+    chromatic: {
+      disableSnapshot: false,
+    },
   },
   play: async (ctx) => {
     // When not in Docs mode, automatically open the popover
@@ -110,6 +113,39 @@ DottedUnderline.parameters = {
   },
 };
 
+const VariantsMap: {
+  [key: string]: { [key: string]: string };
+} = {
+  neutralDefault: {
+    'data-color': 'neutral',
+  },
+  neutralTinted: {
+    'data-color': 'neutral',
+    variant: 'tinted',
+  },
+  dangerDefault: {
+    'data-color': 'danger',
+  },
+  dangerTinted: {
+    'data-color': 'danger',
+    variant: 'tinted',
+  },
+  infoDefault: {
+    'data-color': 'info',
+  },
+  infoTinted: {
+    'data-color': 'info',
+    variant: 'tinted',
+  },
+  warningDefault: {
+    'data-color': 'warning',
+  },
+  warningTinted: {
+    'data-color': 'warning',
+    variant: 'tinted',
+  },
+};
+
 export const Variants: StoryFn<typeof Popover> = () => {
   const [open, setOpen] = useState(false);
 
@@ -118,65 +154,26 @@ export const Variants: StoryFn<typeof Popover> = () => {
   return (
     <div
       style={{
-        height: '110px',
-        width: '240px',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(4, 1fr)',
+        gap: 'var(--ds-size-2)',
+        height: '100%',
+        width: '100%',
       }}
     >
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 'var(--ds-size-2)',
-          flexWrap: 'wrap',
-          height: '100%',
-          width: '100%',
-        }}
-      >
-        <Popover.TriggerContext>
+      {Object.entries(VariantsMap).map(([key, props], index) => (
+        <Popover.TriggerContext key={key}>
           <Popover.Trigger>popover</Popover.Trigger>
           <Popover
             open={open}
-            placement='top'
-            data-color='neutral'
+            placement={index >= 4 ? 'bottom' : 'top'}
             autoPlacement={false}
+            {...props}
           >
-            neutral
+            {key}
           </Popover>
         </Popover.TriggerContext>
-        <Popover.TriggerContext>
-          <Popover.Trigger>popover</Popover.Trigger>
-          <Popover
-            open={open}
-            placement='bottom'
-            data-color='danger'
-            autoPlacement={false}
-          >
-            danger
-          </Popover>
-        </Popover.TriggerContext>
-        <Popover.TriggerContext>
-          <Popover.Trigger>popover</Popover.Trigger>
-          <Popover
-            open={open}
-            placement='top'
-            data-color='info'
-            autoPlacement={false}
-          >
-            info
-          </Popover>
-        </Popover.TriggerContext>
-        <Popover.TriggerContext>
-          <Popover.Trigger>popover</Popover.Trigger>
-          <Popover
-            open={open}
-            placement='bottom'
-            data-color='warning'
-            autoPlacement={false}
-          >
-            warning
-          </Popover>
-        </Popover.TriggerContext>
-      </div>
+      ))}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
-import { Button, Card, Details, Link } from '../';
+import { Button, Card, Details, Link, Paragraph } from '../';
 
 export default {
   title: 'Komponenter/Details',
@@ -35,85 +35,53 @@ export const InCard: StoryFn<typeof Details> = () => (
 );
 
 export const InCardWithColor: StoryFn<typeof Details> = () => (
-  <Card data-color='brand2'>
-    <Details>
-      <Details.Summary>Hvordan får jeg tildelt et jegernummer?</Details.Summary>
-      <Details.Content>
-        Du vil automatisk få tildelt jegernummer og bli registrert i
-        Jegerregisteret når du har bestått jegerprøven.
-      </Details.Content>
-    </Details>
-    <Details>
-      <Details.Summary>
-        Jeg har glemt jegernummeret mitt. Hvor finner jeg dette?
-      </Details.Summary>
-      <Details.Content>
-        <p style={{ marginTop: 0 }}>
-          Du kan finne dette ved å logge inn på{' '}
-          <Link href='https://minjegerside.brreg.no/'>Min side</Link>
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu
-          orci nisi. Nulla sed sem eget odio pellentesque venenatis vitae et
-          sem. Nunc vulputate nibh id nunc condimentum, et mattis quam vehicula.
-          Praesent gravida turpis eget tincidunt sodales. Praesent ante arcu,
-          semper at rhoncus ut, commodo ut ligula. Phasellus quis nibh vitae
-          dolor faucibus dictum et dapibus justo. Morbi scelerisque sem id nisi
-          ornare, in facilisis felis molestie.
-        </p>
-        <p>
-          Vivamus maximus eget mi ut aliquam. Nulla facilisi. Sed lobortis, dui
-          at facilisis scelerisque, tellus justo sodales enim, at luctus diam
-          turpis id diam. Sed vel magna eget nulla ornare lacinia. Mauris
-          commodo erat at dui interdum viverra. Morbi rhoncus dolor in massa
-          vehicula, aliquam dictum tortor luctus. Quisque vel feugiat libero.
-        </p>
-        <p>
-          Nullam sed quam vestibulum, scelerisque nisl vel, rhoncus leo. Integer
-          eu tempor ex, in vulputate erat. Quisque nisl lectus, consequat sit
-          amet ex ut, interdum tincidunt ligula. Morbi sed odio a leo bibendum
-          hendrerit. Nullam erat nisi, convallis tincidunt tempor eu, iaculis
-          scelerisque mauris. Nulla pretium ornare blandit. Proin dignissim
-          massa risus, eget euismod enim lobortis at. Donec venenatis libero sed
-          ligula convallis scelerisque. Pellentesque ut aliquet ante.
-          Pellentesque et eleifend ex. Quisque posuere convallis urna et
-          ullamcorper. Morbi eu tincidunt mauris. Ut nec diam nunc. Sed sed
-          neque facilisis, luctus libero vitae, porttitor ex. Mauris euismod
-          vitae velit eu laoreet.
-        </p>
-        <p>
-          Vivamus maximus eget mi ut aliquam. Nulla facilisi. Sed lobortis, dui
-          at facilisis scelerisque, tellus justo sodales enim, at luctus diam
-          turpis id diam. Sed vel magna eget nulla ornare lacinia. Mauris
-          commodo erat at dui interdum viverra. Morbi rhoncus dolor in massa
-          vehicula, aliquam dictum tortor luctus. Quisque vel feugiat libero.
-        </p>
-        <p>
-          Nullam sed quam vestibulum, scelerisque nisl vel, rhoncus leo. Integer
-          eu tempor ex, in vulputate erat. Quisque nisl lectus, consequat sit
-          amet ex ut, interdum tincidunt ligula. Morbi sed odio a leo bibendum
-          hendrerit. Nullam erat nisi, convallis tincidunt tempor eu, iaculis
-          scelerisque mauris. Nulla pretium ornare blandit. Proin dignissim
-          massa risus, eget euismod enim lobortis at. Donec venenatis libero sed
-          ligula convallis scelerisque. Pellentesque ut aliquet ante.
-          Pellentesque et eleifend ex. Quisque posuere convallis urna et
-          ullamcorper. Morbi eu tincidunt mauris. Ut nec diam nunc. Sed sed
-          neque facilisis, luctus libero vitae, porttitor ex. Mauris euismod
-          vitae velit eu laoreet.
-        </p>
-        <p style={{ marginBottom: 0 }}>
-          Nulla facilisi. Maecenas vel fringilla felis. Sed orci felis, volutpat
-          ac bibendum sit amet, sodales ac purus. Fusce nisi eros, tristique sed
-          consequat sed, scelerisque et tortor. Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Vestibulum pellentesque vehicula orci sed
-          scelerisque. Ut nec elementum tortor. Praesent lobortis eros nec
-          laoreet iaculis. Pellentesque ex purus, vulputate non volutpat non,
-          sodales a arcu. Phasellus ornare, lorem nec aliquam venenatis, augue
-          eros sagittis quam, at sagittis tellus ante in metus.
-        </p>
-      </Details.Content>
-    </Details>
-  </Card>
+  <>
+    <Card data-color='accent'>
+      <Details>
+        <Details.Summary>
+          Hvordan får jeg tildelt et jegernummer?
+        </Details.Summary>
+        <Details.Content>
+          Du vil automatisk få tildelt jegernummer og bli registrert i
+          Jegerregisteret når du har bestått jegerprøven.
+        </Details.Content>
+      </Details>
+      <Details>
+        <Details.Summary>
+          Jeg har glemt jegernummeret mitt. Hvor finner jeg dette?
+        </Details.Summary>
+        <Details.Content>
+          <Paragraph>
+            Du kan finne dette ved å logge inn på{' '}
+            <Link href='https://minjegerside.brreg.no/'>Min side</Link>
+          </Paragraph>
+        </Details.Content>
+      </Details>
+    </Card>
+    <br />
+    <Card data-color='accent' variant='tinted'>
+      <Details>
+        <Details.Summary>
+          Hvordan får jeg tildelt et jegernummer?
+        </Details.Summary>
+        <Details.Content>
+          Du vil automatisk få tildelt jegernummer og bli registrert i
+          Jegerregisteret når du har bestått jegerprøven.
+        </Details.Content>
+      </Details>
+      <Details>
+        <Details.Summary>
+          Jeg har glemt jegernummeret mitt. Hvor finner jeg dette?
+        </Details.Summary>
+        <Details.Content>
+          <Paragraph>
+            Du kan finne dette ved å logge inn på{' '}
+            <Link href='https://minjegerside.brreg.no/'>Min side</Link>
+          </Paragraph>
+        </Details.Content>
+      </Details>
+    </Card>
+  </>
 );
 
 export const Controlled: StoryFn<typeof Details> = () => {

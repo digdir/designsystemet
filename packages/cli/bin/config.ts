@@ -1,6 +1,7 @@
 import * as R from 'ramda';
 import { z } from 'zod';
 import { convertToHex } from '../src/colors/index.js';
+import { RESERVED_COLORS } from '../src/colors/theme.js';
 import { cliOptions } from '../src/tokens/create.js';
 
 export function mapPathToOptionName(path: (string | number)[]) {
@@ -20,14 +21,31 @@ const hexPatterns = [
   `#[0-9a-fA-F]{6}`,
   `#[0-9a-fA-F]{8}`,
 ];
+const reservedColorsPattern = `^(?!(?:${RESERVED_COLORS.join('|')})$)`;
 
 export const colorRegex = new RegExp(`^${hexPatterns.join('|')}$`);
 
 const colorSchema = z
-  .string({ description: 'A hex color, which is used for creating a color scale' })
+  .string({
+    description: `A hex color, which is used for creating a color scale. Invalid color names: ${RESERVED_COLORS.join(', ')}`,
+  })
   .regex(colorRegex)
   .transform(convertToHex);
-const colorCategorySchema = z.record(colorSchema, { description: 'One or more color definitions' });
+
+const colorCategorySchema = z
+  .record(
+    z.string().regex(new RegExp(reservedColorsPattern, 'i'), {
+      message: `Color names cannot include reserved names: ${RESERVED_COLORS.join(', ')}`,
+    }),
+    colorSchema,
+    {
+      description: 'One or more color definitions',
+      invalid_type_error: 'Color definitions must be hex color values',
+    },
+  )
+  .refine((colors) => !Object.keys(colors).some((key) => RESERVED_COLORS.includes(key.toLowerCase())), {
+    message: `Color names cannot include reserved names: ${RESERVED_COLORS.join(', ')}`,
+  });
 
 const themeSchema = z.object(
   {
@@ -39,13 +57,15 @@ const themeSchema = z.object(
       },
       { description: 'Defines the colors for this theme' },
     ),
-    typography: z.object(
-      {
-        fontFamily: z.string({ description: 'Sets the font-family for this theme' }),
-      },
-      { description: 'Defines the typography for a given theme' },
-    ),
-    borderRadius: z.number({ description: 'Defines the border-radius for this theme' }),
+    typography: z
+      .object(
+        {
+          fontFamily: z.string({ description: 'Sets the font-family for this theme' }),
+        },
+        { description: 'Defines the typography for a given theme' },
+      )
+      .optional(),
+    borderRadius: z.number({ description: 'Defines the border-radius for this theme' }).optional(),
   },
   { description: 'An object defining a theme. The property name holding the object becomes the theme name.' },
 );

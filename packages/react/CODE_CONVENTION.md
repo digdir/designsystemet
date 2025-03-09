@@ -24,3 +24,8 @@
 - Use `Object.assign` to make a compound component
   - Make sure to still export every individual component
 - Stories and MDX files should be in the same directory as the component
+
+## Storybook
+- Don't use `argTypes` for documenting component props. Typescript types should be single source of truth for props.
+- Add `.chromatic.tsx` and `createSingleStory` to opt-in for visual testing.
+  - Interactive stories must enable visual testing with `{ chromatic: { disableSnapshot: false } }` in the `parameters` meta object

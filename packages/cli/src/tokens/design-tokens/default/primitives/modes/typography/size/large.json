@@ -20,41 +20,37 @@
     },
     "2": {
       "$type": "fontSizes",
-      "$value": "14"
+      "$value": "16"
     },
     "3": {
       "$type": "fontSizes",
-      "$value": "16"
+      "$value": "18"
     },
     "4": {
       "$type": "fontSizes",
-      "$value": "18"
+      "$value": "21"
     },
     "5": {
       "$type": "fontSizes",
-      "$value": "21"
+      "$value": "24"
     },
     "6": {
       "$type": "fontSizes",
-      "$value": "24"
+      "$value": "30"
     },
     "7": {
       "$type": "fontSizes",
-      "$value": "30"
+      "$value": "36"
     },
     "8": {
       "$type": "fontSizes",
-      "$value": "36"
+      "$value": "48"
     },
     "9": {
       "$type": "fontSizes",
-      "$value": "48"
-    },
-    "10": {
-      "$type": "fontSizes",
       "$value": "60"
     },
-    "11": {
+    "10": {
       "$type": "fontSizes",
       "$value": "72"
     }

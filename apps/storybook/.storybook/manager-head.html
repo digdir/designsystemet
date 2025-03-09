@@ -6,7 +6,9 @@
 <link
   rel="preload stylesheet"
   as="style"
-  href="https://altinncdn.no/fonts/inter/v4/inter.css"
+  href="https://altinncdn.no/fonts/inter/v4.1/inter.css"
+  integrity="sha384-OcHzc/By/OPw9uJREawUCjP2inbOGKtKb4A/I2iXxmknUfog2H8Adx71tWVZRscD"
+  crossorigin="anonymous"
 />
 
 <link
@@ -49,11 +51,9 @@
   }
 
   .ds-focus:focus-visible {
-    --dsc-focus-border-width: 3px;
-
-    outline: var(--dsc-focus-border-width) solid var(--ds-color-focus-outer);
-    outline-offset: var(--dsc-focus-border-width);
-    box-shadow: 0 0 0 var(--dsc-focus-border-width) var(--ds-color-focus-inner);
+    outline: var(--ds-border-width-focus) solid var(--ds-color-focus-outer);
+    outline-offset: var(--ds-border-width-focus);
+    box-shadow: 0 0 0 var(--ds-border-width-focus) var(--ds-color-focus-inner);
   }
 
   /* HEADER */

@@ -222,9 +222,9 @@ const Header = ({
                   className={classes.toggleButton}
                 >
                   {theme === 'dark' ? (
-                    <SunIcon fontSize='1.75em' />
+                    <SunIcon fontSize='1.75em' aria-hidden />
                   ) : (
-                    <MoonIcon fontSize='1.75em' />
+                    <MoonIcon fontSize='1.75em' aria-hidden />
                   )}
                 </Button>
               </Tooltip>

@@ -1,0 +1,105 @@
+import { Meta, Primary, Controls, Canvas, ArgTypes } from '@storybook/blocks';
+import { CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/dialog.css?inline';
+import * as DialogStories from './Dialog.stories';
+
+import { Dialog } from './';
+
+<Meta of={DialogStories} />
+
+# Dialog
+
+`Dialog` lar deg lage modale og ikke-modale dialoger som bruker HTML-elementet `dialog`. 
+Du kan bruke vår `Trigger` komponent dersom du kun trenger å åpne eller lukke komponenten basert på brukerinteraksjon. 
+Om du trenger programmatisk kontroll over åpning og lukking av modalen kan du bruke `open`-propen, eller en `ref` som 
+gir tilgang på HTML-elementets [instance-metoder](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement#instance_methods) (f.eks. `.show()`, `.showModal()` og `.close()`).
+Les [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) for mer info.
+
+Du ender mellom non-modal og modal dialoger ved å bruke proppen `modal`, som er standard satt til `true`.
+Vi overstyrer hvordan `open` fungerer basert på `modal`-proppen.
+
+En modal `dialog` har native focus trap, som betyr at brukeren ikke kan tabbe til annet innhold på siden.
+
+<Primary />
+<Controls />
+
+## Slik bruker du `Dialog`
+
+```tsx
+<Dialog.TriggerContext>
+  <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+  <Dialog>
+    <Dialog.Block>
+      <Heading data-size="xs">Header</Heading>
+    </Dialog.Block>
+    <Dialog.Block>Content</Dialog.Block>
+    <Dialog.Block>Footer</Dialog.Block>
+  </Dialog>
+</Dialog.TriggerContext>
+```
+
+## Bruk med eksten trigger
+
+Dersom du vil bruke en ekstern trigger, som for eksempel ligger en annen plass i treet, kan du bruke `ref` for å åpne dialogen.
+
+```tsx
+const dialogRef = useRef<HTMLDialogElement>(null);
+
+...
+
+<Button onClick={() => dialogRef.current?.showModal()}>Open Dialog</Button>
+<Dialog ref={dialogRef}>
+  Content
+</Dialog>
+```
+
+### Med bruk av `ref`
+
+<Canvas of={DialogStories.WithoutDialogTriggerContext} />
+
+### Close on backdrop click
+
+Vi bruker `closedby="any"` proppen for å lukke dialogen når brukeren klikker utenfor.
+Dette funker kun dersom du har `modal={true}`, fordi en non-modal har ikke et backdrop.
+
+<Canvas of={DialogStories.BackdropClosedbyAny} />
+
+### Med `Block`
+
+Bruk flere `Dialog.Block` hvis du vil dele opp dialogen med skillelinjer til for eksempel topp- og bunn-område.
+Merk at innhold kan ikke plasseres direkte i `Dialog` dersom du bruker `Dialog.Block`; da burde alt innholdet være inni en av av dialogen `Dialog.Block`-seksjoner.
+
+<Canvas of={DialogStories.WithHeaderAndFooter} />
+
+### Form
+
+Vi bruker native `autoFocus` på `Textfield` for å fokusere inputen i skjemaet.
+
+<Canvas of={DialogStories.DialogWithForm} />
+
+### Med egendefinert bredde
+
+Bruk `max-width` for å sette egendefinert maks bredde på dialogen. Default er 40rem.
+
+<Canvas of={DialogStories.DialogWithMaxWidth} />
+
+### Innhold som går utenfor Dialogen
+
+Bruk `overflow: visible` for å la innhold gå utenfor dialogen.
+
+<Canvas of={DialogStories.DialogWithSuggestion} />
+
+### Non-modal dialog
+
+Bruk `modal={false}` for å lage en non-modal dialog.
+
+<Canvas of={DialogStories.DialogNonModal} />
+
+### `Dialog.Block`
+
+<ArgTypes of={Dialog.Block} />
+
+
+## CSS Variabler
+
+<CssVariables css={css} />
