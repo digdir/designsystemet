@@ -171,6 +171,14 @@ export const getLightnessFromHex = (hex: HexColor) => {
   return conv.hsluv_l;
 };
 
+export const getSaturationFromHex = (hex: string) => {
+  const conv = new Hsluv();
+  conv.hex = hex;
+  conv.hexToHsluv();
+
+  return conv.hsluv_s;
+};
+
 /**
  *
  * This function checks if white or black text can be used on 2 different colors at 4.5:1 contrast.

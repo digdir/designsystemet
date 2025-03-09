@@ -1,0 +1,50 @@
+.sidebar {
+  background-color: white;
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  z-index: 10;
+  border-radius: 8px;
+  position: fixed;
+  top: 80px;
+  right: 24px;
+  bottom: 24px;
+  width: 410px;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.heading {
+  margin-bottom: 16px;
+}
+
+.select {
+  display: flex;
+  font-size: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.select .field {
+  width: 183px;
+}
+
+.select select {
+  height: 32px;
+  padding: 0 8px;
+  font-size: 14px;
+}
+
+.rangeOutput {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  font-size: 16px;
+}

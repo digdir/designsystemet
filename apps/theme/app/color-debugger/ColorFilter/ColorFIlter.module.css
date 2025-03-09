@@ -1,0 +1,20 @@
+.filter {
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+.item {
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  background-color: white;
+  height: 40px;
+  text-align: left;
+  padding: 0 14px;
+  margin-right: -1px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.active {
+  background-color: rgb(82, 82, 82);
+  color: white;
+}

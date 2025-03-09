@@ -1,0 +1,472 @@
+import {
+  type ThemeInfo,
+  generateColorSchemes,
+} from '@digdir/designsystemet/color';
+import {
+  MagnifyingGlassIcon,
+  MenuHamburgerIcon,
+  MicrophoneIcon,
+} from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
+import { useState } from 'react';
+import { ColorFilter } from '../../ColorFilter/ColorFilter';
+import { useDebugStore } from '../../debugStore';
+import { ColorIndexes, ColorScaleNames } from '../../utils';
+import { CategoryIcon } from './CategoryIcon';
+import { FooterIcon } from './FooterIcon';
+import classes from './Mobile.module.css';
+import { MobileHeader } from './MobileHeader/MobileHeader';
+
+type MobileProps = {
+  colorScales: ThemeInfo[][];
+};
+
+export const Mobile = ({ colorScales }: MobileProps) => {
+  const greyScheme = generateColorSchemes('#000000');
+  const [activeColor, setActiveColor] = useState('Red');
+  const themeSettings = useDebugStore((state) => state.themeSettings);
+
+  type ItemProps = {
+    colorTheme: ThemeInfo;
+    colorScheme: 'light' | 'dark';
+    type: 'A' | 'B' | 'C' | 'D';
+  };
+
+  type CategoryItemProps = {
+    name: string;
+    children: React.ReactNode;
+    activeColor?: string;
+    showShadow?: boolean;
+    scale: ThemeInfo;
+    colorScheme: 'light' | 'dark';
+  };
+
+  type PostItemProps = {
+    title: string;
+    desc: string;
+    img: string;
+    type: string;
+    colorTheme: ThemeInfo;
+    showShadow?: boolean;
+    colorScheme: 'light' | 'dark';
+  };
+
+  const getCategoryBg = (
+    type: string,
+    colorTheme: ThemeInfo,
+    colorScheme: 'light' | 'dark',
+  ) => {
+    if (type === 'A' || type === 'B') {
+      if (type === 'A') {
+        return greyScheme[colorScheme][2].hex;
+      }
+      return colorTheme[colorScheme][2].hex;
+    }
+    return colorTheme[colorScheme][3].hex;
+  };
+
+  const CategoryItem = ({
+    name,
+    activeColor,
+    showShadow,
+    children,
+    scale,
+    colorScheme,
+  }: CategoryItemProps) => {
+    return (
+      <div className={classes.categoryItem}>
+        <div
+          className={classes.categoryIconContainer}
+          style={{
+            backgroundColor: activeColor && activeColor,
+            boxShadow: showShadow
+              ? '0px 2px 8px rgba(0, 0, 0, 0.03)'
+              : undefined,
+          }}
+        >
+          {children}
+        </div>
+        <div
+          className={classes.categoryName}
+          style={{
+            color: scale[colorScheme][ColorIndexes.textDefault].hex,
+          }}
+        >
+          {name}
+        </div>
+      </div>
+    );
+  };
+
+  const PostItem = ({
+    title,
+    desc,
+    img,
+    type,
+    showShadow,
+    colorTheme,
+    colorScheme,
+  }: PostItemProps) => {
+    return (
+      <div
+        className={classes.postsItem}
+        style={{
+          backgroundColor:
+            type === 'A' || type === 'B'
+              ? type === 'A'
+                ? greyScheme[colorScheme][2].hex
+                : colorTheme[colorScheme][2].hex
+              : colorTheme[colorScheme][3].hex,
+          boxShadow: showShadow ? '0px 2px 8px rgba(0, 0, 0, 0.03)' : undefined,
+        }}
+      >
+        <img className={classes.postsImg} src={img} alt='' />
+        <div className={classes.postsText}>
+          <div
+            className={classes.postsTitle}
+            style={{
+              color:
+                type === 'A'
+                  ? greyScheme[colorScheme][ColorIndexes.textDefault].hex
+                  : colorTheme[colorScheme][ColorIndexes.textDefault].hex,
+            }}
+          >
+            {title}
+          </div>
+          <div
+            className={classes.postsDesc}
+            style={{
+              color:
+                type === 'A'
+                  ? greyScheme[colorScheme][ColorIndexes.textSubtle].hex
+                  : colorTheme[colorScheme][ColorIndexes.textSubtle].hex,
+            }}
+          >
+            {desc}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  type HeadingProps = {
+    name: string;
+    scale: ThemeInfo;
+    colorScheme: 'light' | 'dark';
+  };
+
+  const Heading = ({ scale, name, colorScheme }: HeadingProps) => {
+    return (
+      <div
+        className={classes.heading}
+        style={{
+          color: scale[colorScheme][ColorIndexes.textDefault].hex,
+        }}
+      >
+        {name}
+      </div>
+    );
+  };
+
+  const Item = ({ colorTheme, colorScheme, type }: ItemProps) => {
+    return (
+      <div
+        className={classes.item}
+        style={{
+          backgroundColor:
+            type === 'A'
+              ? greyScheme[colorScheme][1].hex
+              : type === 'B' || type === 'C'
+                ? colorTheme[colorScheme][1].hex
+                : greyScheme[colorScheme][0].hex,
+        }}
+      >
+        <MobileHeader
+          scale={type === 'A' ? greyScheme : colorTheme}
+          colorScheme={colorScheme}
+        />
+        <div className={classes.header}>
+          <div className={classes.menu}>
+            <MenuHamburgerIcon
+              title='a11y-title'
+              fontSize='1.5rem'
+              color={
+                type === 'A'
+                  ? greyScheme[colorScheme][ColorIndexes.textDefault].hex
+                  : colorTheme[colorScheme][ColorIndexes.textDefault].hex
+              }
+            />
+          </div>
+          <div
+            className={classes.logo}
+            style={{
+              color: colorTheme[colorScheme][ColorIndexes.textSubtle].hex,
+            }}
+          >
+            Gamezone
+          </div>
+          <img className={classes.avatar} src='img/avatars/male2.png' alt='' />
+        </div>
+        <div className={classes.search}>
+          <Heading
+            name='Søk etter spill'
+            scale={type === 'A' ? greyScheme : colorTheme}
+            colorScheme={colorScheme}
+          />
+          <div className={classes.searchContainer}>
+            <input
+              className={classes.searchInput}
+              type='text'
+              placeholder='Søk her...'
+              value='Søk her...'
+              style={{
+                backgroundColor:
+                  type === 'A'
+                    ? greyScheme[colorScheme][2].hex
+                    : colorTheme[colorScheme][2].hex,
+                color:
+                  type === 'A'
+                    ? greyScheme[colorScheme][ColorIndexes.textSubtle].hex
+                    : colorTheme[colorScheme][ColorIndexes.textSubtle].hex,
+                border:
+                  type === 'A'
+                    ? '1px solid' +
+                      greyScheme[colorScheme][ColorIndexes.borderDefault].hex
+                    : '1px solid' +
+                      colorTheme[colorScheme][ColorIndexes.borderStrong].hex,
+              }}
+            />
+            <MagnifyingGlassIcon
+              className={classes.searchIcon}
+              title='a11y-title'
+              fontSize='1.5rem'
+              color={
+                type === 'A'
+                  ? greyScheme[colorScheme][ColorIndexes.textDefault].hex
+                  : colorTheme[colorScheme][ColorIndexes.textDefault].hex
+              }
+            />
+            <MicrophoneIcon
+              className={classes.searchMic}
+              title='a11y-title'
+              fontSize='1.5rem'
+              color={
+                type === 'A'
+                  ? greyScheme[colorScheme][ColorIndexes.textSubtle].hex
+                  : colorTheme[colorScheme][ColorIndexes.textSubtle].hex
+              }
+            />
+          </div>
+        </div>
+
+        <div className={classes.categories}>
+          <div className={classes.headerContainer}>
+            <Heading
+              name='Kategorier'
+              scale={type === 'A' ? greyScheme : colorTheme}
+              colorScheme={colorScheme}
+            />
+            <a href='#' className={classes.link}>
+              Se alle
+            </a>
+          </div>
+
+          <div className={classes.categoriesItems}>
+            <CategoryItem
+              name='Action'
+              activeColor={colorTheme[colorScheme][4].hex}
+              showShadow={type === 'A'}
+              scale={type === 'A' ? greyScheme : colorTheme}
+              colorScheme={colorScheme}
+            >
+              <CategoryIcon
+                type='sword'
+                color={colorTheme[colorScheme][ColorIndexes.textDefault].hex}
+              />
+            </CategoryItem>
+            <CategoryItem
+              name='Fantasy'
+              showShadow={type === 'A'}
+              activeColor={getCategoryBg(type, colorTheme, colorScheme)}
+              scale={type === 'A' ? greyScheme : colorTheme}
+              colorScheme={colorScheme}
+            >
+              <CategoryIcon
+                type='flask'
+                color={
+                  type === 'A'
+                    ? greyScheme[colorScheme][ColorIndexes.textDefault].hex
+                    : colorTheme[colorScheme][ColorIndexes.textDefault].hex
+                }
+              />
+            </CategoryItem>
+            <CategoryItem
+              name='RPG'
+              showShadow={type === 'A'}
+              activeColor={getCategoryBg(type, colorTheme, colorScheme)}
+              scale={type === 'A' ? greyScheme : colorTheme}
+              colorScheme={colorScheme}
+            >
+              <CategoryIcon
+                type='shield'
+                color={
+                  type === 'A'
+                    ? greyScheme[colorScheme][ColorIndexes.textDefault].hex
+                    : colorTheme[colorScheme][ColorIndexes.textDefault].hex
+                }
+              />
+            </CategoryItem>
+            <CategoryItem
+              name='Strategi'
+              showShadow={type === 'A'}
+              activeColor={getCategoryBg(type, colorTheme, colorScheme)}
+              scale={type === 'A' ? greyScheme : colorTheme}
+              colorScheme={colorScheme}
+            >
+              <CategoryIcon
+                type='hex'
+                color={
+                  type === 'A'
+                    ? greyScheme[colorScheme][ColorIndexes.textDefault].hex
+                    : colorTheme[colorScheme][ColorIndexes.textDefault].hex
+                }
+              />
+            </CategoryItem>
+          </div>
+        </div>
+
+        <div className={classes.posts}>
+          <div className={classes.headerContainer}>
+            <Heading
+              name='Mest populære spill'
+              scale={type === 'A' ? greyScheme : colorTheme}
+              colorScheme={colorScheme}
+            />
+            <a href='#' className={classes.link}>
+              Se alle
+            </a>
+          </div>
+          <div className={classes.postsItems}>
+            <PostItem
+              title='Star Wars: Old Empire'
+              desc='Become the hero of the galaxy'
+              img='img/debug/space-man.png'
+              type={type}
+              colorTheme={colorTheme}
+              showShadow={type === 'A'}
+              colorScheme={colorScheme}
+            />
+            <PostItem
+              title='Dune The Adventure'
+              desc='Roam through'
+              img='img/debug/space-ship.png'
+              type={type}
+              colorTheme={colorTheme}
+              showShadow={type === 'A'}
+              colorScheme={colorScheme}
+            />
+          </div>
+        </div>
+
+        <div
+          className={classes.footer}
+          style={{
+            backgroundColor:
+              type === 'B' || type === 'C'
+                ? colorTheme[colorScheme][2].hex
+                : greyScheme[colorScheme][2].hex,
+          }}
+        >
+          <div className={classes.footerItems}>
+            <div className={cl(classes.footerItem)}>
+              <FooterIcon
+                color={colorTheme[colorScheme][11].hex}
+                type='house'
+              />
+              <div
+                className={classes.footerCircle}
+                style={{
+                  backgroundColor: colorTheme[colorScheme][11].hex,
+                }}
+              ></div>
+            </div>
+            <div className={classes.footerItem}>
+              <FooterIcon
+                color={greyScheme[colorScheme][9].hex}
+                type='letter'
+              />
+            </div>
+            <div className={classes.footerItem}>
+              <FooterIcon color={greyScheme[colorScheme][9].hex} type='heart' />
+            </div>
+            <div className={classes.footerItem}>
+              <FooterIcon
+                color={greyScheme[colorScheme][9].hex}
+                type='profile'
+              />
+            </div>
+          </div>
+          <div
+            className={classes.footerBar}
+            style={{
+              backgroundColor: greyScheme[colorScheme][9].hex,
+            }}
+          ></div>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div className={classes.container}>
+      <div className={classes.pageHeading}>App design</div>
+      <ColorFilter onFilterChange={(e) => setActiveColor(e)} />
+      {colorScales.map((innerScales, index) => (
+        <div key={index}>
+          {(ColorScaleNames[index] === activeColor ||
+            activeColor === 'Alle') && (
+            <>
+              <div className={classes.title}>{ColorScaleNames[index]}</div>
+              <div className={classes.colorRow}>
+                {innerScales.map((colorScheme, index2) => (
+                  <div key={index2}>
+                    <div className={classes.colorMeta}>
+                      <div
+                        className={classes.colorMetaColor}
+                        style={{
+                          backgroundColor: colorScheme.light[11].hex,
+                        }}
+                      ></div>
+                    </div>
+                    <div className={classes.row}>
+                      <Item
+                        colorTheme={colorScheme}
+                        colorScheme='light'
+                        type='C'
+                      />
+                      <Item
+                        colorTheme={colorScheme}
+                        colorScheme='dark'
+                        type='C'
+                      />
+                      <Item
+                        colorTheme={colorScheme}
+                        colorScheme='light'
+                        type='A'
+                      />
+                      <Item
+                        colorTheme={colorScheme}
+                        colorScheme='dark'
+                        type='A'
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+};
