@@ -207,15 +207,18 @@ export const writeTokens = async (options: WriteTokensOptions) => {
   );
 
   // Create color scheme and typography modes
+
+  const colorScheme = tokens.primitives['colors-scheme'];
+  const typography = tokens.primitives.typography;
   const files: File[] = [
-    generateColorSchemeFile('light', themeName, tokens.colors.light[themeName], targetDir),
-    generateColorSchemeFile('light', 'global', tokens.colors.light.global, targetDir),
-    generateColorSchemeFile('dark', themeName, tokens.colors.dark[themeName], targetDir),
-    generateColorSchemeFile('dark', 'global', tokens.colors.dark.global, targetDir),
-    // generateColorSchemeFile('contrast', themeName, tokens.colors.contrast[themeName], targetDir),
-    // generateColorSchemeFile('contrast', 'global', tokens.colors.contrast.global, targetDir),
-    generateTypographyFile('primary', themeName, tokens.typography.primary, targetDir),
-    generateTypographyFile('secondary', themeName, tokens.typography.primary, targetDir),
+    generateColorSchemeFile('light', themeName, colorScheme.light[themeName], targetDir),
+    generateColorSchemeFile('light', 'global', colorScheme.light.global, targetDir),
+    generateColorSchemeFile('dark', themeName, colorScheme.dark[themeName], targetDir),
+    generateColorSchemeFile('dark', 'global', colorScheme.dark.global, targetDir),
+    // generateColorSchemeFile('contrast', themeName, colorScheme.contrast[themeName], targetDir),
+    // generateColorSchemeFile('contrast', 'global', colorScheme.contrast.global, targetDir),
+    generateTypographyFile('primary', themeName, typography.primary, targetDir),
+    generateTypographyFile('secondary', themeName, typography.primary, targetDir),
   ];
 
   for (const file of files) {

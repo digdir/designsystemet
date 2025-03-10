@@ -15,14 +15,25 @@ export type TypographyTokens = TokensSet;
 
 // Define the main Tokens type
 export type Tokens = {
-  colors: {
-    light: ColorModeTokens;
-    dark: ColorModeTokens;
-    contrast?: ColorModeTokens;
+  primitives: {
+    'colors-scheme': {
+      light: ColorModeTokens;
+      dark: ColorModeTokens;
+      contrast?: ColorModeTokens;
+    };
+    typography: {
+      primary: TokensSet;
+    };
   };
-  typography: {
-    primary: TokensSet;
+  semantic?: {
+    modes: {
+      'main-color': Record<string, TokensSet>;
+      'support-color': Record<string, TokensSet>;
+    };
+    color: TokensSet;
+    style: TokensSet;
   };
+  themes?: Record<string, TokensSet>;
 };
 
 export type Colors = {
