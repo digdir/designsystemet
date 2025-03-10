@@ -31,9 +31,14 @@ export type Tokens = {
       'support-color': Record<string, TokensSet>;
     };
     color: TokensSet;
-    style: TokensSet;
+    style?: TokensSet;
   };
   themes?: Record<string, TokensSet>;
+};
+
+export type SemanticModes = {
+  'main-color': Record<string, TokensSet>;
+  'support-color': Record<string, TokensSet>;
 };
 
 export type Colors = {
