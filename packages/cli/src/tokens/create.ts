@@ -8,6 +8,9 @@ import customColorTemplate from './design-tokens/template/semantic/modes/categor
 import semanticColorTemplate from './design-tokens/template/semantic/semantic-color-template.json' with {
   type: 'json',
 };
+import themeBaseFile from './design-tokens/template/themes/theme-base-file.json' with { type: 'json' };
+import themeColorTemplate from './design-tokens/template/themes/theme-color-template.json' with { type: 'json' };
+
 import type { Colors, SemanticModes, Theme, Tokens, TokensSet, Typography } from './types.js';
 
 export const cliOptions = {
@@ -129,7 +132,7 @@ const generateSemantic = (colors: Colors): Tokens['semantic'] => {
   }
 
   const customColors = [...mainColorNames, 'neutral', ...supportColorNames];
-  const defaultAccentColor = mainColorNames[0];
+  const defaultColor = mainColorNames[0];
 
   const semanticColorTokens = customColors.map(
     (colorName) =>
@@ -151,7 +154,7 @@ const generateSemantic = (colors: Colors): Tokens['semantic'] => {
       semanticColors,
       (key, value) => {
         if (key === '$value') {
-          return (value as string).replace('<accent-color>', defaultAccentColor);
+          return (value as string).replace('<accent-color>', defaultColor);
         }
         return value;
       },
@@ -165,10 +168,52 @@ const generateSemantic = (colors: Colors): Tokens['semantic'] => {
   };
 };
 
-export const createTokens = (opts: Theme) => {
-  const { colors, typography, name } = opts;
+const generateThemes = (colors: Colors, themeName: string, borderRadius: number): Tokens['themes'] => {
+  const mainColorNames = Object.keys(colors.main);
+  const supportColorNames = Object.keys(colors.support);
+  const customColors = [...mainColorNames, 'neutral', ...supportColorNames];
 
-  generateSemantic(colors);
+  const themeColorTokens = Object.fromEntries(
+    customColors.map(
+      (colorName) =>
+        [
+          colorName,
+          R.map((x) => ({ ...x, $value: x.$value.replace('<color>', colorName) }), themeColorTemplate),
+        ] as const,
+    ),
+  );
+
+  const { color: themeBaseFileColor, ...remainingThemeFile } = themeBaseFile;
+  const themeFile = {
+    color: {
+      ...themeColorTokens,
+      ...themeBaseFileColor,
+    },
+    ...remainingThemeFile,
+  };
+
+  const baseBorderRadius = R.lensPath(['border-radius', 'base', '$value']);
+  const updatedThemeFile = R.set(baseBorderRadius, String(borderRadius), themeFile);
+
+  return {
+    [themeName]: JSON.parse(
+      JSON.stringify(
+        updatedThemeFile,
+        (key, value) => {
+          if (key === '$value') {
+            return (value as string).replace('<theme>', themeName);
+          }
+
+          return value;
+        },
+        2,
+      ),
+    ) as TokensSet,
+  };
+};
+
+export const createTokens = (opts: Theme) => {
+  const { colors, typography, name, borderRadius } = opts;
 
   const tokens: Tokens = {
     primitives: {
@@ -188,6 +233,7 @@ export const createTokens = (opts: Theme) => {
       },
     },
     semantic: generateSemantic(colors),
+    themes: generateThemes(colors, name, borderRadius),
   };
 
   return tokens;
