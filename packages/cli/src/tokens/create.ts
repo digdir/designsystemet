@@ -89,19 +89,21 @@ export const createTokens = (opts: Theme) => {
   const { colors, typography, name } = opts;
 
   const tokens: Tokens = {
-    colors: {
-      light: {
-        [name]: generateThemeTokens(name, 'light', colors),
-        global: generateGlobalTokens('light'),
+    primitives: {
+      'colors-scheme': {
+        light: {
+          [name]: generateThemeTokens(name, 'light', colors),
+          global: generateGlobalTokens('light'),
+        },
+        dark: { [name]: generateThemeTokens(name, 'dark', colors), global: generateGlobalTokens('dark') },
+        // contrast: {
+        //   [name]: generateThemeTokens(name, 'contrast', colors),
+        //   global: generateGlobalTokens('contrast'),
+        // },
       },
-      dark: { [name]: generateThemeTokens(name, 'dark', colors), global: generateGlobalTokens('dark') },
-      // contrast: {
-      //   [name]: generateThemeTokens(name, 'contrast', colors),
-      //   global: generateGlobalTokens('contrast'),
-      // },
-    },
-    typography: {
-      primary: generateTypographyTokens(name, typography),
+      typography: {
+        primary: generateTypographyTokens(name, typography),
+      },
     },
   };
 
