@@ -1,7 +1,14 @@
 import * as R from 'ramda';
 import { baseColors, generateColorScale } from '../colors/index.js';
 import type { Color, ColorScheme } from '../colors/types.js';
-import type { Colors, Theme, Tokens, TokensSet, Typography } from './types.js';
+import semanticColorBaseFile from './design-tokens/template/semantic/color-base-file.json' with { type: 'json' };
+import customColorTemplate from './design-tokens/template/semantic/modes/category-color/category-color-template.json' with {
+  type: 'json',
+};
+import semanticColorTemplate from './design-tokens/template/semantic/semantic-color-template.json' with {
+  type: 'json',
+};
+import type { Colors, SemanticModes, Theme, Tokens, TokensSet, Typography } from './types.js';
 
 export const cliOptions = {
   outDir: 'out-dir',
@@ -85,8 +92,83 @@ const generateGlobalTokens = (colorScheme: ColorScheme) => {
   };
 };
 
+const generateSemantic = (colors: Colors): Tokens['semantic'] => {
+  const mainColorNames = Object.keys(colors.main);
+  const supportColorNames = Object.keys(colors.support);
+
+  const modes: SemanticModes = {
+    'main-color': {},
+    'support-color': {},
+  };
+
+  // Create main-color and support-color modes for the custom colors
+  for (const [colorCategory, colorNames] of [
+    ['main-color', mainColorNames],
+    ['support-color', supportColorNames],
+  ] as const) {
+    for (const colorName of colorNames) {
+      const category = colorCategory.replace('-color', '');
+      const customColorFile = {
+        color: {
+          [category]: JSON.parse(
+            JSON.stringify(
+              customColorTemplate,
+              (key, value) => {
+                if (key === '$value') {
+                  return (value as string).replace('<color>', colorName);
+                }
+                return value;
+              },
+              2,
+            ),
+          ) as TokensSet,
+        },
+      };
+      modes[colorCategory][colorName] = customColorFile;
+    }
+  }
+
+  const customColors = [...mainColorNames, 'neutral', ...supportColorNames];
+  const defaultAccentColor = mainColorNames[0];
+
+  const semanticColorTokens = customColors.map(
+    (colorName) =>
+      [
+        colorName,
+        R.map((x) => ({ ...x, $value: x.$value.replace('<color>', colorName) }), semanticColorTemplate),
+      ] as const,
+  );
+
+  const semanticColors = {
+    ...semanticColorBaseFile,
+    color: {
+      ...Object.fromEntries(semanticColorTokens),
+      ...semanticColorBaseFile.color,
+    },
+  };
+  const color = JSON.parse(
+    JSON.stringify(
+      semanticColors,
+      (key, value) => {
+        if (key === '$value') {
+          return (value as string).replace('<accent-color>', defaultAccentColor);
+        }
+        return value;
+      },
+      2,
+    ),
+  ) as TokensSet;
+
+  return {
+    modes,
+    color,
+  };
+};
+
 export const createTokens = (opts: Theme) => {
   const { colors, typography, name } = opts;
+
+  generateSemantic(colors);
 
   const tokens: Tokens = {
     primitives: {
@@ -105,6 +187,7 @@ export const createTokens = (opts: Theme) => {
         primary: generateTypographyTokens(name, typography),
       },
     },
+    semantic: generateSemantic(colors),
   };
 
   return tokens;
