@@ -4,8 +4,6 @@ import type { ThemeObject } from '@tokens-studio/types';
 import chalk from 'chalk';
 import * as R from 'ramda';
 import type { ColorScheme } from '../colors/types.js';
-import themeBaseFile from './design-tokens/template/themes/theme-base-file.json' with { type: 'json' };
-import themeColorTemplate from './design-tokens/template/themes/theme-color-template.json' with { type: 'json' };
 import type { Collection, File, Theme, Tokens, TokensSet, TypographyModes } from './types.js';
 import { cp, mkdir, writeFile } from './utils.js';
 import { generateMetadataJson } from './write/generate$metadata.js';
@@ -103,58 +101,15 @@ export const writeTokens = async (options: WriteTokensOptions) => {
     }
   }
 
-  const mainColorNames = Object.keys(colors.main);
-  const supportColorNames = Object.keys(colors.support);
-  const customColors = [...mainColorNames, 'neutral', ...supportColorNames];
-
-  // Create semantic colors file
-
+  // Create semantic color file
   const filePath = path.join(targetDir, `semantic/color.json`);
-  await writeFile(filePath, stringify(tokens.semantic?.color || {}), dry);
+  await writeFile(filePath, stringify(tokens.semantic.color || {}), dry);
 
-  // Create themes file
+  // Create theme file
   await mkdir(path.join(targetDir, 'themes'), dry);
-
-  const themeColorTokens = Object.fromEntries(
-    customColors.map(
-      (colorName) =>
-        [
-          colorName,
-          R.map((x) => ({ ...x, $value: x.$value.replace('<color>', colorName) }), themeColorTemplate),
-        ] as const,
-    ),
-  );
-
-  const { color: themeBaseFileColor, ...remainingThemeFile } = themeBaseFile;
-  const themeFile = {
-    color: {
-      ...themeColorTokens,
-      ...themeBaseFileColor,
-    },
-    ...remainingThemeFile,
-  };
-
-  const baseBorderRadius = R.lensPath(['border-radius', 'base', '$value']);
-  const updatedThemeFile = R.set(baseBorderRadius, String(borderRadius), themeFile);
-
-  await writeFile(
-    path.join(targetDir, `themes/${themeName}.json`),
-    JSON.stringify(
-      updatedThemeFile,
-      (key, value) => {
-        if (key === '$value') {
-          return (value as string).replace('<theme>', themeName);
-        }
-
-        return value;
-      },
-      2,
-    ),
-    dry,
-  );
+  await writeFile(path.join(targetDir, `themes/${themeName}.json`), stringify(tokens.themes[themeName] || {}), dry);
 
   // Create color scheme and typography modes
-
   const colorScheme = tokens.primitives['colors-scheme'];
   const typography = tokens.primitives.typography;
   const files: File[] = [
