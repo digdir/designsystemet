@@ -25,7 +25,7 @@ export type Tokens = {
       primary: TokensSet;
     };
   };
-  semantic?: {
+  semantic: {
     modes: {
       'main-color': Record<string, TokensSet>;
       'support-color': Record<string, TokensSet>;
@@ -33,7 +33,7 @@ export type Tokens = {
     color: TokensSet;
     style?: TokensSet;
   };
-  themes?: Record<string, TokensSet>;
+  themes: Record<string, TokensSet>;
 };
 
 export type SemanticModes = {
