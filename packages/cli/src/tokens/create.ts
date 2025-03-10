@@ -1,7 +1,17 @@
 import * as R from 'ramda';
 import { baseColors, generateColorScale } from '../colors/index.js';
 import type { Color, ColorScheme } from '../colors/types.js';
-import type { Colors, Theme, Tokens, TokensSet, Typography } from './types.js';
+import semanticColorBaseFile from './design-tokens/template/semantic/color-base-file.json' with { type: 'json' };
+import customColorTemplate from './design-tokens/template/semantic/modes/category-color/category-color-template.json' with {
+  type: 'json',
+};
+import semanticColorTemplate from './design-tokens/template/semantic/semantic-color-template.json' with {
+  type: 'json',
+};
+import themeBaseFile from './design-tokens/template/themes/theme-base-file.json' with { type: 'json' };
+import themeColorTemplate from './design-tokens/template/themes/theme-color-template.json' with { type: 'json' };
+
+import type { Colors, SemanticModes, Theme, Tokens, TokensSet, Typography } from './types.js';
 
 export const cliOptions = {
   outDir: 'out-dir',
@@ -85,24 +95,145 @@ const generateGlobalTokens = (colorScheme: ColorScheme) => {
   };
 };
 
+const generateSemantic = (colors: Colors): Tokens['semantic'] => {
+  const mainColorNames = Object.keys(colors.main);
+  const supportColorNames = Object.keys(colors.support);
+
+  const modes: SemanticModes = {
+    'main-color': {},
+    'support-color': {},
+  };
+
+  // Create main-color and support-color modes for the custom colors
+  for (const [colorCategory, colorNames] of [
+    ['main-color', mainColorNames],
+    ['support-color', supportColorNames],
+  ] as const) {
+    for (const colorName of colorNames) {
+      const category = colorCategory.replace('-color', '');
+      const customColorFile = {
+        color: {
+          [category]: JSON.parse(
+            JSON.stringify(
+              customColorTemplate,
+              (key, value) => {
+                if (key === '$value') {
+                  return (value as string).replace('<color>', colorName);
+                }
+                return value;
+              },
+              2,
+            ),
+          ) as TokensSet,
+        },
+      };
+      modes[colorCategory][colorName] = customColorFile;
+    }
+  }
+
+  const customColors = [...mainColorNames, 'neutral', ...supportColorNames];
+  const defaultColor = mainColorNames[0];
+
+  const semanticColorTokens = customColors.map(
+    (colorName) =>
+      [
+        colorName,
+        R.map((x) => ({ ...x, $value: x.$value.replace('<color>', colorName) }), semanticColorTemplate),
+      ] as const,
+  );
+
+  const semanticColors = {
+    ...semanticColorBaseFile,
+    color: {
+      ...Object.fromEntries(semanticColorTokens),
+      ...semanticColorBaseFile.color,
+    },
+  };
+  const color = JSON.parse(
+    JSON.stringify(
+      semanticColors,
+      (key, value) => {
+        if (key === '$value') {
+          return (value as string).replace('<accent-color>', defaultColor);
+        }
+        return value;
+      },
+      2,
+    ),
+  ) as TokensSet;
+
+  return {
+    modes,
+    color,
+  };
+};
+
+const generateThemes = (colors: Colors, themeName: string, borderRadius: number): Tokens['themes'] => {
+  const mainColorNames = Object.keys(colors.main);
+  const supportColorNames = Object.keys(colors.support);
+  const customColors = [...mainColorNames, 'neutral', ...supportColorNames];
+
+  const themeColorTokens = Object.fromEntries(
+    customColors.map(
+      (colorName) =>
+        [
+          colorName,
+          R.map((x) => ({ ...x, $value: x.$value.replace('<color>', colorName) }), themeColorTemplate),
+        ] as const,
+    ),
+  );
+
+  const { color: themeBaseFileColor, ...remainingThemeFile } = themeBaseFile;
+  const themeFile = {
+    color: {
+      ...themeColorTokens,
+      ...themeBaseFileColor,
+    },
+    ...remainingThemeFile,
+  };
+
+  const baseBorderRadius = R.lensPath(['border-radius', 'base', '$value']);
+  const updatedThemeFile = R.set(baseBorderRadius, String(borderRadius), themeFile);
+
+  return {
+    [themeName]: JSON.parse(
+      JSON.stringify(
+        updatedThemeFile,
+        (key, value) => {
+          if (key === '$value') {
+            return (value as string).replace('<theme>', themeName);
+          }
+
+          return value;
+        },
+        2,
+      ),
+    ) as TokensSet,
+  };
+};
+
 export const createTokens = (opts: Theme) => {
-  const { colors, typography, name } = opts;
+  const { colors, typography, name, borderRadius } = opts;
 
   const tokens: Tokens = {
-    colors: {
-      light: {
-        [name]: generateThemeTokens(name, 'light', colors),
-        global: generateGlobalTokens('light'),
+    primitives: {
+      'colors-scheme': {
+        light: {
+          [name]: generateThemeTokens(name, 'light', colors),
+          global: generateGlobalTokens('light'),
+        },
+        dark: { [name]: generateThemeTokens(name, 'dark', colors), global: generateGlobalTokens('dark') },
+        // contrast: {
+        //   [name]: generateThemeTokens(name, 'contrast', colors),
+        //   global: generateGlobalTokens('contrast'),
+        // },
       },
-      dark: { [name]: generateThemeTokens(name, 'dark', colors), global: generateGlobalTokens('dark') },
-      // contrast: {
-      //   [name]: generateThemeTokens(name, 'contrast', colors),
-      //   global: generateGlobalTokens('contrast'),
-      // },
+      typography: {
+        primary: generateTypographyTokens(name, typography),
+      },
     },
-    typography: {
-      primary: generateTypographyTokens(name, typography),
-    },
+    semantic: generateSemantic(colors),
+    themes: generateThemes(colors, name, borderRadius),
   };
 
   return tokens;

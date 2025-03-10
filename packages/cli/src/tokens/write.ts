@@ -4,15 +4,6 @@ import type { ThemeObject } from '@tokens-studio/types';
 import chalk from 'chalk';
 import * as R from 'ramda';
 import type { ColorScheme } from '../colors/types.js';
-import semanticColorBaseFile from './design-tokens/template/semantic/color-base-file.json' with { type: 'json' };
-import customColorTemplate from './design-tokens/template/semantic/modes/category-color/category-color-template.json' with {
-  type: 'json',
-};
-import semanticColorTemplate from './design-tokens/template/semantic/semantic-color-template.json' with {
-  type: 'json',
-};
-import themeBaseFile from './design-tokens/template/themes/theme-base-file.json' with { type: 'json' };
-import themeColorTemplate from './design-tokens/template/themes/theme-color-template.json' with { type: 'json' };
 import type { Collection, File, Theme, Tokens, TokensSet, TypographyModes } from './types.js';
 import { cp, mkdir, writeFile } from './utils.js';
 import { generateMetadataJson } from './write/generate$metadata.js';
@@ -97,125 +88,39 @@ export const writeTokens = async (options: WriteTokensOptions) => {
    * Colors
    */
 
-  const mainColorNames = Object.keys(colors.main);
-  const supportColorNames = Object.keys(colors.support);
-  const customColors = [...mainColorNames, 'neutral', ...supportColorNames];
-  const defaultAccentColor = mainColorNames[0];
-
   // Create main-color and support-color modes for the custom colors
-  for (const [colorCategory, colorNames] of [
-    ['main', mainColorNames],
-    ['support', supportColorNames],
-  ] as const) {
-    const colorCategoryPath = path.join(targetDir, 'semantic', 'modes', `${colorCategory}-color`);
-    await mkdir(colorCategoryPath, dry);
 
-    for (const colorName of colorNames) {
-      const customColorFile = {
-        color: {
-          [colorCategory]: customColorTemplate,
-        },
-      };
+  for (const mode of Object.entries(tokens.semantic?.modes || {})) {
+    const [category, colors] = mode;
+    const categoryPath = path.join(targetDir, 'semantic', 'modes', category);
+    await mkdir(categoryPath, dry);
 
-      await writeFile(
-        path.join(colorCategoryPath, `${colorName}.json`),
-        JSON.stringify(
-          customColorFile,
-          (key, value) => {
-            if (key === '$value') {
-              return (value as string).replace('<color>', colorName);
-            }
-            return value;
-          },
-          2,
-        ),
-        dry,
-      );
+    for (const [colorName, color] of Object.entries(colors)) {
+      const filePath = path.join(categoryPath, `${colorName}.json`);
+      await writeFile(filePath, stringify(color), dry);
     }
   }
 
-  // Create semantic colors file
-  const semanticColorTokens = customColors.map(
-    (colorName) =>
-      [
-        colorName,
-        R.map((x) => ({ ...x, $value: x.$value.replace('<color>', colorName) }), semanticColorTemplate),
-      ] as const,
-  );
+  // Create semantic color file
+  const filePath = path.join(targetDir, `semantic/color.json`);
+  await writeFile(filePath, stringify(tokens.semantic.color || {}), dry);
 
-  const semanticColors = {
-    ...semanticColorBaseFile,
-    color: {
-      ...Object.fromEntries(semanticColorTokens),
-      ...semanticColorBaseFile.color,
-    },
-  };
-  await writeFile(
-    path.join(targetDir, `semantic/color.json`),
-    JSON.stringify(
-      semanticColors,
-      (key, value) => {
-        if (key === '$value') {
-          return (value as string).replace('<accent-color>', defaultAccentColor);
-        }
-        return value;
-      },
-      2,
-    ),
-    dry,
-  );
-
-  // Create themes file
+  // Create theme file
   await mkdir(path.join(targetDir, 'themes'), dry);
-
-  const themeColorTokens = Object.fromEntries(
-    customColors.map(
-      (colorName) =>
-        [
-          colorName,
-          R.map((x) => ({ ...x, $value: x.$value.replace('<color>', colorName) }), themeColorTemplate),
-        ] as const,
-    ),
-  );
-
-  const { color: themeBaseFileColor, ...remainingThemeFile } = themeBaseFile;
-  const themeFile = {
-    color: {
-      ...themeColorTokens,
-      ...themeBaseFileColor,
-    },
-    ...remainingThemeFile,
-  };
-
-  const baseBorderRadius = R.lensPath(['border-radius', 'base', '$value']);
-  const updatedThemeFile = R.set(baseBorderRadius, String(borderRadius), themeFile);
-
-  await writeFile(
-    path.join(targetDir, `themes/${themeName}.json`),
-    JSON.stringify(
-      updatedThemeFile,
-      (key, value) => {
-        if (key === '$value') {
-          return (value as string).replace('<theme>', themeName);
-        }
-
-        return value;
-      },
-      2,
-    ),
-    dry,
-  );
+  await writeFile(path.join(targetDir, `themes/${themeName}.json`), stringify(tokens.themes[themeName] || {}), dry);
 
   // Create color scheme and typography modes
+  const colorScheme = tokens.primitives['colors-scheme'];
+  const typography = tokens.primitives.typography;
   const files: File[] = [
-    generateColorSchemeFile('light', themeName, tokens.colors.light[themeName], targetDir),
-    generateColorSchemeFile('light', 'global', tokens.colors.light.global, targetDir),
-    generateColorSchemeFile('dark', themeName, tokens.colors.dark[themeName], targetDir),
-    generateColorSchemeFile('dark', 'global', tokens.colors.dark.global, targetDir),
-    // generateColorSchemeFile('contrast', themeName, tokens.colors.contrast[themeName], targetDir),
-    // generateColorSchemeFile('contrast', 'global', tokens.colors.contrast.global, targetDir),
-    generateTypographyFile('primary', themeName, tokens.typography.primary, targetDir),
-    generateTypographyFile('secondary', themeName, tokens.typography.primary, targetDir),
+    generateColorSchemeFile('light', themeName, colorScheme.light[themeName], targetDir),
+    generateColorSchemeFile('light', 'global', colorScheme.light.global, targetDir),
+    generateColorSchemeFile('dark', themeName, colorScheme.dark[themeName], targetDir),
+    generateColorSchemeFile('dark', 'global', colorScheme.dark.global, targetDir),
+    // generateColorSchemeFile('contrast', themeName, colorScheme.contrast[themeName], targetDir),
+    // generateColorSchemeFile('contrast', 'global', colorScheme.contrast.global, targetDir),
+    generateTypographyFile('primary', themeName, typography.primary, targetDir),
+    generateTypographyFile('secondary', themeName, typography.primary, targetDir),
   ];
 
   for (const file of files) {
