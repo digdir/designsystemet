@@ -27,11 +27,11 @@
   text-align: inherit;
 
   &[data-variant='default'] {
-    --dsc-card-background: var(--ds-color-surface-default);
+    background: var(--ds-color-surface-default);
   }
 
   &[data-variant='tinted'] {
-    --dsc-card-background: var(--ds-color-surface-tinted);
+    background: var(--ds-color-surface-tinted);
   }
 
   &:not([hidden]) {
