@@ -1,0 +1,64 @@
+.colorBtn {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  height: 30px;
+  width: 30px;
+  border-radius: 4px;
+  border: 1px solid rgb(158, 158, 158);
+  cursor: pointer;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 8px;
+  right: 11px;
+  height: 30px;
+  width: 30px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.input {
+  height: 44px;
+  border-radius: 4px;
+  border: 1px solid rgb(158, 158, 158);
+  width: 100%;
+  padding-left: 14px;
+  font-size: 16px;
+}
+
+.item {
+  position: relative;
+  width: 100%;
+}
+
+.picker {
+  position: absolute;
+  width: 100%;
+  z-index: 9999999;
+  transform: scale(0.9);
+  top: 32px;
+  right: -17px;
+}
+
+.top {
+  top: -670%;
+  right: 0;
+  transform: scale(0.75);
+}
+
+.hidePicker {
+  display: none;
+}
+
+.loopBtn {
+  position: absolute;
+  top: 9px;
+  right: 42px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
