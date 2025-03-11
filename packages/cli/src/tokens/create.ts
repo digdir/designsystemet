@@ -1,11 +1,12 @@
 import * as R from 'ramda';
 import { baseColors, generateColorScale } from '../colors/index.js';
 import type { Color, ColorScheme } from '../colors/types.js';
-import semanticColorBase from './template/design-tokens/semantic/color-base-template.json' with { type: 'json' };
-import semanticColorTemplate from './template/design-tokens/semantic/color-template.json' with { type: 'json' };
-import categoryColorTemplate from './template/design-tokens/semantic/modes/category-color/color-template.json' with {
+import typographyTemplate from './template/design-tokens/primitives/modes/typography/typography-template.json' with {
   type: 'json',
 };
+import semanticColorBase from './template/design-tokens/semantic/color-base-template.json' with { type: 'json' };
+import semanticColorTemplate from './template/design-tokens/semantic/color-template.json' with { type: 'json' };
+import categoryColorTemplate from './template/design-tokens/semantic/modes/color-template.json' with { type: 'json' };
 import themeBase from './template/design-tokens/themes/theme-base-template.json' with { type: 'json' };
 import themeColorTemplate from './template/design-tokens/themes/theme-template.json' with { type: 'json' };
 
@@ -37,28 +38,11 @@ const generateColor = (colorArray: Color[]): TokensSet => {
 };
 
 const generateTypography = (themeName: string, { fontFamily }: Typography): TokensSet => {
-  return {
-    [themeName]: {
-      'font-family': {
-        $type: 'fontFamilies',
-        $value: fontFamily ?? 'Inter',
-      },
-      'font-weight': {
-        medium: {
-          $type: 'fontWeights',
-          $value: 'Medium',
-        },
-        semibold: {
-          $type: 'fontWeights',
-          $value: 'SemiBold',
-        },
-        regular: {
-          $type: 'fontWeights',
-          $value: 'Regular',
-        },
-      },
-    },
-  };
+  return JSON.parse(
+    JSON.stringify(typographyTemplate)
+      .replaceAll(/<font-family>/g, fontFamily)
+      .replaceAll(/<theme>/g, themeName),
+  ) as TokensSet;
 };
 
 const generateColorScheme = (themeName: string, colorScheme: ColorScheme, colors: Colors): TokensSet => {
@@ -230,6 +214,7 @@ export const createTokens = (opts: Theme) => {
       },
       typography: {
         primary: generateTypography(name, typography),
+        secondary: generateTypography(name, typography),
       },
     },
     semantic: generateSemantic(colors),
