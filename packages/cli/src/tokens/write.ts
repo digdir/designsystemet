@@ -59,7 +59,7 @@ export const writeTokens = async (options: WriteTokensOptions) => {
   await mkdir(targetDir, dry);
 
   // Copy default files
-  await cp(path.join(DIRNAME, './design-tokens/template'), targetDir, dry, (src) => !src.includes('template.json'));
+  await cp(path.join(DIRNAME, './template/design-tokens'), targetDir, dry, (src) => !src.includes('template.json'));
 
   try {
     // Update with existing themes
