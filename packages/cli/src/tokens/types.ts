@@ -23,6 +23,7 @@ export type Tokens = {
     };
     typography: {
       primary: TokensSet;
+      secondary: TokensSet;
     };
   };
   semantic: {
@@ -46,7 +47,7 @@ export type Colors = {
   support: Record<string, CssColor>;
   neutral: CssColor;
 };
-export type Typography = { fontFamily?: string };
+export type Typography = { fontFamily: string };
 export type TypographyModes = 'primary' | 'secondary';
 
 export type File = {
