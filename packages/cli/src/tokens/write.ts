@@ -117,7 +117,7 @@ export const writeTokens = async (options: WriteTokensOptions) => {
     // generateColorSchemeFile('contrast', themeName, colorScheme.contrast[themeName], targetDir),
     // generateColorSchemeFile('contrast', 'global', colorScheme.contrast.global, targetDir),
     generateTypographyFile('primary', themeName, typography.primary, targetDir),
-    generateTypographyFile('secondary', themeName, typography.primary, targetDir),
+    generateTypographyFile('secondary', themeName, typography.secondary, targetDir),
   ];
 
   for (const file of files) {
