@@ -65,13 +65,17 @@ export const writeTokens = async (options: WriteTokensOptions) => {
     // Update with existing themes
     const $themes = await fs.readFile($themesPath, 'utf-8');
     const themeObjects = (JSON.parse($themes) as ThemeObject[]) || [];
-    themes = R.pipe(
+    const concatThemeNames = R.pipe(
       R.filter((obj: ThemeObject) => R.toLower(obj.group || '') === 'theme'),
       R.map(R.prop('name')),
-      R.append(themeName),
+      R.concat(themes),
       R.uniq,
-    )(themeObjects) as string[];
-  } catch (error) {}
+    );
+
+    themes = concatThemeNames(themeObjects);
+  } catch (error) {
+    console.error(`Error concatenating theme names: ${error}`);
+  }
 
   console.log(`Themes: ${chalk.blue(themes.join(', '))}`);
 
