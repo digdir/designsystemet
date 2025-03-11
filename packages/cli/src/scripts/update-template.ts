@@ -71,7 +71,7 @@ export const updateTemplates = async () => {
   };
   await fs.writeFile(
     path.join(TEMPLATE_FILES_PATH, `semantic/color-base-template.json`),
-    JSON.stringify(colorBaseFile, null, 2).replaceAll('color.accent', 'color.<accent-color>'),
+    JSON.stringify(colorBaseFile, null, 2),
   );
 
   const semanticColorTemplate = semanticColorJson.color.accent;

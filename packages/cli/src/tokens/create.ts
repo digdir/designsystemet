@@ -126,25 +126,13 @@ const generateSemantic = (colors: Colors): Tokens['semantic'] => {
       ] as const,
   );
 
-  const semanticColors = {
+  const color = {
     ...semanticColorBase,
     color: {
       ...Object.fromEntries(semanticColorTokens),
       ...semanticColorBase.color,
     },
   };
-  const color = JSON.parse(
-    JSON.stringify(
-      semanticColors,
-      (key, value) => {
-        if (key === '$value') {
-          return (value as string).replace('<accent-color>', defaultColor);
-        }
-        return value;
-      },
-      2,
-    ),
-  ) as TokensSet;
 
   return {
     modes,
