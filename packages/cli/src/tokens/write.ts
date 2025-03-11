@@ -4,8 +4,8 @@ import type { ThemeObject } from '@tokens-studio/types';
 import chalk from 'chalk';
 import * as R from 'ramda';
 import type { ColorScheme } from '../colors/types.js';
+import { cp, mkdir, writeFile } from '../utils.js';
 import type { Collection, File, Theme, Tokens, TokensSet, TypographyModes } from './types.js';
-import { cp, mkdir, writeFile } from './utils.js';
 import { generateMetadataJson } from './write/generate$metadata.js';
 import { generateThemesJson } from './write/generate$themes.js';
 

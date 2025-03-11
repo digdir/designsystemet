@@ -12,8 +12,8 @@ import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
 import { cliOptions, createTokens } from '../src/tokens/create.js';
 import type { Theme } from '../src/tokens/types.js';
-import { cleanDir } from '../src/tokens/utils.js';
 import { writeTokens } from '../src/tokens/write.js';
+import { cleanDir } from '../src/utils.js';
 import { type CombinedConfigSchema, combinedConfigSchema, configFileSchema, mapPathToOptionName } from './config.js';
 import { type OptionGetter, getCliOption, getDefaultCliOption, getSuppliedCliOption } from './options.js';
 
