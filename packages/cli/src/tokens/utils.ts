@@ -112,7 +112,7 @@ export const cleanDir = async (dir: string, dry?: boolean) => {
     return Promise.resolve();
   }
 
-  console.log(`${chalk.red(`Cleaning outputDir: ${dir.trim()}`)} `);
+  console.log(`${chalk.red(`Cleaning dir: ${dir.trim()}`)} `);
 
   return await fs.rm(dir, { recursive: true, force: true });
 };
