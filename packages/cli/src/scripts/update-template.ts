@@ -7,12 +7,12 @@ import originalColorCategoryJson from '../../../../design-tokens/semantic/modes/
   type: 'json',
 };
 import originalThemeJson from '../../../../design-tokens/themes/digdir.json' with { type: 'json' };
-import { cleanDir } from './utils.js';
+import { cleanDir } from '../tokens/utils.js';
 
 const DIRNAME: string = import.meta.dirname || __dirname;
 
 const SOURCE_FILES_PATH = path.join(DIRNAME, '../../../../design-tokens');
-const TEMPLATE_FILES_PATH = path.join(DIRNAME, './design-tokens/template');
+const TEMPLATE_FILES_PATH = path.join(DIRNAME, '../tokens/template/design-tokens');
 
 const argsFromToPaths = (path_: string): [string, string] => [
   path.join(SOURCE_FILES_PATH, path_),
