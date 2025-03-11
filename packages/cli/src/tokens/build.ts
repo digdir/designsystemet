@@ -6,6 +6,7 @@ import chalk from 'chalk';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
 
+import { cleanDir, writeFile } from '../utils.js';
 import { configs, getConfigsForThemeDimensions } from './build/configs.js';
 import {
   type BuildConfig,
@@ -15,7 +16,6 @@ import {
 } from './build/types.js';
 import { makeEntryFile } from './build/utils/entryfile.js';
 import { type ProcessedThemeObject, processThemeObject } from './build/utils/getMultidimensionalThemes.js';
-import { cleanDir, writeFile } from './utils.js';
 
 type Options = {
   /** Design tokens path */
