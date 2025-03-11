@@ -300,14 +300,9 @@ export const DialogWithSuggestion: StoryFn<typeof Dialog> = () => {
 DialogWithSuggestion.parameters = {
   a11y: {
     // TODO: these rules should be enabled after figuring out why they occur.
-    // for some reason it says `aria-expanded` is not allowed
     config: {
       rules: [
-        {
-          id: 'aria-allowed-attr',
-          enabled: false,
-        },
-        /* It does not like role="combobox" either */
+        /* https://github.com/dequelabs/axe-core/issues/4672 */
         {
           id: 'aria-allowed-role',
           enabled: false,
