@@ -1,6 +1,5 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import type { ThemeObject } from '@tokens-studio/types';
 import chalk from 'chalk';
 import * as R from 'ramda';
 import originalColorJson from '../../../../design-tokens/semantic/color.json' with { type: 'json' };
@@ -9,17 +8,15 @@ import originalColorCategoryJson from '../../../../design-tokens/semantic/modes/
 };
 import originalThemeJson from '../../../../design-tokens/themes/digdir.json' with { type: 'json' };
 import { cleanDir } from './utils.js';
-import { stringify } from './write.js';
 
 const DIRNAME: string = import.meta.dirname || __dirname;
 
 const SOURCE_FILES_PATH = path.join(DIRNAME, '../../../../design-tokens');
-const DEFAULT_FILES_PATH = path.join(DIRNAME, './design-tokens/default');
 const TEMPLATE_FILES_PATH = path.join(DIRNAME, './design-tokens/template');
 
 const argsFromToPaths = (path_: string): [string, string] => [
   path.join(SOURCE_FILES_PATH, path_),
-  path.join(DEFAULT_FILES_PATH, path_),
+  path.join(TEMPLATE_FILES_PATH, path_),
 ];
 
 const options = { recursive: true };
@@ -85,57 +82,58 @@ export const updateTemplates = async () => {
     JSON.stringify(themeColorTemplate, null, 2).replaceAll('digdir.accent', '<theme>.<color>'),
   );
 
-  // $themes.json
-  const themesFile = await fs.readFile(path.join(SOURCE_FILES_PATH, '$themes.json'), 'utf-8');
-  const themesTemplate = (JSON.parse(themesFile) as ThemeObject[])
-    .filter((themeobj) => {
-      // Remove compact size
-      if (R.toLower(themeobj.name) === 'compact' && R.toLower(themeobj.group || '') === 'size') {
-        return false;
-      }
+  // WIP
+  // // $themes.json
+  // const themesFile = await fs.readFile(path.join(SOURCE_FILES_PATH, '$themes.json'), 'utf-8');
+  // const themesTemplate = (JSON.parse(themesFile) as ThemeObject[])
+  //   .filter((themeobj) => {
+  //     // Remove compact size
+  //     if (R.toLower(themeobj.name) === 'compact' && R.toLower(themeobj.group || '') === 'size') {
+  //       return false;
+  //     }
 
-      // Pick theme to use as template
-      if (R.toLower(themeobj.name) !== 'digdir' && R.toLower(themeobj.group || '') === 'theme') {
-        return false;
-      }
+  //     // Pick theme to use as template
+  //     if (R.toLower(themeobj.name) !== 'digdir' && R.toLower(themeobj.group || '') === 'theme') {
+  //       return false;
+  //     }
 
-      return true;
-    })
-    .map((themeobj) => {
-      if (R.toLower(themeobj.name) === 'digdir') {
-        return {
-          ...themeobj,
-          name: '<theme>',
-          selectedTokenSets: {
-            'themes/<theme>': 'enabled',
-          },
-        };
-      }
-      return themeobj;
-    });
+  //     return true;
+  //   })
+  //   .map((themeobj) => {
+  //     if (R.toLower(themeobj.name) === 'digdir') {
+  //       return {
+  //         ...themeobj,
+  //         name: '<theme>',
+  //         selectedTokenSets: {
+  //           'themes/<theme>': 'enabled',
+  //         },
+  //       };
+  //     }
+  //     return themeobj;
+  //   });
 
-  await fs.writeFile(path.join(TEMPLATE_FILES_PATH, `$themes.json`), stringify(themesTemplate));
+  // await fs.writeFile(path.join(TEMPLATE_FILES_PATH, `$themes.json`), stringify(themesTemplate));
 
-  // $metadata.json
-  const metadataFile = await fs.readFile(path.join(SOURCE_FILES_PATH, '$metadata.json'), 'utf-8');
-  const tokenSetOrderTemplate = (JSON.parse(metadataFile) as { tokenSetOrder: string[] }).tokenSetOrder
-    .filter((tokenSet) => {
-      if (endsWithOneOf(['altinn', 'portal', 'uutilsynet'], tokenSet)) {
-        return false;
-      }
-      return true;
-    })
-    .map((tokenSet) => {
-      if (endsWithOneOf(['digdir'], tokenSet)) {
-        return tokenSet.replace('/digdir', '/<theme>');
-      }
-      return tokenSet;
-    });
+  // // $metadata.json
+  // const metadataFile = await fs.readFile(path.join(SOURCE_FILES_PATH, '$metadata.json'), 'utf-8');
+  // const tokenSetOrderTemplate = (JSON.parse(metadataFile) as { tokenSetOrder: string[] }).tokenSetOrder
+  //   .filter((tokenSet) => {
+  //     if (endsWithOneOf(['altinn', 'portal', 'uutilsynet'], tokenSet)) {
+  //       return false;
+  //     }
+  //     return true;
+  //   })
+  //   .map((tokenSet) => {
+  //     if (endsWithOneOf(['digdir'], tokenSet)) {
+  //       return tokenSet.replace('/digdir', '/<theme>');
+  //     }
+  //     return tokenSet;
+  //   });
 
-  await fs.writeFile(
-    path.join(TEMPLATE_FILES_PATH, `$metadata.json`),
-    stringify({ tokenSetOrder: tokenSetOrderTemplate }),
-  );
+  // await fs.writeFile(
+  //   path.join(TEMPLATE_FILES_PATH, `$metadata.json`),
+  //   stringify({ tokenSetOrder: tokenSetOrderTemplate }),
+  // );
 
   console.log(chalk.green('Templates updated'));
 };
