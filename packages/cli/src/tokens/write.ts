@@ -19,8 +19,8 @@ const generateColorSchemeFile = (scheme: ColorScheme, name: Collection, tokens: 
   const path = `${outPath}/primitives/modes/color-scheme/${scheme}`;
   return {
     data: stringify(tokens),
-    path,
-    filePath: `${path}/${name}.json`,
+    dir: path,
+    path: `${path}/${name}.json`,
   };
 };
 
@@ -33,8 +33,8 @@ const generateTypographyFile = (
   const path = `${outPath}/primitives/modes/typography/${folder}`;
   return {
     data: stringify(tokens),
-    path,
-    filePath: `${path}/${name}.json`,
+    dir: path,
+    path: `${path}/${name}.json`,
   };
 };
 
@@ -96,14 +96,12 @@ export const writeTokens = async (options: WriteTokensOptions) => {
     await mkdir(categoryPath, dry);
 
     for (const [colorName, color] of Object.entries(colors)) {
-      const filePath = path.join(categoryPath, `${colorName}.json`);
-      await writeFile(filePath, stringify(color), dry);
+      await writeFile(path.join(categoryPath, `${colorName}.json`), stringify(color), dry);
     }
   }
 
   // Create semantic color file
-  const filePath = path.join(targetDir, `semantic/color.json`);
-  await writeFile(filePath, stringify(tokens.semantic.color || {}), dry);
+  await writeFile(path.join(targetDir, `semantic/color.json`), stringify(tokens.semantic.color || {}), dry);
 
   // Create theme file
   await mkdir(path.join(targetDir, 'themes'), dry);
@@ -112,6 +110,7 @@ export const writeTokens = async (options: WriteTokensOptions) => {
   // Create color scheme and typography modes
   const colorScheme = tokens.primitives['colors-scheme'];
   const typography = tokens.primitives.typography;
+
   const files: File[] = [
     generateColorSchemeFile('light', themeName, colorScheme.light[themeName], targetDir),
     generateColorSchemeFile('light', 'global', colorScheme.light.global, targetDir),
@@ -124,10 +123,8 @@ export const writeTokens = async (options: WriteTokensOptions) => {
   ];
 
   for (const file of files) {
-    const dirPath = path.resolve(file.path);
-    const filePath = path.resolve(file.filePath);
-    await mkdir(dirPath, dry);
-    await writeFile(filePath, file.data, dry);
+    await mkdir(path.resolve(file.dir), dry);
+    await writeFile(path.resolve(file.path), file.data, dry);
   }
 
   console.log(
