@@ -10,8 +10,6 @@ import { generateMetadataJson } from './write/generate$metadata.js';
 import { generateThemesJson } from './write/generate$themes.js';
 
 const DIRNAME: string = import.meta.dirname || __dirname;
-const DEFAULT_FILES_PATH = path.join(DIRNAME, './design-tokens/default');
-const TEMPLATE_FILES_PATH = path.join(DIRNAME, './design-tokens/template/');
 
 export const stringify = (data: unknown) => JSON.stringify(data, null, 2);
 
@@ -60,6 +58,9 @@ export const writeTokens = async (options: WriteTokensOptions) => {
 
   await mkdir(targetDir, dry);
 
+  // Copy default files
+  await cp(path.join(DIRNAME, './design-tokens/template'), targetDir, dry, (src) => !src.includes('template.json'));
+
   try {
     // Update with existing themes
     const $themes = await fs.readFile($themesPath, 'utf-8');
@@ -80,9 +81,6 @@ export const writeTokens = async (options: WriteTokensOptions) => {
 
   await writeFile($themesPath, stringify($theme), dry);
   await writeFile($metadataPath, stringify($metadata), dry);
-
-  // Copy default files
-  await cp(DEFAULT_FILES_PATH, targetDir, dry);
 
   /*
    * Colors

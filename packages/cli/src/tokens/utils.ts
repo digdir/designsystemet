@@ -1,3 +1,4 @@
+import type { CopyOptions } from 'node:fs';
 import fs from 'node:fs/promises';
 import chalk from 'chalk';
 import * as R from 'ramda';
@@ -86,13 +87,13 @@ export const writeFile = async (path: string, data: string, dry?: boolean) => {
   return await fs.writeFile(path, data, { encoding: 'utf-8' });
 };
 
-export const cp = async (src: string, dest: string, dry?: boolean) => {
+export const cp = async (src: string, dest: string, dry?: boolean, filter?: CopyOptions['filter']) => {
   if (dry) {
     console.log(`${chalk.blue('cp')} ${src} ${dest}`);
     return Promise.resolve();
   }
 
-  return await fs.cp(src, dest, { recursive: true });
+  return await fs.cp(src, dest, { recursive: true, filter });
 };
 
 export const copyFile = async (src: string, dest: string, dry?: boolean) => {
