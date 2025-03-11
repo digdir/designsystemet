@@ -1,0 +1,29 @@
+.scales {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
+
+.scale {
+  display: flex;
+  margin-bottom: 12px;
+  border: 1px solid rgb(206, 206, 206);
+}
+
+.color {
+  flex: 1;
+  height: 50px;
+}
+
+.title {
+  font-size: 21px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  margin-top: 0px;
+}
+
+.heading {
+  font-size: 23px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
