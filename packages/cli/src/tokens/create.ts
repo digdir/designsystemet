@@ -1,13 +1,13 @@
 import * as R from 'ramda';
 import { baseColors, generateColorScale } from '../colors/index.js';
 import type { Color, ColorScheme } from '../colors/types.js';
-import semanticColorBase from './design-tokens/template/semantic/color-base-template.json' with { type: 'json' };
-import semanticColorTemplate from './design-tokens/template/semantic/color-template.json' with { type: 'json' };
-import categoryColorTemplate from './design-tokens/template/semantic/modes/category-color/color-template.json' with {
+import semanticColorBase from './template/design-tokens/semantic/color-base-template.json' with { type: 'json' };
+import semanticColorTemplate from './template/design-tokens/semantic/color-template.json' with { type: 'json' };
+import categoryColorTemplate from './template/design-tokens/semantic/modes/category-color/color-template.json' with {
   type: 'json',
 };
-import themeBase from './design-tokens/template/themes/theme-base-template.json' with { type: 'json' };
-import themeColorTemplate from './design-tokens/template/themes/theme-template.json' with { type: 'json' };
+import themeBase from './template/design-tokens/themes/theme-base-template.json' with { type: 'json' };
+import themeColorTemplate from './template/design-tokens/themes/theme-template.json' with { type: 'json' };
 
 import type { Colors, SemanticModes, Theme, Tokens, TokensSet, Typography } from './types.js';
 
