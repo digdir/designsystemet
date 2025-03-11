@@ -24,9 +24,6 @@ const argsFromToPaths = (path_: string): [string, string] => [
 
 const options = { recursive: true };
 
-const endsWithOneOf = (suffixes: string[], str: string): boolean =>
-  R.any((suffix: string) => R.endsWith(suffix, str), suffixes);
-
 export const updateTemplates = async () => {
   // Clean template files
   await cleanDir(TEMPLATE_FILES_PATH);
