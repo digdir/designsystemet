@@ -1,12 +1,14 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import type { ThemeObject } from '@tokens-studio/types';
+import chalk from 'chalk';
 import * as R from 'ramda';
 import originalColorJson from '../../../../design-tokens/semantic/color.json' with { type: 'json' };
 import originalColorCategoryJson from '../../../../design-tokens/semantic/modes/main-color/accent.json' with {
   type: 'json',
 };
 import originalThemeJson from '../../../../design-tokens/themes/digdir.json' with { type: 'json' };
+import { cleanDir } from './utils.js';
 import { stringify } from './write.js';
 
 const DIRNAME: string = import.meta.dirname || __dirname;
@@ -26,6 +28,9 @@ const endsWithOneOf = (suffixes: string[], str: string): boolean =>
   R.any((suffix: string) => R.endsWith(suffix, str), suffixes);
 
 export const updateTemplates = async () => {
+  // Clean template files
+  await cleanDir(TEMPLATE_FILES_PATH);
+
   // Copy default files
   await fs.cp(...argsFromToPaths('primitives/globals.json'), options);
   await fs.cp(...argsFromToPaths('primitives/modes/size'), options);
@@ -131,6 +136,8 @@ export const updateTemplates = async () => {
     path.join(TEMPLATE_FILES_PATH, `$metadata.json`),
     stringify({ tokenSetOrder: tokenSetOrderTemplate }),
   );
+
+  console.log(chalk.green('Templates updated'));
 };
 
 updateTemplates();
