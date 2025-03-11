@@ -51,8 +51,8 @@ export type TypographyModes = 'primary' | 'secondary';
 
 export type File = {
   data: string;
+  dir: string;
   path: string;
-  filePath: string;
 };
 
 export type Collection = string | 'global';
