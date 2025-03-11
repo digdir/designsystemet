@@ -2,11 +2,14 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import chalk from 'chalk';
 import * as R from 'ramda';
-import originalColorJson from '../../../../design-tokens/semantic/color.json' with { type: 'json' };
-import originalColorCategoryJson from '../../../../design-tokens/semantic/modes/main-color/accent.json' with {
+import digdirTypographyJson from '../../../../design-tokens/primitives/modes/typography/primary/digdir.json' with {
   type: 'json',
 };
-import originalThemeJson from '../../../../design-tokens/themes/digdir.json' with { type: 'json' };
+import semanticColorJson from '../../../../design-tokens/semantic/color.json' with { type: 'json' };
+import accentColorCategoryJson from '../../../../design-tokens/semantic/modes/main-color/accent.json' with {
+  type: 'json',
+};
+import digdirThemeJson from '../../../../design-tokens/themes/digdir.json' with { type: 'json' };
 import { cleanDir } from '../tokens/utils.js';
 
 const DIRNAME: string = import.meta.dirname || __dirname;
@@ -38,9 +41,22 @@ export const updateTemplates = async () => {
    * Create template files
    */
 
+  // primitives/modes/typeography/<theme>.json
+  const typographyTemplate = R.set(
+    R.lensPath(['digdir', 'font-family', '$value']),
+    '<font-family>',
+    digdirTypographyJson,
+  );
+  const typographyDir = path.join(TEMPLATE_FILES_PATH, 'primitives/modes/typography/');
+  await fs.mkdir(typographyDir, options);
+  await fs.writeFile(
+    path.join(typographyDir, 'typography-template.json'),
+    JSON.stringify(typographyTemplate, null, 2).replaceAll('digdir', '<theme>'),
+  );
+
   // semantic/modes/<category>-color/<color>.json
-  const categoryColorTemplate = originalColorCategoryJson.color.main;
-  const categoryDir = path.join(TEMPLATE_FILES_PATH, 'semantic/modes/category-color');
+  const categoryColorTemplate = accentColorCategoryJson.color.main;
+  const categoryDir = path.join(TEMPLATE_FILES_PATH, 'semantic/modes');
   await fs.mkdir(categoryDir, options);
   await fs.writeFile(
     path.join(categoryDir, 'color-template.json'),
@@ -49,16 +65,16 @@ export const updateTemplates = async () => {
 
   // semantic/color.json
   const colorBaseFile = {
-    ...originalColorJson,
+    ...semanticColorJson,
     // Remove custom colors as they are defined from by theme
-    color: R.omit(['accent', 'neutral', 'brand1', 'brand2', 'brand3'], originalColorJson.color),
+    color: R.omit(['accent', 'neutral', 'brand1', 'brand2', 'brand3'], semanticColorJson.color),
   };
   await fs.writeFile(
     path.join(TEMPLATE_FILES_PATH, `semantic/color-base-template.json`),
     JSON.stringify(colorBaseFile, null, 2).replaceAll('color.accent', 'color.<accent-color>'),
   );
 
-  const semanticColorTemplate = originalColorJson.color.accent;
+  const semanticColorTemplate = semanticColorJson.color.accent;
   await fs.writeFile(
     path.join(TEMPLATE_FILES_PATH, `semantic/color-template.json`),
     JSON.stringify(semanticColorTemplate, null, 2).replaceAll('color.accent', 'color.<color>'),
@@ -67,7 +83,7 @@ export const updateTemplates = async () => {
   // themes/<theme>.json
   const themeBaseFile = {
     color: {},
-    ...R.omit(['color'], originalThemeJson),
+    ...R.omit(['color'], digdirThemeJson),
   };
 
   await fs.mkdir(path.join(TEMPLATE_FILES_PATH, 'themes'), options);
@@ -76,7 +92,7 @@ export const updateTemplates = async () => {
     JSON.stringify(themeBaseFile, null, 2).replaceAll('digdir', '<theme>'),
   );
 
-  const themeColorTemplate = originalThemeJson.color.accent;
+  const themeColorTemplate = digdirThemeJson.color.accent;
   await fs.writeFile(
     path.join(TEMPLATE_FILES_PATH, `themes/theme-template.json`),
     JSON.stringify(themeColorTemplate, null, 2).replaceAll('digdir.accent', '<theme>.<color>'),
