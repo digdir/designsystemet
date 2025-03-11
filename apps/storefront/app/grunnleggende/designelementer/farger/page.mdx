@@ -61,92 +61,124 @@ Tinted betyr for eksempel at fargen har et hint av farge i seg, mens Hover betyr
   alt='Skjermbilde av Figma som vise hvor du finner plugins'
   boxShadow={false}
   dataUnstyled
-  caption='Viser hvordan de semantiske fargene kan brukes i designet. Eksempelet bruker fire forskjellige fargeskalaer. Danger, Neutral og to forskjellige blåskalaer.'
+  caption='Viser hvordan de semantiske fargene kan brukes i designet. Eksempelet bruker fire forskjellige fargeskalaer: Danger, Neutral og to blåskalaer.'
 />
 
 
 ## Oversikt og forklaring av farger
-Hver fargeskala består av totalt 16 farger, nøye utformet for å dekke ulike behov i designet. 
+Hver fargeskala består av totalt 16 farger, utformet for å dekke ulike behov i designet. 
 Nedenfor finner du en oversikt over de forskjellige fargene og deres tiltenkte bruksområder.
 
 
 | Navn      | Bruksområde |
 | ----------- | ----------- |
-| 1.  Background default     | Standard bakgrunnsfarge.       |
-| 2.  Background tinted      | Bakgrunn med et hint av farge i seg.        |
-| 3.  Surface default        | Standard farge for overflater / komponenter.        |
-| 4.  Surface tinted         | Overflater / komponenter med et hint av farge i seg.        |
-| 5.  Surface hover          | Hover-farge til overflater / komponenter.       |
-| 6.  Surface active         | Active-farge til overflater / komponenter.       |
-| 7.  Border subtle          | Border-farge med lav kontrast til dekorativ bruk (skillelinjer).     |
-| 8.  Border default         | Standard border-farge til skjemakomponenter og meningsbærende elementer.       |
-| 9.  Border strong          | Border-farge med høy kontrast for ekstra synlighet.      |
-| 10. Text subtle            | Tekst- og ikonfarge med lavere kontrast.        |
-| 11. Text default           | Tekst- og ikonfarge med høy kontrast og god synlighet.      |
-| 12. Base default           | Standardfarge for solide bakgrunner.       |
-| 13. Base hover             | Hover-farge for solide bakgrunner.          |
-| 14. Base active            | Active-farge for solide bakgrunner.          |
-| 15. Base contrast subtle   | Farge med god kontrast mot Base default.     |
-| 16. Base contrast default  | Farge med god kontrast mot Base default og Base hover.      |
+| 1.  Background-default      | Standard bakgrunnsfarge.       |
+| 2.  Background-tinted       | Bakgrunn med et hint av farge i seg.        |
+| 3.  Surface-default         | Standard farge for overflater / komponenter.        |
+| 4.  Surface-tinted          | Overflater / komponenter med et hint av farge i seg.        |
+| 5.  Surface-hover           | Hover-farge til overflater / komponenter.       |
+| 6.  Surface-active          | Active-farge til overflater / komponenter.       |
+| 7.  Border-subtle           | Border-farge med lav kontrast til dekorativ bruk (skillelinjer).     |
+| 8.  Border-default          | Standard border-farge til skjemakomponenter og meningsbærende elementer.       |
+| 9.  Border-strong           | Border-farge med høy kontrast for ekstra synlighet.      |
+| 10. Text-subtle             | Tekst- og ikonfarge med lavere kontrast.        |
+| 11. Text-default            | Tekst- og ikonfarge med høy kontrast og god synlighet.      |
+| 12. Base-default            | Standardfarge for solide bakgrunner.       |
+| 13. Base-hover              | Hover-farge for solide bakgrunner.          |
+| 14. Base-active             | Active-farge for solide bakgrunner.          |
+| 15. Base-contrast-subtle    | Farge med god kontrast mot Base-default.     |
+| 16. Base-contrast-default   | Farge med god kontrast mot Base-default og Base-hover.      |
 
 
 ### Background
 Background-fargene brukes for å fargelegge store flater og er som oftest det bakerste laget på en nettside. Det er vanlig å bruke disse fargene på body-elementet.
 
-* `Background default` er den lyseste og mest nøytrale bakgrunnsfargen.
-* `Background tinted` får et hint av farge i seg og kan brukes for å skape variasjon i bakgrunnslaget. 
-Det fungerer godt å bruke Surface default som et lag over denne fargen.
+* `Background-default` er den lyseste og mest nøytrale bakgrunnsfargen.
+* `Background-tinted` får et hint av farge i seg og kan brukes for å skape variasjon i bakgrunnslaget. 
+Det fungerer godt å bruke Surface-default som et lag over denne fargen.
 
 <Image
   src='/img/tomat4.png'
   alt='Skjermbilde av Figma som vise hvor du finner plugins'
   boxShadow={false}
   dataUnstyled
-  caption='Viser et eksempel på hvordan man kan alternere Background default og Background tinted nedover på en side og hvorden dette ser ut i lys- og mørk modus. 
-  Legg merke til at Background default fargen er hentet fra en gråskala for å få til en mer nøytral overgang i mørk modus.'
+  caption='Viser et eksempel på hvordan man kan alternere Background-default og Background-tinted nedover på en side og hvorden dette ser ut i lys- og mørk modus. 
+  Legg merke til at Background-default fargen er hentet fra en gråskala for å få til en mer nøytral overgang i mørk modus.'
 />
 
 ### Surface
 Surface-fargene brukes til å fargelegge elementer som ligger over background-fargene, for eksempel paneler eller kort (Card).
 Disse fargene fungerer som forgrunnsfarger og bidrar til å skape dybde i designet ved å skille elementer fra bakgrunnen.
-I mørk modus blir disse fire fargene gradvis lysere, med Surface active som den lyseste nyansen.
+I mørk modus blir disse fire fargene gradvis lysere, med Surface-active som den lyseste nyansen.
 
-* `Surface default` er helt hvit i lys modus og brukes som standard bakgrunnsfarge på elementer.
-* `Surface tinted` får et hint av farge i seg og kan brukes for å skille elementer fra bakgrunnen.
-* `Surface hover` kan brukes til hover-tilstander for elementer eller til å skape visuelle hierarkier i Surface-laget når den kombineres med Surface tinted og Surface active.
-* `Surface active` kan brukes til active-tilstander for elementer eller til å forsterke hierarkiet i Surface-laget sammen med Surface tinted og Surface hover.
+* `Surface-default` er helt hvit i lys modus og brukes som standard bakgrunnsfarge på elementer.
+* `Surface-tinted` får et hint av farge i seg og kan brukes for å skille elementer fra bakgrunnen.
+* `Surface-hover` kan brukes til hover-tilstander for elementer eller til å skape visuelle hierarkier i Surface-laget når den kombineres med Surface-tinted og Surface-active.
+* `Surface-active` kan brukes til active-tilstander for elementer eller til å forsterke hierarkiet i Surface-laget sammen med Surface-tinted og Surface-hover.
+
+<Image
+  src='/img/tomat5.png'
+  alt='Skjermbilde av Figma som vise hvor du finner plugins'
+  boxShadow={false}
+  dataUnstyled
+  caption='Viser hvordan Surface-tinted ser ut for 7 fargeskalaer generert med Temabyggeren.'
+/>
 
 ### Border
 Border-fargene brukes for å fargelegge rammer (strokes) til elementer.
 
-* `Border subtle` har lav kontrast mot background- og surface-fargene og bør kun brukes til dekorative formål. 
+* `Border-subtle` har lav kontrast mot background- og surface-fargene og bør kun brukes til dekorative formål. 
 Vanlige bruksområder er skillelinjer og dekorative rammer.
 Fargen bør ikke være den eneste visuelle indikatoren på at et element er interaktivt.
-* `Border default` brukes på skjemakomponenter eller på andre meningsbærende rammer. 
-Fargen har god kontrast (over 3:1) mot alle background-fargene, Surface default og Surface tinted.
-* `Border strong` har god kontrast (over 3:1) mot alle background- og surface-fargene og kan brukes på rammer for å gjøre elementer ekstra synlige.
+* `Border-default` brukes på skjemakomponenter eller på andre meningsbærende rammer. 
+Fargen har god kontrast (over 3:1) mot alle background-fargene, Surface-default og Surface-tinted.
+* `Border-strong` har god kontrast (over 3:1) mot alle background- og surface-fargene og kan brukes på rammer for å gjøre elementer ekstra synlige.
+
+<Image
+  src='/img/tomat6.png'
+  alt='Skjermbilde av Figma som vise hvor du finner plugins'
+  boxShadow={false}
+  dataUnstyled
+  caption='Første rad viser farger med Border-subtle, mens den andre raden viser Border-default.'
+/>
 
 ### Text
 Text-fargene brukes på tekst og ikoner.
 
-* `Text subtle` er en lys tekstfarge som kan brukes for å skape variasjon i typografien eller for å indikere hierarkiske nivåer av viktighet.
+* `Text-subtle` er en lys tekstfarge som kan brukes for å skape variasjon i typografien eller for å indikere hierarkiske nivåer av viktighet.
 Den forsøker også å bevare mest mulig av fargemetningen fra den opprinnelige fargen valgt i Temabyggeren. 
-Fargen har god kontrast (4.5:1) mot alle background-fargene og "Surface tinted".
-* `Text default` er en tekstfarge med høy kontrast, optimal for lesbarhet. 
-Den bør brukes på hovedinnholdet og den primære teksten på en side. 
+Fargen har god kontrast (**4.5:1**) mot alle background-fargene, Surface-default og Surface-tinted.
+* `Text-default` er en tekstfarge med høy kontrast, optimal for lesbarhet. 
+Den bør brukes på hovedinnholdet og den primære teksten på en side.
 Denne fargen i Neutral varianten kan være en fin farge å bruke på mesteparten av teksten.
-Fargen har god kontrast (4.5:1) mot alle background- og surface-fargene.
+Fargen har god kontrast (**4.5:1**) mot alle background- og surface-fargene.
+
+<Image
+  src='/img/tomat7.png'
+  alt='Skjermbilde av Figma som viser hvordan Text-subtle og Text-default ser ut.'
+  boxShadow={false}
+  dataUnstyled
+  caption='Viser hvordan Text-default og Text-subtle ser ut for 8 forskjellige fargeskalaer generert med Temabyggeren.'
+/>
 
 ### Base
 Base-fargene brukes for å fargelegge solide bakgrunner, som for eksempel knapper og andre interaktive elementer.
-Fargene som blir valgt med temabyggeren blir plassert i "Base default", og hover og active fargene blir generert ut i fra denne.
-"Base contrast" fargene blir generert basert på hvor lys eller mørk "Base default" fargen er. 
+Fargene som blir valgt med temabyggeren blir plassert i Base-default, og hover og active fargene blir generert ut i fra denne.
+Base-contrast fargene blir generert basert på hvor lys eller mørk Base-default fargen er. 
 
-* `Base default` kan brukes for å fargelegge solide bakgrunner til elementer.
-* `Base hover` kan brukes til hover-tilstander for solide elementer eller til å skape visuelle hierarkier i Base-laget når den kombineres med Base tinted og Base active.
-* `Base active` kan brukes til active-tilstander for solide elementer eller til å forsterke hierarkiet i Base-laget sammen med Base default og Base hover.
-* `Base contrast subtle` har god kontrast (**4.5:1**) mot "Base default" fargen fra samme fargeskala og kan trygt brukes som tekst-farger.
-* `Base contrast default` har god kontrast (**4.5:1**) kontrast mot Base default og Base hover fargene fra samme fargeskala, og kan trygt brukes som en tekst-farge på disse.
+* `Base-default` kan brukes for å fargelegge solide bakgrunner til elementer.
+* `Base-hover` kan brukes til hover-tilstander for solide elementer eller til å skape visuelle hierarkier i Base-laget når den kombineres med Base-default og Base-active.
+* `Base-active` kan brukes til active-tilstander for solide elementer eller til å forsterke hierarkiet i Base-laget sammen med Base-default og Base-hover.
+* `Base-contrast-subtle` har god kontrast (**4.5:1**) mot "Base-default" fargen fra samme fargeskala og kan trygt brukes som tekst-farger.
+* `Base-contrast-default` har god kontrast (**4.5:1**) kontrast mot Base-default og Base-hover fargene fra samme fargeskala, og kan trygt brukes som en tekst-farge på disse.
+
+<Image
+  src='/img/tomat8.png'
+  alt='Skjermbilde av Figma som viser hvordan Base-default og Base-contrast-default ser ut.'
+  boxShadow={false}
+  dataUnstyled
+  caption='Viser bokser med Base-default som bakgrunn og Base-contrast-default som tekstfarge.'
+/>
 
 ## Farge-tokens
 
