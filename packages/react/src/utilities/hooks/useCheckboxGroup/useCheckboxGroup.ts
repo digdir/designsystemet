@@ -120,7 +120,6 @@ export function useCheckboxGroup(
     Array.from(indeterminateRefs.current.values());
 
   useEffect(() => {
-    // Update indeterminate state whenever group value changes
     toggleIndeterminate(getIndeterminateInputs, getInputs);
   }, [groupValue]);
 
@@ -153,7 +152,7 @@ export function useCheckboxGroup(
 
       const {
         allowIndeterminate = false,
-        ref = undefined,
+        ref: forwardedRef = undefined,
         value = '',
         ...rest
       } = props;
@@ -164,24 +163,23 @@ export function useCheckboxGroup(
           refs.current.add(element);
           inputRefs.current.set(value, element);
 
-          if (ref) {
-            if (typeof ref === 'function') {
-              ref(element);
-            } else {
-              ref.current = element;
-            }
-          }
-
           if (getIndeterminateInputs().length) {
             toggleIndeterminate(getIndeterminateInputs, getInputs);
           }
         } else {
-          // Cleanup when unmounting
           const oldElement = inputRefs.current.get(value);
           if (oldElement) {
             checkboxRefs.current.delete(oldElement);
             indeterminateRefs.current.delete(oldElement);
             inputRefs.current.delete(value);
+          }
+        }
+
+        if (forwardedRef) {
+          if (typeof forwardedRef === 'function') {
+            forwardedRef(element);
+          } else {
+            forwardedRef.current = element;
           }
         }
       };
