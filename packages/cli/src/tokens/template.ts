@@ -57,7 +57,7 @@ export const updateTemplates = async () => {
     color: R.omit(['accent', 'neutral', 'brand1', 'brand2', 'brand3'], originalColorJson.color),
   };
   await fs.writeFile(
-    path.join(TEMPLATE_FILES_PATH, `semantic/color-base.json`),
+    path.join(TEMPLATE_FILES_PATH, `semantic/color-base-template.json`),
     JSON.stringify(colorBaseFile, null, 2).replaceAll('color.accent', 'color.<accent-color>'),
   );
 
@@ -75,7 +75,7 @@ export const updateTemplates = async () => {
 
   await fs.mkdir(path.join(TEMPLATE_FILES_PATH, 'themes'), options);
   await fs.writeFile(
-    path.join(TEMPLATE_FILES_PATH, `themes/theme-base.json`),
+    path.join(TEMPLATE_FILES_PATH, `themes/theme-base-template.json`),
     JSON.stringify(themeBaseFile, null, 2).replaceAll('digdir', '<theme>'),
   );
 

@@ -1,12 +1,12 @@
 import * as R from 'ramda';
 import { baseColors, generateColorScale } from '../colors/index.js';
 import type { Color, ColorScheme } from '../colors/types.js';
-import semanticColorBaseFile from './design-tokens/template/semantic/color-base.json' with { type: 'json' };
+import semanticColorBaseFile from './design-tokens/template/semantic/color-base-template.json' with { type: 'json' };
 import semanticColorTemplate from './design-tokens/template/semantic/color-template.json' with { type: 'json' };
 import customColorTemplate from './design-tokens/template/semantic/modes/category-color/color-template.json' with {
   type: 'json',
 };
-import themeBaseFile from './design-tokens/template/themes/theme-base.json' with { type: 'json' };
+import themeBaseFile from './design-tokens/template/themes/theme-base-template.json' with { type: 'json' };
 import themeColorTemplate from './design-tokens/template/themes/theme-template.json' with { type: 'json' };
 
 import type { Colors, SemanticModes, Theme, Tokens, TokensSet, Typography } from './types.js';
