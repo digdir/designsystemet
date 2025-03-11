@@ -41,23 +41,24 @@ export const updateTemplates = async () => {
   const categoryDir = path.join(TEMPLATE_FILES_PATH, 'semantic/modes/category-color');
   await fs.mkdir(categoryDir, options);
   await fs.writeFile(
-    path.join(categoryDir, 'category-color-template.json'),
+    path.join(categoryDir, 'color-template.json'),
     JSON.stringify(categoryColorTemplate, null, 2).replaceAll('color.accent', 'color.<color>'),
   );
 
   // semantic/color.json
   const colorBaseFile = {
     ...originalColorJson,
+    // Remove custom colors as they are defined from by theme
     color: R.omit(['accent', 'neutral', 'brand1', 'brand2', 'brand3'], originalColorJson.color),
   };
   await fs.writeFile(
-    path.join(TEMPLATE_FILES_PATH, `semantic/color-base-file.json`),
+    path.join(TEMPLATE_FILES_PATH, `semantic/color-base.json`),
     JSON.stringify(colorBaseFile, null, 2).replaceAll('color.accent', 'color.<accent-color>'),
   );
 
   const semanticColorTemplate = originalColorJson.color.accent;
   await fs.writeFile(
-    path.join(TEMPLATE_FILES_PATH, `semantic/semantic-color-template.json`),
+    path.join(TEMPLATE_FILES_PATH, `semantic/color-template.json`),
     JSON.stringify(semanticColorTemplate, null, 2).replaceAll('color.accent', 'color.<color>'),
   );
 
@@ -69,13 +70,13 @@ export const updateTemplates = async () => {
 
   await fs.mkdir(path.join(TEMPLATE_FILES_PATH, 'themes'), options);
   await fs.writeFile(
-    path.join(TEMPLATE_FILES_PATH, `themes/theme-base-file.json`),
+    path.join(TEMPLATE_FILES_PATH, `themes/theme-base.json`),
     JSON.stringify(themeBaseFile, null, 2).replaceAll('digdir', '<theme>'),
   );
 
   const themeColorTemplate = originalThemeJson.color.accent;
   await fs.writeFile(
-    path.join(TEMPLATE_FILES_PATH, `themes/theme-color-template.json`),
+    path.join(TEMPLATE_FILES_PATH, `themes/theme-template.json`),
     JSON.stringify(themeColorTemplate, null, 2).replaceAll('digdir.accent', '<theme>.<color>'),
   );
 
