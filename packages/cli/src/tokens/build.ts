@@ -1,4 +1,3 @@
-import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import type { ThemeObject } from '@tokens-studio/types';
@@ -6,7 +5,7 @@ import chalk from 'chalk';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
 
-import { cleanDir, writeFile } from '../utils.js';
+import { cleanDir, readFile, writeFile } from '../utils.js';
 import { configs, getConfigsForThemeDimensions } from './build/configs.js';
 import {
   type BuildConfig,
@@ -105,9 +104,9 @@ export async function buildTokens(options: Options): Promise<void> {
   /*
    * Build the themes
    */
-  const $themes = (
-    JSON.parse(await fs.readFile(path.resolve(`${tokensDir}/$themes.json`), 'utf-8')) as ThemeObject[]
-  ).map(processThemeObject);
+  const $themes = (JSON.parse(await readFile(path.resolve(`${tokensDir}/$themes.json`))) as ThemeObject[]).map(
+    processThemeObject,
+  );
 
   const relevant$themes = $themes
     // We only use the 'medium' theme for the 'size' group

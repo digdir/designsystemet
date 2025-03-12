@@ -1,10 +1,9 @@
-import fs from 'node:fs/promises';
 import path from 'node:path';
 import type { ThemeObject } from '@tokens-studio/types';
 import chalk from 'chalk';
 import * as R from 'ramda';
 import type { ColorScheme } from '../colors/types.js';
-import { cp, mkdir, writeFile } from '../utils.js';
+import { cp, mkdir, readFile, writeFile } from '../utils.js';
 import type { Collection, File, Theme, Tokens, TokensSet, TypographyModes } from './types.js';
 import { generateMetadataJson } from './write/generate$metadata.js';
 import { generateThemesJson } from './write/generate$themes.js';
@@ -63,7 +62,7 @@ export const writeTokens = async (options: WriteTokensOptions) => {
 
   try {
     // Update with existing themes
-    const $themes = await fs.readFile($themesPath, 'utf-8');
+    const $themes = await readFile($themesPath);
     const themeObjects = (JSON.parse($themes) as ThemeObject[]) || [];
     const concatThemeNames = R.pipe(
       R.filter((obj: ThemeObject) => R.toLower(obj.group || '') === 'theme'),
@@ -73,9 +72,7 @@ export const writeTokens = async (options: WriteTokensOptions) => {
     );
 
     themes = concatThemeNames(themeObjects);
-  } catch (error) {
-    console.error(`Error concatenating theme names: ${error}`);
-  }
+  } catch (error) {}
 
   console.log(`Themes: ${chalk.blue(themes.join(', '))}`);
 
