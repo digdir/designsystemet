@@ -299,10 +299,9 @@ export const DialogWithSuggestion: StoryFn<typeof Dialog> = () => {
 
 DialogWithSuggestion.parameters = {
   a11y: {
-    // TODO: these rules should be enabled after figuring out why they occur.
+    // TODO: this rule should be enabled after https://github.com/dequelabs/axe-core/issues/4672 have propagated to @storybook/addon-a11y.
     config: {
       rules: [
-        /* https://github.com/dequelabs/axe-core/issues/4672 */
         {
           id: 'aria-allowed-role',
           enabled: false,
