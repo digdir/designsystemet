@@ -32,7 +32,7 @@ export const colorMetadata: ColorMetadataByName = {
     displayName: 'Background Tinted',
     description: {
       long: 'Background Tinted er en bakgrunnsfarge som har et hint av farge i seg.',
-      short: 'Bakgrunn med et hint av farge i seg. ',
+      short: 'Bakgrunn med et hint av farge i seg.',
     },
     luminance: {
       light: 0.9,
@@ -47,7 +47,7 @@ export const colorMetadata: ColorMetadataByName = {
     displayName: 'Surface Default',
     description: {
       long: 'Surface Default brukes på flater som ligger oppå bakgrunnsfargene. Dette er den mest nøytrale surface fargen.',
-      short: 'Standardfarge for overflater / komponenter. ',
+      short: 'Standardfarge for overflater / komponenter.',
     },
     luminance: {
       light: 1,
@@ -77,7 +77,7 @@ export const colorMetadata: ColorMetadataByName = {
     displayName: 'Surface Hover',
     description: {
       long: 'Surface Hover brukes på interaktive flater som ligger oppå bakgrunnsfargene i en hover state.',
-      short: 'Hover-farge til overflater / komponenter.   ',
+      short: 'Hover-farge til overflater / komponenter.',
     },
     luminance: {
       light: 0.7,
@@ -92,7 +92,7 @@ export const colorMetadata: ColorMetadataByName = {
     displayName: 'Surface Active',
     description: {
       long: 'Surface Active brukes på interaktive flater som ligger oppå bakgrunnsfargene i en active state.',
-      short: 'Active-farge til overflater / komponenter. ',
+      short: 'Active-farge til overflater / komponenter.',
     },
     luminance: {
       light: 0.6,
@@ -107,7 +107,7 @@ export const colorMetadata: ColorMetadataByName = {
     displayName: 'Border Subtle',
     description: {
       long: 'Border Subtle er den lyseste border-fargen og brukes for å skille elementer fra hverandre.',
-      short: 'Border-farge med lav kontrast til dekorativ bruk (skillelinjer). ',
+      short: 'Border-farge med lav kontrast til dekorativ bruk (skillelinjer).',
     },
     luminance: {
       light: 0.5,
@@ -122,7 +122,7 @@ export const colorMetadata: ColorMetadataByName = {
     displayName: 'Border Default',
     description: {
       long: 'Border Default er en border-farge som brukes når man ønsker god kontrast mot bakgrunnsfargene.',
-      short: 'Standard border-farge til skjemakomponenter og meningsbærende elementer. ',
+      short: 'Standard border-farge til skjemakomponenter og meningsbærende elementer.',
     },
     luminance: {
       light: 0.21,
@@ -137,7 +137,7 @@ export const colorMetadata: ColorMetadataByName = {
     displayName: 'Border Strong',
     description: {
       long: 'Border Strong er den mørkeste border-fargen og brukes når man ønsker en veldig tydelig og sterk border.',
-      short: 'Border-farge med høy kontrast for ekstra synlighet. ',
+      short: 'Border-farge med høy kontrast for ekstra synlighet.',
     },
     luminance: {
       light: 0.12,
@@ -152,7 +152,7 @@ export const colorMetadata: ColorMetadataByName = {
     displayName: 'Text Subtle',
     description: {
       long: 'Text Subtle er den lyseste tekstfargen og brukes på tekst som skal være litt mindre synlig eller for å skape variasjon i typografien.',
-      short: 'Tekst- og ikonfarge med lavere kontrast.   ',
+      short: 'Tekst- og ikonfarge med lavere kontrast.',
     },
     luminance: {
       light: 0.12,
@@ -167,7 +167,7 @@ export const colorMetadata: ColorMetadataByName = {
     displayName: 'Text Default',
     description: {
       long: 'Text Default er den mørkeste tekstfargen og brukes på tekst som skal være mest synlig. Denne fargen bør brukes på mesteparten av teksten på en side.',
-      short: 'Tekst- og ikonfarge med høy kontrast og god synlighet.  ',
+      short: 'Tekst- og ikonfarge med høy kontrast og god synlighet.',
     },
     luminance: {
       light: 0.0245,
@@ -182,7 +182,7 @@ export const colorMetadata: ColorMetadataByName = {
     displayName: 'Base Default',
     description: {
       long: 'Base Default fargen får den samme hex koden som fargen som er valgt i verktøyet. Brukes ofte som farge på viktige elementer og på flater som skal fange brukerens oppmerksomhet.',
-      short: 'Standardfarge for solide bakgrunner.  ',
+      short: 'Standardfarge for solide bakgrunner.',
     },
     luminance: {
       light: 1,
@@ -197,7 +197,7 @@ export const colorMetadata: ColorMetadataByName = {
     displayName: 'Base Hover',
     description: {
       long: 'Base Hover brukes som hover farge på elementer som bruker Base Default fargen.',
-      short: 'Hover-farge for solide bakgrunner. ',
+      short: 'Hover-farge for solide bakgrunner.',
     },
     luminance: {
       light: 1,
@@ -212,7 +212,7 @@ export const colorMetadata: ColorMetadataByName = {
     displayName: 'Base Active',
     description: {
       long: 'Base Active brukes som active farge på elementer som bruker Base Default fargen.',
-      short: 'Active-farge for solide bakgrunner. ',
+      short: 'Active-farge for solide bakgrunner.',
     },
     luminance: {
       light: 1,
@@ -227,7 +227,7 @@ export const colorMetadata: ColorMetadataByName = {
     displayName: 'Contrast Subtle',
     description: {
       long: 'Contrast Subtle brukes som en viktig meningsbærende farge oppå Base Default fargen.',
-      short: 'Farge med god kontrast mot Base-default.  ',
+      short: 'Farge med god kontrast mot Base-default.',
     },
     luminance: {
       light: 1,
@@ -242,7 +242,7 @@ export const colorMetadata: ColorMetadataByName = {
     displayName: 'Contrast Default',
     description: {
       long: 'Contrast Default brukes som en viktig meningsbærende farge oppå alle Base fargane.',
-      short: 'Farge med god kontrast mot Base-default og Base-hover. ',
+      short: 'Farge med god kontrast mot Base-default og Base-hover.',
     },
     luminance: {
       light: 1,

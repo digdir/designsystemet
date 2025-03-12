@@ -12,10 +12,9 @@ export const ColorInfoTable = () => {
         </Table.Row>
       </Table.Head>
       <Table.Body>
-        {Object.keys(colorMetadata).map((key) => {
-          const item = colorMetadata[key as keyof typeof colorMetadata];
+        {Object.values(colorMetadata).map((item) => {
           return (
-            <Table.Row key={key}>
+            <Table.Row key={item.name}>
               <Table.Cell>{item.number + '. ' + item.name}</Table.Cell>
               <Table.Cell>{item.description.short}</Table.Cell>
             </Table.Row>
