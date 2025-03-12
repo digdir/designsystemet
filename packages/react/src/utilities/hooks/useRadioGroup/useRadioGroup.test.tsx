@@ -40,7 +40,7 @@ const RadioGroupRadio = (args: GetRadioProps) => {
 };
 
 const ConditionalRadioGroup = (args: UseRadioGroupProps) => {
-  const { getRadioProps, validationMessageProps, value } = useRadioGroup({
+  const { getRadioProps } = useRadioGroup({
     name: 'test',
     ...args,
   });
