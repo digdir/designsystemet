@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-**useCheckboxGroup**: Fix react crashing when conditionally rendering
+**useCheckboxGroup**: Fix React crashing when conditionally rendering `getCheckboxProps`.
