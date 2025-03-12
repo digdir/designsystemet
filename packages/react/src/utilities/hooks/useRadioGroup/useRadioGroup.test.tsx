@@ -1,8 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { act } from 'react';
+import { act, useState } from 'react';
 
-import { Fieldset, Radio, ValidationMessage } from '../../../components';
+import {
+  Button,
+  Fieldset,
+  Radio,
+  ValidationMessage,
+} from '../../../components';
 import {
   type GetRadioProps,
   type UseRadioGroupProps,
@@ -31,6 +36,26 @@ const RadioGroupRadio = (args: GetRadioProps) => {
       <Radio label='Test 2' {...getRadioProps('test2')} />
       <ValidationMessage {...validationMessageProps} />
     </Fieldset>
+  );
+};
+
+const ConditionalRadioGroup = (args: UseRadioGroupProps) => {
+  const { getRadioProps, validationMessageProps, value } = useRadioGroup({
+    name: 'test',
+    ...args,
+  });
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(!open)}>Toggle</Button>
+      {open ? (
+        <Fieldset>
+          <Radio label='Test 1' {...getRadioProps('test1')} />
+          <Radio label='Test 2' {...getRadioProps('test2')} />
+        </Fieldset>
+      ) : null}
+    </>
   );
 };
 
@@ -144,5 +169,15 @@ describe('RadioGroup', () => {
     expect(radio1).toBeChecked();
 
     expect(radio1).toHaveAttribute('aria-describedby', customAriaDescribedBy);
+  });
+
+  test('can be conditionally rendered', async () => {
+    render(<ConditionalRadioGroup />);
+
+    /* click button to show radio buttons */
+    const button = screen.getByRole('button', { name: 'Toggle' });
+    await act(async () => await userEvent.click(button));
+    expect(screen.getByLabelText('Test 1')).toBeVisible();
+    expect(screen.getByLabelText('Test 2')).toBeVisible();
   });
 });
