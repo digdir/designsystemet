@@ -8,7 +8,7 @@ export const mkdir = async (dir: string, dry?: boolean) => {
     return Promise.resolve();
   }
 
-  return await fs.mkdir(dir, { recursive: true });
+  return fs.mkdir(dir, { recursive: true });
 };
 
 export const writeFile = async (path: string, data: string, dry?: boolean) => {
@@ -17,7 +17,7 @@ export const writeFile = async (path: string, data: string, dry?: boolean) => {
     return Promise.resolve();
   }
 
-  return await fs.writeFile(path, data, { encoding: 'utf-8' });
+  return fs.writeFile(path, data, { encoding: 'utf-8' });
 };
 
 export const cp = async (src: string, dest: string, dry?: boolean, filter?: CopyOptions['filter']) => {
@@ -26,7 +26,7 @@ export const cp = async (src: string, dest: string, dry?: boolean, filter?: Copy
     return Promise.resolve();
   }
 
-  return await fs.cp(src, dest, { recursive: true, filter });
+  return fs.cp(src, dest, { recursive: true, filter });
 };
 
 export const copyFile = async (src: string, dest: string, dry?: boolean) => {
@@ -35,7 +35,7 @@ export const copyFile = async (src: string, dest: string, dry?: boolean) => {
     return Promise.resolve();
   }
 
-  return await fs.copyFile(src, dest);
+  return fs.copyFile(src, dest);
 };
 
 export const cleanDir = async (dir: string, dry?: boolean) => {
@@ -46,5 +46,14 @@ export const cleanDir = async (dir: string, dry?: boolean) => {
 
   console.log(`${chalk.red(`Cleaning dir: ${dir.trim()}`)} `);
 
-  return await fs.rm(dir, { recursive: true, force: true });
+  return fs.rm(dir, { recursive: true, force: true });
+};
+
+export const readFile = async (path: string, dry?: boolean) => {
+  if (dry) {
+    console.log(`${chalk.blue('readFile')} ${path}`);
+    return Promise.resolve('');
+  }
+
+  return fs.readFile(path, 'utf-8');
 };
