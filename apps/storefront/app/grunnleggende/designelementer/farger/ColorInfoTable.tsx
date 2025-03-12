@@ -16,7 +16,7 @@ export const ColorInfoTable = () => {
           const item = colorMetadata[key as keyof typeof colorMetadata];
           return (
             <Table.Row key={key}>
-              <Table.Cell>{item.name}</Table.Cell>
+              <Table.Cell>{item.number + '. ' + item.name}</Table.Cell>
               <Table.Cell>{item.description.short}</Table.Cell>
             </Table.Row>
           );

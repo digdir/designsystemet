@@ -51,7 +51,7 @@ Disse gruppene beskriver bruksområdene til fargene. Border-gruppen skal for eks
   alt='Viser hvordan fargeskalaene er delt opp i grupper'
   boxShadow={false}
   dataUnstyled
-  caption='Viser fargeskalaen til den grønne Success fargen.'
+  caption='Viser fargeskalaen til den grønne Success fargen og hvordan den er delt opp i grupper.'
 />
 
 
@@ -136,14 +136,12 @@ Fargen har god kontrast (**4.5:1**) mot alle background- og surface-fargene.
 
 ### Base
 Base-fargene brukes for å fargelegge solide bakgrunner, som for eksempel knapper og andre interaktive elementer.
-Fargene som blir valgt med temabyggeren blir plassert i Base-default, og hover og active fargene blir generert ut i fra denne.
-Base-contrast fargene blir generert basert på hvor lys eller mørk Base-default fargen er. 
 
-* `Base-default` kan brukes for å fargelegge solide bakgrunner til elementer.
+* `Base-default` kan brukes for å fargelegge solide bakgrunner til elementer. Fargen (hex-koden) som blir valgt i temabyggeren blir plassert i Base-default.
 * `Base-hover` kan brukes til hover-tilstander for solide elementer eller til å skape visuelle hierarkier i Base-laget når den kombineres med Base-default og Base-active.
 * `Base-active` kan brukes til active-tilstander for solide elementer eller til å forsterke hierarkiet i Base-laget sammen med Base-default og Base-hover.
-* `Base-contrast-subtle` har god kontrast (**4.5:1**) mot Base-default fargen fra samme fargeskala og kan trygt brukes som tekst-farge.
-* `Base-contrast-default` har god kontrast (**4.5:1**) mot Base-default og Base-hover fargene fra samme fargeskala, og kan trygt brukes som en tekst-farge.
+* `Base-contrast-subtle` har god kontrast (**4.5:1**) mot Base-default fargen fra samme fargeskala og kan trygt brukes som tekst-farge mot denne.
+* `Base-contrast-default` har god kontrast (**4.5:1**) mot Base-default og Base-hover fargene fra samme fargeskala, og kan trygt brukes som en tekst-farge mot disse.
 
 <Image
   src='/img/color-base.png'
