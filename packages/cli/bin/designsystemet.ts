@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import fs from 'node:fs/promises';
 import path from 'node:path';
 import { Argument, createCommand, program } from '@commander-js/extra-typings';
 import chalk from 'chalk';
@@ -13,7 +12,7 @@ import { buildTokens } from '../src/tokens/build.js';
 import { cliOptions, createTokens } from '../src/tokens/create.js';
 import type { Theme } from '../src/tokens/types.js';
 import { writeTokens } from '../src/tokens/write.js';
-import { cleanDir } from '../src/utils.js';
+import { cleanDir, readFile } from '../src/utils.js';
 import { type CombinedConfigSchema, combinedConfigSchema, configFileSchema, mapPathToOptionName } from './config.js';
 import { type OptionGetter, getCliOption, getDefaultCliOption, getSuppliedCliOption } from './options.js';
 
@@ -234,7 +233,7 @@ async function parseConfig(
 
   let configFile: string;
   try {
-    configFile = await fs.readFile(resolvedPath, { encoding: 'utf-8' });
+    configFile = await readFile(resolvedPath);
     console.log(`Found config file: ${chalk.green(resolvedPath)}`);
   } catch (err) {
     if (err instanceof Error) {
