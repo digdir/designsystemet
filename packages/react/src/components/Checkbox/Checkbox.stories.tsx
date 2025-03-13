@@ -1,14 +1,21 @@
+import { FloppydiskIcon, PencilIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { useMemo, useState } from 'react';
 import {
   Button,
   Checkbox,
   Divider,
   Fieldset,
+  Pagination,
   Paragraph,
   Table,
   ValidationMessage,
 } from '../..';
-import { type UseCheckboxGroupProps, useCheckboxGroup } from '../../utilities';
+import {
+  type UseCheckboxGroupProps,
+  useCheckboxGroup,
+  usePagination,
+} from '../../utilities';
 
 type Story = StoryObj<typeof Checkbox>;
 
@@ -177,6 +184,157 @@ export const InTable: StoryFn<UseCheckboxGroupProps> = (args) => {
         ))}
       </Table.Body>
     </Table>
+  );
+};
+
+const tableData = [
+  {
+    id: 1,
+    navn: 'Lise Nordmann',
+    epost: 'lise@nordmann.no',
+    telefon: '22345678',
+  },
+  {
+    id: 2,
+    navn: 'Kari Nordmann',
+    epost: 'kari@nordmann.no',
+    telefon: '87654321',
+  },
+  {
+    id: 3,
+    navn: 'Ola Nordmann',
+    epost: 'ola@nordmann.no',
+    telefon: '32345678',
+  },
+  {
+    id: 4,
+    navn: 'Per Nordmann',
+    epost: 'per@nordmann.no',
+    telefon: '12345678',
+  },
+];
+
+export const Conditional: StoryFn<UseCheckboxGroupProps> = (args) => {
+  const { getCheckboxProps, validationMessageProps, value } = useCheckboxGroup({
+    value: ['epost'],
+    ...args,
+  });
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      Dine kommunikasjonskanaler: {value.join(', ')}
+      {open ? (
+        <>
+          <Button onClick={() => setOpen(false)}>
+            <FloppydiskIcon /> Lagre
+          </Button>
+          <Fieldset>
+            <Fieldset.Legend>
+              Hvordan vil du helst at vi skal kontakte deg?
+            </Fieldset.Legend>
+            <Fieldset.Description>
+              Velg alle alternativene som er relevante for deg.
+            </Fieldset.Description>
+            <Checkbox label='E-post' {...getCheckboxProps('epost')} />
+            <Checkbox label='Telefon' {...getCheckboxProps('telefon')} />
+            <Checkbox label='SMS' {...getCheckboxProps('sms')} />
+            <ValidationMessage {...validationMessageProps} />
+          </Fieldset>
+        </>
+      ) : (
+        <Button onClick={() => setOpen(true)} variant='secondary'>
+          <PencilIcon /> Rediger
+        </Button>
+      )}
+    </>
+  );
+};
+
+export const InTableWithPagination: StoryFn<UseCheckboxGroupProps> = (args) => {
+  const itemsPerPage = 3;
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const { getCheckboxProps } = useCheckboxGroup({
+    ...args,
+  });
+
+  const totalPages = Math.ceil(tableData.length / itemsPerPage);
+
+  const pagination = usePagination({
+    currentPage,
+    setCurrentPage,
+    totalPages,
+    showPages: totalPages,
+  });
+
+  // Compute the slice of users to display on the current page
+  const currentData = useMemo(() => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    return tableData.slice(startIndex, startIndex + itemsPerPage);
+  }, [currentPage]);
+
+  return (
+    <div>
+      <Table>
+        <Table.Head>
+          <Table.Row>
+            <Table.HeaderCell>
+              <Checkbox
+                aria-label='Select all'
+                {...getCheckboxProps({
+                  allowIndeterminate: true,
+                  value: 'all',
+                })}
+              />
+            </Table.HeaderCell>
+            <Table.HeaderCell>Navn</Table.HeaderCell>
+            <Table.HeaderCell>Epost</Table.HeaderCell>
+            <Table.HeaderCell>Telefon</Table.HeaderCell>
+          </Table.Row>
+        </Table.Head>
+        <Table.Body>
+          {currentData.map((user) => (
+            <Table.Row key={user.id}>
+              <Table.Cell>
+                <Checkbox
+                  aria-label={'Check ' + user.id}
+                  {...getCheckboxProps({
+                    value: user.id.toString(),
+                  })}
+                />
+              </Table.Cell>
+              <Table.Cell>{user.navn}</Table.Cell>
+              <Table.Cell>{user.epost}</Table.Cell>
+              <Table.Cell>{user.telefon}</Table.Cell>
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </Table>
+      <Pagination>
+        <Pagination.List>
+          <Pagination.Item>
+            <Pagination.Button {...pagination.prevButtonProps}>
+              Forrige
+            </Pagination.Button>
+          </Pagination.Item>
+          {pagination.pages.map(({ itemKey, buttonProps, page }) => (
+            <Pagination.Item key={itemKey}>
+              {typeof page === 'number' && (
+                <Pagination.Button {...buttonProps} aria-label={`Side ${page}`}>
+                  {page}
+                </Pagination.Button>
+              )}
+            </Pagination.Item>
+          ))}
+          <Pagination.Item>
+            <Pagination.Button {...pagination.nextButtonProps}>
+              Neste
+            </Pagination.Button>
+          </Pagination.Item>
+        </Pagination.List>
+      </Pagination>
+    </div>
   );
 };
 
