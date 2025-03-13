@@ -88,7 +88,7 @@ const colorSchemeVariables: GetStyleDictionaryConfig = (
           {
             destination: `color-scheme/${colorScheme}.css`,
             format: formats.colorScheme.name,
-            filter: (token) => !token.isSource && typeEquals('color', token) && !R.startsWith(['global'], token.path),
+            filter: (token) => typeEquals('color', token) && !R.startsWith(['global'], token.path),
           },
         ],
         options: {
@@ -180,11 +180,13 @@ const semanticVariables: GetStyleDictionaryConfig = ({ theme }, { outPath }) => 
             destination: `semantic.css`,
             format: formats.semantic.name,
             filter: (token) => {
+              const isUwantedToken = R.anyPass([R.includes('primitives/global')])(token.filePath);
+              const isPrivateToken = R.includes('_', token.path);
               const unwantedPaths = pathStartsWithOneOf(['font-size', 'line-height', 'letter-spacing'], token);
               const unwantedTypes = typeEquals(['color', 'fontWeight', 'fontFamily', 'typography'], token);
-              const unwantedTokens = !(unwantedPaths || unwantedTypes);
+              const unwantedTokens = !(unwantedPaths || unwantedTypes || isPrivateToken || isUwantedToken);
 
-              return !token.isSource && unwantedTokens;
+              return unwantedTokens;
             },
           },
         ],
@@ -324,8 +326,6 @@ export const getConfigsForThemeDimensions = (
     .flatMap(({ selectedTokenSets, permutation }) => {
       const setsWithPaths = selectedTokenSets.map((x) => `${tokensDir}/${x}.json`);
 
-      const [source, include] = paritionPrimitives(setsWithPaths);
-
       const configOrConfigs = getConfig(permutation, { outPath });
       const configs_ = Array.isArray(configOrConfigs) ? configOrConfigs : [{ config: configOrConfigs }];
 
@@ -338,11 +338,11 @@ export const getConfigsForThemeDimensions = (
               ...config?.log,
               verbosity: buildOptions?.verbose ? 'verbose' : 'silent',
             },
-            source,
-            include,
+            source: setsWithPaths,
           },
         };
       });
+
       return configs;
     })
     .sort();

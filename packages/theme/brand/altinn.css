@@ -322,6 +322,28 @@
 
 @layer ds.theme.typography.secondary {
 [data-typography="secondary"] {
+  --ds-line-height-sm: 1.3;
+  --ds-line-height-md: 1.5;
+  --ds-line-height-lg: 1.7;
+  --ds-font-size-1: 0.75rem;
+  --ds-font-size-2: 0.875rem;
+  --ds-font-size-3: 1rem;
+  --ds-font-size-4: 1.125rem;
+  --ds-font-size-5: 1.3125rem;
+  --ds-font-size-6: 1.5rem;
+  --ds-font-size-7: 1.875rem;
+  --ds-font-size-8: 2.25rem;
+  --ds-font-size-9: 3rem;
+  --ds-font-size-10: 3.75rem;
+  --ds-letter-spacing-1: -1%;
+  --ds-letter-spacing-2: -0.5%;
+  --ds-letter-spacing-3: -0.25%;
+  --ds-letter-spacing-4: -0.15%;
+  --ds-letter-spacing-5: 0%;
+  --ds-letter-spacing-6: 0.15%;
+  --ds-letter-spacing-7: 0.25%;
+  --ds-letter-spacing-8: 0.5%;
+  --ds-letter-spacing-9: 1.5%;
   --ds-font-family: IBM Plex Mono;
   --ds-font-weight-medium: 500;
   --ds-font-weight-semibold: 600;
@@ -414,28 +436,6 @@
   --ds-body-long-xs-line-height: 1.7;
   --ds-body-long-xs-font-size: 0.875rem;
   --ds-body-long-xs-letter-spacing: 0.15%;
-  --ds-line-height-sm: 1.3;
-  --ds-line-height-md: 1.5;
-  --ds-line-height-lg: 1.7;
-  --ds-font-size-1: 0.75rem;
-  --ds-font-size-2: 0.875rem;
-  --ds-font-size-3: 1rem;
-  --ds-font-size-4: 1.125rem;
-  --ds-font-size-5: 1.3125rem;
-  --ds-font-size-6: 1.5rem;
-  --ds-font-size-7: 1.875rem;
-  --ds-font-size-8: 2.25rem;
-  --ds-font-size-9: 3rem;
-  --ds-font-size-10: 3.75rem;
-  --ds-letter-spacing-1: -1%;
-  --ds-letter-spacing-2: -0.5%;
-  --ds-letter-spacing-3: -0.25%;
-  --ds-letter-spacing-4: -0.15%;
-  --ds-letter-spacing-5: 0%;
-  --ds-letter-spacing-6: 0.15%;
-  --ds-letter-spacing-7: 0.25%;
-  --ds-letter-spacing-8: 0.5%;
-  --ds-letter-spacing-9: 1.5%;
 }
 }
 /**
@@ -454,7 +454,6 @@
   --ds-border-radius-xl: min(var(--ds-border-radius-base)*3,var(--ds-border-radius-scale)*7);
   --ds-border-radius-default: var(--ds-border-radius-base);
   --ds-border-radius-full: 624.9375rem;
-  --ds-opacity-disabled: 30%;
   --ds-border-width-default: 1px;
   --ds-border-width-focus: 3px;
   --ds-shadow-xs: 0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12);
@@ -462,6 +461,7 @@
   --ds-shadow-md: 0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12);
   --ds-shadow-lg: 0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14);
   --ds-shadow-xl: 0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16);
+  --ds-opacity-disabled: 30%;
 
   --ds-size-0:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *0);
   --ds-size-1:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *1);
@@ -830,6 +830,28 @@
 
 @layer ds.theme.typography.primary {
 :root, [data-typography="primary"] {
+  --ds-line-height-sm: 1.3;
+  --ds-line-height-md: 1.5;
+  --ds-line-height-lg: 1.7;
+  --ds-font-size-1: 0.75rem;
+  --ds-font-size-2: 0.875rem;
+  --ds-font-size-3: 1rem;
+  --ds-font-size-4: 1.125rem;
+  --ds-font-size-5: 1.3125rem;
+  --ds-font-size-6: 1.5rem;
+  --ds-font-size-7: 1.875rem;
+  --ds-font-size-8: 2.25rem;
+  --ds-font-size-9: 3rem;
+  --ds-font-size-10: 3.75rem;
+  --ds-letter-spacing-1: -1%;
+  --ds-letter-spacing-2: -0.5%;
+  --ds-letter-spacing-3: -0.25%;
+  --ds-letter-spacing-4: -0.15%;
+  --ds-letter-spacing-5: 0%;
+  --ds-letter-spacing-6: 0.15%;
+  --ds-letter-spacing-7: 0.25%;
+  --ds-letter-spacing-8: 0.5%;
+  --ds-letter-spacing-9: 1.5%;
   --ds-font-family: Inter;
   --ds-font-weight-medium: 500;
   --ds-font-weight-semibold: 600;
@@ -922,28 +944,6 @@
   --ds-body-long-xs-line-height: 1.7;
   --ds-body-long-xs-font-size: 0.875rem;
   --ds-body-long-xs-letter-spacing: 0.15%;
-  --ds-line-height-sm: 1.3;
-  --ds-line-height-md: 1.5;
-  --ds-line-height-lg: 1.7;
-  --ds-font-size-1: 0.75rem;
-  --ds-font-size-2: 0.875rem;
-  --ds-font-size-3: 1rem;
-  --ds-font-size-4: 1.125rem;
-  --ds-font-size-5: 1.3125rem;
-  --ds-font-size-6: 1.5rem;
-  --ds-font-size-7: 1.875rem;
-  --ds-font-size-8: 2.25rem;
-  --ds-font-size-9: 3rem;
-  --ds-font-size-10: 3.75rem;
-  --ds-letter-spacing-1: -1%;
-  --ds-letter-spacing-2: -0.5%;
-  --ds-letter-spacing-3: -0.25%;
-  --ds-letter-spacing-4: -0.15%;
-  --ds-letter-spacing-5: 0%;
-  --ds-letter-spacing-6: 0.15%;
-  --ds-letter-spacing-7: 0.25%;
-  --ds-letter-spacing-8: 0.5%;
-  --ds-letter-spacing-9: 1.5%;
 }
 }
 /**
