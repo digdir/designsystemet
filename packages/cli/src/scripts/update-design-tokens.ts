@@ -6,7 +6,7 @@ const DIRNAME: string = import.meta.dirname || __dirname;
 const TARGET = path.join(DIRNAME, '../../../../design-tokens');
 const INTERNAL = path.join(DIRNAME, '../../internal/design-tokens');
 
-async function copyFiles() {
+async function updateDesignTokens() {
   console.log('📁 Copying design tokens');
   await cp(path.join(INTERNAL, 'primitives/modes/color-scheme'), path.join(TARGET, 'primitives/modes/color-scheme'));
 
@@ -32,4 +32,4 @@ async function copyFiles() {
   console.log('✅ Finished copying design tokens');
 }
 
-await copyFiles();
+await updateDesignTokens();
