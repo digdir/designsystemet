@@ -17,7 +17,9 @@
   grid-auto-flow: column;
   height: fit-content;
   padding: var(--dsc-togglegroup-spacing);
-  width: fit-content;
+  max-width: fit-content;
+  overflow-x: auto;
+  width: auto;
 
   &:not([hidden]) {
     display: grid;
@@ -26,7 +28,7 @@
   button {
     border-radius: calc(var(--dsc-togglegroup-border-radius) - calc(var(--dsc-togglegroup-spacing) / 2));
     min-height: var(--dsc-togglegroup-button-size);
-    min-width: var(--dsc-togglegroup-button-size);
+    min-width: fit-content;
 
     &[data-icon] {
       height: var(--dsc-togglegroup-button-size);
