@@ -17,7 +17,6 @@ const sortOrder = [
   'color-scheme/contrast',
   'typography/primary',
   'color/',
-  'builtin-colors',
 ];
 
 const sortByDefinedOrder = R.sortBy<string>((fileName) => {
@@ -52,6 +51,8 @@ const header = `@charset "UTF-8";
 @layer ds.reset, ds.theme, ds.base, ds.utilities, ds.components;
 \n`;
 
+const sortAlphabetically = R.sort<string>(R.ascend((x) => x));
+
 const concat = R.pipe(
   R.map((file: string): string => {
     try {
@@ -65,23 +66,22 @@ const concat = R.pipe(
   R.join('\n'),
 );
 
-type EntryFile = (options: {
+type ConcatFiles = (options: {
   outPath: string;
   buildPath: string;
   theme: string;
   dry?: boolean;
-}) => Promise<undefined>;
+}) => Promise<void>;
 
 /**
- * Creates a CSS entry file that imports base CSS files for a theme
+ * Concat all CSS files in the buildPath into a single CSS file in the outPath
  */
-export const makeEntryFile: EntryFile = async ({ outPath, buildPath, theme, dry }) => {
+export const concatFiles: ConcatFiles = async ({ outPath, buildPath, theme, dry }) => {
   const writePath = `${outPath}/${theme}.css`;
 
   const files = await glob(`**/*`, { cwd: buildPath });
-  const sortAlphabetically = R.sort<string>(R.ascend((x) => x));
-  const sortedFileNames = R.pipe(sortAlphabetically, sortByDefinedOrder)(files);
-  const content = header + concat(sortedFileNames.map((file) => `${buildPath}/${file}`));
+  const sortedFiles = R.pipe(sortAlphabetically, sortByDefinedOrder)(files);
+  const content = header + concat(sortedFiles.map((file) => `${buildPath}/${file}`));
 
   await writeFile(writePath, content, dry);
 };
