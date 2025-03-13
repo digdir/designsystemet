@@ -3,7 +3,7 @@
  */
 
 @layer ds.theme.color {
-[data-color="success"] {
+[data-color="success"], [data-color-scheme][data-color="success"] {
   --ds-color-background-default: var(--ds-color-success-background-default);
   --ds-color-background-tinted: var(--ds-color-success-background-tinted);
   --ds-color-surface-default: var(--ds-color-success-surface-default);

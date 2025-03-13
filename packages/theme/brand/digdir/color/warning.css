@@ -3,7 +3,7 @@
  */
 
 @layer ds.theme.color {
-[data-color="warning"] {
+[data-color="warning"], [data-color-scheme][data-color="warning"] {
   --ds-color-background-default: var(--ds-color-warning-background-default);
   --ds-color-background-tinted: var(--ds-color-warning-background-tinted);
   --ds-color-surface-default: var(--ds-color-warning-surface-default);
