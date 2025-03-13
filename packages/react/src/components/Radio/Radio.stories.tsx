@@ -1,4 +1,6 @@
+import { FloppydiskIcon, PencilIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 import {
   Button,
   Divider,
@@ -133,3 +135,40 @@ export const Inline: StoryFn<typeof Fieldset> = () => (
     </div>
   </Fieldset>
 );
+
+export const Conditional: StoryFn<UseRadioGroupProps> = (args) => {
+  const { getRadioProps, validationMessageProps, value } = useRadioGroup({
+    name: 'kommunikasjonskanal',
+    ...args,
+  });
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      Din kommunikasjonskanal: {value}
+      {open ? (
+        <>
+          <Button onClick={() => setOpen(false)}>
+            <FloppydiskIcon /> Lagre
+          </Button>
+          <Fieldset>
+            <Fieldset.Legend>
+              Hvordan vil du helst at vi skal kontakte deg?
+            </Fieldset.Legend>
+            <Fieldset.Description>
+              Velg alle alternativene som er relevante for deg.
+            </Fieldset.Description>
+            <Radio label='E-post' {...getRadioProps('epost')} />
+            <Radio label='Telefon' {...getRadioProps('telefon')} />
+            <Radio label='SMS' {...getRadioProps('sms')} />
+            <ValidationMessage {...validationMessageProps} />
+          </Fieldset>
+        </>
+      ) : (
+        <Button onClick={() => setOpen(true)} variant='secondary'>
+          <PencilIcon /> Rediger
+        </Button>
+      )}
+    </>
+  );
+};
