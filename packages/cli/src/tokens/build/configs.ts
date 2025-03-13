@@ -118,7 +118,9 @@ const colorCategoryVariables =
 
     const layer = `ds.theme.color`;
     const isRootColor = color === buildOptions?.rootColor;
-    const selector = `${isRootColor ? ':root, [data-color-scheme], ' : ''}[data-color="${color}"]`;
+    const selector = isRootColor
+      ? `:root, [data-color-scheme], [data-color="${color}"]`
+      : `[data-color="${color}"], [data-color-scheme][data-color="${color}"]`;
 
     const config: StyleDictionaryConfig = {
       usesDtcg,

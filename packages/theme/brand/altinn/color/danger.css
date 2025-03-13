@@ -3,7 +3,7 @@
  */
 
 @layer ds.theme.color {
-[data-color="danger"] {
+[data-color="danger"], [data-color-scheme][data-color="danger"] {
   --ds-color-background-default: var(--ds-color-danger-background-default);
   --ds-color-background-tinted: var(--ds-color-danger-background-tinted);
   --ds-color-surface-default: var(--ds-color-danger-surface-default);

@@ -3,7 +3,7 @@
  */
 
 @layer ds.theme.color {
-[data-color="info"] {
+[data-color="info"], [data-color-scheme][data-color="info"] {
   --ds-color-background-default: var(--ds-color-info-background-default);
   --ds-color-background-tinted: var(--ds-color-info-background-tinted);
   --ds-color-surface-default: var(--ds-color-info-surface-default);
