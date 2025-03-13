@@ -3,4 +3,4 @@
 "@digdir/designsystemet-theme": patch
 ---
 
-Add support for `data-color` and `data-color-scheme` being defined on the same element
+Fix `data-color` and `data-color-scheme` used on the same element not working in some browsers
