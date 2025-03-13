@@ -106,16 +106,10 @@ const colorScheme: Format = {
   },
 };
 
-declare module 'style-dictionary/types' {
-  export interface LocalOptions {
-    replaceCategoryWith?: string;
-  }
-}
-
 const colorCategory: Format = {
   name: 'ds/css-colorcategory',
   format: async ({ dictionary, file, options, platform }) => {
-    const { outputReferences, usesDtcg, replaceCategoryWith = '' } = options;
+    const { outputReferences, usesDtcg } = options;
     const { selector, layer } = platform;
 
     const header = await fileHeader({ file });
@@ -148,9 +142,10 @@ const colorCategory: Format = {
 };
 
 const isNumericBorderRadiusToken = (t: TransformedToken) => t.path[0] === 'border-radius' && isDigit(t.path[1]);
-export const isNumericSizeToken = (t: TransformedToken) => pathStartsWithOneOf(['_size'], t) && isDigit(t.path[1]);
+const isNumericSizeToken = (t: TransformedToken) => pathStartsWithOneOf(['size'], t) && isDigit(t.path[1]);
+const isSizeToken = (t: TransformedToken) => pathStartsWithOneOf(['size'], t);
 
-export const isSquashTokens = R.anyPass([isNumericBorderRadiusToken, isNumericSizeToken]);
+export const isSquashTokens = R.anyPass([isNumericBorderRadiusToken, isNumericSizeToken, isSizeToken]);
 
 /**
  * Overrides the default sizing formula with a custom one that supports [round()](https://developer.mozilla.org/en-US/docs/Web/CSS/round) if supported.
@@ -219,7 +214,7 @@ const semantic: Format = {
     const tokens = squashTokens(isSquashTokens, dictionary.allTokens);
     const filteredTokens = R.reject((token) => token.name.includes('ds-size-mode-font-size'), tokens);
     const [sizingTokens, restTokens] = R.partition(
-      (t: TransformedToken) => pathStartsWithOneOf(['size', '_size'], t) && isDigit(t.path[1]),
+      (t: TransformedToken) => pathStartsWithOneOf(['_size'], t) && isDigit(t.path[1]),
       filteredTokens,
     );
     const formattedTokens = [R.map(format, restTokens).join('\n'), formatSizingTokens(format, sizingTokens)];
