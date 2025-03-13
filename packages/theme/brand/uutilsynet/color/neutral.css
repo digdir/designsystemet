@@ -3,7 +3,7 @@
  */
 
 @layer ds.theme.color {
-[data-color="neutral"] {
+[data-color="neutral"], [data-color-scheme][data-color="neutral"] {
   --ds-color-background-default: var(--ds-color-neutral-background-default);
   --ds-color-background-tinted: var(--ds-color-neutral-background-tinted);
   --ds-color-surface-default: var(--ds-color-neutral-surface-default);
