@@ -13,7 +13,7 @@ import {
   type ThemePermutation,
   colorCategories,
 } from './build/types.js';
-import { makeEntryFile } from './build/utils/entryfile.js';
+import { concatFiles } from './build/utils/entryfile.js';
 import { type ProcessedThemeObject, processThemeObject } from './build/utils/getMultidimensionalThemes.js';
 
 type Options = {
@@ -86,7 +86,7 @@ const buildConfigs = {
     build: async (sdConfigs, { outPath, dry }) => {
       await Promise.all(
         sdConfigs.map(async ({ permutation: { theme } }) => {
-          return makeEntryFile({ theme, outPath, buildPath: path.resolve(outPath, theme), dry });
+          return concatFiles({ theme, outPath, buildPath: path.resolve(outPath, theme), dry });
         }),
       );
     },
