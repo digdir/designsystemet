@@ -1,14 +1,14 @@
 import * as R from 'ramda';
 import { baseColors, generateColorScale } from '../colors/index.js';
 import type { Color, ColorScheme } from '../colors/types.js';
-import typographyTemplate from './template/design-tokens/primitives/modes/typography/typography-template.json' with {
+import typographyTemplate from './template/design-tokens/primitives/modes/typography/typography.template.json' with {
   type: 'json',
 };
-import semanticColorBase from './template/design-tokens/semantic/color-base-template.json' with { type: 'json' };
-import semanticColorTemplate from './template/design-tokens/semantic/color-template.json' with { type: 'json' };
-import categoryColorTemplate from './template/design-tokens/semantic/modes/color-template.json' with { type: 'json' };
-import themeBase from './template/design-tokens/themes/theme-base-template.json' with { type: 'json' };
-import themeColorTemplate from './template/design-tokens/themes/theme-template.json' with { type: 'json' };
+import semanticColorBase from './template/design-tokens/semantic/color.base-template.json' with { type: 'json' };
+import semanticColorTemplate from './template/design-tokens/semantic/color.template.json' with { type: 'json' };
+import categoryColorTemplate from './template/design-tokens/semantic/modes/color.template.json' with { type: 'json' };
+import themeBase from './template/design-tokens/themes/theme.base-template.json' with { type: 'json' };
+import themeColorTemplate from './template/design-tokens/themes/theme.template.json' with { type: 'json' };
 
 import type { Colors, SemanticModes, Theme, Tokens, TokensSet, Typography } from './types.js';
 
@@ -116,7 +116,6 @@ const generateSemantic = (colors: Colors): Tokens['semantic'] => {
   }
 
   const customColors = [...mainColorNames, 'neutral', ...supportColorNames];
-  const defaultColor = mainColorNames[0];
 
   const semanticColorTokens = customColors.map(
     (colorName) =>
