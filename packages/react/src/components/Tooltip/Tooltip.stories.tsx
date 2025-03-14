@@ -13,6 +13,9 @@ export default {
   component: Tooltip,
   parameters: {
     customStyles: { margin: '2rem' },
+    chromatic: {
+      disableSnapshot: false,
+    },
   },
   play: async (ctx) => {
     // When not in Docs mode, automatically open the tooltip
