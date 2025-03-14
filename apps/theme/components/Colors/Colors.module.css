@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   gap: var(--ds-size-4);
-  margin: 8px 0;
+  margin: var(--ds-size-2) 0;
   width: 100%;
   max-width: 1390px;
   justify-content: space-between;
@@ -25,12 +25,4 @@
   color: var(--ds-color-neutral-text-default);
   flex-shrink: 0;
   width: 95px;
-}
-
-.separator {
-  margin-top: 6px;
-  margin-bottom: 7px;
-  height: 1px;
-  width: 100%;
-  background-color: var(--ds-color-neutral-border-subtle);
 }
