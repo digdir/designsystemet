@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import fs from 'node:fs/promises';
 import path from 'node:path';
 import { Argument, createCommand, program } from '@commander-js/extra-typings';
 import chalk from 'chalk';
@@ -12,8 +11,8 @@ import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
 import { cliOptions, createTokens } from '../src/tokens/create.js';
 import type { Theme } from '../src/tokens/types.js';
-import { cleanDir } from '../src/tokens/utils.js';
 import { writeTokens } from '../src/tokens/write.js';
+import { cleanDir, readFile } from '../src/utils.js';
 import { type CombinedConfigSchema, combinedConfigSchema, configFileSchema, mapPathToOptionName } from './config.js';
 import { type OptionGetter, getCliOption, getDefaultCliOption, getSuppliedCliOption } from './options.js';
 
@@ -183,8 +182,8 @@ function makeTokenCommands() {
         // Casting as missing properties should be validated by `getDefaultOrExplicitOption` to default values
         const theme = { name, ...themeWithoutName } as Theme;
 
-        const tokens = createTokens(theme);
-        await writeTokens({ outDir: config.outDir, tokens, theme, dry: opts.dry });
+        const { tokenSets } = await createTokens(theme);
+        await writeTokens({ outDir: config.outDir, theme, dry: opts.dry, tokenSets });
       }
     });
 
@@ -234,7 +233,7 @@ async function parseConfig(
 
   let configFile: string;
   try {
-    configFile = await fs.readFile(resolvedPath, { encoding: 'utf-8' });
+    configFile = await readFile(resolvedPath);
     console.log(`Found config file: ${chalk.green(resolvedPath)}`);
   } catch (err) {
     if (err instanceof Error) {

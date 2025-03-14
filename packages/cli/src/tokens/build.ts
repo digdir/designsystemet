@@ -1,4 +1,3 @@
-import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import type { ThemeObject } from '@tokens-studio/types';
@@ -6,6 +5,7 @@ import chalk from 'chalk';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
 
+import { cleanDir, readFile, writeFile } from '../utils.js';
 import { configs, getConfigsForThemeDimensions } from './build/configs.js';
 import {
   type BuildConfig,
@@ -13,9 +13,8 @@ import {
   type ThemePermutation,
   colorCategories,
 } from './build/types.js';
-import { makeEntryFile } from './build/utils/entryfile.js';
+import { concatFiles } from './build/utils/entryfile.js';
 import { type ProcessedThemeObject, processThemeObject } from './build/utils/getMultidimensionalThemes.js';
-import { cleanDir, writeFile } from './utils.js';
 
 type Options = {
   /** Design tokens path */
@@ -87,7 +86,7 @@ const buildConfigs = {
     build: async (sdConfigs, { outPath, dry }) => {
       await Promise.all(
         sdConfigs.map(async ({ permutation: { theme } }) => {
-          return makeEntryFile({ theme, outPath, buildPath: path.resolve(outPath, theme), dry });
+          return concatFiles({ theme, outPath, buildPath: path.resolve(outPath, theme), dry });
         }),
       );
     },
@@ -105,9 +104,9 @@ export async function buildTokens(options: Options): Promise<void> {
   /*
    * Build the themes
    */
-  const $themes = (
-    JSON.parse(await fs.readFile(path.resolve(`${tokensDir}/$themes.json`), 'utf-8')) as ThemeObject[]
-  ).map(processThemeObject);
+  const $themes = (JSON.parse(await readFile(path.resolve(`${tokensDir}/$themes.json`))) as ThemeObject[]).map(
+    processThemeObject,
+  );
 
   const relevant$themes = $themes
     // We only use the 'medium' theme for the 'size' group
