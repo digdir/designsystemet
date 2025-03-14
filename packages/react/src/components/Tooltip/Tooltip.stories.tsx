@@ -15,7 +15,7 @@ export default {
     customStyles: { margin: '2rem' },
   },
   play: async (ctx) => {
-    // When not in Docs mode, automatically open the dialog
+    // When not in Docs mode, automatically open the tooltip
     const canvas = within(ctx.canvasElement);
     const button = canvas.getByRole('button');
     await userEvent.hover(button);
@@ -49,7 +49,21 @@ export const WithString: Story = {
   },
 };
 
-WithString.play = () => {};
+WithString.play = async (ctx) => {
+  // When not in Docs mode, automatically open the tooltip
+  const canvas = within(ctx.canvasElement);
+  const button = canvas.getByText('My trigger');
+  await userEvent.hover(button);
+  const tooltip = canvas.getByRole('tooltip');
+  await new Promise<void>((resolve) => {
+    tooltip.addEventListener('animationend', () => {
+      resolve();
+    });
+  });
+
+  await expect(tooltip).toBeInTheDocument();
+  await expect(tooltip).toHaveAttribute('open');
+};
 
 export const Placement: Story = {
   args: {
