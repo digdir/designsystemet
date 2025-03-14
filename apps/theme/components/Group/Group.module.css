@@ -1,7 +1,8 @@
 .colors {
   display: flex;
-  gap: 4px;
+  gap: var(--ds-size-1);
   border-radius: 0;
+  justify-content: space-between;
 }
 
 .header {
@@ -17,9 +18,9 @@
 .names {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-bottom: 17px;
-  gap: 8px;
+  gap: var(--ds-size-1);
 }
 
 .names div {
