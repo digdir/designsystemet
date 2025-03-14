@@ -43,7 +43,7 @@ export const Group = ({
   }
 
   return (
-    <div className={classes.group}>
+    <div>
       {header && <div className={cl(classes.header)}>{header}</div>}
       {header && names && (
         <div className={classes.names}>

@@ -1,11 +1,11 @@
 .test {
   display: flex;
-  gap: 16px;
+  gap: var(--ds-size-4);
   justify-content: center;
 }
 
 .themes {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--ds-size-1);
 }

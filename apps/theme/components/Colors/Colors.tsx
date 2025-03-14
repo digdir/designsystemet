@@ -1,3 +1,4 @@
+import { Divider } from '@digdir/designsystemet-react';
 import { useThemeStore } from '../../store';
 import { Scale } from '../Scale/Scale';
 import classes from './Colors.module.css';
@@ -17,7 +18,7 @@ export const Colors = () => {
           />
         </div>
       ))}
-      <div className={classes.separator}></div>
+      <Divider />
       {colors.neutral.map((color, index) => (
         <div key={index} className={classes.row}>
           <div className={classes.scaleLabel}>{color.name}</div>
@@ -28,7 +29,7 @@ export const Colors = () => {
           />
         </div>
       ))}
-      <div className={classes.separator}></div>
+      <Divider />
       {colors.support.map((color, index) => (
         <div key={index} className={classes.row}>
           <div className={classes.scaleLabel}>{color.name}</div>
