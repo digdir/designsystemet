@@ -41,13 +41,14 @@ export const updateTemplates = async () => {
 
   // Copy default files
   await cp(...argsFromToPaths('primitives/globals.json'));
-  await convertJsonToEsm(
-    designTokensPath('primitives/globals.json'),
-    path.join(TEMPLATE_FILES_PATH, 'primitives/globals.ts'),
-  );
   await cp(...argsFromToPaths('primitives/modes/size'));
   await cp(...argsFromToPaths('primitives/modes/typography/size'));
   await cp(...argsFromToPaths('semantic/style.json'));
+
+  // await convertJsonToEsm(
+  //   designTokensPath('primitives/globals.json'),
+  //   path.join(TEMPLATE_FILES_PATH, 'primitives/globals.ts'),
+  // );
 
   /*
    * Create template files
@@ -67,10 +68,10 @@ export const updateTemplates = async () => {
     path.join(typographyDir, 'typography.template.json'),
     JSON.stringify(typographyTemplate, null, 2).replaceAll('digdir', '<theme>'),
   );
-  await writeFile(
-    path.join(typographyDir, 'typography.template.ts'),
-    `export default ${JSON.stringify(typographyTemplate, null, 2).replaceAll('digdir', '<theme>')};`,
-  );
+  // await writeFile(
+  //   path.join(typographyDir, 'typography.template.ts'),
+  //   `export default ${JSON.stringify(typographyTemplate, null, 2).replaceAll('digdir', '<theme>')};`,
+  // );
 
   // semantic/modes/<category>-color/<color>.json
   const categoryColorTemplate = accentColorCategoryJson.color.main;
