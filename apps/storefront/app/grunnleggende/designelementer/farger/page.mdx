@@ -25,12 +25,15 @@ export default ({ children }) => (
   />
 );
 
-
 Fargesystemet består av globale farger som refererer til hva fargen er (eks. red-1) og et semantisk nivå som beskriver hva fargen skal brukes til (eks. Text.Danger).
 
-## Semantiske farger
+## Navnestruktur
+Fargene i Designsystemet er strukturert med en semantisk betydning. 
+Dette betyr at de er definert etter funksjon og bruk, ikke bare etter hvordan de ser ut. 
+Det gjør det lettere å velge riktig farge fordi du slipper å vurdere selve fargetonen og kan fokusere på hva fargen skal formidle i stedet.
 
-Et semantisk fargenavn er bygget opp av 3 ledd: Navn på fargeskala, gruppe (bruksområde) og variant.
+Fargenavnene i Designsystemet er bygget opp av 3 ledd: Navn på fargeskala, gruppe (bruksområde) og variant.
+Disse delene beskriver hvordan fargene er bygget opp og hvordan de skal brukes.
 
 <Image
   src='/img/color-semantic.png'
@@ -47,16 +50,19 @@ Flere skalaer kan legges til ved hjelp av [Temabyggeren](https://theme.designsys
 Disse gruppene beskriver bruksområdene til fargene. Border-gruppen skal for eksempel brukes på rammer (strokes).
 
 <Image
-  src='/img/color-scale-example.png'
+  src='/img/fargeskala-success.png'
   alt='Viser hvordan fargeskalaene er delt opp i grupper'
   boxShadow={false}
   dataUnstyled
-  caption='Viser fargeskalaen til den grønne Success fargen og hvordan den er delt opp i grupper.'
+  caption='Viser en fargeskala og de 5 gruppene som fargene er delt inn i.'
 />
-
 
 * `Variant` Inne i hver gruppe finnes det varianter som beskriver hvordan fargene ser ut eller skal brukes. 
 Tinted betyr for eksempel at fargen har et hint av farge i seg, mens Hover betyr at fargen er tenkt brukt for en interaktiv tilstand.
+
+## Oversikt og forklaring av farger
+Hver fargeskala består av totalt 16 farger, utformet for å dekke ulike behov i designet. 
+Nedenfor finner du en oversikt over de forskjellige fargene og deres tiltenkte bruksområder.
 
 <Image
   src='/img/color-tokens.png'
@@ -66,10 +72,6 @@ Tinted betyr for eksempel at fargen har et hint av farge i seg, mens Hover betyr
   caption='Viser hvordan de semantiske fargene kan brukes i designet. Eksempelet bruker fire forskjellige fargeskalaer: Danger, Neutral og to blåskalaer.'
 />
 
-## Oversikt og forklaring av farger
-Hver fargeskala består av totalt 16 farger, utformet for å dekke ulike behov i designet. 
-Nedenfor finner du en oversikt over de forskjellige fargene og deres tiltenkte bruksområder.
-
 <ColorInfoTable />
 
 ### Background
@@ -77,10 +79,9 @@ Background-fargene brukes for å fargelegge store flater og er som oftest det ba
 
 * `Background-default` er den lyseste og mest nøytrale bakgrunnsfargen.
 * `Background-tinted` får et hint av farge i seg og kan brukes for å skape variasjon i bakgrunnslaget. 
-Det fungerer godt å bruke Surface-default som et lag over denne fargen.
-
+* `Background-hover` kan brukes til hover-tilstander for bakgrunner eller til å skape visuelle hierarkier i bakgrunnslaget når den kombineres med Background-tinted og Background-active.
 ### Surface
-Surface-fargene brukes til å fargelegge elementer som ligger over background-fargene, for eksempel paneler eller kort (Card).
+Surface-fargene brukes til å fargelegge elementer som ligger over background-fargene, som for eksempel paneler eller kort (cards).
 Disse fargene fungerer som forgrunnsfarger og bidrar til å skape dybde i designet ved å skille elementer fra bakgrunnen.
 I mørk modus blir disse fire fargene gradvis lysere, med Surface-active som den lyseste nyansen.
 
@@ -136,8 +137,14 @@ Fargen har god kontrast (**4.5:1**) mot alle background- og surface-fargene.
 
 ### Base
 Base-fargene brukes for å fargelegge solide bakgrunner, som for eksempel knapper og andre interaktive elementer.
+Fargene bidrar til å lede oppmerksomheten mot viktige designelementer og etablere et visuelt hierarki i forhold til mindre fremtredende elementer. 
+Samtidig skaper de kontrast mot background- og surface-fargene, noe som forsterker lesbarhet og visuell tydelighet.
+Base-fargene er delt inn i tre varianter: Base-default, Base-hover og Base-active.
 
-* `Base-default` kan brukes for å fargelegge solide bakgrunner til elementer. Fargen (hex-koden) som blir valgt i temabyggeren blir plassert i Base-default.
+Base-hover og Base-active fargene genereres ut fra lysheten eller mørkheten til Base-default fargen for å skape jevne visuelle overganger mellom tilstandene. 
+Kontrastfargene blir enten hvite eller svarte avhengig av lysstyrken til Base-default fargen for å sikre god kontrast og lesbarhet.
+
+* `Base-default` kan brukes for å fargelegge solide bakgrunner til elementer. Fargen (hex-koden) som blir valgt i temabyggeren blir plassert under Base-default.
 * `Base-hover` kan brukes til hover-tilstander for solide elementer eller til å skape visuelle hierarkier i Base-laget når den kombineres med Base-default og Base-active.
 * `Base-active` kan brukes til active-tilstander for solide elementer eller til å forsterke hierarkiet i Base-laget sammen med Base-default og Base-hover.
 * `Base-contrast-subtle` har god kontrast (**4.5:1**) mot Base-default fargen fra samme fargeskala og kan trygt brukes som tekst-farge mot denne.
