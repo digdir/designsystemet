@@ -175,21 +175,15 @@ Variants.parameters = {
   },
 };
 Variants.play = () => {};
-Variants.decorators = [
-  (Story) => (
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)',
-        gap: 'var(--ds-size-2)',
-        height: '100%',
-        width: '100%',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
+Variants.parameters = {
+  customStyles: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: 'var(--ds-size-2)',
+    height: '100%',
+    width: '100%',
+  },
+};
 
 export const Controlled: StoryFn<typeof Popover> = () => {
   const [open, setOpen] = useState(false);

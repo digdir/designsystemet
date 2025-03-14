@@ -38,20 +38,14 @@ export const Components: StoryFn<typeof Text> = () => {
   );
 };
 
-Components.decorators = [
-  (Story) => (
-    <div
-      style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        alignItems: 'center',
-        gap: '20px',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
+Components.parameters = {
+  customStyles: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    gap: '20px',
+  },
+};
 
 export const UsageExample: StoryFn<typeof Skeleton> = () => {
   return (
@@ -114,10 +108,6 @@ export const Text: StoryFn<typeof Skeleton> = () => (
   </>
 );
 
-Text.decorators = [
-  (Story) => (
-    <div style={{ display: 'flex', gap: '20px', maxWidth: 300 }}>
-      <Story />
-    </div>
-  ),
-];
+Text.parameters = {
+  customStyles: { display: 'flex', gap: '20px', maxWidth: 300 },
+};

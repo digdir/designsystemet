@@ -238,10 +238,6 @@ export const ListeMedOverskrift: Story = (args) => (
   </>
 );
 
-ListeMedOverskrift.decorators = [
-  (Story) => (
-    <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
-      <Story />
-    </div>
-  ),
-];
+ListeMedOverskrift.parameters = {
+  customStyles: { display: 'flex', gap: '2rem', flexWrap: 'wrap' },
+};

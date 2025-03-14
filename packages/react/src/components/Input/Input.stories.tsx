@@ -299,18 +299,12 @@ Checkbox.args = {
   type: 'checkbox',
 };
 
-Checkbox.decorators = [
-  (Story) => (
-    <div
-      style={{
-        display: 'grid',
-        gap: '2rem',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
+Checkbox.parameters = {
+  customStyles: {
+    display: 'grid',
+    gap: '2rem',
+  },
+};
 
 export const Switch: StoryFn<typeof Input> = (args) => {
   const states = [
@@ -370,15 +364,9 @@ Switch.args = {
   role: 'switch',
 };
 
-Switch.decorators = [
-  (Story) => (
-    <div
-      style={{
-        display: 'grid',
-        gap: '2rem',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
+Switch.parameters = {
+  customStyles: {
+    display: 'grid',
+    gap: '2rem',
+  },
+};

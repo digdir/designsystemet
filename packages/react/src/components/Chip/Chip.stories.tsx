@@ -41,10 +41,9 @@ export const Button: StoryFn<typeof Chip.Button> = (args) => (
   </>
 );
 
-Button.decorators = [
-  (Story) => (
-    <div style={{ display: 'flex', gap: 'var(--ds-size-2)', flexWrap: 'wrap' }}>
-      <Story />
-    </div>
-  ),
-];
+Button.parameters = {
+  customStyles: {
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
+};

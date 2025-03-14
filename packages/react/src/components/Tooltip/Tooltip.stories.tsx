@@ -1,4 +1,5 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { expect, userEvent, within } from '@storybook/test';
 
 import { Tooltip } from '.';
 import { Button } from '../..';
@@ -12,6 +13,21 @@ export default {
   component: Tooltip,
   parameters: {
     customStyles: { margin: '2rem' },
+  },
+  play: async (ctx) => {
+    // When not in Docs mode, automatically open the dialog
+    const canvas = within(ctx.canvasElement);
+    const button = canvas.getByRole('button');
+    await userEvent.hover(button);
+    const tooltip = canvas.getByRole('tooltip');
+    await new Promise<void>((resolve) => {
+      tooltip.addEventListener('animationend', () => {
+        resolve();
+      });
+    });
+
+    await expect(tooltip).toBeInTheDocument();
+    await expect(tooltip).toHaveAttribute('open');
   },
 } satisfies Meta;
 
@@ -32,6 +48,8 @@ export const WithString: Story = {
     children: 'My trigger',
   },
 };
+
+WithString.play = () => {};
 
 export const Placement: Story = {
   args: {

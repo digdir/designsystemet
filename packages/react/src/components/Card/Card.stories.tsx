@@ -226,21 +226,15 @@ export const Composed: Story = () => (
   </>
 );
 
-Composed.decorators = [
-  (Story) => (
-    <div
-      style={{
-        display: 'grid',
-        gap: 'var(--ds-size-4)',
-        gridColumn: '1 / -1',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px , 1fr))',
-        width: '100%',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
+Composed.parameters = {
+  customStyles: {
+    display: 'grid',
+    gap: 'var(--ds-size-4)',
+    gridColumn: '1 / -1',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(300px , 1fr))',
+    width: '100%',
+  },
+};
 
 export const WithLink: Story = (args) => (
   <>

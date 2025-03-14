@@ -18,22 +18,14 @@ type Story = StoryFn<typeof Badge>;
 const meta: Meta<typeof Badge> = {
   title: 'Komponenter/Badge',
   component: Badge,
+  parameters: {
+    customStyles: {
+      flexWrap: 'wrap',
+    },
+  },
 };
 
 export default meta;
-
-const FlexDecorator = (Story: React.FC) => (
-  <div
-    style={{
-      display: 'flex',
-      gap: 'var(--ds-size-4)',
-      flexWrap: 'wrap',
-    }}
-  >
-    <Story />
-  </div>
-);
-
 export const Preview: Story = (args) => <Badge {...args} />;
 
 Preview.args = {
@@ -106,8 +98,6 @@ export const Floating: Story = (args) => (
   </>
 );
 
-Floating.decorators = [FlexDecorator];
-
 export const CustomPlacement: Story = (args) => (
   <>
     <Badge.Position
@@ -122,8 +112,6 @@ export const CustomPlacement: Story = (args) => (
     </Badge.Position>
   </>
 );
-
-CustomPlacement.decorators = [FlexDecorator];
 
 export const Status: Story = (args) => (
   <>
@@ -141,8 +129,6 @@ export const Status: Story = (args) => (
     </Badge.Position>
   </>
 );
-
-Status.decorators = [FlexDecorator];
 
 export const InTabs: Story = (args) => (
   <Tabs defaultValue='value1'>
@@ -188,8 +174,6 @@ export const InButton: Story = (args) => (
   </>
 );
 
-InButton.decorators = [FlexDecorator];
-
 const VariantsMap: {
   [key: string]: { [key: string]: string };
 } = {
@@ -231,18 +215,12 @@ export const Variants: Story = () => (
   </>
 );
 
-Variants.decorators = [
-  (Story) => (
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)',
-        gap: 'var(--ds-size-2)',
-        height: '100%',
-        width: '100%',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
+Variants.parameters = {
+  customStyles: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: 'var(--ds-size-2)',
+    height: '100%',
+    width: '100%',
+  },
+};
