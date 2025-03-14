@@ -55,7 +55,10 @@ export const useThemeStore = create(
         name: 'background-default',
         displayName: 'Default',
         group: 'neutral',
-        description: '',
+        description: {
+          long: '',
+          short: '',
+        },
         luminance: {
           light: 0,
           dark: 0,
