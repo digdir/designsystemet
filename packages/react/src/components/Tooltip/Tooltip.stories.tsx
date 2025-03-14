@@ -12,7 +12,7 @@ export default {
   title: 'Komponenter/Tooltip',
   component: Tooltip,
   parameters: {
-    customStyles: { margin: '2rem' },
+    customStyles: { margin: '2rem', padding: '4rem' },
     chromatic: {
       disableSnapshot: false,
     },
