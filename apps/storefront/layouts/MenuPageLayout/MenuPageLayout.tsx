@@ -1,6 +1,7 @@
 'use client';
 import { Heading } from '@digdir/designsystemet-react';
 import { ComponentIcon } from '@navikt/aksel-icons';
+import { Slot } from '@radix-ui/react-slot';
 import { Container } from '@repo/components';
 import cn from 'clsx/lite';
 import { usePathname } from 'next/navigation';
@@ -67,8 +68,10 @@ const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
                   data.color === 'yellow' && classes.yellow,
                 )}
               >
-                {data.icon && data.icon}
-                {!data.icon && <ComponentIcon fontSize='4rem' />}
+                {data.icon && <Slot aria-hidden='true'>{data.icon}</Slot>}
+                {!data.icon && (
+                  <ComponentIcon fontSize='4rem' aria-hidden='true' />
+                )}
               </div>
             </div>
           )}

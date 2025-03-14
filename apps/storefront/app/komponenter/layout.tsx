@@ -19,7 +19,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <main id='main' className={classes.page}>
       <Banner color='blue'>
         <BannerIcon>
-          <ComponentFillIcon fontSize={'2.5rem'} />
+          <ComponentFillIcon fontSize={'2.5rem'} aria-hidden='true' />
         </BannerIcon>
         <BannerHeading level={1}>Komponenter</BannerHeading>
         <BannerIngress>

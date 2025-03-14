@@ -1,16 +1,17 @@
 'use client';
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import type { HeadingProps } from '@digdir/designsystemet-react';
+import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { type HTMLAttributes, createContext, useContext } from 'react';
 
 import classes from './Banner.module.css';
 
-type BanneContextProps = {
+type BannerContextProps = {
   color: NonNullable<BannerProps['color']>;
 };
 
-const BannerContext = createContext<BanneContextProps>({
+const BannerContext = createContext<BannerContextProps>({
   color: 'red',
 });
 
@@ -52,9 +53,9 @@ const BannerIngress = ({ className, ...props }: BannerIngressProps) => {
   );
 };
 
-type BanneIconProps = HTMLAttributes<HTMLDivElement>;
+type BannerIconProps = HTMLAttributes<HTMLDivElement>;
 
-const BannerIcon = ({ className, ...props }: BanneIconProps) => {
+const BannerIcon = ({ className, children, ...props }: BannerIconProps) => {
   const { color } = useContext(BannerContext);
 
   return (
@@ -62,7 +63,10 @@ const BannerIcon = ({ className, ...props }: BanneIconProps) => {
       className={cl(classes.icon, classes[color], className)}
       aria-hidden='true'
       {...props}
-    />
+    >
+      {/* The icon in banners never have any meaningful representation */}
+      <Slot aria-hidden='true'>{children}</Slot>
+    </div>
   );
 };
 
