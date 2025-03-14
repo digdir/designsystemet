@@ -33,7 +33,7 @@ Preview.args = {
   maxCount: 9,
 };
 
-export const Floating: Story = (args) => (
+export const Floating: Story = () => (
   <>
     <Badge.Position placement='top-right'>
       <Badge data-color='accent'></Badge>
@@ -98,6 +98,14 @@ export const Floating: Story = (args) => (
   </>
 );
 
+Floating.parameters = {
+  customStyles: {
+    display: 'flex',
+    gap: 'var(--ds-size-4)',
+    flexWrap: 'wrap',
+  },
+};
+
 export const CustomPlacement: Story = (args) => (
   <>
     <Badge.Position
@@ -130,7 +138,7 @@ export const Status: Story = (args) => (
   </>
 );
 
-export const InTabs: Story = (args) => (
+export const InTabs: Story = () => (
   <Tabs defaultValue='value1'>
     <Tabs.List>
       <Tabs.Tab value='value1'>
@@ -151,7 +159,7 @@ export const InTabs: Story = (args) => (
   </Tabs>
 );
 
-export const InButton: Story = (args) => (
+export const InButton: Story = () => (
   <>
     <Button icon variant='tertiary'>
       <Badge.Position>

@@ -182,6 +182,8 @@ Variants.parameters = {
     gap: 'var(--ds-size-2)',
     height: '100%',
     width: '100%',
+    placeItems: 'center',
+    padding: '5rem 3rem',
   },
 };
 
