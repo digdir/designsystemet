@@ -328,10 +328,6 @@ export const DialogNonModal: StoryFn<typeof Dialog> = () => {
   );
 };
 
-DialogNonModal.decorators = [
-  (Story) => (
-    <div style={{ padding: 'var(--ds-size-18)' }}>
-      <Story />
-    </div>
-  ),
-];
+DialogNonModal.parameters = {
+  curstomStyles: { padding: 'var(--ds-size-18)' },
+};

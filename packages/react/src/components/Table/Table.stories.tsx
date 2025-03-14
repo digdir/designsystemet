@@ -176,10 +176,6 @@ StickyHeader.parameters = {
   customStyles: { height: '280px', overflow: 'auto', padding: 0 },
 };
 
-type CheckedItems = {
-  [key: number]: boolean;
-};
-
 export const WithFormElements: Story = (args) => {
   const { getCheckboxProps } = useCheckboxGroup({
     name: 'my-checkbox',
@@ -282,7 +278,7 @@ export const MultipleHeaderRows: Story = (args) => {
 export const WithBorder: Story = (args) => {
   const rows = Array.from({ length: 3 }, (_, i) => i + 1);
   return (
-    <div style={{ display: 'grid', gap: '1rem' }}>
+    <>
       <Table {...args}>
         <Table.Body>
           {rows.map((row) => (
@@ -339,10 +335,14 @@ export const WithBorder: Story = (args) => {
           </Table.Row>
         </Table.Foot>
       </Table>
-    </div>
+    </>
   );
 };
 
 WithBorder.args = {
   border: true,
+};
+
+WithBorder.parameters = {
+  customStyles: { display: 'grid', gap: '1rem' },
 };

@@ -28,29 +28,28 @@ export const Preview: Story = {
 
 export const Components: StoryFn<typeof Text> = () => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '20px',
-      }}
-    >
+    <>
       <Skeleton variant='circle' width='50px' height='50px' />
       <Skeleton variant='rectangle' width='100px' height='50px' />
       <Paragraph>
         <Skeleton variant='text' width='10' />
       </Paragraph>
-    </div>
+    </>
   );
+};
+
+Components.parameters = {
+  customStyles: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    gap: '20px',
+  },
 };
 
 export const UsageExample: StoryFn<typeof Skeleton> = () => {
   return (
-    <div
-      style={{
-        maxWidth: 400,
-      }}
-    >
+    <>
       <Skeleton height='150px' />
       <div
         style={{
@@ -66,8 +65,14 @@ export const UsageExample: StoryFn<typeof Skeleton> = () => {
         </Heading>
       </div>
       <Skeleton variant='text' width='140' />
-    </div>
+    </>
   );
+};
+
+UsageExample.parameters = {
+  customStyles: {
+    maxWidth: 400,
+  },
 };
 
 export const Children: StoryFn<typeof Skeleton> = () => {
@@ -85,7 +90,7 @@ export const Children: StoryFn<typeof Skeleton> = () => {
 };
 
 export const Text: StoryFn<typeof Skeleton> = () => (
-  <div style={{ display: 'flex', gap: '20px', maxWidth: 300 }}>
+  <>
     <div style={{ flex: '1 1 200px' }}>
       <Heading>En tittel</Heading>
       <Paragraph data-size='sm'>
@@ -100,5 +105,9 @@ export const Text: StoryFn<typeof Skeleton> = () => (
         <Skeleton variant='text' width={40} />
       </Paragraph>
     </div>
-  </div>
+  </>
 );
+
+Text.parameters = {
+  customStyles: { display: 'flex', gap: '20px', maxWidth: 300 },
+};

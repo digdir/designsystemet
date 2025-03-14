@@ -17,6 +17,7 @@ const meta: Meta<typeof Avatar> = {
       gap: 'var(--ds-size-2)',
       justifyContent: 'center',
       alignItems: 'center',
+      flexWrap: 'wrap',
     },
   },
 };

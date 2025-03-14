@@ -22,20 +22,22 @@ export const Preview: Story = {
 const sizes: TagProps['data-size'][] = ['sm', 'md', 'lg'];
 export const Sizes: StoryFn<typeof Tag> = ({ ...rest }) => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: 'var(--ds-size-2)',
-      }}
-    >
+    <>
       {sizes.map((size) => (
         <Tag key={size} data-size={size} {...rest}>
           {size}
         </Tag>
       ))}
-    </div>
+    </>
   );
+};
+
+Sizes.parameters = {
+  customStyles: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 'var(--ds-size-2)',
+  },
 };
 
 const colors: TagProps['data-color'][] = [
@@ -51,20 +53,23 @@ const colors: TagProps['data-color'][] = [
 
 export const Colors: StoryFn<typeof Tag> = ({ ...rest }) => {
   return (
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)',
-        gap: 'var(--ds-size-2)',
-        height: '100%',
-        width: '100%',
-      }}
-    >
+    <>
       {colors.map((color) => (
         <Tag key={color} data-color={color} {...rest}>
           {color}
         </Tag>
       ))}
-    </div>
+    </>
   );
+};
+
+Colors.parameters = {
+  customStyles: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: 'var(--ds-size-2)',
+    height: '100%',
+    width: '100%',
+    placeItems: 'center',
+  },
 };

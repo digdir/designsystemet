@@ -138,7 +138,7 @@ export const ListeMedLenker: Story = (args) => (
 );
 
 export const ListeMedOverskrift: Story = (args) => (
-  <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
+  <>
     <div>
       <Heading
         level={2}
@@ -235,5 +235,9 @@ export const ListeMedOverskrift: Story = (args) => (
         </List.Item>
       </List.Unordered>
     </div>
-  </div>
+  </>
 );
+
+ListeMedOverskrift.parameters = {
+  customStyles: { display: 'flex', gap: '2rem', flexWrap: 'wrap' },
+};
