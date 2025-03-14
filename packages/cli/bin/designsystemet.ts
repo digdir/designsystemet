@@ -182,8 +182,8 @@ function makeTokenCommands() {
         // Casting as missing properties should be validated by `getDefaultOrExplicitOption` to default values
         const theme = { name, ...themeWithoutName } as Theme;
 
-        const tokens = createTokens(theme);
-        await writeTokens({ outDir: config.outDir, tokens, theme, dry: opts.dry });
+        const { tokenSets } = await createTokens(theme);
+        await writeTokens({ outDir: config.outDir, theme, dry: opts.dry, tokenSets });
       }
     });
 
