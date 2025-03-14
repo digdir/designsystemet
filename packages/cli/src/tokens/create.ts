@@ -1,16 +1,20 @@
-import * as R from 'ramda';
-import { baseColors, generateColorScale } from '../colors/index.js';
-import type { Color, ColorScheme } from '../colors/types.js';
-import typographyTemplate from './template/design-tokens/primitives/modes/typography/typography.template.json' with {
-  type: 'json',
-};
-import semanticColorBase from './template/design-tokens/semantic/color.base-template.json' with { type: 'json' };
-import semanticColorTemplate from './template/design-tokens/semantic/color.template.json' with { type: 'json' };
-import categoryColorTemplate from './template/design-tokens/semantic/modes/color.template.json' with { type: 'json' };
-import themeBase from './template/design-tokens/themes/theme.base-template.json' with { type: 'json' };
-import themeColorTemplate from './template/design-tokens/themes/theme.template.json' with { type: 'json' };
+import path from 'node:path';
+import type { ColorScheme } from '../colors/types.js';
+import {
+  generateColorScheme,
+  generateGlobal,
+  generateSemantic,
+  generateTheme,
+  generateTypography,
+} from './create/generators.js';
+import type { Theme, TokensSet } from './types.js';
 
-import type { Colors, SemanticModes, Theme, Tokens, TokensSet, Typography } from './types.js';
+const DIRNAME: string = import.meta.dirname || __dirname;
+
+const getToken = async (tokenSet: string): Promise<TokensSet> => {
+  const joinedPath = path.join(DIRNAME, '/template/design-tokens/', `${tokenSet}.json`);
+  return (await import(joinedPath)).default;
+};
 
 export const cliOptions = {
   outDir: 'out-dir',
@@ -28,185 +32,35 @@ export const cliOptions = {
   },
 } as const;
 
-const generateColor = (colorArray: Color[]): TokensSet => {
-  const obj: TokensSet = {};
-  const $type = 'color';
-  for (const index in colorArray) {
-    obj[Number(index) + 1] = { $type, $value: colorArray[index].hex };
-  }
-  return obj;
-};
-
-const generateTypography = (themeName: string, { fontFamily }: Typography): TokensSet => {
-  return JSON.parse(
-    JSON.stringify(typographyTemplate)
-      .replaceAll(/<font-family>/g, fontFamily)
-      .replaceAll(/<theme>/g, themeName),
-  ) as TokensSet;
-};
-
-const generateColorScheme = (themeName: string, colorScheme: ColorScheme, colors: Colors): TokensSet => {
-  const main = R.map((color) => generateColor(generateColorScale(color, colorScheme)), colors.main);
-  const support = R.map((color) => generateColor(generateColorScale(color, colorScheme)), colors.support);
-  const neutral = generateColor(generateColorScale(colors.neutral, colorScheme));
-
-  return {
-    [themeName]: {
-      ...main,
-      ...support,
-      neutral,
-    },
-  };
-};
-
-const generateGlobal = (colorScheme: ColorScheme) => {
-  const blueScale = generateColorScale(baseColors.blue, colorScheme);
-  const greenScale = generateColorScale(baseColors.green, colorScheme);
-  const orangeScale = generateColorScale(baseColors.orange, colorScheme);
-  const purpleScale = generateColorScale(baseColors.purple, colorScheme);
-  const redScale = generateColorScale(baseColors.red, colorScheme);
-
-  return {
-    global: {
-      blue: generateColor(blueScale),
-      green: generateColor(greenScale),
-      orange: generateColor(orangeScale),
-      purple: generateColor(purpleScale),
-      red: generateColor(redScale),
-    },
-  };
-};
-
-const generateSemantic = (colors: Colors): Tokens['semantic'] => {
-  const mainColorNames = Object.keys(colors.main);
-  const supportColorNames = Object.keys(colors.support);
-
-  const modes: SemanticModes = {
-    'main-color': {},
-    'support-color': {},
-  };
-
-  const categories = [
-    ['main-color', mainColorNames],
-    ['support-color', supportColorNames],
-  ] as const;
-
-  // Create main-color and support-color modes for the custom colors
-  for (const [colorCategory, colorNames] of categories) {
-    for (const colorName of colorNames) {
-      const category = colorCategory.replace('-color', '');
-      const customColorTokens = {
-        color: {
-          [category]: JSON.parse(
-            JSON.stringify(
-              categoryColorTemplate,
-              (key, value) => {
-                if (key === '$value') {
-                  return (value as string).replace('<color>', colorName);
-                }
-                return value;
-              },
-              2,
-            ),
-          ) as TokensSet,
-        },
-      };
-      modes[colorCategory][colorName] = customColorTokens;
-    }
-  }
-
-  const customColors = [...mainColorNames, 'neutral', ...supportColorNames];
-
-  const semanticColorTokens = customColors.map(
-    (colorName) =>
-      [
-        colorName,
-        R.map((x) => ({ ...x, $value: x.$value.replace('<color>', colorName) }), semanticColorTemplate),
-      ] as const,
-  );
-
-  const color = {
-    ...semanticColorBase,
-    color: {
-      ...Object.fromEntries(semanticColorTokens),
-      ...semanticColorBase.color,
-    },
-  };
-
-  return {
-    modes,
-    color,
-  };
-};
-
-const generateThemes = (colors: Colors, themeName: string, borderRadius: number): Tokens['themes'] => {
-  const mainColorNames = Object.keys(colors.main);
-  const supportColorNames = Object.keys(colors.support);
-  const customColors = [...mainColorNames, 'neutral', ...supportColorNames];
-
-  const themeColorTokens = Object.fromEntries(
-    customColors.map(
-      (colorName) =>
-        [
-          colorName,
-          R.map((x) => ({ ...x, $value: x.$value.replace('<color>', colorName) }), themeColorTemplate),
-        ] as const,
-    ),
-  );
-
-  const { color: themeBaseFileColor, ...remainingThemeFile } = themeBase;
-  const themeFile = {
-    color: {
-      ...themeColorTokens,
-      ...themeBaseFileColor,
-    },
-    ...remainingThemeFile,
-  };
-
-  const baseBorderRadius = R.lensPath(['border-radius', 'base', '$value']);
-  const updatedThemeFile = R.set(baseBorderRadius, String(borderRadius), themeFile);
-
-  return {
-    [themeName]: JSON.parse(
-      JSON.stringify(
-        updatedThemeFile,
-        (key, value) => {
-          if (key === '$value') {
-            return (value as string).replace('<theme>', themeName);
-          }
-
-          return value;
-        },
-        2,
-      ),
-    ) as TokensSet,
-  };
-};
-
-export const createTokens = (opts: Theme) => {
+export const createTokens = async (opts: Theme) => {
   const { colors, typography, name, borderRadius } = opts;
+  const colorSchemes: ColorScheme[] = ['light', 'dark'];
 
-  const tokens: Tokens = {
-    primitives: {
-      'colors-scheme': {
-        light: {
-          [name]: generateColorScheme(name, 'light', colors),
-          global: generateGlobal('light'),
-        },
-        dark: { [name]: generateColorScheme(name, 'dark', colors), global: generateGlobal('dark') },
-        // contrast: {
-        //   [name]: generateThemeTokens(name, 'contrast', colors),
-        //   global: generateGlobalTokens('contrast'),
-        // },
-      },
-      typography: {
-        primary: generateTypography(name, typography),
-        secondary: generateTypography(name, typography),
-      },
-    },
-    semantic: generateSemantic(colors),
-    themes: generateThemes(colors, name, borderRadius),
-  };
+  const semantic = generateSemantic(colors);
 
-  return tokens;
+  const tokenSets = new Map<string, TokensSet>([
+    ['primitives/globals', await getToken('primitives/globals')],
+    ['primitives/modes/size/small', await getToken('primitives/modes/size/small')],
+    ['primitives/modes/size/medium', await getToken('primitives/modes/size/medium')],
+    ['primitives/modes/size/large', await getToken('primitives/modes/size/large')],
+    ['primitives/modes/size/global', await getToken('primitives/modes/size/global')],
+    ['primitives/modes/typography/size/small', await getToken('primitives/modes/typography/size/small')],
+    ['primitives/modes/typography/size/medium', await getToken('primitives/modes/typography/size/medium')],
+    ['primitives/modes/typography/size/large', await getToken('primitives/modes/typography/size/large')],
+    [`primitives/modes/typography/primary/${name}`, generateTypography(name, typography)],
+    [`primitives/modes/typography/secondary/${name}`, generateTypography(name, typography)],
+    ...colorSchemes.flatMap((scheme): [string, TokensSet][] => [
+      [`primitives/modes/color-scheme/${scheme}/global`, generateGlobal(scheme)],
+      [`primitives/modes/color-scheme/${scheme}/${name}`, generateColorScheme(name, scheme, colors)],
+    ]),
+    [`themes/${name}`, generateTheme(colors, name, borderRadius)],
+    ['semantic/color', semantic.color],
+    ['semantic/style', await getToken('semantic/style')],
+    // maps out semantic modes, ieg 'semantic/modes/main-color/accent', and 'semantic/modes/support-color/brand1'
+    ...Object.entries(semantic.modes).flatMap(([mode, colors]): [string, TokensSet][] =>
+      Object.entries(colors).map(([key, colorSet]): [string, TokensSet] => [`semantic/modes/${mode}/${key}`, colorSet]),
+    ),
+  ]);
+
+  return { tokenSets };
 };
