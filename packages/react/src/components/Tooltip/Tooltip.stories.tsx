@@ -21,16 +21,16 @@ export default {
     // When not in Docs mode, automatically open the tooltip
     const canvas = within(ctx.canvasElement);
     const button = canvas.getByRole('button');
+    /* wait 1s for tooltip to show */
     await userEvent.hover(button);
-    const tooltip = canvas.getByRole('tooltip');
-    await new Promise<void>((resolve) => {
-      tooltip.addEventListener('animationend', () => {
-        resolve();
-      });
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(true);
+      }, 1000);
     });
-
+    const tooltip = canvas.getByRole('tooltip');
     await expect(tooltip).toBeInTheDocument();
-    await expect(tooltip).toHaveAttribute('open');
+    await expect(tooltip).toBeVisible();
   },
 } satisfies Meta;
 
@@ -57,15 +57,15 @@ WithString.play = async (ctx) => {
   const canvas = within(ctx.canvasElement);
   const button = canvas.getByText('My trigger');
   await userEvent.hover(button);
-  const tooltip = canvas.getByRole('tooltip');
-  await new Promise<void>((resolve) => {
-    tooltip.addEventListener('animationend', () => {
-      resolve();
-    });
+  /* wait 1s for tooltip to show */
+  await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(true);
+    }, 1000);
   });
-
+  const tooltip = canvas.getByRole('tooltip');
   await expect(tooltip).toBeInTheDocument();
-  await expect(tooltip).toHaveAttribute('open');
+  await expect(tooltip).toBeVisible();
 };
 
 export const Placement: Story = {
