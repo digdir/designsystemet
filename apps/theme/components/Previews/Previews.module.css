@@ -3,6 +3,15 @@
   gap: var(--ds-size-4);
   margin: var(--ds-size-4) 0;
   margin-top: var(--ds-size-18);
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    gap: var(--ds-size-4);
+
+    & * {
+      width: 100%;
+    }
+  }
 }
 
 .preview {

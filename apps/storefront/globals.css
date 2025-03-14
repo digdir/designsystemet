@@ -1,4 +1,4 @@
-@import url('https://altinncdn.no/fonts/inter/v4/inter.css');
+@import url('https://altinncdn.no/fonts/inter/v4.1/inter.css');
 
 @layer normalize, ds;
 
@@ -16,6 +16,53 @@
 
 body {
   font-family: 'Inter', sans-serif;
+  background-color: var(--ds-color-neutral-background-default);
+
+  &:has(#bloggen) {
+    background-color: var(--ds-color-neutral-background-tinted);
+
+    [data-color-scheme='dark'] &,
+    [data-color-scheme='auto'] & {
+      background-color: var(--ds-color-neutral-background-default);
+    }
+  }
+
+  &:has(#komponenter) {
+    background-color: var(--ds-color-neutral-background-tinted);
+
+    [data-color-scheme='dark'] &,
+    [data-color-scheme='auto'] & {
+      background-color: var(--ds-color-neutral-background-default);
+    }
+  }
+
+  &:has(#menu-page-layout) {
+    & header {
+      [data-color-scheme='dark'] &,
+      [data-color-scheme='auto'] & {
+        background-color: var(--ds-color-neutral-background-default) !important;
+      }
+    }
+  }
+
+  &:has(#frontpage) {
+    header:first-of-type {
+      background-color: transparent;
+    }
+
+    .ds-logo-image img {
+      width: 85%;
+    }
+  }
+
+  &:has(#post-layout) {
+    header {
+      [data-color-scheme='dark'] &,
+      [data-color-scheme='auto'] & {
+        background-color: var(--ds-color-neutral-background-default) !important;
+      }
+    }
+  }
 }
 
 * {
@@ -55,11 +102,6 @@ body {
 
   main {
     display: block;
-  }
-
-  pre {
-    font-family: monospace; /* 1 */
-    font-size: 1em; /* 2 */
   }
 
   abbr[title] {

@@ -1,5 +1,19 @@
 # Change Log
 
+## 1.0.2
+
+### Patch Changes
+
+- **useCheckboxGroup**: Fix React crashing when conditionally rendering `getCheckboxProps`. ([#3342](https://github.com/digdir/designsystemet/pull/3342))
+
+- **useRadioGroup**: Fix React crashing when conditionally rendering `getRadioProps` ([#3342](https://github.com/digdir/designsystemet/pull/3342))
+
+## 1.0.1
+
+### Patch Changes
+
+- **MultiSuggestion**: Export component ([#3305](https://github.com/digdir/designsystemet/pull/3305))
+
 ## 1.0.0
 
 ### Major Changes

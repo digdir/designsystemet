@@ -1,4 +1,3 @@
-import { useMergeRefs } from '@floating-ui/react';
 import { useEffect, useId, useRef, useState } from 'react';
 import type { ChangeEvent, ReactNode } from 'react';
 import type { CheckboxProps } from '../../../components';
@@ -110,6 +109,7 @@ export function useCheckboxGroup(
   const errorId = useId();
   const checkboxRefs = useRef<Set<HTMLInputElement>>(new Set());
   const indeterminateRefs = useRef<Set<HTMLInputElement>>(new Set());
+  const inputRefs = useRef<Map<string, HTMLInputElement>>(new Map());
 
   const getInputs = (checked: boolean) =>
     Array.from(checkboxRefs.current.values()).filter(
@@ -118,6 +118,10 @@ export function useCheckboxGroup(
 
   const getIndeterminateInputs = () =>
     Array.from(indeterminateRefs.current.values());
+
+  useEffect(() => {
+    toggleIndeterminate(getIndeterminateInputs, getInputs);
+  }, [groupValue]);
 
   return {
     /**
@@ -148,13 +152,37 @@ export function useCheckboxGroup(
 
       const {
         allowIndeterminate = false,
-        ref = undefined,
+        ref: forwardedRef = undefined,
         value = '',
         ...rest
       } = props;
 
-      const inputRef = useRef<HTMLInputElement>(null);
-      const mergedRefs = useMergeRefs([ref, inputRef]);
+      const handleRef = (element: HTMLInputElement | null) => {
+        if (element) {
+          const refs = allowIndeterminate ? indeterminateRefs : checkboxRefs;
+          refs.current.add(element);
+          inputRefs.current.set(value, element);
+
+          if (getIndeterminateInputs().length) {
+            toggleIndeterminate(getIndeterminateInputs, getInputs);
+          }
+        } else {
+          const oldElement = inputRefs.current.get(value);
+          if (oldElement) {
+            checkboxRefs.current.delete(oldElement);
+            indeterminateRefs.current.delete(oldElement);
+            inputRefs.current.delete(value);
+          }
+        }
+
+        if (forwardedRef) {
+          if (typeof forwardedRef === 'function') {
+            forwardedRef(element);
+          } else {
+            forwardedRef.current = element;
+          }
+        }
+      };
 
       const handleChange = () => {
         const nextGroupValue = Array.from(
@@ -166,39 +194,16 @@ export function useCheckboxGroup(
       };
 
       const indeterminateChange = () => {
-        if (!inputRef.current) return;
-        const checked = !!inputRef.current.checked;
+        const element = inputRefs.current.get(value);
+        if (!element) return;
+        const checked = !!element.checked;
         for (const input of getInputs(!checked)) {
-          /* We use click to send both event and change checked state */
           input.click();
         }
       };
 
-      useEffect(() => {
-        if (!allowIndeterminate) return;
-
-        toggleIndeterminate(getIndeterminateInputs, getInputs);
-      }, [groupValue]);
-
-      useEffect(() => {
-        if (!inputRef.current) return;
-
-        const input = inputRef.current;
-        const refs = allowIndeterminate ? indeterminateRefs : checkboxRefs;
-        refs.current.add(input);
-
-        if (getIndeterminateInputs().length)
-          toggleIndeterminate(getIndeterminateInputs, getInputs);
-
-        return () => {
-          refs.current.delete(input);
-        };
-      }, [value]);
-
       return {
-        /* Spread anything the user has set first */
         ...rest,
-        /* Concat ours with the user prop */
         'aria-describedby':
           `${error ? errorId : ''} ${rest['aria-describedby'] || ''}`.trim() ||
           undefined,
@@ -211,7 +216,7 @@ export function useCheckboxGroup(
           allowIndeterminate && indeterminateChange();
           handleChange();
         },
-        ref: mergedRefs,
+        ref: handleRef,
         value,
         disabled: disabled || rest.disabled,
         readOnly: readOnly || rest.readOnly,

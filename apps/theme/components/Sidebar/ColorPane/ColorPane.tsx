@@ -149,7 +149,7 @@ export const ColorPane = ({
       <div className={classes.btnGroup}>
         <Button
           data-size='sm'
-          color='neutral'
+          data-color='neutral'
           onClick={() => {
             /* Check here as well to disable sending new color */
             if (!checkNameIsValid()) return;
@@ -161,7 +161,7 @@ export const ColorPane = ({
 
         <Button
           data-size='sm'
-          color='neutral'
+          data-color='neutral'
           variant='secondary'
           onClick={closeTab}
         >

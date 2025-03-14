@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.0.2
+
+### Patch Changes
+
+- **Card**: Fix default background color token ([#3331](https://github.com/digdir/designsystemet/pull/3331))
+
+## 1.0.1
+
 ## 1.0.0
 
 ### Major Changes
