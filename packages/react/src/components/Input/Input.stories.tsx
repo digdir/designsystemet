@@ -1,5 +1,5 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import {
   Button,
@@ -59,7 +59,6 @@ export const Preview: Story = {
     name: 'inputs',
   },
   render: (args) => {
-    const inputRef = useRef<HTMLInputElement>(null);
     if (args.role !== 'switch') args.role = undefined; // Ensure we only keep switch role in storybook
 
     return (
@@ -266,12 +265,7 @@ export const Checkbox: StoryFn<typeof Input> = function Render(args) {
   ];
 
   return (
-    <div
-      style={{
-        display: 'grid',
-        gap: '2rem',
-      }}
-    >
+    <>
       {sizes.map((size) => (
         <div
           key={size}
@@ -297,13 +291,26 @@ export const Checkbox: StoryFn<typeof Input> = function Render(args) {
           ))}
         </div>
       ))}
-    </div>
+    </>
   );
 };
 
 Checkbox.args = {
   type: 'checkbox',
 };
+
+Checkbox.decorators = [
+  (Story) => (
+    <div
+      style={{
+        display: 'grid',
+        gap: '2rem',
+      }}
+    >
+      <Story />
+    </div>
+  ),
+];
 
 export const Switch: StoryFn<typeof Input> = (args) => {
   const states = [
@@ -327,12 +334,7 @@ export const Switch: StoryFn<typeof Input> = (args) => {
   ];
 
   return (
-    <div
-      style={{
-        display: 'grid',
-        gap: '2rem',
-      }}
-    >
+    <>
       {sizes.map((size) => (
         <div
           key={size}
@@ -359,7 +361,7 @@ export const Switch: StoryFn<typeof Input> = (args) => {
           ))}
         </div>
       ))}
-    </div>
+    </>
   );
 };
 
@@ -367,3 +369,16 @@ Switch.args = {
   type: 'checkbox',
   role: 'switch',
 };
+
+Switch.decorators = [
+  (Story) => (
+    <div
+      style={{
+        display: 'grid',
+        gap: '2rem',
+      }}
+    >
+      <Story />
+    </div>
+  ),
+];

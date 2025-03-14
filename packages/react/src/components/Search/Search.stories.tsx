@@ -43,7 +43,7 @@ export const Controlled: StoryFn<typeof Search> = () => {
 };
 
 export const Variants: StoryFn<typeof Search> = () => (
-  <div>
+  <>
     <Search>
       <Search.Input aria-label='Søk' />
       <Search.Clear />
@@ -64,7 +64,7 @@ export const Variants: StoryFn<typeof Search> = () => (
       <Search.Clear />
       <Search.Button variant='secondary' />
     </Search>
-  </div>
+  </>
 );
 
 export const WithLabel: StoryFn<typeof Search> = () => (

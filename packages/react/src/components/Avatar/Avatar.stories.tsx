@@ -21,6 +21,18 @@ const meta: Meta<typeof Avatar> = {
   },
 };
 
+const FlexDecorator = (Story: React.FC) => (
+  <div
+    style={{
+      display: 'flex',
+      gap: 'var(--ds-size-2)',
+      flexWrap: 'wrap',
+    }}
+  >
+    <Story />
+  </div>
+);
+
 export default meta;
 
 export const Preview: Story = (args) => <Avatar {...args} />;
@@ -46,6 +58,8 @@ export const Sizes: Story = () => (
     <Avatar data-size='lg' aria-label='large' />
   </>
 );
+
+Sizes.decorators = [FlexDecorator];
 
 export const ColorVariants: Story = () => (
   <>

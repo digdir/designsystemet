@@ -112,6 +112,7 @@ export const ShowHide: Story = () => {
     </>
   );
 };
+
 ShowHide.play = async (ctx) => {
   const canvas = within(ctx.canvasElement);
   const button = canvas.getByRole('button');

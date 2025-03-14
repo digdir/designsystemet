@@ -40,3 +40,11 @@ export const Button: StoryFn<typeof Chip.Button> = (args) => (
     <Chip.Button {...args}>Søk etter engelsk</Chip.Button>
   </>
 );
+
+Button.decorators = [
+  (Story) => (
+    <div style={{ display: 'flex', gap: 'var(--ds-size-2)', flexWrap: 'wrap' }}>
+      <Story />
+    </div>
+  ),
+];
