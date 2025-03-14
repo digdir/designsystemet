@@ -38,7 +38,6 @@ const NotFound = ({ children }: { children: React.ReactNode }) => {
         </div>
         {children}
       </Container>
-      ;
     </div>
   );
 };
