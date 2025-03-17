@@ -1,12 +1,14 @@
 name: Check changeset
 on:
   workflow_dispatch:
-  # pull_request:
-  #   paths:
-  #     - 'packages/cli/**'
-  #     - 'packages/css/**'
-  #     - 'packages/react/**'
-  #     - 'packages/theme/**'
+  pull_request:
+    paths:
+      - 'packages/cli/**'
+      - 'packages/css/**'
+      - 'packages/react/**'
+      - 'packages/theme/**'
+      - "!packages/**/README.md"
+      - "!packages/**/*.stories.tsx"
 jobs:
   checks:
     name: Check if changeset is present
@@ -18,3 +20,9 @@ jobs:
       - uses: ./.github/actions/gh-setup
       - name: Check if changeset status
         run: yarn changeset status --since=${{ github.event.pull_request.base.ref}}
+      - name: "Fail if no changeset is found"
+        if: failure()
+        run: |
+          echo "❌ Changes detected in packages, but no changeset was found."
+          echo "Please run 'yarn changeset' and commit the generated file."
+          exit 1
