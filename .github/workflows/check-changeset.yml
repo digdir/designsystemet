@@ -26,3 +26,4 @@ jobs:
           echo "❌ Changes detected in packages, but no changeset was found."
           echo "Please run 'yarn changeset' and commit the generated file."
           exit 1
+          
