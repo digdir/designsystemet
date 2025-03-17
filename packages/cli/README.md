@@ -1,7 +1,5 @@
 # @digdir/designsystemet
 
-Dummy change to test workflow
-
 CLI and tooling for Designsystemet
 
 Use `--help` for available commands and options
