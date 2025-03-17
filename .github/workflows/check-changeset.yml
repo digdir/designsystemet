@@ -19,7 +19,7 @@ jobs:
           fetch-depth: 0
       - uses: ./.github/actions/gh-setup
       - name: Check if changeset status
-        run: yarn changeset status --since=${{ github.event.pull_request.base.ref}}
+        run: yarn changeset status --since=${{ github.event.pull_request.base.ref }}
       - name: "Fail if no changeset is found"
         if: failure()
         run: |
