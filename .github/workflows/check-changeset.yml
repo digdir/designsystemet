@@ -19,4 +19,4 @@ jobs:
           fetch-depth: 0
       - uses: ./.github/actions/gh-setup
       - name: Check if changeset status
-        run: yarn changeset status --since=origin/next
+        run: yarn changeset status --since=origin/${{ github.event.pull_request.base.ref }}
