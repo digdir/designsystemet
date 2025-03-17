@@ -56,7 +56,7 @@ export const ColorModal = ({
         </Heading>
       </Dialog.Block>
       <Dialog.Block className={classes.modalContent}>
-        <div className={classes.description}>{description}</div>
+        <div className={classes.description}>{description.long}</div>
         <div className={classes.container}>
           <table className={classes.infoTable}>
             <tbody>
