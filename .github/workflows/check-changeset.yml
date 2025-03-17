@@ -21,7 +21,7 @@ jobs:
       - name: Fetch the 'next' branch
         run: git fetch origin next
       - name: Check if changeset status
-        run: yarn changeset status --since=${{ github.event.pull_request.base.ref }}
+        run: yarn changeset status --since=next
       - name: "Fail if no changeset is found"
         if: failure()
         run: |
