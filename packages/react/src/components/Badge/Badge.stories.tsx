@@ -18,10 +18,14 @@ type Story = StoryFn<typeof Badge>;
 const meta: Meta<typeof Badge> = {
   title: 'Komponenter/Badge',
   component: Badge,
+  parameters: {
+    customStyles: {
+      flexWrap: 'wrap',
+    },
+  },
 };
 
 export default meta;
-
 export const Preview: Story = (args) => <Badge {...args} />;
 
 Preview.args = {
@@ -29,13 +33,8 @@ Preview.args = {
   maxCount: 9,
 };
 
-export const Floating: Story = (args) => (
-  <div
-    style={{
-      display: 'flex',
-      gap: 'var(--ds-size-6)',
-    }}
-  >
+export const Floating: Story = () => (
+  <>
     <Badge.Position placement='top-right'>
       <Badge data-color='accent'></Badge>
       <EnvelopeClosedFillIcon title='Meldinger' />
@@ -96,16 +95,19 @@ export const Floating: Story = (args) => (
         }}
       />
     </Badge.Position>
-  </div>
+  </>
 );
 
+Floating.parameters = {
+  customStyles: {
+    display: 'flex',
+    gap: 'var(--ds-size-4)',
+    flexWrap: 'wrap',
+  },
+};
+
 export const CustomPlacement: Story = (args) => (
-  <div
-    style={{
-      display: 'flex',
-      gap: 'var(--ds-size-6)',
-    }}
-  >
+  <>
     <Badge.Position
       placement='top-right'
       style={{
@@ -116,16 +118,11 @@ export const CustomPlacement: Story = (args) => (
       <Badge data-color='accent'></Badge>
       <EnvelopeClosedFillIcon title='Meldinger' />
     </Badge.Position>
-  </div>
+  </>
 );
 
 export const Status: Story = (args) => (
-  <div
-    style={{
-      display: 'flex',
-      gap: 'var(--ds-size-4)',
-    }}
-  >
+  <>
     <Badge.Position data-size='sm'>
       <Badge data-color='danger' />
       <VideoFillIcon title='Videokamera' />
@@ -138,10 +135,10 @@ export const Status: Story = (args) => (
       <Badge data-color='danger' />
       <VideoFillIcon title='Videokamera' />
     </Badge.Position>
-  </div>
+  </>
 );
 
-export const InTabs: Story = (args) => (
+export const InTabs: Story = () => (
   <Tabs defaultValue='value1'>
     <Tabs.List>
       <Tabs.Tab value='value1'>
@@ -162,13 +159,8 @@ export const InTabs: Story = (args) => (
   </Tabs>
 );
 
-export const InButton: Story = (args) => (
-  <div
-    style={{
-      display: 'flex',
-      gap: 'var(--ds-size-4)',
-    }}
-  >
+export const InButton: Story = () => (
+  <>
     <Button icon variant='tertiary'>
       <Badge.Position>
         <Badge data-color='danger' count={1000} maxCount={99} />
@@ -187,7 +179,7 @@ export const InButton: Story = (args) => (
         <VideoIcon title='Skru på video' />
       </Badge.Position>
     </Button>
-  </div>
+  </>
 );
 
 const VariantsMap: {
@@ -224,17 +216,19 @@ const VariantsMap: {
 };
 
 export const Variants: Story = () => (
-  <div
-    style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(4, 1fr)',
-      gap: 'var(--ds-size-2)',
-      height: '100%',
-      width: '100%',
-    }}
-  >
+  <>
     {Object.entries(VariantsMap).map(([key, value]) => (
       <Badge key={key} {...value} count={15} maxCount={9} />
     ))}
-  </div>
+  </>
 );
+
+Variants.parameters = {
+  customStyles: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: 'var(--ds-size-2)',
+    height: '100%',
+    width: '100%',
+  },
+};
