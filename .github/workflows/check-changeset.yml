@@ -18,6 +18,8 @@ jobs:
         with:
           fetch-depth: 0
       - uses: ./.github/actions/gh-setup
+      - name: Fetch the 'next' branch
+        run: git fetch origin next
       - name: Check if changeset status
         run: yarn changeset status --since=${{ github.event.pull_request.base.ref }}
       - name: "Fail if no changeset is found"
@@ -26,4 +28,3 @@ jobs:
           echo "❌ Changes detected in packages, but no changeset was found."
           echo "Please run 'yarn changeset' and commit the generated file."
           exit 1
-          
