@@ -18,8 +18,6 @@ jobs:
         with:
           fetch-depth: 0
       - uses: ./.github/actions/gh-setup
-      - name: Fetch the 'next' branch
-        run: git fetch origin next
       - name: Check if changeset status
         run: yarn changeset status --since=origin/next
       - name: "Fail if no changeset is found"
