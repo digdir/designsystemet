@@ -40,3 +40,10 @@ export const Button: StoryFn<typeof Chip.Button> = (args) => (
     <Chip.Button {...args}>Søk etter engelsk</Chip.Button>
   </>
 );
+
+Button.parameters = {
+  customStyles: {
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
+};
