@@ -65,10 +65,16 @@ type ColorStore = {
       low: ThemeInfo[];
       medium: ThemeInfo[];
       high: ThemeInfo[];
+      veryHigh: ThemeInfo[];
     };
   };
   setFlatColorScales: (flatColorScales: {
-    [key: string]: { low: ThemeInfo[]; medium: ThemeInfo[]; high: ThemeInfo[] };
+    [key: string]: {
+      low: ThemeInfo[];
+      medium: ThemeInfo[];
+      high: ThemeInfo[];
+      veryHigh: ThemeInfo[];
+    };
   }) => void;
   colorScale: ThemeInfo;
   setColorScale: (colorScale: ThemeInfo) => void;
@@ -158,7 +164,17 @@ export const useDebugStore = create(
           },
         },
       })),
-    flatColorScales: {},
-    setFlatColorScales: (flatColorScales) => set({ flatColorScales }),
+    flatColorScales: {
+      default: {
+        low: [],
+        medium: [],
+        high: [],
+        veryHigh: [],
+      },
+    },
+    setFlatColorScales: (flatColorScales) =>
+      set({
+        flatColorScales,
+      }),
   })),
 );

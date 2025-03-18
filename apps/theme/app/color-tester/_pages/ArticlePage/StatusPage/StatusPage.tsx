@@ -36,7 +36,6 @@ const Item = ({ scale, type, color, setColor }: ItemProps) => {
 };
 
 export const StatusPage = () => {
-  const luminance = useDebugStore((state) => state.luminance);
   const themeSettings = useDebugStore((state) => state.themeSettings);
   const colorScales = useDebugStore((state) => state.colorScales);
   const statusColors = useDebugStore((state) => state.statusColors);

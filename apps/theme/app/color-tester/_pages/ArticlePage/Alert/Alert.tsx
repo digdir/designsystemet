@@ -9,7 +9,7 @@ type AlertProps = {
 };
 
 export const Alert = ({ type }: AlertProps) => {
-  const luminance = useDebugStore((state) => state.luminance);
+  const colorMetadata = useDebugStore((state) => state.colorMetadata);
   const themeSettings = useDebugStore((state) => state.themeSettings);
   const colorScales = useDebugStore((state) => state.colorScales);
 

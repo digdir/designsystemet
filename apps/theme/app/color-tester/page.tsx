@@ -140,7 +140,14 @@ export default function Home() {
       return aL - bL;
     });
 
-    const groups = sortColorsByLightnessAndChroma(flatThemesSorted);
+    const groups = sortColorsByLightnessAndChroma(flatThemesSorted) as {
+      [key: string]: {
+        low: ThemeInfo[];
+        medium: ThemeInfo[];
+        high: ThemeInfo[];
+        veryHigh: ThemeInfo[];
+      };
+    };
 
     setFlatColorScale(groups);
   }, [
@@ -163,13 +170,14 @@ export default function Home() {
         low: ThemeInfo[];
         medium: ThemeInfo[];
         high: ThemeInfo[];
+        veryHigh: ThemeInfo[];
       };
     } = {
-      veryDarkColors: { low: [], medium: [], high: [] },
-      darkColors: { low: [], medium: [], high: [] },
-      midColors: { low: [], medium: [], high: [] },
-      lightColors: { low: [], medium: [], high: [] },
-      veryLightColors: { low: [], medium: [], high: [] },
+      veryDarkColors: { low: [], medium: [], high: [], veryHigh: [] },
+      darkColors: { low: [], medium: [], high: [], veryHigh: [] },
+      midColors: { low: [], medium: [], high: [], veryHigh: [] },
+      lightColors: { low: [], medium: [], high: [], veryHigh: [] },
+      veryLightColors: { low: [], medium: [], high: [], veryHigh: [] },
     };
 
     for (const theme of themes) {
@@ -187,10 +195,11 @@ export default function Home() {
       else if (L >= 0.5 && L < 0.7) category = 'lightColors';
       else category = 'veryLightColors';
 
-      let chromaLevel: 'low' | 'medium' | 'high';
+      let chromaLevel: 'low' | 'medium' | 'high' | 'veryHigh';
       if (C < 0.08) chromaLevel = 'low';
       else if (C < 0.17) chromaLevel = 'medium';
-      else chromaLevel = 'high';
+      else if (C < 0.25) chromaLevel = 'high';
+      else chromaLevel = 'veryHigh';
 
       groups[category][chromaLevel].push(theme);
     }

@@ -19,8 +19,12 @@ type RowProps = {
 export const ColorGrid = ({ colors, colorNumber }: ColorGridProps) => {
   const [showBase, setShowBase] = useState(false);
   const themeSettings = useDebugStore((state) => state.themeSettings);
-  const luminance = useDebugStore((state) => state.luminance);
-  const greyScheme = generateColorSchemes('#000000', luminance, themeSettings);
+  const colorMetadata = useDebugStore((state) => state.colorMetadata);
+  const greyScheme = generateColorSchemes(
+    '#000000',
+    colorMetadata,
+    themeSettings,
+  );
 
   const Row = ({ rowColors }: RowProps) => {
     return (

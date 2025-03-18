@@ -161,25 +161,9 @@ const getDarkModeBaseRef = (
 ): CssColor => {
   const colorLightness = getLightnessFromHex(color);
   const colorSaturation = getSaturationFromHex(color);
-  let targetLightness: number | null = null;
+  const targetLightness: number | null = null;
 
   return baseDefault;
-
-  if (colorLightness <= 30) {
-    targetLightness = colorSaturation >= 70 ? 30 : 40;
-  } else if (colorLightness <= 45) {
-    targetLightness = colorSaturation >= 80 ? 45 : 55;
-  } else if (colorLightness <= 60) {
-    targetLightness = colorSaturation >= 80 ? 55 : 65;
-  }
-
-  if (targetLightness === null) {
-    return baseDefault;
-  }
-
-  return chroma(color)
-    .luminance(getLuminanceFromLightness(targetLightness))
-    .hex() as CssColor;
 };
 
 /**
