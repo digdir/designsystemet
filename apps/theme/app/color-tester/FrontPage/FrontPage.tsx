@@ -11,7 +11,7 @@ import { ColorInfo } from '../ColorInfo/ColorInfo';
 import { ColorScale } from '../ColorScale/ColorScale';
 import { ContrastChecker } from '../ContrastChecker/ContrastChecker';
 import {
-  type LuminanceType,
+  type ColorMetadataType,
   type ThemeSettingsType,
   useDebugStore,
 } from '../debugStore';
@@ -20,7 +20,7 @@ import { ColorIndexes } from '../utils';
 import classes from './FrontPage.module.css';
 
 const generateBaseThemes = (
-  luminance: LuminanceType,
+  colorMetadata: ColorMetadataType,
   themeSettings: ThemeSettingsType,
 ) => {
   const themes = [];
@@ -28,21 +28,21 @@ const generateBaseThemes = (
     const color = chroma('#0062BA')
       .luminance((i + 1) / 100)
       .hex() as CssColor;
-    themes.push(generateColorSchemes(color, luminance, themeSettings));
+    themes.push(generateColorSchemes(color, colorMetadata, themeSettings));
   }
   return themes;
 };
 
 export const FrontPage = () => {
-  const luminance = useDebugStore((state) => state.luminance);
+  const colorMetadata = useDebugStore((state) => state.colorMetadata);
   const theme = useDebugStore((state) => state.colorScale);
   const [baseThemes, setBaseThemes] = useState<ThemeInfo[]>(
-    generateBaseThemes(luminance, useDebugStore.getState().themeSettings),
+    generateBaseThemes(colorMetadata, useDebugStore.getState().themeSettings),
   );
   const themeSettings = useDebugStore((state) => state.themeSettings);
 
   useEffect(() => {
-    setBaseThemes(generateBaseThemes(luminance, themeSettings));
+    setBaseThemes(generateBaseThemes(colorMetadata, themeSettings));
   }, [themeSettings.base]);
 
   const testColorContrasts = (
@@ -87,7 +87,7 @@ export const FrontPage = () => {
         theme[mode][index].hex,
         theme[mode][ColorIndexes.textDefault].hex,
       );
-      return passed + (contrast >= 4.5 ? 1 : 0);
+      return passed + (contrast >= 4.7 ? 1 : 0);
     }, 0);
   };
 
@@ -104,7 +104,7 @@ export const FrontPage = () => {
         theme[mode][index].hex,
         theme[mode][ColorIndexes.textSubtle].hex,
       );
-      return passed + (contrast >= 4.5 ? 1 : 0);
+      return passed + (contrast >= 4.7 ? 1 : 0);
     }, 0);
   };
 
@@ -121,7 +121,7 @@ export const FrontPage = () => {
         theme[mode][index].hex,
         theme[mode][ColorIndexes.borderDefault].hex,
       );
-      return passed + (contrast >= 3 ? 1 : 0);
+      return passed + (contrast >= 3.2 ? 1 : 0);
     }, 0);
   };
 
@@ -138,7 +138,7 @@ export const FrontPage = () => {
         theme[mode][index].hex,
         theme[mode][ColorIndexes.borderStrong].hex,
       );
-      return passed + (contrast >= 4.5 ? 1 : 0);
+      return passed + (contrast >= 4.7 ? 1 : 0);
     }, 0);
   };
 

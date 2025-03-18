@@ -54,10 +54,16 @@
 }
 
 .color {
-  height: 40px;
+  height: 46px;
   width: 100%;
   border: 1px solid var(--ds-color-neutral-border-subtle);
   border-radius: 2px;
+}
+
+.color:hover {
+  border: 1px solid var(--ds-color-neutral-border-strong);
+  outline: 1px solid var(--ds-color-neutral-border-strong);
+  cursor: pointer;
 }
 
 .panel {

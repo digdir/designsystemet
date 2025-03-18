@@ -1,4 +1,5 @@
 import { Field, Heading, Select } from '@digdir/designsystemet-react';
+
 import { DoubleInput } from '../DoubleInput/DoubleInput';
 import { RangeBar } from '../RangeBar/RangeBar';
 import { useDebugStore } from '../debugStore';
@@ -7,8 +8,6 @@ import classes from './Sidebar.module.css';
 
 export const Sidebar = () => {
   const colorMetadata = useDebugStore((state) => state.colorMetadata);
-  const setLightLuminance = useDebugStore((state) => state.setLightLuminance);
-  const setDarkLuminance = useDebugStore((state) => state.setDarkLuminance);
   const themeSettings = useDebugStore((state) => state.themeSettings);
   const setThemeSettings = useDebugStore((state) => state.setThemeSettings);
 
@@ -223,32 +222,42 @@ export const Sidebar = () => {
           Luminance values
         </Heading>
         <div className={classes.group}>
-          {Object.keys(colorMetadata).map((key, index) => {
-            if (
-              index === 11 ||
-              index === 12 ||
-              index === 13 ||
-              index === 14 ||
-              index === 15
-            ) {
-              return null;
-            }
-            return (
-              <div key={key}>
-                <DoubleInput
-                  label={'f'}
-                  valueOne={colorMetadata[key].luminance.light[6].toString()}
-                  valueTwo={colorMetadata[key].luminance.dark[6].toString()}
-                  setValueOne={(value) => {
-                    setLightLuminance(parseFloat(value), 'background-default');
-                  }}
-                  setValueTwo={(value) => {
-                    setDarkLuminance(parseFloat(value), 'background-default');
-                  }}
-                />
-              </div>
-            );
-          })}
+          {Object.values(colorMetadata)
+            .filter(
+              (item) =>
+                item.name !== 'base-default' &&
+                item.name !== 'base-hover' &&
+                item.name !== 'base-active' &&
+                item.name !== 'base-contrast-subtle' &&
+                item.name !== 'base-contrast-default',
+            )
+            .map((item) => {
+              return (
+                <div key={item.name}>
+                  <DoubleInput
+                    label={item.name}
+                    valueOne={item.luminance.light.toString()}
+                    valueTwo={item.luminance.dark.toString()}
+                    setValueOne={(value) => {
+                      const newColorMetadata = { ...colorMetadata };
+                      newColorMetadata[item.name].luminance.light =
+                        parseFloat(value);
+                      useDebugStore.setState({
+                        colorMetadata: newColorMetadata,
+                      });
+                    }}
+                    setValueTwo={(value) => {
+                      const newColorMetadata = { ...colorMetadata };
+                      newColorMetadata[item.name].luminance.dark =
+                        parseFloat(value);
+                      useDebugStore.setState({
+                        colorMetadata: newColorMetadata,
+                      });
+                    }}
+                  />
+                </div>
+              );
+            })}
         </div>
       </div>
     </div>

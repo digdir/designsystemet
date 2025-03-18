@@ -20,7 +20,7 @@ import { generateColorSchemes } from './logic/theme';
 import classes from './page.module.css';
 
 export default function Home() {
-  const luminance = useDebugStore((state) => state.luminance);
+  const colorMetadata = useDebugStore((state) => state.colorMetadata);
   const colorScales = useDebugStore((state) => state.colorScales);
   const flatColorScales = useDebugStore((state) => state.flatColorScales);
   const setFlatColorScale = useDebugStore((state) => state.setFlatColorScales);
@@ -79,7 +79,7 @@ export default function Home() {
           'hsv',
         ).hex() as CssColor;
 
-        const theme = generateColorSchemes(color, luminance, themeSettings);
+        const theme = generateColorSchemes(color, colorMetadata, themeSettings);
         flatThemes.push(theme);
         innerThemes.push(theme);
       }
@@ -89,14 +89,14 @@ export default function Home() {
     themes[11].push(
       generateColorSchemes(
         chroma(0, 0, 0.23, 'hsv').hex() as CssColor,
-        luminance,
+        colorMetadata,
         themeSettings,
       ),
     );
     for (let i = 0; i < hues.length; i++) {
       const hue = hues[i];
       const color = chroma(hue, 0.5, 0.25, 'hsv').hex() as CssColor;
-      const theme = generateColorSchemes(color, luminance, themeSettings);
+      const theme = generateColorSchemes(color, colorMetadata, themeSettings);
       themes[11].push(theme);
       flatThemes.push(theme);
     }
@@ -105,28 +105,28 @@ export default function Home() {
     themes[12].push(
       generateColorSchemes(
         statusColors.success.hex as CssColor,
-        luminance,
+        colorMetadata,
         themeSettings,
       ),
     );
     themes[12].push(
       generateColorSchemes(
         statusColors.error.hex as CssColor,
-        luminance,
+        colorMetadata,
         themeSettings,
       ),
     );
     themes[12].push(
       generateColorSchemes(
         statusColors.warning.hex as CssColor,
-        luminance,
+        colorMetadata,
         themeSettings,
       ),
     );
     themes[12].push(
       generateColorSchemes(
         statusColors.info.hex as CssColor,
-        luminance,
+        colorMetadata,
         themeSettings,
       ),
     );
@@ -144,7 +144,7 @@ export default function Home() {
 
     setFlatColorScale(groups);
   }, [
-    luminance,
+    colorMetadata,
     themeSettings.base.modifier,
     themeSettings.interpolation.mode,
     statusColors,

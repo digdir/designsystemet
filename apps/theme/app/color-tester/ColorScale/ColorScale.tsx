@@ -1,3 +1,4 @@
+import { Tooltip } from '@digdir/designsystemet-react';
 import type { CssColor } from '@digdir/designsystemet/color';
 import cl from 'clsx/lite';
 import { useEffect, useState } from 'react';
@@ -8,11 +9,11 @@ import { generateColorSchemes } from '../logic/theme';
 import classes from './ColorScale.module.css';
 
 export const ColorScale = () => {
-  const luminance = useDebugStore((state) => state.luminance);
+  const colorMetadata = useDebugStore((state) => state.colorMetadata);
   const themeSettings = useDebugStore((state) => state.themeSettings);
   const [color, setColor] = useColor('#0062BA');
   const [scale, setScale] = useState(
-    generateColorSchemes(color.hex as CssColor, luminance, themeSettings),
+    generateColorSchemes(color.hex as CssColor, colorMetadata, themeSettings),
   );
   const [showPicker, setShowPicker] = useState(false);
 
@@ -22,18 +23,30 @@ export const ColorScale = () => {
 
   useEffect(() => {
     setScale(
-      generateColorSchemes(color.hex as CssColor, luminance, themeSettings),
+      generateColorSchemes(color.hex as CssColor, colorMetadata, themeSettings),
     );
-  }, [luminance, themeSettings, color]);
+  }, [colorMetadata, themeSettings, color]);
 
   const Item = ({ item }: ItemProps) => {
+    const [tooltipText, setTooltipText] = useState('Kopier hex-kode');
+
     return (
       <div className={classes.item}>
         <div className={classes.name}>{item.name}</div>
-        <div
-          className={classes.color}
-          style={{ backgroundColor: item.hex }}
-        ></div>
+
+        <Tooltip content={tooltipText} placement='top' data-size='sm'>
+          <button
+            className={classes.color}
+            style={{ backgroundColor: item.hex }}
+            onClick={() => {
+              navigator.clipboard.writeText(item.hex);
+              setTooltipText('Kopiert!');
+              setTimeout(() => {
+                setTooltipText('Kopier hex-kode');
+              }, 2000);
+            }}
+          ></button>
+        </Tooltip>
       </div>
     );
   };

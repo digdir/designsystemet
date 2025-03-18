@@ -1,20 +1,18 @@
-import type { CssColor } from '@digdir/designsystemet/color';
+import type { Color, CssColor } from '@digdir/designsystemet/color';
 
 import type {
-  ColorInfo,
-  ColorNumber,
   ColorScheme,
   GlobalColors,
   ThemeInfo,
 } from '@digdir/designsystemet/color';
 import {
-  getColorInfoFromPosition,
   getLightnessFromHex,
   getLuminanceFromLightness,
   getSaturationFromHex,
 } from '@digdir/designsystemet/color';
 import chroma from 'chroma-js';
-import type { ThemeSettingsType } from '../debugStore';
+import * as R from 'ramda';
+import type { ColorMetadataType, ThemeSettingsType } from '../debugStore';
 
 export const baseColors: Record<GlobalColors, CssColor> = {
   blue: '#0A71C0',
@@ -45,64 +43,37 @@ export type InterpolationMode =
 export const generateColorScale = (
   color: CssColor,
   colorScheme: ColorScheme,
-  luminance: Record<string, Record<string, number>> | undefined,
+  colorMetadata: ColorMetadataType,
   themeSettings: ThemeSettingsType,
-): ColorInfo[] => {
-  const baseColors = getBaseColors(color, colorScheme, themeSettings);
-  const luminanceValues = luminance?.[colorScheme];
-
-  // Create the color scale based on the luminance values. The chroma().luminance function uses RGB interpolation by default.
-  const outputArray: ColorInfo[] = Object.entries(luminanceValues || {}).map(
-    ([, value], index) => {
-      const position = (index + 1) as ColorNumber;
-      const colorInfo = getColorInfoFromPosition(position);
-      return {
-        name: colorInfo.name,
-        displayName: colorInfo.displayName,
-        group: colorInfo.group,
-        hex: chroma(
-          colorScheme === 'light'
-            ? baseColors.baseDefault
-            : getDarkModeBaseRef(color, baseColors.baseDefault),
-        )
-          .luminance(value)
-          .hex() as CssColor,
-        position,
-      };
-    },
-  );
-
-  const createSpecialColor = (position: ColorNumber, hexValue: CssColor) => {
-    const info = getColorInfoFromPosition(position);
+): Color[] => {
+  const colors = R.mapObjIndexed((colorData) => {
+    const luminance = colorData.luminance[colorScheme];
     return {
-      name: info.name,
-      displayName: info.displayName,
-      group: info.group,
-      hex: hexValue,
-      position,
+      ...colorData,
+      hex: chroma(color)
+        .luminance(luminance, themeSettings.interpolation.mode)
+        .hex() as CssColor,
     };
+  }, colorMetadata);
+
+  // Generate base colors
+  const baseColors = generateBaseColors(color, colorScheme, themeSettings);
+  colors['base-default'] = {
+    ...colors['base-default'],
+    hex: baseColors.default,
+  };
+  colors['base-hover'] = { ...colors['base-hover'], hex: baseColors.hover };
+  colors['base-active'] = { ...colors['base-active'], hex: baseColors.active };
+  colors['base-contrast-subtle'] = {
+    ...colors['base-contrast-subtle'],
+    hex: generateColorContrast(baseColors.default, 'subtle'),
+  };
+  colors['base-contrast-default'] = {
+    ...colors['base-contrast-default'],
+    hex: generateColorContrast(baseColors.default, 'default'),
   };
 
-  const specialColors: Omit<ColorInfo, 'id'>[] = [
-    createSpecialColor(12, baseColors.baseDefault),
-    createSpecialColor(13, baseColors.baseHover),
-    createSpecialColor(14, baseColors.baseActive),
-    createSpecialColor(15, getContrastSubtle(baseColors.baseDefault)),
-    createSpecialColor(16, getContrastDefault(baseColors.baseDefault)),
-  ];
-
-  // Add the special colors to the output array
-  for (const { hex, position, name, displayName, group } of specialColors) {
-    outputArray[position - 1] = {
-      hex,
-      position,
-      name,
-      displayName,
-      group,
-    };
-  }
-
-  return outputArray;
+  return Object.values(colors);
 };
 
 /**
@@ -112,12 +83,12 @@ export const generateColorScale = (
  */
 export const generateColorSchemes = (
   color: CssColor,
-  luminance: Record<string, Record<string, number>> | undefined,
+  colorMetadata: ColorMetadataType,
   themeSettings: ThemeSettingsType,
 ): ThemeInfo => ({
-  light: generateColorScale(color, 'light', luminance, themeSettings),
-  dark: generateColorScale(color, 'dark', luminance, themeSettings),
-  contrast: generateColorScale(color, 'contrast', luminance, themeSettings),
+  light: generateColorScale(color, 'light', colorMetadata, themeSettings),
+  dark: generateColorScale(color, 'dark', colorMetadata, themeSettings),
+  contrast: generateColorScale(color, 'contrast', colorMetadata, themeSettings),
 });
 
 /**
@@ -127,7 +98,7 @@ export const generateColorSchemes = (
  * @param colorScheme The color scheme to generate the base colors for
  * @returns
  */
-const getBaseColors = (
+const generateBaseColors = (
   color: CssColor,
   colorScheme: ColorScheme,
   themeSettings: ThemeSettingsType,
@@ -157,18 +128,18 @@ const getBaseColors = (
   }
 
   return {
-    baseDefault:
+    default:
       colorScheme === 'light'
         ? color
         : (chroma(baseRefColor)
             .luminance(getLuminanceFromLightness(colorLightness))
             .hex() as CssColor),
-    baseHover: chroma(baseRefColor)
+    hover: chroma(baseRefColor)
       .luminance(
         getLuminanceFromLightness(calculateLightness(colorLightness, modifier)),
       )
       .hex() as CssColor,
-    baseActive: chroma(baseRefColor)
+    active: chroma(baseRefColor)
       .luminance(
         getLuminanceFromLightness(
           calculateLightness(colorLightness, modifier * 2),
@@ -239,4 +210,39 @@ export const getContrastSubtle = (color: CssColor): CssColor => {
   return chroma(color)
     .luminance(getLuminanceFromLightness(targetLightness))
     .hex() as CssColor;
+};
+
+/**
+ * Generates contrast color for given color
+ *
+ * @param color color
+ * @param type 'default' | 'subtle'
+ */
+export const generateColorContrast = (
+  color: CssColor,
+  type: 'default' | 'subtle',
+): CssColor => {
+  if (type === 'default') {
+    return chroma.contrast(color, '#ffffff') >=
+      chroma.contrast(color, '#000000')
+      ? '#ffffff'
+      : '#000000';
+  }
+
+  if (type === 'subtle') {
+    const contrastWhite = chroma.contrast(color, '#ffffff');
+    const contrastBlack = chroma.contrast(color, '#000000');
+    const lightness = getLightnessFromHex(color);
+    const modifier = lightness <= 40 || lightness >= 60 ? 60 : 50;
+    const targetLightness =
+      contrastWhite >= contrastBlack
+        ? lightness + modifier
+        : lightness - modifier;
+
+    return chroma(color)
+      .luminance(getLuminanceFromLightness(targetLightness))
+      .hex() as CssColor;
+  }
+
+  return color;
 };
