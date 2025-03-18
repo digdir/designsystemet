@@ -54,6 +54,14 @@ export default {
       background: 'var(--ds-color-neutral-background-default)',
       borderRadius: 'var(--ds-border-radius-md)',
     },
+    chromatic: {
+      disableSnapshot: false,
+      modes: {
+        desktop: {
+          viewport: { height: 1080 },
+        },
+      },
+    },
   },
 } as Meta;
 
