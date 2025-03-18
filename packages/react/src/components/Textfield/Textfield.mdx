@@ -44,7 +44,7 @@ Bruk `counter` til å begrense antall tegn brukerne kan skrive i feltet.
 <Canvas of={TextfieldStories.Controlled} />
 
 
-## Retningslinjer for når du skal bruke `Textfield`
+## Retningslinjer for `Textfield`
 `Input` er egnet til korte tekster/svar. `Textarea` er egnet til mer utfyllende og lengre svar. 
 
 ### Unngå plassholdertekster
@@ -59,13 +59,13 @@ Tilpass bredden etter hva brukerne skal skrive inn - kort bredde for telefonnumm
 
 Brukere som skal fylle ut et tekstområde, trenger ofte å kopiere og lime inn informasjon, så denne funksjonen må ikke deaktiveres. Dette gjør det enkelt for brukerne å fylle inn nødvendige opplysninger uten begrensninger.
 
-### Inndata og formatering
+### Inndata
+For å sikre en god brukeropplevelse er det viktig å bruke en kombinasjon av riktig input-type og autocomplete-attributter.
 
-- Bruk `autoComplete` for felter som mottar personlig informasjon. Hvis feltet skal be om personopplysninger om en annen person enn brukeren, må du skru `autoComplete` av (WCAG 1.3.5).
-- Bruk gjerne inndatatyper som viser hva du ber om, for eksempel telefonnummer og e-post. Slike inndatatyper gir mobilbrukere et tastatur som passer til det de skal angi, for eksempel et numerisk tastatur for telefonnummer, men de kan også utløse validering på klientsiden.
-- Godta det meste av inndata fra brukerne, så lenge det er forståelig. Eksempler kan være kontonummer med punktum, telefonnummer med mellomrom eller mellomrom på slutten av en e-postadresse.
+- Tillat variasjoner i hvordan data skrives inn, så lenge informasjonen er forståelig. For eksempel bør telefonnumre kunne inneholde mellomrom, personnumre punktum, og e-postadresser aksepteres selv om de har et mellomrom til slutt.
+- Velg inputtyper som samsvarer med informasjonen du ber om, for eksempel `tel` eller `email`. Dette gir mobilbrukere et tilpasset tastatur, men vær oppmerksom på at enkelte inputtyper kan aktivere klientsidevalidering. 
+- `autoComplete` brukes i felter som mottar personlig informasjon. Hvis feltet skal be om personopplysninger om en annen person enn brukeren, må du skru `autoComplete` av.
 - Pass på at brukerne ser inndata som formateres automatisk, men uten at det forstyrrer dem mens de fyller ut.
-- Ikke bruk bare store bokstaver eller kursiv tekst i ledeteksten. Det er vanskelig å lese.
 
 <br/>
 
