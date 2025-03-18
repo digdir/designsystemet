@@ -15,10 +15,10 @@ jobs:
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
-      - name: Use node 20 and yarn cache
+      - name: Use node 22 and yarn cache
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'yarn'
       - name: Install dependencies
         run: yarn install --immutable

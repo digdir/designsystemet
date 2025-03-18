@@ -1,7 +1,7 @@
 .ds-card {
   --dsc-card-background--active: var(--ds-color-surface-active);
   --dsc-card-background--hover: var(--ds-color-surface-hover);
-  --dsc-card-background: var(--ds-color-background-default);
+  --dsc-card-background: var(--ds-color-surface-default);
   --dsc-card-border-width: var(--ds-border-width-default);
   --dsc-card-border-style: solid;
   --dsc-card-border-color: var(--ds-color-border-subtle);
@@ -27,11 +27,11 @@
   text-align: inherit;
 
   &[data-variant='default'] {
-    --dsc-card-background: var(--ds-color-background-default);
+    background: var(--ds-color-surface-default);
   }
 
   &[data-variant='tinted'] {
-    --dsc-card-background: var(--ds-color-surface-tinted);
+    background: var(--ds-color-surface-tinted);
   }
 
   &:not([hidden]) {

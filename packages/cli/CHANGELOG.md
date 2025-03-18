@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.0.2
+
+### Patch Changes
+
+- Improve build for built in colors. ([#3247](https://github.com/digdir/designsystemet/pull/3247))
+
+- Fix missing `--ds-color-surface-default` for colors `danger`, `warning`, `info`, `success` and `neutral`. ([#3247](https://github.com/digdir/designsystemet/pull/3247))
+
 ## 1.0.1
 
 ## 1.0.0
@@ -54,7 +62,7 @@
 - c25920a: Add JSON schema for CLI config file, which enables editor hints. To use it, do something like this:
   ```jsonc
   {
-    "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
+    "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json"
     // ...config options here...
   }
   ```
@@ -231,7 +239,7 @@
 
   ```jsonc
   {
-    "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
+    "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json"
     // ...config options here...
   }
   ```

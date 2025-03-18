@@ -1,8 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { useState } from 'react';
 import { act } from 'react';
 
-import { Checkbox, Fieldset, ValidationMessage } from '../../../components';
+import {
+  Button,
+  Checkbox,
+  Fieldset,
+  ValidationMessage,
+} from '../../../components';
 import { useCheckboxGroup } from './useCheckboxGroup';
 import type {
   GetCheckboxProps,
@@ -28,6 +34,36 @@ const CheckboxGroup = (args: UseCheckboxGroupProps) => {
       <Checkbox label='Test 2' {...getCheckboxProps('test2')} />
       <ValidationMessage {...validationMessageProps} />
     </Fieldset>
+  );
+};
+
+const ConditionalCheckboxGroup = (args: UseCheckboxGroupProps) => {
+  const { getCheckboxProps } = useCheckboxGroup({
+    value: ['epost'],
+    ...args,
+  });
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(!open)}>Toggle</Button>
+      {open ? (
+        <Fieldset>
+          <Checkbox
+            aria-label='All'
+            {...getCheckboxProps({ allowIndeterminate: true, value: 'all' })}
+          />
+          <Checkbox
+            label='Test 1'
+            {...getCheckboxProps({
+              value: 'test1',
+              'aria-describedby': 'custom aria-describedby',
+            })}
+          />
+          <Checkbox label='Test 2' {...getCheckboxProps('test2')} />
+        </Fieldset>
+      ) : null}
+    </>
   );
 };
 
@@ -180,5 +216,15 @@ describe('CheckboxGroup', () => {
       'aria-describedby',
       customAriaDescribedBy,
     );
+  });
+
+  test('can be conditionally rendered', async () => {
+    render(<ConditionalCheckboxGroup />);
+
+    /* click button to show checkboxes */
+    const button = screen.getByRole('button', { name: 'Toggle' });
+    await act(async () => await userEvent.click(button));
+    expect(screen.getByLabelText('Test 1')).toBeVisible();
+    expect(screen.getByLabelText('Test 2')).toBeVisible();
   });
 });

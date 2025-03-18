@@ -299,15 +299,9 @@ export const DialogWithSuggestion: StoryFn<typeof Dialog> = () => {
 
 DialogWithSuggestion.parameters = {
   a11y: {
-    // TODO: these rules should be enabled after figuring out why they occur.
-    // for some reason it says `aria-expanded` is not allowed
+    // TODO: this rule should be enabled after https://github.com/dequelabs/axe-core/issues/4672 have propagated to @storybook/addon-a11y.
     config: {
       rules: [
-        {
-          id: 'aria-allowed-attr',
-          enabled: false,
-        },
-        /* It does not like role="combobox" either */
         {
           id: 'aria-allowed-role',
           enabled: false,
@@ -334,10 +328,6 @@ export const DialogNonModal: StoryFn<typeof Dialog> = () => {
   );
 };
 
-DialogNonModal.decorators = [
-  (Story) => (
-    <div style={{ padding: 'var(--ds-size-18)' }}>
-      <Story />
-    </div>
-  ),
-];
+DialogNonModal.parameters = {
+  curstomStyles: { padding: 'var(--ds-size-18)' },
+};
