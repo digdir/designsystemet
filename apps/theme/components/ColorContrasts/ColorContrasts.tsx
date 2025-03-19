@@ -24,25 +24,47 @@ export const ColorContrasts = () => {
   const initialTheme =
     colors?.main[0]?.colors || generateColorSchemes('#0062BA');
 
-  const indexOne = [1, 2, 3, 4, 5];
-  const indexTwo = [7, 8, 9, 10, 11];
+  const staticHorNames = [
+    'background-default',
+    'background-tinted',
+    'surface-default',
+    'surface-tinted',
+    'surface-hover',
+  ];
+  const staticVerNames = [
+    'border-subtle',
+    'border-default',
+    'border-strong',
+    'text-subtle',
+    'text-default',
+  ];
+
+  // Pick the range of colors for the static contrast section from initialTheme
   const [reducedLight, setReducedLight] = useState({
-    themeRange1: initialTheme[colorScheme].filter((color) =>
-      indexOne.includes(color.number),
+    horizontalRange: initialTheme[colorScheme].filter((color) =>
+      staticHorNames.includes(color.name),
     ),
-    themeRange2: initialTheme[colorScheme].filter((color) =>
-      indexTwo.includes(color.number),
+    verticalRange: initialTheme[colorScheme].filter((color) =>
+      staticVerNames.includes(color.name),
     ),
   });
 
-  const indexBaseOne = [1, 2, 4, 15, 16];
-  const indexBaseTwo = [12, 13, 14];
+  const baseHorNames = [
+    'background-default',
+    'background-tinted',
+    'surface-default',
+    'base-contrast-subtle',
+    'base-contrast-default',
+  ];
+  const baseVerNames = ['base-default', 'base-hover', 'base-active'];
+
+  // Pick the range of colors for the base contrast section from initialTheme
   const [reducedBaseLight, setReducedBaseLight] = useState({
-    themeRange1: initialTheme[colorScheme].filter((color) =>
-      indexBaseOne.includes(color.number),
+    horizontalRange: initialTheme[colorScheme].filter((color) =>
+      baseHorNames.includes(color.name),
     ),
-    themeRange2: initialTheme[colorScheme].filter((color) =>
-      indexBaseTwo.includes(color.number),
+    verticalRange: initialTheme[colorScheme].filter((color) =>
+      baseVerNames.includes(color.name),
     ),
   });
 
@@ -53,11 +75,11 @@ export const ColorContrasts = () => {
         .find((color) => color.name === selectedColor)?.colors || initialTheme;
 
     setReducedLight({
-      themeRange1: newTheme[colorScheme].filter((color) =>
-        indexOne.includes(color.number),
+      horizontalRange: newTheme[colorScheme].filter((color) =>
+        staticHorNames.includes(color.name),
       ),
-      themeRange2: newTheme[colorScheme].filter((color) =>
-        indexTwo.includes(color.number),
+      verticalRange: newTheme[colorScheme].filter((color) =>
+        staticVerNames.includes(color.name),
       ),
     });
   }, [selectedColor, colors, colorScheme]);
@@ -70,11 +92,11 @@ export const ColorContrasts = () => {
       initialTheme;
 
     setReducedBaseLight({
-      themeRange1: newTheme[colorScheme].filter((color) =>
-        indexBaseOne.includes(color.number),
+      horizontalRange: newTheme[colorScheme].filter((color) =>
+        baseHorNames.includes(color.name),
       ),
-      themeRange2: newTheme[colorScheme].filter((color) =>
-        indexBaseTwo.includes(color.number),
+      verticalRange: newTheme[colorScheme].filter((color) =>
+        baseVerNames.includes(color.name),
       ),
     });
   }, [selectedBaseColor, colors, colorScheme]);
@@ -210,14 +232,17 @@ export const ColorContrasts = () => {
             <tbody>
               <tr>
                 <th />
-                {reducedLight.themeRange1.map((color, index) => (
-                  <ThCell key={index} color={reducedLight.themeRange1[index]} />
+                {reducedLight.horizontalRange.map((color, index) => (
+                  <ThCell
+                    key={index}
+                    color={reducedLight.horizontalRange[index]}
+                  />
                 ))}
               </tr>
-              {reducedLight.themeRange2.map((color2, index) => (
+              {reducedLight.verticalRange.map((color2, index) => (
                 <tr key={index}>
                   <ThCell color={color2} />
-                  {reducedLight.themeRange1.map((color1, index) => (
+                  {reducedLight.horizontalRange.map((color1, index) => (
                     <td key={index} className={classes.td}>
                       <TdCell color1={color1} color2={color2} />
                     </td>
@@ -260,17 +285,17 @@ export const ColorContrasts = () => {
             <tbody>
               <tr>
                 <th />
-                {reducedBaseLight.themeRange1.map((color, index) => (
+                {reducedBaseLight.horizontalRange.map((color, index) => (
                   <ThCell
                     key={index}
-                    color={reducedBaseLight.themeRange1[index]}
+                    color={reducedBaseLight.horizontalRange[index]}
                   />
                 ))}
               </tr>
-              {reducedBaseLight.themeRange2.map((color2, index) => (
+              {reducedBaseLight.verticalRange.map((color2, index) => (
                 <tr key={index}>
                   <ThCell color={color2} />
-                  {reducedBaseLight.themeRange1.map((color1, index) => (
+                  {reducedBaseLight.horizontalRange.map((color1, index) => (
                     <td key={index} className={classes.td}>
                       <TdCell color1={color1} color2={color2} />
                     </td>

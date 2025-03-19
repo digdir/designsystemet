@@ -18,13 +18,12 @@ export const Scale = ({
   namespace,
 }: ScaleProps) => {
   return (
-    // TODO: Use colorMetadata instead of hardcoding the names and color numbers
     <div className={classes.themes}>
       <RovingFocusRoot activeValue={namespace + '1'} asChild>
         <div className={classes.test}>
           <Group
             header={showHeader ? 'Background' : ''}
-            colorNumbers={[1, 2]}
+            colorNames={['background-default', 'background-tinted']}
             colorScale={colorScale}
             showColorMeta={showColorMeta}
             names={['Default', 'Tinted']}
@@ -32,7 +31,12 @@ export const Scale = ({
           />
           <Group
             header={showHeader ? 'Surface' : ''}
-            colorNumbers={[3, 4, 5, 6]}
+            colorNames={[
+              'surface-default',
+              'surface-tinted',
+              'surface-hover',
+              'surface-active',
+            ]}
             colorScale={colorScale}
             showColorMeta={showColorMeta}
             names={['Default', 'Tinted', 'Hover', 'Active']}
@@ -41,7 +45,7 @@ export const Scale = ({
           <Group
             showColorMeta={showColorMeta}
             header={showHeader ? 'Border' : ''}
-            colorNumbers={[7, 8, 9]}
+            colorNames={['border-subtle', 'border-default', 'border-strong']}
             colorScale={colorScale}
             names={['Subtle', 'Default', 'Strong']}
             namespace={namespace}
@@ -49,7 +53,7 @@ export const Scale = ({
           <Group
             showColorMeta={showColorMeta}
             header={showHeader ? 'Text' : ''}
-            colorNumbers={[10, 11]}
+            colorNames={['text-subtle', 'text-default']}
             colorScale={colorScale}
             names={['Subtle', 'Default']}
             namespace={namespace}
@@ -57,7 +61,13 @@ export const Scale = ({
           <Group
             showColorMeta={showColorMeta}
             header={showHeader ? 'Base' : ''}
-            colorNumbers={[12, 13, 14, 15, 16]}
+            colorNames={[
+              'base-default',
+              'base-hover',
+              'base-active',
+              'base-contrast-subtle',
+              'base-contrast-default',
+            ]}
             colorScale={colorScale}
             names={[
               'Default',

@@ -3,29 +3,19 @@ import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import type {} from '@digdir/designsystemet/color';
 import {} from '@digdir/designsystemet/color';
 import { BookIcon, PaletteIcon } from '@navikt/aksel-icons';
-import { ColorModal, Container } from '@repo/components';
+import { Container } from '@repo/components';
 import NextLink from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useRef } from 'react';
-import { useThemeStore } from '../store';
+import { useEffect } from 'react';
 
 import { Previews } from '../components';
 import classes from './page.module.css';
 
 export default function Home() {
-  const selectedColor = useThemeStore((state) => state.selectedColor);
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams);
-  const colorModalRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
-    // Open modal on selected color change
-    useThemeStore.subscribe(
-      (state) => state.selectedColor,
-      () => {
-        colorModalRef.current?.showModal();
-      },
-    );
     // Sticky Menu Area
     window.addEventListener('scroll', isSticky);
     return () => {
@@ -55,12 +45,6 @@ export default function Home() {
 
   return (
     <div>
-      <ColorModal
-        color={selectedColor.color}
-        namespace={'d'}
-        colorModalRef={colorModalRef}
-      />
-
       <main className={classes.main} id='main'>
         <Container>
           <div className={classes.header}>

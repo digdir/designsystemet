@@ -1,5 +1,4 @@
 import {
-  type Color,
   type ColorScheme,
   type ThemeInfo,
   generateColorSchemes,
@@ -34,8 +33,6 @@ type ColorStore = {
   ) => void;
   resetColors: () => void;
   removeColor: (index: number, type: 'main' | 'neutral' | 'support') => void;
-  selectedColor: { color: Color; name: string };
-  setSelectedColor: (color: Color, name: string) => void;
   baseBorderRadius: BaseBorderRadius;
   setBaseBorderRadius: (radius: BaseBorderRadius) => void;
   colorScheme: ColorScheme;
@@ -48,25 +45,6 @@ export const useThemeStore = create(
   subscribeWithSelector<ColorStore>((set) => ({
     activePage: 'colors',
     setActivePage: (page) => set({ activePage: page }),
-    selectedColor: {
-      color: {
-        hex: '#ffffff',
-        number: 1,
-        name: 'background-default',
-        displayName: 'Default',
-        group: 'neutral',
-        description: {
-          long: '',
-          short: '',
-        },
-        luminance: {
-          light: 0,
-          dark: 0,
-          contrast: 0,
-        },
-      },
-      name: 'Default',
-    },
     baseBorderRadius: 4,
     colorScheme: 'light',
     colors: {
@@ -104,7 +82,5 @@ export const useThemeStore = create(
       }),
     setColorScheme: (colorScheme) => set({ colorScheme }),
     setBaseBorderRadius: (radius) => set({ baseBorderRadius: radius }),
-    setSelectedColor: (color, name) =>
-      set({ selectedColor: { color: color, name: name } }),
   })),
 );
