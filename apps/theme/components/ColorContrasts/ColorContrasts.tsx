@@ -1,5 +1,6 @@
 import {
   type Color,
+  type ColorNames,
   generateColorSchemes,
   getColorMetadataByNumber,
   getContrastFromHex,
@@ -24,14 +25,14 @@ export const ColorContrasts = () => {
   const initialTheme =
     colors?.main[0]?.colors || generateColorSchemes('#0062BA');
 
-  const staticHorNames = [
+  const staticHorNames: ColorNames[] = [
     'background-default',
     'background-tinted',
     'surface-default',
     'surface-tinted',
     'surface-hover',
   ];
-  const staticVerNames = [
+  const staticVerNames: ColorNames[] = [
     'border-subtle',
     'border-default',
     'border-strong',
@@ -49,14 +50,18 @@ export const ColorContrasts = () => {
     ),
   });
 
-  const baseHorNames = [
+  const baseHorNames: ColorNames[] = [
     'background-default',
     'background-tinted',
     'surface-default',
     'base-contrast-subtle',
     'base-contrast-default',
   ];
-  const baseVerNames = ['base-default', 'base-hover', 'base-active'];
+  const baseVerNames: ColorNames[] = [
+    'base-default',
+    'base-hover',
+    'base-active',
+  ];
 
   // Pick the range of colors for the base contrast section from initialTheme
   const [reducedBaseLight, setReducedBaseLight] = useState({
