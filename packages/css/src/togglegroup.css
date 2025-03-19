@@ -3,9 +3,9 @@
   --dsc-togglegroup-border-width: var(--ds-border-width-default);
   --dsc-togglegroup-border-style: solid;
   --dsc-togglegroup-border-color: var(--ds-color-neutral-border-default);
-  --dsc-togglegroup-spacing: var(--ds-size-1);
+  --dsc-togglegroup-spacing: 0;
   --dsc-togglegroup-border-radius: var(--ds-border-radius-md);
-  --dsc-togglegroup-button-size: var(--ds-size-10);
+  --dsc-togglegroup-button-size: var(--ds-size-12);
 
   background: var(--dsc-togglegroup-background);
   border-radius: var(--dsc-togglegroup-border-radius);
@@ -29,6 +29,8 @@
     border-radius: calc(var(--dsc-togglegroup-border-radius) - calc(var(--dsc-togglegroup-spacing) / 2));
     min-height: var(--dsc-togglegroup-button-size);
     min-width: fit-content;
+
+    @composes ds-focus--inset from './base.css';
 
     &[data-icon] {
       height: var(--dsc-togglegroup-button-size);
