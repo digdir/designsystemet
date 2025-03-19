@@ -32,6 +32,10 @@
 
     @composes ds-focus--inset from './base.css';
 
+    &:focus-visible {
+      border-radius: var(--dsc-togglegroup-border-radius);
+    }
+
     &[data-icon] {
       height: var(--dsc-togglegroup-button-size);
       width: var(--dsc-togglegroup-button-size);
