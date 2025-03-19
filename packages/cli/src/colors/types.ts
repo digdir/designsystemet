@@ -39,7 +39,10 @@ export type ColorMetadata = {
   name: ColorNames;
   number: ColorNumber;
   displayName: string;
-  description: string;
+  description: {
+    short: string;
+    long: string;
+  };
   group: string;
   luminance: {
     light: number;
