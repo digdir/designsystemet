@@ -1,4 +1,5 @@
 import type { Config as StyleDictionaryConfig, TransformedToken } from 'style-dictionary/types';
+import type { TokensSet } from '../types.js';
 import type { GetStyleDictionaryConfig } from './configs.js';
 
 export const colorCategories = {
@@ -31,6 +32,7 @@ export type GetSdConfigOptions = {
   outPath: string;
   tokensDir: string;
   dry?: boolean;
+  tokenSets?: Map<string, TokensSet>;
 };
 
 export type BuildConfig = {
