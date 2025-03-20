@@ -1,34 +1,10 @@
-import { Dialog, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Dialog, Heading } from '@digdir/designsystemet-react';
 import type { Color } from '@digdir/designsystemet/color';
 import { getCssVariable, hexToHsluv } from '@digdir/designsystemet/color';
 import { ClipboardButton } from '@repo/components';
 
 import classes from './ColorModal.module.css';
 import { capitalizeFirstLetter, getColorCombinations } from './colorModalUtils';
-
-const Field = ({
-  label,
-  value,
-  copyBtn = false,
-}: {
-  label: string;
-  value: string;
-  copyBtn?: boolean;
-}) => {
-  return (
-    <div className={classes.field}>
-      {label && (
-        <Paragraph data-size='sm' className={classes.label}>
-          {label}
-        </Paragraph>
-      )}
-      <Paragraph data-size='sm' className={classes.value}>
-        {value}
-      </Paragraph>
-      {copyBtn && <ClipboardButton value={value} />}
-    </div>
-  );
-};
 
 type ColorModalProps = {
   colorModalRef: React.Ref<HTMLDialogElement> | null;
