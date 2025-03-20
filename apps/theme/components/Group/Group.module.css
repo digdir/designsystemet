@@ -1,13 +1,14 @@
 .colors {
   display: flex;
-  gap: 4px;
+  gap: var(--ds-size-1);
   border-radius: 0;
+  justify-content: space-between;
 }
 
 .header {
   border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
-  margin-bottom: 16px;
-  padding-bottom: 16px;
+  margin-bottom: var(--ds-size-4);
+  padding-bottom: var(--ds-size-4);
   text-align: center;
   width: 100%;
   position: relative;
@@ -17,9 +18,9 @@
 .names {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-bottom: 17px;
-  gap: 8px;
+  gap: var(--ds-size-1);
 }
 
 .names div {
@@ -29,7 +30,7 @@
   align-items: center;
   justify-content: center;
   display: flex;
-  height: 45px;
+  height: var(--ds-size-11);
 }
 
 @media (max-width: 1632px) {
