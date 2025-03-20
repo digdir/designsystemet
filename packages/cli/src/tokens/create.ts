@@ -1,4 +1,3 @@
-import path from 'node:path';
 import type { ColorScheme } from '../colors/types.js';
 import {
   generateColorScheme,
@@ -9,10 +8,8 @@ import {
 } from './create/generators.js';
 import type { Theme, TokensSet } from './types.js';
 
-const DIRNAME: string = import.meta.dirname || __dirname;
-
 const getToken = async (tokenSet: string): Promise<TokensSet> => {
-  const joinedPath = path.join(DIRNAME, '/template/design-tokens/', `${tokenSet}.json`);
+  const joinedPath = `./template/design-tokens/${tokenSet}.json`;
   return (await import(joinedPath)).default;
 };
 
