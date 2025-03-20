@@ -2,7 +2,6 @@
 
 @layer ds.base, ds.theme, ds.components;
 
-/** Some fake change for testing changeset */
 /** Import order defines ordinal specificity for layers */
 @import url('./base.css') layer(ds.base);
 @import url('./heading.css') layer(ds.base);
