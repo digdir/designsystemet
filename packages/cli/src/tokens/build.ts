@@ -15,6 +15,7 @@ import {
 } from './build/types.js';
 import { concatFiles } from './build/utils/entryfile.js';
 import { type ProcessedThemeObject, processThemeObject } from './build/utils/getMultidimensionalThemes.js';
+import type { TokensSet } from './types.js';
 
 type BuildOptions = {
   /** Design tokens path */
@@ -31,6 +32,8 @@ type BuildOptions = {
   dry?: boolean;
   /** Clean the output path before building tokens */
   clean?: boolean;
+  /** Tokensets */
+  tokenSets?: Map<string, TokensSet>;
 };
 
 export let buildOptions: BuildOptions | undefined;
@@ -122,6 +125,7 @@ export async function buildTokens(options: BuildOptions): Promise<void> {
     const sdConfigs = getConfigsForThemeDimensions(buildConfig.getConfig, relevant$themes, buildConfig.dimensions, {
       outPath: targetDir,
       tokensDir,
+      tokenSets: options.tokenSets,
       ...buildConfig.options,
     });
 
