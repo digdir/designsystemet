@@ -11857,6 +11857,7 @@ __metadata:
     "@mdx-js/react": "npm:^3.1.0"
     "@navikt/aksel-icons": "npm:^7.0.0"
     "@next/mdx": "npm:^15.0.0"
+    "@radix-ui/react-slot": "npm:^1.1.1"
     "@repo/components": "workspace:^"
     "@types/react": "npm:^19.0.7"
     "@types/react-dom": "npm:^19.0.3"
