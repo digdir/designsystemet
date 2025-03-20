@@ -319,12 +319,17 @@ export const getConfigsForThemeDimensions = (
   dimensions: ThemeDimension[],
   options: GetSdConfigOptions,
 ): SDConfigForThemePermutation[] => {
-  const { outPath, tokensDir } = options;
+  const { outPath, tokensDir, tokenSets } = options;
 
   const permutations = getMultidimensionalThemes(themes, dimensions);
   return permutations
     .flatMap(({ selectedTokenSets, permutation }) => {
-      const setsWithPaths = selectedTokenSets.map((x) => `${tokensDir}/${x}.json`);
+      let source = selectedTokenSets.map((x) => `${tokensDir}/${x}.json`);
+
+      if (tokenSets) {
+        source = R.pickAll(selectedTokenSets, tokenSets);
+        console.log('source', source);
+      }
 
       const configOrConfigs = getConfig(permutation, { outPath });
       const configs_ = Array.isArray(configOrConfigs) ? configOrConfigs : [{ config: configOrConfigs }];
@@ -338,7 +343,7 @@ export const getConfigsForThemeDimensions = (
               ...config?.log,
               verbosity: buildOptions?.verbose ? 'verbose' : 'silent',
             },
-            source: setsWithPaths,
+            source,
           },
         };
       });
