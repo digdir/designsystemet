@@ -16,9 +16,9 @@ import {
 import { concatFiles } from './build/utils/entryfile.js';
 import { type ProcessedThemeObject, processThemeObject } from './build/utils/getMultidimensionalThemes.js';
 
-type Options = {
+type BuildOptions = {
   /** Design tokens path */
-  tokens: string;
+  tokensDir: string;
   /** Output directory for built tokens */
   outDir: string;
   /** Generate preview tokens */
@@ -33,7 +33,7 @@ type Options = {
   clean?: boolean;
 };
 
-export let buildOptions: Options | undefined;
+export let buildOptions: BuildOptions | undefined;
 
 const sd = new StyleDictionary();
 
@@ -93,9 +93,9 @@ const buildConfigs = {
   },
 } satisfies Record<string, BuildConfig>;
 
-export async function buildTokens(options: Options): Promise<void> {
+export async function buildTokens(options: BuildOptions): Promise<void> {
   const { dry, clean } = options;
-  const tokensDir = options.tokens;
+  const tokensDir = options.tokensDir;
   const targetDir = path.resolve(options.outDir);
 
   /** For sharing build options in other files */

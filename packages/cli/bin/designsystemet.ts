@@ -41,16 +41,16 @@ function makeTokenCommands() {
     .option('--verbose', 'Enable verbose output', false)
     .action((opts) => {
       const { preview, verbose, clean, dry } = opts;
-      const tokens = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_CREATE_DIR;
+      const tokensDir = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_CREATE_DIR;
       const outDir = typeof opts.outDir === 'string' ? opts.outDir : './dist/tokens';
 
-      console.log(`Building tokens in ${chalk.green(tokens)}`);
+      console.log(`Building tokens in ${chalk.green(tokensDir)}`);
 
       if (dry) {
         console.log(`Performing dry run, no files will be written`);
       }
 
-      return buildTokens({ tokens, outDir, preview, verbose, dry, clean });
+      return buildTokens({ tokensDir, outDir, preview, verbose, dry, clean });
     });
 
   tokenCmd
