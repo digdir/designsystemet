@@ -24,7 +24,7 @@
     "@vercel/analytics": "^1.4.1",
     "clsx": "^2.1.1",
     "hastscript": "^9.0.0",
-    "next": "^15.1.5",
+    "next": "^15.2.3",
     "next-sitemap": "^4.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
