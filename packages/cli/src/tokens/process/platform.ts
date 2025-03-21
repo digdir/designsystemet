@@ -12,13 +12,7 @@ import { type BuildConfig, type SDConfigForThemePermutation, type ThemePermutati
 import { concatFiles } from './utils/entryfile.js';
 import { type ProcessedThemeObject, processThemeObject } from './utils/getMultidimensionalThemes.js';
 
-type BuildOptions = {
-  /** Design tokens path */
-  tokensDir: string;
-  /** Output directory for built tokens */
-  outDir: string;
-  /** Generate preview tokens */
-  preview: boolean;
+type SharedOptions = {
   /** Enable verbose output */
   verbose: boolean;
   /** Set the default color for ":root" */
@@ -27,11 +21,25 @@ type BuildOptions = {
   dry?: boolean;
   /** Clean the output path before building tokens */
   clean?: boolean;
-  /** Tokensets */
-  tokenSets?: Map<string, TokensSet>;
+  /** Generate preview tokens */
+  preview: boolean;
 };
 
-export let buildOptions: BuildOptions | undefined;
+type ProcessOptions =
+  | ({
+      process: 'build';
+      /** Design tokens path */
+      tokensDir: string;
+      /** Output directory for built tokens */
+      outDir: string;
+    } & SharedOptions)
+  | ({
+      process: 'format';
+      /** Tokensets */
+      tokenSets?: Map<string, TokensSet>;
+    } & SharedOptions);
+
+export let buildOptions: ProcessOptions | undefined;
 
 const sd = new StyleDictionary();
 
@@ -91,10 +99,10 @@ const buildConfigs = {
   },
 } satisfies Record<string, BuildConfig>;
 
-export async function buildTokens(options: BuildOptions): Promise<void> {
-  const { dry, clean } = options;
-  const tokensDir = options.tokensDir;
-  const targetDir = path.resolve(options.outDir);
+export async function processPlatform(options: ProcessOptions): Promise<void> {
+  const { dry, clean, process } = options;
+  const tokensDir = process === 'build' ? options.tokensDir : '';
+  const targetDir = process === 'build' ? path.resolve(options.outDir) : '';
 
   /** For sharing build options in other files */
   buildOptions = options;
@@ -120,7 +128,7 @@ export async function buildTokens(options: BuildOptions): Promise<void> {
     const sdConfigs = getConfigsForThemeDimensions(buildConfig.getConfig, relevant$themes, buildConfig.dimensions, {
       outPath: targetDir,
       tokensDir,
-      tokenSets: options.tokenSets,
+      tokenSets: process === 'format' ? options.tokenSets : undefined,
       ...buildConfig.options,
     });
 
@@ -165,7 +173,7 @@ export async function buildTokens(options: BuildOptions): Promise<void> {
             console.log(logMessage);
 
             if (!dry) {
-              return (await sd.extend(config)).buildAllPlatforms();
+              return (await sd.extend(config))[process === 'build' ? 'buildAllPlatforms' : 'formatAllPlatforms']();
             }
 
             return Promise.resolve();
