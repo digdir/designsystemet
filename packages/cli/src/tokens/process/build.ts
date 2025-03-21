@@ -5,17 +5,12 @@ import chalk from 'chalk';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
 
-import { cleanDir, readFile, writeFile } from '../utils.js';
-import { configs, getConfigsForThemeDimensions } from './process/configs.js';
-import {
-  type BuildConfig,
-  type SDConfigForThemePermutation,
-  type ThemePermutation,
-  colorCategories,
-} from './process/types.js';
-import { concatFiles } from './process/utils/entryfile.js';
-import { type ProcessedThemeObject, processThemeObject } from './process/utils/getMultidimensionalThemes.js';
-import type { TokensSet } from './types.js';
+import { cleanDir, readFile, writeFile } from '../../utils.js';
+import type { TokensSet } from '../types.js';
+import { configs, getConfigsForThemeDimensions } from './configs.js';
+import { type BuildConfig, type SDConfigForThemePermutation, type ThemePermutation, colorCategories } from './types.js';
+import { concatFiles } from './utils/entryfile.js';
+import { type ProcessedThemeObject, processThemeObject } from './utils/getMultidimensionalThemes.js';
 
 type BuildOptions = {
   /** Design tokens path */

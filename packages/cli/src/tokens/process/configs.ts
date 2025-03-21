@@ -4,8 +4,8 @@ import StyleDictionary from 'style-dictionary';
 import type { Config as StyleDictionaryConfig, TransformedToken } from 'style-dictionary/types';
 import { outputReferencesFilter } from 'style-dictionary/utils';
 
-import { buildOptions } from '../build.js';
 import { isColorCategoryToken, isDigit, isSemanticColorToken, pathStartsWithOneOf, typeEquals } from '../utils.js';
+import { buildOptions } from './build.js';
 import { formats } from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
 import { resolveMath, sizeRem, typographyName, unitless } from './transformers.js';
