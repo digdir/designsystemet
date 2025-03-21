@@ -102,16 +102,16 @@ export const GradientSpace = ({
     // Draw lines connecting the colors
     svg
       .append('path')
-      .datum(hslColors)
+      .datum(hslColors.map(({ s, l }) => [s, l]) as [number, number][])
       .attr('fill', 'none')
       .attr('stroke', 'black')
       .attr('stroke-width', 2)
       .attr(
         'd',
         d3
-          .line()
-          .x((d) => xScale(d.s)) // X = Saturation
-          .y((d) => yScale(d.l)), // Y = Lightness // Smooth curves
+          .line<[number, number]>()
+          .x((d) => xScale(d[0])) // X = Saturation
+          .y((d) => yScale(d[1])), // Y = Lightness // Smooth curves
       );
 
     // Draw points for each color

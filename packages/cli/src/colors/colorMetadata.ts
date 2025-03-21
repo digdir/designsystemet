@@ -95,8 +95,8 @@ export const colorMetadata: ColorMetadataByName = {
       short: 'Active-farge til overflater / komponenter.',
     },
     luminance: {
-      light: 0.52,
-      dark: 0.06,
+      light: 0.59,
+      dark: 0.055,
       contrast: 0.045,
     },
   },
@@ -110,8 +110,8 @@ export const colorMetadata: ColorMetadataByName = {
       short: 'Border-farge med lav kontrast til dekorativ bruk (skillelinjer).',
     },
     luminance: {
-      light: 0.52,
-      dark: 0.06,
+      light: 0.5,
+      dark: 0.08,
       contrast: 0.26,
     },
   },
@@ -141,7 +141,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 0.11,
-      dark: 0.38,
+      dark: 0.39,
       contrast: 0.6,
     },
   },
@@ -156,7 +156,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 0.11,
-      dark: 0.38,
+      dark: 0.39,
       contrast: 0.57,
     },
   },
