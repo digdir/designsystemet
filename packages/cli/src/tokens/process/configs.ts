@@ -326,7 +326,7 @@ export const getConfigsForThemeDimensions = (
     .flatMap(({ selectedTokenSets, permutation }) => {
       let source = selectedTokenSets.map((x) => `${tokensDir}/${x}.json`);
 
-      if (R.isNotEmpty(tokenSets)) {
+      if (tokenSets) {
         source = R.pickAll(selectedTokenSets, tokenSets);
         console.log('source', source);
       }
