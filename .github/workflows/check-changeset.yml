@@ -11,6 +11,7 @@ on:
       - "!packages/**/*.stories.tsx"
       - "!packages/**/*.chromatic.tsx"
       - "!packages/**/*.test.tsx"
+      - "!packages/**/*.mdx"
 jobs:
   checks:
     name: Check if changeset is present
