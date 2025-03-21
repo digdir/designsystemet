@@ -9,7 +9,7 @@ import { convertToHex } from '../src/colors/index.js';
 import type { CssColor } from '../src/colors/types.js';
 import migrations from '../src/migrations/index.js';
 import { cliOptions, createTokens } from '../src/tokens/create.js';
-import { buildTokens } from '../src/tokens/process/build.js';
+import { buildTokens } from '../src/tokens/process/platform.js';
 import type { Theme } from '../src/tokens/types.js';
 import { writeTokens } from '../src/tokens/write.js';
 import { cleanDir, readFile } from '../src/utils.js';
