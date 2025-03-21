@@ -43,10 +43,10 @@ export const SaturationPage = ({ colorScales }: SaturationPageProps) => {
     return (
       <div className={classes.colorItem}>
         <div className={classes.metaContainer}>
-          <div
+          {/* <div
             className={classes.circle}
             style={{ backgroundColor: lightBaseDefault }}
-          ></div>
+          ></div> */}
           <div
             className={classes.metaText}
             style={{
@@ -75,7 +75,7 @@ export const SaturationPage = ({ colorScales }: SaturationPageProps) => {
                 color: contrastBaseDefault,
               }}
             >
-              Button
+              Base
             </div>
           </div>
           <div

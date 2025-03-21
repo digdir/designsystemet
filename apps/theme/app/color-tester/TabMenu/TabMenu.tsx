@@ -14,6 +14,7 @@ export const TabMenu = () => {
     saturation: 'Saturation',
     article: 'Surface',
     mobile: 'App design',
+    gradient: 'Gradient',
   };
 
   return (

@@ -41,6 +41,7 @@ export type PageType =
   | 'mobile'
   | 'dash'
   | 'status'
+  | 'gradient'
   | 'article';
 
 type ColorStore = {

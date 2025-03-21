@@ -1,0 +1,10 @@
+.page {
+  margin-bottom: 64px;
+}
+
+.group {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  margin-bottom: 24px;
+}

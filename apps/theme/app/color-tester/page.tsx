@@ -13,6 +13,7 @@ import { Sidebar } from './Sidebar/Sidebar';
 import { TabMenu } from './TabMenu/TabMenu';
 import { ArticlePage } from './_pages/ArticlePage/ArticlePage';
 import { StatusPage } from './_pages/ArticlePage/StatusPage/StatusPage';
+import { GradientPage } from './_pages/GradientPage/GradientPage';
 import { Mobile } from './_pages/Mobile/Mobile';
 import { SaturationPage } from './_pages/Saturationpage/SaturationPage';
 import { useDebugStore } from './debugStore';
@@ -233,6 +234,7 @@ export default function Home() {
         {pageType === 'mobile' && <Mobile colorScales={colorScales} />}
         {pageType === 'article' && <ArticlePage colorScales={colorScales} />}
         {pageType === 'status' && <StatusPage />}
+        {pageType === 'gradient' && <GradientPage />}
         {pageType === 'saturation' && (
           <SaturationPage colorScales={flatColorScales} />
         )}

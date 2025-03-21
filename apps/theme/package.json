@@ -18,6 +18,7 @@
     "@repo/components": "workspace:^",
     "chroma-js": "^3.1.2",
     "clsx": "^2.1.1",
+    "d3": "^7.9.0",
     "next": "^15.1.5",
     "react": "^19.0.0",
     "react-color-palette": "^7.3.0",
@@ -27,6 +28,7 @@
   },
   "devDependencies": {
     "@types/chroma-js": "^3.1.0",
+    "@types/d3": "^7",
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.3"
   }

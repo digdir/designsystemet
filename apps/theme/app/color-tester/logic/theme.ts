@@ -46,6 +46,34 @@ export const generateColorScale = (
   colorMetadata: ColorMetadataType,
   themeSettings: ThemeSettingsType,
 ): Color[] => {
+  // Reduce saturation if it is too high in dark mode
+  if (colorScheme === 'dark') {
+    const [L, C, H] = chroma(color).oklch();
+    let refModifier = 1;
+
+    // Very dark colors
+    if (L < 0.2) refModifier *= 1;
+    // Dark colors
+    else if (L >= 0.2 && L < 0.3) refModifier *= 1;
+    // Mid colors
+    else if (L >= 0.3 && L < 0.5) refModifier *= 1;
+    // Light colors
+    else if (L >= 0.5 && L < 0.7) refModifier *= 1;
+    // Very light colors
+    else refModifier *= 1;
+
+    // Low saturation
+    if (C < 0.08) refModifier *= 0.6;
+    // Medium saturation
+    else if (C < 0.17) refModifier *= 0.6;
+    // High saturation
+    else if (C < 0.25) refModifier *= 0.6;
+    // Very saturation
+    else refModifier *= 0.6;
+
+    color = chroma(L, C * refModifier, H, 'oklch').hex() as CssColor;
+  }
+
   const colors = R.mapObjIndexed((colorData) => {
     const luminance = colorData.luminance[colorScheme];
     return {
@@ -122,10 +150,6 @@ const generateBaseColors = (
   const calculateLightness = (base: number, mod: number) => base - mod;
 
   const baseRefColor = color;
-  // Reduce saturation if it is too high in dark mode
-  if (colorScheme === 'dark') {
-    colorLightness -= 40;
-  }
 
   return {
     default:
