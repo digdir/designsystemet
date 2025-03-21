@@ -21,7 +21,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 1,
-      dark: 0.011,
+      dark: 0.007,
       contrast: 0.001,
     },
   },
@@ -36,7 +36,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 0.9,
-      dark: 0.017,
+      dark: 0.012,
       contrast: 0.0065,
     },
   },
@@ -51,7 +51,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 1,
-      dark: 0.025,
+      dark: 0.019,
       contrast: 0.015,
     },
   },
@@ -66,7 +66,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 0.81,
-      dark: 0.035,
+      dark: 0.025,
       contrast: 0.015,
     },
   },
@@ -81,7 +81,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 0.7,
-      dark: 0.044,
+      dark: 0.035,
       contrast: 0.028,
     },
   },
@@ -95,8 +95,8 @@ export const colorMetadata: ColorMetadataByName = {
       short: 'Active-farge til overflater / komponenter.',
     },
     luminance: {
-      light: 0.6,
-      dark: 0.057,
+      light: 0.52,
+      dark: 0.06,
       contrast: 0.045,
     },
   },
@@ -110,8 +110,8 @@ export const colorMetadata: ColorMetadataByName = {
       short: 'Border-farge med lav kontrast til dekorativ bruk (skillelinjer).',
     },
     luminance: {
-      light: 0.5,
-      dark: 0.082,
+      light: 0.52,
+      dark: 0.06,
       contrast: 0.26,
     },
   },
@@ -125,8 +125,8 @@ export const colorMetadata: ColorMetadataByName = {
       short: 'Standard border-farge til skjemakomponenter og meningsbærende elementer.',
     },
     luminance: {
-      light: 0.21,
-      dark: 0.2,
+      light: 0.19,
+      dark: 0.22,
       contrast: 0.4,
     },
   },
@@ -140,8 +140,8 @@ export const colorMetadata: ColorMetadataByName = {
       short: 'Border-farge med høy kontrast for ekstra synlighet.',
     },
     luminance: {
-      light: 0.12,
-      dark: 0.36,
+      light: 0.11,
+      dark: 0.38,
       contrast: 0.6,
     },
   },
@@ -155,8 +155,8 @@ export const colorMetadata: ColorMetadataByName = {
       short: 'Tekst- og ikonfarge med lavere kontrast.',
     },
     luminance: {
-      light: 0.12,
-      dark: 0.36,
+      light: 0.11,
+      dark: 0.38,
       contrast: 0.57,
     },
   },
@@ -171,7 +171,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 0.0245,
-      dark: 0.78,
+      dark: 0.84,
       contrast: 0.86,
     },
   },
