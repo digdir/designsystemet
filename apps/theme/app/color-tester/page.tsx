@@ -4,6 +4,7 @@ import { Heading } from '@digdir/designsystemet-react';
 import type { CssColor, ThemeInfo } from '@digdir/designsystemet/color';
 import chroma from 'chroma-js';
 import cl from 'clsx/lite';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 import { ColorTables } from './ColorGrid/ColorGrid';
 import { ContrastColors } from './ContrastColors/ContrastColors';
@@ -16,7 +17,7 @@ import { StatusPage } from './_pages/ArticlePage/StatusPage/StatusPage';
 import { GradientPage } from './_pages/GradientPage/GradientPage';
 import { Mobile } from './_pages/Mobile/Mobile';
 import { SaturationPage } from './_pages/Saturationpage/SaturationPage';
-import { useDebugStore } from './debugStore';
+import { type PageType, useDebugStore } from './debugStore';
 import { generateColorSchemes } from './logic/theme';
 import classes from './page.module.css';
 
@@ -30,6 +31,12 @@ export default function Home() {
   const statusColors = useDebugStore((state) => state.statusColors);
   const setColorScale = useDebugStore((state) => state.setColorScale);
   const hues = [0, 22, 37, 55, 76, 124, 177, 208, 235, 278, 308];
+  const query = useSearchParams();
+  const pathname = usePathname();
+  const router = useRouter();
+  const setPageType = useDebugStore((state) => state.setPageType);
+  const pageType = useDebugStore((state) => state.pageType);
+  const setThemeSettings = useDebugStore((state) => state.setThemeSettings);
 
   const steps = [
     { s: 100, l: 100 },
@@ -63,7 +70,6 @@ export default function Home() {
     { s: 20, l: 20 },
     { s: 20, l: 10 },
   ];
-  const pageType = useDebugStore((state) => state.pageType);
 
   useEffect(() => {
     const themes: ThemeInfo[][] = [];
@@ -163,7 +169,31 @@ export default function Home() {
     for (let i = 0; i < items.length; i++) {
       (items[i] as HTMLElement).style.minHeight = '20svh';
     }
+
+    if (query.get('page')) {
+      const page = query.get('page') as string;
+      setPageType(page as PageType);
+    }
+    if (query.get('colorScheme')) {
+      const colorScheme = query.get('colorScheme') as string;
+      setThemeSettings({
+        ...themeSettings,
+        general: {
+          ...themeSettings.general,
+          colorScheme: colorScheme === 'dark' ? 'dark' : 'light',
+        },
+      });
+    }
   }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(query.toString());
+    params.set('page', pageType);
+    params.set('colorScheme', themeSettings.general.colorScheme);
+    router.replace(pathname + '?' + params.toString(), {
+      scroll: false,
+    });
+  }, [pageType, themeSettings.general.colorScheme]);
 
   const sortColorsByLightnessAndChroma = (themes: ThemeInfo[]) => {
     const groups: {

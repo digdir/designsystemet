@@ -23,7 +23,9 @@ export const TabMenu = () => {
         <button
           key={key}
           className={cl(classes.item, pageType === key && classes.active)}
-          onClick={() => setPageType(key as PageType)}
+          onClick={() => {
+            setPageType(key as PageType);
+          }}
         >
           {val}
         </button>

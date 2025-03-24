@@ -21,7 +21,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 1,
-      dark: 0.007,
+      dark: 0.0075,
       contrast: 0.001,
     },
   },
