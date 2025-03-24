@@ -1,0 +1,84 @@
+.groupContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.group {
+  display: flex;
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  margin-bottom: 20px;
+  border-radius: 4px;
+  overflow: hidden;
+  width: calc(33.33% - 14px);
+}
+
+.item {
+  background-color: white;
+  width: 100%;
+}
+
+.color {
+  width: 100%;
+  height: 72px;
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+}
+
+.circle {
+  height: 28px;
+  width: 50%;
+  border-radius: 4px;
+}
+
+.groupHeading {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  margin-top: 18px;
+}
+
+.content {
+  font-size: 14px;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.textContent {
+  display: flex;
+  width: 100%;
+  gap: 16px;
+}
+
+.contrastContent {
+  display: flex;
+  gap: 16px;
+}
+
+.contrastContent > div {
+  display: flex;
+  gap: 6px;
+  flex-direction: column;
+}
+
+.contrastSection {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.contrastCircle {
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  border: 1px solid black;
+  margin-bottom: -1px;
+}
+
+.group .item:nth-child(1) .content,
+.group .item:nth-child(2) .content {
+  border-right: 1px solid rgb(201, 201, 201);
+}

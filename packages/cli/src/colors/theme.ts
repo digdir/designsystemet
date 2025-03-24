@@ -25,11 +25,20 @@ export const RESERVED_COLORS = [
  * @param colorScheme The color scheme to generate a scale for
  */
 export const generateColorScale = (color: CssColor, colorScheme: ColorScheme): Color[] => {
+  let refColor = color;
+
+  // Reduce saturation in dark mode for the interpolation colors
+  if (colorScheme === 'dark') {
+    const [L, C, H] = chroma(color).oklch();
+    const refModifier = 0.6;
+    refColor = chroma(L, C * refModifier, H, 'oklch').hex() as CssColor;
+  }
+
   const colors = R.mapObjIndexed((colorData) => {
     const luminance = colorData.luminance[colorScheme];
     return {
       ...colorData,
-      hex: chroma(color).luminance(luminance).hex() as CssColor,
+      hex: chroma(refColor).luminance(luminance).hex() as CssColor,
     };
   }, colorMetadata);
 
