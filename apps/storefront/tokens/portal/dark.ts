@@ -5,7 +5,7 @@
 export const  color = [
   {
     $type: "color",
-    $value: "#2a0944",
+    $value: "#1b1026",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -23,7 +23,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#360b57",
+    $value: "#241634",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -41,7 +41,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#420e6b",
+    $value: "#2f1d44",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -59,7 +59,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#4e117e",
+    $value: "#37224f",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -77,7 +77,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#551b83",
+    $value: "#42285f",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -95,7 +95,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#5e278a",
+    $value: "#50376c",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -113,7 +113,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#6c3993",
+    $value: "#5d4677",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -131,7 +131,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#926caf",
+    $value: "#8b7a9e",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -149,7 +149,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#b298c7",
+    $value: "#afa3bc",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -167,7 +167,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#b298c7",
+    $value: "#afa3bc",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -185,7 +185,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#e9e2ef",
+    $value: "#eeebf1",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -293,7 +293,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#131c27",
+    $value: "#11151a",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -311,7 +311,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#192432",
+    $value: "#181d24",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -329,7 +329,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#202d3e",
+    $value: "#1f262f",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -347,7 +347,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#293546",
+    $value: "#252d36",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -365,7 +365,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#303c4c",
+    $value: "#2e353f",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -383,7 +383,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#394553",
+    $value: "#3c434c",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -401,7 +401,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#475260",
+    $value: "#4a5159",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -419,7 +419,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#747c87",
+    $value: "#7d8288",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -437,7 +437,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#9da2aa",
+    $value: "#a5a8ac",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -455,7 +455,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#9da2aa",
+    $value: "#a5a8ac",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -473,7 +473,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#e3e5e7",
+    $value: "#ececed",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -581,7 +581,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#241431",
+    $value: "#19121f",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -599,7 +599,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#2f1a40",
+    $value: "#22192a",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -617,7 +617,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#3a204f",
+    $value: "#2c2137",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -635,7 +635,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#46265e",
+    $value: "#342640",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -653,7 +653,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#4e2b6a",
+    $value: "#3e2e4d",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -671,7 +671,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#593179",
+    $value: "#4e3a61",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -689,7 +689,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#6a3a91",
+    $value: "#5e4675",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -707,7 +707,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#a259dc",
+    $value: "#9771ba",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -725,7 +725,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#bf8de7",
+    $value: "#b89ed0",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -743,7 +743,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#bf8de7",
+    $value: "#b89ed0",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -761,7 +761,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#ede0f8",
+    $value: "#f0eaf5",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -869,7 +869,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#271428",
+    $value: "#1b121b",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -887,7 +887,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#331a34",
+    $value: "#241925",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -905,7 +905,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#3f2141",
+    $value: "#302130",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -923,7 +923,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#4b274d",
+    $value: "#372638",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -941,7 +941,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#552c57",
+    $value: "#422e43",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -959,7 +959,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#613263",
+    $value: "#543a55",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -977,7 +977,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#743c76",
+    $value: "#654566",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -995,7 +995,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#b05bb4",
+    $value: "#a370a4",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1013,7 +1013,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#e17ce6",
+    $value: "#ce95d0",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1031,7 +1031,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#e17ce6",
+    $value: "#ce95d0",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1049,7 +1049,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#f7dcf8",
+    $value: "#f5e9f5",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1157,7 +1157,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#2a1323",
+    $value: "#1c1219",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1175,7 +1175,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#37192d",
+    $value: "#261821",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1193,7 +1193,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#441f38",
+    $value: "#32202c",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1211,7 +1211,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#512543",
+    $value: "#3b2533",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1229,7 +1229,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#5b2a4b",
+    $value: "#462d3d",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1247,7 +1247,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#683056",
+    $value: "#59384d",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1265,7 +1265,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#7c3966",
+    $value: "#6b445d",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1283,7 +1283,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#bd579c",
+    $value: "#ac6d96",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1301,7 +1301,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#eb7bc7",
+    $value: "#d594bd",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1319,7 +1319,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#eb7bc7",
+    $value: "#d594bd",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1337,7 +1337,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#fadcf0",
+    $value: "#f6e9f1",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1445,7 +1445,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#012106",
+    $value: "#0d180d",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1463,7 +1463,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#022a08",
+    $value: "#122012",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1481,7 +1481,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#023409",
+    $value: "#172a17",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1499,7 +1499,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#033e0b",
+    $value: "#1b311b",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1517,7 +1517,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#03460c",
+    $value: "#203b20",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1535,7 +1535,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#044f0e",
+    $value: "#294a29",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1553,7 +1553,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#045f11",
+    $value: "#315931",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1571,7 +1571,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#178f28",
+    $value: "#5a8d5a",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1589,7 +1589,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#62b36d",
+    $value: "#8eb18e",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1607,7 +1607,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#62b36d",
+    $value: "#8eb18e",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1625,7 +1625,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#d4ead7",
+    $value: "#e7eee7",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1733,7 +1733,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#3a0808",
+    $value: "#23100e",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1751,7 +1751,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#4a0a0a",
+    $value: "#2f1513",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1769,7 +1769,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#5a0d0d",
+    $value: "#3d1c19",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1787,7 +1787,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#6b0f0f",
+    $value: "#47211d",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1805,7 +1805,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#781111",
+    $value: "#552722",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1823,7 +1823,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#871313",
+    $value: "#6b312b",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1841,7 +1841,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#a11717",
+    $value: "#803b34",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1859,7 +1859,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#cf5252",
+    $value: "#b46f68",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1877,7 +1877,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#df8b8b",
+    $value: "#cc9c98",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1895,7 +1895,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#df8b8b",
+    $value: "#cc9c98",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -1913,7 +1913,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#f6dfdf",
+    $value: "#f4eae9",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2021,7 +2021,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#031d31",
+    $value: "#0d161f",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2039,7 +2039,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#03253f",
+    $value: "#121e2a",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2057,7 +2057,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#042e4e",
+    $value: "#172737",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2075,7 +2075,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#05375d",
+    $value: "#1b2d40",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2093,7 +2093,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#053d68",
+    $value: "#20364c",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2111,7 +2111,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#064676",
+    $value: "#294460",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2129,7 +2129,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#07538d",
+    $value: "#315274",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2147,7 +2147,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#2480c7",
+    $value: "#5d85ad",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2165,7 +2165,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#69a8d8",
+    $value: "#8fabc6",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2183,7 +2183,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#69a8d8",
+    $value: "#8fabc6",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2201,7 +2201,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#d6e7f4",
+    $value: "#e7edf3",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2309,7 +2309,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#251904",
+    $value: "#1a140d",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2327,7 +2327,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#312006",
+    $value: "#231b12",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2345,7 +2345,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#3c2807",
+    $value: "#2e2417",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2363,7 +2363,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#483008",
+    $value: "#362a1b",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2381,7 +2381,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#513609",
+    $value: "#403221",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2399,7 +2399,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#5d3d0b",
+    $value: "#513f29",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2417,7 +2417,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#6f490d",
+    $value: "#624c32",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2435,7 +2435,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#a97013",
+    $value: "#9e7b50",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2453,7 +2453,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#dd9219",
+    $value: "#cda068",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2471,7 +2471,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#dd9219",
+    $value: "#cda068",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2489,7 +2489,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#f9e2bc",
+    $value: "#f5ebde",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2597,7 +2597,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#131c27",
+    $value: "#11151a",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
@@ -2615,7 +2615,7 @@ export const  color = [
   },
   {
     $type: "color",
-    $value: "#e3e5e7",
+    $value: "#ececed",
     filePath: "../../design-tokens/semantic/color.json",
     isSource: false,
     original: {
