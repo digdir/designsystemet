@@ -30,7 +30,7 @@ export const generateColorScale = (color: CssColor, colorScheme: ColorScheme): C
   // Reduce saturation in dark mode for the interpolation colors
   if (colorScheme === 'dark') {
     const [L, C, H] = chroma(color).oklch();
-    const chromaModifier = 0.6;
+    const chromaModifier = 0.7;
     interpolationColor = chroma(L, C * chromaModifier, H, 'oklch').hex() as CssColor;
   }
 

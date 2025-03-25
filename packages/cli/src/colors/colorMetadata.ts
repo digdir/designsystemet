@@ -21,7 +21,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 1,
-      dark: 0.0075,
+      dark: 0.009,
       contrast: 0.001,
     },
   },
@@ -36,7 +36,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 0.9,
-      dark: 0.012,
+      dark: 0.013,
       contrast: 0.0065,
     },
   },
@@ -51,7 +51,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 1,
-      dark: 0.019,
+      dark: 0.02,
       contrast: 0.015,
     },
   },
@@ -66,7 +66,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 0.81,
-      dark: 0.025,
+      dark: 0.026,
       contrast: 0.015,
     },
   },
@@ -81,7 +81,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 0.7,
-      dark: 0.035,
+      dark: 0.036,
       contrast: 0.028,
     },
   },
@@ -96,7 +96,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 0.59,
-      dark: 0.055,
+      dark: 0.056,
       contrast: 0.045,
     },
   },
