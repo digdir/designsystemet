@@ -46,6 +46,8 @@ export const DataAttributes = forwardRef<HTMLTableElement, DataAttributesProps>(
 /* returns data atrributes and their possible values as key value pairs*/
 function getAttrs(css: string) {
   const res: { [key: string]: Set<unknown> | string } = {};
+  //filter out global attributes referenced locally
+  const globals = ['color', 'size'];
 
   const allAttrs = Array.from(
     css.matchAll(/\[data-([^=\]]+)(?:=([^\]]+))?\]/g),
@@ -53,6 +55,7 @@ function getAttrs(css: string) {
 
   for (const attr of allAttrs) {
     for (const [key, value] of Object.entries(attr)) {
+      if (globals.includes(key)) continue;
       if (!res[key]) {
         res[key] = new Set();
       }
