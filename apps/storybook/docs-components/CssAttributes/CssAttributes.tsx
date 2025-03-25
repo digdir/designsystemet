@@ -2,12 +2,12 @@ import { Table } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { forwardRef, useEffect, useState } from 'react';
 
-type DataAttributesProps = {
+type CssAttributesProps = {
   css: string;
 } & React.HTMLAttributes<HTMLTableElement>;
 
-export const DataAttributes = forwardRef<HTMLTableElement, DataAttributesProps>(
-  function DataAttributes({ css, className, ...rest }, ref) {
+export const CssAttributes = forwardRef<HTMLTableElement, CssAttributesProps>(
+  function CssAttributes({ css, className, ...rest }, ref) {
     const [attrs, setAttrs] = useState<{ [key: string]: string }>({});
 
     useEffect(() => {
@@ -43,11 +43,11 @@ export const DataAttributes = forwardRef<HTMLTableElement, DataAttributesProps>(
   },
 );
 
-/* returns data atrributes and their possible values as key value pairs*/
+/* returns data-attributes and their possible values as key value pairs*/
 function getAttrs(css: string) {
   const res: { [key: string]: Set<unknown> | string } = {};
   //filter out global attributes referenced locally
-  const globals = ['color', 'size'];
+  const globals = ['color', 'size', 'color-scheme'];
 
   const allAttrs = Array.from(
     css.matchAll(/\[data-([^=\]]+)(?:=([^\]]+))?\]/g),
