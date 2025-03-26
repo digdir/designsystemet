@@ -1,10 +1,16 @@
 import { expandTypesMap, register } from '@tokens-studio/sd-transforms';
 import * as R from 'ramda';
-import StyleDictionary from 'style-dictionary';
-import type { Config as StyleDictionaryConfig, TransformedToken } from 'style-dictionary/types';
+import StyleDictionary, { type Tokens } from 'style-dictionary';
+import type { DesignTokens, Config as StyleDictionaryConfig, TransformedToken } from 'style-dictionary/types';
 import { outputReferencesFilter } from 'style-dictionary/utils';
-
-import { isColorCategoryToken, isDigit, isSemanticColorToken, pathStartsWithOneOf, typeEquals } from '../utils.js';
+import {
+  isColorCategoryToken,
+  isDigit,
+  isSemanticColorToken,
+  pathStartsWithOneOf,
+  traverseObj,
+  typeEquals,
+} from '../utils.js';
 import { formats } from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
 import { buildOptions } from './platform.js';
@@ -324,11 +330,27 @@ export const getConfigsForThemeDimensions = (
   const permutations = getMultidimensionalThemes(themes, dimensions);
   return permutations
     .flatMap(({ selectedTokenSets, permutation }) => {
-      let source = selectedTokenSets.map((x) => `${tokensDir}/${x}.json`);
+      const source = selectedTokenSets.map((x) => `${tokensDir}/${x}.json`);
+      let tokens: Tokens = {};
 
       if (tokenSets) {
-        source = R.pickAll(selectedTokenSets, tokenSets);
-        console.log('source', source);
+        for (const tokenSet of selectedTokenSets) {
+          const tokens_ = tokenSets.get(tokenSet);
+
+          if (tokens_) {
+            const withFilepaths = tokens_ as DesignTokens;
+
+            traverseObj(withFilepaths, (obj) => {
+              if (Object.hasOwn(obj, `$value`) && !obj.filePath) {
+                obj.filePath = tokenSet;
+
+                obj.isSource = source;
+              }
+            });
+
+            tokens = R.mergeDeepRight(tokens, withFilepaths) as DesignTokens;
+          }
+        }
       }
 
       const configOrConfigs = getConfig(permutation, { outPath });
@@ -343,7 +365,8 @@ export const getConfigsForThemeDimensions = (
               ...config?.log,
               verbosity: buildOptions?.verbose ? 'verbose' : 'silent',
             },
-            source,
+            source: tokenSets ? undefined : source,
+            tokens,
           },
         };
       });

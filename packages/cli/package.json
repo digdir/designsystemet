@@ -49,7 +49,8 @@
     "internal:tokens-create": "yarn designsystemet tokens create --config ./internal.config.json",
     "update:template": "tsx ./src/scripts/update-template.ts",
     "update:design-tokens": "yarn internal:tokens-create && tsx ./src/scripts/update-design-tokens.ts",
-    "verify": "yarn test && yarn update:template && yarn update:design-tokens"
+    "verify": "yarn test && yarn update:template && yarn update:design-tokens",
+    "test:tokens-format": "tsx ./src/scripts/test-format.ts"
   },
   "dependencies": {
     "@commander-js/extra-typings": "^13.1.0",

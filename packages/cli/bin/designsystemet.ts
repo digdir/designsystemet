@@ -39,7 +39,7 @@ function makeTokenCommands() {
     .option('--dry [boolean]', `Dry run for built ${chalk.blue('design-tokens')}`, parseBoolean, false)
     .option('-p, --preview', 'Generate preview token.ts files', false)
     .option('--verbose', 'Enable verbose output', false)
-    .action((opts) => {
+    .action(async (opts) => {
       const { preview, verbose, clean, dry } = opts;
       const tokensDir = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_CREATE_DIR;
       const outDir = typeof opts.outDir === 'string' ? opts.outDir : './dist/tokens';
@@ -49,8 +49,9 @@ function makeTokenCommands() {
       if (dry) {
         console.log(`Performing dry run, no files will be written`);
       }
+      await processPlatform({ process: 'build', tokensDir, outDir, preview, verbose, dry, clean });
 
-      return processPlatform({ process: 'build', tokensDir, outDir, preview, verbose, dry, clean });
+      return Promise.resolve();
     });
 
   tokenCmd
