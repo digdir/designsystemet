@@ -1,5 +1,5 @@
 .ds-details {
-  --dsc-details-border-block-wdith: var(--ds-border-width-default); /*@todo: decide how to deprecate this typo after https://github.com/digdir/designsystemet/issues/3297 */
+  --dsc-details-border-block-wdith: var(--ds-border-width-default); /* TODO: remove next major. Decide how to deprecate this typo after https://github.com/digdir/designsystemet/issues/3297 */
   --dsc-details-border-block-width: var(--dsc-details-border-block-wdith);
   --dsc-details-border-block-style: solid;
   --dsc-details-border-color: var(--ds-color-border-subtle);
