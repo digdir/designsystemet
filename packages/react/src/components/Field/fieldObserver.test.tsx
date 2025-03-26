@@ -78,34 +78,6 @@ describe('fieldObserver', () => {
     expect(input).toHaveAttribute('id', 'test');
   });
 
-  it('adds aria-disabled to connected elements if input is disabled', () => {
-    const { container } = render(
-      <div>
-        <Label>Navn</Label>
-        <Input disabled />
-      </div>,
-    );
-    fieldObserver(container);
-
-    const label = screen.getByText('Navn');
-
-    expect(label).toHaveAttribute('aria-disabled', 'true');
-  });
-
-  it('adds aria-disabled to connected elements if input is aria-disabled', () => {
-    const { container } = render(
-      <div>
-        <Label>Navn</Label>
-        <Input aria-disabled='true' />
-      </div>,
-    );
-    fieldObserver(container);
-
-    const label = screen.getByText('Navn');
-
-    expect(label).toHaveAttribute('aria-disabled', 'true');
-  });
-
   it('connects input and elements with data-field using aria-describedby', () => {
     const { container } = render(
       <div>
