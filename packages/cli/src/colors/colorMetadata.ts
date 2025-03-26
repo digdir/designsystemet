@@ -36,7 +36,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 0.9,
-      dark: 0.013,
+      dark: 0.014,
       contrast: 0.0065,
     },
   },
@@ -51,7 +51,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 1,
-      dark: 0.02,
+      dark: 0.021,
       contrast: 0.015,
     },
   },
@@ -66,7 +66,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 0.81,
-      dark: 0.026,
+      dark: 0.027,
       contrast: 0.015,
     },
   },
