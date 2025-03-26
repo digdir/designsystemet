@@ -6,6 +6,8 @@ import * as SearchStories from './Search.stories';
 <Meta of={SearchStories} />
 
 # Search
+`Search` lar brukere raskt finne relevant innhold på et nettsted eller i en applikasjon. Komponenten består av et søkefelt, med eller uten en søkeknapp.
+
 
 <Primary />
 <Controls />
@@ -33,7 +35,8 @@ import { Search } from '@digdir/designsystemet-react';
 
 ## Varianter
 
-Du kan endre `variant` på `Button`, eller ta den bort for å få forskjellige varianter.
+Du kan endre `variant` på `Button` for å tilpasse visningen. Alternativt kan du fjerne knappen for å bruke et søkefelt med ikon. Eksemplene nedenfor viser varianter som inkluderer ikon, primær- og sekundærknapp.
+
 
 <Canvas of={SearchStories.Variants} />
 
@@ -49,6 +52,51 @@ I eksempelet har vi brukt `Field` for å få oppkobling mellom `Label` og `Searc
 Søkeknappen har typen `"submit"` og vil dermed automatisk sende inn skjema.
 
 <Canvas of={SearchStories.Form} />
+
+## Retningslinjer for `Search`
+
+Bredden på søkefeltet bør tilsvare lengden på søkeordene brukerne vanligvis skriver inn. Størrelsen på feltet er et viktig signal om hva de kan skrive inn (input). For eksempel bør et søkefelt for personnumre ha en bredde som tilsvarer et personnummer. Hovedsøkefeltet for et nettsted bør være bredere, slik at brukerne kan se flere ord samtidig.
+For å unngå at brukerne må scrolle i søkefeltet ved typiske søk:
+* Bør søkefeltet være bredt nok til å romme flere søkeord.
+* Må vi unngå søkefelt som er så korte at deler av innholdet ikke synes.
+
+<br/>
+
+Passer til:
+
+* Å hjelpe brukerne med å finne relevant informasjon raskt på et nettsted eller i en applikasjon.
+* Situasjoner der brukerne skriver nøkkelord eller setninger for å finne mest relevant innhold.
+
+<br/>
+
+Passer ikke til:
+
+* Når innholdet er lett å navigere uten søk.
+
+<br/>
+
+## Tekst i komponenten:
+
+Placeholder-tekst bør brukes med forsiktighet, da den forsvinner når brukeren skriver og kan skape forvirring. Den må også oppfylle kontrastkrav for tilgjengelighet, noe som kan gjøre teksten vanskelig å skille fra utfylt innhold. Skjermlesere håndterer placeholder-tekst ulikt, så informasjonen bør heller gis via Label eller beskrivelse.
+
+<br/>
+
+## Tilgjengelighet
+
+Tastaturinterkasjon:
+
+* `ESC`-tasten tømmer søkefeltet for en enhetlig opplevelse på tvers av nettlesere.
+* `Tab`-navigasjon lar brukere bevege seg mellom inputfelt, clear-knapp og søkeknapp.
+* `Enter` sender inn søket når fokus er i inputfeltet.
+
+<br/>
+
+### Skjermleserstøtte
+Placeholder-tekst bør ikke brukes som eneste beskrivelse, da skjermlesere håndterer den ulikt og den kan skape forvirring.
+
+
+
+<br/>
 
 ## CSS Variabler
 

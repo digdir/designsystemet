@@ -1,8 +1,9 @@
 import { RovingFocusItem } from '@digdir/designsystemet-react';
 import {
   type Color,
-  type ColorNumber,
+  type ColorNames,
   type ThemeInfo,
+  colorMetadata,
   getColorMetadataByNumber,
 } from '@digdir/designsystemet/color';
 import cl from 'clsx/lite';
@@ -16,7 +17,7 @@ import classes from './Group.module.css';
 
 type GroupProps = {
   header: string;
-  colorNumbers: ColorNumber[];
+  colorNames: ColorNames[];
   colorScale: ThemeInfo;
   showColorMeta?: boolean;
   names?: string[];
@@ -25,7 +26,7 @@ type GroupProps = {
 
 export const Group = ({
   header,
-  colorNumbers,
+  colorNames,
   showColorMeta,
   names,
   colorScale,
@@ -36,8 +37,8 @@ export const Group = ({
   const colorModalRefs = useRef<React.RefObject<HTMLDialogElement | null>[]>(
     [],
   );
-  if (colorModalRefs.current.length !== colorNumbers.length) {
-    colorModalRefs.current = Array(colorNumbers.length)
+  if (colorModalRefs.current.length !== colorNames.length) {
+    colorModalRefs.current = Array(colorNames.length)
       .fill(null)
       .map(() => createRef<HTMLDialogElement>());
   }
@@ -54,8 +55,9 @@ export const Group = ({
       )}
 
       <div className={cl(classes.colors)}>
-        {colorNumbers.map((colorNumber, index) => {
-          const { number, hex } = colorScale[colorScheme][colorNumber - 1];
+        {colorNames.map((colorName, index) => {
+          const { number, hex } =
+            colorScale[colorScheme][colorMetadata[colorName].number - 1];
           const color: Color = {
             ...getColorMetadataByNumber(number),
             number,
@@ -71,9 +73,7 @@ export const Group = ({
               <RovingFocusItem value={namespace + number} asChild>
                 <ColorPreview
                   color={hex}
-                  colorNumber={colorNumber}
-                  contrast={'dd'}
-                  lightness={'dd'}
+                  colorName={colorName}
                   showColorMeta={showColorMeta}
                   aria-label={`Se mer om ${namespace} ${color?.displayName}`}
                   onClick={() =>
