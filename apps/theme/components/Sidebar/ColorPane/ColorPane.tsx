@@ -107,6 +107,18 @@ export const ColorPane = ({
             <TrashIcon title='søppelkasse' fontSize='1.5rem' />
           </Button>
         </Tooltip>
+        <Button
+          data-size='sm'
+          variant='tertiary'
+          data-color='neutral'
+          onClick={() => {
+            onRemove();
+          }}
+          className={cl(classes.removeBtn)}
+          hidden={type !== 'add-color' || colorType === 'neutral'}
+        >
+          Avbryt
+        </Button>
       </div>
       <Heading data-size='xs' className={classes.title}>
         {getHeading()}

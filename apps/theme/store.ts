@@ -33,7 +33,7 @@ type ColorStore = {
     type: 'main' | 'neutral' | 'support',
   ) => void;
   resetColors: () => void;
-  removeColor: (index: number, type: 'main' | 'neutral' | 'support') => void;
+  removeColor: (name: string, type: 'main' | 'neutral' | 'support') => void;
   baseBorderRadius: BaseBorderRadius;
   setBaseBorderRadius: (radius: BaseBorderRadius) => void;
   colorScheme: ColorScheme;
@@ -76,9 +76,11 @@ export const useThemeStore = create(
     resetColors: () => {
       set({ colors: { main: [], neutral: [], support: [] } });
     },
-    removeColor: (index, type) =>
+    removeColor: (name, type) =>
       set((state) => {
-        const updatedColors = state.colors[type].filter((_, i) => i !== index);
+        const updatedColors = state.colors[type].filter(
+          (color) => color.name !== name,
+        );
         return { colors: { ...state.colors, [type]: updatedColors } };
       }),
     setColorScheme: (colorScheme) => set({ colorScheme }),

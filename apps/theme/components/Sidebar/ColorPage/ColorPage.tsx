@@ -151,7 +151,7 @@ export const ColorPage = () => {
             setActivePanel('none');
           }}
           onRemove={() => {
-            removeColor(index, colorType);
+            removeColor(name, colorType);
             setName('');
             setActivePanel('none');
           }}
