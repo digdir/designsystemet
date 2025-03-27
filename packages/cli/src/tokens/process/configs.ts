@@ -343,8 +343,6 @@ export const getConfigsForThemeDimensions = (
             traverseObj(withFilepaths, (obj) => {
               if (Object.hasOwn(obj, `$value`) && !obj.filePath) {
                 obj.filePath = tokenSet;
-
-                obj.isSource = source;
               }
             });
 
