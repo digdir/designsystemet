@@ -169,6 +169,12 @@ export const ColorPage = () => {
             updateExistingColor(color.hex, newName, oldName);
           }}
           colorType={colorType}
+          onCancel={(initialColor, initialName) => {
+            setColor(ColorService.convert('hex', '#0062ba'));
+            setName('');
+            setActivePanel('none');
+            updateExistingColor(initialColor.hex, initialName, initialName);
+          }}
         />
       )}
     </div>

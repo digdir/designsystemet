@@ -22,6 +22,7 @@ type ColorPaneProps = {
   setColor: (color: IColor) => void;
   name: string;
   setName: (newName: string, oldName: string) => void;
+  onCancel: (color: IColor, name: string) => void;
   onRemove: () => void;
   colorType: 'main' | 'neutral' | 'support';
 };
@@ -33,12 +34,15 @@ export const ColorPane = ({
   color,
   setColor,
   name,
+  onCancel,
   setName,
   onRemove,
   colorType,
 }: ColorPaneProps) => {
   const mainColors = useThemeStore((state) => state.colors.main);
   const [colorError, setColorError] = useState('');
+  const [initialColor, setInitialColor] = useState(color);
+  const [initialName, setInitialName] = useState(name);
 
   const disableRemoveButton = colorType === 'main' && mainColors.length === 1;
 
@@ -94,9 +98,7 @@ export const ColorPane = ({
           data-color='neutral'
           hidden={type !== 'edit-color'}
           onClick={() => {
-            /* Check here as well to disable sending new color */
-            if (!checkNameIsValid()) return;
-            closeTab();
+            onCancel(initialColor, initialName);
           }}
           className={classes.cancel}
         >
