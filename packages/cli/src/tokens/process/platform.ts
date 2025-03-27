@@ -201,16 +201,18 @@ export async function processPlatform<T>(options: ProcessOptions) {
             console.log(logMessage);
 
             if (!dry) {
-              const extendedSD = await sd.extend(config);
+              const sdOptions = { cache: true };
+              const sdExtended = await sd.extend(config);
+
               if (process === 'get') {
-                const dictionary = await extendedSD.getPlatformTokens(platform);
+                const dictionary = await sdExtended.getPlatformTokens(platform, sdOptions);
                 return dictionary.allTokens;
               }
               if (process === 'format') {
-                return await extendedSD.formatPlatform(platform);
+                return await sdExtended.formatPlatform(platform, sdOptions);
               }
               if (process === 'build') {
-                return (await extendedSD.buildAllPlatforms()).tokens;
+                return (await sdExtended.buildAllPlatforms(sdOptions)).tokens;
               }
             }
 
