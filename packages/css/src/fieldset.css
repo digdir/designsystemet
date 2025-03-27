@@ -6,7 +6,7 @@
 
   /* Add lock icon to legend when only containing readonly inputs */
   &:has(input[readonly]):not(:has(input:not([readonly]))) > legend {
-    --_dsc-label--readonly: ; /* Using technique https://css-tricks.com/the-css-custom-property-toggle-trick/ */
+    @composes ds-readonly-icon from './base.css'; /* Activate lock icon for legend when all inputs are readonly */
   }
 
   /* Stack everything that is not directly after legend */
