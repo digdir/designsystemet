@@ -28,7 +28,8 @@ type ColorStore = {
   ) => void;
   updateColor: (
     updatedColor: ColorTheme,
-    index: number,
+    name: string,
+    oldName: string,
     type: 'main' | 'neutral' | 'support',
   ) => void;
   resetColors: () => void;
@@ -65,10 +66,10 @@ export const useThemeStore = create(
         const updatedColors = state.colors[type].concat(newColor);
         return { colors: { ...state.colors, [type]: updatedColors } };
       }),
-    updateColor: (updatedColor, index, type) =>
+    updateColor: (updatedColor, name, oldName, type) =>
       set((state) => {
-        const updatedColors = state.colors[type].map((color, i) =>
-          i === index ? updatedColor : color,
+        const updatedColors = state.colors[type].map((color) =>
+          color.name === oldName ? { ...updatedColor, name } : color,
         );
         return { colors: { ...state.colors, [type]: updatedColors } };
       }),

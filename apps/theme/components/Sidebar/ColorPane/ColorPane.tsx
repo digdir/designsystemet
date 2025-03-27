@@ -16,20 +16,18 @@ import classes from './ColorPane.module.css';
 
 type ColorPaneProps = {
   onClose: () => void;
-  onPrimaryClicked: (color: string, name: string) => void;
   show?: boolean;
   type: 'add-color' | 'edit-color' | 'none';
   color: IColor;
   setColor: (color: IColor) => void;
   name: string;
-  setName: (name: string) => void;
+  setName: (newName: string, oldName: string) => void;
   onRemove: () => void;
   colorType: 'main' | 'neutral' | 'support';
 };
 
 export const ColorPane = ({
   onClose,
-  onPrimaryClicked,
   show = false,
   type,
   color,
@@ -80,10 +78,14 @@ export const ColorPane = ({
         <Button
           data-size='sm'
           variant='tertiary'
-          onClick={closeTab}
+          onClick={() => {
+            /* Check here as well to disable sending new color */
+            if (!checkNameIsValid()) return;
+            closeTab();
+          }}
           className={classes.back}
         >
-          <ChevronLeftIcon aria-hidden fontSize='1.5rem' /> Gå tilbake
+          <ChevronLeftIcon aria-hidden fontSize='1.5rem' /> Lagre og gå tilbake
         </Button>
         <Tooltip
           content='Du må ha minst en hovedfarge'
@@ -127,7 +129,7 @@ export const ColorPane = ({
               .replace(/\s+/g, '-')
               .replace(/[^A-Z0-9-]+/gi, '')
               .toLowerCase();
-            setName(value);
+            setName(value, name);
           }}
           onBlur={checkNameIsValid}
           error={colorError}
@@ -146,28 +148,6 @@ export const ColorPane = ({
         onChange={setColor}
         hideInput={['rgb', 'hsv']}
       />
-      <div className={classes.btnGroup}>
-        <Button
-          data-size='sm'
-          data-color='neutral'
-          onClick={() => {
-            /* Check here as well to disable sending new color */
-            if (!checkNameIsValid()) return;
-            onPrimaryClicked(color.hex, name);
-          }}
-        >
-          {type === 'add-color' ? 'Legg til' : 'Lagre'}
-        </Button>
-
-        <Button
-          data-size='sm'
-          data-color='neutral'
-          variant='secondary'
-          onClick={closeTab}
-        >
-          Avbryt
-        </Button>
-      </div>
     </div>
   );
 };

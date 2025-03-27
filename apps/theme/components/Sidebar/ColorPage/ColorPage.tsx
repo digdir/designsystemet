@@ -24,15 +24,13 @@ export const ColorPage = () => {
   const [colorType, setColorType] = useState<ColorType>('main');
   const [open, setOpen] = useState(false);
 
-  const addNewColor = (color: string, name: string) => {
+  const updateExistingColor = (
+    color: string,
+    newName: string,
+    oldName: string,
+  ) => {
     const theme = generateColorSchemes(color as CssColor);
-    addColor({ name: name, colors: theme }, colorType);
-  };
-
-  const updateExistingColor = (color: string, name: string) => {
-    const theme = generateColorSchemes(color as CssColor);
-
-    updateColor({ name: name, colors: theme }, index, colorType);
+    updateColor({ name: newName, colors: theme }, newName, oldName, colorType);
   };
 
   const setupEditState = (
@@ -45,6 +43,20 @@ export const ColorPage = () => {
     setName(color.name);
     setIndex(index);
     setColorType(type);
+  };
+
+  const setupNewColorState = (colorType: ColorType) => {
+    setActivePanel('add-color');
+    setColorType(colorType);
+    addColor(
+      {
+        name: 'my-color',
+        colors: generateColorSchemes('#0062ba'),
+      },
+      colorType,
+    );
+    setColor(ColorService.convert('hex', '#0062ba'));
+    setName('my-color');
   };
 
   return (
@@ -61,13 +73,10 @@ export const ColorPage = () => {
                   variant='tertiary'
                   data-size='sm'
                   className={classes.AddBtn}
-                  onClick={() => {
-                    setActivePanel('add-color');
-                    setColorType('main');
-                  }}
+                  onClick={() => setupNewColorState('main')}
                   aria-label='Legg til hovedfarge'
                 >
-                  Legg til
+                  Legg til farge
                   <PlusIcon aria-hidden fontSize='1.5rem' />
                 </Button>
               )}
@@ -109,13 +118,10 @@ export const ColorPage = () => {
                   variant='tertiary'
                   data-size='sm'
                   className={classes.AddBtn}
-                  onClick={() => {
-                    setActivePanel('add-color');
-                    setColorType('support');
-                  }}
+                  onClick={() => setupNewColorState('support')}
                   aria-label='Legg til støttefarge'
                 >
-                  Legg til
+                  Legg til farge
                   <PlusIcon aria-hidden fontSize='1.5rem' />
                 </Button>
               )}
@@ -144,19 +150,6 @@ export const ColorPage = () => {
             setName('');
             setActivePanel('none');
           }}
-          onPrimaryClicked={(color, name) => {
-            if (name === '') {
-              return;
-            }
-            if (activePanel === 'add-color') {
-              addNewColor(color, name);
-            } else {
-              updateExistingColor(color, name);
-            }
-            setColor(ColorService.convert('hex', '#0062ba'));
-            setName('');
-            setActivePanel('none');
-          }}
           onRemove={() => {
             removeColor(index, colorType);
             setName('');
@@ -165,8 +158,16 @@ export const ColorPage = () => {
           type={activePanel}
           color={color}
           name={name}
-          setColor={setColor}
-          setName={setName}
+          setColor={(color) => {
+            setColor(color);
+            console.log(name);
+            console.log(colors);
+            updateExistingColor(color.hex, name, name);
+          }}
+          setName={(newName, oldName) => {
+            setName(newName);
+            updateExistingColor(color.hex, newName, oldName);
+          }}
           colorType={colorType}
         />
       )}
