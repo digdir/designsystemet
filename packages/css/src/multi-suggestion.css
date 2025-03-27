@@ -1,5 +1,5 @@
 .ds-multi-suggestion {
-  --dsc-multi-select-option-background--selected: var(--ds-color-background-tinted);
+  --dsc-multi-select-option-background--selected: var(--ds-color-surface-tinted);
   --dsc-multi-select-option-border-color: var(--ds-color-base-default);
   --dsc-multi-select-clear-gap: var(--ds-size-2);
   --dsc-multi-select-clear-padding: var(--ds-size-1);
@@ -30,7 +30,7 @@
   }
 
   & u-datalist {
-    background: var(--ds-color-neutral-background-default);
+    background: var(--ds-color-neutral-surface-default);
     border-radius: var(--ds-border-radius-md);
     border-width: var(--dsc-multi-select-border-width);
     border-style: var(--dsc-multi-select-border-style);
