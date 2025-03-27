@@ -1,10 +1,25 @@
+import path from 'node:path';
 import * as R from 'ramda';
 import type { TransformedToken } from 'style-dictionary/types';
 import { createTokens } from '../tokens/create.js';
-import { processPlatform } from '../tokens/process/platform.js';
+import { formatTokens } from '../tokens/format.js';
 import type { Theme } from '../tokens/types.js';
+import { pathStartsWithOneOf, typeEquals } from '../tokens/utils.js';
 import { generateThemesJson } from '../tokens/write/generate$themes.js';
-import { writeFile } from '../utils.js';
+import { mkdir, writeFile } from '../utils.js';
+
+const filterStorefront = (token: TransformedToken) => {
+  if (
+    pathStartsWithOneOf(['border-width', 'letter-spacing', 'border-radius'], token) &&
+    !R.includes('semantic', token.filePath)
+  )
+    return false;
+
+  const isSemanticColor = R.includes('semantic', token.filePath) && typeEquals(['color'], token);
+  const wantedTypes = typeEquals(['shadow', 'dimension', 'typography', 'opacity'], token);
+
+  return isSemanticColor || wantedTypes;
+};
 
 async function format() {
   const theme: Theme = {
@@ -28,19 +43,30 @@ async function format() {
   const { tokenSets } = await createTokens(theme);
 
   const $themes = generateThemesJson(['dark', 'light'], [theme.name], theme.colors);
-  const tokens = await processPlatform({
-    process: 'get',
-    verbose: false,
-    preview: false,
+  const tokens = await formatTokens({
     tokenSets,
     $themes,
-    // tokensDir: './../../design-tokens',
-    // outDir: './design-tokens-build',
+    verbose: false,
+    preview: false,
   });
 
-  const filtered = R.omit([theme.name, '_size'], R.head(tokens.semantic) as TransformedToken);
+  const files = [];
+  for (const [_, value] of Object.entries(tokens)) {
+    for (const file of value) {
+      files.push(file);
+    }
+  }
 
-  await writeFile('internal/formatted-tokens.json', JSON.stringify(filtered, null, 2));
+  console.log('Writing files...', files);
+
+  for (const file of files) {
+    if (file.destination) {
+      // Remove last part of the path to get the directory
+      const dirPath = path.join('internal/design-tokens-build', R.init(R.split('/', file.destination)).join('/'));
+      await mkdir(dirPath);
+      await writeFile(`internal/design-tokens-build${file.destination}`, String(file.output));
+    }
+  }
 }
 
 format();
