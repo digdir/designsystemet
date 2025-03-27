@@ -8,11 +8,11 @@
   --dsc-details-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5.97 9.47a.75.75 0 0 1 1.06 0L12 14.44l4.97-4.97a.75.75 0 1 1 1.06 1.06l-5.5 5.5a.75.75 0 0 1-1.06 0l-5.5-5.5a.75.75 0 0 1 0-1.06'/%3E%3C/svg%3E");
   --dsc-details-padding: var(--ds-size-2) var(--ds-size-4);
   --dsc-details-size: var(--ds-size-14);
-  --dsc-details-background: var(--ds-color-background-default);
+  --dsc-details-background: var(--ds-color-surface-default);
   --dsc-details-summary-color: var(--ds-color-text-default);
   --dsc-details-summary-background--hover: var(--ds-color-surface-tinted);
-  --dsc-details-summary-background--open: var(--ds-color-background-tinted);
-  --dsc-details-summary-background: var(--ds-color-background-default);
+  --dsc-details-summary-background--open: var(--ds-color-surface-tinted);
+  --dsc-details-summary-background: var(--ds-color-surface-default);
 
   background: var(--dsc-details-background);
   border-block-width: var(--dsc-details-border-block-width);
@@ -21,10 +21,10 @@
   box-sizing: border-box;
 
   &[data-variant='default'] {
-    --dsc-details-background: var(--ds-color-background-default);
-    --dsc-details-summary-background--hover: var(--ds-color-surface-hover);
+    --dsc-details-background: var(--ds-color-surface-default);
+    --dsc-details-summary-background--hover: var(--ds-color-surface-tinted);
     --dsc-details-summary-background--open: var(--ds-color-surface-tinted);
-    --dsc-details-summary-background: var(--ds-color-background-default);
+    --dsc-details-summary-background: var(--ds-color-surface-default);
   }
 
   .ds-card[data-variant='tinted'] &,

@@ -94,7 +94,7 @@
   --dsc-field-affix-border-color: var(--ds-color-neutral-border-default);
   --dsc-field-affix-padding-inline: var(--ds-size-4);
 
-  background: var(--ds-color-neutral-background-tinted);
+  background: var(--ds-color-neutral-surface-tinted);
   border-radius: var(--ds-border-radius-md);
   box-sizing: border-box;
   color: var(--ds-color-neutral-text-subtle);
