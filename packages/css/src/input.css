@@ -6,8 +6,8 @@
   --dsc-input-size--toggle: var(--ds-size-6);
   --dsc-input-size: var(--ds-size-12);
   /* Background */
-  --dsc-input-background--readonly: var(--ds-color-neutral-background-tinted);
-  --dsc-input-background: var(--ds-color-neutral-background-default);
+  --dsc-input-background--readonly: var(--ds-color-neutral-surface-tinted);
+  --dsc-input-background: var(--ds-color-neutral-surface-default);
   /* Border */
   --dsc-input-border-color--readonly: var(--ds-color-neutral-border-subtle);
   --dsc-input-border-color: var(--ds-color-neutral-border-default);

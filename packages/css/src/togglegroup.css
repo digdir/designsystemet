@@ -1,5 +1,5 @@
 .ds-togglegroup {
-  --dsc-togglegroup-background: var(--ds-color-background-default);
+  --dsc-togglegroup-background: var(--ds-color-surface-default);
   --dsc-togglegroup-border-width: var(--ds-border-width-default);
   --dsc-togglegroup-border-style: solid;
   --dsc-togglegroup-border-color: var(--ds-color-neutral-border-default);

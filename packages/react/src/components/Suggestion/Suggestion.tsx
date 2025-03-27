@@ -93,7 +93,6 @@ export const Suggestion = forwardRef<HTMLDivElement, SuggestionProps>(
 
         // Let <datalist> handle filtering if filter is true
         if (filter === true || !list) return;
-        console.log(list);
 
         // Handle custom filter
         if (filter !== false) {
