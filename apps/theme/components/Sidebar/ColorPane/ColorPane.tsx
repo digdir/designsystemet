@@ -85,7 +85,22 @@ export const ColorPane = ({
           }}
           className={classes.back}
         >
-          <ChevronLeftIcon aria-hidden fontSize='1.5rem' /> Lagre og gå tilbake
+          <ChevronLeftIcon aria-hidden fontSize='1.5rem' />{' '}
+          {type === 'add-color' ? 'Legg til' : 'Lagre'}
+        </Button>
+        <Button
+          data-size='sm'
+          variant='tertiary'
+          data-color='neutral'
+          hidden={type !== 'edit-color'}
+          onClick={() => {
+            /* Check here as well to disable sending new color */
+            if (!checkNameIsValid()) return;
+            closeTab();
+          }}
+          className={classes.cancel}
+        >
+          Avbryt
         </Button>
         <Tooltip
           content='Du må ha minst en hovedfarge'
@@ -100,25 +115,12 @@ export const ColorPane = ({
               onRemove();
             }}
             className={cl(classes.removeBtn)}
-            hidden={type !== 'edit-color' || colorType === 'neutral'}
             aria-disabled={disableRemoveButton || undefined}
           >
             Fjern farge
             <TrashIcon title='søppelkasse' fontSize='1.5rem' />
           </Button>
         </Tooltip>
-        <Button
-          data-size='sm'
-          variant='tertiary'
-          data-color='neutral'
-          onClick={() => {
-            onRemove();
-          }}
-          className={cl(classes.removeBtn)}
-          hidden={type !== 'add-color' || colorType === 'neutral'}
-        >
-          Avbryt
-        </Button>
       </div>
       <Heading data-size='xs' className={classes.title}>
         {getHeading()}
