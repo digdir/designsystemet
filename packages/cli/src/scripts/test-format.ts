@@ -2,7 +2,7 @@ import path from 'node:path';
 import * as R from 'ramda';
 import type { TransformedToken } from 'style-dictionary/types';
 import { createTokens } from '../tokens/create.js';
-import { formatTokens } from '../tokens/format.js';
+import { type FormattedToken, formatTokens } from '../tokens/format.js';
 import type { Theme } from '../tokens/types.js';
 import { pathStartsWithOneOf, typeEquals } from '../tokens/utils.js';
 import { generateThemesJson } from '../tokens/write/generate$themes.js';
@@ -50,21 +50,22 @@ async function format() {
     preview: false,
   });
 
-  const files = [];
-  for (const [_, value] of Object.entries(tokens)) {
-    for (const file of value) {
-      files.push(file);
+  console.log('Formatted tokens:', tokens);
+  let files: FormattedToken[] = [];
+  for (const [_, formattedTokens] of Object.entries(tokens)) {
+    for (const formattedTokenFile of formattedTokens) {
+      files = R.concat(files, formattedTokenFile);
     }
   }
 
-  console.log('Writing files...', files);
+  await writeFile(`internal/design-tokens-build/files.json`, JSON.stringify(files, null, 2));
 
   for (const file of files) {
     if (file.destination) {
       // Remove last part of the path to get the directory
       const dirPath = path.join('internal/design-tokens-build', R.init(R.split('/', file.destination)).join('/'));
       await mkdir(dirPath);
-      await writeFile(`internal/design-tokens-build${file.destination}`, String(file.output));
+      await writeFile(`internal/design-tokens-build${file.destination}`, file.output);
     }
   }
 }
