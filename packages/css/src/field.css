@@ -26,7 +26,7 @@
   }
 
   &:has([aria-readonly='true'], [readonly]) label {
-    --_dsc-label--readonly: ; /* Activate lock icon for label when readonly */
+    @composes ds-readonly-icon from './base.css'; /* Activate lock icon for label when readonly */
   }
 
   /**
@@ -49,8 +49,10 @@
     }
 
     & label {
-      --_dsc-label--readonly: initial; /* Never show lock icon on toggle inputs */
       font-weight: var(--ds-font-weight-regular);
+    }
+    & label::before {
+      content: none; /* Hide readonly icon on toggle inputs */
     }
 
     & input {
