@@ -67,7 +67,7 @@ Using a custom theme you can skip the `@digdir/designsystemet-theme`.
 Install `@digdir/designsystemet-react` if you want to use the React components.
 
 ```jsx
-import '@digdir/designsystemet-css';
+import '@digdir/designsystemet-css/index.css';
 import '@digdir/designsystemet-theme'; // or custom theme CSS file
 
 import { Button } from '@digdir/designsystemet-react';
