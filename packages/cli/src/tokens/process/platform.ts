@@ -4,7 +4,6 @@ import type { ThemeObject } from '@tokens-studio/types';
 import chalk from 'chalk';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
-import type { DesignToken } from 'style-dictionary/types';
 import { cleanDir, readFile, writeFile } from '../../utils.js';
 import type { TokensSet } from '../types.js';
 import { configs, getConfigsForThemeDimensions } from './configs.js';
@@ -25,22 +24,24 @@ type SharedOptions = {
   preview: boolean;
 };
 
-type BuildOptions = {
+export type BuildOptions = {
   process: 'build';
   /** Design tokens path */
   tokensDir: string;
   /** Output directory for built tokens */
   outDir: string;
-};
+} & SharedOptions;
 
-type FormatOptions = {
+export type FormatOptions = {
   process: 'format' | 'get';
   /** Tokensets */
   tokenSets: Map<string, TokensSet>;
   $themes: ThemeObject[];
-};
+} & SharedOptions;
 
-type ProcessOptions = (BuildOptions | FormatOptions) & SharedOptions;
+type ProcessOptions = BuildOptions | FormatOptions;
+
+type ProcessedBuildConfigs<T> = Record<keyof typeof buildConfigs, T[]>;
 
 export let buildOptions: ProcessOptions | undefined;
 
@@ -102,14 +103,7 @@ const buildConfigs = {
   },
 } satisfies Record<string, BuildConfig>;
 
-export type FormattedTokens = {
-  output: unknown;
-  destination: string | undefined;
-}[];
-
-type ProcessedBuildConfigs = Record<keyof typeof buildConfigs, (DesignToken | FormattedTokens)[]>;
-
-export async function processPlatform(options: ProcessOptions) {
+export async function processPlatform<T>(options: ProcessOptions) {
   const { dry, clean, process } = options;
   const platform = 'css';
   const tokensDir = process === 'build' ? options.tokensDir : '';
@@ -122,13 +116,13 @@ export async function processPlatform(options: ProcessOptions) {
   /*
    * Build the themes
    */
-  const $themes = (
+  const processed$themes = (
     isImperativeProcess
       ? options.$themes
       : (JSON.parse(await readFile(path.resolve(`${tokensDir}/$themes.json`))) as ThemeObject[])
   ).map(processThemeObject);
 
-  const relevant$themes = $themes
+  const relevant$themes = processed$themes
     // We only use the 'medium' theme for the 'size' group
     .filter((theme) => R.not(theme.group === 'size' && theme.name !== 'medium'));
 
@@ -166,7 +160,7 @@ export async function processPlatform(options: ProcessOptions) {
     await cleanDir(targetDir, dry);
   }
 
-  const processed: ProcessedBuildConfigs = {
+  const processed: ProcessedBuildConfigs<T> = {
     typography: [],
     'color-scheme': [],
     'main-color': [],
@@ -209,7 +203,8 @@ export async function processPlatform(options: ProcessOptions) {
             if (!dry) {
               const extendedSD = await sd.extend(config);
               if (process === 'get') {
-                return (await extendedSD.getPlatformTokens(platform)).tokens;
+                const dictionary = await extendedSD.getPlatformTokens(platform);
+                return dictionary.allTokens;
               }
               if (process === 'format') {
                 return await extendedSD.formatPlatform(platform);
@@ -223,7 +218,7 @@ export async function processPlatform(options: ProcessOptions) {
           }),
         );
 
-        processed[key] = result;
+        processed[key] = result as T[];
       }
     }
   } catch (err) {
@@ -238,7 +233,7 @@ export async function processPlatform(options: ProcessOptions) {
   }
 
   if (process === 'build') {
-    await writeColorTypeDeclaration($themes, targetDir, dry);
+    await writeColorTypeDeclaration(processed$themes, targetDir, dry);
   }
 
   return processed;
