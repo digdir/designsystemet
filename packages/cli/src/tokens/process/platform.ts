@@ -41,7 +41,7 @@ export type FormatOptions = {
 
 type ProcessOptions = BuildOptions | FormatOptions;
 
-type ProcessedBuildConfigs<T> = Record<keyof typeof buildConfigs, T[]>;
+type ProcessedBuildConfigs<T> = Record<keyof typeof buildConfigs, T[][]>;
 
 export let buildOptions: ProcessOptions | undefined;
 
@@ -218,7 +218,7 @@ export async function processPlatform<T>(options: ProcessOptions) {
           }),
         );
 
-        processed[key] = result as T[];
+        processed[key] = result as T[][];
       }
     }
   } catch (err) {
