@@ -4,10 +4,10 @@ import type { Color, ColorScheme } from '../../colors/types.js';
 import typographyTemplate from '../template/design-tokens/primitives/modes/typography/typography.template.json' with {
   type: 'json',
 };
-import semanticColorBase from '../template/design-tokens/semantic/color.base-template.json' with { type: 'json' };
+import semanticColorBase from '../template/design-tokens/semantic/color.base.template.json' with { type: 'json' };
 import semanticColorTemplate from '../template/design-tokens/semantic/color.template.json' with { type: 'json' };
 import categoryColorTemplate from '../template/design-tokens/semantic/modes/color.template.json' with { type: 'json' };
-import themeBase from '../template/design-tokens/themes/theme.base-template.json' with { type: 'json' };
+import themeBase from '../template/design-tokens/themes/theme.base.template.json' with { type: 'json' };
 import themeColorTemplate from '../template/design-tokens/themes/theme.template.json' with { type: 'json' };
 
 import type { Colors, TokensSet, Typography } from '../types.js';

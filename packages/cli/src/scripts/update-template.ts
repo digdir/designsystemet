@@ -89,7 +89,7 @@ export const updateTemplates = async () => {
     color: R.omit(['accent', 'neutral', 'brand1', 'brand2', 'brand3'], semanticColorJson.color),
   };
   await writeFile(
-    path.join(TEMPLATE_FILES_PATH, `semantic/color.base-template.json`),
+    path.join(TEMPLATE_FILES_PATH, `semantic/color.base.template.json`),
     JSON.stringify(colorBaseFile, null, 2),
   );
 
@@ -107,7 +107,7 @@ export const updateTemplates = async () => {
 
   await mkdir(path.join(TEMPLATE_FILES_PATH, 'themes'));
   await writeFile(
-    path.join(TEMPLATE_FILES_PATH, `themes/theme.base-template.json`),
+    path.join(TEMPLATE_FILES_PATH, `themes/theme.base.template.json`),
     JSON.stringify(themeBaseFile, null, 2).replaceAll('digdir', '<theme>'),
   );
 
