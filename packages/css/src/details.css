@@ -9,8 +9,8 @@
   --dsc-details-size: var(--ds-size-14);
   --dsc-details-background: var(--ds-color-surface-default);
   --dsc-details-summary-color: var(--ds-color-text-default);
-  --dsc-details-summary-background--hover: var(--ds-color-surface-hover);
-  --dsc-details-summary-background--open: var(--ds-color-surface-active);
+  --dsc-details-summary-background--hover: var(--ds-color-surface-tinted);
+  --dsc-details-summary-background--open: var(--ds-color-surface-tinted);
   --dsc-details-summary-background: var(--ds-color-surface-default);
 
   background: var(--dsc-details-background);
@@ -21,8 +21,8 @@
 
   &[data-variant='default'] {
     --dsc-details-background: var(--ds-color-surface-default);
-    --dsc-details-summary-background--hover: var(--ds-color-surface-hover);
-    --dsc-details-summary-background--open: var(--ds-color-surface-active);
+    --dsc-details-summary-background--hover: var(--ds-color-surface-tinted);
+    --dsc-details-summary-background--open: var(--ds-color-surface-tinted);
     --dsc-details-summary-background: var(--ds-color-surface-default);
   }
 
@@ -30,7 +30,7 @@
   &[data-variant='tinted'] {
     --dsc-details-background: var(--ds-color-surface-tinted);
     --dsc-details-summary-background--hover: var(--ds-color-surface-hover);
-    --dsc-details-summary-background--open: var(--ds-color-surface-active);
+    --dsc-details-summary-background--open: var(--ds-color-surface-hover);
     --dsc-details-summary-background: var(--ds-color-surface-tinted);
     --dsc-details-border-color: var(--ds-color-border-subtle);
   }
