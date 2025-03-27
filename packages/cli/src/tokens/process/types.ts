@@ -1,6 +1,6 @@
 import type { Config as StyleDictionaryConfig, TransformedToken } from 'style-dictionary/types';
 import type { TokensSet } from '../types.js';
-import type { GetStyleDictionaryConfig } from './configs.js';
+import type { GetStyleDictionaryConfig } from './configs/shared.js';
 
 export const colorCategories = {
   main: 'main',
