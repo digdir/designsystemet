@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.0.3
+
+### Patch Changes
+
+- Fix `data-color` and `data-color-scheme` used on the same element not working in some browsers ([#3354](https://github.com/digdir/designsystemet/pull/3354))
+
+- Adjusted colors in dark mode, see changelog for `@digdir/designsystemet` ([#3386](https://github.com/digdir/designsystemet/pull/3386))
+
 ## 1.0.2
 
 ### Patch Changes
