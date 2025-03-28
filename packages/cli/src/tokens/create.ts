@@ -13,6 +13,14 @@ const getToken = async (tokenSet: string): Promise<TokensSet> => {
   return (await import(joinedPath)).default;
 };
 
+const getTokens = async (tokenSets: string[]): Promise<[string, TokensSet][]> =>
+  Promise.all(
+    tokenSets.map(async (tokenSet) => {
+      const joinedPath = `./template/design-tokens/${tokenSet}.json`;
+      return [tokenSet, (await import(joinedPath)).default];
+    }),
+  );
+
 export const cliOptions = {
   outDir: 'out-dir',
   clean: 'clean',
@@ -36,14 +44,16 @@ export const createTokens = async (opts: Theme) => {
   const semantic = generateSemantic(colors);
 
   const tokenSets = new Map<string, TokensSet>([
-    ['primitives/globals', await getToken('primitives/globals')],
-    ['primitives/modes/size/small', await getToken('primitives/modes/size/small')],
-    ['primitives/modes/size/medium', await getToken('primitives/modes/size/medium')],
-    ['primitives/modes/size/large', await getToken('primitives/modes/size/large')],
-    ['primitives/modes/size/global', await getToken('primitives/modes/size/global')],
-    ['primitives/modes/typography/size/small', await getToken('primitives/modes/typography/size/small')],
-    ['primitives/modes/typography/size/medium', await getToken('primitives/modes/typography/size/medium')],
-    ['primitives/modes/typography/size/large', await getToken('primitives/modes/typography/size/large')],
+    ...(await getTokens([
+      'primitives/globals',
+      'primitives/modes/size/small',
+      'primitives/modes/size/medium',
+      'primitives/modes/size/large',
+      'primitives/modes/size/global',
+      'primitives/modes/typography/size/small',
+      'primitives/modes/typography/size/medium',
+      'primitives/modes/typography/size/large',
+    ])),
     [`primitives/modes/typography/primary/${name}`, generateTypography(name, typography)],
     [`primitives/modes/typography/secondary/${name}`, generateTypography(name, typography)],
     ...colorSchemes.flatMap((scheme): [string, TokensSet][] => [
