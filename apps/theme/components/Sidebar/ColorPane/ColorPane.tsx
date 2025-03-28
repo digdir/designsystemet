@@ -85,8 +85,7 @@ export const ColorPane = ({
           }}
           className={classes.back}
         >
-          <ChevronLeftIcon aria-hidden fontSize='1.5rem' />{' '}
-          {type === 'add-color' ? 'Lagre' : 'Lagre'}
+          <ChevronLeftIcon aria-hidden fontSize='1.5rem' /> Lagre
         </Button>
         <Button
           data-size='sm'
