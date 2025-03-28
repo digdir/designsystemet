@@ -23,6 +23,8 @@ export const ColorPage = () => {
   const [index, setIndex] = useState(0);
   const [colorType, setColorType] = useState<ColorType>('main');
   const [open, setOpen] = useState(false);
+  const [initialColor, setInitialColor] = useState('#0062ba');
+  const [initialName, setInitialName] = useState(name);
 
   const updateExistingColor = (
     color: string,
@@ -43,6 +45,8 @@ export const ColorPage = () => {
     setName(color.name);
     setIndex(index);
     setColorType(type);
+    setInitialColor(color.colors.light[11].hex);
+    setInitialName(color.name);
   };
 
   const setupNewColorState = (colorType: ColorType) => {
@@ -62,7 +66,6 @@ export const ColorPage = () => {
   return (
     <div>
       {/* MAIN COLORS */}
-
       {activePanel === 'none' && (
         <>
           <div className={classes.group}>
@@ -169,11 +172,11 @@ export const ColorPage = () => {
             updateExistingColor(color.hex, newName, oldName);
           }}
           colorType={colorType}
-          onCancel={(initialColor, initialName) => {
+          onCancel={() => {
             setColor(ColorService.convert('hex', '#0062ba'));
             setName('');
             setActivePanel('none');
-            updateExistingColor(initialColor.hex, initialName, initialName);
+            updateExistingColor(initialColor, initialName, name);
           }}
         />
       )}

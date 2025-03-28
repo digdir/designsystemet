@@ -40,11 +40,6 @@
   gap: 16px;
 }
 
-.removeBtn {
-  margin-right: -8px;
-  margin-top: -4px;
-}
-
 .colorPreviewContainer {
   border: 1px solid var(--ds-color-neutral-border-subtle);
   margin-bottom: 16px;
@@ -64,6 +59,11 @@
 
 .cancel {
   margin-right: auto;
+}
+
+.removeBtn {
+  margin-right: -16px;
+  margin-top: -4px;
 }
 
 .show {

@@ -22,7 +22,7 @@ type ColorPaneProps = {
   setColor: (color: IColor) => void;
   name: string;
   setName: (newName: string, oldName: string) => void;
-  onCancel: (color: IColor, name: string) => void;
+  onCancel: () => void;
   onRemove: () => void;
   colorType: 'main' | 'neutral' | 'support';
 };
@@ -41,8 +41,6 @@ export const ColorPane = ({
 }: ColorPaneProps) => {
   const mainColors = useThemeStore((state) => state.colors.main);
   const [colorError, setColorError] = useState('');
-  const [initialColor, setInitialColor] = useState(color);
-  const [initialName, setInitialName] = useState(name);
 
   const disableRemoveButton = colorType === 'main' && mainColors.length === 1;
 
@@ -90,7 +88,7 @@ export const ColorPane = ({
           className={classes.back}
         >
           <ChevronLeftIcon aria-hidden fontSize='1.5rem' />{' '}
-          {type === 'add-color' ? 'Legg til' : 'Lagre'}
+          {type === 'add-color' ? 'Lagre' : 'Lagre'}
         </Button>
         <Button
           data-size='sm'
@@ -98,7 +96,7 @@ export const ColorPane = ({
           data-color='neutral'
           hidden={type !== 'edit-color'}
           onClick={() => {
-            onCancel(initialColor, initialName);
+            onCancel();
           }}
           className={classes.cancel}
         >
