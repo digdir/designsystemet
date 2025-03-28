@@ -3,6 +3,7 @@ import { forwardRef } from 'react';
 import type { DefaultProps, LabelRequired } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { Field } from '../Field';
+import { disabledFieldHelper } from '../Field/disabledFieldHelper';
 import { Input, type InputProps } from '../Input';
 import { Label } from '../Label';
 import { ValidationMessage } from '../ValidationMessage';
@@ -53,7 +54,12 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
   ref,
 ) {
   return (
-    <Field data-size={size} className={className} style={style}>
+    <Field
+      data-size={size}
+      className={className}
+      style={style}
+      {...disabledFieldHelper(rest)}
+    >
       <Input type='radio' ref={ref} {...rest} />
       {!!label && <Label weight='regular'>{label}</Label>}
       {!!description && <div data-field='description'>{description}</div>}
