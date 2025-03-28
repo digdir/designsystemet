@@ -54,7 +54,7 @@ export const ColorPage = () => {
   };
 
   const setupNewColorState = (colorType: ColorType) => {
-    const newColorName = colorType + '-color-' + colors[colorType].length;
+    const newColorName = colorType + '-color-' + (colors[colorType].length + 1);
     setActivePanel('add-color');
     setIndex(colors[colorType].length);
     setColorType(colorType);
