@@ -1,5 +1,21 @@
 # Change Log
 
+## 1.0.3
+
+### Patch Changes
+
+- Fix `data-color` and `data-color-scheme` used on the same element not working in some browsers ([#3354](https://github.com/digdir/designsystemet/pull/3354))
+
+- Dark mode color adjustments ([#3386](https://github.com/digdir/designsystemet/pull/3386))
+
+  - Reduced the saturation of the colors in dark mode by about 50%.
+  - Made the background- and surface colors a bit darker.
+  - Made the text-default color a bit brighter for better contrast.
+
+- General color adjustments ([#3386](https://github.com/digdir/designsystemet/pull/3386))
+  - Changed the luminance of border-default to work on top of surface-hover with 3:1 contrast.
+  - Changed the luminance of text-subtle and border-strong to work on top of surface-hover with 4.5:1 contrast.
+
 ## 1.0.2
 
 ### Patch Changes

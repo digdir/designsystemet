@@ -1,5 +1,28 @@
 # Change Log
 
+## 1.0.3
+
+### Patch Changes
+
+- Replaced usage of `background-default`/`background-tinted` color-variables with `surface-default`/`surface-tinted` in components ([#3412](https://github.com/digdir/designsystemet/pull/3412))
+
+  - `Details`
+  - `Input`
+  - `Field`
+  - `Suggestion`/`MultiSuggestion`
+  - `ToggleGroup`
+
+- **ToggleGroup**: Removed padding between border and buttons, moved focus to be inset on buttons ([#3356](https://github.com/digdir/designsystemet/pull/3356))
+
+- **Label:** Move readonly styling from label to base for more robust setup. Now styles any label & legend element inside field & fieldset. ([#3413](https://github.com/digdir/designsystemet/pull/3413))
+
+- **Details**: Added `--dsc-details-border-block-width` to fix typo in `--dsc-details-border-block-wdith`. ([#3405](https://github.com/digdir/designsystemet/pull/3405))
+  The old variable is kept as is, so there are no breaking changes.
+
+- Added new class `ds-readonly-icon` for displaying a the readonly icon (padlock) before an element. ([#3413](https://github.com/digdir/designsystemet/pull/3413))
+
+- **ToggleGroup**: Add horizontal scroll when items can't fit in container ([#3356](https://github.com/digdir/designsystemet/pull/3356))
+
 ## 1.0.2
 
 ### Patch Changes

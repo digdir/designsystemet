@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.0.3
+
+### Patch Changes
+
+- **Dropdown**: Fix `className` not being applied to `DropdownButton` ([#3384](https://github.com/digdir/designsystemet/pull/3384))
+
+- **Field**: Removed logic that added `aria-disabled` to elements with `data-field` attribute if input was disabled ([#3407](https://github.com/digdir/designsystemet/pull/3407))
+
 ## 1.0.2
 
 ### Patch Changes
