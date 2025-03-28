@@ -8,7 +8,6 @@ import {
   type FieldCounterProps,
   FieldDescription,
 } from '../Field';
-import { disabledFieldHelper } from '../Field/disabledFieldHelper';
 import { Input, type InputProps } from '../Input';
 import { Label } from '../Label';
 import { Textarea, type TextareaProps } from '../Textarea';
@@ -110,12 +109,7 @@ export const Textfield = forwardRef<
   ref,
 ) {
   return (
-    <Field
-      className={className}
-      data-size={size}
-      style={style}
-      {...disabledFieldHelper(rest)}
-    >
+    <Field className={className} data-size={size} style={style}>
       {!!label && <Label>{label}</Label>}
       {!!description && <FieldDescription>{description}</FieldDescription>}
       <FieldAffixes>
