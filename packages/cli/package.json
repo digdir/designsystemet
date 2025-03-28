@@ -52,7 +52,7 @@
   },
   "dependencies": {
     "@commander-js/extra-typings": "^13.0.0",
-    "@tokens-studio/sd-transforms": "1.2.9",
+    "@tokens-studio/sd-transforms": "1.2.12",
     "apca-w3": "^0.1.9",
     "chalk": "^5.4.1",
     "change-case": "^5.4.4",
