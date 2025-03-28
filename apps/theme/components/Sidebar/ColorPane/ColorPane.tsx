@@ -16,7 +16,6 @@ import classes from './ColorPane.module.css';
 
 type ColorPaneProps = {
   onClose: () => void;
-  show?: boolean;
   type: 'add-color' | 'edit-color' | 'none';
   color: IColor;
   setColor: (color: IColor) => void;
@@ -29,7 +28,6 @@ type ColorPaneProps = {
 
 export const ColorPane = ({
   onClose,
-  show = false,
   type,
   color,
   setColor,
