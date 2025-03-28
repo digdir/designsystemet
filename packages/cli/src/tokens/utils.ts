@@ -1,7 +1,7 @@
-import fs from 'node:fs/promises';
-import chalk from 'chalk';
 import * as R from 'ramda';
+import type { Tokens } from 'style-dictionary';
 import type { DesignToken, TransformedToken } from 'style-dictionary/types';
+import type { TokensSet } from './types.js';
 
 const mapToLowerCase = R.map<string, string>(R.toLower);
 
@@ -68,51 +68,23 @@ export function isColorCategoryToken(token: TransformedToken, category?: 'main' 
   return R.startsWith(['color', category], token.path);
 }
 
-export const mkdir = async (dir: string, dry?: boolean) => {
-  if (dry) {
-    console.log(`${chalk.blue('mkdir')} ${dir}`);
-    return Promise.resolve();
-  }
-
-  return await fs.mkdir(dir, { recursive: true });
-};
-
-export const writeFile = async (path: string, data: string, dry?: boolean) => {
-  if (dry) {
-    console.log(`${chalk.blue('writeFile')} ${path}`);
-    return Promise.resolve();
-  }
-
-  return await fs.writeFile(path, data, { encoding: 'utf-8' });
-};
-
-export const cp = async (src: string, dest: string, dry?: boolean) => {
-  if (dry) {
-    console.log(`${chalk.blue('cp')} ${src} ${dest}`);
-    return Promise.resolve();
-  }
-
-  return await fs.cp(src, dest, { recursive: true });
-};
-
-export const copyFile = async (src: string, dest: string, dry?: boolean) => {
-  if (dry) {
-    console.log(`${chalk.blue('copyFile')} ${src} to ${dest}`);
-    return Promise.resolve();
-  }
-
-  return await fs.copyFile(src, dest);
-};
-
 export const isDigit = (s: string) => /^\d+$/.test(s);
 
-export const cleanDir = async (dir: string, dry?: boolean) => {
-  if (dry) {
-    console.log(`${chalk.blue('cleanDir')} ${dir}`);
-    return Promise.resolve();
+/**
+ * @param {Tokens} obj
+ * @param {(obj: Tokens|Token, key: keyof Tokens|Token, slice: Tokens|Token|string) => void} fn
+ */
+export function traverseObj(
+  obj: Tokens | TokensSet,
+  fn: (obj: TokensSet | Tokens | DesignToken, key: keyof Tokens | string, slice: Tokens | DesignToken | string) => void,
+) {
+  for (const key in obj) {
+    const prop = obj[key];
+    if (prop != null) {
+      fn.apply(null, [obj, key, prop]);
+      if (typeof prop === 'object') {
+        traverseObj(prop, fn);
+      }
+    }
   }
-
-  console.log(`${chalk.red(`Cleaning outputDir: ${dir.trim()}`)} `);
-
-  return await fs.rm(dir, { recursive: true, force: true });
-};
+}

@@ -1,0 +1,277 @@
+import path from 'node:path';
+
+import type { ThemeObject } from '@tokens-studio/types';
+import chalk from 'chalk';
+import * as R from 'ramda';
+import StyleDictionary from 'style-dictionary';
+import { cleanDir, writeFile } from '../../utils.js';
+import type { TokensSet } from '../types.js';
+import {
+  type BuildConfig,
+  type SDConfigForThemePermutation,
+  type ThemePermutation,
+  colorCategories,
+} from '../types.js';
+import { configs, getConfigsForThemeDimensions } from './configs.js';
+import { concatFiles } from './utils/entryfile.js';
+import { type ProcessedThemeObject, processThemeObject } from './utils/getMultidimensionalThemes.js';
+
+type SharedOptions = {
+  /** Enable verbose output */
+  verbose: boolean;
+  /** Set the default color for ":root" */
+  rootColor?: string;
+  /** Dry run, no files will be written */
+  dry?: boolean;
+  /** Clean the output path before building tokens */
+  clean?: boolean;
+  /** Generate preview tokens */
+  preview: boolean;
+  /** Token Studio `$themes.json` content */
+  $themes: ThemeObject[];
+};
+
+export type BuildOptions = {
+  process: 'build';
+  /** Design tokens path */
+  tokensDir: string;
+  /** Output directory for built tokens */
+  outDir: string;
+} & SharedOptions;
+
+export type FormatOptions = {
+  process: 'format' | 'get';
+  /** Tokensets */
+  tokenSets: Map<string, TokensSet>;
+} & SharedOptions;
+
+type ProcessOptions = BuildOptions | FormatOptions;
+
+type ProcessedBuildConfigs<T> = Record<keyof typeof buildConfigs | 'types', T[][]>;
+
+export let buildOptions: ProcessOptions | undefined;
+
+const sd = new StyleDictionary();
+
+const getCustomColors = (processed$themes: ProcessedThemeObject[]) =>
+  processed$themes
+    .filter(
+      (x) => x.group && [colorCategories.main, colorCategories.support].map((c) => `${c}-color`).includes(x.group),
+    )
+    .map((x) => x.name);
+
+/*
+ * Declarative configuration of the build output
+ */
+const buildConfigs = {
+  typography: { getConfig: configs.typographyVariables, dimensions: ['typography'] },
+  'color-scheme': { getConfig: configs.colorSchemeVariables, dimensions: ['color-scheme'] },
+  'main-color': { getConfig: configs.mainColorVariables, dimensions: ['main-color'] },
+  'support-color': { getConfig: configs.supportColorVariables, dimensions: ['support-color'] },
+  'neutral-color': {
+    getConfig: configs.neutralColorVariables,
+    dimensions: ['semantic'],
+    log: ({ permutation: { theme } }) => `${theme} - neutral`,
+  },
+  'success-color': {
+    getConfig: configs.successColorVariables,
+    dimensions: ['semantic'],
+    log: ({ permutation: { theme } }) => `${theme} - success`,
+  },
+  'danger-color': {
+    getConfig: configs.dangerColorVariables,
+    dimensions: ['semantic'],
+    log: ({ permutation: { theme } }) => `${theme} - danger`,
+  },
+  'warning-color': {
+    getConfig: configs.warningColorVariables,
+    dimensions: ['semantic'],
+    log: ({ permutation: { theme } }) => `${theme} - warning`,
+  },
+  'info-color': {
+    getConfig: configs.infoColorVariables,
+    dimensions: ['semantic'],
+    log: ({ permutation: { theme } }) => `${theme} - info`,
+  },
+  semantic: { getConfig: configs.semanticVariables, dimensions: ['semantic'] },
+  storefront: {
+    name: 'Storefront preview tokens',
+    getConfig: configs.typescriptTokens,
+    dimensions: ['color-scheme'],
+    options: { outPath: path.resolve('../../apps/storefront/tokens') },
+    enabled: () => buildOptions?.preview ?? false,
+  },
+  entryFiles: {
+    name: 'Concatenated CSS file',
+    getConfig: configs.semanticVariables,
+    dimensions: ['semantic'],
+    log: ({ permutation: { theme } }: SDConfigForThemePermutation) => `${theme}.css`,
+    build: async (sdConfigs, { outPath, dry }) => {
+      await Promise.all(
+        sdConfigs.map(async ({ permutation: { theme } }) => {
+          return concatFiles({ theme, outPath, buildPath: path.resolve(outPath, theme), dry });
+        }),
+      );
+    },
+  },
+} satisfies Record<string, BuildConfig>;
+
+export async function processPlatform<T>(options: ProcessOptions) {
+  const { dry, clean, process, $themes } = options;
+  const platform = 'css';
+  const isImperativeProcess = process === 'format' || process === 'get';
+  const tokensDir = process === 'build' ? options.tokensDir : '';
+  const targetDir = process === 'build' ? path.resolve(options.outDir) : '';
+
+  /** For sharing build options in other files */
+  buildOptions = options;
+
+  /*
+   * Build the themes
+   */
+
+  const processed$themes = $themes
+    .map(processThemeObject)
+    .filter((theme) => R.not(theme.group === 'size' && theme.name !== 'medium'));
+
+  const customColors = getCustomColors(processed$themes);
+
+  if (!buildOptions.rootColor) {
+    const firstMainColor = R.head(customColors);
+    buildOptions.rootColor = firstMainColor;
+    console.log(`Using first main color; ${chalk.blue(firstMainColor)}, as ${chalk.green(`":root"`)} color`);
+  }
+
+  const buildAndSdConfigs = R.map((buildConfig: BuildConfig) => {
+    const sdConfigs = getConfigsForThemeDimensions(buildConfig.getConfig, processed$themes, buildConfig.dimensions, {
+      outPath: targetDir,
+      tokensDir,
+      tokenSets: isImperativeProcess ? options.tokenSets : undefined,
+      ...buildConfig.options,
+    });
+
+    // Disable build if all sdConfigs dimensions permutation are unknown
+    const unknownConfigs = buildConfig.dimensions.map((dimension) =>
+      sdConfigs.filter((x) => x.permutation[dimension] === 'unknown'),
+    );
+    for (const unknowns of unknownConfigs) {
+      if (unknowns.length === sdConfigs.length) {
+        buildConfig.enabled = () => false;
+      }
+    }
+
+    return {
+      buildConfig,
+      sdConfigs,
+    };
+  }, buildConfigs);
+
+  if (clean) {
+    await cleanDir(targetDir, dry);
+  }
+
+  const processedBuilds: ProcessedBuildConfigs<T> = {
+    typography: [],
+    'color-scheme': [],
+    'main-color': [],
+    'support-color': [],
+    semantic: [],
+    'neutral-color': [],
+    'success-color': [],
+    'danger-color': [],
+    'warning-color': [],
+    'info-color': [],
+    storefront: [],
+    entryFiles: [],
+    types: [],
+  };
+
+  try {
+    for (const [buildName, { buildConfig, sdConfigs }] of R.toPairs(buildAndSdConfigs)) {
+      if (!(buildConfig.enabled?.() ?? true)) {
+        continue;
+      }
+
+      if (buildName === 'entryFiles' && isImperativeProcess) {
+        continue;
+      }
+
+      if (sdConfigs.length > 0) {
+        console.log(`\n🍱 Building ${chalk.green(buildConfig.name ?? buildName)}`);
+
+        if (buildConfig.build) {
+          await buildConfig.build(sdConfigs, { outPath: targetDir, tokensDir, ...buildConfig.options, dry });
+        }
+
+        const result = await Promise.all(
+          sdConfigs.map(async (sdConfig) => {
+            const { config, permutation } = sdConfig;
+            const modes: Array<keyof ThemePermutation> = ['theme', ...buildConfig.dimensions];
+            const modeMessage = modes.map((x) => permutation[x]).join(' - ');
+            const logMessage = R.isNil(buildConfig.log) ? modeMessage : buildConfig?.log(sdConfig);
+            console.log(logMessage);
+
+            if (!dry) {
+              const sdOptions = { cache: true };
+              const sdExtended = await sd.extend(config);
+
+              if (process === 'get') {
+                const dictionary = await sdExtended.getPlatformTokens(platform, sdOptions);
+                return dictionary.allTokens;
+              }
+              if (process === 'format') {
+                return await sdExtended.formatPlatform(platform, sdOptions);
+              }
+              if (process === 'build') {
+                return (await sdExtended.buildAllPlatforms(sdOptions)).tokens;
+              }
+            }
+
+            return Promise.resolve([]);
+          }),
+        );
+
+        processedBuilds[buildName] = result as T[][];
+      }
+    }
+  } catch (err) {
+    // Fix crash error message from StyleDictionary from
+    //   > Use log.verbosity "verbose" or use CLI option --verbose for more details.
+    // to
+    //   > Use CLI option --verbose for more details.
+    if (err instanceof Error) {
+      err.message = err.message.replace('log.verbosity "verbose" or use ', '');
+    }
+    throw err;
+  }
+
+  const colorsFileName = 'colors.d.ts';
+  const reactColorTypes = await writeColorTypeDeclaration(customColors);
+
+  if (process === 'build') {
+    console.log(colorsFileName);
+    await writeFile(path.resolve(targetDir, colorsFileName), reactColorTypes, dry);
+  }
+
+  if (process === 'format') {
+    processedBuilds.types = [[{ output: reactColorTypes, destionation: colorsFileName }]] as T[][];
+  }
+
+  return processedBuilds;
+}
+
+async function writeColorTypeDeclaration(colors: string[]) {
+  console.log(`\n🍱 Building ${chalk.green('type declarations')}`);
+
+  const typeDeclaration = `
+import type {} from '@digdir/designsystemet-react/colors';
+
+declare module '@digdir/designsystemet-react/colors' {
+  export interface MainAndSupportColors {
+${colors.map((color) => `    ${color}: never;`).join('\n')}
+  }
+}
+`.trimStart();
+
+  return typeDeclaration;
+}
