@@ -28,12 +28,11 @@ type ColorStore = {
   ) => void;
   updateColor: (
     updatedColor: ColorTheme,
-    name: string,
-    oldName: string,
+    index: number,
     type: 'main' | 'neutral' | 'support',
   ) => void;
   resetColors: () => void;
-  removeColor: (name: string, type: 'main' | 'neutral' | 'support') => void;
+  removeColor: (index: number, type: 'main' | 'neutral' | 'support') => void;
   baseBorderRadius: BaseBorderRadius;
   setBaseBorderRadius: (radius: BaseBorderRadius) => void;
   colorScheme: ColorScheme;
@@ -66,21 +65,19 @@ export const useThemeStore = create(
         const updatedColors = state.colors[type].concat(newColor);
         return { colors: { ...state.colors, [type]: updatedColors } };
       }),
-    updateColor: (updatedColor, name, oldName, type) =>
+    updateColor: (updatedColor, index, type) =>
       set((state) => {
-        const updatedColors = state.colors[type].map((color) =>
-          color.name === oldName ? { ...updatedColor, name } : color,
+        const updatedColors = state.colors[type].map((color, i) =>
+          i === index ? updatedColor : color,
         );
         return { colors: { ...state.colors, [type]: updatedColors } };
       }),
     resetColors: () => {
       set({ colors: { main: [], neutral: [], support: [] } });
     },
-    removeColor: (name, type) =>
+    removeColor: (index, type) =>
       set((state) => {
-        const updatedColors = state.colors[type].filter(
-          (color) => color.name !== name,
-        );
+        const updatedColors = state.colors[type].filter((_, i) => i !== index);
         return { colors: { ...state.colors, [type]: updatedColors } };
       }),
     setColorScheme: (colorScheme) => set({ colorScheme }),

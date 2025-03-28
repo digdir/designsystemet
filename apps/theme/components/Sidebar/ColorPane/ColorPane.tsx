@@ -21,7 +21,7 @@ type ColorPaneProps = {
   color: IColor;
   setColor: (color: IColor) => void;
   name: string;
-  setName: (newName: string, oldName: string) => void;
+  setName: (name: string) => void;
   onCancel: () => void;
   onRemove: () => void;
   colorType: 'main' | 'neutral' | 'support';
@@ -143,7 +143,7 @@ export const ColorPane = ({
               .replace(/\s+/g, '-')
               .replace(/[^A-Z0-9-]+/gi, '')
               .toLowerCase();
-            setName(value, name);
+            setName(value);
           }}
           onBlur={checkNameIsValid}
           error={colorError}

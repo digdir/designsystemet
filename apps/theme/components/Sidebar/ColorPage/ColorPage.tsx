@@ -22,17 +22,12 @@ export const ColorPage = () => {
   const [name, setName] = useState('');
   const [index, setIndex] = useState(0);
   const [colorType, setColorType] = useState<ColorType>('main');
-  const [open, setOpen] = useState(false);
   const [initialColor, setInitialColor] = useState('#0062ba');
   const [initialName, setInitialName] = useState(name);
 
-  const updateExistingColor = (
-    color: string,
-    newName: string,
-    oldName: string,
-  ) => {
+  const updateExistingColor = (color: string, name: string, index: number) => {
     const theme = generateColorSchemes(color as CssColor);
-    updateColor({ name: newName, colors: theme }, newName, oldName, colorType);
+    updateColor({ name, colors: theme }, index, colorType);
   };
 
   const setupEditState = (
@@ -51,16 +46,17 @@ export const ColorPage = () => {
 
   const setupNewColorState = (colorType: ColorType) => {
     setActivePanel('add-color');
+    setIndex(colors[colorType].length);
     setColorType(colorType);
     addColor(
       {
-        name: 'my-color',
+        name: 'my-color' + colors[colorType].length,
         colors: generateColorSchemes('#0062ba'),
       },
       colorType,
     );
     setColor(ColorService.convert('hex', '#0062ba'));
-    setName('my-color');
+    setName('my-color' + colors[colorType].length);
   };
 
   return (
@@ -154,7 +150,7 @@ export const ColorPage = () => {
             setActivePanel('none');
           }}
           onRemove={() => {
-            removeColor(name, colorType);
+            removeColor(index, colorType);
             setName('');
             setActivePanel('none');
           }}
@@ -165,18 +161,18 @@ export const ColorPage = () => {
             setColor(color);
             console.log(name);
             console.log(colors);
-            updateExistingColor(color.hex, name, name);
+            updateExistingColor(color.hex, name, index);
           }}
-          setName={(newName, oldName) => {
-            setName(newName);
-            updateExistingColor(color.hex, newName, oldName);
+          setName={(name) => {
+            setName(name);
+            updateExistingColor(color.hex, name, index);
           }}
           colorType={colorType}
           onCancel={() => {
             setColor(ColorService.convert('hex', '#0062ba'));
             setName('');
             setActivePanel('none');
-            updateExistingColor(initialColor, initialName, name);
+            updateExistingColor(initialColor, initialName, index);
           }}
         />
       )}
