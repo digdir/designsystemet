@@ -16,8 +16,7 @@ const getToken = async (tokenSet: string): Promise<TokensSet> => {
 const getTokens = async (tokenSets: string[]): Promise<[string, TokensSet][]> =>
   Promise.all(
     tokenSets.map(async (tokenSet) => {
-      const joinedPath = `./template/design-tokens/${tokenSet}.json`;
-      return [tokenSet, (await import(joinedPath)).default];
+      return [tokenSet, await getToken(tokenSet)];
     }),
   );
 
