@@ -26,37 +26,47 @@ export const ColorPage = () => {
   const [initialName, setInitialName] = useState(name);
 
   const updateExistingColor = (color: string, name: string, index: number) => {
-    const theme = generateColorSchemes(color as CssColor);
-    updateColor({ name, colors: theme }, index, colorType);
+    updateColor(
+      { name, colors: generateColorSchemes(color as CssColor) },
+      index,
+      colorType,
+    );
   };
 
   const setupEditState = (
-    color: ColorTheme,
+    colorTheme: ColorTheme,
     index: number,
-    type: ColorType,
+    colorType: ColorType,
   ) => {
     setActivePanel('edit-color');
-    setColor(ColorService.convert('hex', color.colors.light[11].hex));
-    setName(color.name);
+    setColor(ColorService.convert('hex', colorTheme.colors.light[11].hex));
+    setName(colorTheme.name);
     setIndex(index);
-    setColorType(type);
-    setInitialColor(color.colors.light[11].hex);
-    setInitialName(color.name);
+    setColorType(colorType);
+    setInitialColor(colorTheme.colors.light[11].hex);
+    setInitialName(colorTheme.name);
+  };
+
+  const resetColorState = () => {
+    setColor(ColorService.convert('hex', '#0062ba'));
+    setName('');
+    setActivePanel('none');
   };
 
   const setupNewColorState = (colorType: ColorType) => {
+    const newColorName = colorType + '-color-' + colors[colorType].length;
     setActivePanel('add-color');
     setIndex(colors[colorType].length);
     setColorType(colorType);
+    setColor(ColorService.convert('hex', '#0062ba'));
+    setName(newColorName);
     addColor(
       {
-        name: 'my-color' + colors[colorType].length,
+        name: newColorName,
         colors: generateColorSchemes('#0062ba'),
       },
       colorType,
     );
-    setColor(ColorService.convert('hex', '#0062ba'));
-    setName('my-color' + colors[colorType].length);
   };
 
   return (
@@ -84,12 +94,12 @@ export const ColorPage = () => {
               )}
             </div>
             <div className={classes.colors}>
-              {colors.main.map((color, index) => (
+              {colors.main.map((colorTheme, index) => (
                 <ColorInput
                   key={index}
-                  color={color.colors.light[11].hex}
-                  name={color.name}
-                  onClick={() => setupEditState(color, index, 'main')}
+                  color={colorTheme.colors.light[11].hex}
+                  name={colorTheme.name}
+                  onClick={() => setupEditState(colorTheme, index, 'main')}
                 />
               ))}
             </div>
@@ -97,12 +107,12 @@ export const ColorPage = () => {
           <div className={classes.separator}></div>
           <div className={classes.group}>
             <div className={classes.colors}>
-              {colors.neutral.map((color, index) => (
+              {colors.neutral.map((colorTheme, index) => (
                 <ColorInput
                   key={index}
-                  color={color.colors.light[11].hex}
-                  name={color.name}
-                  onClick={() => setupEditState(color, index, 'neutral')}
+                  color={colorTheme.colors.light[11].hex}
+                  name={colorTheme.name}
+                  onClick={() => setupEditState(colorTheme, index, 'neutral')}
                 />
               ))}
             </div>
@@ -129,12 +139,12 @@ export const ColorPage = () => {
               )}
             </div>
             <div className={classes.colors}>
-              {colors.support.map((color, index) => (
+              {colors.support.map((colorTheme, index) => (
                 <ColorInput
                   key={index}
-                  color={color.colors.light[11].hex}
-                  name={color.name}
-                  onClick={() => setupEditState(color, index, 'support')}
+                  color={colorTheme.colors.light[11].hex}
+                  name={colorTheme.name}
+                  onClick={() => setupEditState(colorTheme, index, 'support')}
                 />
               ))}
             </div>
@@ -145,22 +155,21 @@ export const ColorPage = () => {
       {(activePanel === 'add-color' || activePanel === 'edit-color') && (
         <ColorPane
           onClose={() => {
-            setColor(ColorService.convert('hex', '#0062ba'));
-            setName('');
-            setActivePanel('none');
+            resetColorState();
           }}
           onRemove={() => {
             removeColor(index, colorType);
-            setName('');
-            setActivePanel('none');
+            resetColorState();
+          }}
+          onCancel={() => {
+            resetColorState();
+            updateExistingColor(initialColor, initialName, index);
           }}
           type={activePanel}
           color={color}
           name={name}
           setColor={(color) => {
             setColor(color);
-            console.log(name);
-            console.log(colors);
             updateExistingColor(color.hex, name, index);
           }}
           setName={(name) => {
@@ -168,12 +177,6 @@ export const ColorPage = () => {
             updateExistingColor(color.hex, name, index);
           }}
           colorType={colorType}
-          onCancel={() => {
-            setColor(ColorService.convert('hex', '#0062ba'));
-            setName('');
-            setActivePanel('none');
-            updateExistingColor(initialColor, initialName, index);
-          }}
         />
       )}
     </div>
