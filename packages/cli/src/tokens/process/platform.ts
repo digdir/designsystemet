@@ -4,7 +4,7 @@ import type { ThemeObject } from '@tokens-studio/types';
 import chalk from 'chalk';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
-import { cleanDir, readFile, writeFile } from '../../utils.js';
+import { cleanDir, writeFile } from '../../utils.js';
 import type { TokensSet } from '../types.js';
 import {
   type BuildConfig,
@@ -27,6 +27,8 @@ type SharedOptions = {
   clean?: boolean;
   /** Generate preview tokens */
   preview: boolean;
+  /** Token Studio `$themes.json` content */
+  $themes: ThemeObject[];
 };
 
 export type BuildOptions = {
@@ -41,16 +43,22 @@ export type FormatOptions = {
   process: 'format' | 'get';
   /** Tokensets */
   tokenSets: Map<string, TokensSet>;
-  $themes: ThemeObject[];
 } & SharedOptions;
 
 type ProcessOptions = BuildOptions | FormatOptions;
 
-type ProcessedBuildConfigs<T> = Record<keyof typeof buildConfigs, T[][]>;
+type ProcessedBuildConfigs<T> = Record<keyof typeof buildConfigs | 'types', T[][]>;
 
 export let buildOptions: ProcessOptions | undefined;
 
 const sd = new StyleDictionary();
+
+const getCustomColors = (processed$themes: ProcessedThemeObject[]) =>
+  processed$themes
+    .filter(
+      (x) => x.group && [colorCategories.main, colorCategories.support].map((c) => `${c}-color`).includes(x.group),
+    )
+    .map((x) => x.name);
 
 /*
  * Declarative configuration of the build output
@@ -109,36 +117,33 @@ const buildConfigs = {
 } satisfies Record<string, BuildConfig>;
 
 export async function processPlatform<T>(options: ProcessOptions) {
-  const { dry, clean, process } = options;
+  const { dry, clean, process, $themes } = options;
   const platform = 'css';
+  const isImperativeProcess = process === 'format' || process === 'get';
   const tokensDir = process === 'build' ? options.tokensDir : '';
   const targetDir = process === 'build' ? path.resolve(options.outDir) : '';
 
   /** For sharing build options in other files */
   buildOptions = options;
 
-  const isImperativeProcess = process === 'format' || process === 'get';
   /*
    * Build the themes
    */
-  const processed$themes = (
-    isImperativeProcess
-      ? options.$themes
-      : (JSON.parse(await readFile(path.resolve(`${tokensDir}/$themes.json`))) as ThemeObject[])
-  ).map(processThemeObject);
 
-  const relevant$themes = processed$themes
-    // We only use the 'medium' theme for the 'size' group
+  const processed$themes = $themes
+    .map(processThemeObject)
     .filter((theme) => R.not(theme.group === 'size' && theme.name !== 'medium'));
 
+  const customColors = getCustomColors(processed$themes);
+
   if (!buildOptions.rootColor) {
-    const firstMainColor = relevant$themes.find((theme) => theme.group === 'main-color');
-    buildOptions.rootColor = firstMainColor?.name;
-    console.log(`Using first main color; ${chalk.blue(firstMainColor?.name)}, as ${chalk.green(`":root"`)} color`);
+    const firstMainColor = R.head(customColors);
+    buildOptions.rootColor = firstMainColor;
+    console.log(`Using first main color; ${chalk.blue(firstMainColor)}, as ${chalk.green(`":root"`)} color`);
   }
 
   const buildAndSdConfigs = R.map((buildConfig: BuildConfig) => {
-    const sdConfigs = getConfigsForThemeDimensions(buildConfig.getConfig, relevant$themes, buildConfig.dimensions, {
+    const sdConfigs = getConfigsForThemeDimensions(buildConfig.getConfig, processed$themes, buildConfig.dimensions, {
       outPath: targetDir,
       tokensDir,
       tokenSets: isImperativeProcess ? options.tokenSets : undefined,
@@ -178,6 +183,7 @@ export async function processPlatform<T>(options: ProcessOptions) {
     'info-color': [],
     storefront: [],
     entryFiles: [],
+    types: [],
   };
 
   try {
@@ -239,31 +245,33 @@ export async function processPlatform<T>(options: ProcessOptions) {
     throw err;
   }
 
+  const colorsFileName = 'colors.d.ts';
+  const reactColorTypes = await writeColorTypeDeclaration(customColors);
+
   if (process === 'build') {
-    await writeColorTypeDeclaration(processed$themes, targetDir, dry);
+    console.log(colorsFileName);
+    await writeFile(path.resolve(targetDir, colorsFileName), reactColorTypes, dry);
+  }
+
+  if (process === 'format') {
+    processed.types = [[{ output: reactColorTypes, destionation: colorsFileName }]] as T[][];
   }
 
   return processed;
 }
 
-async function writeColorTypeDeclaration($themes: ProcessedThemeObject[], outPath: string, dry?: boolean) {
-  const colorsFileName = 'colors.d.ts';
+async function writeColorTypeDeclaration(colors: string[]) {
   console.log(`\n🍱 Building ${chalk.green('type declarations')}`);
-  console.log(colorsFileName);
-  const mainAndSupportColors = $themes
-    .filter(
-      (x) => x.group && [colorCategories.main, colorCategories.support].map((c) => `${c}-color`).includes(x.group),
-    )
-    .map((x) => x.name);
+
   const typeDeclaration = `
 import type {} from '@digdir/designsystemet-react/colors';
 
 declare module '@digdir/designsystemet-react/colors' {
   export interface MainAndSupportColors {
-${mainAndSupportColors.map((color) => `    ${color}: never;`).join('\n')}
+${colors.map((color) => `    ${color}: never;`).join('\n')}
   }
 }
 `.trimStart();
 
-  await writeFile(path.resolve(outPath, colorsFileName), typeDeclaration, dry);
+  return typeDeclaration;
 }
