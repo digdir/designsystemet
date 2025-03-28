@@ -118,9 +118,12 @@ export const ReadOnly = {
   render: Group,
 };
 
-export const Disabled = {
+export const Disabled: StoryObj = {
   args: { ...Group.args, disabled: true, name: 'my-disabled' },
   render: Group,
+  parameters: {
+    a11y: { config: { rules: [{ id: 'color-contrast', enabled: false }] } },
+  },
 };
 
 export const Inline: StoryFn<typeof Fieldset> = () => (
@@ -149,7 +152,7 @@ export const Conditional: StoryFn<UseRadioGroupProps> = (args) => {
       {open ? (
         <>
           <Button onClick={() => setOpen(false)}>
-            <FloppydiskIcon /> Lagre
+            <FloppydiskIcon aria-hidden /> Lagre
           </Button>
           <Fieldset>
             <Fieldset.Legend>
@@ -166,7 +169,7 @@ export const Conditional: StoryFn<UseRadioGroupProps> = (args) => {
         </>
       ) : (
         <Button onClick={() => setOpen(true)} variant='secondary'>
-          <PencilIcon /> Rediger
+          <PencilIcon aria-hidden /> Rediger
         </Button>
       )}
     </>

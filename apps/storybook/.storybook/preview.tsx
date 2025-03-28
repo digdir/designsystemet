@@ -176,6 +176,9 @@ const preview: Preview = {
         desktop: allModes[1200],
       },
     },
+    a11y: {
+      test: 'error',
+    },
     backgrounds: {
       disable: true,
     },
