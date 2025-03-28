@@ -118,9 +118,12 @@ export const ReadOnly = {
   render: Group,
 };
 
-export const Disabled = {
+export const Disabled: StoryObj = {
   args: { ...Group.args, disabled: true, name: 'my-disabled' },
   render: Group,
+  parameters: {
+    a11y: { config: { rules: [{ id: 'color-contrast', enabled: false }] } },
+  },
 };
 
 export const Inline: StoryFn<typeof Fieldset> = () => (
