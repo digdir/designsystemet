@@ -87,4 +87,5 @@ export const configFileSchema = z.object({
  * command-line options and default values.
  */
 export const combinedConfigSchema = configFileSchema.required();
-export type CombinedConfigSchema = z.infer<typeof combinedConfigSchema>;
+export type DesignsystemetConfig = z.infer<typeof combinedConfigSchema>;
+export type ThemeConfig = z.infer<typeof themeSchema>;

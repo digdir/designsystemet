@@ -1,9 +1,9 @@
 import * as R from 'ramda';
 import type { Config as StyleDictionaryConfig } from 'style-dictionary/types';
+import type { BuiltInColors, ColorCategories } from '../../types.js';
 import { isColorCategoryToken, isSemanticColorToken, typeEquals } from '../../utils.js';
 import { formats } from '../formats/css.js';
 import { buildOptions } from '../platform.js';
-import type { BuiltInColors, ColorCategories } from '../types.js';
 
 import { type GetStyleDictionaryConfig, dsTransformers, fileHeader, prefix } from './shared.js';
 

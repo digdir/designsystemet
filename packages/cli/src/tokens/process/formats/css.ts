@@ -3,6 +3,7 @@ import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
 import { createPropertyFormatter, fileHeader } from 'style-dictionary/utils';
 
+import { colorCategories } from '../../types.js';
 import {
   getValue,
   isColorCategoryToken,
@@ -11,7 +12,6 @@ import {
   isSemanticToken,
   pathStartsWithOneOf,
 } from '../../utils.js';
-import { colorCategories } from '../types.js';
 
 /**
  * In the given tokens array, inline and remove tokens that match the predicate
