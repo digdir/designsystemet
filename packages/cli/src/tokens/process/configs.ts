@@ -2,6 +2,7 @@ import { register } from '@tokens-studio/sd-transforms';
 import * as R from 'ramda';
 import StyleDictionary, { type Tokens } from 'style-dictionary';
 import type { DesignTokens } from 'style-dictionary/types';
+import type { GetSdConfigOptions, SDConfigForThemePermutation, ThemeDimension } from '../types.js';
 import { traverseObj } from '../utils.js';
 import { colorCategoryVariables, colorSchemeVariables } from './configs/color.js';
 import { semanticVariables } from './configs/semantic.js';
@@ -12,7 +13,6 @@ import { formats } from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
 import { buildOptions } from './platform.js';
 import { resolveMath, sizeRem, typographyName, unitless } from './transformers.js';
-import type { GetSdConfigOptions, SDConfigForThemePermutation, ThemeDimension } from './types.js';
 import { type ProcessedThemeObject, getMultidimensionalThemes } from './utils/getMultidimensionalThemes.js';
 
 void register(StyleDictionary, { withSDBuiltins: false });

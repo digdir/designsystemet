@@ -3,8 +3,8 @@ import { TokenSetStatus } from '@tokens-studio/types';
 import chalk from 'chalk';
 import { kebabCase } from 'change-case';
 import * as R from 'ramda';
+import type { ThemeDimension, ThemePermutation } from '../../types.js';
 import { buildOptions } from '../platform.js';
-import type { ThemeDimension, ThemePermutation } from '../types.js';
 
 /**
  * Find the theme permutations that are relevant for the given theme dimensions.

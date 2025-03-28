@@ -1,6 +1,6 @@
 import type { Config as StyleDictionaryConfig } from 'style-dictionary/types';
+import type { ThemePermutation } from '../../types.js';
 import { resolveMath, sizeRem, typographyName, unitless } from '../transformers.js';
-import type { ThemePermutation } from '../types.js';
 
 export type GetStyleDictionaryConfig = (
   permutation: ThemePermutation,
