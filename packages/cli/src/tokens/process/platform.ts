@@ -170,7 +170,7 @@ export async function processPlatform<T>(options: ProcessOptions) {
     await cleanDir(targetDir, dry);
   }
 
-  const processed: ProcessedBuildConfigs<T> = {
+  const processedBuilds: ProcessedBuildConfigs<T> = {
     typography: [],
     'color-scheme': [],
     'main-color': [],
@@ -187,17 +187,17 @@ export async function processPlatform<T>(options: ProcessOptions) {
   };
 
   try {
-    for (const [key, { buildConfig, sdConfigs }] of R.toPairs(buildAndSdConfigs)) {
+    for (const [buildName, { buildConfig, sdConfigs }] of R.toPairs(buildAndSdConfigs)) {
       if (!(buildConfig.enabled?.() ?? true)) {
         continue;
       }
 
-      if (key === 'entryFiles' && isImperativeProcess) {
+      if (buildName === 'entryFiles' && isImperativeProcess) {
         continue;
       }
 
       if (sdConfigs.length > 0) {
-        console.log(`\n🍱 Building ${chalk.green(buildConfig.name ?? key)}`);
+        console.log(`\n🍱 Building ${chalk.green(buildConfig.name ?? buildName)}`);
 
         if (buildConfig.build) {
           await buildConfig.build(sdConfigs, { outPath: targetDir, tokensDir, ...buildConfig.options, dry });
@@ -231,7 +231,7 @@ export async function processPlatform<T>(options: ProcessOptions) {
           }),
         );
 
-        processed[key] = result as T[][];
+        processedBuilds[buildName] = result as T[][];
       }
     }
   } catch (err) {
@@ -254,10 +254,10 @@ export async function processPlatform<T>(options: ProcessOptions) {
   }
 
   if (process === 'format') {
-    processed.types = [[{ output: reactColorTypes, destionation: colorsFileName }]] as T[][];
+    processedBuilds.types = [[{ output: reactColorTypes, destionation: colorsFileName }]] as T[][];
   }
 
-  return processed;
+  return processedBuilds;
 }
 
 async function writeColorTypeDeclaration(colors: string[]) {
