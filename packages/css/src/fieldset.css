@@ -5,7 +5,7 @@
   padding: 0;
 
   & > legend {
-    padding: 0;
+    padding: 0; /* Reset browser default padding */
   }
 
   /* Add lock icon to legend when only containing readonly inputs */
