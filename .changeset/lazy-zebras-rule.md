@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-Update react to 19.1.0
+Update React to 19.1.0. [Changelog](https://github.com/facebook/react/releases/tag/v19.1.0)
