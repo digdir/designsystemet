@@ -6,7 +6,7 @@ import { getMDXComponent } from 'mdx-bundler/client';
 import { useMemo } from 'react';
 import type { Route } from './+types/monstre';
 
-export async function loader({ params, lang }: Route.LoaderArgs) {
+export async function loader({ params }: Route.LoaderArgs) {
   const file = params.file || 'index';
   const filePath = join(
     process.cwd(),
@@ -43,6 +43,7 @@ export async function loader({ params, lang }: Route.LoaderArgs) {
   return {
     name: params.file,
     code: result.code,
+    frontmatter: result.frontmatter,
     currentLang: params.lang,
     availableLanguages: {
       nb: nbExists,
@@ -50,6 +51,10 @@ export async function loader({ params, lang }: Route.LoaderArgs) {
     },
   };
 }
+
+export const meta = ({ params, loaderData }: Route.MetaArgs) => {
+  return [{ title: `Monstre ${params.file} - ${params.lang}` }];
+};
 
 export default function Monstre({ loaderData }: Route.ComponentProps) {
   // Create a component from the bundled code
@@ -64,17 +69,22 @@ export default function Monstre({ loaderData }: Route.ComponentProps) {
   };
 
   return (
-    <div className='p-4'>
-      <div className='flex space-x-4 mb-6'>
+    <div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          gap: '1rem',
+        }}
+      >
         {loaderData.availableLanguages.nb && (
           <Link href={`/nb/monstre/${loaderData.name}`}>
-            Norsk (Bokmål) {loaderData.currentLang === 'nb' && '(Valgt)'}
+            {loaderData.currentLang === 'nb' && '✅'} Norsk (Bokmål)
           </Link>
         )}
-        <br />
         {loaderData.availableLanguages.en && (
           <Link href={`/en/monstre/${loaderData.name}`}>
-            English {loaderData.currentLang === 'en' && '(Valgt)'}
+            {loaderData.currentLang === 'en' && '✅'} English
           </Link>
         )}
       </div>

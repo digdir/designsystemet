@@ -19,7 +19,7 @@ export const links = () => {
       href: 'https://altinncdn.no/fonts/inter/v4.1/inter.css',
       integrity:
         'sha384-OcHzc/By/OPw9uJREawUCjP2inbOGKtKb4A/I2iXxmknUfog2H8Adx71tWVZRscD',
-      crossorigin: 'anonymous',
+      crossOrigin: 'anonymous',
     },
   ];
 };
