@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useThemeStore } from '../../store';
 
 import {
+  Button,
   Dialog,
   Heading,
   Tabs,
@@ -13,6 +14,7 @@ import { CogIcon } from '@navikt/aksel-icons';
 import { BorderRadiusInput } from '../BorderRadiusInput/BorderRadiusInput';
 import { TokenModal } from '../TokenModal/TokenModal';
 import { ColorPage } from './ColorPage/ColorPage';
+import { LightnessPage } from './LightnessPage/LightnessPage';
 import classes from './Sidebar.module.css';
 
 export const Sidebar = () => {
@@ -24,6 +26,7 @@ export const Sidebar = () => {
 
   const [isSticky, setSticky] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
+  const [showLightnessPage, setShowLightnessPage] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,7 +63,7 @@ export const Sidebar = () => {
             showSidebar && classes.showSidebar,
           )}
         >
-          <Tabs
+          {/* <Tabs
             value={activePage}
             onChange={(value) =>
               setActivePage(value as 'colors' | 'dimensions')
@@ -78,7 +81,26 @@ export const Sidebar = () => {
                 <BorderRadiusInput />
               </Tabs.Panel>
             </div>
-          </Tabs>
+          </Tabs> */}
+
+          {showLightnessPage && (
+            <LightnessPage onBackClicked={() => setShowLightnessPage(false)} />
+          )}
+          {!showLightnessPage && (
+            <>
+              <ColorPage />
+              <Button
+                className={classes.lightBtn}
+                variant='tertiary'
+                data-size='sm'
+                onClick={() => setShowLightnessPage(true)}
+                data-color='neutral'
+              >
+                <CogIcon title='tannhjul' fontSize='1.5rem' />
+                Overstyr lightness verdier
+              </Button>
+            </>
+          )}
 
           <div className={classes.bottom} data-size='sm'>
             <div>

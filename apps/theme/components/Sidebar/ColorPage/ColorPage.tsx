@@ -24,10 +24,28 @@ export const ColorPage = () => {
   const [colorType, setColorType] = useState<ColorType>('main');
   const [initialColor, setInitialColor] = useState('#0062ba');
   const [initialName, setInitialName] = useState(name);
+  const updateStaticSaturation = useThemeStore(
+    (state) => state.updateStaticSaturation,
+  );
+  const colorMetadata = useThemeStore((state) => state.colorMetadata);
 
-  const updateExistingColor = (color: string, name: string, index: number) => {
+  const updateExistingColor = (
+    color: string,
+    name: string,
+    index: number,
+    staticSaturation: number,
+  ) => {
+    console.log(staticSaturation);
     updateColor(
-      { name, colors: generateColorSchemes(color as CssColor) },
+      {
+        name,
+        colors: generateColorSchemes(
+          color as CssColor,
+          colorMetadata,
+          staticSaturation,
+        ),
+        staticSaturation: staticSaturation.toString(), // Changed to use toString() for consistency
+      },
       index,
       colorType,
     );
@@ -64,6 +82,7 @@ export const ColorPage = () => {
       {
         name: newColorName,
         colors: generateColorSchemes('#0062ba'),
+        staticSaturation: '0%',
       },
       colorType,
     );
@@ -71,6 +90,13 @@ export const ColorPage = () => {
 
   return (
     <div>
+      <Heading
+        data-size='xs'
+        className={classes.title}
+        hidden={activePanel !== 'none'}
+      >
+        Sett opp fargene dine
+      </Heading>
       {/* MAIN COLORS */}
       {activePanel === 'none' && (
         <>
@@ -163,18 +189,27 @@ export const ColorPage = () => {
           }}
           onCancel={() => {
             resetColorState();
-            updateExistingColor(initialColor, initialName, index);
+            updateExistingColor(initialColor, initialName, index, 0);
+          }}
+          onStaticSaturation={(e) => {
+            updateStaticSaturation(e, index, colorType);
+            updateExistingColor(
+              initialColor,
+              initialName,
+              index,
+              parseFloat(e),
+            );
           }}
           type={activePanel}
           color={color}
           name={name}
           setColor={(color) => {
             setColor(color);
-            updateExistingColor(color.hex, name, index);
+            updateExistingColor(color.hex, name, index, 1);
           }}
           setName={(name) => {
             setName(name);
-            updateExistingColor(color.hex, name, index);
+            updateExistingColor(color.hex, name, index, 1);
           }}
           colorType={colorType}
         />

@@ -1,8 +1,11 @@
 import { RESERVED_COLORS } from '@digdir/designsystemet';
 import {
   Button,
+  Field,
   Heading,
+  Label,
   Paragraph,
+  Select,
   Textfield,
 } from '@digdir/designsystemet-react';
 import { ChevronLeftIcon, TrashIcon } from '@navikt/aksel-icons';
@@ -23,6 +26,7 @@ type ColorPaneProps = {
   onCancel: () => void;
   onRemove: () => void;
   colorType: 'main' | 'neutral' | 'support';
+  onStaticSaturation: (saturation: string) => void;
 };
 
 export const ColorPane = ({
@@ -35,6 +39,7 @@ export const ColorPane = ({
   setName,
   onRemove,
   colorType,
+  onStaticSaturation,
 }: ColorPaneProps) => {
   const mainColors = useThemeStore((state) => state.colors.main);
   const [colorError, setColorError] = useState('');
@@ -153,6 +158,27 @@ export const ColorPane = ({
         onChange={setColor}
         hideInput={['rgb', 'hsv']}
       />
+
+      <Field data-size='sm'>
+        <Label>Fargemetning for statiske farger</Label>
+        <Select
+          defaultValue='1'
+          width='full'
+          onChange={(e) => {
+            onStaticSaturation(e.target.value);
+          }}
+        >
+          <Select.Option value='0.6'>-40%</Select.Option>
+          <Select.Option value='0.7'>-30%</Select.Option>
+          <Select.Option value='0.8'>-20%</Select.Option>
+          <Select.Option value='0.9'>-10%</Select.Option>
+          <Select.Option value='1'>0%</Select.Option>
+          <Select.Option value='1.1'>+10%</Select.Option>
+          <Select.Option value='1.2'>+20%</Select.Option>
+          <Select.Option value='1.3'>+30%</Select.Option>
+          <Select.Option value='1.4'>+40%</Select.Option>
+        </Select>
+      </Field>
     </div>
   );
 };

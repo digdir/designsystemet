@@ -1,19 +1,14 @@
 .sidebar {
   position: relative;
   z-index: 100;
-  right: 20px;
-  top: -20px;
-  background-color: var(--ds-color-neutral-background-default);
-  border: 1px solid var(--ds-color-neutral-border-subtle);
-  box-shadow: 0px 0px 60px 10px rgba(0, 0, 0, 0.1);
-  width: 420px;
-  flex-basis: 410px;
+  padding: 24px 24px 24px 24px;
+  background-color: var(--ds-color-neutral-surface-default);
   flex-grow: 1;
   border-radius: 8px;
-  margin-top: -170px;
-  height: calc(100vh - 200px);
   display: flex;
   flex-direction: column;
+  box-shadow: var(--ds-shadow-xs);
+  width: 100%;
 
   & > div:first-child {
     display: flex;
@@ -23,12 +18,6 @@
   }
 }
 
-.sticky {
-  position: fixed;
-  margin-top: 0;
-  top: 20px;
-}
-
 .tabContent {
   flex: 1;
   min-height: 0;
@@ -36,8 +25,8 @@
 
 .tabPanel {
   height: 100%;
-  overflow-y: auto;
-  padding: var(--ds-size-7);
+  padding: 0;
+  margin-top: 24px;
 }
 
 .showSidebar {
@@ -50,14 +39,12 @@
 }
 
 .bottom {
-  border-radius: 0 0 8px 8px;
   border-top: 1px solid var(--ds-color-neutral-border-subtle);
-  background-color: var(--ds-color-neutral-background-default);
   flex-shrink: 0;
-
-  & > div {
-    padding: var(--ds-size-7);
-  }
+  bottom: 16px;
+  right: 28px;
+  margin-top: 32px;
+  padding-top: 32px;
 }
 
 .appearance {
@@ -121,4 +108,10 @@
   /* & .tabPanel {
     padding: var(--ds-size-4) 0;
   } */
+}
+
+.lightBtn {
+  align-self: flex-start;
+  margin-left: -12px;
+  margin-top: 24px;
 }

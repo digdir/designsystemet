@@ -1,6 +1,7 @@
 import {
   type ColorScheme,
   type ThemeInfo,
+  colorMetadata,
   generateColorSchemes,
 } from '@digdir/designsystemet/color';
 import { create } from 'zustand';
@@ -8,13 +9,22 @@ import { subscribeWithSelector } from 'zustand/middleware';
 
 export type ColorTheme = {
   name: string;
+  staticSaturation: string;
   colors: ThemeInfo;
 };
 
 export type BaseBorderRadius = number;
+export type ColorMetadataType = typeof colorMetadata;
 type PageType = 'colors' | 'dimensions';
 
 type ColorStore = {
+  colorMetadata: ColorMetadataType;
+  referenceColorMetadata: ColorMetadataType;
+  setLuminance: (
+    luminance: ColorMetadataType,
+    type: 'light' | 'dark',
+    colorName: keyof ColorMetadataType,
+  ) => void;
   activePage: PageType;
   setActivePage: (page: PageType) => void;
   colors: {
@@ -38,24 +48,72 @@ type ColorStore = {
   colorScheme: ColorScheme;
   setColorScheme: (colorScheme: ColorScheme) => void;
   themeTab: 'overview' | 'colorsystem';
-  setThemeTab: (tab: 'overview' | 'colorsystem') => void;
+  setThemeTab: (
+    tab: 'overview' | 'colorsystem' | 'contrast' | 'typography' | 'radius',
+  ) => void;
+  updateStaticSaturation: (
+    saturation: string,
+    index: number,
+    type: 'main' | 'neutral' | 'support',
+  ) => void;
 };
 
 export const useThemeStore = create(
   subscribeWithSelector<ColorStore>((set) => ({
+    colorMetadata: colorMetadata,
+    referenceColorMetadata: colorMetadata,
+    setLuminance: (
+      luminance: ColorMetadataType,
+      type: 'light' | 'dark',
+      colorName: keyof ColorMetadataType,
+    ) =>
+      set((state) => ({
+        colorMetadata: {
+          ...state.colorMetadata,
+          background: {
+            ...state.colorMetadata[colorName],
+            luminance: {
+              ...state.colorMetadata[colorName].luminance,
+              [type]: luminance,
+            },
+          },
+        },
+      })),
     activePage: 'colors',
     setActivePage: (page) => set({ activePage: page }),
     baseBorderRadius: 4,
     colorScheme: 'light',
     colors: {
       main: [
-        { name: 'primary', colors: generateColorSchemes('#0062BA') },
-        { name: 'accent', colors: generateColorSchemes('#1E98F5') },
+        {
+          name: 'primary',
+          colors: generateColorSchemes('#0062BA'),
+          staticSaturation: '1',
+        },
+        {
+          name: 'accent',
+          colors: generateColorSchemes('#1E98F5'),
+          staticSaturation: '1',
+        },
       ],
-      neutral: [{ name: 'neutral', colors: generateColorSchemes('#1E2B3C') }],
+      neutral: [
+        {
+          name: 'neutral',
+          colors: generateColorSchemes('#1E2B3C'),
+          staticSaturation: '1',
+        },
+      ],
       support: [
-        { name: 'extra1', colors: generateColorSchemes('#F45F63') },
-        { name: 'extra2', colors: generateColorSchemes('#E5AA20') },
+        {
+          name: 'extra1',
+          colors: generateColorSchemes('#F45F63'),
+          staticSaturation: '1',
+        },
+        {
+          name: 'extra2',
+          colors: generateColorSchemes('#E5AA20'),
+          staticSaturation: '1',
+        },
       ],
     },
     themeTab: 'overview',
@@ -82,5 +140,16 @@ export const useThemeStore = create(
       }),
     setColorScheme: (colorScheme) => set({ colorScheme }),
     setBaseBorderRadius: (radius) => set({ baseBorderRadius: radius }),
+    updateStaticSaturation: (
+      saturation: string,
+      index: number,
+      type: 'main' | 'neutral' | 'support',
+    ) =>
+      set((state) => {
+        const updatedColors = state.colors[type].map((color, i) =>
+          i === index ? { ...color, staticSaturation: saturation } : color,
+        );
+        return { colors: { ...state.colors, [type]: updatedColors } };
+      }),
   })),
 );

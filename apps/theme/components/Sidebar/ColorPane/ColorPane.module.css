@@ -1,15 +1,7 @@
 .colorPage {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: var(--ds-color-neutral-background-default);
-  padding: 24px;
   border-radius: 8px;
   display: none;
   z-index: 5;
-  overflow-y: auto;
 }
 
 .title {
@@ -31,7 +23,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: -8px;
+  margin-top: -10px;
 }
 
 .btnGroup {
@@ -53,7 +45,7 @@
 }
 
 .back {
-  margin-left: -16px;
+  margin-left: -20px;
 }
 
 .cancel {
@@ -71,4 +63,9 @@
 .desc {
   color: var(--ds-color-neutral-text-subtle);
   margin-bottom: 16px;
+}
+
+.slider {
+  color: white;
+  padding: 0 16px;
 }

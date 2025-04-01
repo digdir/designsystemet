@@ -11,7 +11,7 @@ import cl from 'clsx/lite';
 import { Color as ColorPreview } from '../Color/Color';
 
 import { ColorModal } from '@repo/components';
-import { Fragment, createRef, useRef } from 'react';
+import { createRef, useRef } from 'react';
 import { useThemeStore } from '../../store';
 import classes from './Group.module.css';
 
@@ -64,7 +64,7 @@ export const Group = ({
             hex,
           };
           return (
-            <Fragment key={index + 'fragment' + namespace}>
+            <div className={classes.test} key={index + 'fragment' + namespace}>
               <ColorModal
                 colorModalRef={colorModalRefs.current[index]}
                 namespace={namespace}
@@ -81,7 +81,7 @@ export const Group = ({
                   }
                 />
               </RovingFocusItem>
-            </Fragment>
+            </div>
           );
         })}
       </div>

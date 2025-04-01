@@ -23,8 +23,14 @@ export const RESERVED_COLORS = [
  *
  * @param color The base color that is used to generate the color scale
  * @param colorScheme The color scheme to generate a scale for
+ * @param colorMetaData The metadata for the color
  */
-export const generateColorScale = (color: CssColor, colorScheme: ColorScheme): Color[] => {
+export const generateColorScale = (
+  color: CssColor,
+  colorScheme: ColorScheme,
+  colorMetaData?: typeof colorMetadata,
+  staticSaturation?: number,
+): Color[] => {
   let interpolationColor = color;
 
   // Reduce saturation in dark mode for the interpolation colors
@@ -32,15 +38,23 @@ export const generateColorScale = (color: CssColor, colorScheme: ColorScheme): C
     const [L, C, H] = chroma(color).oklch();
     const chromaModifier = 0.7;
     interpolationColor = chroma(L, C * chromaModifier, H, 'oklch').hex() as CssColor;
+  } else {
+    const [H, S, V] = chroma(color).hsv();
+    interpolationColor = chroma(
+      H,
+      Math.min(S * (staticSaturation ?? 1), 1),
+      Math.min(V * (staticSaturation ?? 1), 1),
+      'hsv',
+    ).hex() as CssColor;
   }
 
   const colors = R.mapObjIndexed((colorData) => {
-    const luminance = colorData.luminance[colorScheme];
+    const lightness = colorData.luminance[colorScheme];
     return {
       ...colorData,
-      hex: chroma(interpolationColor).luminance(luminance).hex() as CssColor,
+      hex: chroma(interpolationColor).luminance(getLuminanceFromLightness(lightness)).hex() as CssColor,
     };
-  }, colorMetadata);
+  }, colorMetaData || colorMetadata);
 
   // Generate base colors
   const baseColors = generateBaseColors(color, colorScheme);
@@ -63,11 +77,17 @@ export const generateColorScale = (color: CssColor, colorScheme: ColorScheme): C
  * Generates color schemes based on a base color. Light, Dark and Contrast scales are included.
  *
  * @param color The base color that is used to generate the color schemes
+ * @param colorMetaData The metadata for the color
+ * @param staticSaturation The static saturation value for the color
  */
-export const generateColorSchemes = (color: CssColor): ThemeInfo => ({
-  light: generateColorScale(color, 'light'),
-  dark: generateColorScale(color, 'dark'),
-  contrast: generateColorScale(color, 'contrast'),
+export const generateColorSchemes = (
+  color: CssColor,
+  colorMetaData?: typeof colorMetadata,
+  staticSaturation?: number,
+): ThemeInfo => ({
+  light: generateColorScale(color, 'light', colorMetaData, staticSaturation),
+  dark: generateColorScale(color, 'dark', colorMetaData, staticSaturation),
+  contrast: generateColorScale(color, 'contrast', colorMetaData, staticSaturation),
 });
 
 /**
