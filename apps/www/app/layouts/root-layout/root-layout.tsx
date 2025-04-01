@@ -12,7 +12,7 @@ export default function RootLayout() {
           <Digdir />
         </Link>
       </header>
-      <main id='main'>
+      <main id='main' className={styles.main}>
         <Outlet />
       </main>
     </>
