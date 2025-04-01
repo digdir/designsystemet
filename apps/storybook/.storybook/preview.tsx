@@ -182,6 +182,9 @@ const preview: Preview = {
     backgrounds: {
       disable: true,
     },
+    html: {
+      root: '.storybook-decorator', // default: #root
+    },
   },
   decorators: [customStylesDecorator],
   loaders: isChromatic() && document.fonts ? [fontsLoader] : [],
