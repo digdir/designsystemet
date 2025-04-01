@@ -75,7 +75,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       children,
       content,
       placement = 'top',
-      autoPlacement,
+      autoPlacement = true,
       open,
       className,
       ...rest
