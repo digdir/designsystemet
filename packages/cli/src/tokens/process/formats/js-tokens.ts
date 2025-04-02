@@ -2,8 +2,8 @@ import * as R from 'ramda';
 import type { Format, TransformedToken } from 'style-dictionary/types';
 import { createPropertyFormatter, fileHeader } from 'style-dictionary/utils';
 
-import { getType, isColorCategoryToken, pathStartsWithOneOf } from '../../utils.js';
-import { isSquashTokens, overrideSizingFormula, squashTokens } from './css.js';
+import { getType, isColorCategoryToken, pathStartsWithOneOf, squashTokens } from '../../utils.js';
+import { isSquashTokens, overrideSizingFormula } from './css/semantic.js';
 
 const groupByType = R.groupBy((token: TransformedToken) => getType(token));
 

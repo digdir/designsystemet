@@ -89,3 +89,44 @@ export function traverseObj(
   }
   return obj;
 }
+
+/**
+ * In the given tokens array, inline and remove tokens that match the predicate
+ *
+ * Example: In pseudo-code, given the predicate `(token) => token.path === ['size', '1']` and the following tokens
+ * ```js
+ *  [
+ *    { path: ['size', 'base'], original: { $value: '8px' } },
+ *    { path: ['size', '1'], original: { $value: '{size.base} * 2' } },
+ *    { path: ['size', 'sm']: original: { $value: 'min({size.1}, 12px)' } }
+ *  ]
+ * ```
+ * would return
+ * ```js
+ *  [
+ *    { path: ['size', 'base'], original: { $value: '8px' } },
+ *    { path: ['size', 'sm']: original: { $value: 'min({size.base} * 2, 12px)' } }
+ *  ]
+ * ```
+ *
+ * @param shouldSquash - predicate to determine if token should be inlined
+ * @param tokens - array of tokens to transform
+ * @returns copy of `tokens` without those that matched the predicate,
+ *          where references to the matching tokens have been inlined
+ */
+export function squashTokens(shouldSquash: (t: TransformedToken) => boolean, tokens: TransformedToken[]) {
+  const [inlineableTokens, otherTokens] = R.partition(shouldSquash, tokens);
+  return otherTokens.map((token: TransformedToken) => {
+    // Inline the tokens that satisfy shouldInline().
+    let transformed = getValue<string>(token.original);
+    for (const ref of inlineableTokens) {
+      const refName = ref.path.join('.');
+
+      if (typeof transformed === 'string') {
+        transformed = transformed.replaceAll(`{${refName}}`, getValue<string>(ref.original));
+      }
+    }
+    const tokenWithInlinedRefs = R.set(R.lensPath(['original', '$value']), transformed, token);
+    return tokenWithInlinedRefs;
+  });
+}
