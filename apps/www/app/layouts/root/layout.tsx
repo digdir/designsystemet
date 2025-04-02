@@ -1,8 +1,7 @@
 import { SkipLink } from '@digdir/designsystemet-react';
-import { Digdir } from '@repo/components/src/logos/Digdir';
-import { Link, Outlet } from 'react-router';
+import { Outlet } from 'react-router';
+import { Header } from '~/_components/header/header';
 import type { Route } from './+types/layout';
-import styles from './layout.module.css';
 
 export const loader = ({ params: { lang } }: Route.LoaderArgs) => {
   return {
@@ -10,21 +9,20 @@ export const loader = ({ params: { lang } }: Route.LoaderArgs) => {
   };
 };
 
-export default function RootLayout({ loaderData }: Route.ComponentProps) {
+export default function RootLayout({
+  loaderData: { lang },
+}: Route.ComponentProps) {
+  const menu = [
+    {
+      name: 'Mønstre',
+      href: `/${lang}/monstre`,
+    },
+  ];
   return (
     <>
       <SkipLink href='#main'>Hopp til hovedinnhold</SkipLink>
-      <header className={styles.header}>
-        <Link to={`/${loaderData.lang}`}>
-          <Digdir />
-        </Link>
-        <ul>
-          <li>
-            <Link to={`/${loaderData.lang}/monstre`}>Mønstre</Link>
-          </li>
-        </ul>
-      </header>
-      <main id='main' className={styles.main}>
+      <Header menu={menu} logoLink={`/${lang}`} />
+      <main id='main'>
         <Outlet />
       </main>
     </>

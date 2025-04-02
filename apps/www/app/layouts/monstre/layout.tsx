@@ -6,6 +6,7 @@ import {
   BannerIcon,
   BannerIngress,
 } from '~/_components/banner/banner';
+import { ContentContainer } from '~/_components/content-container/content-container';
 
 export default function MonstreLayout() {
   return (
@@ -21,8 +22,9 @@ export default function MonstreLayout() {
           på tvers, skaper vi gjenkjennelighet i tjenestene.
         </BannerIngress>
       </Banner>
-
-      <Outlet />
+      <ContentContainer>
+        <Outlet />
+      </ContentContainer>
     </div>
   );
 }

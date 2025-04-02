@@ -1,5 +1,6 @@
 import { Details, Heading, List } from '@digdir/designsystemet-react';
 import { Link } from 'react-router';
+import { ContentContainer } from '~/_components/content-container/content-container';
 import type { Route } from './+types/home';
 
 export function loader({ params }: Route.LoaderArgs) {
@@ -8,7 +9,7 @@ export function loader({ params }: Route.LoaderArgs) {
 
 export default function Home({ loaderData }: Route.ComponentProps) {
   return (
-    <div>
+    <ContentContainer>
       <Heading level={1} data-size='xl'>
         Designsystemet i {loaderData.name} ({loaderData.lang})
       </Heading>
@@ -29,6 +30,6 @@ export default function Home({ loaderData }: Route.ComponentProps) {
           Dette er ein test av React Router med MDX og bundling av innhald.
         </Details.Content>
       </Details>
-    </div>
+    </ContentContainer>
   );
 }

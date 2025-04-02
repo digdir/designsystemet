@@ -1,7 +1,6 @@
 .banner {
   position: relative;
   overflow: hidden;
-  width: 100%;
   display: flex;
   justify-content: center;
   padding: var(--ds-size-14);
