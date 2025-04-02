@@ -8,7 +8,6 @@ import {
   Input,
   Link,
   Paragraph,
-  useDebounceCallback,
 } from '@digdir/designsystemet-react';
 import {
   type CreateTokensOptions,
@@ -28,6 +27,9 @@ const colorCliOptions = cliOptions.theme.colors;
 
 const getBaseDefault = (colorTheme: Color[]) =>
   colorTheme.find((color) => color.name === 'base-default');
+
+const LOADING_CSS_MESSAGE = 'Genererer CSS...';
+const FEAT_THEME_CSS = true;
 
 export const TokenModal = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
@@ -87,14 +89,10 @@ export const TokenModal = () => {
     },
   };
 
-  const onThemeButtonClick = useDebounceCallback(() => {
-    formatThemeCSS(theme).then((result) => {
-      const css = result.map((file) => file.output).join('\n');
-      if (css) {
-        setThemeCSS(css);
-      }
-    });
-  }, 500);
+  const onThemeButtonClick = () => {
+    setThemeCSS(LOADING_CSS_MESSAGE);
+    formatThemeCSS(theme).then(setThemeCSS);
+  };
 
   return (
     <Dialog.TriggerContext>
@@ -149,6 +147,21 @@ export const TokenModal = () => {
         <Dialog.Block>
           <div className={classes.content}>
             <div className={classes.rightSection}>
+              {FEAT_THEME_CSS && (
+                <div className={classes['snippet-themecss']}>
+                  <Button
+                    onClick={onThemeButtonClick}
+                    loading={themeCSS === LOADING_CSS_MESSAGE}
+                  >
+                    {themeCSS === LOADING_CSS_MESSAGE
+                      ? LOADING_CSS_MESSAGE
+                      : 'Generer CSS'}
+                  </Button>
+                  {themeCSS && themeCSS !== LOADING_CSS_MESSAGE && (
+                    <CodeBlock language='css'>{themeCSS}</CodeBlock>
+                  )}
+                </div>
+              )}
               <div className={classes.step}>
                 <span>1</span>
                 <Paragraph>
@@ -179,10 +192,7 @@ export const TokenModal = () => {
                   siden.
                 </Paragraph>
               </div>
-              <div className={classes['snippet-themecss']}>
-                <Button onClick={onThemeButtonClick}>Lag tema CSS</Button>
-                {themeCSS && <CodeBlock language='css'>{themeCSS}</CodeBlock>}
-              </div>
+
               <div className={classes.snippet}>
                 <CodeBlock language='bash'>{cliSnippet}</CodeBlock>
               </div>

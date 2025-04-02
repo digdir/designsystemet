@@ -25,8 +25,8 @@ export const buildTokens = async (options: Omit<BuildOptions, 'process' | '$them
   console.log(`\nWriting build to ${chalk.green(options.outDir)}`);
 
   for (const [_, buildResults] of Object.entries(processedBuilds)) {
-    for (const { formatted: format } of buildResults) {
-      for (const { destination, output } of format) {
+    for (const { formatted } of buildResults) {
+      for (const { destination, output } of formatted) {
         if (destination) {
           const fileDir = path.join(resolvedOutDir, path.dirname(destination));
           await mkdir(fileDir, options.dry);
@@ -46,6 +46,5 @@ export const buildTokens = async (options: Omit<BuildOptions, 'process' | '$them
   }
 
   console.log(`\n✅ Finished building tokens!`);
-
   return processedBuilds;
 };

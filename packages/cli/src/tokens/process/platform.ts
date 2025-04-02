@@ -3,7 +3,7 @@ import chalk from 'chalk';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
 import type { File } from '../format.js';
-import type { TokensSet } from '../types.js';
+import type { TokenSet } from '../types.js';
 import { type BuildConfig, type ThemePermutation, colorCategories } from '../types.js';
 import { configs, getConfigsForThemeDimensions } from './configs.js';
 import { type ProcessedThemeObject, processThemeObject } from './utils/getMultidimensionalThemes.js';
@@ -34,16 +34,31 @@ export type BuildOptions = {
 export type FormatOptions = {
   process: 'format' | 'tokens';
   /** Tokensets */
-  tokenSets: Map<string, TokensSet>;
+  tokenSets: Map<string, TokenSet>;
 } & SharedOptions;
 
 type ProcessOptions = BuildOptions | FormatOptions;
 
 type ProcessedBuildConfigs<T> = Record<keyof typeof buildConfigs | 'types', T>;
+
 export type ProcessReturn = ProcessedBuildConfigs<BuildResult[]>;
+
 type BuildResult = {
   permutation: ThemePermutation;
   formatted: File[];
+};
+
+const initBuilRunResult: BuildResult = {
+  formatted: [],
+  permutation: {
+    'color-scheme': '',
+    'main-color': '',
+    'support-color': '',
+    semantic: '',
+    size: '',
+    theme: '',
+    typography: '',
+  },
 };
 
 export let buildOptions: ProcessOptions | undefined;
@@ -109,10 +124,6 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
   /** For sharing build options in other files */
   buildOptions = options;
 
-  /*
-   * Build the themes
-   */
-
   const processed$themes = $themes
     .map(processThemeObject)
     .filter((theme) => R.not(theme.group === 'size' && theme.name !== 'medium'));
@@ -148,18 +159,6 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
     };
   }, buildConfigs);
 
-  const initBuilRunResult: BuildResult = {
-    formatted: [],
-    permutation: {
-      'color-scheme': '',
-      'main-color': '',
-      'support-color': '',
-      semantic: '',
-      size: '',
-      theme: '',
-      typography: '',
-    },
-  };
   const processedBuilds: ProcessedBuildConfigs<Array<BuildResult>> = {
     'color-scheme': [initBuilRunResult],
     'main-color': [initBuilRunResult],
@@ -187,9 +186,10 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
           await buildConfig.build(sdConfigs, { tokensDir, ...buildConfig.options, dry });
         }
 
-        const result = await Promise.all(
+        const results = await Promise.all(
           sdConfigs.map(async (sdConfig) => {
             const { config, permutation } = sdConfig;
+
             const modes: Array<keyof ThemePermutation> = ['theme', ...buildConfig.dimensions];
             const modeMessage = modes.map((x) => permutation[x]).join(' - ');
             const logMessage = R.isNil(buildConfig.log) ? modeMessage : buildConfig?.log(sdConfig);
@@ -197,18 +197,17 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
 
             const sdOptions = { cache: true };
             const sdExtended = await sd.extend(config);
-            const buildResult: BuildResult = { ...initBuilRunResult, permutation };
 
-            if (process === 'tokens') {
-              const dictionary = await sdExtended.getPlatformTokens(platform, sdOptions);
-            }
-            buildResult.formatted = (await sdExtended.formatPlatform(platform, sdOptions)) as File[];
+            const result: BuildResult = {
+              permutation,
+              formatted: (await sdExtended.formatPlatform(platform, sdOptions)) as File[],
+            };
 
-            return Promise.resolve(buildResult);
+            return Promise.resolve(result);
           }),
         );
 
-        processedBuilds[buildName] = result;
+        processedBuilds[buildName] = results;
       }
     }
   } catch (err) {
@@ -224,11 +223,7 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
 
   const colorsFileName = 'colors.d.ts';
   const reactColorTypes = await createColorTypeDeclaration(customColors);
-
-  if (process === 'build') {
-    // just to output the file name as part of the build
-    console.log(colorsFileName);
-  }
+  console.log(colorsFileName);
 
   processedBuilds.types = [
     {
