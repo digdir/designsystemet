@@ -39,32 +39,32 @@ We don't use changesets prerelease mode yet as we want to avoid additonal steps 
 In rare cases, we may need to backport a fix to an earlier version. While we aim for backward compatibility in newer releases, some users may be unable to upgrade due to breaking changes. In such cases, we can create a patch release for a previous version.
 
 #### Backporting Workflow
-
 Say we have released 1.0.1 and 1.1.0 on main, and we want to backport a patch to the 1.0 version.
 
 1. Checkout the target version
 `git checkout tags/@digdir/designsystemet@1.0.1`
 
 2. Create a branch for the backport
-- For clarity, name the branch after the current tagged version:
-`git checkout -b backport/1.0`
+For clarity, name the branch after the current tagged versions on the form `major.minor.x`.
+`git checkout -b backport/1.0.x`
 
 3. Apply the fix
-Apply your changes e.g by cherry-picking or make new commits. Commits added can only be `fix`, `chore`, or `docs`
-This ensures that the backport triggers a patch release and avoids any unintended version bumps.
+Apply your changes by cherry-picking or make new commits. Commits added can only be `fix`, `chore`, or `docs`.
+This ensures that the backport triggers a patch release and avoids any unintended major or minor version bumps.
 
 4. Generate changeset
 `yarn changeset`
 
-Verify that Changesets has made a patch release.
+Verify that Changesets has made a patch release!
 
 5. Push
-`git push origin backport/1.0`
+`git push origin backport/1.0.x`
 
-6. Trigger the release workflow manually
-Go to Actions > Release > Run workflow and select your branch, (`backport/1.0` in this example) 
+6. Trigger the release workflow
+Go to Actions > Release > Run workflow and select your branch, (`backport/1.0.x` in this example) and trigger the workflow.
 
-7. If needed, you can continue to work on the branch if you need to make new patches to 1.0.x.
+7. Continue making patches, if needed
+If needed, you can continue to work on the branch if you need to make new patches to 1.0.x.
 
 
 #### Should I merge the backport into main?
