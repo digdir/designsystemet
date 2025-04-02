@@ -105,7 +105,6 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
   const platform = 'css';
   const isImperativeProcess = process === 'format' || process === 'tokens';
   const tokensDir = process === 'build' ? options.tokensDir : '';
-  const targetDir = process === 'build' ? options.outDir : '';
 
   /** For sharing build options in other files */
   buildOptions = options;
@@ -128,7 +127,6 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
 
   const buildAndSdConfigs = R.map((buildConfig: BuildConfig) => {
     const sdConfigs = getConfigsForThemeDimensions(buildConfig.getConfig, processed$themes, buildConfig.dimensions, {
-      outPath: targetDir,
       tokensDir,
       tokenSets: isImperativeProcess ? options.tokenSets : undefined,
       ...buildConfig.options,
@@ -186,7 +184,7 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
         console.log(`\n🍱 Building ${chalk.green(buildConfig.name ?? buildName)}`);
 
         if (buildConfig.build) {
-          await buildConfig.build(sdConfigs, { outPath: targetDir, tokensDir, ...buildConfig.options, dry });
+          await buildConfig.build(sdConfigs, { tokensDir, ...buildConfig.options, dry });
         }
 
         const result = await Promise.all(

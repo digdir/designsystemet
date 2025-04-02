@@ -4,9 +4,6 @@ import { resolveMath, sizeRem, typographyName, unitless } from '../transformers.
 
 export type GetStyleDictionaryConfig = (
   permutation: ThemePermutation,
-  options: {
-    outPath?: string;
-  },
 ) => StyleDictionaryConfig | { config: StyleDictionaryConfig; permutationOverrides?: Partial<ThemePermutation> }[];
 
 export const fileHeader = () => [`These files are generated from design tokens defind using Token Studio`];
