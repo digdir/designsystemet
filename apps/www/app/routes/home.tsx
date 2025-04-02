@@ -1,9 +1,8 @@
-import { Heading, List } from '@digdir/designsystemet-react';
+import { Details, Heading, List } from '@digdir/designsystemet-react';
 import { Link } from 'react-router';
 import type { Route } from './+types/home';
 
-export function loader({ params }) {
-  console.log(params);
+export function loader({ params }: Route.LoaderArgs) {
   return { name: 'React Router', lang: params.lang };
 }
 
@@ -24,6 +23,12 @@ export default function Home({ loaderData }: Route.ComponentProps) {
           <Link to='/nb/monstre/tre'>Gå til Monstre 3 (kun norsk)</Link>
         </List.Item>
       </List.Unordered>
+      <Details>
+        <Details.Summary>Om</Details.Summary>
+        <Details.Content>
+          Dette er ein test av React Router med MDX og bundling av innhald.
+        </Details.Content>
+      </Details>
     </div>
   );
 }

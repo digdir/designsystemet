@@ -8,8 +8,8 @@ import {
 
 export default [
   layout('./layouts/root-layout/root-layout.tsx', [
-    index('routes/home.tsx'),
     ...prefix('/:lang', [
+      index('routes/home.tsx'),
       layout('./layouts/monstre-layouts.tsx', [
         route('/monstre/:file', 'routes/monstre.tsx'),
       ]),

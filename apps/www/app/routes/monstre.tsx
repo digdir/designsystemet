@@ -1,6 +1,11 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { Alert, Link, Paragraph } from '@digdir/designsystemet-react';
+import {
+  Alert,
+  Link,
+  Paragraph,
+  type ParagraphProps,
+} from '@digdir/designsystemet-react';
 import { bundleMDX } from 'mdx-bundler';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { useMemo } from 'react';
@@ -52,7 +57,7 @@ export async function loader({ params }: Route.LoaderArgs) {
   };
 }
 
-export const meta = ({ params, loaderData }: Route.MetaArgs) => {
+export const meta = ({ params }: Route.MetaArgs) => {
   return [{ title: `Monstre ${params.file} - ${params.lang}` }];
 };
 
@@ -65,7 +70,7 @@ export default function Monstre({ loaderData }: Route.ComponentProps) {
 
   const components = {
     Alert,
-    p: (props) => <Paragraph {...props} />,
+    p: (props: ParagraphProps) => <Paragraph {...props} />,
   };
 
   return (

@@ -5,6 +5,7 @@ import {
   Scripts,
   ScrollRestoration,
   isRouteErrorResponse,
+  redirect,
 } from 'react-router';
 
 import type { Route } from './+types/root';
@@ -22,6 +23,22 @@ export const links = () => {
       crossOrigin: 'anonymous',
     },
   ];
+};
+
+export const meta = () => {
+  return [
+    {
+      title: 'Designsystemet',
+    },
+    { description: 'En digital verktøykasse' },
+  ];
+};
+
+export const loader = ({ params }: Route.LoaderArgs) => {
+  console.log(params);
+  if (params.lang === undefined) {
+    return redirect('/nb');
+  }
 };
 
 export function Layout({ children }: { children: React.ReactNode }) {
