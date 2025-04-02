@@ -7,17 +7,12 @@ import { fromError } from 'zod-validation-error';
 
 import { convertToHex } from '../src/colors/index.js';
 import type { CssColor } from '../src/colors/types.js';
-import {
-  type DesignsystemetConfig,
-  combinedConfigSchema,
-  configFileSchema,
-  mapPathToOptionName,
-} from '../src/config.js';
+import { type Config, combinedConfigSchema, configFileSchema, mapPathToOptionName } from '../src/config.js';
 import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
 import { cliOptions, createTokens } from '../src/tokens/create.js';
+import { writeTokens } from '../src/tokens/create/write.js';
 import type { Theme } from '../src/tokens/types.js';
-import { writeTokens } from '../src/tokens/write.js';
 import { cleanDir, readFile } from '../src/utils.js';
 import { type OptionGetter, getCliOption, getDefaultCliOption, getSuppliedCliOption } from './options.js';
 
@@ -163,7 +158,7 @@ function makeTokenCommands() {
       /*
        * Check that the config is valid
        */
-      let config: DesignsystemetConfig;
+      let config: Config;
       try {
         config = combinedConfigSchema.parse(unvalidatedConfig);
       } catch (err) {
