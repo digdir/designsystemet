@@ -14,9 +14,9 @@ import typgraphySmall from '../template/design-tokens/primitives/modes/typograph
   type: 'json',
 };
 import semanticStyle from '../template/design-tokens/semantic/style.json' with { type: 'json' };
-import type { TokensSet } from '../types.js';
+import type { TokenSet } from '../types.js';
 
-const defaultTokens: Record<string, TokensSet> = {
+const defaultTokens: Record<string, TokenSet> = {
   'primitives/globals': globals,
   'primitives/modes/size/small': sizeSmall,
   'primitives/modes/size/medium': sizeMedium,
@@ -25,14 +25,14 @@ const defaultTokens: Record<string, TokensSet> = {
   'primitives/modes/typography/size/small': typgraphySmall,
   'primitives/modes/typography/size/medium': typgraphyMedium,
   'primitives/modes/typography/size/large': typgraphyLarge,
-  'semantic/style': semanticStyle as unknown as TokensSet,
+  'semantic/style': semanticStyle as unknown as TokenSet,
 };
 
 type DefaultToken = keyof typeof defaultTokens;
 
-export const getTokens = (tokenSets: readonly DefaultToken[]): [string, TokensSet][] =>
+export const getDefaultTokens = (tokenSets: readonly DefaultToken[]): [string, TokenSet][] =>
   Object.entries(R.pick(tokenSets, defaultTokens));
 
-export const getToken = (tokenPath: DefaultToken): [string, TokensSet] => {
+export const getDefaultToken = (tokenPath: DefaultToken): [string, TokenSet] => {
   return [tokenPath, defaultTokens[tokenPath]];
 };

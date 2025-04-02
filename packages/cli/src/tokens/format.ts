@@ -45,16 +45,17 @@ export const formatTheme = async (themeConfig: Theme) => {
  */
 export const formatThemeCSS = async (themeConfig: Theme) => {
   const processedBuilds = await formatTheme(themeConfig);
-
-  return createThemeCSSFiles(processedBuilds);
+  const themeCSSFiles = createThemeCSSFiles(processedBuilds);
+  return R.head(themeCSSFiles)?.output ?? '';
 };
 
 export const createThemeCSSFiles = (processedBuilds: ProcessReturn) => {
-  const formattedByTheme: Record<string, File[]> = {};
+  const groupedByTheme: Record<string, File[]> = {};
+
   for (const [_, buildResults] of Object.entries(R.dissoc('types', processedBuilds))) {
     for (const buildResult of buildResults) {
-      const previous = formattedByTheme[buildResult.permutation.theme] ?? [];
-      formattedByTheme[buildResult.permutation.theme] = R.concat(previous, buildResult.formatted);
+      const previous = groupedByTheme[buildResult.permutation.theme] ?? [];
+      groupedByTheme[buildResult.permutation.theme] = R.concat(previous, buildResult.formatted);
     }
   }
 
@@ -116,7 +117,7 @@ order may change due to nondeterminism.`.trim(),
     (content) => header + content,
   );
 
-  const themeCSSFiles: File[] = Object.entries(formattedByTheme).map(([theme, files]) => ({
+  const themeCSSFiles: File[] = Object.entries(groupedByTheme).map(([theme, files]) => ({
     destination: `${theme}.css`,
     output: themeCSSFile(files),
   }));
