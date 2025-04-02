@@ -2,6 +2,11 @@ name: Release
 
 on:
   workflow_dispatch:
+    inputs:
+      target_branch:
+        description: "Branch to release from. This is usually for backporting fixes to earlier versions."
+        required: true
+        default: "main"
   push:
     branches:
       - main
@@ -15,6 +20,8 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.target_branch || 'main' }}
       - uses: ./.github/actions/gh-setup
       - name: Create Release Pull Request or Publish to npm
         id: changesets
@@ -29,4 +36,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
+          
