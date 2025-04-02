@@ -17,7 +17,11 @@ export const writeFile = async (path: string, data: string, dry?: boolean) => {
     return Promise.resolve();
   }
 
-  return fs.writeFile(path, data, { encoding: 'utf-8' });
+  return fs.writeFile(path, data, { encoding: 'utf-8' }).catch((error) => {
+    console.error(chalk.red(`Error writing file: ${path}`));
+    console.error(chalk.red(error));
+    throw error;
+  });
 };
 
 export const cp = async (src: string, dest: string, dry?: boolean, filter?: CopyOptions['filter']) => {

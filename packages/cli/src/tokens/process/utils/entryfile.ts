@@ -1,6 +1,5 @@
 import chalk from 'chalk';
 import glob from 'fast-glob';
-import fs from 'fs-extra';
 import * as R from 'ramda';
 import { writeFile } from '../../../utils.js';
 
@@ -56,8 +55,8 @@ const sortAlphabetically = R.sort<string>(R.ascend((x) => x));
 const concat = R.pipe(
   R.map((file: string): string => {
     try {
-      const content = fs.readFileSync(file, 'utf-8').toString();
-      return content;
+      // const content = fs.readFileSync(file, 'utf-8').toString();
+      return '';
     } catch (e) {
       console.error(`Error reading file: ${file}`);
       return '';

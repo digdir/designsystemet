@@ -6,19 +6,8 @@ import {
   generateTheme,
   generateTypography,
 } from './create/generators.js';
+import { getToken, getTokens } from './create/tokens.js';
 import type { Theme, TokensSet } from './types.js';
-
-const getToken = async (tokenSet: string): Promise<TokensSet> => {
-  const joinedPath = `./template/design-tokens/${tokenSet}.json`;
-  return (await import(joinedPath)).default;
-};
-
-const getTokens = async (tokenSets: string[]): Promise<[string, TokensSet][]> =>
-  Promise.all(
-    tokenSets.map(async (tokenSet) => {
-      return [tokenSet, await getToken(tokenSet)];
-    }),
-  );
 
 export const cliOptions = {
   outDir: 'out-dir',
@@ -43,7 +32,7 @@ export const createTokens = async (opts: Theme) => {
   const semantic = generateSemantic(colors);
 
   const tokenSets = new Map<string, TokensSet>([
-    ...(await getTokens([
+    ...getTokens([
       'primitives/globals',
       'primitives/modes/size/small',
       'primitives/modes/size/medium',
@@ -52,7 +41,7 @@ export const createTokens = async (opts: Theme) => {
       'primitives/modes/typography/size/small',
       'primitives/modes/typography/size/medium',
       'primitives/modes/typography/size/large',
-    ])),
+    ]),
     [`primitives/modes/typography/primary/${name}`, generateTypography(name, typography)],
     [`primitives/modes/typography/secondary/${name}`, generateTypography(name, typography)],
     ...colorSchemes.flatMap((scheme): [string, TokensSet][] => [
@@ -61,7 +50,7 @@ export const createTokens = async (opts: Theme) => {
     ]),
     [`themes/${name}`, generateTheme(colors, name, borderRadius)],
     ['semantic/color', semantic.color],
-    ['semantic/style', await getToken('semantic/style')],
+    getToken('semantic/style'),
     // maps out semantic modes, ieg 'semantic/modes/main-color/accent', and 'semantic/modes/support-color/brand1'
     ...Object.entries(semantic.modes).flatMap(([mode, colors]): [string, TokensSet][] =>
       Object.entries(colors).map(([key, colorSet]): [string, TokensSet] => [`semantic/modes/${mode}/${key}`, colorSet]),

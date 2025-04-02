@@ -74,6 +74,10 @@
   display: block;
 }
 
+.snippet-themecss pre {
+  height: 500px;
+}
+
 .modalHeader {
   display: flex;
   align-items: center;
