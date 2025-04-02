@@ -58,7 +58,7 @@ export const writeTokens = async (options: WriteTokensOptions) => {
 
   for (const [set, tokens] of tokenSets) {
     // Remove last part of the path to get the directory
-    const fileDir = path.join(targetDir, R.init(R.split('/', set)).join('/'));
+    const fileDir = path.join(targetDir, path.dirname(set));
     await mkdir(fileDir, dry);
 
     const filePath = path.join(targetDir, `${set}.json`);
