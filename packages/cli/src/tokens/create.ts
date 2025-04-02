@@ -1,4 +1,5 @@
 import type { ColorScheme } from '../colors/types.js';
+import { getToken, getTokens } from './create/defaults.js';
 import {
   generateColorScheme,
   generateGlobal,
@@ -6,7 +7,6 @@ import {
   generateTheme,
   generateTypography,
 } from './create/generators.js';
-import { getToken, getTokens } from './create/tokens.js';
 import type { Theme, TokensSet } from './types.js';
 
 export const cliOptions = {
