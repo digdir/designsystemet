@@ -15,7 +15,12 @@ export type ColorTheme = {
 
 export type BaseBorderRadius = number;
 export type ColorMetadataType = typeof colorMetadata;
-type PageType = 'colors' | 'dimensions';
+type PageType =
+  | 'colors'
+  | 'color'
+  | 'dimensions'
+  | 'advancedColors'
+  | 'lightness';
 
 type ColorStore = {
   colorMetadata: ColorMetadataType;
@@ -47,9 +52,15 @@ type ColorStore = {
   setBaseBorderRadius: (radius: BaseBorderRadius) => void;
   colorScheme: ColorScheme;
   setColorScheme: (colorScheme: ColorScheme) => void;
-  themeTab: 'overview' | 'colorsystem';
+  themeTab: 'overview' | 'colorsystem' | 'contrast' | 'typography' | 'radius';
   setThemeTab: (
-    tab: 'overview' | 'colorsystem' | 'contrast' | 'typography' | 'radius',
+    tab:
+      | 'overview'
+      | 'colorsystem'
+      | 'contrast'
+      | 'typography'
+      | 'radius'
+      | 'contrast',
   ) => void;
   updateStaticSaturation: (
     saturation: string,

@@ -1,0 +1,18 @@
+.back {
+  margin-left: -16px;
+  align-self: flex-start;
+  margin-top: -8px;
+  margin-bottom: 16px;
+}
+
+.heading {
+  margin-top: -8px;
+  margin-bottom: 16px;
+}
+
+.group {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  margin-top: 24px;
+}

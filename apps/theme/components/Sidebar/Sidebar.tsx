@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { useThemeStore } from '../../store';
 
 import {
-  Button,
   Dialog,
   Heading,
   Tabs,
@@ -14,7 +13,6 @@ import { CogIcon } from '@navikt/aksel-icons';
 import { BorderRadiusInput } from '../BorderRadiusInput/BorderRadiusInput';
 import { TokenModal } from '../TokenModal/TokenModal';
 import { ColorPage } from './ColorPage/ColorPage';
-import { LightnessPage } from './LightnessPage/LightnessPage';
 import classes from './Sidebar.module.css';
 
 export const Sidebar = () => {
@@ -63,50 +61,7 @@ export const Sidebar = () => {
             showSidebar && classes.showSidebar,
           )}
         >
-          {/* <Tabs
-            value={activePage}
-            onChange={(value) =>
-              setActivePage(value as 'colors' | 'dimensions')
-            }
-          >
-            <Tabs.List>
-              <Tabs.Tab value='colors'>Farger</Tabs.Tab>
-              <Tabs.Tab value='dimensions'>Dimensjoner</Tabs.Tab>
-            </Tabs.List>
-            <div className={classes.tabContent}>
-              <Tabs.Panel className={classes.tabPanel} value='colors'>
-                <ColorPage />
-              </Tabs.Panel>
-              <Tabs.Panel className={classes.tabPanel} value='dimensions'>
-                <BorderRadiusInput />
-              </Tabs.Panel>
-            </div>
-          </Tabs> */}
-
-          {showLightnessPage && (
-            <LightnessPage onBackClicked={() => setShowLightnessPage(false)} />
-          )}
-          {!showLightnessPage && (
-            <>
-              <ColorPage />
-              <Button
-                className={classes.lightBtn}
-                variant='tertiary'
-                data-size='sm'
-                onClick={() => setShowLightnessPage(true)}
-                data-color='neutral'
-              >
-                <CogIcon title='tannhjul' fontSize='1.5rem' />
-                Overstyr lightness verdier
-              </Button>
-            </>
-          )}
-
-          <div className={classes.bottom} data-size='sm'>
-            <div>
-              <TokenModal />
-            </div>
-          </div>
+          {activePage === 'colors' && <ColorPage />}
         </div>
       </div>
       {isMobile && (

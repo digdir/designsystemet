@@ -41,16 +41,11 @@
 }
 
 .bottom {
-  bottom: 0;
-  right: 0;
-  left: 0;
-  padding: 24px;
   border-top: 1px solid var(--ds-color-neutral-border-subtle);
   display: flex;
   align-items: center;
-  gap: 16px;
-  background-color: var(--ds-color-info-background-default);
-  border-radius: 0 0 8px 8px;
+  padding-top: 24px;
+  margin-top: 16px;
 }
 
 .separator {
@@ -62,4 +57,10 @@
 
 .title {
   margin-bottom: 20px;
+}
+
+.lightBtn {
+  align-self: flex-start;
+  margin-left: -12px;
+  margin-top: 16px;
 }

@@ -43,7 +43,7 @@
   flex-shrink: 0;
   bottom: 16px;
   right: 28px;
-  margin-top: 32px;
+  margin-top: 24px;
   padding-top: 32px;
 }
 
@@ -108,10 +108,4 @@
   /* & .tabPanel {
     padding: var(--ds-size-4) 0;
   } */
-}
-
-.lightBtn {
-  align-self: flex-start;
-  margin-left: -12px;
-  margin-top: 24px;
 }
