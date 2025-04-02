@@ -6,7 +6,7 @@ import { jsTokens } from '../formats/js-tokens.js';
 
 import { type GetStyleDictionaryConfig, basePxFontSize, dsTransformers, fileHeader, prefix } from './shared.js';
 
-export const typescriptTokens: GetStyleDictionaryConfig = ({ 'color-scheme': colorScheme, theme }, { outPath }) => {
+export const typescriptTokens: GetStyleDictionaryConfig = ({ 'color-scheme': colorScheme, theme }) => {
   return {
     preprocessors: ['tokens-studio'],
     platforms: {
@@ -14,7 +14,7 @@ export const typescriptTokens: GetStyleDictionaryConfig = ({ 'color-scheme': col
         prefix,
         basePxFontSize,
         transforms: dsTransformers,
-        buildPath: `${outPath}/${theme}/`,
+        buildPath: `${theme}/`,
         files: [
           {
             destination: `${colorScheme}.ts`,

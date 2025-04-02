@@ -5,7 +5,7 @@ import { sizeRem, typographyName } from '../transformers.js';
 
 import { type GetStyleDictionaryConfig, basePxFontSize, fileHeader, prefix } from './shared.js';
 
-export const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }, { outPath }) => {
+export const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }) => {
   const selector = `${typography === 'primary' ? ':root, ' : ''}[data-typography="${typography}"]`;
   const layer = `ds.theme.typography.${typography}`;
 
@@ -22,7 +22,7 @@ export const typographyVariables: GetStyleDictionaryConfig = ({ theme, typograph
         typography,
         selector,
         layer,
-        buildPath: `${outPath}/${theme}/`,
+        buildPath: `${theme}/`,
         basePxFontSize,
         transforms: [
           'name/kebab',
