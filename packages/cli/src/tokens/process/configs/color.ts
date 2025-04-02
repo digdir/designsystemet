@@ -7,10 +7,7 @@ import { buildOptions } from '../platform.js';
 
 import { type GetStyleDictionaryConfig, dsTransformers, fileHeader, prefix } from './shared.js';
 
-export const colorSchemeVariables: GetStyleDictionaryConfig = (
-  { 'color-scheme': colorScheme = 'light', theme },
-  { outPath },
-) => {
+export const colorSchemeVariables: GetStyleDictionaryConfig = ({ 'color-scheme': colorScheme = 'light', theme }) => {
   const selector = `${colorScheme === 'light' ? ':root, ' : ''}[data-color-scheme="${colorScheme}"]`;
   const layer = `ds.theme.color-scheme.${colorScheme}`;
 
@@ -19,14 +16,13 @@ export const colorSchemeVariables: GetStyleDictionaryConfig = (
     platforms: {
       css: {
         // custom
-        outPath,
         colorScheme,
         theme,
         selector,
         layer,
         //
         prefix,
-        buildPath: `${outPath}/${theme}/`,
+        buildPath: `${theme}/`,
         transforms: dsTransformers,
         files: [
           {
@@ -48,7 +44,7 @@ type ColorCategoryOpts = { category: ColorCategories } | { category: 'builtin'; 
 
 export const colorCategoryVariables =
   (opts: ColorCategoryOpts): GetStyleDictionaryConfig =>
-  ({ 'color-scheme': colorScheme, theme, ...permutation }, { outPath }) => {
+  ({ 'color-scheme': colorScheme, theme, ...permutation }) => {
     const category = opts.category;
     const color = category === 'builtin' ? opts.color : permutation[`${category}-color`];
 
@@ -71,14 +67,13 @@ export const colorCategoryVariables =
       platforms: {
         css: {
           // custom
-          outPath,
           colorScheme,
           theme,
           selector,
           layer,
           //
           prefix,
-          buildPath: `${outPath}/${theme}/`,
+          buildPath: `${theme}/`,
           transforms: dsTransformers,
           files: [
             {

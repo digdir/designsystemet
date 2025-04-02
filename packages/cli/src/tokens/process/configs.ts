@@ -51,7 +51,7 @@ export const getConfigsForThemeDimensions = (
   dimensions: ThemeDimension[],
   options: GetSdConfigOptions,
 ): SDConfigForThemePermutation[] => {
-  const { outPath, tokensDir, tokenSets } = options;
+  const { tokensDir, tokenSets } = options;
 
   const permutations = getMultidimensionalThemes(themes, dimensions);
   return permutations
@@ -77,7 +77,7 @@ export const getConfigsForThemeDimensions = (
         }
       }
 
-      const configOrConfigs = getConfig(permutation, { outPath });
+      const configOrConfigs = getConfig(permutation);
       const configs_ = Array.isArray(configOrConfigs) ? configOrConfigs : [{ config: configOrConfigs }];
 
       const configs: SDConfigForThemePermutation[] = configs_.map(({ config, permutationOverrides }) => {

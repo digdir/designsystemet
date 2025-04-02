@@ -7,7 +7,7 @@ import { formats } from '../formats/css.js';
 
 import { type GetStyleDictionaryConfig, basePxFontSize, dsTransformers, fileHeader, prefix } from './shared.js';
 
-export const semanticVariables: GetStyleDictionaryConfig = ({ theme }, { outPath }) => {
+export const semanticVariables: GetStyleDictionaryConfig = ({ theme }) => {
   const selector = `:root`;
   const layer = `ds.theme.semantic`;
 
@@ -16,14 +16,13 @@ export const semanticVariables: GetStyleDictionaryConfig = ({ theme }, { outPath
     platforms: {
       css: {
         // custom
-        outPath,
         theme,
         basePxFontSize,
         selector,
         layer,
         //
         prefix,
-        buildPath: `${outPath}/${theme}/`,
+        buildPath: `${theme}/`,
         transforms: dsTransformers,
         files: [
           {

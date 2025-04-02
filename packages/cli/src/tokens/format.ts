@@ -34,13 +34,22 @@ export const formatTheme = async (themeConfig: Theme) => {
   return processedBuilds;
 };
 
+/**
+ * Formats a theme configuration into CSS.
+ *
+ * This function takes a `Theme` configuration object, processes it using the
+ * `formatTheme` function, and then generates CSS using the `createThemeCSS` function.
+ *
+ * @param themeConfig - The theme configuration object to be formatted.
+ * @returns A promise that resolves to the generated CSS string.
+ */
 export const formatThemeCSS = async (themeConfig: Theme) => {
   const processedBuilds = await formatTheme(themeConfig);
 
-  return createThemeCSS(processedBuilds);
+  return createThemeCSSFiles(processedBuilds);
 };
 
-export const createThemeCSS = (processedBuilds: ProcessReturn) => {
+export const createThemeCSSFiles = (processedBuilds: ProcessReturn) => {
   const formattedByTheme: Record<string, File[]> = {};
   for (const [_, buildResults] of Object.entries(R.dissoc('types', processedBuilds))) {
     for (const buildResult of buildResults) {

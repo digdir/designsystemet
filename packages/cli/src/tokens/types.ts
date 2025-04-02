@@ -39,7 +39,6 @@ export type ThemePermutation = {
 export type ThemeDimension = keyof ThemePermutation;
 
 export type GetSdConfigOptions = {
-  outPath: string;
   tokensDir: string;
   dry?: boolean;
   tokenSets?: Map<string, TokensSet>;
