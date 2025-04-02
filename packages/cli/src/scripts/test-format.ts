@@ -1,11 +1,9 @@
 import path from 'node:path';
 import * as R from 'ramda';
 import type { TransformedToken } from 'style-dictionary/types';
-import { createTokens } from '../tokens/create.js';
-import { type FormattedToken, formatTokens } from '../tokens/format.js';
+import { type File, formatTheme } from '../tokens/format.js';
 import type { Theme } from '../tokens/types.js';
 import { pathStartsWithOneOf, typeEquals } from '../tokens/utils.js';
-import { generateThemesJson } from '../tokens/write/generate$themes.js';
 import { mkdir, writeFile } from '../utils.js';
 
 const filterStorefront = (token: TransformedToken) => {
@@ -40,25 +38,19 @@ async function format() {
     },
     borderRadius: 99,
   };
-  const { tokenSets } = await createTokens(theme);
 
-  const $themes = generateThemesJson(['dark', 'light'], [theme.name], theme.colors);
-  const tokens = await formatTokens({
-    tokenSets,
-    $themes,
-    verbose: false,
-    preview: false,
-  });
+  const processedBuilds = await formatTheme(theme);
 
-  console.log('Formatted tokens:', tokens);
-  let files: FormattedToken[] = [];
-  for (const [_, formattedTokens] of Object.entries(tokens)) {
-    for (const formattedTokenFile of formattedTokens) {
-      files = R.concat(files, formattedTokenFile);
+  let files: File[] = [];
+  for (const [_, buildResults] of Object.entries(R.dissoc('types', processedBuilds))) {
+    for (const buildResult of buildResults) {
+      files = R.concat(files, buildResult.format);
     }
   }
 
-  await writeFile(`internal/design-tokens-build/files.json`, JSON.stringify(files, null, 2));
+  const concatenated = files.map(R.view(R.lensProp('output'))).join('\n');
+
+  await writeFile(`internal/design-tokens-build/files.css`, concatenated);
 
   for (const file of files) {
     if (file.destination) {

@@ -1,19 +1,11 @@
-import path from 'node:path';
-
 import type { ThemeObject } from '@tokens-studio/types';
 import chalk from 'chalk';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
-import { cleanDir, writeFile } from '../../utils.js';
+import type { File } from '../format.js';
 import type { TokensSet } from '../types.js';
-import {
-  type BuildConfig,
-  type SDConfigForThemePermutation,
-  type ThemePermutation,
-  colorCategories,
-} from '../types.js';
+import { type BuildConfig, type ThemePermutation, colorCategories } from '../types.js';
 import { configs, getConfigsForThemeDimensions } from './configs.js';
-import { concatFiles } from './utils/entryfile.js';
 import { type ProcessedThemeObject, processThemeObject } from './utils/getMultidimensionalThemes.js';
 
 type SharedOptions = {
@@ -40,14 +32,19 @@ export type BuildOptions = {
 } & SharedOptions;
 
 export type FormatOptions = {
-  process: 'format' | 'get';
+  process: 'format' | 'tokens';
   /** Tokensets */
   tokenSets: Map<string, TokensSet>;
 } & SharedOptions;
 
 type ProcessOptions = BuildOptions | FormatOptions;
 
-type ProcessedBuildConfigs<T> = Record<keyof typeof buildConfigs | 'types', T[][]>;
+type ProcessedBuildConfigs<T> = Record<keyof typeof buildConfigs | 'types', T>;
+export type ProcessReturn = ProcessedBuildConfigs<BuildResult[]>;
+type BuildResult = {
+  permutation: ThemePermutation;
+  format: File[];
+};
 
 export let buildOptions: ProcessOptions | undefined;
 
@@ -94,34 +91,21 @@ const buildConfigs = {
     log: ({ permutation: { theme } }) => `${theme} - info`,
   },
   semantic: { getConfig: configs.semanticVariables, dimensions: ['semantic'] },
-  storefront: {
-    name: 'Storefront preview tokens',
-    getConfig: configs.typescriptTokens,
-    dimensions: ['color-scheme'],
-    options: { outPath: path.resolve('../../apps/storefront/tokens') },
-    enabled: () => buildOptions?.preview ?? false,
-  },
-  entryFiles: {
-    name: 'Concatenated CSS file',
-    getConfig: configs.semanticVariables,
-    dimensions: ['semantic'],
-    log: ({ permutation: { theme } }: SDConfigForThemePermutation) => `${theme}.css`,
-    build: async (sdConfigs, { outPath, dry }) => {
-      await Promise.all(
-        sdConfigs.map(async ({ permutation: { theme } }) => {
-          return concatFiles({ theme, outPath, buildPath: path.resolve(outPath, theme), dry });
-        }),
-      );
-    },
-  },
+  // storefront: {
+  //   name: 'Storefront preview tokens',
+  //   getConfig: configs.typescriptTokens,
+  //   dimensions: ['color-scheme'],
+  //   options: { outPath: path.resolve('../../apps/storefront/tokens') },
+  //   enabled: () => buildOptions?.preview ?? false,
+  // },
 } satisfies Record<string, BuildConfig>;
 
-export async function processPlatform<T>(options: ProcessOptions) {
-  const { dry, clean, process, $themes } = options;
+export async function processPlatform<T>(options: ProcessOptions): Promise<ProcessReturn> {
+  const { dry, process, $themes } = options;
   const platform = 'css';
-  const isImperativeProcess = process === 'format' || process === 'get';
+  const isImperativeProcess = process === 'format' || process === 'tokens';
   const tokensDir = process === 'build' ? options.tokensDir : '';
-  const targetDir = process === 'build' ? path.resolve(options.outDir) : '';
+  const targetDir = process === 'build' ? options.outDir : '';
 
   /** For sharing build options in other files */
   buildOptions = options;
@@ -166,33 +150,35 @@ export async function processPlatform<T>(options: ProcessOptions) {
     };
   }, buildConfigs);
 
-  if (clean) {
-    await cleanDir(targetDir, dry);
-  }
-
-  const processedBuilds: ProcessedBuildConfigs<T> = {
-    typography: [],
-    'color-scheme': [],
-    'main-color': [],
-    'support-color': [],
-    semantic: [],
-    'neutral-color': [],
-    'success-color': [],
-    'danger-color': [],
-    'warning-color': [],
-    'info-color': [],
-    storefront: [],
-    entryFiles: [],
-    types: [],
+  const initBuilRunResult: BuildResult = {
+    format: [],
+    permutation: {
+      'color-scheme': '',
+      'main-color': '',
+      'support-color': '',
+      semantic: '',
+      size: '',
+      theme: '',
+      typography: '',
+    },
+  };
+  const processedBuilds: ProcessedBuildConfigs<Array<BuildResult>> = {
+    'color-scheme': [initBuilRunResult],
+    'main-color': [initBuilRunResult],
+    'support-color': [initBuilRunResult],
+    'neutral-color': [initBuilRunResult],
+    'success-color': [initBuilRunResult],
+    'danger-color': [initBuilRunResult],
+    'warning-color': [initBuilRunResult],
+    'info-color': [initBuilRunResult],
+    semantic: [initBuilRunResult],
+    typography: [initBuilRunResult],
+    types: [initBuilRunResult],
   };
 
   try {
     for (const [buildName, { buildConfig, sdConfigs }] of R.toPairs(buildAndSdConfigs)) {
       if (!(buildConfig.enabled?.() ?? true)) {
-        continue;
-      }
-
-      if (buildName === 'entryFiles' && isImperativeProcess) {
         continue;
       }
 
@@ -211,27 +197,20 @@ export async function processPlatform<T>(options: ProcessOptions) {
             const logMessage = R.isNil(buildConfig.log) ? modeMessage : buildConfig?.log(sdConfig);
             console.log(logMessage);
 
-            if (!dry) {
-              const sdOptions = { cache: true };
-              const sdExtended = await sd.extend(config);
+            const sdOptions = { cache: true };
+            const sdExtended = await sd.extend(config);
+            const buildResult: BuildResult = { ...initBuilRunResult, permutation };
 
-              if (process === 'get') {
-                const dictionary = await sdExtended.getPlatformTokens(platform, sdOptions);
-                return dictionary.allTokens;
-              }
-              if (process === 'format') {
-                return await sdExtended.formatPlatform(platform, sdOptions);
-              }
-              if (process === 'build') {
-                return (await sdExtended.buildAllPlatforms(sdOptions)).tokens;
-              }
+            if (process === 'tokens') {
+              const dictionary = await sdExtended.getPlatformTokens(platform, sdOptions);
             }
+            buildResult.format = (await sdExtended.formatPlatform(platform, sdOptions)) as File[];
 
-            return Promise.resolve([]);
+            return Promise.resolve(buildResult);
           }),
         );
 
-        processedBuilds[buildName] = result as T[][];
+        processedBuilds[buildName] = result;
       }
     }
   } catch (err) {
@@ -249,13 +228,16 @@ export async function processPlatform<T>(options: ProcessOptions) {
   const reactColorTypes = await writeColorTypeDeclaration(customColors);
 
   if (process === 'build') {
+    // just to output the file name as part of the build
     console.log(colorsFileName);
-    await writeFile(path.resolve(targetDir, colorsFileName), reactColorTypes, dry);
   }
 
-  if (process === 'format') {
-    processedBuilds.types = [[{ output: reactColorTypes, destionation: colorsFileName }]] as T[][];
-  }
+  processedBuilds.types = [
+    {
+      ...initBuilRunResult,
+      format: [{ output: reactColorTypes, destination: colorsFileName }] as unknown as File[],
+    },
+  ];
 
   return processedBuilds;
 }
