@@ -2367,6 +2367,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@navikt/aksel-icons@npm:^7.18.0":
+  version: 7.18.0
+  resolution: "@navikt/aksel-icons@npm:7.18.0"
+  checksum: 10/39f5db8dfb017b71eebb589cf171a2ae714ab20c3cee022357e34e58106b5d7c5491c873c975d4bd32b39a5e0b203bc588abf268b3ba24c6a4e9b244fcfd34da
+  languageName: node
+  linkType: hard
+
 "@next/env@npm:15.2.3":
   version: 15.2.3
   resolution: "@next/env@npm:15.2.3"
@@ -2592,7 +2599,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@radix-ui/react-slot@npm:^1.1.1":
+"@radix-ui/react-slot@npm:^1.1.1, @radix-ui/react-slot@npm:^1.1.2":
   version: 1.1.2
   resolution: "@radix-ui/react-slot@npm:1.1.2"
   dependencies:
@@ -14922,6 +14929,8 @@ __metadata:
     "@digdir/designsystemet-css": "workspace:^"
     "@digdir/designsystemet-react": "workspace:^"
     "@digdir/designsystemet-theme": "workspace:^"
+    "@navikt/aksel-icons": "npm:^7.18.0"
+    "@radix-ui/react-slot": "npm:^1.1.2"
     "@react-router/dev": "npm:^7.4.1"
     "@react-router/node": "npm:^7.4.1"
     "@react-router/serve": "npm:^7.4.1"
@@ -14929,6 +14938,7 @@ __metadata:
     "@types/node": "npm:^20"
     "@types/react": "npm:^19.0.1"
     "@types/react-dom": "npm:^19.0.1"
+    clsx: "npm:^2.1.1"
     isbot: "npm:^5.1.17"
     mdx-bundler: "npm:^10.1.1"
     react: "npm:^19.0.0"

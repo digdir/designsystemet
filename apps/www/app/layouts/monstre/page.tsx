@@ -1,6 +1,6 @@
 import { Breadcrumbs } from '@digdir/designsystemet-react';
 import { Link, Outlet } from 'react-router';
-import type { Route } from './+types/monstre-layouts';
+import type { Route } from './+types/page';
 
 export const loader = ({ params: { lang } }: Route.LoaderArgs) => {
   return {

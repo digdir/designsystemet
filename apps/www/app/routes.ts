@@ -7,11 +7,14 @@ import {
 } from '@react-router/dev/routes';
 
 export default [
-  layout('./layouts/root-layout/root-layout.tsx', [
+  layout('./layouts/root/layout.tsx', [
     ...prefix('/:lang', [
       index('routes/home.tsx'),
-      layout('./layouts/monstre-layouts.tsx', [
-        route('/monstre/:file', 'routes/monstre.tsx'),
+      layout('./layouts/monstre/layout.tsx', [
+        route('/monstre', 'routes/monstre.tsx'),
+      ]),
+      layout('./layouts/monstre/page.tsx', [
+        route('/monstre/:file', 'routes/monstre-page.tsx'),
       ]),
     ]),
   ]),

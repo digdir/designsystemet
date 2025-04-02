@@ -1,105 +1,69 @@
-import { existsSync, readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import {
-  Alert,
-  Link,
-  Paragraph,
-  type ParagraphProps,
-} from '@digdir/designsystemet-react';
+import { Card, Heading } from '@digdir/designsystemet-react';
 import { bundleMDX } from 'mdx-bundler';
-import { getMDXComponent } from 'mdx-bundler/client';
-import { useMemo } from 'react';
+import { Link } from 'react-router';
 import type { Route } from './+types/monstre';
 
-export async function loader({ params }: Route.LoaderArgs) {
-  const file = params.file || 'index';
-  const filePath = join(
-    process.cwd(),
-    'app',
-    'content',
-    'monstre',
-    params.lang,
-    `${file}.mdx`,
-  );
-
-  const nbExists = existsSync(
-    join(process.cwd(), 'app', 'content', 'monstre', 'nb', `${file}.mdx`),
-  );
-
-  const enExists = existsSync(
-    join(process.cwd(), 'app', 'content', 'monstre', 'en', `${file}.mdx`),
-  );
-
-  if (!existsSync(filePath)) {
+export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
+  if (!lang) {
     throw new Response('Not Found', {
       status: 404,
       statusText: 'Not Found',
     });
   }
 
-  // Read the file content
-  const fileContent = readFileSync(filePath, 'utf-8');
+  /* Get all files in /content/monstre for the lang we have selected */
+  const files = readdirSync(
+    join(process.cwd(), 'app', 'content', 'monstre', lang),
+  );
 
-  // Bundle the MDX content
-  const result = await bundleMDX({
-    source: fileContent,
-  });
+  /* Filter out files that are not .mdx */
+  const mdxFiles = files.filter((file) => file.endsWith('.mdx'));
 
-  return {
-    name: params.file,
-    code: result.code,
-    frontmatter: result.frontmatter,
-    currentLang: params.lang,
-    availableLanguages: {
-      nb: nbExists,
-      en: enExists,
-    },
-  };
-}
+  /* Get titles and URLs for all files */
+  const titlesAndUrls: {
+    title: string;
+    url: string;
+  }[] = [];
 
-export const meta = ({ params }: Route.MetaArgs) => {
-  return [{ title: `Monstre ${params.file} - ${params.lang}` }];
+  /* Map over files with mdx parser to get title */
+  for (const file of mdxFiles) {
+    const fileContent = readFileSync(
+      join(process.cwd(), 'app', 'content', 'monstre', lang, `${file}`),
+      'utf-8',
+    );
+    const result = await bundleMDX({
+      source: fileContent,
+    });
+
+    const title = result.frontmatter.title || file.replace('.mdx', '');
+    const url = file.replace('.mdx', '');
+    titlesAndUrls.push({
+      title,
+      url,
+    });
+  }
+
+  return { items: titlesAndUrls, lang };
 };
 
-export default function Monstre({ loaderData }: Route.ComponentProps) {
-  // Create a component from the bundled code
-  const Component = useMemo(() => {
-    if (!loaderData.code) return null;
-    return getMDXComponent(loaderData.code);
-  }, [loaderData.code]);
-
-  const components = {
-    Alert,
-    p: (props: ParagraphProps) => <Paragraph {...props} />,
-  };
-
+export default function Monstre({
+  loaderData: { items },
+}: Route.ComponentProps) {
   return (
     <div>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          gap: '1rem',
-        }}
-      >
-        {loaderData.availableLanguages.nb && (
-          <Link href={`/nb/monstre/${loaderData.name}`}>
-            {loaderData.currentLang === 'nb' && '✅'} Norsk (Bokmål)
-          </Link>
-        )}
-        {loaderData.availableLanguages.en && (
-          <Link href={`/en/monstre/${loaderData.name}`}>
-            {loaderData.currentLang === 'en' && '✅'} English
-          </Link>
-        )}
-      </div>
-
-      <h1 className='text-2xl mb-4'>Monstre {loaderData.name}</h1>
-      {Component ? (
-        <Component components={components} />
-      ) : (
-        'Kunne ikkje laste innhold'
-      )}
+      {items.map((item) => {
+        return (
+          <Card key={item.url}>
+            <Card.Block>
+              <Heading level={2}>
+                <Link to={`${item.url}`}>{item.title}</Link>
+              </Heading>
+            </Card.Block>
+          </Card>
+        );
+      })}
     </div>
   );
 }
