@@ -3,9 +3,10 @@ import type { ThemeConfig } from '../config.js';
 import type { GetStyleDictionaryConfig } from './process/configs/shared.js';
 
 export type Token = { $value: string | Record<string, string>[]; $type: string };
-export type TokensSet = {
-  [key: string]: Token | TokensSet;
+export type TokenSet = {
+  [key: string]: Token | TokenSet;
 };
+export type TokenSets = Map<string, TokenSet>;
 
 export type Colors = Theme['colors'];
 export type Typography = Theme['typography'];
@@ -41,7 +42,7 @@ export type ThemeDimension = keyof ThemePermutation;
 export type GetSDConfigOptions = {
   tokensDir: string;
   dry?: boolean;
-  tokenSets?: Map<string, TokensSet>;
+  tokenSets?: TokenSets;
 };
 
 export type BuildConfig = {

@@ -12,14 +12,14 @@ import { buildOptions } from '../platform.js';
  * Technically, for the given dimensions all permutations are included, while for other
  * dimensions the first permutation is used.
  *
- * @param themes Theme objects from $themes.json (Tokens Studio)
+ * @param processed$themes Theme objects from $themes.json (Tokens Studio)
  * @param dimensions Which theme dimensions to return permutations for.
  *    'theme' (e.g. altinn/digdir/uutilsynet) is always implicitly included.
  * @returns the relevant theme permutations
  */
-export const getMultidimensionalThemes = (themes: ProcessedThemeObject[], dimensions: ThemeDimension[]) => {
+export const getMultidimensionalThemes = (processed$themes: ProcessedThemeObject[], dimensions: ThemeDimension[]) => {
   const verboseLogging = buildOptions?.verbose;
-  const grouped$themes = groupThemes(themes);
+  const grouped$themes = groupThemes(processed$themes);
   const permutations = permutateThemes(grouped$themes);
   const ALL_DEPENDENT_ON: ThemeDimension[] = ['theme'];
   const keys = R.keys(grouped$themes);

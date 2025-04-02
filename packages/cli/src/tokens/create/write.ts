@@ -3,7 +3,7 @@ import type { ThemeObject } from '@tokens-studio/types';
 import chalk from 'chalk';
 import * as R from 'ramda';
 import { mkdir, readFile, writeFile } from '../../utils.js';
-import type { Theme, TokensSet } from '../types.js';
+import type { Theme, TokenSets } from '../types.js';
 import { generateMetadataJson } from '../write/generate$metadata.js';
 import { generateThemesJson } from '../write/generate$themes.js';
 
@@ -14,7 +14,7 @@ type WriteTokensOptions = {
   theme: Theme;
   /** Dry run, no files will be written */
   dry?: boolean;
-  tokenSets: Map<string, TokensSet>;
+  tokenSets: TokenSets;
 };
 
 export const writeTokens = async (options: WriteTokensOptions) => {

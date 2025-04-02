@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 import type { Tokens } from 'style-dictionary';
 import type { DesignToken, TransformedToken } from 'style-dictionary/types';
-import type { TokensSet } from './types.js';
+import type { TokenSet } from './types.js';
 
 const mapToLowerCase = R.map<string, string>(R.toLower);
 
@@ -75,8 +75,8 @@ export const isDigit = (s: string) => /^\d+$/.test(s);
  * @param {(obj: Tokens|Token, key: keyof Tokens|Token, slice: Tokens|Token|string) => void} fn
  */
 export function traverseObj(
-  obj: Tokens | TokensSet,
-  fn: (obj: TokensSet | Tokens | DesignToken, key: keyof Tokens | string, slice: Tokens | DesignToken | string) => void,
+  obj: Tokens | TokenSet,
+  fn: (obj: TokenSet | Tokens | DesignToken, key: keyof Tokens | string, slice: Tokens | DesignToken | string) => void,
 ) {
   for (const key in obj) {
     const prop = obj[key];
@@ -87,4 +87,5 @@ export function traverseObj(
       }
     }
   }
+  return obj;
 }

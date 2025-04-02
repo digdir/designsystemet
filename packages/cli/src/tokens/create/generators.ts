@@ -10,10 +10,10 @@ import categoryColorTemplate from '../template/design-tokens/semantic/modes/colo
 import themeBase from '../template/design-tokens/themes/theme.base.template.json' with { type: 'json' };
 import themeColorTemplate from '../template/design-tokens/themes/theme.template.json' with { type: 'json' };
 
-import type { Colors, TokensSet, Typography } from '../types.js';
+import type { Colors, TokenSet, Typography } from '../types.js';
 
-export const generateColor = (colorArray: Color[]): TokensSet => {
-  const obj: TokensSet = {};
+export const generateColor = (colorArray: Color[]): TokenSet => {
+  const obj: TokenSet = {};
   const $type = 'color';
   for (const index in colorArray) {
     obj[Number(index) + 1] = { $type, $value: colorArray[index].hex };
@@ -21,15 +21,15 @@ export const generateColor = (colorArray: Color[]): TokensSet => {
   return obj;
 };
 
-export const generateTypography = (themeName: string, { fontFamily }: Typography): TokensSet => {
+export const generateTypography = (themeName: string, { fontFamily }: Typography): TokenSet => {
   return JSON.parse(
     JSON.stringify(typographyTemplate)
       .replaceAll(/<font-family>/g, fontFamily)
       .replaceAll(/<theme>/g, themeName),
-  ) as TokensSet;
+  ) as TokenSet;
 };
 
-export const generateColorScheme = (themeName: string, colorScheme: ColorScheme, colors: Colors): TokensSet => {
+export const generateColorScheme = (themeName: string, colorScheme: ColorScheme, colors: Colors): TokenSet => {
   const main = R.map((color) => generateColor(generateColorScale(color, colorScheme)), colors.main);
   const support = R.map((color) => generateColor(generateColorScale(color, colorScheme)), colors.support);
   const neutral = generateColor(generateColorScale(colors.neutral, colorScheme));
@@ -43,7 +43,7 @@ export const generateColorScheme = (themeName: string, colorScheme: ColorScheme,
   };
 };
 
-export const generateGlobal = (colorScheme: ColorScheme): TokensSet => {
+export const generateGlobal = (colorScheme: ColorScheme): TokenSet => {
   const blueScale = generateColorScale(baseColors.blue, colorScheme);
   const greenScale = generateColorScale(baseColors.green, colorScheme);
   const orangeScale = generateColorScale(baseColors.orange, colorScheme);
@@ -62,8 +62,8 @@ export const generateGlobal = (colorScheme: ColorScheme): TokensSet => {
 };
 
 type SemanticModes = {
-  'main-color': Record<string, TokensSet>;
-  'support-color': Record<string, TokensSet>;
+  'main-color': Record<string, TokenSet>;
+  'support-color': Record<string, TokenSet>;
 };
 
 export const generateSemantic = (colors: Colors) => {
@@ -97,7 +97,7 @@ export const generateSemantic = (colors: Colors) => {
               },
               2,
             ),
-          ) as TokensSet,
+          ) as TokenSet,
         },
       };
       modes[colorCategory][colorName] = customColorTokens;
@@ -166,7 +166,7 @@ export const generateTheme = (colors: Colors, themeName: string, borderRadius: n
       },
       2,
     ),
-  ) as TokensSet;
+  ) as TokenSet;
 
   return token;
 };

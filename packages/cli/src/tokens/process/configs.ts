@@ -16,10 +16,6 @@ import { resolveMath, sizeRem, typographyName, unitless } from './transformers.j
 import { type ProcessedThemeObject, getMultidimensionalThemes } from './utils/getMultidimensionalThemes.js';
 
 void register(StyleDictionary, { withSDBuiltins: false });
-/** Use official W3C design token format
- @see https://v4.styledictionary.com/info/dtcg/
- @see https://design-tokens.github.io/community-group/format/ */
-const usesDtcg = true;
 
 StyleDictionary.registerTransform(sizeRem);
 StyleDictionary.registerTransform(typographyName);
@@ -47,34 +43,35 @@ export const configs = {
 
 export const getConfigsForThemeDimensions = (
   getConfig: GetStyleDictionaryConfig,
-  themes: ProcessedThemeObject[],
+  processed$themes: ProcessedThemeObject[],
   dimensions: ThemeDimension[],
   options: GetSDConfigOptions,
 ): SDConfigForThemePermutation[] => {
   const { tokensDir, tokenSets } = options;
 
-  const permutations = getMultidimensionalThemes(themes, dimensions);
+  const permutations = getMultidimensionalThemes(processed$themes, dimensions);
   return permutations
     .flatMap(({ selectedTokenSets, permutation }) => {
-      const source = selectedTokenSets.map((x) => `${tokensDir}/${x}.json`);
-      let tokens: Tokens = {};
+      const tokenSource: { source?: string[]; tokens: Tokens } = { source: undefined, tokens: {} };
 
       if (tokenSets) {
         for (const tokenSet of selectedTokenSets) {
-          const tokens_ = tokenSets.get(tokenSet);
+          const tokens = tokenSets.get(tokenSet);
 
-          if (tokens_) {
-            const withFilepaths = tokens_ as DesignTokens;
-
-            traverseObj(withFilepaths, (obj) => {
+          if (tokens) {
+            const tokensWithFilePath = traverseObj(tokens as DesignTokens, (obj) => {
               if (Object.hasOwn(obj, `$value`) && !obj.filePath) {
                 obj.filePath = tokenSet;
               }
             });
 
-            tokens = R.mergeDeepRight(tokens, withFilepaths) as DesignTokens;
+            // Merge tokenSets into a single tokens object with filePath denoting tokenSet
+            tokenSource.tokens = R.mergeDeepRight(tokenSource.tokens, tokensWithFilePath) as DesignTokens;
           }
         }
+      } else {
+        // Reads tokenSets from disk
+        tokenSource.source = selectedTokenSets.map((x) => `${tokensDir}/${x}.json`);
       }
 
       const configOrConfigs = getConfig(permutation);
@@ -84,14 +81,16 @@ export const getConfigsForThemeDimensions = (
         return {
           permutation: { ...permutation, ...permutationOverrides },
           config: {
-            usesDtcg,
             ...config,
+            /** Use official W3C design token format
+            @see https://v4.styledictionary.com/info/dtcg/
+            @see https://design-tokens.github.io/community-group/format/ */
+            usesDtcg: true,
             log: {
               ...config?.log,
               verbosity: buildOptions?.verbose ? 'verbose' : 'silent',
             },
-            source: tokenSets ? undefined : source,
-            tokens,
+            ...tokenSource,
           },
         };
       });
