@@ -4228,6 +4228,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-dom@npm:^19.1.0":
+  version: 19.1.0
+  resolution: "@types/react-dom@npm:19.1.0"
+  peerDependencies:
+    "@types/react": ^19.0.0
+  checksum: 10/510de71c418e7dd5af096de0c038fcd6ca9bb66ac7b2ffaa3ed6e0eb7e5393a3e659e0210b605d34ac9128533e0a24203bd97c2511488674190e9fbf161f8a09
+  languageName: node
+  linkType: hard
+
 "@types/react@npm:*":
   version: 19.0.10
   resolution: "@types/react@npm:19.0.10"
@@ -4237,12 +4246,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:19.0.12, @types/react@npm:^19.0.12"
+"@types/react@npm:19.0.12, @types/react@npm:^19.0.12":
   version: 19.0.12
   resolution: "@types/react@npm:19.0.12"
   dependencies:
     csstype: "npm:^3.0.2"
   checksum: 10/2476295f27371ea67f0ba3ca8fae3c683fc8d086b8b387e0519e67ff5731072c6ff0372fbd5a4c6d760895b1e7dc8997ac518f07bf6b6a8d1e40aeb5d2068b9e
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^19.1.0":
+  version: 19.1.0
+  resolution: "@types/react@npm:19.1.0"
+  dependencies:
+    csstype: "npm:^3.0.2"
+  checksum: 10/bfa3bb7e2efe929bdf41bf36461f2598611a29647852b8b7ecde510e83f797caf7f290388d13e2b71055df10587b3c41fc4345c1d9cbc38b4e897b03ad11c02f
   languageName: node
   linkType: hard
 
@@ -14961,13 +14979,13 @@ __metadata:
     "@react-router/serve": "npm:^7.4.1"
     "@repo/components": "workspace:^"
     "@types/node": "npm:^20"
-    "@types/react": "npm:^19.0.1"
-    "@types/react-dom": "npm:^19.0.1"
+    "@types/react": "npm:^19.1.0"
+    "@types/react-dom": "npm:^19.1.0"
     clsx: "npm:^2.1.1"
     isbot: "npm:^5.1.17"
     mdx-bundler: "npm:^10.1.1"
-    react: "npm:^19.0.0"
-    react-dom: "npm:^19.0.0"
+    react: "npm:^19.1.0"
+    react-dom: "npm:^19.1.0"
     react-router: "npm:^7.4.1"
     typescript: "npm:^5.7.2"
     vite: "npm:^6.0.11"
