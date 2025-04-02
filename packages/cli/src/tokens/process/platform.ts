@@ -43,7 +43,7 @@ type ProcessedBuildConfigs<T> = Record<keyof typeof buildConfigs | 'types', T>;
 export type ProcessReturn = ProcessedBuildConfigs<BuildResult[]>;
 type BuildResult = {
   permutation: ThemePermutation;
-  format: File[];
+  formatted: File[];
 };
 
 export let buildOptions: ProcessOptions | undefined;
@@ -149,7 +149,7 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
   }, buildConfigs);
 
   const initBuilRunResult: BuildResult = {
-    format: [],
+    formatted: [],
     permutation: {
       'color-scheme': '',
       'main-color': '',
@@ -202,7 +202,7 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
             if (process === 'tokens') {
               const dictionary = await sdExtended.getPlatformTokens(platform, sdOptions);
             }
-            buildResult.format = (await sdExtended.formatPlatform(platform, sdOptions)) as File[];
+            buildResult.formatted = (await sdExtended.formatPlatform(platform, sdOptions)) as File[];
 
             return Promise.resolve(buildResult);
           }),
@@ -223,7 +223,7 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
   }
 
   const colorsFileName = 'colors.d.ts';
-  const reactColorTypes = await writeColorTypeDeclaration(customColors);
+  const reactColorTypes = await createColorTypeDeclaration(customColors);
 
   if (process === 'build') {
     // just to output the file name as part of the build
@@ -233,14 +233,14 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
   processedBuilds.types = [
     {
       ...initBuilRunResult,
-      format: [{ output: reactColorTypes, destination: colorsFileName }] as unknown as File[],
+      formatted: [{ output: reactColorTypes, destination: colorsFileName }] as unknown as File[],
     },
   ];
 
   return processedBuilds;
 }
 
-async function writeColorTypeDeclaration(colors: string[]) {
+async function createColorTypeDeclaration(colors: string[]) {
   console.log(`\n🍱 Building ${chalk.green('type declarations')}`);
 
   const typeDeclaration = `

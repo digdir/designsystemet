@@ -25,17 +25,14 @@ export const buildTokens = async (options: Omit<BuildOptions, 'process' | '$them
   console.log(`\nWriting build to ${chalk.green(options.outDir)}`);
 
   for (const [_, buildResults] of Object.entries(processedBuilds)) {
-    for (const { format } of buildResults) {
+    for (const { formatted: format } of buildResults) {
       for (const { destination, output } of format) {
         if (destination) {
           const fileDir = path.join(resolvedOutDir, path.dirname(destination));
           await mkdir(fileDir, options.dry);
 
-          if (options.verbose) {
-            console.log(`Writing ${chalk.blue(fileDir)}`);
-          }
           const filePath = path.join(resolvedOutDir, destination);
-          writeFile(filePath, output, options.dry);
+          await writeFile(filePath, output, options.dry);
         }
       }
     }

@@ -2,12 +2,10 @@ import path from 'node:path';
 import type { ThemeObject } from '@tokens-studio/types';
 import chalk from 'chalk';
 import * as R from 'ramda';
-import { mkdir, readFile, writeFile } from '../utils.js';
-import type { Theme, TokensSet } from './types.js';
-import { generateMetadataJson } from './write/generate$metadata.js';
-import { generateThemesJson } from './write/generate$themes.js';
-
-const DIRNAME: string = import.meta.dirname || __dirname;
+import { mkdir, readFile, writeFile } from '../../utils.js';
+import type { Theme, TokensSet } from '../types.js';
+import { generateMetadataJson } from '../write/generate$metadata.js';
+import { generateThemesJson } from '../write/generate$themes.js';
 
 export const stringify = (data: unknown) => JSON.stringify(data, null, 2);
 

@@ -2,7 +2,7 @@ import { register } from '@tokens-studio/sd-transforms';
 import * as R from 'ramda';
 import StyleDictionary, { type Tokens } from 'style-dictionary';
 import type { DesignTokens } from 'style-dictionary/types';
-import type { GetSdConfigOptions, SDConfigForThemePermutation, ThemeDimension } from '../types.js';
+import type { GetSDConfigOptions, SDConfigForThemePermutation, ThemeDimension } from '../types.js';
 import { traverseObj } from '../utils.js';
 import { colorCategoryVariables, colorSchemeVariables } from './configs/color.js';
 import { semanticVariables } from './configs/semantic.js';
@@ -49,7 +49,7 @@ export const getConfigsForThemeDimensions = (
   getConfig: GetStyleDictionaryConfig,
   themes: ProcessedThemeObject[],
   dimensions: ThemeDimension[],
-  options: GetSdConfigOptions,
+  options: GetSDConfigOptions,
 ): SDConfigForThemePermutation[] => {
   const { tokensDir, tokenSets } = options;
 

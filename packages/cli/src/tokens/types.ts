@@ -1,4 +1,4 @@
-import type { Config as StyleDictionaryConfig } from 'style-dictionary/types';
+import type { Config as SDConfig } from 'style-dictionary/types';
 import type { ThemeConfig } from '../config.js';
 import type { GetStyleDictionaryConfig } from './process/configs/shared.js';
 
@@ -38,7 +38,7 @@ export type ThemePermutation = {
 
 export type ThemeDimension = keyof ThemePermutation;
 
-export type GetSdConfigOptions = {
+export type GetSDConfigOptions = {
   tokensDir: string;
   dry?: boolean;
   tokenSets?: Map<string, TokensSet>;
@@ -52,13 +52,13 @@ export type BuildConfig = {
   /** Which theme dimensions to include. `theme` (e.g. digdir/altinn) is always included. */
   dimensions: ThemeDimension[];
   /** Custom options used when creating Style Dictionary configs. If not supplied, the default is used */
-  options?: Partial<GetSdConfigOptions>;
+  options?: Partial<GetSDConfigOptions>;
   /** Custom build function. If not supplied, the default is used. */
-  build?: (sdConfigs: SDConfigForThemePermutation[], options: GetSdConfigOptions) => Promise<void>;
+  build?: (sdConfigs: SDConfigForThemePermutation[], options: GetSDConfigOptions) => Promise<void>;
   /** Whether the build config is enabled. @default () => true */
   enabled?: () => boolean;
   /** Custom log message. */
   log?: (config: SDConfigForThemePermutation) => string;
 };
 
-export type SDConfigForThemePermutation = { permutation: ThemePermutation; config: StyleDictionaryConfig };
+export type SDConfigForThemePermutation = { permutation: ThemePermutation; config: SDConfig };

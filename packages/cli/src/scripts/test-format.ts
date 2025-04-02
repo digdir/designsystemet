@@ -44,7 +44,7 @@ async function format() {
   let files: File[] = [];
   for (const [_, buildResults] of Object.entries(R.dissoc('types', processedBuilds))) {
     for (const buildResult of buildResults) {
-      files = R.concat(files, buildResult.format);
+      files = R.concat(files, buildResult.formatted);
     }
   }
 
