@@ -24,6 +24,7 @@ export const buildTokens = async (options: Omit<BuildOptions, 'process' | '$them
 
   console.log(`\nWriting build to ${chalk.green(options.outDir)}`);
 
+  // TODO https://github.com/digdir/designsystemet/issues/3434
   for (const [_, buildResults] of Object.entries(processedBuilds)) {
     for (const { formatted } of buildResults) {
       for (const { destination, output } of formatted) {
