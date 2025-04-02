@@ -1,5 +1,3 @@
-import crypto from 'node:crypto';
-
 import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
 
 import type { ColorScheme } from '../../colors/types.js';
@@ -7,7 +5,12 @@ import type { Colors } from '../types.js';
 
 const capitalize = (word: string) => word.charAt(0).toUpperCase() + word.slice(1);
 
-const createHash = (text: string) => crypto.hash('sha1', text);
+async function createHash(text: string, algo = 'SHA-1') {
+  const crypto = globalThis.crypto;
+  return Array.from(new Uint8Array(await crypto.subtle.digest(algo, new TextEncoder().encode(text))), (byte) =>
+    byte.toString(16).padStart(2, '0'),
+  ).join('');
+}
 
 type ColorSchemes = Array<ColorScheme>;
 
@@ -17,15 +20,19 @@ type ThemeObject_ = ThemeObject & {
   $figmaVariableReferences?: Record<string, string>;
 };
 
-export function generateThemesJson(colorSchemes: ColorSchemes, themes: string[], colors: Colors): ThemeObject_[] {
+export async function generateThemesJson(
+  colorSchemes: ColorSchemes,
+  themes: string[],
+  colors: Colors,
+): Promise<ThemeObject_[]> {
   return [
     ...generateSizeGroup(),
-    ...generateThemesGroup(themes),
+    ...(await generateThemesGroup(themes)),
     ...generateTypographyGroup(themes),
     ...generateColorSchemesGroup(colorSchemes, themes),
     generateSemanticGroup(),
-    ...generateColorGroup('main', colors),
-    ...generateColorGroup('support', colors),
+    ...(await generateColorGroup('main', colors)),
+    ...(await generateColorGroup('support', colors)),
   ];
 }
 
@@ -110,18 +117,20 @@ function generateColorSchemesGroup(colorSchemes: ColorSchemes, themes: string[])
   );
 }
 
-function generateThemesGroup(themes: string[]): ThemeObject_[] {
-  return themes.map(
-    (theme, index): ThemeObject_ => ({
-      id: createHash(theme),
-      $figmaCollectionId: 'VariableCollectionId:36528:61712',
-      $figmaModeId: `40960:${index + 6}`, // Start on 6 in Token Studio and Community file for some reason
-      name: theme,
-      selectedTokenSets: {
-        [`themes/${theme}`]: TokenSetStatus.ENABLED,
-      },
-      group: 'Theme',
-    }),
+async function generateThemesGroup(themes: string[]): Promise<ThemeObject_[]> {
+  return Promise.all(
+    themes.map(
+      async (theme, index): Promise<ThemeObject_> => ({
+        id: await createHash(theme),
+        $figmaCollectionId: 'VariableCollectionId:36528:61712',
+        $figmaModeId: `40960:${index + 6}`, // Start on 6 in Token Studio and Community file for some reason
+        name: theme,
+        selectedTokenSets: {
+          [`themes/${theme}`]: TokenSetStatus.ENABLED,
+        },
+        group: 'Theme',
+      }),
+    ),
   );
 }
 
@@ -140,16 +149,18 @@ function generateSemanticGroup(): ThemeObject_ {
   };
 }
 
-function generateColorGroup(group: 'main' | 'support', colors: Colors): ThemeObject_[] {
-  return Object.entries(colors[group]).map(
-    ([color]): ThemeObject_ => ({
-      id: createHash(`${group}-${color}`),
-      name: color,
-      selectedTokenSets: {
-        [`semantic/modes/${group}-color/${color}`]: TokenSetStatus.ENABLED,
-      },
-      group: `${capitalize(group)} color`,
-    }),
+async function generateColorGroup(group: 'main' | 'support', colors: Colors): Promise<ThemeObject_[]> {
+  return Promise.all(
+    Object.entries(colors[group]).map(
+      async ([color]): Promise<ThemeObject_> => ({
+        id: await createHash(`${group}-${color}`),
+        name: color,
+        selectedTokenSets: {
+          [`semantic/modes/${group}-color/${color}`]: TokenSetStatus.ENABLED,
+        },
+        group: `${capitalize(group)} color`,
+      }),
+    ),
   );
 }
 

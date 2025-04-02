@@ -8,12 +8,16 @@ import {
   Link,
   Paragraph,
 } from '@digdir/designsystemet-react';
-import { cliOptions } from '@digdir/designsystemet/tokens';
+import {
+  type CreateTokensOptions,
+  cliOptions,
+  formatThemeCSS,
+} from '@digdir/designsystemet/tokens';
 import { InformationSquareIcon, StarIcon } from '@navikt/aksel-icons';
 import { CodeBlock } from '@repo/components';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-import type { Color } from '@digdir/designsystemet/color';
+import type { Color, CssColor } from '@digdir/designsystemet/color';
 import { type ColorTheme, useThemeStore } from '../../store';
 import { isProduction } from '../../utils/is-production';
 import classes from './TokenModal.module.css';
@@ -30,6 +34,7 @@ export const TokenModal = () => {
   const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
 
   const [themeName, setThemeName] = useState('theme');
+  const [themeCSS, setThemeCSS] = useState('');
 
   const setCliColors = (colorTheme: ColorTheme[]) => {
     let str = '';
@@ -54,6 +59,42 @@ export const TokenModal = () => {
   ]
     .filter(Boolean)
     .join(' \\\n');
+
+  const theme: CreateTokensOptions = {
+    name: themeName,
+    colors: {
+      main: colors.main.reduce(
+        (acc, color) => {
+          acc[color.name] = getBaseDefault(color.colors.light)?.hex || '#';
+          return acc;
+        },
+        {} as Record<string, CssColor>,
+      ),
+      support: colors.support.reduce(
+        (acc, color) => {
+          acc[color.name] = getBaseDefault(color.colors.light)?.hex || '#';
+          return acc;
+        },
+        {} as Record<string, CssColor>,
+      ),
+      neutral: getBaseDefault(colors.neutral[0]?.colors.light)?.hex || '#',
+    },
+    borderRadius: baseBorderRadius,
+    typography: {
+      fontFamily: 'Inter',
+    },
+  };
+
+  useEffect(() => {
+    if (modalRef.current?.open) {
+      formatThemeCSS(theme).then((result) => {
+        const css = result.map((file) => file.output).join('\n');
+        if (css) {
+          setThemeCSS(css);
+        }
+      });
+    }
+  }, [modalRef.current?.open]);
 
   return (
     <Dialog.TriggerContext>
@@ -137,6 +178,9 @@ export const TokenModal = () => {
                   </Link>{' '}
                   siden.
                 </Paragraph>
+              </div>
+              <div className={classes['snippet-themecss']}>
+                {themeCSS && <CodeBlock language='css'>{themeCSS}</CodeBlock>}
               </div>
               <div className={classes.snippet}>
                 <CodeBlock language='bash'>{cliSnippet}</CodeBlock>
