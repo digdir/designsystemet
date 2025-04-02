@@ -9,6 +9,7 @@ export const GithubLogo = ({ ...props }: GithubLogoProps) => (
     xmlns='http://www.w3.org/2000/svg'
     {...props}
   >
+    <title>Github logo</title>
     <path
       fillRule='evenodd'
       clipRule='evenodd'
