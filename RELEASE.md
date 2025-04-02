@@ -36,7 +36,7 @@ We don't use changesets prerelease mode yet as we want to avoid additonal steps 
 
 
 ### Patching older major/minor versions
-In rare cases, we may need to backport a fix to an earlier version. While we aim for backward compatibility in newer releases, some users may be unable to upgrade due to breaking changes. In such cases, we can create a patch release for a previous version.
+In rare cases, we may need to backport a fix to an earlier version. This should generally be avoided, but in such cases, we can create a patch release for a previous version.
 
 #### Backporting Workflow
 Say we have released 1.0.1 and 1.1.0 on main, and we want to backport a patch to the 1.0 version.
