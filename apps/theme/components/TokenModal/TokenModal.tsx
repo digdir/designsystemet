@@ -1,12 +1,14 @@
 'use client';
 
 import {
+  Button,
   Dialog,
   Divider,
   Heading,
   Input,
   Link,
   Paragraph,
+  useDebounceCallback,
 } from '@digdir/designsystemet-react';
 import {
   type CreateTokensOptions,
@@ -15,7 +17,7 @@ import {
 } from '@digdir/designsystemet/tokens';
 import { InformationSquareIcon, StarIcon } from '@navikt/aksel-icons';
 import { CodeBlock } from '@repo/components';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 import type { Color, CssColor } from '@digdir/designsystemet/color';
 import { type ColorTheme, useThemeStore } from '../../store';
@@ -85,16 +87,14 @@ export const TokenModal = () => {
     },
   };
 
-  useEffect(() => {
-    if (modalRef.current?.open) {
-      formatThemeCSS(theme).then((result) => {
-        const css = result.map((file) => file.output).join('\n');
-        if (css) {
-          setThemeCSS(css);
-        }
-      });
-    }
-  }, [modalRef.current?.open]);
+  const onThemeButtonClick = useDebounceCallback(() => {
+    formatThemeCSS(theme).then((result) => {
+      const css = result.map((file) => file.output).join('\n');
+      if (css) {
+        setThemeCSS(css);
+      }
+    });
+  }, 500);
 
   return (
     <Dialog.TriggerContext>
@@ -180,6 +180,7 @@ export const TokenModal = () => {
                 </Paragraph>
               </div>
               <div className={classes['snippet-themecss']}>
+                <Button onClick={onThemeButtonClick}>Lag tema CSS</Button>
                 {themeCSS && <CodeBlock language='css'>{themeCSS}</CodeBlock>}
               </div>
               <div className={classes.snippet}>
