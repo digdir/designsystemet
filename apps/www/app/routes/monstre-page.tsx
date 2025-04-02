@@ -1,14 +1,11 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import {
-  Alert,
-  Link,
-  Paragraph,
-  type ParagraphProps,
-} from '@digdir/designsystemet-react';
+import * as DS from '@digdir/designsystemet-react';
+import type { ParagraphProps } from '@digdir/designsystemet-react';
 import { bundleMDX } from 'mdx-bundler';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { useMemo } from 'react';
+import { Image } from '~/_components/image/image';
 import type { Route } from './+types/monstre-page';
 
 export async function loader({ params }: Route.LoaderArgs) {
@@ -61,17 +58,18 @@ export const meta = ({ params }: Route.MetaArgs) => {
   return [{ title: `Monstre ${params.file} - ${params.lang}` }];
 };
 
+const components = {
+  ...DS,
+  Image,
+  p: (props: ParagraphProps) => <DS.Paragraph {...props} />,
+};
+
 export default function Monstre({ loaderData }: Route.ComponentProps) {
   // Create a component from the bundled code
   const Component = useMemo(() => {
     if (!loaderData.code) return null;
     return getMDXComponent(loaderData.code);
   }, [loaderData.code]);
-
-  const components = {
-    Alert,
-    p: (props: ParagraphProps) => <Paragraph {...props} />,
-  };
 
   return (
     <div>
@@ -83,19 +81,20 @@ export default function Monstre({ loaderData }: Route.ComponentProps) {
         }}
       >
         {loaderData.availableLanguages.nb && (
-          <Link href={`/nb/monstre/${loaderData.name}`}>
+          <DS.Link href={`/nb/monstre/${loaderData.name}`}>
             {loaderData.currentLang === 'nb' && '✅'} Norsk (Bokmål)
-          </Link>
+          </DS.Link>
         )}
         {loaderData.availableLanguages.en && (
-          <Link href={`/en/monstre/${loaderData.name}`}>
+          <DS.Link href={`/en/monstre/${loaderData.name}`}>
             {loaderData.currentLang === 'en' && '✅'} English
-          </Link>
+          </DS.Link>
         )}
       </div>
 
       <h1 className='text-2xl mb-4'>Monstre {loaderData.name}</h1>
       {Component ? (
+        /* @ts-ignore */
         <Component components={components} />
       ) : (
         'Kunne ikkje laste innhold'
