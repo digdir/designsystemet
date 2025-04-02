@@ -54,7 +54,7 @@ export const createThemeCSSFiles = (processedBuilds: ProcessReturn) => {
   for (const [_, buildResults] of Object.entries(R.dissoc('types', processedBuilds))) {
     for (const buildResult of buildResults) {
       const previous = formattedByTheme[buildResult.permutation.theme] ?? [];
-      formattedByTheme[buildResult.permutation.theme] = R.concat(previous, buildResult.format);
+      formattedByTheme[buildResult.permutation.theme] = R.concat(previous, buildResult.formatted);
     }
   }
 
