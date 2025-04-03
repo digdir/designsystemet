@@ -8,7 +8,7 @@ import {
 } from '~/_components/banner/banner';
 import { ContentContainer } from '~/_components/content-container/content-container';
 
-export default function MonstreLayout() {
+export default function Layout() {
   return (
     <div className='text-center p-4'>
       <Banner color='red'>

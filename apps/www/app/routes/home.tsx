@@ -1,17 +1,14 @@
 import { Details, Heading, List } from '@digdir/designsystemet-react';
-import { Link } from 'react-router';
+import { Link, useParams } from 'react-router';
 import { ContentContainer } from '~/_components/content-container/content-container';
-import type { Route } from './+types/home';
 
-export function loader({ params }: Route.LoaderArgs) {
-  return { name: 'React Router', lang: params.lang };
-}
+export default function Home() {
+  const { lang } = useParams();
 
-export default function Home({ loaderData }: Route.ComponentProps) {
   return (
     <ContentContainer>
       <Heading level={1} data-size='xl'>
-        Designsystemet i {loaderData.name} ({loaderData.lang})
+        Designsystemet ({lang})
       </Heading>
       <List.Unordered>
         <List.Item>

@@ -35,7 +35,6 @@ export const meta = () => {
 };
 
 export const loader = ({ params }: Route.LoaderArgs) => {
-  console.log(params);
   if (params.lang === undefined) {
     return redirect('/nb');
   }

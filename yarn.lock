@@ -15087,6 +15087,7 @@ __metadata:
     isbot: "npm:^5.1.17"
     mdx-bundler: "npm:^10.1.1"
     react: "npm:^19.1.0"
+    react-code-block: "npm:^1.1.3"
     react-dom: "npm:^19.1.0"
     react-router: "npm:^7.4.1"
     typescript: "npm:^5.7.2"

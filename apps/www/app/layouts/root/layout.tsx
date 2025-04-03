@@ -17,6 +17,10 @@ export default function RootLayout({
       name: 'Mønstre',
       href: `/${lang}/monstre`,
     },
+    {
+      name: 'Bloggen',
+      href: `/${lang}/bloggen`,
+    },
   ];
   return (
     <>
