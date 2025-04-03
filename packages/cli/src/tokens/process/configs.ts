@@ -70,7 +70,7 @@ export const getConfigsForThemeDimensions = (
           }
         }
       } else {
-        // Reads tokenSets from disk
+        // Tell SD where to read tokenSets from disk
         tokenSource.source = selectedTokenSets.map((x) => `${tokensDir}/${x}.json`);
       }
 
