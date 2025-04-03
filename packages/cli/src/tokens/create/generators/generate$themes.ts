@@ -1,7 +1,7 @@
 import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
 
-import type { ColorScheme } from '../../colors/types.js';
-import type { Colors } from '../types.js';
+import type { ColorScheme } from '../../../colors/types.js';
+import type { Colors } from '../../types.js';
 
 const capitalize = (word: string) => word.charAt(0).toUpperCase() + word.slice(1);
 
