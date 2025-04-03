@@ -32,7 +32,7 @@ export type BuildOptions = {
 } & SharedOptions;
 
 export type FormatOptions = {
-  process: 'format' | 'tokens';
+  process: 'format';
   /** Tokensets */
   tokenSets: Map<string, TokenSet>;
 } & SharedOptions;
@@ -118,7 +118,7 @@ const buildConfigs = {
 export async function processPlatform<T>(options: ProcessOptions): Promise<ProcessReturn> {
   const { dry, process, $themes } = options;
   const platform = 'css';
-  const isImperativeProcess = process === 'format' || process === 'tokens';
+  const tokenSets = process === 'format' ? options.tokenSets : undefined;
   const tokensDir = process === 'build' ? options.tokensDir : '';
 
   /** For sharing build options in other files */
@@ -139,7 +139,7 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
   const buildAndSdConfigs = R.map((buildConfig: BuildConfig) => {
     const sdConfigs = getConfigsForThemeDimensions(buildConfig.getConfig, processed$themes, buildConfig.dimensions, {
       tokensDir,
-      tokenSets: isImperativeProcess ? options.tokenSets : undefined,
+      tokenSets,
       ...buildConfig.options,
     });
 
