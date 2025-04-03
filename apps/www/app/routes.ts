@@ -9,7 +9,7 @@ import {
 export default [
   layout('./layouts/root/layout.tsx', [
     ...prefix('/:lang', [
-      index('routes/home.tsx'),
+      index('routes/home/home.tsx'),
       ...prefix('/monstre', [
         layout('./layouts/monstre/layout.tsx', [
           // Index route
@@ -30,6 +30,9 @@ export default [
           route('/:file', 'routes/bloggen-page/bloggen-page.tsx'),
         ]),
       ]),
+      route('/komponenter', 'routes/components/components.tsx', {
+        id: 'components',
+      }),
     ]),
   ]),
 ] satisfies RouteConfig;

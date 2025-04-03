@@ -64,6 +64,10 @@ export default function RootLayout({
       name: 'Bloggen',
       href: `/${lang}/bloggen`,
     },
+    {
+      name: 'Komponenter',
+      href: `/${lang}/komponenter`,
+    },
   ];
   return (
     <>
