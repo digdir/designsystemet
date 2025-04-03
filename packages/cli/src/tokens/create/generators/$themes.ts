@@ -20,7 +20,7 @@ type ThemeObject_ = ThemeObject & {
   $figmaVariableReferences?: Record<string, string>;
 };
 
-export async function generateThemesJson(
+export async function generate$Themes(
   colorSchemes: ColorSchemes,
   themes: string[],
   colors: Colors,

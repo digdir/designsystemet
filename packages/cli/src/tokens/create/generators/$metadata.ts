@@ -4,7 +4,7 @@ type Metadata = {
   tokenSetOrder: string[];
 };
 
-export function generateMetadataJson(tokenSets: Map<string, TokenSet>): Metadata {
+export function generate$Metadata(tokenSets: Map<string, TokenSet>): Metadata {
   return {
     tokenSetOrder: Array.from(tokenSets.keys()),
   };
