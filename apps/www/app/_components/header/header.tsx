@@ -10,8 +10,8 @@ import cl from 'clsx/lite';
 import { useEffect, useRef, useState } from 'react';
 
 import { Link, useLocation } from 'react-router';
+import { DsLogo } from '../logos/designsystemet';
 import classes from './header.module.css';
-import { DsLogo } from './logos/ds-logo';
 import { FigmaLogo } from './logos/figma-logo';
 import { GithubLogo } from './logos/github-logo';
 

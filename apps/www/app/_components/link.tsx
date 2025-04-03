@@ -5,7 +5,7 @@ export type RRLinkProps = LinkProps;
 
 export const RRLink = ({ ...props }: LinkProps) => {
   return (
-    <DSLink>
+    <DSLink asChild>
       <Link {...props} />
     </DSLink>
   );

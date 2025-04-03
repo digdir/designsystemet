@@ -17,6 +17,11 @@ body {
   padding: 0;
 }
 
+#main {
+  min-height: 80svh;
+  padding-bottom: var(--ds-size-12);
+}
+
 @layer normalize {
   body {
     margin: 0;

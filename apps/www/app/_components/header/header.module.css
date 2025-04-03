@@ -112,7 +112,7 @@
 }
 
 .linkIcon.figma path {
-  stroke: var(--ds-color-neutral-border-strong);
+  fill: var(--ds-color-neutral-border-strong);
 }
 
 .linkIcon.github path {
@@ -120,7 +120,7 @@
 }
 
 .linkIcon.figma:hover path {
-  stroke: var(--ds-color-neutral-border-strong);
+  fill: var(--ds-color-neutral-border-strong);
 }
 
 .linkIcon.github:hover path {
