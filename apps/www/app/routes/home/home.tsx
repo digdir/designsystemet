@@ -8,7 +8,7 @@ import { ContentContainer } from '~/_components/content-container/content-contai
 import { ImageBanner } from '~/_components/image-banner/image-banner';
 import { NavigationCard } from '~/_components/navigation-card/navigation-card';
 import { Section } from '~/_components/section/section';
-import type { Route } from '../+types/home';
+import type { Route } from './+types/home';
 import classes from './home.module.css';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
@@ -91,7 +91,7 @@ export default function Home({
                 title='For designere'
                 description='Lær hvordan du kommer i gang med designsystemet som designer.'
                 color='blue'
-                url='/grunnleggende/for-designere/kom-i-gang'
+                url='grunnleggende/for-designere/kom-i-gang'
                 icon={<PaletteIcon fontSize={36} aria-hidden='true' />}
                 level={2}
               />
@@ -100,7 +100,7 @@ export default function Home({
                 title='For utviklere'
                 description='Lær hvordan du kommer i gang med designsystemet som utvikler.'
                 color='yellow'
-                url='/grunnleggende/for-utviklere/kom-i-gang'
+                url='grunnleggende/for-utviklere/kom-i-gang'
                 icon={<WrenchIcon fontSize={36} aria-hidden='true' />}
                 level={2}
               />
@@ -109,7 +109,7 @@ export default function Home({
                 title='Komponenter'
                 description='Se oversikten over UI-komponentene som er laget i react.'
                 color='red'
-                url='/komponenter'
+                url='komponenter'
                 icon={<ComponentIcon fontSize={34} aria-hidden='true' />}
                 level={2}
               />
