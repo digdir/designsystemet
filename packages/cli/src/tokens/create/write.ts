@@ -4,8 +4,8 @@ import chalk from 'chalk';
 import * as R from 'ramda';
 import { mkdir, readFile, writeFile } from '../../utils.js';
 import type { Theme, TokenSets } from '../types.js';
-import { generateMetadataJson } from './generators/generate$metadata.js';
-import { generateThemesJson } from './generators/generate$themes.js';
+import { generate$Metadata } from './generators/$metadata.js';
+import { generate$Themes } from './generators/$themes.js';
 
 export const stringify = (data: unknown) => JSON.stringify(data, null, 2);
 
@@ -48,10 +48,10 @@ export const writeTokens = async (options: WriteTokensOptions) => {
   console.log(`Themes: ${chalk.blue(themes.join(', '))}`);
 
   // Create metadata and themes json for Token Studio and build script
-  const $theme = await generateThemesJson(['dark', 'light'], themes, colors);
-  const $metadata = generateMetadataJson(tokenSets);
+  const $themes = await generate$Themes(['dark', 'light'], themes, colors);
+  const $metadata = generate$Metadata(tokenSets);
 
-  await writeFile($themesPath, stringify($theme), dry);
+  await writeFile($themesPath, stringify($themes), dry);
   await writeFile($metadataPath, stringify($metadata), dry);
 
   for (const [set, tokens] of tokenSets) {
