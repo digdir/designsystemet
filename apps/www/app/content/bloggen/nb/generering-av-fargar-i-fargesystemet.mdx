@@ -1,29 +1,14 @@
-import { PostLayout, Contributors } from '../../_components';
-import { ResponsiveIframe, Image } from '@components';
+---
+title: Generering av fargar i fargesystemet
+description: Dette innlegget tek deg med på reisa me gjekk gjennom for å utvikle vår eigen tilnærming til fargegenerering, og korleis dette systemet fungerer i dag.
+date: 2025-01-29
+author: Designsystemet
+imageSrc: /img/bloggen/fargepallet.png
+imageAlt: Illustrasjon av farger
+imageCaption: Illustrasjon av farger
+---
 
-export default ({ children }) => (
-  <PostLayout
-    content={children}
-    heading='Generering av fargar i fargesystemet'
-    ingress='Dette innlegget tek deg med på reisa me gjekk gjennom for å utvikle vår eigen tilnærming til fargegenerering, og korleis dette systemet fungerer i dag.'
-    date='29. januar 2025'
-    author='Designsystemet'
-    imageSrc='/img/bloggen/fargepallet.png'
-    imageAlt='Illustrasjon av farger'
-  />
-);
-
-export const metadata = {
-  title: 'Generering av fargar i fargesystemet',
-  description:
-    'Dette innlegget tek deg med på reisa me gjekk gjennom for å utvikle vår eigen tilnærming til fargegenerering, og korleis dette systemet fungerer i dag.',
-  openGraph: {
-    images: '/img/bloggen/fargepallet.png',
-  },
-};
-
-
-Det kan vere utfordrande å lage harmoniske fargeskalaer programmatisk – skalaer som er behagelege for auget og fungerer godt i eit fargesystem med omsyn til kontrast og tilgjengelegheit. 
+Det kan vere utfordrande å lage harmoniske fargeskalaer programmatisk - skalaer som er behagelege for auget og fungerer godt i eit fargesystem med omsyn til kontrast og tilgjengelegheit. 
 Fargane kan lett ende opp med å sjå feil ut eller mangle balanse.
 Kanskje dei blir for saturerte i dei øvre skalaene, eller rett og slett ikkje harmonerer når ein tek dei i bruk i praksis.
 

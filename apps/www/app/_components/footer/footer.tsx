@@ -4,11 +4,11 @@ import { type ReactNode, forwardRef } from 'react';
 
 import { ContentContainer } from '../content-container/content-container';
 import { RRLink } from '../link';
-import { Bronnoysund } from '../logos/Bronnoysund';
-import { Digdir } from '../logos/Digdir';
-import { Mattilsynet } from '../logos/Mattilsynet';
-import { Udir } from '../logos/Udir';
+import { Bronnoysund } from '../logos/bronnoysund';
+import { Digdir } from '../logos/digdir';
 import { KsDigital } from '../logos/ks-digital';
+import { Mattilsynet } from '../logos/mattilsynet';
+import { Udir } from '../logos/udir';
 import classes from './Footer.module.css';
 
 type LinkListItemProps = {

@@ -3,9 +3,9 @@ import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import { Outlet } from 'react-router';
 import { Footer } from '~/_components/footer/footer';
 import { Header } from '~/_components/header/header';
-import { Figma } from '~/_components/logos/Figma';
-import { Github } from '~/_components/logos/Github';
-import { Slack } from '~/_components/logos/Slack';
+import { Figma } from '~/_components/logos/figma';
+import { Github } from '~/_components/logos/github';
+import { Slack } from '~/_components/logos/slack';
 import type { Route } from './+types/layout';
 
 export const loader = ({ params: { lang } }: Route.LoaderArgs) => {
