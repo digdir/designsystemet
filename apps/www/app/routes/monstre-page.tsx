@@ -92,7 +92,9 @@ export default function Monstre({ loaderData }: Route.ComponentProps) {
         )}
       </div>
 
-      <h1 className='text-2xl mb-4'>Monstre {loaderData.name}</h1>
+      <DS.Heading level={1} data-size='xl'>
+        Monstre {loaderData.frontmatter.title}
+      </DS.Heading>
       {Component ? (
         /* @ts-ignore */
         <Component components={components} />
