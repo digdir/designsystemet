@@ -2,7 +2,7 @@ import * as R from 'ramda';
 
 import chalk from 'chalk';
 import { createTokens } from './create.js';
-import { generateThemesJson } from './create/generators/generate$themes.js';
+import { generate$Themes } from './create/generators/$themes.js';
 import { type FormatOptions, type ProcessReturn, processPlatform } from './process/platform.js';
 import type { Theme } from './types.js';
 
@@ -23,7 +23,7 @@ export const formatTokens = async (options: Omit<FormatOptions, 'process'>) => {
 export const formatTheme = async (themeConfig: Theme) => {
   const { tokenSets } = await createTokens(themeConfig);
 
-  const $themes = await generateThemesJson(['dark', 'light'], [themeConfig.name], themeConfig.colors);
+  const $themes = await generate$Themes(['dark', 'light'], [themeConfig.name], themeConfig.colors);
   const processedBuilds = await formatTokens({
     tokenSets,
     $themes,
