@@ -48,7 +48,7 @@ type BuildResult = {
   formatted: File[];
 };
 
-const initBuilRunResult: BuildResult = {
+const initResult: BuildResult = {
   formatted: [],
   permutation: {
     'color-scheme': '',
@@ -119,7 +119,7 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
   const { dry, process, $themes } = options;
   const platform = 'css';
   const tokenSets = process === 'format' ? options.tokenSets : undefined;
-  const tokensDir = process === 'build' ? options.tokensDir : '';
+  const tokensDir = process === 'build' ? options.tokensDir : undefined;
 
   /** For sharing build options in other files */
   buildOptions = options;
@@ -160,17 +160,17 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
   }, buildConfigs);
 
   const processedBuilds: ProcessedBuildConfigs<Array<BuildResult>> = {
-    'color-scheme': [initBuilRunResult],
-    'main-color': [initBuilRunResult],
-    'support-color': [initBuilRunResult],
-    'neutral-color': [initBuilRunResult],
-    'success-color': [initBuilRunResult],
-    'danger-color': [initBuilRunResult],
-    'warning-color': [initBuilRunResult],
-    'info-color': [initBuilRunResult],
-    semantic: [initBuilRunResult],
-    typography: [initBuilRunResult],
-    types: [initBuilRunResult],
+    'color-scheme': [initResult],
+    'main-color': [initResult],
+    'support-color': [initResult],
+    'neutral-color': [initResult],
+    'success-color': [initResult],
+    'danger-color': [initResult],
+    'warning-color': [initResult],
+    'info-color': [initResult],
+    semantic: [initResult],
+    typography: [initResult],
+    types: [initResult],
   };
 
   try {
@@ -227,7 +227,7 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
 
   processedBuilds.types = [
     {
-      ...initBuilRunResult,
+      ...initResult,
       formatted: [{ output: reactColorTypes, destination: colorsFileName }] as unknown as File[],
     },
   ];
