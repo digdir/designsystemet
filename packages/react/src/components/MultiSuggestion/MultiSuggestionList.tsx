@@ -55,7 +55,6 @@ export const MultiSuggestionList = forwardRef<
       class={className} // Using "class" since React does not translate className on custom elements
       id={listId}
       ref={ref}
-      tabIndex={-1}
       {...rest}
     />
   );

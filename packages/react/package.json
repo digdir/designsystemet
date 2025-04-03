@@ -47,9 +47,9 @@
     "@navikt/aksel-icons": "^7.0.0",
     "@radix-ui/react-slot": "^1.1.1",
     "@tanstack/react-virtual": "^3.11.2",
-    "@u-elements/u-datalist": "^0.1.3",
+    "@u-elements/u-datalist": "^0.1.5",
     "@u-elements/u-details": "^0.1.0",
-    "@u-elements/u-tags": "^0.1.2",
+    "@u-elements/u-tags": "^0.1.4",
     "clsx": "^2.1.1"
   },
   "devDependencies": {
