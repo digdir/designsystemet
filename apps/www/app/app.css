@@ -23,6 +23,10 @@ body {
 }
 
 @layer normalize {
+  * {
+    box-sizing: border-box;
+  }
+
   body {
     margin: 0;
   }

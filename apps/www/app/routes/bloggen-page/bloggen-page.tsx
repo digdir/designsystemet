@@ -5,6 +5,7 @@ import { bundleMDX } from 'mdx-bundler';
 import { Image } from '~/_components/image/image';
 import { RRLink } from '~/_components/link';
 import { MDXComponents } from '~/_components/mdx-components';
+import { formatDateNorwegian } from '~/_utils/date';
 import type { Route } from './+types/bloggen-page';
 import classes from './bloggen-page.module.css';
 
@@ -46,20 +47,6 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
     frontmatter: result.frontmatter,
     currentLang: params.lang,
   };
-};
-
-const formatDateNorwegian = (dateString: string): string => {
-  try {
-    const date = new Date(dateString);
-    return new Intl.DateTimeFormat('nb-NO', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric',
-    }).format(date);
-  } catch (error) {
-    console.error('Error formatting date:', error);
-    return dateString; // Return original string if parsing fails
-  }
 };
 
 export default function Bloggen({

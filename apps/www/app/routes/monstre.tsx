@@ -1,8 +1,8 @@
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { Card, Heading } from '@digdir/designsystemet-react';
+import {} from '@digdir/designsystemet-react';
 import { bundleMDX } from 'mdx-bundler';
-import { Link } from 'react-router';
+import { MDXComponents } from '~/_components/mdx-components';
 import type { Route } from './+types/monstre';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
@@ -13,57 +13,34 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     });
   }
 
-  /* Get all files in /content/monstre for the lang we have selected */
-  const files = readdirSync(
-    join(process.cwd(), 'app', 'content', 'monstre', lang),
-  );
-
-  /* Filter out files that are not .mdx */
-  const mdxFiles = files.filter((file) => file.endsWith('.mdx'));
-
-  /* Get titles and URLs for all files */
-  const titlesAndUrls: {
-    title: string;
-    url: string;
-  }[] = [];
-
   /* Map over files with mdx parser to get title */
-  for (const file of mdxFiles) {
-    const fileContent = readFileSync(
-      join(process.cwd(), 'app', 'content', 'monstre', lang, `${file}`),
-      'utf-8',
-    );
-    const result = await bundleMDX({
-      source: fileContent,
-    });
 
-    const title = result.frontmatter.title || file.replace('.mdx', '');
-    const url = file.replace('.mdx', '');
-    titlesAndUrls.push({
-      title,
-      url,
-    });
-  }
+  const fileContent = readFileSync(
+    join(process.cwd(), 'app', 'content', 'monstre', `${lang}_index.mdx`),
+    'utf-8',
+  );
+  const result = await bundleMDX({
+    source: fileContent,
+  });
 
-  return { items: titlesAndUrls, lang };
+  return { index: result, lang };
+};
+
+export const meta = () => {
+  return [
+    {
+      title: 'Mønstre',
+      description: 'Mønstre',
+    },
+  ];
 };
 
 export default function Monstre({
-  loaderData: { items },
+  loaderData: { index },
 }: Route.ComponentProps) {
   return (
-    <div>
-      {items.map((item) => {
-        return (
-          <Card key={item.url}>
-            <Card.Block>
-              <Heading level={2}>
-                <Link to={`${item.url}`}>{item.title}</Link>
-              </Heading>
-            </Card.Block>
-          </Card>
-        );
-      })}
-    </div>
+    <>
+      <MDXComponents code={index.code} />
+    </>
   );
 }

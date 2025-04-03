@@ -12,10 +12,14 @@ export default [
       index('routes/home.tsx'),
       ...prefix('/monstre', [
         layout('./layouts/monstre/layout.tsx', [
-          route('', 'routes/monstre.tsx'),
-        ]),
-        layout('./layouts/monstre/page.tsx', [
-          route('/:file', 'routes/monstre-page.tsx'),
+          // Index route
+          route('', 'routes/monstre.tsx', {
+            id: 'monstre-index',
+          }),
+          // Detail route
+          route('/:file', 'routes/monstre-page/monstre-page.tsx', {
+            id: 'monstre-page',
+          }),
         ]),
       ]),
       ...prefix('/bloggen', [

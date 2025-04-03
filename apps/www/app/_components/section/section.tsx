@@ -3,7 +3,7 @@ import cl from 'clsx/lite';
 import type * as React from 'react';
 
 import { ContentContainer } from '../content-container/content-container';
-import classes from './Section.module.css';
+import classes from './section.module.css';
 
 type SectionProps = {
   children: React.ReactNode;

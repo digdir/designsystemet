@@ -9,7 +9,7 @@ import { Digdir } from '../logos/digdir';
 import { KsDigital } from '../logos/ks-digital';
 import { Mattilsynet } from '../logos/mattilsynet';
 import { Udir } from '../logos/udir';
-import classes from './Footer.module.css';
+import classes from './footer.module.css';
 
 type LinkListItemProps = {
   text: string;
@@ -71,12 +71,12 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
               data-color='neutral'
               data-size='sm'
             >
-              <RRLink
-                to='mailto:designsystem@digdir.no'
+              <a
+                href='mailto:designsystem@digdir.no'
                 className={classes.button}
               >
                 Din etat? Ta kontakt!
-              </RRLink>
+              </a>
             </Button>
           </div>
           <div>
