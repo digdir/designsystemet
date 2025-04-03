@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-**MultiSuggestion**: Set tabindex="-1" on list, fixes keyboard focus trap
+**MultiSuggestion**: Fix keyboard focus trap on list
