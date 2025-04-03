@@ -1,4 +1,4 @@
-import type { TokenSet } from '../types.js';
+import type { TokenSet } from '../../types.js';
 
 type Metadata = {
   tokenSetOrder: string[];

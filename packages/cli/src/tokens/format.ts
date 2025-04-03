@@ -2,9 +2,9 @@ import * as R from 'ramda';
 
 import chalk from 'chalk';
 import { createTokens } from './create.js';
+import { generateThemesJson } from './create/generators/generate$themes.js';
 import { type FormatOptions, type ProcessReturn, processPlatform } from './process/platform.js';
 import type { Theme } from './types.js';
-import { generateThemesJson } from './write/generate$themes.js';
 
 export type File = {
   output: string;

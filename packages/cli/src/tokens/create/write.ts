@@ -4,8 +4,8 @@ import chalk from 'chalk';
 import * as R from 'ramda';
 import { mkdir, readFile, writeFile } from '../../utils.js';
 import type { Theme, TokenSets } from '../types.js';
-import { generateMetadataJson } from '../write/generate$metadata.js';
-import { generateThemesJson } from '../write/generate$themes.js';
+import { generateMetadataJson } from './generators/generate$metadata.js';
+import { generateThemesJson } from './generators/generate$themes.js';
 
 export const stringify = (data: unknown) => JSON.stringify(data, null, 2);
 
