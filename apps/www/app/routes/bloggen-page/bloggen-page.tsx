@@ -4,7 +4,7 @@ import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import { bundleMDX } from 'mdx-bundler';
 import { Image } from '~/_components/image/image';
 import { RRLink } from '~/_components/link';
-import { MDXComponents } from '~/_components/mdx-components';
+import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { formatDateNorwegian } from '~/_utils/date';
 import type { Route } from './+types/bloggen-page';
 import classes from './bloggen-page.module.css';

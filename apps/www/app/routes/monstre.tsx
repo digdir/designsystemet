@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import {} from '@digdir/designsystemet-react';
 import { bundleMDX } from 'mdx-bundler';
-import { MDXComponents } from '~/_components/mdx-components';
+import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import type { Route } from './+types/monstre';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {

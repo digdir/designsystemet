@@ -3,10 +3,10 @@ import { join } from 'node:path';
 import { Heading } from '@digdir/designsystemet-react';
 import { ComponentIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { bundleMDX } from 'mdx-bundler';
 import {} from '~/_components/banner/banner';
-import { MDXComponents } from '~/_components/mdx-components';
+import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { formatDateNorwegian } from '~/_utils/date';
+import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import type { Route } from './+types/monstre-page';
 import classes from './monstre-page.module.css';
 
@@ -40,9 +40,7 @@ export async function loader({ params }: Route.LoaderArgs) {
   const fileContent = readFileSync(filePath, 'utf-8');
 
   // Bundle the MDX content
-  const result = await bundleMDX({
-    source: fileContent,
-  });
+  const result = await generateFromMdx(fileContent);
 
   return {
     name: params.file,
