@@ -21,7 +21,7 @@
   "dependencies": {
     "@digdir/designsystemet": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
-    "@navikt/aksel-icons": "^7.18.0",
+    "@navikt/aksel-icons": "^7.0.0",
     "clsx": "^2.1.1",
     "next": "^15.2.3",
     "prism-react-renderer": "^2.4.1",
