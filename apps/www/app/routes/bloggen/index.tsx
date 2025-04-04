@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import {} from '@digdir/designsystemet-react';
 import { bundleMDX } from 'mdx-bundler';
 import BlogCard from '~/_components/blog-card/blog-card';
-import type { Route } from './+types/bloggen';
+import type { Route } from './+types';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   if (!lang) {

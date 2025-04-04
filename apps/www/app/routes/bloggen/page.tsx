@@ -6,8 +6,8 @@ import { Image } from '~/_components/image/image';
 import { RRLink } from '~/_components/link';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { formatDateNorwegian } from '~/_utils/date';
-import type { Route } from './+types/bloggen-page';
-import classes from './bloggen-page.module.css';
+import type { Route } from './+types/page';
+import classes from './page.module.css';
 
 export const loader = async ({ params }: Route.LoaderArgs) => {
   if (!params.file) {

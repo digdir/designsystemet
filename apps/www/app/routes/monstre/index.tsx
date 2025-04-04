@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import {} from '@digdir/designsystemet-react';
 import { bundleMDX } from 'mdx-bundler';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
-import type { Route } from './+types/monstre';
+import type { Route } from './+types';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   if (!lang) {

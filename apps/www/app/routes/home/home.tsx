@@ -1,7 +1,14 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { Heading } from '@digdir/designsystemet-react';
-import { ComponentIcon, PaletteIcon, WrenchIcon } from '@navikt/aksel-icons';
+import {
+  BranchingIcon,
+  ComponentIcon,
+  EnvelopeClosedIcon,
+  PaletteIcon,
+  PersonChatIcon,
+  WrenchIcon,
+} from '@navikt/aksel-icons';
 import { bundleMDX } from 'mdx-bundler';
 import BlogCard from '~/_components/blog-card/blog-card';
 import { ContentContainer } from '~/_components/content-container/content-container';
@@ -171,6 +178,32 @@ export default function Home({
           />
         ))}
       </Section>
+      <ImageBanner
+        title='Bli med å utvikle designsystemet!'
+        description='Ved å samarbeide om designsystemet kan vi lage mer helhetlige brukeropplevelser på tvers av offentlig sektor. Samtidig sparer vi oss for å gjøre de samme oppgavene flere ganger. Designsystemet  skal være et felles hjem for gjenbrukbare komponenter, god praksis, interaksjonsmønstre, brukerdialog, innsikt og mer. Vil du høre mer eller hjelpe? Ta kontakt med oss!'
+        imgSrc='/img/Logotest.svg'
+        headingLevel='h2'
+        imgWidth='small'
+        className='ds-logo-image'
+        buttons={[
+          {
+            text: 'Bli med på Slack',
+            href: '/slack',
+            prefix: <PersonChatIcon fontSize={24} aria-hidden='true' />,
+            variant: 'primary',
+          },
+          {
+            text: 'Bidra på GitHub',
+            href: 'https://github.com/digdir/designsystemet',
+            prefix: <BranchingIcon fontSize={24} aria-hidden='true' />,
+          },
+          {
+            text: 'Send en epost',
+            href: 'mailto:designsystem@digdir.no',
+            prefix: <EnvelopeClosedIcon fontSize={24} aria-hidden='true' />,
+          },
+        ]}
+      />
     </>
   );
 }

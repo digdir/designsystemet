@@ -7,8 +7,8 @@ import {} from '~/_components/banner/banner';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { formatDateNorwegian } from '~/_utils/date';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
-import type { Route } from './+types/monstre-page';
-import classes from './monstre-page.module.css';
+import type { Route } from './+types/page';
+import classes from './page.module.css';
 
 export async function loader({ params }: Route.LoaderArgs) {
   const file = params.file;
