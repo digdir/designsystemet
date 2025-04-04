@@ -1,8 +1,8 @@
 import type { StoryContext } from '@storybook/react';
 import * as HTMLParser from 'prettier/parser-html';
 import { format as prettierFormat } from 'prettier/standalone';
-import * as ReactDOMServer from 'react-dom/server';
 import { type FunctionComponent, type ReactNode, createElement } from 'react';
+import * as ReactDOMServer from 'react-dom/server';
 
 const formatCache = new Map<string, string>();
 
