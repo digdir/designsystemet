@@ -1,0 +1,115 @@
+.section {
+  position: relative;
+  margin: 110px 0;
+}
+
+.blue {
+  background-color: var(--ds-color-brand3-surface-tinted);
+}
+
+.red {
+  background-color: var(--ds-color-brand1-surface-tinted);
+}
+
+.yellow {
+  background-color: var(--ds-color-brand2-surface-tinted);
+}
+
+.grey {
+  background-color: var(--ds-color-neutral-background-tinted);
+}
+
+.white {
+  background-color: var(--ds-color-neutral-background-default);
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  flex-direction: row;
+}
+
+.imgContainer {
+  flex-basis: 570px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.smallImage {
+  flex-basis: 400px;
+}
+
+.textContainer {
+  flex-basis: 400px;
+  flex-grow: 500;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  margin-bottom: var(--ds-size-4);
+}
+
+.tag {
+  margin-bottom: 8px;
+}
+
+.img {
+  width: 100%;
+  display: block;
+}
+
+.video {
+  width: 100%;
+  height: auto;
+}
+
+.region {
+  color: inherit;
+}
+
+.buttons {
+  color: inherit;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-size-5);
+  margin-top: var(--ds-size-5);
+}
+
+@media (max-width: 480px) {
+  .button {
+    width: 100%;
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  margin-top: var(--ds-size-5);
+  font-size: 18px;
+  font-weight: 500;
+  width: fit-content;
+}
+
+.link svg {
+  margin-right: var(--ds-size-2);
+}
+
+.fallbackImg {
+  display: none;
+}
+
+@media (prefers-reduced-motion) {
+  .fallbackImg {
+    display: block;
+    width: 100%;
+  }
+
+  .video {
+    display: none;
+  }
+}

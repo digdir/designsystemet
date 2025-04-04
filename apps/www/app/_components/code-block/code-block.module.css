@@ -1,0 +1,37 @@
+.codeBlock {
+  max-width: 100%;
+  overflow-x: auto;
+  width: auto;
+  padding: var(--ds-size-5);
+  border-top-left-radius: var(--ds-border-radius-md);
+  border-top-left-radius: var(--ds-border-radius-md);
+  height: fit-content;
+  font-size: min(0.8em, 14px);
+  background-color: var(--ds-color-neutral-background-tinted);
+  font-family: monospace;
+  margin-bottom: 0;
+
+  & [class~='plain-text'] {
+    color: var(--ds-color-neutral-text-default);
+  }
+}
+
+.codeBlockWrapper {
+  position: relative;
+}
+
+.copyButton {
+  border-radius: 0;
+  margin-left: auto;
+  border-bottom-right-radius: var(--ds-border-radius-md);
+}
+
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: var(--ds-size-4);
+  background-color: var(--ds-color-neutral-background-tinted);
+  border-top: 1px solid var(--ds-color-neutral-border-subtle);
+  border-bottom-right-radius: var(--ds-border-radius-md);
+  border-bottom-left-radius: var(--ds-border-radius-md);
+}

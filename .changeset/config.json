@@ -20,6 +20,7 @@
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "ignore": [
+    "www",
     "theme",
     "storefront",
     "@repo/components",

@@ -1,0 +1,127 @@
+.wrapper {
+  --figure-y-offset: 500px;
+  --figure-rotation: 72deg;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.page {
+  margin-top: var(--ds-size-18);
+  margin-bottom: var(--page-spacing-bottom);
+}
+
+.intro {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: var(--ds-size-5);
+  text-align: center;
+  margin: 0 auto;
+  margin-top: var(--ds-size-12);
+
+  @media screen and (max-width: 860px) {
+    & h1 {
+      font-size: var(--ds-font-size-8);
+    }
+  }
+}
+
+.ingress {
+  margin: 0 auto;
+}
+
+.meta {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--ds-size-1);
+  gap: var(--ds-size-3);
+  color: var(--ds-color-neutral-text-subtle);
+}
+
+.metaSquare {
+  width: 7px;
+  height: 7px;
+  transform: rotate(45deg);
+  border-radius: 1px;
+  background-color: var(--ds-color-brand1-border-default);
+  margin: auto 0;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-18);
+}
+
+.content {
+  --text-max-width: 700px;
+
+  max-width: var(--text-max-width);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.main > figure {
+  margin: auto;
+  width: 100%;
+}
+
+.main > figure img {
+  width: 100%;
+}
+
+.content:last-child {
+  margin-bottom: var(--ds-size-12);
+}
+
+.wantToWrite {
+  margin-top: var(--ds-size-12);
+  border-radius: var(--ds-border-radius-lg);
+  background: var(--ds-color-surface-tinted);
+  color: var(--ds-color-text-default);
+  padding: var(--ds-size-8);
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: var(--ds-size-4);
+}
+
+.wantToWrite p a {
+  display: inline-block;
+}
+
+.wantToWrite p,
+.wantToWrite h3 {
+  margin: 0;
+}
+
+.figure {
+  position: absolute;
+  top: calc(var(--figure-y-offset) * var(--number));
+  z-index: -1;
+  transform: rotate(calc(var(--figure-rotation) * var(--number)));
+}
+
+.figure:nth-of-type(2n - 1) {
+  left: 100px;
+}
+
+.figure:nth-of-type(2n) {
+  right: 100px;
+}
+
+@media screen and (max-width: 1350px) {
+  .figure {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .content img {
+    width: 100%;
+    margin-left: 0 !important;
+  }
+}
