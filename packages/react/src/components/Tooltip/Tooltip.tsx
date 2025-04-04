@@ -43,6 +43,11 @@ export type TooltipProps = MergeRight<
      */
     placement?: 'top' | 'right' | 'bottom' | 'left';
     /**
+     * Whether to enable auto placement.
+     * @default true
+     */
+    autoPlacement?: boolean;
+    /**
      * Whether the tooltip is open or not.
      * This overrides the internal state of the tooltip.
      */
@@ -65,7 +70,16 @@ export type TooltipProps = MergeRight<
  */
 export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
   function Tooltip(
-    { id, children, content, placement = 'top', open, className, ...rest },
+    {
+      id,
+      children,
+      content,
+      placement = 'top',
+      autoPlacement = true,
+      open,
+      className,
+      ...rest
+    },
     ref,
   ) {
     const randomTooltipId = useId();
@@ -107,9 +121,9 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
                 );
                 return parseFloat(styles.height);
               }),
-              flip({
-                fallbackAxisSideDirection: 'start',
-              }),
+              ...(autoPlacement
+                ? [flip({ fallbackAxisSideDirection: 'start' }), shift()]
+                : []),
               shift(),
               arrowPseudoElement,
             ],
