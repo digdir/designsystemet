@@ -62,6 +62,7 @@ const config: StorybookConfig = {
     '@storybook/addon-themes',
     'storybook-addon-pseudo-states',
     '@storybook/experimental-addon-test',
+    '@whitespace/storybook-addon-html',
   ],
   staticDirs: ['../assets'],
   framework: {
