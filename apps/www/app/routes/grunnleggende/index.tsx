@@ -2,7 +2,7 @@ import { Heading } from '@digdir/designsystemet-react';
 import * as Aksel from '@navikt/aksel-icons';
 import { Fragment } from 'react';
 import { useRouteLoaderData } from 'react-router';
-import { Grid } from '~/_components/grid/Grid';
+import { Grid } from '~/_components/grid/grid';
 import { NavigationCard } from '~/_components/navigation-card/navigation-card';
 import type { Route } from '../../layouts/grunnleggende/+types/layout';
 
