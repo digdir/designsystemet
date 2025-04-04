@@ -24,6 +24,7 @@ export const Sidebar = () => {
 
   const [isSticky, setSticky] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
+  const [showLightnessPage, setShowLightnessPage] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,31 +61,7 @@ export const Sidebar = () => {
             showSidebar && classes.showSidebar,
           )}
         >
-          <Tabs
-            value={activePage}
-            onChange={(value) =>
-              setActivePage(value as 'colors' | 'dimensions')
-            }
-          >
-            <Tabs.List>
-              <Tabs.Tab value='colors'>Farger</Tabs.Tab>
-              <Tabs.Tab value='dimensions'>Dimensjoner</Tabs.Tab>
-            </Tabs.List>
-            <div className={classes.tabContent}>
-              <Tabs.Panel className={classes.tabPanel} value='colors'>
-                <ColorPage />
-              </Tabs.Panel>
-              <Tabs.Panel className={classes.tabPanel} value='dimensions'>
-                <BorderRadiusInput />
-              </Tabs.Panel>
-            </div>
-          </Tabs>
-
-          <div className={classes.bottom} data-size='sm'>
-            <div>
-              <TokenModal />
-            </div>
-          </div>
+          {activePage === 'colors' && <ColorPage />}
         </div>
       </div>
       {isMobile && (

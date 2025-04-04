@@ -23,6 +23,7 @@ type ColorPaneProps = {
   onCancel: () => void;
   onRemove: () => void;
   colorType: 'main' | 'neutral' | 'support';
+  onStaticSaturation: (saturation: string) => void;
 };
 
 export const ColorPane = ({
@@ -35,6 +36,7 @@ export const ColorPane = ({
   setName,
   onRemove,
   colorType,
+  onStaticSaturation,
 }: ColorPaneProps) => {
   const mainColors = useThemeStore((state) => state.colors.main);
   const [colorError, setColorError] = useState('');

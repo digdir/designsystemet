@@ -41,7 +41,7 @@ export const AppearanceToggle = ({
             setActive(colorScheme.value);
             setColorScheme(colorScheme.value);
           }}
-          variant={colorScheme.value === active ? 'primary' : 'secondary'}
+          variant={colorScheme.value === active ? 'primary' : 'tertiary'}
           data-color='neutral'
           aria-label={`Sett til ${colorScheme.name} visning`}
           // biome-ignore lint/a11y/useSemanticElements: <explanation>
@@ -50,10 +50,10 @@ export const AppearanceToggle = ({
           aria-current={colorScheme.value === active}
         >
           {colorScheme.value === 'light' && (
-            <SunIcon title='sol' fontSize='1.5rem' />
+            <SunIcon title='sol' fontSize='2rem' />
           )}
           {colorScheme.value === 'dark' && (
-            <MoonIcon title='måne' fontSize='1.5rem' />
+            <MoonIcon title='måne' fontSize='2rem' />
           )}
           {colorScheme.name}
 

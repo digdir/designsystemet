@@ -5,5 +5,11 @@
 
 .item {
   flex: 1 1;
-  width: 100px;
+  width: 88px;
+  gap: 10px;
+}
+
+.item[data-variant='primary'] {
+  background-color: var(--ds-color-brand3-surface-hover);
+  color: var(--ds-color-neutral-text-default);
 }
