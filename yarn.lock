@@ -8025,7 +8025,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hastscript@npm:^9.0.0, hastscript@npm:^9.0.1":
+"hastscript@npm:^9.0.0":
   version: 9.0.1
   resolution: "hastscript@npm:9.0.1"
   dependencies:
@@ -8606,13 +8606,6 @@ __metadata:
   version: 1.0.0
   resolution: "isarray@npm:1.0.0"
   checksum: 10/f032df8e02dce8ec565cf2eb605ea939bdccea528dbcf565cdf92bfa2da9110461159d86a537388ef1acef8815a330642d7885b29010e8f7eac967c9993b65ab
-  languageName: node
-  linkType: hard
-
-"isbot@npm:^5.1.17":
-  version: 5.1.25
-  resolution: "isbot@npm:5.1.25"
-  checksum: 10/4f8a309fd4edda99b2683298f38661cf9c12abbf8e80a988875439969456f78424f4691cef98c42e9fd2f21a084fa592bf818527fc3188dabef0ddb6b8ec16cc
   languageName: node
   linkType: hard
 
@@ -15084,8 +15077,6 @@ __metadata:
     "@types/react-dom": "npm:^19.1.0"
     "@vercel/react-router": "npm:^1.1.0"
     clsx: "npm:^2.1.1"
-    hastscript: "npm:^9.0.1"
-    isbot: "npm:^5.1.17"
     mdx-bundler: "npm:^10.1.1"
     react: "npm:^19.1.0"
     react-code-block: "npm:^1.1.3"
