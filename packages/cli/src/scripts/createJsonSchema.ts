@@ -2,7 +2,7 @@ import { writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { z } from 'zod';
 import { zodToJsonSchema } from 'zod-to-json-schema';
-import { configFileSchema } from '../../bin/config.js';
+import { configFileSchema } from '../config.js';
 
 const schema = z
   .object({
