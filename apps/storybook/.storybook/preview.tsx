@@ -11,6 +11,7 @@ import { CodeBlock } from '../../_components';
 import { customStylesDecorator } from '../story-utils/customStylesDecorator';
 import { fontsLoader } from '../story-utils/fontsLoader';
 import { allModes, viewportWidths } from '../story-utils/modes';
+import { transformSource } from '../story-utils/transformSource';
 import customTheme from './customTheme';
 
 const viewports: Record<string, object> = {};
@@ -137,12 +138,30 @@ const components = {
 
 const preview: Preview = {
   tags: ['a11y-test'],
+  globalTypes: {
+    html: {
+      description: '"Show code" will output raw html',
+      toolbar: {
+        title: 'Show code as html',
+        icon: 'markup',
+        items: ['true', 'false'],
+        dynamicTitle: false,
+      },
+    },
+  },
+  initialGlobals: {
+    html: 'false',
+  },
   parameters: {
     layout: 'centered',
     viewMode: 'docs',
     docs: {
       theme: customTheme,
       components,
+      source: {
+        transform: transformSource,
+        type: 'auto',
+      },
     },
     controls: {
       matchers: {
