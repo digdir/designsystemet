@@ -57,6 +57,10 @@ export default function RootLayout({
 }: Route.ComponentProps) {
   const menu = [
     {
+      name: 'Grunnleggende',
+      href: `/${lang}/grunnleggende`,
+    },
+    {
       name: 'Mønstre',
       href: `/${lang}/monstre`,
     },

@@ -11,22 +11,24 @@ import type { Route } from './+types/page';
 import classes from './page.module.css';
 
 export async function loader({ params }: Route.LoaderArgs) {
-  const file = params.file;
+  const { '*': file } = params;
   const filePath = join(
     process.cwd(),
     'app',
     'content',
-    'monstre',
+    'grunnleggende',
     params.lang,
     `${file}.mdx`,
   );
 
+  console.log(filePath);
+
   const nbExists = existsSync(
-    join(process.cwd(), 'app', 'content', 'monstre', 'nb', `${file}.mdx`),
+    join(process.cwd(), 'app', 'content', 'grunnleggende', 'nb', `${file}.mdx`),
   );
 
   const enExists = existsSync(
-    join(process.cwd(), 'app', 'content', 'monstre', 'en', `${file}.mdx`),
+    join(process.cwd(), 'app', 'content', 'grunnleggende', 'en', `${file}.mdx`),
   );
 
   if (!existsSync(filePath)) {
@@ -55,10 +57,10 @@ export async function loader({ params }: Route.LoaderArgs) {
 }
 
 export const meta = ({ params }: Route.MetaArgs) => {
-  return [{ title: `Monstre ${params.file} - ${params.lang}` }];
+  return [{ title: `Grunnleggende ${params.file} - ${params.lang}` }];
 };
 
-export default function Monstre({ loaderData }: Route.ComponentProps) {
+export default function Grunnleggende({ loaderData }: Route.ComponentProps) {
   return (
     <>
       <div className={classes.header}>

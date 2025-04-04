@@ -12,11 +12,9 @@ export default [
       index('routes/home/home.tsx'),
       ...prefix('/monstre', [
         layout('./layouts/monstre/layout.tsx', [
-          // Index route
           route('', 'routes/monstre/index.tsx', {
             id: 'monstre-index',
           }),
-          // Detail route
           route('/:file', 'routes/monstre/page.tsx', {
             id: 'monstre-page',
           }),
@@ -28,6 +26,16 @@ export default [
         ]),
         layout('./layouts/bloggen/page.tsx', [
           route('/:file', 'routes/bloggen/page.tsx'),
+        ]),
+      ]),
+      ...prefix('/grunnleggende', [
+        layout('./layouts/grunnleggende/layout.tsx', [
+          route('/', 'routes/grunnleggende/index.tsx', {
+            id: 'grunnleggende-index',
+          }),
+          route('/*', 'routes/grunnleggende/page.tsx', {
+            id: 'grunnleggende-page',
+          }),
         ]),
       ]),
       route('/komponenter', 'routes/components/components.tsx', {

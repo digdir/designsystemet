@@ -1,10 +1,8 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { Paragraph } from '@digdir/designsystemet-react';
 import { LayersIcon } from '@navikt/aksel-icons';
-import cl from 'clsx/lite';
 import { bundleMDX } from 'mdx-bundler';
-import { Outlet, useLocation, useMatches } from 'react-router';
+import { Outlet, useMatches } from 'react-router';
 import {
   Banner,
   BannerHeading,
@@ -12,7 +10,7 @@ import {
   BannerIngress,
 } from '~/_components/banner/banner';
 import { ContentContainer } from '~/_components/content-container/content-container';
-import { RRLink } from '~/_components/link';
+import { Sidebar } from '~/_components/sidebar/sidebar';
 import type { Route } from './+types/layout';
 import classes from './layout.module.css';
 
@@ -56,7 +54,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     });
 
     const title = result.frontmatter.title || file.replace('.mdx', '');
-    const url = file.replace('.mdx', '');
+    const url = `/${lang}/monstre/${file.replace('.mdx', '')}`;
 
     if (!result.frontmatter.category) {
       continue;
@@ -75,13 +73,8 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   return { lang, cats };
 };
 
-export default function Layout({
-  loaderData: { lang, cats },
-}: Route.ComponentProps) {
+export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
   const matches = useMatches();
-  const location = useLocation().pathname;
-
-  console.log('location', location);
 
   /* if we have id monstre-page, hide banner */
   const isMonstrePage = matches.some((match) => match.id === 'monstre-page');
@@ -103,46 +96,7 @@ export default function Layout({
       ) : null}
       <ContentContainer>
         <div className={classes['sidebar-container']} data-color='neutral'>
-          <div className={classes.sidebar}>
-            <Paragraph data-size='md' asChild>
-              <h2 className={classes.title}>Mønstre</h2>
-            </Paragraph>
-            <ul className={classes.list}>
-              {Object.entries(cats).map(([key, value]) => {
-                if (!value.length) {
-                  return null;
-                }
-                return (
-                  <li key={key} className={classes.listGroup}>
-                    <Paragraph asChild data-size='md'>
-                      <div className={classes.innerTitle}>{key}</div>
-                    </Paragraph>
-                    <ul className={classes.innerList}>
-                      {value.map((item) => {
-                        const url = `/${lang}/monstre/${item.url}`;
-
-                        return (
-                          <li key={item.url} className={classes.listItem}>
-                            <Paragraph asChild data-size='sm'>
-                              <RRLink
-                                to={url}
-                                className={cl(
-                                  classes.link,
-                                  url === location && classes.linkActive,
-                                )}
-                              >
-                                {item.title}
-                              </RRLink>
-                            </Paragraph>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+          <Sidebar cats={cats} title='Mønstre' className={classes.sidebar} />
           <div className={classes.content}>
             <Outlet />
           </div>
