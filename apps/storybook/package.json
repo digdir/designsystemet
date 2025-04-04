@@ -14,8 +14,8 @@
   "description": "",
   "dependencies": {
     "clsx": "^2.1.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@digdir/designsystemet-css": "workspace:^",
@@ -35,7 +35,7 @@
     "@storybook/react-vite": "^8.5.2",
     "@storybook/theming": "^8.5.2",
     "@storybook/types": "^8.5.2",
-    "@types/react": "19.0.10",
+    "@types/react": "19.0.12",
     "@types/react-dom": "^19.0.3",
     "@types/react-syntax-highlighter": "^15",
     "@vitest/browser": "3.0.5",
