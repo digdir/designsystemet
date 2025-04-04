@@ -1,4 +1,5 @@
 import { Heading } from '@digdir/designsystemet-react';
+import * as Aksel from '@navikt/aksel-icons';
 import { Fragment } from 'react';
 import { useRouteLoaderData } from 'react-router';
 import { Grid } from '~/_components/grid/Grid';
@@ -15,25 +16,32 @@ export const meta = () => {
 };
 
 export default function Monstre() {
-  const { cats, lang } = useRouteLoaderData(
+  const { cats, descriptions } = useRouteLoaderData(
     'layouts/grunnleggende/layout',
   ) as Route.ComponentProps['loaderData'];
 
   return (
     <>
       {Object.entries(cats).map(([key, value]) => {
-        console.log(value);
         return (
           <Fragment key={key}>
             <Heading>{key}</Heading>
-            <p>Beskrivelse her</p>
+            <p>
+              {descriptions[key as keyof typeof descriptions] || 'Beskrivelse'}
+            </p>
             <Grid>
               {value.map((item) => {
+                const Icon = item.icon
+                  ? Aksel[item.icon as keyof typeof Aksel]
+                  : Aksel.LayersIcon;
                 return (
                   <NavigationCard
                     key={item.title}
                     title={item.title}
                     url={item.url}
+                    color={item.color}
+                    description={item.description}
+                    icon={<Icon />}
                   />
                 );
               })}

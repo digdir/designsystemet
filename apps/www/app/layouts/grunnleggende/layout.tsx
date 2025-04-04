@@ -1,6 +1,6 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
-import { LayersIcon } from '@navikt/aksel-icons';
+import * as AkselIcon from '@navikt/aksel-icons';
 import { bundleMDX } from 'mdx-bundler';
 import { Outlet, useMatches } from 'react-router';
 import {
@@ -33,6 +33,9 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     [key: string]: {
       title: string;
       url: string;
+      icon: string;
+      color: 'red' | 'blue' | 'yellow';
+      description: string;
     }[];
   } = {
     Introduksjon: [],
@@ -66,10 +69,24 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     cats[result.frontmatter.category].push({
       title: result.frontmatter.sidebar_title || title,
       url,
+      icon: result.frontmatter.icon,
+      color: result.frontmatter.color || 'red',
+      description: result.frontmatter.description || '',
     });
   }
 
-  return { lang, cats };
+  return {
+    lang,
+    cats,
+    descriptions: {
+      Introduksjon:
+        'Designsystemet inneholder grunnleggende designelementer, mønstre, god praksis og kodede komponenter som gir verdi å dele på tvers av offentlig sektor.',
+      Designelementer:
+        'Stilene i designsystemet er grunnleggende designelementer som brukes i komponentene. De finnes i flere sett for ulike identiteter og ulike behov og situasjoner. For eksempel har vi et eget sett for kompakt visning, som kan være hensiktsmessig å bruke i verktøy eller admingrensesnitt.',
+      'For designere': 'Ressurser og veiledning relevant for designere',
+      'For utviklere': 'Ressurser og veiledning relevant for utviklere',
+    },
+  };
 };
 
 /**
@@ -118,7 +135,7 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
       {!isGrunnleggendePage ? (
         <Banner color='yellow'>
           <BannerIcon>
-            <LayersIcon />
+            <AkselIcon.LayersIcon />
           </BannerIcon>
           <BannerHeading level={1}>Grunnleggende</BannerHeading>
           <BannerIngress>
