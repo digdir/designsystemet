@@ -56,8 +56,8 @@ export async function loader({ params }: Route.LoaderArgs) {
   };
 }
 
-export const meta = ({ params }: Route.MetaArgs) => {
-  return [{ title: `Grunnleggende ${params.file} - ${params.lang}` }];
+export const meta = ({ data }: Route.MetaArgs) => {
+  return [{ title: `${data.frontmatter.title} - Designsystemet` }];
 };
 
 export default function Grunnleggende({ loaderData }: Route.ComponentProps) {

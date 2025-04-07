@@ -6,6 +6,7 @@ import { Image } from '~/_components/image/image';
 import { RRLink } from '~/_components/link';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { formatDateNorwegian } from '~/_utils/date';
+import { generateMetadata } from '~/_utils/metadata';
 import type { Route } from './+types/page';
 import classes from './page.module.css';
 
@@ -47,6 +48,14 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
     frontmatter: result.frontmatter,
     currentLang: params.lang,
   };
+};
+
+export const meta = ({ data }: Route.MetaArgs) => {
+  return generateMetadata({
+    title: data.frontmatter.title,
+    description: data.frontmatter.description,
+    image: data.frontmatter.imageSrc,
+  });
 };
 
 export default function Bloggen({
