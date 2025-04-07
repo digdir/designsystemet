@@ -1,7 +1,7 @@
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 
-import type { Placement } from '@floating-ui/react';
+import type { Placement } from '@floating-ui/dom';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { Popover } from '../Popover';
