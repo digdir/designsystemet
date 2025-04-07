@@ -139,18 +139,20 @@ const components = {
 const preview: Preview = {
   tags: ['a11y-test'],
   globalTypes: {
-    html: {
-      description: '"Show code" will output raw html',
+    codePreview: {
+      description: '"Show code" will output the selected format',
       toolbar: {
-        title: 'Show code as html',
         icon: 'markup',
-        items: ['true', 'false'],
-        dynamicTitle: false,
+        items: [
+          { title: 'HTML', value: 'html' },
+          { title: 'React', value: 'react' },
+        ],
+        dynamicTitle: true,
       },
     },
   },
   initialGlobals: {
-    html: 'false',
+    codePreview: 'react',
   },
   parameters: {
     layout: 'centered',

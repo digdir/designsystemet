@@ -7,7 +7,7 @@ import * as ReactDOMServer from 'react-dom/server';
 const formatCache = new Map<string, string>();
 
 export const transformSource = (src: string, ctx: StoryContext) => {
-  if (ctx.globals.html === 'true') {
+  if (ctx.globals.codePreview === 'html') {
     let component: ReactNode;
 
     //a storyFn expects 1 argument, a storyObj expects 2
