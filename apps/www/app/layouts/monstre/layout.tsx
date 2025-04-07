@@ -2,7 +2,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { LayersIcon } from '@navikt/aksel-icons';
 import { bundleMDX } from 'mdx-bundler';
-import { Outlet, useMatches } from 'react-router';
+import { Outlet, isRouteErrorResponse, useMatches } from 'react-router';
 import {
   Banner,
   BannerHeading,
@@ -103,5 +103,34 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
         </div>
       </ContentContainer>
     </>
+  );
+}
+
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  let message = 'Oops!!!';
+  let details = 'An unexpected error occurred.';
+  let stack: string | undefined;
+
+  if (isRouteErrorResponse(error)) {
+    message = error.status === 404 ? '404' : 'Error';
+    details =
+      error.status === 404
+        ? 'Vi kunne ikke finne siden du leter etter.'
+        : error.statusText || details;
+  } else if (import.meta.env.DEV && error && error instanceof Error) {
+    details = error.message;
+    stack = error.stack;
+  }
+
+  return (
+    <ContentContainer>
+      <h1>{message}</h1>
+      <p>{details}</p>
+      {stack && (
+        <pre>
+          <code>{stack}</code>
+        </pre>
+      )}
+    </ContentContainer>
   );
 }

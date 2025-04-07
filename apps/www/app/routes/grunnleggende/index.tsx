@@ -1,4 +1,4 @@
-import { Heading } from '@digdir/designsystemet-react';
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import * as Aksel from '@navikt/aksel-icons';
 import { Fragment } from 'react';
 import { useRouteLoaderData } from 'react-router';
@@ -24,10 +24,14 @@ export default function Monstre() {
       {Object.entries(cats).map(([key, value]) => {
         return (
           <Fragment key={key}>
-            <Heading>{key}</Heading>
-            <p>
+            <Heading data-size='md'>{key}</Heading>
+            <Paragraph
+              style={{
+                maxWidth: '65ch',
+              }}
+            >
               {descriptions[key as keyof typeof descriptions] || 'Beskrivelse'}
-            </p>
+            </Paragraph>
             <Grid>
               {value.map((item) => {
                 const Icon = item.icon

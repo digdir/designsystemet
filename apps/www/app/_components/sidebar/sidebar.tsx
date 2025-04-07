@@ -1,7 +1,7 @@
 import { Paragraph } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
-import { useLocation, useParams } from 'react-router';
+import { useLocation } from 'react-router';
 import { RRLink } from '../link';
 import classes from './sidebar.module.css';
 
@@ -16,7 +16,6 @@ export type SidebarProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 export const Sidebar = ({ cats, title, ...props }: SidebarProps) => {
-  const { lang } = useParams();
   const location = useLocation().pathname;
 
   return (

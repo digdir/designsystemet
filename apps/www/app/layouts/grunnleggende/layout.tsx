@@ -1,7 +1,7 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import * as AkselIcon from '@navikt/aksel-icons';
-import { Outlet, useMatches } from 'react-router';
+import { Outlet, isRouteErrorResponse, useMatches } from 'react-router';
 import {
   Banner,
   BannerHeading,
@@ -53,7 +53,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     const title = result.frontmatter.title || fileName.replace('.mdx', '');
 
     // Generate URL based on relative path, preserving directory structure
-    const urlPath = relativePath.replace('.mdx', '');
+    const urlPath = relativePath.replace('.mdx', '').replace(/\\/g, '/');
     const url = `/${lang}/grunnleggende/${urlPath}`;
 
     if (!result.frontmatter.category) {
@@ -155,5 +155,34 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
         </div>
       </ContentContainer>
     </>
+  );
+}
+
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  let message = 'Oops!!!';
+  let details = 'An unexpected error occurred.';
+  let stack: string | undefined;
+
+  if (isRouteErrorResponse(error)) {
+    message = error.status === 404 ? '404' : 'Error';
+    details =
+      error.status === 404
+        ? 'Vi kunne ikke finne siden du leter etter.'
+        : error.statusText || details;
+  } else if (import.meta.env.DEV && error && error instanceof Error) {
+    details = error.message;
+    stack = error.stack;
+  }
+
+  return (
+    <ContentContainer>
+      <h1>{message}</h1>
+      <p>{details}</p>
+      {stack && (
+        <pre>
+          <code>{stack}</code>
+        </pre>
+      )}
+    </ContentContainer>
   );
 }
