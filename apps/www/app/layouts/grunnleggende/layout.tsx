@@ -142,16 +142,17 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
           </BannerIngress>
         </Banner>
       ) : null}
-      <ContentContainer>
-        <div className={classes['sidebar-container']} data-color='neutral'>
-          <Sidebar
-            cats={cats}
-            title='Grunnleggende'
-            className={classes.sidebar}
-          />
-          <div className={classes.content}>
-            <Outlet />
-          </div>
+      <ContentContainer
+        className={classes['sidebar-container']}
+        data-color='neutral'
+      >
+        <Sidebar
+          cats={cats}
+          title='Grunnleggende'
+          className={classes.sidebar}
+        />
+        <div className={classes.content}>
+          <Outlet />
         </div>
       </ContentContainer>
     </>
