@@ -1,11 +1,11 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
-import { bundleMDX } from 'mdx-bundler';
 import { Image } from '~/_components/image/image';
 import { RRLink } from '~/_components/link';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { formatDateNorwegian } from '~/_utils/date';
+import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { generateMetadata } from '~/_utils/metadata';
 import type { Route } from './+types/page';
 import classes from './page.module.css';
@@ -37,10 +37,8 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
   // Read the file content
   const fileContent = readFileSync(filePath, 'utf-8');
 
-  // Bundle the MDX content
-  const result = await bundleMDX({
-    source: fileContent,
-  });
+  // Generate the MDX content
+  const result = await generateFromMdx(fileContent);
 
   return {
     name: params.file,

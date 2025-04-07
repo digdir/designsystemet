@@ -1,8 +1,8 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import {} from '@digdir/designsystemet-react';
-import { bundleMDX } from 'mdx-bundler';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
+import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import type { Route } from './+types';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
@@ -19,9 +19,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     join(process.cwd(), 'app', 'content', 'monstre', `${lang}_index.mdx`),
     'utf-8',
   );
-  const result = await bundleMDX({
-    source: fileContent,
-  });
+  const result = await generateFromMdx(fileContent);
 
   return { index: result, lang };
 };

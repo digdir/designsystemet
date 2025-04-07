@@ -1,27 +1,12 @@
-import { ResponsiveIframe, Image } from '@components';
-import { Contributors, PostLayout } from '../../_components';
-
-export default ({ children }) => (
-  <PostLayout
-    content={children}
-    heading='Dynamiske tekst-størrelser og hvorfor vi gikk bort fra det'
-    ingress='Det er mulig å bruke dynamiske tekst-størrelser uten breakpoints, men det medfører noen ulemper.  '
-    date='26. april 2024'
-    author='Designsystemet'
-    imageSrc='/img/bloggen/fluid-front.png'
-    imageAlt='Illustrasjonen viser at en 16px tekststørrelser på små skjermer øker gradvis opp til 18px på store skjermer.'
-    imageCaption='Illustrasjonen viser at en 16px tekststørrelser på små skjermer øker gradvis opp til 18px på store skjermer. '
-  />
-);
-
-export const metadata = {
-  title: 'Dynamiske tekst-størrelser og hvorfor vi gikk bort fra det',
-  description:
-    'Det er mulig å bruke dynamiske tekst-størrelser uten breakpoints',
-  openGraph: {
-    images: '/img/bloggen/fluid-front.png',
-  },
-};
+---
+title: Dynamiske tekst-størrelser og hvorfor vi gikk bort fra det
+description: Det er mulig å bruke dynamiske tekst-størrelser uten breakpoints
+date: 2024-04-26
+author: Designsystemet
+imageSrc: /img/bloggen/fluid-front.png
+imageAlt: Illustrasjonen viser at en 16px tekststørrelser på små skjermer øker gradvis opp til 18px på store skjermer.
+imageCaption: Illustrasjonen viser at en 16px tekststørrelser på små skjermer øker gradvis opp til 18px på store skjermer.
+---
 
 Ved hjelp av “Fluid typography” kan vi skalere tekststørrelsen gradvis mellom en min og maks-bredde, i stedet for at det blir en brå oppskalering på et spesifikt brekkpunkt. Den lineære funksjonen tilnærmer seg ønsket størrelse jevnt over skjermens bredde.
 
@@ -81,7 +66,7 @@ For å kunne se riktige tekststørrelser i Figma var vi avhengige av å ha insta
   allow='autoplay; fullscreen; picture-in-picture'
   allowFullScreen
   aspectRatio='16-9'
-></ResponsiveIframe>
+/>
 
 <Contributors
   authors={[

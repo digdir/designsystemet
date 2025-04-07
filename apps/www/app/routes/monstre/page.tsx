@@ -76,11 +76,7 @@ export default function Monstre({ loaderData }: Route.ComponentProps) {
           <ComponentIcon fontSize='4rem' aria-hidden='true' />
         </div>
       </div>
-      <div
-        style={{
-          maxWidth: '65ch',
-        }}
-      >
+      <div className={classes.content}>
         <MDXComponents code={loaderData.code} />
       </div>
     </>

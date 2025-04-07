@@ -1,7 +1,6 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import * as AkselIcon from '@navikt/aksel-icons';
-import { bundleMDX } from 'mdx-bundler';
 import { Outlet, useMatches } from 'react-router';
 import {
   Banner,
@@ -11,6 +10,7 @@ import {
 } from '~/_components/banner/banner';
 import { ContentContainer } from '~/_components/content-container/content-container';
 import { Sidebar } from '~/_components/sidebar/sidebar';
+import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import type { Route } from './+types/layout';
 import classes from './layout.module.css';
 
@@ -47,9 +47,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   /* Map over files with mdx parser to get title */
   for (const { path, relativePath } of mdxFiles) {
     const fileContent = readFileSync(path, 'utf-8');
-    const result = await bundleMDX({
-      source: fileContent,
-    });
+    const result = await generateFromMdx(fileContent);
 
     const fileName = relativePath.split('/').pop() || '';
     const title = result.frontmatter.title || fileName.replace('.mdx', '');

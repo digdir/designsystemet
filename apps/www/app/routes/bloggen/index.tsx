@@ -3,6 +3,7 @@ import { join } from 'node:path';
 import {} from '@digdir/designsystemet-react';
 import { bundleMDX } from 'mdx-bundler';
 import BlogCard from '~/_components/blog-card/blog-card';
+import { generateMetadata } from '~/_utils/metadata';
 import type { Route } from './+types';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
@@ -65,6 +66,13 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   });
 
   return { lang, posts };
+};
+
+export const meta = () => {
+  return generateMetadata({
+    title: 'Bloggen',
+    description: 'Les blogginlegg fra kjerneteamet og konsumenter',
+  });
 };
 
 export default function Monstre({

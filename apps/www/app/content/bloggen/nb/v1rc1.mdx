@@ -1,29 +1,12 @@
-import { Link } from '@digdir/designsystemet-react';
-
-import { PostLayout, Contributors } from '../../_components';
-import { ResponsiveIframe } from '@components';
-
-export default ({ children }) => (
-  <PostLayout
-    content={children}
-    heading='Dette kommer i V1!'
-    ingress='Vi nærmer oss den første versjonen av Designsystemet uten betamerke! Versjon 1 skal være mer stabil, mer fleksibel og støtte flerdimensjonal tematisering.'
-    date='29. mai 2024'
-    author='Designsystemet'
-    imageSrc='/img/bloggen/v1rc1.png'
-    imageAlt='Illustrasjon av Designsystemet V1 og emojis som feirer.'
-    imageCaption='Etter over 2000 issues og PRs er vi nærere enn noen gang! Tusen takk til alle som har bidratt til å komme hit! '
-  />
-);
-
-export const metadata = {
-  title: 'Dette kommer i V1!',
-  description:
-    'Vi nærmer oss den første versjonen av Designsystemet uten betamerke! Versjon 1 skal være mer stabil, mer fleksibel og støtte flerdimensjonal tematisering.',
-  openGraph: {
-    images: '/img/bloggen/v1rc1.png',
-  },
-};
+---
+title: Dette kommer i V1!
+description: Vi nærmer oss den første versjonen av Designsystemet uten betamerke! Versjon 1 skal være mer stabil, mer fleksibel og støtte flerdimensjonal tematisering.
+date: 2024-05-29
+author: Designsystemet
+imageSrc: /img/bloggen/v1rc1.png
+imageAlt: Illustrasjon av Designsystemet V1 og emojis som feirer.
+imageCaption: Etter over 2000 issues og PRs er vi nærere enn noen gang! Tusen takk til alle som har bidratt til å komme hit!
+---
 
 Designsystemet har i lengre tid vært i beta. Betaperioden har gitt oss fleksibilitet og mulighet til å eksperimentere, teste den underliggende strukturen og hvordan komponentene fungerer sammen. Samtidig har det vært litt uforutsigbart for dere som har valgt å bruke designsystemet mens det fortsatt var i beta. Nå nærmer vi oss målstreken og har publisert en release candidate av V1!
 
@@ -56,7 +39,7 @@ I forbindelse med det nye fargesystemet har vi utviklet et verktøy der du kan t
   allow='autoplay; fullscreen; picture-in-picture'
   allowFullScreen
   aspectRatio='16-9'
-></ResponsiveIframe>
+/>
 
 <Link
   href='https://theme.designsystemet.no/'
@@ -135,7 +118,7 @@ I tillegg til teamet som jobber daglig med Designsystemet har vi også en veldig
   frameBorder='0'
   allow='autoplay; fullscreen; picture-in-picture'
   aspectRatio='16-9'
-></ResponsiveIframe>
+/>
 
 Fikk du ikke med deg demoen 29. mai, kan du se opptaket i videoen over.
 

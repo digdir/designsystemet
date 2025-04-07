@@ -1,5 +1,4 @@
 import * as DS from '@digdir/designsystemet-react';
-import type { ParagraphProps } from '@digdir/designsystemet-react';
 import { getMDXComponent } from 'mdx-bundler/dist/client';
 import { type JSX, useMemo } from 'react';
 import { Link } from 'react-router';
@@ -34,7 +33,7 @@ const defaultComponents = {
   Image,
   ResponsiveIframe,
   Contributors,
-  p: (props: ParagraphProps) => <DS.Paragraph {...props} />,
+  p: (props: DS.ParagraphProps) => <DS.Paragraph {...props} />,
   a: ({ href, ...props }: JSX.IntrinsicElements['a']) => (
     <DS.Link {...props} asChild>
       <Link to={href || ''}>{props.children}</Link>
@@ -51,6 +50,9 @@ const defaultComponents = {
       </CodeBlock>
     );
   },
+  table: (props: DS.TableProps) => (
+    <DS.Table data-color='neutral' border zebra {...props} />
+  ),
 };
 
 export const MDXComponents = ({

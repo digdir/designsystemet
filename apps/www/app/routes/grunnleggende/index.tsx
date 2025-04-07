@@ -4,15 +4,14 @@ import { Fragment } from 'react';
 import { useRouteLoaderData } from 'react-router';
 import { Grid } from '~/_components/grid/grid';
 import { NavigationCard } from '~/_components/navigation-card/navigation-card';
+import { generateMetadata } from '~/_utils/metadata';
 import type { Route } from '../../layouts/grunnleggende/+types/layout';
 
 export const meta = () => {
-  return [
-    {
-      title: 'grunnleggende',
-      description: 'grunnleggende',
-    },
-  ];
+  return generateMetadata({
+    title: 'Grunnleggende',
+    description: 'Grunnleggende',
+  });
 };
 
 export default function Monstre() {

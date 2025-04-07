@@ -6,7 +6,7 @@ import classes from './layout.module.css';
 
 export default function Layout() {
   return (
-    <div className='text-center p-4'>
+    <div>
       <Banner color='red'>
         <BannerIcon>
           <PencilIcon />

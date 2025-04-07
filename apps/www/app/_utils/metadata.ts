@@ -9,23 +9,27 @@ export const generateMetadata = ({
 }) => {
   return [
     {
-      title: title,
+      title: `${title} - Designsystemet`,
     },
     {
       name: 'description',
       content: description,
     },
     {
-      name: 'og:image',
+      property: 'og:image',
       content: image,
     },
     {
-      name: 'og:title',
+      property: 'og:title',
       content: title,
     },
     {
-      name: 'og:description',
+      property: 'og:description',
       content: description,
+    },
+    {
+      property: 'og:url',
+      content: 'https://designsystemet.no',
     },
     {
       name: 'twitter:title',

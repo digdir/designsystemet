@@ -1,5 +1,6 @@
 .main {
   padding-top: var(--ds-size-18);
+  padding-bottom: var(--ds-size-18);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: var(--ds-size-18);
