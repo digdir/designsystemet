@@ -90,7 +90,6 @@ export const createThemeCSSFiles = (processedBuilds: ProcessReturn) => {
       console.log(
         chalk.dim(
           `
-A Digdir developer should define its order in the sortOrder array in entryfile.ts.
 The section will currently be added to the end of the entry file, but the exact
 order may change due to nondeterminism.`.trim(),
         ),
