@@ -1,5 +1,5 @@
-import { useMergeRefs } from '@floating-ui/react';
 import { type HTMLAttributes, forwardRef, useEffect, useRef } from 'react';
+import { useMergeRefs } from '../../utilities/hooks';
 
 export type BreadcrumbsListProps = HTMLAttributes<HTMLOListElement>;
 
