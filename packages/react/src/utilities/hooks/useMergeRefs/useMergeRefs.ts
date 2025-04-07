@@ -1,14 +1,15 @@
 // https://github.com/floating-ui/floating-ui/blob/master/packages/react/src/hooks/useMergeRefs.ts
-
+import { useCallback, useMemo, useRef } from 'react';
+import type { Ref, RefCallback, RefObject } from 'react';
 /**
  * Merges an array of refs into a single memoized callback ref or `null`.
  */
 export function useMergeRefs<Instance>(
-  refs: Array<React.Ref<Instance> | undefined>,
-): null | React.RefCallback<Instance> {
-  const cleanupRef = React.useRef<undefined | (() => void)>(undefined);
+  refs: Array<Ref<Instance> | undefined>,
+): null | RefCallback<Instance> {
+  const cleanupRef = useRef<undefined | (() => void)>(undefined);
 
-  const refEffect = React.useCallback((instance: Instance | null) => {
+  const refEffect = useCallback((instance: Instance | null) => {
     const cleanups = refs.map((ref) => {
       if (ref == null) {
         return;
@@ -25,9 +26,9 @@ export function useMergeRefs<Instance>(
             };
       }
 
-      (ref as React.RefObject<Instance | null>).current = instance;
+      (ref as RefObject<Instance | null>).current = instance;
       return () => {
-        (ref as React.RefObject<Instance | null>).current = null;
+        (ref as RefObject<Instance | null>).current = null;
       };
     });
 
@@ -39,7 +40,7 @@ export function useMergeRefs<Instance>(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, refs);
 
-  return React.useMemo(() => {
+  return useMemo(() => {
     if (refs.every((ref) => ref == null)) {
       return null;
     }
@@ -47,12 +48,11 @@ export function useMergeRefs<Instance>(
     return (value) => {
       if (cleanupRef.current) {
         cleanupRef.current();
-        (cleanupRef as React.RefObject<undefined | (() => void)>).current =
-          undefined;
+        (cleanupRef as RefObject<undefined | (() => void)>).current = undefined;
       }
 
       if (value != null) {
-        (cleanupRef as React.RefObject<undefined | (() => void)>).current =
+        (cleanupRef as RefObject<undefined | (() => void)>).current =
           refEffect(value);
       }
     };
