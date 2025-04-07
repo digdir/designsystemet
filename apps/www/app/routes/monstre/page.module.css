@@ -91,9 +91,6 @@
   padding: var(--ds-size-4) var(--ds-size-10) 0 var(--ds-size-10);
   height: fit-content;
   max-width: 65ch;
-}
-
-.content {
   flex-basis: 600px;
   flex-grow: 500;
 
