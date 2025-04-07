@@ -49,7 +49,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body data-color-scheme='dark'>
+      <body>
         {children}
         <ScrollRestoration />
         <Scripts />

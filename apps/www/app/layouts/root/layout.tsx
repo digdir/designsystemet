@@ -61,6 +61,10 @@ export default function RootLayout({
       href: `/${lang}/grunnleggende`,
     },
     {
+      name: 'God praksis',
+      href: `/${lang}/god-praksis`,
+    },
+    {
       name: 'Mønstre',
       href: `/${lang}/monstre`,
     },
@@ -76,7 +80,7 @@ export default function RootLayout({
   return (
     <>
       <SkipLink href='#main'>Hopp til hovedinnhold</SkipLink>
-      <Header menu={menu} logoLink={`/${lang}`} />
+      <Header menu={menu} logoLink={`/${lang}`} themeSwitcher />
       <main id='main'>
         <Outlet />
       </main>

@@ -4,12 +4,7 @@
   align-items: center;
   position: relative;
   z-index: 5;
-  background-color: var(--ds-color-neutral-background-default);
-
-  [data-color-scheme='dark'] &,
-  [data-color-scheme='auto'] & {
-    background-color: var(--ds-color-neutral-background-tinted);
-  }
+  background-color: var(--ds-color-neutral-background-tinted);
 }
 
 .header.transparentHeader {
@@ -111,16 +106,8 @@
   width: 26px;
 }
 
-.linkIcon.figma path {
-  fill: var(--ds-color-neutral-border-strong);
-}
-
-.linkIcon.github path {
-  fill: var(--ds-color-neutral-border-strong);
-}
-
 .linkIcon.figma:hover path {
-  fill: var(--ds-color-neutral-border-strong);
+  stroke: var(--ds-color-neutral-border-strong);
 }
 
 .linkIcon.github:hover path {
