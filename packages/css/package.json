@@ -9,10 +9,14 @@
   },
   "license": "MIT",
   "exports": {
-    ".": "./dist/src/index.css",
+    ".": {
+      "types": "./types.d.ts",
+      "default": "./dist/src/index.css"
+    },
     "./*": "./dist/src/*"
   },
   "files": [
+    "./types.d.ts",
     "dist"
   ],
   "publishConfig": {
