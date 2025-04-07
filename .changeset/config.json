@@ -20,7 +20,7 @@
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "ignore": [
-    "www",
+    "www.designsystemet.no",
     "theme",
     "storefront",
     "@repo/components",

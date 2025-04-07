@@ -15080,9 +15080,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"www@workspace:apps/www":
+"www.designsystemet.no@workspace:apps/www":
   version: 0.0.0-use.local
-  resolution: "www@workspace:apps/www"
+  resolution: "www.designsystemet.no@workspace:apps/www"
   dependencies:
     "@digdir/designsystemet-css": "workspace:^"
     "@digdir/designsystemet-react": "workspace:^"
