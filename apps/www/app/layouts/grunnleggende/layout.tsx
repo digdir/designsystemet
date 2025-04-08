@@ -1,6 +1,6 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
-import * as AkselIcon from '@navikt/aksel-icons';
+import { LayersIcon } from '@navikt/aksel-icons';
 import { Outlet, isRouteErrorResponse, useMatches } from 'react-router';
 import {
   Banner,
@@ -133,7 +133,7 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
       {!isGrunnleggendePage ? (
         <Banner color='yellow'>
           <BannerIcon>
-            <AkselIcon.LayersIcon />
+            <LayersIcon />
           </BannerIcon>
           <BannerHeading level={1}>Grunnleggende</BannerHeading>
           <BannerIngress>
