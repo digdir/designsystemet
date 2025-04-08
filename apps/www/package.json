@@ -5,7 +5,7 @@
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",
-    "start": "react-router-serve ./build/server/index.js",
+    "start": "react-router-serve ./dist/server/index.js",
     "types": "react-router typegen && tsc"
   },
   "dependencies": {
@@ -36,6 +36,7 @@
     "@types/react-dom": "^19.1.0",
     "typescript": "^5.7.2",
     "vite": "^6.0.11",
+    "vite-plugin-static-copy": "^2.3.0",
     "vite-tsconfig-paths": "^5.1.4"
   }
 }
