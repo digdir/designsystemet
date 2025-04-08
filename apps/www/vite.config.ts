@@ -20,6 +20,14 @@ function manualChunks(id: string) {
     return 'vendor-router';
   }
 
+  if (id.includes('digdir')) {
+    return 'vendor-digdir';
+  }
+
+  if (id.includes('aksel')) {
+    return 'vendor-aksel';
+  }
+
   if (id.includes('node_modules')) {
     return 'vendor';
   }
