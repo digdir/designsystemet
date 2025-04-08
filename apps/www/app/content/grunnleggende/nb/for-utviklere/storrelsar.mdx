@@ -1,0 +1,51 @@
+---
+title: Størrelsar
+description: Informasjon om korleis du bruker størrelsar på frontend.
+date: 2025-01-10
+category: For utviklere
+color: blue
+icon: CodeIcon
+---
+
+
+HTML data-attributt vert brukt for å definere størrelse på ein komponent. Komponentane kan nytte alle alle størrelsar.
+
+Våre `size`-variablar (`--ds-size-*`) endrar seg basert på den lokale skriftstørrelsen (formel basert på `em`). Du kan lett endre den ved bruk av `data-size` for våre anbefalte størrelsar, eller definere dine eigne størrelsar ved å setje `font-size` i CSS.
+
+## `data-size`
+
+Dette data-attributtet blir brukt for å endre størrelsar på alle komponentar under seg.
+Alle komponentar kan være i størrelsane, `sm`, `md` eller `lg`. Som standard vil `md` bli nytta.
+
+```html
+<body>
+  <div>
+    <!-- Innhaldet her vil ha MD størrelsar -->
+  </div>
+
+  <div data-size="sm">
+    <!-- Innhaldet her vil ha SM størrelsar -->
+  </div>
+</body>
+```
+
+Nokre komponentar har støtte for fleire størrelsar, som `xs` og `xl`. Desse størrelsane vil bli spesifisert i dokumentasjonen til komponenten,
+og det er anbefalt å bruke dei størrelsane som er spesifisert.
+
+## Korleis komponentar blir påverka
+
+Me delar komponentar inn i 2 grupper for størrelsar:
+
+- Eksplisitt
+- Cascading
+
+### Eksplisitt
+
+Komponentar som ikkje vil følgje størrelsen til forelderen. Desse komponentane må ha `data-size` satt direkte på seg.
+
+Dette er komponentar som
+- `Heading`
+
+### Cascading
+
+Denne gruppa inneheld resten av komponentane, og vil arve størrelse frå næraste forelder med `data-size` satt.

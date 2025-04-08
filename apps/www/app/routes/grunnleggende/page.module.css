@@ -1,0 +1,263 @@
+.page {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--ds-size-10);
+  margin-top: var(--ds-size-8);
+  margin-bottom: var(--page-spacing-bottom);
+}
+
+.left {
+  flex-basis: 220px;
+  flex-grow: 1;
+}
+
+.right {
+  flex-basis: 600px;
+  flex-grow: 500;
+  max-width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: var(--ds-size-6);
+  padding: var(--ds-size-10);
+  width: 100%;
+  border-radius: var(--ds-border-radius-lg);
+  background-color: var(--ds-color-neutral-background-tinted);
+}
+
+.headerText {
+  color: inherit;
+  padding-right: 290px;
+}
+
+.date {
+  margin-top: var(--ds-size-3);
+}
+
+.iconContainer {
+  position: absolute;
+  right: 0;
+  margin-right: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 190px;
+  width: 190px;
+  border-radius: var(--ds-border-radius-lg);
+  border: 7px solid #8f9296;
+  transform: rotate(45deg);
+}
+
+.iconContainer.red {
+  border-color: var(--ds-color-brand1-surface-hover);
+}
+
+.iconContainer.blue {
+  border-color: var(--ds-color-brand3-surface-hover);
+}
+
+.iconContainer.yellow {
+  border-color: var(--ds-color-brand2-surface-hover);
+}
+
+.iconContainer svg {
+  color: var(--ds-color-neutral-base-default);
+  position: relative;
+  z-index: 54;
+  opacity: 0.7;
+  font-size: 4.1rem;
+  transform: rotate(-45deg) scale(1.6);
+}
+
+.iconContainer.red svg {
+  color: var(--ds-color-brand1-border-subtle);
+}
+
+.iconContainer.blue svg {
+  color: var(--ds-color-brand3-border-subtle);
+}
+
+.iconContainer.yellow svg {
+  color: var(--ds-color-brand2-border-subtle);
+}
+
+.content {
+  padding: var(--ds-size-4) var(--ds-size-10) 0 var(--ds-size-10);
+  height: fit-content;
+  max-width: 65ch;
+  padding: var(--ds-size-4) var(--ds-size-10) 0 var(--ds-size-10);
+  height: fit-content;
+
+  & > *:first-child {
+    margin-top: 0;
+  }
+
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+
+  & p {
+    margin-bottom: var(--ds-size-4);
+
+    & > strong {
+      margin: 0 !important;
+    }
+  }
+
+  & > h1,
+  & > h2,
+  & > h3,
+  & > h4 {
+    position: relative;
+    padding-left: 26px;
+    margin-left: -26px;
+  }
+
+  & > h2,
+  & > h3,
+  & > h4 {
+    margin-top: var(--ds-size-10);
+    margin-bottom: var(--ds-size-3);
+  }
+
+  /* Anchor link styling for <h1> */
+  & > h1 a {
+    height: 24px;
+    width: 24px;
+    margin-top: -2px;
+    left: -4px;
+  }
+
+  /* Anchor links appear on heading hover */
+  & > h1:hover a,
+  & > h2:hover a,
+  & > h3:hover a,
+  & > h4:hover a {
+    opacity: 1;
+  }
+
+  & > ul,
+  & > ol {
+    max-width: 100%;
+    padding-left: var(--ds-size-5);
+    box-sizing: border-box;
+    margin-bottom: 24px;
+  }
+
+  & > ul > li,
+  & > ol > li {
+    line-height: 1.9em;
+    word-break: break-word; /* Add this to prevent text from overflowing */
+  }
+
+  & > ul > li > ol,
+  & > ol > li > ul {
+    margin-top: var(--ds-size-1);
+  }
+
+  & > p > a:hover,
+  & > ul > li a:hover,
+  & > ol > li a:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  /* A <p> tag that comes directly after <h1> will be treated as an ingress */
+  & > h1 + p {
+    font: var(--ds-body-long-md-font-size);
+    margin-top: 0;
+    margin-bottom: var(--ds-size-8);
+  }
+
+  & > iframe {
+    box-shadow: var(--ds-shadow-md);
+    margin: var(--ds-size-5);
+    border-radius: var(--ds-border-radius-md);
+  }
+
+  & > table {
+    width: 100%;
+    margin: var(--ds-size-7) 0;
+    border-collapse: collapse;
+  }
+
+  & > img {
+    width: 100%;
+    margin: var(--ds-size-2) 0;
+    border-radius: var(--ds-border-radius-md);
+    box-shadow: var(--ds-shadow-md);
+  }
+
+  & > p > code,
+  & li > code,
+  & h2 > code {
+    padding: 0.2em 0.5em;
+    margin: 1px;
+    font-size: 0.9em;
+    white-space: break-spaces;
+    background-color: var(--ds-color-neutral-surface-tinted);
+    border-radius: var(--ds-border-radius-md);
+  }
+
+  & > div + p {
+    margin-top: var(--ds-size-5);
+  }
+}
+
+.githubLink {
+  display: inline-block;
+  margin-top: var(--ds-size-12);
+}
+
+@media (max-width: 1200px) {
+  .header {
+    padding: 32px;
+  }
+
+  .iconContainer {
+    height: 120px;
+    width: 120px;
+    border-width: 5px;
+    margin-right: 60px;
+  }
+
+  .iconContainer svg {
+    font-size: 3rem;
+  }
+
+  .headerText {
+    padding-right: 190px;
+  }
+}
+
+@media (max-width: 576px) {
+  .content {
+    padding: 0;
+  }
+
+  .header {
+    padding: 135px 24px 24px;
+  }
+
+  .iconContainer {
+    position: absolute;
+    top: 37px;
+    left: 37px;
+    height: 70px;
+    width: 70px;
+    border-width: 4px;
+  }
+
+  .iconContainer svg {
+    font-size: 2rem;
+  }
+
+  .headerText {
+    padding-right: 0;
+  }
+}

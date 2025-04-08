@@ -78,6 +78,7 @@
     "@types/object-hash": "^3.0.6",
     "@types/ramda": "^0.30.2",
     "fs-extra": "^11.3.0",
+    "ts-toolbelt": "^9.6.0",
     "tslib": "^2.8.1",
     "tsup": "^8.3.5",
     "tsx": "^4.19.2",
