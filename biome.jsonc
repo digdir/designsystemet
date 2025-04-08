@@ -110,6 +110,24 @@
           }
         }
       }
+    },
+    {
+      "include": ["**/packages/cli/src/tokens/**"],
+      "linter": {
+        "rules": {
+          "nursery": {
+            "noRestrictedImports": {
+              "level": "error",
+              "options": {
+                "paths": {
+                  "node:fs": "Prefer using FileSystem class (in src/utils.ts) which supports dry-run",
+                  "node:fs/promises": "Prefer using FileSystem class (in src/utils.ts) which supports dry-run"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   ]
 }
