@@ -1,7 +1,7 @@
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import { Fragment } from 'react';
 
-import classes from './Contributors.module.css';
+import classes from './contributors.module.css';
 
 type ContributorsProps = {
   authors: string[];
