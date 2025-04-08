@@ -11,6 +11,7 @@ import { CodeBlock } from '../../_components';
 import { customStylesDecorator } from '../story-utils/customStylesDecorator';
 import { fontsLoader } from '../story-utils/fontsLoader';
 import { allModes, viewportWidths } from '../story-utils/modes';
+import { transformSource } from '../story-utils/transformSource';
 import customTheme from './customTheme';
 
 const viewports: Record<string, object> = {};
@@ -137,12 +138,32 @@ const components = {
 
 const preview: Preview = {
   tags: ['a11y-test'],
+  globalTypes: {
+    codePreview: {
+      description: '"Show code" will output the selected format',
+      toolbar: {
+        icon: 'markup',
+        items: [
+          { title: 'HTML', value: 'html' },
+          { title: 'React', value: 'react' },
+        ],
+        dynamicTitle: true,
+      },
+    },
+  },
+  initialGlobals: {
+    codePreview: 'react',
+  },
   parameters: {
     layout: 'centered',
     viewMode: 'docs',
     docs: {
       theme: customTheme,
       components,
+      source: {
+        transform: transformSource,
+        type: 'auto',
+      },
     },
     controls: {
       matchers: {
@@ -181,6 +202,9 @@ const preview: Preview = {
     },
     backgrounds: {
       disable: true,
+    },
+    html: {
+      root: '.storybook-decorator', // default: #root
     },
   },
   decorators: [customStylesDecorator],
