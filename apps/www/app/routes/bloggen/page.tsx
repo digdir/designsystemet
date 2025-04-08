@@ -1,10 +1,11 @@
-import { existsSync, readFileSync } from 'node:fs';
+import {} from 'node:fs';
 import { join } from 'node:path';
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import { Image } from '~/_components/image/image';
 import { RRLink } from '~/_components/link';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { formatDateNorwegian } from '~/_utils/date';
+import { getFileFromContentDir } from '~/_utils/files';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { generateMetadata } from '~/_utils/metadata';
 import type { Route } from './+types/page';
@@ -18,24 +19,10 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
     });
   }
 
-  const filePath = join(
-    process.cwd(),
-    'app',
-    'content',
-    'bloggen',
-    params.lang,
-    `${params.file}.mdx`,
-  );
-
-  if (!existsSync(filePath)) {
-    throw new Response('Not Found', {
-      status: 404,
-      statusText: 'Not Found',
-    });
-  }
-
   // Read the file content
-  const fileContent = readFileSync(filePath, 'utf-8');
+  const fileContent = getFileFromContentDir(
+    join('bloggen', params.lang, `${params.file}.mdx`),
+  );
 
   // Generate the MDX content
   const result = await generateFromMdx(fileContent);

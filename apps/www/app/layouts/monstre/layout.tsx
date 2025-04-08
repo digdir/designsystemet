@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from 'node:fs';
+import {} from 'node:fs';
 import { join } from 'node:path';
 import { LayersIcon } from '@navikt/aksel-icons';
 import { bundleMDX } from 'mdx-bundler';
@@ -11,6 +11,7 @@ import {
 } from '~/_components/banner/banner';
 import { ContentContainer } from '~/_components/content-container/content-container';
 import { Sidebar } from '~/_components/sidebar/sidebar';
+import { getFileFromContentDir, getFilesFromContentDir } from '~/_utils/files';
 import type { Route } from './+types/layout';
 import classes from './layout.module.css';
 
@@ -24,9 +25,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   }
 
   /* Get all files in /content/monstre for the lang we have selected */
-  const files = readdirSync(
-    join(process.cwd(), 'app', 'content', 'monstre', lang),
-  );
+  const files = getFilesFromContentDir(join('monstre', lang));
 
   /* Filter out files that are not .mdx */
   const mdxFiles = files.filter((file) => file.endsWith('.mdx'));
@@ -45,10 +44,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
 
   /* Map over files with mdx parser to get title */
   for (const file of mdxFiles) {
-    const fileContent = readFileSync(
-      join(process.cwd(), 'app', 'content', 'monstre', lang, `${file}`),
-      'utf-8',
-    );
+    const fileContent = getFileFromContentDir(join('monstre', lang, `${file}`));
     const result = await bundleMDX({
       source: fileContent,
     });

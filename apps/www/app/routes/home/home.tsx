@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from 'node:fs';
+import {} from 'node:fs';
 import { join } from 'node:path';
 import { Heading } from '@digdir/designsystemet-react';
 import {
@@ -15,14 +15,13 @@ import { ContentContainer } from '~/_components/content-container/content-contai
 import { ImageBanner } from '~/_components/image-banner/image-banner';
 import { NavigationCard } from '~/_components/navigation-card/navigation-card';
 import { Section } from '~/_components/section/section';
+import { getFileFromContentDir, getFilesFromContentDir } from '~/_utils/files';
 import type { Route } from './+types/home';
 import classes from './home.module.css';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   /* Get all files in /content/bloggen for the lang we have selected */
-  const files = readdirSync(
-    join(process.cwd(), 'app', 'content', 'bloggen', lang),
-  );
+  const files = getFilesFromContentDir(join('bloggen', lang));
 
   /* Filter out files that are not .mdx */
   const mdxFiles = files.filter((file) => file.endsWith('.mdx'));
@@ -42,10 +41,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
 
   /* Map over files with mdx parser to get title */
   for (const file of mdxFiles) {
-    const fileContent = readFileSync(
-      join(process.cwd(), 'app', 'content', 'bloggen', lang, `${file}`),
-      'utf-8',
-    );
+    const fileContent = getFileFromContentDir(join('bloggen', lang, `${file}`));
     const result = await bundleMDX({
       source: fileContent,
     });
