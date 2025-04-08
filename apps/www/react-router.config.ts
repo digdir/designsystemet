@@ -5,5 +5,5 @@ export default {
   presets: [
     /* vercelPreset() */
   ],
-  buildDirectory: 'dist',
+  buildDirectory: 'build',
 } satisfies Config;
