@@ -27,6 +27,7 @@
     "build:cli": "yarn workspace @digdir/designsystemet build",
     "build:storybook": "yarn workspace @designsystemet/storybook build",
     "build:storefront": "yarn workspace storefront build",
+    "build:www": "yarn workspace www.designsystemet.no build",
     "start:storefront": "yarn workspace storefront start",
     "types": "yarn workspaces foreach -Ap --topological-dev run types",
     "types:react": "yarn workspace @digdir/designsystemet-react types",
