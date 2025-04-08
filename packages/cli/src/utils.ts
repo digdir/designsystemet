@@ -2,62 +2,73 @@ import type { CopyOptions } from 'node:fs';
 import fs from 'node:fs/promises';
 import chalk from 'chalk';
 
-export const mkdir = async (dir: string, dry?: boolean) => {
-  if (dry) {
-    console.log(`${chalk.blue('mkdir')} ${dir}`);
-    return Promise.resolve();
+/**
+ * An abstraction of Node's file system API which allows dry-running destructive operations
+ */
+export class FileSystem {
+  private dry: boolean;
+  constructor(
+    /** Dry-run destructive operations instead of actually performing them */
+    dry = false,
+  ) {
+    this.dry = dry;
   }
 
-  return fs.mkdir(dir, { recursive: true });
-};
+  async mkdir(dir: string) {
+    if (this.dry) {
+      console.log(`${chalk.blue('mkdir')} ${dir}`);
+      return Promise.resolve();
+    }
 
-export const writeFile = async (path: string, data: string, dry?: boolean) => {
-  if (dry) {
-    console.log(`${chalk.blue('writeFile')} ${path}`);
-    return Promise.resolve();
+    return fs.mkdir(dir, { recursive: true });
   }
 
-  return fs.writeFile(path, data, { encoding: 'utf-8' }).catch((error) => {
-    console.error(chalk.red(`Error writing file: ${path}`));
-    console.error(chalk.red(error));
-    throw error;
-  });
-};
+  async writeFile(path: string, data: string) {
+    if (this.dry) {
+      console.log(`${chalk.blue('writeFile')} ${path}`);
+      return Promise.resolve();
+    }
 
-export const cp = async (src: string, dest: string, dry?: boolean, filter?: CopyOptions['filter']) => {
-  if (dry) {
-    console.log(`${chalk.blue('cp')} ${src} ${dest}`);
-    return Promise.resolve();
+    return fs.writeFile(path, data, { encoding: 'utf-8' }).catch((error) => {
+      console.error(chalk.red(`Error writing file: ${path}`));
+      console.error(chalk.red(error));
+      throw error;
+    });
   }
 
-  return fs.cp(src, dest, { recursive: true, filter });
-};
+  async cp(src: string, dest: string, filter?: CopyOptions['filter']) {
+    if (this.dry) {
+      console.log(`${chalk.blue('cp')} ${src} ${dest}`);
+      return Promise.resolve();
+    }
 
-export const copyFile = async (src: string, dest: string, dry?: boolean) => {
-  if (dry) {
-    console.log(`${chalk.blue('copyFile')} ${src} to ${dest}`);
-    return Promise.resolve();
+    return fs.cp(src, dest, { recursive: true, filter });
   }
 
-  return fs.copyFile(src, dest);
-};
+  async copyFile(src: string, dest: string) {
+    if (this.dry) {
+      console.log(`${chalk.blue('copyFile')} ${src} to ${dest}`);
+      return Promise.resolve();
+    }
 
-export const cleanDir = async (dir: string, dry?: boolean) => {
-  if (dry) {
-    console.log(`${chalk.blue('cleanDir')} ${dir}`);
-    return Promise.resolve();
+    return fs.copyFile(src, dest);
   }
 
-  console.log(`${chalk.red(`Cleaning dir: ${dir.trim()}`)} `);
+  async cleanDir(dir: string) {
+    if (this.dry) {
+      console.log(`${chalk.blue('cleanDir')} ${dir}`);
+      return Promise.resolve();
+    }
 
-  return fs.rm(dir, { recursive: true, force: true });
-};
+    console.log(`${chalk.red(`Cleaning dir: ${dir.trim()}`)} `);
 
-export const readFile = async (path: string, dry?: boolean) => {
-  if (dry) {
-    console.log(`${chalk.blue('readFile')} ${path}`);
-    return Promise.resolve('');
+    return fs.rm(dir, { recursive: true, force: true });
   }
 
+  readFile = readFile;
+}
+
+// As readFile is inherently non-destructive and useful on its own, it is exported individually as well
+export async function readFile(path: string) {
   return fs.readFile(path, 'utf-8');
-};
+}

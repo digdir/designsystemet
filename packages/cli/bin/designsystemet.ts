@@ -13,7 +13,7 @@ import { buildTokens } from '../src/tokens/build.js';
 import { cliOptions, createTokens } from '../src/tokens/create.js';
 import { writeTokens } from '../src/tokens/create/write.js';
 import type { Theme } from '../src/tokens/types.js';
-import { cleanDir, readFile } from '../src/utils.js';
+import { FileSystem, readFile } from '../src/utils.js';
 import { type OptionGetter, getCliOption, getDefaultCliOption, getSuppliedCliOption } from './options.js';
 
 program.name('designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
@@ -82,6 +82,7 @@ function makeTokenCommands() {
       if (opts.dry) {
         console.log(`Performing dry run, no files will be written`);
       }
+      const fs = new FileSystem(opts.dry);
 
       /*
        * Get config file by looking for the optional default file, or using --config option if supplied.
@@ -174,7 +175,7 @@ function makeTokenCommands() {
        * Clean the output directory if requested. Only clean once for multiple themes
        */
       if (config.clean) {
-        await cleanDir(config.outDir, opts.dry);
+        await fs.cleanDir(config.outDir);
       }
       /*
        * Create and write tokens for each theme

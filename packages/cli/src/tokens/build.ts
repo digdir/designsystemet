@@ -2,12 +2,13 @@ import path from 'node:path';
 import type { ThemeObject } from '@tokens-studio/types';
 import chalk from 'chalk';
 import type { DesignToken } from 'style-dictionary/types';
-import { cleanDir, mkdir, readFile, writeFile } from '../utils.js';
+import { FileSystem } from '../utils.js';
 import { createThemeCSSFiles } from './format.js';
 import { type BuildOptions, processPlatform } from './process/platform.js';
 
 export const buildTokens = async (options: Omit<BuildOptions, 'process' | '$themes'>) => {
-  const $themes = JSON.parse(await readFile(path.resolve(`${options.tokensDir}/$themes.json`))) as ThemeObject[];
+  const fs = new FileSystem(options.dry);
+  const $themes = JSON.parse(await fs.readFile(path.resolve(`${options.tokensDir}/$themes.json`))) as ThemeObject[];
 
   const resolvedOutDir = path.resolve(options.outDir);
   const processedBuilds = await processPlatform<DesignToken>({
@@ -19,7 +20,7 @@ export const buildTokens = async (options: Omit<BuildOptions, 'process' | '$them
   });
 
   if (options.clean) {
-    await cleanDir(resolvedOutDir, options.dry);
+    await fs.cleanDir(resolvedOutDir);
   }
 
   console.log(`\nWriting build to ${chalk.green(options.outDir)}`);
@@ -30,10 +31,10 @@ export const buildTokens = async (options: Omit<BuildOptions, 'process' | '$them
       for (const { destination, output } of formatted) {
         if (destination) {
           const fileDir = path.join(resolvedOutDir, path.dirname(destination));
-          await mkdir(fileDir, options.dry);
+          await fs.mkdir(fileDir);
 
           const filePath = path.join(resolvedOutDir, destination);
-          await writeFile(filePath, output, options.dry);
+          await fs.writeFile(filePath, output);
         }
       }
     }
@@ -42,7 +43,7 @@ export const buildTokens = async (options: Omit<BuildOptions, 'process' | '$them
   for (const { destination, output } of createThemeCSSFiles(processedBuilds)) {
     if (destination) {
       const filePath = path.join(resolvedOutDir, destination);
-      await writeFile(filePath, output, options.dry);
+      await fs.writeFile(filePath, output);
     }
   }
 
