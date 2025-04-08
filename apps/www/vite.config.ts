@@ -11,6 +11,12 @@ export default defineConfig({
       plugins: [],
     },
   },
+  build: {
+    rollupOptions: {
+      treeshake: true,
+    },
+    chunkSizeWarningLimit: 300,
+  },
   plugins: [
     reactRouter(),
     tsconfigPaths(),
