@@ -10,7 +10,15 @@ function manualChunks(id: string) {
     return 'vendor';
   }
 
-  return null;
+  if (id.includes('@digdir')) {
+    return 'ds';
+  }
+
+  if (id.includes('@navikt')) {
+    return 'aksel';
+  }
+
+  return 'vendor';
 }
 
 export default defineConfig({
