@@ -64,7 +64,7 @@ export default defineConfig({
       targets: [
         {
           src: normalizePath(path.resolve(dirname, './app/content/*')),
-          dest: normalizePath(path.resolve(dirname, './build/app/content')),
+          dest: normalizePath(path.resolve(dirname, './dist/app/content')),
         },
       ],
     }),
