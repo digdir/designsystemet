@@ -7743,6 +7743,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"glob@npm:^11.0.1":
+  version: 11.0.1
+  resolution: "glob@npm:11.0.1"
+  dependencies:
+    foreground-child: "npm:^3.1.0"
+    jackspeak: "npm:^4.0.1"
+    minimatch: "npm:^10.0.0"
+    minipass: "npm:^7.1.2"
+    package-json-from-dist: "npm:^1.0.0"
+    path-scurry: "npm:^2.0.0"
+  bin:
+    glob: dist/esm/bin.mjs
+  checksum: 10/57b12a05cc25f1c38f3b24cf6ea7a8bacef11e782c4b9a8c5b0bef3e6c5bcb8c4548cb31eb4115592e0490a024c1bde7359c470565608dd061d3b21179740457
+  languageName: node
+  linkType: hard
+
 "glob@npm:^7.0.5, glob@npm:^7.1.3, glob@npm:^7.1.4, glob@npm:^7.1.6":
   version: 7.2.3
   resolution: "glob@npm:7.2.3"
@@ -14093,7 +14109,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsx@npm:^4.19.2":
+"tsx@npm:^4.19.2, tsx@npm:^4.19.3":
   version: 4.19.3
   resolution: "tsx@npm:4.19.3"
   dependencies:
@@ -15120,6 +15136,7 @@ __metadata:
     "@types/react-dom": "npm:^19.1.0"
     "@vercel/react-router": "npm:^1.1.0"
     clsx: "npm:^2.1.1"
+    glob: "npm:^11.0.1"
     isbot: "npm:^5"
     mdx-bundler: "npm:^10.1.1"
     react: "npm:^19.1.0"
@@ -15129,6 +15146,7 @@ __metadata:
     rehype-autolink-headings: "npm:^7.1.0"
     rehype-slug: "npm:^6.0.0"
     remark-gfm: "npm:^4.0.1"
+    tsx: "npm:^4.19.3"
     typescript: "npm:^5.7.2"
     vite: "npm:^6.0.11"
     vite-plugin-static-copy: "npm:^2.3.0"
