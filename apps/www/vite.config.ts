@@ -5,6 +5,8 @@ import { normalizePath } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
+const dirname = import.meta.dirname || __dirname;
+
 // Simplified manual chunks function to avoid variable initialization issues
 function manualChunks(id: string) {
   // Core dependencies should stay in the main chunk to avoid initialization order problems
@@ -61,8 +63,8 @@ export default defineConfig({
     viteStaticCopy({
       targets: [
         {
-          src: normalizePath(path.resolve(__dirname, './app/content/*')),
-          dest: normalizePath(path.resolve(__dirname, './dist/app/content')),
+          src: normalizePath(path.resolve(dirname, './app/content/*')),
+          dest: normalizePath(path.resolve(dirname, './build/app/content')),
         },
       ],
     }),
