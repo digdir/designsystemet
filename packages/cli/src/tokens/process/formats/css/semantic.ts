@@ -2,13 +2,13 @@ import * as R from 'ramda';
 import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
 import { createPropertyFormatter, fileHeader } from 'style-dictionary/utils';
-import { isDigit, pathStartsWithOneOf, squashTokens } from '../../../utils.js';
+import { inlineTokens, isDigit, pathStartsWithOneOf } from '../../../utils.js';
 
 const isNumericBorderRadiusToken = (t: TransformedToken) => t.path[0] === 'border-radius' && isDigit(t.path[1]);
 const isNumericSizeToken = (t: TransformedToken) => pathStartsWithOneOf(['size'], t) && isDigit(t.path[1]);
 const isSizeToken = (t: TransformedToken) => pathStartsWithOneOf(['size'], t);
 
-export const isSquashTokens = R.anyPass([isNumericBorderRadiusToken, isNumericSizeToken, isSizeToken]);
+export const isInlineTokens = R.anyPass([isNumericBorderRadiusToken, isNumericSizeToken, isSizeToken]);
 
 /**
  * Overrides the default sizing formula with a custom one that supports [round()](https://developer.mozilla.org/en-US/docs/Web/CSS/round) if supported.
@@ -74,7 +74,7 @@ export const semantic: Format = {
       usesDtcg,
     });
 
-    const tokens = squashTokens(isSquashTokens, dictionary.allTokens);
+    const tokens = inlineTokens(isInlineTokens, dictionary.allTokens);
     const filteredTokens = R.reject((token) => token.name.includes('ds-size-mode-font-size'), tokens);
     const [sizingTokens, restTokens] = R.partition(
       (t: TransformedToken) => pathStartsWithOneOf(['_size'], t) && isDigit(t.path[1]),
