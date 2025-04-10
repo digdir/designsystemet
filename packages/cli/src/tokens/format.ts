@@ -63,29 +63,28 @@ export const createThemeCSSFiles = (processedBuilds: ProcessReturn) => {
    * Defines a sort order for the sections of the entry CSS file.
    * This ensures a deterministic order, whereas earlier this was nondeterministic
    */
-  // biome-ignore format: keep array as one line per item
   const sortOrder = [
-  'color-scheme/light',
-  'typography/secondary',
-  'semantic',
-  'color-scheme/dark',
-  'color-scheme/contrast',
-  'typography/primary',
-  'color/',
-];
+    'color-scheme/light',
+    'typography/secondary',
+    'semantic',
+    'color-scheme/dark',
+    'color-scheme/contrast',
+    'typography/primary',
+    'color/',
+  ];
 
   const sortByDefinedOrder = R.sortBy<File>((file) => {
-    const fileName = file.destination || '';
+    const filePath = file.destination || '';
     const sortIndex = sortOrder.findIndex((sortElement) => {
       if (sortElement.endsWith('/')) {
-        return fileName.includes(sortElement);
+        return filePath.includes(sortElement);
       }
-      return fileName.includes(`${sortElement}.css`);
+      return filePath.includes(`${sortElement}.css`);
     });
     if (sortIndex === -1) {
       // Ensure file names that don't have a specified sort order appear last
       console.error(
-        chalk.yellow('WARNING: CSS section does not have a defined sort order:', fileName.replace('.css', '')),
+        chalk.yellow('WARNING: CSS section does not have a defined sort order:', filePath.replace('.css', '')),
       );
       console.log(
         chalk.dim(
