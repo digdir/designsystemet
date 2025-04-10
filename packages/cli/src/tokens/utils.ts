@@ -70,10 +70,8 @@ export function isColorCategoryToken(token: TransformedToken, category?: 'main' 
 
 export const isDigit = (s: string) => /^\d+$/.test(s);
 
-/**
- * @param {Tokens} obj
- * @param {(obj: Tokens|Token, key: keyof Tokens|Token, slice: Tokens|Token|string) => void} fn
- */
+/** Copied from Style Dictionary and added types
+@see https://github.com/amzn/style-dictionary/blob/31c29df0382a61b085f6392dc3225c5009fbffc5/lib/utils/combineJSON.js#L33 */
 export function traverseObj(
   obj: Tokens | TokenSet,
   fn: (obj: TokenSet | Tokens | DesignToken, key: keyof Tokens | string, slice: Tokens | DesignToken | string) => void,
@@ -109,13 +107,13 @@ export function traverseObj(
  *  ]
  * ```
  *
- * @param shouldSquash - predicate to determine if token should be inlined
+ * @param shouldInline - predicate to determine if token should be inlined
  * @param tokens - array of tokens to transform
  * @returns copy of `tokens` without those that matched the predicate,
  *          where references to the matching tokens have been inlined
  */
-export function squashTokens(shouldSquash: (t: TransformedToken) => boolean, tokens: TransformedToken[]) {
-  const [inlineableTokens, otherTokens] = R.partition(shouldSquash, tokens);
+export function inlineTokens(shouldInline: (t: TransformedToken) => boolean, tokens: TransformedToken[]) {
+  const [inlineableTokens, otherTokens] = R.partition(shouldInline, tokens);
   return otherTokens.map((token: TransformedToken) => {
     // Inline the tokens that satisfy shouldInline().
     let transformed = getValue<string>(token.original);
