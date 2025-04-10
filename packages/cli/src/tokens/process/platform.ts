@@ -140,7 +140,6 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
     const sdConfigs = getConfigsForThemeDimensions(buildConfig.getConfig, processed$themes, buildConfig.dimensions, {
       tokensDir,
       tokenSets,
-      ...buildConfig.options,
     });
 
     // Disable build if all sdConfigs dimensions permutation are unknown
@@ -181,10 +180,6 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
 
       if (sdConfigs.length > 0) {
         console.log(`\n🍱 Building ${chalk.green(buildConfig.name ?? buildName)}`);
-
-        if (buildConfig.build) {
-          await buildConfig.build(sdConfigs, { tokensDir, ...buildConfig.options, dry });
-        }
 
         const results = await Promise.all(
           sdConfigs.map(async (sdConfig) => {

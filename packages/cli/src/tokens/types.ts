@@ -52,10 +52,6 @@ export type BuildConfig = {
   getConfig: GetStyleDictionaryConfig;
   /** Which theme dimensions to include. `theme` (e.g. digdir/altinn) is always included. */
   dimensions: ThemeDimension[];
-  /** Custom options used when creating Style Dictionary configs. If not supplied, the default is used */
-  options?: Partial<GetSDConfigOptions>;
-  /** Custom build function. If not supplied, the default is used. */
-  build?: (sdConfigs: SDConfigForThemePermutation[], options: GetSDConfigOptions) => Promise<void>;
   /** Whether the build config is enabled. @default () => true */
   enabled?: () => boolean;
   /** Custom log message. */
