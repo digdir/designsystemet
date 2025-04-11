@@ -30,9 +30,9 @@ const defaultTokens: Record<string, TokenSet> = {
 
 type DefaultToken = keyof typeof defaultTokens;
 
-export const getDefaultTokens = (tokenSets: readonly DefaultToken[]): [string, TokenSet][] =>
+export const getDefaultTokens = (tokenSets: readonly DefaultToken[]): [DefaultToken, TokenSet][] =>
   Object.entries(R.pick(tokenSets, defaultTokens));
 
-export const getDefaultToken = (tokenPath: DefaultToken): [string, TokenSet] => {
+export const getDefaultToken = (tokenPath: DefaultToken): [DefaultToken, TokenSet] => {
   return [tokenPath, defaultTokens[tokenPath]];
 };

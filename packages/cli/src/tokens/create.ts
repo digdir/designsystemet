@@ -48,11 +48,11 @@ export const createTokens = async (opts: Theme) => {
     ]),
     [`themes/${name}`, generateTheme(colors, name, borderRadius)],
     ['semantic/color', semantic.color],
-    getDefaultToken('semantic/style'),
     // maps out semantic modes, ieg 'semantic/modes/main-color/accent', and 'semantic/modes/support-color/brand1'
     ...Object.entries(semantic.modes).flatMap(([mode, colors]): [string, TokenSet][] =>
       Object.entries(colors).map(([key, colorSet]): [string, TokenSet] => [`semantic/modes/${mode}/${key}`, colorSet]),
     ),
+    getDefaultToken('semantic/style'),
   ]);
 
   return { tokenSets };

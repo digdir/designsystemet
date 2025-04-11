@@ -49,7 +49,7 @@ export const writeTokens = async (options: WriteTokensOptions) => {
 
   // Create metadata and themes json for Token Studio and build script
   const $themes = await generate$Themes(['dark', 'light'], themes, colors);
-  const $metadata = generate$Metadata(tokenSets);
+  const $metadata = generate$Metadata(['dark', 'light'], themes, colors);
 
   await writeFile($themesPath, stringify($themes), dry);
   await writeFile($metadataPath, stringify($metadata), dry);
