@@ -17,6 +17,7 @@ export const CssAttributes = forwardRef<HTMLTableElement, CssAttributesProps>(
     return (
       <Table
         zebra
+        data-color-scheme='light'
         className={cl('sb-unstyled', className)}
         style={{
           tableLayout: 'fixed',

@@ -1,6 +1,7 @@
 import './style.css';
 import '../../../packages/css/src/index.css';
 import '@digdir/designsystemet-theme/digdir.css';
+import { DocsContainer } from '@storybook/blocks';
 import type { Preview } from '@storybook/react';
 import isChromatic from 'chromatic/isChromatic';
 
@@ -136,6 +137,23 @@ const components = {
   ),
 };
 
+const DocsContainerWithWrapper: typeof DocsContainer = ({
+  children,
+  context,
+  ...props
+}) => {
+  return (
+    <div
+      /* @ts-expect-error https://github.com/storybookjs/storybook/issues/12982*/
+      data-color-scheme={context.store.userGlobals.globals.colorScheme}
+    >
+      <DocsContainer context={context} {...props}>
+        {children}
+      </DocsContainer>
+    </div>
+  );
+};
+
 const preview: Preview = {
   tags: ['a11y-test'],
   globalTypes: {
@@ -150,9 +168,23 @@ const preview: Preview = {
         dynamicTitle: true,
       },
     },
+    colorScheme: {
+      description: 'Set color-scheme in stories',
+      defaultValue: 'light',
+      toolbar: {
+        title: 'Theme',
+        items: [
+          { title: '☀️ Light', value: 'light' },
+          { title: '🌙 Dark', value: 'dark' },
+          { title: 'Auto', value: 'auto' },
+        ],
+        dynamicTitle: true,
+      },
+    },
   },
   initialGlobals: {
     codePreview: 'react',
+    colorScheme: 'light',
   },
   parameters: {
     layout: 'centered',
@@ -164,6 +196,7 @@ const preview: Preview = {
         transform: transformSource,
         type: 'auto',
       },
+      container: DocsContainerWithWrapper,
     },
     controls: {
       matchers: {
