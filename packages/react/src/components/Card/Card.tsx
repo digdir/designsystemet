@@ -1,10 +1,10 @@
-import { useMergeRefs } from '@floating-ui/react';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useEffect, useRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
+import { useMergeRefs } from '../../utilities/hooks';
 
 export type CardProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDivElement>,
