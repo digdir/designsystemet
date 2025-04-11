@@ -29,7 +29,7 @@ const getBaseDefault = (colorTheme: Color[]) =>
   colorTheme.find((color) => color.name === 'base-default');
 
 const LOADING_CSS_MESSAGE = 'Genererer CSS...';
-const FEAT_THEME_CSS = true; // TODO set to false before merging
+const FEAT_THEME_CSS = false; // TODO set to false before merging
 
 export const TokenModal = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
