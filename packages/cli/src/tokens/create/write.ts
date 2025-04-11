@@ -27,23 +27,27 @@ export const writeTokens = async (options: WriteTokensOptions) => {
   const targetDir = path.resolve(process.cwd(), String(outDir));
   const $themesPath = path.join(targetDir, '$themes.json');
   const $metadataPath = path.join(targetDir, '$metadata.json');
-  let themes = [themeName];
+  let themeObjects: ThemeObject[] = [];
 
   await mkdir(targetDir, dry);
 
   try {
-    // Update with existing themes
+    // Fetch existing themes
     const $themes = await readFile($themesPath);
-    const themeObjects = (JSON.parse($themes) as ThemeObject[]) || [];
-    const concatThemeNames = R.pipe(
-      R.filter((obj: ThemeObject) => R.toLower(obj.group || '') === 'theme'),
-      R.map(R.prop('name')),
-      R.concat(themes),
-      R.uniq,
-    );
-
-    themes = concatThemeNames(themeObjects);
+    if ($themes) {
+      themeObjects = JSON.parse($themes) as ThemeObject[];
+    }
   } catch (error) {}
+
+  const concatThemeNames = R.pipe(
+    R.filter((obj: ThemeObject) => R.toLower(obj.group || '') === 'theme'),
+    R.map(R.prop('name')),
+    // New theme is added to the end of the list so we keep the same order from config and Token Studio
+    R.append(themeName),
+    R.uniq,
+  );
+
+  const themes = concatThemeNames(themeObjects);
 
   console.log(`Themes: ${chalk.blue(themes.join(', '))}`);
 
