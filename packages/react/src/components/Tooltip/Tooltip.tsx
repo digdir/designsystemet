@@ -19,9 +19,9 @@ import {
   version,
 } from 'react';
 
-import { useMergeRefs } from '@floating-ui/react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
+import { useMergeRefs } from '../../utilities/hooks';
 
 export type TooltipProps = MergeRight<
   Omit<DefaultProps, 'data-color'> & HTMLAttributes<HTMLDivElement>,
