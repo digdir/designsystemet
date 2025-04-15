@@ -1,5 +1,5 @@
+import type { A11yParameters } from '@storybook/addon-a11y';
 import type {} from '@storybook/types';
-import type { ElementContext, Spec } from 'axe-core';
 import type { configureAxe } from 'axe-playwright';
 import type { CSSProperties } from 'react';
 
@@ -50,11 +50,13 @@ declare module '@storybook/types' {
     /**
      * Configure `@storybook/addon-a11y`. See [the documentation](https://storybook.js.org/addons/@storybook/addon-a11y)
      */
-    a11y?: {
-      disable?: boolean;
-      element?: ElementContext;
-      config?: Spec;
-      manual?: boolean;
+    a11y?: A11yParameters['a11y'] & {
+      /**
+       * - `'todo'` - show a11y violations in the test UI only
+       * - `'error'` - fail CI on a11y violations
+       * - `'off'` - skip a11y checks entirely
+       */
+      test?: 'todo' | 'error' | 'off';
     };
 
     /**

@@ -1,0 +1,31 @@
+.card {
+  display: block;
+  text-align: center;
+  background-color: var(--ds-color-neutral-background-default);
+  color: var(--ds-color-neutral-text-default);
+  padding: var(--ds-size-10);
+  border-radius: var(--ds-border-radius-md);
+  box-shadow: var(--ds-shadow-xs);
+  text-decoration: none;
+  transition: 0.2s transform ease-in-out, 0.2s box-shadow ease-in-out;
+
+  [data-color-scheme='dark'] &,
+  [data-color-scheme='auto'] & {
+    background-color: var(--ds-color-neutral-surface-tinted);
+  }
+}
+
+.card:hover {
+  box-shadow: var(--ds-shadow-md);
+  transform: translateY(-4px);
+}
+
+.title {
+  margin-top: var(--ds-size-3);
+  text-decoration: underline;
+  text-underline-offset: 7px;
+}
+
+.image {
+  width: 100%;
+}

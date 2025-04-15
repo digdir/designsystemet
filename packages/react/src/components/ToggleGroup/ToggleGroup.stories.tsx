@@ -20,6 +20,14 @@ import { Tooltip } from '../Tooltip';
 export default {
   title: 'Komponenter/ToggleGroup',
   component: ToggleGroup,
+  decorators: [
+    (Story) => (
+      /* 80vw since storybook has padding, and does not stop elements from overflowing the x-axis */
+      <div style={{ maxWidth: '80vw' }}>
+        <Story />
+      </div>
+    ),
+  ],
 } as Meta;
 
 export const Preview: StoryFn<typeof ToggleGroup> = (args) => {

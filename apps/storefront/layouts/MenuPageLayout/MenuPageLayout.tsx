@@ -1,6 +1,7 @@
 'use client';
 import { Heading } from '@digdir/designsystemet-react';
 import { ComponentIcon } from '@navikt/aksel-icons';
+import { Slot } from '@radix-ui/react-slot';
 import { Container } from '@repo/components';
 import cn from 'clsx/lite';
 import { usePathname } from 'next/navigation';
@@ -42,11 +43,11 @@ const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
       {banner && (
         <Banner color={banner.color}>
           <BannerIcon>{banner.icon}</BannerIcon>
-          <BannerHeading>{banner.title}</BannerHeading>
+          <BannerHeading level={1}>{banner.title}</BannerHeading>
           {banner.ingress && <BannerIngress>{banner.ingress}</BannerIngress>}
         </Banner>
       )}
-      <Container className={classes.page}>
+      <Container className={classes.page} id='menu-page-layout'>
         <div className={classes.left}>
           <SidebarMenu routerPath={pathname ?? ''} />
         </div>
@@ -54,7 +55,9 @@ const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
           {data && (
             <div className={classes.header}>
               <div className={classes.headerText}>
-                <Heading data-size='lg'>{data.title}</Heading>
+                <Heading data-size='lg' level={banner ? 2 : 1}>
+                  {data.title}
+                </Heading>
                 {data.date && <div className={classes.date}>{data.date}</div>}
               </div>
               <div
@@ -65,8 +68,10 @@ const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
                   data.color === 'yellow' && classes.yellow,
                 )}
               >
-                {data.icon && data.icon}
-                {!data.icon && <ComponentIcon fontSize='4rem' />}
+                {data.icon && <Slot aria-hidden='true'>{data.icon}</Slot>}
+                {!data.icon && (
+                  <ComponentIcon fontSize='4rem' aria-hidden='true' />
+                )}
               </div>
             </div>
           )}
@@ -77,16 +82,6 @@ const MenuPageLayout = ({ content, data, banner }: PageLayoutProps) => {
           </div>
         </main>
       </Container>
-      <style suppressHydrationWarning>
-        {`
-          header {
-            [data-color-scheme='dark'] &,
-            [data-color-scheme='auto'] & {
-              background-color: var(--ds-color-neutral-background-default) !important;
-            }
-          }
-        `}
-      </style>
     </div>
   );
 };

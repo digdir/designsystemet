@@ -10,7 +10,6 @@ import {
   Card,
   Checkbox,
   Chip,
-  Combobox,
   Details,
   Dialog,
   Dropdown,
@@ -27,6 +26,7 @@ import {
   Radio,
   Select,
   Spinner,
+  EXPERIMENTAL_Suggestion as Suggestion,
   Switch,
   Table,
   Tabs,
@@ -54,8 +54,26 @@ export default {
       background: 'var(--ds-color-neutral-background-default)',
       borderRadius: 'var(--ds-border-radius-md)',
     },
+    chromatic: {
+      disableSnapshot: false,
+      modes: {
+        desktop: {
+          viewport: { height: 1080 },
+        },
+      },
+    },
   },
 } as Meta;
+
+const DATA_PLACES = [
+  'Sogndal',
+  'Oslo',
+  'Brønnøysund',
+  'Stavanger',
+  'Trondheim',
+  'Bergen',
+  'Lillestrøm',
+];
 
 export const MediumRow: StoryFn<{
   size: 'sm' | 'md' | 'lg';
@@ -85,10 +103,19 @@ export const MediumRow: StoryFn<{
           <Select.Option>opt3</Select.Option>
         </Select>
         <Button data-size={size}>Knapp</Button>
-        <Combobox data-size={size}>
-          <Combobox.Option value='sogndal'>Sogndal</Combobox.Option>
-          <Combobox.Option value='stavanger'>Stavanger</Combobox.Option>
-        </Combobox>
+        <Suggestion>
+          <Suggestion.Input />
+          <Suggestion.Clear />
+          <Suggestion.List>
+            <Suggestion.Empty>Tomt</Suggestion.Empty>
+            {DATA_PLACES.map((place) => (
+              <Suggestion.Option key={place} value={place}>
+                {place}
+                <div>Kommune</div>
+              </Suggestion.Option>
+            ))}
+          </Suggestion.List>
+        </Suggestion>
       </div>
       <br />
       <div

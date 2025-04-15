@@ -2,7 +2,15 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { expect, userEvent, within } from '@storybook/test';
 import { useRef, useState } from 'react';
 
-import { Button, Combobox, Heading, Paragraph, Textfield } from '..';
+import {
+  Button,
+  Field,
+  Heading,
+  Label,
+  Paragraph,
+  EXPERIMENTAL_Suggestion as Suggestion,
+  Textfield,
+} from '..';
 
 import { Dialog } from '.';
 
@@ -79,7 +87,7 @@ export const WithoutDialogTriggerContext: StoryFn<typeof Dialog> = (args) => {
   return (
     <>
       <Button onClick={() => dialogRef.current?.showModal()}>
-        Open Dialog
+        Open Dialog with ref
       </Button>
       <Dialog {...args} ref={dialogRef}>
         <Paragraph data-size='sm'>Dialog subtittel</Paragraph>
@@ -96,14 +104,39 @@ export const WithoutDialogTriggerContext: StoryFn<typeof Dialog> = (args) => {
   );
 };
 
-export const BackdropClose: StoryFn<typeof Dialog> = () => {
+export const DialogWithOpenProp: StoryFn<typeof Dialog> = (args) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen((prev) => !prev)}>
+        Open Dialog with prop
+      </Button>
+      <Dialog {...args} open={open} onClose={() => setOpen(false)}>
+        <Paragraph data-size='sm'>Dialog subtittel</Paragraph>
+        <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
+          Dialog header
+        </Heading>
+        <Paragraph style={{ marginBottom: 'var(--ds-size-2)' }}>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
+          doloremque obcaecati assumenda odio ducimus sunt et.
+        </Paragraph>
+        Dialog footer
+      </Dialog>
+    </>
+  );
+};
+
+export const BackdropClosedbyAny: StoryFn<typeof Dialog> = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   return (
     <Dialog.TriggerContext>
       <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-      <Dialog ref={dialogRef} backdropClose>
-        <Heading>Dialog med backdropClose og en veldig lang tittel</Heading>
+      <Dialog ref={dialogRef} closedby='any'>
+        <Heading>
+          Dialog med <code>closedby="any"</code> og en veldig lang tittel
+        </Heading>
         <Paragraph>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
           doloremque obcaecati assumenda odio ducimus sunt et.
@@ -158,7 +191,7 @@ export const DialogWithForm: StoryFn<typeof Dialog> = () => {
   return (
     <Dialog.TriggerContext>
       <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-      <Dialog ref={dialogRef} onClose={() => setInput('')} backdropClose>
+      <Dialog ref={dialogRef} onClose={() => setInput('')} closedby='any'>
         <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
           Dialog med skjema
         </Heading>
@@ -211,7 +244,17 @@ export const DialogWithMaxWidth: StoryFn<typeof Dialog> = () => (
   </Dialog.TriggerContext>
 );
 
-export const DialogWithCombobox: StoryFn<typeof Dialog> = () => {
+const DATA_PLACES = [
+  'Sogndal',
+  'Oslo',
+  'Brønnøysund',
+  'Stavanger',
+  'Trondheim',
+  'Bergen',
+  'Lillestrøm',
+];
+
+export const DialogWithSuggestion: StoryFn<typeof Dialog> = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   return (
@@ -220,20 +263,25 @@ export const DialogWithCombobox: StoryFn<typeof Dialog> = () => {
         <Dialog.Trigger>Open Dialog</Dialog.Trigger>
         <Dialog style={{ overflow: 'visible' }} ref={dialogRef}>
           <Dialog.Block>
-            <Heading>Dialog med combobox</Heading>
+            <Heading>Dialog med suggestion</Heading>
           </Dialog.Block>
           <Dialog.Block>
-            <Combobox portal={false} label='Velg sted' autoFocus>
-              <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-              <Combobox.Option value='leikanger'>Leikanger</Combobox.Option>
-              <Combobox.Option value='oslo'>Oslo</Combobox.Option>
-              <Combobox.Option value='bronnoysund'>Brønnøysund</Combobox.Option>
-              <Combobox.Option value='stavanger'>Stavanger</Combobox.Option>
-              <Combobox.Option value='trondheim'>Trondheim</Combobox.Option>
-              <Combobox.Option value='tromso'>Tromsø</Combobox.Option>
-              <Combobox.Option value='bergen'>Bergen</Combobox.Option>
-              <Combobox.Option value='moirana'>Mo i Rana</Combobox.Option>
-            </Combobox>
+            <Field>
+              <Label>Velg en destinasjon</Label>
+              <Suggestion>
+                <Suggestion.Input />
+                <Suggestion.Clear />
+                <Suggestion.List>
+                  <Suggestion.Empty>Tomt</Suggestion.Empty>
+                  {DATA_PLACES.map((place) => (
+                    <Suggestion.Option key={place} value={place}>
+                      {place}
+                      <div>Kommune</div>
+                    </Suggestion.Option>
+                  ))}
+                </Suggestion.List>
+              </Suggestion>
+            </Field>
           </Dialog.Block>
           <Dialog.Block>
             <Button
@@ -247,4 +295,39 @@ export const DialogWithCombobox: StoryFn<typeof Dialog> = () => {
       </Dialog.TriggerContext>
     </>
   );
+};
+
+DialogWithSuggestion.parameters = {
+  a11y: {
+    // TODO: this rule should be enabled after https://github.com/dequelabs/axe-core/issues/4672 have propagated to @storybook/addon-a11y.
+    config: {
+      rules: [
+        {
+          id: 'aria-allowed-role',
+          enabled: false,
+        },
+      ],
+    },
+  },
+};
+
+export const DialogNonModal: StoryFn<typeof Dialog> = () => {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
+  return (
+    <>
+      <Button onClick={() => dialogRef.current?.show()}>Open Dialog</Button>
+      <Dialog ref={dialogRef} modal={false}>
+        <Heading>Non-modal dialog</Heading>
+        <Paragraph>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
+          doloremque obcaecati assumenda odio ducimus sunt et.
+        </Paragraph>
+      </Dialog>
+    </>
+  );
+};
+
+DialogNonModal.parameters = {
+  curstomStyles: { padding: 'var(--ds-size-18)' },
 };

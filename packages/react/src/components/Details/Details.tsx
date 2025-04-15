@@ -1,7 +1,7 @@
-import { useMergeRefs } from '@floating-ui/react';
 import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useEffect, useRef } from 'react';
+import { useMergeRefs } from '../../utilities/hooks';
 import '@u-elements/u-details';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
@@ -14,7 +14,7 @@ export type DetailsProps = MergeRight<
      *
      * @default 'default'
      */
-    'data-variant'?: 'default' | 'tinted';
+    variant?: 'default' | 'tinted';
     /**
      * Controls open-state.
      *
@@ -58,7 +58,7 @@ export const Details = forwardRef<HTMLDetailsElement, DetailsProps>(
       className,
       open,
       defaultOpen = false,
-      'data-variant': variant = 'default',
+      variant = 'default',
       onToggle,
       ...rest
     },

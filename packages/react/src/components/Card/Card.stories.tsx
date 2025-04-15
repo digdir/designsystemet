@@ -53,35 +53,35 @@ const VariantsMap: {
 } = {
   neutralDefault: {
     'data-color': 'neutral',
-    'data-variant': 'default',
+    variant: 'default',
   },
   neutralTinted: {
     'data-color': 'neutral',
-    'data-variant': 'tinted',
+    variant: 'tinted',
   },
   brand1Default: {
     'data-color': 'brand1',
-    'data-variant': 'default',
+    variant: 'default',
   },
   brand1Tinted: {
     'data-color': 'brand1',
-    'data-variant': 'tinted',
+    variant: 'tinted',
   },
   brand2Default: {
     'data-color': 'brand2',
-    'data-variant': 'default',
+    variant: 'default',
   },
   brand2Tinted: {
     'data-color': 'brand2',
-    'data-variant': 'tinted',
+    variant: 'tinted',
   },
   brand3Default: {
     'data-color': 'brand3',
-    'data-variant': 'default',
+    variant: 'default',
   },
   brand3Tinted: {
     'data-color': 'brand3',
-    'data-variant': 'tinted',
+    variant: 'tinted',
   },
 };
 
@@ -172,15 +172,7 @@ const options = [
 ];
 
 export const Composed: Story = () => (
-  <div
-    style={{
-      display: 'grid', // Used to test Card.Block border logic
-      gap: 'var(--ds-size-4)',
-      gridColumn: '1 / -1',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(300px , 1fr))',
-      width: '100%',
-    }}
-  >
+  <>
     <Card>
       <Card.Block>
         <div
@@ -231,8 +223,18 @@ export const Composed: Story = () => (
         </Paragraph>
       </Card.Block>
     </Card>
-  </div>
+  </>
 );
+
+Composed.parameters = {
+  customStyles: {
+    display: 'grid',
+    gap: 'var(--ds-size-4)',
+    gridColumn: '1 / -1',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(300px , 1fr))',
+    width: '100%',
+  },
+};
 
 export const WithLink: Story = (args) => (
   <>

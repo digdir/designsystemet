@@ -6,7 +6,7 @@
 
 .ds-textfield__adornment {
   color: var(--ds-color-neutral-text-subtle);
-  background: var(--ds-color-neutral-background-tinted);
+  background: var(--ds-color-neutral-surface-tinted);
   padding: 9px var(--ds-size-4);
   border-radius: var(--ds-border-radius-md);
   border: solid 1px var(--ds-color-neutral-border-default);
@@ -23,7 +23,7 @@
   appearance: none;
   padding: 0 var(--ds-size-3);
   border: solid 1px var(--ds-color-neutral-border-default);
-  background: var(--ds-color-neutral-background-default);
+  background: var(--ds-color-neutral-surface-default);
   color: var(--ds-color-neutral-text-default);
   border-radius: var(--ds-border-radius-md);
 }
@@ -33,7 +33,7 @@
 }
 
 .ds-textfield--readonly .ds-textfield__input {
-  background: var(--ds-color-neutral-background-tinted);
+  background: var(--ds-color-neutral-surface-tinted);
   border-color: var(--ds-color-neutral-border-strong);
 }
 
@@ -103,7 +103,7 @@
 }
 
 .ds-textfield:has(.ds-textfield__input:disabled) {
-  opacity: var(--ds-disabled-opacity);
+  opacity: var(--ds-opacity-disabled);
 }
 
 .ds-textfield--error .ds-textfield__input:not(:focus-visible) {
@@ -166,7 +166,7 @@
 
 .ds-combobox__options-wrapper {
   padding: var(--ds-size-2);
-  background: var(--ds-color-neutral-background-default);
+  background: var(--ds-color-neutral-surface-default);
   color: var(--ds-color-neutral-text-default);
   overflow-y: auto;
   z-index: 1600;
@@ -301,7 +301,7 @@
 }
 
 .ds-combobox__disabled {
-  opacity: var(--ds-disabled-opacity);
+  opacity: var(--ds-opacity-disabled);
 }
 
 .ds-combobox__disabled * {
@@ -371,7 +371,7 @@
 }
 
 .ds-combobox__option.ds-combobox__option--active {
-  background: var(--ds-color-background-tinted);
+  background: var(--ds-color-surface-tinted);
   border-left: 5px solid var(--ds-color-base-default);
 }
 
@@ -403,7 +403,7 @@
   aspect-ratio: 1 / 1;
   border: 2px solid var(--ds-color-neutral-border-default);
   border-radius: var(--ds-border-radius-sm);
-  background-color: var(--ds-color-neutral-background-default);
+  background-color: var(--ds-color-neutral-surface-default);
   display: grid;
   place-items: center;
 }

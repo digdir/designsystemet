@@ -1,10 +1,10 @@
-import { useMergeRefs } from '@floating-ui/react';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useEffect, useRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
+import { useMergeRefs } from '../../utilities/hooks';
 
 export type CardProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDivElement>,
@@ -14,7 +14,7 @@ export type CardProps = MergeRight<
      *
      * @default 'default'
      */
-    'data-variant'?: 'default' | 'tinted';
+    variant?: 'default' | 'tinted';
     /**
      * Change the default rendered element for the one passed as a child, merging their props and behavior.
      * @default false
@@ -36,7 +36,7 @@ export type CardProps = MergeRight<
  * </Card>
  */
 export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
-  { asChild = false, 'data-variant': variant = 'default', className, ...rest },
+  { asChild = false, variant = 'default', className, ...rest },
   ref,
 ) {
   const Component = asChild ? Slot : 'div';

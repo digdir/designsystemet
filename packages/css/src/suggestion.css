@@ -1,5 +1,5 @@
 .ds-suggestion {
-  --dsc-suggestion-option-background--selected: var(--ds-color-background-tinted);
+  --dsc-suggestion-option-background--selected: var(--ds-color-surface-tinted);
   --dsc-suggestion-option-border-color: var(--ds-color-base-default);
   --dsc-suggestion-clear-gap: var(--ds-size-2);
   --dsc-suggestion-clear-padding: var(--ds-size-1);
@@ -13,13 +13,16 @@
   --dsc-suggestion-border-color: var(--ds-color-neutral-border-default);
 
   box-sizing: border-box;
-  display: flex;
   flex-wrap: wrap;
   gap: var(--ds-size-1);
   position: relative;
 
+  &:not([hidden]) {
+    display: flex;
+  }
+
   & u-datalist {
-    background: var(--ds-color-neutral-background-default);
+    background: var(--ds-color-neutral-surface-default);
     border-radius: var(--ds-border-radius-md);
     border-width: var(--dsc-suggestion-border-width);
     border-style: var(--dsc-suggestion-border-style);
@@ -35,7 +38,7 @@
     max-height: 200px;
 
     /* Hide <suggestion.Empty> if any <suggestion.Option> is visible */
-    &:has(u-option:not([hidden]):not([aria-disabled='true'])) > u-option[data-empty] {
+    &:has(u-option:not([hidden]):not([aria-disabled='true']):not([data-empty])) > u-option[data-empty] {
       display: none;
     }
     & > u-option[data-empty] {

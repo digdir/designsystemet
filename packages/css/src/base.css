@@ -15,6 +15,8 @@
 :root {
   --ds-font-size-minus-1: max(.9em, .875rem); /* Default to 90% of font-size, but minimum 14px */
   --ds-font-size-plus-1: 1.1em; /* Default to 110% */
+  --ds-readonly-icon-size: 1.2em;
+  --ds-readonly-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' aria-hidden='true' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M12 2.25A4.75 4.75 0 0 0 7.25 7v2.25H7A1.75 1.75 0 0 0 5.25 11v9c0 .41.34.75.75.75h12a.75.75 0 0 0 .75-.75v-9A1.75 1.75 0 0 0 17 9.25h-.25V7A4.75 4.75 0 0 0 12 2.25m3.25 7V7a3.25 3.25 0 0 0-6.5 0v2.25zM12 13a1.5 1.5 0 0 0-.75 2.8V17a.75.75 0 0 0 1.5 0v-1.2A1.5 1.5 0 0 0 12 13'/%3E%3C/svg%3E");
 
   /* font-size adjustments if supporting round() */
   @supports (width: round(down, .1em, 1px)) {
@@ -26,6 +28,7 @@
 :root,
 [data-color-scheme] {
   --dsc-focus-boxShadow: 0 0 0 var(--ds-border-width-focus) var(--ds-color-focus-inner);
+  --dsc-focus-boxShadow-inset: inset 0 0 0 calc(var(--ds-border-width-focus) * 2) var(--ds-color-focus-inner);
   --dsc-focus-outline: var(--ds-color-focus-outer) solid var(--ds-border-width-focus);
 }
 
@@ -36,11 +39,34 @@ body,
   background: var(--ds-color-neutral-background-default);
 }
 
+.ds-readonly-icon::before {
+  background: currentcolor;
+  content: '';
+  display: inline-block;
+  height: calc(1em * var(--ds-line-height-md)); /* Fallback for browsers not supporting lh unit */
+  height: 1lh;
+  margin-inline-end: .25ch; /* Fake a space character */
+  mask: center / contain no-repeat var(--ds-readonly-icon-url);
+  vertical-align: bottom;
+  width: var(--ds-readonly-icon-size);
+
+  @media (forced-colors: active) {
+    background: CanvasText;
+  }
+}
+
 /**
  * Apply a focus outline on an element when it is focused with keyboard
  */
 .ds-focus:focus-visible {
   @composes ds-focus--visible from './base.css';
+}
+
+/**
+ * Apply a focus outline that is inset on an element when it is focused with keyboard
+ */
+.ds-focus--inset:focus-visible {
+  @composes ds-focus--visible--inset from './base.css';
 }
 
 /**
@@ -54,6 +80,27 @@ body,
   box-shadow: var(--_ds--focus, var(--dsc-focus-boxShadow));
   outline: var(--_ds--focus, var(--dsc-focus-outline));
   outline-offset: var(--_ds--focus, var(--ds-border-width-focus));
+
+  /**
+   * Using CSS custom properties toggle trick to ensure focus-visible is only shown on outermost element
+   * https://css-tricks.com/the-css-custom-property-toggle-trick/
+   */
+  * {
+    --_ds--focus: ;
+  }
+}
+
+/**
+ * Focus outline on the inside that can be composed if it needs a specific selector
+ */
+.ds-focus--visible--inset {
+  /**
+   * We use both box-shadow and outline to ensure that the focus style is visible,
+   * in case box-shadow is overridden.
+   */
+  box-shadow: var(--_ds--focus, var(--dsc-focus-boxShadow-inset));
+  outline: var(--_ds--focus, var(--dsc-focus-outline));
+  outline-offset: calc(var(--_ds--focus, var(--ds-border-width-focus)) * -1);
 
   /**
    * Using CSS custom properties toggle trick to ensure focus-visible is only shown on outermost element

@@ -1,34 +1,10 @@
-import { Dialog, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Dialog, Heading } from '@digdir/designsystemet-react';
 import type { Color } from '@digdir/designsystemet/color';
 import { getCssVariable, hexToHsluv } from '@digdir/designsystemet/color';
 import { ClipboardButton } from '@repo/components';
 
 import classes from './ColorModal.module.css';
 import { capitalizeFirstLetter, getColorCombinations } from './colorModalUtils';
-
-const Field = ({
-  label,
-  value,
-  copyBtn = false,
-}: {
-  label: string;
-  value: string;
-  copyBtn?: boolean;
-}) => {
-  return (
-    <div className={classes.field}>
-      {label && (
-        <Paragraph data-size='sm' className={classes.label}>
-          {label}
-        </Paragraph>
-      )}
-      <Paragraph data-size='sm' className={classes.value}>
-        {value}
-      </Paragraph>
-      {copyBtn && <ClipboardButton value={value} />}
-    </div>
-  );
-};
 
 type ColorModalProps = {
   colorModalRef: React.Ref<HTMLDialogElement> | null;
@@ -45,10 +21,10 @@ export const ColorModal = ({
   return (
     <Dialog
       ref={colorModalRef}
+      closedby='any'
       style={{
         maxWidth: '1100px',
       }}
-      backdropClose
     >
       <Dialog.Block>
         <Heading data-size='xs'>
@@ -56,7 +32,7 @@ export const ColorModal = ({
         </Heading>
       </Dialog.Block>
       <Dialog.Block className={classes.modalContent}>
-        <div className={classes.description}>{description}</div>
+        <div className={classes.description}>{description.long}</div>
         <div className={classes.container}>
           <table className={classes.infoTable}>
             <tbody>

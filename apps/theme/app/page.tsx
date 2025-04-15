@@ -3,29 +3,19 @@ import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import type {} from '@digdir/designsystemet/color';
 import {} from '@digdir/designsystemet/color';
 import { BookIcon, PaletteIcon } from '@navikt/aksel-icons';
-import { ColorModal, Container } from '@repo/components';
+import { Container } from '@repo/components';
 import NextLink from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useRef } from 'react';
-import { useThemeStore } from '../store';
+import { useEffect } from 'react';
 
 import { Previews } from '../components';
 import classes from './page.module.css';
 
 export default function Home() {
-  const selectedColor = useThemeStore((state) => state.selectedColor);
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams);
-  const colorModalRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
-    // Open modal on selected color change
-    useThemeStore.subscribe(
-      (state) => state.selectedColor,
-      () => {
-        colorModalRef.current?.showModal();
-      },
-    );
     // Sticky Menu Area
     window.addEventListener('scroll', isSticky);
     return () => {
@@ -55,17 +45,11 @@ export default function Home() {
 
   return (
     <div>
-      <ColorModal
-        color={selectedColor.color}
-        namespace={'d'}
-        colorModalRef={colorModalRef}
-      />
-
       <main className={classes.main} id='main'>
         <Container>
           <div className={classes.header}>
             <Paragraph data-size='lg'>Designsystemet sin temabygger</Paragraph>
-            <Heading data-size='xl' className={classes.heading}>
+            <Heading data-size='xl' level={1} className={classes.heading}>
               Sett i gang med å bygge ditt
               <span className={classes.headerText}> eget tema</span>
             </Heading>
@@ -76,13 +60,13 @@ export default function Home() {
             <div className={classes.btnGroup}>
               <Button data-color='neutral' asChild>
                 <NextLink href='/themebuilder'>
-                  <PaletteIcon title='a11y-title' fontSize='1.5rem' />
+                  <PaletteIcon fontSize='1.5rem' aria-hidden />
                   Bygg tema
                 </NextLink>
               </Button>
               <Button data-color='neutral' variant='secondary' asChild>
                 <NextLink href='https://www.designsystemet.no/grunnleggende/for-designere/eget-tema'>
-                  <BookIcon title='a11y-title' fontSize='1.5rem' />
+                  <BookIcon fontSize='1.5rem' aria-hidden />
                   Dokumentasjon
                 </NextLink>
               </Button>

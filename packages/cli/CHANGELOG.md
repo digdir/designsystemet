@@ -1,5 +1,192 @@
 # Change Log
 
+## 1.0.3
+
+### Patch Changes
+
+- Fix `data-color` and `data-color-scheme` used on the same element not working in some browsers ([#3354](https://github.com/digdir/designsystemet/pull/3354))
+
+- Dark mode color adjustments ([#3386](https://github.com/digdir/designsystemet/pull/3386))
+
+  - Reduced the saturation of the colors in dark mode by about 50%.
+  - Made the background- and surface colors a bit darker.
+  - Made the text-default color a bit brighter for better contrast.
+
+- General color adjustments ([#3386](https://github.com/digdir/designsystemet/pull/3386))
+  - Changed the luminance of border-default to work on top of surface-hover with 3:1 contrast.
+  - Changed the luminance of text-subtle and border-strong to work on top of surface-hover with 4.5:1 contrast.
+
+## 1.0.2
+
+### Patch Changes
+
+- Improve build for built in colors. ([#3247](https://github.com/digdir/designsystemet/pull/3247))
+
+- Fix missing `--ds-color-surface-default` for colors `danger`, `warning`, `info`, `success` and `neutral`. ([#3247](https://github.com/digdir/designsystemet/pull/3247))
+
+## 1.0.1
+
+## 1.0.0
+
+### Major Changes
+
+- 🎉 Version 1.0 of Designsystemet! 🎉 ([#3290](https://github.com/digdir/designsystemet/pull/3290))
+
+  We are excited to announce the release of Version 1.0 of Designsystemet! This marks a significant milestone as we establish a solid foundation for future development. 🚀
+
+## 0.101.0
+
+### Patch Changes
+
+- **tokens**: Renamed `font.family` to `font-family` ([#3264](https://github.com/digdir/designsystemet/pull/3264))
+
+- **tokens**: `extra-bold` token should now have correct value according to Token Studio ([#3264](https://github.com/digdir/designsystemet/pull/3264))
+
+- **tokens**: Added `font-weight` to token name for fontWeight tokens (e.g. `font-weight.medium`) ([#3264](https://github.com/digdir/designsystemet/pull/3264))
+
+- Removed `--ds-global` colors from tokens build ([#3250](https://github.com/digdir/designsystemet/pull/3250))
+
+- Some options supplied to the CLI were being overridden by their default values ([#3267](https://github.com/digdir/designsystemet/pull/3267))
+
+- Added `--ds-link-color-visited` for styling visited links ([#3250](https://github.com/digdir/designsystemet/pull/3250))
+
+## 0.100.52
+
+### Patch Changes
+
+- Invalidate system colors as color names (success, danger, warning, info, blue, green, orange, red, purple) ([#3228](https://github.com/digdir/designsystemet/pull/3228))
+
+## 0.100.52-next.0
+
+### Patch Changes
+
+- Invalidate system colors as color names (success, danger, warning, info, blue, green, orange, red, purple) ([#3194](https://github.com/digdir/designsystemet/pull/3194))
+
+## 0.100.51
+
+- 2d1da9a: Testing snapshot release
+- 10e7b55: Fix wrong base default color beeing set by the themebuilder
+- 0f7418e: Added token `border-width-focus`
+- 882c206: Create & build tokens correctly if support-color is missing
+- 418b31a: chore: Fix rollup build warnings for react package
+- 482f765: Renamed background, surface and contrast color tokens and CSS variables
+- b9c5deb: Fix design-token warning contrast color reference
+- 58724b7: tokens: fix wrong reference for focus color.
+- a42f6f7: refactor: Changed border-radius token to dimension type
+- a9f0528: refactor: single CSS file for theme
+- d146fbe: `clean` should only run once during `tokens create` when multiple themes are defined using config file
+- c25920a: Add JSON schema for CLI config file, which enables editor hints. To use it, do something like this:
+  ```jsonc
+  {
+    "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json"
+    // ...config options here...
+  }
+  ```
+- d679d0c: fix: Correct name on Figma collection for color schemes
+- bcd50d9: cli: better error messages for wrong or missing options
+- cc236ab: Changed name of Tokens Studio theme "Mode" to "Color scheme", and updated the path in the token structure from `primitives/modes/colors` to `primitives/modes/color-scheme`
+- 957d418: Increased lightness of global `orange` color
+- 3109699: Add json config file support for `tokens create`
+- 2f94b73: Added option dry run using `--dry` on `tokens create` & `tokens build`
+- 24d8f90: Update init script to new design-tokens format
+- 0f7418e: Removed token `border-width-highlight`
+- 38a0843: **fix(cli)**: 🚑 include missing build files for designsystemet bin
+- 482f765: Added migration for color tokens renaming. Run `designsystemet migrate css-renames-next48-to-next49 --glob "./**/*.css"`
+- 2f94b73: `tokens create` now writes by default
+- 7ed2b22: Disable contrast color-scheme in tokens create script
+- 188bd19: CLI: `tokens build` command now generates a `colors.d.ts` file which enables type safety for the `data-color` attribute when included in your `tsconfig.json`. The `@digdir/designsystemet-theme` package has been updated to include types for those themes.
+- e6325af: fix: Export correct types for color
+- 58724b7: Changed focus color to use neutral instead of accent color
+- dc6ab52: Rename `data-ds-typography` to `data-typography`
+- 1a37354: Renamed color step `contrast-1` to `16`
+- 7115f38: Removed predefined `accent` variables added during `tokens build`. Use `data-color` or generated named color variables instead.
+- 0f7418e: Reduced `font-size` scale by one, from 11 to 10. All sizes above and including `font-size-2` have shifted down size by one
+- 1a37354: Added new step to color scale, now with a total of 16
+- d146fbe: `typography` and `borderRadius` are now optional in config file
+- db678d4: Removed `init` command. Use `tokens create` instead.
+- 1767724: React components and css now support custom colors through the `data-color` attribute.
+
+  **BREAKING CHANGE**: All React components that had a `color` prop have been changed to use `data-color`.
+
+  All<sup>1</sup> css targeting `data-color` has been changed to work with all custom colors generated by the CLI.
+
+  `Avatar`, `Badge`, `Button`, and `Link` use `--ds-color-accent-*`<sup>2</sup>, unless `data-color` is set directly on the element.
+
+  For components that had a `color` prop, but defaulted to something other than `"accent"`, `data-color` must also be set directly on the element.
+
+  All other components that defaulted to `"accent"`, or previously only existed in `"accent"` color, now support `data-color`. They will also inherit their color from the closest `data-color` attribute. If none is found, they use `--ds-color-accent-*`<sup>2</sup>.
+
+  <sup>1</sup>: ...except `Alert`, which only supports `info`, `warning`, `danger` and `success` colors.
+  <sup>2</sup>: If an `"accent"` color is not defined in the theme, the `--ds-color-accent-*` variables will point to the first `main-color`.
+
+- cd1c607: New create tokens script with color options support
+- 6998d4b: **BREAKING CHANGE**: The attribute / prop `data-ds-color-mode` has been renamed to `data-color-scheme`
+- 347bb61: Rename config option from `--json` to `--config`
+- f2b9922: chore: Reset `data-color` to degfault color when setting `data-color-scheme`
+- 83e083b: Increased the luminance of the Surface Tinted color in light mode and made Surface Tinted stand out more against Surface Default in dark mode.
+- 65c1d54: bump version
+- 1a37354: Changed order for semantic color tokens in design-tokens
+- a452813: CSS variables: `--ds-color-*-{1,2,...,13,contrast-1,contrast-2}`, which were generated from the `primitives` layer of design tokens, have been removed since they are always 1-to-1 with the semantic layer. Use the equivalent variables from the semantic layer instead
+
+  Example, for the `neutral` scale:
+
+  ```css
+    var(--ds-color-neutral-background-default); /* instead of: var(--ds-color-neutral-1) */
+    var(--ds-color-neutral-background-subtle);  /* instead of: var(--ds-color-neutral-2) */
+    var(--ds-color-neutral-surface-default);    /* instead of: var(--ds-color-neutral-3) */
+    var(--ds-color-neutral-surface-hover);      /* instead of: var(--ds-color-neutral-4) */
+    var(--ds-color-neutral-surface-active);     /* instead of: var(--ds-color-neutral-5) */
+    var(--ds-color-neutral-border-subtle);      /* instead of: var(--ds-color-neutral-6) */
+    var(--ds-color-neutral-border-default);     /* instead of: var(--ds-color-neutral-7) */
+    var(--ds-color-neutral-border-strong);      /* instead of: var(--ds-color-neutral-8) */
+    var(--ds-color-neutral-base-default);       /* instead of: var(--ds-color-neutral-9) */
+    var(--ds-color-neutral-base-hover);         /* instead of: var(--ds-color-neutral-10) */
+    var(--ds-color-neutral-base-active);        /* instead of: var(--ds-color-neutral-11) */
+    var(--ds-color-neutral-text-subtle);        /* instead of: var(--ds-color-neutral-12) */
+    var(--ds-color-neutral-text-default);       /* instead of: var(--ds-color-neutral-13) */
+    var(--ds-color-neutral-contrast-default);   /* instead of: var(--ds-color-neutral-contrast-1) */
+    var(--ds-color-neutral-contrast-subtle);    /* instead of: var(--ds-color-neutral-contrast-2) */
+  ```
+
+  ...and similarly for `accent`, `brand1`, `brand2` and `brand3`.
+
+- 829ec13: Update global colors
+- 957d418: Changed `warning` colors to use global `orange`
+- 1a37354: Renamed color step `contrast-2` to `15`
+- f304115: CLI now supports creating themes with 1 or more "main" colors, a neutral color, and 1 or more "support" colors. The "main" and "support" colors can have arbitrary names. There can not be more than 4 colors of each category unless you're using Figma on the Enterprise plan, due to plan-based restrictions on the number of variable modes per collection.
+- 9d54191: Moved typography based sizing formula to design-tokens
+- 4ff02ff: **Feat**: New `clean` option for cleaning `outDir` before `tokens create/build`
+- 48bd80e: Fix crash when running CLI command `tokens build`:
+
+  - add --verbose option to `tokens build` for easier debugging
+  - `tokens build` crashed when run on result of `tokens create`
+
+  Update tokens template used by CLI command `tokens create`
+
+  - removes `ingress`, renames `paragraph` to `body`, and adds `xl` size
+
+- 9b6401b: Fix crash when running @digdir/designsystemet CLI due to differences in module resolution when used as a package
+- 6959e9d: chore: Replace eslint with biomejs
+- 019e723: fix: Export correct bin files
+- f32f1fb: feat: Convert to W3C design token format
+- 5f51c95: Implemented a more flexible system of semantic border-radius tokens.
+- 2a3c4d3: Removed design-tokens `sizing` & `spacing`, use `size`.
+- c3da81b: tokens build: fix invalid values in --ds-size calculations
+- 9d54191: Support for building typography based sizing design-tokens
+- f8eeb6c: outDir option was required, but it should have a default value
+- 957d418: Removed global `yellow` color.
+- 2f94b73: Changed `-w, --write` to `-o, --out-dir` on `tokens create` & `tokens build` for defining output dir
+- f8986b8: chore: change default tokens build output folder
+- 5fe5050: Make sure the internal order of sections in the CSS generated by the CLI is deterministic, to avoid unnecessary git diffs
+
+## 0.100.51-next.52
+
+### Patch Changes
+
+- bump version ([`65c1d54`](https://github.com/digdir/designsystemet/commit/65c1d54deab3538f00f27746fefc07df181c2962))
+
+## 1.0.0-next.51
+
 ## 1.0.0-next.50
 
 ## 1.0.0-next.49
@@ -68,7 +255,7 @@
 
   ```jsonc
   {
-    "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
+    "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json"
     // ...config options here...
   }
   ```

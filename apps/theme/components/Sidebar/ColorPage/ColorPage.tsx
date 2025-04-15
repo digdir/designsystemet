@@ -10,7 +10,7 @@ import { ColorPane } from '../ColorPane/ColorPane';
 import classes from './ColorPage.module.css';
 
 export const ColorPage = () => {
-  type Pages = 'addColor' | 'editColor' | 'none';
+  type Pages = 'add-color' | 'edit-color' | 'none';
   type ColorType = 'main' | 'neutral' | 'support';
 
   const removeColor = useThemeStore((state) => state.removeColor);
@@ -22,145 +22,163 @@ export const ColorPage = () => {
   const [name, setName] = useState('');
   const [index, setIndex] = useState(0);
   const [colorType, setColorType] = useState<ColorType>('main');
-  const [open, setOpen] = useState(false);
+  const [initialColor, setInitialColor] = useState('#0062ba');
+  const [initialName, setInitialName] = useState(name);
 
-  const addNewColor = (color: string, name: string) => {
-    const theme = generateColorSchemes(color as CssColor);
-    addColor({ name: name, colors: theme }, colorType);
-  };
-
-  const updateExistingColor = (color: string, name: string) => {
-    const theme = generateColorSchemes(color as CssColor);
-
-    updateColor({ name: name, colors: theme }, index, colorType);
+  const updateExistingColor = (color: string, name: string, index: number) => {
+    updateColor(
+      { name, colors: generateColorSchemes(color as CssColor) },
+      index,
+      colorType,
+    );
   };
 
   const setupEditState = (
-    color: ColorTheme,
+    colorTheme: ColorTheme,
     index: number,
-    type: ColorType,
+    colorType: ColorType,
   ) => {
-    setActivePanel('editColor');
-    setColor(ColorService.convert('hex', color.colors.light[11].hex));
-    setName(color.name);
+    setActivePanel('edit-color');
+    setColor(ColorService.convert('hex', colorTheme.colors.light[11].hex));
+    setName(colorTheme.name);
     setIndex(index);
-    setColorType(type);
+    setColorType(colorType);
+    setInitialColor(colorTheme.colors.light[11].hex);
+    setInitialName(colorTheme.name);
+  };
+
+  const resetColorState = () => {
+    setColor(ColorService.convert('hex', '#0062ba'));
+    setName('');
+    setActivePanel('none');
+  };
+
+  const setupNewColorState = (colorType: ColorType) => {
+    const newColorName = colorType + '-color-' + (colors[colorType].length + 1);
+    setActivePanel('add-color');
+    setIndex(colors[colorType].length);
+    setColorType(colorType);
+    setColor(ColorService.convert('hex', '#0062ba'));
+    setName(newColorName);
+    addColor(
+      {
+        name: newColorName,
+        colors: generateColorSchemes('#0062ba'),
+      },
+      colorType,
+    );
   };
 
   return (
     <div>
       {/* MAIN COLORS */}
-      <div className={classes.group}>
-        <div className={classes.groupHeader}>
-          <Heading data-size='2xs'>Hovedfarger</Heading>
-          {colors.main.length < 40 && (
-            <Button
-              variant='tertiary'
-              data-size='sm'
-              className={classes.AddBtn}
-              onClick={() => {
-                setActivePanel('addColor');
-                setColorType('main');
-              }}
-            >
-              Legg til
-              <PlusIcon title='a11y-title' fontSize='1.5rem' />
-            </Button>
-          )}
-          {colors.main.length >= 40 && (
-            <div className={classes.error}>Maks 4 hovedfarger</div>
-          )}
-        </div>
-        <div className={classes.colors}>
-          {colors.main.map((color, index) => (
-            <ColorInput
-              key={index}
-              color={color.colors.light[11].hex}
-              name={color.name}
-              onClick={() => setupEditState(color, index, 'main')}
-            />
-          ))}
-        </div>
-      </div>
-      <div className={classes.separator}></div>
-      <div className={classes.group}>
-        <div className={classes.colors}>
-          {colors.neutral.map((color, index) => (
-            <ColorInput
-              key={index}
-              color={color.colors.light[11].hex}
-              name={color.name}
-              onClick={() => setupEditState(color, index, 'neutral')}
-            />
-          ))}
-        </div>
-      </div>
+      {activePanel === 'none' && (
+        <>
+          <div className={classes.group}>
+            <div className={classes.groupHeader}>
+              <Heading data-size='2xs'>Main</Heading>
+              {colors.main.length < 40 && (
+                <Button
+                  variant='tertiary'
+                  data-size='sm'
+                  className={classes.AddBtn}
+                  onClick={() => setupNewColorState('main')}
+                  aria-label='Legg til hovedfarge'
+                >
+                  Legg til farge
+                  <PlusIcon aria-hidden fontSize='1.5rem' />
+                </Button>
+              )}
+              {colors.main.length >= 40 && (
+                <div className={classes.error}>Maks 4 hovedfarger</div>
+              )}
+            </div>
+            <div className={classes.colors}>
+              {colors.main.map((colorTheme, index) => (
+                <ColorInput
+                  key={index}
+                  color={colorTheme.colors.light[11].hex}
+                  name={colorTheme.name}
+                  onClick={() => setupEditState(colorTheme, index, 'main')}
+                />
+              ))}
+            </div>
+          </div>
+          <div className={classes.separator}></div>
+          <div className={classes.group}>
+            <div className={classes.colors}>
+              {colors.neutral.map((colorTheme, index) => (
+                <ColorInput
+                  key={index}
+                  color={colorTheme.colors.light[11].hex}
+                  name={colorTheme.name}
+                  onClick={() => setupEditState(colorTheme, index, 'neutral')}
+                />
+              ))}
+            </div>
+          </div>
 
-      {/* SUPPORT COLORS */}
-      <div className={classes.group}>
-        <div className={classes.groupHeader}>
-          <Heading data-size='2xs'>Støttefarger</Heading>
-          {colors.support.length < 40 && (
-            <Button
-              variant='tertiary'
-              data-size='sm'
-              className={classes.AddBtn}
-              onClick={() => {
-                setActivePanel('addColor');
-                setColorType('support');
-              }}
-            >
-              Legg til
-              <PlusIcon title='a11y-title' fontSize='1.5rem' />
-            </Button>
-          )}
-          {colors.support.length >= 40 && (
-            <div className={classes.error}>Maks 4 støttefarger</div>
-          )}
-        </div>
-        <div className={classes.colors}>
-          {colors.support.map((color, index) => (
-            <ColorInput
-              key={index}
-              color={color.colors.light[11].hex}
-              name={color.name}
-              onClick={() => setupEditState(color, index, 'support')}
-            />
-          ))}
-        </div>
-      </div>
+          {/* SUPPORT COLORS */}
+          <div className={classes.group}>
+            <div className={classes.groupHeader}>
+              <Heading data-size='2xs'>Support</Heading>
+              {colors.support.length < 40 && (
+                <Button
+                  variant='tertiary'
+                  data-size='sm'
+                  className={classes.AddBtn}
+                  onClick={() => setupNewColorState('support')}
+                  aria-label='Legg til støttefarge'
+                >
+                  Legg til farge
+                  <PlusIcon aria-hidden fontSize='1.5rem' />
+                </Button>
+              )}
+              {colors.support.length >= 40 && (
+                <div className={classes.error}>Maks 4 støttefarger</div>
+              )}
+            </div>
+            <div className={classes.colors}>
+              {colors.support.map((colorTheme, index) => (
+                <ColorInput
+                  key={index}
+                  color={colorTheme.colors.light[11].hex}
+                  name={colorTheme.name}
+                  onClick={() => setupEditState(colorTheme, index, 'support')}
+                />
+              ))}
+            </div>
+          </div>
+        </>
+      )}
 
-      <ColorPane
-        onClose={() => {
-          setColor(ColorService.convert('hex', '#0062ba'));
-          setName('');
-          setActivePanel('none');
-        }}
-        onPrimaryClicked={(color, name) => {
-          if (name === '') {
-            return;
-          }
-          if (activePanel === 'addColor') {
-            addNewColor(color, name);
-          } else {
-            updateExistingColor(color, name);
-          }
-          setColor(ColorService.convert('hex', '#0062ba'));
-          setName('');
-          setActivePanel('none');
-        }}
-        onRemove={() => {
-          removeColor(index, colorType);
-          setName('');
-          setActivePanel('none');
-        }}
-        type={activePanel}
-        color={color}
-        name={name}
-        setColor={setColor}
-        setName={setName}
-        colorType={colorType}
-      />
+      {(activePanel === 'add-color' || activePanel === 'edit-color') && (
+        <ColorPane
+          onClose={() => {
+            resetColorState();
+          }}
+          onRemove={() => {
+            removeColor(index, colorType);
+            resetColorState();
+          }}
+          onCancel={() => {
+            resetColorState();
+            updateExistingColor(initialColor, initialName, index);
+          }}
+          type={activePanel}
+          color={color}
+          name={name}
+          setColor={(color) => {
+            setColor(color);
+            updateExistingColor(color.hex, name, index);
+          }}
+          setName={(name) => {
+            setName(name);
+            updateExistingColor(color.hex, name, index);
+          }}
+          colorType={colorType}
+        />
+      )}
     </div>
   );
 };

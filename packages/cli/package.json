@@ -1,10 +1,10 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "1.0.0-next.50",
+  "version": "1.0.3",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "engines": {
-    "node": ">=22"
+    "node": ">=22.14.0"
   },
   "repository": {
     "type": "git",
@@ -51,8 +51,8 @@
     "update:design-tokens": "yarn internal:tokens-create && tsx ./src/scripts/copy-internal-tokens.ts"
   },
   "dependencies": {
-    "@commander-js/extra-typings": "^13.0.0",
-    "@tokens-studio/sd-transforms": "1.2.9",
+    "@commander-js/extra-typings": "^13.1.0",
+    "@tokens-studio/sd-transforms": "1.2.12",
     "apca-w3": "^0.1.9",
     "chalk": "^5.4.1",
     "change-case": "^5.4.4",
@@ -60,28 +60,29 @@
     "commander": "^13.1.0",
     "fast-glob": "^3.3.3",
     "hsluv": "^1.0.1",
-    "jscodeshift": "^17.1.2",
+    "jscodeshift": "^17.3.0",
     "object-hash": "^3.0.0",
-    "postcss": "^8.5.1",
+    "postcss": "^8.5.3",
     "ramda": "^0.30.1",
-    "style-dictionary": "^4.3.1",
-    "zod": "^3.24.1",
+    "style-dictionary": "^4.3.3",
+    "zod": "^3.24.2",
     "zod-validation-error": "^3.4.0"
   },
   "devDependencies": {
     "@types/apca-w3": "^0.1.3",
-    "@types/chroma-js": "^3.1.0",
+    "@types/chroma-js": "^3.1.1",
     "@types/fs-extra": "^11.0.4",
     "@types/glob": "^8.1.0",
     "@types/jscodeshift": "^0.12.0",
-    "@types/node": "^22.10.7",
+    "@types/node": "^22.14.0",
     "@types/object-hash": "^3.0.6",
     "@types/ramda": "^0.30.2",
     "fs-extra": "^11.3.0",
+    "ts-toolbelt": "^9.6.0",
     "tslib": "^2.8.1",
-    "tsup": "^8.3.5",
-    "tsx": "^4.19.2",
-    "typescript": "^5.7.3",
-    "zod-to-json-schema": "^3.24.1"
+    "tsup": "^8.4.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2",
+    "zod-to-json-schema": "^3.24.5"
   }
 }

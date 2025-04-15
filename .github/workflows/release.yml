@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - main
-      - next
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -17,15 +16,26 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/gh-setup
+      - name: Store release version for changeset
+        id: release_version
+        run: echo "VALUE=$(./scripts/print_release_version.sh)" >> $GITHUB_OUTPUT
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create Release Pull Request or Publish to npm
-        # https://github.com/changesets/action
-        uses: changesets/action@v1
+        id: changesets
+        # Forked version of the changesets action that supports aggregated releases
+        uses: dotansimha/changesets-action@v1.5.2 
         with:
-          # this expects you to have a script called release which does a build for your packages and calls changeset publish
           publish: yarn publish
           version: yarn version-packages
-          commit: 'chore: new ${{ github.base_ref }} release'
-          title: 'chore: new ${{ github.base_ref }} release'
+          commit: 'chore: new release'
+          title: 'chore: new release'
+          createGithubReleases: aggregate
+          githubReleaseName: Designsystemet@${{ steps.release_version.outputs.value }}
+          githubTagName: v${{ steps.release_version.outputs.value }}
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+

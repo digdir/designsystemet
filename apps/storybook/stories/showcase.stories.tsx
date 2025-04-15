@@ -16,6 +16,17 @@ export default {
         },
       },
     },
+    a11y: {
+      // TODO: this rule should be enabled after https://github.com/dequelabs/axe-core/issues/4672 have propagated to @storybook/addon-a11y.
+      config: {
+        rules: [
+          {
+            id: 'aria-allowed-role',
+            enabled: false,
+          },
+        ],
+      },
+    },
   },
 } as Meta;
 

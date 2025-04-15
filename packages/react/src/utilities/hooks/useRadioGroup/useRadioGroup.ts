@@ -1,5 +1,4 @@
-import { useMergeRefs } from '@floating-ui/react';
-import { useEffect, useId, useRef, useState } from 'react';
+import { useId, useState } from 'react';
 import type { ReactNode } from 'react';
 import type { RadioProps } from '../../../components';
 
@@ -105,45 +104,49 @@ export function useRadioGroup({
         typeof propsOrValue === 'string'
           ? { value: propsOrValue }
           : propsOrValue;
-      const { ref = undefined, value = '', ...rest } = props;
-      const localRef = useRef<HTMLInputElement>(null);
-      const mergedRefs = useMergeRefs([ref, localRef]);
+      const { ref: forwardedRef = undefined, value = '', ...rest } = props;
 
-      const handleChange = () => {
-        const input = localRef.current;
-        const isInput = input instanceof HTMLInputElement;
+      const handleRef = (element: HTMLInputElement | null) => {
+        if (element) {
+          // Set initial checked state
+          element.checked = value === groupValue;
+        }
 
-        if (isInput && input.name === radioGroupName) {
+        // Handle forwarded ref
+        if (forwardedRef) {
+          if (typeof forwardedRef === 'function') {
+            forwardedRef(element);
+          } else {
+            forwardedRef.current = element;
+          }
+        }
+      };
+
+      const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.name === radioGroupName) {
           setGroupValue((prevValue) => {
-            onChange?.(input.value, prevValue);
-            return input.value;
+            onChange?.(e.target.value, prevValue);
+            return e.target.value;
           });
         }
       };
 
-      useEffect(() => {
-        if (!localRef.current) return;
-        localRef.current.checked = value === groupValue;
-      }, [groupValue, value]);
-
       return {
-        /* Spread anything the user has set first */
         ...rest,
-        /* Concat ours with the user prop */
         name: radioGroupName,
         'aria-describedby':
           `${error ? errorId : ''} ${rest['aria-describedby'] || ''}`.trim() ||
           undefined,
         'aria-invalid': !!error || rest['aria-invalid'],
         value,
-        ref: mergedRefs,
+        ref: handleRef,
         required: required || rest.required,
         readOnly: readOnly || rest.readOnly,
         disabled: disabled || rest.disabled,
         onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
           rest.onChange?.(e);
           if (e.defaultPrevented) return;
-          handleChange();
+          handleChange(e);
         },
       };
     },

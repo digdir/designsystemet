@@ -121,28 +121,28 @@ const VariantsMap: {
   },
   neutralTinted: {
     'data-color': 'neutral',
-    'data-variant': 'tinted',
+    variant: 'tinted',
   },
   dangerDefault: {
     'data-color': 'danger',
   },
   dangerTinted: {
     'data-color': 'danger',
-    'data-variant': 'tinted',
+    variant: 'tinted',
   },
   infoDefault: {
     'data-color': 'info',
   },
   infoTinted: {
     'data-color': 'info',
-    'data-variant': 'tinted',
+    variant: 'tinted',
   },
   warningDefault: {
     'data-color': 'warning',
   },
   warningTinted: {
     'data-color': 'warning',
-    'data-variant': 'tinted',
+    variant: 'tinted',
   },
 };
 
@@ -152,15 +152,7 @@ export const Variants: StoryFn<typeof Popover> = () => {
   useEffect(() => setOpen(true), []);
 
   return (
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)',
-        gap: 'var(--ds-size-2)',
-        height: '100%',
-        width: '100%',
-      }}
-    >
+    <>
       {Object.entries(VariantsMap).map(([key, props], index) => (
         <Popover.TriggerContext key={key}>
           <Popover.Trigger>popover</Popover.Trigger>
@@ -174,7 +166,7 @@ export const Variants: StoryFn<typeof Popover> = () => {
           </Popover>
         </Popover.TriggerContext>
       ))}
-    </div>
+    </>
   );
 };
 Variants.parameters = {
@@ -183,6 +175,17 @@ Variants.parameters = {
   },
 };
 Variants.play = () => {};
+Variants.parameters = {
+  customStyles: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: 'var(--ds-size-2)',
+    height: '100%',
+    width: '100%',
+    placeItems: 'center',
+    padding: '5rem 3rem',
+  },
+};
 
 export const Controlled: StoryFn<typeof Popover> = () => {
   const [open, setOpen] = useState(false);

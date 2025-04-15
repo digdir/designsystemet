@@ -3,7 +3,6 @@ import { Card, CardContent, Heading, Paragraph } from '@digdir/designsystemet-re
 import { Image } from '@components';
 import { MenuPageLayout } from '@layouts';
 import { Contributors } from '@blog';
-import { CodeSnippet } from '@repo/components';
 
 export const metadata = {
   title: 'Systemvarsler',
@@ -191,16 +190,14 @@ Varsler som dukker opp etter at siden er lastet, kalles dynamiske varsler. Disse
 
 **Eksempel:**
 
-<CodeSnippet language="html">
-{`
+```html
 <div role="alert" id="dynamicAlertContainer"></div>
 
 <script>
   // Når et varsel skal vises
   document.getElementById('dynamicAlertContainer').innerHTML = "<p>Kritisk oppdatering!</p>";
 </script>
-`}
-</CodeSnippet>
+```
 
 Ved å bruke en tom `alert` som kan fylles med innhold dynamisk, sikrer vi at skjermlesere oppfatter varselet så snart det fylles med tekst.
 
@@ -210,23 +207,20 @@ For kritiske varsler som må leses opp umiddelbart, bruk `role="alert"`, som sø
 
 **Eksempel:**
 
-<CodeSnippet language="html">
-{`
+```html
 <div role="alert">Kritisk feil oppstod, vennligst prøv igjen.</div>
 <div role="status">Endringen ble lagret.</div>
-`}
-</CodeSnippet>
+```
 
 Les mer på [uu-tilsynet](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152) om hvilke roller du skal bruke på ulike elementer. 
 
 
 ### Modaler
-Når en [dialog](https://next.storybook.designsystemet.no/?path=/docs/komponenter-dialog--docs) åpnes, er det viktig at den får fokus, slik at brukere umiddelbart kan interagere med innholdet. Ofte er det naturlig å sette fokus til det første interaktive elementet. I noen tilfeller kan det passe å fokusere på et annet element, for eksempel overskriften. Da må du bruke `tabindex="-1" `for å sikre at fokus kan settes på et ikke-interaktivt element. 
+Når en [dialog](https://storybook.designsystemet.no/?path=/docs/komponenter-dialog--docs) åpnes, er det viktig at den får fokus, slik at brukere umiddelbart kan interagere med innholdet. Ofte er det naturlig å sette fokus til det første interaktive elementet. I noen tilfeller kan det passe å fokusere på et annet element, for eksempel overskriften. Da må du bruke `tabindex="-1" `for å sikre at fokus kan settes på et ikke-interaktivt element. 
 
 **Eksempel:**
 
-<CodeSnippet language="html">
-{`
+```html
 <div role="dialog" aria-labelledby="modalHeading">
   <h2 id="modalHeading" tabindex="-1">Systemvarsel</h2>
   <p>Detaljer om systemvarselet.</p>
@@ -235,8 +229,7 @@ Når en [dialog](https://next.storybook.designsystemet.no/?path=/docs/komponente
   // Når modalen åpnes
   document.getElementById('modalHeading').focus();
 </script>
-`}
-</CodeSnippet>
+```
 
 Dette gjør at modaltittelen kan få fokus, selv om den normalt ikke er et interaktivt element. Når modalen lukkes, bør fokuset returnere til en logisk plassering på siden. For eksempel der brukeren var før.
 
@@ -252,8 +245,8 @@ Dette gjør at modaltittelen kan få fokus, selv om den normalt ikke er et inter
 
 <br/>
 
-<Card data-color='brand3' data-variant="tinted" data-unstyled>
-  Retningslinjene er utarbeidet i en tverretatlig arbeidsgruppe med deltakere fra Digdir, Nav, Skatteetaten, Brønnøysundregistrene, Politiet, KS, Entur, Mattilsynet og Oslo kommune. Du kan påvirke arbeidet i [Github](https://github.com/digdir/designsystemet/discussions/1801) eller i [#Mønster-kanalen](https://designsystemet.slack.com/archives/C05RBGB92MC/p1712751837722749) på [Slack](https://designsystemet.no/slack).
+<Card data-color='brand3' variant="tinted" data-unstyled>
+  Retningslinjene er utarbeidet i en tverretatlig arbeidsgruppe med deltakere fra Digdir, Nav, Skatteetaten, Brønnøysundregistrene, Politiet, KS, Entur, Mattilsynet og Oslo kommune. Du kan påvirke arbeidet i [diskusjonstråden om systemvarsler på Github](https://github.com/digdir/designsystemet/discussions/1801) eller i [#Mønster-kanalen](https://designsystemet.slack.com/archives/C05RBGB92MC/p1712751837722749) på [Slack](https://designsystemet.no/slack).
 </Card>
 
 <br/>

@@ -1,0 +1,25 @@
+name: Check changeset
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'packages/cli/**'
+      - 'packages/css/**'
+      - 'packages/react/**'
+      - 'packages/theme/**'
+      - "!packages/**/README.md"
+      - "!packages/**/*.stories.tsx"
+      - "!packages/**/*.chromatic.tsx"
+      - "!packages/**/*.test.tsx"
+      - "!packages/**/*.mdx"
+jobs:
+  checks:
+    name: Check if changeset is present
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/gh-setup
+      - name: Check changeset status
+        run: yarn changeset status --since=origin/${{ github.event.pull_request.base.ref }}

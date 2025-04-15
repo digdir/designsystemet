@@ -13,7 +13,7 @@
     color: var(--ds-color-neutral-text-subtle); /* TODO: Change to opacity or color-mix(currentColor, trasparent) to ensure contrast when parent element color changes? */
   }
 
-  & input {
+  & input:not([hidden]) {
     display: block; /* Ensure input is not placed on same line as label/description/validation */
   }
 
@@ -22,11 +22,11 @@
    */
   &:has([aria-disabled='true']:not(u-option, [role='option'][aria-disabled='true']), :disabled:not(option)) > * {
     cursor: not-allowed;
-    opacity: var(--ds-disabled-opacity);
+    opacity: var(--ds-opacity-disabled);
   }
 
   &:has([aria-readonly='true'], [readonly]) label {
-    --_dsc-label--readonly: ; /* Activate lock icon for label when readonly */
+    @composes ds-readonly-icon from './base.css'; /* Activate lock icon for label when readonly */
   }
 
   /**
@@ -49,8 +49,10 @@
     }
 
     & label {
-      --_dsc-label--readonly: initial; /* Never show lock icon on toggle inputs */
       font-weight: var(--ds-font-weight-regular);
+    }
+    & label::before {
+      content: none; /* Hide readonly icon on toggle inputs */
     }
 
     & input {
@@ -92,7 +94,7 @@
   --dsc-field-affix-border-color: var(--ds-color-neutral-border-default);
   --dsc-field-affix-padding-inline: var(--ds-size-4);
 
-  background: var(--ds-color-neutral-background-tinted);
+  background: var(--ds-color-neutral-surface-tinted);
   border-radius: var(--ds-border-radius-md);
   box-sizing: border-box;
   color: var(--ds-color-neutral-text-subtle);

@@ -1,3 +1,7 @@
+import type {
+  Color,
+  SeverityColors,
+} from '@digdir/designsystemet-react/colors';
 import {
   autoUpdate,
   computePosition,
@@ -6,7 +10,6 @@ import {
   shift,
 } from '@floating-ui/dom';
 import type { MiddlewareState, Placement } from '@floating-ui/dom';
-import { useMergeRefs } from '@floating-ui/react';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { forwardRef, useContext, useRef, useState } from 'react';
@@ -14,6 +17,7 @@ import type { HTMLAttributes } from 'react';
 import { useEffect } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
+import { useMergeRefs } from '../../utilities/hooks';
 import { Context } from './PopoverTriggerContext';
 
 // Make React support popovertarget attribute
@@ -53,7 +57,11 @@ export type PopoverProps = MergeRight<
      *
      * @default 'default'
      */
-    'data-variant'?: 'default' | 'tinted';
+    variant?: 'default' | 'tinted';
+    /**
+     * Change the color scheme of the popover
+     */
+    'data-color'?: Color | SeverityColors;
     /**
      * Callback when the popover wants to open.
      */
@@ -100,7 +108,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       onClose,
       onOpen,
       open,
-      'data-variant': variant = 'default',
+      variant = 'default',
       placement = 'top',
       autoPlacement = true,
       asChild = false,

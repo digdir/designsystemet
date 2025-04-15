@@ -6,7 +6,7 @@ on:
     inputs:
       tag:
         description: 'NPM tag'
-        default: ''
+        default: 'next'
 
 jobs:
   snapshot:
@@ -34,3 +34,5 @@ jobs:
           git diff
           echo '---'
           yarn run publish --tag "${{ steps.variables.outputs.tag }}" --no-git-tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

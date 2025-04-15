@@ -2,17 +2,17 @@
   --dsc-dropdown-padding: var(--ds-size-3) var(--ds-size-2);
   --dsc-dropdown-item-padding: var(--ds-size-2) var(--ds-size-4);
   --dsc-dropdown-item-size: var(--ds-size-12);
-  --dsc-dropdown-background: var(--ds-color-neutral-background-default);
+  --dsc-dropdown-background: var(--ds-color-neutral-surface-default);
   --dsc-dropdown-border-width: var(--ds-border-width-default);
   --dsc-dropdown-border-style: solid;
   --dsc-dropdown-border-color: var(--ds-color-neutral-border-subtle);
+  --dsc-popover-arrow-size: var(--ds-size-2);
 
   background: var(--dsc-dropdown-background);
   border-radius: var(--ds-border-radius-md);
   border-width: var(--dsc-dropdown-border-width);
   border-style: var(--dsc-dropdown-border-style);
   border-color: var(--dsc-dropdown-border-color);
-  box-shadow: var(--ds-shadow-md);
   box-sizing: border-box;
   list-style: none;
   min-width: 15em;

@@ -9,10 +9,11 @@ export default {
   component: Spinner,
   parameters: {
     customStyles: {
-      display: 'grid',
+      display: 'flex',
       gap: '1rem',
-      gridTemplateColumns: 'repeat(3, auto)',
-      placeItems: 'center',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+      alignItems: 'center',
     },
   },
 } as Meta;

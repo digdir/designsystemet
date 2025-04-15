@@ -125,25 +125,14 @@
     box-shadow: var(--ds-shadow-md);
   }
 
-  & code,
-  & > p code {
+  & > p > code,
+  & li > code,
+  & h2 > code {
     padding: 0.2em 0.5em;
     margin: 1px;
     font-size: 0.9em;
     white-space: break-spaces;
     background-color: var(--ds-color-neutral-surface-tinted);
-    border-radius: var(--ds-border-radius-md);
-  }
-
-  & pre code {
-    background-color: unset;
-  }
-
-  & > pre,
-  & > p pre {
-    background-color: var(--ds-color-neutral-background-tinted);
-    padding: var(--ds-size-5);
-    margin: var(--ds-size-7) 0;
     border-radius: var(--ds-border-radius-md);
   }
 

@@ -19,15 +19,17 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <main id='main' className={classes.page}>
       <Banner color='blue'>
         <BannerIcon>
-          <ComponentFillIcon fontSize={'2.5rem'} />
+          <ComponentFillIcon fontSize={'2.5rem'} aria-hidden='true' />
         </BannerIcon>
-        <BannerHeading>Komponenter</BannerHeading>
+        <BannerHeading level={1}>Komponenter</BannerHeading>
         <BannerIngress>
           Designsystemet inneholder grunnleggende komponenter som kan settes
           sammen på mange ulike måter og i forskjellige mønstre.
         </BannerIngress>
       </Banner>
-      <Container className={classes.grid}>{children}</Container>
+      <Container className={classes.grid} id='komponenter'>
+        {children}
+      </Container>
     </main>
   );
 };

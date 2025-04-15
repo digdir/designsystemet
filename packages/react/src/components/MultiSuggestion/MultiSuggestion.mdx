@@ -1,0 +1,20 @@
+import { Meta, Canvas, Controls, Primary, ArgTypes } from '@storybook/blocks';
+import * as MultiSuggestionStories from './MultiSuggestion.stories';
+import { Alert } from '../Alert';
+import { MultiSuggestionList } from './MultiSuggestionList';
+
+<Meta of={MultiSuggestionStories} />
+
+<Alert data-color="warning">MultiSuggestion er under utvikling. Finner du feil eller mangler, meld i fra på Slack eller Github.</Alert>
+<br />
+
+# MultiSuggestion
+
+Søkbar multi-"select".
+
+<Primary />
+<Controls />
+
+## `MultiSuggestion.List`
+
+<ArgTypes of={MultiSuggestionList} />

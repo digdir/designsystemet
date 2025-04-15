@@ -21,8 +21,9 @@ export type ColorIndex =
   | '11'
   | '12'
   | '13'
-  | 'contrast-1'
-  | 'contrast-2';
+  | '14'
+  | '15'
+  | '16';
 
 export type StoreThemes = StoreTheme[];
 
@@ -36,9 +37,9 @@ export type StoreTheme = {
 export type ColorTheme = {
   accent: ThemeInfo;
   neutral: ThemeInfo;
-  brand1: ThemeInfo;
-  brand2: ThemeInfo;
-  brand3: ThemeInfo;
+  primary: ThemeInfo;
+  extra1: ThemeInfo;
+  extra2: ThemeInfo;
 };
 
 export type ThemeInfo = {

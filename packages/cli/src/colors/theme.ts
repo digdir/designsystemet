@@ -5,6 +5,19 @@ import type { CssColor } from './types.js';
 import type { Color, ColorNumber, ColorScheme, ThemeInfo } from './types.js';
 import { getLightnessFromHex, getLuminanceFromLightness } from './utils.js';
 
+export const RESERVED_COLORS = [
+  'neutral',
+  'success',
+  'warning',
+  'danger',
+  'info',
+  'blue',
+  'green',
+  'orange',
+  'purple',
+  'red',
+];
+
 /**
  * Generates a color scale based on a base color and a color mode.
  *
@@ -12,11 +25,20 @@ import { getLightnessFromHex, getLuminanceFromLightness } from './utils.js';
  * @param colorScheme The color scheme to generate a scale for
  */
 export const generateColorScale = (color: CssColor, colorScheme: ColorScheme): Color[] => {
+  let interpolationColor = color;
+
+  // Reduce saturation in dark mode for the interpolation colors
+  if (colorScheme === 'dark') {
+    const [L, C, H] = chroma(color).oklch();
+    const chromaModifier = 0.7;
+    interpolationColor = chroma(L, C * chromaModifier, H, 'oklch').hex() as CssColor;
+  }
+
   const colors = R.mapObjIndexed((colorData) => {
     const luminance = colorData.luminance[colorScheme];
     return {
       ...colorData,
-      hex: chroma(color).luminance(luminance).hex() as CssColor,
+      hex: chroma(interpolationColor).luminance(luminance).hex() as CssColor,
     };
   }, colorMetadata);
 
