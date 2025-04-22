@@ -38,6 +38,8 @@ export const loader = ({ params }: Route.LoaderArgs) => {
   if (params.lang === undefined) {
     return redirect('/nb');
   }
+
+  return { lang: params.lang };
 };
 
 export function Layout({ children }: { children: React.ReactNode }) {
