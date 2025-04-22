@@ -2,7 +2,7 @@ import path from 'node:path';
 import type { ThemeObject } from '@tokens-studio/types';
 import chalk from 'chalk';
 import type { DesignToken } from 'style-dictionary/types';
-import { cleanDir, mkdir, readFile, writeFile } from '../utils.js';
+import { cleanDir, readFile, writeFile } from '../utils.js';
 import { createThemeCSSFiles } from './format.js';
 import { type BuildOptions, processPlatform } from './process/platform.js';
 
@@ -24,20 +24,21 @@ export const buildTokens = async (options: Omit<BuildOptions, 'process' | '$them
 
   console.log(`\nWriting build to ${chalk.green(options.outDir)}`);
 
-  // TODO https://github.com/digdir/designsystemet/issues/3434
-  for (const [_, buildResults] of Object.entries(processedBuilds)) {
-    for (const { formatted } of buildResults) {
-      for (const { destination, output } of formatted) {
-        if (destination) {
-          const fileDir = path.join(resolvedOutDir, path.dirname(destination));
-          await mkdir(fileDir, options.dry);
+  // https://github.com/digdir/designsystemet/issues/3434
+  // Disabled for now so that we can re-enable it later if needed (under a feature flag)
+  // for (const [_, buildResults] of Object.entries(processedBuilds)) {
+  //   for (const { formatted } of buildResults) {
+  //     for (const { destination, output } of formatted) {
+  //       if (destination) {
+  //         const fileDir = path.join(resolvedOutDir, path.dirname(destination));
+  //         await mkdir(fileDir, options.dry);
 
-          const filePath = path.join(resolvedOutDir, destination);
-          await writeFile(filePath, output, options.dry);
-        }
-      }
-    }
-  }
+  //         const filePath = path.join(resolvedOutDir, destination);
+  //         await writeFile(filePath, output, options.dry);
+  //       }
+  //     }
+  //   }
+  // }
 
   for (const { destination, output } of createThemeCSSFiles(processedBuilds)) {
     if (destination) {
