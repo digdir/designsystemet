@@ -1,7 +1,11 @@
-import * as R from 'ramda';
-import { baseColors, generateColorScale } from '../colors/index.js';
-import type { Color, ColorScheme } from '../colors/types.js';
-import type { Colors, Theme, Tokens, TokensSet, Typography } from './types.js';
+import type { ColorScheme } from '../colors/types.js';
+import { getDefaultToken, getDefaultTokens } from './create/defaults.js';
+import { generateColorGlobal, generateColorScheme } from './create/generators/color.js';
+import { generateSemantic } from './create/generators/semantic.js';
+import { generateTheme } from './create/generators/theme.js';
+import { generateTypography } from './create/generators/typography.js';
+
+import type { Theme, TokenSet, TokenSets } from './types.js';
 
 export const cliOptions = {
   outDir: 'out-dir',
@@ -19,91 +23,37 @@ export const cliOptions = {
   },
 } as const;
 
-const createColorTokens = (colorArray: Color[]): TokensSet => {
-  const obj: TokensSet = {};
-  const $type = 'color';
-  for (const index in colorArray) {
-    obj[Number(index) + 1] = { $type, $value: colorArray[index].hex };
-  }
-  return obj;
-};
+export const createTokens = async (opts: Theme) => {
+  const { colors, typography, name, borderRadius } = opts;
+  const colorSchemes: ColorScheme[] = ['light', 'dark'];
 
-const generateTypographyTokens = (themeName: string, { fontFamily }: Typography): TokensSet => {
-  return {
-    [themeName]: {
-      'font-family': {
-        $type: 'fontFamilies',
-        $value: fontFamily ?? 'Inter',
-      },
-      'font-weight': {
-        medium: {
-          $type: 'fontWeights',
-          $value: 'Medium',
-        },
-        semibold: {
-          $type: 'fontWeights',
-          $value: 'SemiBold',
-        },
-        regular: {
-          $type: 'fontWeights',
-          $value: 'Regular',
-        },
-      },
-    },
-  };
-};
+  const semantic = generateSemantic(colors);
 
-const generateThemeTokens = (themeName: string, colorScheme: ColorScheme, colors: Colors): TokensSet => {
-  const main = R.map((color) => createColorTokens(generateColorScale(color, colorScheme)), colors.main);
-  const support = R.map((color) => createColorTokens(generateColorScale(color, colorScheme)), colors.support);
-  const neutral = createColorTokens(generateColorScale(colors.neutral, colorScheme));
+  const tokenSets: TokenSets = new Map([
+    ...getDefaultTokens([
+      'primitives/globals',
+      'primitives/modes/size/small',
+      'primitives/modes/size/medium',
+      'primitives/modes/size/large',
+      'primitives/modes/size/global',
+      'primitives/modes/typography/size/small',
+      'primitives/modes/typography/size/medium',
+      'primitives/modes/typography/size/large',
+    ]),
+    [`primitives/modes/typography/primary/${name}`, generateTypography(name, typography)],
+    [`primitives/modes/typography/secondary/${name}`, generateTypography(name, typography)],
+    ...colorSchemes.flatMap((scheme): [string, TokenSet][] => [
+      [`primitives/modes/color-scheme/${scheme}/global`, generateColorGlobal(scheme)],
+      [`primitives/modes/color-scheme/${scheme}/${name}`, generateColorScheme(name, scheme, colors)],
+    ]),
+    [`themes/${name}`, generateTheme(colors, name, borderRadius)],
+    ['semantic/color', semantic.color],
+    // maps out semantic modes, ieg 'semantic/modes/main-color/accent', and 'semantic/modes/support-color/brand1'
+    ...Object.entries(semantic.modes).flatMap(([mode, colors]): [string, TokenSet][] =>
+      Object.entries(colors).map(([key, colorSet]): [string, TokenSet] => [`semantic/modes/${mode}/${key}`, colorSet]),
+    ),
+    getDefaultToken('semantic/style'),
+  ]);
 
-  return {
-    [themeName]: {
-      ...main,
-      ...support,
-      neutral,
-    },
-  };
-};
-
-const generateGlobalTokens = (colorScheme: ColorScheme) => {
-  const blueScale = generateColorScale(baseColors.blue, colorScheme);
-  const greenScale = generateColorScale(baseColors.green, colorScheme);
-  const orangeScale = generateColorScale(baseColors.orange, colorScheme);
-  const purpleScale = generateColorScale(baseColors.purple, colorScheme);
-  const redScale = generateColorScale(baseColors.red, colorScheme);
-
-  return {
-    global: {
-      blue: createColorTokens(blueScale),
-      green: createColorTokens(greenScale),
-      orange: createColorTokens(orangeScale),
-      purple: createColorTokens(purpleScale),
-      red: createColorTokens(redScale),
-    },
-  };
-};
-
-export const createTokens = (opts: Theme) => {
-  const { colors, typography, name } = opts;
-
-  const tokens: Tokens = {
-    colors: {
-      light: {
-        [name]: generateThemeTokens(name, 'light', colors),
-        global: generateGlobalTokens('light'),
-      },
-      dark: { [name]: generateThemeTokens(name, 'dark', colors), global: generateGlobalTokens('dark') },
-      // contrast: {
-      //   [name]: generateThemeTokens(name, 'contrast', colors),
-      //   global: generateGlobalTokens('contrast'),
-      // },
-    },
-    typography: {
-      primary: generateTypographyTokens(name, typography),
-    },
-  };
-
-  return tokens;
+  return { tokenSets };
 };
