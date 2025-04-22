@@ -86,14 +86,13 @@ const getContentPathsWithLanguages = (): string[] => {
   }
 };
 
-export default {
-  presets: [vercelPreset()],
+const config: Config = {
   ssr: true,
   buildDirectory: 'dist',
-  async prerender() {
+  prerender: async () => {
     return getContentPathsWithLanguages();
   },
-  async serverBundles(args) {
+  serverBundles: async (args) => {
     for (const route of args.branch) {
       if (route.id.includes('monstre')) {
         route.file = `routes/monstre/${route.id}.tsx`;
@@ -110,4 +109,11 @@ export default {
     }
     return 'root';
   },
-} satisfies Config;
+  presets: [vercelPreset()],
+  buildEnd: async ({ buildManifest }) => {
+    // This is where you can access the build manifest and perform any necessary actions
+    console.log('Build completed. Manifest:', buildManifest);
+  },
+};
+
+export default config;
