@@ -4,7 +4,7 @@ import { vercelPreset } from '@vercel/react-router/vite';
 export default {
   ssr: true,
   buildDirectory: 'dist',
-  serverBundles(args) {
+  async serverBundles(args) {
     for (const route of args.branch) {
       if (route.id.includes('monstre')) {
         route.file = `routes/monstre/${route.id}.tsx`;
