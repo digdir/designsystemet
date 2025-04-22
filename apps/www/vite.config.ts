@@ -41,13 +41,11 @@ export default defineConfig({
       treeshake: true,
       output: {
         manualChunks,
-        // Less aggressive hashing to preserve dependency order
         chunkFileNames: 'assets/[name].[hash].js',
         entryFileNames: 'assets/[name].[hash].js',
       },
     },
     chunkSizeWarningLimit: 300,
-    // Focus on stability over optimization
     minify: true,
   },
   plugins: [
@@ -57,11 +55,12 @@ export default defineConfig({
       targets: [
         {
           src: './app/content/*',
-          dest: 'dist',
+          dest: '',
         },
       ],
       silent: true,
       structured: true,
+      hook: 'buildEnd',
     }),
   ],
 });

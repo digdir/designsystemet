@@ -121,8 +121,6 @@ const config: Config = {
   },
   presets: [vercelPreset()],
   buildEnd: async ({ buildManifest: rrBuild }) => {
-    console.log({ rrBuild });
-    // get manifest from .verceL/react-router-build-result.json
     const manifestPath = join(
       dirname,
       '.vercel/react-router-build-result.json',
@@ -132,7 +130,7 @@ const config: Config = {
     let buildManifest: any = {};
     try {
       const fileContents = readFileSync(manifestPath, 'utf-8');
-      buildManifest = JSON.parse(fileContents).buildManifest;
+      buildManifest = JSON.parse(fileContents);
     } catch (error) {
       console.error(`Error reading manifest file: ${error}`);
       return;
