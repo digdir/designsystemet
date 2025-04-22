@@ -40,6 +40,20 @@ export const buildTokens = async (options: Omit<BuildOptions, 'process' | '$them
   //   }
   // }
 
+  // Write types (colors.d.ts) to the output directory
+  for (const { formatted } of processedBuilds.types) {
+    for (const { destination, output } of formatted) {
+      if (destination) {
+        const fileDir = path.join(resolvedOutDir, path.dirname(destination));
+        await mkdir(fileDir, options.dry);
+
+        const filePath = path.join(resolvedOutDir, destination);
+        await writeFile(filePath, output, options.dry);
+      }
+    }
+  }
+
+  // Write theme CSS files (<theme>.css) to the output directory
   for (const { destination, output } of createThemeCSSFiles(processedBuilds)) {
     if (destination) {
       const filePath = path.join(resolvedOutDir, destination);
