@@ -176,7 +176,6 @@ const preview: Preview = {
         items: [
           { title: '☀️ Light', value: 'light' },
           { title: '🌙 Dark', value: 'dark' },
-          { title: 'Auto', value: 'auto' },
         ],
         dynamicTitle: true,
       },
