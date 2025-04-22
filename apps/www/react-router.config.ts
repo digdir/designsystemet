@@ -91,7 +91,7 @@ export default {
   async prerender() {
     return getContentPathsWithLanguages();
   },
-  async serverBundles(args) {
+  /* async serverBundles(args) {
     for (const route of args.branch) {
       if (route.id.includes('monstre')) {
         route.file = `routes/monstre/${route.id}.tsx`;
@@ -107,5 +107,5 @@ export default {
       }
     }
     return 'root';
-  },
+  }, */
 } satisfies Config;
