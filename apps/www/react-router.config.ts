@@ -1,8 +1,6 @@
 import { existsSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Config } from '@react-router/dev/config';
-import { vercelPreset } from '@vercel/react-router/vite';
-
 // Function to get all content paths taking into account the language structure
 const getContentPathsWithLanguages = (): string[] => {
   const contentBasePath = join(process.cwd(), 'app/content');
@@ -85,13 +83,15 @@ const getContentPathsWithLanguages = (): string[] => {
 };
 
 export default {
-  presets: [vercelPreset()],
+  presets: [
+    /* vercelPreset() */
+  ],
   ssr: true,
   buildDirectory: 'dist',
   async prerender() {
     return getContentPathsWithLanguages();
   },
-  /* async serverBundles(args) {
+  async serverBundles(args) {
     for (const route of args.branch) {
       if (route.id.includes('monstre')) {
         route.file = `routes/monstre/${route.id}.tsx`;
@@ -107,5 +107,6 @@ export default {
       }
     }
     return 'root';
-  }, */
+  },
+  serverBuildFile: 'root/index.js',
 } satisfies Config;

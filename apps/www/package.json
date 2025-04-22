@@ -14,8 +14,8 @@
     "@digdir/designsystemet-theme": "workspace:^",
     "@navikt/aksel-icons": "^7.18.0",
     "@radix-ui/react-slot": "^1.1.2",
-    "@react-router/node": "^7.4.1",
-    "@react-router/serve": "^7.4.1",
+    "@react-router/node": "^7.5.1",
+    "@react-router/serve": "^7.5.1",
     "@repo/components": "workspace:^",
     "@vercel/react-router": "^1.1.0",
     "clsx": "^2.1.1",
@@ -30,12 +30,12 @@
     "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
-    "@react-router/dev": "^7.4.1",
+    "@react-router/dev": "^7.5.1",
     "@types/node": "^20",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
     "typescript": "^5.7.2",
-    "vite": "^6.0.11",
+    "vite": "^6.3.2",
     "vite-plugin-static-copy": "^2.3.0",
     "vite-tsconfig-paths": "^5.1.4"
   }

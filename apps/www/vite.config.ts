@@ -6,7 +6,6 @@ const dirname = import.meta.dirname || __dirname;
 
 // Simplified manual chunks function to avoid variable initialization issues
 function manualChunks(id: string) {
-  console.log('id: ', id);
   if (id.toLowerCase().includes('digdir')) {
     return 'vendor-digdir';
   }
