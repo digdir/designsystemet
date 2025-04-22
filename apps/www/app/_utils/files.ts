@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import process from 'node:process';
 
@@ -22,8 +22,39 @@ const getContentPath = () => {
   return join(...prefixParts);
 };
 
-export const getFilesFromContentDir = (path: string) => {
-  return readdirSync(join(process.cwd(), getContentPath(), path));
+export const getFilesFromContentDir = (
+  path: string,
+  currentRelativePath = '',
+) => {
+  const currentPath = join(
+    process.cwd(),
+    getContentPath(),
+    path,
+    currentRelativePath,
+  );
+  const entries = readdirSync(currentPath);
+
+  let results: Array<{ path: string; relativePath: string }> = [];
+
+  for (const entry of entries) {
+    const entryPath = join(currentPath, entry);
+    const entryRelativePath = currentRelativePath
+      ? join(currentRelativePath, entry)
+      : entry;
+
+    if (statSync(entryPath).isDirectory()) {
+      // Recursively search subdirectory
+      results = results.concat(getFilesFromContentDir(path, entryRelativePath));
+    } else if (entry.endsWith('.mdx')) {
+      // Add MDX file to results
+      results.push({
+        path: entryPath,
+        relativePath: entryRelativePath,
+      });
+    }
+  }
+
+  return results;
 };
 
 export const getFileFromContentDir = (path: string) => {

@@ -17,7 +17,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   const files = getFilesFromContentDir(join('bloggen', lang));
 
   /* Filter out files that are not .mdx */
-  const mdxFiles = files.filter((file) => file.endsWith('.mdx'));
+  const mdxFiles = files.filter((file) => file.relativePath.endsWith('.mdx'));
 
   /* Get titles and URLs for all files */
   const posts: {
@@ -34,13 +34,16 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
 
   /* Map over files with mdx parser to get title */
   for (const file of mdxFiles) {
-    const fileContent = getFileFromContentDir(join('bloggen', lang, `${file}`));
+    const fileContent = getFileFromContentDir(
+      join('bloggen', lang, file.relativePath),
+    );
     const result = await bundleMDX({
       source: fileContent,
     });
 
-    const title = result.frontmatter.title || file.replace('.mdx', '');
-    const url = file.replace('.mdx', '');
+    const title =
+      result.frontmatter.title || file.relativePath.replace('.mdx', '');
+    const url = file.relativePath.replace('.mdx', '');
     posts.push({
       title,
       author: result.frontmatter.author || 'Unknown Author',

@@ -27,7 +27,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   const files = getFilesFromContentDir(join('monstre', lang));
 
   /* Filter out files that are not .mdx */
-  const mdxFiles = files.filter((file) => file.endsWith('.mdx'));
+  const mdxFiles = files.filter((file) => file.relativePath.endsWith('.mdx'));
 
   /* Get titles and URLs for all files */
   const cats: {
@@ -43,13 +43,16 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
 
   /* Map over files with mdx parser to get title */
   for (const file of mdxFiles) {
-    const fileContent = getFileFromContentDir(join('monstre', lang, `${file}`));
+    const fileContent = getFileFromContentDir(
+      join('monstre', lang, file.relativePath),
+    );
     const result = await bundleMDX({
       source: fileContent,
     });
 
-    const title = result.frontmatter.title || file.replace('.mdx', '');
-    const url = `/${lang}/monstre/${file.replace('.mdx', '')}`;
+    const title =
+      result.frontmatter.title || file.relativePath.replace('.mdx', '');
+    const url = `/${lang}/monstre/${file.relativePath.replace('.mdx', '')}`;
 
     if (!result.frontmatter.category) {
       continue;

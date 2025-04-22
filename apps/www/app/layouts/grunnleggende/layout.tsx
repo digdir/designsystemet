@@ -1,4 +1,3 @@
-import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { LayersIcon } from '@navikt/aksel-icons';
 import { Outlet, isRouteErrorResponse, useMatches } from 'react-router';
@@ -10,12 +9,12 @@ import {
 } from '~/_components/banner/banner';
 import { ContentContainer } from '~/_components/content-container/content-container';
 import { Sidebar } from '~/_components/sidebar/sidebar';
+import { getFileFromContentDir, getFilesFromContentDir } from '~/_utils/files';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import type { Route } from './+types/layout';
 import classes from './layout.module.css';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
-  /* get all monstre content */
   if (!lang) {
     throw new Response('Not Found', {
       status: 404,
@@ -23,12 +22,8 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     });
   }
 
-  const basePath = join(process.cwd(), 'app', 'content', 'grunnleggende', lang);
+  const mdxFiles = getFilesFromContentDir(join('grunnleggende', lang));
 
-  /* Get all MDX files recursively */
-  const mdxFiles = getAllMdxFiles(basePath, '');
-
-  /* Get titles and URLs for all files */
   const cats: {
     [key: string]: {
       title: string;
@@ -45,16 +40,15 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   };
 
   /* Map over files with mdx parser to get title */
-  for (const { path, relativePath } of mdxFiles) {
-    const fileContent = readFileSync(path, 'utf-8');
+  for (const file of mdxFiles) {
+    const fileContent = getFileFromContentDir(
+      join('grunnleggende', lang, file.relativePath),
+    );
     const result = await generateFromMdx(fileContent);
 
-    const fileName = relativePath.split('/').pop() || '';
-    const title = result.frontmatter.title || fileName.replace('.mdx', '');
-
-    // Generate URL based on relative path, preserving directory structure
-    const urlPath = relativePath.replace('.mdx', '').replace(/\\/g, '/');
-    const url = `/${lang}/grunnleggende/${urlPath}`;
+    const title =
+      result.frontmatter.title || file.relativePath.replace('.mdx', '');
+    const url = `/${lang}/grunnleggende/${file.relativePath.replace('.mdx', '')}`;
 
     if (!result.frontmatter.category) {
       continue;
@@ -86,39 +80,6 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     },
   };
 };
-
-/**
- * Recursively get all MDX files in a directory
- */
-function getAllMdxFiles(
-  basePath: string,
-  currentRelativePath: string,
-): Array<{ path: string; relativePath: string }> {
-  const currentPath = join(basePath, currentRelativePath);
-  const entries = readdirSync(currentPath);
-
-  let results: Array<{ path: string; relativePath: string }> = [];
-
-  for (const entry of entries) {
-    const entryPath = join(currentPath, entry);
-    const entryRelativePath = currentRelativePath
-      ? join(currentRelativePath, entry)
-      : entry;
-
-    if (statSync(entryPath).isDirectory()) {
-      // Recursively search subdirectory
-      results = results.concat(getAllMdxFiles(basePath, entryRelativePath));
-    } else if (entry.endsWith('.mdx')) {
-      // Add MDX file to results
-      results.push({
-        path: entryPath,
-        relativePath: entryRelativePath,
-      });
-    }
-  }
-
-  return results;
-}
 
 export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
   const matches = useMatches();
