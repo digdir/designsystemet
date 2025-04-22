@@ -127,44 +127,48 @@ const config: Config = {
     );
 
     /* read file contents */
-    let buildManifest: any = {};
+    const newBuildResult: any = {};
     try {
       const fileContents = readFileSync(manifestPath, 'utf-8');
-      buildManifest = JSON.parse(fileContents);
+      newBuildResult.buildManifest = JSON.parse(fileContents).buildManifest;
+      newBuildResult.viteConfig = JSON.parse(fileContents).viteConfig;
     } catch (error) {
       console.error(`Error reading manifest file: ${error}`);
       return;
     }
+    console.log({ newBuildResult });
 
     /* For every item in buildmanifest.serverBundles, add config.runtime = "nodejs" */
-    if (buildManifest?.serverBundles) {
+    if (newBuildResult.buildManifest?.serverBundles) {
       // Use Object.values to get an array of the serverBundles objects
-      for (const bundle of Object.values(buildManifest.serverBundles)) {
+      for (const bundle of Object.values(
+        newBuildResult.buildManifest.serverBundles,
+      )) {
         bundle.config = bundle.config || {};
         (bundle as { config: { runtime: string } }).config.runtime = 'nodejs';
       }
     }
 
     /* For every item in buildmanifest.routes, add config.runtime = "nodejs" */
-    if (buildManifest?.routes) {
+    if (newBuildResult.buildManifest?.routes) {
       // Use Object.values to get an array of the routes objects
-      for (const route of Object.values(buildManifest.routes)) {
+      for (const route of Object.values(newBuildResult.buildManifest.routes)) {
         route.config = route.config || {};
         (route as { config: { runtime: string } }).config.runtime = 'nodejs';
       }
     }
 
-    buildManifest.reactRouterConfig = rrBuild;
-    buildManifest.reactRouterConfig.appDirectory = normalizePath(
+    newBuildResult.reactRouterConfig = rrBuild;
+    newBuildResult.reactRouterConfig.appDirectory = normalizePath(
       join(dirname, 'app'),
     );
-    buildManifest.reactRouterConfig.buildDirectory = normalizePath(
+    newBuildResult.reactRouterConfig.buildDirectory = normalizePath(
       join(dirname, 'dist'),
     );
 
     // write back to the file
     try {
-      writeFileSync(manifestPath, JSON.stringify(buildManifest, null, 2));
+      writeFileSync(manifestPath, JSON.stringify(newBuildResult, null, 2));
     } catch (error) {
       console.error(`Error writing manifest file: ${error}`);
     }
