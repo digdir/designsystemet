@@ -1,9 +1,31 @@
 /**
- * These files are generated from design tokens defind using Token Studio
+ * These files are generated from design tokens defined using Token Studio
  */
 
 @layer ds.theme.typography.primary {
 :root, [data-typography="primary"] {
+  --ds-line-height-sm: 1.3;
+  --ds-line-height-md: 1.5;
+  --ds-line-height-lg: 1.7;
+  --ds-font-size-1: 0.75rem;
+  --ds-font-size-2: 0.875rem;
+  --ds-font-size-3: 1rem;
+  --ds-font-size-4: 1.125rem;
+  --ds-font-size-5: 1.3125rem;
+  --ds-font-size-6: 1.5rem;
+  --ds-font-size-7: 1.875rem;
+  --ds-font-size-8: 2.25rem;
+  --ds-font-size-9: 3rem;
+  --ds-font-size-10: 3.75rem;
+  --ds-letter-spacing-1: -1%;
+  --ds-letter-spacing-2: -0.5%;
+  --ds-letter-spacing-3: -0.25%;
+  --ds-letter-spacing-4: -0.15%;
+  --ds-letter-spacing-5: 0%;
+  --ds-letter-spacing-6: 0.15%;
+  --ds-letter-spacing-7: 0.25%;
+  --ds-letter-spacing-8: 0.5%;
+  --ds-letter-spacing-9: 1.5%;
   --ds-font-family: Inter;
   --ds-font-weight-medium: 500;
   --ds-font-weight-semibold: 600;
@@ -96,27 +118,5 @@
   --ds-body-long-xs-line-height: 1.7;
   --ds-body-long-xs-font-size: 0.875rem;
   --ds-body-long-xs-letter-spacing: 0.15%;
-  --ds-line-height-sm: 1.3;
-  --ds-line-height-md: 1.5;
-  --ds-line-height-lg: 1.7;
-  --ds-font-size-1: 0.75rem;
-  --ds-font-size-2: 0.875rem;
-  --ds-font-size-3: 1rem;
-  --ds-font-size-4: 1.125rem;
-  --ds-font-size-5: 1.3125rem;
-  --ds-font-size-6: 1.5rem;
-  --ds-font-size-7: 1.875rem;
-  --ds-font-size-8: 2.25rem;
-  --ds-font-size-9: 3rem;
-  --ds-font-size-10: 3.75rem;
-  --ds-letter-spacing-1: -1%;
-  --ds-letter-spacing-2: -0.5%;
-  --ds-letter-spacing-3: -0.25%;
-  --ds-letter-spacing-4: -0.15%;
-  --ds-letter-spacing-5: 0%;
-  --ds-letter-spacing-6: 0.15%;
-  --ds-letter-spacing-7: 0.25%;
-  --ds-letter-spacing-8: 0.5%;
-  --ds-letter-spacing-9: 1.5%;
 }
 }

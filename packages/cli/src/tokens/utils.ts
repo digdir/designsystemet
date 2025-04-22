@@ -1,7 +1,7 @@
-import fs from 'node:fs/promises';
-import chalk from 'chalk';
 import * as R from 'ramda';
+import type { Tokens } from 'style-dictionary';
 import type { DesignToken, TransformedToken } from 'style-dictionary/types';
+import type { TokenSet } from './types.js';
 
 const mapToLowerCase = R.map<string, string>(R.toLower);
 
@@ -68,51 +68,63 @@ export function isColorCategoryToken(token: TransformedToken, category?: 'main' 
   return R.startsWith(['color', category], token.path);
 }
 
-export const mkdir = async (dir: string, dry?: boolean) => {
-  if (dry) {
-    console.log(`${chalk.blue('mkdir')} ${dir}`);
-    return Promise.resolve();
-  }
-
-  return await fs.mkdir(dir, { recursive: true });
-};
-
-export const writeFile = async (path: string, data: string, dry?: boolean) => {
-  if (dry) {
-    console.log(`${chalk.blue('writeFile')} ${path}`);
-    return Promise.resolve();
-  }
-
-  return await fs.writeFile(path, data, { encoding: 'utf-8' });
-};
-
-export const cp = async (src: string, dest: string, dry?: boolean) => {
-  if (dry) {
-    console.log(`${chalk.blue('cp')} ${src} ${dest}`);
-    return Promise.resolve();
-  }
-
-  return await fs.cp(src, dest, { recursive: true });
-};
-
-export const copyFile = async (src: string, dest: string, dry?: boolean) => {
-  if (dry) {
-    console.log(`${chalk.blue('copyFile')} ${src} to ${dest}`);
-    return Promise.resolve();
-  }
-
-  return await fs.copyFile(src, dest);
-};
-
 export const isDigit = (s: string) => /^\d+$/.test(s);
 
-export const cleanDir = async (dir: string, dry?: boolean) => {
-  if (dry) {
-    console.log(`${chalk.blue('cleanDir')} ${dir}`);
-    return Promise.resolve();
+/** Copied from Style Dictionary and added types
+@see https://github.com/amzn/style-dictionary/blob/31c29df0382a61b085f6392dc3225c5009fbffc5/lib/utils/combineJSON.js#L33 */
+export function traverseObj(
+  obj: Tokens | TokenSet,
+  fn: (obj: TokenSet | Tokens | DesignToken, key: keyof Tokens | string, slice: Tokens | DesignToken | string) => void,
+) {
+  for (const key in obj) {
+    const prop = obj[key];
+    if (prop != null) {
+      fn.apply(null, [obj, key, prop]);
+      if (typeof prop === 'object') {
+        traverseObj(prop, fn);
+      }
+    }
   }
+  return obj;
+}
 
-  console.log(`${chalk.red(`Cleaning outputDir: ${dir.trim()}`)} `);
+/**
+ * In the given tokens array, inline and remove tokens that match the predicate
+ *
+ * Example: In pseudo-code, given the predicate `(token) => token.path === ['size', '1']` and the following tokens
+ * ```js
+ *  [
+ *    { path: ['size', 'base'], original: { $value: '8px' } },
+ *    { path: ['size', '1'], original: { $value: '{size.base} * 2' } },
+ *    { path: ['size', 'sm']: original: { $value: 'min({size.1}, 12px)' } }
+ *  ]
+ * ```
+ * would return
+ * ```js
+ *  [
+ *    { path: ['size', 'base'], original: { $value: '8px' } },
+ *    { path: ['size', 'sm']: original: { $value: 'min({size.base} * 2, 12px)' } }
+ *  ]
+ * ```
+ *
+ * @param shouldInline - predicate to determine if token should be inlined
+ * @param tokens - array of tokens to transform
+ * @returns copy of `tokens` without those that matched the predicate,
+ *          where references to the matching tokens have been inlined
+ */
+export function inlineTokens(shouldInline: (t: TransformedToken) => boolean, tokens: TransformedToken[]) {
+  const [inlineableTokens, otherTokens] = R.partition(shouldInline, tokens);
+  return otherTokens.map((token: TransformedToken) => {
+    // Inline the tokens that satisfy shouldInline().
+    let transformed = getValue<string>(token.original);
+    for (const ref of inlineableTokens) {
+      const refName = ref.path.join('.');
 
-  return await fs.rm(dir, { recursive: true, force: true });
-};
+      if (typeof transformed === 'string') {
+        transformed = transformed.replaceAll(`{${refName}}`, getValue<string>(ref.original));
+      }
+    }
+    const tokenWithInlinedRefs = R.set(R.lensPath(['original', '$value']), transformed, token);
+    return tokenWithInlinedRefs;
+  });
+}

@@ -1,5 +1,5 @@
 /**
- * These files are generated from design tokens defind using Token Studio
+ * These files are generated from design tokens defined using Token Studio
  */
 
 @layer ds.theme.semantic {
@@ -14,7 +14,6 @@
   --ds-border-radius-xl: min(var(--ds-border-radius-base)*3,var(--ds-border-radius-scale)*7);
   --ds-border-radius-default: var(--ds-border-radius-base);
   --ds-border-radius-full: 624.9375rem;
-  --ds-opacity-disabled: 30%;
   --ds-border-width-default: 1px;
   --ds-border-width-focus: 3px;
   --ds-shadow-xs: 0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12);
@@ -22,6 +21,7 @@
   --ds-shadow-md: 0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12);
   --ds-shadow-lg: 0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14);
   --ds-shadow-xl: 0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16);
+  --ds-opacity-disabled: 30%;
 
   --ds-size-0:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *0);
   --ds-size-1:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *1);
