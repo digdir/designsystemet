@@ -6,7 +6,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 const dirname = import.meta.dirname || __dirname;
 
 // Simplified manual chunks function to avoid variable initialization issues
-function manualChunks(id: string) {
+/* function manualChunks(id: string) {
   if (id.toLowerCase().includes('digdir')) {
     return 'vendor-digdir';
   }
@@ -28,7 +28,7 @@ function manualChunks(id: string) {
   }
 
   return null; // Let Vite decide for application code
-}
+} */
 
 export default defineConfig({
   css: {
@@ -40,7 +40,6 @@ export default defineConfig({
     rollupOptions: {
       treeshake: true,
       output: {
-        manualChunks,
         chunkFileNames: 'assets/[name].[hash].js',
         entryFileNames: 'assets/[name].[hash].js',
       },
