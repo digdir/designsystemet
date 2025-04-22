@@ -1,6 +1,5 @@
 import { reactRouter } from '@react-router/dev/vite';
 import { defineConfig } from 'vite';
-import { viteStaticCopy } from 'vite-plugin-static-copy';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 const dirname = import.meta.dirname || __dirname;
@@ -50,7 +49,7 @@ export default defineConfig({
   plugins: [
     reactRouter(),
     tsconfigPaths(),
-    viteStaticCopy({
+    /* viteStaticCopy({
       targets: [
         {
           src: './app/content/*',
@@ -60,6 +59,6 @@ export default defineConfig({
       silent: true,
       structured: true,
       hook: 'buildEnd',
-    }),
+    }), */
   ],
 });

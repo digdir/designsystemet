@@ -100,7 +100,12 @@ const config: Config = {
   ssr: true,
   buildDirectory: 'dist',
   prerender: async () => {
-    return getContentPathsWithLanguages();
+    return [
+      '/nb',
+      '/en',
+      '/nb/grunnleggende',
+      ...getContentPathsWithLanguages(),
+    ];
   },
   serverBundles: async (args) => {
     for (const route of args.branch) {
@@ -136,7 +141,6 @@ const config: Config = {
       console.error(`Error reading manifest file: ${error}`);
       return;
     }
-    console.log({ newBuildResult });
 
     /* For every item in buildmanifest.serverBundles, add config.runtime = "nodejs" */
     if (newBuildResult.buildManifest?.serverBundles) {
