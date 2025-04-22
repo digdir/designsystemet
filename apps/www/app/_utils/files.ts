@@ -1,6 +1,5 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
-import process from 'node:process';
 
 // Content cache to avoid reading from disk in dev mode
 const contentCache: Record<string, string> = {};
