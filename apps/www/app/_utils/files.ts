@@ -179,8 +179,17 @@ export const preloadContentFiles = () => {
   }
 };
 
-// Preload content files when this module is imported in development
-if (process.env.NODE_ENV === 'development') {
-  // Use setTimeout to avoid blocking the initial load
-  setTimeout(preloadContentFiles, 1000);
+// Safely preload content files when this module is imported in development
+if (
+  typeof process !== 'undefined' &&
+  process.env &&
+  process.env.NODE_ENV === 'development'
+) {
+  // Wrap in try-catch to prevent build failures
+  try {
+    // Use setTimeout to avoid blocking the initial load
+    setTimeout(preloadContentFiles, 1000);
+  } catch (error) {
+    console.warn('Failed to schedule content preloading:', error);
+  }
 }
