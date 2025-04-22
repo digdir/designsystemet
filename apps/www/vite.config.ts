@@ -1,9 +1,6 @@
-import path from 'node:path';
 import { reactRouter } from '@react-router/dev/vite';
 import { vercelPreset } from '@vercel/react-router/vite';
 import { defineConfig } from 'vite';
-import { normalizePath } from 'vite';
-import { viteStaticCopy } from 'vite-plugin-static-copy';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 const dirname = import.meta.dirname || __dirname;
@@ -60,15 +57,15 @@ export default defineConfig({
   },
   plugins: [
     reactRouter(),
-    vercelPreset(),
-    tsconfigPaths(),
-    viteStaticCopy({
+    /* viteStaticCopy({
       targets: [
         {
           src: normalizePath(path.resolve(dirname, './app/content/*')),
           dest: normalizePath(path.resolve(dirname, './dist/app/content')),
         },
       ],
-    }),
+    }), */
+    vercelPreset(),
+    tsconfigPaths(),
   ],
 });

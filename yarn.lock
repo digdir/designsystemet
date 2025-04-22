@@ -12134,11 +12134,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router@npm:^7.4.1":
-  version: 7.4.1
-  resolution: "react-router@npm:7.4.1"
+"react-router@npm:^7.5.1":
+  version: 7.5.1
+  resolution: "react-router@npm:7.5.1"
   dependencies:
-    "@types/cookie": "npm:^0.6.0"
     cookie: "npm:^1.0.1"
     set-cookie-parser: "npm:^2.6.0"
     turbo-stream: "npm:2.4.0"
@@ -12148,7 +12147,7 @@ __metadata:
   peerDependenciesMeta:
     react-dom:
       optional: true
-  checksum: 10/5873187abcd1d898f4bf7c0f31af48d7a867ec35bfa030d582c03bfb390fdf6ebfb252732a200d2212771319133124279b7c8ba034df0cde77daf9140345a1c6
+  checksum: 10/c5c3bacbb93058f4cbf93557ea4d3376393e071aa59e2f7044060cc4073b2a253fcd29c7c0b89d6c373d56dc7e2494729871e5a72be66988b1c0bd726f7cfc0e
   languageName: node
   linkType: hard
 
@@ -15194,7 +15193,7 @@ __metadata:
     react: "npm:^19.1.0"
     react-code-block: "npm:^1.1.3"
     react-dom: "npm:^19.1.0"
-    react-router: "npm:^7.4.1"
+    react-router: "npm:^7.5.1"
     rehype-autolink-headings: "npm:^7.1.0"
     rehype-slug: "npm:^6.0.0"
     remark-gfm: "npm:^4.0.1"
