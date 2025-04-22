@@ -2,7 +2,7 @@ import path from 'node:path';
 import type { ThemeObject } from '@tokens-studio/types';
 import chalk from 'chalk';
 import type { DesignToken } from 'style-dictionary/types';
-import { cleanDir, readFile, writeFile } from '../utils.js';
+import { cleanDir, mkdir, readFile, writeFile } from '../utils.js';
 import { createThemeCSSFiles } from './format.js';
 import { type BuildOptions, processPlatform } from './process/platform.js';
 
@@ -43,6 +43,8 @@ export const buildTokens = async (options: Omit<BuildOptions, 'process' | '$them
   for (const { destination, output } of createThemeCSSFiles(processedBuilds)) {
     if (destination) {
       const filePath = path.join(resolvedOutDir, destination);
+      const fileDir = path.dirname(filePath);
+      await mkdir(fileDir, options.dry);
       await writeFile(filePath, output, options.dry);
     }
   }
