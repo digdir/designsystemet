@@ -1,6 +1,7 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
-import { cwd } from 'node:process';
+
+const dirname = import.meta.dirname || __dirname;
 
 const safeReadDir = (path: string): string[] => {
   try {
@@ -24,7 +25,7 @@ export const getFilesFromContentDir = (
   path: string,
   currentRelativePath = '',
 ) => {
-  const basePath = join(cwd(), 'app/content');
+  const basePath = join(dirname, '../../app/content');
   const currentPath = join(basePath, path, currentRelativePath);
 
   try {
@@ -62,7 +63,7 @@ export const getFilesFromContentDir = (
 };
 
 export const getFileFromContentDir = (path: string) => {
-  const basePath = join(cwd(), 'app/content');
+  const basePath = join(dirname, '../../app/content');
 
   try {
     return safeReadFile(join(basePath, path));
