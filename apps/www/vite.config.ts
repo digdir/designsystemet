@@ -6,12 +6,25 @@ const dirname = import.meta.dirname || __dirname;
 
 // Simplified manual chunks function to avoid variable initialization issues
 function manualChunks(id: string) {
-  if (id.includes('digdir')) {
+  console.log('id: ', id);
+  if (id.toLowerCase().includes('digdir')) {
     return 'vendor-digdir';
   }
 
-  if (id.includes('aksel')) {
-    return 'vendor-aksel';
+  if (id.toLowerCase().includes('nav')) {
+    return 'vendor-nav';
+  }
+
+  if (id.toLowerCase().includes('repo')) {
+    return 'vendor-repo';
+  }
+
+  if (id.toLowerCase().includes('components')) {
+    return 'vendor-components';
+  }
+
+  if (id.toLowerCase().includes('utils')) {
+    return 'vendor-utils';
   }
 
   return null; // Let Vite decide for application code
