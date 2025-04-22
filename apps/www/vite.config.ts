@@ -2,8 +2,6 @@ import { reactRouter } from '@react-router/dev/vite';
 import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
-const dirname = import.meta.dirname || __dirname;
-
 // Simplified manual chunks function to avoid variable initialization issues
 function manualChunks(id: string) {
   if (id.toLowerCase().includes('digdir')) {

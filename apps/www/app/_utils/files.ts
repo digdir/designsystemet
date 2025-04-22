@@ -1,7 +1,10 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
 
-const dirname = import.meta.dirname || __dirname;
+// Use resolve to ensure we have an absolute path even if import.meta.dirname is undefined
+const dirname =
+  import.meta.dirname ||
+  (typeof __dirname !== 'undefined' ? __dirname : resolve('.'));
 
 const safeReadDir = (path: string): string[] => {
   try {

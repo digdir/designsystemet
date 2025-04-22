@@ -1,9 +1,12 @@
 import { existsSync, readdirSync, statSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
 import type { Config } from '@react-router/dev/config';
 import { vercelPreset } from '@vercel/react-router/vite';
 
-const dirname = import.meta.dirname || __dirname;
+// Ensure we always have a valid dirname, even in Vercel's environment
+const dirname =
+  import.meta.dirname ||
+  (typeof __dirname !== 'undefined' ? __dirname : resolve('.'));
 
 // Function to get all content paths taking into account the language structure
 const getContentPathsWithLanguages = (): string[] => {
