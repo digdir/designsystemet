@@ -2,7 +2,7 @@ import path from 'node:path';
 import type { ThemeObject } from '@tokens-studio/types';
 import chalk from 'chalk';
 import type { DesignToken } from 'style-dictionary/types';
-import { cleanDir, mkdir, readFile, writeFile } from '../utils.js';
+import { cleanDir, readFile, writeFile } from '../utils.js';
 import { createThemeCSSFiles } from './format.js';
 import { type BuildOptions, processPlatform } from './process/platform.js';
 import type { OutputFile } from './types.js';
