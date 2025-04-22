@@ -1,6 +1,12 @@
-import { existsSync, readdirSync, statSync, writeFileSync } from 'node:fs';
+import {
+  existsSync,
+  readFileSync,
+  readdirSync,
+  statSync,
+  writeFileSync,
+} from 'node:fs';
 import { join, resolve } from 'node:path';
-import type { Config } from '@react-router/dev/config';
+import type { BuildManifest, Config } from '@react-router/dev/config';
 import { vercelPreset } from '@vercel/react-router/vite';
 
 // Ensure we always have a valid dirname, even in Vercel's environment
@@ -113,12 +119,23 @@ const config: Config = {
     return 'root';
   },
   presets: [vercelPreset()],
-  buildEnd: async ({ buildManifest }) => {
+  buildEnd: async () => {
     // get manifest from .verceL/react-router-build-result.json
     const manifestPath = join(
       dirname,
       '.vercel/react-router-build-result.json',
     );
+
+    /* read file contents */
+    let buildManifest: BuildManifest;
+    try {
+      const fileContents = readFileSync(manifestPath, 'utf-8');
+      buildManifest = JSON.parse(fileContents).buildManifest;
+    } catch (error) {
+      console.error(`Error reading manifest file: ${error}`);
+      return;
+    }
+
     /* For every item in buildmanifest.serverBundles, add config.runtime = "nodejs" */
     if (buildManifest?.serverBundles) {
       console.log(buildManifest.serverBundles);
@@ -126,6 +143,16 @@ const config: Config = {
       for (const bundle of Object.values(buildManifest.serverBundles)) {
         bundle.config = bundle.config || {};
         (bundle as { config: { runtime: string } }).config.runtime = 'nodejs';
+      }
+    }
+
+    /* For every item in buildmanifest.routes, add config.runtime = "nodejs" */
+    if (buildManifest?.routes) {
+      console.log(buildManifest.routes);
+      // Use Object.values to get an array of the routes objects
+      for (const route of Object.values(buildManifest.routes)) {
+        route.config = route.config || {};
+        (route as { config: { runtime: string } }).config.runtime = 'nodejs';
       }
     }
 
