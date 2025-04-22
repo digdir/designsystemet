@@ -1,9 +1,7 @@
-import {} from 'node:fs';
 import { join } from 'node:path';
 import { Heading } from '@digdir/designsystemet-react';
 import { ComponentIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import {} from '~/_components/banner/banner';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { formatDateNorwegian } from '~/_utils/date';
 import { getFileFromContentDir } from '~/_utils/files';

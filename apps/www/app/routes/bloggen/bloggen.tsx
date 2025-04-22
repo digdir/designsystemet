@@ -1,5 +1,4 @@
 import { join } from 'node:path';
-import {} from '@digdir/designsystemet-react';
 import { bundleMDX } from 'mdx-bundler';
 import BlogCard from '~/_components/blog-card/blog-card';
 import { getFileFromContentDir, getFilesFromContentDir } from '~/_utils/files';

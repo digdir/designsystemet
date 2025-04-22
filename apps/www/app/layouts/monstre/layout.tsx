@@ -1,4 +1,3 @@
-import {} from 'node:fs';
 import { join } from 'node:path';
 import { LayersIcon } from '@navikt/aksel-icons';
 import { bundleMDX } from 'mdx-bundler';

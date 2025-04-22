@@ -1,4 +1,3 @@
-import {} from 'node:fs';
 import { join } from 'node:path';
 import { Heading } from '@digdir/designsystemet-react';
 import {

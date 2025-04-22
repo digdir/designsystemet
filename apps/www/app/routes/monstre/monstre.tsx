@@ -1,5 +1,4 @@
 import { join } from 'node:path';
-import {} from '@digdir/designsystemet-react';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { getFileFromContentDir } from '~/_utils/files';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
