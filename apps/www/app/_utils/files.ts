@@ -1,61 +1,35 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
+import { cwd } from 'node:process';
 
-// Content cache to avoid reading from disk in dev mode
+// Content cache to avoid redundant file reads
 const contentCache: Record<string, string> = {};
 const filesListCache: Record<
   string,
   Array<{ path: string; relativePath: string }>
 > = {};
 
-// Check if we're in production mode
-const isProd = process.env.NODE_ENV === 'production';
-
 const getContentPath = () => {
-  let prefixParts: string[] = [];
-
-  if (process.env.CONTENT_PREFIX) {
-    const rawValue = process.env.CONTENT_PREFIX.trim();
-    if (rawValue.startsWith('[') && rawValue.endsWith(']')) {
-      prefixParts = rawValue
-        .substring(1, rawValue.length - 1)
-        .split(',')
-        .map((part) => part.trim().replace(/['"]/g, ''));
-    } else {
-      prefixParts = rawValue
-        .split(',')
-        .map((part) => part.trim().replace(/['"]/g, ''));
-    }
-  }
-  return join(...prefixParts);
+  // Use a fixed content path instead of environment variables
+  return join(cwd(), '/app/content/');
 };
 
-// Production-safe version of readdirSync that returns empty array in production
+// Safe version of readdirSync that handles errors gracefully
 const safeReadDir = (path: string): string[] => {
-  if (isProd) {
-    console.log('[Production] Skipping directory read:', path);
-    return [];
-  }
-
   try {
     return readdirSync(path);
   } catch (error) {
-    console.warn(`Could not read directory: ${path}`, error);
+    console.warn(`Could not read directory: ${path}`);
     return [];
   }
 };
 
-// Production-safe version of readFileSync that returns empty string in production
+// Safe version of readFileSync that handles errors gracefully
 const safeReadFile = (path: string): string => {
-  if (isProd) {
-    console.log('[Production] Skipping file read:', path);
-    return '';
-  }
-
   try {
     return readFileSync(path, 'utf-8');
   } catch (error) {
-    console.error(`Error reading file: ${path}`, error);
+    console.error(`Error reading file: ${path}`);
     return '';
   }
 };
@@ -64,11 +38,6 @@ export const getFilesFromContentDir = (
   path: string,
   currentRelativePath = '',
 ) => {
-  // In production, content files should be prerendered, so return empty array
-  if (isProd) {
-    return [];
-  }
-
   // Create a cache key from the path and currentRelativePath
   const cacheKey = `${path}:${currentRelativePath}`;
 
@@ -77,8 +46,11 @@ export const getFilesFromContentDir = (
     return filesListCache[cacheKey];
   }
 
+  // We need a base path that doesn't rely on process.cwd()
+  // This can be adjusted based on your project structure
+  const basePath = ''; // Adjust this if needed
   const currentPath = join(
-    process.cwd(),
+    basePath,
     getContentPath(),
     path,
     currentRelativePath,
@@ -94,17 +66,23 @@ export const getFilesFromContentDir = (
         ? join(currentRelativePath, entry)
         : entry;
 
-      if (statSync(entryPath).isDirectory()) {
-        // Recursively search subdirectory
-        results = results.concat(
-          getFilesFromContentDir(path, entryRelativePath),
-        );
-      } else if (entry.endsWith('.mdx')) {
-        // Add MDX file to results
-        results.push({
-          path: entryPath,
-          relativePath: entryRelativePath,
-        });
+      try {
+        const stats = statSync(entryPath);
+        if (stats.isDirectory()) {
+          // Recursively search subdirectory
+          results = results.concat(
+            getFilesFromContentDir(path, entryRelativePath),
+          );
+        } else if (entry.endsWith('.mdx')) {
+          // Add MDX file to results
+          results.push({
+            path: entryPath,
+            relativePath: entryRelativePath,
+          });
+        }
+      } catch (error) {
+        // Skip this entry if we can't get stats
+        console.warn(`Could not stat entry: ${entryPath}`);
       }
     }
 
@@ -112,45 +90,36 @@ export const getFilesFromContentDir = (
     filesListCache[cacheKey] = results;
     return results;
   } catch (error) {
-    console.warn(`Could not read content directory: ${currentPath}`, error);
+    console.warn(`Could not read content directory: ${currentPath}`);
     return [];
   }
 };
 
 export const getFileFromContentDir = (path: string) => {
-  // In production, content should be prerendered, so return empty string
-  // The prerendered HTML will have the content already
-  if (isProd) {
-    return '';
-  }
-
   // Check if the content is already cached
   if (contentCache[path]) {
     return contentCache[path];
   }
 
+  // We need a base path that doesn't rely on process.cwd()
+  const basePath = ''; // Adjust this if needed
+
   try {
     // Read the file from disk
-    const content = safeReadFile(join(process.cwd(), getContentPath(), path));
+    const content = safeReadFile(join(basePath, getContentPath(), path));
 
     // Cache the content
     contentCache[path] = content;
 
     return content;
   } catch (error) {
-    console.error(`Error reading file from content directory: ${path}`, error);
+    console.error(`Error reading file from content directory: ${path}`);
     return '';
   }
 };
 
-// Function to preload all content files
+// Export a function to preload content that can be explicitly called when needed
 export const preloadContentFiles = () => {
-  const isDev = process.env.NODE_ENV === 'development';
-
-  if (!isDev) {
-    return; // Only preload in development mode
-  }
-
   try {
     // Preload files from common content directories
     const contentDirectories = [
@@ -171,24 +140,7 @@ export const preloadContentFiles = () => {
         }
       }
     }
-
-    console.log('Content files preloaded successfully');
   } catch (error) {
-    console.warn('Error preloading content files:', error);
+    console.warn('Error preloading content files');
   }
 };
-
-// Safely preload content files when this module is imported in development
-if (
-  typeof process !== 'undefined' &&
-  process.env &&
-  process.env.NODE_ENV === 'development'
-) {
-  // Wrap in try-catch to prevent build failures
-  try {
-    // Use setTimeout to avoid blocking the initial load
-    setTimeout(preloadContentFiles, 1000);
-  } catch (error) {
-    console.warn('Failed to schedule content preloading:', error);
-  }
-}
