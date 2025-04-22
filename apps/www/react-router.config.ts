@@ -3,9 +3,11 @@ import { join } from 'node:path';
 import type { Config } from '@react-router/dev/config';
 import { vercelPreset } from '@vercel/react-router/vite';
 
+const dirname = import.meta.dirname || __dirname;
+
 // Function to get all content paths taking into account the language structure
 const getContentPathsWithLanguages = (): string[] => {
-  const contentBasePath = join(process.cwd(), 'app/content');
+  const contentBasePath = join(dirname, 'app/content');
   const paths: string[] = [];
   const supportedLanguages = ['nb', 'en']; // Adjust as needed
 
@@ -108,5 +110,4 @@ export default {
     }
     return 'root';
   },
-  serverBuildFile: 'root/index.js',
 } satisfies Config;

@@ -22,8 +22,8 @@ function manualChunks(id: string) {
     return 'vendor-components';
   }
 
-  if (id.toLowerCase().includes('utils')) {
-    return 'vendor-utils';
+  if (id.toLowerCase().includes('mdx')) {
+    return 'vendor-mdx';
   }
 
   return null; // Let Vite decide for application code
