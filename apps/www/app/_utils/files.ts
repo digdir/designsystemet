@@ -9,6 +9,9 @@ const filesListCache: Record<
   Array<{ path: string; relativePath: string }>
 > = {};
 
+// Check if we're in production mode
+const isProd = process.env.NODE_ENV === 'production';
+
 const getContentPath = () => {
   let prefixParts: string[] = [];
 
@@ -29,10 +32,45 @@ const getContentPath = () => {
   return join(...prefixParts);
 };
 
+// Production-safe version of readdirSync that returns empty array in production
+const safeReadDir = (path: string): string[] => {
+  if (isProd) {
+    console.log('[Production] Skipping directory read:', path);
+    return [];
+  }
+
+  try {
+    return readdirSync(path);
+  } catch (error) {
+    console.warn(`Could not read directory: ${path}`, error);
+    return [];
+  }
+};
+
+// Production-safe version of readFileSync that returns empty string in production
+const safeReadFile = (path: string): string => {
+  if (isProd) {
+    console.log('[Production] Skipping file read:', path);
+    return '';
+  }
+
+  try {
+    return readFileSync(path, 'utf-8');
+  } catch (error) {
+    console.error(`Error reading file: ${path}`, error);
+    return '';
+  }
+};
+
 export const getFilesFromContentDir = (
   path: string,
   currentRelativePath = '',
 ) => {
+  // In production, content files should be prerendered, so return empty array
+  if (isProd) {
+    return [];
+  }
+
   // Create a cache key from the path and currentRelativePath
   const cacheKey = `${path}:${currentRelativePath}`;
 
@@ -49,7 +87,7 @@ export const getFilesFromContentDir = (
   );
 
   try {
-    const entries = readdirSync(currentPath);
+    const entries = safeReadDir(currentPath);
     let results: Array<{ path: string; relativePath: string }> = [];
 
     for (const entry of entries) {
@@ -82,6 +120,12 @@ export const getFilesFromContentDir = (
 };
 
 export const getFileFromContentDir = (path: string) => {
+  // In production, content should be prerendered, so return empty string
+  // The prerendered HTML will have the content already
+  if (isProd) {
+    return '';
+  }
+
   // Check if the content is already cached
   if (contentCache[path]) {
     return contentCache[path];
@@ -89,10 +133,7 @@ export const getFileFromContentDir = (path: string) => {
 
   try {
     // Read the file from disk
-    const content = readFileSync(
-      join(process.cwd(), getContentPath(), path),
-      'utf-8',
-    );
+    const content = safeReadFile(join(process.cwd(), getContentPath(), path));
 
     // Cache the content
     contentCache[path] = content;
@@ -128,7 +169,7 @@ export const preloadContentFiles = () => {
       for (const file of files) {
         const relativePath = join(dir, file.relativePath);
         if (!contentCache[relativePath]) {
-          contentCache[relativePath] = readFileSync(file.path, 'utf-8');
+          contentCache[relativePath] = safeReadFile(file.path);
         }
       }
     }
