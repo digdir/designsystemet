@@ -1,7 +1,6 @@
 // Logic from: https://www.joshuawootonn.com/react-roving-tabindex
 // Inspired by: https://github.com/radix-ui/primitives/tree/main/packages/react/roving-focus/src
 
-import { useMergeRefs } from '@floating-ui/react';
 import { Slot } from '@radix-ui/react-slot';
 import { createContext, forwardRef, useEffect, useRef, useState } from 'react';
 import type {
@@ -10,6 +9,7 @@ import type {
   MutableRefObject,
   ReactNode,
 } from 'react';
+import { useMergeRefs } from '../hooks';
 
 type RovingFocusRootBaseProps = {
   /** The children of the `RovingFocusRoot`. The children should get their roving-relevant props from the `useRovingFocus` hook. */

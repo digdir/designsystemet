@@ -1,6 +1,6 @@
-import { useMergeRefs } from '@floating-ui/react';
 import { getDatalistValue, isDatalistClick } from '@u-elements/u-datalist';
 import { forwardRef, useCallback, useContext, useEffect } from 'react';
+import { useMergeRefs } from '../../utilities/hooks';
 import { Input, type InputProps } from '../Input';
 import { SuggestionContext } from './Suggestion';
 
