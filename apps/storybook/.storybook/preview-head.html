@@ -16,6 +16,11 @@
   }
   html {
     font-family: 'Inter', sans-serif;
+    height: 100%;
+    --ds-color-neutral-background-default-dark: #13181f;
+  }
+  body {
+    background-color: var(--ds-color-neutral-background-default);
   }
   .sbdocs-wrapper {
     padding-bottom: 10rem !important;
@@ -23,19 +28,14 @@
 
   .docs-story {
     background-color: var(--ds-color-neutral-background-default);
+    &:has([data-color-scheme="dark"]) {
+      background-color: var(--ds-color-neutral-background-default-dark);
+    }
   }
-  /*force light to counter enveloping data-color-scheme*/
-  .docblock-argstable {
-    color-scheme: light;
-  }
-
-  html {
-    height: 100%;
+  .sb-show-main:has([data-color-scheme="dark"]) {
+    background-color: var(--ds-color-neutral-background-default-dark);
   }
 
-  body {
-    background-color: var(--ds-color-neutral-background-default);
-  }
 </style>
 
 <style>

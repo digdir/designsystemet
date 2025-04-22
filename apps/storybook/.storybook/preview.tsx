@@ -1,7 +1,6 @@
 import './style.css';
 import '../../../packages/css/src/index.css';
 import '@digdir/designsystemet-theme/digdir.css';
-import { DocsContainer } from '@storybook/blocks';
 import type { Preview } from '@storybook/react';
 import isChromatic from 'chromatic/isChromatic';
 
@@ -137,23 +136,6 @@ const components = {
   ),
 };
 
-const DocsContainerWithWrapper: typeof DocsContainer = ({
-  children,
-  context,
-  ...props
-}) => {
-  return (
-    <div
-      /* @ts-expect-error https://github.com/storybookjs/storybook/issues/12982*/
-      data-color-scheme={context.store.userGlobals.globals.colorScheme}
-    >
-      <DocsContainer context={context} {...props}>
-        {children}
-      </DocsContainer>
-    </div>
-  );
-};
-
 const preview: Preview = {
   tags: ['a11y-test'],
   globalTypes: {
@@ -195,7 +177,6 @@ const preview: Preview = {
         transform: transformSource,
         type: 'auto',
       },
-      container: DocsContainerWithWrapper,
     },
     controls: {
       matchers: {
