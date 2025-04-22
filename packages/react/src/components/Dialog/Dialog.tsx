@@ -1,8 +1,8 @@
-import { useMergeRefs } from '@floating-ui/react';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { DialogHTMLAttributes } from 'react';
 import { forwardRef, useContext, useEffect, useRef } from 'react';
+import { useMergeRefs } from '../../utilities/hooks';
 
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
