@@ -1,5 +1,6 @@
 import path from 'node:path';
 import { reactRouter } from '@react-router/dev/vite';
+import { vercelPreset } from '@vercel/react-router/vite';
 import { defineConfig } from 'vite';
 import { normalizePath } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
@@ -59,6 +60,7 @@ export default defineConfig({
   },
   plugins: [
     reactRouter(),
+    vercelPreset(),
     tsconfigPaths(),
     viteStaticCopy({
       targets: [
