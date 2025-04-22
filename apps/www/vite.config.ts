@@ -7,29 +7,12 @@ const dirname = import.meta.dirname || __dirname;
 
 // Simplified manual chunks function to avoid variable initialization issues
 function manualChunks(id: string) {
-  // Core dependencies should stay in the main chunk to avoid initialization order problems
-  if (id.includes('/react/')) {
-    return 'vendor-react';
-  }
-
-  if (id.includes('/react-dom/')) {
-    return 'vendor-react-dom';
-  }
-
-  if (id.includes('/react-router/')) {
-    return 'vendor-router';
-  }
-
   if (id.includes('digdir')) {
     return 'vendor-digdir';
   }
 
   if (id.includes('aksel')) {
     return 'vendor-aksel';
-  }
-
-  if (id.includes('node_modules')) {
-    return 'vendor';
   }
 
   return null; // Let Vite decide for application code
@@ -55,17 +38,5 @@ export default defineConfig({
     // Focus on stability over optimization
     minify: true,
   },
-  plugins: [
-    reactRouter(),
-    /* viteStaticCopy({
-      targets: [
-        {
-          src: normalizePath(path.resolve(dirname, './app/content/*')),
-          dest: normalizePath(path.resolve(dirname, './dist/app/content')),
-        },
-      ],
-    }), */
-    vercelPreset(),
-    tsconfigPaths(),
-  ],
+  plugins: [reactRouter(), tsconfigPaths(), vercelPreset()],
 });
