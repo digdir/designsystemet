@@ -48,7 +48,11 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
 
     const title =
       result.frontmatter.title || file.relativePath.replace('.mdx', '');
-    const url = `/${lang}/grunnleggende/${file.relativePath.replace('.mdx', '')}`;
+    const url =
+      `/${lang}/grunnleggende/${file.relativePath.replace('.mdx', '')}`.replace(
+        '\\',
+        '/',
+      );
 
     if (!result.frontmatter.category) {
       continue;

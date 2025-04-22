@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "react-router build",
+    "prepare-content": "node ./scripts/prepare-content.js",
+    "build": "npm run prepare-content && react-router build",
     "dev": "react-router dev",
     "start": "react-router-serve ./dist/server/index.js",
     "types": "react-router typegen && tsc"

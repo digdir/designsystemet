@@ -1,0 +1,109 @@
+---
+title: Typografi
+sidebar_title: Typografi
+description: For å presentere innholdet korrekt bruker vi stiler og komponenter for typografi.
+date: 2024-04-28
+category: Designelementer
+color: blue
+icon: TokenIcon
+---
+
+For å presentere tekst på korrekt måte er det laget stiler som har ulike kombinasjoner av størrelse, fontvekt og linjehøyde. Det er også laget et sett med typografi-komponenter som innkapsler disse stilene, slik at de enkelt kan brukes i ulike sammenhenger. Beskrivelse av hvordan typografi-komponenter brukes finner du i komponentartikkelen [Typography](https://storybook.designsystemet.no/?path=/docs/komponenter-typography--docs).
+
+## Font-family
+
+Font-family er ikke en del av designsystem-biblioteket, du må selv importere ønsket font i din app. Komponentene har kun blitt testet med fonten "Inter". Velger du en annen font må du selv teste at det ser bra ut. 
+
+Inter er en skrifttype spesielt designet for god lesbarhet på dataskjermer. Den oppfyller følgende kriterier:
+
+- [Open font license](https://github.com/rsms/inter/blob/master/LICENSE.txt) + har et [aktivt community](https://github.com/rsms/inter)
+- Stor skriftfamilie (light, regular, italic, bold, semibold)
+- Gjenkjennelige bokstaver, tall og spesialtegn (ikke for kreativ)
+- Tydelige overlengder og underlengde på bokstavene.
+- Synlig forskjell på lignende tegn (I, l, 1) (må aktiveres)
+- Åpne bokstaver gror ikke igjen (f.eks tegn som a, e og c)
+- Lik strektykkelse i overgangene.
+- Tabular numbers ([monospace](https://fonts.google.com/knowledge/introducing_type/understanding_numerals))
+- [Variabel font](https://rsms.me/inter/#variable)
+- God bokstav og ordmellomrom
+- Språkstøtte
+
+Fonten er tilgjengelig i Figma uten at du trenger å laste ned og installere den selv. Trenger du den til andre formål kan du laste den ned fra [github.com/rsms/inter](https://github.com/rsms/inter/releases/tag/v3.19).
+
+For hosting kan Altinn CDN benyttes:
+
+```html
+<link
+  rel='stylesheet'
+  href='https://altinncdn.no/fonts/inter/v4.1/inter.css'
+  integrity="sha384-OcHzc/By/OPw9uJREawUCjP2inbOGKtKb4A/I2iXxmknUfog2H8Adx71tWVZRscD"
+  crossorigin="anonymous"
+/>
+```
+
+For å aktivere lowercase l with tail, legg til følgende i din CSS:
+
+```css
+font-family: 'Inter', sans-serif;
+font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */
+```
+
+## Tekststørrelse
+
+Tekststørrelse-variablene blir angitt i **rem**. Denne verdien er relativ til `html`-elementet sin `font-size`,
+og tar utgangspunkt i den vanligste standarden der `1rem = 16px`. Når vi angir tekststørrelse i rem, vil størrelsen være relatert til nettleserens standardstørrelse, og dermed også ta hensyn til om brukeren har valgt å oppskalere tekststørrelsen under innstillingene for tilgjengelighet i sin nettleser.
+
+Vi har totalt 10 størrelser i designsystemet. 12, 14, 16, 18, 21, 24, 30, 36, 48 og 60px. Default tekststørrelse for `paragraph` er `md` som tilsvarer 18px.
+
+| Steg   | Størrelse          | Body\*  | Heading |
+| ------ | ------------------ | ------- | ------- |
+| 1      | 12px / 0.75rem     |         |         |
+| 2      | 14px / 0.875rem    | xs      |         |
+| **3**  | **16px / 1.00rem** | sm      |         |
+| 4      | 18px / 1.125rem    | md      | 2xs     |
+| 5      | 21px / 1.313rem    | lg      | xs      |
+| 6      | 24px / 1.50rem     | xl      | sm      |
+| 7      | 30px / 1.875rem    |         | md      |
+| 8      | 36px / 2.25rem     |         | lg      |
+| 9      | 48px / 3.00rem     |         | xl      |
+| 10     | 60px / 3.75rem     |         | 2xl     |
+
+\*`Body`-størrelsene brukes også på `Ingress`, `Label` og `ValidationMessage`.
+
+### Hva med dynamiske tekststørrelser?
+
+Dynamisk font-størrelse uten breakpoints var standard i Designsystemet det meste av Beta-perioden. Dynamiske font-størrelser, eller "_Fluid typography"_, medfører noen ulemper som gjorde at vi valgte å gå for en statisk font-skala i stedet.
+
+**Les mer om [Fluid typography, og hvorfor vi gikk bort fra det](/nb/bloggen/2024/fluid-typography)**.
+
+## Linjelengde
+
+For best mulig lesbarhet for alle brukere, bør det ikke være mer enn 65-70 tegn per linje inkludert mellomrom. Da blir teksten mer innbydende og mindre overveldende, og er særlig viktig for blant annet brukere med lesevansker eller konsentrasjonsvansker. _Kilde: [uutilsynet.no](https://www.uutilsynet.no/veiledning/tekst-og-struktur/226)_
+
+## Avstand og luft
+
+Du må selv velge luften du ønsker mellom tekst-elementene. Dette kan du gjøre ved å bruke tokens for `spacing`.
+
+### Forslag til avstander
+Her er et forslag til avstander for å oppnå passelig rytme og luft mellom elementene: 
+
+`size-6` under `Heading-xl` \
+`size-5` under `Heading-lg` \
+`size-4` under `Heading-md` \
+`size-3` under `Heading-sm` 
+
+<br/>
+
+`size-5` mellom `body-md` \
+`size-4` mellom `body-sm`
+
+<br/>
+
+`size-10` over alle overskrifter/kapitler
+
+<Image
+  src="/img/typografi-spacing.png"
+  alt="Eksempel på avstander mellom headinger og avsnitt."
+  boxShadow={false}
+  dataUnstyled
+/>

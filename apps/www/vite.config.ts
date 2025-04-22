@@ -1,16 +1,13 @@
-import path from 'node:path';
 import { reactRouter } from '@react-router/dev/vite';
 import { vercelPreset } from '@vercel/react-router/vite';
 import { defineConfig } from 'vite';
-import { normalizePath } from 'vite';
-import { viteStaticCopy } from 'vite-plugin-static-copy';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 const dirname = import.meta.dirname || __dirname;
 
-// Simplified manual chunks function to avoid variable initialization issues
+// Simplified manual chunks function
 function manualChunks(id: string) {
-  // Core dependencies should stay in the main chunk to avoid initialization order problems
+  // Core dependencies should stay in the main chunk
   if (id.includes('/react/')) {
     return 'vendor-react';
   }
@@ -31,7 +28,15 @@ function manualChunks(id: string) {
     return 'vendor-aksel';
   }
 
+  // Split remaining node_modules into smaller chunks
   if (id.includes('node_modules')) {
+    // Extract package name from the path
+    const match = id.match(/node_modules\/(@[^/]+\/[^/]+|[^/]+)/);
+    if (match) {
+      const packageName = match[1];
+      // Group smaller packages together
+      return `vendor-${packageName.replace('@', '')}`;
+    }
     return 'vendor';
   }
 
@@ -62,13 +67,6 @@ export default defineConfig({
     reactRouter(),
     vercelPreset(),
     tsconfigPaths(),
-    viteStaticCopy({
-      targets: [
-        {
-          src: normalizePath(path.resolve(dirname, './app/content/*')),
-          dest: normalizePath(path.resolve(dirname, './dist/app/content')),
-        },
-      ],
-    }),
+    // Remove viteStaticCopy plugin to avoid bundling content files
   ],
 });

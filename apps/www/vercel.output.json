@@ -1,0 +1,17 @@
+{
+  "version": 3,
+  "routes": [
+    {
+      "src": "/(.*)\\.(.+)$",
+      "headers": { "cache-control": "public, max-age=31536000, immutable" },
+      "continue": true
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index"
+    }
+  ]
+}
