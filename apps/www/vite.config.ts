@@ -1,6 +1,9 @@
 import { reactRouter } from '@react-router/dev/vite';
 import { defineConfig } from 'vite';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 import tsconfigPaths from 'vite-tsconfig-paths';
+
+const dirname = import.meta.dirname || __dirname;
 
 // Simplified manual chunks function to avoid variable initialization issues
 function manualChunks(id: string) {
@@ -47,5 +50,18 @@ export default defineConfig({
     // Focus on stability over optimization
     minify: true,
   },
-  plugins: [reactRouter(), tsconfigPaths()],
+  plugins: [
+    reactRouter(),
+    tsconfigPaths(),
+    viteStaticCopy({
+      targets: [
+        {
+          src: './app/content/*',
+          dest: 'dist',
+        },
+      ],
+      silent: true,
+      structured: true,
+    }),
+  ],
 });
