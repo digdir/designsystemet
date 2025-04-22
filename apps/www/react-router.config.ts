@@ -6,8 +6,9 @@ import {
   writeFileSync,
 } from 'node:fs';
 import { join, resolve } from 'node:path';
-import type { BuildManifest, Config } from '@react-router/dev/config';
+import type { Config } from '@react-router/dev/config';
 import { vercelPreset } from '@vercel/react-router/vite';
+import { normalizePath } from 'vite';
 
 // Ensure we always have a valid dirname, even in Vercel's environment
 const dirname =
@@ -119,7 +120,8 @@ const config: Config = {
     return 'root';
   },
   presets: [vercelPreset()],
-  buildEnd: async () => {
+  buildEnd: async ({ buildManifest: rrBuild }) => {
+    console.log({ rrBuild });
     // get manifest from .verceL/react-router-build-result.json
     const manifestPath = join(
       dirname,
@@ -127,7 +129,7 @@ const config: Config = {
     );
 
     /* read file contents */
-    let buildManifest: BuildManifest;
+    let buildManifest: any = {};
     try {
       const fileContents = readFileSync(manifestPath, 'utf-8');
       buildManifest = JSON.parse(fileContents).buildManifest;
@@ -138,7 +140,6 @@ const config: Config = {
 
     /* For every item in buildmanifest.serverBundles, add config.runtime = "nodejs" */
     if (buildManifest?.serverBundles) {
-      console.log(buildManifest.serverBundles);
       // Use Object.values to get an array of the serverBundles objects
       for (const bundle of Object.values(buildManifest.serverBundles)) {
         bundle.config = bundle.config || {};
@@ -148,13 +149,20 @@ const config: Config = {
 
     /* For every item in buildmanifest.routes, add config.runtime = "nodejs" */
     if (buildManifest?.routes) {
-      console.log(buildManifest.routes);
       // Use Object.values to get an array of the routes objects
       for (const route of Object.values(buildManifest.routes)) {
         route.config = route.config || {};
         (route as { config: { runtime: string } }).config.runtime = 'nodejs';
       }
     }
+
+    buildManifest.reactRouterConfig = rrBuild;
+    buildManifest.reactRouterConfig.appDirectory = normalizePath(
+      join(dirname, 'app'),
+    );
+    buildManifest.reactRouterConfig.buildDirectory = normalizePath(
+      join(dirname, 'dist'),
+    );
 
     // write back to the file
     try {
