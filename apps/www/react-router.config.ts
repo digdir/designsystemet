@@ -1,4 +1,4 @@
-import { existsSync, readdirSync, statSync } from 'node:fs';
+import { existsSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import type { Config } from '@react-router/dev/config';
 import { vercelPreset } from '@vercel/react-router/vite';
@@ -114,8 +114,27 @@ const config: Config = {
   },
   presets: [vercelPreset()],
   buildEnd: async ({ buildManifest }) => {
-    // This is where you can access the build manifest and perform any necessary actions
-    console.log('Build completed. Manifest:', buildManifest);
+    // get manifest from .verceL/react-router-build-result.json
+    const manifestPath = join(
+      dirname,
+      '.vercel/react-router-build-result.json',
+    );
+    /* For every item in buildmanifest.serverBundles, add config.runtime = "nodejs" */
+    if (buildManifest?.serverBundles) {
+      console.log(buildManifest.serverBundles);
+      // Use Object.values to get an array of the serverBundles objects
+      for (const bundle of Object.values(buildManifest.serverBundles)) {
+        bundle.config = bundle.config || {};
+        (bundle as { config: { runtime: string } }).config.runtime = 'nodejs';
+      }
+    }
+
+    // write back to the file
+    try {
+      writeFileSync(manifestPath, JSON.stringify(buildManifest, null, 2));
+    } catch (error) {
+      console.error(`Error writing manifest file: ${error}`);
+    }
   },
 };
 
