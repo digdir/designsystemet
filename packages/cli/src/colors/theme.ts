@@ -1,7 +1,7 @@
 import chroma from 'chroma-js';
 import * as R from 'ramda';
 import { colorMetadata, getColorMetadataByNumber } from './colorMetadata.js';
-import type { CssColor } from './types.js';
+import { type ColorSettings, type CssColor, DefaultColorSettings } from './types.js';
 import type { Color, ColorNumber, ColorScheme, ThemeInfo } from './types.js';
 import { getLightnessFromHex, getLuminanceFromLightness } from './utils.js';
 
@@ -28,8 +28,8 @@ export const RESERVED_COLORS = [
 export const generateColorScale = (
   color: CssColor,
   colorScheme: ColorScheme,
-  colorMetaData?: typeof colorMetadata,
-  staticSaturation?: number,
+  colorMetaData: typeof colorMetadata,
+  colorSettings: ColorSettings,
 ): Color[] => {
   let interpolationColor = color;
 
@@ -42,8 +42,8 @@ export const generateColorScale = (
     const [H, S, V] = chroma(color).hsv();
     interpolationColor = chroma(
       H,
-      Math.min(S * (staticSaturation ?? 1), 1),
-      Math.min(V * (staticSaturation ?? 1), 1),
+      Math.min(S * (colorSettings?.static.lightSaturation ?? 1), 1),
+      Math.min(V * (colorSettings?.static.lightSaturation ?? 1), 1),
       'hsv',
     ).hex() as CssColor;
   }
@@ -83,11 +83,16 @@ export const generateColorScale = (
 export const generateColorSchemes = (
   color: CssColor,
   colorMetaData?: typeof colorMetadata,
-  staticSaturation?: number,
+  colorSettings?: ColorSettings,
 ): ThemeInfo => ({
-  light: generateColorScale(color, 'light', colorMetaData, staticSaturation),
-  dark: generateColorScale(color, 'dark', colorMetaData, staticSaturation),
-  contrast: generateColorScale(color, 'contrast', colorMetaData, staticSaturation),
+  light: generateColorScale(color, 'light', colorMetaData || colorMetadata, colorSettings || DefaultColorSettings),
+  dark: generateColorScale(color, 'dark', colorMetaData || colorMetadata, colorSettings || DefaultColorSettings),
+  contrast: generateColorScale(
+    color,
+    'contrast',
+    colorMetaData || colorMetadata,
+    colorSettings || DefaultColorSettings,
+  ),
 });
 
 /**

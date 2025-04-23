@@ -28,7 +28,7 @@ export const Sidebar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setSticky(window.scrollY > 135);
+      setSticky(window.scrollY > 265);
     };
 
     window.addEventListener('scroll', handleScroll);

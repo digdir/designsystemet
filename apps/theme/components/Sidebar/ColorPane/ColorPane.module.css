@@ -69,3 +69,8 @@
   color: white;
   padding: 0 16px;
 }
+
+.advancedBtn {
+  margin-top: 16px;
+  margin-left: -12px;
+}

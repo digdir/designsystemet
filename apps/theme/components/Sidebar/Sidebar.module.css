@@ -18,6 +18,12 @@
   }
 }
 
+.sticky {
+  position: fixed;
+  top: 24px;
+  width: 425px;
+}
+
 .tabContent {
   flex: 1;
   min-height: 0;

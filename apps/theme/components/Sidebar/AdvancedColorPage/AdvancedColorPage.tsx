@@ -10,10 +10,12 @@ import classes from './AdvancedColorPage.module.css';
 
 type AdvancedColorPageProps = {
   onBackClicked: () => void;
+  onLightStaticSaturation: (saturation: number) => void;
 };
 
 export const AdvancedColorPage = ({
   onBackClicked,
+  onLightStaticSaturation,
 }: AdvancedColorPageProps) => {
   return (
     <div>
@@ -47,7 +49,13 @@ export const AdvancedColorPage = ({
 
         <Field data-size='sm'>
           <Label>Fargemetning for statiske farger</Label>
-          <Select defaultValue='1' width='full'>
+          <Select
+            defaultValue='1'
+            width='full'
+            onChange={(e) => {
+              onLightStaticSaturation(parseFloat(e.target.value));
+            }}
+          >
             <Select.Option value='0.6'>-40%</Select.Option>
             <Select.Option value='0.7'>-30%</Select.Option>
             <Select.Option value='0.8'>-20%</Select.Option>

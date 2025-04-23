@@ -1,6 +1,7 @@
 import {
   type ColorScheme,
   type CssColor,
+  DefaultColorSettings,
   generateColorSchemes,
 } from '@digdir/designsystemet/color';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -32,7 +33,12 @@ export const useThemeParams = () => {
     if (query.get('main')) {
       const mainColors = createColorsFromQuery(query.get('main') as string);
 
-      if (mainColors) newColors.main = mainColors;
+      if (mainColors) {
+        newColors.main = mainColors.map((color) => ({
+          ...color,
+          settings: DefaultColorSettings,
+        }));
+      }
     }
 
     if (query.get('neutral')) {
@@ -43,6 +49,7 @@ export const useThemeParams = () => {
           {
             name: 'neutral',
             colors: generateColorSchemes('#1E2B3C'),
+            settings: DefaultColorSettings,
           },
         ];
     }
@@ -52,7 +59,12 @@ export const useThemeParams = () => {
         query.get('support') as string,
       );
 
-      if (supportColors) newColors.support = supportColors;
+      if (supportColors) {
+        newColors.support = supportColors.map((color) => ({
+          ...color,
+          settings: DefaultColorSettings,
+        }));
+      }
     }
 
     useThemeStore.setState({

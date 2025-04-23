@@ -84,3 +84,33 @@ type RgbaColor = `rgba(${number}, ${number}, ${number}, ${number})`;
 
 type Percent = `${number}%`;
 type Degrees = `${number}deg`;
+
+export type ColorSettings = {
+  base: {
+    step: number;
+    lightness: number;
+    saturation: number;
+  };
+  static: {
+    lightSaturation: number;
+    darkSurfaceSaturation: number;
+    darkContentSaturation: number;
+    darkStatusSurfaceSaturation: number;
+    darkStatusContentSaturation: number;
+  };
+};
+
+export const DefaultColorSettings = {
+  base: {
+    step: 4,
+    lightness: 1,
+    saturation: 1,
+  },
+  static: {
+    lightSaturation: 1,
+    darkSurfaceSaturation: 1,
+    darkContentSaturation: 1,
+    darkStatusSurfaceSaturation: 1,
+    darkStatusContentSaturation: 1,
+  },
+};

@@ -12,17 +12,18 @@ export const Colors = () => {
   const referenceColorMetadata = useThemeStore(
     (state) => state.referenceColorMetadata,
   );
-  const updateColor = useThemeStore((state) => state.updateColor);
+  const updateColorTheme = useThemeStore((state) => state.updateColorTheme);
 
   useEffect(() => {
     const updatedMainColors = colors.main.map((color, index) => {
       const updatedColors = generateColorSchemes(
         color.colors.light[11].hex,
         colorMetadata,
+        color.settings,
       );
       return {
         name: color.name,
-        staticSaturation: color.staticSaturation,
+        settings: color.settings,
         colors: updatedColors,
       };
     });
@@ -31,10 +32,11 @@ export const Colors = () => {
       const updatedColors = generateColorSchemes(
         color.colors.light[11].hex,
         colorMetadata,
+        color.settings,
       );
       return {
         name: color.name,
-        staticSaturation: color.staticSaturation,
+        settings: color.settings,
         colors: updatedColors,
       };
     });
@@ -43,33 +45,30 @@ export const Colors = () => {
       const updatedColors = generateColorSchemes(
         color.colors.light[11].hex,
         colorMetadata,
+        color.settings,
       );
       return {
         name: color.name,
-        staticSaturation: color.staticSaturation,
+        settings: color.settings,
         colors: updatedColors,
       };
     });
 
-    updatedMainColors.forEach((color, index) => {
-      updateColor(color, index, 'main');
+    updatedMainColors.forEach((colorTheme, index) => {
+      updateColorTheme(colorTheme, index, 'main');
     });
 
-    updatedNeutralColors.forEach((color, index) => {
-      updateColor(color, index, 'neutral');
+    updatedNeutralColors.forEach((colorTheme, index) => {
+      updateColorTheme(colorTheme, index, 'neutral');
     });
 
-    updatedSupportColors.forEach((color, index) => {
-      updateColor(color, index, 'support');
+    updatedSupportColors.forEach((colorTheme, index) => {
+      updateColorTheme(colorTheme, index, 'support');
     });
   }, [colorMetadata]);
 
   const tomato = (color: { name: string; luminance: { light: number } }) => {
     const colorName = color.name as keyof typeof referenceColorMetadata;
-    console.log(
-      referenceColorMetadata[colorName]?.luminance.light,
-      color.luminance.light,
-    );
     if (
       referenceColorMetadata[colorName]?.luminance.light !==
       color.luminance.light

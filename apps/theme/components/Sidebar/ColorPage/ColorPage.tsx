@@ -1,4 +1,7 @@
-import { generateColorSchemes } from '@digdir/designsystemet';
+import {
+  DefaultColorSettings,
+  generateColorSchemes,
+} from '@digdir/designsystemet';
 import { Button, Heading } from '@digdir/designsystemet-react';
 import type { CssColor } from '@digdir/designsystemet/color';
 import { CogIcon, PlusIcon } from '@navikt/aksel-icons';
@@ -7,7 +10,6 @@ import { ColorService, useColor } from 'react-color-palette';
 import { type ColorTheme, useThemeStore } from '../../../store';
 import { ColorInput } from '../../ColorInput/ColorInput';
 import { TokenModal } from '../../TokenModal/TokenModal';
-import { AdvancedColorPage } from '../AdvancedColorPage/AdvancedColorPage';
 import { ColorPane } from '../ColorPane/ColorPane';
 import { LightnessPage } from '../LightnessPage/LightnessPage';
 import classes from './ColorPage.module.css';
@@ -18,7 +20,7 @@ export const ColorPage = () => {
 
   const removeColor = useThemeStore((state) => state.removeColor);
   const addColor = useThemeStore((state) => state.addColor);
-  const updateColor = useThemeStore((state) => state.updateColor);
+  const updateColorTheme = useThemeStore((state) => state.updateColorTheme);
   const colors = useThemeStore((state) => state.colors);
   const [activePanel, setActivePanel] = useState<Pages>('none');
   const [color, setColor] = useColor('#0062ba');
@@ -27,32 +29,8 @@ export const ColorPage = () => {
   const [colorType, setColorType] = useState<ColorType>('main');
   const [initialColor, setInitialColor] = useState('#0062ba');
   const [initialName, setInitialName] = useState(name);
-  const updateStaticSaturation = useThemeStore(
-    (state) => state.updateStaticSaturation,
-  );
   const colorMetadata = useThemeStore((state) => state.colorMetadata);
-
-  const updateExistingColor = (
-    color: string,
-    name: string,
-    index: number,
-    staticSaturation: number,
-  ) => {
-    console.log(staticSaturation);
-    updateColor(
-      {
-        name,
-        colors: generateColorSchemes(
-          color as CssColor,
-          colorMetadata,
-          staticSaturation,
-        ),
-        staticSaturation: staticSaturation.toString(), // Changed to use toString() for consistency
-      },
-      index,
-      colorType,
-    );
-  };
+  const getColorTheme = useThemeStore((state) => state.getColorTheme);
 
   const setupEditState = (
     colorTheme: ColorTheme,
@@ -66,6 +44,7 @@ export const ColorPage = () => {
     setColorType(colorType);
     setInitialColor(colorTheme.colors.light[11].hex);
     setInitialName(colorTheme.name);
+    console.log(colors);
   };
 
   const resetColorState = () => {
@@ -84,8 +63,12 @@ export const ColorPage = () => {
     addColor(
       {
         name: newColorName,
-        colors: generateColorSchemes('#0062ba'),
-        staticSaturation: '0%',
+        colors: generateColorSchemes(
+          '#0062ba',
+          colorMetadata,
+          JSON.parse(JSON.stringify(DefaultColorSettings)),
+        ),
+        settings: JSON.parse(JSON.stringify(DefaultColorSettings)),
       },
       colorType,
     );
@@ -186,57 +169,95 @@ export const ColorPage = () => {
         <LightnessPage onBackClicked={() => setActivePanel('none')} />
       )}
 
-      {activePanel === 'advanced' && (
-        <AdvancedColorPage onBackClicked={() => setActivePanel('edit-color')} />
-      )}
-
       {(activePanel === 'add-color' || activePanel === 'edit-color') && (
-        <>
-          <ColorPane
-            onClose={() => {
-              resetColorState();
-            }}
-            onRemove={() => {
-              removeColor(index, colorType);
-              resetColorState();
-            }}
-            onCancel={() => {
-              resetColorState();
-              updateExistingColor(initialColor, initialName, index, 0);
-            }}
-            onStaticSaturation={(e) => {
-              updateStaticSaturation(e, index, colorType);
-              updateExistingColor(
-                initialColor,
-                initialName,
-                index,
-                parseFloat(e),
-              );
-            }}
-            type={activePanel}
-            color={color}
-            name={name}
-            setColor={(color) => {
-              setColor(color);
-              updateExistingColor(color.hex, name, index, 1);
-            }}
-            setName={(name) => {
-              setName(name);
-              updateExistingColor(color.hex, name, index, 1);
-            }}
-            colorType={colorType}
-          />
-          <Button
-            className={classes.lightBtn}
-            variant='tertiary'
-            data-size='sm'
-            data-color='neutral'
-            onClick={() => setActivePanel('advanced')}
-          >
-            <CogIcon title='tannhjul' fontSize='1.5rem' />
-            Avanserte fargeinnstillinger
-          </Button>
-        </>
+        <ColorPane
+          onClose={() => {
+            resetColorState();
+          }}
+          onRemove={() => {
+            removeColor(index, colorType);
+            resetColorState();
+          }}
+          onCancel={() => {
+            resetColorState();
+            updateColorTheme(
+              {
+                name: initialName,
+                colors: generateColorSchemes(
+                  initialColor as CssColor,
+                  colorMetadata,
+                  JSON.parse(JSON.stringify(DefaultColorSettings)),
+                ),
+                settings: JSON.parse(JSON.stringify(DefaultColorSettings)),
+              },
+              index,
+              colorType,
+            );
+          }}
+          onStaticSaturation={(e) => {
+            const colorTheme = getColorTheme(index, colorType);
+            if (!colorTheme) return;
+
+            colorTheme.settings.static.lightSaturation = e;
+
+            const updatedColors = generateColorSchemes(
+              color.hex as CssColor,
+              colorMetadata,
+              colorTheme.settings,
+            );
+
+            updateColorTheme(
+              {
+                ...colorTheme,
+                colors: updatedColors,
+              },
+              index,
+              colorType,
+            );
+          }}
+          type={activePanel}
+          color={color}
+          name={name}
+          setColor={(color) => {
+            setColor(color);
+            const colorTheme = getColorTheme(index, colorType);
+            if (!colorTheme) return;
+            const updatedColors = generateColorSchemes(
+              color.hex as CssColor,
+              colorMetadata,
+              colorTheme.settings,
+            );
+            updateColorTheme(
+              {
+                name: colorTheme.name,
+                colors: updatedColors,
+                settings: colorTheme.settings,
+              },
+              index,
+              colorType,
+            );
+          }}
+          setName={(name) => {
+            setName(name);
+            const colorTheme = getColorTheme(index, colorType);
+            if (!colorTheme) return;
+            const updatedColors = generateColorSchemes(
+              color.hex as CssColor,
+              colorMetadata,
+              colorTheme.settings,
+            );
+            updateColorTheme(
+              {
+                name: name,
+                colors: updatedColors,
+                settings: colorTheme.settings,
+              },
+              index,
+              colorType,
+            );
+          }}
+          colorType={colorType}
+        />
       )}
 
       {activePanel === 'none' && (

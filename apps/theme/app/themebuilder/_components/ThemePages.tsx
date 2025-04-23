@@ -3,6 +3,7 @@
 import cl from 'clsx/lite';
 import { useEffect, useRef } from 'react';
 import { ColorContrasts, ColorPreview, ColorTokens } from '../../../components';
+import { ColorDetail } from '../../../components/ColorDetail/ColorDetail';
 import { Colors } from '../../../components/Colors/Colors';
 import { OverviewComponents } from '../../../components/OverviewComponents/OverviewComponents';
 import { useThemeStore } from '../../../store';
@@ -32,6 +33,7 @@ export const ThemePages = () => {
         );
       }
     }
+    console.log(colors);
   }, []);
 
   useEffect(() => {
@@ -91,6 +93,14 @@ export const ThemePages = () => {
           hidden={!(themeTab === 'colorsystem')}
         >
           <ColorTokens />
+        </div>
+
+        <div
+          className={classes.panel}
+          data-color-scheme={colorScheme}
+          hidden={!(themeTab === 'colorsystem')}
+        >
+          <ColorDetail />
         </div>
 
         <div

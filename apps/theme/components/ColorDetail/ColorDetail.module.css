@@ -1,0 +1,25 @@
+.page {
+  padding: 24px;
+}
+
+.container {
+  display: flex;
+  gap: 24px;
+}
+
+.left {
+  width: 66%;
+}
+
+.right {
+  width: 34%;
+}
+
+.cards {
+  display: flex;
+  gap: 24px;
+}
+
+.header {
+  margin-bottom: 32px;
+}

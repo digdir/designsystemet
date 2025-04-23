@@ -1,5 +1,7 @@
 import {
   type ColorScheme,
+  type ColorSettings,
+  DefaultColorSettings,
   type ThemeInfo,
   colorMetadata,
   generateColorSchemes,
@@ -9,8 +11,8 @@ import { subscribeWithSelector } from 'zustand/middleware';
 
 export type ColorTheme = {
   name: string;
-  staticSaturation: string;
   colors: ThemeInfo;
+  settings: ColorSettings;
 };
 
 export type BaseBorderRadius = number;
@@ -37,12 +39,16 @@ type ColorStore = {
     neutral: ColorTheme[];
     support: ColorTheme[];
   };
+  getColorTheme: (
+    index: number,
+    type: 'main' | 'neutral' | 'support',
+  ) => ColorTheme | undefined;
   addColor: (
     newColor: ColorTheme,
     type: 'main' | 'neutral' | 'support',
   ) => void;
-  updateColor: (
-    updatedColor: ColorTheme,
+  updateColorTheme: (
+    updatedTheme: ColorTheme,
     index: number,
     type: 'main' | 'neutral' | 'support',
   ) => void;
@@ -61,11 +67,6 @@ type ColorStore = {
       | 'typography'
       | 'radius'
       | 'contrast',
-  ) => void;
-  updateStaticSaturation: (
-    saturation: string,
-    index: number,
-    type: 'main' | 'neutral' | 'support',
   ) => void;
 };
 
@@ -90,6 +91,10 @@ export const useThemeStore = create(
           },
         },
       })),
+    getColorTheme: (index, type): ColorTheme | undefined => {
+      const colors = useThemeStore.getState().colors[type];
+      return colors[index];
+    },
     activePage: 'colors',
     setActivePage: (page) => set({ activePage: page }),
     baseBorderRadius: 4,
@@ -98,32 +103,52 @@ export const useThemeStore = create(
       main: [
         {
           name: 'primary',
-          colors: generateColorSchemes('#0062BA'),
-          staticSaturation: '1',
+          colors: generateColorSchemes(
+            '#0062BA',
+            colorMetadata,
+            JSON.parse(JSON.stringify(DefaultColorSettings)),
+          ),
+          settings: JSON.parse(JSON.stringify(DefaultColorSettings)),
         },
         {
           name: 'accent',
-          colors: generateColorSchemes('#1E98F5'),
-          staticSaturation: '1',
+          colors: generateColorSchemes(
+            '#1E98F5',
+            colorMetadata,
+            JSON.parse(JSON.stringify(DefaultColorSettings)),
+          ),
+          settings: JSON.parse(JSON.stringify(DefaultColorSettings)),
         },
       ],
       neutral: [
         {
           name: 'neutral',
-          colors: generateColorSchemes('#1E2B3C'),
-          staticSaturation: '1',
+          colors: generateColorSchemes(
+            '#1E2B3C',
+            colorMetadata,
+            JSON.parse(JSON.stringify(DefaultColorSettings)),
+          ),
+          settings: JSON.parse(JSON.stringify(DefaultColorSettings)),
         },
       ],
       support: [
         {
           name: 'extra1',
-          colors: generateColorSchemes('#F45F63'),
-          staticSaturation: '1',
+          colors: generateColorSchemes(
+            '#F45F63',
+            colorMetadata,
+            JSON.parse(JSON.stringify(DefaultColorSettings)),
+          ),
+          settings: JSON.parse(JSON.stringify(DefaultColorSettings)),
         },
         {
           name: 'extra2',
-          colors: generateColorSchemes('#E5AA20'),
-          staticSaturation: '1',
+          colors: generateColorSchemes(
+            '#E5AA20',
+            colorMetadata,
+            JSON.parse(JSON.stringify(DefaultColorSettings)),
+          ),
+          settings: JSON.parse(JSON.stringify(DefaultColorSettings)),
         },
       ],
     },
@@ -134,10 +159,10 @@ export const useThemeStore = create(
         const updatedColors = state.colors[type].concat(newColor);
         return { colors: { ...state.colors, [type]: updatedColors } };
       }),
-    updateColor: (updatedColor, index, type) =>
+    updateColorTheme: (updatedColorTheme, index, type) =>
       set((state) => {
         const updatedColors = state.colors[type].map((color, i) =>
-          i === index ? updatedColor : color,
+          i === index ? updatedColorTheme : color,
         );
         return { colors: { ...state.colors, [type]: updatedColors } };
       }),
@@ -151,16 +176,5 @@ export const useThemeStore = create(
       }),
     setColorScheme: (colorScheme) => set({ colorScheme }),
     setBaseBorderRadius: (radius) => set({ baseBorderRadius: radius }),
-    updateStaticSaturation: (
-      saturation: string,
-      index: number,
-      type: 'main' | 'neutral' | 'support',
-    ) =>
-      set((state) => {
-        const updatedColors = state.colors[type].map((color, i) =>
-          i === index ? { ...color, staticSaturation: saturation } : color,
-        );
-        return { colors: { ...state.colors, [type]: updatedColors } };
-      }),
   })),
 );
