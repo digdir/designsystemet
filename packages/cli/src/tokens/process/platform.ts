@@ -2,8 +2,7 @@ import type { ThemeObject } from '@tokens-studio/types';
 import chalk from 'chalk';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
-import type { File } from '../format.js';
-import type { TokenSet } from '../types.js';
+import type { OutputFile, TokenSet } from '../types.js';
 import { type BuildConfig, type ThemePermutation, colorCategories } from '../types.js';
 import { configs, getConfigsForThemeDimensions } from './configs.js';
 import { type ProcessedThemeObject, processThemeObject } from './utils/getMultidimensionalThemes.js';
@@ -45,7 +44,7 @@ export type ProcessReturn = ProcessedBuildConfigs<BuildResult[]>;
 
 type BuildResult = {
   permutation: ThemePermutation;
-  formatted: File[];
+  formatted: OutputFile[];
 };
 
 const initResult: BuildResult = {
@@ -195,7 +194,7 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
 
             const result: BuildResult = {
               permutation,
-              formatted: (await sdExtended.formatPlatform(platform, sdOptions)) as File[],
+              formatted: (await sdExtended.formatPlatform(platform, sdOptions)) as OutputFile[],
             };
 
             return Promise.resolve(result);
@@ -223,7 +222,7 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
   processedBuilds.types = [
     {
       ...initResult,
-      formatted: [{ output: reactColorTypes, destination: colorsFileName }] as unknown as File[],
+      formatted: [{ output: reactColorTypes, destination: colorsFileName }] as unknown as OutputFile[],
     },
   ];
 

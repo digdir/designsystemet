@@ -4,15 +4,10 @@ import chalk from 'chalk';
 import { createTokens } from './create.js';
 import { generate$Themes } from './create/generators/$themes.js';
 import { type FormatOptions, type ProcessReturn, processPlatform } from './process/platform.js';
-import type { Theme } from './types.js';
-
-export type File = {
-  output: string;
-  destination: string | undefined;
-};
+import type { OutputFile, Theme } from './types.js';
 
 export const formatTokens = async (options: Omit<FormatOptions, 'process'>) => {
-  const processedBuilds = await processPlatform<File>({
+  const processedBuilds = await processPlatform<OutputFile>({
     process: 'format',
     ...options,
   });
@@ -50,7 +45,7 @@ export const formatThemeCSS = async (themeConfig: Theme) => {
 };
 
 export const createThemeCSSFiles = (processedBuilds: ProcessReturn) => {
-  const groupedByTheme: Record<string, File[]> = {};
+  const groupedByTheme: Record<string, OutputFile[]> = {};
 
   for (const [_, buildResults] of Object.entries(R.dissoc('types', processedBuilds))) {
     for (const buildResult of buildResults) {
@@ -73,7 +68,7 @@ export const createThemeCSSFiles = (processedBuilds: ProcessReturn) => {
     'color/',
   ];
 
-  const sortByDefinedOrder = R.sortBy<File>((file) => {
+  const sortByDefinedOrder = R.sortBy<OutputFile>((file) => {
     const filePath = file.destination || '';
     const sortIndex = sortOrder.findIndex((sortElement) => {
       if (sortElement.endsWith('/')) {
@@ -104,8 +99,8 @@ order may change due to nondeterminism.`.trim(),
 @layer ds.reset, ds.theme, ds.base, ds.utilities, ds.components;
 \n`;
 
-  const sortAlphabetically = R.sort<File>(R.ascend((x) => x.destination || ''));
-  const pickOutputs = R.map<File, string>(R.view(R.lensProp('output')));
+  const sortAlphabetically = R.sort<OutputFile>(R.ascend((x) => x.destination || ''));
+  const pickOutputs = R.map<OutputFile, string>(R.view(R.lensProp('output')));
 
   const themeCSSFile = R.pipe(
     sortAlphabetically,
@@ -115,7 +110,7 @@ order may change due to nondeterminism.`.trim(),
     (content) => header + content,
   );
 
-  const themeCSSFiles: File[] = Object.entries(groupedByTheme).map(([theme, files]) => ({
+  const themeCSSFiles: OutputFile[] = Object.entries(groupedByTheme).map(([theme, files]) => ({
     destination: `${theme}.css`,
     output: themeCSSFile(files),
   }));
