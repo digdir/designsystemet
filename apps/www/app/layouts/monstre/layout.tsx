@@ -35,11 +35,19 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
       title: string;
       url: string;
     }[];
-  } = {
-    Ferdig: [],
-    'Under arbeid': [],
-    Kommende: [],
-  };
+  } = {};
+
+  if (lang === 'no') {
+    cats.Ferdig = [];
+    cats['Under arbeid'] = [];
+    cats.Kommende = [];
+  }
+
+  if (lang === 'en') {
+    cats.Completed = [];
+    cats['Under construction'] = [];
+    cats.Coming = [];
+  }
 
   /* Map over files with mdx parser to get title */
   for (const file of mdxFiles) {
