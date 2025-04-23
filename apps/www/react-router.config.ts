@@ -106,7 +106,7 @@ const config: Config = {
     const contentPaths = getContentPathsWithLanguages();
     return ['/nb/komponenter', ...contentPaths];
   },
-  serverBundles: async (args) => {
+  /* serverBundles: async (args) => {
     for (const route of args.branch) {
       if (route.id.includes('monstre')) {
         route.file = `routes/monstre/${route.id}.tsx`;
@@ -120,9 +120,13 @@ const config: Config = {
         route.file = `routes/bloggen/${route.id}.tsx`;
         return `bloggen`;
       }
+      if (route.id.includes('components')) {
+        route.file = `routes/components/${route.id}.tsx`;
+        return `components`;
+      }
     }
     return 'root';
-  },
+  }, */
   presets: [vercelPreset()],
   buildEnd: async ({ buildManifest: rrBuild }) => {
     const manifestPath = join(
