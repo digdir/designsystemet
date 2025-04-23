@@ -32,19 +32,19 @@ export const generateMetadata = ({
       content: 'https://designsystemet.no',
     },
     {
-      name: 'twitter:title',
+      property: 'twitter:title',
       content: title,
     },
     {
-      name: 'twitter:description',
+      property: 'twitter:description',
       content: description,
     },
     {
-      name: 'twitter:card',
+      property: 'twitter:card',
       content: 'summary_large_image',
     },
     {
-      name: 'twitter:image',
+      property: 'twitter:image',
       content: image,
     },
   ];

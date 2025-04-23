@@ -5,19 +5,18 @@ import {
   statSync,
   writeFileSync,
 } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { join } from 'node:path';
+import { cwd } from 'node:process';
 import type { Config } from '@react-router/dev/config';
 import { vercelPreset } from '@vercel/react-router/vite';
 import { normalizePath } from 'vite';
 
 // Ensure we always have a valid dirname, even in Vercel's environment
-const dirname =
-  import.meta.dirname ||
-  (typeof __dirname !== 'undefined' ? __dirname : resolve('.'));
+const dirname = cwd();
 
 // Function to get all content paths taking into account the language structure
 const getContentPathsWithLanguages = (): string[] => {
-  const contentBasePath = join(dirname, 'app/content');
+  const contentBasePath = join(dirname, './app/content');
   const paths: string[] = [];
   const supportedLanguages = ['nb', 'en']; // Adjust as needed
 
@@ -104,6 +103,8 @@ const config: Config = {
       '/nb',
       '/en',
       '/nb/grunnleggende',
+      '/nb/bloggen',
+      '/nb/monstre',
       ...getContentPathsWithLanguages(),
     ];
   },

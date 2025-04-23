@@ -1,10 +1,8 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { join } from 'node:path';
+import { cwd } from 'node:process';
 
-// Use resolve to ensure we have an absolute path even if import.meta.dirname is undefined
-const dirname =
-  import.meta.dirname ||
-  (typeof __dirname !== 'undefined' ? __dirname : resolve('.'));
+const dirname = cwd();
 
 const safeReadDir = (path: string): string[] => {
   try {
@@ -28,7 +26,7 @@ export const getFilesFromContentDir = (
   path: string,
   currentRelativePath = '',
 ) => {
-  const basePath = join(dirname, '../../app/content');
+  const basePath = join(dirname, './app/content');
   const currentPath = join(basePath, path, currentRelativePath);
 
   try {
@@ -66,7 +64,7 @@ export const getFilesFromContentDir = (
 };
 
 export const getFileFromContentDir = (path: string) => {
-  const basePath = join(dirname, '../../app/content');
+  const basePath = join(dirname, './app/content');
 
   try {
     return safeReadFile(join(basePath, path));

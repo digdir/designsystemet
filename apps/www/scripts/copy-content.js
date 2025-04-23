@@ -45,6 +45,7 @@ const copyDirectory = (src, dest) => {
 
 const contentPath = join(dirname, 'app/content');
 const distPath = join(dirname, 'dist/content');
+const clientPath = join(dirname, 'dist/client');
 
 try {
   if (!existsSync(distPath)) {
@@ -52,6 +53,16 @@ try {
   }
 
   copyDirectory(contentPath, distPath);
+} catch (error) {
+  console.error(`Error copying content directory:`, error);
+}
+
+try {
+  if (!existsSync(clientPath)) {
+    mkdirSync(clientPath, { recursive: true });
+  }
+
+  copyDirectory(contentPath, clientPath);
 } catch (error) {
   console.error(`Error copying content directory:`, error);
 }
