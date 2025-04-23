@@ -1,7 +1,7 @@
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext, useEffect, useRef, useState } from 'react';
 
-import { useMergeRefs } from '@floating-ui/react';
+import { useMergeRefs } from '../../utilities/hooks';
 import { Context } from './Tabs';
 
 export type TabsPanelProps = {

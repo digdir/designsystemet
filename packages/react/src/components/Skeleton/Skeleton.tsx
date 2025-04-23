@@ -1,7 +1,7 @@
-import { useMergeRefs } from '@floating-ui/react';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { type HTMLAttributes, forwardRef } from 'react';
+import { useMergeRefs } from '../../utilities/hooks';
 
 import { useSynchronizedAnimation } from '../../utilities';
 

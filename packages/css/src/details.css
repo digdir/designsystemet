@@ -62,6 +62,7 @@
     @composes ds-focus--inset from './base.css';
 
     &::before {
+      all: unset;
       background: currentcolor;
       border-radius: var(--ds-border-radius-md);
       content: '';
