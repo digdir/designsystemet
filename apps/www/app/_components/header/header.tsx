@@ -9,7 +9,7 @@ import {
 import cl from 'clsx/lite';
 import { useEffect, useRef, useState } from 'react';
 
-import { Link, useLocation } from 'react-router';
+import { Link, useLocation, useNavigate, useParams } from 'react-router';
 import { DsLogo } from '../logos/designsystemet';
 import classes from './header.module.css';
 import { FigmaLogo } from './logos/figma-logo';
@@ -57,11 +57,14 @@ const Header = ({
   transparentBackground = false,
   logoLink = '/',
 }: HeaderProps) => {
+  const pathname = useLocation().pathname;
+  const { lang } = useParams();
+  const navigate = useNavigate();
+
   const [open, setOpen] = useState(false);
   const [isHamburger, setIsHamburger] = useState(false);
   const menuRef = useRef<HTMLUListElement>(null);
   const headerRef = useRef<HTMLElement>(null);
-  const pathname = useLocation().pathname;
 
   const [theme, setTheme] = useState('light');
 
@@ -193,8 +196,8 @@ const Header = ({
               <Button
                 aria-label={`Bytt til ${theme === 'light' ? 'mørk' : 'lys'} modus`}
                 variant='tertiary'
-                icon={true}
                 data-color='neutral'
+                icon={true}
                 onClick={() => {
                   handleThemeChange(theme === 'light' ? 'dark' : 'light');
                 }}
@@ -208,6 +211,26 @@ const Header = ({
               </Button>
             </Tooltip>
           )}
+          <Button
+            variant='tertiary'
+            data-color='neutral'
+            className={classes.toggleButton}
+            onClick={() => {
+              const pathWihtoutLang = pathname.split('/').slice(2).join('/');
+              console.log({
+                pathname,
+                pathWihtoutLang,
+                lang,
+              });
+              if (lang === 'no') {
+                navigate(`/en/${pathWihtoutLang}`);
+              } else {
+                navigate(`/no/${pathWihtoutLang}`);
+              }
+            }}
+          >
+            {lang}
+          </Button>
         </nav>
       </div>
     </header>
