@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
-import { createPropertyFormatter, fileHeader } from 'style-dictionary/utils';
+import { createPropertyFormatter } from 'style-dictionary/utils';
 import { inlineTokens, isDigit, pathStartsWithOneOf } from '../../../utils.js';
 
 const isNumericBorderRadiusToken = (t: TransformedToken) => t.path[0] === 'border-radius' && isDigit(t.path[1]);
@@ -65,8 +65,6 @@ export const semantic: Format = {
     const { outputReferences, usesDtcg } = options;
     const { selector, layer } = platform;
 
-    const header = await fileHeader({ file });
-
     const format = createPropertyFormatter({
       outputReferences,
       dictionary,
@@ -85,6 +83,6 @@ export const semantic: Format = {
     const content = `{\n${formattedTokens.join('\n')}\n}\n`;
     const body = R.isNotNil(layer) ? `@layer ${layer} {\n${selector} ${content}\n}\n` : `${selector} ${content}\n`;
 
-    return header + body;
+    return body;
   },
 };

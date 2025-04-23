@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
-import { createPropertyFormatter, fileHeader } from 'style-dictionary/utils';
+import { createPropertyFormatter } from 'style-dictionary/utils';
 
 import { colorCategories } from '../../../types.js';
 import { isColorCategoryToken, isGlobalColorToken, isSemanticToken } from '../../../utils.js';
@@ -20,8 +20,6 @@ export const colorScheme: Format = {
     const { selector, colorScheme, layer } = platform;
 
     const colorScheme_ = colorScheme as string;
-
-    const header = await fileHeader({ file });
 
     const format = createPropertyFormatter({
       outputReferences,
@@ -54,7 +52,7 @@ export const colorScheme: Format = {
       ? `@layer ${layer} {\n${selector} ${content} ${autoSelectorContent}\n}\n`
       : `${selector} ${content} ${autoSelectorContent}\n`;
 
-    return header + body;
+    return body;
   },
 };
 
@@ -63,8 +61,6 @@ export const colorCategory: Format = {
   format: async ({ dictionary, file, options, platform }) => {
     const { outputReferences, usesDtcg } = options;
     const { selector, layer } = platform;
-
-    const header = await fileHeader({ file });
 
     const format = R.compose(
       createPropertyFormatter({
@@ -89,6 +85,6 @@ export const colorCategory: Format = {
     const content = `{\n${formattedTokens}\n}\n`;
     const body = R.isNotNil(layer) ? `@layer ${layer} {\n${selector} ${content}\n}\n` : `${selector} ${content}\n`;
 
-    return header + body;
+    return body;
   },
 };

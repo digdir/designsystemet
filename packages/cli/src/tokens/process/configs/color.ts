@@ -5,7 +5,7 @@ import { isColorCategoryToken, isSemanticColorToken, typeEquals } from '../../ut
 import { formats } from '../formats/css.js';
 import { buildOptions } from '../platform.js';
 
-import { type GetStyleDictionaryConfig, dsTransformers, fileHeader, prefix } from './shared.js';
+import { type GetStyleDictionaryConfig, dsTransformers, prefix } from './shared.js';
 
 export const colorSchemeVariables: GetStyleDictionaryConfig = ({ 'color-scheme': colorScheme = 'light', theme }) => {
   const selector = `${colorScheme === 'light' ? ':root, ' : ''}[data-color-scheme="${colorScheme}"]`;
@@ -32,7 +32,6 @@ export const colorSchemeVariables: GetStyleDictionaryConfig = ({ 'color-scheme':
           },
         ],
         options: {
-          fileHeader,
           outputReferences: false,
         },
       },
@@ -84,7 +83,6 @@ export const colorCategoryVariables =
             },
           ],
           options: {
-            fileHeader,
             outputReferences: true,
           },
         },

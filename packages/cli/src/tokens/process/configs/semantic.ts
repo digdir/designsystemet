@@ -5,7 +5,7 @@ import { outputReferencesFilter } from 'style-dictionary/utils';
 import { isDigit, pathStartsWithOneOf, typeEquals } from '../../utils.js';
 import { formats } from '../formats/css.js';
 
-import { type GetStyleDictionaryConfig, basePxFontSize, dsTransformers, fileHeader, prefix } from './shared.js';
+import { type GetStyleDictionaryConfig, basePxFontSize, dsTransformers, prefix } from './shared.js';
 
 export const semanticVariables: GetStyleDictionaryConfig = ({ theme }) => {
   const selector = `:root`;
@@ -40,7 +40,6 @@ export const semanticVariables: GetStyleDictionaryConfig = ({ theme }) => {
           },
         ],
         options: {
-          fileHeader,
           outputReferences: (token, options) => {
             const include = pathStartsWithOneOf(['border-radius'], token);
             const isWantedSize = pathStartsWithOneOf(['size', '_size'], token) && isDigit(token.path[1]);
