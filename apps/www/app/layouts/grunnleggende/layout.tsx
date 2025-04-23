@@ -32,12 +32,21 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
       color: 'red' | 'blue' | 'yellow';
       description: string;
     }[];
-  } = {
-    Introduksjon: [],
-    Designelementer: [],
-    'For designere': [],
-    'For utviklere': [],
-  };
+  } = {};
+
+  if (lang === 'no') {
+    cats.Introduksjon = [];
+    cats.Designelementer = [];
+    cats['For designere'] = [];
+    cats['For utviklere'] = [];
+  }
+
+  if (lang === 'en') {
+    cats.Introduction = [];
+    cats['Design elements'] = [];
+    cats['For designers'] = [];
+    cats['For developers'] = [];
+  }
 
   /* Map over files with mdx parser to get title */
   for (const file of mdxFiles) {
