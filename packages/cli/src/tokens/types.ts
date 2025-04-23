@@ -59,3 +59,8 @@ export type BuildConfig = {
 };
 
 export type SDConfigForThemePermutation = { permutation: ThemePermutation; config: SDConfig };
+
+export type OutputFile = {
+  output: string;
+  destination: string | undefined;
+};
