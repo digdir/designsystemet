@@ -6,8 +6,8 @@ import type { HTMLAttributes } from 'react';
 import { useEffect, useState } from 'react';
 import type { TransformedToken as Token } from 'style-dictionary';
 
-import * as tokensDark from '../../../tokens/dark';
-import * as tokensLight from '../../../tokens/light';
+/* import * as tokensDark from '../../../tokens/dark';
+import * as tokensLight from '../../../tokens/light'; */
 import { TokenColor } from '../token-color/token-color';
 import { TokenFontSize } from '../token-font-size/token-font-size';
 import { TokenShadow } from '../token-shadow/token-shadow';
@@ -17,6 +17,9 @@ import type { HexColor } from '@digdir/designsystemet/color';
 import { capitalizeString } from '~/_utils/string-helpers';
 import { TokenBorderRadius } from '../token-border-radius/token-border-radius';
 import classes from './token-list.module.css';
+
+const tokensDark = {};
+const tokensLight = {};
 
 type TokenListProps = {
   type: 'color' | 'typography' | 'shadow' | 'dimension';
@@ -201,6 +204,7 @@ const TokenList = ({
     setCardColumns(type === 'color' ? 3 : 2);
   }, [type]);
 
+  /* @ts-ignore */
   const brandTypeTokens = tokens[brand][type] as unknown as Token[];
 
   const sections = Array.from(
