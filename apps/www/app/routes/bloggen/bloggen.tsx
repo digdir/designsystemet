@@ -3,7 +3,7 @@ import { bundleMDX } from 'mdx-bundler';
 import BlogCard from '~/_components/blog-card/blog-card';
 import { getFileFromContentDir, getFilesFromContentDir } from '~/_utils/files';
 import { generateMetadata } from '~/_utils/metadata';
-import type { Route } from './+types';
+import type { Route } from './+types/bloggen';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   if (!lang) {
