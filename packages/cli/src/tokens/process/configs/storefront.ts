@@ -4,7 +4,7 @@ import { outputReferencesFilter } from 'style-dictionary/utils';
 import { isDigit, pathStartsWithOneOf, typeEquals } from '../../utils.js';
 import { jsTokens } from '../formats/js-tokens.js';
 
-import { type GetStyleDictionaryConfig, basePxFontSize, dsTransformers, fileHeader, prefix } from './shared.js';
+import { type GetStyleDictionaryConfig, basePxFontSize, dsTransformers, prefix } from './shared.js';
 
 export const typescriptTokens: GetStyleDictionaryConfig = ({ 'color-scheme': colorScheme, theme }) => {
   return {
@@ -34,7 +34,6 @@ export const typescriptTokens: GetStyleDictionaryConfig = ({ 'color-scheme': col
           },
         ],
         options: {
-          fileHeader,
           outputReferences: (token, options) => {
             const include = pathStartsWithOneOf(['border-radius'], token);
             const isWantedSize = pathStartsWithOneOf(['size', '_size'], token) && isDigit(token.path[1]);

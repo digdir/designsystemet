@@ -6,8 +6,6 @@ export type GetStyleDictionaryConfig = (
   permutation: ThemePermutation,
 ) => StyleDictionaryConfig | { config: StyleDictionaryConfig; permutationOverrides?: Partial<ThemePermutation> }[];
 
-export const fileHeader = () => [`These files are generated from design tokens defined using Token Studio`];
-
 export const prefix = 'ds';
 export const basePxFontSize = 16;
 

@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 import type { Format } from 'style-dictionary/types';
-import { createPropertyFormatter, fileHeader } from 'style-dictionary/utils';
+import { createPropertyFormatter } from 'style-dictionary/utils';
 
 // Predicate to filter tokens with .path array that includes both typography and fontFamily
 const typographyFontFamilyPredicate = R.allPass([
@@ -13,8 +13,6 @@ export const typography: Format = {
   format: async ({ dictionary, file, options, platform }) => {
     const { outputReferences, usesDtcg } = options;
     const { selector, layer } = platform;
-
-    const header = await fileHeader({ file });
 
     const format = createPropertyFormatter({
       outputReferences,
@@ -30,6 +28,6 @@ export const typography: Format = {
     const content = selector ? `${selector} {\n${formattedTokens}\n}` : formattedTokens;
     const body = R.isNotNil(layer) ? `@layer ${layer} {\n${content}\n}` : content;
 
-    return header + body;
+    return body;
   },
 };
