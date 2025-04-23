@@ -133,7 +133,15 @@ const config: Config = {
     );
 
     /* read file contents */
-    const newBuildResult: any = {};
+    const newBuildResult: {
+      // biome-ignore lint/suspicious/noExplicitAny: Won't bother with type since vercel might change it
+      buildManifest?: { serverBundles?: any; routes?: any };
+      viteConfig?: { ssr?: { noExternal?: string[] } };
+      reactRouterConfig?: typeof rrBuild & {
+        appDirectory?: string;
+        buildDirectory?: string;
+      };
+    } = {};
     try {
       const fileContents = readFileSync(manifestPath, 'utf-8');
       newBuildResult.buildManifest = JSON.parse(fileContents).buildManifest;
@@ -149,8 +157,9 @@ const config: Config = {
       for (const bundle of Object.values(
         newBuildResult.buildManifest.serverBundles,
       )) {
-        bundle.config = bundle.config || {};
-        (bundle as { config: { runtime: string } }).config.runtime = 'nodejs';
+        const typedBundle = bundle as { config?: { runtime?: string } };
+        typedBundle.config = typedBundle.config || {};
+        typedBundle.config.runtime = 'nodejs';
       }
     }
 
@@ -158,12 +167,20 @@ const config: Config = {
     if (newBuildResult.buildManifest?.routes) {
       // Use Object.values to get an array of the routes objects
       for (const route of Object.values(newBuildResult.buildManifest.routes)) {
-        route.config = route.config || {};
+        const typedRoute = route as { config?: { runtime?: string } };
+        typedRoute.config = typedRoute.config || {};
         (route as { config: { runtime: string } }).config.runtime = 'nodejs';
       }
     }
 
-    newBuildResult.reactRouterConfig = rrBuild;
+    if (!rrBuild) {
+      console.error(
+        'No react-router build result found. Skipping Vercel config update.',
+      );
+      return;
+    }
+
+    newBuildResult.reactRouterConfig = rrBuild || {};
     newBuildResult.reactRouterConfig.appDirectory = normalizePath(
       join(dirname, 'app'),
     );
