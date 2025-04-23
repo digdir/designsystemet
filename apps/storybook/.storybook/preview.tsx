@@ -155,9 +155,10 @@ const preview: Preview = {
       defaultValue: 'light',
       toolbar: {
         title: 'Theme',
+        icon: 'contrast',
         items: [
-          { title: '☀️ Light', value: 'light' },
-          { title: '🌙 Dark', value: 'dark' },
+          { title: 'Light', value: 'light' },
+          { title: 'Dark', value: 'dark' },
         ],
         dynamicTitle: true,
       },
