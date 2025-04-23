@@ -1379,7 +1379,7 @@ __metadata:
     "@types/react": "npm:^19.1.0"
     "@types/react-dom": "npm:^19.1.1"
     "@u-elements/u-datalist": "npm:^0.1.5"
-    "@u-elements/u-details": "npm:^0.1.0"
+    "@u-elements/u-details": "npm:^0.1.1"
     "@u-elements/u-tags": "npm:^0.1.4"
     clsx: "npm:^2.1.1"
     copyfiles: "npm:^2.4.1"
@@ -4521,10 +4521,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@u-elements/u-details@npm:^0.1.0":
-  version: 0.1.0
-  resolution: "@u-elements/u-details@npm:0.1.0"
-  checksum: 10/f0d8dea8d0d694b9719bfdc32e3858697184eb99f1ca481f71ac06cff612a5d65ba3695680559b57362e9690041f04351d2cd73a4bc27660eea7f30864958234
+"@u-elements/u-details@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "@u-elements/u-details@npm:0.1.1"
+  checksum: 10/7034ef96e46daa1cd6ceb159f395c60c071ead5ec7d46c042ced87217a633244e6bef164594b0d0588cf7c113938a15ebaf62d50dbcfe14f690f855dba8d5a1b
   languageName: node
   linkType: hard
 
