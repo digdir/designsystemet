@@ -69,7 +69,11 @@ const getContentPathsWithLanguages = (): string[] => {
                 processLanguageFolder(entryPath, entryRelativePath);
               } else if (entry.endsWith('.mdx')) {
                 // For content files, add the route (removing .mdx extension)
-                const routePath = `/${lang}/${contentFolder}/${entryRelativePath.replace(/\.mdx$/, '')}`;
+                const routePath =
+                  `/${lang}/${contentFolder}/${entryRelativePath.replace(/\.mdx$/, '')}`.replace(
+                    '\\',
+                    '/',
+                  );
                 paths.push(routePath);
               }
             }
@@ -99,14 +103,8 @@ const config: Config = {
   ssr: true,
   buildDirectory: 'dist',
   prerender: async () => {
-    return [
-      '/nb',
-      '/en',
-      '/nb/grunnleggende',
-      '/nb/bloggen',
-      '/nb/monstre',
-      ...getContentPathsWithLanguages(),
-    ];
+    const contentPaths = getContentPathsWithLanguages();
+    return ['/nb/komponenter', ...contentPaths];
   },
   serverBundles: async (args) => {
     for (const route of args.branch) {
