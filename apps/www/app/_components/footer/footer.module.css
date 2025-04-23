@@ -4,9 +4,20 @@
 }
 
 .container {
+  --grid-gap: var(--ds-size-5);
+  --page-spacing-top: var(--ds-size-7);
+  --page-spacing-bottom: var(--ds-size-7);
+  --grid-padding: clamp(1rem, calc(0.27rem + 3.64vw), 3rem);
+
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
   gap: var(--ds-size-10);
+  width: 100%;
+  margin: 0 auto;
+  padding-inline: var(--grid-padding);
+  min-height: 100%;
+  z-index: 1;
+  max-width: 1300px;
 }
 
 .title {

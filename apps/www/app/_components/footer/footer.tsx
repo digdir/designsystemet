@@ -1,8 +1,6 @@
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { type ReactNode, forwardRef } from 'react';
-
-import { ContentContainer } from '../content-container/content-container';
 import { RRLink } from '../link';
 import { Bronnoysund } from '../logos/bronnoysund';
 import { Digdir } from '../logos/digdir';
@@ -53,7 +51,7 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
       {...rest}
     >
       <div className={classes.top}>
-        <ContentContainer className={classes.container}>
+        <div className={classes.container}>
           <div>
             <Heading data-size='xs' level={2} className={classes.title}>
               Lages på tvers av offentlige etater:
@@ -91,14 +89,14 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
             </Heading>
             {LinkList(rightLinks)}
           </div>
-        </ContentContainer>
+        </div>
       </div>
       <div className={classes.bottom}>
-        <ContentContainer>
+        <div>
           <Paragraph data-size='sm'>
             © {getCurrentYear()} Designsystemet
           </Paragraph>
-        </ContentContainer>
+        </div>
       </div>
     </footer>
   );
