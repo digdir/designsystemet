@@ -32,9 +32,13 @@ const getContentPathsWithLanguages = (): string[] => {
 
       // Add index routes for sections that have specific index handling
       if (
-        ['monstre', 'komponenter', 'bloggen', 'grunnleggende'].includes(
-          contentFolder,
-        )
+        [
+          'monstre',
+          'komponenter',
+          'bloggen',
+          'grunnleggende',
+          'god-praksis',
+        ].includes(contentFolder)
       ) {
         for (const lang of supportedLanguages) {
           paths.push(`/${lang}/${contentFolder}`);
