@@ -37,7 +37,7 @@
     "rollup": "^4.39.0",
     "typescript": "^5.8.2",
     "vite": "^6.2.5",
-    "vite-plugin-generate-file": "^0.2.0",
+    "vite-plugin-generate-file": "^0.3.0",
     "vite-plugin-react-rich-svg": "^1.2.0",
     "vite-plugin-singlefile": "^2.2.0"
   }

@@ -7527,7 +7527,7 @@ __metadata:
     rollup: "npm:^4.39.0"
     typescript: "npm:^5.8.2"
     vite: "npm:^6.2.5"
-    vite-plugin-generate-file: "npm:^0.2.0"
+    vite-plugin-generate-file: "npm:^0.3.0"
     vite-plugin-react-rich-svg: "npm:^1.2.0"
     vite-plugin-singlefile: "npm:^2.2.0"
   languageName: unknown
@@ -14878,15 +14878,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-plugin-generate-file@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "vite-plugin-generate-file@npm:0.2.0"
+"vite-plugin-generate-file@npm:^0.3.0":
+  version: 0.3.1
+  resolution: "vite-plugin-generate-file@npm:0.3.1"
   dependencies:
     ejs: "npm:^3.1.9"
     js-yaml: "npm:^4.1.0"
     mime-types: "npm:^2.1.35"
     picocolors: "npm:^1.0.0"
-  checksum: 10/b94c4b41a3042f7b765be7ef7b7d71f76a86ac11f05762d5889e58588f6f7d92e1ef64cafb54e50bd18ab9d28c4b84e33947549d6d495b5d31ddb2c557f24e42
+  checksum: 10/ee1d89bf30b126a9e989cef86369a5f73dd4ee8e7ea6b2bcebf1b2316743db664e95421f1fc5b1e6a3b711407c9a681db4f434848ad43507ad7998b59506a24c
   languageName: node
   linkType: hard
 
