@@ -38,6 +38,8 @@ export const loader = ({ params }: Route.LoaderArgs) => {
   if (params.lang === undefined) {
     return redirect('/nb');
   }
+
+  return { lang: params.lang };
 };
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -66,6 +68,8 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let message = 'Oops!';
   let details = 'An unexpected error occurred.';
   let stack: string | undefined;
+
+  console.log(error);
 
   if (isRouteErrorResponse(error)) {
     message = error.status === 404 ? '404' : 'Error';

@@ -1,0 +1,5 @@
+.bar {
+  height: 36px;
+  width: 72px;
+  background-color: var(--ds-color-accent-base-default);
+}

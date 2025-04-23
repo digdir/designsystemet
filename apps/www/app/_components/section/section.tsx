@@ -30,11 +30,15 @@ const Section = ({
           )}
           <div className={classes.separator}>
             <div className={classes.separatorContainer}>
-              <img src='img/emblem.svg' alt='' />
+              <img src='/img/emblem.svg' alt='' />
             </div>
           </div>
           {detail && (
-            <img src='img/diamond-logo.svg' alt='' className={classes.detail} />
+            <img
+              src='/img/diamond-logo.svg'
+              alt=''
+              className={classes.detail}
+            />
           )}
         </div>
         <div className={classes.content}>{children}</div>

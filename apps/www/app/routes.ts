@@ -9,10 +9,12 @@ import {
 export default [
   layout('./layouts/root/layout.tsx', [
     ...prefix('/:lang', [
-      index('routes/home/home.tsx'),
+      index('routes/home/home.tsx', {
+        id: 'home',
+      }),
       ...prefix('/monstre', [
         layout('./layouts/monstre/layout.tsx', [
-          route('', 'routes/monstre/index.tsx', {
+          route('', 'routes/monstre/monstre.tsx', {
             id: 'monstre-index',
           }),
           route('/:file', 'routes/monstre/page.tsx', {
@@ -22,7 +24,7 @@ export default [
       ]),
       ...prefix('/bloggen', [
         layout('./layouts/bloggen/layout.tsx', [
-          route('/', 'routes/bloggen/index.tsx'),
+          route('/', 'routes/bloggen/bloggen.tsx'),
         ]),
         layout('./layouts/bloggen/page.tsx', [
           route('/:file', 'routes/bloggen/page.tsx'),
@@ -30,7 +32,7 @@ export default [
       ]),
       ...prefix('/grunnleggende', [
         layout('./layouts/grunnleggende/layout.tsx', [
-          route('/', 'routes/grunnleggende/index.tsx', {
+          route('/', 'routes/grunnleggende/grunnleggende.tsx', {
             id: 'grunnleggende-index',
           }),
           route('/*', 'routes/grunnleggende/page.tsx', {

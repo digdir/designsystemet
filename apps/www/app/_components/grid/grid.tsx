@@ -1,6 +1,6 @@
 import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
-import classes from './Grid.module.css';
+import classes from './grid.module.css';
 
 export type GridProps = {
   children: ReactNode;
