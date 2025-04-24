@@ -66,6 +66,12 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
       description: result.frontmatter.description || '',
     });
   }
+  /* Sort articles by date */
+  for (const cat in cats) {
+    cats[cat].sort((a, b) => {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    });
+  }
 
   return {
     lang,
