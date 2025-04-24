@@ -1,8 +1,8 @@
 import { join } from 'node:path';
-import { Heading, /* Link, */ Paragraph } from '@digdir/designsystemet-react';
+import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
-//import { ArrowLeftIcon } from '@navikt/aksel-icons';
-//import { Link as RouterLink } from 'react-router';
+import { ArrowLeftIcon } from '@navikt/aksel-icons';
+import { Link as RouterLink } from 'react-router';
 import { formatDateNorwegian } from '~/_utils/date';
 import { getFileFromContentDir } from '~/_utils/files';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
@@ -43,13 +43,12 @@ export default function GodPraksis({
       <div className={classes.header}>
         <div className={classes.container}>
           <div className={classes.headerContent}>
-            {/* TODO: url to the god-praksis route */}
-            {/* <Link asChild className={classes.backBtn} data-color='neutral'>
-              <RouterLink to={'/' + data.backUrl}>
+            <Link asChild className={classes.backBtn} data-color='neutral'>
+              <RouterLink to={'../..'} relative='path'>
                 <ArrowLeftIcon title='Tilbake' fontSize={28} />
                 God praksis
               </RouterLink>
-            </Link> */}
+            </Link>
             <Paragraph data-size='lg' variant='short' asChild>
               <div className={classes.meta}>
                 <span>{author && <span>{author}</span>}</span>
