@@ -30,7 +30,7 @@ export default function Monstre() {
                 maxWidth: '65ch',
               }}
             >
-              {descriptions[key as keyof typeof descriptions] || 'Beskrivelse'}
+              {descriptions[key as keyof typeof descriptions]}
             </Paragraph>
             <Grid>
               {value.map((item) => {

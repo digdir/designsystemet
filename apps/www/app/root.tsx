@@ -36,15 +36,19 @@ export const meta = () => {
 
 export const loader = ({ params }: Route.LoaderArgs) => {
   if (params.lang === undefined) {
-    return redirect('/nb');
+    return redirect('/no');
+  }
+
+  if (params.lang !== 'no' && params.lang !== 'en') {
+    return redirect('/no');
   }
 
   return { lang: params.lang };
 };
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export default function App({ loaderData: { lang } }: Route.ComponentProps) {
   return (
-    <html lang='en' data-color-scheme='auto'>
+    <html lang={lang} data-color-scheme='auto'>
       <head>
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
@@ -52,16 +56,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <Outlet />
         <ScrollRestoration />
         <Scripts />
       </body>
     </html>
   );
-}
-
-export default function App() {
-  return <Outlet />;
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

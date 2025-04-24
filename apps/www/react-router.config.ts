@@ -18,7 +18,7 @@ const dirname = cwd();
 const getContentPathsWithLanguages = (): string[] => {
   const contentBasePath = join(dirname, './app/content');
   const paths: string[] = [];
-  const supportedLanguages = ['nb', 'en']; // Adjust as needed
+  const supportedLanguages = ['no', 'en']; // Adjust as needed
 
   try {
     // First, get all top-level content folders (e.g., monstre, bloggen, etc.)
@@ -108,7 +108,7 @@ const config: Config = {
   buildDirectory: 'dist',
   prerender: async () => {
     const contentPaths = getContentPathsWithLanguages();
-    return ['/nb/komponenter', ...contentPaths];
+    return ['/no/komponenter', ...contentPaths];
   },
   /* serverBundles: async (args) => {
     for (const route of args.branch) {
