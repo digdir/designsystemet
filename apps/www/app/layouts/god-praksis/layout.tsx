@@ -102,14 +102,12 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
               bidra til å lage bedre helhetlige tjenester samles her.
             </BannerIngress>
           </Banner>
-        </>
-      ) : null}
-      {!isGodPraksisPage ? (
-        <div className={classes.content}>
-          <div className={classes.container}>
-            <Outlet />
+          <div className={classes.content}>
+            <div className={classes.container}>
+              <Outlet />
+            </div>
           </div>
-        </div>
+        </>
       ) : (
         <Outlet />
       )}
