@@ -31,7 +31,7 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
     name: params.file,
     code: result.code,
     frontmatter: result.frontmatter,
-    currentLang: params.lang,
+    lang: params.lang,
   };
 };
 
@@ -55,13 +55,10 @@ export default function Bloggen({
       imageCaption,
     },
     code,
-    currentLang,
+    lang,
   },
 }: Route.ComponentProps) {
-  const { t, i18n } = useTranslation();
-
-  // Set locale based on current language
-  const locale = currentLang === 'no' ? 'nb-NO' : 'en';
+  const { t } = useTranslation();
 
   return (
     <div className={classes.main}>
@@ -71,7 +68,7 @@ export default function Bloggen({
         </Heading>
         <Paragraph variant='long'>{description}</Paragraph>
         <Paragraph data-size='sm' className={classes.meta}>
-          <span>{formatDate(date, locale)}</span>
+          <span>{formatDate(date, lang)}</span>
           <span aria-hidden className={classes.metaSquare} />
           <span>{author}</span>
         </Paragraph>
