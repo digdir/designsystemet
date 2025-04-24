@@ -21,10 +21,18 @@ export default function GodPraksis() {
 
   return (
     <>
-      {Object.entries(cats).map(([key, value]) => {
+      {Object.entries(cats).map(([key, value], index) => {
         return (
           <Fragment key={key}>
-            <Heading data-size='md'>{key}</Heading>
+            <Heading
+              data-size='md'
+              style={{
+                marginTop: index === 0 ? '0' : 'var(--ds-size-10)',
+                marginBottom: `var(--ds-size-3)`,
+              }}
+            >
+              {key}
+            </Heading>
             <Paragraph
               style={{
                 maxWidth: '65ch',
