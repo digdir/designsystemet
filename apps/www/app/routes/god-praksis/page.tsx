@@ -39,7 +39,7 @@ export default function GodPraksis({
   },
 }: Route.ComponentProps) {
   return (
-    <main id='main'>
+    <>
       <div className={classes.header}>
         <div className={classes.container}>
           <div className={classes.headerContent}>
@@ -68,6 +68,6 @@ export default function GodPraksis({
           <MDXComponents code={code} />
         </div>
       </div>
-    </main>
+    </>
   );
 }
