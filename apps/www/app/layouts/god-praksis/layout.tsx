@@ -91,22 +91,28 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
   return (
     <>
       {!isGodPraksisPage ? (
-        <Banner color='yellow'>
-          <BannerIcon>
-            <HandShakeHeartIcon />
-          </BannerIcon>
-          <BannerHeading level={1}>God praksis</BannerHeading>
-          <BannerIngress>
-            Her deler vi god praksis med hverandre. Råd og veiledning som kan
-            bidra til å lage bedre helhetlige tjenester samles her.
-          </BannerIngress>
-        </Banner>
+        <>
+          <Banner color='yellow'>
+            <BannerIcon>
+              <HandShakeHeartIcon />
+            </BannerIcon>
+            <BannerHeading level={1}>God praksis</BannerHeading>
+            <BannerIngress>
+              Her deler vi god praksis med hverandre. Råd og veiledning som kan
+              bidra til å lage bedre helhetlige tjenester samles her.
+            </BannerIngress>
+          </Banner>
+        </>
       ) : null}
-      <ContentContainer data-color='neutral'>
+      {!isGodPraksisPage ? (
         <div className={classes.content}>
-          <Outlet />
+          <div className={classes.container}>
+            <Outlet />
+          </div>
         </div>
-      </ContentContainer>
+      ) : (
+        <Outlet />
+      )}
     </>
   );
 }

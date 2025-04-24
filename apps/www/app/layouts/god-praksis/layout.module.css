@@ -1,6 +1,9 @@
 .container {
-  margin-top: var(--page-spacing-top);
-  margin-bottom: var(--page-spacing-bottom);
+  max-width: var(--grid-max-width, 1500px);
+  margin: 0 auto;
+  width: 100%;
+  padding-left: var(--grid-padding, 16px);
+  padding-right: var(--grid-padding, 16px);
 }
 
 .header {
@@ -46,26 +49,11 @@
 }
 
 .content {
-  max-width: 780px;
-  margin: 0 auto;
-}
+  padding-bottom: var(--ds-size-12);
+  padding-top: var(--ds-size-12);
 
-@media (max-width: 576px) {
-  .content {
-    padding: 0;
-  }
-
-  .title {
-    text-align: left;
-  }
-
-  .meta {
-    flex-direction: column;
-    text-align: left;
-    gap: var(--ds-size-1);
-  }
-
-  .separator {
-    display: none;
+  [data-color-scheme='dark'] &,
+  [data-color-scheme='auto'] & {
+    background-color: var(--ds-color-neutral-background-default);
   }
 }
