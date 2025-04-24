@@ -57,7 +57,7 @@ const Header = ({
   transparentBackground = false,
   logoLink = '/',
 }: HeaderProps) => {
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
   const { lang } = useParams();
   const navigate = useNavigate();
 
@@ -217,11 +217,7 @@ const Header = ({
             className={classes.toggleButton}
             onClick={() => {
               const pathWihtoutLang = pathname.split('/').slice(2).join('/');
-              console.log({
-                pathname,
-                pathWihtoutLang,
-                lang,
-              });
+
               if (lang === 'no') {
                 navigate(`/en/${pathWihtoutLang}`);
               } else {
