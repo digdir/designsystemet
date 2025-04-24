@@ -5311,13 +5311,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"async@npm:^3.2.3":
-  version: 3.2.4
-  resolution: "async@npm:3.2.4"
-  checksum: 10/bebb5dc2258c45b83fa1d3be179ae0eb468e1646a62d443c8d60a45e84041b28fccebe1e2d1f234bfc3dcad44e73dcdbf4ba63d98327c9f6556e3dbd47c2ae8b
-  languageName: node
-  linkType: hard
-
 "asynckit@npm:^0.4.0":
   version: 0.4.0
   resolution: "asynckit@npm:0.4.0"
@@ -5706,7 +5699,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:^4.0.2, chalk@npm:^4.1.0, chalk@npm:^4.1.2":
+"chalk@npm:^4.1.0, chalk@npm:^4.1.2":
   version: 4.1.2
   resolution: "chalk@npm:4.1.2"
   dependencies:
@@ -6836,17 +6829,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ejs@npm:^3.1.9":
-  version: 3.1.10
-  resolution: "ejs@npm:3.1.10"
-  dependencies:
-    jake: "npm:^10.8.5"
-  bin:
-    ejs: bin/cli.js
-  checksum: 10/a9cb7d7cd13b7b1cd0be5c4788e44dd10d92f7285d2f65b942f33e127230c054f99a42db4d99f766d8dbc6c57e94799593ee66a14efd7c8dd70c4812bf6aa384
-  languageName: node
-  linkType: hard
-
 "electron-to-chromium@npm:^1.5.73":
   version: 1.5.84
   resolution: "electron-to-chromium@npm:1.5.84"
@@ -7527,20 +7509,10 @@ __metadata:
     rollup: "npm:^4.39.0"
     typescript: "npm:^5.8.2"
     vite: "npm:^6.2.5"
-    vite-plugin-generate-file: "npm:^0.2.0"
     vite-plugin-react-rich-svg: "npm:^1.2.0"
     vite-plugin-singlefile: "npm:^2.2.0"
   languageName: unknown
   linkType: soft
-
-"filelist@npm:^1.0.1":
-  version: 1.0.4
-  resolution: "filelist@npm:1.0.4"
-  dependencies:
-    minimatch: "npm:^5.0.1"
-  checksum: 10/4b436fa944b1508b95cffdfc8176ae6947b92825483639ef1b9a89b27d82f3f8aa22b21eed471993f92709b431670d4e015b39c087d435a61e1bb04564cf51de
-  languageName: node
-  linkType: hard
 
 "fill-range@npm:^7.1.1":
   version: 7.1.1
@@ -8891,20 +8863,6 @@ __metadata:
     "@pkgjs/parseargs":
       optional: true
   checksum: 10/b20dc0df0dbb2903e4d540ae68308ec7d1dd60944b130e867e218c98b5d77481d65ea734b6c81c812d481500076e8b3fdfccfb38fc81cb1acf165e853da3e26c
-  languageName: node
-  linkType: hard
-
-"jake@npm:^10.8.5":
-  version: 10.8.5
-  resolution: "jake@npm:10.8.5"
-  dependencies:
-    async: "npm:^3.2.3"
-    chalk: "npm:^4.0.2"
-    filelist: "npm:^1.0.1"
-    minimatch: "npm:^3.0.4"
-  bin:
-    jake: ./bin/cli.js
-  checksum: 10/6eaf1cd7fe78b92fa52d7258fb0f16f9bef856a18dc6e2f4da8e610264d293210d6e6e09a89d4e4ce1fc83d07c82963bd00bdcbb88e7a09aa62cc4cdf6e3bdf2
   languageName: node
   linkType: hard
 
@@ -10318,7 +10276,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mime-types@npm:^2.1.12, mime-types@npm:^2.1.27, mime-types@npm:^2.1.35, mime-types@npm:~2.1.24, mime-types@npm:~2.1.34":
+"mime-types@npm:^2.1.12, mime-types@npm:^2.1.27, mime-types@npm:~2.1.24, mime-types@npm:~2.1.34":
   version: 2.1.35
   resolution: "mime-types@npm:2.1.35"
   dependencies:
@@ -14875,18 +14833,6 @@ __metadata:
   bin:
     vite-node: vite-node.mjs
   checksum: 10/8243cbc2d83f7862d7882c982e85f3e45a654908de380591edd419338c4c75a7991bd22d12b290ad892b9ea102419e81fde92c87296ec7554f89d2ff2034d5e3
-  languageName: node
-  linkType: hard
-
-"vite-plugin-generate-file@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "vite-plugin-generate-file@npm:0.2.0"
-  dependencies:
-    ejs: "npm:^3.1.9"
-    js-yaml: "npm:^4.1.0"
-    mime-types: "npm:^2.1.35"
-    picocolors: "npm:^1.0.0"
-  checksum: 10/b94c4b41a3042f7b765be7ef7b7d71f76a86ac11f05762d5889e58588f6f7d92e1ef64cafb54e50bd18ab9d28c4b84e33947549d6d495b5d31ddb2c557f24e42
   languageName: node
   linkType: hard
 
