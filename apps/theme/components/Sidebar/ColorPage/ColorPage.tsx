@@ -270,7 +270,7 @@ export const ColorPage = () => {
             onClick={() => setActivePanel('lightness')}
           >
             <CogIcon title='tannhjul' fontSize='1.5rem' />
-            Overstyr lightness verdier
+            Globale fargeinnstillinger
           </Button>
           <div className={classes.bottom} data-size='sm'>
             <TokenModal />

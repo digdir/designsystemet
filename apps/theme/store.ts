@@ -3,6 +3,7 @@ import {
   type ColorSettings,
   DefaultColorSettings,
   type ThemeInfo,
+  baseColors,
   colorMetadata,
   generateColorSchemes,
 } from '@digdir/designsystemet/color';
@@ -38,6 +39,7 @@ type ColorStore = {
     main: ColorTheme[];
     neutral: ColorTheme[];
     support: ColorTheme[];
+    status: ColorTheme[];
   };
   getColorTheme: (
     index: number,
@@ -151,6 +153,44 @@ export const useThemeStore = create(
           settings: JSON.parse(JSON.stringify(DefaultColorSettings)),
         },
       ],
+      status: [
+        {
+          name: 'info',
+          colors: generateColorSchemes(
+            baseColors.blue,
+            colorMetadata,
+            JSON.parse(JSON.stringify(DefaultColorSettings)),
+          ),
+          settings: JSON.parse(JSON.stringify(DefaultColorSettings)),
+        },
+        {
+          name: 'success',
+          colors: generateColorSchemes(
+            baseColors.green,
+            colorMetadata,
+            JSON.parse(JSON.stringify(DefaultColorSettings)),
+          ),
+          settings: JSON.parse(JSON.stringify(DefaultColorSettings)),
+        },
+        {
+          name: 'warning',
+          colors: generateColorSchemes(
+            baseColors.orange,
+            colorMetadata,
+            JSON.parse(JSON.stringify(DefaultColorSettings)),
+          ),
+          settings: JSON.parse(JSON.stringify(DefaultColorSettings)),
+        },
+        {
+          name: 'error',
+          colors: generateColorSchemes(
+            baseColors.red,
+            colorMetadata,
+            JSON.parse(JSON.stringify(DefaultColorSettings)),
+          ),
+          settings: JSON.parse(JSON.stringify(DefaultColorSettings)),
+        },
+      ],
     },
     themeTab: 'overview',
     setThemeTab: (tab) => set({ themeTab: tab }),
@@ -167,7 +207,7 @@ export const useThemeStore = create(
         return { colors: { ...state.colors, [type]: updatedColors } };
       }),
     resetColors: () => {
-      set({ colors: { main: [], neutral: [], support: [] } });
+      set({ colors: { main: [], neutral: [], support: [], status: [] } });
     },
     removeColor: (index, type) =>
       set((state) => {

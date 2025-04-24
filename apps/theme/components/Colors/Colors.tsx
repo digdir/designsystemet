@@ -1,7 +1,8 @@
-import { Divider } from '@digdir/designsystemet-react';
+import { Button, Divider } from '@digdir/designsystemet-react';
 import { generateColorSchemes } from '@digdir/designsystemet/color';
+import { ChevronDownIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useThemeStore } from '../../store';
 import { Scale } from '../Scale/Scale';
 import classes from './Colors.module.css';
@@ -13,6 +14,7 @@ export const Colors = () => {
     (state) => state.referenceColorMetadata,
   );
   const updateColorTheme = useThemeStore((state) => state.updateColorTheme);
+  const [showStatus, setShowStatus] = useState(false);
 
   useEffect(() => {
     const updatedMainColors = colors.main.map((color, index) => {
@@ -107,17 +109,6 @@ export const Colors = () => {
 
   return (
     <div className={classes.rows}>
-      {/* <div className={classes.luminance}>
-        <Heading>Luminans</Heading>
-        <Paragraph>fssf</Paragraph>
-        <div className={classes.inputs}>
-          {Object.values(colorMetadata)
-            .filter((color) => !color.name.includes('base'))
-            .map((color, index) => (
-              <Input key={index} color={color} />
-            ))}
-        </div>
-      </div> */}
       {colors.main.map((color, index) => (
         <div key={index} className={classes.row}>
           <div className={classes.scaleLabel}>{color.name}</div>
@@ -151,6 +142,29 @@ export const Colors = () => {
           />
         </div>
       ))}
+      <div className={classes.showContainer}>
+        <Button
+          data-size='sm'
+          variant='secondary'
+          data-color='neutral'
+          className={classes.showBtn}
+          onClick={() => setShowStatus(!showStatus)}
+        >
+          {showStatus ? 'Skjul statusfarger' : 'Vis statusfarger'}
+          <ChevronDownIcon title='a11y-title' fontSize='1.5rem' />
+        </Button>
+      </div>
+      {showStatus &&
+        colors.status.map((color, index) => (
+          <div key={index} className={classes.row}>
+            <div className={classes.scaleLabel}>{color.name}</div>
+            <Scale
+              colorScale={color.colors}
+              namespace={color.name}
+              showColorMeta={false}
+            />
+          </div>
+        ))}
     </div>
   );
 };

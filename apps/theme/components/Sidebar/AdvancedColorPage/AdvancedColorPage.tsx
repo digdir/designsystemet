@@ -34,7 +34,7 @@ export const AdvancedColorPage = ({
       </Heading>
 
       <Field data-size='sm'>
-        <Label>Økning base farger</Label>
+        <Label>Stegvis økning av base fargene</Label>
         <Select defaultValue='8' width='full'>
           <Select.Option value='1.1'>4</Select.Option>
           <Select.Option value='1.1'>8</Select.Option>
@@ -48,7 +48,28 @@ export const AdvancedColorPage = ({
         <Heading data-size='2xs'>Light mode</Heading>
 
         <Field data-size='sm'>
-          <Label>Fargemetning for statiske farger</Label>
+          <Label>Fargemetning for Background og Surface</Label>
+          <Select
+            defaultValue='1'
+            width='full'
+            onChange={(e) => {
+              onLightStaticSaturation(parseFloat(e.target.value));
+            }}
+          >
+            <Select.Option value='0.6'>-40%</Select.Option>
+            <Select.Option value='0.7'>-30%</Select.Option>
+            <Select.Option value='0.8'>-20%</Select.Option>
+            <Select.Option value='0.9'>-10%</Select.Option>
+            <Select.Option value='1'>0%</Select.Option>
+            <Select.Option value='1.1'>+10%</Select.Option>
+            <Select.Option value='1.2'>+20%</Select.Option>
+            <Select.Option value='1.3'>+30%</Select.Option>
+            <Select.Option value='1.4'>+40%</Select.Option>
+          </Select>
+        </Field>
+
+        <Field data-size='sm'>
+          <Label>Fargemetning for Border og Text</Label>
           <Select
             defaultValue='1'
             width='full'
@@ -73,13 +94,13 @@ export const AdvancedColorPage = ({
         <Heading data-size='2xs'>Dark mode</Heading>
 
         <Field data-size='sm'>
-          <Label>Desaturering av Background og Surface</Label>
+          <Label>Fargemetning for Background og Surface</Label>
           <Select defaultValue='1' width='full'>
             <Select.Option value='0.6'>-40%</Select.Option>
             <Select.Option value='0.7'>-30%</Select.Option>
             <Select.Option value='0.8'>-20%</Select.Option>
             <Select.Option value='0.9'>-10%</Select.Option>
-            <Select.Option value='1'>-30%</Select.Option>
+            <Select.Option value='1'>0%</Select.Option>
             <Select.Option value='1.1'>+10%</Select.Option>
             <Select.Option value='1.2'>+20%</Select.Option>
             <Select.Option value='1.3'>+30%</Select.Option>
@@ -88,13 +109,13 @@ export const AdvancedColorPage = ({
         </Field>
 
         <Field data-size='sm'>
-          <Label>Desaturering av Border og Text</Label>
+          <Label>Fargemetning for Border og Text</Label>
           <Select defaultValue='1' width='full'>
             <Select.Option value='0.6'>-40%</Select.Option>
             <Select.Option value='0.7'>-30%</Select.Option>
             <Select.Option value='0.8'>-20%</Select.Option>
             <Select.Option value='0.9'>-10%</Select.Option>
-            <Select.Option value='1'>-30%</Select.Option>
+            <Select.Option value='1'>0%</Select.Option>
             <Select.Option value='1.1'>+10%</Select.Option>
             <Select.Option value='1.2'>+20%</Select.Option>
             <Select.Option value='1.3'>+30%</Select.Option>

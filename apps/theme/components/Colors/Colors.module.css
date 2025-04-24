@@ -60,3 +60,15 @@
 .activeInput {
   border: 1px solid red;
 }
+
+.showContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.showBtn {
+  width: auto;
+}
