@@ -100,7 +100,7 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
         <>
           <Banner color='yellow'>
             <BannerIcon>
-              <HandShakeHeartIcon />
+              <HandShakeHeartIcon fontSize={34} />
             </BannerIcon>
             <BannerHeading level={1}>God praksis</BannerHeading>
             <BannerIngress>
