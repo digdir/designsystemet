@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { getFileFromContentDir } from '~/_utils/files';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
+import { generateMetadata } from '~/_utils/metadata';
+import i18n from '~/i18next.server';
 import type { Route } from './+types/monstre';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
@@ -19,18 +21,22 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     join('monstre', `${lang}_index.mdx`),
   );
   const result = await generateFromMdx(fileContent);
+  const t = await i18n.getFixedT(lang);
 
-  return { index: result, lang };
+  return {
+    index: result,
+    lang,
+    metadata: generateMetadata({
+      title: t('patterns.title'),
+      description: t('patterns.description'),
+    }),
+  };
 };
 
-export const meta = () => {
-  // We'll handle translation in the component
-  return [
-    {
-      title: 'patterns.meta.title',
-      description: 'patterns.meta.description',
-    },
-  ];
+export const meta: Route.MetaFunction = ({
+  data: { metadata },
+}: Route.MetaArgs) => {
+  return metadata;
 };
 
 export default function Monstre({

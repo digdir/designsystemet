@@ -4,7 +4,8 @@
  * @param locale - Locale to use for formatting (defaults to 'en' if not provided)
  * @returns Formatted date string in the specified locale
  */
-export const formatDate = (dateString: string, locale = 'en'): string => {
+export const formatDate = (dateString: string, lc = 'no'): string => {
+  const locale = lc === 'no' ? 'nb-NO' : 'en';
   try {
     const date = new Date(dateString);
     return new Intl.DateTimeFormat(locale, {

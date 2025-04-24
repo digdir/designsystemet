@@ -8356,15 +8356,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next-browser-languagedetector@npm:^8.0.5":
-  version: 8.0.5
-  resolution: "i18next-browser-languagedetector@npm:8.0.5"
-  dependencies:
-    "@babel/runtime": "npm:^7.23.2"
-  checksum: 10/536b7ad6faa2dc7bb64294466372119f02299701f70aa6875c846ed147c478df71c07706dd3e49fb7686186c88af4e66942eb083490405244faba2a959273e4b
-  languageName: node
-  linkType: hard
-
 "i18next-fs-backend@npm:^2.6.0":
   version: 2.6.0
   resolution: "i18next-fs-backend@npm:2.6.0"
@@ -15549,7 +15540,6 @@ __metadata:
     "@vercel/react-router": "npm:^1.1.0"
     clsx: "npm:^2.1.1"
     i18next: "npm:^25.0.1"
-    i18next-browser-languagedetector: "npm:^8.0.5"
     i18next-fs-backend: "npm:^2.6.0"
     i18next-http-backend: "npm:^3.0.2"
     isbot: "npm:^5"
