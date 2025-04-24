@@ -1,5 +1,17 @@
 {
   "frontpage": {
-    "heading": "Designsystemet hjelper deg å lage gode digitale tjenester"
+    "heading": "Designsystemet hjelper deg å lage gode digitale tjenester",
+    "for-designers": {
+      "title": "For designere",
+      "description": "Lær hvordan du kommer i gang med designsystemet som designer."
+    },
+    "for-developers": {
+      "title": "For utviklere",
+      "description": "Lær hvordan du kommer i gang med designsystemet som utvikler."
+    },
+    "components": {
+      "title": "Komponenter",
+      "description": "Se oversikten over UI-komponentene som er laget i react."
+    }
   }
 }

@@ -94,8 +94,8 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
             </div>
             <div className={classes.cards}>
               <NavigationCard
-                title='For designere'
-                description='Lær hvordan du kommer i gang med designsystemet som designer.'
+                title={t('frontpage.for-designers.title')}
+                description={t('frontpage.for-designers.description')}
                 color='blue'
                 url='grunnleggende/for-designere/kom-i-gang'
                 icon={<PaletteIcon fontSize={36} aria-hidden='true' />}
@@ -103,8 +103,8 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
               />
 
               <NavigationCard
-                title='For utviklere'
-                description='Lær hvordan du kommer i gang med designsystemet som utvikler.'
+                title={t('frontpage.for-developers.title')}
+                description={t('frontpage.for-developers.description')}
                 color='yellow'
                 url='grunnleggende/for-utviklere/kom-i-gang'
                 icon={<WrenchIcon fontSize={36} aria-hidden='true' />}
@@ -112,8 +112,8 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
               />
 
               <NavigationCard
-                title='Komponenter'
-                description='Se oversikten over UI-komponentene som er laget i react.'
+                title={t('frontpage.components.title')}
+                description={t('frontpage.components.description')}
                 color='red'
                 url='komponenter'
                 icon={<ComponentIcon fontSize={34} aria-hidden='true' />}
