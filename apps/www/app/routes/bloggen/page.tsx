@@ -1,9 +1,10 @@
 import { join } from 'node:path';
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { useTranslation } from 'react-i18next';
 import { Image } from '~/_components/image/image';
 import { RRLink } from '~/_components/link';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
-import { formatDateNorwegian } from '~/_utils/date';
+import { formatDate } from '~/_utils/date';
 import { getFileFromContentDir } from '~/_utils/files';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { generateMetadata } from '~/_utils/metadata';
@@ -30,7 +31,7 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
     name: params.file,
     code: result.code,
     frontmatter: result.frontmatter,
-    currentLang: params.lang,
+    lang: params.lang,
   };
 };
 
@@ -54,8 +55,11 @@ export default function Bloggen({
       imageCaption,
     },
     code,
+    lang,
   },
 }: Route.ComponentProps) {
+  const { t } = useTranslation();
+
   return (
     <div className={classes.main}>
       <div className={classes.intro}>
@@ -64,7 +68,7 @@ export default function Bloggen({
         </Heading>
         <Paragraph variant='long'>{description}</Paragraph>
         <Paragraph data-size='sm' className={classes.meta}>
-          <span>{formatDateNorwegian(date)}</span>
+          <span>{formatDate(date, lang)}</span>
           <span aria-hidden className={classes.metaSquare} />
           <span>{author}</span>
         </Paragraph>
@@ -79,18 +83,17 @@ export default function Bloggen({
         <MDXComponents code={code} />
         <div className={classes.wantToWrite} data-color='brand3'>
           <Heading level={3} data-size='xs'>
-            Ønsker du å skrive for bloggen?
+            {t('blog.write.title')}
           </Heading>
           <Paragraph data-size='sm'>
-            Vi vil gjerne ha historier om hvordan Designsystemet har blitt
-            brukt! Ta kontakt med oss i{' '}
+            {t('blog.write.description')}
             <RRLink to='https://designsystemet.no/slack' target='_blank'>
-              Slack (åpnes i ny fane)
+              {t('blog.write.slack')}
             </RRLink>{' '}
-            eller{' '}
+            {t('blog.write.or')}{' '}
             <RRLink to='mailto:designsystem@digdir.no' target='_blank'>
-              send oss en epost (åpnes i ny fane).
-            </RRLink>{' '}
+              {t('blog.write.email')}
+            </RRLink>
           </Paragraph>
         </div>
       </div>

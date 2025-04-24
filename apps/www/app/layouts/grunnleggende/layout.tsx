@@ -1,5 +1,6 @@
 import { join } from 'node:path';
 import { LayersIcon } from '@navikt/aksel-icons';
+import { useTranslation } from 'react-i18next';
 import { Outlet, isRouteErrorResponse, useMatches } from 'react-router';
 import {
   Banner,
@@ -96,6 +97,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
 
 export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
   const matches = useMatches();
+  const { t } = useTranslation();
 
   /* if we have id grunnleggende-page, hide banner */
   const isGrunnleggendePage = matches.some(
@@ -109,11 +111,8 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
           <BannerIcon>
             <LayersIcon />
           </BannerIcon>
-          <BannerHeading level={1}>Grunnleggende</BannerHeading>
-          <BannerIngress>
-            Lær mer om designsystemet, de grunnleggende designelementene, og
-            hvordan du kommer i gang som designer eller utvikler.
-          </BannerIngress>
+          <BannerHeading level={1}>{t('fundamentals.title')}</BannerHeading>
+          <BannerIngress>{t('fundamentals.description')}</BannerIngress>
         </Banner>
       ) : null}
       <ContentContainer
@@ -122,7 +121,7 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
       >
         <Sidebar
           cats={cats}
-          title='Grunnleggende'
+          title={t('fundamentals.title')}
           className={classes.sidebar}
         />
         <div className={classes.content}>
@@ -134,17 +133,19 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = 'Oops!!!';
-  let details = 'An unexpected error occurred.';
+  const { t } = useTranslation();
+  let message = t('errors.default.title');
+  let details = t('errors.default.details');
   let stack: string | undefined;
 
   console.log(error);
 
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? '404' : 'Error';
+    message =
+      error.status === 404 ? t('errors.404.title') : t('errors.generic.title');
     details =
       error.status === 404
-        ? 'Vi kunne ikke finne siden du leter etter.'
+        ? t('errors.404.details')
         : error.statusText || details;
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;

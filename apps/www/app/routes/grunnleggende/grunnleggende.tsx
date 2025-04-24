@@ -5,19 +5,37 @@ import { useRouteLoaderData } from 'react-router';
 import { Grid } from '~/_components/grid/grid';
 import { NavigationCard } from '~/_components/navigation-card/navigation-card';
 import { generateMetadata } from '~/_utils/metadata';
-import type { Route } from '../../layouts/grunnleggende/+types/layout';
+import i18n from '~/i18next.server';
+import type { Route as LayoutRoute } from '../../layouts/grunnleggende/+types/layout';
+import type { Route } from './+types/grunnleggende';
 
-export const meta = () => {
-  return generateMetadata({
-    title: 'Grunnleggende',
-    description: 'Grunnleggende',
-  });
+export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
+  if (!lang) {
+    throw new Response('Not Found', {
+      status: 404,
+      statusText: 'Not Found',
+    });
+  }
+
+  const t = await i18n.getFixedT(lang);
+
+  return {
+    lang,
+    metadata: generateMetadata({
+      title: t('fundamentals.title'),
+      description: t('fundamentals.description'),
+    }),
+  };
+};
+
+export const meta = ({ data: { metadata } }: Route.MetaArgs) => {
+  return metadata;
 };
 
 export default function Monstre() {
   const { cats, descriptions } = useRouteLoaderData(
     'layouts/grunnleggende/layout',
-  ) as Route.ComponentProps['loaderData'];
+  ) as LayoutRoute.ComponentProps['loaderData'];
 
   return (
     <>

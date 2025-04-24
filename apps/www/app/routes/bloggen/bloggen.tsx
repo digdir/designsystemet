@@ -3,6 +3,7 @@ import { bundleMDX } from 'mdx-bundler';
 import BlogCard from '~/_components/blog-card/blog-card';
 import { getFileFromContentDir, getFilesFromContentDir } from '~/_utils/files';
 import { generateMetadata } from '~/_utils/metadata';
+import i18n from '~/i18next.server';
 import type { Route } from './+types/bloggen';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
@@ -62,14 +63,20 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
 
-  return { lang, posts };
+  const t = await i18n.getFixedT(lang);
+
+  return {
+    lang,
+    posts,
+    metadata: generateMetadata({
+      title: t('blog.title'),
+      description: t('blog.description'),
+    }),
+  };
 };
 
-export const meta = () => {
-  return generateMetadata({
-    title: 'Bloggen',
-    description: 'Les blogginlegg fra kjerneteamet og konsumenter',
-  });
+export const meta = ({ data: { metadata } }: Route.MetaArgs) => {
+  return metadata;
 };
 
 export default function Monstre({

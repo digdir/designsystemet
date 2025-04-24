@@ -1,4 +1,5 @@
 import { ComponentFillIcon } from '@navikt/aksel-icons';
+import { useTranslation } from 'react-i18next';
 import {
   Banner,
   BannerHeading,
@@ -25,17 +26,16 @@ if (IS_NEXT_BRANCH) {
 }
 
 export default function Components() {
+  const { t } = useTranslation();
+
   return (
     <>
       <Banner color='blue'>
         <BannerIcon>
           <ComponentFillIcon />
         </BannerIcon>
-        <BannerHeading level={1}>Komponenter</BannerHeading>
-        <BannerIngress>
-          Designsystemet inneholder grunnleggende komponenter som kan settes
-          sammen på mange ulike måter og i forskjellige mønstre.
-        </BannerIngress>
+        <BannerHeading level={1}>{t('components.title')}</BannerHeading>
+        <BannerIngress>{t('components.description')}</BannerIngress>
       </Banner>
       <ContentContainer className={classes.grid}>
         {sortedData.map((component) => (
