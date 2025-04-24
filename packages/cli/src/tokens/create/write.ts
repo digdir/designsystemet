@@ -49,7 +49,7 @@ export const writeTokens = async (options: WriteTokensOptions) => {
 
   const themes = concatThemeNames(themeObjects);
 
-  console.log(`Themes: ${chalk.blue(themes.join(', '))}`);
+  console.log(`\nThemes: ${chalk.blue(themes.join(', '))}`);
 
   // Create metadata and themes json for Token Studio and build script
   const $themes = await generate$Themes(['dark', 'light'], themes, colors);

@@ -217,7 +217,6 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
 
   const colorsFileName = 'colors.d.ts';
   const reactColorTypes = await createColorTypeDeclaration(customColors);
-  console.log(colorsFileName);
 
   processedBuilds.types = [
     {
