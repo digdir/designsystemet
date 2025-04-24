@@ -1,8 +1,9 @@
 import { join } from 'node:path';
 import { Heading, /* Link, */ Paragraph } from '@digdir/designsystemet-react';
+import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 //import { ArrowLeftIcon } from '@navikt/aksel-icons';
 //import { Link as RouterLink } from 'react-router';
-import { MDXComponents } from '~/_components/mdx-components/mdx-components';
+import { formatDateNorwegian } from '~/_utils/date';
 import { getFileFromContentDir } from '~/_utils/files';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import type { Route } from './+types/page';
@@ -31,7 +32,12 @@ export const meta = ({ data }: Route.MetaArgs) => {
   return [{ title: `${data.frontmatter.title} - Designsystemet` }];
 };
 
-export default function GodPraksis({ loaderData }: Route.ComponentProps) {
+export default function GodPraksis({
+  loaderData: {
+    frontmatter: { title, author, date },
+    code,
+  },
+}: Route.ComponentProps) {
   return (
     <main id='main'>
       <div className={classes.header}>
@@ -46,28 +52,20 @@ export default function GodPraksis({ loaderData }: Route.ComponentProps) {
             </Link> */}
             <Paragraph data-size='lg' variant='short' asChild>
               <div className={classes.meta}>
-                <span>
-                  {loaderData.frontmatter.author && (
-                    <span>{loaderData.frontmatter.author}</span>
-                  )}
-                </span>
+                <span>{author && <span>{author}</span>}</span>
                 <span className={classes.separator}> - </span>
-                <span>
-                  {loaderData.frontmatter.date && (
-                    <div>{loaderData.frontmatter.date}</div>
-                  )}
-                </span>
+                <span>{date && <div>{formatDateNorwegian(date)}</div>}</span>
               </div>
             </Paragraph>
             <Heading level={1} data-size='lg' className={classes.title}>
-              {loaderData.frontmatter.title}
+              {title}
             </Heading>
           </div>
         </div>
       </div>
       <div className={classes.container}>
         <div className={classes.content}>
-          <MDXComponents code={loaderData.code} />
+          <MDXComponents code={code} />
         </div>
       </div>
     </main>

@@ -1,5 +1,6 @@
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import { Fragment } from 'react';
+import { formatDateNorwegian } from '~/_utils/date';
 import { useRouteLoaderData } from 'react-router';
 import { Grid } from '~/_components/grid/grid';
 import { TeaserCard } from '~/_components/teaser-card/teaser-card';
@@ -40,7 +41,7 @@ export default function GodPraksis() {
                     href={item.url}
                     description={item.description}
                     author={item.author}
-                    date={item.date}
+                    date={formatDateNorwegian(item.date)}
                   />
                 );
               })}
