@@ -37,8 +37,6 @@ export default function Monstre({
   loaderData: { index },
 }: Route.ComponentProps) {
   const { t } = useTranslation();
-  // Update document title with translated text
-  document.title = t('patterns.meta.title');
 
   return (
     <>
