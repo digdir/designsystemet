@@ -12,6 +12,9 @@ async function write(files: OutputFile[], outDir: string, dry?: boolean) {
     if (destination) {
       const filePath = path.join(outDir, destination);
       const fileDir = path.dirname(filePath);
+
+      console.log(destination);
+
       await mkdir(fileDir, dry);
       await writeFile(filePath, output, dry);
     }
@@ -19,22 +22,25 @@ async function write(files: OutputFile[], outDir: string, dry?: boolean) {
 }
 
 export const buildTokens = async (options: Omit<BuildOptions, 'process' | '$themes'>) => {
-  const $themes = JSON.parse(await readFile(path.resolve(`${options.tokensDir}/$themes.json`))) as ThemeObject[];
+  const outDir = path.resolve(options.outDir);
+  const tokensDir = path.resolve(options.tokensDir);
+  const $themes = JSON.parse(await readFile(`${tokensDir}/$themes.json`)) as ThemeObject[];
 
-  const resolvedOutDir = path.resolve(options.outDir);
+  console.log(`\n🏗️ Start building tokens in ${chalk.green(tokensDir)}`);
+
   const processedBuilds = await processPlatform<DesignToken>({
     ...options,
-    outDir: resolvedOutDir,
-    tokensDir: path.resolve(options.tokensDir),
+    outDir: outDir,
+    tokensDir: tokensDir,
     process: 'build',
     $themes,
   });
 
   if (options.clean) {
-    await cleanDir(resolvedOutDir, options.dry);
+    await cleanDir(outDir, options.dry);
   }
 
-  console.log(`\nWriting build to ${chalk.green(options.outDir)}`);
+  console.log(`\n💾 Writing build to ${chalk.green(outDir)}`);
 
   // https://github.com/digdir/designsystemet/issues/3434
   // Disabled for now so that we can re-enable it later if needed (under a feature flag)
@@ -46,11 +52,11 @@ export const buildTokens = async (options: Omit<BuildOptions, 'process' | '$them
 
   // Write types (colors.d.ts) to the output directory
   for (const { formatted } of processedBuilds.types) {
-    await write(formatted, resolvedOutDir, options.dry);
+    await write(formatted, outDir, options.dry);
   }
 
   // Write theme CSS files (<theme>.css) to the output directory
-  await write(createThemeCSSFiles(processedBuilds), resolvedOutDir, options.dry);
+  await write(createThemeCSSFiles(processedBuilds), outDir, options.dry);
 
   console.log(`\n✅ Finished building tokens!`);
   return processedBuilds;

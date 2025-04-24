@@ -6,11 +6,11 @@ export default defineConfig({
   sourcemap: false,
   clean: true,
   format: 'esm',
-  bundle: false,
+  bundle: true,
   platform: 'node',
   target: 'esnext',
   loader: {
     '.md': 'copy',
-    '.json': 'copy',
+    '.json': 'file',
   },
 });
