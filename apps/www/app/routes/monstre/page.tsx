@@ -2,8 +2,9 @@ import { join } from 'node:path';
 import { Heading } from '@digdir/designsystemet-react';
 import { ComponentIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
+import { useTranslation } from 'react-i18next';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
-import { formatDateNorwegian } from '~/_utils/date';
+import { formatDate } from '~/_utils/date';
 import { getFileFromContentDir } from '~/_utils/files';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import type { Route } from './+types/page';
@@ -32,6 +33,11 @@ export const meta = ({ params }: Route.MetaArgs) => {
 };
 
 export default function Monstre({ loaderData }: Route.ComponentProps) {
+  const { t, i18n } = useTranslation();
+
+  // Format date based on current language
+  const locale = i18n.language === 'no' ? 'nb-NO' : 'en';
+
   return (
     <>
       <div className={classes.header}>
@@ -41,7 +47,7 @@ export default function Monstre({ loaderData }: Route.ComponentProps) {
           </Heading>
           {loaderData.frontmatter.date && (
             <div className={classes.date}>
-              {formatDateNorwegian(loaderData.frontmatter.date)}
+              {formatDate(loaderData.frontmatter.date, locale)}
             </div>
           )}
         </div>

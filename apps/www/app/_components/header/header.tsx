@@ -7,7 +7,7 @@ import {
 } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { useEffect, useRef, useState } from 'react';
-
+import { useTranslation } from 'react-i18next';
 import { Link, useLocation, useParams } from 'react-router';
 import { DsLogo } from '../logos/designsystemet';
 import classes from './header.module.css';
@@ -58,6 +58,7 @@ const Header = ({
 }: HeaderProps) => {
   const { pathname } = useLocation();
   const { lang } = useParams();
+  const { t } = useTranslation();
 
   const getNewLangPath = () => {
     const pathWithoutLang = pathname.split('/').slice(2).join('/');
@@ -116,7 +117,7 @@ const Header = ({
           <Link
             className={cl(classes.logoLink, 'ds-focus')}
             to={logoLink}
-            aria-label='Designsystem forside'
+            aria-label={t('header.home-link')}
             onClick={() => setOpen(false)}
           >
             <DsLogo className={classes.logo} />
@@ -130,7 +131,7 @@ const Header = ({
               icon={true}
               data-color='neutral'
               aria-expanded={open}
-              aria-label='Meny'
+              aria-label={t('header.menu')}
               className={cl(classes.toggle, 'ds-focus')}
               onClick={() => {
                 setOpen(!open);
@@ -178,7 +179,7 @@ const Header = ({
               <Link
                 to='https://github.com/digdir/designsystemet'
                 className={cl(classes.linkIcon, classes.github, 'ds-focus')}
-                title='Designsystemets GitHub-repositorium'
+                title={t('header.github-title')}
               >
                 <GithubLogo />
               </Link>
@@ -187,7 +188,7 @@ const Header = ({
               <Link
                 to='https://www.figma.com/@designsystemet'
                 className={cl(classes.linkIcon, classes.figma, 'ds-focus')}
-                title='Designsystemets Figma-prosjekt'
+                title={t('header.figma-title')}
               >
                 <FigmaLogo />
               </Link>
@@ -195,11 +196,16 @@ const Header = ({
           </ul>
           {themeSwitcher && (
             <Tooltip
-              content={`Bytt til ${theme === 'light' ? 'mørk' : 'lys'} modus`}
+              content={t('header.theme-toggle', {
+                theme: theme === 'light' ? t('header.dark') : t('header.light'),
+              })}
               placement='bottom'
             >
               <Button
-                aria-label={`Bytt til ${theme === 'light' ? 'mørk' : 'lys'} modus`}
+                aria-label={t('header.theme-toggle-aria', {
+                  theme:
+                    theme === 'light' ? t('header.dark') : t('header.light'),
+                })}
                 variant='tertiary'
                 data-color='neutral'
                 icon={true}

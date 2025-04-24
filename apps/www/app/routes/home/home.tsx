@@ -125,40 +125,40 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
       </div>
 
       <ImageBanner
-        title='En felles digital verktøykasse'
-        description='Designsystemet er en felles verktøykasse med grunnleggende UI-komponenter, retningslinjer og mønstre, som du kan bruke når du utvikler digitale tjenester. Designsystemet bidrar til effektiv produktutvikling og helhetlige brukeropplevelser.'
+        title={t('frontpage.toolbox.title')}
+        description={t('frontpage.toolbox.description')}
         imgSrc='/img/Toolbox.svg'
         headingLevel='h2'
         imgWidth='1195'
         link={{
-          text: 'Les mer om designsystemet',
+          text: t('frontpage.toolbox.link'),
           href: '/grunnleggende/introduksjon/om-designsystemet',
         }}
       />
 
       <ImageBanner
-        title='Tilgjengelige og fleksible komponenter'
-        description='Når vi lager de mest grunnleggende komponentene bare én gang, sikrer vi god kvalitet. Komponenten blir godt testet, og vi ivaretar kravene til tilgjengelighet. Komponentene er laget i Figma og i React. Du kan sette dem sammen på mange ulike måter og i forskjellige mønstre. '
+        title={t('frontpage.components-section.title')}
+        description={t('frontpage.components-section.description')}
         videoSrc='/animations/Page'
         imgPosition='right'
         headingLevel='h2'
         imgWidth='1195'
         fallbackImgSrc='/img/reduced-motion/Page.png'
-        fallbackImgAlt='Designskisse av en mobiltelefon som har komponenter fra designsystemet i seg.'
+        fallbackImgAlt={t('frontpage.components-section.fallbackImgAlt')}
       />
 
       <ImageBanner
-        title='Bruk egne tema'
-        description='Designsystemet støtter ulike identiteter gjennom tema. På denne måten kan alle ta utgangspunkt i samme designsystem, men tilpasse til ulike avsenderidentiteter.'
+        title={t('frontpage.theme-section.title')}
+        description={t('frontpage.theme-section.description')}
         videoSrc='/animations/Theme'
         headingLevel='h2'
         imgWidth='1195'
         fallbackImgSrc='/img/reduced-motion/Theme.png'
-        fallbackImgAlt='Designskisse av en nettside som viser hvordan designsystemet kan tilpasses ulike identiteter.'
+        fallbackImgAlt={t('frontpage.theme-section.fallbackImgAlt')}
       />
 
       <Section
-        title='Siste nytt fra designsystemet'
+        title={t('frontpage.latest-news.title')}
         style={{
           gridTemplateColumns: 'repeat(3, minmax(min(100%, 320px), 1fr))',
         }}
@@ -171,33 +171,33 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
             author={post.author}
             href={`bloggen/${post.url}`}
             image={post.image.src}
-            tagText='Bloggen'
+            tagText={t('blog.tag')}
             tagColor='brand1'
             date={post.date}
           />
         ))}
       </Section>
       <ImageBanner
-        title='Bli med å utvikle designsystemet!'
-        description='Ved å samarbeide om designsystemet kan vi lage mer helhetlige brukeropplevelser på tvers av offentlig sektor. Samtidig sparer vi oss for å gjøre de samme oppgavene flere ganger. Designsystemet  skal være et felles hjem for gjenbrukbare komponenter, god praksis, interaksjonsmønstre, brukerdialog, innsikt og mer. Vil du høre mer eller hjelpe? Ta kontakt med oss!'
+        title={t('frontpage.join-section.title')}
+        description={t('frontpage.join-section.description')}
         imgSrc='/img/Logotest.svg'
         headingLevel='h2'
         imgWidth='small'
         className='ds-logo-image'
         buttons={[
           {
-            text: 'Bli med på Slack',
+            text: t('frontpage.join-section.buttons.slack'),
             href: '/slack',
             prefix: <PersonChatIcon fontSize={24} aria-hidden='true' />,
             variant: 'primary',
           },
           {
-            text: 'Bidra på GitHub',
+            text: t('frontpage.join-section.buttons.github'),
             href: 'https://github.com/digdir/designsystemet',
             prefix: <BranchingIcon fontSize={24} aria-hidden='true' />,
           },
           {
-            text: 'Send en epost',
+            text: t('frontpage.join-section.buttons.email'),
             href: 'mailto:designsystem@digdir.no',
             prefix: <EnvelopeClosedIcon fontSize={24} aria-hidden='true' />,
           },

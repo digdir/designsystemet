@@ -1,4 +1,5 @@
 import { join } from 'node:path';
+import { useTranslation } from 'react-i18next';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { getFileFromContentDir } from '~/_utils/files';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
@@ -23,10 +24,11 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
 };
 
 export const meta = () => {
+  // We'll handle translation in the component
   return [
     {
-      title: 'Mønstre',
-      description: 'Mønstre',
+      title: 'patterns.meta.title',
+      description: 'patterns.meta.description',
     },
   ];
 };
@@ -34,6 +36,10 @@ export const meta = () => {
 export default function Monstre({
   loaderData: { index },
 }: Route.ComponentProps) {
+  const { t } = useTranslation();
+  // Update document title with translated text
+  document.title = t('patterns.meta.title');
+
   return (
     <>
       <MDXComponents code={index.code} />
