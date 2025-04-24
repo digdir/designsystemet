@@ -1,0 +1,38 @@
+---
+title: Design Tokens
+sidebar_title: Design Tokens
+description: Design tokens are reusable values that serve as a connection between all interfaces.
+date: 2023-03-25
+category: Design elements
+color: yellow
+icon: TokenIcon
+---
+
+## What are design tokens
+
+Design Tokens control how components should look in terms of colors, typography, sizes, spacing, shapes, etc. Design tokens ensure that both designers and developers work according to the same rules and guidelines.
+
+Some of the variables are set up to be theme-based, meaning they are based on your brand with the colors and preferences you choose. We are working on a theme builder that will make it easier for you to customize the styles.
+
+Design Tokens are flexible variables that can be used regardless of technology or design tool.
+
+## Design tokens in Figma
+
+We use the Figma plugin "Tokens Studio", as it allows us to manage more styles and properties than Figma itself can.
+
+The plugin aims to be W3C compatible and follows the standard established by the [W3C Design Tokens Community Group](https://github.com/design-tokens/community-group). The token values are therefore not locked to a tool - the JSON file can be moved to other tools if needed.
+
+### Multiple sets and themes
+
+Using variables and tokens makes it possible to have _one_ design system with different identities. We can create a component in Figma only once and style it many times - With a click we can activate another theme that, for example, activates a different color palette or a different set of sizes. By dividing tokens into both sets and themes, we can offer advanced forms of reuse.
+
+<Image
+  src="/img/fargerfigma.gif"
+  alt="Example of color system in Figma"
+  boxShadow={false}
+  caption="The video above shows that when the set for 'Tilsynet' is turned on, both the colors in use in the file are overridden and the styles available in the right margin are replaced."
+/>
+
+### Design tokens for developers
+
+Install the NPM package [@digdir/designsystemet-theme](https://www.npmjs.com/package/@digdir/designsystemet-theme) and follow the description there on the use of tokens. Override as needed.

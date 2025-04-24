@@ -1,0 +1,121 @@
+---
+title: Colors
+description: Information about how to use colors in frontend.
+date: 2024-11-26
+category: For developers
+color: blue
+icon: CodeIcon
+---
+
+This article assumes that you have already defined the colors you will use with the help of the [Theme Builder](/en/grunnleggende/for-designers/custom-theme).
+
+HTML data attributes are used to define the color of a component. The components can use all colors in the theme.
+
+When setting the color on a component, there are two data attributes that can be used:
+- `data-color-scheme` which changes the color mode
+- `data-color` which changes the color
+
+## `data-color-scheme`
+
+This data attribute is used to switch between light, dark, or other color modes. Content that is a child of this data attribute 
+will get the mode specified by the parent. By default, light mode will be used.
+
+```html
+<body>
+  <div>
+    <!-- Content here will have light color mode -->
+  </div>
+
+  <div data-color-scheme="dark">
+    <!-- Content here will have dark color mode -->
+  </div>
+</body>
+```
+
+You can change `data-color-scheme` on all or parts of the page and switch between different color modes as often as you want. For example, the main page can be light, 
+but with a dark footer. You can then set `data-color-scheme="dark"` on the footer.
+
+`data-color-scheme` can be set to `light`, `dark`, or `auto`. `auto` will follow the user's system settings.
+
+## `data-color`
+
+This data attribute is used to change the color of a component. You can use all colors that exist in your theme.
+
+```html
+<div data-color="neutral">
+  <!-- Content here will have neutral color -->
+</div>
+```
+
+Some components can inherit color from the nearest parent element that has `data-color` defined. 
+This means you don't need to use `data-color` on all components in a hierarchy if they should have the same color.
+
+## How components are affected
+
+We divide components into 3 groups for color:
+- Explicit
+- Neutral
+- Cascading
+
+### Explicit
+
+Components used for validation or system alerts follow their own dedicated system colors and do not inherit color from the nearest parent with `data-color` set.
+The dedicated system colors are `success`, `warning`, `danger`, and `info`. 
+
+These are components like:
+- `Alert`
+- `ValidationMessage`
+- `ErrorSummary`
+
+### Neutral
+
+These are components that should always be neutral and are not affected by inherited color or direct `data-color`. These are components like `Modal` and `Tooltip`.
+They always use the `neutral` color.
+
+### Cascading
+
+This group contains the rest of the components and will inherit color from the nearest parent with `data-color` set. 
+
+```html
+<div data-color="neutral">
+  <Chip>
+    This Chip has neutral color.
+  </Chip>
+</div>
+
+<Button data-color="neutral">
+  I have neutral color.
+</Button>
+
+<div data-color="neutral">
+  <Alert>
+    I don't have neutral color.
+  </Alert>
+</div>
+```
+
+## Use `data-color-scheme` and `data-color` together
+
+You can use `data-color-scheme` and `data-color` together to change both the color mode and color of components.
+
+`data-color` sets variables that are reset by `data-color-scheme`. If you change the color mode, you must set `data-color` again.
+
+```html
+<div data-color="neutral">
+  <!-- Content here will have neutral color -->
+</div>
+
+<div data-color="neutral" data-color-scheme="dark">
+  <!-- Content here will have neutral color and dark color mode -->
+</div>
+
+<div data-color="neutral">
+  <div data-color-scheme="dark">
+    <!-- Content here will not have neutral color -->
+  </div>
+</div>
+```
+
+## Brief summary
+
+You change color with `data-color`, but this must be set again if you change the color mode with `data-color-scheme`. Some components inherit color from the nearest parent with `data-color` set.
