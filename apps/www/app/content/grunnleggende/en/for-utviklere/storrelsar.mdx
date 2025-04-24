@@ -1,0 +1,51 @@
+---
+title: Sizes
+description: Information on how to use sizes in frontend.
+date: 2025-01-10
+category: For developers
+color: blue
+icon: CodeIcon
+---
+
+
+HTML data attributes are used to define the size of a component. Components can use all available sizes.
+
+Our `size` variables (`--ds-size-*`) change based on the local font size (formula based on `em`). You can easily change this by setting `data-size` for our recommended sizes, or define your own sizes by setting `font-size` in CSS.
+
+## `data-size`
+
+This data attribute is used to change sizes on all components beneath it.
+All components can be in the sizes `sm`, `md` or `lg`. By default, `md` will be used.
+
+```html
+<body>
+  <div>
+    <!-- Content here will have MD sizes -->
+  </div>
+
+  <div data-size="sm">
+    <!-- Content here will have SM sizes -->
+  </div>
+</body>
+```
+
+Some components support more sizes, such as `xs` and `xl`. These sizes will be specified in the component's documentation,
+and it is recommended to use the sizes that are specified.
+
+## How components are affected
+
+We divide components into 2 groups for sizes:
+
+- Explicit
+- Cascading
+
+### Explicit
+
+Components that will not follow the size of the parent. These components must have `data-size` set directly on them.
+
+These are components like:
+- `Heading`
+
+### Cascading
+
+This group contains the rest of the components, and will inherit size from the nearest parent with `data-size` set.
