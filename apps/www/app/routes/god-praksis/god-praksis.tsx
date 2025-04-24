@@ -1,9 +1,9 @@
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import { Fragment } from 'react';
-import { formatDateNorwegian } from '~/_utils/date';
 import { useRouteLoaderData } from 'react-router';
 import { Grid } from '~/_components/grid/grid';
 import { TeaserCard } from '~/_components/teaser-card/teaser-card';
+import { formatDateNorwegian } from '~/_utils/date';
 import { generateMetadata } from '~/_utils/metadata';
 import type { Route } from '../../layouts/god-praksis/+types/layout';
 

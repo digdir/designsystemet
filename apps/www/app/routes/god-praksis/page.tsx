@@ -1,8 +1,8 @@
 import { join } from 'node:path';
 import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
-import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { ArrowLeftIcon } from '@navikt/aksel-icons';
 import { Link as RouterLink } from 'react-router';
+import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { formatDateNorwegian } from '~/_utils/date';
 import { getFileFromContentDir } from '~/_utils/files';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
