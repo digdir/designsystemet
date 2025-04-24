@@ -9,6 +9,7 @@ import {
   WrenchIcon,
 } from '@navikt/aksel-icons';
 import { bundleMDX } from 'mdx-bundler';
+import { useTranslation } from 'react-i18next';
 import BlogCard from '~/_components/blog-card/blog-card';
 import { ContentContainer } from '~/_components/content-container/content-container';
 import { ImageBanner } from '~/_components/image-banner/image-banner';
@@ -74,9 +75,9 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   return { lang, posts };
 };
 
-export default function Home({
-  loaderData: { posts, lang },
-}: Route.ComponentProps) {
+export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
+  const { t } = useTranslation();
+
   return (
     <>
       <div className={classes.header}>
@@ -88,7 +89,7 @@ export default function Home({
           <ContentContainer className={classes.container}>
             <div className={classes.text}>
               <Heading data-size='lg' level={1}>
-                Designsystemet hjelper deg å lage gode digitale tjenester
+                {t('frontpage.heading')}
               </Heading>
             </div>
             <div className={classes.cards}>

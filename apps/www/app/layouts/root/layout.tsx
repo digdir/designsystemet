@@ -55,6 +55,7 @@ const rightLinks = [
 export default function RootLayout({
   loaderData: { lang },
 }: Route.ComponentProps) {
+  /* useChangeLanguage(lang); */
   const menu = [
     {
       name: 'Grunnleggende',

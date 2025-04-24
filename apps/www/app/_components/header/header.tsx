@@ -1,4 +1,3 @@
-'use client';
 import { Button, Paragraph, Tooltip } from '@digdir/designsystemet-react';
 import {
   MenuHamburgerIcon,
@@ -9,7 +8,7 @@ import {
 import cl from 'clsx/lite';
 import { useEffect, useRef, useState } from 'react';
 
-import { Link, useLocation, useNavigate, useParams } from 'react-router';
+import { Link, useLocation, useParams } from 'react-router';
 import { DsLogo } from '../logos/designsystemet';
 import classes from './header.module.css';
 import { FigmaLogo } from './logos/figma-logo';
@@ -59,7 +58,13 @@ const Header = ({
 }: HeaderProps) => {
   const { pathname } = useLocation();
   const { lang } = useParams();
-  const navigate = useNavigate();
+
+  const getNewLangPath = () => {
+    const pathWithoutLang = pathname.split('/').slice(2).join('/');
+    return lang === 'no' ? `/en/${pathWithoutLang}` : `/no/${pathWithoutLang}`;
+  };
+
+  const langPath = getNewLangPath();
 
   const [open, setOpen] = useState(false);
   const [isHamburger, setIsHamburger] = useState(false);
@@ -215,17 +220,9 @@ const Header = ({
             variant='tertiary'
             data-color='neutral'
             className={classes.toggleButton}
-            onClick={() => {
-              const pathWihtoutLang = pathname.split('/').slice(2).join('/');
-
-              if (lang === 'no') {
-                navigate(`/en/${pathWihtoutLang}`);
-              } else {
-                navigate(`/no/${pathWihtoutLang}`);
-              }
-            }}
+            asChild
           >
-            {lang}
+            <Link to={langPath}>{lang}</Link>
           </Button>
         </nav>
       </div>
