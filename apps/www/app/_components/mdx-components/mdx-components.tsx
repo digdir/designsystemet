@@ -14,6 +14,7 @@ import {
 } from '@digdir/designsystemet-react';
 import { getMDXComponent } from 'mdx-bundler/dist/client';
 import { type JSX, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link as RRLink } from 'react-router';
 import { Contributors } from '~/_components/contributors/contributors';
 import { Image } from '~/_components/image/image';
@@ -85,6 +86,7 @@ export const MDXComponents = ({
   };
   code?: string;
 }) => {
+  const { t } = useTranslation();
   const Component = useMemo(() => {
     if (!code) return null;
     return getMDXComponent(code);
@@ -101,7 +103,7 @@ export const MDXComponents = ({
           }}
         />
       ) : (
-        'Kunne ikkje laste innhold'
+        t('mdx.error.loading')
       )}
     </>
   );

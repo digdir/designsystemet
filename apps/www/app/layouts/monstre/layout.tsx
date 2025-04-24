@@ -1,6 +1,7 @@
 import { join } from 'node:path';
 import { LayersIcon } from '@navikt/aksel-icons';
 import { bundleMDX } from 'mdx-bundler';
+import { useTranslation } from 'react-i18next';
 import { Outlet, isRouteErrorResponse, useMatches } from 'react-router';
 import {
   Banner,
@@ -81,6 +82,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
 
 export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
   const matches = useMatches();
+  const { t } = useTranslation();
 
   /* if we have id monstre-page, hide banner */
   const isMonstrePage = matches.some((match) => match.id === 'monstre-page');
@@ -92,17 +94,17 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
           <BannerIcon>
             <LayersIcon />
           </BannerIcon>
-          <BannerHeading level={1}>Mønstre</BannerHeading>
-          <BannerIngress>
-            Mønstre er retningslinjer og anbefalinger for hvordan interaksjon og
-            gjentagende brukeroppgaver skal løses. Når de samme mønstrene brukes
-            på tvers, skaper vi gjenkjennelighet i tjenestene.
-          </BannerIngress>
+          <BannerHeading level={1}>{t('patterns.title')}</BannerHeading>
+          <BannerIngress>{t('patterns.description')}</BannerIngress>
         </Banner>
       ) : null}
       <ContentContainer>
         <div className={classes['sidebar-container']} data-color='neutral'>
-          <Sidebar cats={cats} title='Mønstre' className={classes.sidebar} />
+          <Sidebar
+            cats={cats}
+            title={t('patterns.title')}
+            className={classes.sidebar}
+          />
           <div className={classes.content}>
             <Outlet />
           </div>
@@ -113,17 +115,19 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = 'Oops!!!';
-  let details = 'An unexpected error occurred.';
+  const { t } = useTranslation();
+  let message = t('errors.default.title');
+  let details = t('errors.default.details');
   let stack: string | undefined;
 
   console.log(error);
 
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? '404' : 'Error';
+    message =
+      error.status === 404 ? t('errors.404.title') : t('errors.generic.title');
     details =
       error.status === 404
-        ? 'Vi kunne ikke finne siden du leter etter.'
+        ? t('errors.404.details')
         : error.statusText || details;
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;

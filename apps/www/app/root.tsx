@@ -7,11 +7,12 @@ import {
   isRouteErrorResponse,
   redirect,
 } from 'react-router';
-
 import type { Route } from './+types/root';
 import '@digdir/designsystemet-theme';
 import '@digdir/designsystemet-css';
 import './app.css';
+import { useTranslation } from 'react-i18next';
+import { useChangeLanguage } from 'remix-i18next/react';
 
 export const links = () => {
   return [
@@ -25,6 +26,10 @@ export const links = () => {
   ];
 };
 
+export const handle = {
+  i18n: 'common',
+};
+
 export const meta = () => {
   return [
     {
@@ -34,7 +39,7 @@ export const meta = () => {
   ];
 };
 
-export const loader = ({ params }: Route.LoaderArgs) => {
+export const loader = async ({ params }: Route.LoaderArgs) => {
   if (params.lang === undefined) {
     return redirect('/no');
   }
@@ -46,9 +51,12 @@ export const loader = ({ params }: Route.LoaderArgs) => {
   return { lang: params.lang };
 };
 
-export default function App({ loaderData: { lang } }: Route.ComponentProps) {
+export default function Root({ loaderData: { lang } }: Route.ComponentProps) {
+  const { i18n } = useTranslation();
+  useChangeLanguage(lang);
+
   return (
-    <html lang={lang} data-color-scheme='auto'>
+    <html lang={lang} data-color-scheme='auto' dir={i18n.dir()}>
       <head>
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
