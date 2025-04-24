@@ -9,9 +9,8 @@ export default defineConfig({
   bundle: true,
   platform: 'node',
   target: 'esnext',
-  treeshake: true,
   loader: {
     '.md': 'copy',
-    '.json': 'copy',
+    '.json': 'file',
   },
 });
