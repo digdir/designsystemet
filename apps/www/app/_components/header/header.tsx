@@ -57,7 +57,7 @@ const Header = ({
   transparentBackground = false,
   logoLink = '/',
 }: HeaderProps) => {
-  const pathname = useLocation().pathname;
+  const {pathname} = useLocation();
   const { lang } = useParams();
   const navigate = useNavigate();
 
