@@ -30,7 +30,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
       description: string;
       author: string;
       date: string;
-      unpublished?: boolean;
+      published?: boolean;
     }[];
   } = {
     Brukerinnsikt: [],
@@ -45,7 +45,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     );
     const result = await generateFromMdx(fileContent);
 
-    if (result.frontmatter.unpublished) {
+    if (!result.frontmatter.published) {
       continue;
     }
 
