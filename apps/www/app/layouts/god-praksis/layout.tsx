@@ -30,6 +30,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
       description: string;
       author: string;
       date: string;
+      unpublished?: boolean;
     }[];
   } = {
     Brukerinnsikt: [],
@@ -43,6 +44,10 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
       join('god-praksis', lang, file.relativePath),
     );
     const result = await generateFromMdx(fileContent);
+
+    if (result.frontmatter.unpublished) {
+      continue;
+    }
 
     const title =
       result.frontmatter.title || file.relativePath.replace('.mdx', '');
