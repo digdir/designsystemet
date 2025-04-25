@@ -18,14 +18,18 @@ jobs:
       - uses: ./.github/actions/gh-setup
       - name: Store release version for changeset
         id: release_version
-        run: echo "VALUE=$(./scripts/print_release_version.sh)" >> $GITHUB_OUTPUT
+        run: |
+          VALUE=$(bash ./scripts/print_release_version.sh)
+          echo $VALUE
+          echo "VALUE=$VALUE" >> $GITHUB_OUTPUT
         shell: bash
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         # Forked version of the changesets action that supports aggregated releases
-        uses: dotansimha/changesets-action@v1.5.2 
+        uses: dotansimha/changesets-action@v1.5.2
         with:
           publish: yarn publish
           version: yarn version-packages
