@@ -39,15 +39,15 @@ We don't use changesets prerelease mode yet as we want to avoid additonal steps 
 Backporting a fix to an earlier version is rarely necessary and should generally be avoided. However, if required, the following steps outline how to proceed.
 
 #### Backporting Workflow
-Say we have released 1.0.1 and 1.1.0 on main, and we want to backport a patch to the 1.0 version.
+Say we have released 1.1.0 and 2.0.0 on main, and we want to backport a patch to the 1.1.x version.
 
 ##### 1. Checkout the target version
-`git checkout tags/@digdir/designsystemet@1.0.1`
+`git checkout tags/@digdir/designsystemet@1.1.0`
 
 ##### 2. Create a branch for the backport
 
 For clarity, name the branch after the current tagged versions on the form `backport/major.minor.x`.
-`git checkout -b backport/1.0.x`
+`git checkout -b backport/1.1.x`
 
 ##### 3. Apply the fix
 
@@ -62,15 +62,15 @@ Verify that Changesets has made a patch release!
 
 ##### 5. Push
 
-`git push origin backport/1.0.x`
+`git push origin backport/1.1.x`
 
 ##### 6. Trigger the release workflow
 
-Go to Actions > Release > Run workflow and select your branch, (`backport/1.0.x` in this example) and trigger the workflow.
+Go to Actions > Release > Run workflow and select your branch, (`backport/1.1.x` in this example) and trigger the workflow.
 
 ##### 7. Continue making patches, if needed
 
-You can continue to work on the branch if you need to make new patches to 1.0.x.
+You can continue to work on the branch if you need to make new patches to 1.1.x.
 
 
 #### Should I merge the backport into main?
@@ -78,5 +78,3 @@ Usually not. Backported fixes are meant for older versions and might be incompat
 
 - Ensure the original fix exists in main before backporting.
 - If main is missing the fix, apply it separately in a way that aligns with new changes.
-
-
