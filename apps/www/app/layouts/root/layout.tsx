@@ -1,5 +1,6 @@
 import { SkipLink } from '@digdir/designsystemet-react';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
+import { useTranslation } from 'react-i18next';
 import { Outlet, isRouteErrorResponse } from 'react-router';
 import { Footer } from '~/_components/footer/footer';
 import { Header } from '~/_components/header/header';
@@ -14,76 +15,79 @@ export const loader = ({ params: { lang } }: Route.LoaderArgs) => {
   };
 };
 
-const centerLinks = [
-  {
-    text: 'Om designsystemet',
-    url: 'https://designsystemet.no/grunnleggende/introduksjon/om-designsystemet',
-  },
-  {
-    text: 'Personvernerklæring',
-    url: 'https://designsystemet.no/grunnleggende/personvernerklaering',
-  },
-  {
-    text: 'Tilgjengelighetserklæring',
-    url: 'https://uustatus.no/nb/erklaringer/publisert/faeb324d-9b3f-40b0-b715-92cac356a916',
-  },
-];
-
-const rightLinks = [
-  {
-    text: 'designsystem@digdir.no',
-    url: 'mailto:designsystem@digdir.no',
-    prefix: <EnvelopeClosedIcon aria-hidden='true' fontSize='1.5em' />,
-  },
-  {
-    text: 'Bli invitert til slack',
-    url: 'https://designsystemet.no/slack',
-    prefix: <Slack />,
-  },
-  {
-    text: 'Github',
-    url: 'https://github.com/digdir/designsystemet',
-    prefix: <Github />,
-  },
-  {
-    text: 'Figma',
-    url: 'https://www.figma.com/@designsystemet',
-    prefix: <Figma />,
-  },
-];
-
 export default function RootLayout({
   loaderData: { lang },
 }: Route.ComponentProps) {
+  const { t } = useTranslation();
+
+  const centerLinks = [
+    {
+      text: t('footer.about'),
+      url: 'https://designsystemet.no/grunnleggende/introduksjon/om-designsystemet',
+    },
+    {
+      text: t('footer.privacy'),
+      url: 'https://designsystemet.no/grunnleggende/personvernerklaering',
+    },
+    {
+      text: t('footer.accessibility'),
+      url: 'https://uustatus.no/nb/erklaringer/publisert/faeb324d-9b3f-40b0-b715-92cac356a916',
+    },
+  ];
+
+  const rightLinks = [
+    {
+      text: 'designsystem@digdir.no',
+      url: 'mailto:designsystem@digdir.no',
+      prefix: <EnvelopeClosedIcon aria-hidden='true' fontSize='1.5em' />,
+    },
+    {
+      text: t('footer.slack'),
+      url: 'https://designsystemet.no/slack',
+      prefix: <Slack />,
+    },
+    {
+      text: 'Github',
+      url: 'https://github.com/digdir/designsystemet',
+      prefix: <Github />,
+    },
+    {
+      text: 'Figma',
+      url: 'https://www.figma.com/@designsystemet',
+      prefix: <Figma />,
+    },
+  ];
+
+  /* useChangeLanguage(lang); */
   const menu = [
     {
-      name: 'Grunnleggende',
+      name: t('navigation.fundamentals'),
       href: `/${lang}/grunnleggende`,
     },
     {
-      name: 'God praksis',
+      name: t('navigation.best-practices'),
       href: `/${lang}/god-praksis`,
     },
     {
-      name: 'Mønstre',
+      name: t('navigation.patterns'),
       href: `/${lang}/monstre`,
     },
     {
-      name: 'Bloggen',
+      name: t('navigation.blog'),
       href: `/${lang}/bloggen`,
     },
     {
-      name: 'Komponenter',
+      name: t('navigation.components'),
       href: `/${lang}/komponenter`,
     },
     {
-      name: 'Temabygger',
+      name: t('navigation.theme-builder'),
       href: 'https://theme.designsystemet.no',
     },
   ];
   return (
     <>
-      <SkipLink href='#main'>Hopp til hovedinnhold</SkipLink>
+      <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
       <Header menu={menu} logoLink={`/${lang}`} themeSwitcher />
       <main id='main'>
         <Outlet />
@@ -94,15 +98,19 @@ export default function RootLayout({
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = 'Oops!';
-  let details = 'An unexpected error occurred.';
+  const { t } = useTranslation();
+  let message = t('errors.default.title');
+  let details = t('errors.default.details');
   let stack: string | undefined;
 
+  console.log(error);
+
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? '404' : 'Error';
+    message =
+      error.status === 404 ? t('errors.404.title') : t('errors.generic.title');
     details =
       error.status === 404
-        ? 'The requested page could not be found.!'
+        ? t('errors.404.details')
         : error.statusText || details;
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;

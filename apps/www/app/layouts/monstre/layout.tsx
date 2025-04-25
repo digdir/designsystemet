@@ -1,7 +1,7 @@
-import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { LayersIcon } from '@navikt/aksel-icons';
 import { bundleMDX } from 'mdx-bundler';
+import { useTranslation } from 'react-i18next';
 import { Outlet, isRouteErrorResponse, useMatches } from 'react-router';
 import {
   Banner,
@@ -11,6 +11,7 @@ import {
 } from '~/_components/banner/banner';
 import { ContentContainer } from '~/_components/content-container/content-container';
 import { Sidebar } from '~/_components/sidebar/sidebar';
+import { getFileFromContentDir, getFilesFromContentDir } from '~/_utils/files';
 import type { Route } from './+types/layout';
 import classes from './layout.module.css';
 
@@ -24,12 +25,10 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   }
 
   /* Get all files in /content/monstre for the lang we have selected */
-  const files = readdirSync(
-    join(process.cwd(), 'app', 'content', 'monstre', lang),
-  );
+  const files = getFilesFromContentDir(join('monstre', lang));
 
   /* Filter out files that are not .mdx */
-  const mdxFiles = files.filter((file) => file.endsWith('.mdx'));
+  const mdxFiles = files.filter((file) => file.relativePath.endsWith('.mdx'));
 
   /* Get titles and URLs for all files */
   const cats: {
@@ -37,24 +36,32 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
       title: string;
       url: string;
     }[];
-  } = {
-    Ferdig: [],
-    'Under arbeid': [],
-    Kommende: [],
-  };
+  } = {};
+
+  if (lang === 'no') {
+    cats.Ferdig = [];
+    cats['Under arbeid'] = [];
+    cats.Kommende = [];
+  }
+
+  if (lang === 'en') {
+    cats.Completed = [];
+    cats['Under construction'] = [];
+    cats.Coming = [];
+  }
 
   /* Map over files with mdx parser to get title */
   for (const file of mdxFiles) {
-    const fileContent = readFileSync(
-      join(process.cwd(), 'app', 'content', 'monstre', lang, `${file}`),
-      'utf-8',
+    const fileContent = getFileFromContentDir(
+      join('monstre', lang, file.relativePath),
     );
     const result = await bundleMDX({
       source: fileContent,
     });
 
-    const title = result.frontmatter.title || file.replace('.mdx', '');
-    const url = `/${lang}/monstre/${file.replace('.mdx', '')}`;
+    const title =
+      result.frontmatter.title || file.relativePath.replace('.mdx', '');
+    const url = `/${lang}/monstre/${file.relativePath.replace('.mdx', '')}`;
 
     if (!result.frontmatter.category) {
       continue;
@@ -75,6 +82,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
 
 export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
   const matches = useMatches();
+  const { t } = useTranslation();
 
   /* if we have id monstre-page, hide banner */
   const isMonstrePage = matches.some((match) => match.id === 'monstre-page');
@@ -86,17 +94,17 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
           <BannerIcon>
             <LayersIcon />
           </BannerIcon>
-          <BannerHeading level={1}>Mønstre</BannerHeading>
-          <BannerIngress>
-            Mønstre er retningslinjer og anbefalinger for hvordan interaksjon og
-            gjentagende brukeroppgaver skal løses. Når de samme mønstrene brukes
-            på tvers, skaper vi gjenkjennelighet i tjenestene.
-          </BannerIngress>
+          <BannerHeading level={1}>{t('patterns.title')}</BannerHeading>
+          <BannerIngress>{t('patterns.description')}</BannerIngress>
         </Banner>
       ) : null}
       <ContentContainer>
         <div className={classes['sidebar-container']} data-color='neutral'>
-          <Sidebar cats={cats} title='Mønstre' className={classes.sidebar} />
+          <Sidebar
+            cats={cats}
+            title={t('patterns.title')}
+            className={classes.sidebar}
+          />
           <div className={classes.content}>
             <Outlet />
           </div>
@@ -107,15 +115,19 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = 'Oops!!!';
-  let details = 'An unexpected error occurred.';
+  const { t } = useTranslation();
+  let message = t('errors.default.title');
+  let details = t('errors.default.details');
   let stack: string | undefined;
 
+  console.log(error);
+
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? '404' : 'Error';
+    message =
+      error.status === 404 ? t('errors.404.title') : t('errors.generic.title');
     details =
       error.status === 404
-        ? 'Vi kunne ikke finne siden du leter etter.'
+        ? t('errors.404.details')
         : error.statusText || details;
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;

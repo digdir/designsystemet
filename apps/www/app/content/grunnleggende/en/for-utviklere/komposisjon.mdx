@@ -1,0 +1,111 @@
+---
+title: Composition
+description: Information and use of asChild to solve composition.
+date: 2024-01-31
+category: For developers
+color: blue
+icon: PackageIcon
+---
+
+
+Sometimes you may need to replace one component with another, for example a `Button` should be a `Link`.
+This is where `asChild` comes into the picture.
+
+```tsx
+import { Button, Link } from '@digdir/designsystemet-react';
+
+<Button asChild>
+  <Link href='https://www.digdir.no'>Link to digdir.no</Link>
+</Button>
+```
+
+In the code snippet above, the `Button` component is rendered as a `Link` component. When this is rendered to the DOM, only one element is rendered.
+This happens with the help of Radix's `Slot` component. <sup>1</sup>
+
+`Slot` merges its props down to the component that sits as a child element. In the case above, `Button`'s props are added to the `Link` component, and an `a` tag is rendered.
+When you use `asChild`, you cannot have more than one child element, but you can have as many as you want inside that element.
+
+```tsx
+/* This throws an error */
+<Button asChild>
+  <Icon />
+  <Link href='https://www.digdir.no'>Your link</Link>
+</Button>
+
+/* This works fine */
+<Button asChild>
+  <Link href='https://www.digdir.no'>
+    <Icon />
+    Your link
+  </Link>
+</Button>
+```
+
+## Why use asChild?
+
+We have previously used an `as` prop to render as other elements. But when you use this, you don't get type safety or correct types according to the element you've changed to with `as`.
+`Slot` solves this by adding all props to the child element of the component, thereby ensuring type safety.
+
+```tsx
+<Button asChild>
+  <Link href='https://www.digdir.no' onClick={() => {}}>
+    <Icon />
+    Your link
+  </Link>
+</Button>
+```
+
+All class names, aria attributes, and other props that `Button` has will be added to the `Link` component.
+This means we can offer good accessibility while you can use other components as you wish.
+
+## Event handlers
+
+If a prop starts with `on` (e.g., `onClick`), it is considered an event handler.
+When `Slot` merges props, it will create a new function that calls all event handlers defined on both `Button` and `Link`. The function on `Link` will be called first.
+This means that if you stop an event on your component, the event on the `Slot` component will not be called.
+
+If one of the event handlers depends on `event.defaultPrevented`, you need to make sure the order is correct. <sup>2</sup>
+
+```tsx
+<Button
+  asChild
+  onClick={(event) => {
+    if (!event.defaultPrevented)
+      console.log('Not logged to console because default is prevented.');
+  }}
+>
+  <Link onClick={(e) => e.preventDefault()}>Your link</Link>
+</Button>
+```
+
+## Use your own components
+
+Several components in the Design System support `asChild` with standard elements. If you change this, you must ensure that accessibility is maintained. It's rare that you need to change the underlying element, but it's more realistic that you'll want to use your own component.
+
+If you want to use your own component, you need to make sure to spread all props and support `ref`. <sup>3</sup>
+
+Your components will then look like this:
+
+```tsx
+// without props and ref
+const MyButton = () => <button />
+
+// with props
+const MyButton = (props) => <button {...props} />
+
+// with props and ref
+const MyButton = React.forwardRef((props, forwardedRef) => (
+  <button
+    {...props}
+    ref={forwardedRef}
+  />
+))
+```
+
+Several Design System components support `asChild`.
+
+### References
+
+- [1] [Radix Slot](https://www.radix-ui.com/primitives/docs/utilities/slot)
+- [2] [Radix Slot Event handlers](https://www.radix-ui.com/primitives/docs/utilities/slot#event-handlers)
+- [3] [Radix Composition](https://www.radix-ui.com/primitives/docs/guides/composition)

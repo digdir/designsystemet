@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import fs from 'node:fs/promises';
 import path from 'node:path';
 import { Argument, createCommand, program } from '@commander-js/extra-typings';
 import chalk from 'chalk';
@@ -8,13 +7,13 @@ import { fromError } from 'zod-validation-error';
 
 import { convertToHex } from '../src/colors/index.js';
 import type { CssColor } from '../src/colors/types.js';
+import { type Config, combinedConfigSchema, configFileSchema, mapPathToOptionName } from '../src/config.js';
 import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
 import { cliOptions, createTokens } from '../src/tokens/create.js';
+import { writeTokens } from '../src/tokens/create/write.js';
 import type { Theme } from '../src/tokens/types.js';
-import { cleanDir } from '../src/tokens/utils.js';
-import { writeTokens } from '../src/tokens/write.js';
-import { type CombinedConfigSchema, combinedConfigSchema, configFileSchema, mapPathToOptionName } from './config.js';
+import { cleanDir, readFile } from '../src/utils.js';
 import { type OptionGetter, getCliOption, getDefaultCliOption, getSuppliedCliOption } from './options.js';
 
 program.name('designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
@@ -40,18 +39,17 @@ function makeTokenCommands() {
     .option('--dry [boolean]', `Dry run for built ${chalk.blue('design-tokens')}`, parseBoolean, false)
     .option('-p, --preview', 'Generate preview token.ts files', false)
     .option('--verbose', 'Enable verbose output', false)
-    .action((opts) => {
+    .action(async (opts) => {
       const { preview, verbose, clean, dry } = opts;
-      const tokens = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_CREATE_DIR;
+      const tokensDir = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_CREATE_DIR;
       const outDir = typeof opts.outDir === 'string' ? opts.outDir : './dist/tokens';
-
-      console.log(`Building tokens in ${chalk.green(tokens)}`);
 
       if (dry) {
         console.log(`Performing dry run, no files will be written`);
       }
+      await buildTokens({ tokensDir, outDir, preview, verbose, dry, clean });
 
-      return buildTokens({ tokens, outDir, preview, verbose, dry, clean });
+      return Promise.resolve();
     });
 
   tokenCmd
@@ -158,7 +156,7 @@ function makeTokenCommands() {
       /*
        * Check that the config is valid
        */
-      let config: CombinedConfigSchema;
+      let config: Config;
       try {
         config = combinedConfigSchema.parse(unvalidatedConfig);
       } catch (err) {
@@ -183,8 +181,8 @@ function makeTokenCommands() {
         // Casting as missing properties should be validated by `getDefaultOrExplicitOption` to default values
         const theme = { name, ...themeWithoutName } as Theme;
 
-        const tokens = createTokens(theme);
-        await writeTokens({ outDir: config.outDir, tokens, theme, dry: opts.dry });
+        const { tokenSets } = await createTokens(theme);
+        await writeTokens({ outDir: config.outDir, theme, dry: opts.dry, tokenSets });
       }
     });
 
@@ -234,7 +232,7 @@ async function parseConfig(
 
   let configFile: string;
   try {
-    configFile = await fs.readFile(resolvedPath, { encoding: 'utf-8' });
+    configFile = await readFile(resolvedPath);
     console.log(`Found config file: ${chalk.green(resolvedPath)}`);
   } catch (err) {
     if (err instanceof Error) {

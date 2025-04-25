@@ -150,9 +150,23 @@ const preview: Preview = {
         dynamicTitle: true,
       },
     },
+    colorScheme: {
+      description: 'Set color-scheme in stories',
+      defaultValue: 'light',
+      toolbar: {
+        title: 'Theme',
+        icon: 'contrast',
+        items: [
+          { title: 'Light', value: 'light' },
+          { title: 'Dark', value: 'dark' },
+        ],
+        dynamicTitle: true,
+      },
+    },
   },
   initialGlobals: {
     codePreview: 'react',
+    colorScheme: 'light',
   },
   parameters: {
     layout: 'centered',

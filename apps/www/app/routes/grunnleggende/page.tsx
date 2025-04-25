@@ -1,45 +1,21 @@
-import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { Heading } from '@digdir/designsystemet-react';
 import { ComponentIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import {} from '~/_components/banner/banner';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { formatDateNorwegian } from '~/_utils/date';
+import { getFileFromContentDir } from '~/_utils/files';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import type { Route } from './+types/page';
 import classes from './page.module.css';
 
 export async function loader({ params }: Route.LoaderArgs) {
   const { '*': file } = params;
-  const filePath = join(
-    process.cwd(),
-    'app',
-    'content',
-    'grunnleggende',
-    params.lang,
-    `${file}.mdx`,
-  );
-
-  console.log(filePath);
-
-  const nbExists = existsSync(
-    join(process.cwd(), 'app', 'content', 'grunnleggende', 'nb', `${file}.mdx`),
-  );
-
-  const enExists = existsSync(
-    join(process.cwd(), 'app', 'content', 'grunnleggende', 'en', `${file}.mdx`),
-  );
-
-  if (!existsSync(filePath)) {
-    throw new Response('Not Found', {
-      status: 404,
-      statusText: 'Not Found',
-    });
-  }
 
   // Read the file content
-  const fileContent = readFileSync(filePath, 'utf-8');
+  const fileContent = getFileFromContentDir(
+    join('grunnleggende', params.lang, `${file}.mdx`),
+  );
 
   // Bundle the MDX content
   const result = await generateFromMdx(fileContent);
@@ -49,10 +25,6 @@ export async function loader({ params }: Route.LoaderArgs) {
     code: result.code,
     frontmatter: result.frontmatter,
     currentLang: params.lang,
-    availableLanguages: {
-      nb: nbExists,
-      en: enExists,
-    },
   };
 }
 

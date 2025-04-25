@@ -1,0 +1,34 @@
+.color {
+  height: 66px;
+  width: 66px;
+  padding: 2px;
+  margin-left: -1px;
+  margin-top: -1px;
+  border-radius: var(--ds-border-radius-md);
+  border: none;
+}
+
+.color:is(button) {
+  cursor: pointer;
+}
+
+.color:is(button):hover:not(:focus-visible) {
+  border-color: #fff;
+  outline: 3px solid #535353;
+  outline-offset: 2px;
+}
+
+.colorBox {
+  --color: #cfcfcf;
+
+  background-color: #e5e5f7;
+  opacity: 1;
+  background-image: repeating-linear-gradient(45deg, var(--color) 25%, transparent 25%, transparent 75%, var(--color) 75%, var(--color)),
+    repeating-linear-gradient(45deg, var(--color) 25%, #e5e5f7 25%, #e5e5f7 75%, var(--color) 75%, var(--color));
+  background-position: 0 0, 10px 10px;
+  border-radius: var(--ds-border-radius-md);
+  background-size: 20px 20px;
+  height: 64px;
+  width: 64px;
+  box-shadow: 0 2px 4px #0000001a;
+}
