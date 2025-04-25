@@ -1,5 +1,21 @@
 # Change Log
 
+## 1.0.4
+
+### Patch Changes
+
+- Update React to 19.1.0. [Changelog](https://github.com/facebook/react/releases/tag/v19.1.0) ([#3426](https://github.com/digdir/designsystemet/pull/3426))
+
+- **Details**: Update `@u-elements/u-details` to `0.1.1` ([#3458](https://github.com/digdir/designsystemet/pull/3458))
+
+- **Suggestion**: Fix keyboard focus trap on list ([#3422](https://github.com/digdir/designsystemet/pull/3422))
+
+- Updated non-major dependencies ([#3351](https://github.com/digdir/designsystemet/pull/3351))
+
+- **Tooltip**: Add `autoPlacement` prop. By default `true`, set to `false` to disable auto placement ([#3429](https://github.com/digdir/designsystemet/pull/3429))
+
+- **MultiSuggestion**: Fix keyboard focus trap on list ([#3422](https://github.com/digdir/designsystemet/pull/3422))
+
 ## 1.0.3
 
 ### Patch Changes
