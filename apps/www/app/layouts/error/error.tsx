@@ -5,15 +5,16 @@ import {
   Scripts,
   ScrollRestoration,
   isRouteErrorResponse,
-  redirect,
 } from 'react-router';
-import type { Route } from './+types/root';
 import '@digdir/designsystemet-theme';
 import '@digdir/designsystemet-css';
-import './app.css';
+import '../../app.css';
+import { SkipLink } from '@digdir/designsystemet-react';
+import { Footer, Header } from '@repo/components';
 import { useTranslation } from 'react-i18next';
 import { useChangeLanguage } from 'remix-i18next/react';
-import { Error404 } from './_components/errors/error-404';
+import { Error404 } from '~/_components/errors/error-404';
+import type { Route } from './+types/error';
 
 export const links = () => {
   return [
@@ -41,14 +42,6 @@ export const meta = () => {
 };
 
 export const loader = async ({ params }: Route.LoaderArgs) => {
-  if (params.lang === undefined) {
-    return redirect('/no');
-  }
-
-  if (params.lang !== 'no' && params.lang !== 'en') {
-    return redirect('/no');
-  }
-
   const lang = params.lang;
 
   const centerLinks = [
@@ -118,13 +111,51 @@ export default function Root({ loaderData: { lang } }: Route.ComponentProps) {
   );
 }
 
+type ErrorWrapperRootProps = {
+  children: React.ReactNode;
+  lang: string;
+  menu: {
+    name: string;
+    href: string;
+  }[];
+  centerLinks: {
+    text: string;
+    url: string;
+  }[];
+  rightLinks: {
+    text: string;
+    url: string;
+    prefix?: React.ReactNode;
+  }[];
+};
+
+const ErrorWrapperRoot = ({
+  children,
+  menu,
+  centerLinks,
+  rightLinks,
+  lang,
+}: ErrorWrapperRootProps) => {
+  const { t } = useTranslation();
+  return (
+    <>
+      <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
+      <Header menu={menu} logoLink={`/${lang}`} themeSwitcher />
+      <main id='main'>
+        <ContentContainer>{children}</ContentContainer>
+      </main>
+      <Footer centerLinks={centerLinks} rightLinks={[]} />
+    </>
+  );
+};
+
 export function ErrorBoundary({ error, loaderData }: Route.ErrorBoundaryProps) {
   const { t } = useTranslation();
   const message = t('errors.default.title');
   let details = t('errors.default.details');
   let stack: string | undefined;
 
-  console.log();
+  console.log({ loaderData });
 
   if (!loaderData) {
     return <Error404 />;
@@ -132,7 +163,11 @@ export function ErrorBoundary({ error, loaderData }: Route.ErrorBoundaryProps) {
 
   if (isRouteErrorResponse(error)) {
     if (error.status === 404) {
-      return <Error404 />;
+      return (
+        <ErrorWrapperRoot {...loaderData} rightLinks={[]}>
+          <Error404 />
+        </ErrorWrapperRoot>
+      );
     }
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;
@@ -140,7 +175,7 @@ export function ErrorBoundary({ error, loaderData }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main id='main'>
+    <ErrorWrapperRoot {...loaderData} rightLinks={[]}>
       <h1>{message}</h1>
       <p>{details}</p>
       {stack && (
@@ -148,6 +183,6 @@ export function ErrorBoundary({ error, loaderData }: Route.ErrorBoundaryProps) {
           <code>{stack}</code>
         </pre>
       )}
-    </main>
+    </ErrorWrapperRoot>
   );
 }

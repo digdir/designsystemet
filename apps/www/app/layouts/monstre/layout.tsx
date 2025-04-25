@@ -117,18 +117,13 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   const { t } = useTranslation();
-  let message = t('errors.default.title');
+  const message = t('errors.default.title');
   let details = t('errors.default.details');
   let stack: string | undefined;
 
-  if (isRouteErrorResponse(error)) {
-    message =
-      error.status === 404 ? t('errors.404.title') : t('errors.generic.title');
-    details =
-      error.status === 404
-        ? t('errors.404.details')
-        : error.statusText || details;
+  console.log(error);
 
+  if (isRouteErrorResponse(error)) {
     if (error.status === 404) {
       return <Error404 />;
     }

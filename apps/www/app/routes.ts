@@ -44,6 +44,9 @@ export default [
         id: 'components',
       }),
     ]),
+    route('/*', './layouts/error/error.tsx', {
+      id: 'error',
+    }),
   ]),
   route('/slack', 'routes/slack.tsx', {
     id: 'slack-redirect',
