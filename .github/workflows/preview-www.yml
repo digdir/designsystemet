@@ -1,4 +1,4 @@
-name: Deploy WWW Preview
+name: Deploy www Preview
 env:
   VERCEL_TEAM: ${{ secrets.VERCEL_TEAM }}
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -41,7 +41,7 @@ jobs:
 
       - id: deploy
         name: Deploy Project Artifacts to Vercel
-        run: echo "url=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
+        run: echo "url=$(vercel deploy --token=${{ secrets.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
 
       - name: Set Vercel alias
         run: vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} set ${{ steps.deploy.outputs.url }} pr-${{ env.PR_NUMBER }}.designsystemet.no
@@ -89,6 +89,6 @@ jobs:
 
             ${{ steps.regex-storybook.outputs.match }}
 
-            [WWW](https://pr-${{ env.PR_NUMBER }}.designsystemet.no) - `${{ steps.current-time.outputs.formattedTime }}`
+            [www](https://pr-${{ env.PR_NUMBER }}.designsystemet.no) - `${{ steps.current-time.outputs.formattedTime }}`
 
             ${{ steps.regex-theme.outputs.match }}

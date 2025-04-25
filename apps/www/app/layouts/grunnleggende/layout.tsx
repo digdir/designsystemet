@@ -1,6 +1,6 @@
-import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
-import * as AkselIcon from '@navikt/aksel-icons';
+import { LayersIcon } from '@navikt/aksel-icons';
+import { useTranslation } from 'react-i18next';
 import { Outlet, isRouteErrorResponse, useMatches } from 'react-router';
 import {
   Banner,
@@ -10,12 +10,12 @@ import {
 } from '~/_components/banner/banner';
 import { ContentContainer } from '~/_components/content-container/content-container';
 import { Sidebar } from '~/_components/sidebar/sidebar';
+import { getFileFromContentDir, getFilesFromContentDir } from '~/_utils/files';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import type { Route } from './+types/layout';
 import classes from './layout.module.css';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
-  /* get all monstre content */
   if (!lang) {
     throw new Response('Not Found', {
       status: 404,
@@ -23,12 +23,8 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     });
   }
 
-  const basePath = join(process.cwd(), 'app', 'content', 'grunnleggende', lang);
+  const mdxFiles = getFilesFromContentDir(join('grunnleggende', lang));
 
-  /* Get all MDX files recursively */
-  const mdxFiles = getAllMdxFiles(basePath, '');
-
-  /* Get titles and URLs for all files */
   const cats: {
     [key: string]: {
       title: string;
@@ -37,24 +33,36 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
       color: 'red' | 'blue' | 'yellow';
       description: string;
     }[];
-  } = {
-    Introduksjon: [],
-    Designelementer: [],
-    'For designere': [],
-    'For utviklere': [],
-  };
+  } = {};
+
+  if (lang === 'no') {
+    cats.Introduksjon = [];
+    cats.Designelementer = [];
+    cats['For designere'] = [];
+    cats['For utviklere'] = [];
+  }
+
+  if (lang === 'en') {
+    cats.Introduction = [];
+    cats['Design elements'] = [];
+    cats['For designers'] = [];
+    cats['For developers'] = [];
+  }
 
   /* Map over files with mdx parser to get title */
-  for (const { path, relativePath } of mdxFiles) {
-    const fileContent = readFileSync(path, 'utf-8');
+  for (const file of mdxFiles) {
+    const fileContent = getFileFromContentDir(
+      join('grunnleggende', lang, file.relativePath),
+    );
     const result = await generateFromMdx(fileContent);
 
-    const fileName = relativePath.split('/').pop() || '';
-    const title = result.frontmatter.title || fileName.replace('.mdx', '');
-
-    // Generate URL based on relative path, preserving directory structure
-    const urlPath = relativePath.replace('.mdx', '').replace(/\\/g, '/');
-    const url = `/${lang}/grunnleggende/${urlPath}`;
+    const title =
+      result.frontmatter.title || file.relativePath.replace('.mdx', '');
+    const url =
+      `/${lang}/grunnleggende/${file.relativePath.replace('.mdx', '')}`.replace(
+        '\\',
+        '/',
+      );
 
     if (!result.frontmatter.category) {
       continue;
@@ -87,41 +95,9 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   };
 };
 
-/**
- * Recursively get all MDX files in a directory
- */
-function getAllMdxFiles(
-  basePath: string,
-  currentRelativePath: string,
-): Array<{ path: string; relativePath: string }> {
-  const currentPath = join(basePath, currentRelativePath);
-  const entries = readdirSync(currentPath);
-
-  let results: Array<{ path: string; relativePath: string }> = [];
-
-  for (const entry of entries) {
-    const entryPath = join(currentPath, entry);
-    const entryRelativePath = currentRelativePath
-      ? join(currentRelativePath, entry)
-      : entry;
-
-    if (statSync(entryPath).isDirectory()) {
-      // Recursively search subdirectory
-      results = results.concat(getAllMdxFiles(basePath, entryRelativePath));
-    } else if (entry.endsWith('.mdx')) {
-      // Add MDX file to results
-      results.push({
-        path: entryPath,
-        relativePath: entryRelativePath,
-      });
-    }
-  }
-
-  return results;
-}
-
 export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
   const matches = useMatches();
+  const { t } = useTranslation();
 
   /* if we have id grunnleggende-page, hide banner */
   const isGrunnleggendePage = matches.some(
@@ -133,13 +109,10 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
       {!isGrunnleggendePage ? (
         <Banner color='yellow'>
           <BannerIcon>
-            <AkselIcon.LayersIcon />
+            <LayersIcon />
           </BannerIcon>
-          <BannerHeading level={1}>Grunnleggende</BannerHeading>
-          <BannerIngress>
-            Lær mer om designsystemet, de grunnleggende designelementene, og
-            hvordan du kommer i gang som designer eller utvikler.
-          </BannerIngress>
+          <BannerHeading level={1}>{t('fundamentals.title')}</BannerHeading>
+          <BannerIngress>{t('fundamentals.description')}</BannerIngress>
         </Banner>
       ) : null}
       <ContentContainer
@@ -148,7 +121,7 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
       >
         <Sidebar
           cats={cats}
-          title='Grunnleggende'
+          title={t('fundamentals.title')}
           className={classes.sidebar}
         />
         <div className={classes.content}>
@@ -160,15 +133,19 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = 'Oops!!!';
-  let details = 'An unexpected error occurred.';
+  const { t } = useTranslation();
+  let message = t('errors.default.title');
+  let details = t('errors.default.details');
   let stack: string | undefined;
 
+  console.log(error);
+
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? '404' : 'Error';
+    message =
+      error.status === 404 ? t('errors.404.title') : t('errors.generic.title');
     details =
       error.status === 404
-        ? 'Vi kunne ikke finne siden du leter etter.'
+        ? t('errors.404.details')
         : error.statusText || details;
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;

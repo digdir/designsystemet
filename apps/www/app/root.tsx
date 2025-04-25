@@ -7,11 +7,12 @@ import {
   isRouteErrorResponse,
   redirect,
 } from 'react-router';
-
 import type { Route } from './+types/root';
 import '@digdir/designsystemet-theme';
 import '@digdir/designsystemet-css';
 import './app.css';
+import { useTranslation } from 'react-i18next';
+import { useChangeLanguage } from 'remix-i18next/react';
 
 export const links = () => {
   return [
@@ -25,6 +26,10 @@ export const links = () => {
   ];
 };
 
+export const handle = {
+  i18n: 'common',
+};
+
 export const meta = () => {
   return [
     {
@@ -34,15 +39,24 @@ export const meta = () => {
   ];
 };
 
-export const loader = ({ params }: Route.LoaderArgs) => {
+export const loader = async ({ params }: Route.LoaderArgs) => {
   if (params.lang === undefined) {
-    return redirect('/nb');
+    return redirect('/no');
   }
+
+  if (params.lang !== 'no' && params.lang !== 'en') {
+    return redirect('/no');
+  }
+
+  return { lang: params.lang };
 };
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export default function Root({ loaderData: { lang } }: Route.ComponentProps) {
+  const { i18n } = useTranslation();
+  useChangeLanguage(lang);
+
   return (
-    <html lang='en' data-color-scheme='auto'>
+    <html lang={lang} data-color-scheme='auto' dir={i18n.dir()}>
       <head>
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
@@ -50,7 +64,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <Outlet />
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -58,14 +72,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function App() {
-  return <Outlet />;
-}
-
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let message = 'Oops!';
   let details = 'An unexpected error occurred.';
   let stack: string | undefined;
+
+  console.log(error);
 
   if (isRouteErrorResponse(error)) {
     message = error.status === 404 ? '404' : 'Error';

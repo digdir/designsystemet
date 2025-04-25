@@ -1,43 +1,22 @@
-import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { Heading } from '@digdir/designsystemet-react';
 import { ComponentIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import {} from '~/_components/banner/banner';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
-import { formatDateNorwegian } from '~/_utils/date';
+import { formatDate } from '~/_utils/date';
+import { getFileFromContentDir } from '~/_utils/files';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
+import { generateMetadata } from '~/_utils/metadata';
 import type { Route } from './+types/page';
 import classes from './page.module.css';
 
 export async function loader({ params }: Route.LoaderArgs) {
   const file = params.file;
-  const filePath = join(
-    process.cwd(),
-    'app',
-    'content',
-    'monstre',
-    params.lang,
-    `${file}.mdx`,
-  );
-
-  const nbExists = existsSync(
-    join(process.cwd(), 'app', 'content', 'monstre', 'nb', `${file}.mdx`),
-  );
-
-  const enExists = existsSync(
-    join(process.cwd(), 'app', 'content', 'monstre', 'en', `${file}.mdx`),
-  );
-
-  if (!existsSync(filePath)) {
-    throw new Response('Not Found', {
-      status: 404,
-      statusText: 'Not Found',
-    });
-  }
 
   // Read the file content
-  const fileContent = readFileSync(filePath, 'utf-8');
+  const fileContent = getFileFromContentDir(
+    join('monstre', params.lang, `${file}.mdx`),
+  );
 
   // Bundle the MDX content
   const result = await generateFromMdx(fileContent);
@@ -46,19 +25,20 @@ export async function loader({ params }: Route.LoaderArgs) {
     name: params.file,
     code: result.code,
     frontmatter: result.frontmatter,
-    currentLang: params.lang,
-    availableLanguages: {
-      nb: nbExists,
-      en: enExists,
-    },
+    lang: params.lang,
   };
 }
 
-export const meta = ({ params }: Route.MetaArgs) => {
-  return [{ title: `Monstre ${params.file} - ${params.lang}` }];
+export const meta = ({ data }: Route.MetaArgs) => {
+  return generateMetadata({
+    title: data.frontmatter.title,
+    description: data.frontmatter.description,
+  });
 };
 
 export default function Monstre({ loaderData }: Route.ComponentProps) {
+  const { lang } = loaderData;
+
   return (
     <>
       <div className={classes.header}>
@@ -68,7 +48,7 @@ export default function Monstre({ loaderData }: Route.ComponentProps) {
           </Heading>
           {loaderData.frontmatter.date && (
             <div className={classes.date}>
-              {formatDateNorwegian(loaderData.frontmatter.date)}
+              {formatDate(loaderData.frontmatter.date, lang)}
             </div>
           )}
         </div>

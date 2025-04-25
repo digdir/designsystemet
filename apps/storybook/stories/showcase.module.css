@@ -1,3 +1,8 @@
+.wrapper {
+  background: var(--ds-color-neutral-background-default);
+  padding: var(--ds-size-4);
+  border-radius: var(--ds-border-radius-md);
+}
 .controls {
   display: grid;
   grid-template-columns: repeat(3, auto);

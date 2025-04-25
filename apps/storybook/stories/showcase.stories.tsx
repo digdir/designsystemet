@@ -40,7 +40,7 @@ export const ShowcaseStory: StoryFn = () => {
   const [typographyMode, setTypographyMode] = useState('primary');
 
   return (
-    <div>
+    <div className={classes.wrapper}>
       <div className={classes.controls} data-size='sm'>
         <Fieldset>
           <Fieldset.Legend>
