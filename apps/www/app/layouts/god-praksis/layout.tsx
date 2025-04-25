@@ -1,5 +1,6 @@
 import { join } from 'node:path';
 import { HandShakeHeartIcon } from '@navikt/aksel-icons';
+import { useTranslation } from 'react-i18next';
 import { Outlet, isRouteErrorResponse, useMatches } from 'react-router';
 import {
   Banner,
@@ -32,11 +33,19 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
       date: string;
       published?: boolean;
     }[];
-  } = {
-    Brukerinnsikt: [],
-    Tilgjengelighet: [],
-    Innholdsarbeid: [],
-  };
+  } = {};
+
+  if (lang === 'no') {
+    cats.Brukerinnsikt = [];
+    cats.Tilgjengelighet = [];
+    cats.Innholdsarbeid = [];
+  }
+
+  if (lang === 'en') {
+    cats['User insight'] = [];
+    cats.Accessibility = [];
+    cats['Content work'] = [];
+  }
 
   /* Map over files with mdx parser to get title */
   for (const file of mdxFiles) {
@@ -78,21 +87,37 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     });
   }
 
-  return {
-    lang,
-    cats,
-    descriptions: {
+  let descriptions = {};
+  if (lang === 'no') {
+    descriptions = {
       Brukerinnsikt: 'Designressurser og kunnskapsdeling rundt brukerinnsikt.',
       Tilgjengelighet:
         'Tilgjengelighet og universell utforming handler om at det vi lager skal kunne brukes av alle uavhengig av funksjonsevne eller brukskontekst.',
       Innholdsarbeid:
         'Brukerne skal finne, forstå og gjøre det de kom til tjenesten for å gjøre. Derfor er det viktig at vi skriver brukertilpasset, klart og tydelig.',
-    },
+    };
+  }
+  if (lang === 'en') {
+    descriptions = {
+      'User insight':
+        'Design resources and knowledge sharing around user insight.',
+      Accessibility:
+        'Accessibility and universal design mean that what we create should be usable by everyone, regardless of functional ability or use context.',
+      'Content work':
+        'Users should find, understand, and do what they came to the service to do. Therefore, it is important that we write user-adapted, clear, and concise.',
+    };
+  }
+
+  return {
+    lang,
+    cats,
+    descriptions,
   };
 };
 
 export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
   const matches = useMatches();
+  const { t } = useTranslation();
 
   /* if we have id god-praksis-page, hide banner */
   const isGodPraksisPage = matches.some(
@@ -107,11 +132,8 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
             <BannerIcon>
               <HandShakeHeartIcon fontSize={34} />
             </BannerIcon>
-            <BannerHeading level={1}>God praksis</BannerHeading>
-            <BannerIngress>
-              Her deler vi god praksis med hverandre. Råd og veiledning som kan
-              bidra til å lage bedre helhetlige tjenester samles her.
-            </BannerIngress>
+            <BannerHeading level={1}>{t('best-practices.title')}</BannerHeading>
+            <BannerIngress>{t('best-practices.description')}</BannerIngress>
           </Banner>
           <div className={classes.content}>
             <div className={classes.container}>
@@ -127,8 +149,9 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = 'Oops!!!';
-  let details = 'An unexpected error occurred.';
+  const { t } = useTranslation();
+  let message = t('errors.default.title');
+  let details = t('errors.default.details');
   let stack: string | undefined;
 
   console.log(error);
@@ -137,7 +160,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     message = error.status === 404 ? '404' : 'Error';
     details =
       error.status === 404
-        ? 'Vi kunne ikke finne siden du leter etter.'
+        ? t('errors.404.details')
         : error.statusText || details;
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;

@@ -3,21 +3,39 @@ import { Fragment } from 'react';
 import { useRouteLoaderData } from 'react-router';
 import { Grid } from '~/_components/grid/grid';
 import { TeaserCard } from '~/_components/teaser-card/teaser-card';
-import { formatDateNorwegian } from '~/_utils/date';
+import { formatDate } from '~/_utils/date';
 import { generateMetadata } from '~/_utils/metadata';
-import type { Route } from '../../layouts/god-praksis/+types/layout';
+import i18n from '~/i18next.server';
+import type { Route as LayoutRoute } from '../../layouts/god-praksis/+types/layout';
+import type { Route } from './+types/god-praksis';
 
-export const meta = () => {
-  return generateMetadata({
-    title: 'God praksis',
-    description: 'God praksis',
-  });
+export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
+  if (!lang) {
+    throw new Response('Not Found', {
+      status: 404,
+      statusText: 'Not Found',
+    });
+  }
+
+  const t = await i18n.getFixedT(lang);
+
+  return {
+    lang,
+    metadata: generateMetadata({
+      title: t('best-practices.title'),
+      description: t('best-practices.description'),
+    }),
+  };
+};
+
+export const meta = ({ data: { metadata } }: Route.MetaArgs) => {
+  return metadata;
 };
 
 export default function GodPraksis() {
-  const { cats, descriptions } = useRouteLoaderData(
+  const { cats, descriptions, lang } = useRouteLoaderData(
     'layouts/god-praksis/layout',
-  ) as Route.ComponentProps['loaderData'];
+  ) as LayoutRoute.ComponentProps['loaderData'];
 
   return (
     <>
@@ -49,7 +67,7 @@ export default function GodPraksis() {
                     href={item.url}
                     description={item.description}
                     author={item.author}
-                    date={formatDateNorwegian(item.date)}
+                    date={formatDate(item.date, lang)}
                   />
                 );
               })}

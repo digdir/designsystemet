@@ -136,6 +136,11 @@
     "title": "Fundamentals",
     "description": "Learn more about the design system, the basic design elements, and how to get started as a designer or developer."
   },
+  "best-practices": {
+    "title": "Best practices",
+    "description": "Here we share good practices with each other. Advice and guidance that can help create better holistic services are gathered here.",
+    "back": "Back"
+  },
   "mdx": {
     "error": {
       "loading": "Could not load content"
