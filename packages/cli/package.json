@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "engines": {
@@ -61,7 +61,6 @@
     "commander": "^13.1.0",
     "fast-glob": "^3.3.3",
     "hsluv": "^1.0.1",
-    "jscodeshift": "^17.3.0",
     "object-hash": "^3.0.0",
     "postcss": "^8.5.3",
     "ramda": "^0.30.1",
