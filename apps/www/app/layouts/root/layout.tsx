@@ -27,7 +27,7 @@ export default function RootLayout({
     },
     {
       text: t('footer.privacy'),
-      url: 'https://designsystemet.no/grunnleggende/personvernerklaering',
+      url: `${lang}/grunnleggende/privacy-policy`,
     },
     {
       text: t('footer.accessibility'),
@@ -43,7 +43,7 @@ export default function RootLayout({
     },
     {
       text: t('footer.slack'),
-      url: 'https://designsystemet.no/slack',
+      url: '/slack',
       prefix: <Slack />,
     },
     {

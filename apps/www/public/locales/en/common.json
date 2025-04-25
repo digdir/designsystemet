@@ -83,7 +83,7 @@
   },
   "footer": {
     "about": "About the design system",
-    "privacy": "Privacy statement",
+    "privacy": "Privacy policy",
     "accessibility": "Accessibility statement",
     "slack": "Join us on Slack",
     "agencies": {
@@ -104,10 +104,11 @@
     },
     "404": {
       "title": "404",
-      "details": "The requested page could not be found."
+      "details": "The page you are looking for does not exist. Please check the URL or go back to the homepage."
     },
     "generic": {
-      "title": "Error"
+      "title": "Error",
+      "go-to-homepage": "Go to homepage"
     }
   },
   "header": {

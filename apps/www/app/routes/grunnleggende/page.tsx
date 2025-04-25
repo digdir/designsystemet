@@ -17,6 +17,13 @@ export async function loader({ params }: Route.LoaderArgs) {
     join('grunnleggende', params.lang, `${file}.mdx`),
   );
 
+  if (!fileContent) {
+    throw new Response('Not Found', {
+      status: 404,
+      statusText: 'Not Found',
+    });
+  }
+
   // Bundle the MDX content
   const result = await generateFromMdx(fileContent);
 

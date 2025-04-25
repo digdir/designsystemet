@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Outlet, isRouteErrorResponse } from 'react-router';
 import { Banner, BannerHeading, BannerIcon } from '~/_components/banner/banner';
 import { ContentContainer } from '~/_components/content-container/content-container';
+import { Error404 } from '~/_components/errors/error-404';
 import type { Route } from './+types/layout';
 import classes from './layout.module.css';
 
@@ -30,8 +31,6 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let details = t('errors.default.details');
   let stack: string | undefined;
 
-  console.log(error);
-
   if (isRouteErrorResponse(error)) {
     message =
       error.status === 404 ? t('errors.404.title') : t('errors.generic.title');
@@ -39,6 +38,10 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
       error.status === 404
         ? t('errors.404.details')
         : error.statusText || details;
+
+    if (error.status === 404) {
+      return <Error404 />;
+    }
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;
     stack = error.stack;

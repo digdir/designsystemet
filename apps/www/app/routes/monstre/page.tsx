@@ -18,6 +18,13 @@ export async function loader({ params }: Route.LoaderArgs) {
     join('monstre', params.lang, `${file}.mdx`),
   );
 
+  if (!fileContent) {
+    throw new Response('Not Found', {
+      status: 404,
+      statusText: 'Not Found',
+    });
+  }
+
   // Bundle the MDX content
   const result = await generateFromMdx(fileContent);
 
@@ -36,19 +43,19 @@ export const meta = ({ data }: Route.MetaArgs) => {
   });
 };
 
-export default function Monstre({ loaderData }: Route.ComponentProps) {
-  const { lang } = loaderData;
-
+export default function Monstre({
+  loaderData: { lang, frontmatter, code },
+}: Route.ComponentProps) {
   return (
     <>
       <div className={classes.header}>
         <div className={classes.headerText}>
           <Heading data-size='lg' level={1}>
-            {loaderData.frontmatter.title}
+            {frontmatter.title}
           </Heading>
-          {loaderData.frontmatter.date && (
+          {frontmatter.date && (
             <div className={classes.date}>
-              {formatDate(loaderData.frontmatter.date, lang)}
+              {formatDate(frontmatter.date, lang)}
             </div>
           )}
         </div>
@@ -57,7 +64,7 @@ export default function Monstre({ loaderData }: Route.ComponentProps) {
         </div>
       </div>
       <div className={classes.content}>
-        <MDXComponents code={loaderData.code} />
+        <MDXComponents code={code} />
       </div>
     </>
   );

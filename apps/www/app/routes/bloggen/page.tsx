@@ -24,6 +24,13 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
     join('bloggen', params.lang, `${params.file}.mdx`),
   );
 
+  if (!fileContent) {
+    throw new Response('Not Found', {
+      status: 404,
+      statusText: 'Not Found',
+    });
+  }
+
   // Generate the MDX content
   const result = await generateFromMdx(fileContent);
 
