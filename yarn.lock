@@ -12302,8 +12302,8 @@ __metadata:
   linkType: hard
 
 "react-router@npm:^7.5.1":
-  version: 7.5.1
-  resolution: "react-router@npm:7.5.1"
+  version: 7.5.2
+  resolution: "react-router@npm:7.5.2"
   dependencies:
     cookie: "npm:^1.0.1"
     set-cookie-parser: "npm:^2.6.0"
@@ -12314,7 +12314,7 @@ __metadata:
   peerDependenciesMeta:
     react-dom:
       optional: true
-  checksum: 10/c5c3bacbb93058f4cbf93557ea4d3376393e071aa59e2f7044060cc4073b2a253fcd29c7c0b89d6c373d56dc7e2494729871e5a72be66988b1c0bd726f7cfc0e
+  checksum: 10/7586ecb7fc17eaac70bf5fe838c94f9f3a2e18e6802a4eddf1ad10b0a51ca83c969f5b36b8e2be47fe46453fea7199f99f422d8554fd159a827c25c287ba5741
   languageName: node
   linkType: hard
 
