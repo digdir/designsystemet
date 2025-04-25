@@ -1,5 +1,15 @@
 # Change Log
 
+## 1.0.4
+
+### Patch Changes
+
+- Add `unset:all` to `summary::before` for correct styling. ([#3458](https://github.com/digdir/designsystemet/pull/3458))
+
+- Add empty typings for easier import in typescript ([#3446](https://github.com/digdir/designsystemet/pull/3446))
+
+- **Fieldset**: Fix visual regression in 1.0.3 which added unintended padding on `<legend>` ([#3427](https://github.com/digdir/designsystemet/pull/3427))
+
 ## 1.0.3
 
 ### Patch Changes
