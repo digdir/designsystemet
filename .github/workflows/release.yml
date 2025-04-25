@@ -32,7 +32,7 @@ jobs:
           commit: 'chore: new release'
           title: 'chore: new release'
           createGithubReleases: aggregate
-          githubReleaseName: Designsystemet@${{ steps.release_version.outputs.value }}
+          githubReleaseName: v${{ steps.release_version.outputs.value }}
           githubTagName: v${{ steps.release_version.outputs.value }}
 
         env:
