@@ -3,6 +3,7 @@ import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
 import { ArrowLeftIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import { Link as RouterLink } from 'react-router';
+import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { formatDate } from '~/_utils/date';
 import { getFileFromContentDir } from '~/_utils/files';
@@ -69,6 +70,7 @@ export default function GodPraksis({
       <div className={classes.container}>
         <div className={classes.content}>
           <MDXComponents code={code} />
+          <EditPageOnGithub />
         </div>
       </div>
     </>

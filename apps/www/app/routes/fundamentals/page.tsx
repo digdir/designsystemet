@@ -2,6 +2,7 @@ import { join } from 'node:path';
 import { Heading } from '@digdir/designsystemet-react';
 import { ComponentIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
+import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { formatDateNorwegian } from '~/_utils/date';
 import { getFileFromContentDir } from '~/_utils/files';
@@ -59,6 +60,7 @@ export default function Fundamentals({ loaderData }: Route.ComponentProps) {
       </div>
       <div className={classes.content}>
         <MDXComponents code={loaderData.code} />
+        <EditPageOnGithub />
       </div>
     </>
   );
