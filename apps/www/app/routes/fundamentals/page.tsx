@@ -7,6 +7,7 @@ import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { formatDate } from '~/_utils/date';
 import { getFileFromContentDir } from '~/_utils/files';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
+import { generateMetadata } from '~/_utils/metadata';
 import type { Route } from './+types/page';
 import classes from './page.module.css';
 
@@ -37,7 +38,10 @@ export async function loader({ params }: Route.LoaderArgs) {
 }
 
 export const meta = ({ data }: Route.MetaArgs) => {
-  return [{ title: `${data.frontmatter.title} - Designsystemet` }];
+  return generateMetadata({
+    title: data.frontmatter.title,
+    description: data.frontmatter.description,
+  });
 };
 
 export default function Fundamentals({

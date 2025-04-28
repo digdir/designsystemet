@@ -7,6 +7,9 @@ import {
 } from '@react-router/dev/routes';
 
 export default [
+  route('/slack', 'routes/slack.tsx', {
+    id: 'slack-redirect',
+  }),
   layout('./layouts/root/layout.tsx', [
     ...prefix('/:lang', [
       index('routes/home/home.tsx', {
@@ -55,7 +58,4 @@ export default [
       }),
     ]),
   ]),
-  route('/slack', 'routes/slack.tsx', {
-    id: 'slack-redirect',
-  }),
 ] satisfies RouteConfig;
