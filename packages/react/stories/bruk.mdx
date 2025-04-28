@@ -10,10 +10,11 @@ Under kan du lese om:
 - [React](#react)
   - [Props](#props)
   - [SSR](#ssr)
-  - [Komponenter med `.Root`](#komponenter-med-root)
+  - [Komponenter med `.TriggerContext`](#komponenter-med-triggercontext)
 - [CSS](#css)
   - [Layers](#layers)
   - [Data attributter](#data-attributter)
+  - [Hjelpeklasser](#hjelpeklasser)
 
 ## React
 
@@ -147,3 +148,18 @@ Dette kan løses ved å f.eks bruke [attribute selector](https://developer.mozil
   …
 </table>
 ```
+
+### Hjelpeklasser
+
+Vi benytter oss av enkelte hjelpeklasser som kan brukes mer generelt på tvers av komponenter.
+
+#### `ds-sr-only`
+Skjuler et element visuelt mens det fortsatt er tilgjengelig for skjermlesere.
+
+#### `ds-focus` / `ds-focus--inset`
+Legger til designsystemets fokusring rundt elementet _når det får fokus med tastaturnavigering_ (`:focus-visible`).
+
+#### `ds-focus--visible` / `ds-focus--visible--inset`
+Statiske "alltid på" klasser som legger til designsystemets fokusring rundt elementet. <span className='ds-focus--visible'>Eksempel.</span>
+
+

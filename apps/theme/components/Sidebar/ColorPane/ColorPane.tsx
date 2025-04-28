@@ -4,7 +4,6 @@ import {
   Heading,
   Paragraph,
   Textfield,
-  Tooltip,
 } from '@digdir/designsystemet-react';
 import { ChevronLeftIcon, TrashIcon } from '@navikt/aksel-icons';
 import { ColorPicker, type IColor } from 'react-color-palette';
@@ -16,33 +15,29 @@ import classes from './ColorPane.module.css';
 
 type ColorPaneProps = {
   onClose: () => void;
-  onPrimaryClicked: (color: string, name: string) => void;
-  show?: boolean;
   type: 'add-color' | 'edit-color' | 'none';
   color: IColor;
   setColor: (color: IColor) => void;
   name: string;
   setName: (name: string) => void;
+  onCancel: () => void;
   onRemove: () => void;
   colorType: 'main' | 'neutral' | 'support';
 };
 
 export const ColorPane = ({
   onClose,
-  onPrimaryClicked,
-  show = false,
   type,
   color,
   setColor,
   name,
+  onCancel,
   setName,
   onRemove,
   colorType,
 }: ColorPaneProps) => {
   const mainColors = useThemeStore((state) => state.colors.main);
   const [colorError, setColorError] = useState('');
-
-  const disableRemoveButton = colorType === 'main' && mainColors.length === 1;
 
   const getHeading = () => {
     const t = colorType === 'main' ? 'hovedfarge' : 'støttefarge';
@@ -80,31 +75,43 @@ export const ColorPane = ({
         <Button
           data-size='sm'
           variant='tertiary'
-          onClick={closeTab}
+          onClick={() => {
+            /* Check here as well to disable sending new color */
+            if (!checkNameIsValid()) return;
+            closeTab();
+          }}
           className={classes.back}
         >
-          <ChevronLeftIcon aria-hidden fontSize='1.5rem' /> Gå tilbake
+          <ChevronLeftIcon aria-hidden fontSize='1.5rem' /> Lagre
         </Button>
-        <Tooltip
-          content='Du må ha minst en hovedfarge'
-          hidden={!disableRemoveButton}
+        <Button
+          data-size='sm'
+          variant='tertiary'
+          data-color='neutral'
+          hidden={type !== 'edit-color'}
+          onClick={() => {
+            onCancel();
+          }}
+          className={classes.cancel}
         >
-          <Button
-            data-size='sm'
-            variant='tertiary'
-            data-color='danger'
-            onClick={() => {
-              if (disableRemoveButton) return;
-              onRemove();
-            }}
-            className={cl(classes.removeBtn)}
-            hidden={type !== 'edit-color' || colorType === 'neutral'}
-            aria-disabled={disableRemoveButton || undefined}
-          >
-            Fjern farge
-            <TrashIcon title='søppelkasse' fontSize='1.5rem' />
-          </Button>
-        </Tooltip>
+          Avbryt
+        </Button>
+        <Button
+          data-size='sm'
+          variant='tertiary'
+          data-color='danger'
+          onClick={() => {
+            onRemove();
+          }}
+          className={cl(classes.removeBtn)}
+          hidden={
+            colorType === 'neutral' ||
+            (colorType === 'main' && mainColors.length <= 1)
+          }
+        >
+          Fjern farge
+          <TrashIcon title='søppelkasse' fontSize='1.5rem' />
+        </Button>
       </div>
       <Heading data-size='xs' className={classes.title}>
         {getHeading()}
@@ -146,28 +153,6 @@ export const ColorPane = ({
         onChange={setColor}
         hideInput={['rgb', 'hsv']}
       />
-      <div className={classes.btnGroup}>
-        <Button
-          data-size='sm'
-          data-color='neutral'
-          onClick={() => {
-            /* Check here as well to disable sending new color */
-            if (!checkNameIsValid()) return;
-            onPrimaryClicked(color.hex, name);
-          }}
-        >
-          {type === 'add-color' ? 'Legg til' : 'Lagre'}
-        </Button>
-
-        <Button
-          data-size='sm'
-          data-color='neutral'
-          variant='secondary'
-          onClick={closeTab}
-        >
-          Avbryt
-        </Button>
-      </div>
     </div>
   );
 };

@@ -31,18 +31,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: -4px;
+  margin-top: -8px;
 }
 
 .btnGroup {
   display: flex;
   margin-top: 24px;
   gap: 16px;
-}
-
-.removeBtn {
-  margin-right: -8px;
-  margin-top: -4px;
 }
 
 .colorPreviewContainer {
@@ -59,7 +54,14 @@
 
 .back {
   margin-left: -16px;
-  margin-top: -4px;
+}
+
+.cancel {
+  margin-right: auto;
+}
+
+.removeBtn {
+  margin-right: -16px;
 }
 
 .show {

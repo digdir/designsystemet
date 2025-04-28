@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet-css",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "CSS for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -9,10 +9,14 @@
   },
   "license": "MIT",
   "exports": {
-    ".": "./dist/src/index.css",
+    ".": {
+      "types": "./types.d.ts",
+      "default": "./dist/src/index.css"
+    },
     "./*": "./dist/src/*"
   },
   "files": [
+    "./types.d.ts",
     "dist"
   ],
   "publishConfig": {
@@ -36,10 +40,10 @@
     "build": "rimraf dist && postcss ./src/*.css --base . --dir ./dist"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.20",
+    "autoprefixer": "^10.4.21",
     "cssnano": "^7.0.6",
-    "postcss": "^8.5.1",
-    "postcss-cli": "^11.0.0",
+    "postcss": "^8.5.3",
+    "postcss-cli": "^11.0.1",
     "postcss-import": "^16.1.0",
     "postcss-nesting": "^13.0.1",
     "rimraf": "^6.0.1"

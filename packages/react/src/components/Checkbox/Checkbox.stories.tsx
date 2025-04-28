@@ -227,7 +227,7 @@ export const Conditional: StoryFn<UseCheckboxGroupProps> = (args) => {
       {open ? (
         <>
           <Button onClick={() => setOpen(false)}>
-            <FloppydiskIcon /> Lagre
+            <FloppydiskIcon aria-hidden /> Lagre
           </Button>
           <Fieldset>
             <Fieldset.Legend>
@@ -244,7 +244,7 @@ export const Conditional: StoryFn<UseCheckboxGroupProps> = (args) => {
         </>
       ) : (
         <Button onClick={() => setOpen(true)} variant='secondary'>
-          <PencilIcon /> Rediger
+          <PencilIcon aria-hidden /> Rediger
         </Button>
       )}
     </>

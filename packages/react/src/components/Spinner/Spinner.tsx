@@ -1,7 +1,7 @@
-import { useMergeRefs } from '@floating-ui/react';
 import cl from 'clsx/lite';
 import { type ComponentPropsWithoutRef, forwardRef } from 'react';
 import { useSynchronizedAnimation } from '../../utilities';
+import { useMergeRefs } from '../../utilities/hooks';
 
 export type SpinnerProps = {
   /**

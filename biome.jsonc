@@ -17,7 +17,8 @@
       "apps/storefront/tokens/**",
       "**/dist/**/*",
       "packages/theme/**/*.css",
-      "**/tsconfig.*.json" // https://github.com/biomejs/biome/issues/1151
+      "**/tsconfig.*.json", // https://github.com/biomejs/biome/issues/1151
+      "**/.react-router/**"
     ]
   },
   "formatter": {

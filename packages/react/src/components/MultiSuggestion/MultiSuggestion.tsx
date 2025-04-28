@@ -10,10 +10,10 @@ import {
   useState,
 } from 'react';
 import '@u-elements/u-tags';
-import { useMergeRefs } from '@floating-ui/react';
 import { getDatalistValue, syncDatalistState } from '@u-elements/u-datalist';
 import type { UHTMLTagsElement } from '@u-elements/u-tags';
 import cl from 'clsx/lite';
+import { useMergeRefs } from '../../utilities/hooks';
 
 type MultiSuggestionContextType = {
   selectedItems?: { [key: string]: HTMLDataElement };

@@ -11,6 +11,7 @@ import { CodeBlock } from '../../_components';
 import { customStylesDecorator } from '../story-utils/customStylesDecorator';
 import { fontsLoader } from '../story-utils/fontsLoader';
 import { allModes, viewportWidths } from '../story-utils/modes';
+import { transformSource } from '../story-utils/transformSource';
 import customTheme from './customTheme';
 
 const viewports: Record<string, object> = {};
@@ -137,12 +138,46 @@ const components = {
 
 const preview: Preview = {
   tags: ['a11y-test'],
+  globalTypes: {
+    codePreview: {
+      description: '"Show code" will output the selected format',
+      toolbar: {
+        icon: 'markup',
+        items: [
+          { title: 'HTML', value: 'html' },
+          { title: 'React', value: 'react' },
+        ],
+        dynamicTitle: true,
+      },
+    },
+    colorScheme: {
+      description: 'Set color-scheme in stories',
+      defaultValue: 'light',
+      toolbar: {
+        title: 'Theme',
+        icon: 'contrast',
+        items: [
+          { title: 'Light', value: 'light' },
+          { title: 'Dark', value: 'dark' },
+        ],
+        dynamicTitle: true,
+      },
+    },
+  },
+  initialGlobals: {
+    codePreview: 'react',
+    colorScheme: 'light',
+  },
   parameters: {
     layout: 'centered',
     viewMode: 'docs',
     docs: {
       theme: customTheme,
       components,
+      source: {
+        transform: transformSource,
+        type: 'auto',
+      },
     },
     controls: {
       matchers: {
@@ -176,8 +211,14 @@ const preview: Preview = {
         desktop: allModes[1200],
       },
     },
+    a11y: {
+      test: 'error',
+    },
     backgrounds: {
       disable: true,
+    },
+    html: {
+      root: '.storybook-decorator', // default: #root
     },
   },
   decorators: [customStylesDecorator],

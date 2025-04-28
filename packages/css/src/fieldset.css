@@ -4,6 +4,10 @@
   min-width: 0;
   padding: 0;
 
+  & > legend {
+    padding: 0; /* Reset browser default padding */
+  }
+
   /* Add lock icon to legend when only containing readonly inputs */
   &:has(input[readonly]):not(:has(input:not([readonly]))) > legend {
     @composes ds-readonly-icon from './base.css'; /* Activate lock icon for legend when all inputs are readonly */
