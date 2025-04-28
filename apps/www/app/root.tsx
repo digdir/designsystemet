@@ -86,7 +86,7 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
     },
     {
       name: 'navigation.components',
-      href: `/${lang}/komponenter`,
+      href: `/${lang}/components`,
     },
     {
       name: 'navigation.theme-builder',

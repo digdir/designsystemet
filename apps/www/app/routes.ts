@@ -50,7 +50,7 @@ export default [
           }),
         ]),
       ]),
-      route('/komponenter', 'routes/components/components.tsx', {
+      route('/components', 'routes/components/components.tsx', {
         id: 'components',
       }),
     ]),

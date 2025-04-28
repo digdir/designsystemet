@@ -34,7 +34,7 @@ const getContentPathsWithLanguages = (): string[] => {
       if (
         [
           'patterns',
-          'komponenter',
+          'components',
           'blog',
           'grunnleggende',
           'god-praksis',
@@ -108,7 +108,7 @@ const config: Config = {
   buildDirectory: 'dist',
   prerender: async () => {
     const contentPaths = getContentPathsWithLanguages();
-    return ['/no/komponenter', ...contentPaths];
+    return ['/no/components', ...contentPaths];
   },
   /* serverBundles: async (args) => {
     for (const route of args.branch) {
