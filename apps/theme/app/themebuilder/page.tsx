@@ -17,11 +17,9 @@ export default function Page() {
     name: string;
     value: 'overview' | 'colorsystem' | 'contrast' | 'typography' | 'radius';
   }[] = [
-    { name: 'Eksempler', value: 'overview' },
-    { name: 'Fargesystem', value: 'colorsystem' },
-    { name: 'Kontrast', value: 'contrast' },
+    { name: 'Farger', value: 'colorsystem' },
+    { name: 'Kontraster', value: 'contrast' },
     { name: 'Typografi', value: 'typography' },
-    { name: 'Border-radius', value: 'radius' },
   ];
 
   return (

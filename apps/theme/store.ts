@@ -19,6 +19,7 @@ export type ColorTheme = {
 export type BaseBorderRadius = number;
 export type ColorMetadataType = typeof colorMetadata;
 type PageType =
+  | 'front'
   | 'colors'
   | 'color'
   | 'dimensions'
@@ -97,7 +98,7 @@ export const useThemeStore = create(
       const colors = useThemeStore.getState().colors[type];
       return colors[index];
     },
-    activePage: 'colors',
+    activePage: 'front',
     setActivePage: (page) => set({ activePage: page }),
     baseBorderRadius: 4,
     colorScheme: 'light',
@@ -192,7 +193,7 @@ export const useThemeStore = create(
         },
       ],
     },
-    themeTab: 'overview',
+    themeTab: 'colorsystem',
     setThemeTab: (tab) => set({ themeTab: tab }),
     addColor: (newColor, type) =>
       set((state) => {

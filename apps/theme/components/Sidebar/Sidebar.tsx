@@ -13,6 +13,7 @@ import { CogIcon } from '@navikt/aksel-icons';
 import { BorderRadiusInput } from '../BorderRadiusInput/BorderRadiusInput';
 import { TokenModal } from '../TokenModal/TokenModal';
 import { ColorPage } from './ColorPage/ColorPage';
+import { FrontPage } from './FrontPage/FrontPage';
 import classes from './Sidebar.module.css';
 
 export const Sidebar = () => {
@@ -61,6 +62,7 @@ export const Sidebar = () => {
             showSidebar && classes.showSidebar,
           )}
         >
+          {activePage === 'front' && <FrontPage />}
           {activePage === 'colors' && <ColorPage />}
         </div>
       </div>

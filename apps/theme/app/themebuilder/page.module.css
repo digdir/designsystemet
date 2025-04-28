@@ -100,7 +100,7 @@
 .tabs {
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 4px;
 
   & button {
     background-color: transparent;
@@ -108,19 +108,21 @@
     cursor: pointer;
     margin: 0;
     text-transform: capitalize;
-    padding: var(--ds-size-3) var(--ds-size-4);
+    padding: var(--ds-size-3) var(--ds-size-5);
     font-size: 16px;
     font-weight: 500;
     border-radius: var(--ds-border-radius-md);
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    border: 1px solid transparent;
 
     &:not([data-active='true']) {
       color: var(--ds-color-neutral-text-default);
     }
 
     &[data-active='true'] {
-      background-color: var(--ds-color-brand3-surface-hover);
+      background-color: var(--ds-color-brand3-surface-tinted);
+      border: 1px solid var(--ds-color-brand3-border-subtle);
     }
   }
 }

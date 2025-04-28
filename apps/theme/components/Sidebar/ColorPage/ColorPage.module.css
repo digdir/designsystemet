@@ -62,5 +62,26 @@
 .lightBtn {
   align-self: flex-start;
   margin-left: -12px;
+}
+
+.back {
+  align-self: flex-start;
+  margin-left: -16px;
+  margin-top: -10px;
+  margin-bottom: 8px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  margin-bottom: 16px;
   margin-top: 8px;
+}
+
+.card:hover {
+  background-color: var(--ds-color-neutral-background-tinted);
+  cursor: pointer;
 }

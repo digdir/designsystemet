@@ -1,15 +1,16 @@
 .toggle {
   display: flex;
-  gap: var(--ds-size-4);
+  gap: var(--ds-size-2);
 }
 
 .item {
   flex: 1 1;
   width: 88px;
-  gap: 10px;
+  gap: 8px;
 }
 
 .item[data-variant='primary'] {
-  background-color: var(--ds-color-brand3-surface-hover);
+  background-color: var(--ds-color-brand3-surface-tinted);
   color: var(--ds-color-neutral-text-default);
+  border: 1px solid var(--ds-color-brand3-border-subtle);
 }

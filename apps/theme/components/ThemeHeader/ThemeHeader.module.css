@@ -13,14 +13,14 @@
 }
 
 .headerContent {
-  background-color: var(--ds-color-brand3-surface-hover);
   padding: var(--ds-size-11) var(--ds-size-8) var(--ds-size-11) var(--ds-size-8);
+  background-color: var(--ds-color-accent-surface-hover);
 }
 
 .textContainer {
   display: flex;
   flex-direction: column;
-  gap: var(--ds-size-7);
+  gap: var(--ds-size-6);
 }
 
 .backLink {

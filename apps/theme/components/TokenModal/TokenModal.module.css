@@ -96,6 +96,21 @@
 
 .trigger {
   width: 100%;
+  height: 64px;
+  border: none;
+  background-size: 450% 100%;
+  background-image: linear-gradient(
+    to right,
+    var(--ds-color-accent-base-default),
+    var(--ds-color-brand3-base-default),
+    var(--ds-color-accent-base-default),
+    var(--ds-color-brand3-base-default)
+  );
+}
+
+.trigger svg {
+  font-size: 1.7rem;
+  margin-left: -8px;
 }
 
 .step {

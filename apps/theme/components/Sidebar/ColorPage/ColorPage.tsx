@@ -4,12 +4,16 @@ import {
 } from '@digdir/designsystemet';
 import { Button, Heading } from '@digdir/designsystemet-react';
 import type { CssColor } from '@digdir/designsystemet/color';
-import { CogIcon, PlusIcon } from '@navikt/aksel-icons';
+import {
+  ChevronLeftIcon,
+  CogIcon,
+  InformationSquareIcon,
+  PlusIcon,
+} from '@navikt/aksel-icons';
 import { useState } from 'react';
 import { ColorService, useColor } from 'react-color-palette';
 import { type ColorTheme, useThemeStore } from '../../../store';
 import { ColorInput } from '../../ColorInput/ColorInput';
-import { TokenModal } from '../../TokenModal/TokenModal';
 import { ColorPane } from '../ColorPane/ColorPane';
 import { LightnessPage } from '../LightnessPage/LightnessPage';
 import classes from './ColorPage.module.css';
@@ -31,6 +35,7 @@ export const ColorPage = () => {
   const [initialName, setInitialName] = useState(name);
   const colorMetadata = useThemeStore((state) => state.colorMetadata);
   const getColorTheme = useThemeStore((state) => state.getColorTheme);
+  const setActivePage = useThemeStore((state) => state.setActivePage);
 
   const setupEditState = (
     colorTheme: ColorTheme,
@@ -76,6 +81,17 @@ export const ColorPage = () => {
 
   return (
     <div>
+      <Button
+        hidden={activePanel !== 'none'}
+        data-size='sm'
+        variant='tertiary'
+        onClick={() => {
+          setActivePage('front');
+        }}
+        className={classes.back}
+      >
+        <ChevronLeftIcon aria-hidden fontSize='1.5rem' /> Meny
+      </Button>
       <Heading
         data-size='xs'
         className={classes.title}
@@ -194,27 +210,7 @@ export const ColorPage = () => {
               colorType,
             );
           }}
-          onStaticSaturation={(e) => {
-            const colorTheme = getColorTheme(index, colorType);
-            if (!colorTheme) return;
-
-            colorTheme.settings.static.lightSaturation = e;
-
-            const updatedColors = generateColorSchemes(
-              color.hex as CssColor,
-              colorMetadata,
-              colorTheme.settings,
-            );
-
-            updateColorTheme(
-              {
-                ...colorTheme,
-                colors: updatedColors,
-              },
-              index,
-              colorType,
-            );
-          }}
+          index={index}
           type={activePanel}
           color={color}
           name={name}
@@ -262,6 +258,11 @@ export const ColorPage = () => {
 
       {activePanel === 'none' && (
         <>
+          <div className={classes.separator}></div>
+          <div className={classes.card}>
+            <InformationSquareIcon title='a11y-title' fontSize='1.4rem' />
+            Endre på statusfarger
+          </div>
           <Button
             className={classes.lightBtn}
             variant='tertiary'
@@ -272,9 +273,6 @@ export const ColorPage = () => {
             <CogIcon title='tannhjul' fontSize='1.5rem' />
             Globale fargeinnstillinger
           </Button>
-          <div className={classes.bottom} data-size='sm'>
-            <TokenModal />
-          </div>
         </>
       )}
     </div>

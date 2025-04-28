@@ -24,7 +24,7 @@ type ColorPaneProps = {
   onCancel: () => void;
   onRemove: () => void;
   colorType: 'main' | 'neutral' | 'support';
-  onStaticSaturation: (saturation: number) => void;
+  index: number;
 };
 
 export const ColorPane = ({
@@ -36,8 +36,8 @@ export const ColorPane = ({
   onCancel,
   setName,
   onRemove,
+  index,
   colorType,
-  onStaticSaturation,
 }: ColorPaneProps) => {
   const mainColors = useThemeStore((state) => state.colors.main);
   const [colorError, setColorError] = useState('');
@@ -88,7 +88,7 @@ export const ColorPane = ({
               }}
               className={classes.back}
             >
-              <ChevronLeftIcon aria-hidden fontSize='1.5rem' /> Lagre
+              <ChevronLeftIcon aria-hidden fontSize='1.5rem' /> Farger
             </Button>
             <Button
               data-size='sm'
@@ -175,7 +175,10 @@ export const ColorPane = ({
       {advancedColors && (
         <AdvancedColorPage
           onBackClicked={() => setAdvancedColors(false)}
-          onLightStaticSaturation={onStaticSaturation}
+          colorType={colorType}
+          index={index}
+          name={name}
+          color={color.hex}
         />
       )}
     </div>

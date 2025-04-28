@@ -1,0 +1,87 @@
+.label {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.labelContainer {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.resetBtn {
+  height: 28px;
+  width: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  right: 7px;
+  top: 7px;
+}
+
+.resetBtn:hover {
+  background-color: var(--ds-color-surface-active);
+}
+
+.resetBtn svg {
+  transform: scale(1.5);
+}
+
+.sliderContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.slider {
+  width: 80%;
+  height: 42px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.rangeLabels {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.inputContainer {
+  width: 20%;
+  position: relative;
+}
+
+.valueInput {
+  width: 100%;
+  height: 42px;
+  background-color: transparent;
+  border: 1px solid var(--ds-color-neutral-border-default);
+  border-radius: 4px;
+  padding-left: 12px;
+  font-size: 16px;
+}
+
+.activeInput {
+  border: 1px solid var(--ds-color-border-default);
+  background-color: var(--ds-color-surface-tinted);
+}
+
+.range {
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}
