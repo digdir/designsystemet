@@ -259,10 +259,18 @@ export const ColorPage = () => {
       {activePanel === 'none' && (
         <>
           <div className={classes.separator}></div>
-          <div className={classes.card}>
-            <InformationSquareIcon title='a11y-title' fontSize='1.4rem' />
-            Endre på statusfarger
-          </div>
+
+          <Button
+            className={classes.lightBtn}
+            variant='tertiary'
+            data-size='sm'
+            data-color='neutral'
+            onClick={() => setActivePanel('lightness')}
+          >
+            <InformationSquareIcon title='a11y-title' fontSize='1.5rem' />
+            Statusfarger
+          </Button>
+
           <Button
             className={classes.lightBtn}
             variant='tertiary'

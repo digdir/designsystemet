@@ -69,12 +69,14 @@ export const AdvancedColorPage = ({
           label='Base Hover'
           handleReset={() => {}}
           initialValue={50}
+          oneLiner
         />
 
         <LightnessInput
           label='Base Active'
           handleReset={() => {}}
           initialValue={50}
+          oneLiner
         />
       </div>
 
@@ -85,18 +87,21 @@ export const AdvancedColorPage = ({
           label='Base Default'
           handleReset={() => {}}
           initialValue={50}
+          oneLiner
         />
 
         <LightnessInput
           label='Base Hover'
           handleReset={() => {}}
           initialValue={50}
+          oneLiner
         />
 
         <LightnessInput
           label='Base Active'
           handleReset={() => {}}
           initialValue={50}
+          oneLiner
         />
       </div>
     </div>

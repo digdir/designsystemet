@@ -7,6 +7,17 @@
   overflow-x: auto;
 }
 
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  background-color: var(--ds-color-neutral-surface-default);
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: var(--ds-shadow-xs);
+  margin-top: 16px;
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -15,16 +26,6 @@
   padding: 18px;
   border: 1px solid var(--ds-color-border-subtle);
   background-color: var(--ds-color-surface-tinted);
-}
-
-.title {
-  margin-bottom: 8px;
-  color: var(--ds-color-text-default);
-  width: 200px;
-}
-
-.desc {
-  color: var(--ds-color-text-subtle);
 }
 
 .checkGroup {
@@ -44,4 +45,31 @@
   font-weight: 500;
   margin-bottom: 8px;
   font-size: 16px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.headerLeft {
+  width: 50%;
+}
+
+.cardTitle {
+  margin-bottom: 8px;
+}
+
+.title {
+  margin-bottom: 12px;
+}
+
+.page {
+  margin-top: 40px;
+}
+
+.desc {
+  margin-bottom: 12px;
 }

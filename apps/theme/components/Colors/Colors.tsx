@@ -1,7 +1,11 @@
-import { Button, Divider } from '@digdir/designsystemet-react';
+import {
+  Button,
+  Divider,
+  Heading,
+  Paragraph,
+} from '@digdir/designsystemet-react';
 import { generateColorSchemes } from '@digdir/designsystemet/color';
 import { ChevronDownIcon } from '@navikt/aksel-icons';
-import cl from 'clsx/lite';
 import { useEffect, useState } from 'react';
 import { useThemeStore } from '../../store';
 import { Scale } from '../Scale/Scale';
@@ -15,6 +19,7 @@ export const Colors = () => {
   );
   const updateColorTheme = useThemeStore((state) => state.updateColorTheme);
   const [showStatus, setShowStatus] = useState(false);
+  const colorScheme = useThemeStore((state) => state.colorScheme);
 
   useEffect(() => {
     const updatedMainColors = colors.main.map((color, index) => {
@@ -80,82 +85,26 @@ export const Colors = () => {
     return false;
   };
 
-  const Input = ({
-    color,
-  }: { color: { name: string; luminance: { light: number } } }) => {
-    return (
-      <div className={classes.inputContainer}>
-        <input
-          className={cl(classes.input, tomato(color) && classes.activeInput)}
-          type='text'
-          defaultValue={color.luminance.light.toFixed(1)}
-          onChange={(e) => {
-            const newColorMetadata = { ...colorMetadata };
-            const test = parseFloat(e.target.value);
-
-            if (color.name in newColorMetadata) {
-              newColorMetadata[
-                color.name as keyof typeof newColorMetadata
-              ].luminance.light = test;
-            }
-            useThemeStore.setState({
-              colorMetadata: newColorMetadata,
-            });
-          }}
-        />
-      </div>
-    );
-  };
-
   return (
-    <div className={classes.rows}>
-      {colors.main.map((color, index) => (
-        <div key={index} className={classes.row}>
-          <div className={classes.scaleLabel}>{color.name}</div>
-          <Scale
-            colorScale={color.colors}
-            showHeader={index === 0}
-            showColorMeta={false}
-            namespace={color.name}
-          />
-        </div>
-      ))}
-      <Divider />
-      {colors.neutral.map((color, index) => (
-        <div key={index} className={classes.row}>
-          <div className={classes.scaleLabel}>{color.name}</div>
-          <Scale
-            colorScale={color.colors}
-            namespace={color.name}
-            showColorMeta={false}
-          />
-        </div>
-      ))}
-      <Divider />
-      {colors.support.map((color, index) => (
-        <div key={index} className={classes.row}>
-          <div className={classes.scaleLabel}>{color.name}</div>
-          <Scale
-            colorScale={color.colors}
-            namespace={color.name}
-            showColorMeta={false}
-          />
-        </div>
-      ))}
-      <div className={classes.showContainer}>
-        <Button
-          data-size='sm'
-          variant='secondary'
-          data-color='neutral'
-          className={classes.showBtn}
-          onClick={() => setShowStatus(!showStatus)}
-        >
-          {showStatus ? 'Skjul statusfarger' : 'Vis statusfarger'}
-          <ChevronDownIcon title='a11y-title' fontSize='1.5rem' />
-        </Button>
-      </div>
-      {showStatus &&
-        colors.status.map((color, index) => (
+    <div className={classes.page}>
+      <Heading className={classes.title}>Fargeskalaer</Heading>
+      <Paragraph className={classes.desc} data-size='sm'>
+        Her kan du se en oversikt over fargeskalaene dine.
+      </Paragraph>
+      <div className={classes.rows} data-color-scheme={colorScheme}>
+        {colors.main.map((color, index) => (
+          <div key={index} className={classes.row}>
+            <div className={classes.scaleLabel}>{color.name}</div>
+            <Scale
+              colorScale={color.colors}
+              showHeader={index === 0}
+              showColorMeta={false}
+              namespace={color.name}
+            />
+          </div>
+        ))}
+        <Divider />
+        {colors.neutral.map((color, index) => (
           <div key={index} className={classes.row}>
             <div className={classes.scaleLabel}>{color.name}</div>
             <Scale
@@ -165,6 +114,41 @@ export const Colors = () => {
             />
           </div>
         ))}
+        <Divider />
+        {colors.support.map((color, index) => (
+          <div key={index} className={classes.row}>
+            <div className={classes.scaleLabel}>{color.name}</div>
+            <Scale
+              colorScale={color.colors}
+              namespace={color.name}
+              showColorMeta={false}
+            />
+          </div>
+        ))}
+        <div className={classes.showContainer}>
+          <Button
+            data-size='sm'
+            variant='secondary'
+            data-color='neutral'
+            className={classes.showBtn}
+            onClick={() => setShowStatus(!showStatus)}
+          >
+            {showStatus ? 'Skjul statusfarger' : 'Vis statusfarger'}
+            <ChevronDownIcon title='a11y-title' fontSize='1.5rem' />
+          </Button>
+        </div>
+        {showStatus &&
+          colors.status.map((color, index) => (
+            <div key={index} className={classes.row}>
+              <div className={classes.scaleLabel}>{color.name}</div>
+              <Scale
+                colorScale={color.colors}
+                namespace={color.name}
+                showColorMeta={false}
+              />
+            </div>
+          ))}
+      </div>
     </div>
   );
 };

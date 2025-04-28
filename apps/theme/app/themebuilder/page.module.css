@@ -6,7 +6,7 @@
 .content {
   padding-top: 0;
   padding-right: 0;
-  width: 100%;
+  width: calc(100% - 470px);
   margin-bottom: 40px;
   flex-grow: 500;
 
@@ -16,15 +16,14 @@
 }
 
 .sideBarContainer {
-  flex-basis: 570px;
   flex-grow: 1;
+  width: 450px;
 }
 
 .container {
   display: flex;
   justify-content: space-between;
   gap: 28px;
-  flex-direction: row-reverse;
   padding-left: 32px;
   padding-right: 32px;
 }

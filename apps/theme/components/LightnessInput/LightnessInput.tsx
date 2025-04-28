@@ -1,6 +1,7 @@
 import { Button, Input } from '@digdir/designsystemet-react';
 import { ArrowsCirclepathIcon, MinusIcon, PlusIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
+import { useEffect, useState } from 'react';
 import classes from './LightnessInput.module.css';
 
 type LightnessInputProps = {
@@ -8,6 +9,7 @@ type LightnessInputProps = {
   handleReset: () => void;
   initialValue?: number;
   value?: number;
+  oneLiner?: boolean;
 };
 
 export const LightnessInput = ({
@@ -15,9 +17,16 @@ export const LightnessInput = ({
   handleReset,
   initialValue,
   value,
+  oneLiner = false,
 }: LightnessInputProps) => {
+  const [currentValue, setCurrentValue] = useState(initialValue);
+
+  useEffect(() => {
+    setCurrentValue(initialValue);
+  }, [initialValue]);
+
   return (
-    <div>
+    <div className={cl(classes.container, oneLiner && classes.oneLiner)}>
       <div className={classes.labelContainer}>
         <div className={classes.label}>{label}</div>
       </div>
@@ -25,10 +34,11 @@ export const LightnessInput = ({
         <div className={classes.inputContainer}>
           <Input
             data-size='sm'
-            defaultValue={initialValue}
+            value={currentValue}
+            onChange={(e) => setCurrentValue(Number(e.target.value))}
             className={cl(
               classes.input,
-              classes.activeInput && value === initialValue,
+              classes.activeInput && currentValue === initialValue,
             )}
           />
           <button className={classes.resetBtn} onClick={handleReset}>

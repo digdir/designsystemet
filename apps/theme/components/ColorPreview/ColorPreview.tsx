@@ -40,10 +40,10 @@ export const ColorPreview = () => {
         style={generateColorVars(color.colors, colorScheme)}
         className={classes.card}
       >
-        <Heading className={classes.title} data-size='2xs'>
+        <Heading className={classes.cardTitle} data-size='2xs'>
           {color.name}
         </Heading>
-        <Paragraph data-size='sm' className={classes.desc}>
+        <Paragraph data-size='sm' className={classes.cardDesc}>
           Livet er for kort til å være grått. Fyll deg selv og dine dager med
           farger.
         </Paragraph>
@@ -111,23 +111,24 @@ export const ColorPreview = () => {
     );
   };
   return (
-    <div className='panelContainer'>
-      <div className='panelLeft'>
-        <div className='panelTop'>
-          <Heading data-size='xs'>Se fargene dine i bruk</Heading>
-          <Paragraph data-size='sm'>
+    <div className={classes.page}>
+      <div className={classes.header}>
+        <div className={classes.headerLeft}>
+          <Heading data-size='xs' className={classes.title}>
+            Se fargene dine i bruk
+          </Heading>
+          <Paragraph data-size='sm' className={classes.desc}>
             Hver farge som blir valgt med verktøyet får sitt eget kort i
             seksjonen til høyre slik at du kan se hvordan fargene harmonerer
             sammen.
           </Paragraph>
-          <Paragraph data-size='sm'>
+          <Paragraph data-size='sm' className={classes.desc}>
             Merk at kontrastfargen inne i knappen endrer seg fra hvit til svart,
             avhengig av om den valgte fargen er lys eller mørk for å oppnå best
             mulig kontrast.
           </Paragraph>
         </div>
-        <div className='panelBottom'>
-          <div className={classes.label}>Visning:</div>
+        <div className={classes.headerRight}>
           <ToggleGroup
             data-size='sm'
             defaultValue='grid'
@@ -138,21 +139,25 @@ export const ColorPreview = () => {
           </ToggleGroup>
         </div>
       </div>
-      <div
-        className={cl(
-          'panelRight',
-          view === 'grid' ? classes.grid : classes.list,
-        )}
-      >
-        {colors.main.map((color, index) => (
-          <CardWrapper key={index} color={color} />
-        ))}
-        {colors.neutral.map((color, index) => (
-          <CardWrapper key={index} color={color} />
-        ))}
-        {colors.support.map((color, index) => (
-          <CardWrapper key={index} color={color} />
-        ))}
+
+      <div className='panel'>
+        <div
+          data-color-scheme={colorScheme}
+          className={cl(
+            classes.cards,
+            view === 'grid' ? classes.grid : classes.list,
+          )}
+        >
+          {colors.main.map((color, index) => (
+            <CardWrapper key={index} color={color} />
+          ))}
+          {colors.neutral.map((color, index) => (
+            <CardWrapper key={index} color={color} />
+          ))}
+          {colors.support.map((color, index) => (
+            <CardWrapper key={index} color={color} />
+          ))}
+        </div>
       </div>
     </div>
   );

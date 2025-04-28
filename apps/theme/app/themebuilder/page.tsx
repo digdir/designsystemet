@@ -26,9 +26,6 @@ export default function Page() {
     <main className={classes.page} id='main'>
       <ThemeHeader />
       <div className={classes.container}>
-        <div className={classes.sideBarContainer}>
-          <Sidebar />
-        </div>
         <div className={classes.content}>
           <div className={classes.toolbar}>
             {/* Tabs that change between overview and */}
@@ -48,6 +45,9 @@ export default function Page() {
             <AppearanceToggle />
           </div>
           <ThemePages />
+        </div>
+        <div className={classes.sideBarContainer}>
+          <Sidebar />
         </div>
       </div>
     </main>

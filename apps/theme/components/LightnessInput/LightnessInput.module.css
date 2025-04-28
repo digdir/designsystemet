@@ -8,8 +8,8 @@
   gap: 8px;
   justify-content: space-between;
   margin-bottom: 8px;
+  width: 255px;
 }
-
 .resetBtn {
   height: 28px;
   width: 28px;
@@ -56,4 +56,15 @@
 
 .inputContainer {
   position: relative;
+}
+
+.oneLiner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0px;
+}
+
+.oneLiner .input {
+  width: 100%;
 }

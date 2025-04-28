@@ -12,7 +12,7 @@
 
 .group {
   display: flex;
-  gap: 12px;
+  gap: 20px;
   flex-direction: column;
   margin-top: 20px;
   margin-bottom: 24px;
@@ -49,4 +49,10 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--ds-color-neutral-surface-hover);
+  border: 1px solid var(--ds-color-neutral-border-default);
 }

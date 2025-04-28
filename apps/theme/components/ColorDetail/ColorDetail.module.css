@@ -1,5 +1,5 @@
 .page {
-  padding: 24px;
+  margin-top: 40px;
 }
 
 .container {
@@ -22,4 +22,24 @@
 
 .header {
   margin-bottom: 32px;
+}
+
+.title {
+  margin-bottom: 8px;
+}
+
+.desc {
+  margin-bottom: 24px;
+}
+
+.panel {
+  background-color: var(--ds-color-neutral-surface-default);
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: var(--ds-shadow-xs);
+  margin-top: 16px;
+}
+
+.lists {
+  margin-top: 32px;
 }

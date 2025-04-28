@@ -1,6 +1,4 @@
 'use client';
-
-import cl from 'clsx/lite';
 import { useEffect, useRef } from 'react';
 import { ColorContrasts, ColorPreview, ColorTokens } from '../../../components';
 import { ColorDetail } from '../../../components/ColorDetail/ColorDetail';
@@ -71,42 +69,25 @@ export const ThemePages = () => {
       >
         <OverviewComponents ref={containerRef} />
       </div>
-      <div
-        className={cl(classes.basicPanel, classes.colorsContainer)}
-        data-color-scheme={colorScheme}
-        hidden={!(themeTab === 'colorsystem')}
-      >
+      <div hidden={!(themeTab === 'colorsystem')}>
         <Colors />
       </div>
-
       <>
-        <div
-          className={classes.panel}
-          data-color-scheme={colorScheme}
-          hidden={!(themeTab === 'colorsystem')}
-        >
+        <div hidden={!(themeTab === 'colorsystem')}>
           <ColorPreview />
         </div>
-        <div
-          className={classes.panel}
-          data-color-scheme={colorScheme}
-          hidden={!(themeTab === 'colorsystem')}
-        >
+        <div hidden={!(themeTab === 'colorsystem')}>
           <ColorTokens />
         </div>
 
-        <div
-          className={classes.panel}
-          data-color-scheme={colorScheme}
-          hidden={!(themeTab === 'colorsystem')}
-        >
+        <div hidden={!(themeTab === 'colorsystem')}>
           <ColorDetail />
         </div>
 
         <div
           className={classes.panel}
           data-color-scheme={colorScheme}
-          hidden={!(themeTab === 'colorsystem')}
+          hidden={!(themeTab === 'contrast')}
         >
           <ColorContrasts />
         </div>

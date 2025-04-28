@@ -1,0 +1,20 @@
+.hsl {
+  background-blend-mode: multiply;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  overflow: unset;
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+}
+
+.base {
+  margin-bottom: 16px;
+  margin-top: 8px;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.gradientBox {
+  border-radius: 8px;
+  height: 50px;
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+}

@@ -1,3 +1,9 @@
+.inputs {
+  display: flex;
+  gap: var(--ds-size-2);
+  flex-direction: column;
+}
+
 .input {
   display: flex;
   align-items: center;
@@ -22,5 +28,11 @@
 }
 
 .luminance {
+  margin-top: 16px;
+}
+
+.btnGroup {
+  display: flex;
+  gap: 16px;
   margin-top: 16px;
 }
