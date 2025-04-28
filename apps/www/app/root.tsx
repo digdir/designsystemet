@@ -40,7 +40,15 @@ export const meta = () => {
   ];
 };
 
-export const loader = async ({ params }: Route.LoaderArgs) => {
+export const loader = async ({ params, request }: Route.LoaderArgs) => {
+  const url = new URL(request?.url || '');
+  /* if the url is slack, then redirect to slack */
+  if (url.pathname === '/slack') {
+    return redirect(
+      process.env.SLACK_INVITE_URL ?? 'https://designsystemet.no',
+    );
+  }
+
   if (params.lang === undefined) {
     return redirect('/no');
   }
@@ -54,7 +62,7 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
   const centerLinks = [
     {
       text: 'footer.about',
-      url: 'https://designsystemet.no/fundamentals/introduksjon/om-designsystemet',
+      url: `${lang}/fundamentals/introduction/about-the-design-system`,
     },
     {
       text: 'footer.privacy',
