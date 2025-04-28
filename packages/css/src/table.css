@@ -32,7 +32,7 @@
     text-align: inherit;
 
     &:is(th) {
-      font-weight: 500;
+      font-weight: var(--ds-font-weight-semibold);
     }
   }
 
