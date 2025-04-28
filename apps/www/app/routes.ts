@@ -30,13 +30,13 @@ export default [
           route('/:file', 'routes/blog/page.tsx'),
         ]),
       ]),
-      ...prefix('/grunnleggende', [
-        layout('./layouts/grunnleggende/layout.tsx', [
-          route('/', 'routes/grunnleggende/grunnleggende.tsx', {
-            id: 'grunnleggende-index',
+      ...prefix('/fundamentals', [
+        layout('./layouts/fundamentals/layout.tsx', [
+          route('/', 'routes/fundamentals/fundamentals.tsx', {
+            id: 'fundamentals-index',
           }),
-          route('/*', 'routes/grunnleggende/page.tsx', {
-            id: 'grunnleggende-page',
+          route('/*', 'routes/fundamentals/page.tsx', {
+            id: 'fundamentals-page',
           }),
         ]),
       ]),

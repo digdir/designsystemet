@@ -36,7 +36,7 @@ const getContentPathsWithLanguages = (): string[] => {
           'patterns',
           'components',
           'blog',
-          'grunnleggende',
+          'fundamentals',
           'best-practices',
         ].includes(contentFolder)
       ) {
@@ -116,9 +116,9 @@ const config: Config = {
         route.file = `routes/patterns/${route.id}.tsx`;
         return `patterns`;
       }
-      if (route.id.includes('grunnleggende')) {
-        route.file = `routes/grunnleggende/${route.id}.tsx`;
-        return `grunnleggende`;
+      if (route.id.includes('fundamentals')) {
+        route.file = `routes/fundamentals/${route.id}.tsx`;
+        return `fundamentals`;
       }
       if (route.id.includes('blog')) {
         route.file = `routes/blog/${route.id}.tsx`;

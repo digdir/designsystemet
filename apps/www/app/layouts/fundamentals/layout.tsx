@@ -24,7 +24,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     });
   }
 
-  const mdxFiles = getFilesFromContentDir(join('grunnleggende', lang));
+  const mdxFiles = getFilesFromContentDir(join('fundamentals', lang));
 
   const cats: {
     [key: string]: {
@@ -53,14 +53,14 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   /* Map over files with mdx parser to get title */
   for (const file of mdxFiles) {
     const fileContent = getFileFromContentDir(
-      join('grunnleggende', lang, file.relativePath),
+      join('fundamentals', lang, file.relativePath),
     );
     const result = await generateFromMdx(fileContent);
 
     const title =
       result.frontmatter.title || file.relativePath.replace('.mdx', '');
     const url =
-      `/${lang}/grunnleggende/${file.relativePath.replace('.mdx', '')}`.replace(
+      `/${lang}/fundamentals/${file.relativePath.replace('.mdx', '')}`.replace(
         '\\',
         '/',
       );
@@ -100,9 +100,9 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
   const matches = useMatches();
   const { t } = useTranslation();
 
-  /* if we have id grunnleggende-page, hide banner */
+  /* if we have id fundamentals-page, hide banner */
   const isGrunnleggendePage = matches.some(
-    (match) => match.id === 'grunnleggende-page',
+    (match) => match.id === 'fundamentals-page',
   );
 
   return (

@@ -54,11 +54,11 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
   const centerLinks = [
     {
       text: 'footer.about',
-      url: 'https://designsystemet.no/grunnleggende/introduksjon/om-designsystemet',
+      url: 'https://designsystemet.no/fundamentals/introduksjon/om-designsystemet',
     },
     {
       text: 'footer.privacy',
-      url: `${lang}/grunnleggende/privacy-policy`,
+      url: `${lang}/fundamentals/privacy-policy`,
     },
     {
       text: 'footer.accessibility',
@@ -70,7 +70,7 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
   const menu = [
     {
       name: 'navigation.fundamentals',
-      href: `/${lang}/grunnleggende`,
+      href: `/${lang}/fundamentals`,
     },
     {
       name: 'navigation.best-practices',

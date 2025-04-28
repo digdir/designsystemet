@@ -55,7 +55,7 @@
   max-width: 780px;
   margin: 0 auto;
 
-  /*TODO: these rich-text styles were copied from routes/grunnleggende/page.module.css*/
+  /*TODO: these rich-text styles were copied from routes/fundamentals/page.module.css*/
   & > *:first-child {
     margin-top: 0;
   }

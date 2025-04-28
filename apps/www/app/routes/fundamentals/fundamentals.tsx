@@ -6,8 +6,8 @@ import { Grid } from '~/_components/grid/grid';
 import { NavigationCard } from '~/_components/navigation-card/navigation-card';
 import { generateMetadata } from '~/_utils/metadata';
 import i18n from '~/i18next.server';
-import type { Route as LayoutRoute } from '../../layouts/grunnleggende/+types/layout';
-import type { Route } from './+types/grunnleggende';
+import type { Route as LayoutRoute } from '../../layouts/fundamentals/+types/layout';
+import type { Route } from './+types/fundamentals';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   if (!lang) {
@@ -32,9 +32,9 @@ export const meta = ({ data: { metadata } }: Route.MetaArgs) => {
   return metadata;
 };
 
-export default function Patterns() {
+export default function Fundamentals() {
   const { cats, descriptions } = useRouteLoaderData(
-    'layouts/grunnleggende/layout',
+    'layouts/fundamentals/layout',
   ) as LayoutRoute.ComponentProps['loaderData'];
 
   return (

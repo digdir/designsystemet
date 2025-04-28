@@ -97,7 +97,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
                 title={t('frontpage.for-designers.title')}
                 description={t('frontpage.for-designers.description')}
                 color='blue'
-                url='grunnleggende/for-designere/kom-i-gang'
+                url='fundamentals/for-designere/kom-i-gang'
                 icon={<PaletteIcon fontSize={36} aria-hidden='true' />}
                 level={2}
               />
@@ -106,7 +106,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
                 title={t('frontpage.for-developers.title')}
                 description={t('frontpage.for-developers.description')}
                 color='yellow'
-                url='grunnleggende/for-utviklere/kom-i-gang'
+                url='fundamentals/for-utviklere/kom-i-gang'
                 icon={<WrenchIcon fontSize={36} aria-hidden='true' />}
                 level={2}
               />
@@ -132,7 +132,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
         imgWidth='1195'
         link={{
           text: t('frontpage.toolbox.link'),
-          href: '/grunnleggende/introduksjon/om-designsystemet',
+          href: '/fundamentals/introduksjon/om-designsystemet',
         }}
       />
 

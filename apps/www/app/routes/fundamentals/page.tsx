@@ -14,7 +14,7 @@ export async function loader({ params }: Route.LoaderArgs) {
 
   // Read the file content
   const fileContent = getFileFromContentDir(
-    join('grunnleggende', params.lang, `${file}.mdx`),
+    join('fundamentals', params.lang, `${file}.mdx`),
   );
 
   if (!fileContent) {
@@ -39,7 +39,7 @@ export const meta = ({ data }: Route.MetaArgs) => {
   return [{ title: `${data.frontmatter.title} - Designsystemet` }];
 };
 
-export default function Grunnleggende({ loaderData }: Route.ComponentProps) {
+export default function Fundamentals({ loaderData }: Route.ComponentProps) {
   return (
     <>
       <div className={classes.header}>
