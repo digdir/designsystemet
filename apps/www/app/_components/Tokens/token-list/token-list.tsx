@@ -17,7 +17,7 @@ import { capitalizeString } from '~/_utils/string-helpers';
 import { TokenBorderRadius } from '../token-border-radius/token-border-radius';
 import classes from './token-list.module.css';
 
-type TokenListProps = {
+export type TokenListProps = {
   type: 'color' | 'typography' | 'shadow' | 'dimension';
   token?: string;
   showThemePicker?: boolean;
@@ -184,7 +184,7 @@ const mapTokens = (tokens: Token[]): [string, Token[]][] =>
     }, new Map<string, Token[]>()),
   );
 
-const TokenList = ({
+export const TokenList = ({
   showThemePicker,
   showModeSwitcher,
   type = 'color',
@@ -272,5 +272,3 @@ const TokenList = ({
     </div>
   );
 };
-
-export { TokenList };
