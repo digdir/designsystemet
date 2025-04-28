@@ -97,7 +97,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
                 title={t('frontpage.for-designers.title')}
                 description={t('frontpage.for-designers.description')}
                 color='blue'
-                url='fundamentals/for-designere/kom-i-gang'
+                url='fundamentals/for-designers/get-started'
                 icon={<PaletteIcon fontSize={36} aria-hidden='true' />}
                 level={2}
               />
@@ -106,7 +106,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
                 title={t('frontpage.for-developers.title')}
                 description={t('frontpage.for-developers.description')}
                 color='yellow'
-                url='fundamentals/for-utviklere/kom-i-gang'
+                url='fundamentals/for-developers/get-started'
                 icon={<WrenchIcon fontSize={36} aria-hidden='true' />}
                 level={2}
               />
