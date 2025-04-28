@@ -2,4 +2,4 @@
 "@digdir/designsystemet-theme": patch
 ---
 
-Added new colors to the internal theme "Portal" 
+Update "Portal" theme colors 
