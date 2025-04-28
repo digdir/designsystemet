@@ -2,6 +2,8 @@ import { MenuPageLayout } from '@layouts';
 
 import { Contributors } from '@blog';
 
+import { Image } from '@components';
+
 import { Table, TableHead, TableCell, TableRow, TableBody, TableHeaderCell } from '@digdir/designsystemet-react';
 
 
@@ -33,7 +35,7 @@ For å skape en forutsigbar og god brukeropplevelse bør vi gi brukeren informas
 
 Måten eksterne lenker markeres på har vært svært variert på tvers av nettsteder. Noen bruker ikoner for å indikere eksterne lenker, mens andre legger til tekst eller åpner lenken i en ny fane. Mangelen på enhetlig praksis kan skape forvirring for brukerne, spesielt når de ikke får tydelig informasjon om hva som skjer når de klikker på en lenke. 
 
-## Språk og design
+## Tekst
 Lenketeksten skal beskrive lenkens formål og oppførsel. 
 
 * Unngå “gå til” eller “klikk her” i lenketeksten. Det er allerede tydelig at det er en lenke. 
@@ -109,6 +111,54 @@ Skjermlesere har funksjonalitet som lar folk skanne siden for å finne innholdet
   boxShadow={false}
 />
 
+## Oppførsel
+
+### Unngå lenker som åpnes i ny fane
+
+Lenker bør i utgangspunktet ikke åpnes i ny fane. Da sikrer vi en forutsigbar brukeropplevelse fordi brukerens egne lenkeinnstillinger i nettleseren videreføres. Flere bruker Tilbake-knappen i nettleseren hvis lenken ikke førte dit de trodde, men det fungerer ikke når lenken ble åpnet i en ny fane. I tillegg er det noen skjermlesere som ikke informerer brukere om at lenken kommer til åpnes i en ny fane. 
+
+Det finnes likevel noen unntak:
+
+* Hvis systemet må logge ut brukeren når det navigeres til en annen side, og det er hensiktsmessig å unngå utlogging, bør lenken åpnes i ny fane. 
+* Når brukeren er midt i en prosess og risikerer å miste innhold ved å klikke på lenken. Ny fane bør vurderes hvis systemet ikke klarer å lagre brukerens inndata.
+
+Om et av unntakene er gjeldende unngår vi ikon, men skriver det heller som en del av lenketeksten. For eksempel [Søk om støtte hos Nav.no (åpnes i ny fane)](https://nav.no)
+
+Selv om en lenke inneholder target="_blank" så er det ikke alle kombinasjoner av nettlesere og skjermlesere som vil gi brukeren beskjed om at den åpnes i ny fane/vindu. Vi anbefaler derfor å skrive “åpnes i ny fane” som en del av lenketeksten.
+
+## Design
+
+### Unngå “ekstern-lenke”-ikon
+Hvilken ikon er for eksterne lenker og hvilket er for åpne i ny fane? 
+
+<Image
+  src="/img/eksternlenke.png"
+  alt="Eksempel på to ikoner som likner på hverandre."
+  boxShadow={false}
+/>
+
+Det er etablert et ikon som betyr “ekstern lenke”, men dette ikonet blir ofte brukt eller forstått som “Åpnes i ny fane”. Bruk av ikonet kan i verste fall villede brukeren, spesielt hvis lenken ikke faktisk åpnes i en ny fane. Hvis det primære målet er å indikere at en lenke leder til en ekstern side, er det mer effektivt å kommunisere dette i lenketeksten i stedet for å stole på et ikon alene. 
+
+Om lenketekstene blir veldig lange eller lenkelister oppleves støyete med repeterende informasjon om at det er eksterne lenker ønsker man ofte å bruke ikoner i stedet for å gjøre designet enklere. Før du tar dette valget, vurder om bruker faktisk trenger denne ekstra informasjonen. Er det en del av en naturlig flyt eller i en lignende kontekst kan det være at brukeren ikke opplever det som å bli tatt ut av kontekst. I så fall er kanskje informasjon om ekstern lenke overflødig. 
+
+Hvis du likevel bruker ikon, vær oppmerksom på at det tolkes ulikt av forskjellige brukere da det i dag blir brukt både for eksterne lenker og åpne i ny fane. 
+
+Dersom ikonet inneholder meningsbærende informasjon som ikke kommer frem i lenketeksten, skal dette formidles i ikonets alternativ tekst. 
+
+Overskrift for å si at flere linker tar deg ut av konteksten? 
+Når er det viktig at vi sier i fra om at du blir tatt til en ekstern side?
+
+eksempel med ulike ikoner som er ganske like og kan mistolkes? (Erfarne designere svarte 50/50 på om ikonet betyr åpne i ny fane eller “ekstern lenke”.) Vet du hvilket som betyr hva?:
+
+### Lenke til filer
+
+* Gjør det tydelig at lenken ikke tar deg til en ny side men laster ned en fil 
+* Opplys om filtype
+    * skriv filtype som en del an lenketeksten.
+    * ikke bruk ikon alene for å vise filtype 
+
+* Gjerne vis filstørrelse som en del av lenketeksten. Spesielt hvis filstørrelsen er stor
+* Dersom lenken fører til en fil som skal lastes ned istedenfor å åpnes i nettleseren, bør man sørge for å ha med attributten download med filnavn som indikerer filtype, f.eks. download="årsrapport.pdf". 
 
 
 <Contributors
