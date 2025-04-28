@@ -121,8 +121,6 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let details = t('errors.default.details');
   let stack: string | undefined;
 
-  console.log(error);
-
   if (isRouteErrorResponse(error)) {
     if (error.status === 404) {
       return <Error404 />;

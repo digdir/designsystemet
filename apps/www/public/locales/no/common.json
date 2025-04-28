@@ -107,7 +107,8 @@
       "details": "Siden du leter etter finnes ikke."
     },
     "generic": {
-      "title": "Feil"
+      "title": "Feil",
+      "go-to-homepage": "Gå til forsiden"
     }
   },
   "header": {
