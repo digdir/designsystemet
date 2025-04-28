@@ -5,7 +5,7 @@ import pkg from '../../../package.json' with { type: 'json' };
 import type { OutputFile } from '../types.js';
 import type { ProcessReturn } from './platform.js';
 
-export const defaultFileHeader = `** build: v${pkg.version}`;
+export const defaultFileHeader = `build: v${pkg.version}`;
 
 type CreateThemeCSSFiles = {
   /** The processed build results containing formatted CSS outputs grouped by themes and other permutations. */
@@ -86,9 +86,9 @@ order may change due to nondeterminism.`.trim(),
 
 @layer ds.theme, ds.base, ds.utilities, ds.components;
 
-/**
-${fileHeader.replace(/[\n\r]+/g, '\n**')}
-**/
+/*
+${fileHeader}
+*/
 
 `;
 
