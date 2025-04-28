@@ -1,41 +1,41 @@
 ---
-title: HelpText blir fjerna, kva gjer du?
-description: Me fjernar HelpText frå Designsystemet. Kvifor, og kva gjer du om du fortsatt vil bruke den?
+title: HelpText Is Being Removed, What Should You Do?
+description: We are removing HelpText from the Design System. Why, and what can you do if you still want to use it?
 date: 2025-01-07
 author: Designsystemet
-imageSrc: /img/bloggen/helptext.png
-imageAlt: Illustrasjon av ein hjelpetekst i popover.
-imageCaption: HelpText er i dag ein popover knytt til ein knapp.
+imageSrc: /img/blog/helptext.png
+imageAlt: Illustration of a help text in a popover.
+imageCaption: HelpText is currently a popover linked to a button.
 ---
 
-Designsystemet fjernar `HelpText`, dette betyr at den ikkje blir med i versjon 1.
-Kvifor gjer me dette? Og kva gjer du dersom du fortsatt bruker den?
+The Design System is removing `HelpText`, which means it won't be included in version 1.
+Why are we doing this? And what should you do if you're still using it?
 
-Nederst i artikkelen finn du kode for å implementere denne komponenten sjølv.
+At the bottom of this article, you'll find code to implement this component yourself.
 
-## Kvifor fjernar me `HelpText`?
+## Why are we removing `HelpText`?
 
-Det har vore ein utfordrande komponent å anbefale konsekvent, og fleire faktorar tilseier at den ikkje passar i Designsystemet:
+It has been a challenging component to recommend consistently, and several factors indicate that it doesn't fit in the Design System:
 
-- **Enkel å implementere sjølv:** `HelpText` er i praksis ein popover knytt til ein knapp, noko som lett kan lagast med ein kort css-snutt og eksisterande komponentar.
-- **Uklart bruksområde:** Me har ikkje klare anbefalingar for når og korleis hjelpetekst bør visast, og komponenten kan dermed lett bli brukt feil.
-- **Uvanleg i designsystem**: Få designsystem inkluderer ein dedikert `HelpText`-komponent, nettopp fordi hjelpetekst varierer stort i form og kontekst.
-- **Avgrensar fleksibilitet:** Å tilby `HelpText` som ein standard popover skaper forventingar om at hjelpetekst alltid skal visast på denne måten. Det finst fleire løysingar som er betre eigna i ulike situasjonar.
+- **Easy to implement yourself:** `HelpText` is essentially a popover attached to a button, which can easily be created with a short CSS snippet and existing components.
+- **Unclear use case:** We don't have clear recommendations for when and how help text should be displayed, so the component can easily be misused.
+- **Uncommon in design systems:** Few design systems include a dedicated `HelpText` component, precisely because help text varies greatly in form and context.
+- **Limits flexibility:** Offering `HelpText` as a standard popover creates expectations that help text should always be displayed this way. There are several solutions better suited for different situations.
 
-## Kva gjer du dersom du fortsatt bruker den?
+## What should you do if you're still using it?
 
-Dersom du har brukt `HelpText`, finn du nederst i artikkelen ein kode-snutt som viser korleis du kan implementere funksjonaliteten sjølv.
-Denne løysinga gjer deg fridom til å tilpasse hjelpetekst etter dine behov.
+If you've been using `HelpText`, you'll find a code snippet at the bottom of this article showing how you can implement the functionality yourself.
+This solution gives you the freedom to customize help text according to your needs.
 
-## Vidare arbeid
+## Further work
 
-Me jobbar med å avklare når og korleis hjelpetekst bør integrerast i grensesnitt, og ser fram til å kunne tilby meir presise anbefalingar i framtida.
-Det vil etter kvart kome eit mønster for ulike typar hjelpetekst.
+We're working on clarifying when and how help text should be integrated into interfaces, and look forward to offering more precise recommendations in the future.
+A pattern for different types of help text will eventually be developed.
 
-## Kode
+## Code
 
-Koden under kan du bruke for å komponere din eigen `HelpText`-komponent.
-CSS-snutten inkluderer ikon, klassen legger du på `Popover.Trigger`.
+You can use the code below to compose your own `HelpText` component.
+The CSS snippet includes an icon; the class should be added to `Popover.Trigger`.
 
 ### CSS
 
@@ -125,9 +125,9 @@ export const HelpText = forwardRef<HTMLButtonElement, HelpTextProps>(
 );
 ```
 
-### Satt saman
+### Putting it together
 
-I [denne CodeSandboxen](https://codesandbox.io/p/sandbox/own-helptext-example-xrzkvw) kan du sjå korleis du sett kodesnuttane over saman.
+In [this CodeSandbox](https://codesandbox.io/p/sandbox/own-helptext-example-xrzkvw), you can see how to put the code snippets above together.
 
 <Contributors
   authors={[

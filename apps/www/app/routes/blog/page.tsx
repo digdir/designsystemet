@@ -21,7 +21,7 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
 
   // Read the file content
   const fileContent = getFileFromContentDir(
-    join('bloggen', params.lang, `${params.file}.mdx`),
+    join('blog', params.lang, `${params.file}.mdx`),
   );
 
   if (!fileContent) {
@@ -50,7 +50,7 @@ export const meta = ({ data }: Route.MetaArgs) => {
   });
 };
 
-export default function Bloggen({
+export default function Blog({
   loaderData: {
     frontmatter: {
       title,

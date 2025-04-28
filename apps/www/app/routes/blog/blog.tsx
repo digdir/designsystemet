@@ -4,7 +4,7 @@ import BlogCard from '~/_components/blog-card/blog-card';
 import { getFileFromContentDir, getFilesFromContentDir } from '~/_utils/files';
 import { generateMetadata } from '~/_utils/metadata';
 import i18n from '~/i18next.server';
-import type { Route } from './+types/bloggen';
+import type { Route } from './+types/blog';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   if (!lang) {
@@ -14,8 +14,8 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     });
   }
 
-  /* Get all files in /content/bloggen for the lang we have selected */
-  const files = getFilesFromContentDir(join('bloggen', lang));
+  /* Get all files in /content/blog for the lang we have selected */
+  const files = getFilesFromContentDir(join('blog', lang));
 
   /* Filter out files that are not .mdx */
   const mdxFiles = files.filter((file) => file.relativePath.endsWith('.mdx'));
@@ -36,7 +36,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   /* Map over files with mdx parser to get title */
   for (const file of mdxFiles) {
     const fileContent = getFileFromContentDir(
-      join('bloggen', lang, file.relativePath),
+      join('blog', lang, file.relativePath),
     );
     const result = await bundleMDX({
       source: fileContent,
@@ -79,9 +79,7 @@ export const meta = ({ data: { metadata } }: Route.MetaArgs) => {
   return metadata;
 };
 
-export default function Patterns({
-  loaderData: { posts },
-}: Route.ComponentProps) {
+export default function Blog({ loaderData: { posts } }: Route.ComponentProps) {
   return (
     <>
       {posts.map((post, index) => {

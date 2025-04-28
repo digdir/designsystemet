@@ -22,12 +22,12 @@ export default [
           }),
         ]),
       ]),
-      ...prefix('/bloggen', [
-        layout('./layouts/bloggen/layout.tsx', [
-          route('/', 'routes/bloggen/bloggen.tsx'),
+      ...prefix('/blog', [
+        layout('./layouts/blog/layout.tsx', [
+          route('/', 'routes/blog/blog.tsx'),
         ]),
-        layout('./layouts/bloggen/page.tsx', [
-          route('/:file', 'routes/bloggen/page.tsx'),
+        layout('./layouts/blog/page.tsx', [
+          route('/:file', 'routes/blog/page.tsx'),
         ]),
       ]),
       ...prefix('/grunnleggende', [

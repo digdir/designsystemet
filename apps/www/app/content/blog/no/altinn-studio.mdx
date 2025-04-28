@@ -3,7 +3,7 @@ title: Hvordan Altinn Studio bruker Designsystemet
 description: Altinn Studio benytter seg av Designsystemet ved hjelp av fasademønsteret. Lær mer om hvordan!
 date: 2024-03-27
 author: Altinn Studio / David Øvrelid
-imageSrc: /img/bloggen/altinnstudio-16-9.png
+imageSrc: /img/blog/altinnstudio-16-9.png
 imageAlt: Logo og illustustrasjon av Altinn Studio. Viser mennesker som sitter ved datamaskiner i et kontorlandskap.
 imageCaption: Altinn Studio bruker komponenter fra Designsystemet og utvider dem til sine behov.
 ---
@@ -30,7 +30,7 @@ Når vi skal ta i bruk en tredjepart, uavhengig om det er designsystemet eller n
 Designsystemet tilbyr en hel rekke av grunnleggende komponenter, som kan utformes i mange varianter. Et eksempel er knappkomponenten (se figur 1).
 
 <Image
-  src='/img/bloggen/altinnstudio-figur1.png'
+  src='/img/blog/altinnstudio-figur1.png'
   alt='Illustrasjonen viser flere knapper i ulike varianter og farger.'
   boxShadow={false}
   caption='Figur 1: Illustrasjon som viser varianter av knapper.'
@@ -70,7 +70,7 @@ Her oppnår Team Altinn Studio isolering av designsystemet, samtidig som det åp
 Eksempelvis har Altinn Studio behov for en [ExpressionEditor](https://components.altinn.studio/?path=%2Fdocs%2Fforms-studioexpression--docs). Dette er en komponent som blir for spesifikk for designsystemet, så det er ikke hensiktsmessig å la designsystemet utvikle og vedlikeholde denne komponenten. Team Altinn Studio har derfor laget sin egen komponent i `studio-components` som utvider designsystemet ved å ta i burk grunnkomponentene designsystemet tilbyr. Komponenten tar også i bruk de samme tokene for avstander og størrelser som benyttes i designsystemet. I figur 3 under, så kan du kjenne igjen helheten fordi de bruker grunnkomponentene i designsystemet som byggeklosser. Kult, ikke sant!
 
 <Image
-  src='/img/bloggen/altinnstudio-figur2.png'
+  src='/img/blog/altinnstudio-figur2.png'
   alt='Illustrasjonen viser eksempel på en sammensatt komponent av flere komponenter fra designsystemet'
   boxShadow={false}
   caption='Figur 2. Eksempel på en sammensatt komponent av flere komponenter fra designsystemet'
@@ -88,7 +88,7 @@ La oss gå videre og finne ut hvordan vi kan ivareta tryggheten ved oppdateringe
 For å oppnå trygghet og sikkerhet ved oppdateringer av tredjepart er det viktig med isolering av tredjeparten. Hvis man ikke isolerer designsystemet må en ha direkte avhengigheter til designsystemet i alle sider og komponenter i appen. Dette betyr at en må innom alle komponenter og sider som benytter seg av en komponent fra designsystemet som får breaking change. Det betyr at vi potensielt kan få hundrevis av filer som er endret, bare fordi man gjorde en oppdatering av designsystemet. Figur 4 under viser en forenklet illustrasjon. Illustrasjonen viser fire sider som benytter seg av en knapp direkte fra designsystemet, altså ingen isolering. Det betyr at dersom knappen får en breaking change, må det endres kode i 4 side-komponenter. I det virkelige liv kan det være snakk om endringer i hundevis av komponenter. Dette gjør at man ikke er helt sikker på om alt fungerer som før oppdateringen.
 
 <Image
-  src='/img/bloggen/altinnstudio-figur3.png'
+  src='/img/blog/altinnstudio-figur3.png'
   alt='Illustrasjon som viser direkte avhengigheter til designsystemet'
   boxShadow={false}
   caption='Figur 3. Illustrasjon som viser direkte avhengigheter til designsystemet.'
@@ -104,7 +104,7 @@ Når vi implementerer fasade-komponenter så er det viktig å sikre gode unit-te
 Når vi isolerer komponentene våre, eliminerer vi behovet for å endre den eksisterende koden i selve applikasjonen vår. Den eneste delen av koden vi må justere er fasadekomponenten. Dette resulterer i at pull requests som inneholder oppdateringer for breaking changes forblir små, samtidig som testene for fasadekomponenten forsikrer oss om at uendret kode fungerer og oppfører seg som før.
 
 <Image
-  src='/img/bloggen/altinnstudio-figur4.png'
+  src='/img/blog/altinnstudio-figur4.png'
   alt=' Illustrasjon som viser isolering av designsystemet. Illustrasjonen viser også hvordan man kan håndtere breaking change, uten å mått endre de 4 side-komponentene.'
   boxShadow={false}
   caption='Figur 4.  Illustrasjon som viser isolering av designsystemet. Illustrasjonen viser også hvordan man kan håndtere breaking change, uten å mått endre de 4 side-komponentene.'

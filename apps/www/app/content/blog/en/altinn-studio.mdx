@@ -3,7 +3,7 @@ title: How Altinn Studio Uses the Design System
 description: Altinn Studio utilizes the Design System using the facade pattern. Learn more about how!
 date: 2024-03-27
 author: Altinn Studio / David Øvrelid
-imageSrc: /img/bloggen/altinnstudio-16-9.png
+imageSrc: /img/blog/altinnstudio-16-9.png
 imageAlt: Logo and illustration of Altinn Studio. Shows people sitting at computers in an office landscape.
 imageCaption: Altinn Studio uses components from the Design System and extends them to suit their needs.
 ---
@@ -30,7 +30,7 @@ When adopting a third-party solution, whether it's the Design System or somethin
 The Design System offers a wide range of basic components that can be designed in many variants. An example is the button component (see figure 1).
 
 <Image
-  src="/img/bloggen/altinnstudio-figur1.png"
+  src="/img/blog/altinnstudio-figur1.png"
   alt="The illustration shows several buttons in different variants and colors."
   boxShadow={false}
   caption="Figure 1: Illustration showing variants of buttons."
@@ -70,7 +70,7 @@ Here, Team Altinn Studio achieves isolation of the Design System, while also ope
 For example, Altinn Studio needs an [ExpressionEditor](https://components.altinn.studio/?path=%2Fdocs%2Fforms-studioexpression--docs). This is a component that becomes too specific for the Design System, so it's not practical to let the Design System develop and maintain this component. Team Altinn Studio has therefore created their own component in `studio-components` that extends the Design System by using the basic components the Design System offers. The component also uses the same tokens for spacing and sizes that are used in the Design System. In figure 3 below, you can recognize the whole because they use the basic components in the Design System as building blocks. Cool, right!
 
 <Image
-  src="/img/bloggen/altinnstudio-figur2.png"
+  src="/img/blog/altinnstudio-figur2.png"
   alt="The illustration shows an example of a composite component of several components from the Design System"
   boxShadow={false}
   caption="Figure 2. Example of a composite component of several components from the Design System"
@@ -88,7 +88,7 @@ Let's continue and find out how we can maintain confidence when updating to a ne
 To achieve confidence and security when updating third parties, it's important to isolate the third party. If you don't isolate the Design System, you must have direct dependencies on the Design System in all pages and components in the app. This means that you have to visit all components and pages that use a component from the Design System that gets a breaking change. This means that we potentially can have hundreds of files that are changed, just because we made an update of the Design System. Figure 4 below shows a simplified illustration. The illustration shows four pages that use a button directly from the Design System, i.e., no isolation. This means that if the button gets a breaking change, code must be changed in 4 page components. In real life, it can be about changes in hundreds of components. This makes it uncertain whether everything works the same as before the update.
 
 <Image
-  src="/img/bloggen/altinnstudio-figur3.png"
+  src="/img/blog/altinnstudio-figur3.png"
   alt="Illustration showing direct dependencies on the Design System"
   boxShadow={false}
   caption="Figure 3. Illustration showing direct dependencies on the Design System."
@@ -104,7 +104,7 @@ When implementing facade components, it's also important to ensure good unit tes
 When we isolate our components, we eliminate the need to change the existing code in our application itself. The only part of the code we have to adjust is the facade component. This results in pull requests containing updates for breaking changes remaining small, while the tests for the facade component assure us that unchanged code works and behaves as before.
 
 <Image
-  src="/img/bloggen/altinnstudio-figur4.png"
+  src="/img/blog/altinnstudio-figur4.png"
   alt="Illustration showing isolation of the Design System. The illustration also shows how to handle breaking changes without having to change the 4 page components."
   boxShadow={false}
   caption="Figure 4. Illustration showing isolation of the Design System. The illustration also shows how to handle breaking changes without having to change the 4 page components."

@@ -3,7 +3,7 @@ title: Generation of Colors in the Color System
 description: This post takes you through the journey we went through to develop our own approach to color generation, and how this system works today
 date: 2025-01-29
 author: Designsystemet
-imageSrc: /img/bloggen/fargepallet.png
+imageSrc: /img/blog/fargepallet.png
 imageAlt: Illustration of colors
 imageCaption: Illustration of colors
 ---
@@ -21,7 +21,7 @@ For the Design System, we were looking to create colors that looked beautiful an
 By this we mean how light affects colors in a controlled environment.
 
  <Image
-  src='/img/bloggen/farger-lys.png'
+  src='/img/blog/farger-lys.png'
   alt='Shows 3 red circles in a dark room that receive light of varying intensity. The circles become lighter the more light they receive.'
   caption='Illustration showing how light affects colors in a controlled environment in a dark room.'
   boxShadow={false}
@@ -48,7 +48,7 @@ These can have values from 0 to 255, where 0 is completely black and 255 is comp
 Different combinations of these three values give us all the colors we see on our screens.
 
  <Image
-  src='/img/bloggen/farge-rgb.png'
+  src='/img/blog/farge-rgb.png'
   alt='The illustration shows 6 rectangular boxes in the colors red, green, blue, black, white, and gray. 
   Inside the boxes is the RGB value of the color. The red color, for example, gets the values 255, 0, and 0.'
   caption='Illustration showing how the values in the different color channels in the RGB color space appear as colors.'
@@ -64,7 +64,7 @@ Shading is adding black to a color to make it darker, while tinting is adding wh
 
 
 <Image
-  src='/img/bloggen/rgb-digdir-red.png'
+  src='/img/blog/rgb-digdir-red.png'
   alt="Illustration showing a red color scale in the RGB color space represented as 9 rectangular boxes. In the middle is Digdir's red brand color. The 4 boxes to the left and right get darker and lighter shades."
   caption="Shows a color scale based on Digdir's red brand color in the RGB color space."
   boxShadow={false}
@@ -86,7 +86,7 @@ There are several techniques for creating color scales in the HSL color space.
 In the examples, we'll look at some of these techniques and how they work.
 
 <Image
-  src='/img/bloggen/fargar-hsl.png'
+  src='/img/blog/fargar-hsl.png'
   alt="Illustration showing a red color scale in the HSL color space represented as 9 rectangular boxes."
   caption="Shows a color scale based on Digdir's red brand color in the HSL color space."
   boxShadow={false}
@@ -100,7 +100,7 @@ This clearly shows a challenge with many of the color spaces that use lightness 
 If we change this value, the colors often end up looking oversaturated and unbalanced.
 
 <Image
-  src='/img/bloggen/fargar-hsl-2.png'
+  src='/img/blog/fargar-hsl-2.png'
   alt="Illustration showing a red color scale in the HSL color space represented as 9 rectangular boxes with reduced saturation."
   caption="Shows a color scale based on Digdir's red brand color in the HSL color space with reduced saturation."
   boxShadow={false}
@@ -123,7 +123,7 @@ Here, the RGB technique was much easier to work with, and created much better co
 After trying out the RGB and HSL color spaces, it was time to look at the other color spaces.
 
  <Image
-  src='/img/bloggen/fargerom-digdir-rod.png'
+  src='/img/blog/fargerom-digdir-rod.png'
   alt="Illustration showing 6 color scales downward in different color spaces for Digdir's red brand color."
   caption='Example of color scales in different color spaces.'
   boxShadow={false}
@@ -160,7 +160,7 @@ Relative luminance is a normalized value that ranks the luminance of a color bet
 This value is calculated based on the red, green, and blue components of the color, with green contributing the most to the perceived luminance.
 
 <Image
-  src='/img/bloggen/fargar-contrast.png'
+  src='/img/blog/fargar-contrast.png'
   alt='Illustration showing that contrast and relative luminance are the same for 2 colors.'
   caption='Illustration showing that contrast and relative luminance are the same for 2 colors.'
   boxShadow={false}
@@ -183,7 +183,7 @@ HSLuv adjusts the colors so they stay balanced, even in the RGB area, while OKLC
 Both make it easier to create nice and harmonious colors, but OKLCH is more accurate.
 
 <Image
-  src='/img/bloggen/hsluv-farger.png'
+  src='/img/blog/hsluv-farger.png'
   alt="Shows two color scales in the OKLCH color space. One is red and the other is blue, and each scale has 9 rectangular boxes across."
   caption='Shows two color scales in the OKLCH color space.'
   boxShadow={false}
@@ -208,7 +208,7 @@ The result varies a lot depending on which color space is used, and whether the 
 In our case, it was about drawing a line through the RGB color space.
 
 <Image
-  src='/img/bloggen/interpolering.png'
+  src='/img/blog/interpolering.png'
   alt='Three color circles show how gradients are formed by different lines drawn through the circle: a straight line, a downward curve, and an upward curve. Under each circle, the corresponding gradient is shown, and it changes based on the direction and length of the lines.'
   caption='The image shows a simplified visualization of color interpolation where only hue is included. Here you can see how the gradients change depending on where the line is drawn in the circle.'
   boxShadow={false}
@@ -221,7 +221,7 @@ Our goal was to find luminance values in the RGB color space by adjusting the co
 Moving iteratively through a color space in this way is a form of interpolation.
 
  <Image
-  src='/img/bloggen/rgb-interpolation.png'
+  src='/img/blog/rgb-interpolation.png'
   alt='Shows an example of interpolation of colors in the RGB color space.'
   caption='Shows an example of interpolation of colors in the RGB color space.'
   boxShadow={false}
@@ -256,7 +256,7 @@ Here, for example, all `Text Subtle` colors will always have the same contrast a
 This was very useful, because then we could easily create rules on how the colors should be used in the system.
 
  <Image
-  src='/img/bloggen/fargeskalaer-rgb.png'
+  src='/img/blog/fargeskalaer-rgb.png'
   alt='Shows 4 color scales in the colors red, blue, green, and yellow. Each scale has 9 colors in it and is divided into the groups Background, Surface, Border, and Text.'
   caption='Shows how the static groups for a color scale look.'
   boxShadow={false}
@@ -276,7 +276,7 @@ Simply explained, it means that these colors become lighter if the `Base Default
 There's a bit more logic happening behind the scenes here, but it's not crucial for understanding how the colors are generated.
   
  <Image
-  src='/img/bloggen/base-farger.png'
+  src='/img/blog/base-farger.png'
   alt='Shows examples of how the "Base" group looks for 8 different color scales.'
   caption='Shows examples of how the "Base" group looks for 8 different color scales.'
   boxShadow={false}

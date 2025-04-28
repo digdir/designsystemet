@@ -20,8 +20,8 @@ import type { Route } from './+types/home';
 import classes from './home.module.css';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
-  /* Get all files in /content/bloggen for the lang we have selected */
-  const files = getFilesFromContentDir(join('bloggen', lang));
+  /* Get all files in /content/blog for the lang we have selected */
+  const files = getFilesFromContentDir(join('blog', lang));
 
   /* Filter out files that are not .mdx */
   const mdxFiles = files.filter((file) => file.relativePath.endsWith('.mdx'));
@@ -42,7 +42,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   /* Map over files with mdx parser to get title */
   for (const file of mdxFiles) {
     const fileContent = getFileFromContentDir(
-      join('bloggen', lang, file.relativePath),
+      join('blog', lang, file.relativePath),
     );
     const result = await bundleMDX({
       source: fileContent,
@@ -169,7 +169,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
             title={post.title}
             desc={post.description}
             author={post.author}
-            href={`bloggen/${post.url}`}
+            href={`blog/${post.url}`}
             image={post.image.src}
             tagText={t('blog.tag')}
             tagColor='brand1'
