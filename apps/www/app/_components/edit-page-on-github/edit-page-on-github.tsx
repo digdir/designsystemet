@@ -1,10 +1,9 @@
-'use client';
 import { Link } from '@digdir/designsystemet-react';
-import { Github } from '@repo/components';
 import type { HTMLAttributes } from 'react';
 
 import cl from 'clsx/lite';
 import { useLocation } from 'react-router';
+import { Github } from '../logos/github';
 import classes from './edit-page-on-github.module.css';
 
 export const EditPageOnGithub = ({
