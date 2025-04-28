@@ -17,7 +17,7 @@ import type { Route } from './+types/layout';
 import classes from './layout.module.css';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
-  /* get all monstre content */
+  /* get all patterns content */
   if (!lang) {
     throw new Response('Not Found', {
       status: 404,
@@ -25,8 +25,8 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     });
   }
 
-  /* Get all files in /content/monstre for the lang we have selected */
-  const files = getFilesFromContentDir(join('monstre', lang));
+  /* Get all files in /content/patterns for the lang we have selected */
+  const files = getFilesFromContentDir(join('patterns', lang));
 
   /* Filter out files that are not .mdx */
   const mdxFiles = files.filter((file) => file.relativePath.endsWith('.mdx'));
@@ -54,7 +54,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   /* Map over files with mdx parser to get title */
   for (const file of mdxFiles) {
     const fileContent = getFileFromContentDir(
-      join('monstre', lang, file.relativePath),
+      join('patterns', lang, file.relativePath),
     );
     const result = await bundleMDX({
       source: fileContent,
@@ -62,7 +62,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
 
     const title =
       result.frontmatter.title || file.relativePath.replace('.mdx', '');
-    const url = `/${lang}/monstre/${file.relativePath.replace('.mdx', '')}`;
+    const url = `/${lang}/patterns/${file.relativePath.replace('.mdx', '')}`;
 
     if (!result.frontmatter.category) {
       continue;
@@ -85,12 +85,12 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
   const matches = useMatches();
   const { t } = useTranslation();
 
-  /* if we have id monstre-page, hide banner */
-  const isMonstrePage = matches.some((match) => match.id === 'monstre-page');
+  /* if we have id patterns-page, hide banner */
+  const isPatternsPage = matches.some((match) => match.id === 'patterns-page');
 
   return (
     <>
-      {!isMonstrePage ? (
+      {!isPatternsPage ? (
         <Banner color='yellow'>
           <BannerIcon>
             <LayersIcon />

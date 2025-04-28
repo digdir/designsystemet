@@ -79,7 +79,7 @@ export const meta = ({ data: { metadata } }: Route.MetaArgs) => {
   return metadata;
 };
 
-export default function Monstre({
+export default function Patterns({
   loaderData: { posts },
 }: Route.ComponentProps) {
   return (

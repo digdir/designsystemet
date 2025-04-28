@@ -21,7 +21,7 @@ const getContentPathsWithLanguages = (): string[] => {
   const supportedLanguages = ['no', 'en']; // Adjust as needed
 
   try {
-    // First, get all top-level content folders (e.g., monstre, bloggen, etc.)
+    // First, get all top-level content folders (e.g., patterns, bloggen, etc.)
     const contentFolders = readdirSync(contentBasePath).filter((dir) =>
       statSync(join(contentBasePath, dir)).isDirectory(),
     );
@@ -32,7 +32,7 @@ const getContentPathsWithLanguages = (): string[] => {
 
       // Add index routes for sections that have specific index handling
       if (
-        ['monstre', 'komponenter', 'bloggen', 'grunnleggende'].includes(
+        ['patterns', 'komponenter', 'bloggen', 'grunnleggende'].includes(
           contentFolder,
         )
       ) {
@@ -108,9 +108,9 @@ const config: Config = {
   },
   /* serverBundles: async (args) => {
     for (const route of args.branch) {
-      if (route.id.includes('monstre')) {
-        route.file = `routes/monstre/${route.id}.tsx`;
-        return `monstre`;
+      if (route.id.includes('patterns')) {
+        route.file = `routes/patterns/${route.id}.tsx`;
+        return `patterns`;
       }
       if (route.id.includes('grunnleggende')) {
         route.file = `routes/grunnleggende/${route.id}.tsx`;

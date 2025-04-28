@@ -5,7 +5,7 @@ import { getFileFromContentDir } from '~/_utils/files';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { generateMetadata } from '~/_utils/metadata';
 import i18n from '~/i18next.server';
-import type { Route } from './+types/monstre';
+import type { Route } from './+types/patterns';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   if (!lang) {
@@ -18,7 +18,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   /* Map over files with mdx parser to get title */
 
   const fileContent = getFileFromContentDir(
-    join('monstre', `${lang}_index.mdx`),
+    join('patterns', `${lang}_index.mdx`),
   );
   const result = await generateFromMdx(fileContent);
   const t = await i18n.getFixedT(lang);
@@ -39,7 +39,7 @@ export const meta: Route.MetaFunction = ({
   return metadata;
 };
 
-export default function Monstre({
+export default function Patterns({
   loaderData: { index },
 }: Route.ComponentProps) {
   const { t } = useTranslation();

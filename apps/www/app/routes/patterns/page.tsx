@@ -15,7 +15,7 @@ export async function loader({ params }: Route.LoaderArgs) {
 
   // Read the file content
   const fileContent = getFileFromContentDir(
-    join('monstre', params.lang, `${file}.mdx`),
+    join('patterns', params.lang, `${file}.mdx`),
   );
 
   if (!fileContent) {
@@ -43,7 +43,7 @@ export const meta = ({ data }: Route.MetaArgs) => {
   });
 };
 
-export default function Monstre({
+export default function Patterns({
   loaderData: { lang, frontmatter, code },
 }: Route.ComponentProps) {
   return (

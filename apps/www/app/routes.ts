@@ -12,13 +12,13 @@ export default [
       index('routes/home/home.tsx', {
         id: 'home',
       }),
-      ...prefix('/monstre', [
-        layout('./layouts/monstre/layout.tsx', [
-          route('', 'routes/monstre/monstre.tsx', {
-            id: 'monstre-index',
+      ...prefix('/patterns', [
+        layout('./layouts/patterns/layout.tsx', [
+          route('', 'routes/patterns/patterns.tsx', {
+            id: 'patterns-index',
           }),
-          route('/:file', 'routes/monstre/page.tsx', {
-            id: 'monstre-page',
+          route('/:file', 'routes/patterns/page.tsx', {
+            id: 'patterns-page',
           }),
         ]),
       ]),

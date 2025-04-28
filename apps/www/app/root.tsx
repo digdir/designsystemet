@@ -78,7 +78,7 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
     },
     {
       name: 'navigation.patterns',
-      href: `/${lang}/monstre`,
+      href: `/${lang}/patterns`,
     },
     {
       name: 'navigation.blog',

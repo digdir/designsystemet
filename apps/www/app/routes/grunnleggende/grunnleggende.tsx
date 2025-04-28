@@ -32,7 +32,7 @@ export const meta = ({ data: { metadata } }: Route.MetaArgs) => {
   return metadata;
 };
 
-export default function Monstre() {
+export default function Patterns() {
   const { cats, descriptions } = useRouteLoaderData(
     'layouts/grunnleggende/layout',
   ) as LayoutRoute.ComponentProps['loaderData'];

@@ -4,7 +4,7 @@ import { ContentContainer } from '~/_components/content-container/content-contai
 import { Error404 } from '~/_components/errors/error-404';
 import type { Route } from './+types/layout';
 
-export default function MonstreLayout() {
+export default function PatternsLayout() {
   return (
     <ContentContainer>
       <Outlet />
