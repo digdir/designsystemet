@@ -1,4 +1,3 @@
-'use client';
 import { Dropdown, Heading, Table } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
