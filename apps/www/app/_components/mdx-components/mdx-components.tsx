@@ -16,11 +16,11 @@ import { getMDXComponent } from 'mdx-bundler/dist/client';
 import { type JSX, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link as RRLink } from 'react-router';
+import { CodeBlock } from '~/_components/code-block/code-block';
 import { Contributors } from '~/_components/contributors/contributors';
 import { Image } from '~/_components/image/image';
-import { CodeBlock } from '../code-block/code-block';
-import { ResponsiveIframe } from '../responsive-iframe/responsive-iframe';
-import { TokenList } from '../tokens/token-list/token-list';
+import { ResponsiveIframe } from '~/_components/responsive-iframe/responsive-iframe';
+import { TokenList } from '~/_components/tokens/token-list/token-list';
 import classes from './mdx-components.module.css';
 
 const defaultComponents = {
