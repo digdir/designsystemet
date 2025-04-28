@@ -98,7 +98,6 @@ export const MDXComponents = ({
     <>
       {Component ? (
         <Component
-          /* @ts-ignore TODO fix type error */
           components={{
             ...defaultComponents,
             ...components,

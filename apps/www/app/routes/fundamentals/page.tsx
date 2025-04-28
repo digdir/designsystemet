@@ -4,7 +4,7 @@ import { ComponentIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
-import { formatDateNorwegian } from '~/_utils/date';
+import { formatDate } from '~/_utils/date';
 import { getFileFromContentDir } from '~/_utils/files';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import type { Route } from './+types/page';
@@ -32,7 +32,7 @@ export async function loader({ params }: Route.LoaderArgs) {
     name: params.file,
     code: result.code,
     frontmatter: result.frontmatter,
-    currentLang: params.lang,
+    lang: params.lang,
   };
 }
 
@@ -40,17 +40,19 @@ export const meta = ({ data }: Route.MetaArgs) => {
   return [{ title: `${data.frontmatter.title} - Designsystemet` }];
 };
 
-export default function Fundamentals({ loaderData }: Route.ComponentProps) {
+export default function Fundamentals({
+  loaderData: { code, frontmatter, lang },
+}: Route.ComponentProps) {
   return (
     <>
       <div className={classes.header}>
         <div className={classes.headerText}>
           <Heading data-size='lg' level={1}>
-            {loaderData.frontmatter.title}
+            {frontmatter.title}
           </Heading>
-          {loaderData.frontmatter.date && (
+          {frontmatter.date && (
             <div className={classes.date}>
-              {formatDateNorwegian(loaderData.frontmatter.date)}
+              {formatDate(frontmatter.date, lang)}
             </div>
           )}
         </div>
@@ -59,7 +61,7 @@ export default function Fundamentals({ loaderData }: Route.ComponentProps) {
         </div>
       </div>
       <div className={classes.content}>
-        <MDXComponents code={loaderData.code} />
+        <MDXComponents code={code} />
         <EditPageOnGithub />
       </div>
     </>
