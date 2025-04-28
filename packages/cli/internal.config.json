@@ -45,14 +45,14 @@
     "portal": {
       "colors": {
         "main": {
-          "accent": "#4D107D"
+          "accent": "#38628C"
         },
         "support": {
-          "brand1": "#A259DC",
-          "brand2": "#DF73E4",
-          "brand3": "#E86ABF"
+          "brand1": "#D9ECFF",
+          "brand2": "#FFCA99",
+          "brand3": "#D96C79"
         },
-        "neutral": "#1E2B3C"
+        "neutral": "#203040"
       }
     }
   }
