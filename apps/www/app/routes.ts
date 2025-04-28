@@ -40,13 +40,13 @@ export default [
           }),
         ]),
       ]),
-      ...prefix('/god-praksis', [
-        layout('./layouts/god-praksis/layout.tsx', [
-          route('/', 'routes/god-praksis/god-praksis.tsx', {
-            id: 'god-praksis-index',
+      ...prefix('/best-practices', [
+        layout('./layouts/best-practices/layout.tsx', [
+          route('/', 'routes/best-practices/best-practices.tsx', {
+            id: 'best-practices-index',
           }),
-          route('/*', 'routes/god-praksis/page.tsx', {
-            id: 'god-praksis-page',
+          route('/*', 'routes/best-practices/page.tsx', {
+            id: 'best-practices-page',
           }),
         ]),
       ]),

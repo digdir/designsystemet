@@ -22,7 +22,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     });
   }
 
-  const mdxFiles = getFilesFromContentDir(join('god-praksis', lang));
+  const mdxFiles = getFilesFromContentDir(join('best-practices', lang));
 
   const cats: {
     [key: string]: {
@@ -50,7 +50,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   /* Map over files with mdx parser to get title */
   for (const file of mdxFiles) {
     const fileContent = getFileFromContentDir(
-      join('god-praksis', lang, file.relativePath),
+      join('best-practices', lang, file.relativePath),
     );
     const result = await generateFromMdx(fileContent);
 
@@ -60,7 +60,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
 
     const title =
       result.frontmatter.title || file.relativePath.replace('.mdx', '');
-    const url = `/${lang}/god-praksis/${file.relativePath.replace('.mdx', '')}`;
+    const url = `/${lang}/best-practices/${file.relativePath.replace('.mdx', '')}`;
     const author = result.frontmatter.author || '';
     const date = result.frontmatter.date || '';
 
@@ -119,9 +119,9 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
   const matches = useMatches();
   const { t } = useTranslation();
 
-  /* if we have id god-praksis-page, hide banner */
+  /* if we have id best-practices-page, hide banner */
   const isGodPraksisPage = matches.some(
-    (match) => match.id === 'god-praksis-page',
+    (match) => match.id === 'best-practices-page',
   );
 
   return (

@@ -37,7 +37,7 @@ const getContentPathsWithLanguages = (): string[] => {
           'components',
           'blog',
           'grunnleggende',
-          'god-praksis',
+          'best-practices',
         ].includes(contentFolder)
       ) {
         for (const lang of supportedLanguages) {

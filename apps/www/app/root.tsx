@@ -74,7 +74,7 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
     },
     {
       name: 'navigation.best-practices',
-      href: `/${lang}/god-praksis`,
+      href: `/${lang}/best-practices`,
     },
     {
       name: 'navigation.patterns',

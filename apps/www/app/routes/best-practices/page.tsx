@@ -15,7 +15,7 @@ export async function loader({ params }: Route.LoaderArgs) {
 
   // Read the file content
   const fileContent = getFileFromContentDir(
-    join('god-praksis', params.lang, `${file}.mdx`),
+    join('best-practices', params.lang, `${file}.mdx`),
   );
 
   // Bundle the MDX content
