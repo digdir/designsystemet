@@ -6,7 +6,6 @@ on:
     inputs:
       tag:
         description: 'npm tag'
-        required: true
         type: choice
         default: 'next'
         options:
