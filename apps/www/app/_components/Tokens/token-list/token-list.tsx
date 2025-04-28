@@ -1,13 +1,12 @@
 'use client';
 import { Dropdown, Heading, Table } from '@digdir/designsystemet-react';
-import { ClipboardButton } from '@repo/components';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { useEffect, useState } from 'react';
 import type { TransformedToken as Token } from 'style-dictionary';
 
-/* import * as tokensDark from '../../../tokens/dark';
-import * as tokensLight from '../../../tokens/light'; */
+import * as tokensDark from '~/tokens/dark';
+import * as tokensLight from '~/tokens/light';
 import { TokenColor } from '../token-color/token-color';
 import { TokenFontSize } from '../token-font-size/token-font-size';
 import { TokenShadow } from '../token-shadow/token-shadow';
@@ -17,9 +16,6 @@ import type { HexColor } from '@digdir/designsystemet/color';
 import { capitalizeString } from '~/_utils/string-helpers';
 import { TokenBorderRadius } from '../token-border-radius/token-border-radius';
 import classes from './token-list.module.css';
-
-const tokensDark = {};
-const tokensLight = {};
 
 type TokenListProps = {
   type: 'color' | 'typography' | 'shadow' | 'dimension';
@@ -56,11 +52,11 @@ const TokensTable = ({ tokens }: TokenTableProps) => {
             return (
               <Table.Row key={name}>
                 <Table.Cell>
-                  <ClipboardButton
+                  {/* <ClipboardButton
                     title='Kopier CSS variabel'
                     text={name}
                     value={name}
-                  />
+                  /> */}
                 </Table.Cell>
                 <Table.Cell>
                   <ComputedValue value={value} />
@@ -163,11 +159,11 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
         <Heading level={5} data-size='2xs' className={classes.name}>
           {capitalizeString(title)}
           &nbsp;
-          <ClipboardButton
+          {/* <ClipboardButton
             title='Kopier CSS variabel'
             text='CSS'
             value={token.name}
-          />
+          /> */}
         </Heading>
         {!hideValue && <div className={classes.value}>{token.$value}</div>}
       </div>

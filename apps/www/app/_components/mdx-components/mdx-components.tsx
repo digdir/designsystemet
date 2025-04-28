@@ -20,6 +20,7 @@ import { Contributors } from '~/_components/contributors/contributors';
 import { Image } from '~/_components/image/image';
 import { CodeBlock } from '../code-block/code-block';
 import { ResponsiveIframe } from '../responsive-iframe/responsive-iframe';
+import { TokenList } from '../tokens/token-list/token-list';
 import classes from './mdx-components.module.css';
 
 const defaultComponents = {
@@ -50,6 +51,7 @@ const defaultComponents = {
   Image,
   ResponsiveIframe,
   Contributors,
+  TokenList,
   p: (props: ParagraphProps) => <Paragraph {...props} />,
   Link: ({ href, ...props }: JSX.IntrinsicElements['a']) => (
     <Link {...props} asChild>

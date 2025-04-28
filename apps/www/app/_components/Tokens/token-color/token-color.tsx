@@ -1,5 +1,4 @@
 import { getColorMetadataByNumber } from '@digdir/designsystemet/color';
-import { ColorModal } from '@repo/components';
 import cl from 'clsx/lite';
 import { useRef } from 'react';
 import type { TransformedToken } from 'style-dictionary';
@@ -40,11 +39,11 @@ const TokenColor = ({ value, token }: TokenColorProps) => {
 
   return color ? (
     <>
-      <ColorModal
+      {/* <ColorModal
         namespace={namespace}
         colorModalRef={colorModalRef}
         color={color}
-      />
+      /> */}
       <div className={classes.colorBox}>
         <button
           style={{ backgroundColor: value }}
