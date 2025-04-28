@@ -133,6 +133,11 @@
     "title": "Grunnleggende",
     "description": "Lær mer om designsystemet, de grunnleggende designelementene, og hvordan du kommer i gang som designer eller utvikler."
   },
+  "best-practices": {
+    "title": "God praksis",
+    "description": "Her deler vi god praksis med hverandre. Råd og veiledning som kan bidra til å lage bedre helhetlige tjenester samles her.",
+    "back": "Tilbake"
+  },
   "mdx": {
     "error": {
       "loading": "Kunne ikke laste innhold"
