@@ -37,8 +37,12 @@ export const createThemeCSSFiles = ({
 
   for (const [_, buildResults] of Object.entries(R.dissoc('types', processedBuilds))) {
     for (const buildResult of buildResults) {
-      const previous = groupedByTheme[buildResult.permutation.theme] ?? [];
-      groupedByTheme[buildResult.permutation.theme] = R.concat(previous, buildResult.formatted);
+      const themeName = buildResult.permutation.theme;
+      const newOutputs = buildResult.formatted;
+      if (R.isNotEmpty(newOutputs)) {
+        const currentOutputs = groupedByTheme[themeName] ?? [];
+        groupedByTheme[themeName] = R.concat(currentOutputs, newOutputs);
+      }
     }
   }
 
