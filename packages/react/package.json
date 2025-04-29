@@ -70,7 +70,10 @@
     "rollup": "^4.39.0",
     "rollup-plugin-copy": "^3.5.0",
     "typescript": "^5.8.2",
+    "@digdir/designsystemet-css": "workspace:^",
     "@storybook/test": "^8.6.12",
-    "@storybook/react": "^8.6.12"
+    "@storybook/react": "^8.6.12",
+    "@storybook/blocks": "^8.6.12",
+    "@storybook/preview-api": "^8.6.12"
   }
 }
