@@ -26,7 +26,8 @@ export default async function handleRequest(
 ) {
   const instance = createInstance();
   const ns = i18next.getRouteNamespaces(routerContext);
-  const lng = routerContext.staticHandlerContext.loaderData.root.lang || 'no';
+  const lng =
+    routerContext.staticHandlerContext?.loaderData?.root?.lang || 'no';
 
   await instance
     .use(initReactI18next) // Tell our instance to use react-i18next

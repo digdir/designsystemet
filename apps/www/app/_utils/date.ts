@@ -18,8 +18,3 @@ export const formatDate = (dateString: string, lc = 'no'): string => {
     return dateString; // Return original string if parsing fails
   }
 };
-
-// Keep the old function for backward compatibility
-export const formatDateNorwegian = (dateString: string): string => {
-  return formatDate(dateString, 'nb-NO');
-};
