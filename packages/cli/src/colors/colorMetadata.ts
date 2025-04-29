@@ -21,7 +21,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 100,
-      dark: 0.009,
+      dark: 8,
       contrast: 0.001,
     },
   },
@@ -36,7 +36,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 96,
-      dark: 0.014,
+      dark: 12,
       contrast: 0.0065,
     },
   },
@@ -51,7 +51,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 100,
-      dark: 0.021,
+      dark: 16,
       contrast: 0.015,
     },
   },
@@ -66,7 +66,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 92,
-      dark: 0.027,
+      dark: 19,
       contrast: 0.015,
     },
   },
@@ -81,7 +81,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 87,
-      dark: 0.036,
+      dark: 22,
       contrast: 0.028,
     },
   },
@@ -96,7 +96,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 82,
-      dark: 0.056,
+      dark: 28,
       contrast: 0.045,
     },
   },
@@ -111,7 +111,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 76,
-      dark: 0.08,
+      dark: 34,
       contrast: 0.26,
     },
   },
@@ -126,7 +126,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 50,
-      dark: 0.22,
+      dark: 54,
       contrast: 0.4,
     },
   },
@@ -141,7 +141,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 40,
-      dark: 0.39,
+      dark: 69,
       contrast: 0.6,
     },
   },
@@ -156,7 +156,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 40,
-      dark: 0.39,
+      dark: 69,
       contrast: 0.57,
     },
   },
@@ -171,7 +171,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     luminance: {
       light: 18,
-      dark: 0.84,
+      dark: 94,
       contrast: 0.86,
     },
   },

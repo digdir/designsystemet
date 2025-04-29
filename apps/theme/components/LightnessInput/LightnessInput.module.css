@@ -45,6 +45,11 @@
   width: 292px;
 }
 
+.activeInput {
+  border: 1px solid var(--ds-color-border-default);
+  background-color: var(--ds-color-surface-tinted);
+}
+
 .minusBtn,
 .plusBtn {
   color: var(--ds-color-neutral-text-default);
@@ -67,4 +72,8 @@
 
 .oneLiner .input {
   width: 100%;
+}
+
+.hidden {
+  display: none;
 }

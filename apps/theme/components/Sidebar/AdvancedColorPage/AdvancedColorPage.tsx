@@ -5,14 +5,21 @@ import {
   Label,
   Select,
 } from '@digdir/designsystemet-react';
+import {
+  type CssColor,
+  type InterpolationMode,
+  colorMetadata,
+  generateColorSchemes,
+} from '@digdir/designsystemet/color';
 import { ChevronLeftIcon, FlowerIcon } from '@navikt/aksel-icons';
+import { useThemeStore } from '../../../store';
 import { LightnessInput } from '../../LightnessInput/LightnessInput';
 import classes from './AdvancedColorPage.module.css';
 
 type AdvancedColorPageProps = {
   onBackClicked: () => void;
-  name?: string;
-  color?: string;
+  name: string;
+  color: string;
   index: number;
   colorType: 'main' | 'neutral' | 'support';
 };
@@ -24,6 +31,8 @@ export const AdvancedColorPage = ({
   index,
   colorType,
 }: AdvancedColorPageProps) => {
+  const updateColorTheme = useThemeStore((state) => state.updateColorTheme);
+  const getColorTheme = useThemeStore((state) => state.getColorTheme);
   return (
     <div>
       <Button
@@ -46,10 +55,42 @@ export const AdvancedColorPage = ({
 
       <Field data-size='sm' className={classes.field}>
         <Label>Velg interpolering</Label>
-        <Select defaultValue='rgb' width='full'>
-          <Select.Option value='rgb'>RGB</Select.Option>
-          <Select.Option value='oklch'>OKLCH</Select.Option>
-          <Select.Option value='hsl'>HSL</Select.Option>
+        <Select
+          defaultValue='rgb'
+          width='full'
+          onChange={(e) => {
+            const interpolation = e.target.value as InterpolationMode;
+            const currentTheme = getColorTheme(index, colorType);
+
+            if (!currentTheme) return;
+
+            const updatedSettings = {
+              ...currentTheme.settings,
+              general: { interpolation },
+            };
+
+            const colors = generateColorSchemes(
+              color as CssColor,
+              colorMetadata,
+              updatedSettings,
+            );
+
+            updateColorTheme(
+              {
+                ...currentTheme,
+                colors,
+                settings: updatedSettings,
+              },
+              index,
+              colorType,
+            );
+          }}
+        >
+          {['rgb', 'oklch', 'hsl'].map((mode) => (
+            <Select.Option key={mode} value={mode}>
+              {mode.toUpperCase()}
+            </Select.Option>
+          ))}
         </Select>
       </Field>
 

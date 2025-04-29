@@ -75,6 +75,8 @@ export const ColorDetail = () => {
                     colors.neutral.find(
                       (color) => color.name === e.target.value,
                     )?.colors ||
+                    colors.status.find((color) => color.name === e.target.value)
+                      ?.colors ||
                     colors.main[0].colors,
                 );
               }}
@@ -90,6 +92,11 @@ export const ColorDetail = () => {
                 </option>
               ))}
               {colors.support.map((color) => (
+                <option key={color.name} value={color.name}>
+                  {color.name}
+                </option>
+              ))}
+              {colors.status.map((color) => (
                 <option key={color.name} value={color.name}>
                   {color.name}
                 </option>

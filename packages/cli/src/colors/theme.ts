@@ -42,8 +42,8 @@ export const generateColorScale = (
     const [H, S, V] = chroma(color).hsv();
     interpolationColor = chroma(
       H,
-      Math.min(S * (colorSettings?.static.lightSaturation ?? 1), 1),
-      Math.min(V * (colorSettings?.static.lightSaturation ?? 1), 1),
+      Math.min(S * (colorSettings?.static.saturation.light.background ?? 1), 1),
+      Math.min(V * (colorSettings?.static.saturation.light.background ?? 1), 1),
       'hsv',
     ).hex() as CssColor;
   }
@@ -52,12 +52,14 @@ export const generateColorScale = (
     const lightness = colorData.luminance[colorScheme];
     return {
       ...colorData,
-      hex: chroma(interpolationColor).luminance(getLuminanceFromLightness(lightness)).hex() as CssColor,
+      hex: chroma(interpolationColor)
+        .luminance(getLuminanceFromLightness(lightness), colorSettings.general.interpolation || 'rgb')
+        .hex() as CssColor,
     };
   }, colorMetaData || colorMetadata);
 
   // Generate base colors
-  const baseColors = generateBaseColors(color, colorScheme);
+  const baseColors = generateBaseColors(color, colorScheme, colorSettings);
   colors['base-default'] = { ...colors['base-default'], hex: baseColors.default };
   colors['base-hover'] = { ...colors['base-hover'], hex: baseColors.hover };
   colors['base-active'] = { ...colors['base-active'], hex: baseColors.active };
@@ -102,7 +104,7 @@ export const generateColorSchemes = (
  * @param colorScheme The color scheme to generate the base colors for
  * @returns
  */
-const generateBaseColors = (color: CssColor, colorScheme: ColorScheme) => {
+const generateBaseColors = (color: CssColor, colorScheme: ColorScheme, colorSettings: ColorSettings) => {
   let colorLightness = getLightnessFromHex(color);
   if (colorScheme !== 'light') {
     colorLightness = colorLightness <= 30 ? 70 : 100 - colorLightness;
@@ -115,12 +117,20 @@ const generateBaseColors = (color: CssColor, colorScheme: ColorScheme) => {
     default:
       colorScheme === 'light'
         ? color
-        : (chroma(color).luminance(getLuminanceFromLightness(colorLightness)).hex() as CssColor),
+        : (chroma(color)
+            .luminance(getLuminanceFromLightness(colorLightness), colorSettings.general.interpolation || 'rgb')
+            .hex() as CssColor),
     hover: chroma(color)
-      .luminance(getLuminanceFromLightness(calculateLightness(colorLightness, modifier)))
+      .luminance(
+        getLuminanceFromLightness(calculateLightness(colorLightness, modifier)),
+        colorSettings.general.interpolation || 'rgb',
+      )
       .hex() as CssColor,
     active: chroma(color)
-      .luminance(getLuminanceFromLightness(calculateLightness(colorLightness, modifier * 2)))
+      .luminance(
+        getLuminanceFromLightness(calculateLightness(colorLightness, modifier * 2)),
+        colorSettings.general.interpolation || 'rgb',
+      )
       .hex() as CssColor,
   };
 };

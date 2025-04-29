@@ -14,9 +14,7 @@ import classes from './Colors.module.css';
 export const Colors = () => {
   const colors = useThemeStore((state) => state.colors);
   const colorMetadata = useThemeStore((state) => state.colorMetadata);
-  const referenceColorMetadata = useThemeStore(
-    (state) => state.referenceColorMetadata,
-  );
+
   const updateColorTheme = useThemeStore((state) => state.updateColorTheme);
   const [showStatus, setShowStatus] = useState(false);
   const colorScheme = useThemeStore((state) => state.colorScheme);
@@ -73,17 +71,6 @@ export const Colors = () => {
       updateColorTheme(colorTheme, index, 'support');
     });
   }, [colorMetadata]);
-
-  const tomato = (color: { name: string; luminance: { light: number } }) => {
-    const colorName = color.name as keyof typeof referenceColorMetadata;
-    if (
-      referenceColorMetadata[colorName]?.luminance.light !==
-      color.luminance.light
-    ) {
-      return true;
-    }
-    return false;
-  };
 
   return (
     <div className={classes.page}>

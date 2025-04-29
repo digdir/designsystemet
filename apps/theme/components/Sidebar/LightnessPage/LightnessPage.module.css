@@ -36,3 +36,10 @@
   gap: 16px;
   margin-top: 16px;
 }
+
+.btn {
+}
+
+.activeBtn {
+  background-color: var(--ds-color-surface-active);
+}

@@ -85,32 +85,74 @@ type RgbaColor = `rgba(${number}, ${number}, ${number}, ${number})`;
 type Percent = `${number}%`;
 type Degrees = `${number}deg`;
 
+export type InterpolationMode = 'hcl' | 'hsi' | 'hsl' | 'hsv' | 'lab' | 'lch' | 'lrgb' | 'oklab' | 'oklch' | 'rgb';
+
 export type ColorSettings = {
+  general: {
+    interpolation: InterpolationMode;
+  };
   base: {
-    step: number;
-    lightness: number;
-    saturation: number;
+    lightness: {
+      light: {
+        hover: number;
+        active: number;
+      };
+      dark: {
+        default: number;
+        hover: number;
+        active: number;
+      };
+    };
   };
   static: {
-    lightSaturation: number;
-    darkSurfaceSaturation: number;
-    darkContentSaturation: number;
-    darkStatusSurfaceSaturation: number;
-    darkStatusContentSaturation: number;
+    saturation: {
+      light: {
+        background: number;
+        surface: number;
+        border: number;
+        text: number;
+      };
+      dark: {
+        surface: number;
+        content: number;
+        statusSurface: number;
+        statusContent: number;
+      };
+    };
   };
 };
 
-export const DefaultColorSettings = {
+export const DefaultColorSettings: ColorSettings = {
+  general: {
+    interpolation: 'rgb',
+  },
   base: {
-    step: 4,
-    lightness: 1,
-    saturation: 1,
+    lightness: {
+      light: {
+        hover: 1,
+        active: 1,
+      },
+      dark: {
+        default: 1,
+        hover: 1,
+        active: 1,
+      },
+    },
   },
   static: {
-    lightSaturation: 1,
-    darkSurfaceSaturation: 1,
-    darkContentSaturation: 1,
-    darkStatusSurfaceSaturation: 1,
-    darkStatusContentSaturation: 1,
+    saturation: {
+      light: {
+        background: 1,
+        surface: 1,
+        border: 1,
+        text: 1,
+      },
+      dark: {
+        surface: 1,
+        content: 1,
+        statusSurface: 1,
+        statusContent: 1,
+      },
+    },
   },
 };
