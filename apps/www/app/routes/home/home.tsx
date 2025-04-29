@@ -115,7 +115,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
                 title={t('frontpage.components.title')}
                 description={t('frontpage.components.description')}
                 color='red'
-                url='komponenter'
+                url='components'
                 icon={<ComponentIcon fontSize={34} aria-hidden='true' />}
                 level={2}
               />
@@ -132,7 +132,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
         imgWidth='1195'
         link={{
           text: t('frontpage.toolbox.link'),
-          href: '/fundamentals/introduksjon/om-designsystemet',
+          href: 'fundamentals/introduction/about-the-design-system',
         }}
       />
 
