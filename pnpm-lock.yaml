@@ -416,7 +416,7 @@ importers:
         specifier: ^19.1.0
         version: 19.1.1(@types/react@19.1.0)
       typescript:
-        specifier: ^5.7.2
+        specifier: ^5.8.2
         version: 5.8.3
       vite:
         specifier: ^6.3.2
