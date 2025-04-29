@@ -1,12 +1,22 @@
 import './style.css';
+import './customTheme.scss';
 import '../../../packages/css/src/index.css';
 import '@digdir/designsystemet-theme/digdir.css';
+import { LinkIcon } from '@navikt/aksel-icons';
 import type { Preview } from '@storybook/react';
 import isChromatic from 'chromatic/isChromatic';
+import componentStyles from './componentOverrides.module.scss';
 
-import type { LinkProps } from '@digdir/designsystemet-react';
-import { Link, List, Paragraph, Table } from '@digdir/designsystemet-react';
+import type { HeadingProps, LinkProps } from '@digdir/designsystemet-react';
+import {
+  Heading,
+  Link,
+  List,
+  Paragraph,
+  Table,
+} from '@digdir/designsystemet-react';
 
+import { Children, type MouseEventHandler } from 'react';
 import { CodeBlock } from '../../_components';
 import { customStylesDecorator } from '../story-utils/customStylesDecorator';
 import { fontsLoader } from '../story-utils/fontsLoader';
@@ -43,6 +53,37 @@ const getPath = (href: string | undefined): string => {
   return href;
 };
 
+const handleLinkClick =
+  (href: string): MouseEventHandler<HTMLAnchorElement> =>
+  (event) => {
+    // Handle in-page anchor links
+    if (href.startsWith('#')) {
+      event.preventDefault();
+      document
+        .getElementById(href.substring(1))
+        ?.scrollIntoView({ behavior: 'smooth' });
+      window.parent.history.pushState(undefined, '', href);
+    }
+  };
+
+const HeadingSelfLink: React.FC<HeadingProps> = ({ children, ...props }) => {
+  const href = `#${props.id}`;
+  return (
+    <Heading {...props} className={`sb-unstyled ${componentStyles.heading}`}>
+      {children}
+      <Link
+        aria-hidden
+        tabIndex={-1}
+        href={href}
+        className={componentStyles.headingLink}
+        onClick={handleLinkClick(href)}
+      >
+        <LinkIcon title='Link to this heading' />
+      </Link>
+    </Heading>
+  );
+};
+
 const components = {
   pre: ({
     children: {
@@ -58,41 +99,41 @@ const components = {
       </CodeBlock>
     );
   },
+  h1: (props: Props) => <HeadingSelfLink data-size='lg' {...props} level={1} />,
+  h2: (props: Props) => <HeadingSelfLink data-size='md' {...props} level={2} />,
+  h3: (props: Props) => <HeadingSelfLink data-size='sm' {...props} level={3} />,
+  h4: (props: Props) => <HeadingSelfLink data-size='sm' {...props} level={4} />,
+  h5: (props: Props) => <HeadingSelfLink data-size='sm' {...props} level={5} />,
+  h6: (props: Props) => <HeadingSelfLink data-size='sm' {...props} level={6} />,
   p: (props: Props) => (
     <Paragraph
       {...props}
-      className='sb-unstyled'
+      className={`sb-unstyled ${componentStyles.paragraph}`}
       data-color-scheme='light'
-      style={{
-        backgroundColor: 'transparent',
-      }}
     />
   ),
   ol: (props: Props) => (
     <List.Ordered
       {...props}
-      style={{ maxWidth: '70ch' }}
-      className='sb-unstyled'
+      className={`sb-unstyled ${componentStyles.list}`}
       data-color-scheme='light'
     />
   ),
   ul: (props: Props) => (
     <List.Unordered
       {...props}
-      style={{ maxWidth: '70ch' }}
-      className='sb-unstyled'
+      className={`sb-unstyled ${componentStyles.list}`}
       data-color-scheme='light'
     />
   ),
   li: (props: Props) => (
     <List.Item
       {...props}
-      className='sb-unstyled'
-      style={{ maxWidth: '70ch' }}
+      className={`sb-unstyled ${componentStyles.listItem}`}
       data-color-scheme='light'
     />
   ),
-  a: (props: LinkProps) => {
+  a: ({ children, ...props }: LinkProps) => {
     // if link starts with /, add current path to link
     const href = getPath(props.href);
 
@@ -100,9 +141,13 @@ const components = {
       <Link
         {...props}
         href={href}
-        className='sb-unstyled'
-        data-color-scheme='light'
-      />
+        className={`sb-unstyled ${componentStyles.link}`}
+        onClick={handleLinkClick(props.href ?? '')}
+        // Add a data-attribute for use when styling links which include code snippets
+        {...(Children.count(children) === 1 && { 'data-single-child': true })}
+      >
+        {children}
+      </Link>
     );
   },
   table: (props: Props) => (

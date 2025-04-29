@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.0.5
+
+### Patch Changes
+
+- Fix empty theme file being built when no `support-color` were defined ([#3511](https://github.com/digdir/designsystemet/pull/3511))
+
+- Add design-token version to metadata in built theme file ([#3510](https://github.com/digdir/designsystemet/pull/3510))
+
 ## 1.0.4
 
 ### Patch Changes

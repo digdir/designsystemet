@@ -1,0 +1,167 @@
+---
+title: WCAG 3.0 proposes a new contrast method
+description: WCAG 3.0 explores a more precise method for calculating contrast. Why isn't today's standard good enough?
+date: 2023-04-11
+author: Brønnøysundregistrene
+category: Accessibility
+published: true
+---
+
+To ensure good readability, all text should have sufficient contrast against the background. This is important for all users, especially under challenging lighting conditions. Those who need this most are the visually impaired, dyslexics, and the color blind (source: [uutilsynet](https://www.uutilsynet.no/veiledning/kontrast/48)).
+
+## Need for stricter contrast requirements
+
+All users, including those with impaired vision, should be able to see the content in digital services. Web Content Accessibility Guidelines (WCAG) contains success criteria and suggested solutions for success. But there is no correspondence between today's contrast rules and the requirement that everyone should be able to see the content.
+
+<Card data-color='brand3' variant="tinted" data-unstyled>
+  <h3
+    data-size='xs'
+  >Current regulations, WCAG 2.1</h3>
+  <ul>
+    <li>
+      **1.4.3 Contrast (minimum) (Level AA)**: The contrast ratio between
+      text and background is at least 4.5:1. [1.4.3 Contrast (minimum), WCAG
+      2.1
+      (w3.org)](https://www.w3.org/Translations/WCAG21-no/#contrast-minimum)
+    </li>
+    <li>
+      **1.4.11 Non-text Contrast (Level AA)**: The visual
+      presentation of the following has a contrast ratio of at least 3:1 against
+      adjacent color(s). [1.4.11 Non-text Contrast, WCAG 2.1
+      (w3.org)](https://www.w3.org/Translations/WCAG21-no/#non-text-contrast)
+    </li>
+  </ul>
+</Card>
+
+<br />
+
+<Card data-color='brand2' variant="tinted" data-unstyled>
+  <h3
+    data-size='xs'
+  >Future or stricter:</h3>
+  <ul>
+    <li>
+      **1.4.6 Contrast** (enhanced) (Level AAA): The visual presentation
+      of text and images of text has a contrast ratio of at least 7:1,
+      except for non-essential text and text sizes larger than 18px or
+      14px bold. [1.4.6 Contrast (enhanced), WCAG 2.1
+      (w3.org)](https://www.w3.org/Translations/WCAG21-no/#contrast-enhanced)
+    </li>
+    <li>
+      **WCAG 2.2: 2.4.13** Focus Appearance (Level AAA), regarding the appearance of
+      focus marking requires that focus indicator has a contrast value of 3:1
+      between the same pixels in focused and unfocused state.
+      [Understanding Success Criterion 2.4.13: Focus Appearance | WAI |
+      W3C](https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance.html)
+    </li>
+    <li>
+      **WCAG 3** has a requirement for color and contrast, visual contrast in text
+      (silver): Ensure sufficient contrast between foreground text and the
+      background of the text. Here, a new method, called APCA,
+      is used to calculate the contrast.
+    </li>
+  </ul>
+</Card>
+
+## More precise method
+
+WCAG 3.0 now proposes a more precise method than today's standard for calculating contrast and setting threshold values.
+
+<ul>
+  <li>
+    The method improves how the value between two colors is determined, and also
+    distinguishes whether the colors are in the foreground or background.
+  </li>
+  <li>
+    It also sets clear threshold values or target values for font selection,
+    text size, and font weight. The method is called Advanced Perceptual Contrast
+    Algorithm (APCA).
+  </li>
+  <li>
+    Our goal is to exceed AAA requirements in WCAG 2.1, and we will thus be
+    closer to the threshold values in APCA. This increases the chance that we will
+    meet the requirement that everyone, including the visually impaired, can see the content on
+    the website.
+  </li>
+</ul>
+
+## Today we use a higher standard than the accessibility requirements
+
+For the content in public digital services to be accessible to all users, we currently follow a desired standard for contrast that is higher than the requirements for accessibility. The standard is called WCAG 2.1, level AAA.
+
+To further enhance readability, we have ambitions to achieve contrast at level 4. This is the top level in the APCA method, which is now being proposed in WCAG 3.0.
+
+## Why isn't today's standard good enough?
+
+We know that even if a solution meets the specific requirements from the universal design regulations, it is not necessarily universally designed and accessible. Since the eye's ability to perceive colors and light is not part of the method, it is unsuitable for calculating the difference in brightness in the color pair.
+
+If we follow the method in WCAG 2, we technically meet the requirement for universal design, but this does not mean that the content is accessible or universally designed. Therefore, we go to great lengths to also meet the future WCAG 3 requirements that use the APCA method.
+
+<Card data-color='brand3' variant="tinted" data-unstyled>
+  **Contrast in WCAG 2 "luminosity contrast algorithm"** <br />
+  _"In WCAG 2, contrast is a measure of the difference in perceived luminance
+  between two colors. This difference is expressed as a ratio ranging from 1:1 (e.g.,
+  white on white) to 21:1 (e.g., black on white)."_ – WebAIM. Contrasts are calculated using the colors' RGB, HEX, or HSL
+  values in addition to transparency (alpha), whether the color is text, graphics, foreground
+  or background has no significance.
+</Card>
+
+<br />
+
+<Card data-color='brand2' variant="tinted" data-unstyled>
+  **Contrast in WCAG 3 "visual contrast algorithm"** <br />In WCAG 3 a
+  visual-contrast algorithm called APCA is used, it still uses the
+  color values to calculate the contrast, but also whether the color is
+  text, graphics, foreground or background, in addition, the choice of font,
+  font weight and size also have an impact on which contrast values are
+  approved. Different colors that in WCAG 2 would have achieved similar
+  contrast values could in APCA get different values because it calculates to a greater extent
+  based on the eye's ability to perceive colors rather than just the technical
+  color value.
+</Card>
+
+## Tools for testing contrast values
+
+The color system for Brønnøysundregistrene can be found in [the contrast tool here](https://contrast.brreg.no/). You can test how contrast values change depending on which text color, size, and weight you choose. And you can see which levels of requirements are met, whether they are WCAG AA or AAA levels, or APCA.
+
+<Image
+  src='/img/Kontrast-terskelverdier.png'
+  alt='Table showing text sizes and weights, and to what extent they meet the contrast requirement.'
+  boxShadow={true}
+/>
+
+The threshold values (above) that show whether the contrast is approved or not are simplified from an early "silver" level table from the APCA work. When a finished model has been tested and recommended from WCAG 3, the threshold values will change.
+
+<Image
+  src='/img/Kontrast-eksempel.jpg'
+  alt='The illustration shows two examples (A and B) with 16px large text in normal weight, both variants have 4.6 to 1 in contrast.'
+  boxShadow={false}
+  style={{
+    maxWidth: '350px',
+  }}
+/>
+
+In the example above, we see that even though the contrast is calculated to be the same using the WCAG 2 method, the degree of readability is different for the texts in variant A and Variant B.
+Both texts are 16px in normal weight, and both variants have a contrast of 4.6 to 1.
+In variant A, the text has the color #6D7879 and the background is white. The text is somewhat readable.
+In variant B, the text is black, and the background is color #6D7879. The text is somewhat less readable than variant A.
+
+<br />
+<br />
+<Card data-color='brand3' variant="tinted" data-unstyled>
+  **Contribute to the article?** <br />
+  We would like your input and feedback on the article. Send us an
+  email at: designsystem@digdir.no or [contact us on Github](https://github.com/digdir/designsystemet/issues/new).
+</Card>
+
+<Contributors
+  authors={[
+    'Roy Halvor Frimanslund',
+    'Gørild Døhl',
+    'Ann-Elisabeth Hammer',
+    'Lasse Febakke Straum',
+    'Marianne Røsvik',
+  ]}
+/>
+<br />
+<br />

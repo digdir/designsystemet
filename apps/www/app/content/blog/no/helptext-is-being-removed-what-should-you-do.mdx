@@ -1,0 +1,140 @@
+---
+title: HelpText blir fjerna, kva gjer du?
+description: Me fjernar HelpText frå Designsystemet. Kvifor, og kva gjer du om du fortsatt vil bruke den?
+date: 2025-01-07
+author: Designsystemet
+imageSrc: /img/blog/helptext.png
+imageAlt: Illustrasjon av ein hjelpetekst i popover.
+imageCaption: HelpText er i dag ein popover knytt til ein knapp.
+---
+
+Designsystemet fjernar `HelpText`, dette betyr at den ikkje blir med i versjon 1.
+Kvifor gjer me dette? Og kva gjer du dersom du fortsatt bruker den?
+
+Nederst i artikkelen finn du kode for å implementere denne komponenten sjølv.
+
+## Kvifor fjernar me `HelpText`?
+
+Det har vore ein utfordrande komponent å anbefale konsekvent, og fleire faktorar tilseier at den ikkje passar i Designsystemet:
+
+- **Enkel å implementere sjølv:** `HelpText` er i praksis ein popover knytt til ein knapp, noko som lett kan lagast med ein kort css-snutt og eksisterande komponentar.
+- **Uklart bruksområde:** Me har ikkje klare anbefalingar for når og korleis hjelpetekst bør visast, og komponenten kan dermed lett bli brukt feil.
+- **Uvanleg i designsystem**: Få designsystem inkluderer ein dedikert `HelpText`-komponent, nettopp fordi hjelpetekst varierer stort i form og kontekst.
+- **Avgrensar fleksibilitet:** Å tilby `HelpText` som ein standard popover skaper forventingar om at hjelpetekst alltid skal visast på denne måten. Det finst fleire løysingar som er betre eigna i ulike situasjonar.
+
+## Kva gjer du dersom du fortsatt bruker den?
+
+Dersom du har brukt `HelpText`, finn du nederst i artikkelen ein kode-snutt som viser korleis du kan implementere funksjonaliteten sjølv.
+Denne løysinga gjer deg fridom til å tilpasse hjelpetekst etter dine behov.
+
+## Vidare arbeid
+
+Me jobbar med å avklare når og korleis hjelpetekst bør integrerast i grensesnitt, og ser fram til å kunne tilby meir presise anbefalingar i framtida.
+Det vil etter kvart kome eit mønster for ulike typar hjelpetekst.
+
+## Kode
+
+Koden under kan du bruke for å komponere din eigen `HelpText`-komponent.
+CSS-snutten inkluderer ikon, klassen legger du på `Popover.Trigger`.
+
+### CSS
+
+```css
+.ds-helptext {
+  --dsc-helptext-icon-size: 65%;
+  --dsc-helptext-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 8 14'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M4 11a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM4 0c2.2 0 4 1.66 4 3.7 0 .98-.42 1.9-1.17 2.6l-.6.54-.29.29c-.48.46-.87.93-.94 1.41V9.5H3v-.81c0-1.26.84-2.22 1.68-3L5.42 5C5.8 4.65 6 4.2 6 3.7 6 2.66 5.1 1.83 4 1.83c-1.06 0-1.92.75-2 1.7v.15H0C0 1.66 1.8 0 4 0Z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  --dsc-helptext-size: var(--ds-size-7);
+
+  border-radius: var(--ds-border-radius-full);
+  border: max(1px, calc(var(--ds-size-1) / 2)) solid; /* Allow border-width to grow with font-size */
+  box-sizing: border-box;
+  height: var(--dsc-helptext-size);
+  min-height: 0;
+  min-width: 0;
+  padding: 0;
+  position: relative;
+  width: var(--dsc-helptext-size);
+
+  @media (forced-colors: active) {
+    color: ButtonText;
+  }
+
+  &::before {
+    content: '';
+    border-radius: inherit;
+    background: currentcolor;
+    mask-composite: exclude;
+    mask-image: var(--dsc-helptext-icon-url);
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: var(--dsc-helptext-icon-size) var(--dsc-helptext-icon-size), cover;
+    scale: 1.1; /* Hide tiny half pixel rendeing bug */
+    width: 100%;
+    height: 100%;
+
+    @media (forced-colors: active) {
+      background: ButtonText;
+    }
+  }
+
+  &:has(+ :popover-open)::before {
+    mask-image: var(--dsc-helptext-icon-url), linear-gradient(currentcolor, currentcolor); /* Cut icon out of currentcolor surface */
+  }
+
+  @media print {
+    display: none;
+  }
+}
+```
+
+### Markup
+
+```tsx
+export type HelpTextProps = {
+  /**
+   * Required descriptive label for screen readers.
+   **/
+  "aria-label": string;
+  /**
+   * Placement of the Popover.
+   * @default 'right'
+   */
+  placement?: "right" | "bottom" | "left" | "top";
+} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, "color">;
+
+export const HelpText = forwardRef<HTMLButtonElement, HelpTextProps>(
+  function HelpText(
+    { placement = "right", children, ...rest },
+    ref
+  ) {
+    return (
+      <Popover.TriggerContext>
+        <Popover.Trigger
+          className="ds-helptext"
+          ref={ref}
+          variant="tertiary"
+          data-color="info"
+          {...rest}
+        />
+        <Popover placement={placement} data-color="info">
+          {children}
+        </Popover>
+      </Popover.TriggerContext>
+    );
+  }
+);
+```
+
+### Satt saman
+
+I [denne CodeSandboxen](https://codesandbox.io/p/sandbox/own-helptext-example-xrzkvw) kan du sjå korleis du sett kodesnuttane over saman.
+
+<Contributors
+  authors={[
+    'Tobias Barsnes',
+    'Marianne Røsvik',
+    'Michael Marszalek',
+    'Lasse Straum',
+    'Øyvind Thune',
+  ]}
+/>

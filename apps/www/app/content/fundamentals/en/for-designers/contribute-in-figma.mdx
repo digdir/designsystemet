@@ -1,0 +1,68 @@
+---
+title: Contribute with design
+description: We appreciate your help in improving components and design in Figma.
+date: 2023-06-27
+category: For designers
+color: red
+icon: BranchingIcon
+---
+
+## Suggest new design or improvements
+
+We appreciate your help in improving components and design in Figma. The best solutions come through collaboration.
+
+### New component
+
+If you want to suggest a new component, we appreciate if it is [registered in Github](https://github.com/digdir/designsystemet/discussions/new?category=components).
+
+When a new component is proposed, we need to assess whether it is valuable enough to be part of the design system. We don't want to end up with hundreds of components with small differences, as we risk unwanted complexity, maintenance, as well as design and technology debt.
+
+For new components that are included, we must:
+
+- Identify and explore similar needs in other product teams and public organizations. How many products/agencies will use it?
+- Evaluate the problem the component should solve and the value this provides.
+- Consider if it can be made flexible and reusable enough.
+- Consider if it aligns with the [design principles](/en/fundamentals/introduction/design-principles) and if it fits into the whole
+
+### Report errors or deficiencies in a component in Figma
+
+If you've found a weakness with any of the existing components in Figma, we appreciate if you either leave a comment in Figma along with the component in question, or create a [bug report in Github explaining the error](https://github.com/digdir/designsystemet/issues/new?assignees=&labels=%F0%9F%90%9B+bug&projects=&template=1bug_report.yml), or a [feature request explaining the desired additional functionality](https://github.com/digdir/designsystemet/issues/new?assignees=&labels=%E2%9C%A8feature+request%2Cneeds+prioritization%E2%9D%97%EF%B8%8F&projects=&template=2feature_request.yml).
+
+## Create a component in Figma
+
+Components under development are in separate work files. When the design is finished, the component is moved to [Designsystemet - Core UI Kit](https://www.figma.com/@designsystemet). This file is shared in Figma Community.
+
+There are a few things to consider when creating components in Figma:
+
+- Talk to a developer about specifications, requirements, accessibility, properties, and variants. Agree on the scope for the component and document this in the component's [Github issue](https://github.com/orgs/digdir/projects/3/views/14).
+
+- [All styles](https://docs.tokens.studio/available-tokens/available-tokens) (colors, spacing, sizes, shadows, etc.) should be linked to the correct tokens. If you use the existing styles, these are already automatically linked to tokens. If you need new styles, these must also be created as tokens.
+
+- Use the typography components for all text that should exist in the component.
+
+- [Autolayout](https://help.figma.com/hc/en-us/articles/5731482952599-Using-auto-layout): The content should scale as expected when resizing. Consider whether the content should wrap under each other if there is not enough width. Can it be useful with a min or max width? And perhaps truncate (...) on the text if it gets too long?
+
+- [Variants](https://help.figma.com/hc/en-us/articles/360056440594-Create-and-use-variants) and "[component properties](https://help.figma.com/hc/en-us/articles/5579474826519-Explore-component-properties)": Use variants for different variants, colors, states, sizes, and similar. Use Component properties to show/hide layers, instance-swap (e.g., switch an icon) and change text. Properties are named the same way as props in Storybook. We use `Variant`, `Size`, `Color`, `State`.
+
+- What sizes should the component exist in? Consider that the component fits with the sizes of the other components. For example, a medium text-field should be as tall as a medium button, as they should be able to be placed next to each other. A medium component should use typography-size medium, and a small component should use typography-size small.
+
+- Is the component interactive? If so, different states must exist as variants of the component, and these are connected with "[Change to](https://help.figma.com/hc/en-us/articles/360061175334-Create-interactive-components-with-variants#create)".
+
+- Multi-branding. Consider to what extent the component should support different theming and facilitate this by using brand colors from tokens.
+
+- Naming and organizing: Make sure the layers in the component have sensible names and that there are no unnecessary groupings or layers.
+
+- Think about how another designer will use the component. Is it intuitive to use? Is it flexible enough so they don't need to detach it? Maybe it should be set up with [slots](https://www.youtube.com/watch?v=FOGgsPz3UTk) so that it's possible to replace the content in it and add other components without having to detach. Also feel free to use "[Preferred values](https://help.figma.com/hc/en-us/articles/5579474826519-Explore-component-properties#preferred)" to highlight the components we think will be most used as content.
+
+  - Check that you have good enough [contrasts](https://www.uutilsynet.no/regelverk/testprosedyrar-nettstader/709#suksesskriterium_143_kontrast)
+  - That you have considered how keyboard navigation should work if you are creating a new component that is not standard. (Standard HTML elements already have keyboard navigation defined).
+  - Instructions or information that is essential for the user should not be marked only visually. Examples can be using an icon or text in addition to red color that indicates something is failing.
+  - Focus: All elements should have a visual marker that becomes visible when the element receives keyboard focus. The focus marker should have good enough contrast to the background; to achieve this we use a black border (2px) and a yellow outline (3px) in addition.
+
+- When the component is ready, it is marked as "Ready for review". It is tested by others and after any adjustments, it is marked as "[Ready for development](https://help.figma.com/hc/en-us/articles/15023124644247-Guide-to-Dev-Mode)". When it is developed as a React component, we link to the component page in [Storybook](https://storybook.designsystemet.no).
+
+### Update tokens
+
+To change or create new tokens, you need to create a new branch in the [Tokens Studio for Figma](https://tokens.studio/) plugin. You need the Pro version of the plugin to do this.
+
+[See how to connect the plugin to our design tokens](/en/fundamentals/for-designers/getting-started#use-your-own-color-palette-on-the-components).

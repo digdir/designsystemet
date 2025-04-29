@@ -1,0 +1,126 @@
+---
+title: How Altinn Studio Uses the Design System
+description: Altinn Studio utilizes the Design System using the facade pattern. Learn more about how!
+date: 2024-03-27
+author: Altinn Studio / David Øvrelid
+imageSrc: /img/blog/altinnstudio-16-9.png
+imageAlt: Logo and illustration of Altinn Studio. Shows people sitting at computers in an office landscape.
+imageCaption: Altinn Studio uses components from the Design System and extends them to suit their needs.
+---
+
+[Altinn Studio](https://altinn.studio/) is a tool for creating digital services. If you use Altinn Studio to build services, you automatically use components from the Design System!
+
+For Team Altinn Studio to achieve their goal of creating a good tool — a good design system must be the foundation. The developers at Altinn Studio need components that are accessible to users in a good way, while also allowing them to extend the components to more complex ones.
+
+_"It's important that it's possible to extend the components to more complex ones, because all products need to solve a unique need in the market, and often situations arise where more specialized components are necessary. If we can extend existing components from the design system, we'll be able to maintain many of the accessibility requirements and visual similarity with the basic components without having to put in too much effort."_
+
+<Card data-color="brand2">
+  David Øvrelid, Tech Lead at Altinn Studio, explains how Altinn Studio
+  uses the Design System. The article was first published on Medium. [Read the
+  original
+  article](https://davidovrelid.com/hvordan-vi-kan-ta-i-bruk-designsystemet-no-p%C3%A5-en-forusigbar-m%C3%A5te-3988980884a2)
+</Card>
+<br />
+<br />
+---
+<br />
+
+When adopting a third-party solution, whether it's the Design System or something else, it's important to consider some basic rules to ensure quality and security in your solution.
+
+The Design System offers a wide range of basic components that can be designed in many variants. An example is the button component (see figure 1).
+
+<Image
+  src="/img/blog/altinnstudio-figur1.png"
+  alt="The illustration shows several buttons in different variants and colors."
+  boxShadow={false}
+  caption="Figure 1: Illustration showing variants of buttons."
+  
+/>
+
+Although the button component comes in many variants, that doesn't mean you and your team should use all the variants. The Design System offers these possibilities to be flexible and provide you with functionality that is both commonly used and follows familiar patterns.
+
+_The Design System has documentation on patterns for when the different variants should be used. [See for example the button at this link](https://storybook.designsystemet.no/?path=%2Fdocs%2Fkomponenter-button--docs)._
+
+How can we ensure that an entire team has control over which variants should be used where and when in the team's product, and why is this so important? It's primarily important because we need to develop a solution that is well-thought-out and conveys a cohesive product that the user understands. We must therefore ensure that the same type of tasks for the user are solved in exactly the same way, both visually and functionally across the product. This also means that we must ensure that there isn't a random implementation and user experience based on which developer implemented the function, but rather have well-established concepts in the team.
+
+So, this means we must ensure to maintain three important main points when using the Design System.
+
+1. We must be able to establish our own patterns and concepts that are adapted to the target audience of our product. This ensures a good user experience for our target audience while maintaining cohesiveness across products by using designsystemet.no.
+2. We must ensure that the entire team has confidence when updating the npm package from the Design System.
+3. We must ensure simple handling of Breaking Changes, both for confidence — but also to ensure that the team doesn't lag behind on major versions.
+
+How can we maintain our own patterns, concepts, confidence, and breaking changes? The key word here is isolation. By isolating third-party systems, we increase control over the third-party system internally in the codebase and in the team.
+
+What does it mean to isolate a third party? It's about ensuring that we only have one integration point with the third party. In this case, it means that we only have dependencies on the Design System in one place. How can we achieve that? We can achieve it by using the facade pattern.
+
+## The Facade Pattern
+
+_The facade pattern in software development refers to a design pattern that allows clients to communicate with complex systems through a simplified interface. It's used to hide the complexity of underlying systems and promote a more modular and maintainable codebase._
+
+**Altinn Studio uses designsystemet.no with the help of the facade pattern.**
+
+Team Altinn Studio uses a monorepo, which means they can create their own packages internally in their own codebase. This promotes the ability to build modular and scalable code.
+
+Altinn Studio has therefore developed its own package internally in the monorepo that they call `studio-components`. What's the difference between the Design System and `studio-components`? The difference is that the Design System offers a complete design system that includes tokens for colors and spacing, as well as basic components. While `studio-components` follows the facade pattern to build on the components from the Design System, and also uses tokens from the Design System. In other words, Altinn Studio achieves isolation of the Design System by using `studio-components`. It also gives the team the opportunity to define their own patterns and components for their needs.
+
+_*Are you curious about `studio-components`? Altinn Studio has documentation of the components at https://components.altinn.studio. At the time of writing, the documentation is under development and more information about patterns and concepts is coming.*_
+
+Here, Team Altinn Studio achieves isolation of the Design System, while also opening up for extending the Design System with more complex components for their own needs. The advantage of extending the Design System is that you see the whole picture and recognize the composite components because they are built up of one or more components from the Design System.
+
+For example, Altinn Studio needs an [ExpressionEditor](https://components.altinn.studio/?path=%2Fdocs%2Fforms-studioexpression--docs). This is a component that becomes too specific for the Design System, so it's not practical to let the Design System develop and maintain this component. Team Altinn Studio has therefore created their own component in `studio-components` that extends the Design System by using the basic components the Design System offers. The component also uses the same tokens for spacing and sizes that are used in the Design System. In figure 3 below, you can recognize the whole because they use the basic components in the Design System as building blocks. Cool, right!
+
+<Image
+  src="/img/blog/altinnstudio-figur2.png"
+  alt="The illustration shows an example of a composite component of several components from the Design System"
+  boxShadow={false}
+  caption="Figure 2. Example of a composite component of several components from the Design System"
+  
+/>
+
+**_The Design System is developed in a way that makes it easy to use and extend the components to the more complex ones where needed._**
+
+Here, Team Altinn Studio maintains the first principle of being able to define their own patterns and concepts for their product, to meet good user experience. This also simplifies the work day for designers and developers on the team. Because they have created a reusable component for all places where it is necessary to edit an expression.
+
+## How to Maintain Confidence?
+
+Let's continue and find out how we can maintain confidence when updating to a new version of the Design System.
+
+To achieve confidence and security when updating third parties, it's important to isolate the third party. If you don't isolate the Design System, you must have direct dependencies on the Design System in all pages and components in the app. This means that you have to visit all components and pages that use a component from the Design System that gets a breaking change. This means that we potentially can have hundreds of files that are changed, just because we made an update of the Design System. Figure 4 below shows a simplified illustration. The illustration shows four pages that use a button directly from the Design System, i.e., no isolation. This means that if the button gets a breaking change, code must be changed in 4 page components. In real life, it can be about changes in hundreds of components. This makes it uncertain whether everything works the same as before the update.
+
+<Image
+  src="/img/blog/altinnstudio-figur3.png"
+  alt="Illustration showing direct dependencies on the Design System"
+  boxShadow={false}
+  caption="Figure 3. Illustration showing direct dependencies on the Design System."
+  
+/>
+
+How can we solve this problem? That's right — we can solve it by isolating the components using the facade pattern.
+
+Figure 4 illustrates how we can isolate using the facade pattern. By isolating external sources in their own facade components. We can export only the necessary properties to our actual application. When a breaking change comes, we only need to implement the change in the facade component and keep the same API out to our own application internally. This means that we get only one file to change instead of 4 page components as shown in figure 4.
+
+When implementing facade components, it's also important to ensure good unit tests for the facade components. So that we are sure that the component works in exactly the same way both before and after re-implementation of breaking changes.
+
+When we isolate our components, we eliminate the need to change the existing code in our application itself. The only part of the code we have to adjust is the facade component. This results in pull requests containing updates for breaking changes remaining small, while the tests for the facade component assure us that unchanged code works and behaves as before.
+
+<Image
+  src="/img/blog/altinnstudio-figur4.png"
+  alt="Illustration showing isolation of the Design System. The illustration also shows how to handle breaking changes without having to change the 4 page components."
+  boxShadow={false}
+  caption="Figure 4. Illustration showing isolation of the Design System. The illustration also shows how to handle breaking changes without having to change the 4 page components."
+  
+/>
+
+Now that Team Altinn Studio has achieved isolation of composite components, frontend developers and designers can work more closely together between what is technically implemented and the sketches in Figma. This means that the Figma sketches can reflect the component names in `studio-components`.
+
+Now they can document and use the same components and names both in Figma and in code. This makes it easier for the team to establish patterns and reusable components that solve the same problems across the product. Now the facade components can also limit the number of variants of the component from the Design System, making it less likely that variants that shouldn't be used are used.
+
+**_The Altinn Studio codebase is open source and therefore openly available to everyone. If you're curious about the studio-components code, you can find the code at this link https://github.com/Altinn/altinn-studio/tree/main/frontend/libs/studio-components._**
+
+It's crucial to ensure that the components that make up the facade package are simple. This means they should only receive information as input props, based on this input, deliver an expected result back. It's essential that the components in the facade package do not make API calls or have tight connections to external third parties. This can lead to reduced reusability of the components.
+
+## Summary
+
+Now we've learned that we should consider isolating third parties that are used as a central part of our own solution. We've learned that isolation will create confidence and predictability. It will help to document and develop internal concepts and patterns that build further on the Design System for the product's needs, while maintaining the whole. It will help to create an even closer and better collaboration between design and development.
+
+<Contributors authors={["David Øvrelid"]} />

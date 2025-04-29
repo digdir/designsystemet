@@ -15080,6 +15080,7 @@ __metadata:
     rehype-slug: "npm:^6.0.0"
     remark-gfm: "npm:^4.0.1"
     remix-i18next: "npm:^7.2.0"
+    style-dictionary: "npm:^4.3.3"
     typescript: "npm:^5.7.2"
     vite: "npm:^6.3.2"
     vite-plugin-static-copy: "npm:^2.3.0"
