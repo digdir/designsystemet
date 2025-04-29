@@ -3,9 +3,7 @@ description: Setup GitHub Actions
 runs:
   using: composite
   steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-
+    - uses: actions/checkout@v4
     - uses: pnpm/action-setup@v4
       name: Install pnpm
       with:
