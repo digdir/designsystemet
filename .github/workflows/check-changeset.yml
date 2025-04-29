@@ -14,7 +14,7 @@ on:
       - "!packages/**/*.mdx"
 jobs:
   checks:
-    name: if changes are mode to packages
+    name: if changes are made to packages
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
