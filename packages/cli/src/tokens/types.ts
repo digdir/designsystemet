@@ -64,3 +64,8 @@ export type OutputFile = {
   output: string;
   destination: string | undefined;
 };
+
+export type DesignsystemetObject = {
+  name: string;
+  version: string;
+};
