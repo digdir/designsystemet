@@ -43,7 +43,7 @@ jobs:
         run: pnpm test:cli
 
       - name: Install Playwright
-        run: npx playwright install --with-deps chromium
+        run: pnpx playwright install --with-deps chromium
       - name: Run Storybook tests
         run: pnpm test:storybook
       - name: Replace relative paths in test report
