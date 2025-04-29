@@ -69,6 +69,7 @@
     "rimraf": "^6.0.1",
     "rollup": "^4.39.0",
     "rollup-plugin-copy": "^3.5.0",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "@storybook/test": "^8.6.12"
   }
 }
