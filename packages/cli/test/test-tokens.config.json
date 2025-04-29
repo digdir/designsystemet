@@ -1,6 +1,6 @@
 {
-  "$schema": "./dist/config.schema.json",
-  "outDir": "./test-tokens-create",
+  "$schema": "../dist/config.schema.json",
+  "outDir": "./test-tokens/config",
   "clean": true,
   "themes": {
     "some-org": {
