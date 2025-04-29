@@ -23,7 +23,7 @@ In the [Core UI Kit](https://www.figma.com/community/file/1322138390374166141) y
 Below we go through how these work.
 
 ### How can you see which mode is selected?
-Designers can easily switch between different modes in Figma and see information about the selected mode. Those without write access will not be able to see which mode is selected or its information, such as `Color scheme`, `Theme`, or `Typography`. This information is only available to those with editing access or those using Dev Mode in Figma.
+Designers can easily switch between different modes in Figma and see information about the selected mode. Those in view-only access will not be able to see which mode is selected or its information, such as `Color scheme`, `Theme`, or `Typography`. This information is only available to those with editing access or those using Dev Mode in Figma.
 
 #### How it looks with view-only access:
 Here you can see that information about the selected mode is not visible with view-only access.
@@ -44,7 +44,8 @@ When you have editing access, you can see which mode is selected for the entire 
 />
 
 #### How it looks in Dev Mode:
-If a mode is set on an entire frame, it is only visible in Dev Mode when the frame itself is selected. If you instead click on an individual component inside the frame, the information about the selected mode will not be visible.
+If a mode is set on an entire frame, it is only visible in Dev Mode when the frame itself is selected.
+Dev Mode only shows which mode is set on the element it is applied to, not further down.
 
 <Image
   src='/img/dev-mode-hele-frame.png'
