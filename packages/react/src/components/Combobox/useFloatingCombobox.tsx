@@ -9,6 +9,7 @@ import {
   useListNavigation,
   useRole,
 } from '@floating-ui/react';
+import type { UseFloatingReturn } from '@floating-ui/react';
 import { useState } from 'react';
 import type { MutableRefObject } from 'react';
 import { flushSync } from 'react-dom';
@@ -19,7 +20,16 @@ type UseFloatingComboboxProps = {
   listRef: MutableRefObject<(HTMLElement | null)[]>;
 };
 
-export const useFloatingCombobox = ({ listRef }: UseFloatingComboboxProps) => {
+export const useFloatingCombobox = ({
+  listRef,
+}: UseFloatingComboboxProps): UseFloatingReturn<HTMLInputElement> & {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  activeIndex: number | null;
+  getReferenceProps: ReturnType<typeof useInteractions>['getReferenceProps'];
+  getFloatingProps: ReturnType<typeof useInteractions>['getFloatingProps'];
+  getItemProps: ReturnType<typeof useInteractions>['getItemProps'];
+} => {
   const [open, setOpen] = useState(false);
 
   const { activeIndex } = useComboboxId();
@@ -79,6 +89,7 @@ export const useFloatingCombobox = ({ listRef }: UseFloatingComboboxProps) => {
     [role, dismiss, listNav],
   );
 
+  /* @ts-ignore */
   return {
     open,
     setOpen,

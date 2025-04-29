@@ -13,7 +13,7 @@
     "storefront": "pnpm --filter storefront dev",
     "theme": "pnpm --filter theme dev",
     "figma-plugin": "pnpm --filter figma-plugin dev",
-    "build": "pnpm --filter * run build",
+    "build": "pnpm --filter @digdir/* build",
     "build:all": "pnpm --filter * run build",
     "build:theme": "pnpm --filter theme build",
     "build:figma-plugin": "pnpm --filter figma-plugin build",

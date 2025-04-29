@@ -24,7 +24,8 @@
     "clsx": "^2.1.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-router-dom": "^7.4.1"
+    "react-router-dom": "^7.4.1",
+    "@navikt/aksel-icons": "^7.18.0"
   },
   "devDependencies": {
     "@figma/plugin-typings": "^1.109.0",
@@ -38,6 +39,7 @@
     "typescript": "^5.8.2",
     "vite": "^6.2.5",
     "vite-plugin-react-rich-svg": "^1.2.0",
-    "vite-plugin-singlefile": "^2.2.0"
+    "vite-plugin-singlefile": "^2.2.0",
+    "zustand": "^5.0.3"
   }
 }
