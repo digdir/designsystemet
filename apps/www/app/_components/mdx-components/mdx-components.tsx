@@ -20,7 +20,7 @@ import { CodeBlock } from '~/_components/code-block/code-block';
 import { Contributors } from '~/_components/contributors/contributors';
 import { Image } from '~/_components/image/image';
 import { ResponsiveIframe } from '~/_components/responsive-iframe/responsive-iframe';
-import { TokenList } from '~/_components/tokens/token-list/token-list';
+import { TokenList } from '~/_components/tokens-comp/token-list/token-list';
 import classes from './mdx-components.module.css';
 
 const defaultComponents = {
