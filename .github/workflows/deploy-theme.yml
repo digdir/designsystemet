@@ -24,17 +24,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Use node 22 and yarn cache
+      - name: Use node 22 and pnpm cache
         uses: actions/setup-node@v4
         with:
           node-version: '22.14.0'
-          cache: 'yarn'
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: yarn build
+        run: pnpm build
 
       - name: Install Vercel CLI
         run: npm install --global vercel@latest

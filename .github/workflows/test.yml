@@ -20,12 +20,12 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/gh-setup
       - name: Build
-        run: yarn build
+        run: pnpm build
       - name: Types
-        run: yarn types:react
+        run: pnpm types:react
 
       - name: Test
-        run: yarn test
+        run: pnpm test
       - name: 'Report Coverage'
         if: success() || failure()
         uses: davelosert/vitest-coverage-report-action@v2
@@ -40,12 +40,12 @@ jobs:
           check_title_template: '{{FILE_NAME}} / {{TEST_NAME}}'
 
       - name: Test CLI (create tokens, then build the theme)
-        run: yarn test:cli
+        run: pnpm test:cli
 
       - name: Install Playwright
         run: npx playwright install --with-deps chromium
       - name: Run Storybook tests
-        run: yarn test:storybook
+        run: pnpm test:storybook
       - name: Replace relative paths in test report
         uses: jacobtomlinson/gha-find-replace@v3
         if: success() || failure()

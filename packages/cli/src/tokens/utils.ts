@@ -30,7 +30,7 @@ export const getValue = <T>(token: TransformedToken | DesignToken): T => (token.
  * @param token Transformed token
  * @returns boolean
  */
-export const typeEquals = R.curry((types: string[] | string, token: TransformedToken) => {
+export const typeEquals: (types: string[] | string, token: TransformedToken) => boolean = R.curry((types: string[] | string, token: TransformedToken) => {
   if (R.isNil(token)) {
     return false;
   }
@@ -38,7 +38,7 @@ export const typeEquals = R.curry((types: string[] | string, token: TransformedT
   return R.includes(R.toLower(getType(token)), R.map(R.toLower, Array.isArray(types) ? types : [types]));
 });
 
-export const pathStartsWithOneOf = R.curry((paths: string[], token: TransformedToken) => {
+export const pathStartsWithOneOf: (paths: string[], token: TransformedToken) => boolean = R.curry((paths: string[], token: TransformedToken) => {
   if (R.isNil(token)) {
     return false;
   }
