@@ -1,4 +1,5 @@
 import chroma from 'chroma-js';
+import Color from 'colorjs.io';
 import { Hsluv } from 'hsluv';
 import type { CssColor, HexColor } from './types.js';
 
@@ -218,4 +219,22 @@ export const rgbToHex = (rgb: { r: number; g: number; b: number }): HexColor => 
       return hex.length === 1 ? '0' + hex : hex;
     })
     .join('')}`;
+};
+
+/**
+ * Convert a color to a different format
+ *
+ * @param cssColor Any valid css color
+ * @param format Color space/format supported here https://colorjs.io/docs/spaces
+ */
+export const convertColor = (cssColor: string, format: string) => {
+  const color = new Color(cssColor);
+  switch (format) {
+    case 'rgb':
+    case 'rgba':
+    case 'hex':
+      return color.toString({ format: format, precision: 3 });
+    default:
+      return color.to(format).toString({ precision: 3 });
+  }
 };
