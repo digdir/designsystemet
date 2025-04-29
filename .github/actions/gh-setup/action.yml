@@ -3,16 +3,20 @@ description: Setup GitHub Actions
 runs:
   using: composite
   steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
     - uses: pnpm/action-setup@v4
       name: Install pnpm
       with:
         version: 10
         run_install: false
-    - name: Setup Node & Pnpm cache
+
+    - name: Install Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: lts/*
-        cache: pnpm
+        node-version: 20
+        cache: 'pnpm'
+
     - name: Install dependencies
-      shell: bash
-      run: pnpm i --frozen-lockfile
+      run: pnpm install --frozen-lockfile
