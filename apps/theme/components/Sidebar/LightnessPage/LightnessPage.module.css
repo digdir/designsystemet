@@ -41,5 +41,5 @@
 }
 
 .activeBtn {
-  background-color: var(--ds-color-surface-active);
+  background-color: var(--ds-color-surface-hover);
 }

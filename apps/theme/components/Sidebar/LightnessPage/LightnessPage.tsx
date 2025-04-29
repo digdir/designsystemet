@@ -58,7 +58,7 @@ export const LightnessPage = ({ onBackClicked }: LightnessPageProps) => {
               index === 11 ? null : (
                 <LightnessInput
                   key={index}
-                  label={color.name}
+                  label={color.displayName}
                   oneLiner
                   value={color.luminance[mode]}
                   initialValue={
