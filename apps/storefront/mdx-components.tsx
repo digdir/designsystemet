@@ -27,12 +27,9 @@ import {
   TableRow,
 } from '@digdir/designsystemet-react';
 import { CodeBlock } from '@repo/components';
+import type { MDXComponents } from 'mdx/types';
 
-export function useMDXComponents(components: {
-  [key: string]: React.ComponentType<unknown> | string | React.ReactNode;
-}): {
-  [key: string]: React.ComponentType<unknown> | string | React.ReactNode;
-} {
+export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
     /* @ts-ignore */
