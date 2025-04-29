@@ -24,13 +24,15 @@ const getCurrentYear = () => {
 };
 
 const LinkList = (links: LinkListItemProps[]) => {
+  const { t } = useTranslation();
+
   return (
     <ul className={classes.links}>
       {links.map((item, index) => (
         <li key={index}>
           <RRLink data-color='neutral' className={classes.link} to={item.url}>
             {item.prefix}
-            {item.text}
+            {t(item.text)}
           </RRLink>
         </li>
       ))}

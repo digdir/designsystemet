@@ -1,0 +1,144 @@
+---
+title: Colors
+sidebar_title: Colors
+description: The color system consists of global colors and a semantic level that describes what the color should be used for.
+date: 2024-05-30
+category: Design elements
+color: red
+icon: PaletteIcon
+---
+
+The color system consists of global colors that refer to what the color is (e.g., red-1) and a semantic level that describes what the color should be used for (e.g., Text.Danger).
+
+## Naming structure
+The colors in the Design System are structured with a semantic meaning. 
+This means they are defined by function and use, not just by how they look. 
+This makes it easier to choose the right color because you don't have to evaluate the color tone itself and can focus on what the color should communicate instead.
+
+The color names in the Design System are divided into 3 parts: Name of the color scale, group (area of use), and variant.
+These parts describe how the colors are built up and how they should be used.
+
+<Image
+  src="/img/color-semantic.png"
+  alt="Shows the structure of a semantic color"
+  boxShadow={false}
+/>
+
+* `Name` The first part and the name of the color scale. 
+By default, the Design System comes with the color scales Success, Danger, Warning, Info, and Neutral.
+More scales can be added using the [Theme Builder](https://theme.designsystemet.no/).
+
+* `Group` Each color scale is divided into the groups Background, Surface, Border, Text, and Base. 
+These groups describe the areas of use for the colors. For example, the Text group should be used for text and icons.
+
+<Image
+  src="/img/fargeskala-success.png"
+  alt="Shows how color scales are divided into groups"
+  boxShadow={false}
+  caption="Shows a color scale and the 5 groups that the colors are divided into."
+/>
+
+* `Variant` Within each group, there are variants that describe how the colors look or should be used. 
+For example, Tinted means the color has a hint of color in it, while Hover means the color is intended to be used for an interactive state.
+
+## Overview and explanation of colors
+Each color scale consists of a total of 16 colors, designed to cover different needs in the design. 
+Below you'll find an overview of the different colors and their intended uses.
+
+<Image
+  src="/img/color-tokens.png"
+  alt="Shows how the semantic colors are divided into variants"
+  boxShadow={false}
+  caption="Shows how the semantic colors can be used in the design. The example uses four different color scales: Danger, Neutral, and two blue scales."
+/>
+
+### Background
+Background colors are used to color large surfaces and are often the back layer on a website. It's common to use these colors on the body element.
+
+* `Background-default` is the lightest and most neutral background color.
+* `Background-tinted` gets a hint of color in it and can be used to create variation in the background layer.
+
+### Surface
+Surface colors are used to color elements that sit above the background colors, such as panels or cards.
+These colors serve as foreground colors and help create depth in the design by separating elements from the background.
+In dark mode, these four colors become gradually lighter, with Surface-active being the lightest.
+
+* `Surface-default` is completely white in light mode and is used as the standard background color for elements.
+* `Surface-tinted` gets a hint of color in it and can be used to distinguish elements from the background.
+* `Surface-hover` can be used for hover states for elements or to create visual hierarchies in the Surface layer when combined with Surface-tinted and Surface-active.
+* `Surface-active` can be used for active states for elements or to strengthen the hierarchy in the Surface layer together with Surface-tinted and Surface-hover.
+
+<Image
+  src="/img/color-surface.png"
+  alt="Shows how Surface-tinted looks for 7 color scales generated with the Theme Builder."
+  boxShadow={false}
+  caption="Shows how Surface-tinted looks for 7 color scales generated with the Theme Builder."
+/>
+
+### Border
+Border colors are used to color frames (strokes) of elements.
+
+* `Border-subtle` has low contrast against background and surface colors and should only be used for decorative purposes. 
+Common use cases are dividing lines and decorative frames.
+The color should not be the only visual indicator that an element is interactive.
+* `Border-default` is used on form components or on other meaningful frames. 
+The color has good contrast (over 3:1) against all background colors, Surface-default, and Surface-tinted.
+* `Border-strong` has good contrast (over 3:1) against all background and surface colors and can be used on frames to make elements extra visible.
+
+<Image
+  src="/img/color-border.png"
+  alt="Shows how Border-subtle and Border-default look for 8 color scales generated with the Theme Builder."
+  boxShadow={false}
+  caption="The first row shows colors with Border-subtle, while the second row shows Border-default."
+/>
+
+### Text
+Text colors are used for text and icons.
+
+* `Text-subtle` is a light text color that can be used to create variation in typography or to indicate hierarchical levels of importance.
+It also tries to preserve as much of the color saturation from the original color chosen in the Theme Builder. 
+The color has good contrast (**4.5:1**) against all background colors, Surface-default, and Surface-tinted.
+* `Text-default` is a text color with high contrast, optimal for readability. 
+It should be used for the main content and the primary text on a page.
+This color in the Neutral variant can be a nice color to use for most of the text.
+The color has good contrast (**4.5:1**) against all background and surface colors.
+
+<Image
+  src="/img/color-text.png"
+  alt="Screenshot of Figma showing how Text-default and Text-subtle look for 8 different color scales generated with the Theme Builder."
+  boxShadow={false}
+  caption="Shows how Text-default and Text-subtle look for 8 different color scales generated with the Theme Builder."
+/>
+
+### Base
+Base colors are used to color solid backgrounds, such as buttons and other interactive elements.
+The colors help direct attention to important design elements and establish a visual hierarchy in relation to less prominent elements. 
+At the same time, they create contrast against background and surface colors, which enhances readability and visual clarity.
+
+The Base-hover and Base-active colors are generated based on the lightness or darkness of the Base-default color to create smooth visual transitions between states. 
+The contrast colors become either white or black depending on the brightness of the Base-default color to ensure good contrast and readability.
+
+* `Base-default` can be used to color solid backgrounds of elements. The color (hex code) chosen in the theme builder is placed under Base-default.
+* `Base-hover` can be used for hover states for solid elements or to create visual hierarchies in the Base layer when combined with Base-default and Base-active.
+* `Base-active` can be used for active states for solid elements or to strengthen the hierarchy in the Base layer together with Base-default and Base-hover.
+* `Base-contrast-subtle` has good contrast (**4.5:1**) against the Base-default color from the same color scale and can safely be used as a text color against it.
+* `Base-contrast-default` has good contrast (**4.5:1**) against the Base-default and Base-hover colors from the same color scale, and can safely be used as a text color against these.
+
+<Image
+  src="/img/color-base.png"
+  alt="Screenshot of Figma showing how Base-default and Base-contrast-default look."
+  boxShadow={false}
+  caption="Shows boxes with Base-default as background and Base-contrast-default as text color."
+/>
+
+## Color tokens
+
+The colors below are examples from a random theme.
+Use the [theme builder](https://theme.designsystemet.no) to generate your own colors and names.
+
+{/* <TokenList
+  type="color"
+  showThemePicker={true}
+  showModeSwitcher={true}
+/>
+ */}

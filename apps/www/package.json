@@ -32,7 +32,8 @@
     "rehype-autolink-headings": "^7.1.0",
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.1",
-    "remix-i18next": "^7.2.0"
+    "remix-i18next": "^7.2.0",
+    "style-dictionary": "^4.3.3"
   },
   "devDependencies": {
     "@react-router/dev": "^7.5.2",
