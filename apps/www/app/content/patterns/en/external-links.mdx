@@ -5,16 +5,142 @@ category: Upcoming
 date: 2025-01-29
 ---
 
-## How to mark and use external links?
-This pattern is being developed in a cross-agency working group during spring 2025. You can influence the pattern and share your insights on [Github](https://github.com/digdir/designsystemet/discussions/2294).
+Lenker er en viktig del av navigasjonen på nett, og måten vi utformer og merker dem på påvirker brukeropplevelsen. Eksterne lenker krever spesielt tydelig merking for å sikre at brukeren forstår hva som skjer når de klikker. I denne artikkelen går vi gjennom hvordan vi bør merke lenker og hvilke språk- og designprinsipper som bør følges. Målet er å skape en mer forutsigbar og tilgjengelig brukeropplevelse.
 
-**The working group will look at**
-- How we should mark external links. Either by using visual indicators such as icons, text descriptions, or other means.
-- How we ensure that external links are accessible to all users.
-- Language - How we write link texts.
-- How we communicate that something opens in a new tab/window, and in which cases this is appropriate.
-- How we mark files that can be downloaded.
-- How we mark telephone and email links, as well as other links that open applications.
+## Eksterne lenker
+Eksterne lenker er lenker som leder brukeren til en annen nettside eller et annet domene enn det de befinner seg på. Når en bruker klikker på en ekstern lenke, forlater de det opprinnelige nettstedet og åpner innhold fra en annen aktør eller tjeneste.
+
+For å skape en forutsigbar og god brukeropplevelse bør vi gi brukeren informasjon om:
+
+* Destinasjonen – hvor lenken fører dem.
+* Oppførselen – om lenken åpnes i samme vindu, i en ny fane eller om den har spesielle interaksjoner som for eksempel telefon, e-post eller nedlasting.
+
+Måten eksterne lenker markeres på har vært svært variert på tvers av nettsteder. Noen bruker ikoner for å indikere eksterne lenker, mens andre legger til tekst eller åpner lenken i en ny fane. Mangelen på enhetlig praksis kan skape forvirring for brukerne, spesielt når de ikke får tydelig informasjon om hva som skjer når de klikker på en lenke. 
+
+## Tekst
+Lenketeksten skal beskrive lenkens formål og oppførsel. 
+
+* Unngå “gå til” eller “klikk her” i lenketeksten. Det er allerede tydelig at det er en lenke. 
+* Unngå å bruke ordet “lenke” i lenketekster. Du risikerer da at skjermlesere oppgir “lenke” flere ganger.
+* “Les mer” burde ikke brukes alene. Ta med konteksten i lenketeksten. For eksempel “Skattemeldingen kan du lese mer om hos Skatteetaten”. 
+* Bruk så korte lenketekster som mulig. Det kan være vanskelig for folk å lese lange tekster med underlinje, særlig når en lenke bryter over flere linjer.
+* Ikke bruk lenkens adresse (URL) som lenketekst. Det er slitsomt for skjermleserbrukere å få adressen lest opp karakter for karakter.
+* Det skal ikke være flere lenker med samme lenketekster på en side. Det blir vanskelig for skjermleser- eller leselistbrukere når det blir vist isolert i en lenkeliste. Unntak om det er flere lenker som går til samme URL. 
+
+
+<Table>
+  <TableHead>
+    <TableRow>
+      <TableHeaderCell>
+        Dårlige eksempler:
+      </TableHeaderCell>
+      <TableHeaderCell>
+        Gode eksempler:
+      </TableHeaderCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <TableCell>
+        [På arbeidsplassen.no kan du finne flere ledige stillinger som er relevant for deg](https://arbeidsplassen.nav.no/) (unødvendig lang)
+      </TableCell>
+      <TableCell>
+        [Finn ledige stillinger på arbeidsplassen.no](https://arbeidsplassen.nav.no/)
+      </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>
+        [99 99 99 99](tel:99999999) (Mangler formål)
+      </TableCell>
+      <TableCell>
+        [Ring oss på 99 99 99 99](tel:99999999)
+      </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>
+        [Klikk her for å lese mer om saken hos uio.no](https://www.uio.no/studier/bli-student/hvordan-velge/tre-tips.html) (Unngå "klikk her" + "Saken" sier ikke noe om hva det gjelder)
+      </TableCell>
+      <TableCell>
+        [Tre tips til deg som skal velge studier (uio.no)](https://www.uio.no/studier/bli-student/hvordan-velge/tre-tips.html) (Overskrift brukt som lenke)
+      </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>
+        [Rediger](https://github.com/digdir/designsystemet/tree/next/apps/storefront/app/monstre/eksterne-lenker/page.mdx) (sier ingenting om hva som redigeres eller hvor)
+      </TableCell>
+      <TableCell>
+       [Rediger denne siden på github.com](https://github.com/digdir/designsystemet/tree/next/apps/storefront/app/monstre/eksterne-lenker/page.mdx)
+      </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>
+        Les mer om merverdiavgift på: https://www.skatteetaten.no/nn/bedrift-og-organisasjon/avgifter/mva  (unngå url i løpende tekst)
+      </TableCell>
+      <TableCell>
+        [Merverdiavgift (skatteetaten.no)](https://www.skatteetaten.no/nn/bedrift-og-organisasjon/avgifter/mva)
+      </TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+### Lenkeliste i skjermlesere
+
+Skjermlesere har funksjonalitet som lar folk skanne siden for å finne innholdet de leter etter. En måte de gjør dette er å få opp en liste over alle sidens lenker. Lenketeksten bør derfor gi mening i seg selv uten at den ses i kontekst av resten av teksten. Legg det viktigste tidlig i lenketeksten for å gjøre det tydelig hva formålet med lenken er. 
+
+<Image
+  src="/img/lenkeliste.png"
+  alt="Eksempel fra JAWS skjermleser med lenker som er beskrivende og lenker som ikke er beskrivende"
+  boxShadow={false}
+/>
+
+## Oppførsel
+
+### Unngå lenker som åpnes i ny fane
+
+Lenker bør i utgangspunktet ikke åpnes i ny fane. Da sikrer vi en forutsigbar brukeropplevelse fordi brukerens egne lenkeinnstillinger i nettleseren videreføres. Flere bruker Tilbake-knappen i nettleseren hvis lenken ikke førte dit de trodde, men det fungerer ikke når lenken ble åpnet i en ny fane. I tillegg er det noen skjermlesere som ikke informerer brukere om at lenken kommer til åpnes i en ny fane. 
+
+Det finnes likevel noen unntak:
+
+* Hvis systemet må logge ut brukeren når det navigeres til en annen side, og det er hensiktsmessig å unngå utlogging, bør lenken åpnes i ny fane. 
+* Når brukeren er midt i en prosess og risikerer å miste innhold ved å klikke på lenken. Ny fane bør vurderes hvis systemet ikke klarer å lagre brukerens inndata.
+
+Om et av unntakene er gjeldende unngår vi ikon, men skriver det heller som en del av lenketeksten. For eksempel [Søk om støtte hos Nav.no (åpnes i ny fane)](https://nav.no)
+
+Selv om en lenke inneholder target="_blank" så er det ikke alle kombinasjoner av nettlesere og skjermlesere som vil gi brukeren beskjed om at den åpnes i ny fane/vindu. Vi anbefaler derfor å skrive “åpnes i ny fane” som en del av lenketeksten.
+
+## Design
+
+### Unngå “ekstern-lenke”-ikon
+Hvilken ikon er for eksterne lenker og hvilket er for åpne i ny fane? 
+
+<Image
+  src="/img/eksternlenke.png"
+  alt="Eksempel på to ikoner som likner på hverandre."
+  boxShadow={false}
+/>
+
+Det er etablert et ikon som betyr “ekstern lenke”, men dette ikonet blir ofte brukt eller forstått som “Åpnes i ny fane”. Bruk av ikonet kan i verste fall villede brukeren, spesielt hvis lenken ikke faktisk åpnes i en ny fane. Hvis det primære målet er å indikere at en lenke leder til en ekstern side, er det mer effektivt å kommunisere dette i lenketeksten i stedet for å stole på et ikon alene. 
+
+Om lenketekstene blir veldig lange eller lenkelister oppleves støyete med repeterende informasjon om at det er eksterne lenker ønsker man ofte å bruke ikoner i stedet for å gjøre designet enklere. Før du tar dette valget, vurder om bruker faktisk trenger denne ekstra informasjonen. Er det en del av en naturlig flyt eller i en lignende kontekst kan det være at brukeren ikke opplever det som å bli tatt ut av kontekst. I så fall er kanskje informasjon om ekstern lenke overflødig. 
+
+Hvis du likevel bruker ikon, vær oppmerksom på at det tolkes ulikt av forskjellige brukere da det i dag blir brukt både for eksterne lenker og åpne i ny fane. 
+
+Dersom ikonet inneholder meningsbærende informasjon som ikke kommer frem i lenketeksten, skal dette formidles i ikonets alternativ tekst. 
+
+Overskrift for å si at flere linker tar deg ut av konteksten? 
+Når er det viktig at vi sier i fra om at du blir tatt til en ekstern side?
+
+eksempel med ulike ikoner som er ganske like og kan mistolkes? (Erfarne designere svarte 50/50 på om ikonet betyr åpne i ny fane eller “ekstern lenke”.) Vet du hvilket som betyr hva?:
+
+### Lenke til filer
+
+* Gjør det tydelig at lenken ikke tar deg til en ny side men laster ned en fil 
+* Opplys om filtype
+    * skriv filtype som en del an lenketeksten.
+    * ikke bruk ikon alene for å vise filtype 
+
+* Gjerne vis filstørrelse som en del av lenketeksten. Spesielt hvis filstørrelsen er stor
+* Dersom lenken fører til en fil som skal lastes ned istedenfor å åpnes i nettleseren, bør man sørge for å ha med attributten download med filnavn som indikerer filtype, f.eks. download="årsrapport.pdf". 
 
 
 <Contributors
