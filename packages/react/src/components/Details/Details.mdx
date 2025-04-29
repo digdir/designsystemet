@@ -17,8 +17,6 @@ Med `Details` kan du presentere mye innhold på liten plass i en eller flere rad
 - Ved å legge innhold i `Details` risikerer du at det ikke blir sett av brukerne. Innhold som er viktig bør _ikke_ skjules.
 - Ikke legg en `Details` inni en annen.
 
-<br />
-
 <Primary />
 <Controls />
 
@@ -47,7 +45,7 @@ import { Details, Card } from '@digdir/designsystemet-react';
 
 ## Eksempler
 
-<br />
+
 ### Med ramme
 
 `Details` kan vises med ramme ved å plasseres i et `Card`.
@@ -66,8 +64,6 @@ Dette kan passe i tilfeller der details ikke fyller hele siden, eller når det k
 `Details` har egen tilstand på åpen/lukket, men dette kan kontrolleres utenfra.
 
 <Canvas of={DetailsStories.Controlled} />
-
-<br />
 
 ## Retningslinjer
 
@@ -96,13 +92,9 @@ Hvis innholdet er for langt eller komplisert, bør du heller omformulere teksten
 
 - Ikke legg en `Details` inni en annen, det vi kaller nøstede lister.
 
-<br />
-
 ## Tekst i komponenten
 
 Details skal brukes til maksimalt to avsnitt innenfor hvert nedtrekk. Sørg for at overskriften gir en god beskrivelse av hva innholdet i details er. En tydelig og beskrivende overskrift skal gjøre brukerne nysgjerrige på innholdet. Overskriftene til details kan ha stor betydning for om brukerne finner det de trenger, om innholdet blir lest og om det kan regnes som tilgjengelig for alle brukere. «Vis mer» eller «Les mer her» er ikke gode nok titler. Har du en details med mange nedtrekk, kan du ha en hovedoverskrift eller temaoverskrift over hele listen.
-
-<br />
 
 ## Tilgjengelighet
 
@@ -114,8 +106,6 @@ Ikke plasser andre interaktive elementer inn i `Details.Summary`, da hele raden 
 `Shift` + `Tab` : Flytter fokus til forrige element som kan ha fokus \
 `Space` : Aktiverer knapp \
 `Enter` : Aktiverer knapp
-
-<br />
 
 ## Kjente mangler
 I Firefox og Safari spilles det ikke av animasjon når `Details` åpnes og lukkes. 

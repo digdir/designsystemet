@@ -1,3 +1,35 @@
+.heading {
+  background-color: 'transparent';
+  margin-bottom: var(--ds-size-2);
+
+  &:where(h1, h2) {
+    margin-top: var(--ds-size-5);
+  }
+  &:where(h3, h4, h5, h6) {
+    margin-top: var(--ds-size-4);
+  }
+  &:first-child {
+    margin-top: 0;
+  }
+}
+:global(.sb-anchor):first-child + .heading {
+  margin-top: 0;
+}
+
+.paragraph {
+  background-color: transparent;
+  margin-bottom: var(--ds-size-2);
+}
+
+.list {
+  max-width: '70ch';
+  margin-bottom: var(--ds-size-2);
+}
+
+.listItem {
+  margin-top: var(--ds-size-1)
+}
+
 .link {
   display: inline-flex;
   align-items: center;

@@ -7,7 +7,13 @@ import isChromatic from 'chromatic/isChromatic';
 import componentStyles from './componentOverrides.module.scss';
 
 import type { LinkProps } from '@digdir/designsystemet-react';
-import { Link, List, Paragraph, Table } from '@digdir/designsystemet-react';
+import {
+  Heading,
+  Link,
+  List,
+  Paragraph,
+  Table,
+} from '@digdir/designsystemet-react';
 
 import { Children } from 'react';
 import { CodeBlock } from '../../_components';
@@ -61,37 +67,79 @@ const components = {
       </CodeBlock>
     );
   },
+  h1: (props: Props) => (
+    <Heading
+      data-size='lg'
+      {...props}
+      className={`sb-unstyled ${componentStyles.heading}`}
+      level={1}
+    />
+  ),
+  h2: (props: Props) => (
+    <Heading
+      data-size='md'
+      {...props}
+      className={`sb-unstyled ${componentStyles.heading}`}
+      level={2}
+    />
+  ),
+  h3: (props: Props) => (
+    <Heading
+      data-size='sm'
+      {...props}
+      className={`sb-unstyled ${componentStyles.heading}`}
+      level={3}
+    />
+  ),
+  h4: (props: Props) => (
+    <Heading
+      data-size='sm'
+      {...props}
+      className={`sb-unstyled ${componentStyles.heading}`}
+      level={4}
+    />
+  ),
+  h5: (props: Props) => (
+    <Heading
+      data-size='sm'
+      {...props}
+      className={`sb-unstyled ${componentStyles.heading}`}
+      level={5}
+    />
+  ),
+  h6: (props: Props) => (
+    <Heading
+      data-size='sm'
+      {...props}
+      className={`sb-unstyled ${componentStyles.heading}`}
+      level={6}
+    />
+  ),
   p: (props: Props) => (
     <Paragraph
       {...props}
-      className='sb-unstyled'
+      className={`sb-unstyled ${componentStyles.paragraph}`}
       data-color-scheme='light'
-      style={{
-        backgroundColor: 'transparent',
-      }}
     />
   ),
   ol: (props: Props) => (
     <List.Ordered
       {...props}
-      style={{ maxWidth: '70ch' }}
-      className='sb-unstyled'
+      className={`sb-unstyled ${componentStyles.list}`}
       data-color-scheme='light'
     />
   ),
   ul: (props: Props) => (
     <List.Unordered
       {...props}
-      style={{ maxWidth: '70ch' }}
-      className='sb-unstyled'
+      className={`sb-unstyled ${componentStyles.list}`}
       data-color-scheme='light'
     />
   ),
   li: (props: Props) => (
     <List.Item
       {...props}
-      className='sb-unstyled'
-      style={{ maxWidth: '70ch' }}
+      className={`sb-unstyled ${componentStyles.listItem}`}
       data-color-scheme='light'
     />
   ),

@@ -5,6 +5,10 @@
     font-size: round(down, 0.8em, 0.0625rem);
   }
 
+  :where(h1,h2,h3,h4,h5,h6) code {
+    font-weight: var(--ds-font-weight-semibold);
+  }
+
   a {
     // Hack to properly render the link underline across regular text and code
     &:not([data-single-child]) > code {

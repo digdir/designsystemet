@@ -28,15 +28,11 @@ import { ToggleGroup } from '@digdir/designsystemet-react';
 
 ## Eksempler
 
-<br />
-
 ### Innholdet på knappene
 `ToggleGroup` kan ha tre typer innhold:
 - Bare tekst.
 - Tekst med ikon til venstre for teksten.
 - Bare ikon.
-
-<br />
 
 #### Bare ikon
 Alternativet "Bare ikon" brukes kun når du vet at brukerne vil forstå ikonet. Det kan for eksempel være ekspertbrukere eller brukere av interne tjenester, som kjenner symbolene i den aktuelle `ToggleGroup` godt. Forklar handlingene med [`Tooltip`](/docs/komponenter-tooltip--docs) når du bruker kun ikoner. 
@@ -52,8 +48,6 @@ Bruk `value` på `ToggleGroup.Item` og `ToggleGroup` for å kontrollere verdiene
 
 ## Retningslinjer for `ToggleGroup`
 
-<br />
-
 Det bør være minst to, men ikke flere enn fem valg i en `ToggleGroup`. Trenger du flere valg enn fem, bruker du [`Combobox`](/docs/komponenter-combobox--docs).
 
 Passer til å
@@ -62,23 +56,18 @@ Passer til å
 - veksle mellom datavisning og innhold, for eksempel mellom tabell og graf
 - styre hvilke felter i et skjema som skal vises
 
-<br />
 Passer ikke til å
 
 - bruke som skjemaelement – bruk heller [`Radio`](/docs/komponenter-radio--docs)
 - navigere – bruk heller [`Tabs`](/docs/komponenter-tabs--docs) hvis det dreier seg om panelnavigasjon
-<br />
+
 ### Gi nok plass til komponenten
 
 Pass på at hele komponenten får plass på skjermen og at alle valgene er godt synlig for brukerne. I grensesnitt med liten plass, for eksempel på mobil, kan vi bruke [`Combobox`](/docs/komponenter-combobox--docs) i stedet.
 
-<br />
-
 ## Tekst i komponenten 
 
 Ha gjerne med en ledetekst for gruppen, som forklarer hva valgene gjelder. Skriv tydelige tekster for valgene i komponenten, og pass på at de har samme språklige form. Ta med hint i [`Tooltip`](/docs/komponenter-tooltip--docs), særlig hvis du bare viser ikoner.
-
-<br />
 
 ## Tilgjengelighet
 

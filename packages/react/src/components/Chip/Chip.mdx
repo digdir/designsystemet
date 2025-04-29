@@ -35,15 +35,11 @@ import { Chip } from '@digdir/designsystemet-react';
 <Chip.Button>You are using the Chip component!</Chip.Button>;
 ```
 
-<br/>
-
 ## Eksempler
 
-<br/>
 ### `Chip.Checkbox` 
 `Chip.Checkbox` kan brukes som et alternativ til `Checkbox`.
 <Canvas of={ChipStories.Checkbox} />
-<br/>
 
 ### `Chip.Removable`
 Vi bruker `Chip` med kryss når vi vil at brukerne skal kunne fjerne valgte verdier. Det kan for eksempel være filter som er satt, eller verdier som brukerne selv har skrevet inn i et tekstfelt.
@@ -52,12 +48,10 @@ Denne komponenten inneholder et kryss som indikerer at filteret kan fjernes. Det
 i Chip ikke forklarer at den kan fjernes. I dette eksempelet er det lagt til `aria-label="Slett {land}"`.
 
 <Canvas of={ChipStories.Removable} />
-<br/>
+
 ### `Chip.Button` 
 `Chip.Button` kan brukes i gruppe, for å vise valgmuligheter - ikke handlinger.
 <Canvas of={ChipStories.Button} />
-<br/>
-<br/>
 
 ## Retningslinjer for `Chip`
 
@@ -74,12 +68,8 @@ Passer ikke til
 - ikke klikkbare kategorier/emner (bruk heller [`Tag`](/docs/komponenter-tag--docs))
 - varsler for antall eller status (bruk heller [`Badge`](/docs/komponenter-badge--docs))
 
-<br/>
-
 ## Tekst i komponenten
 Chips bør ha så få ord som mulig, helst bare ett eller to.
-
-<br/>
 
 ## Tilgjengelighet
 Hvis deler av en side blir oppdatert samtidig som brukerne gjør noe på siden, må vi passe på at brukere med skjermleser får beskjed om det. Vi kan bruke en `ARIA live region` til det, som kan vise antall treff eller andre endringer.

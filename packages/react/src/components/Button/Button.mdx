@@ -27,8 +27,6 @@ import { Button } from '@digdir/designsystemet-react';
 
 Vi har forskjellige knapper for å fremheve utvalgte handlinger. `Primary`, `secondary` og `tertiary` bestemmer hvor viktig handlingen er.
 
-<br />
-
 ### Primary button
 
 Vi bruker denne knappen til den handlingen som er viktigst for brukeren, for eksempel Lagre, Neste eller Send inn. Det skal bare være en primærknapp per side.
@@ -46,8 +44,6 @@ Vi bruker denne knappen til handlinger som ikke er hovedhandlinger. Den står gj
 Denne knappen bruker vi til nedtonede handlinger. Hvis vi vil bruke den alene, må den ha med et ikon, hvis ikke er det vanskelig å se at det er en knapp.
 
 <Canvas of={ButtonStories.Tertiary} />
-
-<br />
 
 ## Fargevarianter
 
@@ -74,8 +70,6 @@ Knappene kommer i to hovedfarger `accent` og `neutral`. Hvis du har overstyrt fa
 En gruppe med knapper bør bruke samme fargevariant. Unntaket er når vi skal tydeliggjøre en handling brukeren ikke kan angre, for eksempel Forkast. Vi skal ikke kombinere andre fargevarianter.
 
 <Canvas of={ButtonStories.CombinedColors} />
-
-<br />
 
 ## Eksempler
 
@@ -105,15 +99,11 @@ Som regel er det **venstre** som er den beste plasseringen, men det finnes unnta
 - Er det en knapp som sier “Start” med en høyrepekende pil, er det naturlig at pilen plasseres til høyre for teksten.
 - Er knappen fast plassert på høyre side av grensesnittet er det best at ikonet også er høyrestilt for teksten.
 
-<br />
-
 ### Størrelse på ikon
 
 Ikon skalerer automatisk basert på knappestørrelse, men du endre denne ved å sette font størrelsen.
 
 <Canvas of={ButtonStories.IconOnly} />
-
-<br />
 
 ### Last inn
 
@@ -128,8 +118,6 @@ Denne egenskapen stopper ikke automatisk knappen fra å utløse `onClick`.
 
 Pass på at callback-funksjonen ikke kjører når knappen er deaktivert.
 
-<br />
-
 ## Retningslinjer for button
 
 Knapper skal brukes til å utføre handlinger.
@@ -139,25 +127,18 @@ Passer til å
 - starte en prosess
 - navigere i en flyt, for eksempel med Forrige og Neste
 - sende inn et skjema
-
-<br />
 Passer ikke til å
 
 - navigere til andre sider eller ut av tjenesten, bruk heller [`link`](/docs/komponenter-link--docs)
-
-<br />
 
 ### Plassering av knapper
 
 Når vi legger flere knapper ved siden av hverandre, skal primærknappen stå først. Unntaket er Forrige og Neste, da skal sekundærknappen Forrige stå først.
 
-<br />
-
 ### Ikke bruk deaktiverte knapper
 
 Deaktiverte knapper bør unngås fordi de kan være vanskelige å oppfatte. Noen brukere vil ikke forstå hva knappen sier eller hvorfor den ikke er klikkbar. Bruk heller en aktiv knapp som validerer. [^1]
 
-<br />
 ### En knapp skal utføre kun én handling
 
 Vi skal tydelig beskrive handlingene knappene utfører. En knapp kan bare ha en handling, ikke flere.
@@ -176,7 +157,6 @@ Vi skal tydelig beskrive handlingene knappene utfører. En knapp kan bare ha en 
     image='/img/component-guidelines/button/button-ex2-dont.png'
   />
 </Stack>
-<br />
 
 ### Èn hovedhandling per side
 
@@ -196,7 +176,6 @@ Vi skal holde oss til én primærknapp per side. Hvis det er flere hovedhandling
     image='/img/component-guidelines/button/button-ex3-dont.png'
   />
 </Stack>
-<br />
 
 ### Bruk samme farge på knappene i en gruppe
 
@@ -216,7 +195,6 @@ Vi skal holde oss til samme fargevariant for en gruppe knapper.
     image='/img/component-guidelines/button/button-ex4-dont.png'
   />
 </Stack>
-<br />
 
 ### Ett ikon per knapp
 
@@ -236,9 +214,6 @@ Vi skal holde oss til ett ikon per knapp.
     image='/img/component-guidelines/button/button-ex1-dont.png'
   />
 </Stack>
-<br />
-
-<br />
 
 ## Tekst i komponenten
 
@@ -267,8 +242,5 @@ Bruk stor forbokstav på det første ordet, som du ville gjort i en setning. Ikk
 
 <CssVariables css={css} />
 
-<br />
-<br />
-<br />
 
 [^1]: [Deaktiverte tilstander](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) - Aksel.
