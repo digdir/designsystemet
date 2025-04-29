@@ -1,10 +1,18 @@
+'use client';
 import {
   Dialog,
   Heading,
   Paragraph,
   Select,
 } from '@digdir/designsystemet-react';
+import { useState } from 'react';
+
 import type { Color } from '@digdir/designsystemet/color';
+import {
+  convertColor,
+  getLightnessFromHex,
+  getLuminanceFromLightness,
+} from '@digdir/designsystemet/color';
 import { getCssVariable } from '@digdir/designsystemet/color';
 import { ClipboardButton } from '@repo/components';
 import type { ChangeEvent } from 'react';
@@ -24,10 +32,15 @@ export const ColorModal = ({
   color,
 }: ColorModalProps) => {
   const { displayName, description, number, hex } = color;
+  const [convertedColor, setConvertedColor] = useState<string>(
+    convertColor(hex, 'oklch'),
+  );
+  const luminance = getLuminanceFromLightness(getLightnessFromHex(hex)).toFixed(
+    3,
+  );
   /* store user preference in localstorage? */
   const handleColorFormat = (event: ChangeEvent<HTMLSelectElement>) => {
-    const selectedValue = event.target.value;
-    console.log(selectedValue);
+    setConvertedColor(convertColor(hex, event.target.value));
   };
 
   return (
@@ -58,18 +71,19 @@ export const ColorModal = ({
           </Paragraph>
           <Select defaultValue='oklch' onChange={handleColorFormat}>
             <Select.Option value='hct'>HCT</Select.Option>
-            <Select.Option value='hsl'>HSL</Select.Option>
-            <Select.Option value='hex'>HEX</Select.Option>
             <Select.Option value='hsluv'>HSLUV</Select.Option>
-            <Select.Option value='lch'>LCH</Select.Option>
+            <hr />
+            <Select.Option value='hsl'>HSL</Select.Option>
+            <Select.Option value='oklab'>OKLAB</Select.Option>
             <Select.Option value='oklch'>OKLCH</Select.Option>
+            <Select.Option value='p3'>P3</Select.Option>
             <Select.Option value='rgb'>RGB</Select.Option>
             <Select.Option value='rgba'>RGBA</Select.Option>
           </Select>
           <Paragraph asChild className={classes.value}>
             <div>
-              oklch(0.42 0.21 245){' '}
-              <ClipboardButton value={'oklch(0.42 0.21 245)'} />
+              {convertedColor}
+              <ClipboardButton value={convertedColor} />
             </div>
           </Paragraph>
           <Paragraph className={classes.key}>CSS variabel</Paragraph>
@@ -80,7 +94,7 @@ export const ColorModal = ({
             </div>
           </Paragraph>
           <Paragraph className={classes.key}>Relativ luminans</Paragraph>
-          <Paragraph className={classes.value}>0.245</Paragraph>
+          <Paragraph className={classes.value}>{luminance}</Paragraph>
           {number !== 9 && number !== 10 && number !== 11 && (
             <>
               <Paragraph className={classes.key}>Kan brukes mot</Paragraph>
