@@ -17,6 +17,7 @@
     "storefront": "yarn workspace storefront dev",
     "theme": "yarn workspace theme dev",
     "figma-plugin": "yarn workspace figma-plugin dev",
+    "www": "yarn workspace www.designsystemet.no dev",
     "build": "yarn workspaces foreach -Ap --topological-dev --no-private run build",
     "build:all": "yarn workspaces foreach -A --topological-dev run build",
     "build:theme": "yarn workspace theme build",
