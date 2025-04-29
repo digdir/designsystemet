@@ -16,7 +16,7 @@ export const EditPageOnGithub = ({
   const page = pathParts[2];
   const restPath = pathParts.slice(3).join('/');
 
-  const href = `https://github.com/digdir/designsystemet/tree/next/apps/www/app/content/${page}/${lang}/${restPath}.mdx`;
+  const href = `https://github.com/digdir/designsystemet/tree/main/apps/www/app/content/${page}/${lang}/${restPath}.mdx`;
 
   return (
     <Link
