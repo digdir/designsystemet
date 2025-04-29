@@ -7,55 +7,55 @@ import {
 } from '@react-router/dev/routes';
 
 export default [
+  route('/slack', 'routes/slack.tsx', {
+    id: 'slack-redirect',
+  }),
   layout('./layouts/root/layout.tsx', [
     ...prefix('/:lang', [
       index('routes/home/home.tsx', {
         id: 'home',
       }),
-      ...prefix('/monstre', [
-        layout('./layouts/monstre/layout.tsx', [
-          route('', 'routes/monstre/monstre.tsx', {
-            id: 'monstre-index',
+      ...prefix('/patterns', [
+        layout('./layouts/patterns/layout.tsx', [
+          route('', 'routes/patterns/patterns.tsx', {
+            id: 'patterns-index',
           }),
-          route('/:file', 'routes/monstre/page.tsx', {
-            id: 'monstre-page',
-          }),
-        ]),
-      ]),
-      ...prefix('/bloggen', [
-        layout('./layouts/bloggen/layout.tsx', [
-          route('/', 'routes/bloggen/bloggen.tsx'),
-        ]),
-        layout('./layouts/bloggen/page.tsx', [
-          route('/:file', 'routes/bloggen/page.tsx'),
-        ]),
-      ]),
-      ...prefix('/grunnleggende', [
-        layout('./layouts/grunnleggende/layout.tsx', [
-          route('/', 'routes/grunnleggende/grunnleggende.tsx', {
-            id: 'grunnleggende-index',
-          }),
-          route('/*', 'routes/grunnleggende/page.tsx', {
-            id: 'grunnleggende-page',
+          route('/:file', 'routes/patterns/page.tsx', {
+            id: 'patterns-page',
           }),
         ]),
       ]),
-      ...prefix('/god-praksis', [
-        layout('./layouts/god-praksis/layout.tsx', [
-          route('/', 'routes/god-praksis/god-praksis.tsx', {
-            id: 'god-praksis-index',
+      ...prefix('/blog', [
+        layout('./layouts/blog/layout.tsx', [
+          route('/', 'routes/blog/blog.tsx'),
+        ]),
+        layout('./layouts/blog/page.tsx', [
+          route('/:file', 'routes/blog/page.tsx'),
+        ]),
+      ]),
+      ...prefix('/fundamentals', [
+        layout('./layouts/fundamentals/layout.tsx', [
+          route('/', 'routes/fundamentals/fundamentals.tsx', {
+            id: 'fundamentals-index',
           }),
-          route('/*', 'routes/god-praksis/page.tsx', {
-            id: 'god-praksis-page',
+          route('/*', 'routes/fundamentals/page.tsx', {
+            id: 'fundamentals-page',
           }),
         ]),
       ]),
-      route('/komponenter', 'routes/components/components.tsx', {
+      ...prefix('/best-practices', [
+        layout('./layouts/best-practices/layout.tsx', [
+          route('/', 'routes/best-practices/best-practices.tsx', {
+            id: 'best-practices-index',
+          }),
+          route('/*', 'routes/best-practices/page.tsx', {
+            id: 'best-practices-page',
+          }),
+        ]),
+      ]),
+      route('/components', 'routes/components/components.tsx', {
         id: 'components',
       }),
     ]),
   ]),
-  route('/slack', 'routes/slack.tsx', {
-    id: 'slack-redirect',
-  }),
 ] satisfies RouteConfig;
