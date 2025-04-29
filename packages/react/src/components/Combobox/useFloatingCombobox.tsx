@@ -11,21 +11,24 @@ import {
 } from '@floating-ui/react';
 import type { UseFloatingReturn } from '@floating-ui/react';
 import { useState } from 'react';
-import type { MutableRefObject } from 'react';
+import type { RefObject } from 'react';
 import { flushSync } from 'react-dom';
 
 import { useComboboxId, useComboboxIdDispatch } from './ComboboxIdContext';
 
 type UseFloatingComboboxProps = {
-  listRef: MutableRefObject<(HTMLElement | null)[]>;
+  listRef: RefObject<(HTMLElement | null)[]>;
 };
 
 export const useFloatingCombobox = ({
   listRef,
-}: UseFloatingComboboxProps): UseFloatingReturn<HTMLInputElement> & {
+}: UseFloatingComboboxProps): {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   activeIndex: number | null;
+  refs: UseFloatingReturn<HTMLInputElement>['refs'];
+  floatingStyles: UseFloatingReturn<HTMLInputElement>['floatingStyles'];
+  context: UseFloatingReturn<HTMLInputElement>['context'];
   getReferenceProps: ReturnType<typeof useInteractions>['getReferenceProps'];
   getFloatingProps: ReturnType<typeof useInteractions>['getFloatingProps'];
   getItemProps: ReturnType<typeof useInteractions>['getItemProps'];
@@ -89,7 +92,6 @@ export const useFloatingCombobox = ({
     [role, dismiss, listNav],
   );
 
-  /* @ts-ignore */
   return {
     open,
     setOpen,
