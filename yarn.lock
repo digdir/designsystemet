@@ -1157,6 +1157,7 @@ __metadata:
     chalk: "npm:^5.4.1"
     change-case: "npm:^5.4.4"
     chroma-js: "npm:^3.1.2"
+    colorjs.io: "npm:^0.5.2"
     commander: "npm:^13.1.0"
     fast-glob: "npm:^3.3.3"
     fs-extra: "npm:^11.3.0"
@@ -5741,6 +5742,13 @@ __metadata:
   version: 0.4.3
   resolution: "colorjs.io@npm:0.4.3"
   checksum: 10/1970025160d6b8a4e25594f204fdf721733451cddf6d203f4dd39ef479a4a828ac9ebe1512c9a327096319bdf9dcc0d2ebe40ba0980c3a8ca8acc350903c8c0f
+  languageName: node
+  linkType: hard
+
+"colorjs.io@npm:^0.5.2":
+  version: 0.5.2
+  resolution: "colorjs.io@npm:0.5.2"
+  checksum: 10/a6f6345865b177d19481008cb299c46ec9ff1fd206f472cd9ef69ddbca65832c81237b19fdcd24f3f9540c3e6343a22eb486cd800f5eab9815ce7c98c16a0f0e
   languageName: node
   linkType: hard
 
