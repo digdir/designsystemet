@@ -107,18 +107,18 @@ Det finnes likevel noen unntak:
 
 Om et av unntakene er gjeldende unngår vi ikon, men skriver det heller som en del av lenketeksten. For eksempel [Søk om støtte hos Nav.no (åpnes i ny fane)](https://nav.no)
 
-Selv om en lenke inneholder target="_blank" så er det ikke alle kombinasjoner av nettlesere og skjermlesere som vil gi brukeren beskjed om at den åpnes i ny fane/vindu. Vi anbefaler derfor å skrive “åpnes i ny fane” som en del av lenketeksten.
+Selv om en lenke inneholder `target="_blank"` så er det ikke alle kombinasjoner av nettlesere og skjermlesere som vil gi brukeren beskjed om at den åpnes i ny fane/vindu. Vi anbefaler derfor å skrive “åpnes i ny fane” som en del av lenketeksten.
 
 ## Design
 
 ### Unngå “ekstern-lenke”-ikon
-Hvilken ikon er for eksterne lenker og hvilket er for åpne i ny fane? 
 
 <Image
-  src="/img/eksternlenke.png"
+  src="/img/externallinks-icon.png"
   alt="Eksempel på to ikoner som likner på hverandre."
   boxShadow={false}
 />
+Hvilken ikon er for eksterne lenker og hvilket er for åpne i ny fane? 
 
 Det er etablert et ikon som betyr “ekstern lenke”, men dette ikonet blir ofte brukt eller forstått som “Åpnes i ny fane”. Bruk av ikonet kan i verste fall villede brukeren, spesielt hvis lenken ikke faktisk åpnes i en ny fane. Hvis det primære målet er å indikere at en lenke leder til en ekstern side, er det mer effektivt å kommunisere dette i lenketeksten i stedet for å stole på et ikon alene. 
 
@@ -141,7 +141,13 @@ eksempel med ulike ikoner som er ganske like og kan mistolkes? (Erfarne designer
     * ikke bruk ikon alene for å vise filtype 
 
 * Gjerne vis filstørrelse som en del av lenketeksten. Spesielt hvis filstørrelsen er stor
-* Dersom lenken fører til en fil som skal lastes ned istedenfor å åpnes i nettleseren, bør man sørge for å ha med attributten download med filnavn som indikerer filtype, f.eks. download="årsrapport.pdf". 
+* Dersom lenken fører til en fil som skal lastes ned istedenfor å åpnes i nettleseren, bør man sørge for å ha med attributten download med filnavn som indikerer filtype, f.eks. `download="årsrapport.pdf`. 
+
+<Image
+  src="/img/nedlasting-lenker.png"
+  alt="Eksempel fra JAWS skjermleser med lenker som er beskrivende og lenker som ikke er beskrivende"
+  boxShadow={false}
+/>
 
 
 <Contributors
