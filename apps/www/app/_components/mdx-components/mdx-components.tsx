@@ -10,7 +10,13 @@ import {
   Paragraph,
   type ParagraphProps,
   Table,
+  TableBody,
+  TableCell,
+  TableFoot,
+  TableHead,
+  TableHeaderCell,
   type TableProps,
+  TableRow,
 } from '@digdir/designsystemet-react';
 import { getMDXComponent } from 'mdx-bundler/dist/client';
 import { type JSX, useMemo } from 'react';
@@ -27,6 +33,13 @@ const defaultComponents = {
   DetailsContent,
   DetailsSummary,
   Card,
+  Table,
+  TableHead,
+  TableRow,
+  TableHeaderCell,
+  TableBody,
+  TableFoot,
+  TableCell,
   h1: (props: JSX.IntrinsicElements['h1']) => (
     <Heading className={classes.heading} level={1} {...props} />
   ),
