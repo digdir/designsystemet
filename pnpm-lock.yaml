@@ -99,6 +99,9 @@ importers:
 
   apps/storefront:
     dependencies:
+      '@digdir/designsystemet':
+        specifier: workspace:^
+        version: link:../../packages/cli
       '@digdir/designsystemet-css':
         specifier: workspace:^
         version: link:../../packages/css
@@ -156,6 +159,9 @@ importers:
       remark-gfm:
         specifier: ^4.0.1
         version: 4.0.1
+      style-dictionary:
+        specifier: ^4.3.3
+        version: 4.3.3
       webpack:
         specifier: ^5.98.0
         version: 5.98.0

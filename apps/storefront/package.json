@@ -12,6 +12,7 @@
     "types": "tsc --noEmit"
   },
   "dependencies": {
+    "@digdir/designsystemet": "workspace:^",
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
@@ -31,7 +32,8 @@
     "rehype-autolink-headings": "^7.1.0",
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.1",
-    "webpack": "^5.98.0"
+    "webpack": "^5.98.0",
+    "style-dictionary": "^4.3.3"
   },
   "devDependencies": {
     "@types/react": "^19.1.0",
