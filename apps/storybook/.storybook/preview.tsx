@@ -2,11 +2,12 @@ import './style.css';
 import './customTheme.scss';
 import '../../../packages/css/src/index.css';
 import '@digdir/designsystemet-theme/digdir.css';
+import { LinkIcon } from '@navikt/aksel-icons';
 import type { Preview } from '@storybook/react';
 import isChromatic from 'chromatic/isChromatic';
 import componentStyles from './componentOverrides.module.scss';
 
-import type { LinkProps } from '@digdir/designsystemet-react';
+import type { HeadingProps, LinkProps } from '@digdir/designsystemet-react';
 import {
   Heading,
   Link,
@@ -15,7 +16,7 @@ import {
   Table,
 } from '@digdir/designsystemet-react';
 
-import { Children } from 'react';
+import { Children, type MouseEventHandler } from 'react';
 import { CodeBlock } from '../../_components';
 import { customStylesDecorator } from '../story-utils/customStylesDecorator';
 import { fontsLoader } from '../story-utils/fontsLoader';
@@ -52,6 +53,37 @@ const getPath = (href: string | undefined): string => {
   return href;
 };
 
+const handleLinkClick =
+  (href: string): MouseEventHandler<HTMLAnchorElement> =>
+  (event) => {
+    // Handle in-page anchor links
+    if (href.startsWith('#')) {
+      event.preventDefault();
+      document
+        .getElementById(href.substring(1))
+        ?.scrollIntoView({ behavior: 'smooth' });
+      window.parent.history.pushState(undefined, '', href);
+    }
+  };
+
+const HeadingSelfLink: React.FC<HeadingProps> = ({ children, ...props }) => {
+  const href = `#${props.id}`;
+  return (
+    <Heading {...props} className={`sb-unstyled ${componentStyles.heading}`}>
+      {children}
+      <Link
+        aria-hidden
+        tabIndex={-1}
+        href={href}
+        className={componentStyles.headingLink}
+        onClick={handleLinkClick(href)}
+      >
+        <LinkIcon title='Link to this heading' />
+      </Link>
+    </Heading>
+  );
+};
+
 const components = {
   pre: ({
     children: {
@@ -67,54 +99,12 @@ const components = {
       </CodeBlock>
     );
   },
-  h1: (props: Props) => (
-    <Heading
-      data-size='lg'
-      {...props}
-      className={`sb-unstyled ${componentStyles.heading}`}
-      level={1}
-    />
-  ),
-  h2: (props: Props) => (
-    <Heading
-      data-size='md'
-      {...props}
-      className={`sb-unstyled ${componentStyles.heading}`}
-      level={2}
-    />
-  ),
-  h3: (props: Props) => (
-    <Heading
-      data-size='sm'
-      {...props}
-      className={`sb-unstyled ${componentStyles.heading}`}
-      level={3}
-    />
-  ),
-  h4: (props: Props) => (
-    <Heading
-      data-size='sm'
-      {...props}
-      className={`sb-unstyled ${componentStyles.heading}`}
-      level={4}
-    />
-  ),
-  h5: (props: Props) => (
-    <Heading
-      data-size='sm'
-      {...props}
-      className={`sb-unstyled ${componentStyles.heading}`}
-      level={5}
-    />
-  ),
-  h6: (props: Props) => (
-    <Heading
-      data-size='sm'
-      {...props}
-      className={`sb-unstyled ${componentStyles.heading}`}
-      level={6}
-    />
-  ),
+  h1: (props: Props) => <HeadingSelfLink data-size='lg' {...props} level={1} />,
+  h2: (props: Props) => <HeadingSelfLink data-size='md' {...props} level={2} />,
+  h3: (props: Props) => <HeadingSelfLink data-size='sm' {...props} level={3} />,
+  h4: (props: Props) => <HeadingSelfLink data-size='sm' {...props} level={4} />,
+  h5: (props: Props) => <HeadingSelfLink data-size='sm' {...props} level={5} />,
+  h6: (props: Props) => <HeadingSelfLink data-size='sm' {...props} level={6} />,
   p: (props: Props) => (
     <Paragraph
       {...props}
@@ -152,15 +142,7 @@ const components = {
         {...props}
         href={href}
         className={`sb-unstyled ${componentStyles.link}`}
-        onClick={(event) => {
-          // Handle in-page anchor links
-          if (props.href?.startsWith('#')) {
-            event.preventDefault();
-            document
-              .getElementById(props.href.substring(1))
-              ?.scrollIntoView({ behavior: 'smooth' });
-          }
-        }}
+        onClick={handleLinkClick(props.href ?? '')}
         // Add a data-attribute for use when styling links which include code snippets
         {...(Children.count(children) === 1 && { 'data-single-child': true })}
       >
