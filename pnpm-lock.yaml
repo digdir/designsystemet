@@ -253,7 +253,7 @@ importers:
         version: 15.5.13
       '@vitest/browser':
         specifier: 3.1.1
-        version: 3.1.1(playwright@1.51.1)(vite@6.3.2(@types/node@22.14.1)(less@4.2.0)(sass@1.71.1)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1))(vitest@3.1.1)
+        version: 3.1.1(playwright@1.52.0)(vite@6.3.2(@types/node@22.14.1)(less@4.2.0)(sass@1.71.1)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1))(vitest@3.1.1)
       '@vitest/coverage-v8':
         specifier: 3.1.1
         version: 3.1.1(@vitest/browser@3.1.1)(vitest@3.1.1)
@@ -262,13 +262,13 @@ importers:
         version: 6.1.1(prettier@3.5.3)(react-syntax-highlighter@15.6.1(react@19.1.0))
       axe-playwright:
         specifier: ^2.1.0
-        version: 2.1.0(playwright@1.51.1)
+        version: 2.1.0(playwright@1.52.0)
       concurrently:
         specifier: ^9.1.2
         version: 9.1.2
       playwright:
-        specifier: ^1.51.1
-        version: 1.51.1
+        specifier: ^1.52.0
+        version: 1.52.0
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
@@ -4895,13 +4895,13 @@ packages:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
 
-  playwright-core@1.51.1:
-    resolution: {integrity: sha512-/crRMj8+j/Nq5s8QcvegseuyeZPxpQCZb6HNk3Sos3BlZyAknRjoyJPFWkpNn8v0+P3WiwqFF8P+zQo4eqiNuw==}
+  playwright-core@1.52.0:
+    resolution: {integrity: sha512-l2osTgLXSMeuLZOML9qYODUQoPPnUsKsb5/P6LJ2e6uPKXUdPK5WYhN4z03G+YNbWmGDY4YENauNu4ZKczreHg==}
     engines: {node: '>=18'}
     hasBin: true
 
-  playwright@1.51.1:
-    resolution: {integrity: sha512-kkx+MB2KQRkyxjYPc3a0wLZZoDczmppyGJIvQ43l+aZihkaVvmu/21kiyaHeHjiFxjxNNFnUncKmcGIyOojsaw==}
+  playwright@1.52.0:
+    resolution: {integrity: sha512-JAwMNMBlxJ2oD1kce4KPtMkDeKGHQstdpFPcPH3maElAXon/QZeTvtsfXmTMRyO9TslfoYOXkSsvao2nE1ilTw==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -7814,7 +7814,7 @@ snapshots:
       storybook: 8.6.12(prettier@3.5.3)
       ts-dedent: 2.2.0
     optionalDependencies:
-      '@vitest/browser': 3.1.1(playwright@1.51.1)(vite@6.3.2(@types/node@22.14.1)(less@4.2.0)(sass@1.71.1)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1))(vitest@3.1.1)
+      '@vitest/browser': 3.1.1(playwright@1.52.0)(vite@6.3.2(@types/node@22.14.1)(less@4.2.0)(sass@1.71.1)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1))(vitest@3.1.1)
       '@vitest/runner': 3.1.1
       vitest: 3.1.1(@types/node@22.14.1)(@vitest/browser@3.1.1)(jsdom@26.0.0)(less@4.2.0)(sass@1.71.1)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1)
     transitivePeerDependencies:
@@ -8367,7 +8367,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@vitest/browser@3.1.1(playwright@1.51.1)(vite@6.3.2(@types/node@22.14.1)(less@4.2.0)(sass@1.71.1)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1))(vitest@3.1.1)':
+  '@vitest/browser@3.1.1(playwright@1.52.0)(vite@6.3.2(@types/node@22.14.1)(less@4.2.0)(sass@1.71.1)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1))(vitest@3.1.1)':
     dependencies:
       '@testing-library/dom': 10.4.0
       '@testing-library/user-event': 14.6.1(@testing-library/dom@10.4.0)
@@ -8379,7 +8379,7 @@ snapshots:
       vitest: 3.1.1(@types/node@22.14.1)(@vitest/browser@3.1.1)(jsdom@26.0.0)(less@4.2.0)(sass@1.71.1)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1)
       ws: 8.18.1
     optionalDependencies:
-      playwright: 1.51.1
+      playwright: 1.52.0
     transitivePeerDependencies:
       - bufferutil
       - msw
@@ -8402,7 +8402,7 @@ snapshots:
       tinyrainbow: 2.0.0
       vitest: 3.1.1(@types/node@22.14.1)(@vitest/browser@3.1.1)(jsdom@26.0.0)(less@4.2.0)(sass@1.71.1)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1)
     optionalDependencies:
-      '@vitest/browser': 3.1.1(playwright@1.51.1)(vite@6.3.2(@types/node@22.14.1)(less@4.2.0)(sass@1.71.1)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1))(vitest@3.1.1)
+      '@vitest/browser': 3.1.1(playwright@1.52.0)(vite@6.3.2(@types/node@22.14.1)(less@4.2.0)(sass@1.71.1)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1))(vitest@3.1.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -8687,14 +8687,14 @@ snapshots:
       axe-core: 4.10.2
       mustache: 4.2.0
 
-  axe-playwright@2.1.0(playwright@1.51.1):
+  axe-playwright@2.1.0(playwright@1.52.0):
     dependencies:
       '@types/junit-report-builder': 3.0.2
       axe-core: 4.10.2
       axe-html-reporter: 2.2.11(axe-core@4.10.2)
       junit-report-builder: 5.1.1
       picocolors: 1.1.1
-      playwright: 1.51.1
+      playwright: 1.52.0
 
   babel-dead-code-elimination@1.0.10:
     dependencies:
@@ -11126,11 +11126,11 @@ snapshots:
 
   pirates@4.0.6: {}
 
-  playwright-core@1.51.1: {}
+  playwright-core@1.52.0: {}
 
-  playwright@1.51.1:
+  playwright@1.52.0:
     dependencies:
-      playwright-core: 1.51.1
+      playwright-core: 1.52.0
     optionalDependencies:
       fsevents: 2.3.2
 
@@ -12663,7 +12663,7 @@ snapshots:
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 22.14.1
-      '@vitest/browser': 3.1.1(playwright@1.51.1)(vite@6.3.2(@types/node@22.14.1)(less@4.2.0)(sass@1.71.1)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1))(vitest@3.1.1)
+      '@vitest/browser': 3.1.1(playwright@1.52.0)(vite@6.3.2(@types/node@22.14.1)(less@4.2.0)(sass@1.71.1)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1))(vitest@3.1.1)
       jsdom: 26.0.0
     transitivePeerDependencies:
       - jiti
