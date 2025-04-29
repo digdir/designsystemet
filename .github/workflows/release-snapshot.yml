@@ -5,8 +5,12 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: 'NPM tag'
+        description: 'npm tag'
+        type: choice
         default: 'next'
+        options:
+          - next
+          - test
 
 jobs:
   snapshot:

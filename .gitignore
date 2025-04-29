@@ -40,8 +40,7 @@ next-env.d.ts
 # jest/vitest test reports
 test-report.xml
 
-packages/cli/test-tokens-create
-packages/cli/test-tokens-build
+packages/cli/test-tokens
 packages/cli/internal
 
 # React Router
