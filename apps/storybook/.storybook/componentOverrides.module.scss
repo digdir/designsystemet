@@ -1,5 +1,8 @@
 .heading {
-  background-color: 'transparent';
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: var(--ds-size-1);
   margin-bottom: var(--ds-size-2);
 
   &:where(h1, h2) {
@@ -11,9 +14,20 @@
   &:first-child {
     margin-top: 0;
   }
+
+  &:hover{
+    .headingLink {
+      visibility: visible;
+    }
+  }
 }
 :global(.sb-anchor):first-child + .heading {
   margin-top: 0;
+}
+
+.headingLink {
+  font-size: 0.8em;
+  visibility: hidden;
 }
 
 .paragraph {
