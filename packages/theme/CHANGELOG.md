@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.0.4
+
+### Patch Changes
+
+- Updated metadata in theme file ([#3479](https://github.com/digdir/designsystemet/pull/3479))
+
+- Remove individual theme CSS files from `tokens build`. ([#3475](https://github.com/digdir/designsystemet/pull/3475))
+
 ## 1.0.3
 
 ### Patch Changes

@@ -22,7 +22,7 @@ const NavigationCard = ({
   icon,
   backgroundColor = 'white',
   description,
-  url = '/grunnleggende/design-tokens',
+  url = '/fundamentals/design-tokens',
   level = 3,
 }: NavigationCardProps) => {
   return (

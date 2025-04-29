@@ -21,7 +21,7 @@ const getContentPathsWithLanguages = (): string[] => {
   const supportedLanguages = ['no', 'en']; // Adjust as needed
 
   try {
-    // First, get all top-level content folders (e.g., monstre, bloggen, etc.)
+    // First, get all top-level content folders (e.g., patterns, blog, etc.)
     const contentFolders = readdirSync(contentBasePath).filter((dir) =>
       statSync(join(contentBasePath, dir)).isDirectory(),
     );
@@ -32,9 +32,13 @@ const getContentPathsWithLanguages = (): string[] => {
 
       // Add index routes for sections that have specific index handling
       if (
-        ['monstre', 'komponenter', 'bloggen', 'grunnleggende'].includes(
-          contentFolder,
-        )
+        [
+          'patterns',
+          'components',
+          'blog',
+          'fundamentals',
+          'best-practices',
+        ].includes(contentFolder)
       ) {
         for (const lang of supportedLanguages) {
           paths.push(`/${lang}/${contentFolder}`);
@@ -104,21 +108,21 @@ const config: Config = {
   buildDirectory: 'dist',
   prerender: async () => {
     const contentPaths = getContentPathsWithLanguages();
-    return ['/no/komponenter', ...contentPaths];
+    return ['/no/components', ...contentPaths];
   },
   /* serverBundles: async (args) => {
     for (const route of args.branch) {
-      if (route.id.includes('monstre')) {
-        route.file = `routes/monstre/${route.id}.tsx`;
-        return `monstre`;
+      if (route.id.includes('patterns')) {
+        route.file = `routes/patterns/${route.id}.tsx`;
+        return `patterns`;
       }
-      if (route.id.includes('grunnleggende')) {
-        route.file = `routes/grunnleggende/${route.id}.tsx`;
-        return `grunnleggende`;
+      if (route.id.includes('fundamentals')) {
+        route.file = `routes/fundamentals/${route.id}.tsx`;
+        return `fundamentals`;
       }
-      if (route.id.includes('bloggen')) {
-        route.file = `routes/bloggen/${route.id}.tsx`;
-        return `bloggen`;
+      if (route.id.includes('blog')) {
+        route.file = `routes/blog/${route.id}.tsx`;
+        return `blog`;
       }
       if (route.id.includes('components')) {
         route.file = `routes/components/${route.id}.tsx`;

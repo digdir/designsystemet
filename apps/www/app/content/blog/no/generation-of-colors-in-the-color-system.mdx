@@ -1,0 +1,319 @@
+---
+title: Generering av fargar i fargesystemet
+description: Dette innlegget tek deg med på reisa me gjekk gjennom for å utvikle vår eigen tilnærming til fargegenerering, og korleis dette systemet fungerer i dag.
+date: 2025-01-29
+author: Designsystemet
+imageSrc: /img/blog/fargepallet.png
+imageAlt: Illustrasjon av farger
+imageCaption: Illustrasjon av farger
+---
+
+Det kan vere utfordrande å lage harmoniske fargeskalaer programmatisk - skalaer som er behagelege for auget og fungerer godt i eit fargesystem med omsyn til kontrast og tilgjengelegheit. 
+Fargane kan lett ende opp med å sjå feil ut eller mangle balanse.
+Kanskje dei blir for saturerte i dei øvre skalaene, eller rett og slett ikkje harmonerer når ein tek dei i bruk i praksis.
+
+Det me såg føre oss var å lage eit verktøy der brukaren kunne velje ein farge, og få lage ein fargeskala basert på fargen i lysare og mørkare verdiar. 
+
+## Behagelege fargeskalaer for mennesker
+Det finst mange ulike måtar å lage fargar på. 
+Det er eit hav av fargerom og teknikkar tilgjengeleg som løyser mange ulike behov. 
+For Designsystemet var me ute etter å lage fargar som såg fine og balanserte ut for auget.
+Med dette så meiner me korleis lyset påverkar fargar i eit kontrollert miljø.
+
+ <Image
+  src='/img/blog/farger-lys.png'
+  alt='Viser 3 raude sirklar i eit mørkt rom som får lys på seg med ulik styrke. Sirklane blir lysare til meir lys dei får på seg.'
+  caption='Illustrasjon som viser korleis lyset påverkar fargar i eit kontrollert miljø i eit mørkt rom.'
+  boxShadow={false}
+  
+/>
+
+I bildet over vert ein raud farge treft av eit lys med ulik styrke. 
+Dette viser korleis ein raud farge vert påverka i eit kontrollert miljø i eit mørkt rom. 
+Mindre lys vil gje ein mørkare farge, medan meir lys vil gje ein lysare farge. 
+Dette påverkar i sin tur korleis heile fargen oppfører seg og ser ut, både med omsyn til lysstyrke, fargetone og fargemetning.
+Dette var utgangspunktet for måten me ønskte å lage fargeskalaene på. Ved å etterlinke korleis lyset påverkar fargar i den verkelege verda.
+
+
+## Ulike teknikkar for å lage fargeskalaer
+To av dei vanlegaste måtane å lage fargar på er ved å bruke RGB- og HSL-fargeromma.
+Me skal no sjå nærare på korleis desse metodane fungerer og korleis resultata ser ut. 
+I eksempla brukar me den raude profilfargen til Digdir som utgangspunkt for å lage skalaene. 
+Grunnen til at me valde nettopp denne fargen var fordi den fungerte bra for å vise fram problemstillingar og effektar av fargegenereringa.
+
+
+### RGB-fargerommet: Shading og tinting
+Ein farge i RGB-fargerommet består av 3 fargekanalar: raud, grøn og blå. 
+Desse kan ha verdiar frå 0 til 255, der 0 er heilt svart og 255 er heilt kvit.
+Ulike kombinasjonar av desse tre verdiane gjev oss alle fargane me ser på skjermane våre. 
+
+ <Image
+  src='/img/blog/farge-rgb.png'
+  alt='Illustrasjonen viser 6 rektangulære boksar i fargane raud, grøn, blå, svart, kvit og grå. 
+  Inne i boksane ligg RGB verdien til fargen. Den raude fargen får for eksempel verdiane 255, 0 og 0.'
+  caption='Illustrasjon som viser korleis verdiane i dei ulike fargakanalane i RGB-fargerommet vert sjåande ut som fargar.'
+  boxShadow={false}
+  
+/>
+
+For å lage ein heilt kvit farge i RGB-fargerommet må alle tre kanalane ha verdien 255 `rgb(255, 255, 255)`, medan ein heilt svart farge har alle tre kanalane sett til 0 `rgb(0, 0, 0)`.
+Vil ein ha ein grånyanse  kan kanalane setjast til lik verdi.
+
+Det er vanleg å bruke ein teknikk kalla "shading" og "tinting" når ein skal jobbe med fargar i RGB-fargerommet.
+Shading er å leggje til svart i ein farge for å gjere den mørkare, medan tinting er å leggje til kvitt for å gjere den lysare.
+
+
+ <Image
+  src='/img/blog/rgb-digdir-red.png'
+  alt='Illustrasjon som viser ein raud fargeskala i RGB-fargerommet representert som 9 rektangulære boksar. I midten ligg den raude profilfargen til Digdir. 
+  Dei 4 boksane til venstre og høgre får mørkare og lysare valører.'
+  caption='Viser ein fargeskala med utgangspunkt i Digdir sin raude profilfarge i RGB-fargerommet.'
+  boxShadow={false}
+  
+/>
+
+Om me tek den raude profilfargen til Digdir `rgb(243, 95, 99)`, (lys-raud), og ynskjer å gjere denne mørkare kan me redusere verdiane i raud, grøn og blå kanalane mot 0.
+Korleis me vel å redusere desse verdiane påverkar korleis fargen endar opp med å sjå ut til slutt.
+
+I bildet over har me tatt den raude profilfargen til Digdir og lagt til 20 % kvitt og 20 % svart i kanalane for å lage ulike verdiar. 
+Me synst dette laga fine fargar fordi det etterlikna korleis lys påverkar fargar i den verkelege verda og korleis me mennesker oppfattar dei.
+
+### HSL-fargerommet: Hue, saturation og lightness
+HSL-fargerommet (Hue, Saturation, Lightness) er ein måte å representere fargar på ved å dele dei opp i tre komponentar:
+* Hue (fargetone) beskriv sjølve fargen og vert angjeve på ein skala frå 0° til 360°, som for eksempel raud, grøn eller blå. 
+* Saturation (metning) angir kor intens eller gråleg fargen er på ein skala frå 0 % til 100 %. 
+* Lightness (lysstyrke) bestemmer kor lys eller mørk fargen er, frå 0 % (svart) til 100 % (kvit).
+
+For å lage fargeskalaer i HSL-fargerommet finst det fleire teknikkar.
+I døma vil me sjå på nokre av desse teknikkane og korleis dei fungerer.
+
+ <Image
+  src='/img/blog/fargar-hsl.png'
+  alt='Illustrasjon som viser ein raud fargeskala i HSL-fargerommet representert som 9 rektangulære boksar.'
+  caption='Viser ein fargeskala med utgangspunkt i Digdir sin raude profilfarge i HSL-fargerommet.'
+  boxShadow={false}
+  
+/>
+
+Ein vanleg metode er å justere ligthtness til ein farge for å gjere den mørkare eller lysare. 
+I biletet over har me tatt utgangspunkt i den raude profilfargen til Digdir og sett faste lightness-verdiar for å lage ulike valørar.
+Samanlikna med RGB-teknikken, ser me at fargane vart mykje meir saturterte i dei øvre skalaene. 
+Dette gjev meining fordi me ikkje har justert på satueringsverdiane. 
+Dette viser veldig godt ei utfordring med mange av fargeromma som brukar lightness for å definere lysstyrken i fargen.
+Endrar me på denne verdien vil fargane ofte ende opp med å sjå oversaturerte og ubalanserte ut.
+
+ <Image
+  src='/img/blog/fargar-hsl-2.png'
+  alt='Illustrasjon som viser ein raud fargeskala i HSL-fargerommet representert som 9 rektangulære boksar med redusert saturation.'
+  caption='Viser ein fargeskala med utgangspunkt i Digdir sin raude profilfarge i HSL-fargerommet med redusert saturation.'
+  boxShadow={false}
+  
+/>
+
+Ein anna metode for å lage fargeskalaer i HSL-fargerommet er å justere på både saturation og lightness-verdiane.
+I biletet over har me fortsatt tatt utgangspunkt i den raude profilfargen til Digdir med faste lightness-verdiar.
+I tillegg har me satt saturation verdien ned frå `87` til `65` på alle fargane (profilfargen til Digdir hadde `87` saturation). 
+
+Å redusere saturation verdien på alle fargane hjelp, men problemet er at me mister den opphavlege fargen som vart brukt til å lage fargeskalaen. 
+For oss var det viktig at denne fargen framleis var med, sidan den ofte kan vere ein viktig farge for brukaren.
+
+Faste saturation verdiar på tvers av fargane fungerte heller ikkje så godt i praksis. 
+Me fann ut at det måtte skrivast veldig mykje komplisert logikk for å få fargar med ulike fargetonar til å fungere godt i saman.
+Her var RGB-teknikken mykje enklare å jobbe med, og laga mykje betre fargar.
+
+
+## Kva med dei andre fargeromma?
+Etter å ha prøvd ut RGB og HSL fargeromma, var det på tide å sjå på dei andre fargeromma. 
+
+ <Image
+  src='/img/blog/fargerom-digdir-rod.png'
+  alt='Illustrasjon som viser 6 fargeskalaer nedover i ulike fargeom for Digdir sin raude profilfarge.'
+  caption='Eksempel på fargeskalaer i ulike fargerom.'
+  boxShadow={false}
+  
+/>
+
+I biletet over ser du fargeskalaer med utgangspunkt i Digdir sin raude profilfarge i ulike fargerom. 
+Fleire av desse fargeromma brukar lightness for å definere kor lys ein farge er. 
+Me opplevde mange av dei same utfordringane med desse fargeromma som med HSL:
+at me måtte skrive mykje kode for å få fargar med ulike fargetonar til å fungere godt i saman.
+
+Eit fargerom som me var godt nøgde med, var OKLCH-fargerommet. 
+Det laga fine og balanserte fargar, men me opplevde at fargane av og til vart litt for saturerte for enkelte fargetonar. 
+Konklusjonen etter å ha vurdert alle desse fargeromma, var at RGB-fargerommet viste seg å vere den enklaste og beste metoden for å lage 
+fargeskalaer på, og som ga oss dei fargane me var ute etter.
+
+Men korleis kunne me sy dette saman i eit system som lagar fargeskalaer basert på kontrast og tilgjengelegheit?
+
+## WCAG og offentlege nettsider 
+Vår tilnærming til utviklinga av fargesystemet var å sikre at alt me gjorde oppfylte alle AA-krava i WCAG.
+Samstundes ønskte me å strekke oss mot AAA-nivået der det gav meining og ikkje gjekk utover designet.
+For å oppnå AA-krava må det vere `4.5:1` kontrast mellom tekst og bakgrunn for små tekstar, og `3:1` for tekstar som er større eller lik `18 px`.
+For interaktive og grafiske element er grensa `3:1`. Per 2025 seier regelverket at offentlege nettsider må oppfylle alle AA-krava i WCAG. 
+
+### Korleis WCAG kalkulerar kontrast
+Når WCAG 2 kalkulerer kontrasten mellom to fargar, bruker dei ein formel som tek utgangspunkt i den relative luminansen 
+mellom fargane og gir fargane ein poengsum. 
+Denne poengsummen seier noko om kor god kontrasten er. Har fargane best mogleg kontrast, er poengsummen `21:1`,
+om fargane ikkje har kontrast i det heile, er poengsummen `1:1`. 
+
+Luminansen skildrar den opplevde lysstyrken til ei flate og vert brukt til å vurdere kor mykje lys som vert reflektert
+eller sendt ut i ei bestemt retning. 
+Relativ luminans er ein normalisert verdi som rangerer luminansen til ein farge mellom svart `0` og kvit `1`. 
+Denne verdien vert rekna ut basert på dei raude, grøne og blå komponentane i fargen, der grøn bidreg mest til den opplevde luminansen. 
+
+ <Image
+  src='/img/blog/fargar-contrast.png'
+  alt='Illustrasjon som viser at kontrast og relativ luminans er lik for 2 fargar.'
+  caption='Illustrasjon som viser at kontrast og relativ luminans er lik for 2 fargar.'
+  boxShadow={false}
+  
+/>
+
+I biletet  over er det to farga bakgrunnar med svart tekst. 
+Kontrasten mellom begge fargane og den svarte teksten er `6.6:1`, og den relative luminansen til dei farga bakgrunnane er `0.28`.
+At desse to verdiane er like viser at WCAG brukar den relative luminansen mellom fargane for å kalkulere kontrasten.
+
+
+## Fargerom basert på kontrast
+Som nemnt tidlegare finst det mange fargerom som har ein lightness-verdi som viser kor lys ein farge er. 
+I nokre av desse fargeromma betyr det at fargar med same lightness-verdi får om lag lik kontrast. 
+To fargerom som oppnår dette er HSLuv og OKLCH.
+
+### Fargeromma HSLUV og OKLCH
+HSLuv og OKLCH lagar fargar som er betre tilpasse menneskeleg fargesyn. 
+HSLuv justerar fargane så dei held seg balanserte, også i RGB-området, medan OKLCH brukar ein nyare modell som gjev meir presise og jamne fargar. 
+Begge gjer det enklare å lage fine og harmoniske fargar, men OKLCH er meir nøyaktig.
+
+ <Image
+  src='/img/blog/hsluv-farger.png'
+  alt='Viser to fargeskalaer i OKLCH fargerommet. Den eine er raud og den andre er blå, og kvar skala har 9 rektangulære boksar bortover.'
+  caption='Viser to fargeskalaer i OKLCH fargerommet.'
+  boxShadow={false}
+  
+/>
+
+I biletet ovanfor blir to fargeskalaer vist i OKLCH-fargerommet, begge basert på profilfargane til Digdir.
+Det som er spesielt interessant, er at fargane med 70 % lightness i skalaene ovanfor har nesten identisk kontrast mot svart tekst. 
+Dette betyr i praksis at ein kan generere så mange fargeskalaer som ein ynskjer, og sikre at kontrastane mellom dei ulike stega i fargeskalaene alltid vil være like.
+
+OKLCH-fargerommet laga fine fargar og fungerte veldig godt for å sikre at kontrasten mellom fargar vart like på tvers av fargeskalaene.
+Det som var litt synd var at fargane av og til vart litt for saturerte for enkelte fargetonar. 
+
+Kva om me kunne kombinare RGB-fargerommet med OKLCH for å sikre at kontrastane vart like på tvers av fargeskalaene? 
+For å gjere dette må me første snakke om interpolering.
+
+## Interpolering av fargar i RGB-fargerommet
+Interpolering er ein matematisk metode for å estimere verdiar mellom to kjende datapunkt. 
+Det vert ofte brukt når ein arbeider med eit datasett og vil estimere verdiar mellom eksisterande datapunkt.
+Interpolering av fargar handlar om å trekkje ei linje mellom to punkt i eit gjeve fargerom. 
+Resultatet varierer mykje avhengig av kva fargerom som blir brukt, og om linja er rett eller kurva. 
+I vårt tilfelle handla det om å trekke ei linje gjennom RGB-fargerommet.
+ 
+ <Image
+  src='/img/blog/interpolering.png'
+  alt='Tre fargesirklar viser korleis gradientar blir danna ved ulike linjer som vert trekte gjennom sirkelen: ei rett linje, ei boge nedover og ei boge oppover. Under kvar sirkel blir den tilhøyrande gradienten vist, og han endrar seg basert på retninga og lengda på linjene.'
+  caption='Biletet viser ei forenkla visualisering av fargeinterpolering der berre fargetone (hue) er med. Her ser ein korleis gradientane endrar seg avhengig av kvar linja vert trekt i sirkelen. '
+  boxShadow={false}
+  
+/>
+
+Me visste allereie at WCAG brukte relativ luminans for å kalkulere kontrasten mellom to fargar. 
+For å sikre at kontrasten mellom to fargar alltid blir lik, må den relative luminansen og vere lik.
+Målet vårt var å finne luminans-verdiar i RGB-fargerommet ved å justere fargane gjennom «tinting» og «shading» heilt til me oppnådde den ønska luminansen.
+Å bevege seg iterativt gjennom eit fargerom på denne måten er ei form for interpolering.
+
+ <Image
+  src='/img/blog/rgb-interpolation.png'
+  alt='Viser eit eksempel på interpolering av fargar i RGB-fargerommet.'
+  caption='Viser eit eksempel på interpolering av fargar i RGB-fargerommet.'
+  boxShadow={false}
+  
+/>
+
+I biletet over er det 2 fargar heilt til venstre med luminans-verdiane `0.12` og `0.33`. 
+Desse fargane fungerer som utgangspunkt for interpoleringa. 
+Målet i dette eksempelet er å finne luminans-verdien `0.7` for begge fargane i RGB-fargerommet, som du kan sjå heilt til høgre.
+For å gjere dette må me først sjå på kva luminans-verdiar me har å jobbe med i fargane heilt til venstre.
+Begge desse verdiane er lågare enn `0.7`. Me må derfor "tinte" fargane for å få dei til å nærme seg `0.7`.
+
+I eksempelet over "tintar" me fargane med 10% om og om igjen, heilt til me oppnår luminans-verdien som er så nær `0.7` som mogleg.
+I iterasjon 3 av blåfargen (fargen rett til venstre for resultatet) ser me at luminans-verdien er `0.34`. 
+Dette er framleis ikkje i nærleiken av `0.7`, så me må difor fortsetje med å "tinte" fargane.
+Etter 15 iterasjonar for blåfargen, og 11 iterasjonar for grønfargen, har me funne den næraste luminans-verdien til `0.7` som me kan med denne teknikken.
+
+Målet var å finne luminans-verdien `0.7` for fargane. Men som biletet over viser vart resultatet `0.72` og `0.71`.
+Dette viser korleis interpoleringa fungerer, men det er ikkje nøyaktig nok for vårt formål.
+I kjeldekoden vert det nytta ein meir effektiv metode, kalla binært søk, for å navigere seg gjennom fargerommet. 
+Dette sikrar at resultatet blir meir nøyaktig og at det blir færrast mogleg iterasjonar. 
+Me brukar JavaScript biblioteket chroma.js for å hjelpe oss med denne interpoleringen.
+
+## Slik vart fargeskalaen sjåande ut til slutt
+Fargane vert genererte ved å finne faste luminans-verdiar i RGB-fargerommet. 
+Med denne metoden synest me fargane i kvar skala fungerte godt saman. 
+Fargegenerering for ein fargeskala kan delast inn i to grupper: statiske grupper og ei eiga "Base"-gruppe.
+
+### Dei statiske gruppene
+Desse gruppene bruka faste luminans-verdiar i RGB-fargerommet for å definere kvart steg i skalaen.
+Her vil for eksempel alle `Text Subtle` fargane alltid ha same kontrast mot `Surface Default`.
+Dette var veldig nyttig, fordi då me då enkelt lage reglar på korleis fargane skulle brukast i systemet.
+
+ <Image
+  src='/img/blog/fargeskalaer-rgb.png'
+  alt='Viser 4 fargeskalaer i fargane raud, blå, grøn og gul. Kvar skala har 9 fargar i seg og er delt inn i gruppene Background, Surface, Border og Text.'
+  caption='Viser korleis dei statiske gruppene for ein fargeskala ser ut.'
+  boxShadow={false}
+  
+/>
+
+I biletet over ser du 4 fargeskalaer som vert generert basert på dei 4 fargane som du ser i toppen av biletet.
+
+
+### "Base"-gruppa
+Denne gruppa fungerer litt annleis enn dei statiske gruppene. 
+Fargen som vert brukt for å generere ein skala får namnet `Base Default`. Den beheld alltid same "hex-kode". 
+Dette sikrar at ein kan ta vare på identiteten til eksisterande visuelle profilar med dei definerte fargane. 
+
+Fargane `Base Hover` og `Base Active` vert mørkare eller lysare avhengig av den relative luminansen til `Base Default` fargen.
+Enkelt forklart handlar det om at desse fargane blir lysare om `Base Default` fargen er mørk, og mørkare om den er lys. 
+Det er litt meir logikk som skjer her bak panseret, men det er ikkje avgjerande for å forstå korleis fargane blir genererte.
+  
+ <Image
+  src='/img/blog/base-farger.png'
+  alt='Viser eksempel på korleis "Base" gruppa ser ut for 8 forskjellige fargeskalaer.'
+  caption='Viser eksempel på korleis "Base" gruppa ser ut for 8 forskjellige fargeskalaer.'
+  boxShadow={false}
+  
+/>
+
+I biletet over ser du ein seksjon til venstre der `Base Hover` og `Base Active` fargane vert lysare, 
+og ein seksjon til høgre der fargane vert mørkare.
+Måten me lagar desse fargane på er at me legg til, eller trekker frå, lightness frå fargen i HSLuv fargerommet.
+Grunnen til at me brukar HSLuv her er fordi me vil at fargane skal auke i lysstyrke med faste verdiar som opplevast som naturleg for auget.
+
+Me opplevde at luminans fungerte dårleg som utgangspunkt for å seie at ein farge skulle bli 8% lysare eller mørkare. 
+Me hadde difor behov for eit fargerom med ein lightness-komponent for å hjelpe oss med dette.
+Etter at me fann lightness-verdien og luminans-verdien til fargen, interpolerte me fargen på same måte som forklart tidlegare.
+
+## Vidare arbeid med fargegenereringa og oppsummering
+No har me vore innom mykje spennande innan fargar og fargegenerering.
+Godt jobba om du har klart å henge med så langt! 
+Dette er eit komplekst tema som ofte krev ein del innsikt for å forstå fullt ut.
+Me håpar det har vore nyttig for å få innsikt i korleis fargane våre i Designsystemet vert genererte.
+
+Vidare vil me jobbe med å få fargane endå meir balanserte på tvers av fargeskalaene.
+Dei er litt for saturerte i nokre av skalaene per i dag. 
+Sidan me lagar fargar basert på kontrast, er det ikkje alle fargetonar som oppfører seg likt for auget.
+Fargen grøn er dominerande i lys modus, medan blåfargen er svært framståande i mørk modus.
+Me vil difor jobbe med å jamne ut satureringa for alle fargetonane slik at dei vert oppfatta som meir balanserte.
+
+Me vil og fortsetje med å få mørk modus til å fungere betre i fargesystemet.
+Spesielt dette at enkelte fargar vert for saturerte ynskjer me å sjå vidare på.
+
+I dag lagar me fargane i RGB-fargerommet, men me vil halde fram å teste andre fargerom som OKLCH, HSLuv og LAB for å finne dei beste fargene for Designsystemet.
+
+Om du har spørsmål eller ynskjer å vite meir om korleis fargane våre vert laga på, 
+kan du ta kontakt med oss på ein av kommunikasjonskanalane våre som du finn i botn av nettsida.
+
+
+

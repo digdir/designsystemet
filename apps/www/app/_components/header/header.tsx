@@ -168,7 +168,7 @@ const Header = ({
                       'ds-focus',
                     )}
                   >
-                    {item.name}
+                    {t(item.name)}
                   </Link>
                 </Paragraph>
               </li>
