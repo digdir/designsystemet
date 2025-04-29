@@ -1,12 +1,15 @@
 import './style.css';
+import './customTheme.scss';
 import '../../../packages/css/src/index.css';
 import '@digdir/designsystemet-theme/digdir.css';
 import type { Preview } from '@storybook/react';
 import isChromatic from 'chromatic/isChromatic';
+import componentStyles from './componentOverrides.module.scss';
 
 import type { LinkProps } from '@digdir/designsystemet-react';
 import { Link, List, Paragraph, Table } from '@digdir/designsystemet-react';
 
+import { Children } from 'react';
 import { CodeBlock } from '../../_components';
 import { customStylesDecorator } from '../story-utils/customStylesDecorator';
 import { fontsLoader } from '../story-utils/fontsLoader';
@@ -92,7 +95,7 @@ const components = {
       data-color-scheme='light'
     />
   ),
-  a: (props: LinkProps) => {
+  a: ({ children, ...props }: LinkProps) => {
     // if link starts with /, add current path to link
     const href = getPath(props.href);
 
@@ -100,9 +103,12 @@ const components = {
       <Link
         {...props}
         href={href}
-        className='sb-unstyled'
-        data-color-scheme='light'
-      />
+        className={`sb-unstyled ${componentStyles.link}`}
+        // Add a data-attribute for use when styling links which include code snippets
+        {...(Children.count(children) === 1 && { 'data-single-child': true })}
+      >
+        {children}
+      </Link>
     );
   },
   table: (props: Props) => (
