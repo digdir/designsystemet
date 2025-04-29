@@ -4,15 +4,26 @@
 }
 
 .grid {
+  position: relative;
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 12px 16px;
+  gap: 25px 16px;
+  align-items: center;
+  padding-top: var(--ds-size-7);
   & > select {
     max-width: max-content;
   }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background-color: var(--ds-color-neutral-border-subtle);
+  }
 }
 .key {
-  padding: 12px 0;
   color: var(--ds-color-neutral-text-subtle);
   font-weight: var(--ds-font-weight-medium);
 }
@@ -22,6 +33,7 @@
   gap: var(--ds-size-2);
   & > button {
     border-radius: 50%;
+    margin-block: calc(var(--ds-size-6) * -1);
   }
 }
 
