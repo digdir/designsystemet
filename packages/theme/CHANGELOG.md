@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.0.5
+
+### Patch Changes
+
+- Add design-token version to metadata in built theme file ([#3510](https://github.com/digdir/designsystemet/pull/3510))
+
+- Update "Portal" theme colors ([#3502](https://github.com/digdir/designsystemet/pull/3502))
+
 ## 1.0.4
 
 ### Patch Changes
