@@ -41,7 +41,7 @@ const Section = ({
             />
           )}
         </div>
-        <div className={classes.content}>{children}</div>
+        <div className='content'>{children}</div>
       </ContentContainer>
     </div>
   );
