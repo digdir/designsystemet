@@ -11,16 +11,15 @@ Lenker er en viktig del av navigasjonen på nett, og måten vi utformer og merke
 ## Eksterne lenker
 Eksterne lenker leder brukeren til en annen nettside eller et annet domene enn det de befinner seg på. Når en bruker klikker på en ekstern lenke, forlater de det opprinnelige nettstedet og åpner innhold fra en annen aktør eller tjeneste.
 
+Det har variert hvordan  eksterne lenker blir markert på ulike nettsteder. Noen bruker et ikon for å angi at det er en ekstern lenke, mens andre legger til tekst eller åpner lenken i en ny fane. Det at vi ikke praktiserer dette på samme måte kan skape forvirring for brukerne, spesielt når de ikke får tydelig informasjon om hva som skjer når de klikker på en lenke.
+
 For å skape en forutsigbar og god brukeropplevelse bør vi gi brukeren informasjon om:
 
 * Destinasjonen – hvor lenken fører dem.
-* Hvordan lenken oppfører seg – om lenken åpnes i samme vindu, i en ny fane eller om den har spesielle interaksjoner som for eksempel telefon, e-post eller nedlasting.
+* Oppførsel - hvis lenken åpnes ny fane eller om den har spesielle interaksjoner som for eksempel telefon eller e-post. 
 
-Det har variert hvordan  eksterne lenker blir markert på ulike nettsteder. Noen bruker et ikon for å angi at det er en ekstern lenke, mens andre legger til tekst eller åpner lenken i en ny fane. Det at vi ikke praktiserer dette på samme måte kan skape forvirring for brukerne, spesielt når de ikke får tydelig informasjon om hva som skjer når de klikker på en lenke.
-
-
-## Tekst
-Pass på at lenketeksten beskriver formålet med lenken.
+## Språk
+Pass på at lenketeksten beskriver formålet med lenken. **Legg til noe om at det avhenger av konteksten - om det er i løpende tekst, liste, etc**
 
 * Unngå “gå til” eller “klikk her” i lenketeksten. Det er allerede tydelig at det er en lenke. 
 * Unngå å bruke ordet “lenke” i lenketekster. Du risikerer da at skjermlesere oppgir “lenke” flere ganger.
@@ -95,6 +94,8 @@ Skjermlesere har funksjonalitet som lar folk skanne siden for å finne innholdet
   boxShadow={false}
 />
 
+**Legg til ekstra unngå-bilde med kun "Les mer"**
+
 ## Oppførsel
 
 ### Unngå lenker som åpnes i ny fane
@@ -109,6 +110,7 @@ Det finnes likevel noen unntak:
 Om et av unntakene er gjeldende unngår vi ikon, men skriver det heller som en del av lenketeksten. For eksempel [Søk om støtte hos Nav.no (åpnes i ny fane)](https://nav.no)
 
 Selv om en lenke inneholder `target="_blank"` så er det ikke alle kombinasjoner av nettlesere og skjermlesere som vil gi brukeren beskjed om at den åpnes i ny fane/vindu. Vi anbefaler derfor å skrive “åpnes i ny fane” som en del av lenketeksten.
+
 
 ## Design
 
@@ -136,19 +138,25 @@ eksempel med ulike ikoner som er ganske like og kan mistolkes? (Erfarne designer
 
 ### Lenke til filer
 
-* Gjør det tydelig at lenken ikke tar deg til en ny side men laster ned en fil 
+Gjør det tydelig at lenken peker til en fil:
+
 * Opplys om filtype
-    * skriv filtype som en del an lenketeksten.
+    * skriv filtype som en del av lenketeksten
     * ikke bruk ikon alene for å vise filtype 
 
 * Gjerne vis filstørrelse som en del av lenketeksten. Spesielt hvis filstørrelsen er stor
-* Dersom lenken fører til en fil som skal lastes ned istedenfor å åpnes i nettleseren, bør man sørge for å ha med attributten download med filnavn som indikerer filtype, f.eks. `download="årsrapport.pdf`. 
 
 <Image
   src="/img/nedlasting-lenker.png"
   alt="Eksempel fra JAWS skjermleser med lenker som er beskrivende og lenker som ikke er beskrivende"
   boxShadow={false}
 />
+
+#### Filer som skal lastes ned
+Dersom lenken fører til en fil som skal lastes ned istedenfor å åpnes i nettleseren, bør man sørge for å ha med attributten download med filnavn som indikerer filtype, f.eks. `download="årsrapport.pdf"`. 
+
+
+## Relevante kilder
 
 
 <Contributors
