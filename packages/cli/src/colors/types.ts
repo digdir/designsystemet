@@ -4,6 +4,7 @@ export type ColorNumber = SemanticColorNumberMap[keyof SemanticColorNumberMap];
 export type ColorNames = keyof SemanticColorNumberMap;
 export type GlobalColors = 'red' | 'blue' | 'green' | 'orange' | 'purple';
 export type ColorError = 'none' | 'decorative' | 'interaction';
+export type InterpolationMode = 'hcl' | 'hsi' | 'hsl' | 'hsv' | 'lab' | 'lch' | 'lrgb' | 'oklab' | 'oklch' | 'rgb';
 
 type SemanticColorNumberMap = {
   'background-default': 1;
@@ -44,11 +45,20 @@ export type ColorMetadata = {
     long: string;
   };
   group: string;
-  luminance: {
+  /** The luminance of the color in light and dark mode */
+  lightness: {
     light: number;
     dark: number;
     contrast: number;
   };
+  /** The saturation of the color in light and dark mode */
+  saturation: {
+    light: number;
+    dark: number;
+    contrast: number;
+  };
+  /** The interpolation mode for the color */
+  interpolation: InterpolationMode;
 };
 
 export type Color = ColorMetadata & {
@@ -84,75 +94,3 @@ type RgbaColor = `rgba(${number}, ${number}, ${number}, ${number})`;
 
 type Percent = `${number}%`;
 type Degrees = `${number}deg`;
-
-export type InterpolationMode = 'hcl' | 'hsi' | 'hsl' | 'hsv' | 'lab' | 'lch' | 'lrgb' | 'oklab' | 'oklch' | 'rgb';
-
-export type ColorSettings = {
-  general: {
-    interpolation: InterpolationMode;
-  };
-  base: {
-    lightness: {
-      light: {
-        hover: number;
-        active: number;
-      };
-      dark: {
-        default: number;
-        hover: number;
-        active: number;
-      };
-    };
-  };
-  static: {
-    saturation: {
-      light: {
-        background: number;
-        surface: number;
-        border: number;
-        text: number;
-      };
-      dark: {
-        surface: number;
-        content: number;
-        statusSurface: number;
-        statusContent: number;
-      };
-    };
-  };
-};
-
-export const DefaultColorSettings: ColorSettings = {
-  general: {
-    interpolation: 'rgb',
-  },
-  base: {
-    lightness: {
-      light: {
-        hover: 1,
-        active: 1,
-      },
-      dark: {
-        default: 1,
-        hover: 1,
-        active: 1,
-      },
-    },
-  },
-  static: {
-    saturation: {
-      light: {
-        background: 1,
-        surface: 1,
-        border: 1,
-        text: 1,
-      },
-      dark: {
-        surface: 1,
-        content: 1,
-        statusSurface: 1,
-        statusContent: 1,
-      },
-    },
-  },
-};

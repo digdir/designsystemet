@@ -19,11 +19,17 @@ export const colorMetadata: ColorMetadataByName = {
       long: 'Background Default er den mest nøytrale bakgrunnsfargen.',
       short: 'Standard bakgrunnsfarge.',
     },
-    luminance: {
+    lightness: {
       light: 100,
       dark: 8,
-      contrast: 0.001,
+      contrast: 8,
     },
+    saturation: {
+      light: 1,
+      dark: 1,
+      contrast: 1,
+    },
+    interpolation: 'rgb',
   },
   'background-tinted': {
     number: 2,
@@ -34,11 +40,17 @@ export const colorMetadata: ColorMetadataByName = {
       long: 'Background Tinted er en bakgrunnsfarge som har et hint av farge i seg.',
       short: 'Bakgrunn med et hint av farge i seg.',
     },
-    luminance: {
+    lightness: {
       light: 96,
       dark: 12,
-      contrast: 0.0065,
+      contrast: 12,
     },
+    saturation: {
+      light: 1,
+      dark: 1,
+      contrast: 1,
+    },
+    interpolation: 'rgb',
   },
   'surface-default': {
     number: 3,
@@ -49,11 +61,17 @@ export const colorMetadata: ColorMetadataByName = {
       long: 'Surface Default brukes på flater som ligger oppå bakgrunnsfargene. Dette er den mest nøytrale surface fargen.',
       short: 'Standardfarge for overflater / komponenter.',
     },
-    luminance: {
+    lightness: {
       light: 100,
       dark: 16,
-      contrast: 0.015,
+      contrast: 16,
     },
+    saturation: {
+      light: 1,
+      dark: 1,
+      contrast: 1,
+    },
+    interpolation: 'rgb',
   },
   'surface-tinted': {
     number: 4,
@@ -64,11 +82,17 @@ export const colorMetadata: ColorMetadataByName = {
       long: 'Surface Tinted brukes på flater som ligger oppå bakgrunnsfargene. Denne har et hint av farge i seg.',
       short: 'Overflater / komponenter med et hint av farge i seg.',
     },
-    luminance: {
+    lightness: {
       light: 92,
       dark: 19,
-      contrast: 0.015,
+      contrast: 19,
     },
+    saturation: {
+      light: 1,
+      dark: 1,
+      contrast: 1,
+    },
+    interpolation: 'rgb',
   },
   'surface-hover': {
     number: 5,
@@ -79,11 +103,17 @@ export const colorMetadata: ColorMetadataByName = {
       long: 'Surface Hover brukes på interaktive flater som ligger oppå bakgrunnsfargene i en hover state.',
       short: 'Hover-farge til overflater / komponenter.',
     },
-    luminance: {
+    lightness: {
       light: 87,
       dark: 22,
-      contrast: 0.028,
+      contrast: 22,
     },
+    saturation: {
+      light: 1,
+      dark: 1,
+      contrast: 1,
+    },
+    interpolation: 'rgb',
   },
   'surface-active': {
     number: 6,
@@ -94,11 +124,17 @@ export const colorMetadata: ColorMetadataByName = {
       long: 'Surface Active brukes på interaktive flater som ligger oppå bakgrunnsfargene i en active state.',
       short: 'Active-farge til overflater / komponenter.',
     },
-    luminance: {
+    lightness: {
       light: 82,
       dark: 28,
-      contrast: 0.045,
+      contrast: 28,
     },
+    saturation: {
+      light: 1,
+      dark: 1,
+      contrast: 1,
+    },
+    interpolation: 'rgb',
   },
   'border-subtle': {
     number: 7,
@@ -109,11 +145,17 @@ export const colorMetadata: ColorMetadataByName = {
       long: 'Border Subtle er den lyseste border-fargen og brukes for å skille elementer fra hverandre.',
       short: 'Border-farge med lav kontrast til dekorativ bruk (skillelinjer).',
     },
-    luminance: {
+    lightness: {
       light: 76,
       dark: 34,
-      contrast: 0.26,
+      contrast: 34,
     },
+    saturation: {
+      light: 1,
+      dark: 1,
+      contrast: 1,
+    },
+    interpolation: 'rgb',
   },
   'border-default': {
     number: 8,
@@ -124,11 +166,17 @@ export const colorMetadata: ColorMetadataByName = {
       long: 'Border Default er en border-farge som brukes når man ønsker god kontrast mot bakgrunnsfargene.',
       short: 'Standard border-farge til skjemakomponenter og meningsbærende elementer.',
     },
-    luminance: {
+    lightness: {
       light: 50,
       dark: 54,
-      contrast: 0.4,
+      contrast: 54,
     },
+    saturation: {
+      light: 1,
+      dark: 1,
+      contrast: 1,
+    },
+    interpolation: 'rgb',
   },
   'border-strong': {
     number: 9,
@@ -139,11 +187,17 @@ export const colorMetadata: ColorMetadataByName = {
       long: 'Border Strong er den mørkeste border-fargen og brukes når man ønsker en veldig tydelig og sterk border.',
       short: 'Border-farge med høy kontrast for ekstra synlighet.',
     },
-    luminance: {
+    lightness: {
       light: 40,
       dark: 69,
-      contrast: 0.6,
+      contrast: 69,
     },
+    saturation: {
+      light: 1,
+      dark: 1,
+      contrast: 1,
+    },
+    interpolation: 'rgb',
   },
   'text-subtle': {
     number: 10,
@@ -154,11 +208,17 @@ export const colorMetadata: ColorMetadataByName = {
       long: 'Text Subtle er den lyseste tekstfargen og brukes på tekst som skal være litt mindre synlig eller for å skape variasjon i typografien.',
       short: 'Tekst- og ikonfarge med lavere kontrast.',
     },
-    luminance: {
+    lightness: {
       light: 40,
       dark: 69,
-      contrast: 0.57,
+      contrast: 69,
     },
+    saturation: {
+      light: 1,
+      dark: 1,
+      contrast: 1,
+    },
+    interpolation: 'rgb',
   },
   'text-default': {
     number: 11,
@@ -169,11 +229,17 @@ export const colorMetadata: ColorMetadataByName = {
       long: 'Text Default er den mørkeste tekstfargen og brukes på tekst som skal være mest synlig. Denne fargen bør brukes på mesteparten av teksten på en side.',
       short: 'Tekst- og ikonfarge med høy kontrast og god synlighet.',
     },
-    luminance: {
+    lightness: {
       light: 18,
       dark: 94,
-      contrast: 0.86,
+      contrast: 94,
     },
+    saturation: {
+      light: 1,
+      dark: 1,
+      contrast: 1,
+    },
+    interpolation: 'rgb',
   },
   'base-default': {
     number: 12,
@@ -184,11 +250,17 @@ export const colorMetadata: ColorMetadataByName = {
       long: 'Base Default fargen får den samme hex koden som fargen som er valgt i verktøyet. Brukes ofte som farge på viktige elementer og på flater som skal fange brukerens oppmerksomhet.',
       short: 'Standardfarge for solide bakgrunner.',
     },
-    luminance: {
+    lightness: {
+      light: -1,
+      dark: -1,
+      contrast: -1,
+    },
+    saturation: {
       light: 1,
       dark: 1,
       contrast: 1,
     },
+    interpolation: 'rgb',
   },
   'base-hover': {
     number: 13,
@@ -199,11 +271,17 @@ export const colorMetadata: ColorMetadataByName = {
       long: 'Base Hover brukes som hover farge på elementer som bruker Base Default fargen.',
       short: 'Hover-farge for solide bakgrunner.',
     },
-    luminance: {
+    lightness: {
+      light: -1,
+      dark: -1,
+      contrast: -1,
+    },
+    saturation: {
       light: 1,
       dark: 1,
       contrast: 1,
     },
+    interpolation: 'rgb',
   },
   'base-active': {
     number: 14,
@@ -214,11 +292,17 @@ export const colorMetadata: ColorMetadataByName = {
       long: 'Base Active brukes som active farge på elementer som bruker Base Default fargen.',
       short: 'Active-farge for solide bakgrunner.',
     },
-    luminance: {
+    lightness: {
+      light: -1,
+      dark: -1,
+      contrast: -1,
+    },
+    saturation: {
       light: 1,
       dark: 1,
       contrast: 1,
     },
+    interpolation: 'rgb',
   },
   'base-contrast-subtle': {
     number: 15,
@@ -229,11 +313,17 @@ export const colorMetadata: ColorMetadataByName = {
       long: 'Contrast Subtle brukes som en viktig meningsbærende farge oppå Base Default fargen.',
       short: 'Farge med god kontrast mot Base-default.',
     },
-    luminance: {
+    lightness: {
+      light: -1,
+      dark: -1,
+      contrast: -1,
+    },
+    saturation: {
       light: 1,
       dark: 1,
       contrast: 1,
     },
+    interpolation: 'rgb',
   },
   'base-contrast-default': {
     number: 16,
@@ -244,11 +334,17 @@ export const colorMetadata: ColorMetadataByName = {
       long: 'Contrast Default brukes som en viktig meningsbærende farge oppå alle Base fargane.',
       short: 'Farge med god kontrast mot Base-default og Base-hover.',
     },
-    luminance: {
+    lightness: {
+      light: -1,
+      dark: -1,
+      contrast: -1,
+    },
+    saturation: {
       light: 1,
       dark: 1,
       contrast: 1,
     },
+    interpolation: 'rgb',
   },
 };
 
