@@ -30,10 +30,10 @@
     border-color: var(--dsc-table-border-color);
     padding: var(--dsc-table-padding);
     text-align: inherit;
+  }
 
-    &:is(th) {
-      font-weight: var(--ds-font-weight-semibold);
-    }
+  & th {
+    font-weight: var(--ds-font-weight-semibold);
   }
 
   & > thead > tr > :is(th, td) {
