@@ -11,6 +11,7 @@
     "test:coverage": "vitest run --coverage",
     "storybook": "pnpm --filter @designsystemet/storybook dev",
     "storefront": "pnpm --filter storefront dev",
+    "www": "pnpm --filter www.designsystemet.no dev",
     "theme": "pnpm --filter theme dev",
     "figma-plugin": "pnpm --filter figma-plugin dev",
     "build": "pnpm --filter @digdir/* build",
