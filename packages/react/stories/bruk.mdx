@@ -38,8 +38,6 @@ Alle komponenter har props og typescript typer iht. underliggende element. F.eks
 </Button>
 ```
 
-<br />
-
 Vil bli til:
 
 ```tsx
@@ -54,8 +52,6 @@ Vil bli til:
   Click me
 </button>
 ```
-
-<br />
 
 ### SSR
 
@@ -93,9 +89,6 @@ Noen komponenter har en `.TriggerContext`, som kan wrappes rundt komponenten plu
 Disse kan brukes for å automatisk koble komponenten til en trigger - typisk en knapp.
 Modal har f.eks en `Modal.TriggerContext` komponent som kan wrappes rundt `Modal.Trigger` og `Modal` komponentene.
 
-<br />
-<br />
-<br />
 
 ## CSS
 
@@ -119,14 +112,12 @@ Dette gjør du ved å først legge reseten din i en layer, og så sortere denne 
 
 Vi tilbyr flere data attributter som kan brukes for å endre tema på komponentene.
 
-<br />
 #### `data-color-scheme`
 
 Brukes til å endre fargemodus på komponentene. Mulige verdier er `light`, `dark` og `auto`.
 Dersom `auto` er valgt, vil fargemodusen endres basert på brukerens preferanser ved hjelp av
 [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme).
 
-<br />
 #### `data-typography`
 
 Brukes til å endre typografien på komponentene. Mulige verdier er `primary` og `secondary`.

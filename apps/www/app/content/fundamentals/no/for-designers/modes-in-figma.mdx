@@ -23,6 +23,40 @@ I [Core UI Kit](https://www.figma.com/community/file/1322138390374166141) har du
 
 Nedenfor går vi gjennom hvordan disse fungerer.
 
+### Hvordan ser du hvilke mode som er valgt?
+Designere kan enkelt bytte mellom ulike modes i Figma og se informasjon om den valgte mode. De som har visningstilgang vil ikke kunne se informasjon om hvilken mode som er valgt - som `Tema`, `Fargeoppsett` eller `Typografi`. Denne informasjonen er bare tilgjengelig for dem som har redigeringstilgang, eller for de som bruker Dev Mode i Figma.
+
+#### Slik ser det ut med visningstilgang (view only):
+Her kan du se at informasjon om valgt mode ikke er synlig i visningstilgang.
+
+<Image
+  src='/img/visningstilgang.png'
+  alt='Skjermbildet viser hvordan modes ser ut i figma for brukere med visningstilgang'
+  boxShadow={false}
+/>
+
+#### Slik ser det ut med redigeringstilgang:
+Når du har redigeringstilgang, kan du se hvilken mode som er valgt for hele designet.
+
+<Image
+  src='/img/redigeringstilgang.png'
+  alt='Skjermbildet viser hvordan modes ser ut i figma for brukere med redigeringstilgang'
+  boxShadow={false}
+
+/>
+
+#### Slik ser det ut i Dev Mode:
+Hvis en mode er satt på en hel frame, vises den kun i Dev mode når selve framen er valgt. 
+Dev mode ser kun hvilken mode som er satt på elementet det er satt, ikke lenger nedover.
+
+<Image
+  src='/img/dev-mode-hele-frame.png'
+  alt='Skjermbildet viser hvordan modes ser ut i figma i dev-mode når hele framen er valgt'
+  boxShadow={false}
+  caption='Slik ser det ut når hele framen er valgt i Dev Mode.
+'
+/>
+
 ## Theme
 I *Theme mode* velger du hvilket tema designet skal bruke.
 Når du bytter theme, oppdateres hele designet seg automatisk, fra farger og typografi til øvrige designelementer, uten at du trenger å justere hver komponent manuelt. Dette gir deg muligheten til raskt å tilpasse designet etter organisasjonens visuelle identitet og spesifikke behov. For noen organisasjoner holder det med ett tema, mens andre trenger flere. Temaene som vises avhenger av hvilke tema som er satt opp for din organisasjon. Temaer kan bygges i [Designsystemets temabygger](https://theme.designsystemet.no/).

@@ -6,8 +6,6 @@ import * as SelectStories from './Select.stories';
 # Select
 `Select` er en nedtrekksliste som lar brukeren velge ett eller flere alternativer fra et statisk utvalg. Komponenten er bygget på HTML-elementet , som bruker nettleserens innebygde standard. Dette sikrer forutsigbarhet og god tilgjengelighet, men begrenser hvordan komponenten kan tilpasses. For eksempel kan ikke innholdet styles utover det nettleseren tillater.
 
-<br/>
-
 ## Props
 
 <Primary />
@@ -45,31 +43,21 @@ Gruppering brukes for å organisere alternativer i kategorier, noe som gjør lan
 
 Bruk `select` når det er 7 eller flere alternativer. For færre alternativer kan alternativknapper (`radio`) være enklere for brukerne. `Select` er spesielt brukervennlig på mobil og gir god tilgjengelighet, da det følger operativsystemets standarder. Det fungerer godt når brukeren skal velge ett alternativ fra en liste. Hvis brukeren trenger å velge flere alternativer eller filtrere listen, bør du vurdere å bruke `Suggestion` eller `MultiSuggestion`.
 
-<br/>
 Passer til 
 * å velge ett alternativ
-
-<br/>
 
 Passer ikke til 
 * å navigere mellom sider eller seksjoner i en applikasjon
 * å velge flere alternativer. Selv om HTML select støtter dette via `Multiple`-attributtet, er det lite brukervennlig, spesielt på mobil. Vi anbefaler `Checkbox` eller `MultiSuggestion` for en mer oversiktlig og tilgjengelig løsning
 
-<br/>
-
 **Merk**: [Gov.uk](https://design-system.service.gov.uk/components/select) anbefaler å unngå `select` i offentlige digitale tjenester. Deres brukertester viser at brukere ofte synes komponenten er vanskelig å bruke riktig. Det kan være bedre å stille flere spørsmål for å redusere antallet alternativer å velge mellom. Hvis du stiller de riktige spørsmålene først, kan alternativknapper (`radio`) være et bedre valg.
-
-<br/>
 
 ## Tekst i komponenten
 `Select`-komponenten skal alltid ha en ledetekst. Vi plasserer ledetekst og beskrivelse over feltet for å sikre god synlighet på små skjermer og unngå problemer ved feilmeldinger. Hold ledeteksten kort, helst på én linje.
 Hvis `select` er inne i en tabell og får ledeteksten fra tabelloverskriften, kan vi skjule ledeteksten. Pass likevel på at ledeteksten gir mening, siden den fortsatt skal leses opp av skjermlesere.
 
-<br/>
-
 ## Tilgjengelighet
 Det er en kjent feil at `select` ikke fungerer med VoiceOver i Chrome på Mac.
-<br/>
 
 | **Kommando** | **Interaksjon** |
 | --- | --- |
@@ -80,8 +68,6 @@ Det er en kjent feil at `select` ikke fungerer med VoiceOver i Chrome på Mac.
 | **Home** | Markerer det første alternativet i listen |
 | **End** | Markerer det siste alternativet i listen |
 | **Bokstav/tegn** | Hopper til det første alternativet som starter på den bokstaven eller det tegnet. |
-
-<br/>
 
 ### Ikke bruk deaktivert tilstand
 Ikke bruk deaktivert tilstand (disabled state). Tenk heller over om du trenger å vise feltet i det hele tatt, eller om du heller kan skrive informasjonen ut i ren tekst eller bruke `Read Only`.

@@ -6,7 +6,6 @@ import * as TextfieldStories from './Textfield.stories';
 # Textfield
 
  Textfield er en samensatt komponent for [`input`](/docs/komponenter-input--docs) og [`textarea`](/docs/komponenter-textarea--docs). Du bytter mellom de ved å sette `multiline={true/false}`. `Textfield` har også innebygd `label`, `description`, `validationmessage`, `affix` og `counter`.
-<br/>
 
 
 <Primary />
@@ -19,6 +18,8 @@ import { Textfield } from '@digdir/designsystemet-react';
 
 <Textfield label="Navn" />
 ```
+
+**OBS:** `Textfield` bruker [`Field`](/docs/komponenter-field--docs) komponenten internt og bør derfor ikke brukes i en `Field`. 
 ## Eksempler
 
 ### Multiline
@@ -67,18 +68,13 @@ For å sikre en god brukeropplevelse er det viktig å bruke en kombinasjon av ri
 - `autoComplete` brukes i felter som mottar personlig informasjon. Hvis feltet skal be om personopplysninger om en annen person enn brukeren, må du skru `autoComplete` av.
 - Pass på at brukerne ser inndata som formateres automatisk, men uten at det forstyrrer dem mens de fyller ut.
 
-<br/>
-
 ## Tekst i komponenten
 
 Det skal alltid være ledetekst på `textfield`. I spesielle tilfeller kan vi skjule ledeteksten ved å ikke sende inn `label`. Det kan for eksempel være i tabeller, hvis feltet får ledeteksten fra tabelloverskriften. Selv om vi har tenkt å skjule ledeteksten, må vi alltid skrive en ledetekst som gir mening, siden den leses opp av skjermlesere.
 
-<br />
 - Hold ledeteksten kort, unngå at den går over to linjer.
 - Unngå å legge til beskrivelse som ikke er relevant eller meningsfull for brukeren.
 - Unngå å bruke kolon etter `label`.
-
-<br/>
 
 ## Tilgjengelighet
 
