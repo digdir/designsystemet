@@ -1,5 +1,5 @@
 import chroma from 'chroma-js';
-import Color from 'colorjs.io';
+import Colorjs from 'colorjs.io';
 import { Hsluv } from 'hsluv';
 import type { CssColor, HexColor } from './types.js';
 
@@ -160,6 +160,15 @@ export const getLuminanceFromLightness = (lightness: number) => {
 };
 
 /**
+ * Get the relative luminance from any valid css color
+ *
+ * @param color
+ */
+export const getLuminanceFromColor = (color: string) => {
+  return chroma(color).luminance();
+};
+
+/**
  * Get the HSLuv lightness from a HEX color
  *
  * @param hex The hex color
@@ -228,10 +237,18 @@ export const rgbToHex = (rgb: { r: number; g: number; b: number }): HexColor => 
  * @param format Color space/format supported here https://colorjs.io/docs/spaces
  */
 export const convertColor = (cssColor: string, format: string) => {
-  const color = new Color(cssColor);
+  const color = new Colorjs(cssColor);
   switch (format) {
     case 'rgb':
     case 'rgba':
+      //return rgb(0-255 0-255 0-255) instead of percentages
+      return color.toString({
+        format: {
+          name: format,
+          coords: ['<number>[0, 255]', '<number>[0, 255]', '<number>[0, 255]'],
+        },
+        precision: 3,
+      });
     case 'hex':
       return color.toString({ format: format, precision: 3 });
     default:
