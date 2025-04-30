@@ -22,4 +22,4 @@ jobs:
           fetch-depth: 0
       - uses: ./.github/actions/gh-setup
       - name: Check changeset status
-        run: pnpm changeset status --since=origin/${{ github.event.pull_request.base.ref }}
+        run: pnpm changeset status --since=${{ github.event.pull_request.base.ref }}
