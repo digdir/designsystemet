@@ -1,0 +1,141 @@
+---
+title: What's Coming in V1!
+description: We're approaching the first version of the Design System without a beta label! Version 1 will be more stable, more flexible, and support multidimensional theming.
+date: 2024-05-29
+author: Designsystemet
+imageSrc: /img/blog/v1rc1.png
+imageAlt: Illustration of Design System V1 and emojis celebrating.
+imageCaption: After over 2000 issues and PRs, we're closer than ever! Thank you to everyone who has contributed to getting here!
+---
+
+The Design System has been in beta for a long time. The beta period has given us flexibility and the opportunity to experiment, test the underlying structure, and how the components work together. At the same time, it has been somewhat unpredictable for those of you who have chosen to use the design system while it was still in beta. Now we're approaching the finish line and have published a release candidate of V1!
+
+## What's new?
+
+Version 1 will be more stable, more flexible, and support multidimensional theming.
+
+Here's a brief summary of what's new:
+
+- Color system and token structure
+- Easy to adapt to your organization
+- Support for dark mode and contrast mode
+- Design tokens template on Github
+- Updated components in React and Figma with new tokens
+
+### New color system and token structure
+
+Several interviews and [user tests](/blog/2024/bachelor-temavelger#brukertester-og-videre-arbeid) revealed that the first color system didn't solve all needs. The colors didn't always behave as expected, and the structure was somewhat cumbersome to work with.
+
+In recent months, we've explored a new color system and token structure that is more flexible, easier to understand, and still maintains contrast requirements. Defining a solid token architecture with multidimensional themes requires surprisingly much thought work - including sleepless nights and drawings in the shower. Not only do tokens need to function as a bridge between design and code, they must support multi-branding and different modes (dark mode and contrast mode), and they must maintain contrast requirements between color tokens intended for text and backgrounds.
+
+We've been inspired by [USWDS's "magic numbers"](https://designsystem.digital.gov/design-tokens/color/overview/) to ensure accessible color combinations from any color palette. We've also been inspired by [Radix's linear color system](https://www.radix-ui.com/colors) with clear intentions for the different colors. To ensure that organizations can use their actual brand color, we've chosen to combine two approaches into a completely new system. In the new color system, both brand colors can be maintained and contrast requirements ensured through the linear colors generated from the brand color. Colors intended for text will therefore always have sufficient contrast against background colors.
+
+In connection with the new color system, we've developed a tool where you can test your brand colors and how they affect the components. The tool is under development, but is already available for testing. 👀
+
+<ResponsiveIframe
+  src='/img/blog/theme-generator.mp4'
+  title='Screen recording from a tool where you can see the components with your own colors.'
+  frameBorder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+  allowFullScreen
+  aspectRatio='16-9'
+/>
+
+<Link
+  href='https://theme.designsystemet.no/'
+  target='_blank'
+>
+  theme.designsystemet.no (opens in new tab)
+</Link>
+
+Although we've now set up a color system that supports dark mode and contrast mode, there's still some exploration to be done before we're sure that the color generation works optimally.
+
+#### Action --> Accent
+
+Another confusing element with the previous color system was the `action` color, which only changed the color of the `Button` component. `Action` has now been replaced with `neutral` and `accent` colors that affect expected form elements.
+
+## Join us in testing the V1 Release Candidate!
+
+In working to build a design system that will work for many different organizations, we depend on feedback.
+
+We want to be confident that the new system is well-tested before we launch it as V1. Therefore, we hope that as many as possible will test and provide feedback.
+
+We will continuously work on minor improvements based on the feedback we receive until the launch of V1. The date for V1 depends on the feedback we receive.
+
+### What do you need to do to start using the new architecture?
+
+To easily get started as a developer with the Release Candidate of the Design System, you can install the following with your package system:
+
+```shell
+npm i @digdir/designsystemet-react@next
+npm i @digdir/designsystemet-theme@next
+npm i @digdir/designsystemet-css@next
+```
+
+This installs all three packages, and contains tokens, CSS, and React components.
+
+#### Color mode
+
+If you want to test `dark`, `light`, or `contrast` mode, you can add the data attribute `data-color-scheme="MODE"`.
+This can be placed anywhere, and changes all children to the mode you have chosen.
+
+```tsx
+<Details data-color-scheme='dark'>...</Details>
+```
+
+#### Design tokens template
+
+You can check out the template we've created for the Design System design tokens, which you can use as a starting point for connecting Figma and code using Token Studio.
+Guidelines on how to use this are coming!
+
+<Link
+  href='https://github.com/designsystemet/design-tokens'
+  target='_blank'
+>
+  github.com/designsystemet/design-tokens (opens in new tab)
+</Link>
+
+#### Migrating from the beta version
+
+If you have previously used the beta version of the Design System, we've created a migration script for CSS that tries to fix all the changes we've made to variable names.
+
+The migration script automatically runs on all `.css` files (including subfolders) where you run it. You can decide which files it runs on by using the parameter [--glob](<https://en.wikipedia.org/wiki/Glob_(programming)>), e.g., `--glob "./**/*.css"`
+
+_Note that you must double-check your code after the script has run_
+
+```shell
+npx @digdir/designsystemet migrate beta-to-v1
+```
+
+## Thanks for the collaboration so far!
+
+In addition to the team that works daily on the Design System, we also have a very important group of contributors who contribute with code, insight, design, and input. Thank you!
+
+<ResponsiveIframe
+  src='https://player.vimeo.com/video/951934375?h=40f4d8cea4'
+  width='100%'
+  height='600px'
+  frameBorder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+  aspectRatio='16-9'
+/>
+
+If you missed the demo on May 29, you can watch the recording in the video above.
+
+<Contributors
+  authors={[
+    'Øyvind Thune',
+    'Tobias Barsnes',
+    'Michael Marszalek',
+    'Lasse Straum',
+    'Gørild Døhl',
+    'Roy Halvor Frimannslund',
+    'Lene Sundsbø',
+    'Wei Quing Yu',
+    'Cecilie Fjellsøy Lammering',
+    'Kristian Birkeli',
+    'Marianne Røsvik',
+  ]}
+/>
+
+We would love to mention everyone, but you can find a full list of [contributors on Github](https://github.com/digdir/designsystemet/graphs/contributors).

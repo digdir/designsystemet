@@ -1,0 +1,45 @@
+{
+  "$schema": "../dist/config.schema.json",
+  "outDir": "./test-tokens/config",
+  "clean": true,
+  "themes": {
+    "some-org": {
+      "colors": {
+        "main": {
+          "dominant": "#0062BA",
+          "complimentary": "#94237C"
+        },
+        "support": {
+          "first": "#F45F63",
+          "second": "#E5AA20",
+          "third": "#1E98F5",
+          "fourth": "#F167EC"
+        },
+        "neutral": "#303030"
+      },
+      "typography": {
+        "fontFamily": "Inter"
+      },
+      "borderRadius": 8
+    },
+    "other-org": {
+      "colors": {
+        "main": {
+          "dominant": "#ffaaaa",
+          "complimentary": "#00ff00"
+        },
+        "support": {
+          "first": "#abcdef",
+          "second": "#123456",
+          "third": "#994a22",
+          "fourth": "#3d5f30"
+        },
+        "neutral": "#c05030"
+      },
+      "typography": {
+        "fontFamily": "Roboto"
+      },
+      "borderRadius": 99
+    }
+  }
+}

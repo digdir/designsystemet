@@ -1,0 +1,113 @@
+---
+title: First Version of the Design System is Ready!
+description: Finally, V1 is here! After an extensive development process and close collaboration with several public entities, we are now launching the first stable version of the Design System!
+date: 2025-03-03
+author: Designsystemet
+imageSrc: /img/blog/V1.png
+imageAlt: Illustration of V1
+---
+
+V1 is the result of a long and educational journey spanning two years. Along the way, we've made major changes, and in the middle of the process, we've become a more cross-agency team, where Digdir, the Norwegian Food Safety Authority, the Norwegian Directorate for Education and Training, and the Brønnøysund Register Centre have worked closely together on the development. Together, we've changed direction, adapted to new insights, and worked our way towards what is now becoming the first version of the Design System.
+
+<br/>
+
+<Card data-color='brand3' data-variant="tinted">
+**We are launching the Design System!** 
+
+Join the livestream on March 20 to learn how the Design System can simplify and improve your digital solutions.
+
+[Registration for the digital event](https://event.checkin.no/110475/apen-lansering-av-designsystemet)
+</Card>
+
+## What does V1 entail?
+
+At one point, we locked version 0.63, in connection with major changes that were to be made to the underlying token structure. After this, we've rolled out several "Release Candidates" for V1, and have now ended up with what becomes the first version of the Design System.
+
+**Version 1.0.0 contains several improvements and new features**:
+
+- **Improved accessibility:** All components are developed with a focus on universal design, and we have made thorough assessments to ensure they are accessible. We stay close to native HTML where possible, so that the components work intuitively with screen readers, keyboard navigation, and other assistive technologies without extra adjustments.
+- **More flexible design tokens:** We have introduced a more robust token structure that makes it easier to adapt colors, typography, and dimensions to different needs.
+- **Better integration without React:** To ensure broader application, we have made the components easier to use in different technological frameworks.
+- **New and improved components:** Based on user feedback, we have improved several components to increase usability and ensure a cohesive component API.
+- **Better documentation:** We have updated the documentation to make it easier for developers and designers to get started and understand how they can best utilize the system.
+
+## What does this mean for you as a user?
+
+The launch of V1 means that you now have access to a more mature and stable design system that gives you:
+
+- Easier implementation in your solutions.
+- A stable version with fewer major changes, which provides increased predictability.
+- A well-developed token structure that provides greater flexibility and control. And which ensures that we work with the same values in design and code. Many don't have this connection between design and code today, but now they can!
+- Easier customization of the Design System's components to your own profile and preferences. --> [Set up your own theme](/en/fundamentals/for-designers/custom-theme).
+- Increased accessibility across digital services.
+- Opportunity to contribute and collaborate with a growing community of designers and developers.
+
+## The transition from beta to V1
+For those who have already started using the beta version of the **Design System in React**, we have developed a guide to help you update from v0.63 to v1.0.0 in a smooth way.
+
+--> [Migration guide](https://github.com/digdir/designsystemet/blob/main/packages/react/MIGRATION.md)
+
+Please note that if you have made manual overrides in your solutions, you must ensure that these are translated to the new version of design tokens yourself.
+
+## The way forward
+Even though we are now launching V1, there are still areas we are exploring further. For example, updates will come in the future that fine-tune the color balance and user experience in dark mode. We will continue to collect feedback, improve documentation, enhance functionality, and add new components based on the fundamental needs that recur across the board. We will also offer Web Components for some of the components eventually so that they can be used with Svelte, Vue, Angular, and other technologies.
+
+We will continue with the open monthly demos that we have had for the last two years. We've found it very valuable to work openly from the start. It has allowed us to get feedback early and adapt to real needs. The open approach has given us valuable insight from a wide range of testers and users, and we find that the more people contribute, the stronger the foundation and quality becomes. Even though V1 is being launched, we continue to learn continuously and will manage the system based on insight and data, so that it is always developing and adapted to the actual needs.
+
+The goal is for the Design System to be a good foundation that you can build upon, with your own profile, own preferences, and extended functionality as a layer on top.
+
+<Image
+  src='/img/lagvis-bruk.png'
+  alt='Shows the Design System as a layer at the bottom. You have your own profile on top. You can choose to use the Design System directly in solutions, or build your own design system on top.'
+  boxShadow={false}
+  caption='Some choose to build their own design system on top of the Design System, while others use it directly in solutions.'
+/>
+
+
+The Design System is already in use by many, including [Altinn Studio](https://altinn.studio/), where 70 different agencies develop their services. If you use Altinn studio to develop services, you automatically use components from the Design System.
+
+Several public organizations have also adopted the Design System in their own services.
+
+<Card data-color='neutral'>
+  <Details>
+    <DetailsSummary>Examples of use</DetailsSummary>
+    <DetailsContent>
+    - [The Norwegian Food Safety Authority](https://www.mattilsynet.no/) builds its design system on top of the Design System.
+- [The Norwegian Directorate for Education and Training](https://www.udir.no/) builds its design system on top of the Design System.
+- [The Brønnøysund Register Centre](https://www.brreg.no/) has adopted the Design System on [Business Information](https://virksomhet.brreg.no/no/oppslag/enheter) and [Support Register](https://stotte.brreg.no/no/oppslag/stoettetildeling), among others.
+- [Data.norge.no](https://data.norge.no) uses tokens, components, and patterns from the Design System.
+- [The Norwegian Customs](https://www.toll.no/) has adopted the Design System on their websites.
+- [KS Digital](https://ksdigital.no/) has adopted the Design System on [ledsagerbevis.no](https://ledsagerbevis.no/), among others.
+- [The Norwegian Labour Inspection Authority](https://www.arbeidstilsynet.no/) has adopted the Design System on their websites.
+- [Help page for shared solutions](https://eid.difi.no/no) uses tokens and components from the Design System.
+- [Digdir.no](https://www.digdir.no/), [UU-tilsynet](https://www.uutilsynet.no/), [UU-status](https://uustatus.no/), [the collaboration portal](https://samarbeid.digdir.no/) use tokens from the Design System.
+
+<br/>
+    </DetailsContent>
+  </Details>
+</Card>
+
+<br/>
+<br/>
+
+Do you have input or would you like to contribute? [Send us an email](mailto:designsystem@digdir.no) or join the [community on Slack](http://designsystemet.no/slack). Please let us know if you have used or are considering using the Design System.
+
+We look forward to seeing how the Design System can further streamline product development and help create more user-friendly digital solutions for everyone!
+
+
+
+
+<Contributors
+  authors={[
+    'Michael Marszalek',
+    'Øyvind Thune',
+    'Lasse Straum',
+    'Tobias Barsnes',
+    'Eirik Backer',
+    'Une Sofie Kinn Ekroll',
+    'Roy Halvor Frimanslund',
+    'Viveca Krishnamoorthi',
+    'Oddbjørn Øvernes',
+    'Marianne Røsvik',
+  ]}
+/>

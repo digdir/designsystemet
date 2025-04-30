@@ -1,0 +1,79 @@
+---
+title: Dynamic Text Sizes and Why We Moved Away From It
+description: It's possible to use dynamic text sizes without breakpoints
+date: 2024-04-26
+author: Designsystemet
+imageSrc: /img/blog/fluid-front.png
+imageAlt: The illustration shows that a 16px text size on small screens gradually increases up to 18px on large screens.
+imageCaption: The illustration shows that a 16px text size on small screens gradually increases up to 18px on large screens.
+---
+
+With "Fluid typography," we can scale the text size gradually between a minimum and maximum width, instead of having an abrupt scaling at a specific breakpoint. The linear function approaches the desired size evenly across the screen width.
+
+The text sizes increase gradually from a viewport width of 320px until it reaches the maximum width of the viewport, which is set to 1360px. A text of 16px will, for example, increase to 18px on the largest viewport.
+
+<Image
+  src='/img/blog/fluid-ex.png'
+  alt='The illustration shows that a 16px text size on small screens gradually increases up to 18px on large screens.'
+  caption='The text size automatically adjusts to the width of the screen.'
+  boxShadow={false}
+  
+/>
+
+## Advantages
+
+- You don't have to think about breakpoints; the size of the font is automatically adjusted to the screen.
+- When sizes aren't adjusted at specific breakpoints, we avoid piecemeal and sudden upscaling.
+
+## Disadvantages
+
+- Half pixels. Figma rounds down. Some browsers round up, others down. This means things don't look the same in Figma and in the browser.
+- You may feel you have less control.
+- In Figma, this size change can only happen using the "Token Studio" plugin when you have activated the desired viewport for your frame.
+- It's not a given that a product will build its product using dynamic typography. If someone adds modules from the design system to their own interface, it won't match their scaling.
+
+<br />
+
+Based on [the disadvantages this caused](https://github.com/digdir/designsystemet/issues/1444), we chose to go with a [static typography scale](/en/fundamentals/design-elements/typography#text-size) as the standard for the design system.
+
+## Do you need dynamic typography?
+
+If you need to use dynamic typography, please create a [feature request](https://github.com/digdir/designsystemet/issues/new?assignees=&labels=%F0%9F%92%A1feature+request%2Cneeds+prioritization%E2%9D%97%EF%B8%8F&projects=&template=2feature_request.yml), and we can consider the possibility of activating "Fluid" as a separate set.
+
+The sizes used in the dynamic scale were generated using the [Fluid Typescale Generator](https://fluid-tokenization.vercel.app/)
+
+| Step   | viewport 320px        | viewport 1360px       |
+| :----- | :-------------------- | :-------------------- |
+| f-3    | 12.00px / 0.75rem     | 12.00px / 0.75rem     |
+| f-2    | 13.00px / 0.81rem     | 13.00px / 0.81rem     |
+| f-1    | 15.00px / 0.94rem     | 16.00px / 1.00rem     |
+| **f0** | **16.00px / 1.00rem** | **18.00px / 1.13rem** |
+| f1     | 18.00px / 1.13rem     | 21.00px / 1.31rem     |
+| f2     | 19.00px / 1.19rem     | 24.00px / 1.50rem     |
+| f3     | 21.00px / 1.31rem     | 28.00px / 1.75rem     |
+| f4     | 23.00px / 1.44rem     | 32.00px / 2.00rem     |
+| f5     | 26.00px / 1.63rem     | 38.00px / 2.38rem     |
+| f6     | 29.00px / 1.81rem     | 44.00px / 2.75rem     |
+
+<br />
+
+To see the correct text sizes in Figma, we were dependent on having the [Tokens Studio for Figma](https://docs.tokens.studio/) plugin installed and using it to activate the correct viewport. The video below shows how the plugin was used to get the correct text sizes for different viewports.
+
+<ResponsiveIframe
+  src='/img/fluid-text-size.mp4'
+  title='Screen recording of Figma showing how the size and spacing of text becomes smaller in a smaller viewport'
+  frameBorder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+  allowFullScreen
+  aspectRatio='16-9'
+/>
+
+<Contributors
+  authors={[
+    'Marianne Røsvik',
+    'Øyvind Thune',
+    'Michael Marszalek',
+    'Tobias Barsnes',
+    'Lasse Febakke Straum',
+  ]}
+/>
