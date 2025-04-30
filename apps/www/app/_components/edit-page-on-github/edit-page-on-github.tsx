@@ -24,7 +24,6 @@ export const EditPageOnGithub = ({
       target='_blank'
       rel='noopener noreferrer'
       {...rest}
-      data-unstyled
       className={cl(classes.githubLink, className)}
     >
       <Github aria-hidden='true' />
