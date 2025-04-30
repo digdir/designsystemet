@@ -39,6 +39,10 @@
         "github": "Bidra på GitHub",
         "email": "Send en epost"
       }
+    },
+    "meta": {
+      "title": "En felles digital verktøykasse",
+      "description": "Designsystemet er en felles verktøykasse med grunnleggende UI-komponenter, retningslinjer og mønstre, som du kan bruke når du utvikler digitale tjenester. Designsystemet bidrar til effektiv produktutvikling og helhetlige brukeropplevelser."
     }
   },
   "blog": {
@@ -119,7 +123,8 @@
     "theme-toggle": "Bytt til {{theme}} modus",
     "theme-toggle-aria": "Bytt til {{theme}} modus",
     "light": "lys",
-    "dark": "mørk"
+    "dark": "mørk",
+    "language-toggle": "Bytt språk"
   },
   "components": {
     "title": "Komponenter",

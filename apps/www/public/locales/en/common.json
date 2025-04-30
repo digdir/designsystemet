@@ -39,6 +39,10 @@
         "github": "Contribute on GitHub",
         "email": "Send an email"
       }
+    },
+    "meta": {
+      "title": "A common digital toolbox",
+      "description": "The design system is a common toolbox with basic UI components, guidelines, and patterns that you can use when developing digital services. The design system contributes to efficient product development and holistic user experiences."
     }
   },
   "blog": {
@@ -119,7 +123,8 @@
     "theme-toggle": "Switch to {{theme}} mode",
     "theme-toggle-aria": "Switch to {{theme}} mode",
     "light": "light",
-    "dark": "dark"
+    "dark": "dark",
+    "language-toggle": "Switch language"
   },
   "components": {
     "title": "Components",

@@ -236,14 +236,19 @@ const Header = ({
             </Tooltip>
           )}
           <Dropdown.TriggerContext>
-            <Dropdown.Trigger
-              variant='tertiary'
-              data-color='neutral'
-              className={classes.toggleButton}
-              onClick={() => setLangOpen(!langOpen)}
-            >
-              <GlobeIcon />
-            </Dropdown.Trigger>
+            <Tooltip content={t('header.language-toggle')} placement='bottom'>
+              <div>
+                <Dropdown.Trigger
+                  variant='tertiary'
+                  data-color='neutral'
+                  className={classes.toggleButton}
+                  onClick={() => setLangOpen(!langOpen)}
+                  aria-label={t('header.language-toggle')}
+                >
+                  <GlobeIcon />
+                </Dropdown.Trigger>
+              </div>
+            </Tooltip>
             <Dropdown open={langOpen} onClose={() => setLangOpen(false)}>
               <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
                 <Link to={langPaths.no}>Norsk</Link>

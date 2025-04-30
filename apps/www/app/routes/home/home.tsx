@@ -16,6 +16,8 @@ import { ImageBanner } from '~/_components/image-banner/image-banner';
 import { NavigationCard } from '~/_components/navigation-card/navigation-card';
 import { Section } from '~/_components/section/section';
 import { getFileFromContentDir, getFilesFromContentDir } from '~/_utils/files';
+import { generateMetadata } from '~/_utils/metadata';
+import i18n from '~/i18next.server';
 import type { Route } from './+types/home';
 import classes from './home.module.css';
 
@@ -72,7 +74,22 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   /* Get last 3 posts */
   posts.splice(3);
 
-  return { lang, posts };
+  const t = await i18n.getFixedT(lang);
+
+  return {
+    lang,
+    posts,
+    metadata: generateMetadata({
+      title: t('frontpage.meta.title'),
+      description: t('frontpage.meta.description'),
+    }),
+  };
+};
+
+export const meta: Route.MetaFunction = ({
+  data: { metadata },
+}: Route.MetaArgs) => {
+  return metadata;
 };
 
 export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
