@@ -28,10 +28,10 @@ const config: StorybookConfig = {
     '../stories/*.mdx',
     '../stories/*.@(stories|chromatic).ts?(x)',
     '../../../packages/*.mdx',
-    '../../../packages/css/**/*.mdx',
-    '../../../packages/theme/**/*.mdx',
-    '../../../packages/react/**/*.mdx',
-    '../../../packages/react/**/*.@(stories|chromatic).ts?(x)',
+    '../../../packages/css/**!(node_modules)/*.mdx',
+    '../../../packages/theme/**!(node_modules)/*.mdx',
+    '../../../packages/react/**!(node_modules)/*.mdx',
+    '../../../packages/react/**!(node_modules)/*.@(stories|chromatic).ts?(x)',
   ],
   experimental_indexers: (existingIndexers) => {
     /*
