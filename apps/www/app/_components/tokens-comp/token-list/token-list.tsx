@@ -199,7 +199,6 @@ export const TokenList = ({
     setCardColumns(type === 'color' ? 3 : 2);
   }, [type]);
 
-  /* @ts-ignore */
   const brandTypeTokens = tokens[brand][type] as unknown as Token[];
 
   const sections = Array.from(

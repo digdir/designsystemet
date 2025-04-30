@@ -50,7 +50,7 @@ This ensures that the backport triggers a patch release and avoids any unintende
 
 ### 4. Generate changeset
 
-`yarn changeset`
+`pnpm changeset`
 
 Verify that Changesets has made a patch release!
 

@@ -1,8 +1,8 @@
 import { Dialog, Heading } from '@digdir/designsystemet-react';
 import type { Color } from '@digdir/designsystemet/color';
 import { getCssVariable, hexToHsluv } from '@digdir/designsystemet/color';
-import { ClipboardButton } from '@repo/components';
 
+import { ClipboardButton } from '../ClipboardButton/ClipboardButton';
 import classes from './ColorModal.module.css';
 import { capitalizeFirstLetter, getColorCombinations } from './colorModalUtils';
 

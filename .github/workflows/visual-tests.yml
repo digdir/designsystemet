@@ -31,9 +31,9 @@ jobs:
           fetch-depth: 0
       - uses: ./.github/actions/gh-setup
       - name: Build
-        run: yarn build
+        run: pnpm build
       - name: Build storybook
-        run: yarn build:storybook
+        run: pnpm build:storybook
       - name: Run Chromatic (visual and interaction tests)
         uses: chromaui/action@latest
         with:

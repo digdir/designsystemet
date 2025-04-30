@@ -66,7 +66,6 @@ if (!('popover' in HTMLElement.prototype)) {
     `<style>[popover]:not([data-popping]){display:none!important}</style>`,
   );
 
-  // @ts-ignore
   Object.defineProperties(HTMLElement.prototype, {
     popover: {
       get() {
