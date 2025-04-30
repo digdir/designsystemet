@@ -30,24 +30,28 @@ export const getValue = <T>(token: TransformedToken | DesignToken): T => (token.
  * @param token Transformed token
  * @returns boolean
  */
-export const typeEquals = R.curry((types: string[] | string, token: TransformedToken) => {
-  if (R.isNil(token)) {
-    return false;
-  }
+export const typeEquals: (types: string[] | string, token: TransformedToken) => boolean = R.curry(
+  (types: string[] | string, token: TransformedToken) => {
+    if (R.isNil(token)) {
+      return false;
+    }
 
-  return R.includes(R.toLower(getType(token)), R.map(R.toLower, Array.isArray(types) ? types : [types]));
-});
+    return R.includes(R.toLower(getType(token)), R.map(R.toLower, Array.isArray(types) ? types : [types]));
+  },
+);
 
-export const pathStartsWithOneOf = R.curry((paths: string[], token: TransformedToken) => {
-  if (R.isNil(token)) {
-    return false;
-  }
+export const pathStartsWithOneOf: (paths: string[], token: TransformedToken) => boolean = R.curry(
+  (paths: string[], token: TransformedToken) => {
+    if (R.isNil(token)) {
+      return false;
+    }
 
-  const tokenPath = mapToLowerCase(token.path);
-  const matchPathsStartingWith = R.map((path) => R.startsWith([path], tokenPath), mapToLowerCase(paths));
+    const tokenPath = mapToLowerCase(token.path);
+    const matchPathsStartingWith = R.map((path) => R.startsWith([path], tokenPath), mapToLowerCase(paths));
 
-  return hasAnyTruth(matchPathsStartingWith);
-});
+    return hasAnyTruth(matchPathsStartingWith);
+  },
+);
 
 export function isSemanticToken(token: TransformedToken): boolean {
   return token.filePath.includes('semantic/');

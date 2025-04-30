@@ -1,0 +1,13 @@
+useNodeVersion: 22.15.0
+packages:
+  - packages/*
+  - apps/*
+  - plugins/*
+ignoredBuiltDependencies:
+  - '@bundled-es-modules/glob'
+  - sharp
+onlyBuiltDependencies:
+  - '@biomejs/biome'
+  - '@swc/core'
+  - esbuild
+  - style-dictionary
