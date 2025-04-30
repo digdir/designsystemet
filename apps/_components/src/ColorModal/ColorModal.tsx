@@ -10,8 +10,7 @@ import { useState } from 'react';
 import type { Color } from '@digdir/designsystemet/color';
 import {
   convertColor,
-  getLightnessFromHex,
-  getLuminanceFromLightness,
+  getLuminanceFromColor,
 } from '@digdir/designsystemet/color';
 import { getCssVariable } from '@digdir/designsystemet/color';
 import { ClipboardButton } from '@repo/components';
@@ -35,10 +34,7 @@ export const ColorModal = ({
   const [convertedColor, setConvertedColor] = useState<string>(
     convertColor(hex, 'oklch'),
   );
-  const luminance = getLuminanceFromLightness(getLightnessFromHex(hex)).toFixed(
-    3,
-  );
-  /* store user preference in localstorage? */
+
   const handleColorFormat = (event: ChangeEvent<HTMLSelectElement>) => {
     setConvertedColor(convertColor(hex, event.target.value));
   };
@@ -61,7 +57,9 @@ export const ColorModal = ({
         style={{ backgroundColor: hex }}
       ></div>
       <Dialog.Block className={classes.modalContent}>
-        <div className={classes.description}>{description.long}</div>
+        <Paragraph data-size='sm' className={classes.description}>
+          {description.long}
+        </Paragraph>
         <div data-size='sm' className={classes.grid}>
           <Paragraph className={classes.key}>Hexkode</Paragraph>
           <Paragraph asChild className={classes.value}>
@@ -74,11 +72,11 @@ export const ColorModal = ({
             <Select.Option value='hsluv'>HSLUV</Select.Option>
             <hr />
             <Select.Option value='hsl'>HSL</Select.Option>
-            <Select.Option value='oklab'>OKLAB</Select.Option>
+            <Select.Option value='hwb'>HWB</Select.Option>
             <Select.Option value='oklch'>OKLCH</Select.Option>
             <Select.Option value='p3'>P3</Select.Option>
             <Select.Option value='rgb'>RGB</Select.Option>
-            <Select.Option value='rgba'>RGBA</Select.Option>
+            <Select.Option value='xyz-d65'>XYZ-D65</Select.Option>
           </Select>
           <Paragraph asChild className={classes.value}>
             <div>
@@ -94,7 +92,9 @@ export const ColorModal = ({
             </div>
           </Paragraph>
           <Paragraph className={classes.key}>Relativ luminans</Paragraph>
-          <Paragraph className={classes.value}>{luminance}</Paragraph>
+          <Paragraph className={classes.value}>
+            {getLuminanceFromColor(hex).toFixed(3)}
+          </Paragraph>
           {number !== 9 && number !== 10 && number !== 11 && (
             <>
               <Paragraph className={classes.key}>Kan brukes mot</Paragraph>

@@ -3,6 +3,12 @@
   overflow: hidden;
 }
 
+.description {
+  margin-bottom: var(--ds-size-7);
+  line-height: 150%;
+  text-wrap: pretty;
+}
+
 .grid {
   position: relative;
   display: grid;
@@ -18,13 +24,13 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 30px;
-    height: 2px;
+    width: 34px;
+    height: 1px;
     background-color: var(--ds-color-neutral-border-subtle);
   }
 }
 .key {
-  color: var(--ds-color-neutral-text-subtle);
+  color: var(--ds-color-neutral-text-default);
   font-weight: var(--ds-font-weight-medium);
 }
 .value {
@@ -59,14 +65,6 @@
 
 .value {
   margin-right: 4px;
-}
-
-.description {
-  margin-bottom: 24px;
-  margin-top: -6px;
-  font-size: 16px;
-  line-height: 1.5em;
-  width: 80%;
 }
 
 .accordion {
