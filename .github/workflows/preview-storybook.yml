@@ -8,8 +8,6 @@ on:
   workflow_dispatch:
   pull_request:
     types: [opened, synchronize]
-    branches-ignore:
-      - main
     paths:
       - 'packages/**'
       - 'apps/storybook/**'
