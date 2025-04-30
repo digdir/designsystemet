@@ -31,7 +31,7 @@ const config: StorybookConfig = {
     '../../../packages/css/**!(node_modules)/*.mdx',
     '../../../packages/theme/**!(node_modules)/*.mdx',
     '../../../packages/react/**!(node_modules)/*.mdx',
-    '../../../packages/react/**!(node_modules)/*.@(stories|chromatic).ts?(x)',
+    '../../../packages/react/**!(node_modules)/*.@(stories|chromatic).@(ts|tsx)',
   ],
   experimental_indexers: (existingIndexers) => {
     /*
