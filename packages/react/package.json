@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.6.13",
-    "@floating-ui/react": "0.26.23",
+    "@floating-ui/react": "0.27.8",
     "@navikt/aksel-icons": "^7.18.0",
     "@radix-ui/react-slot": "^1.1.2",
     "@tanstack/react-virtual": "^3.13.6",
