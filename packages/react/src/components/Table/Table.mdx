@@ -111,19 +111,25 @@ Dette hjelper nettleseren til å tegne tabellen raskere, og er nyttig når du ha
 
 <Canvas of={TableStories.WithBorder} />
 
-## Retningslinjer for når du skal bruke table
+## Retningslinjer for Table
 
 Vi bruker `Table` når vi skal organisere og vise data på en strukturert måte i rader og kolonner for brukerne.  
 Alt innhold bør være venstrejustert i tabeller, unntatt tall som bør høyrejusteres for at brukerne lett skal kunne sammenligne tallene.  
+
 For å spare plass, kan vi bruke en meny, hvis flere handlinger i en tabellrad ikke må være synlig for brukerne hele tiden. 
+
 I overskiftceller bruker vi `<Table.HeaderCell>`, ikke `<Table.Cell>`. En celle er en overskrift hvis den beskriver 
 innholdet i cellene under eller ved siden av.
 
-Passer til å
+<br />
+
+**Passer til å**
 - gjøre det enkelt for brukerne å sammenligne og skanne informasjon
 - organisere og vise data på en effektiv måte i rekker og kolonner
 
-Passer ikke til å 
+<br />
+
+**Passer ikke til å** 
 - lage layout for innholdet på nettsiden eller å dele opp innholdet på en side systematisk
 - vise store mengder data på mobil
 
@@ -134,9 +140,10 @@ Passer ikke til å
 Vi bruker overskrifter til å fortelle brukerne hva som er innholdet i radene og kolonnene.
 
 Innholdet i cellene skal som regel være venstrejustert.
-Unntak som skal være høyrejustert:
-- Tall og valuta
-- Knapper
+  <br />
+Unntak som skal være høyrejustert
+- tall og valuta
+- knapper
 
 For å gjøre tabellraden lesbar på smale skjermer, skal innholdet normalt være toppjustert.
 Men hvis raden har en eller flere knapper, bruker vi sentrering.
