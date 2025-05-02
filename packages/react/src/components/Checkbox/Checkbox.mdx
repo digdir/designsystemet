@@ -82,9 +82,10 @@ return (
 );
 ```
 
-### Ubestemt
+### Velge alle alternativer med en overordnet avmerkingsboks
 
-Bruk `indeterminate` til å signalisere at en eller flere sjekkbokser er markert i gruppen.
+Legg inn `allowIndeterminate: true` i `getCheckboxProps` for å opprette en overordnet avmerkingsboks som både kan velge og fjerne alle alternativer. Dette aktiverer en ekstra tilstand, `indeterminate`, ved siden av `checked` og `unchecked`. Den vises med en horisontal strek og signaliserer at én eller flere avmerkingsbokser er markert i gruppen.
+
 
 <Canvas of={CheckboxStories.InTable} />
 
@@ -96,7 +97,7 @@ Her må du bruke `Fieldset` for å gjøre innholdet tilgjengelig og aktivere rik
 
 <Canvas of={CheckboxStories.WithError} />
 
-#### Kontrollert
+#### Kontrollere Checkbox utenfra
 
 Bruk `value` på `Checkbox` for å kontrollere verdiene selv.
 
