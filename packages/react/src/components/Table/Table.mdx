@@ -9,12 +9,12 @@ import { TableHeaderCell } from './';
 
 # Table
 
-`Table` brukes for å vise store mengder strukturert informasjon på en ryddig og oversiktlig måte. Tabller kan gjøre det enklere for brukerne å skanne og sammenligne informasjon.   
+`Table` brukes for å vise strukturert informasjon på en ryddig og oversiktlig måte. Tabeller kan gjøre det enklere for brukerne å skanne og sammenligne informasjon.   
 
 <Primary />
 <Controls />
 
-## Slik bruker vi table
+## Slik bruker vi Table
 
 ```jsx
 import { Table } from '@digdir/designsystemet-react';
@@ -63,23 +63,17 @@ Bruk tabelloverskrifter til å fortelle brukerne hva som er innholdet i radene o
 Bruk [scope-atributtet](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th#scope) til å hjelpe brukere av hjelpeteknologi til å 
 skille mellom overskriftene på rader og kolonner.  
 
-  <br />
-
 ## Tall i en tabell
 
 Når det er tall i en tabell som skal sammenlignes, plasser tallene til høyre i tabellfeltet.
 
-<br />
-
-## Varianter av table
+## Varianter av Table
 
 Tabeller kan være enkle med få rader og kolonner, eller de kan ha mye innhold med interaktive komponenter som lenker, knapper, 
 avkryssingsbokser og nedtrekkslister. 
 
 Alle tabeller har titler på kolonner og mulighet for å sortere dataene i kolonnen. 
 Tabellen skal kunne vises i den bredden som innholdet krever.   
-
-  <br />
 
 ### Sticky header
 
@@ -114,26 +108,16 @@ Dette hjelper nettleseren til å tegne tabellen raskere, og er nyttig når du ha
 ## Retningslinjer for Table
 
 Vi bruker `Table` når vi skal organisere og vise data på en strukturert måte i rader og kolonner for brukerne.  
-Alt innhold bør være venstrejustert i tabeller, unntatt tall som bør høyrejusteres for at brukerne lett skal kunne sammenligne tallene.  
-
-For å spare plass, kan vi bruke en meny, hvis flere handlinger i en tabellrad ikke må være synlig for brukerne hele tiden. 
-
-I overskiftceller bruker vi `<Table.HeaderCell>`, ikke `<Table.Cell>`. En celle er en overskrift hvis den beskriver 
+Alt innhold bør være venstrejustert i tabeller, unntatt tall som bør høyrejusteres for at brukerne lett skal kunne sammenligne tallene. For å spare plass, kan vi bruke en meny, hvis flere handlinger i en tabellrad ikke må være synlig for brukerne hele tiden. I overskiftceller bruker vi `<Table.HeaderCell>`, ikke `<Table.Cell>`. En celle er en overskrift hvis den beskriver 
 innholdet i cellene under eller ved siden av.
-
-<br />
 
 **Passer til å**
 - gjøre det enkelt for brukerne å sammenligne og skanne informasjon
 - organisere og vise data på en effektiv måte i rekker og kolonner
 
-<br />
-
 **Passer ikke til å** 
 - lage layout for innholdet på nettsiden eller å dele opp innholdet på en side systematisk
 - vise store mengder data på mobil
-
-  <br />
 
 ## Tekst i komponenten
 
@@ -149,13 +133,9 @@ For å gjøre tabellraden lesbar på smale skjermer, skal innholdet normalt vær
 Men hvis raden har en eller flere knapper, bruker vi sentrering.
 Overskrifter kan med fordel gjøres `sticky`, det vil si at de fortsatt blir vist, selv om brukeren ruller nedover i tabellen. 
 
-  <br />
-
 ## Tilgjengelighet
 
 For å sikre at tabeller fungerer optimalt for alle brukere er det viktig å følge disse retningslinjene:
-
-<br />
 
 - **Enkelt celleinnhold:**
   Tabellceller bør ikke slås sammen, og hver celle bør inneholde kun ett interaktivt element. Dette bidrar til at brukerne raskt får oversikt over innholdet og lettere kan sammenligne og skanne informasjonen.
@@ -168,10 +148,7 @@ For å sikre at tabeller fungerer optimalt for alle brukere er det viktig å fø
 - **Tastaturnavigering:**
   Sjekk at du kan velge ulik sortering med tastatur. Test med skjermleser at du hører hva som er sorterbart, typer sortering og at du ikke mister fokus når du endrer sortering.
 - **Tilpasning for mobil:**
-  Det kan være vanskelig å vise tabeller på mobil, siden det ikke finnes et felles design som fungerer i alle sammenhenger.
-  De vanligste alternativene som brukes på mobil er en tabell som ruller horisontalt eller omgjøring til listevisning.
-
-  <br />
+  Det kan være vanskelig å vise tabeller på mobil, siden det ikke finnes et felles design som fungerer i alle sammenhenger. De vanligste alternativene som brukes på mobil er en tabell som ruller horisontalt eller omgjøring til listevisning.
 
 ## `TableHeaderCell` Props
 
