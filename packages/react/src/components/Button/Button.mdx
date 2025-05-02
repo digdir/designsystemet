@@ -112,11 +112,7 @@ I eksempelet under bruker vi proppen `loading` for å vise at knappen laster.
 
 <Canvas of={ButtonStories.Loading} />
 
-I eksempelet over blir `aria-disabled` satt av `loading="true"`. Dette er den anbefalte måten for å vise at en knapp er deaktivert. Da kan den fortsatt få fokus når noen navigerer med tastaturet. Slik vil blant annet skjermlesere og andre hjelpemidler bli informert om at knappen finnes, men ikke er aktiv.
-
-Denne egenskapen stopper ikke automatisk knappen fra å utløse `onClick`.
-
-Pass på at callback-funksjonen ikke kjører når knappen er deaktivert.
+I eksempelet over blir `aria-disabled` satt av `loading="true"`. Dette er den anbefalte måten for å vise at en knapp er deaktivert. Da kan den fortsatt få fokus når noen navigerer med tastaturet. Slik vil blant annet skjermlesere og andre hjelpemidler bli informert om at knappen finnes, men ikke er aktiv. Denne egenskapen stopper ikke automatisk knappen fra å utløse `onClick`. Pass på at callback-funksjonen ikke kjører når knappen er deaktivert.
 
 ## Retningslinjer for Button
 
@@ -150,6 +146,8 @@ Vi unngår deaktiverte (`disabled`) knapper fordi de kan være vanskelige å opp
 
 Vi skal tydelig beskrive handlingene knappene utfører. En knapp kan bare ha en handling, ikke flere.
 
+<br />
+
 <Stack direction="row" style={{
   justifyContent: 'unset',
   alignItems: 'unset'
@@ -168,6 +166,8 @@ Vi skal tydelig beskrive handlingene knappene utfører. En knapp kan bare ha en 
 ### Èn hovedhandling per side
 
 Vi skal holde oss til én primærknapp per side. Hvis det er flere hovedhandlinger kan brukerne bli usikre på hva de skal gjøre.
+
+<br />
 
 <Stack direction="row" style={{
   justifyContent: 'unset',
@@ -188,6 +188,8 @@ Vi skal holde oss til én primærknapp per side. Hvis det er flere hovedhandling
 
 Vi skal holde oss til samme fargevariant for en gruppe knapper.
 
+<br />
+
 <Stack direction="row" style={{
   justifyContent: 'unset',
   alignItems: 'unset'
@@ -206,6 +208,8 @@ Vi skal holde oss til samme fargevariant for en gruppe knapper.
 ### Ett ikon per knapp
 
 Vi skal holde oss til ett ikon per knapp.
+
+<br />
 
 <Stack direction="row" style={{
   justifyContent: 'left',
@@ -244,6 +248,8 @@ Bruk stor forbokstav på det første ordet, som du ville gjort i en setning. Ikk
     image='/img/component-guidelines/button/button-ex5-dont.png'
   />
 </Stack>
+
+<br />
 
 ## CSS Variabler
 
