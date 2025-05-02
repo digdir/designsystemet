@@ -13,7 +13,7 @@ Vi bruker `Checkbox` (avmerkingsboks) for å gi brukerne valg, der de kan velge 
 <Primary />
 <Controls />
 
-## Slik bruker du checkbox
+## Slik bruker du Checkbox
 
 ```tsx
 import { Checkbox } from '@digdir/designsystemet-react';
@@ -31,7 +31,7 @@ import { Checkbox } from '@digdir/designsystemet-react';
 
 ### Kun ett valg
 
-Hvis brukeren skal bekrefte noe, men ikke velge noe, kan en `checkbox` stå alene. For eksempel når brukeren skal samtykke til vilkår.
+Hvis brukeren skal bekrefte noe, men ikke velge noe, kan en `Checkbox` stå alene. For eksempel når brukeren skal samtykke til vilkår.
 
 <Canvas of={CheckboxStories.OneOption} />
 
@@ -45,7 +45,7 @@ Bruk `Fieldset` og `useCheckboxGroup` for gruppering av flere valg.
 
 ### Velge alle alternativer med en overordnet avmerkingsboks
 
-Legg inn `allowIndeterminate: true` i `getCheckboxProps` for å opprette en overordnet avmerkingsboks som både kan velge og fjerne alle alternativer. Dette aktiverer en ekstra tilstand, `indeterminate`, ved siden av `checked` og `unchecked`. Den vises med en horisontal strek og signaliserer at én eller flere avmerkingsbokser er markert i gruppen.
+Legg inn `allowIndeterminate: true` i `getCheckboxProps` for å opprette en overordnet avmerkingsboks som både kan velge og fjerne alle alternativer. Dette aktiverer en ekstra tilstand, `indeterminate`, ved siden av `checked` og `unchecked`. Den vises med en horisontal strek når én eller flere avmerkingsbokser er markert i gruppen. Den vises som en vanlig avmerkingsboks dersom alle i gruppen har samme tilstand.
 
 <Canvas of={CheckboxStories.InTable} />
 
@@ -73,7 +73,7 @@ Felter med `readonly`-attributtet er med i tabrekkefølgen. Brukerne kan kopiere
 
 ### Ikke bruk deaktiverte avmerkingsbokser
 
-Vi unngår deaktiverte (`disabled`) avmerkingsbokser fordi de kan være vanskelige å oppfatte. Noen brukere vil ikke forstå hva avmerkingsboksen sier eller hvorfor den ikke er klikkbar. Hvis en avmerkingsboks eller gruppe med avmerkingsbokser ikke er relevant, bør du helst fjerne valgene fremfor å deaktivere dem. Tilby gjerne brukeren informasjon om hvorfor valgene ikke er tilgjengelig.
+Vi unngår deaktiverte (`disabled`) avmerkingsbokser fordi de kan være vanskelige å oppfatte. Noen brukere vil ikke forstå hva avmerkingsboksen sier eller hvorfor den ikke er klikkbar. Hvis en avmerkingsboks eller gruppe med avmerkingsbokser ikke er relevant, bør du helst fjerne valgene fremfor å deaktivere dem. Tilby gjerne brukeren informasjon om hvorfor valgene ikke er tilgjengelige.
 
 Nav har en god forklaring på [hvorfor deaktiverte tilstander er problematisk](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) og hvilke alternativer som finnes.
 
@@ -107,16 +107,16 @@ se godt nok, er en horisontal liste ekstra vanskelig.
   }}
 >
   <Do
-    description='Plasser checkboxes vertikalt, slik at listen blir lettere å lese. '
+    description='Plasser avmerkingsbokser vertikalt, slik at listen blir lettere å lese. '
     image='/img/component-guidelines/checkbox/CheckboxGroupV.png'
   />
   <Dont
-    description='Du bør unngå å plassere checkboxes i flere kolonner.'
+    description='Du bør unngå å plassere avmerkingsbokser i flere kolonner.'
     image='/img/component-guidelines/checkbox/CheckboxGroupH.png'
   />
 </Stack>
 
-## Tekst i checkbox
+## Tekst i Checkbox
 
 I et skjema er ofte forklaringen formulert som et spørsmål. Vurder om du trenger å ha med informasjon om at brukeren kan velge flere svaralternativer.
 
