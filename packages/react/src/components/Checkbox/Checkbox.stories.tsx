@@ -149,44 +149,6 @@ export const Disabled = {
   render: Group,
 };
 
-export const InTable: StoryFn<UseCheckboxGroupProps> = (args) => {
-  const { getCheckboxProps } = useCheckboxGroup({
-    name: 'my-checkbox',
-    ...args,
-  });
-  return (
-    <Table>
-      <Table.Head>
-        <Table.Row>
-          <Table.HeaderCell>
-            <Checkbox
-              aria-label='Select all'
-              {...getCheckboxProps({
-                allowIndeterminate: true,
-                value: 'all',
-              })}
-            />
-          </Table.HeaderCell>
-          <Table.HeaderCell>Header</Table.HeaderCell>
-        </Table.Row>
-      </Table.Head>
-      <Table.Body>
-        {[1, 2, 3, 4].map((row) => (
-          <Table.Row key={row}>
-            <Table.Cell>
-              <Checkbox
-                aria-label={`Check ${row}`}
-                {...getCheckboxProps(`${row}`)}
-              />
-            </Table.Cell>
-            <Table.Cell>Content</Table.Cell>
-          </Table.Row>
-        ))}
-      </Table.Body>
-    </Table>
-  );
-};
-
 const tableData = [
   {
     id: 1,
@@ -213,6 +175,56 @@ const tableData = [
     telefon: '12345678',
   },
 ];
+
+export const InTable: StoryFn<UseCheckboxGroupProps> = (args, context) => {
+  const { getCheckboxProps } = useCheckboxGroup({
+    name: context.id,
+    value: ['2', '3'],
+    ...args,
+  });
+
+  return (
+    <Table>
+      <colgroup>
+        {/* ensure the first column only takes up the necessary space */}
+        <col style={{ width: '1px' }} />
+        <col />
+        <col />
+      </colgroup>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell>
+            <Checkbox
+              aria-label='Velg alle'
+              {...getCheckboxProps({
+                allowIndeterminate: true,
+                value: 'all',
+              })}
+            />
+          </Table.HeaderCell>
+          <Table.HeaderCell>Navn</Table.HeaderCell>
+          <Table.HeaderCell>E-post</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        {tableData.map((person) => (
+          <Table.Row key={person.id}>
+            <Table.Cell>
+              <Checkbox
+                aria-labelledby={`${context.id}-${person.id}-name`}
+                {...getCheckboxProps(person.id.toString())}
+              />
+            </Table.Cell>
+            <Table.Cell id={`${context.id}-${person.id}-name`}>
+              {person.navn}
+            </Table.Cell>
+            <Table.Cell>{person.epost}</Table.Cell>
+          </Table.Row>
+        ))}
+      </Table.Body>
+    </Table>
+  );
+};
 
 export const Conditional: StoryFn<UseCheckboxGroupProps> = (args) => {
   const { getCheckboxProps, validationMessageProps, value } = useCheckboxGroup({

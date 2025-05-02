@@ -159,9 +159,7 @@ Det skal være mulig å flytte fokus til `Checkbox`, ved å trykke `Tab` på tas
 
 ### Bruk label
 
-`Checkbox` skal alltid ha en `label`. Bruker du `label` fra en annen plass, husk da å bruke `aria-label` eller `aria-labelledby` (Se kode under).
-
-<Canvas of={CheckboxStories.AriaLabel} />
+`Checkbox` skal alltid ha et tilgjengelig navn. I de fleste tilfeller er dette `label`. I spesielle tilfeller kan det gi mening å unnlate `label`, og heller bruke `aria-label` eller `aria-labelledby`. Et eksempel på begge disse aria-attributtene er [bruken av `Checkbox` i tabell](#velge-alle-alternativer-med-en-overordnet-avmerkingsboks) lenger opp.
 
 ## CSS Variabler
 
