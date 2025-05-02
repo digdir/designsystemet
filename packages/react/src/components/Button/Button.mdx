@@ -15,7 +15,7 @@ Knapper lar brukerne utføre handlinger. Vi har variantene `primary`, `secondary
 <Primary />
 <Controls />
 
-## Slik bruker du button
+## Slik bruker du Button
 
 ```tsx
 import { Button } from '@digdir/designsystemet-react';
@@ -23,23 +23,23 @@ import { Button } from '@digdir/designsystemet-react';
 <Button>Trykk på meg!</Button>;
 ```
 
-## Varianter av button
+## Varianter av Button
 
 Vi har forskjellige knapper for å fremheve utvalgte handlinger. `Primary`, `secondary` og `tertiary` bestemmer hvor viktig handlingen er.
 
-### Primary button
+### Primary Button
 
 Vi bruker denne knappen til den handlingen som er viktigst for brukeren, for eksempel Lagre, Neste eller Send inn. Det skal bare være en primærknapp per side.
 
 <Canvas of={ButtonStories.Primary} />
 
-### Secondary button
+### Secondary Button
 
 Vi bruker denne knappen til handlinger som ikke er hovedhandlinger. Den står gjerne sammen med en hovedknapp, så hvis hovedknappen er Lagre, kan sekundærknappen være Avbryt.
 
 <Canvas of={ButtonStories.Secondary} />
 
-### Tertiary button
+### Tertiary Button
 
 Denne knappen bruker vi til nedtonede handlinger. Hvis vi vil bruke den alene, må den ha med et ikon, hvis ikke er det vanskelig å se at det er en knapp.
 
@@ -148,8 +148,6 @@ Vi unngår deaktiverte (`disabled`) knapper fordi de kan være vanskelige å opp
 
 Vi skal tydelig beskrive handlingene knappene utfører. En knapp kan bare ha en handling, ikke flere.
 
-<br />
-
 <Stack direction="row" style={{
   justifyContent: 'unset',
   alignItems: 'unset'
@@ -168,8 +166,6 @@ Vi skal tydelig beskrive handlingene knappene utfører. En knapp kan bare ha en 
 ### Èn hovedhandling per side
 
 Vi skal holde oss til én primærknapp per side. Hvis det er flere hovedhandlinger kan brukerne bli usikre på hva de skal gjøre.
-
-<br />
 
 <Stack direction="row" style={{
   justifyContent: 'unset',
@@ -190,8 +186,6 @@ Vi skal holde oss til én primærknapp per side. Hvis det er flere hovedhandling
 
 Vi skal holde oss til samme fargevariant for en gruppe knapper.
 
-<br />
-
 <Stack direction="row" style={{
   justifyContent: 'unset',
   alignItems: 'unset'
@@ -210,8 +204,6 @@ Vi skal holde oss til samme fargevariant for en gruppe knapper.
 ### Ett ikon per knapp
 
 Vi skal holde oss til ett ikon per knapp.
-
-<br />
 
 <Stack direction="row" style={{
   justifyContent: 'left',
@@ -250,8 +242,6 @@ Bruk stor forbokstav på det første ordet, som du ville gjort i en setning. Ikk
     image='/img/component-guidelines/button/button-ex5-dont.png'
   />
 </Stack>
-
-<br />
 
 ## CSS Variabler
 
