@@ -63,11 +63,15 @@ Bruk `value` på `Checkbox` for å kontrollere verdiene selv.
 
 <Canvas of={CheckboxStories.Controlled} />
 
-### Readonly
+### Skrivebeskyttede avmerkingsbokser
 
-Felter med `readonly`-attributtet er med i tabrekkefølgen. Brukerne kan kopiere innholdet men ikke redigere det. Informasjon blir med når skjemaet sendes inn.
+`Checkbox` støtter `readOnly`-attributtet for å gjøre feltet skrivebeskyttet, og gir en visuell indikasjon
+som skiller seg fra redigerbare felter. Brukerne kan kopiere innholdet men ikke redigere det.
+Selv om de ikke kan redigeres, er felter med `readOnly`-attributtet med i tabrekkefølgen, og informasjon blir
+med når skjemaet sendes inn.
 
-`Readonly`-felter kan være forvirrende for noen brukere. Ikke alle vil skjønne hvorfor de ikke får til å endre innholdet i feltet. Vi anbefaler derfor å unngå readonly så langt det lar seg gjøre.
+Vi unngår `readOnly` så langt det lar seg gjøre, fordi slike felter kan være forvirrende for noen brukere.
+Ikke alle vil skjønne hvorfor de ikke får til å endre innholdet i feltet.
 
 <Canvas of={CheckboxStories.ReadOnly} />
 
