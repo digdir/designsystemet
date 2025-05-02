@@ -111,9 +111,11 @@ Felter med `readonly`-attributtet er med i tabrekkefølgen. Brukerne kan kopiere
 
 <Canvas of={CheckboxStories.ReadOnly} />
 
-#### Disabled
+#### Ikke bruk deaktiverte avmerkingsbokser
 
-Unngå deaktiverte tilstander om du kan. De har lav fargekontrast som er problematisk for noen brukere. `Disabled` kan ikke møte kontrastkravene, for da kan brukeren tro at elementet er aktivt, prøve å trykke på det, og ikke skjønne hvorfor det ikke går.
+Vi unngår deaktiverte (`disabled`) avmerkingsbokser fordi de kan være vanskelige å oppfatte. Noen brukere vil ikke forstå hva avmerkingsboksen sier eller hvorfor den ikke er klikkbar. Hvis en avmerkingsboks eller gruppe med avmerkingsbokser ikke er relevant, bør du helst fjerne valgene fremfor å deaktivere dem. Tilby gjerne brukeren informasjon om hvorfor valgene ikke er tilgjengelig.
+
+Nav har en god forklaring på [hvorfor deaktiverte tilstander er problematisk](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) og hvilke alternativer som finnes.
 
 <Canvas of={CheckboxStories.Disabled} />
 
