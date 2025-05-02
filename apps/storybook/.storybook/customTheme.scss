@@ -2,11 +2,39 @@
   code {
     display: inline;
     border: none;
+    border-radius: var(--ds-border-radius-sm);
+    background: var(--ds-color-neutral-background-tinted);
+  }
+
+  code,
+  kbd {
+    color: var(--ds-color-neutral-text-default);
     font-size: round(down, 0.8em, 0.0625rem);
+
+    // If the kbd element is used for an icon, add data-icon attribute
+    &[data-icon] {
+      font-size: 1.2em;
+      padding: 0 0.3em 2px 0.3em;
+      bottom: 0px;
+    }
   }
 
   :where(h1,h2,h3,h4,h5,h6) code {
     font-weight: var(--ds-font-weight-semibold);
+  }
+
+  kbd {
+    font-family:
+      ui-monospace, Menlo, Monaco, 'Roboto Mono', 'Oxygen Mono',
+      'Ubuntu Monospace', 'Source Code Pro', 'Droid Sans Mono', 'Courier New',
+      monospace;
+    background: var(--ds-color-neutral-background-tinted);
+    padding: var(--ds-size-1);
+    border-radius: var(--ds-border-radius-md);
+    border: solid 1px var(--ds-color-neutral-border-subtle);
+    position: relative;
+    bottom: 2px;
+    box-shadow: 0.5px 1px 0 0 var(--ds-color-border-strong);
   }
 
   a {
