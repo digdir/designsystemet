@@ -112,7 +112,9 @@ I eksempelet under bruker vi proppen `loading` for å vise at knappen laster.
 
 <Canvas of={ButtonStories.Loading} />
 
-I eksempelet over blir `aria-disabled` satt av `loading="true"`. Dette er den anbefalte måten for å vise at en knapp er deaktivert. Da kan den fortsatt få fokus når noen navigerer med tastaturet. Slik vil blant annet skjermlesere og andre hjelpemidler bli informert om at knappen finnes, men ikke er aktiv. Denne egenskapen stopper ikke automatisk knappen fra å utløse `onClick`. Pass på at callback-funksjonen ikke kjører når knappen er deaktivert.
+I eksempelet over blir `aria-disabled` satt av `loading="true"`. Dette er den anbefalte måten for å vise at en knapp er deaktivert. Da kan den fortsatt få fokus når noen navigerer med tastaturet. Slik vil blant annet skjermlesere og andre hjelpemidler bli informert om at knappen finnes, men ikke er aktiv.
+
+Vær oppmerksom på: `loading="true"` eller `aria-disabled` stopper ikke automatisk knappen fra å utløse `onClick`. Du må selv passe på at callback-funksjonen ikke kjører når knappen er deaktivert.
 
 ## Retningslinjer for Button
 
