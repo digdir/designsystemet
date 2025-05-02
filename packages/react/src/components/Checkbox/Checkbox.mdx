@@ -35,61 +35,21 @@ Hvis brukeren skal bekrefte noe, men ikke velge noe, kan en `checkbox` stå alen
 
 <Canvas of={CheckboxStories.OneOption} />
 
-## `Fieldset` og `useCheckboxGroup`
+### Gruppering av flere valg
 
 Bruk `Fieldset` og `useCheckboxGroup` for gruppering av flere valg.
 
 <Canvas of={CheckboxStories.Group} />
 
-Til `useCheckboxGroup` kan du sende inn:
-
-<ArgTypes of={useCheckboxGroupStories.Default} />
-
-I respons får du objektet:
-
-```ts
-{
-  getCheckboxProps: (value: string | { allowIndeterminate: true }) => CheckboxProps, // Returnerer props du kan spre på <Checkbox /> eller <input type="checkbox" />
-  validationMessageProps: ValidationMessageProps, // Properties du kan valgfritt spre på ValidationMessage
-  setValue: string[], // Funksjon for å sette checkbox gruppens verdi
-  value: string[], // Nåværende verdi for checkbox gruppen
-}
-```
-
-Eksempel på bruk:
-
-```tsx
-const { getCheckboxProps, validationMessageProps } = useCheckboxGroup({
-  name: 'my-checkbox-group',
-  value: [''],
-  error: 'Du må velge et alternativ',
-});
-
-return (
-  <Fieldset>
-    <Fieldset.Legend>
-      Skal du reise til noen av disse landene?
-    </Fieldset.Legend>
-    <Fieldset.Description>
-      Velg alle landene du skal innom.
-    </Fieldset.Description>
-    <Checkbox label='Alle' {...getCheckboxProps({ allowIndeterminate: true })} />
-    <Checkbox label='Kroatia' {...getCheckboxProps('kroatia')} />
-    <Checkbox label='Slovakia' {...getCheckboxProps('slovakia')} />
-    <Checkbox label='Hobsyssel' {...getCheckboxProps('hobsyssel')} />
-    <ValidationMessage {...validationMessageProps} />
-  </Fieldset>
-);
-```
+[Les mer om `useCheckboxGroup`](/docs/utilities-usecheckboxgroup--docs)
 
 ### Velge alle alternativer med en overordnet avmerkingsboks
 
 Legg inn `allowIndeterminate: true` i `getCheckboxProps` for å opprette en overordnet avmerkingsboks som både kan velge og fjerne alle alternativer. Dette aktiverer en ekstra tilstand, `indeterminate`, ved siden av `checked` og `unchecked`. Den vises med en horisontal strek og signaliserer at én eller flere avmerkingsbokser er markert i gruppen.
 
-
 <Canvas of={CheckboxStories.InTable} />
 
-#### Feilmelding
+### Vise feilmelding
 
 Bruk `error` på `Fieldset` for å vise feilmelding.
 
@@ -97,13 +57,13 @@ Her må du bruke `Fieldset` for å gjøre innholdet tilgjengelig og aktivere rik
 
 <Canvas of={CheckboxStories.WithError} />
 
-#### Kontrollere Checkbox utenfra
+### Kontrollere Checkbox utenfra
 
 Bruk `value` på `Checkbox` for å kontrollere verdiene selv.
 
 <Canvas of={CheckboxStories.Controlled} />
 
-#### Readonly
+### Readonly
 
 Felter med `readonly`-attributtet er med i tabrekkefølgen. Brukerne kan kopiere innholdet men ikke redigere det. Informasjon blir med når skjemaet sendes inn.
 
@@ -111,7 +71,7 @@ Felter med `readonly`-attributtet er med i tabrekkefølgen. Brukerne kan kopiere
 
 <Canvas of={CheckboxStories.ReadOnly} />
 
-#### Ikke bruk deaktiverte avmerkingsbokser
+### Ikke bruk deaktiverte avmerkingsbokser
 
 Vi unngår deaktiverte (`disabled`) avmerkingsbokser fordi de kan være vanskelige å oppfatte. Noen brukere vil ikke forstå hva avmerkingsboksen sier eller hvorfor den ikke er klikkbar. Hvis en avmerkingsboks eller gruppe med avmerkingsbokser ikke er relevant, bør du helst fjerne valgene fremfor å deaktivere dem. Tilby gjerne brukeren informasjon om hvorfor valgene ikke er tilgjengelig.
 
