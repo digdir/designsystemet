@@ -1,5 +1,5 @@
-import { Container } from '@app/components';
 import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
+import { Container } from '@internal/components';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import NextLink from 'next/link';

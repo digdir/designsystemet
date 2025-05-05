@@ -10,7 +10,7 @@ import cl from 'clsx/lite';
 
 import { Color as ColorPreview } from '../Color/Color';
 
-import { ColorModal } from '@app/components';
+import { ColorModal } from '@internal/components';
 import { Fragment, createRef, useRef } from 'react';
 import { useThemeStore } from '../../store';
 import classes from './Group.module.css';

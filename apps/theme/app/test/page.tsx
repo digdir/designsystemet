@@ -1,5 +1,5 @@
 'use client';
-import { Container } from '@app/components';
+import { Container } from '@internal/components';
 
 import {
   type ThemeInfo,

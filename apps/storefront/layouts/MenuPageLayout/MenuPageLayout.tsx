@@ -1,6 +1,6 @@
 'use client';
-import { Container } from '@app/components';
 import { Heading } from '@digdir/designsystemet-react';
+import { Container } from '@internal/components';
 import { ComponentIcon } from '@navikt/aksel-icons';
 import { Slot } from '@radix-ui/react-slot';
 import cn from 'clsx/lite';

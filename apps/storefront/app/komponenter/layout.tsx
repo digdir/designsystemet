@@ -1,4 +1,4 @@
-import { Container } from '@app/components';
+import { Container } from '@internal/components';
 import { ComponentFillIcon } from '@navikt/aksel-icons';
 
 import {

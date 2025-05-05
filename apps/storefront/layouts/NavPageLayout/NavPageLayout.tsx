@@ -1,4 +1,4 @@
-import { Container } from '@app/components';
+import { Container } from '@internal/components';
 import type * as React from 'react';
 
 import { MdxContent } from '../../components';

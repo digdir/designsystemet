@@ -22,7 +22,7 @@
   "ignore": [
     "@app/www",
     "@app/storybook",
-    "@app/components",
+    "@internal/components",
     "@plugin/figma",
     "theme",
     "storefront"

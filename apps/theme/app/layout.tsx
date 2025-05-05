@@ -4,7 +4,7 @@ import '@digdir/designsystemet-css';
 import '@digdir/designsystemet-theme';
 import 'react-color-palette/css';
 import './globals.css';
-import { Figma, Footer, Github, Header, Slack } from '@app/components';
+import { Figma, Footer, Github, Header, Slack } from '@internal/components';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 
 export const metadata: Metadata = {

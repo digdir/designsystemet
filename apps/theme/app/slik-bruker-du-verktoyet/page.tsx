@@ -1,6 +1,6 @@
 'use client';
-import { Container } from '@app/components';
 import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
+import { Container } from '@internal/components';
 
 import classes from './page.module.css';
 

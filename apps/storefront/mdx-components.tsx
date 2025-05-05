@@ -1,4 +1,3 @@
-import { CodeBlock } from '@app/components';
 import type {
   HeadingProps,
   LinkProps,
@@ -27,6 +26,7 @@ import {
   TableHeaderCell,
   TableRow,
 } from '@digdir/designsystemet-react';
+import { CodeBlock } from '@internal/components';
 import type { MDXComponents } from 'mdx/types';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {

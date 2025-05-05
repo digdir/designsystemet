@@ -1,4 +1,4 @@
-import { Container } from '@app/components';
+import { Container } from '@internal/components';
 import { PencilIcon } from '@navikt/aksel-icons';
 import type { Metadata } from 'next';
 

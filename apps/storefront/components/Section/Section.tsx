@@ -1,5 +1,5 @@
-import { Container } from '@app/components';
 import { Heading } from '@digdir/designsystemet-react';
+import { Container } from '@internal/components';
 import cl from 'clsx/lite';
 import Image from 'next/image';
 import type * as React from 'react';
