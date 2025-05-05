@@ -45,7 +45,7 @@ Bruk `Fieldset` og `useCheckboxGroup` for gruppering av flere valg.
 
 ### Velge alle alternativer med en overordnet Checkbox
 
-Legg inn `allowIndeterminate: true` i `getCheckboxProps` for å opprette en overordnet `Checkbox` som både kan velge og fjerne alle alternativer. Dette aktiverer en ekstra tilstand, `indeterminate`, ved siden av `checked` og `unchecked`. Den vises med en horisontal strek når én eller flere `Checkbox` er markert i gruppen. Den vises som en vanlig `Checkbox` dersom alle i gruppen har samme tilstand.
+Legg inn `allowIndeterminate: true` i `getCheckboxProps` for å opprette en overordnet `Checkbox` som kan velge eller fjerne alle alternativer. Dette aktiverer en ekstra tilstand, `indeterminate`, ved siden av `checked` og `unchecked`. Den vises med en horisontal strek når én eller flere `Checkbox` er markert i gruppen. Den vises som en vanlig `Checkbox` dersom alle i gruppen har samme tilstand.
 
 <Canvas of={CheckboxStories.InTable} />
 
@@ -66,7 +66,7 @@ Bruk `value` på `Checkbox` for å kontrollere verdiene selv.
 ### Skrivebeskyttet Checkbox
 
 `Checkbox` støtter `readOnly`-attributtet for å gjøre feltet skrivebeskyttet, og gir en visuell indikasjon
-som skiller seg fra redigerbare felter. Brukerne kan kopiere innholdet men ikke redigere det.
+som skiller seg fra redigerbare felter.
 Selv om de ikke kan redigeres, er felter med `readOnly`-attributtet med i tabrekkefølgen, og informasjon blir
 med når skjemaet sendes inn.
 
