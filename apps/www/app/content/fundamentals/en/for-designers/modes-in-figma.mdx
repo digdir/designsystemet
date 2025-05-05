@@ -22,6 +22,39 @@ In the [Core UI Kit](https://www.figma.com/community/file/1322138390374166141) y
 
 Below we go through how these work.
 
+### How can you see which mode is selected?
+Designers can easily switch between different modes in Figma and see information about the selected mode. Those in view-only access will not be able to see which mode is selected or its information, such as `Color scheme`, `Theme`, or `Typography`. This information is only available to those with editing access or those using Dev Mode in Figma.
+
+#### How it looks with view-only access:
+Here you can see that information about the selected mode is not visible with view-only access.
+
+<Image
+  src='/img/visningstilgang.png'
+  alt='Screenshot showing how modes appear in Figma for users with view-only access'
+  boxShadow={false}
+/>
+
+#### How it looks with editing access:
+When you have editing access, you can see which mode is selected for the entire design.
+
+<Image
+  src='/img/redigeringstilgang.png'
+  alt='Screenshot showing how modes appear in Figma for users with editing access'
+  boxShadow={false}
+/>
+
+#### How it looks in Dev Mode:
+If a mode is set on an entire frame, it is only visible in Dev Mode when the frame itself is selected.
+Dev Mode only shows which mode is set on the element it is applied to, not further down.
+
+<Image
+  src='/img/dev-mode-hele-frame.png'
+  alt='Screenshot showing how modes appear in Figma in Dev Mode when the entire frame is selected'
+  boxShadow={false}
+  caption='This is how it looks when the entire frame is selected in Dev Mode.'
+/>
+
+
 ## Theme
 In *Theme mode* you select which theme the design should use.
 When you change the theme, the entire design automatically updates, from colors and typography to other design elements, without having to adjust each component manually. This gives you the ability to quickly adapt the design according to the organization's visual identity and specific needs. For some organizations, one theme is sufficient, while others need multiple. The themes shown depend on which themes are set up for your organization. Themes can be built in the [Design System's theme builder](https://theme.designsystemet.no/).

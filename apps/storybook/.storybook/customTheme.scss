@@ -1,0 +1,43 @@
+.sbdocs-content {
+  code {
+    display: inline;
+    border: none;
+    font-size: round(down, 0.8em, 0.0625rem);
+  }
+
+  :where(h1,h2,h3,h4,h5,h6) code {
+    font-weight: var(--ds-font-weight-semibold);
+  }
+
+  a {
+    // Hack to properly render the link underline across regular text and code
+    &:not([data-single-child]) > code {
+      position: relative;
+      margin: 0;
+      padding-left: 0;
+      padding-right: 0;
+      margin-top: 4px;
+
+      &::before,
+      &::after {
+        font-size: 8px;
+        display: inline;
+        content: "\00a0";
+        position: relative;
+      }
+    }
+
+    /* Only use hover for non-touch devices to prevent sticky-hovering */
+    @media (hover: hover) and (pointer: fine) {
+      &:hover > code {
+        color: var(--ds-color-text-default);
+        text-decoration-thickness: 0.125em;
+      }
+    }
+
+    &:active > code {
+      background-color: var(--ds-color-surface-tinted);
+      color: var(--ds-color-text-default);
+    }
+  }
+}

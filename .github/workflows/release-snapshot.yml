@@ -5,8 +5,12 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: 'NPM tag'
+        description: 'npm tag'
+        type: choice
         default: 'next'
+        options:
+          - next
+          - test
 
 jobs:
   snapshot:
@@ -16,7 +20,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/gh-setup
       - name: Build
-        run: yarn build
+        run: pnpm build
       - id: variables
         run: echo "tag=${{ github.event.inputs.tag != '' && github.event.inputs.tag || github.ref_name  }}" >> $GITHUB_OUTPUT
       - name: Creating .npmrc
@@ -28,11 +32,11 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Create Snapshot Release
         run: |
-          yarn run version-packages --snapshot "${{ steps.variables.outputs.tag }}"
+          pnpm run version-packages --snapshot "${{ steps.variables.outputs.tag }}"
           echo '---'
           echo 'Detected Changes:'
           git diff
           echo '---'
-          yarn run publish --tag "${{ steps.variables.outputs.tag }}" --no-git-tag
+          pnpm run publish --tag "${{ steps.variables.outputs.tag }}" --no-git-tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

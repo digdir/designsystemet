@@ -106,11 +106,12 @@ const ImageBanner = ({
           {buttons && (
             <div className={classes.buttons}>
               {buttons.map((item, index) => (
-                /* @ts-ignore */
                 <Button
                   key={index}
                   variant={item.variant ?? 'secondary'}
-                  data-color={item.color ?? 'accent'}
+                  data-color={
+                    (item.color as ButtonProps['data-color']) ?? 'accent'
+                  }
                   asChild
                 >
                   <a href={item.href} className={classes.button}>

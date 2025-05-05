@@ -1,10 +1,10 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "engines": {
-    "node": ">=22.14.0"
+    "node": ">=22.15.0"
   },
   "repository": {
     "type": "git",
@@ -14,9 +14,7 @@
   "license": "MIT",
   "type": "module",
   "main": "./dist/src/index.js",
-  "files": [
-    "./dist/**"
-  ],
+  "files": ["./dist/**"],
   "bin": "dist/bin/designsystemet.js",
   "exports": {
     ".": {
@@ -34,22 +32,23 @@
   },
   "scripts": {
     "designsystemet": "tsx ./bin/designsystemet.ts",
-    "build:tokens": "yarn designsystemet tokens build -p -t ../../design-tokens -o ../../packages/theme/brand --clean",
+    "build:tokens": "pnpm run designsystemet tokens build -p -t ../../design-tokens -o ../../packages/theme/brand --clean",
     "build:tokens:debug": "tsx --inspect-brk ./bin/designsystemet.ts tokens build -p -t ../../design-tokens -o ../../packages/theme/brand --clean",
-    "build": "tsup && yarn build:types && yarn build:json-schema",
+    "build": "tsup && pnpm build:types && pnpm build:json-schema",
     "build:types": "tsc --emitDeclarationOnly --declaration",
     "build:json-schema": "tsx ./src/scripts/createJsonSchema.ts",
     "types": "tsc --noEmit",
-    "test:tokens-create-options": "yarn designsystemet tokens create -m dominant:#007682  -n #003333 -b 99 -o ./test-tokens-create --theme options-test --clean",
-    "test:tokens-create-config": "yarn designsystemet tokens create --config ./test-tokens-create-complex.config.json",
-    "test:tokens-build": "yarn designsystemet tokens build -t ./test-tokens-create -o ./test-tokens-build --clean",
-    "test:tokens-create-and-build-options": "yarn test:tokens-create-options && yarn test:tokens-build",
-    "test:tokens-create-and-build-config": "yarn test:tokens-create-config && yarn test:tokens-build",
-    "test": "yarn test:tokens-create-and-build-options && yarn test:tokens-create-and-build-config",
-    "internal:tokens-create": "yarn designsystemet tokens create --config ./internal.config.json",
+    "test:tokens-create-options": "pnpm run designsystemet tokens create -m dominant:\"#007682\" -n \"#003333\" -b 99 -o ./test-tokens/options --theme options --clean",
+    "test:tokens-create-config": "pnpm run designsystemet tokens create --config ./test/test-tokens.config.json",
+    "test:tokens-build": "pnpm run designsystemet tokens build -t ./test-tokens/options -o ./test-tokens/options-build --clean",
+    "test:tokens-build-config": "pnpm run designsystemet tokens build -t ./test-tokens/config -o ./test-tokens/config-build --clean",
+    "test:tokens-create-and-build-options": "pnpm test:tokens-create-options && pnpm test:tokens-build",
+    "test:tokens-create-and-build-config": "pnpm test:tokens-create-config && pnpm test:tokens-build-config",
+    "test": "pnpm test:tokens-create-and-build-options && pnpm test:tokens-create-and-build-config",
+    "internal:tokens-create": "pnpm run designsystemet tokens create --config ./internal.config.json",
     "update:template": "tsx ./src/scripts/update-template.ts",
-    "update:design-tokens": "yarn internal:tokens-create && tsx ./src/scripts/update-design-tokens.ts",
-    "verify": "yarn test && yarn update:template && yarn update:design-tokens"
+    "update:design-tokens": "pnpm internal:tokens-create && tsx ./src/scripts/update-design-tokens.ts",
+    "verify": "pnpm test && pnpm update:template && pnpm update:design-tokens"
   },
   "dependencies": {
     "@commander-js/extra-typings": "^13.1.0",
@@ -69,6 +68,7 @@
     "zod-validation-error": "^3.4.0"
   },
   "devDependencies": {
+    "@tokens-studio/types": "0.5.2",
     "@types/apca-w3": "^0.1.3",
     "@types/chroma-js": "^3.1.1",
     "@types/fs-extra": "^11.0.4",

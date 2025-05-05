@@ -3,6 +3,7 @@
   "compilerOptions": {
     "types": ["../../packages/theme/brand/colors.d.ts"]
   },
+  "files": ["./.storybook/componentOverrides.module.scss"],
   "include": [
     ".",
     "./.storybook/**/*",

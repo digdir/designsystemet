@@ -8,8 +8,6 @@ on:
   workflow_dispatch:
   pull_request:
     types: [opened, synchronize]
-    branches-ignore:
-      - main
     paths:
       - 'apps/theme/**'
 jobs:
@@ -17,18 +15,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Use node 22 and yarn cache
+      - uses: pnpm/action-setup@v4.1.0
+      - name: Use node 22 and pnpm cache
         uses: actions/setup-node@v4
         with:
-          node-version: '22.14.0'
-          cache: 'yarn'
+          node-version-file: 'package.json'
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: yarn build
+        run: pnpm build
 
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
