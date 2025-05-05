@@ -4,6 +4,7 @@ import chalk from 'chalk';
 import * as R from 'ramda';
 import { mkdir, readFile, writeFile } from '../../utils.js';
 import type { Theme, TokenSets } from '../types.js';
+import { generate$Designsystemet } from './generators/$designsystemet.js';
 import { generate$Metadata } from './generators/$metadata.js';
 import { generate$Themes } from './generators/$themes.js';
 
@@ -27,6 +28,7 @@ export const writeTokens = async (options: WriteTokensOptions) => {
   const targetDir = path.resolve(process.cwd(), String(outDir));
   const $themesPath = path.join(targetDir, '$themes.json');
   const $metadataPath = path.join(targetDir, '$metadata.json');
+  const $designsystemetPath = path.join(targetDir, '$designsystemet.json');
   let themeObjects: ThemeObject[] = [];
 
   await mkdir(targetDir, dry);
@@ -49,14 +51,16 @@ export const writeTokens = async (options: WriteTokensOptions) => {
 
   const themes = concatThemeNames(themeObjects);
 
-  console.log(`Themes: ${chalk.blue(themes.join(', '))}`);
+  console.log(`\nThemes: ${chalk.blue(themes.join(', '))}`);
 
   // Create metadata and themes json for Token Studio and build script
   const $themes = await generate$Themes(['dark', 'light'], themes, colors);
   const $metadata = generate$Metadata(['dark', 'light'], themes, colors);
+  const $designsystemet = generate$Designsystemet();
 
   await writeFile($themesPath, stringify($themes), dry);
   await writeFile($metadataPath, stringify($metadata), dry);
+  await writeFile($designsystemetPath, stringify($designsystemet), dry);
 
   for (const [set, tokens] of tokenSets) {
     // Remove last part of the path to get the directory

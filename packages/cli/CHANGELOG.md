@@ -1,5 +1,33 @@
 # Change Log
 
+## 1.0.5
+
+### Patch Changes
+
+- Fix empty theme file being built when no `support-color` were defined ([#3511](https://github.com/digdir/designsystemet/pull/3511))
+
+- Add design-token version to metadata in built theme file ([#3510](https://github.com/digdir/designsystemet/pull/3510))
+
+## 1.0.4
+
+### Patch Changes
+
+- Remove incomplete `react-beta-to-v1` migration. ([#3495](https://github.com/digdir/designsystemet/pull/3495))
+
+- Improved `tokens build` console log and when files are written to disk ([#3338](https://github.com/digdir/designsystemet/pull/3338))
+
+- Updated metadata in theme file ([#3479](https://github.com/digdir/designsystemet/pull/3479))
+
+- Add file (`$designsystemet.json`) with metadata for `tokens create` ([#3498](https://github.com/digdir/designsystemet/pull/3498))
+
+- Refactored `tokens build` and `create` code to support future features ([#3338](https://github.com/digdir/designsystemet/pull/3338))
+
+- Updated non-major dependencies ([#3351](https://github.com/digdir/designsystemet/pull/3351))
+
+- Remove individual theme CSS files from `tokens build`. ([#3475](https://github.com/digdir/designsystemet/pull/3475))
+
+- `tokens build` should no longer pick up unwanted CSS files when making single theme file ([#3338](https://github.com/digdir/designsystemet/pull/3338))
+
 ## 1.0.3
 
 ### Patch Changes
@@ -78,7 +106,7 @@
 - c25920a: Add JSON schema for CLI config file, which enables editor hints. To use it, do something like this:
   ```jsonc
   {
-    "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json"
+    "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
     // ...config options here...
   }
   ```
@@ -255,7 +283,7 @@
 
   ```jsonc
   {
-    "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json"
+    "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
     // ...config options here...
   }
   ```

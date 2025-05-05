@@ -1,6 +1,7 @@
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { type ReactNode, forwardRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { ContentContainer } from '../content-container/content-container';
 import { RRLink } from '../link';
@@ -23,13 +24,15 @@ const getCurrentYear = () => {
 };
 
 const LinkList = (links: LinkListItemProps[]) => {
+  const { t } = useTranslation();
+
   return (
     <ul className={classes.links}>
       {links.map((item, index) => (
         <li key={index}>
           <RRLink data-color='neutral' className={classes.link} to={item.url}>
             {item.prefix}
-            {item.text}
+            {t(item.text)}
           </RRLink>
         </li>
       ))}
@@ -45,6 +48,8 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
   { centerLinks, rightLinks, className, ...rest },
   ref,
 ) {
+  const { t } = useTranslation();
+
   return (
     <footer
       ref={ref}
@@ -56,7 +61,7 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
         <ContentContainer className={classes.container}>
           <div>
             <Heading data-size='xs' level={2} className={classes.title}>
-              Lages på tvers av offentlige etater:
+              {t('footer.agencies.title')}
             </Heading>
             <div className={classes.logos}>
               <Digdir />
@@ -75,19 +80,19 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
                 href='mailto:designsystem@digdir.no'
                 className={classes.button}
               >
-                Din etat? Ta kontakt!
+                {t('footer.agencies.contact')}
               </a>
             </Button>
           </div>
           <div>
             <Heading data-size='xs' level={2} className={classes.title}>
-              Om nettstedet
+              {t('footer.about-site')}
             </Heading>
             {LinkList(centerLinks)}
           </div>
           <div>
             <Heading data-size='xs' level={2} className={classes.title}>
-              Kom i kontakt med oss
+              {t('footer.contact-us')}
             </Heading>
             {LinkList(rightLinks)}
           </div>
@@ -96,7 +101,7 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
       <div className={classes.bottom}>
         <ContentContainer>
           <Paragraph data-size='sm'>
-            © {getCurrentYear()} Designsystemet
+            © {getCurrentYear()} {t('footer.copyright')}
           </Paragraph>
         </ContentContainer>
       </div>

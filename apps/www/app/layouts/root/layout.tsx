@@ -1,33 +1,16 @@
 import { SkipLink } from '@digdir/designsystemet-react';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
-import { Outlet, isRouteErrorResponse } from 'react-router';
+import { useTranslation } from 'react-i18next';
+import { Outlet, isRouteErrorResponse, useRouteLoaderData } from 'react-router';
+import { ContentContainer } from '~/_components/content-container/content-container';
+import { Error404 } from '~/_components/errors/error-404';
 import { Footer } from '~/_components/footer/footer';
 import { Header } from '~/_components/header/header';
 import { Figma } from '~/_components/logos/figma';
 import { Github } from '~/_components/logos/github';
 import { Slack } from '~/_components/logos/slack';
 import type { Route } from './+types/layout';
-
-export const loader = ({ params: { lang } }: Route.LoaderArgs) => {
-  return {
-    lang,
-  };
-};
-
-const centerLinks = [
-  {
-    text: 'Om designsystemet',
-    url: 'https://designsystemet.no/grunnleggende/introduksjon/om-designsystemet',
-  },
-  {
-    text: 'Personvernerklæring',
-    url: 'https://designsystemet.no/grunnleggende/personvernerklaering',
-  },
-  {
-    text: 'Tilgjengelighetserklæring',
-    url: 'https://uustatus.no/nb/erklaringer/publisert/faeb324d-9b3f-40b0-b715-92cac356a916',
-  },
-];
+import type { Route as RootRoute } from './../../+types/root';
 
 const rightLinks = [
   {
@@ -36,8 +19,8 @@ const rightLinks = [
     prefix: <EnvelopeClosedIcon aria-hidden='true' fontSize='1.5em' />,
   },
   {
-    text: 'Bli invitert til slack',
-    url: 'https://designsystemet.no/slack',
+    text: 'footer.slack',
+    url: '/slack',
     prefix: <Slack />,
   },
   {
@@ -52,38 +35,15 @@ const rightLinks = [
   },
 ];
 
-export default function RootLayout({
-  loaderData: { lang },
-}: Route.ComponentProps) {
-  const menu = [
-    {
-      name: 'Grunnleggende',
-      href: `/${lang}/grunnleggende`,
-    },
-    {
-      name: 'God praksis',
-      href: `/${lang}/god-praksis`,
-    },
-    {
-      name: 'Mønstre',
-      href: `/${lang}/monstre`,
-    },
-    {
-      name: 'Bloggen',
-      href: `/${lang}/bloggen`,
-    },
-    {
-      name: 'Komponenter',
-      href: `/${lang}/komponenter`,
-    },
-    {
-      name: 'Temabygger',
-      href: 'https://theme.designsystemet.no',
-    },
-  ];
+export default function RootLayout() {
+  const { t } = useTranslation();
+  const { lang, centerLinks, menu } = useRouteLoaderData(
+    'root',
+  ) as RootRoute.ComponentProps['loaderData'];
+
   return (
     <>
-      <SkipLink href='#main'>Hopp til hovedinnhold</SkipLink>
+      <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
       <Header menu={menu} logoLink={`/${lang}`} themeSwitcher />
       <main id='main'>
         <Outlet />
@@ -93,33 +53,82 @@ export default function RootLayout({
   );
 }
 
+type ErrorWrapperRootProps = {
+  children: React.ReactNode;
+  lang: string;
+  menu: {
+    name: string;
+    href: string;
+  }[];
+  centerLinks: {
+    text: string;
+    url: string;
+  }[];
+  rightLinks: {
+    text: string;
+    url: string;
+    prefix?: React.ReactNode;
+  }[];
+};
+
+const ErrorWrapperRoot = ({
+  children,
+  lang,
+  menu,
+  centerLinks,
+  rightLinks,
+}: ErrorWrapperRootProps) => {
+  const { t } = useTranslation();
+
+  return (
+    <>
+      <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
+      <Header menu={menu} logoLink={`/${lang}`} themeSwitcher />
+      <main id='main'>
+        <ContentContainer>{children}</ContentContainer>
+      </main>
+      <Footer centerLinks={centerLinks} rightLinks={rightLinks} />
+    </>
+  );
+};
+
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = 'Oops!';
-  let details = 'An unexpected error occurred.';
+  const { t } = useTranslation();
+  const message = t('errors.default.title');
+  let details = t('errors.default.details');
   let stack: string | undefined;
 
-  console.log(error);
+  const loaderData = useRouteLoaderData(
+    'root',
+  ) as RootRoute.ComponentProps['loaderData'];
+
+  if (!loaderData) {
+    return <Error404 />;
+  }
 
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? '404' : 'Error';
-    details =
-      error.status === 404
-        ? 'The requested page could not be found.!'
-        : error.statusText || details;
+    if (error.status === 404) {
+      return <Error404 />;
+    }
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;
     stack = error.stack;
   }
 
   return (
-    <main className='pt-16 p-4 container mx-auto'>
+    <ErrorWrapperRoot
+      lang={loaderData.lang}
+      menu={loaderData.menu}
+      centerLinks={loaderData.centerLinks}
+      rightLinks={[]}
+    >
       <h1>{message}</h1>
       <p>{details}</p>
       {stack && (
-        <pre className='w-full p-4 overflow-x-auto'>
+        <pre>
           <code>{stack}</code>
         </pre>
       )}
-    </main>
+    </ErrorWrapperRoot>
   );
 }

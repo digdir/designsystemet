@@ -7,7 +7,7 @@ const TARGET = path.join(DIRNAME, '../../../../design-tokens');
 const INTERNAL = path.join(DIRNAME, '../../internal/design-tokens');
 
 async function updateDesignTokens() {
-  console.log('📁 Copying design tokens');
+  console.log('\n📁 Copying design tokens');
   await cp(path.join(INTERNAL, 'primitives/modes/color-scheme'), path.join(TARGET, 'primitives/modes/color-scheme'));
 
   await cp(path.join(INTERNAL, 'primitives/modes/size'), path.join(TARGET, 'primitives/modes/size'));
@@ -28,6 +28,7 @@ async function updateDesignTokens() {
   await cp(path.join(INTERNAL, 'semantic'), path.join(TARGET, 'semantic'));
 
   await cp(path.join(INTERNAL, 'themes'), path.join(TARGET, 'themes'));
+  await cp(path.join(INTERNAL, '$designsystemet.json'), path.join(TARGET, '$designsystemet.json'));
 
   console.log('✅ Finished copying design tokens');
 }

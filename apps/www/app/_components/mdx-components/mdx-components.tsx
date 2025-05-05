@@ -14,11 +14,13 @@ import {
 } from '@digdir/designsystemet-react';
 import { getMDXComponent } from 'mdx-bundler/dist/client';
 import { type JSX, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link as RRLink } from 'react-router';
+import { CodeBlock } from '~/_components/code-block/code-block';
 import { Contributors } from '~/_components/contributors/contributors';
 import { Image } from '~/_components/image/image';
-import { CodeBlock } from '../code-block/code-block';
-import { ResponsiveIframe } from '../responsive-iframe/responsive-iframe';
+import { ResponsiveIframe } from '~/_components/responsive-iframe/responsive-iframe';
+import { TokenList } from '~/_components/tokens-comp/token-list/token-list';
 import classes from './mdx-components.module.css';
 
 const defaultComponents = {
@@ -49,6 +51,7 @@ const defaultComponents = {
   Image,
   ResponsiveIframe,
   Contributors,
+  TokenList,
   p: (props: ParagraphProps) => <Paragraph {...props} />,
   Link: ({ href, ...props }: JSX.IntrinsicElements['a']) => (
     <Link {...props} asChild>
@@ -85,6 +88,7 @@ export const MDXComponents = ({
   };
   code?: string;
 }) => {
+  const { t } = useTranslation();
   const Component = useMemo(() => {
     if (!code) return null;
     return getMDXComponent(code);
@@ -94,14 +98,13 @@ export const MDXComponents = ({
     <>
       {Component ? (
         <Component
-          /* @ts-ignore TODO fix type error */
           components={{
             ...defaultComponents,
             ...components,
           }}
         />
       ) : (
-        'Kunne ikkje laste innhold'
+        t('mdx.error.loading')
       )}
     </>
   );

@@ -200,7 +200,6 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       <Component
         className={cl('ds-popover', className)}
         id={id || popoverId}
-        // @ts-ignore @types/react-dom does not understand popover yet
         popover='manual'
         data-variant={variant}
         ref={mergedRefs}

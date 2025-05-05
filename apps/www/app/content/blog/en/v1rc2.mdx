@@ -1,0 +1,52 @@
+---
+title: What's Happening with V1?
+description: A Release Candidate of V1 was released before summer. Since then, we have received several valuable pieces of feedback from our users.
+date: 2024-08-28
+author: Designsystemet
+imageSrc: /img/blog/v1rc2.png
+imageAlt: Illustration of Design System V1 and question marks around it
+imageCaption: The Design System needs some final adjustments before a full release of V1.
+---
+
+As many of you know, we have been working hard to develop a design system that will work for several different organizations. The goal has always been to create a robust and comprehensive system that is flexible and future-oriented. After launching the "V1 Release Candidate," we have received valuable feedback from those of you who have tested the system. Based on this insight, we have reached a crossroads that requires us to make some important decisions.
+
+One of the most central questions we face is how to structure the launch of V1. We now have a fully functional React package, which many of you have begun to use in various solutions. This is a major milestone for us, and we have received positive feedback that the developer experience with the React components is good. At the same time, we have also received clear signals that many of you need a framework-independent solution, initially with an independent CSS package. A good CSS framework will not only strengthen the React package, but it will also ensure a more holistic approach to how we build interfaces across different technologies.
+
+## Potential Changes and "Breaking Changes"
+We have identified that the work of developing a solid CSS framework will affect the existing React components. This may even require some changes to the component API. The last thing we want is to impose frequent and unnecessary "breaking changes" on you in the system. Therefore, we are now considering whether it would be better to collect these changes and implement them together in V1, thereby reducing the risk of breaking changes after launch. However, this requires that we take a bit more time to finalize the React and CSS packages as a whole.
+
+<Image
+  src='/img/blog/v1-flyt.png'
+  alt="Flow illustration of the Design System's products and tools."
+  caption='The Design System today consists of several products, including Theme Builder, Design tokens, Figma library, CSS framework, React library, Theme package, and CLI (Command line tool). All these parts of the system should work seamlessly together and provide a coherent experience for users.'
+  boxShadow={false}
+  
+/>
+
+
+## Why Postponement May Be the Right Choice
+Postponing a launch is never an easy decision, but in this case, we believe it may be the right choice. By postponing the launch, we get time to ensure that the Design System includes both the React components and the CSS framework. This gives us the opportunity to deliver a more complete product, which encompasses more agencies and use cases, avoids potentially unnecessary rewrites for you, and will be more user-friendly and easier to maintain in the long run.
+
+We understand that many of you are looking forward to the V1 launch, and we greatly appreciate your patience. We believe that this postponement will result in a better product that will benefit all our users in the long term. We want to keep you updated with regular updates and open communication throughout the process, and we look forward to sharing an even better design system with you soon!
+
+## Your Feedback Is Important
+In working to build a design system that will work for many different organizations, we are completely dependent on feedback from those of you who actually use the system in practice. To ensure that the new system is well-tested and ready for launch, we encourage as many as possible to test the latest changes that are published in our `next` branch (`@next`). There, you will find the latest updates and new features that we are considering including in the final launch of V1. [See the latest current next versions here](https://github.com/digdir/designsystemet/releases).
+
+If you have feedback, it would be great if you share it in the [#Designsystemet channel on Slack](https://designsystemet.no/slack), create [issues on Github](https://github.com/digdir/designsystemet/issues/new/choose), or send us an [email](mailto:designsystem@digdir.no).
+
+Your effort and input are absolutely crucial for us to be able to deliver a design system that works optimally for everyone.
+
+Thank you for being with us on this journey – together we can create something truly valuable!
+
+<Contributors
+  authors={[
+    'Marianne Røsvik',
+    'Michael Marszalek',
+    'Lasse Straum',
+    'Eirik Backer',
+    'Øyvind Thune',
+    'Tobias Barsnes',
+  ]}
+/>
+
+<br/>

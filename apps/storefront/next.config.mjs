@@ -14,6 +14,13 @@ const nextConfig = {
     locales: ['no'],
     defaultLocale: 'no',
   },
+  transpilePackages: [
+    '@digdir/designsystemet-react',
+    '@digdir/designsystemet',
+    '@digdir/designsystemet-css',
+    '@digdir/designsystemet-theme',
+    '@repo/components',
+  ],
 };
 
 const withMDX = createMDX({
