@@ -8,7 +8,7 @@ import * as useCheckboxGroupStories from '../../utilities/hooks/useCheckboxGroup
 
 # Checkbox
 
-Vi bruker `Checkbox` (avmerkingsboks) for å gi brukerne valg, der de kan velge ett eller flere alternativer. Brukerne kan både velge og oppheve valgene de gjør. Bruk [`Fieldset`](#fieldset) til å gruppere flere valg.
+Vi bruker `Checkbox` for å gi brukerne valg, der de kan velge ett eller flere alternativer. Brukerne kan både velge og oppheve valgene de gjør. Bruk [`Fieldset`](#fieldset) til å gruppere flere valg.
 
 <Primary />
 <Controls />
@@ -43,9 +43,9 @@ Bruk `Fieldset` og `useCheckboxGroup` for gruppering av flere valg.
 
 [Les mer om `useCheckboxGroup`](/docs/utilities-usecheckboxgroup--docs)
 
-### Velge alle alternativer med en overordnet avmerkingsboks
+### Velge alle alternativer med en overordnet Checkbox
 
-Legg inn `allowIndeterminate: true` i `getCheckboxProps` for å opprette en overordnet avmerkingsboks som både kan velge og fjerne alle alternativer. Dette aktiverer en ekstra tilstand, `indeterminate`, ved siden av `checked` og `unchecked`. Den vises med en horisontal strek når én eller flere avmerkingsbokser er markert i gruppen. Den vises som en vanlig avmerkingsboks dersom alle i gruppen har samme tilstand.
+Legg inn `allowIndeterminate: true` i `getCheckboxProps` for å opprette en overordnet `Checkbox` som både kan velge og fjerne alle alternativer. Dette aktiverer en ekstra tilstand, `indeterminate`, ved siden av `checked` og `unchecked`. Den vises med en horisontal strek når én eller flere `Checkbox` er markert i gruppen. Den vises som en vanlig `Checkbox` dersom alle i gruppen har samme tilstand.
 
 <Canvas of={CheckboxStories.InTable} />
 
@@ -63,7 +63,7 @@ Bruk `value` på `Checkbox` for å kontrollere verdiene selv.
 
 <Canvas of={CheckboxStories.Controlled} />
 
-### Skrivebeskyttede avmerkingsbokser
+### Skrivebeskyttet Checkbox
 
 `Checkbox` støtter `readOnly`-attributtet for å gjøre feltet skrivebeskyttet, og gir en visuell indikasjon
 som skiller seg fra redigerbare felter. Brukerne kan kopiere innholdet men ikke redigere det.
@@ -75,9 +75,9 @@ Ikke alle vil skjønne hvorfor de ikke får til å endre innholdet i feltet.
 
 <Canvas of={CheckboxStories.ReadOnly} />
 
-### Ikke bruk deaktiverte avmerkingsbokser
+### Ikke bruk deaktivert Checkbox
 
-Vi unngår deaktiverte (`disabled`) avmerkingsbokser fordi de kan være vanskelige å oppfatte. Noen brukere vil ikke forstå hva avmerkingsboksen sier eller hvorfor den ikke er klikkbar. Hvis en avmerkingsboks eller gruppe med avmerkingsbokser ikke er relevant, bør du helst fjerne valgene fremfor å deaktivere dem. Tilby gjerne brukeren informasjon om hvorfor valgene ikke er tilgjengelige.
+Vi bør unngå at `Checkbox` er deaktivert (`disabled`) fordi det kan være vanskelig å oppfatte. Noen brukere vil ikke forstå hva valget sier eller hvorfor det ikke er klikkbart. Hvis en `Checkbox` eller gruppe med `Checkbox` ikke er relevant, bør du helst fjerne valgene fremfor å deaktivere dem. Tilby gjerne brukeren informasjon om hvorfor valgene ikke er tilgjengelige.
 
 Nav har en god forklaring på [hvorfor deaktiverte tilstander er problematisk](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) og hvilke alternativer som finnes.
 
@@ -111,11 +111,11 @@ se godt nok, er en horisontal liste ekstra vanskelig.
   }}
 >
   <Do
-    description='Plasser avmerkingsbokser vertikalt, slik at listen blir lettere å lese. '
+    description='Plasser `Checkbox` vertikalt, slik at listen blir lettere å lese. '
     image='/img/component-guidelines/checkbox/CheckboxGroupV.png'
   />
   <Dont
-    description='Du bør unngå å plassere avmerkingsbokser i flere kolonner.'
+    description='Du bør unngå å plassere `Checkbox` i flere kolonner.'
     image='/img/component-guidelines/checkbox/CheckboxGroupH.png'
   />
 </Stack>
@@ -134,7 +134,7 @@ er en setning, kan du skrive den i du-form og svaralternativene (`label`) i jeg-
 
 <img
   src='/img/component-guidelines/checkbox/checkbox-anatomy.png'
-  alt='Illustrasjonen viser hva som er legend, description og label i en gruppe med avmerkingsbokser.'
+  alt='Illustrasjonen viser hva som er legend, description og label i en gruppe med flere `Checkbox`.'
 />
 
 ### Lag logisk sammenheng mellom forklaringen og svaralternativene
@@ -163,7 +163,7 @@ Det skal være mulig å flytte fokus til `Checkbox`, ved å trykke `Tab` på tas
 
 ### Bruk label
 
-`Checkbox` skal alltid ha et tilgjengelig navn. I de fleste tilfeller er dette `label`. I spesielle tilfeller kan det gi mening å unnlate `label`, og heller bruke `aria-label` eller `aria-labelledby`. Et eksempel på begge disse aria-attributtene er [bruken av `Checkbox` i tabell](#velge-alle-alternativer-med-en-overordnet-avmerkingsboks) lenger opp.
+`Checkbox` skal alltid ha et tilgjengelig navn. I de fleste tilfeller er dette `label`. I spesielle tilfeller kan det gi mening å unnlate `label`, og heller bruke `aria-label` eller `aria-labelledby`. Et eksempel på begge disse aria-attributtene er [bruken av `Checkbox` i tabell](#velge-alle-alternativer-med-en-overordnet-checkbox) lenger opp.
 
 ## CSS Variabler
 
