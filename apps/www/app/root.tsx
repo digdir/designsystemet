@@ -3,7 +3,6 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration,
   isRouteErrorResponse,
   redirect,
 } from 'react-router';
@@ -124,7 +123,8 @@ export default function Root({ loaderData: { lang } }: Route.ComponentProps) {
           site.
         </noscript>
         <Outlet />
-        <ScrollRestoration />
+        {/* We need a consent modal if we want this */}
+        {/* <ScrollRestoration /> */}
         <Scripts />
       </body>
     </html>
