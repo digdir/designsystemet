@@ -20,8 +20,8 @@
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "ignore": [
-    "@app/www",
-    "@app/storybook",
+    "@web/www",
+    "@web/storybook",
     "@internal/components",
     "@plugin/figma",
     "theme",

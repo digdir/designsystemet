@@ -1,5 +1,5 @@
 {
-  "name": "@app/www",
+  "name": "@web/www",
   "version": "0.0.0",
   "private": true,
   "engines": {
