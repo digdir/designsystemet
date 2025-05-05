@@ -118,6 +118,11 @@ export default function Root({ loaderData: { lang } }: Route.ComponentProps) {
         <Links />
       </head>
       <body>
+        <noscript>
+          You need to enable JavaScript to run this app. If you are using a
+          browser extension to block JavaScript, please disable it for this
+          site.
+        </noscript>
         <Outlet />
         <ScrollRestoration />
         <Scripts />

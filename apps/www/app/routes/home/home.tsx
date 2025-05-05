@@ -174,12 +174,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
         fallbackImgAlt={t('frontpage.theme-section.fallbackImgAlt')}
       />
 
-      <Section
-        title={t('frontpage.latest-news.title')}
-        style={{
-          gridTemplateColumns: 'repeat(3, minmax(min(100%, 320px), 1fr))',
-        }}
-      >
+      <Section title={t('frontpage.latest-news.title')}>
         {posts.map((post) => (
           <BlogCard
             key={post.url}
