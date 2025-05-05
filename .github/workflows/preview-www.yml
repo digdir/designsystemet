@@ -9,7 +9,7 @@ on:
   pull_request:
     types: [opened, synchronize]
     paths:
-      - 'apps/www/**'
+      - 'web/www/**'
 jobs:
   Deploy-Preview:
     runs-on: ubuntu-latest

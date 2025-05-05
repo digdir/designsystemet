@@ -15,7 +15,7 @@ on:
     paths:
       - .github/workflows/visual-tests.yml
       - 'packages/**'
-      - 'apps/storybook/**'
+      - 'web/storybook/**'
   push:
     branches: [main, next]
 
@@ -37,7 +37,7 @@ jobs:
       - name: Run Chromatic (visual and interaction tests)
         uses: chromaui/action@latest
         with:
-          workingDir: apps/storybook
+          workingDir: web/storybook
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           exitZeroOnChanges: true
           autoAcceptChanges: '{main,next}'

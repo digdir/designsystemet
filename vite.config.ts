@@ -12,9 +12,9 @@ export default defineConfig({
     alias: {
       '@doc-components': path.resolve(
         dirname,
-        './apps/storybook/docs-components',
+        './web/storybook/docs-components',
       ),
-      '@assets': path.resolve(dirname, './apps/storybook/assets'),
+      '@assets': path.resolve(dirname, './web/storybook/assets'),
     },
   },
   plugins: [react()],

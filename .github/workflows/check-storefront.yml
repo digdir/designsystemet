@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
-      - 'apps/storefront/**'
+      - 'web/storefront/**'
 jobs:
   checks:
     name: Build & test

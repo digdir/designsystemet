@@ -45,4 +45,4 @@ packages/cli/internal
 
 # React Router
 .react-router
-apps/www/build
+web/www/build

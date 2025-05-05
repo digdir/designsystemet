@@ -109,7 +109,7 @@ const buildConfigs = {
   //   name: 'Storefront preview tokens',
   //   getConfig: configs.typescriptTokens,
   //   dimensions: ['color-scheme'],
-  //   options: { outPath: path.resolve('../../apps/storefront/tokens') },
+  //   options: { outPath: path.resolve('../../web/storefront/tokens') },
   //   enabled: () => buildOptions?.preview ?? false,
   // },
 } satisfies Record<string, BuildConfig>;

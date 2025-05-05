@@ -17,7 +17,7 @@ on:
       - next
       - main
     paths:
-      - 'apps/storefront/**'
+      - 'web/storefront/**'
 jobs:
   Deploy-Production:
     runs-on: ubuntu-latest

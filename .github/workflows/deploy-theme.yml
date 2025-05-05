@@ -17,7 +17,7 @@ on:
       - next
       - main
     paths:
-      - 'apps/theme/**'
+      - 'web/theme/**'
 jobs:
   Deploy-Production:
     runs-on: ubuntu-latest

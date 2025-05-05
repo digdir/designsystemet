@@ -18,8 +18,8 @@
       ".github/**",
       ".changeset/**",
       "design-tokens/**/*",
-      "apps/storefront/tokens/**",
-      "apps/www/app/tokens/**",
+      "web/storefront/tokens/**",
+      "web/www/app/tokens/**",
       "**/dist/**/*",
       "packages/theme/**/*.css",
       "**/tsconfig.*.json", // https://github.com/biomejs/biome/issues/1151
@@ -106,9 +106,9 @@
     {
       "include": [
         "**/internal/components/**",
-        "**/apps/storefront/**",
-        "**/apps/theme/**",
-        "**/apps/www/**"
+        "**/web/storefront/**",
+        "**/web/theme/**",
+        "**/web/www/**"
       ],
       "linter": {
         "rules": {
