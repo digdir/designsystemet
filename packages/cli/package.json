@@ -14,9 +14,7 @@
   "license": "MIT",
   "type": "module",
   "main": "./dist/src/index.js",
-  "files": [
-    "./dist/**"
-  ],
+  "files": ["./dist/**"],
   "bin": "dist/bin/designsystemet.js",
   "exports": {
     ".": {
