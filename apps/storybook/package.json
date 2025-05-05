@@ -1,6 +1,6 @@
 {
-  "name": "@designsystemet/storybook",
-  "version": "0.1.0",
+  "name": "@app/storybook",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "storybook dev -p 6006",
@@ -22,7 +22,7 @@
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
     "@navikt/aksel-icons": "^7.18.0",
-    "@repo/components": "workspace:^",
+    "@app/components": "workspace:^",
     "@storybook/addon-a11y": "^8.6.12",
     "@storybook/addon-essentials": "^8.6.12",
     "@storybook/addon-links": "^8.6.12",

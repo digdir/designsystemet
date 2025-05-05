@@ -1,6 +1,6 @@
+import { Container } from '@app/components';
 import { Heading } from '@digdir/designsystemet-react';
 import { ComponentIcon, PaletteIcon, WrenchIcon } from '@navikt/aksel-icons';
-import { Container } from '@repo/components';
 import cn from 'clsx/lite';
 import type React from 'react';
 

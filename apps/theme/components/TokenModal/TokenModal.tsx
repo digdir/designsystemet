@@ -1,5 +1,6 @@
 'use client';
 
+import { CodeBlock } from '@app/components';
 import {
   Button,
   Dialog,
@@ -15,7 +16,6 @@ import {
   formatThemeCSS,
 } from '@digdir/designsystemet/tokens';
 import { InformationSquareIcon, StarIcon } from '@navikt/aksel-icons';
-import { CodeBlock } from '@repo/components';
 import { useRef, useState } from 'react';
 
 import type { Color, CssColor } from '@digdir/designsystemet/color';

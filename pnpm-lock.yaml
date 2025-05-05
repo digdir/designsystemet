@@ -108,6 +108,9 @@ importers:
 
   apps/storefront:
     dependencies:
+      '@app/components':
+        specifier: workspace:^
+        version: link:../_components
       '@digdir/designsystemet':
         specifier: workspace:^
         version: link:../../packages/cli
@@ -135,9 +138,6 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.1.2
         version: 1.2.0(@types/react@19.1.2)(react@19.1.0)
-      '@repo/components':
-        specifier: workspace:^
-        version: link:../_components
       '@types/mdx':
         specifier: ^2.0.13
         version: 2.0.13
@@ -197,6 +197,9 @@ importers:
         specifier: ^19.1.0
         version: 19.1.0(react@19.1.0)
     devDependencies:
+      '@app/components':
+        specifier: workspace:^
+        version: link:../_components
       '@digdir/designsystemet-css':
         specifier: workspace:^
         version: link:../../packages/css
@@ -209,9 +212,6 @@ importers:
       '@navikt/aksel-icons':
         specifier: ^7.18.0
         version: 7.21.0
-      '@repo/components':
-        specifier: workspace:^
-        version: link:../_components
       '@storybook/addon-a11y':
         specifier: ^8.6.12
         version: 8.6.12(storybook@8.6.12(prettier@3.5.3))
@@ -314,6 +314,9 @@ importers:
 
   apps/theme:
     dependencies:
+      '@app/components':
+        specifier: workspace:^
+        version: link:../_components
       '@digdir/designsystemet':
         specifier: workspace:^
         version: link:../../packages/cli
@@ -332,9 +335,6 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.1.2
         version: 1.2.0(@types/react@19.1.2)(react@19.1.0)
-      '@repo/components':
-        specifier: workspace:^
-        version: link:../_components
       chroma-js:
         specifier: ^3.1.2
         version: 3.1.2
@@ -372,6 +372,9 @@ importers:
 
   apps/www:
     dependencies:
+      '@app/components':
+        specifier: workspace:^
+        version: link:../_components
       '@digdir/designsystemet':
         specifier: workspace:^
         version: link:../../packages/cli
@@ -396,9 +399,6 @@ importers:
       '@react-router/serve':
         specifier: ^7.5.2
         version: 7.5.3(react-router@7.5.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)
-      '@repo/components':
-        specifier: workspace:^
-        version: link:../_components
       '@vercel/react-router':
         specifier: ^1.1.0
         version: 1.1.0(@react-router/dev@7.5.3(@react-router/serve@7.5.3(react-router@7.5.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3))(@types/node@22.15.3)(less@4.2.0)(react-router@7.5.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(sass@1.71.1)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(typescript@5.8.3)(vite@6.3.4(@types/node@22.15.3)(less@4.2.0)(sass@1.71.1)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1))(yaml@2.7.1))(@react-router/node@7.5.3(react-router@7.5.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3))(isbot@5.1.27)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)

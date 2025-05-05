@@ -1,5 +1,6 @@
 {
-  "name": "www.designsystemet.no",
+  "name": "@app/www",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -17,7 +18,7 @@
     "@radix-ui/react-slot": "^1.1.2",
     "@react-router/node": "^7.5.2",
     "@react-router/serve": "^7.5.2",
-    "@repo/components": "workspace:^",
+    "@app/components": "workspace:^",
     "@vercel/react-router": "^1.1.0",
     "clsx": "^2.1.1",
     "i18next": "^25.0.1",

@@ -1,6 +1,6 @@
 'use client';
+import { Github } from '@app/components';
 import { Link } from '@digdir/designsystemet-react';
-import { Github } from '@repo/components';
 import { usePathname } from 'next/navigation';
 import type { HTMLAttributes } from 'react';
 

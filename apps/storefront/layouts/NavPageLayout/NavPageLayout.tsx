@@ -1,4 +1,4 @@
-import { Container } from '@repo/components';
+import { Container } from '@app/components';
 import type * as React from 'react';
 
 import { MdxContent } from '../../components';
