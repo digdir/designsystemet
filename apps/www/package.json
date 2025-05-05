@@ -21,8 +21,6 @@
     "@vercel/react-router": "^1.1.0",
     "clsx": "^2.1.1",
     "i18next": "^25.0.1",
-    "i18next-fs-backend": "^2.6.0",
-    "i18next-http-backend": "^3.0.2",
     "isbot": "^5",
     "mdx-bundler": "^10.1.1",
     "react": "^19.1.0",

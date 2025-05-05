@@ -106,6 +106,9 @@ const getContentPathsWithLanguages = (): string[] => {
 const config: Config = {
   ssr: true,
   buildDirectory: 'dist',
+  future: {
+    unstable_middleware: true,
+  },
   prerender: async () => {
     const contentPaths = getContentPathsWithLanguages();
     return ['/no/components', ...contentPaths];

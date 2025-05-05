@@ -3,6 +3,7 @@ import {
   Meta,
   Outlet,
   Scripts,
+  data,
   isRouteErrorResponse,
   redirect,
 } from 'react-router';
@@ -13,6 +14,9 @@ import './app.css';
 import { useTranslation } from 'react-i18next';
 import { useChangeLanguage } from 'remix-i18next/react';
 import { Error404 } from './_components/errors/error-404';
+import { i18nextMiddleware } from './middleware/i18next';
+
+export const unstable_middleware = [i18nextMiddleware];
 
 export const links = () => {
   return [
@@ -24,10 +28,6 @@ export const links = () => {
       crossOrigin: 'anonymous',
     },
   ];
-};
-
-export const handle = {
-  i18n: 'common',
 };
 
 export const meta = () => {
@@ -73,7 +73,6 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     },
   ];
 
-  /* useChangeLanguage(lang); */
   const menu = [
     {
       name: 'navigation.fundamentals',
@@ -101,15 +100,19 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     },
   ];
 
-  return { lang: params.lang, centerLinks, menu };
+  return data({ lang: params.lang, locale: params.lang, centerLinks, menu });
 };
 
-export default function Root({ loaderData: { lang } }: Route.ComponentProps) {
+export default function Layout({ loaderData }: Route.ComponentProps) {
   const { i18n } = useTranslation();
-  useChangeLanguage(lang);
+  useChangeLanguage(loaderData.lang ?? 'no');
 
   return (
-    <html lang={lang} data-color-scheme='auto' dir={i18n.dir()}>
+    <html
+      lang={i18n.language}
+      dir={i18n.dir(i18n.language)}
+      data-color-scheme='auto'
+    >
       <head>
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />

@@ -408,12 +408,6 @@ importers:
       i18next:
         specifier: ^25.0.1
         version: 25.0.1(typescript@5.8.3)
-      i18next-fs-backend:
-        specifier: ^2.6.0
-        version: 2.6.0
-      i18next-http-backend:
-        specifier: ^3.0.2
-        version: 3.0.2
       isbot:
         specifier: ^5
         version: 5.1.25
@@ -3195,9 +3189,6 @@ packages:
       typescript:
         optional: true
 
-  cross-fetch@4.0.0:
-    resolution: {integrity: sha512-e4a5N8lVvuLgAWgnCrLr2PP0YyDOTHa9H/Rj54dirp61qXnNq46m82bRhNqIA5VccJtWBvPTFRV3TtvHUKPB1g==}
-
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
@@ -3900,12 +3891,6 @@ packages:
   hyperdyperid@1.2.0:
     resolution: {integrity: sha512-Y93lCzHYgGWdrJ66yIktxiaGULYc6oGiABxhcO5AufBeOyoIdZF7bIfLaOrbM0iGIOXQQgxxRrFEnb+Y6w1n4A==}
     engines: {node: '>=10.18'}
-
-  i18next-fs-backend@2.6.0:
-    resolution: {integrity: sha512-3ZlhNoF9yxnM8pa8bWp5120/Ob6t4lVl1l/tbLmkml/ei3ud8IWySCHt2lrY5xWRlSU5D9IV2sm5bEbGuTqwTw==}
-
-  i18next-http-backend@3.0.2:
-    resolution: {integrity: sha512-PdlvPnvIp4E1sYi46Ik4tBYh/v/NbYfFFgTjkwFl0is8A18s7/bx9aXqsrOax9WUbeNS6mD2oix7Z0yGGf6m5g==}
 
   i18next@25.0.1:
     resolution: {integrity: sha512-8S8PyZbrymJZn3DaN70/34JYWNhsqrU6yA4MuzcygJBv+41dgNMocEA8h+kV1P7MCc1ll03lOTOIXE7mpNCicw==}
@@ -9067,12 +9052,6 @@ snapshots:
     optionalDependencies:
       typescript: 5.8.3
 
-  cross-fetch@4.0.0:
-    dependencies:
-      node-fetch: 2.7.0
-    transitivePeerDependencies:
-      - encoding
-
   cross-spawn@7.0.6:
     dependencies:
       path-key: 3.1.1
@@ -9898,14 +9877,6 @@ snapshots:
   human-id@4.1.1: {}
 
   hyperdyperid@1.2.0: {}
-
-  i18next-fs-backend@2.6.0: {}
-
-  i18next-http-backend@3.0.2:
-    dependencies:
-      cross-fetch: 4.0.0
-    transitivePeerDependencies:
-      - encoding
 
   i18next@25.0.1(typescript@5.8.3):
     dependencies:
