@@ -5,9 +5,7 @@
   "author": "Designsystemet team",
   "main": "src/index.ts",
   "sideEffects": false,
-  "files": [
-    "src/**"
-  ],
+  "files": ["src/**"],
   "scripts": {
     "types": "tsc --noEmit"
   },
@@ -21,14 +19,19 @@
   "dependencies": {
     "@digdir/designsystemet": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
+    "@digdir/designsystemet-theme": "workspace:^",
     "@navikt/aksel-icons": "^7.18.0",
     "clsx": "^2.1.1",
     "next": "^15.2.4",
     "prism-react-renderer": "^2.4.1",
     "prismjs": "^1.30.0",
-    "react-code-block": "^1.1.3"
+    "react-code-block": "^1.1.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.1"
   }
 }

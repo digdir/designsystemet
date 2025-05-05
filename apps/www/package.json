@@ -9,6 +9,7 @@
     "types": "react-router typegen && tsc"
   },
   "dependencies": {
+    "@digdir/designsystemet": "workspace:^",
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
@@ -40,7 +41,7 @@
     "@types/node": "^22.14.1",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
-    "typescript": "^5.7.2",
+    "typescript": "^5.8.2",
     "vite": "^6.3.2",
     "vite-plugin-static-copy": "^2.3.0",
     "vite-tsconfig-paths": "^5.1.4"

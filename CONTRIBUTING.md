@@ -86,12 +86,12 @@ Follow these steps to get up and running with Storybook or Storefront (designsys
 
 Run the commands from the root of your project. Make sure you clone the `next` branch, this is where we do development.
 
-`yarn`
-`yarn build`
+`pnpm`
+`pnpm build`
 
 #### 4. Start local development servers
 
-`yarn storybook | storefront`
+`pnpm storybook | storefront`
 
 You can now start developing for storybook and the storefront.
 

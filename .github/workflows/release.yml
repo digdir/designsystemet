@@ -27,8 +27,8 @@ jobs:
         # Forked version of the changesets action that supports aggregated releases
         uses: dotansimha/changesets-action@v1.5.2
         with:
-          publish: yarn publish
-          version: yarn version-packages
+          publish: pnpm publish
+          version: pnpm version-packages
           commit: 'chore: new release'
           title: 'chore: new release'
           createGithubReleases: aggregate

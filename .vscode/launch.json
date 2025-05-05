@@ -8,7 +8,7 @@
       "name": "Launch build:tokens:debug",
       "request": "launch",
       "runtimeArgs": ["build:tokens:debug"],
-      "runtimeExecutable": "yarn",
+      "runtimeExecutable": "pnpm",
       "skipFiles": ["<node_internals>/**"],
       "type": "node",
       "console": "integratedTerminal",
