@@ -7,7 +7,13 @@ import { generateMetadata } from '~/_utils/metadata';
 import i18n from '~/i18next.server';
 import type { Route } from './+types/patterns';
 
-export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
+export const loader = async ({
+  params: { lang },
+}: Route.LoaderArgs): Promise<{
+  index: Awaited<ReturnType<typeof generateFromMdx>>;
+  lang: string;
+  metadata: ReturnType<typeof generateMetadata>;
+}> => {
   if (!lang) {
     throw new Response('Not Found', {
       status: 404,

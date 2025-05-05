@@ -25,13 +25,11 @@ const config: StorybookConfig = {
     },
   },
   stories: [
-    '../stories/*.mdx',
-    '../stories/*.@(stories|chromatic).ts?(x)',
+    '../stories/**/*.mdx',
+    '../stories/**/*.@(stories|chromatic).@(ts|tsx)',
     '../../../packages/*.mdx',
-    '../../../packages/css/**/*.mdx',
-    '../../../packages/theme/**/*.mdx',
-    '../../../packages/react/**/*.mdx',
-    '../../../packages/react/**/*.@(stories|chromatic).ts?(x)',
+    '../../../packages/*/!(node_modules)/**/*.mdx',
+    '../../../packages/*/!(node_modules)/**/*.@(stories|chromatic).@(ts|tsx)',
   ],
   experimental_indexers: (existingIndexers) => {
     /*

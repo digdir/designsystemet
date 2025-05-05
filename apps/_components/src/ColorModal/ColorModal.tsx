@@ -15,7 +15,6 @@ import {
 import { getCssVariable } from '@digdir/designsystemet/color';
 import type { ChangeEvent } from 'react';
 import { ClipboardButton } from '../ClipboardButton/ClipboardButton';
-
 import classes from './ColorModal.module.css';
 import { capitalizeFirstLetter, getColorCombinations } from './colorModalUtils';
 

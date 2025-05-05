@@ -15,8 +15,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/gh-setup
       - name: Build
-        run: yarn build
+        run: pnpm build
       - name: Types
-        run: yarn types
+        run: pnpm types
       - name: Biome CI
-        run: yarn biome ci .
+        run: pnpm biome ci .

@@ -3,11 +3,12 @@ description: Setup GitHub Actions
 runs:
   using: composite
   steps:
-    - name: Setup Node & Yarn cache
-      uses: actions/setup-node@v4
+    - uses: pnpm/action-setup@v4.1.0
+    - uses: actions/setup-node@v4
       with:
-        node-version: lts/*
-        cache: yarn
+        node-version-file: 'package.json'
+        cache: 'pnpm'
+
     - name: Install dependencies
+      run: pnpm install --frozen-lockfile
       shell: bash
-      run: yarn install --immutable
