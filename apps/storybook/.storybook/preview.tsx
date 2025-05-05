@@ -16,8 +16,8 @@ import {
   Table,
 } from '@digdir/designsystemet-react';
 
+import { CodeBlock } from '@internal/components';
 import { Children, type MouseEventHandler } from 'react';
-import { CodeBlock } from '../../_components';
 import { customStylesDecorator } from '../story-utils/customStylesDecorator';
 import { fontsLoader } from '../story-utils/fontsLoader';
 import { allModes, viewportWidths } from '../story-utils/modes';

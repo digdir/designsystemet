@@ -104,9 +104,10 @@
     },
     {
       "include": [
-        "**/apps/_components/**",
+        "**/internal/components/**",
         "**/apps/storefront/**",
-        "**/apps/theme/**"
+        "**/apps/theme/**",
+        "**/apps/www/**"
       ],
       "linter": {
         "rules": {
