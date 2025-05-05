@@ -2,4 +2,4 @@
 "@digdir/designsystemet": patch
 ---
 
-Added convertColor and getLuminanceFromColor functions
+Added `convertColor` and `getLuminanceFromColor` functions
