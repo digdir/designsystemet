@@ -2,6 +2,7 @@ import { SkipLink } from '@digdir/designsystemet-react';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import { Outlet, isRouteErrorResponse, useRouteLoaderData } from 'react-router';
+import { useChangeLanguage } from 'remix-i18next/react';
 import { ContentContainer } from '~/_components/content-container/content-container';
 import { Error404 } from '~/_components/errors/error-404';
 import { Footer } from '~/_components/footer/footer';
@@ -40,6 +41,8 @@ export default function RootLayout() {
   const { lang, centerLinks, menu } = useRouteLoaderData(
     'root',
   ) as RootRoute.ComponentProps['loaderData'];
+
+  useChangeLanguage(lang);
 
   return (
     <>

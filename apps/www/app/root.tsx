@@ -12,9 +12,8 @@ import '@digdir/designsystemet-theme';
 import '@digdir/designsystemet-css';
 import './app.css';
 import { useTranslation } from 'react-i18next';
-import { useChangeLanguage } from 'remix-i18next/react';
 import { Error404 } from './_components/errors/error-404';
-import { i18nextMiddleware } from './middleware/i18next';
+import { getInstance, i18nextMiddleware } from './middleware/i18next';
 
 export const unstable_middleware = [i18nextMiddleware];
 
@@ -39,7 +38,11 @@ export const meta = () => {
   ];
 };
 
-export const loader = async ({ params, request }: Route.LoaderArgs) => {
+export const loader = async ({
+  params,
+  request,
+  context,
+}: Route.LoaderArgs) => {
   const url = new URL(request?.url || '');
   /* if the url is slack, then redirect to slack */
   if (url.pathname === '/slack') {
@@ -57,6 +60,9 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   }
 
   const lang = params.lang;
+
+  const i18n = getInstance(context);
+  i18n.changeLanguage(lang);
 
   const centerLinks = [
     {
@@ -100,19 +106,14 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     },
   ];
 
-  return data({ lang: params.lang, locale: params.lang, centerLinks, menu });
+  return data({ lang: params.lang, centerLinks, menu });
 };
 
-export default function Layout({ loaderData }: Route.ComponentProps) {
+export default function Layout({ loaderData: { lang } }: Route.ComponentProps) {
   const { i18n } = useTranslation();
-  useChangeLanguage(loaderData.lang ?? 'no');
 
   return (
-    <html
-      lang={i18n.language}
-      dir={i18n.dir(i18n.language)}
-      data-color-scheme='auto'
-    >
+    <html lang={lang} dir={i18n.dir(lang)} data-color-scheme='auto'>
       <head>
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />

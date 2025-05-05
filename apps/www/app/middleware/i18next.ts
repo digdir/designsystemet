@@ -9,14 +9,12 @@ export const [i18nextMiddleware, getLocale, getInstance] =
       supportedLanguages: ['en', 'no'],
       fallbackLanguage: 'no',
       findLocale(request) {
-        const locale = request.url.split('/').at(1);
-        return Promise.resolve(locale ?? 'no');
+        const locale = request.url.includes('/en/') ? 'en' : 'no';
+        return Promise.resolve(locale);
       },
     },
     i18next: {
       resources: { en: { translation: en }, no: { translation: no } },
-      // Other i18next options are available here
-      fallbackLng: 'no',
     },
     plugins: [initReactI18next],
   });
