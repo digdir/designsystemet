@@ -53,7 +53,7 @@ export const Slider = ({
           <div className={classes.rangeLabels}>
             <div>{min}%</div>
             <div>0%</div>
-            <div>{max}%</div>
+            <div>+{max}%</div>
           </div>
         </div>
 

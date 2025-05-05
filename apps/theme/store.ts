@@ -1,7 +1,6 @@
 import {
+  type ColorMetadataByName,
   type ColorScheme,
-  type ColorSettings,
-  DefaultColorSettings,
   type ThemeInfo,
   baseColors,
   colorMetadata,
@@ -13,11 +12,10 @@ import { subscribeWithSelector } from 'zustand/middleware';
 export type ColorTheme = {
   name: string;
   colors: ThemeInfo;
-  settings: ColorSettings;
+  colorMetadata: ColorMetadataByName;
 };
 
 export type BaseBorderRadius = number;
-export type ColorMetadataType = typeof colorMetadata;
 type PageType =
   | 'front'
   | 'colors'
@@ -27,13 +25,9 @@ type PageType =
   | 'lightness';
 
 type ColorStore = {
-  colorMetadata: ColorMetadataType;
-  referenceColorMetadata: ColorMetadataType;
-  setLuminance: (
-    luminance: ColorMetadataType,
-    type: 'light' | 'dark',
-    colorName: keyof ColorMetadataType,
-  ) => void;
+  onColorThemeChange: number;
+  setOnColorThemeChange: (value: number) => void;
+  referenceColorMetadata: ColorMetadataByName;
   activePage: PageType;
   setActivePage: (page: PageType) => void;
   colors: {
@@ -75,25 +69,9 @@ type ColorStore = {
 
 export const useThemeStore = create(
   subscribeWithSelector<ColorStore>((set) => ({
-    colorMetadata: JSON.parse(JSON.stringify(colorMetadata)),
+    onColorThemeChange: 0,
+    setOnColorThemeChange: (value) => set({ onColorThemeChange: value }),
     referenceColorMetadata: JSON.parse(JSON.stringify(colorMetadata)),
-    setLuminance: (
-      luminance: ColorMetadataType,
-      type: 'light' | 'dark',
-      colorName: keyof ColorMetadataType,
-    ) =>
-      set((state) => ({
-        colorMetadata: {
-          ...state.colorMetadata,
-          background: {
-            ...state.colorMetadata[colorName],
-            luminance: {
-              ...state.colorMetadata[colorName].luminance,
-              [type]: luminance,
-            },
-          },
-        },
-      })),
     getColorTheme: (index, type): ColorTheme | undefined => {
       const colors = useThemeStore.getState().colors[type];
       return colors[index];
@@ -102,99 +80,88 @@ export const useThemeStore = create(
     setActivePage: (page) => set({ activePage: page }),
     baseBorderRadius: 4,
     colorScheme: 'light',
-    colors: JSON.parse(
-      JSON.stringify({
-        main: [
-          {
-            name: 'primary',
-            colors: generateColorSchemes(
-              '#0062BA',
-              colorMetadata,
-              JSON.parse(JSON.stringify(DefaultColorSettings)),
-            ),
-            settings: JSON.parse(JSON.stringify(DefaultColorSettings)),
-          },
-          {
-            name: 'accent',
-            colors: generateColorSchemes(
-              '#1E98F5',
-              colorMetadata,
-              JSON.parse(JSON.stringify(DefaultColorSettings)),
-            ),
-            settings: JSON.parse(JSON.stringify(DefaultColorSettings)),
-          },
-        ],
-        neutral: [
-          {
-            name: 'neutral',
-            colors: generateColorSchemes(
-              '#1E2B3C',
-              colorMetadata,
-              JSON.parse(JSON.stringify(DefaultColorSettings)),
-            ),
-            settings: JSON.parse(JSON.stringify(DefaultColorSettings)),
-          },
-        ],
-        support: [
-          {
-            name: 'extra1',
-            colors: generateColorSchemes(
-              '#F45F63',
-              colorMetadata,
-              JSON.parse(JSON.stringify(DefaultColorSettings)),
-            ),
-            settings: JSON.parse(JSON.stringify(DefaultColorSettings)),
-          },
-          {
-            name: 'extra2',
-            colors: generateColorSchemes(
-              '#E5AA20',
-              colorMetadata,
-              JSON.parse(JSON.stringify(DefaultColorSettings)),
-            ),
-            settings: JSON.parse(JSON.stringify(DefaultColorSettings)),
-          },
-        ],
-        status: [
-          {
-            name: 'info',
-            colors: generateColorSchemes(
-              baseColors.blue,
-              colorMetadata,
-              JSON.parse(JSON.stringify(DefaultColorSettings)),
-            ),
-            settings: JSON.parse(JSON.stringify(DefaultColorSettings)),
-          },
-          {
-            name: 'success',
-            colors: generateColorSchemes(
-              baseColors.green,
-              colorMetadata,
-              JSON.parse(JSON.stringify(DefaultColorSettings)),
-            ),
-            settings: JSON.parse(JSON.stringify(DefaultColorSettings)),
-          },
-          {
-            name: 'warning',
-            colors: generateColorSchemes(
-              baseColors.orange,
-              colorMetadata,
-              JSON.parse(JSON.stringify(DefaultColorSettings)),
-            ),
-            settings: JSON.parse(JSON.stringify(DefaultColorSettings)),
-          },
-          {
-            name: 'error',
-            colors: generateColorSchemes(
-              baseColors.red,
-              colorMetadata,
-              JSON.parse(JSON.stringify(DefaultColorSettings)),
-            ),
-            settings: JSON.parse(JSON.stringify(DefaultColorSettings)),
-          },
-        ],
-      }),
-    ),
+    colors: {
+      main: [
+        {
+          name: 'primary',
+          colors: generateColorSchemes(
+            '#0062BA',
+            JSON.parse(JSON.stringify(colorMetadata)),
+          ),
+          colorMetadata: JSON.parse(JSON.stringify(colorMetadata)),
+        },
+        {
+          name: 'accent',
+          colors: generateColorSchemes(
+            '#1E98F5',
+            JSON.parse(JSON.stringify(colorMetadata)),
+          ),
+          colorMetadata: JSON.parse(JSON.stringify(colorMetadata)),
+        },
+      ],
+      neutral: [
+        {
+          name: 'neutral',
+          colors: generateColorSchemes(
+            '#1E2B3C',
+            JSON.parse(JSON.stringify(colorMetadata)),
+          ),
+          colorMetadata: JSON.parse(JSON.stringify(colorMetadata)),
+        },
+      ],
+      support: [
+        {
+          name: 'extra1',
+          colors: generateColorSchemes(
+            '#F45F63',
+            JSON.parse(JSON.stringify(colorMetadata)),
+          ),
+          colorMetadata: JSON.parse(JSON.stringify(colorMetadata)),
+        },
+        {
+          name: 'extra2',
+          colors: generateColorSchemes(
+            '#E5AA20',
+            JSON.parse(JSON.stringify(colorMetadata)),
+          ),
+          colorMetadata: JSON.parse(JSON.stringify(colorMetadata)),
+        },
+      ],
+      status: [
+        {
+          name: 'info',
+          colors: generateColorSchemes(
+            baseColors.blue,
+            JSON.parse(JSON.stringify(colorMetadata)),
+          ),
+          colorMetadata: JSON.parse(JSON.stringify(colorMetadata)),
+        },
+        {
+          name: 'success',
+          colors: generateColorSchemes(
+            baseColors.green,
+            JSON.parse(JSON.stringify(colorMetadata)),
+          ),
+          colorMetadata: JSON.parse(JSON.stringify(colorMetadata)),
+        },
+        {
+          name: 'warning',
+          colors: generateColorSchemes(
+            baseColors.orange,
+            JSON.parse(JSON.stringify(colorMetadata)),
+          ),
+          colorMetadata: JSON.parse(JSON.stringify(colorMetadata)),
+        },
+        {
+          name: 'error',
+          colors: generateColorSchemes(
+            baseColors.red,
+            JSON.parse(JSON.stringify(colorMetadata)),
+          ),
+          colorMetadata: JSON.parse(JSON.stringify(colorMetadata)),
+        },
+      ],
+    },
     themeTab: 'colorsystem',
     setThemeTab: (tab) => set({ themeTab: tab }),
     addColor: (newColor, type) =>

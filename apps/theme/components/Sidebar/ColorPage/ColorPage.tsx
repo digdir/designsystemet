@@ -1,7 +1,4 @@
-import {
-  DefaultColorSettings,
-  generateColorSchemes,
-} from '@digdir/designsystemet';
+import { colorMetadata, generateColorSchemes } from '@digdir/designsystemet';
 import { Button, Heading } from '@digdir/designsystemet-react';
 import type { CssColor } from '@digdir/designsystemet/color';
 import {
@@ -10,7 +7,7 @@ import {
   InformationSquareIcon,
   PlusIcon,
 } from '@navikt/aksel-icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ColorService, useColor } from 'react-color-palette';
 import { type ColorTheme, useThemeStore } from '../../../store';
 import { ColorInput } from '../../ColorInput/ColorInput';
@@ -33,9 +30,11 @@ export const ColorPage = () => {
   const [colorType, setColorType] = useState<ColorType>('main');
   const [initialColor, setInitialColor] = useState('#0062ba');
   const [initialName, setInitialName] = useState(name);
-  const colorMetadata = useThemeStore((state) => state.colorMetadata);
   const getColorTheme = useThemeStore((state) => state.getColorTheme);
   const setActivePage = useThemeStore((state) => state.setActivePage);
+  const [currentTheme, setCurrentTheme] = useState(() =>
+    getColorTheme(index, colorType),
+  );
 
   const setupEditState = (
     colorTheme: ColorTheme,
@@ -49,7 +48,6 @@ export const ColorPage = () => {
     setColorType(colorType);
     setInitialColor(colorTheme.colors.light[11].hex);
     setInitialName(colorTheme.name);
-    console.log(colors);
   };
 
   const resetColorState = () => {
@@ -68,16 +66,16 @@ export const ColorPage = () => {
     addColor(
       {
         name: newColorName,
-        colors: generateColorSchemes(
-          '#0062ba',
-          colorMetadata,
-          JSON.parse(JSON.stringify(DefaultColorSettings)),
-        ),
-        settings: JSON.parse(JSON.stringify(DefaultColorSettings)),
+        colors: generateColorSchemes('#0062ba', colorMetadata),
+        colorMetadata,
       },
       colorType,
     );
   };
+
+  useEffect(() => {
+    setCurrentTheme(getColorTheme(index, colorType));
+  }, [index, colorType, getColorTheme]);
 
   return (
     <div>
@@ -202,9 +200,8 @@ export const ColorPage = () => {
                 colors: generateColorSchemes(
                   initialColor as CssColor,
                   colorMetadata,
-                  JSON.parse(JSON.stringify(DefaultColorSettings)),
                 ),
-                settings: JSON.parse(JSON.stringify(DefaultColorSettings)),
+                colorMetadata,
               },
               index,
               colorType,
@@ -220,14 +217,13 @@ export const ColorPage = () => {
             if (!colorTheme) return;
             const updatedColors = generateColorSchemes(
               color.hex as CssColor,
-              colorMetadata,
-              colorTheme.settings,
+              colorTheme.colorMetadata,
             );
             updateColorTheme(
               {
                 name: colorTheme.name,
                 colors: updatedColors,
-                settings: colorTheme.settings,
+                colorMetadata: colorTheme.colorMetadata,
               },
               index,
               colorType,
@@ -240,13 +236,12 @@ export const ColorPage = () => {
             const updatedColors = generateColorSchemes(
               color.hex as CssColor,
               colorMetadata,
-              colorTheme.settings,
             );
             updateColorTheme(
               {
                 name: name,
                 colors: updatedColors,
-                settings: colorTheme.settings,
+                colorMetadata,
               },
               index,
               colorType,

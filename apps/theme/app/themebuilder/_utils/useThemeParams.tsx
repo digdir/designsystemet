@@ -1,7 +1,7 @@
 import {
   type ColorScheme,
   type CssColor,
-  DefaultColorSettings,
+  colorMetadata,
   generateColorSchemes,
 } from '@digdir/designsystemet/color';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -36,7 +36,6 @@ export const useThemeParams = () => {
       if (mainColors) {
         newColors.main = mainColors.map((color) => ({
           ...color,
-          settings: DefaultColorSettings,
         }));
       }
     }
@@ -49,7 +48,7 @@ export const useThemeParams = () => {
           {
             name: 'neutral',
             colors: generateColorSchemes('#1E2B3C'),
-            settings: DefaultColorSettings,
+            colorMetadata: JSON.parse(JSON.stringify(colorMetadata)),
           },
         ];
     }
@@ -62,7 +61,6 @@ export const useThemeParams = () => {
       if (supportColors) {
         newColors.support = supportColors.map((color) => ({
           ...color,
-          settings: DefaultColorSettings,
         }));
       }
     }
@@ -110,6 +108,10 @@ export const useThemeParams = () => {
 function createColorsFromQuery(colors: string) {
   return colors.split(' ').map((color) => {
     const [name, hex] = color.split(':');
-    return { name, colors: generateColorSchemes(hex as CssColor) };
+    return {
+      name,
+      colors: generateColorSchemes(hex as CssColor),
+      colorMetadata: JSON.parse(JSON.stringify(colorMetadata)),
+    };
   });
 }

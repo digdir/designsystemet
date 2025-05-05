@@ -30,25 +30,17 @@ export const generateColorScale = (
   colorScheme: ColorScheme,
   colorMetaData: ColorMetadataByName,
 ): Color[] => {
-  const interpolColors = ['background', 'surface', 'border', 'text', 'base'].map(() => color);
-
-  // Generate interpolation colors
-  interpolColors.forEach((interpolColor, index) => {
-    const { saturation } = colorMetaData[interpolColor as keyof ColorMetadataByName];
-    const [L, C, H] = chroma(color).oklch();
-    const chromaModifier = saturation[colorScheme];
-    interpolColors[index] = chroma(L, C * chromaModifier, H, 'oklch').hex() as CssColor;
-  });
-
   // Generate colors based on the metadata
   const colors = R.mapObjIndexed((colorData) => {
-    const lightness = colorData.lightness[colorScheme];
-    const interpolColor = interpolColors.find((name) => colorData.name.startsWith(name));
-    const { interpolation } = colorMetaData[interpolColor as keyof ColorMetadataByName];
+    const { saturation, interpolation, lightness } = colorMetaData[colorData.name];
+    const [L, C, H] = chroma(color).oklch();
+    const chromaModifier = saturation[colorScheme];
+    const interpolColor = chroma(L, C * chromaModifier, H, 'oklch').hex();
+
     return {
       ...colorData,
-      hex: chroma(interpolColor as string)
-        .luminance(getLuminanceFromLightness(lightness), interpolation || 'rgb')
+      hex: chroma(interpolColor)
+        .luminance(getLuminanceFromLightness(lightness[colorScheme]), interpolation || 'rgb')
         .hex() as CssColor,
     };
   }, colorMetaData || colorMetadata);

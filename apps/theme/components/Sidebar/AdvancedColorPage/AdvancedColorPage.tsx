@@ -8,11 +8,10 @@ import {
 import {
   type CssColor,
   type InterpolationMode,
-  colorMetadata,
   generateColorSchemes,
 } from '@digdir/designsystemet/color';
 import { ChevronLeftIcon, FlowerIcon } from '@navikt/aksel-icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useThemeStore } from '../../../store';
 import { LightnessInput } from '../../LightnessInput/LightnessInput';
 import { SaturationPage } from '../SaturationPage/SaturationPage';
@@ -35,7 +34,15 @@ export const AdvancedColorPage = ({
 }: AdvancedColorPageProps) => {
   const updateColorTheme = useThemeStore((state) => state.updateColorTheme);
   const getColorTheme = useThemeStore((state) => state.getColorTheme);
-  const [saturationPage, setSaturationPage] = useState(true);
+  const [saturationPage, setSaturationPage] = useState(false);
+  const [currentTheme, setCurrentTheme] = useState(() =>
+    getColorTheme(index, colorType),
+  );
+
+  useEffect(() => {
+    setCurrentTheme(getColorTheme(index, colorType));
+    console.log('currentTheme', currentTheme);
+  }, [index, colorType, getColorTheme]);
   return (
     <div>
       {saturationPage && (
@@ -74,30 +81,31 @@ export const AdvancedColorPage = ({
           <Field data-size='sm' className={classes.field}>
             <Label>Velg interpolering</Label>
             <Select
-              defaultValue='rgb'
               width='full'
+              value={
+                currentTheme?.colorMetadata['background-default'].interpolation
+              }
               onChange={(e) => {
                 const interpolation = e.target.value as InterpolationMode;
                 const currentTheme = getColorTheme(index, colorType);
 
                 if (!currentTheme) return;
 
-                const updatedSettings = {
-                  ...currentTheme.settings,
-                  general: { interpolation },
-                };
+                for (const metadata of Object.values(
+                  currentTheme.colorMetadata,
+                )) {
+                  metadata.interpolation = interpolation as InterpolationMode;
+                }
 
                 const colors = generateColorSchemes(
                   color as CssColor,
-                  colorMetadata,
-                  updatedSettings,
+                  currentTheme.colorMetadata,
                 );
 
                 updateColorTheme(
                   {
                     ...currentTheme,
                     colors,
-                    settings: updatedSettings,
                   },
                   index,
                   colorType,

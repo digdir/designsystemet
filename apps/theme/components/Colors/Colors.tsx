@@ -13,49 +13,49 @@ import classes from './Colors.module.css';
 
 export const Colors = () => {
   const colors = useThemeStore((state) => state.colors);
-  const colorMetadata = useThemeStore((state) => state.colorMetadata);
+  const referenceColorMetadata = useThemeStore(
+    (state) => state.referenceColorMetadata,
+  );
 
   const updateColorTheme = useThemeStore((state) => state.updateColorTheme);
   const [showStatus, setShowStatus] = useState(false);
   const colorScheme = useThemeStore((state) => state.colorScheme);
+  const onColorThemeChange = useThemeStore((state) => state.onColorThemeChange);
 
   useEffect(() => {
     const updatedMainColors = colors.main.map((color, index) => {
       const updatedColors = generateColorSchemes(
         color.colors.light[11].hex,
-        colorMetadata,
-        color.settings,
+        color.colorMetadata,
       );
       return {
         name: color.name,
-        settings: color.settings,
         colors: updatedColors,
+        colorMetadata: color.colorMetadata,
       };
     });
 
     const updatedNeutralColors = colors.neutral.map((color, index) => {
       const updatedColors = generateColorSchemes(
         color.colors.light[11].hex,
-        colorMetadata,
-        color.settings,
+        color.colorMetadata,
       );
       return {
         name: color.name,
-        settings: color.settings,
         colors: updatedColors,
+        colorMetadata: color.colorMetadata,
       };
     });
 
     const updatedSupportColors = colors.support.map((color, index) => {
       const updatedColors = generateColorSchemes(
         color.colors.light[11].hex,
-        colorMetadata,
-        color.settings,
+        color.colorMetadata,
       );
       return {
         name: color.name,
-        settings: color.settings,
         colors: updatedColors,
+        colorMetadata: color.colorMetadata,
       };
     });
 
@@ -70,7 +70,7 @@ export const Colors = () => {
     updatedSupportColors.forEach((colorTheme, index) => {
       updateColorTheme(colorTheme, index, 'support');
     });
-  }, [colorMetadata]);
+  }, [onColorThemeChange]);
 
   return (
     <div className={classes.page}>

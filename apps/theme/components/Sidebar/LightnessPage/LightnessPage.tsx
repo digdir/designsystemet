@@ -11,13 +11,16 @@ type LightnessPageProps = {
 };
 
 export const LightnessPage = ({ onBackClicked }: LightnessPageProps) => {
-  const colorMetadata = useThemeStore((state) => state.colorMetadata);
   const referenceColorMetadata = useThemeStore(
     (state) => state.referenceColorMetadata,
   );
-
   const [mode, setMode] = useState<'light' | 'dark'>('light');
-  const setLuminance = useThemeStore((state) => state.setLuminance);
+  const onColorThemeChange = useThemeStore((state) => state.onColorThemeChange);
+  const setOnColorThemeChange = useThemeStore(
+    (state) => state.setOnColorThemeChange,
+  );
+  const updateColorTheme = useThemeStore((state) => state.updateColorTheme);
+  const colors = useThemeStore((state) => state.colors);
 
   return (
     <div className={classes.page}>
@@ -52,26 +55,28 @@ export const LightnessPage = ({ onBackClicked }: LightnessPageProps) => {
 
       <div className={classes.luminance}>
         <div className={classes.inputs}>
-          {Object.values(colorMetadata)
+          {Object.values(referenceColorMetadata)
             .filter((color) => !color.name.includes('base'))
-            .map((color, index) =>
-              index === 11 ? null : (
+            .map((color, refIndex) =>
+              refIndex === 11 ? null : (
                 <LightnessInput
-                  key={index}
+                  key={refIndex}
                   label={color.displayName}
                   oneLiner
-                  value={color.luminance[mode]}
+                  value={color.lightness[mode]}
                   initialValue={
-                    referenceColorMetadata[color.name].luminance[mode]
+                    referenceColorMetadata[color.name].lightness[mode]
                   }
                   onChange={(value) => {
-                    colorMetadata[color.name].luminance[mode] = value;
-                    setLuminance(colorMetadata, mode, color.name);
+                    colors.main.map((colorTheme, i) => {
+                      colorTheme.colorMetadata[color.name].lightness[mode] =
+                        value;
+                      updateColorTheme(colorTheme, i, 'main');
+                    });
+
+                    setOnColorThemeChange(onColorThemeChange + 1);
                   }}
-                  onReset={(value) => {
-                    colorMetadata[color.name].luminance[mode] = value;
-                    setLuminance(colorMetadata, mode, color.name);
-                  }}
+                  onReset={(value) => {}}
                 />
               ),
             )}
