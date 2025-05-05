@@ -21,15 +21,15 @@
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
+    "@navikt/aksel-icons": "^7.18.0",
     "clsx": "^2.1.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-router-dom": "^7.4.1",
-    "@navikt/aksel-icons": "^7.18.0"
+    "react-router-dom": "^7.4.1"
   },
   "devDependencies": {
     "@figma/plugin-typings": "^1.109.0",
-    "@types/react": "^19.1.0",
+    "@types/react": "^19.1.2",
     "@types/react-color": "^3.0.13",
     "@types/react-dom": "^19.1.1",
     "@vitejs/plugin-react": "^4.3.4",

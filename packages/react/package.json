@@ -25,7 +25,9 @@
     }
   },
   "sideEffects": false,
-  "files": ["dist/**"],
+  "files": [
+    "dist/**"
+  ],
   "scripts": {
     "build": "pnpm run clean && tsc -b tsconfig.lib.json --emitDeclarationOnly false && rollup -c --bundleConfigAsCjs",
     "clean": "rimraf dist && rimraf tsc-build && rimraf --glob \"*.tsbuildinfo\"",
@@ -51,14 +53,19 @@
     "clsx": "^2.1.1"
   },
   "devDependencies": {
-    "tsx": "4.19.4",
+    "@digdir/designsystemet-css": "workspace:^",
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-node-resolve": "^16.0.1",
+    "@storybook/blocks": "^8.6.12",
+    "@storybook/preview-api": "^8.6.12",
+    "@storybook/react": "^8.6.12",
+    "@storybook/test": "^8.6.12",
+    "@storybook/types": "^8.6.12",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
-    "@types/react": "^19.1.0",
+    "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.1",
     "copyfiles": "^2.4.1",
     "jsdom": "^26.0.0",
@@ -67,12 +74,7 @@
     "rimraf": "^6.0.1",
     "rollup": "^4.39.0",
     "rollup-plugin-copy": "^3.5.0",
-    "typescript": "^5.8.2",
-    "@digdir/designsystemet-css": "workspace:^",
-    "@storybook/types": "^8.6.12",
-    "@storybook/test": "^8.6.12",
-    "@storybook/react": "^8.6.12",
-    "@storybook/blocks": "^8.6.12",
-    "@storybook/preview-api": "^8.6.12"
+    "tsx": "4.19.4",
+    "typescript": "^5.8.2"
   }
 }

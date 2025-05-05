@@ -1,13 +1,14 @@
 import { Dialog, Heading } from '@digdir/designsystemet-react';
 import type { Color } from '@digdir/designsystemet/color';
 import { getCssVariable, hexToHsluv } from '@digdir/designsystemet/color';
+import type { Ref } from 'react';
 
 import { ClipboardButton } from '../ClipboardButton/ClipboardButton';
 import classes from './ColorModal.module.css';
 import { capitalizeFirstLetter, getColorCombinations } from './colorModalUtils';
 
 type ColorModalProps = {
-  colorModalRef: React.Ref<HTMLDialogElement> | null;
+  colorModalRef: Ref<HTMLDialogElement> | undefined;
   namespace: string;
   color: Color;
 };

@@ -42,7 +42,7 @@
   "devDependencies": {
     "@react-router/dev": "^7.5.2",
     "@types/node": "^22.14.1",
-    "@types/react": "^19.1.0",
+    "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.0",
     "typescript": "^5.8.2",
     "vite": "^6.3.2",

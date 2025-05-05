@@ -17,12 +17,12 @@
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
-    "@navikt/aksel-icons": "^7.18.0",
     "@internal/components": "workspace:^",
+    "@navikt/aksel-icons": "^7.18.0",
+    "@radix-ui/react-slot": "^1.1.2",
     "chroma-js": "^3.1.2",
     "clsx": "^2.1.1",
     "next": "^15.2.4",
-    "@radix-ui/react-slot": "^1.1.2",
     "react": "^19.1.0",
     "react-color-palette": "^7.3.0",
     "react-dom": "^19.1.0",
@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@types/chroma-js": "^3.1.1",
-    "@types/react": "^19.1.0",
+    "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.1"
   }
 }
