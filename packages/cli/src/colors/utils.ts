@@ -251,6 +251,14 @@ export const convertColor = (cssColor: string, format: string) => {
       });
     case 'hex':
       return color.toString({ format: format, precision: 3 });
+    case 'hct':
+      return color.to(format).toString({
+        format: {
+          name: format,
+          coords: ['<number>', '<number>', '<number>'],
+        },
+        precision: 3,
+      });
     default:
       return color.to(format).toString({ precision: 3 });
   }
