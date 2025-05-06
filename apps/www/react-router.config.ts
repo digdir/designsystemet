@@ -11,6 +11,12 @@ import type { Config } from '@react-router/dev/config';
 import { vercelPreset } from '@vercel/react-router/vite';
 import { normalizePath } from 'vite';
 
+declare module 'react-router' {
+  interface Future {
+    unstable_middleware: true; // 👈 Enable middleware types
+  }
+}
+
 // Ensure we always have a valid dirname, even in Vercel's environment
 const dirname = cwd();
 

@@ -61,7 +61,6 @@ export const loader = async ({
 
   const lang = params.lang;
 
-  /* @ts-ignore it does exist */
   const i18n = getInstance(context);
   i18n.changeLanguage(lang);
 

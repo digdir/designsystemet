@@ -20,7 +20,6 @@ export const loader = async ({
     });
   }
 
-  /* @ts-ignore it does exist */
   const i18n = getInstance(context);
   const t = i18n.getFixedT(lang);
 

@@ -77,7 +77,6 @@ export const loader = async ({
   /* Get last 3 posts */
   posts.splice(3);
 
-  /* @ts-ignore it does exist */
   const i18n = getInstance(context);
   const t = i18n.getFixedT(lang);
 

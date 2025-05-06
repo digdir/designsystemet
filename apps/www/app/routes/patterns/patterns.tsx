@@ -28,7 +28,7 @@ export const loader = async ({
     join('patterns', `${lang}_index.mdx`),
   );
   const result = await generateFromMdx(fileContent);
-  /* @ts-ignore it does exist */
+
   const i18n = getInstance(context);
   const t = i18n.getFixedT(lang);
 
