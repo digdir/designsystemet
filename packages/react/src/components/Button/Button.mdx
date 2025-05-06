@@ -15,7 +15,7 @@ Knapper lar brukerne utføre handlinger. Vi har variantene `primary`, `secondary
 <Primary />
 <Controls />
 
-## Slik bruker du button
+## Slik bruker du Button
 
 ```tsx
 import { Button } from '@digdir/designsystemet-react';
@@ -23,23 +23,23 @@ import { Button } from '@digdir/designsystemet-react';
 <Button>Trykk på meg!</Button>;
 ```
 
-## Varianter av button
+## Varianter av Button
 
 Vi har forskjellige knapper for å fremheve utvalgte handlinger. `Primary`, `secondary` og `tertiary` bestemmer hvor viktig handlingen er.
 
-### Primary button
+### Primary Button
 
 Vi bruker denne knappen til den handlingen som er viktigst for brukeren, for eksempel Lagre, Neste eller Send inn. Det skal bare være en primærknapp per side.
 
 <Canvas of={ButtonStories.Primary} />
 
-### Secondary button
+### Secondary Button
 
 Vi bruker denne knappen til handlinger som ikke er hovedhandlinger. Den står gjerne sammen med en hovedknapp, så hvis hovedknappen er Lagre, kan sekundærknappen være Avbryt.
 
 <Canvas of={ButtonStories.Secondary} />
 
-### Tertiary button
+### Tertiary Button
 
 Denne knappen bruker vi til nedtonede handlinger. Hvis vi vil bruke den alene, må den ha med et ikon, hvis ikke er det vanskelig å se at det er en knapp.
 
@@ -114,20 +114,19 @@ I eksempelet under bruker vi proppen `loading` for å vise at knappen laster.
 
 I eksempelet over blir `aria-disabled` satt av `loading="true"`. Dette er den anbefalte måten for å vise at en knapp er deaktivert. Da kan den fortsatt få fokus når noen navigerer med tastaturet. Slik vil blant annet skjermlesere og andre hjelpemidler bli informert om at knappen finnes, men ikke er aktiv.
 
-Denne egenskapen stopper ikke automatisk knappen fra å utløse `onClick`.
+Vær oppmerksom på: `loading="true"` eller `aria-disabled` stopper ikke automatisk knappen fra å utløse `onClick`. Du må selv passe på at callback-funksjonen ikke kjører når knappen er deaktivert.
 
-Pass på at callback-funksjonen ikke kjører når knappen er deaktivert.
-
-## Retningslinjer for button
+## Retningslinjer for Button
 
 Knapper skal brukes til å utføre handlinger.
 
-Passer til å
+**Passer til å**
 
 - starte en prosess
 - navigere i en flyt, for eksempel med Forrige og Neste
 - sende inn et skjema
-Passer ikke til å
+
+**Passer ikke til å**
 
 - navigere til andre sider eller ut av tjenesten, bruk heller [`link`](/docs/komponenter-link--docs)
 
@@ -137,7 +136,13 @@ Når vi legger flere knapper ved siden av hverandre, skal primærknappen stå f�
 
 ### Ikke bruk deaktiverte knapper
 
-Deaktiverte knapper bør unngås fordi de kan være vanskelige å oppfatte. Noen brukere vil ikke forstå hva knappen sier eller hvorfor den ikke er klikkbar. Bruk heller en aktiv knapp som validerer. [^1]
+Vi unngår deaktiverte (`disabled`) knapper fordi de kan være vanskelige å oppfatte. Noen brukere vil ikke forstå hva knappen sier eller hvorfor den ikke er klikkbar. En aktiv knapp som viser en feilmelding når brukeren klikker gir i de fleste tilfeller en bedre brukeropplevelse. Nav har en god forklaring på [hvorfor deaktiverte tilstander er problematisk](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) og hvilke alternativer som finnes.
+
+**Hvis du mot formodning må bruke en deaktivert knapp:**
+
+- Sørg for at alle brukerne dine både opplever og forstår at knappen eksisterer, at den er deaktivert, og hvorfor.
+- Bruk gjerne støttetekst som alltid er synlig når knappen er deaktivert.
+- Dersom det gir mening å fortsatt kunne navigere til knappen med tastaturet, eller det av andre grunner er viktig å beholde tab-rekkefølgen, bruk `aria-disabled` istedenfor `disabled`. Da må du også huske å selv blokkere kjøring av callback-funksjoner (f.eks. `onClick`).
 
 ### En knapp skal utføre kun én handling
 
@@ -241,6 +246,3 @@ Bruk stor forbokstav på det første ordet, som du ville gjort i en setning. Ikk
 ## CSS Variabler
 
 <CssVariables css={css} />
-
-
-[^1]: [Deaktiverte tilstander](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) - Aksel.
