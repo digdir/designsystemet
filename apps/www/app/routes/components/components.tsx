@@ -16,7 +16,8 @@ import classes from './components.module.css';
 
 const sortedData = data.sort((a, b) => a.title.localeCompare(b.title));
 
-const IS_NEXT_BRANCH = false;
+const IS_NEXT_BRANCH =
+  process.env.NEXT_PUBLIC_DESIGNSYSTEMET_ENV === 'production';
 
 /* If we are in the next branch, send us to the next storybook */
 if (IS_NEXT_BRANCH) {
