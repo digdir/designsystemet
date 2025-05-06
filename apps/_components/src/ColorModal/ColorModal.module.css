@@ -46,6 +46,7 @@
 .colorPreview {
   width: 100%;
   height: var(--ds-size-26);
+  border-block: var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle);
 }
 
 .field {
