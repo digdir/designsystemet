@@ -16,30 +16,30 @@
     "types:node": "tsc -P tsconfig.node.json"
   },
   "dependencies": {
-    "@adobe/leonardo-contrast-colors": "^1.0.0",
+    "@adobe/leonardo-contrast-colors": "1.0.0",
     "@digdir/designsystemet": "workspace:^",
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
-    "clsx": "^2.1.1",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-router-dom": "^7.4.1",
-    "@navikt/aksel-icons": "^7.18.0"
+    "clsx": "2.1.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-router-dom": "7.5.3",
+    "@navikt/aksel-icons": "7.21.0"
   },
   "devDependencies": {
-    "@figma/plugin-typings": "^1.109.0",
+    "@figma/plugin-typings": "1.110.0",
     "@types/react": "^19.1.0",
-    "@types/react-color": "^3.0.13",
+    "@types/react-color": "3.0.13",
     "@types/react-dom": "^19.1.1",
-    "@vitejs/plugin-react": "^4.3.4",
-    "npm-run-all2": "^7.0.2",
-    "postcss": "^8.5.3",
-    "rollup": "^4.39.0",
-    "typescript": "^5.8.2",
-    "vite": "^6.2.5",
-    "vite-plugin-react-rich-svg": "^1.2.0",
-    "vite-plugin-singlefile": "^2.2.0",
-    "zustand": "^5.0.3"
+    "@vitejs/plugin-react": "4.4.1",
+    "npm-run-all2": "7.0.2",
+    "postcss": "8.5.3",
+    "rollup": "4.40.1",
+    "typescript": "5.8.3",
+    "vite": "6.3.4",
+    "vite-plugin-react-rich-svg": "1.2.1",
+    "vite-plugin-singlefile": "2.2.0",
+    "zustand": "5.0.4"
   }
 }
