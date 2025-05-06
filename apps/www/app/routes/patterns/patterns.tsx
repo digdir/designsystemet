@@ -5,6 +5,7 @@ import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { generateMetadata } from '~/_utils/metadata';
 import { getInstance } from '~/middleware/i18next';
 import type { Route } from './+types/patterns';
+import classes from './page.module.css';
 
 export const loader = async ({
   params: { lang },
@@ -51,7 +52,7 @@ export default function Patterns({
   loaderData: { index },
 }: Route.ComponentProps) {
   return (
-    <div style={{ maxWidth: '65ch' }}>
+    <div className={classes.content}>
       <MDXComponents code={index.code} />
     </div>
   );
