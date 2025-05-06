@@ -26,7 +26,7 @@ We should be able to show error messages with all types of fields in a form. The
   src='/img/errormessage-co-1.png'
   alt='Screenshot of a form with an error message. The user has entered "fdgdfgfdg" in a national ID number field. The error message states that a national ID number must contain 11 digits.'
   boxShadow={false}
-  dataUnstyled
+ 
 />
 
 ### Summary of multiple error messages
@@ -54,7 +54,7 @@ Make sure that:
   src='/img/errormessage-co-3.png'
   alt='Screenshot of a form with an error message. The user has entered "fdgdfgfdg" in a national ID number field. The error message states that a national ID number must contain 11 digits.'
   boxShadow={false}
-  dataUnstyled
+ 
 />
 
 ### It's best to avoid giving error messages
@@ -116,7 +116,7 @@ When an error occurs in a field, it is important that the field is clearly visib
   src='/img/errormessage-design.png'
   alt='A form field showing an error in the information filled out. The visual elements distinguishing it from a regular field are highlighted: The border around the field is thicker, it is colored red, and there is a red text with a corresponding warning icon describing the error in the field.'
   boxShadow={false}
-  dataUnstyled
+ 
 />
 
 When the technical solution checks for errors, known as validation, we want to show which fields have errors. To do this, we can use several methods.
@@ -137,7 +137,7 @@ We display the error message below the field with the error. This is the most co
 <Card
   data-color='brand3'
   variant="tinted"
-  data-unstyled
+ 
 >
   Note: We aim to stay updated on other recommendations regarding placement and have [ongoing discussions about this on Git](https://github.com/digdir/designsystemet/discussions/1684#discussioncomment-9339006).
 </Card>
@@ -223,7 +223,7 @@ We can use these aria attributes and roles:
 - Set `aria-invalid="true"` on fields with errors to indicate that there is an error.
 - Use `aria-describedby` to link the error message to the field.
 
-<Card data-color='brand3' variant="tinted" data-unstyled>
+<Card data-color='brand3' variant="tinted">
   We avoid using `aria-errormessage` for now as it does not have full support from assistive technologies at this time. However, we will update the guidelines if support improves in the future. [See discussion on GitHub](https://github.com/digdir/designsystemet/discussions/1684)
 </Card>
 
@@ -249,7 +249,7 @@ For error messages that appear dynamically, we must use `aria-live` so that the 
 <br />
 <br />
 
-<Card data-color='brand3' variant="tinted" data-unstyled>
+<Card data-color='brand3' variant="tinted">
   The guidelines have been developed in a cross-agency working group with participants from Digdir, Nav, Skatt, Brreg, Politiet, KS DIF, and Oslo kommune. You can influence the work in [the discussion thread on system alerts on GitHub](https://github.com/digdir/designsystemet/discussions/1684) or in [#Pattern-channel](https://designsystemet.slack.com/archives/C05RBGB92MC/p1712751837722749) on [Slack](https://designsystemet.no/slack).
 </Card>
 
