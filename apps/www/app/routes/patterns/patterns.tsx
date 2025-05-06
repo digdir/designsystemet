@@ -51,8 +51,8 @@ export default function Patterns({
   loaderData: { index },
 }: Route.ComponentProps) {
   return (
-    <>
+    <div style={{ maxWidth: '65ch' }}>
       <MDXComponents code={index.code} />
-    </>
+    </div>
   );
 }

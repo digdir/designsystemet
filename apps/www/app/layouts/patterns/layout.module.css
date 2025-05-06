@@ -13,7 +13,6 @@
 .content {
   flex-basis: 600px;
   flex-grow: 500;
-  max-width: 60ch;
 
   & > *:first-child {
     margin-top: 0;
