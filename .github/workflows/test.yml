@@ -5,7 +5,7 @@ on:
     paths:
       - .github/workflows/test.yml
       - 'packages/**'
-      - 'web/storybook/**'
+      - 'apps/storybook/**'
 
 permissions:
   checks: write
@@ -50,7 +50,7 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@v3
         if: success() || failure()
         with:
-          include: 'web/storybook/test-report.xml'
+          include: 'apps/storybook/test-report.xml'
           find: '../../'
           replace: ''
           regex: false
@@ -58,7 +58,7 @@ jobs:
         uses: mikepenz/action-junit-report@v5
         if: success() || failure()
         with:
-          report_paths: 'web/storybook/test-report.xml'
+          report_paths: 'apps/storybook/test-report.xml'
           detailed_summary: true
           check_name: Storybook Test Report
           check_annotations: true

@@ -12,7 +12,7 @@
       "./declarations.d.ts",
       "./react-types.d.ts",
       "../theme/brand/colors.d.ts",
-      "../../web/storybook/story-utils/type-extensions.d.ts"
+      "../../apps/storybook/story-utils/type-extensions.d.ts"
     ]
   },
   "include": ["stories", "src/**/*.stories.ts*", "src/**/*.chromatic.ts*"],

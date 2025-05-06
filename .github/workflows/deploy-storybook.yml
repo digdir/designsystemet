@@ -19,7 +19,7 @@ on:
       - main
     paths:
       - 'packages/**'
-      - 'web/storybook/**'
+      - 'apps/storybook/**'
       - 'assets/**'
 jobs:
   deploy:

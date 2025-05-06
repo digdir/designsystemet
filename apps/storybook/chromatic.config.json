@@ -2,12 +2,12 @@
   "onlyChanged": true,
   "projectId": "Project:66fe736b9d639fe6801bf130",
   "buildScriptName": "build",
-  "storybookBaseDir": "web/storybook",
+  "storybookBaseDir": "apps/storybook",
   "storybookBuildDir": "dist",
   "zip": true,
   "externals": [
     "packages/css/**/*.css",
     "packages/theme/**/*.css",
-    "web/storybook/{.storybook,story-utils}/**/*"
+    "apps/storybook/{.storybook,story-utils}/**/*"
   ]
 }

@@ -1,18 +1,22 @@
-'use client';
 import { Link } from '@digdir/designsystemet-react';
-import { Github } from '@internal/components';
-import { usePathname } from 'next/navigation';
 import type { HTMLAttributes } from 'react';
 
 import cl from 'clsx/lite';
-import classes from './GithubLink.module.css';
+import { useLocation } from 'react-router';
+import { Github } from '../logos/github';
+import classes from './edit-page-on-github.module.css';
 
-const GithubLink = ({
+export const EditPageOnGithub = ({
   className,
   ...rest
 }: Omit<HTMLAttributes<HTMLAnchorElement>, 'color'>) => {
-  const pathName = usePathname();
-  const href = `https://github.com/digdir/designsystemet/tree/main/web/storefront/app${pathName}/page.mdx`;
+  const { pathname } = useLocation();
+  const pathParts = pathname.split('/');
+  const lang = pathParts[1];
+  const page = pathParts[2];
+  const restPath = pathParts.slice(3).join('/');
+
+  const href = `https://github.com/digdir/designsystemet/tree/main/apps/www/app/content/${page}/${lang}/${restPath}.mdx`;
 
   return (
     <Link
@@ -28,5 +32,3 @@ const GithubLink = ({
     </Link>
   );
 };
-
-export { GithubLink };
