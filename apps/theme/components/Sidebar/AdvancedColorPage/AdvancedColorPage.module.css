@@ -50,6 +50,7 @@
   align-items: center;
   gap: 8px;
   cursor: pointer;
+  margin-top: -8px;
 }
 
 .btn:hover {
