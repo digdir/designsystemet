@@ -68,22 +68,15 @@ Du kan ha en lenke i `Alert` hvis det hjelper brukeren med å løse oppgaven. Me
 ## Retningslinjer for Alert
 `Alert` brukes for å vise viktige meldinger som krever oppmerksomhet, men ikke nødvendigvis handling. Den kan brukes til å informere brukeren om status, endringer eller problemer i en løsning. Meldingen vises tydelig og skiller seg visuelt fra resten av innholdet. 
 
-<br/>
-
 Bruk komponenten varsomt. Brukere kan forveksle varsler med reklame, og dermed overse dem. Hvis vi bruker varsler for ofte, kan vi forverre dette problemet.
-
-<br/>
 
 Pass på at `Alert` har samme utseende og formspråk i alle tjenester og produkter. Denne komponenten skal være mulig å kjenne igjen over alt, så vi skal ikke justere den.
 
-<br/>
 
 **Passer til å**
 - gi korte og informative tidsbegrensede varsler
 - informere om feil som kun påvirker én del av systemet eller en mindre funksjon
 - informere om tilkoblingsproblemer eller API-feil som sannsynligvis løser seg ved å laste inn siden på nytt
-
-<br/>
 
 **Passer ikke til å**
 - validere enkelte skjemaelement, bruk heller komponentens egen feilmelding
@@ -96,13 +89,7 @@ Pass på at `Alert` har samme utseende og formspråk i alle tjenester og produkt
 
 Det er ikke alltid lett å forstå forskjellen på varslene, selv om de har ulike ikoner og farger. Derfor er det viktig at teksten vi skriver i varselet er tydelig og lett å forstå.
 
-Vi kan velge om vi vil ha med en overskrift i alert. Hvis meldingen er lengre enn en setning, kan det være lurt å ha med en overskrift som fremhever det viktigste.
-
-Det må være tydelig hvem som gjør hva. Tenk på teksten som en samtale med brukeren, bruk ord som «vi» og «du».
-
-Hvis meldingen er knyttet til en bestemt handling, for eksempel svar på et spørsmål, bør teksten gjenta nøkkelord fra ledeteksten.
-
-Det er spesielt viktig at teksten i varsler forteller om det er noe brukene må eller kan gjøre for å komme videre med oppgaven sin.
+Hvis det er noe brukerne må eller kan gjøre for å komme videre med oppgaven sin, skal teksten formidle dette. Når meldingen er lengre enn en setning, kan det være lurt å ha med en overskrift som fremhever det viktigste. 
 
 Her er en liste med hvilken type informasjon en varsel bør inneholde:
 
@@ -113,7 +100,7 @@ Her er en liste med hvilken type informasjon en varsel bør inneholde:
 - Forsikre brukeren
   - Eksempel: "Endringene dine har blitt lagret."
 - Gi dem en vei ut av problemet
-  - Eksempel: "Hvis dette problemet oppstår igjen, kontakt Kundeservice."
+  - Eksempel: "Hvis dette problemet oppstår igjen, kontakt kundeservice."
 - Hjelp dem å fikse problemet selv
   - Eksempel: "Vennligst prøv igjen."
     
@@ -122,7 +109,7 @@ Her er en liste med hvilken type informasjon en varsel bør inneholde:
 
 ### Interaksjon med skjermleser
 
-Alert-komponenten kommer ikke med en `role="alert"` som default, den blir presentert for skjermleserbrukere som vanlig statisk innhold. Du kan legge på `role=alert` selv, men vær opperksom på forventet oppførsel dette medfører. Du kan lese mer om dette på [dokumentasjonen til ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role).
+`Alert` kommer ikke med en `role="alert"` som default, den blir presentert for skjermleserbrukere som vanlig statisk innhold. Du kan legge på `role=alert` selv, men vær opperksom på forventet oppførsel dette medfører. Du kan lese mer om dette på [dokumentasjonen til ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role).
 
 #### Ikke gjør dette
 
