@@ -57,6 +57,8 @@ export default {
   blog: {
     tag: 'Bloggen',
     title: 'Bloggen',
+    description:
+      'Her deler vi nyheter, tips og erfaringer fra utviklingen av designsystemet. Vi ønsker å dele kunnskap og erfaringer med hverandre, og bidra til å gjøre det enklere å lage gode digitale tjenester.',
     write: {
       title: 'Vil du skrive for bloggen?',
       description:

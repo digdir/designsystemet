@@ -21,7 +21,7 @@ import { FigmaLogo } from './logos/figma-logo';
 import { GithubLogo } from './logos/github-logo';
 
 type HeaderProps = {
-  menu: { name: string; href: string }[];
+  menu: { name: TemplateStringsArray; href: string }[];
   betaTag?: boolean;
   themeSwitcher?: boolean;
   transparentBackground?: boolean;

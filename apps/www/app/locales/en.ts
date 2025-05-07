@@ -59,6 +59,8 @@ export default {
   blog: {
     tag: 'Blog',
     title: 'Blog',
+    description:
+      'The blog contains articles about the design system, design, and development. The blog is a place for sharing knowledge and experiences with each other.',
     write: {
       title: 'Want to write for the blog?',
       description:
