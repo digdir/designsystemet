@@ -22,6 +22,7 @@
       "apps/www/app/tokens/**",
       "**/dist/**/*",
       "packages/theme/**/*.css",
+      "packages/css/src/theme/**/*.css",
       "**/tsconfig.*.json", // https://github.com/biomejs/biome/issues/1151
       "**/.react-router/**"
     ]
@@ -97,6 +98,10 @@
   },
 
   "overrides": [
+    {
+      "include": ["./packages/css/src/index.css"],
+      "css": { "formatter": { "quoteStyle": "double" } }
+    },
     { "include": ["**/*.css"], "formatter": { "lineWidth": 160 } },
     {
       "include": ["**/packages/cli/**/*.ts"],

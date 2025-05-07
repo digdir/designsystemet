@@ -16,9 +16,7 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "cssvar.files": [
-    "packages/theme/brand/digdir/color-scheme/light.css",
-    "packages/theme/brand/digdir/typography/primary.css",
-    "packages/theme/brand/digdir/semantic.css"
+    "packages/css/src/theme/designsystemet.css"
   ],
   "html-css-class-completion.includeGlobPattern": "packages/css/**/*.{css,html}",
   "[github-actions-workflow]": {
