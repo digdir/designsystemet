@@ -1,0 +1,20 @@
+{
+  "$schema": "../dist/config.schema.json",
+  "outDir": "./temp/designsystemet/design-tokens",
+  "clean": true,
+  "themes": {
+    "designsystemet": {
+      "colors": {
+        "main": {
+          "accent": "#0062BA"
+        },
+        "support": {
+          "brand1": "#F45F63",
+          "brand2": "#E5AA20",
+          "brand3": "#1E98F5"
+        },
+        "neutral": "#1E2B3C"
+      }
+    }
+  }
+}
