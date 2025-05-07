@@ -65,7 +65,7 @@ export const buildTokens = async (options: Omit<BuildOptions, 'process' | '$them
 
   const fileHeader = R.join('')([
     defaultFileHeader,
-    $designsystemet ? `\ndesign-tokens: v${$designsystemet.version} ` : '',
+    $designsystemet ? `\ndesign-tokens: v${$designsystemet.version}` : '',
   ]);
   // Write theme CSS files (<theme>.css) to the output directory
   await write(createThemeCSSFiles({ processedBuilds, fileHeader }), outDir, options.dry);
