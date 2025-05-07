@@ -18,6 +18,7 @@
     "@react-router/node": "^7.5.3",
     "@react-router/serve": "^7.5.3",
     "@repo/components": "workspace:^",
+    "@vercel/react-router": "^1.1.0",
     "clsx": "^2.1.1",
     "i18next": "^25.0.2",
     "isbot": "^5.1.27",

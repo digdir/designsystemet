@@ -8,6 +8,7 @@ import {
 import { join } from 'node:path';
 import { cwd } from 'node:process';
 import type { Config } from '@react-router/dev/config';
+import { vercelPreset } from '@vercel/react-router/vite';
 import { normalizePath } from 'vite';
 
 declare module 'react-router' {
@@ -139,6 +140,7 @@ const config: Config = {
     }
     return 'root';
   }, */
+  presets: [vercelPreset()],
   buildEnd: async ({ buildManifest: rrBuild }) => {
     const manifestPath = join(
       dirname,
