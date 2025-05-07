@@ -1,8 +1,10 @@
 import {
   type ColorScheme,
+  type HexColor,
   type ThemeInfo,
   generateColorSchemes,
 } from '@digdir/designsystemet/color';
+import designsystemetConfig from '@digdir/designsystemet/configs/designsystemet.config.json';
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
 
@@ -41,6 +43,15 @@ type ColorStore = {
   setThemeTab: (tab: 'overview' | 'colorsystem') => void;
 };
 
+const { colors } = designsystemetConfig.themes.designsystemet;
+
+const mapColorTheme = (colors: Record<string, string>) => {
+  return Object.entries(colors).map(([key, value]) => ({
+    name: key,
+    colors: generateColorSchemes(value as HexColor),
+  }));
+};
+
 export const useThemeStore = create(
   subscribeWithSelector<ColorStore>((set) => ({
     activePage: 'colors',
@@ -48,15 +59,9 @@ export const useThemeStore = create(
     baseBorderRadius: 4,
     colorScheme: 'light',
     colors: {
-      main: [
-        { name: 'primary', colors: generateColorSchemes('#0062BA') },
-        { name: 'accent', colors: generateColorSchemes('#1E98F5') },
-      ],
-      neutral: [{ name: 'neutral', colors: generateColorSchemes('#1E2B3C') }],
-      support: [
-        { name: 'extra1', colors: generateColorSchemes('#F45F63') },
-        { name: 'extra2', colors: generateColorSchemes('#E5AA20') },
-      ],
+      main: mapColorTheme(colors.main),
+      neutral: mapColorTheme({ neutral: colors.neutral }),
+      support: mapColorTheme(colors.support),
     },
     themeTab: 'overview',
     setThemeTab: (tab) => set({ themeTab: tab }),
