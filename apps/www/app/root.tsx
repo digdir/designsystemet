@@ -13,7 +13,7 @@ import '@digdir/designsystemet-css';
 import './app.css';
 import { useTranslation } from 'react-i18next';
 import { Error404 } from './_components/errors/error-404';
-import { getInstance, i18nextMiddleware } from './middleware/i18next';
+import { i18nextMiddleware } from './middleware/i18next';
 
 export const unstable_middleware = [i18nextMiddleware];
 
@@ -38,11 +38,7 @@ export const meta = () => {
   ];
 };
 
-export const loader = async ({
-  params,
-  request,
-  context,
-}: Route.LoaderArgs) => {
+export const loader = async ({ params, request }: Route.LoaderArgs) => {
   const url = new URL(request?.url || '');
   /* if the url is slack, then redirect to slack */
   if (url.pathname === '/slack') {
@@ -60,9 +56,6 @@ export const loader = async ({
   }
 
   const lang = params.lang;
-
-  const i18n = getInstance(context);
-  i18n.changeLanguage(lang);
 
   const centerLinks = [
     {
