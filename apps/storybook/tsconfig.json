@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "types": ["../../packages/theme/brand/colors.d.ts"]
+    "types": ["../../packages/css/src/theme/colors.d.ts"]
   },
   "files": ["./.storybook/componentOverrides.module.scss"],
   "include": [

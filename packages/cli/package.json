@@ -48,6 +48,8 @@
     "test": "pnpm test:tokens-create-and-build-options && pnpm test:tokens-create-and-build-config",
     "digdir:tokens-create": "pnpm run designsystemet tokens create --config ./configs/digdir.config.json",
     "designsystemet:tokens-create": "pnpm run designsystemet tokens create --config ./configs/designsystemet.config.json",
+    "designsystemet:tokens-build": "pnpm run designsystemet tokens build -t ../../internal/design-tokens -o ../../packages/css/src/theme --clean",
+    "update:theme": "pnpm designsystemet:tokens-create && pnpm designsystemet:tokens-build",
     "update:template": "tsx ./src/scripts/update-template.ts",
     "update:design-tokens": "pnpm digdir:tokens-create && tsx ./src/scripts/update-design-tokens.ts",
     "verify": "pnpm test && pnpm update:template && pnpm update:design-tokens"
