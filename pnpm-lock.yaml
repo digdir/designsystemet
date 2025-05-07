@@ -496,6 +496,9 @@ importers:
       chroma-js:
         specifier: ^3.1.2
         version: 3.1.2
+      colorjs.io:
+        specifier: ^0.6.0-alpha.1
+        version: 0.6.0-alpha.1
       commander:
         specifier: ^13.1.0
         version: 13.1.0
@@ -3220,6 +3223,9 @@ packages:
 
   colorjs.io@0.4.3:
     resolution: {integrity: sha512-Jr6NiWFZCuSECl23Bhe4jvDldQsE0ErnWrdl3xIUFy+Bkp0l8r5qt/iZlNH47/xxGP5izcyC8InjoUoI4Po+Pg==}
+
+  colorjs.io@0.6.0-alpha.1:
+    resolution: {integrity: sha512-c/h/8uAmPydQcriRdX8UTAFHj6SpSHFHBA8LvMikvYWAVApPTwg/pyOXNsGmaCBd6L/EeDlRHSNhTtnIFp/qsg==}
 
   colorparsley@0.1.8:
     resolution: {integrity: sha512-rObESTTTE6G5qO5WFwFxWPggpw4KfpxnLC6Ssl8bITBnNVRhDsyCeTRAUxWQNVTx2pRknKlO2nddYTxjkdNFaw==}
@@ -9168,6 +9174,8 @@ snapshots:
   colorette@1.4.0: {}
 
   colorjs.io@0.4.3: {}
+
+  colorjs.io@0.6.0-alpha.1: {}
 
   colorparsley@0.1.8: {}
 
