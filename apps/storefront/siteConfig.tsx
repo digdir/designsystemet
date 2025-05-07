@@ -189,7 +189,7 @@ export const SiteConfig = {
               url: 'monstre/representasjon',
             },
             {
-              name: 'Eksterne lenker',
+              name: 'Merking av lenker',
               url: 'monstre/eksterne-lenker',
             },
           ],

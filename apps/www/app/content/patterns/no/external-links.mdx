@@ -6,7 +6,8 @@ date: 2025-01-29
 ---
 
 
-Lenker er en viktig del av navigasjonen på nett, og måten vi utformer og merker dem på påvirker brukeropplevelsen. Når vi bruker eksterne lenker, må vi merke dem ekstra tydelig slik at brukerne forstår hva som skjer når de klikker. I denne artikkelen går vi gjennom hvordan vi bør merke lenker og hvilke språk- og designprinsipper vi bør følge. Målet er å skape en mer forutsigbar og tilgjengelig brukeropplevelse.
+
+Lenker er en viktig del av navigasjonen på nett, og måten vi utformer og merker dem på påvirker brukeropplevelsen. Når vi bruker eksterne lenker, er det spesielt viktig at brukerne forstår hva som skjer når de klikker. I denne artikkelen går vi gjennom hvordan vi bør merke lenker og hvilke språk- og designprinsipper vi bør følge. Målet er å skape en mer forutsigbar og tilgjengelig brukeropplevelse.
 
 ## Eksterne lenker
 Eksterne lenker leder brukeren til en annen nettside eller et annet domene enn det de befinner seg på. Når en bruker klikker på en ekstern lenke, forlater de det opprinnelige nettstedet og åpner innhold fra en annen aktør eller tjeneste.
@@ -16,7 +17,12 @@ Det har variert hvordan  eksterne lenker blir markert på ulike nettsteder. Noen
 For å skape en forutsigbar og god brukeropplevelse bør vi gi brukeren informasjon om:
 
 * Destinasjonen – hvor lenken fører dem.
-* Oppførsel - hvis lenken åpnes ny fane eller om den har spesielle interaksjoner som for eksempel telefon eller e-post. 
+* Oppførsel - for eksempel om lenken åpner i ny fane, eller hvis den starter en spesiell handling som telefonsamtale eller e-post.
+
+### Hvor fører lenken 
+Det er ikke alltid nødvendig å eksplisitt merke at en lenke er ekstern. Ofte fremgår det tydelig av konteksten. Hvis lenketeksten for eksempel er “Flekkefjord kommune”, vil brukeren naturlig forvente at lenken leder til kommunens nettsider. I slike tilfeller er det unødvendig å legge til ekstra informasjon. 
+
+Dersom lenken viser til et spesifikt innhold hos kommunen, som for eksempel informasjon om parkering, kan lenken være "[Parkering i Flekkefjord kommune](https://www.flekkefjord.kommune.no/parkering.504251.no.html)" eller "[Parkering (flekkefjord.kommune.no)](https://www.flekkefjord.kommune.no/parkering.504251.no.html)" Det viktigste er at brukeren ikke blir overrasket over hvor de havner etter å ha klikket.
 
 ## Språk
 Pass på at lenketeksten beskriver formålet med lenken. Hvordan du skriver lenketeksten vil avhenge av konteksten. I løpende tekst bør lenken være en naturlig del av setningen og gi mening også når den leses isolert. I en liste eller meny kan lenken stå mer fritt, men den må fortsatt være tydelig og gi brukeren en klar idé om hva de kan forvente når de klikker.
@@ -114,29 +120,27 @@ Selv om en lenke inneholder `target="_blank"` så er det ikke alle kombinasjoner
 
 
 ## Design
+UU-tilsynet har informasjon om lovpålagte krav for [utseende på lenker (uutilsynet.no)] https://www.uutilsynet.no/veiledning/lenker/214#utseende. Brukeren må kunne identifisere alle lenker uavhengig av situasjon, evner og innstillinger på utstyret som benyttes. 
 
 ### Unngå “ekstern-lenke”-ikon
 
+Det er etablert et ikon som betyr “ekstern lenke”, men dette ikonet blir ofte brukt eller forstått som “Åpnes i ny fane”. En miniundersøkelse vi utførte i arbeidet med denne artikkelen viste at selv erfarne designere var usikre på betydningen av ikonet som ofte brukes for å markere eksterne lenker. Over halvparten tolket ikonet som “åpnes i ny fane”, mens resten mente det betydde “ekstern lenke”. Dette viser at symbolet i seg selv ikke er entydig, og at det ikke er til å stole på som eneste måte å formidle funksjonen på.
+
+Hvilket ikon er for eksterne lenker og hvilket er for åpne i ny fane? 
 <Image
   src="/img/externallinks-icon.png"
   alt="Eksempel på to ikoner som likner på hverandre."
   boxShadow={false}
   dataUnstyled
 />
-Hvilken ikon er for eksterne lenker og hvilket er for åpne i ny fane? 
 
-Det er etablert et ikon som betyr “ekstern lenke”, men dette ikonet blir ofte brukt eller forstått som “Åpnes i ny fane”. Bruk av ikonet kan i verste fall villede brukeren, spesielt hvis lenken ikke faktisk åpnes i en ny fane. Hvis det primære målet er å indikere at en lenke leder til en ekstern side, er det mer effektivt å kommunisere dette i lenketeksten i stedet for å stole på et ikon alene. 
+Bruk av ikonet kan i verste fall villede brukeren, spesielt hvis lenken ikke faktisk åpnes i en ny fane. Hvis det primære målet er å indikere at en lenke leder til en ekstern side, er det mer effektivt å kommunisere dette i lenketeksten i stedet for å stole på et ikon alene. 
 
 Om lenketekstene blir veldig lange eller lenkelister oppleves støyete med repeterende informasjon om at det er eksterne lenker ønsker man ofte å bruke ikoner i stedet for å gjøre designet enklere. Før du tar dette valget, vurder om bruker faktisk trenger denne ekstra informasjonen. Er det en del av en naturlig flyt eller i en lignende kontekst kan det være at brukeren ikke opplever det som å bli tatt ut av kontekst. I så fall er kanskje informasjon om ekstern lenke overflødig. 
 
 Hvis du likevel bruker ikon, vær oppmerksom på at det tolkes ulikt av forskjellige brukere da det i dag blir brukt både for eksterne lenker og åpne i ny fane. 
 
 Dersom ikonet inneholder meningsbærende informasjon som ikke kommer frem i lenketeksten, skal dette formidles i ikonets alternativ tekst. 
-
-Overskrift for å si at flere linker tar deg ut av konteksten? 
-Når er det viktig at vi sier i fra om at du blir tatt til en ekstern side?
-
-eksempel med ulike ikoner som er ganske like og kan mistolkes? (Erfarne designere svarte 50/50 på om ikonet betyr åpne i ny fane eller “ekstern lenke”.) Vet du hvilket som betyr hva?:
 
 ### Lenke til filer
 
@@ -163,10 +167,9 @@ Dersom lenken fører til en fil som skal lastes ned istedenfor å åpnes i nettl
 - [WCAG 2.1: 2.4.4 formål med lenke (i kontekst) (A)](https://www.w3.org/Translations/WCAG21-no/#link-purpose-in-context) 
 - [WCAG 2.1: 2.4.9 Formål med lenke (bare lenke) (AAA)](https://www.w3.org/Translations/WCAG21-no/#link-purpose-link-only) 
 - [WCAG 2.1: 3.2.5 Endring på anmodning (AAA)](https://www.w3.org/Translations/WCAG21-no/#change-on-request) 
-- [uutilsynet om løsningsforslag for lenker](https://www.w3.org/Translations/WCAG21-no/#change-on-request) 
+- [uutilsynet om løsningsforslag for lenker](https://www.uutilsynet.no/veiledning/lenker/214) 
 - [Skjermlesere informerer ikke om at lenker åpnes i ny fane - undersøkelse av Powermapper](https://www.powermapper.com/tests/screen-readers/navigation/a-target-blank/)
 - 1.4.1 Farger For
-
 
 
 <Contributors
