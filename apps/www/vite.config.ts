@@ -35,7 +35,7 @@ export default defineConfig({
       plugins: [],
     },
   },
-  build: {
+  /* build: {
     rollupOptions: {
       treeshake: true,
       output: {
@@ -45,10 +45,10 @@ export default defineConfig({
     },
     chunkSizeWarningLimit: 300,
     minify: true,
-  },
+  }, */
   plugins: [
-    reactRouter(),
     tsconfigPaths(),
+    reactRouter(),
     /* viteStaticCopy({
       targets: [
         {
