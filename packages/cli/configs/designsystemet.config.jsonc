@@ -1,4 +1,5 @@
 {
+  // Base theme for Designsystemet
   "$schema": "../dist/config.schema.json",
   "outDir": "./temp/designsystemet/design-tokens",
   "clean": true,
