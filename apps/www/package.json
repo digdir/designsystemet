@@ -3,9 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "react-router build && node scripts/copy-content.js",
+    "build": "react-router typegen && react-router build && node scripts/copy-content.js",
     "dev": "react-router dev",
-    "start": "react-router-serve ./dist/server/index.js",
+    "start": "react-router-serve ./dist/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js",
     "types": "react-router typegen && tsc"
   },
   "dependencies": {
