@@ -25,7 +25,8 @@
     },
     "./tokens": {
       "import": "./dist/src/tokens/index.js"
-    }
+    },
+    "./configs/*": "./configs/*"
   },
   "publishConfig": {
     "access": "public"
@@ -46,7 +47,7 @@
     "test:tokens-create-and-build-config": "pnpm test:tokens-create-config && pnpm test:tokens-build-config",
     "test": "pnpm test:tokens-create-and-build-options && pnpm test:tokens-create-and-build-config",
     "digdir:tokens-create": "pnpm run designsystemet tokens create --config ./configs/digdir.config.json",
-    "designsystemet:tokens-create": "pnpm run designsystemet tokens create --config ./configs/designsystemet.config.jsonc",
+    "designsystemet:tokens-create": "pnpm run designsystemet tokens create --config ./configs/designsystemet.config.json",
     "update:template": "tsx ./src/scripts/update-template.ts",
     "update:design-tokens": "pnpm digdir:tokens-create && tsx ./src/scripts/update-design-tokens.ts",
     "verify": "pnpm test && pnpm update:template && pnpm update:design-tokens"
