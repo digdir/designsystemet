@@ -60,7 +60,7 @@ export const useThemeParams = () => {
     });
 
     const borderRadius = parseInt(query.get('border-radius') as string);
-    if (borderRadius) {
+    if (!Number.isNaN(borderRadius)) {
       setBorderRadius(borderRadius);
     }
   }, []);
