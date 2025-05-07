@@ -399,9 +399,6 @@ importers:
       '@repo/components':
         specifier: workspace:^
         version: link:../_components
-      '@vercel/react-router':
-        specifier: ^1.1.0
-        version: 1.1.0(@react-router/dev@7.5.3(@react-router/serve@7.5.3(react-router@7.5.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3))(@types/node@22.15.3)(less@4.3.0)(react-router@7.5.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.3)(less@4.3.0)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1))(yaml@2.7.1))(@react-router/node@7.5.3(react-router@7.5.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3))(isbot@5.1.27)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -2300,9 +2297,6 @@ packages:
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
     engines: {node: '>=10.13.0'}
 
-  '@ts-morph/common@0.11.1':
-    resolution: {integrity: sha512-7hWZS0NRpEsNV8vWJzg7FEz6V8MaLNeJOmwmghqUXTpzk16V1LLZhdo+4QvE/+zv4cVci0OviuJFnqhEfoV3+g==}
-
   '@types/apca-w3@0.1.3':
     resolution: {integrity: sha512-1C7e66xWCy1UOXHk/VXs4tjrY9hW3q3sykjJJxSC5TIIFt0lt9mh0ysdQxY0rVejTv4SW92G19j98PjqjCSz7Q==}
 
@@ -2509,18 +2503,6 @@ packages:
       vue-router:
         optional: true
 
-  '@vercel/react-router@1.1.0':
-    resolution: {integrity: sha512-pcQEGIn23DoPhvKvRaE/vZZ0Sw7ZJBncLZq39UkzL4PXT24/5oKWStaZMYWMGwmM9YtnRpAVJBMLzSLD7MW3rQ==}
-    peerDependencies:
-      '@react-router/dev': '7'
-      '@react-router/node': '7'
-      isbot: '5'
-      react: '>=18'
-      react-dom: '>=18'
-
-  '@vercel/static-config@3.0.0':
-    resolution: {integrity: sha512-2qtvcBJ1bGY0dYGYh3iM7yGKkk971FujLEDXzuW5wcZsPr1GSEjO/w2iSr3qve6nDDtBImsGoDEnus5FI4+fIw==}
-
   '@vitejs/plugin-react-swc@3.9.0':
     resolution: {integrity: sha512-jYFUSXhwMCYsh/aQTgSGLIN3Foz5wMbH9ahb0Zva//UzwZYbMiZd7oT3AU9jHT9DLswYDswsRwPU9jVF3yA48Q==}
     peerDependencies:
@@ -2712,9 +2694,6 @@ packages:
 
   ajv@8.17.1:
     resolution: {integrity: sha512-B/gBuNg5SiMTrPkC+A2+cW0RszwxYmn6VYxB/inlBStS5nx6xHIt/ehKRhIMhqusl7a8LjQoZnjCs5vhwxOQ1g==}
-
-  ajv@8.6.3:
-    resolution: {integrity: sha512-SMJOdDP6LqTkD0Uq8qLi+gMwSt0imXLSV080qFVwJCpH9U6Mb+SUGHAXM0KNbcBPguytWyvFxcHgMLe2D2XSpw==}
 
   ansi-colors@4.1.3:
     resolution: {integrity: sha512-/6w/C21Pm1A7aZitlI5Ni/2J6FFQN8i1Cvz3kHABAAbw93v/NlvKdVOqz7CCWz/3iv/JplRSEEZ83XION15ovw==}
@@ -3028,9 +3007,6 @@ packages:
   clsx@2.1.1:
     resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==}
     engines: {node: '>=6'}
-
-  code-block-writer@10.1.1:
-    resolution: {integrity: sha512-67ueh2IRGst/51p0n6FvPrnRjAGHY5F8xdjkgrYE7DDzpJe6qA07RYQ9VcoUeo5ATOjSOiWpSL3SWBRRbempMw==}
 
   collapse-white-space@2.1.0:
     resolution: {integrity: sha512-loKTxY1zCOuG4j9f6EPnuyyYkf58RnhhWTvRoZEokgB+WbdXehfjFviyOVYkqzEWz1Q5kRiZdBYS5SwxbQYwzw==}
@@ -4143,9 +4119,6 @@ packages:
     resolution: {integrity: sha512-lR4MXjGNgkJc7tkQ97kb2nuEMnNCyU//XYVH0MKTGcXEiSudQ5MKGKen3C5QubYy0vmq+JGitUg92uuywGEwIA==}
     engines: {node: ^18.17.0 || >=20.5.0}
 
-  json-schema-to-ts@1.6.4:
-    resolution: {integrity: sha512-pR4yQ9DHz6itqswtHCm26mw45FSNfQ9rEQjosaZErhn5J3J2sIViQiz8rDaezjKAhFGpmsoczYVBgGHzFw/stA==}
-
   json-schema-traverse@1.0.0:
     resolution: {integrity: sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==}
 
@@ -4816,9 +4789,6 @@ packages:
     resolution: {integrity: sha512-da8BVIhzjtgScwDJ2TtKsfT5JFWz1hYoBl9rUQ1f38MC2HwnEIkK8VN3dKMKcP7P7bvvgzNDbfNHtx3MsQb5vA==}
     engines: {node: '>=14', npm: '>5'}
     hasBin: true
-
-  path-browserify@1.0.1:
-    resolution: {integrity: sha512-b7uo2UCUOYZcnF/3ID0lulOJi/bafxa1xPe7ZPsammBSpjSWQkjNxlt635YGS2MiR9GjvuXCtz2emr3jbsz98g==}
 
   path-exists@4.0.0:
     resolution: {integrity: sha512-ak9Qy5Q7jYb2Wwcey5Fpvg2KoAc/ZIhLSLOSBmRmygPsGwkVVt0fZa0qrtMz+m6tJTAHfZQ8FnmB4MG4LWy7/w==}
@@ -6029,12 +5999,6 @@ packages:
   ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
 
-  ts-morph@12.0.0:
-    resolution: {integrity: sha512-VHC8XgU2fFW7yO1f/b3mxKDje1vmyzFXHWzOYmKEkCEwcLjDtbdLgBQviqj4ZwP4MJkQtRo6Ha2I29lq/B+VxA==}
-
-  ts-toolbelt@6.15.5:
-    resolution: {integrity: sha512-FZIXf1ksVyLcfr7M317jbB67XFJhOO1YqdTcuGaq9q5jLUoTikukZ+98TPjKiP2jC5CgmYdWWYs0s2nLSU0/1A==}
-
   ts-toolbelt@9.6.0:
     resolution: {integrity: sha512-nsZd8ZeNUzukXPlJmTBwUAuABDe/9qtVDelJeT/qW0ow3ZS3BsQJtNkan1802aM9Uf68/Y8ljw86Hu0h5IUW3w==}
 
@@ -6152,9 +6116,6 @@ packages:
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
-
-  uri-js@4.4.1:
-    resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
 
   url@0.11.4:
     resolution: {integrity: sha512-oCwdVC7mTuWiPyjLUz/COz5TLk6wgp0RCsN+wHZ2Ekneac9w8uuV0njcbbie2ME+Vs+d6duwmYuR3HgQXs1fOg==}
@@ -8138,13 +8099,6 @@ snapshots:
 
   '@trysound/sax@0.2.0': {}
 
-  '@ts-morph/common@0.11.1':
-    dependencies:
-      fast-glob: 3.3.3
-      minimatch: 3.1.2
-      mkdirp: 1.0.4
-      path-browserify: 1.0.1
-
   '@types/apca-w3@0.1.3': {}
 
   '@types/aria-query@5.0.4': {}
@@ -8341,22 +8295,6 @@ snapshots:
     optionalDependencies:
       next: 15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.87.0)
       react: 19.1.0
-
-  '@vercel/react-router@1.1.0(@react-router/dev@7.5.3(@react-router/serve@7.5.3(react-router@7.5.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3))(@types/node@22.15.3)(less@4.3.0)(react-router@7.5.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.3)(less@4.3.0)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1))(yaml@2.7.1))(@react-router/node@7.5.3(react-router@7.5.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3))(isbot@5.1.27)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
-    dependencies:
-      '@react-router/dev': 7.5.3(@react-router/serve@7.5.3(react-router@7.5.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3))(@types/node@22.15.3)(less@4.3.0)(react-router@7.5.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.3)(less@4.3.0)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1))(yaml@2.7.1)
-      '@react-router/node': 7.5.3(react-router@7.5.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)
-      '@vercel/static-config': 3.0.0
-      isbot: 5.1.27
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
-      ts-morph: 12.0.0
-
-  '@vercel/static-config@3.0.0':
-    dependencies:
-      ajv: 8.6.3
-      json-schema-to-ts: 1.6.4
-      ts-morph: 12.0.0
 
   '@vitejs/plugin-react-swc@3.9.0(vite@6.3.5(@types/node@22.15.3)(less@4.3.0)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1))':
     dependencies:
@@ -8625,13 +8563,6 @@ snapshots:
       fast-uri: 3.0.6
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
-
-  ajv@8.6.3:
-    dependencies:
-      fast-deep-equal: 3.1.3
-      json-schema-traverse: 1.0.0
-      require-from-string: 2.0.2
-      uri-js: 4.4.1
 
   ansi-colors@4.1.3: {}
 
@@ -8940,8 +8871,6 @@ snapshots:
       wrap-ansi: 7.0.0
 
   clsx@2.1.1: {}
-
-  code-block-writer@10.1.1: {}
 
   collapse-white-space@2.1.0: {}
 
@@ -10136,11 +10065,6 @@ snapshots:
 
   json-parse-even-better-errors@4.0.0: {}
 
-  json-schema-to-ts@1.6.4:
-    dependencies:
-      '@types/json-schema': 7.0.15
-      ts-toolbelt: 6.15.5
-
   json-schema-traverse@1.0.0: {}
 
   json-stable-stringify@1.3.0:
@@ -11096,8 +11020,6 @@ snapshots:
       slash: 2.0.0
       tmp: 0.0.33
       yaml: 2.7.1
-
-  path-browserify@1.0.1: {}
 
   path-exists@4.0.0: {}
 
@@ -12385,13 +12307,6 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  ts-morph@12.0.0:
-    dependencies:
-      '@ts-morph/common': 0.11.1
-      code-block-writer: 10.1.1
-
-  ts-toolbelt@6.15.5: {}
-
   ts-toolbelt@9.6.0: {}
 
   tsconfck@3.1.5(typescript@5.8.3):
@@ -12536,10 +12451,6 @@ snapshots:
       browserslist: 4.24.5
       escalade: 3.2.0
       picocolors: 1.1.1
-
-  uri-js@4.4.1:
-    dependencies:
-      punycode: 2.3.1
 
   url@0.11.4:
     dependencies:
