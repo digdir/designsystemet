@@ -463,6 +463,9 @@ importers:
       vite:
         specifier: ^6.3.5
         version: 6.3.5(@types/node@22.15.3)(less@4.3.0)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1)
+      vite-env-only:
+        specifier: ^3.0.3
+        version: 3.0.3(vite@6.3.5(@types/node@22.15.3)(less@4.3.0)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1))
       vite-plugin-static-copy:
         specifier: ^2.3.1
         version: 2.3.1(vite@6.3.5(@types/node@22.15.3)(less@4.3.0)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1))
@@ -6210,6 +6213,11 @@ packages:
 
   victory-vendor@36.9.2:
     resolution: {integrity: sha512-PnpQQMuxlwYdocC8fIJqVXvkeViHYzotI+NJrCuav0ZYFoq912ZHBk3mCeuj+5/VpodOjPe1z0Fk2ihgzlXqjQ==}
+
+  vite-env-only@3.0.3:
+    resolution: {integrity: sha512-iAb7cTXRrvFShaF1n+G8f6Yqq7sRJcxipNYNQQu0DN5N9P55vJMmLG5lNU5moYGpd+ZH1WhBHdkWi5WjrfImHg==}
+    peerDependencies:
+      vite: '*'
 
   vite-node@3.0.0-beta.2:
     resolution: {integrity: sha512-ofTf6cfRdL30Wbl9n/BX81EyIR5s4PReLmSurrxQ+koLaWUNOEo8E0lCM53OJkb8vpa2URM2nSrxZsIFyvY1rg==}
@@ -12611,6 +12619,19 @@ snapshots:
       d3-shape: 3.2.0
       d3-time: 3.1.0
       d3-timer: 3.0.1
+
+  vite-env-only@3.0.3(vite@6.3.5(@types/node@22.15.3)(less@4.3.0)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1)):
+    dependencies:
+      '@babel/core': 7.27.1
+      '@babel/generator': 7.27.1
+      '@babel/parser': 7.27.1
+      '@babel/traverse': 7.27.1
+      '@babel/types': 7.27.1
+      babel-dead-code-elimination: 1.0.10
+      micromatch: 4.0.8
+      vite: 6.3.5(@types/node@22.15.3)(less@4.3.0)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1)
+    transitivePeerDependencies:
+      - supports-color
 
   vite-node@3.0.0-beta.2(@types/node@22.15.3)(less@4.3.0)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1):
     dependencies:
