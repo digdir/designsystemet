@@ -391,10 +391,10 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0(@types/react@19.1.2)(react@19.1.0)
       '@react-router/node':
-        specifier: ^7.5.3
+        specifier: ^7.3.0
         version: 7.5.3(react-router@7.5.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)
       '@react-router/serve':
-        specifier: ^7.5.3
+        specifier: ^7.3.0
         version: 7.5.3(react-router@7.5.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)
       '@repo/components':
         specifier: workspace:^
@@ -427,7 +427,7 @@ importers:
         specifier: ^15.5.1
         version: 15.5.1(i18next@25.0.2(typescript@5.8.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
       react-router:
-        specifier: ^7.5.3
+        specifier: ^7.3.0
         version: 7.5.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       rehype-autolink-headings:
         specifier: ^7.1.0
@@ -446,7 +446,7 @@ importers:
         version: 4.4.0
     devDependencies:
       '@react-router/dev':
-        specifier: ^7.5.3
+        specifier: ^7.3.0
         version: 7.5.3(@react-router/serve@7.5.3(react-router@7.5.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3))(@types/node@22.15.3)(less@4.3.0)(react-router@7.5.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.3)(less@4.3.0)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1))(yaml@2.7.1)
       '@types/node':
         specifier: ^22.15.3
