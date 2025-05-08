@@ -1,3 +1,4 @@
+import netlifyPlugin from '@netlify/vite-plugin-react-router';
 import { reactRouter } from '@react-router/dev/vite';
 import { defineConfig } from 'vite';
 import { envOnlyMacros } from 'vite-env-only';
@@ -9,5 +10,5 @@ export default defineConfig({
       plugins: [],
     },
   },
-  plugins: [tsconfigPaths(), envOnlyMacros(), reactRouter()],
+  plugins: [tsconfigPaths(), envOnlyMacros(), reactRouter(), netlifyPlugin()],
 });
