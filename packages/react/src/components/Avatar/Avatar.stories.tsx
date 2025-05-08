@@ -84,7 +84,7 @@ export const InDropdown: Story = () => (
       </Avatar>
       Velg Profil
     </Dropdown.Trigger>
-    <Dropdown placement='bottom-end' data-size='md' open>
+    <Dropdown placement='bottom-end' autoPlacement={false} data-size='md' open>
       <Dropdown.List>
         <Dropdown.Item>
           <Dropdown.Button>
