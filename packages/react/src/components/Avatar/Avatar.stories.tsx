@@ -2,9 +2,9 @@ import cat1 from '@assets/img/cats/Cat 3.jpg';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { BriefcaseIcon } from '@navikt/aksel-icons';
-import { Avatar } from '.';
+import { Avatar, type AvatarProps } from '.';
 import { Badge, Dropdown } from '../';
-
+import themeConfig from '../../../../theme/configs/designsystemet.config.json';
 type Story = StoryFn<typeof Avatar>;
 
 const meta: Meta<typeof Avatar> = {
@@ -21,6 +21,12 @@ const meta: Meta<typeof Avatar> = {
     },
   },
 };
+
+const colorVariants = [
+  ...Object.keys(themeConfig.themes.designsystemet.colors.main),
+  ...Object.keys(themeConfig.themes.designsystemet.colors.support),
+  themeConfig.themes.designsystemet.colors.neutral,
+];
 
 export default meta;
 
@@ -49,11 +55,14 @@ export const Sizes: Story = () => (
 
 export const ColorVariants: Story = () => (
   <>
-    <Avatar data-color='accent' aria-label='color accent' />
-    <Avatar data-color='neutral' aria-label='color neutral' />
-    <Avatar data-color='brand1' aria-label='color brand1' />
-    <Avatar data-color='brand2' aria-label='color brand2' />
-    <Avatar data-color='brand3' aria-label='color brand3' />
+    {colorVariants.map((color) => (
+      <Avatar
+        key={color}
+        data-color={color as AvatarProps['data-color']}
+        aria-label={`color ${color}`}
+        initials={color}
+      />
+    ))}
   </>
 );
 
@@ -99,11 +108,7 @@ export const InDropdown: Story = () => (
         </Dropdown.Item>
         <Dropdown.Item>
           <Dropdown.Button>
-            <Avatar
-              data-size='xs'
-              data-color='brand1'
-              aria-label='Sogndal Kommune'
-            >
+            <Avatar data-size='xs' aria-label='Sogndal Kommune'>
               <BriefcaseIcon aria-hidden />
             </Avatar>
             Sogndal kommune

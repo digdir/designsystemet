@@ -1,6 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { Spinner } from '.';
+import themeConfig from '../../../../theme/configs/designsystemet.config.json';
 
 type Story = StoryFn<typeof Spinner>;
 
@@ -18,6 +19,12 @@ export default {
   },
 } as Meta;
 
+const colorVariants = [
+  ...Object.keys(themeConfig.themes.designsystemet.colors.main),
+  ...Object.keys(themeConfig.themes.designsystemet.colors.support),
+  themeConfig.themes.designsystemet.colors.neutral,
+];
+
 export const Preview: Story = (args) => <Spinner {...args} />;
 
 Preview.args = {
@@ -26,9 +33,14 @@ Preview.args = {
 
 export const Variants: Story = () => (
   <>
-    <Spinner aria-label='Henter kaffi' data-color='neutral' data-size='xl' />
-    <Spinner aria-label='Henter kaffi' data-color='accent' data-size='xl' />
-    <Spinner aria-label='Henter kaffi' data-color='brand1' data-size='xl' />
+    {colorVariants.map((color) => (
+      <Spinner
+        key={color}
+        aria-label={`Henter ${color} kaffi`}
+        data-color={color}
+        data-size='xl'
+      />
+    ))}
   </>
 );
 

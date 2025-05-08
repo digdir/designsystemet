@@ -3,8 +3,8 @@ import cat5 from '@assets/img/cats/Cat 5.jpg';
 import {} from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Fragment } from 'react/jsx-runtime';
-import { Card, Heading, Paragraph } from '../../';
+import { Card, type CardProps, Heading, Paragraph } from '../../';
+import themeConfig from '../../../../theme/configs/designsystemet.config.json';
 
 type Story = StoryFn<typeof Card>;
 
@@ -24,6 +24,12 @@ export default {
   },
 } satisfies Meta;
 
+const colorVariants = [
+  ...Object.keys(themeConfig.themes.designsystemet.colors.main),
+  ...Object.keys(themeConfig.themes.designsystemet.colors.support),
+  themeConfig.themes.designsystemet.colors.neutral,
+];
+
 export const Preview: Story = (args) => (
   <Card {...args} style={{ maxWidth: '320px' }}>
     <Heading>Card</Heading>
@@ -39,59 +45,25 @@ Preview.args = {
   'data-color': 'neutral',
 };
 
-const VariantsMap: {
-  [key: string]: { [key: string]: string };
-} = {
-  neutralDefault: {
-    'data-color': 'neutral',
-    variant: 'default',
-  },
-  neutralTinted: {
-    'data-color': 'neutral',
-    variant: 'tinted',
-  },
-  brand1Default: {
-    'data-color': 'brand1',
-    variant: 'default',
-  },
-  brand1Tinted: {
-    'data-color': 'brand1',
-    variant: 'tinted',
-  },
-  brand2Default: {
-    'data-color': 'brand2',
-    variant: 'default',
-  },
-  brand2Tinted: {
-    'data-color': 'brand2',
-    variant: 'tinted',
-  },
-  brand3Default: {
-    'data-color': 'brand3',
-    variant: 'default',
-  },
-  brand3Tinted: {
-    'data-color': 'brand3',
-    variant: 'tinted',
-  },
-};
+const variants = ['default', 'tinted'];
 
 export const Variants: StoryFn<typeof Card> = () => (
   <>
-    {Object.entries(VariantsMap).map(([key, value]) => (
-      <Card key={key} {...value}>
-        <Card.Block>
-          <Paragraph>
-            {Object.entries(value).map(([v, k]) => (
-              <Fragment key={v}>
-                {v}: {k}
-                <br />
-              </Fragment>
-            ))}
-          </Paragraph>
-        </Card.Block>
-      </Card>
-    ))}
+    {variants.map((variant) =>
+      colorVariants.map((color) => (
+        <Card
+          key={variant}
+          data-variant={variant}
+          data-color={color as CardProps['data-color']}
+        >
+          <Card.Block>
+            <Paragraph>
+              {variant}: {color}
+            </Paragraph>
+          </Card.Block>
+        </Card>
+      )),
+    )}
   </>
 );
 
@@ -166,7 +138,7 @@ export const Video: Story = () => (
 
 export const WithLink: Story = (args) => (
   <>
-    <Card {...args} data-color='brand1'>
+    <Card {...args}>
       <Card.Block>
         <img src={cat5} alt='' />
       </Card.Block>
@@ -215,7 +187,7 @@ export const WithLink: Story = (args) => (
 
 export const AsLink: Story = (args) => (
   <>
-    <Card {...args} data-color='brand1' asChild>
+    <Card {...args} asChild>
       <a
         href='https://designsystemet.no'
         target='_blank'
@@ -244,7 +216,7 @@ export const AsLink: Story = (args) => (
 
 export const AsButton: Story = (args) => (
   <>
-    <Card {...args} data-color='brand1' asChild>
+    <Card {...args} asChild>
       <button type='button'>
         <Card.Block>
           <Heading>Button Card with blocks</Heading>
