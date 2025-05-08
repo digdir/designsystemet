@@ -16,8 +16,7 @@ import classes from './components.module.css';
 
 const sortedData = data.sort((a, b) => a.title.localeCompare(b.title));
 
-const IS_NEXT_BRANCH =
-  process.env.NEXT_PUBLIC_DESIGNSYSTEMET_ENV === 'production';
+const IS_NEXT_BRANCH = false;
 
 /* If we are in the next branch, send us to the next storybook */
 if (IS_NEXT_BRANCH) {
@@ -40,18 +39,8 @@ export const loader = async ({
     });
   }
 
-  let t: (ns: string) => string = (ns: string) => '';
-
-  try {
-    const i18n = getInstance(context);
-    /* @ts-ignore */
-    t = i18n.getFixedT(lang);
-  } catch (error) {
-    return {
-      lang,
-      metadata: [],
-    };
-  }
+  const i18n = getInstance(context);
+  const t = i18n.getFixedT(lang);
 
   return {
     lang,

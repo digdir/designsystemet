@@ -20,18 +20,8 @@ export const loader = async ({
     });
   }
 
-  let t: (ns: string) => string = (ns: string) => '';
-
-  try {
-    const i18n = getInstance(context);
-    /* @ts-ignore */
-    t = i18n.getFixedT(lang);
-  } catch (error) {
-    return {
-      lang,
-      metadata: [],
-    };
-  }
+  const i18n = getInstance(context);
+  const t = i18n.getFixedT(lang);
 
   return {
     lang,
