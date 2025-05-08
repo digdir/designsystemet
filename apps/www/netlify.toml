@@ -1,6 +1,0 @@
-[build]
-command = "pnpm build"
-publish = "apps/www/dist/client"
-
-[dev]
-command = "react-router dev"
