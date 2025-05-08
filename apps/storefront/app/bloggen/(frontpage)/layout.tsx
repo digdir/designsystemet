@@ -1,5 +1,5 @@
+import { Container } from '@internal/components';
 import { PencilIcon } from '@navikt/aksel-icons';
-import { Container } from '@repo/components';
 import type { Metadata } from 'next';
 
 import { Banner, BannerHeading, BannerIcon } from 'components/Banner/Banner';

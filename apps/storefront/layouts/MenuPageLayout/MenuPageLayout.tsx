@@ -1,8 +1,8 @@
 'use client';
 import { Heading } from '@digdir/designsystemet-react';
+import { Container } from '@internal/components';
 import { ComponentIcon } from '@navikt/aksel-icons';
 import { Slot } from '@radix-ui/react-slot';
-import { Container } from '@repo/components';
 import cn from 'clsx/lite';
 import { usePathname } from 'next/navigation';
 import type * as React from 'react';

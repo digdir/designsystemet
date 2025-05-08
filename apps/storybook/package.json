@@ -22,7 +22,7 @@
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
     "@navikt/aksel-icons": "^7.21.0",
-    "@repo/components": "workspace:^",
+    "@internal/components": "workspace:^",
     "@storybook/addon-a11y": "^8.6.12",
     "@storybook/addon-essentials": "^8.6.12",
     "@storybook/addon-links": "^8.6.12",

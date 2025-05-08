@@ -23,7 +23,7 @@
     "@web/www",
     "theme",
     "storefront",
-    "@repo/components",
+    "@internal/components",
     "@web/storybook",
     "figma-plugin"
   ]

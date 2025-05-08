@@ -1,5 +1,5 @@
 import { getColorMetadataByNumber } from '@digdir/designsystemet/color';
-import { ColorModal } from '@repo/components';
+import { ColorModal } from '@internal/components';
 import cl from 'clsx/lite';
 import { useRef } from 'react';
 import type { TransformedToken } from 'style-dictionary';

@@ -17,7 +17,7 @@
     "@radix-ui/react-slot": "^1.2.0",
     "@react-router/node": "^7.5.3",
     "@react-router/serve": "^7.5.3",
-    "@repo/components": "workspace:^",
+    "@internal/components": "workspace:^",
     "@vercel/react-router": "^1.1.0",
     "clsx": "^2.1.1",
     "i18next": "^24.2.3",
