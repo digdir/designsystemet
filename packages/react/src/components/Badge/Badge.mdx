@@ -36,7 +36,7 @@ Du kan setje plassering med `placement`. Dersom elementet du plasserer over er e
 
 <Canvas of={BadgeStories.Floating} />
 
-Ikkje alle ikon har lik form, og då må du kanskje endre kvar `Badge` skal plasserast. Dersom du ikkje får `Badge` til å liggje der du ynskjer, kan du bruke `style` for å overstyre plasseringa.
+Ikkje alle ikon har lik form, og då må du kanskje endre kor `Badge` skal plasserast. Dersom du ikkje får `Badge` til å liggje der du ynskjer, kan du bruke `style` for å overstyre plasseringa.
 Dette fungerer også når du bruker `overlap="circle"`.
 
 <Canvas of={BadgeStories.CustomPlacement} />
@@ -54,17 +54,11 @@ Dersom du ikkje sender inn `count`, blir berre ein sirkel vist. Dette kan brukas
 
 <Canvas of={BadgeStories.Status} />
 
-### I Tabs
+### Inline
 
 Du kan bruke komponenten anten inline eller flytande over eit element.
 
 <Canvas of={BadgeStories.InTabs} />
-
-### I Button
-
-Du kan bruke komponenten inni eller flytande på ein knapp.
-
-<Canvas of={BadgeStories.InButton} />
 
 ## Retningslinjer
 Bruk `Badge` for å trekkje merksemd mot statusar, varslar eller tal. 
@@ -74,7 +68,7 @@ Bruk `Badge` for å trekkje merksemd mot statusar, varslar eller tal.
 - Små statusindikatorar i form av ein sirkel, som for eksempel viser om ein person er opptatt, borte eller aktiv.
 
 **Passer ikkje til:**
-- Tekstar – bruk `Tag` i staden
+- Tekstar – bruk `Tag` i staden.
 - Interaktive handlingar - bruk `Chip` eller `Button` i staden.
 
 ## Tekst
