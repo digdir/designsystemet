@@ -8,29 +8,18 @@ import {
 import { join } from 'node:path';
 import { cwd } from 'node:process';
 import type { Config } from '@react-router/dev/config';
-import { vercelPreset } from '@vercel/react-router/vite';
 import { normalizePath } from 'vite';
-
-declare module 'react-router' {
-  interface Future {
-    unstable_middleware: true; // 👈 Enable middleware types
-  }
-}
 
 const config: Config = {
   ssr: true,
   buildDirectory: 'dist',
-  future: {
-    unstable_middleware: true,
-    unstable_optimizeDeps: false,
-    unstable_splitRouteModules: false,
-    unstable_viteEnvironmentApi: false,
-  },
   prerender: async () => {
     const contentPaths = getContentPathsWithLanguages();
     return ['/no/components', ...contentPaths];
   },
-  presets: [vercelPreset()],
+  presets: [
+    /* vercelPreset() */
+  ],
   buildEnd: async ({ buildManifest: rrBuild }) => {
     const manifestPath = join(
       dirname,

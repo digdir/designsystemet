@@ -4,11 +4,11 @@ import { hydrateRoot } from 'react-dom/client';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
 import { HydratedRouter } from 'react-router/dom';
 import { getInitialNamespaces } from 'remix-i18next/client';
+import i18n from './i18n';
 
-async function main() {
+async function hydrate() {
   await i18next.use(initReactI18next).init({
-    fallbackLng: 'no',
-    ns: getInitialNamespaces(),
+    ...i18n,
     resources: {
       en: {
         translation: (await import('~/locales/en')).default,
@@ -17,7 +17,11 @@ async function main() {
         translation: (await import('~/locales/no')).default,
       },
     },
-    detection: { order: ['htmlTag'], caches: [] },
+    ns: getInitialNamespaces(),
+    detection: {
+      order: ['htmlTag'],
+      caches: [],
+    },
   });
 
   startTransition(() => {
@@ -32,4 +36,10 @@ async function main() {
   });
 }
 
-main().catch((error) => console.error(error));
+if (window.requestIdleCallback) {
+  window.requestIdleCallback(hydrate);
+} else {
+  // Safari doesn't support requestIdleCallback
+  // https://caniuse.com/requestidlecallback
+  window.setTimeout(hydrate, 1);
+}

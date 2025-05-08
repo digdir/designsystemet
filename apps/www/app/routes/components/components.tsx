@@ -10,7 +10,7 @@ import { ComponentCard } from '~/_components/component-card/component-card';
 import { ContentContainer } from '~/_components/content-container/content-container';
 import { generateMetadata } from '~/_utils/metadata';
 import { data } from '~/content/components';
-import { getInstance } from '~/middleware/i18next';
+import i18n from '~/i18next.server';
 import type { Route } from './+types/components';
 import classes from './components.module.css';
 
@@ -28,10 +28,7 @@ if (IS_NEXT_BRANCH) {
   }
 }
 
-export const loader = async ({
-  params: { lang },
-  context,
-}: Route.LoaderArgs) => {
+export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   if (!lang) {
     throw new Response('Not Found', {
       status: 404,
@@ -39,8 +36,7 @@ export const loader = async ({
     });
   }
 
-  const i18n = getInstance(context);
-  const t = i18n.getFixedT(lang);
+  const t = await i18n.getFixedT(lang);
 
   return {
     lang,

@@ -17,14 +17,11 @@ import { NavigationCard } from '~/_components/navigation-card/navigation-card';
 import { Section } from '~/_components/section/section';
 import { getFileFromContentDir, getFilesFromContentDir } from '~/_utils/files';
 import { generateMetadata } from '~/_utils/metadata';
-import { getInstance } from '~/middleware/i18next';
+import i18n from '~/i18next.server';
 import type { Route } from './+types/home';
 import classes from './home.module.css';
 
-export const loader = async ({
-  params: { lang },
-  context,
-}: Route.LoaderArgs) => {
+export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   /* Get all files in /content/blog for the lang we have selected */
   const files = getFilesFromContentDir(join('blog', lang));
 
@@ -77,8 +74,7 @@ export const loader = async ({
   /* Get last 3 posts */
   posts.splice(3);
 
-  const i18n = getInstance(context);
-  const t = i18n.getFixedT(lang);
+  const t = await i18n.getFixedT(lang);
 
   return {
     lang,

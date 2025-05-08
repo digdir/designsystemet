@@ -5,14 +5,11 @@ import { useRouteLoaderData } from 'react-router';
 import { Grid } from '~/_components/grid/grid';
 import { NavigationCard } from '~/_components/navigation-card/navigation-card';
 import { generateMetadata } from '~/_utils/metadata';
-import { getInstance } from '~/middleware/i18next';
+import i18n from '~/i18next.server';
 import type { Route as LayoutRoute } from '../../layouts/fundamentals/+types/layout';
 import type { Route } from './+types/fundamentals';
 
-export const loader = async ({
-  params: { lang },
-  context,
-}: Route.LoaderArgs) => {
+export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   if (!lang) {
     throw new Response('Not Found', {
       status: 404,
@@ -20,8 +17,7 @@ export const loader = async ({
     });
   }
 
-  const i18n = getInstance(context);
-  const t = i18n.getFixedT(lang);
+  const t = await i18n.getFixedT(lang);
 
   return {
     lang,

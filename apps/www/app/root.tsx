@@ -14,9 +14,6 @@ import './app.css';
 import { useTranslation } from 'react-i18next';
 import { useChangeLanguage } from 'remix-i18next/react';
 import { Error404 } from './_components/errors/error-404';
-import { i18nextMiddleware } from './middleware/i18next';
-
-export const unstable_middleware = [i18nextMiddleware];
 
 export const links = () => {
   return [
