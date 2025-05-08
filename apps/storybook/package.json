@@ -1,5 +1,5 @@
 {
-  "name": "@designsystemet/storybook",
+  "name": "@web/storybook",
   "version": "0.1.0",
   "private": true,
   "scripts": {

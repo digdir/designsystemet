@@ -24,7 +24,7 @@
     "theme",
     "storefront",
     "@repo/components",
-    "@designsystemet/storybook",
+    "@web/storybook",
     "figma-plugin"
   ]
 }
