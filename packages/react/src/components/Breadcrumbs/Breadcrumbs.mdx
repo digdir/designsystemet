@@ -7,15 +7,14 @@ import * as BreadcrumbsStories from './Breadcrumbs.stories';
 
 # Breadcrumbs
 
-`Breadcrumb` er en navigasjon med synlig søkebane. Vi bruker denne komponenten til å hjelpe brukerne å forstå 
-hvor de er i en struktur, for eksempel på en nettside. Da kan de lettere bytte mellom de ulike nivåene i strukturen.
+`Breadcrumbs` er ein navigasjonskomponent med synleg sti. Vi bruker denne komponenten for å hjelpe brukarane med å forstå kvar dei er i ei struktur, for eksempel på ei nettside. Då kan dei lettare byte mellom dei ulike nivåa i strukturen.
 
 <Primary />
 <Controls of={BreadcrumbsStories.Preview} />
 
-## Slik bruker du `Breadcrumb`
+## Bruk
 
-Den siste lenken i brødsmulestien blir automatisk markert med `aria-current="page"`.
+Den siste lenkja i `Breadcrumbs` blir automatisk markert med `aria-current="page"`.
 
 ```tsx
 <Breadcrumbs aria-label="Du er her:">
@@ -31,53 +30,51 @@ Den siste lenken i brødsmulestien blir automatisk markert med `aria-current="pa
 </Breadcrumbs>
 ```
 
-## Varianter av `Breadcrumb`
+## Eksempel
 
-### Kun tilbake-knapp
+### Berre tilbake-knapp
 
-Hvis du legger en `Breadcrumbs.Link` som direkte barn av `Breadcrumbs`, vil denne lenken vises som en tilbake-knapp. Det er viktig at du er konsistent i din løsning og bruker enten tilbake-knapp eller sti. 
+Om du legg ein `Breadcrumbs.Link` direkte i `Breadcrumbs`, vil lenkja visast som ein tilbake-knapp. Det er viktig at du er konsistent i løysinga di, og bruker anten tilbake-knapp eller sti, ikkje begge delar.
 
 <Canvas of={BreadcrumbsStories.BackOnly} />
 
-### Kun sti
+### Berre sti
 
-Hvis du legger en `Breadcrumbs.List` som direkte barn av `Breadcrumbs`, vil denne vises som en sti.
+Om du legg ein `Breadcrumbs.List` direkte i `Breadcrumbs`, vil denne visast som ein sti.
 
 <Canvas of={BreadcrumbsStories.ListOnly} />
 
-### Både sti på desktop og tilbake-knapp på mobil
+### Sti eller tilbake-knapp basert på skjermbreidde
 
-Hvis du legger både en `Breadcrumbs.Link` som direkte barn av `Breadcrumbs` og en `Breadcrumbs.List`, vil tilbake-knapp vises på mobil, og sti vises på desktop.
+Om du legg både ein `Breadcrumbs.Link` og ein `Breadcrumbs.List` direkte i `Breadcrumbs`, vil tilbake-knappen visast på skjermar smalare enn 650px, og stien visast på breiare skjermar.
 
 <Canvas of={BreadcrumbsStories.Preview} />
 
 ## Retningslinjer
+Det er først når det er tre eller fleire nivå på ein nettstad at det er behov for `Breadcrumbs`. 
 
-En navigasjon med synlig søkebane vises vanligvis høyt oppe på nettsiden, gjerne rett under sidetittelen.
+**Passar til**
+- Sider der brukarane kan ønskje å gå tilbake til tidlegare nivå
+- Å hjelpe brukarar med å forstå kvar dei er i strukturen
 
-Det er først når det er tre eller flere nivåer at det er behov for en brødsmulesti.
-
-
-Vi bruker **ikke** brødsmulestier til lineær navigasjon, for eksempel for de ulike stegene i en arbeidsflyt et skjema.
+**Passar ikkje til**
+- Lineær navigasjon, for eksempel for dei ulike stega i ein arbeidsflyt eller eit skjema.
 
 ### Plassering
-Brødsmulestien skal alltid plasseres øverst på venstre del av siden. Den skal være under menyen og hovednavigasjonen, men over sidetittelen. 
+`Breadcrumbs` skal alltid plasserast øvst på venstre side av sida. Han skal liggje under menyen og hovudnavigasjonen, men over sidetittelen.
 
-Hvis vi bruker `Breadcrumbs` i applikasjoner, skal vi vise den på alle sider som ikke er forsiden. Alle elementene i 
-brødsmulestien skal være lenker, men siden brukerne står på, skal se ut som vanlig tekst.
+### Skjule Breadcrumbs på mobil
+Om du har lang navigasjon, kan du setje opp komponenten til berre å vise første og siste del av søkestien på mobil.  
+Dette skjer automatisk på skjermar som er smalare enn 650px, der vi berre viser lenkja eitt nivå ned.
 
-## Tilgjengelighet
+## Tekst
+Bruk korte og tydelege namn i brødsmulestien, slik at brukarane raskt forstår kvar dei er. Teksten bør samsvare med overskriftene eller navigasjonen på nettsida, slik at det er lett å kjenne igjen nivåa.
 
-Det skal være enkelt for brukerne å benytte seg av brødsmulestien. Pass derfor på at det ikke ligger andre interaktive elementer for nær den.
+## Tilgjengelegheit
+`Breadcrumbs` kan innehalde fleire interaktive element som må kunne navigerast med tastatur. Pass derfor på at [`SkipLink`](/docs/komponenter-skiplink--docs) til hovudinnhaldet også hoppar over `Breadcrumbs`.
 
-`Breadcrumbs` kan ha flere interaktive elementer som må navigeres over med tastaturet. 
-Pass derfor på at du legger inn at [`SkipLink`](/docs/komponenter-skiplink--docs) til 
-hovedinnholdet også skal hoppe over brødsmulestien.
-
-### Skjule brødsmulestien på mobil
-
-Hvis du har lang navigasjon, kan du sette opp komponenten til bare å vise første og siste del av søkebanen på mobil. 
-Dette skjer automatisk på skjermer under 650px, hvor vi kun viser link ned et nivå.
+### Siste nivå
+Den siste lenkja skal tilsvare noverande side. Den ser ut som vanleg tekst, men er koda som ein lenkje med `aria-current="page"`. På den måten får skjermlesarar korrekt informasjon om kva side brukaren er på, utan at andre brukarar feilaktig oppfattar det som ei klikkbar lenkje.
 
 ## CSS Variabler
 
