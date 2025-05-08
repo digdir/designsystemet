@@ -1,10 +1,10 @@
+import designsystemetConfig from '@digdir/designsystemet-theme/configs/designsystemet.config.json';
 import {
   type ColorScheme,
   type HexColor,
   type ThemeInfo,
   generateColorSchemes,
 } from '@digdir/designsystemet/color';
-import designsystemetConfig from '@digdir/designsystemet/configs/designsystemet.config.json';
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
 

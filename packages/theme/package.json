@@ -14,16 +14,24 @@
       "types": "./brand/colors.d.ts",
       "default": "./brand/digdir.css"
     },
-    "./*": "./brand/*"
+    "./*": "./brand/*",
+    "./configs/*": "./configs/*",
+    "./default": {
+      "types": "./src/designsystemet/colors.d.ts",
+      "default": "./src/designsystemet/build/designsystemet.css"
+    }
   },
-  "files": ["brand/**", "*.css"],
+  "files": ["brand/**", "*.css", "configs/**"],
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "clean": "rimraf brand"
+    "designsystemet:tokens-create": "pnpm designsystemet tokens create --config ./configs/designsystemet.config.json",
+    "designsystemet:tokens-build": "pnpm designsystemet tokens build -t ../../internal/design-tokens -o ./src/designsystemet/build --clean",
+    "update:theme": "pnpm designsystemet:tokens-create && pnpm designsystemet:tokens-build"
   },
   "devDependencies": {
-    "rimraf": "^6.0.1"
+    "rimraf": "^6.0.1",
+    "@digdir/designsystemet": "workspace:^"
   }
 }
