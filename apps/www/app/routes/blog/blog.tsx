@@ -3,10 +3,13 @@ import { bundleMDX } from 'mdx-bundler';
 import BlogCard from '~/_components/blog-card/blog-card';
 import { getFileFromContentDir, getFilesFromContentDir } from '~/_utils/files';
 import { generateMetadata } from '~/_utils/metadata';
-import i18n from '~/i18next.server';
+import { getInstance } from '~/middleware/i18next';
 import type { Route } from './+types/blog';
 
-export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
+export const loader = async ({
+  params: { lang },
+  context,
+}: Route.LoaderArgs) => {
   if (!lang) {
     throw new Response('Not Found', {
       status: 404,
@@ -63,7 +66,8 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
 
-  const t = await i18n.getFixedT(lang);
+  const i18n = getInstance(context);
+  const t = i18n.getFixedT(lang);
 
   return {
     lang,

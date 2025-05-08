@@ -71,6 +71,13 @@ jobs:
           text: ${{ steps.fc.outputs.comment-body }}
           regex: '\[Theme\]\((https:\/\/[^)]+)\).*'
 
+      - name: Find www deployment
+        uses: actions-ecosystem/action-regex-match@v2
+        id: regex-www
+        with:
+          text: ${{ steps.fc.outputs.comment-body }}
+          regex: '\[www\]\((https:\/\/[^)]+)\).*'
+
       - name: Get current time in CEST
         uses: josStorer/get-current-time@v2
         id: current-time
@@ -92,3 +99,5 @@ jobs:
             ${{ steps.regex-storefront.outputs.match }}
 
             ${{ steps.regex-theme.outputs.match }}
+
+            ${{ steps.regex-www.outputs.match }}

@@ -2,9 +2,13 @@ import { SkipLink } from '@digdir/designsystemet-react';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import { Outlet, isRouteErrorResponse, useRouteLoaderData } from 'react-router';
+import { useChangeLanguage } from 'remix-i18next/react';
 import { ContentContainer } from '~/_components/content-container/content-container';
 import { Error404 } from '~/_components/errors/error-404';
-import { Footer } from '~/_components/footer/footer';
+import {
+  Footer,
+  type FooterLinkListItemProps,
+} from '~/_components/footer/footer';
 import { Header } from '~/_components/header/header';
 import { Figma } from '~/_components/logos/figma';
 import { Github } from '~/_components/logos/github';
@@ -12,24 +16,24 @@ import { Slack } from '~/_components/logos/slack';
 import type { Route } from './+types/layout';
 import type { Route as RootRoute } from './../../+types/root';
 
-const rightLinks = [
+const rightLinks: FooterLinkListItemProps[] = [
   {
-    text: 'designsystem@digdir.no',
+    text: 'designsystem@digdir.no' as unknown as FooterLinkListItemProps['text'],
     url: 'mailto:designsystem@digdir.no',
     prefix: <EnvelopeClosedIcon aria-hidden='true' fontSize='1.5em' />,
   },
   {
-    text: 'footer.slack',
+    text: ['footer.slack'] as unknown as FooterLinkListItemProps['text'],
     url: '/slack',
     prefix: <Slack />,
   },
   {
-    text: 'Github',
+    text: 'Github' as unknown as FooterLinkListItemProps['text'],
     url: 'https://github.com/digdir/designsystemet',
     prefix: <Github />,
   },
   {
-    text: 'Figma',
+    text: 'Figma' as unknown as FooterLinkListItemProps['text'],
     url: 'https://www.figma.com/@designsystemet',
     prefix: <Figma />,
   },
@@ -37,9 +41,18 @@ const rightLinks = [
 
 export default function RootLayout() {
   const { t } = useTranslation();
-  const { lang, centerLinks, menu } = useRouteLoaderData(
-    'root',
-  ) as RootRoute.ComponentProps['loaderData'];
+  const { lang, centerLinks, menu } = useRouteLoaderData('root') as Omit<
+    RootRoute.ComponentProps['loaderData'],
+    'centerLinks'
+  > & {
+    centerLinks: FooterLinkListItemProps[];
+    menu: {
+      name: TemplateStringsArray;
+      href: string;
+    }[];
+  };
+
+  useChangeLanguage(lang);
 
   return (
     <>
@@ -48,7 +61,10 @@ export default function RootLayout() {
       <main id='main'>
         <Outlet />
       </main>
-      <Footer centerLinks={centerLinks} rightLinks={rightLinks} />
+      <Footer
+        centerLinks={centerLinks}
+        rightLinks={rightLinks as FooterLinkListItemProps[]}
+      />
     </>
   );
 }
@@ -57,15 +73,15 @@ type ErrorWrapperRootProps = {
   children: React.ReactNode;
   lang: string;
   menu: {
-    name: string;
+    name: TemplateStringsArray;
     href: string;
   }[];
   centerLinks: {
-    text: string;
+    text: TemplateStringsArray;
     url: string;
   }[];
   rightLinks: {
-    text: string;
+    text: TemplateStringsArray;
     url: string;
     prefix?: React.ReactNode;
   }[];
@@ -100,7 +116,13 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
 
   const loaderData = useRouteLoaderData(
     'root',
-  ) as RootRoute.ComponentProps['loaderData'];
+  ) as RootRoute.ComponentProps['loaderData'] & {
+    centerLinks: FooterLinkListItemProps[];
+    menu: {
+      name: TemplateStringsArray;
+      href: string;
+    }[];
+  };
 
   if (!loaderData) {
     return <Error404 />;

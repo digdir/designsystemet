@@ -33,6 +33,7 @@
   border-radius: 3px;
   margin-top: var(--ds-size-2);
   margin-bottom: var(--ds-size-2);
+  font-size: 32px;
 }
 
 .icon > svg {

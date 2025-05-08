@@ -1,5 +1,11 @@
-import { Button, Paragraph, Tooltip } from '@digdir/designsystemet-react';
 import {
+  Button,
+  Dropdown,
+  Paragraph,
+  Tooltip,
+} from '@digdir/designsystemet-react';
+import {
+  GlobeIcon,
   MenuHamburgerIcon,
   MoonIcon,
   SunIcon,
@@ -8,14 +14,14 @@ import {
 import cl from 'clsx/lite';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useLocation, useParams } from 'react-router';
-import { DsLogo } from '../logos/designsystemet';
+import { Link, useLocation } from 'react-router';
+import { DsEmbledLogo, DsFullLogo } from '../logos/designsystemet';
 import classes from './header.module.css';
 import { FigmaLogo } from './logos/figma-logo';
 import { GithubLogo } from './logos/github-logo';
 
 type HeaderProps = {
-  menu: { name: string; href: string }[];
+  menu: { name: TemplateStringsArray; href: string }[];
   betaTag?: boolean;
   themeSwitcher?: boolean;
   transparentBackground?: boolean;
@@ -57,18 +63,21 @@ const Header = ({
   logoLink = '/',
 }: HeaderProps) => {
   const { pathname } = useLocation();
-  const { lang } = useParams();
   const { t } = useTranslation();
 
-  const getNewLangPath = () => {
+  const getNewLangPaths = () => {
     const pathWithoutLang = pathname.split('/').slice(2).join('/');
-    return lang === 'no' ? `/en/${pathWithoutLang}` : `/no/${pathWithoutLang}`;
+    return {
+      no: `/no/${pathWithoutLang}`,
+      en: `/en/${pathWithoutLang}`,
+    };
   };
 
-  const langPath = getNewLangPath();
+  const langPaths = getNewLangPaths();
 
   const [open, setOpen] = useState(false);
   const [isHamburger, setIsHamburger] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
   const menuRef = useRef<HTMLUListElement>(null);
   const headerRef = useRef<HTMLElement>(null);
 
@@ -120,11 +129,15 @@ const Header = ({
             aria-label={t('header.home-link')}
             onClick={() => setOpen(false)}
           >
-            <DsLogo className={classes.logo} />
+            {isHamburger ? (
+              <DsEmbledLogo className={classes.logo} />
+            ) : (
+              <DsFullLogo className={classes.logo} />
+            )}
           </Link>
           {betaTag && <div className={classes.tag}>Beta</div>}
         </div>
-        <nav>
+        <nav className={isHamburger ? classes.mobile : ''}>
           {isHamburger && (
             <Button
               variant='tertiary'
@@ -222,14 +235,29 @@ const Header = ({
               </Button>
             </Tooltip>
           )}
-          <Button
-            variant='tertiary'
-            data-color='neutral'
-            className={classes.toggleButton}
-            asChild
-          >
-            <Link to={langPath}>{lang}</Link>
-          </Button>
+          <Dropdown.TriggerContext>
+            <Tooltip content={t('header.language-toggle')} placement='bottom'>
+              <div>
+                <Dropdown.Trigger
+                  variant='tertiary'
+                  data-color='neutral'
+                  className={classes.toggleButton}
+                  onClick={() => setLangOpen(!langOpen)}
+                  aria-label={t('header.language-toggle')}
+                >
+                  <GlobeIcon />
+                </Dropdown.Trigger>
+              </div>
+            </Tooltip>
+            <Dropdown open={langOpen} onClose={() => setLangOpen(false)}>
+              <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
+                <Link to={langPaths.no}>Norsk</Link>
+              </Dropdown.Button>
+              <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
+                <Link to={langPaths.en}>English</Link>
+              </Dropdown.Button>
+            </Dropdown>
+          </Dropdown.TriggerContext>
         </nav>
       </div>
     </header>

@@ -1,3 +1,8 @@
-.githubLink path {
-  fill: var(--ds-color-neutral-text-default);
+.githubLink {
+  margin-block: var(--ds-size-6);
+  display: block;
+
+  path {
+    fill: var(--ds-color-neutral-text-default);
+  }
 }
