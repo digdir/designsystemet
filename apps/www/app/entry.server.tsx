@@ -7,6 +7,8 @@ import { renderToPipeableStream } from 'react-dom/server';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
 import type { AppLoadContext, EntryContext } from 'react-router';
 import { ServerRouter } from 'react-router';
+import en from '~/locales/en';
+import no from '~/locales/no';
 import i18n from './i18n';
 import i18next from './i18next.server';
 
@@ -30,10 +32,10 @@ export default async function handleRequest(
     ns,
     resources: {
       en: {
-        translation: (await import('~/locales/en')).default,
+        translation: en,
       },
       no: {
-        translation: (await import('~/locales/no')).default,
+        translation: no,
       },
     },
   });

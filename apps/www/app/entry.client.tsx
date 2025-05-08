@@ -4,6 +4,8 @@ import { hydrateRoot } from 'react-dom/client';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
 import { HydratedRouter } from 'react-router/dom';
 import { getInitialNamespaces } from 'remix-i18next/client';
+import en from '~/locales/en';
+import no from '~/locales/no';
 import i18n from './i18n';
 
 async function hydrate() {
@@ -11,10 +13,10 @@ async function hydrate() {
     ...i18n,
     resources: {
       en: {
-        translation: (await import('~/locales/en')).default,
+        translation: en,
       },
       no: {
-        translation: (await import('~/locales/no')).default,
+        translation: no,
       },
     },
     ns: getInitialNamespaces(),
