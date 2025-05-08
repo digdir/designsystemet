@@ -1,0 +1,6 @@
+[build]
+command = "pnpm --filter www.designsystemet.no... run build"
+publish = "apps/www/dist/client"
+
+[dev]
+command = "pnpm --filter www.designsystemet.no... run dev"

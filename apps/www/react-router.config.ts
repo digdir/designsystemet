@@ -18,10 +18,10 @@ const config: Config = {
     unstable_splitRouteModules: false,
     unstable_viteEnvironmentApi: false,
   },
-  prerender: async () => {
+  /* prerender: async () => {
     const contentPaths = getContentPathsWithLanguages();
     return ['/no/components', ...contentPaths];
-  },
+  }, */
 };
 
 // Ensure we always have a valid dirname, even in Vercel's environment
