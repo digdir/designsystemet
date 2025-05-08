@@ -6,6 +6,7 @@ date: 2025-02-28
 category: For designere
 color: blue
 icon: PaletteIcon
+published: true
 ---
 
 Skal du ta i bruk Designsystemet i din egen organisasjon med dine egne profilfarger og preferanser? Det er flere måter å gjøre det på. Det første du må ta stilling til er om du vil bruke komponentene **_med_** eller **_uten_** kobling mellom Figma og kode. 
@@ -57,7 +58,6 @@ En kobling gjør at du slipper å legge variablene inn i Figma, du importerer de
   data-color='brand2'
   data-variant='tinted'
   variant="tinted"
-  data-unstyled
 >
   Merk:  Du må ha minimum pro-lisens av Figma og en pro-lisens av pluginen "Tokens Studio" for å få til denne koblingen. Du må også ha et sted å lagre filene som kan nås av Token Studio, f.eks i et [Github repository](https://github.com/new).
 </Card>
@@ -75,7 +75,6 @@ En kobling gjør at du slipper å legge variablene inn i Figma, du importerer de
   src='/img/tokenstudio.png'
   alt='Skjermbilde av Figma som vise hvor du finner plugins'
   boxShadow={false}
-  
 />
 
   - Følg Tokens Studio sin guide "[Sync your Design Tokens with code](https://docs.tokens.studio/token-storage-and-sync/sync-provider-overview)" for å sette opp kobling til ditt Git repo. 
@@ -87,7 +86,6 @@ En kobling gjør at du slipper å legge variablene inn i Figma, du importerer de
   src='/img/token-studio-settings.png'
   alt='Skjermbilde som viser valgte innstillinger i Tokens Studio. Under variabler er alt slått på. Under styles er color slått av. Under export er "Ignore first part of token name for styles" og "Prefix styles with active theme name" slått av '
   boxShadow={false}
-  
 />
 
 Vær oppmerksom på at modes som allerede ligger i Community-filen ikke blir slettet av Token Studio. Slett temaene du ikke trenger i Figma "Local variables" under "Theme". Det samme kan skje under "Main" og "Support". 
@@ -96,8 +94,6 @@ Vær oppmerksom på at modes som allerede ligger i Community-filen ikke blir sle
   src='/img/brutte-referanser.png'
   alt='Skjermbilde som viser brutte koblinger i Figma-variablene. Høyreklikk og slett temaene du ikke trenger.'
   boxShadow={false}
-  
-  
 />
 
 5. Nå skal du se alle komponentene med dine egne profilfarger i Figma. For at andre designere i organisasjonen skal kunne bruke komponentene må du publisere filen.

@@ -14,21 +14,21 @@
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
-    "@navikt/aksel-icons": "^7.18.0",
+    "@navikt/aksel-icons": "^7.21.0",
+    "@radix-ui/react-slot": "^1.2.0",
     "@repo/components": "workspace:^",
     "chroma-js": "^3.1.2",
     "clsx": "^2.1.1",
-    "next": "^15.2.4",
-    "@radix-ui/react-slot": "^1.1.2",
+    "next": "^15.3.1",
     "react": "^19.1.0",
     "react-color-palette": "^7.3.0",
     "react-dom": "^19.1.0",
-    "recharts": "^2.15.2",
-    "zustand": "^5.0.3"
+    "recharts": "^2.15.3",
+    "zustand": "^5.0.4"
   },
   "devDependencies": {
     "@types/chroma-js": "^3.1.1",
-    "@types/react": "^19.1.0",
-    "@types/react-dom": "^19.1.1"
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.3"
   }
 }

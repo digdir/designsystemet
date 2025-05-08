@@ -17,6 +17,7 @@ import { type JSX, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link as RRLink } from 'react-router';
 import { CodeBlock } from '~/_components/code-block/code-block';
+import { ColorInfoTable } from '~/_components/color-info-table/color-info-table';
 import { Contributors } from '~/_components/contributors/contributors';
 import { Image } from '~/_components/image/image';
 import { ResponsiveIframe } from '~/_components/responsive-iframe/responsive-iframe';
@@ -29,22 +30,22 @@ const defaultComponents = {
   DetailsSummary,
   Card,
   h1: (props: JSX.IntrinsicElements['h1']) => (
-    <Heading className={classes.heading} level={1} {...props} />
+    <Heading className={classes.heading} level={1} data-size='xl' {...props} />
   ),
   h2: (props: JSX.IntrinsicElements['h2']) => (
-    <Heading className={classes.heading} level={2} {...props} />
+    <Heading className={classes.heading} level={2} data-size='md' {...props} />
   ),
   h3: (props: JSX.IntrinsicElements['h3']) => (
-    <Heading className={classes.heading} level={3} {...props} />
+    <Heading className={classes.heading} level={3} data-size='sm' {...props} />
   ),
   h4: (props: JSX.IntrinsicElements['h4']) => (
-    <Heading className={classes.heading} level={4} {...props} />
+    <Heading className={classes.heading} level={4} data-size='xs' {...props} />
   ),
   h5: (props: JSX.IntrinsicElements['h5']) => (
-    <Heading className={classes.heading} level={5} {...props} />
+    <Heading className={classes.heading} level={5} data-size='xs' {...props} />
   ),
   h6: (props: JSX.IntrinsicElements['h6']) => (
-    <Heading className={classes.heading} level={6} {...props} />
+    <Heading className={classes.heading} level={6} data-size='xs' {...props} />
   ),
   ol: (props: JSX.IntrinsicElements['ol']) => <ListOrdered {...props} />,
   ul: (props: JSX.IntrinsicElements['ul']) => <ListUnordered {...props} />,
@@ -52,6 +53,7 @@ const defaultComponents = {
   ResponsiveIframe,
   Contributors,
   TokenList,
+  ColorInfoTable,
   p: (props: ParagraphProps) => <Paragraph {...props} />,
   Link: ({ href, ...props }: JSX.IntrinsicElements['a']) => (
     <Link {...props} asChild>

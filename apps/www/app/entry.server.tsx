@@ -1,15 +1,14 @@
 import { PassThrough } from 'node:stream';
-
-import { resolve } from 'node:path';
 import { createReadableStreamFromReadable } from '@react-router/node';
 import { createInstance } from 'i18next';
-import Backend from 'i18next-fs-backend';
 import { isbot } from 'isbot';
 import type { RenderToPipeableStreamOptions } from 'react-dom/server';
 import { renderToPipeableStream } from 'react-dom/server';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
 import type { AppLoadContext, EntryContext } from 'react-router';
 import { ServerRouter } from 'react-router';
+import en from '~/locales/en';
+import no from '~/locales/no';
 import i18n from './i18n';
 import i18next from './i18next.server';
 
@@ -21,23 +20,25 @@ export default async function handleRequest(
   responseHeaders: Headers,
   routerContext: EntryContext,
   loadContext: AppLoadContext,
-  // If you have middleware enabled:
-  // loadContext: unstable_RouterContextProvider
 ) {
   const instance = createInstance();
   const ns = i18next.getRouteNamespaces(routerContext);
   const lng =
     routerContext.staticHandlerContext?.loaderData?.root?.lang || 'no';
 
-  await instance
-    .use(initReactI18next) // Tell our instance to use react-i18next
-    .use(Backend) // Setup our backend
-    .init({
-      ...i18n, // spread the configuration
-      lng, // The locale we detected above
-      ns, // The namespaces the routes about to render wants to use
-      backend: { loadPath: resolve('./public/locales/{{lng}}/{{ns}}.json') },
-    });
+  await instance.use(initReactI18next).init({
+    ...i18n,
+    lng,
+    ns,
+    resources: {
+      en: {
+        translation: en,
+      },
+      no: {
+        translation: no,
+      },
+    },
+  });
 
   return new Promise((resolve, reject) => {
     let shellRendered = false;
@@ -59,16 +60,13 @@ export default async function handleRequest(
           shellRendered = true;
           const body = new PassThrough();
           const stream = createReadableStreamFromReadable(body);
-
           responseHeaders.set('Content-Type', 'text/html');
-
           resolve(
             new Response(stream, {
               headers: responseHeaders,
               status: responseStatusCode,
             }),
           );
-
           pipe(body);
         },
         onShellError(error: unknown) {

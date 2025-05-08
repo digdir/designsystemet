@@ -46,7 +46,7 @@ jobs:
         run: echo "url=$(vercel deploy --token=${{ secrets.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
 
       - name: Set Vercel alias
-        run: vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} set ${{ steps.deploy.outputs.url }} pr-${{ env.PR_NUMBER }}.designsystemet.no
+        run: vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} set ${{ steps.deploy.outputs.url }} pr-${{ env.PR_NUMBER }}.www2.designsystemet.no
 
       - name: Find Preview Comment
         uses: peter-evans/find-comment@v3
@@ -72,6 +72,12 @@ jobs:
         with:
           text: ${{ steps.fc.outputs.comment-body }}
           regex: '\[Theme\]\((https:\/\/[^)]+)\).*'
+      - name: Find Storefront deployment
+        uses: actions-ecosystem/action-regex-match@v2
+        id: regex-storefront
+        with:
+          text: ${{ steps.fc.outputs.comment-body }}
+          regex: '\[Storefront\]\((https:\/\/[^)]+)\).*'
 
       - name: Get current time in CEST
         uses: josStorer/get-current-time@v2
@@ -91,6 +97,8 @@ jobs:
 
             ${{ steps.regex-storybook.outputs.match }}
 
-            [www](https://pr-${{ env.PR_NUMBER }}.designsystemet.no) - `${{ steps.current-time.outputs.formattedTime }}`
+            ${{ steps.regex-storefront.outputs.match }}
 
             ${{ steps.regex-theme.outputs.match }}
+
+            [www](https://pr-${{ env.PR_NUMBER }}.www2.designsystemet.no) - `${{ steps.current-time.outputs.formattedTime }}`

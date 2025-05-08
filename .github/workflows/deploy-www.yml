@@ -1,0 +1,59 @@
+name: Deploy www
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_WWW }}
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        default: next
+        description: Deploy to environment
+        options:
+          - production
+          - next
+  push:
+    branches:
+      - main
+    paths:
+      - 'apps/www/**'
+jobs:
+  Deploy-Production:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4.1.0
+      - name: Use node 22 and pnpm cache
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: 'package.json'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Set Vercel environment
+        id: environment
+        run: |
+          ENVIRONMENT=${{ github.event.inputs.environment == 'production' && 'production' || 'preview' }}
+          echo "vercel=${ENVIRONMENT}" >> "$GITHUB_OUTPUT"
+
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=${{steps.environment.outputs.vercel}} --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build Project Artifacts
+        run: vercel build ${{(steps.environment.outputs.vercel == 'production' && '--prod') || ''}} --token=${{ secrets.VERCEL_TOKEN }}
+
+      - id: deploy
+        name: Deploy Project Artifacts to Vercel
+        run: echo "url=$(vercel deploy --prebuilt ${{(steps.environment.outputs.vercel == 'production' && '--prod') || ''}} --token=${{ secrets.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
+
+      - name: Set Vercel alias
+        if:  steps.environment.outputs.vercel == 'preview'
+        run: vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} set ${{ steps.deploy.outputs.url }} next.www2.designsystemet.no

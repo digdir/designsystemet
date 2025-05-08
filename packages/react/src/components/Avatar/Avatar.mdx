@@ -29,51 +29,66 @@ import { Avatar } from '@digdir/designsystemet-react';
 </Avatar>
 ```
 
-## Standard ikon
+## Eksempler
+
+### Standard ikon
 
 Sender du ikke inn `children` viser vi et standard brukerikon.	
 
 <Canvas of={AvatarStories.NoName} />
 
-## Størrelser
+### Størrelser
 
 `Avatar` kommer i flere størrelser. Tekst og ikon vil skalere, men det kan hende ikonet ditt må tilpasses.
 
 <Canvas of={AvatarStories.Sizes} />
 
-## Fargevarianter
+### Farger
 
-Du kan bruke alle tema fargene dine på `Avatar`.
+Du kan bruke alle temafargene dine på `Avatar`.
 
 <Canvas of={AvatarStories.ColorVariants} />
 
-## Varianter
+### Varianter
 
 Du kan endre mellom sirkel og firkantet form. Standard er sirkel.
 
 <Canvas of={AvatarStories.ShapeVariants} />
 
-## Med bilde
+### Med bilde
 
-Skal du ha bilde, legger du dette som direkte barn av `Avatar`. 
-
-Bilde (og andre child elements) får automatisk `aria-hidden="true"` for å unngå dobbel informasjon.
+Skal du ha bilde, legger du dette som direkte `children` av `Avatar`. 
 
 <Canvas of={AvatarStories.WithImage} />
 
-## Komponering
+### Komponering
 
 Du kan komponere `Avatar` inn i andre komponenter, som `Dropdown`, samt bruke komponenter som
 `Badge` rundt for å vise status.
 
 <Canvas of={AvatarStories.InDropdown} />
 
-## Som lenke
+### Interaktiv Avatar
 
-Legg lenker eller knapper rundt `Avatar` for å gjøre det klikkbart.
+Legg lenker eller knapper rundt `Avatar` for å gjøre den klikkbar.
 Du må selv sette styling dersom du skal ha en interaktiv `Avatar`.
 
 <Canvas of={AvatarStories.AsLink} />
+
+## Retningslinjer 
+`Avatar` skal bidra til å gjøre brukergrensesnittet mer gjenkjennelig og lett å navigere i, uten å forstyrre eller ta for mye plass. 
+
+- Bruk samme form på avataren på en konsekvent måte i hele løsningen.
+- Avataren bør som regel kombineres med tekst, med mindre det er helt åpenbart hvem eller hva avataren representerer. 
+- Bruk avatar kun når det faktisk gir verdi for brukeropplevelsen, for eksempel å vise hvem som har skrevet noe, eller hvem som er ansvarlig.
+
+## Tekst i komponenten
+`Avatar` skal som hovedregel ikke inneholde tekst i selve komponenten, med unntak av når initialer brukes. Annen tekst, for eksempel fullt navn, rolle eller organisasjon, bør vises utenfor avataren for å sikre god lesbarhet. 
+
+## Tilgjengelighet
+`Avatar` må alltid ha en `aria-label` som forklarer hvem eller hva avataren representerer, spesielt dersom den er interaktiv eller del av et brukargrensesnitt med flere brukere. Ikke spesifiser i `aria-label`  at det er et bilde, skjermleseren formidler dette automatisk. Det holder å bruke navnet, som for eksempel `aria-label="Ola Nordmann"`.
+
+Bilder, og andre `children`, får automatisk `aria-hidden="true"` for å unngå dobbel informasjon.
 
 ## CSS Variabler
 
