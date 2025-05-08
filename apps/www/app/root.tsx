@@ -16,7 +16,19 @@ import { useChangeLanguage } from 'remix-i18next/react';
 import { Error404 } from './_components/errors/error-404';
 import { i18nextMiddleware } from './middleware/i18next';
 
-export const unstable_middleware = [i18nextMiddleware];
+export const unstable_middleware = [
+  function contextInitMiddleware() {
+    /* @ts-ignore */
+    return (req, context) => {
+      // Ensure context has a map for router context
+      if (!context.has('unstable_routerContext')) {
+        context.set('unstable_routerContext', new Map());
+      }
+      return null;
+    };
+  },
+  i18nextMiddleware,
+];
 
 export const links = () => {
   return [
