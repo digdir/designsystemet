@@ -1,5 +1,5 @@
 {
-  "name": "www.designsystemet.no",
+  "name": "@web/www",
   "private": true,
   "type": "module",
   "scripts": {
