@@ -14,8 +14,10 @@ export const getColorCombinations = (colorNumber: number) => {
     text += 'Background fargene og Surface Default';
   } else if (colorNumber === 12) {
     text += 'Background fargene og Surface Default.';
-  } else if (colorNumber === 13) {
-    text += 'Background- og Surface Fargene.';
+  } else if (colorNumber === 13 || colorNumber === 14) {
+    text += 'Background- og Surface fargene.';
+  } else if (colorNumber === 15 || colorNumber === 16) {
+    text += 'Base fargene.';
   }
   return text;
 };

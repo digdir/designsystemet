@@ -3,57 +3,50 @@
   overflow: hidden;
 }
 
-.container {
+.description {
+  margin-bottom: var(--ds-size-7);
+  line-height: 150%;
+  text-wrap: pretty;
+}
+
+.grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 25px 16px;
+  align-items: center;
+  padding-top: var(--ds-size-7);
+  & > select {
+    max-width: max-content;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 34px;
+    height: 1px;
+    background-color: var(--ds-color-neutral-border-subtle);
+  }
+}
+.key {
+  color: var(--ds-color-neutral-text-default);
+  font-weight: var(--ds-font-weight-medium);
+}
+.value {
   display: flex;
-  border: 1px solid var(--ds-color-neutral-border-subtle);
-  border-radius: var(--ds-border-radius-md);
-  min-height: 255px;
-  overflow: hidden;
-
-  @media screen and (max-width: 768px) {
-    flex-direction: column;
+  align-items: center;
+  gap: var(--ds-size-2);
+  & > button {
+    border-radius: 50%;
+    margin-block: calc(var(--ds-size-6) * -1);
   }
 }
 
-.infoTable {
-  width: 50%;
-  border-collapse: collapse;
-  padding: 24px;
-
-  @media screen and (max-width: 768px) {
-    width: 100%;
-  }
-}
-
-.infoTable th {
-  text-align: left;
-  font-weight: normal;
-  padding: 12px 24px;
-  font-size: var(--ds-body-short-sm-font-size);
-  color: var(--ds-color-neutral-text-subtle);
-  vertical-align: middle;
-}
-
-.infoTable td {
-  padding: 12px 8px;
-  font-size: var(--ds-body-short-sm-font-size);
-  vertical-align: middle;
-}
-
-.infoTable td:last-child {
-  width: 48px;
-}
-
-.right {
-  width: 50%;
-  border-left: 1px solid var(--ds-color-neutral-border-subtle);
-
-  @media screen and (max-width: 768px) {
-    border-left: none;
-    border-top: 1px solid var(--ds-color-neutral-border-subtle);
-    width: 100%;
-    height: var(--ds-size-26);
-  }
+.colorPreview {
+  width: 100%;
+  height: var(--ds-size-26);
+  border-block: var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle);
 }
 
 .field {
@@ -73,14 +66,6 @@
 
 .value {
   margin-right: 4px;
-}
-
-.description {
-  margin-bottom: 24px;
-  margin-top: -6px;
-  font-size: 16px;
-  line-height: 1.5em;
-  width: 80%;
 }
 
 .accordion {
