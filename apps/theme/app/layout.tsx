@@ -4,8 +4,8 @@ import '@digdir/designsystemet-css';
 import '@digdir/designsystemet-theme';
 import 'react-color-palette/css';
 import './globals.css';
+import { Figma, Footer, Github, Header, Slack } from '@internal/components';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
-import { Figma, Footer, Github, Header, Slack } from '@repo/components';
 
 export const metadata: Metadata = {
   title: 'Temabygger - Designsystemet',

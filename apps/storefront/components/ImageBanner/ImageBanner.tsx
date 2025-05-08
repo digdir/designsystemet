@@ -1,7 +1,7 @@
 'use client';
 import type { ButtonProps } from '@digdir/designsystemet-react';
 import { Button, Heading, Link, Paragraph } from '@digdir/designsystemet-react';
-import { Container } from '@repo/components';
+import { Container } from '@internal/components';
 import cl from 'clsx/lite';
 import NextLink from 'next/link';
 import type React from 'react';

@@ -1,5 +1,5 @@
+import { Container } from '@internal/components';
 import { ComponentFillIcon } from '@navikt/aksel-icons';
-import { Container } from '@repo/components';
 
 import {
   Banner,

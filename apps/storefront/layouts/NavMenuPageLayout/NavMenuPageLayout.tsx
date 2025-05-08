@@ -1,5 +1,5 @@
 'use client';
-import { Container } from '@repo/components';
+import { Container } from '@internal/components';
 import { usePathname } from 'next/navigation';
 import type * as React from 'react';
 

@@ -1,5 +1,5 @@
 'use client';
-import { Container } from '@repo/components';
+import { Container } from '@internal/components';
 
 import classes from './page.module.css';
 

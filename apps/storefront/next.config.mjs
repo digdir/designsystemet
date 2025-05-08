@@ -19,7 +19,7 @@ const nextConfig = {
     '@digdir/designsystemet',
     '@digdir/designsystemet-css',
     '@digdir/designsystemet-theme',
-    '@repo/components',
+    '@internal/components',
   ],
 };
 
