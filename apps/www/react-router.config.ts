@@ -64,7 +64,7 @@ const config: Config = {
       )) {
         const typedBundle = bundle as { config?: { runtime?: string } };
         typedBundle.config = typedBundle.config || {};
-        typedBundle.config.runtime = 'edge';
+        typedBundle.config.runtime = 'nodejs';
       }
     }
 
