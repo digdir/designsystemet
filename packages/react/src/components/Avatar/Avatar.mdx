@@ -43,7 +43,7 @@ Sender du ikke inn `children` viser vi et standard brukerikon.
 
 ## Fargevarianter
 
-Du kan bruke alle tema fargene dine på `Avatar`.
+Du kan bruke alle temafargene dine på `Avatar`.
 
 <Canvas of={AvatarStories.ColorVariants} />
 
@@ -55,9 +55,9 @@ Du kan endre mellom sirkel og firkantet form. Standard er sirkel.
 
 ## Med bilde
 
-Skal du ha bilde, legger du dette som direkte barn av `Avatar`. 
+Skal du ha bilde, legger du dette som direkte `children` av `Avatar`. 
 
-Bilde (og andre child elements) får automatisk `aria-hidden="true"` for å unngå dobbel informasjon.
+Bilde, og andre `children`, får automatisk `aria-hidden="true"` for å unngå dobbel informasjon.
 
 <Canvas of={AvatarStories.WithImage} />
 
