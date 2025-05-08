@@ -1,7 +1,6 @@
 import { PassThrough } from 'node:stream';
 import { createReadableStreamFromReadable } from '@react-router/node';
 import { createInstance } from 'i18next';
-import Backend from 'i18next-fs-backend';
 import { isbot } from 'isbot';
 import type { RenderToPipeableStreamOptions } from 'react-dom/server';
 import { renderToPipeableStream } from 'react-dom/server';
@@ -25,22 +24,19 @@ export default async function handleRequest(
   const lng =
     routerContext.staticHandlerContext?.loaderData?.root?.lang || 'no';
 
-  await instance
-    .use(initReactI18next) // Tell our instance to use react-i18next
-    .use(Backend) // Setup our backend
-    .init({
-      ...i18n,
-      lng,
-      ns,
-      resources: {
-        en: {
-          translation: (await import('~/locales/en')).default,
-        },
-        no: {
-          translation: (await import('~/locales/no')).default,
-        },
+  await instance.use(initReactI18next).init({
+    ...i18n,
+    lng,
+    ns,
+    resources: {
+      en: {
+        translation: (await import('~/locales/en')).default,
       },
-    });
+      no: {
+        translation: (await import('~/locales/no')).default,
+      },
+    },
+  });
 
   return new Promise((resolve, reject) => {
     let shellRendered = false;

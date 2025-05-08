@@ -15,6 +15,14 @@ const i18next = new RemixI18Next({
   },
   i18next: {
     ...i18n,
+    resources: {
+      en: {
+        translation: (await import('~/locales/en')).default,
+      },
+      no: {
+        translation: (await import('~/locales/no')).default,
+      },
+    },
   },
   plugins: [],
 });
