@@ -12,6 +12,7 @@ import '@digdir/designsystemet-theme';
 import '@digdir/designsystemet-css';
 import './app.css';
 import { useTranslation } from 'react-i18next';
+import { useChangeLanguage } from 'remix-i18next/react';
 import { Error404 } from './_components/errors/error-404';
 import { i18nextMiddleware } from './middleware/i18next';
 
@@ -102,11 +103,15 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   return data({ lang: params.lang, centerLinks, menu });
 };
 
-export default function Layout({ loaderData: { lang } }: Route.ComponentProps) {
+export function Layout() {
   const { i18n } = useTranslation();
 
   return (
-    <html lang={lang} dir={i18n.dir(lang)} data-color-scheme='auto'>
+    <html
+      lang={i18n.language}
+      dir={i18n.dir(i18n.language)}
+      data-color-scheme='auto'
+    >
       <head>
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
@@ -126,6 +131,11 @@ export default function Layout({ loaderData: { lang } }: Route.ComponentProps) {
       </body>
     </html>
   );
+}
+
+export default function Root({ loaderData: { lang } }: Route.ComponentProps) {
+  useChangeLanguage(lang);
+  return <Outlet />;
 }
 
 export function ErrorBoundary({ error, loaderData }: Route.ErrorBoundaryProps) {
