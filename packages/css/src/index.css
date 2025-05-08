@@ -3,7 +3,6 @@
 @layer ds.theme, ds.base, ds.components;
 
 /** Import order defines ordinal specificity for layers */
-@import url("./theme/designsystemet.css");
 @import url("./base.css") layer(ds.base);
 @import url("./heading.css") layer(ds.base);
 @import url("./label.css") layer(ds.base);

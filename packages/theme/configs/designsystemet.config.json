@@ -1,5 +1,5 @@
 {
-  "$schema": "../dist/config.schema.json",
+  "$schema": "../../cli/dist/config.schema.json",
   "outDir": "../../internal/design-tokens",
   "clean": true,
   "themes": {

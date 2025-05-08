@@ -1,6 +1,7 @@
 import './style.css';
 import './customTheme.scss';
 import '../../../packages/css/src/index.css';
+import '../../../packages/theme/src/designsystemet/build/designsystemet.css';
 import { LinkIcon } from '@navikt/aksel-icons';
 import type { Preview } from '@storybook/react';
 import isChromatic from 'chromatic/isChromatic';

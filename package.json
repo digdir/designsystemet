@@ -36,7 +36,7 @@
     "chromatic": "pnpm --filter @designsystemet/storybook chromatic",
     "update:template": "pnpm --filter @digdir/designsystemet update:template",
     "update:design-tokens": "pnpm --filter @digdir/designsystemet update:design-tokens",
-    "update:theme": "pnpm --filter @digdir/designsystemet update:theme"
+    "update:theme": "pnpm --filter @digdir/designsystemet-theme update:theme"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
