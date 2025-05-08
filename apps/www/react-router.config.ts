@@ -8,6 +8,7 @@ import {
 import { join } from 'node:path';
 import { cwd } from 'node:process';
 import type { Config } from '@react-router/dev/config';
+import { vercelPreset } from '@vercel/react-router/vite';
 import { normalizePath } from 'vite';
 
 const config: Config = {
@@ -17,9 +18,7 @@ const config: Config = {
     const contentPaths = getContentPathsWithLanguages();
     return ['/no/components', ...contentPaths];
   },
-  presets: [
-    /* vercelPreset() */
-  ],
+  presets: [vercelPreset()],
   buildEnd: async ({ buildManifest: rrBuild }) => {
     const manifestPath = join(
       dirname,
