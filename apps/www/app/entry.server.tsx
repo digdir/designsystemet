@@ -4,8 +4,13 @@ import { createReadableStreamFromReadable } from '@react-router/node';
 import { isbot } from 'isbot';
 import type { RenderToPipeableStreamOptions } from 'react-dom/server';
 import { renderToPipeableStream } from 'react-dom/server';
-import type { EntryContext } from 'react-router';
+import { I18nextProvider } from 'react-i18next';
+import type {
+  EntryContext,
+  unstable_RouterContextProvider,
+} from 'react-router';
 import { ServerRouter } from 'react-router';
+import { getInstance } from './middleware/i18next';
 
 export const streamTimeout = 5_000;
 
@@ -14,6 +19,7 @@ export default function handleRequest(
   responseStatusCode: number,
   responseHeaders: Headers,
   entryContext: EntryContext,
+  routerContext: unstable_RouterContextProvider,
 ) {
   return new Promise((resolve, reject) => {
     let shellRendered = false;
@@ -25,7 +31,9 @@ export default function handleRequest(
         : 'onShellReady';
 
     const { pipe, abort } = renderToPipeableStream(
-      <ServerRouter context={entryContext} url={request.url} />,
+      <I18nextProvider i18n={getInstance(routerContext)}>
+        <ServerRouter context={entryContext} url={request.url} />
+      </I18nextProvider>,
       {
         [readyOption]() {
           shellRendered = true;
