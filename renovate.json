@@ -1,25 +1,5 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["local>digdir/renovate-config"],
-  "packageRules": [
-    {
-      "matchFileNames": ["apps/**", "plugins/**"],
-      "rangeStragegy": "pin"
-    },
-    {
-      "matchFileNames": ["packages/**"],
-      "matchPackageNames": ["*"],
-      "rangeStrategy": "replace"
-    },
-    {
-      "matchFileNames": ["package.json", "packages/**"],
-      "matchDepTypes": ["devDependencies", "dev-dependencies", "dev"],
-      "rangeStrategy": "pin"
-    },
-    {
-      "matchFileNames": ["packages/**"],
-      "matchDepTypes": ["peerDependencies"],
-      "rangeStrategy": "widen"
-    }
-  ]
+  "rangeStragegy": "bump"
 }
