@@ -37,10 +37,14 @@ export async function loader({ params }: Route.LoaderArgs) {
   };
 }
 
-export const meta = ({ data }: Route.MetaArgs) => {
+export const meta = ({
+  data: {
+    frontmatter: { title, description },
+  },
+}: Route.MetaArgs) => {
   return generateMetadata({
-    title: data.frontmatter.title,
-    description: data.frontmatter.description,
+    title,
+    description,
   });
 };
 

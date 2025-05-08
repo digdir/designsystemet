@@ -6,6 +6,7 @@ date: 2025-02-28
 category: For designers
 color: blue
 icon: PaletteIcon
+published: true
 ---
 
 Are you going to implement the Design System in your own organization with your own brand colors and preferences? There are several ways to do this. The first thing you need to decide is whether you want to use the components **_with_** or **_without_** a connection between Figma and code.
@@ -28,7 +29,7 @@ This option does **not** require Token Studio. With this option, you run the sam
 
 1. Get the component library from [Figma Community](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (Click "Open in Figma") to your organization that has at least a pro license. Note that this will be a copy of the component library without any connection to the main file. The file has now been placed in "drafts", so you need to move it to a suitable location in your organization.
 2. Install the Design System's [plugin for Figma](https://www.figma.com/community/plugin/1382044395533039221/designsystemet-beta).
-3. Go to the [Theme Builder](https://theme.designsystemet.no) and generate the color scale based on your brand colors. Keep the same color names and don't remove colors (This only works with [option 2](/en/fundamentals/for-designers/custom-theme#option-2-with-connection).)
+3. Go to the [Theme Builder](https://theme.designsystemet.no) and generate the color scale based on your brand colors. Keep the same color names and don't remove colors (This only works with [option 2](/en/fundamentals/for-designers/own-theme#option-2-with-connection).)
 
     Click "Apply theme". Copy the code snippet.
 
@@ -56,7 +57,6 @@ A connection means you don't have to enter the variables into Figma manually; in
 <Card
   data-color="brand2"
   data-variant="tinted"
-  data-unstyled
 >
   Note: You must have at least a pro license of Figma and a pro license of the "Tokens Studio" plugin to set up this connection. You also need a place to store the files that can be accessed by Token Studio, e.g., in a [Github repository](https://github.com/new).
 </Card>
