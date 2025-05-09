@@ -1,9 +1,19 @@
 import type { A11yParameters } from '@storybook/addon-a11y';
+import type { DocsParameters } from '@storybook/addon-docs';
+import type { ThemeVars } from '@storybook/theming';
 import type {} from '@storybook/types';
-import type { configureAxe } from 'axe-playwright';
 import type { CSSProperties } from 'react';
 
-type AxeConfig = Parameters<typeof configureAxe>[1];
+export type MdxComponentOverrides = {
+  [K in keyof React.JSX.IntrinsicElements]?: React.FC<
+    Omit<React.JSX.IntrinsicElements[K], 'data-size' | 'data-color'>
+  >;
+} & Record<string, React.FC>;
+
+type DocsParams = Required<DocsParameters>['docs'];
+// Use Partial here to make `of` not required when setting parameters.docs.{canvas,source}
+type DocsCanvasParams = Partial<DocsParams['canvas']>;
+type DocsSourceParams = Partial<DocsParams['source']>;
 
 type ChromaticViewport = {
   width?: number | `${string}px`;
@@ -104,6 +114,18 @@ declare module '@storybook/types' {
           // to use in modes can also be added here
         }
       >;
+    };
+
+    /**
+     * Docs configuration
+     *
+     * @see https://storybook.js.org/docs/writing-docs
+     */
+    docs?: Omit<DocsParams, 'canvas' | 'source'> & {
+      canvas?: DocsCanvasParams;
+      source?: DocsSourceParams;
+      components?: MdxComponentOverrides;
+      theme?: ThemeVars;
     };
 
     /**

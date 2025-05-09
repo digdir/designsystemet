@@ -24,6 +24,7 @@
     "@navikt/aksel-icons": "^7.21.0",
     "@internal/components": "workspace:^",
     "@storybook/addon-a11y": "^8.6.12",
+    "@storybook/addon-docs": "^8.6.12",
     "@storybook/addon-essentials": "^8.6.12",
     "@storybook/addon-links": "^8.6.12",
     "@storybook/addon-mdx-gfm": "^8.6.12",
