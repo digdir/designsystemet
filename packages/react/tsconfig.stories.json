@@ -1,7 +1,13 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "rootDir": "./",
+    "rootDir": "../../",
+    "paths": {
+      "@assets/*": ["apps/storybook/assets/*"],
+      "@doc-components": ["apps/storybook/docs-components"],
+      "@doc-components/*": ["apps/storybook/docs-components/*"],
+      "@story-utils/*": ["apps/storybook/story-utils/*"],
+    },
     "outDir": "./tsc-build",
     "allowSyntheticDefaultImports": true,
     "composite": true,
@@ -18,7 +24,9 @@
   "include": [
     "stories",
     "src/**/*.stories.ts*",
-    "src/**/*.chromatic.ts*"
+    "src/**/*.chromatic.ts*",
+    "../../apps/storybook/story-utils/**/*.ts*"
+
   ],
   "references": [{ "path": "tsconfig.lib.json" }]
 }
