@@ -6,12 +6,12 @@ export default {
     'for-designers': {
       title: 'For designers',
       description:
-        'Learn how to get started with the design system as a designer.',
+        'Learn how to get started with Designsystemet as a designer.',
     },
     'for-developers': {
       title: 'For developers',
       description:
-        'Learn how to get started with the design system as a developer.',
+        'Learn how to get started with Designsystemet as a developer.',
     },
     components: {
       title: 'Components',
@@ -20,30 +20,30 @@ export default {
     toolbox: {
       title: 'A common digital toolbox',
       description:
-        'The design system is a common toolbox with basic UI components, guidelines, and patterns that you can use when developing digital services. The design system contributes to efficient product development and holistic user experiences.',
-      link: 'Read more about the design system',
+        'Designsystemet is a shared toolbox of foundational UI components, guidelines, and patterns to support the development of digital services. It helps teams build efficiently while ensuring consistent and user-friendly experiences.',
+      link: 'Read more about Designsystemet',
     },
     'components-section': {
       title: 'Accessible and flexible components',
       description:
-        'When we create the most basic components just once, we ensure good quality. The component is well tested, and we maintain accessibility requirements. The components are created in Figma and React. You can combine them in many different ways and in various patterns.',
+        'By creating the most basic components once, we ensure high quality. Each component is thoroughly tested and meets accessibility requirements. Components are built in both Figma and React, and can be combined in various ways to support different patterns.',
       fallbackImgAlt:
-        'Design sketch of a mobile phone containing components from the design system.',
+        'Design sketch of a mobile phone containing components from Designsystemet.',
     },
     'theme-section': {
       title: 'Use your own themes',
       description:
-        'The design system supports different identities through themes. This way, everyone can use the same design system as a basis but adapt to different sender identities.',
+        'With theming, Designsystemet makes it possible to support different visual identities. This means everyone can build on the same foundation while tailoring the design to their own brand.',
       fallbackImgAlt:
-        'Design sketch of a website showing how the design system can be adapted to different identities.',
+        'Design sketch of a website showing how Designsystemet can be adapted to different identities.',
     },
     'latest-news': {
-      title: 'Latest news from the design system',
+      title: 'Latest news from Designsystemet',
     },
     'join-section': {
-      title: 'Join us in developing the design system!',
+      title: 'Join us in developing Designsystemet!',
       description:
-        'By collaborating on the design system, we can create more holistic user experiences across the public sector. At the same time, we save ourselves from doing the same tasks multiple times. The design system should be a common home for reusable components, best practices, interaction patterns, user dialogue, insights, and more. Want to hear more or help? Contact us!',
+        'By collaborating on Designsystemet, we can create more recognizable behavior in components and interaction patterns across the public sector. Designsystemet is meant to be a shared home for reusable components, best practices, user dialogue, insights, and more. Want to learn more or get involved? Get in touch!',
       buttons: {
         slack: 'Join us on Slack',
         github: 'Contribute on GitHub',
@@ -53,14 +53,14 @@ export default {
     meta: {
       title: 'A common digital toolbox',
       description:
-        'The design system is a common toolbox with basic UI components, guidelines, and patterns that you can use when developing digital services. The design system contributes to efficient product development and holistic user experiences.',
+        'Designsystemet is a shared toolbox of core UI components, guidelines, and patterns for developing digital services. It supports efficient product development and helps create consistent and recognizable user experiences.',
     },
   },
   blog: {
     tag: 'Blog',
     title: 'Blog',
     description:
-      'The blog contains articles about the design system, design, and development. The blog is a place for sharing knowledge and experiences with each other.',
+      'The blog features articles about Designsystemet, design, and development. It’s a space for sharing knowledge and experiences across teams.',
     write: {
       title: 'Want to write for the blog?',
       description:
@@ -100,7 +100,7 @@ export default {
     'theme-builder': 'Theme Builder',
   },
   footer: {
-    about: 'About the design system',
+    about: 'About Designsystemet',
     privacy: 'Privacy policy',
     accessibility: 'Accessibility statement',
     slack: 'Join us on Slack',
@@ -131,10 +131,10 @@ export default {
     },
   },
   header: {
-    'home-link': 'Design system home page',
+    'home-link': 'Designsystemet home page',
     menu: 'Menu',
-    'github-title': 'Design system GitHub repository',
-    'figma-title': 'Design system Figma project',
+    'github-title': 'Designsystemet GitHub repository',
+    'figma-title': 'Designsystemet Figma project',
     'theme-toggle': 'Switch to {{theme}} mode',
     'theme-toggle-aria': 'Switch to {{theme}} mode',
     light: 'light',
@@ -144,7 +144,7 @@ export default {
   components: {
     title: 'Components',
     description:
-      'The design system contains basic components that can be combined in many different ways and in various patterns.',
+      'Designsystemet contains basic components that can be combined in many different ways and in various patterns.',
   },
   patterns: {
     meta: {
@@ -153,17 +153,17 @@ export default {
     },
     title: 'Patterns',
     description:
-      'Patterns are guidelines and recommendations for how to solve interaction and recurring user tasks. When the same patterns are used across services, we create recognition and familiarity in the user experience.',
+      'Patterns are guidelines and recommendations for solving interactions and recurring user tasks. When the same patterns are used across services, they help create recognition and familiarity in the user experience.',
   },
   fundamentals: {
     title: 'Fundamentals',
     description:
-      'Learn more about the design system, the basic design elements, and how to get started as a designer or developer.',
+      'Learn more about Designsystemet, the basic design elements, and how to get started as a designer or developer.',
   },
   'best-practices': {
     title: 'Best practices',
     description:
-      'Here we share best practices with each other. Advice and guidance that can help create better holistic services are gathered here.',
+      'Here we share best practices with each other. Advice and guidance that can help create better services are gathered here.',
     back: 'Back',
   },
   mdx: {

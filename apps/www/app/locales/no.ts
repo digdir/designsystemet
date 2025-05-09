@@ -4,12 +4,12 @@ export default {
     'for-designers': {
       title: 'For designere',
       description:
-        'Lær hvordan du kommer i gang med designsystemet som designer.',
+        'Lær hvordan du kommer i gang med Designsystemet som designer.',
     },
     'for-developers': {
       title: 'For utviklere',
       description:
-        'Lær hvordan du kommer i gang med designsystemet som utvikler.',
+        'Lær hvordan du kommer i gang med Designsystemet som utvikler.',
     },
     components: {
       title: 'Komponenter',
@@ -19,29 +19,29 @@ export default {
       title: 'En felles digital verktøykasse',
       description:
         'Designsystemet er en felles verktøykasse med grunnleggende UI-komponenter, retningslinjer og mønstre, som du kan bruke når du utvikler digitale tjenester. Designsystemet bidrar til effektiv produktutvikling og helhetlige brukeropplevelser.',
-      link: 'Les mer om designsystemet',
+      link: 'Les mer om Designsystemet',
     },
     'components-section': {
       title: 'Tilgjengelige og fleksible komponenter',
       description:
         'Når vi lager de mest grunnleggende komponentene bare én gang, sikrer vi god kvalitet. Komponenten blir godt testet, og vi ivaretar kravene til tilgjengelighet. Komponentene er laget i Figma og i React. Du kan sette dem sammen på mange ulike måter og i forskjellige mønstre.',
       fallbackImgAlt:
-        'Designskisse av en mobiltelefon som har komponenter fra designsystemet i seg.',
+        'Designskisse av en mobiltelefon som har komponenter fra Designsystemet i seg.',
     },
     'theme-section': {
       title: 'Bruk egne tema',
       description:
         'Designsystemet støtter ulike identiteter gjennom tema. På denne måten kan alle ta utgangspunkt i samme designsystem, men tilpasse til ulike avsenderidentiteter.',
       fallbackImgAlt:
-        'Designskisse av en nettside som viser hvordan designsystemet kan tilpasses ulike identiteter.',
+        'Designskisse av en nettside som viser hvordan Designsystemet kan tilpasses ulike identiteter.',
     },
     'latest-news': {
-      title: 'Siste nytt fra designsystemet',
+      title: 'Siste nytt fra Designsystemet',
     },
     'join-section': {
-      title: 'Bli med å utvikle designsystemet!',
+      title: 'Bli med å utvikle Designsystemet!',
       description:
-        'Ved å samarbeide om designsystemet kan vi lage mer helhetlige brukeropplevelser på tvers av offentlig sektor. Samtidig sparer vi oss for å gjøre de samme oppgavene flere ganger. Designsystemet skal være et felles hjem for gjenbrukbare komponenter, god praksis, interaksjonsmønstre, brukerdialog, innsikt og mer. Vil du høre mer eller hjelpe? Ta kontakt med oss!',
+        'Ved å samarbeide om Designsystemet kan vi lage mer gjenkjennelige brukeropplevelser på tvers av offentlig sektor. Samtidig sparer vi oss for å gjøre de samme oppgavene flere ganger. Designsystemet skal være et felles hjem for gjenbrukbare komponenter, god praksis, interaksjonsmønstre, brukerdialog, innsikt og mer. Vil du høre mer eller hjelpe? Ta kontakt med oss!',
       buttons: {
         slack: 'Bli med på Slack',
         github: 'Bidra på GitHub',
@@ -58,7 +58,7 @@ export default {
     tag: 'Bloggen',
     title: 'Bloggen',
     description:
-      'Her deler vi nyheter, tips og erfaringer fra utviklingen av designsystemet. Vi ønsker å dele kunnskap og erfaringer med hverandre, og bidra til å gjøre det enklere å lage gode digitale tjenester.',
+      'Her deler vi nyheter, tips og erfaringer fra utviklingen av Designsystemet. Vi ønsker å dele kunnskap og erfaringer med hverandre, og bidra til å gjøre det enklere å lage gode digitale tjenester.',
     write: {
       title: 'Vil du skrive for bloggen?',
       description:
@@ -98,7 +98,7 @@ export default {
     'theme-builder': 'Temabygger',
   },
   footer: {
-    about: 'Om designsystemet',
+    about: 'Om Designsystemet',
     privacy: 'Personvernerklæring',
     accessibility: 'Tilgjengelighetserklæring',
     slack: 'Bli invitert til slack',
@@ -156,7 +156,7 @@ export default {
   fundamentals: {
     title: 'Grunnleggende',
     description:
-      'Lær mer om designsystemet, de grunnleggende designelementene, og hvordan du kommer i gang som designer eller utvikler.',
+      'Lær mer om Designsystemet, de grunnleggende designelementene, og hvordan du kommer i gang som designer eller utvikler.',
   },
   'best-practices': {
     title: 'God praksis',
