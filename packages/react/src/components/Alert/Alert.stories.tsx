@@ -1,10 +1,11 @@
+import { createHtmlStory } from '@story-utils/createHtmlStory';
 import { formatReactSource } from '@story-utils/transformSource';
 import type { Meta, StoryFn } from '@storybook/react';
-
-import { Button, Heading, Link, Paragraph } from '../';
-
 import { useState } from 'react';
 import { Alert } from '.';
+import { Button, Heading, Link, Paragraph } from '../';
+import correctLiveRegionHtml from './html-examples/correct-live-region.html?raw';
+import wrongLiveRegionHtml from './html-examples/wrong-live-region.html?raw';
 
 type Story = StoryFn<typeof Alert>;
 
@@ -158,7 +159,7 @@ export const UtenAria: Story = (args) => (
   </Alert>
 );
 
-export const WrongLiveRegion: StoryFn<typeof Alert> = () => {
+export const WrongLiveRegionReact: StoryFn<typeof Alert> = () => {
   const [showAlert, setShowAlert] = useState(false);
   return (
     <>
@@ -189,8 +190,7 @@ export const WrongLiveRegion: StoryFn<typeof Alert> = () => {
     </>
   );
 };
-
-WrongLiveRegion.parameters = {
+WrongLiveRegionReact.parameters = {
   docs: {
     source: {
       // Ensure we show the actual code, and not the initially rendered output
@@ -206,7 +206,11 @@ WrongLiveRegion.parameters = {
   },
 };
 
-export const CorrectLiveRegion: StoryFn<typeof Alert> = () => {
+export const WrongLiveRegionHtml = createHtmlStory(wrongLiveRegionHtml, {
+  customStyles: WrongLiveRegionReact.parameters.customStyles,
+});
+
+export const CorrectLiveRegionReact: StoryFn<typeof Alert> = () => {
   const [showAlert, setShowAlert] = useState(false);
   return (
     <>
@@ -239,7 +243,11 @@ export const CorrectLiveRegion: StoryFn<typeof Alert> = () => {
     </>
   );
 };
-CorrectLiveRegion.parameters = WrongLiveRegion.parameters;
+CorrectLiveRegionReact.parameters = WrongLiveRegionReact.parameters;
+
+export const CorrectLiveRegionHtml = createHtmlStory(correctLiveRegionHtml, {
+  customStyles: CorrectLiveRegionReact.parameters.customStyles,
+});
 
 export const MedAria: Story = (args) => (
   <Alert {...args} data-color='danger' role='alert'>

@@ -1,5 +1,5 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
-import { CssVariables } from '@doc-components';
+import { CssVariables, ReactOrHtmlCanvas } from '@doc-components';
 import css from '@digdir/designsystemet-css/alert.css?inline';
 
 import * as AlertStories from './Alert.stories';
@@ -124,15 +124,19 @@ Du **bør** kombinere `role="status"` og `aria-live="polite"` [for å maksimere 
 
 Ikke definer en *live region* direkte på `Alert`. For statiske varsler har det ingen effekt, og for dynamiske varsler vil det ikke bli tolket riktig av alle skjermlesere, selv om mange skjermlesere har spesialhåndtering som går ut over ARIA-spesifikasjonen for akkurat `role="alert"`.
 
-<Canvas of={AlertStories.WrongLiveRegion} />
+<ReactOrHtmlCanvas
+  react={AlertStories.WrongLiveRegionReact}
+  html={AlertStories.WrongLiveRegionHtml}
+/>
 
 #### Gjør dette for dynamiske varsler
 
 Definer en *live region*, f.eks. med `role="alert"`, for varsler som kan dukke opp dynamisk underveis som følge av brukerens handlinger eller andre faktorer. Dette vil også fungere på samme måte med `role="status"`.
 
-<Canvas of={AlertStories.CorrectLiveRegion} />
-
-For dynamiske varsler uten React, følg eksempelet i [mønsteret for dynamiske systemvarsler](https://www.designsystemet.no/monstre/systemvarsler#dynamiske-varsler).
+<ReactOrHtmlCanvas
+  react={AlertStories.CorrectLiveRegionReact}
+  html={AlertStories.CorrectLiveRegionHtml}
+/>
 
 ## CSS Variabler
 
