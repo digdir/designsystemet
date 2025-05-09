@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.0.6
+
+### Patch Changes
+
+- Table: Use font weight `--ds-font-weight-semibold` on header cells (`th`) ([#3508](https://github.com/digdir/designsystemet/pull/3508))
+
 ## 1.0.5
 
 ## 1.0.4

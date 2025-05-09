@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.0.6
+
+### Patch Changes
+
+- Updated non-major dependencies ([#3514](https://github.com/digdir/designsystemet/pull/3514))
+
+- Export `LabelRequired` type ([#3564](https://github.com/digdir/designsystemet/pull/3564))
+
 ## 1.0.5
 
 ## 1.0.4
