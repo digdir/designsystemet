@@ -1,3 +1,4 @@
+import { formatReactSource } from '@story-utils/transformSource';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { Button, Heading, Link, Paragraph } from '../';
@@ -194,6 +195,7 @@ WrongLiveRegion.parameters = {
     source: {
       // Ensure we show the actual code, and not the initially rendered output
       type: 'code',
+      transform: formatReactSource,
     },
   },
   customStyles: {
