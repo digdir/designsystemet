@@ -4,7 +4,7 @@ import { cp } from '../utils.js';
 const DIRNAME: string = import.meta.dirname || __dirname;
 
 const TARGET = path.join(DIRNAME, '../../../../design-tokens');
-const INTERNAL = path.join(DIRNAME, '../../internal/design-tokens');
+const INTERNAL = path.join(DIRNAME, '../../temp/digdir/design-tokens');
 
 async function updateDesignTokens() {
   console.log('\n📁 Copying design tokens');

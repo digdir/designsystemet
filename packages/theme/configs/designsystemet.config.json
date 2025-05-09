@@ -1,0 +1,20 @@
+{
+  "$schema": "../../cli/dist/config.schema.json",
+  "outDir": "../../internal/design-tokens",
+  "clean": true,
+  "themes": {
+    "designsystemet": {
+      "colors": {
+        "main": {
+          "primary": "#0062BA",
+          "accent": "#1E98F5"
+        },
+        "support": {
+          "extra1": "#F45F63",
+          "extra2": "#E5AA20"
+        },
+        "neutral": "#1E2B3C"
+      }
+    }
+  }
+}

@@ -2,6 +2,7 @@ import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import type { TagProps } from '.';
 import { Tag } from '.';
+import themeConfig from '../../../../theme/configs/designsystemet.config.json';
 
 type Story = StoryObj<typeof Tag>;
 
@@ -12,6 +13,12 @@ export default {
     customStyles: { justifyContent: 'start' },
   },
 } satisfies Meta;
+
+const colorVariants = [
+  ...Object.keys(themeConfig.themes.designsystemet.colors.main),
+  ...Object.keys(themeConfig.themes.designsystemet.colors.support),
+  themeConfig.themes.designsystemet.colors.neutral,
+];
 
 export const Preview: Story = {
   args: {
@@ -40,22 +47,11 @@ Sizes.parameters = {
   },
 };
 
-const colors: TagProps['data-color'][] = [
-  'neutral',
-  'success',
-  'warning',
-  'danger',
-  'info',
-  'brand1',
-  'brand2',
-  'brand3',
-];
-
 export const Colors: StoryFn<typeof Tag> = ({ ...rest }) => {
   return (
     <>
-      {colors.map((color) => (
-        <Tag key={color} data-color={color} {...rest}>
+      {colorVariants.map((color) => (
+        <Tag key={color} data-color={color as TagProps['data-color']} {...rest}>
           {color}
         </Tag>
       ))}

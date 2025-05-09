@@ -1,0 +1,22 @@
+{
+  "designsystemet": {
+    "font-family": {
+      "$type": "fontFamilies",
+      "$value": "Inter"
+    },
+    "font-weight": {
+      "medium": {
+        "$type": "fontWeights",
+        "$value": "Medium"
+      },
+      "semibold": {
+        "$type": "fontWeights",
+        "$value": "Semi bold"
+      },
+      "regular": {
+        "$type": "fontWeights",
+        "$value": "Regular"
+      }
+    }
+  }
+}

@@ -14,7 +14,7 @@
   "license": "MIT",
   "type": "module",
   "main": "./dist/src/index.js",
-  "files": ["./dist/**"],
+  "files": ["./dist/**", "./configs/**"],
   "bin": "dist/bin/designsystemet.js",
   "exports": {
     ".": {
@@ -38,16 +38,16 @@
     "build:types": "tsc --emitDeclarationOnly --declaration",
     "build:json-schema": "tsx ./src/scripts/createJsonSchema.ts",
     "types": "tsc --noEmit",
-    "test:tokens-create-options": "pnpm run designsystemet tokens create -m dominant:\"#007682\" -n \"#003333\" -b 99 -o ./test-tokens/options --theme options --clean",
-    "test:tokens-create-config": "pnpm run designsystemet tokens create --config ./test/test-tokens.config.json",
-    "test:tokens-build": "pnpm run designsystemet tokens build -t ./test-tokens/options -o ./test-tokens/options-build --clean",
-    "test:tokens-build-config": "pnpm run designsystemet tokens build -t ./test-tokens/config -o ./test-tokens/config-build --clean",
+    "test:tokens-create-options": "pnpm run designsystemet tokens create -m dominant:\"#007682\" -n \"#003333\" -b 99 -o ./temp/options/design-tokens --theme options --clean",
+    "test:tokens-create-config": "pnpm run designsystemet tokens create --config ./configs/test-tokens.config.json",
+    "test:tokens-build": "pnpm run designsystemet tokens build -t ./temp/options/design-tokens -o ./temp/options/build --clean",
+    "test:tokens-build-config": "pnpm run designsystemet tokens build -t ./temp/config/design-tokens -o ./temp/config/build --clean",
     "test:tokens-create-and-build-options": "pnpm test:tokens-create-options && pnpm test:tokens-build",
     "test:tokens-create-and-build-config": "pnpm test:tokens-create-config && pnpm test:tokens-build-config",
     "test": "pnpm test:tokens-create-and-build-options && pnpm test:tokens-create-and-build-config",
-    "internal:tokens-create": "pnpm run designsystemet tokens create --config ./internal.config.json",
+    "digdir:tokens-create": "pnpm run designsystemet tokens create --config ./configs/digdir.config.json",
     "update:template": "tsx ./src/scripts/update-template.ts",
-    "update:design-tokens": "pnpm internal:tokens-create && tsx ./src/scripts/update-design-tokens.ts",
+    "update:design-tokens": "pnpm digdir:tokens-create && tsx ./src/scripts/update-design-tokens.ts",
     "verify": "pnpm test && pnpm update:template && pnpm update:design-tokens"
   },
   "dependencies": {
