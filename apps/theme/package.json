@@ -19,6 +19,8 @@
     "@internal/components": "workspace:^",
     "chroma-js": "^3.1.2",
     "clsx": "^2.1.1",
+    "d3": "^7.9.0",
+    "@radix-ui/react-slot": "^1.1.2",
     "next": "^15.3.1",
     "react": "^19.1.0",
     "react-color-palette": "^7.3.0",
@@ -28,7 +30,9 @@
   },
   "devDependencies": {
     "@types/chroma-js": "^3.1.1",
+    "@types/d3": "^7",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.3"
+
   }
 }

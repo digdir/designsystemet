@@ -1,20 +1,17 @@
 .panel {
-  background-color: var(--ds-color-neutral-background-tinted);
-  border: 1px solid var(--ds-color-neutral-border-subtle);
+  background-color: var(--ds-color-neutral-surface-default);
+  box-shadow: var(--ds-shadow-xs);
   border-radius: 8px;
   margin-top: 28px;
   width: 100%;
-  max-width: 1390px;
   overflow: hidden;
 }
 
 .basicPanel {
-  background-color: var(--ds-color-neutral-background-tinted);
-  border: 1px solid var(--ds-color-neutral-border-subtle);
+  background-color: var(--ds-color-neutral-surface-default);
+  box-shadow: var(--ds-shadow-xs);
   border-radius: 8px;
-  margin-top: 28px;
   width: 100%;
-  max-width: 1390px;
   padding: var(--ds-size-6);
 }
 

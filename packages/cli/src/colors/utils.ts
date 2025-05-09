@@ -159,6 +159,14 @@ export const getLuminanceFromLightness = (lightness: number) => {
   return chroma(conv.hex).luminance();
 };
 
+export const getLightnessFromLuminance = (luminance: number) => {
+  const conv = new Hsluv();
+  conv.hex = chroma('#125FBD').luminance(luminance).hex();
+  conv.hexToHsluv();
+
+  return conv.hsluv_l;
+};
+
 /**
  * Get the relative luminance from any valid css color
  *

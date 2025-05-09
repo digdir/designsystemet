@@ -41,16 +41,11 @@
 }
 
 .bottom {
-  bottom: 0;
-  right: 0;
-  left: 0;
-  padding: 24px;
   border-top: 1px solid var(--ds-color-neutral-border-subtle);
   display: flex;
   align-items: center;
-  gap: 16px;
-  background-color: var(--ds-color-info-background-default);
-  border-radius: 0 0 8px 8px;
+  padding-top: 24px;
+  margin-top: 16px;
 }
 
 .separator {
@@ -58,4 +53,35 @@
   height: 1px;
   width: 100%;
   background-color: var(--ds-color-neutral-border-subtle);
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.lightBtn {
+  align-self: flex-start;
+  margin-left: -12px;
+}
+
+.back {
+  align-self: flex-start;
+  margin-left: -16px;
+  margin-top: -10px;
+  margin-bottom: 8px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  margin-top: 8px;
+}
+
+.card:hover {
+  background-color: var(--ds-color-neutral-background-tinted);
+  cursor: pointer;
 }

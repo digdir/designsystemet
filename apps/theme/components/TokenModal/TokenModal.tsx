@@ -14,8 +14,8 @@ import {
   cliOptions,
   formatThemeCSS,
 } from '@digdir/designsystemet/tokens';
+import { InformationSquareIcon, RocketIcon } from '@navikt/aksel-icons';
 import { CodeBlock } from '@internal/components';
-import { InformationSquareIcon, StarIcon } from '@navikt/aksel-icons';
 import { useRef, useState } from 'react';
 
 import type { Color, CssColor } from '@digdir/designsystemet/color';
@@ -102,8 +102,8 @@ export const TokenModal = () => {
           return modalRef.current?.showModal();
         }}
       >
-        <StarIcon aria-hidden fontSize='1.5rem' />
-        Ta i bruk tema
+        <RocketIcon title='a11y-title' />
+        Ta i bruk temaet
       </Dialog.Trigger>
       <Dialog
         className={classes.modal}

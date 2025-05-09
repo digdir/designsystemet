@@ -1,0 +1,45 @@
+.page {
+  margin-top: 40px;
+}
+
+.container {
+  display: flex;
+  gap: 24px;
+}
+
+.left {
+  width: 66%;
+}
+
+.right {
+  width: 34%;
+}
+
+.cards {
+  display: flex;
+  gap: 24px;
+}
+
+.header {
+  margin-bottom: 32px;
+}
+
+.title {
+  margin-bottom: 8px;
+}
+
+.desc {
+  margin-bottom: 24px;
+}
+
+.panel {
+  background-color: var(--ds-color-neutral-surface-default);
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: var(--ds-shadow-xs);
+  margin-top: 16px;
+}
+
+.lists {
+  margin-top: 32px;
+}

@@ -2,7 +2,7 @@ import chroma from 'chroma-js';
 import * as R from 'ramda';
 import { colorMetadata, getColorMetadataByNumber } from './colorMetadata.js';
 import type { CssColor } from './types.js';
-import type { Color, ColorNumber, ColorScheme, ThemeInfo } from './types.js';
+import type { Color, ColorMetadataByName, ColorNumber, ColorScheme, ThemeInfo } from './types.js';
 import { getLightnessFromHex, getLuminanceFromLightness } from './utils.js';
 
 export const RESERVED_COLORS = [
@@ -23,27 +23,30 @@ export const RESERVED_COLORS = [
  *
  * @param color The base color that is used to generate the color scale
  * @param colorScheme The color scheme to generate a scale for
+ * @param colorMetaData The metadata for the color
  */
-export const generateColorScale = (color: CssColor, colorScheme: ColorScheme): Color[] => {
-  let interpolationColor = color;
-
-  // Reduce saturation in dark mode for the interpolation colors
-  if (colorScheme === 'dark') {
-    const [L, C, H] = chroma(color).oklch();
-    const chromaModifier = 0.7;
-    interpolationColor = chroma(L, C * chromaModifier, H, 'oklch').hex() as CssColor;
-  }
-
+export const generateColorScale = (
+  color: CssColor,
+  colorScheme: ColorScheme,
+  colorMetaData: ColorMetadataByName,
+): Color[] => {
+  // Generate colors based on the metadata
   const colors = R.mapObjIndexed((colorData) => {
-    const luminance = colorData.luminance[colorScheme];
+    const { saturation, interpolation, lightness } = colorMetaData[colorData.name];
+    const [L, C, H] = chroma(color).oklch();
+    const chromaModifier = saturation[colorScheme];
+    const interpolColor = chroma(L, C * chromaModifier, H, 'oklch').hex();
+
     return {
       ...colorData,
-      hex: chroma(interpolationColor).luminance(luminance).hex() as CssColor,
+      hex: chroma(interpolColor)
+        .luminance(getLuminanceFromLightness(lightness[colorScheme]), interpolation || 'rgb')
+        .hex() as CssColor,
     };
-  }, colorMetadata);
+  }, colorMetaData || colorMetadata);
 
   // Generate base colors
-  const baseColors = generateBaseColors(color, colorScheme);
+  const baseColors = generateBaseColors(color, colorScheme, colorMetaData);
   colors['base-default'] = { ...colors['base-default'], hex: baseColors.default };
   colors['base-hover'] = { ...colors['base-hover'], hex: baseColors.hover };
   colors['base-active'] = { ...colors['base-active'], hex: baseColors.active };
@@ -63,11 +66,13 @@ export const generateColorScale = (color: CssColor, colorScheme: ColorScheme): C
  * Generates color schemes based on a base color. Light, Dark and Contrast scales are included.
  *
  * @param color The base color that is used to generate the color schemes
+ * @param colorMetaData The metadata for the color
+ * @param staticSaturation The static saturation value for the color
  */
-export const generateColorSchemes = (color: CssColor): ThemeInfo => ({
-  light: generateColorScale(color, 'light'),
-  dark: generateColorScale(color, 'dark'),
-  contrast: generateColorScale(color, 'contrast'),
+export const generateColorSchemes = (color: CssColor, colorMetaData?: typeof colorMetadata): ThemeInfo => ({
+  light: generateColorScale(color, 'light', colorMetaData || colorMetadata),
+  dark: generateColorScale(color, 'dark', colorMetaData || colorMetadata),
+  contrast: generateColorScale(color, 'contrast', colorMetaData || colorMetadata),
 });
 
 /**
@@ -77,7 +82,7 @@ export const generateColorSchemes = (color: CssColor): ThemeInfo => ({
  * @param colorScheme The color scheme to generate the base colors for
  * @returns
  */
-const generateBaseColors = (color: CssColor, colorScheme: ColorScheme) => {
+const generateBaseColors = (color: CssColor, colorScheme: ColorScheme, colorMetaData: ColorMetadataByName) => {
   let colorLightness = getLightnessFromHex(color);
   if (colorScheme !== 'light') {
     colorLightness = colorLightness <= 30 ? 70 : 100 - colorLightness;
@@ -90,12 +95,20 @@ const generateBaseColors = (color: CssColor, colorScheme: ColorScheme) => {
     default:
       colorScheme === 'light'
         ? color
-        : (chroma(color).luminance(getLuminanceFromLightness(colorLightness)).hex() as CssColor),
+        : (chroma(color)
+            .luminance(getLuminanceFromLightness(colorLightness), colorMetaData['base-default'].interpolation)
+            .hex() as CssColor),
     hover: chroma(color)
-      .luminance(getLuminanceFromLightness(calculateLightness(colorLightness, modifier)))
+      .luminance(
+        getLuminanceFromLightness(calculateLightness(colorLightness, modifier)),
+        colorMetaData['base-hover'].interpolation,
+      )
       .hex() as CssColor,
     active: chroma(color)
-      .luminance(getLuminanceFromLightness(calculateLightness(colorLightness, modifier * 2)))
+      .luminance(
+        getLuminanceFromLightness(calculateLightness(colorLightness, modifier * 2)),
+        colorMetaData['base-active'].interpolation,
+      )
       .hex() as CssColor,
   };
 };

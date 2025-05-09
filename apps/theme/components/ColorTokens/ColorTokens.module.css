@@ -1,10 +1,26 @@
 .img {
-  width: 80%;
+  width: 100%;
   height: auto;
+  border-radius: 8px;
 }
 
-.right {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+.page {
+  margin-top: 40px;
+}
+
+.panel {
+  background-color: white;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: var(--ds-shadow-xs);
+  margin-top: 16px;
+  display: inline-block;
+}
+
+.title {
+  margin-bottom: 12px;
+}
+
+.desc {
+  margin-bottom: 12px;
 }

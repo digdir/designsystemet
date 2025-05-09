@@ -64,7 +64,7 @@ export const Group = ({
             hex,
           };
           return (
-            <Fragment key={index + 'fragment' + namespace}>
+            <div className={classes.test} key={index + 'fragment' + namespace}>
               <ColorModal
                 colorModalRef={colorModalRefs.current[index]}
                 namespace={namespace}
@@ -81,7 +81,7 @@ export const Group = ({
                   }
                 />
               </RovingFocusItem>
-            </Fragment>
+            </div>
           );
         })}
       </div>
