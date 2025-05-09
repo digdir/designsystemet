@@ -33,6 +33,11 @@ declare module '@storybook/types' {
 
   type PseudoValue = boolean | string | string[];
 
+  interface Globals {
+    codePreview?: 'react' | 'html';
+    colorScheme?: 'light' | 'dark';
+  }
+
   interface Parameters {
     /**
      * Set custom styling for the story's root element. The default styling is:

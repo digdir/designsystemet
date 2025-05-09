@@ -1,0 +1,26 @@
+<!-- Korrekt bruk: role='alert' ligger på elementet der varselet dukker opp -->
+<div id="dynamicAlertContainer" role="alert"></div>
+<button
+  type="button"
+  class="ds-button"
+  data-size="sm"
+  data-variant="secondary"
+  onclick="
+    const alertContainer = document.getElementById('dynamicAlertContainer');
+    if (alertContainer) {
+      alertContainer.innerHTML = `
+        <div class='ds-alert' data-color='danger'>
+          <h2 class='ds-heading' data-size='xs' style='margin-bottom:var(--ds-size-2)'>
+            Vi klarer ikke lagre skjemaet
+          </h2>
+          <p class='ds-paragraph' data-variant='default'>
+            Vi har mistet forbindelsen med serveren og får ikke lagret skjemaet.
+            Vent litt og prøv en gang til.
+          </p>
+        </div>
+      `;
+    }
+  "
+>
+  Handling som fører til varsel
+</button>

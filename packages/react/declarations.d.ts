@@ -20,3 +20,8 @@ declare module '*.jpg' {
   const value: string;
   export = value;
 }
+
+declare module '*?raw' {
+  const wrongLiveRegionHtml: string;
+  export default wrongLiveRegionHtml;
+}
