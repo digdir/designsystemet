@@ -7,8 +7,8 @@ import * as BadgeStories from './Badge.stories';
 
 # Badge
 
-`Badge` er en ikke-interaktiv komponent som viser status med eller uten tall. Bruk [Tag](/docs/komponenter-tag--docs) dersom du skal
-ha tekst i stedet for tall.
+`Badge` er ein ikkje-interaktiv komponent som viser status med eller utan tal. Bruk [Tag](/docs/komponenter-tag--docs) dersom du skal
+ha tekst i staden for tal.
 
 <Primary />
 <Controls />
@@ -28,42 +28,54 @@ import { Badge } from '@digdir/designsystemet-react';
 </Badge.Position>
 ```
 
-## Flytende over element
+## Eksempel
 
-Sett plassering med `placement`. Dersom elementet du plasserer over er en sirkel kan du sette `overlap="circle"`.
+### Flytande over element
+
+Du kan setje plassering med `placement`. Dersom elementet du plasserer over er ein sirkel, kan du setje `overlap="circle"`.
 
 <Canvas of={BadgeStories.Floating} />
 
-Noen ganger kan ikon være forskjellige, og da må du endre på hvor `Badge` skal plasseres.
-Dersom du ikke får `Badge` til å ligge der du vil, kan du bruke `style` for å overstyre posisjoneringen.
-Dette vil også fungere for `overlap="circle"`.
+Ikkje alle ikon har lik form, og då må du kanskje endre kor `Badge` skal plasserast. Dersom du ikkje får `Badge` til å liggje der du ynskjer, kan du bruke `style` for å overstyre plasseringa.
+Dette fungerer også når du bruker `overlap="circle"`.
 
 <Canvas of={BadgeStories.CustomPlacement} />
 
-## Farger
+### Fargar
 
-`Badge` kommer i alle farger, du kan endre den med `data-color`. 
-Du kan også sette `variant` direkte for å endre bakgrunnsfarge.
+`Badge` finst i alle fargar. Du kan endre fargen med `data-color`. 
+Du kan også setje `variant` direkte for å endre bakgrunnsfargen.
 
 <Canvas of={BadgeStories.Variants} />
 
-## Vise staus
+### Vise staus
 
-Dersom du ikke sender inn `count`, viser kun en sirkel. Dette kan brukes for å vise status.
+Dersom du ikkje sender inn `count`, blir berre ein sirkel vist. Dette kan brukast for å vise status.
 
 <Canvas of={BadgeStories.Status} />
 
-## I tabs
+### Inline
 
-Du kan bruke komponenten inline eller flytene over et element.
+Du kan bruke komponenten anten inline eller flytande over eit element.
 
 <Canvas of={BadgeStories.InTabs} />
 
-## I button
+## Retningslinjer
+Bruk `Badge` for å trekkje merksemd mot statusar, varslar eller tal. 
 
-Du kan bruke komponenten inni eller flytende på en knapp.
+**Passer til:**
+- Tal som viser antall nye meldingar, varsel eller oppgåver.
+- Små statusindikatorar i form av ein sirkel, som for eksempel viser om ein person er opptatt, borte eller aktiv.
 
-<Canvas of={BadgeStories.InButton} />
+**Passer ikkje til:**
+- Tekstar – bruk `Tag` i staden.
+- Interaktive handlingar - bruk `Chip` eller `Button` i staden.
+
+## Tekst
+Denne komponenten er ikkje meint for tekst. Viss du treng å vise ord eller korte frasar, bør du heller bruke `Tag`-komponenten.
+
+## Tilgjengeligheit
+Sørg for at informasjonen også er tilgjengeleg for skjermlesarar. [Meir informasjon kjem.](https://github.com/digdir/designsystemet/issues/3560)
 
 ## CSS Variabler
 

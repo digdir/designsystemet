@@ -58,7 +58,7 @@ export const Dont = ({ description, image, alt }: DoAndDontProps) => {
 };
 
 type DoAndDontProps = {
-  description: string;
+  description: React.ReactNode;
   image: string;
   alt?: string;
 };

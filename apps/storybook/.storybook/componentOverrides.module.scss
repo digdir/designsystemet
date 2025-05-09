@@ -32,11 +32,15 @@
 
 .paragraph {
   background-color: transparent;
-  margin-bottom: var(--ds-size-2);
+  margin-bottom: var(--ds-size-6);
 }
 
 .list {
   max-width: '70ch';
+  margin-bottom: var(--ds-size-6);
+}
+
+.paragraph:has(+ .list) {
   margin-bottom: var(--ds-size-2);
 }
 

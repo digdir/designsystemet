@@ -1,11 +1,11 @@
 import { join } from 'node:path';
-import { useTranslation } from 'react-i18next';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { getFileFromContentDir } from '~/_utils/files';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { generateMetadata } from '~/_utils/metadata';
 import i18n from '~/i18next.server';
 import type { Route } from './+types/patterns';
+import classes from './page.module.css';
 
 export const loader = async ({
   params: { lang },
@@ -27,6 +27,7 @@ export const loader = async ({
     join('patterns', `${lang}_index.mdx`),
   );
   const result = await generateFromMdx(fileContent);
+
   const t = await i18n.getFixedT(lang);
 
   return {
@@ -48,11 +49,9 @@ export const meta: Route.MetaFunction = ({
 export default function Patterns({
   loaderData: { index },
 }: Route.ComponentProps) {
-  const { t } = useTranslation();
-
   return (
-    <>
+    <div className={classes.content}>
       <MDXComponents code={index.code} />
-    </>
+    </div>
   );
 }

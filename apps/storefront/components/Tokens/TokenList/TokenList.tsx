@@ -1,6 +1,6 @@
 'use client';
 import { Dropdown, Heading, Table } from '@digdir/designsystemet-react';
-import { ClipboardButton } from '@repo/components';
+import { ClipboardButton } from '@internal/components';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { useEffect, useState } from 'react';

@@ -2,8 +2,8 @@
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import type {} from '@digdir/designsystemet/color';
 import {} from '@digdir/designsystemet/color';
+import { Container } from '@internal/components';
 import { BookIcon, PaletteIcon } from '@navikt/aksel-icons';
-import { Container } from '@repo/components';
 import NextLink from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';

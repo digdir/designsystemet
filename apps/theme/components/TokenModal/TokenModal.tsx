@@ -14,8 +14,8 @@ import {
   cliOptions,
   formatThemeCSS,
 } from '@digdir/designsystemet/tokens';
+import { CodeBlock } from '@internal/components';
 import { InformationSquareIcon, StarIcon } from '@navikt/aksel-icons';
-import { CodeBlock } from '@repo/components';
 import { useRef, useState } from 'react';
 
 import type { Color, CssColor } from '@digdir/designsystemet/color';
