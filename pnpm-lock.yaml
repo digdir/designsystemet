@@ -15,8 +15,8 @@ importers:
         specifier: ^0.5.1
         version: 0.5.1
       '@changesets/cli':
-        specifier: ^2.28.1
-        version: 2.29.2
+        specifier: ^2.29.3
+        version: 2.29.3
       '@svitejs/changesets-changelog-github-compact':
         specifier: ^1.2.0
         version: 1.2.0
@@ -24,19 +24,19 @@ importers:
         specifier: ^6.6.3
         version: 6.6.3
       '@types/node':
-        specifier: ^22.14.0
+        specifier: ^22.15.3
         version: 22.15.3
       '@vitejs/plugin-react-swc':
-        specifier: ^3.8.1
-        version: 3.9.0(vite@6.3.4)
+        specifier: ^3.9.0
+        version: 3.9.0(vite@6.3.5)
       '@vitest/coverage-v8':
-        specifier: 3.1.1
-        version: 3.1.1(@vitest/browser@3.1.1)(vitest@3.1.1)
+        specifier: 3.1.2
+        version: 3.1.2(@vitest/browser@3.1.2)(vitest@3.1.2)
       '@vitest/expect':
-        specifier: ^3.1.1
+        specifier: ^3.1.2
         version: 3.1.2
       chromatic:
-        specifier: ^11.28.0
+        specifier: ^11.28.2
         version: 11.28.2
       copyfiles:
         specifier: ^2.4.1
@@ -48,17 +48,17 @@ importers:
         specifier: ^3.1.5
         version: 3.1.5(typescript@5.8.3)
       typescript:
-        specifier: ^5.8.2
+        specifier: ^5.8.3
         version: 5.8.3
       typescript-plugin-css-modules:
         specifier: ^5.1.0
         version: 5.1.0(typescript@5.8.3)
       vite:
-        specifier: ^6.2.5
-        version: 6.3.4(@types/node@22.15.3)
+        specifier: ^6.3.5
+        version: 6.3.5(@types/node@22.15.3)
       vitest:
-        specifier: 3.1.1
-        version: 3.1.1(@types/node@22.15.3)(@vitest/browser@3.1.1)
+        specifier: 3.1.2
+        version: 3.1.2(@types/node@22.15.3)(@vitest/browser@3.1.2)
 
   apps/_components:
     dependencies:
@@ -72,13 +72,13 @@ importers:
         specifier: workspace:^
         version: link:../../packages/theme
       '@navikt/aksel-icons':
-        specifier: ^7.18.0
+        specifier: ^7.21.0
         version: 7.21.0
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
       next:
-        specifier: ^15.2.4
+        specifier: ^15.3.1
         version: 15.3.1(react-dom@19.1.0)(react@19.1.0)
       prism-react-renderer:
         specifier: ^2.4.1
@@ -97,13 +97,13 @@ importers:
         version: 19.1.0(react@19.1.0)
     devDependencies:
       '@types/react':
-        specifier: ^19.1.0
-        version: 19.1.0
+        specifier: ^19.1.2
+        version: 19.1.2
       '@types/react-dom':
-        specifier: ^19.1.1
-        version: 19.1.3(@types/react@19.1.0)
+        specifier: ^19.1.3
+        version: 19.1.3(@types/react@19.1.2)
       typescript:
-        specifier: ^5.8.2
+        specifier: ^5.8.3
         version: 5.8.3
 
   apps/storefront:
@@ -120,24 +120,24 @@ importers:
       '@digdir/designsystemet-theme':
         specifier: workspace:^
         version: link:../../packages/theme
+      '@internal/components':
+        specifier: workspace:^
+        version: link:../_components
       '@mdx-js/loader':
         specifier: ^3.1.0
         version: 3.1.0(acorn@8.14.1)(webpack@5.99.7)
       '@mdx-js/react':
         specifier: ^3.1.0
-        version: 3.1.0(@types/react@19.1.0)(react@19.1.0)
+        version: 3.1.0(@types/react@19.1.2)(react@19.1.0)
       '@navikt/aksel-icons':
-        specifier: ^7.18.0
+        specifier: ^7.21.0
         version: 7.21.0
       '@next/mdx':
-        specifier: ^15.2.4
+        specifier: ^15.3.1
         version: 15.3.1(@mdx-js/loader@3.1.0)(@mdx-js/react@3.1.0)
       '@radix-ui/react-slot':
-        specifier: ^1.1.2
-        version: 1.2.0(@types/react@19.1.0)(react@19.1.0)
-      '@repo/components':
-        specifier: workspace:^
-        version: link:../_components
+        specifier: ^1.2.0
+        version: 1.2.0(@types/react@19.1.2)(react@19.1.0)
       '@types/mdx':
         specifier: ^2.0.13
         version: 2.0.13
@@ -151,7 +151,7 @@ importers:
         specifier: ^9.0.1
         version: 9.0.1
       next:
-        specifier: ^15.2.4
+        specifier: ^15.3.1
         version: 15.3.1(react-dom@19.1.0)(react@19.1.0)
       next-sitemap:
         specifier: ^4.2.3
@@ -172,18 +172,18 @@ importers:
         specifier: ^4.0.1
         version: 4.0.1
       style-dictionary:
-        specifier: ^4.3.3
+        specifier: ^4.4.0
         version: 4.4.0
       webpack:
-        specifier: ^5.98.0
+        specifier: ^5.99.7
         version: 5.99.7
     devDependencies:
       '@types/react':
-        specifier: ^19.1.0
-        version: 19.1.0
+        specifier: ^19.1.2
+        version: 19.1.2
       '@types/react-dom':
-        specifier: ^19.1.1
-        version: 19.1.3(@types/react@19.1.0)
+        specifier: ^19.1.3
+        version: 19.1.3(@types/react@19.1.2)
 
   apps/storybook:
     dependencies:
@@ -206,18 +206,18 @@ importers:
       '@digdir/designsystemet-theme':
         specifier: workspace:^
         version: link:../../packages/theme
-      '@navikt/aksel-icons':
-        specifier: ^7.18.0
-        version: 7.21.0
-      '@repo/components':
+      '@internal/components':
         specifier: workspace:^
         version: link:../_components
+      '@navikt/aksel-icons':
+        specifier: ^7.21.0
+        version: 7.21.0
       '@storybook/addon-a11y':
         specifier: ^8.6.12
         version: 8.6.12(storybook@8.6.12)
       '@storybook/addon-essentials':
         specifier: ^8.6.12
-        version: 8.6.12(@types/react@19.1.0)(storybook@8.6.12)
+        version: 8.6.12(@types/react@19.1.2)(storybook@8.6.12)
       '@storybook/addon-links':
         specifier: ^8.6.12
         version: 8.6.12(react@19.1.0)(storybook@8.6.12)
@@ -235,7 +235,7 @@ importers:
         version: 8.6.12(react-dom@19.1.0)(react@19.1.0)(storybook@8.6.12)
       '@storybook/experimental-addon-test':
         specifier: ^8.6.12
-        version: 8.6.12(@vitest/browser@3.1.1)(react-dom@19.1.0)(react@19.1.0)(storybook@8.6.12)(vitest@3.1.1)
+        version: 8.6.12(@vitest/browser@3.1.2)(react-dom@19.1.0)(react@19.1.0)(storybook@8.6.12)(vitest@3.1.2)
       '@storybook/manager-api':
         specifier: ^8.6.12
         version: 8.6.12(storybook@8.6.12)
@@ -247,7 +247,7 @@ importers:
         version: 8.6.12(@storybook/test@8.6.12)(react-dom@19.1.0)(react@19.1.0)(storybook@8.6.12)(typescript@5.8.3)
       '@storybook/react-vite':
         specifier: ^8.6.12
-        version: 8.6.12(@storybook/test@8.6.12)(react-dom@19.1.0)(react@19.1.0)(storybook@8.6.12)(typescript@5.8.3)(vite@6.3.4)
+        version: 8.6.12(@storybook/test@8.6.12)(react-dom@19.1.0)(react@19.1.0)(storybook@8.6.12)(typescript@5.8.3)(vite@6.3.5)
       '@storybook/test':
         specifier: ^8.6.12
         version: 8.6.12(storybook@8.6.12)
@@ -261,20 +261,20 @@ importers:
         specifier: ^0.30.2
         version: 0.30.2
       '@types/react':
-        specifier: 19.1.0
-        version: 19.1.0
+        specifier: 19.1.2
+        version: 19.1.2
       '@types/react-dom':
-        specifier: ^19.1.1
-        version: 19.1.3(@types/react@19.1.0)
+        specifier: ^19.1.3
+        version: 19.1.3(@types/react@19.1.2)
       '@types/react-syntax-highlighter':
-        specifier: ^15
+        specifier: ^15.5.13
         version: 15.5.13
       '@vitest/browser':
-        specifier: 3.1.1
-        version: 3.1.1(playwright@1.52.0)(vite@6.3.4)(vitest@3.1.1)
+        specifier: 3.1.2
+        version: 3.1.2(playwright@1.52.0)(vite@6.3.5)(vitest@3.1.2)
       '@vitest/coverage-v8':
-        specifier: 3.1.1
-        version: 3.1.1(@vitest/browser@3.1.1)(vitest@3.1.1)
+        specifier: 3.1.2
+        version: 3.1.2(@vitest/browser@3.1.2)(vitest@3.1.2)
       '@whitespace/storybook-addon-html':
         specifier: ^6.1.1
         version: 6.1.1(prettier@3.5.3)(react-syntax-highlighter@15.6.1)
@@ -309,8 +309,8 @@ importers:
         specifier: ^4.0.3
         version: 4.0.3(react-dom@19.1.0)(react@19.1.0)(storybook@8.6.12)
       vitest:
-        specifier: 3.1.1
-        version: 3.1.1(@types/node@22.15.3)(@vitest/browser@3.1.1)
+        specifier: 3.1.2
+        version: 3.1.2(@types/node@22.15.3)(@vitest/browser@3.1.2)
 
   apps/theme:
     dependencies:
@@ -326,15 +326,15 @@ importers:
       '@digdir/designsystemet-theme':
         specifier: workspace:^
         version: link:../../packages/theme
+      '@internal/components':
+        specifier: workspace:^
+        version: link:../_components
       '@navikt/aksel-icons':
-        specifier: ^7.18.0
+        specifier: ^7.21.0
         version: 7.21.0
       '@radix-ui/react-slot':
         specifier: ^1.1.2
-        version: 1.2.0(@types/react@19.1.0)(react@19.1.0)
-      '@repo/components':
-        specifier: workspace:^
-        version: link:../_components
+        version: 1.2.0(@types/react@19.1.2)(react@19.1.0)
       chroma-js:
         specifier: ^3.1.2
         version: 3.1.2
@@ -345,7 +345,7 @@ importers:
         specifier: ^7.9.0
         version: 7.9.0
       next:
-        specifier: ^15.2.4
+        specifier: ^15.3.1
         version: 15.3.1(react-dom@19.1.0)(react@19.1.0)
       react:
         specifier: ^19.1.0
@@ -357,11 +357,11 @@ importers:
         specifier: ^19.1.0
         version: 19.1.0(react@19.1.0)
       recharts:
-        specifier: ^2.15.2
+        specifier: ^2.15.3
         version: 2.15.3(react-dom@19.1.0)(react@19.1.0)
       zustand:
-        specifier: ^5.0.3
-        version: 5.0.4(@types/react@19.1.0)(react@19.1.0)
+        specifier: ^5.0.4
+        version: 5.0.4(@types/react@19.1.2)(react@19.1.0)
     devDependencies:
       '@types/chroma-js':
         specifier: ^3.1.1
@@ -370,11 +370,11 @@ importers:
         specifier: ^7
         version: 7.4.3
       '@types/react':
-        specifier: ^19.1.0
-        version: 19.1.0
+        specifier: ^19.1.2
+        version: 19.1.2
       '@types/react-dom':
-        specifier: ^19.1.1
-        version: 19.1.3(@types/react@19.1.0)
+        specifier: ^19.1.3
+        version: 19.1.3(@types/react@19.1.2)
 
   apps/www:
     dependencies:
@@ -390,21 +390,21 @@ importers:
       '@digdir/designsystemet-theme':
         specifier: workspace:^
         version: link:../../packages/theme
-      '@navikt/aksel-icons':
-        specifier: ^7.18.0
-        version: 7.21.0
-      '@radix-ui/react-slot':
-        specifier: ^1.1.2
-        version: 1.2.0(@types/react@19.1.0)(react@19.1.0)
-      '@react-router/node':
-        specifier: ^7.5.2
-        version: 7.5.3(react-router@7.5.3)(typescript@5.8.3)
-      '@react-router/serve':
-        specifier: ^7.5.2
-        version: 7.5.3(react-router@7.5.3)(typescript@5.8.3)
-      '@repo/components':
+      '@internal/components':
         specifier: workspace:^
         version: link:../_components
+      '@navikt/aksel-icons':
+        specifier: ^7.21.0
+        version: 7.21.0
+      '@radix-ui/react-slot':
+        specifier: ^1.2.0
+        version: 1.2.0(@types/react@19.1.2)(react@19.1.0)
+      '@react-router/node':
+        specifier: ^7.5.3
+        version: 7.5.3(react-router@7.5.3)(typescript@5.8.3)
+      '@react-router/serve':
+        specifier: ^7.5.3
+        version: 7.5.3(react-router@7.5.3)(typescript@5.8.3)
       '@vercel/react-router':
         specifier: ^1.1.0
         version: 1.1.0(@react-router/dev@7.5.3)(@react-router/node@7.5.3)(isbot@5.1.27)(react-dom@19.1.0)(react@19.1.0)
@@ -412,16 +412,10 @@ importers:
         specifier: ^2.1.1
         version: 2.1.1
       i18next:
-        specifier: ^25.0.1
-        version: 25.0.2(typescript@5.8.3)
-      i18next-fs-backend:
-        specifier: ^2.6.0
-        version: 2.6.0
-      i18next-http-backend:
-        specifier: ^3.0.2
-        version: 3.0.2
+        specifier: ^24.2.3
+        version: 24.2.3(typescript@5.8.3)
       isbot:
-        specifier: ^5
+        specifier: ^5.1.27
         version: 5.1.27
       mdx-bundler:
         specifier: ^10.1.1
@@ -437,9 +431,9 @@ importers:
         version: 19.1.0(react@19.1.0)
       react-i18next:
         specifier: ^15.5.1
-        version: 15.5.1(i18next@25.0.2)(react-dom@19.1.0)(react@19.1.0)(typescript@5.8.3)
+        version: 15.5.1(i18next@24.2.3)(react-dom@19.1.0)(react@19.1.0)(typescript@5.8.3)
       react-router:
-        specifier: ^7.5.2
+        specifier: ^7.5.3
         version: 7.5.3(react-dom@19.1.0)(react@19.1.0)
       rehype-autolink-headings:
         specifier: ^7.1.0
@@ -452,35 +446,38 @@ importers:
         version: 4.0.1
       remix-i18next:
         specifier: ^7.2.0
-        version: 7.2.0(i18next@25.0.2)(react-i18next@15.5.1)(react-router@7.5.3)(react@19.1.0)
+        version: 7.2.0(i18next@24.2.3)(react-i18next@15.5.1)(react-router@7.5.3)(react@19.1.0)
       style-dictionary:
-        specifier: ^4.3.3
+        specifier: ^4.4.0
         version: 4.4.0
     devDependencies:
       '@react-router/dev':
-        specifier: ^7.5.2
-        version: 7.5.3(@react-router/serve@7.5.3)(@types/node@22.15.3)(react-router@7.5.3)(typescript@5.8.3)(vite@6.3.4)
+        specifier: ^7.5.3
+        version: 7.5.3(@react-router/serve@7.5.3)(@types/node@22.15.3)(react-router@7.5.3)(typescript@5.8.3)(vite@6.3.5)
       '@types/node':
-        specifier: ^22.14.1
+        specifier: ^22.15.3
         version: 22.15.3
       '@types/react':
-        specifier: ^19.1.0
-        version: 19.1.0
+        specifier: ^19.1.2
+        version: 19.1.2
       '@types/react-dom':
-        specifier: ^19.1.0
-        version: 19.1.3(@types/react@19.1.0)
+        specifier: ^19.1.3
+        version: 19.1.3(@types/react@19.1.2)
       typescript:
-        specifier: ^5.8.2
+        specifier: ^5.8.3
         version: 5.8.3
       vite:
-        specifier: ^6.3.2
-        version: 6.3.4(@types/node@22.15.3)
+        specifier: ^6.3.5
+        version: 6.3.5(@types/node@22.15.3)
+      vite-env-only:
+        specifier: ^3.0.3
+        version: 3.0.3(vite@6.3.5)
       vite-plugin-static-copy:
-        specifier: ^2.3.0
-        version: 2.3.1(vite@6.3.4)
+        specifier: ^2.3.1
+        version: 2.3.1(vite@6.3.5)
       vite-tsconfig-paths:
         specifier: ^5.1.4
-        version: 5.1.4(typescript@5.8.3)(vite@6.3.4)
+        version: 5.1.4(typescript@5.8.3)(vite@6.3.5)
 
   packages/cli:
     dependencies:
@@ -488,8 +485,8 @@ importers:
         specifier: ^13.1.0
         version: 13.1.0(commander@13.1.0)
       '@tokens-studio/sd-transforms':
-        specifier: 1.2.12
-        version: 1.2.12(style-dictionary@4.4.0)
+        specifier: 1.3.0
+        version: 1.3.0(style-dictionary@4.4.0)
       apca-w3:
         specifier: ^0.1.9
         version: 0.1.9
@@ -502,6 +499,9 @@ importers:
       chroma-js:
         specifier: ^3.1.2
         version: 3.1.2
+      colorjs.io:
+        specifier: ^0.6.0-alpha.1
+        version: 0.6.0-alpha.1
       commander:
         specifier: ^13.1.0
         version: 13.1.0
@@ -521,10 +521,10 @@ importers:
         specifier: ^0.30.1
         version: 0.30.1
       style-dictionary:
-        specifier: ^4.3.3
+        specifier: ^4.4.0
         version: 4.4.0
       zod:
-        specifier: ^3.24.2
+        specifier: ^3.24.4
         version: 3.24.4
       zod-validation-error:
         specifier: ^3.4.0
@@ -549,7 +549,7 @@ importers:
         specifier: ^0.12.0
         version: 0.12.0
       '@types/node':
-        specifier: ^22.14.0
+        specifier: ^22.15.3
         version: 22.15.3
       '@types/object-hash':
         specifier: ^3.0.6
@@ -570,10 +570,10 @@ importers:
         specifier: ^8.4.0
         version: 8.4.0(postcss@8.5.3)(tsx@4.19.4)(typescript@5.8.3)
       tsx:
-        specifier: ^4.19.3
+        specifier: ^4.19.4
         version: 4.19.4
       typescript:
-        specifier: ^5.8.2
+        specifier: ^5.8.3
         version: 5.8.3
       zod-to-json-schema:
         specifier: ^3.24.5
@@ -606,17 +606,17 @@ importers:
   packages/react:
     dependencies:
       '@floating-ui/dom':
-        specifier: ^1.6.13
+        specifier: ^1.7.0
         version: 1.7.0
       '@floating-ui/react':
         specifier: 0.26.23
         version: 0.26.23(react-dom@19.1.0)(react@19.1.0)
       '@navikt/aksel-icons':
-        specifier: ^7.18.0
+        specifier: ^7.21.0
         version: 7.21.0
       '@radix-ui/react-slot':
-        specifier: ^1.1.2
-        version: 1.2.0(@types/react@19.1.0)(react@19.1.0)
+        specifier: ^1.2.0
+        version: 1.2.0(@types/react@19.1.2)(react@19.1.0)
       '@tanstack/react-virtual':
         specifier: ^3.13.6
         version: 3.13.6(react-dom@19.1.0)(react@19.1.0)
@@ -665,21 +665,21 @@ importers:
         version: 6.6.3
       '@testing-library/react':
         specifier: ^16.3.0
-        version: 16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.3)(@types/react@19.1.0)(react-dom@19.1.0)(react@19.1.0)
+        version: 16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.3)(@types/react@19.1.2)(react-dom@19.1.0)(react@19.1.0)
       '@testing-library/user-event':
         specifier: ^14.6.1
         version: 14.6.1(@testing-library/dom@10.4.0)
       '@types/react':
-        specifier: ^19.1.0
-        version: 19.1.0
+        specifier: ^19.1.2
+        version: 19.1.2
       '@types/react-dom':
-        specifier: ^19.1.1
-        version: 19.1.3(@types/react@19.1.0)
+        specifier: ^19.1.3
+        version: 19.1.3(@types/react@19.1.2)
       copyfiles:
         specifier: ^2.4.1
         version: 2.4.1
       jsdom:
-        specifier: ^26.0.0
+        specifier: ^26.1.0
         version: 26.1.0
       react:
         specifier: ^19.1.0
@@ -691,7 +691,7 @@ importers:
         specifier: ^6.0.1
         version: 6.0.1
       rollup:
-        specifier: ^4.39.0
+        specifier: ^4.40.1
         version: 4.40.1
       rollup-plugin-copy:
         specifier: ^3.5.0
@@ -700,7 +700,7 @@ importers:
         specifier: 4.19.4
         version: 4.19.4
       typescript:
-        specifier: ^5.8.2
+        specifier: ^5.8.3
         version: 5.8.3
 
   packages/theme:
@@ -727,7 +727,7 @@ importers:
         specifier: workspace:^
         version: link:../../packages/theme
       '@navikt/aksel-icons':
-        specifier: ^7.18.0
+        specifier: ^7.21.0
         version: 7.21.0
       clsx:
         specifier: ^2.1.1
@@ -739,24 +739,24 @@ importers:
         specifier: ^19.1.0
         version: 19.1.0(react@19.1.0)
       react-router-dom:
-        specifier: ^7.4.1
+        specifier: ^7.5.3
         version: 7.5.3(react-dom@19.1.0)(react@19.1.0)
     devDependencies:
       '@figma/plugin-typings':
-        specifier: ^1.109.0
+        specifier: ^1.110.0
         version: 1.110.0
       '@types/react':
-        specifier: ^19.1.0
-        version: 19.1.0
+        specifier: ^19.1.2
+        version: 19.1.2
       '@types/react-color':
         specifier: ^3.0.13
-        version: 3.0.13(@types/react@19.1.0)
+        version: 3.0.13(@types/react@19.1.2)
       '@types/react-dom':
-        specifier: ^19.1.1
-        version: 19.1.3(@types/react@19.1.0)
+        specifier: ^19.1.3
+        version: 19.1.3(@types/react@19.1.2)
       '@vitejs/plugin-react':
-        specifier: ^4.3.4
-        version: 4.4.1(vite@6.3.4)
+        specifier: ^4.4.1
+        version: 4.4.1(vite@6.3.5)
       npm-run-all2:
         specifier: ^7.0.2
         version: 7.0.2
@@ -764,23 +764,23 @@ importers:
         specifier: ^8.5.3
         version: 8.5.3
       rollup:
-        specifier: ^4.39.0
+        specifier: ^4.40.1
         version: 4.40.1
       typescript:
-        specifier: ^5.8.2
+        specifier: ^5.8.3
         version: 5.8.3
       vite:
-        specifier: ^6.2.5
-        version: 6.3.4(@types/node@22.15.3)
+        specifier: ^6.3.5
+        version: 6.3.5(@types/node@22.15.3)
       vite-plugin-react-rich-svg:
-        specifier: ^1.2.0
-        version: 1.2.1(typescript@5.8.3)(vite@6.3.4)
+        specifier: ^1.2.1
+        version: 1.2.1(typescript@5.8.3)(vite@6.3.5)
       vite-plugin-singlefile:
         specifier: ^2.2.0
-        version: 2.2.0(rollup@4.40.1)(vite@6.3.4)
+        version: 2.2.0(rollup@4.40.1)(vite@6.3.5)
       zustand:
-        specifier: ^5.0.3
-        version: 5.0.4(@types/react@19.1.0)(react@19.1.0)
+        specifier: ^5.0.4
+        version: 5.0.4(@types/react@19.1.2)(react@19.1.0)
 
 packages:
 
@@ -1256,8 +1256,8 @@ packages:
       semver: 7.7.1
     dev: true
 
-  /@changesets/assemble-release-plan@6.0.6:
-    resolution: {integrity: sha512-Frkj8hWJ1FRZiY3kzVCKzS0N5mMwWKwmv9vpam7vt8rZjLL1JMthdh6pSDVSPumHPshTTkKZ0VtNbE0cJHZZUg==}
+  /@changesets/assemble-release-plan@6.0.7:
+    resolution: {integrity: sha512-vS5J92Rm7ZUcrvtu6WvggGWIdohv8s1/3ypRYQX8FsPO+KPDx6JaNC3YwSfh2umY/faGGfNnq42A7PRT0aZPFw==}
     dependencies:
       '@changesets/errors': 0.2.0
       '@changesets/get-dependents-graph': 2.1.3
@@ -1283,17 +1283,17 @@ packages:
       - encoding
     dev: true
 
-  /@changesets/cli@2.29.2:
-    resolution: {integrity: sha512-vwDemKjGYMOc0l6WUUTGqyAWH3AmueeyoJa1KmFRtCYiCoY5K3B68ErYpDB6H48T4lLI4czum4IEjh6ildxUeg==}
+  /@changesets/cli@2.29.3:
+    resolution: {integrity: sha512-TNhKr6Loc7I0CSD9LpAyVNSxWBHElXVmmvQYIZQvaMan5jddmL7geo3+08Wi7ImgHFVNB0Nhju/LzXqlrkoOxg==}
     hasBin: true
     dependencies:
       '@changesets/apply-release-plan': 7.0.12
-      '@changesets/assemble-release-plan': 6.0.6
+      '@changesets/assemble-release-plan': 6.0.7
       '@changesets/changelog-git': 0.2.1
       '@changesets/config': 3.1.1
       '@changesets/errors': 0.2.0
       '@changesets/get-dependents-graph': 2.1.3
-      '@changesets/get-release-plan': 4.0.10
+      '@changesets/get-release-plan': 4.0.11
       '@changesets/git': 3.0.4
       '@changesets/logger': 0.1.1
       '@changesets/pre': 2.0.2
@@ -1353,10 +1353,10 @@ packages:
       - encoding
     dev: true
 
-  /@changesets/get-release-plan@4.0.10:
-    resolution: {integrity: sha512-CCJ/f3edYaA3MqoEnWvGGuZm0uMEMzNJ97z9hdUR34AOvajSwySwsIzC/bBu3+kuGDsB+cny4FljG8UBWAa7jg==}
+  /@changesets/get-release-plan@4.0.11:
+    resolution: {integrity: sha512-4DZpsewsc/1m5TArVg5h1c0U94am+cJBnu3izAM3yYIZr8+zZwa3AXYdEyCNURzjx0wWr80u/TWoxshbwdZXOA==}
     dependencies:
-      '@changesets/assemble-release-plan': 6.0.6
+      '@changesets/assemble-release-plan': 6.0.7
       '@changesets/config': 3.1.1
       '@changesets/pre': 2.0.2
       '@changesets/read': 0.6.5
@@ -1984,7 +1984,7 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /@joshwooding/vite-plugin-react-docgen-typescript@0.5.0(typescript@5.8.3)(vite@6.3.4):
+  /@joshwooding/vite-plugin-react-docgen-typescript@0.5.0(typescript@5.8.3)(vite@6.3.5):
     resolution: {integrity: sha512-qYDdL7fPwLRI+bJNurVcis+tNgJmvWjH4YTBGXTA8xMuxFrnAz6E5o35iyzyKbq5J5Lr8mJGfrR5GXl+WGwhgQ==}
     peerDependencies:
       typescript: '>= 4.3.x'
@@ -1997,7 +1997,7 @@ packages:
       magic-string: 0.27.0
       react-docgen-typescript: 2.2.2(typescript@5.8.3)
       typescript: 5.8.3
-      vite: 6.3.4(@types/node@22.15.3)
+      vite: 6.3.5(@types/node@22.15.3)
     dev: true
 
   /@jridgewell/gen-mapping@0.3.8:
@@ -2147,14 +2147,14 @@ packages:
       - supports-color
     dev: false
 
-  /@mdx-js/react@3.1.0(@types/react@19.1.0)(react@19.1.0):
+  /@mdx-js/react@3.1.0(@types/react@19.1.2)(react@19.1.0):
     resolution: {integrity: sha512-QjHtSaoameoalGnKDT3FoIl4+9RwyTmo9ZJGBdLOks/YOiWHoRDI3PUwEzOE7kEmGcV3AFcp9K6dYu9rEuKLAQ==}
     peerDependencies:
       '@types/react': '>=16'
       react: '>=16'
     dependencies:
       '@types/mdx': 2.0.13
-      '@types/react': 19.1.0
+      '@types/react': 19.1.2
       react: 19.1.0
 
   /@mjackson/node-fetch-server@0.2.0:
@@ -2183,7 +2183,7 @@ packages:
         optional: true
     dependencies:
       '@mdx-js/loader': 3.1.0(acorn@8.14.1)(webpack@5.99.7)
-      '@mdx-js/react': 3.1.0(@types/react@19.1.0)(react@19.1.0)
+      '@mdx-js/react': 3.1.0(@types/react@19.1.2)(react@19.1.0)
       source-map: 0.7.4
     dev: false
 
@@ -2465,7 +2465,7 @@ packages:
     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
     dev: true
 
-  /@radix-ui/react-compose-refs@1.1.2(@types/react@19.1.0)(react@19.1.0):
+  /@radix-ui/react-compose-refs@1.1.2(@types/react@19.1.2)(react@19.1.0):
     resolution: {integrity: sha512-z4eqJvfiNnFMHIIvXP3CY57y2WJs5g2v3X0zm9mEJkrkNv4rDxu+sg9Jh8EkXyeqBkB7SOcboo9dMVqhyrACIg==}
     peerDependencies:
       '@types/react': '*'
@@ -2474,11 +2474,11 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@types/react': 19.1.0
+      '@types/react': 19.1.2
       react: 19.1.0
     dev: false
 
-  /@radix-ui/react-slot@1.2.0(@types/react@19.1.0)(react@19.1.0):
+  /@radix-ui/react-slot@1.2.0(@types/react@19.1.2)(react@19.1.0):
     resolution: {integrity: sha512-ujc+V6r0HNDviYqIK3rW4ffgYiZ8g5DEHrGJVk4x7kTlLXRDILnKX9vAUYeIsLOoDpDJ0ujpqMkjH4w2ofuo6w==}
     peerDependencies:
       '@types/react': '*'
@@ -2487,12 +2487,12 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@radix-ui/react-compose-refs': 1.1.2(@types/react@19.1.0)(react@19.1.0)
-      '@types/react': 19.1.0
+      '@radix-ui/react-compose-refs': 1.1.2(@types/react@19.1.2)(react@19.1.0)
+      '@types/react': 19.1.2
       react: 19.1.0
     dev: false
 
-  /@react-router/dev@7.5.3(@react-router/serve@7.5.3)(@types/node@22.15.3)(react-router@7.5.3)(typescript@5.8.3)(vite@6.3.4):
+  /@react-router/dev@7.5.3(@react-router/serve@7.5.3)(@types/node@22.15.3)(react-router@7.5.3)(typescript@5.8.3)(vite@6.3.5):
     resolution: {integrity: sha512-U+n8JYAREKg6eHIAXCjazsYlwPo/vcAbShpqePnDBUdDnePBwZ2JmoqhWV+7tIhyHvvHGQKlw6BcrSZtF549WQ==}
     engines: {node: '>=20.0.0'}
     hasBin: true
@@ -2539,7 +2539,7 @@ packages:
       set-cookie-parser: 2.7.1
       typescript: 5.8.3
       valibot: 0.41.0(typescript@5.8.3)
-      vite: 6.3.4(@types/node@22.15.3)
+      vite: 6.3.5(@types/node@22.15.3)
       vite-node: 3.0.0-beta.2(@types/node@22.15.3)
     transitivePeerDependencies:
       - '@types/node'
@@ -2847,12 +2847,12 @@ packages:
       ts-dedent: 2.2.0
     dev: true
 
-  /@storybook/addon-docs@8.6.12(@types/react@19.1.0)(storybook@8.6.12):
+  /@storybook/addon-docs@8.6.12(@types/react@19.1.2)(storybook@8.6.12):
     resolution: {integrity: sha512-kEezQjAf/p3SpDzLABgg4fbT48B6dkT2LiZCKTRmCrJVtuReaAr4R9MMM6Jsph6XjbIj/SvOWf3CMeOPXOs9sg==}
     peerDependencies:
       storybook: ^8.6.12
     dependencies:
-      '@mdx-js/react': 3.1.0(@types/react@19.1.0)(react@19.1.0)
+      '@mdx-js/react': 3.1.0(@types/react@19.1.2)(react@19.1.0)
       '@storybook/blocks': 8.6.12(react-dom@19.1.0)(react@19.1.0)(storybook@8.6.12)
       '@storybook/csf-plugin': 8.6.12(storybook@8.6.12)
       '@storybook/react-dom-shim': 8.6.12(react-dom@19.1.0)(react@19.1.0)(storybook@8.6.12)
@@ -2864,7 +2864,7 @@ packages:
       - '@types/react'
     dev: true
 
-  /@storybook/addon-essentials@8.6.12(@types/react@19.1.0)(storybook@8.6.12):
+  /@storybook/addon-essentials@8.6.12(@types/react@19.1.2)(storybook@8.6.12):
     resolution: {integrity: sha512-Y/7e8KFlttaNfv7q2zoHMPdX6hPXHdsuQMAjYl5NG9HOAJREu4XBy4KZpbcozRe4ApZ78rYsN/MO1EuA+bNMIA==}
     peerDependencies:
       storybook: ^8.6.12
@@ -2872,7 +2872,7 @@ packages:
       '@storybook/addon-actions': 8.6.12(storybook@8.6.12)
       '@storybook/addon-backgrounds': 8.6.12(storybook@8.6.12)
       '@storybook/addon-controls': 8.6.12(storybook@8.6.12)
-      '@storybook/addon-docs': 8.6.12(@types/react@19.1.0)(storybook@8.6.12)
+      '@storybook/addon-docs': 8.6.12(@types/react@19.1.2)(storybook@8.6.12)
       '@storybook/addon-highlight': 8.6.12(storybook@8.6.12)
       '@storybook/addon-measure': 8.6.12(storybook@8.6.12)
       '@storybook/addon-outline': 8.6.12(storybook@8.6.12)
@@ -2996,7 +2996,7 @@ packages:
       ts-dedent: 2.2.0
     dev: true
 
-  /@storybook/builder-vite@8.6.12(storybook@8.6.12)(vite@6.3.4):
+  /@storybook/builder-vite@8.6.12(storybook@8.6.12)(vite@6.3.5):
     resolution: {integrity: sha512-Gju21ud/3Qw4v2vLNaa5SuJECsI9ICNRr2G0UyCCzRvCHg8jpA9lDReu2NqhLDyFIuDG+ZYT38gcaHEUoNQ8KQ==}
     peerDependencies:
       storybook: ^8.6.12
@@ -3006,7 +3006,7 @@ packages:
       browser-assert: 1.2.1
       storybook: 8.6.12(prettier@3.5.3)
       ts-dedent: 2.2.0
-      vite: 6.3.4(@types/node@22.15.3)
+      vite: 6.3.5(@types/node@22.15.3)
     dev: true
 
   /@storybook/components@8.6.12(storybook@8.6.12):
@@ -3053,7 +3053,7 @@ packages:
       unplugin: 1.16.1
     dev: true
 
-  /@storybook/experimental-addon-test@8.6.12(@vitest/browser@3.1.1)(react-dom@19.1.0)(react@19.1.0)(storybook@8.6.12)(vitest@3.1.1):
+  /@storybook/experimental-addon-test@8.6.12(@vitest/browser@3.1.2)(react-dom@19.1.0)(react@19.1.0)(storybook@8.6.12)(vitest@3.1.2):
     resolution: {integrity: sha512-auc8Ql0buH0WeaKVuSSuabxIiBWvqvAyxtXCm1sVMkL68GwrX3cmpNMwviz3mvKvM//F8zKi/31HMl1PZ5UnIA==}
     peerDependencies:
       '@vitest/browser': ^2.1.1 || ^3.0.0
@@ -3072,12 +3072,12 @@ packages:
       '@storybook/icons': 1.4.0(react-dom@19.1.0)(react@19.1.0)
       '@storybook/instrumenter': 8.6.12(storybook@8.6.12)
       '@storybook/test': 8.6.12(storybook@8.6.12)
-      '@vitest/browser': 3.1.1(playwright@1.52.0)(vite@6.3.4)(vitest@3.1.1)
+      '@vitest/browser': 3.1.2(playwright@1.52.0)(vite@6.3.5)(vitest@3.1.2)
       polished: 4.3.1
       prompts: 2.4.2
       storybook: 8.6.12(prettier@3.5.3)
       ts-dedent: 2.2.0
-      vitest: 3.1.1(@types/node@22.15.3)(@vitest/browser@3.1.1)
+      vitest: 3.1.2(@types/node@22.15.3)(@vitest/browser@3.1.2)
     transitivePeerDependencies:
       - react
       - react-dom
@@ -3136,7 +3136,7 @@ packages:
       storybook: 8.6.12(prettier@3.5.3)
     dev: true
 
-  /@storybook/react-vite@8.6.12(@storybook/test@8.6.12)(react-dom@19.1.0)(react@19.1.0)(storybook@8.6.12)(typescript@5.8.3)(vite@6.3.4):
+  /@storybook/react-vite@8.6.12(@storybook/test@8.6.12)(react-dom@19.1.0)(react@19.1.0)(storybook@8.6.12)(typescript@5.8.3)(vite@6.3.5):
     resolution: {integrity: sha512-UA2Kule99oyFgHdhcuhrRwCKyWu/yMbqbl9U7NwowFHNwWWFjVMMir/AmfShb/H1C1DQ3LqOad6/QwJyPLjP8g==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
@@ -3149,9 +3149,9 @@ packages:
       '@storybook/test':
         optional: true
     dependencies:
-      '@joshwooding/vite-plugin-react-docgen-typescript': 0.5.0(typescript@5.8.3)(vite@6.3.4)
+      '@joshwooding/vite-plugin-react-docgen-typescript': 0.5.0(typescript@5.8.3)(vite@6.3.5)
       '@rollup/pluginutils': 5.1.4(rollup@4.40.1)
-      '@storybook/builder-vite': 8.6.12(storybook@8.6.12)(vite@6.3.4)
+      '@storybook/builder-vite': 8.6.12(storybook@8.6.12)(vite@6.3.5)
       '@storybook/react': 8.6.12(@storybook/test@8.6.12)(react-dom@19.1.0)(react@19.1.0)(storybook@8.6.12)(typescript@5.8.3)
       '@storybook/test': 8.6.12(storybook@8.6.12)
       find-up: 5.0.0
@@ -3162,7 +3162,7 @@ packages:
       resolve: 1.22.10
       storybook: 8.6.12(prettier@3.5.3)
       tsconfig-paths: 4.2.0
-      vite: 6.3.4(@types/node@22.15.3)
+      vite: 6.3.5(@types/node@22.15.3)
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -3585,7 +3585,7 @@ packages:
       redent: 3.0.0
     dev: true
 
-  /@testing-library/react@16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.3)(@types/react@19.1.0)(react-dom@19.1.0)(react@19.1.0):
+  /@testing-library/react@16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.3)(@types/react@19.1.2)(react-dom@19.1.0)(react@19.1.0):
     resolution: {integrity: sha512-kFSyxiEDwv1WLl2fgsq6pPBbw5aWKrsY2/noi1Id0TK0UParSF62oFQFGHXIyaG4pp2tEub/Zlel+fjjZILDsw==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -3602,8 +3602,8 @@ packages:
     dependencies:
       '@babel/runtime': 7.27.1
       '@testing-library/dom': 10.4.0
-      '@types/react': 19.1.0
-      '@types/react-dom': 19.1.3(@types/react@19.1.0)
+      '@types/react': 19.1.2
+      '@types/react-dom': 19.1.3(@types/react@19.1.2)
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
     dev: true
@@ -3626,8 +3626,8 @@ packages:
       '@testing-library/dom': 10.4.0
     dev: true
 
-  /@tokens-studio/sd-transforms@1.2.12(style-dictionary@4.4.0):
-    resolution: {integrity: sha512-YAHKYtGjwrYXp1Kh/PM/3C/e3a05+Zg6pxA4Rz3dkxPO4L/IGBE1ExKrqOZXTLRCw6JJDofQKUapAvig0iO9Fg==}
+  /@tokens-studio/sd-transforms@1.3.0(style-dictionary@4.4.0):
+    resolution: {integrity: sha512-zVbiYjTGWpSuwzZwiuvcWf79CQEcTMKSxrOaQJ0zHXFxEmrpETWeIRxv2IO8rtMos/cS8mvnDwPngoHQOMs1SA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       style-dictionary: ^4.3.0 || ^5.0.0-rc.0
@@ -3635,7 +3635,7 @@ packages:
       '@bundled-es-modules/deepmerge': 4.3.1
       '@bundled-es-modules/postcss-calc-ast-parser': 0.1.6
       '@tokens-studio/types': 0.5.2
-      colorjs.io: 0.4.5
+      colorjs.io: 0.5.2
       expr-eval-fork: 2.0.2
       is-mergeable-object: 1.1.1
       style-dictionary: 4.4.0
@@ -4015,40 +4015,40 @@ packages:
       types-ramda: 0.30.1
     dev: true
 
-  /@types/react-color@3.0.13(@types/react@19.1.0):
+  /@types/react-color@3.0.13(@types/react@19.1.2):
     resolution: {integrity: sha512-2c/9FZ4ixC5T3JzN0LP5Cke2Mf0MKOP2Eh0NPDPWmuVH3NjPyhEjqNMQpN1Phr5m74egAy+p2lYNAFrX1z9Yrg==}
     peerDependencies:
       '@types/react': '*'
     dependencies:
-      '@types/react': 19.1.0
-      '@types/reactcss': 1.2.13(@types/react@19.1.0)
+      '@types/react': 19.1.2
+      '@types/reactcss': 1.2.13(@types/react@19.1.2)
     dev: true
 
-  /@types/react-dom@19.1.3(@types/react@19.1.0):
+  /@types/react-dom@19.1.3(@types/react@19.1.2):
     resolution: {integrity: sha512-rJXC08OG0h3W6wDMFxQrZF00Kq6qQvw0djHRdzl3U5DnIERz0MRce3WVc7IS6JYBwtaP/DwYtRRjVlvivNveKg==}
     peerDependencies:
       '@types/react': ^19.0.0
     dependencies:
-      '@types/react': 19.1.0
+      '@types/react': 19.1.2
     dev: true
 
   /@types/react-syntax-highlighter@15.5.13:
     resolution: {integrity: sha512-uLGJ87j6Sz8UaBAooU0T6lWJ0dBmjZgN1PZTrj05TNql2/XpC6+4HhMT5syIdFUUt+FASfCeLLv4kBygNU+8qA==}
     dependencies:
-      '@types/react': 19.1.0
+      '@types/react': 19.1.2
     dev: true
 
-  /@types/react@19.1.0:
-    resolution: {integrity: sha512-UaicktuQI+9UKyA4njtDOGBD/67t8YEBt2xdfqu8+gP9hqPUPsiXlNPcpS2gVdjmis5GKPG3fCxbQLVgxsQZ8w==}
+  /@types/react@19.1.2:
+    resolution: {integrity: sha512-oxLPMytKchWGbnQM9O7D67uPa9paTNxO7jVoNMXgkkErULBPhPARCfkKL9ytcIJJRGjbsVwW4ugJzyFFvm/Tiw==}
     dependencies:
       csstype: 3.1.3
 
-  /@types/reactcss@1.2.13(@types/react@19.1.0):
+  /@types/reactcss@1.2.13(@types/react@19.1.2):
     resolution: {integrity: sha512-gi3S+aUi6kpkF5vdhUsnkwbiSEIU/BEJyD7kBy2SudWBUuKmJk8AQKE0OVcQQeEy40Azh0lV6uynxlikYIJuwg==}
     peerDependencies:
       '@types/react': '*'
     dependencies:
-      '@types/react': 19.1.0
+      '@types/react': 19.1.2
     dev: true
 
   /@types/resolve@1.20.2:
@@ -4123,7 +4123,7 @@ packages:
       react: '>=18'
       react-dom: '>=18'
     dependencies:
-      '@react-router/dev': 7.5.3(@react-router/serve@7.5.3)(@types/node@22.15.3)(react-router@7.5.3)(typescript@5.8.3)(vite@6.3.4)
+      '@react-router/dev': 7.5.3(@react-router/serve@7.5.3)(@types/node@22.15.3)(react-router@7.5.3)(typescript@5.8.3)(vite@6.3.5)
       '@react-router/node': 7.5.3(react-router@7.5.3)(typescript@5.8.3)
       '@vercel/static-config': 3.0.0
       isbot: 5.1.27
@@ -4140,18 +4140,18 @@ packages:
       ts-morph: 12.0.0
     dev: false
 
-  /@vitejs/plugin-react-swc@3.9.0(vite@6.3.4):
+  /@vitejs/plugin-react-swc@3.9.0(vite@6.3.5):
     resolution: {integrity: sha512-jYFUSXhwMCYsh/aQTgSGLIN3Foz5wMbH9ahb0Zva//UzwZYbMiZd7oT3AU9jHT9DLswYDswsRwPU9jVF3yA48Q==}
     peerDependencies:
       vite: ^4 || ^5 || ^6
     dependencies:
       '@swc/core': 1.11.24
-      vite: 6.3.4(@types/node@22.15.3)
+      vite: 6.3.5(@types/node@22.15.3)
     transitivePeerDependencies:
       - '@swc/helpers'
     dev: true
 
-  /@vitejs/plugin-react@4.4.1(vite@6.3.4):
+  /@vitejs/plugin-react@4.4.1(vite@6.3.5):
     resolution: {integrity: sha512-IpEm5ZmeXAP/osiBXVVP5KjFMzbWOonMs0NaQQl+xYnUAcq4oHUBsF2+p4MgKWG4YMmFYJU8A6sxRPuowllm6w==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -4162,17 +4162,17 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.27.1(@babel/core@7.27.1)
       '@types/babel__core': 7.20.5
       react-refresh: 0.17.0
-      vite: 6.3.4(@types/node@22.15.3)
+      vite: 6.3.5(@types/node@22.15.3)
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@vitest/browser@3.1.1(playwright@1.52.0)(vite@6.3.4)(vitest@3.1.1):
-    resolution: {integrity: sha512-A+A69mMtrj1RPh96LfXGc309KSXhy2MslvyL+cp9+Y5EVdoJD4KfXDx/3SSlRGN70+hIoJ3RRbTidTvj18PZ/A==}
+  /@vitest/browser@3.1.2(playwright@1.52.0)(vite@6.3.5)(vitest@3.1.2):
+    resolution: {integrity: sha512-dwL6hQg3NSDP3Z4xzIZL0xHq/AkQAPQ4StFpWVlY2zbRJtK3Y2YqdFZ7YmZjszTETN1BDQZRn/QOrcP+c8ATgg==}
     peerDependencies:
       playwright: '*'
       safaridriver: '*'
-      vitest: 3.1.1
+      vitest: 3.1.2
       webdriverio: ^7.0.0 || ^8.0.0 || ^9.0.0
     peerDependenciesMeta:
       playwright:
@@ -4184,13 +4184,13 @@ packages:
     dependencies:
       '@testing-library/dom': 10.4.0
       '@testing-library/user-event': 14.6.1(@testing-library/dom@10.4.0)
-      '@vitest/mocker': 3.1.1(vite@6.3.4)
-      '@vitest/utils': 3.1.1
+      '@vitest/mocker': 3.1.2(vite@6.3.5)
+      '@vitest/utils': 3.1.2
       magic-string: 0.30.17
       playwright: 1.52.0
       sirv: 3.0.1
       tinyrainbow: 2.0.0
-      vitest: 3.1.1(@types/node@22.15.3)(@vitest/browser@3.1.1)
+      vitest: 3.1.2(@types/node@22.15.3)(@vitest/browser@3.1.2)
       ws: 8.18.2
     transitivePeerDependencies:
       - bufferutil
@@ -4199,18 +4199,18 @@ packages:
       - vite
     dev: true
 
-  /@vitest/coverage-v8@3.1.1(@vitest/browser@3.1.1)(vitest@3.1.1):
-    resolution: {integrity: sha512-MgV6D2dhpD6Hp/uroUoAIvFqA8AuvXEFBC2eepG3WFc1pxTfdk1LEqqkWoWhjz+rytoqrnUUCdf6Lzco3iHkLQ==}
+  /@vitest/coverage-v8@3.1.2(@vitest/browser@3.1.2)(vitest@3.1.2):
+    resolution: {integrity: sha512-XDdaDOeaTMAMYW7N63AqoK32sYUWbXnTkC6tEbVcu3RlU1bB9of32T+PGf8KZvxqLNqeXhafDFqCkwpf2+dyaQ==}
     peerDependencies:
-      '@vitest/browser': 3.1.1
-      vitest: 3.1.1
+      '@vitest/browser': 3.1.2
+      vitest: 3.1.2
     peerDependenciesMeta:
       '@vitest/browser':
         optional: true
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@bcoe/v8-coverage': 1.0.2
-      '@vitest/browser': 3.1.1(playwright@1.52.0)(vite@6.3.4)(vitest@3.1.1)
+      '@vitest/browser': 3.1.2(playwright@1.52.0)(vite@6.3.5)(vitest@3.1.2)
       debug: 4.4.0
       istanbul-lib-coverage: 3.2.2
       istanbul-lib-report: 3.0.1
@@ -4221,7 +4221,7 @@ packages:
       std-env: 3.9.0
       test-exclude: 7.0.1
       tinyrainbow: 2.0.0
-      vitest: 3.1.1(@types/node@22.15.3)(@vitest/browser@3.1.1)
+      vitest: 3.1.2(@types/node@22.15.3)(@vitest/browser@3.1.2)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -4235,15 +4235,6 @@ packages:
       tinyrainbow: 1.2.0
     dev: true
 
-  /@vitest/expect@3.1.1:
-    resolution: {integrity: sha512-q/zjrW9lgynctNbwvFtQkGK9+vvHA5UzVi2V8APrp1C6fG6/MuYYkmlx4FubuqLycCeSdHD5aadWfua/Vr0EUA==}
-    dependencies:
-      '@vitest/spy': 3.1.1
-      '@vitest/utils': 3.1.1
-      chai: 5.2.0
-      tinyrainbow: 2.0.0
-    dev: true
-
   /@vitest/expect@3.1.2:
     resolution: {integrity: sha512-O8hJgr+zREopCAqWl3uCVaOdqJwZ9qaDwUP7vy3Xigad0phZe9APxKhPcDNqYYi0rX5oMvwJMSCAXY2afqeTSA==}
     dependencies:
@@ -4253,8 +4244,8 @@ packages:
       tinyrainbow: 2.0.0
     dev: true
 
-  /@vitest/mocker@3.1.1(vite@6.3.4):
-    resolution: {integrity: sha512-bmpJJm7Y7i9BBELlLuuM1J1Q6EQ6K5Ye4wcyOpOMXMcePYKSIYlpcrCm4l/O6ja4VJA5G2aMJiuZkZdnxlC3SA==}
+  /@vitest/mocker@3.1.2(vite@6.3.5):
+    resolution: {integrity: sha512-kOtd6K2lc7SQ0mBqYv/wdGedlqPdM/B38paPY+OwJ1XiNi44w3Fpog82UfOibmHaV9Wod18A09I9SCKLyDMqgw==}
     peerDependencies:
       msw: ^2.4.9
       vite: ^5.0.0 || ^6.0.0
@@ -4264,10 +4255,10 @@ packages:
       vite:
         optional: true
     dependencies:
-      '@vitest/spy': 3.1.1
+      '@vitest/spy': 3.1.2
       estree-walker: 3.0.3
       magic-string: 0.30.17
-      vite: 6.3.4(@types/node@22.15.3)
+      vite: 6.3.5(@types/node@22.15.3)
     dev: true
 
   /@vitest/pretty-format@2.0.5:
@@ -4282,41 +4273,29 @@ packages:
       tinyrainbow: 1.2.0
     dev: true
 
-  /@vitest/pretty-format@3.1.1:
-    resolution: {integrity: sha512-dg0CIzNx+hMMYfNmSqJlLSXEmnNhMswcn3sXO7Tpldr0LiGmg3eXdLLhwkv2ZqgHb/d5xg5F7ezNFRA1fA13yA==}
-    dependencies:
-      tinyrainbow: 2.0.0
-    dev: true
-
   /@vitest/pretty-format@3.1.2:
     resolution: {integrity: sha512-R0xAiHuWeDjTSB3kQ3OQpT8Rx3yhdOAIm/JM4axXxnG7Q/fS8XUwggv/A4xzbQA+drYRjzkMnpYnOGAc4oeq8w==}
     dependencies:
       tinyrainbow: 2.0.0
     dev: true
 
-  /@vitest/runner@3.1.1:
-    resolution: {integrity: sha512-X/d46qzJuEDO8ueyjtKfxffiXraPRfmYasoC4i5+mlLEJ10UvPb0XH5M9C3gWuxd7BAQhpK42cJgJtq53YnWVA==}
+  /@vitest/runner@3.1.2:
+    resolution: {integrity: sha512-bhLib9l4xb4sUMPXnThbnhX2Yi8OutBMA8Yahxa7yavQsFDtwY/jrUZwpKp2XH9DhRFJIeytlyGpXCqZ65nR+g==}
     dependencies:
-      '@vitest/utils': 3.1.1
+      '@vitest/utils': 3.1.2
       pathe: 2.0.3
     dev: true
 
-  /@vitest/snapshot@3.1.1:
-    resolution: {integrity: sha512-bByMwaVWe/+1WDf9exFxWWgAixelSdiwo2p33tpqIlM14vW7PRV5ppayVXtfycqze4Qhtwag5sVhX400MLBOOw==}
+  /@vitest/snapshot@3.1.2:
+    resolution: {integrity: sha512-Q1qkpazSF/p4ApZg1vfZSQ5Yw6OCQxVMVrLjslbLFA1hMDrT2uxtqMaw8Tc/jy5DLka1sNs1Y7rBcftMiaSH/Q==}
     dependencies:
-      '@vitest/pretty-format': 3.1.1
+      '@vitest/pretty-format': 3.1.2
       magic-string: 0.30.17
       pathe: 2.0.3
     dev: true
 
   /@vitest/spy@2.0.5:
     resolution: {integrity: sha512-c/jdthAhvJdpfVuaexSrnawxZz6pywlTPe84LUB2m/4t3rl2fTo9NFGBG4oWgaD+FTgDDV8hJ/nibT7IfH3JfA==}
-    dependencies:
-      tinyspy: 3.0.2
-    dev: true
-
-  /@vitest/spy@3.1.1:
-    resolution: {integrity: sha512-+EmrUOOXbKzLkTDwlsc/xrwOlPDXyVk3Z6P6K4oiCndxz7YLpp/0R0UsWVOKT0IXWjjBJuSMk6D27qipaupcvQ==}
     dependencies:
       tinyspy: 3.0.2
     dev: true
@@ -4342,14 +4321,6 @@ packages:
       '@vitest/pretty-format': 2.1.9
       loupe: 3.1.3
       tinyrainbow: 1.2.0
-    dev: true
-
-  /@vitest/utils@3.1.1:
-    resolution: {integrity: sha512-1XIjflyaU2k3HMArJ50bwSh3wKWPD6Q47wz/NUSmRV0zNywPc4w79ARjg/i/aNINHwA+mIALhUVqD9/aUvZNgg==}
-    dependencies:
-      '@vitest/pretty-format': 3.1.1
-      loupe: 3.1.3
-      tinyrainbow: 2.0.0
     dev: true
 
   /@vitest/utils@3.1.2:
@@ -5109,8 +5080,12 @@ packages:
     resolution: {integrity: sha512-Y2oEozpomLn7Q3HFP7dpww7AtMJplbM9lGZP6RDfHqmbeRjiwRg4n6VM6j4KLmRke85uWEI7JqF17f3pqdRA0g==}
     dev: true
 
-  /colorjs.io@0.4.5:
-    resolution: {integrity: sha512-yCtUNCmge7llyfd/Wou19PMAcf5yC3XXhgFoAh6zsO2pGswhUPBaaUh8jzgHnXtXuZyFKzXZNAnyF5i+apICow==}
+  /colorjs.io@0.5.2:
+    resolution: {integrity: sha512-twmVoizEW7ylZSN32OgKdXRmo1qg+wT5/6C3xu5b9QsWzSFAhHLn2xd8ro0diCsKfCj1RdaTP/nrcW+vAoQPIw==}
+    dev: false
+
+  /colorjs.io@0.6.0-alpha.1:
+    resolution: {integrity: sha512-c/h/8uAmPydQcriRdX8UTAFHj6SpSHFHBA8LvMikvYWAVApPTwg/pyOXNsGmaCBd6L/EeDlRHSNhTtnIFp/qsg==}
     dev: false
 
   /colorparsley@0.1.8:
@@ -5261,14 +5236,6 @@ packages:
       path-type: 4.0.0
       typescript: 5.8.3
     dev: true
-
-  /cross-fetch@4.0.0:
-    resolution: {integrity: sha512-e4a5N8lVvuLgAWgnCrLr2PP0YyDOTHa9H/Rj54dirp61qXnNq46m82bRhNqIA5VccJtWBvPTFRV3TtvHUKPB1g==}
-    dependencies:
-      node-fetch: 2.7.0
-    transitivePeerDependencies:
-      - encoding
-    dev: false
 
   /cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
@@ -6740,20 +6707,8 @@ packages:
     engines: {node: '>=10.18'}
     dev: false
 
-  /i18next-fs-backend@2.6.0:
-    resolution: {integrity: sha512-3ZlhNoF9yxnM8pa8bWp5120/Ob6t4lVl1l/tbLmkml/ei3ud8IWySCHt2lrY5xWRlSU5D9IV2sm5bEbGuTqwTw==}
-    dev: false
-
-  /i18next-http-backend@3.0.2:
-    resolution: {integrity: sha512-PdlvPnvIp4E1sYi46Ik4tBYh/v/NbYfFFgTjkwFl0is8A18s7/bx9aXqsrOax9WUbeNS6mD2oix7Z0yGGf6m5g==}
-    dependencies:
-      cross-fetch: 4.0.0
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
-  /i18next@25.0.2(typescript@5.8.3):
-    resolution: {integrity: sha512-xWxgK8GAaPYkV9ia2tdgbtdM+qiC+ysVTBPvXhpCORU/+QkeQe3BSI7Crr+c4ZXULN1PfnXG/HY2n7HGx4KKBg==}
+  /i18next@24.2.3(typescript@5.8.3):
+    resolution: {integrity: sha512-lfbf80OzkocvX7nmZtu7nSTNbrTYR52sLWxPtlXX1zAhVw8WEnFk4puUkCR4B1dNQwbSpEHHHemcZu//7EcB7A==}
     peerDependencies:
       typescript: ^5
     peerDependenciesMeta:
@@ -8248,6 +8203,7 @@ packages:
         optional: true
     dependencies:
       whatwg-url: 5.0.0
+    dev: true
 
   /node-releases@2.0.19:
     resolution: {integrity: sha512-xxOWJsBKtzAq7DY0J+DTzuz58K8e7sJbdgwkbMWQe8UYB6ekmsQ45q0M/tJDsGaZmbC+l7n57UV8Hl5tHxO9uw==}
@@ -9377,7 +9333,7 @@ packages:
       react: 19.1.0
       scheduler: 0.26.0
 
-  /react-i18next@15.5.1(i18next@25.0.2)(react-dom@19.1.0)(react@19.1.0)(typescript@5.8.3):
+  /react-i18next@15.5.1(i18next@24.2.3)(react-dom@19.1.0)(react@19.1.0)(typescript@5.8.3):
     resolution: {integrity: sha512-C8RZ7N7H0L+flitiX6ASjq9p5puVJU1Z8VyL3OgM/QOMRf40BMZX+5TkpxzZVcTmOLPX5zlti4InEX5pFyiVeA==}
     peerDependencies:
       i18next: '>= 23.2.3'
@@ -9395,7 +9351,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.27.1
       html-parse-stringify: 3.0.1
-      i18next: 25.0.2(typescript@5.8.3)
+      i18next: 24.2.3(typescript@5.8.3)
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
       typescript: 5.8.3
@@ -9752,7 +9708,7 @@ packages:
       mdast-util-to-markdown: 2.1.2
       unified: 11.0.5
 
-  /remix-i18next@7.2.0(i18next@25.0.2)(react-i18next@15.5.1)(react-router@7.5.3)(react@19.1.0):
+  /remix-i18next@7.2.0(i18next@24.2.3)(react-i18next@15.5.1)(react-router@7.5.3)(react@19.1.0):
     resolution: {integrity: sha512-CoildP1aAWhTPvgDdnwYbwQ7gYG39DPZiiNUfe+CG9MQ2kl4AYmfZT3Bj3sv4JyhNpMFeDiZ7cDbyFVXOd2FRw==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
@@ -9761,9 +9717,9 @@ packages:
       react-i18next: ^13.0.0 || ^14.0.0 || ^15.0.0
       react-router: ^7.0.0
     dependencies:
-      i18next: 25.0.2(typescript@5.8.3)
+      i18next: 24.2.3(typescript@5.8.3)
       react: 19.1.0
-      react-i18next: 15.5.1(i18next@25.0.2)(react-dom@19.1.0)(react@19.1.0)(typescript@5.8.3)
+      react-i18next: 15.5.1(i18next@24.2.3)(react-dom@19.1.0)(react@19.1.0)(typescript@5.8.3)
       react-router: 7.5.3(react-dom@19.1.0)(react@19.1.0)
     dev: false
 
@@ -10658,6 +10614,7 @@ packages:
 
   /tr46@0.0.3:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
+    dev: true
 
   /tr46@1.0.1:
     resolution: {integrity: sha512-dTpowEjclQ7Kgx5SdBkqRzVhERQXov8/l9Ft9dVM9fmg0W0KQSVaXX9T4i6twCPNtYiZM53lpSSUAwJbFPOHxA==}
@@ -11030,6 +10987,23 @@ packages:
       d3-timer: 3.0.1
     dev: false
 
+  /vite-env-only@3.0.3(vite@6.3.5):
+    resolution: {integrity: sha512-iAb7cTXRrvFShaF1n+G8f6Yqq7sRJcxipNYNQQu0DN5N9P55vJMmLG5lNU5moYGpd+ZH1WhBHdkWi5WjrfImHg==}
+    peerDependencies:
+      vite: '*'
+    dependencies:
+      '@babel/core': 7.27.1
+      '@babel/generator': 7.27.1
+      '@babel/parser': 7.27.1
+      '@babel/traverse': 7.27.1
+      '@babel/types': 7.27.1
+      babel-dead-code-elimination: 1.0.10
+      micromatch: 4.0.8
+      vite: 6.3.5(@types/node@22.15.3)
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /vite-node@3.0.0-beta.2(@types/node@22.15.3):
     resolution: {integrity: sha512-ofTf6cfRdL30Wbl9n/BX81EyIR5s4PReLmSurrxQ+koLaWUNOEo8E0lCM53OJkb8vpa2URM2nSrxZsIFyvY1rg==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
@@ -11039,7 +11013,7 @@ packages:
       debug: 4.4.0
       es-module-lexer: 1.7.0
       pathe: 1.1.2
-      vite: 6.3.4(@types/node@22.15.3)
+      vite: 6.3.5(@types/node@22.15.3)
     transitivePeerDependencies:
       - '@types/node'
       - jiti
@@ -11054,8 +11028,8 @@ packages:
       - tsx
       - yaml
 
-  /vite-node@3.1.1(@types/node@22.15.3):
-    resolution: {integrity: sha512-V+IxPAE2FvXpTCHXyNem0M+gWm6J7eRyWPR6vYoG/Gl+IscNOjXzztUhimQgTxaAoUoj40Qqimaa0NLIOOAH4w==}
+  /vite-node@3.1.2(@types/node@22.15.3):
+    resolution: {integrity: sha512-/8iMryv46J3aK13iUXsei5G/A3CUlW4665THCPS+K8xAaqrVWiGB4RfXMQXCLjpK9P2eK//BczrVkn5JLAk6DA==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
     dependencies:
@@ -11063,7 +11037,7 @@ packages:
       debug: 4.4.0
       es-module-lexer: 1.7.0
       pathe: 2.0.3
-      vite: 6.3.4(@types/node@22.15.3)
+      vite: 6.3.5(@types/node@22.15.3)
     transitivePeerDependencies:
       - '@types/node'
       - jiti
@@ -11079,7 +11053,7 @@ packages:
       - yaml
     dev: true
 
-  /vite-plugin-react-rich-svg@1.2.1(typescript@5.8.3)(vite@6.3.4):
+  /vite-plugin-react-rich-svg@1.2.1(typescript@5.8.3)(vite@6.3.5):
     resolution: {integrity: sha512-QlXnk61SRwbkPU5fOTYdzQfIy4d5p4L6ymdw477qlubaM8LmRXhHUZnSTRpxzSLX98dd5BzX6x3XC7JK9dSJ3Q==}
     peerDependencies:
       vite: ^5 || ^6
@@ -11089,13 +11063,13 @@ packages:
       '@svgr/plugin-prettier': 8.1.0(@svgr/core@8.1.0)
       '@svgr/plugin-svgo': 8.1.0(@svgr/core@8.1.0)(typescript@5.8.3)
       svgo: 3.3.2
-      vite: 6.3.4(@types/node@22.15.3)
+      vite: 6.3.5(@types/node@22.15.3)
     transitivePeerDependencies:
       - supports-color
       - typescript
     dev: true
 
-  /vite-plugin-singlefile@2.2.0(rollup@4.40.1)(vite@6.3.4):
+  /vite-plugin-singlefile@2.2.0(rollup@4.40.1)(vite@6.3.5):
     resolution: {integrity: sha512-Ik1wXmJaGzeQtUeIV7JprDUqqy6DlLzXAY27Blei5peE4c9VJF+Kp9xWDJeuX0RJUZmFbIAuw1/RAh06A+Ql7w==}
     engines: {node: '>18.0.0'}
     peerDependencies:
@@ -11104,10 +11078,10 @@ packages:
     dependencies:
       micromatch: 4.0.8
       rollup: 4.40.1
-      vite: 6.3.4(@types/node@22.15.3)
+      vite: 6.3.5(@types/node@22.15.3)
     dev: true
 
-  /vite-plugin-static-copy@2.3.1(vite@6.3.4):
+  /vite-plugin-static-copy@2.3.1(vite@6.3.5):
     resolution: {integrity: sha512-EfsPcBm3ewg3UMG8RJaC0ADq6/qnUZnokXx4By4+2cAcipjT9i0Y0owIJGqmZI7d6nxk4qB1q5aXOwNuSyPdyA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     peerDependencies:
@@ -11118,10 +11092,10 @@ packages:
       fs-extra: 11.3.0
       p-map: 7.0.3
       picocolors: 1.1.1
-      vite: 6.3.4(@types/node@22.15.3)
+      vite: 6.3.5(@types/node@22.15.3)
     dev: true
 
-  /vite-tsconfig-paths@5.1.4(typescript@5.8.3)(vite@6.3.4):
+  /vite-tsconfig-paths@5.1.4(typescript@5.8.3)(vite@6.3.5):
     resolution: {integrity: sha512-cYj0LRuLV2c2sMqhqhGpaO3LretdtMn/BVX4cPLanIZuwwrkVl+lK84E/miEXkCHWXuq65rhNN4rXsBcOB3S4w==}
     peerDependencies:
       vite: '*'
@@ -11132,14 +11106,14 @@ packages:
       debug: 4.4.0
       globrex: 0.1.2
       tsconfck: 3.1.5(typescript@5.8.3)
-      vite: 6.3.4(@types/node@22.15.3)
+      vite: 6.3.5(@types/node@22.15.3)
     transitivePeerDependencies:
       - supports-color
       - typescript
     dev: true
 
-  /vite@6.3.4(@types/node@22.15.3):
-    resolution: {integrity: sha512-BiReIiMS2fyFqbqNT/Qqt4CVITDU9M9vE+DKcVAsB+ZV0wvTKd+3hMbkpxz1b+NmEDMegpVbisKiAZOnvO92Sw==}
+  /vite@6.3.5(@types/node@22.15.3):
+    resolution: {integrity: sha512-cZn6NDFE7wdTpINgs++ZJ4N49W2vRp8LCKrn3Ob1kYNtOo21vfDoaV5GzBfLU4MovSAB8uNRm4jgzVQZ+mBzPQ==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
     peerDependencies:
@@ -11188,16 +11162,16 @@ packages:
     optionalDependencies:
       fsevents: 2.3.3
 
-  /vitest@3.1.1(@types/node@22.15.3)(@vitest/browser@3.1.1):
-    resolution: {integrity: sha512-kiZc/IYmKICeBAZr9DQ5rT7/6bD9G7uqQEki4fxazi1jdVl2mWGzedtBs5s6llz59yQhVb7FFY2MbHzHCnT79Q==}
+  /vitest@3.1.2(@types/node@22.15.3)(@vitest/browser@3.1.2):
+    resolution: {integrity: sha512-WaxpJe092ID1C0mr+LH9MmNrhfzi8I65EX/NRU/Ld016KqQNRgxSOlGNP1hHN+a/F8L15Mh8klwaF77zR3GeDQ==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
     peerDependencies:
       '@edge-runtime/vm': '*'
       '@types/debug': ^4.1.12
       '@types/node': ^18.0.0 || ^20.0.0 || >=22.0.0
-      '@vitest/browser': 3.1.1
-      '@vitest/ui': 3.1.1
+      '@vitest/browser': 3.1.2
+      '@vitest/ui': 3.1.2
       happy-dom: '*'
       jsdom: '*'
     peerDependenciesMeta:
@@ -11217,14 +11191,14 @@ packages:
         optional: true
     dependencies:
       '@types/node': 22.15.3
-      '@vitest/browser': 3.1.1(playwright@1.52.0)(vite@6.3.4)(vitest@3.1.1)
-      '@vitest/expect': 3.1.1
-      '@vitest/mocker': 3.1.1(vite@6.3.4)
+      '@vitest/browser': 3.1.2(playwright@1.52.0)(vite@6.3.5)(vitest@3.1.2)
+      '@vitest/expect': 3.1.2
+      '@vitest/mocker': 3.1.2(vite@6.3.5)
       '@vitest/pretty-format': 3.1.2
-      '@vitest/runner': 3.1.1
-      '@vitest/snapshot': 3.1.1
-      '@vitest/spy': 3.1.1
-      '@vitest/utils': 3.1.1
+      '@vitest/runner': 3.1.2
+      '@vitest/snapshot': 3.1.2
+      '@vitest/spy': 3.1.2
+      '@vitest/utils': 3.1.2
       chai: 5.2.0
       debug: 4.4.0
       expect-type: 1.2.1
@@ -11233,10 +11207,11 @@ packages:
       std-env: 3.9.0
       tinybench: 2.9.0
       tinyexec: 0.3.2
+      tinyglobby: 0.2.13
       tinypool: 1.0.2
       tinyrainbow: 2.0.0
-      vite: 6.3.4(@types/node@22.15.3)
-      vite-node: 3.1.1(@types/node@22.15.3)
+      vite: 6.3.5(@types/node@22.15.3)
+      vite-node: 3.1.2(@types/node@22.15.3)
       why-is-node-running: 2.3.0
     transitivePeerDependencies:
       - jiti
@@ -11275,6 +11250,7 @@ packages:
 
   /webidl-conversions@3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
+    dev: true
 
   /webidl-conversions@4.0.2:
     resolution: {integrity: sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg==}
@@ -11359,6 +11335,7 @@ packages:
     dependencies:
       tr46: 0.0.3
       webidl-conversions: 3.0.1
+    dev: true
 
   /whatwg-url@7.1.0:
     resolution: {integrity: sha512-WUu7Rg1DroM7oQvGWfOiAK21n74Gg+T4elXEQYkOhtyLeWiJFoOGLXPKI/9gzIie9CtwVLm8wtw6YJdKyxSjeg==}
@@ -11541,7 +11518,7 @@ packages:
   /zod@3.24.4:
     resolution: {integrity: sha512-OdqJE9UDRPwWsrHjLN2F8bPxvwJBK22EHLWtanu0LSYr5YqzsaaW3RMgmjwr8Rypg5k+meEJdSPXJZXE/yqOMg==}
 
-  /zustand@5.0.4(@types/react@19.1.0)(react@19.1.0):
+  /zustand@5.0.4(@types/react@19.1.2)(react@19.1.0):
     resolution: {integrity: sha512-39VFTN5InDtMd28ZhjLyuTnlytDr9HfwO512Ai4I8ZABCoyAj4F1+sr7sD1jP/+p7k77Iko0Pb5NhgBFDCX0kQ==}
     engines: {node: '>=12.20.0'}
     peerDependencies:
@@ -11559,7 +11536,7 @@ packages:
       use-sync-external-store:
         optional: true
     dependencies:
-      '@types/react': 19.1.0
+      '@types/react': 19.1.2
       react: 19.1.0
 
   /zwitch@2.0.4:

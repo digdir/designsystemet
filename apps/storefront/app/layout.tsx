@@ -3,9 +3,9 @@ import '@digdir/designsystemet-css';
 import '@digdir/designsystemet-theme';
 
 import { SkipLink } from '@digdir/designsystemet-react';
+import { Figma, Github, Header, Slack } from '@internal/components';
+import { Footer } from '@internal/components';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
-import { Figma, Github, Header, Slack } from '@repo/components';
-import { Footer } from '@repo/components';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import { isProduction } from '../utils/is-production';

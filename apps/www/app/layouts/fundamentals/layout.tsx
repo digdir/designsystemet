@@ -57,6 +57,10 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     );
     const result = await generateFromMdx(fileContent);
 
+    if (!result.frontmatter.published) {
+      continue;
+    }
+
     const title =
       result.frontmatter.title || file.relativePath.replace('.mdx', '');
     const url =

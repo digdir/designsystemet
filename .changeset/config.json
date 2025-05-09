@@ -20,11 +20,11 @@
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "ignore": [
-    "www.designsystemet.no",
+    "@web/www",
     "theme",
     "storefront",
-    "@repo/components",
-    "@designsystemet/storybook",
-    "figma-plugin"
+    "@internal/components",
+    "@web/storybook",
+    "@plugin/figma"
   ]
 }

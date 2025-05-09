@@ -1,0 +1,256 @@
+---
+title: Systemvarsler
+sidebar_title: Systemvarsler
+category: Ferdig
+description: Systemvarsler brukes for å varsle brukeren enten om feil i systemet eller holde dem informert om viktige ting de bør få med seg.
+date: 2024-12-10
+---
+
+## Innledning
+Vi bruker systemvarsler for å informere brukerne om feil i systemet, eller viktige hendelser de bør være oppmerksomme på. Systemvarsler er ikke knyttet til brukernes handlinger, slik valideringer er. Du finner informasjon om valideringsfeil i [artikkelen om brukerutløste feil](/monstre/feilmeldinger). Denne artikkelen fokuserer på feil og varsler i systemet. 
+
+Systemvarsler kan komme i ulike former, for eksempel som `alert` eller `modal`. Måten vi kommuniserer systemvarslene på avhenger av svaret på disse spørsmålene:
+- Hvilken type informasjon er det? 
+- Hvor alvorlig er informasjonen i varselet? 
+- Hvilken kontekst kommer varselet i? Tilhører det en bestemt del av tjenesten eller dekker det hele systemet? 
+- Må brukerne gjøre noe eller ikke?  
+- Skal varselet vises for en planlagt hendelse, eller er det for en plutselig hendelse? 
+
+<br/>
+
+Vi skal nå se nærmere på språket vi bruker i varslene, og hvordan vi bør utforme ulike typer varslinger. Til slutt tar vi for oss implementeringen i kode, med fokus på tilgjengelighet.
+
+## Språk
+
+Et godt systemvarsel skal være informativt, klart og brukervennlig.
+
+<br/>
+
+**Skriv på en imøtekommende og hjelpsom måte** 
+
+- Fortell kort hva som er galt, og hvordan brukerne kan komme seg videre. Du kan bruke mellomoverskrifter og punktlister for å gjøre det enklere å skanne informasjonen. 
+- Vær tydelig på at det ikke er brukerens feil. Fortell at feilen ligger hos oss. 
+- Vi kan gjerne unnskylde oss ved å skrive «beklager», «dessverre» eller «takk for tålmodigheten». 
+- Vær forsiktig med humor - det er sjelden morsomt når noe går galt.
+
+<br/>
+
+**Hjelp brukeren videre** 
+
+- Fortell brukerne hva de kan prøve selv.
+- Pass på at brukerne har informasjon til å kunne beskrive feilen til brukerstøtte, for eksempel hvor feilen oppsto. Oppgi feilkoden hvis den er viktig for at brukerstøtte skal kunne løse feilen.
+- Oppgi kontaktinformasjon til brukerstøtte hvis det er en systemfeil. Unngå ordet “vennligst” (“Vennligst kontakt brukerstøtte“), det er en overføring fra engelsk og kan oppfattes som uhøflig. Skriv heller ”Du kan kontakte brukerstøtte“. 
+
+<br/>
+
+**Test varslene** 
+
+Test varslene på ekte brukere for å sikre at de er lette å forstå.
+
+
+## Ulike alvorlighetsgrader
+Det er viktig å bruke riktige virkemidler for å kommunisere alvorlighetsgrad. Misbruk av varsler kan svekke tillit og føre til at viktige meldinger overses. Ved å skille tydelig mellom kritiske feil, viktige meldinger og informasjon, sikrer vi at brukerne får riktig informasjon til rett tid og forstår hva som krever umiddelbar handling.
+
+En annen viktig ting å huske på, er at systemvarsler aldri må overskygge varsler som gjelder innbyggernes liv og helse. For eksempel dersom du skal varsle om at vannet ikke kan drikkes. Slike varsler skal alltid ha prioritet over tekniske systemvarsler, uansett hvor alvorlig vi tenker systemvarselet er. På denne måten passer vi på at livsviktig informasjon alltid når fram til innbyggerne. Hvis du skal varsle om alvorlige hendelser som ikke er relatert til systemet, bør du altså *ikke* bruke komponentene som er tiltenkt systemvarsler.
+
+### A) Kritiske systemfeil
+Når vi har feil som påvirker hele eller store deler av systemet, bør brukerne få varsel om det tidlig. Hvis systemet er nede, skal varselet være tydelig på det. Vi kan si fra om dette på flere måter, for eksempel kan vi endre startsiden til å ha en annen tekstplakat enn den som er der til vanlig, eller vi kan vise en `modal` som forteller brukerne om de kritiske feilene. 
+
+### B) Viktig melding om systemet
+Ikke alle feil er kritiske, men noen ganger påvirker midlertidige feil hvordan brukerne opplever tjenesten. La oss si at vi må varsle om lengre behandlingstid på søknader. Da kan vi legge en global `alert` øverst på siden. Hvis meldingen bare gjelder deler av tjenesten, bør vi heller gi varselet der feilen gjelder. Hvis brukeren må ta et aktivt valg, kan det være bedre å bruke en `modal`. For eksempel for å varsle om at du snart blir logget ut, hvis du ikke tar et aktivt valg om å forbli innlogget.
+
+### C) Informasjon om systemet 
+Brukerne kan også trenge å få mindre viktige systemvarsler. Det kan for eksempel være informasjon om planlagt vedlikehold eller beskjed om at en ny versjon er tilgjengelig. Slike meldinger kan vi vise med en `alert`.
+
+
+## Design og opplevelse
+Det finnes flere ulike måter å presentere systemvarsler til brukerne på. Vi bør velge den presentasjonsmåten som gjør at brukerne oppfatter varselet som nyttig. Varselet må ikke skape forvirring eller frustrasjon.  
+
+Vi skal se nærmere på feilsider og komponentene `modal` og `alert`. Når og hvordan skal vi bruke dem? 
+
+### Når bruker vi feilsider?
+En full feilside er ofte hensiktsmessig når det oppstår alvorlige tekniske feil som hindrer brukeren i å fortsette å bruke tjenesten. Fordelen med feilsider er at de ikke krangler om oppmerksomheten med andre elementer på siden. 
+
+**Vi kan bruke feilsider når**
+- det har oppstått tekniske feil som gjør at hele tjenesten er utilgjengelig
+- brukerne prøver å laste inn en side som ikke finnes
+
+<br/>
+
+**Det passer ikke med feilsider når**
+- den tekniske feilen er begrenset til én funksjon eller komponent
+- brukeren kan fortsette å bruke andre deler av tjenesten
+- deler av innholdet er utilgjengelig
+
+<br/>
+
+Fortell alltid brukerne hva som er galt og hvordan det påvirker dem og/eller systemet. Vi bør også si noe om hva brukerne eventuelt kan prøve selv, og hvor de kan få hjelp.
+
+
+<Image
+  src='/img/Full-feilside500.png'
+  alt='Skjermbilde som viser eksempel på en full feilside med 500-feil. På feilsiden informeres det om at vi opplever tekniske problemer og jobber med å løse dem. Det står også "Dette skyldes ikke noe du gjorde. Du kan prøve å vente noen minutter og laste siden på nytt eller gå tilbake til forrige side. Hvis du fortsatt har problemer, kan du kontakte oss (åpnes i ny fane)."'
+  boxShadow={true}
+  caption='Eksempelet viser en full feilmeldingsside som forteller at vi har tekniske problemer og at dette ikke skyldes noe brukerne gjorde. Vi gir også brukerne noen alternativer for å komme videre.'
+/>
+
+#### Når siden ikke eksisterer
+
+Når en bruker prøver å få tilgang til en side som ikke eksisterer, kan vi også bruke en full feilside. Da bør vi
+
+- gi brukeren mulighet til å søke etter informasjonen
+- gi brukerne forslag til andre relevante sider som tar utgangspunkt i samme URL 
+- gi brukeren mulighet til å gå til forsiden
+
+
+<Image
+  src='/img/Full-feilside404.png'
+  alt='Skjermbilde som viser eksempel på en full feilside med 404-feil. På feilsiden informeres det om at denne siden kan være slettet eller flyttet, eller det er en feil i lenken. Det står også "Du kan søke her etter informasjonen du leter etter" med et tilhørende søkefelt. Deretter viser vi forslag til sider som kan være aktuelle ut i fra lenken brukeren forsøkte å nå.'
+  boxShadow={true}
+  caption='Eksempel på en full feilmeldingsside som forteller at denne siden kan være slettet eller flyttet, eller at det er en feil i lenken. Vi gir brukerne mulighet til å søke etter informasjonen, og foreslår noen aktuelle sider ut fra lenken de forsøkte å gå til.'
+/>
+
+
+### Når bruker vi modaler?
+
+Med en modal kan vi fange brukernes oppmerksomhet, samtidig som de fortsatt ser hvor de er. Men modaler forstyrrer også arbeidsflyten brukerne er i, så vi bør bare bruke dem når det er helt nødvendig. 
+
+Vi anbefaler modal til systemvarsler som krever at brukerne må gjøre noe med en gang. Det kan for eksempel være når systemet av sikkerhetsgrunner ikke kan la deg være innlogget mer enn en viss tid når du ikke er aktiv. Modalen gir brukeren et valg om å fortsatt være innlogget.
+
+**Vi kan også bruke modal når**
+- det uansett er viktig at brukerne får med seg informasjonen 
+- det oppstår feil som gjør at brukerne ikke kan fortsette å bruke tjenesten, for eksempel når systemet får nedetid eller når data ikke blir lagret 
+- systemet krever at brukerne må bestemme noe før de kan fortsette, for eksempel hvis de må velge innstillinger som påvirker arbeidet deres videre
+
+<br/>
+
+**Når passer det ikke med modal?**
+- Til meldinger som kommer for ofte, det kan skape frustrasjon.
+- Varsler som ikke er så viktige, typisk sånne som kan vente til brukerne selv vil ta tak i det. 
+
+
+<Image
+  src='/img/modal-systemvarsler-2.png'
+  alt='Skjermbilde av modal.'
+  caption='Eksempel på et globalt varsel som krever handling. I modalen må brukeren ta et aktivt valg for å fortsette å være innlogget. Brukes når vi vil at brukerne skal svare for å få varselet til å forsvinne.'
+/>
+
+
+### Når bruker vi alert?
+`Alert` er laget for å gi en beskjed til brukerne. Den er ofte delt inn i ulike varianter ut fra hvor viktig beskjeden er. Vi kan vise alert øverst i grensesnittet (global kontekst), eller de kan vises nær feilen (lokal kontekst).  
+
+**Vi kan bruke `alert` når**
+- feilen kun påvirker én del av systemet eller en mindre funksjon som ikke stopper brukerens mulighet til å fortsette andre oppgaver
+- det oppstår tilkoblingsproblemer eller API-feil som vil løse seg med en ny innlasting av siden
+
+**Det passer ikke med `alert` når**
+- feilen hindrer all videre bruk av tjenesten (bruk feilside i stedet)
+- du skal gjøre brukeren oppmerksom på feil i enkeltfelt (bruk `ValidationMessage`)
+- varslene er statiske infobokser (bruk `card`)
+- det er eneste innhold på en side
+
+I eksempelet under ser vi en global `alert` som fyller hele bredden øverst på siden. Denne typen varsel anbefales for problemer som gjelder hele tjenesten. Vi bruker gul `alert` (warning) når brukerne fortsatt kan finne informasjon og navigere på nettsidene, men der noen av delene på siden er utilgjengelige. 
+
+<Image
+  src='/img/alert-global.png'
+  alt='Skjermbilde av global alert.'
+/>
+
+Det neste eksempelet viser en lokal `alert` som er plassert i nærheten av der feilen oppsto. Vi bruker en rød `alert` (danger) i tilfeller der brukerne ikke kan fortsette arbeidet. Den står så lenge feilen finnes. 
+
+<Image
+  src='/img/alert-lokal.png'
+  alt='Skjermbilde av lokal alert.'
+/>
+
+## Kode
+
+For å sikre at alle brukere får med seg systemvarsler til riktig tid, må du passe på å bruke riktige attributter. 
+
+### Statiske varsler
+
+Varsler som vises ved sidelasting, kalles statiske varsler. Disse trenger ingen spesielle attributter, siden de er synlige fra starten av og kan plasseres logisk i innholdshierarkiet. Vær oppmerksom på hvilket overskriftsnivå varselet får i innholdshierarkiet.
+
+### Dynamiske varsler
+
+Varsler som dukker opp etter at siden er lastet, kalles dynamiske varsler. Disse varslene bør for eksempel bruke `role="alert"`. For å sikre at skjermlesere oppfatter endringen i innholdet kan `role="alert"` plasseres på en `<div>` som er tom ved sidelasting, og deretter oppdateres innholdet i `<div>` når varselet skal vises. 
+
+**Eksempel:**
+
+```html
+<div role="alert" id="dynamicAlertContainer"></div>
+
+<script>
+  // Når et varsel skal vises
+  document.getElementById('dynamicAlertContainer').innerHTML = "<p>Kritisk oppdatering!</p>";
+</script>
+```
+
+Ved å bruke en tom `alert` som kan fylles med innhold dynamisk, sikrer vi at skjermlesere oppfatter varselet så snart det fylles med tekst.
+
+
+### Nivåer for dynamiske varsler
+For kritiske varsler som må leses opp umiddelbart, bruk `role="alert"`, som sørger for at skjermleseren avbryter pågående opplesinger og leser opp varselet straks innholdet endres. For mindre alvorlige meldinger som kan vente, kan `role="status"` være et bedre valg, da dette ikke avbryter, men leses opp når skjermleseren har tid. 
+
+**Eksempel:**
+
+```html
+<div role="alert">Kritisk feil oppstod, vennligst prøv igjen.</div>
+<div role="status">Endringen ble lagret.</div>
+```
+
+Les mer på [uu-tilsynet](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152) om hvilke roller du skal bruke på ulike elementer. 
+
+
+### Modaler
+Når en [dialog](https://storybook.designsystemet.no/?path=/docs/komponenter-dialog--docs) åpnes, er det viktig at den får fokus, slik at brukere umiddelbart kan interagere med innholdet. Ofte er det naturlig å sette fokus til det første interaktive elementet. I noen tilfeller kan det passe å fokusere på et annet element, for eksempel overskriften. Da må du bruke `tabindex="-1" `for å sikre at fokus kan settes på et ikke-interaktivt element. 
+
+**Eksempel:**
+
+```html
+<div role="dialog" aria-labelledby="modalHeading">
+  <h2 id="modalHeading" tabindex="-1">Systemvarsel</h2>
+  <p>Detaljer om systemvarselet.</p>
+</div>
+<script>
+  // Når modalen åpnes
+  document.getElementById('modalHeading').focus();
+</script>
+```
+
+Dette gjør at modaltittelen kan få fokus, selv om den normalt ikke er et interaktivt element. Når modalen lukkes, bør fokuset returnere til en logisk plassering på siden. For eksempel der brukeren var før.
+
+
+
+### Relevante lenker
+- [UUTilsynets: 4.1.3 Statusbeskjeder (Nivå AA)](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)
+- [MDN Web Docs: ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions)
+
+<br/>
+
+<br/>
+
+<br/>
+
+<Card data-color='brand3' variant="tinted">
+  Retningslinjene er utarbeidet i en tverretatlig arbeidsgruppe med deltakere fra Digdir, Nav, Skatteetaten, Brønnøysundregistrene, Politiet, KS, Entur, Mattilsynet og Oslo kommune. Du kan påvirke arbeidet i [diskusjonstråden om systemvarsler på Github](https://github.com/digdir/designsystemet/discussions/1801) eller i [#Mønster-kanalen](https://designsystemet.slack.com/archives/C05RBGB92MC/p1712751837722749) på [Slack](https://designsystemet.no/slack).
+</Card>
+
+<br/>
+
+<Contributors
+  authors={[
+    'Roy Halvor Frimanslund (Brønnøysundregistrene)',
+    'Astrid Eline Øksnes (Politiet)',
+    'Bernard Tømmerbakke (Oslo Kommune)',
+    'Vegard Haugstvedt (Nav)',
+    'Eirik Backer (Mattilsynet)',
+    'Lasse Febakke Straum (Digdir)',
+    'Frida Almqvist (Entur)',
+    'Marianne Røsvik (Digdir)',
+    'Marianne Bugge Nordberg (KS)',    
+    'Camilla Orten (Skatteetaten)',
+    'Gørild Døhl (Digdir)',
+    'Viveca Krishnamoorthi (Digdir)',
+  ]}
+/>

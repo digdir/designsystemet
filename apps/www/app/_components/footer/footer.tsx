@@ -2,7 +2,6 @@ import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { type ReactNode, forwardRef } from 'react';
 import { useTranslation } from 'react-i18next';
-
 import { ContentContainer } from '../content-container/content-container';
 import { RRLink } from '../link';
 import { Bronnoysund } from '../logos/bronnoysund';
@@ -12,8 +11,8 @@ import { Mattilsynet } from '../logos/mattilsynet';
 import { Udir } from '../logos/udir';
 import classes from './footer.module.css';
 
-type LinkListItemProps = {
-  text: string;
+export type FooterLinkListItemProps = {
+  text: TemplateStringsArray;
   url: string;
   prefix?: ReactNode;
 };
@@ -23,7 +22,7 @@ const getCurrentYear = () => {
   return date.getFullYear();
 };
 
-const LinkList = (links: LinkListItemProps[]) => {
+const LinkList = (links: FooterLinkListItemProps[]) => {
   const { t } = useTranslation();
 
   return (
@@ -40,8 +39,8 @@ const LinkList = (links: LinkListItemProps[]) => {
   );
 };
 type FooterProps = {
-  centerLinks: LinkListItemProps[];
-  rightLinks: LinkListItemProps[];
+  centerLinks: FooterLinkListItemProps[];
+  rightLinks: FooterLinkListItemProps[];
 } & React.HTMLAttributes<HTMLElement>;
 
 export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(

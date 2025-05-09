@@ -40,7 +40,6 @@ export const Sizes: Story = () => (
     <Avatar data-size='xs' aria-label='extra small' />
     <Avatar data-size='sm' aria-label='small' initials='sm' />
     <Avatar data-size='sm' aria-label='small' />
-    <Avatar aria-label='default' initials='md' />
     <Avatar data-size='md' aria-label='medium' initials='md' />
     <Avatar data-size='md' aria-label='medium' />
     <Avatar data-size='lg' aria-label='large' initials='lg' />
@@ -85,7 +84,7 @@ export const InDropdown: Story = () => (
       </Avatar>
       Velg Profil
     </Dropdown.Trigger>
-    <Dropdown placement='bottom-end' data-size='md' open>
+    <Dropdown placement='bottom-end' autoPlacement={false} data-size='md' open>
       <Dropdown.List>
         <Dropdown.Item>
           <Dropdown.Button>

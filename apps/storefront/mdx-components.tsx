@@ -26,7 +26,7 @@ import {
   TableHeaderCell,
   TableRow,
 } from '@digdir/designsystemet-react';
-import { CodeBlock } from '@repo/components';
+import { CodeBlock } from '@internal/components';
 import type { MDXComponents } from 'mdx/types';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
