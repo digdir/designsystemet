@@ -109,19 +109,30 @@ Her er en liste med hvilken type informasjon en varsel bør inneholde:
 
 ### Interaksjon med skjermleser
 
-`Alert` kommer ikke med en `role="alert"` som default, den blir presentert for skjermleserbrukere som vanlig statisk innhold. Du kan legge på `role=alert` selv, men vær opperksom på forventet oppførsel dette medfører. Du kan lese mer om dette på [dokumentasjonen til ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role).
+Ut av boksen blir `Alert` presentert for skjermleserbrukere som vanlig statisk innhold. For varsler som oppstår dynamisk kan du selv definere en *live region* for skjermlesere, men vær opperksom på hvilken oppførsel dette medfører.
+Du kan lese mer om dette i [MDN sin dokumentasjon om ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions).
+
+Legg spesielt merke til at live-regionen — altså elementet med attributt `role="alert"`, `role="status"` eller `aria-live` med verdi `"assertive"` eller `"polite"` — må eksistere på siden **før** varselet som skal leses opp.
+
+For dynamiske varsler er det mest aktuelt å bruke `role="alert"` for kritiske varsel eller `role="status"` for mindre kritiske vasel, som beskrevet i [mønsteret for systemvarsler](https://www.designsystemet.no/monstre/systemvarsler#niv%C3%A5er-for-dynamiske-varsler). Se også [alert role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role) og [status role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role) hos MDN.
+
+**Ikke** kombiner `role="alert"` og `aria-live`, siden [dette fører at varselet leses opp dobbelt i VoiceOver](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions#:~:text=adding%20both%20aria%2Dlive%20and%20role=%22alert%22%20causes%20double%20speaking%20issues%20in%20VoiceOver%20on%20iOS).
+
+Du **bør** kombinere `role="status"` og `aria-live="polite"` [for å maksimere kompatibilitet](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions#roles_with_implicit_live_region_attributes).
 
 #### Ikke gjør dette
 
-Ikke bruk `role=alert` om `Alert` er synlig når siden lastes inn.
+Ikke definer en *live region* direkte på `Alert`. For statiske varsler har det ingen effekt, og for dynamiske varsler vil det ikke bli tolket riktig av alle skjermlesere, selv om mange skjermlesere har spesialhåndtering som går ut over ARIA-spesifikasjonen for akkurat `role="alert"`.
 
-<Canvas of={AlertStories.UtenAria} />
+<Canvas of={AlertStories.WrongLiveRegion} />
 
-#### Gjør dette
+#### Gjør dette for dynamiske varsler
 
-Bruk `role=alert` hvis den dukker opp dynamisk underveis pga. brukerinput eller andre faktorer som kan utløse en alert.
+Definer en *live region*, f.eks. med `role="alert"`, for varsler som kan dukke opp dynamisk underveis som følge av brukerens handlinger eller andre faktorer. Dette vil også fungere på samme måte med `role="status"`.
 
-<Canvas of={AlertStories.MedAria} />
+<Canvas of={AlertStories.CorrectLiveRegion} />
+
+For dynamiske varsler uten React, følg eksempelet i [mønsteret for dynamiske systemvarsler](https://www.designsystemet.no/monstre/systemvarsler#dynamiske-varsler).
 
 ## CSS Variabler
 
