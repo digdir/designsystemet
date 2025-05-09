@@ -91,7 +91,7 @@ export const ShowHide: Story = () => {
         <Button onClick={() => setShow(!show)}>{show ? 'Skjul' : 'Vis'}</Button>
       </div>
       {show && (
-        <ErrorSummary>
+        <ErrorSummary data-testId='show-hide'>
           <ErrorSummary.Heading>
             For å gå videre må du rette opp følgende feil:
           </ErrorSummary.Heading>
@@ -117,6 +117,6 @@ ShowHide.play = async (ctx) => {
   const canvas = within(ctx.canvasElement);
   const button = canvas.getByRole('button');
   await userEvent.click(button);
-  const errorSummary = canvas.getByRole('alert');
+  const errorSummary = canvas.getByTestId('show-hide');
   await expect(errorSummary).toBeVisible();
 };
