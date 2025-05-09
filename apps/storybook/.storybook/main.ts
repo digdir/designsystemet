@@ -1,11 +1,31 @@
-import { resolve } from 'node:path';
+import path, { resolve } from 'node:path';
 
 import type { StorybookConfig } from '@storybook/react-vite';
+import * as R from 'ramda';
 import type { PropItem } from 'react-docgen-typescript';
+import { defineConfig, mergeConfig } from 'vite';
 
 const dirname = import.meta.dirname || __dirname;
 
+const resolveAliasFromroot = (alias: string): string =>
+  path.resolve(dirname, '../../..', alias);
+
+const resolveAliases = R.map(resolveAliasFromroot);
+
 const config: StorybookConfig = {
+  viteFinal: (config) =>
+    mergeConfig(
+      config,
+      defineConfig({
+        resolve: {
+          alias: resolveAliases({
+            '@assets': 'apps/storybook/assets',
+            '@doc-components': 'apps/storybook/docs-components',
+            '@story-utils': 'apps/storybook/story-utils',
+          }),
+        },
+      }),
+    ),
   typescript: {
     check: true,
     /* If in prod, use docgen-typescript, locally use docgen */
