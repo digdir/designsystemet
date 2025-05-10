@@ -29,7 +29,10 @@ export const Card = ({ type, title, desc, icon }: CardProps) => {
         >
           {icon}
         </div>
-        <Heading className={classes.title} data-size='2xs'>
+        <Heading
+          className={cl(classes.title, type === 2 && classes.titleColored)}
+          data-size='2xs'
+        >
           {title}
         </Heading>
         <Paragraph data-size='sm'>{desc}</Paragraph>

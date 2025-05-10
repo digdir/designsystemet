@@ -6,7 +6,7 @@ import {
 } from '@digdir/designsystemet-react';
 import { generateColorSchemes } from '@digdir/designsystemet/color';
 import { ChevronDownIcon } from '@navikt/aksel-icons';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useThemeStore } from '../../store';
 import { Scale } from '../Scale/Scale';
 import classes from './Colors.module.css';
@@ -18,9 +18,12 @@ export const Colors = () => {
   );
 
   const updateColorTheme = useThemeStore((state) => state.updateColorTheme);
-  const [showStatus, setShowStatus] = useState(false);
   const colorScheme = useThemeStore((state) => state.colorScheme);
   const onColorThemeChange = useThemeStore((state) => state.onColorThemeChange);
+  const showStatusColors = useThemeStore((state) => state.showStatusColors);
+  const setShowStatusColors = useThemeStore(
+    (state) => state.setShowStatusColors,
+  );
 
   useEffect(() => {
     const updatedMainColors = colors.main.map((color, index) => {
@@ -118,13 +121,13 @@ export const Colors = () => {
             variant='secondary'
             data-color='neutral'
             className={classes.showBtn}
-            onClick={() => setShowStatus(!showStatus)}
+            onClick={() => setShowStatusColors(!showStatusColors)}
           >
-            {showStatus ? 'Skjul statusfarger' : 'Vis statusfarger'}
+            {showStatusColors ? 'Skjul statusfarger' : 'Vis statusfarger'}
             <ChevronDownIcon title='a11y-title' fontSize='1.5rem' />
           </Button>
         </div>
-        {showStatus &&
+        {showStatusColors &&
           colors.status.map((color, index) => (
             <div key={index} className={classes.row}>
               <div className={classes.scaleLabel}>{color.name}</div>

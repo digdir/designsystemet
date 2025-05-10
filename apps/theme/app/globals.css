@@ -84,3 +84,21 @@ code {
 .content {
   min-height: 100svh;
 }
+
+.subtle-toggle-group {
+  background-color: var(--ds-color-neutral-surface-tinted);
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  border-radius: 5px;
+}
+
+.subtle-toggle-group button[data-variant='primary'] {
+  background-color: var(--ds-color-neutral-surface-default);
+  color: var(--ds-color-text-default);
+  border: 1px solid var(--ds-color-neutral-border-default);
+  border-radius: 4px;
+}
+
+.ds-field [data-field='description'] {
+  margin-top: 4px;
+  margin-bottom: 12px;
+}

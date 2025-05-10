@@ -28,7 +28,12 @@
 
 .heading {
   margin-top: -8px;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
+}
+
+.subHeading {
+  margin-top: 24px;
+  margin-bottom: 12px;
 }
 
 .group {
@@ -37,4 +42,13 @@
   flex-direction: column;
   margin-top: 20px;
   margin-bottom: 24px;
+}
+
+.activeBtn {
+  background-color: var(--ds-color-surface-hover);
+  border-radius: 200px;
+}
+
+.select {
+  margin-top: 12px;
 }

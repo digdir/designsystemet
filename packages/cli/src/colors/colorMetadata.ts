@@ -26,7 +26,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     saturation: {
       light: 1,
-      dark: 1,
+      dark: 0.7,
       contrast: 1,
     },
     interpolation: 'rgb',
@@ -47,7 +47,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     saturation: {
       light: 1,
-      dark: 1,
+      dark: 0.7,
       contrast: 1,
     },
     interpolation: 'rgb',
@@ -68,7 +68,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     saturation: {
       light: 1,
-      dark: 1,
+      dark: 0.7,
       contrast: 1,
     },
     interpolation: 'rgb',
@@ -89,7 +89,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     saturation: {
       light: 1,
-      dark: 1,
+      dark: 0.7,
       contrast: 1,
     },
     interpolation: 'rgb',
@@ -110,7 +110,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     saturation: {
       light: 1,
-      dark: 1,
+      dark: 0.7,
       contrast: 1,
     },
     interpolation: 'rgb',
@@ -131,7 +131,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     saturation: {
       light: 1,
-      dark: 1,
+      dark: 0.7,
       contrast: 1,
     },
     interpolation: 'rgb',
@@ -152,7 +152,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     saturation: {
       light: 1,
-      dark: 1,
+      dark: 0.8,
       contrast: 1,
     },
     interpolation: 'rgb',
@@ -173,7 +173,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     saturation: {
       light: 1,
-      dark: 1,
+      dark: 0.8,
       contrast: 1,
     },
     interpolation: 'rgb',
@@ -194,7 +194,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     saturation: {
       light: 1,
-      dark: 1,
+      dark: 0.8,
       contrast: 1,
     },
     interpolation: 'rgb',
@@ -215,7 +215,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     saturation: {
       light: 1,
-      dark: 1,
+      dark: 0.8,
       contrast: 1,
     },
     interpolation: 'rgb',
@@ -236,7 +236,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     saturation: {
       light: 1,
-      dark: 1,
+      dark: 0.8,
       contrast: 1,
     },
     interpolation: 'rgb',
@@ -257,7 +257,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     saturation: {
       light: 1,
-      dark: 1,
+      dark: 0.7,
       contrast: 1,
     },
     interpolation: 'rgb',
@@ -278,7 +278,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     saturation: {
       light: 1,
-      dark: 1,
+      dark: 0.7,
       contrast: 1,
     },
     interpolation: 'rgb',
@@ -299,7 +299,7 @@ export const colorMetadata: ColorMetadataByName = {
     },
     saturation: {
       light: 1,
-      dark: 1,
+      dark: 0.7,
       contrast: 1,
     },
     interpolation: 'rgb',

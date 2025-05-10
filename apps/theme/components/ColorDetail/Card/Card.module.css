@@ -1,5 +1,5 @@
 .card {
-  background-color: white;
+  background-color: var(--ds-color-surface-default);
   flex-grow: 1;
   border-radius: 12px;
   padding: 28px 28px;
@@ -54,4 +54,8 @@
 .title {
   margin-top: 18px;
   margin-bottom: 12px;
+}
+
+.titleColored {
+  color: var(--ds-color-text-subtle);
 }

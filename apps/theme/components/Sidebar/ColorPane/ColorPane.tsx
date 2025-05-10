@@ -23,7 +23,7 @@ type ColorPaneProps = {
   setName: (name: string) => void;
   onCancel: () => void;
   onRemove: () => void;
-  colorType: 'main' | 'neutral' | 'support';
+  colorType: 'main' | 'neutral' | 'support' | 'status';
   index: number;
 };
 

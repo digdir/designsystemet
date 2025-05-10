@@ -25,6 +25,10 @@ type PageType =
   | 'lightness';
 
 type ColorStore = {
+  showStatusColors: boolean;
+  setShowStatusColors: (show: boolean) => void;
+  activeColorScale: string;
+  setActiveColorScale: (scale: string) => void;
   onColorThemeChange: number;
   setOnColorThemeChange: (value: number) => void;
   referenceColorMetadata: ColorMetadataByName;
@@ -38,19 +42,22 @@ type ColorStore = {
   };
   getColorTheme: (
     index: number,
-    type: 'main' | 'neutral' | 'support',
+    type: 'main' | 'neutral' | 'support' | 'status',
   ) => ColorTheme | undefined;
   addColor: (
     newColor: ColorTheme,
-    type: 'main' | 'neutral' | 'support',
+    type: 'main' | 'neutral' | 'support' | 'status',
   ) => void;
   updateColorTheme: (
     updatedTheme: ColorTheme,
     index: number,
-    type: 'main' | 'neutral' | 'support',
+    type: 'main' | 'neutral' | 'support' | 'status',
   ) => void;
   resetColors: () => void;
-  removeColor: (index: number, type: 'main' | 'neutral' | 'support') => void;
+  removeColor: (
+    index: number,
+    type: 'main' | 'neutral' | 'support' | 'status',
+  ) => void;
   baseBorderRadius: BaseBorderRadius;
   setBaseBorderRadius: (radius: BaseBorderRadius) => void;
   colorScheme: ColorScheme;
@@ -69,6 +76,10 @@ type ColorStore = {
 
 export const useThemeStore = create(
   subscribeWithSelector<ColorStore>((set) => ({
+    showStatusColors: false,
+    setShowStatusColors: (show) => set({ showStatusColors: show }),
+    activeColorScale: 'primary',
+    setActiveColorScale: (scale) => set({ activeColorScale: scale }),
     onColorThemeChange: 0,
     setOnColorThemeChange: (value) => set({ onColorThemeChange: value }),
     referenceColorMetadata: JSON.parse(JSON.stringify(colorMetadata)),

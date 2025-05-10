@@ -62,6 +62,9 @@
 .lightBtn {
   align-self: flex-start;
   margin-left: -12px;
+  margin-bottom: -8px;
+  gap: 10px;
+  margin-top: 8px;
 }
 
 .back {
@@ -84,4 +87,10 @@
 .card:hover {
   background-color: var(--ds-color-neutral-background-tinted);
   cursor: pointer;
+}
+
+.checkbox {
+  color: var(--ds-color-neutral-text-subtle);
+  margin-left: 2px;
+  gap: 10px;
 }

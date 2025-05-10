@@ -16,7 +16,7 @@ export const GradientSpace = ({
   const svgRef = useRef<SVGSVGElement | null>(null);
   const colors = colorScheme === 'light' ? themeInfo.light : themeInfo.dark;
   const [hue, setHue] = useState(0);
-  const width = 470;
+  const width = 860;
   const height = 300;
   const [hexColors, setHexColors] = useState<string[]>([]);
   let hslColors: { h: number; s: number; l: number }[] = [];
@@ -149,7 +149,6 @@ export const GradientSpace = ({
         width={width}
         height={height}
       ></svg>
-      <GradientBox colors={hexColors} />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 .people {
-  background-color: var(--ds-color-text-subtle);
+  background-color: var(--ds-color-base-default);
   color: white;
   height: 600px;
   width: 100%;
@@ -13,7 +13,7 @@
 
 .people:before {
   content: '';
-  background-color: var(--ds-color-border-default);
+  background-color: var(--ds-color-base-hover);
   transform: rotate(-14deg);
   position: absolute;
   bottom: calc(-10% + 33%);
@@ -24,7 +24,7 @@
 
 .people:after {
   content: '';
-  background-color: var(--ds-color-border-subtle);
+  background-color: var(--ds-color-base-active);
   transform: rotate(-14deg);
   position: absolute;
   bottom: -10%;

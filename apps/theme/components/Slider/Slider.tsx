@@ -1,35 +1,36 @@
 import { ArrowsCirclepathIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { useState } from 'react';
 import classes from './Slider.module.css';
 
 type SliderProps = {
   label: string;
   min: number;
   max: number;
+  value: number;
   initialValue: number;
   onChange?: (value: number) => void;
-  onReset?: (initialValue: number) => void;
+  onReset?: (value: number) => void;
 };
 
 export const Slider = ({
   label,
   min,
   max,
+  value,
   initialValue,
   onChange,
   onReset,
 }: SliderProps) => {
-  const [sliderValue, setSliderValue] = useState(initialValue);
-
-  const handleChange = (value: number) => {
-    setSliderValue(value);
+  const handleChange = (value: string | number) => {
     if (onChange) {
-      onChange(value);
+      const parsedValue = value === '-' ? '-' : Number(value);
+      if (!Number.isNaN(parsedValue) || value === '-') {
+        onChange(parsedValue as number);
+      }
     }
   };
+
   const handleReset = () => {
-    setSliderValue(initialValue);
     if (onReset) {
       onReset(initialValue);
     }
@@ -47,7 +48,7 @@ export const Slider = ({
             type='range'
             min={min}
             max={max}
-            value={sliderValue}
+            value={value}
             onChange={(e) => handleChange(Number(e.target.value))}
           />
           <div className={classes.rangeLabels}>
@@ -61,17 +62,17 @@ export const Slider = ({
           <input
             className={cl(
               classes.valueInput,
-              sliderValue !== initialValue ? classes.activeInput : '',
+              value !== initialValue ? classes.activeInput : '',
             )}
             data-size='sm'
             type='text'
-            value={sliderValue}
-            readOnly
+            value={value}
+            onChange={(e) => handleChange(Number(e.target.value))}
           />
           <button
             className={cl(
               classes.resetBtn,
-              sliderValue === initialValue ? classes.hidden : '',
+              value === initialValue ? classes.hidden : '',
             )}
             onClick={handleReset}
           >

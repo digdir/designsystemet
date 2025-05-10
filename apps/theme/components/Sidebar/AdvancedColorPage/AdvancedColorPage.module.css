@@ -7,6 +7,10 @@
 
 .heading {
   margin-top: -8px;
+  margin-bottom: 24px;
+}
+
+.subHeading {
   margin-bottom: 16px;
 }
 
@@ -41,9 +45,9 @@
 
 .btn {
   border: 1px solid var(--ds-color-neutral-border-default);
+  background-color: var(--ds-color-neutral-surface-default);
   padding: 18px 16px;
   text-align: left;
-  background-color: transparent;
   border-radius: 4px;
   font-size: 16px;
   display: flex;
@@ -51,6 +55,7 @@
   gap: 8px;
   cursor: pointer;
   margin-top: -8px;
+  transition: 0.1s all;
 }
 
 .btn:hover {

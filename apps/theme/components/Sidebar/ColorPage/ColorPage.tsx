@@ -1,12 +1,7 @@
 import { colorMetadata, generateColorSchemes } from '@digdir/designsystemet';
-import { Button, Heading } from '@digdir/designsystemet-react';
+import { Button, Checkbox, Heading } from '@digdir/designsystemet-react';
 import type { CssColor } from '@digdir/designsystemet/color';
-import {
-  ChevronLeftIcon,
-  CogIcon,
-  InformationSquareIcon,
-  PlusIcon,
-} from '@navikt/aksel-icons';
+import { ChevronLeftIcon, CogIcon, PlusIcon } from '@navikt/aksel-icons';
 import { useEffect, useState } from 'react';
 import { ColorService, useColor } from 'react-color-palette';
 import { type ColorTheme, useThemeStore } from '../../../store';
@@ -17,7 +12,11 @@ import classes from './ColorPage.module.css';
 
 export const ColorPage = () => {
   type Pages = 'add-color' | 'edit-color' | 'none' | 'advanced' | 'lightness';
-  type ColorType = 'main' | 'neutral' | 'support';
+  type ColorType = 'main' | 'neutral' | 'support' | 'status';
+  const showStatusColors = useThemeStore((state) => state.showStatusColors);
+  const setShowStatusColors = useThemeStore(
+    (state) => state.setShowStatusColors,
+  );
 
   const removeColor = useThemeStore((state) => state.removeColor);
   const addColor = useThemeStore((state) => state.addColor);
@@ -35,6 +34,10 @@ export const ColorPage = () => {
   const [currentTheme, setCurrentTheme] = useState(() =>
     getColorTheme(index, colorType),
   );
+  const activeColorScale = useThemeStore((state) => state.activeColorScale);
+  const setActiveColorScale = useThemeStore(
+    (state) => state.setActiveColorScale,
+  );
 
   const setupEditState = (
     colorTheme: ColorTheme,
@@ -44,6 +47,7 @@ export const ColorPage = () => {
     setActivePanel('edit-color');
     setColor(ColorService.convert('hex', colorTheme.colors.light[11].hex));
     setName(colorTheme.name);
+    setActiveColorScale(colorTheme.name);
     setIndex(index);
     setColorType(colorType);
     setInitialColor(colorTheme.colors.light[11].hex);
@@ -176,6 +180,25 @@ export const ColorPage = () => {
               ))}
             </div>
           </div>
+
+          {/* Status COLORS */}
+          {showStatusColors && (
+            <div className={classes.group}>
+              <div className={classes.groupHeader}>
+                <Heading data-size='2xs'>Status</Heading>
+              </div>
+              <div className={classes.colors}>
+                {colors.status.map((colorTheme, index) => (
+                  <ColorInput
+                    key={index}
+                    color={colorTheme.colors.light[11].hex}
+                    name={colorTheme.name}
+                    onClick={() => setupEditState(colorTheme, index, 'status')}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
         </>
       )}
 
@@ -255,6 +278,14 @@ export const ColorPage = () => {
         <>
           <div className={classes.separator}></div>
 
+          <Checkbox
+            className={classes.checkbox}
+            data-size='sm'
+            label={showStatusColors ? 'Skjul statufarger' : 'Vis statufarger'}
+            onChange={(e) => {
+              setShowStatusColors(e.target.checked);
+            }}
+          ></Checkbox>
           <Button
             className={classes.lightBtn}
             variant='tertiary'
@@ -262,18 +293,7 @@ export const ColorPage = () => {
             data-color='neutral'
             onClick={() => setActivePanel('lightness')}
           >
-            <InformationSquareIcon title='a11y-title' fontSize='1.5rem' />
-            Statusfarger
-          </Button>
-
-          <Button
-            className={classes.lightBtn}
-            variant='tertiary'
-            data-size='sm'
-            data-color='neutral'
-            onClick={() => setActivePanel('lightness')}
-          >
-            <CogIcon title='tannhjul' fontSize='1.5rem' />
+            <CogIcon title='tannhjul' fontSize='1.6rem' />
             Globale fargeinnstillinger
           </Button>
         </>

@@ -3,13 +3,25 @@
   font-weight: 500;
 }
 
+.description {
+  font-size: 16px;
+  color: var(--ds-color-neutral-text-subtle);
+  margin-top: -4px;
+  margin-bottom: 8px;
+}
+
 .labelContainer {
   display: flex;
+  flex-direction: column;
   gap: 8px;
   justify-content: space-between;
   margin-bottom: 8px;
+}
+
+.labelContainerOneLiner {
   width: 255px;
 }
+
 .resetBtn {
   height: 28px;
   width: 28px;

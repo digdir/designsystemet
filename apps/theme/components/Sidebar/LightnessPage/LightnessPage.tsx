@@ -1,7 +1,6 @@
-import { Button, Heading } from '@digdir/designsystemet-react';
+import { Button, Heading, ToggleGroup } from '@digdir/designsystemet-react';
+import type { ColorMetadata } from '@digdir/designsystemet/color';
 import { ChevronLeftIcon } from '@navikt/aksel-icons';
-import cl from 'clsx/lite';
-import { useState } from 'react';
 import { useThemeStore } from '../../../store';
 import { LightnessInput } from '../../LightnessInput/LightnessInput';
 import classes from './LightnessPage.module.css';
@@ -14,13 +13,35 @@ export const LightnessPage = ({ onBackClicked }: LightnessPageProps) => {
   const referenceColorMetadata = useThemeStore(
     (state) => state.referenceColorMetadata,
   );
-  const [mode, setMode] = useState<'light' | 'dark'>('light');
+  const colorScheme = useThemeStore((state) => state.colorScheme);
+  const setColorScheme = useThemeStore((state) => state.setColorScheme);
   const onColorThemeChange = useThemeStore((state) => state.onColorThemeChange);
   const setOnColorThemeChange = useThemeStore(
     (state) => state.setOnColorThemeChange,
   );
   const updateColorTheme = useThemeStore((state) => state.updateColorTheme);
   const colors = useThemeStore((state) => state.colors);
+
+  const handleLightnessChange = (value: number, color: ColorMetadata) => {
+    colors.main.map((colorTheme, i) => {
+      colorTheme.colorMetadata[color.name].lightness[colorScheme] = value;
+      updateColorTheme(colorTheme, i, 'main');
+    });
+    colors.neutral.map((colorTheme, i) => {
+      colorTheme.colorMetadata[color.name].lightness[colorScheme] = value;
+      updateColorTheme(colorTheme, i, 'neutral');
+    });
+    colors.support.map((colorTheme, i) => {
+      colorTheme.colorMetadata[color.name].lightness[colorScheme] = value;
+      updateColorTheme(colorTheme, i, 'support');
+    });
+    colors.status.map((colorTheme, i) => {
+      colorTheme.colorMetadata[color.name].lightness[colorScheme] = value;
+      updateColorTheme(colorTheme, i, 'status');
+    });
+
+    setOnColorThemeChange(onColorThemeChange + 1);
+  };
 
   return (
     <div className={classes.page}>
@@ -34,24 +55,23 @@ export const LightnessPage = ({ onBackClicked }: LightnessPageProps) => {
       >
         <ChevronLeftIcon aria-hidden fontSize='1.5rem' /> Gå tilbake
       </Button>
-      <Heading data-size='xs'>Velg lightness</Heading>
+      <Heading className={classes.heading} data-size='xs'>
+        Velg lightness
+      </Heading>
 
-      <div data-size='sm' className={classes.btnGroup}>
-        <Button
-          variant='tertiary'
-          onClick={() => setMode('light')}
-          className={cl(classes.btn, mode === 'light' ? classes.activeBtn : '')}
-        >
-          Light mode
-        </Button>
-        <Button
-          variant='tertiary'
-          onClick={() => setMode('dark')}
-          className={cl(classes.btn, mode === 'dark' ? classes.activeBtn : '')}
-        >
-          Dark mode
-        </Button>
-      </div>
+      <ToggleGroup
+        value={colorScheme}
+        name='toggle-group-nuts'
+        data-size='sm'
+        data-color='neutral'
+        className='subtle-toggle-group'
+        onChange={(value) => {
+          setColorScheme(value as 'light' | 'dark');
+        }}
+      >
+        <ToggleGroup.Item value='light'>Lys modus</ToggleGroup.Item>
+        <ToggleGroup.Item value='dark'>Mørk modus</ToggleGroup.Item>
+      </ToggleGroup>
 
       <div className={classes.luminance}>
         <div className={classes.inputs}>
@@ -63,20 +83,16 @@ export const LightnessPage = ({ onBackClicked }: LightnessPageProps) => {
                   key={refIndex}
                   label={color.displayName}
                   oneLiner
-                  value={color.lightness[mode]}
+                  value={color.lightness[colorScheme]}
                   initialValue={
-                    referenceColorMetadata[color.name].lightness[mode]
+                    referenceColorMetadata[color.name].lightness[colorScheme]
                   }
                   onChange={(value) => {
-                    colors.main.map((colorTheme, i) => {
-                      colorTheme.colorMetadata[color.name].lightness[mode] =
-                        value;
-                      updateColorTheme(colorTheme, i, 'main');
-                    });
-
-                    setOnColorThemeChange(onColorThemeChange + 1);
+                    handleLightnessChange(value, color);
                   }}
-                  onReset={(value) => {}}
+                  onReset={(value) => {
+                    handleLightnessChange(value, color);
+                  }}
                 />
               ),
             )}

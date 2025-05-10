@@ -37,7 +37,7 @@ export const FrontPage = () => {
 
       <Paragraph data-size='sm' className={classes.description}>
         Her feel he rattling display either a pointing he much field up built
-        knowing the remain felt success her objects latter eyes in the networks.
+        knowing the remain felt.
       </Paragraph>
 
       <div className={classes.cards}>

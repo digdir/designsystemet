@@ -6,6 +6,7 @@ import classes from './LightnessInput.module.css';
 
 type LightnessInputProps = {
   label: string;
+  description?: string;
   initialValue: number;
   oneLiner?: boolean;
   onChange?: (value: number) => void;
@@ -15,6 +16,7 @@ type LightnessInputProps = {
 
 export const LightnessInput = ({
   label,
+  description,
   onChange,
   onReset,
   initialValue,
@@ -30,7 +32,7 @@ export const LightnessInput = ({
   }, [value, initialValue]);
 
   const handleChange = (v: number) => {
-    if (v !== currentValue) {
+    if (v !== currentValue && v >= 0 && v <= 100) {
       setCurrentValue(v);
       isActiveRef.current = v !== initialValue;
       onChange?.(v);
@@ -47,8 +49,23 @@ export const LightnessInput = ({
 
   return (
     <div className={cl(classes.container, oneLiner && classes.oneLiner)}>
-      <div className={classes.labelContainer}>
+      <div
+        className={cl(
+          classes.labelContainer,
+          oneLiner && classes.labelContainerOneLiner,
+        )}
+      >
         <div className={classes.label}>{label}</div>
+        {description && (
+          <div
+            className={cl(
+              classes.description,
+              oneLiner && classes.oneLinerDescription,
+            )}
+          >
+            {description}
+          </div>
+        )}
       </div>
       <div data-size='sm' className={classes.inputRow}>
         <div className={classes.inputContainer}>
@@ -77,9 +94,10 @@ export const LightnessInput = ({
           data-color='neutral'
           className={classes.minusBtn}
           onClick={() => {
-            if (currentValue > 0) {
-              handleChange(currentValue - 1);
-            }
+            handleChange(currentValue - 1);
+          }}
+          onKeyDown={() => {
+            handleChange(currentValue - 1);
           }}
         >
           <MinusIcon title='a11y-title' fontSize='1.5rem' />
@@ -89,9 +107,10 @@ export const LightnessInput = ({
           data-color='neutral'
           className={classes.plusBtn}
           onClick={() => {
-            if (currentValue < 100) {
-              handleChange(currentValue + 1);
-            }
+            handleChange(currentValue + 1);
+          }}
+          onMouseDown={() => {
+            handleChange(currentValue + 1);
           }}
         >
           <PlusIcon title='a11y-title' fontSize='1.5rem' />

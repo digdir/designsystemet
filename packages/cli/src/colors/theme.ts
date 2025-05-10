@@ -37,6 +37,10 @@ export const generateColorScale = (
     const chromaModifier = saturation[colorScheme];
     const interpolColor = chroma(L, C * chromaModifier, H, 'oklch').hex();
 
+    if (colorData.name === 'surface-tinted') {
+      console.log(interpolColor + ' ' + L, C, H, chromaModifier);
+    }
+
     return {
       ...colorData,
       hex: chroma(interpolColor)
@@ -90,21 +94,30 @@ const generateBaseColors = (color: CssColor, colorScheme: ColorScheme, colorMeta
 
   const modifier = colorLightness <= 30 || (colorLightness >= 49 && colorLightness <= 65) ? -8 : 8;
   const calculateLightness = (base: number, mod: number) => base - mod;
+  const [L, C, H] = chroma(color).oklch();
+  const baseDefaultInterpolColor = chroma(
+    L,
+    C * colorMetaData['base-default'].saturation[colorScheme],
+    H,
+    'oklch',
+  ).hex();
+  const baseHoverInterpolColor = chroma(L, C * colorMetaData['base-hover'].saturation[colorScheme], H, 'oklch').hex();
+  const baseActiveInterpolColor = chroma(L, C * colorMetaData['base-active'].saturation[colorScheme], H, 'oklch').hex();
 
   return {
     default:
       colorScheme === 'light'
         ? color
-        : (chroma(color)
+        : (chroma(baseDefaultInterpolColor)
             .luminance(getLuminanceFromLightness(colorLightness), colorMetaData['base-default'].interpolation)
             .hex() as CssColor),
-    hover: chroma(color)
+    hover: chroma(baseHoverInterpolColor)
       .luminance(
         getLuminanceFromLightness(calculateLightness(colorLightness, modifier)),
         colorMetaData['base-hover'].interpolation,
       )
       .hex() as CssColor,
-    active: chroma(color)
+    active: chroma(baseActiveInterpolColor)
       .luminance(
         getLuminanceFromLightness(calculateLightness(colorLightness, modifier * 2)),
         colorMetaData['base-active'].interpolation,

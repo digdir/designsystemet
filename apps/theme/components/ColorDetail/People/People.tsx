@@ -5,7 +5,7 @@ export const People = () => {
   return (
     <div className={classes.people}>
       <Paragraph data-size='sm' className={classes.text}>
-        Example showing the border colors in sections
+        Eksempel som viser de tre base fargene
       </Paragraph>
       <div className={classes.panel}></div>
       <img className={classes.img} src='img/couple-transparant.png' alt='' />
