@@ -1,0 +1,42 @@
+<div
+  style="
+    display: grid;
+    place-items: center;
+    margin-bottom: var(--ds-size-4);
+  "
+>
+  <button
+    type="button"
+    class="ds-button"
+    onClick="
+    const element = document.getElementById('error-summary')
+    element.style.display = 'block'
+    element.focus()
+"
+  >
+    Send inn skjema
+  </button>
+</div>
+<div
+  id="error-summary"
+  tabindex="-1"
+  aria-labelledby="error-summary-heading"
+  class="ds-error-summary"
+  style="display: none"
+>
+  <h2 class="ds-heading" id="error-summary-heading">
+    For å gå videre må du rette opp følgende feil:
+  </h2>
+  <ul class="ds-list">
+    <li>
+      <a class="ds-link" data-color="neutral" href="#fornavn">
+        Fornavn må være minst 2 tegn
+      </a>
+    </li>
+    <li>
+      <a class="ds-link" data-color="neutral" href="#telefon">
+        Telefonnummer kan kun inneholde siffer
+      </a>
+    </li>
+  </ul>
+</div>

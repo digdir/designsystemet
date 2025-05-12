@@ -22,10 +22,13 @@ export function createHtmlStory(
     // Since multiple stories are rendered in the same document,
     // we ensure the ids are unique across stories
     let htmlWithUniqueIds = html;
-    const ids = html.matchAll(/id=('|")([^'"]+)('|")/g);
+    const ids = html.matchAll(/id=('|")([^'"]+)\1/g);
     for (const matchArray of ids) {
       const id = matchArray[2];
-      htmlWithUniqueIds = htmlWithUniqueIds.replaceAll(id, `${ctx.id}-${id}`);
+      htmlWithUniqueIds = htmlWithUniqueIds.replaceAll(
+        new RegExp(`('|")${id}\\1`, 'g'),
+        `$1${ctx.id}-${id}$1`,
+      );
     }
     return <RenderHtmlToNode html={htmlWithUniqueIds} />;
   };
