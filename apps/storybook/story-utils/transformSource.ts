@@ -22,17 +22,28 @@ export const formatReactSource = (src: string, ctx: StoryContext) => {
   return transformSource(src, ctx);
 };
 
+const getStoryElement = (storyId: string) =>
+  document.getElementById(`story--${storyId}-inner`) ??
+  document.getElementById(`story--${storyId}--primary-inner`);
+
 export const transformSource = (src: string, ctx: StoryContext) => {
+  const docsContext = useContext(DocsContext);
+  function cacheHtmlAndReRender(storyElement: HTMLElement) {
+    htmlCache.set(ctx.id, extractRenderedHtml(storyElement));
+    // We have to force Storybook to re-render the story, so that the rendered html can be used in the code preview
+    docsContext.channel.emit('forceReRender');
+  }
+
   if (ctx.globals.codePreview === 'html') {
-    const docsContext = useContext(DocsContext);
-    const storyElement =
-      document.getElementById(`story--${ctx.id}-inner`) ??
-      document.getElementById(`story--${ctx.id}--primary-inner`);
+    const storyElement = getStoryElement(ctx.id);
     if (storyElement && !htmlCache.get(ctx.id)) {
-      htmlCache.set(ctx.id, extractRenderedHtml(storyElement));
-      // Once the element has been rendered (storyElement !== null),
-      // force Storybook to re-render the story, so that the rendered html can be used in the code preview
-      docsContext.channel.emit('forceReRender');
+      cacheHtmlAndReRender(storyElement);
+
+      // Update HTML code when args are updated
+      docsContext.channel.addListener('storyArgsUpdated', () => {
+        // biome-ignore lint/style/noNonNullAssertion: story element must exist at this point
+        cacheHtmlAndReRender(getStoryElement(ctx.id)!);
+      });
     }
 
     const unformatted = htmlCache.get(ctx.id) ?? '...rendering html...';
