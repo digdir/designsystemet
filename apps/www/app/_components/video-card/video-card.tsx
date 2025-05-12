@@ -1,5 +1,6 @@
 import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { VideoplayerIcon } from '@navikt/aksel-icons';
+import { useTranslation } from 'react-i18next';
 import { RRLink } from '../link';
 import classes from './video-card.module.css';
 
@@ -21,6 +22,8 @@ export const VideoCard = ({
   videoUrl = 'vimeo.com',
   headingLevel = 2,
 }: VideoCardProps) => {
+  const { t } = useTranslation();
+
   return (
     <Card className={classes['video-card']}>
       <Card.Block
@@ -34,7 +37,7 @@ export const VideoCard = ({
         <Paragraph>{description}</Paragraph>
         <RRLink to={videoUrl}>
           <VideoplayerIcon />
-          Watch video
+          {t('video.watch-video')}
         </RRLink>
       </Card.Block>
     </Card>

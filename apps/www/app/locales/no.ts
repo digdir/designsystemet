@@ -169,4 +169,7 @@ export default {
       loading: 'Kunne ikke laste innhold',
     },
   },
+  video: {
+    'watch-video': 'Se video',
+  },
 };
