@@ -27,7 +27,7 @@ export const VideoCard = ({
   return (
     <Card className={classes['video-card']}>
       <Card.Block
-        className={classes['image']}
+        className={classes.image}
         style={{
           backgroundImage: `url(${imageUrl})`,
         }}
