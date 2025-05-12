@@ -123,7 +123,7 @@ export function Layout() {
           site.
         </noscript>
         <Outlet />
-        {/* This sets cookies, but we deem them necessary to make navigation work as expected */}
+        {/* This uses sessionStorage, but we deem them necessary to make navigation work as expected */}
         <ScrollRestoration />
         <Scripts />
       </body>
