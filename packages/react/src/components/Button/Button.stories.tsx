@@ -46,114 +46,54 @@ export const Preview: Story = {
   },
 };
 
-export const Primary: StoryFn<typeof Button> = () => (
+export const Variants: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='primary' data-color='accent'>
-      Lagre
+    <Button variant='primary'>
+      Primary
+    </Button>
+    <Button variant='secondary'>
+      Secondary
+    </Button>
+    <Button variant='tertiary'>
+      Teritiary
     </Button>
   </>
 );
 
-export const Secondary: StoryFn<typeof Button> = () => (
+export const Colors: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='secondary' data-color='accent'>
-      Avbryt
-    </Button>
+    <Button data-color='accent'>accent</Button>
+    <Button data-color='neutral'>neutral</Button>
+    <Button data-color='brand1'>brand1</Button>
+    <Button data-color='brand2'>brand2</Button>
+    <Button data-color='brand3'>brand3</Button>
+    <Button data-color='danger'>danger</Button>
   </>
-);
+)
 
-export const Tertiary: StoryFn<typeof Button> = () => (
+export const ColorsHover = Colors.bind({});
+ColorsHover.parameters = {
+  pseudo: { hover: true },
+  chromatic: { modes: { mobile: { disable: true } } },
+};
+
+export const ColorsPressed = Colors.bind({});
+ColorsPressed.parameters = {
+  pseudo: { active: true },
+  chromatic: { modes: { mobile: { disable: true } } },
+};
+
+export const Icons: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='tertiary' data-color='accent'>
+    <Button icon aria-title="Kun ikon">
+      <PencilWritingIcon aria-hidden />
+    </Button>
+    <Button>
       <PencilWritingIcon aria-hidden />
       Rediger
     </Button>
   </>
-);
-
-export const Accent: StoryFn<typeof Button> = () => (
-  <>
-    <Button variant='primary' data-color='accent'>
-      Gå videre
-    </Button>
-    <Button variant='secondary' data-color='accent'>
-      Fortsett senere
-    </Button>
-    <Button variant='tertiary' data-color='accent'>
-      Avbryt
-    </Button>
-  </>
-);
-
-export const AccentHover = Accent.bind({});
-AccentHover.parameters = {
-  pseudo: { hover: true },
-  chromatic: { modes: { mobile: { disable: true } } },
-};
-
-export const AccentPressed = Accent.bind({});
-AccentPressed.parameters = {
-  pseudo: { active: true },
-  chromatic: { modes: { mobile: { disable: true } } },
-};
-
-export const Neutral: StoryFn<typeof Button> = () => (
-  <>
-    <Button variant='primary' data-color='neutral'>
-      <PrinterSmallIcon aria-hidden />
-      Skriv ut
-    </Button>
-    <Button variant='secondary' data-color='neutral'>
-      <PencilWritingIcon aria-hidden />
-      Rediger
-    </Button>
-    <Button variant='tertiary' data-color='neutral'>
-      <ArrowForwardIcon aria-hidden />
-      Videresend
-    </Button>
-  </>
-);
-
-export const NeutralHover = Neutral.bind({});
-NeutralHover.parameters = {
-  pseudo: { hover: true },
-  chromatic: { modes: { mobile: { disable: true } } },
-};
-
-export const NeutralPressed = Neutral.bind({});
-NeutralPressed.parameters = {
-  pseudo: { active: true },
-  chromatic: { modes: { mobile: { disable: true } } },
-};
-
-export const Danger: StoryFn<typeof Button> = () => (
-  <>
-    <Button variant='primary' data-color='danger'>
-      <TrashIcon aria-hidden />
-      Slett
-    </Button>
-    <Button variant='secondary' data-color='danger'>
-      <TrashIcon aria-hidden />
-      Slett
-    </Button>
-    <Button variant='tertiary' data-color='danger'>
-      <TrashIcon aria-hidden />
-      Slett
-    </Button>
-  </>
-);
-
-export const DangerHover = Danger.bind({});
-DangerHover.parameters = {
-  pseudo: { hover: true },
-  chromatic: { modes: { mobile: { disable: true } } },
-};
-
-export const DangerPressed = Danger.bind({});
-DangerPressed.parameters = {
-  pseudo: { active: true },
-  chromatic: { modes: { mobile: { disable: true } } },
-};
+)
 
 export const CombinedColors: StoryFn<typeof Button> = () => (
   <>
@@ -164,7 +104,7 @@ export const CombinedColors: StoryFn<typeof Button> = () => (
       Lagre kladd
     </Button>
     <Button variant='tertiary' data-color='danger'>
-      Forkast
+      Slett
     </Button>
   </>
 );
@@ -172,23 +112,9 @@ export const CombinedColors: StoryFn<typeof Button> = () => (
 export const AsLink: StoryFn<typeof Button> = () => (
   <Button asChild>
     <a target='_blank' rel='noreferrer' href='https://www.designsystemet.no'>
-      Gå til Designsystemet
-      <ExternalLinkIcon title='Ekstern lenke' />
+      Gå til designsystemet.no
     </a>
   </Button>
-);
-
-export const TextAndIcon: StoryFn<typeof Button> = () => (
-  <>
-    <Button variant='primary' data-color='neutral'>
-      Start utfylling
-      <ArrowRightIcon aria-hidden />
-    </Button>
-    <Button variant='secondary' data-color='neutral'>
-      <ArrowUndoIcon aria-hidden />
-      Angre
-    </Button>
-  </>
 );
 
 export const Loading: StoryFn<typeof Button> = () => (
@@ -201,87 +127,6 @@ export const Loading: StoryFn<typeof Button> = () => (
     </Button>
     <Button variant='tertiary' loading>
       Laster...
-    </Button>
-  </>
-);
-
-export const Icons: StoryFn<typeof Button> = () => (
-  <>
-    <Button variant='primary' data-size='sm' icon>
-      <CogIcon title='Innstillinger' />
-    </Button>
-    <Button variant='primary' data-size='sm'>
-      <CogIcon aria-hidden />
-      Small
-    </Button>
-    <Button variant='primary' data-size='md' icon>
-      <CogIcon title='Innstillinger' />
-    </Button>
-    <Button variant='primary' data-size='md'>
-      <CogIcon aria-hidden />
-      Medium
-    </Button>
-    <Button variant='primary' data-size='lg' icon>
-      <CogIcon title='Innstillinger' />
-    </Button>
-    <Button variant='primary' data-size='lg'>
-      <CogIcon aria-hidden />
-      Large
-    </Button>
-  </>
-);
-
-export const IconOnly: StoryFn<typeof Button> = () => (
-  <>
-    <Tooltip content='Legg til ny'>
-      <Button
-        icon
-        data-color='neutral'
-        variant='tertiary'
-        aria-label='Legg til ny'
-      >
-        <PlusCircleIcon aria-hidden />
-      </Button>
-    </Tooltip>
-    <Tooltip content='Varslinger'>
-      <Button
-        icon
-        data-color='neutral'
-        variant='tertiary'
-        aria-label='Varslinger'
-      >
-        <BellIcon aria-hidden />
-      </Button>
-    </Tooltip>
-    <Tooltip content='Instillinger'>
-      <Button
-        icon
-        data-color='neutral'
-        variant='tertiary'
-        aria-label='Innstillinger'
-      >
-        <CogIcon aria-hidden />
-      </Button>
-    </Tooltip>
-  </>
-);
-IconOnly.parameters = {
-  customStyles: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, auto)',
-  },
-};
-
-export const IconsOnlyPrimary: StoryFn<typeof Button> = () => (
-  <>
-    <Button icon variant='primary' data-size='sm'>
-      <CogIcon title='Innstillinger' />
-    </Button>
-    <Button icon variant='primary' data-size='md'>
-      <CogIcon title='Innstillinger' />
-    </Button>
-    <Button icon variant='primary' data-size='lg'>
-      <CogIcon title='Innstillinger' />
     </Button>
   </>
 );
