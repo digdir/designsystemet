@@ -14,8 +14,10 @@ const formatCache = new Map<string, string>();
  * Not enabled by default to avoid unnecessary performance hit.
  */
 export const formatReactSource = (src: string, ctx: StoryContext) => {
-  // Ignore value of ctx.globals.codePreview, always output as React code
-  return asyncFormatWorkaround('typescript', src, ctx);
+  if (ctx.globals.codePreview === 'react') {
+    return asyncFormatWorkaround('typescript', src, ctx);
+  }
+  return transformSource(src, ctx);
 };
 
 export const transformSource = (src: string, ctx: StoryContext) => {
