@@ -44,6 +44,7 @@ export const ErrorSummary = forwardRef<HTMLDivElement, ErrorSummaryProps>(
     return (
       <ErrorSummaryContext.Provider value={{ headingId, setHeadingId }}>
         <Component
+          tabIndex={-1}
           aria-labelledby={headingId}
           className={cl('ds-error-summary', className)}
           ref={ref}

@@ -16,6 +16,10 @@
     margin-bottom: var(--ds-size-2);
   }
 
+  &:focus-visible {
+    outline: initial;
+  }
+
   & a {
     color: var(--dsc-errorsummary-link-color);
   }
