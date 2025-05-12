@@ -1,18 +1,6 @@
-import {
-  ArrowForwardIcon,
-  ArrowRightIcon,
-  ArrowUndoIcon,
-  BellIcon,
-  CogIcon,
-  ExternalLinkIcon,
-  PencilWritingIcon,
-  PlusCircleIcon,
-  PrinterSmallIcon,
-  TrashIcon,
-} from '@navikt/aksel-icons';
+import { PencilWritingIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
-import { Tooltip } from '../';
 import { Button } from './';
 
 type Story = StoryObj<typeof Button>;
@@ -48,15 +36,9 @@ export const Preview: Story = {
 
 export const Variants: StoryFn<typeof Button> = () => (
   <>
-    <Button variant='primary'>
-      Primary
-    </Button>
-    <Button variant='secondary'>
-      Secondary
-    </Button>
-    <Button variant='tertiary'>
-      Teritiary
-    </Button>
+    <Button variant='primary'>Primary</Button>
+    <Button variant='secondary'>Secondary</Button>
+    <Button variant='tertiary'>Teritiary</Button>
   </>
 );
 
@@ -69,7 +51,7 @@ export const Colors: StoryFn<typeof Button> = () => (
     <Button data-color='brand3'>brand3</Button>
     <Button data-color='danger'>danger</Button>
   </>
-)
+);
 
 export const ColorsHover = Colors.bind({});
 ColorsHover.parameters = {
@@ -85,7 +67,7 @@ ColorsPressed.parameters = {
 
 export const Icons: StoryFn<typeof Button> = () => (
   <>
-    <Button icon aria-title="Kun ikon">
+    <Button icon title='Kun ikon'>
       <PencilWritingIcon aria-hidden />
     </Button>
     <Button>
@@ -93,7 +75,7 @@ export const Icons: StoryFn<typeof Button> = () => (
       Rediger
     </Button>
   </>
-)
+);
 
 export const CombinedColors: StoryFn<typeof Button> = () => (
   <>
