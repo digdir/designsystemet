@@ -7,6 +7,7 @@ import { Textfield } from '../Textfield';
 
 import { createHtmlStory } from '@story-utils/createHtmlStory';
 import { formatReactSource } from '@story-utils/transformSource';
+import { withScrollHashBehavior } from '@story-utils/withScrollHashBehavior';
 import { ErrorSummary } from './';
 import showHideHtml from './html-examples/show-hide.html?raw';
 
@@ -15,7 +16,8 @@ type Story = StoryFn<typeof ErrorSummary>;
 export default {
   title: 'Komponenter/ErrorSummary',
   component: ErrorSummary,
-} as Meta;
+  decorators: [withScrollHashBehavior],
+} satisfies Meta;
 
 export const Preview: Story = (args) => (
   <ErrorSummary {...args}>

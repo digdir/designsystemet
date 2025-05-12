@@ -267,7 +267,7 @@ const preview: Preview = {
       disable: true,
     },
     html: {
-      root: '.storybook-decorator', // default: #root
+      root: '[data-storybook-decorator]', // default: #root
     },
   },
   decorators: [customStylesDecorator],
