@@ -10,14 +10,12 @@
   box-sizing: border-box;
   padding: var(--dsc-errorsummary-padding);
 
+  @composes ds-focus from './base.css';
+
   & :is(h1, h2, h3, h4, h5, h6) {
     color: var(--dsc-errorsummary-heading-color);
     font-size: var(--ds-font-size-plus-1);
     margin-bottom: var(--ds-size-2);
-  }
-
-  &:focus-visible {
-    outline: initial;
   }
 
   & a {
