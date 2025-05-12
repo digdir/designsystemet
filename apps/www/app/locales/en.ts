@@ -90,6 +90,9 @@ export default {
       Accessibility: 'Accessibility',
       Contribution: 'Contribution',
     },
+    show: 'Show',
+    hide: 'Hide',
+    sidebar: 'sidebar',
   },
   navigation: {
     fundamentals: 'Fundamentals',

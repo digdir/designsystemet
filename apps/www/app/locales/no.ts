@@ -88,6 +88,9 @@ export default {
       Accessibility: 'Tilgjengelighet',
       Contribution: 'Bidrag',
     },
+    show: 'Vis',
+    hide: 'Skjul',
+    sidebar: 'sidemeny',
   },
   navigation: {
     fundamentals: 'Grunnleggende',

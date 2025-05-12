@@ -31,7 +31,8 @@ export const Sidebar = ({ cats, title, ...props }: SidebarProps) => {
         onClick={() => setShowMenu(!showMenu)}
         aria-expanded={showMenu}
       >
-        {showMenu ? 'Skjul' : 'Vis'} sidemeny
+        {showMenu ? t('sidebar.hide') : t('sidebar.show')}{' '}
+        {t(`sidebar.sidebar`)}
       </Button>
 
       <div className={cl(classes.menu, showMenu && classes.activeMenu)}>
