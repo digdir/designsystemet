@@ -35,17 +35,7 @@ export type ErrorSummaryProps = {
  * </ErrorSummary>
  */
 export const ErrorSummary = forwardRef<HTMLDivElement, ErrorSummaryProps>(
-  function ErrorSummary(
-    {
-      asChild,
-      role = 'alert',
-      'aria-live': ariaLive = 'polite',
-      'aria-relevant': ariaRelevant = 'all',
-      className,
-      ...rest
-    },
-    ref,
-  ) {
+  function ErrorSummary({ asChild, className, ...rest }, ref) {
     const randomId = useId();
     const [headingId, setHeadingId] = useState<string>(randomId);
 
@@ -54,12 +44,10 @@ export const ErrorSummary = forwardRef<HTMLDivElement, ErrorSummaryProps>(
     return (
       <ErrorSummaryContext.Provider value={{ headingId, setHeadingId }}>
         <Component
+          tabIndex={-1}
           aria-labelledby={headingId}
-          aria-live={ariaLive}
-          aria-relevant={ariaRelevant}
           className={cl('ds-error-summary', className)}
           ref={ref}
-          role={role}
           {...rest}
         />
       </ErrorSummaryContext.Provider>
