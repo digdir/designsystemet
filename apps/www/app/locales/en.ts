@@ -90,6 +90,9 @@ export default {
       Accessibility: 'Accessibility',
       Contribution: 'Contribution',
     },
+    show: 'Show',
+    hide: 'Hide',
+    sidebar: 'sidebar',
   },
   navigation: {
     fundamentals: 'Fundamentals',
@@ -170,5 +173,8 @@ export default {
     error: {
       loading: 'Could not load content',
     },
+  },
+  video: {
+    'watch-video': 'Watch video',
   },
 } satisfies typeof no;

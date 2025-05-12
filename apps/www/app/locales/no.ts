@@ -88,6 +88,9 @@ export default {
       Accessibility: 'Tilgjengelighet',
       Contribution: 'Bidrag',
     },
+    show: 'Vis',
+    hide: 'Skjul',
+    sidebar: 'sidemeny',
   },
   navigation: {
     fundamentals: 'Grunnleggende',
@@ -168,5 +171,8 @@ export default {
     error: {
       loading: 'Kunne ikke laste innhold',
     },
+  },
+  video: {
+    'watch-video': 'Se video',
   },
 };

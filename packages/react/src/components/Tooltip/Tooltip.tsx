@@ -180,17 +180,16 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         >
           {children}
         </ChildContainer>
-        <div
+        <span
           ref={mergedRefs}
           role='tooltip'
           className={cl('ds-tooltip', className)}
           id={id ?? randomTooltipId}
-          // @ts-ignore @types/react-dom does not understand popover yet
           popover='manual'
           {...rest}
         >
           {content}
-        </div>
+        </span>
       </>
     );
   },
