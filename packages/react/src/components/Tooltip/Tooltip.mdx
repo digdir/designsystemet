@@ -8,13 +8,14 @@ import * as TooltipStories from './Tooltip.stories.tsx';
 # Tooltip
 `Tooltip` viser kort informasjon når brukeren holder musepekeren over (`hover`) eller fokuserer på et element. Den brukes til sekundær informasjon, for eksempel til å forklare hva et symbol betyr.
 
-
 <Primary />
 <Controls />
 
 ## Slik bruker du `Tooltip`
 
 Du kan enten sende inn en `string` eller et element som `children`. Dersom du sender inn en `string`, vil denne legges i en `<span>`.
+
+`Tooltip` rendrer en `span`, så du kan bruke den i fks `p`, men ikkje inni `svg`.
 
 ```tsx
 import { Tooltip } from '@digdir/designsystemet-react';

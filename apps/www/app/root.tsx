@@ -3,6 +3,7 @@ import {
   Meta,
   Outlet,
   Scripts,
+  ScrollRestoration,
   data,
   isRouteErrorResponse,
   redirect,
@@ -122,8 +123,8 @@ export function Layout() {
           site.
         </noscript>
         <Outlet />
-        {/* We need a consent modal if we want this */}
-        {/* <ScrollRestoration /> */}
+        {/* This uses sessionStorage, but we deem them necessary to make navigation work as expected */}
+        <ScrollRestoration />
         <Scripts />
       </body>
     </html>
