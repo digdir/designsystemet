@@ -22,9 +22,11 @@ import { Contributors } from '~/_components/contributors/contributors';
 import { Image } from '~/_components/image/image';
 import { ResponsiveIframe } from '~/_components/responsive-iframe/responsive-iframe';
 import { TokenList } from '~/_components/tokens-comp/token-list/token-list';
+import { VideoCard } from '../video-card/video-card';
 import classes from './mdx-components.module.css';
 
 const defaultComponents = {
+  VideoCard,
   Details,
   DetailsContent,
   DetailsSummary,
