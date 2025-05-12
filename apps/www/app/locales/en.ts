@@ -171,4 +171,7 @@ export default {
       loading: 'Could not load content',
     },
   },
+  video: {
+    'watch-video': 'Watch video',
+  },
 } satisfies typeof no;
