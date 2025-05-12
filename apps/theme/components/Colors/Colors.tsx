@@ -79,7 +79,8 @@ export const Colors = () => {
     <div className={classes.page}>
       <Heading className={classes.title}>Fargeskalaer</Heading>
       <Paragraph className={classes.desc} data-size='sm'>
-        Her kan du se en oversikt over fargeskalaene dine.
+        Her kan du se fargeskalaene dine. Merk at du kan ikke endre navn på
+        status fargene eller neutral fargen.
       </Paragraph>
       <div className={classes.rows} data-color-scheme={colorScheme}>
         {colors.main.map((color, index) => (

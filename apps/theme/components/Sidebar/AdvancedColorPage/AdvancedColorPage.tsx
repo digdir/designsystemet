@@ -11,7 +11,7 @@ type AdvancedColorPageProps = {
   name: string;
   color: string;
   index: number;
-  colorType: 'main' | 'neutral' | 'support';
+  colorType: 'main' | 'neutral' | 'support' | 'status';
 };
 
 export const AdvancedColorPage = ({
@@ -28,6 +28,7 @@ export const AdvancedColorPage = ({
   const [currentTheme, setCurrentTheme] = useState(() =>
     getColorTheme(index, colorType),
   );
+  const updateColorTheme = useThemeStore((state) => state.updateColorTheme);
 
   useEffect(() => {
     setCurrentTheme(getColorTheme(index, colorType));
@@ -103,6 +104,18 @@ export const AdvancedColorPage = ({
                 description='Velg hvor mye lightness skal øke eller minske for hvert steg for Base Hover- og Active fargene.'
                 value={4}
                 initialValue={4}
+                onChange={(value) => {
+                  if (
+                    currentTheme?.colorMetadata[
+                      color as keyof typeof currentTheme.colorMetadata
+                    ]
+                  ) {
+                    currentTheme.colorMetadata[
+                      color as keyof typeof currentTheme.colorMetadata
+                    ].lightness[colorScheme] = value;
+                    updateColorTheme(currentTheme, index, colorType);
+                  }
+                }}
               />
             </div>
           )}

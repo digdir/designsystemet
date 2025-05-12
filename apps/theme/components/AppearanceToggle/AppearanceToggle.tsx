@@ -1,10 +1,7 @@
-import { Button } from '@digdir/designsystemet-react';
+import { ToggleGroup } from '@digdir/designsystemet-react';
 import type { ColorScheme } from '@digdir/designsystemet/color';
-import { MoonIcon, SunIcon } from '@navikt/aksel-icons';
-import cl from 'clsx/lite';
 import { useEffect, useState } from 'react';
 import { useThemeStore } from '../../store';
-import classes from './AppearanceToggle.module.css';
 
 type AppearanceToggleProps = {
   showLabel?: boolean;
@@ -31,35 +28,18 @@ export const AppearanceToggle = ({
   }, [colorScheme]);
 
   return (
-    <div className={classes.toggle} role='radiogroup'>
-      {colorSchemes.map((colorScheme) => (
-        <Button
-          data-size='sm'
-          className={cl(classes.item)}
-          key={colorScheme.value}
-          onClick={() => {
-            setActive(colorScheme.value);
-            setColorScheme(colorScheme.value);
-          }}
-          variant={colorScheme.value === active ? 'primary' : 'tertiary'}
-          data-color='neutral'
-          aria-label={`Sett til ${colorScheme.name} visning`}
-          // biome-ignore lint/a11y/useSemanticElements: <explanation>
-          role='radio'
-          aria-checked={colorScheme.value === active}
-          aria-current={colorScheme.value === active}
-        >
-          {colorScheme.value === 'light' && (
-            <SunIcon title='sol' fontSize='2rem' />
-          )}
-          {colorScheme.value === 'dark' && (
-            <MoonIcon title='måne' fontSize='2rem' />
-          )}
-          {colorScheme.name}
-
-          {showLabel && <>{colorScheme.name}</>}
-        </Button>
-      ))}
-    </div>
+    <ToggleGroup
+      value={colorScheme}
+      name='toggle-group-nuts'
+      data-size='sm'
+      data-color='neutral'
+      className='subtle-toggle-group'
+      onChange={(value) => {
+        setColorScheme(value as 'light' | 'dark');
+      }}
+    >
+      <ToggleGroup.Item value='light'>Lys modus</ToggleGroup.Item>
+      <ToggleGroup.Item value='dark'>Mørk modus</ToggleGroup.Item>
+    </ToggleGroup>
   );
 };

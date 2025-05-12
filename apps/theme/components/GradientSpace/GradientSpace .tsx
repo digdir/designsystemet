@@ -1,3 +1,4 @@
+import { Heading } from '@digdir/designsystemet-react';
 import type { ColorNames, ThemeInfo } from '@digdir/designsystemet/color';
 import chroma from 'chroma-js';
 import * as d3 from 'd3';
@@ -20,21 +21,10 @@ export const GradientSpace = ({
   const height = 300;
   const [hexColors, setHexColors] = useState<string[]>([]);
   let hslColors: { h: number; s: number; l: number }[] = [];
-
-  const GradientBox = ({ colors }: { colors: string[] }) => {
-    // Generate a CSS gradient string from the array of hex colors
-    const gradient = `linear-gradient(to right, ${colors.join(', ')})`;
-
-    return (
-      <div
-        className={classes.gradientBox}
-        style={{
-          width: width,
-          background: gradient,
-        }}
-      />
-    );
-  };
+  const backgroundColor = '#00a6ff';
+  const surfaceColor = '#0ad100';
+  const borderColor = 'orange';
+  const textColor = 'red';
 
   const names: ColorNames[] = [
     'background-default',
@@ -109,16 +99,16 @@ export const GradientSpace = ({
 
     const getStrokeColor = (index: number) => {
       if (index === 0 || index === 1) {
-        return '#00a6ff';
+        return backgroundColor;
       }
       if (index === 2 || index === 3 || index === 4 || index === 5) {
-        return '#0ad100';
+        return surfaceColor;
       }
       if (index === 6 || index === 7 || index === 8) {
-        return 'orange';
+        return borderColor;
       }
       if (index === 9 || index === 10) {
-        return 'red';
+        return textColor;
       }
 
       return '#242424';
@@ -139,16 +129,51 @@ export const GradientSpace = ({
   }, [colors]);
 
   return (
-    <div className={classes.gradientSpace}>
-      <svg
-        style={{
-          background: `linear-gradient(to right, hsl(0, 0%, 100%), hsl(${hue}, 100%, 50%)), linear-gradient(to bottom, hsla(200, 100%, 50%, 0), hsl(200, 100%, 0%))`,
-        }}
-        className={classes.hsl}
-        ref={svgRef}
-        width={width}
-        height={height}
-      ></svg>
+    <div>
+      <Heading data-size='xs' className={classes.heading}>
+        Gradient Space
+      </Heading>
+      <div className={classes.gradientSpace}>
+        <svg
+          style={{
+            background: `linear-gradient(to right, hsl(0, 0%, 100%), hsl(${hue}, 100%, 50%)), linear-gradient(to bottom, hsla(200, 100%, 50%, 0), hsl(200, 100%, 0%))`,
+          }}
+          className={classes.svg}
+          ref={svgRef}
+          width={width}
+          height={height}
+        ></svg>
+      </div>
+      <div className={classes.items}>
+        <div className={classes.item}>
+          <div
+            className={classes.dot}
+            style={{ backgroundColor: backgroundColor }}
+          ></div>
+          <div className={classes.name}>Background</div>
+        </div>
+        <div className={classes.item}>
+          <div
+            className={classes.dot}
+            style={{ backgroundColor: surfaceColor }}
+          ></div>
+          <div className={classes.name}>Surface</div>
+        </div>
+        <div className={classes.item}>
+          <div
+            className={classes.dot}
+            style={{ backgroundColor: borderColor }}
+          ></div>
+          <div className={classes.name}>Border</div>
+        </div>
+        <div className={classes.item}>
+          <div
+            className={classes.dot}
+            style={{ backgroundColor: textColor }}
+          ></div>
+          <div className={classes.name}>Text</div>
+        </div>
+      </div>
     </div>
   );
 };

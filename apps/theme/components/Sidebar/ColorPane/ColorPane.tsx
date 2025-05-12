@@ -1,4 +1,9 @@
-import { RESERVED_COLORS } from '@digdir/designsystemet';
+import {
+  type ColorNames,
+  type CssColor,
+  RESERVED_COLORS,
+  getContrastFromHex,
+} from '@digdir/designsystemet';
 import {
   Button,
   Heading,
@@ -42,6 +47,7 @@ export const ColorPane = ({
   const mainColors = useThemeStore((state) => state.colors.main);
   const [colorError, setColorError] = useState('');
   const [advancedColors, setAdvancedColors] = useState(false);
+  const colorScheme = useThemeStore((state) => state.colorScheme);
 
   const getHeading = () => {
     const t = colorType === 'main' ? 'hovedfarge' : 'støttefarge';
@@ -69,6 +75,29 @@ export const ColorPane = ({
   const closeTab = () => {
     setColorError('');
     onClose();
+  };
+
+  const colorsToTestAgainst: ColorNames[] = [
+    'background-default',
+    'background-tinted',
+    'surface-default',
+    'surface-tinted',
+    'surface-hover',
+    'surface-active',
+  ];
+
+  const showAlert = () => {
+    for (const colorName of colorsToTestAgainst) {
+      const hex1 = mainColors[0].colors[colorScheme].find(
+        (color) => color.name === colorName,
+      )?.hex;
+      const hex2 = color.hex as CssColor;
+
+      if (hex1 && hex2 && getContrastFromHex(hex1, hex2) <= 3.1) {
+        return true;
+      }
+    }
+    return false;
   };
 
   return (
@@ -122,6 +151,12 @@ export const ColorPane = ({
           <Heading data-size='xs' className={classes.title}>
             {getHeading()}
           </Heading>
+          {showAlert() && (
+            <div className={classes.alert}>
+              Fargen har lav kontrast mot en eller flere av overflatefargene som
+              påvirker bruken. Les mer om hva dette betyr på kontrast siden.
+            </div>
+          )}
           {colorType === 'neutral' && (
             <Paragraph data-size='sm' className={classes.desc}>
               Neutral fargen kan ikke fjernes eller endres navn på.

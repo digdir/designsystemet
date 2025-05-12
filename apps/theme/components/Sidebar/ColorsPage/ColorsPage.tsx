@@ -8,9 +8,9 @@ import { type ColorTheme, useThemeStore } from '../../../store';
 import { ColorInput } from '../../ColorInput/ColorInput';
 import { ColorPane } from '../ColorPane/ColorPane';
 import { LightnessPage } from '../LightnessPage/LightnessPage';
-import classes from './ColorPage.module.css';
+import classes from './ColorsPage.module.css';
 
-export const ColorPage = () => {
+export const ColorsPage = () => {
   type Pages = 'add-color' | 'edit-color' | 'none' | 'advanced' | 'lightness';
   type ColorType = 'main' | 'neutral' | 'support' | 'status';
   const showStatusColors = useThemeStore((state) => state.showStatusColors);
@@ -34,7 +34,6 @@ export const ColorPage = () => {
   const [currentTheme, setCurrentTheme] = useState(() =>
     getColorTheme(index, colorType),
   );
-  const activeColorScale = useThemeStore((state) => state.activeColorScale);
   const setActiveColorScale = useThemeStore(
     (state) => state.setActiveColorScale,
   );

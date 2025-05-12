@@ -1,4 +1,11 @@
 'use client';
+import {
+  GlassesIcon,
+  PackageIcon,
+  PaletteIcon,
+  PencilLineIcon,
+} from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
 import { Sidebar, ThemeHeader } from '../../components';
 import { AppearanceToggle } from '../../components/AppearanceToggle/AppearanceToggle';
 import { useThemeStore } from '../../store';
@@ -18,8 +25,9 @@ export default function Page() {
     value: 'overview' | 'colorsystem' | 'contrast' | 'typography' | 'radius';
   }[] = [
     { name: 'Farger', value: 'colorsystem' },
-    { name: 'Kontraster', value: 'contrast' },
+    { name: 'Kontrast', value: 'contrast' },
     { name: 'Typografi', value: 'typography' },
+    { name: 'Eksempler', value: 'overview' },
   ];
 
   return (
@@ -30,14 +38,32 @@ export default function Page() {
           <div className={classes.toolbar}>
             {/* Tabs that change between overview and */}
             <div data-size='md' className={classes.tabs}>
-              {tabs.map((tab) => (
+              {tabs.map((tab, i) => (
                 <button
                   key={tab.value}
                   data-size='sm'
-                  className='ds-focus-visible'
+                  className={cl(
+                    classes.tab,
+                    classes[`tab-${i}`], // Unique class based on index
+                    'ds-focus-visible',
+                  )}
                   onClick={() => setThemeTab(tab.value)}
                   data-active={themeTab === tab.value}
                 >
+                  <div className={classes.icon}>
+                    {i === 0 && (
+                      <PaletteIcon title='a11y-title' fontSize='1.6rem' />
+                    )}
+                    {i === 1 && (
+                      <GlassesIcon title='a11y-title' fontSize='1.6rem' />
+                    )}
+                    {i === 2 && (
+                      <PencilLineIcon title='a11y-title' fontSize='1.6rem' />
+                    )}
+                    {i === 3 && (
+                      <PackageIcon title='a11y-title' fontSize='1.6rem' />
+                    )}
+                  </div>
                   {tab.name}
                 </button>
               ))}

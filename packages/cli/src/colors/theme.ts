@@ -37,10 +37,6 @@ export const generateColorScale = (
     const chromaModifier = saturation[colorScheme];
     const interpolColor = chroma(L, C * chromaModifier, H, 'oklch').hex();
 
-    if (colorData.name === 'surface-tinted') {
-      console.log(interpolColor + ' ' + L, C, H, chromaModifier);
-    }
-
     return {
       ...colorData,
       hex: chroma(interpolColor)

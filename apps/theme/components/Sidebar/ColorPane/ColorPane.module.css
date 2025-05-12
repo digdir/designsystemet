@@ -74,3 +74,12 @@
   margin-top: 16px;
   margin-left: -12px;
 }
+
+.alert {
+  background-color: var(--ds-color-warning-surface-tinted);
+  padding: 16px;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 12px;
+  border-left: 5px solid var(--ds-color-warning-border-subtle);
+}

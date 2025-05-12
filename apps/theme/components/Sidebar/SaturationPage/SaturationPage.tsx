@@ -21,7 +21,7 @@ import classes from './SaturationPage.module.css';
 type SaturationPageProps = {
   index: number;
   color: string;
-  colorType: 'main' | 'neutral' | 'support';
+  colorType: 'main' | 'neutral' | 'support' | 'status';
   onBackClicked: () => void;
   name: string;
   currentTheme: ColorTheme | undefined;
@@ -133,22 +133,13 @@ export const SaturationPage = ({
             );
           }}
         >
-          {[
-            'rgb',
-            'oklch',
-            'oklab',
-            'lrgb',
-            'lch',
-            'lab',
-            'hsv',
-            'hsl',
-            'hsi',
-            'hcl',
-          ].map((mode) => (
-            <Select.Option key={mode} value={mode}>
-              {mode.toUpperCase()}
-            </Select.Option>
-          ))}
+          {['rgb', 'hsl', 'hsv', 'lab', 'lch', 'oklab', 'oklch']
+            .sort()
+            .map((mode) => (
+              <Select.Option key={mode} value={mode}>
+                {mode.toUpperCase()}
+              </Select.Option>
+            ))}
         </Select>
       </Field>
 

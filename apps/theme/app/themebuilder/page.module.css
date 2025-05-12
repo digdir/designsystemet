@@ -83,8 +83,8 @@
   justify-content: flex-end;
   margin-bottom: -8px;
   align-items: flex-end;
+  max-width: 1390px;
 }
-
 .toolbar {
   display: flex;
   justify-content: space-between;
@@ -99,7 +99,7 @@
 .tabs {
   display: flex;
   flex-direction: row;
-  gap: 4px;
+  gap: 16px;
 
   & button {
     background-color: transparent;
@@ -110,20 +110,53 @@
     padding: var(--ds-size-3) var(--ds-size-5);
     font-size: 16px;
     font-weight: 500;
-    border-radius: var(--ds-border-radius-md);
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
     border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 100px;
+    border: 1px solid var(--ds-color-neutral-border-subtle);
+    transition: 0.1s all;
 
     &:not([data-active='true']) {
-      color: var(--ds-color-neutral-text-default);
+      color: var(--ds-color-neutral-text-subtle);
     }
 
-    &[data-active='true'] {
-      background-color: var(--ds-color-brand3-surface-tinted);
-      border: 1px solid var(--ds-color-brand3-border-subtle);
+    &[data-active='true'],
+    &:hover {
+      border: 1px solid var(--ds-color-brand3-border-default);
+      color: var(--ds-color-brand3-text-default);
+      outline: 1px solid var(--ds-color-brand3-border-default);
     }
   }
+}
+
+/* .tabs button.tab-1 {
+  background-color: var(--ds-color-brand2-surface-tinted);
+  border: 1px solid var(--ds-color-brand2-border-subtle);
+}
+
+.tabs button.tab-2 {
+  background-color: var(--ds-color-brand1-surface-tinted);
+  border: 1px solid var(--ds-color-brand1-border-subtle);
+}
+
+.tabs button.tab-2 .icon {
+  background-color: var(--ds-color-brand2-surface-active);
+} */
+
+.icon {
+  background-color: var(--ds-color-brand3-surface-hover);
+  height: 34px;
+  width: 34px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tabs button:not([data-active='true']) .icon {
+  background-color: var(--ds-color-neutral-surface-tinted);
 }
 
 @media screen and (max-width: 1500px) {

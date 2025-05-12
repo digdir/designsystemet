@@ -1,4 +1,10 @@
-.hsl {
+.gradientBox {
+  border-radius: 8px;
+  height: 50px;
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+}
+
+.svg {
   background-blend-mode: multiply;
   border-radius: 8px;
   margin-bottom: 12px;
@@ -6,15 +12,26 @@
   border: 1px solid var(--ds-color-neutral-border-subtle);
 }
 
-.base {
-  margin-bottom: 16px;
-  margin-top: 8px;
-  padding: 8px 16px;
-  border-radius: 4px;
+.dot {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  box-shadow: var(--ds-shadow-xs);
 }
 
-.gradientBox {
-  border-radius: 8px;
-  height: 50px;
-  border: 1px solid var(--ds-color-neutral-border-subtle);
+.items {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 16px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.heading {
+  margin-bottom: 12px;
 }

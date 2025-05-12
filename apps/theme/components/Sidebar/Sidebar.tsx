@@ -12,7 +12,7 @@ import {
 import { CogIcon } from '@navikt/aksel-icons';
 import { BorderRadiusInput } from '../BorderRadiusInput/BorderRadiusInput';
 import { TokenModal } from '../TokenModal/TokenModal';
-import { ColorPage } from './ColorPage/ColorPage';
+import { ColorsPage } from './ColorsPage/ColorsPage';
 import { FrontPage } from './FrontPage/FrontPage';
 import classes from './Sidebar.module.css';
 
@@ -63,7 +63,7 @@ export const Sidebar = () => {
           )}
         >
           {activePage === 'front' && <FrontPage />}
-          {activePage === 'colors' && <ColorPage />}
+          {activePage === 'colors' && <ColorsPage />}
         </div>
       </div>
       {isMobile && (
@@ -88,7 +88,7 @@ export const Sidebar = () => {
               </Tabs.List>
 
               <Tabs.Panel className={classes.tabPanel} value='colors'>
-                <ColorPage />
+                <ColorsPage />
               </Tabs.Panel>
               <Tabs.Panel className={classes.tabPanel} value='dimensions'>
                 <BorderRadiusInput />

@@ -94,3 +94,11 @@
   margin-left: 2px;
   gap: 10px;
 }
+
+.checkbox:hover {
+  color: var(--ds-color-neutral-text-default);
+}
+
+.checkbox:hover input:not(:checked) {
+  background-color: var(--ds-color-neutral-background-tinted);
+}

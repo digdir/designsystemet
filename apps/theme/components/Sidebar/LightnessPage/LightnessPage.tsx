@@ -83,7 +83,11 @@ export const LightnessPage = ({ onBackClicked }: LightnessPageProps) => {
                   key={refIndex}
                   label={color.displayName}
                   oneLiner
-                  value={color.lightness[colorScheme]}
+                  value={
+                    colors.main[0].colorMetadata[color.name].lightness[
+                      colorScheme
+                    ]
+                  }
                   initialValue={
                     referenceColorMetadata[color.name].lightness[colorScheme]
                   }

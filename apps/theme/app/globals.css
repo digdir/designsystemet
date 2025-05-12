@@ -9,6 +9,10 @@ body {
   margin: 0;
 }
 
+button {
+  font-family: 'Inter', sans-serif !important;
+}
+
 .is-sticky {
   position: fixed;
   top: 0;

@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import { ColorContrasts, ColorPreview, ColorTokens } from '../../../components';
 import { ColorDetail } from '../../../components/ColorDetail/ColorDetail';
 import { Colors } from '../../../components/Colors/Colors';
+import { ContrastRules } from '../../../components/ContrastRules/ContrastRules';
 import { OverviewComponents } from '../../../components/OverviewComponents/OverviewComponents';
 import { useThemeStore } from '../../../store';
 import {
@@ -31,7 +32,6 @@ export const ThemePages = () => {
         );
       }
     }
-    console.log(colors);
   }, []);
 
   useEffect(() => {
@@ -82,6 +82,10 @@ export const ThemePages = () => {
 
         <div hidden={!(themeTab === 'colorsystem')}>
           <ColorDetail />
+        </div>
+
+        <div hidden={!(themeTab === 'contrast')}>
+          <ContrastRules />
         </div>
 
         <div

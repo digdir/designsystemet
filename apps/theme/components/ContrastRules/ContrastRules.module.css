@@ -1,0 +1,47 @@
+.heading {
+  margin-bottom: 20px;
+}
+
+.ruleContainer {
+  background-color: var(--ds-color-neutral-surface-default);
+  border-radius: 8px;
+  box-shadow: var(--ds-shadow-xs);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.rules {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  line-height: 1.5em;
+}
+
+.rule {
+  font-size: 16px;
+  display: flex;
+  gap: 4px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 500;
+  flex-shrink: 0;
+  width: 135px;
+}
+
+.successColor,
+.failColor {
+  padding: 3px 6px;
+  border-radius: 4px;
+  margin: 0 6px;
+}
+
+.successColor {
+  background-color: var(--ds-color-success-surface-hover);
+}
+
+.failColor {
+  background-color: var(--ds-color-warning-surface-hover);
+}
