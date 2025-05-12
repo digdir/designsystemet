@@ -14,8 +14,8 @@ import {
   cliOptions,
   formatThemeCSS,
 } from '@digdir/designsystemet/tokens';
-import { InformationSquareIcon, RocketIcon } from '@navikt/aksel-icons';
 import { CodeBlock } from '@internal/components';
+import { InformationSquareIcon, RocketIcon } from '@navikt/aksel-icons';
 import { useRef, useState } from 'react';
 
 import type { Color, CssColor } from '@digdir/designsystemet/color';
