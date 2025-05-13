@@ -7,7 +7,7 @@ import type { Preview } from '@storybook/react';
 import isChromatic from 'chromatic/isChromatic';
 import componentStyles from './componentOverrides.module.scss';
 
-import type { HeadingProps, LinkProps } from '@digdir/designsystemet-react';
+import type { HeadingProps } from '@digdir/designsystemet-react';
 import {
   Heading,
   Link,
@@ -22,6 +22,7 @@ import { customStylesDecorator } from '../story-utils/customStylesDecorator';
 import { fontsLoader } from '../story-utils/fontsLoader';
 import { allModes, viewportWidths } from '../story-utils/modes';
 import { transformSource } from '../story-utils/transformSource';
+import type { MdxComponentOverrides } from '../story-utils/type-extensions';
 import customTheme from './customTheme';
 
 const viewports: Record<string, object> = {};
@@ -85,11 +86,14 @@ const HeadingSelfLink: React.FC<HeadingProps> = ({ children, ...props }) => {
 };
 
 const components = {
-  pre: ({
-    children: {
-      props: { children = '', className = '' },
-    },
-  }) => {
+  pre: (props) => {
+    const {
+      children: {
+        props: { children = '', className = '' },
+      },
+    } = props as {
+      children: { props: { children?: string; className?: string } };
+    };
     return (
       <CodeBlock
         className={'sb-unstyled'}
@@ -99,41 +103,41 @@ const components = {
       </CodeBlock>
     );
   },
-  h1: (props: Props) => <HeadingSelfLink data-size='lg' {...props} level={1} />,
-  h2: (props: Props) => <HeadingSelfLink data-size='md' {...props} level={2} />,
-  h3: (props: Props) => <HeadingSelfLink data-size='sm' {...props} level={3} />,
-  h4: (props: Props) => <HeadingSelfLink data-size='sm' {...props} level={4} />,
-  h5: (props: Props) => <HeadingSelfLink data-size='sm' {...props} level={5} />,
-  h6: (props: Props) => <HeadingSelfLink data-size='sm' {...props} level={6} />,
-  p: (props: Props) => (
+  h1: (props) => <HeadingSelfLink data-size='lg' {...props} level={1} />,
+  h2: (props) => <HeadingSelfLink data-size='md' {...props} level={2} />,
+  h3: (props) => <HeadingSelfLink data-size='sm' {...props} level={3} />,
+  h4: (props) => <HeadingSelfLink data-size='sm' {...props} level={4} />,
+  h5: (props) => <HeadingSelfLink data-size='sm' {...props} level={5} />,
+  h6: (props) => <HeadingSelfLink data-size='sm' {...props} level={6} />,
+  p: (props) => (
     <Paragraph
       {...props}
       className={`sb-unstyled ${componentStyles.paragraph}`}
       data-color-scheme='light'
     />
   ),
-  ol: (props: Props) => (
+  ol: (props) => (
     <List.Ordered
       {...props}
       className={`sb-unstyled ${componentStyles.list}`}
       data-color-scheme='light'
     />
   ),
-  ul: (props: Props) => (
+  ul: (props) => (
     <List.Unordered
       {...props}
       className={`sb-unstyled ${componentStyles.list}`}
       data-color-scheme='light'
     />
   ),
-  li: (props: Props) => (
+  li: (props) => (
     <List.Item
       {...props}
       className={`sb-unstyled ${componentStyles.listItem}`}
       data-color-scheme='light'
     />
   ),
-  a: ({ children, ...props }: LinkProps) => {
+  a: ({ children = '', ...props }) => {
     // if link starts with /, add current path to link
     const href = getPath(props.href);
 
@@ -160,26 +164,26 @@ const components = {
       data-color='neutral'
     />
   ),
-  thead: (props: Props) => (
+  thead: (props) => (
     <Table.Head {...props} className='sb-unstyled' data-color-scheme='light' />
   ),
-  tbody: (props: Props) => (
+  tbody: (props) => (
     <Table.Body {...props} className='sb-unstyled' data-color-scheme='light' />
   ),
-  tr: (props: Props) => (
+  tr: (props) => (
     <Table.Row {...props} className='sb-unstyled' data-color-scheme='light' />
   ),
-  th: (props: Props) => (
+  th: (props) => (
     <Table.HeaderCell
       {...props}
       className='sb-unstyled'
       data-color-scheme='light'
     />
   ),
-  td: (props: Props) => (
+  td: (props) => (
     <Table.Cell {...props} className='sb-unstyled' data-color-scheme='light' />
   ),
-};
+} satisfies MdxComponentOverrides;
 
 const preview: Preview = {
   tags: ['a11y-test'],
@@ -263,7 +267,7 @@ const preview: Preview = {
       disable: true,
     },
     html: {
-      root: '.storybook-decorator', // default: #root
+      root: '[data-storybook-decorator]', // default: #root
     },
   },
   decorators: [customStylesDecorator],

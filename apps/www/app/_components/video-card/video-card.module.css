@@ -1,0 +1,27 @@
+.video-card {
+  display: flex;
+  flex-direction: row;
+
+  & .image {
+    position: relative;
+    overflow: hidden;
+    max-width: 300px;
+    min-width: 250px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  & a svg {
+    font-size: 1.5rem;
+    margin-inline-end: var(--ds-size-1);
+  }
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+
+    & .image {
+      max-width: 100%;
+      min-height: 150px;
+    }
+  }
+}
