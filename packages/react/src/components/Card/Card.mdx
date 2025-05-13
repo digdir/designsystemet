@@ -7,13 +7,13 @@ import * as CardStories from './Card.stories';
 
 # Card
 
-Med `Card` kan vi fremheve informasjon eller oppgaver som hører sammen. Kortene finnes i flere varianter og kan inneholde tekst, bilde, tekstfelt, knapper og/eller lenker. 
+Med `Card` kan vi fremheve informasjon eller oppgaver som hører sammen. `Card` finnes i flere varianter og kan inneholde tekst, bilde, tekstfelt, knapper og lenker. 
 
 
 <Primary />
 <Controls />
 
-## Slik bruker du `Card`
+## Bruk
 
 ```tsx
 import { Card } from '@digdir/designsystemet-react';
@@ -24,37 +24,36 @@ import { Card } from '@digdir/designsystemet-react';
 </Card>;
 ```
 
-## Eksempler
+## Kodeeksempler
 
 ### Med `Block`
+Bruk flere `Card.Block` hvis du vil dele opp kortet med skillelinjer eller legge til bilder eller video som går ut i kanten. Merk at når du bruker `Card.Block`, må alt innhold ligge inni en `Card.Block` – det kan ikke plasseres direkte i `Card`.
 
-Bruk flere `Card.Block` hvis du vil dele opp kortet med skillelinjer eller legge inn utfallende bilder eller video.
-Merk at innhold kan ikke plasseres direkte i `Card` dersom du bruker `Card.Block`; da burde alt innholdet være inni en av av kortets `Card.Block`-seksjoner.
 
 <Canvas of={CardStories.Media} />
 
-### Video
 
-<Canvas of={CardStories.Video} />
+### Navigasjonskort
+`Card` kan brukes som navigasjonskort for å ta brukerne videre til en annen side. 
 
-### Klikkbart
-- `Card` kan brukes som navigasjonskort for å ta brukerne videre til en annen side. 
-- Dersom kortet skal lenke til en annen side, kan du legge en lenke inn i kortets tittel. Hele kortet blir da automatisk klikkbart, men skjermlesere får en [bedre brukeropplevelse enn dersom hele kortet var en lenke](https://adrianroselli.com/2020/02/block-links-cards-clickable-regions-etc.html).
-- Dersom kortet kun innholder litt tekst, kan hele kortet bli en lenke eller knapp ved å benytte `asChild`.
+Det er to ulike måter å gjøre dette på.
 
-#### Kort med lenke i tittel:
+#### 1. Kort med lenke i tittel
+Dersom kortet skal lenke til en annen side, kan du legge en lenke inn i kortets tittel. Hele kortet blir da automatisk klikkbart, men skjermlesere får en [bedre brukeropplevelse enn dersom hele kortet var en lenke](https://adrianroselli.com/2020/02/block-links-cards-clickable-regions-etc.html).
+
 I dette eksempelet rendrer Card med lenke `<a>` inni tittel elementet. Dette er nyttig når Card inneholder tekst eller media, og skal navigere til en annen side.
 
 <Canvas of={CardStories.WithLink} />
 
-#### Kort som er en lenke:
-I dette eksempelet rendrer Card som lenke `<a>`. Dette er nyttig når Card inneholder lite tekst, og skal navigere til en annen side.
+#### 2. Kort som er en lenke
+Hele kortet kan bli en lenke ved å benytte `asChild`. Dette er nyttig når du ønsker at all tekst og innhold i `Card` blir lest opp av skjermlesere som én sammenhengende lenke.
+
+I dette eksempelet rendrer `Card` som lenke `<a>`. 
 
 <Canvas of={CardStories.AsLink} />
 
-#### Kort som er en knapp:
-
-I dette eksempelet rendrer Card som knapp `<button>`. Dette er nyttig når Card inneholder lite tekst, og skal åpne en Modal eller utføre annen handling på samme side.
+### Kort som er en knapp
+I dette eksempelet rendrer `Card` som knapp `<button>`. Dette er nyttig når `Card` inneholder lite tekst, og skal åpne en Modal eller utføre annen handling på samme side.
 
 <Canvas of={CardStories.AsButton} />
 
@@ -65,35 +64,38 @@ I dette eksempelet rendrer Card som knapp `<button>`. Dette er nyttig når Card 
 
 ### Farger
 
-Viser forskjellige varianter av `Card`-komponenten, inkludert nøytral, subtil, og andre stiler.
+Viser forskjellige varianter av `Card`-komponenten.
 
 <Canvas of={CardStories.Variants} />
 
 ### Komponert
 
-ler på hvordan andre komponenter kan brukes til å komponere sammen i et kort.
+Eksempler på hvordan andre komponenter kan brukes sammen i et kort.
 
 <Canvas of={CardStories.Composed} />
 
-## Retningslinjer for `Card`
+## Retningslinjer
 
-`Card` passer til å gruppere innhold eller funksjonalitet som du vil skille ut fra
+`Card` er en fleksibel komponent som brukes til å strukturere og presentere innhold på en tydelig og visuelt avgrenset måte. Kortet kan inneholde ulike typer innhold, som tekst, media og lenker, og brukes ofte i oversikter, navigasjon eller for å fremheve enkeltemner.
+
+**Passer til:**
+- Å gruppere innhold eller funksjonalitet som du vil skille ut fra
 resten av innholdet.
 
+**Passer ikke til:**
+- Å vise lange tekstblokker eller detaljerte forklaringer.
+- Viktige meldinger som bør presenteres som varsler (bruk heller [`Alert`](/docs/komponenter-alert--docs)).
+
+## Tekst 
+
+Teksten i et `Card` skal være tydelig, relevant og gi brukeren nok informasjon til å forstå hva kortet handler om. 
+
+Hvordan du utformer teksten kommer an på konteksten. Kortet kan være en inngang til en ny side, et valg i en prosess eller en del av en informasjonsoversikt. Teksten bør gjenspeile det.
+
+Unngå unødvendige detaljer, og sørg for at tittel og beskrivelse henger sammen og gir mening i sammenheng med resten av innholdet.
+
+## Tilgjengelighet
 Dersom kortet er en link med bilde, så skal **ikke** bildet være informativt, og `alt` attributtet skal være tomt.
-
-Et kort skal oppfattes som en selvstendig, avgrenset enhet. Innholdet i kortet skal være helhetlig og relatert til et enkelt emne eller en destinasjon.
-
-Kortet skal kunne stå alene uten å være avhengig av omkringliggende elementer for kontekst. Det skal gi tilstrekkelig informasjon til å forstå det presenterte innholdet uten eksterne referanser.
-
-### Unngå
-
-- å bruke for mange kort på en side, det kan skape forvirring
-- å blande for mange forskjellige typer innhold i et enkelt kort
-
-## Tekst i komponenten
-
-Unngå lange tekster på kortene. Tenk nøye gjennom hva du trenger å si og skriv en kort og presis overskrift, underoverskrift og eventuell brødtekst.
 
 ## CSS Variabler
 

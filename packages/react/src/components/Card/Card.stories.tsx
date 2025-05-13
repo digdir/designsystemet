@@ -108,7 +108,14 @@ export const Media: Story = () => (
   <>
     <Card data-color='neutral'>
       <Card.Block>
-        <img src={cat1} alt='katt' />
+        <iframe
+        data-chromatic='ignore'
+        src='https://player.vimeo.com/video/863563441?app_id=122963&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1'
+        width='320px'
+        height='179px'
+        allow='autoplay; fullscreen; picture-in-picture'
+        title='30 år med digitalt innsyn'
+      ></iframe>
       </Card.Block>
       <Card.Block>
         <Heading>Card Neutral</Heading>
@@ -210,19 +217,6 @@ export const Composed: Story = () => (
         </Button>
       </Card.Block>
     </Card>
-    <Card data-color='neutral'>
-      <Card.Block>
-        <img src={cat1} alt='katt' />
-      </Card.Block>
-      <Card.Block>
-        <Heading>Card Neutral</Heading>
-        <Paragraph>
-          Most provide as with carried business are much better more the
-          perfected designer. Writing slightly explain desk unable at supposedly
-          about this.
-        </Paragraph>
-      </Card.Block>
-    </Card>
   </>
 );
 
@@ -294,12 +288,8 @@ export const AsLink: Story = (args) => (
         rel='noopener noreferrer'
       >
         <Card.Block>
-          <Heading>Link Card with blocks</Heading>
-        </Card.Block>
-        <Card.Block>
           <Paragraph>
-            Most provide as with carried business are much better more the
-            perfected designer.
+            Link card with asChild
           </Paragraph>
         </Card.Block>
       </a>
@@ -310,7 +300,7 @@ export const AsLink: Story = (args) => (
         target='_blank'
         rel='noopener noreferrer'
       >
-        <Heading>Link Card</Heading>
+        <Heading>Link Card with asChild</Heading>
         <Paragraph>
           Most provide as with carried business are much better more the
           perfected designer.
@@ -333,15 +323,6 @@ export const AsButton: Story = (args) => (
             perfected designer.
           </Paragraph>
         </Card.Block>
-      </button>
-    </Card>
-    <Card {...args} data-color='neutral' asChild>
-      <button type='button'>
-        <Heading>Link Card</Heading>
-        <Paragraph>
-          Most provide as with carried business are much better more the
-          perfected designer.
-        </Paragraph>
       </button>
     </Card>
   </>
