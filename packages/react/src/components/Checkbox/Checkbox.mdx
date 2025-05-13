@@ -16,14 +16,17 @@ Vi bruker `Checkbox` for å gi brukerne valg, der de kan velge ett eller flere a
 ## Bruk
 
 ```tsx
-import { Checkbox } from '@digdir/designsystemet-react';
+import { Checkbox, useCheckboxGroup } from '@digdir/designsystemet-react';
+  const { getCheckboxProps } = useCheckboxGroup({
+    name: 'my-group',
+  });
 
 <Fieldset>
   <Fieldset.Legend>Skal du reise til noen av disse landene?</Fieldset.Legend>
-  <Checkbox label='Kroatia' value='kroatia' />
-  <Checkbox label='Slovakia' value='slovakia' />
-  <Checkbox label='Hobsyssel' value='hobsyssel' />
-  <Checkbox label='Jeg skal ikke til noen av disse landene' value='ingen' />
+  <Checkbox label='Kroatia' {...getCheckboxProps('kroatia')}  />
+  <Checkbox label='Slovakia' {...getCheckboxProps('slovakia')} />
+  <Checkbox label='Hobsyssel' {...getCheckboxProps('hobsyssel')}  />
+  <Checkbox label='Jeg skal ikke til noen av disse landene' {...getCheckboxProps('ingen')}  />
 </Fieldset>;
 ```
 
@@ -57,7 +60,8 @@ Her må du bruke `Fieldset` for å gjøre innholdet tilgjengelig og aktivere rik
 
 ### Kontrollere Checkbox utenfra
 
-Bruk `value` på `Checkbox` for å kontrollere verdiene selv.
+Bruk `useCheckboxGroup` og `setValue` for å kontrollere hvilke alternativer som er valgt utenfor komponenten.
+I eksempelet under kontrollerer vi hvilke `Checkbox` som er valgt med både [`Button`](/docs/komponenter-button--docs) og [`Chip`](/docs/komponenter-chip--docs).
 
 <Canvas of={CheckboxStories.Controlled} />
 
