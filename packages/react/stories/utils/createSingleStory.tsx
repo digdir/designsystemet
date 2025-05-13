@@ -5,8 +5,8 @@ import {
   type StoryObj,
   composeStories,
 } from '@storybook/react';
+import { userEvent } from '@storybook/test';
 import type { Store_CSFExports, StoryAnnotationsOrFn } from '@storybook/types';
-
 import { type PropsWithChildren, createElement } from 'react';
 
 type Story<T> = StoryObj<T> | StoryFn<T>;
@@ -33,6 +33,11 @@ export function createSingleStory<
                   ...style,
                   ...storyStyles,
                 }}
+                data-pseudo-state={
+                  story.parameters?.pseudo
+                    ? JSON.stringify(story.parameters.pseudo)
+                    : undefined
+                }
               >
                 {children}
               </div>
@@ -62,6 +67,33 @@ export function createSingleStory<
         flexDirection: 'column',
         gap: 'var(--ds-size-2)',
       },
+    },
+    play: async (ctx) => {
+      const canvas = ctx.canvasElement as HTMLElement;
+      const stories = canvas.querySelectorAll('[data-pseudo-state]');
+      Array.from(stories).map((story) => {
+        const pseudoState = story.getAttribute('data-pseudo-state');
+        let action: string | null = null;
+        if (pseudoState) {
+          action = JSON.parse(pseudoState);
+        }
+        if (action) {
+          /* loop all children and add the pseudo state */
+          const children = story.children;
+          Array.from(children).map(async (child) => {
+            if (action) {
+              Object.entries(action).map(async ([key, value]) => {
+                if (key === 'hover') {
+                  await userEvent.hover(child);
+                }
+                if (key === 'active') {
+                  await userEvent.click(child);
+                }
+              });
+            }
+          });
+        }
+      });
     },
   };
 }
