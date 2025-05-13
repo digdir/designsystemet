@@ -175,6 +175,6 @@ export default {
     },
   },
   video: {
-    'watch-video': 'Watch video',
+    'watch-video': 'Watch video on vimeo.com',
   },
 } satisfies typeof no;

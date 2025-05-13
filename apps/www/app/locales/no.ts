@@ -173,6 +173,6 @@ export default {
     },
   },
   video: {
-    'watch-video': 'Se video',
+    'watch-video': 'Se video på vimeo.com',
   },
 };
