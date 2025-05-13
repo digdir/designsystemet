@@ -51,11 +51,14 @@ export const ColorPane = ({
 
   const getHeading = () => {
     const t = colorType === 'main' ? 'hovedfarge' : 'støttefarge';
-    return type === 'add-color' ? 'Legg til ' + t : 'Rediger farge';
+    if (type === 'add-color') {
+      return 'Legg til ' + t;
+    }
+    return colorType === 'main' ? 'Rediger farge' : `Rediger ${name}`;
   };
 
   const checkNameIsValid = () => {
-    if (colorType === 'neutral') return true;
+    if (colorType === 'neutral' || colorType === 'status') return true;
 
     if (name === '') {
       setColorError('Navnet på fargen kan ikke være tomt');
@@ -141,6 +144,7 @@ export const ColorPane = ({
               className={cl(classes.removeBtn)}
               hidden={
                 colorType === 'neutral' ||
+                colorType === 'status' ||
                 (colorType === 'main' && mainColors.length <= 1)
               }
             >
@@ -151,18 +155,19 @@ export const ColorPane = ({
           <Heading data-size='xs' className={classes.title}>
             {getHeading()}
           </Heading>
-          {showAlert() && (
+          {/* {showAlert() && (
             <div className={classes.alert}>
               Fargen har lav kontrast mot en eller flere av overflatefargene som
               påvirker bruken. Les mer om hva dette betyr på kontrast siden.
             </div>
-          )}
-          {colorType === 'neutral' && (
-            <Paragraph data-size='sm' className={classes.desc}>
-              Neutral fargen kan ikke fjernes eller endres navn på.
-            </Paragraph>
-          )}
-          {colorType !== 'neutral' && (
+          )} */}
+          {colorType === 'neutral' ||
+            (colorType === 'status' && (
+              <Paragraph data-size='sm' className={classes.desc}>
+                Du kan ikke endre navnet på denne fargen.
+              </Paragraph>
+            ))}
+          {colorType !== 'neutral' && colorType !== 'status' && (
             <Textfield
               placeholder='Skriv navnet her...'
               label='Navn'
@@ -193,6 +198,7 @@ export const ColorPane = ({
             color={color}
             onChange={setColor}
             hideInput={['rgb', 'hsv']}
+            onChangeComplete={(color) => {}}
           />
           <Button
             className={classes.advancedBtn}

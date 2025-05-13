@@ -88,7 +88,8 @@ const generateBaseColors = (color: CssColor, colorScheme: ColorScheme, colorMeta
     colorLightness = colorLightness <= 30 ? 70 : 100 - colorLightness;
   }
 
-  const modifier = colorLightness <= 30 || (colorLightness >= 49 && colorLightness <= 65) ? -8 : 8;
+  const step = colorMetaData['base-default'].baseModifier[colorScheme];
+  const modifier = colorLightness <= 30 || (colorLightness >= 49 && colorLightness <= 65) ? -step : step;
   const calculateLightness = (base: number, mod: number) => base - mod;
   const [L, C, H] = chroma(color).oklch();
   const baseDefaultInterpolColor = chroma(

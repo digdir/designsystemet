@@ -99,11 +99,11 @@ export const TokenModal = () => {
       <Dialog.Trigger
         className={classes.trigger}
         onClick={() => {
-          return modalRef.current?.showModal();
+          //return modalRef.current?.showModal();
         }}
       >
         <RocketIcon title='a11y-title' />
-        Ta i bruk temaet
+        PROTOTYPE: Kopier hex koder manuelt for testing i Figma
       </Dialog.Trigger>
       <Dialog
         className={classes.modal}

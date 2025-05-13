@@ -1,4 +1,9 @@
-import { Button, Heading, ToggleGroup } from '@digdir/designsystemet-react';
+import {
+  Button,
+  Heading,
+  Paragraph,
+  ToggleGroup,
+} from '@digdir/designsystemet-react';
 import type { ColorMetadata } from '@digdir/designsystemet/color';
 import { ChevronLeftIcon } from '@navikt/aksel-icons';
 import { useThemeStore } from '../../../store';
@@ -58,7 +63,10 @@ export const LightnessPage = ({ onBackClicked }: LightnessPageProps) => {
       <Heading className={classes.heading} data-size='xs'>
         Velg lightness
       </Heading>
-
+      <Paragraph data-size='sm' className={classes.description}>
+        Juster på HSLuv lightness for fargene i temaet ditt. Dette vil påvirke
+        alle fargene på tvers av fargeskalaer.
+      </Paragraph>
       <ToggleGroup
         value={colorScheme}
         name='toggle-group-nuts'

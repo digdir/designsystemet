@@ -30,6 +30,11 @@ export const colorMetadata: ColorMetadataByName = {
       contrast: 1,
     },
     interpolation: 'rgb',
+    baseModifier: {
+      light: 8,
+      dark: 8,
+      contrast: 8,
+    },
   },
   'background-tinted': {
     number: 2,
@@ -51,6 +56,11 @@ export const colorMetadata: ColorMetadataByName = {
       contrast: 1,
     },
     interpolation: 'rgb',
+    baseModifier: {
+      light: 8,
+      dark: 8,
+      contrast: 8,
+    },
   },
   'surface-default': {
     number: 3,
@@ -72,6 +82,11 @@ export const colorMetadata: ColorMetadataByName = {
       contrast: 1,
     },
     interpolation: 'rgb',
+    baseModifier: {
+      light: 8,
+      dark: 8,
+      contrast: 8,
+    },
   },
   'surface-tinted': {
     number: 4,
@@ -93,6 +108,11 @@ export const colorMetadata: ColorMetadataByName = {
       contrast: 1,
     },
     interpolation: 'rgb',
+    baseModifier: {
+      light: 8,
+      dark: 8,
+      contrast: 8,
+    },
   },
   'surface-hover': {
     number: 5,
@@ -114,6 +134,11 @@ export const colorMetadata: ColorMetadataByName = {
       contrast: 1,
     },
     interpolation: 'rgb',
+    baseModifier: {
+      light: 8,
+      dark: 8,
+      contrast: 8,
+    },
   },
   'surface-active': {
     number: 6,
@@ -135,6 +160,11 @@ export const colorMetadata: ColorMetadataByName = {
       contrast: 1,
     },
     interpolation: 'rgb',
+    baseModifier: {
+      light: 8,
+      dark: 8,
+      contrast: 8,
+    },
   },
   'border-subtle': {
     number: 7,
@@ -156,6 +186,11 @@ export const colorMetadata: ColorMetadataByName = {
       contrast: 1,
     },
     interpolation: 'rgb',
+    baseModifier: {
+      light: 8,
+      dark: 8,
+      contrast: 8,
+    },
   },
   'border-default': {
     number: 8,
@@ -177,6 +212,11 @@ export const colorMetadata: ColorMetadataByName = {
       contrast: 1,
     },
     interpolation: 'rgb',
+    baseModifier: {
+      light: 8,
+      dark: 8,
+      contrast: 8,
+    },
   },
   'border-strong': {
     number: 9,
@@ -198,6 +238,11 @@ export const colorMetadata: ColorMetadataByName = {
       contrast: 1,
     },
     interpolation: 'rgb',
+    baseModifier: {
+      light: 8,
+      dark: 8,
+      contrast: 8,
+    },
   },
   'text-subtle': {
     number: 10,
@@ -219,6 +264,11 @@ export const colorMetadata: ColorMetadataByName = {
       contrast: 1,
     },
     interpolation: 'rgb',
+    baseModifier: {
+      light: 8,
+      dark: 8,
+      contrast: 8,
+    },
   },
   'text-default': {
     number: 11,
@@ -240,6 +290,11 @@ export const colorMetadata: ColorMetadataByName = {
       contrast: 1,
     },
     interpolation: 'rgb',
+    baseModifier: {
+      light: 8,
+      dark: 8,
+      contrast: 8,
+    },
   },
   'base-default': {
     number: 12,
@@ -261,6 +316,11 @@ export const colorMetadata: ColorMetadataByName = {
       contrast: 1,
     },
     interpolation: 'rgb',
+    baseModifier: {
+      light: 8,
+      dark: 8,
+      contrast: 8,
+    },
   },
   'base-hover': {
     number: 13,
@@ -282,6 +342,11 @@ export const colorMetadata: ColorMetadataByName = {
       contrast: 1,
     },
     interpolation: 'rgb',
+    baseModifier: {
+      light: 8,
+      dark: 8,
+      contrast: 8,
+    },
   },
   'base-active': {
     number: 14,
@@ -303,6 +368,11 @@ export const colorMetadata: ColorMetadataByName = {
       contrast: 1,
     },
     interpolation: 'rgb',
+    baseModifier: {
+      light: 8,
+      dark: 8,
+      contrast: 8,
+    },
   },
   'base-contrast-subtle': {
     number: 15,
@@ -324,6 +394,11 @@ export const colorMetadata: ColorMetadataByName = {
       contrast: 1,
     },
     interpolation: 'rgb',
+    baseModifier: {
+      light: 8,
+      dark: 8,
+      contrast: 8,
+    },
   },
   'base-contrast-default': {
     number: 16,
@@ -345,6 +420,11 @@ export const colorMetadata: ColorMetadataByName = {
       contrast: 1,
     },
     interpolation: 'rgb',
+    baseModifier: {
+      light: 8,
+      dark: 8,
+      contrast: 8,
+    },
   },
 };
 

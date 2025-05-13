@@ -284,6 +284,7 @@ export const ColorsPage = () => {
             onChange={(e) => {
               setShowStatusColors(e.target.checked);
             }}
+            checked={showStatusColors}
           ></Checkbox>
           <Button
             className={classes.lightBtn}

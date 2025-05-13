@@ -1,4 +1,8 @@
 import { Button, Heading, ToggleGroup } from '@digdir/designsystemet-react';
+import {
+  type CssColor,
+  generateColorSchemes,
+} from '@digdir/designsystemet/color';
 import { ChevronLeftIcon, PaletteIcon } from '@navikt/aksel-icons';
 import { useEffect, useState } from 'react';
 import { useThemeStore } from '../../../store';
@@ -29,6 +33,26 @@ export const AdvancedColorPage = ({
     getColorTheme(index, colorType),
   );
   const updateColorTheme = useThemeStore((state) => state.updateColorTheme);
+
+  const handleStepChange = (value: number) => {
+    if (currentTheme) {
+      currentTheme.colorMetadata['base-default'].baseModifier[colorScheme] =
+        value;
+      const colors = generateColorSchemes(
+        color as CssColor,
+        currentTheme.colorMetadata,
+      );
+
+      updateColorTheme(
+        {
+          ...currentTheme,
+          colors,
+        },
+        index,
+        colorType,
+      );
+    }
+  };
 
   useEffect(() => {
     setCurrentTheme(getColorTheme(index, colorType));
@@ -97,46 +121,30 @@ export const AdvancedColorPage = ({
             <ToggleGroup.Item value='dark'>Mørk modus</ToggleGroup.Item>
           </ToggleGroup>
 
-          {colorScheme === 'light' && (
-            <div className={classes.group}>
-              <LightnessInput
-                label='Steg modifikator'
-                description='Velg hvor mye lightness skal øke eller minske for hvert steg for Base Hover- og Active fargene.'
-                value={4}
-                initialValue={4}
-                onChange={(value) => {
-                  if (
-                    currentTheme?.colorMetadata[
-                      color as keyof typeof currentTheme.colorMetadata
-                    ]
-                  ) {
-                    currentTheme.colorMetadata[
-                      color as keyof typeof currentTheme.colorMetadata
-                    ].lightness[colorScheme] = value;
-                    updateColorTheme(currentTheme, index, colorType);
-                  }
-                }}
-              />
-            </div>
-          )}
-
-          {colorScheme === 'dark' && (
-            <div className={classes.group}>
+          <div className={classes.group}>
+            {colorScheme === 'dark' && (
               <LightnessInput
                 label='Base Default lightness'
                 description='Som standard blir lightness for Base Default fargen satt til det motsatt av det den er i lys modus.'
                 value={66}
                 initialValue={66}
               />
+            )}
 
-              <LightnessInput
-                label='Steg modifikator'
-                description='Velg hvor mye lightness skal øke eller minske for hvert steg for Base Hover- og Active fargene.'
-                value={4}
-                initialValue={4}
-              />
-            </div>
-          )}
+            <LightnessInput
+              label='Steg modifikator'
+              description='Velg hvor mye lightness skal øke eller minske for hvert steg for Base Hover- og Active fargene.'
+              value={
+                currentTheme?.colorMetadata['base-default'].baseModifier[
+                  colorScheme
+                ] ?? 8
+              }
+              initialValue={8}
+              onChange={(value) => handleStepChange(value)}
+              onReset={(value) => handleStepChange(value)}
+            />
+          </div>
+          {colorScheme === 'dark' && <div className={classes.group}></div>}
         </>
       )}
     </div>

@@ -96,9 +96,6 @@ export const LightnessInput = ({
           onClick={() => {
             handleChange(currentValue - 1);
           }}
-          onKeyDown={() => {
-            handleChange(currentValue - 1);
-          }}
         >
           <MinusIcon title='a11y-title' fontSize='1.5rem' />
         </Button>
@@ -107,9 +104,6 @@ export const LightnessInput = ({
           data-color='neutral'
           className={classes.plusBtn}
           onClick={() => {
-            handleChange(currentValue + 1);
-          }}
-          onMouseDown={() => {
             handleChange(currentValue + 1);
           }}
         >

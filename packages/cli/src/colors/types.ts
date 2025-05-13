@@ -59,6 +59,11 @@ export type ColorMetadata = {
   };
   /** The interpolation mode for the color */
   interpolation: InterpolationMode;
+  baseModifier: {
+    light: number;
+    dark: number;
+    contrast: number;
+  };
 };
 
 export type Color = ColorMetadata & {

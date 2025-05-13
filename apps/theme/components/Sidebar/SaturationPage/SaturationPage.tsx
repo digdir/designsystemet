@@ -100,7 +100,7 @@ export const SaturationPage = ({
         <Label>Interpolering</Label>
         <Paragraph data-size='sm'>
           Interpolering endrer fargemetningen for fargene. Les mer om hvordan
-          dette fungerer <Link href='#'>her</Link>.
+          dette fungerer <Link href='#'>her (TODO)</Link>.
         </Paragraph>
         <Select
           className={classes.select}
