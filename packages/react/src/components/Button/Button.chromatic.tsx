@@ -14,3 +14,5 @@ const meta: Meta = {
 export default meta;
 
 export const Snapshots = createSingleStory(ButtonStories, meta);
+export const ColorsPressed = ButtonStories.ColorsPressed;
+export const ColorsHover = ButtonStories.ColorsHover;
