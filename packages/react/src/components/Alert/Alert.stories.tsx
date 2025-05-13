@@ -164,7 +164,11 @@ export const WrongLiveRegionReact: StoryFn<typeof Alert> = () => {
   return (
     <>
       {showAlert && (
-        <Alert data-color='warning' role='alert'>
+        <Alert
+          data-color='warning'
+          // Feil bruk: role="alert" ligger på selve varselet
+          role='alert'
+        >
           <Heading
             level={2}
             data-size='xs'
@@ -214,6 +218,7 @@ export const CorrectLiveRegionReact: StoryFn<typeof Alert> = () => {
   const [showAlert, setShowAlert] = useState(false);
   return (
     <>
+      {/* Korrekt bruk: role="alert" ligger på elementet der varselet dukker opp */}
       <div role='alert'>
         {showAlert && (
           <Alert data-color='warning'>

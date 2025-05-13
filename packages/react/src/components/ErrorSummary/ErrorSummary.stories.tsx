@@ -1,18 +1,23 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { expect, userEvent, within } from '@storybook/test';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Button } from '../Button';
 import { Textfield } from '../Textfield';
 
+import { createHtmlStory } from '@story-utils/createHtmlStory';
+import { formatReactSource } from '@story-utils/transformSource';
+import { withScrollHashBehavior } from '@story-utils/withScrollHashBehavior';
 import { ErrorSummary } from './';
+import showHideHtml from './html-examples/show-hide.html?raw';
 
 type Story = StoryFn<typeof ErrorSummary>;
 
 export default {
   title: 'Komponenter/ErrorSummary',
   component: ErrorSummary,
-} as Meta;
+  decorators: [withScrollHashBehavior],
+} satisfies Meta;
 
 export const Preview: Story = (args) => (
   <ErrorSummary {...args}>
@@ -76,8 +81,14 @@ WithForm.parameters = {
   customStyles: { display: 'grid', gap: 'var(--ds-size-4)' },
 };
 
-export const ShowHide: Story = () => {
+export const ShowHideReact: Story = () => {
   const [show, setShow] = useState(false);
+  const summaryRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (show) {
+      summaryRef.current?.focus();
+    }
+  }, [show]);
 
   return (
     <>
@@ -88,10 +99,12 @@ export const ShowHide: Story = () => {
           marginBottom: 'var(--ds-size-4)',
         }}
       >
-        <Button onClick={() => setShow(!show)}>{show ? 'Skjul' : 'Vis'}</Button>
+        <Button onClick={() => setShow(!show)}>
+          {show ? 'Skjul' : 'Send inn skjema'}
+        </Button>
       </div>
       {show && (
-        <ErrorSummary>
+        <ErrorSummary data-testid='show-hide' ref={summaryRef}>
           <ErrorSummary.Heading>
             For å gå videre må du rette opp følgende feil:
           </ErrorSummary.Heading>
@@ -113,10 +126,17 @@ export const ShowHide: Story = () => {
   );
 };
 
-ShowHide.play = async (ctx) => {
+ShowHideReact.play = async (ctx) => {
   const canvas = within(ctx.canvasElement);
   const button = canvas.getByRole('button');
   await userEvent.click(button);
-  const errorSummary = canvas.getByRole('alert');
+  const errorSummary = canvas.getByTestId('show-hide');
   await expect(errorSummary).toBeVisible();
+  await expect(errorSummary).toHaveFocus();
 };
+
+ShowHideReact.parameters = {
+  docs: { source: { type: 'code', transform: formatReactSource } },
+};
+
+export const ShowHideHtml = createHtmlStory(showHideHtml);
