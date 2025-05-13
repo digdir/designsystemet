@@ -66,8 +66,13 @@ export function createSingleStory<
         flexDirection: 'column',
         gap: 'var(--ds-size-2)',
       },
+      pseudo: {
+        hover: ['.hover'],
+        active: ['.active'],
+        focusVisible: ['.focusVisible'],
+      },
     },
-    /* play: async (ctx) => {
+    play: async (ctx) => {
       const canvas = ctx.canvasElement as HTMLElement;
       const stories = canvas.querySelectorAll('[data-pseudo-state]');
       Array.from(stories).map((story) => {
@@ -81,17 +86,12 @@ export function createSingleStory<
           Array.from(children).map(async (child) => {
             if (action) {
               Object.entries(action).map(async ([key, value]) => {
-                if (key === 'hover') {
-                  await userEvent.hover(child);
-                }
-                if (key === 'active') {
-                  await userEvent.click(child);
-                }
+                child.classList.add(key);
               });
             }
           });
         }
       });
-    }, */
+    },
   };
 }
