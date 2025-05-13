@@ -33,9 +33,13 @@ export function createSingleStory<
                   ...storyStyles,
                 }}
                 data-pseudo-state={
-                  story.parameters?.pseudo
-                    ? JSON.stringify(story.parameters.pseudo)
-                    : undefined
+                  story.parameters?.pseudo?.hover
+                    ? 'hover'
+                    : story.parameters?.pseudo?.active
+                      ? 'active'
+                      : story.parameters?.pseudo?.focusVisible
+                        ? 'focusVisible'
+                        : undefined
                 }
               >
                 {children}
@@ -67,31 +71,10 @@ export function createSingleStory<
         gap: 'var(--ds-size-2)',
       },
       pseudo: {
-        hover: ['.hover'],
-        active: ['.active'],
-        focusVisible: ['.focusVisible'],
+        hover: ['[data-pseudo-state="hover"] > *'],
+        active: ['[data-pseudo-state="active"] > *'],
+        focusVisible: ['[data-pseudo-state="focusVisible"] > *'],
       },
-    },
-    play: async (ctx) => {
-      const canvas = ctx.canvasElement as HTMLElement;
-      const stories = canvas.querySelectorAll('[data-pseudo-state]');
-      Array.from(stories).map((story) => {
-        const pseudoState = story.getAttribute('data-pseudo-state');
-        let action: string | null = null;
-        if (pseudoState) {
-          action = JSON.parse(pseudoState);
-        }
-        if (action) {
-          const children = story.children;
-          Array.from(children).map(async (child) => {
-            if (action) {
-              Object.entries(action).map(async ([key, value]) => {
-                child.classList.add(key);
-              });
-            }
-          });
-        }
-      });
     },
   };
 }
