@@ -13,7 +13,7 @@ Vi bruker `Checkbox` for å gi brukerne valg, der de kan velge ett eller flere a
 <Primary />
 <Controls />
 
-## Slik bruker du Checkbox
+## Bruk
 
 ```tsx
 import { Checkbox } from '@digdir/designsystemet-react';
@@ -27,7 +27,7 @@ import { Checkbox } from '@digdir/designsystemet-react';
 </Fieldset>;
 ```
 
-## Eksempler
+## Kodeeksempler
 
 ### Kun ett valg
 
@@ -37,11 +37,9 @@ Hvis brukeren skal bekrefte noe, men ikke velge noe, kan en `Checkbox` stå alen
 
 ### Gruppering av flere valg
 
-Bruk `Fieldset` og `useCheckboxGroup` for gruppering av flere valg.
+Bruk `Fieldset` og `useCheckboxGroup` for gruppering av flere valg. [Les mer om `useCheckboxGroup`](/docs/utilities-usecheckboxgroup--docs)
 
 <Canvas of={CheckboxStories.Group} />
-
-[Les mer om `useCheckboxGroup`](/docs/utilities-usecheckboxgroup--docs)
 
 ### Velge alle alternativer med en overordnet Checkbox
 
@@ -83,26 +81,27 @@ Nav har en god forklaring på [hvorfor deaktiverte tilstander er problematisk](h
 
 <Canvas of={CheckboxStories.Disabled} />
 
-## Retningslinjer for Checkbox
+## Retningslinjer
+Bruk `Checkbox` når flere svaralternativer kan velges samtidig.
 
 **Passer til å**
 
-- velge ett eller flere alternativer
+- velge ett eller flere alternativer i skjemaer
+- godta vilkår for en tjeneste eller lignende funksjonalitet
 
 **Passer ikke til å**
 
-- velge gjensidig utelukkende alternativer, bruk heller [`Radio`](/docs/komponenter-radio--docs), [`Select`](/docs/komponenter-select--docs) eller [`Suggestion`](/docs/komponenter-suggestion--docs)
+- velge bare ett alternativ, bruk heller [`Radio`](/docs/komponenter-radio--docs), [`Select`](/docs/komponenter-select--docs) eller [`Suggestion`](/docs/komponenter-suggestion--docs)
 - velge mellom flere enn 7 svaralternativer, bruk heller [`MultiSuggestion`](/docs/komponenter-multisuggestion--docs)
+- slå noe av eller på, bruk heller [`Switch`](/docs/komponenter-switch--docs)
 
 
 ### Rekkefølge
 
-Vær bevisst på rekkefølgen du velger for alternativene. Ofte er en alfabetisk sortering det beste,
-men dersom det finnes en logisk rekkefølge — f.eks. _vinter, vår, sommer, høst_ — bør du
+Vær bevisst på rekkefølgen du velger for alternativene. Ofte er en alfabetisk sortering det beste, men dersom det finnes en logisk rekkefølge, f.eks. _vinter, vår, sommer, høst_, bør du
 heller bruke denne.
 
-I noen tilfeller kan det være hjelpsomt å ha de mest aktuelle alternativene først, men vær forsiktig
-så rekkefølgen ikke påvirker svaret eller gjør det vanskelig å finne ønsket alternativ.
+I noen tilfeller kan det være hjelpsomt å ha de mest aktuelle alternativene først, men vær forsiktig så rekkefølgen ikke påvirker svaret eller gjør det vanskelig å finne ønsket alternativ.
 
 ### Plassering
 
@@ -128,17 +127,12 @@ se godt nok, er en horisontal liste ekstra vanskelig.
   />
 </Stack>
 
-## Tekst i Checkbox
+## Tekst 
 
-I et skjema er ofte forklaringen formulert som et spørsmål. Vurder om du trenger å ha med informasjon om at brukeren kan velge flere svaralternativer.
+I et skjema er ofte forklaringen formulert som et spørsmål. I noen sammenhenger kan det være uklart for brukeren om det er lov å velge flere alternativer, eller om de må velge kun ett. Vurder derfor om du bør spesifisere at brukeren kan velge flere svaralternativer.
 
 Bruk et aktivt og positivt språk. Tenk på innholdet som en samtale. Når `legend`
-er en setning, kan du skrive den i du-form og svaralternativene (`label`) i jeg-form.
-
-- `legend` og eventuell `description` plasseres før listen med svaralternativ kommer.
-- `label` til hver boks må beskrive alternativet.
-- `label` skal stå til høyre for boksen. Hvis det er nødvendi med ekstra beskrivelse, kan du ha en `description` under `label` .
-- `label` skal alltid ha stor forbokstav.
+er en setning, kan du skrive den i du-form og svaralternativene (`label`) i jeg-form. `label` skal alltid ha stor forbokstav.
 
 <img
   src='/img/component-guidelines/checkbox/checkbox-anatomy.png'
