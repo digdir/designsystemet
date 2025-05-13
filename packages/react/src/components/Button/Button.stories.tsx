@@ -53,18 +53,6 @@ export const Colors: StoryFn<typeof Button> = () => (
   </>
 );
 
-export const ColorsHover = Colors.bind({});
-ColorsHover.parameters = {
-  pseudo: { hover: true },
-  chromatic: { modes: { mobile: { disable: true } } },
-};
-
-export const ColorsPressed = Colors.bind({});
-ColorsPressed.parameters = {
-  pseudo: { active: true },
-  chromatic: { modes: { mobile: { disable: true } } },
-};
-
 export const Icons: StoryFn<typeof Button> = () => (
   <>
     <Button icon aria-label='Kun ikon'>
