@@ -7,7 +7,7 @@ import * as CardStories from './Card.stories';
 
 # Card
 
-Med `Card` kan vi fremheve informasjon eller oppgaver som hører sammen. `Card` finnes i flere varianter og kan inneholde tekst, bilde, tekstfelt, knapper og lenker. 
+Med `Card` kan vi fremheve informasjon eller oppgaver som hører sammen. `Card` finnes i to varianter og kan inneholde tekst, bilde, tekstfelt, knapper og lenker. 
 
 
 <Primary />
@@ -27,7 +27,7 @@ import { Card } from '@digdir/designsystemet-react';
 ## Kodeeksempler
 
 ### Med `Block`
-Bruk flere `Card.Block` hvis du vil dele opp kortet med skillelinjer eller legge til bilder eller video som går ut i kanten. Merk at når du bruker `Card.Block`, må alt innhold ligge inni en `Card.Block` – det kan ikke plasseres direkte i `Card`.
+Bruk flere `Card.Block` hvis du vil dele opp kortet med skillelinjer eller legge til bilder eller video som går ut i kanten. Merk at når du bruker `Card.Block`, må alt innhold ligge inni `Card.Block` – ikke plasseres direkte i `Card`.
 
 
 <Canvas of={CardStories.Media} />
@@ -39,21 +39,21 @@ Bruk flere `Card.Block` hvis du vil dele opp kortet med skillelinjer eller legge
 Det er to ulike måter å gjøre dette på.
 
 #### 1. Kort med lenke i tittel
-Dersom kortet skal lenke til en annen side, kan du legge en lenke inn i kortets tittel. Hele kortet blir da automatisk klikkbart, men skjermlesere får en [bedre brukeropplevelse enn dersom hele kortet var en lenke](https://adrianroselli.com/2020/02/block-links-cards-clickable-regions-etc.html).
+Dersom kortet skal lenke til en annen side, kan du legge en lenke i kortets tittel. Hele kortet blir da automatisk klikkbart, men skjermlesere får en [bedre brukeropplevelse enn dersom hele kortet var en lenke](https://adrianroselli.com/2020/02/block-links-cards-clickable-regions-etc.html).
 
-I dette eksempelet rendrer Card med lenke `<a>` inni tittel elementet. Dette er nyttig når Card inneholder tekst eller media, og skal navigere til en annen side.
+I dette eksempelet rendrer `Card` `<a>` inni tittel-elementet. Dette er nyttig når `Card` inneholder tekst eller media, og skal navigere til en annen side.
 
 <Canvas of={CardStories.WithLink} />
 
 #### 2. Kort som er en lenke
 Hele kortet kan bli en lenke ved å benytte `asChild`. Dette er nyttig når du ønsker at all tekst og innhold i `Card` blir lest opp av skjermlesere som én sammenhengende lenke.
 
-I dette eksempelet rendrer `Card` som lenke `<a>`. 
+I dette eksempelet rendrer `Card` som `<a>`. 
 
 <Canvas of={CardStories.AsLink} />
 
 ### Kort som er en knapp
-I dette eksempelet rendrer `Card` som knapp `<button>`. Dette er nyttig når `Card` inneholder lite tekst, og skal åpne en Modal eller utføre annen handling på samme side.
+I dette eksempelet rendrer `Card` som `<button>`. Dette er nyttig når `Card` inneholder lite tekst, og skal åpne en dialog eller utføre annen handling på samme side.
 
 <Canvas of={CardStories.AsButton} />
 
@@ -64,7 +64,7 @@ I dette eksempelet rendrer `Card` som knapp `<button>`. Dette er nyttig når `Ca
 
 ### Farger
 
-Viser forskjellige varianter av `Card`-komponenten.
+`Card` kommer i alle temafarger, og variantene default og tinted.
 
 <Canvas of={CardStories.Variants} />
 
@@ -95,7 +95,7 @@ Hvordan du utformer teksten kommer an på konteksten. Kortet kan være en inngan
 Unngå unødvendige detaljer, og sørg for at tittel og beskrivelse henger sammen og gir mening i sammenheng med resten av innholdet.
 
 ## Tilgjengelighet
-Dersom kortet er en link med bilde, så skal **ikke** bildet være informativt, og `alt` attributtet skal være tomt.
+Dersom hele kortet er en lenke med bilde, så skal **ikke** bildet være informativt, og `alt` attributtet skal være tomt.
 
 ## CSS Variabler
 
