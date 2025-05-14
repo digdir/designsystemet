@@ -26,7 +26,6 @@ export default function Page() {
   }[] = [
     { name: 'Farger', value: 'colorsystem' },
     { name: 'Kontrast', value: 'contrast' },
-    { name: 'Typografi', value: 'typography' },
     { name: 'Eksempler', value: 'overview' },
   ];
 

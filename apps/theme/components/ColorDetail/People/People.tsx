@@ -8,7 +8,7 @@ export const People = () => {
         Eksempel som viser de tre base fargene
       </Paragraph>
       <div className={classes.panel}></div>
-      <img className={classes.img} src='img/couple-transparant.png' alt='' />
+      <img className={classes.img} src='img/dog.png' alt='' />
     </div>
   );
 };

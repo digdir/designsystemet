@@ -15,6 +15,7 @@
   gap: 8px;
   font-weight: 500;
   transition: 0.1s all;
+  position: relative;
 }
 
 .card:hover {
@@ -34,4 +35,19 @@
 
 .title {
   margin-bottom: 12px;
+}
+
+.blurry:after {
+  background-color: var(--ds-color-neutral-surface-default);
+  opacity: 0.75;
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.blurry {
+  pointer-events: none;
 }

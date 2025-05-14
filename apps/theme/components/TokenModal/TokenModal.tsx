@@ -103,7 +103,7 @@ export const TokenModal = () => {
         }}
       >
         <RocketIcon title='a11y-title' />
-        PROTOTYPE: Kopier hex koder manuelt for testing i Figma
+        Prototype: Kopier hex koder manuelt for testing i Figma
       </Dialog.Trigger>
       <Dialog
         className={classes.modal}

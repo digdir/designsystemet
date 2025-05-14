@@ -51,8 +51,9 @@
 .img {
   position: absolute;
   z-index: 2;
-  width: 65%;
+  width: 70%;
   height: auto;
-  left: 90px;
-  bottom: 40px;
+  left: 75px;
+  bottom: 175px;
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.2));
 }
