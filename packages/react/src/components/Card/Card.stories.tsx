@@ -109,13 +109,13 @@ export const Media: Story = () => (
     <Card data-color='neutral'>
       <Card.Block>
         <iframe
-        data-chromatic='ignore'
-        src='https://player.vimeo.com/video/863563441?app_id=122963&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1'
-        width='320px'
-        height='179px'
-        allow='autoplay; fullscreen; picture-in-picture'
-        title='30 år med digitalt innsyn'
-      ></iframe>
+          data-chromatic='ignore'
+          src='https://player.vimeo.com/video/863563441?app_id=122963&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1'
+          width='320px'
+          height='179px'
+          allow='autoplay; fullscreen; picture-in-picture'
+          title='30 år med digitalt innsyn'
+        ></iframe>
       </Card.Block>
       <Card.Block>
         <Heading>Card Neutral</Heading>
@@ -288,9 +288,7 @@ export const AsLink: Story = (args) => (
         rel='noopener noreferrer'
       >
         <Card.Block>
-          <Paragraph>
-            Link card with asChild
-          </Paragraph>
+          <Paragraph>Link card with asChild</Paragraph>
         </Card.Block>
       </a>
     </Card>
