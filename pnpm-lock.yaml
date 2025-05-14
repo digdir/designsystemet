@@ -279,8 +279,8 @@ importers:
         specifier: 3.1.2
         version: 3.1.2(@vitest/browser@3.1.2)(vitest@3.1.2)
       '@whitespace/storybook-addon-html':
-        specifier: ^6.1.1
-        version: 6.1.1(prettier@3.5.3)(react-syntax-highlighter@15.6.1(react@19.1.0))
+        specifier: ^7.0.0
+        version: 7.0.0(storybook@8.6.12(prettier@3.5.3))
       axe-playwright:
         specifier: ^2.1.0
         version: 2.1.0(playwright@1.52.0)
@@ -2654,11 +2654,10 @@ packages:
   '@webassemblyjs/wast-printer@1.14.1':
     resolution: {integrity: sha512-kPSSXE6De1XOR820C90RIo2ogvZG+c3KiHzqUoO/F34Y2shGzesfqv7o57xrxovZJH/MetF5UjroJ/R/3isoiw==}
 
-  '@whitespace/storybook-addon-html@6.1.1':
-    resolution: {integrity: sha512-sq/9c6s4PXugl//Q5iFwKoHF3tBDTEfJQubb62HWspF+CqBrDLHVEh7VYoEjubm5LjihxdFV3+mjj8Ck6bnoHQ==}
+  '@whitespace/storybook-addon-html@7.0.0':
+    resolution: {integrity: sha512-GCpy1Xch7v3UZ/TmKUFnF0lFEt6qct/zqO/64LfoEOwr3zV5YDdidHBURSNp5qK8Q68wPLs/nVhbAzAEvudR8w==}
     peerDependencies:
-      prettier: ^3.0.0
-      react-syntax-highlighter: ^15.0.0
+      storybook: ^8.2.0
 
   '@xtuc/ieee754@1.2.0':
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
@@ -8551,10 +8550,9 @@ snapshots:
       '@webassemblyjs/ast': 1.14.1
       '@xtuc/long': 4.2.2
 
-  '@whitespace/storybook-addon-html@6.1.1(prettier@3.5.3)(react-syntax-highlighter@15.6.1(react@19.1.0))':
+  '@whitespace/storybook-addon-html@7.0.0(storybook@8.6.12(prettier@3.5.3))':
     dependencies:
-      prettier: 3.5.3
-      react-syntax-highlighter: 15.6.1(react@19.1.0)
+      storybook: 8.6.12(prettier@3.5.3)
 
   '@xtuc/ieee754@1.2.0': {}
 
