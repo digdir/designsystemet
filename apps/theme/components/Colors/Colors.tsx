@@ -69,6 +69,18 @@ export const Colors = () => {
       };
     });
 
+    const updatedStatusColors = colors.status.map((color) => {
+      const updatedColors = generateColorSchemes(
+        color.colors.light[11].hex,
+        color.colorMetadata,
+      );
+      return {
+        name: color.name,
+        colors: updatedColors,
+        colorMetadata: color.colorMetadata,
+      };
+    });
+
     updatedMainColors.forEach((colorTheme, index) => {
       updateColorTheme(colorTheme, index, 'main');
     });
@@ -79,6 +91,9 @@ export const Colors = () => {
 
     updatedSupportColors.forEach((colorTheme, index) => {
       updateColorTheme(colorTheme, index, 'support');
+    });
+    updatedStatusColors.forEach((colorTheme, index) => {
+      updateColorTheme(colorTheme, index, 'status');
     });
   }, [onColorThemeChange]);
 
