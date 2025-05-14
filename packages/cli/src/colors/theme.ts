@@ -3,7 +3,7 @@ import * as R from 'ramda';
 import { colorMetadata, getColorMetadataByNumber } from './colorMetadata.js';
 import type { CssColor } from './types.js';
 import type { Color, ColorMetadataByName, ColorNumber, ColorScheme, ThemeInfo } from './types.js';
-import { getLightnessFromHex, getLuminanceFromLightness } from './utils.js';
+import { getBaseDarkLightness, getLightnessFromHex, getLuminanceFromLightness } from './utils.js';
 
 export const RESERVED_COLORS = [
   'neutral',
@@ -85,7 +85,11 @@ export const generateColorSchemes = (color: CssColor, colorMetaData?: typeof col
 const generateBaseColors = (color: CssColor, colorScheme: ColorScheme, colorMetaData: ColorMetadataByName) => {
   let colorLightness = getLightnessFromHex(color);
   if (colorScheme !== 'light') {
-    colorLightness = colorLightness <= 30 ? 70 : 100 - colorLightness;
+    if (colorMetaData['base-default'].lightness.dark === -1) {
+      colorLightness = getBaseDarkLightness(color);
+    } else {
+      colorLightness = colorMetaData['base-default'].lightness.dark;
+    }
   }
 
   const step = colorMetaData['base-default'].baseModifier[colorScheme];

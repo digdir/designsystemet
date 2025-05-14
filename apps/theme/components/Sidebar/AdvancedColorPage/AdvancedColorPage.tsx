@@ -2,6 +2,7 @@ import { Button, Heading, ToggleGroup } from '@digdir/designsystemet-react';
 import {
   type CssColor,
   generateColorSchemes,
+  getBaseDarkLightness,
 } from '@digdir/designsystemet/color';
 import { ChevronLeftIcon, PaletteIcon } from '@navikt/aksel-icons';
 import { useEffect, useState } from 'react';
@@ -33,6 +34,7 @@ export const AdvancedColorPage = ({
     getColorTheme(index, colorType),
   );
   const updateColorTheme = useThemeStore((state) => state.updateColorTheme);
+  const [baseDarkLightness, setBaseDarkLightness] = useState(-1);
 
   const handleStepChange = (value: number) => {
     if (currentTheme) {
@@ -57,6 +59,12 @@ export const AdvancedColorPage = ({
   useEffect(() => {
     setCurrentTheme(getColorTheme(index, colorType));
   }, [index, colorType, getColorTheme]);
+
+  useEffect(() => {
+    setBaseDarkLightness(
+      parseInt(getBaseDarkLightness(color as CssColor).toFixed(2)),
+    );
+  }, [currentTheme]);
   return (
     <div>
       {saturationPage && (
@@ -126,14 +134,64 @@ export const AdvancedColorPage = ({
               <LightnessInput
                 label='Base Default lightness'
                 description='Som standard blir lightness for Base Default fargen satt til det motsatt av det den er i lys modus.'
-                value={66}
-                initialValue={66}
+                value={
+                  currentTheme?.colorMetadata['base-default'].lightness[
+                    colorScheme
+                  ] === -1
+                    ? baseDarkLightness
+                    : (currentTheme?.colorMetadata['base-default'].lightness[
+                        colorScheme
+                      ] ?? baseDarkLightness)
+                }
+                initialValue={baseDarkLightness}
+                onChange={(value) => {
+                  if (currentTheme) {
+                    currentTheme.colorMetadata['base-default'].lightness[
+                      colorScheme
+                    ] = value;
+                    const colors = generateColorSchemes(
+                      color as CssColor,
+                      currentTheme.colorMetadata,
+                    );
+
+                    updateColorTheme(
+                      {
+                        ...currentTheme,
+                        colors,
+                      },
+                      index,
+                      colorType,
+                    );
+                  }
+                }}
+                onReset={() => {
+                  const test = getBaseDarkLightness(color as CssColor).toFixed(
+                    2,
+                  );
+                  if (currentTheme) {
+                    currentTheme.colorMetadata['base-default'].lightness.dark =
+                      parseInt(test);
+                    const colors = generateColorSchemes(
+                      color as CssColor,
+                      currentTheme.colorMetadata,
+                    );
+
+                    updateColorTheme(
+                      {
+                        ...currentTheme,
+                        colors,
+                      },
+                      index,
+                      colorType,
+                    );
+                  }
+                }}
               />
             )}
 
             <LightnessInput
               label='Steg modifikator'
-              description='Velg hvor mye lightness skal øke eller minske for hvert steg for Base Hover- og Active fargene.'
+              description='Velg hvor mye lightness som skal øke eller minske for hvert steg for Base Hover- og Active fargene.'
               value={
                 currentTheme?.colorMetadata['base-default'].baseModifier[
                   colorScheme

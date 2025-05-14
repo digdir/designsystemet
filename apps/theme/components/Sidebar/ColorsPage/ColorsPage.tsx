@@ -1,4 +1,8 @@
-import { colorMetadata, generateColorSchemes } from '@digdir/designsystemet';
+import {
+  colorMetadata,
+  generateColorSchemes,
+  getBaseDarkLightness,
+} from '@digdir/designsystemet';
 import { Button, Checkbox, Heading } from '@digdir/designsystemet-react';
 import type { CssColor } from '@digdir/designsystemet/color';
 import { ChevronLeftIcon, CogIcon, PlusIcon } from '@navikt/aksel-icons';
@@ -237,6 +241,9 @@ export const ColorsPage = () => {
             setColor(color);
             const colorTheme = getColorTheme(index, colorType);
             if (!colorTheme) return;
+            colorTheme.colorMetadata['base-default'].lightness.dark = parseInt(
+              getBaseDarkLightness(color.hex as CssColor).toFixed(2),
+            );
             const updatedColors = generateColorSchemes(
               color.hex as CssColor,
               colorTheme.colorMetadata,

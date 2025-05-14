@@ -4,7 +4,11 @@ import {
   Heading,
   Paragraph,
 } from '@digdir/designsystemet-react';
-import { generateColorSchemes } from '@digdir/designsystemet/color';
+import {
+  type CssColor,
+  generateColorSchemes,
+  getBaseDarkLightness,
+} from '@digdir/designsystemet/color';
 import { ChevronDownIcon } from '@navikt/aksel-icons';
 import { useEffect } from 'react';
 import { useThemeStore } from '../../store';
@@ -26,7 +30,10 @@ export const Colors = () => {
   );
 
   useEffect(() => {
-    const updatedMainColors = colors.main.map((color, index) => {
+    const updatedMainColors = colors.main.map((color) => {
+      color.colorMetadata['base-default'].lightness.dark = getBaseDarkLightness(
+        color.colors.light[11].hex as CssColor,
+      );
       const updatedColors = generateColorSchemes(
         color.colors.light[11].hex,
         color.colorMetadata,
@@ -38,7 +45,7 @@ export const Colors = () => {
       };
     });
 
-    const updatedNeutralColors = colors.neutral.map((color, index) => {
+    const updatedNeutralColors = colors.neutral.map((color) => {
       const updatedColors = generateColorSchemes(
         color.colors.light[11].hex,
         color.colorMetadata,
@@ -50,7 +57,7 @@ export const Colors = () => {
       };
     });
 
-    const updatedSupportColors = colors.support.map((color, index) => {
+    const updatedSupportColors = colors.support.map((color) => {
       const updatedColors = generateColorSchemes(
         color.colors.light[11].hex,
         color.colorMetadata,
