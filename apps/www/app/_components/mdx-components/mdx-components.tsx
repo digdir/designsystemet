@@ -37,7 +37,11 @@ const defaultComponents = {
   DetailsContent,
   DetailsSummary,
   Card,
-  Table,
+  Table: (props: TableProps) => (
+    <div className={classes.tableWrapper}>
+      <Table {...props} />
+    </div>
+  ),
   TableHead,
   TableRow,
   TableHeaderCell,
@@ -92,7 +96,9 @@ const defaultComponents = {
     );
   },
   table: (props: TableProps) => (
-    <Table data-color='neutral' border zebra {...props} />
+    <div className={classes.tableWrapper}>
+      <Table data-color='neutral' border zebra {...props} />
+    </div>
   ),
 };
 
