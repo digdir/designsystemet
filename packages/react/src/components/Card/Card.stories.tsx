@@ -1,19 +1,10 @@
 import cat1 from '@assets/img/cats/Cat 1.jpg';
 import cat5 from '@assets/img/cats/Cat 5.jpg';
-import { PlusIcon, TrashFillIcon } from '@navikt/aksel-icons';
+import {} from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { Fragment } from 'react/jsx-runtime';
-import {
-  Button,
-  Card,
-  Field,
-  Heading,
-  Label,
-  Paragraph,
-  Select,
-  Textfield,
-} from '../../';
+import { Card, Heading, Paragraph } from '../../';
 
 type Story = StoryFn<typeof Card>;
 
@@ -172,63 +163,6 @@ export const Video: Story = () => (
     </Card.Block>
   </Card>
 );
-
-const options = [
-  { value: 'daglig leder', label: 'Dalig leder' },
-  { value: 'forretningsfører', label: 'Forretningsfører' },
-];
-
-export const Composed: Story = () => (
-  <>
-    <Card>
-      <Card.Block>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-        >
-          <Heading>Rolle 1</Heading>
-          <Button variant='secondary' data-color='danger' data-size='sm'>
-            <TrashFillIcon aria-hidden />
-            Fjern
-          </Button>
-        </div>
-      </Card.Block>
-      <Card.Block>
-        <Field>
-          <Label>Velg rolle</Label>
-          <Select>
-            {options.map(({ value, label }, index) => (
-              <Select.Option key={index} value={value}>
-                {label}
-              </Select.Option>
-            ))}
-          </Select>
-        </Field>
-        <Textfield label='Fødsels- eller d-nummer' />
-        <Textfield label='Etternavn' />
-      </Card.Block>
-      <Card.Block>
-        <Button variant='secondary' data-color='accent' data-size='sm'>
-          Legg til rolle
-          <PlusIcon aria-hidden />
-        </Button>
-      </Card.Block>
-    </Card>
-  </>
-);
-
-Composed.parameters = {
-  customStyles: {
-    display: 'grid',
-    gap: 'var(--ds-size-4)',
-    gridColumn: '1 / -1',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px , 1fr))',
-    width: '100%',
-  },
-};
 
 export const WithLink: Story = (args) => (
   <>
