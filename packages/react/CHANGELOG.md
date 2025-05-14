@@ -1,5 +1,17 @@
 # Change Log
 
+## 1.0.6
+
+### Patch Changes
+
+- Updated non-major dependencies ([#3514](https://github.com/digdir/designsystemet/pull/3514))
+
+- **Tooltip**: Change element to `span` to be able to render in `p` and similar elements ([#3577](https://github.com/digdir/designsystemet/pull/3577))
+
+- `ErrorSummary`: no longer sets `aria-live`, `aria-relevant` and `role` attributes. This implementation caused [accessibility issues](https://github.com/digdir/designsystemet/issues/3417). See the updated accesibility documentation for `ErrorSummary` for guidance on how to properly announce the content to screen readers. ([#3555](https://github.com/digdir/designsystemet/pull/3555))
+
+- Export `LabelRequired` type ([#3564](https://github.com/digdir/designsystemet/pull/3564))
+
 ## 1.0.5
 
 ## 1.0.4

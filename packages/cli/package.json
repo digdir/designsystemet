@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "engines": {
@@ -14,7 +14,9 @@
   "license": "MIT",
   "type": "module",
   "main": "./dist/src/index.js",
-  "files": ["./dist/**"],
+  "files": [
+    "./dist/**"
+  ],
   "bin": "dist/bin/designsystemet.js",
   "exports": {
     ".": {
