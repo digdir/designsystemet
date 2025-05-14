@@ -40,7 +40,7 @@ export const customStylesDecorator: Decorator = (Story, ctx) => {
   return (
     <div
       data-color-scheme={ctx.globals.colorScheme}
-      className='storybook-decorator'
+      data-storybook-decorator
       style={{
         boxSizing: 'border-box',
         overflow: 'hidden',
