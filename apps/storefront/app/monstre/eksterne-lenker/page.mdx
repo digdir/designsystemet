@@ -26,9 +26,9 @@ export default ({ children }) => (
 Lenker er en viktig del av navigasjonen på nett, og måten vi merker dem på påvirker brukeropplevelsen. I denne artikkelen går vi gjennom hvordan vi bør merke lenker og hvilke språk- og designprinsipper vi bør følge. Målet er å skape en mer forutsigbar og tilgjengelig brukeropplevelse.
 
 ### Eksterne lenker
-Eksterne lenker leder brukeren til en annen nettside eller et annet domene enn det de befinner seg på. Når en bruker klikker på en ekstern lenke, forlater de det opprinnelige nettstedet og åpner innhold fra en annen aktør eller tjeneste.
+Eksterne lenker leder brukeren til en annen nettside. Når en bruker klikker på en ekstern lenke, forlater de det opprinnelige nettstedet og åpner innhold fra en annen aktør eller tjeneste.
 
-Det har variert hvordan  eksterne lenker blir markert på ulike nettsteder. Noen bruker et ikon for å angi at det er en ekstern lenke, mens andre legger til tekst eller åpner lenken i en ny fane. Det at vi ikke praktiserer dette på samme måte kan skape forvirring for brukerne, spesielt når de ikke får tydelig informasjon om hva som skjer når de klikker på en lenke.
+Det har variert hvordan eksterne lenker blir markert på ulike nettsteder. Noen bruker et ikon for å angi at det er en ekstern lenke, mens andre bruker tekst. Noen åpner lenken i en ny fane, andre i samme. Det at vi ikke praktiserer dette på samme måte kan skape forvirring for brukerne, spesielt når de ikke får tydelig informasjon om hva som skjer når de klikker på en lenke.
 
 For å skape en forutsigbar og god brukeropplevelse bør vi gi brukeren informasjon om:
 
@@ -36,11 +36,11 @@ For å skape en forutsigbar og god brukeropplevelse bør vi gi brukeren informas
 * Oppførsel - for eksempel om lenken åpner i ny fane, eller hvis den starter en spesiell handling som telefonsamtale eller e-post.
 
 ## Språk
-Lenketeksten skal beskrive formålet med lenken og da er konteksten viktig. I løpende tekst bør lenken være en naturlig del av setningen og gi mening også når den leses isolert. I en liste eller meny kan lenken stå mer fritt, men den må fortsatt være tydelig og gi brukeren en klar idé om hva de kommer til.
+Lenketeksten skal beskrive formålet med lenken og da er konteksten viktig. I løpende tekst bør lenken være en naturlig del av setningen og gi mening også når den leses isolert. I en liste eller meny kan lenken stå mer fritt, men den må fortsatt være tydelig og gi brukerne en klar idé om hva de kommer til.
 
-* Unngå “gå til” eller “klikk her” i lenketeksten. Det er allerede tydelig at det er en lenke. 
-* Unngå å bruke ordet “lenke” i lenketekster. Du risikerer da at skjermlesere oppgir “lenke” flere ganger.
-* Ikke bruk kun "Les mer" som lenketekst. Ta med konteksten i lenketeksten, for eksempel “Skattemeldingen kan du lese mer om hos Skatteetaten”
+* Unngå “gå til” eller «klikk her» i lenketeksten. Det er allerede tydelig at det er en lenke. 
+* Unngå å bruke ordet «lenke» i lenketekster. Du risikerer da at skjermlesere oppgir “lenke” flere ganger.
+* Ikke bruk kun Les mer» som lenketekst. Ta med konteksten i lenketeksten, for eksempel «Skattemeldingen kan du lese mer om hos Skatteetaten»
 * Bruk så korte lenketekster som mulig. Det kan være vanskelig for folk å lese lange tekster med underlinje, særlig når en lenke bryter over flere linjer.
 * Ikke bruk lenkens adresse (URL) som lenketekst. Det er slitsomt for folk som bruker skjermlesere å få adressen lest opp tegn for tegn.
 * Pass på at du ikke har flere lenker med samme lenketekst på samme side. Det blir vanskelig for folk som bruker skjermleser eller leselist når lenkene blir vist i en egen lenkeliste. Unntaket kan være hvis det er flere lenker som går til samme URL-adresse.
@@ -76,7 +76,7 @@ Lenketeksten skal beskrive formålet med lenken og da er konteksten viktig. I l�
     </TableRow>
     <TableRow>
       <TableCell>
-        [Klikk her for å lese mer om saken hos uio.no](https://www.uio.no/studier/bli-student/hvordan-velge/tre-tips.html) (Unngå "klikk her" + "Saken" sier ikke noe om hva det gjelder)
+        [Klikk her for å lese mer om saken hos uio.no](https://www.uio.no/studier/bli-student/hvordan-velge/tre-tips.html) (Unngå «klikk her» + «Saken» sier ikke noe om hva det gjelder)
       </TableCell>
       <TableCell>
         [Tre tips til deg som skal velge studier (uio.no)](https://www.uio.no/studier/bli-student/hvordan-velge/tre-tips.html) (Overskrift brukt som lenke)
@@ -119,7 +119,7 @@ Skjermlesere lar brukere navigere gjennom en liste over lenker. Derfor må lenke
   alt="Eksempel fra JAWS skjermleser med lenker som ikke er beskrivende"
   boxShadow={false}
   dataUnstyled
-  caption='Hvor kommer man når man trykker "Vis mer" eller "Lenke til dokument"? Ikke godt å si uten mer kontekst.'
+  caption='Hvor kommer man når man trykker «Vis mer» eller «Lenke til dokument»? Ikke godt å si uten mer kontekst.'
 />
 
 <Image
@@ -127,7 +127,7 @@ Skjermlesere lar brukere navigere gjennom en liste over lenker. Derfor må lenke
   alt="Eksempel fra JAWS skjermleser med lenker som kun viser Les mer"
   boxShadow={false}
   dataUnstyled
-  caption='Se for deg en lenkeliste med artikler der alle har "Les mer". Slik ser det ut i en lenkeliste. Ikke godt å si hvilken artikkel man kommer til.'
+  caption='Se for deg en lenkeliste med artikler der alle har «Les mer». Slik ser det ut i en lenkeliste. Ikke godt å si hvilken artikkel man kommer til.'
 />
 
 ## Design og opplevelse
@@ -172,7 +172,7 @@ Dersom ikonet inneholder meningsbærende informasjon som ikke kommer frem i lenk
 ### Hvor fører lenken 
 Det er ikke alltid nødvendig å merke at en lenke er ekstern. Ofte fremgår det tydelig av konteksten. Hvis lenketeksten for eksempel er “Flekkefjord kommune”, vil brukeren naturlig forvente at lenken leder til kommunens nettsider. I slike tilfeller er det unødvendig å legge til ekstra informasjon.
 
-Dersom lenken viser til et spesifikt innhold hos kommunen, som for eksempel informasjon om parkering, kan lenken være "[Parkering i Flekkefjord kommune](https://www.flekkefjord.kommune.no/parkering.504251.no.html)" eller "[Parkering (flekkefjord.kommune.no)](https://www.flekkefjord.kommune.no/parkering.504251.no.html)" Det viktigste er at brukeren ikke blir overrasket over hvor de havner etter å ha klikket.
+Dersom lenken viser til et spesifikt innhold hos kommunen, som for eksempel informasjon om parkering, kan lenken være «[Parkering i Flekkefjord kommune](https://www.flekkefjord.kommune.no/parkering.504251.no.html)» eller «[Parkering (flekkefjord.kommune.no)](https://www.flekkefjord.kommune.no/parkering.504251.no.html)» Det viktigste er at brukeren ikke blir overrasket over hvor de havner etter å ha klikket.
 
 ### Lenke til filer
 

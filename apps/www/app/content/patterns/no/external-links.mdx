@@ -9,7 +9,7 @@ date: 2025-05-12
 Lenker er en viktig del av navigasjonen på nett, og måten vi merker dem på påvirker brukeropplevelsen. I denne artikkelen går vi gjennom hvordan vi bør merke lenker og hvilke språk- og designprinsipper vi bør følge. Målet er å skape en mer forutsigbar og tilgjengelig brukeropplevelse.
 
 ### Eksterne lenker
-Eksterne lenker leder brukeren til en annen nettside eller et annet domene enn det de befinner seg på. Når en bruker klikker på en ekstern lenke, forlater de det opprinnelige nettstedet og åpner innhold fra en annen aktør eller tjeneste.
+Eksterne lenker leder brukeren til en annen nettside. Når en bruker klikker på en ekstern lenke, forlater de det opprinnelige nettstedet og åpner innhold fra en annen aktør eller tjeneste.
 
 Det har variert hvordan  eksterne lenker blir markert på ulike nettsteder. Noen bruker et ikon for å angi at det er en ekstern lenke, mens andre legger til tekst eller åpner lenken i en ny fane. Det at vi ikke praktiserer dette på samme måte kan skape forvirring for brukerne, spesielt når de ikke får tydelig informasjon om hva som skjer når de klikker på en lenke.
 
@@ -117,7 +117,7 @@ Skjermlesere lar brukere navigere gjennom en liste over lenker. Derfor må lenke
 
 ### Unngå at lenker blir åpnet i ny fane
 
-Lenker bør i utgangspunktet ikke åpnes i ny fane. Da sikrer vi en forutsigbar brukeropplevelse fordi brukerens egne lenkeinnstillinger i nettleseren videreføres. Flere bruker Tilbake-knappen i nettleseren hvis lenken ikke førte dit de trodde, men det fungerer ikke når lenken ble åpnet i en ny fane. I tillegg er det noen skjermlesere som ikke informerer brukere om at lenken kommer til åpnes i en ny fane. 
+Vi sikrer en forutsigbar brukeropplevelse når lenker åpnes i samme fane. Da videreføres brukerens egne lenkeinnstillinger i nettleseren. Flere bruker Tilbake-knappen i nettleseren hvis lenken ikke førte dit de trodde, men det fungerer ikke når lenken blir åpnet i ny fane. 
 
 Det finnes likevel noen unntak, der lenken bør åpnes i ny fane:
 
@@ -175,7 +175,9 @@ Gjør det tydelig at lenken peker til en fil:
 />
 
 #### Filer som skal lastes ned
-Dersom lenken fører til en fil som skal lastes ned istedenfor å åpnes i nettleseren, bør man sørge for å ha med attributten download med filnavn som indikerer filtype, f.eks. `download="årsrapport.pdf"`. 
+Dersom lenken fører til en fil som skal lastes ned istedenfor å åpnes i nettleseren, bør man sørge for å ha med attributten `download` med filnavn som indikerer filtype, f.eks. `download="årsrapport.docx"`. 
+
+Vær oppmerksom på at dersom filtypen er av PDF, har de fleste nettlesere innebygd støtte for å vise PDF-filer i en forhåndsvisning, uavhengig av om `download`-attributtet er der eller ikke. Dette er også avhengig av brukerens innstillinger i nettleseren.
 
 
 ## Relevante kilder
