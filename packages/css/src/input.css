@@ -71,7 +71,7 @@
   }
 
   &:is(select) {
-    padding-right: 2.4em;
+    padding-inline-end: 2.4em;
     background-image: linear-gradient(
         45deg,
         var(--_dsc-input-diagonal-1),
@@ -82,6 +82,9 @@
     background-position: calc(100% - 1.2em + var(--dsc-input-stroke-width)), calc(100% - 0.8em);
     background-size: .4em .4em;
     background-repeat: no-repeat;
+    :dir(rtl) & {
+      background-position: calc(1.2em - var(--dsc-input-stroke-width)), calc(0% + 0.8em);
+    }
 
     @media (forced-colors: active) {
       appearance: auto; /* show chevron */
