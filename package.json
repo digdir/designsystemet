@@ -32,7 +32,7 @@
     "types:react": "pnpm --filter @digdir/designsystemet-react types",
     "types:storefront": "pnpm --filter storefront types",
     "version-packages": "changeset version",
-    "publish": "pnpm build && changeset publish",
+    "publish-packages": "pnpm build && changeset publish",
     "chromatic": "pnpm --filter @web/storybook chromatic",
     "update:template": "pnpm --filter @digdir/designsystemet update:template",
     "update:design-tokens": "pnpm --filter @digdir/designsystemet update:design-tokens"
@@ -40,7 +40,7 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@changesets/changelog-github": "^0.5.1",
-    "@changesets/cli": "^2.28.1",
+    "@changesets/cli": "^2.29.3",
     "@svitejs/changesets-changelog-github-compact": "^1.2.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@types/node": "^22.15.3",
