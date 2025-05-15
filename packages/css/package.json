@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet-css",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "CSS for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -15,7 +15,10 @@
     },
     "./*": "./dist/src/*"
   },
-  "files": ["./types.d.ts", "dist"],
+  "files": [
+    "./types.d.ts",
+    "dist"
+  ],
   "publishConfig": {
     "access": "public"
   },
@@ -27,7 +30,12 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "keywords": ["css", "designsystem", "designsystemet", "digdir"],
+  "keywords": [
+    "css",
+    "designsystem",
+    "designsystemet",
+    "digdir"
+  ],
   "scripts": {
     "build": "rimraf dist && postcss ./src/*.css --base . --dir ./dist"
   },

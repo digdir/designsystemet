@@ -1,7 +1,7 @@
 {
   "name": "@digdir/designsystemet-react",
   "type": "module",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "React components for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -25,7 +25,9 @@
     }
   },
   "sideEffects": false,
-  "files": ["dist/**"],
+  "files": [
+    "dist/**"
+  ],
   "scripts": {
     "build": "pnpm run clean && tsc -b tsconfig.lib.json --emitDeclarationOnly false && rollup -c --bundleConfigAsCjs",
     "clean": "rimraf dist && rimraf tsc-build && rimraf --glob \"*.tsbuildinfo\"",
