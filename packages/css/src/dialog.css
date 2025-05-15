@@ -18,7 +18,7 @@
   --_dsc-dialog-icon-top-right-margin: calc(var(--dsc-dialog-spacing) * -1 + var(--dsc-dialog-icon-spacing));
 
   /* Center with top+left+translate to support placement inside display: flex */
-  animation: dsc-dialog-fade-in .2s forwards;
+  animation: ds-dialog-fade-in .2s forwards;
   background: var(--dsc-dialog-background);
   border-color: var(--dsc-dialog-border-color);
   border-radius: var(--ds-border-radius-lg);
@@ -41,14 +41,14 @@
   width: 100%;
 
   &::backdrop {
-    animation: dsc-dialog-fade-in 300ms ease-in-out;
+    animation: ds-dialog-fade-in 300ms ease-in-out;
     /* we include a fallback color because ::backdrop didn't inherit
        custom properties in Chrome until version 122 (mid-2024) */
     background: var(--dsc-dialog-backdrop-background, rgb(0 0 0 / 0.5));
   }
 
   &[open] {
-    animation: dsc-dialog-slide-in 300ms ease-in-out, dsc-dialog-fade-in 300ms ease-in-out;
+    animation: ds-dialog-slide-in 300ms ease-in-out, ds-dialog-fade-in 300ms ease-in-out;
   }
 
   &:has(> .ds-dialog__block) {
