@@ -105,13 +105,13 @@ body:has(.ds-dialog:modal) {
   overflow: hidden;
 }
 
-@keyframes dsc-dialog-slide-in {
+@keyframes ds-dialog-slide-in {
   from {
     translate: 0 3rem;
   }
 }
 
-@keyframes dsc-dialog-fade-in {
+@keyframes ds-dialog-fade-in {
   from {
     opacity: 0;
   }
