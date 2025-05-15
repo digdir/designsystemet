@@ -25,6 +25,7 @@
     "storefront",
     "@internal/components",
     "@web/storybook",
-    "@plugin/figma"
+    "@plugin/figma",
+    "root"
   ]
 }
