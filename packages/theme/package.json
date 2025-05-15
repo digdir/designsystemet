@@ -16,10 +16,7 @@
     },
     "./*": "./brand/*"
   },
-  "files": [
-    "brand/**",
-    "*.css"
-  ],
+  "files": ["brand/**", "*.css"],
   "publishConfig": {
     "access": "public"
   },

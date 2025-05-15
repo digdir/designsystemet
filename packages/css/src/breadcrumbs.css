@@ -38,11 +38,19 @@
     }
   }
 
+  :dir(rtl) & li:where(:not(:last-child))::after {
+    rotate: 180deg;
+  }
+
   /* When link is direct child of Breadcrumbs, make it back button */
   & > :not(ol, ul)::before {
     background: currentColor;
     margin: 0;
     rotate: 180deg;
+  }
+
+  :dir(rtl) & > :not(ol, ul)::before {
+    rotate: 0deg;
   }
 
   @media (width < 650px) {
