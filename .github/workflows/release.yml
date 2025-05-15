@@ -27,7 +27,7 @@ jobs:
         # Forked version of the changesets action that supports aggregated releases
         uses: dotansimha/changesets-action@v1.5.2
         with:
-          publish: pnpm publish
+          publish: pnpm publish-packages
           version: pnpm version-packages
           commit: 'chore: new release'
           title: 'chore: new release'

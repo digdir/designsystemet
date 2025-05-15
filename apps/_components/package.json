@@ -5,7 +5,9 @@
   "author": "Designsystemet team",
   "main": "src/index.ts",
   "sideEffects": false,
-  "files": ["src/**"],
+  "files": [
+    "src/**"
+  ],
   "scripts": {
     "types": "tsc --noEmit"
   },
