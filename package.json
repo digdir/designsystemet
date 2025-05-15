@@ -32,7 +32,7 @@
     "types:react": "pnpm --filter @digdir/designsystemet-react types",
     "types:storefront": "pnpm --filter storefront types",
     "version-packages": "changeset version",
-    "publish": "pnpm build && changeset publish",
+    "publish-packages": "pnpm build && changeset publish",
     "chromatic": "pnpm --filter @web/storybook chromatic",
     "update:template": "pnpm --filter @digdir/designsystemet update:template",
     "update:design-tokens": "pnpm --filter @digdir/designsystemet update:design-tokens"
