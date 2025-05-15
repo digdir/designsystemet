@@ -11,36 +11,35 @@ import * as DividerStories from './Divider.stories';
 <Primary />
 <Controls />
 
-## Slik bruker du `Divider`
+## Bruk
 ```tsx
 <Divider />
 ```
 
-## Retningslinjer for `Divider`
+## Retningslinjer
 
 `Divider` brukes for å dele opp innhold i mindre deler, slik at det blir mer oversiktlig og lettere å lese. Den kan også brukes for å skille innhold som er relatert til hverandre, men som likevel bør ha en visuelt skille.
 
-Passer:
-* Når du vil skape en tydelig oppdeling av innhold.
-* Når whitespace alene ikke gir tilstrekkelig separasjon.
-* Når du ønsker å strukturere innhold for bedre lesbarhet.
+**Passer når**
+* du vil skape en tydelig oppdeling av innhold
+* du ønsker å strukturere innhold for bedre lesbarhet
+* whitespace alene ikke gir tilstrekkelig separasjon
 
-Passer ikke:
-* Når naturlig spacing eller andre visuelle elementer gir tilstrekkelig separasjon.
-* Når for mange divider-elementer skaper et rotete visuelt uttrykk.
+**Passer ikke når**
+* naturlig spacing eller andre visuelle elementer gir tilstrekkelig separasjon
+* for mange `Divider`-elementer skaper et rotete visuelt uttrykk
 
 ## Tilgjengelighet
+Unngå å bruke `Divider` utelukkende for visuell effekt uten funksjonell betydning. En `Divider` representerer egentlig et `<hr>`-element i HTML, som står for “horizontal rule” – altså en tematisk inndeling av innhold.
 
-* Sørg for at `divider` har tilstrekkelig kontrast mot bakgrunnen for god synlighet.
-* Unngå å bruke `divider` utelukkende for visuell effekt uten funksjonell betydning.
+Den skal brukes til å markere et skille mellom innhold som ikke hører logisk sammen, for eksempel ulike seksjoner i en artikkel eller ulike funksjonelle områder på en side. Bruk den for å tydeliggjøre strukturen, ikke bare for å fylle tomrom eller “pynte” siden.
 
 ### Kjente begrensninger
 
-* Stilen til divider kan påvirkes av foreldreelementer, spesielt ved bruk i fleksible layouts.
+Stilen til `Divider` kan påvirkes av foreldreelementer, spesielt ved bruk i fleksible grensesnitt.
 
 
 ## CSS Variabler
-`Divider` kan tilpasses med følgende CSS-variabler:
 
 <CssVariables css={css} />
 
