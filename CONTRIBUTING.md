@@ -53,7 +53,7 @@ If you have any questions you can contact us at <designsystem@digdir.no> or in o
 ### Getting involved with development
 
 It's fantastic that you want to join in and help with our development efforts!
-We have established two contribution levels to suit task size: the first level for smaller tasks and the second for larger ones. The main difference is how involved you will be with the Design System Team.
+We have established two contribution levels to suit task size: the first level for smaller tasks and the second for larger ones. The main difference is how closely you’ll collaborate with the team behind Designsystemet.
 
 Unsure which level to choose? Send us an email at <designsystem@digdir.no> and we will get back to you as soon as we can!
 You can also join our [Slack](https://designsystemet.no/slack) and ask questions there.
@@ -65,20 +65,20 @@ Before you start coding also take a look at [how to get started with development
 #### Addressing minor bugs and handling smaller feature requests
 
 Spotted a bug you would like to help fix? Easy! Just fork this repository and submit a [pull request](#pull-requests).
-A person from the design system team will follow up from there.
+A person from Designsystemet will follow up from there.
 
 Do the same for smaller feature requests. We cannot guarantee that the new feature will be implemented, but we will try our best to make it happen!
 
 #### Developing new components and handling larger tasks
 
-Your team needs a new component that doesn't exist in the the design system and want to help develop it?
+Your team needs a new component that doesn't exist in Designsystemet and want to help develop it?
 Great news! We have created a process to handle just this use case!
 
 1. Submit a [feature request](https://github.com/digdir/designsystemet/issues/new/choose) detailing your requirements, and indicate your interest in contributing to the development of this component.
-2. The design system team will review the feature request and assess its compatibility with the design system.
-3. If the component fits within the scope of the design system we will follow you up from there.
+2. The team will review the feature request and assess its compatibility with Designsystemet.
+3. If the component fits within the scope of Designsystemet we will follow you up from there.
 
-Developing components for the design system requires that developers are closely connected to the design system team. We will invite you to participate in our daily check-ins throughout the development process to ensure that the component adheres to our coding standards and seamlessly integrates with our design system.
+Developing components for Designsystemet requires that developers are closely connected to the team. We will invite you to participate in our daily check-ins throughout the development process to ensure that the component adheres to our coding standards and seamlessly integrates with our design system.
 
 ### Getting started with development
 
@@ -97,13 +97,13 @@ You can now start developing for storybook and the storefront.
 
 ### Pull requests
 
-When creating a pull request for the design system, there are a few things to keep in mind:
+When creating a pull request for Designsystemet, there are a few things to keep in mind:
 
 - When you create your pull request for the first time make sure to mark it as a [draft](https://github.blog/2019-02-14-introducing-draft-pull-requests/). This is mainly to prevent unnecessary notifications for reviewers during the development process. If you forget then no problem!
 - We utilize automated code checks to verify that pull requests align with our established standards. These checks must be successful for the pull request to be merged into the main branch. You don't need to worry about this during development.
   - The pull request title must adhere to the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) standard.
   - We run linting and formatting checks on all the code.
-- When you are done with development you can mark the pull request as ready for review by clicking on the button at the bottom. A person from the design system team will then review your code and comment if there are things that need to be changed. Once the pull request is approved it will be merged into the main branch.
+- When you are done with development you can mark the pull request as ready for review by clicking on the button at the bottom. A person from Designsystemet will then review your code and comment if there are things that need to be changed. Once the pull request is approved it will be merged into the main branch.
 - Make sure the PR is pointing to the `next` branch.
 
 ---
