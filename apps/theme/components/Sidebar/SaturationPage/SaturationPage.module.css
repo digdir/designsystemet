@@ -1,0 +1,54 @@
+.back {
+  margin-left: -16px;
+  align-self: flex-start;
+  margin-top: -10px;
+  margin-bottom: 16px;
+}
+
+.colorName {
+  font-size: 16px;
+}
+
+.color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.preview {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  margin-bottom: 20px;
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  gap: 12px;
+}
+
+.heading {
+  margin-top: -8px;
+  margin-bottom: 16px;
+}
+
+.subHeading {
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
+.group {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 24px;
+}
+
+.activeBtn {
+  background-color: var(--ds-color-surface-hover);
+  border-radius: 200px;
+}
+
+.select {
+  margin-top: 12px;
+}

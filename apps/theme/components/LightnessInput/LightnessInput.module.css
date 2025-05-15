@@ -1,0 +1,91 @@
+.label {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.description {
+  font-size: 16px;
+  color: var(--ds-color-neutral-text-subtle);
+  margin-top: -4px;
+  margin-bottom: 8px;
+}
+
+.labelContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.labelContainerOneLiner {
+  width: 255px;
+}
+
+.resetBtn {
+  height: 28px;
+  width: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  top: 7px;
+  right: 7px;
+}
+
+.resetBtn:hover {
+  background-color: var(--ds-color-neutral-surface-active);
+}
+
+.resetBtn svg {
+  transform: scale(1.5);
+}
+
+.inputRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0px;
+}
+
+.input {
+  width: 292px;
+}
+
+.activeInput {
+  border: 1px solid var(--ds-color-border-default);
+  background-color: var(--ds-color-surface-tinted);
+}
+
+.minusBtn,
+.plusBtn {
+  color: var(--ds-color-neutral-text-default);
+}
+
+.plusBtn {
+  margin-right: -12px;
+}
+
+.inputContainer {
+  position: relative;
+}
+
+.oneLiner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0px;
+}
+
+.oneLiner .input {
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}

@@ -1,0 +1,51 @@
+.inputs {
+  display: flex;
+  gap: var(--ds-size-2);
+  flex-direction: column;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input input {
+  width: 120px;
+  height: 36px;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+.back {
+  margin-left: -16px;
+  align-self: flex-start;
+  margin-top: -8px;
+  margin-bottom: 16px;
+}
+
+.luminance {
+  margin-top: 16px;
+}
+
+.btnGroup {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.heading {
+  margin-top: -8px;
+  margin-bottom: 8px;
+}
+
+.activeBtn {
+  background-color: var(--ds-color-surface-hover);
+}
+
+.description {
+  margin-bottom: 16px;
+}

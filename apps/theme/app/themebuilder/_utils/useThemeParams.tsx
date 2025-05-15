@@ -1,6 +1,7 @@
 import {
   type ColorScheme,
   type CssColor,
+  colorMetadata,
   generateColorSchemes,
 } from '@digdir/designsystemet/color';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -32,7 +33,11 @@ export const useThemeParams = () => {
     if (query.get('main')) {
       const mainColors = createColorsFromQuery(query.get('main') as string);
 
-      if (mainColors) newColors.main = mainColors;
+      if (mainColors) {
+        newColors.main = mainColors.map((color) => ({
+          ...color,
+        }));
+      }
     }
 
     if (query.get('neutral')) {
@@ -43,6 +48,7 @@ export const useThemeParams = () => {
           {
             name: 'neutral',
             colors: generateColorSchemes('#1E2B3C'),
+            colorMetadata: JSON.parse(JSON.stringify(colorMetadata)),
           },
         ];
     }
@@ -52,7 +58,11 @@ export const useThemeParams = () => {
         query.get('support') as string,
       );
 
-      if (supportColors) newColors.support = supportColors;
+      if (supportColors) {
+        newColors.support = supportColors.map((color) => ({
+          ...color,
+        }));
+      }
     }
 
     useThemeStore.setState({
@@ -98,6 +108,10 @@ export const useThemeParams = () => {
 function createColorsFromQuery(colors: string) {
   return colors.split(' ').map((color) => {
     const [name, hex] = color.split(':');
-    return { name, colors: generateColorSchemes(hex as CssColor) };
+    return {
+      name,
+      colors: generateColorSchemes(hex as CssColor),
+      colorMetadata: JSON.parse(JSON.stringify(colorMetadata)),
+    };
   });
 }

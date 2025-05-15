@@ -12,7 +12,8 @@ import {
 import { CogIcon } from '@navikt/aksel-icons';
 import { BorderRadiusInput } from '../BorderRadiusInput/BorderRadiusInput';
 import { TokenModal } from '../TokenModal/TokenModal';
-import { ColorPage } from './ColorPage/ColorPage';
+import { ColorsPage } from './ColorsPage/ColorsPage';
+import { FrontPage } from './FrontPage/FrontPage';
 import classes from './Sidebar.module.css';
 
 export const Sidebar = () => {
@@ -24,10 +25,11 @@ export const Sidebar = () => {
 
   const [isSticky, setSticky] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
+  const [showLightnessPage, setShowLightnessPage] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
-      setSticky(window.scrollY > 135);
+      setSticky(window.scrollY > 265);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -60,31 +62,8 @@ export const Sidebar = () => {
             showSidebar && classes.showSidebar,
           )}
         >
-          <Tabs
-            value={activePage}
-            onChange={(value) =>
-              setActivePage(value as 'colors' | 'dimensions')
-            }
-          >
-            <Tabs.List>
-              <Tabs.Tab value='colors'>Farger</Tabs.Tab>
-              <Tabs.Tab value='dimensions'>Dimensjoner</Tabs.Tab>
-            </Tabs.List>
-            <div className={classes.tabContent}>
-              <Tabs.Panel className={classes.tabPanel} value='colors'>
-                <ColorPage />
-              </Tabs.Panel>
-              <Tabs.Panel className={classes.tabPanel} value='dimensions'>
-                <BorderRadiusInput />
-              </Tabs.Panel>
-            </div>
-          </Tabs>
-
-          <div className={classes.bottom} data-size='sm'>
-            <div>
-              <TokenModal />
-            </div>
-          </div>
+          {activePage === 'front' && <FrontPage />}
+          {activePage === 'colors' && <ColorsPage />}
         </div>
       </div>
       {isMobile && (
@@ -109,7 +88,7 @@ export const Sidebar = () => {
               </Tabs.List>
 
               <Tabs.Panel className={classes.tabPanel} value='colors'>
-                <ColorPage />
+                <ColorsPage />
               </Tabs.Panel>
               <Tabs.Panel className={classes.tabPanel} value='dimensions'>
                 <BorderRadiusInput />

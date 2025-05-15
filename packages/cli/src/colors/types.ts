@@ -4,6 +4,7 @@ export type ColorNumber = SemanticColorNumberMap[keyof SemanticColorNumberMap];
 export type ColorNames = keyof SemanticColorNumberMap;
 export type GlobalColors = 'red' | 'blue' | 'green' | 'orange' | 'purple';
 export type ColorError = 'none' | 'decorative' | 'interaction';
+export type InterpolationMode = 'hcl' | 'hsi' | 'hsl' | 'hsv' | 'lab' | 'lch' | 'lrgb' | 'oklab' | 'oklch' | 'rgb';
 
 type SemanticColorNumberMap = {
   'background-default': 1;
@@ -44,7 +45,21 @@ export type ColorMetadata = {
     long: string;
   };
   group: string;
-  luminance: {
+  /** The luminance of the color in light and dark mode */
+  lightness: {
+    light: number;
+    dark: number;
+    contrast: number;
+  };
+  /** The saturation of the color in light and dark mode */
+  saturation: {
+    light: number;
+    dark: number;
+    contrast: number;
+  };
+  /** The interpolation mode for the color */
+  interpolation: InterpolationMode;
+  baseModifier: {
     light: number;
     dark: number;
     contrast: number;

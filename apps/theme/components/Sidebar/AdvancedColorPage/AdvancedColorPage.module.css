@@ -1,0 +1,64 @@
+.back {
+  margin-left: -16px;
+  align-self: flex-start;
+  margin-top: -10px;
+  margin-bottom: 16px;
+}
+
+.heading {
+  margin-top: -8px;
+  margin-bottom: 24px;
+}
+
+.subHeading {
+  margin-bottom: 16px;
+}
+
+.group {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 24px;
+}
+
+.preview {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  margin-bottom: 20px;
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  gap: 12px;
+}
+
+.colorName {
+  font-size: 16px;
+}
+
+.color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.btn {
+  border: 1px solid var(--ds-color-neutral-border-default);
+  background-color: var(--ds-color-neutral-surface-default);
+  padding: 18px 16px;
+  text-align: left;
+  border-radius: 4px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  margin-top: -8px;
+  transition: 0.1s all;
+}
+
+.btn:hover {
+  background-color: var(--ds-color-neutral-surface-hover);
+  border: 1px solid var(--ds-color-neutral-border-default);
+}

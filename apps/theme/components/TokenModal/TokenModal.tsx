@@ -15,7 +15,7 @@ import {
   formatThemeCSS,
 } from '@digdir/designsystemet/tokens';
 import { CodeBlock } from '@internal/components';
-import { InformationSquareIcon, StarIcon } from '@navikt/aksel-icons';
+import { InformationSquareIcon, RocketIcon } from '@navikt/aksel-icons';
 import { useRef, useState } from 'react';
 
 import type { Color, CssColor } from '@digdir/designsystemet/color';
@@ -99,11 +99,11 @@ export const TokenModal = () => {
       <Dialog.Trigger
         className={classes.trigger}
         onClick={() => {
-          return modalRef.current?.showModal();
+          //return modalRef.current?.showModal();
         }}
       >
-        <StarIcon aria-hidden fontSize='1.5rem' />
-        Ta i bruk tema
+        <RocketIcon title='a11y-title' />
+        Prototype: Kopier hex koder manuelt for testing i Figma
       </Dialog.Trigger>
       <Dialog
         className={classes.modal}

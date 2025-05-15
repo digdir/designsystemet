@@ -1,0 +1,104 @@
+.group {
+  margin-bottom: 24px;
+  margin-top: -8px;
+}
+
+.group:last-child {
+  margin-bottom: 0;
+}
+
+.groupHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  height: 44px;
+}
+
+.AddBtn {
+  margin-right: -8px;
+}
+
+.colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.desc {
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+.btnGroup {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.btn {
+  width: 100%;
+}
+
+.bottom {
+  border-top: 1px solid var(--ds-color-neutral-border-subtle);
+  display: flex;
+  align-items: center;
+  padding-top: 24px;
+  margin-top: 16px;
+}
+
+.separator {
+  margin-bottom: 20px;
+  height: 1px;
+  width: 100%;
+  background-color: var(--ds-color-neutral-border-subtle);
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.lightBtn {
+  align-self: flex-start;
+  margin-left: -12px;
+  margin-bottom: -8px;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.back {
+  align-self: flex-start;
+  margin-left: -16px;
+  margin-top: -10px;
+  margin-bottom: 8px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  margin-top: 8px;
+}
+
+.card:hover {
+  background-color: var(--ds-color-neutral-background-tinted);
+  cursor: pointer;
+}
+
+.checkbox {
+  color: var(--ds-color-neutral-text-subtle);
+  margin-left: 2px;
+  gap: 10px;
+}
+
+.checkbox:hover {
+  color: var(--ds-color-neutral-text-default);
+}
+
+.checkbox:hover input:not(:checked) {
+  background-color: var(--ds-color-neutral-background-tinted);
+}

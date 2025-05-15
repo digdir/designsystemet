@@ -159,6 +159,14 @@ export const getLuminanceFromLightness = (lightness: number) => {
   return chroma(conv.hex).luminance();
 };
 
+export const getLightnessFromLuminance = (luminance: number) => {
+  const conv = new Hsluv();
+  conv.hex = chroma('#125FBD').luminance(luminance).hex();
+  conv.hexToHsluv();
+
+  return conv.hsluv_l;
+};
+
 /**
  * Get the relative luminance from any valid css color
  *
@@ -262,4 +270,15 @@ export const convertColor = (cssColor: string, format: string) => {
     default:
       return color.to(format).toString({ precision: 3 });
   }
+};
+
+/**
+ * Get the base dark lightness for a color
+ *
+ * @param color The color to get the base dark lightness for
+ * @returns The base dark lightness
+ */
+export const getBaseDarkLightness = (color: CssColor) => {
+  const colorLightness = getLightnessFromHex(color);
+  return colorLightness <= 30 ? 70 : 100 - colorLightness;
 };

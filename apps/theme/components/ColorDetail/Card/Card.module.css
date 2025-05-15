@@ -1,0 +1,61 @@
+.card {
+  background-color: var(--ds-color-surface-default);
+  flex-grow: 1;
+  border-radius: 12px;
+  padding: 28px 28px;
+  min-height: 200px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.bg {
+  background-color: var(--ds-color-surface-tinted);
+}
+
+.borderLight {
+  border: 2px solid var(--ds-color-border-subtle);
+}
+
+.borderDark {
+  border: 2px solid var(--ds-color-border-default);
+}
+
+.icon {
+  height: 56px;
+  width: 56px;
+  border-radius: 50%;
+  font-size: 2rem;
+  background-color: var(--ds-color-surface-default);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--ds-shadow-xs);
+  color: var(--ds-color-text-subtle);
+}
+
+.iconLight {
+  background-color: var(--ds-color-surface-active);
+  color: var(--ds-color-text-default);
+}
+
+.iconDark {
+  background-color: var(--ds-color-base-default);
+  color: var(--ds-color-base-contrast-default);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.title {
+  margin-top: 18px;
+  margin-bottom: 12px;
+}
+
+.titleColored {
+  color: var(--ds-color-text-subtle);
+}
