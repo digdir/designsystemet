@@ -18,6 +18,11 @@ import * as FieldsetStories from './Fieldset.stories';
 ## Eksempler 
 Noe? 
 
+### Spørsmål som overskrift
+I følge [GOV.UK Designsystem](https://design-system.service.gov.uk/components/fieldset/) er det god praksis å bruke spørsmålet som en overskrift. Det gjør at brukere som benytter skjermleser, bare hører spørsmålet én gang.
+
+På sider med flere inndatafelt, gjør det det enklere for brukere med skjermleser om spørsmålet er en overskrift. Dette gjør det lettere å forstå at alle feltene som følger hører til samme gruppe som overskriften.
+
 ## Retningslinjer
 Når du bruker `Fieldset`, bør du starte med en `Fieldset.Legend` som forklarer hva feltene under handler om. Det kan være et spørsmål som «Hvor bor du nå?» eller en beskrivende setning som «Personopplysninger». Dette hjelper brukeren med å forstå sammenhengen mellom feltene og hva de skal fylle ut.
 
@@ -26,20 +31,14 @@ Når du bruker `Fieldset`, bør du starte med en `Fieldset.Legend` som forklarer
 - dele inn et skjema i seksjoner med forklarende ledetekster
 
 **Passer ikke til å**
-- gruppere elementer som ligger utenfor et skjema, som informasjonsbokser eller veiledningstekster
+- gruppere elementer som ligger utenfor et skjema
 
-Hvis skjemaet du lager har ett spørsmål per side, slik det ofte er anbefalt, bør du kode innholdet i forklaringen som overskrift på siden. Dette gir en ryddig og brukervennlig struktur.
-
-### Spørsmål som overskrift
-I følge [GOV.UK Designsystem](https://design-system.service.gov.uk/components/fieldset/) er det god praksis å bruke spørsmålet som en overskrift. Det gjør at brukere som benytter skjermleser, bare hører spørsmålet én gang.
-
-På sider med flere inndatafelt, gjør det det enklere for brukere med skjermleser om spørsmålet er en overskrift. Dette gjør det lettere å forstå at alle feltene som følger hører til samme gruppe som overskriften.
 
 ## Tekst
-Unngå å bruke samme tekst i både `label` og `legend`. Ha gjerne med en generell hjelpetekst i forklaringen hvis det gjør det enklere for brukerne å fylle ut et skjema. Lag teksten så kort som mulig.
+Unngå å bruke samme tekst i både `label` og `legend`. Ha gjerne med en hjelpetekst (`Fieldset.Description`) hvis det gjør det enklere for brukerne å fylle ut skjemaet. Lag teksten så kort som mulig.
 
 ## Tilgjengelighet
-Sørg for at du alltid bruker en legend for å sikre god tilgjengelighet for skjermlesere og andre hjelpemidler.
+Sørg for at du alltid bruker en `legend` for å sikre god tilgjengelighet for skjermlesere og andre hjelpemidler.
 
 ## Referanser
 
