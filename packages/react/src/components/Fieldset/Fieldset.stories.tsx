@@ -33,7 +33,7 @@ export const WithCheckbox: Story = (args) => (
 export const LegendAsHeading: Story = (args) => (
   <Fieldset {...args}>
     <Fieldset.Legend>
-      <h2>Hvor skal du reise?</h2>
+      <h1>Hvor skal du reise?</h1>
     </Fieldset.Legend>
   </Fieldset>
 );
