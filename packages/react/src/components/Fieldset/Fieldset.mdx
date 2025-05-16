@@ -6,17 +6,44 @@ import * as FieldsetStories from './Fieldset.stories';
 <Meta of={FieldsetStories} />
 
 # Fieldset
+`Fieldset` brukes til å gruppere og navngi felt som naturlig hører sammen, for eksempel datofelt eller adressefelt. Komponenten hjelper med å organisere informasjon, gjøre skjemaer mer oversiktlige og forbedre tilgjengeligheten for skjermlesere.
 
 <Primary />
 <Controls />
 
-# Fieldset
+## Bruk
 
 `Fieldset` er et [fieldset](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset)-element med diverse hjelpfunksjoner for å hjelpe med bruk og gruppering av kontrollelementer i et skjema.
 
+## Eksempler 
+Noe? 
+
+## Retningslinjer
+Når du bruker `Fieldset`, bør du starte med en `Fieldset.Legend` som forklarer hva feltene under handler om. Det kan være et spørsmål som «Hvor bor du nå?» eller en beskrivende setning som «Personopplysninger». Dette hjelper brukeren med å forstå sammenhengen mellom feltene og hva de skal fylle ut.
+
+**Passer til å**
+- gruppere en liste med flere `Radio` eller `Checkbox` som hører naturlig sammen
+- dele inn et skjema i seksjoner med forklarende ledetekster
+
+**Passer ikke til å**
+- gruppere elementer som ligger utenfor et skjema, som informasjonsbokser eller veiledningstekster
+
+Hvis skjemaet du lager har ett spørsmål per side, slik det ofte er anbefalt, bør du kode innholdet i forklaringen som overskrift på siden. Dette gir en ryddig og brukervennlig struktur.
+
+### Spørsmål som overskrift
+I følge [GOV.UK Designsystem](https://design-system.service.gov.uk/components/fieldset/) er det god praksis å bruke spørsmålet som en overskrift. Det gjør at brukere som benytter skjermleser, bare hører spørsmålet én gang.
+
+På sider med flere inndatafelt, gjør det det enklere for brukere med skjermleser om spørsmålet er en overskrift. Dette gjør det lettere å forstå at alle feltene som følger hører til samme gruppe som overskriften.
+
+## Tekst
+Unngå å bruke samme tekst i både `label` og `legend`. Ha gjerne med en generell hjelpetekst i forklaringen hvis det gjør det enklere for brukerne å fylle ut et skjema. Lag teksten så kort som mulig.
+
+## Tilgjengelighet
+Sørg for at du alltid bruker en legend for å sikre god tilgjengelighet for skjermlesere og andre hjelpemidler.
+
 ## Referanser
 
-[Providing a description for groups of form controls using fieldset and legend elements](https://www.w3.org/WAI/WCAG21/Techniques/html/H71)
+- [Providing a description for groups of form controls using fieldset and legend elements](https://www.w3.org/WAI/WCAG21/Techniques/html/H71)
 
 ## CSS Variabler
 
