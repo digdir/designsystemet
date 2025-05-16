@@ -7,24 +7,17 @@ import * as PaginationStories from './Pagination.stories';
 
 # Pagination
 
-`Pagination` er en liste av knapper som ofte brukes for å navigere mellom sider av informasjon.
-
-Komponenten kan brukes på forskjellige måter, se under [bruk](#bruk) for mer informasjon
-
-Vær oppmerksom på:
-
-- Knappene er som standard `button` elementer.
-- Dersom ny side fører til ny side sørg for at paginering knapper er `a` elementer.
-  - Se eksempel [Paginering med lenker](#paginering-med-lenker).
+`Pagination` er en liste med knapper som brukes for å navigere mellom ulike sider med innhold, for eksempel søkeresultater eller tabeller.
 
 <Primary />
 <Controls of={PaginationStories.Preview} />
 
 ## Bruk
 
-### Eksempel på bruk med `Pagination`
-
 `Pagination` er en kontrollert komponent. Det vil si at komponentens tilstand om hvilken side som er aktiv styres utenfra.
+
+Bruk `usePagination` for paginering-logikk sammen med de enkelt del-komponentene.
+Les mer om `usePagination` [her](/docs/utilities-usepagination--docs).
 
 ```tsx
 import { Pagination } from '@digdir/designsystemet-react';
@@ -63,18 +56,39 @@ const { pages, prevButtonProps, nextButtonProps, hasNext, hasPrevious } = usePag
   </Pagination.List>
 </Pagination>
 ```
+## Eksempler
 
-## Paginering med `usePagination`
+### Som lenker
+Vær oppmerksom på at knappene som standard er `<button>`-elementer. Hvis `Pagination` skal navigere til en ny URL, må knappene være lenker `<a>`. 
 
-Bruk `usePagination` for paginering-logikk sammen med de enkelt del-komponentene.
-Les mer om `usePagination` [her](/docs/utilities-usepagination--docs).
-
-
-### Paginering med lenker
-
-Alle del-komponenter støtter `asChild` som kan brukes til å endre `Pagination.Button` til lenker (`a`).
+Alle del-komponenter støtter `asChild` som kan brukes til å endre `Pagination.Button` til lenker `<a>`.
 
 <Canvas of={PaginationStories.WithAnchor} />
+
+### Responsiv visning
+På små skjermer er det lurt å begrense antall synlige sidetall for å spare plass. Vis kun:
+- den aktive siden
+- én side før og etter
+- første og siste side
+
+< STORY SOM VISER MOBILVISNING >
+
+## Retningslinjer
+Bruk `Pagination` når innholdet er for stort for én side, for eksempel ved søkeresultater eller lange lister, og brukeren trenger å navigere frem og tilbake. Vi deler kun opp innhold i flere sider når det forbedrer lastetiden eller brukervennligheten. 
+
+**Passer til å**
+- navigere mellom relaterte sider
+- dele inn store mengder innhold i flere sider – for eksempel i tabeller
+
+**Passer ikke til å**
+- dele inn et skjema i steg – bruk heller en stegindikator
+- vise fremdrift
+
+## Tekst
+Vi bruker et fast mønster for `Pagination` med ord: «Forrige» og «Neste». 
+
+Unngå «Forrige side», «Neste side», «Gå tilbake», «Gå videre», «Videre» og «Tilbake».
+
 
 ## CSS Variabler
 
