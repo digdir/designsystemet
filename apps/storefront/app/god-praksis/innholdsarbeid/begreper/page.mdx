@@ -2,7 +2,7 @@ import { PageLayout } from '@layouts';
 import { Contributors } from '@blog';
 
 export const metadata = {
-  title: 'Begreper',
+  title: 'Vanlige begreper',
   description:
     'Anbefalinger om felles navn på knapper og navigasjonselementer. ',
 };
@@ -12,7 +12,7 @@ export default ({ children }) => (
     content={children}
     data={{
       title: 'Anbefalinger om felles begreper på tvers av offentlige digitale løsninger',
-      date: '27. september 2024',
+      date: '16. mai 2025',
       author: 'Digdir',
       backText: 'God praksis',
       backUrl: 'god-praksis',
@@ -20,11 +20,13 @@ export default ({ children }) => (
   />
 );
 
-I Digdir er vi to innholdsdesignere, som skal dekke mange produkter og team. For å bevisstgjøre team på språk, innholdesign og mikrotekster, holder vi kurs om ulike emner knyttet til å lage godt innhold.  
+For å sikre helhetlig begrepsbruk på tvers av produkter har vi i Digdir laget anbefalinger om felles navn på knapper og navigasjonselementer.
+
+I Digdir har vi en rekke produkter og team. For å bevisstgjøre produktteam på språk, innholdesign og mikrotekster, holder vi kurs om ulike emner knyttet til å lage godt innhold.   
 
 Vi har også startet et arbeid for å standardisere noen språklige ting på tvers. Det gjør vi for at folk som sitter ute i produktteamene skal slippe å lure på hva de skal skrive på en knapp eller i en komponent. 
 
-Denne artikkelen gir anbefalinger om felles navn på knapper og navigasjonselementer. Vi lanserte den i Digdir før sommeren og de ble godt tatt imot. Dette har folk lurt på! Vi håper at anbefalingene kan være nyttig for flere der ute.  
+Denne artikkelen gir anbefalinger om felles navn på knapper og navigasjonselementer. Anbefalingene har blitt godt tatt imot – dette har folk lurt på! Vi håper at anbefalingene kan være nyttig for flere der ute.  
 
 ### Hvordan har vi gått frem? 
 
@@ -46,7 +48,7 @@ Vi tar gjerne imot forslag på andre begreper som det kan være lurt å enes om,
 
 ### Tilby kontekst for skjermlesere
 
-I noen sammenhenger bør vi tilby kontekst for å presisere hva som slettes, lukkes eller endres. For eksempel «Slett søknaden», «Lukk produktoversikt», «Endre profilbilde». De gangene vi ikke viser kontekst, men bare verb, burde kontekst være beskrevet i `aria-label` for skjermlesere.
+I noen sammenhenger bør vi tilby kontekst for å presisere hva som blir slettet, lukket eller endret. For eksempel «Slett søknaden», «Lukk produktoversikten», «Endre profilbildet». De gangene vi ikke viser kontekst, men bare verb, bør konteksten være beskrevet i `aria-label` for skjermlesere.
 
 <Contributors
   authors={[
