@@ -29,3 +29,11 @@ export const WithCheckbox: Story = (args) => (
     <Checkbox label='Ja, jeg godtar' />
   </Fieldset>
 );
+
+export const LegendAsHeading: Story = (args) => (
+  <Fieldset {...args}>
+    <Fieldset.Legend>
+      <h2>Hvor skal du reise?</h2>
+    </Fieldset.Legend>
+  </Fieldset>
+);
