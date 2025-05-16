@@ -72,8 +72,11 @@
 
   /* Close button */
   & > form[method='dialog']:first-child > button:only-child {
-    float: right;
-    margin: var(--_dsc-dialog-icon-top-right-margin) var(--_dsc-dialog-icon-top-right-margin) var(--dsc-dialog-icon-spacing) var(--dsc-dialog-icon-spacing);
+    float: inline-end;
+    margin-block-start: var(--_dsc-dialog-icon-top-right-margin);
+    margin-block-end: var(--dsc-dialog-icon-spacing);
+    margin-inline-start: var(--dsc-dialog-icon-spacing);
+    margin-inline-end: var(--_dsc-dialog-icon-top-right-margin);
     color: inherit;
 
     &::before {
