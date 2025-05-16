@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.0.7
+
+### Patch Changes
+
+- Updated non-major dependencies ([#3594](https://github.com/digdir/designsystemet/pull/3594))
+
+- **MultiSuggestion**: Fix typo in displayname ([#3586](https://github.com/digdir/designsystemet/pull/3586))
+
 ## 1.0.6
 
 ### Patch Changes
