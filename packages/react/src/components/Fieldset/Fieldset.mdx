@@ -1,4 +1,4 @@
-import { Meta, Controls, Primary } from '@storybook/blocks';
+import { Meta, Controls, Primary, Canvas } from '@storybook/blocks';
 import { CssVariables } from '@doc-components';
 import css from '@digdir/designsystemet-css/fieldset.css?inline';
 import * as FieldsetStories from './Fieldset.stories';
@@ -16,7 +16,9 @@ import * as FieldsetStories from './Fieldset.stories';
 `Fieldset` er et [fieldset](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset)-element med diverse hjelpfunksjoner for å hjelpe med bruk og gruppering av kontrollelementer i et skjema.
 
 ## Eksempler 
-Noe? 
+
+### Checkbox
+<Canvas of={FieldsetStories.WithCheckbox} />
 
 ### Spørsmål som overskrift
 I følge [GOV.UK Designsystem](https://design-system.service.gov.uk/components/fieldset/) er det god praksis å bruke spørsmålet som en overskrift. Det gjør at brukere som benytter skjermleser, bare hører spørsmålet én gang.
