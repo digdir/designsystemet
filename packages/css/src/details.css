@@ -86,11 +86,6 @@
     margin-top: 0; /* Prevent gap when places as child of .ds-card */
   }
 
-  & > :not(summary, u-summary) {
-    border-radius: inherit;
-    padding: var(--ds-size-5, 1rem);
-  }
-
   &[open] > :is(summary, u-summary) {
     background: var(--dsc-details-summary-background--open);
 
@@ -111,6 +106,8 @@
   }
 
   &::part(details-content) {
+    border-radius: inherit;
+    padding: var(--ds-size-5, 1rem);
     block-size: 0;
     overflow-y: clip;
     transition: content-visibility 400ms allow-discrete, height 400ms;

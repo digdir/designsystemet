@@ -31,13 +31,13 @@ import { type HTMLAttributes, useState } from 'react';
 import classes from './Showcase.module.css';
 
 const DATA_PLACES = [
+  'Lillestrøm',
   'Sogndal',
   'Oslo',
   'Brønnøysund',
   'Stavanger',
   'Trondheim',
   'Bergen',
-  'Lillestrøm',
 ];
 
 type ShowcaseProps = HTMLAttributes<HTMLDivElement>;
