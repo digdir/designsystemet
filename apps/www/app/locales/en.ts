@@ -2,7 +2,7 @@ import type no from './no';
 
 export default {
   frontpage: {
-    heading: 'Designsystemet helps you create good digital services',
+    heading: 'Designsystemet helps you build accessible digital services',
     'for-designers': {
       title: 'For designers',
       description:
