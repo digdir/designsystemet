@@ -17,39 +17,35 @@ import * as PaginationStories from './Pagination.stories';
 `Pagination` er en kontrollert komponent. Det vil si at komponentens tilstand om hvilken side som er aktiv styres utenfra.
 
 Bruk `usePagination` for paginering-logikk sammen med de enkelt del-komponentene.
-Les mer om `usePagination` [her](/docs/utilities-usepagination--docs).
+[Les mer om `usePagination`](/docs/utilities-usepagination--docs).
 
 ```tsx
 import { Pagination } from '@digdir/designsystemet-react';
 
-const onChange = (event, page: number) => console.log(`Going to page ${page}`);
-const [currentPage, setCurrentPage] = useState(4);
-const { pages, prevButtonProps, nextButtonProps, hasNext, hasPrevious } = usePagination({
-  currentPage,
-  setCurrentPage,
-  onChange,
-  totalPages: 10,
-  showPages: 7,
-});
-
 <Pagination>
   <Pagination.List>
     <Pagination.Item>
-      <Pagination.Button aria-label='Forrige side' {...prevButtonProps}>
+      <Pagination.Button aria-label='Forrige side'>
         Forrige
       </Pagination.Button>
     </Pagination.Item>
-    {pages.map(({ page, itemKey, buttonProps }) => (
-      <Pagination.Item key={itemKey}>
-        {typeof page === 'number' && (
-          <Pagination.Button {...buttonProps} aria-label={`Side ${page}`}>
-            {page}
-          </Pagination.Button>
-        )}
-      </Pagination.Item>
-    ))}
+
     <Pagination.Item>
-      <Pagination.Button aria-label='Neste side' {...nextButtonProps}>
+      <Pagination.Button aria-label='Side 1'>
+        1
+      </Pagination.Button>
+    </Pagination.Item>
+
+    <Pagination.Item />
+
+    <Pagination.Item>
+      <Pagination.Button aria-label='Side 10'>
+        10
+      </Pagination.Button>
+    </Pagination.Item>
+
+    <Pagination.Item>
+      <Pagination.Button aria-label='Neste side'>
         Neste
       </Pagination.Button>
     </Pagination.Item>
@@ -71,7 +67,7 @@ På små skjermer er det lurt å begrense antall synlige sidetall for å spare p
 - én side før og etter
 - første og siste side
 
-< STORY SOM VISER MOBILVISNING >
+<Canvas of={PaginationStories.Mobile} />
 
 ## Retningslinjer
 Bruk `Pagination` når innholdet er for stort for én side, for eksempel ved søkeresultater eller lange lister, og brukeren trenger å navigere frem og tilbake. Vi deler kun opp innhold i flere sider når det forbedrer lastetiden eller brukervennligheten. 

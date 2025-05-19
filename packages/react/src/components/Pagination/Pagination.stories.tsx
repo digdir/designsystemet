@@ -1,7 +1,5 @@
 import { useArgs } from '@storybook/preview-api';
 import type { Meta, StoryFn } from '@storybook/react';
-
-import { useState } from 'react';
 import { Pagination } from '.';
 import { type UsePaginationProps, usePagination } from '../../utilities';
 
@@ -11,33 +9,43 @@ export default {
 } as Meta;
 
 export const Preview: StoryFn<typeof Pagination> = (args) => {
-  const [page, setCurrentPage] = useState(4);
-  const { pages, nextButtonProps, prevButtonProps } = usePagination({
-    currentPage: page,
-    totalPages: 10,
-    showPages: 7,
-    setCurrentPage,
-  });
-
   return (
-    <Pagination aria-label='Sidenavigering' {...args}>
+    <Pagination>
       <Pagination.List>
         <Pagination.Item>
-          <Pagination.Button aria-label='Forrige side' {...prevButtonProps}>
+          <Pagination.Button aria-label='Forrige side' data-variant='tertiary'>
             Forrige
           </Pagination.Button>
         </Pagination.Item>
-        {pages.map(({ page, itemKey, buttonProps }) => (
-          <Pagination.Item key={itemKey}>
-            {typeof page === 'number' && (
-              <Pagination.Button {...buttonProps} aria-label={`Side ${page}`}>
-                {page}
-              </Pagination.Button>
-            )}
-          </Pagination.Item>
-        ))}
+
         <Pagination.Item>
-          <Pagination.Button aria-label='Neste side' {...nextButtonProps}>
+          <Pagination.Button aria-label='Side 1' data-variant='tertiary'>
+            1
+          </Pagination.Button>
+        </Pagination.Item>
+
+        <Pagination.Item>
+          <Pagination.Button aria-label='Side 2' data-variant='primary'>
+            2
+          </Pagination.Button>
+        </Pagination.Item>
+
+        <Pagination.Item />
+
+        <Pagination.Item>
+          <Pagination.Button aria-label='Side 9' data-variant='tertiary'>
+            9
+          </Pagination.Button>
+        </Pagination.Item>
+
+        <Pagination.Item>
+          <Pagination.Button aria-label='Side 10' data-variant='tertiary'>
+            10
+          </Pagination.Button>
+        </Pagination.Item>
+
+        <Pagination.Item>
+          <Pagination.Button aria-label='Neste side' data-variant='tertiary'>
             Neste
           </Pagination.Button>
         </Pagination.Item>
@@ -98,3 +106,37 @@ WithAnchor.args = {
   totalPages: 10,
   showPages: 7,
 };
+
+export const Mobile: StoryFn = (args) => (
+  <Pagination>
+    <Pagination.List>
+      <Pagination.Item>
+        <Pagination.Button
+          aria-label='Forrige side'
+          data-variant='tertiary'
+        ></Pagination.Button>
+      </Pagination.Item>
+
+      <Pagination.Item>
+        <Pagination.Button aria-label='Side 1' data-variant='tertiary'>
+          1
+        </Pagination.Button>
+      </Pagination.Item>
+
+      <Pagination.Item />
+
+      <Pagination.Item>
+        <Pagination.Button aria-label='Side 10' data-variant='tertiary'>
+          10
+        </Pagination.Button>
+      </Pagination.Item>
+
+      <Pagination.Item>
+        <Pagination.Button
+          aria-label='Neste side'
+          data-variant='tertiary'
+        ></Pagination.Button>
+      </Pagination.Item>
+    </Pagination.List>
+  </Pagination>
+);
