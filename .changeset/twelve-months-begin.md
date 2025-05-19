@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-Export `LabelRequired` type
+**MultiSuggestion**: Fix typo in displayname

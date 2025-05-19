@@ -37,6 +37,6 @@ jobs:
           echo 'Detected Changes:'
           git diff
           echo '---'
-          pnpm run publish --tag "${{ steps.variables.outputs.tag }}" --no-git-tag
+          pnpm run publish-packages --tag "${{ steps.variables.outputs.tag }}" --no-git-tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
