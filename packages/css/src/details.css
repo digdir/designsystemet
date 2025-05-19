@@ -105,12 +105,34 @@
     interpolate-size: allow-keywords;
   }
 
+  &::details-content {
+    border-radius: inherit;
+    padding: var(--ds-size-5, 1rem);
+    block-size: 0;
+    overflow-y: clip;
+    transition: content-visibility 400ms allow-discrete, height 400ms, padding 400ms;
+  }
+
   &::part(details-content) {
     border-radius: inherit;
     padding: var(--ds-size-5, 1rem);
     block-size: 0;
     overflow-y: clip;
-    transition: content-visibility 400ms allow-discrete, height 400ms;
+    transition: content-visibility 400ms allow-discrete, height 400ms, padding 400ms;
+  }
+
+  &:not([open])::details-content {
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+  }
+
+  &:not([open])::part(details-content) {
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+  }
+
+  &[open]::details-content {
+    height: auto;
   }
 
   &[open]::part(details-content) {

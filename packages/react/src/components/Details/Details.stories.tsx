@@ -91,8 +91,8 @@ export const InCardWithColor: StoryFn<typeof Details> = () => (
 );
 
 export const MultipleChildren: StoryFn<typeof Details> = () => (
-  <Details>
-    <Details.Summary>Vi har følgende informasjon om deg</Details.Summary>
+  <u-details class='ds-details'>
+    <u-summary>Vi har følgende informasjon om deg</u-summary>
     <p>
       For å kunne tilby bedre tjenester til våre innbyggere henter vi ut
       følgende informasjon fra Folkeregisteret, matrikkelen og kontakt- og
@@ -106,7 +106,7 @@ export const MultipleChildren: StoryFn<typeof Details> = () => (
         <PhoneIcon fontSize='1.5em' /> Telefon <p>999 99 999</p>
       </List.Item>
     </List.Unordered>
-  </Details>
+  </u-details>
 );
 
 export const Controlled: StoryFn<typeof Details> = () => {
