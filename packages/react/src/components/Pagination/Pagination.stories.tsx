@@ -111,29 +111,27 @@ export const Mobile: StoryFn = (args) => (
   <Pagination>
     <Pagination.List>
       <Pagination.Item>
-        <Pagination.Button
-          aria-label='Forrige side'
-          data-variant='tertiary'
-        ></Pagination.Button>
+        <Pagination.Button aria-label='Forrige side' data-variant='tertiary' />
       </Pagination.Item>
 
       <Pagination.Item>
-        <Pagination.Button aria-label='Side 1'>1</Pagination.Button>
-      </Pagination.Item>
-
-      <Pagination.Item />
-
-      <Pagination.Item>
-        <Pagination.Button aria-label='Side 10' data-variant='tertiary'>
-          10
+        <Pagination.Button aria-label='Side 2' data-variant='tertiary'>
+          2
         </Pagination.Button>
       </Pagination.Item>
 
       <Pagination.Item>
-        <Pagination.Button
-          aria-label='Neste side'
-          data-variant='tertiary'
-        ></Pagination.Button>
+        <Pagination.Button aria-label='Side 3'>3</Pagination.Button>
+      </Pagination.Item>
+
+      <Pagination.Item>
+        <Pagination.Button aria-label='Side 4' data-variant='tertiary'>
+          4
+        </Pagination.Button>
+      </Pagination.Item>
+
+      <Pagination.Item>
+        <Pagination.Button aria-label='Neste side' data-variant='tertiary' />
       </Pagination.Item>
     </Pagination.List>
   </Pagination>
