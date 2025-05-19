@@ -118,9 +118,7 @@ export const Mobile: StoryFn = (args) => (
       </Pagination.Item>
 
       <Pagination.Item>
-        <Pagination.Button aria-label='Side 1' data-variant='tertiary'>
-          1
-        </Pagination.Button>
+        <Pagination.Button aria-label='Side 1'>1</Pagination.Button>
       </Pagination.Item>
 
       <Pagination.Item />
