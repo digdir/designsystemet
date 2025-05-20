@@ -1,5 +1,6 @@
 import { Meta, Controls, Primary, Canvas } from '@storybook/blocks';
-
+import { CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/field.css?inline';
 import * as FieldStories from './Field.stories';
 
 <Meta of={FieldStories} />
@@ -50,3 +51,7 @@ Bruk `position="end"` når du ønsker å plassere for eksempel en `Switch` til h
 
 **Passer ikke til**
 - å semantisk gruppere flere felt - bruk heller [`Fieldset`](/docs/komponenter-fieldset--docs)
+
+## CSS Variabler
+
+<CssVariables css={css} />
