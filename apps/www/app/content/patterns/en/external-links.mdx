@@ -129,6 +129,11 @@ If any of these exceptions apply, we avoid using an icon, and instead write it d
 
 Even if a link includes `target="_blank"`, not all combinations of browsers and screen readers will inform the user that it opens in a new tab/window. Therefore, we recommend writing “opens in new tab” as part of the link text.
 
+#### Reverse tabnabbing
+When you open a link in a new tab using `target="_blank"`, the site you’re linking to can gain access to the original window—and in the worst case, replace it with something malicious. This is called reverse tabnabbing.
+
+Modern browsers usually prevent this automatically. Still, it's a good idea to add `rel="noopener"` as an extra layer of protection, especially for users with older browsers. This prevents the new tab from gaining control over the original one.
+
 ### Appearance
 The Norwegian Universal Design Authority provides information about [required link appearance (uutilsynet.no)](https://www.uutilsynet.no/veiledning/lenker/214#utseende). Users must be able to identify all links regardless of situation, ability, or device settings.
 

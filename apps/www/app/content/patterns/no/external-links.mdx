@@ -128,6 +128,10 @@ For disse unntakene bør vi [unngå bruk av ikon](#unngå-ekstern-lenke-ikon), m
 
 Vi anbefaler å skrive “åpnes i ny fane” som en del av lenketeksten. Ikke alle kombinasjoner av nettlesere og skjermlesere gir brukeren beskjed om at lenken blir åpnet i ny fane, selv om lenken inneholder `target="_blank"`.
 
+#### Reverse tabnabbing
+Når du åpner en lenke i en ny fane med `target="_blank"`, kan nettsiden du lenker til få tilgang til vinduet du kommer fra og i verste fall bytte det ut med noe ondsinnet. Dette kalles reverse tabnabbing.
+
+Moderne nettlesere hindrer vanligvis dette automatisk. Likevel kan det være lurt å legge til `rel="noopener"` som ekstra sikkerhet, særlig for brukere med eldre nettlesere. Da hindrer du at den nye fanen får kontroll over den gamle.
 
 ### Utseende
 UU-tilsynet har informasjon om lovpålagte krav for [utseende på lenker (uutilsynet.no)](https://www.uutilsynet.no/veiledning/lenker/214#utseende). Brukeren må kunne identifisere alle lenker uavhengig av situasjon, evner og innstillinger på utstyret som benyttes. 
@@ -166,6 +170,7 @@ Gjør det tydelig at lenken peker til en fil:
     * ikke bruk ikon alene for å vise filtype 
 
 * Gjerne vis filstørrelse som en del av lenketeksten. Spesielt hvis filstørrelsen er stor
+
 
 <Image
   src="/img/nedlasting-lenker.png"
