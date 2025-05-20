@@ -51,7 +51,7 @@ export const Variants: StoryFn<typeof Card> = () => (
     {variants.map((variant) =>
       colorVariants.map((color) => (
         <Card
-          key={variant}
+          key={`${variant}-${color}`}
           data-variant={variant}
           data-color={color as CardProps['data-color']}
         >
