@@ -15,7 +15,7 @@ mangler som må rettes på en side eller trinn, for å komme videre.
 <Primary />
 <Controls />
 
-## Slik bruker du `ErrorSummary`
+## Bruk
 
 `ErrorSummary` består av flere delkomponenter som må brukes riktig.
 
@@ -53,10 +53,15 @@ Det er viktig at `ErrorSummary` får fokus ved submit slik at brukeren får med 
 
 `ErrorSummary` brukes til å vise en oppsummering når det er feil eller mangler i noe brukeren har gjort. En oppsummering kan gjelde for én eller flere feil.
 
-**Pass på at**
-- overskriften “For å gå videre må du rette opp følgende feil” brukes
-- brukerne kan gå direkte til feilene de må rette opp via lenkene i oppsummeringen
-- lenkene i oppsummeringen stemmer med feilmeldingene de lenker til
+ Brukerne skal kunne gå direkte til feilene de må rette opp ved å klikke på lenkene i oppsummeringen, og det er viktig at disse lenkene stemmer overens med feilmeldingene de viser til.
+
+**Passer til**
+- å gi brukerne en tydelig oversikt over hvilke feil som må rettes før de kan sende inn et skjema
+- skjema med mange felt, der det kan være vanskelig å få oversikt over hvor feilene befinner seg
+
+**Passer ikke til**
+- å vise systemvarsler, bruk [`Alert`](/docs/komponenter-alert--docs)
+- å vise tilbakemeldinger som ikke hindrer innsending - for eksempel advarsler eller anbefalinger
 
 ### Plassering
 
@@ -78,9 +83,13 @@ Oppsummeringen skal ikke være synlig uten at brukeren foretar seg noe. Den skal
 
 - Hvis vi validerer fortløpende (feks. ved `onBlur` på hvert felt), venter vi med å vise ErrorSummary til brukeren prøver å sende inn skjemaet.
 - Det er viktig at komponenten får fokus når den blir vist, slik at brukeren får med seg at det er feil eller mangler i skjemaet.
-- Feilmeldingene i oppsummeringen skal være formulert lik feilmeldingen ved feltet.
 - Feilmeldingene skal lenke direkte til feltet det gjelder.
-- Hvis feilen gjelder flere felt, lenker vi til det første tilfellet av feilen.
+- Hvis feilen gjelder flere felt, for eksempel når to felt valideres på tvers, lenker vi til det første tilfellet av feilen.
+
+## Tekst
+Pass på at overskriften “For å gå videre må du rette opp følgende feil” brukes i `ErrorSummary`.
+
+Feilmeldingene i oppsummeringen skal være formulert lik feilmeldingen ved feltet.
 
 ## Tilgjengelighet
 
