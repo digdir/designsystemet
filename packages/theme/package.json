@@ -11,15 +11,11 @@
   "license": "MIT",
   "exports": {
     ".": {
-      "types": "./brand/colors.d.ts",
-      "default": "./brand/digdir.css"
-    },
-    "./*": "./brand/*",
-    "./configs/*": "./configs/*",
-    "./default": {
       "types": "./src/themes/colors.d.ts",
       "default": "./src/themes/designsystemet.css"
-    }
+    },
+    "./*": "./brand/*",
+    "./configs/*": "./configs/*"
   },
   "files": ["brand/**", "*.css", "configs/**"],
   "publishConfig": {
