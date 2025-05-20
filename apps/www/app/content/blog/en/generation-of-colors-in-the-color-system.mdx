@@ -1,5 +1,5 @@
 ---
-title: Generation of Colors in the Color System
+title: Generation of colors in the color system
 description: This post takes you through the journey we went through to develop our own approach to color generation, and how this system works today
 date: 2025-01-29
 author: Designsystemet
@@ -12,7 +12,7 @@ It can be challenging to create harmonious color scales programmatically - scale
 
 What we envisioned was to create a tool where the user could choose a color, and create a color scale based on the color in lighter and darker values.
 
-## Pleasant Color Scales for Humans
+## Pleasant color scales for humans
 There are many different ways to create colors. There is a sea of color spaces and techniques available that solve many different needs. For Designsystemet, we were looking to create colors that looked beautiful and balanced to the eye. By this we mean how light affects colors in a controlled environment.
 
  <Image
@@ -26,13 +26,13 @@ There are many different ways to create colors. There is a sea of color spaces a
 In the image above, a red color is hit by light of varying intensity. This shows how a red color is affected in a controlled environment in a dark room. Less light will give a darker color, while more light will give a lighter color. This in turn affects how the entire color behaves and looks, both in terms of brightness, hue, and saturation. This was the starting point for how we wanted to create the color scales. By mimicking how light affects colors in the real world.
 
 
-## Different Techniques for Creating Color Scales
+## Different techniques for creating color scales
 Two of the most common ways to create colors are by using the RGB and HSL color spaces.
 We'll now take a closer look at how these methods work and how the results look. 
 In the examples, we use Digdir's red brand color as a starting point for creating the scales. The reason we chose this particular color was because it worked well to showcase the issues and effects of color generation.
 
 
-### RGB Color Space: Shading and Tinting
+### RGB color space: shading and tinting
 A color in the RGB color space consists of 3 color channels: red, green, and blue. 
 These can have values from 0 to 255, where 0 is completely black and 255 is completely white.
 Different combinations of these three values give us all the colors we see on our screens.
@@ -100,7 +100,7 @@ Fixed saturation values across the colors didn't work well in practice either.
 We found that very complex logic had to be written to get colors with different hues to work well together. Here, the RGB technique was much easier to work with, and created much better colors.
 
 
-## What About the Other Color Spaces?
+## What about the other color spaces?
 After trying out the RGB and HSL color spaces, it was time to look at the other color spaces.
 
  <Image
@@ -121,10 +121,10 @@ color scales, and that gave us the colors we were looking for.
 
 But how could we put this together in a system that creates color scales based on contrast and accessibility?
 
-## WCAG and Public Websites
+## WCAG and public websites
 Our approach to developing the color system was to ensure that everything we did met all AA requirements in WCAG. At the same time, we wanted to reach for the AAA level where it made sense and didn't compromise the design. To meet AA requirements, there must be a `4.5:1` contrast between text and background for small text, and `3:1` for text that is larger than or equal to `18 px`. For interactive and graphical elements, the limit is `3:1`. As of 2025, regulations state that public websites must meet all AA requirements in WCAG.
 
-### How WCAG Calculates Contrast
+### How WCAG calculates contrast
 When WCAG 2 calculates the contrast between two colors, they use a formula that is based on the relative luminance between the colors and gives the colors a score. 
 This score indicates how good the contrast is. If the colors have the best possible contrast, the score is `21:1`; if the colors have no contrast at all, the score is `1:1`.
 
@@ -143,10 +143,10 @@ In the image above, there are two colored backgrounds with black text.
 The contrast between both colors and the black text is `6.6:1`, and the relative luminance of the colored backgrounds is `0.28`. The fact that these two values are the same shows that WCAG uses the relative luminance between the colors to calculate the contrast.
 
 
-## Color Space Based on Contrast
+## Color space based on contrast
 As mentioned earlier, there are many color spaces that have a lightness value that shows how light a color is. In some of these color spaces, it means that colors with the same lightness value get approximately the same contrast. Two color spaces that achieve this are HSLuv and OKLCH.
 
-### The HSLuv and OKLCH Color Spaces
+### The HSLuv and OKLCH color spaces
 HSLuv and OKLCH create colors that are better adapted to human color vision. HSLuv adjusts the colors so they stay balanced, even in the RGB area, while OKLCH uses a newer model that gives more precise and even colors. Both make it easier to create nice and harmonious colors, but OKLCH is more accurate.
 
 <Image
@@ -162,7 +162,7 @@ The OKLCH color space created nice colors and worked very well to ensure that th
 
 What if we could combine the RGB color space with OKLCH to ensure that the contrasts were the same across color scales? To do this, we first need to talk about interpolation.
 
-## Interpolation of Colors in the RGB Color Space
+## Interpolation of colors in the RGB color space
 Interpolation is a mathematical method for estimating values between two known data points. 
 It is often used when working with a dataset and wanting to estimate values between existing data points. Color interpolation is about drawing a line between two points in a given color space. The result varies a lot depending on which color space is used, and whether the line is straight or curved. In our case, it was about drawing a line through the RGB color space.
 
@@ -191,11 +191,11 @@ In the example above, we "tint" the colors by 10% over and over again, until we 
 
 The goal was to find the luminance value `0.7` for the colors. But as the image above shows, the result was `0.72` and `0.71`. This shows how the interpolation works, but it's not accurate enough for our purpose. In the source code, a more efficient method, called binary search, is used to navigate through the color space. This ensures that the result is more accurate and that there are as few iterations as possible. We use the JavaScript library chroma.js to help us with this interpolation.
 
-## This Is How the Color Scale Ended Up Looking
+## This is how the color scale ended up looking
 The colors are generated by finding fixed luminance values in the RGB color space. 
 With this method, we felt that the colors in each scale worked well together. Color generation for a color scale can be divided into two groups: static groups and a separate "Base" group.
 
-### The Static Groups
+### The static groups
 These groups used fixed luminance values in the RGB color space to define each step in the scale. Here, for example, all `Text Subtle` colors will always have the same contrast against `Surface Default`. This was very useful, because then we could easily create rules on how the colors should be used in the system.
 
  <Image
@@ -207,7 +207,7 @@ These groups used fixed luminance values in the RGB color space to define each s
 
 In the image above, you see 4 color scales that are generated based on the 4 colors that you see at the top of the image.
 
-### The "Base" Group
+### The "Base" group
 This group works a bit differently than the static groups. 
 The color used to generate a scale is named `Base Default`. It always retains the same "hex code". This ensures that the identity of existing visual profiles with their defined colors can be preserved.
 
@@ -225,7 +225,7 @@ The way we create these colors is by adding to, or subtracting from, the lightne
 
 We found that luminance worked poorly as a basis for saying that a color should become 8% lighter or darker. We therefore needed a color space with a lightness component to help us with this. After we found the lightness value and luminance value of the color, we interpolated the color in the same way as explained earlier.
 
-## Further Work on Color Generation and Summary
+## Further work on color generation and summary
 Now we've covered a lot of exciting aspects of colors and color generation.
 Well done if you've managed to keep up so far! This is a complex topic that often requires a fair amount of insight to fully understand. We hope it has been useful for gaining insight into how our colors in Designsystemet are generated.
 
