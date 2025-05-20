@@ -32,8 +32,8 @@
   },
   "scripts": {
     "designsystemet": "tsx ./bin/designsystemet.ts",
-    "build:tokens": "pnpm run designsystemet tokens build -p -t ../../design-tokens -o ../../packages/theme/brand --clean",
-    "build:tokens:debug": "tsx --inspect-brk ./bin/designsystemet.ts tokens build -p -t ../../design-tokens -o ../../packages/theme/brand --clean",
+    "build:tokens": "pnpm run designsystemet tokens build -p -t ../../internal/design-tokens -o ../../packages/theme/brand --clean",
+    "build:tokens:debug": "tsx --inspect-brk ./bin/designsystemet.ts tokens build -p -t ../../internal/design-tokens -o ../../packages/theme/brand --clean",
     "build": "tsup && pnpm build:types && pnpm build:json-schema",
     "build:types": "tsc --emitDeclarationOnly --declaration",
     "build:json-schema": "tsx ./src/scripts/createJsonSchema.ts",
