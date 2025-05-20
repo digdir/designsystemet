@@ -27,7 +27,7 @@
   },
   "scripts": {
     "designsystemet:tokens-create": "pnpm designsystemet tokens create --config ./configs/designsystemet.config.json",
-    "designsystemet:tokens-build": "pnpm designsystemet tokens build -t ../../internal/design-tokens -o ./src/themes --clean",
+    "designsystemet:tokens-build": "pnpm designsystemet tokens build -t ../../design-tokens -o ./src/themes --clean",
     "update:theme": "pnpm designsystemet:tokens-create && pnpm designsystemet:tokens-build"
   },
   "devDependencies": {
