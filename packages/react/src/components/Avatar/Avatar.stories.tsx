@@ -60,7 +60,6 @@ export const ColorVariants: Story = () => (
         key={color}
         data-color={color as AvatarProps['data-color']}
         aria-label={`color ${color}`}
-        initials={color}
       />
     ))}
   </>
