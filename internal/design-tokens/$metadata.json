@@ -16,10 +16,10 @@
     "primitives/modes/color-scheme/light/designsystemet",
     "themes/designsystemet",
     "semantic/color",
-    "semantic/modes/main-color/primary",
     "semantic/modes/main-color/accent",
-    "semantic/modes/support-color/extra1",
-    "semantic/modes/support-color/extra2",
+    "semantic/modes/support-color/brand1",
+    "semantic/modes/support-color/brand2",
+    "semantic/modes/support-color/brand3",
     "semantic/style"
   ]
 }

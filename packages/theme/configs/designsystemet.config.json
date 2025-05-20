@@ -6,12 +6,12 @@
     "designsystemet": {
       "colors": {
         "main": {
-          "primary": "#0062BA",
-          "accent": "#1E98F5"
+          "accent": "#0062BA"
         },
         "support": {
-          "extra1": "#F45F63",
-          "extra2": "#E5AA20"
+          "brand1": "#F45F63",
+          "brand2": "#E5AA20",
+          "brand3": "#1E98F5"
         },
         "neutral": "#1E2B3C"
       }
