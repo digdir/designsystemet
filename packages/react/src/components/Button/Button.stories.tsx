@@ -27,6 +27,7 @@ const colorVariants = [
   ...Object.keys(themeConfig.themes.designsystemet.colors.main),
   ...Object.keys(themeConfig.themes.designsystemet.colors.support),
   'neutral',
+  'danger',
 ];
 
 export const Preview: Story = {
