@@ -25,7 +25,7 @@ const meta: Meta<typeof Avatar> = {
 const colorVariants = [
   ...Object.keys(themeConfig.themes.designsystemet.colors.main),
   ...Object.keys(themeConfig.themes.designsystemet.colors.support),
-  themeConfig.themes.designsystemet.colors.neutral,
+  'neutral',
 ];
 
 export default meta;

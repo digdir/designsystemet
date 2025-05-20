@@ -1,7 +1,8 @@
 import { PencilWritingIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
-import { Button } from './';
+import themeConfig from '../../../../theme/configs/designsystemet.config.json';
+import { Button, type ButtonProps } from './';
 
 type Story = StoryObj<typeof Button>;
 
@@ -21,6 +22,12 @@ const meta: Meta<typeof Button> = {
 };
 
 export default meta;
+
+const colorVariants = [
+  ...Object.keys(themeConfig.themes.designsystemet.colors.main),
+  ...Object.keys(themeConfig.themes.designsystemet.colors.support),
+  'neutral',
+];
 
 export const Preview: Story = {
   render: ({ ...args }) => {
@@ -44,12 +51,15 @@ export const Variants: StoryFn<typeof Button> = () => (
 
 export const Colors: StoryFn<typeof Button> = () => (
   <>
-    <Button data-color='accent'>accent</Button>
-    <Button data-color='neutral'>neutral</Button>
-    <Button data-color='brand1'>brand1</Button>
-    <Button data-color='brand2'>brand2</Button>
-    <Button data-color='brand3'>brand3</Button>
-    <Button data-color='danger'>danger</Button>
+    {colorVariants.map((color) => (
+      <Button
+        key={color}
+        data-color={color as ButtonProps['data-color']}
+        variant='primary'
+      >
+        {color}
+      </Button>
+    ))}
   </>
 );
 
