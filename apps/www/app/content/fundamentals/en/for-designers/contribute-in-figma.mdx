@@ -39,13 +39,11 @@ There are a few things to consider when creating components in Figma:
 
 - [All styles](https://docs.tokens.studio/available-tokens/available-tokens) (colors, spacing, sizes, shadows, etc.) should be linked to the correct tokens. If you use the existing styles, these are already automatically linked to tokens. If you need new styles, these must also be created as tokens.
 
-- Use the typography components for all text that should exist in the component.
-
 - [Autolayout](https://help.figma.com/hc/en-us/articles/5731482952599-Using-auto-layout): The content should scale as expected when resizing. Consider whether the content should wrap under each other if there is not enough width. Can it be useful with a min or max width? And perhaps truncate (...) on the text if it gets too long?
 
-- [Variants](https://help.figma.com/hc/en-us/articles/360056440594-Create-and-use-variants) and "[component properties](https://help.figma.com/hc/en-us/articles/5579474826519-Explore-component-properties)": Use variants for different variants, colors, states, sizes, and similar. Use Component properties to show/hide layers, instance-swap (e.g., switch an icon) and change text. Properties are named the same way as props in Storybook. We use `Variant`, `Size`, `Color`, `State`.
+- [Variants](https://help.figma.com/hc/en-us/articles/360056440594-Create-and-use-variants) and "[component properties](https://help.figma.com/hc/en-us/articles/5579474826519-Explore-component-properties)": Use variants for different variants, colors, states. Use Component properties to show/hide layers, instance-swap (e.g., switch an icon) and change text. Properties are named the same way as props in Storybook. We use `variant`, `color`, `state`.
 
-- What sizes should the component exist in? Consider that the component fits with the sizes of the other components. For example, a medium text-field should be as tall as a medium button, as they should be able to be placed next to each other. A medium component should use typography-size medium, and a small component should use typography-size small.
+- Sizes are managed using [Modes in Figma](http://localhost:5173/no/fundamentals/for-designers/modes-in-figma). You no longer need to create separate variants for `Small`, `Medium`, and `Large`. As long as your component is connected to tokens for typography, spacing and sizing, it will automatically adapt to the selected mode. This makes components easier to maintain and easier to use across different sizes.
 
 - Is the component interactive? If so, different states must exist as variants of the component, and these are connected with "[Change to](https://help.figma.com/hc/en-us/articles/360061175334-Create-interactive-components-with-variants#create)".
 
