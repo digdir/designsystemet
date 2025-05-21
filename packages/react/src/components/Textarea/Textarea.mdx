@@ -5,10 +5,27 @@ import * as TextareaStories from './Textarea.stories';
 <Meta of={TextareaStories} />
 
 # Textarea
-`Textarea` brukes når vi vil gi brukerne mulighet til å legge inn tekst som er lengre enn én linje. 
+`Textarea` brukes når brukeren skal kunne skrive inn tekst som går over flere linjer. 
+
 
 <Primary />
 <Controls />
+
+## Bruk
+`Textarea` er en grunnleggende komponent som kan kombineres med `Field` for å få utvidet funksjonalitet som prefix/suffix, hjelpetekst og validering. [`Textfield`](/docs/komponenter-textfield--docs) med `multiline` er allerede sammensatt av disse komponentene, og er derfor anbefalt i de fleste tilfeller. Å bruke `Textarea` direkte passer best dersom du har behov for større kontroll over sammensetningen og ønsker å bygge noe mer skreddersydd.
+
+```tsx
+import { Textarea, Label } from '@digdir/designsystemet-react';
+
+ <Label htmlFor="my-textarea">
+    Label
+  </Label>
+  <Textarea
+    cols={40}
+    data-size="md"
+    id="my-textarea"
+  />
+```
 
 ## Eksempler
 
@@ -16,24 +33,20 @@ import * as TextareaStories from './Textarea.stories';
 
 <Canvas of={TextareaStories.Controlled} />
 
-### Full bredde
-Denne varianten strekker tekstområdet til å fylle hele bredden av tilgjengelig plass. Brukes når tekstfeltet skal stå ut som et hovedfelt eller når det er behov for maksimal skriveplass.
 
-<Canvas of={TextareaStories.FullWidth} />
-
-## Retningslinjer for bruk av `Textarea`
+## Retningslinjer
 Bruk `Textarea` når brukerne forventes å skrive inn mer enn én linje med tekst, for eksempel ved åpne spørsmål, tilbakemeldinger, eller andre situasjoner hvor lengre tekstinnhold er nødvendig.
 
 Vær oppmerksom på at brukerne kan synes det er vanskelig å skrive fritekst eller svare på åpne spørsmål. Noen ganger kan det være bedre å bryte opp spørsmålet i flere enklere spørsmål, og gi brukerne mulighet til å svare med for eksempel `radio`.
 
-### Passer til 
+**Passer til:**
+- Situasjoner der bruker skal skrive mer enn én linje tekst.
+- Åpne tekstfelt der det ikke finnes en forhåndsdefinert liste med svaralternativer.
+- Når brukeren skal få plass til å formulere seg fritt.
 
-- å gi mulighet for lengre tekster/svar, for eksempel et avsnitt eller en kommentar.
-
-
-### Passer ikke til 
-- korte svar som e-postadresser og telefonnummer – bruk [`input`](/docs/komponenter-input--docs) for disse.
-
+**Passer ikke til:**
+- Korte svar som navn, e-postadresser og telefonnummer – bruk [`input`](/docs/komponenter-input--docs) for disse.
+- Strukturerte data som skal valideres, f.eks fødselsnummer eller dato.
 
 ### Størrelse og tilpasning
 #### Høyden på tekstområdet
@@ -47,10 +60,8 @@ Et tekstområde bør ikke være bredere enn 50–75 tegn inkludert mellomrom. Hv
 ### Øvrige retningslinjer
 I tillegg til de retningslinjene, bør du også følge de generelle retninglinjene for [`textfield`](/docs/komponenter-Textfield--docs) og [`input`](/docs/komponenter-input--docs). 
 
-* [Plassering av ledetekst](/docs/komponenter-textfield--docs#plassering-av-ledeteksten)
 * [Unngå plassholdertekster](/docs/komponenter-textfield--docs#unng%C3%A5-plassholdertekster)
-* [Inndata og formatering](/docs/komponenter-textfield--docs#inndata-og-formatering)
-* [Tekst i komponenten](/docs/komponenter-textfield--docs#tekst-i-komponenten)
-* [Tilgjengelighet](/docs/komponenter-textfield--docs#tilgjengelighetTilgjengelighet)
-
+* [Inndata og formatering](/docs/komponenter-textfield--docs#inndata)
+* [Tekst i komponenten](/docs/komponenter-textfield--docs#tekst)
+* [Tilgjengelighet](/docs/komponenter-textfield--docs#tilgjengelighet)
 
