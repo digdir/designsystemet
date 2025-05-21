@@ -23,7 +23,7 @@ jobs:
   checks:
     name: Build & run visual/interaction tests
     runs-on: ubuntu-latest
-    if: ${{ !github.event.pull_request.draft }}
+    if: ${{ !github.event.pull_request.draft }} || github.repository == 'digdir/designsystemet'
     steps:
       - uses: actions/checkout@v4
         with:
