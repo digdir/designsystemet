@@ -19,7 +19,7 @@
   - Use the word `spacing` when we use it to do more than just set a property. For example in `padding`, but also in a calc for `margin-inline`
   - States should be in this pattern: `--ds-{COMPONENT}-{PROPERTY}--{STATE}`
   - `--_dsc` for internal
-- Prefix keyframes with `ds-COMPONENT`
+- Prefix keyframes with `ds-{COMPONENT}`
 - Use logical block and inline properties
   - Use `margin-block` and `margin-inline` instead of `margin-top`, `margin-bottom`, `margin-left`, and `margin-right`
   - Use `padding-block` and `padding-inline` instead of `padding-top`, `padding-bottom`, `padding-left`, and `padding-right`
