@@ -1,13 +1,8 @@
-import {
-  ChevronDownUpIcon,
-  ChevronUpDownIcon,
-  PersonIcon,
-  PhoneIcon,
-} from '@navikt/aksel-icons';
+import { ChevronDownUpIcon, ChevronUpDownIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
-import { Button, Card, Details, Link, List, Paragraph } from '../';
+import { Button, Card, Details, Link, Paragraph } from '../';
 
 export default {
   title: 'Komponenter/Details',
@@ -88,25 +83,6 @@ export const InCardWithColor: StoryFn<typeof Details> = () => (
       </Details>
     </Card>
   </>
-);
-
-export const MultipleChildren: StoryFn<typeof Details> = () => (
-  <u-details class='ds-details'>
-    <u-summary>Vi har følgende informasjon om deg</u-summary>
-    <p>
-      For å kunne tilby bedre tjenester til våre innbyggere henter vi ut
-      følgende informasjon fra Folkeregisteret, matrikkelen og kontakt- og
-      reservasjonsregisteret:{' '}
-    </p>
-    <List.Unordered>
-      <List.Item>
-        <PersonIcon aria-label='' fontSize='1.5em' /> Navn <p>Ken Langaas</p>
-      </List.Item>
-      <List.Item>
-        <PhoneIcon fontSize='1.5em' /> Telefon <p>999 99 999</p>
-      </List.Item>
-    </List.Unordered>
-  </u-details>
 );
 
 export const Controlled: StoryFn<typeof Details> = () => {
