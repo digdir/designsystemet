@@ -1,5 +1,6 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/blocks';
-
+import { CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/input.css?inline';
 import * as TextareaStories from './Textarea.stories';
 
 <Meta of={TextareaStories} />
@@ -21,8 +22,7 @@ import { Textarea, Label } from '@digdir/designsystemet-react';
     Label
   </Label>
   <Textarea
-    cols={40}
-    data-size="md"
+    rows="5"
     id="my-textarea"
   />
 ```
@@ -64,4 +64,10 @@ I tillegg til de retningslinjene, bør du også følge de generelle retninglinje
 * [Inndata og formatering](/docs/komponenter-textfield--docs#inndata)
 * [Tekst i komponenten](/docs/komponenter-textfield--docs#tekst)
 * [Tilgjengelighet](/docs/komponenter-textfield--docs#tilgjengelighet)
+
+## CSS Variabler
+
+`Textarea` bruker `.ds-input` klassen
+
+<CssVariables css={css} />
 
