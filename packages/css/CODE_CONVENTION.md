@@ -20,11 +20,8 @@
   - States should be in this pattern: `--ds-{COMPONENT}-{PROPERTY}--{STATE}`
   - `--_dsc` for internal
 - Prefix keyframes with `ds-{COMPONENT}`
-- Use logical block and inline properties
-  - Use `margin-block` and `margin-inline` instead of `margin-top`, `margin-bottom`, `margin-left`, and `margin-right`
-  - Use `padding-block` and `padding-inline` instead of `padding-top`, `padding-bottom`, `padding-left`, and `padding-right`
-  - Use `border-block-start` and `border-block-end` instead of `border-top` and `border-bottom`
-  - Use `border-inline-start` and `border-inline-end` instead of `border-left` and `border-right`
+- Use logical properties
+  - See [MDN's article on logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties)
 
 ## Structure
 - Custom properties should be set in the root element
