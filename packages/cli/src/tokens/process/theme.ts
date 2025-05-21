@@ -87,9 +87,6 @@ order may change due to nondeterminism.`.trim(),
   });
 
   const header = `@charset "UTF-8";
-
-@layer ds.theme, ds.base, ds.utilities, ds.components;
-
 /*
 ${fileHeader}
 */

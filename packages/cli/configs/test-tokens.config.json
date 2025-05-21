@@ -1,6 +1,6 @@
 {
   "$schema": "../dist/config.schema.json",
-  "outDir": "./test-tokens/config",
+  "outDir": "./temp/config/design-tokens",
   "clean": true,
   "themes": {
     "some-org": {

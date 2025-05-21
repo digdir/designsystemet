@@ -160,13 +160,13 @@ export const data = [
     url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-tooltip--docs',
   },
   {
-    title: 'Typography',
-    image: 'Typography.svg',
-    url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-typography--docs',
-  },
-  {
     title: 'Toggle Group',
     image: 'ToggleGroup.svg',
     url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-togglegroup--docs',
+  },
+  {
+    title: 'Typography',
+    image: 'Typography.svg',
+    url: 'https://storybook.designsystemet.no/?path=/docs/komponenter-typography--docs',
   },
 ];
