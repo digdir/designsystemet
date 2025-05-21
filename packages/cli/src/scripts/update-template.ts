@@ -1,18 +1,18 @@
 import path from 'node:path';
 import chalk from 'chalk';
 import * as R from 'ramda';
-import semanticColorJson from '../../../../design-tokens/semantic/color.json' with { type: 'json' };
-import accentColorCategoryJson from '../../../../design-tokens/semantic/modes/main-color/accent.json' with {
+import semanticColorJson from '../../../../internal/design-tokens/semantic/color.json' with { type: 'json' };
+import accentColorCategoryJson from '../../../../internal/design-tokens/semantic/modes/main-color/accent.json' with {
   type: 'json',
 };
-import digdirThemeJson from '../../../../design-tokens/themes/digdir.json' with { type: 'json' };
+import digdirThemeJson from '../../../../internal/design-tokens/themes/digdir.json' with { type: 'json' };
 import { cleanDir, cp, mkdir, readFile, writeFile } from '../utils.js';
 const DIRNAME: string = import.meta.dirname || __dirname;
 
-const SOURCE_FILES_PATH = path.join(DIRNAME, '../../../../design-tokens');
+const SOURCE_FILES_PATH = path.join(DIRNAME, '../../../../internal/design-tokens');
 const TEMPLATE_FILES_PATH = path.join(DIRNAME, '../tokens/template/design-tokens');
 
-const designTokensPath = (_path: string) => path.join(DIRNAME, '../../../../design-tokens', _path);
+const designTokensPath = (_path: string) => path.join(SOURCE_FILES_PATH, _path);
 
 const argsFromToPaths = (path_: string): [string, string] => [
   path.join(SOURCE_FILES_PATH, path_),
