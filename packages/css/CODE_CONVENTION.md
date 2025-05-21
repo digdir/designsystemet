@@ -5,6 +5,7 @@
 - Use DOM structure and attributes to target other elements
 - Use `ds-` prefix for all classes
 - Use kebab-case for class names
+- Prefix external variables with `dsc-`
 
 ## CSS Properties
 - Use `var(--ds-color-X)` where we want `data-color` to cascade
@@ -17,6 +18,13 @@
   - Avoid reassigning
   - Use the word `spacing` when we use it to do more than just set a property. For example in `padding`, but also in a calc for `margin-inline`
   - States should be in this pattern: `--ds-{COMPONENT}-{PROPERTY}--{STATE}`
+  - `--_dsc` for internal
+- Prefix keyframes with `ds-COMPONENT`
+- Use logical block and inline properties
+  - Use `margin-block` and `margin-inline` instead of `margin-top`, `margin-bottom`, `margin-left`, and `margin-right`
+  - Use `padding-block` and `padding-inline` instead of `padding-top`, `padding-bottom`, `padding-left`, and `padding-right`
+  - Use `border-block-start` and `border-block-end` instead of `border-top` and `border-bottom`
+  - Use `border-inline-start` and `border-inline-end` instead of `border-left` and `border-right`
 
 ## Structure
 - Custom properties should be set in the root element
