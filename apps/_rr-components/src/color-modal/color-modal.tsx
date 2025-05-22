@@ -77,18 +77,14 @@ export const ColorModal = ({
             <Select.Option value='rgb'>RGB</Select.Option>
             <Select.Option value='xyz-d65'>XYZ-D65</Select.Option>
           </Select>
-          <Paragraph asChild className={classes.value} suppressHydrationWarning>
-            <div>
-              {convertedColor}
-              <ClipboardButton value={convertedColor} />
-            </div>
+          <Paragraph className={classes.value}>
+            {convertedColor}
+            <ClipboardButton value={convertedColor} />
           </Paragraph>
           <Paragraph className={classes.key}>CSS variabel</Paragraph>
-          <Paragraph asChild className={classes.value}>
-            <div>
-              {getCssVariable(namespace, number)}
-              <ClipboardButton value={getCssVariable(namespace, number)} />
-            </div>
+          <Paragraph className={classes.value}>
+            {getCssVariable(namespace, number)}
+            <ClipboardButton value={getCssVariable(namespace, number)} />
           </Paragraph>
           <Paragraph className={classes.key}>Relativ luminans</Paragraph>
           <Paragraph className={classes.value}>
