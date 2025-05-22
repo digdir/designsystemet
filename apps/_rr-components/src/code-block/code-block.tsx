@@ -1,4 +1,3 @@
-'use client';
 import { Button } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { useState } from 'react';

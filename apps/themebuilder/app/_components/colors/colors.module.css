@@ -1,0 +1,28 @@
+.rows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ds-size-4);
+  margin: var(--ds-size-2) 0;
+  width: 100%;
+  max-width: 1390px;
+  justify-content: space-between;
+}
+
+.row {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--ds-size-2);
+  width: 100%;
+}
+
+.scaleLabel {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: var(--ds-color-neutral-text-default);
+  flex-shrink: 0;
+  width: 95px;
+}

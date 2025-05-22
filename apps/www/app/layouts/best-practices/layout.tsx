@@ -1,4 +1,5 @@
 import { join } from 'node:path';
+import { ContentContainer } from '@internal/rr-components';
 import { HandShakeHeartIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import { Outlet, isRouteErrorResponse, useMatches } from 'react-router';
@@ -8,7 +9,6 @@ import {
   BannerIcon,
   BannerIngress,
 } from '~/_components/banner/banner';
-import { ContentContainer } from '~/_components/content-container/content-container';
 import { getFileFromContentDir, getFilesFromContentDir } from '~/_utils/files';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import type { Route } from './+types/layout';

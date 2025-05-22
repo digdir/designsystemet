@@ -1,0 +1,32 @@
+.component {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1;
+}
+
+.label {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.box {
+  width: 100%;
+  text-align: left;
+  background-color: transparent;
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  border-radius: 4px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 15px;
+}
+
+.box:hover {
+  cursor: pointer;
+  background-color: var(--ds-color-neutral-background-tinted);
+}
+
+.icon {
+  color: var(--ds-color-neutral-text-subtle);
+}

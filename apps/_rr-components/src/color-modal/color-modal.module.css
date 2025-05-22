@@ -1,0 +1,148 @@
+.modalContent {
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.description {
+  margin-bottom: var(--ds-size-7);
+  line-height: 150%;
+  text-wrap: pretty;
+}
+
+.grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 25px 16px;
+  align-items: center;
+  padding-top: var(--ds-size-7);
+  & > select {
+    max-width: max-content;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 34px;
+    height: 1px;
+    background-color: var(--ds-color-neutral-border-subtle);
+  }
+}
+.key {
+  color: var(--ds-color-neutral-text-default);
+  font-weight: var(--ds-font-weight-medium);
+}
+.value {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-size-2);
+  & > button {
+    border-radius: 50%;
+    margin-block: calc(var(--ds-size-6) * -1);
+  }
+}
+
+.colorPreview {
+  width: 100%;
+  height: var(--ds-size-26);
+  border-block: var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle);
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  height: 24px;
+}
+
+.field:last-child {
+  margin-bottom: 0;
+}
+
+.label {
+  font-weight: 500;
+  margin-right: 12px;
+}
+
+.value {
+  margin-right: 4px;
+}
+
+.accordion {
+  border: none;
+  margin-top: 24px;
+  margin-bottom: 4px;
+}
+
+.accordionContent {
+  padding-left: 4px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.accordionHeading {
+  border: none;
+  background-color: transparent;
+}
+
+.accordion button {
+  padding: 0;
+}
+
+.contrastItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.contrastBox {
+  border-right: 1px solid var(--ds-color-neutral-border-subtle);
+  margin-right: 24px;
+  flex-grow: 1;
+  margin-bottom: -14px;
+}
+
+.contrastBox:last-child {
+  border-right: none;
+}
+
+.contrastItem svg {
+  color: #169c00;
+}
+
+.contrastItem .contrastError {
+  color: #dd4b4b;
+}
+
+.contrastSubTitle {
+  font-weight: 500;
+  margin-top: 16px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.contrastContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.contrastContainer:last-child {
+  margin-bottom: 0;
+}
+
+.apcaHelpText {
+  height: 18px;
+  width: 18px;
+}
+
+.contrastTitle {
+  font-size: 16px;
+}
+
+.contrastItemSubText {
+  font-weight: 400;
+}

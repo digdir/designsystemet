@@ -1,8 +1,7 @@
 import { Heading } from '@digdir/designsystemet-react';
+import { ContentContainer } from '@internal/rr-components';
 import cl from 'clsx/lite';
 import type * as React from 'react';
-
-import { ContentContainer } from '../content-container/content-container';
 import classes from './section.module.css';
 
 type SectionProps = {

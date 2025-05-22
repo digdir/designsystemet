@@ -1,0 +1,11 @@
+.test {
+  display: flex;
+  gap: var(--ds-size-4);
+  justify-content: center;
+}
+
+.themes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-1);
+}

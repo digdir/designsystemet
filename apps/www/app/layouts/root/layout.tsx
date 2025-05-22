@@ -1,15 +1,15 @@
 import { SkipLink } from '@digdir/designsystemet-react';
+import {
+  ContentContainer,
+  Error404,
+  Footer,
+  Header,
+} from '@internal/rr-components';
+import type { FooterLinkListItemProps } from '@internal/rr-components';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import { Outlet, isRouteErrorResponse, useRouteLoaderData } from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
-import { ContentContainer } from '~/_components/content-container/content-container';
-import { Error404 } from '~/_components/errors/error-404';
-import {
-  Footer,
-  type FooterLinkListItemProps,
-} from '~/_components/footer/footer';
-import { Header } from '~/_components/header/header';
 import { Figma } from '~/_components/logos/figma';
 import { Github } from '~/_components/logos/github';
 import { Slack } from '~/_components/logos/slack';

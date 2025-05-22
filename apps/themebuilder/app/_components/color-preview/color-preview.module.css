@@ -1,0 +1,47 @@
+.grid {
+  grid-template-columns: repeat(3, 1fr) !important;
+  overflow-x: auto;
+}
+
+.list {
+  overflow-x: auto;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  height: auto;
+  padding: 18px;
+  border: 1px solid var(--ds-color-border-subtle);
+  background-color: var(--ds-color-surface-tinted);
+}
+
+.title {
+  margin-bottom: 8px;
+  color: var(--ds-color-text-default);
+  width: 200px;
+}
+
+.desc {
+  color: var(--ds-color-text-subtle);
+}
+
+.checkGroup {
+  margin-top: 16px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btnGroup {
+  display: flex;
+  gap: 16px;
+}
+
+.label {
+  font-weight: 500;
+  margin-bottom: 8px;
+  font-size: 16px;
+}

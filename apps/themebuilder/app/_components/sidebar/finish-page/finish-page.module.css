@@ -1,0 +1,28 @@
+.desc {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.btnGroup {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.btn {
+  width: 100%;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 24px;
+  border-top: 1px solid var(--ds-color-neutral-border-subtle);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--ds-color-info-background-default);
+  border-radius: 0 0 8px 8px;
+}

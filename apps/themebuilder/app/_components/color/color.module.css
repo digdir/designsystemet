@@ -1,0 +1,73 @@
+.box {
+  height: 46px;
+  width: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-weight: 400;
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.box:hover:not(:focus-visible) {
+  border-color: var(--ds-color-neutral-border-default);
+  outline: 2px solid var(--ds-color-neutral-border-default);
+  outline-offset: 1px;
+}
+
+.boxContainer {
+  border-radius: 4px;
+  background-image: linear-gradient(45deg, var(--ds-color-neutral-background-subtle) 26%, transparent 26%),
+    linear-gradient(135deg, var(--ds-color-neutral-background-subtle) 26%, transparent 26%),
+    linear-gradient(45deg, transparent 75%, var(--ds-color-neutral-background-subtle) 75%),
+    linear-gradient(135deg, transparent 75%, var(--ds-color-neutral-background-subtle) 75%);
+  background-size: 24px 24px; /* Must be a square */
+  background-position: 0 0, 12px 0, 12px -12px, 0px 12px; /* Must be half of one side of the square */
+}
+
+.featured {
+  border: 5px solid black;
+  font-weight: 600;
+}
+
+.whiteText {
+  color: white !important;
+}
+
+.colorTest {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border: 1px solid #a0a0a0;
+}
+
+.contrast {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.lightness {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 6px;
+  margin-left: -2px;
+  margin-top: 12px;
+}
+
+.hex {
+  font-size: 15px;
+  margin-top: 12px;
+}
+
+@media (max-width: 1632px) {
+  .box {
+    width: 80px;
+    height: 50px;
+  }
+}

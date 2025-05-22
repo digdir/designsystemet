@@ -12,9 +12,9 @@ import type { Route } from './+types/root';
 import '@digdir/designsystemet-theme';
 import '@digdir/designsystemet-css';
 import './app.css';
+import { Error404 } from '@internal/rr-components';
 import { useTranslation } from 'react-i18next';
 import { useChangeLanguage } from 'remix-i18next/react';
-import { Error404 } from './_components/errors/error-404';
 
 export const links = () => {
   return [
