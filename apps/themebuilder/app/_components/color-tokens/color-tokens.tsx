@@ -14,7 +14,7 @@ export const ColorTokens = () => {
         </div>
       </div>
       <div className={cl('panelRight', classes.right)}>
-        <img className={classes.img} src='img/color-tokens.png' alt='' />
+        <img className={classes.img} src='/img/color-tokens.png' alt='' />
       </div>
     </div>
   );
