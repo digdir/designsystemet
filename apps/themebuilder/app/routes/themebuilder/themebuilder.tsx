@@ -1,4 +1,3 @@
-'use client';
 import { AppearanceToggle } from '~/_components/appearance-toggle/appearance-toggle';
 import { Sidebar } from '~/_components/sidebar/sidebar';
 import { ThemeHeader } from '~/_components/theme-header/theme-header';

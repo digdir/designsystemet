@@ -1,5 +1,3 @@
-'use client';
-
 import cl from 'clsx/lite';
 import { useEffect, useRef } from 'react';
 import { ColorContrasts } from '~/_components/color-contrasts/color-contrasts';

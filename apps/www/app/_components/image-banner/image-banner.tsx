@@ -1,4 +1,3 @@
-'use client';
 import type { ButtonProps } from '@digdir/designsystemet-react';
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
