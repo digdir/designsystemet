@@ -23,6 +23,8 @@
     "react-router": "^7.5.3",
     "remix-i18next": "^7.2.1",
     "react-i18next": "^15.5.1",
+    "zustand": "^5.0.4",
+    "react-color-palette": "^7.3.0",
     "i18next": "^24.2.3"
   },
   "devDependencies": {

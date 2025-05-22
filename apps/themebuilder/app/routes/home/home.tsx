@@ -4,9 +4,10 @@ import { BookIcon, PaletteIcon } from '@navikt/aksel-icons';
 import { useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router';
 import { Previews } from '~/_components/previews/previews';
+import type { Route } from './+types/home';
 import classes from './home.module.css';
 
-export default function Home() {
+export default function Home({ params: { lang } }: Route.ComponentProps) {
   const [searchParams] = useSearchParams();
   const params = new URLSearchParams(searchParams);
 
@@ -54,7 +55,7 @@ export default function Home() {
             </Paragraph>
             <div className={classes.btnGroup}>
               <Button data-color='neutral' asChild>
-                <Link to='/themebuilder'>
+                <Link to={`/${lang}/themebuilder`}>
                   <PaletteIcon fontSize='1.5rem' aria-hidden />
                   Bygg tema
                 </Link>
