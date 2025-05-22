@@ -3,7 +3,7 @@ declare const emptyObjectSymbol: unique symbol;
 type EmptyObject = { [emptyObjectSymbol]?: never };
 
 /**
- * Base interface for available colors in the design system.
+ * Base interface for available colors in Designsystemet.
  * The CLI will generate augmentations of this interface to allow
  * type safety of custom color names.
  */
