@@ -192,6 +192,7 @@
   .content video,
   .content [data-iframe-video] {
     width: auto;
+    max-width: 100%;
     margin-left: initial !important;
   }
 }
