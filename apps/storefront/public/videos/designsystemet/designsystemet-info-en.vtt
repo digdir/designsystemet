@@ -1,0 +1,152 @@
+WEBVTT
+
+
+::cue(v[voice="Speaker1"]) { color: white }
+
+1
+00:00:05.990 --> 00:00:08.700
+<v Speaker1>Creating digital services requires a number of different
+
+2
+00:00:08.700 --> 00:00:11.670
+<v Speaker1>components. These components may look simple,
+
+3
+00:00:11.670 --> 00:00:14.090
+<v Speaker1>but it takes a lot of time to develop,
+
+4
+00:00:14.090 --> 00:00:17.330
+<v Speaker1>test and maintain a robust and scalable system.
+
+5
+00:00:17.360 --> 00:00:20.580
+<v Speaker1>The components should work on both different devices,
+
+6
+00:00:20.580 --> 00:00:23.870
+<v Speaker1>screen sizes and with various accessibility aids .
+
+7
+00:00:23.900 --> 00:00:27.050
+<v Speaker1>Nailing all the accessibility details takes time from
+
+8
+00:00:27.050 --> 00:00:30.260
+<v Speaker1>product development that you could spend on more unique
+
+9
+00:00:30.260 --> 00:00:33.240
+<v Speaker1>issues. Fortunately, we do not need to make these
+
+10
+00:00:33.240 --> 00:00:34.940
+<v Speaker1>components several times.
+
+11
+00:00:34.940 --> 00:00:37.420
+<v Speaker1>They can be created once centrally and put to use in
+
+12
+00:00:37.420 --> 00:00:39.740
+<v Speaker1>various services, websites and applications.
+
+13
+00:00:39.740 --> 00:00:43.170
+<v Speaker1>Building on top of the design system's components will
+
+14
+00:00:43.170 --> 00:00:46.310
+<v Speaker1>save you time and money, allowing you to make better
+
+15
+00:00:46.310 --> 00:00:47.360
+<v Speaker1>products faster.
+
+16
+00:00:47.360 --> 00:00:50.360
+<v Speaker1>The building blocks are ready for use.
+
+17
+00:00:50.360 --> 00:00:54.560
+<v Speaker1>They can be customized and assembled as needed.
+
+18
+00:00:54.560 --> 00:00:58.150
+<v Speaker1>To bring out your own sender identity,
+
+19
+00:00:58.150 --> 00:01:00.590
+<v Speaker1>you can use your own theme.
+
+20
+00:01:00.590 --> 00:01:03.250
+<v Speaker1>You can get help setting up themes in the design system's
+
+21
+00:01:03.250 --> 00:01:05.970
+<v Speaker1>theme builder, which ensures good contrast between text
+
+22
+00:01:05.970 --> 00:01:07.320
+<v Speaker1>color and background color.
+
+23
+00:01:07.320 --> 00:01:12.180
+<v Speaker1>When the same components of the
+
+24
+00:01:12.180 --> 00:01:16.850
+<v Speaker1>patterns are applied across,
+
+25
+00:01:16.850 --> 00:01:21.510
+<v Speaker1>we create recognizability in
+
+26
+00:01:21.510 --> 00:01:25.840
+<v Speaker1>the services. This will make it easier for everyone to get
+
+27
+00:01:25.840 --> 00:01:29.250
+<v Speaker1>what they need. If users understand how something works in
+
+28
+00:01:29.250 --> 00:01:31.766
+<v Speaker1>a service, such as filling out a form,
+
+29
+00:01:31.766 --> 00:01:35.130
+<v Speaker1>it is best that the next form that meets them works the
+
+30
+00:01:35.130 --> 00:01:38.670
+<v Speaker1>same way. On designsystemet.no you will find what you need
+
+31
+00:01:38.670 --> 00:01:42.050
+<v Speaker1>to get started. D o you want to join the collaboration?
+
+32
+00:01:42.090 --> 00:01:44.800
+<v Speaker1>The design system is under development across several
+
+33
+00:01:44.800 --> 00:01:47.230
+<v Speaker1>actors, and it is already in use in many different
+
+34
+00:01:47.230 --> 00:01:49.750
+<v Speaker1>solutions. We also work to establish common patterns
+
+35
+00:01:49.750 --> 00:01:51.520
+<v Speaker1>across in collaboration with others.
+
+36
+00:01:51.540 --> 00:01:55.080
+<v Speaker1>Get in touch if your organization wants to participate in
+
+37
+00:01:55.080 --> 00:01:57.840
+<v Speaker1>the development or collaborate on patterns.
