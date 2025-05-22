@@ -77,7 +77,7 @@ export const ColorModal = ({
             <Select.Option value='rgb'>RGB</Select.Option>
             <Select.Option value='xyz-d65'>XYZ-D65</Select.Option>
           </Select>
-          <Paragraph asChild className={classes.value}>
+          <Paragraph asChild className={classes.value} suppressHydrationWarning>
             <div>
               {convertedColor}
               <ClipboardButton value={convertedColor} />

@@ -113,7 +113,7 @@ export const TokenModal = () => {
       >
         <Dialog.Block>
           <Heading className={classes.modalHeader} data-size='2xs'>
-            <img src='img/emblem.svg' alt='' className={classes.emblem} />
+            <img src='/img/emblem.svg' alt='' className={classes.emblem} />
             <span className={classes.headerText}>Ta i bruk tema</span>
           </Heading>
         </Dialog.Block>
