@@ -1,5 +1,5 @@
 import { join } from 'node:path';
-import { ContentContainer } from '@internal/rr-components';
+import { ContentContainer, Error404 } from '@internal/rr-components';
 import { LayersIcon } from '@navikt/aksel-icons';
 import { bundleMDX } from 'mdx-bundler';
 import { useTranslation } from 'react-i18next';
@@ -10,7 +10,6 @@ import {
   BannerIcon,
   BannerIngress,
 } from '~/_components/banner/banner';
-import { Error404 } from '~/_components/errors/error-404';
 import { Sidebar } from '~/_components/sidebar/sidebar';
 import { getFileFromContentDir, getFilesFromContentDir } from '~/_utils/files';
 import type { Route } from './+types/layout';

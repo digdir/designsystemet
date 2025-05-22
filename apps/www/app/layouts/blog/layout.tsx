@@ -1,9 +1,8 @@
-import { ContentContainer } from '@internal/rr-components';
+import { ContentContainer, Error404 } from '@internal/rr-components';
 import { PencilIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import { Outlet, isRouteErrorResponse } from 'react-router';
 import { Banner, BannerHeading, BannerIcon } from '~/_components/banner/banner';
-import { Error404 } from '~/_components/errors/error-404';
 import type { Route } from './+types/layout';
 import classes from './layout.module.css';
 
