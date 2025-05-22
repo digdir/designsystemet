@@ -9,23 +9,25 @@
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
-    "@internal/rr-components": "workspace:^",
     "@digdir/designsystemet": "workspace:^",
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
+    "@internal/rr-components": "workspace:^",
     "@navikt/aksel-icons": "^7.21.1",
+    "@radix-ui/react-slot": "^1.2.2",
     "@react-router/node": "^7.5.3",
     "@react-router/serve": "^7.5.3",
+    "clsx": "^2.1.1",
+    "i18next": "^24.2.3",
     "isbot": "^5.1.27",
     "react": "^19.1.0",
+    "react-color-palette": "^7.3.0",
     "react-dom": "^19.1.0",
+    "react-i18next": "^15.5.1",
     "react-router": "^7.5.3",
     "remix-i18next": "^7.2.1",
-    "react-i18next": "^15.5.1",
-    "zustand": "^5.0.4",
-    "react-color-palette": "^7.3.0",
-    "i18next": "^24.2.3"
+    "zustand": "^5.0.4"
   },
   "devDependencies": {
     "@react-router/dev": "^7.5.3",
