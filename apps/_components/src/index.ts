@@ -8,3 +8,5 @@ export { Slack } from './logos/Slack';
 export { Footer } from './Footer/Footer';
 export { Showcase } from './Showcase/Showcase';
 export { CodeBlock } from './CodeBlock/CodeBlock';
+
+export * from './react-router';

@@ -1,14 +1,17 @@
 import { SkipLink } from '@digdir/designsystemet-react';
-import { ContentContainer, Footer, Header } from '@internal/rr-components';
-import type { FooterLinkListItemProps } from '@internal/rr-components';
+import { ContentContainer } from '@internal/rr-components';
+import { Figma } from '@internal/rr-components';
+import { Github } from '@internal/rr-components';
+import { Slack } from '@internal/rr-components';
+import {
+  Footer,
+  type FooterLinkListItemProps,
+  Header,
+} from '@internal/rr-components';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import { Outlet, isRouteErrorResponse, useRouteLoaderData } from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
-import { Error404 } from '~/_components/errors/error-404';
-import { Figma } from '~/_components/logos/figma';
-import { Github } from '~/_components/logos/github';
-import { Slack } from '~/_components/logos/slack';
 import type { Route } from './+types/layout';
 import type { Route as RootRoute } from './../../+types/root';
 
@@ -20,7 +23,7 @@ const rightLinks: FooterLinkListItemProps[] = [
   },
   {
     text: ['footer.slack'] as unknown as FooterLinkListItemProps['text'],
-    url: '/slack',
+    url: 'https://designsystemet.no/slack',
     prefix: <Slack />,
   },
   {
@@ -121,12 +124,12 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   };
 
   if (!loaderData) {
-    return <Error404 />;
+    return '<Error404 />';
   }
 
   if (isRouteErrorResponse(error)) {
     if (error.status === 404) {
-      return <Error404 />;
+      return '<Error404 />';
     }
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;

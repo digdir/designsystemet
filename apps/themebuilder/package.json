@@ -1,0 +1,37 @@
+{
+  "name": "@web/themebuilder",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "react-router build",
+    "dev": "react-router dev",
+    "start": "react-router-serve ./build/server/index.js",
+    "typecheck": "react-router typegen && tsc"
+  },
+  "dependencies": {
+    "@internal/rr-components": "workspace:^",
+    "@digdir/designsystemet": "workspace:^",
+    "@digdir/designsystemet-css": "workspace:^",
+    "@digdir/designsystemet-react": "workspace:^",
+    "@digdir/designsystemet-theme": "workspace:^",
+    "@navikt/aksel-icons": "^7.21.1",
+    "@react-router/node": "^7.5.3",
+    "@react-router/serve": "^7.5.3",
+    "isbot": "^5.1.27",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router": "^7.5.3",
+    "remix-i18next": "^7.2.1",
+    "react-i18next": "^15.5.1",
+    "i18next": "^24.2.3"
+  },
+  "devDependencies": {
+    "@react-router/dev": "^7.5.3",
+    "@types/node": "^20",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.3",
+    "vite-tsconfig-paths": "^5.1.4"
+  }
+}

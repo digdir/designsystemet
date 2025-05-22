@@ -1,0 +1,37 @@
+.avatar {
+  font-size: 13px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    gap: var(--ds-size-4);
+  }
+}
+
+.toolbarLeft {
+  display: flex;
+  gap: 12px;
+  width: 45%;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.toolbarRight {
+  display: flex;
+  width: 45%;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.submitBtn {
+  flex-shrink: 0;
+}
