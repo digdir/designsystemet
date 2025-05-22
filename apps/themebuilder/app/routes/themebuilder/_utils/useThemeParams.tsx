@@ -85,7 +85,10 @@ export const useThemeParams = () => {
     params.set('support', supportColorString);
     params.set('border-radius', baseBorderRadius.toString());
 
-    setQuery(params);
+    setQuery(params, {
+      replace: true,
+      preventScrollReset: true,
+    });
   }, [colors, colorScheme, baseBorderRadius]);
 
   return null;
