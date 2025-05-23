@@ -36,18 +36,15 @@ const colorSchema = z
 const colorCategorySchema = z
   .record(
     z.string().regex(new RegExp(reservedColorsPattern, 'i'), {
-      message: `Color names cannot include reserved names: ${RESERVED_COLORS.join(', ')}`,
+      error: `Color names cannot include reserved names: ${RESERVED_COLORS.join(', ')}`,
     }),
     colorSchema,
     {
       error: 'Color definitions must be hex color values',
     },
   )
-  .meta({
-    description: 'One or more color definitions',
-  })
   .refine((colors) => !Object.keys(colors).some((key) => RESERVED_COLORS.includes(key.toLowerCase())), {
-    message: `Color names cannot include reserved names: ${RESERVED_COLORS.join(', ')}`,
+    error: `Color names cannot include reserved names: ${RESERVED_COLORS.join(', ')}`,
   })
   .describe('An object with one or more color definitions. The property name is used as the color name.');
 
