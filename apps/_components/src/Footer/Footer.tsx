@@ -58,7 +58,7 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
         <Container className={classes.container}>
           <div>
             <Heading data-size='xs' level={2} className={classes.title}>
-              Lages på tvers av offentlige etater:
+              Lages på tvers av virksomheter:
             </Heading>
             <div className={classes.logos}>
               <Digdir />

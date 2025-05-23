@@ -25,7 +25,8 @@
     "stories",
     "src/**/*.stories.ts*",
     "src/**/*.chromatic.ts*",
-    "../../apps/storybook/story-utils/**/*.ts*"
+    "../../apps/storybook/story-utils/**/*.ts*",
+    "../theme/configs/designsystemet.config.json",
 
   ],
   "references": [{ "path": "tsconfig.lib.json" }]

@@ -77,9 +77,19 @@ export const WithForm: Story = () => (
   </>
 );
 
-WithForm.parameters = {
-  customStyles: { display: 'grid', gap: 'var(--ds-size-4)' },
-};
+WithForm.decorators = [
+  (Story) => (
+    <div
+      style={{
+        display: 'grid',
+        alignItems: 'stretch',
+        gap: 'var(--ds-size-4)',
+      }}
+    >
+      <Story />
+    </div>
+  ),
+];
 
 export const ShowHideReact: Story = () => {
   const [show, setShow] = useState(false);

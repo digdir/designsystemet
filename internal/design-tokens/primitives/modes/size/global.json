@@ -1,0 +1,96 @@
+{
+  "_size": {
+    "0": {
+      "$type": "dimension",
+      "$value": "floor({_size.step} / {_size.base} * {_size.mode-font-size} *0)"
+    },
+    "1": {
+      "$type": "dimension",
+      "$value": "floor({_size.step} / {_size.base} * {_size.mode-font-size} *1)"
+    },
+    "2": {
+      "$type": "dimension",
+      "$value": "floor({_size.step} / {_size.base} * {_size.mode-font-size} *2)"
+    },
+    "3": {
+      "$type": "dimension",
+      "$value": "floor({_size.step} / {_size.base} * {_size.mode-font-size} *3)"
+    },
+    "4": {
+      "$type": "dimension",
+      "$value": "floor({_size.step} / {_size.base} * {_size.mode-font-size} *4)"
+    },
+    "5": {
+      "$type": "dimension",
+      "$value": "floor({_size.step} / {_size.base} * {_size.mode-font-size} *5)"
+    },
+    "6": {
+      "$type": "dimension",
+      "$value": "floor({_size.step} / {_size.base} * {_size.mode-font-size} *6)"
+    },
+    "7": {
+      "$type": "dimension",
+      "$value": "floor({_size.step} / {_size.base} * {_size.mode-font-size} *7)"
+    },
+    "8": {
+      "$type": "dimension",
+      "$value": "floor({_size.step} / {_size.base} * {_size.mode-font-size} *8)"
+    },
+    "9": {
+      "$type": "dimension",
+      "$value": "floor({_size.step} / {_size.base} * {_size.mode-font-size} *9)"
+    },
+    "10": {
+      "$type": "dimension",
+      "$value": "floor({_size.step} / {_size.base} * {_size.mode-font-size} *10)"
+    },
+    "11": {
+      "$type": "dimension",
+      "$value": "floor({_size.step} / {_size.base} * {_size.mode-font-size} *11)"
+    },
+    "12": {
+      "$type": "dimension",
+      "$value": "floor({_size.step} / {_size.base} * {_size.mode-font-size} *12)"
+    },
+    "13": {
+      "$type": "dimension",
+      "$value": "floor({_size.step} / {_size.base} * {_size.mode-font-size} *13)"
+    },
+    "14": {
+      "$type": "dimension",
+      "$value": "floor({_size.step} / {_size.base} * {_size.mode-font-size} *14)"
+    },
+    "15": {
+      "$type": "dimension",
+      "$value": "floor({_size.step} / {_size.base} * {_size.mode-font-size} *15)"
+    },
+    "18": {
+      "$type": "dimension",
+      "$value": "floor({_size.step} / {_size.base} * {_size.mode-font-size} *18)"
+    },
+    "22": {
+      "$type": "dimension",
+      "$value": "floor({_size.step} / {_size.base} * {_size.mode-font-size} *22)"
+    },
+    "26": {
+      "$type": "dimension",
+      "$value": "floor({_size.step} / {_size.base} * {_size.mode-font-size} *26)"
+    },
+    "30": {
+      "$type": "dimension",
+      "$value": "floor({_size.step} / {_size.base} * {_size.mode-font-size} *30)"
+    },
+    "mode-font-size": {
+      "$type": "dimension",
+      "$value": "{size._mode-font-size}"
+    },
+    "base": {
+      "$type": "dimension",
+      "$value": "{size._base}"
+    },
+    "step": {
+      "$type": "dimension",
+      "$value": "{size._step}"
+    }
+  }
+}
