@@ -4,7 +4,7 @@
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "engines": {
-    "node": ">=22.15.0"
+    "node": ">=22.16.0"
   },
   "repository": {
     "type": "git",
@@ -75,13 +75,13 @@
     "@types/fs-extra": "^11.0.4",
     "@types/glob": "^8.1.0",
     "@types/jscodeshift": "^0.12.0",
-    "@types/node": "^22.15.17",
+    "@types/node": "^22.15.19",
     "@types/object-hash": "^3.0.6",
     "@types/ramda": "^0.30.2",
     "fs-extra": "^11.3.0",
     "ts-toolbelt": "^9.6.0",
     "tslib": "^2.8.1",
-    "tsup": "^8.4.0",
+    "tsup": "^8.5.0",
     "tsx": "^4.19.4",
     "typescript": "^5.8.3"
   }

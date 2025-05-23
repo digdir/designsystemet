@@ -20,7 +20,7 @@
     "@digdir/designsystemet": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
-    "@navikt/aksel-icons": "^7.21.1",
+    "@navikt/aksel-icons": "^7.22.0",
     "clsx": "^2.1.1",
     "next": "^15.3.2",
     "prism-react-renderer": "^2.4.1",
@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@types/react": "^19.1.4",
-    "@types/react-dom": "^19.1.4",
+    "@types/react-dom": "^19.1.5",
     "typescript": "^5.8.3"
   }
 }
