@@ -13,7 +13,7 @@
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
-    "@navikt/aksel-icons": "^7.21.1",
+    "@navikt/aksel-icons": "^7.22.0",
     "@radix-ui/react-slot": "^1.2.2",
     "@react-router/node": "^7.6.0",
     "@react-router/serve": "^7.6.0",
@@ -36,13 +36,12 @@
   },
   "devDependencies": {
     "@react-router/dev": "^7.6.0",
-    "@types/node": "^22.15.17",
+    "@types/node": "^22.15.19",
     "@types/react": "^19.1.4",
-    "@types/react-dom": "^19.1.4",
+    "@types/react-dom": "^19.1.5",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
     "vite-env-only": "^3.0.3",
-    "vite-plugin-static-copy": "^2.3.1",
     "vite-tsconfig-paths": "^5.1.4"
   }
 }

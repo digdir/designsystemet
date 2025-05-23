@@ -14,7 +14,7 @@
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
-    "@navikt/aksel-icons": "^7.21.1",
+    "@navikt/aksel-icons": "^7.22.0",
     "@radix-ui/react-slot": "^1.2.2",
     "@internal/components": "workspace:^",
     "chroma-js": "^3.1.2",
@@ -29,6 +29,6 @@
   "devDependencies": {
     "@types/chroma-js": "^3.1.1",
     "@types/react": "^19.1.4",
-    "@types/react-dom": "^19.1.4"
+    "@types/react-dom": "^19.1.5"
   }
 }
