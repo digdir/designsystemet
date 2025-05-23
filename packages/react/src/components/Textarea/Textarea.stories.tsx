@@ -86,3 +86,10 @@ export const Controlled: StoryFn<typeof Textarea> = (args) => {
 Controlled.args = {
   id: 'my-textarea',
 };
+Controlled.parameters = {
+  docs: {
+    source: {
+      type: 'code',
+    },
+  },
+};

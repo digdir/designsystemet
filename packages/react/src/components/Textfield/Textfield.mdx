@@ -7,11 +7,10 @@ import * as TextfieldStories from './Textfield.stories';
 
  Textfield er en samensatt komponent for [`input`](/docs/komponenter-input--docs) og [`textarea`](/docs/komponenter-textarea--docs). Du bytter mellom de ved å sette `multiline={true/false}`. `Textfield` har også innebygd `label`, `description`, `validationmessage`, `affix` og `counter`.
 
-
 <Primary />
 <Controls />
 
-## Slik bruker du Textfield
+## Bruk
 
 ```tsx
 import { Textfield } from '@digdir/designsystemet-react';
@@ -45,7 +44,7 @@ Bruk `counter` til å begrense antall tegn brukerne kan skrive i feltet.
 <Canvas of={TextfieldStories.Controlled} />
 
 
-## Retningslinjer for `Textfield`
+## Retningslinjer
 `Input` er egnet til korte tekster/svar. `Textarea` er egnet til mer utfyllende og lengre svar. 
 
 ### Unngå plassholdertekster
@@ -68,13 +67,14 @@ For å sikre en god brukeropplevelse er det viktig å bruke en kombinasjon av ri
 - `autoComplete` brukes i felter som mottar personlig informasjon. Hvis feltet skal be om personopplysninger om en annen person enn brukeren, må du skru `autoComplete` av.
 - Pass på at brukerne ser inndata som formateres automatisk, men uten at det forstyrrer dem mens de fyller ut.
 
-## Tekst i komponenten
+## Tekst
 
 Det skal alltid være ledetekst på `textfield`. I spesielle tilfeller kan vi skjule ledeteksten ved å ikke sende inn `label`. Det kan for eksempel være i tabeller, hvis feltet får ledeteksten fra tabelloverskriften. Selv om vi har tenkt å skjule ledeteksten, må vi alltid skrive en ledetekst som gir mening, siden den leses opp av skjermlesere.
 
 - Hold ledeteksten kort, unngå at den går over to linjer.
 - Unngå å legge til beskrivelse som ikke er relevant eller meningsfull for brukeren.
 - Unngå å bruke kolon etter `label`.
+- Unngå placeholder-tekst - den forsvinner når brukeren begynner å skrive, og bør derfor ikke brukes som eneste forklaring. Bruk heller `Field.Description` under `label` hvis du vil gi eksempler eller forklaringer.
 
 ## Tilgjengelighet
 
