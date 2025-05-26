@@ -64,11 +64,15 @@ export let buildOptions: ProcessOptions | undefined;
 
 const sd = new StyleDictionary();
 
-const getCustomColors = (processed$themes: ProcessedThemeObject[]) =>
+const getCustomColors = (processed$themes: ProcessedThemeObject[], colorGroups: string[]) =>
   processed$themes
-    .filter(
-      (x) => x.group && [colorCategories.main, colorCategories.support].map((c) => `${c}-color`).includes(x.group),
-    )
+    .filter((x) => {
+      if (!x.group) {
+        return false;
+      }
+
+      return colorGroups.includes(x.group);
+    })
     .map((x) => x.name);
 
 /*
@@ -119,6 +123,7 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
   const platform = 'css';
   const tokenSets = process === 'format' ? options.tokenSets : undefined;
   const tokensDir = process === 'build' ? options.tokensDir : undefined;
+  const colorGroups = [colorCategories.main, colorCategories.support].map((c) => `${c}-color`);
 
   /** For sharing build options in other files */
   buildOptions = options;
@@ -127,7 +132,7 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
     .map(processThemeObject)
     .filter((theme) => R.not(theme.group === 'size' && theme.name !== 'medium'));
 
-  const customColors = getCustomColors(processed$themes);
+  const customColors = getCustomColors(processed$themes, colorGroups);
 
   if (!buildOptions.rootColor) {
     const firstMainColor = R.head(customColors);
