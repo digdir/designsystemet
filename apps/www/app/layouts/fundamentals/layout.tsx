@@ -42,6 +42,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     cats.Designelementer = [];
     cats['For designere'] = [];
     cats['For utviklere'] = [];
+    cats['Temabygger'] = [];
   }
 
   if (lang === 'en') {
@@ -49,6 +50,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     cats['Design elements'] = [];
     cats['For designers'] = [];
     cats['For developers'] = [];
+    cats['Theme Builder'] = [];
   }
 
   /* Map over files with mdx parser to get title */
