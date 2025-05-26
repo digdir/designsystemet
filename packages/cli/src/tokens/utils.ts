@@ -67,7 +67,9 @@ export function isGlobalColorToken(token: TransformedToken): boolean {
 
 export function isColorCategoryToken(token: TransformedToken, category?: ColorCategories): boolean {
   if (!category) {
-    return Object.keys(colorCategories).some((c) => isColorCategoryToken(token, c as ColorCategories));
+    return Object.keys(colorCategories).some((colorCategory) =>
+      isColorCategoryToken(token, colorCategory as ColorCategories),
+    );
   }
   return R.startsWith(['color', category], token.path);
 }

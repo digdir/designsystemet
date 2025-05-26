@@ -20,6 +20,8 @@ type SharedOptions = {
   preview: boolean;
   /** Token Studio `$themes.json` content */
   $themes: ThemeObject[];
+  /** Default color */
+  defaultColor?: string;
 };
 
 export type BuildOptions = {
@@ -64,7 +66,7 @@ export let buildOptions: ProcessOptions | undefined;
 
 const sd = new StyleDictionary();
 
-const getCustomColors = (processed$themes: ProcessedThemeObject[], colorGroups: string[]) =>
+const getCustomColors = (processed$themes: ProcessedThemeObject[], colorGroups: (string | RegExp)[]) =>
   processed$themes
     .filter((x) => {
       if (!x.group) {
@@ -123,10 +125,13 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
   const platform = 'css';
   const tokenSets = process === 'format' ? options.tokenSets : undefined;
   const tokensDir = process === 'build' ? options.tokensDir : undefined;
-  const colorGroups = [colorCategories.main, colorCategories.support].map((c) => `${c}-color`);
+  const colorGroups = options.defaultColor
+    ? [/color/]
+    : [colorCategories.main, colorCategories.support].map((c) => `${c}-color`);
 
   /** For sharing build options in other files */
   buildOptions = options;
+  buildOptions.rootColor = options.defaultColor;
 
   const processed$themes = $themes
     .map(processThemeObject)
@@ -137,8 +142,10 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
   if (!buildOptions.rootColor) {
     const firstMainColor = R.head(customColors);
     buildOptions.rootColor = firstMainColor;
-    console.log(`Using first main color; ${chalk.blue(firstMainColor)}, as ${chalk.green(`":root"`)} color`);
+    console.log(`${chalk.yellow('Default color not defined.')} Using first main color.`);
   }
+
+  console.log(`Using ${chalk.blue(buildOptions.rootColor)} as default color  (${chalk.green(`":root"`)})`);
 
   const buildAndSdConfigs = R.map((buildConfig: BuildConfig) => {
     const sdConfigs = getConfigsForThemeDimensions(buildConfig.getConfig, processed$themes, buildConfig.dimensions, {
