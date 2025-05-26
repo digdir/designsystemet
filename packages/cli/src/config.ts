@@ -86,3 +86,4 @@ export const configFileSchema = z.object({
 export const combinedConfigSchema = configFileSchema.required();
 export type Config = z.infer<typeof combinedConfigSchema>;
 export type ThemeConfig = z.infer<typeof themeSchema>;
+export type ConfigBuild = z.infer<typeof configFileSchema>;
