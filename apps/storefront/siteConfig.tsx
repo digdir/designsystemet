@@ -112,6 +112,20 @@ export const SiteConfig = {
             },
           ],
         },
+        {
+          name: 'Temabygger',
+          url: 'grunnleggende/for-designere',
+          children: [
+            {
+              name: 'Kom i gang med eget tema',
+              url: 'grunnleggende/for-designere/kom-i-gang',
+            },
+            {
+              name: 'Fargesystemet',
+              url: 'grunnleggende/for-designere/eget-tema',
+            },
+          ],
+        },
       ],
     },
     {
