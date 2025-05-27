@@ -123,9 +123,7 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
   const platform = 'css';
   const tokenSets = process === 'format' ? options.tokenSets : undefined;
   const tokensDir = process === 'build' ? options.tokensDir : undefined;
-  const colorGroups = options.defaultColor
-    ? [/color/]
-    : [colorCategories.main, colorCategories.support].map((c) => `${c}-color`);
+  const colorGroups = [colorCategories.main, colorCategories.support].map((c) => `${c}-color`);
 
   /** For sharing build options in other files */
   buildOptions = options;
@@ -137,15 +135,12 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
 
   const customColors = getCustomColors(processed$themes, colorGroups);
 
-  console.log('\n');
-
   if (!buildOptions.rootColor) {
     const firstMainColor = R.head(customColors);
     buildOptions.rootColor = firstMainColor;
-    console.log(`${chalk.yellow('Default color not defined. Using first main color.')} `);
   }
 
-  console.log(`🎨 Using ${chalk.blue(buildOptions.rootColor)} as default color`);
+  console.log(`\n🎨 Using ${chalk.blue(buildOptions.rootColor)} as default color`);
 
   const buildAndSdConfigs = R.map((buildConfig: BuildConfig) => {
     const sdConfigs = getConfigsForThemeDimensions(buildConfig.getConfig, processed$themes, buildConfig.dimensions, {

@@ -2,7 +2,6 @@
   "$schema": "../../cli/dist/config.schema.json",
   "outDir": "../../design-tokens",
   "clean": true,
-  "defaultColor": "brand1",
   "themes": {
     "designsystemet": {
       "colors": {
