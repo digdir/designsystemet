@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import {
   Button,
   Checkbox,
+  Chip,
   Divider,
   Fieldset,
   Pagination,
@@ -88,11 +89,21 @@ export const WithError = {
     error: 'Du må velge minst to kontaktalternativ', // TODO: useCheckbox when hook is ready
   },
 };
-
-export const Controlled: StoryFn<UseCheckboxGroupProps> = (args) => {
+type Choices = {
+  [key: string]: {
+    label: string;
+  };
+};
+export const Controlled: StoryFn<UseCheckboxGroupProps> = (args, context) => {
+  const choices: Choices = {
+    barnehage: { label: 'Barnehage' },
+    grunnskole: { label: 'Grunnskole' },
+    videregaende: { label: 'Videregående' },
+  };
   const { getCheckboxProps, validationMessageProps, value, setValue } =
     useCheckboxGroup({
       name: 'my-controlled',
+      value: ['barnehage', 'videregaende'],
       ...args,
     });
 
@@ -101,34 +112,58 @@ export const Controlled: StoryFn<UseCheckboxGroupProps> = (args) => {
       ? haystack.filter((value) => value !== needle)
       : haystack.concat(needle);
 
+  const isFiltered = value.length > 0;
   return (
     <>
       <Fieldset>
-        <Fieldset.Legend>
-          Skal du reise til noen av disse landene?
-        </Fieldset.Legend>
-        <Fieldset.Description>
-          Velg alle landene du skal innom.
-        </Fieldset.Description>
-        <Checkbox label='Kroatia' {...getCheckboxProps('kroatia')} />
-        <Checkbox label='Slovakia' {...getCheckboxProps('slovakia')} />
-        <Checkbox label='Hobsyssel' {...getCheckboxProps('hobsyssel')} />
+        <Fieldset.Legend>Utdanningsnivå</Fieldset.Legend>
+        {Object.entries(choices).map(([value, { label }]) => (
+          <Checkbox
+            key={value}
+            id={`${context.id}-${value}`}
+            label={label}
+            {...getCheckboxProps(value)}
+          />
+        ))}
       </Fieldset>
       <ValidationMessage {...validationMessageProps} />
-      <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
-      <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
-        Du har valgt: {value.toString()}
-      </Paragraph>
-      <div style={{ display: 'flex', gap: '1rem' }}>
-        <Button onClick={() => setValue(toggle(value, 'kroatia'))}>
-          Toggle Kroatia
-        </Button>
-        <Button onClick={() => setValue(toggle(value, 'hobsyssel'))}>
-          Toggle Hobsyssel
-        </Button>
+      <Divider />
+      <Paragraph>(Annet innhold)</Paragraph>
+      <Divider />
+      <div style={{ display: 'flex', gap: 'var(--ds-size-2)' }}>
+        <Paragraph>
+          {isFiltered ? 'Viser innhold for:' : 'Viser alt innhold'}
+        </Paragraph>
+        {isFiltered &&
+          value.map((v) => (
+            <Chip.Removable
+              key={v}
+              aria-label={`Slett ${choices[v].label}`}
+              onClick={() => setValue(toggle(value, v))}
+            >
+              {choices[v].label}
+            </Chip.Removable>
+          ))}
       </div>
+      {isFiltered && (
+        <Button
+          style={{ width: 'fit-content' }}
+          variant='secondary'
+          onClick={() => setValue([])}
+        >
+          Tøm filtre
+        </Button>
+      )}
     </>
   );
+};
+Controlled.parameters = {
+  layout: 'padded',
+  customStyles: {
+    display: 'flex',
+    gap: 'var(--ds-size-4)',
+    flexDirection: 'column',
+  },
 };
 
 export const ReadOnly = {

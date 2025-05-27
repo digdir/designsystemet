@@ -6,7 +6,6 @@ import {
   composeStories,
 } from '@storybook/react';
 import type { Store_CSFExports, StoryAnnotationsOrFn } from '@storybook/types';
-
 import { type PropsWithChildren, createElement } from 'react';
 
 type Story<T> = StoryObj<T> | StoryFn<T>;
@@ -33,6 +32,15 @@ export function createSingleStory<
                   ...style,
                   ...storyStyles,
                 }}
+                data-pseudo-state={
+                  story.parameters?.pseudo?.hover
+                    ? 'hover'
+                    : story.parameters?.pseudo?.active
+                      ? 'active'
+                      : story.parameters?.pseudo?.focusVisible
+                        ? 'focusVisible'
+                        : undefined
+                }
               >
                 {children}
               </div>
@@ -61,6 +69,11 @@ export function createSingleStory<
         display: 'flex',
         flexDirection: 'column',
         gap: 'var(--ds-size-2)',
+      },
+      pseudo: {
+        hover: ['[data-pseudo-state="hover"] > *'],
+        active: ['[data-pseudo-state="active"] > *'],
+        focusVisible: ['[data-pseudo-state="focusVisible"] > *'],
       },
     },
   };

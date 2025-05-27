@@ -1,3 +1,4 @@
+import { ChevronDownUpIcon, ChevronUpDownIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 
@@ -88,8 +89,8 @@ export const Controlled: StoryFn<typeof Details> = () => {
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [open3, setOpen3] = useState(false);
+  const isOpen = [open1, open2, open3].every(Boolean);
   const toggleOpen = () => {
-    const isOpen = [open1, open2, open3].every(Boolean);
     setOpen1(!isOpen);
     setOpen2(!isOpen);
     setOpen3(!isOpen);
@@ -97,7 +98,19 @@ export const Controlled: StoryFn<typeof Details> = () => {
 
   return (
     <>
-      <Button onClick={toggleOpen}>Toggle Details</Button>
+      <Button variant='tertiary' onClick={toggleOpen} data-size='sm'>
+        {isOpen ? (
+          <>
+            <ChevronDownUpIcon aria-hidden />
+            Lukk alle
+          </>
+        ) : (
+          <>
+            <ChevronUpDownIcon aria-hidden />
+            Åpne alle
+          </>
+        )}
+      </Button>
       <br />
       <>
         <Details open={open1} onToggle={() => setOpen1(!open1)}>

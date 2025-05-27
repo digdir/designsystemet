@@ -25,7 +25,7 @@
     margin-bottom: var(--ds-size-1);
 
     &:has(+ data) {
-      margin-right: var(--ds-size-1);
+      margin-inline-end: var(--ds-size-1);
     }
   }
 
@@ -55,7 +55,7 @@
     }
 
     &:not(:has(u-option:hover)) > u-option:focus-visible {
-      border-left-color: var(--dsc-multi-select-option-border-color);
+      border-inline-start-color: var(--dsc-multi-select-option-border-color);
       background: var(--dsc-multi-select-option-background--selected);
       color: var(--ds-color-text-default);
     }
@@ -73,7 +73,7 @@
     & > :is(u-option) {
       padding-inline-start: var(--dsc-multi-select-option-checkmark-size);
       border: none;
-      border-left: 5px solid transparent;
+      border-inline-start: 5px solid transparent;
       outline: none;
       border-radius: var(--ds-border-radius-sm);
       cursor: pointer;
@@ -83,7 +83,7 @@
         &::before {
           content: '';
           position: absolute;
-          left: 0;
+          inset-inline-start: 0;
           mask: var(--dsc-multi-select-option-checkmark-url) center / contain no-repeat;
           background: currentcolor;
           width: var(--dsc-multi-select-option-checkmark-size);
@@ -93,7 +93,7 @@
 
       @media (hover: hover) and (pointer: fine) {
         &:not([data-empty]):hover {
-          border-left-color: var(--dsc-multi-select-option-border-color);
+          border-inline-start-color: var(--dsc-multi-select-option-border-color);
           background: var(--dsc-multi-select-option-background--selected);
         }
       }
@@ -101,7 +101,7 @@
   }
 
   &:has(input:placeholder-shown) input {
-    padding-right: 2.4em;
+    padding-inline-end: 2.4em;
     background-image: linear-gradient(
         45deg,
         var(--_dsc-input-diagonal-1),
@@ -112,6 +112,10 @@
     background-position: calc(100% - 1.2em + var(--dsc-input-stroke-width)), calc(100% - 0.8em);
     background-size: .4em .4em;
     background-repeat: no-repeat;
+
+    :dir(rtl) & {
+      background-position: calc(1.2em - var(--dsc-input-stroke-width)), calc(0% + 0.8em);
+    }
 
     @media (forced-colors: active) {
       appearance: auto; /* show chevron */

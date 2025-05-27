@@ -7,16 +7,12 @@ import * as ChipStories from './Chip.stories';
 
 # Chip
 
-`Chip` er små, interaktive komponenter som lar brukerne styre hvordan de vil se innhold. For eksempel kan de brukes til å filtrere kategorier i et søkeresultat og vise hvilke filter som er aktive. 
-
-- Ikke bruk `Chip` til å merke innhold med kategori/emne som ikke er interaktivt. Bruk heller [`Tag`](/docs/komponenter-tag--docs)-komponenten dersom kategori/emne ikke er klikkbart.
-
-- Ikke bruk `Chip` som varsler for antall eller status. Bruk heller [`Badge`](/docs/komponenter-badge--docs)-komponenten.
+`Chip` er små, interaktive komponentar som lèt brukarane styre korleis dei vil sjå innhald. For eksempel kan dei brukast til å filtrere kategoriar i eit søkeresultat og vise kva for filter som er aktive. 
 
 <Primary />
 <Controls />
 
-## Slik  bruker du `Chip`
+## Bruk
 
 ```tsx
 import { Chip } from '@digdir/designsystemet-react';
@@ -35,45 +31,42 @@ import { Chip } from '@digdir/designsystemet-react';
 <Chip.Button>You are using the Chip component!</Chip.Button>;
 ```
 
-## Eksempler
+## Kodeeksempler
 
 ### `Chip.Checkbox` 
-`Chip.Checkbox` kan brukes som et alternativ til `Checkbox`.
+`Chip.Checkbox` kan brukast som eit alternativ til `Checkbox`.
 <Canvas of={ChipStories.Checkbox} />
 
 ### `Chip.Removable`
-Vi bruker `Chip` med kryss når vi vil at brukerne skal kunne fjerne valgte verdier. Det kan for eksempel være filter som er satt, eller verdier som brukerne selv har skrevet inn i et tekstfelt.
-
-Denne komponenten inneholder et kryss som indikerer at filteret kan fjernes. Det er viktig å merke seg at `aria-label` må legges til dersom innholdet
-i Chip ikke forklarer at den kan fjernes. I dette eksempelet er det lagt til `aria-label="Slett {land}"`.
+`Chip.Removable` inneheld eit kryss som indikerer at filteret kan fjernast. Det er viktig å merke seg at `aria-label` må leggjast til dersom innhaldet i Chip ikkje forklarer at den kan fjernast. I dette eksempelet er det lagt til `aria-label="Slett {land}"`.
 
 <Canvas of={ChipStories.Removable} />
 
 ### `Chip.Button` 
-`Chip.Button` kan brukes i gruppe, for å vise valgmuligheter - ikke handlinger.
+`Chip.Button` kan brukast som eit alternativ til `Button`. 
 <Canvas of={ChipStories.Button} />
 
-## Retningslinjer for `Chip`
+## Retningslinjer
 
-`Chip` lar brukerne styre hvordan de vil vise innhold. `Chip` kan vises på en eller flere rekker, de tilpasser seg den plassen de får.
+`Chip` lèt brukarane styre korleis dei vil vise innhald. 
 
-Unngå å plassere `Chip` vertikalt. Velg heller [`Checkbox`](/docs/komponenter-checkbox--docs) eller [`Radio`](/docs/komponenter-radio--docs) hvis du vil ha alternativer under hverandre.
+Unngå å plassere `Chip` vertikalt. Skal du vise alternativ under kvarandre, bruk heller [`Checkbox`](/docs/komponenter-checkbox--docs) eller [`Radio`](/docs/komponenter-radio--docs). En gruppe med flere `Chip` kan brytast over fleire linjer.
 
-Passer til å
-- filtrere informasjon, for eksempel i lister eller tabeller
-- vise hvilke filtre som er valgt
+**Passar til å:**
+- Filtrere informasjon, for eksempel i lister eller tabellar.
+- Vise kva for filter som er valde.
 
-Passer ikke til
-- menyer, som sidemenyer eller hovedmenyer
-- ikke klikkbare kategorier/emner (bruk heller [`Tag`](/docs/komponenter-tag--docs))
-- varsler for antall eller status (bruk heller [`Badge`](/docs/komponenter-badge--docs))
+**Passar ikkje til:**
+- Varsel for tal eller status (bruk heller [`Badge`](/docs/komponenter-badge--docs)).
+- Å merke innhald med kategori/emne som ikkje er interaktivt. Bruk heller [`Tag`](/docs/komponenter-tag--docs)-komponenten dersom kategori/emne ikkje er klikkbart.
+- Menyar, som sidemenyar eller hovudmenyar
 
-## Tekst i komponenten
-Chips bør ha så få ord som mulig, helst bare ett eller to.
+## Tekst
+`Chip` bør ha så få ord som mogleg, helst berre eitt eller to.
 
-## Tilgjengelighet
-Hvis deler av en side blir oppdatert samtidig som brukerne gjør noe på siden, må vi passe på at brukere med skjermleser får beskjed om det. Vi kan bruke en `ARIA live region` til det, som kan vise antall treff eller andre endringer.
+## Tilgjengelegheit
+Viss delar av ei side blir oppdaterte samtidig som brukarane gjer noko på sida, må vi passe på at brukarar med skjermlesarar får beskjed om det. Vi kan bruke ein `ARIA live region` til det, som kan vise tal på treff eller andre endringar.
 
-## CSS Variabler
+## CSS-variablar
 
 <CssVariables css={css} />

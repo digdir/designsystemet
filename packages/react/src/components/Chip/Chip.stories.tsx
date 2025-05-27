@@ -35,9 +35,7 @@ Removable.args = {
 
 export const Button: StoryFn<typeof Chip.Button> = (args) => (
   <>
-    <Chip.Button {...args}>Søk etter nynorsk</Chip.Button>
-    <Chip.Button {...args}>Søk etter bokmål</Chip.Button>
-    <Chip.Button {...args}>Søk etter engelsk</Chip.Button>
+    <Chip.Button {...args}>Tøm alle filtre</Chip.Button>
   </>
 );
 

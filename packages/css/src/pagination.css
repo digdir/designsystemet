@@ -34,6 +34,13 @@
       order: 0;
     }
 
+    :dir(rtl) & > li:first-child > ::before {
+      rotate: 0deg;
+    }
+    :dir(rtl) & > li:last-child > ::before {
+      rotate: 180deg;
+    }
+
     /* Style as non-interactive ellipsis when empty */
     & > li:empty::before {
       content: '\2026'; /* ellipsis */

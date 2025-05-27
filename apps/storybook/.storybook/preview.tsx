@@ -1,7 +1,7 @@
 import './style.css';
 import './customTheme.scss';
 import '../../../packages/css/src/index.css';
-import '@digdir/designsystemet-theme/digdir.css';
+import '../../../packages/theme/src/themes/designsystemet.css';
 import { LinkIcon } from '@navikt/aksel-icons';
 import type { Preview } from '@storybook/react';
 import isChromatic from 'chromatic/isChromatic';
@@ -106,9 +106,9 @@ const components = {
   h1: (props) => <HeadingSelfLink data-size='lg' {...props} level={1} />,
   h2: (props) => <HeadingSelfLink data-size='md' {...props} level={2} />,
   h3: (props) => <HeadingSelfLink data-size='sm' {...props} level={3} />,
-  h4: (props) => <HeadingSelfLink data-size='sm' {...props} level={4} />,
-  h5: (props) => <HeadingSelfLink data-size='sm' {...props} level={5} />,
-  h6: (props) => <HeadingSelfLink data-size='sm' {...props} level={6} />,
+  h4: (props) => <HeadingSelfLink data-size='xs' {...props} level={4} />,
+  h5: (props) => <HeadingSelfLink data-size='xs' {...props} level={5} />,
+  h6: (props) => <HeadingSelfLink data-size='xs' {...props} level={6} />,
   p: (props) => (
     <Paragraph
       {...props}

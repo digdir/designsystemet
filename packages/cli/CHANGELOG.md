@@ -1,5 +1,15 @@
 # Change Log
 
+## 1.0.6
+
+### Patch Changes
+
+- Added `convertColor` and `getLuminanceFromColor` functions ([#3512](https://github.com/digdir/designsystemet/pull/3512))
+
+- Updated non-major dependencies ([#3514](https://github.com/digdir/designsystemet/pull/3514))
+
+- Added colorjs.io as dependency ([#3512](https://github.com/digdir/designsystemet/pull/3512))
+
 ## 1.0.5
 
 ### Patch Changes

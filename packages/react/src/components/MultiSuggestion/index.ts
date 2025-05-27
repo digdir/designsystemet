@@ -15,13 +15,13 @@ const MultiSuggestion = Object.assign(MultiSuggestionRoot, {
   Clear: MultiSuggestionClear,
 });
 
-MultiSuggestion.displayName = 'EXPERIMENTRAL_MultiSuggestion';
-MultiSuggestion.Input.displayName = 'EXPERIMENTRAL_MultiSuggestion.Input';
-MultiSuggestion.List.displayName = 'EXPERIMENTRAL_MultiSuggestion.List';
-MultiSuggestion.Option.displayName = 'EXPERIMENTRAL_MultiSuggestion.Option';
-MultiSuggestion.Chips.displayName = 'EXPERIMENTRAL_MultiSuggestion.Chips';
-MultiSuggestion.Empty.displayName = 'EXPERIMENTRAL_MultiSuggestion.Empty';
-MultiSuggestion.Clear.displayName = 'EXPERIMENTRAL_MultiSuggestion.Clear';
+MultiSuggestion.displayName = 'EXPERIMENTAL_MultiSuggestion';
+MultiSuggestion.Input.displayName = 'EXPERIMENTAL_MultiSuggestion.Input';
+MultiSuggestion.List.displayName = 'EXPERIMENTAL_MultiSuggestion.List';
+MultiSuggestion.Option.displayName = 'EXPERIMENTAL_MultiSuggestion.Option';
+MultiSuggestion.Chips.displayName = 'EXPERIMENTAL_MultiSuggestion.Chips';
+MultiSuggestion.Empty.displayName = 'EXPERIMENTAL_MultiSuggestion.Empty';
+MultiSuggestion.Clear.displayName = 'EXPERIMENTAL_MultiSuggestion.Clear';
 
 export {
   MultiSuggestion as EXPERIMENTAL_MultiSuggestion,

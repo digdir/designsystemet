@@ -19,6 +19,7 @@ on:
       - 'apps/www/**'
 jobs:
   Deploy-Production:
+    if: ${{ github.repository == 'digdir/designsystemet' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
