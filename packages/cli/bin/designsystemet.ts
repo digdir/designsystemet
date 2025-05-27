@@ -3,15 +3,15 @@ import path from 'node:path';
 import { Argument, type Command, type OptionValues, createCommand, program } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 import * as R from 'ramda';
-import type { z } from 'zod';
 import { fromError } from 'zod-validation-error';
+import type z from 'zod/v4';
 import { convertToHex } from '../src/colors/index.js';
 import type { CssColor } from '../src/colors/types.js';
 import {
-  type Config,
-  type ConfigBuild,
-  combinedConfigSchema,
-  configFileSchema,
+  type ConfigSchemaBuild,
+  type ConfigSchemaCreate,
+  configFileBuildSchema,
+  configFileCreateSchema,
   mapPathToOptionName,
 } from '../src/config.js';
 import migrations from '../src/migrations/index.js';
@@ -47,22 +47,26 @@ function makeTokenCommands() {
     .option('-p, --preview', 'Generate preview token.ts files', false)
     .option('--verbose', 'Enable verbose output', false)
     .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILE}")`)
-    .action(async (opts, cmd) => {
+    .action(async (opts) => {
       const { preview, verbose, clean, dry } = opts;
       const tokensDir = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_CREATE_DIR;
       const outDir = typeof opts.outDir === 'string' ? opts.outDir : './dist/tokens';
 
-      const config = await parseConfig<ConfigBuild>(opts.config ?? DEFAULT_CONFIG_FILE, {
-        allowFileNotFound: true,
-        theme: 'theme',
-        cmd,
-      });
+      const configFile = await readConfigFile(opts.config ?? DEFAULT_CONFIG_FILE);
+      const configParsed: ConfigSchemaBuild = configFile
+        ? await configFileBuildSchema.parseAsync(JSON.parse(configFile))
+        : { clean: opts.clean, buildOutDir: outDir };
+      const config: ConfigSchemaBuild = validateConfig<ConfigSchemaBuild>(configFileBuildSchema, configParsed);
 
       if (dry) {
         console.log(`Performing dry run, no files will be written`);
       }
 
-      await buildTokens({ tokensDir, outDir, preview, verbose, dry, clean, defaultColor: config?.defaultColor });
+      if (clean) {
+        await cleanDir(outDir, dry);
+      }
+
+      await buildTokens({ tokensDir, outDir, preview, verbose, dry, defaultColor: config?.defaultColor });
 
       return Promise.resolve();
     });
@@ -94,21 +98,14 @@ function makeTokenCommands() {
         console.log(`Performing dry run, no files will be written`);
       }
 
-      /*
-       * Get config file by looking for the optional default file, or using --config option if supplied.
-       * The file must exist if specified through --config, but is not required otherwise.
-       */
-      const unvalidatedConfig = await parseConfig<Config>(opts.config ?? DEFAULT_CONFIG_FILE, {
-        allowFileNotFound: true,
+      const allowFileNotFound = R.isNil(opts.config) || opts.config === DEFAULT_CONFIG_FILE;
+      const configFile = await readConfigFile(opts.config ?? DEFAULT_CONFIG_FILE, allowFileNotFound);
+      const parsedConfig = await parseCreateConfig(configFile, {
         theme: opts.theme,
         cmd,
       });
+      const config = validateConfig<ConfigSchemaCreate>(configFileCreateSchema, parsedConfig);
 
-      const config = validateConfig<Config>(combinedConfigSchema, unvalidatedConfig);
-
-      /*
-       * Clean the output directory if requested. Only clean once for multiple themes
-       */
       if (config?.clean) {
         await cleanDir(config.outDir, opts.dry);
       }
@@ -162,31 +159,49 @@ program
 
 await program.parseAsync(process.argv);
 
-async function parseConfig<T extends Config>(
-  configPath: string,
-  options: { allowFileNotFound: boolean; theme: string; cmd: Command<unknown[], OptionValues> },
-): Promise<Record<string, unknown>> {
-  const { cmd, allowFileNotFound = true, theme = 'theme' } = options;
+async function readConfigFile(configPath: string, allowFileNotFound = true): Promise<string> {
   const resolvedPath = path.resolve(process.cwd(), configPath);
   let configFile: string;
-  let configParsed: T;
 
-  configFile = await readFile(resolvedPath, false, allowFileNotFound);
+  try {
+    configFile = await readFile(resolvedPath, false, allowFileNotFound);
+  } catch (err) {
+    if (allowFileNotFound) {
+      return '';
+    }
+    console.error(chalk.redBright(`Could not read config file at ${chalk.blue(resolvedPath)}`));
+    throw err;
+  }
 
   if (configFile) {
     console.log(`Found config file: ${chalk.green(resolvedPath)}`);
   }
 
-  try {
-    configParsed = (await configFileSchema.parseAsync(JSON.parse(configFile))) as T;
-  } catch (err) {
-    console.error(chalk.redBright(`Invalid config in ${configPath}`));
-    const validationError = makeFriendlyError(err);
-    console.error(validationError.toString());
-    process.exit(1);
-  }
+  return configFile;
+}
 
-  if (configParsed) {
+async function parseCreateConfig(
+  configFile: string,
+  options: { theme: string; cmd: Command<unknown[], OptionValues> },
+): Promise<Record<string, unknown>> {
+  const { cmd, theme = 'theme' } = options;
+  let configParsed: ConfigSchemaCreate = {
+    outDir: '',
+    clean: false,
+    themes: {},
+  };
+
+  if (configFile) {
+    try {
+      console.log(`Parsing config file: ${chalk.green(configFile)}`);
+      configParsed = (await configFileCreateSchema.parseAsync(JSON.parse(configFile))) as ConfigSchemaCreate;
+    } catch (err) {
+      console.error(chalk.redBright(`Invalid config at ${chalk.blue(configFile)}`));
+      const validationError = makeFriendlyError(err);
+      console.error(validationError.toString());
+      process.exit(1);
+    }
+
     /*
      * Check that we're not creating multiple themes with different color names.
      * For the themes' modes to work in Figma and when building css, the color names must be consistent
@@ -195,9 +210,7 @@ async function parseConfig<T extends Config>(
       (x) => new Set([...R.keys(x.colors.main), ...R.keys(x.colors.support)]),
     );
     if (!R.all(R.equals(R.__, themeColors[0]), themeColors)) {
-      console.error(
-        chalk.redBright(`In config ${configPath}, all themes must have the same custom color names, but we found:`),
-      );
+      console.error(chalk.redBright(`In config, all themes must have the same custom color names, but we found:`));
       const themeNames = R.keys(configParsed.themes ?? {});
       themeColors.forEach((colors, index) => {
         const colorNames = Array.from(colors);
@@ -220,9 +233,9 @@ async function parseConfig<T extends Config>(
         support: optionGetter(cmd, 'supportColors'),
         neutral: optionGetter(cmd, 'neutralColor'),
       }),
-      typography: {
+      typography: noUndefined({
         fontFamily: optionGetter(cmd, 'fontFamily'),
-      },
+      }),
       borderRadius: optionGetter(cmd, 'borderRadius'),
       defaultColor: optionGetter(cmd, 'defaultColor'),
     });
@@ -230,7 +243,6 @@ async function parseConfig<T extends Config>(
   const unvalidatedConfig = noUndefined({
     outDir: configParsed?.outDir ?? getCliOption(cmd, 'outDir'),
     clean: configParsed?.clean ?? getCliOption(cmd, 'clean'),
-    defaultColor: configParsed?.defaultColor ?? getCliOption(cmd, 'defaultColor'),
     themes: configParsed?.themes
       ? R.map((jsonThemeValues) => {
           // For each theme specified in the JSON config, we resolve the option values in the following order:
@@ -253,7 +265,7 @@ async function parseConfig<T extends Config>(
   return unvalidatedConfig;
 }
 
-function validateConfig<T extends ConfigBuild>(schema: z.ZodSchema<T>, unvalidatedConfig: Record<string, unknown>): T {
+function validateConfig<T>(schema: z.ZodType<T>, unvalidatedConfig: Record<string, unknown>) {
   try {
     return schema.parse(unvalidatedConfig) as T;
   } catch (err) {

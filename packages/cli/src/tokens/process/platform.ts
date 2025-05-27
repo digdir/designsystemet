@@ -14,8 +14,6 @@ type SharedOptions = {
   rootColor?: string;
   /** Dry run, no files will be written */
   dry?: boolean;
-  /** Clean the output path before building tokens */
-  clean?: boolean;
   /** Generate preview tokens */
   preview: boolean;
   /** Token Studio `$themes.json` content */
@@ -142,10 +140,10 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
   if (!buildOptions.rootColor) {
     const firstMainColor = R.head(customColors);
     buildOptions.rootColor = firstMainColor;
-    console.log(`${chalk.yellow('Default color not defined.')} Using first main color.`);
+    console.log(`${chalk.yellow('\nDefault color not defined. Using first main color.')} `);
   }
 
-  console.log(`Using ${chalk.blue(buildOptions.rootColor)} as default color  (${chalk.green(`":root"`)})`);
+  console.log(`🎨 Using ${chalk.blue(buildOptions.rootColor)} as default color`);
 
   const buildAndSdConfigs = R.map((buildConfig: BuildConfig) => {
     const sdConfigs = getConfigsForThemeDimensions(buildConfig.getConfig, processed$themes, buildConfig.dimensions, {

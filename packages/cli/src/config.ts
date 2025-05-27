@@ -81,20 +81,26 @@ export const configFileBuildSchema = z.object({
 /**
  * This defines the structure of the JSON config file
  */
-export const configFileSchema = z.object({
-  outDir: z.string().meta({ description: 'Path to the output directory for the created design tokens' }).optional(),
-  clean: z.boolean().meta({ description: 'Delete the output directory before building or creating tokens' }).optional(),
-  themes: z.record(z.string(), themeSchema).meta({
-    description:
-      'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name.',
-  }),
-});
+export const configFileCreateSchema = z
+  .object({
+    outDir: z.string().meta({ description: 'Path to the output directory for the created design tokens' }),
+    clean: z
+      .boolean()
+      .meta({ description: 'Delete the output directory before building or creating tokens' })
+      .optional(),
+    themes: z.record(z.string(), themeSchema).meta({
+      description:
+        'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name.',
+    }),
+  })
+  .required();
 
 /**
  * This defines the structure of the final configuration after combining the config file,
  * command-line options and default values.
  */
-export const combinedConfigSchema = configFileSchema.required().extend(configFileBuildSchema.shape);
-export type Config = z.infer<typeof combinedConfigSchema>;
-export type ConfigTheme = z.infer<typeof themeSchema>;
-export type ConfigBuild = z.infer<typeof configFileBuildSchema>;
+export const combinedConfigSchema = configFileCreateSchema.extend(configFileBuildSchema.shape);
+export type ConfigSchema = z.infer<typeof combinedConfigSchema>;
+export type ConfigSchemaBuild = z.infer<typeof configFileBuildSchema>;
+export type ConfigSchemaCreate = z.infer<typeof configFileCreateSchema>;
+export type ConfigSchemaTheme = z.infer<typeof themeSchema>;

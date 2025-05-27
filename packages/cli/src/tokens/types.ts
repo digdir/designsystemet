@@ -1,5 +1,5 @@
 import type { Config as SDConfig } from 'style-dictionary/types';
-import type { ConfigTheme } from '../config.js';
+import type { ConfigSchemaTheme } from '../config.js';
 import type { GetStyleDictionaryConfig } from './process/configs/shared.js';
 
 export type Token = { $value: string | Record<string, string>[]; $type: string };
@@ -13,7 +13,7 @@ export type Typography = Theme['typography'];
 
 export type Theme = {
   name: string;
-} & Required<ConfigTheme>;
+} & Required<ConfigSchemaTheme>;
 
 export const colorCategories = {
   main: 'main',
