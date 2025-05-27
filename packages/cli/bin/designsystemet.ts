@@ -4,13 +4,13 @@ import chalk from 'chalk';
 import * as R from 'ramda';
 import { convertToHex } from '../src/colors/index.js';
 import type { CssColor } from '../src/colors/types.js';
+import migrations from '../src/migrations/index.js';
 import {
   type ConfigSchemaBuild,
   type ConfigSchemaCreate,
   configFileBuildSchema,
   configFileCreateSchema,
-} from '../src/config.js';
-import migrations from '../src/migrations/index.js';
+} from '../src/schema.js';
 import { buildTokens } from '../src/tokens/build.js';
 import { cliOptions, createTokens } from '../src/tokens/create.js';
 import { writeTokens } from '../src/tokens/create/write.js';
