@@ -1,4 +1,3 @@
-import { getDatalistValue, isDatalistClick } from '@u-elements/u-datalist';
 import { forwardRef, useCallback, useContext, useEffect } from 'react';
 import { useMergeRefs } from '../../utilities/hooks';
 import { Input, type InputProps } from '../Input';
@@ -26,7 +25,7 @@ export const SuggestionInput = forwardRef<
   const updateSelected = useCallback(() => {
     const { list, value } = inputRef?.current || {};
     for (const option of list?.options || []) {
-      option.selected = getDatalistValue(option) === value;
+      option.selected = option.value === value;
     }
   }, []);
 
@@ -44,9 +43,7 @@ export const SuggestionInput = forwardRef<
       onInput={(event) => {
         onInput?.(event); // Should run first
         updateSelected();
-
-        if (!isDatalistClick(event.nativeEvent as InputEvent))
-          handleFilter?.(inputRef?.current);
+        handleFilter?.(inputRef?.current);
       }}
       placeholder='' // We need an empty placeholder for the clear button to be able to show/hide
       {...rest}

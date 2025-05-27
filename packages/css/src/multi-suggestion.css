@@ -45,15 +45,6 @@
     margin-top: var(--dsc-multi-select-list-gap);
     max-height: 200px;
 
-    /* Hide <multi-select.Empty> if any <multi-select.Option> is visible */
-    &:has(u-option:not([hidden]):not([aria-disabled='true']):not([data-empty])) > u-option[data-empty] {
-      display: none;
-    }
-    & > u-option[data-empty] {
-      cursor: default;
-      display: block;
-    }
-
     &:not(:has(u-option:hover)) > u-option:focus-visible {
       border-inline-start-color: var(--dsc-multi-select-option-border-color);
       background: var(--dsc-multi-select-option-background--selected);
@@ -125,17 +116,18 @@
   /**
    * Clear button
    */
-  &:has(input:placeholder-shown) button[type='reset'],
-  &:has(input:is(:read-only, :disabled, [aria-disabled='true'])) button[type='reset'] {
+  & del[hidden],
+  &:has(input:is(:read-only, :disabled, [aria-disabled='true'])) del {
     visibility: hidden; /* We hide the clear button when input is empty */
   }
-  &:has(button[type='reset']) input {
+  &:has(del) input {
     padding-inline-end: calc(var(--dsc-multi-select-clear-size) + var(--dsc-multi-select-clear-gap));
   }
 
-  & button[type='reset'] {
+  & del {
     --dsc-button-size: var(--dsc-multi-select-clear-size);
 
+    display: flex;
     align-self: center;
     margin-inline-start: calc((var(--dsc-multi-select-clear-size) + var(--dsc-multi-select-clear-gap)) * -1);
     order: 999; /* Place last */

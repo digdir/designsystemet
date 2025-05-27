@@ -39,21 +39,16 @@ export const MultiSuggestionList = forwardRef<
   { singular = '%d forslag', plural = '%d forslag', className, id, ...rest },
   ref,
 ) {
-  const { inputRef, listId, setListId, handleFilter } = useContext(
-    MultiSuggestionContext,
-  );
+  const { handleFilter } = useContext(MultiSuggestionContext);
 
-  useEffect(() => handleFilter?.(inputRef?.current)); // Must run on every render
-  useEffect(() => {
-    if (id && listId !== id) setListId?.(id);
-  }, [listId, id, setListId]);
+  useEffect(handleFilter); // Must run on every render
 
   return (
     <u-datalist
+      data-nofilter
       data-sr-singular={singular}
       data-sr-plural={plural}
       class={className} // Using "class" since React does not translate className on custom elements
-      id={listId}
       ref={ref}
       {...rest}
     />

@@ -611,15 +611,15 @@ importers:
       '@tanstack/react-virtual':
         specifier: ^3.13.8
         version: 3.13.8(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@u-elements/u-combobox':
+        specifier: ^0.0.9
+        version: 0.0.9
       '@u-elements/u-datalist':
-        specifier: ^0.1.5
-        version: 0.1.5
+        specifier: ^1.0.5
+        version: 1.0.5
       '@u-elements/u-details':
         specifier: ^0.1.1
         version: 0.1.1
-      '@u-elements/u-tags':
-        specifier: ^0.1.4
-        version: 0.1.4
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -2562,14 +2562,14 @@ packages:
   '@types/uuid@9.0.8':
     resolution: {integrity: sha512-jg+97EGIcY9AGHJJRaaPVgetKDsrTgbRjQ5Msgjh/DQKEFl0DtyRr/VCOyD1T2R1MNeWPK/u7JoGhlDZnKBAfA==}
 
-  '@u-elements/u-datalist@0.1.5':
-    resolution: {integrity: sha512-EFMrolFuYMCj4ioT+ClNxIMHLUQldjzupvGoErmH/vfP+enbDy4ZwiI1U2kj6tYOwn9laDf+67M+gnP1X/ddlA==}
+  '@u-elements/u-combobox@0.0.9':
+    resolution: {integrity: sha512-91OveCr5KPWBx7BOhaCD/nqDK1nkMrf585/7j88reJUxLCTj6d5uBIjDO/1TdHm+Gkaufi4AXYbOTO30xC4Jxg==}
+
+  '@u-elements/u-datalist@1.0.5':
+    resolution: {integrity: sha512-PN8OIHB7eRnSQ+nyTc7/x18t3PrTiVT43NxDTxtgfXNbcRU9lfyMXBDtytSwG69pLR1Bjgn6Z62yY7jxTNGAHw==}
 
   '@u-elements/u-details@0.1.1':
     resolution: {integrity: sha512-VQDwumgWzXWe/vEUVs+jPvRVlNw+1epHjkNlCjx3IA5BSKSxAPRFZ47ew5iKuZhAKmK0wke0rreA7SO/pjZN6w==}
-
-  '@u-elements/u-tags@0.1.4':
-    resolution: {integrity: sha512-5VbqbFatd42ZY6Zf2d5MGvOIsJdflf5+ixpR4B5YT97dustT9csAS6SEHrUFgGdFzJDpASIbZdojsnU1j7GArA==}
 
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
@@ -8353,11 +8353,11 @@ snapshots:
 
   '@types/uuid@9.0.8': {}
 
-  '@u-elements/u-datalist@0.1.5': {}
+  '@u-elements/u-combobox@0.0.9': {}
+
+  '@u-elements/u-datalist@1.0.5': {}
 
   '@u-elements/u-details@0.1.1': {}
-
-  '@u-elements/u-tags@0.1.4': {}
 
   '@ungap/structured-clone@1.3.0': {}
 
