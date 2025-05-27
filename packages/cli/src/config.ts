@@ -67,6 +67,17 @@ const themeSchema = z
   })
   .meta({ description: 'An object defining a theme. The property name holding the object becomes the theme name.' });
 
+export const configFileBuildSchema = z.object({
+  buildOutDir: z.string().meta({ description: 'Path to the output directory for the built design tokens' }).optional(),
+  clean: z.boolean().meta({ description: 'Delete the output directory before building or creating tokens' }).optional(),
+  defaultColor: z
+    .string()
+    .meta({
+      description: 'The default color for this theme. If not configured, the first main color will be used.',
+    })
+    .optional(),
+});
+
 /**
  * This defines the structure of the JSON config file
  */
@@ -83,7 +94,7 @@ export const configFileSchema = z.object({
  * This defines the structure of the final configuration after combining the config file,
  * command-line options and default values.
  */
-export const combinedConfigSchema = configFileSchema.required();
+export const combinedConfigSchema = configFileSchema.required().extend(configFileBuildSchema.shape);
 export type Config = z.infer<typeof combinedConfigSchema>;
-export type ThemeConfig = z.infer<typeof themeSchema>;
-export type ConfigBuild = z.infer<typeof configFileSchema>;
+export type ConfigTheme = z.infer<typeof themeSchema>;
+export type ConfigBuild = z.infer<typeof configFileBuildSchema>;

@@ -3,8 +3,8 @@ import path from 'node:path';
 import { Argument, type Command, type OptionValues, createCommand, program } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 import * as R from 'ramda';
+import type { z } from 'zod';
 import { fromError } from 'zod-validation-error';
-
 import { convertToHex } from '../src/colors/index.js';
 import type { CssColor } from '../src/colors/types.js';
 import {
@@ -30,23 +30,6 @@ const DEFAULT_FONT = 'Inter';
 const DEFAULT_THEME_NAME = 'theme';
 const DEFAULT_CONFIG_FILE = 'designsystemet.config.json';
 
-const defaultConfig: ConfigBuild = {
-  outDir: DEFAULT_TOKENS_CREATE_DIR,
-  clean: false,
-  themes: {
-    [DEFAULT_THEME_NAME]: {
-      colors: {
-        neutral: '#F5F5F5',
-        main: {},
-        support: {},
-      },
-      typography: {
-        fontFamily: DEFAULT_FONT,
-      },
-    },
-  },
-};
-
 function makeTokenCommands() {
   const tokenCmd = createCommand('tokens');
 
@@ -69,9 +52,10 @@ function makeTokenCommands() {
       const tokensDir = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_CREATE_DIR;
       const outDir = typeof opts.outDir === 'string' ? opts.outDir : './dist/tokens';
 
-      const config = await parseConfig(cmd, opts.config ?? DEFAULT_CONFIG_FILE, {
+      const config = await parseConfig<ConfigBuild>(opts.config ?? DEFAULT_CONFIG_FILE, {
         allowFileNotFound: true,
         theme: 'theme',
+        cmd,
       });
 
       if (dry) {
@@ -114,10 +98,13 @@ function makeTokenCommands() {
        * Get config file by looking for the optional default file, or using --config option if supplied.
        * The file must exist if specified through --config, but is not required otherwise.
        */
-      const config = await parseConfig(cmd, opts.config ?? DEFAULT_CONFIG_FILE, {
+      const unvalidatedConfig = await parseConfig<Config>(opts.config ?? DEFAULT_CONFIG_FILE, {
         allowFileNotFound: true,
         theme: opts.theme,
+        cmd,
       });
+
+      const config = validateConfig<Config>(combinedConfigSchema, unvalidatedConfig);
 
       /*
        * Clean the output directory if requested. Only clean once for multiple themes
@@ -175,29 +162,23 @@ program
 
 await program.parseAsync(process.argv);
 
-async function parseConfig(
-  cmd: Command<unknown[], OptionValues>,
+async function parseConfig<T extends Config>(
   configPath: string,
-  options: { allowFileNotFound: boolean; theme: string } = { allowFileNotFound: true, theme: 'theme' } as const,
-) {
+  options: { allowFileNotFound: boolean; theme: string; cmd: Command<unknown[], OptionValues> },
+): Promise<Record<string, unknown>> {
+  const { cmd, allowFileNotFound = true, theme = 'theme' } = options;
   const resolvedPath = path.resolve(process.cwd(), configPath);
   let configFile: string;
-  let configParsed: Config;
-  try {
-    configFile = await readFile(resolvedPath);
+  let configParsed: T;
+
+  configFile = await readFile(resolvedPath, false, allowFileNotFound);
+
+  if (configFile) {
     console.log(`Found config file: ${chalk.green(resolvedPath)}`);
-  } catch (err) {
-    if (err instanceof Error) {
-      const nodeErr = err as NodeJS.ErrnoException;
-      if (nodeErr.code === 'ENOENT' && options.allowFileNotFound) {
-        // Suppress error when the file isn't found, instead the promise returns undefined.
-        return;
-      }
-    }
-    throw err;
   }
+
   try {
-    configParsed = (await configFileSchema.parseAsync(JSON.parse(configFile))) as Config;
+    configParsed = (await configFileSchema.parseAsync(JSON.parse(configFile))) as T;
   } catch (err) {
     console.error(chalk.redBright(`Invalid config in ${configPath}`));
     const validationError = makeFriendlyError(err);
@@ -257,7 +238,7 @@ async function parseConfig(
           // - config value
           // - CLI value
           // With later values overriding earlier values
-          const defaultThemeValues = R.mergeDeepRight(getThemeOptions(getDefaultCliOption), defaultConfig);
+          const defaultThemeValues = getThemeOptions(getDefaultCliOption);
           const cliThemeValues = getThemeOptions(getSuppliedCliOption);
           const mergedConfigs = R.mergeDeepRight(defaultThemeValues, R.mergeDeepRight(jsonThemeValues, cliThemeValues));
           return mergedConfigs;
@@ -265,19 +246,16 @@ async function parseConfig(
       : // If there are no themes specified in the JSON config, we use both explicit
         // and default theme options from the CLI.
         {
-          [options.theme]: getThemeOptions(getCliOption),
+          [theme]: getThemeOptions(getCliOption),
         },
   });
 
-  /*
-   * Check that the config is valid
-   */
-  let config: Config;
-  try {
-    config = combinedConfigSchema.parse(unvalidatedConfig);
-    console.log(`Running tokens script with configuration ${chalk.green(JSON.stringify(config, null, 2))}`);
+  return unvalidatedConfig;
+}
 
-    return config;
+function validateConfig<T extends ConfigBuild>(schema: z.ZodSchema<T>, unvalidatedConfig: Record<string, unknown>): T {
+  try {
+    return schema.parse(unvalidatedConfig) as T;
   } catch (err) {
     console.error(chalk.redBright('Invalid config after combining config file and CLI options'));
     const validationError = makeFriendlyError(err);
