@@ -59,7 +59,7 @@ export const OverviewComponents = forwardRef<HTMLDivElement>(
             <SettingsCard />
           </div>
           <div className={classes.card}>
-            <img className={classes.img} src='/img/city.png' alt='' />
+            <img className={classes.img} src='/img/city.jpg' alt='' />
             <div className={classes.imgText}>
               <div className={classes.tags} data-size='sm'>
                 <Tag data-color='brand1'>Sport</Tag>
