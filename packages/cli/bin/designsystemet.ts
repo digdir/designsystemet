@@ -51,7 +51,7 @@ function makeTokenCommands() {
       const configFile = await readConfigFile(opts.config ?? DEFAULT_CONFIG_FILE);
       const configParsed: ConfigSchemaBuild = configFile
         ? await configFileBuildSchema.parseAsync(JSON.parse(configFile))
-        : { clean: opts.clean, buildOutDir: outDir };
+        : {};
       const config: ConfigSchemaBuild = validateConfig<ConfigSchemaBuild>(configFileBuildSchema, configParsed);
 
       if (dry) {
@@ -62,7 +62,7 @@ function makeTokenCommands() {
         await cleanDir(outDir, dry);
       }
 
-      await buildTokens({ tokensDir, outDir, preview, verbose, dry, defaultColor: config?.defaultColor });
+      await buildTokens({ tokensDir, outDir, preview, verbose, dry, ...config });
 
       return Promise.resolve();
     });

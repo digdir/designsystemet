@@ -68,7 +68,6 @@ const themeSchema = z
   .meta({ description: 'An object defining a theme. The property name holding the object becomes the theme name.' });
 
 export const configFileBuildSchema = z.object({
-  buildOutDir: z.string().meta({ description: 'Path to the output directory for the built design tokens' }).optional(),
   clean: z.boolean().meta({ description: 'Delete the output directory before building or creating tokens' }).optional(),
   defaultColor: z
     .string()
