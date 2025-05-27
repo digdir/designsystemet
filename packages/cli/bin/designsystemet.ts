@@ -1,10 +1,7 @@
 #!/usr/bin/env node
-import path from 'node:path';
-import { Argument, type Command, type OptionValues, createCommand, program } from '@commander-js/extra-typings';
+import { Argument, createCommand, program } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 import * as R from 'ramda';
-import { fromError } from 'zod-validation-error';
-import type z from 'zod/v4';
 import { convertToHex } from '../src/colors/index.js';
 import type { CssColor } from '../src/colors/types.js';
 import {
@@ -12,15 +9,14 @@ import {
   type ConfigSchemaCreate,
   configFileBuildSchema,
   configFileCreateSchema,
-  mapPathToOptionName,
 } from '../src/config.js';
 import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
 import { cliOptions, createTokens } from '../src/tokens/create.js';
 import { writeTokens } from '../src/tokens/create/write.js';
 import type { Theme } from '../src/tokens/types.js';
-import { cleanDir, readFile } from '../src/utils.js';
-import { type OptionGetter, getCliOption, getDefaultCliOption, getSuppliedCliOption } from './options.js';
+import { cleanDir } from '../src/utils.js';
+import { parseCreateConfig, readConfigFile, validateConfig } from './config.js';
 
 program.name('designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
 
@@ -158,140 +154,6 @@ program
   });
 
 await program.parseAsync(process.argv);
-
-async function readConfigFile(configPath: string, allowFileNotFound = true): Promise<string> {
-  const resolvedPath = path.resolve(process.cwd(), configPath);
-  let configFile: string;
-
-  try {
-    configFile = await readFile(resolvedPath, false, allowFileNotFound);
-  } catch (err) {
-    if (allowFileNotFound) {
-      return '';
-    }
-    console.error(chalk.redBright(`Could not read config file at ${chalk.blue(resolvedPath)}`));
-    throw err;
-  }
-
-  if (configFile) {
-    console.log(`Found config file: ${chalk.green(resolvedPath)}`);
-  }
-
-  return configFile;
-}
-
-async function parseCreateConfig(
-  configFile: string,
-  options: { theme: string; cmd: Command<unknown[], OptionValues> },
-): Promise<Record<string, unknown>> {
-  const { cmd, theme = 'theme' } = options;
-  let configParsed: ConfigSchemaCreate = {
-    outDir: '',
-    clean: false,
-    themes: {},
-  };
-
-  if (configFile) {
-    try {
-      console.log(`Parsing config file: ${chalk.green(configFile)}`);
-      configParsed = (await configFileCreateSchema.parseAsync(JSON.parse(configFile))) as ConfigSchemaCreate;
-    } catch (err) {
-      console.error(chalk.redBright(`Invalid config at ${chalk.blue(configFile)}`));
-      const validationError = makeFriendlyError(err);
-      console.error(validationError.toString());
-      process.exit(1);
-    }
-
-    /*
-     * Check that we're not creating multiple themes with different color names.
-     * For the themes' modes to work in Figma and when building css, the color names must be consistent
-     */
-    const themeColors = Object.values(configParsed?.themes ?? {}).map(
-      (x) => new Set([...R.keys(x.colors.main), ...R.keys(x.colors.support)]),
-    );
-    if (!R.all(R.equals(R.__, themeColors[0]), themeColors)) {
-      console.error(chalk.redBright(`In config, all themes must have the same custom color names, but we found:`));
-      const themeNames = R.keys(configParsed.themes ?? {});
-      themeColors.forEach((colors, index) => {
-        const colorNames = Array.from(colors);
-        console.log(`  - ${themeNames[index]}: ${colorNames.join(', ')}`);
-      });
-      console.log();
-      process.exit(1);
-    }
-  }
-
-  /*
-   * Create final config from JSON config file and command-line options
-   */
-  const noUndefined = R.reject(R.isNil);
-
-  const getThemeOptions = (optionGetter: OptionGetter) =>
-    noUndefined({
-      colors: noUndefined({
-        main: optionGetter(cmd, 'mainColors'),
-        support: optionGetter(cmd, 'supportColors'),
-        neutral: optionGetter(cmd, 'neutralColor'),
-      }),
-      typography: noUndefined({
-        fontFamily: optionGetter(cmd, 'fontFamily'),
-      }),
-      borderRadius: optionGetter(cmd, 'borderRadius'),
-      defaultColor: optionGetter(cmd, 'defaultColor'),
-    });
-
-  const unvalidatedConfig = noUndefined({
-    outDir: configParsed?.outDir ?? getCliOption(cmd, 'outDir'),
-    clean: configParsed?.clean ?? getCliOption(cmd, 'clean'),
-    themes: configParsed?.themes
-      ? R.map((jsonThemeValues) => {
-          // For each theme specified in the JSON config, we resolve the option values in the following order:
-          // - default value
-          // - config value
-          // - CLI value
-          // With later values overriding earlier values
-          const defaultThemeValues = getThemeOptions(getDefaultCliOption);
-          const cliThemeValues = getThemeOptions(getSuppliedCliOption);
-          const mergedConfigs = R.mergeDeepRight(defaultThemeValues, R.mergeDeepRight(jsonThemeValues, cliThemeValues));
-          return mergedConfigs;
-        }, configParsed.themes)
-      : // If there are no themes specified in the JSON config, we use both explicit
-        // and default theme options from the CLI.
-        {
-          [theme]: getThemeOptions(getCliOption),
-        },
-  });
-
-  return unvalidatedConfig;
-}
-
-function validateConfig<T>(schema: z.ZodType<T>, unvalidatedConfig: Record<string, unknown>) {
-  try {
-    return schema.parse(unvalidatedConfig) as T;
-  } catch (err) {
-    console.error(chalk.redBright('Invalid config after combining config file and CLI options'));
-    const validationError = makeFriendlyError(err);
-    console.error(validationError.toString());
-    process.exit(1);
-  }
-}
-
-function makeFriendlyError(err: unknown) {
-  return fromError(err, {
-    messageBuilder: (issues) =>
-      issues
-        .map((issue) => {
-          const issuePath = issue.path.join('.');
-          const optionName = mapPathToOptionName(issue.path);
-
-          const errorCode = `(error code: ${issue.code})`;
-          const optionMessage = optionName ? ` or CLI option --${optionName}` : '';
-          return `  - Error in JSON value ${chalk.red(issuePath)}${optionMessage}:
-    ${issue.message} ${chalk.dim(errorCode)}`;
-        })
-        .join('\n'),
-  });
-}
 
 function parseColorValues(value: string, previous: Record<string, CssColor> = {}): Record<string, CssColor> {
   const [name, hex] = value.split(':');
