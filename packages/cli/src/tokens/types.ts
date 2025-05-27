@@ -1,5 +1,5 @@
 import type { Config as SDConfig } from 'style-dictionary/types';
-import type { ConfigSchemaTheme } from '../config.js';
+import type { ConfigSchemaTheme } from '../schema.js';
 import type { GetStyleDictionaryConfig } from './process/configs/shared.js';
 
 export type Token = { $value: string | Record<string, string>[]; $type: string };

@@ -1,8 +1,8 @@
 import * as R from 'ramda';
 import { z } from 'zod/v4';
-import { convertToHex } from '../src/colors/index.js';
-import { RESERVED_COLORS } from '../src/colors/theme.js';
-import { cliOptions } from '../src/tokens/create.js';
+import { convertToHex } from './colors/index.js';
+import { RESERVED_COLORS } from './colors/theme.js';
+import { cliOptions } from './tokens/create.js';
 
 export function mapPathToOptionName(path: (string | number)[]) {
   // replace "themes.some-theme-name" with "theme" to match cliOptions object

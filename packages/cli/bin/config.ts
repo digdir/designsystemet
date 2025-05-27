@@ -4,7 +4,7 @@ import chalk from 'chalk';
 import * as R from 'ramda';
 import { fromError } from 'zod-validation-error';
 import type z from 'zod/v4';
-import { type ConfigSchemaCreate, configFileCreateSchema, mapPathToOptionName } from '../src/config.js';
+import { type ConfigSchemaCreate, configFileCreateSchema, mapPathToOptionName } from '../src/schema.js';
 import {} from '../src/tokens/create.js';
 import { readFile } from '../src/utils.js';
 import { type OptionGetter, getCliOption, getDefaultCliOption, getSuppliedCliOption } from './options.js';
