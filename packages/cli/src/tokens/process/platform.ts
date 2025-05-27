@@ -137,10 +137,12 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
 
   const customColors = getCustomColors(processed$themes, colorGroups);
 
+  console.log('\n');
+
   if (!buildOptions.rootColor) {
     const firstMainColor = R.head(customColors);
     buildOptions.rootColor = firstMainColor;
-    console.log(`${chalk.yellow('\nDefault color not defined. Using first main color.')} `);
+    console.log(`${chalk.yellow('Default color not defined. Using first main color.')} `);
   }
 
   console.log(`🎨 Using ${chalk.blue(buildOptions.rootColor)} as default color`);
