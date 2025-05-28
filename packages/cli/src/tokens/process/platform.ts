@@ -23,7 +23,7 @@ type SharedOptions = {
 };
 
 export type BuildOptions = {
-  process: 'build';
+  type: 'build';
   /** Design tokens path */
   tokensDir: string;
   /** Output directory for built tokens */
@@ -31,7 +31,7 @@ export type BuildOptions = {
 } & SharedOptions;
 
 export type FormatOptions = {
-  process: 'format';
+  type: 'format';
   /** Tokensets */
   tokenSets: Map<string, TokenSet>;
 } & SharedOptions;
@@ -119,10 +119,10 @@ const buildConfigs = {
 } satisfies Record<string, BuildConfig>;
 
 export async function processPlatform<T>(options: ProcessOptions): Promise<ProcessReturn> {
-  const { process, $themes } = options;
+  const { type, $themes } = options;
   const platform = 'css';
-  const tokenSets = process === 'format' ? options.tokenSets : undefined;
-  const tokensDir = process === 'build' ? options.tokensDir : undefined;
+  const tokenSets = type === 'format' ? options.tokenSets : undefined;
+  const tokensDir = type === 'build' ? options.tokensDir : undefined;
   const colorGroups = [colorCategories.main, colorCategories.support].map((c) => `${c}-color`);
 
   /** For sharing build options in other files */
