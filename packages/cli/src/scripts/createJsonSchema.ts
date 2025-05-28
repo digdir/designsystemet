@@ -1,7 +1,6 @@
 import { writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { z } from 'zod';
-import { zodToJsonSchema } from 'zod-to-json-schema';
+import { z } from 'zod/v4';
 import { configFileSchema } from '../config.js';
 
 const schema = z
@@ -12,7 +11,13 @@ const schema = z
 
 writeFile(
   resolve(import.meta.dirname, '../../dist/config.schema.json'),
-  JSON.stringify(zodToJsonSchema(schema), undefined, 2),
+  JSON.stringify(
+    z.toJSONSchema(schema, {
+      unrepresentable: 'any',
+    }),
+    undefined,
+    2,
+  ),
   {
     encoding: 'utf-8',
   },
