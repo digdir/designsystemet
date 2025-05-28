@@ -5,9 +5,9 @@ import { type FormatOptions, processPlatform } from './process/platform.js';
 import { createThemeCSSFiles } from './process/theme.js';
 import type { OutputFile, Theme } from './types.js';
 
-export const formatTokens = async (options: Omit<FormatOptions, 'process'>) => {
+export const formatTokens = async (options: Omit<FormatOptions, 'type'>) => {
   const processedBuilds = await processPlatform<OutputFile>({
-    process: 'format',
+    type: 'format',
     ...options,
   });
 

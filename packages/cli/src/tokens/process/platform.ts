@@ -11,11 +11,9 @@ type SharedOptions = {
   /** Enable verbose output */
   verbose: boolean;
   /** Set the default color for ":root" */
-  rootColor?: string;
+  defaultColor?: string;
   /** Dry run, no files will be written */
   dry?: boolean;
-  /** Clean the output path before building tokens */
-  clean?: boolean;
   /** Generate preview tokens */
   preview: boolean;
   /** Token Studio `$themes.json` content */
@@ -23,7 +21,7 @@ type SharedOptions = {
 };
 
 export type BuildOptions = {
-  process: 'build';
+  type: 'build';
   /** Design tokens path */
   tokensDir: string;
   /** Output directory for built tokens */
@@ -31,7 +29,7 @@ export type BuildOptions = {
 } & SharedOptions;
 
 export type FormatOptions = {
-  process: 'format';
+  type: 'format';
   /** Tokensets */
   tokenSets: Map<string, TokenSet>;
 } & SharedOptions;
@@ -64,11 +62,15 @@ export let buildOptions: ProcessOptions | undefined;
 
 const sd = new StyleDictionary();
 
-const getCustomColors = (processed$themes: ProcessedThemeObject[]) =>
+const getCustomColors = (processed$themes: ProcessedThemeObject[], colorGroups: (string | RegExp)[]) =>
   processed$themes
-    .filter(
-      (x) => x.group && [colorCategories.main, colorCategories.support].map((c) => `${c}-color`).includes(x.group),
-    )
+    .filter((x) => {
+      if (!x.group) {
+        return false;
+      }
+
+      return colorGroups.includes(x.group);
+    })
     .map((x) => x.name);
 
 /*
@@ -115,24 +117,50 @@ const buildConfigs = {
 } satisfies Record<string, BuildConfig>;
 
 export async function processPlatform<T>(options: ProcessOptions): Promise<ProcessReturn> {
-  const { process, $themes } = options;
+  const { type, $themes } = options;
   const platform = 'css';
-  const tokenSets = process === 'format' ? options.tokenSets : undefined;
-  const tokensDir = process === 'build' ? options.tokensDir : undefined;
+  const tokenSets = type === 'format' ? options.tokenSets : undefined;
+  const tokensDir = type === 'build' ? options.tokensDir : undefined;
+
+  const UNSAFE_DEFAULT_COLOR = process.env.UNSAFE_DEFAULT_COLOR ?? '';
+  if (UNSAFE_DEFAULT_COLOR) {
+    console.warn(
+      chalk.yellow(
+        `\n⚠️ UNSAFE_DEFAULT_COLOR is set to ${chalk.blue(UNSAFE_DEFAULT_COLOR)}. This will override the default color.`,
+      ),
+    );
+  }
+
+  const UNSAFE_COLOR_GROUPS = Array.from(process.env.UNSAFE_COLOR_GROUPS?.split(',') ?? []);
+  if (UNSAFE_COLOR_GROUPS.length > 0) {
+    console.warn(
+      chalk.yellow(
+        `\n⚠️ UNSAFE_COLOR_GROUPS is set to ${chalk.blue(`[${UNSAFE_COLOR_GROUPS.join(', ')}]`)}. This will override the default color groups.`,
+      ),
+    );
+  }
+  const colorGroups =
+    UNSAFE_COLOR_GROUPS.length > 0
+      ? UNSAFE_COLOR_GROUPS
+      : [colorCategories.main, colorCategories.support].map((c) => `${c}-color`);
 
   /** For sharing build options in other files */
   buildOptions = options;
+  buildOptions.defaultColor = UNSAFE_DEFAULT_COLOR;
 
   const processed$themes = $themes
     .map(processThemeObject)
     .filter((theme) => R.not(theme.group === 'size' && theme.name !== 'medium'));
 
-  const customColors = getCustomColors(processed$themes);
+  const customColors = getCustomColors(processed$themes, colorGroups);
 
-  if (!buildOptions.rootColor) {
+  if (!buildOptions.defaultColor) {
     const firstMainColor = R.head(customColors);
-    buildOptions.rootColor = firstMainColor;
-    console.log(`Using first main color; ${chalk.blue(firstMainColor)}, as ${chalk.green(`":root"`)} color`);
+    buildOptions.defaultColor = firstMainColor;
+  }
+
+  if (buildOptions.defaultColor) {
+    console.log(`\n🎨 Using ${chalk.blue(buildOptions.defaultColor)} as default color`);
   }
 
   const buildAndSdConfigs = R.map((buildConfig: BuildConfig) => {
