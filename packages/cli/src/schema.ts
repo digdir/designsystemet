@@ -130,9 +130,6 @@ export const configFileBuildSchema = z.object({
   clean: z.boolean().meta({ description: 'Delete the output directory before building or creating tokens' }).optional(),
 });
 
-/**
- * This defines the structure of the JSON config file
- */
 export const configFileCreateSchema = z
   .object({
     outDir: z.string().meta({ description: 'Path to the output directory for the created design tokens' }),
@@ -148,8 +145,7 @@ export const configFileCreateSchema = z
   .required();
 
 /**
- * This defines the structure of the final configuration after combining the config file,
- * command-line options and default values.
+ * This defines the structure of the final configuration file
  */
 export const combinedConfigSchema = configFileCreateSchema.extend(configFileBuildSchema.shape);
 export type ConfigSchema = z.infer<typeof combinedConfigSchema>;
