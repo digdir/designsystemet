@@ -1,0 +1,144 @@
+WEBVTT
+
+
+::cue(v[voice="Speaker1"]) { color: white }
+
+1
+00:00:05.990 --> 00:00:08.540
+<v Speaker1>Å lage digitale tjenester krever en rekke ulike
+
+2
+00:00:08.780 --> 00:00:12.230
+<v Speaker1>komponenter. Disse komponentene kan se enkle ut ,
+
+3
+00:00:12.230 --> 00:00:14.000
+<v Speaker1>men det tar mye tid å utvikle,
+
+4
+00:00:14.090 --> 00:00:17.360
+<v Speaker1>teste og vedlikeholde et robust og skalerbart system.
+
+5
+00:00:18.410 --> 00:00:20.870
+<v Speaker1>Komponentene skal fungere på både ulike enheter,
+
+6
+00:00:20.960 --> 00:00:23.540
+<v Speaker1>skjermstørrelser og med ulike hjelpemidler for de som
+
+7
+00:00:23.540 --> 00:00:26.690
+<v Speaker1>trenger det. Å spikre alle tilgjengelighets detaljer s
+
+8
+00:00:26.690 --> 00:00:29.210
+<v Speaker1>tjeler tid fra produktutviklingen som du kunne brukt på
+
+9
+00:00:29.210 --> 00:00:30.740
+<v Speaker1>mer unike problemstillinger.
+
+10
+00:00:32.240 --> 00:00:34.640
+<v Speaker1>Vi trenger heldigvis ikke lage disse komponentene flere
+
+11
+00:00:34.640 --> 00:00:37.670
+<v Speaker1>ganger. De kan lages en gang sentralt og bli tatt i bruk i
+
+12
+00:00:37.670 --> 00:00:39.740
+<v Speaker1>ulike tjenester, nettsider og applikasjoner.
+
+13
+00:00:41.600 --> 00:00:44.240
+<v Speaker1>Å bygge på toppen av designsystemet sine k omponenter vil
+
+14
+00:00:44.240 --> 00:00:46.640
+<v Speaker1>spare deg for tid og penger, slik at du raskere kan lage
+
+15
+00:00:46.640 --> 00:00:50.360
+<v Speaker1>bedre produkter. Byggeklossene ligger klare til bruk.
+
+16
+00:00:51.650 --> 00:00:54.560
+<v Speaker1>De kan tilpasses og settes sammen etter behov.
+
+17
+00:00:57.140 --> 00:01:00.110
+<v Speaker1>For å få frem din egen avsenderidentitet kan du bruke ditt
+
+18
+00:01:00.110 --> 00:01:02.840
+<v Speaker1>eget tema. Du kan få hjelp med å sette opp temaer i
+
+19
+00:01:02.840 --> 00:01:05.660
+<v Speaker1>designsystemet sin temabygger som sikrer god kontrast
+
+20
+00:01:05.670 --> 00:01:07.320
+<v Speaker1>mellom tekstfarge og bakgrunnsfarge.
+
+21
+00:01:19.170 --> 00:01:21.540
+<v Speaker1>Når de samme komponentene av mønstrene blir brukt på tvers
+
+22
+00:01:21.570 --> 00:01:23.760
+<v Speaker1>skaper vi gjenkjennelighet i tjenestene.
+
+23
+00:01:24.210 --> 00:01:26.580
+<v Speaker1>Da blir det enklere for alle å få til det de skal.
+
+24
+00:01:27.270 --> 00:01:29.760
+<v Speaker1>Hvis brukerne forstå hvordan noe fungerer i en tjeneste,
+
+25
+00:01:29.790 --> 00:01:31.680
+<v Speaker1>som for eksempel å fylle ut et skjema,
+
+26
+00:01:31.920 --> 00:01:34.350
+<v Speaker1>så er det best at den neste skjemaet som møter dem
+
+27
+00:01:34.380 --> 00:01:35.730
+<v Speaker1>fungerer på samme måte.
+
+28
+00:01:37.200 --> 00:01:39.930
+<v Speaker1>På designsystemet .no finner du det du trenger for å komme
+
+29
+00:01:39.930 --> 00:01:42.090
+<v Speaker1>i gang. Og vil du bli med på samarbeidet?
+
+30
+00:01:42.990 --> 00:01:45.270
+<v Speaker1>Designsystemet er under utvikling på tvers av flere
+
+31
+00:01:45.270 --> 00:01:47.430
+<v Speaker1>aktører, og det er allerede i bruk i mange ulike
+
+32
+00:01:47.430 --> 00:01:50.220
+<v Speaker1>løsninger. Vi jobber også med å etablere felles mønstre på
+
+33
+00:01:50.220 --> 00:01:51.540
+<v Speaker1>tvers i samarbeid med andre.
+
+34
+00:01:53.280 --> 00:01:56.250
+<v Speaker1>Ta kontakt om din organisasjon vil være med på utviklingen
+
+35
+00:01:56.250 --> 00:01:57.840
+<v Speaker1>eller samarbeide om mønstre.

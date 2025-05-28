@@ -1,3 +1,4 @@
+import { ContentContainer } from '@internal/rr-components';
 import { ComponentFillIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import {
@@ -7,7 +8,6 @@ import {
   BannerIngress,
 } from '~/_components/banner/banner';
 import { ComponentCard } from '~/_components/component-card/component-card';
-import { ContentContainer } from '~/_components/content-container/content-container';
 import { generateMetadata } from '~/_utils/metadata';
 import { data } from '~/content/components';
 import i18n from '~/i18next.server';

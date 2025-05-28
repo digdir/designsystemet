@@ -98,6 +98,11 @@ If you want this, add the following to your `tsconfig.json`:
 }
 ```
 
+##### Polyfill
+
+Designsystemet uses [popover](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover). Since this api is still classified as [Baseline: Newly available](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility), consider adding the polyfill for this feature.
+* [Popover-Polyfill](https://github.com/oddbird/popover-polyfill)
+
 ### 2. Font
 
 You are free to use any font-family.

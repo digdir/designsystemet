@@ -1,0 +1,17 @@
+@layer content-container {
+  .container {
+    --grid-gap: var(--ds-size-5);
+    --page-spacing-top: var(--ds-size-7);
+    --page-spacing-bottom: var(--ds-size-7);
+    --grid-padding: clamp(1rem, calc(0.27rem + 3.64vw), 3rem);
+
+    width: 100%;
+    margin: 0 auto;
+    padding-inline: var(--grid-padding);
+    display: flex;
+    flex-direction: column;
+    gap: var(--ds-size-4);
+    min-height: 100%;
+    z-index: 1;
+  }
+}
