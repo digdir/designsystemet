@@ -17,8 +17,8 @@ import { useRef, useState } from 'react';
 
 import type { Color, CssColor } from '@digdir/designsystemet/color';
 import { CodeBlock } from '@internal/rr-components';
+import { isProduction } from '~/_utils/is-production';
 import { type ColorTheme, useThemeStore } from '~/store';
-import { isProduction } from '~/utils/is-production';
 import classes from './token-modal.module.css';
 
 const colorCliOptions = cliOptions.theme.colors;

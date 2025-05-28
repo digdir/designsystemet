@@ -10,8 +10,8 @@ import cl from 'clsx/lite';
 
 import { Color as ColorPreview } from '../color/color';
 
-import { ColorModal } from '@internal/rr-components';
-import { Fragment, createRef, useRef } from 'react';
+import { Fragment } from 'react';
+import { useColorModalContext } from '~/_utils/color-modal-context';
 import { useThemeStore } from '~/store';
 import classes from './group.module.css';
 
@@ -33,15 +33,7 @@ export const Group = ({
   namespace,
 }: GroupProps) => {
   const colorScheme = useThemeStore((state) => state.colorScheme);
-
-  const colorModalRefs = useRef<React.RefObject<HTMLDialogElement | null>[]>(
-    [],
-  );
-  if (colorModalRefs.current.length !== colorNames.length) {
-    colorModalRefs.current = Array(colorNames.length)
-      .fill(null)
-      .map(() => createRef<HTMLDialogElement>());
-  }
+  const { openColorModal } = useColorModalContext();
 
   return (
     <div>
@@ -65,20 +57,13 @@ export const Group = ({
           };
           return (
             <Fragment key={index + 'fragment' + namespace}>
-              <ColorModal
-                colorModalRef={colorModalRefs.current[index]}
-                namespace={namespace}
-                color={color}
-              />
               <RovingFocusItem value={namespace + number} asChild>
                 <ColorPreview
                   color={hex}
                   colorName={colorName}
                   showColorMeta={showColorMeta}
                   aria-label={`Se mer om ${namespace} ${color?.displayName}`}
-                  onClick={() =>
-                    colorModalRefs.current[index]?.current?.showModal()
-                  }
+                  onClick={() => openColorModal(color, namespace)}
                 />
               </RovingFocusItem>
             </Fragment>

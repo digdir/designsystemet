@@ -8,8 +8,8 @@ import {
 } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { useEffect, useState } from 'react';
+import { generateColorVars } from '~/_utils/generate-color-vars';
 import { type ColorTheme, useThemeStore } from '~/store';
-import { generateColorVars } from '~/utils/generateColorVars';
 import listClasses from './card.module.css';
 import classes from './color-preview.module.css';
 

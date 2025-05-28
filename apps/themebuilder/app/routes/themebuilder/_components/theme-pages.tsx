@@ -5,11 +5,11 @@ import { ColorPreview } from '~/_components/color-preview/color-preview';
 import { ColorTokens } from '~/_components/color-tokens/color-tokens';
 import { Colors } from '~/_components/colors/colors';
 import { OverviewComponents } from '~/_components/overview-components/overview-components';
-import { useThemeStore } from '~/store';
 import {
   generateColorVars,
   generateNeutralColorVars,
-} from '~/utils/generateColorVars';
+} from '~/_utils/generate-color-vars';
+import { useThemeStore } from '~/store';
 import classes from './theme-pages.module.css';
 
 export const ThemePages = () => {
