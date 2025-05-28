@@ -78,7 +78,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <Container className={classes.container}>
             <div className={classes.text}>
               {showNextTag && <div className={classes.betaTag}>Next</div>}
-              <Heading data-size='lg' level={1}>
+              <Heading data-font-size='lg' level={1}>
                 Designsystemet hjelper deg å lage gode digitale tjenester
               </Heading>
             </div>

@@ -37,7 +37,7 @@ const BannerRoot = ({
 type BannerHeadingProps = Omit<HeadingProps, 'size'>;
 
 const BannerHeading = ({ ...props }: BannerHeadingProps) => {
-  return <Heading data-size='lg' {...props} />;
+  return <Heading data-font-size='lg' {...props} />;
 };
 
 type BannerIngressProps = HTMLAttributes<HTMLParagraphElement>;

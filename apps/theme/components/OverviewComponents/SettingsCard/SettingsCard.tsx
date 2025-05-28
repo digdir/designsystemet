@@ -16,7 +16,7 @@ export const SettingsCard = () => {
 
   return (
     <div>
-      <Heading data-size='2xs'>Innstillinger</Heading>
+      <Heading data-font-size='2xs'>Innstillinger</Heading>
       <Paragraph className={classes.panelDesc}>
         Her kan du administrere visning
       </Paragraph>

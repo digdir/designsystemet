@@ -36,7 +36,7 @@ export const Sidebar = ({ cats, title, ...props }: SidebarProps) => {
       </Button>
 
       <div className={cl(classes.menu, showMenu && classes.activeMenu)}>
-        <Paragraph data-size='md' asChild>
+        <Paragraph data-font-size='md' asChild>
           <h2 className={classes.title}>{t(`sidebar.${title}`, title)}</h2>
         </Paragraph>
         <ul className={classes.list}>
@@ -46,7 +46,7 @@ export const Sidebar = ({ cats, title, ...props }: SidebarProps) => {
             }
             return (
               <li key={key} className={classes.listGroup}>
-                <Paragraph asChild data-size='md'>
+                <Paragraph asChild data-font-size='md'>
                   <div className={classes.innerTitle}>
                     {t(`sidebar.categories.${key}`, key)}
                   </div>
@@ -57,7 +57,7 @@ export const Sidebar = ({ cats, title, ...props }: SidebarProps) => {
 
                     return (
                       <li key={item.url} className={classes.listItem}>
-                        <Paragraph asChild data-size='sm'>
+                        <Paragraph asChild data-font-size='sm'>
                           <RRLink
                             to={url}
                             className={cl(

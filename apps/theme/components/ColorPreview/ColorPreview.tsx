@@ -40,10 +40,10 @@ export const ColorPreview = () => {
         style={generateColorVars(color.colors, colorScheme)}
         className={classes.card}
       >
-        <Heading className={classes.title} data-size='2xs'>
+        <Heading className={classes.title} data-font-size='2xs'>
           {color.name}
         </Heading>
-        <Paragraph data-size='sm' className={classes.desc}>
+        <Paragraph data-font-size='sm' className={classes.desc}>
           Livet er for kort til å være grått. Fyll deg selv og dine dager med
           farger.
         </Paragraph>
@@ -76,10 +76,10 @@ export const ColorPreview = () => {
         className={cl(classes.card, listClasses.card)}
       >
         <div className={listClasses.text}>
-          <Heading className={listClasses.title} data-size='2xs'>
+          <Heading className={listClasses.title} data-font-size='2xs'>
             {color.name}
           </Heading>
-          <Paragraph className={classes.desc} data-size='sm'>
+          <Paragraph className={classes.desc} data-font-size='sm'>
             Farger gjør livet mer fargerikt
           </Paragraph>
         </div>
@@ -114,13 +114,13 @@ export const ColorPreview = () => {
     <div className='panelContainer'>
       <div className='panelLeft'>
         <div className='panelTop'>
-          <Heading data-size='xs'>Se fargene dine i bruk</Heading>
-          <Paragraph data-size='sm'>
+          <Heading data-font-size='xs'>Se fargene dine i bruk</Heading>
+          <Paragraph data-font-size='sm'>
             Hver farge som blir valgt med verktøyet får sitt eget kort i
             seksjonen til høyre slik at du kan se hvordan fargene harmonerer
             sammen.
           </Paragraph>
-          <Paragraph data-size='sm'>
+          <Paragraph data-font-size='sm'>
             Merk at kontrastfargen inne i knappen endrer seg fra hvit til svart,
             avhengig av om den valgte fargen er lys eller mørk for å oppnå best
             mulig kontrast.

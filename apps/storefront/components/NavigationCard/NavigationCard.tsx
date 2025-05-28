@@ -38,11 +38,11 @@ const NavigationCard = ({
           {icon}
         </div>
 
-        <Heading level={level} data-size='sm' className={classes.title}>
+        <Heading level={level} data-font-size='sm' className={classes.title}>
           {title}
         </Heading>
 
-        <Paragraph data-size='sm' variant='long' className={classes.desc}>
+        <Paragraph data-font-size='sm' variant='long' className={classes.desc}>
           {description}
         </Paragraph>
       </Link>

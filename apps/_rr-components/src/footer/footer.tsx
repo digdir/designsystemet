@@ -59,7 +59,7 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
       <div className={classes.top}>
         <ContentContainer className={classes.container}>
           <div>
-            <Heading data-size='xs' level={2} className={classes.title}>
+            <Heading data-font-size='xs' level={2} className={classes.title}>
               {t('footer.agencies.title')}
             </Heading>
             <div className={classes.logos}>
@@ -84,13 +84,13 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
             </Button>
           </div>
           <div>
-            <Heading data-size='xs' level={2} className={classes.title}>
+            <Heading data-font-size='xs' level={2} className={classes.title}>
               {t('footer.about-site')}
             </Heading>
             {LinkList(centerLinks)}
           </div>
           <div>
-            <Heading data-size='xs' level={2} className={classes.title}>
+            <Heading data-font-size='xs' level={2} className={classes.title}>
               {t('footer.contact-us')}
             </Heading>
             {LinkList(rightLinks)}
@@ -99,7 +99,7 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
       </div>
       <div className={classes.bottom}>
         <ContentContainer>
-          <Paragraph data-size='sm'>
+          <Paragraph data-font-size='sm'>
             © {getCurrentYear()} {t('footer.copyright')}
           </Paragraph>
         </ContentContainer>

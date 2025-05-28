@@ -112,14 +112,18 @@ export const TokenModal = () => {
         closedby='any'
       >
         <Dialog.Block>
-          <Heading className={classes.modalHeader} data-size='2xs'>
+          <Heading className={classes.modalHeader} data-font-size='2xs'>
             <img src='img/emblem.svg' alt='' className={classes.emblem} />
             <span className={classes.headerText}>Ta i bruk tema</span>
           </Heading>
         </Dialog.Block>
 
         <Dialog.Block>
-          <Heading className={classes.modalHeader} data-size='xs' level={3}>
+          <Heading
+            className={classes.modalHeader}
+            data-font-size='xs'
+            level={3}
+          >
             Gi temaet ditt et navn
           </Heading>
           <Paragraph>
@@ -218,8 +222,8 @@ export const TokenModal = () => {
                   <InformationSquareIcon aria-hidden='true' fontSize='1.5rem' />
                 </div>
                 <div className={classes.contact__content}>
-                  <Heading data-size='2xs'>Noe som ikke fungerer?</Heading>
-                  <Paragraph data-size='sm'>
+                  <Heading data-font-size='2xs'>Noe som ikke fungerer?</Heading>
+                  <Paragraph data-font-size='sm'>
                     Send oss en melding på{' '}
                     <Link
                       target='_blank'

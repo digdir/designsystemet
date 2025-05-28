@@ -43,7 +43,7 @@ export default function BestPractices() {
         return (
           <Fragment key={key}>
             <Heading
-              data-size='md'
+              data-font-size='md'
               style={{
                 marginTop: index === 0 ? '0' : 'var(--ds-size-10)',
                 marginBottom: `var(--ds-size-3)`,

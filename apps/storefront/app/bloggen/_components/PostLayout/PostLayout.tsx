@@ -48,13 +48,13 @@ function PostLayout({
         ))}
         <main id='main' className={classes.main}>
           <div className={classes.intro}>
-            <Heading level={1} data-size='xl'>
+            <Heading level={1} data-font-size='xl'>
               {heading}
             </Heading>
             <Paragraph className={classes.ingress} variant='long'>
               {ingress}
             </Paragraph>
-            <Paragraph data-size='sm' className={classes.meta}>
+            <Paragraph data-font-size='sm' className={classes.meta}>
               <span>{date}</span>
               <span aria-hidden className={classes.metaSquare} />
               <span>{author}</span>
@@ -69,10 +69,10 @@ function PostLayout({
           <MdxContent className={classes.content}>
             {content}
             <div className={classes.wantToWrite} data-color='brand3'>
-              <Heading level={3} data-size='xs'>
+              <Heading level={3} data-font-size='xs'>
                 Ønsker du å skrive for bloggen?
               </Heading>
-              <Paragraph data-size='sm'>
+              <Paragraph data-font-size='sm'>
                 Vi vil gjerne ha historier om hvordan Designsystemet har blitt
                 brukt! Ta kontakt med oss i{' '}
                 <Link href='https://designsystemet.no/slack' target='_blank'>

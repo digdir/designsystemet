@@ -25,7 +25,7 @@ export const ThemeHeader = () => {
             Gå tilbake til forsiden
           </NextLink>
         </Link>
-        <Heading data-size='md' level={1}>
+        <Heading data-font-size='md' level={1}>
           Temabygger
         </Heading>
       </div>

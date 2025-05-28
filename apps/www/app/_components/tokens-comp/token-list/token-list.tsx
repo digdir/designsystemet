@@ -110,7 +110,7 @@ const TokenCards = ({ tokens, cols, hideValue, type }: TokenCardsProps) => {
   return tokens.map(([group, tokens]) => {
     return (
       <div key={group}>
-        <Heading data-size='xs' level={4} className={classes.title}>
+        <Heading data-font-size='xs' level={4} className={classes.title}>
           {capitalizeString(group)}
         </Heading>
         <div className={cl(classes.group)}>
@@ -155,7 +155,7 @@ const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
       </div>
 
       <div className={classes.textContainer}>
-        <Heading level={5} data-size='2xs' className={classes.name}>
+        <Heading level={5} data-font-size='2xs' className={classes.name}>
           {capitalizeString(title)}
           &nbsp;
           {/* <ClipboardButton

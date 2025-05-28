@@ -105,7 +105,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
         >
           <ContentContainer className={classes.container}>
             <div className={classes.text}>
-              <Heading data-size='lg' level={1}>
+              <Heading data-font-size='lg' level={1}>
                 {t('frontpage.heading')}
               </Heading>
             </div>

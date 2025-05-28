@@ -52,12 +52,12 @@ export const Landing = () => {
         <div className={classes.container}>
           <div className={classes.bannerLeft}>
             <div className={classes.bannerSub}>Here is a sub heading</div>
-            <Heading data-size='md' className={classes.bannerTitle}>
+            <Heading data-font-size='md' className={classes.bannerTitle}>
               A need explain have out been making it
             </Heading>
             <Paragraph
               variant='long'
-              data-size='sm'
+              data-font-size='sm'
               className={classes.bannerIngress}
             >
               Multitude a hung structure return her belt of fixed had because a

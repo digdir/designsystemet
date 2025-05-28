@@ -12,18 +12,18 @@ export const FinishPage = ({ onPrevClick }: FinishPageProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   return (
     <div>
-      <Heading data-size='xs'>Ta i bruk tema</Heading>
-      <Paragraph data-size='sm' className={classes.desc}>
+      <Heading data-font-size='xs'>Ta i bruk tema</Heading>
+      <Paragraph data-font-size='sm' className={classes.desc}>
         Logbook a sitting success parents' girl in it however, greater, full
         with he that pleasures up attention to hardly to power definitely hardly
       </Paragraph>
 
-      <Paragraph data-size='sm' className={classes.desc}>
+      <Paragraph data-font-size='sm' className={classes.desc}>
         Logbook a sitting success parents' girl in it however, greater, full
         with he that pleasures up attention to hardly to power definitely hardly
       </Paragraph>
 
-      <Paragraph data-size='sm' className={classes.desc}>
+      <Paragraph data-font-size='sm' className={classes.desc}>
         Logbook a sitting success parents' girl in it however, greater, full
         with he that pleasures up attention to hardly to power definitely hardly
       </Paragraph>

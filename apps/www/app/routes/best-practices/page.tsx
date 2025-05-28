@@ -58,14 +58,14 @@ export default function GodPraksis({
                 {t('best-practices.title')}
               </RouterLink>
             </Link>
-            <Paragraph data-size='lg' variant='short' asChild>
+            <Paragraph data-font-size='lg' variant='short' asChild>
               <div className={classes.meta}>
                 <span>{author && <span>{author}</span>}</span>
                 <span className={classes.separator}> - </span>
                 <span>{date && <div>{formatDate(date, lang)}</div>}</span>
               </div>
             </Paragraph>
-            <Heading level={1} data-size='lg' className={classes.title}>
+            <Heading level={1} data-font-size='lg' className={classes.title}>
               {title}
             </Heading>
           </div>

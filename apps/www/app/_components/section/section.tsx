@@ -23,7 +23,7 @@ const Section = ({
       <ContentContainer>
         <div className={classes.header}>
           {title && (
-            <Heading level={2} data-size='md'>
+            <Heading level={2} data-font-size='md'>
               {title}
             </Heading>
           )}
