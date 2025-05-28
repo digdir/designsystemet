@@ -123,7 +123,18 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
   const platform = 'css';
   const tokenSets = type === 'format' ? options.tokenSets : undefined;
   const tokensDir = type === 'build' ? options.tokensDir : undefined;
-  const colorGroups = [colorCategories.main, colorCategories.support].map((c) => `${c}-color`);
+  const UNSAFE_COLOR_GROUPS = Array.from(process.env.UNSAFE_COLOR_GROUPS?.split(',') ?? []);
+  if (UNSAFE_COLOR_GROUPS.length > 0) {
+    console.warn(
+      chalk.yellow(
+        `\n⚠️ UNSAFE_COLOR_GROUPS is set to ${chalk.blue(`[${UNSAFE_COLOR_GROUPS.join(', ')}]`)}. This will override the default color groups.`,
+      ),
+    );
+  }
+  const colorGroups =
+    UNSAFE_COLOR_GROUPS.length > 0
+      ? UNSAFE_COLOR_GROUPS
+      : [colorCategories.main, colorCategories.support].map((c) => `${c}-color`);
 
   /** For sharing build options in other files */
   buildOptions = options;
@@ -140,7 +151,9 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
     buildOptions.rootColor = firstMainColor;
   }
 
-  console.log(`\n🎨 Using ${chalk.blue(buildOptions.rootColor)} as default color`);
+  if (buildOptions.rootColor) {
+    console.log(`\n🎨 Using ${chalk.blue(buildOptions.rootColor)} as default color`);
+  }
 
   const buildAndSdConfigs = R.map((buildConfig: BuildConfig) => {
     const sdConfigs = getConfigsForThemeDimensions(buildConfig.getConfig, processed$themes, buildConfig.dimensions, {
