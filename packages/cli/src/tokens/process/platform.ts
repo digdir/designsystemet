@@ -11,15 +11,13 @@ type SharedOptions = {
   /** Enable verbose output */
   verbose: boolean;
   /** Set the default color for ":root" */
-  rootColor?: string;
+  defaultColor?: string;
   /** Dry run, no files will be written */
   dry?: boolean;
   /** Generate preview tokens */
   preview: boolean;
   /** Token Studio `$themes.json` content */
   $themes: ThemeObject[];
-  /** Default color */
-  defaultColor?: string;
 };
 
 export type BuildOptions = {
@@ -123,6 +121,16 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
   const platform = 'css';
   const tokenSets = type === 'format' ? options.tokenSets : undefined;
   const tokensDir = type === 'build' ? options.tokensDir : undefined;
+
+  const UNSAFE_DEFAULT_COLOR = process.env.UNSAFE_DEFAULT_COLOR ?? '';
+  if (UNSAFE_DEFAULT_COLOR) {
+    console.warn(
+      chalk.yellow(
+        `\n⚠️ UNSAFE_DEFAULT_COLOR is set to ${chalk.blue(UNSAFE_DEFAULT_COLOR)}. This will override the default color.`,
+      ),
+    );
+  }
+
   const UNSAFE_COLOR_GROUPS = Array.from(process.env.UNSAFE_COLOR_GROUPS?.split(',') ?? []);
   if (UNSAFE_COLOR_GROUPS.length > 0) {
     console.warn(
@@ -138,7 +146,7 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
 
   /** For sharing build options in other files */
   buildOptions = options;
-  buildOptions.rootColor = options.defaultColor;
+  buildOptions.defaultColor = UNSAFE_DEFAULT_COLOR;
 
   const processed$themes = $themes
     .map(processThemeObject)
@@ -146,13 +154,13 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
 
   const customColors = getCustomColors(processed$themes, colorGroups);
 
-  if (!buildOptions.rootColor) {
+  if (!buildOptions.defaultColor) {
     const firstMainColor = R.head(customColors);
-    buildOptions.rootColor = firstMainColor;
+    buildOptions.defaultColor = firstMainColor;
   }
 
-  if (buildOptions.rootColor) {
-    console.log(`\n🎨 Using ${chalk.blue(buildOptions.rootColor)} as default color`);
+  if (buildOptions.defaultColor) {
+    console.log(`\n🎨 Using ${chalk.blue(buildOptions.defaultColor)} as default color`);
   }
 
   const buildAndSdConfigs = R.map((buildConfig: BuildConfig) => {

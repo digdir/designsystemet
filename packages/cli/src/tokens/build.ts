@@ -41,7 +41,6 @@ export const buildTokens = async (options: Omit<BuildOptions, 'type' | '$themes'
     outDir: outDir,
     tokensDir: tokensDir,
     type: 'build',
-    defaultColor: options.defaultColor,
     $themes,
   });
 
