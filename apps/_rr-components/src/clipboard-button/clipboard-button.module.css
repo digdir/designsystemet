@@ -1,0 +1,25 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  border-radius: 4px;
+  padding: 0 8px 0 4px;
+  transition: 0.1s all;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 15px;
+}
+
+.btn:hover {
+  background-color: #ddd;
+}
+
+.btn:hover svg {
+  color: black;
+}
+
+.text {
+  margin-left: 1px;
+}

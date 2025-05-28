@@ -1,0 +1,159 @@
+.color {
+  height: 36px;
+  display: block;
+  flex: 1 1;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+}
+
+.colors {
+  display: flex;
+  gap: 12px;
+}
+
+.tableContainer {
+  overflow-x: auto;
+}
+
+.table {
+  background-color: #e2e2e2;
+  margin-bottom: 16px;
+  margin-top: 12px;
+  table-layout: fixed;
+}
+
+.cell {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.tagGroup {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 9px;
+  align-items: flex-start;
+  border-top: 1px solid var(--ds-color-neutral-border-subtle);
+  margin: 0 calc(var(--panel-padding) * -1);
+  padding: 22px 28px;
+}
+
+.tagGroup:last-child {
+  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
+}
+
+.tag {
+  background-color: #d23e3e;
+  color: white;
+  border-radius: 400px;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 9px;
+}
+
+.AA {
+  background-color: green;
+}
+
+.AAA {
+  background-color: #407be9;
+}
+
+.AA18 {
+  background-color: #fbb025;
+  color: black;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tagContainer {
+  flex: 1 1;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.contrast {
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  flex: 1 1;
+}
+
+.table,
+.td,
+.th {
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  border-collapse: collapse;
+  background-color: var(--ds-color-neutral-background-tinted);
+}
+
+.th {
+  height: 90px;
+  width: 140px;
+  padding: var(--ds-size-4);
+
+  @media screen and (max-width: 768px) {
+    padding: var(--ds-size-2);
+  }
+}
+
+.td {
+  height: 90px;
+  width: 140px;
+  vertical-align: top;
+}
+
+.header {
+  font-size: 16px;
+  width: 30px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-weight: 500;
+
+  @media screen and (max-width: 768px) {
+    width: auto;
+  }
+}
+
+.headerHex {
+  color: var(--ds-color-neutral-text-subtle);
+  font-weight: 400;
+}
+
+.contrastChart {
+  background-color: transparent;
+}
+
+.subHeading {
+  margin-top: 8px;
+  margin-bottom: -4px;
+}
+
+.fieldGroup {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.select {
+  width: 25%;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.desc {
+  width: 90%;
+}

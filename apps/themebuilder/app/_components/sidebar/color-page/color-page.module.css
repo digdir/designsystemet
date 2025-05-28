@@ -1,0 +1,61 @@
+.group {
+  margin-bottom: 24px;
+  margin-top: -8px;
+}
+
+.group:last-child {
+  margin-bottom: 0;
+}
+
+.groupHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  height: 44px;
+}
+
+.AddBtn {
+  margin-right: -8px;
+}
+
+.colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.desc {
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+.btnGroup {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.btn {
+  width: 100%;
+}
+
+.bottom {
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 24px;
+  border-top: 1px solid var(--ds-color-neutral-border-subtle);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--ds-color-info-background-default);
+  border-radius: 0 0 8px 8px;
+}
+
+.separator {
+  margin-bottom: 20px;
+  height: 1px;
+  width: 100%;
+  background-color: var(--ds-color-neutral-border-subtle);
+}

@@ -1,4 +1,3 @@
-'use client';
 import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import type * as React from 'react';
