@@ -1,6 +1,7 @@
 import type { OptionHTMLAttributes } from 'react';
-import { forwardRef } from 'react';
+import { forwardRef, useContext } from 'react';
 import type { DefaultProps } from '../../types';
+import { MultiSuggestionContext } from './MultiSuggestion';
 
 export type MultiSuggestionEmptyProps = DefaultProps &
   OptionHTMLAttributes<HTMLOptionElement>;
@@ -19,8 +20,6 @@ export const MultiSuggestionEmpty = forwardRef<
   HTMLOptionElement,
   MultiSuggestionEmptyProps
 >(function MultiSuggestionEmpty(rest, ref) {
-  return (
-    // biome-ignore lint/a11y/noInteractiveElementToNoninteractiveRole: Empty option shoult not be interactive
-    <u-option data-empty role='none' ref={ref} {...rest} />
-  );
+  const { isEmpty } = useContext(MultiSuggestionContext);
+  return isEmpty ? <u-option data-empty value='' ref={ref} {...rest} /> : null;
 });

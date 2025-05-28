@@ -78,12 +78,12 @@ export const Controlled: StoryFn<typeof MultiSuggestion> = (args) => {
     <>
       <Field>
         <Label>Velg reisemål du vil besøke</Label>
-        <MultiSuggestion {...args} value={value} onValueChange={setValue}>
-          <MultiSuggestion.Chips
-            render={(e) => {
-              return e.text;
-            }}
-          />
+        <MultiSuggestion
+          {...args}
+          value={value}
+          onValueChange={(items) => setValue(items.map((item) => item.value))}
+        >
+          <MultiSuggestion.Chips render={(e) => e.text} />
           <MultiSuggestion.Input />
           <MultiSuggestion.Clear />
           <MultiSuggestion.List>
@@ -119,10 +119,9 @@ export const CustomFilterAlt1: StoryFn<typeof MultiSuggestion> = (args) => {
       <Label>Skriv inn et tall mellom 1-6</Label>
       <MultiSuggestion
         {...args}
-        filter={({ index, input }) => {
-          console.log(!input.value || index === Number(input.value) - 1);
-          return !input.value || index === Number(input.value) - 1;
-        }}
+        filter={({ index, input }) =>
+          !input.value || index === Number(input.value) - 1
+        }
       >
         <MultiSuggestion.Chips />
         <MultiSuggestion.Input />

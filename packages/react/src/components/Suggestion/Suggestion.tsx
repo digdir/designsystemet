@@ -1,5 +1,4 @@
 import { Slot } from '@radix-ui/react-slot';
-import { getDatalistValue, syncDatalistState } from '@u-elements/u-datalist';
 import cl from 'clsx/lite';
 import {
   type HTMLAttributes,
@@ -104,12 +103,10 @@ export const Suggestion = forwardRef<HTMLDivElement, SuggestionProps>(
                 input,
                 optionElement: option,
                 text: option.text,
-                value: getDatalistValue(option),
+                value: option.value,
               });
           }
         }
-
-        syncDatalistState(input); // Sync the datalist state if filter is custom or false
       },
       [filter],
     );

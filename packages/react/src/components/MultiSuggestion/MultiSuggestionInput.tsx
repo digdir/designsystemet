@@ -1,8 +1,8 @@
-import { isDatalistClick } from '@u-elements/u-datalist';
 import { forwardRef, useContext, useEffect } from 'react';
-import { useMergeRefs } from '../../utilities/hooks';
 import { Input, type InputProps } from '../Input';
 import { MultiSuggestionContext } from './MultiSuggestion';
+// import { useMergeRefs } from '../../utilities/hooks';
+// import { MultiSuggestionContext } from './MultiSuggestion';
 
 export type MultiSuggestionInputProps = InputProps;
 
@@ -21,26 +21,20 @@ export const MultiSuggestionInput = forwardRef<
   HTMLInputElement,
   MultiSuggestionInputProps
 >(function MultiSuggestionList({ value, onInput, ...rest }, ref) {
-  const { listId, inputRef, handleFilter } = useContext(MultiSuggestionContext);
-  const mergedRefs = useMergeRefs([inputRef, ref]);
+  const { handleFilter } = useContext(MultiSuggestionContext);
 
   // Update also if controlled value
-  useEffect(() => {
-    handleFilter?.(inputRef?.current);
-  }, [value]);
+  useEffect(handleFilter, [value]);
 
   return (
     <Input
-      ref={mergedRefs}
-      list={listId}
-      value={value}
+      placeholder='' // We need an empty placeholder for the clear button to be able to show/hide
+      ref={ref}
       onInput={(event) => {
         onInput?.(event); // Should run first
-
-        if (!isDatalistClick(event.nativeEvent as InputEvent))
-          handleFilter?.(inputRef?.current);
+        handleFilter?.();
       }}
-      placeholder='' // We need an empty placeholder for the clear button to be able to show/hide
+      value={value}
       {...rest}
     />
   );
