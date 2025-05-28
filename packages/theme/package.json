@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet-theme",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Predefined themes for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -17,7 +17,11 @@
     "./*": "./brand/*",
     "./configs/*": "./configs/*"
   },
-  "files": ["brand/**", "*.css", "configs/**"],
+  "files": [
+    "brand/**",
+    "*.css",
+    "configs/**"
+  ],
   "publishConfig": {
     "access": "public"
   },
