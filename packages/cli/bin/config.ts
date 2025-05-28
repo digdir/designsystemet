@@ -9,7 +9,7 @@ import {
   configFileCreateSchema,
   parseConfig,
   validateConfig,
-} from '../src/schema.js';
+} from '../src/config.js';
 import { readFile } from '../src/utils.js';
 import { type OptionGetter, getCliOption, getDefaultCliOption, getSuppliedCliOption } from './options.js';
 
