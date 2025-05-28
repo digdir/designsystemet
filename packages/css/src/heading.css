@@ -1,4 +1,6 @@
 .ds-heading {
+  @composes ds-typography-size-fix from './typography-common.css';
+
   font-size: 1.3em; /* Fallback if not supporting round() */
   font-size: round(down, 1.3em, 0.0625rem); /* Default to 130% */
   font-weight: var(--ds-heading-md-font-weight);
