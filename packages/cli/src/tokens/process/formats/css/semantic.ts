@@ -20,7 +20,9 @@ export const isInlineTokens = R.anyPass([isNumericBorderRadiusToken, isNumericSi
 export const overrideSizingFormula = (format: (t: TransformedToken) => string, token: TransformedToken) => {
   const [name, value] = format(token).split(':');
 
-  const calc = value.replace(`var(--ds-size-mode-font-size)`, '1em').replace(/floor\((.*)\);/, 'calc($1)');
+  const calc = value
+    .replace(`var(--ds-size-mode-font-size)`, 'var(--_ds-data-size)')
+    .replace(/floor\((.*)\);/, 'calc($1)');
 
   const round = `round(down, ${calc}, 0.0625rem)`;
 
