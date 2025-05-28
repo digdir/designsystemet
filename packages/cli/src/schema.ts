@@ -1,10 +1,12 @@
+import chalk from 'chalk';
 import * as R from 'ramda';
+import { fromError } from 'zod-validation-error';
 import { z } from 'zod/v4';
 import { convertToHex } from './colors/index.js';
 import { RESERVED_COLORS } from './colors/theme.js';
 import { cliOptions } from './tokens/create.js';
 
-export function mapPathToOptionName(path: (string | number)[]) {
+function mapPathToOptionName(path: (string | number)[]) {
   // replace "themes.some-theme-name" with "theme" to match cliOptions object
   const normalisedPath = path[0] === 'themes' ? ['theme', ...R.drop(2, path)] : path;
   const option = R.path(normalisedPath, cliOptions);
@@ -12,6 +14,63 @@ export function mapPathToOptionName(path: (string | number)[]) {
     return;
   }
   return option;
+}
+
+function makeFriendlyError(err: unknown) {
+  return fromError(err, {
+    messageBuilder: (issues) =>
+      issues
+        .map((issue) => {
+          const issuePath = issue.path.join('.');
+          const optionName = mapPathToOptionName(issue.path);
+
+          const errorCode = `(error code: ${issue.code})`;
+          const optionMessage = optionName ? ` or CLI option --${optionName}` : '';
+          return `  - Error in JSON value ${chalk.red(issuePath)}${optionMessage}:
+    ${issue.message} ${chalk.dim(errorCode)}`;
+        })
+        .join('\n'),
+  });
+}
+
+/**
+ * Validates a configuration object against a provided Zod schema.
+ *
+ * @template T - The expected type of the validated configuration.
+ * @param schema - A Zod schema used to validate the configuration object.
+ * @param unvalidatedConfig - The configuration object to validate.
+ * @returns The validated configuration object, typed as T.
+ * @throws Exits the process with code 1 if validation fails, after logging a friendly error message.
+ */
+export function validateConfig<T>(
+  schema: z.ZodType<T>,
+  unvalidatedConfig: Record<string, unknown>,
+  configPath: string,
+): T {
+  try {
+    return schema.parse(unvalidatedConfig) as T;
+  } catch (err) {
+    console.error(chalk.redBright(`Invalid config file at ${chalk.red(configPath)}`));
+    const validationError = makeFriendlyError(err);
+    console.error(validationError.toString());
+    process.exit(1);
+  }
+}
+
+export function parseConfig<T>(schema: z.ZodType<T>, configFile: string, configPath: string): T {
+  if (!configFile) {
+    return {} as T;
+  }
+
+  try {
+    const parsedConfig = JSON.parse(configFile);
+    return schema.parse(parsedConfig) as T;
+  } catch (err) {
+    console.error(chalk.redBright(`Failed parsing config file at ${chalk.red(configPath)}`));
+    const validationError = makeFriendlyError(err);
+    console.error(validationError.toString());
+    process.exit(1);
+  }
 }
 
 const hexPatterns = [

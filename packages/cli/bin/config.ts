@@ -2,10 +2,14 @@ import path from 'node:path';
 import type { Command, OptionValues } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 import * as R from 'ramda';
-import { fromError } from 'zod-validation-error';
-import type z from 'zod/v4';
-import { type ConfigSchemaCreate, configFileCreateSchema, mapPathToOptionName } from '../src/schema.js';
-import {} from '../src/tokens/create.js';
+import {
+  type ConfigSchemaBuild,
+  type ConfigSchemaCreate,
+  configFileBuildSchema,
+  configFileCreateSchema,
+  parseConfig,
+  validateConfig,
+} from '../src/schema.js';
 import { readFile } from '../src/utils.js';
 import { type OptionGetter, getCliOption, getDefaultCliOption, getSuppliedCliOption } from './options.js';
 
@@ -32,43 +36,32 @@ export async function readConfigFile(configPath: string, allowFileNotFound = tru
 
 export async function parseCreateConfig(
   configFile: string,
-  options: { theme: string; cmd: Command<unknown[], OptionValues> },
-): Promise<Record<string, unknown>> {
-  const { cmd, theme = 'theme' } = options;
-  let configParsed: ConfigSchemaCreate = {
-    outDir: '',
-    clean: false,
-    themes: {},
-  };
+  options: { theme: string; cmd: Command<unknown[], OptionValues>; configPath: string },
+): Promise<ConfigSchemaCreate> {
+  const { cmd, theme = 'theme', configPath } = options;
 
-  if (configFile) {
-    try {
-      console.log(`Parsing config file: ${chalk.green(configFile)}`);
-      configParsed = (await configFileCreateSchema.parseAsync(JSON.parse(configFile))) as ConfigSchemaCreate;
-    } catch (err) {
-      console.error(chalk.redBright(`Invalid config at ${chalk.blue(configFile)}`));
-      const validationError = makeFriendlyError(err);
-      console.error(validationError.toString());
-      process.exit(1);
-    }
+  const configParsed: ConfigSchemaCreate = parseConfig<ConfigSchemaCreate>(
+    configFileCreateSchema,
+    configFile,
+    configPath,
+  );
 
-    /*
-     * Check that we're not creating multiple themes with different color names.
-     * For the themes' modes to work in Figma and when building css, the color names must be consistent
-     */
-    const themeColors = Object.values(configParsed?.themes ?? {}).map(
-      (x) => new Set([...R.keys(x.colors.main), ...R.keys(x.colors.support)]),
-    );
-    if (!R.all(R.equals(R.__, themeColors[0]), themeColors)) {
-      console.error(chalk.redBright(`In config, all themes must have the same custom color names, but we found:`));
-      const themeNames = R.keys(configParsed.themes ?? {});
-      themeColors.forEach((colors, index) => {
-        const colorNames = Array.from(colors);
-        console.log(`  - ${themeNames[index]}: ${colorNames.join(', ')}`);
-      });
-      console.log();
-      process.exit(1);
-    }
+  /*
+   * Check that we're not creating multiple themes with different color names.
+   * For the themes' modes to work in Figma and when building css, the color names must be consistent
+   */
+  const themeColors = Object.values(configParsed?.themes ?? {}).map(
+    (x) => new Set([...R.keys(x.colors.main), ...R.keys(x.colors.support)]),
+  );
+  if (!R.all(R.equals(R.__, themeColors[0]), themeColors)) {
+    console.error(chalk.redBright(`In config, all themes must have the same custom color names, but we found:`));
+    const themeNames = R.keys(configParsed.themes ?? {});
+    themeColors.forEach((colors, index) => {
+      const colorNames = Array.from(colors);
+      console.log(`  - ${themeNames[index]}: ${colorNames.join(', ')}`);
+    });
+    console.log();
+    process.exit(1);
   }
 
   /*
@@ -112,33 +105,14 @@ export async function parseCreateConfig(
         },
   });
 
-  return unvalidatedConfig;
+  return validateConfig<ConfigSchemaCreate>(configFileCreateSchema, unvalidatedConfig, configPath);
 }
 
-export function validateConfig<T>(schema: z.ZodType<T>, unvalidatedConfig: Record<string, unknown>) {
-  try {
-    return schema.parse(unvalidatedConfig) as T;
-  } catch (err) {
-    console.error(chalk.redBright('Invalid config after combining config file and CLI options'));
-    const validationError = makeFriendlyError(err);
-    console.error(validationError.toString());
-    process.exit(1);
-  }
-}
+export async function parseBuildConfig(
+  configFile: string,
+  { configPath }: { configPath: string },
+): Promise<ConfigSchemaBuild> {
+  const configParsed: ConfigSchemaBuild = parseConfig<ConfigSchemaBuild>(configFileBuildSchema, configFile, configPath);
 
-function makeFriendlyError(err: unknown) {
-  return fromError(err, {
-    messageBuilder: (issues) =>
-      issues
-        .map((issue) => {
-          const issuePath = issue.path.join('.');
-          const optionName = mapPathToOptionName(issue.path);
-
-          const errorCode = `(error code: ${issue.code})`;
-          const optionMessage = optionName ? ` or CLI option --${optionName}` : '';
-          return `  - Error in JSON value ${chalk.red(issuePath)}${optionMessage}:
-    ${issue.message} ${chalk.dim(errorCode)}`;
-        })
-        .join('\n'),
-  });
+  return validateConfig<ConfigSchemaBuild>(configFileBuildSchema, configParsed, configPath);
 }
