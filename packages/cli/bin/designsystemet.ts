@@ -42,9 +42,7 @@ function makeTokenCommands() {
       const tokensDir = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_CREATE_DIR;
       const outDir = typeof opts.outDir === 'string' ? opts.outDir : './dist/tokens';
 
-      const allowFileNotFound = R.isNil(opts.config) || opts.config === DEFAULT_CONFIG_FILE;
-      const configPath = opts.config ?? DEFAULT_CONFIG_FILE;
-      const configFile = await readConfigFile(configPath, allowFileNotFound);
+      const { configFile, configPath } = await getConfigFile(opts.config);
       const config = await parseBuildConfig(configFile, { configPath });
 
       if (dry) {
@@ -87,9 +85,7 @@ function makeTokenCommands() {
         console.log(`Performing dry run, no files will be written`);
       }
 
-      const allowFileNotFound = R.isNil(opts.config) || opts.config === DEFAULT_CONFIG_FILE;
-      const configPath = opts.config ?? DEFAULT_CONFIG_FILE;
-      const configFile = await readConfigFile(configPath, allowFileNotFound);
+      const { configFile, configPath } = await getConfigFile(opts.config);
       const config = await parseCreateConfig(configFile, {
         theme: opts.theme,
         cmd,
@@ -157,4 +153,11 @@ function parseColorValues(value: string, previous: Record<string, CssColor> = {}
 
 function parseBoolean(value: string | boolean, previous: boolean): boolean {
   return value === 'true' || value === true;
+}
+
+async function getConfigFile(config: string | undefined) {
+  const allowFileNotFound = R.isNil(config) || config === DEFAULT_CONFIG_FILE;
+  const configPath = config ?? DEFAULT_CONFIG_FILE;
+  const configFile = await readConfigFile(configPath, allowFileNotFound);
+  return { configFile, configPath };
 }
