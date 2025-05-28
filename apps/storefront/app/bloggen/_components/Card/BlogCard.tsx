@@ -53,11 +53,14 @@ export const BlogCard = ({
             {tagText}
           </Tag>
         )}
-        <Heading level={level} data-size={featured ? 'lg' : 'sm'}>
+        <Heading level={level} data-font-size={featured ? 'lg' : 'sm'}>
           <Link href={href}>{title}</Link>
         </Heading>
-        <Paragraph data-size={featured ? 'lg' : 'sm'}>{desc}</Paragraph>
-        <Paragraph data-size={featured ? 'md' : 'xs'} className={classes.meta}>
+        <Paragraph data-font-size={featured ? 'lg' : 'sm'}>{desc}</Paragraph>
+        <Paragraph
+          data-font-size={featured ? 'md' : 'xs'}
+          className={classes.meta}
+        >
           {author ||
             (date && (
               <>

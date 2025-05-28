@@ -19,7 +19,7 @@ const ComponentCard = ({ title, image, url }: ComponentCardProps) => {
         className={classes.image}
         aria-hidden='true'
       />
-      <Heading data-size='xs' className={classes.title} level={2}>
+      <Heading data-font-size='xs' className={classes.title} level={2}>
         {title}
       </Heading>
     </NextLink>

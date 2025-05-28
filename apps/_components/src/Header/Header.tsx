@@ -164,7 +164,7 @@ const Header = ({
             >
               {menu.map((item, index) => (
                 <li className={classes.item} key={index}>
-                  <Paragraph data-size='md' asChild>
+                  <Paragraph data-font-size='md' asChild>
                     <Link
                       suppressHydrationWarning
                       href={item.href}

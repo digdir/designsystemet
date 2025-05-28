@@ -8,7 +8,7 @@ export const Error404 = () => {
 
   return (
     <ContentContainer>
-      <Heading level={1} data-size='xl'>
+      <Heading level={1} data-font-size='xl'>
         {t('errors.404.title')}
       </Heading>
       <Paragraph>{t('errors.404.details')}</Paragraph>

@@ -31,7 +31,7 @@ const tableData = [
 export const TableCard = () => {
   return (
     <>
-      <Heading data-size='2xs'>Alle brukere</Heading>
+      <Heading data-font-size='2xs'>Alle brukere</Heading>
       <div className={classes.toolbar}>
         <div className={classes.toolbarLeft}>
           <Select data-size='sm' aria-label='Velg handling'>

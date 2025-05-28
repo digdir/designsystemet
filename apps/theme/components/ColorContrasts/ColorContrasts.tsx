@@ -162,8 +162,8 @@ export const ColorContrasts = () => {
     <div className='panelContainer'>
       <div className='panelLeft'>
         <div className='panelTop'>
-          <Heading data-size='xs'>Kontraster mellom farger</Heading>
-          <Paragraph data-size='sm'>
+          <Heading data-font-size='xs'>Kontraster mellom farger</Heading>
+          <Paragraph data-font-size='sm'>
             Her vises kontrastene mellom de ulike trinnene i fargeskalaene, samt
             om fargene oppfyller WCAG-kravene.
           </Paragraph>
@@ -171,21 +171,21 @@ export const ColorContrasts = () => {
           <div className={classes.tagGroups}>
             <div className={classes.tagGroup}>
               <div className={cl(classes.tag, classes.AAA)}>AAA</div>
-              <Paragraph data-size='sm'>
+              <Paragraph data-font-size='sm'>
                 Tekst og bakgrunn må ha en kontrast på minst 7:1 for å oppfylle
                 WCAG AAA-kravet.
               </Paragraph>
             </div>
             <div className={classes.tagGroup}>
               <div className={cl(classes.tag, classes.AA)}>AA</div>
-              <Paragraph data-size='sm'>
+              <Paragraph data-font-size='sm'>
                 Tekst og bakgrunn må ha en kontrast på minst 4.5:1 for å
                 oppfylle WCAG AA-kravet.
               </Paragraph>
             </div>
             <div className={classes.tagGroup}>
               <div className={cl(classes.tag, classes.AA18)}>AA18</div>
-              <Paragraph data-size='sm'>
+              <Paragraph data-font-size='sm'>
                 Tekst og bakgrunn må ha en kontrast på minst 3:1 og en
                 skriftstørrelse på 18 px eller større for å oppfylle WCAG
                 AA-kravet.
@@ -193,7 +193,7 @@ export const ColorContrasts = () => {
             </div>
             <div className={classes.tagGroup}>
               <div className={cl(classes.tag, classes.FAIL)}>DECO</div>
-              <Paragraph data-size='sm'>
+              <Paragraph data-font-size='sm'>
                 Oppfyller ingen kontrastkrav i WCAG og bør kun brukes til
                 dekorative formål.
               </Paragraph>
@@ -202,10 +202,10 @@ export const ColorContrasts = () => {
         </div>
       </div>
       <div className='panelRight'>
-        <Heading data-size='2xs'>
+        <Heading data-font-size='2xs'>
           Text og Border mot Background og Surface
         </Heading>
-        <Paragraph data-size='sm' className={classes.desc}>
+        <Paragraph data-font-size='sm' className={classes.desc}>
           Når du bytter mellom fargeskalaene, vil du se at kontrastene mellom
           fargene i seksjonen nedenfor er nesten identiske. Dette gjør at du kun
           trenger å vurdere kontrastene for én fargeskala for å forstå hvordan
@@ -257,8 +257,8 @@ export const ColorContrasts = () => {
             </tbody>
           </table>
         </div>
-        <Heading data-size='2xs'>Base fargene</Heading>
-        <Paragraph data-size='sm' className={classes.desc}>
+        <Heading data-font-size='2xs'>Base fargene</Heading>
+        <Paragraph data-font-size='sm' className={classes.desc}>
           Fargene som blir valgt i verktøyet får tokenet Base Default i hver
           fargeskala. Dette betyr at det er viktig å velge en farge som har over
           3:1 kontrast mot overflatefarger om den skal brukes som en viktig,

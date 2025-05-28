@@ -52,26 +52,26 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <Heading
         {...(props as HeadingProps)}
         level={1}
-        data-size='xl'
+        data-font-size='xl'
         style={{
           marginBottom: 'var(--ds-size-4)',
         }}
       />
     ),
     h2: (props) => (
-      <Heading {...(props as HeadingProps)} level={2} data-size='md' />
+      <Heading {...(props as HeadingProps)} level={2} data-font-size='md' />
     ),
     h3: (props) => (
-      <Heading {...(props as HeadingProps)} level={3} data-size='sm' />
+      <Heading {...(props as HeadingProps)} level={3} data-font-size='sm' />
     ),
     h4: (props) => (
-      <Heading {...(props as HeadingProps)} level={4} data-size='xs' />
+      <Heading {...(props as HeadingProps)} level={4} data-font-size='xs' />
     ),
     h5: (props) => (
-      <Heading {...(props as HeadingProps)} level={5} data-size='xs' />
+      <Heading {...(props as HeadingProps)} level={5} data-font-size='xs' />
     ),
     h6: (props) => (
-      <Heading {...(props as HeadingProps)} level={6} data-size='xs' />
+      <Heading {...(props as HeadingProps)} level={6} data-font-size='xs' />
     ),
     table: (props) => (
       <Table {...(props as TableProps)} border zebra data-color='neutral' />

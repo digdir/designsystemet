@@ -55,7 +55,7 @@ export default function Patterns({
     <>
       <div className={classes.header}>
         <div className={classes.headerText}>
-          <Heading data-size='lg' level={1}>
+          <Heading data-font-size='lg' level={1}>
             {frontmatter.title}
           </Heading>
           {frontmatter.date && (

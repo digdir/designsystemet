@@ -48,12 +48,18 @@ export default function Home() {
       <main className={classes.main} id='main'>
         <Container>
           <div className={classes.header}>
-            <Paragraph data-size='lg'>Designsystemet sin temabygger</Paragraph>
-            <Heading data-size='xl' level={1} className={classes.heading}>
+            <Paragraph data-font-size='lg'>
+              Designsystemet sin temabygger
+            </Paragraph>
+            <Heading data-font-size='xl' level={1} className={classes.heading}>
               Sett i gang med å bygge ditt
               <span className={classes.headerText}> eget tema</span>
             </Heading>
-            <Paragraph data-size='md' variant='long' className={classes.desc}>
+            <Paragraph
+              data-font-size='md'
+              variant='long'
+              className={classes.desc}
+            >
               Skal du ta i bruk Designsystemet i din egen organisasjon med dine
               egne profilfarger og preferanser? Temabyggeren hjelper deg i gang.
             </Paragraph>

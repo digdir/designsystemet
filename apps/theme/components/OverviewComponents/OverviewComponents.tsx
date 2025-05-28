@@ -36,7 +36,7 @@ export const OverviewComponents = forwardRef<HTMLDivElement>(
       <div className={classes.container} ref={ref}>
         <div className={classes.inner}>
           <div className={classes.card}>
-            <Heading data-size='2xs'>Logg inn i portalen</Heading>
+            <Heading data-font-size='2xs'>Logg inn i portalen</Heading>
             <Textfield placeholder='Ola Normann' label='Navn' data-size='sm' />
             <Textfield placeholder='********' label='Passord' data-size='sm' />
             <Link href='#' data-size='sm'>
@@ -66,16 +66,16 @@ export const OverviewComponents = forwardRef<HTMLDivElement>(
                 <Tag data-color='brand2'>Nyheter</Tag>
                 <Tag data-color='brand3'>Innenriks</Tag>
               </div>
-              <Heading data-size='2xs' className={classes.imgTitle}>
+              <Heading data-font-size='2xs' className={classes.imgTitle}>
                 Reiste alene til storbyen
               </Heading>
-              <Paragraph data-size='sm' className={classes.imgDesc}>
+              <Paragraph data-font-size='sm' className={classes.imgDesc}>
                 Mona kvist ville finne drømmen i New York City
               </Paragraph>
             </div>
           </div>
           <div className={classes.card} style={{ flexGrow: 1 }}>
-            <Heading data-size='xs' level={3}>
+            <Heading data-font-size='xs' level={3}>
               Folk du kanskje kjenner
             </Heading>
             <div className={classes.users}>

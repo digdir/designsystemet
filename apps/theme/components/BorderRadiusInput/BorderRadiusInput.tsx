@@ -16,7 +16,7 @@ export const BorderRadiusInput = () => {
 
   return (
     <div>
-      <Heading className={classes.heading} data-size='xs'>
+      <Heading className={classes.heading} data-font-size='xs'>
         Foreslått basis Border radius
       </Heading>
       <div
@@ -53,7 +53,7 @@ export const BorderRadiusInput = () => {
           </div>
         ))}
       </div>
-      <Heading className={classes.heading} data-size='xs'>
+      <Heading className={classes.heading} data-font-size='xs'>
         Manuell basis Border radius
       </Heading>
       <Textfield

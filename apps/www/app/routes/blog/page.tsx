@@ -70,11 +70,11 @@ export default function Blog({
   return (
     <div className={classes.main}>
       <div className={classes.intro}>
-        <Heading level={1} data-size='xl'>
+        <Heading level={1} data-font-size='xl'>
           {title}
         </Heading>
         <Paragraph variant='long'>{description}</Paragraph>
-        <Paragraph data-size='sm' className={classes.meta}>
+        <Paragraph data-font-size='sm' className={classes.meta}>
           <span>{formatDate(date, lang)}</span>
           <span aria-hidden className={classes.metaSquare} />
           <span>{author}</span>
@@ -89,10 +89,10 @@ export default function Blog({
       <div className={classes.content}>
         <MDXComponents code={code} />
         <div className={classes.wantToWrite} data-color='brand3'>
-          <Heading level={3} data-size='xs'>
+          <Heading level={3} data-font-size='xs'>
             {t('blog.write.title')}
           </Heading>
-          <Paragraph data-size='sm'>
+          <Paragraph data-font-size='sm'>
             {t('blog.write.description')}
             <RRLink to='https://designsystemet.no/slack' target='_blank'>
               {t('blog.write.slack')}

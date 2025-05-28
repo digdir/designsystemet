@@ -113,11 +113,11 @@ export const ColorPane = ({
           <TrashIcon title='søppelkasse' fontSize='1.5rem' />
         </Button>
       </div>
-      <Heading data-size='xs' className={classes.title}>
+      <Heading data-font-size='xs' className={classes.title}>
         {getHeading()}
       </Heading>
       {colorType === 'neutral' && (
-        <Paragraph data-size='sm' className={classes.desc}>
+        <Paragraph data-font-size='sm' className={classes.desc}>
           Neutral fargen kan ikke fjernes eller endres navn på.
         </Paragraph>
       )}

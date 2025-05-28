@@ -42,7 +42,7 @@ export default function Fundamentals() {
       {Object.entries(cats).map(([key, value]) => {
         return (
           <Fragment key={key}>
-            <Heading data-size='md'>{key}</Heading>
+            <Heading data-font-size='md'>{key}</Heading>
             <Paragraph
               style={{
                 maxWidth: '65ch',

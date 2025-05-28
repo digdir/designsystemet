@@ -57,7 +57,7 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
       <div className={classes.top}>
         <Container className={classes.container}>
           <div>
-            <Heading data-size='xs' level={2} className={classes.title}>
+            <Heading data-font-size='xs' level={2} className={classes.title}>
               Lages på tvers av virksomheter:
             </Heading>
             <div className={classes.logos}>
@@ -82,13 +82,13 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
             </Button>
           </div>
           <div>
-            <Heading data-size='xs' level={2} className={classes.title}>
+            <Heading data-font-size='xs' level={2} className={classes.title}>
               Om nettstedet
             </Heading>
             {LinkList(centerLinks)}
           </div>
           <div>
-            <Heading data-size='xs' level={2} className={classes.title}>
+            <Heading data-font-size='xs' level={2} className={classes.title}>
               Kom i kontakt med oss
             </Heading>
             {LinkList(rightLinks)}
@@ -97,7 +97,7 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
       </div>
       <div className={classes.bottom}>
         <Container>
-          <Paragraph data-size='sm'>
+          <Paragraph data-font-size='sm'>
             © {getCurrentYear()} Designsystemet
           </Paragraph>
         </Container>

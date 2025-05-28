@@ -50,7 +50,7 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
           </Button>
 
           <div className={cl(classes.menu, showMenu && classes.activeMenu)}>
-            <Paragraph data-size='md' asChild>
+            <Paragraph data-font-size='md' asChild>
               <h2 className={classes.title}>
                 {SiteConfig.menu[activeIndex].name}
               </h2>
@@ -66,14 +66,14 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
                   >
                     {item.children && (
                       <>
-                        <Paragraph asChild data-size='md'>
+                        <Paragraph asChild data-font-size='md'>
                           <div className={classes.innerTitle}>{item.name}</div>
                         </Paragraph>
                         <ul className={classes.innerList}>
                           {item.children.map(
                             (item2: PageMenuItemType, index2) => (
                               <li key={index2} className={classes.listItem}>
-                                <Paragraph asChild data-size='sm'>
+                                <Paragraph asChild data-font-size='sm'>
                                   <Link
                                     href={'/' + item2.url}
                                     prefetch={false}
@@ -93,7 +93,7 @@ const SidebarMenu = ({ routerPath }: SidebarMenuProps) => {
                       </>
                     )}
                     {!item.children && (
-                      <Paragraph asChild data-size='sm'>
+                      <Paragraph asChild data-font-size='sm'>
                         <Link
                           href={'/' + item.url}
                           prefetch={false}

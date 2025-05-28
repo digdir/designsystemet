@@ -6,8 +6,8 @@ export const ColorTokens = () => {
     <div className='panelContainer'>
       <div className='panelLeft'>
         <div className='panelTop'>
-          <Heading data-size='xs'>Se fargetokens</Heading>
-          <Paragraph data-size='sm'>
+          <Heading data-font-size='xs'>Se fargetokens</Heading>
+          <Paragraph data-font-size='sm'>
             Her ser du hvilke tokens som er brukt for å lage kortene i seksjonen
             over.
           </Paragraph>

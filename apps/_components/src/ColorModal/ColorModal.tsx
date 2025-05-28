@@ -47,7 +47,7 @@ export const ColorModal = ({
       }}
     >
       <Dialog.Block>
-        <Heading data-size='xs'>
+        <Heading data-font-size='xs'>
           {`${capitalizeFirstLetter(namespace)} ${displayName}`}
         </Heading>
       </Dialog.Block>
@@ -56,7 +56,7 @@ export const ColorModal = ({
         style={{ backgroundColor: hex }}
       ></div>
       <Dialog.Block className={classes.modalContent}>
-        <Paragraph data-size='sm' className={classes.description}>
+        <Paragraph data-font-size='sm' className={classes.description}>
           {description.long}
         </Paragraph>
         <div data-size='sm' className={classes.grid}>
