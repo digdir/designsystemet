@@ -128,12 +128,6 @@ const themeSchema = z
 
 export const configFileBuildSchema = z.object({
   clean: z.boolean().meta({ description: 'Delete the output directory before building or creating tokens' }).optional(),
-  defaultColor: z
-    .string()
-    .meta({
-      description: 'The default color for this theme. If not configured, the first main color will be used.',
-    })
-    .optional(),
 });
 
 /**
