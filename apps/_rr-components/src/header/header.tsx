@@ -251,10 +251,14 @@ const Header = ({
             </Tooltip>
             <Dropdown open={langOpen} onClose={() => setLangOpen(false)}>
               <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
-                <Link to={langPaths.no}>Norsk</Link>
+                <Link to={langPaths.no} lang='no'>
+                  Norsk
+                </Link>
               </Dropdown.Button>
               <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
-                <Link to={langPaths.en}>English</Link>
+                <Link to={langPaths.en} lang='en'>
+                  English
+                </Link>
               </Dropdown.Button>
             </Dropdown>
           </Dropdown.TriggerContext>
