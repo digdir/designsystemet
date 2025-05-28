@@ -5,18 +5,12 @@ import * as R from 'ramda';
 import { convertToHex } from '../src/colors/index.js';
 import type { CssColor } from '../src/colors/types.js';
 import migrations from '../src/migrations/index.js';
-import {
-  type ConfigSchemaBuild,
-  type ConfigSchemaCreate,
-  configFileBuildSchema,
-  configFileCreateSchema,
-} from '../src/schema.js';
 import { buildTokens } from '../src/tokens/build.js';
 import { cliOptions, createTokens } from '../src/tokens/create.js';
 import { writeTokens } from '../src/tokens/create/write.js';
 import type { Theme } from '../src/tokens/types.js';
 import { cleanDir } from '../src/utils.js';
-import { parseCreateConfig, readConfigFile, validateConfig } from './config.js';
+import { parseBuildConfig, parseCreateConfig, readConfigFile } from './config.js';
 
 program.name('designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
 
@@ -48,11 +42,10 @@ function makeTokenCommands() {
       const tokensDir = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_CREATE_DIR;
       const outDir = typeof opts.outDir === 'string' ? opts.outDir : './dist/tokens';
 
-      const configFile = await readConfigFile(opts.config ?? DEFAULT_CONFIG_FILE);
-      const configParsed: ConfigSchemaBuild = configFile
-        ? await configFileBuildSchema.parseAsync(JSON.parse(configFile))
-        : {};
-      const config: ConfigSchemaBuild = validateConfig<ConfigSchemaBuild>(configFileBuildSchema, configParsed);
+      const allowFileNotFound = R.isNil(opts.config) || opts.config === DEFAULT_CONFIG_FILE;
+      const configPath = opts.config ?? DEFAULT_CONFIG_FILE;
+      const configFile = await readConfigFile(configPath, allowFileNotFound);
+      const config = await parseBuildConfig(configFile, { configPath });
 
       if (dry) {
         console.log(`Performing dry run, no files will be written`);
@@ -95,12 +88,13 @@ function makeTokenCommands() {
       }
 
       const allowFileNotFound = R.isNil(opts.config) || opts.config === DEFAULT_CONFIG_FILE;
-      const configFile = await readConfigFile(opts.config ?? DEFAULT_CONFIG_FILE, allowFileNotFound);
-      const parsedConfig = await parseCreateConfig(configFile, {
+      const configPath = opts.config ?? DEFAULT_CONFIG_FILE;
+      const configFile = await readConfigFile(configPath, allowFileNotFound);
+      const config = await parseCreateConfig(configFile, {
         theme: opts.theme,
         cmd,
+        configPath,
       });
-      const config = validateConfig<ConfigSchemaCreate>(configFileCreateSchema, parsedConfig);
 
       if (config?.clean) {
         await cleanDir(config.outDir, opts.dry);
