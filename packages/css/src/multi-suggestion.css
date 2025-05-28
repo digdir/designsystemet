@@ -113,6 +113,12 @@
     }
   }
 
+  /* Hide focus ring when u-combobox temporarily moves focus to input for screen reader purposes */
+  & input[inputmode='none'] {
+    box-shadow: none;
+    outline: none;
+  }
+
   /**
    * Clear button
    */
