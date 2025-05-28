@@ -65,7 +65,7 @@ export default function Home() {
                 </NextLink>
               </Button>
               <Button data-color='neutral' variant='secondary' asChild>
-                <NextLink href='https://www.designsystemet.no/grunnleggende/for-designere/eget-tema'>
+                <NextLink href='https://www.designsystemet.no/no/fundamentals/for-designers/own-theme'>
                   <BookIcon fontSize='1.5rem' aria-hidden />
                   Dokumentasjon
                 </NextLink>
