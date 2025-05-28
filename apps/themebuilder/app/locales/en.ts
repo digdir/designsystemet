@@ -23,6 +23,17 @@ export default {
     'contact-us': 'Get in touch with us',
     copyright: 'Designsystemet',
   },
+  header: {
+    'home-link': 'Designsystemet home page',
+    menu: 'Menu',
+    'github-title': 'Designsystemet GitHub repository',
+    'figma-title': 'Designsystemet Figma project',
+    'theme-toggle': 'Switch to {{theme}} mode',
+    'theme-toggle-aria': 'Switch to {{theme}} mode',
+    light: 'light',
+    dark: 'dark',
+    'language-toggle': 'Switch language',
+  },
   errors: {
     default: {
       title: 'Oops!',
