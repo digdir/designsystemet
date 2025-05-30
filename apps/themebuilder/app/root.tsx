@@ -87,9 +87,9 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 export const meta = () => {
   return [
     {
-      title: 'Designsystemet',
+      title: 'meta.title',
     },
-    { description: 'En digital verktøykasse' },
+    { description: 'meta.description' },
   ];
 };
 

@@ -1,5 +1,6 @@
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { ChevronLeftIcon } from '@navikt/aksel-icons';
+import { useTranslation } from 'react-i18next';
 import { TokenModal } from '../../token-modal/token-modal';
 import classes from './finish-page.module.css';
 
@@ -8,9 +9,11 @@ type FinishPageProps = {
 };
 
 export const FinishPage = ({ onPrevClick }: FinishPageProps) => {
+  const { t } = useTranslation();
+
   return (
     <div>
-      <Heading data-size='xs'>Ta i bruk tema</Heading>
+      <Heading data-size='xs'>{t('themeModal.use-theme')}</Heading>
       <Paragraph data-size='sm' className={classes.desc}>
         Logbook a sitting success parents' girl in it however, greater, full
         with he that pleasures up attention to hardly to power definitely hardly

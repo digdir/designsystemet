@@ -12,6 +12,7 @@ import {
 } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useThemeStore } from '~/store';
 import classes from './color-contrasts.module.css';
 
@@ -19,44 +20,40 @@ const initialTheme = generateColorSchemes('#0062BA');
 const colorGroups = ['main', 'neutral', 'support'] as const;
 
 export const ColorContrasts = () => {
+  const { t } = useTranslation();
   return (
     <div className='panelContainer'>
       <div className='panelLeft'>
         <div className='panelTop'>
-          <Heading data-size='xs'>Kontraster mellom farger</Heading>
+          <Heading data-size='xs'>{t('colorContrasts.title')}</Heading>
           <Paragraph data-size='sm'>
-            Her vises kontrastene mellom de ulike trinnene i fargeskalaene, samt
-            om fargene oppfyller WCAG-kravene.
+            {t('colorContrasts.description')}
           </Paragraph>
 
           <div>
+            {' '}
             <div className={classes.tagGroup}>
               <div className={cl(classes.tag, classes.AAA)}>AAA</div>
               <Paragraph data-size='sm'>
-                Tekst og bakgrunn må ha en kontrast på minst 7:1 for å oppfylle
-                WCAG AAA-kravet.
+                {t('colorContrasts.aaa-description')}
               </Paragraph>
             </div>
             <div className={classes.tagGroup}>
               <div className={cl(classes.tag, classes.AA)}>AA</div>
               <Paragraph data-size='sm'>
-                Tekst og bakgrunn må ha en kontrast på minst 4.5:1 for å
-                oppfylle WCAG AA-kravet.
+                {t('colorContrasts.aa-description')}
               </Paragraph>
             </div>
             <div className={classes.tagGroup}>
               <div className={cl(classes.tag, classes.AA18)}>AA18</div>
               <Paragraph data-size='sm'>
-                Tekst og bakgrunn må ha en kontrast på minst 3:1 og en
-                skriftstørrelse på 18 px eller større for å oppfylle WCAG
-                AA-kravet.
+                {t('colorContrasts.aa18-description')}{' '}
               </Paragraph>
             </div>
             <div className={classes.tagGroup}>
               <div className={cl(classes.tag, classes.DECO)}>DECO</div>
               <Paragraph data-size='sm'>
-                Oppfyller ingen kontrastkrav i WCAG og bør kun brukes til
-                dekorative formål.
+                {t('colorContrasts.deco-description')}
               </Paragraph>
             </div>
           </div>
@@ -101,6 +98,7 @@ const ColorContrastMapper = ({
   vertical: string[];
   horizontal: string[];
 }) => {
+  const { t } = useTranslation();
   const colors = useThemeStore((state) => state.colors);
   const colorScheme = useThemeStore((state) => state.colorScheme);
   const [selectedColor, setSelectedColor] = useState('dominant');
@@ -134,14 +132,10 @@ const ColorContrastMapper = ({
 
   return (
     <>
-      <Heading data-size='2xs'>Base fargene</Heading>
+      {' '}
+      <Heading data-size='2xs'>{t('colorContrasts.base-colors')}</Heading>
       <Paragraph data-size='sm' className={classes.desc}>
-        Fargene som blir valgt i verktøyet får tokenet Base Default i hver
-        fargeskala. Dette betyr at det er viktig å velge en farge som har over
-        3:1 kontrast mot overflatefarger om den skal brukes som en viktig,
-        meningsbærende farge. Verktøyet lager også to kontrastfarger som trygt
-        kan brukes oppå base fargene. Disse kontrastfargene blir enten lyse
-        eller mørke avhengig av base fargen.
+        {t('colorContrasts.base-colors-description')}
       </Paragraph>
       <Field className={classes.fieldGroup}>
         <Select
@@ -150,7 +144,7 @@ const ColorContrastMapper = ({
           onChange={(e) => {
             setSelectedColor(e.target.value);
           }}
-          aria-label='Velg farge for å se kontraster'
+          aria-label={t('colorContrasts.select-color')}
           value={selectedColor}
         >
           {colorGroups.flatMap((group) =>

@@ -8,6 +8,7 @@ import {
   Textfield,
 } from '@digdir/designsystemet-react';
 import { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   generateColorVars,
   generateNeutralColorVars,
@@ -36,6 +37,7 @@ const users = [
 ];
 
 export const OverviewComponents = () => {
+  const { t } = useTranslation();
   const colors = useThemeStore((state) => state.colors);
   const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
   const colorScheme = useThemeStore((state) => state.colorScheme);
@@ -82,18 +84,26 @@ export const OverviewComponents = () => {
   };
 
   return (
-    <div className={classes.container} ref={ref} style={style()}>
+    <div ref={ref} style={style()}>
       <div className={classes.inner}>
         <div className={classes.card}>
-          <Heading data-size='2xs'>Logg inn i portalen</Heading>
-          <Textfield placeholder='Ola Normann' label='Navn' data-size='sm' />
-          <Textfield placeholder='********' label='Passord' data-size='sm' />
+          <Heading data-size='2xs'>{t('overview.login-title')}</Heading>
+          <Textfield
+            placeholder='Ola Normann'
+            label={t('overview.name')}
+            data-size='sm'
+          />
+          <Textfield
+            placeholder='********'
+            label={t('overview.password')}
+            data-size='sm'
+          />
           <Link href='#' data-size='sm'>
-            Glemt passord?
+            {t('overview.forgot-password')}
           </Link>
 
           <Button data-size='sm' className={classes.btn}>
-            Logg inn
+            {t('overview.login')}
           </Button>
         </div>
         <div
@@ -111,21 +121,21 @@ export const OverviewComponents = () => {
           <img className={classes.img} src='/img/city.jpg' alt='' />
           <div className={classes.imgText}>
             <div className={classes.tags} data-size='sm'>
-              <Tag data-color='brand1'>Sport</Tag>
-              <Tag data-color='brand2'>Nyheter</Tag>
-              <Tag data-color='brand3'>Innenriks</Tag>
+              <Tag data-color='brand1'>{t('overview.sports')}</Tag>
+              <Tag data-color='brand2'>{t('overview.news')}</Tag>
+              <Tag data-color='brand3'>{t('overview.domestic')}</Tag>
             </div>
             <Heading data-size='2xs' className={classes.imgTitle}>
-              Reiste alene til storbyen
+              {t('overview.news-title')}
             </Heading>
             <Paragraph data-size='sm' className={classes.imgDesc}>
-              Mona kvist ville finne drømmen i New York City
+              {t('overview.news-description')}
             </Paragraph>
           </div>
         </div>
         <div className={classes.card} style={{ flexGrow: 1 }}>
           <Heading data-size='xs' level={3}>
-            Folk du kanskje kjenner
+            {t('overview.people-you-may-know')}
           </Heading>
           <div className={classes.users}>
             {users.map((user) => {
@@ -146,9 +156,9 @@ export const OverviewComponents = () => {
                     data-size='sm'
                     variant='secondary'
                     style={{ marginLeft: 'auto' }}
-                    aria-label={`Følg ${user.name}`}
+                    aria-label={`${t('overview.follow')} ${user.name}`}
                   >
-                    Følg
+                    {t('overview.follow')}
                   </Button>
                 </div>
               );
