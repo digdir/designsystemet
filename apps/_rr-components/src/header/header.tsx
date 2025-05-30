@@ -26,7 +26,7 @@ type HeaderProps = {
   themeSwitcher?: boolean;
   transparentBackground?: boolean;
   logoLink?: string;
-};
+} & React.HTMLAttributes<HTMLElement>;
 
 /**
  * Detect if any items have wrapped to a new line
@@ -61,6 +61,8 @@ const Header = ({
   themeSwitcher = false,
   transparentBackground = false,
   logoLink = '/',
+  className,
+  ...props
 }: HeaderProps) => {
   const { pathname } = useLocation();
   const { t } = useTranslation();
@@ -118,8 +120,10 @@ const Header = ({
         classes.header,
         isHamburger && classes.hamburger,
         transparentBackground && classes.transparentHeader,
+        className,
       )}
       ref={headerRef}
+      {...props}
     >
       <div className={classes.container}>
         <div className={classes.logoContainer}>
