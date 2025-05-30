@@ -28,8 +28,11 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   };
 };
 
-export const meta = ({ data: { metadata } }: Route.MetaArgs) => {
-  return metadata;
+export const meta = ({ data}: Route.MetaArgs) => {
+  if (!data) return [{
+    title: 'Designsystemet',
+  }];
+  return data.metadata;
 };
 
 export default function BestPractices() {

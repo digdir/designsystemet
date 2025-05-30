@@ -30,17 +30,24 @@ export async function loader({ params }: Route.LoaderArgs) {
   const result = await generateFromMdx(fileContent);
 
   return {
-    name: params.file,
     code: result.code,
     frontmatter: result.frontmatter,
     lang: params.lang,
   };
 }
 
-export const meta = ({ data }: Route.MetaArgs) => {
+export const meta = ({
+  data,
+}: Route.MetaArgs) => {
+  if (!data) return [
+    {
+      title: 'Designsystemet'
+    },
+  ];
+  const { frontmatter: { title, description } } = data;
   return generateMetadata({
-    title: data.frontmatter.title,
-    description: data.frontmatter.description,
+    title,
+    description,
   });
 };
 

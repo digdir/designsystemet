@@ -87,9 +87,16 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
 };
 
 export const meta: Route.MetaFunction = ({
-  data: { metadata },
+  data,
 }: Route.MetaArgs) => {
-  return metadata;
+  if (!data) {
+    return [
+      {
+        title: 'Designsystemet',
+      },
+    ];
+  }
+  return data.metadata;
 };
 
 export default function Home({ loaderData: { posts } }: Route.ComponentProps) {

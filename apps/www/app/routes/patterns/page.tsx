@@ -38,10 +38,14 @@ export async function loader({ params }: Route.LoaderArgs) {
 }
 
 export const meta = ({
-  data: {
-    frontmatter: { title, description },
-  },
+  data,
 }: Route.MetaArgs) => {
+  if (!data) return [
+    {
+      title: 'Designsystemet'
+    },
+  ];
+  const { frontmatter: { title, description } } = data;
   return generateMetadata({
     title,
     description,
