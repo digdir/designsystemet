@@ -7,7 +7,7 @@ import {
   ToggleGroup,
 } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { generateColorVars } from '~/_utils/generate-color-vars';
 import { type ColorTheme, useThemeStore } from '~/store';
 import listClasses from './card.module.css';
@@ -15,101 +15,28 @@ import classes from './color-preview.module.css';
 
 type ViewType = 'list' | 'grid';
 
+const DEFAULT_VIEW: ViewType = 'grid';
+
 export const ColorPreview = () => {
   const colors = useThemeStore((state) => state.colors);
-  const [view, setView] = useState<ViewType>('grid');
-  const colorScheme = useThemeStore((state) => state.colorScheme);
+  const [view, setView] = useState<ViewType>(DEFAULT_VIEW);
 
-  type CardProps = {
-    color: ColorTheme;
-  };
-
-  const CardWrapper = ({ color }: CardProps) => {
-    if (view === 'list') {
-      return <VerticalCard color={color} />;
-    }
-    return <HorizontalCard color={color} />;
-  };
-
-  const HorizontalCard = ({ color }: CardProps) => {
-    useEffect(() => {}, []);
-
-    const [valueOne, setValueOne] = useState(true);
-    return (
-      <div
-        style={generateColorVars(color.colors, colorScheme)}
-        className={classes.card}
-      >
-        <Heading className={classes.title} data-size='2xs'>
-          {color.name}
-        </Heading>
-        <Paragraph data-size='sm' className={classes.desc}>
-          Livet er for kort til å være grått. Fyll deg selv og dine dager med
-          farger.
-        </Paragraph>
-        <div className={classes.checkGroup}>
-          <Checkbox
-            data-size='sm'
-            label='Checkbox 1'
-            value='one'
-            onChange={() => setValueOne(!valueOne)}
-            checked={valueOne}
-          />
-          <Checkbox data-size='sm' label='Checkbox 2' value='two' />
-        </div>
-        <div className={classes.btnGroup}>
-          <Button data-size='sm'>Primær</Button>
-          <Button data-size='sm' variant='secondary'>
-            Sekundær
-          </Button>
-        </div>
-      </div>
+  const CardWrapper = ({ color }: CardProps) =>
+    view === 'list' ? (
+      <VerticalCard color={color} />
+    ) : (
+      <HorizontalCard color={color} />
     );
-  };
 
-  const VerticalCard = ({ color }: CardProps) => {
-    const [isChecked, setIsChecked] = useState(true);
-    const [isSwitch, setIsSwitch] = useState(true);
-    return (
-      <div
-        style={generateColorVars(color.colors, colorScheme)}
-        className={cl(classes.card, listClasses.card)}
-      >
-        <div className={listClasses.text}>
-          <Heading className={listClasses.title} data-size='2xs'>
-            {color.name}
-          </Heading>
-          <Paragraph className={classes.desc} data-size='sm'>
-            Farger gjør livet mer fargerikt
-          </Paragraph>
-        </div>
-        <div className={listClasses.checkGroup}>
-          <Checkbox
-            data-size='sm'
-            label='Checkbox'
-            value='value'
-            checked={isChecked}
-            onChange={() => setIsChecked(!isChecked)}
-          />
-          <Switch
-            aria-labelledby=''
-            position='start'
-            data-size='sm'
-            checked={isSwitch}
-            onChange={() => setIsSwitch(!isSwitch)}
-          >
-            Switch
-          </Switch>
-        </div>
-        <div className={classes.btnGroup}>
-          <Button data-size='sm'>Primær</Button>
-          <Button data-size='sm' variant='secondary'>
-            Sekundær
-          </Button>
-        </div>
-      </div>
-    );
-  };
+  const handleViewChange = (value: string) => setView(value as ViewType);
+
+  const panelClassName = cl(
+    'panelRight',
+    view === 'grid' ? classes.grid : classes.list,
+  );
+
+  const allColors = [...colors.main, ...colors.neutral, ...colors.support];
+
   return (
     <div className='panelContainer'>
       <div className='panelLeft'>
@@ -130,29 +57,83 @@ export const ColorPreview = () => {
           <div className={classes.label}>Visning:</div>
           <ToggleGroup
             data-size='sm'
-            defaultValue='grid'
-            onChange={(value) => setView(value as ViewType)}
+            defaultValue={DEFAULT_VIEW}
+            onChange={handleViewChange}
           >
             <ToggleGroup.Item value='grid'>Grid</ToggleGroup.Item>
             <ToggleGroup.Item value='list'>Liste</ToggleGroup.Item>
           </ToggleGroup>
         </div>
       </div>
-      <div
-        className={cl(
-          'panelRight',
-          view === 'grid' ? classes.grid : classes.list,
-        )}
-      >
-        {colors.main.map((color, index) => (
-          <CardWrapper key={index} color={color} />
+      <div className={panelClassName}>
+        {allColors.map((color, index) => (
+          <CardWrapper key={`${color.name}-${index}`} color={color} />
         ))}
-        {colors.neutral.map((color, index) => (
-          <CardWrapper key={index} color={color} />
-        ))}
-        {colors.support.map((color, index) => (
-          <CardWrapper key={index} color={color} />
-        ))}
+      </div>
+    </div>
+  );
+};
+
+type CardProps = {
+  color: ColorTheme;
+};
+
+const HorizontalCard = ({ color }: CardProps) => {
+  const colorScheme = useThemeStore((state) => state.colorScheme);
+  const colorStyles = generateColorVars(color.colors, colorScheme);
+
+  return (
+    <div style={colorStyles} className={classes.card}>
+      <Heading className={classes.title} data-size='2xs'>
+        {color.name}
+      </Heading>
+      <Paragraph data-size='sm' className={classes.desc}>
+        Livet er for kort til å være grått. Fyll deg selv og dine dager med
+        farger.
+      </Paragraph>
+      <div className={classes.checkGroup}>
+        <Checkbox
+          data-size='sm'
+          label='Checkbox 1'
+          value='one'
+          defaultChecked
+        />
+        <Checkbox data-size='sm' label='Checkbox 2' value='two' />
+      </div>
+      <div className={classes.btnGroup}>
+        <Button data-size='sm'>Primær</Button>
+        <Button data-size='sm' variant='secondary'>
+          Sekundær
+        </Button>
+      </div>
+    </div>
+  );
+};
+const VerticalCard = ({ color }: CardProps) => {
+  const colorScheme = useThemeStore((state) => state.colorScheme);
+  const colorStyles = generateColorVars(color.colors, colorScheme);
+
+  return (
+    <div style={colorStyles} className={cl(classes.card, listClasses.card)}>
+      <div className={listClasses.text}>
+        <Heading className={listClasses.title} data-size='2xs'>
+          {color.name}
+        </Heading>
+        <Paragraph className={classes.desc} data-size='sm'>
+          Farger gjør livet mer fargerikt
+        </Paragraph>
+      </div>
+      <div className={listClasses.checkGroup}>
+        <Checkbox data-size='sm' label='Checkbox' value='value' />
+        <Switch aria-labelledby='' position='start' data-size='sm'>
+          Switch
+        </Switch>
+      </div>
+      <div className={classes.btnGroup}>
+        <Button data-size='sm'>Primær</Button>
+        <Button data-size='sm' variant='secondary'>
+          Sekundær
+        </Button>
       </div>
     </div>
   );
