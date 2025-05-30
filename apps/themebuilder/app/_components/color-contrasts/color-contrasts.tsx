@@ -53,7 +53,7 @@ export const ColorContrasts = () => {
               </Paragraph>
             </div>
             <div className={classes.tagGroup}>
-              <div className={cl(classes.tag, classes.AA18)}>DECO</div>
+              <div className={cl(classes.tag, classes.DECO)}>DECO</div>
               <Paragraph data-size='sm'>
                 Oppfyller ingen kontrastkrav i WCAG og bør kun brukes til
                 dekorative formål.
