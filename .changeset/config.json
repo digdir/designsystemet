@@ -22,7 +22,6 @@
   "ignore": [
     "@web/www",
     "theme",
-    "storefront",
     "@internal/components",
     "@web/storybook",
     "@plugin/figma"

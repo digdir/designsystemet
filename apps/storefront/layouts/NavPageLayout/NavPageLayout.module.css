@@ -1,9 +1,0 @@
-.content {
-  padding-bottom: var(--ds-size-12);
-  padding-top: var(--ds-size-12);
-
-  [data-color-scheme='dark'] &,
-  [data-color-scheme='auto'] & {
-    background-color: var(--ds-color-neutral-background-default);
-  }
-}
