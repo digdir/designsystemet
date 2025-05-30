@@ -3,28 +3,29 @@ import cl from 'clsx/lite';
 import { type BaseBorderRadius, useThemeStore } from '~/store';
 import classes from './border-radius-input.module.css';
 
+const BORDER_RADIUS_ITEMS: { name: string; value: BaseBorderRadius }[] = [
+  { name: 'Ingen', value: 0 },
+  { name: 'Small', value: 4 },
+  { name: 'Medium', value: 8 },
+  { name: 'Large', value: 12 },
+  { name: 'Full', value: 9999 },
+];
+
 export const BorderRadiusInput = () => {
   const setBorderRadius = useThemeStore((state) => state.setBaseBorderRadius);
   const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
-  const items: { name: string; value: BaseBorderRadius }[] = [
-    { name: 'Ingen', value: 0 },
-    { name: 'Small', value: 4 },
-    { name: 'Medium', value: 8 },
-    { name: 'Large', value: 12 },
-    { name: 'Full', value: 9999 },
-  ];
 
   return (
     <div>
       <Heading className={classes.heading} data-size='xs'>
         Foreslått basis Border radius
-      </Heading>
+      </Heading>{' '}
       <div
         className={classes.items}
         role='radiogroup'
         aria-label='Border radius'
       >
-        {items.map((item, index) => (
+        {BORDER_RADIUS_ITEMS.map((item, index) => (
           <div
             className={cl(
               classes.item,
@@ -48,7 +49,7 @@ export const BorderRadiusInput = () => {
               <div
                 className={classes.inner}
                 style={{ borderRadius: item.value }}
-              ></div>
+              />
             </Button>
           </div>
         ))}

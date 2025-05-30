@@ -32,6 +32,7 @@ const FEAT_THEME_CSS = false; // TODO set to false before merging
 export const TokenModal = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
 
+  // Use separate selectors for better performance
   const colors = useThemeStore((state) => state.colors);
   const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
 
@@ -39,12 +40,16 @@ export const TokenModal = () => {
   const [themeCSS, setThemeCSS] = useState('');
 
   const setCliColors = (colorTheme: ColorTheme[]) => {
-    let str = '';
-    for (const theme of colorTheme) {
-      const baseColor = getBaseDefault(theme.colors.light);
-      str += `"${theme.name}:${baseColor?.hex}" `;
-    }
-    return str;
+    if (!colorTheme.length) return '';
+
+    return (
+      colorTheme
+        .map((theme) => {
+          const baseColor = getBaseDefault(theme.colors.light);
+          return `"${theme.name}:${baseColor?.hex}"`;
+        })
+        .join(' ') + ' '
+    );
   };
 
   const packageWithTag = `@digdir/designsystemet${isProduction() ? '' : '@next'}`;
@@ -88,8 +93,13 @@ export const TokenModal = () => {
   };
 
   const onThemeButtonClick = () => {
-    setThemeCSS(LOADING_CSS_MESSAGE);
-    formatThemeCSS(theme).then(setThemeCSS);
+    if (themeCSS !== LOADING_CSS_MESSAGE) {
+      setThemeCSS(LOADING_CSS_MESSAGE);
+
+      formatThemeCSS(theme).then((css) => {
+        setThemeCSS(css);
+      });
+    }
   };
 
   return (

@@ -8,8 +8,6 @@ import classes from './page.module.css';
 import 'react-color-palette/css';
 
 export default function Page() {
-  /* For theme params */
-  useThemeParams();
   return (
     <ColorModalProvider>
       <main className={classes.page} id='main'>
@@ -26,6 +24,12 @@ export default function Page() {
           </div>
         </div>
       </main>
+      <ParamsComponent />
     </ColorModalProvider>
   );
 }
+
+const ParamsComponent = () => {
+  useThemeParams();
+  return null;
+};
