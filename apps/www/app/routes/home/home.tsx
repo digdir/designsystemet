@@ -86,9 +86,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   };
 };
 
-export const meta: Route.MetaFunction = ({
-  data,
-}: Route.MetaArgs) => {
+export const meta: Route.MetaFunction = ({ data }: Route.MetaArgs) => {
   if (!data) {
     return [
       {
