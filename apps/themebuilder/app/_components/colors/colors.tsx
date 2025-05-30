@@ -25,7 +25,7 @@ const MainColors = () => {
           <div className={classes.scaleLabel}>{color.name}</div>
           <Scale
             colorScale={color.colors}
-            showHeader
+            showHeader={index === 0}
             showColorMeta={false}
             namespace={color.name}
           />
