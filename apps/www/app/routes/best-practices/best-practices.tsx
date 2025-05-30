@@ -28,10 +28,13 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   };
 };
 
-export const meta = ({ data}: Route.MetaArgs) => {
-  if (!data) return [{
-    title: 'Designsystemet',
-  }];
+export const meta = ({ data }: Route.MetaArgs) => {
+  if (!data)
+    return [
+      {
+        title: 'Designsystemet',
+      },
+    ];
   return data.metadata;
 };
 
