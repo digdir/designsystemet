@@ -69,12 +69,6 @@ jobs:
         with:
           text: ${{ steps.fc.outputs.comment-body }}
           regex: '\[Theme\]\((https:\/\/[^)]+)\).*'
-      - name: Find Storefront deployment
-        uses: actions-ecosystem/action-regex-match@v2
-        id: regex-storefront
-        with:
-          text: ${{ steps.fc.outputs.comment-body }}
-          regex: '\[Storefront\]\((https:\/\/[^)]+)\).*'
 
       - name: Get current time in CEST
         uses: josStorer/get-current-time@v2
@@ -93,8 +87,6 @@ jobs:
             **Preview deployments for this pull request:**
 
             ${{ steps.regex-storybook.outputs.match }}
-
-            ${{ steps.regex-storefront.outputs.match }}
 
             ${{ steps.regex-theme.outputs.match }}
 
