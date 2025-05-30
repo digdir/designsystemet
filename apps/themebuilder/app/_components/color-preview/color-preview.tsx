@@ -28,13 +28,6 @@ export const ColorPreview = () => {
       <HorizontalCard color={color} />
     );
 
-  const handleViewChange = (value: string) => setView(value as ViewType);
-
-  const panelClassName = cl(
-    'panelRight',
-    view === 'grid' ? classes.grid : classes.list,
-  );
-
   const allColors = [...colors.main, ...colors.neutral, ...colors.support];
 
   return (
@@ -58,14 +51,19 @@ export const ColorPreview = () => {
           <ToggleGroup
             data-size='sm'
             defaultValue={DEFAULT_VIEW}
-            onChange={handleViewChange}
+            onChange={(value: string) => setView(value as ViewType)}
           >
             <ToggleGroup.Item value='grid'>Grid</ToggleGroup.Item>
             <ToggleGroup.Item value='list'>Liste</ToggleGroup.Item>
           </ToggleGroup>
         </div>
       </div>
-      <div className={panelClassName}>
+      <div
+        className={cl(
+          'panelRight',
+          view === 'grid' ? classes.grid : classes.list,
+        )}
+      >
         {allColors.map((color, index) => (
           <CardWrapper key={`${color.name}-${index}`} color={color} />
         ))}
