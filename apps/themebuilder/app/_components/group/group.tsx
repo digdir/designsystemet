@@ -19,7 +19,6 @@ type GroupProps = {
   header: string;
   colorNames: ColorNames[];
   colorScale: ThemeInfo;
-  showColorMeta?: boolean;
   names?: string[];
   namespace: string;
 };
@@ -27,7 +26,6 @@ type GroupProps = {
 export const Group = ({
   header,
   colorNames,
-  showColorMeta,
   names,
   colorScale,
   namespace,
@@ -61,7 +59,6 @@ export const Group = ({
                 <ColorPreview
                   color={hex}
                   colorName={colorName}
-                  showColorMeta={showColorMeta}
                   aria-label={`Se mer om ${namespace} ${color?.displayName}`}
                   onClick={() => openColorModal(color, namespace)}
                 />

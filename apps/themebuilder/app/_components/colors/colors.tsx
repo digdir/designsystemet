@@ -26,7 +26,6 @@ const MainColors = () => {
           <Scale
             colorScale={color.colors}
             showHeader={index === 0}
-            showColorMeta={false}
             namespace={color.name}
           />
         </div>
@@ -42,11 +41,7 @@ const NeutralColor = () => {
       {colors.map((color, index) => (
         <div key={index} className={classes.row}>
           <div className={classes.scaleLabel}>{color.name}</div>
-          <Scale
-            colorScale={color.colors}
-            showColorMeta={false}
-            namespace={color.name}
-          />
+          <Scale colorScale={color.colors} namespace={color.name} />
         </div>
       ))}
     </div>
@@ -61,11 +56,7 @@ const SupportColors = () => {
       {colors.map((color, index) => (
         <div key={index} className={classes.row}>
           <div className={classes.scaleLabel}>{color.name}</div>
-          <Scale
-            colorScale={color.colors}
-            showColorMeta={false}
-            namespace={color.name}
-          />
+          <Scale colorScale={color.colors} namespace={color.name} />
         </div>
       ))}
     </div>
