@@ -1,6 +1,7 @@
 import { Heading } from '@digdir/designsystemet-react';
 import { RRLink } from '@internal/rr-components/src/link';
 import { ChevronLeftIcon } from '@navikt/aksel-icons';
+import { useRouteLoaderData } from 'react-router';
 import { useThemeStore } from '~/store';
 import classes from './theme-header.module.css';
 
@@ -13,13 +14,14 @@ const tabs: {
 ];
 
 export const ThemeHeader = () => {
+  const { lang } = useRouteLoaderData('root');
   const themeTab = useThemeStore((state) => state.themeTab);
   const setThemeTab = useThemeStore((state) => state.setThemeTab);
 
   return (
     <div className={classes.header}>
       <div className={classes.textContainer}>
-        <RRLink data-size='sm' className={classes.backLink} to='/'>
+        <RRLink data-size='sm' className={classes.backLink} to={`/${lang}/`}>
           <ChevronLeftIcon aria-hidden fontSize='1.5rem' />
           Gå tilbake til forsiden
         </RRLink>

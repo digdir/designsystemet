@@ -26,7 +26,7 @@ type HeaderProps = {
   themeSwitcher?: boolean;
   transparentBackground?: boolean;
   logoLink?: string;
-};
+} & React.HTMLAttributes<HTMLElement>;
 
 /**
  * Detect if any items have wrapped to a new line
@@ -61,6 +61,8 @@ const Header = ({
   themeSwitcher = false,
   transparentBackground = false,
   logoLink = '/',
+  className,
+  ...props
 }: HeaderProps) => {
   const { pathname } = useLocation();
   const { t } = useTranslation();
@@ -118,8 +120,10 @@ const Header = ({
         classes.header,
         isHamburger && classes.hamburger,
         transparentBackground && classes.transparentHeader,
+        className,
       )}
       ref={headerRef}
+      {...props}
     >
       <div className={classes.container}>
         <div className={classes.logoContainer}>
@@ -251,10 +255,14 @@ const Header = ({
             </Tooltip>
             <Dropdown open={langOpen} onClose={() => setLangOpen(false)}>
               <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
-                <Link to={langPaths.no}>Norsk</Link>
+                <Link to={langPaths.no} lang='no'>
+                  Norsk
+                </Link>
               </Dropdown.Button>
               <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
-                <Link to={langPaths.en}>English</Link>
+                <Link to={langPaths.en} lang='en'>
+                  English
+                </Link>
               </Dropdown.Button>
             </Dropdown>
           </Dropdown.TriggerContext>

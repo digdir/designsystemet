@@ -21,6 +21,17 @@ export default {
     'contact-us': 'Kom i kontakt med oss',
     copyright: 'Designsystemet',
   },
+  header: {
+    'home-link': 'Designsystem forside',
+    menu: 'Meny',
+    'github-title': 'Designsystemets GitHub-repositorium',
+    'figma-title': 'Designsystemets Figma-prosjekt',
+    'theme-toggle': 'Bytt til {{theme}} modus',
+    'theme-toggle-aria': 'Bytt til {{theme}} modus',
+    light: 'lys',
+    dark: 'mørk',
+    'language-toggle': 'Bytt språk',
+  },
   errors: {
     default: {
       title: 'Oops!',

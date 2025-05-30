@@ -53,6 +53,12 @@
   border-radius: 0 0 8px 8px;
 }
 
+.error {
+  color: var(--ds-color-danger-text-default);
+  font-size: 14px;
+  font-weight: 500;
+}
+
 .separator {
   margin-bottom: 20px;
   height: 1px;

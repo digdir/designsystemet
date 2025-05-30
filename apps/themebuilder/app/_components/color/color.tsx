@@ -10,11 +10,10 @@ type ColorProps = {
   colorName: ColorNames;
   color: string;
   featured?: boolean;
-  showColorMeta?: boolean;
 } & Omit<React.HTMLAttributes<HTMLButtonElement>, 'color'>;
 
 export const Color = forwardRef<HTMLButtonElement, ColorProps>(
-  ({ color, featured, showColorMeta = true, ...rest }, ref) => {
+  ({ color, featured, ...rest }, ref) => {
     return (
       <>
         <Slottable>

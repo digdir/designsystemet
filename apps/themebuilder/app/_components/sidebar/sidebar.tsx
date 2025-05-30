@@ -27,14 +27,17 @@ export const Sidebar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setSticky(window.scrollY > 135);
+      const shouldBeSticky = window.scrollY > 135;
+      if (isSticky !== shouldBeSticky) {
+        setSticky(shouldBeSticky);
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [isSticky]);
 
   return (
     <>
@@ -51,7 +54,7 @@ export const Sidebar = () => {
           }}
           aria-label='Toggle sidebar'
         >
-          <CogIcon title='tannhjul' fontSize='1.5rem' />
+          <CogIcon aria-hidden fontSize='1.5rem' />
         </button>
         <div
           className={cl(

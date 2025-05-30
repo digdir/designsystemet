@@ -69,6 +69,12 @@
   gap: 4px;
 }
 
+.contact__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .snippet code {
   background-color: transparent;
   display: block;
@@ -96,6 +102,10 @@
 
 .trigger {
   width: 100%;
+}
+
+.modal {
+  max-width: 1000px;
 }
 
 .step {

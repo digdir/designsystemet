@@ -6,9 +6,9 @@ import {
   generateColorSchemes,
 } from '@digdir/designsystemet';
 import { ToggleGroup } from '@digdir/designsystemet-react';
-import { generateColorVars } from '~/utils/generateColorVars';
+import { generateColorVars } from '~/_utils/generate-color-vars';
 import { OverviewComponents } from '../overview-components/overview-components';
-import classes from './Previews.module.css';
+import classes from './previews.module.css';
 
 const themes: {
   [key: string]: {

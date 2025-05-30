@@ -39,25 +39,27 @@ export const ColorPane = ({
   const mainColors = useThemeStore((state) => state.colors.main);
   const [colorError, setColorError] = useState('');
 
-  const getHeading = () => {
-    const t = colorType === 'main' ? 'hovedfarge' : 'støttefarge';
-    return type === 'add-color' ? 'Legg til ' + t : 'Rediger farge';
-  };
+  const headingText = (() => {
+    const colorTypeText = colorType === 'main' ? 'hovedfarge' : 'støttefarge';
+    return type === 'add-color' ? `Legg til ${colorTypeText}` : 'Rediger farge';
+  })();
 
   const checkNameIsValid = () => {
     if (colorType === 'neutral') return true;
 
-    if (name === '') {
+    if (!name?.trim()) {
       setColorError('Navnet på fargen kan ikke være tomt');
       return false;
     }
 
-    if (RESERVED_COLORS.includes(name.toLowerCase())) {
+    const nameLower = name.toLowerCase();
+    if (RESERVED_COLORS.includes(nameLower)) {
       setColorError(
         'Navnet på fargen kan ikke være det samme som våre systemfarger',
       );
       return false;
     }
+
     setColorError('');
     return true;
   };
@@ -76,7 +78,6 @@ export const ColorPane = ({
           data-size='sm'
           variant='tertiary'
           onClick={() => {
-            /* Check here as well to disable sending new color */
             if (!checkNameIsValid()) return;
             closeTab();
           }}
@@ -111,10 +112,10 @@ export const ColorPane = ({
         >
           Fjern farge
           <TrashIcon title='søppelkasse' fontSize='1.5rem' />
-        </Button>
+        </Button>{' '}
       </div>
       <Heading data-size='xs' className={classes.title}>
-        {getHeading()}
+        {headingText}
       </Heading>
       {colorType === 'neutral' && (
         <Paragraph data-size='sm' className={classes.desc}>
@@ -145,7 +146,7 @@ export const ColorPane = ({
         <div
           style={{ backgroundColor: color.hex }}
           className={classes.colorPreview}
-        ></div>
+        />
       </div>
       <ColorPicker
         hideAlpha

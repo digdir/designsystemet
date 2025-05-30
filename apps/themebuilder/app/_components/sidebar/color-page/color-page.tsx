@@ -17,20 +17,20 @@ export const ColorPage = () => {
   const addColor = useThemeStore((state) => state.addColor);
   const updateColor = useThemeStore((state) => state.updateColor);
   const colors = useThemeStore((state) => state.colors);
+
   const [activePanel, setActivePanel] = useState<Pages>('none');
   const [color, setColor] = useColor('#0062ba');
   const [name, setName] = useState('');
   const [index, setIndex] = useState(0);
   const [colorType, setColorType] = useState<ColorType>('main');
   const [initialColor, setInitialColor] = useState('#0062ba');
-  const [initialName, setInitialName] = useState(name);
+  const [initialName, setInitialName] = useState('');
 
   const updateExistingColor = (color: string, name: string, index: number) => {
-    updateColor(
-      { name, colors: generateColorSchemes(color as CssColor) },
-      index,
-      colorType,
-    );
+    if (index >= 0 && color && name) {
+      const colorSchemes = generateColorSchemes(color as CssColor);
+      updateColor({ name, colors: colorSchemes }, index, colorType);
+    }
   };
 
   const setupEditState = (
@@ -38,12 +38,13 @@ export const ColorPage = () => {
     index: number,
     colorType: ColorType,
   ) => {
+    const hexColor = colorTheme.colors.light[11].hex;
     setActivePanel('edit-color');
-    setColor(ColorService.convert('hex', colorTheme.colors.light[11].hex));
+    setColor(ColorService.convert('hex', hexColor));
     setName(colorTheme.name);
     setIndex(index);
     setColorType(colorType);
-    setInitialColor(colorTheme.colors.light[11].hex);
+    setInitialColor(hexColor);
     setInitialName(colorTheme.name);
   };
 
@@ -54,24 +55,22 @@ export const ColorPage = () => {
   };
 
   const setupNewColorState = (colorType: ColorType) => {
-    const newColorName = colorType + '-color-' + (colors[colorType].length + 1);
+    const colorCount = colors[colorType].length;
+    const newColorName = `${colorType}-color-${colorCount + 1}`;
+    const defaultHex = '#0062ba';
+    const colorSchemes = generateColorSchemes(defaultHex);
+
     setActivePanel('add-color');
-    setIndex(colors[colorType].length);
+    setIndex(colorCount);
     setColorType(colorType);
-    setColor(ColorService.convert('hex', '#0062ba'));
+    setColor(ColorService.convert('hex', defaultHex));
     setName(newColorName);
-    addColor(
-      {
-        name: newColorName,
-        colors: generateColorSchemes('#0062ba'),
-      },
-      colorType,
-    );
+
+    addColor({ name: newColorName, colors: colorSchemes }, colorType);
   };
 
   return (
     <div>
-      {/* MAIN COLORS */}
       {activePanel === 'none' && (
         <>
           <div className={classes.group}>
@@ -118,7 +117,6 @@ export const ColorPage = () => {
             </div>
           </div>
 
-          {/* SUPPORT COLORS */}
           <div className={classes.group}>
             <div className={classes.groupHeader}>
               <Heading data-size='2xs'>Support</Heading>

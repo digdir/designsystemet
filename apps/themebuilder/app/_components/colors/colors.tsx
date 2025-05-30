@@ -4,40 +4,59 @@ import { Scale } from '../scale/scale';
 import classes from './colors.module.css';
 
 export const Colors = () => {
-  const colors = useThemeStore((state) => state.colors);
   return (
     <div className={classes.rows}>
-      {colors.main.map((color, index) => (
+      <MainColors />
+      <Divider />
+      <NeutralColor />
+      <Divider />
+      <SupportColors />
+    </div>
+  );
+};
+
+const MainColors = () => {
+  const colors = useThemeStore((state) => state.colors.main);
+
+  return (
+    <div className={classes.rows}>
+      {colors.map((color, index) => (
         <div key={index} className={classes.row}>
           <div className={classes.scaleLabel}>{color.name}</div>
           <Scale
             colorScale={color.colors}
             showHeader={index === 0}
-            showColorMeta={false}
             namespace={color.name}
           />
         </div>
       ))}
-      <Divider />
-      {colors.neutral.map((color, index) => (
+    </div>
+  );
+};
+const NeutralColor = () => {
+  const colors = useThemeStore((state) => state.colors.neutral);
+
+  return (
+    <div className={classes.rows}>
+      {colors.map((color, index) => (
         <div key={index} className={classes.row}>
           <div className={classes.scaleLabel}>{color.name}</div>
-          <Scale
-            colorScale={color.colors}
-            namespace={color.name}
-            showColorMeta={false}
-          />
+          <Scale colorScale={color.colors} namespace={color.name} />
         </div>
       ))}
-      <Divider />
-      {colors.support.map((color, index) => (
+    </div>
+  );
+};
+
+const SupportColors = () => {
+  const colors = useThemeStore((state) => state.colors.support);
+
+  return (
+    <div className={classes.rows}>
+      {colors.map((color, index) => (
         <div key={index} className={classes.row}>
           <div className={classes.scaleLabel}>{color.name}</div>
-          <Scale
-            colorScale={color.colors}
-            namespace={color.name}
-            showColorMeta={false}
-          />
+          <Scale colorScale={color.colors} namespace={color.name} />
         </div>
       ))}
     </div>

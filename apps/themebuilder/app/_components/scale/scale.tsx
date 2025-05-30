@@ -7,16 +7,10 @@ import classes from './scale.module.css';
 type ScaleProps = {
   colorScale: ThemeInfo;
   showHeader?: boolean;
-  showColorMeta?: boolean;
   namespace: string;
 };
 
-export const Scale = ({
-  colorScale,
-  showHeader,
-  showColorMeta,
-  namespace,
-}: ScaleProps) => {
+export const Scale = ({ colorScale, showHeader, namespace }: ScaleProps) => {
   return (
     <div className={classes.themes}>
       <RovingFocusRoot activeValue={namespace + '1'} asChild>
@@ -25,7 +19,6 @@ export const Scale = ({
             header={showHeader ? 'Background' : ''}
             colorNames={['background-default', 'background-tinted']}
             colorScale={colorScale}
-            showColorMeta={showColorMeta}
             names={['Default', 'Tinted']}
             namespace={namespace}
           />
@@ -38,12 +31,10 @@ export const Scale = ({
               'surface-active',
             ]}
             colorScale={colorScale}
-            showColorMeta={showColorMeta}
             names={['Default', 'Tinted', 'Hover', 'Active']}
             namespace={namespace}
           />
           <Group
-            showColorMeta={showColorMeta}
             header={showHeader ? 'Border' : ''}
             colorNames={['border-subtle', 'border-default', 'border-strong']}
             colorScale={colorScale}
@@ -51,7 +42,6 @@ export const Scale = ({
             namespace={namespace}
           />
           <Group
-            showColorMeta={showColorMeta}
             header={showHeader ? 'Text' : ''}
             colorNames={['text-subtle', 'text-default']}
             colorScale={colorScale}
@@ -59,7 +49,6 @@ export const Scale = ({
             namespace={namespace}
           />
           <Group
-            showColorMeta={showColorMeta}
             header={showHeader ? 'Base' : ''}
             colorNames={[
               'base-default',

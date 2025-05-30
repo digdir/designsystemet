@@ -56,7 +56,12 @@ export default function RootLayout() {
   return (
     <>
       <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
-      <Header menu={menu} logoLink={`/${lang}`} themeSwitcher />
+      <Header
+        menu={menu}
+        logoLink={`/${lang}`}
+        themeSwitcher
+        transparentBackground
+      />
       <main id='main'>
         <Outlet />
       </main>
