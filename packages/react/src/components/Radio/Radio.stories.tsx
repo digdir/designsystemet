@@ -1,15 +1,7 @@
-import { FloppydiskIcon, PencilIcon } from '@navikt/aksel-icons';
+import {} from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { useState } from 'react';
-import {
-  Button,
-  Divider,
-  Fieldset,
-  Paragraph,
-  Radio,
-  ValidationMessage,
-} from '../..';
-import { type UseRadioGroupProps, useRadioGroup } from '../../utilities';
+import { Fieldset, Radio, ValidationMessage } from '../..';
+import type { UseRadioGroupProps } from '../../utilities';
 
 export default {
   title: 'Komponenter/Radio',
@@ -86,42 +78,6 @@ export const WithError: StoryFn<UseRadioGroupProps> = () => {
   );
 };
 
-export const Controlled: StoryFn<UseRadioGroupProps> = (args) => {
-  const { value, setValue, getRadioProps } = useRadioGroup({
-    ...args,
-  });
-
-  return (
-    <>
-      <Fieldset>
-        <Fieldset.Legend>Velg pizza</Fieldset.Legend>
-        <Fieldset.Description>
-          Alle pizzaene er laget på våre egne nybakte bunner og serveres med
-          kokkens egen osteblanding og tomatsaus.
-        </Fieldset.Description>
-        <Radio label='Bare ost' {...getRadioProps('ost')} />
-        <Radio
-          label='Dobbeldekker'
-          description='Chorizo spesial med kokkens luksuskylling'
-          {...getRadioProps('dobbeldekker')}
-        />
-        <Radio label='Flammen' {...getRadioProps('flammen')} />
-        <Radio label='Snadder' {...getRadioProps('snadder')} />
-      </Fieldset>
-
-      <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
-
-      <Paragraph style={{ marginBlock: 'var(--ds-size-2)' }}>
-        Du har valgt: {value}
-      </Paragraph>
-      <div style={{ display: 'flex', gap: '1rem' }}>
-        <Button onClick={() => setValue('flammen')}>Velg Flammen</Button>
-        <Button onClick={() => setValue('snadder')}>Velg Snadder</Button>
-      </div>
-    </>
-  );
-};
-
 export const ReadOnly: StoryFn<UseRadioGroupProps> = () => {
   return (
     <Fieldset>
@@ -149,40 +105,3 @@ export const Inline: StoryFn<typeof Fieldset> = () => (
     </div>
   </Fieldset>
 );
-
-export const Conditional: StoryFn<UseRadioGroupProps> = (args) => {
-  const { getRadioProps, validationMessageProps, value } = useRadioGroup({
-    name: 'kommunikasjonskanal',
-    ...args,
-  });
-  const [open, setOpen] = useState(false);
-
-  return (
-    <>
-      Din kommunikasjonskanal: {value}
-      {open ? (
-        <>
-          <Button onClick={() => setOpen(false)}>
-            <FloppydiskIcon aria-hidden /> Lagre
-          </Button>
-          <Fieldset>
-            <Fieldset.Legend>
-              Hvordan vil du helst at vi skal kontakte deg?
-            </Fieldset.Legend>
-            <Fieldset.Description>
-              Velg alle alternativene som er relevante for deg.
-            </Fieldset.Description>
-            <Radio label='E-post' {...getRadioProps('epost')} />
-            <Radio label='Telefon' {...getRadioProps('telefon')} />
-            <Radio label='SMS' {...getRadioProps('sms')} />
-            <ValidationMessage {...validationMessageProps} />
-          </Fieldset>
-        </>
-      ) : (
-        <Button onClick={() => setOpen(true)} variant='secondary'>
-          <PencilIcon aria-hidden /> Rediger
-        </Button>
-      )}
-    </>
-  );
-};

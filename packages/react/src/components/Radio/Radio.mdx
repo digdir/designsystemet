@@ -2,7 +2,6 @@ import { Meta, Canvas, Controls, Primary, ArgTypes } from '@storybook/blocks';
 import { CssVariables } from '@doc-components';
 import css from '@digdir/designsystemet-css/input.css?inline';
 import * as RadioStories from './Radio.stories';
-import * as useRadioGroupStories from '../../utilities/hooks/useRadioGroup/useRadioGroup.stories';
 
 <Meta of={RadioStories} />
 
@@ -48,12 +47,6 @@ Bruk `error` på `Fieldset` for å vise feilmelding.
 Her må vi bruke `Fieldset`, fordi den aktiverer riktig stil og sørger for at innholdet har de riktige attributtene for tilgjengelighet.
 
 <Canvas of={RadioStories.WithError} />
-
-### Kontrollert
-
-Bruk `value` på `Fieldset` for å kontrollere verdiene selv.
-
-<Canvas of={RadioStories.Controlled} />
 
 ### Readonly
 

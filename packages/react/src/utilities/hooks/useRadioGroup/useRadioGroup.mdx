@@ -1,27 +1,18 @@
-import { Meta, ArgTypes } from '@storybook/blocks';
+import { Meta, ArgTypes, Canvas, Controls, Primary } from '@storybook/blocks';
 import * as useRadioGroupStories from './useRadioGroup.stories';
 
 <Meta of={useRadioGroupStories} />
 
 # useRadioGroup
 
-Til `useRadioGroup` kan du sende inn:
+En react-hook for å lettere håndtere en gruppe med `Radio`.
 
-<ArgTypes of={useRadioGroupStories.UseRadioGroup} />
+<Primary />
+<Controls />
 
-I respons får du objektet:
 
-```ts
-{
-  getRadioProps: (value: string | RadioProps) => RadioProps, // Returnerer props du kan spre på <Radio /> eller <input type="radio" />
-  validationMessageProps: ValidationMessageProps, // Props du valgfritt spre på ValidationMessage for å koble feilmelding til radio gruppen
-  setValue: string, // Funksjon for å sette radio gruppens verdi
-  value: string, // Nåværende verdi for radio gruppen
-}
-```
-
-Eksempel på bruk:
-
+## Bruk
+Under er et enkelt eksempel på hvordan du bruker `useRadioGroup`-hooken for å håndtere en radio gruppe.
 ```tsx
 const { getRadioProps, validationMessageProps } = useRadioGroup({
   name: 'my-radio-group',
@@ -42,3 +33,21 @@ return (
   </Fieldset>
 );
 ```
+<br />
+I respons får du objektet:
+
+```ts
+{
+  getRadioProps: (value: string | RadioProps) => RadioProps, // Returnerer props du kan spre på <Radio /> eller <input type="radio" />
+  validationMessageProps: ValidationMessageProps, // Props du valgfritt spre på ValidationMessage for å koble feilmelding til radio gruppen
+  setValue: string, // Funksjon for å sette radio gruppens verdi
+  value: string, // Nåværende verdi for radio gruppen
+}
+```
+
+## Eksempler
+
+### Kontrollert
+Hooken gir den `value` og `setValue` for å kontrollere verdien av radio gruppen.
+
+<Canvas of={useRadioGroupStories.Controlled} />
