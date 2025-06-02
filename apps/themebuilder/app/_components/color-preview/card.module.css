@@ -1,0 +1,22 @@
+.card {
+  flex-direction: row !important;
+  gap: 24px;
+  justify-content: space-between;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+.title {
+  width: 140px;
+}
+
+.checkGroup {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}

@@ -18,11 +18,11 @@ import {
   type TableProps,
   TableRow,
 } from '@digdir/designsystemet-react';
+import { CodeBlock } from '@internal/rr-components';
 import { getMDXComponent } from 'mdx-bundler/dist/client';
 import { type JSX, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link as RRLink } from 'react-router';
-import { CodeBlock } from '~/_components/code-block/code-block';
 import { ColorInfoTable } from '~/_components/color-info-table/color-info-table';
 import { Contributors } from '~/_components/contributors/contributors';
 import { Image } from '~/_components/image/image';
