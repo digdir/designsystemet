@@ -61,7 +61,7 @@ export const Preview: Story = {
   render: (args) => {
     if (args.role !== 'switch') args.role = undefined; // Ensure we only keep switch role in storybook
 
-    return <Input {...args} />;
+    return <Input {...args} aria-label='input' />;
   },
 };
 export const HtmlSize: Story = {
