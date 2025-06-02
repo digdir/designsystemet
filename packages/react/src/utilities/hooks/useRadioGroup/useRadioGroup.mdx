@@ -1,9 +1,44 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, ArgTypes } from '@storybook/blocks';
 import * as useRadioGroupStories from './useRadioGroup.stories';
 
 <Meta of={useRadioGroupStories} />
 
 # useRadioGroup
 
-Information coming.
-See Radio in the meantime.
+Til `useRadioGroup` kan du sende inn:
+
+<ArgTypes of={useRadioGroupStories.UseRadioGroup} />
+
+I respons får du objektet:
+
+```ts
+{
+  getRadioProps: (value: string | RadioProps) => RadioProps, // Returnerer props du kan spre på <Radio /> eller <input type="radio" />
+  validationMessageProps: ValidationMessageProps, // Props du valgfritt spre på ValidationMessage for å koble feilmelding til radio gruppen
+  setValue: string, // Funksjon for å sette radio gruppens verdi
+  value: string, // Nåværende verdi for radio gruppen
+}
+```
+
+Eksempel på bruk:
+
+```tsx
+const { getRadioProps, validationMessageProps } = useRadioGroup({
+  name: 'my-radio-group',
+  value: 'sjokolade',
+  error: 'Du må velge et alternativ',
+});
+
+return (
+  <Fieldset>
+    <Fieldset.Legend>Hvilken iskremsmak er best?</Fieldset.Legend>
+    <Fieldset.Description>
+      Velg din favorittsmak blant alternativene.
+    </Fieldset.Description>
+    <Radio label='Vanilje' {...getRadioProps('vanilje')} />
+    <Radio label='Jordbær' {...getRadioProps('jordbær')} />
+    <Radio label='Sjokolade' {...getRadioProps('sjokolade')} />
+    <ValidationMessage {...validationMessageProps} />
+  </Fieldset>
+);
+```

@@ -23,6 +23,7 @@ export const Preview: StoryObj<typeof Radio> = {
     disabled: false,
     readOnly: false,
     value: 'value',
+    name: 'name',
   },
 };
 
@@ -33,48 +34,56 @@ export const AriaLabel: StoryObj<typeof Radio> = {
   },
 };
 
-export const Group: StoryFn<UseRadioGroupProps> = (args) => {
-  const { getRadioProps, validationMessageProps } = useRadioGroup({
-    ...args,
-  });
-
+export const Group: StoryFn<UseRadioGroupProps> = () => {
   return (
     <Fieldset>
       <Fieldset.Legend>Hvilken iskremsmak er best?</Fieldset.Legend>
       <Fieldset.Description>
         Velg din favorittsmak blant alternativene.
       </Fieldset.Description>
-      <Radio label='Vanilje' {...getRadioProps('vanilje')} />
+      <Radio label='Vanilje' value='vanilje' name='icecream' />
       <Radio
         label='Jordbær'
         description='Jordbær er best'
-        {...getRadioProps('jordbær')}
+        value='jordbær'
+        name='icecream'
       />
-      <Radio label='Sjokolade' {...getRadioProps('sjokolade')} />
+      <Radio label='Sjokolade' value='sjokolade' name='icecream' />
       <Radio
         label='Jeg spiser ikke iskrem'
-        {...getRadioProps('spiser-ikke-is')}
+        value='spiser-ikke-is'
+        name='icecream'
       />
-      <ValidationMessage {...validationMessageProps} />
     </Fieldset>
   );
 };
 
-Group.args = {
-  name: 'my-group',
-  readOnly: false,
-  disabled: false,
-  value: 'sjokolade',
-};
-
-export const WithError = {
-  args: {
-    ...Group.args,
-    error: 'Du må velge jordbær fordi det smaker best',
-    name: 'my-error',
-    value: 'sjokolade',
-  },
-  render: Group,
+export const WithError: StoryFn<UseRadioGroupProps> = () => {
+  return (
+    <Fieldset>
+      <Fieldset.Legend>Hvilken bydel bor du i?</Fieldset.Legend>
+      <Fieldset.Description>
+        Trondheim er delt inn i fire bydeler
+      </Fieldset.Description>
+      <Radio label='Østbyen' value='ostbyen' name='city' aria-invalid='true' />
+      <Radio
+        label='Lerkendal'
+        value='lerkendal'
+        name='city'
+        aria-invalid='true'
+      />
+      <Radio label='Heimdal' value='heimdal' name='city' aria-invalid='true' />
+      <Radio
+        label='Midtbyen'
+        value='midtbyen'
+        name='city'
+        aria-invalid='true'
+      />
+      <ValidationMessage data-color='danger'>
+        Du må velge en bydel før du kan fortsette.
+      </ValidationMessage>
+    </Fieldset>
+  );
 };
 
 export const Controlled: StoryFn<UseRadioGroupProps> = (args) => {
@@ -113,17 +122,19 @@ export const Controlled: StoryFn<UseRadioGroupProps> = (args) => {
   );
 };
 
-export const ReadOnly = {
-  args: { ...Group.args, readOnly: true, name: 'my-readonly' },
-  render: Group,
-};
-
-export const Disabled: StoryObj = {
-  args: { ...Group.args, disabled: true, name: 'my-disabled' },
-  render: Group,
-  parameters: {
-    a11y: { config: { rules: [{ id: 'color-contrast', enabled: false }] } },
-  },
+export const ReadOnly: StoryFn<UseRadioGroupProps> = () => {
+  return (
+    <Fieldset>
+      <Fieldset.Legend>Hvilken bydel bor du i?</Fieldset.Legend>
+      <Fieldset.Description>
+        Trondheim er delt inn i fire bydeler
+      </Fieldset.Description>
+      <Radio label='Østbyen' value='ostbyen' name='city' readOnly />
+      <Radio label='Lerkendal' value='lerkendal' name='city' readOnly />
+      <Radio label='Heimdal' value='heimdal' name='city' readOnly checked />
+      <Radio label='Midtbyen' value='midtbyen' name='city' readOnly />
+    </Fieldset>
+  );
 };
 
 export const Inline: StoryFn<typeof Fieldset> = () => (
