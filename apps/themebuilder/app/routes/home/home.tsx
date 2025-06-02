@@ -3,27 +3,41 @@ import { ContentContainer } from '@internal/rr-components';
 import { BookIcon, PaletteIcon } from '@navikt/aksel-icons';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useSearchParams } from 'react-router';
+import { Link } from 'react-router';
 import { Previews } from '~/_components/previews/previews';
+import { generateMetadata } from '~/_utils/metadata';
+import i18n from '~/i18next.server';
 import type { Route } from './+types/home';
 import classes from './home.module.css';
 
+export const loader = async ({ params: { lang } }: Route.ComponentProps) => {
+  const t = await i18n.getFixedT(lang);
+
+  return {
+    lang,
+    metadata: generateMetadata({
+      title: t('home.title'),
+      description: t('home.description'),
+    }),
+  };
+};
+
+export const meta: Route.MetaFunction = ({
+  data: { metadata },
+}: Route.MetaArgs) => {
+  return metadata;
+};
+
 export default function Home({ params: { lang } }: Route.ComponentProps) {
-  const [searchParams] = useSearchParams();
-  const params = new URLSearchParams(searchParams);
   const { t } = useTranslation();
 
   useEffect(() => {
-    // Sticky Menu Area
     window.addEventListener('scroll', isSticky);
     return () => {
       window.removeEventListener('scroll', isSticky);
     };
   }, []);
 
-  /**
-   * Check if the header should be sticky
-   */
   const isSticky = () => {
     const header = document.querySelector('.pickers');
     const scrollTop = window.scrollY;
@@ -33,14 +47,6 @@ export default function Home({ params: { lang } }: Route.ComponentProps) {
         : header.classList.remove('is-sticky');
     }
   };
-
-  /* get theme from query on initial load */
-  useEffect(() => {
-    const borderRadius = params.get('borderRadius') as string;
-    if (typeof borderRadius === 'string') {
-    }
-  }, []);
-
   return (
     <div>
       <main className={classes.main} id='main'>

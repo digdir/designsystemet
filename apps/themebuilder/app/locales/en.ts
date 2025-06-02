@@ -53,9 +53,9 @@ export default {
   accessibility: {
     'skip-link': 'Skip to main content',
   },
-  meta: {
-    title: 'Designsystemet',
-    description: 'A digital toolbox',
+  home: {
+    title: 'Theme Builder',
+    description: 'Build your own theme with Design System',
   },
   themeBuilder: {
     title: 'Theme Builder',

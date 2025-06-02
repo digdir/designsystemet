@@ -51,8 +51,8 @@ export default {
     'skip-link': 'Hopp til hovedinnhold',
   },
   meta: {
-    title: 'Designsystemet',
-    description: 'En digital verktøykasse',
+    title: 'Temabygger',
+    description: 'Bygg ditt eget tema med Designsystemet',
   },
   themeBuilder: {
     title: 'Temabygger',
