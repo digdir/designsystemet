@@ -7,7 +7,13 @@ import {
   Tag,
   Textfield,
 } from '@digdir/designsystemet-react';
-import { forwardRef } from 'react';
+import { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
+import {
+  generateColorVars,
+  generateNeutralColorVars,
+} from '~/_utils/generate-color-vars';
+import { useThemeStore } from '~/store';
 import classes from './overview-components.module.css';
 import { SettingsCard } from './settings-card/settings-card';
 import { TableCard } from './table-card/table-card';
@@ -30,84 +36,173 @@ const users = [
   },
 ];
 
-export const OverviewComponents = forwardRef<HTMLDivElement>(
-  function OverviewComponents(_, ref) {
-    return (
-      <div className={classes.container} ref={ref}>
-        <div className={classes.inner}>
-          <div className={classes.card}>
-            <Heading data-size='2xs'>Logg inn i portalen</Heading>
-            <Textfield placeholder='Ola Normann' label='Navn' data-size='sm' />
-            <Textfield placeholder='********' label='Passord' data-size='sm' />
-            <Link href='#' data-size='sm'>
-              Glemt passord?
-            </Link>
+export const OverviewComponents = () => {
+  const { t } = useTranslation();
+  const colors = useThemeStore((state) => state.colors);
+  const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
+  const colorScheme = useThemeStore((state) => state.colorScheme);
 
-            <Button data-size='sm' className={classes.btn}>
-              Logg inn
-            </Button>
-          </div>
-          <div
-            className={classes.card}
-            style={{
-              flexGrow: 1,
-            }}
-          >
-            <TableCard />
-          </div>
-          <div className={classes.card} data-size='sm'>
-            <SettingsCard />
-          </div>
-          <div className={classes.card}>
-            <img className={classes.img} src='/img/city.jpg' alt='' />
-            <div className={classes.imgText}>
-              <div className={classes.tags} data-size='sm'>
-                <Tag data-color='brand1'>Sport</Tag>
-                <Tag data-color='brand2'>Nyheter</Tag>
-                <Tag data-color='brand3'>Innenriks</Tag>
-              </div>
-              <Heading data-size='2xs' className={classes.imgTitle}>
-                Reiste alene til storbyen
-              </Heading>
-              <Paragraph data-size='sm' className={classes.imgDesc}>
-                Mona kvist ville finne drømmen i New York City
-              </Paragraph>
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // we need to set these properties on the preview element because they are immutable on :root
+    for (const key in borderRadiuses) {
+      const borderRadius = borderRadiuses[key as keyof typeof borderRadiuses];
+
+      if (ref.current) {
+        ref.current.style.setProperty(
+          borderRadius.variable,
+          borderRadius.value,
+        );
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.style.setProperty(
+        '--ds-border-radius-base',
+        `${baseBorderRadius / 16}rem`,
+      );
+    }
+  }, [baseBorderRadius]);
+
+  const style = () => {
+    if (!colors) return {};
+
+    const vars = {} as Record<string, string>;
+
+    /* neutral */
+    Object.assign(
+      vars,
+      generateNeutralColorVars(colors.neutral[0].colors, colorScheme),
+    );
+    /* get -ds-color-* vars */
+    Object.assign(vars, generateColorVars(colors.main[0].colors, colorScheme));
+
+    return vars;
+  };
+
+  return (
+    <div ref={ref} style={style()}>
+      <div className={classes.inner}>
+        <div className={classes.card}>
+          <Heading data-size='2xs'>{t('overview.login-title')}</Heading>
+          <Textfield
+            placeholder='Ola Normann'
+            label={t('overview.name')}
+            data-size='sm'
+          />
+          <Textfield
+            placeholder='********'
+            label={t('overview.password')}
+            data-size='sm'
+          />
+          <Link href='#' data-size='sm'>
+            {t('overview.forgot-password')}
+          </Link>
+
+          <Button data-size='sm' className={classes.btn}>
+            {t('overview.login')}
+          </Button>
+        </div>
+        <div
+          className={classes.card}
+          style={{
+            flexGrow: 1,
+          }}
+        >
+          <TableCard />
+        </div>
+        <div className={classes.card} data-size='sm'>
+          <SettingsCard />
+        </div>
+        <div className={classes.card}>
+          <img className={classes.img} src='/img/city.jpg' alt='' />
+          <div className={classes.imgText}>
+            <div className={classes.tags} data-size='sm'>
+              <Tag data-color='brand1'>{t('overview.sports')}</Tag>
+              <Tag data-color='brand2'>{t('overview.news')}</Tag>
+              <Tag data-color='brand3'>{t('overview.domestic')}</Tag>
             </div>
-          </div>
-          <div className={classes.card} style={{ flexGrow: 1 }}>
-            <Heading data-size='xs' level={3}>
-              Folk du kanskje kjenner
+            <Heading data-size='2xs' className={classes.imgTitle}>
+              {t('overview.news-title')}
             </Heading>
-            <div className={classes.users}>
-              {users.map((user) => {
-                return (
-                  <div className={classes.user} key={user.role}>
-                    <Avatar
-                      aria-label={user.name}
-                      variant='square'
-                      className={classes.avatar}
-                    >
-                      <img src={user.avatar} alt='' />
-                    </Avatar>
-                    <div className={classes.userText}>
-                      <div className={classes.userRole}>{user.role}</div>
-                      <div>{user.name}</div>
-                    </div>
-                    <Button
-                      data-size='sm'
-                      variant='secondary'
-                      style={{ marginLeft: 'auto' }}
-                      aria-label={`Følg ${user.name}`}
-                    >
-                      Følg
-                    </Button>
+            <Paragraph data-size='sm' className={classes.imgDesc}>
+              {t('overview.news-description')}
+            </Paragraph>
+          </div>
+        </div>
+        <div className={classes.card} style={{ flexGrow: 1 }}>
+          <Heading data-size='xs' level={3}>
+            {t('overview.people-you-may-know')}
+          </Heading>
+          <div className={classes.users}>
+            {users.map((user) => {
+              return (
+                <div className={classes.user} key={user.role}>
+                  <Avatar
+                    aria-label={user.name}
+                    variant='square'
+                    className={classes.avatar}
+                  >
+                    <img src={user.avatar} alt='' />
+                  </Avatar>
+                  <div className={classes.userText}>
+                    <div className={classes.userRole}>{user.role}</div>
+                    <div>{user.name}</div>
                   </div>
-                );
-              })}
-            </div>
+                  <Button
+                    data-size='sm'
+                    variant='secondary'
+                    style={{ marginLeft: 'auto' }}
+                    aria-label={`${t('overview.follow')} ${user.name}`}
+                  >
+                    {t('overview.follow')}
+                  </Button>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
-    );
+    </div>
+  );
+};
+
+// TODO get this token data from @digdir/designsystemet (use json from --preview or something)
+const borderRadiuses = {
+  sm: {
+    name: 'sm',
+    value:
+      'min(var(--ds-border-radius-base)*0.5,var(--ds-border-radius-scale))',
+    variable: '--ds-border-radius-sm',
   },
-);
+  md: {
+    name: 'md',
+    value: 'min(var(--ds-border-radius-base),var(--ds-border-radius-scale)*2)',
+    variable: '--ds-border-radius-md',
+  },
+  lg: {
+    name: 'lg',
+    value:
+      'min(var(--ds-border-radius-base)*2,var(--ds-border-radius-scale)*5)',
+    variable: '--ds-border-radius-lg',
+  },
+  xl: {
+    name: 'xl',
+    value:
+      'min(var(--ds-border-radius-base)*3,var(--ds-border-radius-scale)*7)',
+    variable: '--ds-border-radius-xl',
+  },
+  default: {
+    name: 'default',
+    value: 'var(--ds-border-radius-base)',
+    variable: '--ds-border-radius-default',
+  },
+  full: {
+    name: 'full',
+    value: '624.9375rem',
+    variable: '--ds-border-radius-full',
+  },
+};

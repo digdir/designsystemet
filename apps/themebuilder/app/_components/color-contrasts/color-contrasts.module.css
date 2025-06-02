@@ -45,7 +45,6 @@
 }
 
 .tag {
-  background-color: #d23e3e;
   color: white;
   border-radius: 400px;
   font-size: 13px;
@@ -67,6 +66,10 @@
 .AA18 {
   background-color: #fbb025;
   color: black;
+}
+
+.DECO {
+  background-color: #d23e3e;
 }
 
 .meta {

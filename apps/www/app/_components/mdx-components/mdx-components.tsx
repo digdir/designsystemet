@@ -10,7 +10,13 @@ import {
   Paragraph,
   type ParagraphProps,
   Table,
+  TableBody,
+  TableCell,
+  TableFoot,
+  TableHead,
+  TableHeaderCell,
   type TableProps,
+  TableRow,
 } from '@digdir/designsystemet-react';
 import { CodeBlock } from '@internal/rr-components';
 import { getMDXComponent } from 'mdx-bundler/dist/client';
@@ -31,6 +37,17 @@ const defaultComponents = {
   DetailsContent,
   DetailsSummary,
   Card,
+  Table: (props: TableProps) => (
+    <div className={classes.tableWrapper}>
+      <Table {...props} />
+    </div>
+  ),
+  TableHead,
+  TableRow,
+  TableHeaderCell,
+  TableBody,
+  TableFoot,
+  TableCell,
   h1: (props: JSX.IntrinsicElements['h1']) => (
     <Heading className={classes.heading} level={1} data-size='xl' {...props} />
   ),
@@ -79,7 +96,9 @@ const defaultComponents = {
     );
   },
   table: (props: TableProps) => (
-    <Table data-color='neutral' border zebra {...props} />
+    <div className={classes.tableWrapper}>
+      <Table data-color='neutral' border zebra {...props} />
+    </div>
   ),
 };
 

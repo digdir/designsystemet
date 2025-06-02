@@ -7,6 +7,7 @@ import {
 } from '@digdir/designsystemet-react';
 import { ChevronLeftIcon, TrashIcon } from '@navikt/aksel-icons';
 import { ColorPicker, type IColor } from 'react-color-palette';
+import { useTranslation } from 'react-i18next';
 import { useThemeStore } from '~/store';
 
 import cl from 'clsx/lite';
@@ -36,28 +37,32 @@ export const ColorPane = ({
   onRemove,
   colorType,
 }: ColorPaneProps) => {
+  const { t } = useTranslation();
   const mainColors = useThemeStore((state) => state.colors.main);
   const [colorError, setColorError] = useState('');
-
-  const getHeading = () => {
-    const t = colorType === 'main' ? 'hovedfarge' : 'støttefarge';
-    return type === 'add-color' ? 'Legg til ' + t : 'Rediger farge';
-  };
+  const headingText = (() => {
+    const colorTypeText =
+      colorType === 'main'
+        ? t('colorPane.main-color')
+        : t('colorPane.support-color');
+    return type === 'add-color'
+      ? `${t('colorPane.add')} ${colorTypeText}`
+      : t('colorPane.edit-color');
+  })();
 
   const checkNameIsValid = () => {
     if (colorType === 'neutral') return true;
-
-    if (name === '') {
-      setColorError('Navnet på fargen kan ikke være tomt');
+    if (!name?.trim()) {
+      setColorError(t('colorPane.name-empty-error'));
       return false;
     }
 
-    if (RESERVED_COLORS.includes(name.toLowerCase())) {
-      setColorError(
-        'Navnet på fargen kan ikke være det samme som våre systemfarger',
-      );
+    const nameLower = name.toLowerCase();
+    if (RESERVED_COLORS.includes(nameLower)) {
+      setColorError(t('colorPane.name-reserved-error'));
       return false;
     }
+
     setColorError('');
     return true;
   };
@@ -76,13 +81,13 @@ export const ColorPane = ({
           data-size='sm'
           variant='tertiary'
           onClick={() => {
-            /* Check here as well to disable sending new color */
             if (!checkNameIsValid()) return;
             closeTab();
           }}
           className={classes.back}
         >
-          <ChevronLeftIcon aria-hidden fontSize='1.5rem' /> Lagre
+          <ChevronLeftIcon aria-hidden fontSize='1.5rem' />
+          {t('colorPane.save')}
         </Button>
         <Button
           data-size='sm'
@@ -94,7 +99,7 @@ export const ColorPane = ({
           }}
           className={classes.cancel}
         >
-          Avbryt
+          {t('colorPane.cancel')}
         </Button>
         <Button
           data-size='sm'
@@ -109,23 +114,23 @@ export const ColorPane = ({
             (colorType === 'main' && mainColors.length <= 1)
           }
         >
-          Fjern farge
-          <TrashIcon title='søppelkasse' fontSize='1.5rem' />
+          {t('colorPane.remove-color')}
+          <TrashIcon title='trash' fontSize='1.5rem' />
         </Button>
       </div>
       <Heading data-size='xs' className={classes.title}>
-        {getHeading()}
+        {headingText}
       </Heading>
       {colorType === 'neutral' && (
         <Paragraph data-size='sm' className={classes.desc}>
-          Neutral fargen kan ikke fjernes eller endres navn på.
+          {t('colorPane.neutral-info')}
         </Paragraph>
       )}
       {colorType !== 'neutral' && (
         <Textfield
-          placeholder='Skriv navnet her...'
-          label='Navn'
-          description='Bruk kun bokstavene a-z, tall og bindestrek'
+          placeholder={t('colorPane.name-placeholder')}
+          label={t('colorPane.name')}
+          description={t('colorPane.name-description')}
           className={classes.name}
           data-size='sm'
           value={name}
@@ -140,12 +145,12 @@ export const ColorPane = ({
           error={colorError}
         />
       )}
-      <div className={classes.label}>Farge</div>
+      <div className={classes.label}>{t('colorPane.color')}</div>
       <div className={classes.colorPreviewContainer}>
         <div
           style={{ backgroundColor: color.hex }}
           className={classes.colorPreview}
-        ></div>
+        />
       </div>
       <ColorPicker
         hideAlpha

@@ -6,6 +6,7 @@ import {
   Select,
   Table,
 } from '@digdir/designsystemet-react';
+import { useTranslation } from 'react-i18next';
 import classes from './table-card.module.css';
 const tableData = [
   {
@@ -29,24 +30,34 @@ const tableData = [
 ];
 
 export const TableCard = () => {
+  const { t } = useTranslation();
   return (
     <>
-      <Heading data-size='2xs'>Alle brukere</Heading>
+      <Heading data-size='2xs'>{t('overview.all-users')}</Heading>
       <div className={classes.toolbar}>
         <div className={classes.toolbarLeft}>
-          <Select data-size='sm' aria-label='Velg handling'>
-            <Select.Option value='blank'>Velg handling</Select.Option>
-            <Select.Option value='everest'>Dupliser</Select.Option>
-            <Select.Option value='aconcagua'>Slett</Select.Option>
-            <Select.Option value='denali'>Oppdater</Select.Option>
+          <Select data-size='sm' aria-label={t('overview.select-action')}>
+            <Select.Option value='blank'>
+              {t('overview.select-action')}
+            </Select.Option>
+            <Select.Option value='everest'>
+              {t('overview.duplicate')}
+            </Select.Option>
+            <Select.Option value='aconcagua'>
+              {t('overview.delete')}
+            </Select.Option>
+            <Select.Option value='denali'>{t('overview.update')}</Select.Option>
           </Select>
           <Button data-size='sm' className={classes.submitBtn}>
-            Utfør
+            {t('overview.execute')}
           </Button>
         </div>
         <div className={classes.toolbarRight}>
           <Search data-size='sm'>
-            <Search.Input aria-label='Søk' placeholder='Søk etter bruker' />
+            <Search.Input
+              aria-label={t('overview.search')}
+              placeholder={t('overview.search-user')}
+            />
             <Search.Clear />
           </Search>
         </div>
@@ -56,15 +67,16 @@ export const TableCard = () => {
           overflowX: 'auto',
         }}
       >
+        {' '}
         <Table data-size='sm' border data-color='neutral'>
           <Table.Head>
             <Table.Row>
               <Table.HeaderCell onClick={function Ya() {}} sort='none'>
-                Navn
+                {t('overview.name')}
               </Table.HeaderCell>
-              <Table.HeaderCell>Epost</Table.HeaderCell>
+              <Table.HeaderCell>{t('overview.email')}</Table.HeaderCell>
               <Table.HeaderCell onClick={function Ya() {}} sort='none'>
-                Telefon
+                {t('overview.phone')}
               </Table.HeaderCell>
             </Table.Row>
           </Table.Head>
