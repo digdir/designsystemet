@@ -53,7 +53,7 @@ export default {
   accessibility: {
     'skip-link': 'Skip to main content',
   },
-  home: {
+  meta: {
     title: 'Theme Builder',
     description: 'Build your own theme with Design System',
   },
