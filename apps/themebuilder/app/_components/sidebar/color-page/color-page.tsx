@@ -4,6 +4,7 @@ import type { CssColor } from '@digdir/designsystemet/color';
 import { PlusIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
 import { ColorService, useColor } from 'react-color-palette';
+import { useTranslation } from 'react-i18next';
 import { type ColorTheme, useThemeStore } from '~/store';
 import { ColorInput } from '../../color-input/color-input';
 import { ColorPane } from '../color-pane/color-pane';
@@ -13,24 +14,26 @@ export const ColorPage = () => {
   type Pages = 'add-color' | 'edit-color' | 'none';
   type ColorType = 'main' | 'neutral' | 'support';
 
+  const { t } = useTranslation();
+
   const removeColor = useThemeStore((state) => state.removeColor);
   const addColor = useThemeStore((state) => state.addColor);
   const updateColor = useThemeStore((state) => state.updateColor);
   const colors = useThemeStore((state) => state.colors);
+
   const [activePanel, setActivePanel] = useState<Pages>('none');
   const [color, setColor] = useColor('#0062ba');
   const [name, setName] = useState('');
   const [index, setIndex] = useState(0);
   const [colorType, setColorType] = useState<ColorType>('main');
   const [initialColor, setInitialColor] = useState('#0062ba');
-  const [initialName, setInitialName] = useState(name);
+  const [initialName, setInitialName] = useState('');
 
   const updateExistingColor = (color: string, name: string, index: number) => {
-    updateColor(
-      { name, colors: generateColorSchemes(color as CssColor) },
-      index,
-      colorType,
-    );
+    if (index >= 0 && color && name) {
+      const colorSchemes = generateColorSchemes(color as CssColor);
+      updateColor({ name, colors: colorSchemes }, index, colorType);
+    }
   };
 
   const setupEditState = (
@@ -38,12 +41,13 @@ export const ColorPage = () => {
     index: number,
     colorType: ColorType,
   ) => {
+    const hexColor = colorTheme.colors.light[11].hex;
     setActivePanel('edit-color');
-    setColor(ColorService.convert('hex', colorTheme.colors.light[11].hex));
+    setColor(ColorService.convert('hex', hexColor));
     setName(colorTheme.name);
     setIndex(index);
     setColorType(colorType);
-    setInitialColor(colorTheme.colors.light[11].hex);
+    setInitialColor(hexColor);
     setInitialName(colorTheme.name);
   };
 
@@ -54,24 +58,22 @@ export const ColorPage = () => {
   };
 
   const setupNewColorState = (colorType: ColorType) => {
-    const newColorName = colorType + '-color-' + (colors[colorType].length + 1);
+    const colorCount = colors[colorType].length;
+    const newColorName = `${colorType}-color-${colorCount + 1}`;
+    const defaultHex = '#0062ba';
+    const colorSchemes = generateColorSchemes(defaultHex);
+
     setActivePanel('add-color');
-    setIndex(colors[colorType].length);
+    setIndex(colorCount);
     setColorType(colorType);
-    setColor(ColorService.convert('hex', '#0062ba'));
+    setColor(ColorService.convert('hex', defaultHex));
     setName(newColorName);
-    addColor(
-      {
-        name: newColorName,
-        colors: generateColorSchemes('#0062ba'),
-      },
-      colorType,
-    );
+
+    addColor({ name: newColorName, colors: colorSchemes }, colorType);
   };
 
   return (
     <div>
-      {/* MAIN COLORS */}
       {activePanel === 'none' && (
         <>
           <div className={classes.group}>
@@ -83,14 +85,14 @@ export const ColorPage = () => {
                   data-size='sm'
                   className={classes.AddBtn}
                   onClick={() => setupNewColorState('main')}
-                  aria-label='Legg til hovedfarge'
+                  aria-label={`${t('colorPane.add')} ${t('colorPane.main-color')}`}
                 >
-                  Legg til farge
+                  {t('colorPane.add')} {t('themeModal.color')}
                   <PlusIcon aria-hidden fontSize='1.5rem' />
                 </Button>
-              )}
+              )}{' '}
               {colors.main.length >= 40 && (
-                <div className={classes.error}>Maks 4 hovedfarger</div>
+                <div className={classes.error}>Maximum 4 main colours</div>
               )}
             </div>
             <div className={classes.colors}>
@@ -118,7 +120,6 @@ export const ColorPage = () => {
             </div>
           </div>
 
-          {/* SUPPORT COLORS */}
           <div className={classes.group}>
             <div className={classes.groupHeader}>
               <Heading data-size='2xs'>Support</Heading>
@@ -128,14 +129,14 @@ export const ColorPage = () => {
                   data-size='sm'
                   className={classes.AddBtn}
                   onClick={() => setupNewColorState('support')}
-                  aria-label='Legg til støttefarge'
+                  aria-label={`${t('colorPane.add')} ${t('colorPane.support-color')}`}
                 >
-                  Legg til farge
+                  {t('colorPane.add')} {t('themeModal.color')}
                   <PlusIcon aria-hidden fontSize='1.5rem' />
                 </Button>
-              )}
+              )}{' '}
               {colors.support.length >= 40 && (
-                <div className={classes.error}>Maks 4 støttefarger</div>
+                <div className={classes.error}>Maximum 4 support colours</div>
               )}
             </div>
             <div className={classes.colors}>
