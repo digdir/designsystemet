@@ -1,10 +1,12 @@
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { MagnifyingGlassIcon, MenuHamburgerIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
+import { useTranslation } from 'react-i18next';
 
 import classes from './Landing.module.css';
 
 export const Landing = () => {
+  const { t } = useTranslation();
   return (
     <div className={classes.page}>
       <div className={classes.header}>
@@ -29,21 +31,21 @@ export const Landing = () => {
           </div>
           <div className={classes.headerMiddle}>
             <div className={classes.menu}>
-              <div className={classes.menuItem}>Temaer</div>
-              <div className={classes.menuItem}>Rapporter</div>
-              <div className={classes.menuItem}>Nyheter</div>
-              <div className={classes.menuItem}>Artikler</div>
-              <div className={classes.menuItem}>Kontakt</div>
+              <div className={classes.menuItem}>{t('themeBuilder.title')}</div>
+              <div className={classes.menuItem}>{t('navigation.blog')}</div>
+              <div className={classes.menuItem}>{t('overview.news')}</div>
+              <div className={classes.menuItem}>{t('overview.articles')}</div>
+              <div className={classes.menuItem}>{t('overview.contact')}</div>
             </div>
           </div>
           <div className={classes.headerRight}>
             <Button variant='tertiary'>
               <MagnifyingGlassIcon aria-hidden fontSize='1.6rem' />
-              Søk
+              {t('overview.search')}
             </Button>
             <Button variant='tertiary'>
               <MenuHamburgerIcon aria-hidden fontSize='1.6rem' />
-              Meny
+              {t('overview.menu')}
             </Button>
           </div>
         </div>
@@ -52,7 +54,7 @@ export const Landing = () => {
       <div className={classes.banner}>
         <div className={classes.container}>
           <div className={classes.bannerLeft}>
-            <div className={classes.bannerSub}>Here is a sub heading</div>
+            <div className={classes.bannerSub}>{t('overview.subheading')}</div>
             <Heading data-size='md' className={classes.bannerTitle}>
               A need explain have out been making it
             </Heading>
@@ -65,7 +67,7 @@ export const Landing = () => {
               been ahead well logbook the accept as effort consideration with
               derived indulged of the all and more soon will you there.
             </Paragraph>
-            <Button>Les mer</Button>
+            <Button>{t('overview.read-more')}</Button>
           </div>
           <div className={classes.bannerRight}>
             <div className={classes.bannerBox}></div>

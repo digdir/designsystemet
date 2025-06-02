@@ -1,30 +1,34 @@
 import { Heading } from '@digdir/designsystemet-react';
 import { RRLink } from '@internal/rr-components/src/link';
 import { ChevronLeftIcon } from '@navikt/aksel-icons';
+import { useTranslation } from 'react-i18next';
+import { useRouteLoaderData } from 'react-router';
 import { useThemeStore } from '~/store';
 import classes from './theme-header.module.css';
 
-const tabs: {
-  name: string;
-  value: 'overview' | 'colorsystem';
-}[] = [
-  { name: 'Oversikt', value: 'overview' },
-  { name: 'Fargesystem', value: 'colorsystem' },
-];
-
 export const ThemeHeader = () => {
+  const { t } = useTranslation();
+  const { lang } = useRouteLoaderData('root');
   const themeTab = useThemeStore((state) => state.themeTab);
   const setThemeTab = useThemeStore((state) => state.setThemeTab);
+
+  const tabs: {
+    name: string;
+    value: 'overview' | 'colorsystem';
+  }[] = [
+    { name: t('tabs.overview'), value: 'overview' },
+    { name: t('tabs.colorsystem'), value: 'colorsystem' },
+  ];
 
   return (
     <div className={classes.header}>
       <div className={classes.textContainer}>
-        <RRLink data-size='sm' className={classes.backLink} to='/'>
+        <RRLink data-size='sm' className={classes.backLink} to={`/${lang}/`}>
           <ChevronLeftIcon aria-hidden fontSize='1.5rem' />
-          Gå tilbake til forsiden
+          {t('header.back-to-home')}
         </RRLink>
         <Heading data-size='md' level={1}>
-          Temabygger
+          {t('themeBuilder.title')}
         </Heading>
       </div>
       {/* Tabs that change between overview and */}

@@ -10,12 +10,14 @@ import {
   useMediaQuery,
 } from '@digdir/designsystemet-react';
 import { CogIcon } from '@navikt/aksel-icons';
+import { useTranslation } from 'react-i18next';
 import { BorderRadiusInput } from '../border-radius-input/border-radius-input';
 import { TokenModal } from '../token-modal/token-modal';
 import { ColorPage } from './color-page/color-page';
 import classes from './sidebar.module.css';
 
 export const Sidebar = () => {
+  const { t } = useTranslation();
   const activePage = useThemeStore((state) => state.activePage);
   const setActivePage = useThemeStore((state) => state.setActivePage);
 
@@ -27,14 +29,17 @@ export const Sidebar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setSticky(window.scrollY > 135);
+      const shouldBeSticky = window.scrollY > 135;
+      if (isSticky !== shouldBeSticky) {
+        setSticky(shouldBeSticky);
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [isSticky]);
 
   return (
     <>
@@ -51,7 +56,7 @@ export const Sidebar = () => {
           }}
           aria-label='Toggle sidebar'
         >
-          <CogIcon title='tannhjul' fontSize='1.5rem' />
+          <CogIcon aria-hidden fontSize='1.5rem' />
         </button>
         <div
           className={cl(
@@ -67,8 +72,8 @@ export const Sidebar = () => {
             }
           >
             <Tabs.List>
-              <Tabs.Tab value='colors'>Farger</Tabs.Tab>
-              <Tabs.Tab value='dimensions'>Dimensjoner</Tabs.Tab>
+              <Tabs.Tab value='colors'>{t('tabs.colors')}</Tabs.Tab>
+              <Tabs.Tab value='dimensions'>{t('tabs.dimensions')}</Tabs.Tab>
             </Tabs.List>
             <div className={classes.tabContent}>
               <Tabs.Panel className={classes.tabPanel} value='colors'>
@@ -94,7 +99,7 @@ export const Sidebar = () => {
           onClose={() => setModalOpen(false)}
         >
           <Dialog.Block>
-            <Heading>Tema</Heading>
+            <Heading>{t('themeBuilder.title')}</Heading>
           </Dialog.Block>
           <Dialog.Block className={classes.tabsWrapper}>
             <Tabs
@@ -104,10 +109,9 @@ export const Sidebar = () => {
               }
             >
               <Tabs.List>
-                <Tabs.Tab value='colors'>Farger</Tabs.Tab>
-                <Tabs.Tab value='dimensions'>Dimensjoner</Tabs.Tab>
+                <Tabs.Tab value='colors'>{t('tabs.colors')}</Tabs.Tab>
+                <Tabs.Tab value='dimensions'>{t('tabs.dimensions')}</Tabs.Tab>
               </Tabs.List>
-
               <Tabs.Panel className={classes.tabPanel} value='colors'>
                 <ColorPage />
               </Tabs.Panel>

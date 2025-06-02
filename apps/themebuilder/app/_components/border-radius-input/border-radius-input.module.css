@@ -33,6 +33,11 @@
   width: 100%;
 }
 
+.text {
+  font-size: 15px;
+  font-weight: 500;
+}
+
 .box:hover {
   background-color: var(--ds-color-neutral-background-tinted);
 }

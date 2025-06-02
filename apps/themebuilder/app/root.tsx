@@ -28,7 +28,7 @@ export const links: Route.LinksFunction = () => {
   ];
 };
 
-export const loader = async ({ params, request }: Route.LoaderArgs) => {
+export const loader = async ({ params }: Route.LoaderArgs) => {
   if (params.lang === undefined) {
     return redirect('/no');
   }
@@ -81,16 +81,11 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     },
   ];
 
-  return data({ lang: params.lang, centerLinks, menu });
-};
-
-export const meta = () => {
-  return [
-    {
-      title: 'Designsystemet',
-    },
-    { description: 'En digital verktøykasse' },
-  ];
+  return data({
+    lang: params.lang,
+    centerLinks,
+    menu,
+  });
 };
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -106,6 +101,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <Meta />
+        <script
+          crossOrigin='anonymous'
+          src='//unpkg.com/react-scan/dist/auto.global.js'
+        />
         <Links />
       </head>
       <body>
