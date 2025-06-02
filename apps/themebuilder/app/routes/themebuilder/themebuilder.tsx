@@ -6,6 +6,27 @@ import { ThemePages } from './_components/theme-pages';
 import { useThemeParams } from './_utils/useThemeParams';
 import classes from './page.module.css';
 import 'react-color-palette/css';
+import { generateMetadata } from '~/_utils/metadata';
+import i18n from '~/i18next.server';
+import type { Route } from './+types/themebuilder';
+
+export const loader = async ({ params: { lang } }: Route.ComponentProps) => {
+  const t = await i18n.getFixedT(lang);
+
+  return {
+    lang,
+    metadata: generateMetadata({
+      title: t('meta.title'),
+      description: t('meta.description'),
+    }),
+  };
+};
+
+export const meta: Route.MetaFunction = ({
+  data: { metadata },
+}: Route.MetaArgs) => {
+  return metadata;
+};
 
 export default function Page() {
   return (

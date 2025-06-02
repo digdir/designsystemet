@@ -28,7 +28,7 @@ export const links: Route.LinksFunction = () => {
   ];
 };
 
-export const loader = async ({ params, request }: Route.LoaderArgs) => {
+export const loader = async ({ params }: Route.LoaderArgs) => {
   if (params.lang === undefined) {
     return redirect('/no');
   }
@@ -81,16 +81,11 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     },
   ];
 
-  return data({ lang: params.lang, centerLinks, menu });
-};
-
-export const meta = () => {
-  return [
-    {
-      title: 'Designsystemet',
-    },
-    { description: 'En digital verktøykasse' },
-  ];
+  return data({
+    lang: params.lang,
+    centerLinks,
+    menu,
+  });
 };
 
 export function Layout({ children }: { children: React.ReactNode }) {

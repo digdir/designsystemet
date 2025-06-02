@@ -4,6 +4,7 @@ import type { CssColor } from '@digdir/designsystemet/color';
 import { PlusIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
 import { ColorService, useColor } from 'react-color-palette';
+import { useTranslation } from 'react-i18next';
 import { type ColorTheme, useThemeStore } from '~/store';
 import { ColorInput } from '../../color-input/color-input';
 import { ColorPane } from '../color-pane/color-pane';
@@ -12,6 +13,8 @@ import classes from './color-page.module.css';
 export const ColorPage = () => {
   type Pages = 'add-color' | 'edit-color' | 'none';
   type ColorType = 'main' | 'neutral' | 'support';
+
+  const { t } = useTranslation();
 
   const removeColor = useThemeStore((state) => state.removeColor);
   const addColor = useThemeStore((state) => state.addColor);
@@ -82,14 +85,14 @@ export const ColorPage = () => {
                   data-size='sm'
                   className={classes.AddBtn}
                   onClick={() => setupNewColorState('main')}
-                  aria-label='Legg til hovedfarge'
+                  aria-label={`${t('colorPane.add')} ${t('colorPane.main-color')}`}
                 >
-                  Legg til farge
+                  {t('colorPane.add')} {t('themeModal.color')}
                   <PlusIcon aria-hidden fontSize='1.5rem' />
                 </Button>
-              )}
+              )}{' '}
               {colors.main.length >= 40 && (
-                <div className={classes.error}>Maks 4 hovedfarger</div>
+                <div className={classes.error}>Maximum 4 main colours</div>
               )}
             </div>
             <div className={classes.colors}>
@@ -126,14 +129,14 @@ export const ColorPage = () => {
                   data-size='sm'
                   className={classes.AddBtn}
                   onClick={() => setupNewColorState('support')}
-                  aria-label='Legg til støttefarge'
+                  aria-label={`${t('colorPane.add')} ${t('colorPane.support-color')}`}
                 >
-                  Legg til farge
+                  {t('colorPane.add')} {t('themeModal.color')}
                   <PlusIcon aria-hidden fontSize='1.5rem' />
                 </Button>
-              )}
+              )}{' '}
               {colors.support.length >= 40 && (
-                <div className={classes.error}>Maks 4 støttefarger</div>
+                <div className={classes.error}>Maximum 4 support colours</div>
               )}
             </div>
             <div className={classes.colors}>
