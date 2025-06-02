@@ -16,8 +16,8 @@ export const loader = async ({ params: { lang } }: Route.ComponentProps) => {
   return {
     lang,
     metadata: generateMetadata({
-      title: t('home.title'),
-      description: t('home.description'),
+      title: t('meta.title'),
+      description: t('meta.description'),
     }),
   };
 };
