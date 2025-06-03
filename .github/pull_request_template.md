@@ -10,5 +10,5 @@
 
 ## Checks
 
-- [ ] I have read the [contribution guidelines]
+- [ ] I have read the [contribution guidelines](https://github.com/digdir/designsystemet/blob/main/CONTRIBUTING.md)
 - [ ] I have added a changeset (if relevant)
