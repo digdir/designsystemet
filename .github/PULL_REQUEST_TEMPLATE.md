@@ -11,4 +11,4 @@
 ## Checks
 
 - [ ] I have read the [contribution guidelines](https://github.com/digdir/designsystemet/blob/main/CONTRIBUTING.md)
-- [ ] I have added a changeset (if relevant)
+- [ ] I have added a changeset (run `pnpm changeset` if relevant)
