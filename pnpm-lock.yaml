@@ -651,6 +651,9 @@ importers:
       '@tanstack/react-virtual':
         specifier: ^3.13.9
         version: 3.13.9(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@u-elements/u-combobox':
+        specifier: ^0.0.11
+        version: 0.0.11
       '@u-elements/u-datalist':
         specifier: ^1.0.6
         version: 1.0.6
