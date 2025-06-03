@@ -104,10 +104,7 @@
       "formatter": { "lineWidth": 120 }
     },
     {
-      "include": [
-        "**/apps/_components/**",
-        "**/apps/theme/**"
-      ],
+      "include": ["**/apps/_components/**", "**/apps/theme/**"],
       "linter": {
         "rules": {
           "a11y": {
