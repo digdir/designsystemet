@@ -69,7 +69,7 @@ export default function Components() {
         <BannerHeading level={1}>{t('components.title')}</BannerHeading>
         <BannerIngress>{t('components.description')}</BannerIngress>
       </Banner>
-      <ContentContainer className={classes.grid}>
+      <ContentContainer className={classes.grid} data-is-main={true}>
         {sortedData.map((component) => (
           <ComponentCard key={component.title} {...component} />
         ))}

@@ -17,6 +17,13 @@ body {
   padding: 0;
 }
 
+/*make each section front page have tinted background */
+[data-color-scheme='light'] {
+  main:has([data-is-main='true']) {
+    background-color: var(--ds-color-neutral-background-tinted);
+  }
+}
+
 #main {
   min-height: 80svh;
 }
