@@ -5,21 +5,19 @@ import * as TextfieldStories from './Textfield.stories';
 
 # Textfield
 
- Textfield er en samensatt komponent for [`input`](/docs/komponenter-input--docs) og [`textarea`](/docs/komponenter-textarea--docs). Du bytter mellom de ved å sette `multiline={true/false}`. `Textfield` har også innebygd `label`, `description`, `validationmessage`, `affix` og `counter`.
-
+  `Textfield` gir brukere muligheten til å skrive fritekst eller tall. 
 
 <Primary />
 <Controls />
 
-## Slik bruker du Textfield
+## Bruk
+`Textfield` bruker [`Field`](/docs/komponenter-field--docs)-komponenten, slik at `Textfield` kan brukes enten som [`input`](/docs/komponenter-input--docs) eller [`textarea`](/docs/komponenter-textarea--docs). Du bytter mellom de ved å sette `multiline={true/false}`. **OBS:** Ikke legg [`Field`](/docs/komponenter-field--docs) rundt `Textfield`, siden den allerede benytter [`Field`](/docs/komponenter-field--docs)-komponenten.
 
 ```tsx
 import { Textfield } from '@digdir/designsystemet-react';
 
 <Textfield label="Navn" />
 ```
-
-**OBS:** `Textfield` bruker [`Field`](/docs/komponenter-field--docs) komponenten internt og bør derfor ikke brukes i en `Field`. 
 ## Eksempler
 
 ### Multiline
@@ -30,13 +28,13 @@ Du endrer til `textarea` ved å sette `multiline` til `true`. Da kan brukerne sk
 
 ### Prefix/Suffix
 
-Prefixer og suffixer er nyttige for å vise enheter, valuta eller annen informasjon som er relevant for feltet. Disse skal **ikke** brukes alene, da skjermlesere ikke leser dem opp. Det er viktig at samme informasjon som vises i prefixet eller suffixet, også inkluderes i ledeteksten.
+Prefixer og suffixer er nyttige for å vise enheter, valuta eller annen informasjon som er relevant for feltet. Disse skal **ikke** brukes uten `label`, da skjermlesere ikke leser dem opp. Det er viktig at samme informasjon som vises i prefixet eller suffixet, også inkluderes i ledeteksten.
 
 <Canvas of={TextfieldStories.Affix} />
 
 ### Antall tegn
 
-Bruk `counter` til å begrense antall tegn brukerne kan skrive i feltet.
+Bruk `counter` til å informere om antall tegn brukerne kan skrive i feltet.
 
 <Canvas of={TextfieldStories.Counter} />
 
@@ -45,8 +43,8 @@ Bruk `counter` til å begrense antall tegn brukerne kan skrive i feltet.
 <Canvas of={TextfieldStories.Controlled} />
 
 
-## Retningslinjer for `Textfield`
-`Input` er egnet til korte tekster/svar. `Textarea` er egnet til mer utfyllende og lengre svar. 
+## Retningslinjer
+`Input` er egnet til korte tekster og svar. `Textarea` er egnet til mer utfyllende og lengre svar. 
 
 ### Unngå plassholdertekster
 
@@ -54,27 +52,28 @@ Plassholdertekster (`placeholder`) forsvinner når brukerne skriver i feltet. De
 
 ### Tilpass bredden på tekstfeltet
 
-Tilpass bredden etter hva brukerne skal skrive inn - kort bredde for telefonnummer og bredere for stedsnavn. Ulik bredde på feltene gjør det lettere å navigere i skjemaer med mange felter.
+Tilpass bredden etter hva brukerne skal skrive inn, kort bredde for telefonnummer og bredere for stedsnavn. Ulik bredde på feltene gjør det lettere å navigere i skjemaer med mange felt.
 
 ### Tillat kopier og lim inn
 
 Brukere som skal fylle ut et tekstområde, trenger ofte å kopiere og lime inn informasjon, så denne funksjonen må ikke deaktiveres. Dette gjør det enkelt for brukerne å fylle inn nødvendige opplysninger uten begrensninger.
 
 ### Inndata
-For å sikre en god brukeropplevelse er det viktig å bruke en kombinasjon av riktig input-type og autocomplete-attributter.
+For å sikre en god brukeropplevelse er det viktig å bruke en kombinasjon av riktig `input`-type og `autocomplete`-attributter. Les mer om [autocomplete på MDN Webdocs](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/autocomplete).
 
 - Tillat variasjoner i hvordan data skrives inn, så lenge informasjonen er forståelig. For eksempel bør telefonnumre kunne inneholde mellomrom, personnumre punktum, og e-postadresser aksepteres selv om de har et mellomrom til slutt.
 - Velg inputtyper som samsvarer med informasjonen du ber om, for eksempel `tel`, `search` eller `email`. Dette gir mobilbrukere et tilpasset tastatur, men vær oppmerksom på at enkelte inputtyper kan aktivere klientsidevalidering. 
-- `autoComplete` brukes i felter som mottar personlig informasjon. Hvis feltet skal be om personopplysninger om en annen person enn brukeren, må du skru `autoComplete` av.
+- `autocomplete` brukes i felter som mottar personlig informasjon. Hvis feltet skal be om personopplysninger om en annen person enn brukeren, må du sette `autocomplete="off"`.
 - Pass på at brukerne ser inndata som formateres automatisk, men uten at det forstyrrer dem mens de fyller ut.
 
-## Tekst i komponenten
+## Tekst
 
-Det skal alltid være ledetekst på `textfield`. I spesielle tilfeller kan vi skjule ledeteksten ved å ikke sende inn `label`. Det kan for eksempel være i tabeller, hvis feltet får ledeteksten fra tabelloverskriften. Selv om vi har tenkt å skjule ledeteksten, må vi alltid skrive en ledetekst som gir mening, siden den leses opp av skjermlesere.
+Det skal alltid være ledetekst på `Textfield`. 
 
-- Hold ledeteksten kort, unngå at den går over to linjer.
-- Unngå å legge til beskrivelse som ikke er relevant eller meningsfull for brukeren.
-- Unngå å bruke kolon etter `label`.
+- Hold ledeteksten kort, unngå at den går over to linjer
+- Unngå å legge til beskrivelse som ikke er relevant eller meningsfull for brukeren
+- Unngå å bruke kolon etter `label`
+
 
 ## Tilgjengelighet
 
