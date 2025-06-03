@@ -3,27 +3,27 @@ import { useContext } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { Chip } from '../Chip';
-import { MultiSuggestionContext } from './MultiSuggestion';
+import { SuggestionContext } from './Suggestion';
 
-export type MultiSuggestionChipsProps = MergeRight<
+export type SuggestionChipsProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDivElement>,
   {
     /**
      * Change the rendered content of the chip.
      *
-     * @default ({ value }) => value
+     * @default ({ text }) => text
      */
     render?: (args: {
-      text: string;
+      label: string;
       value: string;
     }) => ReactNode;
   }
 >;
 
-export const MultiSuggestionChips = ({
-  render = ({ value }) => value,
-}: MultiSuggestionChipsProps) => {
-  const { selectedItems = [] } = useContext(MultiSuggestionContext);
+export const SuggestionChips = ({
+  render = ({ label }) => label,
+}: SuggestionChipsProps) => {
+  const { selectedItems = [] } = useContext(SuggestionContext);
 
   return (
     <>
@@ -36,4 +36,4 @@ export const MultiSuggestionChips = ({
   );
 };
 
-MultiSuggestionChips.displayName = 'MultiSuggestionChips';
+SuggestionChips.displayName = 'SuggestionChips';

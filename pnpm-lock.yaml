@@ -612,8 +612,8 @@ importers:
         specifier: ^3.13.8
         version: 3.13.8(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@u-elements/u-combobox':
-        specifier: ^0.0.9
-        version: 0.0.9
+        specifier: ^0.0.10
+        version: 0.0.10
       '@u-elements/u-datalist':
         specifier: ^1.0.5
         version: 1.0.5
@@ -2562,8 +2562,8 @@ packages:
   '@types/uuid@9.0.8':
     resolution: {integrity: sha512-jg+97EGIcY9AGHJJRaaPVgetKDsrTgbRjQ5Msgjh/DQKEFl0DtyRr/VCOyD1T2R1MNeWPK/u7JoGhlDZnKBAfA==}
 
-  '@u-elements/u-combobox@0.0.9':
-    resolution: {integrity: sha512-91OveCr5KPWBx7BOhaCD/nqDK1nkMrf585/7j88reJUxLCTj6d5uBIjDO/1TdHm+Gkaufi4AXYbOTO30xC4Jxg==}
+  '@u-elements/u-combobox@0.0.10':
+    resolution: {integrity: sha512-3kGYoS4ZEkwEweZjUS9pzyqG3XIPVr5RbDcj8BSAEVaKE6ujJP5E1i0fDinTsAJs64b+4XbKJNmROtIn0gGjKA==}
 
   '@u-elements/u-datalist@1.0.5':
     resolution: {integrity: sha512-PN8OIHB7eRnSQ+nyTc7/x18t3PrTiVT43NxDTxtgfXNbcRU9lfyMXBDtytSwG69pLR1Bjgn6Z62yY7jxTNGAHw==}
@@ -8353,7 +8353,7 @@ snapshots:
 
   '@types/uuid@9.0.8': {}
 
-  '@u-elements/u-combobox@0.0.9': {}
+  '@u-elements/u-combobox@0.0.10': {}
 
   '@u-elements/u-datalist@1.0.5': {}
 
