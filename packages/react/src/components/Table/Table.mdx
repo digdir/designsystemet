@@ -14,7 +14,7 @@ import { TableHeaderCell } from './';
 <Primary />
 <Controls />
 
-## Slik bruker vi Table
+## Bruk
 
 ```jsx
 import { Table } from '@digdir/designsystemet-react';
@@ -42,8 +42,9 @@ import { Table } from '@digdir/designsystemet-react';
   </Table.Body>
 </Table>
 ```
+## Eksempler
 
-## Tabelltekster
+### Tabelltekster
 
 Bruk [`caption`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/caption) til å beskrive en tabell 
 på samme måte som vi ville brukt en overskrift.
@@ -57,13 +58,13 @@ Denne plasseres rett etter `Table`-taggen.
 </Table>
 ```
 
-## Tabelloverskrifter
+### Tabelloverskrifter
 
 Bruk tabelloverskrifter til å fortelle brukerne hva som er innholdet i radene og kolonnene. 
 Bruk [scope-atributtet](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th#scope) til å hjelpe brukere av hjelpeteknologi til å 
 skille mellom overskriftene på rader og kolonner.  
 
-## Tall i en tabell
+### Tall i en tabell
 
 Når det er tall i en tabell som skal sammenlignes, plasser tallene til høyre i tabellfeltet.
 
@@ -105,7 +106,7 @@ Dette hjelper nettleseren til å tegne tabellen raskere, og er nyttig når du ha
 
 <Canvas of={TableStories.WithBorder} />
 
-## Retningslinjer for Table
+## Retningslinjer
 
 Vi bruker `Table` når vi skal organisere og vise data på en strukturert måte i rader og kolonner for brukerne.  
 Alt innhold bør være venstrejustert i tabeller, unntatt tall som bør høyrejusteres for at brukerne lett skal kunne sammenligne tallene. For å spare plass, kan vi bruke en meny, hvis flere handlinger i en tabellrad ikke må være synlig for brukerne hele tiden. I overskiftceller bruker vi `<Table.HeaderCell>`, ikke `<Table.Cell>`. En celle er en overskrift hvis den beskriver 
@@ -119,7 +120,7 @@ innholdet i cellene under eller ved siden av.
 - lage layout for innholdet på nettsiden eller å dele opp innholdet på en side systematisk
 - vise store mengder data på mobil
 
-## Tekst i komponenten
+## Tekst 
 
 Vi bruker overskrifter til å fortelle brukerne hva som er innholdet i radene og kolonnene.
 
