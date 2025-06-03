@@ -185,7 +185,7 @@ export const TokenModal = () => {
                   alternativene på{' '}
                   <Link
                     target='_blank'
-                    href='https://www.designsystemet.no/grunnleggende/for-designere/eget-tema'
+                    href='https://www.designsystemet.no/no/fundamentals/for-designers/own-theme'
                   >
                     eget tema (åpnes i ny fane)
                   </Link>{' '}
