@@ -12,8 +12,9 @@ import type { UHTMLComboboxElement } from '@u-elements/u-combobox';
 import cl from 'clsx/lite';
 import { useMergeRefs } from '../../utilities/hooks';
 
+export type SuggestionValues = Array<string | Partial<Item>> | string;
+
 type Item = { label: string; value: string };
-type Values = Array<string | Partial<Item>> | string;
 type Filter = (args: {
   /**
    * Index of the `option`
@@ -78,11 +79,11 @@ export type SuggestionProps = {
    * The selected items of the multi-select.
    * Using this makes the component controlled and it must be used in combination with onValueChange
    */
-  value?: Values;
+  value?: SuggestionValues;
   /**
    * Default selected items when uncontrolled
    */
-  defaultValue?: Values;
+  defaultValue?: SuggestionValues;
   /**
    * Callback when selected items changes
    */
@@ -96,7 +97,7 @@ export type SuggestionProps = {
 } & HTMLAttributes<UHTMLComboboxElement>;
 
 const text = (el: Element): string => el.textContent?.trim() || '';
-const sanitizeItems = (values: Values = []): Item[] =>
+const sanitizeItems = (values: SuggestionValues = []): Item[] =>
   typeof values === 'string'
     ? [{ label: values, value: values }]
     : values.map((value) =>
@@ -110,7 +111,7 @@ const sanitizeItems = (values: Values = []): Item[] =>
 
 const nextItems = (
   data: HTMLDataElement,
-  prev?: Values,
+  prev?: SuggestionValues,
   multiple?: boolean,
 ) => {
   const item = { label: text(data), value: data.value };

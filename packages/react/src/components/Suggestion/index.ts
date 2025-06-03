@@ -46,7 +46,7 @@ export {
   SuggestionOption as EXPERIMENTAL_SuggestionOption,
   SuggestionClear as EXPERIMENTAL_SuggestionClear,
 };
-export type { SuggestionProps } from './Suggestion';
+export type { SuggestionProps, SuggestionValues } from './Suggestion'; // Export SuggestionValues for easier useState
 export type { SuggestionChipsProps } from './SuggestionChips';
 export type { SuggestionListProps } from './SuggestionList';
 export type { SuggestionInputProps } from './SuggestionInput';

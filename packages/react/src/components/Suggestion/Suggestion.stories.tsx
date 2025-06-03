@@ -1,7 +1,10 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { userEvent, within } from '@storybook/test';
 import { type ChangeEvent, useState } from 'react';
-import { EXPERIMENTAL_Suggestion as Suggestion } from '.';
+import {
+  EXPERIMENTAL_Suggestion as Suggestion,
+  type SuggestionValues,
+} from '.';
 import { Button, Divider, Field, Label, Paragraph, Spinner } from '..';
 import { useDebounceCallback } from '../../utilities';
 
@@ -155,8 +158,7 @@ export const CustomFilterAlt2: StoryFn<typeof Suggestion> = (args) => {
       <Suggestion {...args} filter={false}>
         <Suggestion.Chips />
         <Suggestion.Input
-          value={value}
-          onChange={(event) => setValue(event.target.value)}
+          onInput={({ currentTarget }) => setValue(currentTarget.value)}
         />
         <Suggestion.Clear />
         <Suggestion.List>
@@ -173,7 +175,7 @@ export const CustomFilterAlt2: StoryFn<typeof Suggestion> = (args) => {
 };
 
 export const AlwaysShowAll: StoryFn<typeof Suggestion> = (args) => {
-  const [value, setValue] = useState('Sogndal');
+  const [value, setValue] = useState<SuggestionValues>('Sogndal');
 
   return (
     <Field>
@@ -182,7 +184,7 @@ export const AlwaysShowAll: StoryFn<typeof Suggestion> = (args) => {
         {...args}
         value={value}
         filter={false}
-        onValueChange={([item]) => setValue(item?.value || '')}
+        onValueChange={(values) => setValue(values)}
       >
         <Suggestion.Chips />
         <Suggestion.Input />
