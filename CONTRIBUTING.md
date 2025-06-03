@@ -10,27 +10,6 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 > - Refer this project in your project's readme
 > - Mention the project at local meetups and tell your friends/colleagues
 
-## Table of Contents
-
-- [Contributing to Designsystemet](#contributing-to-designsystemet)
-  - [Table of Contents](#table-of-contents)
-  - [Code of Conduct](#code-of-conduct)
-  - [Share your feedback and report issues](#share-your-feedback-and-report-issues)
-  - [I Want To Contribute](#i-want-to-contribute)
-    - [Getting involved with development](#getting-involved-with-development)
-      - [Addressing minor bugs and handling smaller feature requests](#addressing-minor-bugs-and-handling-smaller-feature-requests)
-      - [Developing new components and handling larger tasks](#developing-new-components-and-handling-larger-tasks)
-    - [Getting started with development](#getting-started-with-development)
-      - [4. Start local development servers](#4-start-local-development-servers)
-    - [Pull requests](#pull-requests)
-  - [Styleguides](#styleguides)
-    - [Commit Messages](#commit-messages)
-      - [Scope](#scope)
-        - [Examples:](#examples)
-      - [When to use what keywords](#when-to-use-what-keywords)
-
----
-
 ## Code of Conduct
 
 This project and everyone participating in it is governed by the
@@ -84,7 +63,7 @@ Developing components for Designsystemet requires that developers are closely co
 
 Follow these steps to get up and running with Storybook or Storefront (designsystemet.no).
 
-Run the commands from the root of your project. Make sure you clone the `next` branch, this is where we do development.
+Run the commands from the root of your project. Make sure you clone the `main` branch, this is where we do development.
 
 `pnpm`
 `pnpm build`
@@ -104,9 +83,19 @@ When creating a pull request for Designsystemet, there are a few things to keep 
   - The pull request title must adhere to the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) standard.
   - We run linting and formatting checks on all the code.
 - When you are done with development you can mark the pull request as ready for review by clicking on the button at the bottom. A person from Designsystemet will then review your code and comment if there are things that need to be changed. Once the pull request is approved it will be merged into the main branch.
-- Make sure the PR is pointing to the `next` branch.
+- Make sure the PR is pointing to the `main` branch.
 
----
+### Changesets
+We use [Changesets](https://github.com/changesets/changesets) to manage versioning and changelogs.
+
+If you makes changes to a packages in `/packages/*`, you should add a changeset to document changes.
+To do this, run the following command in the root of the repository:
+
+```bash
+pnpm changeset
+```
+
+You can read more here: https://github.com/changesets/changesets/blob/main/docs/adding-a-changeset.md
 
 ## Styleguides
 
