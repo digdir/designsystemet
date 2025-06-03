@@ -92,13 +92,13 @@ function makeTokenCommands() {
         configPath,
       });
 
-      if (config?.clean) {
+      if (config.clean) {
         await cleanDir(config.outDir, opts.dry);
       }
       /*
        * Create and write tokens for each theme
        */
-      if (config?.themes) {
+      if (config.themes) {
         for (const [name, themeWithoutName] of Object.entries(config.themes)) {
           // Casting as missing properties should be validated by `getDefaultOrExplicitOption` to default values
           const theme = { name, ...themeWithoutName } as Theme;
