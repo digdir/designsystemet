@@ -13,7 +13,7 @@ import cl from 'clsx/lite';
 import { useMergeRefs } from '../../utilities/hooks';
 
 type Item = { label: string; value: string };
-type Value = string | Partial<Item>;
+type Values = Array<string | Partial<Item>> | string;
 type Filter = (args: {
   /**
    * Index of the `option`
@@ -78,11 +78,11 @@ export type SuggestionProps = {
    * The selected items of the multi-select.
    * Using this makes the component controlled and it must be used in combination with onValueChange
    */
-  value?: Value[];
+  value?: Values;
   /**
    * Default selected items when uncontrolled
    */
-  defaultValue?: Value[];
+  defaultValue?: Values;
   /**
    * Callback when selected items changes
    */
@@ -96,19 +96,21 @@ export type SuggestionProps = {
 } & HTMLAttributes<UHTMLComboboxElement>;
 
 const text = (el: Element): string => el.textContent?.trim() || '';
-const sanitizeItems = (values: Value[] = []): Item[] =>
-  values.map((value) =>
-    typeof value === 'string'
-      ? { label: value, value }
-      : {
-          label: value.label || value.value || '',
-          value: value.value || '',
-        },
-  );
+const sanitizeItems = (values: Values = []): Item[] =>
+  typeof values === 'string'
+    ? [{ label: values, value: values }]
+    : values.map((value) =>
+        typeof value === 'string'
+          ? { label: value, value }
+          : {
+              label: value.label || value.value || '',
+              value: value.value || '',
+            },
+      );
 
 const nextItems = (
   data: HTMLDataElement,
-  prev?: Value[],
+  prev?: Values,
   multiple?: boolean,
 ) => {
   const item = { label: text(data), value: data.value };

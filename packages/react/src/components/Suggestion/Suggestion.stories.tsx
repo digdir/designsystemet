@@ -173,7 +173,7 @@ export const CustomFilterAlt2: StoryFn<typeof Suggestion> = (args) => {
 };
 
 export const AlwaysShowAll: StoryFn<typeof Suggestion> = (args) => {
-  const [value, setValue] = useState(['Sogndal']);
+  const [value, setValue] = useState('Sogndal');
 
   return (
     <Field>
@@ -182,7 +182,7 @@ export const AlwaysShowAll: StoryFn<typeof Suggestion> = (args) => {
         {...args}
         value={value}
         filter={false}
-        onValueChange={(items) => setValue(items.map((item) => item.value))}
+        onValueChange={([item]) => setValue(item?.value || '')}
       >
         <Suggestion.Chips />
         <Suggestion.Input />
