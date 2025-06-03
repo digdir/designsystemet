@@ -3,7 +3,7 @@
   flex-wrap: wrap;
   gap: var(--ds-size-10);
   margin-top: var(--page-spacing-top);
-  margin-bottom: var(--page-spacing-bottom);
+  padding-bottom: var(--page-spacing-bottom);
   flex-direction: unset;
 }
 
