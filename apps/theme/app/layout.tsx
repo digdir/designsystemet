@@ -15,23 +15,23 @@ export const metadata: Metadata = {
 const menu = [
   {
     name: 'Grunnleggende',
-    href: 'https://www.designsystemet.no/grunnleggende',
+    href: 'https://www.designsystemet.no/no/fundamentals',
   },
   {
     name: 'God praksis',
-    href: 'https://www.designsystemet.no/god-praksis',
+    href: 'https://www.designsystemet.no/no/best-practices',
   },
   {
     name: 'Mønstre',
-    href: 'https://www.designsystemet.no/monstre',
+    href: 'https://www.designsystemet.no/no/patterns',
   },
   {
     name: 'Bloggen',
-    href: 'https://www.designsystemet.no/bloggen',
+    href: 'https://www.designsystemet.no/no/blog',
   },
   {
     name: 'Komponenter',
-    href: 'https://www.designsystemet.no/komponenter',
+    href: 'https://www.designsystemet.no/no/components',
   },
   {
     name: 'Temabygger',
@@ -42,11 +42,11 @@ const menu = [
 const centerLinks = [
   {
     text: 'Om designsystemet',
-    url: 'https://designsystemet.no/grunnleggende/introduksjon/om-designsystemet',
+    url: 'designsystemet.no/no/fundamentals/introduction/about-the-design-system',
   },
   {
     text: 'Personvernerklæring',
-    url: 'https://designsystemet.no/grunnleggende/personvernerklaering',
+    url: 'https://designsystemet.no/no/fundamentals/privacy-policy',
   },
   {
     text: 'Tilgjengelighetserklæring',

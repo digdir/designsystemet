@@ -17,7 +17,7 @@ We currently use [changesets](https://github.com/changesets/changesets) and [Cha
 ## 2. Deploy new application version to production
 
 - Manually trigger the github action deployment to `production` environment from `main` branch: 
-  - [Deploy Storefront](https://github.com/digdir/designsystemet/actions/workflows/deploy-storefront.yml)
+  - [Deploy www](https://github.com/digdir/designsystemet/actions/workflows/deploy-www.yml)
   - [Deploy Theme](https://github.com/digdir/designsystemet/actions/workflows/deploy-theme.yml)
   - [Deploy Storybook](https://github.com/digdir/designsystemet/actions/workflows/deploy-storybook.yml)
 

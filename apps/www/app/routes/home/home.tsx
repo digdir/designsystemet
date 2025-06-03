@@ -1,5 +1,6 @@
 import { join } from 'node:path';
 import { Heading } from '@digdir/designsystemet-react';
+import { ContentContainer } from '@internal/rr-components';
 import {
   BranchingIcon,
   ComponentIcon,
@@ -11,7 +12,6 @@ import {
 import { bundleMDX } from 'mdx-bundler';
 import { useTranslation } from 'react-i18next';
 import BlogCard from '~/_components/blog-card/blog-card';
-import { ContentContainer } from '~/_components/content-container/content-container';
 import { ImageBanner } from '~/_components/image-banner/image-banner';
 import { NavigationCard } from '~/_components/navigation-card/navigation-card';
 import { Section } from '~/_components/section/section';
@@ -86,10 +86,15 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   };
 };
 
-export const meta: Route.MetaFunction = ({
-  data: { metadata },
-}: Route.MetaArgs) => {
-  return metadata;
+export const meta: Route.MetaFunction = ({ data }: Route.MetaArgs) => {
+  if (!data) {
+    return [
+      {
+        title: 'Designsystemet',
+      },
+    ];
+  }
+  return data.metadata;
 };
 
 export default function Home({ loaderData: { posts } }: Route.ComponentProps) {

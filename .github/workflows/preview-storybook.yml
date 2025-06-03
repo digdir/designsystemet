@@ -14,6 +14,7 @@ on:
       - 'assets/**'
 jobs:
   Deploy-Preview:
+    if: ${{ github.repository == 'digdir/designsystemet' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -57,13 +58,6 @@ jobs:
       - run: echo ${{ steps.fc.outputs.comment-id }}
         if: success() && env.PR_NUMBER
 
-      - name: Find Storefront deployment
-        uses: actions-ecosystem/action-regex-match@v2
-        id: regex-storefront
-        with:
-          text: ${{ steps.fc.outputs.comment-body }}
-          regex: '\[Storefront\]\((https:\/\/[^)]+)\).*'
-
       - name: Find Theme deployment
         uses: actions-ecosystem/action-regex-match@v2
         id: regex-theme
@@ -95,8 +89,6 @@ jobs:
             **Preview deployments for this pull request:**
 
             [Storybook](https://pr-${{ env.PR_NUMBER }}.storybook.designsystemet.no) - `${{ steps.current-time.outputs.formattedTime }}`
-
-            ${{ steps.regex-storefront.outputs.match }}
 
             ${{ steps.regex-theme.outputs.match }}
 

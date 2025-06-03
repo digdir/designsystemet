@@ -23,6 +23,7 @@ on:
       - 'assets/**'
 jobs:
   deploy:
+    if: ${{ github.repository == 'digdir/designsystemet' }}
     name: Build & deploy to Vercel
     runs-on: ubuntu-latest
 

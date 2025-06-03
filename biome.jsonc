@@ -18,10 +18,10 @@
       ".github/**",
       ".changeset/**",
       "design-tokens/**/*",
-      "apps/storefront/tokens/**",
       "apps/www/app/tokens/**",
       "**/dist/**/*",
       "packages/theme/**/*.css",
+      "./packages/css/src/index.css", // Prevent @charset being formatted with single quotes when quoteStyle="single" is enabled
       "**/tsconfig.*.json", // https://github.com/biomejs/biome/issues/1151
       "**/.react-router/**",
       "**/package.json" // changeset wants the files to be formatted differently
@@ -104,11 +104,7 @@
       "formatter": { "lineWidth": 120 }
     },
     {
-      "include": [
-        "**/apps/_components/**",
-        "**/apps/storefront/**",
-        "**/apps/theme/**"
-      ],
+      "include": ["**/apps/_components/**", "**/apps/theme/**"],
       "linter": {
         "rules": {
           "a11y": {
