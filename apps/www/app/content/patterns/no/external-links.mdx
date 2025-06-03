@@ -1,33 +1,223 @@
 ---
-title: Eksterne lenker
-description: Vi ønsker å finne den beste måten å håndtere navigering. Hvilke forventninger har brukerne til navigering og hva fungerer best i de ulike kontekstene?
-category: Kommende
-date: 2025-01-29
+title: Merking av lenker
+description: Hvordan merke lenker og hvilke språk- og designprinsipper bør vi følge?
+category: Ferdig
+date: 2025-05-12
 ---
 
-## Hvordan markere og bruke eksterne lenker?
-Mønsteret er under arbeid i en tverretatlig arbeidsgruppe våren 2025. Du kan påvirke mønsteret og dele din innsikt på [Github](https://github.com/digdir/designsystemet/discussions/2294). 
+## Innledning
+Lenker er en viktig del av navigasjonen på nett, og måten vi merker dem på påvirker brukeropplevelsen. I denne artikkelen går vi gjennom hvordan vi bør merke lenker og hvilke språk- og designprinsipper vi bør følge. Målet er å skape en mer forutsigbar og tilgjengelig brukeropplevelse.
 
-**Arbeidsgruppen kommer til å se på**
-- Hvordan vi skal markere eksterne lenker. Enten ved bruk av visuelle indikatorer som ikon, tekstbeskrivelse eller andre virkemidler.
-- Hvordan vi sikrer at eksterne lenker er tilgjengelige for alle brukere.
-- Språk - Hvordan skriver vi lenketekstene.
-- Hvordan formidler vi at noe åpnes i ny fane/vindu, og i hvilke tilfeller er det hensiktsmessig.
-- Hvordan markerer vi filer som kan lastes ned.
-- Hvordan markerer vi telefon- og epost-lenker, samt andre lenker som åpner applikasjoner.
+### Eksterne lenker
+Eksterne lenker leder brukeren til en annen nettside. Når en bruker klikker på en ekstern lenke, forlater de det opprinnelige nettstedet og åpner innhold fra en annen aktør eller tjeneste.
 
+Det har variert hvordan  eksterne lenker blir markert på ulike nettsteder. Noen bruker et ikon for å angi at det er en ekstern lenke, mens andre legger til tekst eller åpner lenken i en ny fane. Det at vi ikke praktiserer dette på samme måte kan skape forvirring for brukerne, spesielt når de ikke får tydelig informasjon om hva som skjer når de klikker på en lenke.
+
+For å skape en forutsigbar og god brukeropplevelse bør vi gi brukeren informasjon om:
+
+* Destinasjonen – hvor lenken fører dem.
+* Oppførsel - for eksempel om lenken åpner i ny fane, eller hvis den starter en spesiell handling som telefonsamtale eller e-post.
+
+## Språk
+Lenketeksten skal beskrive formålet med lenken og da er konteksten viktig. I løpende tekst bør lenken være en naturlig del av setningen og gi mening også når den leses isolert. I en liste eller meny kan lenken stå mer fritt, men den må fortsatt være tydelig og gi brukeren en klar idé om hva de kommer til.
+
+* Unngå “gå til” eller “klikk her” i lenketeksten. Det er allerede tydelig at det er en lenke. 
+* Unngå å bruke ordet “lenke” i lenketekster. Du risikerer da at skjermlesere oppgir “lenke” flere ganger.
+* Ikke bruk kun "Les mer" som lenketekst. Ta med konteksten i lenketeksten, for eksempel “Skattemeldingen kan du lese mer om hos Skatteetaten”
+* Bruk så korte lenketekster som mulig. Det kan være vanskelig for folk å lese lange tekster med underlinje, særlig når en lenke bryter over flere linjer.
+* Ikke bruk lenkens adresse (URL) som lenketekst. Det er slitsomt for folk som bruker skjermlesere å få adressen lest opp tegn for tegn.
+* Pass på at du ikke har flere lenker med samme lenketekst på samme side. Det blir vanskelig for folk som bruker skjermleser eller leselist når lenkene blir vist i en egen lenkeliste. Unntaket kan være hvis det er flere lenker som går til samme URL-adresse.
+
+
+<Table>
+  <TableHead>
+    <TableRow>
+      <TableHeaderCell>
+        Dårlige eksempler:
+      </TableHeaderCell>
+      <TableHeaderCell>
+        Gode eksempler:
+      </TableHeaderCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <TableCell>
+        [På arbeidsplassen.no kan du finne flere ledige stillinger som er relevant for deg](https://arbeidsplassen.nav.no/) (unødvendig lang)
+      </TableCell>
+      <TableCell>
+        [Finn ledige stillinger på arbeidsplassen.no](https://arbeidsplassen.nav.no/)
+      </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>
+        [68 05 99 99](tel:68059999) (Mangler formål)
+      </TableCell>
+      <TableCell>
+        [Ring oss på 68 05 99 99](tel:68059999)
+      </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>
+        [Klikk her for å lese mer om saken hos uio.no](https://www.uio.no/studier/bli-student/hvordan-velge/tre-tips.html) (Unngå "klikk her" + "Saken" sier ikke noe om hva det gjelder)
+      </TableCell>
+      <TableCell>
+        [Tre tips til deg som skal velge studier (uio.no)](https://www.uio.no/studier/bli-student/hvordan-velge/tre-tips.html) (Overskrift brukt som lenke)
+      </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>
+        [Rediger](https://github.com/digdir/designsystemet/tree/next/apps/storefront/app/monstre/eksterne-lenker/page.mdx) (sier ingenting om hva som redigeres eller hvor)
+      </TableCell>
+      <TableCell>
+       [Rediger denne siden på github.com](https://github.com/digdir/designsystemet/tree/next/apps/storefront/app/monstre/eksterne-lenker/page.mdx)
+      </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>
+        Les mer om merverdiavgift på: https://www.skatteetaten.no/nn/bedrift-og-organisasjon/avgifter/mva  (unngå url i løpende tekst)
+      </TableCell>
+      <TableCell>
+        [Merverdiavgift (skatteetaten.no)](https://www.skatteetaten.no/nn/bedrift-og-organisasjon/avgifter/mva)
+      </TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+### Lenkeliste i skjermlesere
+
+Skjermlesere lar brukere navigere gjennom en liste over lenker. Derfor må lenketekster gi mening alene, uten ekstra kontekst. Legg det viktigste tidlig i lenketeksten for å gjøre det tydelig hva formålet med lenken er.
+
+<Image
+  src="/img/lenkeliste2.png"
+  alt="Eksempel fra JAWS skjermleser med lenker som er beskrivende"
+  boxShadow={false}
+  dataUnstyled
+  caption='I eksempelet over kommer det tydelig frem hva formålet med lenkene er.'
+
+/>
+
+<Image
+  src="/img/lenkeliste1.png"
+  alt="Eksempel fra JAWS skjermleser med lenker som ikke er beskrivende"
+  boxShadow={false}
+  dataUnstyled
+  caption='Hvor kommer man når man trykker "Vis mer" eller "Lenke til dokument"? Ikke godt å si uten mer kontekst.'
+/>
+
+<Image
+  src="/img/lenkeliste3.png"
+  alt="Eksempel fra JAWS skjermleser med lenker som kun viser Les mer"
+  boxShadow={false}
+  dataUnstyled
+  caption='Se for deg en lenkeliste med artikler der alle har "Les mer". Slik ser det ut i en lenkeliste. Ikke godt å si hvilken artikkel man kommer til.'
+/>
+
+## Design og opplevelse
+
+### Unngå at lenker blir åpnet i ny fane
+
+Vi sikrer en forutsigbar brukeropplevelse når lenker åpnes i samme fane. Da videreføres brukerens egne lenkeinnstillinger i nettleseren. Flere bruker Tilbake-knappen i nettleseren hvis lenken ikke førte dit de trodde, men det fungerer ikke når lenken blir åpnet i ny fane. 
+
+Det finnes likevel noen unntak, der lenken bør åpnes i ny fane:
+
+* Hvis systemet må logge ut brukeren når det navigeres til en annen side, og det er hensiktsmessig å unngå utlogging.
+* Når brukeren er midt i en prosess og risikerer å miste innhold ved å klikke på lenken. Ny fane bør vurderes hvis systemet ikke klarer å lagre brukerens inndata.
+
+For disse unntakene bør vi [unngå bruk av ikon](#unngå-ekstern-lenke-ikon), men heller skrive det som en del av lenketeksten. For eksempel [Søk om støtte hos Nav.no (åpnes i ny fane)](https://nav.no).
+
+Vi anbefaler å skrive “åpnes i ny fane” som en del av lenketeksten. Ikke alle kombinasjoner av nettlesere og skjermlesere gir brukeren beskjed om at lenken blir åpnet i ny fane, selv om lenken inneholder `target="_blank"`.
+
+### Utseende
+UU-tilsynet har informasjon om lovpålagte krav for [utseende på lenker (uutilsynet.no)](https://www.uutilsynet.no/veiledning/lenker/214#utseende). Brukeren må kunne identifisere alle lenker uavhengig av situasjon, evner og innstillinger på utstyret som benyttes. 
+
+### Unngå “ekstern-lenke”-ikon
+Det er etablert et ikon som betyr “ekstern lenke”, men dette ikonet blir ofte forstått som “Åpnes i ny fane”. En miniundersøkelse vi utførte i arbeidet med denne artikkelen viste at selv erfarne designere var usikre på betydningen av ikonet. Halvparten tolket ikonet som “åpnes i ny fane”, mens resten mente det betydde “ekstern lenke”. Dette viser at ikonet i seg selv ikke er entydig, og kan ikke bli brukt som eneste måte å formidle funksjonen på.
+
+
+<Image
+  src="/img/externallinks-icon.png"
+  alt="Eksempel på to ikoner som likner på hverandre."
+  boxShadow={false}
+  dataUnstyled
+  caption="Hvilket ikon er for eksterne lenker og hvilket er for åpne i ny fane?"
+/>
+
+Bruk av ikonet kan i verste fall villede brukeren, spesielt hvis lenken ikke faktisk åpnes i en ny fane. Hvis det primære målet er å indikere at en lenke leder til en ekstern side, er det mer effektivt å kommunisere dette i lenketeksten i stedet for å stole på et ikon alene. 
+
+Hvis lenketekstene blir veldig lange, eller lenkelister gjentar informasjon om eksterne lenker, kan det være fristende å bruke ikoner i stedet. Før du tar dette valget, vurder om bruker faktisk trenger denne ekstra informasjonen.  
+
+Hvis du likevel bruker ikonet, vær oppmerksom på at det kan bli tolket ulikt av forskjellige brukere, siden det blir brukt både for eksterne lenker og åpne i ny fane.
+
+Dersom ikonet inneholder meningsbærende informasjon som ikke kommer frem i lenketeksten, skal dette formidles i ikonets alternativ tekst.
+
+### Hvor fører lenken 
+Det er ikke alltid nødvendig å merke at en lenke er ekstern. Ofte fremgår det tydelig av konteksten. Hvis lenketeksten for eksempel er “Flekkefjord kommune”, vil brukeren naturlig forvente at lenken leder til kommunens nettsider. I slike tilfeller er det unødvendig å legge til ekstra informasjon.
+
+Dersom lenken viser til et spesifikt innhold hos kommunen, som for eksempel informasjon om parkering, kan lenken være "[Parkering i Flekkefjord kommune](https://www.flekkefjord.kommune.no/parkering.504251.no.html)" eller "[Parkering (flekkefjord.kommune.no)](https://www.flekkefjord.kommune.no/parkering.504251.no.html)" Det viktigste er at brukeren ikke blir overrasket over hvor de havner etter å ha klikket.
+
+### Lenke til filer
+
+Gjør det tydelig at lenken peker til en fil:
+
+* Opplys om filtype
+    * skriv filtype som en del av lenketeksten
+    * ikke bruk ikon alene for å vise filtype 
+
+* Gjerne vis filstørrelse som en del av lenketeksten, spesielt hvis filstørrelsen er stor. Det gir brukeren bedre kontroll, siden de da kan vurdere om det passer å laste ned filen nå. For eksempel hvis de bruker mobildata, har dårlig nettforbindelse eller lite lagringsplass.
+
+
+<Image
+  src="/img/nedlasting-lenker.png"
+  alt="Eksempel som viser filer som kan lastes ned med tilhørende dokument-ikon."
+  boxShadow={false}
+  dataUnstyled
+/>
+
+#### Filer som skal lastes ned
+Dersom lenken fører til en fil som skal lastes ned istedenfor å åpnes i nettleseren, bør vi sørge for å ha med attributten `download` med filnavn som indikerer filtype, f.eks. `download="årsrapport.docx"`. 
+
+Vær oppmerksom på at dersom filtypen er av PDF, har de fleste nettlesere innebygd støtte for å vise PDF-filer i en forhåndsvisning, uavhengig av om `download`-attributtet er der eller ikke. Dette er også avhengig av brukerens innstillinger i nettleseren.
+
+<Card
+  data-color='brand3'
+  variant="tinted"
+  data-unstyled
+>
+  Merk: Vi ønsker å undersøke nærmere hvordan vi bør kommunisere nedlasting av filer eller eksterne dokumenter, siden vi ikke kan garantere oppførselen. Det er en pågående diskusjon om dette på Git: [Can we actually know if a file will open in a new tab?](https://github.com/digdir/designsystemet/discussions/3587)
+</Card>
+
+
+## Relevante kilder
+- [WCAG 2.1: 2.4.4 formål med lenke (i kontekst) (A)](https://www.w3.org/Translations/WCAG21-no/#link-purpose-in-context) 
+- [WCAG 2.1: 2.4.9 Formål med lenke (bare lenke) (AAA)](https://www.w3.org/Translations/WCAG21-no/#link-purpose-link-only) 
+- [WCAG 2.1: 3.2.5 Endring på anmodning (AAA)](https://www.w3.org/Translations/WCAG21-no/#change-on-request) 
+- [UU-tilsynet om løsningsforslag for lenker](https://www.uutilsynet.no/veiledning/lenker/214) 
+- [Skjermlesere informerer ikke om at lenker åpnes i ny fane - undersøkelse av Powermapper](https://www.powermapper.com/tests/screen-readers/navigation/a-target-blank/)
+
+<br/>
+
+<Card data-color='brand3' variant="tinted">
+  Retningslinjene er utarbeidet i en tverretatlig arbeidsgruppe med deltakere fra Digdir, Nav, Skatteetaten, Brønnøysundregistrene, Politiet, Entur, KS Digital og Oslo kommune. Du kan påvirke arbeidet i [diskusjonstråden om lenker på Github](https://github.com/digdir/designsystemet/discussions/2294) eller i [#Mønster-kanalen](https://designsystemet.slack.com/archives/C05RBGB92MC/p1712751837722749) på [Slack](https://designsystemet.no/slack).
+</Card>
+
+<br/>
 
 <Contributors
   authors={[
-    'Nav',
-    'Digdir',
-    'Skatteetaten',
-    'Brønnøysundregistrene',
-    'Oslo Origo',
-    'Oslo Kommune',
-    'Entur',
-    'Politiet',
-    'Mattilsynet',
-    'Utdanningsdirektoratet',
+    'Sarah Brodwall (Nav)',
+    'Eivind Løland-Andersen (Skatteetaten)',
+    'Trond Ausland (Skatteetaten)',
+    'Jan Schjetne (Oslo Kommune)',
+    'Stine Rørvik (Oslo Kommune)',
+    'Roy Halvor Frimanslund (Brønnøysundregistrene)',
+    'Linn Kamilla Drågen (Brønnøysundregistrene)',
+    'Øyvind Hjartnes (Entur)',
+    'Chris Lorang (Politiet)',
+    'Lasse Febakke Straum (Digdir)',
+    'Tobias Barsnes (Digdir)',
+    'Marianne Røsvik (Digdir)',
+    'Jan Beniamin Kwiek (UU-tilsynet)',
+    'Stian Morsund (KS Digital)',
   ]}
 />
