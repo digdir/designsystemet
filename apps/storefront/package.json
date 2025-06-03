@@ -20,7 +20,7 @@
     "@mdx-js/react": "^3.1.0",
     "@navikt/aksel-icons": "^7.22.0",
     "@next/mdx": "^15.3.2",
-    "@radix-ui/react-slot": "^1.2.2",
+    "@radix-ui/react-slot": "^1.2.3",
     "@internal/components": "workspace:^",
     "@types/mdx": "^2.0.13",
     "@vercel/analytics": "^1.5.0",
@@ -34,10 +34,10 @@
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.1",
     "style-dictionary": "^4.4.0",
-    "webpack": "^5.99.8"
+    "webpack": "^5.99.9"
   },
   "devDependencies": {
-    "@types/react": "^19.1.4",
+    "@types/react": "^19.1.5",
     "@types/react-dom": "^19.1.5",
     "next-sitemap": "^4.2.3"
   }
