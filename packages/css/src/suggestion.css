@@ -50,12 +50,6 @@
     margin-top: var(--dsc-suggestion-list-gap);
     max-height: 200px;
 
-    &:not(:has(u-option:hover)) > u-option:focus-visible {
-      border-inline-start-color: var(--dsc-suggestion-option-border-color);
-      background: var(--dsc-suggestion-option-background--selected);
-      color: var(--ds-color-text-default);
-    }
-
     /* Hide datalist if no children */
     &:empty {
       display: none;
@@ -86,6 +80,8 @@
           height: var(--dsc-suggestion-option-checkmark-size);
         }
       }
+
+      @composes ds-focus--inset from './base.css';
 
       @media (hover: hover) and (pointer: fine) {
         &:not([data-empty]):hover {
