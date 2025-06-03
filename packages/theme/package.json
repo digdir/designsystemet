@@ -20,7 +20,8 @@
   "files": [
     "brand/**",
     "*.css",
-    "configs/**"
+    "configs/**",
+    "src/themes/**"
   ],
   "publishConfig": {
     "access": "public"
