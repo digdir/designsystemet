@@ -2,6 +2,8 @@
   margin-block: 0; /* Reset native margin, but resepect parent selector `.someting > * { margin: ... }` */
 }
 .ds-paragraph {
+  @composes ds-typography-size-fix from './typography-common.css';
+
   &[data-variant='long'] {
     line-height: var(--ds-line-height-lg);
   }

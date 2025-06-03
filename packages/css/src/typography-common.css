@@ -1,0 +1,24 @@
+.ds-typography-size-fix {
+  /*
+   * Ensure `data-size` directly on typography doesn't affect `--ds-size-*` variables.
+   *
+   * BACKGROUND:
+   * In Figma, typography doesn't use the size variable mode to set their size, but instead
+   * use a size property. Thus, setting e.g. heading size doesn't change the concrete values
+   * of `size.*` variables in Figma
+   *
+   * This is in contrast with the CSS code, which uses `data-size` with an expanded
+   * set of sizes to control the typography size. By default this would also change the
+   * concrete values of `--ds-size-*` variables. Thus, the same variables would result in
+   * different values in Figma and in code.
+   *
+   * SOLUTION:
+   * With the following code, we ensure that using `--ds-size-*` variables for spacing
+   * on typography elements will always refer to the nearest parent `data-size` (or the
+   * default), and not the `data-size` set on the typography element itself, which matches
+   * how the variables work in Figma.
+   */
+  &[data-size] {
+    --_ds-data-size: inherit;
+  }
+}

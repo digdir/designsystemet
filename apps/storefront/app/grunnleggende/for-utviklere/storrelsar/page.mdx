@@ -21,7 +21,7 @@ export default ({ children }) => (
 
 HTML data-attributt vert brukt for å definere størrelse på ein komponent. Komponentane kan nytte alle alle størrelsar.
 
-Våre `size`-variablar (`--ds-size-*`) endrar seg basert på den lokale skriftstørrelsen (formel basert på `em`). Du kan lett endre den ved bruk av `data-size` for våre anbefalte størrelsar, eller definere dine eigne størrelsar ved å setje `font-size` i CSS.
+Våre `size`-variablar (`--ds-size-*`) endrar seg basert på `data-size`, gjennom ein formel basert på `rem`.
 
 ## `data-size`
 
@@ -43,6 +43,26 @@ Alle komponentar kan være i størrelsane, `sm`, `md` eller `lg`. Som standard v
 Nokre komponentar har støtte for fleire størrelsar, som `xs` og `xl`. Desse størrelsane vil bli spesifisert i dokumentasjonen til komponenten,
 og det er anbefalt å bruke dei størrelsane som er spesifisert.
 
+## Korleis size-variablane blir påverka
+
+Våre `size`-variablar (`--ds-size-*`) finst kun i tre variantar: `sm`, `md` og `lg`. Dette er for å passe på at
+variablane oppfører seg likt i kode og Figma, sidan sistnemnte ikkje er like fleksibelt som kode. Dersom ein komponent
+tillater bruk av f.eks. `xs` eller `2xl`, vil `data-size` mindre enn `sm` gi `sm`-variablar, og `data-size` større enn `lg` vil gi `lg`-variablar.
+
+I nokre komponentar blir `--ds-size-*` ikkje påverka av `data-size`-attributt direkte på komponenten,
+men vil bli påverka av næraste forelder med `data-size`. Igjen er dette gjort for å sikre lik oppførsel i kode og Figma. Dette gjeld
+- `Heading`
+- `Paragraph`
+
+```jsx
+<div data-size="sm">
+  {/* --ds-size-8 vil her peike på verdien definert for data-size="sm", ikkje for "2xl" */}
+  <Heading level={2} data-size="2xl" style={{marginTop: "var(--ds-size-8)"}}>Heading</Heading>
+  {/* --ds-size-5 vil her peike på verdien definert for data-size="sm", ikkje for "md" */}
+  <Paragraph data-size="md" style={{marginTop: "var(--ds-size-5)"}}>
+</div>
+```
+
 ## Korleis komponentar blir påverka
 
 Me delar komponentar inn i 2 grupper for størrelsar:
@@ -52,9 +72,9 @@ Me delar komponentar inn i 2 grupper for størrelsar:
 
 ### Eksplisitt
 
-Komponentar som ikkje vil følgje størrelsen til forelderen. Desse komponentane må ha `data-size` satt direkte på seg.
+Komponentar som har ein eigen størrelsesskala, og denne skalaen ikkje blir påverka av ein forelder med `data-size`. Desse komponentane må ha `data-size` satt direkte på seg. Variablane `--ds-size-*` vil likevel bli påverka av forelder med `data-size`.
 
-Dette er komponentar som
+Dette gjeld
 - `Heading`
 
 ### Cascading
