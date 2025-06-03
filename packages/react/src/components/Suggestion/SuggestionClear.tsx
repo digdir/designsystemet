@@ -34,6 +34,7 @@ export const SuggestionClear = forwardRef<
       aria-label={label}
       asChild
       icon
+      hidden
       ref={ref}
       variant='tertiary'
       {...rest}
