@@ -19,7 +19,7 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 
 [Storybook](https://storybook.designsystemet.no/) - Preview for React components.
 
-[Storefront](https://designsystemet.no/) - General documentation.
+[WWW](https://designsystemet.no/) - General documentation.
 
 [Theme](https://theme.designsystemet.no/) - Themebuilder.
 

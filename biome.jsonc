@@ -18,7 +18,6 @@
       ".github/**",
       ".changeset/**",
       "design-tokens/**/*",
-      "apps/storefront/tokens/**",
       "apps/www/app/tokens/**",
       "**/dist/**/*",
       "packages/theme/**/*.css",
@@ -107,7 +106,6 @@
     {
       "include": [
         "**/apps/_components/**",
-        "**/apps/storefront/**",
         "**/apps/theme/**"
       ],
       "linter": {
