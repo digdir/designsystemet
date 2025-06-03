@@ -120,17 +120,23 @@ export const Innrykk: Story = (args) => (
 export const ListeMedLenker: Story = (args) => (
   <List.Unordered {...args} style={{ listStyle: 'none', padding: 0 }}>
     <List.Item>
-      <Link href='https://www.designsystemet.no/grunnleggende' target='_blank'>
+      <Link
+        href='https://www.designsystemet.no/no/fundamentals'
+        target='_blank'
+      >
         Grunnleggende
       </Link>
     </List.Item>
     <List.Item>
-      <Link href='https://www.designsystemet.no/god-praksis' target='_blank'>
+      <Link
+        href='https://www.designsystemet.no/no/best-practices'
+        target='_blank'
+      >
         God praksis
       </Link>
     </List.Item>
     <List.Item>
-      <Link href='https://www.designsystemet.no/monstre' target='_blank'>
+      <Link href='https://www.designsystemet.no/no/patterns' target='_blank'>
         Mønstre
       </Link>
     </List.Item>
@@ -150,7 +156,7 @@ export const ListeMedOverskrift: Story = (args) => (
       <List.Unordered data-size='sm'>
         <List.Item>
           <Link
-            href='https://www.designsystemet.no/grunnleggende'
+            href='https://www.designsystemet.no/no/fundamentals'
             target='_blank'
           >
             Grunnleggende
@@ -158,14 +164,17 @@ export const ListeMedOverskrift: Story = (args) => (
         </List.Item>
         <List.Item>
           <Link
-            href='https://www.designsystemet.no/god-praksis'
+            href='https://www.designsystemet.no/no/best-practices'
             target='_blank'
           >
             God praksis
           </Link>
         </List.Item>
         <List.Item>
-          <Link href='https://www.designsystemet.no/monstre' target='_blank'>
+          <Link
+            href='https://www.designsystemet.no/no/patterns'
+            target='_blank'
+          >
             Mønstre
           </Link>
         </List.Item>
@@ -182,7 +191,7 @@ export const ListeMedOverskrift: Story = (args) => (
       <List.Unordered data-size='md'>
         <List.Item>
           <Link
-            href='https://www.designsystemet.no/grunnleggende'
+            href='https://www.designsystemet.no/no/fundamentals'
             target='_blank'
           >
             Grunnleggende
@@ -190,14 +199,17 @@ export const ListeMedOverskrift: Story = (args) => (
         </List.Item>
         <List.Item>
           <Link
-            href='https://www.designsystemet.no/god-praksis'
+            href='https://www.designsystemet.no/no/best-practices'
             target='_blank'
           >
             God praksis
           </Link>
         </List.Item>
         <List.Item>
-          <Link href='https://www.designsystemet.no/monstre' target='_blank'>
+          <Link
+            href='https://www.designsystemet.no/no/patterns'
+            target='_blank'
+          >
             Mønstre
           </Link>
         </List.Item>
@@ -214,7 +226,7 @@ export const ListeMedOverskrift: Story = (args) => (
       <List.Unordered data-size='lg'>
         <List.Item>
           <Link
-            href='https://www.designsystemet.no/grunnleggende'
+            href='https://www.designsystemet.no/no/fundamentals'
             target='_blank'
           >
             Grunnleggende
@@ -222,14 +234,17 @@ export const ListeMedOverskrift: Story = (args) => (
         </List.Item>
         <List.Item>
           <Link
-            href='https://www.designsystemet.no/god-praksis'
+            href='https://www.designsystemet.no/no/best-practices'
             target='_blank'
           >
             God praksis
           </Link>
         </List.Item>
         <List.Item>
-          <Link href='https://www.designsystemet.no/monstre' target='_blank'>
+          <Link
+            href='https://www.designsystemet.no/no/patterns'
+            target='_blank'
+          >
             Mønstre
           </Link>
         </List.Item>
