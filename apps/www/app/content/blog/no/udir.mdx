@@ -1,0 +1,103 @@
+---
+title: Hvordan Udir bygger videre på Designsystemet
+description: Utdanningsdirektoratet har laget sitt eget designsystem basert på Designsystemet for å sikre helhetlig design, bedre brukeropplevelser og mer effektiv utvikling.
+date: 2025-06-03
+author: Utdanningsdirektoratet
+imageSrc: /img/blog/udir.png
+imageAlt: Illustrasjon av tre personer som peker på digitale flater og skjemaer. 
+imageCaption: Utdanningsdirektoratet  har de siste årene hatt et sterkt fokus på å samle og forbedre den digitale identiteten sin. Med mange ulike systemer, prosjekter og kommunikasjonsflater, oppsto behovet for å samordne design og utvikling på tvers. Løsningen ble å etablere et eget designsystem, bygget på toppen av Designsystemet.
+---
+
+
+## Hvorfor et eget designsystem?
+Utdanningsdirektoratet (Udir) har tidligere hatt flere ulike komponentbibliotek og inkonsekvente designuttrykk i sine tjenester. Det skapte utfordringer både for brukerne og for utviklingsteamene som skulle skape helhetlige opplevelser. Målet med å bygge et eget designsystem var å sikre:
+
+- En tydelig og gjenkjennelig identitet for Udir
+- Brukervennlige og tilgjengelige løsninger
+- Effektiv utvikling på tvers av prosjekter og fagområder
+
+Fordelen med å bygge eget designsystem på toppen av Designsystemet er at du kan gjenbruke den underliggende strukturen og alle de grunnleggende komponentene, samtidig som du kan tilby dine mer unike komponenter som en del av ditt eget designsystem. 
+
+For å få til dette, trengtes et dedikert team. I dag består designteamet av én prosjektleder, én designer, to utviklere og flere støttefunksjoner som systemforvalter, testleder og kommunikasjonsrådgiver.
+
+<br/>
+
+<VideoCard
+  videoUrl="https://vimeo.com/1087983500?share=copy"
+  title="Hvordan Udir bruker Designsystemet"
+  description="I denne filmen forklarer Une Sofie Kinn Ekroll, Tech Lead i designteamet hos Udir, hvordan de har brukt Designsystemet."
+  imageUrl="/img/blog/udir-video-img.png"
+/>
+
+## Et tett samarbeid 
+Oppstarten i juni 2024 kunne ikke vært bedre timet, da var nemlig designsystemet.no i ferd med å modnes. For Udir ble dette starten på et tett og verdifullt samarbeid.
+
+_«Å jobbe med Digdir har egentlig vært en drøm,»_ sier Une. _«Vi har fått en bunnsolid og fleksibel teknisk grunnmur, og vi har fått et større fagmiljø å spille på, både fra Digdir-teamet og fra andre brukere av Designsystemet.»_
+
+Ved å ta utgangspunkt i et felles fundament, kan Udir bidra til fellesskapet, samtidig som vi bygger løsninger som er tilpasset egne behov.
+
+## Gjenbruk og tilpasning
+Udir sitt designsystem består av flere byggesteiner. Vi gjenbruker og tilpasser elementer fra designsystemet.no på en strukturert måte for å kunne tilby et helhetlig og effektivt design- og utviklingssystem internt.
+
+ <Image
+  src='/img/blog/udir-bruk.png'
+  alt='Viser oversikt over hvordan Udir bruker.'
+  boxShadow={false}
+  
+/>
+
+### Figma-bibliotek
+Komponentene fra Designsystemets [Core UI KIT (figma.com)](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) kopieres over og justeres manuelt i vårt eget Figma-bibliotek. Selv om det ikke finnes en god måte å gjøre dette automatisk på, går det greit fordi det ikke skjer hyppige endringer.
+
+### Kommandolinjeverktøy og tokens
+Ved hjelp av kommandolinjeverktøyet (CLI) genererer vi tokens og CSS-tema. Dette har vi automatisert slik at vi varsles når det kommer nye oppdateringer, og kan teste hvordan endringene påvirker våre tema.
+
+Vi gjør noen programmatisk justeringer, for eksempel å endre hvilke farger som brukes som standard, og tilpasser utseende der det er nødvendig.
+
+### Dokumentasjon i Storybook
+Udir har kopiert over dokumentasjonen fra designsystemet.no og tilpasset den med eget tema og egne eksempler. Dokumentasjonen publiseres i vår egen Storybook, og er det sentrale stedet for alle utviklere og designere i Udir.
+
+De interne teamene forholder seg aldri direkte til Digdir sitt Designsystem – det er designteamet som håndterer det sentralt. Dette gjør det enklere å gjøre justeringer, endre standardvalg og legge til Udir-spesifikke komponenter.
+
+### Kvalitetssikring og testing
+Før noe tas i bruk bredt i organisasjonen, går det gjennom flere lag med kvalitetssikring:
+
+- Tilbakemeldinger fra systemteamene
+- Større brukseksempler basert på faktiske behov
+- Automatisert testing:
+   - Interaksjonstester
+   - Tilgjengelighetstester (UU)
+   - Visuelle regresjonstester
+   - DOM-strukturtester
+- Manuell gjennomgang av UU-eksperter
+
+
+## Åpent for alle
+Udir sitt designsystem er åpent tilgjengelig. Her kan du se hvordan det er satt opp, følge med på endringer, og kanskje hente inspirasjon til egne prosjekter.
+
+[Udirs designsystem på github.com](http://github.com/Utdanningsdirektoratet/designsystem)
+
+## Sammen bygger vi bedre offentlig sektor
+Gjennom å bygge videre på Designsystemet fra Digdir har Udir spart tid, styrket tilgjengeligheten og sikret en felles retning for både kommunikasjon og utvikling. Samtidig har vi fått en faglig arena der vi deler erfaringer og løsninger med andre som ønsker det samme: bedre brukeropplevelser i offentlig sektor.
+
+_«Vi har kommet raskt i gang med utviklingen av designsystemet vårt ved å bygge det på Digdirs designsystem. Dette er verdifullt både for å skape brukervennlig design i tjenestene vi selv har, men også fordi vi bidrar til helhetlige brukeropplevelser uavhengig av hvilken virksomhet brukerne er hos. Jeg anbefaler alle som trenger mer helhetlig design i tjenestene sine om å sjekke ut mulighetene som ligger i Digdirs designsystem.»_
+
+_-Kjersti Mikalsen, tjenesteansvarlig for Utdanningsdirektoratets designsystem_
+
+
+ <Image
+  src='/img/blog/udir-logo.png'
+  alt='Viser Udirs logo.'
+  boxShadow={false}
+  
+/>
+
+<br/>
+
+<Contributors
+  authors={[
+    'Une Sofie Kinn Ekroll',
+    'Kjersti Mikalsen',
+    'Marianne Røsvik',
+  ]}
+/>
