@@ -1,1 +1,0 @@
-export { ImageBanner } from './ImageBanner';
