@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.0.8
+
+### Patch Changes
+
+- Remove outdated `@layer` definition in default and digdir theme files ([#3643](https://github.com/digdir/designsystemet/pull/3643))
+
+- Fix missing export for default theme file ([#3673](https://github.com/digdir/designsystemet/pull/3673))
+
 ## 1.0.7
 
 ## 1.0.6
