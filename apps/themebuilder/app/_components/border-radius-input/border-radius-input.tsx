@@ -1,30 +1,33 @@
 import { Button, Heading, Textfield } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
-import { type BaseBorderRadius, useThemeStore } from '~/store';
+import { useTranslation } from 'react-i18next';
+import { useThemeStore } from '~/store';
 import classes from './border-radius-input.module.css';
 
 export const BorderRadiusInput = () => {
+  const { t } = useTranslation();
   const setBorderRadius = useThemeStore((state) => state.setBaseBorderRadius);
   const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
-  const items: { name: string; value: BaseBorderRadius }[] = [
-    { name: 'Ingen', value: 0 },
-    { name: 'Small', value: 4 },
-    { name: 'Medium', value: 8 },
-    { name: 'Large', value: 12 },
-    { name: 'Full', value: 9999 },
+
+  const borderRadiusItems = [
+    { name: t('borderRadius.none'), value: 0 },
+    { name: t('borderRadius.small'), value: 4 },
+    { name: t('borderRadius.medium'), value: 8 },
+    { name: t('borderRadius.large'), value: 12 },
+    { name: t('borderRadius.full'), value: 9999 },
   ];
 
   return (
     <div>
       <Heading className={classes.heading} data-size='xs'>
-        Foreslått basis Border radius
+        {t('borderRadius.suggested')}
       </Heading>
       <div
         className={classes.items}
         role='radiogroup'
         aria-label='Border radius'
       >
-        {items.map((item, index) => (
+        {borderRadiusItems.map((item, index) => (
           <div
             className={cl(
               classes.item,
@@ -48,16 +51,16 @@ export const BorderRadiusInput = () => {
               <div
                 className={classes.inner}
                 style={{ borderRadius: item.value }}
-              ></div>
+              />
             </Button>
           </div>
         ))}
       </div>
       <Heading className={classes.heading} data-size='xs'>
-        Manuell basis Border radius
+        {t('borderRadius.manual')}
       </Heading>
       <Textfield
-        label='Definer basisverdien for border-radius'
+        label={t('borderRadius.define-value')}
         value={baseBorderRadius}
         onChange={(e) => {
           const updatedValue = parseInt(e.target.value);

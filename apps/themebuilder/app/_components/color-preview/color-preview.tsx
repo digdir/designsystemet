@@ -7,134 +7,50 @@ import {
   ToggleGroup,
 } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { generateColorVars } from '~/_utils/generate-color-vars';
 import { type ColorTheme, useThemeStore } from '~/store';
-import { generateColorVars } from '~/utils/generateColorVars';
 import listClasses from './card.module.css';
 import classes from './color-preview.module.css';
 
 type ViewType = 'list' | 'grid';
 
+const DEFAULT_VIEW: ViewType = 'grid';
+
 export const ColorPreview = () => {
+  const { t } = useTranslation();
   const colors = useThemeStore((state) => state.colors);
-  const [view, setView] = useState<ViewType>('grid');
-  const colorScheme = useThemeStore((state) => state.colorScheme);
+  const [view, setView] = useState<ViewType>(DEFAULT_VIEW);
 
-  type CardProps = {
-    color: ColorTheme;
-  };
-
-  const CardWrapper = ({ color }: CardProps) => {
-    if (view === 'list') {
-      return <VerticalCard color={color} />;
-    }
-    return <HorizontalCard color={color} />;
-  };
-
-  const HorizontalCard = ({ color }: CardProps) => {
-    useEffect(() => {}, []);
-
-    const [valueOne, setValueOne] = useState(true);
-    return (
-      <div
-        style={generateColorVars(color.colors, colorScheme)}
-        className={classes.card}
-      >
-        <Heading className={classes.title} data-size='2xs'>
-          {color.name}
-        </Heading>
-        <Paragraph data-size='sm' className={classes.desc}>
-          Livet er for kort til å være grått. Fyll deg selv og dine dager med
-          farger.
-        </Paragraph>
-        <div className={classes.checkGroup}>
-          <Checkbox
-            data-size='sm'
-            label='Checkbox 1'
-            value='one'
-            onChange={() => setValueOne(!valueOne)}
-            checked={valueOne}
-          />
-          <Checkbox data-size='sm' label='Checkbox 2' value='two' />
-        </div>
-        <div className={classes.btnGroup}>
-          <Button data-size='sm'>Primær</Button>
-          <Button data-size='sm' variant='secondary'>
-            Sekundær
-          </Button>
-        </div>
-      </div>
+  const CardWrapper = ({ color }: CardProps) =>
+    view === 'list' ? (
+      <VerticalCard color={color} />
+    ) : (
+      <HorizontalCard color={color} />
     );
-  };
 
-  const VerticalCard = ({ color }: CardProps) => {
-    const [isChecked, setIsChecked] = useState(true);
-    const [isSwitch, setIsSwitch] = useState(true);
-    return (
-      <div
-        style={generateColorVars(color.colors, colorScheme)}
-        className={cl(classes.card, listClasses.card)}
-      >
-        <div className={listClasses.text}>
-          <Heading className={listClasses.title} data-size='2xs'>
-            {color.name}
-          </Heading>
-          <Paragraph className={classes.desc} data-size='sm'>
-            Farger gjør livet mer fargerikt
-          </Paragraph>
-        </div>
-        <div className={listClasses.checkGroup}>
-          <Checkbox
-            data-size='sm'
-            label='Checkbox'
-            value='value'
-            checked={isChecked}
-            onChange={() => setIsChecked(!isChecked)}
-          />
-          <Switch
-            aria-labelledby=''
-            position='start'
-            data-size='sm'
-            checked={isSwitch}
-            onChange={() => setIsSwitch(!isSwitch)}
-          >
-            Switch
-          </Switch>
-        </div>
-        <div className={classes.btnGroup}>
-          <Button data-size='sm'>Primær</Button>
-          <Button data-size='sm' variant='secondary'>
-            Sekundær
-          </Button>
-        </div>
-      </div>
-    );
-  };
+  const allColors = [...colors.main, ...colors.neutral, ...colors.support];
+
   return (
     <div className='panelContainer'>
       <div className='panelLeft'>
         <div className='panelTop'>
-          <Heading data-size='xs'>Se fargene dine i bruk</Heading>
-          <Paragraph data-size='sm'>
-            Hver farge som blir valgt med verktøyet får sitt eget kort i
-            seksjonen til høyre slik at du kan se hvordan fargene harmonerer
-            sammen.
-          </Paragraph>
-          <Paragraph data-size='sm'>
-            Merk at kontrastfargen inne i knappen endrer seg fra hvit til svart,
-            avhengig av om den valgte fargen er lys eller mørk for å oppnå best
-            mulig kontrast.
-          </Paragraph>
+          <Heading data-size='xs'>{t('colorPreview.title')}</Heading>
+          <Paragraph data-size='sm'>{t('colorPreview.description')}</Paragraph>
+          <Paragraph data-size='sm'>{t('colorPreview.note')}</Paragraph>
         </div>
         <div className='panelBottom'>
-          <div className={classes.label}>Visning:</div>
+          <div className={classes.label}>{t('colorPreview.view')}</div>
           <ToggleGroup
             data-size='sm'
-            defaultValue='grid'
-            onChange={(value) => setView(value as ViewType)}
+            defaultValue={DEFAULT_VIEW}
+            onChange={(value: string) => setView(value as ViewType)}
           >
             <ToggleGroup.Item value='grid'>Grid</ToggleGroup.Item>
-            <ToggleGroup.Item value='list'>Liste</ToggleGroup.Item>
+            <ToggleGroup.Item value='list'>
+              {t('tabs.overview')}
+            </ToggleGroup.Item>
           </ToggleGroup>
         </div>
       </div>
@@ -144,15 +60,83 @@ export const ColorPreview = () => {
           view === 'grid' ? classes.grid : classes.list,
         )}
       >
-        {colors.main.map((color, index) => (
-          <CardWrapper key={index} color={color} />
+        {allColors.map((color, index) => (
+          <CardWrapper key={`${color.name}-${index}`} color={color} />
         ))}
-        {colors.neutral.map((color, index) => (
-          <CardWrapper key={index} color={color} />
-        ))}
-        {colors.support.map((color, index) => (
-          <CardWrapper key={index} color={color} />
-        ))}
+      </div>
+    </div>
+  );
+};
+
+type CardProps = {
+  color: ColorTheme;
+};
+
+const HorizontalCard = ({ color }: CardProps) => {
+  const { t } = useTranslation();
+  const colorScheme = useThemeStore((state) => state.colorScheme);
+  const colorStyles = generateColorVars(color.colors, colorScheme);
+
+  return (
+    <div style={colorStyles} className={classes.card}>
+      <Heading className={classes.title} data-size='2xs'>
+        {color.name}
+      </Heading>
+      <Paragraph data-size='sm' className={classes.desc}>
+        {t('colorPreview.example-heading')}
+      </Paragraph>
+      <div className={classes.checkGroup}>
+        <Checkbox
+          data-size='sm'
+          label={`${t('colorPreview.checkbox')} 1`}
+          value='one'
+          defaultChecked
+        />
+        <Checkbox
+          data-size='sm'
+          label={`${t('colorPreview.checkbox')} 2`}
+          value='two'
+        />
+      </div>
+      <div className={classes.btnGroup}>
+        <Button data-size='sm'>{t('colorPreview.primary')}</Button>
+        <Button data-size='sm' variant='secondary'>
+          {t('colorPreview.secondary')}
+        </Button>
+      </div>
+    </div>
+  );
+};
+const VerticalCard = ({ color }: CardProps) => {
+  const { t } = useTranslation();
+  const colorScheme = useThemeStore((state) => state.colorScheme);
+  const colorStyles = generateColorVars(color.colors, colorScheme);
+
+  return (
+    <div style={colorStyles} className={cl(classes.card, listClasses.card)}>
+      <div className={listClasses.text}>
+        <Heading className={listClasses.title} data-size='2xs'>
+          {color.name}
+        </Heading>
+        <Paragraph className={classes.desc} data-size='sm'>
+          {t('colorPreview.example-heading')}
+        </Paragraph>
+      </div>
+      <div className={listClasses.checkGroup}>
+        <Checkbox
+          data-size='sm'
+          label={t('colorPreview.checkbox')}
+          value='value'
+        />
+        <Switch aria-labelledby='' position='start' data-size='sm'>
+          {t('colorPreview.switch')}
+        </Switch>
+      </div>
+      <div className={classes.btnGroup}>
+        <Button data-size='sm'>{t('colorPreview.primary')}</Button>
+        <Button data-size='sm' variant='secondary'>
+          {t('colorPreview.secondary')}
+        </Button>
       </div>
     </div>
   );

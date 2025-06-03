@@ -4,10 +4,11 @@ import {
   generateColorSchemes,
 } from '@digdir/designsystemet/color';
 import { useEffect } from 'react';
-import { useSearchParams } from 'react-router';
+import { useLocation, useSearchParams } from 'react-router';
 import { useThemeStore } from '~/store';
 
 export const useThemeParams = () => {
+  const location = useLocation();
   const [query, setQuery] = useSearchParams();
 
   const colors = useThemeStore((state) => state.colors);
@@ -61,7 +62,8 @@ export const useThemeParams = () => {
     if (!Number.isNaN(borderRadius)) {
       setBorderRadius(borderRadius);
     }
-  }, []);
+    /* Make sure we add params to URl if we change language */
+  }, [location.pathname]);
 
   /* When name, appearance or colors change, update query */
   useEffect(() => {

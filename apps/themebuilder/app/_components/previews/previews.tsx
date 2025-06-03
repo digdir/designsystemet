@@ -6,9 +6,10 @@ import {
   generateColorSchemes,
 } from '@digdir/designsystemet';
 import { ToggleGroup } from '@digdir/designsystemet-react';
-import { generateColorVars } from '~/utils/generateColorVars';
+import { useTranslation } from 'react-i18next';
+import { generateColorVars } from '~/_utils/generate-color-vars';
 import { OverviewComponents } from '../overview-components/overview-components';
-import classes from './Previews.module.css';
+import classes from './previews.module.css';
 
 const themes: {
   [key: string]: {
@@ -45,6 +46,7 @@ const themes: {
 };
 
 export const Previews = () => {
+  const { t } = useTranslation();
   const [theme, setTheme] = useState<keyof typeof themes>('blue');
   const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
 
@@ -64,17 +66,23 @@ export const Previews = () => {
           value={theme as string}
           onChange={(v) => setTheme(v as keyof typeof themes)}
         >
-          <ToggleGroup.Item value='blue'>{themes.blue.name}</ToggleGroup.Item>
+          <ToggleGroup.Item value='blue'>
+            {t('examples.example-1')}
+          </ToggleGroup.Item>
           <ToggleGroup.Item value='purple'>
-            {themes.purple.name}
+            {t('examples.example-2')}
           </ToggleGroup.Item>
         </ToggleGroup>
         <ToggleGroup
           value={colorScheme}
           onChange={(v) => setColorScheme(v as ColorScheme)}
         >
-          <ToggleGroup.Item value='light'>Lys</ToggleGroup.Item>
-          <ToggleGroup.Item value='dark'>Mørk</ToggleGroup.Item>
+          <ToggleGroup.Item value='light'>
+            {t('colorPreview.light')}
+          </ToggleGroup.Item>
+          <ToggleGroup.Item value='dark'>
+            {t('colorPreview.dark')}
+          </ToggleGroup.Item>
         </ToggleGroup>
       </div>
 
