@@ -74,13 +74,11 @@ const config: StorybookConfig = {
   addons: [
     '@storybook/addon-a11y',
     '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-mdx-gfm',
-    '@storybook/addon-storysource',
     '@storybook/addon-themes',
     'storybook-addon-pseudo-states',
-    '@storybook/experimental-addon-test',
+    '@storybook/addon-vitest',
     '@whitespace/storybook-addon-html',
+    '@storybook/addon-docs'
   ],
   staticDirs: ['../assets'],
   framework: {

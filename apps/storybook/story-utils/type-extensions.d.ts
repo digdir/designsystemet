@@ -1,7 +1,7 @@
 import type { A11yParameters } from '@storybook/addon-a11y';
 import type { DocsParameters } from '@storybook/addon-docs';
-import type { ThemeVars } from '@storybook/theming';
-import type {} from '@storybook/types';
+import type { ThemeVars } from 'storybook/theming';
+import type {} from 'storybook/internal/types';
 import type { CSSProperties } from 'react';
 
 export type MdxComponentOverrides = {
@@ -20,7 +20,7 @@ type ChromaticViewport = {
   height?: number | `${string}px`;
 };
 
-declare module '@storybook/types' {
+declare module 'storybook/internal/types' {
   type PseudoState =
     | 'hover'
     | 'active'

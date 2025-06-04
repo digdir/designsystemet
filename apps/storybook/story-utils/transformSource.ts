@@ -1,5 +1,5 @@
 import { DocsContext } from '@storybook/addon-docs';
-import type { StoryContext } from '@storybook/react';
+import type { StoryContext } from '@storybook/react-vite';
 import type { Plugin } from 'prettier';
 import * as EstreePlugin from 'prettier/plugins/estree';
 import * as HtmlPlugin from 'prettier/plugins/html';

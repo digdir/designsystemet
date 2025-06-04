@@ -4,8 +4,8 @@ import {
   type DocsContextProps,
   type Of,
   useOf,
-} from '@storybook/blocks';
-import type { Globals, PreparedStory } from '@storybook/types';
+} from '@storybook/addon-docs/blocks';
+import type { Globals, PreparedStory } from 'storybook/internal/types';
 import { useContext, useEffect, useState } from 'react';
 const GLOBALS_UPDATED = 'globalsUpdated';
 

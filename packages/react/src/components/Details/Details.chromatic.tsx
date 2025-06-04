@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-vite';
 import { Details } from '.';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import * as DetailsStories from './Details.stories';
