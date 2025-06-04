@@ -1,1 +1,0 @@
-export { MdxContent } from './MdxContent';

@@ -10,7 +10,7 @@ export default function Layout() {
   const { t } = useTranslation();
 
   return (
-    <div>
+    <div data-is-main={true}>
       <Banner color='red'>
         <BannerIcon>
           <PencilIcon />

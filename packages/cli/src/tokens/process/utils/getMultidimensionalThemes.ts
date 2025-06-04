@@ -69,10 +69,9 @@ export function processThemeObject(theme: ThemeObject | ProcessedThemeObject): P
 
 export type GroupedThemes = Record<keyof ThemePermutation, ProcessedThemeObject[]>;
 
-function groupThemes(themes: ThemeObject[]): GroupedThemes {
+function groupThemes(themes: ProcessedThemeObject[]): GroupedThemes {
   const groups = {} as GroupedThemes;
-  for (const rawTheme of themes) {
-    const theme = processThemeObject(rawTheme);
+  for (const theme of themes) {
     if (theme.group) {
       const groupKey = theme.group as keyof GroupedThemes;
       groups[groupKey] = [...(groups[groupKey] ?? []), theme];

@@ -72,11 +72,18 @@ export const cleanDir = async (dir: string, dry?: boolean) => {
   return fs.rm(dir, { recursive: true, force: true });
 };
 
-export const readFile = async (path: string, dry?: boolean) => {
+export const readFile = async (path: string, dry?: boolean, allowFileNotFound?: boolean) => {
   if (dry) {
     console.log(`${chalk.blue('readFile')} ${path}`);
     return Promise.resolve('');
   }
 
-  return fs.readFile(path, 'utf-8');
+  try {
+    return await fs.readFile(path, 'utf-8');
+  } catch (error) {
+    if (allowFileNotFound && (error as NodeJS.ErrnoException).code === 'ENOENT') {
+      return '';
+    }
+    throw error;
+  }
 };

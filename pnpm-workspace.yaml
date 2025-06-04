@@ -1,4 +1,3 @@
-useNodeVersion: 22.16.0
 packages:
   - packages/*
   - apps/*
@@ -10,4 +9,6 @@ onlyBuiltDependencies:
   - '@biomejs/biome'
   - '@swc/core'
   - esbuild
+  - just-pnpm
   - style-dictionary
+useNodeVersion: 22.16.0

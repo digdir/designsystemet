@@ -135,7 +135,7 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
             <BannerHeading level={1}>{t('best-practices.title')}</BannerHeading>
             <BannerIngress>{t('best-practices.description')}</BannerIngress>
           </Banner>
-          <div className={classes.content}>
+          <div className={classes.content} data-is-main={true}>
             <div className={classes.container}>
               <Outlet />
             </div>
