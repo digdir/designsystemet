@@ -16,32 +16,20 @@ const themes: {
     name: string;
     value: string;
     hex: CssColor;
-    cssVars?: Record<string, string>;
+    borderRadius?: number;
   };
 } = {
   blue: {
     name: 'Eksempel 1',
     value: 'blue',
     hex: '#0062BA',
+    borderRadius: 4,
   },
   purple: {
     name: 'Eksempel 2',
     value: 'purple',
     hex: '#740c7e',
-    cssVars: {
-      '--ds-border-radius-base': '9999px',
-      '--ds-border-radius-scale': '0.25rem',
-      '--ds-border-radius-sm':
-        'min(var(--ds-border-radius-base) * 0.5, var(--ds-border-radius-scale))',
-      '--ds-border-radius-md':
-        'min(var(--ds-border-radius-base), var(--ds-border-radius-scale) * 2)',
-      '--ds-border-radius-lg':
-        'min(var(--ds-border-radius-base) * 2, var(--ds-border-radius-scale) * 5)',
-      '--ds-border-radius-xl':
-        'min(var(--ds-border-radius-base) * 3, var(--ds-border-radius-scale) * 7)',
-      '--ds-border-radius-default': 'var(--ds-border-radius-base)',
-      '--ds-border-radius-full': '624.9375rem',
-    },
+    borderRadius: 9999,
   },
 };
 
@@ -86,15 +74,12 @@ export const Previews = () => {
         </ToggleGroup>
       </div>
 
-      <div
-        className={classes.preview}
-        data-color-scheme={colorScheme}
-        style={{
-          ...getThemeVariables(themes[theme].hex),
-          ...themes[theme].cssVars,
-        }}
-      >
-        <OverviewComponents />
+      <div className={classes.preview} data-color-scheme={colorScheme}>
+        <OverviewComponents
+          colorScheme={colorScheme}
+          color={themes[theme].hex}
+          borderRadius={themes[theme].borderRadius}
+        />
       </div>
     </>
   );
