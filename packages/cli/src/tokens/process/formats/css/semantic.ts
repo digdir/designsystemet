@@ -82,8 +82,30 @@ export const semantic: Format = {
     );
     const formattedTokens = [R.map(format, restTokens).join('\n'), formatSizingTokens(format, sizingTokens)];
 
-    const content = `{\n${formattedTokens.join('\n')}\n}\n`;
-    const body = R.isNotNil(layer) ? `@layer ${layer} {\n${selector} ${content}\n}\n` : `${selector} ${content}\n`;
+    const sizingToggles = `
+--ds-size: var(--ds-size--default);
+--ds-size--default: var(--ds-size,);
+--ds-size--sm: var(--ds-size,);
+--ds-size--md: var(--ds-size,);
+--ds-size--lg: var(--ds-size,);
+--_ds-data-size:
+  var(--ds-size--default, var(--ds-body-md-font-size))
+  var(--ds-size--sm, var(--ds-body-sm-font-size))
+  var(--ds-size--md, var(--ds-body-md-font-size))
+  var(--ds-size--lg, var(--ds-body-lg-font-size));
+`.trim();
+    const sizingHelpers = `
+[data-size='sm'] {
+  --ds-size: var(--ds-size--sm);
+}
+[data-size='md'] {
+  --ds-size: var(--ds-size--md);
+}
+[data-size='lg'] {
+  --ds-size: var(--ds-size--lg);
+}`.trim();
+    const content = `${selector} {\n${sizingToggles}\n${formattedTokens.join('\n')}\n}\n${sizingHelpers}\n`;
+    const body = R.isNotNil(layer) ? `@layer ${layer} {\n${content}\n}\n` : `${content}\n`;
 
     return body;
   },
