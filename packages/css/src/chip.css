@@ -32,8 +32,10 @@
   color: var(--dsc-chip-color);
   cursor: pointer;
   font-family: inherit;
+  font-size: var(--ds-body-short-sm-font-size);
   gap: var(--dsc-chip-spacing);
-  line-height: var(--ds-line-height-sm);
+  line-height: var(--ds-body-short-sm-line-height);
+  letter-spacing: var(--ds-body-short-sm-letter-spacing);
   margin: 0;
   min-height: var(--dsc-chip-height);
   max-height: fit-content;
@@ -45,10 +47,6 @@
 
   &:not([hidden]) {
     display: inline-flex;
-  }
-
-  &:not([data-font-size]) {
-    font-size: var(--ds-font-size-minus-1);
   }
 
   /* Show focus ring when input inside is focused by keyboard interaction */
