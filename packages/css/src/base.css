@@ -112,23 +112,26 @@ body,
 }
 
 [data-size='sm'] {
-  --_ds-data-size: var(--ds-body-sm-font-size);
-  &:not([data-font-size]) {
-    font-size: var(--ds-body-md-font-size);
-  }
+  --ds-data-size--sm: ;
 }
-:root,
 [data-size='md'] {
-  --_ds-data-size: var(--ds-body-md-font-size);
-  &:not(:is(:root)):not([data-font-size]) {
-    font-size: var(--ds-body-md-font-size);
-  }
+  --ds-data-size--md: ;
 }
 [data-size='lg'] {
-  --_ds-data-size: var(--ds-body-lg-font-size);
+  --ds-data-size--lg: ;
+}
+[data-size] {
+  --_if-sm: var(--ds-data-size--sm) var(--ds-body-sm-font-size);
+  --_if-md: var(--ds-data-size--md) var(--ds-body-md-font-size);
+  --_if-lg: var(--ds-data-size--lg) var(--ds-body-lg-font-size);
+  --_ds-data-size: var(--_if-sm, var(--_if-md, var(--_if-lg, var(--ds-body-md-font-size))));
   &:not([data-font-size]) {
     font-size: var(--ds-body-md-font-size);
   }
+}
+
+:root {
+  --_ds-data-size: var(--ds-body-md-font-size);
 }
 
 [data-font-size='xs'] {
