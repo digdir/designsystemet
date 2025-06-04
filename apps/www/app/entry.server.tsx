@@ -9,6 +9,7 @@ import type { AppLoadContext, EntryContext } from 'react-router';
 import { ServerRouter } from 'react-router';
 import en from '~/locales/en';
 import no from '~/locales/no';
+import { designsystemetRedirects } from './_utils/redirects.server';
 import i18n from './i18n';
 import i18next from './i18next.server';
 
@@ -41,6 +42,11 @@ export default async function handleRequest(
   });
 
   return new Promise((resolve, reject) => {
+    const url = new URL(request.url);
+    const oldRedirect = designsystemetRedirects(url.pathname);
+    if (oldRedirect) {
+      return resolve(oldRedirect);
+    }
     let shellRendered = false;
     const userAgent = request.headers.get('user-agent');
 
