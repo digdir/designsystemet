@@ -122,6 +122,7 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
       <ContentContainer
         className={classes['sidebar-container']}
         data-color='neutral'
+        data-is-main={!isGrunnleggendePage}
       >
         <Sidebar
           cats={cats}
