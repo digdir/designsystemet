@@ -30,7 +30,7 @@ export const VariantInfo: Story = (args) => (
   <Alert {...args} data-color='info'>
     <Heading
       level={2}
-      data-size='xs'
+      data-font-size='xs'
       style={{
         marginBottom: 'var(--ds-size-2)',
       }}
@@ -48,7 +48,7 @@ export const VariantSuccess: Story = (args) => (
   <Alert {...args} data-color='success'>
     <Heading
       level={2}
-      data-size='xs'
+      data-font-size='xs'
       style={{
         marginBottom: 'var(--ds-size-2)',
       }}
@@ -66,7 +66,7 @@ export const VariantWarning: Story = (args) => (
   <Alert {...args} data-color='warning'>
     <Heading
       level={2}
-      data-size='xs'
+      data-font-size='xs'
       style={{
         marginBottom: 'var(--ds-size-2)',
       }}
@@ -84,7 +84,7 @@ export const VariantDanger: Story = (args) => (
   <Alert {...args} data-color='danger'>
     <Heading
       level={2}
-      data-size='xs'
+      data-font-size='xs'
       style={{
         marginBottom: 'var(--ds-size-2)',
       }}
@@ -103,7 +103,7 @@ export const MedHeading: Story = (args) => (
   <Alert {...args}>
     <Heading
       level={2}
-      data-size='xs'
+      data-font-size='xs'
       style={{
         marginBottom: 'var(--ds-size-2)',
       }}
@@ -127,7 +127,7 @@ export const MedLenke: Story = (args) => (
   <Alert {...args} data-color='warning'>
     <Heading
       level={2}
-      data-size='xs'
+      data-font-size='xs'
       style={{
         marginBottom: 'var(--ds-size-2)',
       }}
@@ -145,7 +145,7 @@ export const UtenAria: Story = (args) => (
   <Alert {...args} data-color='warning'>
     <Heading
       level={2}
-      data-size='xs'
+      data-font-size='xs'
       style={{
         marginBottom: 'var(--ds-size-2)',
       }}
@@ -171,7 +171,7 @@ export const WrongLiveRegionReact: StoryFn<typeof Alert> = () => {
         >
           <Heading
             level={2}
-            data-size='xs'
+            data-font-size='xs'
             style={{
               marginBottom: 'var(--ds-size-2)',
             }}
@@ -224,7 +224,7 @@ export const CorrectLiveRegionReact: StoryFn<typeof Alert> = () => {
           <Alert data-color='warning'>
             <Heading
               level={2}
-              data-size='xs'
+              data-font-size='xs'
               style={{
                 marginBottom: 'var(--ds-size-2)',
               }}
@@ -258,7 +258,7 @@ export const MedAria: Story = (args) => (
   <Alert {...args} data-color='danger' role='alert'>
     <Heading
       level={2}
-      data-size='xs'
+      data-font-size='xs'
       style={{
         marginBottom: 'var(--ds-size-2)',
       }}

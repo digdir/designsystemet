@@ -5,6 +5,10 @@
   --dsc-avatar-size: var(--ds-size-12);
   --dsc-avatar-padding: var(--ds-size-2);
 
+  &[data-size='xs'] {
+    --ds-size-mode-font-size: var(--ds-body-xs-font-size);
+  }
+
   align-items: center;
   background: var(--dsc-avatar-background);
   border-radius: var(--ds-border-radius-full);
