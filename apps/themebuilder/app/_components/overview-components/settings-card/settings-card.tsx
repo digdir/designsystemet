@@ -23,16 +23,6 @@ export const SettingsCard = () => {
         {t('overview.admin-display')}
       </Paragraph>
 
-      <div className={classes.toggleGroup}>
-        <Switch
-          data-size='sm'
-          description=''
-          label={t('overview.dark-mode')}
-          position='start'
-          defaultChecked
-        />
-      </div>
-
       <Fieldset data-size='sm' className={classes.radioGroup}>
         <Fieldset.Legend>{t('overview.display-mode')}</Fieldset.Legend>
         <Radio label={t('overview.mobile')} {...getRadioProps('mobil')} />
