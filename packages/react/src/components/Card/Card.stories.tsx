@@ -36,7 +36,7 @@ export const Preview: Story = (args) => (
       Most provide as with carried business are much better more the perfected
       designer. Writing slightly explain desk unable at supposedly about this
     </Paragraph>
-    <Paragraph data-size='sm'>Footer text</Paragraph>
+    <Paragraph data-font-size='sm'>Footer text</Paragraph>
   </Card>
 );
 
@@ -156,7 +156,7 @@ export const WithLink: Story = (args) => (
           perfected designer. Writing slightly explain desk unable at supposedly
           about this
         </Paragraph>
-        <Paragraph data-size='sm'>Footer text</Paragraph>
+        <Paragraph data-font-size='sm'>Footer text</Paragraph>
       </Card.Block>
     </Card>
     <Card {...args} data-color='neutral'>
@@ -175,7 +175,7 @@ export const WithLink: Story = (args) => (
           perfected designer. Writing slightly explain desk unable at supposedly
           about this
         </Paragraph>
-        <Paragraph data-size='sm'>Footer text</Paragraph>
+        <Paragraph data-font-size='sm'>Footer text</Paragraph>
       </Card.Block>
       <Card.Block>
         <img src={cat5} alt='' />

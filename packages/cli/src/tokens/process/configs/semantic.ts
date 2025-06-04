@@ -8,7 +8,8 @@ import { formats } from '../formats/css.js';
 import { type GetStyleDictionaryConfig, basePxFontSize, dsTransformers, prefix } from './shared.js';
 
 export const semanticVariables: GetStyleDictionaryConfig = ({ theme }) => {
-  const selector = `:root`;
+  // [data-size] selector ensures --ds-size-* variables are recalculated when --ds-size-mode-font-size changes
+  const selector = `:root, [data-size]`;
   const layer = `ds.theme.semantic`;
 
   return {

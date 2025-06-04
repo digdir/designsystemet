@@ -433,7 +433,7 @@ design-tokens: v1.0.8
 }
 }
 @layer ds.theme.semantic {
-:root {
+:root, [data-size] {
   --ds-size-base: 18;
   --ds-size-step: 4;
   --ds-border-radius-base: 0.25rem;
@@ -453,48 +453,48 @@ design-tokens: v1.0.8
   --ds-shadow-xl: 0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16);
   --ds-opacity-disabled: 30%;
 
-  --ds-size-0:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *0);
-  --ds-size-1:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *1);
-  --ds-size-2:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *2);
-  --ds-size-3:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *3);
-  --ds-size-4:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *4);
-  --ds-size-5:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *5);
-  --ds-size-6:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *6);
-  --ds-size-7:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *7);
-  --ds-size-8:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *8);
-  --ds-size-9:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *9);
-  --ds-size-10:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *10);
-  --ds-size-11:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *11);
-  --ds-size-12:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *12);
-  --ds-size-13:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *13);
-  --ds-size-14:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *14);
-  --ds-size-15:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *15);
-  --ds-size-18:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *18);
-  --ds-size-22:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *22);
-  --ds-size-26:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *26);
-  --ds-size-30:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *30);
+  --ds-size-0:  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *0);
+  --ds-size-1:  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *1);
+  --ds-size-2:  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *2);
+  --ds-size-3:  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *3);
+  --ds-size-4:  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *4);
+  --ds-size-5:  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *5);
+  --ds-size-6:  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *6);
+  --ds-size-7:  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *7);
+  --ds-size-8:  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *8);
+  --ds-size-9:  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *9);
+  --ds-size-10:  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *10);
+  --ds-size-11:  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *11);
+  --ds-size-12:  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *12);
+  --ds-size-13:  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *13);
+  --ds-size-14:  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *14);
+  --ds-size-15:  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *15);
+  --ds-size-18:  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *18);
+  --ds-size-22:  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *22);
+  --ds-size-26:  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *26);
+  --ds-size-30:  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *30);
 
   @supports (width: round(down, .1em, 1px)) {
-  --ds-size-0: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *0), 1px);
-  --ds-size-1: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *1), 1px);
-  --ds-size-2: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *2), 1px);
-  --ds-size-3: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *3), 1px);
-  --ds-size-4: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *4), 1px);
-  --ds-size-5: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *5), 1px);
-  --ds-size-6: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *6), 1px);
-  --ds-size-7: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *7), 1px);
-  --ds-size-8: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *8), 1px);
-  --ds-size-9: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *9), 1px);
-  --ds-size-10: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *10), 1px);
-  --ds-size-11: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *11), 1px);
-  --ds-size-12: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *12), 1px);
-  --ds-size-13: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *13), 1px);
-  --ds-size-14: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *14), 1px);
-  --ds-size-15: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *15), 1px);
-  --ds-size-18: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *18), 1px);
-  --ds-size-22: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *22), 1px);
-  --ds-size-26: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *26), 1px);
-  --ds-size-30: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *30), 1px);
+  --ds-size-0: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *0), 1px);
+  --ds-size-1: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *1), 1px);
+  --ds-size-2: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *2), 1px);
+  --ds-size-3: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *3), 1px);
+  --ds-size-4: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *4), 1px);
+  --ds-size-5: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *5), 1px);
+  --ds-size-6: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *6), 1px);
+  --ds-size-7: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *7), 1px);
+  --ds-size-8: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *8), 1px);
+  --ds-size-9: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *9), 1px);
+  --ds-size-10: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *10), 1px);
+  --ds-size-11: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *11), 1px);
+  --ds-size-12: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *12), 1px);
+  --ds-size-13: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *13), 1px);
+  --ds-size-14: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *14), 1px);
+  --ds-size-15: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *15), 1px);
+  --ds-size-18: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *18), 1px);
+  --ds-size-22: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *22), 1px);
+  --ds-size-26: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *26), 1px);
+  --ds-size-30: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *30), 1px);
   }
 }
 

@@ -47,7 +47,7 @@
     display: inline-flex;
   }
 
-  &:not([data-size]) {
+  &:not([data-font-size]) {
     font-size: var(--ds-font-size-minus-1);
   }
 

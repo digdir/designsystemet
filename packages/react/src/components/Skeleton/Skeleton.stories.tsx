@@ -93,7 +93,7 @@ export const Text: StoryFn<typeof Skeleton> = () => (
   <>
     <div style={{ flex: '1 1 200px' }}>
       <Heading>En tittel</Heading>
-      <Paragraph data-size='sm'>
+      <Paragraph data-font-size='sm'>
         Her er en paragraf som går over flere linjer
       </Paragraph>
     </div>
@@ -101,7 +101,7 @@ export const Text: StoryFn<typeof Skeleton> = () => (
       <Heading>
         <Skeleton variant='text'>En tittel</Skeleton>
       </Heading>
-      <Paragraph data-size='sm'>
+      <Paragraph data-font-size='sm'>
         <Skeleton variant='text' width={40} />
       </Paragraph>
     </div>
