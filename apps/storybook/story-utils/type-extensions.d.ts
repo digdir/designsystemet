@@ -1,8 +1,8 @@
 import type { A11yParameters } from '@storybook/addon-a11y';
 import type { DocsParameters } from '@storybook/addon-docs';
-import type { ThemeVars } from 'storybook/theming';
-import type {} from 'storybook/internal/types';
 import type { CSSProperties } from 'react';
+import type {} from 'storybook/internal/types';
+import type { ThemeVars } from 'storybook/theming';
 
 export type MdxComponentOverrides = {
   [K in keyof React.JSX.IntrinsicElements]?: React.FC<
