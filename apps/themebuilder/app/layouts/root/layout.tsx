@@ -62,9 +62,7 @@ export default function RootLayout() {
         themeSwitcher
         transparentBackground
       />
-      <main id='main'>
-        <Outlet />
-      </main>
+      <Outlet />
       <Footer
         centerLinks={centerLinks}
         rightLinks={rightLinks as FooterLinkListItemProps[]}

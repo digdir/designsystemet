@@ -53,7 +53,6 @@ export default function Home({ params: { lang } }: Route.ComponentProps) {
     }
   };
   return (
-    <div>
       <main className={classes.main} id='main'>
         <ContentContainer>
           <div className={classes.header}>
@@ -85,6 +84,5 @@ export default function Home({ params: { lang } }: Route.ComponentProps) {
           <Previews />
         </ContentContainer>
       </main>
-    </div>
   );
 }
