@@ -3,7 +3,6 @@ import {
   Heading,
   Paragraph,
   Radio,
-  Switch,
   ValidationMessage,
   useRadioGroup,
 } from '@digdir/designsystemet-react';
