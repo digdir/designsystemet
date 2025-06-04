@@ -6,33 +6,33 @@
 
   animation: ds-spinner-rotate-animation linear infinite var(--dsc-spinner-animation-duration);
   box-sizing: border-box;
-  font-size: var(--ds-size-11);
   height: 1em;
   width: 1em;
 
-  /* Using font-size to ensure consistent size when explicitly setting data-size */
-  &[data-size='2xs'] {
-    font-size: 0.75rem;
+  /* Using font-size to ensure consistent size when explicitly setting data-spinner-size */
+  &[data-spinner-size='2xs'] {
+    font-size: var(--ds-size-3);
   }
 
-  &[data-size='xs'] {
-    font-size: 1.25rem;
+  &[data-spinner-size='xs'] {
+    font-size: var(--ds-size-5);
   }
 
-  &[data-size='sm'] {
-    font-size: 2rem;
+  &[data-spinner-size='sm'] {
+    font-size: var(--ds-size-7);
   }
 
-  &[data-size='md'] {
-    font-size: 2.75rem;
+  & /* this is the default */,
+  &[data-spinner-size='md'] {
+    font-size: var(--ds-size-11);
   }
 
-  &[data-size='lg'] {
-    font-size: 3.75rem;
+  &[data-spinner-size='lg'] {
+    font-size: var(--ds-size-15);
   }
 
-  &[data-size='xl'] {
-    font-size: 5.5rem;
+  &[data-spinner-size='xl'] {
+    font-size: var(--ds-size-22);
   }
 }
 

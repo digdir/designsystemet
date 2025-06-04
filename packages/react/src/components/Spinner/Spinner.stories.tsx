@@ -38,7 +38,7 @@ export const Variants: Story = () => (
         key={color}
         aria-label={`Henter ${color} kaffi`}
         data-color={color}
-        data-size='xl'
+        data-spinner-size='xl'
       />
     ))}
   </>
@@ -46,11 +46,11 @@ export const Variants: Story = () => (
 
 export const Sizes: Story = (args) => (
   <>
-    <Spinner aria-label='Henter kaffi' {...args} data-size='2xs' />
-    <Spinner aria-label='Henter kaffi' {...args} data-size='xs' />
-    <Spinner aria-label='Henter kaffi' {...args} data-size='sm' />
-    <Spinner aria-label='Henter kaffi' {...args} data-size='md' />
-    <Spinner aria-label='Henter kaffi' {...args} data-size='lg' />
-    <Spinner aria-label='Henter kaffi' {...args} data-size='xl' />
+    <Spinner aria-label='Henter kaffi' {...args} data-spinner-size='2xs' />
+    <Spinner aria-label='Henter kaffi' {...args} data-spinner-size='xs' />
+    <Spinner aria-label='Henter kaffi' {...args} data-spinner-size='sm' />
+    <Spinner aria-label='Henter kaffi' {...args} data-spinner-size='md' />
+    <Spinner aria-label='Henter kaffi' {...args} data-spinner-size='lg' />
+    <Spinner aria-label='Henter kaffi' {...args} data-spinner-size='xl' />
   </>
 );
