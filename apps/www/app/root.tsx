@@ -101,7 +101,11 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   return data({ lang: params.lang, centerLinks, menu });
 };
 
-export function Layout() {
+type DocumentProps = {
+  children: React.ReactNode;
+};
+
+function Document({ children }: DocumentProps) {
   const { i18n } = useTranslation();
 
   return (
@@ -113,8 +117,8 @@ export function Layout() {
       <head>
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <Meta />
         <Links />
+        <Meta />
       </head>
       <body>
         <noscript>
@@ -122,8 +126,8 @@ export function Layout() {
           browser extension to block JavaScript, please disable it for this
           site.
         </noscript>
-        <Outlet />
-        {/* This uses sessionStorage, but we deem them necessary to make navigation work as expected */}
+        {children}
+        {/* This uses sessionStorage, but we deem it necessary to make navigation work as expected */}
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -131,9 +135,13 @@ export function Layout() {
   );
 }
 
-export default function Root({ loaderData: { lang } }: Route.ComponentProps) {
+export default function App({ loaderData: { lang } }: Route.ComponentProps) {
   useChangeLanguage(lang);
-  return <Outlet />;
+  return (
+    <Document>
+      <Outlet />
+    </Document>
+  );
 }
 
 export function ErrorBoundary({ error, loaderData }: Route.ErrorBoundaryProps) {
@@ -156,14 +164,16 @@ export function ErrorBoundary({ error, loaderData }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main id='main'>
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre>
-          <code>{stack}</code>
-        </pre>
-      )}
-    </main>
+    <Document>
+      <main id='main'>
+        <h1>{message}</h1>
+        <p>{details}</p>
+        {stack && (
+          <pre>
+            <code>{stack}</code>
+          </pre>
+        )}
+      </main>
+    </Document>
   );
 }

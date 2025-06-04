@@ -88,7 +88,11 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
   });
 };
 
-export function Layout({ children }: { children: React.ReactNode }) {
+type DocumentProps = {
+  children: React.ReactNode;
+};
+
+function Document({ children }: DocumentProps) {
   const { i18n } = useTranslation();
 
   return (
@@ -100,15 +104,21 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <Links />
         <Meta />
         <script
           crossOrigin='anonymous'
           src='//unpkg.com/react-scan/dist/auto.global.js'
         />
-        <Links />
       </head>
       <body>
-        <Outlet />
+        <noscript>
+          You need to enable JavaScript to run this app. If you are using a
+          browser extension to block JavaScript, please disable it for this
+          site.
+        </noscript>
+        {children}
+        {/* This uses sessionStorage, but we deem it necessary to make navigation work as expected */}
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -118,7 +128,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function Root({ loaderData: { lang } }: Route.ComponentProps) {
   useChangeLanguage(lang);
-  return <Outlet />;
+  return (
+    <Document>
+      <Outlet />
+    </Document>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
@@ -138,14 +152,16 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className='pt-16 p-4 container mx-auto'>
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className='w-full p-4 overflow-x-auto'>
-          <code>{stack}</code>
-        </pre>
-      )}
-    </main>
+    <Document>
+      <main className='pt-16 p-4 container mx-auto'>
+        <h1>{message}</h1>
+        <p>{details}</p>
+        {stack && (
+          <pre className='w-full p-4 overflow-x-auto'>
+            <code>{stack}</code>
+          </pre>
+        )}
+      </main>
+    </Document>
   );
 }
