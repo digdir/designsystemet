@@ -1,5 +1,5 @@
 import cat1 from '@assets/img/cats/Cat 3.jpg';
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 
 import { BriefcaseIcon } from '@navikt/aksel-icons';
 import { Avatar, type AvatarProps } from '.';

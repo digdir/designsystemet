@@ -3,7 +3,7 @@ import './customTheme.scss';
 import '../../../packages/css/src/index.css';
 import '../../../packages/theme/src/themes/designsystemet.css';
 import { LinkIcon } from '@navikt/aksel-icons';
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-vite';
 import isChromatic from 'chromatic/isChromatic';
 import componentStyles from './componentOverrides.module.scss';
 
@@ -223,10 +223,13 @@ const preview: Preview = {
     docs: {
       theme: customTheme,
       components,
+
       source: {
         transform: transformSource,
         type: 'auto',
       },
+
+      codePanel: true
     },
     controls: {
       matchers: {
