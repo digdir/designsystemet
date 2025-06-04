@@ -126,7 +126,7 @@ function Document({ children }: DocumentProps) {
   );
 }
 
-export default function Root({ loaderData: { lang } }: Route.ComponentProps) {
+export default function App({ loaderData: { lang } }: Route.ComponentProps) {
   useChangeLanguage(lang);
   return (
     <Document>
