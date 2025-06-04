@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@react-router/dev": "^7.6.1",
-    "@types/node": "^20.17.50",
+    "@types/node": "^22.15.29",
     "@types/react": "^19.1.5",
     "@types/react-dom": "^19.1.5",
     "typescript": "^5.8.3",
