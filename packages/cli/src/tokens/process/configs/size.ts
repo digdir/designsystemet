@@ -1,25 +1,27 @@
-import { expandTypesMap } from '@tokens-studio/sd-transforms';
 import { pathStartsWithOneOf, typeEquals } from '../../utils.js';
 import { formats } from '../formats/css.js';
 import { sizeRem, typographyName } from '../transformers.js';
 
 import { type GetStyleDictionaryConfig, basePxFontSize, prefix } from './shared.js';
 
-export const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }) => {
-  const selector = `${typography === 'primary' ? ':root, ' : ''}[data-typography="${typography}"]`;
-  const layer = `ds.theme.typography.${typography}`;
+export const sizeVariables: GetStyleDictionaryConfig = ({ theme, size }) => {
+  const shortNames: Record<string, string | undefined> = {
+    small: 'sm',
+    medium: 'md',
+    large: 'lg',
+  };
+  const selector = `${size === 'medium' ? ':root, ' : ''}[data-size="${shortNames[size] ?? size}"]`;
+  const layer = `ds.theme.size`;
 
   return {
     usesDtcg: true,
     preprocessors: ['tokens-studio'],
     expand: {
       include: ['typography'],
-      typesMap: { ...expandTypesMap, typography: { ...expandTypesMap.typography, letterSpacing: 'dimension' } },
     },
     platforms: {
       css: {
         prefix,
-        typography,
         selector,
         layer,
         buildPath: `${theme}/`,
@@ -34,10 +36,10 @@ export const typographyVariables: GetStyleDictionaryConfig = ({ theme, typograph
         ],
         files: [
           {
-            destination: `typography/${typography}.css`,
+            destination: `size/${size}.css`,
             format: formats.typography.name,
             filter: (token) => {
-              const included = typeEquals(['fontweight', 'fontFamily', 'lineHeight', 'dimension'], token);
+              const included = typeEquals(['typography', 'dimension', 'fontsize'], token);
 
               // Remove primitive typgography tokens
               if (/primitives\/modes\/typography\/(primary|secondary)/.test(token.filePath)) return false;
@@ -45,7 +47,7 @@ export const typographyVariables: GetStyleDictionaryConfig = ({ theme, typograph
               return (
                 included &&
                 !pathStartsWithOneOf(['spacing', 'sizing', 'size', '_size', 'border-width', 'border-radius'], token) &&
-                !(pathStartsWithOneOf(['typography'], token) && token.path.includes('fontSize'))
+                (pathStartsWithOneOf(['font-size'], token) || token.path.includes('fontSize'))
               );
             },
           },

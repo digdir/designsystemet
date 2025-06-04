@@ -51,6 +51,9 @@ export const createThemeCSSFiles = ({
    * This ensures a deterministic order, whereas earlier this was nondeterministic
    */
   const sortOrder = [
+    'size/small',
+    'size/medium',
+    'size/large',
     'color-scheme/light',
     'typography/secondary',
     'semantic',
