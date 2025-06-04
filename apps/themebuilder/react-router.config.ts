@@ -2,6 +2,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { cwd } from 'node:process';
 import type { Config } from '@react-router/dev/config';
+import { vercelPreset } from '@vercel/react-router/vite';
 import { normalizePath } from 'vite';
 
 // Ensure we always have a valid dirname, even in Vercel's environment
@@ -12,6 +13,7 @@ const config: Config = {
   // Server-side render by default, to enable SPA mode set this to `false`
   ssr: true,
   buildDirectory: 'dist',
+  presets: [vercelPreset()],
   buildEnd: async ({ buildManifest: rrBuild }) => {
     const manifestPath = join(
       dirname,
