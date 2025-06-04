@@ -15,6 +15,8 @@ export const ThemePages = () => {
   const colors = useThemeStore((state) => state.colors);
   const borderRadius = useThemeStore((state) => state.baseBorderRadius);
 
+  console.log(colors);
+
   return (
     <>
       <div
@@ -24,7 +26,7 @@ export const ThemePages = () => {
       >
         <OverviewComponents
           colorScheme={colorScheme}
-          color={colors.main[0]?.colors[colorScheme][11].hex}
+          color={colors.main[0]?.colors.light[11].hex}
           borderRadius={borderRadius}
         />
       </div>
