@@ -80,8 +80,47 @@ export const semantic: Format = {
     );
     const formattedTokens = [R.map(format, restTokens).join('\n'), formatSizingTokens(format, sizingTokens)];
 
-    const content = `{\n${formattedTokens.join('\n')}\n}\n`;
-    const body = R.isNotNil(layer) ? `@layer ${layer} {\n${selector} ${content}\n}\n` : `${selector} ${content}\n`;
+    const sizeAttributes = `
+[data-size='xs'] {
+  font-weight: var(--ds-body-xs-font-weight);
+  line-height: var(--ds-body-xs-line-height);
+  font-size: var(--ds-body-xs-font-size);
+  letter-spacing: var(--ds-body-xs-letter-spacing);
+}
+
+[data-size='sm'] {
+  font-weight: var(--ds-body-sm-font-weight);
+  line-height: var(--ds-body-sm-line-height);
+  font-size: var(--ds-body-sm-font-size);
+  letter-spacing: var(--ds-body-sm-letter-spacing);
+}
+
+/* Setting default font on <body> not :root/<html> to ensure 1rem is still 16px */
+body,
+[data-size='md'] {
+  font-weight: var(--ds-body-md-font-weight);
+  line-height: var(--ds-body-md-line-height);
+  font-size: var(--ds-body-md-font-size);
+  letter-spacing: var(--ds-body-md-letter-spacing);
+}
+
+[data-size='lg'] {
+  font-weight: var(--ds-body-lg-font-weight);
+  line-height: var(--ds-body-lg-line-height);
+  font-size: var(--ds-body-lg-font-size);
+  letter-spacing: var(--ds-body-lg-letter-spacing);
+}
+
+[data-size='xl'] {
+  font-weight: var(--ds-body-xl-font-weight);
+  line-height: var(--ds-body-xl-line-height);
+  font-size: var(--ds-body-xl-font-size);
+  letter-spacing: var(--ds-body-xl-letter-spacing);
+}
+`.trim();
+
+    const content = `${selector} {\n${formattedTokens.join('\n')}\n}\n${sizeAttributes}\n`;
+    const body = R.isNotNil(layer) ? `@layer ${layer} {\n${content}\n}\n` : `${content}\n`;
 
     return body;
   },
