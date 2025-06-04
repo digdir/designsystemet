@@ -75,7 +75,7 @@ export default function Home({ params: { lang } }: Route.ComponentProps) {
                 </Link>
               </Button>
               <Button data-color='neutral' variant='secondary' asChild>
-                <Link to='https://www.designsystemet.no/grunnleggende/for-designere/eget-tema'>
+                <Link to='https://www.designsystemet.no/no/fundamentals/for-designers/own-theme'>
                   <BookIcon fontSize='1.5rem' aria-hidden />
                   {t('themeBuilder.documentation')}
                 </Link>
