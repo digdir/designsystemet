@@ -10,7 +10,7 @@ export const sizeVariables: GetStyleDictionaryConfig = ({ theme, size }) => {
     medium: 'md',
     large: 'lg',
   };
-  const selector = `${size === 'medium' ? ':root, ' : ''}[data-size="${shortNames[size] ?? size}"]`;
+  const selector = `:root, [data-size]`;
   const layer = `ds.theme.size`;
 
   return {
@@ -22,6 +22,7 @@ export const sizeVariables: GetStyleDictionaryConfig = ({ theme, size }) => {
     },
     platforms: {
       css: {
+        size: shortNames[size],
         prefix,
         selector,
         layer,
@@ -38,7 +39,7 @@ export const sizeVariables: GetStyleDictionaryConfig = ({ theme, size }) => {
         files: [
           {
             destination: `size/${size}.css`,
-            format: formats.typography.name,
+            format: formats.typographySize.name,
             filter: (token) => {
               const included = typeEquals(['typography', 'dimension', 'fontsize'], token);
 

@@ -120,6 +120,19 @@ body,
 [data-size='lg'] {
   --ds-data-size--lg: ;
 }
+/* This should not be included in base, but as an example recipe for consumers */
+[data-size='auto'] {
+  @media (width < 600px) {
+    --ds-data-size--sm: ;
+  }
+  @media (600px <= width < 1024px) {
+    --ds-data-size--md: ;
+  }
+  @media (1024px < width) {
+    --ds-data-size--lg: ;
+  }
+}
+
 [data-size] {
   --_if-sm: var(--ds-data-size--sm) var(--ds-body-sm-font-size);
   --_if-md: var(--ds-data-size--md) var(--ds-body-md-font-size);
