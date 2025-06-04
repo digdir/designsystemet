@@ -7,7 +7,7 @@ import { useCheckboxGroup } from './useCheckboxGroup';
 
 # useCheckboxGroup
 
-En react hook for å koble sammen en gruppe av checkboxer.
+En React-hook for å lettere håndtere en gruppe av `Checkbox`-komponenter.
 
 <Primary />
 
@@ -35,6 +35,16 @@ return (
     <ValidationMessage {...validationMessageProps} />
   </Fieldset>
 );
+```
+<br />
+I response får du objektet:
+```ts
+{
+  getCheckboxProps: (value: string | CheckboxProps) => CheckboxProps, // Returnerer props du kan spre på <Checkbox /> eller <input type="checkbox" />
+  validationMessageProps: ValidationMessageProps, // Props du valgfritt sprer på ValidationMessage for å koble feilmelding til checkbox gruppen
+  setValue: string, // Funksjon for å sette checkbox gruppens verdi
+  value: string, // Nåværende verdi for checkbox gruppen
+}
 ```
 
 ## Tillat indeterminate
