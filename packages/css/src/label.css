@@ -1,4 +1,5 @@
 .ds-label {
+  font-size: var(--ds-font-size-4);
   font-weight: var(--ds-font-weight-medium);
 
   &[data-weight='semibold'] {
