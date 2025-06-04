@@ -11,7 +11,6 @@ import {
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import { Outlet, isRouteErrorResponse, useRouteLoaderData } from 'react-router';
-import { useChangeLanguage } from 'remix-i18next/react';
 import type { Route } from './+types/layout';
 import type { Route as RootRoute } from './../../+types/root';
 
@@ -50,8 +49,6 @@ export default function RootLayout() {
       href: string;
     }[];
   };
-
-  useChangeLanguage(lang);
 
   return (
     <>

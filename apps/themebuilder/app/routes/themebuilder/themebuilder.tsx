@@ -36,8 +36,8 @@ export const meta: Route.MetaFunction = ({ data }: Route.MetaArgs) => {
 export default function Page() {
   return (
     <ColorModalProvider>
+      <ThemeHeader />
       <main className={classes.page} id='main'>
-        <ThemeHeader />
         <div className={classes.container}>
           <div className={classes.sideBarContainer}>
             <Sidebar />
