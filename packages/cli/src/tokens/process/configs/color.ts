@@ -56,7 +56,7 @@ export const colorCategoryVariables =
     }
 
     const layer = `ds.theme.color`;
-    const isRootColor = color === buildOptions?.rootColor;
+    const isRootColor = color === buildOptions?.defaultColor;
     const selector = isRootColor
       ? `:root, [data-color-scheme], [data-color="${color}"]`
       : `[data-color="${color}"], [data-color-scheme][data-color="${color}"]`;

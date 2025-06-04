@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 import type { Tokens } from 'style-dictionary';
 import type { DesignToken, TransformedToken } from 'style-dictionary/types';
-import type { TokenSet } from './types.js';
+import { type ColorCategories, type TokenSet, colorCategories } from './types.js';
 
 const mapToLowerCase = R.map<string, string>(R.toLower);
 
@@ -65,9 +65,11 @@ export function isGlobalColorToken(token: TransformedToken): boolean {
   return typeEquals('color', token) && pathStartsWithOneOf(['global'], token);
 }
 
-export function isColorCategoryToken(token: TransformedToken, category?: 'main' | 'support'): boolean {
+export function isColorCategoryToken(token: TransformedToken, category?: ColorCategories): boolean {
   if (!category) {
-    return (['main', 'support'] as const).some((c) => isColorCategoryToken(token, c));
+    return Object.keys(colorCategories).some((colorCategory) =>
+      isColorCategoryToken(token, colorCategory as ColorCategories),
+    );
   }
   return R.startsWith(['color', category], token.path);
 }

@@ -17,11 +17,12 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 
 ## 🔗 Links
 
-[Storybook](https://storybook.designsystemet.no/) - Preview for React components.
 
-[Storefront](https://designsystemet.no/) - General documentation.
+[www](https://designsystemet.no/) - Documentation.
 
-[Theme](https://theme.designsystemet.no/) - Themebuilder.
+[Storybook](https://storybook.designsystemet.no/) - Preview for HTML, CSS & React components.
+
+[Theme builder](https://theme.designsystemet.no/) - Theme builder.
 
 ## 📦 Packages
 
@@ -52,14 +53,14 @@ Install `@digdir/designsystemet-theme` if you need any of the Digdir themes. Use
 
 #### 1.1 Custom theme
 
-Create your own theme for Designsystemet by going to our [theme-builder](https://theme.designsystemet.no/).
+Create your own theme for Designsystemet by going to our [theme builder](https://theme.designsystemet.no/).
 
 Designsystemet theming is defined using [design-tokens](https://www.uxpin.com/studio/blog/what-are-design-tokens). 
 This is done so that you can use [Token Studio](https://tokens.studio/) to sync your theme in code with [Designsystemet Figma UI kit](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit), in addition to provide future flexibility.
 
-Run `npx @digdir/designsystemet tokens build` to build CSS files for your custom theme (from the design-tokens) which you can then import and use with Designsystemet.
+Run `npx @digdir/designsystemet tokens build` to build a CSS file for your custom theme (from your design-tokens) which you can then import to theme Designsystemet.
 
-Using a custom theme you can skip the `@digdir/designsystemet-theme`.
+** Using a custom theme you can skip the `@digdir/designsystemet-theme` **
 
 
 #### 1.2 React
@@ -91,7 +92,7 @@ If you want this, add the following to your `tsconfig.json`:
     // ...other compilerOptions
     "types": [
       // ...other types
-      "@digdir/designsystemet-theme" or "<custom-theme>/colors.d.ts",
+      "<custom-theme>/colors.d.ts" or "@digdir/designsystemet-theme" ,
       "@digdir/designsystemet-react/react-types",
       ]
   },

@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet-theme",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "Predefined themes for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -17,13 +17,18 @@
     "./*": "./brand/*",
     "./configs/*": "./configs/*"
   },
-  "files": ["brand/**", "*.css", "configs/**"],
+  "files": [
+    "brand/**",
+    "*.css",
+    "configs/**",
+    "src/themes/**"
+  ],
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
     "designsystemet:tokens-create": "pnpm designsystemet tokens create --config ./configs/designsystemet.config.json",
-    "designsystemet:tokens-build": "pnpm designsystemet tokens build -t ../../design-tokens -o ./src/themes --clean",
+    "designsystemet:tokens-build": "pnpm designsystemet tokens build --config ./configs/designsystemet.config.json -t ../../design-tokens -o ./src/themes --clean ",
     "update:theme": "pnpm designsystemet:tokens-create && pnpm designsystemet:tokens-build"
   },
   "devDependencies": {

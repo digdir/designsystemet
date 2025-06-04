@@ -23,9 +23,9 @@
     "@web/www",
     "@web/themebuilder",
     "theme",
-    "storefront",
     "@internal/components",
     "@web/storybook",
-    "@plugin/figma"
+    "@plugin/figma",
+    "@internal/rr-components"
   ]
 }

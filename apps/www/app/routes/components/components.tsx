@@ -47,8 +47,14 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   };
 };
 
-export const meta = ({ data: { metadata } }: Route.MetaArgs) => {
-  return metadata;
+export const meta = ({ data }: Route.MetaArgs) => {
+  if (!data)
+    return [
+      {
+        title: 'Designsystemet',
+      },
+    ];
+  return data.metadata;
 };
 
 export default function Components() {
@@ -63,7 +69,7 @@ export default function Components() {
         <BannerHeading level={1}>{t('components.title')}</BannerHeading>
         <BannerIngress>{t('components.description')}</BannerIngress>
       </Banner>
-      <ContentContainer className={classes.grid}>
+      <ContentContainer className={classes.grid} data-is-main={true}>
         {sortedData.map((component) => (
           <ComponentCard key={component.title} {...component} />
         ))}

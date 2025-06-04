@@ -1,5 +1,21 @@
 # Change Log
 
+## 1.0.8
+
+## 1.0.7
+
+### Patch Changes
+
+- Updated non-major dependencies ([#3594](https://github.com/digdir/designsystemet/pull/3594))
+
+- Updated non-major dependencies ([#3630](https://github.com/digdir/designsystemet/pull/3630))
+
+- Updated non-major dependencies ([#3656](https://github.com/digdir/designsystemet/pull/3656))
+
+- Remove outdated `@layer` definition in generated theme file ([#3551](https://github.com/digdir/designsystemet/pull/3551))
+
+- Update zod to v4 ([#3639](https://github.com/digdir/designsystemet/pull/3639))
+
 ## 1.0.6
 
 ### Patch Changes

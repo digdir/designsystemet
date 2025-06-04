@@ -22,10 +22,15 @@ export const loader = async ({ params: { lang } }: Route.ComponentProps) => {
   };
 };
 
-export const meta: Route.MetaFunction = ({
-  data: { metadata },
-}: Route.MetaArgs) => {
-  return metadata;
+export const meta: Route.MetaFunction = ({ data }: Route.MetaArgs) => {
+  if (!data?.metadata)
+    return [
+      {
+        title: 'Theme Builder',
+        description: 'Build your own theme for Designsystemet',
+      },
+    ];
+  return data.metadata;
 };
 
 export default function Page() {

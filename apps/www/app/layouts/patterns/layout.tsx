@@ -98,7 +98,7 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
           <BannerIngress>{t('patterns.description')}</BannerIngress>
         </Banner>
       ) : null}
-      <ContentContainer>
+      <ContentContainer data-is-main={!isPatternsPage}>
         <div className={classes['sidebar-container']} data-color='neutral'>
           <Sidebar
             cats={cats}
