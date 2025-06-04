@@ -17,6 +17,9 @@ importers:
       '@changesets/cli':
         specifier: ^2.29.4
         version: 2.29.4
+      '@storybook/addon-docs':
+        specifier: ^9.0.4
+        version: 9.0.4(@types/react@19.1.6)(storybook@9.0.4(@testing-library/dom@10.4.0)(prettier@3.5.3))
       '@svitejs/changesets-changelog-github-compact':
         specifier: ^1.2.0
         version: 1.2.0
