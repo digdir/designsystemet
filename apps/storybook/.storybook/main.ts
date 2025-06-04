@@ -78,7 +78,7 @@ const config: StorybookConfig = {
     'storybook-addon-pseudo-states',
     '@storybook/addon-vitest',
     '@whitespace/storybook-addon-html',
-    '@storybook/addon-docs'
+    '@storybook/addon-docs',
   ],
   staticDirs: ['../assets'],
   framework: {
