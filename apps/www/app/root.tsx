@@ -98,7 +98,11 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     },
   ];
 
-  return data({ lang: params.lang, centerLinks, menu });
+  return data({
+    lang: params.lang,
+    centerLinks,
+    menu,
+  });
 };
 
 type DocumentProps = {
