@@ -53,36 +53,38 @@ export default function Home({ params: { lang } }: Route.ComponentProps) {
     }
   };
   return (
-      <main className={classes.main} id='main'>
-        <ContentContainer>
-          <div className={classes.header}>
-            <Paragraph data-size='lg'>{t('themeBuilder.intro')}</Paragraph>
-            <Heading data-size='xl' level={1} className={classes.heading}>
-              {t('themeBuilder.heading')}{' '}
-              <span className={classes.headerText}>
-                {t('themeBuilder.heading-highlight')}
-              </span>
-            </Heading>
-            <Paragraph data-size='md' variant='long' className={classes.desc}>
-              {t('themeBuilder.description')}
-            </Paragraph>
-            <div className={classes.btnGroup}>
-              <Button data-color='neutral' asChild>
-                <Link to={`/${lang}/themebuilder`}>
-                  <PaletteIcon fontSize='1.5rem' aria-hidden />
-                  {t('themeBuilder.build-theme')}
-                </Link>
-              </Button>
-              <Button data-color='neutral' variant='secondary' asChild>
-                <Link to={`https://www.designsystemet.no/${lang}/fundamentals/for-designers/own-theme`}>
-                  <BookIcon fontSize='1.5rem' aria-hidden />
-                  {t('themeBuilder.documentation')}
-                </Link>
-              </Button>
-            </div>
+    <main className={classes.main} id='main'>
+      <ContentContainer>
+        <div className={classes.header}>
+          <Paragraph data-size='lg'>{t('themeBuilder.intro')}</Paragraph>
+          <Heading data-size='xl' level={1} className={classes.heading}>
+            {t('themeBuilder.heading')}{' '}
+            <span className={classes.headerText}>
+              {t('themeBuilder.heading-highlight')}
+            </span>
+          </Heading>
+          <Paragraph data-size='md' variant='long' className={classes.desc}>
+            {t('themeBuilder.description')}
+          </Paragraph>
+          <div className={classes.btnGroup}>
+            <Button data-color='neutral' asChild>
+              <Link to={`/${lang}/themebuilder`}>
+                <PaletteIcon fontSize='1.5rem' aria-hidden />
+                {t('themeBuilder.build-theme')}
+              </Link>
+            </Button>
+            <Button data-color='neutral' variant='secondary' asChild>
+              <Link
+                to={`https://www.designsystemet.no/${lang}/fundamentals/for-designers/own-theme`}
+              >
+                <BookIcon fontSize='1.5rem' aria-hidden />
+                {t('themeBuilder.documentation')}
+              </Link>
+            </Button>
           </div>
-          <Previews />
-        </ContentContainer>
-      </main>
+        </div>
+        <Previews />
+      </ContentContainer>
+    </main>
   );
 }
