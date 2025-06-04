@@ -12,7 +12,14 @@ En react-hook for å lettere håndtere en gruppe med `Radio`.
 
 
 ## Bruk
+
 Under er et enkelt eksempel på hvordan du bruker `useRadioGroup`-hooken for å håndtere en radio gruppe.
+
+I `getRadioProps` denne funksjonen er første parameter `value` som er en unik identifikator for radioen, eller et objekt med alt som kan legges på en radio.
+Dersom du sender inn eit objekt, så må du passe på å ha med `value`.
+
+**Det er viktig at du sender inn props i `getRadioProps`, slik at du ikke overskriver vår funksjonalitet.**
+
 ```tsx
 const { getRadioProps, validationMessageProps } = useRadioGroup({
   name: 'my-radio-group',
@@ -39,7 +46,7 @@ I respons får du objektet:
 ```ts
 {
   getRadioProps: (value: string | RadioProps) => RadioProps, // Returnerer props du kan spre på <Radio /> eller <input type="radio" />
-  validationMessageProps: ValidationMessageProps, // Props du valgfritt spre på ValidationMessage for å koble feilmelding til radio gruppen
+  validationMessageProps: ValidationMessageProps, // Props du valgfritt sprer på ValidationMessage for å koble feilmelding til radio gruppen
   setValue: string, // Funksjon for å sette radio gruppens verdi
   value: string, // Nåværende verdi for radio gruppen
 }

@@ -43,7 +43,6 @@ export const UseRadioGroup = (_props: UseRadioGroupProps) => (
 
 export default {
   title: 'Utilities/useRadioGroup',
-  tags: ['!dev'], // Hide from sidebar as documented in https://storybook.js.org/docs/writing-stories/tags
   component: UseRadioGroup,
   argTypes: {
     name: {
