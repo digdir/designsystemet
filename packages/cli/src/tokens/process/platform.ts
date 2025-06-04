@@ -80,6 +80,7 @@ const getCustomColors = (processed$themes: ProcessedThemeObject[], colorGroups: 
  */
 const buildConfigs = {
   typography: { getConfig: configs.typographyVariables, dimensions: ['typography'] },
+  size: { getConfig: configs.sizeVariables, dimensions: ['size'] },
   'color-scheme': { getConfig: configs.colorSchemeVariables, dimensions: ['color-scheme'] },
   'main-color': { getConfig: configs.mainColorVariables, dimensions: ['main-color'] },
   'support-color': { getConfig: configs.supportColorVariables, dimensions: ['support-color'] },
@@ -150,9 +151,7 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
   buildOptions = options;
   buildOptions.defaultColor = UNSAFE_DEFAULT_COLOR;
 
-  const processed$themes = $themes
-    .map(processThemeObject)
-    .filter((theme) => R.not(theme.group === 'size' && theme.name !== 'medium'));
+  const processed$themes = $themes.map(processThemeObject);
 
   const customColors = getCustomColors(processed$themes, colorGroups);
 
@@ -198,6 +197,7 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
     'info-color': [initResult],
     semantic: [initResult],
     typography: [initResult],
+    size: [initResult],
     types: [initResult],
   };
 
