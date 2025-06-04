@@ -321,7 +321,10 @@ export const InDialog: StoryFn<typeof Combobox> = (args) => {
     <Dialog.TriggerContext>
       <Dialog.Trigger>Open Dialog</Dialog.Trigger>
       <Dialog style={{ overflow: 'visible' }}>
-        <Heading data-size='xs' style={{ marginBottom: 'var(--ds-size-2)' }}>
+        <Heading
+          data-font-size='xs'
+          style={{ marginBottom: 'var(--ds-size-2)' }}
+        >
           Combobox i Dialog
         </Heading>
         <Combobox

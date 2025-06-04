@@ -102,7 +102,7 @@ export const Form: StoryFn<typeof Search> = () => {
         </Search>
       </form>
 
-      <Paragraph data-size='md' style={{ marginTop: 'var(--ds-size-2)' }}>
+      <Paragraph data-font-size='md' style={{ marginTop: 'var(--ds-size-2)' }}>
         Submitted value: {submittedValue}
       </Paragraph>
     </>

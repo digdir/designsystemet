@@ -54,7 +54,7 @@
         display: flex;
       }
 
-      &:not([data-size]) {
+      &:not([data-font-size]) {
         font-size: inherit; /* Ensure inheriting font-size when <button> */
       }
 
