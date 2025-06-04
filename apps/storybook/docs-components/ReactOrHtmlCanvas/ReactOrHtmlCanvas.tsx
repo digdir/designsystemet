@@ -5,8 +5,8 @@ import {
   type Of,
   useOf,
 } from '@storybook/addon-docs/blocks';
-import type { Globals, PreparedStory } from 'storybook/internal/types';
 import { useContext, useEffect, useState } from 'react';
+import type { Globals, PreparedStory } from 'storybook/internal/types';
 const GLOBALS_UPDATED = 'globalsUpdated';
 
 // internal Storybook hook, copied from

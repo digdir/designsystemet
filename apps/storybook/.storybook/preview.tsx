@@ -230,7 +230,7 @@ const preview: Preview = {
         type: 'auto',
       },
 
-      codePanel: true
+      codePanel: true,
     },
     controls: {
       matchers: {

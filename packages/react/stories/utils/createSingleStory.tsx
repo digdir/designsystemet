@@ -5,8 +5,11 @@ import {
   type StoryObj,
   composeStories,
 } from '@storybook/react-vite';
-import type { Store_CSFExports, StoryAnnotationsOrFn } from 'storybook/internal/types';
 import { type PropsWithChildren, createElement } from 'react';
+import type {
+  Store_CSFExports,
+  StoryAnnotationsOrFn,
+} from 'storybook/internal/types';
 
 type Story<T> = StoryObj<T> | StoryFn<T>;
 
