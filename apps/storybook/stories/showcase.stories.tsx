@@ -30,7 +30,7 @@ export default {
   },
 } as Meta;
 
-const sizes: Size[] = ['sm', 'md', 'lg'];
+const sizes: (Size | 'auto')[] = ['sm', 'md', 'lg', 'auto'];
 const colorModes = ['light', 'dark', 'auto'];
 const typography = ['primary', 'secondary'];
 
