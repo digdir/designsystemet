@@ -32,13 +32,6 @@
   --dsc-focus-outline: var(--ds-color-focus-outer) solid var(--ds-border-width-focus);
 }
 
-/* Set default background and color on <body> (not :root) to align with best practice */
-body,
-[data-color-scheme] {
-  color: var(--ds-color-neutral-text-default);
-  background: var(--ds-color-neutral-background-default);
-}
-
 .ds-readonly-icon::before {
   background: currentcolor;
   content: '';

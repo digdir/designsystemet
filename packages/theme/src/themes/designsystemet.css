@@ -156,7 +156,7 @@ design-tokens: v1.0.8
 
   color-scheme: light;
 }
- 
+
 @media (prefers-color-scheme: light) {
   [data-color-scheme="auto"] {
   --ds-color-accent-background-default: #ffffff;
@@ -310,6 +310,13 @@ design-tokens: v1.0.8
   color-scheme: light;
 }
 
+}
+
+/* Set default background and color on <body> (not :root) to align with best practice */
+body,
+[data-color-scheme] {
+  color: var(--ds-color-neutral-text-default);
+  background: var(--ds-color-neutral-background-default);
 }
 
 }
@@ -688,7 +695,7 @@ body,
 
   color-scheme: dark;
 }
- 
+
 @media (prefers-color-scheme: dark) {
   [data-color-scheme="auto"] {
   --ds-color-accent-background-default: #0c1927;
