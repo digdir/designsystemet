@@ -104,7 +104,7 @@ export const WithOptgroup: StoryFn<typeof Select> = (args) => (
         <Select.Option value='olafryesplass'>Olaf Ryes plass</Select.Option>
       </Select.Optgroup>
       <Select.Optgroup label='Sentrum'>
-        <Select.Option value='slotsparken'>Slottsparken</Select.Option>
+        <Select.Option value='slottsparken'>Slottsparken</Select.Option>
         <Select.Option value='studenterlunden'>Studenterlunden</Select.Option>
       </Select.Optgroup>
       <Select.Optgroup label='Gamle Oslo'>

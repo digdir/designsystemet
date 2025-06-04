@@ -5,7 +5,7 @@ import * as useRadioGroupStories from './useRadioGroup.stories';
 
 # useRadioGroup
 
-En react-hook for å lettere håndtere en gruppe med `Radio`.
+En React-hook for å lettere håndtere en gruppe med `Radio`-komponenter.
 
 <Primary />
 <Controls />
@@ -13,12 +13,12 @@ En react-hook for å lettere håndtere en gruppe med `Radio`.
 
 ## Bruk
 
-Under er et enkelt eksempel på hvordan du bruker `useRadioGroup`-hooken for å håndtere en radio gruppe.
+Under er et enkelt eksempel på hvordan du bruker `useRadioGroup`-hooken for å håndtere en gruppe med `Radio`-komponenter.
 
-I `getRadioProps` denne funksjonen er første parameter `value` som er en unik identifikator for radioen, eller et objekt med alt som kan legges på en radio.
-Dersom du sender inn eit objekt, så må du passe på å ha med `value`.
+I funksjonen `getRadioProps` er første parameter `value`, som er en unik identifikator for alternativet, eller et objekt med props som skal legges på `Radio`-komponenten.
+Dersom du sender inn et objekt, må du passe på at det inneholder `value`.
 
-**Det er viktig at du sender inn props i `getRadioProps`, slik at du ikke overskriver vår funksjonalitet.**
+**Viktig:** Dersom du skal sende props til en `Radio`, er det viktig at du sender disse som objekt til `getRadioProps` og **ikke** direkte på `Radio`. Ellers kan du risikere å overstyre funksjonaliteten fra `useRadioGroup`.
 
 ```tsx
 const { getRadioProps, validationMessageProps } = useRadioGroup({
@@ -46,15 +46,15 @@ I respons får du objektet:
 ```ts
 {
   getRadioProps: (value: string | RadioProps) => RadioProps, // Returnerer props du kan spre på <Radio /> eller <input type="radio" />
-  validationMessageProps: ValidationMessageProps, // Props du valgfritt sprer på ValidationMessage for å koble feilmelding til radio gruppen
-  setValue: string, // Funksjon for å sette radio gruppens verdi
-  value: string, // Nåværende verdi for radio gruppen
+  validationMessageProps: ValidationMessageProps, // Props du valgfritt sprer på ValidationMessage for å koble feilmelding til radiogruppen
+  setValue: string, // Funksjon for å sette radiogruppens verdi
+  value: string, // Nåværende verdi for radiogruppen
 }
 ```
 
 ## Eksempler
 
 ### Kontrollert
-Hooken gir den `value` og `setValue` for å kontrollere verdien av radio gruppen.
+Du kan bruke `value` og `setValue` fra `useRadioGroup` for å kontrollere hvilket alternativ som er valgt.
 
 <Canvas of={useRadioGroupStories.Controlled} />
