@@ -56,6 +56,8 @@
     "@digdir/designsystemet-css": "workspace:^",
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-node-resolve": "^16.0.1",
+    "@storybook/addon-docs": "^9.0.4",
+    "@storybook/react-vite": "^9.0.4",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
