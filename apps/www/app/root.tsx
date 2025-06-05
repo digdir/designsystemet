@@ -52,15 +52,7 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 
   const lang = params.lang;
 
-  if (!hasRedirect) {
-    const trimmed =
-      url.pathname.charAt(url.pathname.length - 1) === '/'
-        ? url.pathname.slice(0, -1)
-        : url.pathname;
-    if (lang !== 'no' && lang !== 'en' && trimmed.split('/').length === 2) {
-      return redirect('/no');
-    }
-  } else {
+  if (hasRedirect) {
     return hasRedirect;
   }
 

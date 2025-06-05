@@ -22,6 +22,13 @@ import type { Route } from './+types/home';
 import classes from './home.module.css';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
+  if (lang !== 'no' && lang !== 'en') {
+    throw new Response('Not Found', {
+      status: 404,
+      statusText: 'Not Found',
+    });
+  }
+
   /* Get all files in /content/blog for the lang we have selected */
   const files = getFilesFromContentDir(join('blog', lang));
 

@@ -39,6 +39,16 @@ const rightLinks: FooterLinkListItemProps[] = [
   },
 ];
 
+export const loader = ({ params }: Route.LoaderArgs) => {
+  const lang = params.lang;
+  if (lang !== 'no' && lang !== 'en') {
+    throw new Response('Not Found', {
+      status: 404,
+      statusText: 'Not Found',
+    });
+  }
+};
+
 export default function RootLayout() {
   const { t } = useTranslation();
   const { lang, centerLinks, menu } = useRouteLoaderData('root') as Omit<
