@@ -65,7 +65,7 @@ export default function NotFound({ loaderData }: Route.ComponentProps) {
         >
           404 - Not Found
         </Heading>
-        <Paragraph>The page you are looking for does not exist.</Paragraph>
+        <Paragraph>The page you are looking for can't be found.</Paragraph>
         <Button
           asChild
           style={{
