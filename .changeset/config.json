@@ -23,7 +23,6 @@
     "@web/www",
     "@web/themebuilder",
     "theme",
-    "@internal/components",
     "@web/storybook",
     "@plugin/figma",
     "@internal/rr-components"

@@ -28,7 +28,7 @@ import {
 } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { type HTMLAttributes, useState } from 'react';
-import classes from './Showcase.module.css';
+import classes from './showcase.module.css';
 
 const DATA_PLACES = [
   'Sogndal',
