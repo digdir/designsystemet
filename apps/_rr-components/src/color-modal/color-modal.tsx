@@ -33,9 +33,7 @@ export const ColorModal = ({
   const [convertedColor, setConvertedColor] = useState<string>(
     convertColor(hex, 'oklch'),
   );
-  const { t } = useTranslation('', {
-    keyPrefix: 'color-modal',
-  });
+  const { t } = useTranslation();
 
   const handleColorFormat = (event: ChangeEvent<HTMLSelectElement>) => {
     setConvertedColor(convertColor(hex, event.target.value));
@@ -63,7 +61,9 @@ export const ColorModal = ({
           {description.long}
         </Paragraph>
         <div data-size='sm' className={classes.grid}>
-          <Paragraph className={classes.key}>{t('hexcode')}</Paragraph>
+          <Paragraph className={classes.key}>
+            {t('color-modal.hexcode')}
+          </Paragraph>
           <Paragraph asChild className={classes.value}>
             <div>
               {hex} <ClipboardButton value={hex} />
@@ -84,13 +84,15 @@ export const ColorModal = ({
             {convertedColor}
             <ClipboardButton value={convertedColor} />
           </Paragraph>
-          <Paragraph className={classes.key}>{t('css-variable')}</Paragraph>
+          <Paragraph className={classes.key}>
+            {t('color-modal.css-variable')}
+          </Paragraph>
           <Paragraph className={classes.value}>
             {getCssVariable(namespace, number)}
             <ClipboardButton value={getCssVariable(namespace, number)} />
           </Paragraph>
           <Paragraph className={classes.key}>
-            {t('relative-luminance')}
+            {t('color-modal.relative-luminance')}
           </Paragraph>
           <Paragraph className={classes.value}>
             {getLuminanceFromColor(hex).toFixed(3)}
@@ -98,9 +100,10 @@ export const ColorModal = ({
           {number !== 9 && number !== 10 && number !== 11 && (
             <>
               <Paragraph className={classes.key}>
-                {t('can-be-used-against')}
+                {t('color-modal.can-be-used-against')}
               </Paragraph>
               <Paragraph className={classes.value}>
+                {/* @ts-ignore -- we trust the string passed to t() here */}
                 {t(getColorCombinations(number))}
               </Paragraph>
             </>

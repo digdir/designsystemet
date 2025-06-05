@@ -30,13 +30,15 @@ export const ClipboardButton = ({
 
   return (
     <>
+      {/* @ts-ignore -- we trust the string passed to t() here */}
       <Tooltip content={t(toolTipText)}>
         <Button
           onMouseEnter={() =>
             setToolTipText(
               title === 'clipboard-button.copy' && ariaLabel
                 ? ariaLabel
-                : t(title),
+                : // @ts-ignore -- we trust the string passed to t() here
+                  t(title),
             )
           }
           onClick={() => onBtnClick(value)}
