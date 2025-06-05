@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/digdir/designsystemet.git"
   },
-  "homepage": "https://github.com/digdir/designsystemet/tree/main/scripts/cli",
+  "homepage": "https://github.com/digdir/designsystemet/tree/main/packages/cli",
   "license": "MIT",
   "type": "module",
   "main": "./dist/src/index.js",
