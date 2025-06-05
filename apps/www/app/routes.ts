@@ -57,5 +57,9 @@ export default [
         id: 'components',
       }),
     ]),
+    index('routes/not-found.tsx'),
+    route('*', 'routes/not-found.tsx', {
+      id: 'not-found',
+    }),
   ]),
 ] satisfies RouteConfig;
