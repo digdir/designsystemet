@@ -89,31 +89,32 @@ function Theme() {
       return;
     }
 
-    /* For now we check that we have primary, accent, extra1, extra2 */
-    const primary = result.mainColors.find(
-      (color) => color.name === 'primary',
-    )?.hex;
+    /* For now we check that we have  accent, brand1, brand2, brand3 */
+
     const accent = result.mainColors.find(
       (color) => color.name === 'accent',
     )?.hex;
-    const extra1 = result.supportColors.find(
-      (color) => color.name === 'extra1',
+    const brand1 = result.supportColors.find(
+      (color) => color.name === 'brand1',
     )?.hex;
-    const extra2 = result.supportColors.find(
-      (color) => color.name === 'extra2',
+    const brand2 = result.supportColors.find(
+      (color) => color.name === 'brand2',
+    )?.hex;
+    const brand3 = result.mainColors.find(
+      (color) => color.name === 'brand3',
     )?.hex;
 
     const neutral = result.neutralColor;
 
-    if (!primary || !accent || !extra1 || !extra2) {
+    if (!brand3 || !accent || !brand1 || !brand2) {
       setCodeSnippetError(
-        'I denne versjonen av pluginen må du ha fargene primary, accent, extra1 og extra2',
+        'I denne versjonen av pluginen må du ha fargene  accent, brand1, brand2, brand3, i koden du limer inn. Prøv å lim inn på nytt.',
       );
       return;
     }
 
     console.log(
-      `Primary: ${primary}, Accent: ${accent}, Neutral: ${neutral}, Extra1: ${extra1}, Extra2: ${extra2}`,
+      `Primary: ${brand3}, Accent: ${accent}, Neutral: ${neutral}, Brand1: ${brand1}, Brand2: ${brand2}, Brand3: ${brand3}`,
     );
 
     const newArray = Array.from(themes);
@@ -122,10 +123,10 @@ function Theme() {
       colors: {
         ...newArray[themeIndex].colors,
         accent: themeToFigmaFormat(generateColorSchemes(accent)),
-        primary: themeToFigmaFormat(generateColorSchemes(primary)),
         neutral: themeToFigmaFormat(generateColorSchemes(neutral)),
-        extra1: themeToFigmaFormat(generateColorSchemes(extra1)),
-        extra2: themeToFigmaFormat(generateColorSchemes(extra2)),
+        brand1: themeToFigmaFormat(generateColorSchemes(brand1)),
+        brand2: themeToFigmaFormat(generateColorSchemes(brand2)),
+        brand3: themeToFigmaFormat(generateColorSchemes(brand3)),
       },
     };
 
