@@ -1,5 +1,6 @@
 import './style.css';
 import './customTheme.scss';
+/* We use relative imports to get live updates when developing */
 import '../../../packages/css/src/index.css';
 import '../../../packages/theme/src/themes/designsystemet.css';
 import { LinkIcon } from '@navikt/aksel-icons';
@@ -16,8 +17,8 @@ import {
   Table,
 } from '@digdir/designsystemet-react';
 
-import { Children, type MouseEventHandler } from 'react';
 import { CodeBlock } from '@internal/components';
+import { Children, type MouseEventHandler } from 'react';
 import { customStylesDecorator } from '../story-utils/customStylesDecorator';
 import { fontsLoader } from '../story-utils/fontsLoader';
 import { allModes, viewportWidths } from '../story-utils/modes';
