@@ -15,6 +15,7 @@ import './app.css';
 import { Error404 } from '@internal/rr-components';
 import { useTranslation } from 'react-i18next';
 import { useChangeLanguage } from 'remix-i18next/react';
+import { designsystemetRedirects } from './_utils/redirects.server';
 
 export const links = () => {
   return [
@@ -39,6 +40,7 @@ export const meta = () => {
 
 export const loader = async ({ params, request }: Route.LoaderArgs) => {
   const url = new URL(request?.url || '');
+
   /* if the url is slack, then redirect to slack */
   if (url.pathname === '/slack') {
     return redirect(
@@ -46,15 +48,13 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     );
   }
 
-  if (params.lang === undefined) {
-    return redirect('/no');
-  }
+  const hasRedirect = designsystemetRedirects(url.pathname);
 
-  if (params.lang !== 'no' && params.lang !== 'en') {
-    return redirect('/no');
-  }
+  const lang = params.lang === 'no' ? 'no' : params.lang === 'en' ? 'en' : 'no';
 
-  const lang = params.lang;
+  if (hasRedirect) {
+    return hasRedirect;
+  }
 
   const centerLinks = [
     {
@@ -99,7 +99,7 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   ];
 
   return data({
-    lang: params.lang,
+    lang: params.lang || 'no',
     centerLinks,
     menu,
   });
@@ -114,7 +114,11 @@ function Document({ children }: DocumentProps) {
 
   return (
     <html
-      lang={i18n.language}
+      lang={
+        i18n.language !== 'no' && i18n.language !== 'en'
+          ? undefined
+          : i18n.language
+      }
       dir={i18n.dir(i18n.language)}
       data-color-scheme='auto'
     >
@@ -141,6 +145,7 @@ function Document({ children }: DocumentProps) {
 
 export default function App({ loaderData: { lang } }: Route.ComponentProps) {
   useChangeLanguage(lang);
+
   return (
     <Document>
       <Outlet />
