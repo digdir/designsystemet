@@ -28,16 +28,22 @@ export const links: Route.LinksFunction = () => {
   ];
 };
 
-export const loader = async ({ params }: Route.LoaderArgs) => {
-  if (params.lang === undefined) {
-    return redirect('/no');
-  }
-
-  if (params.lang !== 'no' && params.lang !== 'en') {
-    return redirect('/no');
-  }
-
+export const loader = async ({ params, request }: Route.LoaderArgs) => {
+  const url = new URL(request.url);
   const lang = params.lang;
+
+  if (lang === undefined) {
+    return redirect('/no');
+  }
+
+  /* Redirect from old path to new path, with search params */
+  if (lang === 'themebuilder') {
+    return redirect(`/no/themebuilder?${url.searchParams.toString()}`);
+  }
+
+  if (lang !== 'no' && lang !== 'en') {
+    return redirect('/no');
+  }
 
   const centerLinks = [
     {
@@ -106,10 +112,12 @@ function Document({ children }: DocumentProps) {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <Links />
         <Meta />
-        <script
-          crossOrigin='anonymous'
-          src='//unpkg.com/react-scan/dist/auto.global.js'
-        />
+        {process.env.NODE_ENV === 'development' && (
+          <script
+            crossOrigin='anonymous'
+            src='//unpkg.com/react-scan/dist/auto.global.js'
+          />
+        )}
       </head>
       <body>
         <noscript>

@@ -12,6 +12,8 @@ import classes from './theme-pages.module.css';
 export const ThemePages = () => {
   const themeTab = useThemeStore((state) => state.themeTab);
   const colorScheme = useThemeStore((state) => state.colorScheme);
+  const colors = useThemeStore((state) => state.colors);
+  const borderRadius = useThemeStore((state) => state.baseBorderRadius);
 
   return (
     <>
@@ -20,7 +22,11 @@ export const ThemePages = () => {
         data-color-scheme={colorScheme}
         hidden={!(themeTab === 'overview')}
       >
-        <OverviewComponents />
+        <OverviewComponents
+          colorScheme={colorScheme}
+          color={colors.main[0]?.colors.light[11].hex}
+          borderRadius={borderRadius}
+        />
       </div>
 
       {themeTab === 'colorsystem' ? (

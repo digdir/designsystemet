@@ -5,19 +5,23 @@ export const capitalizeFirstLetter = (str: string) => {
 export const getColorCombinations = (colorNumber: number) => {
   let text = '';
   if (colorNumber === 1 || colorNumber === 2) {
-    text += 'Alle fargene.';
+    text += 'color-modal.color-combinations.all-colors';
   } else if (colorNumber === 3 || colorNumber === 4 || colorNumber === 5) {
-    text += 'Background subtle- og Default.';
+    text += 'color-modal.color-combinations.background-subtle-and-default';
   } else if (colorNumber === 6) {
-    text += 'Background fargene og Surface Default.';
+    text +=
+      'color-modal.color-combinations.background-colors-and-surface-default';
   } else if (colorNumber === 7 || colorNumber === 8) {
-    text += 'Background fargene og Surface Default';
+    text +=
+      'color-modal.color-combinations.background-colors-and-surface-default';
   } else if (colorNumber === 12) {
-    text += 'Background fargene og Surface Default.';
+    text +=
+      'color-modal.color-combinations.background-colors-and-surface-default';
   } else if (colorNumber === 13 || colorNumber === 14) {
-    text += 'Background- og Surface fargene.';
+    text +=
+      'color-modal.color-combinations.background-colors-and-surface-colors';
   } else if (colorNumber === 15 || colorNumber === 16) {
-    text += 'Base fargene.';
+    text += 'color-modal.color-combinations.base-colors';
   }
   return text;
 };

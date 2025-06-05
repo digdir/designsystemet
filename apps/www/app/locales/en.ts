@@ -1,6 +1,8 @@
+import en from '@internal/rr-components/src/_locales/en';
 import type no from './no';
 
 export default {
+  ...en,
   frontpage: {
     heading: 'Designsystemet helps you build better digital services',
     'for-designers': {
@@ -102,19 +104,6 @@ export default {
     components: 'Components',
     'theme-builder': 'Theme Builder',
   },
-  footer: {
-    about: 'About Designsystemet',
-    privacy: 'Privacy policy',
-    accessibility: 'Accessibility statement',
-    slack: 'Join us on Slack',
-    agencies: {
-      title: 'Created across public agencies:',
-      contact: 'Your agency? Contact us!',
-    },
-    'about-site': 'About this site',
-    'contact-us': 'Get in touch with us',
-    copyright: 'Designsystemet',
-  },
   accessibility: {
     'skip-link': 'Skip to main content',
   },
@@ -132,17 +121,6 @@ export default {
       title: 'Error',
       'go-to-homepage': 'Go to homepage',
     },
-  },
-  header: {
-    'home-link': 'Designsystemet home page',
-    menu: 'Menu',
-    'github-title': 'Designsystemet GitHub repository',
-    'figma-title': 'Designsystemet Figma project',
-    'theme-toggle': 'Switch to {{theme}} mode',
-    'theme-toggle-aria': 'Switch to {{theme}} mode',
-    light: 'light',
-    dark: 'dark',
-    'language-toggle': 'Switch language',
   },
   components: {
     title: 'Components',
