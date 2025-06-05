@@ -37,7 +37,7 @@ export default function NotFound({ loaderData }: Route.ComponentProps) {
         >
           404 - Fant ikke siden
         </Heading>
-        <Paragraph>Siden du leter etter eksisterer ikke.</Paragraph>
+        <Paragraph>Siden du leter etter finnes ikke.</Paragraph>
         <Button
           asChild
           style={{
