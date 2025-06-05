@@ -41,11 +41,6 @@ export default async function handleRequest(
   });
 
   return new Promise((resolve, reject) => {
-    /* const url = new URL(request.url);
-    const oldRedirect = designsystemetRedirects(url.pathname);
-    if (oldRedirect) {
-      return resolve(oldRedirect);
-    } */
     let shellRendered = false;
     const userAgent = request.headers.get('user-agent');
 
