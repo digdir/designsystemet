@@ -21,7 +21,6 @@
     "build:theme": "pnpm --filter theme build",
     "build:figma-plugin": "pnpm --filter @plugin/figma build",
     "build:react": "pnpm --filter @digdir/designsystemet-react build",
-    "build:tokens": "pnpm --filter @digdir/designsystemet build:tokens",
     "build:css": "pnpm --filter @digdir/designsystemet-css build",
     "build:cli": "pnpm --filter @digdir/designsystemet build",
     "build:storybook": "pnpm --filter @web/storybook build",
