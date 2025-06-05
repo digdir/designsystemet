@@ -50,7 +50,7 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 
   const hasRedirect = designsystemetRedirects(url.pathname);
 
-  const lang = params.lang;
+  const lang = params.lang === 'no' ? 'no' : params.lang === 'en' ? 'en' : 'no';
 
   if (hasRedirect) {
     return hasRedirect;
