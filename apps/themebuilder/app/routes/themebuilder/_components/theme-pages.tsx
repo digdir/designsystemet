@@ -15,8 +15,6 @@ export const ThemePages = () => {
   const colors = useThemeStore((state) => state.colors);
   const borderRadius = useThemeStore((state) => state.baseBorderRadius);
 
-  console.log(colors);
-
   return (
     <>
       <div

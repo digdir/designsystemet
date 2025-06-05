@@ -28,16 +28,24 @@ export const links: Route.LinksFunction = () => {
   ];
 };
 
-export const loader = async ({ params }: Route.LoaderArgs) => {
-  if (params.lang === undefined) {
+export const loader = async ({ params, request }: Route.LoaderArgs) => {
+  const url = new URL(request.url);
+  const lang = params.lang
+
+  if (lang === undefined) {
     return redirect('/no');
   }
 
-  if (params.lang !== 'no' && params.lang !== 'en') {
-    return redirect('/no');
+  /* Redirect from old path to new path, with search params */
+  if (lang === 'themebuilder') {
+    return redirect(
+      `/no/themebuilder?${url.searchParams.toString()}`,
+    )
   }
 
-  const lang = params.lang;
+  if (lang !== 'no' && lang !== 'en') {
+    return redirect('/no');
+  }
 
   const centerLinks = [
     {
