@@ -56,6 +56,9 @@ export default [
       route('/components', 'routes/components/components.tsx', {
         id: 'components',
       }),
+      route('*', 'routes/not-found.tsx', {
+        id: 'not-found-lang',
+      }),
     ]),
     index('routes/not-found.tsx'),
     route('*', 'routes/not-found.tsx', {

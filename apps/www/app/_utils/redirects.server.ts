@@ -1,9 +1,11 @@
 import { redirect } from 'react-router';
 
 export const designsystemetRedirects = (pathname: string) => {
-  console.log({ pathname });
-
-  const redirectUrl = redirects.find((r) => r.from === pathname.toLowerCase());
+  const redirectUrl = redirects.find(
+    (r) =>
+      r.from === pathname.toLowerCase() ||
+      r.from + '/' === pathname.toLowerCase(),
+  );
   if (redirectUrl) {
     return redirect(redirectUrl.to);
   }

@@ -7,16 +7,15 @@ import {
   data,
   isRouteErrorResponse,
   redirect,
-  useNavigate,
 } from 'react-router';
 import type { Route } from './+types/root';
 import '@digdir/designsystemet-theme';
 import '@digdir/designsystemet-css';
 import './app.css';
 import { Error404 } from '@internal/rr-components';
-import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useChangeLanguage } from 'remix-i18next/react';
+import { designsystemetRedirects } from './_utils/redirects.server';
 
 export const links = () => {
   return [
@@ -49,7 +48,21 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     );
   }
 
+  const hasRedirect = designsystemetRedirects(url.pathname);
+
   const lang = params.lang;
+
+  if (!hasRedirect) {
+    const trimmed =
+      url.pathname.charAt(url.pathname.length - 1) === '/'
+        ? url.pathname.slice(0, -1)
+        : url.pathname;
+    if (lang !== 'no' && lang !== 'en' && trimmed.split('/').length === 2) {
+      return redirect('/no');
+    }
+  } else {
+    return hasRedirect;
+  }
 
   const centerLinks = [
     {
@@ -135,13 +148,8 @@ function Document({ children }: DocumentProps) {
 }
 
 export default function App({ loaderData: { lang } }: Route.ComponentProps) {
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (lang !== 'no' && lang !== 'en') {
-      navigate('/no', { replace: true });
-    }
-  }, [lang, navigate]);
   useChangeLanguage(lang);
+
   return (
     <Document>
       <Outlet />
