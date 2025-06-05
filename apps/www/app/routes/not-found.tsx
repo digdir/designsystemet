@@ -9,29 +9,72 @@ export const loader = async ({ request }: Route.LoaderArgs) => {
   if (!lang) {
     return redirect('/no');
   }
+
+  return {
+    lang,
+  };
 };
 
-export default function NotFound() {
+export default function NotFound({ loaderData }: Route.ComponentProps) {
+  const { lang } = loaderData;
   return (
-    <ContentContainer lang='en'>
-      <Heading
-        level={1}
-        data-size='xl'
+    <ContentContainer>
+      <div
+        lang='no'
         style={{
-          marginTop: 'var(--ds-size-12)',
+          display:
+            lang === 'no' || (lang !== 'en' && lang !== 'no') ? 'flex' : 'none',
+          gap: 'var(--ds-size-2)',
+          flexDirection: 'column',
         }}
       >
-        404 - Not Found
-      </Heading>
-      <Paragraph>The page you are looking for does not exist.</Paragraph>
-      <Button
-        asChild
+        <Heading
+          level={1}
+          data-size='xl'
+          style={{
+            marginTop: 'var(--ds-size-12)',
+          }}
+        >
+          404 - Fant ikke siden
+        </Heading>
+        <Paragraph>Siden du leter etter eksisterer ikke.</Paragraph>
+        <Button
+          asChild
+          style={{
+            width: 'fit-content',
+          }}
+        >
+          <Link to='/no'>Gå hjem</Link>
+        </Button>
+      </div>
+      <div
+        lang='en'
         style={{
-          width: 'fit-content',
+          display:
+            lang === 'en' || (lang !== 'en' && lang !== 'no') ? 'flex' : 'none',
+          gap: 'var(--ds-size-2)',
+          flexDirection: 'column',
         }}
       >
-        <Link to='/no'>Go Home</Link>
-      </Button>
+        <Heading
+          level={lang === 'en' ? 1 : 2}
+          data-size='xl'
+          style={{
+            marginTop: 'var(--ds-size-12)',
+          }}
+        >
+          404 - Not Found
+        </Heading>
+        <Paragraph>The page you are looking for does not exist.</Paragraph>
+        <Button
+          asChild
+          style={{
+            width: 'fit-content',
+          }}
+        >
+          <Link to='/en'>Go Home</Link>
+        </Button>
+      </div>
     </ContentContainer>
   );
 }
