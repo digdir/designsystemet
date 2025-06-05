@@ -1,7 +1,7 @@
 {
   "name": "@plugin/figma",
   "private": true,
-  "version": "0.4.1",
+  "version": "0.5.0",
   "type": "module",
   "scripts": {
     "watch:ui": "npm run build:ui -- --watch --mode=development",
