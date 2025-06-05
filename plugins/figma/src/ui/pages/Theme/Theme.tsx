@@ -100,13 +100,13 @@ function Theme() {
     const brand2 = result.supportColors.find(
       (color) => color.name === 'brand2',
     )?.hex;
-    const brand3 = result.mainColors.find(
+    const brand3 = result.supportColors.find(
       (color) => color.name === 'brand3',
     )?.hex;
 
     const neutral = result.neutralColor;
 
-    if (!brand3 || !accent || !brand1 || !brand2) {
+    if (!accent || !brand1 || !brand2 || !brand3) {
       setCodeSnippetError(
         'I denne versjonen av pluginen må du ha fargene  accent, brand1, brand2, brand3, i koden du limer inn. Prøv å lim inn på nytt.',
       );
@@ -114,7 +114,7 @@ function Theme() {
     }
 
     console.log(
-      `Primary: ${brand3}, Accent: ${accent}, Neutral: ${neutral}, Brand1: ${brand1}, Brand2: ${brand2}, Brand3: ${brand3}`,
+      `Accent: ${accent}, Neutral: ${neutral}, Brand1: ${brand1}, Brand2: ${brand2}, Brand3: ${brand3}`,
     );
 
     const newArray = Array.from(themes);
