@@ -4,8 +4,6 @@
   "version": "0.4.0",
   "type": "module",
   "scripts": {
-    "dev": "run-s watch",
-    "watch": "run-p 'watch:*'",
     "watch:ui": "npm run build:ui -- --watch --mode=development",
     "watch:plugin": "npm run build:plugin -- --watch --mode=development",
     "build": "npm run build:plugin && npm run build:ui",
