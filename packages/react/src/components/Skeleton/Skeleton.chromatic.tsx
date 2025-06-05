@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-vite';
 import { Skeleton } from '.';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import * as SkeletonStories from './Skeleton.stories';

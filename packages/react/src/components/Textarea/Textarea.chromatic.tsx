@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-vite';
 import { Textarea } from '.';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import * as TextareaStories from './Textarea.stories';

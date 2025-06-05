@@ -1,5 +1,5 @@
-import { useArgs } from '@storybook/preview-api';
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-vite';
+import { useArgs } from 'storybook/preview-api';
 import { Pagination } from '../../../components';
 import { type UsePaginationProps, usePagination } from './usePagination';
 

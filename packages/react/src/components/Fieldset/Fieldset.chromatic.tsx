@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-vite';
 import { Fieldset } from '.';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import * as FieldsetStories from './Fieldset.stories';

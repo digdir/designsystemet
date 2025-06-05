@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import { Label } from '../Label';
 
 import { Divider, Field, Input, Textarea, ValidationMessage } from '../';
