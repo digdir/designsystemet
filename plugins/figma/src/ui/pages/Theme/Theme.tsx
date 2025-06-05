@@ -1,4 +1,5 @@
 import {
+  Alert,
   Breadcrumbs,
   Button,
   Label,
@@ -46,42 +47,36 @@ function Theme() {
   });
 
   const handleClick = () => {
-    // split input into lines
     const lines = command.split('\\\n');
-
-    // helper regex for extracting color info
     const colorRegex = /"([^:]+):(#\w{6})"/g;
 
-    const result: {
-      mainColors: { name: string; hex: CssColor }[];
-      neutralColor: CssColor | null;
-      supportColors: { name: string; hex: CssColor }[];
-    } = {
-      mainColors: [],
-      neutralColor: null,
-      supportColors: [],
-    };
+    let colors: { name: string; hex: CssColor }[] = [];
 
     for (const line of lines) {
-      if (line.includes(`--${colorCliOptions.main}`)) {
+      if (
+        line.includes(`--${colorCliOptions.main}`) ||
+        line.includes(`--${colorCliOptions.support}`)
+      ) {
         const matches = [...line.matchAll(colorRegex)];
-        result.mainColors = matches.map((match) => ({
-          name: match[1],
-          hex: match[2] as CssColor,
-        }));
-      } else if (line.includes(`--${colorCliOptions.neutral}`)) {
+        if (matches.length > 0) {
+          colors = colors.concat(
+            matches.map((match) => ({
+              name: match[1],
+              hex: match[2] as CssColor,
+            })),
+          );
+        }
+      }
+      if (line.includes(`--${colorCliOptions.neutral}`)) {
         const match = line.match(/#\w{6}/);
-        if (match) result.neutralColor = match[0] as CssColor;
-      } else if (line.includes(`--${colorCliOptions.support}`)) {
-        const matches = [...line.matchAll(colorRegex)];
-        result.supportColors = matches.map((match) => ({
-          name: match[1],
-          hex: match[2] as CssColor,
-        }));
+        if (match)
+          colors = colors.concat([
+            { name: 'neutral', hex: match[0] as CssColor },
+          ]);
       }
     }
 
-    if (!result.mainColors.length || !result.neutralColor) {
+    if (!colors.length) {
       console.log('No match');
       setCodeSnippetError(
         'Koden du limte inn er ikke gyldig. Prøv å lim inn på nytt.',
@@ -91,22 +86,13 @@ function Theme() {
 
     /* For now we check that we have  accent, brand1, brand2, brand3 */
 
-    const accent = result.mainColors.find(
-      (color) => color.name === 'accent',
-    )?.hex;
-    const brand1 = result.supportColors.find(
-      (color) => color.name === 'brand1',
-    )?.hex;
-    const brand2 = result.supportColors.find(
-      (color) => color.name === 'brand2',
-    )?.hex;
-    const brand3 = result.supportColors.find(
-      (color) => color.name === 'brand3',
-    )?.hex;
+    const accent = colors.find((color) => color.name === 'accent')?.hex;
+    const brand1 = colors.find((color) => color.name === 'brand1')?.hex;
+    const brand2 = colors.find((color) => color.name === 'brand2')?.hex;
+    const brand3 = colors.find((color) => color.name === 'brand3')?.hex;
+    const neutral = colors.find((color) => color.name === 'neutral')?.hex;
 
-    const neutral = result.neutralColor;
-
-    if (!accent || !brand1 || !brand2 || !brand3) {
+    if (!accent || !brand1 || !brand2 || !brand3 || !neutral) {
       setCodeSnippetError(
         'I denne versjonen av pluginen må du ha fargene  accent, brand1, brand2, brand3, i koden du limer inn. Prøv å lim inn på nytt.',
       );
@@ -163,15 +149,21 @@ function Theme() {
         </div>
       </div>
       <div className={classes.wrapper}>
+        <Paragraph>
+          Dette verktøyet lar deg oppdatere fargene i teamet ditt for enkel
+          testing.
+        </Paragraph>
         <Paragraph variant='long'>
           Gå til{' '}
           <Link href='https://theme.designsystemet.no/' target='_blank'>
             Temabyggeren
           </Link>{' '}
-          for å lage deg et tema og lim inn koden i feltet under. Det er kun
-          fargene som blir oppdatert for øyeblikket. Vi jobber med å utvide
-          pluginen med mer funksjonalitet senere.
+          for å lage deg et tema og lim inn kodensnutten fra steg 1 i feltet
+          under.
         </Paragraph>
+        <Alert>
+          Fargene må ha navnene; accent, neutral, brand1, brand2 og brand3.
+        </Alert>
         <Label htmlFor='my-textarea'>Kodesnutt fra temabyggeren</Label>
         <Textarea
           value={command}
