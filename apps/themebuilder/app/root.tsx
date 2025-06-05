@@ -30,7 +30,7 @@ export const links: Route.LinksFunction = () => {
 
 export const loader = async ({ params, request }: Route.LoaderArgs) => {
   const url = new URL(request.url);
-  const lang = params.lang
+  const lang = params.lang;
 
   if (lang === undefined) {
     return redirect('/no');
@@ -38,9 +38,7 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 
   /* Redirect from old path to new path, with search params */
   if (lang === 'themebuilder') {
-    return redirect(
-      `/no/themebuilder?${url.searchParams.toString()}`,
-    )
+    return redirect(`/no/themebuilder?${url.searchParams.toString()}`);
   }
 
   if (lang !== 'no' && lang !== 'en') {
