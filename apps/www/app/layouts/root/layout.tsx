@@ -39,16 +39,6 @@ const rightLinks: FooterLinkListItemProps[] = [
   },
 ];
 
-export const loader = ({ params }: Route.LoaderArgs) => {
-  const lang = params.lang;
-  if (lang !== 'no' && lang !== 'en') {
-    throw new Response('Not Found', {
-      status: 404,
-      statusText: 'Not Found',
-    });
-  }
-};
-
 export default function RootLayout() {
   const { t } = useTranslation();
   const { lang, centerLinks, menu } = useRouteLoaderData('root') as Omit<
@@ -140,7 +130,16 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
 
   if (isRouteErrorResponse(error)) {
     if (error.status === 404) {
-      return <Error404 />;
+      return (
+        <ErrorWrapperRoot
+          lang={loaderData.lang}
+          menu={loaderData.menu}
+          centerLinks={loaderData.centerLinks}
+          rightLinks={[]}
+        >
+          <Error404 />
+        </ErrorWrapperRoot>
+      );
     }
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;
