@@ -17,7 +17,7 @@ import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import type { Color, CssColor } from '@digdir/designsystemet/color';
-import { CodeBlock } from '@internal/rr-components';
+import { CodeBlock } from '@internal/components';
 import { isProduction } from '~/_utils/is-production';
 import { type ColorTheme, useThemeStore } from '~/store';
 import classes from './token-modal.module.css';

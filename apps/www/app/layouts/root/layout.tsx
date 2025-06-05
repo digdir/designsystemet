@@ -4,8 +4,8 @@ import {
   Error404,
   Footer,
   Header,
-} from '@internal/rr-components';
-import type { FooterLinkListItemProps } from '@internal/rr-components';
+} from '@internal/components';
+import type { FooterLinkListItemProps } from '@internal/components';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import { Outlet, isRouteErrorResponse, useRouteLoaderData } from 'react-router';

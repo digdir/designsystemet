@@ -9,7 +9,7 @@
     "types": "react-router typegen && tsc"
   },
   "dependencies": {
-    "@internal/rr-components": "workspace:^",
+    "@internal/components": "workspace:^",
     "@digdir/designsystemet": "workspace:^",
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",

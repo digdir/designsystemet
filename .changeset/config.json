@@ -22,9 +22,8 @@
   "ignore": [
     "@web/www",
     "@web/themebuilder",
-    "theme",
     "@web/storybook",
     "@plugin/figma",
-    "@internal/rr-components"
+    "@internal/components"
   ]
 }
