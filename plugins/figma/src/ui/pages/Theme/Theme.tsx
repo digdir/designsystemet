@@ -93,8 +93,17 @@ function Theme() {
     const neutral = colors.find((color) => color.name === 'neutral')?.hex;
 
     if (!accent || !brand1 || !brand2 || !brand3 || !neutral) {
+      const missingColors = [
+        !accent && 'accent',
+        !brand1 && 'brand1',
+        !brand2 && 'brand2',
+        !brand3 && 'brand3',
+        !neutral && 'neutral',
+      ]
+        .filter(Boolean)
+        .join(', ');
       setCodeSnippetError(
-        'I denne versjonen av pluginen må du ha fargene  accent, brand1, brand2, brand3, i koden du limer inn. Prøv å lim inn på nytt.',
+        `I denne versjonen av pluginen må du ha bestemte fargenavn. Det mangler: ${missingColors}, i kodensnutten du limer inn.`,
       );
       return;
     }
