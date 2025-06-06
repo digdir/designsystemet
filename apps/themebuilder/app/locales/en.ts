@@ -1,7 +1,8 @@
+import en from '@internal/components/src/_locales/en';
 import type no from './no';
 
 export default {
-  hello: 'Hello',
+  ...en,
   navigation: {
     fundamentals: 'Fundamentals',
     'best-practices': 'Best Practices',
@@ -9,31 +10,6 @@ export default {
     blog: 'Blog',
     components: 'Components',
     'theme-builder': 'Theme Builder',
-  },
-  footer: {
-    about: 'About the design system',
-    privacy: 'Privacy policy',
-    accessibility: 'Accessibility statement',
-    slack: 'Join us on Slack',
-    agencies: {
-      title: 'Created across public agencies:',
-      contact: 'Your agency? Contact us!',
-    },
-    'about-site': 'About this site',
-    'contact-us': 'Get in touch with us',
-    copyright: 'Designsystemet',
-  },
-  header: {
-    'home-link': 'Designsystemet home page',
-    menu: 'Menu',
-    'github-title': 'Designsystemet GitHub repository',
-    'figma-title': 'Designsystemet Figma project',
-    'theme-toggle': 'Switch to {{theme}} mode',
-    'theme-toggle-aria': 'Switch to {{theme}} mode',
-    light: 'light',
-    dark: 'dark',
-    'language-toggle': 'Switch language',
-    'back-to-home': 'Go back to the home page',
   },
   errors: {
     default: {

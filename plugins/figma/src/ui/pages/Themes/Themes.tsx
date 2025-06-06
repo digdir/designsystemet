@@ -31,8 +31,8 @@ function Themes() {
               url={`/themes/${theme.themeModeId}`}
               colors={{
                 colorDot1: theme.colors.accent.light?.[12] ?? '',
-                colorDot2: theme.colors.extra1.light?.[12] ?? '',
-                colorDot3: theme.colors.extra2.light?.[12] ?? '',
+                colorDot2: theme.colors.brand1.light?.[12] ?? '',
+                colorDot3: theme.colors.brand2.light?.[12] ?? '',
               }}
             />
           );

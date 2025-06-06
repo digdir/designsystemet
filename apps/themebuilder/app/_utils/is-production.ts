@@ -1,4 +1,4 @@
 export function isProduction() {
-  return false;
+  return true;
   //return process.env.NEXT_PUBLIC_DESIGNSYSTEMET_ENV === 'production';
 }

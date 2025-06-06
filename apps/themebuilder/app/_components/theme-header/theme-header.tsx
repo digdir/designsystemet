@@ -1,5 +1,5 @@
 import { Heading } from '@digdir/designsystemet-react';
-import { RRLink } from '@internal/rr-components/src/link';
+import { RRLink } from '@internal/components/src/link';
 import { ChevronLeftIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import { useRouteLoaderData } from 'react-router';
