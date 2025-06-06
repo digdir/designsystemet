@@ -5,7 +5,7 @@ import { getVariables } from './figma/getVariables';
 import { getThemes } from './figma/themes';
 import { updateVariables } from './figma/updateVariables';
 
-figma.showUI(__html__, { width: 710, height: 650, themeColors: true });
+figma.showUI(__html__, { width: 710, height: 710, themeColors: true });
 
 figma.ui.onmessage = (msg: {
   type: Messages;
