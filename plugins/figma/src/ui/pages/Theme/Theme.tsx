@@ -103,7 +103,7 @@ function Theme() {
         .filter(Boolean)
         .join(', ');
       setCodeSnippetError(
-        `I denne versjonen av pluginen må du ha bestemte fargenavn. Det mangler: ${missingColors}, i kodensnutten du limer inn.`,
+        `I denne versjonen av pluginen må du ha bestemte fargenavn. Det mangler: ${missingColors}, i kodensnutten.`,
       );
       return;
     }
