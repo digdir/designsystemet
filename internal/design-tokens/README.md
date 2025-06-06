@@ -1,6 +1,6 @@
 # Design tokens
 
-Exported design tokens from the Digdir common designsystem.
+Exported design tokens from Designsystemet.
 
 You should use Figma to edit the tokens. You'll need the [Tokens Studio for Figma](https://docs.tokens.studio/) plugin installed in Figma, and configured to sync with this GitHub repo.
 
@@ -8,7 +8,7 @@ You should use Figma to edit the tokens. You'll need the [Tokens Studio for Figm
 1. Generate a new Personal Access Token (PAT) in [GitHub Developer Settings](https://github.com/settings/tokens) with scope `repo`
 1. Copy the PAT (you can only see it once)
 1. In the Figma Tokens plugin, under `Sync > GitHub`, add new credentials:
-   - Name: `Digdir Figma Tokens`
+   - Name: `Designsystemet Figma Tokens`
    - Personal Access Token: _your PAT_
    - Repository: `digdir/designsystem`
    - Default Branch: `main`

@@ -1,6 +1,6 @@
 import './style.css';
 import './customTheme.scss';
-/* We use relative imports to get live updates when developing */
+/* We use relative imports to get HMR updates when developing */
 import '../../../packages/css/src/index.css';
 import '../../../packages/theme/src/themes/designsystemet.css';
 import { LinkIcon } from '@navikt/aksel-icons';
