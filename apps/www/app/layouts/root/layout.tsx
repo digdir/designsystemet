@@ -4,8 +4,8 @@ import {
   Error404,
   Footer,
   Header,
-} from '@internal/rr-components';
-import type { FooterLinkListItemProps } from '@internal/rr-components';
+} from '@internal/components';
+import type { FooterLinkListItemProps } from '@internal/components';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import { Outlet, isRouteErrorResponse, useRouteLoaderData } from 'react-router';
@@ -57,7 +57,11 @@ export default function RootLayout() {
   return (
     <>
       <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
-      <Header menu={menu} logoLink={`/${lang}`} themeSwitcher />
+      <Header
+        menu={menu}
+        logoLink={`/${lang === 'no' ? 'no' : lang === 'en' ? 'en' : 'no'}`}
+        themeSwitcher
+      />
       <main id='main'>
         <Outlet />
       </main>
@@ -99,7 +103,11 @@ const ErrorWrapperRoot = ({
   return (
     <>
       <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
-      <Header menu={menu} logoLink={`/${lang}`} themeSwitcher />
+      <Header
+        menu={menu}
+        logoLink={`/${lang === 'no' ? 'no' : lang === 'en' ? 'en' : 'no'}`}
+        themeSwitcher
+      />
       <main id='main'>
         <ContentContainer>{children}</ContentContainer>
       </main>
@@ -130,7 +138,16 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
 
   if (isRouteErrorResponse(error)) {
     if (error.status === 404) {
-      return <Error404 />;
+      return (
+        <ErrorWrapperRoot
+          lang={loaderData.lang}
+          menu={loaderData.menu}
+          centerLinks={loaderData.centerLinks}
+          rightLinks={[]}
+        >
+          <Error404 />
+        </ErrorWrapperRoot>
+      );
     }
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;

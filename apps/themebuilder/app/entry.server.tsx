@@ -23,8 +23,13 @@ export default async function handleRequest(
 ) {
   const instance = createInstance();
   const ns = i18next.getRouteNamespaces(routerContext);
-  const lng =
-    routerContext.staticHandlerContext?.loaderData?.root?.lang || 'no';
+
+  const url = new URL(request.url);
+  const lng = url.pathname.startsWith('/no')
+    ? 'no'
+    : url.pathname.startsWith('/en')
+      ? 'en'
+      : 'no';
 
   await instance.use(initReactI18next).init({
     ...i18n,

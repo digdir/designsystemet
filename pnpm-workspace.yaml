@@ -1,8 +1,8 @@
-useNodeVersion: 22.16.0
 packages:
   - packages/*
   - apps/*
   - plugins/*
+  - internal/components
 ignoredBuiltDependencies:
   - '@bundled-es-modules/glob'
   - sharp
@@ -10,4 +10,6 @@ onlyBuiltDependencies:
   - '@biomejs/biome'
   - '@swc/core'
   - esbuild
+  - just-pnpm
   - style-dictionary
+useNodeVersion: 22.16.0

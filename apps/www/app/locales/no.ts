@@ -1,4 +1,7 @@
+import no from '@internal/components/src/_locales/no';
+
 export default {
+  ...no,
   frontpage: {
     heading: 'Designsystemet hjelper deg å lage gode digitale tjenester',
     'for-designers': {
@@ -100,19 +103,6 @@ export default {
     components: 'Komponenter',
     'theme-builder': 'Temabygger',
   },
-  footer: {
-    about: 'Om Designsystemet',
-    privacy: 'Personvernerklæring',
-    accessibility: 'Tilgjengelighetserklæring',
-    slack: 'Bli invitert til slack',
-    agencies: {
-      title: 'Lages på tvers av offentlige etater:',
-      contact: 'Din etat? Ta kontakt!',
-    },
-    'about-site': 'Om nettstedet',
-    'contact-us': 'Kom i kontakt med oss',
-    copyright: 'Designsystemet',
-  },
   accessibility: {
     'skip-link': 'Hopp til hovedinnhold',
   },
@@ -129,17 +119,6 @@ export default {
       title: 'Feil',
       'go-to-homepage': 'Gå til forsiden',
     },
-  },
-  header: {
-    'home-link': 'Designsystem forside',
-    menu: 'Meny',
-    'github-title': 'Designsystemets GitHub-repositorium',
-    'figma-title': 'Designsystemets Figma-prosjekt',
-    'theme-toggle': 'Bytt til {{theme}} modus',
-    'theme-toggle-aria': 'Bytt til {{theme}} modus',
-    light: 'lys',
-    dark: 'mørk',
-    'language-toggle': 'Bytt språk',
   },
   components: {
     title: 'Komponenter',

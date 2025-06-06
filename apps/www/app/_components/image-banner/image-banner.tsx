@@ -3,7 +3,7 @@ import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import type React from 'react';
 
-import { ContentContainer } from '@internal/rr-components';
+import { ContentContainer } from '@internal/components';
 import type { HTMLAttributes } from 'react';
 import { RRLink } from '../link';
 import classes from './image-banner.module.css';

@@ -7,13 +7,6 @@ const i18next = new RemixI18Next({
   detection: {
     supportedLanguages: i18n.supportedLngs,
     fallbackLanguage: i18n.fallbackLng,
-    findLocale: (request) => {
-      const url = new URL(request.url);
-      if (url.pathname.includes('/no')) {
-        return new Promise((resolve) => resolve('no'));
-      }
-      return new Promise((resolve) => resolve('en'));
-    },
   },
   i18next: {
     ...i18n,
