@@ -82,6 +82,7 @@
     background-position: calc(100% - 1.2em + var(--dsc-input-stroke-width)), calc(100% - 0.8em);
     background-size: .4em .4em;
     background-repeat: no-repeat;
+    text-overflow: ellipsis; /* Enable ellipsis when <select> */
     :dir(rtl) & {
       background-position: calc(1.2em - var(--dsc-input-stroke-width)), calc(0% + 0.8em);
     }

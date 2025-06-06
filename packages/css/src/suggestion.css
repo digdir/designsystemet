@@ -21,6 +21,19 @@
     display: flex;
   }
 
+  &:not([data-multiple]) data,
+  &[data-multiple='false'] data {
+    display: none; /* Hide data elements when not in multiple mode */
+  }
+
+  & > data {
+    margin-bottom: var(--ds-size-1);
+
+    &:has(+ data) {
+      margin-inline-end: var(--ds-size-1);
+    }
+  }
+
   & u-datalist {
     background: var(--ds-color-neutral-surface-default);
     border-radius: var(--ds-border-radius-md);
@@ -36,21 +49,6 @@
     z-index: 1600;
     margin-top: var(--dsc-suggestion-list-gap);
     max-height: 200px;
-
-    /* Hide <suggestion.Empty> if any <suggestion.Option> is visible */
-    &:has(u-option:not([hidden]):not([aria-disabled='true']):not([data-empty])) > u-option[data-empty] {
-      display: none;
-    }
-    & > u-option[data-empty] {
-      cursor: default;
-      display: block;
-    }
-
-    &:not(:has(u-option:hover)) > u-option:focus-visible {
-      border-inline-start-color: var(--dsc-suggestion-option-border-color);
-      background: var(--dsc-suggestion-option-background--selected);
-      color: var(--ds-color-text-default);
-    }
 
     /* Hide datalist if no children */
     &:empty {
@@ -83,6 +81,8 @@
         }
       }
 
+      @composes ds-focus--inset from './base.css';
+
       @media (hover: hover) and (pointer: fine) {
         &:not([data-empty]):hover {
           border-inline-start-color: var(--dsc-suggestion-option-border-color);
@@ -114,20 +114,27 @@
     }
   }
 
+  /* Hide focus ring when u-combobox temporarily moves focus to input for screen reader purposes */
+  & input[inputmode='none'] {
+    box-shadow: none;
+    outline: none;
+  }
+
   /**
    * Clear button
    */
-  &:has(input:placeholder-shown) button[type='reset'],
-  &:has(input:is(:read-only, :disabled, [aria-disabled='true'])) button[type='reset'] {
+  & del[hidden],
+  &:has(input:is(:read-only, :disabled, [aria-disabled='true'])) del {
     visibility: hidden; /* We hide the clear button when input is empty */
   }
-  &:has(button[type='reset']) input {
+  &:has(del) input {
     padding-inline-end: calc(var(--dsc-suggestion-clear-size) + var(--dsc-suggestion-clear-gap));
   }
 
-  & button[type='reset'] {
+  & del {
     --dsc-button-size: var(--dsc-suggestion-clear-size);
 
+    display: flex;
     align-self: center;
     margin-inline-start: calc((var(--dsc-suggestion-clear-size) + var(--dsc-suggestion-clear-gap)) * -1);
     order: 999; /* Place last */
