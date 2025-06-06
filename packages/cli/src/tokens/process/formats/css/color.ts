@@ -44,13 +44,21 @@ export const colorScheme: Format = {
       ]),
     );
     const formattedTokens = filteredAllTokens.map(format).join('\n');
-    const content = `{\n${formattedTokens}\n${colorSchemeProperty}}\n`;
+    const defaultColors = `
+/* Set default background and color on <body> (not :root) to align with best practice */
+body,
+[data-color-scheme] {
+  color: var(--ds-color-neutral-text-default);
+  background: var(--ds-color-neutral-background-default);
+}
+`;
+    const defaultColorContent = colorScheme_ === 'light' ? defaultColors : '';
+    const coreContent = `{\n${formattedTokens}\n${colorSchemeProperty}}\n`;
     const autoSelectorContent = ['light', 'dark'].includes(colorScheme_)
-      ? prefersColorScheme(colorScheme_, content)
+      ? prefersColorScheme(colorScheme_, coreContent)
       : '';
-    const body = R.isNotNil(layer)
-      ? `@layer ${layer} {\n${selector} ${content} ${autoSelectorContent}\n}\n`
-      : `${selector} ${content} ${autoSelectorContent}\n`;
+    const content = `${selector} ${coreContent}${autoSelectorContent}${defaultColorContent}`;
+    const body = R.isNotNil(layer) ? `@layer ${layer} {\n${content}\n}\n` : `${content}\n`;
 
     return body;
   },
