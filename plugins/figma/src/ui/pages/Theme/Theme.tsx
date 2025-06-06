@@ -167,7 +167,7 @@ function Theme() {
           <Link href='https://theme.designsystemet.no/' target='_blank'>
             Temabyggeren
           </Link>{' '}
-          for å lage deg et tema og lim inn kodensnutten fra steg 1 i feltet
+          for å lage deg et tema, lim inn kodensnutten fra steg 1 i feltet
           under.
         </Paragraph>
         <Alert>
