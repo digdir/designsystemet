@@ -1,8 +1,7 @@
 import { join } from 'node:path';
-import { ContentContainer } from '@internal/rr-components';
 import { HandShakeHeartIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
-import { Outlet, isRouteErrorResponse, useMatches } from 'react-router';
+import { Outlet, useMatches } from 'react-router';
 import {
   Banner,
   BannerHeading,
@@ -13,6 +12,7 @@ import { getFileFromContentDir, getFilesFromContentDir } from '~/_utils/files';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import type { Route } from './+types/layout';
 import classes from './layout.module.css';
+export { ErrorBoundary } from '~/root';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   if (!lang) {
@@ -135,7 +135,7 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
             <BannerHeading level={1}>{t('best-practices.title')}</BannerHeading>
             <BannerIngress>{t('best-practices.description')}</BannerIngress>
           </Banner>
-          <div className={classes.content}>
+          <div className={classes.content} data-is-main={true}>
             <div className={classes.container}>
               <Outlet />
             </div>
@@ -145,37 +145,5 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
         <Outlet />
       )}
     </>
-  );
-}
-
-export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  const { t } = useTranslation();
-  let message = t('errors.default.title');
-  let details = t('errors.default.details');
-  let stack: string | undefined;
-
-  console.log(error);
-
-  if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? '404' : 'Error';
-    details =
-      error.status === 404
-        ? t('errors.404.details')
-        : error.statusText || details;
-  } else if (import.meta.env.DEV && error && error instanceof Error) {
-    details = error.message;
-    stack = error.stack;
-  }
-
-  return (
-    <ContentContainer>
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre>
-          <code>{stack}</code>
-        </pre>
-      )}
-    </ContentContainer>
   );
 }

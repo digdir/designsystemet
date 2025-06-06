@@ -1,4 +1,4 @@
-import type { ColorScheme, ThemeInfo } from '@digdir/designsystemet/color';
+import type { ColorScheme, ThemeInfo } from '@digdir/designsystemet';
 
 export const generateColorVars = (
   colors: ThemeInfo,

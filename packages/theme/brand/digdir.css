@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*
-build: v1.0.7
+build: v1.0.8
 design-tokens: v1.0.6
 */
 
@@ -475,26 +475,26 @@ design-tokens: v1.0.6
   --ds-size-30:  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *30);
 
   @supports (width: round(down, .1em, 1px)) {
-  --ds-size-0: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *0), 0.0625rem);
-  --ds-size-1: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *1), 0.0625rem);
-  --ds-size-2: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *2), 0.0625rem);
-  --ds-size-3: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *3), 0.0625rem);
-  --ds-size-4: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *4), 0.0625rem);
-  --ds-size-5: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *5), 0.0625rem);
-  --ds-size-6: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *6), 0.0625rem);
-  --ds-size-7: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *7), 0.0625rem);
-  --ds-size-8: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *8), 0.0625rem);
-  --ds-size-9: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *9), 0.0625rem);
-  --ds-size-10: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *10), 0.0625rem);
-  --ds-size-11: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *11), 0.0625rem);
-  --ds-size-12: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *12), 0.0625rem);
-  --ds-size-13: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *13), 0.0625rem);
-  --ds-size-14: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *14), 0.0625rem);
-  --ds-size-15: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *15), 0.0625rem);
-  --ds-size-18: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *18), 0.0625rem);
-  --ds-size-22: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *22), 0.0625rem);
-  --ds-size-26: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *26), 0.0625rem);
-  --ds-size-30: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *30), 0.0625rem);
+  --ds-size-0: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *0), 1px);
+  --ds-size-1: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *1), 1px);
+  --ds-size-2: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *2), 1px);
+  --ds-size-3: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *3), 1px);
+  --ds-size-4: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *4), 1px);
+  --ds-size-5: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *5), 1px);
+  --ds-size-6: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *6), 1px);
+  --ds-size-7: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *7), 1px);
+  --ds-size-8: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *8), 1px);
+  --ds-size-9: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *9), 1px);
+  --ds-size-10: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *10), 1px);
+  --ds-size-11: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *11), 1px);
+  --ds-size-12: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *12), 1px);
+  --ds-size-13: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *13), 1px);
+  --ds-size-14: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *14), 1px);
+  --ds-size-15: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *15), 1px);
+  --ds-size-18: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *18), 1px);
+  --ds-size-22: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *22), 1px);
+  --ds-size-26: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *26), 1px);
+  --ds-size-30: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *30), 1px);
   }
 }
 

@@ -1,5 +1,5 @@
 import { Heading } from '@digdir/designsystemet-react';
-import { ContentContainer } from '@internal/rr-components';
+import { ContentContainer } from '@internal/components';
 import cl from 'clsx/lite';
 import type * as React from 'react';
 import classes from './section.module.css';

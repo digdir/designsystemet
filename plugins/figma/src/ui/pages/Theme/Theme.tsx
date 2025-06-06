@@ -1,4 +1,5 @@
 import {
+  Alert,
   Breadcrumbs,
   Button,
   Label,
@@ -46,74 +47,69 @@ function Theme() {
   });
 
   const handleClick = () => {
-    // split input into lines
     const lines = command.split('\\\n');
-
-    // helper regex for extracting color info
     const colorRegex = /"([^:]+):(#\w{6})"/g;
 
-    const result: {
-      mainColors: { name: string; hex: CssColor }[];
-      neutralColor: CssColor | null;
-      supportColors: { name: string; hex: CssColor }[];
-    } = {
-      mainColors: [],
-      neutralColor: null,
-      supportColors: [],
-    };
+    let colors: { name: string; hex: CssColor }[] = [];
 
     for (const line of lines) {
-      if (line.includes(`--${colorCliOptions.main}`)) {
+      if (
+        line.includes(`--${colorCliOptions.main}`) ||
+        line.includes(`--${colorCliOptions.support}`)
+      ) {
         const matches = [...line.matchAll(colorRegex)];
-        result.mainColors = matches.map((match) => ({
-          name: match[1],
-          hex: match[2] as CssColor,
-        }));
-      } else if (line.includes(`--${colorCliOptions.neutral}`)) {
+        if (matches.length > 0) {
+          colors = colors.concat(
+            matches.map((match) => ({
+              name: match[1],
+              hex: match[2] as CssColor,
+            })),
+          );
+        }
+      }
+      if (line.includes(`--${colorCliOptions.neutral}`)) {
         const match = line.match(/#\w{6}/);
-        if (match) result.neutralColor = match[0] as CssColor;
-      } else if (line.includes(`--${colorCliOptions.support}`)) {
-        const matches = [...line.matchAll(colorRegex)];
-        result.supportColors = matches.map((match) => ({
-          name: match[1],
-          hex: match[2] as CssColor,
-        }));
+        if (match)
+          colors = colors.concat([
+            { name: 'neutral', hex: match[0] as CssColor },
+          ]);
       }
     }
 
-    if (!result.mainColors.length || !result.neutralColor) {
+    if (!colors.length) {
       console.log('No match');
       setCodeSnippetError(
-        'Koden du limte inn er ikke gyldig. Prøv å lim inn på nytt.',
+        'Kodesnutten du limte inn er ikke gyldig. Prøv på nytt.',
       );
       return;
     }
 
-    /* For now we check that we have primary, accent, extra1, extra2 */
-    const primary = result.mainColors.find(
-      (color) => color.name === 'primary',
-    )?.hex;
-    const accent = result.mainColors.find(
-      (color) => color.name === 'accent',
-    )?.hex;
-    const extra1 = result.supportColors.find(
-      (color) => color.name === 'extra1',
-    )?.hex;
-    const extra2 = result.supportColors.find(
-      (color) => color.name === 'extra2',
-    )?.hex;
+    /* For now we check that we have  accent, brand1, brand2, brand3 */
 
-    const neutral = result.neutralColor;
+    const accent = colors.find((color) => color.name === 'accent')?.hex;
+    const brand1 = colors.find((color) => color.name === 'brand1')?.hex;
+    const brand2 = colors.find((color) => color.name === 'brand2')?.hex;
+    const brand3 = colors.find((color) => color.name === 'brand3')?.hex;
+    const neutral = colors.find((color) => color.name === 'neutral')?.hex;
 
-    if (!primary || !accent || !extra1 || !extra2) {
+    if (!accent || !brand1 || !brand2 || !brand3 || !neutral) {
+      const missingColors = [
+        !accent && 'accent',
+        !brand1 && 'brand1',
+        !brand2 && 'brand2',
+        !brand3 && 'brand3',
+        !neutral && 'neutral',
+      ]
+        .filter(Boolean)
+        .join(', ');
       setCodeSnippetError(
-        'I denne versjonen av pluginen må du ha fargene primary, accent, extra1 og extra2',
+        `I denne versjonen av pluginen må du ha bestemte fargenavn. Det mangler: ${missingColors}, i kodesnutten.`,
       );
       return;
     }
 
     console.log(
-      `Primary: ${primary}, Accent: ${accent}, Neutral: ${neutral}, Extra1: ${extra1}, Extra2: ${extra2}`,
+      `Accent: ${accent}, Neutral: ${neutral}, Brand1: ${brand1}, Brand2: ${brand2}, Brand3: ${brand3}`,
     );
 
     const newArray = Array.from(themes);
@@ -122,10 +118,10 @@ function Theme() {
       colors: {
         ...newArray[themeIndex].colors,
         accent: themeToFigmaFormat(generateColorSchemes(accent)),
-        primary: themeToFigmaFormat(generateColorSchemes(primary)),
         neutral: themeToFigmaFormat(generateColorSchemes(neutral)),
-        extra1: themeToFigmaFormat(generateColorSchemes(extra1)),
-        extra2: themeToFigmaFormat(generateColorSchemes(extra2)),
+        brand1: themeToFigmaFormat(generateColorSchemes(brand1)),
+        brand2: themeToFigmaFormat(generateColorSchemes(brand2)),
+        brand3: themeToFigmaFormat(generateColorSchemes(brand3)),
       },
     };
 
@@ -162,15 +158,21 @@ function Theme() {
         </div>
       </div>
       <div className={classes.wrapper}>
+        <Paragraph>
+          Dette verktøyet lar deg oppdatere fargene i teamet ditt for enkel
+          testing.
+        </Paragraph>
         <Paragraph variant='long'>
           Gå til{' '}
           <Link href='https://theme.designsystemet.no/' target='_blank'>
             Temabyggeren
           </Link>{' '}
-          for å lage deg et tema og lim inn koden i feltet under. Det er kun
-          fargene som blir oppdatert for øyeblikket. Vi jobber med å utvide
-          pluginen med mer funksjonalitet senere.
+          for å lage deg et tema, lim inn kodensnutten fra steg 1 i feltet
+          under.
         </Paragraph>
+        <Alert>
+          Fargene må ha navnene; accent, neutral, brand1, brand2 og brand3.
+        </Alert>
         <Label htmlFor='my-textarea'>Kodesnutt fra temabyggeren</Label>
         <Textarea
           value={command}
