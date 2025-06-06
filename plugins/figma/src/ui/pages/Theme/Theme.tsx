@@ -79,7 +79,7 @@ function Theme() {
     if (!colors.length) {
       console.log('No match');
       setCodeSnippetError(
-        'Koden du limte inn er ikke gyldig. Prøv å lim inn på nytt.',
+        'Kodesnutten du limte inn er ikke gyldig. Prøv på nytt.',
       );
       return;
     }
