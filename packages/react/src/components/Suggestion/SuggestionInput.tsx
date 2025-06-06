@@ -37,7 +37,7 @@ export const SuggestionInput = forwardRef<
       ref={ref}
       onInput={(event) => {
         onInput?.(event); // Should run first
-        // handleFilter?.(); // Filter if uncontrolled value
+        handleFilter?.(); // Filter if uncontrolled value
       }}
       {...rest}
     />
