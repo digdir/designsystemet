@@ -6,47 +6,47 @@
   line-height: var(--ds-heading-md-line-height);
   margin: 0;
 
-  /* Using font-size to ensure consistent size when explicitly setting data-size */
-  &[data-size='2xs'] {
+  /* Using font-size to ensure consistent size when explicitly setting data-font-size */
+  &[data-font-size='2xs'] {
     font-weight: var(--ds-heading-2xs-font-weight);
     line-height: var(--ds-heading-2xs-line-height);
     font-size: var(--ds-heading-2xs-font-size);
     letter-spacing: var(--ds-heading-2xs-letter-spacing);
   }
 
-  &[data-size='xs'] {
+  &[data-font-size='xs'] {
     font-weight: var(--ds-heading-xs-font-weight);
     line-height: var(--ds-heading-xs-line-height);
     font-size: var(--ds-heading-xs-font-size);
     letter-spacing: var(--ds-heading-xs-letter-spacing);
   }
 
-  &[data-size='sm'] {
+  &[data-font-size='sm'] {
     font-weight: var(--ds-heading-sm-font-weight);
     line-height: var(--ds-heading-sm-line-height);
     font-size: var(--ds-heading-sm-font-size);
     letter-spacing: var(--ds-heading-sm-letter-spacing);
   }
 
-  &[data-size='md'] {
+  &[data-font-size='md'] {
     font-size: var(--ds-heading-md-font-size);
   }
 
-  &[data-size='lg'] {
+  &[data-font-size='lg'] {
     font-weight: var(--ds-heading-lg-font-weight);
     line-height: var(--ds-heading-lg-line-height);
     font-size: var(--ds-heading-lg-font-size);
     letter-spacing: var(--ds-heading-lg-letter-spacing);
   }
 
-  &[data-size='xl'] {
+  &[data-font-size='xl'] {
     font-weight: var(--ds-heading-xl-font-weight);
     line-height: var(--ds-heading-xl-line-height);
     font-size: var(--ds-heading-xl-font-size);
     letter-spacing: var(--ds-heading-xl-letter-spacing);
   }
 
-  &[data-size='2xl'] {
+  &[data-font-size='2xl'] {
     font-weight: var(--ds-heading-2xl-font-weight);
     line-height: var(--ds-heading-2xl-line-height);
     font-size: var(--ds-heading-2xl-font-size);
