@@ -270,3 +270,26 @@ export const DefaultValue: StoryFn<typeof Suggestion> = (args) => {
     </Field>
   );
 };
+
+export const Multiple: StoryFn<typeof Suggestion> = (args) => {
+  return (
+    <Field>
+      <Label>Velg en destinasjon</Label>
+      <Suggestion {...args}>
+        <Suggestion.Chips />
+        <Suggestion.Input />
+        <Suggestion.Clear />
+        <Suggestion.List>
+          <Suggestion.Empty>Tomt</Suggestion.Empty>
+          {DATA_PLACES.map((place) => (
+            <Suggestion.Option key={place}>{place}</Suggestion.Option>
+          ))}
+        </Suggestion.List>
+      </Suggestion>
+    </Field>
+  );
+};
+
+Multiple.args = {
+  multiple: true,
+};
