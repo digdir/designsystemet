@@ -1,5 +1,5 @@
 import type { Color } from '@digdir/designsystemet';
-import { ColorModal } from '@internal/rr-components';
+import { ColorModal } from '@internal/components';
 import { type JSX, useEffect, useRef, useState } from 'react';
 
 type UseColorModalResult = {

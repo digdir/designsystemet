@@ -8,7 +8,7 @@ import en from '~/locales/en';
 import no from '~/locales/no';
 import i18n from './i18n';
 
-const url = window.location.href;
+const url = window.location.pathname;
 const lng = url.startsWith('/no') ? 'no' : url.startsWith('/en') ? 'en' : 'no';
 
 async function hydrate() {

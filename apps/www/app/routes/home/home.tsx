@@ -1,6 +1,6 @@
 import { join } from 'node:path';
 import { Heading } from '@digdir/designsystemet-react';
-import { ContentContainer } from '@internal/rr-components';
+import { ContentContainer } from '@internal/components';
 import {
   BranchingIcon,
   ComponentIcon,

@@ -1,5 +1,5 @@
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
-import { ContentContainer } from '@internal/rr-components';
+import { ContentContainer } from '@internal/components';
 import { Link, redirect } from 'react-router';
 import type { Route } from './+types/not-found';
 

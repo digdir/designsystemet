@@ -1,5 +1,5 @@
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
-import { ContentContainer } from '@internal/rr-components';
+import { ContentContainer } from '@internal/components';
 import { BookIcon, PaletteIcon } from '@navikt/aksel-icons';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';

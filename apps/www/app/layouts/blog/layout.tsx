@@ -1,4 +1,4 @@
-import { ContentContainer } from '@internal/rr-components';
+import { ContentContainer } from '@internal/components';
 import { PencilIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router';

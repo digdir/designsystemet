@@ -1,5 +1,5 @@
 import { join } from 'node:path';
-import { ContentContainer } from '@internal/rr-components';
+import { ContentContainer } from '@internal/components';
 import { LayersIcon } from '@navikt/aksel-icons';
 import { bundleMDX } from 'mdx-bundler';
 import { useTranslation } from 'react-i18next';

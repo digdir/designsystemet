@@ -1,6 +1,6 @@
 import { join } from 'node:path';
 import { Heading } from '@digdir/designsystemet-react';
-import { ComponentIcon } from '@navikt/aksel-icons';
+import * as Aksel from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
@@ -55,6 +55,10 @@ export const meta = ({ data }: Route.MetaArgs) => {
 export default function Fundamentals({
   loaderData: { code, frontmatter, lang },
 }: Route.ComponentProps) {
+  const Icon = frontmatter.icon
+    ? Aksel[frontmatter.icon as keyof typeof Aksel]
+    : Aksel.LayersIcon;
+
   return (
     <>
       <div className={classes.header}>
@@ -68,8 +72,13 @@ export default function Fundamentals({
             </div>
           )}
         </div>
-        <div className={cl(classes.iconContainer)}>
-          <ComponentIcon fontSize='4rem' aria-hidden='true' />
+        <div
+          className={cl(
+            classes.iconContainer,
+            classes[frontmatter.color as keyof typeof classes],
+          )}
+        >
+          <Icon fontSize='4rem' aria-hidden='true' />
         </div>
       </div>
       <div className={classes.content}>
