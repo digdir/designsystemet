@@ -1,9 +1,9 @@
 import { join } from 'node:path';
-import { ContentContainer, Error404 } from '@internal/rr-components';
+import { ContentContainer } from '@internal/rr-components';
 import { LayersIcon } from '@navikt/aksel-icons';
 import { bundleMDX } from 'mdx-bundler';
 import { useTranslation } from 'react-i18next';
-import { Outlet, isRouteErrorResponse, useMatches } from 'react-router';
+import { Outlet, useMatches } from 'react-router';
 import {
   Banner,
   BannerHeading,
@@ -14,6 +14,7 @@ import { Sidebar } from '~/_components/sidebar/sidebar';
 import { getFileFromContentDir, getFilesFromContentDir } from '~/_utils/files';
 import type { Route } from './+types/layout';
 import classes from './layout.module.css';
+export { ErrorBoundary } from '~/root';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   /* get all patterns content */
@@ -98,7 +99,7 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
           <BannerIngress>{t('patterns.description')}</BannerIngress>
         </Banner>
       ) : null}
-      <ContentContainer>
+      <ContentContainer data-is-main={!isPatternsPage}>
         <div className={classes['sidebar-container']} data-color='neutral'>
           <Sidebar
             cats={cats}
@@ -111,33 +112,5 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
         </div>
       </ContentContainer>
     </>
-  );
-}
-
-export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  const { t } = useTranslation();
-  const message = t('errors.default.title');
-  let details = t('errors.default.details');
-  let stack: string | undefined;
-
-  if (isRouteErrorResponse(error)) {
-    if (error.status === 404) {
-      return <Error404 />;
-    }
-  } else if (import.meta.env.DEV && error && error instanceof Error) {
-    details = error.message;
-    stack = error.stack;
-  }
-
-  return (
-    <ContentContainer>
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre>
-          <code>{stack}</code>
-        </pre>
-      )}
-    </ContentContainer>
   );
 }

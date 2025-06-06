@@ -4,12 +4,17 @@
   align-items: center;
   position: relative;
   z-index: 5;
-  background-color: var(--ds-color-neutral-background-tinted);
+
+  [data-color-scheme='dark'] &,
+  [data-color-scheme='auto'] & {
+    background-color: var(--ds-color-neutral-background-tinted);
+  }
+
+  &.transparentHeader {
+    background-color: transparent;
+  }
 }
 
-.transparentHeader {
-  background-color: transparent;
-}
 .container {
   display: flex;
   align-items: center;

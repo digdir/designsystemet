@@ -1,4 +1,9 @@
 import {
+  type ColorScheme,
+  type CssColor,
+  generateColorSchemes,
+} from '@digdir/designsystemet';
+import {
   Avatar,
   Button,
   Heading,
@@ -13,7 +18,6 @@ import {
   generateColorVars,
   generateNeutralColorVars,
 } from '~/_utils/generate-color-vars';
-import { useThemeStore } from '~/store';
 import classes from './overview-components.module.css';
 import { SettingsCard } from './settings-card/settings-card';
 import { TableCard } from './table-card/table-card';
@@ -36,11 +40,18 @@ const users = [
   },
 ];
 
-export const OverviewComponents = () => {
+type OverviewComponentsProps = {
+  colorScheme: ColorScheme;
+  color: CssColor;
+  borderRadius?: number;
+};
+
+export const OverviewComponents = ({
+  colorScheme = 'light',
+  color = '#0062BA',
+  borderRadius = 4,
+}: OverviewComponentsProps) => {
   const { t } = useTranslation();
-  const colors = useThemeStore((state) => state.colors);
-  const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
-  const colorScheme = useThemeStore((state) => state.colorScheme);
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -62,23 +73,26 @@ export const OverviewComponents = () => {
     if (ref.current) {
       ref.current.style.setProperty(
         '--ds-border-radius-base',
-        `${baseBorderRadius / 16}rem`,
+        `${borderRadius / 16}rem`,
       );
     }
-  }, [baseBorderRadius]);
+  }, [borderRadius]);
 
   const style = () => {
-    if (!colors) return {};
+    if (!color) return {};
 
     const vars = {} as Record<string, string>;
 
     /* neutral */
     Object.assign(
       vars,
-      generateNeutralColorVars(colors.neutral[0].colors, colorScheme),
+      generateNeutralColorVars(generateColorSchemes('#1E2B3C'), colorScheme),
     );
     /* get -ds-color-* vars */
-    Object.assign(vars, generateColorVars(colors.main[0].colors, colorScheme));
+    Object.assign(
+      vars,
+      generateColorVars(generateColorSchemes(color), colorScheme),
+    );
 
     return vars;
   };
@@ -148,7 +162,7 @@ export const OverviewComponents = () => {
                   >
                     <img src={user.avatar} alt='' />
                   </Avatar>
-                  <div className={classes.userText}>
+                  <div>
                     <div className={classes.userRole}>{user.role}</div>
                     <div>{user.name}</div>
                   </div>

@@ -15,6 +15,7 @@ import './app.css';
 import { Error404 } from '@internal/rr-components';
 import { useTranslation } from 'react-i18next';
 import { useChangeLanguage } from 'remix-i18next/react';
+import { designsystemetRedirects } from './_utils/redirects.server';
 
 export const links = () => {
   return [
@@ -39,6 +40,7 @@ export const meta = () => {
 
 export const loader = async ({ params, request }: Route.LoaderArgs) => {
   const url = new URL(request?.url || '');
+
   /* if the url is slack, then redirect to slack */
   if (url.pathname === '/slack') {
     return redirect(
@@ -46,15 +48,13 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     );
   }
 
-  if (params.lang === undefined) {
-    return redirect('/no');
-  }
+  const hasRedirect = designsystemetRedirects(url.pathname);
 
-  if (params.lang !== 'no' && params.lang !== 'en') {
-    return redirect('/no');
-  }
+  const lang = params.lang === 'no' ? 'no' : params.lang === 'en' ? 'en' : 'no';
 
-  const lang = params.lang;
+  if (hasRedirect) {
+    return hasRedirect;
+  }
 
   const centerLinks = [
     {
@@ -98,23 +98,35 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     },
   ];
 
-  return data({ lang: params.lang, centerLinks, menu });
+  return data({
+    lang: params.lang || 'no',
+    centerLinks,
+    menu,
+  });
 };
 
-export function Layout() {
+type DocumentProps = {
+  children: React.ReactNode;
+};
+
+function Document({ children }: DocumentProps) {
   const { i18n } = useTranslation();
 
   return (
     <html
-      lang={i18n.language}
+      lang={
+        i18n.language !== 'no' && i18n.language !== 'en'
+          ? undefined
+          : i18n.language
+      }
       dir={i18n.dir(i18n.language)}
       data-color-scheme='auto'
     >
       <head>
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <Meta />
         <Links />
+        <Meta />
       </head>
       <body>
         <noscript>
@@ -122,8 +134,8 @@ export function Layout() {
           browser extension to block JavaScript, please disable it for this
           site.
         </noscript>
-        <Outlet />
-        {/* This uses sessionStorage, but we deem them necessary to make navigation work as expected */}
+        {children}
+        {/* This uses sessionStorage, but we deem it necessary to make navigation work as expected */}
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -131,9 +143,14 @@ export function Layout() {
   );
 }
 
-export default function Root({ loaderData: { lang } }: Route.ComponentProps) {
+export default function App({ loaderData: { lang } }: Route.ComponentProps) {
   useChangeLanguage(lang);
-  return <Outlet />;
+
+  return (
+    <Document>
+      <Outlet />
+    </Document>
+  );
 }
 
 export function ErrorBoundary({ error, loaderData }: Route.ErrorBoundaryProps) {
@@ -156,14 +173,16 @@ export function ErrorBoundary({ error, loaderData }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main id='main'>
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre>
-          <code>{stack}</code>
-        </pre>
-      )}
-    </main>
+    <Document>
+      <main id='main'>
+        <h1>{message}</h1>
+        <p>{details}</p>
+        {stack && (
+          <pre>
+            <code>{stack}</code>
+          </pre>
+        )}
+      </main>
+    </Document>
   );
 }

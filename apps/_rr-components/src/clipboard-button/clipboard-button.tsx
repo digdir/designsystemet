@@ -2,6 +2,7 @@ import { Button, Tooltip } from '@digdir/designsystemet-react';
 import { ClipboardIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
 
+import { useTranslation } from 'react-i18next';
 import classes from './clipboard-button.module.css';
 
 interface ClipboardButtonProps {
@@ -12,15 +13,16 @@ interface ClipboardButtonProps {
 }
 
 export const ClipboardButton = ({
-  title = 'Kopier',
+  title = 'clipboard-button.copy',
   value,
   text,
   ariaLabel,
 }: ClipboardButtonProps) => {
-  const [toolTipText, setToolTipText] = useState('Kopier');
+  const { t } = useTranslation();
+  const [toolTipText, setToolTipText] = useState(title);
 
   const onBtnClick = (text: string) => {
-    setToolTipText('Kopiert!');
+    setToolTipText('clipboard-button.copied');
     navigator.clipboard.writeText(text).catch((reason) => {
       throw Error(String(reason));
     });
@@ -28,10 +30,16 @@ export const ClipboardButton = ({
 
   return (
     <>
-      <Tooltip content={toolTipText}>
+      {/* @ts-ignore -- we trust the string passed to t() here */}
+      <Tooltip content={t(toolTipText)}>
         <Button
           onMouseEnter={() =>
-            setToolTipText(title === 'Kopier' && ariaLabel ? ariaLabel : title)
+            setToolTipText(
+              title === 'clipboard-button.copy' && ariaLabel
+                ? ariaLabel
+                : // @ts-ignore -- we trust the string passed to t() here
+                  t(title),
+            )
           }
           onClick={() => onBtnClick(value)}
           icon={!text}

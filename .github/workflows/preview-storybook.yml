@@ -63,7 +63,7 @@ jobs:
         id: regex-theme
         with:
           text: ${{ steps.fc.outputs.comment-body }}
-          regex: '\[Theme\]\((https:\/\/[^)]+)\).*'
+          regex: '\[theme\]\((https:\/\/[^)]+)\).*'
 
       - name: Find www deployment
         uses: actions-ecosystem/action-regex-match@v2

@@ -11,7 +11,6 @@ import {
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import { Outlet, isRouteErrorResponse, useRouteLoaderData } from 'react-router';
-import { useChangeLanguage } from 'remix-i18next/react';
 import type { Route } from './+types/layout';
 import type { Route as RootRoute } from './../../+types/root';
 
@@ -51,8 +50,6 @@ export default function RootLayout() {
     }[];
   };
 
-  useChangeLanguage(lang);
-
   return (
     <>
       <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
@@ -62,9 +59,7 @@ export default function RootLayout() {
         themeSwitcher
         transparentBackground
       />
-      <main id='main'>
-        <Outlet />
-      </main>
+      <Outlet />
       <Footer
         centerLinks={centerLinks}
         rightLinks={rightLinks as FooterLinkListItemProps[]}

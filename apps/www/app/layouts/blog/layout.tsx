@@ -1,16 +1,16 @@
-import { ContentContainer, Error404 } from '@internal/rr-components';
+import { ContentContainer } from '@internal/rr-components';
 import { PencilIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
-import { Outlet, isRouteErrorResponse } from 'react-router';
+import { Outlet } from 'react-router';
 import { Banner, BannerHeading, BannerIcon } from '~/_components/banner/banner';
-import type { Route } from './+types/layout';
 import classes from './layout.module.css';
+export { ErrorBoundary } from '~/root';
 
 export default function Layout() {
   const { t } = useTranslation();
 
   return (
-    <div>
+    <div data-is-main={true}>
       <Banner color='red'>
         <BannerIcon>
           <PencilIcon />
@@ -21,33 +21,5 @@ export default function Layout() {
         <Outlet />
       </ContentContainer>
     </div>
-  );
-}
-
-export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  const { t } = useTranslation();
-  const message = t('errors.default.title');
-  let details = t('errors.default.details');
-  let stack: string | undefined;
-
-  if (isRouteErrorResponse(error)) {
-    if (error.status === 404) {
-      return <Error404 />;
-    }
-  } else if (import.meta.env.DEV && error && error instanceof Error) {
-    details = error.message;
-    stack = error.stack;
-  }
-
-  return (
-    <ContentContainer>
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre>
-          <code>{stack}</code>
-        </pre>
-      )}
-    </ContentContainer>
   );
 }
