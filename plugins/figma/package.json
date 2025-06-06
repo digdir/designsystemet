@@ -1,11 +1,9 @@
 {
   "name": "@plugin/figma",
   "private": true,
-  "version": "0.4.0",
+  "version": "0.5.0",
   "type": "module",
   "scripts": {
-    "dev": "run-s watch",
-    "watch": "run-p 'watch:*'",
     "watch:ui": "npm run build:ui -- --watch --mode=development",
     "watch:plugin": "npm run build:plugin -- --watch --mode=development",
     "build": "npm run build:plugin && npm run build:ui",
@@ -16,7 +14,6 @@
     "types:node": "tsc -P tsconfig.node.json"
   },
   "dependencies": {
-    "@adobe/leonardo-contrast-colors": "^1.0.0",
     "@digdir/designsystemet": "workspace:^",
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
