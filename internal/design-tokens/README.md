@@ -10,7 +10,7 @@ You should use Figma to edit the tokens. You'll need the [Tokens Studio for Figm
 4. In the Figma Tokens plugin, under `Sync > GitHub`, add new credentials:
    - Name: `Designsystemet Digdir`
    - Personal Access Token: _your PAT_
-   - Repository: `digdir/designsystem`
+   - Repository: `digdir/designsystemet`
    - Default Branch: `main`
    - File Path: `internal/design-tokens`
 
