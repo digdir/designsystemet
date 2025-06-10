@@ -1,13 +1,13 @@
 import { SkipLink } from '@digdir/designsystemet-react';
-import { ContentContainer } from '@internal/rr-components';
-import { Figma } from '@internal/rr-components';
-import { Github } from '@internal/rr-components';
-import { Slack } from '@internal/rr-components';
+import { ContentContainer } from '@internal/components';
+import { Figma } from '@internal/components';
+import { Github } from '@internal/components';
+import { Slack } from '@internal/components';
 import {
   Footer,
   type FooterLinkListItemProps,
   Header,
-} from '@internal/rr-components';
+} from '@internal/components';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import { Outlet, isRouteErrorResponse, useRouteLoaderData } from 'react-router';

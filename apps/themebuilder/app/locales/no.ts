@@ -1,4 +1,4 @@
-import no from '@internal/rr-components/src/_locales/no';
+import no from '@internal/components/src/_locales/no';
 
 export default {
   ...no,

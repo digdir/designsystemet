@@ -4,8 +4,8 @@ import {
   Error404,
   Footer,
   Header,
-} from '@internal/rr-components';
-import type { FooterLinkListItemProps } from '@internal/rr-components';
+} from '@internal/components';
+import type { FooterLinkListItemProps } from '@internal/components';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import { Outlet, isRouteErrorResponse, useRouteLoaderData } from 'react-router';
@@ -57,7 +57,11 @@ export default function RootLayout() {
   return (
     <>
       <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
-      <Header menu={menu} logoLink={`/${lang}`} themeSwitcher />
+      <Header
+        menu={menu}
+        logoLink={`/${lang === 'no' ? 'no' : lang === 'en' ? 'en' : 'no'}`}
+        themeSwitcher
+      />
       <main id='main'>
         <Outlet />
       </main>

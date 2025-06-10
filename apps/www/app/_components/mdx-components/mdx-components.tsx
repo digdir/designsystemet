@@ -18,7 +18,7 @@ import {
   type TableProps,
   TableRow,
 } from '@digdir/designsystemet-react';
-import { CodeBlock } from '@internal/rr-components';
+import { CodeBlock } from '@internal/components';
 import { getMDXComponent } from 'mdx-bundler/dist/client';
 import { type JSX, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
