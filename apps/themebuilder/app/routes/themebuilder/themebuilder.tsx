@@ -6,6 +6,7 @@ import { ThemePages } from './_components/theme-pages';
 import { useThemeParams } from './_utils/useThemeParams';
 import classes from './page.module.css';
 import 'react-color-palette/css';
+import { isProduction } from '~/_utils/is-production.server';
 import { generateMetadata } from '~/_utils/metadata';
 import i18n from '~/i18next.server';
 import type { Route } from './+types/themebuilder';
@@ -19,6 +20,7 @@ export const loader = async ({ params: { lang } }: Route.ComponentProps) => {
       title: t('meta.title'),
       description: t('meta.description'),
     }),
+    isProduction: isProduction(),
   };
 };
 
