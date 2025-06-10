@@ -10,7 +10,7 @@ import { cwd } from 'node:process';
 import type { Config } from '@react-router/dev/config';
 import { vercelPreset } from '@vercel/react-router/vite';
 import { normalizePath } from 'vite';
-import i18nConf from '~/i18n';
+import i18nConf from './app/i18n';
 
 const config: Config = {
   ssr: true,
