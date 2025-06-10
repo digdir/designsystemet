@@ -43,6 +43,15 @@ export default {
 } as Meta;
 
 async function testSuggestion(el: HTMLElement) {
+  /* wait for role to be added */
+  const wait = () => {
+    return new Promise((resolve) => {
+      setTimeout(resolve, 500);
+    });
+  }
+
+  await wait()
+
   /* When in test mode, open suggestion by focusing input */
   const input = within(el).getByRole('combobox');
   await userEvent.click(input);
