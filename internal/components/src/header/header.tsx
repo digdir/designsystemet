@@ -243,6 +243,7 @@ const Header = ({
             <Tooltip content={t('header.language-toggle')} placement='bottom'>
               <div>
                 <Dropdown.Trigger
+                  icon={true}
                   variant='tertiary'
                   data-color='neutral'
                   className={classes.toggleButton}
