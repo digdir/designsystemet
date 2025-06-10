@@ -30,6 +30,11 @@
     opacity: 1;
     visibility: visible;
   }
+  /*for polyfill*/
+  .\:popover-open {
+    opacity: 1;
+    visibility: visible;
+  }
 
   &::before {
     content: '';

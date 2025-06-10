@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://designsystemet.no
-
-# Sitemaps
-Sitemap: https://designsystemet.no/sitemap.xml

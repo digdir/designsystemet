@@ -21,10 +21,9 @@
   "updateInternalDependencies": "patch",
   "ignore": [
     "@web/www",
-    "theme",
-    "storefront",
-    "@internal/components",
+    "@web/themebuilder",
     "@web/storybook",
-    "@plugin/figma"
+    "@plugin/figma",
+    "@internal/components"
   ]
 }

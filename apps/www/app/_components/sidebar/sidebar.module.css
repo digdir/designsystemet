@@ -45,34 +45,34 @@
   position: relative;
   border-radius: var(--ds-border-radius-md);
   text-wrap: balance;
-}
 
-.linkActive::before {
-  content: '';
-  width: 4px;
-  background-color: var(--ds-color-neutral-border-strong);
-  display: block;
-  position: absolute;
-  top: 0;
-  left: -2px;
-  bottom: 0;
-  border-radius: 10px;
+  &[aria-current='page']::before {
+    content: '';
+    width: 4px;
+    background-color: var(--ds-color-neutral-border-strong);
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -2px;
+    bottom: 0;
+    border-radius: 10px;
+  }
+
+  &[aria-current='page'] {
+    border-left-color: var(--ds-color-neutral-border-strong);
+    color: inherit;
+    font-weight: 500;
+    background-color: var(--ds-color-neutral-background-tinted);
+  }
+
+  &[aria-current='page']:hover {
+    border-left-color: var(--ds-color-accent-base-default);
+  }
 }
 
 .linkCompact {
   margin-top: 0;
   border-left: 1px solid var();
-}
-
-.linkActive {
-  border-left-color: var(--ds-color-neutral-border-strong);
-  color: inherit;
-  font-weight: 500;
-  background-color: var(--ds-color-neutral-background-tinted);
-}
-
-.linkActive:hover {
-  border-left-color: var(--ds-color-accent-base-default);
 }
 
 .toggleBtn {

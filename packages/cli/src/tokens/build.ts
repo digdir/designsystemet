@@ -3,7 +3,7 @@ import type { ThemeObject } from '@tokens-studio/types';
 import chalk from 'chalk';
 import * as R from 'ramda';
 import type { DesignToken } from 'style-dictionary/types';
-import { cleanDir, mkdir, readFile, writeFile } from '../utils.js';
+import { mkdir, readFile, writeFile } from '../utils.js';
 import { createThemeCSSFiles, defaultFileHeader } from './process/theme.js';
 
 import { type BuildOptions, processPlatform } from './process/platform.js';
@@ -23,7 +23,7 @@ async function write(files: OutputFile[], outDir: string, dry?: boolean) {
   }
 }
 
-export const buildTokens = async (options: Omit<BuildOptions, 'process' | '$themes'>) => {
+export const buildTokens = async (options: Omit<BuildOptions, 'type' | '$themes'>) => {
   const outDir = path.resolve(options.outDir);
   const tokensDir = path.resolve(options.tokensDir);
   const $themes = JSON.parse(await readFile(`${tokensDir}/$themes.json`)) as ThemeObject[];
@@ -40,13 +40,9 @@ export const buildTokens = async (options: Omit<BuildOptions, 'process' | '$them
     ...options,
     outDir: outDir,
     tokensDir: tokensDir,
-    process: 'build',
+    type: 'build',
     $themes,
   });
-
-  if (options.clean) {
-    await cleanDir(outDir, options.dry);
-  }
 
   console.log(`\n💾 Writing build to ${chalk.green(outDir)}`);
 

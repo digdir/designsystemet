@@ -63,7 +63,7 @@ Vurder om `tooltip` skal plasseres over, under eller ved siden av elementet.
 * å inneholde lenker eller andre interaktive elementer
 * tekst som allerede er synlig på siden
 
-Hvis det er behov for å vise rikt innhold, for eksempel lengre tekster, bilder eller knapper, kan vi i stedet bruke en [`popover`](docs/komponenter-popover--docs).
+Hvis det er behov for å vise rikt innhold, for eksempel lengre tekster, bilder eller knapper, kan vi i stedet bruke en [`popover`](/docs/komponenter-popover--docs).
 
 ## Tekst i komponenten
 
@@ -87,3 +87,8 @@ På berøringsskjermer er `tooltip` mindre egnet, fordi de vanligvis aktiveres v
 
 - I Safari fungerer ikke fade-in animasjon.
 - Brukeren kan ikke flytte musepeker inn i `tooltip`
+
+### Polyfill
+
+`Tooltip` bruker [popover](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover). Dette apiet er klassifisert som [Baseline: Newly available](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) fra april 2024, da Firefox som siste nettleser la det til. I noen tilfeller kan en oppleve at brukere av ulike grunner er låst til eldre nettleserversjoner, og da kan det være aktuelt å legge til en polyfill for å sikre at `Tooltip` fungerer for alle.
+* [Popover-Polyfill](https://github.com/oddbird/popover-polyfill)

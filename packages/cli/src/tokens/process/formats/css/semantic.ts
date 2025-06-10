@@ -22,7 +22,7 @@ export const overrideSizingFormula = (format: (t: TransformedToken) => string, t
 
   const calc = value.replace(`var(--ds-size-mode-font-size)`, '1em').replace(/floor\((.*)\);/, 'calc($1)');
 
-  const round = `round(down, ${calc}, 0.0625rem)`;
+  const round = `round(down, ${calc}, 1px)`;
 
   return {
     name,
