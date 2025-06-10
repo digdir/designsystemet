@@ -10,6 +10,7 @@ import { cwd } from 'node:process';
 import type { Config } from '@react-router/dev/config';
 import { vercelPreset } from '@vercel/react-router/vite';
 import { normalizePath } from 'vite';
+import i18nConf from '~/i18n';
 
 const config: Config = {
   ssr: true,
@@ -109,7 +110,7 @@ const dirname = cwd();
 const getContentPathsWithLanguages = (): string[] => {
   const contentBasePath = join(dirname, './app/content');
   const paths: string[] = [];
-  const supportedLanguages = ['no', 'en']; // Adjust as needed
+  const supportedLanguages = i18nConf.supportedLngs;
 
   try {
     // First, get all top-level content folders (e.g., patterns, blog, etc.)
