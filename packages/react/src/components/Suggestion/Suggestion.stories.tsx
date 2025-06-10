@@ -42,15 +42,15 @@ export default {
   },
 } as Meta;
 
+const wait = () => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, 500);
+  });
+};
+
 async function testSuggestion(el: HTMLElement) {
   /* wait for role to be added */
-  const wait = () => {
-    return new Promise((resolve) => {
-      setTimeout(resolve, 500);
-    });
-  }
-
-  await wait()
+  await wait();
 
   /* When in test mode, open suggestion by focusing input */
   const input = within(el).getByRole('combobox');
@@ -158,6 +158,14 @@ export const CustomFilterAlt1: StoryFn<typeof Suggestion> = (args) => {
   );
 };
 
+CustomFilterAlt1.parameters = {
+  docs: {
+    source: {
+      type: 'code',
+    },
+  },
+};
+
 export const CustomFilterAlt2: StoryFn<typeof Suggestion> = (args) => {
   const [value, setValue] = useState('');
 
@@ -241,7 +249,7 @@ export const FetchExternal: StoryFn<typeof Suggestion> = (args) => {
         <Suggestion.Input onInput={handleInput} />
         <Suggestion.Clear />
         <Suggestion.List singular='%d country' plural='%d countries'>
-          {!!value && (
+          {value ? (
             <Suggestion.Empty>
               {options ? (
                 'Ingen treff'
@@ -251,7 +259,7 @@ export const FetchExternal: StoryFn<typeof Suggestion> = (args) => {
                 </span>
               )}
             </Suggestion.Empty>
-          )}
+          ) : null}
           {options?.map((option) => (
             <Suggestion.Option key={option}>{option}</Suggestion.Option>
           ))}
@@ -259,6 +267,14 @@ export const FetchExternal: StoryFn<typeof Suggestion> = (args) => {
       </Suggestion>
     </Field>
   );
+};
+
+FetchExternal.parameters = {
+  docs: {
+    source: {
+      type: 'code',
+    },
+  },
 };
 
 export const DefaultValue: StoryFn<typeof Suggestion> = (args) => {

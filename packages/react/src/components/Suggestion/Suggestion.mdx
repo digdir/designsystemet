@@ -9,7 +9,7 @@ import { SuggestionList } from './SuggestionList';
 
 # Suggestion
 
-Søkbar "select" med mulighet for flervalg/multiselect.
+Søkbar "select" med mulighet for flervalg/multiselect. Bruk dersom `Select` ikke er tilstrekkelig.
 
 <Primary />
 <Controls />
@@ -47,10 +47,18 @@ Når du setter `multiple={true}` må du også ha `<Suggestion.Chips />` for å v
 ### Filter
 
 Filter er som standard på, og filteret ser etter etter teksten i input.
-
 Skal du ha eget filter kan du sende inn en funksjon til `filter`.
 
+Dersom du vil vise alle alternativer, uavhengig av input, kan du sette `filter={false}`.
+
 <Canvas of={SuggestionStories.CustomFilterAlt1} />
+
+### Asynkrone data
+
+`Suggestion` har ikke en egen `loading` state, så dette må håndereres selv. 
+I eksempelet under viser vi `Spinner` i `Suggestion.Empty`.
+
+<Canvas of={SuggestionStories.FetchExternal} />
 
 ## `Suggestion.List`
 
