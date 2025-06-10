@@ -82,18 +82,18 @@ Developing components for Designsystemet requires that developers are closely co
 
 ### Getting started with development
 
-Follow these steps to get up and running with Storybook or Storefront (designsystemet.no).
+Follow these steps to get up and running with Storybook or www (designsystemet.no). 
 
 Run the commands from the root of your project. Make sure you clone the `next` branch, this is where we do development.
 
-`pnpm`
+`pnpm i`
 `pnpm build`
 
 #### 4. Start local development servers
 
-`pnpm storybook | storefront`
+Depending on what you want to work on, start `apps` by running script according to folder.
 
-You can now start developing for storybook and the storefront.
+`pnpm storybook | www | themebuilder`
 
 ### Pull requests
 

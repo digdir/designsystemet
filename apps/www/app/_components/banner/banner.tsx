@@ -1,4 +1,3 @@
-'use client';
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import type { HeadingProps } from '@digdir/designsystemet-react';
 import { Slot } from '@radix-ui/react-slot';

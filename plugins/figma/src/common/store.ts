@@ -1,8 +1,6 @@
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
 
-import type { FigmaModeName } from './types';
-
 export type ColorInfo = {
   [key in ColorIndex]: string;
 };
@@ -37,22 +35,15 @@ export type StoreTheme = {
 export type ColorTheme = {
   accent: ThemeInfo;
   neutral: ThemeInfo;
-  primary: ThemeInfo;
-  extra1: ThemeInfo;
-  extra2: ThemeInfo;
+  brand1: ThemeInfo;
+  brand2: ThemeInfo;
+  brand3: ThemeInfo;
 };
 
 export type ThemeInfo = {
   light: ColorInfo;
   dark: ColorInfo;
   contrast?: ColorInfo;
-};
-
-export type StoreThemeModes = {
-  name: string;
-  id: string;
-  prefix: FigmaModeName;
-  colors: { brand1Base: string; brand2Base: string; brand3Base: string };
 };
 
 type ColorStore = {

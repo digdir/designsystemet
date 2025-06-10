@@ -1,7 +1,6 @@
 import { hexToRgb, rgbToHex } from '@digdir/designsystemet/color';
 
 import type { ColorIndex, ColorTheme, StoreThemes } from '../../common/store';
-import type { FigmaModeName, ThemeColors } from '../../common/types';
 
 const updateColors = (
   themes: StoreThemes,
@@ -12,8 +11,8 @@ const updateColors = (
   themeCollection: VariableCollection,
   variables: Variable[],
 ) => {
-  const themeName = variable.name.split('/')[0] as FigmaModeName;
-  const themeType = variable.name.split('/')[1] as ThemeColors;
+  const themeName = variable.name.split('/')[0];
+  const themeType = variable.name.split('/')[1];
   const themeIndex = variable.name.split('/')[2] as ColorIndex;
   if (
     variable.variableCollectionId === modeCollection.id &&

@@ -38,9 +38,9 @@ export const Preview: Story = (args) => {
       </Table.Body>
       <Table.Foot>
         <Table.Row>
-          <Table.Cell>Footer 1</Table.Cell>
-          <Table.Cell>Footer 2</Table.Cell>
-          <Table.Cell>Footer 3</Table.Cell>
+          <Table.HeaderCell>Footer 1</Table.HeaderCell>
+          <Table.HeaderCell>Footer 2</Table.HeaderCell>
+          <Table.HeaderCell>Footer 3</Table.HeaderCell>
         </Table.Row>
       </Table.Foot>
     </Table>
@@ -52,6 +52,51 @@ Preview.args = {
   stickyHeader: false,
   border: false,
   hover: false,
+};
+
+export const Numbers: Story = (args) => (
+  <Table
+    style={{
+      tableLayout: 'fixed',
+      fontVariantNumeric: 'tabular-nums',
+    }}
+    {...args}
+  >
+    <caption>Antall søknader per måned</caption>
+    <Table.Head>
+      <Table.Row>
+        <Table.HeaderCell scope='col'>Måned</Table.HeaderCell>
+        <Table.HeaderCell scope='col' style={{ textAlign: 'right' }}>
+          2023
+        </Table.HeaderCell>
+        <Table.HeaderCell scope='col' style={{ textAlign: 'right' }}>
+          2024
+        </Table.HeaderCell>
+      </Table.Row>
+    </Table.Head>
+    <Table.Body>
+      <Table.Row>
+        <Table.HeaderCell scope='row'>Januar</Table.HeaderCell>
+        <Table.Cell style={{ textAlign: 'right' }}>1 230</Table.Cell>
+        <Table.Cell style={{ textAlign: 'right' }}>1 450</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.HeaderCell scope='row'>Februar</Table.HeaderCell>
+        <Table.Cell style={{ textAlign: 'right' }}>980</Table.Cell>
+        <Table.Cell style={{ textAlign: 'right' }}>1 120</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.HeaderCell scope='row'>Mars</Table.HeaderCell>
+        <Table.Cell style={{ textAlign: 'right' }}>1 150</Table.Cell>
+        <Table.Cell style={{ textAlign: 'right' }}>1 300</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table>
+);
+
+Numbers.args = {
+  zebra: true,
+  border: true,
 };
 
 const dummyData = [
@@ -142,6 +187,13 @@ export const Sortable: Story = (args) => {
     </Table>
   );
 };
+Sortable.parameters = {
+  docs: {
+    source: {
+      type: 'code',
+    },
+  },
+};
 
 export const StickyHeader: Story = (args) => {
   const rows = Array.from({ length: 50 }, (_, i) => i + 1);
@@ -179,7 +231,7 @@ StickyHeader.parameters = {
 export const WithFormElements: Story = (args) => {
   const { getCheckboxProps } = useCheckboxGroup({
     name: 'my-checkbox',
-    value: ['2'],
+    value: ['Kari Nordmann'],
   });
 
   return (
@@ -188,26 +240,26 @@ export const WithFormElements: Story = (args) => {
         <Table.Row>
           <Table.HeaderCell>
             <Checkbox
-              aria-label='Select all'
+              aria-label='Velg alle ansatte'
               {...getCheckboxProps({ allowIndeterminate: true })}
             />
           </Table.HeaderCell>
-          <Table.HeaderCell>Header 1</Table.HeaderCell>
-          <Table.HeaderCell>Header 2</Table.HeaderCell>
-          <Table.HeaderCell>Header 3</Table.HeaderCell>
+          <Table.HeaderCell>Navn</Table.HeaderCell>
+          <Table.HeaderCell>Stilling</Table.HeaderCell>
+          <Table.HeaderCell>Kommentar</Table.HeaderCell>
         </Table.Row>
       </Table.Head>
       <Table.Body>
-        {[1, 2, 3].map((row) => (
+        {['Kari Nordmann', 'Ola Nordmann', 'Jens Nordmann'].map((row) => (
           <Table.Row key={row}>
             <Table.Cell>
               <Checkbox
-                aria-label={`Check ${row}`}
+                aria-label={`Velg ${row}`}
                 {...getCheckboxProps(String(row))}
               />
             </Table.Cell>
             <Table.Cell>{row}</Table.Cell>
-            <Table.Cell>{row}</Table.Cell>
+            <Table.Cell>Rådgiver</Table.Cell>
             <Table.Cell>
               <Textfield data-size='sm' aria-label={`Textfield ${row}`} />
             </Table.Cell>
@@ -216,6 +268,13 @@ export const WithFormElements: Story = (args) => {
       </Table.Body>
     </Table>
   );
+};
+WithFormElements.parameters = {
+  docs: {
+    source: {
+      type: 'code',
+    },
+  },
 };
 
 export const FixedTable: Story = (args) => {

@@ -1,15 +1,15 @@
 import { SkipLink } from '@digdir/designsystemet-react';
+import {
+  ContentContainer,
+  Error404,
+  Footer,
+  Header,
+} from '@internal/components';
+import type { FooterLinkListItemProps } from '@internal/components';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import { Outlet, isRouteErrorResponse, useRouteLoaderData } from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
-import { ContentContainer } from '~/_components/content-container/content-container';
-import { Error404 } from '~/_components/errors/error-404';
-import {
-  Footer,
-  type FooterLinkListItemProps,
-} from '~/_components/footer/footer';
-import { Header } from '~/_components/header/header';
 import { Figma } from '~/_components/logos/figma';
 import { Github } from '~/_components/logos/github';
 import { Slack } from '~/_components/logos/slack';
@@ -57,7 +57,11 @@ export default function RootLayout() {
   return (
     <>
       <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
-      <Header menu={menu} logoLink={`/${lang}`} themeSwitcher />
+      <Header
+        menu={menu}
+        logoLink={`/${lang === 'no' ? 'no' : lang === 'en' ? 'en' : 'no'}`}
+        themeSwitcher
+      />
       <main id='main'>
         <Outlet />
       </main>
@@ -99,7 +103,11 @@ const ErrorWrapperRoot = ({
   return (
     <>
       <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
-      <Header menu={menu} logoLink={`/${lang}`} themeSwitcher />
+      <Header
+        menu={menu}
+        logoLink={`/${lang === 'no' ? 'no' : lang === 'en' ? 'en' : 'no'}`}
+        themeSwitcher
+      />
       <main id='main'>
         <ContentContainer>{children}</ContentContainer>
       </main>
@@ -130,7 +138,16 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
 
   if (isRouteErrorResponse(error)) {
     if (error.status === 404) {
-      return <Error404 />;
+      return (
+        <ErrorWrapperRoot
+          lang={loaderData.lang}
+          menu={loaderData.menu}
+          centerLinks={loaderData.centerLinks}
+          rightLinks={[]}
+        >
+          <Error404 />
+        </ErrorWrapperRoot>
+      );
     }
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;

@@ -1,5 +1,21 @@
 # Change Log
 
+## 1.0.8
+
+## 1.0.7
+
+### Patch Changes
+
+- Updated non-major dependencies ([#3594](https://github.com/digdir/designsystemet/pull/3594))
+
+- Small fixes related to rtl text direction support in multiple components ([#3580](https://github.com/digdir/designsystemet/pull/3580))
+
+- `Tooltip`: add support for [Popover-Polyfill](https://github.com/oddbird/popover-polyfill) ([#3645](https://github.com/digdir/designsystemet/pull/3645))
+
+- Fix `@charset` using wrong quotations marks ([#3551](https://github.com/digdir/designsystemet/pull/3551))
+
+- **Dialog**: Prefix keyframes (`slide-in`, `fade-in`) with `ds-dialog` ([#3602](https://github.com/digdir/designsystemet/pull/3602))
+
 ## 1.0.6
 
 ### Patch Changes

@@ -1,9 +1,8 @@
-import { Button, Paragraph } from '@digdir/designsystemet-react';
+import { Button, Link, Paragraph } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { type HTMLAttributes, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router';
-import { RRLink } from '../link';
+import { NavLink } from 'react-router';
 import classes from './sidebar.module.css';
 
 export type SidebarProps = {
@@ -17,7 +16,6 @@ export type SidebarProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 export const Sidebar = ({ cats, title, ...props }: SidebarProps) => {
-  const { pathname } = useLocation();
   const { t } = useTranslation();
   const [showMenu, setShowMenu] = useState(false);
 
@@ -58,16 +56,15 @@ export const Sidebar = ({ cats, title, ...props }: SidebarProps) => {
                     return (
                       <li key={item.url} className={classes.listItem}>
                         <Paragraph asChild data-size='sm'>
-                          <RRLink
-                            to={url}
-                            className={cl(
-                              classes.link,
-                              url === pathname && classes.linkActive,
-                            )}
-                            onClick={() => setShowMenu(false)}
-                          >
-                            {t(`sidebar.items.${item.title}`, item.title)}
-                          </RRLink>
+                          <Link asChild>
+                            <NavLink
+                              to={url}
+                              className={cl(classes.link)}
+                              onClick={() => setShowMenu(false)}
+                            >
+                              {t(`sidebar.items.${item.title}`, item.title)}
+                            </NavLink>
+                          </Link>
                         </Paragraph>
                       </li>
                     );

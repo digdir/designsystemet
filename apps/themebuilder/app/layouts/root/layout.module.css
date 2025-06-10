@@ -1,0 +1,7 @@
+.header {
+  padding: var(--ds-size-6) var(--ds-size-12);
+  border-bottom: var(--ds-color-neutral-border-default) solid 1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
