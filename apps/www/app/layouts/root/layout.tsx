@@ -25,17 +25,17 @@ const rightLinks: FooterLinkListItemProps[] = [
   {
     text: ['footer.slack'] as unknown as FooterLinkListItemProps['text'],
     url: '/slack',
-    prefix: <Slack />,
+    prefix: <Slack aria-hidden='true' />,
   },
   {
     text: 'Github' as unknown as FooterLinkListItemProps['text'],
     url: 'https://github.com/digdir/designsystemet',
-    prefix: <Github />,
+    prefix: <Github aria-hidden='true' />,
   },
   {
     text: 'Figma' as unknown as FooterLinkListItemProps['text'],
     url: 'https://www.figma.com/@designsystemet',
-    prefix: <Figma />,
+    prefix: <Figma aria-hidden='true' />,
   },
 ];
 
