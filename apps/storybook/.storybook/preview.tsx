@@ -229,7 +229,7 @@ const preview: Preview = {
         transform: transformSource,
         type: 'auto',
       },
-
+      /* @ts-ignore this is a type error as of 9.0.6*/
       codePanel: true,
     },
     controls: {
