@@ -20,6 +20,9 @@ importers:
       '@storybook/addon-docs':
         specifier: ^9.0.8
         version: 9.0.8(@types/react@19.1.7)(storybook@9.0.8(@testing-library/dom@10.4.0)(prettier@3.5.3))
+      '@storybook/addon-vitest':
+        specifier: 9.0.8
+        version: 9.0.8(@vitest/browser@3.1.4)(@vitest/runner@3.2.3)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@9.0.8(@testing-library/dom@10.4.0)(prettier@3.5.3))(vitest@3.1.4)
       '@svitejs/changesets-changelog-github-compact':
         specifier: ^1.2.0
         version: 1.2.0
@@ -96,9 +99,6 @@ importers:
       '@storybook/addon-themes':
         specifier: ^9.0.8
         version: 9.0.8(storybook@9.0.8(@testing-library/dom@10.4.0)(prettier@3.5.3))
-      '@storybook/addon-vitest':
-        specifier: 9.0.8
-        version: 9.0.8(@vitest/browser@3.1.4)(@vitest/runner@3.2.3)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@9.0.8(@testing-library/dom@10.4.0)(prettier@3.5.3))(vitest@3.1.4)
       '@storybook/react-vite':
         specifier: ^9.0.8
         version: 9.0.8(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rollup@4.43.0)(storybook@9.0.8(@testing-library/dom@10.4.0)(prettier@3.5.3))(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.31)(less@4.3.0)(sass@1.89.2)(stylus@0.62.0)(tsx@4.19.4)(yaml@2.8.0))
