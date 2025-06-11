@@ -37,6 +37,8 @@ function makeTokenCommands() {
     .option('-p, --preview', 'Generate preview token.ts files', false)
     .option('--verbose', 'Enable verbose output', false)
     .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILE}")`)
+    .option('--tailwind', 'Generate Tailwind CSS classes for tokens', false)
+
     .action(async (opts) => {
       const { preview, verbose, clean, dry } = opts;
       const tokensDir = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_CREATE_DIR;
@@ -53,7 +55,7 @@ function makeTokenCommands() {
         await cleanDir(outDir, dry);
       }
 
-      await buildTokens({ tokensDir, outDir, preview, verbose, dry, ...config });
+      await buildTokens({ tokensDir, outDir, preview, verbose, dry, tailwind: opts.tailwind, ...config });
 
       return Promise.resolve();
     });
