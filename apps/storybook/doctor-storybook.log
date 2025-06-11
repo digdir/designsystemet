@@ -1,7 +1,7 @@
 🩺 The doctor is checking the health of your Storybook..
 ╭ Incompatible packages found ────────────────────────────────────────────────────────────────────────╮
 │                                                                                                     │
-│   You are currently using Storybook 9.0.4 but you have packages which are incompatible with it:     │
+│   You are currently using Storybook 9.0.8 but you have packages which are incompatible with it:     │
 │   - @whitespace/storybook-addon-html@7.0.0 which depends on ^8.2.0                                  │
 │                                                                                                     │
 │                                                                                                     │
