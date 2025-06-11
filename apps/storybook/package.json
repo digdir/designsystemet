@@ -27,7 +27,7 @@
     "@storybook/addon-docs": "^9.0.8",
     "@storybook/addon-links": "^9.0.8",
     "@storybook/addon-themes": "^9.0.8",
-    "@storybook/addon-vitest": "9.0.4",
+    "@storybook/addon-vitest": "9.0.8",
     "@storybook/react-vite": "^9.0.8",
     "@types/ramda": "^0.30.2",
     "@types/react": "^19.1.5",
