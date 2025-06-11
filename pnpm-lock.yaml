@@ -23,6 +23,9 @@ importers:
       '@storybook/addon-vitest':
         specifier: 9.0.8
         version: 9.0.8(@vitest/browser@3.1.4)(@vitest/runner@3.2.3)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@9.0.8(@testing-library/dom@10.4.0)(prettier@3.5.3))(vitest@3.1.4)
+      '@storybook/react-vite':
+        specifier: ^9.0.8
+        version: 9.0.8(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rollup@4.43.0)(storybook@9.0.8(@testing-library/dom@10.4.0)(prettier@3.5.3))(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.31)(less@4.3.0)(sass@1.89.2)(stylus@0.62.0)(tsx@4.19.4)(yaml@2.8.0))
       '@svitejs/changesets-changelog-github-compact':
         specifier: ^1.2.0
         version: 1.2.0
@@ -44,6 +47,9 @@ importers:
       just-pnpm:
         specifier: ^1.0.2
         version: 1.0.2
+      storybook:
+        specifier: ^9.0.8
+        version: 9.0.8(@testing-library/dom@10.4.0)(prettier@3.5.3)
       tsconfck:
         specifier: ^3.1.6
         version: 3.1.6(typescript@5.8.3)
@@ -99,9 +105,6 @@ importers:
       '@storybook/addon-themes':
         specifier: ^9.0.8
         version: 9.0.8(storybook@9.0.8(@testing-library/dom@10.4.0)(prettier@3.5.3))
-      '@storybook/react-vite':
-        specifier: ^9.0.8
-        version: 9.0.8(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rollup@4.43.0)(storybook@9.0.8(@testing-library/dom@10.4.0)(prettier@3.5.3))(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.31)(less@4.3.0)(sass@1.89.2)(stylus@0.62.0)(tsx@4.19.4)(yaml@2.8.0))
       '@types/ramda':
         specifier: ^0.30.2
         version: 0.30.2
@@ -138,9 +141,6 @@ importers:
       remark-gfm:
         specifier: ^4.0.1
         version: 4.0.1
-      storybook:
-        specifier: ^9.0.8
-        version: 9.0.8(@testing-library/dom@10.4.0)(prettier@3.5.3)
       storybook-addon-pseudo-states:
         specifier: ^9.0.6
         version: 9.0.8(storybook@9.0.8(@testing-library/dom@10.4.0)(prettier@3.5.3))
@@ -533,9 +533,6 @@ importers:
       '@rollup/plugin-node-resolve':
         specifier: ^16.0.1
         version: 16.0.1(rollup@4.43.0)
-      '@storybook/react-vite':
-        specifier: ^9.0.8
-        version: 9.0.8(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rollup@4.43.0)(storybook@9.0.8(@testing-library/dom@10.4.0)(prettier@3.5.3))(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.31)(less@4.3.0)(sass@1.89.2)(stylus@0.62.0)(tsx@4.19.4)(yaml@2.8.0))
       '@testing-library/dom':
         specifier: ^10.4.0
         version: 10.4.0
@@ -572,9 +569,6 @@ importers:
       rollup-plugin-copy:
         specifier: ^3.5.0
         version: 3.5.0
-      storybook:
-        specifier: ^9.0.8
-        version: 9.0.8(@testing-library/dom@10.4.0)(prettier@3.5.3)
       tsx:
         specifier: 4.19.4
         version: 4.19.4
