@@ -20,7 +20,7 @@ export default mergeConfig(
       }),
     ],
     test: {
-      exclude: ['./../../packages/**/*.chromatic.tsx'],
+      exclude: ['./../../packages/**/*.chromatic.tsx', './../../**/*.mdx'],
       watch: false,
       browser: {
         enabled: true,
