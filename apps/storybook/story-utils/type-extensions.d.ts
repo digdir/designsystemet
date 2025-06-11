@@ -11,9 +11,16 @@ export type MdxComponentOverrides = {
 } & Record<string, React.FC>;
 
 type DocsParams = Required<DocsParameters>['docs'];
+type SourceBlockParameters = NonNullable<DocsParams['source']>;
 // Use Partial here to make `of` not required when setting parameters.docs.{canvas,source}
 type DocsCanvasParams = Partial<DocsParams['canvas']>;
-type DocsSourceParams = Partial<DocsParams['source']>;
+type DocsSourceParams = Partial<Omit<SourceBlockParameters, 'transform'>> & {
+  /** Source code transformations */
+  transform?: (
+    code: string,
+    storyContext: StoryContext,
+  ) => string | Promise<string>; // original type doesn't allow Promise, although support for this was added in 9.0.0. See https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#parametersdocssourceformat-removal
+};
 
 type ChromaticViewport = {
   width?: number | `${string}px`;
