@@ -1,6 +1,5 @@
 import { join } from 'node:path';
-import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
-import { ArrowLeftIcon } from '@navikt/aksel-icons';
+import { Breadcrumbs, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { useTranslation } from 'react-i18next';
 import { Link as RouterLink } from 'react-router';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
@@ -67,12 +66,13 @@ export default function BestPractices({
       <div className={classes.header}>
         <div className={classes.container}>
           <div className={classes.headerContent}>
-            <Link asChild className={classes.backBtn} data-color='neutral'>
-              <RouterLink to={'../..'} relative='path'>
-                <ArrowLeftIcon title={t('best-practices.back')} fontSize={28} />
-                {t('best-practices.title')}
-              </RouterLink>
-            </Link>
+            <Breadcrumbs aria-label={t('best-practices.breadcrumbs-label')}>
+              <Breadcrumbs.Link asChild data-color='neutral'>
+                <RouterLink to={'../..'} relative='path'>
+                  {t('best-practices.title')}
+                </RouterLink>
+              </Breadcrumbs.Link>
+            </Breadcrumbs>
             <Paragraph data-size='lg' variant='short' asChild>
               <div className={classes.meta}>
                 <span>{author && <span>{author}</span>}</span>
