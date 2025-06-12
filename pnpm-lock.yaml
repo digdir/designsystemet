@@ -91,8 +91,8 @@ importers:
         specifier: ^8.6.14
         version: 8.6.14(@types/react@19.1.6)(storybook@8.6.14(prettier@3.5.3))
       '@storybook/addon-links':
-        specifier: ^8.6.14
-        version: 8.6.14(react@19.1.0)(storybook@8.6.14(prettier@3.5.3))
+        specifier: ^9.0.6
+        version: 9.0.8(react@19.1.0)(storybook@8.6.14(prettier@3.5.3))
       '@storybook/addon-mdx-gfm':
         specifier: ^8.6.14
         version: 8.6.14(storybook@8.6.14(prettier@3.5.3))
@@ -1637,11 +1637,11 @@ packages:
     peerDependencies:
       storybook: ^8.6.14
 
-  '@storybook/addon-links@8.6.14':
-    resolution: {integrity: sha512-DRlXHIyZzOruAZkxmXfVgTF+4d6K27pFcH4cUsm3KT1AXuZbr23lb5iZHpUZoG6lmU85Sru4xCEgewSTXBIe1w==}
+  '@storybook/addon-links@9.0.8':
+    resolution: {integrity: sha512-a2iY/gXmWfFL4jEi1lLZp3ZI5Xk8UYhHSDZijLPiw3keCUVV/m8OU8pitRcKpJtOTx5bt/NZHbMNTDK9G4AcIA==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      storybook: ^8.6.14
+      storybook: ^9.0.8
     peerDependenciesMeta:
       react:
         optional: true
@@ -6785,11 +6785,10 @@ snapshots:
       '@storybook/global': 5.0.0
       storybook: 8.6.14(prettier@3.5.3)
 
-  '@storybook/addon-links@8.6.14(react@19.1.0)(storybook@8.6.14(prettier@3.5.3))':
+  '@storybook/addon-links@9.0.8(react@19.1.0)(storybook@8.6.14(prettier@3.5.3))':
     dependencies:
       '@storybook/global': 5.0.0
       storybook: 8.6.14(prettier@3.5.3)
-      ts-dedent: 2.2.0
     optionalDependencies:
       react: 19.1.0
 
