@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-vite';
 import { Heading } from '.';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import * as HeadingStories from './Heading.stories';

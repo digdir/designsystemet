@@ -1,6 +1,6 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { storybookTest } from '@storybook/experimental-addon-test/vitest-plugin';
+import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
 import { defineConfig, mergeConfig } from 'vitest/config';
 
 import viteConfig from '../../vite.config';
@@ -20,7 +20,7 @@ export default mergeConfig(
       }),
     ],
     test: {
-      exclude: ['./../../packages/**/*.chromatic.tsx'],
+      exclude: ['./../../packages/**/*.chromatic.tsx', './../../**/*.mdx'],
       watch: false,
       browser: {
         enabled: true,

@@ -1,11 +1,14 @@
 import path, { resolve } from 'node:path';
-
+import { fileURLToPath } from 'node:url';
 import type { StorybookConfig } from '@storybook/react-vite';
 import * as R from 'ramda';
 import type { PropItem } from 'react-docgen-typescript';
 import { defineConfig, mergeConfig } from 'vite';
 
-const dirname = import.meta.dirname || __dirname;
+const dirname =
+  typeof __dirname !== 'undefined'
+    ? __dirname
+    : path.dirname(fileURLToPath(import.meta.url));
 
 const resolveAliasFromroot = (alias: string): string =>
   path.resolve(dirname, '../../..', alias);
@@ -47,7 +50,6 @@ const config: StorybookConfig = {
   stories: [
     '../stories/**/*.mdx',
     '../stories/**/*.@(stories|chromatic).@(ts|tsx)',
-    '../../../packages/*.mdx',
     '../../../packages/*/!(node_modules)/**/*.mdx',
     '../../../packages/*/!(node_modules)/**/*.@(stories|chromatic).@(ts|tsx)',
   ],
@@ -74,13 +76,11 @@ const config: StorybookConfig = {
   addons: [
     '@storybook/addon-a11y',
     '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-mdx-gfm',
-    '@storybook/addon-storysource',
     '@storybook/addon-themes',
     'storybook-addon-pseudo-states',
-    '@storybook/experimental-addon-test',
-    '@whitespace/storybook-addon-html',
+    '@storybook/addon-vitest',
+    //'@whitespace/storybook-addon-html', //wait for it to be updated to support sb9
+    '@storybook/addon-docs',
   ],
   staticDirs: ['../assets'],
   framework: {
