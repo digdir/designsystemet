@@ -1,3 +1,4 @@
+import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useEffect, useRef } from 'react';
@@ -11,6 +12,11 @@ export type FieldProps = {
    * @default start
    */
   position?: 'start' | 'end';
+  /**
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   * @default false
+   */
+  asChild?: boolean;
 } & HTMLAttributes<HTMLDivElement> &
   DefaultProps;
 
@@ -26,15 +32,16 @@ export type FieldProps = {
  * </Field>
  */
 export const Field = forwardRef<HTMLDivElement, FieldProps>(function Field(
-  { className, position, ...rest },
+  { className, position, asChild, ...rest },
   ref,
 ) {
+  const Component = asChild ? Slot : 'div';
   const fieldRef = useRef<HTMLDivElement>(null);
   const mergedRefs = useMergeRefs([fieldRef, ref]);
   useEffect(() => fieldObserver(fieldRef.current), []);
 
   return (
-    <div
+    <Component
       className={cl('ds-field', className)}
       data-position={position}
       ref={mergedRefs}
