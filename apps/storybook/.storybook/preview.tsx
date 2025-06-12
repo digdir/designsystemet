@@ -202,7 +202,6 @@ const preview: Preview = {
     },
     colorScheme: {
       description: 'Set color-scheme in stories',
-      defaultValue: 'light',
       toolbar: {
         title: 'Theme',
         icon: 'contrast',
