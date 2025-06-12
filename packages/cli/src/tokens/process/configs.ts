@@ -7,6 +7,7 @@ import { traverseObj } from '../utils.js';
 import { colorCategoryVariables, colorSchemeVariables } from './configs/color.js';
 import { semanticVariables } from './configs/semantic.js';
 import type { GetStyleDictionaryConfig } from './configs/shared.js';
+import { sizeVariables } from './configs/size.js';
 import { typescriptTokens } from './configs/storefront.js';
 import { typographyVariables } from './configs/typography.js';
 import { formats } from './formats/css.js';
@@ -37,6 +38,7 @@ export const configs = {
   warningColorVariables: colorCategoryVariables({ category: 'builtin', color: 'warning' }),
   infoColorVariables: colorCategoryVariables({ category: 'builtin', color: 'info' }),
   typographyVariables,
+  sizeVariables,
   semanticVariables,
   typescriptTokens,
 };

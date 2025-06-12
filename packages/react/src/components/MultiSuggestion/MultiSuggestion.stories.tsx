@@ -231,7 +231,8 @@ export const FetchExternal: StoryFn<typeof MultiSuggestion> = (args) => {
                 'Ingen treff'
               ) : (
                 <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <Spinner aria-hidden='true' data-size='sm' /> Laster...
+                  <Spinner aria-hidden='true' data-spinner-size='sm' />{' '}
+                  Laster...
                 </span>
               )}
             </MultiSuggestion.Empty>
