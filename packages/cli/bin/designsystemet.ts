@@ -40,7 +40,7 @@ function makeTokenCommands() {
     .option('--tailwind', 'Generate Tailwind CSS classes for tokens', false)
 
     .action(async (opts) => {
-      const { preview, verbose, clean, dry } = opts;
+      const { preview, verbose, clean, dry, tailwind } = opts;
       const tokensDir = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_CREATE_DIR;
       const outDir = typeof opts.outDir === 'string' ? opts.outDir : './dist/tokens';
 
@@ -55,7 +55,7 @@ function makeTokenCommands() {
         await cleanDir(outDir, dry);
       }
 
-      await buildTokens({ tokensDir, outDir, preview, verbose, dry, tailwind: opts.tailwind, ...config });
+      await buildTokens({ tokensDir, outDir, preview, verbose, dry, tailwind, ...config });
 
       return Promise.resolve();
     });
