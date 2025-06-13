@@ -10,6 +10,7 @@ import type { Theme, TokenSet, TokenSets } from './types.js';
 export const cliOptions = {
   outDir: 'out-dir',
   clean: 'clean',
+  tailwind: 'tailwind',
   theme: {
     colors: {
       main: 'main-colors',

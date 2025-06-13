@@ -26,6 +26,8 @@ export type BuildOptions = {
   tokensDir: string;
   /** Output directory for built tokens */
   outDir: string;
+  /** Tailwind CSS configuration */
+  tailwind?: boolean;
 } & SharedOptions;
 
 export type FormatOptions = {

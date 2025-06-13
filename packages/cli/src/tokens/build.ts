@@ -6,6 +6,7 @@ import type { DesignToken } from 'style-dictionary/types';
 import { mkdir, readFile, writeFile } from '../utils.js';
 import { createThemeCSSFiles, defaultFileHeader } from './process/theme.js';
 
+import { generateTailwind } from '../scripts/create-tailwind-files.js';
 import { type BuildOptions, processPlatform } from './process/platform.js';
 import type { DesignsystemetObject, OutputFile } from './types.js';
 
@@ -63,8 +64,21 @@ export const buildTokens = async (options: Omit<BuildOptions, 'type' | '$themes'
     defaultFileHeader,
     $designsystemet ? `\ndesign-tokens: v${$designsystemet.version}` : '',
   ]);
+
+  const cssFiles = createThemeCSSFiles({ processedBuilds, fileHeader });
+
   // Write theme CSS files (<theme>.css) to the output directory
-  await write(createThemeCSSFiles({ processedBuilds, fileHeader }), outDir, options.dry);
+  await write(cssFiles, outDir, options.dry);
+
+  if (options.tailwind) {
+    console.log('Creating Tailwind Config');
+    cssFiles.map(async (file) => {
+      if (file.destination) {
+        await generateTailwind({ outDir, file: file.destination.replace('.css', '') });
+      }
+    });
+    console.log(`\n✅ Finished building tailwind config!`);
+  }
 
   console.log(`\n✅ Finished building tokens!`);
   return processedBuilds;

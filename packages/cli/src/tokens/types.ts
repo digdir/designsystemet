@@ -62,7 +62,7 @@ export type SDConfigForThemePermutation = { permutation: ThemePermutation; confi
 
 export type OutputFile = {
   output: string;
-  destination: string | undefined;
+  destination: `${string}.css` | undefined;
 };
 
 export type DesignsystemetObject = {
