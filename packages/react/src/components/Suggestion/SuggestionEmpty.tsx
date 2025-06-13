@@ -1,12 +1,13 @@
 import type { OptionHTMLAttributes } from 'react';
-import { forwardRef } from 'react';
+import { forwardRef, useContext } from 'react';
 import type { DefaultProps } from '../../types';
+import { SuggestionContext } from './Suggestion';
 
 export type SuggestionEmptyProps = DefaultProps &
   OptionHTMLAttributes<HTMLOptionElement>;
 
 /**
- * Component that provides an empty suggestion list.
+ * Component that provides an empty Suggestion list.
  *
  * Place as a descendant of `Suggestion.List`
  *
@@ -19,8 +20,6 @@ export const SuggestionEmpty = forwardRef<
   HTMLOptionElement,
   SuggestionEmptyProps
 >(function SuggestionEmpty(rest, ref) {
-  return (
-    // biome-ignore lint/a11y/noInteractiveElementToNoninteractiveRole: Empty option shoult not be interactive
-    <u-option data-empty role='none' ref={ref} {...rest} />
-  );
+  const { isEmpty } = useContext(SuggestionContext);
+  return isEmpty ? <u-option data-empty value='' ref={ref} {...rest} /> : null;
 });
