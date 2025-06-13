@@ -24,8 +24,8 @@ export const generateTailwind = async ({ outDir, file = 'tailwind.css' }: Genera
       tailwind.push(`--radius-${token.replace('--ds-border-radius-', '')}: var(${token})`);
     } else if (token.match(/--ds-body-(sm|mg|lg)-body-font-size/)) {
       tailwind.push(`--text-${token.replace('--ds-body-', '').replace('-font-size', '')}: var(${token})`);
-    } else if (token.match(/^--ds-\d+$/)) {
-      tailwind.push(`--spacing-${token.replace('--ds-', '')}: var(${token})`);
+    } else if (token.match(/^--ds-size-\d+$/)) {
+      tailwind.push(`--spacing-${token.replace('--ds-size-', '')}: var(${token})`);
     }
   }
 
