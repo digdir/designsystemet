@@ -27,7 +27,7 @@ export const loader = async ({
   const urlParams = new URLSearchParams(search);
 
   const colors = {
-    main: createColorsFromQuery(urlParams.get('main') || '') || [],
+    main: createColorsFromQuery(urlParams.get('main') || 'main:#0062ba') || [],
     neutral: [
       {
         name: 'neutral',
@@ -36,7 +36,9 @@ export const loader = async ({
         ),
       },
     ],
-    support: createColorsFromQuery(urlParams.get('support') || '') || [],
+    support:
+      createColorsFromQuery(urlParams.get('support') || 'support:#0062ba') ||
+      [],
   };
 
   console.log(colors);
@@ -45,6 +47,7 @@ export const loader = async ({
     colors,
     colorScheme: (urlParams.get('appearance') || 'light') as ColorScheme,
     baseBorderRadius: parseInt(urlParams.get('border-radius') || '4'),
+    tab: urlParams.get('tab') || 'overview',
     lang,
     metadata: generateMetadata({
       title: t('meta.title'),

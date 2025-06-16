@@ -5,21 +5,22 @@ import { PlusIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
 import { ColorService, useColor } from 'react-color-palette';
 import { useTranslation } from 'react-i18next';
+import { useThemebuilder } from '~/routes/themebuilder/_utils/useThemebuilder';
 import { type ColorTheme, useThemeStore } from '~/store';
 import { ColorInput } from '../../color-input/color-input';
 import { ColorPane } from '../color-pane/color-pane';
 import classes from './color-page.module.css';
 
-export const ColorPage = () => {
-  type Pages = 'add-color' | 'edit-color' | 'none';
-  type ColorType = 'main' | 'neutral' | 'support';
+type Pages = 'add-color' | 'edit-color' | 'none';
+type ColorType = 'main' | 'neutral' | 'support';
 
+export const ColorPage = () => {
   const { t } = useTranslation();
 
   const removeColor = useThemeStore((state) => state.removeColor);
   const addColor = useThemeStore((state) => state.addColor);
   const updateColor = useThemeStore((state) => state.updateColor);
-  const colors = useThemeStore((state) => state.colors);
+  const { colors } = useThemebuilder();
 
   const [activePanel, setActivePanel] = useState<Pages>('none');
   const [color, setColor] = useColor('#0062ba');

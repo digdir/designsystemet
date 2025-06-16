@@ -20,7 +20,7 @@ import type { Color, CssColor } from '@digdir/designsystemet/color';
 import { CodeBlock } from '@internal/components';
 import { useLoaderData } from 'react-router';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/useThemebuilder';
-import { type ColorTheme } from '~/store';
+import type { ColorTheme } from '~/store';
 import classes from './token-modal.module.css';
 
 const colorCliOptions = cliOptions.theme.colors;

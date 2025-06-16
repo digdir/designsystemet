@@ -39,8 +39,6 @@ type ColorStore = {
   setBaseBorderRadius: (radius: BaseBorderRadius) => void;
   colorScheme: ColorScheme;
   setColorScheme: (colorScheme: ColorScheme) => void;
-  themeTab: 'overview' | 'colorsystem';
-  setThemeTab: (tab: 'overview' | 'colorsystem') => void;
 };
 
 const { colors } = designsystemetConfig.themes.designsystemet;
@@ -63,8 +61,6 @@ export const useThemeStore = create(
       neutral: mapColorTheme({ neutral: colors.neutral }),
       support: mapColorTheme(colors.support),
     },
-    themeTab: 'overview',
-    setThemeTab: (tab) => set({ themeTab: tab }),
     addColor: (newColor, type) =>
       set((state) => {
         const updatedColors = state.colors[type].concat(newColor);
