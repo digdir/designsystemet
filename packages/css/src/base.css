@@ -111,21 +111,7 @@ body,
   }
 }
 
-[data-size='sm'] {
-  --ds-size-mode-font-size: var(--ds-body-sm-font-size);
-  &:not([data-font-size]) {
-    font-size: var(--ds-body-md-font-size);
-  }
-}
-:root,
-[data-size='md'] {
-  --ds-size-mode-font-size: var(--ds-body-md-font-size);
-  &:not(:is(:root)):not([data-font-size]) {
-    font-size: var(--ds-body-md-font-size);
-  }
-}
-[data-size='lg'] {
-  --ds-size-mode-font-size: var(--ds-body-lg-font-size);
+[data-size] {
   &:not([data-font-size]) {
     font-size: var(--ds-body-md-font-size);
   }

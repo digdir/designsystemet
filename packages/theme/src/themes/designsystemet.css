@@ -510,6 +510,14 @@ design-tokens: v1.0.8
 }
 @layer ds.theme.semantic {
 :root, [data-size] {
+--ds-size: var(--ds-size--md);
+--ds-size--sm: var(--ds-size,);
+--ds-size--md: var(--ds-size,);
+--ds-size--lg: var(--ds-size,);
+--ds-size-mode-font-size:
+  var(--ds-size--sm, var(--ds-body-sm-font-size))
+  var(--ds-size--md, var(--ds-body-md-font-size))
+  var(--ds-size--lg, var(--ds-body-lg-font-size));
   --ds-size-base: 18;
   --ds-size-step: 4;
   --ds-border-radius-base: 0.25rem;
@@ -572,6 +580,15 @@ design-tokens: v1.0.8
   --ds-size-26: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *26), 1px);
   --ds-size-30: round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *30), 1px);
   }
+}
+[data-size='sm'] {
+  --ds-size: var(--ds-size--sm);
+}
+[data-size='md'] {
+  --ds-size: var(--ds-size--md);
+}
+[data-size='lg'] {
+  --ds-size: var(--ds-size--lg);
 }
 
 }
