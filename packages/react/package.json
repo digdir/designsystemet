@@ -56,6 +56,9 @@
     "@digdir/designsystemet-css": "workspace:^",
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-node-resolve": "^16.0.1",
+    "@storybook/addon-docs": "^9.0.10",
+    "@storybook/addon-vitest": "^9.0.10",
+    "@storybook/react-vite": "^9.0.10",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
@@ -68,6 +71,7 @@
     "rimraf": "^6.0.1",
     "rollup": "^4.41.1",
     "rollup-plugin-copy": "^3.5.0",
+    "storybook": "^9.0.10",
     "tsx": "4.19.4",
     "typescript": "^5.8.3"
   }
