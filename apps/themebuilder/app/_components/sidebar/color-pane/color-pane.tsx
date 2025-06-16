@@ -8,10 +8,10 @@ import {
 import { ChevronLeftIcon, TrashIcon } from '@navikt/aksel-icons';
 import { ColorPicker, type IColor } from 'react-color-palette';
 import { useTranslation } from 'react-i18next';
-import { useThemeStore } from '~/store';
 
 import cl from 'clsx/lite';
 import { useState } from 'react';
+import { useThemebuilder } from '~/routes/themebuilder/_utils/useThemebuilder';
 import classes from './color-pane.module.css';
 
 type ColorPaneProps = {
@@ -38,7 +38,9 @@ export const ColorPane = ({
   colorType,
 }: ColorPaneProps) => {
   const { t } = useTranslation();
-  const mainColors = useThemeStore((state) => state.colors.main);
+  const {
+    colors: { main: mainColors },
+  } = useThemebuilder();
   const [colorError, setColorError] = useState('');
   const headingText = (() => {
     const colorTypeText =

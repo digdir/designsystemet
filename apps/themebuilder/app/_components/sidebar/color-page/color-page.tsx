@@ -1,81 +1,132 @@
-import { generateColorSchemes } from '@digdir/designsystemet';
 import { Button, Heading } from '@digdir/designsystemet-react';
-import type { CssColor } from '@digdir/designsystemet/color';
 import { PlusIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
 import { ColorService, useColor } from 'react-color-palette';
 import { useTranslation } from 'react-i18next';
+import { useSearchParams } from 'react-router';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/useThemebuilder';
-import { type ColorTheme, useThemeStore } from '~/store';
+import type { ColorTheme } from '~/routes/themebuilder/_utils/useThemebuilder';
 import { ColorInput } from '../../color-input/color-input';
 import { ColorPane } from '../color-pane/color-pane';
 import classes from './color-page.module.css';
 
-type Pages = 'add-color' | 'edit-color' | 'none';
-type ColorType = 'main' | 'neutral' | 'support';
+type ColorEditorState = {
+  activePanel: 'add-color' | 'edit-color' | 'none';
+  colorType: 'main' | 'neutral' | 'support';
+  index: number;
+  name: string;
+  initialName: string;
+  initialHex: string;
+};
+
+const DEFAULT_COLOR = '#0062ba';
 
 export const ColorPage = () => {
   const { t } = useTranslation();
-
   const { colors } = useThemebuilder();
-  const removeColor = useThemeStore((state) => state.removeColor);
-  const addColor = useThemeStore((state) => state.addColor);
-  const updateColor = useThemeStore((state) => state.updateColor);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const [activePanel, setActivePanel] = useState<Pages>('none');
-  const [color, setColor] = useColor('#0062ba');
-  const [name, setName] = useState('');
-  const [index, setIndex] = useState(0);
-  const [colorType, setColorType] = useState<ColorType>('main');
-  const [initialColor, setInitialColor] = useState('#0062ba');
-  const [initialName, setInitialName] = useState('');
+  const [editorState, setEditorState] = useState<ColorEditorState>({
+    activePanel: 'none',
+    colorType: 'main',
+    index: 0,
+    name: '',
+    initialName: '',
+    initialHex: DEFAULT_COLOR,
+  });
 
-  const updateExistingColor = (color: string, name: string, index: number) => {
-    if (index >= 0 && color && name) {
-      const colorSchemes = generateColorSchemes(color as CssColor);
-      updateColor({ name, colors: colorSchemes }, index, colorType);
+  const [color, setColor] = useColor(DEFAULT_COLOR);
+
+  const updateColorInParams = (
+    hex: string,
+    name: string,
+    type: string,
+    index: number,
+  ) => {
+    if (index < 0 || !hex || !name) return;
+
+    const updatedParams = new URLSearchParams(searchParams);
+
+    if (type === 'main' || type === 'support') {
+      const colorParam = searchParams.get(type) || '';
+      const colorArray = colorParam.split(' ').filter(Boolean);
+
+      if (index < colorArray.length) {
+        colorArray[index] = `${name}:${hex}`;
+      } else {
+        colorArray.push(`${name}:${hex}`);
+      }
+
+      updatedParams.set(type, colorArray.join(' '));
+    } else if (type === 'neutral') {
+      updatedParams.set('neutral', hex);
     }
+
+    setSearchParams(updatedParams, { replace: true });
   };
 
-  const setupEditState = (
+  const openColorEditor = (
     colorTheme: ColorTheme,
     index: number,
-    colorType: ColorType,
+    type: 'main' | 'neutral' | 'support',
   ) => {
     const hexColor = colorTheme.colors.light[11].hex;
-    setActivePanel('edit-color');
+
     setColor(ColorService.convert('hex', hexColor));
-    setName(colorTheme.name);
-    setIndex(index);
-    setColorType(colorType);
-    setInitialColor(hexColor);
-    setInitialName(colorTheme.name);
+
+    setEditorState({
+      activePanel: 'edit-color',
+      colorType: type,
+      index: index,
+      name: colorTheme.name,
+      initialName: colorTheme.name,
+      initialHex: hexColor,
+    });
   };
 
-  const resetColorState = () => {
-    setColor(ColorService.convert('hex', '#0062ba'));
-    setName('');
-    setActivePanel('none');
+  const openNewColorEditor = (type: 'main' | 'neutral' | 'support') => {
+    const colorCount = colors[type].length;
+    const newColorName = `${type}-color-${colorCount + 1}`;
+
+    setColor(ColorService.convert('hex', DEFAULT_COLOR));
+
+    setEditorState({
+      activePanel: 'add-color',
+      colorType: type,
+      index: colorCount,
+      name: newColorName,
+      initialName: newColorName,
+      initialHex: DEFAULT_COLOR,
+    });
+
+    updateColorInParams(DEFAULT_COLOR, newColorName, type, colorCount);
   };
 
-  const setupNewColorState = (colorType: ColorType) => {
-    const colorCount = colors[colorType].length;
-    const newColorName = `${colorType}-color-${colorCount + 1}`;
-    const defaultHex = '#0062ba';
-    const colorSchemes = generateColorSchemes(defaultHex);
+  const closeEditor = () => {
+    setEditorState((prev) => ({
+      ...prev,
+      activePanel: 'none',
+    }));
+  };
 
-    setActivePanel('add-color');
-    setIndex(colorCount);
-    setColorType(colorType);
-    setColor(ColorService.convert('hex', defaultHex));
-    setName(newColorName);
+  const removeColor = (index: number, type: 'main' | 'neutral' | 'support') => {
+    if (index < 0) return;
 
-    addColor({ name: newColorName, colors: colorSchemes }, colorType);
+    const updatedParams = new URLSearchParams(searchParams);
+
+    if (type === 'main' || type === 'support') {
+      const colorParam = searchParams.get(type) || '';
+      const colorArray = colorParam.split(' ').filter(Boolean);
+      colorArray.splice(index, 1);
+      updatedParams.set(type, colorArray.join(' '));
+
+      setSearchParams(updatedParams, { replace: true });
+    }
   };
 
   return (
     <div>
-      {activePanel === 'none' && (
+      {editorState.activePanel === 'none' && (
         <>
           <div className={classes.group}>
             <div className={classes.groupHeader}>
@@ -85,7 +136,7 @@ export const ColorPage = () => {
                   variant='tertiary'
                   data-size='sm'
                   className={classes.AddBtn}
-                  onClick={() => setupNewColorState('main')}
+                  onClick={() => openNewColorEditor('main')}
                   aria-label={`${t('colorPane.add')} ${t('colorPane.main-color')}`}
                 >
                   {t('colorPane.add')} {t('themeModal.color')}
@@ -102,7 +153,7 @@ export const ColorPage = () => {
                   key={index}
                   color={colorTheme.colors.light[11].hex}
                   name={colorTheme.name}
-                  onClick={() => setupEditState(colorTheme, index, 'main')}
+                  onClick={() => openColorEditor(colorTheme, index, 'main')}
                 />
               ))}
             </div>
@@ -115,7 +166,7 @@ export const ColorPage = () => {
                   key={index}
                   color={colorTheme.colors.light[11].hex}
                   name={colorTheme.name}
-                  onClick={() => setupEditState(colorTheme, index, 'neutral')}
+                  onClick={() => openColorEditor(colorTheme, index, 'neutral')}
                 />
               ))}
             </div>
@@ -129,7 +180,7 @@ export const ColorPage = () => {
                   variant='tertiary'
                   data-size='sm'
                   className={classes.AddBtn}
-                  onClick={() => setupNewColorState('support')}
+                  onClick={() => openNewColorEditor('support')}
                   aria-label={`${t('colorPane.add')} ${t('colorPane.support-color')}`}
                 >
                   {t('colorPane.add')} {t('themeModal.color')}
@@ -146,7 +197,7 @@ export const ColorPage = () => {
                   key={index}
                   color={colorTheme.colors.light[11].hex}
                   name={colorTheme.name}
-                  onClick={() => setupEditState(colorTheme, index, 'support')}
+                  onClick={() => openColorEditor(colorTheme, index, 'support')}
                 />
               ))}
             </div>
@@ -154,31 +205,49 @@ export const ColorPage = () => {
         </>
       )}
 
-      {(activePanel === 'add-color' || activePanel === 'edit-color') && (
+      {(editorState.activePanel === 'add-color' ||
+        editorState.activePanel === 'edit-color') && (
         <ColorPane
           onClose={() => {
-            resetColorState();
+            closeEditor();
           }}
           onRemove={() => {
-            removeColor(index, colorType);
-            resetColorState();
+            removeColor(editorState.index, editorState.colorType);
+            closeEditor();
           }}
           onCancel={() => {
-            resetColorState();
-            updateExistingColor(initialColor, initialName, index);
+            if (editorState.activePanel === 'edit-color') {
+              updateColorInParams(
+                editorState.initialHex,
+                editorState.initialName,
+                editorState.colorType,
+                editorState.index,
+              );
+            }
+            closeEditor();
           }}
-          type={activePanel}
+          type={editorState.activePanel}
           color={color}
-          name={name}
-          setColor={(color) => {
-            setColor(color);
-            updateExistingColor(color.hex, name, index);
+          name={editorState.name}
+          setColor={(newColor) => {
+            setColor(newColor);
+            updateColorInParams(
+              newColor.hex,
+              editorState.name,
+              editorState.colorType,
+              editorState.index,
+            );
           }}
-          setName={(name) => {
-            setName(name);
-            updateExistingColor(color.hex, name, index);
+          setName={(newName) => {
+            setEditorState((prev) => ({ ...prev, name: newName }));
+            updateColorInParams(
+              color.hex,
+              newName,
+              editorState.colorType,
+              editorState.index,
+            );
           }}
-          colorType={colorType}
+          colorType={editorState.colorType}
         />
       )}
     </div>

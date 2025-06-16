@@ -1,7 +1,17 @@
-import { type CssColor, generateColorSchemes } from '@digdir/designsystemet';
+import {
+  type CssColor,
+  type ThemeInfo,
+  generateColorSchemes,
+} from '@digdir/designsystemet';
 import { useLoaderData } from 'react-router';
 import { generateColorVars } from '~/_utils/generate-color-vars';
 import type { Route } from '../+types/themebuilder';
+
+export type ColorTheme = {
+  name: string;
+  colors: ThemeInfo;
+  hex?: string;
+};
 
 export const useThemebuilder = () => {
   const { colors, colorScheme, baseBorderRadius, tab } =
