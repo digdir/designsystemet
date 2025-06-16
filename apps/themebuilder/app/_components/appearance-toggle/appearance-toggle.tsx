@@ -2,7 +2,6 @@ import { Button } from '@digdir/designsystemet-react';
 import type { ColorScheme } from '@digdir/designsystemet/color';
 import { MoonIcon, SunIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import {} from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/useThemebuilder';

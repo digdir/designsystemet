@@ -118,7 +118,6 @@ export const Sidebar = () => {
                 <BorderRadiusInput />
               </Tabs.Panel>
             </Tabs>
-
             <div className={classes.modalBottom}>
               <TokenModal />
             </div>

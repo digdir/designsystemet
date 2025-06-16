@@ -24,7 +24,7 @@ const DEFAULT_COLOR = '#0062ba';
 export const ColorPage = () => {
   const { t } = useTranslation();
   const { colors } = useThemebuilder();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [query, setQuery] = useSearchParams();
 
   const [editorState, setEditorState] = useState<ColorEditorState>({
     activePanel: 'none',
@@ -45,10 +45,10 @@ export const ColorPage = () => {
   ) => {
     if (index < 0 || !hex || !name) return;
 
-    const updatedParams = new URLSearchParams(searchParams);
+    const updatedParams = new URLSearchParams(query);
 
     if (type === 'main' || type === 'support') {
-      const colorParam = searchParams.get(type) || '';
+      const colorParam = query.get(type) || '';
       const colorArray = colorParam.split(' ').filter(Boolean);
 
       if (index < colorArray.length) {
@@ -62,7 +62,7 @@ export const ColorPage = () => {
       updatedParams.set('neutral', hex);
     }
 
-    setSearchParams(updatedParams, { replace: true, preventScrollReset: true });
+    setQuery(updatedParams, { replace: true, preventScrollReset: true });
   };
 
   const openColorEditor = (
@@ -112,15 +112,15 @@ export const ColorPage = () => {
   const removeColor = (index: number, type: 'main' | 'neutral' | 'support') => {
     if (index < 0) return;
 
-    const updatedParams = new URLSearchParams(searchParams);
+    const updatedParams = new URLSearchParams(query);
 
     if (type === 'main' || type === 'support') {
-      const colorParam = searchParams.get(type) || '';
+      const colorParam = query.get(type) || '';
       const colorArray = colorParam.split(' ').filter(Boolean);
       colorArray.splice(index, 1);
       updatedParams.set(type, colorArray.join(' '));
 
-      setSearchParams(updatedParams, {
+      setQuery(updatedParams, {
         replace: true,
         preventScrollReset: true,
       });
