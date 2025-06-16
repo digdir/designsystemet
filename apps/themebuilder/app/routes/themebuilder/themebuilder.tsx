@@ -44,6 +44,7 @@ export const loader = async ({
   return {
     colors,
     colorScheme: (urlParams.get('appearance') || 'light') as ColorScheme,
+    baseBorderRadius: parseInt(urlParams.get('border-radius') || '4'),
     lang,
     metadata: generateMetadata({
       title: t('meta.title'),

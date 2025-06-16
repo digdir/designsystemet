@@ -7,13 +7,12 @@ import { Colors } from '~/_components/colors/colors';
 import { OverviewComponents } from '~/_components/overview-components/overview-components';
 import {} from '~/_utils/generate-color-vars';
 import { useThemeStore } from '~/store';
+import { useThemebuilder } from '../_utils/useThemebuilder';
 import classes from './theme-pages.module.css';
 
 export const ThemePages = () => {
   const themeTab = useThemeStore((state) => state.themeTab);
-  const colorScheme = useThemeStore((state) => state.colorScheme);
-  const colors = useThemeStore((state) => state.colors);
-  const borderRadius = useThemeStore((state) => state.baseBorderRadius);
+  const { colorScheme, colors, baseBorderRadius } = useThemebuilder();
 
   return (
     <>
@@ -25,7 +24,7 @@ export const ThemePages = () => {
         <OverviewComponents
           colorScheme={colorScheme}
           color={colors.main[0]?.colors.light[11].hex}
-          borderRadius={borderRadius}
+          borderRadius={baseBorderRadius}
         />
       </div>
 

@@ -4,12 +4,13 @@ import { generateColorVars } from '~/_utils/generate-color-vars';
 import type { Route } from '../+types/themebuilder';
 
 export const useThemebuilder = () => {
-  const { colors, colorScheme } =
+  const { colors, colorScheme, baseBorderRadius } =
     useLoaderData<Route.ComponentProps['loaderData']>();
 
   return {
     colors,
     colorScheme,
+    baseBorderRadius,
   };
 };
 
