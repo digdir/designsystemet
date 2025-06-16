@@ -55,8 +55,7 @@ export const TokenModal = () => {
     );
   };
 
-  const packageWithTag = `@digdir/designsystemet${isProduction ? '' : '@next'}`;
-
+  const packageWithTag = `@digdir/designsystemet${isProduction ? '@latest' : '@next'}`;
   const buildSnippet = `npx ${packageWithTag} tokens build`;
 
   const cliSnippet = [

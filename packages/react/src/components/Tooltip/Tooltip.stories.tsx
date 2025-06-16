@@ -1,5 +1,5 @@
-import type { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { expect, userEvent, within } from '@storybook/test';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
+import { expect, userEvent, within } from 'storybook/test';
 
 import { Tooltip } from '.';
 import { Button } from '../..';

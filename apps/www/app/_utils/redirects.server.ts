@@ -21,7 +21,10 @@ const redirects = [
     from: '/bloggen',
     to: '/no/blog',
   },
-
+  {
+    from: '/god-praksis',
+    to: '/no/best-practices',
+  },
   {
     from: '/monstre',
     to: '/no/patterns',
