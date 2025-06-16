@@ -20,6 +20,7 @@ export function createColorsFromQuery(colors: string) {
     const [name, hex] = color.split(':');
     return {
       name,
+      hex,
       ...createColorsAndVariables(hex as CssColor),
     };
   });

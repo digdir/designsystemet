@@ -3,7 +3,6 @@ import { Sidebar } from '~/_components/sidebar/sidebar';
 import { ThemeHeader } from '~/_components/theme-header/theme-header';
 import { ColorModalProvider } from '~/_utils/color-modal-context';
 import { ThemePages } from './_components/theme-pages';
-import { useThemeParams } from './_utils/useThemeParams';
 import classes from './page.module.css';
 import 'react-color-palette/css';
 import type { ColorScheme, CssColor } from '@digdir/designsystemet';
@@ -34,14 +33,13 @@ export const loader = async ({
         ...createColorsAndVariables(
           (urlParams.get('neutral') as CssColor) || '#1E2B3C',
         ),
+        hex: (urlParams.get('neutral') as CssColor) || '#1E2B3C',
       },
     ],
     support:
       createColorsFromQuery(urlParams.get('support') || 'support:#0062ba') ||
       [],
   };
-
-  console.log(colors);
 
   return {
     colors,
@@ -85,12 +83,6 @@ export default function Page() {
           </div>
         </div>
       </main>
-      <ParamsComponent />
     </ColorModalProvider>
   );
 }
-
-const ParamsComponent = () => {
-  useThemeParams();
-  return null;
-};

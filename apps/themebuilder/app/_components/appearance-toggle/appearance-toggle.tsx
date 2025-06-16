@@ -36,9 +36,9 @@ export const AppearanceToggle = ({
           key={scheme.value}
           onClick={() => {
             setQuery(
-              {
-                ...Object.fromEntries(query.entries()),
-                appearance: scheme.value,
+              (prev) => {
+                prev.set('appearance', scheme.value);
+                return prev;
               },
               {
                 preventScrollReset: true,

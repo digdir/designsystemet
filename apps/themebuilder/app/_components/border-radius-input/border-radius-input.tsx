@@ -1,13 +1,24 @@
 import { Button, Heading, Textfield } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { useTranslation } from 'react-i18next';
+import { useSearchParams } from 'react-router';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/useThemebuilder';
-import { useThemeStore } from '~/store';
 import classes from './border-radius-input.module.css';
 
 export const BorderRadiusInput = () => {
   const { t } = useTranslation();
-  const setBorderRadius = useThemeStore((state) => state.setBaseBorderRadius);
+  const [, setQuery] = useSearchParams();
+  const setBorderRadius = (value: number) => {
+    setQuery(
+      (prev) => {
+        prev.set('border-radius', value.toString());
+        return prev;
+      },
+      {
+        preventScrollReset: true,
+      },
+    );
+  };
   const { baseBorderRadius } = useThemebuilder();
 
   const borderRadiusItems = [

@@ -17,10 +17,10 @@ type ColorType = 'main' | 'neutral' | 'support';
 export const ColorPage = () => {
   const { t } = useTranslation();
 
+  const { colors } = useThemebuilder();
   const removeColor = useThemeStore((state) => state.removeColor);
   const addColor = useThemeStore((state) => state.addColor);
   const updateColor = useThemeStore((state) => state.updateColor);
-  const { colors } = useThemebuilder();
 
   const [activePanel, setActivePanel] = useState<Pages>('none');
   const [color, setColor] = useColor('#0062ba');
