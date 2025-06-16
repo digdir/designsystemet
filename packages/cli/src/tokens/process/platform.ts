@@ -12,6 +12,10 @@ type SharedOptions = {
   verbose: boolean;
   /** Set the default color for ":root" */
   defaultColor?: string;
+  /** Set the default size mode */
+  defaultSize?: string;
+  /** Set the available size modes */
+  sizeModes?: string[];
   /** Dry run, no files will be written */
   dry?: boolean;
   /** Generate preview tokens */
@@ -162,6 +166,16 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
 
   if (buildOptions.defaultColor) {
     console.log(`\n🎨 Using ${chalk.blue(buildOptions.defaultColor)} as default color`);
+  }
+
+  const sizeModes = processed$themes.filter((x) => x.group === 'size').map((x) => x.name);
+  buildOptions.sizeModes = sizeModes;
+  if (!buildOptions.defaultSize) {
+    const defaultSize = R.head(sizeModes);
+    buildOptions.defaultSize = defaultSize;
+  }
+  if (buildOptions.defaultSize) {
+    console.log(`\n📏 Using ${chalk.blue(buildOptions.defaultSize)} as default size`);
   }
 
   const buildAndSdConfigs = R.map((buildConfig: BuildConfig) => {
