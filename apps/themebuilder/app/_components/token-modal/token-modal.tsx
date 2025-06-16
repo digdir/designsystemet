@@ -18,7 +18,7 @@ import { useTranslation } from 'react-i18next';
 
 import type { Color, CssColor } from '@digdir/designsystemet/color';
 import { CodeBlock } from '@internal/components';
-import { isProduction } from '~/_utils/is-production';
+import { useLoaderData } from 'react-router';
 import { type ColorTheme, useThemeStore } from '~/store';
 import classes from './token-modal.module.css';
 
@@ -33,6 +33,7 @@ const FEAT_THEME_CSS = false; // TODO set to false before merging
 export const TokenModal = () => {
   const { t } = useTranslation();
   const modalRef = useRef<HTMLDialogElement>(null);
+  const { isProduction } = useLoaderData();
 
   // Use separate selectors for better performance
   const colors = useThemeStore((state) => state.colors);
@@ -54,8 +55,7 @@ export const TokenModal = () => {
     );
   };
 
-  const packageWithTag = `@digdir/designsystemet${isProduction() ? '' : '@next'}`;
-
+  const packageWithTag = `@digdir/designsystemet${isProduction ? '@latest' : '@next'}`;
   const buildSnippet = `npx ${packageWithTag} tokens build`;
 
   const cliSnippet = [

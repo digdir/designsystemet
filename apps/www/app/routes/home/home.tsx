@@ -17,12 +17,13 @@ import { NavigationCard } from '~/_components/navigation-card/navigation-card';
 import { Section } from '~/_components/section/section';
 import { getFileFromContentDir, getFilesFromContentDir } from '~/_utils/files';
 import { generateMetadata } from '~/_utils/metadata';
+import i18nConf from '~/i18n';
 import i18n from '~/i18next.server';
 import type { Route } from './+types/home';
 import classes from './home.module.css';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
-  if (lang !== 'no' && lang !== 'en') {
+  if (!i18nConf.supportedLngs.includes(lang)) {
     throw new Response('Not Found', {
       status: 404,
       statusText: 'Not Found',

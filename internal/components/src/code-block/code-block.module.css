@@ -18,6 +18,7 @@
 
 .codeBlockWrapper {
   position: relative;
+  max-width: 100%;
 }
 
 .copyButton {
