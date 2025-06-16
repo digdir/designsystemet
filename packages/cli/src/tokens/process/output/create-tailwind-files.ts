@@ -1,13 +1,9 @@
-import { readFileSync, writeFileSync } from 'node:fs';
-import path from 'node:path';
-
 type GenerateTailwindOptions = {
   outDir: string;
-  file: string;
+  css: string;
 };
 
-export const generateTailwind = async ({ outDir, file = 'tailwind.css' }: GenerateTailwindOptions): Promise<void> => {
-  const css = readFileSync(path.resolve(outDir, file + '.css'), 'utf-8');
+export const generateTailwind = ({ outDir, css }: GenerateTailwindOptions): string => {
   const tailwind: string[] = ['--font-sans: var(--ds-font-family)'];
   const tokens = Array.from(new Set(css.match(/--ds-[^:)]+/g)), (m) => m).sort((a, b) =>
     a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }),
@@ -49,8 +45,5 @@ export const generateTailwind = async ({ outDir, file = 'tailwind.css' }: Genera
       --color-base-contrast-default: var(--ds-color-base-contrast-default);
     }`;
 
-  writeFileSync(
-    path.resolve(outDir, file + '-tailwind.css'),
-    `@theme {${tailwind.map((str) => `\n\t${str};`).join('')}\n}\n${dynamicColors}`,
-  );
+  return `@theme {${tailwind.map((str) => `\n\t${str};`).join('')}\n}\n${dynamicColors}`;
 };
