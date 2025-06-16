@@ -62,7 +62,7 @@ export const ColorPage = () => {
       updatedParams.set('neutral', hex);
     }
 
-    setSearchParams(updatedParams, { replace: true });
+    setSearchParams(updatedParams, { replace: true, preventScrollReset: true });
   };
 
   const openColorEditor = (
@@ -120,7 +120,10 @@ export const ColorPage = () => {
       colorArray.splice(index, 1);
       updatedParams.set(type, colorArray.join(' '));
 
-      setSearchParams(updatedParams, { replace: true });
+      setSearchParams(updatedParams, {
+        replace: true,
+        preventScrollReset: true,
+      });
     }
   };
 
