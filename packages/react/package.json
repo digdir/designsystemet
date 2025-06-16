@@ -47,7 +47,7 @@
     "@navikt/aksel-icons": "^7.22.0",
     "@radix-ui/react-slot": "^1.2.3",
     "@tanstack/react-virtual": "^3.13.9",
-    "@u-elements/u-combobox": "^0.0.11",
+    "@u-elements/u-combobox": "^0.0.13",
     "@u-elements/u-datalist": "^1.0.6",
     "@u-elements/u-details": "^0.1.1",
     "clsx": "^2.1.1"
