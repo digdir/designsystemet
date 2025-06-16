@@ -2,7 +2,6 @@ import * as R from 'ramda';
 import { pathStartsWithOneOf, typeEquals } from '../../utils.js';
 import { formats } from '../formats/css.js';
 import { sizeRem, typographyName } from '../transformers.js';
-
 import { type GetStyleDictionaryConfig, basePxFontSize, prefix } from './shared.js';
 
 export const sizeVariables: GetStyleDictionaryConfig = ({ theme, size }) => {
@@ -51,6 +50,9 @@ export const sizeVariables: GetStyleDictionaryConfig = ({ theme, size }) => {
             },
           },
         ],
+        options: {
+          outputReferences: (token) => pathStartsWithOneOf(['typography'], token) && token.path.includes('fontSize'),
+        },
       },
     },
   };
