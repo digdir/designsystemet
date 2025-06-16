@@ -1,11 +1,11 @@
 import {
   type ColorScheme,
-  type CssColor,
   generateColorSchemes,
 } from '@digdir/designsystemet/color';
 import { useEffect } from 'react';
 import { useLocation, useSearchParams } from 'react-router';
 import { useThemeStore } from '~/store';
+import { createColorsFromQuery } from './useThemebuilder';
 
 export const useThemeParams = () => {
   const location = useLocation();
@@ -95,10 +95,3 @@ export const useThemeParams = () => {
 
   return null;
 };
-
-function createColorsFromQuery(colors: string) {
-  return colors.split(' ').map((color) => {
-    const [name, hex] = color.split(':');
-    return { name, colors: generateColorSchemes(hex as CssColor) };
-  });
-}

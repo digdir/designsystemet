@@ -1,5 +1,5 @@
 import { Divider } from '@digdir/designsystemet-react';
-import { useThemeStore } from '~/store';
+import { useThemebuilder } from '~/routes/themebuilder/_utils/useThemebuilder';
 import { Scale } from '../scale/scale';
 import classes from './colors.module.css';
 
@@ -16,11 +16,13 @@ export const Colors = () => {
 };
 
 const MainColors = () => {
-  const colors = useThemeStore((state) => state.colors.main);
+  const {
+    colors: { main },
+  } = useThemebuilder();
 
   return (
     <div className={classes.rows}>
-      {colors.map((color, index) => (
+      {main.map((color, index) => (
         <div key={index} className={classes.row}>
           <div className={classes.scaleLabel}>{color.name}</div>
           <Scale
@@ -33,12 +35,15 @@ const MainColors = () => {
     </div>
   );
 };
+
 const NeutralColor = () => {
-  const colors = useThemeStore((state) => state.colors.neutral);
+  const {
+    colors: { neutral },
+  } = useThemebuilder();
 
   return (
     <div className={classes.rows}>
-      {colors.map((color, index) => (
+      {neutral.map((color, index) => (
         <div key={index} className={classes.row}>
           <div className={classes.scaleLabel}>{color.name}</div>
           <Scale colorScale={color.colors} namespace={color.name} />
@@ -49,11 +54,13 @@ const NeutralColor = () => {
 };
 
 const SupportColors = () => {
-  const colors = useThemeStore((state) => state.colors.support);
+  const {
+    colors: { support },
+  } = useThemebuilder();
 
   return (
     <div className={classes.rows}>
-      {colors.map((color, index) => (
+      {support.map((color, index) => (
         <div key={index} className={classes.row}>
           <div className={classes.scaleLabel}>{color.name}</div>
           <Scale colorScale={color.colors} namespace={color.name} />
