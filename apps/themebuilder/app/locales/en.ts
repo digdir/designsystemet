@@ -118,7 +118,7 @@ export default {
       'to update a theme directly in Figma. Read more about these options on',
     'own-theme': 'your own theme (opens in new tab)',
     page: 'page.',
-    format: 'Formatted for Windows',
+    format: 'Format for Windows',
     'step-two': 'Run the code snippet to generate CSS variables for code.',
     'help-heading': 'Something not working?',
     'help-description': 'Send us a message on',
