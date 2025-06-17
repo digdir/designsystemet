@@ -38,10 +38,16 @@ export const ThemeHeader = () => {
             key={themeTab.value}
             className='ds-focus-visible'
             onClick={() => {
-              setQuery((prev) => {
-                prev.set('tab', themeTab.value);
-                return prev;
-              });
+              setQuery(
+                (prev) => {
+                  prev.set('tab', themeTab.value);
+                  return prev;
+                },
+                {
+                  /* we don't want to prevent scroll here, since we change tabs */
+                  replace: true,
+                },
+              );
             }}
             data-active={tab === themeTab.value}
           >

@@ -6,7 +6,7 @@ import { ThemePages } from './_components/theme-pages';
 import classes from './page.module.css';
 import 'react-color-palette/css';
 import type { ColorScheme, CssColor } from '@digdir/designsystemet';
-import { parsePath } from 'react-router';
+import { parsePath, redirect } from 'react-router';
 import { isProduction } from '~/_utils/is-production.server';
 import { generateMetadata } from '~/_utils/metadata';
 import i18n from '~/i18next.server';
@@ -24,6 +24,20 @@ export const loader = async ({
 
   const { search } = parsePath(request.url);
   const urlParams = new URLSearchParams(search);
+
+  /* if we have no params, push some default values */
+  if (urlParams.toString() === '') {
+    const newParams = new URLSearchParams({
+      main: 'accent:#0062ba',
+      neutral: '#1E2B3C',
+      support: 'brand1:#F45F63 brand2:#E5AA20 brand3:#1E98F5',
+      appearance: 'light',
+      'border-radius': '4',
+      tab: 'overview',
+    });
+
+    return redirect(`/${lang}/themebuilder?${newParams.toString()}`);
+  }
 
   const colors = {
     main: createColorsFromQuery(urlParams.get('main') || 'main:#0062ba') || [],
@@ -59,7 +73,7 @@ export const meta: Route.MetaFunction = ({ data }: Route.MetaArgs) => {
   if (!data?.metadata)
     return [
       {
-        title: 'Theme Builder',
+        title: 'Theme Builder - Designsystemet',
         description: 'Build your own theme for Designsystemet',
       },
     ];

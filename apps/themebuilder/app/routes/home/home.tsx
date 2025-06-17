@@ -26,7 +26,7 @@ export const meta: Route.MetaFunction = ({ data }: Route.MetaArgs) => {
   if (!data?.metadata)
     return [
       {
-        title: 'Theme Builder',
+        title: 'Theme Builder - Designsystemet',
         description: 'Build your own theme for Designsystemet',
       },
     ];

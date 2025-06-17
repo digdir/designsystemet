@@ -24,7 +24,7 @@ export const AppearanceToggle = ({
   ];
 
   const { colorScheme } = useThemebuilder();
-  const [query, setQuery] = useSearchParams();
+  const [, setQuery] = useSearchParams();
 
   return (
     <div className={classes.toggle} role='radiogroup'>
@@ -40,6 +40,7 @@ export const AppearanceToggle = ({
                 return prev;
               },
               {
+                replace: true,
                 preventScrollReset: true,
               },
             );

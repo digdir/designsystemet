@@ -15,6 +15,7 @@ export const BorderRadiusInput = () => {
         return prev;
       },
       {
+        replace: true,
         preventScrollReset: true,
       },
     );
