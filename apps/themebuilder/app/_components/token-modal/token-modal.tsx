@@ -203,7 +203,8 @@ export const TokenModal = () => {
               </div>
               <div className={classes.snippet}>
                 <Switch
-                  style={{ marginInlineStart: 'auto' }}
+                  style={{ marginInlineStart: 'auto', width: 'fit-content' }}
+                  position='end'
                   label={t('themeModal.format')}
                   checked={formatWin}
                   onChange={(e) => {
