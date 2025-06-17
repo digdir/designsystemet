@@ -3,6 +3,20 @@ import { ContentContainer } from '@internal/components';
 import { Link, redirect } from 'react-router';
 import type { Route } from './+types/not-found';
 
+export const meta: Route.MetaFunction = ({ data }) => {
+  const lang = data?.lang || 'no';
+  const titles: Record<string, string> = {
+    no: 'Feil: Fant ikke siden',
+    en: 'Error: Page not found',
+  };
+  return [
+    {
+      title: titles[lang] || titles['no'],
+    },
+  ];
+};
+
+
 export const loader = async ({ request }: Route.LoaderArgs) => {
   const url = new URL(request?.url || '');
   const lang = url.pathname.split('/')[1];
