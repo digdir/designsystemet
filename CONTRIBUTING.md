@@ -2,34 +2,13 @@
 
 First off, thanks for taking the time to contribute! ❤️
 
-All types of contributions are encouraged and valued. See the [Table of Contents](#table-of-contents) for different ways to help and details about how this project handles them. Please make sure to read the relevant section before making your contribution. It will make it a lot easier for us maintainers and smooth out the experience for all involved. The community looks forward to your contributions. 🎉
+All types of contributions are encouraged and valued. Please make sure to read the relevant section before making your contribution. It will make it a lot easier for us maintainers and smooth out the experience for all involved. The community looks forward to your contributions. 🎉
 
 > And if you like the project, but just don't have time to contribute, that's fine. There are other easy ways to support the project and show your appreciation, which we would also be very happy about:
 >
 > - Star the project
 > - Refer this project in your project's readme
 > - Mention the project at local meetups and tell your friends/colleagues
-
-## Table of Contents
-
-- [Contributing to Designsystemet](#contributing-to-designsystemet)
-  - [Table of Contents](#table-of-contents)
-  - [Code of Conduct](#code-of-conduct)
-  - [Share your feedback and report issues](#share-your-feedback-and-report-issues)
-  - [I Want To Contribute](#i-want-to-contribute)
-    - [Getting involved with development](#getting-involved-with-development)
-      - [Addressing minor bugs and handling smaller feature requests](#addressing-minor-bugs-and-handling-smaller-feature-requests)
-      - [Developing new components and handling larger tasks](#developing-new-components-and-handling-larger-tasks)
-    - [Getting started with development](#getting-started-with-development)
-      - [4. Start local development servers](#4-start-local-development-servers)
-    - [Pull requests](#pull-requests)
-  - [Styleguides](#styleguides)
-    - [Commit Messages](#commit-messages)
-      - [Scope](#scope)
-        - [Examples:](#examples)
-      - [When to use what keywords](#when-to-use-what-keywords)
-
----
 
 ## Code of Conduct
 
@@ -62,29 +41,30 @@ We suggest creating a draft pull request as soon as you start working on somethi
 
 Before you start coding also take a look at [how to get started with development](#getting-started-with-development) and our [coding standards](#how-to-write-and-structure-your-code).
 
-#### Addressing minor bugs and handling smaller feature requests
+#### Addressing minor bugs
 
 Spotted a bug you would like to help fix? Easy! Just fork this repository and submit a [pull request](#pull-requests).
 A person from Designsystemet will follow up from there.
 
 Do the same for smaller feature requests. We cannot guarantee that the new feature will be implemented, but we will try our best to make it happen!
 
-#### Developing new components and handling larger tasks
+#### New features
 
-Your team needs a new component that doesn't exist in Designsystemet and want to help develop it?
+Your team needs a new component or a new feature that doesn't exist? 
 Great news! We have created a process to handle just this use case!
 
-1. Submit a [feature request](https://github.com/digdir/designsystemet/issues/new/choose) detailing your requirements, and indicate your interest in contributing to the development of this component.
+1. Submit a [feature request](https://github.com/digdir/designsystemet/issues/new/choose) detailing your requirements, and indicate your interest in contributing to the development.
 2. The team will review the feature request and assess its compatibility with Designsystemet.
-3. If the component fits within the scope of Designsystemet we will follow you up from there.
+3. If the feature fits within the scope of Designsystemet we will follow you up from there.
 
-Developing components for Designsystemet requires that developers are closely connected to the team. We will invite you to participate in our daily check-ins throughout the development process to ensure that the component adheres to our coding standards and seamlessly integrates with our design system.
+##### New components
+Developing a new components for Designsystemet requires a lot research and work, in addition to deep understand of accessebility and Desigsystemets inner workings to provide all of its features (theming, cli, tokens etc.). This is a process that requires a lot of time and if you are interested in contributing this way we encourage you to become part of the team during this time. We will invite you to participate in our daily check-ins throughout the development process to ensure that the component adheres to our coding standards and seamlessly integrates with our design system.
 
 ### Getting started with development
 
-Follow these steps to get up and running with Storybook or www (designsystemet.no). 
+Follow these steps to get up and running with Storybook, Storefront (www.designsystemet.no) or Themebuilder. 
 
-Run the commands from the root of your project. Make sure you clone the `next` branch, this is where we do development.
+Run the commands from the root of your project. Make sure you clone the `main` branch, this is where we do development.
 
 `pnpm i`
 `pnpm build`
@@ -101,12 +81,25 @@ When creating a pull request for Designsystemet, there are a few things to keep 
 
 - When you create your pull request for the first time make sure to mark it as a [draft](https://github.blog/2019-02-14-introducing-draft-pull-requests/). This is mainly to prevent unnecessary notifications for reviewers during the development process. If you forget then no problem!
 - We utilize automated code checks to verify that pull requests align with our established standards. These checks must be successful for the pull request to be merged into the main branch. You don't need to worry about this during development.
-  - The pull request title must adhere to the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) standard.
+  - The pull request title must adhere to the [Conventional Commits](#commit-messages) standard.
   - We run linting and formatting checks on all the code.
 - When you are done with development you can mark the pull request as ready for review by clicking on the button at the bottom. A person from Designsystemet will then review your code and comment if there are things that need to be changed. Once the pull request is approved it will be merged into the main branch.
-- Make sure the PR is pointing to the `next` branch.
+- Make sure the PR is pointing to the `main` branch.
 
----
+### Changesets
+We use [Changesets](https://github.com/changesets/changesets) to manage versioning and changelogs.
+
+If you makes changes to a packages in `/packages/*`, you should add a changeset to document changes.
+We recommend you look at previous releases and what wording has been used there to describe changes. 
+At a minimum, a prefix for which part or component the changes apply to.
+
+To do this, run the following command in the root of the repository:
+
+```bash
+pnpm changeset
+```
+
+You can read more here: https://github.com/changesets/changesets/blob/main/docs/adding-a-changeset.md
 
 ## Styleguides
 
@@ -128,13 +121,8 @@ To make commit messages and the changelog more specific and readable, you have t
 
 ##### Examples:
 
-- Adding a new component: `feat(Button): added a new Button component`.
-- Adding documentation for icons: `docs(icons): added new documentation for the icons package`.
+- Fix a bug: `fix(Button): correct padding when only icon`.
+- Adding documentation: `docs(Table): added paragraph about table header and using interderminate checkboxes`.
 
-#### When to use what keywords
-
-It is crucial to understand the distinctions between the two sections mentioned below. If you wish for commit messages to be included in the changelog, please use `fix:` or `feat:` as keywords. These keywords indicate changes that impact the users of our NPM packages and are therefore significant to highlight. For any other types of changes that do not directly affect the end user, please utilize a different keyword. If you are uncertain about which keyword to use and the changes are non-user-facing, you can use `chore:` as a default keyword.
-
----
 
 ![te](https://i.imgur.com/Uw0qA1O.png)
