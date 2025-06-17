@@ -4,7 +4,10 @@ import {
   generateColorSchemes,
 } from '@digdir/designsystemet';
 import { useLoaderData } from 'react-router';
-import { generateColorVars } from '~/_utils/generate-color-vars';
+import {
+  generateColorVars,
+  generateNeutralColorVars,
+} from '~/_utils/generate-color-vars';
 import type { Route } from '../+types/themebuilder';
 
 export type ColorTheme = {
@@ -43,6 +46,17 @@ export function createColorsAndVariables(color: CssColor) {
     variables: {
       light: generateColorVars(colors, 'light'),
       dark: generateColorVars(colors, 'dark'),
+    },
+  };
+}
+
+export function createColorsAndNeutralVariables(color: CssColor) {
+  const colors = generateColorSchemes(color);
+  return {
+    colors,
+    variables: {
+      light: generateNeutralColorVars(colors, 'light'),
+      dark: generateNeutralColorVars(colors, 'dark'),
     },
   };
 }

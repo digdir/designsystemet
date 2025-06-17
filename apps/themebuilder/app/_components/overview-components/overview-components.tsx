@@ -14,10 +14,8 @@ import {
 } from '@digdir/designsystemet-react';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import {
-  generateColorVars,
-  generateNeutralColorVars,
-} from '~/_utils/generate-color-vars';
+import { generateColorVars } from '~/_utils/generate-color-vars';
+import { useThemebuilder } from '~/routes/themebuilder/_utils/useThemebuilder';
 import classes from './overview-components.module.css';
 import { SettingsCard } from './settings-card/settings-card';
 import { TableCard } from './table-card/table-card';
@@ -52,8 +50,8 @@ export const OverviewComponents = ({
   borderRadius = 4,
 }: OverviewComponentsProps) => {
   const { t } = useTranslation();
-
   const ref = useRef<HTMLDivElement>(null);
+  const { colors } = useThemebuilder();
 
   useEffect(() => {
     // we need to set these properties on the preview element because they are immutable on :root
@@ -86,7 +84,7 @@ export const OverviewComponents = ({
     /* neutral */
     Object.assign(
       vars,
-      generateNeutralColorVars(generateColorSchemes('#1E2B3C'), colorScheme),
+      colors.neutral[0].variables[colorScheme as 'light' | 'dark'],
     );
     /* get -ds-color-* vars */
     Object.assign(

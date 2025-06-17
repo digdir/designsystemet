@@ -13,7 +13,7 @@ import { generateMetadata } from '~/_utils/metadata';
 import i18n from '~/i18next.server';
 import type { Route } from './+types/themebuilder';
 import {
-  createColorsAndVariables,
+  createColorsAndNeutralVariables,
   createColorsFromQuery,
 } from './_utils/useThemebuilder';
 
@@ -54,7 +54,7 @@ export const loader = async ({
     neutral: [
       {
         name: 'neutral',
-        ...createColorsAndVariables(
+        ...createColorsAndNeutralVariables(
           (urlParams.get('neutral') as CssColor) || NEUTRAL_COLOR,
         ),
         hex: (urlParams.get('neutral') as CssColor) || NEUTRAL_COLOR,
