@@ -5,12 +5,14 @@ import {
   useDebounceCallback,
 } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
+import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/useThemebuilder';
 import classes from './border-radius-input.module.css';
 
 export const BorderRadiusInput = () => {
+  const inputRef = useRef<HTMLInputElement>(null);
   const { t } = useTranslation();
   const [, setQuery] = useSearchParams();
   const setBorderRadius = (value: number) => {
@@ -68,6 +70,10 @@ export const BorderRadiusInput = () => {
               className={cl(classes.box)}
               onClick={() => {
                 setBorderRadius(item.value);
+                /* update input with new value */
+                if (inputRef.current) {
+                  inputRef.current.value = item.value.toString();
+                }
               }}
               // biome-ignore lint/a11y/useSemanticElements: <explanation>
               role='radio'
@@ -93,6 +99,7 @@ export const BorderRadiusInput = () => {
           debouncedCallback(e.target.value);
         }}
         type='number'
+        ref={inputRef}
       ></Textfield>
     </div>
   );
