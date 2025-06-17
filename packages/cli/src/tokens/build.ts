@@ -6,7 +6,7 @@ import type { DesignToken } from 'style-dictionary/types';
 import { mkdir, readFile, writeFile } from '../utils.js';
 import { createThemeCSSFiles, defaultFileHeader } from './process/output/theme.js';
 
-import { generateTailwind } from './process/output/tailwind.js';
+import { createTailwindCSSFiles } from './process/output/tailwind.js';
 import { type BuildOptions, processPlatform } from './process/platform.js';
 import type { DesignsystemetObject, OutputFile } from './types.js';
 
@@ -59,18 +59,9 @@ export const buildTokens = async (options: Omit<BuildOptions, 'type' | '$themes'
   ]);
 
   let cssFiles = createThemeCSSFiles({ processedBuilds, fileHeader });
+
   if (options.tailwind) {
-    console.log('\n🍱 Creating Tailwind Config');
-    const tailwindFiles = cssFiles.map((file) => {
-      if (file.destination) {
-        const tailwindConfig = generateTailwind({ outDir, css: file.output });
-        const tailwindFile = {
-          destination: file.destination.replace('.css', '.tailwind.css'),
-          output: tailwindConfig,
-        };
-        return tailwindFile;
-      }
-    });
+    const tailwindFiles = createTailwindCSSFiles(cssFiles, outDir);
     cssFiles = cssFiles.concat(tailwindFiles.filter(Boolean) as OutputFile[]);
   }
 

@@ -1,9 +1,28 @@
+import type { OutputFile } from '../../types.js';
+
 type GenerateTailwindOptions = {
   outDir: string;
   css: string;
 };
 
-export const generateTailwind = ({ outDir, css }: GenerateTailwindOptions): string => {
+export const createTailwindCSSFiles = (cssFiles: OutputFile[], outDir: string): OutputFile[] => {
+  console.log('\n🍱 Creating Tailwind Config');
+  return cssFiles
+    .map((file) => {
+      if (file.destination) {
+        const tailwindConfig = generateTailwind({ outDir, css: file.output });
+        const tailwindFile = {
+          destination: file.destination.replace('.css', '.tailwind.css'),
+          output: tailwindConfig,
+        };
+        return tailwindFile;
+      }
+      return undefined;
+    })
+    .filter((item) => item !== undefined);
+};
+
+const generateTailwind = ({ outDir, css }: GenerateTailwindOptions): string => {
   const tailwind: string[] = ['--font-sans: var(--ds-font-family)'];
   const tokens = Array.from(new Set(css.match(/--ds-[^:)]+/g)), (m) => m).sort((a, b) =>
     a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }),
@@ -45,5 +64,5 @@ export const generateTailwind = ({ outDir, css }: GenerateTailwindOptions): stri
       --color-base-contrast-default: var(--ds-color-base-contrast-default);
     }`;
 
-  return `@theme {${tailwind.map((str) => `\n\t${str};`).join('')}\n}\n${dynamicColors}`;
+  return `@theme {${tailwind.map((str) => `\n  ${str};`).join('')}\n}\n${dynamicColors}`;
 };
