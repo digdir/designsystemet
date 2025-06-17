@@ -116,6 +116,7 @@ export default {
       'for å oppdatere et tema direkte i Figma. Les mer om disse alternativene på',
     'own-theme': 'eget tema (åpnes i ny fane)',
     page: 'siden.',
+    format: 'Formatert for Windows',
     'step-two': 'Kjør kodesnutten for å generere CSS variabler til kode.',
     'help-heading': 'Noe som ikke fungerer?',
     'help-description': 'Send oss en melding på',
