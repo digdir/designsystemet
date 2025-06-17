@@ -1,6 +1,6 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import { expect, userEvent, within } from '@storybook/test';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useEffect, useState } from 'react';
+import { expect, userEvent, within } from 'storybook/test';
 
 import { Button, Paragraph } from '../..';
 
