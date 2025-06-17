@@ -3,11 +3,19 @@ import { bundleMDX } from 'mdx-bundler';
 import BlogCard from '~/_components/blog-card/blog-card';
 import { getFileFromContentDir, getFilesFromContentDir } from '~/_utils/files';
 import { generateMetadata } from '~/_utils/metadata';
+import i18nConf from '~/i18n';
 import i18n from '~/i18next.server';
 import type { Route } from './+types/blog';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   if (!lang) {
+    throw new Response('Not Found', {
+      status: 404,
+      statusText: 'Not Found',
+    });
+  }
+
+  if (!i18nConf.supportedLngs.includes(lang)) {
     throw new Response('Not Found', {
       status: 404,
       statusText: 'Not Found',

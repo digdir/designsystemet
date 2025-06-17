@@ -1,10 +1,10 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import { userEvent, within } from '@storybook/test';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import { type ChangeEvent, useState } from 'react';
 import {
   EXPERIMENTAL_Suggestion as Suggestion,
   type SuggestionValues,
 } from '.';
+import { userEvent, within } from 'storybook/test';
 import { Button, Divider, Field, Label, Paragraph, Spinner } from '..';
 import { useDebounceCallback } from '../../utilities';
 

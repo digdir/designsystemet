@@ -146,6 +146,7 @@ export default {
     description:
       'Here we share best practices with each other. Advice and guidance that can help create better services are gathered here.',
     back: 'Back',
+    'breadcrumbs-label': 'You are here:',
   },
   mdx: {
     error: {
