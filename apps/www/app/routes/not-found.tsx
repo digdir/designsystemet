@@ -35,16 +35,17 @@ export default function NotFound({ loaderData }: Route.ComponentProps) {
             marginTop: 'var(--ds-size-12)',
           }}
         >
-          404 - Fant ikke siden
+         Beklager, vi fant ikke siden
         </Heading>
-        <Paragraph>Siden du leter etter finnes ikke.</Paragraph>
+        <Paragraph>Denne siden kan være slettet eller flyttet, eller det er en feil i lenken.</Paragraph>
+
         <Button
           asChild
           style={{
             width: 'fit-content',
           }}
         >
-          <Link to='/no'>Gå hjem</Link>
+          <Link to='/no'>Gå til forsiden</Link>
         </Button>
       </div>
       <div
@@ -63,16 +64,16 @@ export default function NotFound({ loaderData }: Route.ComponentProps) {
             marginTop: 'var(--ds-size-12)',
           }}
         >
-          404 - Not Found
+          Page not found
         </Heading>
-        <Paragraph>The page you are looking for can't be found.</Paragraph>
+        <Paragraph>The page you are looking for can't be found. It may have been deleted or moved, or there may be an error in the link.</Paragraph>
         <Button
           asChild
           style={{
             width: 'fit-content',
           }}
         >
-          <Link to='/en'>Go Home</Link>
+          <Link to='/en'>Go to the front page</Link>
         </Button>
       </div>
     </ContentContainer>
