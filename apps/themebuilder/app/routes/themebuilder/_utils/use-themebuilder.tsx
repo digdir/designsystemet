@@ -16,6 +16,8 @@ export type ColorTheme = {
   hex?: string;
 };
 
+export const QUERY_SEPARATOR = ' ';
+
 export const useThemebuilder = () => {
   const { colors, colorScheme, baseBorderRadius, tab } =
     useLoaderData<Route.ComponentProps['loaderData']>();
@@ -29,7 +31,7 @@ export const useThemebuilder = () => {
 };
 
 export function createColorsFromQuery(colors: string) {
-  return colors.split(' ').map((color) => {
+  return colors.split(QUERY_SEPARATOR).map((color) => {
     const [name, hex] = color.split(':');
     return {
       name,

@@ -4,7 +4,10 @@ import { useState } from 'react';
 import { ColorService, useColor } from 'react-color-palette';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router';
-import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
+import {
+  QUERY_SEPARATOR,
+  useThemebuilder,
+} from '~/routes/themebuilder/_utils/use-themebuilder';
 import type { ColorTheme } from '~/routes/themebuilder/_utils/use-themebuilder';
 import { ColorInput } from '../../color-input/color-input';
 import { ColorPane } from '../color-pane/color-pane';
@@ -49,7 +52,7 @@ export const ColorPage = () => {
 
     if (type === 'main' || type === 'support') {
       const colorParam = query.get(type) || '';
-      const colorArray = colorParam.split(' ').filter(Boolean);
+      const colorArray = colorParam.split(QUERY_SEPARATOR).filter(Boolean);
 
       if (index < colorArray.length) {
         colorArray[index] = `${name}:${hex}`;
@@ -57,7 +60,7 @@ export const ColorPage = () => {
         colorArray.push(`${name}:${hex}`);
       }
 
-      updatedParams.set(type, colorArray.join(' '));
+      updatedParams.set(type, colorArray.join(QUERY_SEPARATOR));
     } else if (type === 'neutral') {
       updatedParams.set('neutral', hex);
     }
@@ -116,9 +119,9 @@ export const ColorPage = () => {
 
     if (type === 'main' || type === 'support') {
       const colorParam = query.get(type) || '';
-      const colorArray = colorParam.split(' ').filter(Boolean);
+      const colorArray = colorParam.split(QUERY_SEPARATOR).filter(Boolean);
       colorArray.splice(index, 1);
-      updatedParams.set(type, colorArray.join(' '));
+      updatedParams.set(type, colorArray.join(QUERY_SEPARATOR));
 
       setQuery(updatedParams, {
         replace: true,

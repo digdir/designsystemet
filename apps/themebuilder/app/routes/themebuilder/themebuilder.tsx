@@ -13,6 +13,7 @@ import { generateMetadata } from '~/_utils/metadata';
 import i18n from '~/i18next.server';
 import type { Route } from './+types/themebuilder';
 import {
+  QUERY_SEPARATOR,
   createColorsAndNeutralVariables,
   createColorsFromQuery,
 } from './_utils/use-themebuilder';
@@ -20,10 +21,10 @@ import {
 const THEME = themeConfig.themes.designsystemet.colors;
 const MAIN_COLORS = Object.keys(THEME.main)
   .map((key) => `${key}:${THEME.main[key as keyof typeof THEME.main]}`)
-  .join(' ');
+  .join(QUERY_SEPARATOR);
 const SUPPORT_COLORS = Object.keys(THEME.support)
   .map((key) => `${key}:${THEME.support[key as keyof typeof THEME.support]}`)
-  .join(' ');
+  .join(QUERY_SEPARATOR);
 const NEUTRAL_COLOR = THEME.neutral;
 
 export const loader = async ({
