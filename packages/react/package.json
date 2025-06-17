@@ -48,7 +48,7 @@
     "@radix-ui/react-slot": "^1.2.3",
     "@tanstack/react-virtual": "^3.13.9",
     "@u-elements/u-combobox": "^0.0.14",
-    "@u-elements/u-datalist": "^1.0.7",
+    "@u-elements/u-datalist": "^1.0.8",
     "@u-elements/u-details": "^0.1.1",
     "clsx": "^2.1.1"
   },
