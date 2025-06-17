@@ -6,7 +6,7 @@ import type { DesignToken } from 'style-dictionary/types';
 import { mkdir, readFile, writeFile } from '../utils.js';
 import { createThemeCSSFiles, defaultFileHeader } from './process/output/theme.js';
 
-import { generateTailwind } from './process/output/create-tailwind-files.js';
+import { generateTailwind } from './process/output/tailwind.js';
 import { type BuildOptions, processPlatform } from './process/platform.js';
 import type { DesignsystemetObject, OutputFile } from './types.js';
 
