@@ -89,7 +89,7 @@ When creating a pull request for Designsystemet, there are a few things to keep 
 ### Changesets
 We use [Changesets](https://github.com/changesets/changesets) to manage versioning and changelogs.
 
-If you makes changes to a packages in `/packages/*`, you should add a changeset to document changes.
+Changes in `/packages/*`, will flag a need for adding adding a changeset to document changes.
 We recommend you look at previous releases and what wording has been used there to describe changes. 
 At a minimum, a prefix for which part or component the changes apply to.
 
