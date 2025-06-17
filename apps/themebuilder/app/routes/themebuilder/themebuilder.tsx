@@ -6,6 +6,7 @@ import { ThemePages } from './_components/theme-pages';
 import classes from './page.module.css';
 import 'react-color-palette/css';
 import type { ColorScheme, CssColor } from '@digdir/designsystemet';
+import themeConfig from '@digdir/designsystemet-theme/configs/designsystemet.config.json';
 import { parsePath, redirect } from 'react-router';
 import { isProduction } from '~/_utils/is-production.server';
 import { generateMetadata } from '~/_utils/metadata';
@@ -15,6 +16,15 @@ import {
   createColorsAndVariables,
   createColorsFromQuery,
 } from './_utils/useThemebuilder';
+
+const THEME = themeConfig.themes.designsystemet.colors;
+const MAIN_COLORS = Object.keys(THEME.main)
+  .map((key) => `${key}:${THEME.main[key as keyof typeof THEME.main]}`)
+  .join(' ');
+const SUPPORT_COLORS = Object.keys(THEME.support)
+  .map((key) => `${key}:${THEME.support[key as keyof typeof THEME.support]}`)
+  .join(' ');
+const NEUTRAL_COLOR = THEME.neutral;
 
 export const loader = async ({
   params: { lang },
@@ -28,9 +38,9 @@ export const loader = async ({
   /* if we have no params, push some default values */
   if (urlParams.toString() === '') {
     const newParams = new URLSearchParams({
-      main: 'accent:#0062ba',
-      neutral: '#1E2B3C',
-      support: 'brand1:#F45F63 brand2:#E5AA20 brand3:#1E98F5',
+      main: MAIN_COLORS,
+      neutral: NEUTRAL_COLOR,
+      support: SUPPORT_COLORS,
       appearance: 'light',
       'border-radius': '4',
       tab: 'overview',
@@ -40,19 +50,18 @@ export const loader = async ({
   }
 
   const colors = {
-    main: createColorsFromQuery(urlParams.get('main') || 'main:#0062ba') || [],
+    main: createColorsFromQuery(urlParams.get('main') || MAIN_COLORS) || [],
     neutral: [
       {
         name: 'neutral',
         ...createColorsAndVariables(
-          (urlParams.get('neutral') as CssColor) || '#1E2B3C',
+          (urlParams.get('neutral') as CssColor) || NEUTRAL_COLOR,
         ),
-        hex: (urlParams.get('neutral') as CssColor) || '#1E2B3C',
+        hex: (urlParams.get('neutral') as CssColor) || NEUTRAL_COLOR,
       },
     ],
-    support: urlParams.get('support')
-      ? createColorsFromQuery(urlParams.get('support') || '') || []
-      : [],
+    support:
+      createColorsFromQuery(urlParams.get('support') || SUPPORT_COLORS) || [],
   };
 
   return {
