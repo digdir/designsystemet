@@ -1,57 +1,47 @@
+import {} from '@tokens-studio/sd-transforms';
 import * as R from 'ramda';
-import { pathStartsWithOneOf, typeEquals } from '../../utils.js';
+import type {} from 'style-dictionary/types';
+import { outputReferencesFilter } from 'style-dictionary/utils';
+import { isDigit, pathStartsWithOneOf } from '../../utils.js';
 import { formats } from '../formats/css.js';
-import { sizeRem, typographyName } from '../transformers.js';
-import { type GetStyleDictionaryConfig, basePxFontSize, prefix } from './shared.js';
 
-export const sizeVariables: GetStyleDictionaryConfig = ({ theme, size }) => {
-  const selector = ':root, [data-size]';
+import { type GetStyleDictionaryConfig, basePxFontSize, dsTransformers, prefix } from './shared.js';
+
+export const sizeVariables: GetStyleDictionaryConfig = ({ theme }) => {
+  // [data-size] selector ensures --ds-size-* variables are recalculated when --ds-size-mode-font-size changes
+  const selector = `:root, [data-size]`;
   const layer = `ds.theme.size`;
 
   return {
-    usesDtcg: true,
     preprocessors: ['tokens-studio'],
-    expand: {
-      include: ['typography'],
-    },
     platforms: {
       css: {
-        size,
-        prefix,
+        // custom
+        theme,
+        basePxFontSize,
         selector,
         layer,
+        //
+        prefix,
         buildPath: `${theme}/`,
-        basePxFontSize,
-        transforms: [
-          'name/kebab',
-          'ts/size/px',
-          sizeRem.name,
-          'ts/size/lineheight',
-          'ts/typography/fontWeight',
-          typographyName.name,
-        ],
+        transforms: dsTransformers,
         files: [
           {
-            destination: `size/${size}.css`,
-            format: formats.typographySize.name,
+            destination: `size.css`,
+            format: formats.size.name,
             filter: (token) => {
-              const included = typeEquals(['typography', 'dimension', 'fontsize'], token);
-
-              // Remove primitive typgography tokens
-              if (/primitives\/modes\/typography\/(primary|secondary)/.test(token.filePath)) return false;
-
-              return (
-                included &&
-                !pathStartsWithOneOf(['spacing', 'sizing', 'size', 'border-width', 'border-radius'], token) &&
-                (pathStartsWithOneOf(['font-size'], token) ||
-                  R.equals(['_size', 'mode-font-size'], token.path) ||
-                  token.path.includes('fontSize'))
-              );
+              const isUwantedToken = R.anyPass([R.includes('primitives/global')])(token.filePath);
+              const isPrivateToken = R.includes('_', token.path);
+              return pathStartsWithOneOf(['size', '_size'], token) && !(isUwantedToken || isPrivateToken);
+              // R.equals(['_size', 'mode-font-size'], token.path) ||
             },
           },
         ],
         options: {
-          outputReferences: (token) => pathStartsWithOneOf(['typography'], token) && token.path.includes('fontSize'),
+          outputReferences: (token, options) => {
+            const isWantedSize = pathStartsWithOneOf(['size', '_size'], token) && isDigit(token.path[1]);
+            return isWantedSize && outputReferencesFilter(token, options);
+          },
         },
       },
     },
