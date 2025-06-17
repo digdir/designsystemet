@@ -131,9 +131,11 @@ const VerticalCard = ({ color, ...rest }: CardProps) => {
           label={t('colorPreview.checkbox')}
           value='value'
         />
-        <Switch aria-labelledby='' position='start' data-size='sm'>
-          {t('colorPreview.switch')}
-        </Switch>
+        <Switch
+          position='start'
+          data-size='sm'
+          label={t('colorPreview.switch')}
+        />
       </div>
       <div className={classes.btnGroup}>
         <Button data-size='sm'>{t('colorPreview.primary')}</Button>
