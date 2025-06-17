@@ -202,15 +202,15 @@ export const TokenModal = () => {
                 </Paragraph>
               </div>
               <div className={classes.snippet}>
-                <CodeBlock language='bash'>{cliSnippet}</CodeBlock>
                 <Switch
-                  style={{ marginBlockEnd: 'var(--ds-size-4)' }}
+                  style={{ marginInlineStart: 'auto' }}
                   label={t('themeModal.format')}
                   checked={formatWin}
                   onChange={(e) => {
                     setFormatWin(e.currentTarget.checked);
                   }}
                 />
+                <CodeBlock language='bash'>{cliSnippet}</CodeBlock>
               </div>
               <div
                 className={classes.step}
