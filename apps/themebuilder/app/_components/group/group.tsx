@@ -12,7 +12,7 @@ import { Color as ColorPreview } from '../color/color';
 
 import { Fragment } from 'react';
 import { useColorModalContext } from '~/_utils/color-modal-context';
-import { useThemebuilder } from '~/routes/themebuilder/_utils/useThemebuilder';
+import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from './group.module.css';
 
 type GroupProps = {

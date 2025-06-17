@@ -15,7 +15,7 @@ import type { Route } from './+types/themebuilder';
 import {
   createColorsAndNeutralVariables,
   createColorsFromQuery,
-} from './_utils/useThemebuilder';
+} from './_utils/use-themebuilder';
 
 const THEME = themeConfig.themes.designsystemet.colors;
 const MAIN_COLORS = Object.keys(THEME.main)

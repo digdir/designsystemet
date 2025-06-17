@@ -19,7 +19,7 @@ import { useTranslation } from 'react-i18next';
 import type { Color, CssColor } from '@digdir/designsystemet/color';
 import { CodeBlock } from '@internal/components';
 import { useLoaderData } from 'react-router';
-import { useThemebuilder } from '~/routes/themebuilder/_utils/useThemebuilder';
+import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import type { ColorTheme } from '~/store';
 import classes from './token-modal.module.css';
 

@@ -1,5 +1,5 @@
 import { Divider } from '@digdir/designsystemet-react';
-import { useThemebuilder } from '~/routes/themebuilder/_utils/useThemebuilder';
+import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import { Scale } from '../scale/scale';
 import classes from './colors.module.css';
 

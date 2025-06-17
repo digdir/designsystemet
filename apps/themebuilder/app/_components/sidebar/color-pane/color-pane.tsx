@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 
 import cl from 'clsx/lite';
 import { useState } from 'react';
-import { useThemebuilder } from '~/routes/themebuilder/_utils/useThemebuilder';
+import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from './color-pane.module.css';
 
 type ColorPaneProps = {

@@ -8,7 +8,7 @@ import cl from 'clsx/lite';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router';
-import { useThemebuilder } from '~/routes/themebuilder/_utils/useThemebuilder';
+import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from './border-radius-input.module.css';
 
 export const BorderRadiusInput = () => {

@@ -4,7 +4,7 @@ import { ColorPreview } from '~/_components/color-preview/color-preview';
 import { ColorTokens } from '~/_components/color-tokens/color-tokens';
 import { Colors } from '~/_components/colors/colors';
 import { OverviewComponents } from '~/_components/overview-components/overview-components';
-import { useThemebuilder } from '../_utils/useThemebuilder';
+import { useThemebuilder } from '../_utils/use-themebuilder';
 import classes from './theme-pages.module.css';
 
 export const ThemePages = () => {
