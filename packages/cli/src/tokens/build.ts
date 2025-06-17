@@ -4,7 +4,7 @@ import chalk from 'chalk';
 import * as R from 'ramda';
 import type { DesignToken } from 'style-dictionary/types';
 import { mkdir, readFile, writeFile } from '../utils.js';
-import { createThemeCSSFiles, defaultFileHeader } from './process/theme.js';
+import { createThemeCSSFiles, defaultFileHeader } from './process/output/theme.js';
 
 import { generateTailwind } from './process/output/create-tailwind-files.js';
 import { type BuildOptions, processPlatform } from './process/platform.js';
