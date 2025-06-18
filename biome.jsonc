@@ -1,19 +1,17 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.0.0/schema.json",
-  "assist": { "actions": { "source": { "organizeImports": "on" } } },
+  "assist": {
+    "actions": { "source": { "organizeImports": "on" } }
+  },
   "vcs": {
     "enabled": true,
     "clientKind": "git",
     "useIgnoreFile": true
   },
-  "json": {
-    "formatter": {
-      "enabled": true
-    }
-  },
   "files": {
     "ignoreUnknown": true,
     "includes": [
+      "**/*",
       "!**/.vscode/**",
       "!**/.github/**",
       "!**/.changeset/**",
@@ -29,36 +27,16 @@
   },
   "formatter": {
     "enabled": true,
+    "includes": ["**/*"],
     "formatWithErrors": true,
     "indentStyle": "space",
     "indentWidth": 2,
     "lineEnding": "lf",
     "lineWidth": 80
   },
-  "javascript": {
-    "globals": [
-      "expect",
-      "it",
-      "describe",
-      "test",
-      "beforeEach",
-      "afterEach",
-      "beforeAll",
-      "afterAll",
-      "vi",
-      "React",
-      "JSX"
-    ],
-    "formatter": {
-      "enabled": true,
-      "jsxQuoteStyle": "single",
-      "quoteProperties": "asNeeded",
-      "trailingCommas": "all",
-      "quoteStyle": "single"
-    }
-  },
   "linter": {
     "enabled": true,
+    "includes": ["**/*"],
     "rules": {
       "recommended": true,
       "a11y": {
@@ -94,14 +72,39 @@
       }
     }
   },
-
+  "javascript": {
+    "globals": [
+      "expect",
+      "it",
+      "describe",
+      "test",
+      "beforeEach",
+      "afterEach",
+      "beforeAll",
+      "afterAll",
+      "vi",
+      "React",
+      "JSX"
+    ],
+    "formatter": {
+      "enabled": true,
+      "jsxQuoteStyle": "single",
+      "quoteProperties": "asNeeded",
+      "trailingCommas": "all",
+      "quoteStyle": "single"
+    }
+  },
+  "json": {
+    "formatter": {
+      "enabled": true
+    }
+  },
   "css": {
     "formatter": {
       "enabled": true,
       "quoteStyle": "single"
     }
   },
-
   "overrides": [
     { "includes": ["**/*.css"], "formatter": { "lineWidth": 160 } },
     {
