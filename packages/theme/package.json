@@ -14,7 +14,11 @@
       "types": "./src/themes/colors.d.ts",
       "default": "./src/themes/designsystemet.css"
     },
+    "./tailwind": {
+      "default": "./src/themes/designsystemet.tailwind.css"
+    },
     "./*": "./brand/*",
+    "./digdir/*": "./brand/*",
     "./configs/*": "./configs/*"
   },
   "files": [
