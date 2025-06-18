@@ -1,12 +1,12 @@
 import {
+  data,
+  isRouteErrorResponse,
   Links,
   Meta,
   Outlet,
+  redirect,
   Scripts,
   ScrollRestoration,
-  data,
-  isRouteErrorResponse,
-  redirect,
 } from 'react-router';
 
 import type { Route } from './+types/root';

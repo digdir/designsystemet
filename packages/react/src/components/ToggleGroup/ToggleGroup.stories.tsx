@@ -11,11 +11,10 @@ import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
 
 import { Button } from '../Button';
-import { Paragraph } from '../Paragraph';
-
-import { ToggleGroup } from '.';
 import { Divider } from '../Divider';
+import { Paragraph } from '../Paragraph';
 import { Tooltip } from '../Tooltip';
+import { ToggleGroup } from '.';
 
 export default {
   title: 'Komponenter/ToggleGroup',

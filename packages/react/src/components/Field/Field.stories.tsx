@@ -1,7 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react-vite';
-import { Label } from '../Label';
-
 import { Divider, Field, Input, Textarea, ValidationMessage } from '../';
+import { Label } from '../Label';
 
 type Story = StoryFn<typeof Field>;
 

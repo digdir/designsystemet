@@ -1,4 +1,4 @@
-import { type TdHTMLAttributes, forwardRef } from 'react';
+import { forwardRef, type TdHTMLAttributes } from 'react';
 
 export type TableCellProps = TdHTMLAttributes<HTMLTableCellElement>;
 

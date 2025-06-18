@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react-vite';
-import { Paragraph } from '.';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
+import { Paragraph } from '.';
 import * as ParagraphStories from './Paragraph.stories';
 
 const meta: Meta = {

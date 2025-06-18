@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react-vite';
-import { SkipLink } from '.';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
+import { SkipLink } from '.';
 import * as SkipLinkStories from './SkipLink.stories';
 
 const meta: Meta = {

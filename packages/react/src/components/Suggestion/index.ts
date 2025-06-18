@@ -48,8 +48,8 @@ export {
 };
 export type { SuggestionProps, SuggestionValues } from './Suggestion'; // Export SuggestionValues for easier useState
 export type { SuggestionChipsProps } from './SuggestionChips';
-export type { SuggestionListProps } from './SuggestionList';
-export type { SuggestionInputProps } from './SuggestionInput';
-export type { SuggestionEmptyProps } from './SuggestionEmpty';
-export type { SuggestionOptionProps } from './SuggestionOption';
 export type { SuggestionClearProps } from './SuggestionClear';
+export type { SuggestionEmptyProps } from './SuggestionEmpty';
+export type { SuggestionInputProps } from './SuggestionInput';
+export type { SuggestionListProps } from './SuggestionList';
+export type { SuggestionOptionProps } from './SuggestionOption';

@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react-vite';
-import { Search } from '.';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
+import { Search } from '.';
 import * as SearchStories from './Search.stories';
 
 const meta: Meta = {

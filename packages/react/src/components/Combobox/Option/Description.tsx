@@ -1,6 +1,6 @@
 import cl from 'clsx/lite';
-import { forwardRef } from 'react';
 import type { HTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 
 type ComboboxOptionDescriptionProps = HTMLAttributes<HTMLSpanElement>;
 

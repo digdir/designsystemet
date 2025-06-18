@@ -1,4 +1,4 @@
-import { type ReactNode, forwardRef } from 'react';
+import { forwardRef, type ReactNode } from 'react';
 
 import type { MergeRight } from '../../utilities';
 import { Button, type ButtonProps } from '../Button';

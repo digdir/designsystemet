@@ -1,7 +1,7 @@
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
-import { forwardRef } from 'react';
 import type { HTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 

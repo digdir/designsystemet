@@ -14,6 +14,7 @@ import { getFileFromContentDir, getFilesFromContentDir } from '~/_utils/files';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import type { Route } from './+types/layout';
 import classes from './layout.module.css';
+
 export { ErrorBoundary } from '~/root';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
