@@ -6,6 +6,7 @@ import {
   Input,
   Link,
   Paragraph,
+  Switch,
 } from '@digdir/designsystemet-react';
 import {
   type CreateTokensOptions,
@@ -41,6 +42,9 @@ export const TokenModal = () => {
 
   const [themeName, setThemeName] = useState('theme');
   const [themeCSS, setThemeCSS] = useState('');
+  const [formatWin, setFormatWin] = useState(
+    navigator.userAgent.includes('Windows'),
+  );
 
   const setCliColors = (colorTheme: ColorTheme[]) => {
     if (!colorTheme.length) return '';
@@ -57,6 +61,7 @@ export const TokenModal = () => {
 
   const packageWithTag = `@digdir/designsystemet${isProduction ? '@latest' : '@next'}`;
   const buildSnippet = `npx ${packageWithTag} tokens build`;
+  const seperator = formatWin ? ' ^\n' : ' \\\n';
 
   const cliSnippet = [
     `npx ${packageWithTag} tokens create`,
@@ -67,7 +72,7 @@ export const TokenModal = () => {
     `--theme "${themeName}"`,
   ]
     .filter(Boolean)
-    .join(' \\\n');
+    .join(seperator);
 
   const theme: CreateTokensOptions = {
     name: themeName,
@@ -197,6 +202,15 @@ export const TokenModal = () => {
                 </Paragraph>
               </div>
               <div className={classes.snippet}>
+                <Switch
+                  style={{ marginInlineStart: 'auto', width: 'fit-content' }}
+                  position='end'
+                  label={t('themeModal.format')}
+                  checked={formatWin}
+                  onChange={(e) => {
+                    setFormatWin(e.currentTarget.checked);
+                  }}
+                />
                 <CodeBlock language='bash'>{cliSnippet}</CodeBlock>
               </div>
               <div
