@@ -17,9 +17,9 @@ export default {
       details: 'An unexpected error occurred.',
     },
     '404': {
-      title: '404',
+      title: 'Page not found',
       details:
-        'The page you are looking for does not exist. Please check the URL or go back to the homepage.',
+        "The page you are looking for can't be found. It may have been deleted or moved, or there may be an error in the link.",
     },
     generic: {
       title: 'Error',
