@@ -1,8 +1,8 @@
 import * as R from 'ramda';
 import { createTokens } from './create.js';
 import { generate$Themes } from './create/generators/$themes.js';
+import { createThemeCSSFiles } from './process/output/theme.js';
 import { type FormatOptions, processPlatform } from './process/platform.js';
-import { createThemeCSSFiles } from './process/theme.js';
 import type { OutputFile, Theme } from './types.js';
 
 export const formatTokens = async (options: Omit<FormatOptions, 'type'>) => {

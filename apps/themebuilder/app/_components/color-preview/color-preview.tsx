@@ -7,10 +7,9 @@ import {
   ToggleGroup,
 } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
-import { useState } from 'react';
+import { type HTMLAttributes, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { generateColorVars } from '~/_utils/generate-color-vars';
-import { type ColorTheme, useThemeStore } from '~/store';
+import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import listClasses from './card.module.css';
 import classes from './color-preview.module.css';
 
@@ -20,14 +19,14 @@ const DEFAULT_VIEW: ViewType = 'grid';
 
 export const ColorPreview = () => {
   const { t } = useTranslation();
-  const colors = useThemeStore((state) => state.colors);
+  const { colorScheme, colors } = useThemebuilder();
   const [view, setView] = useState<ViewType>(DEFAULT_VIEW);
 
-  const CardWrapper = ({ color }: CardProps) =>
+  const CardWrapper = ({ color, ...rest }: CardProps) =>
     view === 'list' ? (
-      <VerticalCard color={color} />
+      <VerticalCard color={color} {...rest} />
     ) : (
-      <HorizontalCard color={color} />
+      <HorizontalCard color={color} {...rest} />
     );
 
   const allColors = [...colors.main, ...colors.neutral, ...colors.support];
@@ -60,25 +59,31 @@ export const ColorPreview = () => {
           view === 'grid' ? classes.grid : classes.list,
         )}
       >
-        {allColors.map((color, index) => (
-          <CardWrapper key={`${color.name}-${index}`} color={color} />
-        ))}
+        {allColors.map((color, index) => {
+          return (
+            <CardWrapper
+              key={`${color.name}-${index}`}
+              color={color}
+              style={
+                color.variables[colorScheme as keyof typeof color.variables]
+              }
+            />
+          );
+        })}
       </div>
     </div>
   );
 };
 
 type CardProps = {
-  color: ColorTheme;
-};
+  color: ReturnType<typeof useThemebuilder>['colors']['main'][number];
+} & Omit<HTMLAttributes<HTMLDivElement>, 'color'>;
 
-const HorizontalCard = ({ color }: CardProps) => {
+const HorizontalCard = ({ color, ...rest }: CardProps) => {
   const { t } = useTranslation();
-  const colorScheme = useThemeStore((state) => state.colorScheme);
-  const colorStyles = generateColorVars(color.colors, colorScheme);
 
   return (
-    <div style={colorStyles} className={classes.card}>
+    <div className={classes.card} {...rest}>
       <Heading className={classes.title} data-size='2xs'>
         {color.name}
       </Heading>
@@ -107,13 +112,11 @@ const HorizontalCard = ({ color }: CardProps) => {
     </div>
   );
 };
-const VerticalCard = ({ color }: CardProps) => {
+const VerticalCard = ({ color, ...rest }: CardProps) => {
   const { t } = useTranslation();
-  const colorScheme = useThemeStore((state) => state.colorScheme);
-  const colorStyles = generateColorVars(color.colors, colorScheme);
 
   return (
-    <div style={colorStyles} className={cl(classes.card, listClasses.card)}>
+    <div className={cl(classes.card, listClasses.card)} {...rest}>
       <div className={listClasses.text}>
         <Heading className={listClasses.title} data-size='2xs'>
           {color.name}
@@ -128,9 +131,11 @@ const VerticalCard = ({ color }: CardProps) => {
           label={t('colorPreview.checkbox')}
           value='value'
         />
-        <Switch aria-labelledby='' position='start' data-size='sm'>
-          {t('colorPreview.switch')}
-        </Switch>
+        <Switch
+          position='start'
+          data-size='sm'
+          label={t('colorPreview.switch')}
+        />
       </div>
       <div className={classes.btnGroup}>
         <Button data-size='sm'>{t('colorPreview.primary')}</Button>
