@@ -66,10 +66,10 @@
     "fast-glob": "^3.3.3",
     "hsluv": "^1.0.1",
     "object-hash": "^3.0.0",
-    "postcss": "^8.5.3",
+    "postcss": "^8.5.4",
     "ramda": "^0.30.1",
     "style-dictionary": "^4.4.0",
-    "zod": "^3.25.30",
+    "zod": "^3.25.49",
     "zod-validation-error": "^3.4.1"
   },
   "devDependencies": {
@@ -79,7 +79,7 @@
     "@types/fs-extra": "^11.0.4",
     "@types/glob": "^8.1.0",
     "@types/jscodeshift": "^0.12.0",
-    "@types/node": "^22.15.21",
+    "@types/node": "^22.15.29",
     "@types/object-hash": "^3.0.6",
     "@types/ramda": "^0.30.2",
     "fs-extra": "^11.3.0",

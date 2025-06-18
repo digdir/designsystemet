@@ -42,7 +42,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@floating-ui/dom": "^1.7.0",
+    "@floating-ui/dom": "^1.7.1",
     "@floating-ui/react": "0.26.23",
     "@navikt/aksel-icons": "^7.22.0",
     "@radix-ui/react-slot": "^1.2.3",
@@ -63,7 +63,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
-    "@types/react": "^19.1.5",
+    "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
     "jsdom": "^26.1.0",
     "react": "^19.1.0",
