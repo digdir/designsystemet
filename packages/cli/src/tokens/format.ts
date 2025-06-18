@@ -3,6 +3,7 @@ import { generate$Themes } from './create/generators/$themes.js';
 import { createTokens } from './create.js';
 import { createThemeCSSFiles } from './process/output/theme.js';
 import { type FormatOptions, processPlatform } from './process/platform.js';
+import { processThemeObject } from './process/utils/getMultidimensionalThemes.js';
 import type { Theme } from './types.js';
 
 export const formatTokens = async (options: Omit<FormatOptions, 'type'>) => {
@@ -18,9 +19,11 @@ export const formatTheme = async (themeConfig: Theme) => {
   const { tokenSets } = await createTokens(themeConfig);
 
   const $themes = await generate$Themes(['dark', 'light'], [themeConfig.name], themeConfig.colors);
+  const processed$themes = $themes.map(processThemeObject);
+
   const processedBuilds = await formatTokens({
     tokenSets,
-    $themes,
+    processed$themes,
     verbose: false,
     preview: false,
   });

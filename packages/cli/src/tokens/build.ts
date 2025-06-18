@@ -6,6 +6,7 @@ import { mkdir, readFile, writeFile } from '../utils.js';
 import { createTailwindCSSFiles } from './process/output/tailwind.js';
 import { createThemeCSSFiles, defaultFileHeader } from './process/output/theme.js';
 import { type BuildOptions, processPlatform } from './process/platform.js';
+import { processThemeObject } from './process/utils/getMultidimensionalThemes.js';
 import type { DesignsystemetObject, OutputFile } from './types.js';
 
 async function write(files: OutputFile[], outDir: string, dry?: boolean) {
@@ -26,6 +27,7 @@ export const buildTokens = async (options: Omit<BuildOptions, 'type' | '$themes'
   const outDir = path.resolve(options.outDir);
   const tokensDir = path.resolve(options.tokensDir);
   const $themes = JSON.parse(await readFile(`${tokensDir}/$themes.json`)) as ThemeObject[];
+  const processed$themes = $themes.map(processThemeObject);
   let $designsystemet: DesignsystemetObject | undefined;
 
   try {
@@ -40,7 +42,7 @@ export const buildTokens = async (options: Omit<BuildOptions, 'type' | '$themes'
     outDir: outDir,
     tokensDir: tokensDir,
     type: 'build',
-    $themes,
+    processed$themes,
   });
 
   // https://github.com/digdir/designsystemet/issues/3434

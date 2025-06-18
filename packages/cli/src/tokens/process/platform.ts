@@ -1,11 +1,10 @@
-import type { ThemeObject } from '@tokens-studio/types';
 import chalk from 'chalk';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
 import type { OutputFile, TokenSet } from '../types.js';
 import { type BuildConfig, colorCategories, type ThemePermutation } from '../types.js';
 import { configs, getConfigsForThemeDimensions } from './configs.js';
-import { type ProcessedThemeObject, processThemeObject } from './utils/getMultidimensionalThemes.js';
+import { getCustomColors, type ProcessedThemeObject } from './utils/getMultidimensionalThemes.js';
 
 type SharedOptions = {
   /** Enable verbose output */
@@ -17,7 +16,7 @@ type SharedOptions = {
   /** Generate preview tokens */
   preview: boolean;
   /** Token Studio `$themes.json` content */
-  $themes: ThemeObject[];
+  processed$themes: ProcessedThemeObject[];
 };
 
 export type BuildOptions = {
@@ -64,17 +63,6 @@ export let buildOptions: ProcessOptions | undefined;
 
 const sd = new StyleDictionary();
 
-const getCustomColors = (processed$themes: ProcessedThemeObject[], colorGroups: (string | RegExp)[]) =>
-  processed$themes
-    .filter((x) => {
-      if (!x.group) {
-        return false;
-      }
-
-      return colorGroups.includes(x.group);
-    })
-    .map((x) => x.name);
-
 /*
  * Declarative configuration of the build output
  */
@@ -119,7 +107,7 @@ const buildConfigs = {
 } satisfies Record<string, BuildConfig>;
 
 export async function processPlatform(options: ProcessOptions): Promise<ProcessReturn> {
-  const { type, $themes } = options;
+  const { type } = options;
   const platform = 'css';
   const tokenSets = type === 'format' ? options.tokenSets : undefined;
   const tokensDir = type === 'build' ? options.tokensDir : undefined;
@@ -150,11 +138,11 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
   buildOptions = options;
   buildOptions.defaultColor = UNSAFE_DEFAULT_COLOR;
 
-  const processed$themes = $themes
-    .map(processThemeObject)
-    .filter((theme) => R.not(theme.group === 'size' && theme.name !== 'medium'));
+  const filteredProcessed$themes = processed$themes.filter((theme) =>
+    R.not(theme.group === 'size' && theme.name !== 'medium'),
+  );
 
-  const customColors = getCustomColors(processed$themes, colorGroups);
+  const customColors = getCustomColors(filteredProcessed$themes, colorGroups);
 
   if (!buildOptions.defaultColor) {
     const firstMainColor = R.head(customColors);
@@ -166,10 +154,15 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
   }
 
   const buildAndSdConfigs = R.map((buildConfig: BuildConfig) => {
-    const sdConfigs = getConfigsForThemeDimensions(buildConfig.getConfig, processed$themes, buildConfig.dimensions, {
-      tokensDir,
-      tokenSets,
-    });
+    const sdConfigs = getConfigsForThemeDimensions(
+      buildConfig.getConfig,
+      filteredProcessed$themes,
+      buildConfig.dimensions,
+      {
+        tokensDir,
+        tokenSets,
+      },
+    );
 
     // Disable build if all sdConfigs dimensions permutation are unknown
     const unknownConfigs = buildConfig.dimensions.map((dimension) =>
@@ -245,31 +238,5 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
     throw err;
   }
 
-  const colorsFileName = 'colors.d.ts';
-  const reactColorTypes = await createColorTypeDeclaration(customColors);
-
-  processedBuilds.types = [
-    {
-      ...initResult,
-      formatted: [{ output: reactColorTypes, destination: colorsFileName }] as unknown as OutputFile[],
-    },
-  ];
-
   return processedBuilds;
-}
-
-async function createColorTypeDeclaration(colors: string[]) {
-  console.log(`\n🍱 Building ${chalk.green('type declarations')}`);
-
-  const typeDeclaration = `
-import type {} from '@digdir/designsystemet-react/colors';
-
-declare module '@digdir/designsystemet-react/colors' {
-  export interface MainAndSupportColors {
-${colors.map((color) => `    ${color}: never;`).join('\n')}
-  }
-}
-`.trimStart();
-
-  return typeDeclaration;
 }
