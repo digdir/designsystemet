@@ -82,5 +82,5 @@ export type HexColor = `#${string}`;
 // type Cam02pColor = `jch(${Percent} ${number} ${Degrees})`;
 // type RgbaColor = `rgba(${number}, ${number}, ${number}, ${number})`;
 
-type Percent = `${number}%`;
-type Degrees = `${number}deg`;
+// type Percent = `${number}%`;
+// type Degrees = `${number}deg`;

@@ -18,7 +18,7 @@
   --_dsc-dialog-icon-top-right-margin: calc(var(--dsc-dialog-spacing) * -1 + var(--dsc-dialog-icon-spacing));
 
   /* Center with top+left+translate to support placement inside display: flex */
-  animation: ds-dialog-fade-in .2s forwards;
+  animation: ds-dialog-fade-in 0.2s forwards;
   background: var(--dsc-dialog-background);
   border-color: var(--dsc-dialog-border-color);
   border-radius: var(--ds-border-radius-lg);
@@ -48,7 +48,9 @@
   }
 
   &[open] {
-    animation: ds-dialog-slide-in 300ms ease-in-out, ds-dialog-fade-in 300ms ease-in-out;
+    animation:
+      ds-dialog-slide-in 300ms ease-in-out,
+      ds-dialog-fade-in 300ms ease-in-out;
   }
 
   &:has(> .ds-dialog__block) {
@@ -57,17 +59,19 @@
     padding: 0; /* Let dialog.Block own the padding */
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    /* biome-ignore lint/style/noDescendingSpecificity: linter is wrong? */
+    &[open],
+    /* biome-ignore lint/style/noDescendingSpecificity: linter is wrong? */
+      &::backdrop {
+      animation: none;
+    }
+  }
+
   @media (max-width: 40rem) {
     min-width: 100%;
     max-width: 100%;
     border-radius: 0;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    &[open],
-    &::backdrop {
-      animation: none;
-    }
   }
 
   /* Close button */

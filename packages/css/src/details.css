@@ -20,6 +20,11 @@
   border-color: var(--dsc-details-border-color);
   box-sizing: border-box;
 
+  & + & {
+    border-top: 0; /* Skip border-top when .ds-details is followed by .ds-details */
+    margin-top: 0; /* Prevent gap when places as child of .ds-card */
+  }
+
   &[data-variant='default'] {
     --dsc-details-background: var(--ds-color-surface-default);
     --dsc-details-summary-background--hover: var(--ds-color-surface-tinted);
@@ -75,15 +80,11 @@
     @media (forced-colors: active) {
       color: ButtonText;
 
+      /* biome-ignore lint/style/noDescendingSpecificity: linter is wrong? */
       &::before {
         background: ButtonText;
       }
     }
-  }
-
-  & + & {
-    border-top: 0; /* Skip border-top when .ds-details is followed by .ds-details */
-    margin-top: 0; /* Prevent gap when places as child of .ds-card */
   }
 
   & > :not(summary, u-summary) {
@@ -106,14 +107,15 @@
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    /* biome-ignore lint/correctness/noUnknownProperty: biome does not know about this property yet */
     interpolate-size: allow-keywords;
   }
 
   &::part(details-content) {
     block-size: 0;
     overflow-y: clip;
-    transition: content-visibility 400ms allow-discrete, height 400ms;
+    transition:
+      content-visibility 400ms allow-discrete,
+      height 400ms;
   }
 
   &[open]::part(details-content) {

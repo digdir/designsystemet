@@ -21,17 +21,17 @@
     display: flex;
   }
 
-  &:not([data-multiple]) data,
-  &[data-multiple='false'] data {
-    display: none; /* Hide data elements when not in multiple mode */
-  }
-
   & > data {
     margin-bottom: var(--ds-size-1);
 
     &:has(+ data) {
       margin-inline-end: var(--ds-size-1);
     }
+  }
+
+  &:not([data-multiple]) data,
+  &[data-multiple='false'] data {
+    display: none; /* Hide data elements when not in multiple mode */
   }
 
   & u-datalist {
@@ -92,6 +92,10 @@
     }
   }
 
+  &:has(del) input {
+    padding-inline-end: calc(var(--dsc-suggestion-clear-size) + var(--dsc-suggestion-clear-gap));
+  }
+
   &:has(input:placeholder-shown) input {
     padding-inline-end: 2.4em;
     background-image: linear-gradient(
@@ -102,7 +106,7 @@
         var(--_dsc-input-diagonal-4)
       ), linear-gradient(-45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4));
     background-position: calc(100% - 1.2em + var(--dsc-input-stroke-width)), calc(100% - 0.8em);
-    background-size: .4em .4em;
+    background-size: 0.4em 0.4em;
     background-repeat: no-repeat;
 
     :dir(rtl) & {
@@ -123,13 +127,6 @@
   /**
    * Clear button
    */
-  & del[hidden],
-  &:has(input:is(:read-only, :disabled, [aria-disabled='true'])) del {
-    visibility: hidden; /* We hide the clear button when input is empty */
-  }
-  &:has(del) input {
-    padding-inline-end: calc(var(--dsc-suggestion-clear-size) + var(--dsc-suggestion-clear-gap));
-  }
 
   & del {
     --dsc-button-size: var(--dsc-suggestion-clear-size);
@@ -143,6 +140,7 @@
     scale: 0.75;
     z-index: 2;
 
+    /* biome-ignore lint/style/noDescendingSpecificity: linter is wrong */
     &::before {
       content: '';
       height: var(--dsc-suggestion-clear-size);
@@ -150,5 +148,10 @@
       mask: var(--dsc-suggestion-clear-icon-url) center / contain no-repeat;
       background: currentcolor;
     }
+  }
+
+  & del[hidden],
+  &:has(input:is(:read-only, :disabled, [aria-disabled='true'])) del {
+    visibility: hidden; /* We hide the clear button when input is empty */
   }
 }
