@@ -60,10 +60,8 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    /* biome-ignore lint/style/noDescendingSpecificity: linter is wrong? */
     &[open],
-    /* biome-ignore lint/style/noDescendingSpecificity: linter is wrong? */
-      &::backdrop {
+    &::backdrop {
       animation: none;
     }
   }

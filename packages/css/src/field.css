@@ -101,7 +101,6 @@
   max-width: 100%;
   white-space: nowrap;
 
-  /* biome-ignore lint/style/noDescendingSpecificity: linter is wrong. Does not understand nesting */
   &:not([hidden]) {
     display: flex;
   }
@@ -118,7 +117,6 @@
     flex-shrink: 0;
     padding-inline: var(--dsc-field-affix-padding-inline);
 
-    /* biome-ignore lint/style/noDescendingSpecificity: linter is wrong. Does not understand nesting */
     &:not([hidden]) {
       display: flex;
     }

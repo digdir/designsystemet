@@ -116,7 +116,7 @@
       "linter": {
         "rules": {
           "style": {
-            "noDescendingSpecificity": "info"
+            "noDescendingSpecificity": "off"
           }
         }
       }
