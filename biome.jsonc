@@ -1,6 +1,6 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
-  "organizeImports": { "enabled": true },
+  "$schema": "https://biomejs.dev/schemas/2.0.0/schema.json",
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -13,18 +13,18 @@
   },
   "files": {
     "ignoreUnknown": true,
-    "ignore": [
-      ".vscode/**",
-      ".github/**",
-      ".changeset/**",
-      "design-tokens/**/*",
-      "apps/www/app/tokens/**",
-      "**/dist/**/*",
-      "packages/theme/**/*.css",
-      "./packages/css/src/index.css", // Prevent @charset being formatted with single quotes when quoteStyle="single" is enabled
-      "**/tsconfig.*.json", // https://github.com/biomejs/biome/issues/1151
-      "**/.react-router/**",
-      "**/package.json" // changeset wants the files to be formatted differently
+    "includes": [
+      "!**/.vscode/**",
+      "!**/.github/**",
+      "!**/.changeset/**",
+      "!**/design-tokens/**/*",
+      "!**/apps/www/app/tokens/**",
+      "!**/dist/**/*",
+      "!**/packages/theme/**/*.css",
+      "!packages/css/src/index.css", // Prevent @charset being formatted with single quotes when quoteStyle="single" is enabled
+      "!**/tsconfig.*.json", // https://github.com/biomejs/biome/issues/1151
+      "!**/.react-router/**",
+      "!**/package.json" // changeset wants the files to be formatted differently
     ]
   },
   "formatter": {
@@ -81,13 +81,18 @@
         "noUnusedTemplateLiteral": "off",
         "noParameterAssign": "off",
         "useNumberNamespace": "off",
-        "useSelfClosingElements": "off"
+        "useSelfClosingElements": "off",
+        "useAsConstAssertion": "error",
+        "useDefaultParameterLast": "error",
+        "useEnumInitializers": "error",
+        "useSingleVarDeclarator": "error",
+        "noInferrableTypes": "error",
+        "noUselessElse": "error"
       },
       "suspicious": {
         "noArrayIndexKey": "off"
       }
-    },
-    "ignore": []
+    }
   },
 
   "css": {
@@ -98,13 +103,13 @@
   },
 
   "overrides": [
-    { "include": ["**/*.css"], "formatter": { "lineWidth": 160 } },
+    { "includes": ["**/*.css"], "formatter": { "lineWidth": 160 } },
     {
-      "include": ["**/packages/cli/**/*.ts"],
+      "includes": ["**/packages/cli/**/*.ts"],
       "formatter": { "lineWidth": 120 }
     },
     {
-      "include": ["**/apps/_components/**", "**/apps/theme/**"],
+      "includes": ["**/apps/_components/**", "**/apps/theme/**"],
       "linter": {
         "rules": {
           "a11y": {
