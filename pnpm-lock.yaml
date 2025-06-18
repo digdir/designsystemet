@@ -586,7 +586,7 @@ importers:
         version: 9.0.10(@testing-library/dom@10.4.0)(prettier@3.5.3)
       tsup:
         specifier: ^8.5.0
-        version: 8.5.0(@swc/core@1.12.0)(postcss@8.5.4)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.8.0)
+        version: 8.5.0(@swc/core@1.12.1)(jiti@2.4.2)(postcss@8.5.5)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.7.1)
       tsx:
         specifier: 4.19.4
         version: 4.19.4
@@ -1511,7 +1511,6 @@ packages:
       '@types/react':
         optional: true
 
-<<<<<<< www/sandpack
   '@react-hook/intersection-observer@3.1.2':
     resolution: {integrity: sha512-mWU3BMkmmzyYMSuhO9wu3eJVP21N8TcgYm9bZnTrMwuM818bEk+0NRM3hP+c/TqA9Ln5C7qE53p1H0QMtzYdvQ==}
     peerDependencies:
@@ -1522,12 +1521,8 @@ packages:
     peerDependencies:
       react: '>=16.8'
 
-  '@react-router/dev@7.6.2':
-    resolution: {integrity: sha512-BuG83Ug2C/P+zMYErTz/KKuXoxbOefh3oR66r13XWG9txwooC9nt2QDt2u8yt7Eo/9BATnx+TmXnOHEWqMyB8w==}
-=======
   '@react-router/dev@7.6.1':
     resolution: {integrity: sha512-E4pzxViSQ1Z4EPUz1p47ldm+qIbzfFbJtbXvxi+KSidpftf/ttjr+DtLEiTEdIqZTYv8trBASRtV6C5hn9GZQQ==}
->>>>>>> main
     engines: {node: '>=20.0.0'}
     hasBin: true
     peerDependencies:
@@ -4687,16 +4682,11 @@ packages:
     peerDependencies:
       react: '>=16.8'
 
-<<<<<<< www/sandpack
   react-devtools-inline@4.4.0:
     resolution: {integrity: sha512-ES0GolSrKO8wsKbsEkVeiR/ZAaHQTY4zDh1UW8DImVmm8oaGLl3ijJDvSGe+qDRKPZdPRnDtWWnSvvrgxXdThQ==}
 
-  react-docgen-typescript@2.4.0:
-    resolution: {integrity: sha512-ZtAp5XTO5HRzQctjPU0ybY0RRCQO19X/8fxn3w7y2VVTUbGHDKULPTL4ky3vB05euSgG5NpALhEhDPvQ56wvXg==}
-=======
   react-docgen-typescript@2.2.2:
     resolution: {integrity: sha512-tvg2ZtOpOi6QDwsb3GZhOjDkkX0h8Z2gipvTg6OVMUyoYoURhEiRNePT8NZItTVCDh39JJHnLdfCOkzoLbFnTg==}
->>>>>>> main
     peerDependencies:
       typescript: '>= 4.3.x'
 
@@ -6626,13 +6616,9 @@ snapshots:
       globby: 11.1.0
       read-yaml-file: 1.1.0
 
-<<<<<<< www/sandpack
   '@marijn/find-cluster-break@1.0.2': {}
 
-  '@mdx-js/esbuild@3.1.0(acorn@8.15.0)(esbuild@0.25.5)':
-=======
   '@mdx-js/esbuild@3.1.0(acorn@8.14.1)(esbuild@0.25.3)':
->>>>>>> main
     dependencies:
       '@mdx-js/mdx': 3.1.0(acorn@8.14.1)
       '@types/unist': 3.0.3
@@ -6804,8 +6790,7 @@ snapshots:
       '@radix-ui/react-compose-refs': 1.1.2(@types/react@19.1.6)(react@19.1.0)
       react: 19.1.0
     optionalDependencies:
-<<<<<<< www/sandpack
-      '@types/react': 19.1.7
+      '@types/react': 19.1.6
 
   '@react-hook/intersection-observer@3.1.2(react@19.1.0)':
     dependencies:
@@ -6817,19 +6802,6 @@ snapshots:
     dependencies:
       react: 19.1.0
 
-  '@react-router/dev@7.6.2(@react-router/serve@7.6.2(react-router@7.6.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3))(@types/node@22.15.31)(less@4.3.0)(react-router@7.6.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(sass@1.89.2)(stylus@0.62.0)(tsx@4.19.4)(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.31)(less@4.3.0)(sass@1.89.2)(stylus@0.62.0)(tsx@4.19.4)(yaml@2.8.0))(yaml@2.8.0)':
-    dependencies:
-      '@babel/core': 7.27.4
-      '@babel/generator': 7.27.5
-      '@babel/parser': 7.27.5
-      '@babel/plugin-syntax-decorators': 7.27.1(@babel/core@7.27.4)
-      '@babel/plugin-syntax-jsx': 7.27.1(@babel/core@7.27.4)
-      '@babel/preset-typescript': 7.27.1(@babel/core@7.27.4)
-      '@babel/traverse': 7.27.4
-      '@babel/types': 7.27.6
-=======
-      '@types/react': 19.1.6
-
   '@react-router/dev@7.6.1(@react-router/serve@7.6.1(react-router@7.6.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3))(@types/node@22.15.29)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.30.1)(react-router@7.6.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.29)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.30.1)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.19.4)(yaml@2.7.1))(yaml@2.7.1)':
     dependencies:
       '@babel/core': 7.27.1
@@ -6840,7 +6812,6 @@ snapshots:
       '@babel/preset-typescript': 7.27.1(@babel/core@7.27.1)
       '@babel/traverse': 7.27.1
       '@babel/types': 7.27.1
->>>>>>> main
       '@npmcli/package-json': 4.0.1
       '@react-router/node': 7.6.1(react-router@7.6.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)
       arg: 5.0.2
@@ -10329,15 +10300,11 @@ snapshots:
     dependencies:
       react: 19.1.0
 
-<<<<<<< www/sandpack
   react-devtools-inline@4.4.0:
     dependencies:
       es6-symbol: 3.1.4
 
-  react-docgen-typescript@2.4.0(typescript@5.8.3):
-=======
   react-docgen-typescript@2.2.2(typescript@5.8.3):
->>>>>>> main
     dependencies:
       typescript: 5.8.3
 
