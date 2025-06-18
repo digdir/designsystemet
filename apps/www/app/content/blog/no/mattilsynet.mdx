@@ -12,7 +12,7 @@ imageCaption: "Mattilsynet har i løpet av kort tid etablert et eget internt des
 
 I Mattilsynet har vi lenge hatt høye ambisjoner for brukeropplevelse og tilgjengelighet. For å få dette til på en effektiv måte, har vi valgt å bygge videre på komponenter, tokens og prinsipper fra Designsystemet, i stedet for å starte helt fra bunnen.
 
-Ved å ha en lokal kopi av Designsystemets Figma-bibliotek, samt importere klasser fra [Designsystemets CSS-pakke](https://www.npmjs.com/package/@digdir/designsystemet-css) via [CSS modules composition](https://github.com/css-modules/css-modules/blob/master/docs/composition.md), har vi fått en solid grunnmur som fritt kan tilpasse etter Mattilsynets merkevare og behov.
+Ved å ha en lokal kopi av Designsystemets Figma-bibliotek, samt importerte klasser fra [Designsystemets CSS-pakke](https://www.npmjs.com/package/@digdir/designsystemet-css) via [CSS modules composition](https://github.com/css-modules/css-modules/blob/master/docs/composition.md), har vi fått en solid grunnmur som fritt kan tilpasses etter Mattilsynets merkevare og behov.
 Dette har spart oss for betydelig tid og ressurser, og ivaretar flere av kravene til universell utforming og skalerbarhet.
 
 <br/>
@@ -64,7 +64,7 @@ const MyButton = () => {
 
 ## Interaktvitet
 
-Selv om storparten av et designsystem påvirker kun utseende, trenger vi nogen ganger JavaScript for å håndtere interaktvitet.
+Selv om storparten av et designsystem kun påvirker utseende, trenger vi noen ganger JavaScript for å håndtere interaktvitet.
 I disse tilfellene benytter vi vanilla JavaScript, som lytter på `events` på `document`:
 
 ```js
@@ -81,7 +81,7 @@ document.addEventListener('toggle', (event) => {
 
 ## Mer enn teknologi
 
-Selv om mange forbinder Designsystemet med React-komponenter, er det mye mer enn det. For oss i  Mattilsynet er Figma-biblioteket, CSS-tokens og dokumentasjonen en uvurderlige ressurser.
+Selv om mange forbinder Designsystemet med React-komponenter, er det mye mer enn det. For oss i  Mattilsynet er Figma-biblioteket, CSS-tokens og dokumentasjonen uvurderlige ressurser.
 
 **Er du nysgjerrig på å se under panseret på Mattilsynets løsning?**
 <br />Besøk [design.mattilsynet.no](https://design.mattilsynet.no) eller [github.com/mattilsynet/design](https://github.com/mattilsynet/design)
