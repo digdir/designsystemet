@@ -19,6 +19,7 @@
   @media screen and (max-width: 600px) {
     flex-direction: column;
 
+    /* biome-ignore lint/style/noDescendingSpecificity: linter is wrong */
     & .image {
       max-width: 100%;
       min-height: 150px;

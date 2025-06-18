@@ -62,7 +62,8 @@ export default function Fundamentals() {
             <Grid>
               {value.map((item) => {
                 const Icon = item.icon
-                  ? Aksel[item.icon as keyof typeof Aksel]
+                  ? // biome-ignore lint/performance/noDynamicNamespaceImportAccess: this should be safe because we prerender the page
+                    Aksel[item.icon as keyof typeof Aksel]
                   : Aksel.LayersIcon;
                 return (
                   <NavigationCard

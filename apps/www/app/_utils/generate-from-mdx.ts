@@ -8,7 +8,7 @@ export const generateFromMdx = async (
 ): ReturnType<typeof bundleMDX> => {
   return await bundleMDX({
     source: fileContent,
-    mdxOptions(options, frontmatter) {
+    mdxOptions(options) {
       options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkGfm];
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),

@@ -90,7 +90,7 @@ const ComputedValue = ({ value }: { value: string }) => {
   }, [value]);
 
   const getRoundValue = (value: string) => {
-    const [value_, px] = value.split('px');
+    const [value_] = value.split('px');
     return Math.round(Number(value_)) + 'px';
   };
 
