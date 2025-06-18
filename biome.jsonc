@@ -38,6 +38,9 @@
     "enabled": true,
     "includes": ["**/*"],
     "rules": {
+      "nursery": {
+        "useUniqueElementIds": "off"
+      },
       "recommended": true,
       "a11y": {
         "noNoninteractiveElementToInteractiveRole": "off",
