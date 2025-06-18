@@ -1,9 +1,9 @@
 import * as R from 'ramda';
 
 import chalk from 'chalk';
-import pkg from '../../../package.json' with { type: 'json' };
-import type { OutputFile } from '../types.js';
-import type { ProcessReturn } from './platform.js';
+import pkg from '../../../../package.json' with { type: 'json' };
+import type { OutputFile } from '../../types.js';
+import type { ProcessReturn } from '../platform.js';
 
 export const defaultFileHeader = `build: v${pkg.version}`;
 

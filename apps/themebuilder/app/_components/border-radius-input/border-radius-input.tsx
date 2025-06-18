@@ -1,13 +1,33 @@
-import { Button, Heading, Textfield } from '@digdir/designsystemet-react';
+import {
+  Button,
+  Heading,
+  Textfield,
+  useDebounceCallback,
+} from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
+import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useThemeStore } from '~/store';
+import { useSearchParams } from 'react-router';
+import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from './border-radius-input.module.css';
 
 export const BorderRadiusInput = () => {
+  const inputRef = useRef<HTMLInputElement>(null);
   const { t } = useTranslation();
-  const setBorderRadius = useThemeStore((state) => state.setBaseBorderRadius);
-  const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
+  const [, setQuery] = useSearchParams();
+  const setBorderRadius = (value: number) => {
+    setQuery(
+      (prev) => {
+        prev.set('border-radius', value.toString());
+        return prev;
+      },
+      {
+        replace: true,
+        preventScrollReset: true,
+      },
+    );
+  };
+  const { baseBorderRadius } = useThemebuilder();
 
   const borderRadiusItems = [
     { name: t('borderRadius.none'), value: 0 },
@@ -16,6 +36,15 @@ export const BorderRadiusInput = () => {
     { name: t('borderRadius.large'), value: 12 },
     { name: t('borderRadius.full'), value: 9999 },
   ];
+
+  const debouncedCallback = useDebounceCallback((value: string) => {
+    const updatedValue = parseInt(value);
+    if (updatedValue >= 0) {
+      setBorderRadius(updatedValue);
+    } else {
+      setBorderRadius(0);
+    }
+  }, 1000);
 
   return (
     <div>
@@ -41,6 +70,10 @@ export const BorderRadiusInput = () => {
               className={cl(classes.box)}
               onClick={() => {
                 setBorderRadius(item.value);
+                /* update input with new value */
+                if (inputRef.current) {
+                  inputRef.current.value = item.value.toString();
+                }
               }}
               // biome-ignore lint/a11y/useSemanticElements: <explanation>
               role='radio'
@@ -61,15 +94,12 @@ export const BorderRadiusInput = () => {
       </Heading>
       <Textfield
         label={t('borderRadius.define-value')}
-        value={baseBorderRadius}
+        defaultValue={baseBorderRadius}
         onChange={(e) => {
-          const updatedValue = parseInt(e.target.value);
-          if (updatedValue >= 0) {
-            setBorderRadius(updatedValue);
-          } else {
-            setBorderRadius(0);
-          }
+          debouncedCallback(e.target.value);
         }}
+        type='number'
+        ref={inputRef}
       ></Textfield>
     </div>
   );

@@ -13,7 +13,7 @@ import {
 import cl from 'clsx/lite';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useThemeStore } from '~/store';
+import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from './color-contrasts.module.css';
 
 const initialTheme = generateColorSchemes('#0062BA');
@@ -99,8 +99,7 @@ const ColorContrastMapper = ({
   horizontal: string[];
 }) => {
   const { t } = useTranslation();
-  const colors = useThemeStore((state) => state.colors);
-  const colorScheme = useThemeStore((state) => state.colorScheme);
+  const { colorScheme, colors } = useThemebuilder();
   const [selectedColor, setSelectedColor] = useState('dominant');
 
   const getMappedTheme = () => {

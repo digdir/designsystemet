@@ -1,13 +1,11 @@
-import { getDatalistValue, isDatalistClick } from '@u-elements/u-datalist';
-import { forwardRef, useCallback, useContext, useEffect } from 'react';
-import { useMergeRefs } from '../../utilities/hooks';
+import { forwardRef, useContext, useEffect } from 'react';
 import { Input, type InputProps } from '../Input';
 import { SuggestionContext } from './Suggestion';
 
 export type SuggestionInputProps = InputProps;
 
 /**
- * Component that provides an input field for the suggestion list.
+ * Component that provides an input field for the Suggestion list.
  *
  * Place as a descendant of `Suggestion`
  *
@@ -20,35 +18,27 @@ export type SuggestionInputProps = InputProps;
 export const SuggestionInput = forwardRef<
   HTMLInputElement,
   SuggestionInputProps
->(function SuggestionList({ value, onInput, ...rest }, ref) {
-  const { listId, inputRef, handleFilter } = useContext(SuggestionContext);
-  const mergedRefs = useMergeRefs([inputRef, ref]);
-  const updateSelected = useCallback(() => {
-    const { list, value } = inputRef?.current || {};
-    for (const option of list?.options || []) {
-      option.selected = getDatalistValue(option) === value;
-    }
-  }, []);
+>(function SuggestionList({ value, onInput, onChange, ...rest }, ref) {
+  const { handleFilter } = useContext(SuggestionContext);
 
-  // Update also if controlled value
-  useEffect(() => {
-    updateSelected();
-    handleFilter?.(inputRef?.current);
-  }, [value]);
+  useEffect(handleFilter, [value]); // Filter if controlled value
+  if (onChange)
+    console.warn(
+      'SuggestionInput: Avoid using onChange, as Suggestion controls the Input. Use onValueChange on Suggest instead, or onInput if fetching API results',
+    );
+  if (value)
+    console.warn(
+      'SuggestionInput: Avoid using value, as Suggestion controls the Input. Use value on Suggest instead.',
+    );
 
   return (
     <Input
-      ref={mergedRefs}
-      list={listId}
-      value={value}
+      placeholder='' // We need an empty placeholder for the clear button to be able to show/hide
+      ref={ref}
       onInput={(event) => {
         onInput?.(event); // Should run first
-        updateSelected();
-
-        if (!isDatalistClick(event.nativeEvent as InputEvent))
-          handleFilter?.(inputRef?.current);
+        handleFilter?.(); // Filter if uncontrolled value
       }}
-      placeholder='' // We need an empty placeholder for the clear button to be able to show/hide
       {...rest}
     />
   );
