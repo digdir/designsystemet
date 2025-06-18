@@ -1,7 +1,6 @@
 import type { OptionHTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
-import '@u-elements/u-datalist';
 
 export type SuggestionOptionProps = OptionHTMLAttributes<HTMLOptionElement> &
   DefaultProps;

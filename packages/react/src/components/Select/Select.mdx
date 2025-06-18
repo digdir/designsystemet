@@ -45,14 +45,14 @@ Bruk `readOnly` når du vil vise en forhåndsvalgt verdi i en Select-komponent, 
 
 ## Retningslinjer
 
-Bruk `select` når det er 7 eller flere alternativer. For færre alternativer kan alternativknapper (`radio`) være enklere for brukerne. `Select` er spesielt brukervennlig på mobil og gir god tilgjengelighet, da det følger operativsystemets standarder. Det fungerer godt når brukeren skal velge ett alternativ fra en liste. Hvis brukeren trenger å velge flere alternativer eller filtrere listen, bør du vurdere å bruke `Suggestion` eller `MultiSuggestion`.
+Bruk `select` når det er 7 eller flere alternativer. For færre alternativer kan alternativknapper (`radio`) være enklere for brukerne. `Select` er spesielt brukervennlig på mobil og gir god tilgjengelighet, da det følger operativsystemets standarder. Det fungerer godt når brukeren skal velge ett alternativ fra en liste. Hvis brukeren trenger å velge flere alternativer eller filtrere listen, bør du vurdere å bruke `Suggestion`.
 
 **Passer til**
 * å velge ett alternativ
 
 **Passer ikke til**
 * å navigere mellom sider eller seksjoner i en applikasjon
-* å velge flere alternativer. Selv om HTML select støtter dette via `Multiple`-attributtet, er det lite brukervennlig, spesielt på mobil. Vi anbefaler `Checkbox` eller `MultiSuggestion` for en mer oversiktlig og tilgjengelig løsning
+* å velge flere alternativer. Selv om HTML select støtter dette via `Multiple`-attributtet, er det lite brukervennlig, spesielt på mobil. Vi anbefaler `Checkbox` eller `Suggestion` for en mer oversiktlig og tilgjengelig løsning
 
 **Merk**: [Gov.uk](https://design-system.service.gov.uk/components/select) anbefaler å unngå `select` i offentlige digitale tjenester. Deres brukertester viser at brukere ofte synes komponenten er vanskelig å bruke riktig. Det kan være bedre å stille flere spørsmål for å redusere antallet alternativer å velge mellom. Hvis du stiller de riktige spørsmålene først, kan alternativknapper (`radio`) være et bedre valg.
 
