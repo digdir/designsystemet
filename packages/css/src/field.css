@@ -25,10 +25,6 @@
     opacity: var(--ds-opacity-disabled);
   }
 
-  & label {
-    font-weight: var(--ds-font-weight-regular);
-  }
-
   &:has([aria-readonly='true'], [readonly]) label {
     @composes ds-readonly-icon from './base.css'; /* Activate lock icon for label when readonly */
   }
@@ -52,6 +48,9 @@
       grid-column: content; /* Only allow input in column 1 */
     }
 
+    & label {
+      font-weight: var(--ds-font-weight-regular);
+    }
     & label::before {
       content: none; /* Hide readonly icon on toggle inputs */
     }

@@ -110,7 +110,17 @@
     }
   },
   "overrides": [
-    { "includes": ["**/*.css"], "formatter": { "lineWidth": 160 } },
+    {
+      "includes": ["**/*.css"],
+      "formatter": { "lineWidth": 160 },
+      "linter": {
+        "rules": {
+          "style": {
+            "noDescendingSpecificity": "info"
+          }
+        }
+      }
+    },
     {
       "includes": ["**/packages/cli/**/*.ts"],
       "formatter": { "lineWidth": 120 }
