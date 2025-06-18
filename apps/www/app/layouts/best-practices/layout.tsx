@@ -116,9 +116,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   };
 };
 
-export default function Layout({
-  loaderData: { _cats },
-}: Route.ComponentProps) {
+export default function Layout() {
   const matches = useMatches();
   const { t } = useTranslation();
 
