@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-fix(Tab): fix conditional `useId()`
+fix(Tab): static `useId()` in rendering
