@@ -2,5 +2,5 @@
 "@digdir/designsystemet": patch
 ---
 
-Add option to generate Tailwind config.
-Use `--tailwind` when building theme to generate.
+Add experimental option to generate Tailwind config.
+Use `--experimental-tailwind` when building theme to generate.
