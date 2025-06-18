@@ -16,8 +16,9 @@ export default {
       details: 'En uventet feil oppstod.',
     },
     '404': {
-      title: '404',
-      details: 'Siden du leter etter finnes ikke.',
+      title: 'Beklager, vi fant ikke siden',
+      details:
+        'Denne siden kan være slettet eller flyttet, eller det er en feil i lenken.',
     },
     generic: {
       title: 'Feil',
