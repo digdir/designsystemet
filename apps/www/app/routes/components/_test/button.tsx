@@ -1,6 +1,7 @@
 import { Button } from '@digdir/designsystemet-react';
-import './index.css';
 
-export default function Sample() {
+const Code = () => {
   return <Button data-color='accent'>Button</Button>;
-}
+};
+
+export default Code;

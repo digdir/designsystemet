@@ -3,7 +3,7 @@ import { nightOwl } from '@codesandbox/sandpack-themes';
 import css from '@digdir/designsystemet-css?raw';
 import theme from '@digdir/designsystemet-theme?raw';
 import { ContentContainer } from '@internal/components';
-import designSystemRaw from '~/sandpack-build/index.cjs?raw';
+import designSystemRaw from '~/sandpack-build/index.js?raw';
 import code from './_test/button.tsx?raw';
 
 export default function Components() {
@@ -27,7 +27,19 @@ export default function Components() {
           },
         }}
         files={{
-          '/App.js': code,
+          '/App.js': {
+            code: `import Code from './component.js';
+import { Button } from '@digdir/designsystemet-react';
+import './index.css';
+
+export default function Sample() {
+  return <><Code /></>
+}`,
+            hidden: true,
+          },
+          '/component.js': {
+            code: code,
+          },
           '/node_modules/@digdir/designsystemet-react/package.json': {
             code: JSON.stringify({
               name: '@digdir/designsystemet-react',
@@ -44,11 +56,11 @@ export default function Components() {
             hidden: true,
           },
         }}
-        options={
-          {
-            /* readOnly: true, */
-          }
-        }
+        options={{
+          /* readOnly: true, */
+          visibleFiles: ['/component.js'],
+          activeFile: '/component.js',
+        }}
       />
     </ContentContainer>
   );
