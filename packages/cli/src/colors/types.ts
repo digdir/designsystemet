@@ -70,17 +70,17 @@ export type CssColor = HexColor;
  * Different color formats.
  */
 export type HexColor = `#${string}`;
-type RgbColor = `rgb(${number} ${number} ${number})`;
-type HslColor = `hsl(${Degrees} ${Percent} ${Percent})`;
-type HsvColor = `hsv(${Degrees} ${Percent} ${Percent})`;
-type HsluvColor = `hsluv(${number} ${number} ${number})`;
-type LabColor = `lab(${Percent} ${number} ${number})`;
-type LchColor = `lch(${Percent} ${number} ${Degrees})`;
-type OkLabColor = `oklab(${Percent} ${number} ${number})`;
-type OkLchColor = `oklch(${Percent} ${number} ${Degrees})`;
-type Cam02Color = `jab(${Percent} ${number} ${number})`;
-type Cam02pColor = `jch(${Percent} ${number} ${Degrees})`;
-type RgbaColor = `rgba(${number}, ${number}, ${number}, ${number})`;
+// type RgbColor = `rgb(${number} ${number} ${number})`;
+// type HslColor = `hsl(${Degrees} ${Percent} ${Percent})`;
+// type HsvColor = `hsv(${Degrees} ${Percent} ${Percent})`;
+// type HsluvColor = `hsluv(${number} ${number} ${number})`;
+// type LabColor = `lab(${Percent} ${number} ${number})`;
+// type LchColor = `lch(${Percent} ${number} ${Degrees})`;
+// type OkLabColor = `oklab(${Percent} ${number} ${number})`;
+// type OkLchColor = `oklch(${Percent} ${number} ${Degrees})`;
+// type Cam02Color = `jab(${Percent} ${number} ${number})`;
+// type Cam02pColor = `jch(${Percent} ${number} ${Degrees})`;
+// type RgbaColor = `rgba(${number}, ${number}, ${number}, ${number})`;
 
 type Percent = `${number}%`;
 type Degrees = `${number}deg`;

@@ -1,19 +1,17 @@
+import type { HexColor } from '@digdir/designsystemet/color';
 import { Dropdown, Heading, Table } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { useEffect, useState } from 'react';
 import type { TransformedToken as Token } from 'style-dictionary';
-
+import { capitalizeString } from '~/_utils/string-helpers';
 import * as tokensDark from '~/tokens/dark';
 import * as tokensLight from '~/tokens/light';
+import { TokenBorderRadius } from '../token-border-radius/token-border-radius';
 import { TokenColor } from '../token-color/token-color';
 import { TokenFontSize } from '../token-font-size/token-font-size';
 import { TokenShadow } from '../token-shadow/token-shadow';
 import { TokenSize } from '../token-size/token-size';
-
-import type { HexColor } from '@digdir/designsystemet/color';
-import { capitalizeString } from '~/_utils/string-helpers';
-import { TokenBorderRadius } from '../token-border-radius/token-border-radius';
 import classes from './token-list.module.css';
 
 export type TokenListProps = {
@@ -246,24 +244,19 @@ export const TokenList = ({
 
       {sectionedTokens.map(([section, tokens]) => {
         const tokens_ = tokens as [string, Token[]][];
-        const List = () => {
-          if (type === 'dimension') {
-            return <TokensTable tokens={tokens_} />;
-          }
-
-          return (
-            <TokenCards
-              type={type}
-              cols={cardColumns}
-              tokens={tokens_}
-              hideValue={hideValue}
-            />
-          );
-        };
         return (
           <div key={section as string} className={classes.section}>
             <h3>{capitalizeString(section as string)}</h3>
-            <List />
+            {type === 'dimension' ? (
+              <TokensTable tokens={tokens_} />
+            ) : (
+              <TokenCards
+                type={type}
+                cols={cardColumns}
+                tokens={tokens_}
+                hideValue={hideValue}
+              />
+            )}
           </div>
         );
       })}
