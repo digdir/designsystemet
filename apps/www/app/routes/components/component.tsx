@@ -1,12 +1,9 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { cwd } from 'node:process';
-
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
-
 import { ContentContainer } from '@internal/components';
 import { Fragment } from 'react/jsx-runtime';
-
 import { SandpackComponent } from '~/_components/sandpack/sandpack';
 import type { Route } from './+types/component';
 
@@ -90,19 +87,27 @@ export default function Components({
   console.log(stories);
 
   return (
-    <ContentContainer>
-      <Heading>{metadata.title}</Heading>
-      <Paragraph>{metadata.description}</Paragraph>
-      {stories.map((story) => {
-        return (
-          <Fragment key={story.name}>
-            <Heading level={2}>
-              {story.name.replace(/([A-Z])/g, ' $1').trim()}
-            </Heading>
-            <SandpackComponent story={story} />
-          </Fragment>
-        );
-      })}
-    </ContentContainer>
+    <div
+      style={{
+        paddingBlock: 'var(--ds-size-8)',
+      }}
+    >
+      <ContentContainer>
+        <Heading data-size='xl' level={1}>
+          {metadata.title}
+        </Heading>
+        <Paragraph>{metadata.description}</Paragraph>
+        {stories.map((story) => {
+          return (
+            <Fragment key={story.name}>
+              <Heading level={2}>
+                {story.name.replace(/([A-Z])/g, ' $1').trim()}
+              </Heading>
+              <SandpackComponent story={story} />
+            </Fragment>
+          );
+        })}
+      </ContentContainer>
+    </div>
   );
 }
