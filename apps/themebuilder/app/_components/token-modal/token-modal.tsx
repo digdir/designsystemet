@@ -20,7 +20,8 @@ import { useTranslation } from 'react-i18next';
 import type { Color, CssColor } from '@digdir/designsystemet/color';
 import { CodeBlock } from '@internal/components';
 import { useLoaderData } from 'react-router';
-import { type ColorTheme, useThemeStore } from '~/store';
+import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
+import type { ColorTheme } from '~/store';
 import classes from './token-modal.module.css';
 
 const colorCliOptions = cliOptions.theme.colors;
@@ -37,8 +38,7 @@ export const TokenModal = () => {
   const { isProduction } = useLoaderData();
 
   // Use separate selectors for better performance
-  const colors = useThemeStore((state) => state.colors);
-  const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
+  const { colors, baseBorderRadius } = useThemebuilder();
 
   const [themeName, setThemeName] = useState('theme');
   const [themeCSS, setThemeCSS] = useState('');

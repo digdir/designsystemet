@@ -1,8 +1,6 @@
 import cl from 'clsx/lite';
 import { useEffect, useState } from 'react';
 
-import { useThemeStore } from '~/store';
-
 import {
   Dialog,
   Heading,
@@ -18,8 +16,9 @@ import classes from './sidebar.module.css';
 
 export const Sidebar = () => {
   const { t } = useTranslation();
-  const activePage = useThemeStore((state) => state.activePage);
-  const setActivePage = useThemeStore((state) => state.setActivePage);
+  const [activePage, setActivePage] = useState<'colors' | 'dimensions'>(
+    'colors',
+  );
 
   const isMobile = useMediaQuery('(max-width: 768px)');
   const [modalOpen, setModalOpen] = useState(false);
@@ -119,7 +118,6 @@ export const Sidebar = () => {
                 <BorderRadiusInput />
               </Tabs.Panel>
             </Tabs>
-
             <div className={classes.modalBottom}>
               <TokenModal />
             </div>

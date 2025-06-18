@@ -52,7 +52,6 @@ export const OverviewComponents = ({
   borderRadius = 4,
 }: OverviewComponentsProps) => {
   const { t } = useTranslation();
-
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

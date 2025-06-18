@@ -12,7 +12,7 @@ import { Color as ColorPreview } from '../color/color';
 
 import { Fragment } from 'react';
 import { useColorModalContext } from '~/_utils/color-modal-context';
-import { useThemeStore } from '~/store';
+import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from './group.module.css';
 
 type GroupProps = {
@@ -30,7 +30,7 @@ export const Group = ({
   colorScale,
   namespace,
 }: GroupProps) => {
-  const colorScheme = useThemeStore((state) => state.colorScheme);
+  const { colorScheme } = useThemebuilder();
   const { openColorModal } = useColorModalContext();
 
   return (
