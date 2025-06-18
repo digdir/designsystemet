@@ -18,13 +18,13 @@ import {
   createColorsFromQuery,
 } from './_utils/use-themebuilder';
 
+const toQueryString = (obj: Record<string, string>) =>
+  Object.entries(obj)
+    .map(([key, value]) => `${key}:${value}`)
+    .join(QUERY_SEPARATOR);
 const THEME = themeConfig.themes.designsystemet.colors;
-const MAIN_COLORS = Object.keys(THEME.main)
-  .map((key) => `${key}:${THEME.main[key as keyof typeof THEME.main]}`)
-  .join(QUERY_SEPARATOR);
-const SUPPORT_COLORS = Object.keys(THEME.support)
-  .map((key) => `${key}:${THEME.support[key as keyof typeof THEME.support]}`)
-  .join(QUERY_SEPARATOR);
+const MAIN_COLORS = toQueryString(THEME.main);
+const SUPPORT_COLORS = toQueryString(THEME.support);
 const NEUTRAL_COLOR = THEME.neutral;
 
 export const loader = async ({
