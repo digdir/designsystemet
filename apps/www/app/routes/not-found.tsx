@@ -11,11 +11,10 @@ export const meta: Route.MetaFunction = ({ data }) => {
   };
   return [
     {
-      title: titles[lang] || titles['no'],
+      title: titles[lang ?? 'no'],
     },
   ];
 };
-
 
 export const loader = async ({ request }: Route.LoaderArgs) => {
   const url = new URL(request?.url || '');
@@ -49,9 +48,12 @@ export default function NotFound({ loaderData }: Route.ComponentProps) {
             marginTop: 'var(--ds-size-12)',
           }}
         >
-         Beklager, vi fant ikke siden
+          Beklager, vi fant ikke siden
         </Heading>
-        <Paragraph>Denne siden kan være slettet eller flyttet, eller det er en feil i lenken.</Paragraph>
+        <Paragraph>
+          Denne siden kan være slettet eller flyttet, eller det er en feil i
+          lenken.
+        </Paragraph>
 
         <Button
           asChild
@@ -80,7 +82,10 @@ export default function NotFound({ loaderData }: Route.ComponentProps) {
         >
           Page not found
         </Heading>
-        <Paragraph>The page you are looking for can't be found. It may have been deleted or moved, or there may be an error in the link.</Paragraph>
+        <Paragraph>
+          The page you are looking for can't be found. It may have been deleted
+          or moved, or there may be an error in the link.
+        </Paragraph>
         <Button
           asChild
           style={{
