@@ -61,7 +61,7 @@ export const buildTokens = async (options: Omit<BuildOptions, 'type' | '$themes'
   let cssFiles = createThemeCSSFiles({ processedBuilds, fileHeader });
 
   if (options.tailwind) {
-    const tailwindFiles = createTailwindCSSFiles(cssFiles, outDir);
+    const tailwindFiles = createTailwindCSSFiles(cssFiles);
     cssFiles = cssFiles.concat(tailwindFiles.filter(Boolean) as OutputFile[]);
   }
 

@@ -1,16 +1,11 @@
 import type { OutputFile } from '../../types.js';
 
-type GenerateTailwindOptions = {
-  outDir: string;
-  css: string;
-};
-
-export const createTailwindCSSFiles = (cssFiles: OutputFile[], outDir: string): OutputFile[] => {
+export const createTailwindCSSFiles = (cssFiles: OutputFile[]): OutputFile[] => {
   console.log('\n🍱 Creating Tailwind Config');
   return cssFiles
     .map((file) => {
       if (file.destination) {
-        const tailwindConfig = generateTailwind({ outDir, css: file.output });
+        const tailwindConfig = generateTailwind(file.output);
         const tailwindFile = {
           destination: file.destination.replace('.css', '.tailwind.css'),
           output: tailwindConfig,
@@ -22,7 +17,7 @@ export const createTailwindCSSFiles = (cssFiles: OutputFile[], outDir: string): 
     .filter((item) => item !== undefined);
 };
 
-const generateTailwind = ({ outDir, css }: GenerateTailwindOptions): string => {
+const generateTailwind = (css: string): string => {
   const tailwind: string[] = ['--font-sans: var(--ds-font-family)'];
   const tokens = Array.from(new Set(css.match(/--ds-[^:)]+/g)), (m) => m).sort((a, b) =>
     a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }),
