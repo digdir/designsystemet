@@ -9,11 +9,13 @@
     "types": "react-router typegen && tsc"
   },
   "dependencies": {
-    "@internal/components": "workspace:^",
+    "@codesandbox/sandpack-react": "^2.20.0",
+    "@codesandbox/sandpack-themes": "^2.0.21",
     "@digdir/designsystemet": "workspace:^",
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
+    "@internal/components": "workspace:^",
     "@navikt/aksel-icons": "^7.22.0",
     "@radix-ui/react-slot": "^1.2.3",
     "@react-router/node": "^7.6.1",

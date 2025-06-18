@@ -17,7 +17,7 @@ const config: Config = {
   buildDirectory: 'dist',
   prerender: async () => {
     const contentPaths = getContentPathsWithLanguages();
-    return ['/no/components', ...contentPaths];
+    return ['/no/components', '/no/components/button', ...contentPaths];
   },
   presets: [vercelPreset()],
   buildEnd: async ({ buildManifest: rrBuild }) => {
