@@ -65,7 +65,6 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
 export default function Components({
   loaderData: { stories, metadata },
 }: Route.ComponentProps) {
-  console.log(stories);
   return (
     <ContentContainer>
       <Heading>{metadata.title}</Heading>
