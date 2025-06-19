@@ -107,7 +107,7 @@ const buildConfigs = {
 } satisfies Record<string, BuildConfig>;
 
 export async function processPlatform(options: ProcessOptions): Promise<ProcessReturn> {
-  const { type } = options;
+  const { type, processed$themes } = options;
   const platform = 'css';
   const tokenSets = type === 'format' ? options.tokenSets : undefined;
   const tokensDir = type === 'build' ? options.tokensDir : undefined;
