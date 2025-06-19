@@ -1,5 +1,24 @@
 # Change Log
 
+## 1.1.0
+
+### Patch Changes
+
+- Update dependency `@commander-js/extra-typings` to v14 ([#3734](https://github.com/digdir/designsystemet/pull/3734))
+
+- Add experimental option to generate Tailwind config. ([#3710](https://github.com/digdir/designsystemet/pull/3710))
+  Use `--experimental-tailwind` when running `tokens build` to generate.
+
+- Round `--ds-size-*` CSS variables by 1px instead of by 0.0625rem. With the ([#3681](https://github.com/digdir/designsystemet/pull/3681))
+  default root font size (16px) the result is the same, but if the user has
+  changed the browser's font size we now avoid fractional pixels.
+
+- Remove unused dependencies ([#3737](https://github.com/digdir/designsystemet/pull/3737))
+
+- Updated non-major dependencies ([#3696](https://github.com/digdir/designsystemet/pull/3696))
+
+- Updated non-major dependencies ([#3732](https://github.com/digdir/designsystemet/pull/3732))
+
 ## 1.0.8
 
 ## 1.0.7
