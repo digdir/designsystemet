@@ -4,71 +4,71 @@
       "2xl": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{font-family}",
-          "fontWeight": "{font-weight.medium}",
-          "lineHeight": "{line-height.sm}",
-          "fontSize": "{font-size.10}",
-          "letterSpacing": "{letter-spacing.1}"
+          "fontFamily": "{typography.secondary.font-family}",
+          "fontWeight": "{typography.secondary.font-weight.medium}",
+          "lineHeight": "{typography.secondary.line-height.sm}",
+          "fontSize": "{typography.secondary.font-size.10}",
+          "letterSpacing": "{typography.secondary.letter-spacing.1}"
         }
       },
       "xl": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{font-family}",
-          "fontWeight": "{font-weight.medium}",
-          "lineHeight": "{line-height.sm}",
-          "fontSize": "{font-size.9}",
-          "letterSpacing": "{letter-spacing.1}"
+          "fontFamily": "{typography.secondary.font-family}",
+          "fontWeight": "{typography.secondary.font-weight.medium}",
+          "lineHeight": "{typography.secondary.line-height.sm}",
+          "fontSize": "{typography.secondary.font-size.9}",
+          "letterSpacing": "{typography.secondary.letter-spacing.1}"
         }
       },
       "lg": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{font-family}",
-          "fontWeight": "{font-weight.medium}",
-          "lineHeight": "{line-height.sm}",
-          "fontSize": "{font-size.8}",
-          "letterSpacing": "{letter-spacing.2}"
+          "fontFamily": "{typography.secondary.font-family}",
+          "fontWeight": "{typography.secondary.font-weight.medium}",
+          "lineHeight": "{typography.secondary.line-height.sm}",
+          "fontSize": "{typography.secondary.font-size.8}",
+          "letterSpacing": "{typography.secondary.letter-spacing.2}"
         }
       },
       "md": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{font-family}",
-          "fontWeight": "{font-weight.medium}",
-          "lineHeight": "{line-height.sm}",
-          "fontSize": "{font-size.7}",
-          "letterSpacing": "{letter-spacing.3}"
+          "fontFamily": "{typography.secondary.font-family}",
+          "fontWeight": "{typography.secondary.font-weight.medium}",
+          "lineHeight": "{typography.secondary.line-height.sm}",
+          "fontSize": "{typography.secondary.font-size.7}",
+          "letterSpacing": "{typography.secondary.letter-spacing.3}"
         }
       },
       "sm": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{font-family}",
-          "fontWeight": "{font-weight.medium}",
-          "lineHeight": "{line-height.sm}",
-          "fontSize": "{font-size.6}",
-          "letterSpacing": "{letter-spacing.5}"
+          "fontFamily": "{typography.secondary.font-family}",
+          "fontWeight": "{typography.secondary.font-weight.medium}",
+          "lineHeight": "{typography.secondary.line-height.sm}",
+          "fontSize": "{typography.secondary.font-size.6}",
+          "letterSpacing": "{typography.secondary.letter-spacing.5}"
         }
       },
       "xs": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{font-family}",
-          "fontWeight": "{font-weight.medium}",
-          "lineHeight": "{line-height.sm}",
-          "fontSize": "{font-size.5}",
-          "letterSpacing": "{letter-spacing.6}"
+          "fontFamily": "{typography.secondary.font-family}",
+          "fontWeight": "{typography.secondary.font-weight.medium}",
+          "lineHeight": "{typography.secondary.line-height.sm}",
+          "fontSize": "{typography.secondary.font-size.5}",
+          "letterSpacing": "{typography.secondary.letter-spacing.6}"
         }
       },
       "2xs": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{font-family}",
-          "fontWeight": "{font-weight.medium}",
-          "lineHeight": "{line-height.sm}",
-          "fontSize": "{font-size.4}",
-          "letterSpacing": "{letter-spacing.6}"
+          "fontFamily": "{typography.secondary.font-family}",
+          "fontWeight": "{typography.secondary.font-weight.medium}",
+          "lineHeight": "{typography.secondary.line-height.sm}",
+          "fontSize": "{typography.secondary.font-size.4}",
+          "letterSpacing": "{typography.secondary.letter-spacing.6}"
         }
       }
     },
@@ -76,102 +76,102 @@
       "xl": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{font-family}",
-          "fontWeight": "{font-weight.regular}",
-          "lineHeight": "{line-height.md}",
-          "fontSize": "{font-size.6}",
-          "letterSpacing": "{letter-spacing.8}"
+          "fontFamily": "{typography.primary.font-family}",
+          "fontWeight": "{typography.primary.font-weight.regular}",
+          "lineHeight": "{typography.primary.line-height.md}",
+          "fontSize": "{typography.primary.font-size.6}",
+          "letterSpacing": "{typography.primary.letter-spacing.8}"
         }
       },
       "lg": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{font-family}",
-          "fontWeight": "{font-weight.regular}",
-          "lineHeight": "{line-height.md}",
-          "fontSize": "{font-size.5}",
-          "letterSpacing": "{letter-spacing.8}"
+          "fontFamily": "{typography.primary.font-family}",
+          "fontWeight": "{typography.primary.font-weight.regular}",
+          "lineHeight": "{typography.primary.line-height.md}",
+          "fontSize": "{typography.primary.font-size.5}",
+          "letterSpacing": "{typography.primary.letter-spacing.8}"
         }
       },
       "md": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{font-family}",
-          "fontWeight": "{font-weight.regular}",
-          "lineHeight": "{line-height.md}",
-          "fontSize": "{font-size.4}",
-          "letterSpacing": "{letter-spacing.8}"
+          "fontFamily": "{typography.primary.font-family}",
+          "fontWeight": "{typography.primary.font-weight.regular}",
+          "lineHeight": "{typography.primary.line-height.md}",
+          "fontSize": "{typography.primary.font-size.4}",
+          "letterSpacing": "{typography.primary.letter-spacing.8}"
         }
       },
       "sm": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{font-family}",
-          "fontWeight": "{font-weight.regular}",
-          "lineHeight": "{line-height.md}",
-          "fontSize": "{font-size.3}",
-          "letterSpacing": "{letter-spacing.7}"
+          "fontFamily": "{typography.primary.font-family}",
+          "fontWeight": "{typography.primary.font-weight.regular}",
+          "lineHeight": "{typography.primary.line-height.md}",
+          "fontSize": "{typography.primary.font-size.3}",
+          "letterSpacing": "{typography.primary.letter-spacing.7}"
         }
       },
       "xs": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{font-family}",
-          "fontWeight": "{font-weight.regular}",
-          "lineHeight": "{line-height.md}",
-          "fontSize": "{font-size.2}",
-          "letterSpacing": "{letter-spacing.6}"
+          "fontFamily": "{typography.primary.font-family}",
+          "fontWeight": "{typography.primary.font-weight.regular}",
+          "lineHeight": "{typography.primary.line-height.md}",
+          "fontSize": "{typography.primary.font-size.2}",
+          "letterSpacing": "{typography.primary.letter-spacing.6}"
         }
       },
       "short": {
         "xl": {
           "$type": "typography",
           "$value": {
-            "fontFamily": "{font-family}",
-            "fontWeight": "{font-weight.regular}",
-            "lineHeight": "{line-height.sm}",
-            "fontSize": "{font-size.6}",
-            "letterSpacing": "{letter-spacing.8}"
+            "fontFamily": "{typography.primary.font-family}",
+            "fontWeight": "{typography.primary.font-weight.regular}",
+            "lineHeight": "{typography.primary.line-height.sm}",
+            "fontSize": "{typography.primary.font-size.6}",
+            "letterSpacing": "{typography.primary.letter-spacing.8}"
           }
         },
         "lg": {
           "$type": "typography",
           "$value": {
-            "fontFamily": "{font-family}",
-            "fontWeight": "{font-weight.regular}",
-            "lineHeight": "{line-height.sm}",
-            "fontSize": "{font-size.5}",
-            "letterSpacing": "{letter-spacing.8}"
+            "fontFamily": "{typography.primary.font-family}",
+            "fontWeight": "{typography.primary.font-weight.regular}",
+            "lineHeight": "{typography.primary.line-height.sm}",
+            "fontSize": "{typography.primary.font-size.5}",
+            "letterSpacing": "{typography.primary.letter-spacing.8}"
           }
         },
         "md": {
           "$type": "typography",
           "$value": {
-            "fontFamily": "{font-family}",
-            "fontWeight": "{font-weight.regular}",
-            "lineHeight": "{line-height.sm}",
-            "fontSize": "{font-size.4}",
-            "letterSpacing": "{letter-spacing.8}"
+            "fontFamily": "{typography.primary.font-family}",
+            "fontWeight": "{typography.primary.font-weight.regular}",
+            "lineHeight": "{typography.primary.line-height.sm}",
+            "fontSize": "{typography.primary.font-size.4}",
+            "letterSpacing": "{typography.primary.letter-spacing.8}"
           }
         },
         "sm": {
           "$type": "typography",
           "$value": {
-            "fontFamily": "{font-family}",
-            "fontWeight": "{font-weight.regular}",
-            "lineHeight": "{line-height.sm}",
-            "fontSize": "{font-size.3}",
-            "letterSpacing": "{letter-spacing.7}"
+            "fontFamily": "{typography.primary.font-family}",
+            "fontWeight": "{typography.primary.font-weight.regular}",
+            "lineHeight": "{typography.primary.line-height.sm}",
+            "fontSize": "{typography.primary.font-size.3}",
+            "letterSpacing": "{typography.primary.letter-spacing.7}"
           }
         },
         "xs": {
           "$type": "typography",
           "$value": {
-            "fontFamily": "{font-family}",
-            "fontWeight": "{font-weight.regular}",
-            "lineHeight": "{line-height.sm}",
-            "fontSize": "{font-size.2}",
-            "letterSpacing": "{letter-spacing.6}"
+            "fontFamily": "{typography.primary.font-family}",
+            "fontWeight": "{typography.primary.font-weight.regular}",
+            "lineHeight": "{typography.primary.line-height.sm}",
+            "fontSize": "{typography.primary.font-size.2}",
+            "letterSpacing": "{typography.primary.letter-spacing.6}"
           }
         }
       },
@@ -179,51 +179,51 @@
         "xl": {
           "$type": "typography",
           "$value": {
-            "fontFamily": "{font-family}",
-            "fontWeight": "{font-weight.regular}",
-            "lineHeight": "{line-height.lg}",
-            "fontSize": "{font-size.6}",
-            "letterSpacing": "{letter-spacing.8}"
+            "fontFamily": "{typography.primary.font-family}",
+            "fontWeight": "{typography.primary.font-weight.regular}",
+            "lineHeight": "{typography.primary.line-height.lg}",
+            "fontSize": "{typography.primary.font-size.6}",
+            "letterSpacing": "{typography.primary.letter-spacing.8}"
           }
         },
         "lg": {
           "$type": "typography",
           "$value": {
-            "fontFamily": "{font-family}",
-            "fontWeight": "{font-weight.regular}",
-            "lineHeight": "{line-height.lg}",
-            "fontSize": "{font-size.5}",
-            "letterSpacing": "{letter-spacing.8}"
+            "fontFamily": "{typography.primary.font-family}",
+            "fontWeight": "{typography.primary.font-weight.regular}",
+            "lineHeight": "{typography.primary.line-height.lg}",
+            "fontSize": "{typography.primary.font-size.5}",
+            "letterSpacing": "{typography.primary.letter-spacing.8}"
           }
         },
         "md": {
           "$type": "typography",
           "$value": {
-            "fontFamily": "{font-family}",
-            "fontWeight": "{font-weight.regular}",
-            "lineHeight": "{line-height.lg}",
-            "fontSize": "{font-size.4}",
-            "letterSpacing": "{letter-spacing.8}"
+            "fontFamily": "{typography.primary.font-family}",
+            "fontWeight": "{typography.primary.font-weight.regular}",
+            "lineHeight": "{typography.primary.line-height.lg}",
+            "fontSize": "{typography.primary.font-size.4}",
+            "letterSpacing": "{typography.primary.letter-spacing.8}"
           }
         },
         "sm": {
           "$type": "typography",
           "$value": {
-            "fontFamily": "{font-family}",
-            "fontWeight": "{font-weight.regular}",
-            "lineHeight": "{line-height.lg}",
-            "fontSize": "{font-size.3}",
-            "letterSpacing": "{letter-spacing.7}"
+            "fontFamily": "{typography.primary.font-family}",
+            "fontWeight": "{typography.primary.font-weight.regular}",
+            "lineHeight": "{typography.primary.line-height.lg}",
+            "fontSize": "{typography.primary.font-size.3}",
+            "letterSpacing": "{typography.primary.letter-spacing.7}"
           }
         },
         "xs": {
           "$type": "typography",
           "$value": {
-            "fontFamily": "{font-family}",
-            "fontWeight": "{font-weight.regular}",
-            "lineHeight": "{line-height.lg}",
-            "fontSize": "{font-size.2}",
-            "letterSpacing": "{letter-spacing.6}"
+            "fontFamily": "{typography.primary.font-family}",
+            "fontWeight": "{typography.primary.font-weight.regular}",
+            "lineHeight": "{typography.primary.line-height.lg}",
+            "fontSize": "{typography.primary.font-size.2}",
+            "letterSpacing": "{typography.primary.letter-spacing.6}"
           }
         }
       }
