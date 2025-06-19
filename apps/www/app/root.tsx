@@ -116,7 +116,7 @@ function Document({ children }: DocumentProps) {
     <html
       lang={
         i18n.language !== 'no' && i18n.language !== 'en'
-          ? undefined
+          ? 'no'
           : i18n.language
       }
       dir={i18n.dir(i18n.language)}

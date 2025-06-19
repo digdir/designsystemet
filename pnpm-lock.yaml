@@ -341,6 +341,9 @@ importers:
       '@navikt/aksel-icons':
         specifier: ^7.22.0
         version: 7.22.0
+      '@radix-ui/react-slot':
+        specifier: ^1.2.3
+        version: 1.2.3(@types/react@19.1.6)(react@19.1.0)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
