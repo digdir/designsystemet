@@ -39,7 +39,7 @@ export type FormatOptions = {
 
 type ProcessOptions = BuildOptions | FormatOptions;
 
-type ProcessedBuildConfigs<T> = Record<keyof typeof buildConfigs | 'types', T>;
+type ProcessedBuildConfigs<T> = Record<keyof typeof buildConfigs, T>;
 
 export type ProcessReturn = ProcessedBuildConfigs<BuildResult[]>;
 
@@ -194,7 +194,6 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
     'info-color': [initResult],
     semantic: [initResult],
     typography: [initResult],
-    types: [initResult],
   };
 
   try {

@@ -3,6 +3,7 @@ import type { ThemeObject } from '@tokens-studio/types';
 import chalk from 'chalk';
 import * as R from 'ramda';
 import { mkdir, readFile, writeFile } from '../utils.js';
+import { createTypeDeclarationFiles } from './process/output/declarations.js';
 import { createTailwindCSSFiles } from './process/output/tailwind.js';
 import { createThemeCSSFiles, defaultFileHeader } from './process/output/theme.js';
 import { type BuildOptions, processPlatform } from './process/platform.js';
@@ -58,22 +59,21 @@ export const buildTokens = async (options: Omit<BuildOptions, 'type' | 'processe
     $designsystemet ? `\ndesign-tokens: v${$designsystemet.version}` : '',
   ]);
 
-  let cssFiles = createThemeCSSFiles({ processedBuilds, fileHeader });
+  let files: OutputFile[] = [];
+
+  const declarationFiles = createTypeDeclarationFiles(processed$themes);
+  const cssFiles = createThemeCSSFiles({ processedBuilds, fileHeader });
+
+  files = [...declarationFiles, ...cssFiles];
 
   if (options.tailwind) {
     const tailwindFiles = createTailwindCSSFiles(cssFiles);
-    cssFiles = cssFiles.concat(tailwindFiles.filter(Boolean) as OutputFile[]);
+    files = files.concat(tailwindFiles.filter(Boolean) as OutputFile[]);
   }
 
   console.log(`\n💾 Writing build to ${chalk.green(outDir)}`);
 
-  // Write types (colors.d.ts) to the output directory
-  for (const { formatted } of processedBuilds.types) {
-    await write(formatted, outDir, options.dry);
-  }
-
-  // Write theme CSS files (<theme>.css) to the output directory
-  await write(cssFiles, outDir, options.dry);
+  await write(files, outDir, options.dry);
 
   console.log(`\n✅ Finished building tokens!`);
   return processedBuilds;
