@@ -55,7 +55,7 @@
     "verify": "pnpm test && pnpm update:template && pnpm update:theme-digdir && pnpm build:tokens"
   },
   "dependencies": {
-    "@commander-js/extra-typings": "^13.1.0",
+    "@commander-js/extra-typings": "^14.0.0",
     "@tokens-studio/sd-transforms": "1.3.0",
     "apca-w3": "^0.1.9",
     "chalk": "^5.4.1",
