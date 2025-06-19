@@ -11,7 +11,7 @@ type ColorThemeKeys = (typeof ALL_COLORS)[number];
 export type InferredColorTheme = Record<ColorThemeKeys, ThemeInfo>;
 
 export const getDummyTheme = () => {
-  return JSON.parse(JSON.stringify(dummyTheme));
+  return JSON.parse(JSON.stringify(dummyTheme)) as InferredColorTheme;
 };
 
 const generateColorSet = (): ColorInfo => {
