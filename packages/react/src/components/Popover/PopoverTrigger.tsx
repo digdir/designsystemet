@@ -1,5 +1,5 @@
 import { Slot } from '@radix-ui/react-slot';
-import { type HTMLAttributes, forwardRef, useContext, version } from 'react';
+import { forwardRef, type HTMLAttributes, useContext, version } from 'react';
 import type { DefaultProps } from '../../types';
 import { Button, type ButtonProps } from '../Button/Button';
 import { Context } from './PopoverTriggerContext';

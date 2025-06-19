@@ -3,7 +3,7 @@ import type {
   SeverityColors,
 } from '@digdir/designsystemet-react/colors';
 import cl from 'clsx/lite';
-import { type HTMLAttributes, forwardRef } from 'react';
+import { forwardRef, type HTMLAttributes } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 

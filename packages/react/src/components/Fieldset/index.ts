@@ -25,7 +25,7 @@ const Fieldset = Object.assign(FieldsetParent, {
 Fieldset.Legend.displayName = 'Fieldset.Legend';
 Fieldset.Description.displayName = 'Fieldset.Description';
 
-export type { FieldsetLegendProps } from './FieldsetLegend';
-export type { FieldsetDescriptionProps } from './FieldsetDescription';
 export type { FieldsetProps } from './Fieldset';
+export type { FieldsetDescriptionProps } from './FieldsetDescription';
+export type { FieldsetLegendProps } from './FieldsetLegend';
 export { Fieldset, FieldsetLegend, FieldsetDescription };

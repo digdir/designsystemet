@@ -3,7 +3,7 @@ import chalk from 'chalk';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
 import type { OutputFile, TokenSet } from '../types.js';
-import { type BuildConfig, type ThemePermutation, colorCategories } from '../types.js';
+import { type BuildConfig, colorCategories, type ThemePermutation } from '../types.js';
 import { configs, getConfigsForThemeDimensions } from './configs.js';
 import { type ProcessedThemeObject, processThemeObject } from './utils/getMultidimensionalThemes.js';
 
@@ -118,7 +118,7 @@ const buildConfigs = {
   // },
 } satisfies Record<string, BuildConfig>;
 
-export async function processPlatform<T>(options: ProcessOptions): Promise<ProcessReturn> {
+export async function processPlatform(options: ProcessOptions): Promise<ProcessReturn> {
   const { type, $themes } = options;
   const platform = 'css';
   const tokenSets = type === 'format' ? options.tokenSets : undefined;

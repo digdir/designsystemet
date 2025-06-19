@@ -56,7 +56,8 @@ export default function Fundamentals({
   loaderData: { code, frontmatter, lang },
 }: Route.ComponentProps) {
   const Icon = frontmatter.icon
-    ? Aksel[frontmatter.icon as keyof typeof Aksel]
+    ? // biome-ignore lint/performance/noDynamicNamespaceImportAccess: this should be safe because we prerender the page
+      Aksel[frontmatter.icon as keyof typeof Aksel]
     : Aksel.LayersIcon;
 
   return (

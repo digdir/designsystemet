@@ -30,6 +30,6 @@ Tabs.Panel.displayName = 'Tabs.Panel';
 
 export type { TabsProps } from './Tabs';
 export type { TabsListProps } from './TabsList';
-export type { TabsTabProps } from './TabsTab';
 export type { TabsPanelProps } from './TabsPanel';
+export type { TabsTabProps } from './TabsTab';
 export { Tabs, TabsTab, TabsList, TabsPanel };

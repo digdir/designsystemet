@@ -13,10 +13,7 @@ export type SuggestionChipsProps = MergeRight<
      *
      * @default ({ text }) => text
      */
-    render?: (args: {
-      label: string;
-      value: string;
-    }) => ReactNode;
+    render?: (args: { label: string; value: string }) => ReactNode;
   }
 >;
 

@@ -1,7 +1,7 @@
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
-import { createContext, forwardRef, useId, useState } from 'react';
 import type { HTMLAttributes } from 'react';
+import { createContext, forwardRef, useId, useState } from 'react';
 import type { DefaultProps } from '../../types';
 
 type ErrorSummaryContextType = {

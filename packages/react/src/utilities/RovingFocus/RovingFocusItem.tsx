@@ -2,8 +2,8 @@
 // Inspired by: https://github.com/radix-ui/primitives/tree/main/packages/react/roving-focus/src
 
 import { Slot } from '@radix-ui/react-slot';
-import { forwardRef } from 'react';
 import type { HTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 import { useMergeRefs } from '../hooks';
 
 import type { RovingFocusElement } from './RovingFocusRoot';

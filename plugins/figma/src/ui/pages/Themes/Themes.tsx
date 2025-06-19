@@ -1,8 +1,7 @@
+import { Heading } from '@digdir/designsystemet-react';
 import { Card } from '@ui/components/Card/Card';
 import { useEffect } from 'react';
 import { useThemeStore } from '../../../common/store';
-
-import { Heading } from '@digdir/designsystemet-react';
 import classes from './Themes.module.css';
 
 function Themes() {

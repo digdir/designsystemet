@@ -24,7 +24,11 @@
     linear-gradient(45deg, transparent 75%, var(--ds-color-neutral-background-subtle) 75%),
     linear-gradient(135deg, transparent 75%, var(--ds-color-neutral-background-subtle) 75%);
   background-size: 24px 24px; /* Must be a square */
-  background-position: 0 0, 12px 0, 12px -12px, 0px 12px; /* Must be half of one side of the square */
+  background-position:
+    0 0,
+    12px 0,
+    12px -12px,
+    0px 12px; /* Must be half of one side of the square */
 }
 
 .featured {

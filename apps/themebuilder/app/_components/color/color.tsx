@@ -1,9 +1,8 @@
+import type { ColorNames } from '@digdir/designsystemet';
 import { omit } from '@digdir/designsystemet-react';
 import { Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import { forwardRef } from 'react';
-
-import type { ColorNames } from '@digdir/designsystemet';
 import classes from './color.module.css';
 
 type ColorProps = {

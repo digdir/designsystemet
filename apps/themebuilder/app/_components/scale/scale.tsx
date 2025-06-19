@@ -1,5 +1,5 @@
-import { RovingFocusRoot } from '@digdir/designsystemet-react';
 import type { ThemeInfo } from '@digdir/designsystemet/color';
+import { RovingFocusRoot } from '@digdir/designsystemet-react';
 import { Group } from '../group/group';
 
 import classes from './scale.module.css';

@@ -1,5 +1,3 @@
-import type { Meta, StoryFn } from '@storybook/react-vite';
-
 import {
   ChatIcon,
   EnvelopeClosedFillIcon,
@@ -9,6 +7,7 @@ import {
   VideoFillIcon,
   VideoIcon,
 } from '@navikt/aksel-icons';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import { Button } from '../Button';
 import { Tabs } from '../Tabs';
 import { Badge } from './';
@@ -106,7 +105,7 @@ Floating.parameters = {
   },
 };
 
-export const CustomPlacement: Story = (args) => (
+export const CustomPlacement: Story = () => (
   <>
     <Badge.Position
       placement='top-right'
@@ -121,7 +120,7 @@ export const CustomPlacement: Story = (args) => (
   </>
 );
 
-export const Status: Story = (args) => (
+export const Status: Story = () => (
   <>
     <Badge.Position data-size='sm'>
       <Badge data-color='danger' />

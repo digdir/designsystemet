@@ -1,7 +1,6 @@
 import { render as renderRtl, screen } from '@testing-library/react';
-
-import { SkipLink } from './SkipLink';
 import type { SkipLinkProps } from './SkipLink';
+import { SkipLink } from './SkipLink';
 
 const href = '#main-content';
 const children = 'Hopp til hovedinnhold';

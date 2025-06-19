@@ -34,8 +34,8 @@ import {
   Textfield,
   ToggleGroup,
   Tooltip,
-  ValidationMessage,
   usePagination,
+  ValidationMessage,
 } from '../src';
 import type { Size } from '../src/types';
 

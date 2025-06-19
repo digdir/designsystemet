@@ -5,7 +5,7 @@ import { isbot } from 'isbot';
 import type { RenderToPipeableStreamOptions } from 'react-dom/server';
 import { renderToPipeableStream } from 'react-dom/server';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
-import type { AppLoadContext, EntryContext } from 'react-router';
+import type { EntryContext } from 'react-router';
 import { ServerRouter } from 'react-router';
 import en from '~/locales/en';
 import no from '~/locales/no';
@@ -19,7 +19,6 @@ export default async function handleRequest(
   responseStatusCode: number,
   responseHeaders: Headers,
   routerContext: EntryContext,
-  loadContext: AppLoadContext,
 ) {
   const instance = createInstance();
   const ns = i18next.getRouteNamespaces(routerContext);

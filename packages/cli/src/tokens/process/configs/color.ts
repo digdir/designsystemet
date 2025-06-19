@@ -5,7 +5,7 @@ import { isColorCategoryToken, isSemanticColorToken, typeEquals } from '../../ut
 import { formats } from '../formats/css.js';
 import { buildOptions } from '../platform.js';
 
-import { type GetStyleDictionaryConfig, dsTransformers, prefix } from './shared.js';
+import { dsTransformers, type GetStyleDictionaryConfig, prefix } from './shared.js';
 
 export const colorSchemeVariables: GetStyleDictionaryConfig = ({ 'color-scheme': colorScheme = 'light', theme }) => {
   const selector = `${colorScheme === 'light' ? ':root, ' : ''}[data-color-scheme="${colorScheme}"]`;

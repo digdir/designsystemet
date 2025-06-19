@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react-vite';
-import { Radio } from '.';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
+import { Radio } from '.';
 import * as RadioStories from './Radio.stories';
 
 const meta: Meta = {

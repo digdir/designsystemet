@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react-vite';
-import { Switch } from '.';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
+import { Switch } from '.';
 import * as SwitchStories from './Switch.stories';
 
 const meta: Meta = {

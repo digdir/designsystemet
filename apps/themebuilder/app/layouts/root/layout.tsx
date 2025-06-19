@@ -1,18 +1,18 @@
 import { SkipLink } from '@digdir/designsystemet-react';
-import { ContentContainer } from '@internal/components';
-import { Figma } from '@internal/components';
-import { Github } from '@internal/components';
-import { Slack } from '@internal/components';
 import {
+  ContentContainer,
+  Figma,
   Footer,
   type FooterLinkListItemProps,
+  Github,
   Header,
+  Slack,
 } from '@internal/components';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
-import { Outlet, isRouteErrorResponse, useRouteLoaderData } from 'react-router';
-import type { Route } from './+types/layout';
+import { isRouteErrorResponse, Outlet, useRouteLoaderData } from 'react-router';
 import type { Route as RootRoute } from './../../+types/root';
+import type { Route } from './+types/layout';
 
 const rightLinks: FooterLinkListItemProps[] = [
   {
