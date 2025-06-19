@@ -1,7 +1,7 @@
 import {
   type CssColor,
-  type ThemeInfo,
   generateColorSchemes,
+  type ThemeInfo,
 } from '@digdir/designsystemet';
 import { useLoaderData } from 'react-router';
 import {

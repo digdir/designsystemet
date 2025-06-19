@@ -61,7 +61,7 @@ ${round.join('\n')}
 
 export const semantic: Format = {
   name: 'ds/css-semantic',
-  format: async ({ dictionary, file, options, platform }) => {
+  format: async ({ dictionary, options, platform }) => {
     const { outputReferences, usesDtcg } = options;
     const { selector, layer } = platform;
 

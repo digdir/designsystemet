@@ -1,4 +1,3 @@
-import { Heading } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 
 import { Link } from 'react-router';
@@ -19,9 +18,9 @@ const ComponentCard = ({ title, image, url }: ComponentCardProps) => {
         className={classes.image}
         aria-hidden='true'
       />
-      <Heading data-size='xs' className={classes.title} level={2}>
+      <span data-size='lg' className={classes.title}>
         {title}
-      </Heading>
+      </span>
     </Link>
   );
 };

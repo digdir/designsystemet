@@ -3,8 +3,8 @@ import {
   Heading,
   Paragraph,
   Radio,
-  ValidationMessage,
   useRadioGroup,
+  ValidationMessage,
 } from '@digdir/designsystemet-react';
 import { useTranslation } from 'react-i18next';
 import classes from './settings-card.module.css';

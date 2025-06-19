@@ -1,12 +1,12 @@
 import {
+  data,
+  isRouteErrorResponse,
   Links,
   Meta,
   Outlet,
+  redirect,
   Scripts,
   ScrollRestoration,
-  data,
-  isRouteErrorResponse,
-  redirect,
 } from 'react-router';
 import type { Route } from './+types/root';
 import '@digdir/designsystemet-theme';
@@ -115,9 +115,7 @@ function Document({ children }: DocumentProps) {
   return (
     <html
       lang={
-        i18n.language !== 'no' && i18n.language !== 'en'
-          ? undefined
-          : i18n.language
+        i18n.language !== 'no' && i18n.language !== 'en' ? 'no' : i18n.language
       }
       dir={i18n.dir(i18n.language)}
       data-color-scheme='auto'

@@ -1,5 +1,5 @@
-import { useEffect, useId, useRef, useState } from 'react';
 import type { ChangeEvent, ReactNode } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import type { CheckboxProps } from '../../../components';
 
 export type UseCheckboxGroupProps = {

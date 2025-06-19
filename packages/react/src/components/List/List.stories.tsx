@@ -1,8 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react-vite';
-
-import { List } from '.';
 import { Heading } from '../Heading';
 import { Link } from '../Link';
+import { List } from '.';
 
 type Story = StoryFn<typeof List.Unordered>;
 
@@ -143,7 +142,7 @@ export const ListeMedLenker: Story = (args) => (
   </List.Unordered>
 );
 
-export const ListeMedOverskrift: Story = (args) => (
+export const ListeMedOverskrift: Story = () => (
   <>
     <div>
       <Heading

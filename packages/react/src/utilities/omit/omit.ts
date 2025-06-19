@@ -20,7 +20,7 @@ export const omit = (names: string[], obj: UnknownRecord): object => {
   }
 
   for (const prop in obj) {
-    if (!Object.prototype.hasOwnProperty.call(index, prop)) {
+    if (!Object.hasOwn(index, prop)) {
       result[prop] = obj[prop];
     }
   }

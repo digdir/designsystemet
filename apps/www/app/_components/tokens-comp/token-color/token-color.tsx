@@ -1,15 +1,15 @@
-import { getColorMetadataByNumber } from '@digdir/designsystemet/color';
-import cl from 'clsx/lite';
-import { useRef } from 'react';
-import type { TransformedToken } from 'style-dictionary';
-
 import type {
   Color,
   ColorNumber,
   HexColor,
 } from '@digdir/designsystemet/color';
+import { getColorMetadataByNumber } from '@digdir/designsystemet/color';
+import cl from 'clsx/lite';
+import { useRef } from 'react';
+import type { TransformedToken } from 'style-dictionary';
 
 import classes from './token-color.module.css';
+
 interface TokenColorProps {
   value: HexColor;
   token: TransformedToken;

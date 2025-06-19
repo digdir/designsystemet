@@ -1,7 +1,7 @@
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
-import { Fragment, forwardRef } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
+import { Fragment, forwardRef } from 'react';
 import type { DefaultProps, Size } from '../../types';
 import type { MergeRight } from '../../utilities';
 
@@ -85,7 +85,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
 /**
  * Gets initials using first and last word of a name.
  */
-function getInitials(name: string | undefined): string | null {
+function _getInitials(name: string | undefined): string | null {
   // Leaving this function for perhaps later use
   if (!name) return null;
   const initials = [];

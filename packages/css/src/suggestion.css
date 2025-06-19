@@ -102,7 +102,7 @@
         var(--_dsc-input-diagonal-4)
       ), linear-gradient(-45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4));
     background-position: calc(100% - 1.2em + var(--dsc-input-stroke-width)), calc(100% - 0.8em);
-    background-size: .4em .4em;
+    background-size: 0.4em 0.4em;
     background-repeat: no-repeat;
 
     :dir(rtl) & {

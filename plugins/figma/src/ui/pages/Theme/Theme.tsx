@@ -1,3 +1,9 @@
+import { getDummyTheme } from '@common/dummyTheme';
+import { cliOptions } from '@digdir/designsystemet';
+import {
+  type CssColor,
+  generateColorSchemes,
+} from '@digdir/designsystemet/color';
 import {
   Alert,
   Breadcrumbs,
@@ -10,13 +16,6 @@ import {
 } from '@digdir/designsystemet-react';
 import { useEffect, useId, useState } from 'react';
 import { Link as RouterLink, useParams } from 'react-router-dom';
-
-import { getDummyTheme } from '@common/dummyTheme';
-import { cliOptions } from '@digdir/designsystemet';
-import {
-  type CssColor,
-  generateColorSchemes,
-} from '@digdir/designsystemet/color';
 import { type ColorTheme, useThemeStore } from '../../../common/store';
 import { themeToFigmaFormat } from '../../../common/utils';
 import classes from './Theme.module.css';

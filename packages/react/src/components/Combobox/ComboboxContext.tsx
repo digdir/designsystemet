@@ -3,13 +3,11 @@ import type {
   UseListNavigationProps,
   useInteractions,
 } from '@floating-ui/react';
-import { createContext } from 'react';
 import type { Dispatch, Ref, RefObject, SetStateAction } from 'react';
-
-import type { useFormField } from './useFormField/useFormField';
-
+import { createContext } from 'react';
 import type { ComboboxProps } from './Combobox';
 import type { Option, useCombobox } from './useCombobox';
+import type { useFormField } from './useFormField/useFormField';
 
 export type ComboboxContextType = {
   multiple: NonNullable<ComboboxProps['multiple']>;

@@ -101,6 +101,7 @@ export default function Blog({ loaderData: { posts } }: Route.ComponentProps) {
             image={post.image.src}
             href={post.url}
             featured={index === 0}
+            level={2}
           />
         );
       })}

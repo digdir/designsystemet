@@ -8,7 +8,6 @@
     content: attr(data-count);
     background: var(--dsc-badge-background);
     border-radius: var(--ds-border-radius-full);
-    box-sizing: border-box;
     color: var(--dsc-badge-color);
     display: inline-grid;
     font-size: var(--ds-font-size-minus-1); /* Default to small when size is not defined */

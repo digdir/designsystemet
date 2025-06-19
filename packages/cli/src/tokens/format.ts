@@ -1,12 +1,12 @@
 import * as R from 'ramda';
-import { createTokens } from './create.js';
 import { generate$Themes } from './create/generators/$themes.js';
+import { createTokens } from './create.js';
 import { createThemeCSSFiles } from './process/output/theme.js';
 import { type FormatOptions, processPlatform } from './process/platform.js';
-import type { OutputFile, Theme } from './types.js';
+import type { Theme } from './types.js';
 
 export const formatTokens = async (options: Omit<FormatOptions, 'type'>) => {
-  const processedBuilds = await processPlatform<OutputFile>({
+  const processedBuilds = await processPlatform({
     type: 'format',
     ...options,
   });

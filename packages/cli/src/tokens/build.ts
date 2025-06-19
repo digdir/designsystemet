@@ -2,11 +2,9 @@ import path from 'node:path';
 import type { ThemeObject } from '@tokens-studio/types';
 import chalk from 'chalk';
 import * as R from 'ramda';
-import type { DesignToken } from 'style-dictionary/types';
 import { mkdir, readFile, writeFile } from '../utils.js';
-import { createThemeCSSFiles, defaultFileHeader } from './process/output/theme.js';
-
 import { createTailwindCSSFiles } from './process/output/tailwind.js';
+import { createThemeCSSFiles, defaultFileHeader } from './process/output/theme.js';
 import { type BuildOptions, processPlatform } from './process/platform.js';
 import type { DesignsystemetObject, OutputFile } from './types.js';
 
@@ -33,11 +31,11 @@ export const buildTokens = async (options: Omit<BuildOptions, 'type' | '$themes'
   try {
     const $designsystemetContent = await readFile(`${tokensDir}/$designsystemet.json`);
     $designsystemet = JSON.parse($designsystemetContent) as DesignsystemetObject;
-  } catch (error) {}
+  } catch (_error) {}
 
   console.log(`\n🏗️ Start building tokens in ${chalk.green(tokensDir)}`);
 
-  const processedBuilds = await processPlatform<DesignToken>({
+  const processedBuilds = await processPlatform({
     ...options,
     outDir: outDir,
     tokensDir: tokensDir,

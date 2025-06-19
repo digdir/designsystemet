@@ -1,10 +1,10 @@
 import cat1 from '@assets/img/cats/Cat 3.jpg';
-import type { Meta, StoryFn } from '@storybook/react-vite';
-
 import { BriefcaseIcon } from '@navikt/aksel-icons';
-import { Avatar, type AvatarProps } from '.';
-import { Badge, Dropdown } from '../';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import themeConfig from '../../../../theme/configs/designsystemet.config.json';
+import { Badge, Dropdown } from '../';
+import { Avatar, type AvatarProps } from '.';
+
 type Story = StoryFn<typeof Avatar>;
 
 const meta: Meta<typeof Avatar> = {

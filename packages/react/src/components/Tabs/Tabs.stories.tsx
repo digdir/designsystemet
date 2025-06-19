@@ -10,9 +10,8 @@ import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
 
 import { Button } from '../Button';
-
-import { Tabs } from '.';
 import { Tooltip } from '../Tooltip';
+import { Tabs } from '.';
 
 export default {
   title: 'Komponenter/Tabs',

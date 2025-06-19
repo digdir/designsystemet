@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useState } from 'react';
-import { act } from 'react';
+import { act, useState } from 'react';
 
 import {
   Button,
@@ -9,11 +8,11 @@ import {
   Fieldset,
   ValidationMessage,
 } from '../../../components';
-import { useCheckboxGroup } from './useCheckboxGroup';
 import type {
   GetCheckboxProps,
   UseCheckboxGroupProps,
 } from './useCheckboxGroup';
+import { useCheckboxGroup } from './useCheckboxGroup';
 
 const CheckboxGroup = (args: UseCheckboxGroupProps) => {
   const { getCheckboxProps, validationMessageProps } = useCheckboxGroup(args);

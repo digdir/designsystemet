@@ -11,6 +11,6 @@ List.Item.displayName = 'List.Item';
 List.Ordered.displayName = 'List.Ordered';
 List.Unordered.displayName = 'List.Unordered';
 
-export type { ListOrderedProps, ListUnorderedProps } from './Lists';
 export type { ListItemProps } from './ListItem';
+export type { ListOrderedProps, ListUnorderedProps } from './Lists';
 export { List, ListOrdered, ListUnordered, ListItem };

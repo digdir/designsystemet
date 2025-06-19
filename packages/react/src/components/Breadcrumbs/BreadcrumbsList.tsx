@@ -1,4 +1,4 @@
-import { type HTMLAttributes, forwardRef, useEffect, useRef } from 'react';
+import { forwardRef, type HTMLAttributes, useEffect, useRef } from 'react';
 import { useMergeRefs } from '../../utilities/hooks';
 
 export type BreadcrumbsListProps = HTMLAttributes<HTMLOListElement>;

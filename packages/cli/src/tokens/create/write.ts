@@ -39,7 +39,7 @@ export const writeTokens = async (options: WriteTokensOptions) => {
     if ($themes) {
       themeObjects = JSON.parse($themes) as ThemeObject[];
     }
-  } catch (error) {}
+  } catch (_error) {}
 
   const concatThemeNames = R.pipe(
     R.filter((obj: ThemeObject) => R.toLower(obj.group || '') === 'theme'),

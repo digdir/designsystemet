@@ -1,4 +1,4 @@
-import { type HTMLAttributes, forwardRef } from 'react';
+import { forwardRef, type HTMLAttributes } from 'react';
 import type { DefaultProps } from '../../types';
 
 import { Label } from '../Label/Label';

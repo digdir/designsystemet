@@ -1,6 +1,6 @@
 import cl from 'clsx/lite';
-import { forwardRef, useContext } from 'react';
 import type { HTMLAttributes } from 'react';
+import { forwardRef, useContext } from 'react';
 
 import { Label } from '../Label';
 
