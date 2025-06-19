@@ -45,7 +45,7 @@ const copyDirectory = (src, dest) => {
 
 const contentPath = join(dirname, 'app/content');
 const distPath = join(dirname, 'dist/content');
-const clientPath = join(dirname, 'dist/client/content');
+const clientPath = join(dirname, 'dist/client/app/content');
 
 try {
   if (!existsSync(distPath)) {

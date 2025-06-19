@@ -25,11 +25,8 @@ const NavigationCard = ({
   level = 3,
 }: NavigationCardProps) => {
   return (
-    <Card
-      className={cl(classes.card, classes[backgroundColor], 'ds-focus')}
-      asChild
-    >
-      <Link to={url}>
+    <Card className={cl(classes.card, classes[backgroundColor])} asChild>
+      <article>
         <div
           className={cl(classes.iconContainer, classes[color])}
           aria-hidden='true'
@@ -38,13 +35,13 @@ const NavigationCard = ({
         </div>
 
         <Heading level={level} data-size='sm' className={classes.title}>
-          {title}
+          <Link to={url}>{title}</Link>
         </Heading>
 
         <Paragraph data-size='sm' variant='long' className={classes.desc}>
           {description}
         </Paragraph>
-      </Link>
+      </article>
     </Card>
   );
 };

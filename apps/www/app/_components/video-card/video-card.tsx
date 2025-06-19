@@ -36,7 +36,7 @@ export const VideoCard = ({
         <Heading level={headingLevel}>{title}</Heading>
         <Paragraph>{description}</Paragraph>
         <RRLink to={videoUrl}>
-          <VideoplayerIcon />
+          <VideoplayerIcon aria-hidden />
           {t('video.watch-video')}
         </RRLink>
       </Card.Block>

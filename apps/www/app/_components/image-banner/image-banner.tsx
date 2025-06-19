@@ -55,7 +55,7 @@ const ImageBanner = ({
   ...rest
 }: ImageBannerProps) => {
   return (
-    <div
+    <section
       className={cl(classes[backgroundColor], classes.section, className)}
       {...rest}
     >
@@ -142,7 +142,7 @@ const ImageBanner = ({
           </div>
         )}
       </ContentContainer>
-    </div>
+    </section>
   );
 };
 

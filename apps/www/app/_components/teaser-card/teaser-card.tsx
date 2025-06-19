@@ -1,4 +1,4 @@
-import { Heading } from '@digdir/designsystemet-react';
+import { Card, Heading } from '@digdir/designsystemet-react';
 import { Link } from 'react-router';
 import classes from './teaser-card.module.css';
 
@@ -18,18 +18,20 @@ const TeaserCard = ({
   date,
 }: TeaserCardProps) => {
   return (
-    <Link className={classes.card} to={href}>
-      <Heading level={3} data-size='sm' className={classes.title}>
-        {title}
-      </Heading>
-      <p className={classes.desc}>{description}</p>
-      {author && date && (
-        <div className={classes.meta}>
-          <span>{author}</span>
-          <span>{date}</span>
-        </div>
-      )}
-    </Link>
+    <Card className={classes.card} asChild>
+      <article>
+        <Heading level={3} data-size='sm' className={classes.title}>
+          <Link to={href}>{title}</Link>
+        </Heading>
+        <p className={classes.desc}>{description}</p>
+        {author && date && (
+          <div className={classes.meta}>
+            <span>{author}</span>
+            <span>{date}</span>
+          </div>
+        )}
+      </article>
+    </Card>
   );
 };
 

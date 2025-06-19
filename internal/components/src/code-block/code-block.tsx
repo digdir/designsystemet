@@ -48,9 +48,11 @@ export const CodeBlock = ({
           data-color-scheme='dark'
           className={cl(classes.codeBlock, className)}
         >
-          <ReactCodeBlock.LineContent>
-            <ReactCodeBlock.Token />
-          </ReactCodeBlock.LineContent>
+          <code>
+            <ReactCodeBlock.LineContent>
+              <ReactCodeBlock.Token />
+            </ReactCodeBlock.LineContent>
+          </code>
         </ReactCodeBlock.Code>
         <div data-color-scheme='dark' className={classes.toolbar}>
           <CopyButton text={children} />
