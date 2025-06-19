@@ -42,9 +42,7 @@ jobs:
       - name: Test CLI (create tokens, then build the theme)
         run: pnpm test:cli
 
-      - name: Install Playwright
-        run: pnpx playwright install --with-deps chromium
-      - name: Run Storybook tests
+      - name: Install playwright and run Storybook tests
         run: pnpm test:storybook
       - name: Replace relative paths in test report
         uses: jacobtomlinson/gha-find-replace@v3
