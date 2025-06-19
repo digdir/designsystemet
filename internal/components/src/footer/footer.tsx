@@ -1,6 +1,6 @@
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
-import { type ReactNode, forwardRef } from 'react';
+import { forwardRef, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ContentContainer } from '../content-container/content-container';
 import { RRLink } from '../link';

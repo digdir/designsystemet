@@ -1,5 +1,5 @@
-import { useId, useState } from 'react';
 import type { ReactNode } from 'react';
+import { useId, useState } from 'react';
 import type { RadioProps } from '../../../components';
 
 export type UseRadioGroupProps = {

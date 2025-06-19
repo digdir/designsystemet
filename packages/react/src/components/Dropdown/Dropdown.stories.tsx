@@ -2,9 +2,8 @@ import { ChevronDownIcon, ChevronUpIcon, LinkIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
 import { expect, userEvent, within } from 'storybook/test';
-
-import { Dropdown } from '.';
 import { Button } from '../Button';
+import { Dropdown } from '.';
 
 export default {
   title: 'Komponenter/Dropdown',

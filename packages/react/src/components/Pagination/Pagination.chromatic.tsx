@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react-vite';
-import { Pagination } from '.';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
+import { Pagination } from '.';
 import * as PaginationStories from './Pagination.stories';
 
 const meta: Meta = {

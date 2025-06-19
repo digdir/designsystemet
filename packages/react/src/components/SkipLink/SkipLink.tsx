@@ -1,5 +1,5 @@
 import cl from 'clsx/lite';
-import { type AnchorHTMLAttributes, type ReactNode, forwardRef } from 'react';
+import { type AnchorHTMLAttributes, forwardRef, type ReactNode } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 

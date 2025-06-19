@@ -26,8 +26,8 @@ Dialog.Block.displayName = 'Dialog.Block';
 Dialog.TriggerContext.displayName = 'Dialog.TriggerContext';
 Dialog.Trigger.displayName = 'Dialog.Trigger';
 
-export type { DialogBlockProps } from './DialogBlock';
-export type { DialogTriggerContextProps } from './DialogTriggerContext';
 export type { DialogProps } from './Dialog';
+export type { DialogBlockProps } from './DialogBlock';
 export type { DialogTriggerProps } from './DialogTrigger';
+export type { DialogTriggerContextProps } from './DialogTriggerContext';
 export { Dialog, DialogBlock, DialogTriggerContext, DialogTrigger };

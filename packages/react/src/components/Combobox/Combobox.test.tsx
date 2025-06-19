@@ -2,10 +2,8 @@ import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import type { FormEvent } from 'react';
 import { act } from 'react';
-
-import type { ComboboxProps } from './Combobox';
-
 import { Combobox } from '.';
+import type { ComboboxProps } from './Combobox';
 
 const PLACES = [
   {

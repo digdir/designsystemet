@@ -4,7 +4,7 @@ import { outputReferencesFilter } from 'style-dictionary/utils';
 import { isDigit, pathStartsWithOneOf, typeEquals } from '../../utils.js';
 import { jsTokens } from '../formats/js-tokens.js';
 
-import { type GetStyleDictionaryConfig, basePxFontSize, dsTransformers, prefix } from './shared.js';
+import { basePxFontSize, dsTransformers, type GetStyleDictionaryConfig, prefix } from './shared.js';
 
 export const typescriptTokens: GetStyleDictionaryConfig = ({ 'color-scheme': colorScheme, theme }) => {
   return {

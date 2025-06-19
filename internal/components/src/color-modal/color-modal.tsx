@@ -1,18 +1,17 @@
+import type { Color } from '@digdir/designsystemet/color';
+import {
+  convertColor,
+  getCssVariable,
+  getLuminanceFromColor,
+} from '@digdir/designsystemet/color';
 import {
   Dialog,
   Heading,
   Paragraph,
   Select,
 } from '@digdir/designsystemet-react';
-import { useState } from 'react';
-
-import type { Color } from '@digdir/designsystemet/color';
-import {
-  convertColor,
-  getLuminanceFromColor,
-} from '@digdir/designsystemet/color';
-import { getCssVariable } from '@digdir/designsystemet/color';
 import type { ChangeEvent } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ClipboardButton } from '../clipboard-button/clipboard-button';
 import classes from './color-modal.module.css';

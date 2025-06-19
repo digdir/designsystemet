@@ -63,6 +63,16 @@
         font-size: 1.25em; /* Auto scale icon based on font-size */
       }
 
+      &::after {
+        content: '';
+        display: block;
+        height: 0.15em; /* Scale with font */
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+
       &[aria-selected='true'] {
         color: var(--dsc-tabs-tab-color--selected);
 
@@ -84,16 +94,6 @@
       /* We set z-index to make sure the active line does not bleed over the focus indicator */
       &:focus-visible {
         z-index: 2;
-      }
-
-      &::after {
-        content: '';
-        display: block;
-        height: .15em; /* Scale with font */
-        width: 100%;
-        position: absolute;
-        bottom: 0;
-        left: 0;
       }
 
       @media (hover: hover) and (pointer: fine) {

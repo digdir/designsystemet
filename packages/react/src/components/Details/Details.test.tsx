@@ -64,9 +64,7 @@ describe('Details Accessibility', () => {
   });
 
   test('should have correct aria-expanded when controlled', () => {
-    const { rerender, container } = render(
-      <TestComponent open onToggle={VOID} />,
-    );
+    const { rerender } = render(<TestComponent open onToggle={VOID} />);
 
     const detailsExpandButton = screen.getByRole('button');
     expect(detailsExpandButton).toHaveAttribute('aria-expanded', 'true');

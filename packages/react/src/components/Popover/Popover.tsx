@@ -2,6 +2,7 @@ import type {
   Color,
   SeverityColors,
 } from '@digdir/designsystemet-react/colors';
+import type { MiddlewareState, Placement } from '@floating-ui/dom';
 import {
   autoUpdate,
   computePosition,
@@ -9,12 +10,10 @@ import {
   offset,
   shift,
 } from '@floating-ui/dom';
-import type { MiddlewareState, Placement } from '@floating-ui/dom';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
-import { forwardRef, useContext, useRef, useState } from 'react';
 import type { HTMLAttributes } from 'react';
-import { useEffect } from 'react';
+import { forwardRef, useContext, useEffect, useRef, useState } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { useMergeRefs } from '../../utilities/hooks';
@@ -29,6 +28,7 @@ declare global {
     }
   }
   namespace React {
+    // biome-ignore lint/correctness/noUnusedVariables: we overwrite React's HTMLAttributes to add custom attributes
     interface HTMLAttributes<T> {
       popovertarget?: string;
     }

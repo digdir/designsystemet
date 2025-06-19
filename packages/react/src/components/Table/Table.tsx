@@ -1,6 +1,6 @@
 import cl from 'clsx/lite';
-import { forwardRef } from 'react';
 import type { TableHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 
 export type TableProps = {

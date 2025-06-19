@@ -1,7 +1,6 @@
 import { Link } from '@digdir/designsystemet-react';
-import type { HTMLAttributes } from 'react';
-
 import cl from 'clsx/lite';
+import type { HTMLAttributes } from 'react';
 import { useLocation } from 'react-router';
 import { Github } from '../logos/github';
 import classes from './edit-page-on-github.module.css';

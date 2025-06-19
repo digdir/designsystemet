@@ -1,12 +1,12 @@
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { type ChangeEvent, useState } from 'react';
 import { userEvent, within } from 'storybook/test';
+import { useDebounceCallback } from '../../utilities';
+import { Button, Divider, Field, Label, Paragraph, Spinner } from '..';
 import {
   EXPERIMENTAL_Suggestion as Suggestion,
   type SuggestionValues,
 } from '.';
-import { Button, Divider, Field, Label, Paragraph, Spinner } from '..';
-import { useDebounceCallback } from '../../utilities';
 
 export default {
   title: 'Komponenter/Suggestion',

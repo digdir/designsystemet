@@ -20,7 +20,8 @@ export type TabsTabProps = {
 export const TabsTab = forwardRef<HTMLButtonElement, TabsTabProps>(
   function TabsTab({ value, id, ...rest }, ref) {
     const tabs = useContext(Context);
-    const buttonId = id ?? `tab-${useId()}`;
+    const generatedId = useId();
+    const buttonId = id ?? `tab-${generatedId}`;
 
     return (
       <RovingFocusItem value={value} {...rest} asChild>

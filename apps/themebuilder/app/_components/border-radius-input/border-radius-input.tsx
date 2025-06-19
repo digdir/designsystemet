@@ -75,7 +75,7 @@ export const BorderRadiusInput = () => {
                   inputRef.current.value = item.value.toString();
                 }
               }}
-              // biome-ignore lint/a11y/useSemanticElements: <explanation>
+              // biome-ignore lint/a11y/useSemanticElements: explaination needed
               role='radio'
               aria-checked={baseBorderRadius === item.value}
               aria-current={baseBorderRadius === item.value}

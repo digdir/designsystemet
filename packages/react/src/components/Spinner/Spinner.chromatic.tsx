@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react-vite';
-import { Spinner } from '.';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
+import { Spinner } from '.';
 import * as SpinnerStories from './Spinner.stories';
 
 const meta: Meta = {

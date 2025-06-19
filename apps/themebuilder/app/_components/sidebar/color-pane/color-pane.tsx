@@ -6,11 +6,10 @@ import {
   Textfield,
 } from '@digdir/designsystemet-react';
 import { ChevronLeftIcon, TrashIcon } from '@navikt/aksel-icons';
-import { ColorPicker, type IColor } from 'react-color-palette';
-import { useTranslation } from 'react-i18next';
-
 import cl from 'clsx/lite';
 import { useState } from 'react';
+import { ColorPicker, type IColor } from 'react-color-palette';
+import { useTranslation } from 'react-i18next';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from './color-pane.module.css';
 

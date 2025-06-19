@@ -1,8 +1,8 @@
 import {
-  type MiddlewareState,
   autoUpdate,
   computePosition,
   flip,
+  type MiddlewareState,
   offset,
   shift,
 } from '@floating-ui/dom';

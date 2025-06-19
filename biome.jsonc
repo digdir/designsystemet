@@ -1,39 +1,79 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
-  "organizeImports": { "enabled": true },
+  "$schema": "https://biomejs.dev/schemas/2.0.0/schema.json",
+  "assist": {
+    "actions": { "source": { "organizeImports": "on" } }
+  },
   "vcs": {
     "enabled": true,
     "clientKind": "git",
     "useIgnoreFile": true
   },
-  "json": {
-    "formatter": {
-      "enabled": true
-    }
-  },
   "files": {
     "ignoreUnknown": true,
-    "ignore": [
-      ".vscode/**",
-      ".github/**",
-      ".changeset/**",
-      "design-tokens/**/*",
-      "apps/www/app/tokens/**",
-      "**/dist/**/*",
-      "packages/theme/**/*.css",
-      "./packages/css/src/index.css", // Prevent @charset being formatted with single quotes when quoteStyle="single" is enabled
-      "**/tsconfig.*.json", // https://github.com/biomejs/biome/issues/1151
-      "**/.react-router/**",
-      "**/package.json" // changeset wants the files to be formatted differently
+    "includes": [
+      "**/*",
+      "!**/.vscode/**",
+      "!**/.github/**",
+      "!**/.changeset/**",
+      "!**/design-tokens/**/*",
+      "!**/apps/www/app/tokens/**",
+      "!**/dist/**/*",
+      "!**/packages/theme/**/*.css",
+      "!**/tsconfig.*.json", // https://github.com/biomejs/biome/issues/1151
+      "!**/.react-router/**",
+      "!**/package.json", // changeset wants the files to be formatted differently
+      "!**/colors.d.ts" // Ignore empty import for now
     ]
   },
   "formatter": {
     "enabled": true,
+    "includes": ["**/*"],
     "formatWithErrors": true,
     "indentStyle": "space",
     "indentWidth": 2,
     "lineEnding": "lf",
     "lineWidth": 80
+  },
+  "linter": {
+    "enabled": true,
+    "includes": ["**/*"],
+    "rules": {
+      "nursery": {
+        "useUniqueElementIds": "off"
+      },
+      "recommended": true,
+      "a11y": {
+        "noNoninteractiveElementToInteractiveRole": "off",
+        "useValidAnchor": "off",
+        "useButtonType": "off",
+        "useValidAriaRole": "off",
+        "useValidAriaValues": "off",
+        "useMediaCaption": "off",
+        "useKeyWithClickEvents": "off",
+        "noNoninteractiveTabindex": "off",
+        "useAriaPropsForRole": "off"
+      },
+      "correctness": {
+        "useExhaustiveDependencies": "off",
+        "noUnusedImports": "error"
+      },
+      "style": {
+        "useTemplate": "off",
+        "noUnusedTemplateLiteral": "off",
+        "noParameterAssign": "off",
+        "useNumberNamespace": "off",
+        "useSelfClosingElements": "off",
+        "useAsConstAssertion": "error",
+        "useDefaultParameterLast": "error",
+        "useEnumInitializers": "error",
+        "useSingleVarDeclarator": "error",
+        "noInferrableTypes": "error",
+        "noUselessElse": "error"
+      },
+      "suspicious": {
+        "noArrayIndexKey": "off"
+      }
+    }
   },
   "javascript": {
     "globals": [
@@ -57,54 +97,35 @@
       "quoteStyle": "single"
     }
   },
-  "linter": {
-    "enabled": true,
-    "rules": {
-      "recommended": true,
-      "a11y": {
-        "noNoninteractiveElementToInteractiveRole": "off",
-        "useValidAnchor": "off",
-        "useButtonType": "off",
-        "useValidAriaRole": "off",
-        "useValidAriaValues": "off",
-        "useMediaCaption": "off",
-        "useKeyWithClickEvents": "off",
-        "noNoninteractiveTabindex": "off",
-        "useAriaPropsForRole": "off"
-      },
-      "correctness": {
-        "useExhaustiveDependencies": "off",
-        "noUnusedImports": "error"
-      },
-      "style": {
-        "useTemplate": "off",
-        "noUnusedTemplateLiteral": "off",
-        "noParameterAssign": "off",
-        "useNumberNamespace": "off",
-        "useSelfClosingElements": "off"
-      },
-      "suspicious": {
-        "noArrayIndexKey": "off"
-      }
-    },
-    "ignore": []
+  "json": {
+    "formatter": {
+      "enabled": true
+    }
   },
-
   "css": {
     "formatter": {
       "enabled": true,
       "quoteStyle": "single"
     }
   },
-
   "overrides": [
-    { "include": ["**/*.css"], "formatter": { "lineWidth": 160 } },
     {
-      "include": ["**/packages/cli/**/*.ts"],
+      "includes": ["**/*.css"],
+      "formatter": { "lineWidth": 160 },
+      "linter": {
+        "rules": {
+          "style": {
+            "noDescendingSpecificity": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["**/packages/cli/**/*.ts"],
       "formatter": { "lineWidth": 120 }
     },
     {
-      "include": ["**/apps/_components/**", "**/apps/theme/**"],
+      "includes": ["**/apps/_components/**", "**/apps/theme/**"],
       "linter": {
         "rules": {
           "a11y": {

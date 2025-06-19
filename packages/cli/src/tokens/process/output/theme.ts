@@ -1,6 +1,5 @@
-import * as R from 'ramda';
-
 import chalk from 'chalk';
+import * as R from 'ramda';
 import pkg from '../../../../package.json' with { type: 'json' };
 import type { OutputFile } from '../../types.js';
 import type { ProcessReturn } from '../platform.js';

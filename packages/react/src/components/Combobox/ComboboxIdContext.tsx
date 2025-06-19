@@ -37,11 +37,7 @@ export const ComboboxIdDispatch = createContext<
   throw new Error('ComboboxIdDispatch must be used within a provider');
 });
 
-export const ComboboxIdProvider = ({
-  children,
-}: {
-  children: ReactNode;
-}) => {
+export const ComboboxIdProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(ComboboxIdReducer, {
     activeIndex: 0,
   });

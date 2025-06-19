@@ -4,11 +4,11 @@ import { useState } from 'react';
 import { ColorService, useColor } from 'react-color-palette';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router';
+import type { ColorTheme } from '~/routes/themebuilder/_utils/use-themebuilder';
 import {
   QUERY_SEPARATOR,
   useThemebuilder,
 } from '~/routes/themebuilder/_utils/use-themebuilder';
-import type { ColorTheme } from '~/routes/themebuilder/_utils/use-themebuilder';
 import { ColorInput } from '../../color-input/color-input';
 import { ColorPane } from '../color-pane/color-pane';
 import classes from './color-page.module.css';

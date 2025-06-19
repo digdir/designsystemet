@@ -1,7 +1,6 @@
-import { Markdown } from '@storybook/addon-docs/blocks';
-
 import type { AlertProps } from '@digdir/designsystemet-react';
 import { Alert, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Markdown } from '@storybook/addon-docs/blocks';
 
 import classes from './Information.module.css';
 
