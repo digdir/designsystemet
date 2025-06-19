@@ -17,6 +17,8 @@ type SharedOptions = {
   preview: boolean;
   /** Token Studio `$themes.json` content */
   processed$themes: ProcessedThemeObject[];
+  /** Color groups */
+  colorGroups?: string[];
 };
 
 export type BuildOptions = {
@@ -137,6 +139,7 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
   /** For sharing build options in other files */
   buildOptions = options;
   buildOptions.defaultColor = UNSAFE_DEFAULT_COLOR;
+  buildOptions.colorGroups = colorGroups;
 
   const filteredProcessed$themes = processed$themes.filter((theme) =>
     R.not(theme.group === 'size' && theme.name !== 'medium'),

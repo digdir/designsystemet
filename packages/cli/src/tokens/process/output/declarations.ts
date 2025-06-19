@@ -1,8 +1,9 @@
 import chalk from 'chalk';
-import { type ProcessedThemeObject, getCustomColors } from '../utils/getMultidimensionalThemes.js';
+import { buildOptions } from '../platform.js';
+import { getCustomColors, type ProcessedThemeObject } from '../utils/getMultidimensionalThemes.js';
 
-const createTypeDeclarationFiles = (processed$themes: ProcessedThemeObject[]) => {
-  const colorGroups: string[] = [];
+export const createTypeDeclarationFiles = (processed$themes: ProcessedThemeObject[]) => {
+  const colorGroups = buildOptions?.colorGroups || [];
   const customColors = getCustomColors(processed$themes, colorGroups);
 
   const typeDeclaration = createColorTypeDeclaration(customColors);
