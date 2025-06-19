@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 import { outputReferencesFilter } from 'style-dictionary/utils';
-import { isDigit, pathStartsWithOneOf, typeEquals } from '../../utils.js';
+import { pathStartsWithOneOf, typeEquals } from '../../utils.js';
 import { formats } from '../formats/css.js';
 
 import { basePxFontSize, dsTransformers, type GetStyleDictionaryConfig, prefix } from './shared.js';
@@ -29,7 +29,10 @@ export const semanticVariables: GetStyleDictionaryConfig = ({ theme }) => {
             filter: (token) => {
               const isUwantedToken = R.anyPass([R.includes('primitives/global')])(token.filePath);
               const isPrivateToken = R.includes('_', token.path);
-              const unwantedPaths = pathStartsWithOneOf(['font-size', 'line-height', 'letter-spacing'], token);
+              const unwantedPaths = pathStartsWithOneOf(
+                ['size', '_size', 'font-size', 'line-height', 'letter-spacing'],
+                token,
+              );
               const unwantedTypes = typeEquals(['color', 'fontWeight', 'fontFamily', 'typography'], token);
               const unwantedTokens = !(unwantedPaths || unwantedTypes || isPrivateToken || isUwantedToken);
 
@@ -40,8 +43,7 @@ export const semanticVariables: GetStyleDictionaryConfig = ({ theme }) => {
         options: {
           outputReferences: (token, options) => {
             const include = pathStartsWithOneOf(['border-radius'], token);
-            const isWantedSize = pathStartsWithOneOf(['size', '_size'], token) && isDigit(token.path[1]);
-            return (include || isWantedSize) && outputReferencesFilter(token, options);
+            return include && outputReferencesFilter(token, options);
           },
         },
       },
