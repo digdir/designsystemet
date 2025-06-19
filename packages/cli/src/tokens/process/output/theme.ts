@@ -34,7 +34,7 @@ export const createThemeCSSFiles = ({
 }: CreateThemeCSSFiles): OutputFile[] => {
   const groupedByTheme: Record<string, OutputFile[]> = {};
 
-  for (const [_, buildResults] of Object.entries(R.dissoc('types', processedBuilds))) {
+  for (const [_, buildResults] of Object.entries(processedBuilds)) {
     for (const buildResult of buildResults) {
       const themeName = buildResult.permutation.theme;
       const newOutputs = buildResult.formatted;
