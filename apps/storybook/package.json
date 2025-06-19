@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "storybook dev -p 6006",
     "build": "storybook build -o ./dist --stats-json",
-    "test-storybook": "vitest",
+    "test-storybook": "pnpm exec playwright install --with-deps chromium && vitest",
     "chromatic": "pnpx chromatic",
     "types": "tsc --noEmit -p ../../packages/react/tsconfig.stories.json --emitDeclarationOnly false"
   },
