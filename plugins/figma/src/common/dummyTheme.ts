@@ -1,7 +1,17 @@
-import type { ColorInfo, ColorTheme } from './store';
+import themeConfig from '@digdir/designsystemet-theme/configs/designsystemet.config.json';
+import type { ColorInfo, ThemeInfo } from './store';
+
+const THEME = themeConfig.themes.designsystemet.colors;
+const MAIN_COLORS = Object.keys(THEME.main);
+const SUPPORT_COLORS = Object.keys(THEME.support);
+const NEUTRAL_COLOR = 'neutral';
+const ALL_COLORS = [...MAIN_COLORS, ...SUPPORT_COLORS, NEUTRAL_COLOR] as const;
+type ColorThemeKeys = (typeof ALL_COLORS)[number];
+
+export type InferredColorTheme = Record<ColorThemeKeys, ThemeInfo>;
 
 export const getDummyTheme = () => {
-  return JSON.parse(JSON.stringify(dummyTheme)) as ColorTheme;
+  return JSON.parse(JSON.stringify(dummyTheme));
 };
 
 const generateColorSet = (): ColorInfo => {
@@ -13,30 +23,11 @@ const generateColorSet = (): ColorInfo => {
   return colors;
 };
 
-const dummyTheme: ColorTheme = {
-  brand1: {
+export const dummyTheme = ALL_COLORS.reduce((obj, key) => {
+  obj[key] = {
     light: generateColorSet(),
     dark: generateColorSet(),
     contrast: generateColorSet(),
-  },
-  brand2: {
-    light: generateColorSet(),
-    dark: generateColorSet(),
-    contrast: generateColorSet(),
-  },
-  neutral: {
-    light: generateColorSet(),
-    dark: generateColorSet(),
-    contrast: generateColorSet(),
-  },
-  brand3: {
-    light: generateColorSet(),
-    dark: generateColorSet(),
-    contrast: generateColorSet(),
-  },
-  accent: {
-    light: generateColorSet(),
-    dark: generateColorSet(),
-    contrast: generateColorSet(),
-  },
-};
+  };
+  return obj;
+}, {} as InferredColorTheme);

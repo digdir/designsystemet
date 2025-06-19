@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
+import type { InferredColorTheme } from './dummyTheme';
 
 export type ColorInfo = {
   [key in ColorIndex]: string;
@@ -32,13 +33,7 @@ export type StoreTheme = {
   colors: ColorTheme;
 };
 
-export type ColorTheme = {
-  accent: ThemeInfo;
-  neutral: ThemeInfo;
-  brand1: ThemeInfo;
-  brand2: ThemeInfo;
-  brand3: ThemeInfo;
-};
+export type ColorTheme = InferredColorTheme;
 
 export type ThemeInfo = {
   light: ColorInfo;
