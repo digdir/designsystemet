@@ -6,7 +6,7 @@ import type { RenderToPipeableStreamOptions } from 'react-dom/server';
 import { renderToPipeableStream } from 'react-dom/server';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
 import type { EntryContext } from 'react-router';
-import { ServerRouter } from 'react-router';
+import { redirect, ServerRouter } from 'react-router';
 import en from '~/locales/en';
 import no from '~/locales/no';
 import i18n from './i18n';
@@ -43,6 +43,13 @@ export default async function handleRequest(
       },
     },
   });
+
+  /* If URL has a trailing slash, redirect away from it */
+  if (url.pathname.match('/.*/$')) {
+    /* do this to make sure we keep params */
+    url.pathname = url.pathname.replace(/\/+$/, '');
+    return redirect(url.toString());
+  }
 
   return new Promise((resolve, reject) => {
     let shellRendered = false;
