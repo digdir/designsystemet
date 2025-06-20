@@ -45,6 +45,12 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     return redirect('/no');
   }
 
+  if (url.pathname.match('/.*/$')) {
+    /* do this to make sure we keep params */
+    url.pathname = url.pathname.replace(/\/+$/, '');
+    return redirect(url.toString());
+  }
+
   const centerLinks = [
     {
       text: 'footer.about',
