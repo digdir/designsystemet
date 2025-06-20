@@ -37,12 +37,15 @@ function postcssComposes() {
           );
 
         cache[resolvedFrom].root.walkRules((fromRule) => {
-          if (fromRule.selector.startsWith(`.${selector}`))
+          /* This checks for either the exact class (.selector) or a class with a pseudo-element/class (.selector:pseudo, .selector::pseudo) */
+          const classRegex = new RegExp(`^\\.${selector}($|[^-_a-zA-Z0-9])`);
+          if (classRegex.test(fromRule.selector)) {
             rule.replaceWith(
               fromRule.clone({
                 selector: fromRule.selector.replace(`.${selector}`, '&'),
               }),
             );
+          }
         });
       },
     },
