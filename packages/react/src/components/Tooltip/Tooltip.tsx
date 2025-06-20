@@ -181,11 +181,14 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
           {children}
         </ChildContainer>
         <span
+          onMouseEnter={setOpen}
+          onMouseLeave={setClose}
           ref={mergedRefs}
           role='tooltip'
           className={cl('ds-tooltip', className)}
           id={id ?? randomTooltipId}
           popover='manual'
+          data-placement={placement}
           {...rest}
         >
           {content}
