@@ -188,6 +188,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
           className={cl('ds-tooltip', className)}
           id={id ?? randomTooltipId}
           popover='manual'
+          data-placement={placement}
           {...rest}
         >
           {content}
