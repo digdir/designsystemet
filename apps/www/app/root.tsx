@@ -100,8 +100,8 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 
   return data({
     lang: params.lang || 'no',
-    centerLinks,
     menu,
+    centerLinks,
   });
 };
 
