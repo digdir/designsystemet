@@ -49,6 +49,7 @@
     rotate: 45deg;
   }
 
+  /* Transparent box to make tooltip stay open when mouse is over it */
   &::after {
     content: '';
     background: transparent;
