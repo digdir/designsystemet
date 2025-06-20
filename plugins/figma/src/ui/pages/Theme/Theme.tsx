@@ -1,4 +1,4 @@
-import { getDummyTheme } from '@common/dummyTheme';
+import { getDummyTheme, REQUIRED_COLORS } from '@common/dummyTheme';
 import { cliOptions } from '@digdir/designsystemet';
 import {
   type CssColor,
@@ -16,7 +16,11 @@ import {
 } from '@digdir/designsystemet-react';
 import { useEffect, useId, useState } from 'react';
 import { Link as RouterLink, useParams } from 'react-router-dom';
-import { type ColorTheme, useThemeStore } from '../../../common/store';
+import {
+  type ColorTheme,
+  type ThemeInfo,
+  useThemeStore,
+} from '../../../common/store';
 import { themeToFigmaFormat } from '../../../common/utils';
 import classes from './Theme.module.css';
 
@@ -83,44 +87,36 @@ function Theme() {
       return;
     }
 
-    /* For now we check that we have  accent, brand1, brand2, brand3 */
+    const missingColors = REQUIRED_COLORS.filter(
+      (color) => !colors.some((c) => c.name === color),
+    );
 
-    const accent = colors.find((color) => color.name === 'accent')?.hex;
-    const brand1 = colors.find((color) => color.name === 'brand1')?.hex;
-    const brand2 = colors.find((color) => color.name === 'brand2')?.hex;
-    const brand3 = colors.find((color) => color.name === 'brand3')?.hex;
-    const neutral = colors.find((color) => color.name === 'neutral')?.hex;
-
-    if (!accent || !brand1 || !brand2 || !brand3 || !neutral) {
-      const missingColors = [
-        !accent && 'accent',
-        !brand1 && 'brand1',
-        !brand2 && 'brand2',
-        !brand3 && 'brand3',
-        !neutral && 'neutral',
-      ]
-        .filter(Boolean)
-        .join(', ');
+    if (missingColors.length > 0) {
       setCodeSnippetError(
-        `I denne versjonen av pluginen må du ha bestemte fargenavn. Det mangler: ${missingColors}, i kodesnutten.`,
+        `I denne versjonen av pluginen må du ha bestemte fargenavn. Det mangler: ${missingColors.join(', ')}, i kodesnutten.`,
       );
       return;
     }
 
-    console.log(
-      `Accent: ${accent}, Neutral: ${neutral}, Brand1: ${brand1}, Brand2: ${brand2}, Brand3: ${brand3}`,
+    const allowedColors = colors.filter((color) =>
+      REQUIRED_COLORS.includes(color.name),
+    );
+
+    const generatedSchemes = allowedColors.reduce<Record<string, ThemeInfo>>(
+      (obj, color) => {
+        obj[color.name] = themeToFigmaFormat(generateColorSchemes(color.hex));
+        return obj;
+      },
+      {},
     );
 
     const newArray = Array.from(themes);
+
     newArray[themeIndex] = {
       ...newArray[themeIndex],
       colors: {
         ...newArray[themeIndex].colors,
-        accent: themeToFigmaFormat(generateColorSchemes(accent)),
-        neutral: themeToFigmaFormat(generateColorSchemes(neutral)),
-        brand1: themeToFigmaFormat(generateColorSchemes(brand1)),
-        brand2: themeToFigmaFormat(generateColorSchemes(brand2)),
-        brand3: themeToFigmaFormat(generateColorSchemes(brand3)),
+        ...generatedSchemes,
       },
     };
 
@@ -169,9 +165,7 @@ function Theme() {
           for å lage deg et tema, lim inn kodensnutten fra steg 1 i feltet
           under.
         </Paragraph>
-        <Alert>
-          Fargene må ha navnene; accent, neutral, brand1, brand2 og brand3.
-        </Alert>
+        <Alert>Fargene må ha navnene; {REQUIRED_COLORS.join(', ')}.</Alert>
         <Label htmlFor='my-textarea'>Kodesnutt fra temabyggeren</Label>
         <Textarea
           value={command}
