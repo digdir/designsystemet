@@ -1,21 +1,8 @@
-import themeConfig from '@digdir/designsystemet-theme/configs/designsystemet.config.json';
-import type { ColorInfo, ThemeInfo } from './store';
-
-const THEME = themeConfig.themes.designsystemet.colors;
-const NEUTRAL_COLOR = 'neutral';
-
-export const REQUIRED_COLORS = [
-  ...Object.keys(THEME.main),
-  ...Object.keys(THEME.support),
-  NEUTRAL_COLOR,
-] as const;
-
-type ColorThemeKeys = (typeof REQUIRED_COLORS)[number];
-
-export type InferredColorTheme = Record<ColorThemeKeys, ThemeInfo>;
+import type { ColorInfo } from './store';
+import { type ColorTheme, REQUIRED_COLORS } from './utils';
 
 export const getDummyTheme = () => {
-  return JSON.parse(JSON.stringify(dummyTheme)) as InferredColorTheme;
+  return JSON.parse(JSON.stringify(dummyTheme)) as ColorTheme;
 };
 
 const generateColorSet = (): ColorInfo => {
@@ -34,4 +21,4 @@ export const dummyTheme = REQUIRED_COLORS.reduce((obj, key) => {
     contrast: generateColorSet(),
   };
   return obj;
-}, {} as InferredColorTheme);
+}, {} as ColorTheme);

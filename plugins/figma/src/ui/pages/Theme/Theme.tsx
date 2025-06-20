@@ -1,4 +1,4 @@
-import { getDummyTheme, REQUIRED_COLORS } from '@common/dummyTheme';
+import { getDummyTheme } from '@common/dummyTheme';
 import { cliOptions } from '@digdir/designsystemet';
 import {
   type CssColor,
@@ -16,12 +16,12 @@ import {
 } from '@digdir/designsystemet-react';
 import { useEffect, useId, useState } from 'react';
 import { Link as RouterLink, useParams } from 'react-router-dom';
+import { type ThemeInfo, useThemeStore } from '../../../common/store';
 import {
   type ColorTheme,
-  type ThemeInfo,
-  useThemeStore,
-} from '../../../common/store';
-import { themeToFigmaFormat } from '../../../common/utils';
+  REQUIRED_COLORS,
+  themeToFigmaFormat,
+} from '../../../common/utils';
 import classes from './Theme.module.css';
 
 const colorCliOptions = cliOptions.theme.colors;
