@@ -1,6 +1,20 @@
 import type { ThemeInfo } from '@digdir/designsystemet/color';
+import themeConfig from '@digdir/designsystemet-theme/configs/designsystemet.config.json';
 
 import type { ThemeInfo as FigmaThemeInfo } from './store';
+
+const THEME = themeConfig.themes.designsystemet.colors;
+const NEUTRAL_COLOR = 'neutral';
+
+export const REQUIRED_COLORS = [
+  ...Object.keys(THEME.main),
+  ...Object.keys(THEME.support),
+  NEUTRAL_COLOR,
+] as const;
+
+type ColorThemeKeys = (typeof REQUIRED_COLORS)[number];
+
+export type ColorTheme = Record<ColorThemeKeys, FigmaThemeInfo>;
 
 export const themeToFigmaFormat = (theme: ThemeInfo): FigmaThemeInfo => {
   const createColorInfo = (colors: typeof theme.light) => ({

@@ -1,4 +1,5 @@
-import type { ColorInfo, ColorTheme } from './store';
+import type { ColorInfo } from './store';
+import { type ColorTheme, REQUIRED_COLORS } from './utils';
 
 export const getDummyTheme = () => {
   return JSON.parse(JSON.stringify(dummyTheme)) as ColorTheme;
@@ -13,30 +14,11 @@ const generateColorSet = (): ColorInfo => {
   return colors;
 };
 
-const dummyTheme: ColorTheme = {
-  brand1: {
+const dummyTheme = REQUIRED_COLORS.reduce((obj, key) => {
+  obj[key] = {
     light: generateColorSet(),
     dark: generateColorSet(),
     contrast: generateColorSet(),
-  },
-  brand2: {
-    light: generateColorSet(),
-    dark: generateColorSet(),
-    contrast: generateColorSet(),
-  },
-  neutral: {
-    light: generateColorSet(),
-    dark: generateColorSet(),
-    contrast: generateColorSet(),
-  },
-  brand3: {
-    light: generateColorSet(),
-    dark: generateColorSet(),
-    contrast: generateColorSet(),
-  },
-  accent: {
-    light: generateColorSet(),
-    dark: generateColorSet(),
-    contrast: generateColorSet(),
-  },
-};
+  };
+  return obj;
+}, {} as ColorTheme);
