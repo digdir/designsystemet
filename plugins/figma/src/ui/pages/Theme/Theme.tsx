@@ -165,7 +165,7 @@ function Theme() {
           for å lage deg et tema, lim inn kodensnutten fra steg 1 i feltet
           under.
         </Paragraph>
-        <Alert>Fargene må ha navnene; {REQUIRED_COLORS.join(', ')}.</Alert>
+        <Alert>Fargene kan kun ha navnene; {REQUIRED_COLORS.join(', ')}.</Alert>
         <Label htmlFor='my-textarea'>Kodesnutt fra temabyggeren</Label>
         <Textarea
           value={command}
