@@ -14,7 +14,7 @@ const generateColorSet = (): ColorInfo => {
   return colors;
 };
 
-export const dummyTheme = REQUIRED_COLORS.reduce((obj, key) => {
+const dummyTheme = REQUIRED_COLORS.reduce((obj, key) => {
   obj[key] = {
     light: generateColorSet(),
     dark: generateColorSet(),
