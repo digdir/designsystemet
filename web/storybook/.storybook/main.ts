@@ -22,9 +22,9 @@ const config: StorybookConfig = {
       defineConfig({
         resolve: {
           alias: resolveAliases({
-            '@assets': 'apps/storybook/assets',
-            '@doc-components': 'apps/storybook/docs-components',
-            '@story-utils': 'apps/storybook/story-utils',
+            '@assets': 'web/storybook/assets',
+            '@doc-components': 'web/storybook/docs-components',
+            '@story-utils': 'web/storybook/story-utils',
           }),
         },
       }),

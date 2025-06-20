@@ -16,7 +16,7 @@ on:
     branches:
       - main
     paths:
-      - 'apps/themebuilder/**'
+      - 'web/themebuilder/**'
 jobs:
   Deploy-Production:
     if: ${{ github.repository == 'digdir/designsystemet' }}

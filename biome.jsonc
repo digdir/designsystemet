@@ -16,7 +16,7 @@
       "!**/.github/**",
       "!**/.changeset/**",
       "!**/design-tokens/**/*",
-      "!**/apps/www/app/tokens/**",
+      "!**/web/www/app/tokens/**",
       "!**/dist/**/*",
       "!**/packages/theme/**/*.css",
       "!**/tsconfig.*.json", // https://github.com/biomejs/biome/issues/1151
@@ -125,7 +125,7 @@
       "formatter": { "lineWidth": 120 }
     },
     {
-      "includes": ["**/apps/_components/**", "**/apps/theme/**"],
+      "includes": ["**/internal/components/**", "**/web/themebuilder/**"],
       "linter": {
         "rules": {
           "a11y": {

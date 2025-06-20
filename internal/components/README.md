@@ -1,3 +1,3 @@
 # `@internal/component`
 
-Components used across apps and plugins.
+Components used across web and plugins.

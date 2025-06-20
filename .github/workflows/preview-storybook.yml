@@ -10,7 +10,7 @@ on:
     types: [opened, synchronize]
     paths:
       - 'packages/**'
-      - 'apps/storybook/**'
+      - 'web/storybook/**'
 jobs:
   Deploy-Preview:
     if: ${{ github.repository == 'digdir/designsystemet' }}

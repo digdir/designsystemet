@@ -1,6 +1,6 @@
 packages:
   - packages/*
-  - apps/*
+  - web/*
   - plugins/*
   - internal/components
 ignoredBuiltDependencies:

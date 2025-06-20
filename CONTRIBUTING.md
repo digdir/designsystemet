@@ -71,7 +71,7 @@ Run the commands from the root of your project. Make sure you clone the `main` b
 
 #### 4. Start local development servers
 
-Depending on what you want to work on, start `apps` by running script according to folder.
+Depending on what you want to work on, start `web` by running script according to folder.
 
 `pnpm storybook | www | themebuilder`
 

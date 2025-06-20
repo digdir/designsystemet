@@ -9,7 +9,7 @@ on:
   pull_request:
     types: [opened, synchronize]
     paths:
-      - 'apps/themebuilder/**'
+      - 'web/themebuilder/**'
 jobs:
   Deploy-Preview:
     if: ${{ github.repository == 'digdir/designsystemet' }}
