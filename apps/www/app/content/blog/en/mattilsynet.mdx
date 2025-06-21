@@ -1,50 +1,100 @@
 ---
-title: How the Norwegian Food Safety Authority builds on Designsystemet
-description: The Norwegian Food Safety Authority has quickly established its own internal design system, based on Designsystemet.
-date: 2025-05-22
+title: How the Norwegian Food Safety Authority uses Designsystemet without React
+description: The Norwegian Food Safety Authority extends Designsystemet with its own brand and distributes it to all development teams – regardless of the technology they use.
+date: 2025-06-18
 author: Norwegian Food Safety Authority
 imageSrc: /img/blog/mattilsynet.png
-imageAlt: Norwegian Food Safety Authority logo
-imageCaption: The Norwegian Food Safety Authority has quickly established its own internal design system, based on the national Design System. The result? Saved time and resources, more consistent services – and a solution that works for all development teams, regardless of technology.
-
+imageAlt: Employees from the Norwegian Food Safety Authority stand together with animals and hold a screen.
+imageCaption: "In a short amount of time, the Norwegian Food Safety Authority has established its own internal design system based on Designsystemet. The result? Significant time and resources saved, more consistent services – and a solution that works for all development teams, regardless of technology. Photo: Norwegian Food Safety Authority"
 ---
+
 ## From shared foundation to custom adaptations
 
-At the Norwegian Food Safety Authority, we have long had high ambitions for user experience and accessibility. To achieve this efficiently, we chose to build on components, tokens, and principles from Designsystemet – instead of starting from scratch.
+At the Norwegian Food Safety Authority, we’ve long held high ambitions for user experience and accessibility. To achieve this effectively, we chose to build on top of the components, tokens, and principles from Designsystemet instead of starting entirely from scratch.
 
-The cross-agency collaboration has made it possible to develop a flexible design system tailored to the Norwegian Food Safety Authority's visual profile, while also meeting requirements for universal design and scalability.
-
-Both the Figma library and code package for the Norwegian Food Safety Authority are based on Designsystemet’s tokens and components. This provides a consistent and accessible foundation that can be adapted to our specific needs – such as a simplified color scale and custom alert colors for emergency materials.
-
-Through Designsystemet’s design tokens, we can easily keep design and code in sync and make visual adjustments without compromising structure or quality.
+By maintaining a local copy of Designsystemet’s Figma library and importing classes from the [Design System CSS package](https://www.npmjs.com/package/@digdir/designsystemet-css) via [CSS modules composition](https://github.com/css-modules/css-modules/blob/master/docs/composition.md), we’ve gained a solid foundation that can freely be adapted to our brand and needs.
+This approach has saved us significant time and resources, while also supporting several requirements for universal design and scalability.
 
 <br/>
 
 <VideoCard
   videoUrl="https://vimeo.com/1087962931?share=copy"
-  title="Hvordan Mattilsynet bygger på designsystemet.no"
-  description="I denne filmen forklarer Eirik Backer hvordan Mattilsynet har brukt Designsystemet til å lage et internt designsystem som fungerer for alle utviklingsteam uavhengig av hvilken teknologi de bruker."
+  title="How the Norwegian Food Safety Authority builds on Designsystemet.no"
+  description="In this video, Eirik Backer explains how the Norwegian Food Safety Authority has used Designsystemet to create an internal design system that works for all development teams, regardless of the technology they use."
   imageUrl="/img/blog/mattilsynet-blomst.png"
 />
 
+## Technology that fits every team
 
-## Technology that fits all teams
+At the Norwegian Food Safety Authority, each development team chooses its own tech stack. For the design system to work in practice, it therefore needs to be framework-agnostic.
 
-At the Norwegian Food Safety Authority, each development team is free to choose its own tech stack. For our design system to work in practice, it must therefore be framework-independent.
+By using [CSS Modules](https://github.com/css-modules/css-modules/), we can [extend](https://github.com/css-modules/css-modules/blob/master/docs/composition.md) Designsystemet's classes and provide an object of hashed class names that prevents name collisions. Regardless of the technology, our teams can then import class names into their code:
 
-By combining the CSS package from Designsystemet with standardized CSS modules, we’ve found a solution that works in React, Vue, Svelte, and other technologies. Where JavaScript is needed – for example, for dropdowns or tooltips – we use simple event listeners to keep things flexible.
+```tsx
+import { styles } from '@mattilsynet/design';
 
-Although many associate Designsystemet with React components, it is much more than that. For us at the Norwegian Food Safety Authority, the Figma library, CSS tokens, and documentation are invaluable resources – and we’ve chosen open source to share our work with others.
+const MyButton = () => {
+  return <button className={styles.button}>Klikk meg</button>;
+};
+```
 
-Visit [design.mattilsynet.no](https://design.mattilsynet.no) to see how the Norwegian Food Safety Authority is building on Designsystemet.
+For those using React, we also offer components that essentially just apply the correct class name:
 
-<Image
+```tsx
+import { Button } from '@mattilsynet/design/react';
+
+const MyButton = () => {
+  return <Button>Klikk meg</Button>;
+};
+```
+
+We also use HTML attributes to offer component variations:
+```tsx
+import { styles } from '@mattilsynet/design';
+
+const MyButton = () => {
+  return (
+    <button className={styles.button} data-variant="primary" aria-busy="true">
+      En primærknapp med lasteindikator
+    </button>
+  );
+};
+```
+## Interactivity
+
+While most aspects of a design system only affect appearance, we sometimes need JavaScript to handle interactivity.  
+In these cases, we use vanilla JavaScript that listens for `events` on the `document`:
+
+
+```js
+document.addEventListener('toggle', (event) => {
+  if (event.target.closest(`.${styles.popover}`)) {
+    if (event.newState === 'open') {
+      // Attach positioning logic for popover
+    } else {
+      // Detach positioning logic for popover
+    }
+  }
+});
+```
+
+## More than just technology
+
+Although many associate Designsystemet with React components, it’s much more than that.  
+For us at the Norwegian Food Safety Authority, the Figma library, CSS tokens, and documentation are invaluable resources.
+
+**Curious to take a look under the hood of our solution?**  
+<br />Visit [design.mattilsyn]()
+
+ <Image
   src='/img/blog/mattilsynet2.png'
-  alt='Shows a person wearing a jacket with the Norwegian Food Safety Authority logo'
+  alt='Viser person med jakke som har Mattilsynet logo på'
   boxShadow={false}
+  
 />
 
-_- We’re proud to contribute to a project that benefits all of Norway._
+_– We’re proud to be part of a project that benefits the whole of Norway._
+
 
 <Contributors
   authors={[
