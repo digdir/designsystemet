@@ -34,6 +34,8 @@
 
 .reverseContainer {
   flex-direction: row-reverse;
+  /* biome-ignore lint/correctness/noUnknownProperty: new property */
+  reading-flow: flex-visual;
 }
 
 .imgContainer {
