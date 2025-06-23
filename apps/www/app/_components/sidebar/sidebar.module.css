@@ -68,6 +68,11 @@
   &[aria-current='page']:hover {
     border-left-color: var(--ds-color-accent-base-default);
   }
+
+  &:focus-visible {
+    color: var(--ds-color-neutral-base-contrast-default);
+    background-color: var(--dsc-link-background--focus);
+  }
 }
 
 .linkCompact {

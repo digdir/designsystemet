@@ -42,36 +42,42 @@ export const BlogCard = ({
       data-featured={featured}
       className={cl(classes.card, className)}
       data-color='neutral'
+      asChild
       {...props}
     >
-      <CardBlock>
-        <img src={image} alt='' className={classes.image} />
-      </CardBlock>
-      <CardBlock>
-        {tagText && (
-          <Tag className={classes.tag} data-color={tagColor} data-size='sm'>
-            {tagText}
-          </Tag>
-        )}
-        <Heading level={level} data-size={featured ? 'lg' : 'sm'}>
-          <Link to={href}>{title}</Link>
-        </Heading>
-        <Paragraph data-size={featured ? 'lg' : 'sm'}>{desc}</Paragraph>
-        <Paragraph data-size={featured ? 'md' : 'xs'} className={classes.meta}>
-          {author ||
-            (date && (
-              <>
-                <span>{date}</span>
-                {author && (
-                  <>
-                    <span aria-hidden className={classes.metaSquare} />
-                    <span>{author}</span>
-                  </>
-                )}
-              </>
-            ))}
-        </Paragraph>
-      </CardBlock>
+      <article>
+        <CardBlock>
+          <img src={image} alt='' className={classes.image} />
+        </CardBlock>
+        <CardBlock>
+          {tagText && (
+            <Tag className={classes.tag} data-color={tagColor} data-size='sm'>
+              {tagText}
+            </Tag>
+          )}
+          <Heading level={level} data-size={featured ? 'lg' : 'sm'}>
+            <Link to={href}>{title}</Link>
+          </Heading>
+          <Paragraph data-size={featured ? 'lg' : 'sm'}>{desc}</Paragraph>
+          <Paragraph
+            data-size={featured ? 'md' : 'xs'}
+            className={classes.meta}
+          >
+            {author ||
+              (date && (
+                <>
+                  <span>{date}</span>
+                  {author && (
+                    <>
+                      <span aria-hidden className={classes.metaSquare} />
+                      <span>{author}</span>
+                    </>
+                  )}
+                </>
+              ))}
+          </Paragraph>
+        </CardBlock>
+      </article>
     </Card>
   );
 };

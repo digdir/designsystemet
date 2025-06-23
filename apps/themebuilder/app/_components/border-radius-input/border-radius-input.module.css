@@ -9,16 +9,6 @@
   width: calc(50% - 8px);
 }
 
-.active .inner {
-  border-color: var(--ds-color-accent-border-default);
-  background-color: var(--ds-color-accent-surface-tinted);
-}
-
-.active .box {
-  outline: 1px solid var(--ds-color-neutral-border-default);
-  border-color: var(--ds-color-neutral-border-default);
-}
-
 .box {
   border: 1px solid var(--ds-color-neutral-border-subtle);
   border-radius: 4px;
@@ -48,6 +38,16 @@
   height: 33px;
   width: 72px;
   margin-right: -34px;
+}
+
+.active .inner {
+  border-color: var(--ds-color-accent-border-default);
+  background-color: var(--ds-color-accent-surface-tinted);
+}
+
+.active .box {
+  outline: 1px solid var(--ds-color-neutral-border-default);
+  border-color: var(--ds-color-neutral-border-default);
 }
 
 .heading {

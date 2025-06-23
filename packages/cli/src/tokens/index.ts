@@ -1,3 +1,3 @@
-export { createTokens, cliOptions } from './create.js';
+export { cliOptions, createTokens } from './create.js';
+export { formatThemeCSS, formatTokens } from './format.js';
 export type { Theme as CreateTokensOptions } from './types.js';
-export { formatTokens, formatThemeCSS } from './format.js';

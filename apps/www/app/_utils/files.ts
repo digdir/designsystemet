@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { cwd } from 'node:process';
 
@@ -7,7 +7,7 @@ const dirname = cwd();
 const safeReadDir = (path: string): string[] => {
   try {
     return readdirSync(path);
-  } catch (error) {
+  } catch (_error) {
     console.warn(`Could not read directory: ${path}`);
     return [];
   }
@@ -16,7 +16,7 @@ const safeReadDir = (path: string): string[] => {
 const safeReadFile = (path: string): string => {
   try {
     return readFileSync(path, 'utf-8');
-  } catch (error) {
+  } catch (_error) {
     console.error(`Error reading file: ${path}`);
     return '';
   }
@@ -51,13 +51,13 @@ export const getFilesFromContentDir = (
             relativePath: entryRelativePath,
           });
         }
-      } catch (error) {
+      } catch (_error) {
         console.warn(`Could not stat entry: ${entryPath}`);
       }
     }
 
     return results;
-  } catch (error) {
+  } catch (_error) {
     console.warn(`Could not read content directory: ${currentPath}`);
     return [];
   }
@@ -68,7 +68,7 @@ export const getFileFromContentDir = (path: string) => {
 
   try {
     return safeReadFile(join(basePath, path));
-  } catch (error) {
+  } catch (_error) {
     console.error(`Error reading file from content directory: ${path}`);
     return '';
   }

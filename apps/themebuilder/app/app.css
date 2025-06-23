@@ -35,7 +35,6 @@ body {
 
   abbr[title] {
     border-bottom: none; /* 1 */
-    text-decoration: underline; /* 2 */
     text-decoration: underline dotted; /* 2 */
   }
 
@@ -95,11 +94,11 @@ body {
   display: #b4b4b4;
 }
 
-code {
+/* code {
   background-color: #e9e9e9;
   padding: 1px 5px;
   border-radius: 2px;
-}
+} */
 
 .panelContainer {
   --panel-padding: var(--ds-size-8);

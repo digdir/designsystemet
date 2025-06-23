@@ -1,20 +1,20 @@
 import { SkipLink } from '@digdir/designsystemet-react';
+import type { FooterLinkListItemProps } from '@internal/components';
 import {
   ContentContainer,
   Error404,
   Footer,
   Header,
 } from '@internal/components';
-import type { FooterLinkListItemProps } from '@internal/components';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
-import { Outlet, isRouteErrorResponse, useRouteLoaderData } from 'react-router';
+import { isRouteErrorResponse, Outlet, useRouteLoaderData } from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
 import { Figma } from '~/_components/logos/figma';
 import { Github } from '~/_components/logos/github';
 import { Slack } from '~/_components/logos/slack';
-import type { Route } from './+types/layout';
 import type { Route as RootRoute } from './../../+types/root';
+import type { Route } from './+types/layout';
 
 const rightLinks: FooterLinkListItemProps[] = [
   {
@@ -25,17 +25,17 @@ const rightLinks: FooterLinkListItemProps[] = [
   {
     text: ['footer.slack'] as unknown as FooterLinkListItemProps['text'],
     url: '/slack',
-    prefix: <Slack />,
+    prefix: <Slack aria-hidden='true' />,
   },
   {
     text: 'Github' as unknown as FooterLinkListItemProps['text'],
     url: 'https://github.com/digdir/designsystemet',
-    prefix: <Github />,
+    prefix: <Github aria-hidden='true' />,
   },
   {
     text: 'Figma' as unknown as FooterLinkListItemProps['text'],
     url: 'https://www.figma.com/@designsystemet',
-    prefix: <Figma />,
+    prefix: <Figma aria-hidden='true' />,
   },
 ];
 

@@ -63,7 +63,6 @@
 
 .card {
   border-radius: 4px;
-  align-items: flex-start;
   align-items: center;
   display: flex;
   gap: var(--ds-size-3);

@@ -243,13 +243,14 @@ const Header = ({
             <Tooltip content={t('header.language-toggle')} placement='bottom'>
               <div>
                 <Dropdown.Trigger
+                  icon={true}
                   variant='tertiary'
                   data-color='neutral'
                   className={classes.toggleButton}
                   onClick={() => setLangOpen(!langOpen)}
                   aria-label={t('header.language-toggle')}
                 >
-                  <LanguageIcon />
+                  <LanguageIcon aria-hidden />
                 </Dropdown.Trigger>
               </div>
             </Tooltip>

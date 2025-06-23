@@ -5,12 +5,20 @@ import { useRouteLoaderData } from 'react-router';
 import { Grid } from '~/_components/grid/grid';
 import { NavigationCard } from '~/_components/navigation-card/navigation-card';
 import { generateMetadata } from '~/_utils/metadata';
+import i18nConf from '~/i18n';
 import i18n from '~/i18next.server';
 import type { Route as LayoutRoute } from '../../layouts/fundamentals/+types/layout';
 import type { Route } from './+types/fundamentals';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   if (!lang) {
+    throw new Response('Not Found', {
+      status: 404,
+      statusText: 'Not Found',
+    });
+  }
+
+  if (!i18nConf.supportedLngs.includes(lang)) {
     throw new Response('Not Found', {
       status: 404,
       statusText: 'Not Found',
@@ -54,7 +62,8 @@ export default function Fundamentals() {
             <Grid>
               {value.map((item) => {
                 const Icon = item.icon
-                  ? Aksel[item.icon as keyof typeof Aksel]
+                  ? // biome-ignore lint/performance/noDynamicNamespaceImportAccess: this should be safe because we prerender the page
+                    Aksel[item.icon as keyof typeof Aksel]
                   : Aksel.LayersIcon;
                 return (
                   <NavigationCard

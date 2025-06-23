@@ -1,5 +1,23 @@
 # Change Log
 
+## 1.1.0
+
+### Minor Changes
+
+- **Suggestion**: API has changed to support multiple values. See [Storybook for documentation](https://storybook.designsystemet.no/?path=/docs/komponenter-suggestion--docs) ([#3675](https://github.com/digdir/designsystemet/pull/3675))
+
+- **MultiSuggestion**: Remove component. Use `<Suggestion>` with `multiple`. See [Storybook](https://storybook.designsystemet.no/?path=/docs/komponenter-suggestion--docs) for documentation ([#3675](https://github.com/digdir/designsystemet/pull/3675))
+
+### Patch Changes
+
+- **Field**: Add `asChild` prop to change the default rendered element ([#3704](https://github.com/digdir/designsystemet/pull/3704))
+
+- Updated non-major dependencies ([#3696](https://github.com/digdir/designsystemet/pull/3696))
+
+- fix(Tab): static `useId()` in rendering ([#3731](https://github.com/digdir/designsystemet/pull/3731))
+
+- Updated non-major dependencies ([#3732](https://github.com/digdir/designsystemet/pull/3732))
+
 ## 1.0.8
 
 ## 1.0.7

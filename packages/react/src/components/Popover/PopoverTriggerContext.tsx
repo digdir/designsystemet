@@ -1,5 +1,5 @@
-import { createContext, useId, useState } from 'react';
 import type { ReactNode } from 'react';
+import { createContext, useId, useState } from 'react';
 
 export type PopoverTriggerContextProps = {
   children: ReactNode;

@@ -6,14 +6,18 @@
   text-decoration: none;
   box-shadow: 0 2px 8px rgb(0 0 0 / 0.04);
   border-radius: 4px;
-  transition: 0.2s all;
   position: relative;
   z-index: 2;
   height: 100%;
+  border: none;
 
   [data-color-scheme='dark'] &,
   [data-color-scheme='auto'] & {
     background-color: var(--ds-color-neutral-surface-tinted);
+  }
+
+  &:not(:has(:focus-visible)) {
+    transition: 0.2s all;
   }
 }
 

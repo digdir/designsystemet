@@ -1,7 +1,7 @@
 import { Slot, Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
-import { forwardRef } from 'react';
 import type { ButtonHTMLAttributes, InputHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { Input, type InputProps } from '../Input';

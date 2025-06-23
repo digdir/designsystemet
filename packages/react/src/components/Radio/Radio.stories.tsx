@@ -1,5 +1,4 @@
-import {} from '@navikt/aksel-icons';
-import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import { Fieldset, Radio, ValidationMessage } from '../..';
 import type { UseRadioGroupProps } from '../../utilities';
 

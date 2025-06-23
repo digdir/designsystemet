@@ -13,7 +13,7 @@ import { formats } from './formats/css.js';
 import { jsTokens } from './formats/js-tokens.js';
 import { buildOptions } from './platform.js';
 import { resolveMath, sizeRem, typographyName, unitless } from './transformers.js';
-import { type ProcessedThemeObject, getMultidimensionalThemes } from './utils/getMultidimensionalThemes.js';
+import { getMultidimensionalThemes, type ProcessedThemeObject } from './utils/getMultidimensionalThemes.js';
 
 void register(StyleDictionary, { withSDBuiltins: false });
 

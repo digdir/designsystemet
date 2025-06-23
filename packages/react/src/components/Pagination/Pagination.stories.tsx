@@ -1,14 +1,14 @@
-import { useArgs } from '@storybook/preview-api';
-import type { Meta, StoryFn } from '@storybook/react';
-import { Pagination } from '.';
+import type { Meta, StoryFn } from '@storybook/react-vite';
+import { useArgs } from 'storybook/preview-api';
 import { type UsePaginationProps, usePagination } from '../../utilities';
+import { Pagination } from '.';
 
 export default {
   title: 'Komponenter/Pagination',
   component: Pagination,
 } as Meta;
 
-export const Preview: StoryFn<typeof Pagination> = (args) => {
+export const Preview: StoryFn<typeof Pagination> = () => {
   return (
     <Pagination>
       <Pagination.List>
@@ -107,7 +107,7 @@ WithAnchor.args = {
   showPages: 7,
 };
 
-export const Mobile: StoryFn = (args) => (
+export const Mobile: StoryFn = () => (
   <Pagination>
     <Pagination.List>
       <Pagination.Item>

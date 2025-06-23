@@ -1,7 +1,6 @@
 import { Link } from '@digdir/designsystemet-react';
-import type { HTMLAttributes } from 'react';
-
 import cl from 'clsx/lite';
+import type { HTMLAttributes } from 'react';
 import { useLocation } from 'react-router';
 import { Github } from '../logos/github';
 import classes from './edit-page-on-github.module.css';
@@ -14,7 +13,10 @@ export const EditPageOnGithub = ({
   const pathParts = pathname.split('/');
   const lang = pathParts[1];
   const page = pathParts[2];
-  const restPath = pathParts.slice(3).join('/');
+  /* make sure restpath does not end with / */
+  const restPath = pathParts.slice(3).join('/').endsWith('/')
+    ? pathParts.slice(3).join('/').slice(0, -1)
+    : pathParts.slice(3).join('/');
 
   const href = `https://github.com/digdir/designsystemet/tree/main/apps/www/app/content/${page}/${lang}/${restPath}.mdx`;
 

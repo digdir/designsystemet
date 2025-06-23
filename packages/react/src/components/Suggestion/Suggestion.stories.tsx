@@ -1,9 +1,12 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import { userEvent, within } from '@storybook/test';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import { type ChangeEvent, useState } from 'react';
-import { EXPERIMENTAL_Suggestion as Suggestion } from '.';
-import { Button, Divider, Field, Label, Paragraph, Spinner } from '..';
+import { userEvent, within } from 'storybook/test';
 import { useDebounceCallback } from '../../utilities';
+import { Button, Divider, Field, Label, Paragraph, Spinner } from '..';
+import {
+  EXPERIMENTAL_Suggestion as Suggestion,
+  type SuggestionValues,
+} from '.';
 
 export default {
   title: 'Komponenter/Suggestion',
@@ -11,7 +14,7 @@ export default {
   /* add height by default */
   decorators: [
     (Story) => (
-      <div style={{ height: '300px' }}>
+      <div style={{ minHeight: '500px' }}>
         <Story />
       </div>
     ),
@@ -39,7 +42,16 @@ export default {
   },
 } as Meta;
 
+const wait = () => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, 500);
+  });
+};
+
 async function testSuggestion(el: HTMLElement) {
+  /* wait for role to be added */
+  await wait();
+
   /* When in test mode, open suggestion by focusing input */
   const input = within(el).getByRole('combobox');
   await userEvent.click(input);
@@ -60,12 +72,13 @@ export const Preview: StoryFn<typeof Suggestion> = (args) => {
     <Field>
       <Label>Velg en destinasjon</Label>
       <Suggestion {...args}>
+        <Suggestion.Chips />
         <Suggestion.Input />
         <Suggestion.Clear />
         <Suggestion.List>
           <Suggestion.Empty>Tomt</Suggestion.Empty>
           {DATA_PLACES.map((place) => (
-            <Suggestion.Option key={place} value={place}>
+            <Suggestion.Option key={place} label={place} value={place}>
               {place}
               <div>Kommune</div>
             </Suggestion.Option>
@@ -77,62 +90,48 @@ export const Preview: StoryFn<typeof Suggestion> = (args) => {
 };
 
 export const Controlled: StoryFn<typeof Suggestion> = (args) => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState<string[]>(['Oslo']);
 
   return (
     <>
       <Field>
-        <Label>Velg en destinasjon</Label>
-        <Suggestion {...args}>
-          <Suggestion.Input
-            value={value}
-            onChange={(event) => setValue(event.target.value)}
-          />
+        <Label>Velg destinasjoner</Label>
+        <Suggestion
+          {...args}
+          multiple
+          value={value}
+          onValueChange={(items) => setValue(items.map((item) => item.value))}
+        >
+          <Suggestion.Chips />
+          <Suggestion.Input />
           <Suggestion.Clear />
           <Suggestion.List>
             <Suggestion.Empty>Tomt</Suggestion.Empty>
             {DATA_PLACES.map((place) => (
-              <Suggestion.Option key={place}>{place}</Suggestion.Option>
+              <Suggestion.Option key={place} label={place} value={place}>
+                {place}
+                <div>Kommune</div>
+              </Suggestion.Option>
             ))}
           </Suggestion.List>
         </Suggestion>
       </Field>
-
       <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
       <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
-        Du har skrevet inn: {value}
+        Valgte reisemål: {value.join(', ')}
       </Paragraph>
 
       <Button
         onClick={() => {
-          setValue('Sogndal');
+          setValue(['Sogndal', 'Stavanger']);
         }}
       >
-        Sett verdi til Sogndal
+        Sett reisemål til Sogndal, Stavanger
       </Button>
     </>
   );
 };
-
-export const DefaultValue: StoryFn<typeof Suggestion> = (args) => {
-  return (
-    <Field>
-      <Label>Velg en destinasjon</Label>
-      <Suggestion {...args}>
-        <Suggestion.Input defaultValue='Sogndal' />
-        <Suggestion.Clear />
-        <Suggestion.List>
-          <Suggestion.Empty>Tomt</Suggestion.Empty>
-          {DATA_PLACES.map((place) => (
-            <Suggestion.Option key={place}>{place}</Suggestion.Option>
-          ))}
-        </Suggestion.List>
-      </Suggestion>
-    </Field>
-  );
-};
-
 export const CustomFilterAlt1: StoryFn<typeof Suggestion> = (args) => {
   return (
     <Field>
@@ -143,17 +142,28 @@ export const CustomFilterAlt1: StoryFn<typeof Suggestion> = (args) => {
           !input.value || index === Number(input.value) - 1
         }
       >
+        <Suggestion.Chips />
         <Suggestion.Input />
         <Suggestion.Clear />
         <Suggestion.List>
           <Suggestion.Empty>Tomt</Suggestion.Empty>
-          {DATA_PLACES.map((text) => (
-            <Suggestion.Option key={text}>{text}</Suggestion.Option>
+          {DATA_PLACES.map((label) => (
+            <Suggestion.Option key={label} value={label.toLowerCase()}>
+              {label}
+            </Suggestion.Option>
           ))}
         </Suggestion.List>
       </Suggestion>
     </Field>
   );
+};
+
+CustomFilterAlt1.parameters = {
+  docs: {
+    source: {
+      type: 'code',
+    },
+  },
 };
 
 export const CustomFilterAlt2: StoryFn<typeof Suggestion> = (args) => {
@@ -163,17 +173,17 @@ export const CustomFilterAlt2: StoryFn<typeof Suggestion> = (args) => {
     <Field>
       <Label>Skriv inn et tall mellom 1-6</Label>
       <Suggestion {...args} filter={false}>
+        <Suggestion.Chips />
         <Suggestion.Input
-          value={value}
-          onChange={(event) => setValue(event.target.value)}
+          onInput={({ currentTarget }) => setValue(currentTarget.value)}
         />
         <Suggestion.Clear />
         <Suggestion.List>
           <Suggestion.Empty>Tomt</Suggestion.Empty>
           {DATA_PLACES.filter(
             (_, index) => !value || index === Number(value) - 1,
-          ).map((text) => (
-            <Suggestion.Option key={text}>{text}</Suggestion.Option>
+          ).map((label) => (
+            <Suggestion.Option key={label}>{label}</Suggestion.Option>
           ))}
         </Suggestion.List>
       </Suggestion>
@@ -182,16 +192,19 @@ export const CustomFilterAlt2: StoryFn<typeof Suggestion> = (args) => {
 };
 
 export const AlwaysShowAll: StoryFn<typeof Suggestion> = (args) => {
-  const [value, setValue] = useState('Sogndal');
+  const [value, setValue] = useState<SuggestionValues>('Sogndal');
 
   return (
     <Field>
       <Label>Viser alle options også når valgt</Label>
-      <Suggestion {...args} filter={false}>
-        <Suggestion.Input
-          value={value}
-          onChange={(event) => setValue(event.target.value)}
-        />
+      <Suggestion
+        {...args}
+        value={value}
+        filter={false}
+        onValueChange={(values) => setValue(values)}
+      >
+        <Suggestion.Chips />
+        <Suggestion.Input />
         <Suggestion.Clear />
         <Suggestion.List>
           <Suggestion.Empty>Tomt</Suggestion.Empty>
@@ -208,12 +221,9 @@ export const FetchExternal: StoryFn<typeof Suggestion> = (args) => {
   const [value, setValue] = useState('');
   const [options, setOptions] = useState<string[] | null>(null);
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const isTyping = (event.nativeEvent as InputEvent).inputType;
+  const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
     const value = encodeURIComponent(event.target.value.trim());
     setValue(event.target.value);
-
-    if (!isTyping) return; // Prevent API call if clicking on items in list
     setOptions(null); // Clear options
 
     if (!value) return;
@@ -235,10 +245,11 @@ export const FetchExternal: StoryFn<typeof Suggestion> = (args) => {
     <Field lang='en'>
       <Label>Search for countries (in english)</Label>
       <Suggestion {...args} filter={false}>
-        <Suggestion.Input value={value} onChange={handleChange} />
+        <Suggestion.Chips />
+        <Suggestion.Input onInput={handleInput} />
         <Suggestion.Clear />
         <Suggestion.List singular='%d country' plural='%d countries'>
-          {!!value && (
+          {value ? (
             <Suggestion.Empty>
               {options ? (
                 'Ingen treff'
@@ -248,7 +259,7 @@ export const FetchExternal: StoryFn<typeof Suggestion> = (args) => {
                 </span>
               )}
             </Suggestion.Empty>
-          )}
+          ) : null}
           {options?.map((option) => (
             <Suggestion.Option key={option}>{option}</Suggestion.Option>
           ))}
@@ -256,4 +267,54 @@ export const FetchExternal: StoryFn<typeof Suggestion> = (args) => {
       </Suggestion>
     </Field>
   );
+};
+
+FetchExternal.parameters = {
+  docs: {
+    source: {
+      type: 'code',
+    },
+  },
+};
+
+export const DefaultValue: StoryFn<typeof Suggestion> = (args) => {
+  return (
+    <Field>
+      <Label>Velg en destinasjon</Label>
+      <Suggestion {...args} defaultValue={['Sogndal']}>
+        <Suggestion.Chips />
+        <Suggestion.Input />
+        <Suggestion.Clear />
+        <Suggestion.List>
+          <Suggestion.Empty>Tomt</Suggestion.Empty>
+          {DATA_PLACES.map((place) => (
+            <Suggestion.Option key={place}>{place}</Suggestion.Option>
+          ))}
+        </Suggestion.List>
+      </Suggestion>
+    </Field>
+  );
+};
+
+export const Multiple: StoryFn<typeof Suggestion> = (args) => {
+  return (
+    <Field>
+      <Label>Velg en destinasjon</Label>
+      <Suggestion {...args}>
+        <Suggestion.Chips />
+        <Suggestion.Input />
+        <Suggestion.Clear />
+        <Suggestion.List>
+          <Suggestion.Empty>Tomt</Suggestion.Empty>
+          {DATA_PLACES.map((place) => (
+            <Suggestion.Option key={place}>{place}</Suggestion.Option>
+          ))}
+        </Suggestion.List>
+      </Suggestion>
+    </Field>
+  );
+};
+
+Multiple.args = {
+  multiple: true,
 };

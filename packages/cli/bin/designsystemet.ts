@@ -6,8 +6,8 @@ import { convertToHex } from '../src/colors/index.js';
 import type { CssColor } from '../src/colors/types.js';
 import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
-import { cliOptions, createTokens } from '../src/tokens/create.js';
 import { writeTokens } from '../src/tokens/create/write.js';
+import { cliOptions, createTokens } from '../src/tokens/create.js';
 import type { Theme } from '../src/tokens/types.js';
 import { cleanDir } from '../src/utils.js';
 import { parseBuildConfig, parseCreateConfig, readConfigFile } from './config.js';
@@ -37,8 +37,10 @@ function makeTokenCommands() {
     .option('-p, --preview', 'Generate preview token.ts files', false)
     .option('--verbose', 'Enable verbose output', false)
     .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILE}")`)
+    .option('--experimental-tailwind', 'Generate Tailwind CSS classes for tokens', false)
+
     .action(async (opts) => {
-      const { preview, verbose, clean, dry } = opts;
+      const { preview, verbose, clean, dry, experimentalTailwind } = opts;
       const tokensDir = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_CREATE_DIR;
       const outDir = typeof opts.outDir === 'string' ? opts.outDir : './dist/tokens';
 
@@ -53,7 +55,7 @@ function makeTokenCommands() {
         await cleanDir(outDir, dry);
       }
 
-      await buildTokens({ tokensDir, outDir, preview, verbose, dry, ...config });
+      await buildTokens({ tokensDir, outDir, preview, verbose, dry, tailwind: experimentalTailwind, ...config });
 
       return Promise.resolve();
     });
@@ -151,7 +153,7 @@ function parseColorValues(value: string, previous: Record<string, CssColor> = {}
   return previous;
 }
 
-function parseBoolean(value: string | boolean, previous: boolean): boolean {
+function parseBoolean(value: string | boolean): boolean {
   return value === 'true' || value === true;
 }
 

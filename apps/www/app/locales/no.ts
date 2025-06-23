@@ -145,6 +145,7 @@ export default {
     description:
       'Her deler vi god praksis med hverandre. Råd og veiledning som kan bidra til å lage bedre helhetlige tjenester samles her.',
     back: 'Tilbake',
+    'breadcrumbs-label': 'Du er her:',
   },
   mdx: {
     error: {

@@ -1,3 +1,4 @@
+import type { UseFloatingReturn } from '@floating-ui/react';
 import {
   autoUpdate,
   flip,
@@ -9,9 +10,8 @@ import {
   useListNavigation,
   useRole,
 } from '@floating-ui/react';
-import type { UseFloatingReturn } from '@floating-ui/react';
-import { useState } from 'react';
 import type { RefObject } from 'react';
+import { useState } from 'react';
 import { flushSync } from 'react-dom';
 
 import { useComboboxId, useComboboxIdDispatch } from './ComboboxIdContext';

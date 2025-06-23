@@ -1,9 +1,8 @@
-import * as R from 'ramda';
-
 import chalk from 'chalk';
-import pkg from '../../../package.json' with { type: 'json' };
-import type { OutputFile } from '../types.js';
-import type { ProcessReturn } from './platform.js';
+import * as R from 'ramda';
+import pkg from '../../../../package.json' with { type: 'json' };
+import type { OutputFile } from '../../types.js';
+import type { ProcessReturn } from '../platform.js';
 
 export const defaultFileHeader = `build: v${pkg.version}`;
 
@@ -35,7 +34,7 @@ export const createThemeCSSFiles = ({
 }: CreateThemeCSSFiles): OutputFile[] => {
   const groupedByTheme: Record<string, OutputFile[]> = {};
 
-  for (const [_, buildResults] of Object.entries(R.dissoc('types', processedBuilds))) {
+  for (const [_, buildResults] of Object.entries(processedBuilds)) {
     for (const buildResult of buildResults) {
       const themeName = buildResult.permutation.theme;
       const newOutputs = buildResult.formatted;

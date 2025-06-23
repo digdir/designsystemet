@@ -1,6 +1,7 @@
 // https://github.com/floating-ui/floating-ui/blob/master/packages/react/src/hooks/useMergeRefs.ts
-import { useCallback, useMemo, useRef } from 'react';
+
 import type { Ref, RefCallback, RefObject } from 'react';
+import { useCallback, useMemo, useRef } from 'react';
 /**
  * Merges an array of refs into a single memoized callback ref or `null`.
  */

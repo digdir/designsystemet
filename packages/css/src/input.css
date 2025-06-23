@@ -62,7 +62,7 @@
   }
 
   /* Round border-width up to nearest 1px if supported */
-  @supports (width: round(down, .1em, 1px)) {
+  @supports (width: round(down, 0.1em, 1px)) {
     border-width: round(up, var(--dsc-input-border-width), 0.0625rem);
   }
 
@@ -80,8 +80,9 @@
         var(--_dsc-input-diagonal-4)
       ), linear-gradient(-45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4));
     background-position: calc(100% - 1.2em + var(--dsc-input-stroke-width)), calc(100% - 0.8em);
-    background-size: .4em .4em;
+    background-size: 0.4em 0.4em;
     background-repeat: no-repeat;
+    text-overflow: ellipsis; /* Enable ellipsis when <select> */
     :dir(rtl) & {
       background-position: calc(1.2em - var(--dsc-input-stroke-width)), calc(0% + 0.8em);
     }
@@ -201,8 +202,12 @@
   &[type='checkbox']:checked {
     background-origin: content-box;
     background-repeat: no-repeat;
-    background-position: 10% 73%, 90% 50%;
-    background-size: 35% 35%, 65% 65%;
+    background-position:
+      10% 73%,
+      90% 50%;
+    background-size:
+      35% 35%,
+      65% 65%;
     background-image: linear-gradient(
         45deg,
         var(--_dsc-input-diagonal-1),

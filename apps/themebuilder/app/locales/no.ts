@@ -16,8 +16,9 @@ export default {
       details: 'En uventet feil oppstod.',
     },
     '404': {
-      title: '404',
-      details: 'Siden du leter etter finnes ikke.',
+      title: 'Beklager, vi fant ikke siden',
+      details:
+        'Denne siden kan være slettet eller flyttet, eller det er en feil i lenken.',
     },
     generic: {
       title: 'Feil',
@@ -116,6 +117,7 @@ export default {
       'for å oppdatere et tema direkte i Figma. Les mer om disse alternativene på',
     'own-theme': 'eget tema (åpnes i ny fane)',
     page: 'siden.',
+    format: 'Formatering for Windows',
     'step-two': 'Kjør kodesnutten for å generere CSS variabler til kode.',
     'help-heading': 'Noe som ikke fungerer?',
     'help-description': 'Send oss en melding på',

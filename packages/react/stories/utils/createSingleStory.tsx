@@ -1,12 +1,15 @@
 import {
+  composeStories,
   type Meta,
   type ReactRenderer,
   type StoryFn,
   type StoryObj,
-  composeStories,
-} from '@storybook/react';
-import type { Store_CSFExports, StoryAnnotationsOrFn } from '@storybook/types';
-import { type PropsWithChildren, createElement } from 'react';
+} from '@storybook/react-vite';
+import { createElement, type PropsWithChildren } from 'react';
+import type {
+  Store_CSFExports,
+  StoryAnnotationsOrFn,
+} from 'storybook/internal/types';
 
 type Story<T> = StoryObj<T> | StoryFn<T>;
 
@@ -47,14 +50,24 @@ export function createSingleStory<
             );
             const args = { ...story.args, key: storyName };
             if (typeof story === 'function') {
-              return <StoryStyles>{story(args, context)}</StoryStyles>;
+              return (
+                <StoryStyles key={storyName}>
+                  {story(args, context)}
+                </StoryStyles>
+              );
             }
             if (story.render) {
-              return <StoryStyles>{story.render(args, context)}</StoryStyles>;
+              return (
+                <StoryStyles key={storyName}>
+                  {story.render(args, context)}
+                </StoryStyles>
+              );
             }
             if (meta.component) {
               return (
-                <StoryStyles>{createElement(meta.component, args)}</StoryStyles>
+                <StoryStyles key={storyName}>
+                  {createElement(meta.component, args)}
+                </StoryStyles>
               );
             }
           })}

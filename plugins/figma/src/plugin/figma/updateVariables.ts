@@ -1,6 +1,7 @@
 import { hexToRgb, rgbToHex } from '@digdir/designsystemet/color';
 
-import type { ColorIndex, ColorTheme, StoreThemes } from '../../common/store';
+import type { ColorIndex, StoreThemes } from '../../common/store';
+import type { ColorTheme } from '../../common/utils';
 
 const updateColors = (
   themes: StoreThemes,
@@ -8,8 +9,6 @@ const updateColors = (
   lightModeId: string,
   darkModeId: string,
   modeCollection: VariableCollection,
-  themeCollection: VariableCollection,
-  variables: Variable[],
 ) => {
   const themeName = variable.name.split('/')[0];
   const themeType = variable.name.split('/')[1];
@@ -73,15 +72,7 @@ export const updateVariables = async (themes: StoreThemes) => {
 
     try {
       for (const variable of variables) {
-        updateColors(
-          themes,
-          variable,
-          lightModeId,
-          darkModeId,
-          modeCollection,
-          themeCollection,
-          variables,
-        );
+        updateColors(themes, variable, lightModeId, darkModeId, modeCollection);
       }
       figma.ui.postMessage({ type: 'updateVariables' });
     } catch (error) {

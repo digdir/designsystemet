@@ -1,9 +1,8 @@
 import type { ButtonProps } from '@digdir/designsystemet-react';
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { ContentContainer } from '@internal/components';
 import cl from 'clsx/lite';
 import type React from 'react';
-
-import { ContentContainer } from '@internal/components';
 import type { HTMLAttributes } from 'react';
 import { RRLink } from '../link';
 import classes from './image-banner.module.css';
@@ -56,7 +55,7 @@ const ImageBanner = ({
   ...rest
 }: ImageBannerProps) => {
   return (
-    <div
+    <section
       className={cl(classes[backgroundColor], classes.section, className)}
       {...rest}
     >
@@ -143,7 +142,7 @@ const ImageBanner = ({
           </div>
         )}
       </ContentContainer>
-    </div>
+    </section>
   );
 };
 

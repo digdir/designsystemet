@@ -1,10 +1,10 @@
-import { Button } from '@digdir/designsystemet-react';
 import type { ColorScheme } from '@digdir/designsystemet/color';
+import { Button } from '@digdir/designsystemet-react';
 import { MoonIcon, SunIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useThemeStore } from '~/store';
+import { useSearchParams } from 'react-router';
+import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from './appearance-toggle.module.css';
 
 type AppearanceToggleProps = {
@@ -23,43 +23,45 @@ export const AppearanceToggle = ({
     { name: t('appearanceToggle.dark'), value: 'dark' },
   ];
 
-  const colorScheme = useThemeStore((state) => state.colorScheme);
-  const setColorScheme = useThemeStore((state) => state.setColorScheme);
-
-  const [active, setActive] = useState(colorScheme);
-
-  useEffect(() => {
-    setActive(colorScheme);
-  }, [colorScheme]);
+  const { colorScheme } = useThemebuilder();
+  const [, setQuery] = useSearchParams();
 
   return (
     <div className={classes.toggle} role='radiogroup'>
-      {colorSchemes.map((colorScheme) => (
+      {colorSchemes.map((scheme) => (
         <Button
           data-size='sm'
           className={cl(classes.item)}
-          key={colorScheme.value}
+          key={scheme.value}
           onClick={() => {
-            setActive(colorScheme.value);
-            setColorScheme(colorScheme.value);
+            setQuery(
+              (prev) => {
+                prev.set('appearance', scheme.value);
+                return prev;
+              },
+              {
+                replace: true,
+                preventScrollReset: true,
+              },
+            );
           }}
-          variant={colorScheme.value === active ? 'primary' : 'secondary'}
+          variant={scheme.value === colorScheme ? 'primary' : 'secondary'}
           data-color='neutral'
-          aria-label={`${t('appearanceToggle.set-to')} ${colorScheme.name} ${t('appearanceToggle.view')}`}
-          // biome-ignore lint/a11y/useSemanticElements: <explanation>
+          aria-label={`${t('appearanceToggle.set-to')} ${scheme.name} ${t('appearanceToggle.view')}`}
+          // biome-ignore lint/a11y/useSemanticElements: explanation needed
           role='radio'
-          aria-checked={colorScheme.value === active}
-          aria-current={colorScheme.value === active}
+          aria-checked={scheme.value === colorScheme}
+          aria-current={scheme.value === colorScheme}
         >
           {' '}
-          {colorScheme.value === 'light' && (
+          {scheme.value === 'light' && (
             <SunIcon aria-hidden fontSize='1.5rem' />
           )}
-          {colorScheme.value === 'dark' && (
+          {scheme.value === 'dark' && (
             <MoonIcon aria-hidden fontSize='1.5rem' />
           )}
-          {colorScheme.name}
-          {showLabel && <>{colorScheme.name}</>}
+          {scheme.name}
+          {showLabel && <>{scheme.name}</>}
         </Button>
       ))}
     </div>

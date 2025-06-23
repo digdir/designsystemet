@@ -38,12 +38,12 @@ Dropdown.Item.displayName = 'Dropdown.Item';
 Dropdown.Button.displayName = 'Dropdown.Button';
 Dropdown.Trigger.displayName = 'Dropdown.Trigger';
 
-export type { DropdownTriggerContextProps } from './DropdownTriggerContext';
-export type { DropdownListProps } from './DropdownList';
+export type { DropdownProps } from './Dropdown';
+export type { DropdownButtonProps } from './DropdownButton';
 export type { DropdownHeadingProps } from './DropdownHeading';
 export type { DropdownItemProps } from './DropdownItem';
-export type { DropdownButtonProps } from './DropdownButton';
-export type { DropdownProps } from './Dropdown';
+export type { DropdownListProps } from './DropdownList';
+export type { DropdownTriggerContextProps } from './DropdownTriggerContext';
 export {
   Dropdown,
   DropdownTriggerContext,

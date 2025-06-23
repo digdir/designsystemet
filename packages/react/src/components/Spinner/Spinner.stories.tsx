@@ -1,7 +1,6 @@
-import type { Meta, StoryFn } from '@storybook/react';
-
-import { Spinner } from '.';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import themeConfig from '../../../../theme/configs/designsystemet.config.json';
+import { Spinner } from '.';
 
 type Story = StoryFn<typeof Spinner>;
 

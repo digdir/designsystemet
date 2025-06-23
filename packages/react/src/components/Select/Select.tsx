@@ -1,6 +1,6 @@
 import cl from 'clsx/lite';
-import { forwardRef } from 'react';
 import type { SelectHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 

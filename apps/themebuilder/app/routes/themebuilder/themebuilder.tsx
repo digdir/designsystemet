@@ -3,22 +3,79 @@ import { Sidebar } from '~/_components/sidebar/sidebar';
 import { ThemeHeader } from '~/_components/theme-header/theme-header';
 import { ColorModalProvider } from '~/_utils/color-modal-context';
 import { ThemePages } from './_components/theme-pages';
-import { useThemeParams } from './_utils/useThemeParams';
 import classes from './page.module.css';
 import 'react-color-palette/css';
+import type { ColorScheme, CssColor } from '@digdir/designsystemet';
+import themeConfig from '@digdir/designsystemet-theme/configs/designsystemet.config.json';
+import { parsePath, redirect } from 'react-router';
+import { isProduction } from '~/_utils/is-production.server';
 import { generateMetadata } from '~/_utils/metadata';
 import i18n from '~/i18next.server';
+import {
+  createColorsAndNeutralVariables,
+  createColorsFromQuery,
+  QUERY_SEPARATOR,
+} from './_utils/use-themebuilder';
 import type { Route } from './+types/themebuilder';
 
-export const loader = async ({ params: { lang } }: Route.ComponentProps) => {
+const toQueryString = (obj: Record<string, string>) =>
+  Object.entries(obj)
+    .map(([key, value]) => `${key}:${value}`)
+    .join(QUERY_SEPARATOR);
+const THEME = themeConfig.themes.designsystemet.colors;
+const MAIN_COLORS = toQueryString(THEME.main);
+const SUPPORT_COLORS = toQueryString(THEME.support);
+const NEUTRAL_COLOR = THEME.neutral;
+
+export const loader = async ({
+  params: { lang },
+  request,
+}: Route.LoaderArgs) => {
   const t = await i18n.getFixedT(lang);
 
+  const { search } = parsePath(request.url);
+  const urlParams = new URLSearchParams(search);
+
+  /* if we have no params, push some default values */
+  if (urlParams.toString() === '') {
+    const newParams = new URLSearchParams({
+      main: MAIN_COLORS,
+      neutral: NEUTRAL_COLOR,
+      support: SUPPORT_COLORS,
+      appearance: 'light',
+      'border-radius': '4',
+      tab: 'overview',
+    });
+
+    return redirect(`/${lang}/themebuilder?${newParams.toString()}`);
+  }
+
+  const colors = {
+    main: createColorsFromQuery(urlParams.get('main') || MAIN_COLORS) || [],
+    neutral: [
+      {
+        name: 'neutral',
+        ...createColorsAndNeutralVariables(
+          (urlParams.get('neutral') as CssColor) || NEUTRAL_COLOR,
+        ),
+        hex: (urlParams.get('neutral') as CssColor) || NEUTRAL_COLOR,
+      },
+    ],
+    support:
+      createColorsFromQuery(urlParams.get('support') || SUPPORT_COLORS) || [],
+  };
+
   return {
+    colors,
+    colorScheme: (urlParams.get('appearance') || 'light') as ColorScheme,
+    baseBorderRadius: parseInt(urlParams.get('border-radius') || '4'),
+    tab: urlParams.get('tab') || 'overview',
     lang,
     metadata: generateMetadata({
       title: t('meta.title'),
       description: t('meta.description'),
     }),
+    isProduction: isProduction(),
   };
 };
 
@@ -26,7 +83,7 @@ export const meta: Route.MetaFunction = ({ data }: Route.MetaArgs) => {
   if (!data?.metadata)
     return [
       {
-        title: 'Theme Builder',
+        title: 'Theme Builder - Designsystemet',
         description: 'Build your own theme for Designsystemet',
       },
     ];
@@ -50,12 +107,6 @@ export default function Page() {
           </div>
         </div>
       </main>
-      <ParamsComponent />
     </ColorModalProvider>
   );
 }
-
-const ParamsComponent = () => {
-  useThemeParams();
-  return null;
-};

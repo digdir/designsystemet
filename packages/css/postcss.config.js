@@ -18,7 +18,7 @@ function postcssComposes() {
   return {
     postcssPlugin: '@composes', // Allows `@composes classname from './file.css'` directive
     AtRule: {
-      composes: async (rule, { AtRule }) => {
+      composes: async (rule) => {
         const cache = {};
         const sanitizedParams = rule.params.replace(/["']/g, '').trim();
         const [selector, from] = sanitizedParams.split(/\s+from\s+/);

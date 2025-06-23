@@ -1,4 +1,3 @@
-export * from './omit/omit';
 export type {
   UseCheckboxGroupProps,
   UsePaginationProps,
@@ -6,12 +5,13 @@ export type {
 } from './hooks';
 export {
   useCheckboxGroup,
-  useRadioGroup,
-  usePagination,
   useDebounceCallback,
   useIsomorphicLayoutEffect,
   useMediaQuery,
+  usePagination,
+  useRadioGroup,
   useSynchronizedAnimation,
 } from './hooks';
+export * from './omit/omit';
 export * from './RovingFocus';
 export type * from './types';

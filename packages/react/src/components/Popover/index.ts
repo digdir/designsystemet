@@ -22,7 +22,7 @@ Popover.TriggerContext.displayName = 'Popover.TriggerContext';
 Popover.Trigger.displayName = 'Popover.Trigger';
 
 export type { PopoverProps } from './Popover';
-export type { PopoverTriggerContextProps } from './PopoverTriggerContext';
 export type { PopoverTriggerProps } from './PopoverTrigger';
+export type { PopoverTriggerContextProps } from './PopoverTriggerContext';
 
 export { Popover, PopoverTriggerContext, PopoverTrigger };

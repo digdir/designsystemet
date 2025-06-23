@@ -1,9 +1,9 @@
 import cat1 from '@assets/img/cats/Cat 1.jpg';
 import cat5 from '@assets/img/cats/Cat 5.jpg';
-import type { Meta, StoryFn } from '@storybook/react';
-import type { CardProps } from '.';
-import { Card, Heading, Paragraph } from '../../';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import themeConfig from '../../../../theme/configs/designsystemet.config.json';
+import { Card, Heading, Paragraph } from '../../';
+import type { CardProps } from '.';
 
 type Story = StoryFn<typeof Card>;
 

@@ -1,6 +1,6 @@
-import type { Meta } from '@storybook/react';
-import { Divider } from '.';
+import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
+import { Divider } from '.';
 import * as DividerStories from './Divider.stories';
 
 const meta: Meta = {

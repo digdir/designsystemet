@@ -1,3 +1,9 @@
+import type { Color, CssColor } from '@digdir/designsystemet/color';
+import {
+  type CreateTokensOptions,
+  cliOptions,
+  formatThemeCSS,
+} from '@digdir/designsystemet/tokens';
 import {
   Button,
   Dialog,
@@ -6,20 +12,15 @@ import {
   Input,
   Link,
   Paragraph,
+  Switch,
 } from '@digdir/designsystemet-react';
-import {
-  type CreateTokensOptions,
-  cliOptions,
-  formatThemeCSS,
-} from '@digdir/designsystemet/tokens';
+import { CodeBlock } from '@internal/components';
 import { InformationSquareIcon, StarIcon } from '@navikt/aksel-icons';
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import type { Color, CssColor } from '@digdir/designsystemet/color';
-import { CodeBlock } from '@internal/components';
-import { isProduction } from '~/_utils/is-production';
-import { type ColorTheme, useThemeStore } from '~/store';
+import { useLoaderData } from 'react-router';
+import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
+import type { ColorTheme } from '~/store';
 import classes from './token-modal.module.css';
 
 const colorCliOptions = cliOptions.theme.colors;
@@ -33,13 +34,16 @@ const FEAT_THEME_CSS = false; // TODO set to false before merging
 export const TokenModal = () => {
   const { t } = useTranslation();
   const modalRef = useRef<HTMLDialogElement>(null);
+  const { isProduction } = useLoaderData();
 
   // Use separate selectors for better performance
-  const colors = useThemeStore((state) => state.colors);
-  const baseBorderRadius = useThemeStore((state) => state.baseBorderRadius);
+  const { colors, baseBorderRadius } = useThemebuilder();
 
   const [themeName, setThemeName] = useState('theme');
   const [themeCSS, setThemeCSS] = useState('');
+  const [formatWin, setFormatWin] = useState(
+    navigator.userAgent.includes('Windows'),
+  );
 
   const setCliColors = (colorTheme: ColorTheme[]) => {
     if (!colorTheme.length) return '';
@@ -54,9 +58,9 @@ export const TokenModal = () => {
     );
   };
 
-  const packageWithTag = `@digdir/designsystemet${isProduction() ? '' : '@next'}`;
-
+  const packageWithTag = `@digdir/designsystemet${isProduction ? '@latest' : '@next'}`;
   const buildSnippet = `npx ${packageWithTag} tokens build`;
+  const seperator = formatWin ? ' ^\n' : ' \\\n';
 
   const cliSnippet = [
     `npx ${packageWithTag} tokens create`,
@@ -67,7 +71,7 @@ export const TokenModal = () => {
     `--theme "${themeName}"`,
   ]
     .filter(Boolean)
-    .join(' \\\n');
+    .join(seperator);
 
   const theme: CreateTokensOptions = {
     name: themeName,
@@ -197,6 +201,15 @@ export const TokenModal = () => {
                 </Paragraph>
               </div>
               <div className={classes.snippet}>
+                <Switch
+                  style={{ marginInlineStart: 'auto', width: 'fit-content' }}
+                  position='end'
+                  label={t('themeModal.format')}
+                  checked={formatWin}
+                  onChange={(e) => {
+                    setFormatWin(e.currentTarget.checked);
+                  }}
+                />
                 <CodeBlock language='bash'>{cliSnippet}</CodeBlock>
               </div>
               <div

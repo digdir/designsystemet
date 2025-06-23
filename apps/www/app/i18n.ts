@@ -1,5 +1,5 @@
-import en from '~/locales/en';
-import no from '~/locales/no';
+import en from './locales/en';
+import no from './locales/no';
 
 export default {
   supportedLngs: ['en', 'no'],

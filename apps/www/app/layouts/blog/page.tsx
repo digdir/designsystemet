@@ -1,6 +1,6 @@
 import { ContentContainer, Error404 } from '@internal/components';
 import { useTranslation } from 'react-i18next';
-import { Outlet, isRouteErrorResponse } from 'react-router';
+import { isRouteErrorResponse, Outlet } from 'react-router';
 import type { Route } from './+types/layout';
 
 export default function BlogLayout() {

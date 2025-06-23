@@ -1,7 +1,7 @@
 import {
   existsSync,
-  readFileSync,
   readdirSync,
+  readFileSync,
   statSync,
   writeFileSync,
 } from 'node:fs';
@@ -10,6 +10,7 @@ import { cwd } from 'node:process';
 import type { Config } from '@react-router/dev/config';
 import { vercelPreset } from '@vercel/react-router/vite';
 import { normalizePath } from 'vite';
+import i18nConf from './app/i18n';
 
 const config: Config = {
   ssr: true,
@@ -87,6 +88,18 @@ const config: Config = {
     } catch (error) {
       console.error(`Error writing manifest file: ${error}`);
     }
+
+    /* Generate robots.txt if not production */
+    if (process.env.NEXT_PUBLIC_DESIGNSYSTEMET_ENV !== 'production') {
+      const robotsPath = join(dirname, 'public', 'robots.txt');
+      const robotsContent = `User-agent: *\nDisallow: /`;
+
+      try {
+        writeFileSync(robotsPath, robotsContent);
+      } catch (error) {
+        console.error(`Error writing robots.txt file: ${error}`);
+      }
+    }
   },
 };
 
@@ -97,7 +110,7 @@ const dirname = cwd();
 const getContentPathsWithLanguages = (): string[] => {
   const contentBasePath = join(dirname, './app/content');
   const paths: string[] = [];
-  const supportedLanguages = ['no', 'en']; // Adjust as needed
+  const supportedLanguages = i18nConf.supportedLngs;
 
   try {
     // First, get all top-level content folders (e.g., patterns, blog, etc.)

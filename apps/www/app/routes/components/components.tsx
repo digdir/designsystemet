@@ -10,6 +10,7 @@ import {
 import { ComponentCard } from '~/_components/component-card/component-card';
 import { generateMetadata } from '~/_utils/metadata';
 import { data } from '~/content/components';
+import i18nConf from '~/i18n';
 import i18n from '~/i18next.server';
 import type { Route } from './+types/components';
 import classes from './components.module.css';
@@ -30,6 +31,13 @@ if (IS_NEXT_BRANCH) {
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   if (!lang) {
+    throw new Response('Not Found', {
+      status: 404,
+      statusText: 'Not Found',
+    });
+  }
+
+  if (!i18nConf.supportedLngs.includes(lang)) {
     throw new Response('Not Found', {
       status: 404,
       statusText: 'Not Found',

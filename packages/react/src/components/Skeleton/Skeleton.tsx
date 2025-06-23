@@ -1,9 +1,8 @@
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
-import { type HTMLAttributes, forwardRef } from 'react';
-import { useMergeRefs } from '../../utilities/hooks';
-
+import { forwardRef, type HTMLAttributes } from 'react';
 import { useSynchronizedAnimation } from '../../utilities';
+import { useMergeRefs } from '../../utilities/hooks';
 
 export type SkeletonProps = {
   /**

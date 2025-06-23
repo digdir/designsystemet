@@ -1,10 +1,8 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import { expect, userEvent, within } from '@storybook/test';
-import { useEffect, useState } from 'react';
-
-import { Button, Paragraph } from '../..';
-
 import { TrashIcon } from '@navikt/aksel-icons';
+import type { Meta, StoryFn } from '@storybook/react-vite';
+import { useEffect, useState } from 'react';
+import { expect, userEvent, within } from 'storybook/test';
+import { Button, Paragraph } from '../..';
 import { Popover } from '.';
 
 export default {

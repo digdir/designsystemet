@@ -1,13 +1,7 @@
-import { useState } from 'react';
-
-import {
-  type ColorScheme,
-  type CssColor,
-  generateColorSchemes,
-} from '@digdir/designsystemet';
+import type { ColorScheme, CssColor } from '@digdir/designsystemet';
 import { ToggleGroup } from '@digdir/designsystemet-react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { generateColorVars } from '~/_utils/generate-color-vars';
 import { OverviewComponents } from '../overview-components/overview-components';
 import classes from './previews.module.css';
 
@@ -37,15 +31,6 @@ export const Previews = () => {
   const { t } = useTranslation();
   const [theme, setTheme] = useState<keyof typeof themes>('blue');
   const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
-
-  const getThemeVariables = (hex: CssColor) => {
-    const generatedTheme = generateColorSchemes(hex);
-    const vars = {} as Record<string, string>;
-
-    Object.assign(vars, generateColorVars(generatedTheme, colorScheme));
-
-    return vars;
-  };
 
   return (
     <>
