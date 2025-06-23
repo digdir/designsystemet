@@ -156,4 +156,8 @@ export default {
   video: {
     'watch-video': 'Watch video on vimeo.com',
   },
+  'image-banner': {
+    'play-video': 'Play video',
+    'pause-video': 'Pause video',
+  },
 } satisfies typeof no;

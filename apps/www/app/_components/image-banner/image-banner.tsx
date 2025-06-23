@@ -6,6 +6,7 @@ import cl from 'clsx/lite';
 import type React from 'react';
 import type { HTMLAttributes } from 'react';
 import { useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { RRLink } from '../link';
 import classes from './image-banner.module.css';
 
@@ -58,6 +59,7 @@ const ImageBanner = ({
 }: ImageBannerProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
+  const { t } = useTranslation();
 
   const togglePlayPause = () => {
     if (videoRef.current) {
@@ -103,7 +105,11 @@ const ImageBanner = ({
                 className={classes.videoControl}
                 data-size='sm'
                 onClick={togglePlayPause}
-                aria-label={isPlaying ? 'Pause video' : 'Play video'}
+                aria-label={
+                  isPlaying
+                    ? t('image-banner.pause-video')
+                    : t('image-banner.play-video')
+                }
                 data-color='neutral'
                 icon
               >
