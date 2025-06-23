@@ -227,6 +227,7 @@ const arrowPseudoElement = {
 
     elements.floating.style.setProperty('--dsc-tooltip-arrow-x', arrowX);
     elements.floating.style.setProperty('--dsc-tooltip-arrow-y', arrowY);
+    elements.floating.setAttribute('data-placement', placement);
     return data;
   },
 };
