@@ -126,6 +126,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
                 : []),
               shift(),
               arrowPseudoElement,
+              safeAreaElement,
             ],
           }).then(({ x, y }) => {
             tooltip.style.translate = `${x}px ${y}px`;
@@ -181,6 +182,8 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
           {children}
         </ChildContainer>
         <span
+          onMouseEnter={setOpen}
+          onMouseLeave={setClose}
           ref={mergedRefs}
           role='tooltip'
           className={cl('ds-tooltip', className)}
@@ -224,6 +227,47 @@ const arrowPseudoElement = {
 
     elements.floating.style.setProperty('--dsc-tooltip-arrow-x', arrowX);
     elements.floating.style.setProperty('--dsc-tooltip-arrow-y', arrowY);
+    return data;
+  },
+};
+
+const safeAreaElement = {
+  name: 'SafeAreaElement',
+  fn(data: MiddlewareState) {
+    const { elements, placement } = data;
+
+    let width = '100%';
+    let height = 'var(--dsc-tooltip-arrow-size)';
+    let translate = '0px';
+
+    switch (placement) {
+      case 'top':
+        translate = `-50% 0%`;
+        break;
+      case 'right':
+        height = '100%';
+        width = 'var(--dsc-tooltip-arrow-size)';
+        translate = '-100% -50%';
+        break;
+      case 'bottom':
+        translate = '-50% -100%';
+        break;
+      case 'left':
+        height = '100%';
+        width = 'var(--dsc-tooltip-arrow-size)';
+        translate = '0 -50%';
+        break;
+    }
+
+    elements.floating.style.setProperty(
+      '--_dsc-tooltip-safearea-height',
+      height,
+    );
+    elements.floating.style.setProperty('--_dsc-tooltip-safearea-width', width);
+    elements.floating.style.setProperty(
+      '--_dsc-tooltip-safearea-translate',
+      translate,
+    );
     return data;
   },
 };
