@@ -169,5 +169,3 @@ const ImageBanner = ({
 
 export type { ImageBannerButtonProps, ImageBannerProps };
 export { ImageBanner };
-
-;
