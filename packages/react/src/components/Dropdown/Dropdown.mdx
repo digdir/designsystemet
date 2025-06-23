@@ -65,6 +65,19 @@ Du må da legge til `popovertarget={id}` på `Dropdown`, og `id` på `Dropdown`.
 
 <Canvas of={DropdownStories.WithoutTrigger} />
 
+### React og `popovertarget`
+
+Når du bruker `popover` uten `Dropdown.TriggerContext`, kobler du selv sammen utløseren og `popover`.
+Da brukes `popovertarget` i små bokstaver, slik at alle versjoner av React korrekt gjengir attributtet.
+Når du bruker `@digdir/designsystemet-react` utvider vi `@types/react-dom` til å akseptere dette.
+
+### Polyfill
+
+`Dropdown` bruker [popover](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover). Dette apiet er klassifisert som [Baseline: 
+Newly available](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) fra april 2024, 
+med Firefox som siste nettleser la det til. I noen tilfeller kan en oppleve at brukere av ulike grunner er låst til eldre nettleserversjoner, og da kan det være aktuelt å legge til en polyfill for å sikre at `Dropdown` fungerer for alle.
+* [Popover-Polyfill](https://github.com/oddbird/popover-polyfill)
+
 ## Tilgjengelighet
 
 Det er innebygd tilgjengelighet i [Popover APIet](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) i henhold til åpne/lukket tilstand og tastatur navigasjon.
@@ -78,22 +91,11 @@ Vi har [`RovingFocus`](/docs/utilities-rovingfocus--docs) som er en hjelpekompon
 
 Dersom du bruker `Dropdown` uten å gjøre noe selv, vil fokuserbare elementer i `Dropdown.List` kunne navigeres med tabulator-tasten, og du kan lukke `Dropdown` med Escape-tasten.
 
-## React og `popovertarget`
-
-Når du bruker `popover` uten `Dropdown.TriggerContext`, kobler du selv sammen utløseren og `popover`.
-Da brukes `popovertarget` i små bokstaver, slik at alle versjoner av React korrekt gjengir attributtet.
-Når du bruker `@digdir/designsystemet-react` utvider vi `@types/react-dom` til å akseptere dette.
-
-## Polyfill
-
-`Dropdown` bruker [popover](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover). Dette apiet er klassifisert som [Baseline: Newly available](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) fra april 2024, da Firefox som siste nettleser la det til. I noen tilfeller kan en oppleve at brukere av ulike grunner er låst til eldre nettleserversjoner, og da kan det være aktuelt å legge til en polyfill for å sikre at `Dropdown` fungerer for alle.
-* [Popover-Polyfill](https://github.com/oddbird/popover-polyfill)
-
 ## `Dropdown.List`
 
 <ArgTypes of={Dropdown.List} />
 
-### `Dropdown.Trigger`
+## `Dropdown.Trigger`
 
 Triggeren er en [Button](/docs/komponenter-button--docs) som standard.
 
