@@ -1,7 +1,7 @@
-import { Paragraph } from '@digdir/designsystemet-react';
+import { Button, Paragraph } from '@digdir/designsystemet-react';
+import { XMarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useEffect, useRef } from 'react';
 import classes from './image.module.css';
 
 interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
@@ -16,61 +16,81 @@ const Image = ({
   caption,
   ...rest
 }: ImageProps) => {
-  const { t } = useTranslation();
-  const [enlarged, setEnlarged] = useState(false);
-  const toggleEnlarged = () => {
-    setEnlarged(!enlarged);
-  };
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (event.key === 'Enter' || event.key === ' ' || event.key === 'Escape') {
-      event.preventDefault();
-      setEnlarged(event.key !== 'Escape' ? !enlarged : false);
+  // Handle dialog open/close
+  const openFullImage = () => {
+    if (dialogRef.current) {
+      dialogRef.current.showModal();
     }
   };
-  // Add event listener for Escape key to close enlarged image
+
+  const closeFullImage = () => {
+    if (dialogRef.current) {
+      dialogRef.current.close();
+    }
+  };
+
+  // Add event listener to handle clicks on the dialog backdrop
   useEffect(() => {
-    const handleEscapeKey = (event: KeyboardEvent) => {
-      if (enlarged && event.key === 'Escape') {
-        setEnlarged(false);
-      }
-    };
+    const dialog = dialogRef.current;
 
-    document.addEventListener('keydown', handleEscapeKey);
+    if (dialog) {
+      const handleClick = (event: MouseEvent) => {
+        const rect = dialog.getBoundingClientRect();
+        const isInDialog =
+          rect.top <= event.clientY &&
+          event.clientY <= rect.top + rect.height &&
+          rect.left <= event.clientX &&
+          event.clientX <= rect.left + rect.width;
 
-    // Disable scrolling when image is enlarged
-    if (enlarged) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
+        if (!isInDialog) {
+          dialog.close();
+        }
+      };
+
+      dialog.addEventListener('click', handleClick);
+
+      return () => {
+        dialog.removeEventListener('click', handleClick);
+      };
     }
+  }, []);
 
-    return () => {
-      document.removeEventListener('keydown', handleEscapeKey);
-      document.body.style.overflow = '';
-    };
-  }, [enlarged]);
   return (
     <figure className={cl(classes.container, boxShadow && classes.boxShadow)}>
       <button
         type='button'
-        className={cl(classes.imageWrapper, enlarged && classes.enlarged)}
-        onClick={toggleEnlarged}
-        onKeyDown={handleKeyDown}
-        aria-label={`${alt}. ${
-          enlarged
-            ? t('image.aria-label.enlarged')
-            : t('image.aria-label.normal')
-        }`}
+        className={classes.imageWrapper}
+        onClick={openFullImage}
+        aria-label={`${alt}. Click to enlarge image.`}
       >
-        {' '}
         <img className={classes.image} src={src} alt={alt} {...rest} />
-        {enlarged && (
-          <span className={classes.enlargedText}>
-            {t('image.enlarged-text')}
-          </span>
-        )}
       </button>
+
+      <dialog
+        ref={dialogRef}
+        className={classes.imageDialog}
+        aria-label={`Enlarged image: ${alt}`}
+      >
+        {/** biome-ignore lint/a11y/noStaticElementInteractions: We still have the close button */}
+        <div className={classes.dialogContent} onClick={closeFullImage}>
+          <img className={classes.dialogImage} src={src} alt={alt} />
+          <Button
+            className={classes.closeButton}
+            onClick={closeFullImage}
+            aria-label='Close enlarged image'
+            icon
+            variant='tertiary'
+          >
+            <XMarkIcon />
+          </Button>
+          <div className={classes.dialogMessage}>
+            Press ESC or click the X button to close
+          </div>
+        </div>
+      </dialog>
+
       {caption && (
         <Paragraph data-size='sm' asChild>
           <figcaption>{caption}</figcaption>
