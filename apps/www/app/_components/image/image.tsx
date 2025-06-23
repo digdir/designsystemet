@@ -1,7 +1,7 @@
 import { Paragraph } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { useEffect, useState } from 'react';
-
+import { useTranslation } from 'react-i18next';
 import classes from './image.module.css';
 
 interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
@@ -16,6 +16,7 @@ const Image = ({
   caption,
   ...rest
 }: ImageProps) => {
+  const { t } = useTranslation();
   const [enlarged, setEnlarged] = useState(false);
   const toggleEnlarged = () => {
     setEnlarged(!enlarged);
@@ -57,14 +58,16 @@ const Image = ({
         onClick={toggleEnlarged}
         onKeyDown={handleKeyDown}
         aria-label={`${alt}. ${
-          enlarged ? 'Click to return to normal size.' : 'Click to enlarge.'
+          enlarged
+            ? t('image.aria-label.enlarged')
+            : t('image.aria-label.normal')
         }`}
       >
         {' '}
         <img className={classes.image} src={src} alt={alt} {...rest} />
         {enlarged && (
           <span className={classes.enlargedText}>
-            Click image or press Escape to close
+            {t('image.enlarged-text')}
           </span>
         )}
       </button>

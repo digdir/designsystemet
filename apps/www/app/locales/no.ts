@@ -155,4 +155,11 @@ export default {
   video: {
     'watch-video': 'Se video på vimeo.com',
   },
+  image: {
+    'enlarged-text': 'Klikk på bildet eller trykk Escape for å lukke',
+    'aria-label': {
+      enlarged: 'Klikk for å gå tilbake til normal størrelse.',
+      normal: 'Klikk for å forstørre.',
+    },
+  },
 };

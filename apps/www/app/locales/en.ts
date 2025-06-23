@@ -156,4 +156,11 @@ export default {
   video: {
     'watch-video': 'Watch video on vimeo.com',
   },
+  image: {
+    'enlarged-text': 'Click the image or press Escape to close',
+    'aria-label': {
+      enlarged: 'Click to return minimize.',
+      normal: 'Click to enlarge.',
+    },
+  },
 } satisfies typeof no;
