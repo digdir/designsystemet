@@ -2,6 +2,7 @@ import { Button, Paragraph } from '@digdir/designsystemet-react';
 import { XMarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import classes from './image.module.css';
 
 interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
@@ -16,6 +17,7 @@ const Image = ({
   caption,
   ...rest
 }: ImageProps) => {
+  const { t } = useTranslation();
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   // Handle dialog open/close
@@ -63,30 +65,26 @@ const Image = ({
         type='button'
         className={classes.imageWrapper}
         onClick={openFullImage}
-        aria-label={`${alt}. Click to enlarge image.`}
+        aria-label={`${alt}. ${t('image.aria-label.normal')}`}
       >
         <img className={classes.image} src={src} alt={alt} {...rest} />
       </button>
 
-      <dialog
-        ref={dialogRef}
-        className={classes.imageDialog}
-        aria-label={`Enlarged image: ${alt}`}
-      >
+      <dialog ref={dialogRef} className={classes.imageDialog}>
         {/** biome-ignore lint/a11y/noStaticElementInteractions: We still have the close button */}
         <div className={classes.dialogContent} onClick={closeFullImage}>
           <img className={classes.dialogImage} src={src} alt={alt} />
           <Button
             className={classes.closeButton}
             onClick={closeFullImage}
-            aria-label='Close enlarged image'
+            aria-label={t('image.aria-label.enlarged')}
             icon
             variant='tertiary'
           >
             <XMarkIcon />
           </Button>
           <div className={classes.dialogMessage}>
-            Press ESC or click the X button to close
+            {t('image.enlarged-text')}
           </div>
         </div>
       </dialog>

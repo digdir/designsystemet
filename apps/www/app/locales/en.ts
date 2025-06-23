@@ -159,7 +159,7 @@ export default {
   image: {
     'enlarged-text': 'Click the image or press Escape to close',
     'aria-label': {
-      enlarged: 'Click to return minimize.',
+      enlarged: 'Click to minimize.',
       normal: 'Click to enlarge.',
     },
   },
