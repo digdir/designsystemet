@@ -2,4 +2,4 @@
 "@digdir/designsystemet-css": patch
 ---
 
-`Suggestion`: fixed wrong padding around `chip` remove-button
+**Suggestion**: Reduced padding around `chip` remove-button
