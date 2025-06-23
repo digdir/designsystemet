@@ -80,6 +80,7 @@
       height: var(--dsc-chip-icon-size);
       mask: center / contain no-repeat var(--dsc-chip-icon-url);
       width: var(--dsc-chip-icon-size);
+      padding-inline: 0; /*override u-combobox default*/
     }
   }
 
