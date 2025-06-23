@@ -1,9 +1,11 @@
 import type { ButtonProps } from '@digdir/designsystemet-react';
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { ContentContainer } from '@internal/components';
+import { PauseFillIcon, PlayFillIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import type React from 'react';
 import type { HTMLAttributes } from 'react';
+import { useRef, useState } from 'react';
 import { RRLink } from '../link';
 import classes from './image-banner.module.css';
 
@@ -54,37 +56,76 @@ const ImageBanner = ({
   className,
   ...rest
 }: ImageBannerProps) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  const togglePlayPause = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
   return (
     <section
       className={cl(classes[backgroundColor], classes.section, className)}
       {...rest}
     >
-      <ContentContainer className={cl(classes.container)}>
-        {imgPosition === 'left' && (
-          <div
-            className={cl(classes.imgContainer, {
-              [classes.smallImage]: imgWidth === 'small',
-            })}
-          >
-            {videoSrc && (
-              <video autoPlay playsInline muted loop className={classes.video}>
+      <ContentContainer
+        className={cl(
+          classes.container,
+          imgPosition === 'right' ? classes.reverseContainer : '',
+        )}
+      >
+        <div
+          className={cl(classes.imgContainer, {
+            [classes.smallImage]: imgWidth === 'small',
+          })}
+        >
+          {videoSrc && (
+            <>
+              <video
+                ref={videoRef}
+                autoPlay
+                playsInline
+                muted
+                loop
+                className={classes.video}
+              >
                 <source src={videoSrc + '.webm'} type='video/webm' />
                 <source src={videoSrc + '.mp4'} type='video/mp4' />
               </video>
-            )}
-            {imgSrc && (
-              <img className={cl(classes.img)} src={imgSrc} alt={imgAlt} />
-            )}
-            {fallbackImgSrc && (
-              <img
-                className={cl(classes.img, classes.fallbackImg)}
-                src={fallbackImgSrc}
-                alt={fallbackImgAlt}
-              />
-            )}
-          </div>
-        )}
-
+              <Button
+                className={classes.videoControl}
+                data-size='sm'
+                onClick={togglePlayPause}
+                aria-label={isPlaying ? 'Pause video' : 'Play video'}
+                data-color='neutral'
+                icon
+              >
+                {isPlaying ? (
+                  <PauseFillIcon aria-hidden />
+                ) : (
+                  <PlayFillIcon aria-hidden />
+                )}
+              </Button>
+            </>
+          )}
+          {imgSrc && (
+            <img className={cl(classes.img)} src={imgSrc} alt={imgAlt} />
+          )}
+          {fallbackImgSrc && (
+            <img
+              className={cl(classes.img, classes.fallbackImg)}
+              src={fallbackImgSrc}
+              alt={fallbackImgAlt}
+            />
+          )}
+        </div>
         <div className={classes.textContainer}>
           {title ? (
             <Heading level={2} data-size='lg' className={classes.title}>
@@ -121,26 +162,6 @@ const ImageBanner = ({
 
           {children}
         </div>
-        {imgPosition === 'right' && (
-          <div className={classes.imgContainer}>
-            {videoSrc && (
-              <video autoPlay playsInline muted loop className={classes.video}>
-                <source src={videoSrc + '.webm'} type='video/webm' />
-                <source src={videoSrc + '.mp4'} type='video/mp4' />
-              </video>
-            )}
-            {imgSrc && (
-              <img className={cl(classes.img)} alt={imgAlt} src={imgSrc} />
-            )}
-            {fallbackImgSrc && (
-              <img
-                className={cl(classes.img, classes.fallbackImg)}
-                src={fallbackImgSrc}
-                alt={fallbackImgAlt}
-              />
-            )}
-          </div>
-        )}
       </ContentContainer>
     </section>
   );
@@ -148,3 +169,5 @@ const ImageBanner = ({
 
 export type { ImageBannerButtonProps, ImageBannerProps };
 export { ImageBanner };
+
+;

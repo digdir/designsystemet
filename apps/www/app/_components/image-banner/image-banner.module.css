@@ -32,11 +32,16 @@
   flex-direction: row;
 }
 
+.reverseContainer {
+  flex-direction: row-reverse;
+}
+
 .imgContainer {
   flex-basis: 570px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .smallImage {
@@ -97,6 +102,11 @@
 
 .link svg {
   margin-right: var(--ds-size-2);
+}
+
+.videoControl {
+  margin-top: var(--ds-size-2);
+  margin-left: auto;
 }
 
 .fallbackImg {
