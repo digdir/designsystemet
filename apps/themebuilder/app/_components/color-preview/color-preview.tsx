@@ -31,6 +31,14 @@ export const ColorPreview = () => {
 
   const allColors = [...colors.main, ...colors.neutral, ...colors.support];
 
+  const prepVariables = (variables: Record<string, string>) => {
+    const prepped: Record<string, string> = {};
+    Object.entries(variables).forEach(([key, value]) => {
+      prepped[key.replace('neutral-', '')] = value;
+    });
+    return prepped;
+  };
+
   return (
     <div className='panelContainer'>
       <div className='panelLeft'>
@@ -65,9 +73,9 @@ export const ColorPreview = () => {
               view={view}
               key={`${color.name}-${index}`}
               color={color}
-              style={
-                color.variables[colorScheme as keyof typeof color.variables]
-              }
+              style={prepVariables(
+                color.variables[colorScheme as keyof typeof color.variables],
+              )}
             />
           );
         })}
