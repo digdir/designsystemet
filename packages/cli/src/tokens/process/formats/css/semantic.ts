@@ -3,6 +3,7 @@ import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
 import { createPropertyFormatter } from 'style-dictionary/utils';
 import { inlineTokens, isDigit, pathStartsWithOneOf } from '../../../utils.js';
+import { buildOptions } from '../../platform.js';
 
 const isNumericBorderRadiusToken = (t: TransformedToken) => t.path[0] === 'border-radius' && isDigit(t.path[1]);
 const isNumericSizeToken = (t: TransformedToken) => pathStartsWithOneOf(['size'], t) && isDigit(t.path[1]);
@@ -62,7 +63,8 @@ export const semantic: Format = {
   name: 'ds/css-semantic',
   format: async ({ dictionary, options, platform }) => {
     const { outputReferences, usesDtcg } = options;
-    const { selector, layer } = platform;
+    const { selector, layer, files } = platform;
+    const destination = files?.[0]?.destination as string;
 
     const format = createPropertyFormatter({
       outputReferences,
@@ -78,6 +80,8 @@ export const semantic: Format = {
       filteredTokens,
     );
     const formattedMap = restTokens.map((token: TransformedToken) => [token, format(token)]);
+
+    buildOptions.buildTokenFormats[destination] = formattedMap;
 
     const sizingSnippet = sizingTemplate(formatSizingTokens(format, sizingTokens));
     const formattedTokens = formattedMap.map(R.last).concat(sizingSnippet);

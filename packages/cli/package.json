@@ -53,6 +53,7 @@
     "digdir:tokens-build": "pnpm run designsystemet tokens build -t ../../internal/design-tokens -o ../../packages/theme/brand --clean --experimental-tailwind",
     "digdir:tokens-create": "pnpm run designsystemet tokens create --config ./configs/digdir.config.json",
     "update:template": "tsx ./src/scripts/update-template.ts",
+    "update:preview-tokens": "tsx ./src/scripts/update-preview-tokens.ts",
     "update:theme-digdir": "pnpm digdir:tokens-create && tsx ./src/scripts/update-design-tokens.ts && pnpm digdir:tokens-build",
     "verify": "pnpm test && pnpm update:template && pnpm update:theme-digdir && pnpm build:tokens"
   },
