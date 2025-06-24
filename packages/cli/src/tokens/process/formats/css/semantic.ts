@@ -79,12 +79,15 @@ export const semantic: Format = {
       (t: TransformedToken) => pathStartsWithOneOf(['_size'], t) && isDigit(t.path[1]),
       filteredTokens,
     );
-    const formattedMap = restTokens.map((token: TransformedToken) => [token, format(token)]);
+    const formattedMap = restTokens.map((token: TransformedToken) => ({
+      token,
+      formatted: format(token),
+    }));
 
     buildOptions.buildTokenFormats[destination] = formattedMap;
 
     const sizingSnippet = sizingTemplate(formatSizingTokens(format, sizingTokens));
-    const formattedTokens = formattedMap.map(R.last).concat(sizingSnippet);
+    const formattedTokens = formattedMap.map(R.view(R.lensProp('formatted'))).concat(sizingSnippet);
 
     const content = `{\n${formattedTokens.join('\n')}\n}\n`;
     const body = R.isNotNil(layer) ? `@layer ${layer} {\n${selector} ${content}\n}\n` : `${selector} ${content}\n`;

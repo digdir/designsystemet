@@ -25,11 +25,14 @@ export const typography: Format = {
 
     const filteredTokens = R.reject(typographyFontFamilyPredicate, dictionary.allTokens);
 
-    const formattedMap = filteredTokens.map((token: TransformedToken) => [token, format(token)]);
+    const formattedMap = filteredTokens.map((token: TransformedToken) => ({
+      token,
+      formatted: format(token),
+    }));
 
     buildOptions.buildTokenFormats[destination] = formattedMap;
 
-    const formattedTokens = R.pipe(R.map(R.last), R.join('\n'))(formattedMap);
+    const formattedTokens = formattedMap.map(R.view(R.lensProp('formatted'))).join('\n');
 
     const content = selector ? `${selector} {\n${formattedTokens}\n}` : formattedTokens;
     const body = R.isNotNil(layer) ? `@layer ${layer} {\n${content}\n}` : content;

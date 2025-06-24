@@ -44,9 +44,13 @@ export const colorScheme: Format = {
         (t) => !isColorCategoryToken(t),
       ]),
     );
-    const formattedMap = filteredAllTokens.map((token: TransformedToken) => [token, format(token)]);
+    const formattedMap = filteredAllTokens.map((token: TransformedToken) => ({
+      token,
+      formatted: format(token),
+    }));
+
     // If the token is a color category token, we want to use the original value
-    const formattedTokens = formattedMap.map(R.last).join('\n');
+    const formattedTokens = formattedMap.map(R.view(R.lensProp('formatted'))).join('\n');
     const content = `{\n${formattedTokens}\n${colorSchemeProperty}}\n`;
     const autoSelectorContent = ['light', 'dark'].includes(colorScheme_)
       ? prefersColorScheme(colorScheme_, content)
@@ -85,12 +89,15 @@ export const colorCategory: Format = {
       }),
     );
 
-    const formattedMap = dictionary.allTokens.map((token: TransformedToken) => [token, format(token)]);
+    const formattedMap = dictionary.allTokens.map((token: TransformedToken) => ({
+      token,
+      formatted: format(token),
+    }));
 
     buildOptions.buildTokenFormats[destination] = formattedMap;
 
     // If the token is a color category token, we want to use the original value
-    const formattedTokens = formattedMap.map(R.last).join('\n');
+    const formattedTokens = formattedMap.map(R.view(R.lensProp('formatted'))).join('\n');
     const content = `{\n${formattedTokens}\n}\n`;
     const body = R.isNotNil(layer) ? `@layer ${layer} {\n${selector} ${content}\n}\n` : `${selector} ${content}\n`;
 
