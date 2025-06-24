@@ -52,6 +52,12 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 
   const lang = params.lang === 'no' ? 'no' : params.lang === 'en' ? 'en' : 'no';
 
+  if (url.pathname.match('/.*/$')) {
+    /* do this to make sure we keep params */
+    url.pathname = url.pathname.replace(/\/+$/, '');
+    return redirect(url.toString());
+  }
+
   if (hasRedirect) {
     return hasRedirect;
   }

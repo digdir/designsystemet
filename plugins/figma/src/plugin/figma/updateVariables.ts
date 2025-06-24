@@ -1,6 +1,7 @@
 import { hexToRgb, rgbToHex } from '@digdir/designsystemet/color';
 
-import type { ColorIndex, ColorTheme, StoreThemes } from '../../common/store';
+import type { ColorIndex, StoreThemes } from '../../common/store';
+import type { ColorTheme } from '../../common/utils';
 
 const updateColors = (
   themes: StoreThemes,

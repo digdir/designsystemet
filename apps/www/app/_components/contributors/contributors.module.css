@@ -24,7 +24,6 @@
       padding-top: var(--ds-size-10);
     }
 
-    /* biome-ignore lint/style/noDescendingSpecificity: linter is wrong? */
     & span {
       text-align: center;
     }
