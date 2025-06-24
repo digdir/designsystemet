@@ -33,12 +33,17 @@ const Image = ({
     }
   };
 
+  // Close dialog when clicking on the backdrop
   useEffect(() => {
     const dialog = dialogRef.current;
 
     if (dialog) {
-      const handleClick = () => {
-        dialog.close();
+      const handleClick = (event: MouseEvent) => {
+        // If the click is directly on the dialog element (the backdrop)
+        // and not on any of its children, close the dialog
+        if (event.target === dialog) {
+          dialog.close();
+        }
       };
 
       dialog.addEventListener('click', handleClick);
@@ -51,14 +56,15 @@ const Image = ({
 
   return (
     <figure className={cl(classes.container, boxShadow && classes.boxShadow)}>
-      <button
-        type='button'
-        className={classes.imageWrapper}
-        onClick={openFullImage}
-        aria-label={`${alt}. ${t('image.aria-label.normal')}`}
-      >
+      <div className={classes.imageContainer}>
         <img className={classes.image} src={src} alt={alt} {...rest} />
-      </button>
+        <button
+          type='button'
+          className={cl(classes.openButton, 'ds-focus--visible')}
+          onClick={openFullImage}
+          aria-label={t('image.aria-label.normal')}
+        />
+      </div>
 
       <dialog ref={dialogRef} className={classes.imageDialog}>
         <div className={classes.dialogContent}>
@@ -70,7 +76,7 @@ const Image = ({
             icon
             variant='tertiary'
           >
-            <XMarkIcon />
+            <XMarkIcon fontSize='1.5rem' />
           </Button>
           <div className={classes.dialogMessage}>
             {t('image.enlarged-text')}
