@@ -44,6 +44,7 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  position: relative;
 }
 
 .smallImage {
@@ -109,6 +110,9 @@
 .videoControl {
   margin-top: var(--ds-size-2);
   margin-left: auto;
+  position: absolute;
+  top: 100%;
+  right: 0;
 }
 
 .fallbackImg {

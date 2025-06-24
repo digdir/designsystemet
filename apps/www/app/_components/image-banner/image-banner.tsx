@@ -101,9 +101,10 @@ const ImageBanner = ({
                 <source src={videoSrc + '.webm'} type='video/webm' />
                 <source src={videoSrc + '.mp4'} type='video/mp4' />
               </video>
+              {/* @ts-ignore XS size is fine */}
               <Button
                 className={classes.videoControl}
-                data-size='sm'
+                data-size='xs'
                 onClick={togglePlayPause}
                 aria-label={
                   isPlaying
