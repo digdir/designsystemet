@@ -1,6 +1,7 @@
 import * as R from 'ramda';
 import type { Format, TransformedToken } from 'style-dictionary/types';
 import { createPropertyFormatter } from 'style-dictionary/utils';
+import { buildOptions } from '../../platform.js';
 
 // Predicate to filter tokens with .path array that includes both typography and fontFamily
 const typographyFontFamilyPredicate = R.allPass([
@@ -12,7 +13,8 @@ export const typography: Format = {
   name: 'ds/css-typography',
   format: async ({ dictionary, options, platform }) => {
     const { outputReferences, usesDtcg } = options;
-    const { selector, layer } = platform;
+    const { selector, layer, files } = platform;
+    const destination = files?.[0]?.destination as string;
 
     const format = createPropertyFormatter({
       outputReferences,
@@ -24,6 +26,8 @@ export const typography: Format = {
     const filteredTokens = R.reject(typographyFontFamilyPredicate, dictionary.allTokens);
 
     const formattedMap = filteredTokens.map((token: TransformedToken) => [token, format(token)]);
+
+    buildOptions.buildTokenFormats[destination] = formattedMap;
 
     const formattedTokens = R.pipe(R.map(R.last), R.join('\n'))(formattedMap);
 
