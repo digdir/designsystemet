@@ -159,8 +159,8 @@ export default {
   image: {
     'enlarged-text': 'Click the image or press Escape to close',
     'aria-label': {
-      enlarged: 'Click to minimize.',
-      normal: 'Click to enlarge.',
+      enlarged: 'Click to minimize image.',
+      normal: 'Click to enlarge image.',
     },
   },
 } satisfies typeof no;
