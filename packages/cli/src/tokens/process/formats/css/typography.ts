@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import type { Format } from 'style-dictionary/types';
+import type { Format, TransformedToken } from 'style-dictionary/types';
 import { createPropertyFormatter } from 'style-dictionary/utils';
 
 // Predicate to filter tokens with .path array that includes both typography and fontFamily
@@ -23,7 +23,9 @@ export const typography: Format = {
 
     const filteredTokens = R.reject(typographyFontFamilyPredicate, dictionary.allTokens);
 
-    const formattedTokens = R.pipe(R.map(format), R.join('\n'))(filteredTokens);
+    const formattedMap = filteredTokens.map((token: TransformedToken) => [token, format(token)]);
+
+    const formattedTokens = R.pipe(R.map(R.last), R.join('\n'))(formattedMap);
 
     const content = selector ? `${selector} {\n${formattedTokens}\n}` : formattedTokens;
     const body = R.isNotNil(layer) ? `@layer ${layer} {\n${content}\n}` : content;

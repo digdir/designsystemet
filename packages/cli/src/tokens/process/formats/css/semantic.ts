@@ -38,8 +38,8 @@ export const overrideSizingFormula = (format: (t: TransformedToken) => string, t
  * @param tokens - Array of transformed tokens to format.
  * @returns Formatted CSS string with default calc and [round()](https://developer.mozilla.org/en-US/docs/Web/CSS/round) if supported.
  */
-const formatSizingTokens = (format: (t: TransformedToken) => string, tokens: TransformedToken[]) => {
-  const { round, calc } = R.reduce(
+const formatSizingTokens = (format: (t: TransformedToken) => string, tokens: TransformedToken[]) =>
+  R.reduce(
     (acc, token) => {
       const { round, calc, name } = overrideSizingFormula(format, token);
 
@@ -52,12 +52,11 @@ const formatSizingTokens = (format: (t: TransformedToken) => string, tokens: Tra
     tokens,
   );
 
-  return `
+const sizingTemplate = ({ round, calc }: { round: string[]; calc: string[] }) => `
 ${calc.join('\n')}\n
   @supports (width: round(down, .1em, 1px)) {
 ${round.join('\n')}
   }`;
-};
 
 export const semantic: Format = {
   name: 'ds/css-semantic',
@@ -78,7 +77,10 @@ export const semantic: Format = {
       (t: TransformedToken) => pathStartsWithOneOf(['_size'], t) && isDigit(t.path[1]),
       filteredTokens,
     );
-    const formattedTokens = [R.map(format, restTokens).join('\n'), formatSizingTokens(format, sizingTokens)];
+    const formattedMap = restTokens.map((token: TransformedToken) => [token, format(token)]);
+
+    const sizingSnippet = sizingTemplate(formatSizingTokens(format, sizingTokens));
+    const formattedTokens = formattedMap.map(R.last).concat(sizingSnippet);
 
     const content = `{\n${formattedTokens.join('\n')}\n}\n`;
     const body = R.isNotNil(layer) ? `@layer ${layer} {\n${selector} ${content}\n}\n` : `${selector} ${content}\n`;
