@@ -20,7 +20,6 @@ const Image = ({
   const { t } = useTranslation();
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  // Handle dialog open/close
   const openFullImage = () => {
     if (dialogRef.current) {
       dialogRef.current.showModal();
@@ -33,17 +32,12 @@ const Image = ({
     }
   };
 
-  // Close dialog when clicking on the backdrop
   useEffect(() => {
     const dialog = dialogRef.current;
 
     if (dialog) {
-      const handleClick = (event: MouseEvent) => {
-        // If the click is directly on the dialog element (the backdrop)
-        // and not on any of its children, close the dialog
-        if (event.target === dialog) {
-          dialog.close();
-        }
+      const handleClick = () => {
+        dialog.close();
       };
 
       dialog.addEventListener('click', handleClick);
