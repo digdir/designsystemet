@@ -162,5 +162,8 @@ export default {
       enlarged: 'Click to minimize image.',
       normal: 'Click to enlarge image.',
     },
+  'image-banner': {
+    'play-video': 'Play video',
+    'pause-video': 'Pause video',
   },
 } satisfies typeof no;

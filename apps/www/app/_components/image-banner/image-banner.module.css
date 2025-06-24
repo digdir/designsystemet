@@ -32,11 +32,23 @@
   flex-direction: row;
 }
 
+.reverseContainer {
+  flex-direction: row-reverse;
+  /* biome-ignore lint/correctness/noUnknownProperty: new property */
+  reading-flow: flex-visual;
+
+  & .videoControl {
+    right: 0;
+  }
+}
+
 .imgContainer {
   flex-basis: 570px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
 }
 
 .smallImage {
@@ -97,6 +109,14 @@
 
 .link svg {
   margin-right: var(--ds-size-2);
+}
+
+.videoControl {
+  margin-top: var(--ds-size-2);
+  margin-left: auto;
+  position: absolute;
+  top: 100%;
+  left: 0;
 }
 
 .fallbackImg {

@@ -161,5 +161,8 @@ export default {
       enlarged: 'Klikk for å minimisere bilde.',
       normal: 'Klikk for å forstørre bilde.',
     },
+  'image-banner': {
+    'play-video': 'Spill av video',
+    'pause-video': 'Sett video på pause',
   },
 };
