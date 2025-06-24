@@ -23,11 +23,12 @@ async function write(files: OutputFile[], outDir: string, dry?: boolean) {
 }
 
 const toPreviewToken = (tokens: { token: TransformedToken; formatted: string }[]): PreviewToken[] =>
-  tokens.map(({ formatted }) => {
+  tokens.map(({ token, formatted }) => {
     const [variable, value] = formatted.split(':');
     return {
       variable: variable.trim(),
       value: value.trim(),
+      path: token.path,
     };
   });
 
