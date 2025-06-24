@@ -36,6 +36,10 @@
   flex-direction: row-reverse;
   /* biome-ignore lint/correctness/noUnknownProperty: new property */
   reading-flow: flex-visual;
+
+  & .videoControl {
+    right: 0;
+  }
 }
 
 .imgContainer {
@@ -112,7 +116,7 @@
   margin-left: auto;
   position: absolute;
   top: 100%;
-  right: 0;
+  left: 0;
 }
 
 .fallbackImg {
