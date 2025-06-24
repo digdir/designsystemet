@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/complexity/useLiteralKeys: <explanation> */
 import { log } from 'node:console';
 import path from 'node:path';
 import config from '../../../theme/configs/designsystemet.config.json' with { type: 'json' };
@@ -44,7 +45,7 @@ export const formatTheme = async (themeConfig: Theme) => {
   if (buildOptions?.buildTokenFormats) {
     for (const [destination, tokenFormats] of Object.entries(buildOptions.buildTokenFormats)) {
       log(`Processing token formats for ${destination}`);
-      const tokens = tokenFormats.map(([token, _]) => token);
+      const tokens = tokenFormats.map(({ token, formatted }) => ({ ...token, formatted }));
       const filename = `${destination.replace('.css', '')}.json`;
 
       console.log(`Writing tokens to ${filename}`);

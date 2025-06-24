@@ -21,7 +21,7 @@ type SharedOptions = {
   /** Color groups */
   colorGroups?: string[];
   /** Build token format map */
-  buildTokenFormats: Record<string, (string | TransformedToken)[][]>;
+  buildTokenFormats: Record<string, { token: TransformedToken; formatted: string }[]>;
 };
 
 export type BuildOptions = {
