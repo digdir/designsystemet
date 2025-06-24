@@ -48,6 +48,11 @@
   background-color: rgba(0, 0, 0, 0.9);
 }
 
+/* Prevent scroll when open */
+body:has(.imageDialog:modal) {
+  overflow: hidden;
+}
+
 .dialogContent {
   position: relative;
   width: 100%;
