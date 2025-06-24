@@ -24,7 +24,7 @@ async function write(files: OutputFile[], outDir: string, dry?: boolean) {
   }
 }
 
-export const buildTokens = async (options: Omit<BuildOptions, 'type' | 'processed$themes'>) => {
+export const buildTokens = async (options: Omit<BuildOptions, 'type' | 'processed$themes' | 'buildTokenFormats'>) => {
   const outDir = path.resolve(options.outDir);
   const tokensDir = path.resolve(options.tokensDir);
   const $themes = JSON.parse(await readFile(`${tokensDir}/$themes.json`)) as ThemeObject[];
@@ -44,6 +44,7 @@ export const buildTokens = async (options: Omit<BuildOptions, 'type' | 'processe
     tokensDir: tokensDir,
     type: 'build',
     processed$themes,
+    buildTokenFormats: {},
   });
 
   // https://github.com/digdir/designsystemet/issues/3434

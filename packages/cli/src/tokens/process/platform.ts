@@ -1,6 +1,7 @@
 import chalk from 'chalk';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
+import type { TransformedToken } from 'style-dictionary/types';
 import type { OutputFile, TokenSet } from '../types.js';
 import { type BuildConfig, colorCategories, type ThemePermutation } from '../types.js';
 import { configs, getConfigsForThemeDimensions } from './configs.js';
@@ -19,6 +20,8 @@ type SharedOptions = {
   processed$themes: ProcessedThemeObject[];
   /** Color groups */
   colorGroups?: string[];
+  /** Build token format map */
+  buildTokenFormats: Record<string, (string | TransformedToken)[][]>;
 };
 
 export type BuildOptions = {
@@ -37,7 +40,7 @@ export type FormatOptions = {
   tokenSets: Map<string, TokenSet>;
 } & SharedOptions;
 
-type ProcessOptions = BuildOptions | FormatOptions;
+export type ProcessOptions = BuildOptions | FormatOptions;
 
 type ProcessedBuildConfigs<T> = Record<keyof typeof buildConfigs, T>;
 
@@ -46,10 +49,12 @@ export type ProcessReturn = ProcessedBuildConfigs<BuildResult[]>;
 type BuildResult = {
   permutation: ThemePermutation;
   formatted: OutputFile[];
+  tokens: TransformedToken[];
 };
 
 const initResult: BuildResult = {
   formatted: [],
+  tokens: [],
   permutation: {
     'color-scheme': '',
     'main-color': '',
@@ -61,7 +66,12 @@ const initResult: BuildResult = {
   },
 };
 
-export let buildOptions: ProcessOptions | undefined;
+export let buildOptions: SharedOptions = {
+  verbose: false,
+  processed$themes: [],
+  buildTokenFormats: {},
+  preview: false,
+};
 
 const sd = new StyleDictionary();
 
@@ -99,13 +109,6 @@ const buildConfigs = {
     log: ({ permutation: { theme } }) => `${theme} - info`,
   },
   semantic: { getConfig: configs.semanticVariables, dimensions: ['semantic'] },
-  // storefront: {
-  //   name: 'Storefront preview tokens',
-  //   getConfig: configs.typescriptTokens,
-  //   dimensions: ['color-scheme'],
-  //   options: { outPath: path.resolve('../../apps/storefront/tokens') },
-  //   enabled: () => buildOptions?.preview ?? false,
-  // },
 } satisfies Record<string, BuildConfig>;
 
 export async function processPlatform(options: ProcessOptions): Promise<ProcessReturn> {
@@ -113,6 +116,10 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
   const platform = 'css';
   const tokenSets = type === 'format' ? options.tokenSets : undefined;
   const tokensDir = type === 'build' ? options.tokensDir : undefined;
+
+  const filteredProcessed$themes = processed$themes.filter((theme) =>
+    R.not(theme.group === 'size' && theme.name !== 'medium'),
+  );
 
   const UNSAFE_DEFAULT_COLOR = process.env.UNSAFE_DEFAULT_COLOR ?? '';
   if (UNSAFE_DEFAULT_COLOR) {
@@ -141,13 +148,8 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
   buildOptions.defaultColor = UNSAFE_DEFAULT_COLOR;
   buildOptions.colorGroups = colorGroups;
 
-  const filteredProcessed$themes = processed$themes.filter((theme) =>
-    R.not(theme.group === 'size' && theme.name !== 'medium'),
-  );
-
-  const customColors = getCustomColors(filteredProcessed$themes, colorGroups);
-
   if (!buildOptions.defaultColor) {
+    const customColors = getCustomColors(filteredProcessed$themes, colorGroups);
     const firstMainColor = R.head(customColors);
     buildOptions.defaultColor = firstMainColor;
   }
@@ -216,10 +218,13 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
 
             const sdOptions = { cache: true };
             const sdExtended = await sd.extend(config);
+            const formatted = await sdExtended.formatPlatform(platform, sdOptions);
+            const tokens = (await sdExtended.getPlatformTokens(platform, sdOptions)).allTokens;
 
             const result: BuildResult = {
               permutation,
-              formatted: (await sdExtended.formatPlatform(platform, sdOptions)) as OutputFile[],
+              formatted: formatted as OutputFile[],
+              tokens,
             };
 
             return Promise.resolve(result);

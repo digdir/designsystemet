@@ -5,6 +5,7 @@ import { createPropertyFormatter } from 'style-dictionary/utils';
 
 import { colorCategories } from '../../../types.js';
 import { isColorCategoryToken, isGlobalColorToken, isSemanticToken } from '../../../utils.js';
+import { buildOptions } from '../../platform.js';
 
 const prefersColorScheme = (colorScheme: string, content: string) => `
 @media (prefers-color-scheme: ${colorScheme}) {
@@ -62,7 +63,8 @@ export const colorCategory: Format = {
   name: 'ds/css-colorcategory',
   format: async ({ dictionary, options, platform }) => {
     const { outputReferences, usesDtcg } = options;
-    const { selector, layer } = platform;
+    const { selector, layer, files } = platform;
+    const destination = files?.[0]?.destination as string;
 
     const format = R.compose(
       createPropertyFormatter({
@@ -84,6 +86,9 @@ export const colorCategory: Format = {
     );
 
     const formattedMap = dictionary.allTokens.map((token: TransformedToken) => [token, format(token)]);
+
+    buildOptions.buildTokenFormats[destination] = formattedMap;
+
     // If the token is a color category token, we want to use the original value
     const formattedTokens = formattedMap.map(R.last).join('\n');
     const content = `{\n${formattedTokens}\n}\n`;
