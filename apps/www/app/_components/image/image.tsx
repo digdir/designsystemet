@@ -33,22 +33,12 @@ const Image = ({
     }
   };
 
-  // Add event listener to handle clicks on the dialog backdrop
   useEffect(() => {
     const dialog = dialogRef.current;
 
     if (dialog) {
-      const handleClick = (event: MouseEvent) => {
-        const rect = dialog.getBoundingClientRect();
-        const isInDialog =
-          rect.top <= event.clientY &&
-          event.clientY <= rect.top + rect.height &&
-          rect.left <= event.clientX &&
-          event.clientX <= rect.left + rect.width;
-
-        if (!isInDialog) {
-          dialog.close();
-        }
+      const handleClick = () => {
+        dialog.close();
       };
 
       dialog.addEventListener('click', handleClick);
@@ -71,8 +61,7 @@ const Image = ({
       </button>
 
       <dialog ref={dialogRef} className={classes.imageDialog}>
-        {/** biome-ignore lint/a11y/noStaticElementInteractions: We still have the close button */}
-        <div className={classes.dialogContent} onClick={closeFullImage}>
+        <div className={classes.dialogContent}>
           <img className={classes.dialogImage} src={src} alt={alt} />
           <Button
             className={classes.closeButton}
