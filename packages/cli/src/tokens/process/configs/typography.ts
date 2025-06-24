@@ -30,6 +30,7 @@ export const typographyVariables: GetStyleDictionaryConfig = ({ theme, typograph
           sizeRem.name,
           'ts/size/lineheight',
           'ts/typography/fontWeight',
+          'ts/size/css/letterspacing',
           typographyName.name,
         ],
         files: [
