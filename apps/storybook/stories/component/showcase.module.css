@@ -6,6 +6,15 @@
   margin: 0 auto;
   background-color: var(--ds-color-neutral-background-default);
   border-radius: var(--ds-border-radius-md);
+
+  &[data-size='auto'] {
+    @media (width >= 992px) {
+      --ds-size: var(--ds-size--lg);
+    }
+    @media (width < 600px) {
+      --ds-size: var(--ds-size--sm);
+    }
+  }
 }
 
 .card {
