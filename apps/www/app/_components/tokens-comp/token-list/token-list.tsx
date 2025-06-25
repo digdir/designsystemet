@@ -57,20 +57,14 @@ type TokenTableProps = {
 
 type PreviewToken = { variable: string; value: string };
 
-const TokensTable = ({ tokens, type }: TokenTableProps) => {
+const ColorTokensTable = ({ tokens }: TokenTableProps) => {
   return (
     <Table data-color='neutral'>
       <Table.Head>
         <Table.Row>
           <Table.HeaderCell>Navn</Table.HeaderCell>
-          {type === 'color' ? (
-            <>
-              <Table.HeaderCell>Lys</Table.HeaderCell>
-              <Table.HeaderCell>Mørk</Table.HeaderCell>
-            </>
-          ) : (
-            <Table.HeaderCell>Verdi</Table.HeaderCell>
-          )}
+          <Table.HeaderCell>Lys</Table.HeaderCell>
+          <Table.HeaderCell>Mørk</Table.HeaderCell>
         </Table.Row>
       </Table.Head>
       <Table.Body>
@@ -83,21 +77,39 @@ const TokensTable = ({ tokens, type }: TokenTableProps) => {
               <Table.Cell>
                 <code>{name}</code>
               </Table.Cell>
-              {type === 'color' ? (
-                <>
-                  <Table.Cell>
-                    <ColorLight colorVariable={value} />
-                  </Table.Cell>
-                  <Table.Cell>
-                    <ColorDark colorVariable={value} />
-                  </Table.Cell>
-                </>
-              ) : (
-                <Table.Cell>{renderedValue(value, type)}</Table.Cell>
-              )}
+              <Table.Cell>
+                <ColorLight colorVariable={value} />
+              </Table.Cell>
+              <Table.Cell>
+                <ColorDark colorVariable={value} />
+              </Table.Cell>
             </Table.Row>
           );
         })}
+      </Table.Body>
+    </Table>
+  );
+};
+
+const TokensTable = ({ tokens, type }: TokenTableProps) => {
+  return (
+    <Table data-color='neutral'>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell>Navn</Table.HeaderCell>
+
+          <Table.HeaderCell>Verdi</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        {tokens.map(({ variable, value }) => (
+          <Table.Row key={variable}>
+            <Table.Cell>
+              <code>{variable}</code>
+            </Table.Cell>
+            <Table.Cell>{renderedValue(value, type)}</Table.Cell>
+          </Table.Row>
+        ))}
       </Table.Body>
     </Table>
   );
@@ -110,7 +122,7 @@ export const TokenList = () => {
         return (
           <div key={name as string} className={classes.section}>
             <h3>{capitalizeString(name as string)}</h3>
-            <TokensTable type='color' tokens={tokens} />
+            <ColorTokensTable tokens={tokens} />
           </div>
         );
       })}
