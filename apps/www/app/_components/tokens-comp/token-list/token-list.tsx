@@ -5,7 +5,7 @@ import { capitalizeString } from '~/_utils/string-helpers';
 import colorTokens from '~/tokens/color.json';
 import semanticTokens from '~/tokens/semantic.json';
 import typographyTokens from '~/tokens/typography.json';
-import { ColorDark, ColorLight, TokenColor } from '../token-color/token-color';
+import { ColorDark, ColorLight } from '../token-color/token-color';
 import classes from './token-list.module.css';
 
 export type TokenListProps = {
@@ -45,8 +45,6 @@ const renderedValue = (value: string, type?: RenderTypes) => {
   switch (type) {
     case 'dimension':
       return <ComputedValue value={value} />;
-    case 'color':
-      return <TokenColor colorVariable={value} />;
     default:
       return <span>{value}</span>;
   }
