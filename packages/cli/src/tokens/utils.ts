@@ -139,11 +139,23 @@ export function inlineTokens(shouldInline: (t: TransformedToken) => boolean, tok
   });
 }
 
+const sizeMap: Record<string, string | undefined> = {
+  xsmall: 'xs',
+  small: 'sm',
+  medium: 'md',
+  large: 'lg',
+  xlarge: 'xl',
+};
+
 export function shortSizeName(size: string): string {
-  const sizeMap: Record<string, string | undefined> = {
-    small: 'sm',
-    medium: 'md',
-    large: 'lg',
-  };
   return sizeMap[size] ?? size;
+}
+
+export const sizeComparator = (size: string): number => {
+  const sortIndex = Object.entries(sizeMap).findIndex(([key, val]) => key === size || val === size);
+  return sortIndex ?? 0;
+};
+
+export function orderBySize(sizes: string[]): string[] {
+  return R.sortBy(sizeComparator, sizes);
 }
