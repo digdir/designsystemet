@@ -23,12 +23,11 @@ async function write(files: OutputFile[], outDir: string, dry?: boolean) {
 }
 
 const toPreviewToken = (tokens: { token: TransformedToken; formatted: string }[]): PreviewToken[] =>
-  tokens.map(({ token, formatted }) => {
+  tokens.map(({ formatted }) => {
     const [variable, value] = formatted.split(':');
     return {
       variable: variable.trim(),
-      value: value.trim(),
-      path: token.path,
+      value: value.trim().replace(/;$/, ''), // Remove trailing semicolon if present
     };
   });
 
@@ -83,7 +82,7 @@ export const formatTheme = async (themeConfig: Theme) => {
       write(
         [
           {
-            destination: `./temp/tokens/${type}.json`,
+            destination: `../../../../apps/www/app/tokens/${type}.json`,
             output: JSON.stringify(tokens, null, 2),
           },
         ],

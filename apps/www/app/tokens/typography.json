@@ -1,0 +1,918 @@
+{
+  "primary": [
+    {
+      "variable": "--ds-line-height-sm",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-line-height-md",
+      "value": "1.5"
+    },
+    {
+      "variable": "--ds-line-height-lg",
+      "value": "1.7"
+    },
+    {
+      "variable": "--ds-font-size-1",
+      "value": "0.75rem"
+    },
+    {
+      "variable": "--ds-font-size-2",
+      "value": "0.875rem"
+    },
+    {
+      "variable": "--ds-font-size-3",
+      "value": "1rem"
+    },
+    {
+      "variable": "--ds-font-size-4",
+      "value": "1.125rem"
+    },
+    {
+      "variable": "--ds-font-size-5",
+      "value": "1.3125rem"
+    },
+    {
+      "variable": "--ds-font-size-6",
+      "value": "1.5rem"
+    },
+    {
+      "variable": "--ds-font-size-7",
+      "value": "1.875rem"
+    },
+    {
+      "variable": "--ds-font-size-8",
+      "value": "2.25rem"
+    },
+    {
+      "variable": "--ds-font-size-9",
+      "value": "3rem"
+    },
+    {
+      "variable": "--ds-font-size-10",
+      "value": "3.75rem"
+    },
+    {
+      "variable": "--ds-letter-spacing-1",
+      "value": "-1%"
+    },
+    {
+      "variable": "--ds-letter-spacing-2",
+      "value": "-0.5%"
+    },
+    {
+      "variable": "--ds-letter-spacing-3",
+      "value": "-0.25%"
+    },
+    {
+      "variable": "--ds-letter-spacing-4",
+      "value": "-0.15%"
+    },
+    {
+      "variable": "--ds-letter-spacing-5",
+      "value": "0%"
+    },
+    {
+      "variable": "--ds-letter-spacing-6",
+      "value": "0.15%"
+    },
+    {
+      "variable": "--ds-letter-spacing-7",
+      "value": "0.25%"
+    },
+    {
+      "variable": "--ds-letter-spacing-8",
+      "value": "0.5%"
+    },
+    {
+      "variable": "--ds-letter-spacing-9",
+      "value": "1.5%"
+    },
+    {
+      "variable": "--ds-font-family",
+      "value": "Inter"
+    },
+    {
+      "variable": "--ds-font-weight-medium",
+      "value": "500"
+    },
+    {
+      "variable": "--ds-font-weight-semibold",
+      "value": "600"
+    },
+    {
+      "variable": "--ds-font-weight-regular",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-heading-2xl-font-weight",
+      "value": "500"
+    },
+    {
+      "variable": "--ds-heading-2xl-line-height",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-heading-2xl-font-size",
+      "value": "3.75rem"
+    },
+    {
+      "variable": "--ds-heading-2xl-letter-spacing",
+      "value": "-1%"
+    },
+    {
+      "variable": "--ds-heading-xl-font-weight",
+      "value": "500"
+    },
+    {
+      "variable": "--ds-heading-xl-line-height",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-heading-xl-font-size",
+      "value": "3rem"
+    },
+    {
+      "variable": "--ds-heading-xl-letter-spacing",
+      "value": "-1%"
+    },
+    {
+      "variable": "--ds-heading-lg-font-weight",
+      "value": "500"
+    },
+    {
+      "variable": "--ds-heading-lg-line-height",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-heading-lg-font-size",
+      "value": "2.25rem"
+    },
+    {
+      "variable": "--ds-heading-lg-letter-spacing",
+      "value": "-0.5%"
+    },
+    {
+      "variable": "--ds-heading-md-font-weight",
+      "value": "500"
+    },
+    {
+      "variable": "--ds-heading-md-line-height",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-heading-md-font-size",
+      "value": "1.875rem"
+    },
+    {
+      "variable": "--ds-heading-md-letter-spacing",
+      "value": "-0.25%"
+    },
+    {
+      "variable": "--ds-heading-sm-font-weight",
+      "value": "500"
+    },
+    {
+      "variable": "--ds-heading-sm-line-height",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-heading-sm-font-size",
+      "value": "1.5rem"
+    },
+    {
+      "variable": "--ds-heading-sm-letter-spacing",
+      "value": "0%"
+    },
+    {
+      "variable": "--ds-heading-xs-font-weight",
+      "value": "500"
+    },
+    {
+      "variable": "--ds-heading-xs-line-height",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-heading-xs-font-size",
+      "value": "1.3125rem"
+    },
+    {
+      "variable": "--ds-heading-xs-letter-spacing",
+      "value": "0.15%"
+    },
+    {
+      "variable": "--ds-heading-2xs-font-weight",
+      "value": "500"
+    },
+    {
+      "variable": "--ds-heading-2xs-line-height",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-heading-2xs-font-size",
+      "value": "1.125rem"
+    },
+    {
+      "variable": "--ds-heading-2xs-letter-spacing",
+      "value": "0.15%"
+    },
+    {
+      "variable": "--ds-body-xl-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-xl-line-height",
+      "value": "1.5"
+    },
+    {
+      "variable": "--ds-body-xl-font-size",
+      "value": "1.5rem"
+    },
+    {
+      "variable": "--ds-body-xl-letter-spacing",
+      "value": "0.5%"
+    },
+    {
+      "variable": "--ds-body-lg-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-lg-line-height",
+      "value": "1.5"
+    },
+    {
+      "variable": "--ds-body-lg-font-size",
+      "value": "1.3125rem"
+    },
+    {
+      "variable": "--ds-body-lg-letter-spacing",
+      "value": "0.5%"
+    },
+    {
+      "variable": "--ds-body-md-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-md-line-height",
+      "value": "1.5"
+    },
+    {
+      "variable": "--ds-body-md-font-size",
+      "value": "1.125rem"
+    },
+    {
+      "variable": "--ds-body-md-letter-spacing",
+      "value": "0.5%"
+    },
+    {
+      "variable": "--ds-body-sm-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-sm-line-height",
+      "value": "1.5"
+    },
+    {
+      "variable": "--ds-body-sm-font-size",
+      "value": "1rem"
+    },
+    {
+      "variable": "--ds-body-sm-letter-spacing",
+      "value": "0.25%"
+    },
+    {
+      "variable": "--ds-body-xs-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-xs-line-height",
+      "value": "1.5"
+    },
+    {
+      "variable": "--ds-body-xs-font-size",
+      "value": "0.875rem"
+    },
+    {
+      "variable": "--ds-body-xs-letter-spacing",
+      "value": "0.15%"
+    },
+    {
+      "variable": "--ds-body-short-xl-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-short-xl-line-height",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-body-short-xl-font-size",
+      "value": "1.5rem"
+    },
+    {
+      "variable": "--ds-body-short-xl-letter-spacing",
+      "value": "0.5%"
+    },
+    {
+      "variable": "--ds-body-short-lg-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-short-lg-line-height",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-body-short-lg-font-size",
+      "value": "1.3125rem"
+    },
+    {
+      "variable": "--ds-body-short-lg-letter-spacing",
+      "value": "0.5%"
+    },
+    {
+      "variable": "--ds-body-short-md-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-short-md-line-height",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-body-short-md-font-size",
+      "value": "1.125rem"
+    },
+    {
+      "variable": "--ds-body-short-md-letter-spacing",
+      "value": "0.5%"
+    },
+    {
+      "variable": "--ds-body-short-sm-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-short-sm-line-height",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-body-short-sm-font-size",
+      "value": "1rem"
+    },
+    {
+      "variable": "--ds-body-short-sm-letter-spacing",
+      "value": "0.25%"
+    },
+    {
+      "variable": "--ds-body-short-xs-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-short-xs-line-height",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-body-short-xs-font-size",
+      "value": "0.875rem"
+    },
+    {
+      "variable": "--ds-body-short-xs-letter-spacing",
+      "value": "0.15%"
+    },
+    {
+      "variable": "--ds-body-long-xl-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-long-xl-line-height",
+      "value": "1.7"
+    },
+    {
+      "variable": "--ds-body-long-xl-font-size",
+      "value": "1.5rem"
+    },
+    {
+      "variable": "--ds-body-long-xl-letter-spacing",
+      "value": "0.5%"
+    },
+    {
+      "variable": "--ds-body-long-lg-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-long-lg-line-height",
+      "value": "1.7"
+    },
+    {
+      "variable": "--ds-body-long-lg-font-size",
+      "value": "1.3125rem"
+    },
+    {
+      "variable": "--ds-body-long-lg-letter-spacing",
+      "value": "0.5%"
+    },
+    {
+      "variable": "--ds-body-long-md-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-long-md-line-height",
+      "value": "1.7"
+    },
+    {
+      "variable": "--ds-body-long-md-font-size",
+      "value": "1.125rem"
+    },
+    {
+      "variable": "--ds-body-long-md-letter-spacing",
+      "value": "0.5%"
+    },
+    {
+      "variable": "--ds-body-long-sm-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-long-sm-line-height",
+      "value": "1.7"
+    },
+    {
+      "variable": "--ds-body-long-sm-font-size",
+      "value": "1rem"
+    },
+    {
+      "variable": "--ds-body-long-sm-letter-spacing",
+      "value": "0.25%"
+    },
+    {
+      "variable": "--ds-body-long-xs-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-long-xs-line-height",
+      "value": "1.7"
+    },
+    {
+      "variable": "--ds-body-long-xs-font-size",
+      "value": "0.875rem"
+    },
+    {
+      "variable": "--ds-body-long-xs-letter-spacing",
+      "value": "0.15%"
+    }
+  ],
+  "secondary": [
+    {
+      "variable": "--ds-line-height-sm",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-line-height-md",
+      "value": "1.5"
+    },
+    {
+      "variable": "--ds-line-height-lg",
+      "value": "1.7"
+    },
+    {
+      "variable": "--ds-font-size-1",
+      "value": "0.75rem"
+    },
+    {
+      "variable": "--ds-font-size-2",
+      "value": "0.875rem"
+    },
+    {
+      "variable": "--ds-font-size-3",
+      "value": "1rem"
+    },
+    {
+      "variable": "--ds-font-size-4",
+      "value": "1.125rem"
+    },
+    {
+      "variable": "--ds-font-size-5",
+      "value": "1.3125rem"
+    },
+    {
+      "variable": "--ds-font-size-6",
+      "value": "1.5rem"
+    },
+    {
+      "variable": "--ds-font-size-7",
+      "value": "1.875rem"
+    },
+    {
+      "variable": "--ds-font-size-8",
+      "value": "2.25rem"
+    },
+    {
+      "variable": "--ds-font-size-9",
+      "value": "3rem"
+    },
+    {
+      "variable": "--ds-font-size-10",
+      "value": "3.75rem"
+    },
+    {
+      "variable": "--ds-letter-spacing-1",
+      "value": "-1%"
+    },
+    {
+      "variable": "--ds-letter-spacing-2",
+      "value": "-0.5%"
+    },
+    {
+      "variable": "--ds-letter-spacing-3",
+      "value": "-0.25%"
+    },
+    {
+      "variable": "--ds-letter-spacing-4",
+      "value": "-0.15%"
+    },
+    {
+      "variable": "--ds-letter-spacing-5",
+      "value": "0%"
+    },
+    {
+      "variable": "--ds-letter-spacing-6",
+      "value": "0.15%"
+    },
+    {
+      "variable": "--ds-letter-spacing-7",
+      "value": "0.25%"
+    },
+    {
+      "variable": "--ds-letter-spacing-8",
+      "value": "0.5%"
+    },
+    {
+      "variable": "--ds-letter-spacing-9",
+      "value": "1.5%"
+    },
+    {
+      "variable": "--ds-font-family",
+      "value": "Inter"
+    },
+    {
+      "variable": "--ds-font-weight-medium",
+      "value": "500"
+    },
+    {
+      "variable": "--ds-font-weight-semibold",
+      "value": "600"
+    },
+    {
+      "variable": "--ds-font-weight-regular",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-heading-2xl-font-weight",
+      "value": "500"
+    },
+    {
+      "variable": "--ds-heading-2xl-line-height",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-heading-2xl-font-size",
+      "value": "3.75rem"
+    },
+    {
+      "variable": "--ds-heading-2xl-letter-spacing",
+      "value": "-1%"
+    },
+    {
+      "variable": "--ds-heading-xl-font-weight",
+      "value": "500"
+    },
+    {
+      "variable": "--ds-heading-xl-line-height",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-heading-xl-font-size",
+      "value": "3rem"
+    },
+    {
+      "variable": "--ds-heading-xl-letter-spacing",
+      "value": "-1%"
+    },
+    {
+      "variable": "--ds-heading-lg-font-weight",
+      "value": "500"
+    },
+    {
+      "variable": "--ds-heading-lg-line-height",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-heading-lg-font-size",
+      "value": "2.25rem"
+    },
+    {
+      "variable": "--ds-heading-lg-letter-spacing",
+      "value": "-0.5%"
+    },
+    {
+      "variable": "--ds-heading-md-font-weight",
+      "value": "500"
+    },
+    {
+      "variable": "--ds-heading-md-line-height",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-heading-md-font-size",
+      "value": "1.875rem"
+    },
+    {
+      "variable": "--ds-heading-md-letter-spacing",
+      "value": "-0.25%"
+    },
+    {
+      "variable": "--ds-heading-sm-font-weight",
+      "value": "500"
+    },
+    {
+      "variable": "--ds-heading-sm-line-height",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-heading-sm-font-size",
+      "value": "1.5rem"
+    },
+    {
+      "variable": "--ds-heading-sm-letter-spacing",
+      "value": "0%"
+    },
+    {
+      "variable": "--ds-heading-xs-font-weight",
+      "value": "500"
+    },
+    {
+      "variable": "--ds-heading-xs-line-height",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-heading-xs-font-size",
+      "value": "1.3125rem"
+    },
+    {
+      "variable": "--ds-heading-xs-letter-spacing",
+      "value": "0.15%"
+    },
+    {
+      "variable": "--ds-heading-2xs-font-weight",
+      "value": "500"
+    },
+    {
+      "variable": "--ds-heading-2xs-line-height",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-heading-2xs-font-size",
+      "value": "1.125rem"
+    },
+    {
+      "variable": "--ds-heading-2xs-letter-spacing",
+      "value": "0.15%"
+    },
+    {
+      "variable": "--ds-body-xl-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-xl-line-height",
+      "value": "1.5"
+    },
+    {
+      "variable": "--ds-body-xl-font-size",
+      "value": "1.5rem"
+    },
+    {
+      "variable": "--ds-body-xl-letter-spacing",
+      "value": "0.5%"
+    },
+    {
+      "variable": "--ds-body-lg-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-lg-line-height",
+      "value": "1.5"
+    },
+    {
+      "variable": "--ds-body-lg-font-size",
+      "value": "1.3125rem"
+    },
+    {
+      "variable": "--ds-body-lg-letter-spacing",
+      "value": "0.5%"
+    },
+    {
+      "variable": "--ds-body-md-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-md-line-height",
+      "value": "1.5"
+    },
+    {
+      "variable": "--ds-body-md-font-size",
+      "value": "1.125rem"
+    },
+    {
+      "variable": "--ds-body-md-letter-spacing",
+      "value": "0.5%"
+    },
+    {
+      "variable": "--ds-body-sm-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-sm-line-height",
+      "value": "1.5"
+    },
+    {
+      "variable": "--ds-body-sm-font-size",
+      "value": "1rem"
+    },
+    {
+      "variable": "--ds-body-sm-letter-spacing",
+      "value": "0.25%"
+    },
+    {
+      "variable": "--ds-body-xs-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-xs-line-height",
+      "value": "1.5"
+    },
+    {
+      "variable": "--ds-body-xs-font-size",
+      "value": "0.875rem"
+    },
+    {
+      "variable": "--ds-body-xs-letter-spacing",
+      "value": "0.15%"
+    },
+    {
+      "variable": "--ds-body-short-xl-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-short-xl-line-height",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-body-short-xl-font-size",
+      "value": "1.5rem"
+    },
+    {
+      "variable": "--ds-body-short-xl-letter-spacing",
+      "value": "0.5%"
+    },
+    {
+      "variable": "--ds-body-short-lg-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-short-lg-line-height",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-body-short-lg-font-size",
+      "value": "1.3125rem"
+    },
+    {
+      "variable": "--ds-body-short-lg-letter-spacing",
+      "value": "0.5%"
+    },
+    {
+      "variable": "--ds-body-short-md-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-short-md-line-height",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-body-short-md-font-size",
+      "value": "1.125rem"
+    },
+    {
+      "variable": "--ds-body-short-md-letter-spacing",
+      "value": "0.5%"
+    },
+    {
+      "variable": "--ds-body-short-sm-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-short-sm-line-height",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-body-short-sm-font-size",
+      "value": "1rem"
+    },
+    {
+      "variable": "--ds-body-short-sm-letter-spacing",
+      "value": "0.25%"
+    },
+    {
+      "variable": "--ds-body-short-xs-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-short-xs-line-height",
+      "value": "1.3"
+    },
+    {
+      "variable": "--ds-body-short-xs-font-size",
+      "value": "0.875rem"
+    },
+    {
+      "variable": "--ds-body-short-xs-letter-spacing",
+      "value": "0.15%"
+    },
+    {
+      "variable": "--ds-body-long-xl-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-long-xl-line-height",
+      "value": "1.7"
+    },
+    {
+      "variable": "--ds-body-long-xl-font-size",
+      "value": "1.5rem"
+    },
+    {
+      "variable": "--ds-body-long-xl-letter-spacing",
+      "value": "0.5%"
+    },
+    {
+      "variable": "--ds-body-long-lg-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-long-lg-line-height",
+      "value": "1.7"
+    },
+    {
+      "variable": "--ds-body-long-lg-font-size",
+      "value": "1.3125rem"
+    },
+    {
+      "variable": "--ds-body-long-lg-letter-spacing",
+      "value": "0.5%"
+    },
+    {
+      "variable": "--ds-body-long-md-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-long-md-line-height",
+      "value": "1.7"
+    },
+    {
+      "variable": "--ds-body-long-md-font-size",
+      "value": "1.125rem"
+    },
+    {
+      "variable": "--ds-body-long-md-letter-spacing",
+      "value": "0.5%"
+    },
+    {
+      "variable": "--ds-body-long-sm-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-long-sm-line-height",
+      "value": "1.7"
+    },
+    {
+      "variable": "--ds-body-long-sm-font-size",
+      "value": "1rem"
+    },
+    {
+      "variable": "--ds-body-long-sm-letter-spacing",
+      "value": "0.25%"
+    },
+    {
+      "variable": "--ds-body-long-xs-font-weight",
+      "value": "400"
+    },
+    {
+      "variable": "--ds-body-long-xs-line-height",
+      "value": "1.7"
+    },
+    {
+      "variable": "--ds-body-long-xs-font-size",
+      "value": "0.875rem"
+    },
+    {
+      "variable": "--ds-body-long-xs-letter-spacing",
+      "value": "0.15%"
+    }
+  ]
+}

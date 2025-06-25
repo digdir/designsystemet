@@ -1,0 +1,74 @@
+[
+  {
+    "variable": "--ds-size-base",
+    "value": "18"
+  },
+  {
+    "variable": "--ds-size-step",
+    "value": "4"
+  },
+  {
+    "variable": "--ds-border-radius-base",
+    "value": "0.25rem"
+  },
+  {
+    "variable": "--ds-border-radius-scale",
+    "value": "0.25rem"
+  },
+  {
+    "variable": "--ds-border-radius-sm",
+    "value": "min(var(--ds-border-radius-base)*0.5,var(--ds-border-radius-scale))"
+  },
+  {
+    "variable": "--ds-border-radius-md",
+    "value": "min(var(--ds-border-radius-base),var(--ds-border-radius-scale)*2)"
+  },
+  {
+    "variable": "--ds-border-radius-lg",
+    "value": "min(var(--ds-border-radius-base)*2,var(--ds-border-radius-scale)*5)"
+  },
+  {
+    "variable": "--ds-border-radius-xl",
+    "value": "min(var(--ds-border-radius-base)*3,var(--ds-border-radius-scale)*7)"
+  },
+  {
+    "variable": "--ds-border-radius-default",
+    "value": "var(--ds-border-radius-base)"
+  },
+  {
+    "variable": "--ds-border-radius-full",
+    "value": "624.9375rem"
+  },
+  {
+    "variable": "--ds-border-width-default",
+    "value": "1px"
+  },
+  {
+    "variable": "--ds-border-width-focus",
+    "value": "3px"
+  },
+  {
+    "variable": "--ds-shadow-xs",
+    "value": "0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12)"
+  },
+  {
+    "variable": "--ds-shadow-sm",
+    "value": "0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1)"
+  },
+  {
+    "variable": "--ds-shadow-md",
+    "value": "0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12)"
+  },
+  {
+    "variable": "--ds-shadow-lg",
+    "value": "0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14)"
+  },
+  {
+    "variable": "--ds-shadow-xl",
+    "value": "0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16)"
+  },
+  {
+    "variable": "--ds-opacity-disabled",
+    "value": "30%"
+  }
+]
