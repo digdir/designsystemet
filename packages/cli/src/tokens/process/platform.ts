@@ -70,6 +70,7 @@ const sd = new StyleDictionary();
  */
 const buildConfigs = {
   typography: { getConfig: configs.typographyVariables, dimensions: ['typography'] },
+  size: { getConfig: configs.sizeVariables, dimensions: ['size'] },
   'color-scheme': { getConfig: configs.colorSchemeVariables, dimensions: ['color-scheme'] },
   'main-color': { getConfig: configs.mainColorVariables, dimensions: ['main-color'] },
   'support-color': { getConfig: configs.supportColorVariables, dimensions: ['support-color'] },
@@ -141,11 +142,7 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
   buildOptions.defaultColor = UNSAFE_DEFAULT_COLOR;
   buildOptions.colorGroups = colorGroups;
 
-  const filteredProcessed$themes = processed$themes.filter((theme) =>
-    R.not(theme.group === 'size' && theme.name !== 'medium'),
-  );
-
-  const customColors = getCustomColors(filteredProcessed$themes, colorGroups);
+  const customColors = getCustomColors(processed$themes, colorGroups);
 
   if (!buildOptions.defaultColor) {
     const firstMainColor = R.head(customColors);
@@ -159,7 +156,7 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
   const buildAndSdConfigs = R.map((buildConfig: BuildConfig) => {
     const sdConfigs = getConfigsForThemeDimensions(
       buildConfig.getConfig,
-      filteredProcessed$themes,
+      processed$themes,
       buildConfig.dimensions,
       {
         tokensDir,
@@ -194,6 +191,7 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
     'info-color': [initResult],
     semantic: [initResult],
     typography: [initResult],
+    size: [initResult],
   };
 
   try {
