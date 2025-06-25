@@ -1,3 +1,4 @@
+import * as R from 'ramda';
 import { pathStartsWithOneOf, typeEquals } from '../../utils.js';
 import { formats } from '../formats/css.js';
 import { sizeRem, typographyName } from '../transformers.js';
@@ -5,12 +6,7 @@ import { sizeRem, typographyName } from '../transformers.js';
 import { type GetStyleDictionaryConfig, basePxFontSize, prefix } from './shared.js';
 
 export const sizeVariables: GetStyleDictionaryConfig = ({ theme, size }) => {
-  const shortNames: Record<string, string | undefined> = {
-    small: 'sm',
-    medium: 'md',
-    large: 'lg',
-  };
-  const selector = `${size === 'medium' ? ':root, ' : ''}[data-size="${shortNames[size] ?? size}"]`;
+  const selector = ':root, [data-size]';
   const layer = `ds.theme.size`;
 
   return {
@@ -21,6 +17,7 @@ export const sizeVariables: GetStyleDictionaryConfig = ({ theme, size }) => {
     },
     platforms: {
       css: {
+        size,
         prefix,
         selector,
         layer,
@@ -37,7 +34,7 @@ export const sizeVariables: GetStyleDictionaryConfig = ({ theme, size }) => {
         files: [
           {
             destination: `size/${size}.css`,
-            format: formats.typography.name,
+            format: formats.typographySize.name,
             filter: (token) => {
               const included = typeEquals(['typography', 'dimension', 'fontsize'], token);
 
@@ -46,8 +43,10 @@ export const sizeVariables: GetStyleDictionaryConfig = ({ theme, size }) => {
 
               return (
                 included &&
-                !pathStartsWithOneOf(['spacing', 'sizing', 'size', '_size', 'border-width', 'border-radius'], token) &&
-                (pathStartsWithOneOf(['font-size'], token) || token.path.includes('fontSize'))
+                !pathStartsWithOneOf(['spacing', 'sizing', 'size', 'border-width', 'border-radius'], token) &&
+                (pathStartsWithOneOf(['font-size'], token) ||
+                  R.equals(['_size', 'mode-font-size'], token.path) ||
+                  token.path.includes('fontSize'))
               );
             },
           },
