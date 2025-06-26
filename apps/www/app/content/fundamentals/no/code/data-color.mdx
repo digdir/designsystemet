@@ -1,56 +1,12 @@
 ---
-title: Farger
-sidebar_title: Farger
-description: Fargesystemet består av globale farger og et semantisk nivå som beskriver hva fargen skal brukes til.
-date: 2024-05-30
-category: Kom i gang
-color: red
-icon: PaletteIcon
+title: data-color
+description: Informasjon om korleis du setter farge i kode.
+date: 2025-01-10
+category: Kode
+color: blue
+icon: CodeIcon
 published: true
 ---
-
-Innhold
-- [Introduksjon til farger](/no/fundamentals/designelements/colors#introduksjon-til-farger)
-- [Farger i koden](/no/fundamentals/designelements/colors#farger-i-koden)
-- [Farger i Figma](/no/fundamentals/designelements/colors#farger-i-figma)
-
-## Introduksjon til farger
-
-### Navnestruktur
-Fargene i Designsystemet er strukturert med en semantisk betydning. 
-Dette betyr at de er definert etter funksjon og bruk, ikke bare etter hvordan de ser ut. 
-Det gjør det lettere å velge riktig farge fordi du slipper å vurdere selve fargetonen og kan fokusere på hva fargen skal formidle i stedet.
-
-Fargenavnene i Designsystemet er delt opp i 3 ledd: Navn på fargeskala, gruppe (bruksområde) og variant.
-Disse leddene beskriver hvordan fargene er bygget opp og hvordan de skal brukes.
-
-<Image
-  src='/img/color-semantic.png'
-  alt='Vise oppbygging av en semantisk farge'
-  boxShadow={false}
-  
-/>
-
-* `Navn` Det første leddet og navnet på fargeskalaen. 
-Som standard kommer Designsystemet med fargeskalaene Success, Danger, Warning, Info og Neutral.
-Flere skalaer kan legges til ved hjelp av [Temabyggeren](https://theme.designsystemet.no/).
-
-* `Gruppe` Hver fargeskala er delt inn i gruppene Background, Surface, Border, Text og Base. 
-Disse gruppene beskriver bruksområdene til fargene. Text-gruppen skal for eksempel brukes på tekst og ikoner.
-
-<Image
-  src='/img/fargeskala-success.png'
-  alt='Viser hvordan fargeskalaene er delt opp i grupper'
-  boxShadow={false}
-  
-  caption='Viser en fargeskala og de 5 gruppene som fargene er delt inn i.'
-/>
-
-* `Variant` Inne i hver gruppe finnes det varianter som beskriver hvordan fargene ser ut eller skal brukes. 
-Tinted betyr for eksempel at fargen har et hint av farge i seg, mens Hover betyr at fargen er tenkt brukt for en interaktiv tilstand.
-
-
-## Farger i koden
 
  Designsystemet støtter to måter å sette farge på i kode: data-color og eksplisitt variabel.
 
@@ -201,22 +157,3 @@ Du kan bruke `data-color-scheme` og `data-color` saman for å endre både fargem
 ### Kort oppsummert
 
 Du endrar farge med `data-color`, men denne må bli satt på nytt dersom du endrar fargemodus med `data-color-scheme`. Nokre komponentar arvar farge frå næraste forelder med `data-color` satt.
-
-
-## Farger i Figma
-I Figma Dev Mode vises farger på to måter:
-- Main / Support: Brukes for fleksible farger, tilsvarende data-color i kode. Du setter en mode som main/border-default, og komponenten arver riktig farge. Dette gjør det enklere å gjenbruke komponenter uten å lage nye varianter. Modusene er cascading – du kan sette dem på page, frame eller element.
-- Eksplisitt farge: Brukes når en farge alltid skal være den samme, uansett mode. Visningen i Dev Mode vil da vise en spesifikk variabel, akkurat som i kode.
-
-### Hva er main og support?
-Main og Support er egne modes i Figma som simulerer funksjonaliteten til data-color fra kode. De finnes kun i Figma og lar deg styre hvilke farger komponenter skal bruke, basert på kontekst.
-
-I Figma uten enterprise-lisens kan du bruke 4 farger per mode, altså 8 farger totalt fordelt mellom main og support.
-
-Les mer om hvordan disse brukes i [modes i Figma](/no/fundamentals/for-designers/modes-in-figma)
-
-Dette gir deg to viktige fordeler:
-1. Du kan bruke egne navn på fargene
-Hvis du hadde brukt selve fargevariablene direkte i komponentene, ville det ført til feil hver gang noen importerte eller byttet ut farger. Ved å bruke main/support, refererer komponentene til en abstrakt farge, og du kan endre innholdet uten å påvirke strukturen.
-2. Du slipper å lage én variant per farge 
-I stedet for å lage separate komponenter for blå, rød, grønn osv., kan én og samme komponent endre farge basert på hvilken mode (main eller support) som er satt. Det gir mindre vedlikehold og gjør det lettere å holde orden i filen.
