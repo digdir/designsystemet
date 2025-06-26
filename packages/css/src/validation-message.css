@@ -9,6 +9,7 @@
   margin: 0; /* Reset if rendered with <p> */
   position: relative;
   padding-inline-start: calc(var(--dsc-validation-message-icon-size) + var(--dsc-validation-message-spacing));
+  @composes ds-print-visible from './base.css';
 
   &::before {
     background: currentcolor;

@@ -19,6 +19,7 @@
   text-transform: uppercase;
   user-select: none;
   width: var(--dsc-avatar-size);
+  @composes ds-print-visible from './base.css';
 
   &:not([hidden]) {
     display: inline-flex;
