@@ -34,7 +34,10 @@ Designsystemet er et kollektivt gode gjennom åpen kildekode, og kan benyttes av
 
 
 ### Hvorfor et _felles_ designsystem?
-Det er mange grunner til å ha et felles designsystem, her er to av de viktigste.
+Over 1 million nordmenn strever med å bruke digitale løsninger. En av grunnene til det er at komponenter og interaksjonsmønstre oppfører seg så forskjellig fra gang til gang på tvers av løsninger. Vi ønsker å gjøre det enklere å lage tilgjengelige, sammenhengende og brukervennlige digitale tjenester på tvers av virksomheter. Det får vi til ved å dele felles retningslinjer, interaksjonsmønstre og grunnleggende komponenter som kan brukes sammen med hver aktørs egen visuelle profil. Med Designsystemet legger vi ikke opp til at alle virksomheter som bruker det skal se helt like ut visuelt, men at komponenter skal oppføre seg likt, for eksempel på en skjermleser eller på andre hjelpemidler. På den måten kan vi bidra til mer gjenkjennelig interaksjon på tvers av virksomheter, selv om vi har ulike visuelle profiler. Vi kan altså være både konsistente og særegne samtidig.
+
+
+To av de viktigste grunnene til å ha et felles designsystem:
 
 1. **Helhetlige tjenester på tvers** \
 Gjennom å samarbeide om et felles designsystem kan vi i større grad sikre helhetlige, tilgjengelige og gjenkjennelige brukeropplevelser på tvers av etater. Regjeringen vil jobbe for at _"offentlige digitale tjenester skal ha et brukervennlig og gjenkjennbart design på tvers av ulike etater slik at innbyggere med lav digital kompetanse kan benytte tjenesten"_. <sup>1</sup>
@@ -42,54 +45,11 @@ Gjennom å samarbeide om et felles designsystem kan vi i større grad sikre helh
 2. **Mindre dobbeltarbeid** \
 I stedet for å lage de samme grunnkomponentene om og om igjen, kan vi lage dem skikkelig én gang og sikre god kvalitet ved at at tilgjengelighetskrav og testing er godt ivaretatt. Best av alt - da har vi kun ett sted å vedlikeholde dem når det kommer nye teknologier, standarder, krav, og behov. Det betyr optimalisert ressursbruk i offentlig sektor og redusert utviklingskostnad. Det betyr også mer tid til å løse viktigere problem for brukerne våre. 
 
-## Hvordan bruke Designsystemet? 
 
-Designsystemet bør brukes som et fundament, der du har din egen visuelle profil på toppen. Ved å bruke grunnleggende byggeklosser fra Designsystemet kan du selv bygge mer sammensatte komponenter som dekker dine spesifikke behov. 
-
-<Image
-  src='/img/lagvis-bruk.png'
-  alt='Viser Designsystemet som et lag i bunnen. Du har din egen profil på toppen. Du kan velge å bruke Designsystemet direkte i løsninger, eller bygge ditt eget designsystem på toppen.'
-  boxShadow={false}
-  caption='Noen velger å bygge sitt eget designsystem på toppen av Designsystemet, mens andre bruker det direkte i løsninger.'
-/>
-
-## Hva består Designsystemet av?
-
-Designsystemet består av flere byggeklosser og verktøy. Du kan ta i bruk det du trenger, i den grad du ønsker.
-
-- **Design Tokens** \
-  [Design Tokens](/no/fundamentals/designelements/design-tokens) er variabler som styrer farger, typografi, størrelser, avstander og former. Variablene er lagt opp til å være tema-baserte, det vil si at de tar utgangspunkt i din merkevare med de fargene og preferansene du selv velger i Temabyggeren. [Fargesystemet](/no/fundamentals/for-designers/colorsystem) sikrer at det er god kontrast mellom tekst og bakgrunnsfarger, uansett hvilke profilfarger du har. Token-strukturen støtter at du kan ha både flere ulike tema og flere "modes" (dark-mode, light-mode, contrast-mode, etc.). Design Tokens sørger også for at det er de samme verdiene vi jobber med i design og kode. Design tokens er hele magien!
-
-- **UI-komponenter** \
-  Designsystemet inneholder de mest grunnleggende UI-komponentene som gir verdi å dele på tvers. UI-komponentene finnes i egne bibliotek for [Figma](https://www.figma.com/@designsystemet), [CSS](https://www.npmjs.com/package/@digdir/designsystemet-css) og [React](https://www.npmjs.com/package/@digdir/designsystemet-react). Vi dokumenterer hvordan komponentene bør brukes og oppdatererer retningslinjene etter hvert som vi får mer innsikt. 
-
-- **Temabygger** \
-[Temabyggeren](https://theme.designsystemet.no/) gjør det enkelt å ta i bruk Designsystemet i din egen organisasjon med dine egne profilfarger og preferanser. Etter at du har tilpasset temaet, kopierer du en kodesnutt og limer den inn i terminalen eller Figma. På få minutter har du alle komponentene i Figma og kode med ditt eget design. 
-
-- **Kommandolinjeverktøy (CLI)** \
-Designsystemets [CLI](https://www.npmjs.com/package/@digdir/designsystemet) hjelper med oppsett av nye prosjekter, generere grunnstruktur, konfigurere temaer, nødvendige avhengigheter og konfigurasjon. 
-
-- **Mønstre og god praksis** \
-  Designsystemet er en samarbeidsarena for å utvikle gjenkjennbare [mønstre](/no/patterns) og felles [anbefalinger](/no/best-practices). Med mønstre mener vi for eksempel hvor sentrale elementer skal plasseres i grensesnittet, og hvordan navigasjon, feilmeldinger og andre gjentagende brukeroppgaver skal oppføre seg. Vi kan samarbeide om mønstre selv om vi ikke bruker de samme tekniske komponentene eller designelementene.
-
-- **Blogg** \
-  I bloggen kan vi fortelle om nye oppdateringer og dele historier. Vi håper flere vil bruke bloggen til å skrive om hvordan de har tatt i bruk Designsystemet.
-
-- **Community** \
-Designsystemet ønsker å legge til rette for bred erfaringsdeling rundt designsystemer og alt som hører til. Du kan bli med i [Slack](http://designsystemet.no/slack) og i [Github](https://github.com/digdir/designsystemet/discussions/categories/samarbeid-m%C3%B8nster-for-innbyggertjenester). 
-
-## Hvem kan bruke og bidra til Designsystemet?
+## Hvem kan bruke Designsystemet?
 
 Alle som lager digitale løsninger kan bruke Designsystemet. Det er åpen kildekode og vi setter pris på at du bidrar til å gjøre Designsystemet bedre. [Si gjerne ifra](https://github.com/digdir/designsystemet/issues/new/choose) hvis du finner en feil eller vil foreslå en forbedring. Spørsmål kan du stille i Slack-kanalen [#Designsystemet](https://designsystemet.no/slack), der hjelper vi hverandre.
 
-### Hvordan kan du bidra?
-
-Vi har ingen bestemt måte du må gå fram på for å bidra, men ta gjerne kontakt på [Slack](https://designsystemet.no/slack) når du har et behov, så kan vi sammen vurdere behovet.
-
-- [Bidra med design](/no/fundamentals/for-designers/contribute-in-figma)
-- [Bidra med utvikling](https://github.com/digdir/designsystemet/blob/main/CONTRIBUTING.md)
-- [Bidra med innsikt](https://github.com/digdir/innsiktsbibliotek)
-- Skriv en artikkel
 
 ## Hvem bruker Designsystemet i dag?
 
@@ -119,24 +79,6 @@ Vi vil gjerne høre fra deg, [send oss en epost](mailto:designsystem@digdir.no)!
   </Details>
 </Card>
 
-## Hvordan samarbeider vi på tvers?
-En gang i måneden har vi "Demo og samarbeidsforum" som er åpen for alle interessenter. Her forteller vi om hva vi har jobbet med siden sist. [Ta kontakt](mailto:designsystem@digdir.no) om du vil ha tilsendt en møteinvitasjon.
-
-Utviklingsteamet i dag består hovedsakelig av designsystem-teamet i Digdir, sammen med designere og utviklere fra Brønnøysundregistrene, Mattilsynet, Utdanningsdirektoratet og KS Digital. Vi håper utviklingsteamet i enda større grad blir et tverretatlig team. Ønsker din virksomhet å være tettere på samarbeidet? Send oss en e-post på:
-[designsystem@digdir.no](mailto:designsystem@digdir.no)
-
-I tillegg har vi et [mønster-samarbeid](/no/patterns), der Digdir, Nav, Skatteetaten, Oslo kommune, Entur, Politiet og Brønnøysundregistrene med flere deltar i arbeidsgrupper for å etablere felles mønstre på tvers. 
-
-En viktig verdi for oss er å være åpne og transparente. 
-
-Alt vi gjør deler vi åpent:
-- [Kildekode](https://github.com/digdir/designsystemet)
-- [Backlog](https://github.com/orgs/digdir/projects/3/views/1)
-- [Roadmap](https://github.com/orgs/digdir/projects/3/views/30)
-- [Figma](https://www.figma.com/@designsystemet)
-- [Storybook](https://storybook.designsystemet.no)
-- [Diskusjoner på Github](https://github.com/digdir/designsystemet/discussions)
-- [Diskusjoner i Slack](https://www.designsystemet.no/slack)
 
 <br />
 <br />
