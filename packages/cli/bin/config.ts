@@ -3,6 +3,7 @@ import type { Command, OptionValues } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 import * as R from 'ramda';
 import {
+  type ConfigSchema,
   type ConfigSchemaBuild,
   type ConfigSchemaCreate,
   configFileBuildSchema,
@@ -37,14 +38,10 @@ export async function readConfigFile(configPath: string, allowFileNotFound = tru
 export async function parseCreateConfig(
   configFile: string,
   options: { theme: string; cmd: Command<unknown[], OptionValues>; configPath: string },
-): Promise<ConfigSchemaCreate> {
+): Promise<ConfigSchema> {
   const { cmd, theme = 'theme', configPath } = options;
 
-  const configParsed: ConfigSchemaCreate = parseConfig<ConfigSchemaCreate>(
-    configFileCreateSchema,
-    configFile,
-    configPath,
-  );
+  const configParsed: ConfigSchema = parseConfig<ConfigSchema>(configFileCreateSchema, configFile, configPath);
 
   /*
    * Check that we're not creating multiple themes with different color names.
