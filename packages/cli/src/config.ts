@@ -67,8 +67,10 @@ export function parseConfig<T>(schema: z.ZodType<T>, configFile: string, configP
     return schema.parse(parsedConfig) as T;
   } catch (err) {
     console.error(chalk.redBright(`Failed parsing config file at ${chalk.red(configPath)}`));
-    const validationError = makeFriendlyError(err);
-    console.error(validationError.toString());
+    // const validationError = makeFriendlyError(err);
+
+    // console.error(validationError.toString());
+    console.error(chalk.red(err instanceof Error ? err.message : 'Unknown error occurred while parsing config file'));
     process.exit(1);
   }
 }
