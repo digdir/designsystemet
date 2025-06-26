@@ -1,6 +1,6 @@
-import type { Meta } from '@storybook/react';
-import { Checkbox } from '.';
+import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
+import { Checkbox } from '.';
 import * as CheckboxStories from './Checkbox.stories';
 
 const meta: Meta = {

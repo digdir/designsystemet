@@ -19,7 +19,10 @@ const Section = ({
   ...props
 }: SectionProps) => {
   return (
-    <div className={cl(classes.section, classes[backgroundColor])} {...props}>
+    <section
+      className={cl(classes.section, classes[backgroundColor])}
+      {...props}
+    >
       <ContentContainer>
         <div className={classes.header}>
           {title && (
@@ -42,7 +45,7 @@ const Section = ({
         </div>
         <div className={classes.content}>{children}</div>
       </ContentContainer>
-    </div>
+    </section>
   );
 };
 

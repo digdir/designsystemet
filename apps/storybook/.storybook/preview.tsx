@@ -3,10 +3,6 @@ import './customTheme.scss';
 /* We use relative imports to get HMR updates when developing */
 import '../../../packages/css/src/index.css';
 import '../../../packages/theme/src/themes/designsystemet.css';
-import { LinkIcon } from '@navikt/aksel-icons';
-import type { Preview } from '@storybook/react';
-import isChromatic from 'chromatic/isChromatic';
-import componentStyles from './componentOverrides.module.scss';
 
 import type { HeadingProps } from '@digdir/designsystemet-react';
 import {
@@ -16,14 +12,17 @@ import {
   Paragraph,
   Table,
 } from '@digdir/designsystemet-react';
-
 import { CodeBlock } from '@internal/components';
+import { LinkIcon } from '@navikt/aksel-icons';
+import type { Preview } from '@storybook/react-vite';
+import isChromatic from 'chromatic/isChromatic';
 import { Children, type MouseEventHandler } from 'react';
 import { customStylesDecorator } from '../story-utils/customStylesDecorator';
 import { fontsLoader } from '../story-utils/fontsLoader';
 import { allModes, viewportWidths } from '../story-utils/modes';
 import { transformSource } from '../story-utils/transformSource';
 import type { MdxComponentOverrides } from '../story-utils/type-extensions';
+import componentStyles from './componentOverrides.module.scss';
 import customTheme from './customTheme';
 
 const viewports: Record<string, object> = {};
@@ -202,7 +201,6 @@ const preview: Preview = {
     },
     colorScheme: {
       description: 'Set color-scheme in stories',
-      defaultValue: 'light',
       toolbar: {
         title: 'Theme',
         icon: 'contrast',
@@ -224,10 +222,13 @@ const preview: Preview = {
     docs: {
       theme: customTheme,
       components,
+
       source: {
         transform: transformSource,
         type: 'auto',
       },
+      /* @ts-ignore this is a type error as of 9.0.6*/
+      codePanel: true,
     },
     controls: {
       matchers: {

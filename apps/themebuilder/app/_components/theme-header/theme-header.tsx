@@ -2,15 +2,15 @@ import { Heading } from '@digdir/designsystemet-react';
 import { RRLink } from '@internal/components/src/link';
 import { ChevronLeftIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
-import { useRouteLoaderData } from 'react-router';
-import { useThemeStore } from '~/store';
+import { useRouteLoaderData, useSearchParams } from 'react-router';
+import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from './theme-header.module.css';
 
 export const ThemeHeader = () => {
   const { t } = useTranslation();
   const { lang } = useRouteLoaderData('root');
-  const themeTab = useThemeStore((state) => state.themeTab);
-  const setThemeTab = useThemeStore((state) => state.setThemeTab);
+  const [, setQuery] = useSearchParams();
+  const { tab } = useThemebuilder();
 
   const tabs: {
     name: string;
@@ -33,14 +33,25 @@ export const ThemeHeader = () => {
       </div>
       {/* Tabs that change between overview and */}
       <div data-size='md' className={classes.tabs}>
-        {tabs.map((tab) => (
+        {tabs.map((themeTab) => (
           <button
-            key={tab.value}
+            key={themeTab.value}
             className='ds-focus-visible'
-            onClick={() => setThemeTab(tab.value)}
-            data-active={themeTab === tab.value}
+            onClick={() => {
+              setQuery(
+                (prev) => {
+                  prev.set('tab', themeTab.value);
+                  return prev;
+                },
+                {
+                  /* we don't want to prevent scroll here, since we change tabs */
+                  replace: true,
+                },
+              );
+            }}
+            data-active={tab === themeTab.value}
           >
-            {tab.name}
+            {themeTab.name}
           </button>
         ))}
       </div>

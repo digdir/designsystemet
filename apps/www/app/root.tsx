@@ -1,12 +1,12 @@
 import {
+  data,
+  isRouteErrorResponse,
   Links,
   Meta,
   Outlet,
+  redirect,
   Scripts,
   ScrollRestoration,
-  data,
-  isRouteErrorResponse,
-  redirect,
 } from 'react-router';
 import type { Route } from './+types/root';
 import '@digdir/designsystemet-theme';
@@ -51,6 +51,12 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   const hasRedirect = designsystemetRedirects(url.pathname);
 
   const lang = params.lang === 'no' ? 'no' : params.lang === 'en' ? 'en' : 'no';
+
+  if (url.pathname.match('/.*/$')) {
+    /* do this to make sure we keep params */
+    url.pathname = url.pathname.replace(/\/+$/, '');
+    return redirect(url.toString());
+  }
 
   if (hasRedirect) {
     return hasRedirect;
@@ -100,8 +106,8 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 
   return data({
     lang: params.lang || 'no',
-    centerLinks,
     menu,
+    centerLinks,
   });
 };
 
@@ -115,9 +121,7 @@ function Document({ children }: DocumentProps) {
   return (
     <html
       lang={
-        i18n.language !== 'no' && i18n.language !== 'en'
-          ? undefined
-          : i18n.language
+        i18n.language !== 'no' && i18n.language !== 'en' ? 'no' : i18n.language
       }
       dir={i18n.dir(i18n.language)}
       data-color-scheme='auto'

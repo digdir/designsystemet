@@ -153,6 +153,10 @@ export default {
     },
   },
   video: {
-    'watch-video': 'Se video på vimeo.com',
+    'watch-video': 'Se video på {{url}}',
+  },
+  'image-banner': {
+    'play-video': 'Spill av video',
+    'pause-video': 'Sett video på pause',
   },
 };

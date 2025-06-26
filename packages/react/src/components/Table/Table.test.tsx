@@ -1,8 +1,4 @@
 import { render as renderRtl, screen } from '@testing-library/react';
-
-import type { TableProps } from './Table';
-import { Table } from './Table';
-
 import {
   TableBody,
   TableCell,
@@ -11,6 +7,8 @@ import {
   TableHeaderCell,
   TableRow,
 } from '.';
+import type { TableProps } from './Table';
+import { Table } from './Table';
 
 const children = (
   <>

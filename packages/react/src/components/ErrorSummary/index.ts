@@ -33,10 +33,10 @@ ErrorSummary.List.displayName = 'ErrorSummary.List';
 ErrorSummary.Link.displayName = 'ErrorSummary.Link';
 
 export type { ErrorSummaryProps } from './ErrorSummary';
-export type { ErrorSummaryItemProps } from './ErrorSummaryItem';
 export type { ErrorSummaryHeadingProps } from './ErrorSummaryHeading';
-export type { ErrorSummaryListProps } from './ErrorSummaryList';
+export type { ErrorSummaryItemProps } from './ErrorSummaryItem';
 export type { ErrorSummaryLinkProps } from './ErrorSummaryLink';
+export type { ErrorSummaryListProps } from './ErrorSummaryList';
 export {
   ErrorSummary,
   ErrorSummaryItem,

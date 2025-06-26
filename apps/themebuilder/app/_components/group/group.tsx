@@ -1,18 +1,16 @@
-import { RovingFocusItem } from '@digdir/designsystemet-react';
 import {
   type Color,
   type ColorNames,
-  type ThemeInfo,
   colorMetadata,
   getColorMetadataByNumber,
+  type ThemeInfo,
 } from '@digdir/designsystemet/color';
+import { RovingFocusItem } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
-
-import { Color as ColorPreview } from '../color/color';
-
 import { Fragment } from 'react';
 import { useColorModalContext } from '~/_utils/color-modal-context';
-import { useThemeStore } from '~/store';
+import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
+import { Color as ColorPreview } from '../color/color';
 import classes from './group.module.css';
 
 type GroupProps = {
@@ -30,7 +28,7 @@ export const Group = ({
   colorScale,
   namespace,
 }: GroupProps) => {
-  const colorScheme = useThemeStore((state) => state.colorScheme);
+  const { colorScheme } = useThemebuilder();
   const { openColorModal } = useColorModalContext();
 
   return (

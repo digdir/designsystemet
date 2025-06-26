@@ -1,5 +1,5 @@
 import { PrinterSmallIcon } from '@navikt/aksel-icons';
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
 import {
   Alert,
@@ -34,8 +34,8 @@ import {
   Textfield,
   ToggleGroup,
   Tooltip,
-  ValidationMessage,
   usePagination,
+  ValidationMessage,
 } from '../src';
 import type { Size } from '../src/types';
 

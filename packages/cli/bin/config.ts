@@ -11,7 +11,7 @@ import {
   validateConfig,
 } from '../src/config.js';
 import { readFile } from '../src/utils.js';
-import { type OptionGetter, getCliOption, getDefaultCliOption, getSuppliedCliOption } from './options.js';
+import { getCliOption, getDefaultCliOption, getSuppliedCliOption, type OptionGetter } from './options.js';
 
 export async function readConfigFile(configPath: string, allowFileNotFound = true): Promise<string> {
   const resolvedPath = path.resolve(process.cwd(), configPath);

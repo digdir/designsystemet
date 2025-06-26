@@ -1,40 +1,35 @@
 import cl from 'clsx/lite';
-import {} from 'react';
 import { ColorContrasts } from '~/_components/color-contrasts/color-contrasts';
 import { ColorPreview } from '~/_components/color-preview/color-preview';
 import { ColorTokens } from '~/_components/color-tokens/color-tokens';
 import { Colors } from '~/_components/colors/colors';
 import { OverviewComponents } from '~/_components/overview-components/overview-components';
-import {} from '~/_utils/generate-color-vars';
-import { useThemeStore } from '~/store';
+import { useThemebuilder } from '../_utils/use-themebuilder';
 import classes from './theme-pages.module.css';
 
 export const ThemePages = () => {
-  const themeTab = useThemeStore((state) => state.themeTab);
-  const colorScheme = useThemeStore((state) => state.colorScheme);
-  const colors = useThemeStore((state) => state.colors);
-  const borderRadius = useThemeStore((state) => state.baseBorderRadius);
+  const { colorScheme, colors, baseBorderRadius, tab } = useThemebuilder();
 
   return (
     <>
       <div
         className={classes.basicPanel}
         data-color-scheme={colorScheme}
-        hidden={!(themeTab === 'overview')}
+        hidden={!(tab === 'overview')}
       >
         <OverviewComponents
           colorScheme={colorScheme}
           color={colors.main[0]?.colors.light[11].hex}
-          borderRadius={borderRadius}
+          borderRadius={baseBorderRadius}
         />
       </div>
 
-      {themeTab === 'colorsystem' ? (
+      {tab === 'colorsystem' ? (
         <>
           <div
             className={cl(classes.basicPanel, classes.colorsContainer)}
             data-color-scheme={colorScheme}
-            hidden={!(themeTab === 'colorsystem')}
+            hidden={!(tab === 'colorsystem')}
           >
             <Colors />
           </div>
@@ -42,14 +37,14 @@ export const ThemePages = () => {
           <div
             className={classes.panel}
             data-color-scheme={colorScheme}
-            hidden={!(themeTab === 'colorsystem')}
+            hidden={!(tab === 'colorsystem')}
           >
             <ColorPreview />
           </div>
           <div
             className={classes.panel}
             data-color-scheme={colorScheme}
-            hidden={!(themeTab === 'colorsystem')}
+            hidden={!(tab === 'colorsystem')}
           >
             <ColorTokens />
           </div>
@@ -57,7 +52,7 @@ export const ThemePages = () => {
           <div
             className={classes.panel}
             data-color-scheme={colorScheme}
-            hidden={!(themeTab === 'colorsystem')}
+            hidden={!(tab === 'colorsystem')}
           >
             <ColorContrasts />
           </div>

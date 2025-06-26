@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 
 import { Breadcrumbs } from '.';
 
@@ -31,7 +31,7 @@ export const Preview: StoryFn<typeof Breadcrumbs> = (args) => (
   </>
 );
 
-export const ListOnly: StoryFn<typeof Breadcrumbs> = (args) => (
+export const ListOnly: StoryFn<typeof Breadcrumbs> = () => (
   <Breadcrumbs aria-label='Du er her:'>
     <Breadcrumbs.List>
       <Breadcrumbs.Item>
@@ -50,7 +50,7 @@ export const ListOnly: StoryFn<typeof Breadcrumbs> = (args) => (
   </Breadcrumbs>
 );
 
-export const BackOnly: StoryFn<typeof Breadcrumbs> = (args) => (
+export const BackOnly: StoryFn<typeof Breadcrumbs> = () => (
   <Breadcrumbs>
     <Breadcrumbs.Link href='#' aria-label='Tilbake til Nivå 3'>
       Nivå 3

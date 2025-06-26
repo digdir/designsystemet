@@ -1,4 +1,4 @@
-import type { Decorator } from '@storybook/react';
+import type { Decorator } from '@storybook/react-vite';
 import type { MouseEventHandler } from 'react';
 
 function isInViewport(el: Element) {
@@ -29,6 +29,7 @@ const handleScrollHash: MouseEventHandler<HTMLDivElement> = (event) => {
 
 export const withScrollHashBehavior: Decorator = (Story) => {
   return (
+    // biome-ignore lint/a11y/noStaticElementInteractions: Also adds `withScrollHashBehavior` decorator which we can use for stories / groups of stories, as demonstrated here, to fix Storybook's annoying behavior of navigating to the inner `iframe` when in-page anchor links are clicked instead of actually navigating in-page. https://github.com/digdir/designsystemet/pull/3555
     <div data-storybook-decorator onClick={handleScrollHash}>
       <Story />
     </div>

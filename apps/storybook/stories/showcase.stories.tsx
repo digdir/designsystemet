@@ -1,7 +1,6 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import { useState } from 'react';
-
 import { Fieldset, type Size, ToggleGroup } from '@digdir/designsystemet-react';
+import type { Meta, StoryFn } from '@storybook/react-vite';
+import { useState } from 'react';
 import { Showcase } from './component/showcase';
 
 import classes from './showcase.module.css';

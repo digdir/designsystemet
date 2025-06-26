@@ -33,7 +33,7 @@ Pagination.Button.displayName = 'Pagination.Button';
 
 export type { PaginationProps } from './Pagination';
 export type { PaginationButtonProps } from './PaginationButton';
-export type { PaginationListProps } from './PaginationList';
 export type { PaginationItemProps } from './PaginationItem';
+export type { PaginationListProps } from './PaginationList';
 
 export { Pagination, PaginationList, PaginationItem, PaginationButton };

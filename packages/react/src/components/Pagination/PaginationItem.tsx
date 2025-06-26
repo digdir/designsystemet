@@ -1,5 +1,5 @@
 import { Slot } from '@radix-ui/react-slot';
-import { type HTMLAttributes, forwardRef } from 'react';
+import { forwardRef, type HTMLAttributes } from 'react';
 
 export type PaginationItemProps = {
   /**

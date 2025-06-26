@@ -160,3 +160,14 @@ function filterTokenSets(tokensets: Record<string, TokenSetStatus>) {
 function cartesian(a: Array<unknown[]>) {
   return a.reduce((a, b) => a.flatMap((d) => b.map((e) => [d, e].flat())));
 }
+
+export const getCustomColors = (processed$themes: ProcessedThemeObject[], colorGroups: (string | RegExp)[]) =>
+  processed$themes
+    .filter((x) => {
+      if (!x.group) {
+        return false;
+      }
+
+      return colorGroups.includes(x.group);
+    })
+    .map((x) => x.name);

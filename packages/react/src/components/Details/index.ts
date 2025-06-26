@@ -19,7 +19,7 @@ const Details = Object.assign(DetailsParent, {
 Details.Summary.displayName = 'Details.Summary';
 Details.Content.displayName = 'Details.Content';
 
+export type { DetailsProps } from './Details';
 export type { DetailsContentProps } from './DetailsContent';
 export type { DetailsSummaryProps } from './DetailsSummary';
-export type { DetailsProps } from './Details';
 export { Details, DetailsContent, DetailsSummary };

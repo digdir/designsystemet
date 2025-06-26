@@ -14,7 +14,7 @@ const prefersColorScheme = (colorScheme: string, content: string) => `
 
 export const colorScheme: Format = {
   name: 'ds/css-colorscheme',
-  format: async ({ dictionary, file, options, platform }) => {
+  format: async ({ dictionary, options, platform }) => {
     const { allTokens } = dictionary;
     const { outputReferences, usesDtcg } = options;
     const { selector, colorScheme, layer } = platform;
@@ -58,7 +58,7 @@ export const colorScheme: Format = {
 
 export const colorCategory: Format = {
   name: 'ds/css-colorcategory',
-  format: async ({ dictionary, file, options, platform }) => {
+  format: async ({ dictionary, options, platform }) => {
     const { outputReferences, usesDtcg } = options;
     const { selector, layer } = platform;
 

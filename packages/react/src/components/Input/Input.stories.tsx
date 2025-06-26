@@ -1,4 +1,4 @@
-import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import { useEffect, useState } from 'react';
 
 import {
@@ -10,9 +10,8 @@ import {
   Paragraph,
   ValidationMessage,
 } from '../..';
-
-import { Input } from '.';
 import type { Size } from '../../types';
+import { Input } from '.';
 
 type Story = StoryObj<typeof Input>;
 

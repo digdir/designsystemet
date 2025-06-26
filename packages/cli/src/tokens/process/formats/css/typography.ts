@@ -10,7 +10,7 @@ const typographyFontFamilyPredicate = R.allPass([
 
 export const typography: Format = {
   name: 'ds/css-typography',
-  format: async ({ dictionary, file, options, platform }) => {
+  format: async ({ dictionary, options, platform }) => {
     const { outputReferences, usesDtcg } = options;
     const { selector, layer } = platform;
 

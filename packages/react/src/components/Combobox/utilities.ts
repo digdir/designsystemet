@@ -1,8 +1,7 @@
-import { isValidElement } from 'react';
 import type { ReactElement, ReactNode } from 'react';
-
-import { ComboboxCustom } from './Custom';
+import { isValidElement } from 'react';
 import type { ComboboxCustomProps } from './Custom';
+import { ComboboxCustom } from './Custom';
 
 export function isComboboxCustom(
   child: ReactNode,

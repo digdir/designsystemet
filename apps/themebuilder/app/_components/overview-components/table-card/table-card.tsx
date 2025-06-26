@@ -8,6 +8,7 @@ import {
 } from '@digdir/designsystemet-react';
 import { useTranslation } from 'react-i18next';
 import classes from './table-card.module.css';
+
 const tableData = [
   {
     name: 'Ola Normann',

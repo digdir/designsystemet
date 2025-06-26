@@ -1,6 +1,6 @@
-import type { Meta } from '@storybook/react';
-import { ToggleGroup } from '.';
+import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
+import { ToggleGroup } from '.';
 import * as ToggleGroupStories from './ToggleGroup.stories';
 
 const meta: Meta = {

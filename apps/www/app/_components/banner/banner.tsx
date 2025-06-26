@@ -1,8 +1,8 @@
-import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import type { HeadingProps } from '@digdir/designsystemet-react';
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
-import { type HTMLAttributes, createContext, useContext } from 'react';
+import { createContext, type HTMLAttributes, useContext } from 'react';
 
 import classes from './banner.module.css';
 

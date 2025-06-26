@@ -1,4 +1,4 @@
-import type { StoryFn } from '@storybook/react';
+import type { StoryFn } from '@storybook/react-vite';
 import * as R from 'ramda';
 import { memo, useEffect, useRef } from 'react';
 

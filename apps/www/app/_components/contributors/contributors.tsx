@@ -9,7 +9,7 @@ type ContributorsProps = {
 
 export const Contributors = ({ authors }: ContributorsProps) => {
   return (
-    <div className={classes.container}>
+    <section className={classes.container}>
       <div className={classes.logo}>
         <img
           src='/img/diamond-logo.svg'
@@ -28,6 +28,6 @@ export const Contributors = ({ authors }: ContributorsProps) => {
           </Fragment>
         ))}
       </Paragraph>
-    </div>
+    </section>
   );
 };

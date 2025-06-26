@@ -1,18 +1,16 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import { expect, userEvent, within } from '@storybook/test';
-import { useState } from 'react';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import type { FormEvent } from 'react';
+import { useState } from 'react';
+import { expect, userEvent, within } from 'storybook/test';
 
 import { Button } from '../Button';
 import { Chip } from '../Chip';
 import { Dialog } from '../Dialog';
+import { Divider } from '../Divider';
 import { Heading } from '../Heading';
 import { Paragraph } from '../Paragraph';
 import { Switch } from '../Switch';
-
 import { data } from './data/data';
-
-import { Divider } from '../Divider';
 import { Combobox } from './index';
 
 export default {

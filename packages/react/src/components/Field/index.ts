@@ -26,11 +26,11 @@ Field.Affixes.displayName = 'Field.Affixes';
 Field.Affix.displayName = 'Field.Affix';
 Field.Counter.displayName = 'Field.Counter';
 
-export type { FieldCounterProps } from './FieldCounter';
-export type {
-  FieldAffixProps,
-  FieldAffixesProps,
-} from './FieldAffix';
 export type { FieldProps } from './Field';
+export type {
+  FieldAffixesProps,
+  FieldAffixProps,
+} from './FieldAffix';
+export type { FieldCounterProps } from './FieldCounter';
 export type { FieldDescriptionProps } from './FieldDescription';
 export { Field, FieldDescription, FieldAffix, FieldAffixes, FieldCounter };

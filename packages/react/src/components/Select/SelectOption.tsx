@@ -1,6 +1,6 @@
 import { Slot } from '@radix-ui/react-slot';
-import { forwardRef } from 'react';
 import type { OptionHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 
 export type SelectOptionProps = {
   /**

@@ -1,9 +1,9 @@
 import { createHtmlStory } from '@story-utils/createHtmlStory';
 import { formatReactSource } from '@story-utils/transformSource';
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
-import { Alert } from '.';
 import { Button, Heading, Link, Paragraph } from '../';
+import { Alert } from '.';
 import correctLiveRegionHtml from './html-examples/correct-live-region.html?raw';
 import wrongLiveRegionHtml from './html-examples/wrong-live-region.html?raw';
 

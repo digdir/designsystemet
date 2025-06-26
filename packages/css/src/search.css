@@ -16,6 +16,16 @@
     display: grid;
   }
 
+  & input {
+    grid-area: 1 / 1;
+    padding-inline: var(--dsc-search-padding-inline);
+
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button {
+      appearance: none;
+    }
+  }
+
   /* Add magnifier icon when no submit button is present */
   &:not(:has(button:not([type='reset']))) {
     & input {
@@ -44,26 +54,6 @@
     }
   }
 
-  & input {
-    grid-area: 1 / 1;
-    padding-inline: var(--dsc-search-padding-inline);
-
-    &::-webkit-search-decoration,
-    &::-webkit-search-cancel-button {
-      appearance: none;
-    }
-  }
-
-  /* We hide the clear button when input is empty */
-  &:has(input:placeholder-shown) button[type='reset'],
-  &:has(input:is(:read-only, :disabled, [aria-disabled='true'])) button[type='reset'] {
-    display: none;
-  }
-
-  &:has(button[type='reset']) input {
-    padding-inline-end: calc(var(--dsc-search-clear-size) + var(--dsc-search-padding-inline));
-  }
-
   & button[type='reset'] {
     --dsc-button-size: var(--dsc-search-clear-size);
 
@@ -82,6 +72,16 @@
       mask: var(--dsc-search-clear-icon-url) center / contain no-repeat;
       background: currentcolor;
     }
+  }
+
+  /* We hide the clear button when input is empty */
+  &:has(input:placeholder-shown) button[type='reset'],
+  &:has(input:is(:read-only, :disabled, [aria-disabled='true'])) button[type='reset'] {
+    display: none;
+  }
+
+  &:has(button[type='reset']) input {
+    padding-inline-end: calc(var(--dsc-search-clear-size) + var(--dsc-search-padding-inline));
   }
 
   & button:not([type='reset']) {

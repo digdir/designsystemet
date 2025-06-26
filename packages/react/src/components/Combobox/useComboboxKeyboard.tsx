@@ -1,6 +1,5 @@
-import { useDebounceCallback } from '../../utilities';
-
 import type { KeyboardEvent } from 'react';
+import { useDebounceCallback } from '../../utilities';
 import type { ComboboxContextType } from './ComboboxContext';
 import { useComboboxId } from './ComboboxIdContext';
 import type { useCombobox } from './useCombobox';

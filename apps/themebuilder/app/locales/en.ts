@@ -13,16 +13,16 @@ export default {
   },
   errors: {
     default: {
-      title: 'Oops!',
-      details: 'An unexpected error occurred.',
+      title: 'Sorry, something went wrong.',
+      details: 'An unexpected error occurred. Please try again later.',
     },
     '404': {
-      title: '404',
+      title: 'Page not found',
       details:
-        'The page you are looking for does not exist. Please check the URL or go back to the homepage.',
+        "The page you are looking for can't be found. It may have been deleted or moved, or there may be an error in the link.",
     },
     generic: {
-      title: 'Error',
+      title: 'Sorry, something went wrong.',
       'go-to-homepage': 'Go to homepage',
     },
   },
@@ -118,6 +118,7 @@ export default {
       'to update a theme directly in Figma. Read more about these options on',
     'own-theme': 'your own theme (opens in new tab)',
     page: 'page.',
+    format: 'Format for Windows',
     'step-two': 'Run the code snippet to generate CSS variables for code.',
     'help-heading': 'Something not working?',
     'help-description': 'Send us a message on',

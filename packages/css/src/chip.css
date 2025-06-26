@@ -43,6 +43,14 @@
 
   @composes ds-focus from './base.css';
 
+  & > input {
+    --dsc-input-background: transparent;
+    --dsc-input-border-color: var(--dsc-chip-input-color);
+    --dsc-input-accent-color: var(--dsc-chip-input-accent-color);
+    --dsc-input-stroke-color: var(--dsc-chip-input-stroke-color);
+    --dsc-input-size--toggle: var(--dsc-chip-input-size);
+  }
+
   &:not([hidden]) {
     display: inline-flex;
   }
@@ -72,6 +80,7 @@
       height: var(--dsc-chip-icon-size);
       mask: center / contain no-repeat var(--dsc-chip-icon-url);
       width: var(--dsc-chip-icon-size);
+      padding-inline: 0; /*override u-combobox default*/
     }
   }
 
@@ -83,17 +92,9 @@
     border-radius: var(--dsc-chip-border-radius--checkbox);
     padding-inline: var(--dsc-chip-spacing);
 
-    & input {
+    & > input {
       border-radius: var(--dsc-chip-border-radius--checkbox-input);
     }
-  }
-
-  & > input {
-    --dsc-input-background: transparent;
-    --dsc-input-border-color: var(--dsc-chip-input-color);
-    --dsc-input-accent-color: var(--dsc-chip-input-accent-color);
-    --dsc-input-stroke-color: var(--dsc-chip-input-stroke-color);
-    --dsc-input-size--toggle: var(--dsc-chip-input-size);
   }
 
   &:has(input:checked),

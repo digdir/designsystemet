@@ -1,6 +1,6 @@
-import type { Meta } from '@storybook/react';
-import { Input } from '.';
+import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
+import { Input } from '.';
 import * as InputStories from './Input.stories';
 
 const meta: Meta = {

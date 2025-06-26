@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router';
 import { Banner, BannerHeading, BannerIcon } from '~/_components/banner/banner';
 import classes from './layout.module.css';
+
 export { ErrorBoundary } from '~/root';
 
 export default function Layout() {
