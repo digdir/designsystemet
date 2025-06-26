@@ -57,20 +57,20 @@ export function validateConfig<T>(
   }
 }
 
-export function parseConfig<T>(schema: z.ZodType<T>, configFile: string, configPath: string): T {
+export function parseConfig<T>(configFile: string, configPath: string): T {
   if (!configFile) {
     return {} as T;
   }
 
   try {
-    const parsedConfig = JSON.parse(configFile);
-    return schema.parse(parsedConfig) as T;
+    return JSON.parse(configFile) as T;
   } catch (err) {
     console.error(chalk.redBright(`Failed parsing config file at ${chalk.red(configPath)}`));
     // const validationError = makeFriendlyError(err);
 
     // console.error(validationError.toString());
     console.error(chalk.red(err instanceof Error ? err.message : 'Unknown error occurred while parsing config file'));
+    console.error(err instanceof Error ? err.stack : 'No stack trace available');
     process.exit(1);
   }
 }

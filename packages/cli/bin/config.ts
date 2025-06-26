@@ -40,11 +40,7 @@ export async function parseCreateConfig(
 ): Promise<CreateConfigSchema> {
   const { cmd, theme = 'theme', configPath } = options;
 
-  const configParsed: CreateConfigSchema = parseConfig<CreateConfigSchema>(
-    configFileCreateSchema,
-    configFile,
-    configPath,
-  );
+  const configParsed: CreateConfigSchema = parseConfig<CreateConfigSchema>(configFile, configPath);
 
   /*
    * Check that we're not creating multiple themes with different color names.
@@ -112,7 +108,7 @@ export async function parseBuildConfig(
   configFile: string,
   { configPath }: { configPath: string },
 ): Promise<BuildConfigSchema> {
-  const configParsed: BuildConfigSchema = parseConfig<BuildConfigSchema>(commonConfig, configFile, configPath);
+  const configParsed: BuildConfigSchema = parseConfig<BuildConfigSchema>(configFile, configPath);
 
   return validateConfig<BuildConfigSchema>(commonConfig, configParsed, configPath);
 }
