@@ -46,7 +46,7 @@ const renderedValue = (value: string, type?: RenderTypes) => {
     case 'dimension':
       return <ComputedValue value={value} />;
     default:
-      return <span>{value}</span>;
+      return <code>{value}</code>;
   }
 };
 
