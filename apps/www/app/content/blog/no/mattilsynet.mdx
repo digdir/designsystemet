@@ -1,0 +1,105 @@
+---
+title: Hvordan Mattilsynet bruker Designsystemet uten React
+description: Mattilsynet utvider Designsystemet med egen merkevare og distribuerer til alle utviklingsteam – uavhengig av hvilken teknologi de bruker.
+date: 2025-06-18
+author: Mattilsynet
+imageSrc: /img/blog/mattilsynet.webp
+imageAlt: Ansatte i Mattilsynet står sammen med dyr og holder en skjerm. 
+imageCaption: "Mattilsynet har i løpet av kort tid etablert et eget internt designsystem, basert på Designsystemet. Resultatet? Flere sparte årsverk, mer konsistente tjenester – og en løsning som fungerer for alle utviklingsteam, uavhengig av teknologi. Foto: Mattilsynet"
+---
+
+## Fra felles grunnmur til egne tilpasninger
+
+I Mattilsynet har vi lenge hatt høye ambisjoner for brukeropplevelse og tilgjengelighet. For å få dette til på en effektiv måte, har vi valgt å bygge videre på komponenter, tokens og prinsipper fra Designsystemet, i stedet for å starte helt fra bunnen.
+
+Ved å ha en lokal kopi av Designsystemets Figma-bibliotek, samt importerte klasser fra [Designsystemets CSS-pakke](https://www.npmjs.com/package/@digdir/designsystemet-css) via [CSS modules composition](https://github.com/css-modules/css-modules/blob/master/docs/composition.md), har vi fått en solid grunnmur som fritt kan tilpasses etter Mattilsynets merkevare og behov.
+Dette har spart oss for betydelig tid og ressurser, og ivaretar flere av kravene til universell utforming og skalerbarhet.
+
+<br/>
+
+<VideoCard
+  videoUrl="https://vimeo.com/1087962931?share=copy"
+  title="Hvordan Mattilsynet bygger på designsystemet.no"
+  description="I denne filmen forklarer Eirik Backer hvordan Mattilsynet har brukt Designsystemet til å lage et internt designsystem som fungerer for alle utviklingsteam uavhengig av hvilken teknologi de bruker."
+  imageUrl="/img/blog/mattilsynet-blomst.png"
+/>
+
+## Teknologi som passer alle team
+
+I Mattilsynet får hvert utviklingsteam velge sin egen teknologistack. For at designsystemet skal fungere i praksis, må det derfor være rammeverkuavhengig.
+
+Ved å benytte [CSS-modules](https://github.com/css-modules/css-modules/) kan vi [utvide](https://github.com/css-modules/css-modules/blob/master/docs/composition.md) Designsystemets sine klasser, og tilby et objekt av hashede klassenavn som hindrer navnekollisjoner.
+Uavhengig av teknologi, kan våre team da hente inn klassenavn i sin kode:
+
+```tsx
+import { styles } from '@mattilsynet/design';
+
+const MyButton = () => {
+  return <button className={styles.button}>Klikk meg</button>;
+};
+```
+
+For de som benytter React, tilbyr vi også komponenter som i praksis kun legger på korrekt klassenavn:
+
+```tsx
+import { Button } from '@mattilsynet/design/react';
+
+const MyButton = () => {
+  return <Button>Klikk meg</Button>;
+};
+```
+
+Vi benytter også HTML-attributter for å tilby variasjoner av komponenter:
+```tsx
+import { styles } from '@mattilsynet/design';
+
+const MyButton = () => {
+  return (
+    <button className={styles.button} data-variant="primary" aria-busy="true">
+      En primærknapp med lasteindikator
+    </button>
+  );
+};
+```
+
+## Interaktvitet
+
+Selv om storparten av et designsystem kun påvirker utseende, trenger vi noen ganger JavaScript for å håndtere interaktvitet.
+I disse tilfellene benytter vi vanilla JavaScript, som lytter på `events` på `document`:
+
+```js
+document.addEventListener('toggle', (event) => {
+  if (event.target.closest(`.${styles.popover}`)) {
+    if (event.newState === 'open') {
+      // Attach positioning logic for popover
+    } else {
+      // Detach positioning logic for popover
+    }
+  }
+});
+```
+
+## Mer enn teknologi
+
+Selv om mange forbinder Designsystemet med React-komponenter, er det mye mer enn det. For oss i  Mattilsynet er Figma-biblioteket, CSS-tokens og dokumentasjonen uvurderlige ressurser.
+
+**Er du nysgjerrig på å se under panseret på Mattilsynets løsning?**
+<br />Besøk [design.mattilsynet.no](https://design.mattilsynet.no) eller [github.com/mattilsynet/design](https://github.com/mattilsynet/design)
+
+ <Image
+  src='/img/blog/mattilsynet2.webp'
+  alt='Viser person med jakke som har Mattilsynet logo på'
+  boxShadow={false}
+  
+/>
+
+_- Vi er stolte av å kunne bidra til et prosjekt som løfter hele Norge._
+
+
+<Contributors
+  authors={[
+    'Eirik Backer',
+    'Stein Olav Pettersen',
+    'Gøril Torske',
+  ]}
+/>

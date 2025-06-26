@@ -154,7 +154,7 @@ export default {
     },
   },
   video: {
-    'watch-video': 'Watch video on vimeo.com',
+    'watch-video': 'Watch video on {{url}}',
   },
   'image-banner': {
     'play-video': 'Play video',
