@@ -3,9 +3,8 @@ import type { Command, OptionValues } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 import * as R from 'ramda';
 import {
-  type ConfigSchema,
-  type ConfigSchemaBuild,
-  type ConfigSchemaCreate,
+  type BuildConfigSchema,
+  type CreateConfigSchema,
   commonConfig,
   configFileCreateSchema,
   parseConfig,
@@ -38,10 +37,14 @@ export async function readConfigFile(configPath: string, allowFileNotFound = tru
 export async function parseCreateConfig(
   configFile: string,
   options: { theme: string; cmd: Command<unknown[], OptionValues>; configPath: string },
-): Promise<ConfigSchema> {
+): Promise<CreateConfigSchema> {
   const { cmd, theme = 'theme', configPath } = options;
 
-  const configParsed: ConfigSchema = parseConfig<ConfigSchema>(configFileCreateSchema, configFile, configPath);
+  const configParsed: CreateConfigSchema = parseConfig<CreateConfigSchema>(
+    configFileCreateSchema,
+    configFile,
+    configPath,
+  );
 
   /*
    * Check that we're not creating multiple themes with different color names.
@@ -102,14 +105,14 @@ export async function parseCreateConfig(
         },
   });
 
-  return validateConfig<ConfigSchemaCreate>(configFileCreateSchema, unvalidatedConfig, configPath);
+  return validateConfig<CreateConfigSchema>(configFileCreateSchema, unvalidatedConfig, configPath);
 }
 
 export async function parseBuildConfig(
   configFile: string,
   { configPath }: { configPath: string },
-): Promise<ConfigSchemaBuild> {
-  const configParsed: ConfigSchemaBuild = parseConfig<ConfigSchemaBuild>(commonConfig, configFile, configPath);
+): Promise<BuildConfigSchema> {
+  const configParsed: BuildConfigSchema = parseConfig<BuildConfigSchema>(commonConfig, configFile, configPath);
 
-  return validateConfig<ConfigSchemaBuild>(commonConfig, configParsed, configPath);
+  return validateConfig<BuildConfigSchema>(commonConfig, configParsed, configPath);
 }

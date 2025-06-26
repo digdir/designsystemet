@@ -130,7 +130,7 @@ export const commonConfig = z.object({
   clean: z.boolean().meta({ description: 'Delete the output directory before building or creating tokens' }).optional(),
 });
 
-export const configFileCreateSchema = z
+const _configFileCreateSchema = z
   .object({
     outDir: z.string().meta({ description: 'Path to the output directory for the created design tokens' }),
     themes: z.record(z.string(), themeSchema).meta({
@@ -143,8 +143,8 @@ export const configFileCreateSchema = z
 /**
  * This defines the structure of the final configuration file
  */
-export const combinedConfigSchema = commonConfig.extend(configFileCreateSchema.shape);
-export type ConfigSchema = z.infer<typeof combinedConfigSchema>;
-export type ConfigSchemaBuild = z.infer<typeof commonConfig>;
-export type ConfigSchemaCreate = z.infer<typeof configFileCreateSchema>;
+export const configFileCreateSchema = _configFileCreateSchema.extend(commonConfig.shape);
+export type CommonConfigSchema = z.infer<typeof commonConfig>;
+export type BuildConfigSchema = z.infer<typeof commonConfig>;
+export type CreateConfigSchema = z.infer<typeof configFileCreateSchema>;
 export type ConfigSchemaTheme = z.infer<typeof themeSchema>;
