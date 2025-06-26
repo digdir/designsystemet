@@ -37,9 +37,16 @@ export const VideoCard = ({
         <Paragraph>{description}</Paragraph>
         <RRLink to={videoUrl}>
           <VideoplayerIcon aria-hidden />
-          {t('video.watch-video')}
+          {t('video.watch-video', {
+            url: getVideoUrl(videoUrl),
+          })}
         </RRLink>
       </Card.Block>
     </Card>
   );
+};
+
+const getVideoUrl = (videoUrl: string) => {
+  const url = new URL(videoUrl);
+  return url.hostname;
 };
