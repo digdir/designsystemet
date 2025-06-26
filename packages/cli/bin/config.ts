@@ -6,7 +6,7 @@ import {
   type ConfigSchema,
   type ConfigSchemaBuild,
   type ConfigSchemaCreate,
-  configFileBuildSchema,
+  commonConfig,
   configFileCreateSchema,
   parseConfig,
   validateConfig,
@@ -109,7 +109,7 @@ export async function parseBuildConfig(
   configFile: string,
   { configPath }: { configPath: string },
 ): Promise<ConfigSchemaBuild> {
-  const configParsed: ConfigSchemaBuild = parseConfig<ConfigSchemaBuild>(configFileBuildSchema, configFile, configPath);
+  const configParsed: ConfigSchemaBuild = parseConfig<ConfigSchemaBuild>(commonConfig, configFile, configPath);
 
-  return validateConfig<ConfigSchemaBuild>(configFileBuildSchema, configParsed, configPath);
+  return validateConfig<ConfigSchemaBuild>(commonConfig, configParsed, configPath);
 }

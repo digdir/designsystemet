@@ -126,7 +126,7 @@ const themeSchema = z
   })
   .meta({ description: 'An object defining a theme. The property name holding the object becomes the theme name.' });
 
-export const configFileBuildSchema = z.object({
+export const commonConfig = z.object({
   clean: z.boolean().meta({ description: 'Delete the output directory before building or creating tokens' }).optional(),
 });
 
@@ -143,8 +143,8 @@ export const configFileCreateSchema = z
 /**
  * This defines the structure of the final configuration file
  */
-export const combinedConfigSchema = configFileCreateSchema.extend(configFileBuildSchema.shape);
+export const combinedConfigSchema = commonConfig.extend(configFileCreateSchema.shape);
 export type ConfigSchema = z.infer<typeof combinedConfigSchema>;
-export type ConfigSchemaBuild = z.infer<typeof configFileBuildSchema>;
+export type ConfigSchemaBuild = z.infer<typeof commonConfig>;
 export type ConfigSchemaCreate = z.infer<typeof configFileCreateSchema>;
 export type ConfigSchemaTheme = z.infer<typeof themeSchema>;
