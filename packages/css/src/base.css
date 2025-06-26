@@ -50,10 +50,20 @@ body,
   mask: center / contain no-repeat var(--ds-readonly-icon-url);
   vertical-align: bottom;
   width: var(--ds-readonly-icon-size);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 
   @media (forced-colors: active) {
     background: CanvasText;
   }
+}
+
+/*
+* Preserves the visual appearance when printing
+*/
+.ds-print-visible {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 
 /**
