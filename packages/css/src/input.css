@@ -48,7 +48,7 @@
   position: relative; /* Ensure foucs outline renders on top */
   vertical-align: middle; /* Remove space under when display: inline-block */
 
-  @composes ds-print-visible from './base.css';
+  @composes ds-print-preserve from './base.css';
   @composes ds-focus from './base.css';
 
   @media (forced-colors: active) {

@@ -1,6 +1,6 @@
 .ds-field {
   --dsc-field-content-spacing: var(--ds-size-2);
-  @composes ds-print-visible from './base.css';
+  @composes ds-print-preserve from './base.css';
 
   /* The stack (https://every-layout.dev/layouts/stack/) */
   & > * {

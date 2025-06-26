@@ -32,7 +32,7 @@
     mask: center / contain no-repeat var(--dsc-breadcrumbs-icon-url);
     vertical-align: middle;
     width: var(--dsc-breadcrumbs-icon-size);
-    @composes ds-print-visible from './base.css';
+    @composes ds-print-preserve from './base.css';
 
     @media (forced-colors: active) {
       background: CanvasText;

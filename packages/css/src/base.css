@@ -50,7 +50,7 @@ body,
   mask: center / contain no-repeat var(--ds-readonly-icon-url);
   vertical-align: bottom;
   width: var(--ds-readonly-icon-size);
-  @composes ds-print-visible from './base.css';
+  @composes ds-print-preserve from './base.css';
 
   @media (forced-colors: active) {
     background: CanvasText;
@@ -60,7 +60,7 @@ body,
 /*
 * Preserves the visual appearance when printing
 */
-.ds-print-visible {
+.ds-print-preserve {
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
 }

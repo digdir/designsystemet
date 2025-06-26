@@ -35,7 +35,7 @@
     position: absolute;
     translate: 0 calc((1lh - var(--dsc-alert-icon-size)) / 2); /* Center icon to line height */
     width: var(--dsc-alert-icon-size);
-    @composes ds-print-visible from './base.css';
+    @composes ds-print-preserve from './base.css';
 
     @media (forced-colors: active) {
       background: CanvasText;
