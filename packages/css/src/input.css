@@ -47,6 +47,8 @@
   padding: var(--dsc-input-padding);
   position: relative; /* Ensure foucs outline renders on top */
   vertical-align: middle; /* Remove space under when display: inline-block */
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 
   @composes ds-focus from './base.css';
 
