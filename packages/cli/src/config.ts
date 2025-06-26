@@ -133,10 +133,6 @@ export const configFileBuildSchema = z.object({
 export const configFileCreateSchema = z
   .object({
     outDir: z.string().meta({ description: 'Path to the output directory for the created design tokens' }),
-    clean: z
-      .boolean()
-      .meta({ description: 'Delete the output directory before building or creating tokens' })
-      .optional(),
     themes: z.record(z.string(), themeSchema).meta({
       description:
         'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name.',
