@@ -24,9 +24,9 @@ If you are using Tailwind with (Preflight)[https://tailwindcss.com/docs/prefligh
 ```css
 @import url('@digdir/designsystemet-css');
 
-@layer base, ds;
+@layer tailwind-base, ds;
 
-@layer base {
+@layer tailwind-base {
   @tailwind base;
 }
 @tailwind components;
