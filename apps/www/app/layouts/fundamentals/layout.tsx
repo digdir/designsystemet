@@ -34,6 +34,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
       icon: string;
       color: 'red' | 'blue' | 'yellow';
       description: string;
+      order: number;
     }[];
   } = {};
 
@@ -85,9 +86,16 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     cats[result.frontmatter.category].push({
       title: result.frontmatter.sidebar_title || title,
       url,
+      order: result.frontmatter.order,
       icon: result.frontmatter.icon,
       color: result.frontmatter.color || 'red',
       description: result.frontmatter.description || '',
+    });
+  }
+  /* Sort articles by given order */
+  for (const cat in cats) {
+    cats[cat].sort((a, b) => {
+      return a.order - b.order;
     });
   }
 
