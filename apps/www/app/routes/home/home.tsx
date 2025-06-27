@@ -176,7 +176,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
         imgWidth='1195'
         link={{
           text: t('frontpage.components-section.link'),
-          href: '/fundamentals/introduction/accessibility',
+          href: 'fundamentals/introduction/accessibility',
         }}
         fallbackImgSrc='/img/reduced-motion/Page.png'
         fallbackImgAlt={t('frontpage.components-section.fallbackImgAlt')}
