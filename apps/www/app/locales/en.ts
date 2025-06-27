@@ -7,8 +7,7 @@ export default {
     heading: 'Designsystemet helps you build better digital services',
     'get-started': {
       title: 'Get started',
-      description:
-        'Learn how to get started with Designsystemet',
+      description: 'Learn how to get started with Designsystemet',
     },
     patterns: {
       title: 'Patterns',
@@ -17,7 +16,8 @@ export default {
     },
     components: {
       title: 'Components',
-      description: 'See the overview of UI components created in React, CSS and Figma.',
+      description:
+        'See the overview of UI components created in React, CSS and Figma.',
     },
     toolbox: {
       title: 'A common digital toolbox',
@@ -38,7 +38,7 @@ export default {
       description:
         'With theming, Designsystemet makes it possible to support different visual identities. This means everyone can build on the same foundation while tailoring the design to their own brand.',
       link: 'Build your theme',
-        fallbackImgAlt:
+      fallbackImgAlt:
         'Design sketch of a website showing how Designsystemet can be adapted to different identities.',
     },
     'latest-news': {
@@ -81,8 +81,8 @@ export default {
     categories: {
       'Getting Started': 'Getting Started',
       'Design Principles': 'Design Principles',
-      'Figma': 'Figma',
-      'Code': 'Kode',
+      Figma: 'Figma',
+      Code: 'Kode',
       About: 'About',
     },
     items: {

@@ -141,7 +141,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
                 level={2}
               />
 
-               <NavigationCard
+              <NavigationCard
                 title={t('frontpage.patterns.title')}
                 description={t('frontpage.patterns.description')}
                 color='yellow'
@@ -149,7 +149,6 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
                 icon={<WrenchIcon fontSize={36} aria-hidden='true' />}
                 level={2}
               />
-
             </div>
           </ContentContainer>
         </div>
