@@ -1,11 +1,5 @@
 # Change Log
 
-## 1.1.1
-
-### Patch Changes
-
-- Fix zod schema error when creating tokens from config file ([#3766](https://github.com/digdir/designsystemet/pull/3766))
-
 ## 1.1.0
 
 ### Patch Changes
