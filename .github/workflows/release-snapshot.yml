@@ -7,7 +7,7 @@ on:
       tag:
         description: 'npm tag'
         type: choice
-        default: 'next'
+        default: 'test'
         options:
           - next
           - test

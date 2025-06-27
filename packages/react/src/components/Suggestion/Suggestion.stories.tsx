@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { type ChangeEvent, useState } from 'react';
-import { userEvent, within } from 'storybook/test';
+import { userEvent, waitFor, within } from 'storybook/test';
 import { useDebounceCallback } from '../../utilities';
 import { Button, Divider, Field, Label, Paragraph, Spinner } from '..';
 import {
@@ -42,18 +42,10 @@ export default {
   },
 } as Meta;
 
-const wait = () => {
-  return new Promise((resolve) => {
-    setTimeout(resolve, 500);
-  });
-};
-
 async function testSuggestion(el: HTMLElement) {
   /* wait for role to be added */
-  await wait();
-
+  const input = await waitFor(() => within(el).getByRole('combobox'));
   /* When in test mode, open suggestion by focusing input */
-  const input = within(el).getByRole('combobox');
   await userEvent.click(input);
 }
 
