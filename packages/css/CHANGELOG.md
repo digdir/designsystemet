@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.1.1
+
+### Patch Changes
+
+- **Suggestion**: Reduced padding around `chip` remove-button ([#3752](https://github.com/digdir/designsystemet/pull/3752))
+
 ## 1.1.0
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.1.1
+
+### Patch Changes
+
+- **Tooltip**: Will now stay open when mouse is moved to the `Tooltip` ([#3747](https://github.com/digdir/designsystemet/pull/3747))
+
 ## 1.1.0
 
 ### Minor Changes
