@@ -4,6 +4,7 @@ import {
   type HTMLAttributes,
   useCallback,
   useEffect,
+  useId,
   useRef,
   useState,
 } from 'react';
@@ -142,6 +143,7 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
     ref,
   ) {
     const uComboboxRef = useRef<UHTMLComboboxElement>(null);
+    const deterministicRandomSelectId = useId();
     const isContolled = value !== undefined;
     const mergedRefs = useMergeRefs([ref, uComboboxRef]);
     const [isEmpty, setIsEmpty] = useState(false);
@@ -213,7 +215,14 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
         >
           {children}
           {/* Hidden select so it will be sent with a form */}
-          {!!name && <select name={name} multiple hidden></select>}
+          {!!name && (
+            <select
+              name={name}
+              multiple
+              hidden
+              id={rest.id ? `${rest.id}-select` : deterministicRandomSelectId}
+            ></select>
+          )}
         </u-combobox>
       </SuggestionContext.Provider>
     );
