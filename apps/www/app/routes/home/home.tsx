@@ -145,7 +145,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
                 title={t('frontpage.patterns.title')}
                 description={t('frontpage.patterns.description')}
                 color='yellow'
-                url='fundamentals/introduction/get-started'
+                url='patterns'
                 icon={<WrenchIcon fontSize={36} aria-hidden='true' />}
                 level={2}
               />
