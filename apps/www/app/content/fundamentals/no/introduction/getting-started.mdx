@@ -5,23 +5,22 @@ description: ...
 date: 2025-02-14
 category: Introduksjon
 color: blue
-icon: ComponentIcon
+icon: HikingTrailSignIcon
 published: true
 ---
 
 Så fint at du er interessert i å bruke Designsystemet! Her finner du informasjon om hvordan du kan komme i gang, og hva du kan forvente deg.
 
-Designsystemet kommer uten en ferdig visuell profil – det betyr at du selv bestemmer hvordan løsningen din skal se ut. Du definerer farger, typografi og andre visuelle egenskaper gjennom et eget tema.
+Designsystemet kommer uten en ferdig visuell profil, det betyr at du selv bestemmer hvordan løsningen din skal se ut. Du definerer farger, størrelser, typografi og andre visuelle egenskaper gjennom et eget tema. Temaet kan du enkelt lage i [Temabyggeren](https://theme.designsystemet.no/).
 
-Dette gir deg friheten til å bruke Designsystemet i alt fra små interne verktøy til store, offentlige tjenester med sterk visuell identitet.
+Dette gir deg friheten til å bruke Designsystemet i alt fra små interne verktøy til store offentlige tjenester med sterk visuell identitet.
 
-
-
-Skriv noe om at designsystemet kan brukes på ulike måter. 
+Ved å bruke grunnleggende byggeklosser fra Designsystemet kan du selv bygge mer sammensatte komponenter som dekker spesifikke behov i de ulike løsningene dine. 
 
 ## Hvordan bruke Designsystemet? 
-
-Designsystemet bør brukes som et fundament, der du har din egen visuelle profil på toppen. Ved å bruke grunnleggende byggeklosser fra Designsystemet kan du selv bygge mer sammensatte komponenter som dekker dine spesifikke behov. 
+Designsystemet fungerer som en verktøykasse, du trenger ikke bruke alt. Du kan plukke ut de delene du har behov for. Noen bruker bare tokenstrukturen, noen bruker React-biblioteket, noen bruker CSS-biblioteket, noen bruker bare retningslinjene, mens andre bruker hele pakka. Du velger selv hva som gir mest verdi i din kontekst.
+ 
+Designsystemet kan brukes direkte inn i løsninger, men det går også an å bygge eget designsystem på toppen av Designsystemet. Fordelen med det er at du kan gjenbruke den underliggende strukturen og alle de grunnleggende komponentene, samtidig som du kan tilby dine mer unike komponenter som en del av ditt eget designsystem. Eksempel på designsystemer som bygger på designsystemet.no kan du se hos [Utdanningsdirektoratet](https://github.com/Utdanningsdirektoratet/designsystem) og [Mattilsynet](http://design.mattilsynet.no/). For å lykkes med dette anbefaler vi at dere har en designer og en frontend-utvikler som kan sette opp designsystemet og følge opp videre utvikling og vedlikehold. Ikke alle har mulighet eller behov for dette. Et designsystem er et produkt som krever kontinuerlig arbeid, det blir aldri «ferdig». Hvis dere vurderer å lage deres eget, bør dere sikre en felles forståelse av at det er en langsiktig investering. Ved å ta i bruk, eller bygge videre på byggeklosser fra designsystemet.no kan dere dele på en del av den investeringen.
 
 <Image
   src='/img/lagvis-bruk.png'
@@ -30,28 +29,15 @@ Designsystemet bør brukes som et fundament, der du har din egen visuelle profil
   caption='Noen velger å bygge sitt eget designsystem på toppen av Designsystemet, mens andre bruker det direkte i løsninger.'
 />
 
+## Kom i gang med design og kode
 
-## Hva består Designsystemet av?
+Følg disse guidene videre for å lære hvordan du kan bruke Designsystemet med din profil i kode og Figma:
 
-Designsystemet består av flere byggeklosser og verktøy. Du kan ta i bruk det du trenger, i den grad du ønsker.
+[Bygg ditt tema](/no/fundamentals/themebuilder/own-theme) 
 
-- **Design Tokens** \
-  [Design Tokens](/no/fundamentals/designelements/design-tokens) er variabler som styrer farger, typografi, størrelser, avstander og former. Variablene er lagt opp til å være tema-baserte, det vil si at de tar utgangspunkt i din merkevare med de fargene og preferansene du selv velger i Temabyggeren. [Fargesystemet](/no/fundamentals/for-designers/colors) sikrer at det er god kontrast mellom tekst og bakgrunnsfarger, uansett hvilke profilfarger du har. Token-strukturen støtter at du kan ha både flere ulike tema og flere "modes" (dark-mode, light-mode, contrast-mode, etc.). Design Tokens sørger også for at det er de samme verdiene vi jobber med i design og kode. Design tokens er hele magien!
+[Kom i gang med kode](/no/fundamentals/code/get-started) 
 
-- **UI-komponenter** \
-  Designsystemet inneholder de mest grunnleggende UI-komponentene som gir verdi å dele på tvers. UI-komponentene finnes i egne bibliotek for [Figma](https://www.figma.com/@designsystemet), [CSS](https://www.npmjs.com/package/@digdir/designsystemet-css) og [React](https://www.npmjs.com/package/@digdir/designsystemet-react). Vi dokumenterer hvordan komponentene bør brukes og oppdatererer retningslinjene etter hvert som vi får mer innsikt. 
+[Kom i gang med Figma](/no/fundamentals/figma/get-started)
 
-- **Temabygger** \
-[Temabyggeren](https://theme.designsystemet.no/) gjør det enkelt å ta i bruk Designsystemet i din egen organisasjon med dine egne profilfarger og preferanser. Etter at du har tilpasset temaet, kopierer du en kodesnutt og limer den inn i terminalen eller Figma. På få minutter har du alle komponentene i Figma og kode med ditt eget design. 
-
-- **Kommandolinjeverktøy (CLI)** \
-Designsystemets [CLI](https://www.npmjs.com/package/@digdir/designsystemet) hjelper med oppsett av nye prosjekter, generere grunnstruktur, konfigurere temaer, nødvendige avhengigheter og konfigurasjon. 
-
-- **Mønstre og god praksis** \
-  Designsystemet er en samarbeidsarena for å utvikle gjenkjennbare [mønstre](/no/patterns) og felles [anbefalinger](/no/best-practices). Med mønstre mener vi for eksempel hvor sentrale elementer skal plasseres i grensesnittet, og hvordan navigasjon, feilmeldinger og andre gjentagende brukeroppgaver skal oppføre seg. Vi kan samarbeide om mønstre selv om vi ikke bruker de samme tekniske komponentene eller designelementene.
-
-- **Blogg** \
-  I bloggen kan vi fortelle om nye oppdateringer og dele historier. Vi håper flere vil bruke bloggen til å skrive om hvordan de har tatt i bruk Designsystemet.
-
-- **Community** \
-Designsystemet ønsker å legge til rette for bred erfaringsdeling rundt designsystemer og alt som hører til. Du kan bli med i [Slack](http://designsystemet.no/slack) og i [Github](https://github.com/digdir/designsystemet/discussions/categories/samarbeid-m%C3%B8nster-for-innbyggertjenester). 
+<br/>
+<br/>
