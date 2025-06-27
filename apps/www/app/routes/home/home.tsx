@@ -127,17 +127,8 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
                 title={t('frontpage.for-designers.title')}
                 description={t('frontpage.for-designers.description')}
                 color='blue'
-                url='fundamentals/for-designers/get-started'
+                url='fundamentals/introduction/get-started'
                 icon={<PaletteIcon fontSize={36} aria-hidden='true' />}
-                level={2}
-              />
-
-              <NavigationCard
-                title={t('frontpage.for-developers.title')}
-                description={t('frontpage.for-developers.description')}
-                color='yellow'
-                url='fundamentals/for-developers/get-started'
-                icon={<WrenchIcon fontSize={36} aria-hidden='true' />}
                 level={2}
               />
 
@@ -149,6 +140,16 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
                 icon={<ComponentIcon fontSize={34} aria-hidden='true' />}
                 level={2}
               />
+
+               <NavigationCard
+                title={t('frontpage.for-developers.title')}
+                description={t('frontpage.for-developers.description')}
+                color='yellow'
+                url='fundamentals/introduction/get-started'
+                icon={<WrenchIcon fontSize={36} aria-hidden='true' />}
+                level={2}
+              />
+
             </div>
           </ContentContainer>
         </div>
@@ -173,6 +174,10 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
         imgPosition='right'
         headingLevel='h2'
         imgWidth='1195'
+        link={{
+          text: t('frontpage.components-section.link'),
+          href: '/fundamentals/introduction/accessibility',
+        }}
         fallbackImgSrc='/img/reduced-motion/Page.png'
         fallbackImgAlt={t('frontpage.components-section.fallbackImgAlt')}
       />
@@ -183,6 +188,10 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
         videoSrc='/animations/Theme'
         headingLevel='h2'
         imgWidth='1195'
+        link={{
+          text: t('frontpage.theme-section.link'),
+          href: 'http://theme.designsystemet.no',
+        }}
         fallbackImgSrc='/img/reduced-motion/Theme.png'
         fallbackImgAlt={t('frontpage.theme-section.fallbackImgAlt')}
       />

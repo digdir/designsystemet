@@ -29,6 +29,7 @@ export default {
       title: 'Accessible and flexible components',
       description:
         'By creating the most basic components once, we ensure high quality. Each component is thoroughly tested and meets accessibility requirements. Components are built in both Figma and React, and can be combined in various ways to support different patterns.',
+      link: 'Read more about accessibility',
       fallbackImgAlt:
         'Design sketch of a mobile phone containing components from Designsystemet.',
     },
@@ -36,7 +37,8 @@ export default {
       title: 'Use your own themes',
       description:
         'With theming, Designsystemet makes it possible to support different visual identities. This means everyone can build on the same foundation while tailoring the design to their own brand.',
-      fallbackImgAlt:
+      link: 'Build your theme',
+        fallbackImgAlt:
         'Design sketch of a website showing how Designsystemet can be adapted to different identities.',
     },
     'latest-news': {
