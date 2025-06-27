@@ -137,13 +137,13 @@ ControlledSingle.play = async ({ canvasElement, step }) => {
 
   await step('Initial state is rendered correctly', async () => {
     await expect(resultText).toHaveTextContent('Oslo');
-    await expect(input).toHaveValue('Oslo');
+    await waitFor(() => expect(input).toHaveValue('Oslo'));
   });
 
   await step('Controlled state change renders correctly', async () => {
     await userEvent.click(button);
     await expect(resultText).toHaveTextContent('Sogndal');
-    await expect(input).toHaveValue('Sogndal');
+    await waitFor(() => expect(input).toHaveValue('Sogndal'));
   });
 };
 
@@ -192,11 +192,13 @@ export const ControlledMultiple: StoryFn<typeof Suggestion> = (args) => {
 };
 
 ControlledMultiple.play = async ({ canvasElement, step }) => {
-  const getChipValues = () =>
-    within(canvasElement)
-      .getAllByLabelText('Press to remove', { exact: false })
-      .filter((el) => el instanceof HTMLDataElement)
-      .map((x) => x.value);
+  const getChipValues = async () =>
+    waitFor(() =>
+      within(canvasElement)
+        .getAllByLabelText('Press to remove', { exact: false })
+        .filter((el) => el instanceof HTMLDataElement)
+        .map((x) => x.value),
+    );
   const resultText = within(canvasElement).getByText('Valgte reisemål:', {
     exact: false,
   });
@@ -207,14 +209,14 @@ ControlledMultiple.play = async ({ canvasElement, step }) => {
 
   await step('Initial state is rendered correctly', async () => {
     await expect(resultText).toHaveTextContent('Oslo');
-    await expect(getChipValues()).toContain('Oslo');
+    await expect(await getChipValues()).toContain('Oslo');
   });
 
   await step('Controlled state change renders correctly', async () => {
     await userEvent.click(button);
     await expect(resultText).toHaveTextContent('Sogndal');
     await expect(resultText).toHaveTextContent('Stavanger');
-    const chipValues = getChipValues();
+    const chipValues = await getChipValues();
     await expect(chipValues).toContain('Sogndal');
     await expect(chipValues).toContain('Stavanger');
   });
