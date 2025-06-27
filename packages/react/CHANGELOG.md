@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.1.2
+
+### Patch Changes
+
+- **Suggestion**: Ensure the hidden `<select>` element, which is only rendered when `Suggestion` has a `name`, gets a deterministic id instead of one that changes on every page load. ([#3777](https://github.com/digdir/designsystemet/pull/3777))
+
 ## 1.1.1
 
 ### Patch Changes

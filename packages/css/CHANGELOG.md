@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.1.2
+
+### Patch Changes
+
+- Preserve visual appearance of components in print, excluding large surface backgrounds ([#3765](https://github.com/digdir/designsystemet/pull/3765))
+
 ## 1.1.1
 
 ### Patch Changes

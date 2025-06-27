@@ -41,6 +41,7 @@
   padding: 0 var(--ds-size-3);
   text-decoration: none;
 
+  @composes ds-print-preserve from './base.css';
   @composes ds-focus from './base.css';
 
   & > input {

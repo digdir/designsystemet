@@ -65,6 +65,8 @@
 
     /* Render focus inside so it is easier to make full window width and place in overflow: hidden containers */
     @composes ds-focus--inset from './base.css';
+    /*preserve header for print but not background-color on content*/
+    @composes ds-print-preserve from './base.css';
 
     &::before {
       all: unset;
