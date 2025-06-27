@@ -6,6 +6,13 @@ We currently use [changesets](https://github.com/changesets/changesets) and [Cha
 
 ## 1. Publish new package version
 
+### ⚠️ Precondition
+
+***Make sure there are not changeset for `private:true` or `ignored` packages/apps as this will break changesets publish.***
+You will get a `Error: Validation Failed: {"resource":"PullRequest","code":"custom","message":"No commits between main and changeset-release/main"}` error in the Github action.
+Example of [failed release action](https://github.com/digdir/designsystemet/actions/runs/15923789002/job/44916356766)
+
+
 - [Changeset bot](https://github.com/apps/changeset-bot) should pickup changesets (inside `.changeset/`) and generate a PR with bumped version and changelog.
 
 - Approve and merge the PR.
