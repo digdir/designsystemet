@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { type ChangeEvent, useState } from 'react';
-import { userEvent, waitFor, within } from 'storybook/test';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 import { useDebounceCallback } from '../../utilities';
 import { Button, Divider, Field, Label, Paragraph, Spinner } from '..';
 import {
@@ -81,7 +81,73 @@ export const Preview: StoryFn<typeof Suggestion> = (args) => {
   );
 };
 
-export const Controlled: StoryFn<typeof Suggestion> = (args) => {
+export const ControlledSingle: StoryFn<typeof Suggestion> = (args) => {
+  const [value, setValue] = useState<string[]>(['Oslo']);
+
+  return (
+    <>
+      <Field>
+        <Label>Velg destinasjon</Label>
+        <Suggestion
+          {...args}
+          value={value}
+          onValueChange={(items) => setValue(items.map((item) => item.value))}
+        >
+          <Suggestion.Chips />
+          <Suggestion.Input />
+          <Suggestion.Clear />
+          <Suggestion.List>
+            <Suggestion.Empty>Tomt</Suggestion.Empty>
+            {DATA_PLACES.map((place) => (
+              <Suggestion.Option key={place} label={place} value={place}>
+                {place}
+                <div>Kommune</div>
+              </Suggestion.Option>
+            ))}
+          </Suggestion.List>
+        </Suggestion>
+      </Field>
+      <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
+
+      <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
+        Valgte reisemål: {value.join(', ')}
+      </Paragraph>
+
+      <Button
+        onClick={() => {
+          setValue(['Sogndal']);
+        }}
+      >
+        Sett reisemål til Sogndal
+      </Button>
+    </>
+  );
+};
+ControlledSingle.play = async ({ canvasElement, step }) => {
+  const input = await waitFor(() =>
+    within(canvasElement).getByRole('combobox'),
+  );
+  const resultText = within(canvasElement).getByText('Valgte reisemål:', {
+    exact: false,
+  });
+  const button = within(canvasElement).getByText('Sett reisemål', {
+    exact: false,
+    selector: 'button',
+  });
+
+  await step('Initial state is rendered correctly', async () => {
+    await expect(resultText).toHaveTextContent('Oslo');
+    await waitFor(() => expect(input).toHaveValue('Oslo'));
+  });
+
+  await step('Controlled state change renders correctly', async () => {
+    await userEvent.click(button);
+    await expect(resultText).toHaveTextContent('Sogndal');
+    await waitFor(() => expect(input).toHaveValue('Sogndal'));
+  });
+};
+
+export const ControlledMultiple: StoryFn<typeof Suggestion> = (args) => {
   const [value, setValue] = useState<string[]>(['Oslo']);
 
   return (
@@ -124,6 +190,38 @@ export const Controlled: StoryFn<typeof Suggestion> = (args) => {
     </>
   );
 };
+
+ControlledMultiple.play = async ({ canvasElement, step }) => {
+  const getChipValues = async () =>
+    waitFor(() =>
+      within(canvasElement)
+        .getAllByLabelText('Press to remove', { exact: false })
+        .filter((el) => el instanceof HTMLDataElement)
+        .map((x) => x.value),
+    );
+  const resultText = within(canvasElement).getByText('Valgte reisemål:', {
+    exact: false,
+  });
+  const button = within(canvasElement).getByText('Sett reisemål', {
+    exact: false,
+    selector: 'button',
+  });
+
+  await step('Initial state is rendered correctly', async () => {
+    await expect(resultText).toHaveTextContent('Oslo');
+    await expect(await getChipValues()).toContain('Oslo');
+  });
+
+  await step('Controlled state change renders correctly', async () => {
+    await userEvent.click(button);
+    await expect(resultText).toHaveTextContent('Sogndal');
+    await expect(resultText).toHaveTextContent('Stavanger');
+    const chipValues = await getChipValues();
+    await expect(chipValues).toContain('Sogndal');
+    await expect(chipValues).toContain('Stavanger');
+  });
+};
+
 export const CustomFilterAlt1: StoryFn<typeof Suggestion> = (args) => {
   return (
     <Field>
