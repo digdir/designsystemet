@@ -1,0 +1,37 @@
+---
+title: New component in Figma
+description: How to create a new component in Figma
+date: 2025-06-12
+category: Figma
+color: red
+icon: BranchingIcon
+published: true
+---
+
+## Creating a component in Figma
+There are a few things to keep in mind when designing components in Figma:
+
+- Talk to a developer about specifications, requirements, accessibility, properties, and variants. Align on the component’s scope and document it in the component’s [GitHub issue](https://github.com/orgs/digdir/projects/3/views/14).
+
+- [All styles](https://docs.tokens.studio/available-tokens/available-tokens) (colors, spacing, sizes, shadows, etc.) must be linked to the correct tokens. If you use existing styles, they are already linked. If you need new styles, make sure they are created as tokens.
+
+- [Auto layout](https://help.figma.com/hc/en-us/articles/5731482952599-Using-auto-layout): Content should scale properly when resized. Consider whether content should wrap if there’s not enough width. Should there be a min- or max-width? And maybe truncation (`...`) if the text is too long?
+
+- [Variants](https://help.figma.com/hc/en-us/articles/360056440594-Create-and-use-variants) and [component properties](https://help.figma.com/hc/en-us/articles/5579474826519-Explore-component-properties): Use variants for different versions, colors, and states. Use component properties to toggle layers, swap instances (e.g., icons), and change text. Name the properties the same way as props in Storybook. We use `variant`, `color`, and `state`.
+
+- Sizes are handled using [Modes in Figma](http://localhost:5173/no/fundamentals/for-designers/modes-in-figma). You no longer need separate variants for `Small`, `Medium`, and `Large`. As long as your component is connected to tokens for typography, spacing, and sizing, it will adjust automatically based on the selected mode. This makes components easier to maintain and more flexible to use.
+
+- Is the component interactive? If so, it must include different states as variants, and these must be wired up using [Change to](https://help.figma.com/hc/en-us/articles/360061175334-Create-interactive-components-with-variants#create).
+
+- Multibranding: Consider how the component should support theming, and prepare for this by using brand tokens.
+
+- Naming and structure: Make sure the layers in the component have meaningful names, and avoid unnecessary groups or layers.
+
+- Think about how another designer will use the component. Is it intuitive to use? Is it flexible enough so they won’t need to detach it? It might be a good idea to use [slots](https://www.youtube.com/watch?v=FOGgsPz3UTk) so content can be replaced or other components inserted without detaching. Also consider using [Preferred values](https://help.figma.com/hc/en-us/articles/5579474826519-Explore-component-properties#preferred) to highlight the most relevant components for slot content.
+
+  - Make sure there is sufficient [contrast](https://www.uutilsynet.no/regelverk/testprosedyrar-nettstader/709#suksesskriterium_143_kontrast).
+  - Consider how keyboard navigation should work if you are creating a non-standard component (native HTML elements already support keyboard navigation).
+  - Any essential instructions or information should not rely on visual cues alone. For example, use an icon or text in addition to a red color to indicate an error.
+  - Focus: All elements should have a visible focus indicator. It must have sufficient contrast with the background. We achieve this by using a black border (2px) and a yellow outline (3px).
+
+- When the component is ready, mark it as “Ready for review.” It will be tested by others and, after any necessary adjustments, marked as “[Ready for development](https://help.figma.com/hc/en-us/articles/15023124644247-Guide-to-Dev-Mode).” Once it has been implemented as a React component, link to the component page in [Storybook](https://storybook.designsystemet.no).

@@ -124,8 +124,8 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
             </div>
             <div className={classes.cards}>
               <NavigationCard
-                title={t('frontpage.for-designers.title')}
-                description={t('frontpage.for-designers.description')}
+                title={t('frontpage.get-started.title')}
+                description={t('frontpage.get-started.description')}
                 color='blue'
                 url='fundamentals/introduction/get-started'
                 icon={<PaletteIcon fontSize={36} aria-hidden='true' />}
@@ -142,8 +142,8 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
               />
 
                <NavigationCard
-                title={t('frontpage.for-developers.title')}
-                description={t('frontpage.for-developers.description')}
+                title={t('frontpage.patterns.title')}
+                description={t('frontpage.patterns.description')}
                 color='yellow'
                 url='fundamentals/introduction/get-started'
                 icon={<WrenchIcon fontSize={36} aria-hidden='true' />}

@@ -5,19 +5,19 @@ export default {
   ...en,
   frontpage: {
     heading: 'Designsystemet helps you build better digital services',
-    'for-designers': {
-      title: 'For designers',
+    'get-started': {
+      title: 'Get started',
       description:
-        'Learn how to get started with Designsystemet as a designer.',
+        'Learn how to get started with Designsystemet',
     },
-    'for-developers': {
-      title: 'For developers',
+    patterns: {
+      title: 'Patterns',
       description:
-        'Learn how to get started with Designsystemet as a developer.',
+        'Understand how shared patterns contribute to consistent user experiences',
     },
     components: {
       title: 'Components',
-      description: 'See the overview of UI components created in React.',
+      description: 'See the overview of UI components created in React, CSS and Figma.',
     },
     toolbox: {
       title: 'A common digital toolbox',
@@ -81,8 +81,8 @@ export default {
     categories: {
       'Getting Started': 'Getting Started',
       'Design Principles': 'Design Principles',
-      'For Designers': 'For Designers',
-      'For Developers': 'For Developers',
+      'Figma': 'Figma',
+      'Code': 'Kode',
       About: 'About',
     },
     items: {

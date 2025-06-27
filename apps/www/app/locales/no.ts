@@ -4,12 +4,12 @@ export default {
   ...no,
   frontpage: {
     heading: 'Designsystemet hjelper deg å lage gode digitale tjenester',
-    'for-designers': {
+    'get-started': {
       title: 'Kom i gang',
       description:
         'Lær hvordan du kommer i gang med Designsystemet',
     },
-    'for-developers': {
+    patterns: {
       title: 'Mønstre',
       description:
         'Forstå hvordan felles mønstre bidrar til gjenkjennelige brukeropplevelser',
@@ -80,8 +80,8 @@ export default {
     categories: {
       'Getting Started': 'Kom i gang',
       'Design Principles': 'Designprinsipper',
-      'For Designers': 'For designere',
-      'For Developers': 'For utviklere',
+      'Figma': 'Figma',
+      'Code': 'Kode',
       About: 'Om',
     },
     items: {
