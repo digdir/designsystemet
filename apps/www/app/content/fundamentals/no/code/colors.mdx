@@ -1,51 +1,14 @@
 ---
-title: Farger i kode
-description: Informasjon om korleis du setter farge i kode.
-date: 2025-01-10
-category: Kode
+title: Fargar i kode
+description: Informasjon om korleis du bruker fargar på frontend.
+date: 2024-11-26
+category: For utviklere
 color: blue
 icon: CodeIcon
 published: true
 ---
 
- Designsystemet støtter to måter å sette farge på i kode: data-color og eksplisitt variabel.
-
-### Bruk data-color for fleksibilitet
-```html
-<div data-color="neutral">  
-  <button classname=”ds-button”>neutral knapp</button>
-</div>
-```
-
-**Fordeler:**
-- Du kan bytte farger på designsystem stilen globalt ved å endre kun data-color på overordnet nivå.
-- Godt egnet for komponenter som brukes i flere fargekontekster.
-
-Bruk dette når du ønsker fleksibilitet.
-
-### Koble på egen kode til data-color
-
-Bruk farge variablene på egne elementer slik at de endres iht. data-color
-
-```html
-<div data-color="neutral">
-  <button classname=”ds-button”>neutral knapp</button>  
-  <div classname=”my-component”>neutral color component</div>
-</div>
-```
-
-```CSS
-.my-component {
-  color: var(--ds-color-primary-text-subtle);
-}
-```
-
-**Fordeler:**
-- Fargen er fast uansett data-color.
-- Trygt å bruke der du alltid vil ha én bestemt farge.
-
-Bruk dette når du ønsker forutsigbarhet.
-
+Denne artikkelen føreset at du allereie har definert fargane du skal bruke ved hjelp av [Temabyggeren](/no/fundamentals/themebuilder/own-theme).
 
 HTML data-attributt vert brukt for å definere farge på ein komponent. Komponentane kan nytte alle fargane i temaet.
 
@@ -53,7 +16,7 @@ Når du skal setje farge på ein komponent, er det to data-attributt som kan nyt
 - `data-color-scheme` som endrar fargemodus
 - `data-color` som endrar farge
 
-### `data-color-scheme`
+## `data-color-scheme`
 
 Dette data-attributtet blir brukt for å veksle mellom lys, mørk eller andre fargemodusar. Innhald som er barn av dette data-attributtet 
 vil få modusen spesifisert av forelder. Som standard vil lys modus bli nytta.
@@ -75,7 +38,7 @@ men med ei mørk botnlinje (footer). Du kan då setje `data-color-scheme="dark"`
 
 `data-color-scheme` kan bli satt til `light`, `dark` eller `auto`. `auto` vil følgje systeminnstillingane til brukaren.
 
-### `data-color`
+## `data-color`
 
 Dette data-attributtet blir brukt for å endre fargen til ein komponent. Du kan bruke alle fargane som finst i temaet ditt.
 
@@ -88,7 +51,7 @@ Dette data-attributtet blir brukt for å endre fargen til ein komponent. Du kan 
 Nokre komponentar kan arve farge frå næraste overordna element som har `data-color` definert. 
 Dette betyr at du ikkje treng å bruke `data-color` på alle komponentane i eit hierarki, dersom dei skal ha same farge.
 
-### Korleis komponentar blir påverka
+## Korleis komponentar blir påverka
 
 Me delar komponentar inn i 3 grupper for farge:
 - Eksplisitt
@@ -132,7 +95,7 @@ Denne gruppa inneheld resten av komponentane, og vil arve farge frå næraste fo
 </div>
 ```
 
-### Bruk `data-color-scheme` og `data-color` saman
+## Bruk `data-color-scheme` og `data-color` saman
 
 Du kan bruke `data-color-scheme` og `data-color` saman for å endre både fargemodus og farge på komponentar.
 
@@ -154,6 +117,6 @@ Du kan bruke `data-color-scheme` og `data-color` saman for å endre både fargem
 </div>
 ```
 
-### Kort oppsummert
+## Kort oppsummert
 
 Du endrar farge med `data-color`, men denne må bli satt på nytt dersom du endrar fargemodus med `data-color-scheme`. Nokre komponentar arvar farge frå næraste forelder med `data-color` satt.
