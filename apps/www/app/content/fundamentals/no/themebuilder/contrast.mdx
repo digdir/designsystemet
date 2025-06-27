@@ -1,0 +1,23 @@
+---
+title: Kontrastsystem
+sidebar_title: Kontrastsystem
+description: Kontraster i temabyggeren
+date: 2024-05-22
+category: Temabygger
+color: blue
+icon: PaletteIcon
+published: true
+---
+
+Med et gjennomtenkt fargesystem kan vi sikre at tekst alltid har god nok kontrast mot våre bakgrunnsfarger og at det finnes nok ulike farger for alle tilstander.
+
+Fargesystemet er strukturert for å støtte både multibranding og ulike modes (darkmode, contrastmode, etc.), og samtidig ivareta kontrastkrav. Temabyggeren sørger for at både brand-farger ivaretas og kontrastkrav sikres gjennom fargene som genereres ut fra brand-fargen. Farger beregnet for tekst vil dermed alltid ha god nok kontrast mot bakgrunnsfarger.
+
+Eksempler:
+
+- `Text-default` har alltid god nok kontrast mot alle `background` og `surface` farger.
+- `Text-subtle` har alltid god nok kontrast mot alle `background`-farger og `surface-default`.
+- Dette vil gjelde uansett hva du har valgt som base-farge.
+
+`Base-default`-fargen vil alltid være den samme som fargen du har valgt. Dette er for å ivareta brandet ditt best mulig. Du må derfor selv passe på at fargen du velger oppfyller kontrastkravene i forhold til hvor den skal bli brukt. [Designsystemets temagenerator](https://theme.designsystemet.no) vil informere deg om eventuelle kontrastbrudd.
+
