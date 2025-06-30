@@ -14,7 +14,7 @@
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
     "@internal/components": "workspace:^",
-    "@navikt/aksel-icons": "^7.22.0",
+    "@navikt/aksel-icons": "^7.23.2",
     "@radix-ui/react-slot": "^1.2.3",
     "@react-router/node": "^7.6.2",
     "@react-router/serve": "^7.6.2",
@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@react-router/dev": "^7.6.2",
-    "@types/node": "^22.15.31",
+    "@types/node": "^22.15.32",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "typescript": "^5.8.3",
