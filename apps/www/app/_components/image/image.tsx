@@ -54,7 +54,7 @@ const Image = ({
         <img className={classes.image} src={src} alt={alt} {...rest} />
         <button
           type='button'
-          className={cl(classes.openButton, 'ds-focus--visible')}
+          className={cl(classes.openButton, 'ds-focus')}
           onClick={openFullImage}
           aria-label={t('image.aria-label.normal')}
         />
