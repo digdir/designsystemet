@@ -1,6 +1,6 @@
 import { Search, Table } from '@digdir/designsystemet-react';
 import type { HTMLAttributes } from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { capitalizeString } from '~/_utils/string-helpers';
 import colorTokens from '~/tokens/color.json';
 import semanticTokens from '~/tokens/semantic.json';
@@ -17,29 +17,6 @@ export type TokenListProps = {
   showThemePicker?: boolean;
   showModeSwitcher: boolean;
   hideValue?: boolean;
-};
-
-const ComputedValue = ({ value }: { value: string }) => {
-  const [computedValue, setComputedValue] = useState<string>('');
-
-  useEffect(() => {
-    if (!document) return;
-
-    const elm = document.createElement('div');
-    elm.style.cssText = `width: ${value}; height: ${value};`;
-    document.body.appendChild(elm);
-    const computedValue = getComputedStyle(elm).width;
-    document.body.removeChild(elm);
-
-    setComputedValue(computedValue);
-  }, [value]);
-
-  const getRoundValue = (value: string) => {
-    const [value_] = value.split('px');
-    return Math.round(Number(value_)) + 'px';
-  };
-
-  return <>{getRoundValue(computedValue)}</>;
 };
 
 type RenderTypes = 'color' | 'typography' | 'shadow' | 'dimension';

@@ -1,594 +1,738 @@
 {
   "accent": [
     {
+      "description": "",
       "variable": "--ds-color-background-default",
       "value": "var(--ds-color-accent-background-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-background-tinted",
       "value": "var(--ds-color-accent-background-tinted)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-default",
       "value": "var(--ds-color-accent-surface-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-tinted",
       "value": "var(--ds-color-accent-surface-tinted)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-hover",
       "value": "var(--ds-color-accent-surface-hover)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-active",
       "value": "var(--ds-color-accent-surface-active)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-subtle",
       "value": "var(--ds-color-accent-border-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-default",
       "value": "var(--ds-color-accent-border-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-strong",
       "value": "var(--ds-color-accent-border-strong)"
     },
     {
+      "description": "",
       "variable": "--ds-color-text-subtle",
       "value": "var(--ds-color-accent-text-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-text-default",
       "value": "var(--ds-color-accent-text-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-default",
       "value": "var(--ds-color-accent-base-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-hover",
       "value": "var(--ds-color-accent-base-hover)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-active",
       "value": "var(--ds-color-accent-base-active)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-contrast-subtle",
       "value": "var(--ds-color-accent-base-contrast-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-contrast-default",
       "value": "var(--ds-color-accent-base-contrast-default)"
     }
   ],
   "brand1": [
     {
+      "description": "",
       "variable": "--ds-color-background-default",
       "value": "var(--ds-color-brand1-background-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-background-tinted",
       "value": "var(--ds-color-brand1-background-tinted)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-default",
       "value": "var(--ds-color-brand1-surface-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-tinted",
       "value": "var(--ds-color-brand1-surface-tinted)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-hover",
       "value": "var(--ds-color-brand1-surface-hover)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-active",
       "value": "var(--ds-color-brand1-surface-active)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-subtle",
       "value": "var(--ds-color-brand1-border-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-default",
       "value": "var(--ds-color-brand1-border-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-strong",
       "value": "var(--ds-color-brand1-border-strong)"
     },
     {
+      "description": "",
       "variable": "--ds-color-text-subtle",
       "value": "var(--ds-color-brand1-text-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-text-default",
       "value": "var(--ds-color-brand1-text-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-default",
       "value": "var(--ds-color-brand1-base-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-hover",
       "value": "var(--ds-color-brand1-base-hover)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-active",
       "value": "var(--ds-color-brand1-base-active)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-contrast-subtle",
       "value": "var(--ds-color-brand1-base-contrast-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-contrast-default",
       "value": "var(--ds-color-brand1-base-contrast-default)"
     }
   ],
   "brand2": [
     {
+      "description": "",
       "variable": "--ds-color-background-default",
       "value": "var(--ds-color-brand2-background-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-background-tinted",
       "value": "var(--ds-color-brand2-background-tinted)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-default",
       "value": "var(--ds-color-brand2-surface-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-tinted",
       "value": "var(--ds-color-brand2-surface-tinted)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-hover",
       "value": "var(--ds-color-brand2-surface-hover)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-active",
       "value": "var(--ds-color-brand2-surface-active)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-subtle",
       "value": "var(--ds-color-brand2-border-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-default",
       "value": "var(--ds-color-brand2-border-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-strong",
       "value": "var(--ds-color-brand2-border-strong)"
     },
     {
+      "description": "",
       "variable": "--ds-color-text-subtle",
       "value": "var(--ds-color-brand2-text-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-text-default",
       "value": "var(--ds-color-brand2-text-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-default",
       "value": "var(--ds-color-brand2-base-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-hover",
       "value": "var(--ds-color-brand2-base-hover)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-active",
       "value": "var(--ds-color-brand2-base-active)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-contrast-subtle",
       "value": "var(--ds-color-brand2-base-contrast-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-contrast-default",
       "value": "var(--ds-color-brand2-base-contrast-default)"
     }
   ],
   "brand3": [
     {
+      "description": "",
       "variable": "--ds-color-background-default",
       "value": "var(--ds-color-brand3-background-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-background-tinted",
       "value": "var(--ds-color-brand3-background-tinted)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-default",
       "value": "var(--ds-color-brand3-surface-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-tinted",
       "value": "var(--ds-color-brand3-surface-tinted)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-hover",
       "value": "var(--ds-color-brand3-surface-hover)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-active",
       "value": "var(--ds-color-brand3-surface-active)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-subtle",
       "value": "var(--ds-color-brand3-border-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-default",
       "value": "var(--ds-color-brand3-border-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-strong",
       "value": "var(--ds-color-brand3-border-strong)"
     },
     {
+      "description": "",
       "variable": "--ds-color-text-subtle",
       "value": "var(--ds-color-brand3-text-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-text-default",
       "value": "var(--ds-color-brand3-text-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-default",
       "value": "var(--ds-color-brand3-base-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-hover",
       "value": "var(--ds-color-brand3-base-hover)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-active",
       "value": "var(--ds-color-brand3-base-active)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-contrast-subtle",
       "value": "var(--ds-color-brand3-base-contrast-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-contrast-default",
       "value": "var(--ds-color-brand3-base-contrast-default)"
     }
   ],
   "neutral": [
     {
+      "description": "",
       "variable": "--ds-color-background-default",
       "value": "var(--ds-color-neutral-background-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-background-tinted",
       "value": "var(--ds-color-neutral-background-tinted)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-default",
       "value": "var(--ds-color-neutral-surface-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-tinted",
       "value": "var(--ds-color-neutral-surface-tinted)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-hover",
       "value": "var(--ds-color-neutral-surface-hover)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-active",
       "value": "var(--ds-color-neutral-surface-active)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-subtle",
       "value": "var(--ds-color-neutral-border-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-default",
       "value": "var(--ds-color-neutral-border-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-strong",
       "value": "var(--ds-color-neutral-border-strong)"
     },
     {
+      "description": "",
       "variable": "--ds-color-text-subtle",
       "value": "var(--ds-color-neutral-text-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-text-default",
       "value": "var(--ds-color-neutral-text-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-default",
       "value": "var(--ds-color-neutral-base-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-hover",
       "value": "var(--ds-color-neutral-base-hover)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-active",
       "value": "var(--ds-color-neutral-base-active)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-contrast-subtle",
       "value": "var(--ds-color-neutral-base-contrast-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-contrast-default",
       "value": "var(--ds-color-neutral-base-contrast-default)"
     }
   ],
   "success": [
     {
+      "description": "",
       "variable": "--ds-color-background-default",
       "value": "var(--ds-color-success-background-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-background-tinted",
       "value": "var(--ds-color-success-background-tinted)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-default",
       "value": "var(--ds-color-success-surface-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-tinted",
       "value": "var(--ds-color-success-surface-tinted)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-hover",
       "value": "var(--ds-color-success-surface-hover)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-active",
       "value": "var(--ds-color-success-surface-active)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-subtle",
       "value": "var(--ds-color-success-border-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-default",
       "value": "var(--ds-color-success-border-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-strong",
       "value": "var(--ds-color-success-border-strong)"
     },
     {
+      "description": "",
       "variable": "--ds-color-text-subtle",
       "value": "var(--ds-color-success-text-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-text-default",
       "value": "var(--ds-color-success-text-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-default",
       "value": "var(--ds-color-success-base-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-hover",
       "value": "var(--ds-color-success-base-hover)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-active",
       "value": "var(--ds-color-success-base-active)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-contrast-subtle",
       "value": "var(--ds-color-success-base-contrast-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-contrast-default",
       "value": "var(--ds-color-success-base-contrast-default)"
     }
   ],
   "danger": [
     {
+      "description": "",
       "variable": "--ds-color-background-default",
       "value": "var(--ds-color-danger-background-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-background-tinted",
       "value": "var(--ds-color-danger-background-tinted)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-default",
       "value": "var(--ds-color-danger-surface-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-tinted",
       "value": "var(--ds-color-danger-surface-tinted)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-hover",
       "value": "var(--ds-color-danger-surface-hover)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-active",
       "value": "var(--ds-color-danger-surface-active)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-subtle",
       "value": "var(--ds-color-danger-border-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-default",
       "value": "var(--ds-color-danger-border-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-strong",
       "value": "var(--ds-color-danger-border-strong)"
     },
     {
+      "description": "",
       "variable": "--ds-color-text-subtle",
       "value": "var(--ds-color-danger-text-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-text-default",
       "value": "var(--ds-color-danger-text-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-default",
       "value": "var(--ds-color-danger-base-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-hover",
       "value": "var(--ds-color-danger-base-hover)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-active",
       "value": "var(--ds-color-danger-base-active)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-contrast-subtle",
       "value": "var(--ds-color-danger-base-contrast-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-contrast-default",
       "value": "var(--ds-color-danger-base-contrast-default)"
     }
   ],
   "warning": [
     {
+      "description": "",
       "variable": "--ds-color-background-default",
       "value": "var(--ds-color-warning-background-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-background-tinted",
       "value": "var(--ds-color-warning-background-tinted)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-default",
       "value": "var(--ds-color-warning-surface-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-tinted",
       "value": "var(--ds-color-warning-surface-tinted)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-hover",
       "value": "var(--ds-color-warning-surface-hover)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-active",
       "value": "var(--ds-color-warning-surface-active)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-subtle",
       "value": "var(--ds-color-warning-border-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-default",
       "value": "var(--ds-color-warning-border-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-strong",
       "value": "var(--ds-color-warning-border-strong)"
     },
     {
+      "description": "",
       "variable": "--ds-color-text-subtle",
       "value": "var(--ds-color-warning-text-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-text-default",
       "value": "var(--ds-color-warning-text-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-default",
       "value": "var(--ds-color-warning-base-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-hover",
       "value": "var(--ds-color-warning-base-hover)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-active",
       "value": "var(--ds-color-warning-base-active)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-contrast-subtle",
       "value": "var(--ds-color-warning-base-contrast-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-contrast-default",
       "value": "var(--ds-color-warning-base-contrast-default)"
     }
   ],
   "info": [
     {
+      "description": "",
       "variable": "--ds-color-background-default",
       "value": "var(--ds-color-info-background-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-background-tinted",
       "value": "var(--ds-color-info-background-tinted)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-default",
       "value": "var(--ds-color-info-surface-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-tinted",
       "value": "var(--ds-color-info-surface-tinted)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-hover",
       "value": "var(--ds-color-info-surface-hover)"
     },
     {
+      "description": "",
       "variable": "--ds-color-surface-active",
       "value": "var(--ds-color-info-surface-active)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-subtle",
       "value": "var(--ds-color-info-border-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-default",
       "value": "var(--ds-color-info-border-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-border-strong",
       "value": "var(--ds-color-info-border-strong)"
     },
     {
+      "description": "",
       "variable": "--ds-color-text-subtle",
       "value": "var(--ds-color-info-text-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-text-default",
       "value": "var(--ds-color-info-text-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-default",
       "value": "var(--ds-color-info-base-default)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-hover",
       "value": "var(--ds-color-info-base-hover)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-active",
       "value": "var(--ds-color-info-base-active)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-contrast-subtle",
       "value": "var(--ds-color-info-base-contrast-subtle)"
     },
     {
+      "description": "",
       "variable": "--ds-color-base-contrast-default",
       "value": "var(--ds-color-info-base-contrast-default)"
     }
