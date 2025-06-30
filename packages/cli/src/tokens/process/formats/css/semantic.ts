@@ -45,11 +45,12 @@ const formatSizingTokens = (format: (t: TransformedToken) => string, tokens: Tra
       const { round, calc, name } = overrideSizingFormula(format, token);
 
       return {
+        tokens: [...acc.tokens, token],
         round: [...acc.round, `${name}: ${round};`],
         calc: [...acc.calc, `${name}: ${calc};`],
       };
     },
-    { round: [], calc: [] } as { round: string[]; calc: string[] },
+    { tokens: [], round: [], calc: [] } as { tokens: TransformedToken[]; round: string[]; calc: string[] },
     tokens,
   );
 
@@ -79,14 +80,22 @@ export const semantic: Format = {
       (t: TransformedToken) => pathStartsWithOneOf(['_size'], t) && isDigit(t.path[1]),
       filteredTokens,
     );
+    const formattedSizingTokens = formatSizingTokens(format, sizingTokens);
+
     const formattedMap = restTokens.map((token: TransformedToken) => ({
       token,
       formatted: format(token),
     }));
 
-    buildOptions.buildTokenFormats[destination] = formattedMap;
+    const formattedSizingMap = formattedSizingTokens.round.map((t,i) => ({
+      token: formattedSizingTokens.tokens[i],
+      formatted: t,
+    }));
 
-    const sizingSnippet = sizingTemplate(formatSizingTokens(format, sizingTokens));
+
+    buildOptions.buildTokenFormats[destination] = [...formattedMap, ...formattedSizingMap];
+
+    const sizingSnippet = sizingTemplate(formattedSizingTokens);
     const formattedTokens = formattedMap.map(R.view(R.lensProp('formatted'))).concat(sizingSnippet);
 
     const content = `{\n${formattedTokens.join('\n')}\n}\n`;
