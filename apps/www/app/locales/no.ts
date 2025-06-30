@@ -153,7 +153,7 @@ export default {
     },
   },
   video: {
-    'watch-video': 'Se video på vimeo.com',
+    'watch-video': 'Se video på {{url}}',
   },
   image: {
     'enlarged-text': 'Klikk på bildet eller trykk Escape for å lukke',
