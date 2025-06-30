@@ -38,7 +38,7 @@
 
   &[data-initials]:empty::before {
     content: attr(data-initials);
-    font-size: round(down, 1.3em, 0.0625rem); /* Default to 130% */
+    font-size: round(down, 1.3em, 1px); /* Default to 130% */
   }
 
   &:not([data-initials]):empty::before {

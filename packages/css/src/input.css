@@ -64,7 +64,7 @@
 
   /* Round border-width up to nearest 1px if supported */
   @supports (width: round(down, 0.1em, 1px)) {
-    border-width: round(up, var(--dsc-input-border-width), 0.0625rem);
+    border-width: round(up, var(--dsc-input-border-width), 1px);
   }
 
   &:not([data-size]) {
