@@ -193,7 +193,7 @@ export const TokenModal = () => {
                   {t('themeModal.to-update')}{' '}
                   <Link
                     target='_blank'
-                    href='https://www.designsystemet.no/no/fundamentals/for-designers/own-theme'
+                    href='https://www.designsystemet.no/no/fundamentals/themebuilder/own-theme'
                   >
                     {t('themeModal.own-theme')}
                   </Link>{' '}

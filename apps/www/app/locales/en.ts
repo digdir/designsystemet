@@ -5,19 +5,19 @@ export default {
   ...en,
   frontpage: {
     heading: 'Designsystemet helps you build better digital services',
-    'for-designers': {
-      title: 'For designers',
-      description:
-        'Learn how to get started with Designsystemet as a designer.',
+    'get-started': {
+      title: 'Get started',
+      description: 'Learn how to get started with Designsystemet',
     },
-    'for-developers': {
-      title: 'For developers',
+    patterns: {
+      title: 'Patterns',
       description:
-        'Learn how to get started with Designsystemet as a developer.',
+        'Understand how shared patterns contribute to consistent user experiences',
     },
     components: {
       title: 'Components',
-      description: 'See the overview of UI components created in React.',
+      description:
+        'See the overview of UI components created in React, CSS and Figma.',
     },
     toolbox: {
       title: 'A common digital toolbox',
@@ -29,6 +29,7 @@ export default {
       title: 'Accessible and flexible components',
       description:
         'By creating the most basic components once, we ensure high quality. Each component is thoroughly tested and meets accessibility requirements. Components are built in both Figma and React, and can be combined in various ways to support different patterns.',
+      link: 'Read more about accessibility',
       fallbackImgAlt:
         'Design sketch of a mobile phone containing components from Designsystemet.',
     },
@@ -36,6 +37,7 @@ export default {
       title: 'Use your own themes',
       description:
         'With theming, Designsystemet makes it possible to support different visual identities. This means everyone can build on the same foundation while tailoring the design to their own brand.',
+      link: 'Build your theme',
       fallbackImgAlt:
         'Design sketch of a website showing how Designsystemet can be adapted to different identities.',
     },
@@ -79,8 +81,8 @@ export default {
     categories: {
       'Getting Started': 'Getting Started',
       'Design Principles': 'Design Principles',
-      'For Designers': 'For Designers',
-      'For Developers': 'For Developers',
+      Figma: 'Figma',
+      Code: 'Kode',
       About: 'About',
     },
     items: {
