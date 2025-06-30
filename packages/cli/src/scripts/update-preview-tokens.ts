@@ -46,7 +46,6 @@ export const formatTheme = async (themeConfig: Theme) => {
     processed$themes,
     verbose: false,
     buildTokenFormats: {},
-    preview: true,
   });
 
   await cleanDir('./temp/tokens', false);
