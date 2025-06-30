@@ -89,7 +89,7 @@ const config: Config = {
       console.error(`Error writing manifest file: ${error}`);
     }
 
-    if (process.env.NEXT_PUBLIC_DESIGNSYSTEMET_ENV === 'production') {
+    if (process.env.VERCEL_ENV === 'production') {
       const robotsPath = join(dirname, 'public', 'robots.txt');
       const robotsContent = `User-agent: *\nAllow: /`;
 
