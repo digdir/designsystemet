@@ -5,7 +5,10 @@ import { capitalizeString } from '~/_utils/string-helpers';
 import colorTokens from '~/tokens/color.json';
 import semanticTokens from '~/tokens/semantic.json';
 import typographyTokens from '~/tokens/typography.json';
+import { TokenBorderRadius } from '../token-border-radius/token-border-radius';
 import { ColorDark, ColorLight } from '../token-color/token-color';
+import { TokenShadow } from '../token-shadow/token-shadow';
+import { TokenSize } from '../token-size/token-size';
 import classes from './token-list.module.css';
 
 export type TokenListProps = {
@@ -40,15 +43,6 @@ const ComputedValue = ({ value }: { value: string }) => {
 };
 
 type RenderTypes = 'color' | 'typography' | 'shadow' | 'dimension';
-
-const renderedValue = (value: string, type?: RenderTypes) => {
-  switch (type) {
-    case 'dimension':
-      return <ComputedValue value={value} />;
-    default:
-      return <code>{value}</code>;
-  }
-};
 
 type TokenTableProps = {
   type?: RenderTypes;
@@ -107,7 +101,9 @@ const TokensTable = ({ tokens, type }: TokenTableProps) => {
             <Table.Cell>
               <code>{variable}</code>
             </Table.Cell>
-            <Table.Cell>{renderedValue(value, type)}</Table.Cell>
+            <Table.Cell>
+              <code>{value}</code>
+            </Table.Cell>
           </Table.Row>
         ))}
       </Table.Body>
@@ -115,10 +111,25 @@ const TokensTable = ({ tokens, type }: TokenTableProps) => {
   );
 };
 
-const SemanticTokensTable = ({ tokens, type }: TokenTableProps) => {
+const SemanticTokensTable = ({ tokens }: TokenTableProps) => {
   const filteredTokens = tokens.sort((a) => {
     return a.variable.startsWith('--ds-size') ? -1 : 1;
   });
+
+  const valueRenderer = (variable: string, value: string) => {
+    if (/^--ds-size.*\d$/.test(variable)) {
+      return <TokenSize value={value} />;
+    }
+    if (/^--ds-border(?!.*(scale|base)$)/.test(variable)) {
+      return <TokenBorderRadius value={value} />;
+    }
+
+    if (/^--ds-shadow/.test(variable)) {
+      return <TokenShadow value={value} />;
+    }
+
+    return <code>{value}</code>;
+  };
 
   return (
     <Table data-color='neutral'>
@@ -135,7 +146,7 @@ const SemanticTokensTable = ({ tokens, type }: TokenTableProps) => {
             <Table.Cell>
               <code>{variable}</code>
             </Table.Cell>
-            <Table.Cell>{renderedValue(value, type)}</Table.Cell>
+            <Table.Cell>{valueRenderer(variable, value)}</Table.Cell>
           </Table.Row>
         ))}
       </Table.Body>
@@ -180,7 +191,7 @@ export const TokenList = () => {
     <>
       <Search>
         <Search.Input
-          aria-label='Søk'
+          aria-label='Søk på variabel navn i CSS for design tokens'
           value={searchValue}
           onChange={(e) => setValue(e.target.value)}
         />

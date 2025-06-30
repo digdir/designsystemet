@@ -1,6 +1,17 @@
-.color {
+.shadow {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-size-2);
+  background-color: #fff;
+  padding: var(--ds-size-2);
+  border-radius: var(--ds-border-radius-md);
   height: 60px;
   width: 60px;
-  border-radius: 50%;
+}
+
+.color {
+  height: 40px;
+  width: 40px;
+  border-radius: var(--ds-border-radius-md);
   border: 1px solid #ebebeb;
 }
