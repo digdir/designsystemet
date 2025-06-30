@@ -5,7 +5,11 @@ interface TokenColorProps {
 }
 
 const TokenShadow = ({ value }: TokenColorProps) => {
-  return <div style={{ boxShadow: value }} className={classes.color}></div>;
+  return (
+    <div className={classes.shadow}>
+      <div style={{ boxShadow: value }} className={classes.color}></div>
+    </div>
+  );
 };
 
 export { TokenShadow };
