@@ -26,7 +26,6 @@ export const formatTheme = async (themeConfig: Theme) => {
     tokenSets,
     processed$themes,
     verbose: false,
-    preview: false,
   });
 
   return processedBuilds;
