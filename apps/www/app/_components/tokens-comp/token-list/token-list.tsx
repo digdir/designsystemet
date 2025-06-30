@@ -1,4 +1,4 @@
-import { Table } from '@digdir/designsystemet-react';
+import { Search, Table } from '@digdir/designsystemet-react';
 import type { HTMLAttributes } from 'react';
 import { useEffect, useState } from 'react';
 import { capitalizeString } from '~/_utils/string-helpers';
@@ -115,29 +115,100 @@ const TokensTable = ({ tokens, type }: TokenTableProps) => {
   );
 };
 
-export const TokenList = () => {
+const SemanticTokensTable = ({ tokens, type }: TokenTableProps) => {
+  const filteredTokens = tokens.sort((a) => {
+    return a.variable.startsWith('--ds-size') ? -1 : 1;
+  });
+
   return (
-    <div className={classes.tokens}>
-      {Object.entries(colorTokens).map(([name, tokens]) => {
-        return (
-          <div key={name as string} className={classes.section}>
-            <h3>{capitalizeString(name as string)}</h3>
-            <ColorTokensTable tokens={tokens} />
-          </div>
-        );
-      })}
-      {Object.entries(typographyTokens).map(([name, tokens]) => {
-        return (
-          <div key={name as string} className={classes.section}>
-            <h3>{capitalizeString(name as string)}</h3>
-            <TokensTable type='typography' tokens={tokens} />
-          </div>
-        );
-      })}
-      <div key={'semantic'} className={classes.section}>
-        <h3>{capitalizeString('semantic')}</h3>
-        <TokensTable tokens={semanticTokens} />
+    <Table data-color='neutral'>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell>Navn</Table.HeaderCell>
+
+          <Table.HeaderCell>Verdi</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        {filteredTokens.map(({ variable, value }) => (
+          <Table.Row key={variable}>
+            <Table.Cell>
+              <code>{variable}</code>
+            </Table.Cell>
+            <Table.Cell>{renderedValue(value, type)}</Table.Cell>
+          </Table.Row>
+        ))}
+      </Table.Body>
+    </Table>
+  );
+};
+
+const tokenSearchFilter = (token: PreviewToken, searchValue: string) =>
+  token.variable.toLowerCase().includes(searchValue?.toLowerCase() || '');
+
+const filteredRecord = (
+  record: Record<string, PreviewToken[]>,
+  searchValue?: string,
+): Record<string, PreviewToken[]> => {
+  return Object.entries(record).reduce(
+    (acc, [name, tokens]) => {
+      const filteredTokens = tokens.filter((token) =>
+        token.variable.toLowerCase().includes(searchValue?.toLowerCase() || ''),
+      );
+      if (filteredTokens.length > 0) {
+        acc[name] = filteredTokens;
+      }
+      return acc;
+    },
+    {} as Record<string, PreviewToken[]>,
+  );
+};
+
+export const TokenList = () => {
+  const [searchValue, setValue] = useState<string>('');
+
+  const filteredColorTokens = filteredRecord(colorTokens, searchValue);
+  const filteredTypographyTokens = filteredRecord(
+    typographyTokens,
+    searchValue,
+  );
+  const filteredSemanticTokens = semanticTokens.filter((token) =>
+    tokenSearchFilter(token, searchValue),
+  );
+
+  return (
+    <>
+      <Search>
+        <Search.Input
+          aria-label='Søk'
+          value={searchValue}
+          onChange={(e) => setValue(e.target.value)}
+        />
+        <Search.Clear />
+        <Search.Button />
+      </Search>
+      <div className={classes.tokens}>
+        {Object.entries(filteredColorTokens).map(([name, tokens]) => {
+          return (
+            <div key={name as string} className={classes.section}>
+              <h3>{capitalizeString(name as string)}</h3>
+              <ColorTokensTable tokens={tokens} />
+            </div>
+          );
+        })}
+        {Object.entries(filteredTypographyTokens).map(([name, tokens]) => {
+          return (
+            <div key={name as string} className={classes.section}>
+              <h3>{capitalizeString(name as string)}</h3>
+              <TokensTable type='typography' tokens={tokens} />
+            </div>
+          );
+        })}
+        <div key={'semantic'} className={classes.section}>
+          <h3>{capitalizeString('semantic')}</h3>
+          <SemanticTokensTable tokens={filteredSemanticTokens} />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
