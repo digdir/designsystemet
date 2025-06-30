@@ -89,10 +89,11 @@ const config: Config = {
       console.error(`Error writing manifest file: ${error}`);
     }
 
-    if (process.env.NEXT_PUBLIC_DESIGNSYSTEMET_ENV === 'production') {
+    if (process.env.VERCEL_ENV === 'production') {
       const robotsPath = join(dirname, 'public', 'robots.txt');
       const robotsContent = `User-agent: *\nAllow: /`;
 
+      console.log(`Writing production robots.txt to ${robotsPath}`);
       try {
         writeFileSync(robotsPath, robotsContent);
       } catch (error) {
@@ -103,6 +104,7 @@ const config: Config = {
       const robotsPath = join(dirname, 'public', 'robots.txt');
       const robotsContent = `User-agent: *\nDisallow: /`;
 
+      console.log(`Writing preview robots.txt to ${robotsPath}`);
       try {
         writeFileSync(robotsPath, robotsContent);
       } catch (error) {
