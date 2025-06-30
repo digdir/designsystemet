@@ -22,7 +22,7 @@ export const Sortert: StoryFn<typeof List.Ordered> = (args) => (
   <>
     <Heading
       level={2}
-      data-size='xs'
+      data-font-size='xs'
       style={{ marginBottom: 'var(--ds-size-2)' }}
     >
       Slik gjør du:
@@ -49,7 +49,7 @@ export const Usortert: Story = (args) => (
   <>
     <Heading
       level={2}
-      data-size='xs'
+      data-font-size='xs'
       style={{ marginBottom: 'var(--ds-size-2)' }}
     >
       Foreningen har plikt til å ha revisor hvis de har
@@ -72,7 +72,7 @@ export const Innrykk: Story = (args) => (
     <List.Item>
       <Heading
         level={3}
-        data-size='xs'
+        data-font-size='xs'
         style={{ marginBottom: 'var(--ds-size-2)' }}
       >
         {' '}
@@ -87,7 +87,7 @@ export const Innrykk: Story = (args) => (
     <List.Item>
       <Heading
         level={3}
-        data-size='xs'
+        data-font-size='xs'
         style={{ marginBottom: 'var(--ds-size-2)' }}
       >
         {' '}
@@ -102,7 +102,7 @@ export const Innrykk: Story = (args) => (
     <List.Item>
       <Heading
         level={3}
-        data-size='xs'
+        data-font-size='xs'
         style={{ marginBottom: 'var(--ds-size-2)' }}
       >
         List Item 3
@@ -147,7 +147,7 @@ export const ListeMedOverskrift: Story = () => (
     <div>
       <Heading
         level={2}
-        data-size='2xs'
+        data-font-size='2xs'
         style={{ marginBottom: 'var(--ds-size-2)' }}
       >
         List sm og Heading 2xs
@@ -182,7 +182,7 @@ export const ListeMedOverskrift: Story = () => (
     <div>
       <Heading
         level={2}
-        data-size='xs'
+        data-font-size='xs'
         style={{ marginBottom: 'var(--ds-size-2)' }}
       >
         List md og Heading xs
@@ -217,7 +217,7 @@ export const ListeMedOverskrift: Story = () => (
     <div>
       <Heading
         level={2}
-        data-size='sm'
+        data-font-size='sm'
         style={{ marginBottom: 'var(--ds-size-2)' }}
       >
         List lg og Heading sm
