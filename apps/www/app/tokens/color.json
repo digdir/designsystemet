@@ -1,0 +1,596 @@
+{
+  "accent": [
+    {
+      "variable": "--ds-color-background-default",
+      "value": "var(--ds-color-accent-background-default)"
+    },
+    {
+      "variable": "--ds-color-background-tinted",
+      "value": "var(--ds-color-accent-background-tinted)"
+    },
+    {
+      "variable": "--ds-color-surface-default",
+      "value": "var(--ds-color-accent-surface-default)"
+    },
+    {
+      "variable": "--ds-color-surface-tinted",
+      "value": "var(--ds-color-accent-surface-tinted)"
+    },
+    {
+      "variable": "--ds-color-surface-hover",
+      "value": "var(--ds-color-accent-surface-hover)"
+    },
+    {
+      "variable": "--ds-color-surface-active",
+      "value": "var(--ds-color-accent-surface-active)"
+    },
+    {
+      "variable": "--ds-color-border-subtle",
+      "value": "var(--ds-color-accent-border-subtle)"
+    },
+    {
+      "variable": "--ds-color-border-default",
+      "value": "var(--ds-color-accent-border-default)"
+    },
+    {
+      "variable": "--ds-color-border-strong",
+      "value": "var(--ds-color-accent-border-strong)"
+    },
+    {
+      "variable": "--ds-color-text-subtle",
+      "value": "var(--ds-color-accent-text-subtle)"
+    },
+    {
+      "variable": "--ds-color-text-default",
+      "value": "var(--ds-color-accent-text-default)"
+    },
+    {
+      "variable": "--ds-color-base-default",
+      "value": "var(--ds-color-accent-base-default)"
+    },
+    {
+      "variable": "--ds-color-base-hover",
+      "value": "var(--ds-color-accent-base-hover)"
+    },
+    {
+      "variable": "--ds-color-base-active",
+      "value": "var(--ds-color-accent-base-active)"
+    },
+    {
+      "variable": "--ds-color-base-contrast-subtle",
+      "value": "var(--ds-color-accent-base-contrast-subtle)"
+    },
+    {
+      "variable": "--ds-color-base-contrast-default",
+      "value": "var(--ds-color-accent-base-contrast-default)"
+    }
+  ],
+  "brand1": [
+    {
+      "variable": "--ds-color-background-default",
+      "value": "var(--ds-color-brand1-background-default)"
+    },
+    {
+      "variable": "--ds-color-background-tinted",
+      "value": "var(--ds-color-brand1-background-tinted)"
+    },
+    {
+      "variable": "--ds-color-surface-default",
+      "value": "var(--ds-color-brand1-surface-default)"
+    },
+    {
+      "variable": "--ds-color-surface-tinted",
+      "value": "var(--ds-color-brand1-surface-tinted)"
+    },
+    {
+      "variable": "--ds-color-surface-hover",
+      "value": "var(--ds-color-brand1-surface-hover)"
+    },
+    {
+      "variable": "--ds-color-surface-active",
+      "value": "var(--ds-color-brand1-surface-active)"
+    },
+    {
+      "variable": "--ds-color-border-subtle",
+      "value": "var(--ds-color-brand1-border-subtle)"
+    },
+    {
+      "variable": "--ds-color-border-default",
+      "value": "var(--ds-color-brand1-border-default)"
+    },
+    {
+      "variable": "--ds-color-border-strong",
+      "value": "var(--ds-color-brand1-border-strong)"
+    },
+    {
+      "variable": "--ds-color-text-subtle",
+      "value": "var(--ds-color-brand1-text-subtle)"
+    },
+    {
+      "variable": "--ds-color-text-default",
+      "value": "var(--ds-color-brand1-text-default)"
+    },
+    {
+      "variable": "--ds-color-base-default",
+      "value": "var(--ds-color-brand1-base-default)"
+    },
+    {
+      "variable": "--ds-color-base-hover",
+      "value": "var(--ds-color-brand1-base-hover)"
+    },
+    {
+      "variable": "--ds-color-base-active",
+      "value": "var(--ds-color-brand1-base-active)"
+    },
+    {
+      "variable": "--ds-color-base-contrast-subtle",
+      "value": "var(--ds-color-brand1-base-contrast-subtle)"
+    },
+    {
+      "variable": "--ds-color-base-contrast-default",
+      "value": "var(--ds-color-brand1-base-contrast-default)"
+    }
+  ],
+  "brand2": [
+    {
+      "variable": "--ds-color-background-default",
+      "value": "var(--ds-color-brand2-background-default)"
+    },
+    {
+      "variable": "--ds-color-background-tinted",
+      "value": "var(--ds-color-brand2-background-tinted)"
+    },
+    {
+      "variable": "--ds-color-surface-default",
+      "value": "var(--ds-color-brand2-surface-default)"
+    },
+    {
+      "variable": "--ds-color-surface-tinted",
+      "value": "var(--ds-color-brand2-surface-tinted)"
+    },
+    {
+      "variable": "--ds-color-surface-hover",
+      "value": "var(--ds-color-brand2-surface-hover)"
+    },
+    {
+      "variable": "--ds-color-surface-active",
+      "value": "var(--ds-color-brand2-surface-active)"
+    },
+    {
+      "variable": "--ds-color-border-subtle",
+      "value": "var(--ds-color-brand2-border-subtle)"
+    },
+    {
+      "variable": "--ds-color-border-default",
+      "value": "var(--ds-color-brand2-border-default)"
+    },
+    {
+      "variable": "--ds-color-border-strong",
+      "value": "var(--ds-color-brand2-border-strong)"
+    },
+    {
+      "variable": "--ds-color-text-subtle",
+      "value": "var(--ds-color-brand2-text-subtle)"
+    },
+    {
+      "variable": "--ds-color-text-default",
+      "value": "var(--ds-color-brand2-text-default)"
+    },
+    {
+      "variable": "--ds-color-base-default",
+      "value": "var(--ds-color-brand2-base-default)"
+    },
+    {
+      "variable": "--ds-color-base-hover",
+      "value": "var(--ds-color-brand2-base-hover)"
+    },
+    {
+      "variable": "--ds-color-base-active",
+      "value": "var(--ds-color-brand2-base-active)"
+    },
+    {
+      "variable": "--ds-color-base-contrast-subtle",
+      "value": "var(--ds-color-brand2-base-contrast-subtle)"
+    },
+    {
+      "variable": "--ds-color-base-contrast-default",
+      "value": "var(--ds-color-brand2-base-contrast-default)"
+    }
+  ],
+  "brand3": [
+    {
+      "variable": "--ds-color-background-default",
+      "value": "var(--ds-color-brand3-background-default)"
+    },
+    {
+      "variable": "--ds-color-background-tinted",
+      "value": "var(--ds-color-brand3-background-tinted)"
+    },
+    {
+      "variable": "--ds-color-surface-default",
+      "value": "var(--ds-color-brand3-surface-default)"
+    },
+    {
+      "variable": "--ds-color-surface-tinted",
+      "value": "var(--ds-color-brand3-surface-tinted)"
+    },
+    {
+      "variable": "--ds-color-surface-hover",
+      "value": "var(--ds-color-brand3-surface-hover)"
+    },
+    {
+      "variable": "--ds-color-surface-active",
+      "value": "var(--ds-color-brand3-surface-active)"
+    },
+    {
+      "variable": "--ds-color-border-subtle",
+      "value": "var(--ds-color-brand3-border-subtle)"
+    },
+    {
+      "variable": "--ds-color-border-default",
+      "value": "var(--ds-color-brand3-border-default)"
+    },
+    {
+      "variable": "--ds-color-border-strong",
+      "value": "var(--ds-color-brand3-border-strong)"
+    },
+    {
+      "variable": "--ds-color-text-subtle",
+      "value": "var(--ds-color-brand3-text-subtle)"
+    },
+    {
+      "variable": "--ds-color-text-default",
+      "value": "var(--ds-color-brand3-text-default)"
+    },
+    {
+      "variable": "--ds-color-base-default",
+      "value": "var(--ds-color-brand3-base-default)"
+    },
+    {
+      "variable": "--ds-color-base-hover",
+      "value": "var(--ds-color-brand3-base-hover)"
+    },
+    {
+      "variable": "--ds-color-base-active",
+      "value": "var(--ds-color-brand3-base-active)"
+    },
+    {
+      "variable": "--ds-color-base-contrast-subtle",
+      "value": "var(--ds-color-brand3-base-contrast-subtle)"
+    },
+    {
+      "variable": "--ds-color-base-contrast-default",
+      "value": "var(--ds-color-brand3-base-contrast-default)"
+    }
+  ],
+  "neutral": [
+    {
+      "variable": "--ds-color-background-default",
+      "value": "var(--ds-color-neutral-background-default)"
+    },
+    {
+      "variable": "--ds-color-background-tinted",
+      "value": "var(--ds-color-neutral-background-tinted)"
+    },
+    {
+      "variable": "--ds-color-surface-default",
+      "value": "var(--ds-color-neutral-surface-default)"
+    },
+    {
+      "variable": "--ds-color-surface-tinted",
+      "value": "var(--ds-color-neutral-surface-tinted)"
+    },
+    {
+      "variable": "--ds-color-surface-hover",
+      "value": "var(--ds-color-neutral-surface-hover)"
+    },
+    {
+      "variable": "--ds-color-surface-active",
+      "value": "var(--ds-color-neutral-surface-active)"
+    },
+    {
+      "variable": "--ds-color-border-subtle",
+      "value": "var(--ds-color-neutral-border-subtle)"
+    },
+    {
+      "variable": "--ds-color-border-default",
+      "value": "var(--ds-color-neutral-border-default)"
+    },
+    {
+      "variable": "--ds-color-border-strong",
+      "value": "var(--ds-color-neutral-border-strong)"
+    },
+    {
+      "variable": "--ds-color-text-subtle",
+      "value": "var(--ds-color-neutral-text-subtle)"
+    },
+    {
+      "variable": "--ds-color-text-default",
+      "value": "var(--ds-color-neutral-text-default)"
+    },
+    {
+      "variable": "--ds-color-base-default",
+      "value": "var(--ds-color-neutral-base-default)"
+    },
+    {
+      "variable": "--ds-color-base-hover",
+      "value": "var(--ds-color-neutral-base-hover)"
+    },
+    {
+      "variable": "--ds-color-base-active",
+      "value": "var(--ds-color-neutral-base-active)"
+    },
+    {
+      "variable": "--ds-color-base-contrast-subtle",
+      "value": "var(--ds-color-neutral-base-contrast-subtle)"
+    },
+    {
+      "variable": "--ds-color-base-contrast-default",
+      "value": "var(--ds-color-neutral-base-contrast-default)"
+    }
+  ],
+  "success": [
+    {
+      "variable": "--ds-color-background-default",
+      "value": "var(--ds-color-success-background-default)"
+    },
+    {
+      "variable": "--ds-color-background-tinted",
+      "value": "var(--ds-color-success-background-tinted)"
+    },
+    {
+      "variable": "--ds-color-surface-default",
+      "value": "var(--ds-color-success-surface-default)"
+    },
+    {
+      "variable": "--ds-color-surface-tinted",
+      "value": "var(--ds-color-success-surface-tinted)"
+    },
+    {
+      "variable": "--ds-color-surface-hover",
+      "value": "var(--ds-color-success-surface-hover)"
+    },
+    {
+      "variable": "--ds-color-surface-active",
+      "value": "var(--ds-color-success-surface-active)"
+    },
+    {
+      "variable": "--ds-color-border-subtle",
+      "value": "var(--ds-color-success-border-subtle)"
+    },
+    {
+      "variable": "--ds-color-border-default",
+      "value": "var(--ds-color-success-border-default)"
+    },
+    {
+      "variable": "--ds-color-border-strong",
+      "value": "var(--ds-color-success-border-strong)"
+    },
+    {
+      "variable": "--ds-color-text-subtle",
+      "value": "var(--ds-color-success-text-subtle)"
+    },
+    {
+      "variable": "--ds-color-text-default",
+      "value": "var(--ds-color-success-text-default)"
+    },
+    {
+      "variable": "--ds-color-base-default",
+      "value": "var(--ds-color-success-base-default)"
+    },
+    {
+      "variable": "--ds-color-base-hover",
+      "value": "var(--ds-color-success-base-hover)"
+    },
+    {
+      "variable": "--ds-color-base-active",
+      "value": "var(--ds-color-success-base-active)"
+    },
+    {
+      "variable": "--ds-color-base-contrast-subtle",
+      "value": "var(--ds-color-success-base-contrast-subtle)"
+    },
+    {
+      "variable": "--ds-color-base-contrast-default",
+      "value": "var(--ds-color-success-base-contrast-default)"
+    }
+  ],
+  "danger": [
+    {
+      "variable": "--ds-color-background-default",
+      "value": "var(--ds-color-danger-background-default)"
+    },
+    {
+      "variable": "--ds-color-background-tinted",
+      "value": "var(--ds-color-danger-background-tinted)"
+    },
+    {
+      "variable": "--ds-color-surface-default",
+      "value": "var(--ds-color-danger-surface-default)"
+    },
+    {
+      "variable": "--ds-color-surface-tinted",
+      "value": "var(--ds-color-danger-surface-tinted)"
+    },
+    {
+      "variable": "--ds-color-surface-hover",
+      "value": "var(--ds-color-danger-surface-hover)"
+    },
+    {
+      "variable": "--ds-color-surface-active",
+      "value": "var(--ds-color-danger-surface-active)"
+    },
+    {
+      "variable": "--ds-color-border-subtle",
+      "value": "var(--ds-color-danger-border-subtle)"
+    },
+    {
+      "variable": "--ds-color-border-default",
+      "value": "var(--ds-color-danger-border-default)"
+    },
+    {
+      "variable": "--ds-color-border-strong",
+      "value": "var(--ds-color-danger-border-strong)"
+    },
+    {
+      "variable": "--ds-color-text-subtle",
+      "value": "var(--ds-color-danger-text-subtle)"
+    },
+    {
+      "variable": "--ds-color-text-default",
+      "value": "var(--ds-color-danger-text-default)"
+    },
+    {
+      "variable": "--ds-color-base-default",
+      "value": "var(--ds-color-danger-base-default)"
+    },
+    {
+      "variable": "--ds-color-base-hover",
+      "value": "var(--ds-color-danger-base-hover)"
+    },
+    {
+      "variable": "--ds-color-base-active",
+      "value": "var(--ds-color-danger-base-active)"
+    },
+    {
+      "variable": "--ds-color-base-contrast-subtle",
+      "value": "var(--ds-color-danger-base-contrast-subtle)"
+    },
+    {
+      "variable": "--ds-color-base-contrast-default",
+      "value": "var(--ds-color-danger-base-contrast-default)"
+    }
+  ],
+  "warning": [
+    {
+      "variable": "--ds-color-background-default",
+      "value": "var(--ds-color-warning-background-default)"
+    },
+    {
+      "variable": "--ds-color-background-tinted",
+      "value": "var(--ds-color-warning-background-tinted)"
+    },
+    {
+      "variable": "--ds-color-surface-default",
+      "value": "var(--ds-color-warning-surface-default)"
+    },
+    {
+      "variable": "--ds-color-surface-tinted",
+      "value": "var(--ds-color-warning-surface-tinted)"
+    },
+    {
+      "variable": "--ds-color-surface-hover",
+      "value": "var(--ds-color-warning-surface-hover)"
+    },
+    {
+      "variable": "--ds-color-surface-active",
+      "value": "var(--ds-color-warning-surface-active)"
+    },
+    {
+      "variable": "--ds-color-border-subtle",
+      "value": "var(--ds-color-warning-border-subtle)"
+    },
+    {
+      "variable": "--ds-color-border-default",
+      "value": "var(--ds-color-warning-border-default)"
+    },
+    {
+      "variable": "--ds-color-border-strong",
+      "value": "var(--ds-color-warning-border-strong)"
+    },
+    {
+      "variable": "--ds-color-text-subtle",
+      "value": "var(--ds-color-warning-text-subtle)"
+    },
+    {
+      "variable": "--ds-color-text-default",
+      "value": "var(--ds-color-warning-text-default)"
+    },
+    {
+      "variable": "--ds-color-base-default",
+      "value": "var(--ds-color-warning-base-default)"
+    },
+    {
+      "variable": "--ds-color-base-hover",
+      "value": "var(--ds-color-warning-base-hover)"
+    },
+    {
+      "variable": "--ds-color-base-active",
+      "value": "var(--ds-color-warning-base-active)"
+    },
+    {
+      "variable": "--ds-color-base-contrast-subtle",
+      "value": "var(--ds-color-warning-base-contrast-subtle)"
+    },
+    {
+      "variable": "--ds-color-base-contrast-default",
+      "value": "var(--ds-color-warning-base-contrast-default)"
+    }
+  ],
+  "info": [
+    {
+      "variable": "--ds-color-background-default",
+      "value": "var(--ds-color-info-background-default)"
+    },
+    {
+      "variable": "--ds-color-background-tinted",
+      "value": "var(--ds-color-info-background-tinted)"
+    },
+    {
+      "variable": "--ds-color-surface-default",
+      "value": "var(--ds-color-info-surface-default)"
+    },
+    {
+      "variable": "--ds-color-surface-tinted",
+      "value": "var(--ds-color-info-surface-tinted)"
+    },
+    {
+      "variable": "--ds-color-surface-hover",
+      "value": "var(--ds-color-info-surface-hover)"
+    },
+    {
+      "variable": "--ds-color-surface-active",
+      "value": "var(--ds-color-info-surface-active)"
+    },
+    {
+      "variable": "--ds-color-border-subtle",
+      "value": "var(--ds-color-info-border-subtle)"
+    },
+    {
+      "variable": "--ds-color-border-default",
+      "value": "var(--ds-color-info-border-default)"
+    },
+    {
+      "variable": "--ds-color-border-strong",
+      "value": "var(--ds-color-info-border-strong)"
+    },
+    {
+      "variable": "--ds-color-text-subtle",
+      "value": "var(--ds-color-info-text-subtle)"
+    },
+    {
+      "variable": "--ds-color-text-default",
+      "value": "var(--ds-color-info-text-default)"
+    },
+    {
+      "variable": "--ds-color-base-default",
+      "value": "var(--ds-color-info-base-default)"
+    },
+    {
+      "variable": "--ds-color-base-hover",
+      "value": "var(--ds-color-info-base-hover)"
+    },
+    {
+      "variable": "--ds-color-base-active",
+      "value": "var(--ds-color-info-base-active)"
+    },
+    {
+      "variable": "--ds-color-base-contrast-subtle",
+      "value": "var(--ds-color-info-base-contrast-subtle)"
+    },
+    {
+      "variable": "--ds-color-base-contrast-default",
+      "value": "var(--ds-color-info-base-contrast-default)"
+    }
+  ]
+}

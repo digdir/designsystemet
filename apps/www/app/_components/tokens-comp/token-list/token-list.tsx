@@ -1,17 +1,11 @@
-import type { HexColor } from '@digdir/designsystemet/color';
-import { Dropdown, Heading, Table } from '@digdir/designsystemet-react';
-import cl from 'clsx/lite';
+import { Search, Table } from '@digdir/designsystemet-react';
 import type { HTMLAttributes } from 'react';
 import { useEffect, useState } from 'react';
-import type { TransformedToken as Token } from 'style-dictionary';
 import { capitalizeString } from '~/_utils/string-helpers';
-import * as tokensDark from '~/tokens/dark';
-import * as tokensLight from '~/tokens/light';
-import { TokenBorderRadius } from '../token-border-radius/token-border-radius';
-import { TokenColor } from '../token-color/token-color';
-import { TokenFontSize } from '../token-font-size/token-font-size';
-import { TokenShadow } from '../token-shadow/token-shadow';
-import { TokenSize } from '../token-size/token-size';
+import colorTokens from '~/tokens/color.json';
+import semanticTokens from '~/tokens/semantic.json';
+import typographyTokens from '~/tokens/typography.json';
+import { ColorDark, ColorLight } from '../token-color/token-color';
 import classes from './token-list.module.css';
 
 export type TokenListProps = {
@@ -20,58 +14,6 @@ export type TokenListProps = {
   showThemePicker?: boolean;
   showModeSwitcher: boolean;
   hideValue?: boolean;
-};
-
-type CardColumnType = 2 | 3;
-type BrandType = 'digdir' | 'altinn' | 'tilsynet' | 'portal';
-
-type TokenTableProps = {
-  tokens: [string, Token[]][];
-} & HTMLAttributes<HTMLDivElement>;
-
-const TokensTable = ({ tokens }: TokenTableProps) => {
-  return (
-    <Table data-color='neutral'>
-      <Table.Head>
-        <Table.Row>
-          <Table.HeaderCell>Navn</Table.HeaderCell>
-          <Table.HeaderCell>Reell verdi</Table.HeaderCell>
-          <Table.HeaderCell>Visualisering</Table.HeaderCell>
-        </Table.Row>
-      </Table.Head>
-      <Table.Body>
-        {tokens.map(([, tokens]) => {
-          return tokens.map((token) => {
-            const name = token.name;
-            const value = token.$value as string;
-            const isBorderRadius = token.path.includes('border-radius');
-
-            return (
-              <Table.Row key={name}>
-                <Table.Cell>
-                  {/* <ClipboardButton
-                    title='Kopier CSS variabel'
-                    text={name}
-                    value={name}
-                  /> */}
-                </Table.Cell>
-                <Table.Cell>
-                  <ComputedValue value={value} />
-                </Table.Cell>
-                <Table.Cell>
-                  {isBorderRadius ? (
-                    <TokenBorderRadius value={value} />
-                  ) : (
-                    <TokenSize value={value} />
-                  )}
-                </Table.Cell>
-              </Table.Row>
-            );
-          });
-        })}
-      </Table.Body>
-    </Table>
-  );
 };
 
 const ComputedValue = ({ value }: { value: string }) => {
@@ -97,169 +39,176 @@ const ComputedValue = ({ value }: { value: string }) => {
   return <>{getRoundValue(computedValue)}</>;
 };
 
-type TokenCardsProps = {
-  tokens: [string, Token[]][];
-  cols?: number;
-  hideValue: TokenListProps['hideValue'];
-  type: TokenListProps['type'];
+type RenderTypes = 'color' | 'typography' | 'shadow' | 'dimension';
+
+const renderedValue = (value: string, type?: RenderTypes) => {
+  switch (type) {
+    case 'dimension':
+      return <ComputedValue value={value} />;
+    default:
+      return <code>{value}</code>;
+  }
 };
 
-const TokenCards = ({ tokens, cols, hideValue, type }: TokenCardsProps) => {
-  return tokens.map(([group, tokens]) => {
-    return (
-      <div key={group}>
-        <Heading data-size='xs' level={4} className={classes.title}>
-          {capitalizeString(group)}
-        </Heading>
-        <div className={cl(classes.group)}>
-          <div
-            className={cl(classes.cards, {
-              [classes.cards2]: cols === 2,
-            })}
-          >
-            {tokens.map((token) => (
-              <TokenCard
-                token={token}
-                key={token.name}
-                hideValue={hideValue}
-                type={type}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-    );
-  });
-};
-
-type TokenCardProps = {
-  token: Token;
-  hideValue: TokenListProps['hideValue'];
-  type: TokenListProps['type'];
+type TokenTableProps = {
+  type?: RenderTypes;
+  tokens: PreviewToken[];
 } & HTMLAttributes<HTMLDivElement>;
 
-const TokenCard = ({ token, type, hideValue, ...rest }: TokenCardProps) => {
-  const val = token.$value as HexColor;
-  const title = token.path
-    .slice(token.path.length - 1, token.path.length)
-    .toString();
+type PreviewToken = { variable: string; value: string };
 
+const ColorTokensTable = ({ tokens }: TokenTableProps) => {
   return (
-    <div className={classes.card} {...rest}>
-      <div className={classes.preview}>
-        {type === 'color' && <TokenColor value={val} token={token} />}
-        {type === 'typography' && <TokenFontSize value={val} />}
-        {type === 'shadow' && <TokenShadow value={val} />}
-      </div>
+    <Table data-color='neutral'>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell>Navn</Table.HeaderCell>
+          <Table.HeaderCell>Lys</Table.HeaderCell>
+          <Table.HeaderCell>Mørk</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        {tokens.map((token) => {
+          const name = token.variable;
+          const value = token.value;
 
-      <div className={classes.textContainer}>
-        <Heading level={5} data-size='2xs' className={classes.name}>
-          {capitalizeString(title)}
-          &nbsp;
-          {/* <ClipboardButton
-            title='Kopier CSS variabel'
-            text='CSS'
-            value={token.name}
-          /> */}
-        </Heading>
-        {!hideValue && <div className={classes.value}>{token.$value}</div>}
-      </div>
-    </div>
+          return (
+            <Table.Row key={name}>
+              <Table.Cell>
+                <code>{name}</code>
+              </Table.Cell>
+              <Table.Cell>
+                <ColorLight colorVariable={value} />
+              </Table.Cell>
+              <Table.Cell>
+                <ColorDark colorVariable={value} />
+              </Table.Cell>
+            </Table.Row>
+          );
+        })}
+      </Table.Body>
+    </Table>
   );
 };
 
-const mapTokens = (tokens: Token[]): [string, Token[]][] =>
-  Array.from(
-    tokens.reduce((acc, token) => {
-      const path = token.path.length > 2 ? token.path.slice(1, -1) : token.path;
-      const key = path.toString().replace(/,/g, ' ').trim();
-      const tokens = acc.get(key);
+const TokensTable = ({ tokens, type }: TokenTableProps) => {
+  return (
+    <Table data-color='neutral'>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell>Navn</Table.HeaderCell>
 
-      !tokens ? acc.set(key, [token]) : acc.set(key, [...tokens, token]);
-
-      return acc;
-    }, new Map<string, Token[]>()),
+          <Table.HeaderCell>Verdi</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        {tokens.map(({ variable, value }) => (
+          <Table.Row key={variable}>
+            <Table.Cell>
+              <code>{variable}</code>
+            </Table.Cell>
+            <Table.Cell>{renderedValue(value, type)}</Table.Cell>
+          </Table.Row>
+        ))}
+      </Table.Body>
+    </Table>
   );
+};
 
-export const TokenList = ({
-  showThemePicker,
-  showModeSwitcher,
-  type = 'color',
-  hideValue = false,
-}: TokenListProps) => {
-  const [brand] = useState<BrandType>('digdir');
-  const [mode, setMode] = useState<'light' | 'dark'>('light');
-  const [cardColumns, setCardColumns] = useState<CardColumnType>(3);
+const SemanticTokensTable = ({ tokens, type }: TokenTableProps) => {
+  const filteredTokens = tokens.sort((a) => {
+    return a.variable.startsWith('--ds-size') ? -1 : 1;
+  });
 
-  const tokens = mode === 'light' ? tokensLight : tokensDark;
+  return (
+    <Table data-color='neutral'>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell>Navn</Table.HeaderCell>
 
-  useEffect(() => {
-    setCardColumns(type === 'color' ? 3 : 2);
-  }, [type]);
-
-  const brandTypeTokens = tokens[brand][type] as unknown as Token[];
-
-  const sections = Array.from(
-    brandTypeTokens.reduce((acc, token) => {
-      const [section] = token.path;
-      acc.add(section);
-      return acc;
-    }, new Set<string>()),
+          <Table.HeaderCell>Verdi</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        {filteredTokens.map(({ variable, value }) => (
+          <Table.Row key={variable}>
+            <Table.Cell>
+              <code>{variable}</code>
+            </Table.Cell>
+            <Table.Cell>{renderedValue(value, type)}</Table.Cell>
+          </Table.Row>
+        ))}
+      </Table.Body>
+    </Table>
   );
+};
 
-  const sectionedTokens = Array.from(
-    sections.map((section) => [
-      section,
-      mapTokens(brandTypeTokens.filter((token) => token.path[0] === section)),
-    ]),
+const tokenSearchFilter = (token: PreviewToken, searchValue: string) =>
+  token.variable.toLowerCase().includes(searchValue?.toLowerCase() || '');
+
+const filteredRecord = (
+  record: Record<string, PreviewToken[]>,
+  searchValue?: string,
+): Record<string, PreviewToken[]> => {
+  return Object.entries(record).reduce(
+    (acc, [name, tokens]) => {
+      const filteredTokens = tokens.filter((token) =>
+        token.variable.toLowerCase().includes(searchValue?.toLowerCase() || ''),
+      );
+      if (filteredTokens.length > 0) {
+        acc[name] = filteredTokens;
+      }
+      return acc;
+    },
+    {} as Record<string, PreviewToken[]>,
+  );
+};
+
+export const TokenList = () => {
+  const [searchValue, setValue] = useState<string>('');
+
+  const filteredColorTokens = filteredRecord(colorTokens, searchValue);
+  const filteredTypographyTokens = filteredRecord(
+    typographyTokens,
+    searchValue,
+  );
+  const filteredSemanticTokens = semanticTokens.filter((token) =>
+    tokenSearchFilter(token, searchValue),
   );
 
   return (
-    <div className={classes.tokens}>
-      {(showThemePicker || showModeSwitcher) && (
-        <div className={classes.toggleGroup}>
-          {showModeSwitcher && (
-            <Dropdown.TriggerContext>
-              <Dropdown.Trigger variant='secondary'>
-                Mode: {capitalizeString(mode)}
-              </Dropdown.Trigger>
-              <Dropdown>
-                <Dropdown.List>
-                  <Dropdown.Item>
-                    <Dropdown.Button onClick={() => setMode('light')}>
-                      Light
-                    </Dropdown.Button>
-                  </Dropdown.Item>
-                  <Dropdown.Item>
-                    <Dropdown.Button onClick={() => setMode('dark')}>
-                      Dark
-                    </Dropdown.Button>
-                  </Dropdown.Item>
-                </Dropdown.List>
-              </Dropdown>
-            </Dropdown.TriggerContext>
-          )}
+    <>
+      <Search>
+        <Search.Input
+          aria-label='Søk'
+          value={searchValue}
+          onChange={(e) => setValue(e.target.value)}
+        />
+        <Search.Clear />
+        <Search.Button />
+      </Search>
+      <div className={classes.tokens}>
+        {Object.entries(filteredColorTokens).map(([name, tokens]) => {
+          return (
+            <div key={name as string} className={classes.section}>
+              <h3>{capitalizeString(name as string)}</h3>
+              <ColorTokensTable tokens={tokens} />
+            </div>
+          );
+        })}
+        {Object.entries(filteredTypographyTokens).map(([name, tokens]) => {
+          return (
+            <div key={name as string} className={classes.section}>
+              <h3>{capitalizeString(name as string)}</h3>
+              <TokensTable type='typography' tokens={tokens} />
+            </div>
+          );
+        })}
+        <div key={'semantic'} className={classes.section}>
+          <h3>{capitalizeString('semantic')}</h3>
+          <SemanticTokensTable tokens={filteredSemanticTokens} />
         </div>
-      )}
-
-      {sectionedTokens.map(([section, tokens]) => {
-        const tokens_ = tokens as [string, Token[]][];
-        return (
-          <div key={section as string} className={classes.section}>
-            <h3>{capitalizeString(section as string)}</h3>
-            {type === 'dimension' ? (
-              <TokensTable tokens={tokens_} />
-            ) : (
-              <TokenCards
-                type={type}
-                cols={cardColumns}
-                tokens={tokens_}
-                hideValue={hideValue}
-              />
-            )}
-          </div>
-        );
-      })}
-    </div>
+      </div>
+    </>
   );
 };
