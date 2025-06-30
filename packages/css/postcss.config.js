@@ -37,12 +37,13 @@ function postcssComposes() {
           );
 
         cache[resolvedFrom].root.walkRules((fromRule) => {
-          if (fromRule.selector.startsWith(`.${selector}`))
+          if (fromRule.selector.split(/:|\s/)[0] === `.${selector}`) {
             rule.replaceWith(
               fromRule.clone({
                 selector: fromRule.selector.replace(`.${selector}`, '&'),
               }),
             );
+          }
         });
       },
     },

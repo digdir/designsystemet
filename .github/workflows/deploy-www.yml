@@ -2,6 +2,7 @@ name: Deploy www
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_WWW }}
+  VERCEL_ENV: ${{ github.event.inputs.environment == 'production' && 'production' || 'preview' }}
 on:
   workflow_dispatch:
     inputs:
@@ -17,6 +18,7 @@ on:
       - main
     paths:
       - 'apps/www/**'
+
 jobs:
   Deploy-Production:
     if: ${{ github.repository == 'digdir/designsystemet' }}
