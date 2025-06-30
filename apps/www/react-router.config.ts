@@ -89,14 +89,11 @@ const config: Config = {
       console.error(`Error writing manifest file: ${error}`);
     }
 
-    throw new Error(
-      `env NEXT_PUBLIC_DESIGNSYSTEMET_ENV is currently '${process.env.NEXT_PUBLIC_DESIGNSYSTEMET_ENV}'\n node env is '${process.env.NODE_ENV}'\n`,
-    );
-
     if (process.env.NEXT_PUBLIC_DESIGNSYSTEMET_ENV === 'production') {
       const robotsPath = join(dirname, 'public', 'robots.txt');
       const robotsContent = `User-agent: *\nAllow: /`;
 
+      console.log(`Writing production robots.txt to ${robotsPath}`);
       try {
         writeFileSync(robotsPath, robotsContent);
       } catch (error) {
@@ -107,6 +104,7 @@ const config: Config = {
       const robotsPath = join(dirname, 'public', 'robots.txt');
       const robotsContent = `User-agent: *\nDisallow: /`;
 
+      console.log(`Writing preview robots.txt to ${robotsPath}`);
       try {
         writeFileSync(robotsPath, robotsContent);
       } catch (error) {

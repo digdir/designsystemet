@@ -87,6 +87,7 @@ const config: Config = {
       const robotsPath = join(dirname, 'public', 'robots.txt');
       const robotsContent = `User-agent: *\nAllow: /`;
 
+      console.log(`Writing production robots.txt to ${robotsPath}`);
       try {
         writeFileSync(robotsPath, robotsContent);
       } catch (error) {
@@ -97,6 +98,7 @@ const config: Config = {
       const robotsPath = join(dirname, 'public', 'robots.txt');
       const robotsContent = `User-agent: *\nDisallow: /`;
 
+      console.log(`Writing preview robots.txt to ${robotsPath}`);
       try {
         writeFileSync(robotsPath, robotsContent);
       } catch (error) {
