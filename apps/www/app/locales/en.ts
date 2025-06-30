@@ -156,6 +156,13 @@ export default {
   video: {
     'watch-video': 'Watch video on {{url}}',
   },
+  image: {
+    'enlarged-text': 'Click the image or press Escape to close',
+    'aria-label': {
+      enlarged: 'Click to minimize image.',
+      normal: 'Click to enlarge image.',
+    },
+  },
   'image-banner': {
     'play-video': 'Play video',
     'pause-video': 'Pause video',

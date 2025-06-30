@@ -7,10 +7,89 @@
   gap: var(--ds-size-4);
 }
 
+.imageContainer {
+  position: relative;
+  width: 100%;
+  cursor: zoom-in;
+}
+
 .image {
   margin: 0;
   width: 100%;
   box-shadow: none;
+  display: block;
+}
+
+.openButton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: zoom-in;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.imageDialog {
+  padding: 0;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.9);
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+.imageDialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Prevent scroll when open */
+body:has(.imageDialog:modal) {
+  overflow: hidden;
+}
+
+.dialogContent {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: zoom-out;
+}
+
+.dialogImage {
+  max-width: 95%;
+  max-height: 90%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.dialogMessage {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: var(--ds-border-radius-sm);
+  font-size: 0.9rem;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  color: white;
+  z-index: 1;
 }
 
 .boxShadow .image {
