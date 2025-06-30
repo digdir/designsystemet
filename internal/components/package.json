@@ -19,7 +19,7 @@
     "@digdir/designsystemet": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
-    "@navikt/aksel-icons": "^7.22.0",
+    "@navikt/aksel-icons": "^7.23.2",
     "clsx": "^2.1.1",
     "react-code-block": "^1.1.3",
     "react": "^19.1.0",

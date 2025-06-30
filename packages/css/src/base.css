@@ -50,10 +50,19 @@ body,
   mask: center / contain no-repeat var(--ds-readonly-icon-url);
   vertical-align: bottom;
   width: var(--ds-readonly-icon-size);
+  @composes ds-print-preserve from './base.css';
 
   @media (forced-colors: active) {
     background: CanvasText;
   }
+}
+
+/*
+* Preserves the visual appearance when printing
+*/
+.ds-print-preserve {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 
 /**

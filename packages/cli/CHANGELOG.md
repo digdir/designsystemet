@@ -1,5 +1,15 @@
 # Change Log
 
+## 1.1.2
+
+## 1.1.1
+
+### Patch Changes
+
+- Updated non-major dependencies ([#3774](https://github.com/digdir/designsystemet/pull/3774))
+
+- Fix zod schema error when creating tokens from config file ([#3774](https://github.com/digdir/designsystemet/pull/3774))
+
 ## 1.1.0
 
 ### Patch Changes
@@ -80,7 +90,6 @@
 - Fix `data-color` and `data-color-scheme` used on the same element not working in some browsers ([#3354](https://github.com/digdir/designsystemet/pull/3354))
 
 - Dark mode color adjustments ([#3386](https://github.com/digdir/designsystemet/pull/3386))
-
   - Reduced the saturation of the colors in dark mode by about 50%.
   - Made the background- and surface colors a bit darker.
   - Made the text-default color a bit brighter for better contrast.
@@ -230,12 +239,10 @@
 - 9d54191: Moved typography based sizing formula to design-tokens
 - 4ff02ff: **Feat**: New `clean` option for cleaning `outDir` before `tokens create/build`
 - 48bd80e: Fix crash when running CLI command `tokens build`:
-
   - add --verbose option to `tokens build` for easier debugging
   - `tokens build` crashed when run on result of `tokens create`
 
   Update tokens template used by CLI command `tokens create`
-
   - removes `ingress`, renames `paragraph` to `body`, and adds `xl` size
 
 - 9b6401b: Fix crash when running @digdir/designsystemet CLI due to differences in module resolution when used as a package
@@ -471,12 +478,10 @@
 ### Minor Changes
 
 - Fix crash when running CLI command `tokens build`: ([#2549](https://github.com/digdir/designsystemet/pull/2549))
-
   - add --verbose option to `tokens build` for easier debugging
   - `tokens build` crashed when run on result of `tokens create`
 
   Update tokens template used by CLI command `tokens create`
-
   - removes `ingress`, renames `paragraph` to `body`, and adds `xl` size
 
 ### Patch Changes

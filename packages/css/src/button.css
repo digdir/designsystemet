@@ -33,6 +33,7 @@
   text-align: inherit;
   text-decoration: none;
 
+  @composes ds-print-preserve from './base.css';
   @composes ds-focus from './base.css';
 
   &[data-variant='secondary'],

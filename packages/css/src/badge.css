@@ -3,6 +3,7 @@
   --dsc-badge-color: var(--ds-color-base-contrast-default);
   --dsc-badge-padding: 0 calc(var(--ds-size-1) + calc(var(--ds-size-1) / 2));
   --dsc-badge-size: calc(var(--ds-size-3) + calc(var(--ds-size-1) / 2));
+  @composes ds-print-preserve from './base.css';
 
   &::before {
     content: attr(data-count);
