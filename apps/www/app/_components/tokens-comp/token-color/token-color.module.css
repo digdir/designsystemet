@@ -3,6 +3,7 @@
   width: 60px;
   border-radius: var(--ds-border-radius-md);
   display: inline-block;
+  border: 1px solid var(--ds-color-neutral-border-default); /* Dark --ds-color-neutral-background-default  */
 }
 
 .colorBox {
@@ -11,22 +12,7 @@
   justify-content: center;
   padding: var(--ds-size-1);
   border-radius: var(--ds-border-radius-md);
-  height: 60px;
-  width: 80px;
-}
-
-.colorBox[data-color-scheme='light'] {
-  background-color: #fff;
-
-  .color {
-    border: 1px solid #000;
-  }
-}
-
-.colorBox[data-color-scheme='dark'] {
-  background-color: #000;
-
-  .color {
-    border: 1px solid #3a3a3a;
-  }
+  height: 70px;
+  width: 90px;
+  background-color: var(--ds-color-neutral-background-default);
 }
