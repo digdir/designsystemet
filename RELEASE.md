@@ -11,6 +11,7 @@ We currently use [changesets](https://github.com/changesets/changesets) and [Cha
 ***Make sure there are not changeset for `private:true` or `ignored` packages/apps as this will break changesets publish.***
 You will get a `Error: Validation Failed: {"resource":"PullRequest","code":"custom","message":"No commits between main and changeset-release/main"}` error in the Github action.
 
+### Steps 
 
 - [Changeset bot](https://github.com/apps/changeset-bot) should pickup changesets (inside `.changeset/`) and generate a PR with bumped version and changelog.
 
