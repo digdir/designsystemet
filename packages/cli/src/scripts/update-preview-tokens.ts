@@ -23,9 +23,10 @@ async function write(files: OutputFile[], outDir: string, dry?: boolean) {
 }
 
 const toPreviewToken = (tokens: { token: TransformedToken; formatted: string }[]): PreviewToken[] =>
-  tokens.map(({ formatted }) => {
+  tokens.map(({ token, formatted }) => {
     const [variable, value] = formatted.split(':');
     return {
+      description: token.$description || '',
       variable: variable.trim(),
       value: value.trim().replace(/;$/, ''), // Remove trailing semicolon if present
     };
