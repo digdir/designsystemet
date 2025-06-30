@@ -126,6 +126,18 @@ const nextItems = (
 const defaultFilter: Filter = ({ label, input }) =>
   label.toLowerCase().includes(input.value.trim().toLowerCase());
 
+// https://github.com/u-elements/u-elements/blob/fe076b724272c2fef00d41838b091b1563661829/packages/utils.ts#L222
+// DELETE THIS when bug in u-combobox is fixed
+const setValue = (input: HTMLInputElement, data: string, type = '') => {
+  const event = { bubbles: true, composed: true, data, inputType: type };
+  const proto = HTMLInputElement.prototype;
+
+  input.dispatchEvent(new InputEvent('beforeinput', event));
+  Object.getOwnPropertyDescriptor(proto, 'value')?.set?.call(input, data);
+  input.dispatchEvent(new InputEvent('input', event));
+  input.dispatchEvent(new Event('change', { bubbles: true }));
+};
+
 export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
   function Suggestion(
     {
@@ -158,6 +170,15 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
       prevControlled.current = value;
       setSelectedItems(sanitizeItems(prevControlled.current));
     }
+
+    useEffect(() => {
+      // Workaround for missing input value update in u-combobox in single mode
+      const sanitizedValue = sanitizeItems(prevControlled.current);
+      const inputEl = uComboboxRef.current?.querySelector('input');
+      if (inputEl && !multiple && sanitizedValue[0]) {
+        setValue(inputEl, sanitizedValue[0].value, 'insertText');
+      }
+    }, [prevControlled.current, uComboboxRef.current]);
 
     /**
      * Listerners and handling of adding/removing
