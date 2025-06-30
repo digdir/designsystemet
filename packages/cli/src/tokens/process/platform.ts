@@ -14,8 +14,6 @@ type SharedOptions = {
   defaultColor?: string;
   /** Dry run, no files will be written */
   dry?: boolean;
-  /** Generate preview tokens */
-  preview: boolean;
   /** Token Studio `$themes.json` content */
   processed$themes: ProcessedThemeObject[];
   /** Color groups */
@@ -70,7 +68,6 @@ export let buildOptions: SharedOptions = {
   verbose: false,
   processed$themes: [],
   buildTokenFormats: {},
-  preview: false,
 };
 
 const sd = new StyleDictionary();
