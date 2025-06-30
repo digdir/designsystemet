@@ -97,6 +97,7 @@ const config: Config = {
         writeFileSync(robotsPath, robotsContent);
       } catch (error) {
         console.error(`Error writing robots.txt file: ${error}`);
+        throw new Error(`Failed to write robots.txt file: ${error}`);
       }
     } else {
       const robotsPath = join(dirname, 'public', 'robots.txt');
