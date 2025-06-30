@@ -83,8 +83,17 @@ const config: Config = {
       console.error(`Error writing manifest file: ${error}`);
     }
 
-    /* Generate robots.txt if not production */
-    if (process.env.NEXT_PUBLIC_DESIGNSYSTEMET_ENV !== 'production') {
+    if (process.env.NEXT_PUBLIC_DESIGNSYSTEMET_ENV === 'production') {
+      const robotsPath = join(dirname, 'public', 'robots.txt');
+      const robotsContent = `User-agent: *\nAllow: /`;
+
+      try {
+        writeFileSync(robotsPath, robotsContent);
+      } catch (error) {
+        console.error(`Error writing robots.txt file: ${error}`);
+        throw new Error(`Failed to write robots.txt file: ${error}`);
+      }
+    } else {
       const robotsPath = join(dirname, 'public', 'robots.txt');
       const robotsContent = `User-agent: *\nDisallow: /`;
 
