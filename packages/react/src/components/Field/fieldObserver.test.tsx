@@ -117,8 +117,8 @@ describe('fieldObserver', () => {
     const secondDescription = screen.getByText('Additional description');
 
     // First of each type gets the simple format
-    expect(firstValidation).toHaveAttribute('id', `${input.id}:validation`);
-    expect(firstDescription).toHaveAttribute('id', `${input.id}:description`);
+    expect(firstValidation).toHaveAttribute('id', `${input.id}:validation:1`);
+    expect(firstDescription).toHaveAttribute('id', `${input.id}:description:1`);
 
     // Subsequent ones get numbered
     expect(secondValidation).toHaveAttribute('id', `${input.id}:validation:2`);
