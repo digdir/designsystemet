@@ -14,6 +14,7 @@ import semanticTokens from '~/tokens/semantic.json';
 import typographyTokens from '~/tokens/typography.json';
 import { TokenBorderRadius } from '../token-border-radius/token-border-radius';
 import { ColorDark, ColorLight } from '../token-color/token-color';
+import { TokenFontSize } from '../token-font-size/token-font-size';
 import { TokenShadow } from '../token-shadow/token-shadow';
 import { TokenSize } from '../token-size/token-size';
 import classes from './token-list.module.css';
@@ -76,8 +77,16 @@ const TypographyRenderer = ({
   groupedTokens,
 }: {
   groupedTokens: Partial<Record<string, PreviewToken[]>>;
-}) =>
-  Object.entries(groupedTokens).map(([path, tokens]) => {
+}) => {
+  const valueRenderer = (variable: string, value: string) => {
+    if (variable.includes('font-size')) {
+      return <TokenFontSize value={value} />;
+    }
+
+    return <code>{value}</code>;
+  };
+
+  return Object.entries(groupedTokens).map(([path, tokens]) => {
     if (tokens?.length === 0) {
       return null;
     }
@@ -107,9 +116,7 @@ const TypographyRenderer = ({
                 <Table.Cell>
                   <code>{variable}</code>
                 </Table.Cell>
-                <Table.Cell>
-                  <code>{value}</code>
-                </Table.Cell>
+                <Table.Cell>{valueRenderer(variable, value)}</Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>
@@ -117,6 +124,7 @@ const TypographyRenderer = ({
       </div>
     );
   });
+};
 
 const TypographyTable = ({ tokens }: TokenTableProps) => {
   const groupedTokens = groupedByPathIndex(0)(tokens);

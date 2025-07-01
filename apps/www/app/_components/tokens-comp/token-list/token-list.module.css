@@ -9,5 +9,9 @@
 h3,
 h4,
 h5 {
-  margin-block: 1rem;
+  margin-block: 1.5rem;
+}
+
+h5 {
+  margin-bottom: 0;
 }
