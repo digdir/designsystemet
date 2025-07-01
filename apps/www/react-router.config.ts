@@ -22,6 +22,8 @@ const config: Config = {
   },
   presets: [vercelPreset()],
   buildEnd: async ({ buildManifest: rrBuild }) => {
+    await executeCopyFiles();
+
     const manifestPath = join(
       dirname,
       '.vercel/react-router-build-result.json',
@@ -112,8 +114,6 @@ const config: Config = {
         console.error(`Error writing robots.txt file: ${error}`);
       }
     }
-
-    await executeCopyFiles();
   },
 };
 
