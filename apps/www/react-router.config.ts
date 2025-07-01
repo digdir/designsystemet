@@ -9,7 +9,6 @@ import { join } from 'node:path';
 import { cwd } from 'node:process';
 import type { Config } from '@react-router/dev/config';
 import { vercelPreset } from '@vercel/react-router/vite';
-import { executeCopyFiles } from 'scripts/copy-content';
 import { normalizePath } from 'vite';
 import i18nConf from './app/i18n';
 
@@ -22,8 +21,6 @@ const config: Config = {
   },
   presets: [vercelPreset()],
   buildEnd: async ({ buildManifest: rrBuild }) => {
-    await executeCopyFiles();
-
     const manifestPath = join(
       dirname,
       '.vercel/react-router-build-result.json',
