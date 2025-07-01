@@ -1,189 +1,14 @@
-import {
-  Field,
-  Heading,
-  Label,
-  Search,
-  Table,
-} from '@digdir/designsystemet-react';
-import * as R from 'ramda';
-import type { HTMLAttributes } from 'react';
+import { Field, Heading, Label, Search } from '@digdir/designsystemet-react';
 import { useState } from 'react';
 import { capitalizeString } from '~/_utils/string-helpers';
 import colorTokens from '~/tokens/color.json';
 import semanticTokens from '~/tokens/semantic.json';
 import typographyTokens from '~/tokens/typography.json';
-import { TokenBorderRadius } from '../token-border-radius/token-border-radius';
-import { ColorDark, ColorLight } from '../token-color/token-color';
-import { TokenFontSize } from '../token-font-size/token-font-size';
-import { TokenShadow } from '../token-shadow/token-shadow';
-import { TokenSize } from '../token-size/token-size';
+import { ColorTokensTable } from '../color-table';
+import { SemanticTokensTable } from '../semantic-table';
+import type { PreviewToken } from '../types';
+import { TypographyTable } from '../typography-table';
 import classes from './token-list.module.css';
-
-export type TokenListProps = {
-  type: 'color' | 'typography' | 'shadow' | 'dimension';
-  token?: string;
-  showThemePicker?: boolean;
-  showModeSwitcher: boolean;
-  hideValue?: boolean;
-};
-
-type RenderTypes = 'color' | 'typography' | 'shadow' | 'dimension';
-
-type TokenTableProps = {
-  type?: RenderTypes;
-  tokens: PreviewToken[];
-} & HTMLAttributes<HTMLDivElement>;
-
-type PreviewToken = { variable: string; value: string; path: string[] };
-
-const groupedByPathIndex = (index = 0) =>
-  R.groupBy((token: PreviewToken) => token.path[index] || 'rest');
-
-const ColorTokensTable = ({ tokens }: TokenTableProps) => {
-  return (
-    <Table data-color='neutral'>
-      <Table.Head>
-        <Table.Row>
-          <Table.HeaderCell>Navn</Table.HeaderCell>
-          <Table.HeaderCell>Lys</Table.HeaderCell>
-          <Table.HeaderCell>Mørk</Table.HeaderCell>
-        </Table.Row>
-      </Table.Head>
-      <Table.Body>
-        {tokens.map((token) => {
-          const name = token.variable;
-          const value = token.value;
-
-          return (
-            <Table.Row key={name}>
-              <Table.Cell>
-                <code>{name}</code>
-              </Table.Cell>
-              <Table.Cell>
-                <ColorLight colorVariable={value} />
-              </Table.Cell>
-              <Table.Cell>
-                <ColorDark colorVariable={value} />
-              </Table.Cell>
-            </Table.Row>
-          );
-        })}
-      </Table.Body>
-    </Table>
-  );
-};
-
-const TypographyRenderer = ({
-  groupedTokens,
-}: {
-  groupedTokens: Partial<Record<string, PreviewToken[]>>;
-}) => {
-  const valueRenderer = (variable: string, value: string) => {
-    if (variable.includes('font-size')) {
-      return <TokenFontSize value={value} />;
-    }
-
-    return <code>{value}</code>;
-  };
-
-  return Object.entries(groupedTokens).map(([path, tokens]) => {
-    if (tokens?.length === 0) {
-      return null;
-    }
-
-    const isTypography = path === 'typography';
-    const groupByTypography = isTypography
-      ? groupedByPathIndex(1)(tokens || [])
-      : ([] as unknown as Partial<Record<string, PreviewToken[]>>);
-
-    return isTypography ? (
-      <TypographyRenderer key={path} groupedTokens={groupByTypography} />
-    ) : (
-      <div key={path}>
-        <Heading level={5} data-size='sm'>
-          {capitalizeString(path)}
-        </Heading>
-        <Table data-color='neutral' key={path}>
-          <Table.Head>
-            <Table.Row>
-              <Table.HeaderCell>Navn</Table.HeaderCell>
-              <Table.HeaderCell>Verdi</Table.HeaderCell>
-            </Table.Row>
-          </Table.Head>
-          <Table.Body>
-            {tokens?.map(({ variable, value }) => (
-              <Table.Row key={variable}>
-                <Table.Cell>
-                  <code>{variable}</code>
-                </Table.Cell>
-                <Table.Cell>{valueRenderer(variable, value)}</Table.Cell>
-              </Table.Row>
-            ))}
-          </Table.Body>
-        </Table>
-      </div>
-    );
-  });
-};
-
-const TypographyTable = ({ tokens }: TokenTableProps) => {
-  const groupedTokens = groupedByPathIndex(0)(tokens);
-
-  return <TypographyRenderer groupedTokens={groupedTokens} />;
-};
-
-const SemanticTokensTable = ({ tokens }: TokenTableProps) => {
-  const groupedTokens = groupedByPathIndex(0)(tokens);
-
-  const valueRenderer = (variable: string, value: string) => {
-    if (/^--ds-size.*\d$/.test(variable)) {
-      return <TokenSize value={value} />;
-    }
-    if (/^--ds-border-radius(?!.*(scale|base)$)/.test(variable)) {
-      return <TokenBorderRadius value={value} />;
-    }
-
-    if (/^--ds-shadow/.test(variable)) {
-      return <TokenShadow value={value} />;
-    }
-
-    return <code>{value}</code>;
-  };
-
-  return Object.entries(groupedTokens).map(([path, tokens]) => {
-    if (tokens?.length === 0) {
-      return null;
-    }
-
-    const prettifiedPath = path.replace(/_/g, ''); // Remove underscores from size tokens
-
-    return (
-      <div key={path}>
-        <Heading level={5} data-size='sm'>
-          {capitalizeString(prettifiedPath)}
-        </Heading>
-        <Table data-color='neutral'>
-          <Table.Head>
-            <Table.Row>
-              <Table.HeaderCell>Navn</Table.HeaderCell>
-              <Table.HeaderCell>Verdi</Table.HeaderCell>
-            </Table.Row>
-          </Table.Head>
-          <Table.Body>
-            {tokens?.map(({ variable, value }) => (
-              <Table.Row key={variable}>
-                <Table.Cell>
-                  <code>{variable}</code>
-                </Table.Cell>
-                <Table.Cell>{valueRenderer(variable, value)}</Table.Cell>
-              </Table.Row>
-            ))}
-          </Table.Body>
-        </Table>
-      </div>
-    );
-  });
-};
 
 const tokenSearchFilter = (token: PreviewToken, searchValue: string) =>
   `${token.variable}${token.value}`
@@ -255,7 +80,7 @@ export const TokenList = () => {
               <Heading level={4} data-size='md'>
                 {capitalizeString(name as string)}
               </Heading>
-              <TypographyTable type='typography' tokens={tokens} />
+              <TypographyTable tokens={tokens} />
             </div>
           );
         })}
