@@ -4,19 +4,19 @@ export default {
   ...no,
   frontpage: {
     heading: 'Designsystemet hjelper deg å lage gode digitale tjenester',
-    'for-designers': {
-      title: 'For designere',
-      description:
-        'Lær hvordan du kommer i gang med Designsystemet som designer.',
+    'get-started': {
+      title: 'Kom i gang',
+      description: 'Lær hvordan du kommer i gang med Designsystemet',
     },
-    'for-developers': {
-      title: 'For utviklere',
+    patterns: {
+      title: 'Mønstre',
       description:
-        'Lær hvordan du kommer i gang med Designsystemet som utvikler.',
+        'Forstå hvordan felles mønstre bidrar til gjenkjennelige brukeropplevelser',
     },
     components: {
       title: 'Komponenter',
-      description: 'Se oversikten over UI-komponentene som er laget i react.',
+      description:
+        'Se oversikten over UI-komponentene som er laget i React, CSS og Figma.',
     },
     toolbox: {
       title: 'En felles digital verktøykasse',
@@ -27,7 +27,8 @@ export default {
     'components-section': {
       title: 'Tilgjengelige og fleksible komponenter',
       description:
-        'Når vi lager de mest grunnleggende komponentene bare én gang, sikrer vi god kvalitet. Komponenten blir godt testet, og vi ivaretar kravene til tilgjengelighet. Komponentene er laget i Figma og i React. Du kan sette dem sammen på mange ulike måter og i forskjellige mønstre.',
+        'Når vi lager de mest grunnleggende komponentene bare én gang, sikrer vi god kvalitet. Komponenten blir godt testet og ivaretar krav til universell utforming. Komponentene finnes i egne bibliotek for Figma, CSS og React. Du kan sette dem sammen på mange ulike måter og i forskjellige mønstre.',
+      link: 'Les mer om universell utforming',
       fallbackImgAlt:
         'Designskisse av en mobiltelefon som har komponenter fra Designsystemet i seg.',
     },
@@ -35,6 +36,7 @@ export default {
       title: 'Bruk egne tema',
       description:
         'Designsystemet støtter ulike identiteter gjennom tema. På denne måten kan alle ta utgangspunkt i samme designsystem, men tilpasse til ulike avsenderidentiteter.',
+      link: 'Bygg ditt tema',
       fallbackImgAlt:
         'Designskisse av en nettside som viser hvordan Designsystemet kan tilpasses ulike identiteter.',
     },
@@ -78,8 +80,8 @@ export default {
     categories: {
       'Getting Started': 'Kom i gang',
       'Design Principles': 'Designprinsipper',
-      'For Designers': 'For designere',
-      'For Developers': 'For utviklere',
+      Figma: 'Figma',
+      Code: 'Kode',
       About: 'Om',
     },
     items: {
@@ -154,6 +156,13 @@ export default {
   },
   video: {
     'watch-video': 'Se video på {{url}}',
+  },
+  image: {
+    'enlarged-text': 'Klikk på bildet eller trykk Escape for å lukke',
+    'aria-label': {
+      enlarged: 'Klikk for å minimisere bilde.',
+      normal: 'Klikk for å forstørre bilde.',
+    },
   },
   'image-banner': {
     'play-video': 'Spill av video',

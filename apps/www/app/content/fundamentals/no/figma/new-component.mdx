@@ -1,0 +1,37 @@
+---
+title: Ny komponent i Figma
+description: Slik lager du en ny komponent i Figma
+date: 2025-06-12
+category: Figma
+color: red
+icon: BranchingIcon
+published: true
+order: 50
+---
+
+
+## Lage en komponent i Figma
+Det er et par ting å tenke på når komponenter lages i Figma:
+
+- Snakk med en utvikler om spesifikasjon, krav, tilgjengelighet, egenskaper og varianter. Bli enige om scope for komponenten og dokumenter dette i komponentens [Github-sak](https://github.com/orgs/digdir/projects/3/views/14).
+
+- [Alle styles](https://docs.tokens.studio/manage-tokens/token-types) (farger, avstander, størrelser, skygger, osv) skal være koblet opp mot korrekt tokens. Bruker du stilene som finnes, er disse allerede automatisk koblet mot tokens. Trenger du nye stiler, må disse også lages som tokens.
+
+- [Autolayout](https://help.figma.com/hc/en-us/articles/5731482952599-Using-auto-layout): Innholdet skal skalere som forventet ved størrelseendring. Tenk over om innholdet skal wrappe under hverandre dersom det ikke er plass i bredden. Kan det være hensiktsmessig med en min- eller max-width? Og kanskje truncate (...) på teksten dersom den blir for lang?
+
+- [Varianter](https://help.figma.com/hc/en-us/articles/360056440594-Create-and-use-variants) og "[component properties](https://help.figma.com/hc/en-us/articles/5579474826519-Explore-component-properties)": Bruk varianter for ulike varianter, farger og states. Bruk Component properties for å vise/skjule lag, instance-swap (F.eks bytte et ikon) og bytte text. Properties navngis på samme måte som props i Storybook. Vi bruker `variant`, `color`, `state`.
+
+- Størrelser håndteres med [Modes i Figma](/no/fundamentals/figma/modes-in-figma). Du trenger ikke lenger å lage egne varianter for `Small`, `Medium` og `Large`. Så lenge du kobler komponenten til tokens for typografi, avstander og størrelser, vil den tilpasse seg riktig størrelse basert på valgt mode. Dette gjør det både enklere å vedlikeholde komponentene og enklere å bruke dem i ulike størrelser. 
+
+- Er komponenten interaktiv? I så fall må ulike states eksistere som varianter av komponenten, og disse kobles opp med "[Change to](https://help.figma.com/hc/en-us/articles/360061175334-Create-interactive-components-with-variants#create)".
+
+- Multibranding. Tenk over i hvilken grad komponenten skal støtte ulik theming og legg til rette for dette ved å bruke brand-farger fra tokens, og korrekt [modes for farger](/no/fundamentals/figma/colors-in-figma).
+
+- Navngiving og organisering: Pass på at lagene i komponenten har fornuftige navn og at det ikke finnes unødvendige grupperinger eller lag.
+
+- Tenk over hvordan en annen designer vil ta i bruk komponenten. Er den intuitiv å bruke? Er den fleksibel nok slik at de ikke trenger å detache den? Kanskje bør den settes opp med [slots](https://www.youtube.com/watch?v=FOGgsPz3UTk) slik at det er mulig å bytte ut innholdet i den og legge inn andre komponenter uten å måtte detache. Bruk gjerne også "[Preferred values](https://help.figma.com/hc/en-us/articles/5579474826519-Explore-component-properties#preferred)" for å femheve komponentene som er mest aktuelle å bruke som innhold.
+
+  - Sjekk at du har gode nok [kontraster](https://www.uutilsynet.no/regelverk/testprosedyrar-nettstader/709#suksesskriterium_143_kontrast).
+  - At du har tenkt over hvordan tastaturnavigering skal fungere dersom du lager en ny komponent som ikke er standard. (Standard HTML-elementer har tastaturnavigasjon allerede definert).
+  - Instruksjoner eller informasjon som er essensiell for brukeren skal ikke være kun markert visuelt. Eksempel kan være å bruke ikon eller tekst i tillegg til rødfarge som indikerer at noe feiler.
+  - Focus: Alle elementer skal ha en visuell markør som blir synlig når elementet får tastaturfokus. Fokusmarkøren skal ha god nok kontrast til bakgrunn, for å oppnå dette bruker vi en sort border (2px) og en gul outline (3px) i tillegg.
