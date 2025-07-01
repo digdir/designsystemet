@@ -26,7 +26,8 @@ const toPreviewToken = (tokens: { token: TransformedToken; formatted: string }[]
   tokens.map(({ token, formatted }) => {
     const [variable, value] = formatted.split(':');
     return {
-      description: token.$description || '',
+      type: token.type,
+      path: token.path,
       variable: variable.trim(),
       value: value.trim().replace(/;$/, ''), // Remove trailing semicolon if present
     };

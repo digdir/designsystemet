@@ -1,191 +1,305 @@
 [
   {
-    "description": "",
+    "path": [
+      "_size",
+      "base"
+    ],
     "variable": "--ds-size-base",
     "value": "18"
   },
   {
-    "description": "",
+    "path": [
+      "_size",
+      "step"
+    ],
     "variable": "--ds-size-step",
     "value": "4"
   },
   {
-    "description": "",
+    "path": [
+      "border-radius",
+      "base"
+    ],
     "variable": "--ds-border-radius-base",
     "value": "0.25rem"
   },
   {
-    "description": "",
+    "path": [
+      "border-radius",
+      "scale"
+    ],
     "variable": "--ds-border-radius-scale",
     "value": "0.25rem"
   },
   {
-    "description": "",
+    "path": [
+      "border-radius",
+      "sm"
+    ],
     "variable": "--ds-border-radius-sm",
     "value": "min(var(--ds-border-radius-base)*0.5,var(--ds-border-radius-scale))"
   },
   {
-    "description": "",
+    "path": [
+      "border-radius",
+      "md"
+    ],
     "variable": "--ds-border-radius-md",
     "value": "min(var(--ds-border-radius-base),var(--ds-border-radius-scale)*2)"
   },
   {
-    "description": "",
+    "path": [
+      "border-radius",
+      "lg"
+    ],
     "variable": "--ds-border-radius-lg",
     "value": "min(var(--ds-border-radius-base)*2,var(--ds-border-radius-scale)*5)"
   },
   {
-    "description": "",
+    "path": [
+      "border-radius",
+      "xl"
+    ],
     "variable": "--ds-border-radius-xl",
     "value": "min(var(--ds-border-radius-base)*3,var(--ds-border-radius-scale)*7)"
   },
   {
-    "description": "",
+    "path": [
+      "border-radius",
+      "default"
+    ],
     "variable": "--ds-border-radius-default",
     "value": "var(--ds-border-radius-base)"
   },
   {
-    "description": "",
+    "path": [
+      "border-radius",
+      "full"
+    ],
     "variable": "--ds-border-radius-full",
     "value": "624.9375rem"
   },
   {
-    "description": "",
+    "path": [
+      "border-width",
+      "default"
+    ],
     "variable": "--ds-border-width-default",
     "value": "1px"
   },
   {
-    "description": "",
+    "path": [
+      "border-width",
+      "focus"
+    ],
     "variable": "--ds-border-width-focus",
     "value": "3px"
   },
   {
-    "description": "",
+    "path": [
+      "shadow",
+      "xs"
+    ],
     "variable": "--ds-shadow-xs",
     "value": "0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12)"
   },
   {
-    "description": "",
+    "path": [
+      "shadow",
+      "sm"
+    ],
     "variable": "--ds-shadow-sm",
     "value": "0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1)"
   },
   {
-    "description": "",
+    "path": [
+      "shadow",
+      "md"
+    ],
     "variable": "--ds-shadow-md",
     "value": "0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12)"
   },
   {
-    "description": "",
+    "path": [
+      "shadow",
+      "lg"
+    ],
     "variable": "--ds-shadow-lg",
     "value": "0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14)"
   },
   {
-    "description": "",
+    "path": [
+      "shadow",
+      "xl"
+    ],
     "variable": "--ds-shadow-xl",
     "value": "0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16)"
   },
   {
-    "description": "",
+    "path": [
+      "opacity",
+      "disabled"
+    ],
     "variable": "--ds-opacity-disabled",
     "value": "30%"
   },
   {
-    "description": "",
+    "path": [
+      "_size",
+      "0"
+    ],
     "variable": "--ds-size-0",
     "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *0), 1px)"
   },
   {
-    "description": "",
+    "path": [
+      "_size",
+      "1"
+    ],
     "variable": "--ds-size-1",
     "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *1), 1px)"
   },
   {
-    "description": "",
+    "path": [
+      "_size",
+      "2"
+    ],
     "variable": "--ds-size-2",
     "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *2), 1px)"
   },
   {
-    "description": "",
+    "path": [
+      "_size",
+      "3"
+    ],
     "variable": "--ds-size-3",
     "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *3), 1px)"
   },
   {
-    "description": "",
+    "path": [
+      "_size",
+      "4"
+    ],
     "variable": "--ds-size-4",
     "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *4), 1px)"
   },
   {
-    "description": "",
+    "path": [
+      "_size",
+      "5"
+    ],
     "variable": "--ds-size-5",
     "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *5), 1px)"
   },
   {
-    "description": "",
+    "path": [
+      "_size",
+      "6"
+    ],
     "variable": "--ds-size-6",
     "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *6), 1px)"
   },
   {
-    "description": "",
+    "path": [
+      "_size",
+      "7"
+    ],
     "variable": "--ds-size-7",
     "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *7), 1px)"
   },
   {
-    "description": "",
+    "path": [
+      "_size",
+      "8"
+    ],
     "variable": "--ds-size-8",
     "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *8), 1px)"
   },
   {
-    "description": "",
+    "path": [
+      "_size",
+      "9"
+    ],
     "variable": "--ds-size-9",
     "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *9), 1px)"
   },
   {
-    "description": "",
+    "path": [
+      "_size",
+      "10"
+    ],
     "variable": "--ds-size-10",
     "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *10), 1px)"
   },
   {
-    "description": "",
+    "path": [
+      "_size",
+      "11"
+    ],
     "variable": "--ds-size-11",
     "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *11), 1px)"
   },
   {
-    "description": "",
+    "path": [
+      "_size",
+      "12"
+    ],
     "variable": "--ds-size-12",
     "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *12), 1px)"
   },
   {
-    "description": "",
+    "path": [
+      "_size",
+      "13"
+    ],
     "variable": "--ds-size-13",
     "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *13), 1px)"
   },
   {
-    "description": "",
+    "path": [
+      "_size",
+      "14"
+    ],
     "variable": "--ds-size-14",
     "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *14), 1px)"
   },
   {
-    "description": "",
+    "path": [
+      "_size",
+      "15"
+    ],
     "variable": "--ds-size-15",
     "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *15), 1px)"
   },
   {
-    "description": "",
+    "path": [
+      "_size",
+      "18"
+    ],
     "variable": "--ds-size-18",
     "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *18), 1px)"
   },
   {
-    "description": "",
+    "path": [
+      "_size",
+      "22"
+    ],
     "variable": "--ds-size-22",
     "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *22), 1px)"
   },
   {
-    "description": "",
+    "path": [
+      "_size",
+      "26"
+    ],
     "variable": "--ds-size-26",
     "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *26), 1px)"
   },
   {
-    "description": "",
+    "path": [
+      "_size",
+      "30"
+    ],
     "variable": "--ds-size-30",
     "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * 1em *30), 1px)"
   }

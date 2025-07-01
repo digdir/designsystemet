@@ -274,6 +274,9 @@ importers:
       mdx-bundler:
         specifier: ^10.1.1
         version: 10.1.1(acorn@8.14.1)(esbuild@0.25.3)
+      ramda:
+        specifier: ^0.30.1
+        version: 0.30.1
       react:
         specifier: ^19.1.0
         version: 19.1.0
@@ -308,6 +311,9 @@ importers:
       '@types/node':
         specifier: ^22.15.34
         version: 22.16.0
+      '@types/ramda':
+        specifier: ^0.30.2
+        version: 0.30.2
       '@types/react':
         specifier: ^19.1.8
         version: 19.1.8
@@ -4622,6 +4628,9 @@ packages:
 
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
+
+  ramda@0.30.1:
+    resolution: {integrity: sha512-tEF5I22zJnuclswcZMc8bDIrwRHRzf+NqVEmqg50ShAZMP7MWeR/RGDthfM/p+BlqvF2fXAzpn8i+SJcYD3alw==}
 
   ramda@0.31.3:
     resolution: {integrity: sha512-xKADKRNnqmDdX59PPKLm3gGmk1ZgNnj3k7DryqWwkamp4TJ6B36DdpyKEQ0EoEYmH2R62bV4Q+S0ym2z8N2f3Q==}
@@ -10050,6 +10059,8 @@ snapshots:
   quansync@0.2.10: {}
 
   queue-microtask@1.2.3: {}
+
+  ramda@0.30.1: {}
 
   ramda@0.31.3: {}
 

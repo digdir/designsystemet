@@ -1,4 +1,11 @@
-import { Search, Table } from '@digdir/designsystemet-react';
+import {
+  Field,
+  Heading,
+  Label,
+  Search,
+  Table,
+} from '@digdir/designsystemet-react';
+import * as R from 'ramda';
 import type { HTMLAttributes } from 'react';
 import { useState } from 'react';
 import { capitalizeString } from '~/_utils/string-helpers';
@@ -26,7 +33,10 @@ type TokenTableProps = {
   tokens: PreviewToken[];
 } & HTMLAttributes<HTMLDivElement>;
 
-type PreviewToken = { variable: string; value: string };
+type PreviewToken = { variable: string; value: string; path: string[] };
+
+const groupedByPathIndex = (index = 0) =>
+  R.groupBy((token: PreviewToken) => token.path[index] || 'rest');
 
 const ColorTokensTable = ({ tokens }: TokenTableProps) => {
   return (
@@ -62,42 +72,66 @@ const ColorTokensTable = ({ tokens }: TokenTableProps) => {
   );
 };
 
-const TokensTable = ({ tokens, type }: TokenTableProps) => {
-  return (
-    <Table data-color='neutral'>
-      <Table.Head>
-        <Table.Row>
-          <Table.HeaderCell>Navn</Table.HeaderCell>
+const TypographyRenderer = ({
+  groupedTokens,
+}: {
+  groupedTokens: Partial<Record<string, PreviewToken[]>>;
+}) =>
+  Object.entries(groupedTokens).map(([path, tokens]) => {
+    if (tokens?.length === 0) {
+      return null;
+    }
 
-          <Table.HeaderCell>Verdi</Table.HeaderCell>
-        </Table.Row>
-      </Table.Head>
-      <Table.Body>
-        {tokens.map(({ variable, value }) => (
-          <Table.Row key={variable}>
-            <Table.Cell>
-              <code>{variable}</code>
-            </Table.Cell>
-            <Table.Cell>
-              <code>{value}</code>
-            </Table.Cell>
-          </Table.Row>
-        ))}
-      </Table.Body>
-    </Table>
-  );
+    const isTypography = path === 'typography';
+    const groupByTypography = isTypography
+      ? groupedByPathIndex(1)(tokens || [])
+      : ([] as unknown as Partial<Record<string, PreviewToken[]>>);
+
+    return isTypography ? (
+      <TypographyRenderer key={path} groupedTokens={groupByTypography} />
+    ) : (
+      <div key={path}>
+        <Heading level={5} data-size='sm'>
+          {capitalizeString(path)}
+        </Heading>
+        <Table data-color='neutral' key={path}>
+          <Table.Head>
+            <Table.Row>
+              <Table.HeaderCell>Navn</Table.HeaderCell>
+              <Table.HeaderCell>Verdi</Table.HeaderCell>
+            </Table.Row>
+          </Table.Head>
+          <Table.Body>
+            {tokens?.map(({ variable, value }) => (
+              <Table.Row key={variable}>
+                <Table.Cell>
+                  <code>{variable}</code>
+                </Table.Cell>
+                <Table.Cell>
+                  <code>{value}</code>
+                </Table.Cell>
+              </Table.Row>
+            ))}
+          </Table.Body>
+        </Table>
+      </div>
+    );
+  });
+
+const TypographyTable = ({ tokens }: TokenTableProps) => {
+  const groupedTokens = groupedByPathIndex(0)(tokens);
+
+  return <TypographyRenderer groupedTokens={groupedTokens} />;
 };
 
 const SemanticTokensTable = ({ tokens }: TokenTableProps) => {
-  const filteredTokens = tokens.sort((a) => {
-    return a.variable.startsWith('--ds-size') ? -1 : 1;
-  });
+  const groupedTokens = groupedByPathIndex(0)(tokens);
 
   const valueRenderer = (variable: string, value: string) => {
     if (/^--ds-size.*\d$/.test(variable)) {
       return <TokenSize value={value} />;
     }
-    if (/^--ds-border(?!.*(scale|base)$)/.test(variable)) {
+    if (/^--ds-border-radius(?!.*(scale|base)$)/.test(variable)) {
       return <TokenBorderRadius value={value} />;
     }
 
@@ -108,40 +142,54 @@ const SemanticTokensTable = ({ tokens }: TokenTableProps) => {
     return <code>{value}</code>;
   };
 
-  return (
-    <Table data-color='neutral'>
-      <Table.Head>
-        <Table.Row>
-          <Table.HeaderCell>Navn</Table.HeaderCell>
+  return Object.entries(groupedTokens).map(([path, tokens]) => {
+    if (tokens?.length === 0) {
+      return null;
+    }
 
-          <Table.HeaderCell>Verdi</Table.HeaderCell>
-        </Table.Row>
-      </Table.Head>
-      <Table.Body>
-        {filteredTokens.map(({ variable, value }) => (
-          <Table.Row key={variable}>
-            <Table.Cell>
-              <code>{variable}</code>
-            </Table.Cell>
-            <Table.Cell>{valueRenderer(variable, value)}</Table.Cell>
-          </Table.Row>
-        ))}
-      </Table.Body>
-    </Table>
-  );
+    const prettifiedPath = path.replace(/_/g, ''); // Remove underscores from size tokens
+
+    return (
+      <div key={path}>
+        <Heading level={5} data-size='sm'>
+          {capitalizeString(prettifiedPath)}
+        </Heading>
+        <Table data-color='neutral'>
+          <Table.Head>
+            <Table.Row>
+              <Table.HeaderCell>Navn</Table.HeaderCell>
+              <Table.HeaderCell>Verdi</Table.HeaderCell>
+            </Table.Row>
+          </Table.Head>
+          <Table.Body>
+            {tokens?.map(({ variable, value }) => (
+              <Table.Row key={variable}>
+                <Table.Cell>
+                  <code>{variable}</code>
+                </Table.Cell>
+                <Table.Cell>{valueRenderer(variable, value)}</Table.Cell>
+              </Table.Row>
+            ))}
+          </Table.Body>
+        </Table>
+      </div>
+    );
+  });
 };
 
 const tokenSearchFilter = (token: PreviewToken, searchValue: string) =>
-  token.variable.toLowerCase().includes(searchValue?.toLowerCase() || '');
+  `${token.variable}${token.value}`
+    .toLowerCase()
+    .includes(searchValue?.toLowerCase() || '');
 
 const filteredRecord = (
   record: Record<string, PreviewToken[]>,
-  searchValue?: string,
+  searchValue: string,
 ): Record<string, PreviewToken[]> => {
   return Object.entries(record).reduce(
     (acc, [name, tokens]) => {
       const filteredTokens = tokens.filter((token) =>
-        token.variable.toLowerCase().includes(searchValue?.toLowerCase() || ''),
+        tokenSearchFilter(token, searchValue),
       );
       if (filteredTokens.length > 0) {
         acc[name] = filteredTokens;
@@ -153,47 +201,60 @@ const filteredRecord = (
 };
 
 export const TokenList = () => {
-  const [searchValue, setValue] = useState<string>('');
+  const [value, setValue] = useState<string>('');
 
-  const filteredColorTokens = filteredRecord(colorTokens, searchValue);
-  const filteredTypographyTokens = filteredRecord(
-    typographyTokens,
-    searchValue,
-  );
+  const filteredColorTokens = filteredRecord(colorTokens, value);
+  const filteredTypographyTokens = filteredRecord(typographyTokens, value);
   const filteredSemanticTokens = semanticTokens.filter((token) =>
-    tokenSearchFilter(token, searchValue),
+    tokenSearchFilter(token, value),
   );
 
   return (
     <>
-      <Search>
-        <Search.Input
-          aria-label='Søk på variabel navn i CSS for design tokens'
-          value={searchValue}
-          onChange={(e) => setValue(e.target.value)}
-        />
-        <Search.Clear />
-        <Search.Button />
-      </Search>
+      <Field>
+        <Label>Søk i design tokens</Label>
+        <Search>
+          <Search.Input
+            aria-label='Søk på variabel navn i CSS for design tokens'
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
+          <Search.Clear />
+          <Search.Button />
+        </Search>
+      </Field>
+
       <div className={classes.tokens}>
+        <Heading level={3} data-size='lg'>
+          Farger
+        </Heading>
         {Object.entries(filteredColorTokens).map(([name, tokens]) => {
           return (
             <div key={name as string} className={classes.section}>
-              <h3>{capitalizeString(name as string)}</h3>
+              <Heading level={4} data-size='md'>
+                {capitalizeString(name as string)}
+              </Heading>
               <ColorTokensTable tokens={tokens} />
             </div>
           );
         })}
+        <Heading level={3} data-size='lg'>
+          Typografi
+        </Heading>
         {Object.entries(filteredTypographyTokens).map(([name, tokens]) => {
           return (
             <div key={name as string} className={classes.section}>
-              <h3>{capitalizeString(name as string)}</h3>
-              <TokensTable type='typography' tokens={tokens} />
+              <Heading level={4} data-size='md'>
+                {capitalizeString(name as string)}
+              </Heading>
+              <TypographyTable type='typography' tokens={tokens} />
             </div>
           );
         })}
+        <Heading level={3} data-size='lg'>
+          Semantiske
+        </Heading>
         <div key={'semantic'} className={classes.section}>
-          <h3>{capitalizeString('semantic')}</h3>
           <SemanticTokensTable tokens={filteredSemanticTokens} />
         </div>
       </div>
