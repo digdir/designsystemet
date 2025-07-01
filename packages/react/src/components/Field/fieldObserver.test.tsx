@@ -97,4 +97,41 @@ describe('fieldObserver', () => {
       `${input.id}:description`,
     );
   });
+  it('assigns unique IDs to multiple elements with the same data-field type', () => {
+    const { container } = render(
+      <div>
+        <Label>Name</Label>
+        <Input />
+        <div data-field='validation'>First validation message</div>
+        <div data-field='validation'>Second validation message</div>
+        <div data-field='description'>Description text</div>
+        <div data-field='description'>Additional description</div>
+      </div>,
+    );
+    fieldObserver(container);
+
+    const input = screen.getByLabelText('Name');
+    const firstValidation = screen.getByText('First validation message');
+    const secondValidation = screen.getByText('Second validation message');
+    const firstDescription = screen.getByText('Description text');
+    const secondDescription = screen.getByText('Additional description');
+
+    // First of each type gets the simple format
+    expect(firstValidation).toHaveAttribute('id', `${input.id}:validation`);
+    expect(firstDescription).toHaveAttribute('id', `${input.id}:description`);
+
+    // Subsequent ones get numbered
+    expect(secondValidation).toHaveAttribute('id', `${input.id}:validation:2`);
+    expect(secondDescription).toHaveAttribute(
+      'id',
+      `${input.id}:description:2`,
+    );
+
+    // All should be in aria-describedby
+    const ariaDescribedby = input.getAttribute('aria-describedby');
+    expect(ariaDescribedby).toContain(firstValidation.id);
+    expect(ariaDescribedby).toContain(secondValidation.id);
+    expect(ariaDescribedby).toContain(firstDescription.id);
+    expect(ariaDescribedby).toContain(secondDescription.id);
+  });
 });
