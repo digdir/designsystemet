@@ -45,26 +45,28 @@ const copyDirectory = (src, dest) => {
   }
 };
 
-const contentPath = join(dirname, 'app/content');
-const distPath = join(dirname, 'dist/content');
-const clientPath = join(dirname, 'dist/client/app/content');
+export const executeCopyFiles = async () => {
+  const contentPath = join(dirname, 'app/content');
+  const distPath = join(dirname, 'dist/content');
+  const clientPath = join(dirname, 'dist/client/app/content');
 
-try {
-  if (!existsSync(distPath)) {
-    mkdirSync(distPath, { recursive: true });
+  try {
+    if (!existsSync(distPath)) {
+      mkdirSync(distPath, { recursive: true });
+    }
+
+    copyDirectory(contentPath, distPath);
+  } catch (error) {
+    console.error(`Error copying content directory:`, error);
   }
 
-  copyDirectory(contentPath, distPath);
-} catch (error) {
-  console.error(`Error copying content directory:`, error);
-}
+  try {
+    if (!existsSync(clientPath)) {
+      mkdirSync(clientPath, { recursive: true });
+    }
 
-try {
-  if (!existsSync(clientPath)) {
-    mkdirSync(clientPath, { recursive: true });
+    copyDirectory(contentPath, clientPath);
+  } catch (error) {
+    console.error(`Error copying content directory:`, error);
   }
-
-  copyDirectory(contentPath, clientPath);
-} catch (error) {
-  console.error(`Error copying content directory:`, error);
-}
+};
