@@ -43,41 +43,38 @@ const copyDirectory = (src, dest) => {
     console.error(`Error reading directory ${src}:`, error);
   }
 };
-export const executeCopyFiles = async () => {
-  console.log('Executing copy files script...');
-  const contentPath = join(dirname, 'app/content');
-  const distPath = join(dirname, 'dist/content');
-  const clientPath = join(dirname, 'dist/client/app/content');
 
+console.log('Executing copy files script...');
+const contentPath = join(dirname, 'app/content');
+const distPath = join(dirname, 'dist/content');
+const clientPath = join(dirname, 'dist/client/app/content');
+
+console.log(
+  `Copying content from ${contentPath} to ${distPath} and ${clientPath}`,
+);
+
+try {
+  if (!existsSync(distPath)) {
+    mkdirSync(distPath, { recursive: true });
+  }
+
+  copyDirectory(contentPath, distPath);
+  copyDirectory(contentPath, './');
+  console.log(`Successfully copied content from ${contentPath} to ${distPath}`);
+} catch (error) {
+  console.error(`Error copying content directory:`, error);
+}
+
+try {
+  if (!existsSync(clientPath)) {
+    mkdirSync(clientPath, { recursive: true });
+  }
+
+  copyDirectory(contentPath, clientPath);
+  copyDirectory(contentPath, './');
   console.log(
-    `Copying content from ${contentPath} to ${distPath} and ${clientPath}`,
+    `Successfully copied content from ${contentPath} to ${clientPath}`,
   );
-
-  try {
-    if (!existsSync(distPath)) {
-      mkdirSync(distPath, { recursive: true });
-    }
-
-    copyDirectory(contentPath, distPath);
-    copyDirectory(contentPath, './');
-    console.log(
-      `Successfully copied content from ${contentPath} to ${distPath}`,
-    );
-  } catch (error) {
-    console.error(`Error copying content directory:`, error);
-  }
-
-  try {
-    if (!existsSync(clientPath)) {
-      mkdirSync(clientPath, { recursive: true });
-    }
-
-    copyDirectory(contentPath, clientPath);
-    copyDirectory(contentPath, './');
-    console.log(
-      `Successfully copied content from ${contentPath} to ${clientPath}`,
-    );
-  } catch (error) {
-    console.error(`Error copying content directory:`, error);
-  }
-};
+} catch (error) {
+  console.error(`Error copying content directory:`, error);
+}
