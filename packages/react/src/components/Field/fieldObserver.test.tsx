@@ -91,10 +91,10 @@ describe('fieldObserver', () => {
     const description = screen.getByText('Description');
     const input = screen.getByLabelText('Navn');
 
-    expect(description).toHaveAttribute('id', `${input.id}:description`);
+    expect(description).toHaveAttribute('id', `${input.id}:description:1`);
     expect(input).toHaveAttribute(
       'aria-describedby',
-      `${input.id}:description`,
+      `${input.id}:description:1`,
     );
   });
   it('assigns unique IDs to multiple elements with the same data-field type', () => {
