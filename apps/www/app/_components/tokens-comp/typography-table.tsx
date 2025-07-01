@@ -13,18 +13,98 @@ type PreviewToken = { variable: string; value: string; path: string[] };
 const groupedByPathIndex = (index = 0) =>
   R.groupBy((token: PreviewToken) => token.path[index] || 'rest');
 
-const TypographyRenderer = ({
-  groupedTokens,
+const valueRenderer = (variable: string, value: string) => {
+  if (variable.includes('font-size')) {
+    return <TokenFontSize value={value} />;
+  }
+
+  return <code>{value}</code>;
+};
+
+const TypographySetTable = ({
+  tokens: typographySetTokens,
 }: {
-  groupedTokens: Partial<Record<string, PreviewToken[]>>;
+  tokens: Partial<Record<string, PreviewToken[]>>;
 }) => {
-  const valueRenderer = (variable: string, value: string) => {
-    if (variable.includes('font-size')) {
-      return <TokenFontSize value={value} />;
+  return Object.entries(typographySetTokens).map(([path, tokens]) => {
+    if (tokens?.length === 0) {
+      return null;
     }
 
-    return <code>{value}</code>;
-  };
+    const groupByTypography = groupedByPathIndex(2)(tokens || []);
+
+    for (const [typographyName, typographyTokens] of Object.entries(
+      groupByTypography,
+    )) {
+      if (typographyTokens?.length === 0) {
+        continue;
+      }
+
+      return (
+        <div key={typographyName}>
+          <Heading level={5} data-size='sm'>
+            {`${capitalizeString(path)} ${typographyName}`}
+          </Heading>
+          <Table data-color='neutral' key={typographyName}>
+            <Table.Head>
+              <Table.Row>
+                <Table.HeaderCell>Navn</Table.HeaderCell>
+                <Table.HeaderCell>Verdi</Table.HeaderCell>
+              </Table.Row>
+            </Table.Head>
+            <Table.Body>
+              {typographyTokens?.map(({ variable, value }, index) => {
+                const rowSpan =
+                  index === 0 ? typographyTokens.length : undefined;
+                return (
+                  <Table.Row key={variable}>
+                    <Table.Cell>
+                      <code>{variable}</code>
+                    </Table.Cell>
+                    {rowSpan && (
+                      <Table.Cell rowSpan={rowSpan}>
+                        {valueRenderer(variable, value)}
+                      </Table.Cell>
+                    )}
+                  </Table.Row>
+                );
+              })}
+            </Table.Body>
+          </Table>
+        </div>
+      );
+    }
+
+    // return (
+    //   <div key={path}>
+    //     <Heading level={5} data-size='sm'>
+    //       {capitalizeString(path)}
+    //     </Heading>
+    //     <Table data-color='neutral' key={path}>
+    //       <Table.Head>
+    //         <Table.Row>
+    //           <Table.HeaderCell>Navn</Table.HeaderCell>
+    //           <Table.HeaderCell>Verdi</Table.HeaderCell>
+    //         </Table.Row>
+    //       </Table.Head>
+    //       <Table.Body>
+    //         {tokens?.map(({ variable, value }) => (
+    //           <Table.Row key={variable}>
+    //             <Table.Cell>
+    //               <code>{variable}</code>
+    //             </Table.Cell>
+    //             <Table.Cell>{valueRenderer(variable, value)}</Table.Cell>
+    //           </Table.Row>
+    //         ))}
+    //       </Table.Body>
+    //     </Table>
+    //   </div>
+    // );
+  });
+};
+
+export const TypographyTable = ({ tokens }: TokenTableProps) => {
+  const groupedTokens = groupedByPathIndex(0)(tokens);
 
   return Object.entries(groupedTokens).map(([path, tokens]) => {
     if (tokens?.length === 0) {
@@ -37,7 +117,7 @@ const TypographyRenderer = ({
       : ([] as unknown as Partial<Record<string, PreviewToken[]>>);
 
     return isTypography ? (
-      <TypographyRenderer key={path} groupedTokens={groupByTypography} />
+      <TypographySetTable key={path} tokens={groupByTypography} />
     ) : (
       <div key={path}>
         <Heading level={5} data-size='sm'>
@@ -64,10 +144,4 @@ const TypographyRenderer = ({
       </div>
     );
   });
-};
-
-export const TypographyTable = ({ tokens }: TokenTableProps) => {
-  const groupedTokens = groupedByPathIndex(0)(tokens);
-
-  return <TypographyRenderer groupedTokens={groupedTokens} />;
 };
