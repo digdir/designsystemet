@@ -26,10 +26,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   }
 
   const mdxFiles = getFilesFromContentDir(join('fundamentals', lang));
-
-  console.log(`Loading fundamentals for language: ${lang}`, {
-    mdxFiles,
-  });
+  console.log('Found MDX files:', mdxFiles);
 
   const cats: {
     [key: string]: {
