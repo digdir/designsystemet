@@ -60,6 +60,7 @@ export const executeCopyFiles = async () => {
     }
 
     copyDirectory(contentPath, distPath);
+    copyDirectory(contentPath, './');
     console.log(
       `Successfully copied content from ${contentPath} to ${distPath}`,
     );
@@ -73,6 +74,7 @@ export const executeCopyFiles = async () => {
     }
 
     copyDirectory(contentPath, clientPath);
+    copyDirectory(contentPath, './');
     console.log(
       `Successfully copied content from ${contentPath} to ${clientPath}`,
     );
