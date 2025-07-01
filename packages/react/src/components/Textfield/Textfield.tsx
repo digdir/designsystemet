@@ -62,6 +62,7 @@ type TextfieldTextareaProps = {
    * Use to render a `Textarea` instead of `Input` for multiline support
    **/
   multiline: true;
+  type?: never;
 } & TextareaProps_;
 
 type TextfieldInputProps = {
