@@ -37,7 +37,6 @@
     border-radius: var(--ds-border-radius-md);
     grid-template-areas: 'input content';
     grid-template-columns: auto 1fr;
-    column-gap: var(--dsc-field-content-spacing);
     width: fit-content; /* Rather do display: grid + width: fit-content than display: inline-grid to encourage stacked radios */
 
     &:not([hidden]) {
@@ -47,6 +46,9 @@
     & > * {
       margin-block: 0; /* Reset "the stack" */
       grid-column: content; /* Only allow input in column 1 */
+    }
+    & > *:not(input) {
+      padding-inline-start: var(--dsc-field-content-spacing);
     }
 
     & label {
@@ -69,10 +71,6 @@
       @composes ds-focus--visible from './base.css';
     }
 
-    &:has(input:only-child) {
-      gap: 0; /* No gap only <input> with aria-label/aria-labelledby */
-    }
-
     /* Using .ds-input to ensure it's only our component */
     & .ds-input:is([type='radio'], [type='checkbox']):not([aria-label]) {
       translate: 0 calc((1lh - 100%) / 2); /* Align with first line of <label> text, but not if having aria-label as <label> */
@@ -82,6 +80,10 @@
       grid-template-areas: 'content input';
       grid-template-columns: 1fr auto;
       width: auto;
+      & > *:not(input) {
+        padding-inline-start: 0;
+        padding-inline-end: var(--dsc-field-content-spacing);
+      }
     }
   }
 }

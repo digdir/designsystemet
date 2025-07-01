@@ -20,8 +20,8 @@
 
   /* font-size adjustments if supporting round() */
   @supports (width: round(down, 0.1em, 1px)) {
-    --ds-font-size-minus-1: round(down, max(0.9em, 0.875rem), 0.0625rem); /* Default to 90% of font-size, but minimum 14px */
-    --ds-font-size-plus-1: round(down, 1.1em, 0.0625rem); /* Default to 110% */
+    --ds-font-size-minus-1: round(down, max(0.9em, 0.875rem), 1px); /* Default to 90% of font-size, but minimum 14px */
+    --ds-font-size-plus-1: round(down, 1.1em, 1px); /* Default to 110% */
   }
 }
 
