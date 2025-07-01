@@ -13,8 +13,17 @@ import { useChangeLanguage } from 'remix-i18next/react';
 import { Figma } from '~/_components/logos/figma';
 import { Github } from '~/_components/logos/github';
 import { Slack } from '~/_components/logos/slack';
+import i18n from '~/i18n';
 import type { Route as RootRoute } from './../../+types/root';
 import type { Route } from './+types/layout';
+
+export const loader = ({ params }: Route.LoaderArgs) => {
+  if (!i18n.supportedLngs.includes(params.lang || '')) {
+    throw new Response('Not Found', {
+      status: 404,
+    });
+  }
+};
 
 const rightLinks: FooterLinkListItemProps[] = [
   {
