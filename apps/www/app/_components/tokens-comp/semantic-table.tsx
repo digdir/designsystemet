@@ -14,23 +14,23 @@ type TokenTableProps = {
 const groupedByPathIndex = (index = 0) =>
   R.groupBy((token: PreviewToken) => token.path[index] || 'rest');
 
+const valueRenderer = (variable: string, value: string) => {
+  if (/^--ds-size.*\d$/.test(variable)) {
+    return <TokenSize value={value} />;
+  }
+  if (/^--ds-border-radius(?!.*(scale|base)$)/.test(variable)) {
+    return <TokenBorderRadius value={value} />;
+  }
+
+  if (/^--ds-shadow/.test(variable)) {
+    return <TokenShadow value={value} />;
+  }
+
+  return <code>{value}</code>;
+};
+
 export const SemanticTokensTable = ({ tokens }: TokenTableProps) => {
   const groupedTokens = groupedByPathIndex(0)(tokens);
-
-  const valueRenderer = (variable: string, value: string) => {
-    if (/^--ds-size.*\d$/.test(variable)) {
-      return <TokenSize value={value} />;
-    }
-    if (/^--ds-border-radius(?!.*(scale|base)$)/.test(variable)) {
-      return <TokenBorderRadius value={value} />;
-    }
-
-    if (/^--ds-shadow/.test(variable)) {
-      return <TokenShadow value={value} />;
-    }
-
-    return <code>{value}</code>;
-  };
 
   return Object.entries(groupedTokens).map(([path, tokens]) => {
     if (tokens?.length === 0) {
