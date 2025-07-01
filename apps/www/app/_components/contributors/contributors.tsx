@@ -5,9 +5,13 @@ import classes from './contributors.module.css';
 
 type ContributorsProps = {
   authors: string[];
+  headingLevel?: 2 | 3 | 4;
 };
 
-export const Contributors = ({ authors }: ContributorsProps) => {
+export const Contributors = ({
+  authors,
+  headingLevel = 3,
+}: ContributorsProps) => {
   return (
     <section className={classes.container}>
       <div className={classes.logo}>
@@ -17,7 +21,7 @@ export const Contributors = ({ authors }: ContributorsProps) => {
           className={classes.logoImage}
         />
       </div>
-      <Heading level={3} data-size='2xs'>
+      <Heading level={headingLevel} data-size='2xs'>
         Bidragsytere
       </Heading>
       <Paragraph data-size='sm' className={classes.meta}>
