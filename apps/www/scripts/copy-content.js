@@ -10,6 +10,7 @@ import { join } from 'node:path';
 const dirname = process.cwd();
 
 const copyDirectory = (src, dest) => {
+  console.log(`Copying from ${src} to ${dest}`);
   if (!existsSync(dest)) {
     try {
       mkdirSync(dest, { recursive: true });
@@ -38,6 +39,7 @@ const copyDirectory = (src, dest) => {
         }
       }
     }
+    console.log(`Successfully copied from ${src} to ${dest}`);
   } catch (error) {
     console.error(`Error reading directory ${src}:`, error);
   }
