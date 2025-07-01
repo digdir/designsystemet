@@ -127,7 +127,7 @@ const defaultFilter: Filter = ({ label, input }) =>
   label.toLowerCase().includes(input.value.trim().toLowerCase());
 
 // https://github.com/u-elements/u-elements/blob/fe076b724272c2fef00d41838b091b1563661829/packages/utils.ts#L222
-// DELETE THIS when bug in u-combobox is fixed
+// TODO: DELETE THIS when bug in u-combobox is fixed. See https://github.com/u-elements/u-elements/issues/25
 const setValue = (input: HTMLInputElement, data: string, type = '') => {
   const event = { bubbles: true, composed: true, data, inputType: type };
   const proto = HTMLInputElement.prototype;
