@@ -20,7 +20,7 @@ There are a few things to keep in mind when designing components in Figma:
 
 - [Variants](https://help.figma.com/hc/en-us/articles/360056440594-Create-and-use-variants) and [component properties](https://help.figma.com/hc/en-us/articles/5579474826519-Explore-component-properties): Use variants for different versions, colors, and states. Use component properties to toggle layers, swap instances (e.g., icons), and change text. Name the properties the same way as props in Storybook. We use `variant`, `color`, and `state`.
 
-- Sizes are handled using [Modes in Figma](/no/fundamentals/figma/modes-in-figma). You no longer need separate variants for `Small`, `Medium`, and `Large`. As long as your component is connected to tokens for typography, spacing, and sizing, it will adjust automatically based on the selected mode. This makes components easier to maintain and more flexible to use.
+- Sizes are handled using [Modes in Figma](/en/fundamentals/figma/modes-in-figma). You no longer need separate variants for `Small`, `Medium`, and `Large`. As long as your component is connected to tokens for typography, spacing, and sizing, it will adjust automatically based on the selected mode. This makes components easier to maintain and more flexible to use.
 
 - Is the component interactive? If so, it must include different states as variants, and these must be wired up using [Change to](https://help.figma.com/hc/en-us/articles/360061175334-Create-interactive-components-with-variants#create).
 
