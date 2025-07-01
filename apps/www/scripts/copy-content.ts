@@ -5,11 +5,10 @@ import {
   readdirSync,
   statSync,
 } from 'node:fs';
-import { join } from 'node:path';
 
 const dirname = process.cwd();
 
-const copyDirectory = (src, dest) => {
+const copyDirectory = (src: string, dest: string) => {
   if (!existsSync(dest)) {
     try {
       mkdirSync(dest, { recursive: true });
@@ -42,6 +41,15 @@ const copyDirectory = (src, dest) => {
   } catch (error) {
     console.error(`Error reading directory ${src}:`, error);
   }
+};
+
+const join = (...paths: string[]) => {
+  return paths.reduce((acc, path) => {
+    if (acc.endsWith('/') || path.startsWith('/')) {
+      return `${acc}${path}`;
+    }
+    return `${acc}/${path}`;
+  }, '');
 };
 
 export const executeCopyFiles = async () => {
