@@ -33,8 +33,6 @@ const TypographySetTables = ({
 
     const groupByTypography = groupedByPathIndex(2)(tokens || []);
 
-    console.log('groupByTypography', groupByTypography);
-
     return Object.entries(groupByTypography).map(
       ([typographyName, typographyTokens]) => {
         return (
