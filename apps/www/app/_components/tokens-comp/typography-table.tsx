@@ -21,7 +21,7 @@ const valueRenderer = (variable: string, value: string) => {
   return <code>{value}</code>;
 };
 
-const TypographySetTable = ({
+const TypographySetTables = ({
   tokens: typographySetTokens,
 }: {
   tokens: Partial<Record<string, PreviewToken[]>>;
@@ -33,73 +33,45 @@ const TypographySetTable = ({
 
     const groupByTypography = groupedByPathIndex(2)(tokens || []);
 
-    for (const [typographyName, typographyTokens] of Object.entries(
-      groupByTypography,
-    )) {
-      if (typographyTokens?.length === 0) {
-        continue;
-      }
+    console.log('groupByTypography', groupByTypography);
 
-      return (
-        <div key={typographyName}>
-          <Heading level={5} data-size='sm'>
-            {`${capitalizeString(path)} ${typographyName}`}
-          </Heading>
-          <Table data-color='neutral' key={typographyName}>
-            <Table.Head>
-              <Table.Row>
-                <Table.HeaderCell>Navn</Table.HeaderCell>
-                <Table.HeaderCell>Verdi</Table.HeaderCell>
-              </Table.Row>
-            </Table.Head>
-            <Table.Body>
-              {typographyTokens?.map(({ variable, value }, index) => {
-                const rowSpan =
-                  index === 0 ? typographyTokens.length : undefined;
-                return (
-                  <Table.Row key={variable}>
-                    <Table.Cell>
-                      <code>{variable}</code>
-                    </Table.Cell>
-                    {rowSpan && (
-                      <Table.Cell rowSpan={rowSpan}>
-                        {valueRenderer(variable, value)}
+    return Object.entries(groupByTypography).map(
+      ([typographyName, typographyTokens]) => {
+        return (
+          <div key={typographyName}>
+            <Heading level={5} data-size='sm'>
+              {`${capitalizeString(path)} ${typographyName}`}
+            </Heading>
+            <Table data-color='neutral' key={typographyName}>
+              <Table.Head>
+                <Table.Row>
+                  <Table.HeaderCell>Navn</Table.HeaderCell>
+                  <Table.HeaderCell>Verdi</Table.HeaderCell>
+                </Table.Row>
+              </Table.Head>
+              <Table.Body>
+                {typographyTokens?.map(({ variable, value }, index) => {
+                  const rowSpan =
+                    index === 0 ? typographyTokens.length : undefined;
+                  return (
+                    <Table.Row key={variable}>
+                      <Table.Cell>
+                        <code>{variable}</code>
                       </Table.Cell>
-                    )}
-                  </Table.Row>
-                );
-              })}
-            </Table.Body>
-          </Table>
-        </div>
-      );
-    }
-
-    // return (
-    //   <div key={path}>
-    //     <Heading level={5} data-size='sm'>
-    //       {capitalizeString(path)}
-    //     </Heading>
-    //     <Table data-color='neutral' key={path}>
-    //       <Table.Head>
-    //         <Table.Row>
-    //           <Table.HeaderCell>Navn</Table.HeaderCell>
-    //           <Table.HeaderCell>Verdi</Table.HeaderCell>
-    //         </Table.Row>
-    //       </Table.Head>
-    //       <Table.Body>
-    //         {tokens?.map(({ variable, value }) => (
-    //           <Table.Row key={variable}>
-    //             <Table.Cell>
-    //               <code>{variable}</code>
-    //             </Table.Cell>
-    //             <Table.Cell>{valueRenderer(variable, value)}</Table.Cell>
-    //           </Table.Row>
-    //         ))}
-    //       </Table.Body>
-    //     </Table>
-    //   </div>
-    // );
+                      {rowSpan && (
+                        <Table.Cell rowSpan={rowSpan}>
+                          {valueRenderer(variable, value)}
+                        </Table.Cell>
+                      )}
+                    </Table.Row>
+                  );
+                })}
+              </Table.Body>
+            </Table>
+          </div>
+        );
+      },
+    );
   });
 };
 
@@ -117,7 +89,7 @@ export const TypographyTable = ({ tokens }: TokenTableProps) => {
       : ([] as unknown as Partial<Record<string, PreviewToken[]>>);
 
     return isTypography ? (
-      <TypographySetTable key={path} tokens={groupByTypography} />
+      <TypographySetTables key={path} tokens={groupByTypography} />
     ) : (
       <div key={path}>
         <Heading level={5} data-size='sm'>
