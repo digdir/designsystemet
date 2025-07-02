@@ -301,9 +301,6 @@ importers:
       remix-i18next:
         specifier: ^7.2.1
         version: 7.2.1(i18next@24.2.3(typescript@5.8.3))(react-i18next@15.5.3(i18next@24.2.3(typescript@5.8.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3))(react-router@7.6.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
-      style-dictionary:
-        specifier: ^4.4.0
-        version: 4.4.0
     devDependencies:
       '@react-router/dev':
         specifier: ^7.6.2
@@ -5088,11 +5085,6 @@ packages:
 
   strip-literal@3.0.0:
     resolution: {integrity: sha512-TcccoMhJOM3OebGhSBEmp3UZ2SfDMZUEBdRA/9ynfLi8yYajyWX3JiXArcJt4Umh4vISpspkQIY8ZZoCqjbviA==}
-
-  style-dictionary@4.4.0:
-    resolution: {integrity: sha512-+xU0IA1StzqAqFs/QtXkK+XJa7wpS4X5H+JQccRKsRCElgeLGocFU1U/UMvMUylKFw6vwGV+Y/a2wb2pm5rFFQ==}
-    engines: {node: '>=18.0.0'}
-    hasBin: true
 
   style-dictionary@5.0.0:
     resolution: {integrity: sha512-ORuqKamQe4nL2B9ASmmz5LxKBDuiqHvP8jj4lQ+5kE1XJyagJVvgSz5VpTAG3dRheqlqN5++vtVmK1S6ZZyy/A==}
@@ -10686,22 +10678,6 @@ snapshots:
   strip-literal@3.0.0:
     dependencies:
       js-tokens: 9.0.1
-
-  style-dictionary@4.4.0:
-    dependencies:
-      '@bundled-es-modules/deepmerge': 4.3.1
-      '@bundled-es-modules/glob': 10.4.2
-      '@bundled-es-modules/memfs': 4.17.0
-      '@zip.js/zip.js': 2.7.60
-      chalk: 5.4.1
-      change-case: 5.4.4
-      commander: 12.1.0
-      is-plain-obj: 4.1.0
-      json5: 2.2.3
-      patch-package: 8.0.0
-      path-unified: 0.2.0
-      prettier: 3.6.1
-      tinycolor2: 1.6.0
 
   style-dictionary@5.0.0:
     dependencies:
