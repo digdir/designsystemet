@@ -82,4 +82,26 @@ describe('usePagination', () => {
 
     expect(mockOnChange).not.toHaveBeenCalledWith(event, 2);
   });
+
+  it('should not render negative pages', () => {
+    const { result } = renderHook(() =>
+      usePagination({ totalPages: 5, currentPage: 1, showPages: 7 }),
+    );
+
+    expect(result.current.pages).not.toContainEqual({
+      page: -1,
+      itemKey: 'page--1',
+      buttonProps: expect.any(Object),
+    });
+    expect(result.current.pages).not.toContainEqual({
+      page: 0,
+      itemKey: 'page-0',
+      buttonProps: expect.any(Object),
+    });
+    expect(result.current.pages).toContainEqual({
+      page: 1,
+      itemKey: 'page-1',
+      buttonProps: expect.any(Object),
+    });
+  });
 });

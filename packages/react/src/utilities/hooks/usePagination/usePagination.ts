@@ -4,7 +4,10 @@ import type { PaginationButtonProps } from '../../../components';
 
 const getSteps = (now: number, max: number, show: number) => {
   const offset = (show - 1) / 2;
-  const start = Math.min(Math.max(now - Math.floor(offset), 1), max - show + 1);
+  const start = Math.max(
+    1,
+    Math.min(Math.max(now - Math.floor(offset), 1), max - show + 1),
+  );
   const end = Math.min(Math.max(now + Math.ceil(offset), show), max);
   const pages = Array.from({ length: end + 1 - start }, (_, i) => i + start);
 

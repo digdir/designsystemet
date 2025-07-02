@@ -1,0 +1,47 @@
+---
+title: Icons
+sidebar_title: Icons
+description: How we use icons in components
+date: 2023-04-05
+category: Resources
+color: red
+icon: TokenIcon
+published: true
+order: 10
+---
+
+## Join us in collaborating on icons!
+
+Nav has created a robust [set of icons](https://aksel.nav.no/ikoner) (800+) that we recommend using and contributing to further develop. We believe there are only advantages to having icons carry the same meaning across different public sector contexts.
+
+The icons support size adjustment and colour changes, and are available in both stroke and fill variants.
+
+Here you can find the icon overview: [aksel.nav.no/ikoner](https://aksel.nav.no/ikoner)<br/>
+Here you can download the icon package: [cdn.nav.no/aksel/icons](https://cdn.nav.no/aksel/icons/zip/aksel-icons.zip)<br/>
+Here you can find the NPM package: [@navikt/aksel-icons](https://www.npmjs.com/package/@navikt/aksel-icons)<br/>
+Here you can find the icons in Figma: [Core Icons 3](https://www.figma.com/community/file/1214869602572392330/Core-Icons-3)<br/>
+
+To keep the icon package in Figma in sync with new updates and adjustments, you need a plugin: [Aksel Icon plugin](https://www.figma.com/community/plugin/1221057403873975172).
+
+Install the plugin, click "Run" and you'll download the latest changes. Many thanks to the design system team at NAV who made this possible! 🙏🏻👏🏻🏅
+
+<Image
+  src='https://user-images.githubusercontent.com/1464915/230187062-b17ecf3a-4910-461f-b6c1-7767af26963c.png'
+  alt="Shows where in Figma's interface you can run Nav's plugin to update the icons"
+  boxShadow={false}
+/>
+
+## How to contribute
+
+Join us and [contribute here](https://github.com/navikt/aksel/blob/main/%40navikt/aksel-icons/CONTRIBUTING.md)! Follow these guidelines when creating new icons:
+
+- Use the Keyline template found in the Figma file under "Assets" [Core Icons 3](https://www.figma.com/community/file/1214869602572392330/Core-Icons-3)<br/>
+- All layers (even if there's only one) must be grouped in a group, either union, subtract, intersect, or exclude
+- The top group should have the colour icon.default, all layers and groups below this should only use #262626
+- All layers and groups should be set to Constraints: scale, scale
+- For the "Stroke" icon variant: The icon must consist of only lines, the lines should be 1.5 px, centre
+- For the "Filled" icon variant: Icons where shapes can be filled, should be filled
+
+### Accessibility
+
+The icons should work for all users, regardless of their situation. Read more about [how to ensure accessibility](https://aksel.nav.no/god-praksis/artikler/tilgjengelig-ikonbruk) when using icons and which aria attributes you should use.
