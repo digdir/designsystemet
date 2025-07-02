@@ -87,11 +87,10 @@ export const semantic: Format = {
       formatted: format(token),
     }));
 
-    const formattedSizingMap = formattedSizingTokens.round.map((t,i) => ({
+    const formattedSizingMap = formattedSizingTokens.round.map((t, i) => ({
       token: formattedSizingTokens.tokens[i],
       formatted: t,
     }));
-
 
     buildOptions.buildTokenFormats[destination] = [...formattedMap, ...formattedSizingMap];
 
