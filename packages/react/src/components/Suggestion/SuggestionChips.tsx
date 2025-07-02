@@ -11,7 +11,7 @@ export type SuggestionChipsProps = MergeRight<
     /**
      * Change the rendered content of the chip.
      *
-     * @default ({ text }) => text
+     * @default ({ label }) => label
      */
     render?: (args: { label: string; value: string }) => ReactNode;
   }
