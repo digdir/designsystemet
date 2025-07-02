@@ -10,39 +10,6 @@ type Story = StoryObj<typeof Textfield>;
 export default {
   title: 'Komponenter/Textfield',
   component: Textfield,
-  argTypes: {
-    multiline: {
-      type: 'boolean',
-    },
-    // This needs to be explicitly set, otherwise storybook will show "set object"
-    type: {
-      control: 'select',
-      options: [
-        /* | "button" */
-        /* 'checkbox', */
-        'color',
-        'date',
-        'datetime-local',
-        'email',
-        'file',
-        'hidden',
-        /* 'image', */
-        'month',
-        'number',
-        'password',
-        /* 'radio', */
-        /* | "range" */
-        /* | "reset" */
-        'search',
-        /* | "submit" */
-        'tel',
-        'text',
-        'time',
-        'url',
-        'week',
-      ],
-    },
-  },
 } as Meta;
 
 export const Preview: Story = {

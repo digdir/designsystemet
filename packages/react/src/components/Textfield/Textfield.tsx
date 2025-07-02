@@ -62,19 +62,20 @@ type TextfieldTextareaProps = {
    * Use to render a `Textarea` instead of `Input` for multiline support
    **/
   multiline: true;
+  type?: never;
 } & TextareaProps_;
 
 type TextfieldInputProps = {
   /**
    * Use to render a `Textarea` instead of `Input` for multiline support
    **/
-  multiline?: never | false;
+  multiline?: false;
   /**
    * Supported `input` types
    *
    * @default 'text'
    * */
-  type?: Omit<InputProps['type'], 'radio' | 'checkbox' | 'image'>;
+  type?: Exclude<InputProps['type'], 'radio' | 'checkbox'>;
 } & InputProps_;
 
 export type TextfieldProps = SharedTextfieldProps &

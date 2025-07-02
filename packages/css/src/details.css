@@ -90,9 +90,14 @@
 
   & > :not(summary, u-summary) {
     border-radius: inherit;
-    padding: var(--ds-size-5, 1rem);
+    padding-inline: var(--ds-size-5, 1rem);
+    &:nth-child(2) {
+      padding-block-start: var(--ds-size-5, 1rem);
+    }
+    &:last-child {
+      padding-block-end: var(--ds-size-5, 1rem);
+    }
   }
-
   &[open] > :is(summary, u-summary) {
     background: var(--dsc-details-summary-background--open);
 
