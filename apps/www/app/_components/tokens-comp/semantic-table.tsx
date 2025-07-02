@@ -1,5 +1,5 @@
 import { Heading, Table } from '@digdir/designsystemet-react';
-import * as R from 'ramda';
+import { groupBy } from 'ramda';
 import type { HTMLAttributes } from 'react';
 import { capitalizeString } from '~/_utils/string-helpers';
 import { TokenBorderRadius } from './token-border-radius/token-border-radius';
@@ -12,7 +12,7 @@ type TokenTableProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 const groupedByPathIndex = (index = 0) =>
-  R.groupBy((token: PreviewToken) => token.path[index] || 'rest');
+  groupBy((token: PreviewToken) => token.path[index] || 'rest');
 
 const valueRenderer = (variable: string, value: string) => {
   if (/^--ds-size.*\d$/.test(variable)) {
