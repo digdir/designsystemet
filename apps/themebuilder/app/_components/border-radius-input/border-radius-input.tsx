@@ -64,6 +64,7 @@ export const BorderRadiusInput = () => {
             )}
             key={index}
           >
+            {/** biome-ignore lint/a11y/useSemanticElements: TODO: convert to label + input*/}
             <Button
               variant='tertiary'
               data-color='neutral'
@@ -75,7 +76,6 @@ export const BorderRadiusInput = () => {
                   inputRef.current.value = item.value.toString();
                 }
               }}
-              // biome-ignore lint/a11y/useSemanticElements: explaination needed
               role='radio'
               aria-checked={baseBorderRadius === item.value}
               aria-current={baseBorderRadius === item.value}

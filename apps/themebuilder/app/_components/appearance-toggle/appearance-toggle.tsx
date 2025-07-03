@@ -48,8 +48,6 @@ export const AppearanceToggle = ({
           variant={scheme.value === colorScheme ? 'primary' : 'secondary'}
           data-color='neutral'
           aria-label={`${t('appearanceToggle.set-to')} ${scheme.name} ${t('appearanceToggle.view')}`}
-          // biome-ignore lint/a11y/useSemanticElements: explanation needed
-          role='radio'
           aria-checked={scheme.value === colorScheme}
           aria-current={scheme.value === colorScheme}
         >
