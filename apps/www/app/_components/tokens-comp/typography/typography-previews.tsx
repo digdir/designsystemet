@@ -1,40 +1,22 @@
-import classes from './typography.module.css';
-
 export const LineHeight = ({ value }: { value: string }) => {
   return (
-    <div style={{ lineHeight: value }} className={classes.preview}>
+    <div style={{ lineHeight: value }}>
       line <br /> height
     </div>
   );
 };
 
 export const FontSize = ({ value }: { value: string }) => {
-  return (
-    <div style={{ fontSize: value }} className={classes.preview}>
-      Aa
-    </div>
-  );
+  return <div style={{ fontSize: value }}>Aa</div>;
 };
 
 export const FontWeight = ({ value }: { value: string; text: string }) => {
-  return (
-    <div style={{ fontWeight: value }} className={classes.preview}>
-      weight
-    </div>
-  );
+  return <div style={{ fontWeight: value }}>weight</div>;
 };
 export const FontFamily = ({ value }: { value: string }) => {
-  return (
-    <div style={{ fontFamily: value }} className={classes.preview}>
-      {value}
-    </div>
-  );
+  return <div style={{ fontFamily: value }}>{value}</div>;
 };
 
 export const LetterSpacing = ({ value }: { value: string }) => {
-  return (
-    <div style={{ letterSpacing: value }} className={classes.preview}>
-      letter spacing
-    </div>
-  );
+  return <div style={{ letterSpacing: value }}>letter spacing</div>;
 };
