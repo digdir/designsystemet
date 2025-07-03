@@ -55,10 +55,12 @@ const TypographySetTables = ({
       ([typographyName, typographyTokens]) => {
         return (
           <div key={typographyName}>
-            <Heading level={5} data-size='sm'>
-              {`${capitalizeString(path)} ${typographyName}`}
-            </Heading>
-            <Table data-color='neutral' key={typographyName}>
+            <Table data-color='neutral' key={typographyName} zebra>
+              <caption>
+                <Heading level={5} data-size='sm'>
+                  {`${capitalizeString(path)} ${typographyName}`}
+                </Heading>
+              </caption>
               <Table.Head>
                 <Table.Row>
                   <Table.HeaderCell>Navn</Table.HeaderCell>
@@ -108,10 +110,12 @@ export const TypographyTable = ({ tokens }: TokenTableProps) => {
       <TypographySetTables key={path} tokens={groupByTypography} />
     ) : (
       <div key={path}>
-        <Heading level={5} data-size='sm'>
-          {capitalizeString(path)}
-        </Heading>
-        <Table data-color='neutral' key={path}>
+        <Table data-color='neutral' key={path} zebra>
+          <caption>
+            <Heading level={5} data-size='sm'>
+              {capitalizeString(path)}
+            </Heading>
+          </caption>
           <Table.Head>
             <Table.Row>
               <Table.HeaderCell>Navn</Table.HeaderCell>

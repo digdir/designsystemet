@@ -46,8 +46,12 @@ export const TokenList = () => {
     setValue(value);
   }, 1000);
 
-  const filteredColorTokens = filteredRecord(colorTokens, value);
-  const filteredTypographyTokens = filteredRecord(typographyTokens, value);
+  const filteredColorTokens = Object.entries(
+    filteredRecord(colorTokens, value),
+  );
+  const filteredTypographyTokens = Object.entries(
+    filteredRecord(typographyTokens, value),
+  );
   const filteredSemanticTokens = semanticTokens.filter((token) =>
     tokenSearchFilter(token, value),
   );
@@ -59,7 +63,6 @@ export const TokenList = () => {
         <Search>
           <Search.Input
             aria-label='Søk på variabel navn i CSS for design tokens'
-            value={value}
             onChange={(e) => debouncedCallback(e.target.value)}
           />
           <Search.Clear />
@@ -68,38 +71,49 @@ export const TokenList = () => {
       </Field>
 
       <div className={classes.tokens}>
-        <Heading level={3} data-size='lg'>
-          Farger
-        </Heading>
-        {Object.entries(filteredColorTokens).map(([name, tokens]) => {
-          return (
-            <div key={name as string} className={classes.section}>
-              <Heading level={4} data-size='md'>
-                {capitalizeString(name as string)}
-              </Heading>
-              <ColorTokensTable tokens={tokens} />
+        {filteredColorTokens.length > 0 &&
+          filteredColorTokens.map(([name, tokens]) => {
+            return (
+              <>
+                <Heading level={3} data-size='lg'>
+                  Farger
+                </Heading>
+                <div key={name as string} className={classes.section}>
+                  <ColorTokensTable
+                    tokens={tokens}
+                    title={capitalizeString(name as string)}
+                  />
+                </div>
+              </>
+            );
+          })}
+
+        {filteredTypographyTokens.length > 0 &&
+          filteredTypographyTokens.map(([name, tokens]) => {
+            return (
+              <>
+                <Heading level={3} data-size='lg'>
+                  Typografi
+                </Heading>
+                <div key={name as string} className={classes.section}>
+                  <Heading level={4} data-size='md'>
+                    {capitalizeString(name as string)}
+                  </Heading>
+                  <TypographyTable tokens={tokens} />
+                </div>
+              </>
+            );
+          })}
+        {filteredSemanticTokens.length > 0 && (
+          <>
+            <Heading level={3} data-size='lg'>
+              Semantiske
+            </Heading>
+            <div key={'semantic'} className={classes.section}>
+              <SemanticTokensTable tokens={filteredSemanticTokens} />
             </div>
-          );
-        })}
-        <Heading level={3} data-size='lg'>
-          Typografi
-        </Heading>
-        {Object.entries(filteredTypographyTokens).map(([name, tokens]) => {
-          return (
-            <div key={name as string} className={classes.section}>
-              <Heading level={4} data-size='md'>
-                {capitalizeString(name as string)}
-              </Heading>
-              <TypographyTable tokens={tokens} />
-            </div>
-          );
-        })}
-        <Heading level={3} data-size='lg'>
-          Semantiske
-        </Heading>
-        <div key={'semantic'} className={classes.section}>
-          <SemanticTokensTable tokens={filteredSemanticTokens} />
-        </div>
+          </>
+        )}
       </div>
     </>
   );
