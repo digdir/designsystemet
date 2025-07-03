@@ -64,7 +64,10 @@ export const formatTheme = async (themeConfig: Theme) => {
 
   if (buildOptions?.buildTokenFormats) {
     for (const [destination, tokenFormats] of Object.entries(buildOptions.buildTokenFormats)) {
+      if (destination === 'typography/secondary.css') continue; // Skip secondary typography preview tokens
+
       console.log(`Processing preview tokens for ${chalk.green(destination)}`);
+
       const splits = destination.replace('.css', '').split('/');
       const [type, name] = splits;
       tokensGroupedByType[type] = tokensGroupedByType[type] === undefined ? {} : tokensGroupedByType[type];
