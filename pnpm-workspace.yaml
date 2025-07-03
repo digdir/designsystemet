@@ -12,4 +12,4 @@ onlyBuiltDependencies:
   - esbuild
   - just-pnpm
   - style-dictionary
-useNodeVersion: 22.16.0
+useNodeVersion: 22.17.0
