@@ -7,7 +7,7 @@ import typographyTokens from '~/tokens/typography.json';
 import { ColorTokensTable } from '../color-table';
 import { SemanticTokensTable } from '../semantic-table';
 import type { PreviewToken } from '../types';
-import { TypographyTable } from '../typography-table';
+import { TypographyTable } from '../typography/typography-table';
 import classes from './token-list.module.css';
 
 const tokenSearchFilter = (token: PreviewToken, searchValue: string) =>
