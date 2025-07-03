@@ -1,8 +1,14 @@
 import { Heading, Table } from '@digdir/designsystemet-react';
-import { groupBy } from 'ramda';
+import * as R from 'ramda';
 import type { HTMLAttributes } from 'react';
 import { capitalizeString } from '~/_utils/string-helpers';
-import { TokenFontSize } from './token-font-size/token-font-size';
+import {
+  FontFamily,
+  FontSize,
+  FontWeight,
+  LetterSpacing,
+  LineHeight,
+} from './typography-previews';
 
 type TokenTableProps = {
   tokens: PreviewToken[];
@@ -11,11 +17,23 @@ type TokenTableProps = {
 type PreviewToken = { variable: string; value: string; path: string[] };
 
 const groupedByPathIndex = (index = 0) =>
-  groupBy((token: PreviewToken) => token.path[index] || 'rest');
+  R.groupBy((token: PreviewToken) => token.path[index] || 'rest');
 
-const valueRenderer = (variable: string, value: string) => {
+const valuePreview = (variable: string, value: string) => {
   if (variable.includes('font-size')) {
-    return <TokenFontSize value={value} />;
+    return <FontSize value={value} />;
+  }
+  if (variable.includes('line-height')) {
+    return <LineHeight value={value} />;
+  }
+  if (variable.includes('font-weight')) {
+    return <FontWeight value={value} text={variable} />;
+  }
+  if (variable.includes('font-family')) {
+    return <FontFamily value={value} />;
+  }
+  if (variable.includes('letter-spacing')) {
+    return <LetterSpacing value={value} />;
   }
 
   return <code>{value}</code>;
@@ -45,16 +63,20 @@ const TypographySetTables = ({
                 <Table.Row>
                   <Table.HeaderCell>Navn</Table.HeaderCell>
                   <Table.HeaderCell>Verdi</Table.HeaderCell>
+                  <Table.HeaderCell>Forhåndsvisning</Table.HeaderCell>
                 </Table.Row>
               </Table.Head>
               <Table.Body>
-                {typographyTokens?.map(({ variable, value }, index) => {
+                {typographyTokens?.map(({ variable, value }) => {
                   return (
                     <Table.Row key={variable}>
                       <Table.Cell>
                         <code>{variable}</code>
                       </Table.Cell>
-                      <Table.Cell>{valueRenderer(variable, value)}</Table.Cell>
+                      <Table.Cell>
+                        <code>{value}</code>
+                      </Table.Cell>
+                      <Table.Cell>{valuePreview(variable, value)}</Table.Cell>
                     </Table.Row>
                   );
                 })}
@@ -92,6 +114,7 @@ export const TypographyTable = ({ tokens }: TokenTableProps) => {
             <Table.Row>
               <Table.HeaderCell>Navn</Table.HeaderCell>
               <Table.HeaderCell>Verdi</Table.HeaderCell>
+              <Table.HeaderCell>Forhåndsvisning</Table.HeaderCell>
             </Table.Row>
           </Table.Head>
           <Table.Body>
@@ -100,7 +123,10 @@ export const TypographyTable = ({ tokens }: TokenTableProps) => {
                 <Table.Cell>
                   <code>{variable}</code>
                 </Table.Cell>
-                <Table.Cell>{valueRenderer(variable, value)}</Table.Cell>
+                <Table.Cell>
+                  <code>{value}</code>
+                </Table.Cell>
+                <Table.Cell>{valuePreview(variable, value)}</Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>
