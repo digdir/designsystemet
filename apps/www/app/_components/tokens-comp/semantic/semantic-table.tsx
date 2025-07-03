@@ -2,10 +2,14 @@ import { Heading, Table } from '@digdir/designsystemet-react';
 import { groupBy } from 'ramda';
 import type { HTMLAttributes } from 'react';
 import { capitalizeString } from '~/_utils/string-helpers';
-import { TokenBorderRadius } from './token-border-radius/token-border-radius';
-import { TokenShadow } from './token-shadow/token-shadow';
-import { TokenSize } from './token-size/token-size';
-import type { PreviewToken } from './types';
+import type { PreviewToken } from '../types';
+import {
+  BorderRadius,
+  ComputedValue,
+  Opacity,
+  Shadow,
+  Size,
+} from './seamantic-previews';
 
 type TokenTableProps = {
   tokens: PreviewToken[];
@@ -14,16 +18,28 @@ type TokenTableProps = {
 const groupedByPathIndex = (index = 0) =>
   groupBy((token: PreviewToken) => token.path[index] || 'rest');
 
-const valueRenderer = (variable: string, value: string) => {
+const getValuePreview = (variable: string, value: string) => {
   if (/^--ds-size.*\d$/.test(variable)) {
-    return <TokenSize value={value} />;
+    return <Size value={value} />;
   }
   if (/^--ds-border-radius(?!.*(scale|base)$)/.test(variable)) {
-    return <TokenBorderRadius value={value} />;
+    return <BorderRadius value={value} />;
   }
 
   if (/^--ds-shadow/.test(variable)) {
-    return <TokenShadow value={value} />;
+    return <Shadow value={value} />;
+  }
+
+  if (/^--ds-opacity/.test(variable)) {
+    return <Opacity value={value} />;
+  }
+
+  return <code>{value}</code>;
+};
+
+const getValueRender = (variable: string, value: string) => {
+  if (!/opacity|shadow/.test(variable)) {
+    return <ComputedValue value={value} />;
   }
 
   return <code>{value}</code>;
@@ -49,6 +65,7 @@ export const SemanticTokensTable = ({ tokens }: TokenTableProps) => {
             <Table.Row>
               <Table.HeaderCell>Navn</Table.HeaderCell>
               <Table.HeaderCell>Verdi</Table.HeaderCell>
+              <Table.HeaderCell>Forhåndsvisning</Table.HeaderCell>
             </Table.Row>
           </Table.Head>
           <Table.Body>
@@ -57,7 +74,8 @@ export const SemanticTokensTable = ({ tokens }: TokenTableProps) => {
                 <Table.Cell>
                   <code>{variable}</code>
                 </Table.Cell>
-                <Table.Cell>{valueRenderer(variable, value)}</Table.Cell>
+                <Table.Cell>{getValueRender(variable, value)}</Table.Cell>
+                <Table.Cell>{getValuePreview(variable, value)}</Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>

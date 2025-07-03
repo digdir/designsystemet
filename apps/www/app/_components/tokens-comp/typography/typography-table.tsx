@@ -19,7 +19,7 @@ type PreviewToken = { variable: string; value: string; path: string[] };
 const groupedByPathIndex = (index = 0) =>
   R.groupBy((token: PreviewToken) => token.path[index] || 'rest');
 
-const valuePreview = (variable: string, value: string) => {
+const getValuePreview = (variable: string, value: string) => {
   if (variable.includes('font-size')) {
     return <FontSize value={value} />;
   }
@@ -76,7 +76,9 @@ const TypographySetTables = ({
                       <Table.Cell>
                         <code>{value}</code>
                       </Table.Cell>
-                      <Table.Cell>{valuePreview(variable, value)}</Table.Cell>
+                      <Table.Cell>
+                        {getValuePreview(variable, value)}
+                      </Table.Cell>
                     </Table.Row>
                   );
                 })}
@@ -126,7 +128,7 @@ export const TypographyTable = ({ tokens }: TokenTableProps) => {
                 <Table.Cell>
                   <code>{value}</code>
                 </Table.Cell>
-                <Table.Cell>{valuePreview(variable, value)}</Table.Cell>
+                <Table.Cell>{getValuePreview(variable, value)}</Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>
