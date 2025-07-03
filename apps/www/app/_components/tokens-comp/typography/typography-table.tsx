@@ -55,7 +55,7 @@ const TypographySetTables = ({
       ([typographyName, typographyTokens]) => {
         return (
           <div key={typographyName}>
-            <Table data-color='neutral' key={typographyName} zebra>
+            <Table data-color='neutral' key={typographyName}>
               <caption>
                 <Heading level={5} data-size='sm'>
                   {`${capitalizeString(path)} ${typographyName}`}
@@ -110,7 +110,7 @@ export const TypographyTable = ({ tokens }: TokenTableProps) => {
       <TypographySetTables key={path} tokens={groupByTypography} />
     ) : (
       <div key={path}>
-        <Table data-color='neutral' key={path} zebra>
+        <Table data-color='neutral' key={path}>
           <caption>
             <Heading level={5} data-size='sm'>
               {capitalizeString(path)}
