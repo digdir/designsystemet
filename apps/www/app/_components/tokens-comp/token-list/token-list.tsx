@@ -1,4 +1,10 @@
-import { Field, Heading, Label, Search } from '@digdir/designsystemet-react';
+import {
+  Field,
+  Heading,
+  Label,
+  Search,
+  useDebounceCallback,
+} from '@digdir/designsystemet-react';
 import { useState } from 'react';
 import { capitalizeString } from '~/_utils/string-helpers';
 import colorTokens from '~/tokens/color.json';
@@ -36,6 +42,10 @@ const filteredRecord = (
 export const TokenList = () => {
   const [value, setValue] = useState<string>('');
 
+  const debouncedCallback = useDebounceCallback((value: string) => {
+    setValue(value);
+  }, 1000);
+
   const filteredColorTokens = filteredRecord(colorTokens, value);
   const filteredTypographyTokens = filteredRecord(typographyTokens, value);
   const filteredSemanticTokens = semanticTokens.filter((token) =>
@@ -50,7 +60,7 @@ export const TokenList = () => {
           <Search.Input
             aria-label='Søk på variabel navn i CSS for design tokens'
             value={value}
-            onChange={(e) => setValue(e.target.value)}
+            onChange={(e) => debouncedCallback(e.target.value)}
           />
           <Search.Clear />
           <Search.Button />
