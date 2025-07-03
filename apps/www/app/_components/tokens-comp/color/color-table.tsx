@@ -1,7 +1,7 @@
 import { Table } from '@digdir/designsystemet-react';
 import type { HTMLAttributes } from 'react';
-import { ColorDark, ColorLight } from './token-color/token-color';
-import type { PreviewToken } from './types';
+import type { PreviewToken } from '../types';
+import { ColorDark, ColorLight } from './color-previews';
 
 type TokenTableProps = {
   tokens: PreviewToken[];
