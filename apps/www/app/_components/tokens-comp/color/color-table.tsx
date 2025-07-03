@@ -1,15 +1,22 @@
-import { Table } from '@digdir/designsystemet-react';
+import { Heading, Table } from '@digdir/designsystemet-react';
 import type { HTMLAttributes } from 'react';
+import { capitalizeString } from '~/_utils/string-helpers';
 import type { PreviewToken } from '../types';
 import { ColorDark, ColorLight } from './color-previews';
 
 type TokenTableProps = {
   tokens: PreviewToken[];
+  title: string;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const ColorTokensTable = ({ tokens }: TokenTableProps) => {
+export const ColorTokensTable = ({ tokens, title }: TokenTableProps) => {
   return (
-    <Table data-color='neutral'>
+    <Table data-color='neutral' zebra>
+      <caption>
+        <Heading level={4} data-size='md'>
+          {capitalizeString(title)}
+        </Heading>
+      </caption>
       <Table.Head>
         <Table.Row>
           <Table.HeaderCell>Navn</Table.HeaderCell>
