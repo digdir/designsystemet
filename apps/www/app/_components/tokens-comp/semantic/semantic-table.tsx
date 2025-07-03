@@ -57,7 +57,7 @@ export const SemanticTokensTable = ({ tokens }: TokenTableProps) => {
 
     return (
       <div key={path}>
-        <Table data-color='neutral' zebra>
+        <Table data-color='neutral'>
           <caption>
             <Heading level={5} data-size='sm'>
               {capitalizeString(prettifiedPath)}
