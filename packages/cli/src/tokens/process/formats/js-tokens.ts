@@ -3,7 +3,7 @@ import type { Format, TransformedToken } from 'style-dictionary/types';
 import { createPropertyFormatter, fileHeader } from 'style-dictionary/utils';
 
 import { getType, inlineTokens, isColorCategoryToken, pathStartsWithOneOf } from '../../utils.js';
-import { isInlineTokens, overrideSizingFormula } from './css/semantic.js';
+import { isInlineTokens, overrideSizingFormula } from './css/size.js';
 
 const groupByType = R.groupBy((token: TransformedToken) => getType(token));
 
