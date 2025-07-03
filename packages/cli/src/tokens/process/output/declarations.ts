@@ -24,7 +24,7 @@ import type {} from '@digdir/designsystemet-react/colors';
 
 declare module '@digdir/designsystemet-react/colors' {
   export interface MainAndSupportColors {
-${colors.map((color) => `    '${color}': never;`).join('\n')}
+${colors.map((color) => `    ${color.includes('-') ? `'${color}'` : color}: never;`).join('\n')}
   }
 }
 `.trimStart();
