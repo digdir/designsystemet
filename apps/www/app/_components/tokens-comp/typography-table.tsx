@@ -49,18 +49,12 @@ const TypographySetTables = ({
               </Table.Head>
               <Table.Body>
                 {typographyTokens?.map(({ variable, value }, index) => {
-                  const rowSpan =
-                    index === 0 ? typographyTokens.length : undefined;
                   return (
                     <Table.Row key={variable}>
                       <Table.Cell>
                         <code>{variable}</code>
                       </Table.Cell>
-                      {rowSpan && (
-                        <Table.Cell rowSpan={rowSpan}>
-                          {valueRenderer(variable, value)}
-                        </Table.Cell>
-                      )}
+                      <Table.Cell>{valueRenderer(variable, value)}</Table.Cell>
                     </Table.Row>
                   );
                 })}
