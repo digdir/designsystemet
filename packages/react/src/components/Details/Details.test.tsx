@@ -9,12 +9,10 @@ const VOID = () => {};
 
 const TestComponent = (rest: DetailsProps): JSX.Element => {
   return (
-    <>
-      <Details {...rest}>
-        <Details.Summary>Details Header Title Text</Details.Summary>
-        <Details.Content>The fantastic details content text</Details.Content>
-      </Details>
-    </>
+    <Details {...rest}>
+      <Details.Summary>Details Header Title Text</Details.Summary>
+      <Details.Content>The fantastic details content text</Details.Content>
+    </Details>
   );
 };
 
