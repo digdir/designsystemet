@@ -11,7 +11,7 @@ type TokenTableProps = {
 
 export const ColorTokensTable = ({ tokens, title }: TokenTableProps) => {
   return (
-    <Table data-color='neutral' zebra>
+    <Table data-color='neutral'>
       <caption>
         <Heading level={4} data-size='md'>
           {capitalizeString(title)}
