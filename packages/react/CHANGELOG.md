@@ -1,5 +1,19 @@
 # Change Log
 
+## 1.1.3
+
+### Patch Changes
+
+- **Field**: Make sure there will be no duplicate IDs when having multiple of the same `data-field` type ([#3794](https://github.com/digdir/designsystemet/pull/3794))
+
+- **Textfield**: Fix wrong type definition for `type` prop ([#3797](https://github.com/digdir/designsystemet/pull/3797))
+
+- **Suggestion**: Visual value didn't correctly update in single mode when controlled value was updated externally ([#3782](https://github.com/digdir/designsystemet/pull/3782))
+
+- Fix typo in `Suggestion.Chips` jsdoc ([#3798](https://github.com/digdir/designsystemet/pull/3798))
+
+- **usePagination**: Don't send negative pages if `showPages` is greater than `totalPages` ([#3793](https://github.com/digdir/designsystemet/pull/3793))
+
 ## 1.1.2
 
 ### Patch Changes

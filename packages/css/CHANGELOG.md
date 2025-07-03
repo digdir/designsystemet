@@ -1,5 +1,15 @@
 # Change Log
 
+## 1.1.3
+
+### Patch Changes
+
+- **Field**: The gap between `label` and `Radio`/`Checkbox`/`Switch` is now clickable ([#3785](https://github.com/digdir/designsystemet/pull/3785))
+
+- **Details**: Single outer padding when multiple children ([#3796](https://github.com/digdir/designsystemet/pull/3796))
+
+- Round to nearest 1px a few places ([#3786](https://github.com/digdir/designsystemet/pull/3786))
+
 ## 1.1.2
 
 ### Patch Changes
