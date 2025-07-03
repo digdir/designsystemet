@@ -1,4 +1,5 @@
 import path from 'node:path';
+import chalk from 'chalk';
 import type { TransformedToken } from 'style-dictionary/types';
 import config from '../../../theme/configs/designsystemet.config.json' with { type: 'json' };
 import { generate$Themes } from '../tokens/create/generators/$themes.js';
@@ -14,7 +15,7 @@ async function write(files: OutputFile[], outDir: string, dry?: boolean) {
       const filePath = path.join(outDir, destination);
       const fileDir = path.dirname(filePath);
 
-      console.log(destination);
+      console.log(`Writing file: ${chalk.green(filePath)}`);
 
       await mkdir(fileDir, dry);
       await writeFile(filePath, output, dry);
@@ -37,11 +38,13 @@ type PreviewToken = { variable: string; value: string };
 
 export const formatTheme = async (themeConfig: Theme) => {
   const { tokenSets } = await createTokens(themeConfig);
+  const outDir = '../../../../apps/www/app/tokens';
 
   const $themes = await generate$Themes(['dark', 'light'], [themeConfig.name], themeConfig.colors);
   const processed$themes = $themes.map(processThemeObject);
 
-  const processedBuilds = await processPlatform({
+  // We run this to populate the `buildOptions.buildTokenFormats` with transformed tokens
+  await processPlatform({
     type: 'format',
     tokenSets,
     processed$themes,
@@ -51,13 +54,17 @@ export const formatTheme = async (themeConfig: Theme) => {
 
   await cleanDir('./temp/tokens', false);
 
-  console.log(buildOptions?.buildTokenFormats ? 'Building token formats...' : 'No token formats to build.');
+  console.log(
+    buildOptions?.buildTokenFormats
+      ? `\n🏗️ Start building preview tokens for ${chalk.blue('Designsystemet')}\n`
+      : '\n🚫 No token formats to build.',
+  );
 
   const tokensGroupedByType: Record<string, PreviewToken[] | Record<string, PreviewToken[]>> = {};
 
   if (buildOptions?.buildTokenFormats) {
     for (const [destination, tokenFormats] of Object.entries(buildOptions.buildTokenFormats)) {
-      console.log(`Processing token formats for ${destination}`);
+      console.log(`Processing preview tokens for ${chalk.green(destination)}`);
       const splits = destination.replace('.css', '').split('/');
       const [type, name] = splits;
       tokensGroupedByType[type] = tokensGroupedByType[type] === undefined ? {} : tokensGroupedByType[type];
@@ -79,11 +86,13 @@ export const formatTheme = async (themeConfig: Theme) => {
       }
     }
 
+    console.log(`\n💾 Writing preview tokens`);
+
     for (const [type, tokens] of Object.entries(tokensGroupedByType)) {
       write(
         [
           {
-            destination: `../../../../apps/www/app/tokens/${type}.json`,
+            destination: `${outDir}/${type}.json`,
             output: JSON.stringify(tokens, null, 2),
           },
         ],
@@ -91,8 +100,7 @@ export const formatTheme = async (themeConfig: Theme) => {
         false,
       );
     }
-
-    return processedBuilds;
+    console.log(`\n✅ Finished building preview tokens for ${chalk.blue('Designsystemet')}`);
   }
 };
 
