@@ -42,3 +42,8 @@
     background-color: var(--ds-color-accent-base-default);
   }
 }
+
+.overflow-table {
+  width: 100%;
+  overflow-x: auto;
+}
