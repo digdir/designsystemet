@@ -47,10 +47,10 @@ const ComboboxOption = memo(
 
       return (
         <Label data-size='md' asChild>
+          {/** biome-ignore lint/a11y/useSemanticElements: no need to change - deprecated */}
           <button
             ref={ref}
             id={id}
-            // biome-ignore lint/a11y/useSemanticElements: biome wants me to use the <option> element
             role='option'
             type='button'
             aria-selected={!!selected}

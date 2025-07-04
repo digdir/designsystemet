@@ -258,42 +258,40 @@ export const DialogWithSuggestion: StoryFn<typeof Dialog> = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   return (
-    <>
-      <Dialog.TriggerContext>
-        <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-        <Dialog style={{ overflow: 'visible' }} ref={dialogRef}>
-          <Dialog.Block>
-            <Heading>Dialog med suggestion</Heading>
-          </Dialog.Block>
-          <Dialog.Block>
-            <Field>
-              <Label>Velg en destinasjon</Label>
-              <Suggestion>
-                <Suggestion.Input />
-                <Suggestion.Clear />
-                <Suggestion.List>
-                  <Suggestion.Empty>Tomt</Suggestion.Empty>
-                  {DATA_PLACES.map((place) => (
-                    <Suggestion.Option key={place} value={place}>
-                      {place}
-                      <div>Kommune</div>
-                    </Suggestion.Option>
-                  ))}
-                </Suggestion.List>
-              </Suggestion>
-            </Field>
-          </Dialog.Block>
-          <Dialog.Block>
-            <Button
-              variant='secondary'
-              onClick={() => dialogRef.current?.close()}
-            >
-              Avbryt
-            </Button>
-          </Dialog.Block>
-        </Dialog>
-      </Dialog.TriggerContext>
-    </>
+    <Dialog.TriggerContext>
+      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+      <Dialog style={{ overflow: 'visible' }} ref={dialogRef}>
+        <Dialog.Block>
+          <Heading>Dialog med suggestion</Heading>
+        </Dialog.Block>
+        <Dialog.Block>
+          <Field>
+            <Label>Velg en destinasjon</Label>
+            <Suggestion>
+              <Suggestion.Input />
+              <Suggestion.Clear />
+              <Suggestion.List>
+                <Suggestion.Empty>Tomt</Suggestion.Empty>
+                {DATA_PLACES.map((place) => (
+                  <Suggestion.Option key={place} value={place}>
+                    {place}
+                    <div>Kommune</div>
+                  </Suggestion.Option>
+                ))}
+              </Suggestion.List>
+            </Suggestion>
+          </Field>
+        </Dialog.Block>
+        <Dialog.Block>
+          <Button
+            variant='secondary'
+            onClick={() => dialogRef.current?.close()}
+          >
+            Avbryt
+          </Button>
+        </Dialog.Block>
+      </Dialog>
+    </Dialog.TriggerContext>
   );
 };
 

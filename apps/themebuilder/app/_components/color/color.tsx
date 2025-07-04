@@ -14,21 +14,15 @@ type ColorProps = {
 export const Color = forwardRef<HTMLButtonElement, ColorProps>(
   ({ color, featured, ...rest }, ref) => {
     return (
-      <>
-        <Slottable>
-          <button
-            ref={ref}
-            style={{ backgroundColor: color }}
-            className={cl(
-              classes.box,
-              featured && classes.featured,
-              'ds-focus',
-            )}
-            type='button'
-            {...omit(['colorName'], rest)}
-          />
-        </Slottable>
-      </>
+      <Slottable>
+        <button
+          ref={ref}
+          style={{ backgroundColor: color }}
+          className={cl(classes.box, featured && classes.featured, 'ds-focus')}
+          type='button'
+          {...omit(['colorName'], rest)}
+        />
+      </Slottable>
     );
   },
 );
