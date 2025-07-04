@@ -45,7 +45,7 @@ export const BorderRadius = ({ value }: { value: string }) => {
 };
 
 export const Opacity = ({ value }: { value: string }) => {
-  return <div style={{ opacity: value }}>opacity</div>;
+  return <div style={{ opacity: value }} lang='en'>opacity</div>;
 };
 
 export const ComputedValue = ({ value }: { value: string }) => {
