@@ -1,7 +1,10 @@
 import { join } from 'node:path';
-import { Heading } from '@digdir/designsystemet-react';
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Error404 } from '@internal/components';
 import * as Aksel from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
+import { useTranslation } from 'react-i18next';
+import { isRouteErrorResponse } from 'react-router';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { formatDate } from '~/_utils/date';
@@ -87,5 +90,27 @@ export default function Fundamentals({
         <EditPageOnGithub />
       </div>
     </>
+  );
+}
+
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  const { t } = useTranslation();
+
+  const message = t('errors.default.title');
+  let details = t('errors.default.details');
+
+  if (isRouteErrorResponse(error)) {
+    if (error.status === 404) {
+      return <Error404 />;
+    }
+  } else if (import.meta.env.DEV && error && error instanceof Error) {
+    details = error.message;
+  }
+
+  return (
+    <div>
+      <Heading level={1}>{message}</Heading>
+      <Paragraph>{details}</Paragraph>
+    </div>
   );
 }

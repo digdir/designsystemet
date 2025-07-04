@@ -11,12 +11,10 @@ const OPEN_Dialog = 'Open Dialog';
 
 const Comp = (args: Partial<DialogProps>) => {
   return (
-    <>
-      <Dialog.TriggerContext>
-        <Dialog.Trigger>{OPEN_Dialog}</Dialog.Trigger>
-        <Dialog {...args} />
-      </Dialog.TriggerContext>
-    </>
+    <Dialog.TriggerContext>
+      <Dialog.Trigger>{OPEN_Dialog}</Dialog.Trigger>
+      <Dialog {...args} />
+    </Dialog.TriggerContext>
   );
 };
 

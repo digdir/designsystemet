@@ -27,20 +27,18 @@ const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const Comp = (args: Partial<ComboboxProps>) => {
   return (
-    <>
-      <Combobox {...args}>
-        <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-        {PLACES.map((option, index) => (
-          <Combobox.Option
-            key={index}
-            value={option.value}
-            displayValue={option.name}
-          >
-            {option.name}
-          </Combobox.Option>
-        ))}
-      </Combobox>
-    </>
+    <Combobox {...args}>
+      <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+      {PLACES.map((option, index) => (
+        <Combobox.Option
+          key={index}
+          value={option.value}
+          displayValue={option.name}
+        >
+          {option.name}
+        </Combobox.Option>
+      ))}
+    </Combobox>
   );
 };
 
