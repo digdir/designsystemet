@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react-vite';
-import { createSingleStory } from '../../../stories/utils/createSingleStory';
+import { createSingleStory } from '../../../stories/utils/create-single-story';
 import { Paragraph } from '.';
 import * as ParagraphStories from './paragraph.stories';
 
