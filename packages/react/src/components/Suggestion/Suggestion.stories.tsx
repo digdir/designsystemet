@@ -81,7 +81,7 @@ export const Preview: StoryFn<typeof Suggestion> = (args) => {
   );
 };
 
-export const ControlledSingle: StoryFn<typeof Suggestion> = (args) => {
+export const ControlledSingleArray: StoryFn<typeof Suggestion> = (args) => {
   const [value, setValue] = useState<string[]>(['Oslo']);
 
   return (
@@ -123,7 +123,7 @@ export const ControlledSingle: StoryFn<typeof Suggestion> = (args) => {
     </>
   );
 };
-ControlledSingle.play = async ({ canvasElement, step }) => {
+ControlledSingleArray.play = async ({ canvasElement, step }) => {
   const input = await waitFor(() =>
     within(canvasElement).getByRole('combobox'),
   );
@@ -138,6 +138,72 @@ ControlledSingle.play = async ({ canvasElement, step }) => {
   await step('Initial state is rendered correctly', async () => {
     await expect(resultText).toHaveTextContent('Oslo');
     await waitFor(() => expect(input).toHaveValue('Oslo'));
+  });
+
+  await step('Controlled state change renders correctly', async () => {
+    await userEvent.click(button);
+    await expect(resultText).toHaveTextContent('Sogndal');
+    await waitFor(() => expect(input).toHaveValue('Sogndal'));
+  });
+};
+
+export const ControlledSingle: StoryFn<typeof Suggestion> = (args) => {
+  const [value, setValue] = useState<string>('');
+
+  return (
+    <>
+      <Field>
+        <Label>Velg destinasjon</Label>
+        <Suggestion
+          {...args}
+          value={value}
+          onValueChange={(items) => setValue(items.at(0)?.value ?? '')}
+        >
+          <Suggestion.Chips />
+          <Suggestion.Input />
+          <Suggestion.Clear />
+          <Suggestion.List>
+            <Suggestion.Empty>Tomt</Suggestion.Empty>
+            {DATA_PLACES.map((place) => (
+              <Suggestion.Option key={place} label={place} value={place}>
+                {place}
+                <div>Kommune</div>
+              </Suggestion.Option>
+            ))}
+          </Suggestion.List>
+        </Suggestion>
+      </Field>
+      <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
+
+      <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
+        Valgte reisemål: {value}
+      </Paragraph>
+
+      <Button
+        onClick={() => {
+          setValue('Sogndal');
+        }}
+      >
+        Sett reisemål til Sogndal
+      </Button>
+    </>
+  );
+};
+ControlledSingle.play = async ({ canvasElement, step }) => {
+  const input = await waitFor(() =>
+    within(canvasElement).getByRole('combobox'),
+  );
+  const resultText = within(canvasElement).getByText('Valgte reisemål:', {
+    exact: false,
+  });
+  const button = within(canvasElement).getByText('Sett reisemål', {
+    exact: false,
+    selector: 'button',
+  });
+
+  await step('Initial state is empty', async () => {
+    await expect(resultText).toHaveTextContent(/^Valgte reisemål:$/);
+    await waitFor(() => expect(input).toHaveValue(''));
   });
 
   await step('Controlled state change renders correctly', async () => {
