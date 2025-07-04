@@ -33,7 +33,7 @@
     "postcss": "^8.5.6",
     "rollup": "^4.44.0",
     "typescript": "^5.8.3",
-    "vite": "^6.3.5",
+    "vite": "^7.0.0",
     "vite-plugin-react-rich-svg": "^1.2.1",
     "vite-plugin-singlefile": "^2.2.0",
     "zustand": "^5.0.5"
