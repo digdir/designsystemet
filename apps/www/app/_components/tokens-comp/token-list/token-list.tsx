@@ -113,6 +113,11 @@ export const TokenList = () => {
             </div>
           </>
         )}
+        
+        {filteredSemanticTokens.length +
+          filteredTypographyTokens.length +
+          filteredColorTokens.length ===
+          0 && <Paragraph>Ingen resultater funnet</Paragraph>}
       </div>
     </>
   );
