@@ -66,7 +66,6 @@ export const TokenList = () => {
             onChange={(e) => debouncedCallback(e.target.value)}
           />
           <Search.Clear />
-          <Search.Button />
         </Search>
       </Field>
 
