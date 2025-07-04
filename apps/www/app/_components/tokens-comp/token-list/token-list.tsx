@@ -2,10 +2,11 @@ import {
   Field,
   Heading,
   Label,
+  Paragraph,
   Search,
   useDebounceCallback,
 } from '@digdir/designsystemet-react';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { capitalizeString } from '~/_utils/string-helpers';
 import colorTokens from '~/tokens/color.json';
 import semanticTokens from '~/tokens/semantic.json';
@@ -73,34 +74,34 @@ export const TokenList = () => {
         {filteredColorTokens.length > 0 &&
           filteredColorTokens.map(([name, tokens]) => {
             return (
-              <>
+              <Fragment key={name}>
                 <Heading level={3} data-size='lg'>
                   Farger
                 </Heading>
-                <div key={name as string} className={classes.section}>
+                <div className={classes.section}>
                   <ColorTokensTable
                     tokens={tokens}
-                    title={capitalizeString(name as string)}
+                    title={capitalizeString(name)}
                   />
                 </div>
-              </>
+              </Fragment>
             );
           })}
 
         {filteredTypographyTokens.length > 0 &&
           filteredTypographyTokens.map(([name, tokens]) => {
             return (
-              <>
+              <Fragment key={name}>
                 <Heading level={3} data-size='lg'>
                   Typografi
                 </Heading>
-                <div key={name as string} className={classes.section}>
+                <div className={classes.section}>
                   <Heading level={4} data-size='md'>
-                    {capitalizeString(name as string)}
+                    {capitalizeString(name)}
                   </Heading>
                   <TypographyTable tokens={tokens} />
                 </div>
-              </>
+              </Fragment>
             );
           })}
         {filteredSemanticTokens.length > 0 && (
@@ -108,12 +109,12 @@ export const TokenList = () => {
             <Heading level={3} data-size='lg'>
               Semantiske
             </Heading>
-            <div key={'semantic'} className={classes.section}>
+            <div className={classes.section}>
               <SemanticTokensTable tokens={filteredSemanticTokens} />
             </div>
           </>
         )}
-        
+
         {filteredSemanticTokens.length +
           filteredTypographyTokens.length +
           filteredColorTokens.length ===

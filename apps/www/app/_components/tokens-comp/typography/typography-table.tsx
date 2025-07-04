@@ -55,7 +55,7 @@ const TypographySetTables = ({
       ([typographyName, typographyTokens]) => {
         return (
           <div key={typographyName}>
-            <Table data-color='neutral' key={typographyName}>
+            <Table data-color='neutral'>
               <caption>
                 <Heading level={5} data-size='sm'>
                   {`${capitalizeString(path)} ${typographyName}`}
