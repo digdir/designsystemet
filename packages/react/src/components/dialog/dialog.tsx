@@ -5,7 +5,7 @@ import { forwardRef, useContext, useEffect, useRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { useMergeRefs } from '../../utilities/hooks';
-import { Button } from '../Button';
+import { Button } from '../button';
 import { Context } from './dialog-trigger-context';
 
 export type DialogProps = MergeRight<
