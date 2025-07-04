@@ -61,8 +61,7 @@ export const loader = async ({
         hex: (urlParams.get('neutral') as CssColor) || NEUTRAL_COLOR,
       },
     ],
-    support:
-      createColorsFromQuery(urlParams.get('support') || SUPPORT_COLORS) || [],
+    support: createColorsFromQuery(urlParams.get('support')),
   };
 
   return {

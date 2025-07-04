@@ -30,7 +30,8 @@ export const useThemebuilder = () => {
   };
 };
 
-export function createColorsFromQuery(colors: string) {
+export function createColorsFromQuery(colors: string | null) {
+  if (!colors) return [];
   return colors.split(QUERY_SEPARATOR).map((color) => {
     const [name, hex] = color.split(':');
     return {
