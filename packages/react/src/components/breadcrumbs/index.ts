@@ -31,7 +31,7 @@ Breadcrumbs.List.displayName = 'Breadcrumbs.List';
 Breadcrumbs.Item.displayName = 'Breadcrumbs.Item';
 Breadcrumbs.Link.displayName = 'Breadcrumbs.Link';
 
-export type { BreadcrumbsProps } from './Breadcrumbs';
+export type { BreadcrumbsProps } from './breadcrumbs';
 export type { BreadcrumbsItemProps } from './breadcrumbs-item';
 export type { BreadcrumbsLinkProps } from './breadcrumbs-link';
 export type { BreadcrumbsListProps } from './breadcrumbs-list';

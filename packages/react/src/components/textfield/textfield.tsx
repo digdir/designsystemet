@@ -9,7 +9,7 @@ import {
   FieldDescription,
 } from '../field';
 import { Input, type InputProps } from '../input';
-import { Label } from '../Label';
+import { Label } from '../label';
 import { Textarea, type TextareaProps } from '../textarea';
 import { ValidationMessage } from '../validation-message';
 

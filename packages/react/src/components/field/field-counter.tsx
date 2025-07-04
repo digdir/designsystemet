@@ -1,5 +1,5 @@
 import { forwardRef, useEffect, useRef, useState } from 'react';
-import { Paragraph } from '../Paragraph';
+import { Paragraph } from '../paragraph';
 import {
   ValidationMessage,
   type ValidationMessageProps,

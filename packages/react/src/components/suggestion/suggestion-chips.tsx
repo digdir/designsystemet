@@ -2,7 +2,7 @@ import type { HTMLAttributes, ReactNode } from 'react';
 import { useContext } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
-import { Chip } from '../Chip';
+import { Chip } from '../chip';
 import { SuggestionContext } from './suggestion';
 
 export type SuggestionChipsProps = MergeRight<
