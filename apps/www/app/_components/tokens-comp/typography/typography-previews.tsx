@@ -18,5 +18,5 @@ export const FontFamily = ({ value }: { value: string }) => {
 };
 
 export const LetterSpacing = ({ value }: { value: string }) => {
-  return <div style={{ letterSpacing: value }}>letter spacing</div>;
+  return <div style={{ letterSpacing: value }} lang='en'>letter spacing</div>;
 };
