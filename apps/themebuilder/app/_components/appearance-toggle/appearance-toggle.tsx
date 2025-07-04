@@ -29,6 +29,7 @@ export const AppearanceToggle = ({
   return (
     <div className={classes.toggle} role='radiogroup'>
       {colorSchemes.map((scheme) => (
+        // biome-ignore lint/a11y/useSemanticElements: TODO: convert to real radios
         <Button
           data-size='sm'
           className={cl(classes.item)}
@@ -50,6 +51,7 @@ export const AppearanceToggle = ({
           aria-label={`${t('appearanceToggle.set-to')} ${scheme.name} ${t('appearanceToggle.view')}`}
           aria-checked={scheme.value === colorScheme}
           aria-current={scheme.value === colorScheme}
+          role='radio'
         >
           {' '}
           {scheme.value === 'light' && (
