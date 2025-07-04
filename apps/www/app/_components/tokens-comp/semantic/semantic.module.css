@@ -18,12 +18,14 @@
   background-color: #fff;
   padding: var(--ds-size-2);
   border-radius: var(--ds-border-radius-md);
-  height: 60px;
-  width: 60px;
+  height: var(--ds-size-14);
+  width: var(--ds-size-14);
+  aspect-ratio: 1;
 
   .color {
-    height: 40px;
-    width: 40px;
+    height: var(--ds-size-10);
+    width: var(--ds-size-10);
+    aspect-ratio: 1;
     border-radius: var(--ds-border-radius-md);
     border: 1px solid #ebebeb;
   }
