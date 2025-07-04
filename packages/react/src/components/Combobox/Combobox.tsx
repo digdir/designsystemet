@@ -4,7 +4,7 @@ import cl from 'clsx/lite';
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useEffect, useRef, useState } from 'react';
 import { omit, useDebounceCallback } from '../../utilities';
-import { Spinner } from '../Spinner';
+import { Spinner } from '../spinner';
 import { ComboboxContext } from './ComboboxContext';
 import { ComboboxIdProvider } from './ComboboxIdContext';
 import { ComboboxCustom } from './Custom';

@@ -13,5 +13,5 @@ export {
   useSynchronizedAnimation,
 } from './hooks';
 export * from './omit/omit';
-export * from './RovingFocus';
+export * from './roving-focus';
 export type * from './types';

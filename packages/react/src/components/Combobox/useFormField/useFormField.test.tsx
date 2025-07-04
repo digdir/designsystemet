@@ -1,8 +1,8 @@
 import { renderHook } from '@testing-library/react';
 import type { ReactNode } from 'react';
 
-import type { FieldsetProps } from '../../../components/Fieldset';
-import { Fieldset } from '../../../components/Fieldset';
+import type { FieldsetProps } from '../../../components/fieldset';
+import { Fieldset } from '../../../components/fieldset';
 import type { FormField } from './useFormField';
 import { useFormField } from './useFormField';
 

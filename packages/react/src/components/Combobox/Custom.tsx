@@ -5,7 +5,7 @@ import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext, useId, useMemo } from 'react';
 
 import { omit } from '../../utilities';
-import { Label } from '../Label';
+import { Label } from '../label';
 
 import { ComboboxContext } from './ComboboxContext';
 import { useComboboxId } from './ComboboxIdContext';
