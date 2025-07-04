@@ -1,7 +1,7 @@
-import { Dialog as DialogParent } from './Dialog';
-import { DialogBlock } from './DialogBlock';
-import { DialogTrigger } from './DialogTrigger';
-import { DialogTriggerContext } from './DialogTriggerContext';
+import { Dialog as DialogParent } from './dialog';
+import { DialogBlock } from './dialog-block';
+import { DialogTrigger } from './dialog-trigger';
+import { DialogTriggerContext } from './dialog-trigger-context';
 
 /**
  * Dialog component, used to display a Dialog dialog.
@@ -26,8 +26,8 @@ Dialog.Block.displayName = 'Dialog.Block';
 Dialog.TriggerContext.displayName = 'Dialog.TriggerContext';
 Dialog.Trigger.displayName = 'Dialog.Trigger';
 
-export type { DialogProps } from './Dialog';
-export type { DialogBlockProps } from './DialogBlock';
-export type { DialogTriggerProps } from './DialogTrigger';
-export type { DialogTriggerContextProps } from './DialogTriggerContext';
+export type { DialogProps } from './dialog';
+export type { DialogBlockProps } from './dialog-block';
+export type { DialogTriggerProps } from './dialog-trigger';
+export type { DialogTriggerContextProps } from './dialog-trigger-context';
 export { Dialog, DialogBlock, DialogTriggerContext, DialogTrigger };

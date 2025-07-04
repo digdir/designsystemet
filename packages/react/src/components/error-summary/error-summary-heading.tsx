@@ -1,6 +1,6 @@
 import { forwardRef, useContext, useEffect } from 'react';
-import { Heading, type HeadingProps } from '../Heading';
-import { ErrorSummaryContext } from './ErrorSummary';
+import { Heading, type HeadingProps } from '../heading';
+import { ErrorSummaryContext } from './error-summary';
 
 export type ErrorSummaryHeadingProps = HeadingProps;
 

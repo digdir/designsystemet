@@ -1,7 +1,7 @@
-import { Pagination as PaginationParent } from './Pagination';
-import { PaginationButton } from './PaginationButton';
-import { PaginationItem } from './PaginationItem';
-import { PaginationList } from './PaginationList';
+import { Pagination as PaginationParent } from './pagination';
+import { PaginationButton } from './pagination-button';
+import { PaginationItem } from './pagination-item';
+import { PaginationList } from './pagination-list';
 
 /**
  * Pagination component, used to navigate through a list of items.
@@ -31,9 +31,9 @@ Pagination.List.displayName = 'Pagination.List';
 Pagination.Item.displayName = 'Pagination.Item';
 Pagination.Button.displayName = 'Pagination.Button';
 
-export type { PaginationProps } from './Pagination';
-export type { PaginationButtonProps } from './PaginationButton';
-export type { PaginationItemProps } from './PaginationItem';
-export type { PaginationListProps } from './PaginationList';
+export type { PaginationProps } from './pagination';
+export type { PaginationButtonProps } from './pagination-button';
+export type { PaginationItemProps } from './pagination-item';
+export type { PaginationListProps } from './pagination-list';
 
 export { Pagination, PaginationList, PaginationItem, PaginationButton };

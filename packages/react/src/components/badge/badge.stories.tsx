@@ -8,8 +8,8 @@ import {
   VideoIcon,
 } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react-vite';
-import { Button } from '../Button';
-import { Tabs } from '../Tabs';
+import { Button } from '../button';
+import { Tabs } from '../tabs';
 import { Badge } from './';
 
 type Story = StoryFn<typeof Badge>;

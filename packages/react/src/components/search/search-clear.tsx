@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { Button, type ButtonProps } from '../Button';
+import { Button, type ButtonProps } from '../button';
 import { setReactInputValue } from '../Combobox/utilities';
 
 /* We omit children since we render the icon with css */
@@ -12,7 +12,7 @@ export type SearchClearProps = Omit<ButtonProps, 'variant' | 'children'> & {
 };
 
 /**
- * SearchClear component, used to display a clear buttun when the search input is not empty.
+ * SearchClear component, used to display a clear button when the search input is not empty.
  *
  * @example
  * <Search>

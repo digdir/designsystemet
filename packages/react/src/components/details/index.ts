@@ -1,6 +1,6 @@
-import { Details as DetailsParent } from './Details';
-import { DetailsContent } from './DetailsContent';
-import { DetailsSummary } from './DetailsSummary';
+import { Details as DetailsParent } from './details';
+import { DetailsContent } from './details-content';
+import { DetailsSummary } from './details-summary';
 
 /**
  * Details component, contains `Details.Summary` and `Details.Content` components.
@@ -19,7 +19,7 @@ const Details = Object.assign(DetailsParent, {
 Details.Summary.displayName = 'Details.Summary';
 Details.Content.displayName = 'Details.Content';
 
-export type { DetailsProps } from './Details';
-export type { DetailsContentProps } from './DetailsContent';
-export type { DetailsSummaryProps } from './DetailsSummary';
+export type { DetailsProps } from './details';
+export type { DetailsContentProps } from './details-content';
+export type { DetailsSummaryProps } from './details-summary';
 export { Details, DetailsContent, DetailsSummary };

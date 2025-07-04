@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react';
 import type { VitestUtils } from 'vitest';
 import { vi } from 'vitest';
 
-import { useMediaQuery } from './useMediaQuery';
+import { useMediaQuery } from './use-media-query';
 
 // Test data:
 const query = '(min-width: 600px)';

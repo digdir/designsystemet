@@ -3,8 +3,8 @@ import { Paragraph } from '../Paragraph';
 import {
   ValidationMessage,
   type ValidationMessageProps,
-} from '../ValidationMessage';
-import { isInputLike } from './fieldObserver';
+} from '../validation-message';
+import { isInputLike } from './field-observer';
 
 export type FieldCounterProps = {
   /**

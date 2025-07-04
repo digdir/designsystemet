@@ -1,17 +1,17 @@
-import type { TableProps } from './Table';
-import { Table as TableRoot } from './Table';
-import type { TableBodyProps } from './TableBody';
-import { TableBody } from './TableBody';
-import type { TableCellProps } from './TableCell';
-import { TableCell } from './TableCell';
-import type { TableFootProps } from './TableFoot';
-import { TableFoot } from './TableFoot';
-import type { TableHeadProps } from './TableHead';
-import { TableHead } from './TableHead';
-import type { TableHeaderCellProps } from './TableHeaderCell';
-import { TableHeaderCell } from './TableHeaderCell';
-import type { TableRowProps } from './TableRow';
-import { TableRow } from './TableRow';
+import type { TableProps } from './table';
+import { Table as TableRoot } from './table';
+import type { TableBodyProps } from './table-body';
+import { TableBody } from './table-body';
+import type { TableCellProps } from './table-cell';
+import { TableCell } from './table-cell';
+import type { TableFootProps } from './table-foot';
+import { TableFoot } from './table-foot';
+import type { TableHeadProps } from './table-head';
+import { TableHead } from './table-head';
+import type { TableHeaderCellProps } from './table-header-cell';
+import { TableHeaderCell } from './table-header-cell';
+import type { TableRowProps } from './table-row';
+import { TableRow } from './table-row';
 
 /**
  * Table component, used to display tabular data. Renders a native HTML table element.

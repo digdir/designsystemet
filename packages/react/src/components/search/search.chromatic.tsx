@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import { Search } from '.';
-import * as SearchStories from './Search.stories';
+import * as SearchStories from './search.stories';
 
 const meta: Meta = {
   title: 'Chromatic/Search',

@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import { Table } from '.';
-import * as TableStories from './Table.stories';
+import * as TableStories from './table.stories';
 
 const meta: Meta = {
   title: 'Chromatic/Table',

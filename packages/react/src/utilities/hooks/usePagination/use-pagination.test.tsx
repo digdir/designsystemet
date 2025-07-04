@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react';
 import type { MouseEvent } from 'react';
-import { usePagination } from './usePagination';
+import { usePagination } from './use-pagination';
 
 describe('usePagination', () => {
   it('should provide correct amount of pages with 10 pages when current page is 6', () => {

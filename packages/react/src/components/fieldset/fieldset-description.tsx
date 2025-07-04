@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 
-import { Paragraph, type ParagraphProps } from '../Paragraph/Paragraph';
+import { Paragraph, type ParagraphProps } from '../paragraph';
 
 export type FieldsetDescriptionProps = ParagraphProps;
 

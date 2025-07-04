@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { Chip } from '../Chip';
-import { SuggestionContext } from './Suggestion';
+import { SuggestionContext } from './suggestion';
 
 export type SuggestionChipsProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDivElement>,

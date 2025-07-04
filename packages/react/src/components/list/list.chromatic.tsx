@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import { List } from '.';
-import * as ListStories from './List.stories';
+import * as ListStories from './list.stories';
 
 const meta: Meta = {
   title: 'Chromatic/List',

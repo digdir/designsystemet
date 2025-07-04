@@ -4,7 +4,7 @@ import type { HTMLAttributes } from 'react';
 import { forwardRef, useEffect, useRef } from 'react';
 import type { DefaultProps } from '../../types';
 import { useMergeRefs } from '../../utilities/hooks';
-import { fieldObserver } from './fieldObserver';
+import { fieldObserver } from './field-observer';
 
 export type FieldProps = {
   /**

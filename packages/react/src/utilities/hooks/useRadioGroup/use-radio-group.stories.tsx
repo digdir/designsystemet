@@ -9,7 +9,7 @@ import {
   Radio,
   ValidationMessage,
 } from '../../../components';
-import { type UseRadioGroupProps, useRadioGroup } from './useRadioGroup';
+import { type UseRadioGroupProps, useRadioGroup } from './use-radio-group';
 
 export const Preview: StoryFn<UseRadioGroupProps> = (args) => {
   const { getRadioProps } = useRadioGroup({

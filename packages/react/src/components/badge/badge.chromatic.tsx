@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import { Badge } from '.';
-import * as BadgeStories from './Badge.stories';
+import * as BadgeStories from './badge.stories';
 
 const meta: Meta = {
   title: 'Chromatic/Badge',

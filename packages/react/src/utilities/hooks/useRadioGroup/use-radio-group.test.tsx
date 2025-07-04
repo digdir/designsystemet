@@ -12,7 +12,7 @@ import {
   type GetRadioProps,
   type UseRadioGroupProps,
   useRadioGroup,
-} from './useRadioGroup';
+} from './use-radio-group';
 
 const RadioGroup = (args: UseRadioGroupProps) => {
   const { getRadioProps, validationMessageProps } = useRadioGroup(args);

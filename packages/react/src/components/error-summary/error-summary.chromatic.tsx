@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import { ErrorSummary } from '.';
-import * as ErrorSummaryStories from './ErrorSummary.stories';
+import * as ErrorSummaryStories from './error-summary.stories';
 
 const meta: Meta = {
   title: 'Chromatic/ErrorSummary',

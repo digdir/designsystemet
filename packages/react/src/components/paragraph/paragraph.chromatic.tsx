@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import { Paragraph } from '.';
-import * as ParagraphStories from './Paragraph.stories';
+import * as ParagraphStories from './paragraph.stories';
 
 const meta: Meta = {
   title: 'Chromatic/Paragraph',

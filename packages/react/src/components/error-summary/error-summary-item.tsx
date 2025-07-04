@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { ListItem, type ListItemProps } from '../List';
+import { ListItem, type ListItemProps } from '../list';
 
 export type ErrorSummaryItemProps = ListItemProps;
 

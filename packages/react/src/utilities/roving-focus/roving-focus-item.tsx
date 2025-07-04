@@ -6,8 +6,8 @@ import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 import { useMergeRefs } from '../hooks';
 
-import type { RovingFocusElement } from './RovingFocusRoot';
-import { useRovingFocus } from './useRovingFocus';
+import type { RovingFocusElement } from './roving-focus-root';
+import { useRovingFocus } from './use-roving-focus';
 
 type RovingFocusItemProps = {
   /** The value of the `RovingFocusItem` used to determine which item should have focus. */

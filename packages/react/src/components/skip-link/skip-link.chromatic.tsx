@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import { SkipLink } from '.';
-import * as SkipLinkStories from './SkipLink.stories';
+import * as SkipLinkStories from './skip-link.stories';
 
 const meta: Meta = {
   title: 'Chromatic/SkipLink',

@@ -1,7 +1,7 @@
 import type { OptionHTMLAttributes } from 'react';
 import { forwardRef, useContext } from 'react';
 import type { DefaultProps } from '../../types';
-import { SuggestionContext } from './Suggestion';
+import { SuggestionContext } from './suggestion';
 
 export type SuggestionEmptyProps = DefaultProps &
   OptionHTMLAttributes<HTMLOptionElement>;

@@ -2,7 +2,7 @@ import type { Meta } from '@storybook/react-vite';
 
 import { Paragraph } from '../../../components';
 
-import { useMediaQuery } from './useMediaQuery';
+import { useMediaQuery } from './use-media-query';
 
 const meta: Meta = {
   title: 'Utilities/useMediaQuery',

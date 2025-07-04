@@ -9,8 +9,8 @@ import {
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
 
-import { Button } from '../Button';
-import { Tooltip } from '../Tooltip';
+import { Button } from '../button';
+import { Tooltip } from '../tooltip';
 import { Tabs } from '.';
 
 export default {

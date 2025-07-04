@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import { Divider } from '.';
-import * as DividerStories from './Divider.stories';
+import * as DividerStories from './divider.stories';
 
 const meta: Meta = {
   title: 'Chromatic/Divider',

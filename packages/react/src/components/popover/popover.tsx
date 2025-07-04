@@ -17,7 +17,7 @@ import { forwardRef, useContext, useEffect, useRef, useState } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { useMergeRefs } from '../../utilities/hooks';
-import { Context } from './PopoverTriggerContext';
+import { Context } from './popover-trigger-context';
 
 // Make React support popovertarget attribute
 // https://github.com/facebook/react/issues/27479

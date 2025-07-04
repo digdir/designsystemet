@@ -1,9 +1,9 @@
 import { useContext, useId } from 'react';
 
-import type { ButtonProps } from '../Button';
-import { ToggleGroupContext } from './ToggleGroup';
+import type { ButtonProps } from '../button';
+import { ToggleGroupContext } from './toggle-group';
 
-import type { ToggleGroupItemProps } from './ToggleGroupItem';
+import type { ToggleGroupItemProps } from './toggle-group-item';
 
 type UseToggleGroupItem = (props: ToggleGroupItemProps) => {
   active: boolean;

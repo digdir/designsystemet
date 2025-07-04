@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import { ToggleGroup } from '.';
-import * as ToggleGroupStories from './ToggleGroup.stories';
+import * as ToggleGroupStories from './toggle-group.stories';
 
 const meta: Meta = {
   title: 'Chromatic/ToggleGroup',

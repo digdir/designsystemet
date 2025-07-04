@@ -1,2 +1,2 @@
-export type { ValidationMessageProps } from './ValidationMessage';
-export { ValidationMessage } from './ValidationMessage';
+export type { ValidationMessageProps } from './validation-message';
+export { ValidationMessage } from './validation-message';

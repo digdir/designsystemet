@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { Button } from '../../../components';
 
-import { useSynchronizedAnimation } from './useSynchronizedAnimation';
+import { useSynchronizedAnimation } from './use-synchronized-animation';
 
 const meta: Meta = {
   title: 'Utilities/useSynchronizedAnimation',

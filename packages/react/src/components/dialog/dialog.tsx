@@ -6,7 +6,7 @@ import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { useMergeRefs } from '../../utilities/hooks';
 import { Button } from '../Button';
-import { Context } from './DialogTriggerContext';
+import { Context } from './dialog-trigger-context';
 
 export type DialogProps = MergeRight<
   DefaultProps & DialogHTMLAttributes<HTMLDialogElement>,

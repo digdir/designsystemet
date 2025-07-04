@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import { Input } from '.';
-import * as InputStories from './Input.stories';
+import * as InputStories from './input.stories';
 
 const meta: Meta = {
   title: 'Chromatic/Input',

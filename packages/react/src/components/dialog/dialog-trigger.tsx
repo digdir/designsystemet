@@ -2,8 +2,8 @@ import { Slot } from '@radix-ui/react-slot';
 import type { ComponentPropsWithRef } from 'react';
 import { forwardRef, useContext } from 'react';
 
-import { Button } from '../Button/Button';
-import { Context } from './DialogTriggerContext';
+import { Button } from '../button/button';
+import { Context } from './dialog-trigger-context';
 
 export type DialogTriggerProps = ComponentPropsWithRef<typeof Button>;
 

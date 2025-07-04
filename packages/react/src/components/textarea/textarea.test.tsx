@@ -2,8 +2,8 @@ import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
 
-import type { TextareaProps } from './Textarea';
-import { Textarea } from './Textarea';
+import type { TextareaProps } from './textarea';
+import { Textarea } from './textarea';
 
 const user = userEvent.setup();
 

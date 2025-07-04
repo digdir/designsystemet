@@ -1,5 +1,5 @@
-import { Badge as BadgeElm } from './Badge';
-import { BadgePosition } from './BadgePosition';
+import { Badge as BadgeElm } from './badge';
+import { BadgePosition } from './badge-position';
 
 /**
  * `Badge` is a non-interactive component for displaying status with or without numbers.
@@ -12,5 +12,5 @@ const Badge = Object.assign(BadgeElm, { Position: BadgePosition });
 Badge.Position.displayName = 'Badge.Position';
 
 export { Badge, BadgePosition };
-export type { BadgeProps } from './Badge';
-export type { BadgePositionProps } from './BadgePosition';
+export type { BadgeProps } from './badge';
+export type { BadgePositionProps } from './badge-position';

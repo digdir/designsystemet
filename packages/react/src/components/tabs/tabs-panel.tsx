@@ -2,7 +2,7 @@ import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext, useEffect, useRef, useState } from 'react';
 
 import { useMergeRefs } from '../../utilities/hooks';
-import { Context } from './Tabs';
+import { Context } from './tabs';
 
 export type TabsPanelProps = {
   /**

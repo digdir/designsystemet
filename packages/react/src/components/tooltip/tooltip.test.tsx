@@ -2,8 +2,8 @@ import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
 
-import type { TooltipProps } from './Tooltip';
-import { Tooltip } from './Tooltip';
+import type { TooltipProps } from './tooltip';
+import { Tooltip } from './tooltip';
 
 const render = async (props: Partial<TooltipProps> = {}) => {
   const allProps: TooltipProps = {

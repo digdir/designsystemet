@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
 
-import { Radio } from './Radio';
+import { Radio } from './radio';
 
 describe('Radio', () => {
   test('has correct value and label', () => {

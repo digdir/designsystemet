@@ -1,2 +1,2 @@
-export type { TagProps } from './Tag';
-export { Tag } from './Tag';
+export type { TagProps } from './tag';
+export { Tag } from './tag';

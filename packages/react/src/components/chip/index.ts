@@ -1,4 +1,4 @@
-import { ChipButton, ChipCheckbox, ChipRadio, ChipRemovable } from './Chips';
+import { ChipButton, ChipCheckbox, ChipRadio, ChipRemovable } from './chips';
 
 const Chip = {
   Button: ChipButton,
@@ -17,5 +17,5 @@ export type {
   ChipCheckboxProps,
   ChipRadioProps,
   ChipRemovableProps,
-} from './Chips';
+} from './chips';
 export { Chip, ChipButton, ChipCheckbox, ChipRadio, ChipRemovable };

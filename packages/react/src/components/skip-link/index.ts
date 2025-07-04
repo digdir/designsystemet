@@ -1,2 +1,2 @@
-export type { SkipLinkProps } from './SkipLink';
-export { SkipLink } from './SkipLink';
+export type { SkipLinkProps } from './skip-link';
+export { SkipLink } from './skip-link';

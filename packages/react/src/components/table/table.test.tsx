@@ -7,8 +7,8 @@ import {
   TableHeaderCell,
   TableRow,
 } from '.';
-import type { TableProps } from './Table';
-import { Table } from './Table';
+import type { TableProps } from './table';
+import { Table } from './table';
 
 const children = (
   <>

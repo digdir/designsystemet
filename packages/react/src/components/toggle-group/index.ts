@@ -1,5 +1,5 @@
-import { ToggleGroup as ToggleGroupParent } from './ToggleGroup';
-import { ToggleGroupItem } from './ToggleGroupItem';
+import { ToggleGroup as ToggleGroupParent } from './toggle-group';
+import { ToggleGroupItem } from './toggle-group-item';
 
 /**
  * Display a group of buttons that can be toggled between.
@@ -17,6 +17,6 @@ const ToggleGroup = Object.assign(ToggleGroupParent, {
 
 ToggleGroup.Item.displayName = 'ToggleGroup.Item';
 
-export type { ToggleGroupProps } from './ToggleGroup';
-export type { ToggleGroupItemProps } from './ToggleGroupItem';
+export type { ToggleGroupProps } from './toggle-group';
+export type { ToggleGroupItemProps } from './toggle-group-item';
 export { ToggleGroup, ToggleGroupItem };
