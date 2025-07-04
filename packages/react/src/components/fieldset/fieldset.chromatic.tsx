@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import { Fieldset } from '.';
-import * as FieldsetStories from './Fieldset.stories';
+import * as FieldsetStories from './fieldset.stories';
 
 const meta: Meta = {
   title: 'Chromatic/Fieldset',
