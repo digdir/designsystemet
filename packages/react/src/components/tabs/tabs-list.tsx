@@ -1,9 +1,9 @@
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext } from 'react';
 
-import { RovingFocusRoot } from '../../utilities/RovingFocus';
+import { RovingFocusRoot } from '../../utilities/roving-focus';
 
-import { Context } from './Tabs';
+import { Context } from './tabs';
 
 export type TabsListProps = HTMLAttributes<HTMLDivElement>;
 

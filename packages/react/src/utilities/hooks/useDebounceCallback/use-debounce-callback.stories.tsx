@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { Paragraph, Textfield } from '../../../components';
 
-import { useDebounceCallback } from './useDebounceCallback';
+import { useDebounceCallback } from './use-debounce-callback';
 
 const meta: Meta = {
   title: 'Utilities/useDebounceCallback',

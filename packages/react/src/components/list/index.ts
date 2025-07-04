@@ -1,5 +1,5 @@
-import { ListItem } from './ListItem';
-import { ListOrdered, ListUnordered } from './Lists';
+import { ListItem } from './list-item';
+import { ListOrdered, ListUnordered } from './lists';
 
 const List = {
   Item: ListItem,
@@ -11,6 +11,6 @@ List.Item.displayName = 'List.Item';
 List.Ordered.displayName = 'List.Ordered';
 List.Unordered.displayName = 'List.Unordered';
 
-export type { ListItemProps } from './ListItem';
-export type { ListOrderedProps, ListUnorderedProps } from './Lists';
+export type { ListItemProps } from './list-item';
+export type { ListOrderedProps, ListUnorderedProps } from './lists';
 export { List, ListOrdered, ListUnordered, ListItem };

@@ -2,8 +2,8 @@ import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
 
-import type { TextfieldProps } from './Textfield';
-import { Textfield } from './Textfield';
+import type { TextfieldProps } from './textfield';
+import { Textfield } from './textfield';
 
 const user = userEvent.setup();
 

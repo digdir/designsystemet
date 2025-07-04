@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import { Chip } from '.';
-import * as ChipStories from './Chip.stories';
+import * as ChipStories from './chip.stories';
 
 const meta: Meta = {
   title: 'Chromatic/Chip',

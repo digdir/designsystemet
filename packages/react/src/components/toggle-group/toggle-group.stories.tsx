@@ -10,10 +10,10 @@ import {
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
 
-import { Button } from '../Button';
-import { Divider } from '../Divider';
-import { Paragraph } from '../Paragraph';
-import { Tooltip } from '../Tooltip';
+import { Button } from '../button';
+import { Divider } from '../divider';
+import { Paragraph } from '../paragraph';
+import { Tooltip } from '../tooltip';
 import { ToggleGroup } from '.';
 
 export default {

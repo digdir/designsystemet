@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import { Spinner } from '.';
-import * as SpinnerStories from './Spinner.stories';
+import * as SpinnerStories from './spinner.stories';
 
 const meta: Meta = {
   title: 'Chromatic/Spinner',

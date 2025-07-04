@@ -7,11 +7,11 @@ import {
   FieldAffixes,
   type FieldCounterProps,
   FieldDescription,
-} from '../Field';
-import { Input, type InputProps } from '../Input';
+} from '../field';
+import { Input, type InputProps } from '../input';
 import { Label } from '../Label';
-import { Textarea, type TextareaProps } from '../Textarea';
-import { ValidationMessage } from '../ValidationMessage';
+import { Textarea, type TextareaProps } from '../textarea';
+import { ValidationMessage } from '../validation-message';
 
 type InputProps_ = Omit<
   InputProps,

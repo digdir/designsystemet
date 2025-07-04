@@ -1,10 +1,10 @@
-import { Suggestion as SuggestionRoot } from './Suggestion';
-import { SuggestionChips } from './SuggestionChips';
-import { SuggestionClear } from './SuggestionClear';
-import { SuggestionEmpty } from './SuggestionEmpty';
-import { SuggestionInput } from './SuggestionInput';
-import { SuggestionList } from './SuggestionList';
-import { SuggestionOption } from './SuggestionOption';
+import { Suggestion as SuggestionRoot } from './suggestion';
+import { SuggestionChips } from './suggestion-chips';
+import { SuggestionClear } from './suggestion-clear';
+import { SuggestionEmpty } from './suggestion-empty';
+import { SuggestionInput } from './suggestion-input';
+import { SuggestionList } from './suggestion-list';
+import { SuggestionOption } from './suggestion-option';
 
 /**
  * A component that provides a suggestion list for an input field.
@@ -46,10 +46,10 @@ export {
   SuggestionOption as EXPERIMENTAL_SuggestionOption,
   SuggestionClear as EXPERIMENTAL_SuggestionClear,
 };
-export type { SuggestionProps, SuggestionValues } from './Suggestion'; // Export SuggestionValues for easier useState
-export type { SuggestionChipsProps } from './SuggestionChips';
-export type { SuggestionClearProps } from './SuggestionClear';
-export type { SuggestionEmptyProps } from './SuggestionEmpty';
-export type { SuggestionInputProps } from './SuggestionInput';
-export type { SuggestionListProps } from './SuggestionList';
-export type { SuggestionOptionProps } from './SuggestionOption';
+export type { SuggestionProps, SuggestionValues } from './suggestion'; // Export SuggestionValues for easier useState
+export type { SuggestionChipsProps } from './suggestion-chips';
+export type { SuggestionClearProps } from './suggestion-clear';
+export type { SuggestionEmptyProps } from './suggestion-empty';
+export type { SuggestionInputProps } from './suggestion-input';
+export type { SuggestionListProps } from './suggestion-list';
+export type { SuggestionOptionProps } from './suggestion-option';

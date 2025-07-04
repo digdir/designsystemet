@@ -1,8 +1,8 @@
 import { render as renderRtl, screen } from '@testing-library/react';
 import type { ComponentProps, RefObject } from 'react';
 import { createRef } from 'react';
-import type { LinkProps } from './Link';
-import { Link } from './Link';
+import type { LinkProps } from './link';
+import { Link } from './link';
 
 // Test data:
 const href = 'https://designsystemet.no/';

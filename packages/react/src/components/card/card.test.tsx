@@ -1,8 +1,8 @@
 import { render as renderRtl, screen } from '@testing-library/react';
 
-import type { CardProps } from './Card';
-import { Card } from './Card';
-import { CardBlock } from './CardBlock';
+import type { CardProps } from './card';
+import { Card } from './card';
+import { CardBlock } from './card-block';
 
 const renderCard = (props?: Partial<CardProps>) =>
   renderRtl(

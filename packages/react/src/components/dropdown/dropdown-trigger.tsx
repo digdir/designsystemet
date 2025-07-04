@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 
-import { PopoverTrigger, type PopoverTriggerProps } from '../Popover';
+import { PopoverTrigger, type PopoverTriggerProps } from '../popover';
 
 export type DropdownTriggerProps = PopoverTriggerProps;
 

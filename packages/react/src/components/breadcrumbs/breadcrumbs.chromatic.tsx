@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import { Breadcrumbs } from '.';
-import * as BreadcrumbsStories from './Breadcrumbs.stories';
+import * as BreadcrumbsStories from './breadcrumbs.stories';
 
 const meta: Meta = {
   title: 'Chromatic/Breadcrumbs',

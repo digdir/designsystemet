@@ -4,6 +4,6 @@ export {
   getNextFocusableValue,
   getPrevFocusableValue,
   RovingFocusItem,
-} from './RovingFocusItem';
-export { RovingFocusRoot } from './RovingFocusRoot';
-export { useRovingFocus } from './useRovingFocus';
+} from './roving-focus-item';
+export { RovingFocusRoot } from './roving-focus-root';
+export { useRovingFocus } from './use-roving-focus';

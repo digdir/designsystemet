@@ -1,7 +1,7 @@
-import { Tabs as TabsParent } from './Tabs';
-import { TabsList } from './TabsList';
-import { TabsPanel } from './TabsPanel';
-import { TabsTab } from './TabsTab';
+import { Tabs as TabsParent } from './tabs';
+import { TabsList } from './tabs-list';
+import { TabsPanel } from './tabs-panel';
+import { TabsTab } from './tabs-tab';
 
 /**
  * Display a group of tabs that can be toggled between.
@@ -28,8 +28,8 @@ Tabs.Tab.displayName = 'Tabs.Tab';
 Tabs.List.displayName = 'Tabs.List';
 Tabs.Panel.displayName = 'Tabs.Panel';
 
-export type { TabsProps } from './Tabs';
-export type { TabsListProps } from './TabsList';
-export type { TabsPanelProps } from './TabsPanel';
-export type { TabsTabProps } from './TabsTab';
+export type { TabsProps } from './tabs';
+export type { TabsListProps } from './tabs-list';
+export type { TabsPanelProps } from './tabs-panel';
+export type { TabsTabProps } from './tabs-tab';
 export { Tabs, TabsTab, TabsList, TabsPanel };

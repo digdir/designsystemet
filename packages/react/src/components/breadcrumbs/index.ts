@@ -1,7 +1,7 @@
-import { Breadcrumbs as BreadcrumbsParent } from './Breadcrumbs';
-import { BreadcrumbsItem } from './BreadcrumbsItem';
-import { BreadcrumbsLink } from './BreadcrumbsLink';
-import { BreadcrumbsList } from './BreadcrumbsList';
+import { Breadcrumbs as BreadcrumbsParent } from './breadcrumbs';
+import { BreadcrumbsItem } from './breadcrumbs-item';
+import { BreadcrumbsLink } from './breadcrumbs-link';
+import { BreadcrumbsList } from './breadcrumbs-list';
 
 /**
  * `Breadcrumbs` is a component that displays a list of breadcrumbs.
@@ -32,7 +32,7 @@ Breadcrumbs.Item.displayName = 'Breadcrumbs.Item';
 Breadcrumbs.Link.displayName = 'Breadcrumbs.Link';
 
 export type { BreadcrumbsProps } from './Breadcrumbs';
-export type { BreadcrumbsItemProps } from './BreadcrumbsItem';
-export type { BreadcrumbsLinkProps } from './BreadcrumbsLink';
-export type { BreadcrumbsListProps } from './BreadcrumbsList';
+export type { BreadcrumbsItemProps } from './breadcrumbs-item';
+export type { BreadcrumbsLinkProps } from './breadcrumbs-link';
+export type { BreadcrumbsListProps } from './breadcrumbs-list';
 export { BreadcrumbsList, BreadcrumbsItem, BreadcrumbsLink };

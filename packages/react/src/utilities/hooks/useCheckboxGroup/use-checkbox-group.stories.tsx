@@ -8,7 +8,7 @@ import {
 import {
   type UseCheckboxGroupProps,
   useCheckboxGroup,
-} from './useCheckboxGroup';
+} from './use-checkbox-group';
 
 const meta: Meta = {
   title: 'Utilities/useCheckboxGroup',

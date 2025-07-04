@@ -4,7 +4,7 @@
 import type { HTMLAttributes } from 'react';
 import { useContext } from 'react';
 
-import { RovingFocusContext } from './RovingFocusRoot';
+import { RovingFocusContext } from './roving-focus-root';
 
 /** Handles props for `RovingFocus` in context with `RovingFocusRoot` */
 export const useRovingFocus = (value: string) => {

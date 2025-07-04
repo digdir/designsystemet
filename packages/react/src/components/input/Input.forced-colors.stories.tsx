@@ -1,4 +1,4 @@
-import * as stories from './Input.stories';
+import * as stories from './input.stories';
 
 export default {
   ...stories.default,

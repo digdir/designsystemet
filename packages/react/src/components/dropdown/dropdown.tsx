@@ -3,8 +3,8 @@ import cl from 'clsx/lite';
 import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
-import type { PopoverProps } from '../Popover';
-import { Popover } from '../Popover';
+import type { PopoverProps } from '../popover';
+import { Popover } from '../popover';
 
 export type DropdownProps = MergeRight<
   DefaultProps & Omit<PopoverProps, 'variant'>,

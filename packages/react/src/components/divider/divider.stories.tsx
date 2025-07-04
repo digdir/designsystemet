@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react-vite';
 
-import { Paragraph } from '../Paragraph';
+import { Paragraph } from '../paragraph';
 
 import { Divider } from './';
 

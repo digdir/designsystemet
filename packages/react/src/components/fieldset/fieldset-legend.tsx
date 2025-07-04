@@ -1,7 +1,7 @@
 import { forwardRef, type HTMLAttributes } from 'react';
 import type { DefaultProps } from '../../types';
 
-import { Label } from '../Label/Label';
+import { Label } from '../label';
 
 export type FieldsetLegendProps = HTMLAttributes<HTMLLegendElement> &
   DefaultProps;

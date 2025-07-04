@@ -3,13 +3,13 @@ import type { FormEvent } from 'react';
 import { useState } from 'react';
 import { expect, userEvent, within } from 'storybook/test';
 
-import { Button } from '../Button';
-import { Chip } from '../Chip';
-import { Dialog } from '../Dialog';
-import { Divider } from '../Divider';
-import { Heading } from '../Heading';
-import { Paragraph } from '../Paragraph';
-import { Switch } from '../Switch';
+import { Button } from '../button';
+import { Chip } from '../chip';
+import { Dialog } from '../dialog';
+import { Divider } from '../divider';
+import { Heading } from '../heading';
+import { Paragraph } from '../paragraph';
+import { Switch } from '../switch';
 import { data } from './data/data';
 import { Combobox } from './index';
 

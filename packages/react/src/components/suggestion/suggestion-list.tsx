@@ -3,7 +3,7 @@ import { forwardRef, useContext, useEffect } from 'react';
 import '@u-elements/u-datalist';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
-import { SuggestionContext } from './Suggestion';
+import { SuggestionContext } from './suggestion';
 
 export type SuggestionListProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDataListElement>,

@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 
-import { Button, type ButtonProps } from '../Button/Button';
+import { Button, type ButtonProps } from '../button/button';
 
 export type DropdownButtonProps = Omit<ButtonProps, 'variant'>;
 

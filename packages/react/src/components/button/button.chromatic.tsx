@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
-import { Button } from './Button';
-import * as ButtonStories from './Button.stories';
+import { Button } from './button';
+import * as ButtonStories from './button.stories';
 
 const meta: Meta = {
   title: 'Chromatic/Button',

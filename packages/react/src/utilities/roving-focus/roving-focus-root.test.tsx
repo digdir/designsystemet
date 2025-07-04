@@ -2,8 +2,8 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
 
-import { RovingFocusItem } from './RovingFocusItem';
-import { RovingFocusRoot } from './RovingFocusRoot';
+import { RovingFocusItem } from './roving-focus-item';
+import { RovingFocusRoot } from './roving-focus-root';
 
 const user = userEvent.setup();
 

@@ -1,6 +1,6 @@
-import { Fieldset as FieldsetParent } from './Fieldset';
-import { FieldsetDescription } from './FieldsetDescription';
-import { FieldsetLegend } from './FieldsetLegend';
+import { Fieldset as FieldsetParent } from './fieldset';
+import { FieldsetDescription } from './fieldset-description';
+import { FieldsetLegend } from './fieldset-legend';
 
 /**
  * Fieldset component, used to wrap a form field.
@@ -25,7 +25,7 @@ const Fieldset = Object.assign(FieldsetParent, {
 Fieldset.Legend.displayName = 'Fieldset.Legend';
 Fieldset.Description.displayName = 'Fieldset.Description';
 
-export type { FieldsetProps } from './Fieldset';
-export type { FieldsetDescriptionProps } from './FieldsetDescription';
-export type { FieldsetLegendProps } from './FieldsetLegend';
+export type { FieldsetProps } from './fieldset';
+export type { FieldsetDescriptionProps } from './fieldset-description';
+export type { FieldsetLegendProps } from './fieldset-legend';
 export { Fieldset, FieldsetLegend, FieldsetDescription };

@@ -1,9 +1,9 @@
 import { forwardRef } from 'react';
 
-import { RovingFocusItem } from '../../utilities/RovingFocus/RovingFocusItem';
-import { Button, type ButtonProps } from '../Button/Button';
+import { RovingFocusItem } from '../../utilities/roving-focus/roving-focus-item';
+import { Button, type ButtonProps } from '../button/button';
 
-import { useToggleGroupItem } from './useToggleGroupitem';
+import { useToggleGroupItem } from './use-toggle-groupitem';
 
 export type ToggleGroupItemProps = {
   /**

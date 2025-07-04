@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react';
 import * as React from 'react';
-import { useMergeRefs } from './useMergeRefs';
+import { useMergeRefs } from './use-merge-refs';
 
 describe('useMergeRefs', () => {
   it('should return null if all refs are null or undefined', () => {

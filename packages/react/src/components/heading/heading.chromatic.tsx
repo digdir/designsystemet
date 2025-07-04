@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import { Heading } from '.';
-import * as HeadingStories from './Heading.stories';
+import * as HeadingStories from './heading.stories';
 
 const meta: Meta = {
   title: 'Chromatic/Heading',

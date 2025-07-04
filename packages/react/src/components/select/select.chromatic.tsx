@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import { Select } from '.';
-import * as SelectStories from './Select.stories';
+import * as SelectStories from './select.stories';
 
 const meta: Meta = {
   title: 'Chromatic/Select',

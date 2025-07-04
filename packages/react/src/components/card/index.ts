@@ -1,5 +1,5 @@
-import { Card as CardParent } from './Card';
-import { CardBlock } from './CardBlock';
+import { Card as CardParent } from './card';
+import { CardBlock } from './card-block';
 
 /**
  * Card component to present content in a structured way.
@@ -17,6 +17,6 @@ const Card = Object.assign(CardParent, {
 
 Card.Block.displayName = 'Card.Block';
 
-export type { CardProps } from './Card';
-export type { CardBlockProps } from './CardBlock';
+export type { CardProps } from './card';
+export type { CardBlockProps } from './card-block';
 export { Card, CardBlock };

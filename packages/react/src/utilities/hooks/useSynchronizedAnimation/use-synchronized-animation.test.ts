@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react';
 
-import { useSynchronizedAnimation } from './useSynchronizedAnimation';
+import { useSynchronizedAnimation } from './use-synchronized-animation';
 
 // Mock Animation objects
 const firstAnimation = {

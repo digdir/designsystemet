@@ -1,6 +1,6 @@
-import { Select as SelectParent } from './Select';
-import { SelectOptgroup } from './SelectOptgroup';
-import { SelectOption } from './SelectOption';
+import { Select as SelectParent } from './select';
+import { SelectOptgroup } from './select-optgroup';
+import { SelectOption } from './select-option';
 
 /**
  * Select component, used to display a native select.
@@ -19,7 +19,7 @@ const Select = Object.assign(SelectParent, {
 Select.Option.displayName = 'Select.Option';
 Select.Optgroup.displayName = 'Select.Optgroup';
 
-export type { SelectProps } from './Select';
-export type { SelectOptgroupProps } from './SelectOptgroup';
-export type { SelectOptionProps } from './SelectOption';
+export type { SelectProps } from './select';
+export type { SelectOptgroupProps } from './select-optgroup';
+export type { SelectOptionProps } from './select-option';
 export { Select, SelectOption, SelectOptgroup };

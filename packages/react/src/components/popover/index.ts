@@ -1,6 +1,6 @@
-import { Popover as PopoverParent } from './Popover';
-import { PopoverTrigger } from './PopoverTrigger';
-import { PopoverTriggerContext } from './PopoverTriggerContext';
+import { Popover as PopoverParent } from './popover';
+import { PopoverTrigger } from './popover-trigger';
+import { PopoverTriggerContext } from './popover-trigger-context';
 
 /**
  * Popover component, used to display content in a popover over an element.
@@ -21,8 +21,8 @@ const Popover = Object.assign(PopoverParent, {
 Popover.TriggerContext.displayName = 'Popover.TriggerContext';
 Popover.Trigger.displayName = 'Popover.Trigger';
 
-export type { PopoverProps } from './Popover';
-export type { PopoverTriggerProps } from './PopoverTrigger';
-export type { PopoverTriggerContextProps } from './PopoverTriggerContext';
+export type { PopoverProps } from './popover';
+export type { PopoverTriggerProps } from './popover-trigger';
+export type { PopoverTriggerContextProps } from './popover-trigger-context';
 
 export { Popover, PopoverTriggerContext, PopoverTrigger };

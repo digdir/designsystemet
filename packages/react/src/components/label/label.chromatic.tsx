@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import { Label } from '.';
-import * as LabelStories from './Label.stories';
+import * as LabelStories from './label.stories';
 
 const meta: Meta = {
   title: 'Chromatic/Label',

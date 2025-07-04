@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
 
-import { Switch } from './Switch';
+import { Switch } from './switch';
 
 describe('Switch', () => {
   test('has correct value and label', () => {

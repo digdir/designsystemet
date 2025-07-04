@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { List, type ListUnorderedProps } from '../List';
+import { List, type ListUnorderedProps } from '../list';
 
 export type ErrorSummaryListProps = ListUnorderedProps;
 

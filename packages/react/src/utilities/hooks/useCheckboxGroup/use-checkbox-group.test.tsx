@@ -11,8 +11,8 @@ import {
 import type {
   GetCheckboxProps,
   UseCheckboxGroupProps,
-} from './useCheckboxGroup';
-import { useCheckboxGroup } from './useCheckboxGroup';
+} from './use-checkbox-group';
+import { useCheckboxGroup } from './use-checkbox-group';
 
 const CheckboxGroup = (args: UseCheckboxGroupProps) => {
   const { getCheckboxProps, validationMessageProps } = useCheckboxGroup(args);

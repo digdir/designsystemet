@@ -1,7 +1,7 @@
 import { render as renderRtl, screen } from '@testing-library/react';
 
-import type { InputProps } from './Input';
-import { Input } from './Input';
+import type { InputProps } from './input';
+import { Input } from './input';
 
 describe('Input', () => {
   test('has correct value and label', () => {

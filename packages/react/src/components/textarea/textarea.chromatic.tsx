@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import { Textarea } from '.';
-import * as TextareaStories from './Textarea.stories';
+import * as TextareaStories from './textarea.stories';
 
 const meta: Meta = {
   title: 'Chromatic/Textarea',

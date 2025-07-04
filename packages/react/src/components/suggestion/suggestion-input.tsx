@@ -1,6 +1,6 @@
 import { forwardRef, useContext, useEffect } from 'react';
-import { Input, type InputProps } from '../Input';
-import { SuggestionContext } from './Suggestion';
+import { Input, type InputProps } from '../input';
+import { SuggestionContext } from './suggestion';
 
 export type SuggestionInputProps = InputProps;
 

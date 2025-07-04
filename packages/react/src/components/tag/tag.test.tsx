@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import { Tag } from './Tag';
+import { Tag } from './tag';
 
 describe('Tag', () => {
   test('should render tag with Beta as value', (): void => {

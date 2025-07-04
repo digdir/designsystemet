@@ -1,6 +1,6 @@
 import { render as renderRtl, screen } from '@testing-library/react';
 import { TableHeaderCell } from '.';
-import type { TableHeaderCellProps } from './TableHeaderCell';
+import type { TableHeaderCellProps } from './table-header-cell';
 
 const Comp = (args: Partial<TableHeaderCellProps>) => {
   return <TableHeaderCell {...args}>Header 1</TableHeaderCell>;

@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import { ValidationMessage } from '.';
-import * as ValidationMessageStories from './ValidationMessage.stories';
+import * as ValidationMessageStories from './validation-message.stories';
 
 const meta: Meta = {
   title: 'Chromatic/ValidationMessage',

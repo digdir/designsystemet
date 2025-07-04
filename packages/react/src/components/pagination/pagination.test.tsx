@@ -1,6 +1,6 @@
 import { render as renderRtl, screen } from '@testing-library/react';
 import { Pagination } from './';
-import type { PaginationProps } from './Pagination';
+import type { PaginationProps } from './pagination';
 
 const renderWithRoot = (props: PaginationProps) => {
   renderRtl(

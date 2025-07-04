@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 
 import { Button, Input, Label, Select, Textarea } from '../..';
-import { fieldObserver } from './fieldObserver';
+import { fieldObserver } from './field-observer';
 
 describe('fieldObserver', () => {
   it('connects input and label', () => {
