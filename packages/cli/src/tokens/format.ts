@@ -6,9 +6,10 @@ import { type FormatOptions, processPlatform } from './process/platform.js';
 import { processThemeObject } from './process/utils/getMultidimensionalThemes.js';
 import type { Theme } from './types.js';
 
-export const formatTokens = async (options: Omit<FormatOptions, 'type'>) => {
+export const formatTokens = async (options: Omit<FormatOptions, 'type' | 'buildTokenFormats'>) => {
   const processedBuilds = await processPlatform({
     type: 'format',
+    buildTokenFormats: {},
     ...options,
   });
 
@@ -25,7 +26,6 @@ export const formatTheme = async (themeConfig: Theme) => {
     tokenSets,
     processed$themes,
     verbose: false,
-    preview: false,
   });
 
   return processedBuilds;

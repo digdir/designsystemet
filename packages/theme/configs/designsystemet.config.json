@@ -14,6 +14,10 @@
           "brand3": "#1E98F5"
         },
         "neutral": "#1E2B3C"
+      },
+      "borderRadius": 4,
+      "typography": {
+        "fontFamily": "Inter"
       }
     }
   }

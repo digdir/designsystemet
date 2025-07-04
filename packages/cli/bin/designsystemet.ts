@@ -34,13 +34,12 @@ function makeTokenCommands() {
     )
     .option(`--${cliOptions.clean} [boolean]`, 'Clean output directory before building tokens', parseBoolean, false)
     .option('--dry [boolean]', `Dry run for built ${chalk.blue('design-tokens')}`, parseBoolean, false)
-    .option('-p, --preview', 'Generate preview token.ts files', false)
     .option('--verbose', 'Enable verbose output', false)
     .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILE}")`)
     .option('--experimental-tailwind', 'Generate Tailwind CSS classes for tokens', false)
 
     .action(async (opts) => {
-      const { preview, verbose, clean, dry, experimentalTailwind } = opts;
+      const { verbose, clean, dry, experimentalTailwind } = opts;
       const tokensDir = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_CREATE_DIR;
       const outDir = typeof opts.outDir === 'string' ? opts.outDir : './dist/tokens';
 
@@ -55,7 +54,7 @@ function makeTokenCommands() {
         await cleanDir(outDir, dry);
       }
 
-      await buildTokens({ tokensDir, outDir, preview, verbose, dry, tailwind: experimentalTailwind, ...config });
+      await buildTokens({ tokensDir, outDir, verbose, dry, tailwind: experimentalTailwind, ...config });
 
       return Promise.resolve();
     });

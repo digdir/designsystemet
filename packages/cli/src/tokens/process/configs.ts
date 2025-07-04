@@ -7,10 +7,8 @@ import { traverseObj } from '../utils.js';
 import { colorCategoryVariables, colorSchemeVariables } from './configs/color.js';
 import { semanticVariables } from './configs/semantic.js';
 import type { GetStyleDictionaryConfig } from './configs/shared.js';
-import { typescriptTokens } from './configs/storefront.js';
 import { typographyVariables } from './configs/typography.js';
 import { formats } from './formats/css.js';
-import { jsTokens } from './formats/js-tokens.js';
 import { buildOptions } from './platform.js';
 import { resolveMath, sizeRem, typographyName, unitless } from './transformers.js';
 import { getMultidimensionalThemes, type ProcessedThemeObject } from './utils/getMultidimensionalThemes.js';
@@ -22,7 +20,6 @@ StyleDictionary.registerTransform(typographyName);
 StyleDictionary.registerTransform(resolveMath);
 StyleDictionary.registerTransform(unitless);
 
-StyleDictionary.registerFormat(jsTokens);
 for (const format of Object.values(formats)) {
   StyleDictionary.registerFormat(format);
 }
@@ -38,7 +35,6 @@ export const configs = {
   infoColorVariables: colorCategoryVariables({ category: 'builtin', color: 'info' }),
   typographyVariables,
   semanticVariables,
-  typescriptTokens,
 };
 
 export const getConfigsForThemeDimensions = (

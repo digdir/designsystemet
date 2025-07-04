@@ -3,6 +3,7 @@ import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
 import { createPropertyFormatter } from 'style-dictionary/utils';
 import { inlineTokens, isDigit, pathStartsWithOneOf } from '../../../utils.js';
+import { buildOptions } from '../../platform.js';
 
 const isNumericBorderRadiusToken = (t: TransformedToken) => t.path[0] === 'border-radius' && isDigit(t.path[1]);
 const isNumericSizeToken = (t: TransformedToken) => pathStartsWithOneOf(['size'], t) && isDigit(t.path[1]);
@@ -38,32 +39,33 @@ export const overrideSizingFormula = (format: (t: TransformedToken) => string, t
  * @param tokens - Array of transformed tokens to format.
  * @returns Formatted CSS string with default calc and [round()](https://developer.mozilla.org/en-US/docs/Web/CSS/round) if supported.
  */
-const formatSizingTokens = (format: (t: TransformedToken) => string, tokens: TransformedToken[]) => {
-  const { round, calc } = R.reduce(
+const formatSizingTokens = (format: (t: TransformedToken) => string, tokens: TransformedToken[]) =>
+  R.reduce(
     (acc, token) => {
       const { round, calc, name } = overrideSizingFormula(format, token);
 
       return {
+        tokens: [...acc.tokens, token],
         round: [...acc.round, `${name}: ${round};`],
         calc: [...acc.calc, `${name}: ${calc};`],
       };
     },
-    { round: [], calc: [] } as { round: string[]; calc: string[] },
+    { tokens: [], round: [], calc: [] } as { tokens: TransformedToken[]; round: string[]; calc: string[] },
     tokens,
   );
 
-  return `
+const sizingTemplate = ({ round, calc }: { round: string[]; calc: string[] }) => `
 ${calc.join('\n')}\n
   @supports (width: round(down, .1em, 1px)) {
 ${round.join('\n')}
   }`;
-};
 
 export const semantic: Format = {
   name: 'ds/css-semantic',
   format: async ({ dictionary, options, platform }) => {
     const { outputReferences, usesDtcg } = options;
-    const { selector, layer } = platform;
+    const { selector, layer, files } = platform;
+    const destination = files?.[0]?.destination as string;
 
     const format = createPropertyFormatter({
       outputReferences,
@@ -78,7 +80,22 @@ export const semantic: Format = {
       (t: TransformedToken) => pathStartsWithOneOf(['_size'], t) && isDigit(t.path[1]),
       filteredTokens,
     );
-    const formattedTokens = [R.map(format, restTokens).join('\n'), formatSizingTokens(format, sizingTokens)];
+    const formattedSizingTokens = formatSizingTokens(format, sizingTokens);
+
+    const formattedMap = restTokens.map((token: TransformedToken) => ({
+      token,
+      formatted: format(token),
+    }));
+
+    const formattedSizingMap = formattedSizingTokens.round.map((t, i) => ({
+      token: formattedSizingTokens.tokens[i],
+      formatted: t,
+    }));
+
+    buildOptions.buildTokenFormats[destination] = [...formattedMap, ...formattedSizingMap];
+
+    const sizingSnippet = sizingTemplate(formattedSizingTokens);
+    const formattedTokens = formattedMap.map(R.view(R.lensProp('formatted'))).concat(sizingSnippet);
 
     const content = `{\n${formattedTokens.join('\n')}\n}\n`;
     const body = R.isNotNil(layer) ? `@layer ${layer} {\n${selector} ${content}\n}\n` : `${selector} ${content}\n`;
