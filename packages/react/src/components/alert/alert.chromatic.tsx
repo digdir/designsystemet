@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/createSingleStory';
 import { Alert } from '.';
-import * as AlertStories from './Alert.stories';
+import * as AlertStories from './alert.stories';
 
 const meta: Meta = {
   title: 'Chromatic/Alert',

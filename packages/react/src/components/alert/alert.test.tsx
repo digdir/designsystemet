@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 
 import { Heading } from '../';
 
-import { Alert } from './Alert';
+import { Alert } from './alert';
 
 describe('Alert', () => {
   /* TODO: Add visual tests for icons */
