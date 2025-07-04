@@ -12,6 +12,9 @@ import { vercelPreset } from '@vercel/react-router/vite';
 import { normalizePath } from 'vite';
 import i18nConf from './app/i18n';
 
+// Ensure we always have a valid dirname, even in Vercel's environment
+const dirname = cwd();
+
 const config: Config = {
   ssr: true,
   buildDirectory: 'dist',
@@ -113,9 +116,6 @@ const config: Config = {
     }
   },
 };
-
-// Ensure we always have a valid dirname, even in Vercel's environment
-const dirname = cwd();
 
 // Function to get all content paths taking into account the language structure
 const getContentPathsWithLanguages = (): string[] => {

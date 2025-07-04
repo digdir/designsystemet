@@ -34,8 +34,8 @@ export const Sidebar = ({ cats, title, ...props }: SidebarProps) => {
       </Button>
 
       <nav className={cl(classes.menu, showMenu && classes.activeMenu)}>
-        <Paragraph data-size='md' asChild>
-          <h2 className={classes.title}>{t(`sidebar.${title}`, title)}</h2>
+        <Paragraph data-size='md' className={classes.title}>
+          {t(`sidebar.${title}`, title)}
         </Paragraph>
         <ul className={classes.list}>
           {Object.entries(cats).map(([key, value]) => {
