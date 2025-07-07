@@ -82,27 +82,25 @@ Interactive.parameters = {
 
 export const DottedUnderline: StoryFn<typeof Popover> = () => {
   return (
-    <>
-      <Popover.TriggerContext>
+    <Popover.TriggerContext>
+      <Paragraph>
+        Vi bruker <Popover.Trigger inline>design tokens</Popover.Trigger> for å
+        sikre at vi har en konsistent design.
+      </Paragraph>
+      <Popover data-color='neutral'>
         <Paragraph>
-          Vi bruker <Popover.Trigger inline>design tokens</Popover.Trigger> for
-          å sikre at vi har en konsistent design.
+          <strong
+            style={{
+              display: 'block',
+            }}
+          >
+            Design tokens
+          </strong>
+          Design tokens er en samling av variabler som definerer designet i et
+          designsystem.
         </Paragraph>
-        <Popover data-color='neutral'>
-          <Paragraph>
-            <strong
-              style={{
-                display: 'block',
-              }}
-            >
-              Design tokens
-            </strong>
-            Design tokens er en samling av variabler som definerer designet i et
-            designsystem.
-          </Paragraph>
-        </Popover>
-      </Popover.TriggerContext>
-    </>
+      </Popover>
+    </Popover.TriggerContext>
   );
 };
 DottedUnderline.parameters = {

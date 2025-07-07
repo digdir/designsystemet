@@ -11,6 +11,7 @@ import {
   Shadow,
   Size,
 } from './seamantic-previews';
+import classes from './semantic.module.css';
 
 type TokenTableProps = {
   tokens: PreviewToken[];
@@ -59,7 +60,7 @@ export const SemanticTokensTable = ({ tokens }: TokenTableProps) => {
     const prettifiedPath = path.replace(/_/g, ''); // Remove underscores from size tokens
 
     return (
-      <div key={path}>
+      <div key={path} className={classes['overflow-table']}>
         <Table data-color='neutral'>
           <caption>
             <Heading level={5} data-size='sm'>
