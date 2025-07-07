@@ -24,7 +24,7 @@ export const ColorTokensTable = ({ colorTokens }: TokenTableProps) => {
       >
       {colors.map((color) => (
         <Select.Option key={color} value={color}>
-          {capitalizeString(color)}
+          {color}
         </Select.Option>
       ))}
     </Select>
