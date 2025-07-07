@@ -1,6 +1,7 @@
 import { Heading, Table } from '@digdir/designsystemet-react';
 import { groupBy } from 'ramda';
 import type { HTMLAttributes } from 'react';
+import { useTranslation } from 'react-i18next';
 import { capitalizeString } from '~/_utils/string-helpers';
 import type { PreviewToken } from '../types';
 import {
@@ -47,6 +48,8 @@ const getValueRender = (variable: string, value: string) => {
 };
 
 export const SemanticTokensTable = ({ tokens }: TokenTableProps) => {
+  const { t } = useTranslation();
+
   const groupedTokens = groupedByPathIndex(0)(tokens);
 
   return Object.entries(groupedTokens).map(([path, tokens]) => {
@@ -66,9 +69,15 @@ export const SemanticTokensTable = ({ tokens }: TokenTableProps) => {
           </caption>
           <Table.Head>
             <Table.Row>
-              <Table.HeaderCell>Navn</Table.HeaderCell>
-              <Table.HeaderCell>Verdi</Table.HeaderCell>
-              <Table.HeaderCell>Forhåndsvisning</Table.HeaderCell>
+              <Table.HeaderCell>
+                {t('token-preview.table.name')}
+              </Table.HeaderCell>
+              <Table.HeaderCell>
+                {t('token-preview.table.value')}
+              </Table.HeaderCell>
+              <Table.HeaderCell>
+                {t('token-preview.table.variable')}
+              </Table.HeaderCell>
             </Table.Row>
           </Table.Head>
           <Table.Body>

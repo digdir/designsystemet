@@ -168,4 +168,21 @@ export default {
     'play-video': 'Play video',
     'pause-video': 'Pause video',
   },
+  'token-preview': {
+    'search-in-design-tokens': 'Search in design tokens',
+    'search-input-aria-label':
+      'Search for variable names in CSS for design tokens',
+    colors: 'Colors',
+    typography: 'Typography',
+    semantic: 'Semantic tokens',
+    'no-results': 'No results found',
+    table: {
+      variable: 'Variable',
+      value: 'Value',
+      name: 'Name',
+      preview: 'Preview',
+      light: 'Light',
+      dark: 'Dark',
+    },
+  },
 } satisfies typeof no;

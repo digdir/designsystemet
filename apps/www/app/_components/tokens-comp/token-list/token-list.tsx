@@ -7,6 +7,7 @@ import {
   useDebounceCallback,
 } from '@digdir/designsystemet-react';
 import { Fragment, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { capitalizeString } from '~/_utils/string-helpers';
 import colorTokens from '~/tokens/color.json';
 import semanticTokens from '~/tokens/semantic.json';
@@ -41,6 +42,7 @@ const filteredRecord = (
 };
 
 export const TokenList = () => {
+  const { t } = useTranslation();
   const [value, setValue] = useState<string>('');
 
   const debouncedCallback = useDebounceCallback((value: string) => {
@@ -60,10 +62,10 @@ export const TokenList = () => {
   return (
     <>
       <Field>
-        <Label>Søk i design tokens</Label>
+        <Label>{t('token-preview.search-in-design-tokens')}</Label>
         <Search>
           <Search.Input
-            aria-label='Søk på variabel navn i CSS for design tokens'
+            aria-label={t('token-preview.search-input-aria-label')}
             onChange={(e) => debouncedCallback(e.target.value)}
           />
           <Search.Clear />
@@ -76,7 +78,7 @@ export const TokenList = () => {
             return (
               <Fragment key={name}>
                 <Heading level={3} data-size='lg'>
-                  Farger
+                  {t('token-preview.colors')}
                 </Heading>
                 <div className={classes.section}>
                   <ColorTokensTable
@@ -93,7 +95,7 @@ export const TokenList = () => {
             return (
               <Fragment key={name}>
                 <Heading level={3} data-size='lg'>
-                  Typografi
+                  {t('token-preview.typography')}
                 </Heading>
                 <div className={classes.section}>
                   <Heading level={4} data-size='md'>
@@ -107,7 +109,7 @@ export const TokenList = () => {
         {filteredSemanticTokens.length > 0 && (
           <>
             <Heading level={3} data-size='lg'>
-              Semantiske
+              {t('token-preview.semantic')}
             </Heading>
             <div className={classes.section}>
               <SemanticTokensTable tokens={filteredSemanticTokens} />
@@ -118,7 +120,7 @@ export const TokenList = () => {
         {filteredSemanticTokens.length +
           filteredTypographyTokens.length +
           filteredColorTokens.length ===
-          0 && <Paragraph>Ingen resultater funnet</Paragraph>}
+          0 && <Paragraph>{t('token-preview.no-results')}</Paragraph>}
       </div>
     </>
   );

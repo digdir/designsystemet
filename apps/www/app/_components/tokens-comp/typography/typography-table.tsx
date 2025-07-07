@@ -1,6 +1,7 @@
 import { Heading, Table } from '@digdir/designsystemet-react';
 import * as R from 'ramda';
 import type { HTMLAttributes } from 'react';
+import { useTranslation } from 'react-i18next';
 import { capitalizeString } from '~/_utils/string-helpers';
 import {
   FontFamily,
@@ -44,6 +45,8 @@ const TypographySetTables = ({
 }: {
   tokens: Partial<Record<string, PreviewToken[]>>;
 }) => {
+  const { t } = useTranslation();
+
   return Object.entries(typographySetTokens).map(([path, tokens]) => {
     if (tokens?.length === 0) {
       return null;
@@ -63,9 +66,15 @@ const TypographySetTables = ({
               </caption>
               <Table.Head>
                 <Table.Row>
-                  <Table.HeaderCell>Navn</Table.HeaderCell>
-                  <Table.HeaderCell>Verdi</Table.HeaderCell>
-                  <Table.HeaderCell>Forhåndsvisning</Table.HeaderCell>
+                  <Table.HeaderCell>
+                    {t('token-preview.table.name')}
+                  </Table.HeaderCell>
+                  <Table.HeaderCell>
+                    {t('token-preview.table.value')}
+                  </Table.HeaderCell>
+                  <Table.HeaderCell>
+                    {t('token-preview.table.preview')}
+                  </Table.HeaderCell>
                 </Table.Row>
               </Table.Head>
               <Table.Body>

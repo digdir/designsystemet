@@ -1,5 +1,6 @@
 import { Heading, Table } from '@digdir/designsystemet-react';
 import type { HTMLAttributes } from 'react';
+import { useTranslation } from 'react-i18next';
 import { capitalizeString } from '~/_utils/string-helpers';
 import type { PreviewToken } from '../types';
 import { ColorDark, ColorLight } from './color-previews';
@@ -10,6 +11,8 @@ type TokenTableProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 export const ColorTokensTable = ({ tokens, title }: TokenTableProps) => {
+  const { t } = useTranslation();
+
   return (
     <Table data-color='neutral'>
       <caption>
@@ -19,9 +22,9 @@ export const ColorTokensTable = ({ tokens, title }: TokenTableProps) => {
       </caption>
       <Table.Head>
         <Table.Row>
-          <Table.HeaderCell>Navn</Table.HeaderCell>
-          <Table.HeaderCell>Lys</Table.HeaderCell>
-          <Table.HeaderCell>Mørk</Table.HeaderCell>
+          <Table.HeaderCell>{t('token-preview.table.name')}</Table.HeaderCell>
+          <Table.HeaderCell>{t('token-preview.table.light')}</Table.HeaderCell>
+          <Table.HeaderCell>{t('token-preview.table.dark')}</Table.HeaderCell>
         </Table.Row>
       </Table.Head>
       <Table.Body>

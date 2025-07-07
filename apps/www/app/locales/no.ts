@@ -168,4 +168,20 @@ export default {
     'play-video': 'Spill av video',
     'pause-video': 'Sett video på pause',
   },
+  'token-preview': {
+    'search-in-design-tokens': 'Søk i design tokens',
+    'search-input-aria-label': 'Søk på variabel navn i CSS for design tokens',
+    colors: 'Farger',
+    typography: 'Typografi',
+    semantic: 'Semantiske',
+    'no-results': 'Ingen resultater funnet',
+    table: {
+      name: 'Navn',
+      value: 'Verdi',
+      variable: 'Variabel',
+      preview: 'Forhåndsvisning',
+      light: 'Lys',
+      dark: 'Mørk',
+    },
+  },
 };
