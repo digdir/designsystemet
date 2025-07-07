@@ -1,23 +1,38 @@
-import { Heading, Table } from '@digdir/designsystemet-react';
-import type { HTMLAttributes } from 'react';
+import { Field, Heading, Label, Select, Table } from '@digdir/designsystemet-react';
+import { useState, type HTMLAttributes } from 'react';
 import { useTranslation } from 'react-i18next';
 import { capitalizeString } from '~/_utils/string-helpers';
 import type { PreviewToken } from '../types';
 import { ColorDark, ColorLight } from './color-previews';
 
 type TokenTableProps = {
-  tokens: PreviewToken[];
-  title: string;
+  colorTokens: Record<string, PreviewToken[]>;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const ColorTokensTable = ({ tokens, title }: TokenTableProps) => {
+export const ColorTokensTable = ({ colorTokens }: TokenTableProps) => {
   const { t } = useTranslation();
+  const colors = Object.keys(colorTokens);
+  const [selectedColor, setSelectedColor] = useState<typeof colors[number]>('neutral');
+  const tokens = colorTokens[selectedColor] || [];
 
-  return (
-    <Table data-color='neutral'>
+  return <div data-color={selectedColor}>
+    <Field>
+      <Label>{t('token-preview.color.select-label')}</Label>
+      <Select
+        value={selectedColor || ''}
+        onChange={(e) => setSelectedColor(e.target.value as typeof colors[number])}
+      >
+      {colors.map((color) => (
+        <Select.Option key={color} value={color}>
+          {capitalizeString(color)}
+        </Select.Option>
+      ))}
+    </Select>
+    </Field>
+      <Table data-color='neutral' data-colors={colors} key={selectedColor}>
       <caption>
         <Heading level={4} data-size='md'>
-          {capitalizeString(title)}
+          {capitalizeString(selectedColor)}
         </Heading>
       </caption>
       <Table.Head>
@@ -31,7 +46,6 @@ export const ColorTokensTable = ({ tokens, title }: TokenTableProps) => {
         {tokens.map((token) => {
           const name = token.variable;
           const value = token.value;
-
           return (
             <Table.Row key={name}>
               <Table.Cell>
@@ -48,5 +62,5 @@ export const ColorTokensTable = ({ tokens, title }: TokenTableProps) => {
         })}
       </Table.Body>
     </Table>
-  );
+  </div>
 };

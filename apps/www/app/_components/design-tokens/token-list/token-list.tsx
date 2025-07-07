@@ -49,15 +49,19 @@ export const TokenList = () => {
     setValue(value);
   }, 1000);
 
-  const filteredColorTokens = Object.entries(
-    filteredRecord(colorTokens, value),
-  );
+  const filteredColorTokens = filteredRecord(colorTokens, value)
+  const colorTokensCount = Object.keys(filteredColorTokens);
   const filteredTypographyTokens = Object.entries(
     filteredRecord(typographyTokens, value),
   );
   const filteredSemanticTokens = semanticTokens.filter((token) =>
     tokenSearchFilter(token, value),
   );
+
+  const noSearchResult = filteredSemanticTokens.length +
+    filteredTypographyTokens.length +
+    colorTokensCount.length ===
+    0;
 
   return (
     <>
@@ -73,22 +77,17 @@ export const TokenList = () => {
       </Field>
 
       <div className={classes.tokens}>
-        {filteredColorTokens.length > 0 &&
-          filteredColorTokens.map(([name, tokens]) => {
-            return (
-              <Fragment key={name}>
-                <Heading level={3} data-size='lg'>
-                  {t('token-preview.colors')}
-                </Heading>
-                <div className={classes.section}>
-                  <ColorTokensTable
-                    tokens={tokens}
-                    title={capitalizeString(name)}
-                  />
-                </div>
-              </Fragment>
-            );
-          })}
+        {colorTokensCount.length > 0 &&
+          (<>
+            <Heading level={3} data-size='lg'>
+              {t('token-preview.colors')}
+            </Heading>
+            <Paragraph>{t('token-preview.color.description')}</Paragraph>
+            <div className={classes.section}>
+              <ColorTokensTable
+                colorTokens={filteredColorTokens} />
+            </div>
+          </>)}
 
         {filteredTypographyTokens.length > 0 &&
           filteredTypographyTokens.map(([name, tokens]) => {
@@ -117,10 +116,7 @@ export const TokenList = () => {
           </>
         )}
 
-        {filteredSemanticTokens.length +
-          filteredTypographyTokens.length +
-          filteredColorTokens.length ===
-          0 && <Paragraph>{t('token-preview.no-results')}</Paragraph>}
+        {noSearchResult && <Paragraph>{t('token-preview.no-results')}</Paragraph>}
       </div>
     </>
   );

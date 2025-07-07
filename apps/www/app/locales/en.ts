@@ -169,6 +169,11 @@ export default {
     'pause-video': 'Pause video',
   },
   'token-preview': {
+    color: {
+      description:
+        'The value of color variables is set by the `data-color` attribute.',
+      'select-label': 'Select color (data-color)',
+    },
     'search-in-design-tokens': 'Search in design tokens',
     'search-input-aria-label':
       'Search for variable names in CSS for design tokens',
