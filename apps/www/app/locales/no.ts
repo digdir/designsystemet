@@ -169,6 +169,11 @@ export default {
     'pause-video': 'Sett video på pause',
   },
   'token-preview': {
+    size: {
+      description:
+        'Verdien til størrelsevariabler settes av `data-size`-attributtet.',
+      'select-label': 'Velg størrelse (data-size)',
+    },
     color: {
       description:
         'Verdien til fargevariabler settes av `data-color`-attributtet.',

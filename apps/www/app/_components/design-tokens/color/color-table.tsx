@@ -22,14 +22,14 @@ export const ColorTokensTable = ({ colorTokens }: TokenTableProps) => {
         value={selectedColor || ''}
         onChange={(e) => setSelectedColor(e.target.value as typeof colors[number])}
       >
-      {colors.map((color) => (
-        <Select.Option key={color} value={color}>
-          {color}
-        </Select.Option>
-      ))}
-    </Select>
+        {colors.map((color) => (
+          <Select.Option key={color} value={color}>
+            {color}
+          </Select.Option>
+        ))}
+      </Select>
     </Field>
-      <Table data-color='neutral' data-colors={colors} key={selectedColor}>
+    <Table data-color='neutral' data-colors={colors} key={selectedColor}>
       <caption>
         <Heading level={4} data-size='md'>
           {capitalizeString(selectedColor)}

@@ -169,6 +169,11 @@ export default {
     'pause-video': 'Pause video',
   },
   'token-preview': {
+    size: {
+      description:
+        'The value of size variables is set by the `data-size` attribute.',
+      'select-label': 'Select size (data-size)',
+    },
     color: {
       description:
         'The value of color variables is set by the `data-color` attribute.',
