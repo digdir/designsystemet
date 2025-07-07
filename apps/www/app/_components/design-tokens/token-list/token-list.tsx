@@ -114,6 +114,7 @@ export const TokenList = () => {
             <div className={classes.section}>
               <SemanticTokensTable tokens={filteredSemanticTokens} />
             </div>
+
           </>
         )}
 
