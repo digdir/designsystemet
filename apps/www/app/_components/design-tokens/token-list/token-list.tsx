@@ -110,6 +110,7 @@ export const TokenList = () => {
             <Heading level={3} data-size='lg'>
               {t('token-preview.semantic')}
             </Heading>
+            <Paragraph>{t('token-preview.size.description')}</Paragraph>
             <div className={classes.section}>
               <SemanticTokensTable tokens={filteredSemanticTokens} />
             </div>
