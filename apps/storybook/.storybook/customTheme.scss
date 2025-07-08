@@ -10,7 +10,6 @@
   kbd {
     color: var(--ds-color-neutral-text-default);
     font-size: round(down, 0.8em, 1px);
-
     // If the kbd element is used for an icon, add data-icon attribute
     &[data-icon] {
       font-size: 1.2em;
