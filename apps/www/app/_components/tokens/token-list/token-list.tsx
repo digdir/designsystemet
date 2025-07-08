@@ -9,10 +9,10 @@ import {
 import { Fragment, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { capitalizeString } from '~/_utils/string-helpers';
-import colorTokens from '~/tokens/color.json';
-import semanticTokens from '~/tokens/semantic.json';
-import typographyTokens from '~/tokens/typography.json';
 import { ColorTokensTable } from '../color/color-table';
+import colorTokens from '../design-tokens/color.json';
+import semanticTokens from '../design-tokens/semantic.json';
+import typographyTokens from '../design-tokens/typography.json';
 import { SemanticTokensTable } from '../semantic/semantic-table';
 import type { PreviewToken } from '../types';
 import { TypographyTable } from '../typography/typography-table';

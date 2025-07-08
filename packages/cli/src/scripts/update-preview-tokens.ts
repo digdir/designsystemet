@@ -38,7 +38,7 @@ type PreviewToken = { variable: string; value: string };
 
 export const formatTheme = async (themeConfig: Theme) => {
   const { tokenSets } = await createTokens(themeConfig);
-  const outDir = '../../../../apps/www/app/tokens';
+  const outDir = '../../../../apps/www/app/_components/tokens/design-tokens';
 
   const $themes = await generate$Themes(['dark', 'light'], [themeConfig.name], themeConfig.colors);
   const processed$themes = $themes.map(processThemeObject);
