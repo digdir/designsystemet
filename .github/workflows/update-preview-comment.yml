@@ -1,0 +1,88 @@
+name: Update Preview Comment
+on:
+  workflow_call:
+    inputs:
+      pr_number:
+        required: true
+        type: string
+        description: 'PR number for the comment'
+      deployment_type:
+        required: true
+        type: string
+        description: 'Type of deployment (www, theme, storybook)'
+      deployment_url:
+        required: true
+        type: string
+        description: 'The deployment URL'
+
+jobs:
+  update-comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Find Preview Comment
+        uses: peter-evans/find-comment@v3
+        id: fc
+        with:
+          issue-number: ${{ inputs.pr_number }}
+          body-includes: |
+            **Preview deployments for this pull request:**
+
+      - name: Find Storybook deployment
+        uses: actions-ecosystem/action-regex-match@v2
+        id: regex-storybook
+        with:
+          text: ${{ steps.fc.outputs.comment-body }}
+          regex: '\[Storybook\]\((https:\/\/[^)]+)\).*'
+
+      - name: Find Theme deployment
+        uses: actions-ecosystem/action-regex-match@v2
+        id: regex-theme
+        with:
+          text: ${{ steps.fc.outputs.comment-body }}
+          regex: '\[theme\]\((https:\/\/[^)]+)\).*'
+
+      - name: Find www deployment
+        uses: actions-ecosystem/action-regex-match@v2
+        id: regex-www
+        with:
+          text: ${{ steps.fc.outputs.comment-body }}
+          regex: '\[www\]\((https:\/\/[^)]+)\).*'
+
+      - name: Get current time in CEST
+        uses: josStorer/get-current-time@v2
+        id: current-time
+        with:
+          format: D. MMM YYYY - HH:mm
+          timezone: Europe/Oslo
+
+      - name: Set deployment links
+        id: links
+        run: |
+          if [ "${{ inputs.deployment_type }}" = "storybook" ]; then
+            echo "storybook=[Storybook](${{ inputs.deployment_url }}) - \`${{ steps.current-time.outputs.formattedTime }}\`" >> $GITHUB_OUTPUT
+            echo "theme=${{ steps.regex-theme.outputs.match }}" >> $GITHUB_OUTPUT
+            echo "www=${{ steps.regex-www.outputs.match }}" >> $GITHUB_OUTPUT
+          elif [ "${{ inputs.deployment_type }}" = "theme" ]; then
+            echo "storybook=${{ steps.regex-storybook.outputs.match }}" >> $GITHUB_OUTPUT
+            echo "theme=[theme](${{ inputs.deployment_url }}) - \`${{ steps.current-time.outputs.formattedTime }}\`" >> $GITHUB_OUTPUT
+            echo "www=${{ steps.regex-www.outputs.match }}" >> $GITHUB_OUTPUT
+          elif [ "${{ inputs.deployment_type }}" = "www" ]; then
+            echo "storybook=${{ steps.regex-storybook.outputs.match }}" >> $GITHUB_OUTPUT
+            echo "theme=${{ steps.regex-theme.outputs.match }}" >> $GITHUB_OUTPUT
+            echo "www=[www](${{ inputs.deployment_url }}) - \`${{ steps.current-time.outputs.formattedTime }}\`" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Update comment with deployment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ inputs.pr_number }}
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          edit-mode: replace
+          body: |
+            **Preview deployments for this pull request:**
+
+            ${{ steps.links.outputs.storybook }}
+
+            ${{ steps.links.outputs.theme }}
+
+            ${{ steps.links.outputs.www }}

@@ -77,51 +77,11 @@ jobs:
         if: ${{ inputs.vercel_alias != '' }}
         run: vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} set ${{ steps.deploy.outputs.url }} ${{ inputs.vercel_alias }}
 
-      - name: Find Preview Comment
-        if: ${{ inputs.update_comment }}
-        uses: peter-evans/find-comment@v3
-        id: fc
-        with:
-          issue-number: ${{ inputs.pr_number }}
-          body-includes: |
-            **Preview deployments for this pull request:**
-
-      - name: Find Storybook deployment
-        if: ${{ inputs.update_comment }}
-        uses: actions-ecosystem/action-regex-match@v2
-        id: regex-storybook
-        with:
-          text: ${{ steps.fc.outputs.comment-body }}
-          regex: '\[Storybook\]\((https:\/\/[^)]+)\).*'
-
-      - name: Find www deployment
-        if: ${{ inputs.update_comment }}
-        uses: actions-ecosystem/action-regex-match@v2
-        id: regex-www
-        with:
-          text: ${{ steps.fc.outputs.comment-body }}
-          regex: '\[www\]\((https:\/\/[^)]+)\).*'
-
-      - name: Get current time in CEST
-        if: ${{ inputs.update_comment }}
-        uses: josStorer/get-current-time@v2
-        id: current-time
-        with:
-          format: D. MMM YYYY - HH:mm
-          timezone: Europe/Oslo
-
-      - name: Update comment with deployment
-        if: ${{ inputs.update_comment }}
-        uses: peter-evans/create-or-update-comment@v4
-        with:
-          issue-number: ${{ inputs.pr_number }}
-          comment-id: ${{ steps.fc.outputs.comment-id }}
-          edit-mode: replace
-          body: |
-            **Preview deployments for this pull request:**
-
-            ${{ steps.regex-storybook.outputs.match }}
-
-            [theme](https://pr-${{ inputs.pr_number }}.theme.designsystemet.no) - `${{ steps.current-time.outputs.formattedTime }}`
-
-            ${{ steps.regex-www.outputs.match }}
+  update-comment:
+    if: ${{ inputs.update_comment }}
+    needs: deploy
+    uses: ./.github/workflows/update-preview-comment.yml
+    with:
+      pr_number: ${{ inputs.pr_number }}
+      deployment_type: theme
+      deployment_url: https://pr-${{ inputs.pr_number }}.theme.designsystemet.no
