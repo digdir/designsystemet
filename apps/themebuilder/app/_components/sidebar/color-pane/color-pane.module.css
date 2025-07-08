@@ -1,9 +1,6 @@
 .colorPage {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   background-color: var(--ds-color-neutral-background-default);
   padding: 24px;
   border-radius: 8px;

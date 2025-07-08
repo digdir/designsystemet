@@ -24,6 +24,12 @@
   }
 }
 
+@media screen and (max-height: 1080px) {
+  .showSidebar {
+    height: calc(100vh - 40px);
+  }
+}
+
 .sticky {
   position: fixed;
   margin-top: 0;
