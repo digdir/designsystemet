@@ -109,7 +109,7 @@ const sanitizeItems = (values: SuggestionValues = []): Item[] =>
               value: value.value || '',
             },
       )
-  ).filter((x) => !(x.label === '' && x.value === ''));
+  ).filter((x) => !!x.label);
 
 const nextItems = (
   data: HTMLDataElement,
