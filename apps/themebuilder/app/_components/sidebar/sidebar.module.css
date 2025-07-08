@@ -83,7 +83,7 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1900px) {
   .sidebar {
     display: none;
   }
