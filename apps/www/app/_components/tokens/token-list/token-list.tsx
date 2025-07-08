@@ -49,7 +49,7 @@ export const TokenList = () => {
     setValue(value);
   }, 1000);
 
-  const filteredColorTokens = filteredRecord(colorTokens, value)
+  const filteredColorTokens = filteredRecord(colorTokens, value);
   const colorTokensCount = Object.keys(filteredColorTokens);
   const filteredTypographyTokens = Object.entries(
     filteredRecord(typographyTokens, value),
@@ -58,9 +58,10 @@ export const TokenList = () => {
     tokenSearchFilter(token, value),
   );
 
-  const noSearchResult = filteredSemanticTokens.length +
-    filteredTypographyTokens.length +
-    colorTokensCount.length ===
+  const noSearchResult =
+    filteredSemanticTokens.length +
+      filteredTypographyTokens.length +
+      colorTokensCount.length ===
     0;
 
   return (
@@ -77,17 +78,17 @@ export const TokenList = () => {
       </Field>
 
       <div className={classes.tokens}>
-        {colorTokensCount.length > 0 &&
-          (<>
+        {colorTokensCount.length > 0 && (
+          <>
             <Heading level={3} data-size='lg'>
               {t('token-preview.colors')}
             </Heading>
             <Paragraph>{t('token-preview.color.description')}</Paragraph>
             <div className={classes.section}>
-              <ColorTokensTable
-                colorTokens={filteredColorTokens} />
+              <ColorTokensTable colorTokens={filteredColorTokens} />
             </div>
-          </>)}
+          </>
+        )}
 
         {filteredTypographyTokens.length > 0 &&
           filteredTypographyTokens.map(([name, tokens]) => {
@@ -114,11 +115,12 @@ export const TokenList = () => {
             <div className={classes.section}>
               <SemanticTokensTable tokens={filteredSemanticTokens} />
             </div>
-
           </>
         )}
 
-        {noSearchResult && <Paragraph>{t('token-preview.no-results')}</Paragraph>}
+        {noSearchResult && (
+          <Paragraph>{t('token-preview.no-results')}</Paragraph>
+        )}
       </div>
     </>
   );

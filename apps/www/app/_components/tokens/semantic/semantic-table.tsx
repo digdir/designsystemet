@@ -1,6 +1,13 @@
-import { Field, Heading, Label, Select, Table, type Size } from '@digdir/designsystemet-react';
+import {
+  Field,
+  Heading,
+  Label,
+  Select,
+  type Size,
+  Table,
+} from '@digdir/designsystemet-react';
 import { groupBy } from 'ramda';
-import { useState, type HTMLAttributes } from 'react';
+import { type HTMLAttributes, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { capitalizeString } from '~/_utils/string-helpers';
 import type { PreviewToken } from '../types';
@@ -47,8 +54,13 @@ const getValueRender = (variable: string, value: string, size?: string) => {
   return <code>{value}</code>;
 };
 
-
-const DefaultSemanticTable = ({ tokens, title }: { tokens: PreviewToken[], title: string }) => {
+const DefaultSemanticTable = ({
+  tokens,
+  title,
+}: {
+  tokens: PreviewToken[];
+  title: string;
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -61,9 +73,7 @@ const DefaultSemanticTable = ({ tokens, title }: { tokens: PreviewToken[], title
         </caption>
         <Table.Head>
           <Table.Row>
-            <Table.HeaderCell>
-              {t('token-preview.table.name')}
-            </Table.HeaderCell>
+            <Table.HeaderCell>{t('token-preview.table.name')}</Table.HeaderCell>
             <Table.HeaderCell>
               {t('token-preview.table.value')}
             </Table.HeaderCell>
@@ -86,14 +96,18 @@ const DefaultSemanticTable = ({ tokens, title }: { tokens: PreviewToken[], title
       </Table>
     </div>
   );
-}
+};
 
-const SemanticSizeTable = ({ tokens, title }: { tokens: PreviewToken[], title: string }) => {
+const SemanticSizeTable = ({
+  tokens,
+  title,
+}: {
+  tokens: PreviewToken[];
+  title: string;
+}) => {
   const { t } = useTranslation();
-  const sizes: Size[] = ['sm', 'md', 'lg']
+  const sizes: Size[] = ['sm', 'md', 'lg'];
   const [selectedSize, setSelectedSize] = useState<Size>('md');
-
-
 
   return (
     <div key={title}>
@@ -101,7 +115,9 @@ const SemanticSizeTable = ({ tokens, title }: { tokens: PreviewToken[], title: s
         <Label>{t('token-preview.size.select-label')}</Label>
         <Select
           value={selectedSize || ''}
-          onChange={(e) => setSelectedSize(e.target.value as typeof sizes[number])}
+          onChange={(e) =>
+            setSelectedSize(e.target.value as (typeof sizes)[number])
+          }
         >
           {sizes.map((size) => (
             <Select.Option key={size} value={size}>
@@ -136,22 +152,22 @@ const SemanticSizeTable = ({ tokens, title }: { tokens: PreviewToken[], title: s
                 <Table.Cell>
                   <code>{variable}</code>
                 </Table.Cell>
-                <Table.Cell>{getValueRender(variable, value, selectedSize)}</Table.Cell>
-                <Table.Cell>{getValuePreview(variable, value, selectedSize)}</Table.Cell>
+                <Table.Cell>
+                  {getValueRender(variable, value, selectedSize)}
+                </Table.Cell>
+                <Table.Cell>
+                  {getValuePreview(variable, value, selectedSize)}
+                </Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>
         </Table>
       </div>
-
     </div>
-
   );
-}
-
+};
 
 export const SemanticTokensTable = ({ tokens }: TokenTableProps) => {
-
   const groupedTokens = groupedByPathIndex(0)(tokens);
 
   return Object.entries(groupedTokens).map(([path, tokens]) => {
@@ -162,9 +178,21 @@ export const SemanticTokensTable = ({ tokens }: TokenTableProps) => {
     const prettyPath = path.replace(/_/g, ''); // Remove underscores from size tokens
 
     if (prettyPath === 'size') {
-      return <SemanticSizeTable key={prettyPath} tokens={tokens} title={prettyPath} />;
+      return (
+        <SemanticSizeTable
+          key={prettyPath}
+          tokens={tokens}
+          title={prettyPath}
+        />
+      );
     }
 
-    return <DefaultSemanticTable key={prettyPath} tokens={tokens} title={prettyPath} />;
+    return (
+      <DefaultSemanticTable
+        key={prettyPath}
+        tokens={tokens}
+        title={prettyPath}
+      />
+    );
   });
 };

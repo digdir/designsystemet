@@ -14,7 +14,7 @@ const getComputedValue = (value: string, size?: string) => {
   return computedValue;
 };
 
-export const Size = ({ value, size }: { value: string, size?: string }) => {
+export const Size = ({ value, size }: { value: string; size?: string }) => {
   // This is a temp solution to get the computed value of the token. Find a better way to do this in https://github.com/digdir/designsystemet/issues/2946
   const [computedValue, setComputedValue] = useState<string>('');
 
@@ -22,7 +22,7 @@ export const Size = ({ value, size }: { value: string, size?: string }) => {
     if (!document) return;
 
     setComputedValue(getComputedValue(value, size));
-  }, [value,size]);
+  }, [value, size]);
 
   return (
     <div className={classes.size}>
@@ -55,7 +55,13 @@ export const Opacity = ({ value }: { value: string }) => {
   );
 };
 
-export const ComputedValue = ({ value,size }: { value: string, size?: string }) => {
+export const ComputedValue = ({
+  value,
+  size,
+}: {
+  value: string;
+  size?: string;
+}) => {
   // This is a temp solution to get the computed value of the token. Find a better way to do this in https://github.com/digdir/designsystemet/issues/2946
   const [computedValue, setComputedValue] = useState<string>('');
 
