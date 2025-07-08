@@ -1,0 +1,127 @@
+name: Deploy Themebuilder Base
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+        description: 'Deployment environment (production, preview)'
+      pr_number:
+        required: false
+        type: string
+        description: 'PR number for preview deployments'
+      update_comment:
+        required: false
+        type: boolean
+        default: false
+        description: 'Whether to update PR comment with deployment URL'
+      vercel_alias:
+        required: false
+        type: string
+        description: 'Custom Vercel alias to set'
+    secrets:
+      VERCEL_TOKEN:
+        required: true
+      VERCEL_TEAM:
+        required: true
+      VERCEL_ORG_ID:
+        required: true
+      VERCEL_PROJECT_ID_THEMEBUILDER:
+        required: true
+    outputs:
+      deployment_url:
+        description: 'The deployment URL'
+        value: ${{ jobs.deploy.outputs.url }}
+
+env:
+  VERCEL_TEAM: ${{ secrets.VERCEL_TEAM }}
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_THEMEBUILDER }}
+  VERCEL_ENV: ${{ inputs.environment }}
+
+jobs:
+  deploy:
+    if: ${{ github.repository == 'digdir/designsystemet' }}
+    runs-on: ubuntu-latest
+    outputs:
+      url: ${{ steps.deploy.outputs.url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4.1.0
+      - name: Use node 22 and pnpm cache
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: 'package.json'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=${{ inputs.environment }} --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build Project Artifacts
+        run: vercel build ${{ inputs.environment == 'production' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }}
+
+      - id: deploy
+        name: Deploy Project Artifacts to Vercel
+        run: echo "url=$(vercel deploy --prebuilt ${{ inputs.environment == 'production' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
+
+      - name: Set Vercel alias
+        if: ${{ inputs.vercel_alias != '' }}
+        run: vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} set ${{ steps.deploy.outputs.url }} ${{ inputs.vercel_alias }}
+
+      - name: Find Preview Comment
+        if: ${{ inputs.update_comment }}
+        uses: peter-evans/find-comment@v3
+        id: fc
+        with:
+          issue-number: ${{ inputs.pr_number }}
+          body-includes: |
+            **Preview deployments for this pull request:**
+
+      - name: Find Storybook deployment
+        if: ${{ inputs.update_comment }}
+        uses: actions-ecosystem/action-regex-match@v2
+        id: regex-storybook
+        with:
+          text: ${{ steps.fc.outputs.comment-body }}
+          regex: '\[Storybook\]\((https:\/\/[^)]+)\).*'
+
+      - name: Find www deployment
+        if: ${{ inputs.update_comment }}
+        uses: actions-ecosystem/action-regex-match@v2
+        id: regex-www
+        with:
+          text: ${{ steps.fc.outputs.comment-body }}
+          regex: '\[www\]\((https:\/\/[^)]+)\).*'
+
+      - name: Get current time in CEST
+        if: ${{ inputs.update_comment }}
+        uses: josStorer/get-current-time@v2
+        id: current-time
+        with:
+          format: D. MMM YYYY - HH:mm
+          timezone: Europe/Oslo
+
+      - name: Update comment with deployment
+        if: ${{ inputs.update_comment }}
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ inputs.pr_number }}
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          edit-mode: replace
+          body: |
+            **Preview deployments for this pull request:**
+
+            ${{ steps.regex-storybook.outputs.match }}
+
+            [theme](https://pr-${{ inputs.pr_number }}.theme.designsystemet.no) - `${{ steps.current-time.outputs.formattedTime }}`
+
+            ${{ steps.regex-www.outputs.match }}
