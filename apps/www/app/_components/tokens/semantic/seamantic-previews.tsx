@@ -55,6 +55,14 @@ export const Opacity = ({ value }: { value: string }) => {
   );
 };
 
+export const BorderWidth = ({ value }: { value: string }) => {
+  return (
+    <div className={classes['border-width']}>
+      <div className={classes.bar} style={{ borderWidth: value }}></div>
+    </div>
+  );
+};
+
 export const ComputedValue = ({
   value,
   size,

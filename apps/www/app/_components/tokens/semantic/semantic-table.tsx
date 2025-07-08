@@ -13,6 +13,7 @@ import { capitalizeString } from '~/_utils/string-helpers';
 import type { PreviewToken } from '../types';
 import {
   BorderRadius,
+  BorderWidth,
   ComputedValue,
   Opacity,
   Shadow,
@@ -43,6 +44,10 @@ const getValuePreview = (variable: string, value: string, size?: string) => {
     return <Opacity value={value} />;
   }
 
+  if (/^--ds-border-width/.test(variable)) {
+    return <BorderWidth value={value} />;
+  }
+
   return <code>{value}</code>;
 };
 
@@ -65,7 +70,7 @@ const DefaultSemanticTable = ({
 
   return (
     <div key={title} className={classes['overflow-table']}>
-      <Table data-color='neutral'>
+      <Table data-color='accent'>
         <caption>
           <Heading level={5} data-size='sm'>
             {capitalizeString(title)}
@@ -127,7 +132,7 @@ const SemanticSizeTable = ({
         </Select>
       </Field>
       <div key={title} className={classes['overflow-table']}>
-        <Table data-color='neutral'>
+        <Table data-color='accent'>
           <caption>
             <Heading level={5} data-size='sm'>
               {capitalizeString(title)}
