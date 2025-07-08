@@ -33,8 +33,8 @@
   height: var(--ds-size-11);
 }
 
-@media (max-width: 1632px) {
+/* @media (max-width: 1632px) {
   .names div {
     font-size: 15px;
   }
-}
+} */
