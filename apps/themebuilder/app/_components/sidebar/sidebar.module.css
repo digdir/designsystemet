@@ -12,6 +12,7 @@
   border-radius: 8px;
   margin-top: -170px;
   height: calc(100vh - 200px);
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
 
