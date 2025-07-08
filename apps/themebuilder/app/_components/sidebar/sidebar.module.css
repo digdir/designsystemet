@@ -81,6 +81,7 @@
   z-index: 5;
   background-color: var(--ds-color-neutral-background-default);
   cursor: pointer;
+  place-items: center;
 }
 
 @media screen and (max-width: 1900px) {
@@ -88,7 +89,7 @@
     display: none;
   }
   .toggle {
-    display: block;
+    display: grid;
   }
   .toggleOpen {
     right: 440px;
