@@ -22,7 +22,7 @@ const stories = [
   '../../../packages/*/!(node_modules)/**/*.mdx',
 ];
 
-isChromatic()
+isChromatic(window)
   ? stories.push('../../../packages/*/!(node_modules)/**/*.chromatic.@(ts|tsx)')
   : stories.push('../../../packages/*/!(node_modules)/**/*.stories.@(ts|tsx)');
 
