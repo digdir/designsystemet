@@ -1,18 +1,11 @@
 {
   "$schema": "https://www.chromatic.com/config-file.schema.json",
+  "onlyChanged": true,
   "projectId": "Project:66fe736b9d639fe6801bf130",
   "buildScriptName": "build",
   "storybookBaseDir": "apps/storybook",
   "storybookBuildDir": "dist",
   "zip": true,
-  "onlyStoryFiles": [
-    "packages/react/src/components/**/*.chromatic.tsx",
-    "packages/react/src/components/**/dialog.stories.tsx",
-    "packages/react/src/components/**/popover.stories.tsx",
-    "packages/react/src/components/**/tooltip.stories.tsx",
-    "packages/react/src/components/**/suggestion.stories.tsx",
-    "packages/react/src/components/**/dropdown.stories.tsx"
-  ],
   "externals": [
     "packages/css/**/*.css",
     "packages/theme/**/*.css",

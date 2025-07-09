@@ -9,6 +9,9 @@ const meta: Meta = {
   tags: ['chromatic'],
   parameters: {
     layout: 'padded',
+    chromatic: {
+      disableSnapshot: true,
+    },
   },
 };
 export default meta;

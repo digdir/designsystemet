@@ -7,6 +7,9 @@ export default {
   component: Chip.Radio,
   parameters: {
     customStyles: { display: 'flex', gap: 'var(--ds-size-2)' },
+    chromatic: {
+      disableSnapshot: true,
+    },
   },
 } satisfies Meta;
 

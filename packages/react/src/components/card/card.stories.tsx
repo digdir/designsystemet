@@ -20,6 +20,9 @@ export default {
       gap: 'var(--ds-size-4)',
       gridTemplateColumns: 'repeat(auto-fit, minmax(280px , 1fr))',
     },
+    chromatic: {
+      disableSnapshot: true,
+    },
   },
 } satisfies Meta;
 

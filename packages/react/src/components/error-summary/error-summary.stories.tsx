@@ -15,6 +15,11 @@ export default {
   title: 'Komponenter/ErrorSummary',
   component: ErrorSummary,
   decorators: [withScrollHashBehavior],
+  parameters: {
+    chromatic: {
+      disableSnapshot: true,
+    },
+  },
 } satisfies Meta;
 
 export const Preview: Story = (args) => (

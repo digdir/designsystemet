@@ -12,6 +12,9 @@ const meta: Meta<typeof Avatar> = {
   component: Avatar,
   parameters: {
     layout: 'padded',
+    chromatic: {
+      disableSnapshot: true,
+    },
     customStyles: {
       display: 'flex',
       gap: 'var(--ds-size-2)',

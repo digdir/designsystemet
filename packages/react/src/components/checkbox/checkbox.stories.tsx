@@ -23,6 +23,11 @@ type Story = StoryObj<typeof Checkbox>;
 export default {
   title: 'Komponenter/Checkbox',
   component: Checkbox,
+  parameters: {
+    chromatic: {
+      disableSnapshot: true,
+    },
+  },
 } as Meta;
 
 export const Preview: Story = {

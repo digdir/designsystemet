@@ -18,6 +18,9 @@ const meta: Meta<typeof Button> = {
       flexWrap: 'wrap',
       gap: 'var(--ds-size-4)',
     },
+    chromatic: {
+      disableSnapshot: true,
+    },
   },
 };
 
