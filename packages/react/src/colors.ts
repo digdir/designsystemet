@@ -9,16 +9,15 @@ type EmptyObject = { [emptyObjectSymbol]?: never };
  */
 
 // biome-ignore lint/suspicious/noEmptyInterface: used for interface augmentation
-export interface MainAndSupportColors {}
+export interface ReactColors {}
+// biome-ignore lint/suspicious/noEmptyInterface: used for interface augmentation
+export interface ReactSeverityColors {}
 
 /**
- * If {@link MainAndSupportColors} has been extended to include color names, return T,
+ * If {@link ReactColors} or {@link ReactSeverityColors} has been extended to include color names, return T,
  * otherwise return the arbitrary string type.
  */
-type ColorWithFallback<T> = MainAndSupportColors extends EmptyObject
-  ? string
-  : T;
+type ColorWithFallback<T> = ReactColors extends EmptyObject ? string : T;
 
-export type SeverityColors = 'info' | 'success' | 'warning' | 'danger';
-
-export type Color = ColorWithFallback<'neutral' | keyof MainAndSupportColors>;
+export type SeverityColors = ColorWithFallback<keyof ReactSeverityColors>;
+export type Color = ColorWithFallback<keyof ReactColors>;
