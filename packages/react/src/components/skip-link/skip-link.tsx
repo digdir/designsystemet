@@ -27,7 +27,7 @@ export type SkipLinkProps = MergeRight<
 export const SkipLink = forwardRef<HTMLAnchorElement, SkipLinkProps>(
   function SkipLink({ children, className, ...rest }, ref) {
     return (
-      <a className={cl('ds-skiplink', className)} {...rest} ref={ref}>
+      <a className={cl('ds-skip-link', className)} {...rest} ref={ref}>
         {children}
       </a>
     );
