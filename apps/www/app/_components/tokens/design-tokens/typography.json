@@ -110,7 +110,7 @@
         "1"
       ],
       "variable": "--ds-letter-spacing-1",
-      "value": "-1%"
+      "value": "-0.01em"
     },
     {
       "path": [
@@ -118,7 +118,7 @@
         "2"
       ],
       "variable": "--ds-letter-spacing-2",
-      "value": "-0.5%"
+      "value": "-0.005em"
     },
     {
       "path": [
@@ -126,7 +126,7 @@
         "3"
       ],
       "variable": "--ds-letter-spacing-3",
-      "value": "-0.25%"
+      "value": "-0.0025em"
     },
     {
       "path": [
@@ -134,7 +134,7 @@
         "4"
       ],
       "variable": "--ds-letter-spacing-4",
-      "value": "-0.15%"
+      "value": "-0.0015em"
     },
     {
       "path": [
@@ -142,7 +142,7 @@
         "5"
       ],
       "variable": "--ds-letter-spacing-5",
-      "value": "0%"
+      "value": "0em"
     },
     {
       "path": [
@@ -150,7 +150,7 @@
         "6"
       ],
       "variable": "--ds-letter-spacing-6",
-      "value": "0.15%"
+      "value": "0.0015em"
     },
     {
       "path": [
@@ -158,7 +158,7 @@
         "7"
       ],
       "variable": "--ds-letter-spacing-7",
-      "value": "0.25%"
+      "value": "0.0025em"
     },
     {
       "path": [
@@ -166,7 +166,7 @@
         "8"
       ],
       "variable": "--ds-letter-spacing-8",
-      "value": "0.5%"
+      "value": "0.005em"
     },
     {
       "path": [
@@ -174,7 +174,7 @@
         "9"
       ],
       "variable": "--ds-letter-spacing-9",
-      "value": "1.5%"
+      "value": "0.015em"
     },
     {
       "path": [
@@ -245,7 +245,7 @@
         "letterSpacing"
       ],
       "variable": "--ds-heading-2xl-letter-spacing",
-      "value": "-1%"
+      "value": "-0.01em"
     },
     {
       "path": [
@@ -285,7 +285,7 @@
         "letterSpacing"
       ],
       "variable": "--ds-heading-xl-letter-spacing",
-      "value": "-1%"
+      "value": "-0.01em"
     },
     {
       "path": [
@@ -325,7 +325,7 @@
         "letterSpacing"
       ],
       "variable": "--ds-heading-lg-letter-spacing",
-      "value": "-0.5%"
+      "value": "-0.005em"
     },
     {
       "path": [
@@ -365,7 +365,7 @@
         "letterSpacing"
       ],
       "variable": "--ds-heading-md-letter-spacing",
-      "value": "-0.25%"
+      "value": "-0.0025em"
     },
     {
       "path": [
@@ -405,7 +405,7 @@
         "letterSpacing"
       ],
       "variable": "--ds-heading-sm-letter-spacing",
-      "value": "0%"
+      "value": "0em"
     },
     {
       "path": [
@@ -445,7 +445,7 @@
         "letterSpacing"
       ],
       "variable": "--ds-heading-xs-letter-spacing",
-      "value": "0.15%"
+      "value": "0.0015em"
     },
     {
       "path": [
@@ -485,7 +485,7 @@
         "letterSpacing"
       ],
       "variable": "--ds-heading-2xs-letter-spacing",
-      "value": "0.15%"
+      "value": "0.0015em"
     },
     {
       "path": [
@@ -525,7 +525,7 @@
         "letterSpacing"
       ],
       "variable": "--ds-body-xl-letter-spacing",
-      "value": "0.5%"
+      "value": "0.005em"
     },
     {
       "path": [
@@ -565,7 +565,7 @@
         "letterSpacing"
       ],
       "variable": "--ds-body-lg-letter-spacing",
-      "value": "0.5%"
+      "value": "0.005em"
     },
     {
       "path": [
@@ -605,7 +605,7 @@
         "letterSpacing"
       ],
       "variable": "--ds-body-md-letter-spacing",
-      "value": "0.5%"
+      "value": "0.005em"
     },
     {
       "path": [
@@ -645,7 +645,7 @@
         "letterSpacing"
       ],
       "variable": "--ds-body-sm-letter-spacing",
-      "value": "0.25%"
+      "value": "0.0025em"
     },
     {
       "path": [
@@ -685,7 +685,7 @@
         "letterSpacing"
       ],
       "variable": "--ds-body-xs-letter-spacing",
-      "value": "0.15%"
+      "value": "0.0015em"
     },
     {
       "path": [
@@ -729,7 +729,7 @@
         "letterSpacing"
       ],
       "variable": "--ds-body-short-xl-letter-spacing",
-      "value": "0.5%"
+      "value": "0.005em"
     },
     {
       "path": [
@@ -773,7 +773,7 @@
         "letterSpacing"
       ],
       "variable": "--ds-body-short-lg-letter-spacing",
-      "value": "0.5%"
+      "value": "0.005em"
     },
     {
       "path": [
@@ -817,7 +817,7 @@
         "letterSpacing"
       ],
       "variable": "--ds-body-short-md-letter-spacing",
-      "value": "0.5%"
+      "value": "0.005em"
     },
     {
       "path": [
@@ -861,7 +861,7 @@
         "letterSpacing"
       ],
       "variable": "--ds-body-short-sm-letter-spacing",
-      "value": "0.25%"
+      "value": "0.0025em"
     },
     {
       "path": [
@@ -905,7 +905,7 @@
         "letterSpacing"
       ],
       "variable": "--ds-body-short-xs-letter-spacing",
-      "value": "0.15%"
+      "value": "0.0015em"
     },
     {
       "path": [
@@ -949,7 +949,7 @@
         "letterSpacing"
       ],
       "variable": "--ds-body-long-xl-letter-spacing",
-      "value": "0.5%"
+      "value": "0.005em"
     },
     {
       "path": [
@@ -993,7 +993,7 @@
         "letterSpacing"
       ],
       "variable": "--ds-body-long-lg-letter-spacing",
-      "value": "0.5%"
+      "value": "0.005em"
     },
     {
       "path": [
@@ -1037,7 +1037,7 @@
         "letterSpacing"
       ],
       "variable": "--ds-body-long-md-letter-spacing",
-      "value": "0.5%"
+      "value": "0.005em"
     },
     {
       "path": [
@@ -1081,7 +1081,7 @@
         "letterSpacing"
       ],
       "variable": "--ds-body-long-sm-letter-spacing",
-      "value": "0.25%"
+      "value": "0.0025em"
     },
     {
       "path": [
@@ -1125,7 +1125,7 @@
         "letterSpacing"
       ],
       "variable": "--ds-body-long-xs-letter-spacing",
-      "value": "0.15%"
+      "value": "0.0015em"
     }
   ]
 }

@@ -9,10 +9,10 @@ import {
 import { Fragment, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { capitalizeString } from '~/_utils/string-helpers';
-import colorTokens from '~/tokens/color.json';
-import semanticTokens from '~/tokens/semantic.json';
-import typographyTokens from '~/tokens/typography.json';
 import { ColorTokensTable } from '../color/color-table';
+import colorTokens from '../design-tokens/color.json';
+import semanticTokens from '../design-tokens/semantic.json';
+import typographyTokens from '../design-tokens/typography.json';
 import { SemanticTokensTable } from '../semantic/semantic-table';
 import type { PreviewToken } from '../types';
 import { TypographyTable } from '../typography/typography-table';
@@ -49,15 +49,20 @@ export const TokenList = () => {
     setValue(value);
   }, 1000);
 
-  const filteredColorTokens = Object.entries(
-    filteredRecord(colorTokens, value),
-  );
+  const filteredColorTokens = filteredRecord(colorTokens, value);
+  const colorTokensCount = Object.keys(filteredColorTokens);
   const filteredTypographyTokens = Object.entries(
     filteredRecord(typographyTokens, value),
   );
   const filteredSemanticTokens = semanticTokens.filter((token) =>
     tokenSearchFilter(token, value),
   );
+
+  const noSearchResult =
+    filteredSemanticTokens.length +
+      filteredTypographyTokens.length +
+      colorTokensCount.length ===
+    0;
 
   return (
     <>
@@ -73,22 +78,17 @@ export const TokenList = () => {
       </Field>
 
       <div className={classes.tokens}>
-        {filteredColorTokens.length > 0 &&
-          filteredColorTokens.map(([name, tokens]) => {
-            return (
-              <Fragment key={name}>
-                <Heading level={3} data-size='lg'>
-                  {t('token-preview.colors')}
-                </Heading>
-                <div className={classes.section}>
-                  <ColorTokensTable
-                    tokens={tokens}
-                    title={capitalizeString(name)}
-                  />
-                </div>
-              </Fragment>
-            );
-          })}
+        {colorTokensCount.length > 0 && (
+          <>
+            <Heading level={3} data-size='lg'>
+              {t('token-preview.colors')}
+            </Heading>
+            <Paragraph>{t('token-preview.color.description')}</Paragraph>
+            <div className={classes.section}>
+              <ColorTokensTable colorTokens={filteredColorTokens} />
+            </div>
+          </>
+        )}
 
         {filteredTypographyTokens.length > 0 &&
           filteredTypographyTokens.map(([name, tokens]) => {
@@ -111,16 +111,16 @@ export const TokenList = () => {
             <Heading level={3} data-size='lg'>
               {t('token-preview.semantic')}
             </Heading>
+            <Paragraph>{t('token-preview.size.description')}</Paragraph>
             <div className={classes.section}>
               <SemanticTokensTable tokens={filteredSemanticTokens} />
             </div>
           </>
         )}
 
-        {filteredSemanticTokens.length +
-          filteredTypographyTokens.length +
-          filteredColorTokens.length ===
-          0 && <Paragraph>{t('token-preview.no-results')}</Paragraph>}
+        {noSearchResult && (
+          <Paragraph>{t('token-preview.no-results')}</Paragraph>
+        )}
       </div>
     </>
   );
