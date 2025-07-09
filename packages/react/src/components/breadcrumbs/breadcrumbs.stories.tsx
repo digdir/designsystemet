@@ -5,11 +5,6 @@ import { Breadcrumbs } from '.';
 export default {
   title: 'Komponenter/Breadcrumbs',
   component: Breadcrumbs,
-  parameters: {
-    chromatic: {
-      disableSnapshot: true,
-    },
-  },
 } as Meta;
 
 export const Preview: StoryFn<typeof Breadcrumbs> = (args) => (

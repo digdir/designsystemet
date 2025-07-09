@@ -1,6 +1,7 @@
 import path, { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { StorybookConfig } from '@storybook/react-vite';
+import isChromatic from 'chromatic';
 import * as R from 'ramda';
 import type { PropItem } from 'react-docgen-typescript';
 import { defineConfig, mergeConfig } from 'vite';
@@ -14,6 +15,16 @@ const resolveAliasFromroot = (alias: string): string =>
   path.resolve(dirname, '../../..', alias);
 
 const resolveAliases = R.map(resolveAliasFromroot);
+
+const stories = [
+  '../stories/**/*.mdx',
+  '../stories/**/*.@(stories|chromatic).@(ts|tsx)',
+  '../../../packages/*/!(node_modules)/**/*.mdx',
+];
+
+isChromatic()
+  ? stories.push('../../../packages/*/!(node_modules)/**/*.chromatic.@(ts|tsx)')
+  : stories.push('../../../packages/*/!(node_modules)/**/*.stories.@(ts|tsx)');
 
 const config: StorybookConfig = {
   viteFinal: (config) =>
@@ -47,12 +58,7 @@ const config: StorybookConfig = {
       },
     },
   },
-  stories: [
-    '../stories/**/*.mdx',
-    '../stories/**/*.@(stories|chromatic).@(ts|tsx)',
-    '../../../packages/*/!(node_modules)/**/*.mdx',
-    '../../../packages/*/!(node_modules)/**/*.@(stories|chromatic).@(ts|tsx)',
-  ],
+  stories,
   experimental_indexers: (existingIndexers) => {
     /*
      * The following is required in order to process .chromatic.tsx with the default indexer

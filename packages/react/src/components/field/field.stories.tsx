@@ -12,9 +12,6 @@ export default {
       maxWidth: 600,
       width: '90vw',
     },
-    chromatic: {
-      disableSnapshot: true,
-    },
   },
 } as Meta;
 

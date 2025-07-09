@@ -9,11 +9,6 @@ type Story = StoryFn<typeof Divider>;
 export default {
   title: 'Komponenter/Divider',
   component: Divider,
-  parameters: {
-    chromatic: {
-      disableSnapshot: true,
-    },
-  },
 } as Meta;
 
 export const Preview: Story = (args) => (

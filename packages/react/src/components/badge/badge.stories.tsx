@@ -21,9 +21,6 @@ const meta: Meta<typeof Badge> = {
     customStyles: {
       flexWrap: 'wrap',
     },
-    chromatic: {
-      disableSnapshot: true,
-    },
   },
 };
 
