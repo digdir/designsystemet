@@ -1,0 +1,93 @@
+import { Meta, Canvas, Controls, Primary } from '@storybook/addon-docs/blocks';
+import { CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/togglegroup.css?inline';
+import * as ToggleGroupStories from './toggle-group.stories';
+
+<Meta of={ToggleGroupStories} />
+
+# ToggleGroup
+
+Med `ToggleGroup` kan brukerne velge alternativer som påvirker innholdet på en side. Komponenten består av en gruppe knapper som henger sammen, der kun én knapp er mulig å velge om gangen.
+
+<Primary />
+<Controls />
+
+## Slik bruker du `ToggleGroup`
+
+Plasser helst innholdet du skal styre rett etter `ToggleGroup` i DOM-en. Hvis ikke, bør du bruke `aria-controls` på `ToggleGroup` for å knytte komponenten til den containeren for innholdet som endrer seg.
+
+```tsx
+import { ToggleGroup } from '@digdir/designsystemet-react';
+
+<ToggleGroup defaultValue='value1'>
+  <ToggleGroup.Item value='value1'>Option 1</ToggleGroup.Item>
+  <ToggleGroup.Item value='value2'>Option 2</ToggleGroup.Item>
+  <ToggleGroup.Item value='value3'>Option 3</ToggleGroup.Item>
+</ToggleGroup>;
+```
+
+## Eksempler
+
+### Innholdet på knappene
+`ToggleGroup` kan ha tre typer innhold:
+- Bare tekst.
+- Tekst med ikon til venstre for teksten.
+- Bare ikon.
+
+#### Bare ikon
+Alternativet "Bare ikon" brukes kun når du vet at brukerne vil forstå ikonet. Det kan for eksempel være ekspertbrukere eller brukere av interne tjenester, som kjenner symbolene i den aktuelle `ToggleGroup` godt. Forklar handlingene med [`Tooltip`](/docs/komponenter-tooltip--docs) når du bruker kun ikoner. 
+
+
+<Canvas of={ToggleGroupStories.OnlyIcons} />
+
+### Kontrollert
+Bruk `value` på `ToggleGroup.Item` og `ToggleGroup` for å kontrollere verdiene selv.
+
+<Canvas of={ToggleGroupStories.Kontrollert} />
+
+
+## Retningslinjer for `ToggleGroup`
+
+Det bør være minst to, men ikke flere enn fem valg i en `ToggleGroup`. Trenger du flere valg enn fem, bruker du [`Combobox`](/docs/komponenter-combobox--docs).
+
+Passer til å
+
+- filtrere innhold i lister og tabeller
+- veksle mellom datavisning og innhold, for eksempel mellom tabell og graf
+- styre hvilke felter i et skjema som skal vises
+
+Passer ikke til å
+
+- bruke som skjemaelement – bruk heller [`Radio`](/docs/komponenter-radio--docs)
+- navigere – bruk heller [`Tabs`](/docs/komponenter-tabs--docs) hvis det dreier seg om panelnavigasjon
+
+### Gi nok plass til komponenten
+
+Pass på at hele komponenten får plass på skjermen og at alle valgene er godt synlig for brukerne. I grensesnitt med liten plass, for eksempel på mobil, kan vi bruke [`Combobox`](/docs/komponenter-combobox--docs) i stedet.
+
+## Tekst i komponenten 
+
+Ha gjerne med en ledetekst for gruppen, som forklarer hva valgene gjelder. Skriv tydelige tekster for valgene i komponenten, og pass på at de har samme språklige form. Ta med hint i [`Tooltip`](/docs/komponenter-tooltip--docs), særlig hvis du bare viser ikoner.
+
+## Tilgjengelighet
+
+`ToggleGroup` har standard fokusindikator (ramme).
+Vi bruker `roving tabindex` for å håndtere fokusbevegelse mellom knappene.
+
+### Tastaturinteraksjon 
+
+- <kbd>Tab</kbd> flytter fokuset til den aktive toggle-knappen.
+- <kbd>Shift</kbd>+<kbd>Tab</kbd> flytter fokuset til elementet før `ToggleGroup` i tabindex.
+- <kbd>Space</kbd> velger en knapp.
+- <kbd>Enter</kbd> velger en knapp.
+- <kbd data-icon>↑</kbd> flytter fokuset til forrige knapp i gruppa.
+- <kbd data-icon>←</kbd> flytter fokuset til forrige knapp i gruppa.
+- <kbd data-icon>↓</kbd> flytter fokuset til neste knapp i gruppa.
+- <kbd data-icon>→</kbd> flytter fokuset til neste knapp i gruppa.
+- <kbd>Home</kbd> går til første knapp i gruppa.
+- <kbd>End</kbd> går til siste knapp i gruppa.
+
+
+## CSS Variabler
+
+<CssVariables css={css} />

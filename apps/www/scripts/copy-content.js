@@ -49,9 +49,9 @@ const contentPath = join(dirname, 'app/content');
 const distPath = join(dirname, 'dist/content');
 const clientPath = join(dirname, 'dist/client/app/content');
 
-console.log(
-  `Copying content from ${contentPath} to ${distPath} and ${clientPath}`,
-);
+// console.log(
+//   `Copying content from ${contentPath} to ${distPath} and ${clientPath}`,
+// );
 
 try {
   if (!existsSync(distPath)) {
