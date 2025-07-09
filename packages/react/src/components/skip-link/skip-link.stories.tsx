@@ -1,9 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { expect, userEvent, within } from 'storybook/test';
-
 import { Paragraph } from '../';
-
-import { SkipLink } from './';
+import { SkipLink } from './skip-link';
 
 type Story = StoryFn<typeof SkipLink>;
 
