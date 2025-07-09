@@ -1,4 +1,6 @@
-.ds-skip-link {
+/* TODO: ds-skiplink can be removed in the next major version */
+.ds-skip-link,
+.ds-skiplink {
   --dsc-skiplink-padding: var(--ds-size-4) var(--ds-size-4) var(--ds-size-5) var(--ds-size-4);
   --dsc-skiplink-background: var(--ds-color-surface-hover);
   --dsc-skiplink-color: var(--ds-color-text-default);

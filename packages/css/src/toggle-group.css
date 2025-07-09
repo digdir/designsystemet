@@ -1,4 +1,6 @@
-.ds-toggle-group {
+/* TODO: ds-togglegroup can be removed in the next major version */
+.ds-toggle-group,
+.ds-togglegroup {
   --dsc-togglegroup-background: var(--ds-color-surface-default);
   --dsc-togglegroup-border-width: var(--ds-border-width-default);
   --dsc-togglegroup-border-style: solid;
