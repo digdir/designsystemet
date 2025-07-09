@@ -59,7 +59,7 @@ try {
   }
 
   copyDirectory(contentPath, distPath);
-  copyDirectory(contentPath, './');
+  // copyDirectory(contentPath, './');
   console.log(`Successfully copied content from ${contentPath} to ${distPath}`);
 } catch (error) {
   console.error(`Error copying content directory:`, error);
@@ -71,7 +71,7 @@ try {
   }
 
   copyDirectory(contentPath, clientPath);
-  copyDirectory(contentPath, './');
+  // copyDirectory(contentPath, './');
   console.log(
     `Successfully copied content from ${contentPath} to ${clientPath}`,
   );
