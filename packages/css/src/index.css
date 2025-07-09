@@ -29,7 +29,7 @@
 @import url('./skeleton.css') layer(ds.components);
 @import url('./tag.css') layer(ds.components);
 @import url('./error-summary.css') layer(ds.components);
-@import url('./togglegroup.css') layer(ds.components);
+@import url('./toggle-group.css') layer(ds.components);
 @import url('./tooltip.css') layer(ds.components);
 @import url('./spinner.css') layer(ds.components);
 @import url('./table.css') layer(ds.components);
