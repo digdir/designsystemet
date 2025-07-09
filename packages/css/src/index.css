@@ -15,7 +15,7 @@
 @import url('./fieldset.css') layer(ds.components);
 @import url('./alert.css') layer(ds.components);
 @import url('./popover.css') layer(ds.components);
-@import url('./skiplink.css') layer(ds.components);
+@import url('./skip-link.css') layer(ds.components);
 @import url('./details.css') layer(ds.components);
 @import url('./search.css') layer(ds.components);
 @import url('./dialog.css') layer(ds.components);
