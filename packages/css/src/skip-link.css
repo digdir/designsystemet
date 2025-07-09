@@ -8,6 +8,7 @@
   @composes ds-sr-only from './base.css';
 }
 
+.ds-skip-link:focus,
 .ds-skiplink:focus {
   place-items: center;
   outline: 0;
