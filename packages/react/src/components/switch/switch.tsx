@@ -3,8 +3,8 @@ import { forwardRef } from 'react';
 import type { DefaultProps, LabelRequired } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { Field, type FieldProps } from '../field';
-import { Input, type InputProps } from '../input';
-import { Label } from '../label';
+import { Input, type InputProps } from '../input/input';
+import { Label } from '../label/label';
 
 export type SwitchProps = MergeRight<
   DefaultProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'type'>,

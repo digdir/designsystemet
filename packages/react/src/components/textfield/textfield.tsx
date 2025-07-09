@@ -8,10 +8,10 @@ import {
   type FieldCounterProps,
   FieldDescription,
 } from '../field';
-import { Input, type InputProps } from '../input';
-import { Label } from '../label';
-import { Textarea, type TextareaProps } from '../textarea';
-import { ValidationMessage } from '../validation-message';
+import { Input, type InputProps } from '../input/input';
+import { Label } from '../label/label';
+import { Textarea, type TextareaProps } from '../textarea/textarea';
+import { ValidationMessage } from '../validation-message/validation-message';
 
 type InputProps_ = Omit<
   InputProps,

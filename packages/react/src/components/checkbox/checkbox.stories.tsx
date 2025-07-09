@@ -11,7 +11,7 @@ import {
   Paragraph,
   Table,
   ValidationMessage,
-} from '../..';
+} from '../../';
 import {
   type UseCheckboxGroupProps,
   useCheckboxGroup,

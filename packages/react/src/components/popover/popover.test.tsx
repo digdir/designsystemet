@@ -3,7 +3,7 @@ import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act, useState } from 'react';
 
-import { Button } from '../button';
+import { Button } from '../';
 import type { PopoverProps } from './';
 import { Popover } from './';
 

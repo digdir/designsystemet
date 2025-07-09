@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import { Breadcrumbs } from './';
-import type { BreadcrumbsProps } from './breadcrumbs';
+import type { BreadcrumbsProps } from '../';
+import { Breadcrumbs } from '../';
 
 const renderWithRoot = (props?: BreadcrumbsProps) =>
   render(

@@ -3,7 +3,7 @@ import { expect, userEvent, within } from 'storybook/test';
 
 import { Paragraph } from '../';
 
-import { SkipLink } from '.';
+import { SkipLink } from './';
 
 type Story = StoryFn<typeof SkipLink>;
 

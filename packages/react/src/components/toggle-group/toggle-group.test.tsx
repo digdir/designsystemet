@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import type { FormEvent } from 'react';
 
-import { ToggleGroup } from '.';
+import { ToggleGroup } from './';
 
 const user = userEvent.setup();
 

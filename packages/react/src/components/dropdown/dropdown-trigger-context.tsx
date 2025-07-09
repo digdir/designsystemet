@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
-
-import { PopoverTriggerContext } from '../popover';
+import { PopoverTriggerContext } from '../popover/popover-trigger-context';
 
 export type DropdownTriggerContextProps = {
   children: ReactNode;

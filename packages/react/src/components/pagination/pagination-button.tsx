@@ -1,6 +1,6 @@
 import { type AriaAttributes, forwardRef } from 'react';
 
-import { Button, type ButtonProps } from '../button';
+import { Button, type ButtonProps } from '../button/button';
 
 export type PaginationButtonProps = {
   /**

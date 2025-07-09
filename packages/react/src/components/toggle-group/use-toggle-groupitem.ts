@@ -1,8 +1,6 @@
 import { useContext, useId } from 'react';
-
-import type { ButtonProps } from '../button';
+import type { ButtonProps } from '../button/button';
 import { ToggleGroupContext } from './toggle-group';
-
 import type { ToggleGroupItemProps } from './toggle-group-item';
 
 type UseToggleGroupItem = (props: ToggleGroupItemProps) => {

@@ -3,9 +3,9 @@ import { forwardRef } from 'react';
 import type { DefaultProps, LabelRequired } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { Field } from '../field';
-import { Input, type InputProps } from '../input';
-import { Label } from '../label';
-import { ValidationMessage } from '../validation-message';
+import { Input, type InputProps } from '../input/input';
+import { Label } from '../label/label';
+import { ValidationMessage } from '../validation-message/validation-message';
 
 export type CheckboxProps = MergeRight<
   DefaultProps & Omit<InputProps, 'type' | 'role' | 'size'>,

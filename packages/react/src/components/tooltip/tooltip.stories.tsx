@@ -1,7 +1,7 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, within } from 'storybook/test';
-import { Button } from '../..';
-import { Tooltip } from '.';
+import { Button } from '../../';
+import { Tooltip } from './tooltip';
 
 type Story = StoryObj<typeof Tooltip>;
 

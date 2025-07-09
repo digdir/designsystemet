@@ -6,7 +6,7 @@ import {
   TableHead,
   TableHeaderCell,
   TableRow,
-} from '.';
+} from './';
 import type { TableProps } from './table';
 import { Table } from './table';
 

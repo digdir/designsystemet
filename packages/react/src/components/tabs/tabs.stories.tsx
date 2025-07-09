@@ -8,10 +8,8 @@ import {
 } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
-
-import { Button } from '../button';
-import { Tooltip } from '../tooltip';
-import { Tabs } from '.';
+import { Button, Tooltip } from '../';
+import { Tabs } from './';
 
 export default {
   title: 'Komponenter/Tabs',

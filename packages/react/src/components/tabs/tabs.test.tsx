@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { Tabs } from '.';
+import { Tabs } from './';
 
 const user = userEvent.setup();
 

@@ -1,6 +1,6 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
-import { Fieldset, Radio, ValidationMessage } from '../..';
-import type { UseRadioGroupProps } from '../../utilities';
+import type { UseRadioGroupProps } from '../../';
+import { Fieldset, Radio, ValidationMessage } from '../';
 
 export default {
   title: 'Komponenter/Radio',

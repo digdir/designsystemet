@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useArgs } from 'storybook/preview-api';
 import { type UsePaginationProps, usePagination } from '../../utilities';
-import { Pagination } from '.';
+import { Pagination } from './';
 
 export default {
   title: 'Komponenter/Pagination',

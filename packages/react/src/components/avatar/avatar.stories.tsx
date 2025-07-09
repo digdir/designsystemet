@@ -2,8 +2,7 @@ import cat1 from '@assets/img/cats/Cat 3.jpg';
 import { BriefcaseIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import themeConfig from '../../../../theme/configs/designsystemet.config.json';
-import { Badge, Dropdown } from '../';
-import { Avatar, type AvatarProps } from '.';
+import { Avatar, type AvatarProps, Badge, Dropdown } from '../';
 
 type Story = StoryFn<typeof Avatar>;
 

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import { Button, Input, Label, Select, Textarea } from '../..';
+import { Button, Input, Label, Select, Textarea } from '../../';
 import { fieldObserver } from './field-observer';
 
 describe('fieldObserver', () => {
