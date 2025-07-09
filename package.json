@@ -31,7 +31,7 @@
     "chromatic": "pnpm --filter @web/storybook chromatic",
     "update:template": "pnpm --filter @digdir/designsystemet update:template",
     "update:theme-digdir": "pnpm --filter @digdir/designsystemet update:theme-digdir",
-    "update:theme": "pnpm --filter @digdir/designsystemet-theme update:theme"
+    "update:theme": "pnpm build:cli && pnpm --filter @digdir/designsystemet-theme update:theme"
   },
   "devDependencies": {
     "@biomejs/biome": "2.0.6",
