@@ -19,7 +19,6 @@
   border-radius: var(--ds-border-radius-md);
   height: 70px;
   width: 90px;
-  aspect-ratio: 1;
 
   .color {
     height: 100%;
