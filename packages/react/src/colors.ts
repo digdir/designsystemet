@@ -19,14 +19,6 @@ type ColorWithFallback<T> = MainAndSupportColors extends EmptyObject
   ? string
   : T;
 
-export type SeverityInfo = 'info';
-export type SeveritySuccess = 'success';
-export type SeverityWarning = 'warning';
-export type SeverityDanger = 'danger';
-export type SeverityColors =
-  | SeverityInfo
-  | SeveritySuccess
-  | SeverityWarning
-  | SeverityDanger;
+export type SeverityColors = 'info' | 'success' | 'warning' | 'danger';
 
 export type Color = ColorWithFallback<'neutral' | keyof MainAndSupportColors>;
