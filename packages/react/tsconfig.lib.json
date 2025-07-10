@@ -8,8 +8,20 @@
     "noEmit": false,
     "emitDeclarationOnly": true,
     "incremental": true,
-    "types": ["./declarations.d.ts", "./react-types.d.ts"]
+    "types": [
+      "./declarations.d.ts",
+      "./react-types.d.ts",
+      "../theme/src/themes/colors.d.ts"
+    ]
   },
-  "include": ["src"],
-  "exclude": ["src/**/*.stories.ts*", "src/**/*.chromatic.ts*", "src/**/*.test.ts*", "stories", "src/**/*.mdx"]
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "src/**/*.stories.ts*",
+    "src/**/*.chromatic.ts*",
+    "src/**/*.test.ts*",
+    "stories",
+    "src/**/*.mdx"
+  ]
 }

@@ -23,9 +23,9 @@ function createColorTypeDeclaration(colors: string[]) {
   console.log(`\n🍱 Building ${chalk.green('type declarations')}`);
 
   const typeDeclaration = `
-/*
-${defaultFileHeader}
-*/
+/* ${defaultFileHeader} */
+// @ts-ignore: Ignore invalid module name for augmentation
+import type {} from '@digdir/designsystemet-react/colors';
 interface Colors_ {
 ${colors.map((color) => `    ${color.includes('-') ? `'${color}'` : color}: never;`).join('\n')}
 }
