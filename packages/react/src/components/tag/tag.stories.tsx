@@ -1,7 +1,7 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import themeConfig from '../../../../theme/configs/designsystemet.config.json';
-import type { TagProps } from '.';
-import { Tag } from '.';
+import type { TagProps } from './tag';
+import { Tag } from './tag';
 
 type Story = StoryObj<typeof Tag>;
 

@@ -1,7 +1,7 @@
 import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
-import { Dropdown } from '.';
+import { Dropdown } from './';
 import type { DropdownTriggerContextProps } from './dropdown-trigger-context';
 
 const Comp = (args: Partial<DropdownTriggerContextProps>) => {

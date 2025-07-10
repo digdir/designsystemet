@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react-vite';
 
-import { Breadcrumbs } from '.';
+import { Breadcrumbs } from '../';
 
 export default {
   title: 'Komponenter/Breadcrumbs',

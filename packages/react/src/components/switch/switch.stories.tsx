@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Fieldset } from '../fieldset';
 
-import { Switch } from '.';
+import { Switch } from './switch';
 
 type Story = StoryObj<typeof Switch>;
 

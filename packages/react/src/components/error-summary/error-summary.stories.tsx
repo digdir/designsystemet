@@ -4,8 +4,7 @@ import { withScrollHashBehavior } from '@story-utils/withScrollHashBehavior';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useEffect, useRef, useState } from 'react';
 import { expect, userEvent, within } from 'storybook/test';
-import { Button } from '../button';
-import { Textfield } from '../textfield';
+import { Button, Textfield } from '../';
 import { ErrorSummary } from './';
 import showHideHtml from './html-examples/show-hide.html?raw';
 

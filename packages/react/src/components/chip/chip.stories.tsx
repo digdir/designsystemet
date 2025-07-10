@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react-vite';
 
-import { Chip } from '.';
+import { Chip } from './';
 
 export default {
   title: 'Komponenter/Chip',

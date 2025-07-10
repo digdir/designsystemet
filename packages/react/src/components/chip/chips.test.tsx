@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { Chip } from '..';
+import { Chip } from '../';
 
 describe('Chip.Button', () => {
   it('should render button as native element', () => {

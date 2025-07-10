@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/create-single-story';
-import { ErrorSummary } from '.';
+import { ErrorSummary } from './';
 import * as ErrorSummaryStories from './error-summary.stories';
 
 const meta: Meta = {

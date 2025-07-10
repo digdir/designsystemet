@@ -10,9 +10,9 @@ import {
   Paragraph,
   EXPERIMENTAL_Suggestion as Suggestion,
   Textfield,
-} from '..';
+} from '../';
 
-import { Dialog } from '.';
+import { Dialog } from './';
 
 export default {
   title: 'Komponenter/Dialog',

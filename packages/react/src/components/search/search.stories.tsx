@@ -1,9 +1,9 @@
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
 
-import { Button, Divider, Field, Label, Paragraph } from '../..';
+import { Button, Divider, Field, Label, Paragraph } from '../../';
 
-import { Search } from '.';
+import { Search } from './';
 
 export default {
   title: 'Komponenter/Search',

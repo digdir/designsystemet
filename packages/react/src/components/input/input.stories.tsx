@@ -9,9 +9,9 @@ import {
   Label,
   Paragraph,
   ValidationMessage,
-} from '../..';
+} from '../../';
 import type { Size } from '../../types';
-import { Input } from '.';
+import { Input } from './input';
 
 type Story = StoryObj<typeof Input>;
 

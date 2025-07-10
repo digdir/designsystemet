@@ -1,6 +1,5 @@
 import { forwardRef } from 'react';
-import type { LinkProps } from '../link';
-import { Link } from '../link';
+import { Link, type LinkProps } from '../link/link';
 
 export type ErrorSummaryLinkProps = LinkProps;
 

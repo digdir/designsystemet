@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/create-single-story';
-import { Chip } from '.';
+import { Chip } from './';
 import * as ChipStories from './chip.stories';
 
 const meta: Meta = {

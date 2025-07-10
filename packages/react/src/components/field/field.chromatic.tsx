@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/create-single-story';
-import { Field } from '.';
+import { Field } from './';
 import * as FieldStories from './field.stories';
 
 const meta: Meta = {

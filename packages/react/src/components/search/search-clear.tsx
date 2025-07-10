@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { Button, type ButtonProps } from '../button';
+import { Button, type ButtonProps } from '../button/button';
 import { setReactInputValue } from '../Combobox/utilities';
 
 /* We omit children since we render the icon with css */
