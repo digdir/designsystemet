@@ -32,14 +32,14 @@ jobs:
         id: regex-storybook
         with:
           text: ${{ steps.fc.outputs.comment-body }}
-          regex: '\[Storybook\]\((https:\/\/[^)]+)\).*'
+          regex: '\[storybook\]\((https:\/\/[^)]+)\).*'
 
       - name: Find Theme deployment
         uses: actions-ecosystem/action-regex-match@v2
         id: regex-theme
         with:
           text: ${{ steps.fc.outputs.comment-body }}
-          regex: '\[theme\]\((https:\/\/[^)]+)\).*'
+          regex: '\[themebuilder\]\((https:\/\/[^)]+)\).*'
 
       - name: Find www deployment
         uses: actions-ecosystem/action-regex-match@v2
@@ -59,12 +59,12 @@ jobs:
         id: links
         run: |
           if [ "${{ inputs.deployment_type }}" = "storybook" ]; then
-            echo "storybook=[Storybook](${{ inputs.deployment_url }}) - \`${{ steps.current-time.outputs.formattedTime }}\`" >> $GITHUB_OUTPUT
+            echo "storybook=[storybook](${{ inputs.deployment_url }}) - \`${{ steps.current-time.outputs.formattedTime }}\`" >> $GITHUB_OUTPUT
             echo "theme=${{ steps.regex-theme.outputs.match }}" >> $GITHUB_OUTPUT
             echo "www=${{ steps.regex-www.outputs.match }}" >> $GITHUB_OUTPUT
           elif [ "${{ inputs.deployment_type }}" = "theme" ]; then
             echo "storybook=${{ steps.regex-storybook.outputs.match }}" >> $GITHUB_OUTPUT
-            echo "theme=[theme](${{ inputs.deployment_url }}) - \`${{ steps.current-time.outputs.formattedTime }}\`" >> $GITHUB_OUTPUT
+            echo "theme=[themebuilder](${{ inputs.deployment_url }}) - \`${{ steps.current-time.outputs.formattedTime }}\`" >> $GITHUB_OUTPUT
             echo "www=${{ steps.regex-www.outputs.match }}" >> $GITHUB_OUTPUT
           elif [ "${{ inputs.deployment_type }}" = "www" ]; then
             echo "storybook=${{ steps.regex-storybook.outputs.match }}" >> $GITHUB_OUTPUT
