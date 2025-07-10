@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { Heading, type HeadingProps } from '../heading';
+import { Heading, type HeadingProps } from '../heading/heading';
 
 export type DropdownHeadingProps = HeadingProps;
 

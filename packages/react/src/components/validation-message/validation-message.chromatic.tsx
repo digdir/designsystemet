@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/create-single-story';
-import { ValidationMessage } from '.';
+import { ValidationMessage } from './validation-message';
 import * as ValidationMessageStories from './validation-message.stories';
 
 const meta: Meta = {

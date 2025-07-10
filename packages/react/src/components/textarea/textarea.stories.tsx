@@ -1,9 +1,9 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 
-import { Button, Divider, Label, Paragraph } from '../..';
+import { Button, Divider, Label, Paragraph } from '../../';
 
-import { Textarea } from '.';
+import { Textarea } from './textarea';
 
 type Story = StoryObj<typeof Textarea>;
 

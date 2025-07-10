@@ -1,6 +1,5 @@
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext, useId } from 'react';
-
 import { RovingFocusItem } from '../../utilities/roving-focus/roving-focus-item';
 import { Context } from './tabs';
 

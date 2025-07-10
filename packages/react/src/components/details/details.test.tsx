@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { act } from 'react';
+import { act, type JSX } from 'react';
 
 import { Details, type DetailsProps } from './';
 

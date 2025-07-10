@@ -2,8 +2,8 @@ import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
 
-import type { DialogProps } from '.';
-import { Dialog } from '.';
+import type { DialogProps } from './';
+import { Dialog } from './';
 
 const CLOSE_LABEL = 'Lukk dialogvindu';
 const HEADER_TITLE = 'Dialog header title';

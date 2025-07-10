@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { Button, type ButtonProps } from '../button';
+import { Button, type ButtonProps } from '../button/button';
 
 /* We omit children since we render the icon with css */
 export type SuggestionClearProps = Omit<ButtonProps, 'variant' | 'children'> & {

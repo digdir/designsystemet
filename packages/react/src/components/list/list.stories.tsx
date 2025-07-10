@@ -1,7 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react-vite';
-import { Heading } from '../heading';
-import { Link } from '../link';
-import { List } from '.';
+import { Heading, Link } from '../';
+import { List } from './';
 
 type Story = StoryFn<typeof List.Unordered>;
 

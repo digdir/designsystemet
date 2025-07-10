@@ -439,9 +439,6 @@ importers:
       '@types/fs-extra':
         specifier: ^11.0.4
         version: 11.0.4
-      '@types/glob':
-        specifier: ^8.1.0
-        version: 8.1.0
       '@types/node':
         specifier: ^22.16.0
         version: 22.16.0
@@ -509,11 +506,11 @@ importers:
         specifier: ^3.13.12
         version: 3.13.12(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@u-elements/u-combobox':
-        specifier: ^0.0.14
-        version: 0.0.14
+        specifier: ^0.0.15
+        version: 0.0.15
       '@u-elements/u-datalist':
-        specifier: ^1.0.8
-        version: 1.0.8
+        specifier: ^1.0.9
+        version: 1.0.9
       '@u-elements/u-details':
         specifier: ^0.1.1
         version: 0.1.1
@@ -2074,9 +2071,6 @@ packages:
   '@types/glob@7.2.0':
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
 
-  '@types/glob@8.1.0':
-    resolution: {integrity: sha512-IO+MJPVhoqz+28h1qLAcBEH2+xHMK6MTyHJc7MTnnYb6wsoLR29POVGJ7LycmVXIqyy/4/2ShP5sUwTXuOwb/w==}
-
   '@types/hast@3.0.4':
     resolution: {integrity: sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==}
 
@@ -2152,11 +2146,11 @@ packages:
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
 
-  '@u-elements/u-combobox@0.0.14':
-    resolution: {integrity: sha512-CFwf4IIWSRGJgHNYIaS/tOQjeu4tjGYkeee66gpM9JMsrgUIXvqMXd9e8VMfdwQ3NWuHGPMC1y07CLpjb5ToNQ==}
+  '@u-elements/u-combobox@0.0.15':
+    resolution: {integrity: sha512-7z2ppLwvjj3YjfzgEwJvU/tn3I+0DfGlW8VEjeJ5wgPc/uuNZUHxtEcFlpaaw+ELCJdivZTqKeq7peOdHzgpGQ==}
 
-  '@u-elements/u-datalist@1.0.8':
-    resolution: {integrity: sha512-CfmPVC4I08bi7XwhHI3KC20FndfE8i2xAPAJ0FCLSvhK4028GCvzCMKuREP2VDqtP9Y0+ZJfyvOG4EWK2auZNw==}
+  '@u-elements/u-datalist@1.0.9':
+    resolution: {integrity: sha512-vRjbkHEwR2aXeWDWHWM9PVwHy3BIl6rSJS5uU9r6buKyaHcsXDRYroeECL+KTmQSUanyZ/mOdH0tb4OuvKdHYQ==}
 
   '@u-elements/u-details@0.1.1':
     resolution: {integrity: sha512-VQDwumgWzXWe/vEUVs+jPvRVlNw+1epHjkNlCjx3IA5BSKSxAPRFZ47ew5iKuZhAKmK0wke0rreA7SO/pjZN6w==}
@@ -7199,11 +7193,6 @@ snapshots:
       '@types/minimatch': 5.1.2
       '@types/node': 22.16.0
 
-  '@types/glob@8.1.0':
-    dependencies:
-      '@types/minimatch': 5.1.2
-      '@types/node': 22.16.0
-
   '@types/hast@3.0.4':
     dependencies:
       '@types/unist': 3.0.3
@@ -7273,9 +7262,9 @@ snapshots:
 
   '@types/unist@3.0.3': {}
 
-  '@u-elements/u-combobox@0.0.14': {}
+  '@u-elements/u-combobox@0.0.15': {}
 
-  '@u-elements/u-datalist@1.0.8': {}
+  '@u-elements/u-datalist@1.0.9': {}
 
   '@u-elements/u-details@0.1.1': {}
 

@@ -1,7 +1,7 @@
 import { forwardRef, type ReactNode } from 'react';
 
 import type { MergeRight } from '../../utilities';
-import { Button, type ButtonProps } from '../button';
+import { Button, type ButtonProps } from '../button/button';
 
 export type SearchButtonProps = MergeRight<
   ButtonProps,

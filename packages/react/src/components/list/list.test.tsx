@@ -1,5 +1,5 @@
 import { render as renderRtl, screen } from '@testing-library/react';
-import { List } from '.';
+import { List } from './';
 import type { ListUnorderedProps } from './lists';
 
 const render = (props: Partial<ListUnorderedProps> = {}) => {

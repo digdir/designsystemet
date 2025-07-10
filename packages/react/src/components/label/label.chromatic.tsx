@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/create-single-story';
-import { Label } from '.';
+import { Label } from './label';
 import * as LabelStories from './label.stories';
 
 const meta: Meta = {

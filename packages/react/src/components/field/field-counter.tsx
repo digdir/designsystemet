@@ -1,9 +1,9 @@
 import { forwardRef, useEffect, useRef, useState } from 'react';
-import { Paragraph } from '../paragraph';
+import { Paragraph } from '../paragraph/paragraph';
 import {
   ValidationMessage,
   type ValidationMessageProps,
-} from '../validation-message';
+} from '../validation-message/validation-message';
 import { isInputLike } from './field-observer';
 
 export type FieldCounterProps = {

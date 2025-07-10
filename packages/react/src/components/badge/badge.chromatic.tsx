@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/create-single-story';
-import { Badge } from '.';
+import { Badge } from './';
 import * as BadgeStories from './badge.stories';
 
 const meta: Meta = {

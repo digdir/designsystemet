@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react';
-import { Combobox } from '.';
+import { Combobox } from './';
 import type { UseComboboxProps } from './useCombobox';
 import { useCombobox } from './useCombobox';
 

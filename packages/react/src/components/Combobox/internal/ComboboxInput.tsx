@@ -9,13 +9,12 @@ import type {
 } from 'react';
 import { useContext, useRef } from 'react';
 
-import { omit } from '../../../utilities';
-import { Paragraph } from '../../paragraph';
+import { omit } from '../../../utilities/omit/omit';
+import { Paragraph } from '../../paragraph/paragraph';
 import type { ComboboxProps } from '../Combobox';
 import { ComboboxContext } from '../ComboboxContext';
 import { useComboboxIdDispatch } from '../ComboboxIdContext';
 import { prefix } from '../utilities';
-
 import ComboboxChips from './ComboboxChips';
 import ComboboxClearButton from './ComboboxClearButton';
 

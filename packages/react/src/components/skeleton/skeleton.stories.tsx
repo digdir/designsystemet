@@ -1,8 +1,6 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
-
-import { Button, Heading, Paragraph } from '../../';
-
-import { Skeleton } from '.';
+import { Button, Heading, Paragraph } from '../';
+import { Skeleton } from './skeleton';
 
 type Story = StoryObj<typeof Skeleton>;
 

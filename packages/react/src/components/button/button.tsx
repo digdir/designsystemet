@@ -8,7 +8,7 @@ import type { ButtonHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
-import { Spinner } from '../spinner';
+import { Spinner } from '../spinner/spinner';
 
 export type ButtonProps = MergeRight<
   DefaultProps & ButtonHTMLAttributes<HTMLButtonElement>,

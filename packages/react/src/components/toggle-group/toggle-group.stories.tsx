@@ -9,12 +9,8 @@ import {
 } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
-
-import { Button } from '../button';
-import { Divider } from '../divider';
-import { Paragraph } from '../paragraph';
-import { Tooltip } from '../tooltip';
-import { ToggleGroup } from '.';
+import { Button, Divider, Paragraph, Tooltip } from '../';
+import { ToggleGroup } from './';
 
 export default {
   title: 'Komponenter/ToggleGroup',

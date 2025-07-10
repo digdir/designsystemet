@@ -1,9 +1,7 @@
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
-
-import { Paragraph } from '../paragraph';
-
-import { Link } from '.';
+import { Paragraph } from '../';
+import { Link } from './link';
 
 type Story = StoryObj<typeof Link>;
 
