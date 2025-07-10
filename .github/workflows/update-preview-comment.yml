@@ -58,17 +58,14 @@ jobs:
       - name: Set deployment links
         id: links
         run: |
-          # Extract existing deployments and preserve them
           STORYBOOK_EXISTING="${{ steps.regex-storybook.outputs.match }}"
           THEME_EXISTING="${{ steps.regex-theme.outputs.match }}"
           WWW_EXISTING="${{ steps.regex-www.outputs.match }}"
 
-          # Initialize deployments
           STORYBOOK=""
           THEME=""
           WWW=""
 
-          # Set the current deployment with timestamp
           if [ "${{ inputs.deployment_type }}" = "storybook" ]; then
             STORYBOOK="[storybook](${{ inputs.deployment_url }}) - \`${{ steps.current-time.outputs.formattedTime }}\`"
           elif [ "${{ inputs.deployment_type }}" = "theme" ]; then
@@ -77,7 +74,6 @@ jobs:
             WWW="[www](${{ inputs.deployment_url }}) - \`${{ steps.current-time.outputs.formattedTime }}\`"
           fi
 
-          # Preserve existing deployments (only if they exist and we're not updating them)
           if [ "${{ inputs.deployment_type }}" != "storybook" ] && [ -n "$STORYBOOK_EXISTING" ]; then
             STORYBOOK="$STORYBOOK_EXISTING"
           fi
@@ -88,7 +84,6 @@ jobs:
             WWW="$WWW_EXISTING"
           fi
 
-          # Build the comment body with only existing deployments
           {
             echo "body<<EOF"
             echo "**Preview deployments for this pull request:**"
