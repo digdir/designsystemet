@@ -58,19 +58,54 @@ jobs:
       - name: Set deployment links
         id: links
         run: |
+          # Extract existing deployments and preserve them
+          STORYBOOK_EXISTING="${{ steps.regex-storybook.outputs.match }}"
+          THEME_EXISTING="${{ steps.regex-theme.outputs.match }}"
+          WWW_EXISTING="${{ steps.regex-www.outputs.match }}"
+
+          # Initialize deployments
+          STORYBOOK=""
+          THEME=""
+          WWW=""
+
+          # Set the current deployment with timestamp
           if [ "${{ inputs.deployment_type }}" = "storybook" ]; then
-            echo "storybook=[storybook](${{ inputs.deployment_url }}) - \`${{ steps.current-time.outputs.formattedTime }}\`" >> $GITHUB_OUTPUT
-            echo "theme=${{ steps.regex-theme.outputs.match }}" >> $GITHUB_OUTPUT
-            echo "www=${{ steps.regex-www.outputs.match }}" >> $GITHUB_OUTPUT
+            STORYBOOK="[storybook](${{ inputs.deployment_url }}) - \`${{ steps.current-time.outputs.formattedTime }}\`"
           elif [ "${{ inputs.deployment_type }}" = "theme" ]; then
-            echo "storybook=${{ steps.regex-storybook.outputs.match }}" >> $GITHUB_OUTPUT
-            echo "theme=[themebuilder](${{ inputs.deployment_url }}) - \`${{ steps.current-time.outputs.formattedTime }}\`" >> $GITHUB_OUTPUT
-            echo "www=${{ steps.regex-www.outputs.match }}" >> $GITHUB_OUTPUT
+            THEME="[themebuilder](${{ inputs.deployment_url }}) - \`${{ steps.current-time.outputs.formattedTime }}\`"
           elif [ "${{ inputs.deployment_type }}" = "www" ]; then
-            echo "storybook=${{ steps.regex-storybook.outputs.match }}" >> $GITHUB_OUTPUT
-            echo "theme=${{ steps.regex-theme.outputs.match }}" >> $GITHUB_OUTPUT
-            echo "www=[www](${{ inputs.deployment_url }}) - \`${{ steps.current-time.outputs.formattedTime }}\`" >> $GITHUB_OUTPUT
+            WWW="[www](${{ inputs.deployment_url }}) - \`${{ steps.current-time.outputs.formattedTime }}\`"
           fi
+
+          # Preserve existing deployments (only if they exist and we're not updating them)
+          if [ "${{ inputs.deployment_type }}" != "storybook" ] && [ -n "$STORYBOOK_EXISTING" ]; then
+            STORYBOOK="$STORYBOOK_EXISTING"
+          fi
+          if [ "${{ inputs.deployment_type }}" != "theme" ] && [ -n "$THEME_EXISTING" ]; then
+            THEME="$THEME_EXISTING"
+          fi
+          if [ "${{ inputs.deployment_type }}" != "www" ] && [ -n "$WWW_EXISTING" ]; then
+            WWW="$WWW_EXISTING"
+          fi
+
+          # Build the comment body with only existing deployments
+          {
+            echo "body<<EOF"
+            echo "**Preview deployments for this pull request:**"
+            if [ -n "$STORYBOOK" ]; then
+              echo ""
+              echo "$STORYBOOK"
+            fi
+            if [ -n "$THEME" ]; then
+              echo ""
+              echo "$THEME"
+            fi
+            if [ -n "$WWW" ]; then
+              echo ""
+              echo "$WWW"
+            fi
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
 
       - name: Update comment with deployment
         uses: peter-evans/create-or-update-comment@v4
@@ -78,11 +113,4 @@ jobs:
           issue-number: ${{ inputs.pr_number }}
           comment-id: ${{ steps.fc.outputs.comment-id }}
           edit-mode: replace
-          body: |
-            **Preview deployments for this pull request:**
-
-            ${{ steps.links.outputs.storybook }}
-
-            ${{ steps.links.outputs.theme }}
-
-            ${{ steps.links.outputs.www }}
+          body: ${{ steps.links.outputs.body }}
