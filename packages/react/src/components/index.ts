@@ -92,8 +92,20 @@ export {
   DropdownTriggerContext,
 } from './dropdown';
 
-export type { ErrorSummaryItemProps, ErrorSummaryProps } from './error-summary';
-export { ErrorSummary, ErrorSummaryItem } from './error-summary';
+export type {
+  ErrorSummaryHeadingProps,
+  ErrorSummaryItemProps,
+  ErrorSummaryLinkProps,
+  ErrorSummaryListProps,
+  ErrorSummaryProps,
+} from './error-summary';
+export {
+  ErrorSummary,
+  ErrorSummaryHeading,
+  ErrorSummaryItem,
+  ErrorSummaryLink,
+  ErrorSummaryList,
+} from './error-summary';
 
 export type {
   FieldAffixesProps,
