@@ -11,7 +11,6 @@
     "types": [
       "./declarations.d.ts",
       "./react-types.d.ts",
-      "../theme/src/themes/colors.d.ts"
     ]
   },
   "include": [
