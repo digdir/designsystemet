@@ -16,7 +16,7 @@ interface SeverityColors_ {
 // Types for esm module import
 export type Colors = keyof Colors_;
 export type SeverityColors = keyof SeverityColors_;
-export type Color = Colors | SeverityColors | 'neutral';
+export type Color = Colors | SeverityColors;
 
 // Augment types in react package based on theme
 // @ts-ignore: Ignore invalid module name for augmentation
