@@ -69,10 +69,3 @@
   font-size: 15px;
   margin-top: 12px;
 }
-
-@media (max-width: 1632px) {
-  .box {
-    width: 80px;
-    height: 50px;
-  }
-}

@@ -1,4 +1,5 @@
-/* TODO: This file can be removed in the next major version. */
+/* TODO: ds-skiplink can be removed in the next major version */
+.ds-skip-link,
 .ds-skiplink {
   --dsc-skiplink-padding: var(--ds-size-4) var(--ds-size-4) var(--ds-size-5) var(--ds-size-4);
   --dsc-skiplink-background: var(--ds-color-surface-hover);
@@ -7,6 +8,7 @@
   @composes ds-sr-only from './base.css';
 }
 
+.ds-skip-link:focus,
 .ds-skiplink:focus {
   place-items: center;
   outline: 0;

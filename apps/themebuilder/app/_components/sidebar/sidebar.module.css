@@ -12,6 +12,7 @@
   border-radius: 8px;
   margin-top: -170px;
   height: calc(100vh - 200px);
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
 
@@ -20,6 +21,12 @@
     flex-direction: column;
     flex: 1;
     min-height: 0;
+  }
+}
+
+@media screen and (max-height: 1080px) {
+  .showSidebar {
+    height: calc(100vh - 40px);
   }
 }
 
@@ -81,14 +88,15 @@
   z-index: 5;
   background-color: var(--ds-color-neutral-background-default);
   cursor: pointer;
+  place-items: center;
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1900px) {
   .sidebar {
     display: none;
   }
   .toggle {
-    display: block;
+    display: grid;
   }
   .toggleOpen {
     right: 440px;

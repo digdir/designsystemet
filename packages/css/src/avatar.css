@@ -35,6 +35,9 @@
     width: 100%;
     height: 100%;
   }
+  > span {
+    font-size: round(down, 1.3em, 1px); /* Default to 130% */
+  }
 
   &[data-initials]:empty::before {
     content: attr(data-initials);
