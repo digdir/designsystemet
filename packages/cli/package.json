@@ -80,7 +80,6 @@
     "@types/apca-w3": "^0.1.3",
     "@types/chroma-js": "^3.1.1",
     "@types/fs-extra": "^11.0.4",
-    "@types/glob": "^8.1.0",
     "@types/node": "^22.15.34",
     "@types/object-hash": "^3.0.6",
     "@types/ramda": "^0.30.2",
