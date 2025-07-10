@@ -22,7 +22,6 @@ export type Color = Colors | SeverityColors;
 
 // Augment types in react package based on theme
 // @ts-ignore: Ignore invalid module name for augmentation
-
 declare module '@digdir/designsystemet-react/colors' {
   export interface ReactSeverityColors extends SeverityColors_ {}
   export interface ReactColors extends Colors_ {}
