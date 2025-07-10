@@ -44,7 +44,7 @@
   "dependencies": {
     "@floating-ui/dom": "^1.7.2",
     "@floating-ui/react": "0.26.23",
-    "@navikt/aksel-icons": "^7.24.0",
+    "@navikt/aksel-icons": "^7.25.1",
     "@radix-ui/react-slot": "^1.2.3",
     "@tanstack/react-virtual": "^3.13.12",
     "@u-elements/u-combobox": "^0.0.15",
@@ -56,9 +56,9 @@
     "@digdir/designsystemet-css": "workspace:^",
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-node-resolve": "^16.0.1",
-    "@storybook/addon-docs": "^9.0.14",
-    "@storybook/addon-vitest": "^9.0.14",
-    "@storybook/react-vite": "^9.0.14",
+    "@storybook/addon-docs": "^9.0.15",
+    "@storybook/addon-vitest": "^9.0.15",
+    "@storybook/react-vite": "^9.0.15",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
@@ -69,9 +69,9 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "rimraf": "^6.0.1",
-    "rollup": "^4.44.1",
+    "rollup": "^4.44.2",
     "rollup-plugin-copy": "^3.5.0",
-    "storybook": "^9.0.14",
+    "storybook": "^9.0.15",
     "tsx": "4.20.3",
     "typescript": "^5.8.3"
   }
