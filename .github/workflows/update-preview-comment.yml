@@ -58,9 +58,9 @@ jobs:
       - name: Set deployment links
         id: links
         run: |
-          STORYBOOK_EXISTING="${{ steps.regex-storybook.outputs.match }}"
-          THEME_EXISTING="${{ steps.regex-theme.outputs.match }}"
-          WWW_EXISTING="${{ steps.regex-www.outputs.match }}"
+          STORYBOOK_EXISTING=$(cat <<< '${{ steps.regex-storybook.outputs.match }}')
+          THEME_EXISTING=$(cat <<< '${{ steps.regex-theme.outputs.match }}')
+          WWW_EXISTING=$(cat <<< '${{ steps.regex-www.outputs.match }}')
 
           STORYBOOK=""
           THEME=""
