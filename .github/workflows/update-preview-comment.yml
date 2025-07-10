@@ -32,21 +32,21 @@ jobs:
         id: regex-storybook
         with:
           text: ${{ steps.fc.outputs.comment-body }}
-          regex: '\[storybook\]\((https:\/\/[^)]+)\).*'
+          regex: '(\[storybook\]\([^)]+\)[^\n]*)'
 
       - name: Find Theme deployment
         uses: actions-ecosystem/action-regex-match@v2
         id: regex-theme
         with:
           text: ${{ steps.fc.outputs.comment-body }}
-          regex: '\[themebuilder\]\((https:\/\/[^)]+)\).*'
+          regex: '(\[themebuilder\]\([^)]+\)[^\n]*)'
 
       - name: Find www deployment
         uses: actions-ecosystem/action-regex-match@v2
         id: regex-www
         with:
           text: ${{ steps.fc.outputs.comment-body }}
-          regex: '\[www\]\((https:\/\/[^)]+)\).*'
+          regex: '(\[www\]\([^)]+\)[^\n]*)'
 
       - name: Get current time in CEST
         uses: josStorer/get-current-time@v2
@@ -89,15 +89,15 @@ jobs:
             echo "**Preview deployments for this pull request:**"
             if [ -n "$STORYBOOK" ]; then
               echo ""
-              echo "$STORYBOOK"
+              printf '%s\n' "$STORYBOOK"
             fi
             if [ -n "$THEME" ]; then
               echo ""
-              echo "$THEME"
+              printf '%s\n' "$THEME"
             fi
             if [ -n "$WWW" ]; then
               echo ""
-              echo "$WWW"
+              printf '%s\n' "$WWW"
             fi
             echo "EOF"
           } >> $GITHUB_OUTPUT
