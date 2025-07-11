@@ -24,28 +24,19 @@ function createColorTypeDeclaration(colors: string[]) {
 
   const typeDeclaration = `
 /* ${defaultFileHeader} */
-// @ts-ignore: Ignore invalid module name for augmentation
-import type {} from '@digdir/designsystemet-react/colors';
-interface Colors_ {
-${colors.map((color) => `    ${color.includes('-') ? `'${color}'` : color}: never;`).join('\n')}
-}
-interface SeverityColors_ {
-  info: never;
-  success: never;
-  warning: never;
-  danger: never;
-}
+import type {} from '@digdir/designsystemet/types';
 
-// Types for esm module import
-export type Colors = keyof Colors_;
-export type SeverityColors = keyof SeverityColors_;
-export type Color = Colors | SeverityColors;
-
-// Augment types in react package based on theme
-// @ts-ignore: Ignore invalid module name for augmentation
-declare module '@digdir/designsystemet-react/colors' {
-  export interface ReactSeverityColors extends SeverityColors_ {}
-  export interface ReactColors extends Colors_ {}
+// Augment types based on theme
+declare module '@digdir/designsystemet/types' {
+  export interface ColorDefinitions {
+  ${colors.map((color) => `    ${color.includes('-') ? `'${color}'` : color}: never;`).join('\n')}
+  }
+  export interface SeverityColorDefinitions {
+    info: never;
+    success: never;
+    warning: never;
+    danger: never;
+  }
 }
 `.trimStart();
 
