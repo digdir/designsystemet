@@ -5,7 +5,7 @@ import { Image } from '~/_components/image/image';
 import { RRLink } from '~/_components/link';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { formatDate } from '~/_utils/date';
-import { getFileFromContentDir } from '~/_utils/files';
+import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { generateMetadata } from '~/_utils/metadata';
 import type { Route } from './+types/page';

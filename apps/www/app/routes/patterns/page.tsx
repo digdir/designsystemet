@@ -8,7 +8,7 @@ import { isRouteErrorResponse } from 'react-router';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { formatDate } from '~/_utils/date';
-import { getFileFromContentDir } from '~/_utils/files';
+import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { generateMetadata } from '~/_utils/metadata';
 import type { Route } from './+types/page';
