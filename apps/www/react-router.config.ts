@@ -143,7 +143,9 @@ const config: Config = {
       for (const bundle of Object.values(
         newBuildResult.buildManifest.serverBundles,
       )) {
-        const typedBundle = bundle as { config?: { runtime?: string } };
+        const typedBundle = bundle as {
+          config?: { runtime?: string; includeFiles?: string };
+        };
         typedBundle.config = typedBundle.config || {};
         typedBundle.config.runtime = 'nodejs';
         typedBundle.config.includeFiles = '**/dist/server/app/content/**';
