@@ -1,3 +1,4 @@
+name: Vercel deploy www
 run-name:  Deploy to www to ${{ inputs.environment }} by @${{ github.actor }}
 on:
   workflow_call:

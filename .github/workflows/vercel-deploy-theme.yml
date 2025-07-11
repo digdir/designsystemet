@@ -1,3 +1,4 @@
+name: Vercel deploy Themebuilder
 run-name:  Deploy to Themebuilder to ${{ inputs.environment }} by @${{ github.actor }}
 on:
   workflow_call:
