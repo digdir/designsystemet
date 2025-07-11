@@ -108,6 +108,12 @@
     }
   }
 
+  &:has(input:placeholder-shown):has(:popover-open) input {
+    background-image:
+      linear-gradient(-45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4)),
+      linear-gradient(45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4));
+  }
+
   /* Hide focus ring when u-combobox temporarily moves focus to input for screen reader purposes */
   & input[inputmode='none'] {
     box-shadow: none;
