@@ -1,4 +1,5 @@
-name: Cleanup Preview Deployments
+name: Preview Cleanup
+
 on:
   pull_request:
     types: [closed]

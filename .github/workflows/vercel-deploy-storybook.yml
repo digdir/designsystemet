@@ -80,7 +80,7 @@ jobs:
   update-comment:
     if: ${{ inputs.update_comment }}
     needs: deploy
-    uses: ./.github/workflows/update-preview-comment.yml
+    uses: ./.github/workflows/preview-comment.yml
     with:
       pr_number: ${{ inputs.pr_number }}
       deployment_type: storybook
