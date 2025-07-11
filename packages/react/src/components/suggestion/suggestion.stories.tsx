@@ -19,6 +19,14 @@ import {
 export default {
   title: 'Komponenter/Suggestion',
   component: Suggestion,
+  /* add height by default */
+  decorators: [
+    (Story) => (
+      <div style={{ minHeight: '300px' }}>
+        <Story />
+      </div>
+    ),
+  ],
   parameters: {
     chromatic: {
       disableSnapshot: false,
