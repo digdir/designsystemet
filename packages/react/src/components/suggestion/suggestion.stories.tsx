@@ -67,7 +67,7 @@ export const Preview: StoryFn<typeof Suggestion> = (args) => {
         <Suggestion.Chips />
         <Suggestion.Input />
         <Suggestion.Clear />
-        <Suggestion.List id='123'>
+        <Suggestion.List>
           <Suggestion.Empty>Tomt</Suggestion.Empty>
           {DATA_PLACES.map((place) => (
             <Suggestion.Option key={place} label={place} value={place}>
