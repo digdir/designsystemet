@@ -13,7 +13,7 @@ export const useColorModal = (): UseColorModalResult => {
   const [selectedColor, setSelectedColor] = useState<Color | null>(null);
   const [selectedNamespace, setSelectedNamespace] = useState<string>('');
 
-  /* This ensures the modal will be rendered before trying to show it */
+  // This ensures the modal will be rendered before trying to show it
   useEffect(() => {
     if (selectedColor && colorModalRef.current) {
       /* Small delay to ensure the DOM is updated */

@@ -1,4 +1,5 @@
-name: Cleanup Preview Deployments
+name: Preview Cleanup
+
 on:
   pull_request:
     types: [closed]
@@ -7,6 +8,7 @@ env:
   VERCEL_TEAM: ${{ secrets.VERCEL_TEAM }}
   STORYBOOK_URL: pr-${{ github.event.number }}.storybook.designsystemet.no
   THEME_URL: pr-${{ github.event.number }}.theme.designsystemet.no
+  WWW_URL: pr-${{ github.event.number }}.www.designsystemet.no
   ALIASES: ''
 
 jobs:
@@ -34,3 +36,7 @@ jobs:
       - name: Remove Theme alias if it exists
         if: contains(env.ALIASES, env.THEME_URL)
         run: vercel alias rm --yes --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} ${{ env.THEME_URL }}
+
+      - name: Remove WWW alias if it exists
+        if: contains(env.ALIASES, env.WWW_URL)
+        run: vercel alias rm --yes --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_TEAM }} ${{ env.WWW_URL }}
