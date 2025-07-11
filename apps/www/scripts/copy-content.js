@@ -58,7 +58,7 @@ try {
     .map((dirent) => dirent.name);
 
   for (const folder of folders) {
-    const folderPath = join(serverDistPath, folder, 'content');
+    const folderPath = join(serverDistPath, folder, 'app', 'content');
     copyDirectory(contentPath, folderPath);
     console.log(
       `Successfully copied content from ${contentPath} to ${folderPath}`,
