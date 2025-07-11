@@ -1,5 +1,25 @@
 # Change Log
 
+## 1.1.4
+
+### Patch Changes
+
+- Internal change: Removed index files that only exported one component. ([#3836](https://github.com/digdir/designsystemet/pull/3836))
+
+- **Avatar**: Text as children have same font-size as data-initials ([#3835](https://github.com/digdir/designsystemet/pull/3835))
+
+- **Suggestion**: fix crash when changing the value if the initial value was an empty string ([#3818](https://github.com/digdir/designsystemet/pull/3818))
+
+- Updated non-major dependencies ([#3803](https://github.com/digdir/designsystemet/pull/3803))
+
+- **Suggestion**: now triggers change on enter or blur, or when clicking an option - not while typing ([#3833](https://github.com/digdir/designsystemet/pull/3833))
+
+- **Suggestion**: Use popover API for datalist ([#3845](https://github.com/digdir/designsystemet/pull/3845))
+
+- Updated non-major dependencies ([#3838](https://github.com/digdir/designsystemet/pull/3838))
+
+- Internal change: Use kebab case instead of pascal case for files and folders ([#3819](https://github.com/digdir/designsystemet/pull/3819))
+
 ## 1.1.3
 
 ### Patch Changes
