@@ -184,17 +184,25 @@ const config: Config = {
     // only generate robots.txt only in production, so we don't clutter git
     if (process.env.VERCEL_ENV === 'production') {
       const robotsPath = join(dirname, 'public', 'robots.txt');
+      const robotsClientPath = join(
+        dirname,
+        'dist',
+        'client',
+        'public',
+        'robots.txt',
+      );
       const robotsContent = `User-agent: *\nAllow: /`;
 
       console.log(`Writing production robots.txt to ${robotsPath}`);
       try {
         writeFileSync(robotsPath, robotsContent);
+        writeFileSync(robotsClientPath, robotsContent);
       } catch (error) {
         console.error(`Error writing robots.txt file: ${error}`);
         throw new Error(`Failed to write robots.txt file: ${error}`);
       }
+      await generateSitemap();
     }
-    await generateSitemap();
   },
 };
 
@@ -277,10 +285,18 @@ ${allPages
 </urlset>`;
 
     const sitemapPath = join(dirname, 'public', 'sitemap.xml');
+    const sitemapClientPath = join(
+      dirname,
+      'dist',
+      'client',
+      'public',
+      'sitemap.xml',
+    );
     console.log(
       `Writing sitemap.xml to ${sitemapPath} with ${allPages.length} URLs`,
     );
     writeFileSync(sitemapPath, sitemapXml);
+    writeFileSync(sitemapClientPath, sitemapXml);
   } catch (error) {
     console.error(`Error generating sitemap: ${error}`);
   }
