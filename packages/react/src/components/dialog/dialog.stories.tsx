@@ -29,7 +29,6 @@ export default {
         width: '100cqw',
       },
     },
-
     chromatic: {
       disableSnapshot: false,
       modes: {
