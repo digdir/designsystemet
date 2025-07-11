@@ -78,22 +78,33 @@ import { Button } from '@digdir/designsystemet-react';
 
 `@digdir/designsystemet-theme` and `@digdir/designsystemet-css` only needs to be imported once.
 
-##### Typescript 
+#### 1.3 Typescript
 
-If you are using React and Typescript you can enable editor hints on any HTML elements for `data-color` based on your theme.
+Types for your theme can be found under `@digdir/designsystemet/types` when combined with the generated types file, `types.d.ts`, for your theme.
+
+Add the following to your `tsconfig.json`
+```jsonc
+{
+  "compilerOptions": {
+    "types": [
+      "<custom-theme>/types.d.ts" or "@digdir/designsystemet-theme",
+      ]
+  },
+}
+```
+
+##### React JSX elements
+
+If you are using React and Typescript you can also enable editor hints on any JSX elements for `data-color` and `data-size` based on your theme.
 
 This requires augmenting React's built-in types, and is therefore opt-in. 
-If you want this, add the following to your `tsconfig.json`:
+If you want this, add the following to your `tsconfig.json` in addition to types above:
 
 ```jsonc
 {
-  // ...other settings
   "compilerOptions": {
-    // ...other compilerOptions
     "types": [
-      // ...other types
-      "<custom-theme>/colors.d.ts" or "@digdir/designsystemet-theme" ,
-      "@digdir/designsystemet-react/react-types",
+      "@digdir/designsystemet-react/react-types", // adds typesefety for data-color, data-size on React JSX elements
       ]
   },
 }

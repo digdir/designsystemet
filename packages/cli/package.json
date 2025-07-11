@@ -28,6 +28,9 @@
     },
     "./tokens": {
       "import": "./dist/src/tokens/index.js"
+    },
+    "./types": {
+      "import": "./dist/src/types.js"
     }
   },
   "publishConfig": {

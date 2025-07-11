@@ -1,7 +1,7 @@
+import type { SeverityColors } from '@digdir/designsystemet-react/colors';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
-import type { SeverityColors } from '../../colors';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
