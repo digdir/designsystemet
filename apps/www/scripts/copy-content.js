@@ -46,35 +46,50 @@ const copyDirectory = (src, dest) => {
 
 console.log('Executing copy files script...');
 const contentPath = join(dirname, 'app/content');
-const distPath = join(dirname, 'dist/content');
-const clientPath = join(dirname, 'dist/client/app/content');
-
-// console.log(
-//   `Copying content from ${contentPath} to ${distPath} and ${clientPath}`,
-// );
+const serverDistPath = join(dirname, 'dist/server');
 
 try {
-  if (!existsSync(distPath)) {
-    mkdirSync(distPath, { recursive: true });
+  if (!existsSync(serverDistPath)) {
+    mkdirSync(serverDistPath, { recursive: true });
   }
 
-  copyDirectory(contentPath, distPath);
-  // copyDirectory(contentPath, './');
-  console.log(`Successfully copied content from ${contentPath} to ${distPath}`);
+  const folders = readdirSync(serverDistPath, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name);
+
+  for (const folder of folders) {
+    const folderPath = join(serverDistPath, folder, 'content');
+    copyDirectory(contentPath, folderPath);
+    console.log(
+      `Successfully copied content from ${contentPath} to ${folderPath}`,
+    );
+  }
 } catch (error) {
   console.error(`Error copying content directory:`, error);
 }
 
-try {
-  if (!existsSync(clientPath)) {
-    mkdirSync(clientPath, { recursive: true });
-  }
+/* take generated sitemap.xml from /public and move it to /dist/client */
+const sitemapPath = join(dirname, 'public', 'sitemap.xml');
+const sitemapClientPath = join(dirname, 'dist', 'client', 'sitemap.xml');
 
-  copyDirectory(contentPath, clientPath);
-  // copyDirectory(contentPath, './');
-  console.log(
-    `Successfully copied content from ${contentPath} to ${clientPath}`,
-  );
-} catch (error) {
-  console.error(`Error copying content directory:`, error);
+if (existsSync(sitemapPath)) {
+  try {
+    copyFileSync(sitemapPath, sitemapClientPath);
+    console.log(`Successfully copied sitemap.xml to ${sitemapClientPath}`);
+  } catch (error) {
+    console.error(`Error copying sitemap.xml:`, error);
+  }
+}
+
+/* take generated robots.txt from /public and move it to /dist/client */
+const robotsPath = join(dirname, 'public', 'robots.txt');
+const robotsClientPath = join(dirname, 'dist', 'client', 'robots.txt');
+
+if (existsSync(robotsPath)) {
+  try {
+    copyFileSync(robotsPath, robotsClientPath);
+    console.log(`Successfully copied robots.txt to ${robotsClientPath}`);
+  } catch (error) {
+    console.error(`Error copying robots.txt:`, error);
+  }
 }
