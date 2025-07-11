@@ -2,7 +2,15 @@ import type { Meta, StoryFn } from '@storybook/react-vite';
 import { type ChangeEvent, useState } from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import { useDebounceCallback } from '../../utilities';
-import { Button, Divider, Field, Label, Paragraph, Spinner } from '../';
+import {
+  Button,
+  Details,
+  Divider,
+  Field,
+  Label,
+  Paragraph,
+  Spinner,
+} from '../';
 import {
   EXPERIMENTAL_Suggestion as Suggestion,
   type SuggestionValues,
@@ -14,7 +22,7 @@ export default {
   /* add height by default */
   decorators: [
     (Story) => (
-      <div style={{ minHeight: '500px' }}>
+      <div style={{ minHeight: '300px' }}>
         <Story />
       </div>
     ),
@@ -67,7 +75,7 @@ export const Preview: StoryFn<typeof Suggestion> = (args) => {
         <Suggestion.Chips />
         <Suggestion.Input />
         <Suggestion.Clear />
-        <Suggestion.List>
+        <Suggestion.List id='123'>
           <Suggestion.Empty>Tomt</Suggestion.Empty>
           {DATA_PLACES.map((place) => (
             <Suggestion.Option key={place} label={place} value={place}>
@@ -473,4 +481,28 @@ export const Multiple: StoryFn<typeof Suggestion> = (args) => {
 
 Multiple.args = {
   multiple: true,
+};
+
+export const InDetails: StoryFn<typeof Suggestion> = (args) => {
+  return (
+    <Details>
+      <Details.Summary>Åpne details som har overflow: clip;</Details.Summary>
+      <Details.Content>
+        <Field>
+          <Label>Velg en destinasjon</Label>
+          <Suggestion {...args} autoFocus>
+            <Suggestion.Chips />
+            <Suggestion.Input />
+            <Suggestion.Clear />
+            <Suggestion.List>
+              <Suggestion.Empty>Tomt</Suggestion.Empty>
+              {DATA_PLACES.map((place) => (
+                <Suggestion.Option key={place}>{place}</Suggestion.Option>
+              ))}
+            </Suggestion.List>
+          </Suggestion>
+        </Field>
+      </Details.Content>
+    </Details>
+  );
 };

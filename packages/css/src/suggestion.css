@@ -43,12 +43,19 @@
     box-shadow: var(--ds-shadow-md);
     box-sizing: border-box;
     color: var(--ds-color-neutral-text-default);
-    inset: 100% 0 auto 0;
     overflow-y: auto;
-    position: absolute;
-    z-index: 1600;
-    margin-top: var(--dsc-suggestion-list-gap);
+    position: fixed;
     max-height: 200px;
+    inset: 0 auto auto 0;
+    padding: 0;
+
+    /* If not using popover for the list */
+    &:not([popover]) {
+      position: absolute;
+      margin-top: var(--dsc-suggestion-list-gap);
+      z-index: 1600;
+      inset: 100% 0 auto 0;
+    }
 
     /* Hide datalist if no children */
     &:empty {
@@ -108,6 +115,12 @@
     @media (forced-colors: active) {
       appearance: auto; /* show chevron */
     }
+  }
+
+  &:has(input:placeholder-shown):has(:popover-open) input {
+    background-image:
+      linear-gradient(-45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4)),
+      linear-gradient(45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4));
   }
 
   /* Hide focus ring when u-combobox temporarily moves focus to input for screen reader purposes */

@@ -46,10 +46,13 @@ type Filter = (args: {
 type SuggestionContextType = {
   isEmpty?: boolean;
   selectedItems?: Item[];
+  listId?: string;
+  setListId: (id: string) => void;
   handleFilter: (input?: HTMLInputElement | null) => void;
 };
 
 export const SuggestionContext = createContext<SuggestionContextType>({
+  setListId: () => undefined,
   handleFilter: () => undefined,
 });
 
@@ -144,13 +147,16 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
     ref,
   ) {
     const uComboboxRef = useRef<UHTMLComboboxElement>(null);
-    const generatedSelectId = useId();
-    const selectId = rest.id ? `${rest.id}-select` : generatedSelectId;
+    const genId = useId();
+    const selectId = rest.id ? `${rest.id}-select` : genId;
     const isContolled = value !== undefined;
     const mergedRefs = useMergeRefs([ref, uComboboxRef]);
     const [isEmpty, setIsEmpty] = useState(false);
     const [selectedItems, setSelectedItems] = useState<Item[]>(
       sanitizeItems(defaultValue || value),
+    );
+    const [listId, setListId] = useState<string>(
+      rest.id ? `${rest.id}-list` : `${genId}-list`,
     );
 
     // Update if controlled values
@@ -206,7 +212,7 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
 
     return (
       <SuggestionContext.Provider
-        value={{ isEmpty, selectedItems, handleFilter }}
+        value={{ isEmpty, selectedItems, listId, setListId, handleFilter }}
       >
         <u-combobox
           data-multiple={multiple || undefined}

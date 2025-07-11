@@ -1,8 +1,14 @@
 import type { HTMLAttributes } from 'react';
-import { forwardRef, useContext, useEffect } from 'react';
+import { forwardRef, useContext, useEffect, useRef } from 'react';
 import '@u-elements/u-datalist';
+import {
+  autoUpdate,
+  computePosition,
+  type MiddlewareState,
+} from '@floating-ui/dom';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
+import { useMergeRefs } from '../../utilities/hooks';
 import { SuggestionContext } from './suggestion';
 
 export type SuggestionListProps = MergeRight<
@@ -39,9 +45,35 @@ export const SuggestionList = forwardRef<
   { singular = '%d forslag', plural = '%d forslag', className, id, ...rest },
   ref,
 ) {
-  const { handleFilter } = useContext(SuggestionContext);
+  const { listId, setListId, handleFilter } = useContext(SuggestionContext);
+  const listRef = useRef<HTMLDataListElement>(null);
+  const mergedRefs = useMergeRefs([ref, listRef]);
 
   useEffect(handleFilter); // Must run on every render
+
+  useEffect(() => {
+    id && setListId(id);
+  }, [id]);
+
+  // Position with floating-ui
+  useEffect(() => {
+    const list = listRef.current;
+    const trigger = document.querySelector(
+      `[popovertarget="${list?.id}"]`,
+    ) as HTMLInputElement;
+
+    if (list && trigger) {
+      return autoUpdate(trigger, list, () => {
+        computePosition(trigger, list, {
+          placement: 'bottom',
+          strategy: 'fixed',
+          middleware: [triggerWidth],
+        }).then(({ x, y }) => {
+          list.style.translate = `${x}px calc(${y}px + var(--dsc-suggestion-list-gap))`;
+        });
+      });
+    }
+  }, [listId]);
 
   return (
     <u-datalist
@@ -49,8 +81,21 @@ export const SuggestionList = forwardRef<
       data-sr-singular={singular}
       data-sr-plural={plural}
       class={className} // Using "class" since React does not translate className on custom elements
-      ref={ref}
+      ref={mergedRefs}
+      id={listId}
+      popover='manual'
       {...rest}
     />
   );
 });
+
+const triggerWidth = {
+  name: 'TriggerWidth',
+  fn(data: MiddlewareState) {
+    const { elements, rects } = data;
+
+    elements.floating.style.width = `${rects.reference.width}px`;
+
+    return data;
+  },
+};
