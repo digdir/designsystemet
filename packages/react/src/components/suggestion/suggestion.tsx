@@ -147,8 +147,8 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
     ref,
   ) {
     const uComboboxRef = useRef<UHTMLComboboxElement>(null);
-    const generatedSelectId = useId();
-    const selectId = rest.id ? `${rest.id}-select` : generatedSelectId;
+    const genId = useId();
+    const selectId = rest.id ? `${rest.id}-select` : genId;
     const isContolled = value !== undefined;
     const mergedRefs = useMergeRefs([ref, uComboboxRef]);
     const [isEmpty, setIsEmpty] = useState(false);
@@ -156,7 +156,7 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
       sanitizeItems(defaultValue || value),
     );
     const [listId, setListId] = useState<string>(
-      rest.id ? `${rest.id}-list` : `${generatedSelectId}-list`,
+      rest.id ? `${rest.id}-list` : `${genId}-list`,
     );
 
     // Update if controlled values
