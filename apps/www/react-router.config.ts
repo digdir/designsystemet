@@ -203,9 +203,7 @@ const config: Config = {
 // Function to generate sitemap.xml
 const generateSitemap = async (): Promise<void> => {
   try {
-    const baseUrl = 'https://designsystemet.no'; // Update this to your actual domain
-    const contentPaths = getContentPathsWithLanguages();
-    const allPaths = ['/no/components', ...contentPaths];
+    const baseUrl = 'https://designsystemet.no';
 
     // Get file modification dates for accurate lastmod
     const getLastModForPath = (urlPath: string): string => {
@@ -220,18 +218,12 @@ const generateSitemap = async (): Promise<void> => {
 
         // Special case for /no/components
         if (urlPath === '/no/components') {
-          // Try to find a components index file or use current date
-          const possiblePaths = [
-            join(dirname, 'app/content/components/no/index.mdx'),
-            join(dirname, 'app/content/components/no.mdx'),
-          ];
-
-          for (const path of possiblePaths) {
-            if (existsSync(path)) {
-              const stats = statSync(path);
-              return stats.mtime.toISOString().split('T')[0];
-            }
+          const path = 'app/content/components.ts';
+          if (existsSync(path)) {
+            const stats = statSync(path);
+            return stats.mtime.toISOString().split('T')[0];
           }
+
           return new Date().toISOString().split('T')[0];
         }
 
@@ -274,7 +266,7 @@ const generateSitemap = async (): Promise<void> => {
     // Generate sitemap XML with accurate lastmod dates
     const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${allPaths
+${allPages
   .map(
     (path) => `  <url>
     <loc>${baseUrl}${path}</loc>
@@ -288,7 +280,7 @@ ${allPaths
 
     const sitemapPath = join(dirname, 'public', 'sitemap.xml');
     console.log(
-      `Writing sitemap.xml to ${sitemapPath} with ${allPaths.length} URLs`,
+      `Writing sitemap.xml to ${sitemapPath} with ${allPages.length} URLs`,
     );
     writeFileSync(sitemapPath, sitemapXml);
   } catch (error) {
