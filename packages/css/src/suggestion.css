@@ -49,6 +49,14 @@
     inset: 0 auto auto 0;
     padding: 0;
 
+    /* If not using popover for the list */
+    &:not([popover]) {
+      position: absolute;
+      margin-top: var(--dsc-suggestion-list-gap);
+      z-index: 1600;
+      inset: 100% 0 auto 0;
+    }
+
     /* Hide datalist if no children */
     &:empty {
       display: none;
