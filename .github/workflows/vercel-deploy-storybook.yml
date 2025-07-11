@@ -1,4 +1,4 @@
-name: Deploy Storybook Base
+run-name:  Deploy to Storybook to ${{ inputs.environment }} by @${{ github.actor }}
 on:
   workflow_call:
     inputs:
