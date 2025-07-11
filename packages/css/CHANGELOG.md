@@ -1,5 +1,21 @@
 # Change Log
 
+## 1.1.4
+
+### Patch Changes
+
+- **Avatar**: Text as children have same font-size as data-initials ([#3835](https://github.com/digdir/designsystemet/pull/3835))
+
+- **Select**: Flip chevron when open, uses [`:open` with limited availability](https://developer.mozilla.org/en-US/docs/Web/CSS/:open). Does not work in Safari ([#3846](https://github.com/digdir/designsystemet/pull/3846))
+
+- Updated non-major dependencies ([#3803](https://github.com/digdir/designsystemet/pull/3803))
+
+- **SkipLink**: Class is now `ds-skip-link`. Filename is now `skip-link.css`. ([#3829](https://github.com/digdir/designsystemet/pull/3829))
+  The old class and file is still present, and can imported and used as before. This will be removed in the next major version.
+
+- **ToggleGroup**: Class is now `ds-toggle-group`. Filename is now `toggle-group.css`. ([#3829](https://github.com/digdir/designsystemet/pull/3829))
+  The old class and file is still present, and can imported and used as before. This will be removed in the next major version.
+
 ## 1.1.3
 
 ### Patch Changes
