@@ -155,7 +155,9 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
     const [selectedItems, setSelectedItems] = useState<Item[]>(
       sanitizeItems(defaultValue || value),
     );
-    const [listId, setListId] = useState<string>(selectId);
+    const [listId, setListId] = useState<string>(
+      rest.id ? `${rest.id}-list` : `${generatedSelectId}-list`,
+    );
 
     // Update if controlled values
     const prevControlled = useRef(value);

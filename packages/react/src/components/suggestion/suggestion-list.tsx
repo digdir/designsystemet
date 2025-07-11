@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react';
-import { forwardRef, useContext, useEffect, useId, useRef } from 'react';
+import { forwardRef, useContext, useEffect, useRef } from 'react';
 import '@u-elements/u-datalist';
 import {
   autoUpdate,
@@ -49,32 +49,27 @@ export const SuggestionList = forwardRef<
   const listRef = useRef<HTMLDataListElement>(null);
   const mergedRefs = useMergeRefs([ref, listRef]);
 
-  const genId = useId();
-
   useEffect(handleFilter); // Must run on every render
 
   useEffect(() => {
-    if (listId) {
-      setListId(id || genId);
-    }
-  }, [id, listId, setListId]);
+    id && setListId(id);
+  }, [id]);
 
   // Position with floating-ui
   useEffect(() => {
-    const popover = listRef.current;
+    const list = listRef.current;
     const trigger = document.querySelector(
-      `[popovertarget="${popover?.id}"]`,
+      `[popovertarget="${list?.id}"]`,
     ) as HTMLInputElement;
 
-    if (popover && trigger) {
-      return autoUpdate(trigger, popover, () => {
-        computePosition(trigger, popover, {
+    if (list && trigger) {
+      return autoUpdate(trigger, list, () => {
+        computePosition(trigger, list, {
           placement: 'bottom',
           strategy: 'fixed',
           middleware: [triggerWidth],
         }).then(({ x, y }) => {
-          popover.style.translate = `${x}px calc(${y}px + var(--dsc-suggestion-list-gap))`;
-          console.log([x, y]);
+          list.style.translate = `${x}px calc(${y}px + var(--dsc-suggestion-list-gap))`;
         });
       });
     }

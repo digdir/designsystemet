@@ -54,6 +54,8 @@ export const SuggestionInput = forwardRef<
     rest,
   );
 
+  console.log(listId);
+
   return (
     <Input
       placeholder='' // We need an empty placeholder for the clear button to be able to show/hide
