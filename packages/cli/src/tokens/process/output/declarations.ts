@@ -29,7 +29,7 @@ import type {} from '@digdir/designsystemet/types';
 // Augment types based on theme
 declare module '@digdir/designsystemet/types' {
   export interface ColorDefinitions {
-  ${colors.map((color) => `    ${color.includes('-') ? `'${color}'` : color}: never;`).join('\n')}
+${colors.map((color) => `    ${color.includes('-') ? `'${color}'` : color}: never;`).join('\n')}
   }
   export interface SeverityColorDefinitions {
     info: never;
