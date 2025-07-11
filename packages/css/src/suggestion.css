@@ -47,6 +47,7 @@
     position: fixed;
     max-height: 200px;
     inset: 0 auto auto 0;
+    padding: 0;
 
     /* Hide datalist if no children */
     &:empty {
