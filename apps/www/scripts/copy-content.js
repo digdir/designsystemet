@@ -64,6 +64,8 @@ try {
       `Successfully copied content from ${contentPath} to ${folderPath}`,
     );
   }
+
+  copyDirectory(contentPath, join(serverDistPath, 'app', 'content'));
 } catch (error) {
   console.error(`Error copying content directory:`, error);
 }

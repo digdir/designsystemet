@@ -182,7 +182,10 @@ const config: Config = {
     }
 
     const robotsPath = join(dirname, 'public', 'robots.txt');
-    const robotsContent = `User-agent: *\nAllow: /`;
+    const robotsContent =
+      process.env.VERCEL_ENV === 'production'
+        ? `User-agent: *\nAllow: /`
+        : `User-agent: *\nDisallow: /`;
 
     console.log(`Writing robots.txt to ${robotsPath}`);
     try {
