@@ -17,7 +17,7 @@ on:
 
 jobs:
   deploy-production:
-    uses: ./.github/workflows/deploy-theme-base.yml
+    uses: ./.github/workflows/vercel-deploy-theme.yml
     with:
       environment: ${{ github.event.inputs.environment == 'production' && 'production' || 'preview' }}
       vercel_alias: ${{ github.event.inputs.environment != 'production' && 'next.theme.designsystemet.no' || '' }}

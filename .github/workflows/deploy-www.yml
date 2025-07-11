@@ -17,7 +17,7 @@ on:
 
 jobs:
   deploy-production:
-    uses: ./.github/workflows/deploy-www-base.yml
+    uses: ./.github/workflows/vercel-deploy-www.yml
     with:
       environment: ${{ github.event.inputs.environment == 'production' && 'production' || 'preview' }}
       vercel_alias: ${{ github.event.inputs.environment != 'production' && 'next.www.designsystemet.no' || '' }}

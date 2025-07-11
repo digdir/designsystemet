@@ -8,7 +8,7 @@ on:
 
 jobs:
   deploy-preview:
-    uses: ./.github/workflows/deploy-www-base.yml
+    uses: ./.github/workflows/vercel-deploy-www.yml
     with:
       environment: preview
       pr_number: ${{ github.event.number }}

@@ -19,7 +19,7 @@ on:
 
 jobs:
   deploy-production:
-    uses: ./.github/workflows/deploy-storybook-base.yml
+    uses: ./.github/workflows/vercel-deploy-storybook.yml
     with:
       environment: ${{ github.event.inputs.environment == 'production' && 'production' || 'preview' }}
       vercel_alias: ${{ github.event.inputs.environment != 'production' && 'next.storybook.designsystemet.no' || '' }}

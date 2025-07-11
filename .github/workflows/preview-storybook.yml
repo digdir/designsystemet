@@ -9,7 +9,7 @@ on:
 
 jobs:
   deploy-preview:
-    uses: ./.github/workflows/deploy-storybook-base.yml
+    uses: ./.github/workflows/vercel-deploy-storybook.yml
     with:
       environment: preview
       pr_number: ${{ github.event.number }}
