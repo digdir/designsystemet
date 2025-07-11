@@ -80,15 +80,14 @@ import { Button } from '@digdir/designsystemet-react';
 
 #### 1.3 Typescript
 
-Types for your theme can be found under `@digdir/designsystemet/types` when combined with the generated types file, `color.d.ts`, for your theme.
+Types for your theme can be found under `@digdir/designsystemet/types` when combined with the generated types file, `types.d.ts`, for your theme.
 
 Add the following to your `tsconfig.json`
 ```jsonc
 {
   "compilerOptions": {
     "types": [
-      // ...other types
-      "<custom-theme>/colors.d.ts" or "@digdir/designsystemet-theme",
+      "<custom-theme>/types.d.ts" or "@digdir/designsystemet-theme",
       ]
   },
 }
@@ -105,7 +104,6 @@ If you want this, add the following to your `tsconfig.json` in addition to types
 {
   "compilerOptions": {
     "types": [
-      // ...other types 
       "@digdir/designsystemet-react/react-types", // adds typesefety for data-color, data-size on React JSX elements
       ]
   },

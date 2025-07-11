@@ -13,8 +13,12 @@ export const createTypeDeclarationFiles = (processed$themes: ProcessedThemeObjec
   const typeDeclaration = createColorTypeDeclaration([...customColors, 'neutral']);
   return [
     {
-      output: typeDeclaration,
+      output: `/* This file is deprecated and will be removed in a future release. Use types.d.ts instead */\n${typeDeclaration}`,
       destination: 'colors.d.ts',
+    },
+    {
+      output: typeDeclaration,
+      destination: 'types.d.ts',
     },
   ];
 };
