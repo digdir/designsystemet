@@ -46,10 +46,13 @@ type Filter = (args: {
 type SuggestionContextType = {
   isEmpty?: boolean;
   selectedItems?: Item[];
+  listId?: string;
+  setListId: (id: string) => void;
   handleFilter: (input?: HTMLInputElement | null) => void;
 };
 
 export const SuggestionContext = createContext<SuggestionContextType>({
+  setListId: () => undefined,
   handleFilter: () => undefined,
 });
 
@@ -152,6 +155,7 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
     const [selectedItems, setSelectedItems] = useState<Item[]>(
       sanitizeItems(defaultValue || value),
     );
+    const [listId, setListId] = useState<string>(selectId);
 
     // Update if controlled values
     const prevControlled = useRef(value);
@@ -206,7 +210,7 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
 
     return (
       <SuggestionContext.Provider
-        value={{ isEmpty, selectedItems, handleFilter }}
+        value={{ isEmpty, selectedItems, listId, setListId, handleFilter }}
       >
         <u-combobox
           data-multiple={multiple || undefined}
