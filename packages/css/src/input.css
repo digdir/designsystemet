@@ -84,6 +84,12 @@
       background-position: calc(1.2em - var(--dsc-input-stroke-width)), calc(0% + 0.8em);
     }
 
+    &:open {
+      background-image:
+        linear-gradient(-45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4)),
+        linear-gradient(45deg, var(--_dsc-input-diagonal-1), var(--_dsc-input-diagonal-2), var(--_dsc-input-diagonal-3), var(--_dsc-input-diagonal-4));
+    }
+
     @media (forced-colors: active) {
       appearance: auto; /* show chevron */
     }
