@@ -181,7 +181,7 @@ const config: Config = {
       console.error(`Error writing manifest file: ${error}`);
     }
 
-    // only generate robots.txt and sitemap.xml in production, so we don't clutter git
+    // only generate robots.txt only in production, so we don't clutter git
     if (process.env.VERCEL_ENV === 'production') {
       const robotsPath = join(dirname, 'public', 'robots.txt');
       const robotsContent = `User-agent: *\nAllow: /`;
@@ -193,10 +193,8 @@ const config: Config = {
         console.error(`Error writing robots.txt file: ${error}`);
         throw new Error(`Failed to write robots.txt file: ${error}`);
       }
-
-      // Generate sitemap for production
-      await generateSitemap();
     }
+    await generateSitemap();
   },
 };
 
