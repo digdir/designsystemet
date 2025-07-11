@@ -146,6 +146,7 @@ const config: Config = {
         const typedBundle = bundle as { config?: { runtime?: string } };
         typedBundle.config = typedBundle.config || {};
         typedBundle.config.runtime = 'nodejs';
+        typedBundle.config.includeFiles = '**/dist/server/app/content/**';
       }
     }
 
