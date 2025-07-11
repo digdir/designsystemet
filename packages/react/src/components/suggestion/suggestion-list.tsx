@@ -6,9 +6,9 @@ import {
   computePosition,
   type MiddlewareState,
 } from '@floating-ui/dom';
-import { useMergeRefs } from '@floating-ui/react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
+import { useMergeRefs } from '../../utilities/hooks';
 import { SuggestionContext } from './suggestion';
 
 export type SuggestionListProps = MergeRight<
