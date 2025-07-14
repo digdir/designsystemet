@@ -68,3 +68,42 @@
     }
   }
 }
+
+/*Dark mode overrides (storybook/theming create() does not support cssvars for most properties)*/
+
+.custom-docs-wrapper {
+  background-color: var(--ds-color-neutral-background-default);
+}
+.docblock-argstable {
+  color: var(--ds-color-text-default) !important;
+  * {
+    color: inherit !important;
+  }
+  tbody {
+    background-color: var(--ds-color-neutral-surface-default);
+  }
+  textarea, input, select {
+    background-color: inherit;
+  }
+}
+.docblock-code-toggle {
+  color: var(--ds-color-text-default) !important;
+}
+
+[data-color-scheme="dark"] {
+  .docblock-argstable {
+    * {
+      border-color: var(--ds-color-neutral-border-subtle) !important;
+    }
+    /*single out "code" in argstable*/
+    td div > span[class], code {
+      background-color: var(--ds-color-neutral-background-tinted) !important;
+    }
+  }
+  .sbdocs-preview {
+    border-color: var(--ds-color-neutral-border-subtle) !important;
+  }
+  .docblock-code-toggle {
+    border-color: var(--ds-color-neutral-border-subtle) !important;
+  }
+}

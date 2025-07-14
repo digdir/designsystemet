@@ -7,10 +7,11 @@ export default create({
   // Colors
   base: 'light',
   colorSecondary: '#0062BA',
-  barTextColor: '#243142',
-  textColor: '#1e2b3c', // TODO does not work with css vars atm. bug?
-  inputTextColor: '#243142',
-  appBg: '#fefefe',
+
+  textColor: '#1e2b3c', // TODO does not work with css vars atm. bug? (propstable, <Markdown />, show code btn)
+  inputTextColor: 'var(--ds-color-neutral-text-default)',
+  appBg: 'var(--ds-color-neutral-background-default)',
   appPreviewBg: 'var(--ds-color-neutral-background-default)',
-  appContentBg: '#fefefe',
+  appContentBg: 'transparent',
+  barBg: 'var(--ds-color-neutral-background-default)',
 });

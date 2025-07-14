@@ -9,10 +9,7 @@ const Wrapper = ({ variant, description, image, alt }: WrapperProps) => {
   const heading = variant === 'do' ? 'Gjør' : 'Unngå';
 
   return (
-    <figure
-      className={cl(styles.wrapper, styles[variant])}
-      data-color-scheme='light'
-    >
+    <figure className={cl(styles.wrapper, styles[variant])}>
       <div className={styles.header}>
         <div className={styles.icon}>{icon}</div>
         <Heading
