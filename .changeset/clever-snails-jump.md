@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-**Suggestion:** React 18 strict mode compatibility
+**Suggestion:** Fix React 18 strict mode compatibility when controlled.
