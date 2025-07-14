@@ -67,6 +67,13 @@ const DATA_PLACES = [
   'Lillestrøm',
 ];
 
+const DATA_PEOPLE = [
+  { label: 'Lars', value: '#004' },
+  { label: 'James', value: '#007' },
+  { label: 'Nina', value: '#113' },
+  { label: 'Tove', value: '#110' },
+];
+
 export const Preview: StoryFn<typeof Suggestion> = (args) => {
   return (
     <Field>
@@ -294,6 +301,63 @@ ControlledMultiple.play = async ({ canvasElement, step }) => {
     await expect(chipValues).toContain('Sogndal');
     await expect(chipValues).toContain('Stavanger');
   });
+};
+
+export const ControlledIndependentLabelValue: StoryFn<typeof Suggestion> = (
+  args,
+) => {
+  const [items, setItems] = useState<typeof DATA_PEOPLE>(
+    DATA_PEOPLE.slice(0, 1),
+  );
+
+  return (
+    <>
+      <Field>
+        <Label>Velg person</Label>
+        <Suggestion
+          {...args}
+          value={items.slice(0, 1)}
+          onValueChange={(items) => setItems(items)}
+          filter={false}
+        >
+          <Suggestion.Chips />
+          <Suggestion.Input />
+          <Suggestion.Clear />
+          <Suggestion.List>
+            <Suggestion.Empty>Tomt</Suggestion.Empty>
+            {DATA_PEOPLE.map(({ label, value }) => (
+              <Suggestion.Option key={value} label={label} value={value}>
+                {label}
+              </Suggestion.Option>
+            ))}
+          </Suggestion.List>
+        </Suggestion>
+      </Field>
+      <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
+
+      <div style={{ margin: 'var(--ds-size-2) 0' }}>
+        Valgt person:
+        <pre
+          style={{
+            fontSize: 14,
+            height: 100,
+            whiteSpace: 'pre-wrap',
+            width: 400,
+          }}
+        >
+          {JSON.stringify(items)}
+        </pre>
+      </div>
+
+      <Button
+        onClick={() => {
+          setItems(DATA_PEOPLE.slice(2, 3));
+        }}
+      >
+        Sett Nina
+      </Button>
+    </>
+  );
 };
 
 export const CustomFilterAlt1: StoryFn<typeof Suggestion> = (args) => {

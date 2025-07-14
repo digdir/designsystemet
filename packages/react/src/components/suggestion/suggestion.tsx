@@ -149,22 +149,14 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
     const uComboboxRef = useRef<UHTMLComboboxElement>(null);
     const genId = useId();
     const selectId = rest.id ? `${rest.id}-select` : genId;
-    const isContolled = value !== undefined;
+    const isControlled = value !== undefined;
     const mergedRefs = useMergeRefs([ref, uComboboxRef]);
+    const [listId, setListId] = useState(`${rest.id || genId}-list`);
     const [isEmpty, setIsEmpty] = useState(false);
-    const [selectedItems, setSelectedItems] = useState<Item[]>(
-      sanitizeItems(defaultValue || value),
+    const [defaultItems, setDefaultItems] = useState<Item[]>(
+      sanitizeItems(defaultValue),
     );
-    const [listId, setListId] = useState<string>(
-      rest.id ? `${rest.id}-list` : `${genId}-list`,
-    );
-
-    // Update if controlled values
-    const prevControlled = useRef(value);
-    if (value !== prevControlled.current) {
-      prevControlled.current = value;
-      setSelectedItems(sanitizeItems(prevControlled.current));
-    }
+    const selectedItems = defaultValue ? defaultItems : sanitizeItems(value);
 
     /**
      * Listerners and handling of adding/removing
@@ -176,15 +168,14 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
         const multiple = combobox?.multiple;
         const data = event.detail;
 
-        if (isContolled)
-          onValueChange?.(nextItems(data, prevControlled.current, multiple));
-        else
-          setSelectedItems((prevItems) => nextItems(data, prevItems, multiple));
+        if (isControlled)
+          onValueChange?.(nextItems(data, selectedItems, multiple));
+        else setDefaultItems(nextItems(data, selectedItems, multiple));
       };
 
       combobox?.addEventListener('beforechange', beforeChange);
       return () => combobox?.removeEventListener('beforechange', beforeChange);
-    }, [isContolled, setSelectedItems]);
+    }, [selectedItems, isControlled]);
 
     const handleFilter = useCallback(() => {
       const { control: input, options = [] } = uComboboxRef?.current || {};
