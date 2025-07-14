@@ -15,9 +15,13 @@ export default defineProject({
     tsconfigRaw: JSON.stringify(tsconfig),
   },
   test: {
-    typecheck: { tsconfig: 'tsconfig.tests.json' },
+    typecheck: {
+      tsconfig: resolve(import.meta.dirname, 'tsconfig.tests.json'),
+    },
     globals: true,
     environment: 'jsdom',
-    setupFiles: ['../../test/vitest.setup.ts', './vitest.setup.ts'],
+    setupFiles: ['../../test/vitest.setup.ts', './vitest.setup.ts'].map(
+      (path) => resolve(import.meta.dirname, path),
+    ),
   },
 });

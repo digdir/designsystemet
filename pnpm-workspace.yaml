@@ -2,7 +2,8 @@ packages:
   - packages/*
   - apps/*
   - plugins/*
-  - internal/components
+  - internal/*
+  - '!internal/design-tokens'
 ignoredBuiltDependencies:
   - '@bundled-es-modules/glob'
   - sharp
