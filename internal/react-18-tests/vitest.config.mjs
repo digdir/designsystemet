@@ -3,29 +3,15 @@
 import { resolve } from 'node:path';
 import { defineProject } from 'vitest/config';
 import baseConfig from '../../packages/react/vitest.config.mjs';
+import * as pkgJson from './package.json';
 
 const reactRoot = resolve(import.meta.dirname, '../../packages/react');
 const react18 = resolve(import.meta.dirname, 'node_modules');
 
-const shouldBeAliased = [
-  '@floating-ui/react',
-  '@navikt/aksel-icons',
-  '@radix-ui/react-slot',
-  '@tanstack/react-virtual',
-  '@testing-library/react',
-  'react',
-  'react/jsx-runtime',
-  'react/jsx-dev-runtime',
-  'react/package.json',
-  'react-dom',
-  'react-dom/client',
-  'react-dom/server',
-  'react-dom/server.browser',
-  'react-dom/server.node',
-  'react-dom/profiling',
-  'react-dom/test-utils',
-  'react-dom/package.json',
-];
+const shouldBeAliased = Object.keys({
+  ...pkgJson.dependencies,
+  ...pkgJson.devDependencies,
+});
 
 export default defineProject({
   ...baseConfig,
