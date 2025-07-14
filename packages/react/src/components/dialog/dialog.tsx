@@ -130,8 +130,9 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
     useEffect(() => {
       const handleClose = (event: Event) => onClose?.(event);
 
-      dialogRef.current?.addEventListener('close', handleClose);
-      return () => dialogRef.current?.removeEventListener('close', handleClose);
+      const currentRef = dialogRef.current;
+      currentRef?.addEventListener('close', handleClose);
+      return () => currentRef?.removeEventListener('close', handleClose);
     }, [onClose]);
 
     return (
