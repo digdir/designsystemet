@@ -25,14 +25,20 @@ describe('useMediaQuery', () => {
   it('Adds event listener', () => {
     const addEventListener = vi.fn();
     matchMediaValueMock({ addEventListener });
-    renderHook(() => useMediaQuery(query));
+    renderHook(() => useMediaQuery(query), {
+      // In React strict mode the hook is mounted twice. Disable it to properly test hook initialisation.
+      reactStrictMode: false,
+    });
     expect(addEventListener).toHaveBeenCalledTimes(1);
   });
 
   it('Removes the event listener on unmount', () => {
     const removeEventListener = vi.fn();
     matchMediaValueMock({ removeEventListener });
-    const { unmount } = renderHook(() => useMediaQuery(query));
+    const { unmount } = renderHook(() => useMediaQuery(query), {
+      // In React strict mode the hook is mounted twice. Disable it to properly test hook cleanup.
+      reactStrictMode: false,
+    });
     expect(removeEventListener).not.toHaveBeenCalled();
     unmount();
     expect(removeEventListener).toHaveBeenCalledTimes(1);
