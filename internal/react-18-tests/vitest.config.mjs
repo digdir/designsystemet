@@ -40,6 +40,10 @@ export default defineProject({
   },
   test: {
     ...baseConfig.test,
+    env: {
+      ...baseConfig.test.env,
+      REACT_VERSION: '18',
+    },
     root: reactRoot,
   },
 });

@@ -15,6 +15,9 @@ export default defineProject({
     tsconfigRaw: JSON.stringify(tsconfig),
   },
   test: {
+    env: {
+      REACT_VERSION: '19',
+    },
     typecheck: {
       tsconfig: resolve(import.meta.dirname, 'tsconfig.tests.json'),
     },
