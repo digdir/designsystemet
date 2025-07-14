@@ -156,7 +156,7 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
     const [defaultItems, setDefaultItems] = useState<Item[]>(
       sanitizeItems(defaultValue),
     );
-    const selectedItems = defaultValue ? defaultItems : sanitizeItems(value);
+    const selectedItems = value ? sanitizeItems(value) : defaultItems;
 
     /**
      * Listerners and handling of adding/removing
