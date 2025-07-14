@@ -14,3 +14,11 @@ onlyBuiltDependencies:
   - just-pnpm
   - style-dictionary
 useNodeVersion: 22.17.0
+packageExtensions:
+  '@navikt/aksel-icons':
+    peerDependencies:
+      react: ">=18.3.1 || ^19.0.0"
+    peerDependenciesMeta:
+      react:
+        optional: true
+

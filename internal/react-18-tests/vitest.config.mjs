@@ -9,6 +9,7 @@ const react18 = resolve(import.meta.dirname, 'node_modules');
 
 const shouldBeAliased = [
   '@floating-ui/react',
+  '@navikt/aksel-icons',
   '@radix-ui/react-slot',
   '@tanstack/react-virtual',
   '@testing-library/react',
