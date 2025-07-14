@@ -34,6 +34,20 @@ describe('Textfield', () => {
     expect(input).toBeInvalid();
   });
 
+  it('has combined description when both description and error is set', () => {
+    render({
+      description: 'description',
+      error: 'error-message',
+      'aria-label': 'label',
+    });
+
+    const input = screen.getByRole('textbox', {
+      description: 'error-message description',
+    });
+    expect(input).toBeDefined();
+    expect(input).toBeInvalid();
+  });
+
   it('Triggers onBlur event when field loses focus', async () => {
     const onBlur = vi.fn();
     render({ onBlur, 'aria-label': 'label' });

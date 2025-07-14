@@ -42,7 +42,7 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
     }
 
     // Connect elements
-    const describedbyIds = [describedby]; // Keep original aria-describedby
+    const describedbyIds = describedby ? describedby.split(' ') : []; // Keep original aria-describedby
     const inputId = input?.id || uuid;
 
     // Reset type counters since we reprocess all elements
