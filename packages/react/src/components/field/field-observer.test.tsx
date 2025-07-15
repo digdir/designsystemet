@@ -102,9 +102,9 @@ describe('fieldObserver', () => {
       <div>
         <Label>Name</Label>
         <Input />
+        <div data-field='description'>Description text</div>
         <div data-field='validation'>First validation message</div>
         <div data-field='validation'>Second validation message</div>
-        <div data-field='description'>Description text</div>
         <div data-field='description'>Additional description</div>
       </div>,
     );
@@ -127,11 +127,11 @@ describe('fieldObserver', () => {
       `${input.id}:description:2`,
     );
 
-    // All should be in aria-describedby
+    // aria-describedby should have the ids in the correct order
+    // (validation messages pushed to the front), and no duplicates
     const ariaDescribedby = input.getAttribute('aria-describedby');
-    expect(ariaDescribedby).toContain(firstValidation.id);
-    expect(ariaDescribedby).toContain(secondValidation.id);
-    expect(ariaDescribedby).toContain(firstDescription.id);
-    expect(ariaDescribedby).toContain(secondDescription.id);
+    expect(ariaDescribedby).toBe(
+      `${secondValidation.id} ${firstValidation.id} ${firstDescription.id} ${secondDescription.id}`,
+    );
   });
 });

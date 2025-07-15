@@ -18,6 +18,6 @@ export default defineProject({
     typecheck: { tsconfig: 'tsconfig.tests.json' },
     globals: true,
     environment: 'jsdom',
-    setupFiles: '../../test/vitest.setup.ts',
+    setupFiles: ['../../test/vitest.setup.ts', './vitest.setup.ts'],
   },
 });

@@ -42,7 +42,7 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
     }
 
     // Connect elements
-    const describedbyIds = [describedby]; // Keep original aria-describedby
+    const describedbyIds = describedby ? describedby.split(' ') : []; // Keep original aria-describedby
     const inputId = input?.id || uuid;
 
     // Reset type counters since we reprocess all elements
@@ -62,9 +62,11 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
       }
 
       if (!value) setAttr(el, isLabel(el) ? 'for' : 'id', id); // Ensure we have a value
-      if (descriptionType === 'validation')
-        describedbyIds.unshift(el.id); // Validations to the front
-      else if (descriptionType) describedbyIds.push(el.id); // Other descriptions to the back
+      if (!describedbyIds.includes(el.id)) {
+        if (descriptionType === 'validation')
+          describedbyIds.unshift(el.id); // Validations to the front
+        else if (descriptionType) describedbyIds.push(el.id); // Other descriptions to the back
+      }
     }
 
     setAttr(input, 'id', inputId);
