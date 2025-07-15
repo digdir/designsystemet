@@ -21,6 +21,9 @@ import { SuggestionOption } from './suggestion-option';
  * </Suggestion>
  */
 const EXPERIMENTAL_Suggestion = Object.assign(SuggestionRoot, {
+  /**
+   * @deprecated Suggestion.Chips is deprecated, use `renderSelected` on `Suggestion` instead
+   */
   Chips: SuggestionChips,
   List: SuggestionList,
   Input: SuggestionInput,
@@ -39,6 +42,9 @@ EXPERIMENTAL_Suggestion.Clear.displayName = 'EXPERIMENTAL_Suggestion.Clear';
 
 export {
   EXPERIMENTAL_Suggestion,
+  /**
+   * @deprecated Suggestion.Chips is deprecated, use `renderSelected` on `Suggestion` instead
+   */
   SuggestionChips as EXPERIMENTAL_SuggestionChips,
   SuggestionList as EXPERIMENTAL_SuggestionList,
   SuggestionInput as EXPERIMENTAL_SuggestionInput,

@@ -89,18 +89,27 @@ export type SuggestionProps = {
    * The selected items of the Suggestion.
    * Using this makes the component controlled and it must be used in combination with onSelectedChange.
    */
-  value?: SuggestionSelected; // Kept for backwards compatibility
   selected?: SuggestionSelected;
+  /**
+   * @deprecated Use `selected` instead
+   */
+  value?: SuggestionSelected; // Kept for backwards compatibility
   /**
    * Default selected items when uncontrolled
    */
-  defaultValue?: SuggestionSelected; // Kept for backwards compatibility
   defaultSelected?: SuggestionSelected;
+  /**
+   * @deprecated Use `defaultSelected` instead
+   */
+  defaultValue?: SuggestionSelected; // Kept for backwards compatibility
   /**
    * Callback when selected items changes
    */
-  onValueChange?: (value: Item[]) => void; // Kept for backwards compatibility
   onSelectedChange?: (value: Item[]) => void;
+  /**
+   * @deprecated Use `onSelectedChange` instead
+   */
+  onValueChange?: (value: Item[]) => void; // Kept for backwards compatibility
   /**
    * Callback when matching input value against options
    */
