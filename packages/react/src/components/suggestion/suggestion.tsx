@@ -90,7 +90,7 @@ export type SuggestionProps = {
    *
    * If `label` and `value` is the same, you can use `string[]`.
    *
-   * If `label` and `value` is different, use `{ value: string; label: string}[]`.
+   * If `label` and `value` is different, you must use `{ value: string; label: string}[]`.
    *
    * Using this makes the component controlled and it must be used in combination with {@link SuggestionProps.onSelectedChange|onSelectedChange}.
    */
