@@ -85,9 +85,15 @@ export type SuggestionProps = {
    * @default false
    */
   multiple?: boolean;
+
   /**
    * The selected items of the Suggestion.
-   * Using this makes the component controlled and it must be used in combination with onSelectedChange.
+   *
+   * If `label` and `value` is the same, you can use `string[]`.
+   *
+   * If `label` and `value` is different, use `Array<{ value: string; label: string}>`.
+   *
+   * Using this makes the component controlled and it must be used in combination with {@link SuggestionProps.onSelectedChange|onSelectedChange}.
    */
   selected?: SuggestionSelected;
   /**
