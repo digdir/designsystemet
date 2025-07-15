@@ -2,7 +2,8 @@ packages:
   - packages/*
   - apps/*
   - plugins/*
-  - internal/components
+  - internal/*
+  - '!internal/design-tokens'
 ignoredBuiltDependencies:
   - '@bundled-es-modules/glob'
   - sharp
@@ -13,3 +14,11 @@ onlyBuiltDependencies:
   - just-pnpm
   - style-dictionary
 useNodeVersion: 22.17.0
+packageExtensions:
+  '@navikt/aksel-icons':
+    peerDependencies:
+      react: ">=18.3.1 || ^19.0.0"
+    peerDependenciesMeta:
+      react:
+        optional: true
+
