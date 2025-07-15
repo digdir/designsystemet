@@ -75,16 +75,13 @@
   background-color: var(--ds-color-neutral-background-default);
 }
 .docblock-argstable {
-  color: var(--ds-color-text-default) !important;
+  color: var(--ds-color-neutral-text-default) !important;
   * {
     color: inherit !important;
   }
   tbody {
     background-color: var(--ds-color-neutral-surface-default);
   }
-}
-.docblock-code-toggle {
-  color: var(--ds-color-text-default) !important;
 }
 
 [data-color-scheme="dark"] {
@@ -98,7 +95,7 @@
       background-color: var(--ds-color-neutral-background-tinted);
     }
     button {
-      color: var(--ds-color-text-default);
+      color: var(--ds-color-neutral-text-default);
       background-color: var(--ds-color-neutral-surface-default);
     }
     textarea, input:not([role="switch"]), select {
@@ -109,7 +106,7 @@
       background-color: var(--ds-color-neutral-background-default);
 
       span {
-        color: var(--ds-color-text-default);
+        color: var(--ds-color-neutral-text-default);
       }
       input:checked ~ span:last-of-type, input:not(:checked) ~ span:first-of-type {
         background-color: var(--ds-color-neutral-surface-active);
@@ -122,6 +119,26 @@
     border-color: var(--ds-color-neutral-border-subtle) !important;
   }
   .docblock-code-toggle {
+    color: var(--ds-color-neutral-text-default) !important;
     border-color: var(--ds-color-neutral-border-subtle) !important;
   }
+
+  .markdown-css-overrides {
+    :is(h1, h2, h3, h4, h5, h6, p, ul, li) {
+      color: var(--ds-color-neutral-text-default);
+      border-color: var(--ds-color-neutral-border-subtle);
+    }
+    :is(a) {
+      color: var(--ds-color-accent-base-default);
+      &:hover {
+        color: var(--ds-color-accent-base-hover);
+      }
+    }
+    :is(code) {
+      color: var(--ds-color-neutral-text-default);
+      background-color: var(--ds-color-neutral-background-tinted);
+      border-color: var(--ds-color-neutral-border-subtle);
+    }
+  }
 }
+
