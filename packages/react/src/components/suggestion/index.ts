@@ -6,73 +6,71 @@ import { SuggestionInput } from './suggestion-input';
 import { SuggestionList } from './suggestion-list';
 import { SuggestionOption } from './suggestion-option';
 
-
-
 type SuggestionCompound = typeof SuggestionRoot & {
   /**
-  * @deprecated Suggestion.Chips is deprecated, use `renderSelected` on `Suggestion` instead
-  */
+   * @deprecated Suggestion.Chips is deprecated, use `renderSelected` on `Suggestion` instead
+   */
   Chips: typeof SuggestionChips;
   /**
-  * Component that provides a Suggestion list.
-  *
-  * Place as a descendant of `Suggestion`
-  *
-  * @example
-  * <Suggestion>
-  *   <Suggestion.Input />
-  *   <Suggestion.List />
-  * </Suggestion>
-  */
+   * Component that provides a Suggestion list.
+   *
+   * Place as a descendant of `Suggestion`
+   *
+   * @example
+   * <Suggestion>
+   *   <Suggestion.Input />
+   *   <Suggestion.List />
+   * </Suggestion>
+   */
   List: typeof SuggestionList;
   /**
-* Component that provides an input field for the Suggestion list.
-*
-* Place as a descendant of `Suggestion`
-*
-* @example
-* <Suggestion>
-*   <Suggestion.Input />
-*   <Suggestion.List />
-* </Suggestion>
-*/
+   * Component that provides an input field for the Suggestion list.
+   *
+   * Place as a descendant of `Suggestion`
+   *
+   * @example
+   * <Suggestion>
+   *   <Suggestion.Input />
+   *   <Suggestion.List />
+   * </Suggestion>
+   */
   Input: typeof SuggestionInput;
   /**
-* Component that provides an empty Suggestion list.
-*
-* Place as a descendant of `Suggestion.List`
-*
-* @example
-* <Suggestion.List>
-*   <Suggestion.Empty>Tomt</Suggestion.Empty>
-* </Suggestion.List>
-*/
+   * Component that provides an empty Suggestion list.
+   *
+   * Place as a descendant of `Suggestion.List`
+   *
+   * @example
+   * <Suggestion.List>
+   *   <Suggestion.Empty>Tomt</Suggestion.Empty>
+   * </Suggestion.List>
+   */
   Empty: typeof SuggestionEmpty;
   /**
-* A component for rendering individual options in the Suggestion list.
-*
-* @example
-* <Suggestion>
-*   <Suggestion.Input />
-*   <Suggestion.List>
-*     <Suggestion.Option value='Option 1'>Option 1</Suggestion.Option>
-*     <Suggestion.Option value='Option 2'>Option 2</Suggestion.Option>
-*   </Suggestion.List>
-* </Suggestion>
-*/
+   * A component for rendering individual options in the Suggestion list.
+   *
+   * @example
+   * <Suggestion>
+   *   <Suggestion.Input />
+   *   <Suggestion.List>
+   *     <Suggestion.Option value='Option 1'>Option 1</Suggestion.Option>
+   *     <Suggestion.Option value='Option 2'>Option 2</Suggestion.Option>
+   *   </Suggestion.List>
+   * </Suggestion>
+   */
   Option: typeof SuggestionOption;
   /**
-* Component that provides a clear button for the Suggestion input.
-*
-* Place as a descendant of `Suggestion`
-*
-* @example
-* <Suggestion>
-*   <Suggestion.Input />
-*   <Suggestion.Clear />
-*   <Suggestion.List />
-* </Suggestion>
-*/
+   * Component that provides a clear button for the Suggestion input.
+   *
+   * Place as a descendant of `Suggestion`
+   *
+   * @example
+   * <Suggestion>
+   *   <Suggestion.Input />
+   *   <Suggestion.Clear />
+   *   <Suggestion.List />
+   * </Suggestion>
+   */
   Clear: typeof SuggestionClear;
 };
 
@@ -90,14 +88,17 @@ type SuggestionCompound = typeof SuggestionRoot & {
  *   </Suggestion.List>
  * </Suggestion>
  */
-const EXPERIMENTAL_Suggestion: SuggestionCompound = Object.assign(SuggestionRoot, {
-  Chips: SuggestionChips,
-  List: SuggestionList,
-  Input: SuggestionInput,
-  Empty: SuggestionEmpty,
-  Option: SuggestionOption,
-  Clear: SuggestionClear,
-});
+const EXPERIMENTAL_Suggestion: SuggestionCompound = Object.assign(
+  SuggestionRoot,
+  {
+    Chips: SuggestionChips,
+    List: SuggestionList,
+    Input: SuggestionInput,
+    Empty: SuggestionEmpty,
+    Option: SuggestionOption,
+    Clear: SuggestionClear,
+  },
+);
 
 EXPERIMENTAL_Suggestion.displayName = 'EXPERIMENTAL_Suggestion';
 EXPERIMENTAL_Suggestion.Chips.displayName = 'EXPERIMENTAL_Suggestion.Chips';
