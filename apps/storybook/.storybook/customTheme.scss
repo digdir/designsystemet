@@ -82,9 +82,6 @@
   tbody {
     background-color: var(--ds-color-neutral-surface-default);
   }
-  textarea, input, select {
-    background-color: inherit;
-  }
 }
 .docblock-code-toggle {
   color: var(--ds-color-text-default) !important;
@@ -92,12 +89,33 @@
 
 [data-color-scheme="dark"] {
   .docblock-argstable {
+    accent-color: var(--ds-color-accent-base-default);
     * {
       border-color: var(--ds-color-neutral-border-subtle) !important;
     }
     /*single out "code" in argstable*/
     td div > span[class], code {
-      background-color: var(--ds-color-neutral-background-tinted) !important;
+      background-color: var(--ds-color-neutral-background-tinted);
+    }
+    button {
+      color: var(--ds-color-text-default);
+      background-color: var(--ds-color-neutral-surface-default);
+    }
+    textarea, input:not([role="switch"]), select {
+      background-color: var(--ds-color-neutral-background-default);
+    }
+
+    label:has(input[role="switch"]) {
+      background-color: var(--ds-color-neutral-background-default);
+
+      span {
+        color: var(--ds-color-text-default);
+      }
+      input:checked ~ span:last-of-type, input:not(:checked) ~ span:first-of-type {
+        background-color: var(--ds-color-neutral-surface-active);
+      }
+
+
     }
   }
   .sbdocs-preview {
