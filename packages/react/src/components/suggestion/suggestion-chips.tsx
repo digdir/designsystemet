@@ -6,7 +6,7 @@ export type SuggestionChipsProps = DefaultProps &
 
 export const SuggestionChips = () => {
   console.warn(
-    'Using <Suggestion.Chips> is deprecated - please remove from your code.',
+    'Suggestion: Using <Suggestion.Chips> is deprecated - please remove from your code.',
   );
   return null;
 };

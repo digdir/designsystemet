@@ -15,7 +15,7 @@ import cl from 'clsx/lite';
 import { useMergeRefs } from '../../utilities/hooks';
 import { Chip } from '../chip';
 
-export type SuggestionValues = Array<string | Partial<Item>> | string;
+export type SuggestionSelected = Array<string | Partial<Item>> | string;
 
 type Item = { label: string; value: string };
 type EventBeforeMatch = Omit<
@@ -53,14 +53,12 @@ type Filter = (args: {
 }) => boolean;
 
 type SuggestionContextType = {
-  isEmpty?: boolean;
-  listId?: string;
-  setListId: (id: string) => void;
   handleFilter: (input?: HTMLInputElement | null) => void;
+  isEmpty?: boolean;
+  uComboboxRef?: React.RefObject<UHTMLComboboxElement | null>;
 };
 
 export const SuggestionContext = createContext<SuggestionContextType>({
-  setListId: () => undefined,
   handleFilter: () => undefined,
 });
 
@@ -88,18 +86,21 @@ export type SuggestionProps = {
    */
   multiple?: boolean;
   /**
-   * The selected items of the multi-select.
-   * Using this makes the component controlled and it must be used in combination with onValueChange
+   * The selected items of the Suggestion.
+   * Using this makes the component controlled and it must be used in combination with onSelectedChange.
    */
-  value?: SuggestionValues;
+  value?: SuggestionSelected; // Kept for backwards compatibility
+  selected?: SuggestionSelected;
   /**
    * Default selected items when uncontrolled
    */
-  defaultValue?: SuggestionValues;
+  defaultValue?: SuggestionSelected; // Kept for backwards compatibility
+  defaultSelected?: SuggestionSelected;
   /**
    * Callback when selected items changes
    */
-  onValueChange?: (value: Item[]) => void; // TODO: get labels as well
+  onValueChange?: (value: Item[]) => void; // Kept for backwards compatibility
+  onSelectedChange?: (value: Item[]) => void;
   /**
    * Callback when matching input value against options
    */
@@ -119,7 +120,7 @@ export type SuggestionProps = {
 } & HTMLAttributes<UHTMLComboboxElement>;
 
 const text = (el: Element): string => el.textContent?.trim() || '';
-const sanitizeItems = (values: SuggestionValues = []): Item[] =>
+const sanitizeItems = (values: SuggestionSelected = []): Item[] =>
   (typeof values === 'string'
     ? [{ label: values, value: values }]
     : values.map((value) =>
@@ -134,7 +135,7 @@ const sanitizeItems = (values: SuggestionValues = []): Item[] =>
 
 const nextItems = (
   data: HTMLDataElement,
-  prev?: SuggestionValues,
+  prev?: SuggestionSelected,
   multiple?: boolean,
 ) => {
   const item = { label: text(data), value: data.value };
@@ -148,35 +149,50 @@ const nextItems = (
 const defaultFilter: Filter = ({ label, input }) =>
   label.toLowerCase().includes(input.value.trim().toLowerCase());
 
+const deprecate = (from: string, to: string) =>
+  console.warn(
+    `Suggestion: Using "${from}" is deprecated, please use "${to}" instead.`,
+  );
+
 export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
   function Suggestion(
     {
       children,
       className,
       creatable = false,
+      defaultSelected: _defaultSelected,
       defaultValue,
       filter = true,
       multiple = false,
       name,
       onBeforeMatch,
+      onSelectedChange: _onSelectedChange,
       onValueChange,
       renderSelected = ({ label }) => label,
+      selected: _selected,
       value,
       ...rest
     },
     ref,
   ) {
+    // For backwards compatibility:
+    const selected = _selected ?? value;
+    const defaultSelected = _defaultSelected ?? defaultValue;
+    const onSelectedChange = _onSelectedChange ?? onValueChange;
+    if (value) deprecate('value', 'selected');
+    if (defaultValue) deprecate('defaultValue', 'defaultSelected');
+    if (onValueChange) deprecate('onValueChange', 'onSelectedChange');
+
     const uComboboxRef = useRef<UHTMLComboboxElement>(null);
     const genId = useId();
     const selectId = rest.id ? `${rest.id}-select` : genId;
-    const isControlled = value !== undefined;
+    const isControlled = selected !== undefined;
     const mergedRefs = useMergeRefs([ref, uComboboxRef]);
-    const [listId, setListId] = useState(`${rest.id || genId}-list`);
     const [isEmpty, setIsEmpty] = useState(false);
     const [defaultItems, setDefaultItems] = useState<Item[]>(
-      sanitizeItems(defaultValue),
+      sanitizeItems(defaultSelected),
     );
-    const selectedItems = value ? sanitizeItems(value) : defaultItems;
+    const selectedItems = selected ? sanitizeItems(selected) : defaultItems;
 
     /**
      * Listerners and handling of adding/removing
@@ -189,7 +205,7 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
         const data = event.detail;
 
         if (isControlled)
-          onValueChange?.(nextItems(data, selectedItems, multiple));
+          onSelectedChange?.(nextItems(data, selectedItems, multiple));
         else setDefaultItems(nextItems(data, selectedItems, multiple));
       };
 
@@ -232,7 +248,7 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
 
     return (
       <SuggestionContext.Provider
-        value={{ isEmpty, listId, setListId, handleFilter }}
+        value={{ isEmpty, handleFilter, uComboboxRef }}
       >
         <u-combobox
           data-multiple={multiple || undefined}
