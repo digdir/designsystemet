@@ -1,10 +1,20 @@
-import { Suggestion as SuggestionRoot } from './suggestion';
+import { Suggestion } from './suggestion';
 import { SuggestionChips } from './suggestion-chips';
 import { SuggestionClear } from './suggestion-clear';
 import { SuggestionEmpty } from './suggestion-empty';
 import { SuggestionInput } from './suggestion-input';
 import { SuggestionList } from './suggestion-list';
 import { SuggestionOption } from './suggestion-option';
+
+
+type SuggestionComponent = typeof Suggestion & {
+  Chips: typeof SuggestionChips;
+  List: typeof SuggestionList;
+  Input: typeof SuggestionInput;
+  Empty: typeof SuggestionEmpty;
+  Option: typeof SuggestionOption;
+  Clear: typeof SuggestionClear;
+};
 
 /**
  * A component that provides a suggestion list for an input field.
@@ -20,7 +30,7 @@ import { SuggestionOption } from './suggestion-option';
  *   </Suggestion.List>
  * </Suggestion>
  */
-const EXPERIMENTAL_Suggestion = Object.assign(SuggestionRoot, {
+const EXPERIMENTAL_Suggestion: SuggestionComponent = Object.assign(Suggestion, {
   /**
    * @deprecated Suggestion.Chips is deprecated, use `renderSelected` on `Suggestion` instead
    */
