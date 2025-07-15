@@ -118,7 +118,7 @@
 
   &::part(details-content) {
     block-size: 0;
-    overflow-y: clip;
+    overflow-y: hidden; /* Using hidden instead of clip to contain margins */
     transition:
       content-visibility 400ms allow-discrete,
       height 400ms;
