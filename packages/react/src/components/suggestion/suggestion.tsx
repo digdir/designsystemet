@@ -121,9 +121,9 @@ export type SuggestionProps = {
    */
   name?: string;
   /**
-   * Allows the user to select multiple items
+   * Change how the selected options are rendered inside the `Chip`.
    *
-   * @default false
+   * @default ({ label }) => label
    */
   renderSelected?: (args: { label: string; value: string }) => ReactNode;
 } & HTMLAttributes<UHTMLComboboxElement>;
