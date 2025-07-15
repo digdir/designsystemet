@@ -6,7 +6,7 @@ import { SuggestionInput } from './suggestion-input';
 import { SuggestionList } from './suggestion-list';
 import { SuggestionOption } from './suggestion-option';
 
-type SuggestionCompound = typeof SuggestionRoot & {
+type Suggestion = typeof SuggestionRoot & {
   /**
    * @deprecated Suggestion.Chips is deprecated, use `renderSelected` on `Suggestion` instead
    */
@@ -88,7 +88,7 @@ type SuggestionCompound = typeof SuggestionRoot & {
  *   </Suggestion.List>
  * </Suggestion>
  */
-const EXPERIMENTAL_Suggestion: SuggestionCompound = Object.assign(
+const EXPERIMENTAL_Suggestion: Suggestion = Object.assign(
   SuggestionRoot,
   {
     Chips: SuggestionChips,
