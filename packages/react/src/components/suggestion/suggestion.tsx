@@ -2,6 +2,7 @@ import {
   createContext,
   forwardRef,
   type HTMLAttributes,
+  type ReactNode,
   useCallback,
   useEffect,
   useId,
@@ -12,10 +13,18 @@ import '@u-elements/u-combobox';
 import type { UHTMLComboboxElement } from '@u-elements/u-combobox';
 import cl from 'clsx/lite';
 import { useMergeRefs } from '../../utilities/hooks';
+import { Chip } from '../chip';
 
 export type SuggestionValues = Array<string | Partial<Item>> | string;
 
 type Item = { label: string; value: string };
+type EventBeforeMatch = Omit<
+  CustomEvent<HTMLOptionElement | undefined>,
+  'currentTarget'
+> & {
+  currentTarget: UHTMLComboboxElement;
+};
+
 type Filter = (args: {
   /**
    * Index of the `option`
@@ -45,7 +54,6 @@ type Filter = (args: {
 
 type SuggestionContextType = {
   isEmpty?: boolean;
-  selectedItems?: Item[];
   listId?: string;
   setListId: (id: string) => void;
   handleFilter: (input?: HTMLInputElement | null) => void;
@@ -93,11 +101,21 @@ export type SuggestionProps = {
    */
   onValueChange?: (value: Item[]) => void; // TODO: get labels as well
   /**
+   * Callback when matching input value against options
+   */
+  onBeforeMatch?: (event: EventBeforeMatch) => void;
+  /**
    * The name of the associated form control
    *
    * @default undefined
    */
   name?: string;
+  /**
+   * Allows the user to select multiple items
+   *
+   * @default false
+   */
+  renderSelected?: (args: { label: string; value: string }) => ReactNode;
 } & HTMLAttributes<UHTMLComboboxElement>;
 
 const text = (el: Element): string => el.textContent?.trim() || '';
@@ -140,7 +158,9 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
       filter = true,
       multiple = false,
       name,
+      onBeforeMatch,
       onValueChange,
+      renderSelected = ({ label }) => label,
       value,
       ...rest
     },
@@ -177,6 +197,15 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
       return () => combobox?.removeEventListener('beforechange', beforeChange);
     }, [selectedItems, isControlled]);
 
+    // Before match event listener
+    useEffect(() => {
+      const combobox = uComboboxRef.current;
+      const beforeMatch = (e: Event) => onBeforeMatch?.(e as EventBeforeMatch);
+
+      combobox?.addEventListener('beforematch', beforeMatch);
+      return () => combobox?.removeEventListener('beforematch', beforeMatch);
+    }, [onBeforeMatch]);
+
     const handleFilter = useCallback(() => {
       const { control: input, options = [] } = uComboboxRef?.current || {};
       const filterFn = filter === true ? defaultFilter : filter;
@@ -203,7 +232,7 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
 
     return (
       <SuggestionContext.Provider
-        value={{ isEmpty, selectedItems, listId, setListId, handleFilter }}
+        value={{ isEmpty, listId, setListId, handleFilter }}
       >
         <u-combobox
           data-multiple={multiple || undefined}
@@ -212,6 +241,11 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
           ref={mergedRefs}
           {...rest}
         >
+          {selectedItems.map((item) => (
+            <Chip.Removable key={item.value} value={item.value} asChild>
+              <data>{renderSelected(item)}</data>
+            </Chip.Removable>
+          ))}
           {children}
           {/* Hidden select so it will be sent with a form */}
           {!!name && (

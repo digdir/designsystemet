@@ -13,6 +13,7 @@ import {
 } from '../';
 import {
   EXPERIMENTAL_Suggestion as Suggestion,
+  type SuggestionProps,
   type SuggestionValues,
 } from './';
 
@@ -79,7 +80,6 @@ export const Preview: StoryFn<typeof Suggestion> = (args) => {
     <Field>
       <Label>Velg en destinasjon</Label>
       <Suggestion {...args}>
-        <Suggestion.Chips />
         <Suggestion.Input />
         <Suggestion.Clear />
         <Suggestion.List id='123'>
@@ -108,7 +108,6 @@ export const ControlledSingleArray: StoryFn<typeof Suggestion> = (args) => {
           value={value}
           onValueChange={(items) => setValue(items.map((item) => item.value))}
         >
-          <Suggestion.Chips />
           <Suggestion.Input />
           <Suggestion.Clear />
           <Suggestion.List>
@@ -174,7 +173,6 @@ export const ControlledSingle: StoryFn<typeof Suggestion> = (args) => {
           value={value}
           onValueChange={(items) => setValue(items.at(0)?.value ?? '')}
         >
-          <Suggestion.Chips />
           <Suggestion.Input />
           <Suggestion.Clear />
           <Suggestion.List>
@@ -241,7 +239,6 @@ export const ControlledMultiple: StoryFn<typeof Suggestion> = (args) => {
           value={value}
           onValueChange={(items) => setValue(items.map((item) => item.value))}
         >
-          <Suggestion.Chips />
           <Suggestion.Input />
           <Suggestion.Clear />
           <Suggestion.List>
@@ -320,7 +317,6 @@ export const ControlledIndependentLabelValue: StoryFn<typeof Suggestion> = (
           onValueChange={(items) => setItems(items)}
           filter={false}
         >
-          <Suggestion.Chips />
           <Suggestion.Input />
           <Suggestion.Clear />
           <Suggestion.List>
@@ -370,7 +366,6 @@ export const CustomFilterAlt1: StoryFn<typeof Suggestion> = (args) => {
           !input.value || index === Number(input.value) - 1
         }
       >
-        <Suggestion.Chips />
         <Suggestion.Input />
         <Suggestion.Clear />
         <Suggestion.List>
@@ -401,7 +396,6 @@ export const CustomFilterAlt2: StoryFn<typeof Suggestion> = (args) => {
     <Field>
       <Label>Skriv inn et tall mellom 1-6</Label>
       <Suggestion {...args} filter={false}>
-        <Suggestion.Chips />
         <Suggestion.Input
           onInput={({ currentTarget }) => setValue(currentTarget.value)}
         />
@@ -411,6 +405,33 @@ export const CustomFilterAlt2: StoryFn<typeof Suggestion> = (args) => {
           {DATA_PLACES.filter(
             (_, index) => !value || index === Number(value) - 1,
           ).map((label) => (
+            <Suggestion.Option key={label}>{label}</Suggestion.Option>
+          ))}
+        </Suggestion.List>
+      </Suggestion>
+    </Field>
+  );
+};
+
+export const CustomMatching: StoryFn<typeof Suggestion> = (args) => {
+  const handleBeforeMatch: SuggestionProps['onBeforeMatch'] = (event) => {
+    event.preventDefault(); // Prevent default matching
+    const { list, control } = event.currentTarget;
+    const value = control?.value.toLowerCase() || '';
+
+    for (const option of list?.options || [])
+      option.selected = option.value.toLowerCase().startsWith(value); // Setting selected indicates a match
+  };
+
+  return (
+    <Field>
+      <Label>Matcher fra første bokstav</Label>
+      <Suggestion {...args} onBeforeMatch={handleBeforeMatch}>
+        <Suggestion.Input />
+        <Suggestion.Clear />
+        <Suggestion.List>
+          <Suggestion.Empty>Tomt</Suggestion.Empty>
+          {DATA_PLACES.map((label) => (
             <Suggestion.Option key={label}>{label}</Suggestion.Option>
           ))}
         </Suggestion.List>
@@ -431,7 +452,6 @@ export const AlwaysShowAll: StoryFn<typeof Suggestion> = (args) => {
         filter={false}
         onValueChange={(values) => setValue(values)}
       >
-        <Suggestion.Chips />
         <Suggestion.Input />
         <Suggestion.Clear />
         <Suggestion.List>
@@ -473,7 +493,6 @@ export const FetchExternal: StoryFn<typeof Suggestion> = (args) => {
     <Field lang='en'>
       <Label>Search for countries (in english)</Label>
       <Suggestion {...args} filter={false}>
-        <Suggestion.Chips />
         <Suggestion.Input onInput={handleInput} />
         <Suggestion.Clear />
         <Suggestion.List singular='%d country' plural='%d countries'>
@@ -510,7 +529,6 @@ export const DefaultValue: StoryFn<typeof Suggestion> = (args) => {
     <Field>
       <Label>Velg en destinasjon</Label>
       <Suggestion {...args} defaultValue={['Sogndal']}>
-        <Suggestion.Chips />
         <Suggestion.Input />
         <Suggestion.Clear />
         <Suggestion.List>
@@ -529,7 +547,6 @@ export const Multiple: StoryFn<typeof Suggestion> = (args) => {
     <Field>
       <Label>Velg en destinasjon</Label>
       <Suggestion {...args}>
-        <Suggestion.Chips />
         <Suggestion.Input />
         <Suggestion.Clear />
         <Suggestion.List>
@@ -555,7 +572,6 @@ export const InDetails: StoryFn<typeof Suggestion> = (args) => {
         <Field>
           <Label>Velg en destinasjon</Label>
           <Suggestion {...args} autoFocus>
-            <Suggestion.Chips />
             <Suggestion.Input />
             <Suggestion.Clear />
             <Suggestion.List>
