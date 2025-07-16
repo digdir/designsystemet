@@ -16,7 +16,7 @@ export type TabsPanelProps = {
  * A single content item in a Tabs component.
  *
  * @example
- * <Tabs.Panel value='1'>content 1</Tabs.Panel>
+ * <TabsPanel value='1'>content 1</TabsPanel>
  */
 export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
   function TabsPanel({ children, value, ...rest }, ref) {
