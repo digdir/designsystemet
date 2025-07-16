@@ -15,11 +15,11 @@ export type PaginationListProps = {
  *
  * @example
  * <Pagination>
- *   <Pagination.List>
- *     <Pagination.Item>
- *       <Pagination.Button aria-label='Forrige side'>Forrige</Pagination.Button>
- *     </Pagination.Item>
- *   </Pagination.List>
+ *   <PaginationList>
+ *     <PaginationItem>
+ *       <PaginationButton aria-label='Forrige side'>Forrige</PaginationButton>
+ *     </PaginationItem>
+ *   </PaginationList>
  * </Pagination>
  */
 export const PaginationList = forwardRef<HTMLUListElement, PaginationListProps>(
