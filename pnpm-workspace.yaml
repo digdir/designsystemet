@@ -1,3 +1,4 @@
+sharedWorkspaceLockfile: false # disable shared lockfile so we can use different versions of dependencies for testing (e.g. react 18 and 19)
 packages:
   - packages/*
   - apps/*
