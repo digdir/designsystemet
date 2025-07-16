@@ -3,6 +3,50 @@ import { DialogBlock } from './dialog-block';
 import { DialogTrigger } from './dialog-trigger';
 import { DialogTriggerContext } from './dialog-trigger-context';
 
+type DialogCompoundProps = typeof DialogParent & {
+  /**
+   * DialogTriggerContext component, used to provide a context for a dialog trigger.
+   *
+   * @example
+   * <Dialog.TriggerContext>
+   *   <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+   *   <Dialog>
+   *     Content
+   *   </Dialog>
+   * </Dialog.TriggerContext>
+   */
+  TriggerContext: typeof DialogTriggerContext;
+  /**
+   * DialogTrigger component, used within a Dialog.TriggerContext to open a dialog.
+   *
+   * @example
+   * <Dialog.TriggerContext>
+   *   <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+   *   <Dialog>
+   *     Content
+   *   </Dialog>
+   * </Dialog.TriggerContext>
+   */
+  Trigger: typeof DialogTrigger;
+  /**
+   * DialogBlock component, used to separate content in a Dialog.
+   *
+   * @example
+   * <Dialog>
+   *   <Dialog.Block>
+   *     Header
+   *   </Dialog.Block>
+   *   <Dialog.Block>
+   *     Content
+   *   </Dialog.Block>
+   *   <Dialog.Block>
+   *     Footer
+   *   </Dialog.Block>
+   * </Dialog>
+   */
+  Block: typeof DialogBlock;
+};
+
 /**
  * Dialog component, used to display a Dialog dialog.
  *
@@ -16,7 +60,7 @@ import { DialogTriggerContext } from './dialog-trigger-context';
  *   </Dialog>
  * </Dialog.TriggerContext>
  */
-const Dialog = Object.assign(DialogParent, {
+const Dialog: DialogCompoundProps = Object.assign(DialogParent, {
   Block: DialogBlock,
   TriggerContext: DialogTriggerContext,
   Trigger: DialogTrigger,

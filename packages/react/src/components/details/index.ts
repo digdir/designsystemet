@@ -2,6 +2,23 @@ import { Details as DetailsParent } from './details';
 import { DetailsContent } from './details-content';
 import { DetailsSummary } from './details-summary';
 
+type DetailsCompoundProps = typeof DetailsParent & {
+  /**
+   * Details summary component, contains a the heading to toggle the content.
+   *
+   * @example
+   * <Details.Summary>Heading</Details.Summary>
+   */
+  Summary: typeof DetailsSummary;
+  /**
+   * Details content component, contains the content of the details item.
+   *
+   * @example
+   * <DetailsContent>Content</DetailsContent>
+   */
+  Content: typeof DetailsContent;
+};
+
 /**
  * Details component, contains `Details.Summary` and `Details.Content` components.
  *
@@ -11,7 +28,7 @@ import { DetailsSummary } from './details-summary';
  *  <Details.Content>Content</Details.Content>
  * </Details>
  */
-const Details = Object.assign(DetailsParent, {
+const Details: DetailsCompoundProps = Object.assign(DetailsParent, {
   Summary: DetailsSummary,
   Content: DetailsContent,
 });
