@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-Improve jsdocs for compound components
+Improved jsdocs for compound components
