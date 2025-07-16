@@ -7,7 +7,7 @@ export type ParagraphProps = {
   /**
    * Changes text sizing
    */
-  'data-size'?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  'data-font-size'?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   /**
    *  Adjusts styling for paragraph length
    *  @default 'default'
@@ -25,7 +25,7 @@ export type ParagraphProps = {
  * Renders a native `p` element.
  *
  * @example
- * <Paragraph data-size='lg'>Paragraph</Paragraph>
+ * <Paragraph data-font-size='lg'>Paragraph</Paragraph>
  */
 export const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
   function Paragraph(

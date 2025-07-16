@@ -128,7 +128,7 @@ export const Text: StoryFn<typeof Input> = (args) => {
             maxWidth: '90vw',
           }}
         >
-          <Heading data-size='2xs' style={{ gridColumn: '1 / -1' }}>
+          <Heading data-font-size='2xs' style={{ gridColumn: '1 / -1' }}>
             {sizenames[size]}
           </Heading>
           {states.map((state) => (
@@ -190,7 +190,7 @@ export const Radio: StoryFn<typeof Input> = (args) => {
           }}
         >
           <Heading
-            data-size='2xs'
+            data-font-size='2xs'
             style={{ gridColumn: '1 / -1', marginTop: 16 }}
           >
             {sizenames[size]}
@@ -267,7 +267,7 @@ export const Checkbox: StoryFn<typeof Input> = function Render(args) {
             gap: '1rem',
           }}
         >
-          <Heading data-size='2xs' style={{ gridColumn: '1 / -1' }}>
+          <Heading data-font-size='2xs' style={{ gridColumn: '1 / -1' }}>
             {sizenames[size]}
           </Heading>
           {states.map((state) => (
@@ -331,7 +331,7 @@ export const Switch: StoryFn<typeof Input> = (args) => {
             maxWidth: '90vw',
           }}
         >
-          <Heading data-size='2xs' style={{ gridColumn: '1 / -1' }}>
+          <Heading data-font-size='2xs' style={{ gridColumn: '1 / -1' }}>
             {sizenames[size]}
           </Heading>
           {states.map((state) => (

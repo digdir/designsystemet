@@ -13,7 +13,7 @@ export type HeadingProps = {
    * Changes text sizing
    * @default 'md'
    */
-  'data-size'?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+  'data-font-size'?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
@@ -25,7 +25,7 @@ export type HeadingProps = {
  * Use `Heading` to render h1-6 elements with heading text styles.
  *
  * @example
- * <Heading data-size='lg' level={2}>Heading</Heading>
+ * <Heading data-font-size='lg' level={2}>Heading</Heading>
  */
 export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
   function Heading({ level = 2, className, asChild, ...rest }, ref) {

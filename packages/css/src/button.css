@@ -48,7 +48,7 @@
     --dsc-button-border-color: var(--ds-color-border-strong);
   }
 
-  &:not([data-size]) {
+  &:not([data-font-size]) {
     font-size: inherit; /* Ensure inheriting font-size when <button> */
   }
 

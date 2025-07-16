@@ -10,6 +10,10 @@ export type DefaultProps = {
    */
   'data-size'?: Size;
   /**
+   * Changes text sizing
+   */
+  'data-font-size'?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  /**
    * Changes color for descendant Designsystemet components.
    * Select from predefined colors and colors defined using theme.designsystemet.no.
    */
