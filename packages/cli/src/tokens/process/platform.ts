@@ -77,6 +77,7 @@ const sd = new StyleDictionary();
  */
 const buildConfigs = {
   typography: { getConfig: configs.typographyVariables, dimensions: ['typography'] },
+  size: { getConfig: configs.sizeVariables, dimensions: ['size'] },
   'color-scheme': { getConfig: configs.colorSchemeVariables, dimensions: ['color-scheme'] },
   'main-color': { getConfig: configs.mainColorVariables, dimensions: ['main-color'] },
   'support-color': { getConfig: configs.supportColorVariables, dimensions: ['support-color'] },
@@ -114,10 +115,6 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
   const tokenSets = type === 'format' ? options.tokenSets : undefined;
   const tokensDir = type === 'build' ? options.tokensDir : undefined;
 
-  const filteredProcessed$themes = processed$themes.filter((theme) =>
-    R.not(theme.group === 'size' && theme.name !== 'medium'),
-  );
-
   const UNSAFE_DEFAULT_COLOR = process.env.UNSAFE_DEFAULT_COLOR ?? '';
   if (UNSAFE_DEFAULT_COLOR) {
     console.warn(
@@ -146,7 +143,7 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
   buildOptions.colorGroups = colorGroups;
 
   if (!buildOptions.defaultColor) {
-    const customColors = getCustomColors(filteredProcessed$themes, colorGroups);
+    const customColors = getCustomColors(processed$themes, colorGroups);
     const firstMainColor = R.head(customColors);
     buildOptions.defaultColor = firstMainColor;
   }
@@ -156,15 +153,10 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
   }
 
   const buildAndSdConfigs = R.map((buildConfig: BuildConfig) => {
-    const sdConfigs = getConfigsForThemeDimensions(
-      buildConfig.getConfig,
-      filteredProcessed$themes,
-      buildConfig.dimensions,
-      {
-        tokensDir,
-        tokenSets,
-      },
-    );
+    const sdConfigs = getConfigsForThemeDimensions(buildConfig.getConfig, processed$themes, buildConfig.dimensions, {
+      tokensDir,
+      tokenSets,
+    });
 
     // Disable build if all sdConfigs dimensions permutation are unknown
     const unknownConfigs = buildConfig.dimensions.map((dimension) =>
@@ -193,6 +185,7 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
     'info-color': [initResult],
     semantic: [initResult],
     typography: [initResult],
+    size: [initResult],
   };
 
   try {
