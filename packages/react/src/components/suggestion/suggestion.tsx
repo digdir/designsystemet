@@ -64,11 +64,9 @@ export const SuggestionContext = createContext<SuggestionContextType>({
 
 export type SuggestionProps = {
   /**
-   * Filter options, either true, false or a custom callback () => boolean
+   * Filter options; boolean or a custom callback.
    *
-   * If true, the <datalist> will handle filtering.
-   * If false, the <datalist> will not handle filtering.
-   * If a custom callback, the callback will be used to filter the <option> elements.
+   * See {@link Filter} for the callback signature.
    *
    * @default true
    */
@@ -92,11 +90,11 @@ export type SuggestionProps = {
    *
    * If `label` and `value` is different, you must use `{ value: string; label: string}[]`.
    *
-   * Using this makes the component controlled and it must be used in combination with {@link SuggestionProps.onSelectedChange|onSelectedChange}.
+   * Using this makes the component controlled and it must be used in combination with {@linkcode SuggestionProps.onSelectedChange|onSelectedChange}.
    */
   selected?: SuggestionSelected;
   /**
-   * @deprecated Use `selected` instead
+   * @deprecated Use {@linkcode SuggestionProps.selected|selected} instead
    */
   value?: SuggestionSelected; // Kept for backwards compatibility
   /**
@@ -104,7 +102,7 @@ export type SuggestionProps = {
    */
   defaultSelected?: SuggestionSelected;
   /**
-   * @deprecated Use `defaultSelected` instead
+   * @deprecated Use `{@linkcode SuggestionProps.defaultSelected|defaultSelected} instead
    */
   defaultValue?: SuggestionSelected; // Kept for backwards compatibility
   /**
@@ -112,7 +110,7 @@ export type SuggestionProps = {
    */
   onSelectedChange?: (value: Item[]) => void;
   /**
-   * @deprecated Use `onSelectedChange` instead
+   * @deprecated Use {@linkcode SuggestionProps.onSelectedChange|onSelectedChange} instead
    */
   onValueChange?: (value: Item[]) => void; // Kept for backwards compatibility
   /**
