@@ -2,7 +2,7 @@ import * as R from 'ramda';
 import type { TransformedToken } from 'style-dictionary';
 import type { Format } from 'style-dictionary/types';
 import { createPropertyFormatter } from 'style-dictionary/utils';
-import { inlineTokens, isDigit, pathStartsWithOneOf } from '../../../utils.js';
+import { inlineTokens, isDigit, pathStartsWithOneOf, shortSizeName } from '../../../utils.js';
 import { buildOptions } from '../../platform.js';
 
 const isNumericBorderRadiusToken = (t: TransformedToken) => t.path[0] === 'border-radius' && isDigit(t.path[1]);
@@ -21,7 +21,7 @@ export const isInlineTokens = R.anyPass([isNumericBorderRadiusToken, isNumericSi
 export const overrideSizingFormula = (format: (t: TransformedToken) => string, token: TransformedToken) => {
   const [name, value] = format(token).split(':');
 
-  const calc = value.replace(/floor\((.*)\);/, 'calc($1)');
+  const calc = value.replace(/floor\((.*)\);/, 'calc(1rem * $1)');
 
   const round = `round(down, ${calc}, 1px)`;
 
@@ -67,6 +67,9 @@ export const semantic: Format = {
     const { selector, layer, files } = platform;
     const destination = files?.[0]?.destination as string;
 
+    const sizes = (buildOptions?.sizeModes ?? []).map(shortSizeName);
+    const defaultSize = shortSizeName(buildOptions?.defaultSize ?? '');
+
     const format = createPropertyFormatter({
       outputReferences,
       dictionary,
@@ -97,8 +100,17 @@ export const semantic: Format = {
     const sizingSnippet = sizingTemplate(formattedSizingTokens);
     const formattedTokens = formattedMap.map(R.view(R.lensProp('formatted'))).concat(sizingSnippet);
 
-    const content = `{\n${formattedTokens.join('\n')}\n}\n`;
-    const body = R.isNotNil(layer) ? `@layer ${layer} {\n${selector} ${content}\n}\n` : `${selector} ${content}\n`;
+    const sizingToggles = `
+--ds-size: var(--ds-size--${defaultSize});
+${sizes.map((size) => `--ds-size--${size}: var(--ds-size,);`).join('\n')}
+--ds-size-mode-font-size:
+${sizes.map((size) => `  var(--ds-size--${size}, var(--ds-size-mode-font-size--${size}))`).join('\n')};
+`.trim();
+    const sizingHelpers = sizes
+      .map((size) => `[data-size='${size}'] { --ds-size: var(--ds-size--${size}); }`.trim())
+      .join('\n');
+    const content = `${selector} {\n${sizingToggles}\n${formattedTokens.join('\n')}\n}\n${sizingHelpers}\n`;
+    const body = R.isNotNil(layer) ? `@layer ${layer} {\n${content}\n}\n` : `${content}\n`;
 
     return body;
   },

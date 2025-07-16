@@ -149,7 +149,7 @@
       "0"
     ],
     "variable": "--ds-size-0",
-    "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *0), 1px)"
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *0), 1px)"
   },
   {
     "path": [
@@ -157,7 +157,7 @@
       "1"
     ],
     "variable": "--ds-size-1",
-    "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *1), 1px)"
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *1), 1px)"
   },
   {
     "path": [
@@ -165,7 +165,7 @@
       "2"
     ],
     "variable": "--ds-size-2",
-    "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *2), 1px)"
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *2), 1px)"
   },
   {
     "path": [
@@ -173,7 +173,7 @@
       "3"
     ],
     "variable": "--ds-size-3",
-    "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *3), 1px)"
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *3), 1px)"
   },
   {
     "path": [
@@ -181,7 +181,7 @@
       "4"
     ],
     "variable": "--ds-size-4",
-    "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *4), 1px)"
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *4), 1px)"
   },
   {
     "path": [
@@ -189,7 +189,7 @@
       "5"
     ],
     "variable": "--ds-size-5",
-    "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *5), 1px)"
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *5), 1px)"
   },
   {
     "path": [
@@ -197,7 +197,7 @@
       "6"
     ],
     "variable": "--ds-size-6",
-    "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *6), 1px)"
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *6), 1px)"
   },
   {
     "path": [
@@ -205,7 +205,7 @@
       "7"
     ],
     "variable": "--ds-size-7",
-    "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *7), 1px)"
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *7), 1px)"
   },
   {
     "path": [
@@ -213,7 +213,7 @@
       "8"
     ],
     "variable": "--ds-size-8",
-    "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *8), 1px)"
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *8), 1px)"
   },
   {
     "path": [
@@ -221,7 +221,7 @@
       "9"
     ],
     "variable": "--ds-size-9",
-    "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *9), 1px)"
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *9), 1px)"
   },
   {
     "path": [
@@ -229,7 +229,7 @@
       "10"
     ],
     "variable": "--ds-size-10",
-    "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *10), 1px)"
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *10), 1px)"
   },
   {
     "path": [
@@ -237,7 +237,7 @@
       "11"
     ],
     "variable": "--ds-size-11",
-    "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *11), 1px)"
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *11), 1px)"
   },
   {
     "path": [
@@ -245,7 +245,7 @@
       "12"
     ],
     "variable": "--ds-size-12",
-    "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *12), 1px)"
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *12), 1px)"
   },
   {
     "path": [
@@ -253,7 +253,7 @@
       "13"
     ],
     "variable": "--ds-size-13",
-    "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *13), 1px)"
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *13), 1px)"
   },
   {
     "path": [
@@ -261,7 +261,7 @@
       "14"
     ],
     "variable": "--ds-size-14",
-    "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *14), 1px)"
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *14), 1px)"
   },
   {
     "path": [
@@ -269,7 +269,7 @@
       "15"
     ],
     "variable": "--ds-size-15",
-    "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *15), 1px)"
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *15), 1px)"
   },
   {
     "path": [
@@ -277,7 +277,7 @@
       "18"
     ],
     "variable": "--ds-size-18",
-    "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *18), 1px)"
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *18), 1px)"
   },
   {
     "path": [
@@ -285,7 +285,7 @@
       "22"
     ],
     "variable": "--ds-size-22",
-    "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *22), 1px)"
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *22), 1px)"
   },
   {
     "path": [
@@ -293,7 +293,7 @@
       "26"
     ],
     "variable": "--ds-size-26",
-    "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *26), 1px)"
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *26), 1px)"
   },
   {
     "path": [
@@ -301,6 +301,6 @@
       "30"
     ],
     "variable": "--ds-size-30",
-    "value": "round(down,  calc(var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *30), 1px)"
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *30), 1px)"
   }
 ]
