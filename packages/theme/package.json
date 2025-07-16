@@ -11,7 +11,7 @@
   "license": "MIT",
   "exports": {
     ".": {
-      "types": "./src/themes/colors.d.ts",
+      "types": "./src/themes/types.d.ts",
       "default": "./src/themes/designsystemet.css"
     },
     "./tailwind": {
