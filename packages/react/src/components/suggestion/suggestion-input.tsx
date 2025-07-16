@@ -1,4 +1,4 @@
-import { forwardRef, useContext, useEffect, version } from 'react';
+import { forwardRef, useContext, useEffect } from 'react';
 import { Input, type InputProps } from '../input/input';
 import { SuggestionContext } from './suggestion';
 
@@ -35,7 +35,7 @@ export const SuggestionInput = forwardRef<
   HTMLInputElement,
   SuggestionInputProps
 >(function SuggestionList({ value, onInput, onChange, ...rest }, ref) {
-  const { listId, handleFilter } = useContext(SuggestionContext);
+  const { handleFilter } = useContext(SuggestionContext);
 
   useEffect(handleFilter, [value]); // Filter if controlled value
   if (onChange)
@@ -47,13 +47,6 @@ export const SuggestionInput = forwardRef<
       'SuggestionInput: Avoid using value, as Suggestion controls the Input. Use value on Suggest instead.',
     );
 
-  const popoverProps = Object.assign(
-    {
-      [version.startsWith('19') ? 'popoverTarget' : 'popovertarget']: listId,
-    },
-    rest,
-  );
-
   return (
     <Input
       placeholder='' // We need an empty placeholder for the clear button to be able to show/hide
@@ -62,7 +55,7 @@ export const SuggestionInput = forwardRef<
         onInput?.(event); // Should run first
         handleFilter?.(); // Filter if uncontrolled value
       }}
-      {...popoverProps}
+      {...rest}
     />
   );
 });

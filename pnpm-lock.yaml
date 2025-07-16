@@ -542,8 +542,8 @@ importers:
         specifier: ^3.13.12
         version: 3.13.12(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@u-elements/u-combobox':
-        specifier: ^0.0.17
-        version: 0.0.17
+        specifier: ^0.0.18
+        version: 0.0.18
       '@u-elements/u-datalist':
         specifier: ^1.0.10
         version: 1.0.10
@@ -2195,8 +2195,8 @@ packages:
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
 
-  '@u-elements/u-combobox@0.0.17':
-    resolution: {integrity: sha512-WjbaiZm8cQLYsgPaqbRPI59DhdvvKA1xa5p8jhNZ3R5683NqziBKnZN2V0RnAxJQBus3s3qXAYoxcjDSWc/18g==}
+  '@u-elements/u-combobox@0.0.18':
+    resolution: {integrity: sha512-0WttCjvLVTmJkEoTx7jkOu2thV3titNrQmo12jeBU/c+uviSAOfh5jMAwUj8ms2sZfvFkRy+d73VxjOHo0Iskw==}
 
   '@u-elements/u-datalist@1.0.10':
     resolution: {integrity: sha512-ctPlx8SL4njfsA0/JINVlVbfBW31HCswj8hDt/SsPUiF89n/fLmTLG49DxOW7RZNcXrWW+AudJy5zsuPCmCGRA==}
@@ -7396,7 +7396,7 @@ snapshots:
 
   '@types/unist@3.0.3': {}
 
-  '@u-elements/u-combobox@0.0.17': {}
+  '@u-elements/u-combobox@0.0.18': {}
 
   '@u-elements/u-datalist@1.0.10': {}
 

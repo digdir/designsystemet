@@ -13,7 +13,8 @@ import {
 } from '../';
 import {
   EXPERIMENTAL_Suggestion as Suggestion,
-  type SuggestionValues,
+  type SuggestionProps,
+  type SuggestionSelected,
 } from './';
 
 export default {
@@ -79,7 +80,6 @@ export const Preview: StoryFn<typeof Suggestion> = (args) => {
     <Field>
       <Label>Velg en destinasjon</Label>
       <Suggestion {...args}>
-        <Suggestion.Chips />
         <Suggestion.Input />
         <Suggestion.Clear />
         <Suggestion.List id='123'>
@@ -97,7 +97,7 @@ export const Preview: StoryFn<typeof Suggestion> = (args) => {
 };
 
 export const ControlledSingleArray: StoryFn<typeof Suggestion> = (args) => {
-  const [value, setValue] = useState<string[]>(['Oslo']);
+  const [selected, setSelected] = useState<string[]>(['Oslo']);
 
   return (
     <>
@@ -105,10 +105,11 @@ export const ControlledSingleArray: StoryFn<typeof Suggestion> = (args) => {
         <Label>Velg destinasjon</Label>
         <Suggestion
           {...args}
-          value={value}
-          onValueChange={(items) => setValue(items.map((item) => item.value))}
+          selected={selected}
+          onSelectedChange={(items) =>
+            setSelected(items.map((item) => item.value))
+          }
         >
-          <Suggestion.Chips />
           <Suggestion.Input />
           <Suggestion.Clear />
           <Suggestion.List>
@@ -125,12 +126,12 @@ export const ControlledSingleArray: StoryFn<typeof Suggestion> = (args) => {
       <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
       <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
-        Valgte reisemål: {value.join(', ')}
+        Valgte reisemål: {selected.join(', ')}
       </Paragraph>
 
       <Button
         onClick={() => {
-          setValue(['Sogndal']);
+          setSelected(['Sogndal']);
         }}
       >
         Sett reisemål til Sogndal
@@ -163,7 +164,7 @@ ControlledSingleArray.play = async ({ canvasElement, step }) => {
 };
 
 export const ControlledSingle: StoryFn<typeof Suggestion> = (args) => {
-  const [value, setValue] = useState<string>('');
+  const [selected, setSelected] = useState<string>('');
 
   return (
     <>
@@ -171,10 +172,9 @@ export const ControlledSingle: StoryFn<typeof Suggestion> = (args) => {
         <Label>Velg destinasjon</Label>
         <Suggestion
           {...args}
-          value={value}
-          onValueChange={(items) => setValue(items.at(0)?.value ?? '')}
+          selected={selected}
+          onSelectedChange={(items) => setSelected(items.at(0)?.value ?? '')}
         >
-          <Suggestion.Chips />
           <Suggestion.Input />
           <Suggestion.Clear />
           <Suggestion.List>
@@ -191,12 +191,12 @@ export const ControlledSingle: StoryFn<typeof Suggestion> = (args) => {
       <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
       <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
-        Valgte reisemål: {value}
+        Valgte reisemål: {selected}
       </Paragraph>
 
       <Button
         onClick={() => {
-          setValue('Sogndal');
+          setSelected('Sogndal');
         }}
       >
         Sett reisemål til Sogndal
@@ -229,7 +229,7 @@ ControlledSingle.play = async ({ canvasElement, step }) => {
 };
 
 export const ControlledMultiple: StoryFn<typeof Suggestion> = (args) => {
-  const [value, setValue] = useState<string[]>(['Oslo']);
+  const [selected, setSelected] = useState<string[]>(['Oslo']);
 
   return (
     <>
@@ -238,10 +238,11 @@ export const ControlledMultiple: StoryFn<typeof Suggestion> = (args) => {
         <Suggestion
           {...args}
           multiple
-          value={value}
-          onValueChange={(items) => setValue(items.map((item) => item.value))}
+          selected={selected}
+          onSelectedChange={(items) =>
+            setSelected(items.map((item) => item.value))
+          }
         >
-          <Suggestion.Chips />
           <Suggestion.Input />
           <Suggestion.Clear />
           <Suggestion.List>
@@ -258,12 +259,12 @@ export const ControlledMultiple: StoryFn<typeof Suggestion> = (args) => {
       <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
       <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
-        Valgte reisemål: {value.join(', ')}
+        Valgte reisemål: {selected.join(', ')}
       </Paragraph>
 
       <Button
         onClick={() => {
-          setValue(['Sogndal', 'Stavanger']);
+          setSelected(['Sogndal', 'Stavanger']);
         }}
       >
         Sett reisemål til Sogndal, Stavanger
@@ -316,11 +317,10 @@ export const ControlledIndependentLabelValue: StoryFn<typeof Suggestion> = (
         <Label>Velg person</Label>
         <Suggestion
           {...args}
-          value={items.slice(0, 1)}
-          onValueChange={(items) => setItems(items)}
+          selected={items.slice(0, 1)}
+          onSelectedChange={(items) => setItems(items)}
           filter={false}
         >
-          <Suggestion.Chips />
           <Suggestion.Input />
           <Suggestion.Clear />
           <Suggestion.List>
@@ -370,7 +370,6 @@ export const CustomFilterAlt1: StoryFn<typeof Suggestion> = (args) => {
           !input.value || index === Number(input.value) - 1
         }
       >
-        <Suggestion.Chips />
         <Suggestion.Input />
         <Suggestion.Clear />
         <Suggestion.List>
@@ -395,21 +394,20 @@ CustomFilterAlt1.parameters = {
 };
 
 export const CustomFilterAlt2: StoryFn<typeof Suggestion> = (args) => {
-  const [value, setValue] = useState('');
+  const [selected, setSelected] = useState('');
 
   return (
     <Field>
       <Label>Skriv inn et tall mellom 1-6</Label>
       <Suggestion {...args} filter={false}>
-        <Suggestion.Chips />
         <Suggestion.Input
-          onInput={({ currentTarget }) => setValue(currentTarget.value)}
+          onInput={({ currentTarget }) => setSelected(currentTarget.value)}
         />
         <Suggestion.Clear />
         <Suggestion.List>
           <Suggestion.Empty>Tomt</Suggestion.Empty>
           {DATA_PLACES.filter(
-            (_, index) => !value || index === Number(value) - 1,
+            (_, index) => !selected || index === Number(selected) - 1,
           ).map((label) => (
             <Suggestion.Option key={label}>{label}</Suggestion.Option>
           ))}
@@ -419,19 +417,45 @@ export const CustomFilterAlt2: StoryFn<typeof Suggestion> = (args) => {
   );
 };
 
+export const CustomMatching: StoryFn<typeof Suggestion> = (args) => {
+  const handleBeforeMatch: SuggestionProps['onBeforeMatch'] = (event) => {
+    event.preventDefault(); // Prevent default matching
+    const { list, control } = event.currentTarget;
+    const value = control?.value.toLowerCase() || '';
+
+    for (const option of list?.options || [])
+      option.selected = option.value.toLowerCase().startsWith(value); // Setting selected indicates a match
+  };
+
+  return (
+    <Field>
+      <Label>Matcher fra første bokstav</Label>
+      <Suggestion {...args} onBeforeMatch={handleBeforeMatch}>
+        <Suggestion.Input />
+        <Suggestion.Clear />
+        <Suggestion.List>
+          <Suggestion.Empty>Tomt</Suggestion.Empty>
+          {DATA_PLACES.map((label) => (
+            <Suggestion.Option key={label}>{label}</Suggestion.Option>
+          ))}
+        </Suggestion.List>
+      </Suggestion>
+    </Field>
+  );
+};
+
 export const AlwaysShowAll: StoryFn<typeof Suggestion> = (args) => {
-  const [value, setValue] = useState<SuggestionValues>('Sogndal');
+  const [selected, setSelected] = useState<SuggestionSelected>('Sogndal');
 
   return (
     <Field>
       <Label>Viser alle options også når valgt</Label>
       <Suggestion
         {...args}
-        value={value}
+        selected={selected}
         filter={false}
-        onValueChange={(values) => setValue(values)}
+        onSelectedChange={(values) => setSelected(values)}
       >
-        <Suggestion.Chips />
         <Suggestion.Input />
         <Suggestion.Clear />
         <Suggestion.List>
@@ -473,7 +497,6 @@ export const FetchExternal: StoryFn<typeof Suggestion> = (args) => {
     <Field lang='en'>
       <Label>Search for countries (in english)</Label>
       <Suggestion {...args} filter={false}>
-        <Suggestion.Chips />
         <Suggestion.Input onInput={handleInput} />
         <Suggestion.Clear />
         <Suggestion.List singular='%d country' plural='%d countries'>
@@ -509,8 +532,7 @@ export const DefaultValue: StoryFn<typeof Suggestion> = (args) => {
   return (
     <Field>
       <Label>Velg en destinasjon</Label>
-      <Suggestion {...args} defaultValue={['Sogndal']}>
-        <Suggestion.Chips />
+      <Suggestion {...args} defaultSelected={['Sogndal']}>
         <Suggestion.Input />
         <Suggestion.Clear />
         <Suggestion.List>
@@ -529,7 +551,6 @@ export const Multiple: StoryFn<typeof Suggestion> = (args) => {
     <Field>
       <Label>Velg en destinasjon</Label>
       <Suggestion {...args}>
-        <Suggestion.Chips />
         <Suggestion.Input />
         <Suggestion.Clear />
         <Suggestion.List>
@@ -555,7 +576,6 @@ export const InDetails: StoryFn<typeof Suggestion> = (args) => {
         <Field>
           <Label>Velg en destinasjon</Label>
           <Suggestion {...args} autoFocus>
-            <Suggestion.Chips />
             <Suggestion.Input />
             <Suggestion.Clear />
             <Suggestion.List>
