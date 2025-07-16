@@ -88,17 +88,14 @@ type Suggestion = typeof SuggestionRoot & {
  *   </Suggestion.List>
  * </Suggestion>
  */
-const EXPERIMENTAL_Suggestion: Suggestion = Object.assign(
-  SuggestionRoot,
-  {
-    Chips: SuggestionChips,
-    List: SuggestionList,
-    Input: SuggestionInput,
-    Empty: SuggestionEmpty,
-    Option: SuggestionOption,
-    Clear: SuggestionClear,
-  },
-);
+const EXPERIMENTAL_Suggestion: Suggestion = Object.assign(SuggestionRoot, {
+  Chips: SuggestionChips,
+  List: SuggestionList,
+  Input: SuggestionInput,
+  Empty: SuggestionEmpty,
+  Option: SuggestionOption,
+  Clear: SuggestionClear,
+});
 
 EXPERIMENTAL_Suggestion.displayName = 'EXPERIMENTAL_Suggestion';
 EXPERIMENTAL_Suggestion.Chips.displayName = 'EXPERIMENTAL_Suggestion.Chips';
