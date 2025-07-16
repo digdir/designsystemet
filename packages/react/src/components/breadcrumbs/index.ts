@@ -3,7 +3,7 @@ import { BreadcrumbsItem } from './breadcrumbs-item';
 import { BreadcrumbsLink } from './breadcrumbs-link';
 import { BreadcrumbsList } from './breadcrumbs-list';
 
-type Breadcrumbs = typeof BreadcrumbsParent & {
+type BreadcrumbsCompoundProps = typeof BreadcrumbsParent & {
   /**
    * Component that provides a Breadcrumbs item.
    *
@@ -66,11 +66,14 @@ type Breadcrumbs = typeof BreadcrumbsParent & {
  *  </Breadcrumbs.List>
  * </Breadcrumbs>
  */
-export const Breadcrumbs: Breadcrumbs = Object.assign(BreadcrumbsParent, {
-  List: BreadcrumbsList,
-  Item: BreadcrumbsItem,
-  Link: BreadcrumbsLink,
-});
+export const Breadcrumbs: BreadcrumbsCompoundProps = Object.assign(
+  BreadcrumbsParent,
+  {
+    List: BreadcrumbsList,
+    Item: BreadcrumbsItem,
+    Link: BreadcrumbsLink,
+  },
+);
 
 Breadcrumbs.List.displayName = 'Breadcrumbs.List';
 Breadcrumbs.Item.displayName = 'Breadcrumbs.Item';
