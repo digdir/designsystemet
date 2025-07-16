@@ -33,10 +33,10 @@ const render = <T extends HTMLElement>(
  * Renders a native `ul` element.
  *
  * @example
- * <List.Unordered>
- *   <List.Item>Item 1</List.Item>
- *   <List.Item>Item 2</List.Item>
- * </List.Unordered>
+ * <ListUnordered>
+ *   <ListItem>Item 1</ListItem>
+ *   <ListItem>Item 2</ListItem>
+ * </ListUnordered>
  */
 export const ListUnordered = forwardRef<HTMLUListElement, ListUnorderedProps>(
   function ListUnordered(props, ref) {
@@ -49,10 +49,10 @@ export const ListUnordered = forwardRef<HTMLUListElement, ListUnorderedProps>(
  * Renders a native `ol` element.
  *
  * @example
- * <List.Ordered>
- *   <List.Item>Item 1</List.Item>
- *   <List.Item>Item 2</List.Item>
- * </List.Ordered>
+ * <ListOrdered>
+ *   <ListItem>Item 1</ListItem>
+ *   <ListItem>Item 2</ListItem>
+ * </ListOrdered>
  */
 export const ListOrdered = forwardRef<HTMLOListElement, ListOrderedProps>(
   function ListOrdered(props, ref) {
