@@ -81,7 +81,9 @@ const sd = new StyleDictionary();
  */
 const buildConfigs = {
   typography: { getConfig: configs.typographyVariables, dimensions: ['typography'] },
-  size: { getConfig: configs.sizeVariables, dimensions: ['size'] },
+  sizeMode: { getConfig: configs.sizeModeVariables, dimensions: ['size'] },
+  size: { getConfig: configs.sizeVariables, dimensions: ['semantic'] },
+  typeScale: { getConfig: configs.typeScaleVariables, dimensions: ['semantic'] },
   'color-scheme': { getConfig: configs.colorSchemeVariables, dimensions: ['color-scheme'] },
   'main-color': { getConfig: configs.mainColorVariables, dimensions: ['main-color'] },
   'support-color': { getConfig: configs.supportColorVariables, dimensions: ['support-color'] },
@@ -199,7 +201,9 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
     'info-color': [initResult],
     semantic: [initResult],
     typography: [initResult],
+    sizeMode: [initResult],
     size: [initResult],
+    typeScale: [initResult],
   };
 
   try {

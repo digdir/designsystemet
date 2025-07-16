@@ -8,6 +8,8 @@ import { colorCategoryVariables, colorSchemeVariables } from './configs/color.js
 import { semanticVariables } from './configs/semantic.js';
 import type { GetStyleDictionaryConfig } from './configs/shared.js';
 import { sizeVariables } from './configs/size.js';
+import { sizeModeVariables } from './configs/size-mode.js';
+import { typeScaleVariables } from './configs/type-scale.js';
 import { typographyVariables } from './configs/typography.js';
 import { formats } from './formats/css.js';
 import { buildOptions } from './platform.js';
@@ -34,8 +36,10 @@ export const configs = {
   dangerColorVariables: colorCategoryVariables({ category: 'builtin', color: 'danger' }),
   warningColorVariables: colorCategoryVariables({ category: 'builtin', color: 'warning' }),
   infoColorVariables: colorCategoryVariables({ category: 'builtin', color: 'info' }),
-  typographyVariables,
+  sizeModeVariables,
   sizeVariables,
+  typographyVariables,
+  typeScaleVariables,
   semanticVariables,
 };
 

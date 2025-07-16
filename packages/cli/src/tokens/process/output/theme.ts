@@ -2,6 +2,7 @@ import chalk from 'chalk';
 import * as R from 'ramda';
 import pkg from '../../../../package.json' with { type: 'json' };
 import type { OutputFile } from '../../types.js';
+import { sizeComparator } from '../../utils.js';
 import type { ProcessReturn } from '../platform.js';
 
 export const defaultFileHeader = `build: v${pkg.version}`;
@@ -11,6 +12,11 @@ type CreateThemeCSSFiles = {
   processedBuilds: ProcessReturn;
   /** Optional header to be included in the generated CSS files. */
   fileHeader?: string;
+};
+
+const getFileNameWithoutExtension = (path: string) => {
+  const pathSegments = path.split('/');
+  return pathSegments[pathSegments.length - 1].split('.').slice(0, -1).join('.');
 };
 
 /**
@@ -50,11 +56,11 @@ export const createThemeCSSFiles = ({
    * This ensures a deterministic order, whereas earlier this was nondeterministic
    */
   const sortOrder = [
-    'size/small',
-    'size/medium',
-    'size/large',
+    'size-mode/',
+    'type-scale',
     'color-scheme/light',
     'typography/secondary',
+    'size',
     'semantic',
     'color-scheme/dark',
     'color-scheme/contrast',
@@ -96,10 +102,14 @@ ${fileHeader}
 `;
 
   const sortAlphabetically = R.sort<OutputFile>(R.ascend((x) => x.destination || ''));
+  const sortBySize = R.sortBy<OutputFile>(
+    R.pipe((s) => getFileNameWithoutExtension(s.destination ?? ''), sizeComparator),
+  );
   const pickOutputs = R.map<OutputFile, string>(R.view(R.lensProp('output')));
 
   const themeCSSFile = R.pipe(
     sortAlphabetically,
+    sortBySize,
     sortByDefinedOrder,
     pickOutputs,
     R.join('\n'),

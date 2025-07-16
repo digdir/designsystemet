@@ -1,938 +1,178 @@
-{
-  "medium": [
-    {
-      "path": [
-        "font-size",
-        "1"
-      ],
-      "variable": "--ds-font-size-1",
-      "value": "0.75rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "2"
-      ],
-      "variable": "--ds-font-size-2",
-      "value": "0.875rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "3"
-      ],
-      "variable": "--ds-font-size-3",
-      "value": "1rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "4"
-      ],
-      "variable": "--ds-font-size-4",
-      "value": "1.125rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "5"
-      ],
-      "variable": "--ds-font-size-5",
-      "value": "1.3125rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "6"
-      ],
-      "variable": "--ds-font-size-6",
-      "value": "1.5rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "7"
-      ],
-      "variable": "--ds-font-size-7",
-      "value": "1.875rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "8"
-      ],
-      "variable": "--ds-font-size-8",
-      "value": "2.25rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "9"
-      ],
-      "variable": "--ds-font-size-9",
-      "value": "3rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "10"
-      ],
-      "variable": "--ds-font-size-10",
-      "value": "3.75rem"
-    },
-    {
-      "path": [
-        "typography",
-        "heading",
-        "2xl",
-        "fontSize"
-      ],
-      "variable": "--ds-heading-2xl-font-size",
-      "value": "3.75rem"
-    },
-    {
-      "path": [
-        "typography",
-        "heading",
-        "xl",
-        "fontSize"
-      ],
-      "variable": "--ds-heading-xl-font-size",
-      "value": "3rem"
-    },
-    {
-      "path": [
-        "typography",
-        "heading",
-        "lg",
-        "fontSize"
-      ],
-      "variable": "--ds-heading-lg-font-size",
-      "value": "2.25rem"
-    },
-    {
-      "path": [
-        "typography",
-        "heading",
-        "md",
-        "fontSize"
-      ],
-      "variable": "--ds-heading-md-font-size",
-      "value": "1.875rem"
-    },
-    {
-      "path": [
-        "typography",
-        "heading",
-        "sm",
-        "fontSize"
-      ],
-      "variable": "--ds-heading-sm-font-size",
-      "value": "1.5rem"
-    },
-    {
-      "path": [
-        "typography",
-        "heading",
-        "xs",
-        "fontSize"
-      ],
-      "variable": "--ds-heading-xs-font-size",
-      "value": "1.3125rem"
-    },
-    {
-      "path": [
-        "typography",
-        "heading",
-        "2xs",
-        "fontSize"
-      ],
-      "variable": "--ds-heading-2xs-font-size",
-      "value": "1.125rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "xl",
-        "fontSize"
-      ],
-      "variable": "--ds-body-xl-font-size",
-      "value": "1.5rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "lg",
-        "fontSize"
-      ],
-      "variable": "--ds-body-lg-font-size",
-      "value": "1.3125rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "md",
-        "fontSize"
-      ],
-      "variable": "--ds-body-md-font-size",
-      "value": "1.125rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "sm",
-        "fontSize"
-      ],
-      "variable": "--ds-body-sm-font-size",
-      "value": "1rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "xs",
-        "fontSize"
-      ],
-      "variable": "--ds-body-xs-font-size",
-      "value": "0.875rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "short",
-        "xl",
-        "fontSize"
-      ],
-      "variable": "--ds-body-short-xl-font-size",
-      "value": "1.5rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "short",
-        "lg",
-        "fontSize"
-      ],
-      "variable": "--ds-body-short-lg-font-size",
-      "value": "1.3125rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "short",
-        "md",
-        "fontSize"
-      ],
-      "variable": "--ds-body-short-md-font-size",
-      "value": "1.125rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "short",
-        "sm",
-        "fontSize"
-      ],
-      "variable": "--ds-body-short-sm-font-size",
-      "value": "1rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "short",
-        "xs",
-        "fontSize"
-      ],
-      "variable": "--ds-body-short-xs-font-size",
-      "value": "0.875rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "long",
-        "xl",
-        "fontSize"
-      ],
-      "variable": "--ds-body-long-xl-font-size",
-      "value": "1.5rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "long",
-        "lg",
-        "fontSize"
-      ],
-      "variable": "--ds-body-long-lg-font-size",
-      "value": "1.3125rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "long",
-        "md",
-        "fontSize"
-      ],
-      "variable": "--ds-body-long-md-font-size",
-      "value": "1.125rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "long",
-        "sm",
-        "fontSize"
-      ],
-      "variable": "--ds-body-long-sm-font-size",
-      "value": "1rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "long",
-        "xs",
-        "fontSize"
-      ],
-      "variable": "--ds-body-long-xs-font-size",
-      "value": "0.875rem"
-    }
-  ],
-  "large": [
-    {
-      "path": [
-        "font-size",
-        "1"
-      ],
-      "variable": "--ds-font-size-1",
-      "value": "0.8125rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "2"
-      ],
-      "variable": "--ds-font-size-2",
-      "value": "1rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "3"
-      ],
-      "variable": "--ds-font-size-3",
-      "value": "1.125rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "4"
-      ],
-      "variable": "--ds-font-size-4",
-      "value": "1.3125rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "5"
-      ],
-      "variable": "--ds-font-size-5",
-      "value": "1.5rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "6"
-      ],
-      "variable": "--ds-font-size-6",
-      "value": "1.875rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "7"
-      ],
-      "variable": "--ds-font-size-7",
-      "value": "2.25rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "8"
-      ],
-      "variable": "--ds-font-size-8",
-      "value": "3rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "9"
-      ],
-      "variable": "--ds-font-size-9",
-      "value": "3.75rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "10"
-      ],
-      "variable": "--ds-font-size-10",
-      "value": "4.5rem"
-    },
-    {
-      "path": [
-        "typography",
-        "heading",
-        "2xl",
-        "fontSize"
-      ],
-      "variable": "--ds-heading-2xl-font-size",
-      "value": "4.5rem"
-    },
-    {
-      "path": [
-        "typography",
-        "heading",
-        "xl",
-        "fontSize"
-      ],
-      "variable": "--ds-heading-xl-font-size",
-      "value": "3.75rem"
-    },
-    {
-      "path": [
-        "typography",
-        "heading",
-        "lg",
-        "fontSize"
-      ],
-      "variable": "--ds-heading-lg-font-size",
-      "value": "3rem"
-    },
-    {
-      "path": [
-        "typography",
-        "heading",
-        "md",
-        "fontSize"
-      ],
-      "variable": "--ds-heading-md-font-size",
-      "value": "2.25rem"
-    },
-    {
-      "path": [
-        "typography",
-        "heading",
-        "sm",
-        "fontSize"
-      ],
-      "variable": "--ds-heading-sm-font-size",
-      "value": "1.875rem"
-    },
-    {
-      "path": [
-        "typography",
-        "heading",
-        "xs",
-        "fontSize"
-      ],
-      "variable": "--ds-heading-xs-font-size",
-      "value": "1.5rem"
-    },
-    {
-      "path": [
-        "typography",
-        "heading",
-        "2xs",
-        "fontSize"
-      ],
-      "variable": "--ds-heading-2xs-font-size",
-      "value": "1.3125rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "xl",
-        "fontSize"
-      ],
-      "variable": "--ds-body-xl-font-size",
-      "value": "1.875rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "lg",
-        "fontSize"
-      ],
-      "variable": "--ds-body-lg-font-size",
-      "value": "1.5rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "md",
-        "fontSize"
-      ],
-      "variable": "--ds-body-md-font-size",
-      "value": "1.3125rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "sm",
-        "fontSize"
-      ],
-      "variable": "--ds-body-sm-font-size",
-      "value": "1.125rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "xs",
-        "fontSize"
-      ],
-      "variable": "--ds-body-xs-font-size",
-      "value": "1rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "short",
-        "xl",
-        "fontSize"
-      ],
-      "variable": "--ds-body-short-xl-font-size",
-      "value": "1.875rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "short",
-        "lg",
-        "fontSize"
-      ],
-      "variable": "--ds-body-short-lg-font-size",
-      "value": "1.5rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "short",
-        "md",
-        "fontSize"
-      ],
-      "variable": "--ds-body-short-md-font-size",
-      "value": "1.3125rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "short",
-        "sm",
-        "fontSize"
-      ],
-      "variable": "--ds-body-short-sm-font-size",
-      "value": "1.125rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "short",
-        "xs",
-        "fontSize"
-      ],
-      "variable": "--ds-body-short-xs-font-size",
-      "value": "1rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "long",
-        "xl",
-        "fontSize"
-      ],
-      "variable": "--ds-body-long-xl-font-size",
-      "value": "1.875rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "long",
-        "lg",
-        "fontSize"
-      ],
-      "variable": "--ds-body-long-lg-font-size",
-      "value": "1.5rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "long",
-        "md",
-        "fontSize"
-      ],
-      "variable": "--ds-body-long-md-font-size",
-      "value": "1.3125rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "long",
-        "sm",
-        "fontSize"
-      ],
-      "variable": "--ds-body-long-sm-font-size",
-      "value": "1.125rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "long",
-        "xs",
-        "fontSize"
-      ],
-      "variable": "--ds-body-long-xs-font-size",
-      "value": "1rem"
-    }
-  ],
-  "small": [
-    {
-      "path": [
-        "font-size",
-        "1"
-      ],
-      "variable": "--ds-font-size-1",
-      "value": "0.6875rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "2"
-      ],
-      "variable": "--ds-font-size-2",
-      "value": "0.8125rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "3"
-      ],
-      "variable": "--ds-font-size-3",
-      "value": "0.875rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "4"
-      ],
-      "variable": "--ds-font-size-4",
-      "value": "1rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "5"
-      ],
-      "variable": "--ds-font-size-5",
-      "value": "1.125rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "6"
-      ],
-      "variable": "--ds-font-size-6",
-      "value": "1.3125rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "7"
-      ],
-      "variable": "--ds-font-size-7",
-      "value": "1.5rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "8"
-      ],
-      "variable": "--ds-font-size-8",
-      "value": "1.875rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "9"
-      ],
-      "variable": "--ds-font-size-9",
-      "value": "2.25rem"
-    },
-    {
-      "path": [
-        "font-size",
-        "10"
-      ],
-      "variable": "--ds-font-size-10",
-      "value": "3rem"
-    },
-    {
-      "path": [
-        "typography",
-        "heading",
-        "2xl",
-        "fontSize"
-      ],
-      "variable": "--ds-heading-2xl-font-size",
-      "value": "3rem"
-    },
-    {
-      "path": [
-        "typography",
-        "heading",
-        "xl",
-        "fontSize"
-      ],
-      "variable": "--ds-heading-xl-font-size",
-      "value": "2.25rem"
-    },
-    {
-      "path": [
-        "typography",
-        "heading",
-        "lg",
-        "fontSize"
-      ],
-      "variable": "--ds-heading-lg-font-size",
-      "value": "1.875rem"
-    },
-    {
-      "path": [
-        "typography",
-        "heading",
-        "md",
-        "fontSize"
-      ],
-      "variable": "--ds-heading-md-font-size",
-      "value": "1.5rem"
-    },
-    {
-      "path": [
-        "typography",
-        "heading",
-        "sm",
-        "fontSize"
-      ],
-      "variable": "--ds-heading-sm-font-size",
-      "value": "1.3125rem"
-    },
-    {
-      "path": [
-        "typography",
-        "heading",
-        "xs",
-        "fontSize"
-      ],
-      "variable": "--ds-heading-xs-font-size",
-      "value": "1.125rem"
-    },
-    {
-      "path": [
-        "typography",
-        "heading",
-        "2xs",
-        "fontSize"
-      ],
-      "variable": "--ds-heading-2xs-font-size",
-      "value": "1rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "xl",
-        "fontSize"
-      ],
-      "variable": "--ds-body-xl-font-size",
-      "value": "1.3125rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "lg",
-        "fontSize"
-      ],
-      "variable": "--ds-body-lg-font-size",
-      "value": "1.125rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "md",
-        "fontSize"
-      ],
-      "variable": "--ds-body-md-font-size",
-      "value": "1rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "sm",
-        "fontSize"
-      ],
-      "variable": "--ds-body-sm-font-size",
-      "value": "0.875rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "xs",
-        "fontSize"
-      ],
-      "variable": "--ds-body-xs-font-size",
-      "value": "0.8125rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "short",
-        "xl",
-        "fontSize"
-      ],
-      "variable": "--ds-body-short-xl-font-size",
-      "value": "1.3125rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "short",
-        "lg",
-        "fontSize"
-      ],
-      "variable": "--ds-body-short-lg-font-size",
-      "value": "1.125rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "short",
-        "md",
-        "fontSize"
-      ],
-      "variable": "--ds-body-short-md-font-size",
-      "value": "1rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "short",
-        "sm",
-        "fontSize"
-      ],
-      "variable": "--ds-body-short-sm-font-size",
-      "value": "0.875rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "short",
-        "xs",
-        "fontSize"
-      ],
-      "variable": "--ds-body-short-xs-font-size",
-      "value": "0.8125rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "long",
-        "xl",
-        "fontSize"
-      ],
-      "variable": "--ds-body-long-xl-font-size",
-      "value": "1.3125rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "long",
-        "lg",
-        "fontSize"
-      ],
-      "variable": "--ds-body-long-lg-font-size",
-      "value": "1.125rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "long",
-        "md",
-        "fontSize"
-      ],
-      "variable": "--ds-body-long-md-font-size",
-      "value": "1rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "long",
-        "sm",
-        "fontSize"
-      ],
-      "variable": "--ds-body-long-sm-font-size",
-      "value": "0.875rem"
-    },
-    {
-      "path": [
-        "typography",
-        "body",
-        "long",
-        "xs",
-        "fontSize"
-      ],
-      "variable": "--ds-body-long-xs-font-size",
-      "value": "0.8125rem"
-    }
-  ]
-}
+[
+  {
+    "path": [
+      "_size",
+      "base"
+    ],
+    "variable": "--ds-size-base",
+    "value": "18"
+  },
+  {
+    "path": [
+      "_size",
+      "step"
+    ],
+    "variable": "--ds-size-step",
+    "value": "4"
+  },
+  {
+    "path": [
+      "_size",
+      "0"
+    ],
+    "variable": "--ds-size-0",
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *0), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "1"
+    ],
+    "variable": "--ds-size-1",
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *1), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "2"
+    ],
+    "variable": "--ds-size-2",
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *2), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "3"
+    ],
+    "variable": "--ds-size-3",
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *3), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "4"
+    ],
+    "variable": "--ds-size-4",
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *4), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "5"
+    ],
+    "variable": "--ds-size-5",
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *5), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "6"
+    ],
+    "variable": "--ds-size-6",
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *6), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "7"
+    ],
+    "variable": "--ds-size-7",
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *7), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "8"
+    ],
+    "variable": "--ds-size-8",
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *8), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "9"
+    ],
+    "variable": "--ds-size-9",
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *9), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "10"
+    ],
+    "variable": "--ds-size-10",
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *10), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "11"
+    ],
+    "variable": "--ds-size-11",
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *11), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "12"
+    ],
+    "variable": "--ds-size-12",
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *12), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "13"
+    ],
+    "variable": "--ds-size-13",
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *13), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "14"
+    ],
+    "variable": "--ds-size-14",
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *14), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "15"
+    ],
+    "variable": "--ds-size-15",
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *15), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "18"
+    ],
+    "variable": "--ds-size-18",
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *18), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "22"
+    ],
+    "variable": "--ds-size-22",
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *22), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "26"
+    ],
+    "variable": "--ds-size-26",
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *26), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "30"
+    ],
+    "variable": "--ds-size-30",
+    "value": "round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *30), 1px)"
+  }
+]

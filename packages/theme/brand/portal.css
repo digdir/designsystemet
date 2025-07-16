@@ -4,15 +4,42 @@ build: v1.1.5
 design-tokens: v1.1.5
 */
 
-@layer ds.theme.size {
-:root, [data-size] /* small */ {
+@layer ds.theme.size-mode {
+:root /* small */ {
   --ds-size-mode-font-size--sm: 1;
 }
 }
-@layer ds.theme.size {
-:root, [data-size] /* medium */ {
+
+@layer ds.theme.size-mode {
+:root /* medium */ {
   --ds-size-mode-font-size--md: 1.125;
 }
+}
+
+@layer ds.theme.size-mode {
+:root /* large */ {
+  --ds-size-mode-font-size--lg: 1.3125;
+}
+}
+
+@layer ds.theme.size-mode {
+:root, [data-size] {
+  --ds-size: var(--ds-size--md);
+  --ds-size--sm: var(--ds-size,);
+  --ds-size--md: var(--ds-size,);
+  --ds-size--lg: var(--ds-size,);
+  --ds-size-mode-font-size:
+    var(--ds-size--sm, var(--ds-size-mode-font-size--sm))
+    var(--ds-size--md, var(--ds-size-mode-font-size--md))
+    var(--ds-size--lg, var(--ds-size-mode-font-size--lg));
+}
+
+[data-size='sm'] { --ds-size: var(--ds-size--sm); }
+[data-size='md'] { --ds-size: var(--ds-size--md); }
+[data-size='lg'] { --ds-size: var(--ds-size--lg); }
+}
+
+@layer ds.theme.type-scale {
 :root, [data-size] {
   --_ds-font-size-factor: calc(var(--ds-size-mode-font-size) / (var(--ds-size-base) / 16));
   --ds-font-size-1: calc(0.75rem * var(--_ds-font-size-factor));
@@ -47,11 +74,6 @@ design-tokens: v1.1.5
   --ds-body-long-md-font-size: var(--ds-font-size-4);
   --ds-body-long-sm-font-size: var(--ds-font-size-3);
   --ds-body-long-xs-font-size: var(--ds-font-size-2);
-}
-}
-@layer ds.theme.size {
-:root, [data-size] /* large */ {
-  --ds-size-mode-font-size--lg: 1.3125;
 }
 }
 @layer ds.theme.color-scheme.light {
@@ -450,34 +472,10 @@ design-tokens: v1.1.5
   --ds-body-long-xs-letter-spacing: 0.0015em;
 }
 }
-@layer ds.theme.semantic {
+@layer ds.theme.size {
 :root, [data-size] {
---ds-size: var(--ds-size--md);
---ds-size--md: var(--ds-size,);
---ds-size--lg: var(--ds-size,);
---ds-size--sm: var(--ds-size,);
---ds-size-mode-font-size:
-  var(--ds-size--md, var(--ds-size-mode-font-size--md))
-  var(--ds-size--lg, var(--ds-size-mode-font-size--lg))
-  var(--ds-size--sm, var(--ds-size-mode-font-size--sm));
   --ds-size-base: 18;
   --ds-size-step: 4;
-  --ds-border-radius-base: 0.25rem;
-  --ds-border-radius-scale: 0.25rem;
-  --ds-border-radius-sm: min(var(--ds-border-radius-base)*0.5,var(--ds-border-radius-scale));
-  --ds-border-radius-md: min(var(--ds-border-radius-base),var(--ds-border-radius-scale)*2);
-  --ds-border-radius-lg: min(var(--ds-border-radius-base)*2,var(--ds-border-radius-scale)*5);
-  --ds-border-radius-xl: min(var(--ds-border-radius-base)*3,var(--ds-border-radius-scale)*7);
-  --ds-border-radius-default: var(--ds-border-radius-base);
-  --ds-border-radius-full: 624.9375rem;
-  --ds-border-width-default: 1px;
-  --ds-border-width-focus: 3px;
-  --ds-shadow-xs: 0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12);
-  --ds-shadow-sm: 0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1);
-  --ds-shadow-md: 0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12);
-  --ds-shadow-lg: 0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14);
-  --ds-shadow-xl: 0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16);
-  --ds-opacity-disabled: 30%;
 
   --ds-size-0:  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *0);
   --ds-size-1:  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *1);
@@ -523,9 +521,28 @@ design-tokens: v1.1.5
   --ds-size-30: round(down,  calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size) *30), 1px);
   }
 }
-[data-size='md'] { --ds-size: var(--ds-size--md); }
-[data-size='lg'] { --ds-size: var(--ds-size--lg); }
-[data-size='sm'] { --ds-size: var(--ds-size--sm); }
+
+}
+
+@layer ds.theme.semantic {
+:root {
+  --ds-border-radius-base: 0.25rem;
+  --ds-border-radius-scale: 0.25rem;
+  --ds-border-radius-sm: min(var(--ds-border-radius-base)*0.5,var(--ds-border-radius-scale));
+  --ds-border-radius-md: min(var(--ds-border-radius-base),var(--ds-border-radius-scale)*2);
+  --ds-border-radius-lg: min(var(--ds-border-radius-base)*2,var(--ds-border-radius-scale)*5);
+  --ds-border-radius-xl: min(var(--ds-border-radius-base)*3,var(--ds-border-radius-scale)*7);
+  --ds-border-radius-default: var(--ds-border-radius-base);
+  --ds-border-radius-full: 624.9375rem;
+  --ds-border-width-default: 1px;
+  --ds-border-width-focus: 3px;
+  --ds-shadow-xs: 0 0 1px 0 rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12);
+  --ds-shadow-sm: 0 0 1px 0 rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.1);
+  --ds-shadow-md: 0 0 1px 0 rgba(0,0,0,0.14), 0 2px 4px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.12);
+  --ds-shadow-lg: 0 0 1px 0 rgba(0,0,0,0.13), 0 3px 5px 0 rgba(0,0,0,0.13), 0 6px 12px 0 rgba(0,0,0,0.14);
+  --ds-shadow-xl: 0 0 1px 0 rgba(0,0,0,0.12), 0 4px 8px 0 rgba(0,0,0,0.16), 0 12px 24px 0 rgba(0,0,0,0.16);
+  --ds-opacity-disabled: 30%;
+}
 
 }
 
