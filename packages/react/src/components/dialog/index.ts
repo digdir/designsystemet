@@ -3,7 +3,7 @@ import { DialogBlock } from './dialog-block';
 import { DialogTrigger } from './dialog-trigger';
 import { DialogTriggerContext } from './dialog-trigger-context';
 
-type DialogCompoundProps = typeof DialogParent & {
+type Dialog = typeof DialogParent & {
   /**
    * DialogTriggerContext component, used to provide a context for a dialog trigger.
    *
@@ -60,18 +60,23 @@ type DialogCompoundProps = typeof DialogParent & {
  *   </Dialog>
  * </Dialog.TriggerContext>
  */
-const Dialog: DialogCompoundProps = Object.assign(DialogParent, {
+const DialogComponent: Dialog = Object.assign(DialogParent, {
   Block: DialogBlock,
   TriggerContext: DialogTriggerContext,
   Trigger: DialogTrigger,
 });
 
-Dialog.Block.displayName = 'Dialog.Block';
-Dialog.TriggerContext.displayName = 'Dialog.TriggerContext';
-Dialog.Trigger.displayName = 'Dialog.Trigger';
+DialogComponent.Block.displayName = 'Dialog.Block';
+DialogComponent.TriggerContext.displayName = 'Dialog.TriggerContext';
+DialogComponent.Trigger.displayName = 'Dialog.Trigger';
 
 export type { DialogProps } from './dialog';
 export type { DialogBlockProps } from './dialog-block';
 export type { DialogTriggerProps } from './dialog-trigger';
 export type { DialogTriggerContextProps } from './dialog-trigger-context';
-export { Dialog, DialogBlock, DialogTriggerContext, DialogTrigger };
+export {
+  DialogComponent as Dialog,
+  DialogBlock,
+  DialogTriggerContext,
+  DialogTrigger,
+};

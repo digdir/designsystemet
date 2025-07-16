@@ -1,7 +1,7 @@
 import { Card as CardParent } from './card';
 import { CardBlock } from './card-block';
 
-type CardCompoundProps = typeof CardParent & {
+type Card = typeof CardParent & {
   /**
    * Use `Card.Block` to segment content with divider lines or to add full-bleed pictures/video
    *
@@ -26,12 +26,12 @@ type CardCompoundProps = typeof CardParent & {
  *  <Card.Block>Footer</Card.Block>
  * </Card>
  */
-const Card: CardCompoundProps = Object.assign(CardParent, {
+const CardComponent: Card = Object.assign(CardParent, {
   Block: CardBlock,
 });
 
-Card.Block.displayName = 'Card.Block';
+CardComponent.Block.displayName = 'Card.Block';
 
 export type { CardProps } from './card';
 export type { CardBlockProps } from './card-block';
-export { Card, CardBlock };
+export { CardComponent as Card, CardBlock };

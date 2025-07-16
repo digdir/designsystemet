@@ -1,6 +1,6 @@
 import { ChipButton, ChipCheckbox, ChipRadio, ChipRemovable } from './chips';
 
-type ChipCompondProps = {
+type Chip = {
   /**
    * Chip.Button used for interaction
    *
@@ -33,17 +33,17 @@ type ChipCompondProps = {
   Removable: typeof ChipRemovable;
 };
 
-const Chip: ChipCompondProps = {
+const ChipComponent: Chip = {
   Button: ChipButton,
   Checkbox: ChipCheckbox,
   Radio: ChipRadio,
   Removable: ChipRemovable,
 };
 
-Chip.Button.displayName = 'Chip.Button';
-Chip.Checkbox.displayName = 'Chip.Checkbox';
-Chip.Radio.displayName = 'Chip.Radio';
-Chip.Removable.displayName = 'Chip.Removable';
+ChipComponent.Button.displayName = 'Chip.Button';
+ChipComponent.Checkbox.displayName = 'Chip.Checkbox';
+ChipComponent.Radio.displayName = 'Chip.Radio';
+ChipComponent.Removable.displayName = 'Chip.Removable';
 
 export type {
   ChipButtonProps,
@@ -51,4 +51,10 @@ export type {
   ChipRadioProps,
   ChipRemovableProps,
 } from './chips';
-export { Chip, ChipButton, ChipCheckbox, ChipRadio, ChipRemovable };
+export {
+  ChipComponent as Chip,
+  ChipButton,
+  ChipCheckbox,
+  ChipRadio,
+  ChipRemovable,
+};
