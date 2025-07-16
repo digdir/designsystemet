@@ -13,6 +13,69 @@ import { TableHeaderCell } from './table-header-cell';
 import type { TableRowProps } from './table-row';
 import { TableRow } from './table-row';
 
+type Table = typeof TableRoot & {
+  /**
+   * TableHead component, used to display the header of a table. Renders a native HTML thead element.
+   *
+   * @example
+   * <Table.Head>
+   *   <Table.Row>
+   *     <Table.HeaderCell>Name</Table.HeaderCell>
+   *     <Table.HeaderCell>Age</Table.HeaderCell>
+   *   </Table.Row>
+   * </Table.Head>
+   */
+  Head: typeof TableHead;
+  /**
+   * Table.Body component, used to display the body of a table. Renders a native HTML tbody element.
+   *
+   * @example
+   * <Table.Body>
+   *   <Table.Row>
+   *     <Table.Cell>John</Table.Cell>
+   *     <Table.Cell>25</Table.Cell>
+   *   </Table.Row>
+   * </Table.Body>
+   */
+  Body: typeof TableBody;
+  /**
+   * Table.Row component, used to display the rows of a table. Renders a native HTML tr element.
+   *
+   * @example
+   * <Table.Row>
+   *   <Table.Cell>John</Table.Cell>
+   *   <Table.Cell>25</Table.Cell>
+   * </Table.Row>
+   */
+  Row: typeof TableRow;
+  /**
+   * Table.Cell component, used to display the cells of a table. Renders a native HTML td element.
+   *
+   * @example
+   * <Table.Cell>John</Table.Cell>
+   */
+  Cell: typeof TableCell;
+  /**
+   * Table.HeaderCell component, used to display the header cells of a table. Renders a native HTML th element.
+   *
+   * @example
+   * <Table.HeaderCell>Name</Table.HeaderCell>
+   */
+  HeaderCell: typeof TableHeaderCell;
+  /**
+   * Table.Foot component, used to display the footer of a table. Renders a native HTML tfoot element.
+   *
+   * @example
+   * <Table.Foot>
+   *   <Table.Row>
+   *     <Table.Cell>Total</Table.Cell>
+   *     <Table.Cell>2</Table.Cell>
+   *   </Table.Row>
+   * </Table.Foot>
+   */
+  Foot: typeof TableFoot;
+};
+
 /**
  * Table component, used to display tabular data. Renders a native HTML table element.
  *
@@ -38,7 +101,7 @@ import { TableRow } from './table-row';
  *   </Table.Foot>
  * </Table>
  */
-const Table = Object.assign(TableRoot, {
+const TableComponent: Table = Object.assign(TableRoot, {
   Head: TableHead,
   Body: TableBody,
   Row: TableRow,
@@ -47,16 +110,16 @@ const Table = Object.assign(TableRoot, {
   Foot: TableFoot,
 });
 
-Table.displayName = 'Table';
-Table.Head.displayName = 'Table.Head';
-Table.Body.displayName = 'Table.Body';
-Table.Row.displayName = 'Table.Row';
-Table.Cell.displayName = 'Table.Cell';
-Table.HeaderCell.displayName = 'Table.HeaderCell';
-Table.Foot.displayName = 'Table.Foot';
+TableComponent.displayName = 'Table';
+TableComponent.Head.displayName = 'Table.Head';
+TableComponent.Body.displayName = 'Table.Body';
+TableComponent.Row.displayName = 'Table.Row';
+TableComponent.Cell.displayName = 'Table.Cell';
+TableComponent.HeaderCell.displayName = 'Table.HeaderCell';
+TableComponent.Foot.displayName = 'Table.Foot';
 
 export {
-  Table,
+  TableComponent as Table,
   TableHead,
   TableBody,
   TableRow,
