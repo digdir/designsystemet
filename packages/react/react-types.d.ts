@@ -1,5 +1,4 @@
-import type { Size } from '@digdir/designsystemet-react';
-import type { Color } from '@digdir/designsystemet-react/colors';
+import type { Color, Size } from '@digdir/designsystemet/types';
 
 declare global {
   namespace React {
