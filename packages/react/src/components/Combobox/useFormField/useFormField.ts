@@ -1,8 +1,7 @@
+import type { Size } from '@digdir/designsystemet/types';
 import cl from 'clsx/lite';
 import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from 'react';
 import { useContext, useId } from 'react';
-
-import type { Size } from '../../../types';
 import { FieldsetContext } from './FieldsetContext';
 
 export type FormFieldProps = {
@@ -72,8 +71,8 @@ export const useFormField = (
         cl(
           props['aria-describedby'],
           !!props?.description &&
-            typeof props?.description === 'string' &&
-            descriptionId,
+          typeof props?.description === 'string' &&
+          descriptionId,
           hasError && !fieldset?.error && errorId,
           hasError && !!fieldset?.error && fieldset?.errorId,
         ) || undefined,
