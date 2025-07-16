@@ -18,7 +18,7 @@
     "@radix-ui/react-slot": "^1.2.3",
     "@react-router/node": "^7.6.3",
     "@react-router/serve": "^7.6.3",
-    "@vercel/react-router": "^1.1.2",
+    "@vercel/react-router": "^1.2.1",
     "clsx": "^2.1.1",
     "i18next": "^24.2.3",
     "isbot": "^5.1.28",
@@ -35,12 +35,12 @@
   },
   "devDependencies": {
     "@react-router/dev": "^7.6.3",
-    "@types/node": "^22.16.0",
+    "@types/node": "^22.16.3",
     "@types/ramda": "^0.30.2",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "typescript": "^5.8.3",
-    "vite": "^7.0.2",
+    "vite": "^7.0.4",
     "vite-env-only": "^3.0.3",
     "vite-tsconfig-paths": "^5.1.4"
   }
