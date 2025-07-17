@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react-vite';
-
 import { useState } from 'react';
+import { expect, within } from 'storybook/test';
 import {
   Fieldset,
   Heading,
@@ -215,3 +215,113 @@ export const EksempelTekstDark: StoryFn = () => (
     </Paragraph>
   </div>
 );
+
+const Headings = () => (
+  <>
+    <Heading data-size='2xl' style={{ marginBottom: 'var(--ds-size-4)' }}>
+      This is a 2xl heading
+    </Heading>
+    <Heading data-size='xl' style={{ marginBottom: 'var(--ds-size-4)' }}>
+      This is an xl heading
+    </Heading>
+    <Heading data-size='lg' style={{ marginBottom: 'var(--ds-size-4)' }}>
+      This is a lg heading
+    </Heading>
+    <Heading data-size='md' style={{ marginBottom: 'var(--ds-size-4)' }}>
+      This is a md heading
+    </Heading>
+    <Heading data-size='sm' style={{ marginBottom: 'var(--ds-size-4)' }}>
+      This is a sm heading
+    </Heading>
+    <Heading data-size='xs' style={{ marginBottom: 'var(--ds-size-4)' }}>
+      This is an xs heading
+    </Heading>
+    <Heading data-size='2xs' style={{ marginBottom: 'var(--ds-size-4)' }}>
+      This is a 2xs heading
+    </Heading>
+  </>
+);
+
+export const HeadingsInVariousSizes: StoryFn = () => (
+  <div
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 'var(--ds-size-6)',
+    }}
+  >
+    <div data-size='sm' data-testid='small'>
+      <div>Size mode small</div>
+      <Headings />
+    </div>
+    <div style={{ display: 'flex', gap: 'var(--ds-size-3)' }}>
+      <div data-testid='implicit-medium'>
+        Implicit size mode medium
+        <Headings />
+      </div>
+      <div data-size='md' data-testid='medium'>
+        Explicit size mode medium
+        <Headings />
+      </div>
+    </div>
+    <div data-size='lg' data-testid='large'>
+      Size mode large
+      <Headings />
+    </div>
+  </div>
+);
+HeadingsInVariousSizes.play = async ({ canvasElement, step }) => {
+  const canvas = within(canvasElement);
+  const small = canvas.getByTestId('small');
+  const implicitMedium = canvas.getByTestId('implicit-medium');
+  const explicitMedium = canvas.getByTestId('medium');
+  const large = canvas.getByTestId('large');
+
+  await step('size mode small: expect bottom margins to be equal', () =>
+    expectEqualBottomMargins(small),
+  );
+  await step(
+    'implicit size mode medium: expect bottom margins to be equal',
+    () => expectEqualBottomMargins(implicitMedium),
+  );
+  await step(
+    'explicit size mode medium: expect bottom margins to be equal',
+    () => expectEqualBottomMargins(explicitMedium),
+  );
+  await step('size mode large: expect bottom margins to be equal', () =>
+    expectEqualBottomMargins(large),
+  );
+
+  await step(
+    'size mode medium: headings should be identical whether medium is impicit or explicit',
+    async () => {
+      const implicitHeadings = within(implicitMedium).getAllByRole('heading');
+      const explicitHeadings = within(explicitMedium).getAllByRole('heading');
+      for (let i = 0; i < implicitHeadings.length; i++) {
+        const implicit = implicitHeadings[i];
+        const explicit = explicitHeadings[i];
+        await expect(getComparableComputedStyle(implicit)).toEqual(
+          getComparableComputedStyle(explicit),
+        );
+      }
+    },
+  );
+};
+
+function getComparableComputedStyle(element: HTMLElement) {
+  const computed = getComputedStyle(element);
+  return Object.fromEntries(
+    Array.from(computed)
+      .filter((prop) => !prop.startsWith('--'))
+      .map((prop) => [prop, computed.getPropertyValue(prop)]),
+  );
+}
+
+async function expectEqualBottomMargins(container: HTMLElement) {
+  const headings = within(container).getAllByRole('heading');
+  const margins = headings.map((h) => getComputedStyle(h).marginBottom);
+
+  for (const margin of margins) {
+    await expect(margin).toBe(margins[0]);
+  }
+}

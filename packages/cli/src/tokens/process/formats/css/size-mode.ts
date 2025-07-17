@@ -51,8 +51,10 @@ export const sizeMode: Format = {
      */
     const sizes = orderBySize(buildOptions?.sizeModes ?? []).map(shortSizeName);
     const defaultSize = shortSizeName(buildOptions?.defaultSize ?? '');
+    // These exceptions are necessary because these components use data-size to mean "component size" or "font size".
+    const exceptions = ['.ds-avatar', '.ds-heading', '.ds-paragraph', '.ds-spinner'];
 
-    const sizingToggles = `:root, [data-size] {
+    const sizingToggles = `:root, [data-size]:not(:is(${exceptions.join(', ')})) {
   --ds-size: var(--ds-size--${defaultSize});
 ${sizes.map((size) => `  --ds-size--${size}: var(--ds-size,);`).join('\n')}
   --ds-size-mode-font-size:
