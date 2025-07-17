@@ -1,6 +1,15 @@
 import { ToggleGroup as ToggleGroupParent } from './toggle-group';
 import { ToggleGroupItem } from './toggle-group-item';
 
+type ToggleGroup = typeof ToggleGroupParent & {
+  /**
+   * A single item in a ToggleGroup.
+   * @example
+   * <ToggleGroup.Item value='1'>Toggle 1</ToggleGroup.Item>
+   */
+  Item: typeof ToggleGroupItem;
+};
+
 /**
  * Display a group of buttons that can be toggled between.
  *
@@ -11,12 +20,12 @@ import { ToggleGroupItem } from './toggle-group-item';
  *   <ToggleGroup.Item value='3'>Toggle 3</ToggleGroup.Item>
  * </ToggleGroup>
  */
-const ToggleGroup = Object.assign(ToggleGroupParent, {
+const ToggleGroupComponent: ToggleGroup = Object.assign(ToggleGroupParent, {
   Item: ToggleGroupItem,
 });
 
-ToggleGroup.Item.displayName = 'ToggleGroup.Item';
+ToggleGroupComponent.Item.displayName = 'ToggleGroup.Item';
 
 export type { ToggleGroupProps } from './toggle-group';
 export type { ToggleGroupItemProps } from './toggle-group-item';
-export { ToggleGroup, ToggleGroupItem };
+export { ToggleGroupComponent as ToggleGroup, ToggleGroupItem };

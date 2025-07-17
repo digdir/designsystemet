@@ -13,11 +13,11 @@ export type PaginationItemProps = {
  * PaginationItem component, use within a Pagination.List.
  *
  * @example
- * <Pagination.List>
- *   <Pagination.Item>
- *     <Pagination.Button aria-label='Forrige side'>Forrige</Pagination.Button>
- *   </Pagination.Item>
- * </Pagination.List>
+ * <PaginationList>
+ *   <PaginationItem>
+ *     <PaginationButton aria-label='Forrige side'>Forrige</PaginationButton>
+ *   </PaginationItem>
+ * </PaginationList>
  */
 export const PaginationItem = forwardRef<HTMLLIElement, PaginationItemProps>(
   function PaginationItem({ asChild, className, ...rest }, ref) {

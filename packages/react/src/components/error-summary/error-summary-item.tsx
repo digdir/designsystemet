@@ -7,11 +7,11 @@ export type ErrorSummaryItemProps = ListItemProps;
  * ErrorSummaryItem component, used to display an error link in the ErrorSummary.
  *
  * @example
- * <ErrorSummary.Item>
- *  <ErrorSummary.Link href="#">
+ * <ErrorSummaryItem>
+ *  <ErrorSummaryLink href="#">
  *    Link to error
- *  </ErrorSummary.Link>
- * </ErrorSummary.Item>
+ *  </ErrorSummaryLink>
+ * </ErrorSummaryItem>
  */
 export const ErrorSummaryItem = forwardRef<
   HTMLLIElement,

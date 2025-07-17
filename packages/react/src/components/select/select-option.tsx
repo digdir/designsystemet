@@ -15,8 +15,8 @@ export type SelectOptionProps = {
  *
  * @example
  * <Select>
- *   <Select.Option value='1'>Option 1</Select.Option>
- *   <Select.Option value='2'>Option 2</Select.Option>
+ *   <SelectOption value='1'>Option 1</SelectOption>
+ *   <SelectOption value='2'>Option 2</SelectOption>
  * </Select>
  */
 export const SelectOption = forwardRef<HTMLOptionElement, SelectOptionProps>(

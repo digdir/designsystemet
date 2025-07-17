@@ -10,7 +10,7 @@ export type SearchInputProps = DefaultProps &
  *
  * @example
  * <Search>
- *   <Search.Input aria-label='Søk' />
+ *   <SearchInput aria-label='Søk' />
  * </Search>
  */
 export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(

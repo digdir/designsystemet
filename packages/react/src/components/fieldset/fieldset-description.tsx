@@ -7,9 +7,9 @@ export type FieldsetDescriptionProps = ParagraphProps;
  * FieldsetDescription component, used to display a description for a fieldset.
  *
  * @example
- * <Fieldset.Description>
+ * <FieldsetDescription>
  *   Gi en kort beskrivelse i begge feltene
- * </Fieldset.Description>
+ * </FieldsetDescription>
  */
 export const FieldsetDescription = forwardRef<
   HTMLLegendElement,

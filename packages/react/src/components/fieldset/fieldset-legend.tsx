@@ -9,7 +9,7 @@ export type FieldsetLegendProps = HTMLAttributes<HTMLLegendElement> &
  * FieldsetLegend component, used to display a legend for a fieldset.
  *
  * @example
- * <Fieldset.Legend>Skriv inn dine svar</Fieldset.Legend>
+ * <FieldsetLegend>Skriv inn dine svar</FieldsetLegend>
  */
 export const FieldsetLegend = forwardRef<
   HTMLLegendElement,

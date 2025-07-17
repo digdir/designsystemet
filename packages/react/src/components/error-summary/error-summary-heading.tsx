@@ -4,6 +4,14 @@ import { ErrorSummaryContext } from './error-summary';
 
 export type ErrorSummaryHeadingProps = HeadingProps;
 
+/**
+ * ErrorSummary heading component, used to display a heading for the error summary.
+ *
+ * @example
+ * <ErrorSummary>
+ *   <ErrorSummaryHeading>Heading</ErrorSummaryHeading>
+ * </ErrorSummary>
+ */
 export const ErrorSummaryHeading = forwardRef<
   HTMLHeadingElement,
   ErrorSummaryHeadingProps
