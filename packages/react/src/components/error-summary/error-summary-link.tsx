@@ -4,7 +4,14 @@ import { Link, type LinkProps } from '../link/link';
 export type ErrorSummaryLinkProps = LinkProps;
 
 /**
- * Link component used in ErrorSummary.
+ * ErrorSummary link component, used to link to a specific error. Used within an ErrorSummary.Item.
+ *
+ * @example
+ * <ErrorSummary>
+ *   <ErrorSummaryItem>
+ *     <ErrorSummaryLink href='#'>Error 1</ErrorSummaryLink>
+ *   </ErrorSummaryItem>
+ * </ErrorSummary>
  */
 export const ErrorSummaryLink = forwardRef<
   HTMLAnchorElement,

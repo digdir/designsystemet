@@ -1,7 +1,10 @@
 import { join } from 'node:path';
 import { bundleMDX } from 'mdx-bundler';
 import BlogCard from '~/_components/blog-card/blog-card';
-import { getFileFromContentDir, getFilesFromContentDir } from '~/_utils/files';
+import {
+  getFileFromContentDir,
+  getFilesFromContentDir,
+} from '~/_utils/files.server';
 import { generateMetadata } from '~/_utils/metadata';
 import i18nConf from '~/i18n';
 import i18n from '~/i18next.server';

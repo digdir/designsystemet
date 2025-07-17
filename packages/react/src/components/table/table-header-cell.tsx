@@ -13,7 +13,7 @@ export type TableHeaderCellProps = {
  * TableHeaderCell component, used to display the header cells of a table. Renders a native HTML th element.
  *
  * @example
- * <Table.HeaderCell>Name</Table.HeaderCell>
+ * <TableHeaderCell>Name</TableHeaderCell>
  */
 export const TableHeaderCell = forwardRef<
   HTMLTableCellElement,

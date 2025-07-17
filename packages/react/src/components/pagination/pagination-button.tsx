@@ -14,9 +14,9 @@ export type PaginationButtonProps = {
  * PaginationButton component, use within a Pagination.Item.
  *
  * @example
- * <Pagination.Item>
- *   <Pagination.Button aria-label='Forrige side'>Forrige</Pagination.Button>
- * </Pagination.Item>
+ * <PaginationItem>
+ *   <PaginationButton aria-label='Forrige side'>Forrige</PaginationButton>
+ * </PaginationItem>
  */
 export const PaginationButton = forwardRef<
   HTMLButtonElement,

@@ -1,5 +1,17 @@
 # Change Log
 
+## 1.1.5
+
+### Patch Changes
+
+- **Table:** ([#3859](https://github.com/digdir/designsystemet/pull/3859))
+  - sorting icon never shrinks, even when using `Button` component (which is `display: flex`) as parent
+  - with `data-border` adjusts `border-radius` according to `border-width`
+
+- **Tabs:** adjusted to allow non-tab-button-elements inside `tablist` ([#3859](https://github.com/digdir/designsystemet/pull/3859))
+
+- **Details:** content using `overflow: hidden` to prevent margin clipping ([#3859](https://github.com/digdir/designsystemet/pull/3859))
+
 ## 1.1.4
 
 ### Patch Changes

@@ -9,12 +9,12 @@ export type PopoverTriggerContextProps = {
  * PopoverTriggerContext component, use to wrap a Popover.Trigger and Popover.
  *
  * @example
- * <Popover.TriggerContext>
- *   <Popover.Trigger>Open Popover</Popover.Trigger>
+ * <PopoverTriggerContext>
+ *   <PopoverTrigger>Open Popover</PopoverTrigger>
  *   <Popover>
  *     Content
  *   </Popover>
- * </Popover.TriggerContext>
+ * </PopoverTriggerContext>
  */
 export const PopoverTriggerContext = ({
   children,

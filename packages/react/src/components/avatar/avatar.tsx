@@ -1,8 +1,9 @@
+import type { Size } from '@digdir/designsystemet/types';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { Fragment, forwardRef } from 'react';
-import type { DefaultProps, Size } from '../../types';
+import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
 export type AvatarProps = MergeRight<

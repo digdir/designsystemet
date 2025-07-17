@@ -15,10 +15,10 @@ export type SelectOptgroupProps = {
  *
  * @example
  * <Select>
- *   <Select.Optgroup label='Group 1'>
- *     <Select.Option value='1'>Option 1</Select.Option>
- *     <Select.Option value='2'>Option 2</Select.Option>
- *   </Select.Optgroup>
+ *   <SelectOptgroup label='Group 1'>
+ *     <SelectOption value='1'>Option 1</SelectOption>
+ *     <SelectOption value='2'>Option 2</SelectOption>
+ *   </SelectOptgroup>
  * </Select>
  */
 export const SelectOptgroup = forwardRef<

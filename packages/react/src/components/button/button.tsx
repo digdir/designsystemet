@@ -1,7 +1,4 @@
-import type {
-  Color,
-  SeverityDanger,
-} from '@digdir/designsystemet-react/colors';
+import type { Color, SeverityColors } from '@digdir/designsystemet/types';
 import { Slot, Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
@@ -21,7 +18,7 @@ export type ButtonProps = MergeRight<
     /**
      * Change the color scheme of the button
      */
-    'data-color'?: Color | SeverityDanger;
+    'data-color'?: Color | Extract<SeverityColors, 'danger'>;
     /**
      * Toggle icon only styling, pass icon as children
      * @default false

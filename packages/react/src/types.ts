@@ -1,7 +1,6 @@
+import type { Size } from '@digdir/designsystemet/types';
 import type { ReactNode } from 'react';
 import type { Color } from './colors';
-
-export type Size = 'sm' | 'md' | 'lg';
 
 export type DefaultProps = {
   /**

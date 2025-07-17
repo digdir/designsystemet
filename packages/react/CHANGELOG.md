@@ -1,5 +1,23 @@
 # Change Log
 
+## 1.1.5
+
+### Patch Changes
+
+- **Suggestion:** Fix controlled value being cleared if edited in React 18 strict mode. ([#3853](https://github.com/digdir/designsystemet/pull/3853))
+
+- **Dialog**: Fix `onClose` being called twice when React is in strict mode ([#3854](https://github.com/digdir/designsystemet/pull/3854))
+
+- **Field, Checkbox, Radio, Switch, Textfield**: Fix duplicate ids in `aria-describedby` when React is in strict mode ([#3854](https://github.com/digdir/designsystemet/pull/3854))
+
+- **Suggestion:** ([#3857](https://github.com/digdir/designsystemet/pull/3857))
+  - Deprecated `value`, use `selected` instead
+  - Deprecated `defaultValue`, use `defaultSelected` instead
+  - Deprecated `onValueChange`, use `onSelectedChange` instead
+  - Deprecated `Suggestion.Chips`, use `renderSelected` on `Suggestion` instead
+  - Add `onBeforeMatch` to `Suggestion` for custom matching
+  - Revert input `value` to current `selected` when no match
+
 ## 1.1.4
 
 ### Patch Changes
