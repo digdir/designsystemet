@@ -1,5 +1,18 @@
 # Change Log
 
+## 1.1.6
+
+### Patch Changes
+
+- Added new type declaration files for theme types when building tokens; `types.d.ts`. **_Use this instead of `colors.d.ts`._** ([#3837](https://github.com/digdir/designsystemet/pull/3837))
+
+- Deprecate `colors.d.ts` from `tokens build`. Replaced by `types.d.ts`. ([#3837](https://github.com/digdir/designsystemet/pull/3837))
+
+- Updated non-major dependencies ([#3868](https://github.com/digdir/designsystemet/pull/3868))
+
+- Add new export for augmented theme types; `@digdir/designsystemet/types`. ([#3837](https://github.com/digdir/designsystemet/pull/3837))
+  Use this with generated theme declaration file for types for your theme.
+
 ## 1.1.5
 
 ## 1.1.4
