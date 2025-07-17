@@ -6,12 +6,12 @@ export type TableHeadProps = HTMLAttributes<HTMLTableSectionElement>;
  * TableHead component, used to display the header of a table. Renders a native HTML thead element.
  *
  * @example
- * <Table.Head>
- *   <Table.Row>
- *     <Table.HeaderCell>Name</Table.HeaderCell>
- *     <Table.HeaderCell>Age</Table.HeaderCell>
- *   </Table.Row>
- * </Table.Head>
+ * <TableHead>
+ *   <TableRow>
+ *     <TableHeaderCell>Name</TableHeaderCell>
+ *     <TableHeaderCell>Age</TableHeaderCell>
+ *   </TableRow>
+ * </TableHead>
  */
 export const TableHead = forwardRef<HTMLTableSectionElement, TableHeadProps>(
   function TableHead(rest, ref) {

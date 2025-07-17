@@ -30,22 +30,22 @@ export type PopoverTriggerProps =
  * PopoverTrigger component, used to trigger a popover.
  *
  * @example
- * <Popover.TriggerContext>
- *   <Popover.Trigger>Open Popover</Popover.Trigger>
+ * <PopoverTriggerContext>
+ *   <PopoverTrigger>Open Popover</PopoverTrigger>
  *   <Popover>
  *     Content
  *   </Popover>
- * </Popover.TriggerContext>
+ * </PopoverTriggerContext>
  *
  * @example inline
- * <Popover.TriggerContext>
+ * <PopoverTriggerContext>
  *   <Paragraph>
- *    We can use it <Popover.Trigger inline={true}>inline</Popover.Trigger>.
+ *    We can use it <PopoverTrigger inline={true}>inline</PopoverTrigger>.
  *   </Paragraph>
  *   <Popover>
  *     Content
  *   </Popover>
- * </Popover.TriggerContext>
+ * </PopoverTriggerContext>
  */
 export const PopoverTrigger = forwardRef<
   HTMLButtonElement,

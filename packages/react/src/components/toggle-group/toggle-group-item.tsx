@@ -14,7 +14,7 @@ export type ToggleGroupItemProps = {
 /**
  * A single item in a ToggleGroup.
  * @example
- * <ToggleGroup.Item value='1'>Toggle 1</ToggleGroup.Item>
+ * <ToggleGroupItem value='1'>Toggle 1</ToggleGroupItem>
  */
 export const ToggleGroupItem = forwardRef<
   HTMLButtonElement,

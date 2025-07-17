@@ -14,7 +14,7 @@ export type TabsTabProps = {
  * A single item in a Tabs component.
  *
  * @example
- * <Tabs.Tab value='1'>Tab 1</Tabs.Tab>
+ * <TabsTab value='1'>Tab 1</TabsTab>
  */
 export const TabsTab = forwardRef<HTMLButtonElement, TabsTabProps>(
   function TabsTab({ value, id, ...rest }, ref) {

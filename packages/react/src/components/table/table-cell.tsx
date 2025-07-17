@@ -6,7 +6,7 @@ export type TableCellProps = TdHTMLAttributes<HTMLTableCellElement>;
  * TableCell component, used to display the cells of a table. Renders a native HTML td element.
  *
  * @example
- * <Table.Cell>John</Table.Cell>
+ * <TableCell>John</TableCell>
  */
 export const TableCell = forwardRef<HTMLTableCellElement, TableCellProps>(
   function TableCell(rest, ref) {

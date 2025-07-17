@@ -9,17 +9,17 @@ export type DropdownTriggerContextProps = {
  * DropdownTriggerContext enables use of the `.Trigger` for the Dropdown component.
  *
  * @example
- * <Dropdown.TriggerContext>
- *  <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
+ * <DropdownTriggerContext>
+ *  <DropdownTrigger>Dropdown</DropdownTrigger>
  *  <Dropdown>
- *   <Dropdown.Heading>Heading</Dropdown.Heading>
- *    <Dropdown.List>
- *      <Dropdown.Item>
- *        <Dropdown.Button>Button</Dropdown.Button>
- *      </Dropdown.Item>
- *    </Dropdown.List>
+ *   <DropdownHeading>Heading</DropdownHeading>
+ *    <DropdownList>
+ *      <DropdownItem>
+ *        <DropdownButton>Button</DropdownButton>
+ *      </DropdownItem>
+ *    </DropdownList>
  *  </Dropdown>
- * </Dropdown.TriggerContext>
+ * </DropdownTriggerContext>
  */
 export const DropdownTriggerContext = ({
   children,

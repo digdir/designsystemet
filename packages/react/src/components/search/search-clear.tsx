@@ -16,8 +16,8 @@ export type SearchClearProps = Omit<ButtonProps, 'variant' | 'children'> & {
  *
  * @example
  * <Search>
- *   <Search.Input aria-label='Søk' />
- *   <Search.Clear />
+ *   <SearchInput aria-label='Søk' />
+ *   <SearchClear />
  * </Search>
  */
 export const SearchClear = forwardRef<HTMLButtonElement, SearchClearProps>(

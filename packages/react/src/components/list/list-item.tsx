@@ -10,6 +10,12 @@ export type ListItemProps = {
   asChild?: boolean;
 } & LiHTMLAttributes<HTMLLIElement>;
 
+/**
+ * Component that provides a list item.
+ *
+ * @example
+ * <List.Item>Item</List.Item>
+ */
 export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(
   function ListItem({ asChild, ...rest }, ref) {
     const Component = asChild ? Slot : 'li';
