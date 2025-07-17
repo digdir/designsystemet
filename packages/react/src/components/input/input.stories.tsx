@@ -1,6 +1,6 @@
+import type { Size } from '@digdir/designsystemet/types';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import { useEffect, useState } from 'react';
-
 import {
   Button,
   Divider,
@@ -10,7 +10,6 @@ import {
   Paragraph,
   ValidationMessage,
 } from '../../';
-import type { Size } from '../../types';
 import { Input } from './input';
 
 type Story = StoryObj<typeof Input>;
