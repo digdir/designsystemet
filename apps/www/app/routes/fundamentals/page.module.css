@@ -191,7 +191,7 @@
     box-shadow: var(--ds-shadow-md);
   }
 
-  code,
+  & td > code,
   & > p > code,
   & li > code,
   & h2 > code {
