@@ -5,6 +5,18 @@ import type { DefaultProps } from '../../types';
 export type SuggestionOptionProps = OptionHTMLAttributes<HTMLOptionElement> &
   DefaultProps;
 
+/**
+ * A component for rendering individual options in the Suggestion list.
+ *
+ * @example
+ * <Suggestion>
+ *   <Suggestion.Input />
+ *   <Suggestion.List>
+ *     <Suggestion.Option value='Option 1'>Option 1</Suggestion.Option>
+ *     <Suggestion.Option value='Option 2'>Option 2</Suggestion.Option>
+ *   </Suggestion.List>
+ * </Suggestion>
+ */
 export const SuggestionOption = forwardRef<
   HTMLOptionElement,
   SuggestionOptionProps

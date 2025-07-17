@@ -38,7 +38,7 @@ type PreviewToken = { variable: string; value: string };
 
 export const formatTheme = async (themeConfig: Theme) => {
   const { tokenSets } = await createTokens(themeConfig);
-  const outDir = '../../../../apps/www/app/_components/tokens/design-tokens';
+  const outDir = '../../apps/www/app/_components/tokens/design-tokens';
 
   const $themes = await generate$Themes(['dark', 'light'], [themeConfig.name], themeConfig.colors);
   const processed$themes = $themes.map(processThemeObject);
@@ -52,7 +52,7 @@ export const formatTheme = async (themeConfig: Theme) => {
     buildTokenFormats: {},
   });
 
-  await cleanDir('./temp/tokens', false);
+  await cleanDir(outDir, false);
 
   console.log(
     buildOptions?.buildTokenFormats
@@ -95,11 +95,11 @@ export const formatTheme = async (themeConfig: Theme) => {
       write(
         [
           {
-            destination: `${outDir}/${type}.json`,
+            destination: `${type}.json`,
             output: JSON.stringify(tokens, null, 2),
           },
         ],
-        './temp/tokens',
+        outDir,
         false,
       );
     }

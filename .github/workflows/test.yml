@@ -29,6 +29,8 @@ jobs:
       - name: 'Report Coverage'
         if: success() || failure()
         uses: davelosert/vitest-coverage-report-action@v2
+        with:
+          comment-on: none
       - name: Publish unit test report
         uses: mikepenz/action-junit-report@v5
         if: success() || failure()
