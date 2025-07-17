@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-Improved jsdocs for compound components
+Fix missing jsdocs for compound components (Component with sub-components on the component, e.g. `Details.Summary` etc)
