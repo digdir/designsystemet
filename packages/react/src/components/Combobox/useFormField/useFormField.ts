@@ -71,8 +71,8 @@ export const useFormField = (
         cl(
           props['aria-describedby'],
           !!props?.description &&
-          typeof props?.description === 'string' &&
-          descriptionId,
+            typeof props?.description === 'string' &&
+            descriptionId,
           hasError && !fieldset?.error && errorId,
           hasError && !!fieldset?.error && fieldset?.errorId,
         ) || undefined,
