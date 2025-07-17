@@ -76,7 +76,7 @@ export const Preview: StoryFn<typeof Dialog> = (args) => (
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
         doloremque obcaecati assumenda odio ducimus sunt et.
       </Paragraph>
-      <Paragraph data-size='sm'>Dialog footer</Paragraph>
+      <Paragraph data-font-size='sm'>Dialog footer</Paragraph>
     </Dialog>
   </Dialog.TriggerContext>
 );
@@ -90,7 +90,7 @@ export const WithoutDialogTriggerContext: StoryFn<typeof Dialog> = (args) => {
         Open Dialog with ref
       </Button>
       <Dialog {...args} ref={dialogRef}>
-        <Paragraph data-size='sm'>Dialog subtittel</Paragraph>
+        <Paragraph data-font-size='sm'>Dialog subtittel</Paragraph>
         <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
           Dialog header
         </Heading>
@@ -113,7 +113,7 @@ export const DialogWithOpenProp: StoryFn<typeof Dialog> = (args) => {
         Open Dialog with prop
       </Button>
       <Dialog {...args} open={open} onClose={() => setOpen(false)}>
-        <Paragraph data-size='sm'>Dialog subtittel</Paragraph>
+        <Paragraph data-font-size='sm'>Dialog subtittel</Paragraph>
         <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
           Dialog header
         </Heading>
@@ -141,7 +141,7 @@ export const BackdropClosedbyAny: StoryFn<typeof Dialog> = () => {
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
           doloremque obcaecati assumenda odio ducimus sunt et.
         </Paragraph>
-        <Paragraph data-size='sm'>Dialog footer</Paragraph>
+        <Paragraph data-font-size='sm'>Dialog footer</Paragraph>
       </Dialog>
     </Dialog.TriggerContext>
   );
@@ -152,7 +152,7 @@ export const WithHeaderAndFooter: StoryFn<typeof Dialog> = () => (
     <Dialog.Trigger>Open Dialog</Dialog.Trigger>
     <Dialog>
       <Dialog.Block>
-        <Paragraph data-size='sm'>Her er det også divider</Paragraph>
+        <Paragraph data-font-size='sm'>Her er det også divider</Paragraph>
         <Heading>Vi kan legge divider under header</Heading>
       </Dialog.Block>
       <Dialog.Block>
