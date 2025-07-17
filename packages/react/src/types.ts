@@ -2,8 +2,6 @@ import type { Size } from '@digdir/designsystemet/types';
 import type { ReactNode } from 'react';
 import type { Color } from './colors';
 
-export type { Size };
-
 export type DefaultProps = {
   /**
    * Changes size for descendant Designsystemet components. Select from predefined sizes.
