@@ -1,7 +1,7 @@
 import type { ColorNames } from '@digdir/designsystemet';
-import { omit } from '@digdir/designsystemet-react';
 import { Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
+import * as R from 'ramda';
 import { forwardRef } from 'react';
 import classes from './color.module.css';
 
@@ -20,7 +20,7 @@ export const Color = forwardRef<HTMLButtonElement, ColorProps>(
           style={{ backgroundColor: color }}
           className={cl(classes.box, featured && classes.featured, 'ds-focus')}
           type='button'
-          {...omit(['colorName'], rest)}
+          {...R.omit(['colorName'], rest)}
         />
       </Slottable>
     );

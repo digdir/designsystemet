@@ -12,6 +12,5 @@ export {
   useRadioGroup,
   useSynchronizedAnimation,
 } from './hooks';
-export * from './omit/omit';
 export * from './roving-focus';
 export type * from './types';

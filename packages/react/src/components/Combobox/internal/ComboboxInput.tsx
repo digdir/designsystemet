@@ -8,12 +8,11 @@ import type {
   MouseEvent,
 } from 'react';
 import { useContext, useRef } from 'react';
-
-import { omit } from '../../../utilities/omit/omit';
 import { Paragraph } from '../../paragraph/paragraph';
 import type { ComboboxProps } from '../Combobox';
 import { ComboboxContext } from '../ComboboxContext';
 import { useComboboxIdDispatch } from '../ComboboxIdContext';
+import { omit } from '../omit/omit';
 import { prefix } from '../utilities';
 import ComboboxChips from './ComboboxChips';
 import ComboboxClearButton from './ComboboxClearButton';
