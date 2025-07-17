@@ -90,11 +90,11 @@ export type SuggestionProps = {
    *
    * If `label` and `value` is different, you must use `{ value: string; label: string}[]`.
    *
-   * Using this makes the component controlled and it must be used in combination with {@linkcode SuggestionProps.onSelectedChange|onSelectedChange}.
+   * Using this makes the component controlled and it must be used in combination with `onSelectedChange`.
    */
   selected?: SuggestionSelected;
   /**
-   * @deprecated Use {@linkcode SuggestionProps.selected|selected} instead
+   * @deprecated Use `selected` instead
    */
   value?: SuggestionSelected; // Kept for backwards compatibility
   /**
@@ -102,7 +102,7 @@ export type SuggestionProps = {
    */
   defaultSelected?: SuggestionSelected;
   /**
-   * @deprecated Use `{@linkcode SuggestionProps.defaultSelected|defaultSelected} instead
+   * @deprecated Use `defaultSelected` instead
    */
   defaultValue?: SuggestionSelected; // Kept for backwards compatibility
   /**
@@ -110,7 +110,7 @@ export type SuggestionProps = {
    */
   onSelectedChange?: (value: Item[]) => void;
   /**
-   * @deprecated Use {@linkcode SuggestionProps.onSelectedChange|onSelectedChange} instead
+   * @deprecated Use `onSelectedChange` instead
    */
   onValueChange?: (value: Item[]) => void; // Kept for backwards compatibility
   /**

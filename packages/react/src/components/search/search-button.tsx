@@ -24,8 +24,8 @@ export type SearchButtonProps = MergeRight<
  *
  * @example
  * <Search>
- *   <Search.Input aria-label='Søk' />
- *   <Search.Button>Søk</Search.Button>
+ *   <SearchInput aria-label='Søk' />
+ *   <SearchButton>Søk</SearchButton>
  * </Search>
  */
 export const SearchButton = forwardRef<HTMLButtonElement, ButtonProps>(
