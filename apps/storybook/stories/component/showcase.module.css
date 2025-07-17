@@ -8,11 +8,13 @@
   border-radius: var(--ds-border-radius-md);
 
   &[data-size='auto'] {
-    @media (width >= 992px) {
-      --ds-size: var(--ds-size--lg);
+    --ds-size: var(--ds-size--sm);
+
+    @media (min-width: 600px) {
+      --ds-size: var(--ds-size--md);
     }
-    @media (width < 600px) {
-      --ds-size: var(--ds-size--sm);
+    @media (min-width: 992px) {
+      --ds-size: var(--ds-size--lg);
     }
   }
 }

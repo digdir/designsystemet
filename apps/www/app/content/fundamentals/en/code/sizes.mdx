@@ -10,7 +10,7 @@ order: 30
 ---
 
 
-HTML data attributes and css custom properties can be used to define the *size mode* of a component. Components can use all available sizes.
+HTML data attributes and css custom properties can be used to define the *size mode* of a component. This works for all components and regular HTML elements, with a few exceptions noted below.
 
 The size mode affects our size variables (`--ds-size-*`), and font-size variables (`--ds-font-size-*` and `--ds-*-font-size-*`).
 
@@ -44,14 +44,14 @@ Example: Adding an "auto" size mode
 
 ```css
 [data-size='auto'] {
-  --ds-size: var(--ds-size--md);
-
-  @media (width >= 992px) {
-    --ds-size: var(--ds-size--lg);
-  }
-  @media (width < 600px) {
     --ds-size: var(--ds-size--sm);
-  }
+
+    @media (min-width: 600px) {
+      --ds-size: var(--ds-size--md);
+    }
+    @media (min-width: 992px) {
+      --ds-size: var(--ds-size--lg);
+    }
 }
 ```
 
