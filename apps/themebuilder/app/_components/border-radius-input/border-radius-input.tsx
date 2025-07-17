@@ -1,9 +1,5 @@
-import {
-  Button,
-  Heading,
-  Textfield,
-  useDebounceCallback,
-} from '@digdir/designsystemet-react';
+import { Button, Heading, Textfield } from '@digdir/designsystemet-react';
+import { useDebounceCallback } from '@internal/components';
 import cl from 'clsx/lite';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';

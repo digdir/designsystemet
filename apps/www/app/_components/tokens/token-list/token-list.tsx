@@ -4,8 +4,8 @@ import {
   Label,
   Paragraph,
   Search,
-  useDebounceCallback,
 } from '@digdir/designsystemet-react';
+import { useDebounceCallback } from '@internal/components';
 import { Fragment, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { capitalizeString } from '~/_utils/string-helpers';

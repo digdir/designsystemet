@@ -1,3 +1,5 @@
+export { useDebounceCallback } from './_hooks/use-debounce-callback/use-debounce-callback';
+export { useMediaQuery } from './_hooks/use-media-query/use-media-query';
 export { ClipboardButton } from './clipboard-button/clipboard-button';
 export { CodeBlock } from './code-block/code-block';
 export { ColorModal } from './color-modal/color-modal';

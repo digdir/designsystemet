@@ -3,6 +3,26 @@ export type {
   Size,
 } from '@digdir/designsystemet/types';
 export * from './components';
-export { omit } from './components/Combobox/omit/omit';
+export { omit } from './components/Combobox/omit/omit'; //deprecated
 export type { LabelRequired } from './types';
-export * from './utilities';
+export type {
+  /** @deprecated This export is deprecated. */
+  MergeRight,
+  UseCheckboxGroupProps,
+  UsePaginationProps,
+  UseRadioGroupProps,
+} from './utilities';
+export {
+  RovingFocusItem,
+  RovingFocusRoot,
+  useCheckboxGroup,
+  /** @deprecated This export is deprecated. Use suggest utility libraries or create your own utility function. */
+  useDebounceCallback,
+  /** @deprecated This export is deprecated. Use suggest utility libraries or create your own utility function. */
+  useIsomorphicLayoutEffect,
+  /** @deprecated This export is deprecated. Use suggest utility libraries or create your own utility function. */
+  useMediaQuery,
+  usePagination,
+  useRadioGroup,
+  useSynchronizedAnimation,
+} from './utilities';
