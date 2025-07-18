@@ -1,9 +1,11 @@
 // Inspired by Sam Selikoff
 // https://github.com/samselikoff/2022-02-24-use-synchronized-animation/blob/main/src/App.js
 
-import { useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 
-import { useIsomorphicLayoutEffect } from '../use-isomorphic-layout-effect/use-isomorphic-layout-effect';
+// https://usehooks-ts.com/react-hook/use-isomorphic-layout-effect
+export const useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 /**
  * Synchronizes the css animation of multiple elements with the same `animationName`.

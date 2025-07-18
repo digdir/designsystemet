@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react-vite';
 
-import { Paragraph } from '../../../components';
+import { Paragraph } from '../../../../components';
 
 import { useMediaQuery } from './use-media-query';
 

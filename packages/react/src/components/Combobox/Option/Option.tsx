@@ -1,10 +1,9 @@
 import cl from 'clsx/lite';
 import type { ButtonHTMLAttributes, ReactElement, ReactNode } from 'react';
 import { forwardRef, isValidElement, memo, useContext, useId } from 'react';
-
-import { omit } from '../../../utilities/omit/omit';
 import { Label } from '../../label/label';
 import { ComboboxContext } from '../ComboboxContext';
+import { omit } from '../omit/omit';
 import ComboboxOptionDescription from './Description';
 import { SelectedIcon } from './SelectedIcon';
 import { useComboboxOption } from './useComboboxOption';

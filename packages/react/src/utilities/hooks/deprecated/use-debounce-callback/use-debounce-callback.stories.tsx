@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite';
 import { useState } from 'react';
 
-import { Paragraph, Textfield } from '../../../components';
+import { Paragraph, Textfield } from '../../../../components';
 
 import { useDebounceCallback } from './use-debounce-callback';
 

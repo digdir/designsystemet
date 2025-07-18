@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'react';
 import { createContext, forwardRef, useId, useState } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
-import { RovingFocusRoot } from '../../utilities/roving-focus';
+import { RovingFocusRoot } from '../../utilities/roving-focus/roving-focus-root';
 
 export type ToggleGroupContextProps = {
   value?: string;
