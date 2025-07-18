@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.1.7
+
+### Patch Changes
+
+- Deprecate unintended exported `omit` utility ([#3873](https://github.com/digdir/designsystemet/pull/3873))
+
+- Deprecate `useDebounceCallback`, `useIsomorphicLayoutEffect` and `useMediaQuery`. Use utility libraries or create your own utility function. ([#3873](https://github.com/digdir/designsystemet/pull/3873))
+
 ## 1.1.6
 
 ### Patch Changes
