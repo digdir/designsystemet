@@ -1,9 +1,10 @@
 import { Meta, Primary, ArgTypes } from '@storybook/addon-docs/blocks';
-
+import { Alert } from '../../../../components';
 import * as SyncStories from './use-debounce-callback.stories';
-import { useDebounceCallback } from '../';
 
 <Meta of={SyncStories} />
+
+<Alert data-color="warning">Denne React hooken deprecated, vi anbefaler å bruke et utility/hook bibliotek eller kopier kildekoden om du fortsatt trenger denne funksjonaliteten.</Alert>
 
 # useDebounceCallback
 

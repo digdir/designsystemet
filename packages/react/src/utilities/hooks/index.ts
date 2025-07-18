@@ -1,8 +1,8 @@
+export { useDebounceCallback } from './deprecated/use-debounce-callback/use-debounce-callback';
+export { useIsomorphicLayoutEffect } from './deprecated/use-isomorphic-layout-effect/use-isomorphic-layout-effect';
+export { useMediaQuery } from './deprecated/use-media-query/use-media-query';
 export type { UseCheckboxGroupProps } from './use-checkbox-group/use-checkbox-group';
 export { useCheckboxGroup } from './use-checkbox-group/use-checkbox-group';
-export { useDebounceCallback } from './use-debounce-callback/use-debounce-callback';
-export { useIsomorphicLayoutEffect } from './use-isomorphic-layout-effect/use-isomorphic-layout-effect';
-export { useMediaQuery } from './use-media-query/use-media-query';
 export { useMergeRefs } from './use-merge-refs/use-merge-refs';
 export type { UsePaginationProps } from './use-pagination/use-pagination';
 export { usePagination } from './use-pagination/use-pagination';

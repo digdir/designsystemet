@@ -1,5 +1,23 @@
 # Change Log
 
+## 1.1.7
+
+### Patch Changes
+
+- Deprecate unintended exported `omit` utility ([#3873](https://github.com/digdir/designsystemet/pull/3873))
+
+- Deprecate `useDebounceCallback`, `useIsomorphicLayoutEffect` and `useMediaQuery`. Use utility libraries or create your own utility function. ([#3873](https://github.com/digdir/designsystemet/pull/3873))
+
+## 1.1.6
+
+### Patch Changes
+
+- Fix missing jsdocs for compound components (Component with sub-components on the component, e.g. `Details.Summary` etc) ([#3865](https://github.com/digdir/designsystemet/pull/3865))
+
+- Updated non-major dependencies ([#3868](https://github.com/digdir/designsystemet/pull/3868))
+
+- Deprecate `@digdir/designsystemet-react/color` module. Replaced by `@digdir/designsystemet/types`. ([#3837](https://github.com/digdir/designsystemet/pull/3837))
+
 ## 1.1.5
 
 ### Patch Changes

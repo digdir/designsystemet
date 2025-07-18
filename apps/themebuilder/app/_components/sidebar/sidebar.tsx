@@ -1,9 +1,5 @@
-import {
-  Dialog,
-  Heading,
-  Tabs,
-  useMediaQuery,
-} from '@digdir/designsystemet-react';
+import { Dialog, Heading, Tabs } from '@digdir/designsystemet-react';
+import { useMediaQuery } from '@internal/components';
 import { CogIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { useEffect, useState } from 'react';

@@ -2,6 +2,8 @@
 type UnknownRecord = Record<string | number | symbol, unknown>;
 
 /**
+ * @deprecated This function is deprecated. Use suggest using `omit` from dedicated utiility libraries or create your own utility function.
+ *
  * Returns a partial copy of an object omitting the keys specified.
  * @param {Array} names an array of String property names to omit from the new object
  * @param {Object} obj The object to copy from
