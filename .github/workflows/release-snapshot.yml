@@ -44,3 +44,14 @@ jobs:
           pnpm run publish-packages --tag "${{ github.event.inputs.tag }}" --no-git-tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  deploy-preview-storybook:
+    needs: snapshot
+    uses: ./.github/workflows/vercel-deploy-storybook.yml
+    with:
+      environment: preview
+      vercel_alias: test.storybook.designsystemet.no
+    secrets:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_TEAM: ${{ secrets.VERCEL_TEAM }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID_STORYBOOK: ${{ secrets.VERCEL_PROJECT_ID_STORYBOOK }}
