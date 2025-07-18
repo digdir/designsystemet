@@ -22,3 +22,4 @@ type ColorWithFallback<T> = ColorDefinitions extends EmptyObject ? string : T;
 export type SeverityColors = ColorWithFallback<keyof SeverityColorDefinitions>;
 export type Color = ColorWithFallback<keyof ColorDefinitions>;
 export type Size = 'sm' | 'md' | 'lg';
+export type ColorScheme = 'light' | 'dark' | 'auto';
