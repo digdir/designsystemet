@@ -90,10 +90,14 @@
     * {
       border-color: var(--ds-color-neutral-border-subtle) !important;
     }
-    /*single out "code" in argstable*/
-    td div > span[class], code {
+    /*things that should render as "code" in argstable*/
+    td div > span[class],
+    td:nth-child(3) > span[class],
+    .sbdocs-expandable,
+    code {
       background-color: var(--ds-color-neutral-background-tinted);
     }
+
     button {
       color: var(--ds-color-neutral-text-default);
       background-color: var(--ds-color-neutral-surface-default);
