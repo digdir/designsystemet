@@ -46,6 +46,7 @@ jobs:
         run: echo "PUBLISHED=${{ steps.changesets.outputs.published }}" >> $GITHUB_ENV
 
   deploy-www:
+    needs: release
     if: ${{ github.env.PUBLISHED == 'true' }}
     uses: ./.github/workflows/vercel-deploy-www.yml
     with:
@@ -57,6 +58,7 @@ jobs:
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID_WWW: ${{ secrets.VERCEL_PROJECT_ID_WWW }}
   deploy-theme:
+    needs: release
     if: ${{ github.env.PUBLISHED == 'true' }}
     uses: ./.github/workflows/vercel-deploy-theme.yml
     with:
@@ -68,6 +70,7 @@ jobs:
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID_THEMEBUILDER: ${{ secrets.VERCEL_PROJECT_ID_THEMEBUILDER }}
   deploy-storybook:
+    needs: release
     if: ${{ github.env.PUBLISHED == 'true' }}
     uses: ./.github/workflows/vercel-deploy-storybook.yml
     with:
