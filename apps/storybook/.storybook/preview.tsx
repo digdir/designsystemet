@@ -14,6 +14,7 @@ import {
 } from '@digdir/designsystemet-react';
 import { CodeBlock } from '@internal/components';
 import { LinkIcon } from '@navikt/aksel-icons';
+import { DocsContainer } from '@storybook/addon-docs/blocks';
 import type { Preview } from '@storybook/react-vite';
 import isChromatic from 'chromatic/isChromatic';
 import { Children, type MouseEventHandler } from 'react';
@@ -113,28 +114,24 @@ const components = {
     <Paragraph
       {...props}
       className={`sb-unstyled ${componentStyles.paragraph}`}
-      data-color-scheme='light'
     />
   ),
   ol: (props) => (
     <List.Ordered
       {...props}
       className={`sb-unstyled ${componentStyles.list}`}
-      data-color-scheme='light'
     />
   ),
   ul: (props) => (
     <List.Unordered
       {...props}
       className={`sb-unstyled ${componentStyles.list}`}
-      data-color-scheme='light'
     />
   ),
   li: (props) => (
     <List.Item
       {...props}
       className={`sb-unstyled ${componentStyles.listItem}`}
-      data-color-scheme='light'
     />
   ),
   a: ({ children = '', ...props }) => {
@@ -185,6 +182,24 @@ const components = {
   ),
 } satisfies MdxComponentOverrides;
 
+const DocsContainerWithWrapper: typeof DocsContainer = ({
+  children,
+  context,
+  ...props
+}) => {
+  return (
+    <div
+      className='custom-docs-wrapper'
+      //@ts-ignore
+      data-color-scheme={context.store.userGlobals.globals.colorScheme}
+    >
+      <DocsContainer context={context} {...props}>
+        {children}
+      </DocsContainer>
+    </div>
+  );
+};
+
 const preview: Preview = {
   tags: ['a11y-test'],
   globalTypes: {
@@ -222,6 +237,8 @@ const preview: Preview = {
     docs: {
       theme: customTheme,
       components,
+      //@ts-ignore
+      container: DocsContainerWithWrapper,
 
       source: {
         transform: transformSource,
