@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.1.8
+
+### Patch Changes
+
+- Add typings for `ColorScheme` (used for `data-color-scheme`) ([#3879](https://github.com/digdir/designsystemet/pull/3879))
+
 ## 1.1.7
 
 ## 1.1.6
