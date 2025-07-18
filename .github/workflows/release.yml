@@ -39,3 +39,36 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+  deploy-www:
+    if: ${{ github.job.release.steps.changesets.outputs.published == 'true' }}
+    uses: ./.github/workflows/vercel-deploy-www.yml
+    with:
+      environment: 'production'
+      vercel_alias: ''
+    secrets:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_TEAM: ${{ secrets.VERCEL_TEAM }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID_WWW: ${{ secrets.VERCEL_PROJECT_ID_WWW }}
+  deploy-theme:
+    if: ${{ github.job.release.steps.changesets.outputs.published == 'true' }}
+    uses: ./.github/workflows/vercel-deploy-theme.yml
+    with:
+      environment: 'production'
+      vercel_alias: ''
+    secrets:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_TEAM: ${{ secrets.VERCEL_TEAM }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID_THEMEBUILDER: ${{ secrets.VERCEL_PROJECT_ID_THEMEBUILDER }}
+  deploy-storybook:
+    if: ${{ github.job.release.steps.changesets.outputs.published == 'true' }}
+    uses: ./.github/workflows/vercel-deploy-storybook.yml
+    with:
+      environment: 'production'
+      vercel_alias: ''
+    secrets:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_TEAM: ${{ secrets.VERCEL_TEAM }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID_STORYBOOK: ${{ secrets.VERCEL_PROJECT_ID_STORYBOOK }}
