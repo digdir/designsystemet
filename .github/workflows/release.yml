@@ -7,12 +7,16 @@ on:
       - main
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
+env:
+  PUBLISHED: 'false'
 
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    outputs:
+      published: ${{ steps.changesets.outputs.published }}
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/gh-setup
@@ -38,9 +42,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Set published output
+        run: echo "PUBLISHED=${{ steps.changesets.outputs.published }}" >> $GITHUB_ENV
 
   deploy-www:
-    if: ${{ github.job.release.steps.changesets.outputs.published == 'true' }}
+    if: ${{ github.env.PUBLISHED == 'true' }}
     uses: ./.github/workflows/vercel-deploy-www.yml
     with:
       environment: 'production'
@@ -51,7 +57,7 @@ jobs:
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID_WWW: ${{ secrets.VERCEL_PROJECT_ID_WWW }}
   deploy-theme:
-    if: ${{ github.job.release.steps.changesets.outputs.published == 'true' }}
+    if: ${{ github.env.PUBLISHED == 'true' }}
     uses: ./.github/workflows/vercel-deploy-theme.yml
     with:
       environment: 'production'
@@ -62,7 +68,7 @@ jobs:
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID_THEMEBUILDER: ${{ secrets.VERCEL_PROJECT_ID_THEMEBUILDER }}
   deploy-storybook:
-    if: ${{ github.job.release.steps.changesets.outputs.published == 'true' }}
+    if: ${{ github.env.PUBLISHED == 'true' }}
     uses: ./.github/workflows/vercel-deploy-storybook.yml
     with:
       environment: 'production'
