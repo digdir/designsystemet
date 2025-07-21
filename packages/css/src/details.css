@@ -119,7 +119,7 @@
   }
 }
 
-/* Wrap in :where to allow all other komponents to overwrite (i.e placing a <Button> inside <Details>) */
+/* Wrap in :where to allow all other components to overwrite (i.e placing a <Button> inside <Details>) */
 :where(.ds-details > :not(summary, u-summary)) {
   border-radius: inherit;
   margin-inline: var(--ds-size-5, 1rem);
