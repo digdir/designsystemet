@@ -144,3 +144,12 @@ export const Controlled: StoryFn<typeof Details> = () => {
     </>
   );
 };
+
+export const WithDirectContent: StoryFn<typeof Details> = () => (
+  <Card>
+    <Details>
+      <Details.Summary>Vedlegg</Details.Summary>
+      <Button>Knapp</Button>
+    </Details>
+  </Card>
+);
