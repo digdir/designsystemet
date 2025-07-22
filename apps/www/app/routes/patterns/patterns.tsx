@@ -1,4 +1,5 @@
 import { join } from 'node:path';
+import cl from 'clsx';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
@@ -49,7 +50,7 @@ export default function Patterns({
   loaderData: { index },
 }: Route.ComponentProps) {
   return (
-    <div className={classes.content}>
+    <div className={cl(classes.content, 'u-rich-text')}>
       <MDXComponents code={index.code} />
     </div>
   );

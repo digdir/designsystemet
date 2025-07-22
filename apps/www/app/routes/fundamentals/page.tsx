@@ -85,7 +85,7 @@ export default function Fundamentals({
           <Icon fontSize='4rem' aria-hidden='true' />
         </div>
       </div>
-      <div className={classes.content}>
+      <div className={cl(classes.content, 'u-rich-text')}>
         <MDXComponents code={code} />
         <EditPageOnGithub />
       </div>
