@@ -13,14 +13,34 @@ export type VFile = {
   };
 };
 
-// Custom plugin to extract headings
+// Custom plugin to extract headings (h2 and h3)
 export const extractToc = () => (tree: Root, file: VFile) => {
   const toc: TableOfContentsItem[] = [];
   const traverse = (node: Root | Element) => {
     if ('tagName' in node && (node.tagName === 'h2' || node.tagName === 'h3')) {
       const title = node.children
-        .filter((child) => 'type' in child && child.type === 'text')
-        .map((child: Text) => child.value)
+        .map((child) => {
+          if ('type' in child) {
+            if (child.type === 'text') {
+              return child.value;
+            }
+            //handle special case where title contains a code block
+            if (
+              child.type === 'element' &&
+              child.tagName === 'code' &&
+              'children' in child
+            ) {
+              return child.children
+                .filter(
+                  (codeChild): codeChild is Text =>
+                    'type' in codeChild && codeChild.type === 'text',
+                )
+                .map((codeChild) => codeChild.value)
+                .join('');
+            }
+          }
+          return '';
+        })
         .join('');
 
       toc.push({
