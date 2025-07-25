@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.1.10
+
+### Patch Changes
+
+- Updated non-major dependencies ([#3890](https://github.com/digdir/designsystemet/pull/3890))
+
 ## 1.1.9
 
 ## 1.1.8
