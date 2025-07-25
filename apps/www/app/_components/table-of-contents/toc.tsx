@@ -1,4 +1,4 @@
-import { Paragraph } from '@digdir/designsystemet-react';
+import { Link, Paragraph } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { useEffect, useState } from 'react';
@@ -62,15 +62,14 @@ export const TableOfContents = ({
       <ol>
         {items.map((item) => (
           <li key={item.id}>
-            <Paragraph data-size='sm' asChild>
-              <a
-                href={`#${item.id}`}
-                data-level={item.level}
-                aria-current={activeItem === item.id}
-              >
-                {item.title}
-              </a>
-            </Paragraph>
+            <Link
+              data-size='sm'
+              href={`#${item.id}`}
+              data-level={item.level}
+              aria-current={activeItem === item.id}
+            >
+              {item.title}
+            </Link>
           </li>
         ))}
       </ol>
