@@ -163,7 +163,7 @@
   }
 }
 
-/*need to repead everything above for the auto + prefers-dark scenario*/
+/*need to repeat everything above for the auto + prefers-dark scenario*/
 @media (prefers-color-scheme: dark) {
   [data-color-scheme="auto"] {
     .docblock-argstable {
