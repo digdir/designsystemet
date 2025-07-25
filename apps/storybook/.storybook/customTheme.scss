@@ -10,6 +10,7 @@
   kbd {
     color: var(--ds-color-neutral-text-default);
     font-size: round(down, 0.8em, 1px);
+
     // If the kbd element is used for an icon, add data-icon attribute
     &[data-icon] {
       font-size: 1.2em;
@@ -18,7 +19,7 @@
     }
   }
 
-  :where(h1,h2,h3,h4,h5,h6) code {
+  :where(h1, h2, h3, h4, h5, h6) code {
     font-weight: var(--ds-font-weight-semibold);
   }
 
@@ -37,8 +38,9 @@
   }
 
   a {
+
     // Hack to properly render the link underline across regular text and code
-    &:not([data-single-child]) > code {
+    &:not([data-single-child])>code {
       position: relative;
       margin: 0;
       padding-left: 0;
@@ -56,13 +58,13 @@
 
     /* Only use hover for non-touch devices to prevent sticky-hovering */
     @media (hover: hover) and (pointer: fine) {
-      &:hover > code {
+      &:hover>code {
         color: var(--ds-color-text-default);
         text-decoration-thickness: 0.125em;
       }
     }
 
-    &:active > code {
+    &:active>code {
       background-color: var(--ds-color-surface-tinted);
       color: var(--ds-color-text-default);
     }
@@ -74,11 +76,14 @@
 .custom-docs-wrapper {
   background-color: var(--ds-color-neutral-background-default);
 }
+
 .docblock-argstable {
   color: var(--ds-color-neutral-text-default) !important;
+
   * {
     color: inherit !important;
   }
+
   tbody {
     background-color: var(--ds-color-neutral-surface-default);
   }
@@ -87,12 +92,14 @@
 [data-color-scheme="dark"] {
   .docblock-argstable {
     accent-color: var(--ds-color-accent-base-default);
+
     * {
       border-color: var(--ds-color-neutral-border-subtle) !important;
     }
+
     /*things that should render as "code" in argstable*/
-    td div > span[class],
-    td:nth-child(3) > span[class],
+    td div>span[class],
+    td:nth-child(3)>span[class],
     .sbdocs-expandable,
     code {
       background-color: var(--ds-color-neutral-background-tinted);
@@ -102,7 +109,10 @@
       color: var(--ds-color-neutral-text-default);
       background-color: var(--ds-color-neutral-surface-default);
     }
-    textarea, input:not([role="switch"]), select {
+
+    textarea,
+    input:not([role="switch"]),
+    select {
       background-color: var(--ds-color-neutral-background-default);
     }
 
@@ -112,16 +122,20 @@
       span {
         color: var(--ds-color-neutral-text-default);
       }
-      input:checked ~ span:last-of-type, input:not(:checked) ~ span:first-of-type {
+
+      input:checked~span:last-of-type,
+      input:not(:checked)~span:first-of-type {
         background-color: var(--ds-color-neutral-surface-active);
       }
 
 
     }
   }
+
   .sbdocs-preview {
     border-color: var(--ds-color-neutral-border-subtle) !important;
   }
+
   .docblock-code-toggle {
     color: var(--ds-color-neutral-text-default) !important;
     border-color: var(--ds-color-neutral-border-subtle) !important;
@@ -132,12 +146,15 @@
       color: var(--ds-color-neutral-text-default);
       border-color: var(--ds-color-neutral-border-subtle);
     }
+
     :is(a) {
       color: var(--ds-color-accent-base-default);
+
       &:hover {
         color: var(--ds-color-accent-base-hover);
       }
     }
+
     :is(code) {
       color: var(--ds-color-neutral-text-default);
       background-color: var(--ds-color-neutral-background-tinted);
@@ -146,3 +163,79 @@
   }
 }
 
+/*need to repead everything above for the auto + prefers-dark scenario*/
+@media (prefers-color-scheme: dark) {
+  [data-color-scheme="auto"] {
+    .docblock-argstable {
+      accent-color: var(--ds-color-accent-base-default);
+
+      * {
+        border-color: var(--ds-color-neutral-border-subtle) !important;
+      }
+
+      /*things that should render as "code" in argstable*/
+      td div>span[class],
+      td:nth-child(3)>span[class],
+      .sbdocs-expandable,
+      code {
+        background-color: var(--ds-color-neutral-background-tinted);
+      }
+
+      button {
+        color: var(--ds-color-neutral-text-default);
+        background-color: var(--ds-color-neutral-surface-default);
+      }
+
+      textarea,
+      input:not([role="switch"]),
+      select {
+        background-color: var(--ds-color-neutral-background-default);
+      }
+
+      label:has(input[role="switch"]) {
+        background-color: var(--ds-color-neutral-background-default);
+
+        span {
+          color: var(--ds-color-neutral-text-default);
+        }
+
+        input:checked~span:last-of-type,
+        input:not(:checked)~span:first-of-type {
+          background-color: var(--ds-color-neutral-surface-active);
+        }
+
+
+      }
+    }
+
+    .sbdocs-preview {
+      border-color: var(--ds-color-neutral-border-subtle) !important;
+    }
+
+    .docblock-code-toggle {
+      color: var(--ds-color-neutral-text-default) !important;
+      border-color: var(--ds-color-neutral-border-subtle) !important;
+    }
+
+    .markdown-css-overrides {
+      :is(h1, h2, h3, h4, h5, h6, p, ul, li) {
+        color: var(--ds-color-neutral-text-default);
+        border-color: var(--ds-color-neutral-border-subtle);
+      }
+
+      :is(a) {
+        color: var(--ds-color-accent-base-default);
+
+        &:hover {
+          color: var(--ds-color-accent-base-hover);
+        }
+      }
+
+      :is(code) {
+        color: var(--ds-color-neutral-text-default);
+        background-color: var(--ds-color-neutral-background-tinted);
+        border-color: var(--ds-color-neutral-border-subtle);
+      }
+    }
+  }
+}

@@ -26,15 +26,14 @@
     padding-bottom: 10rem !important;
   }
 
-  .docs-story {
-    background-color: var(--ds-color-neutral-background-default);
-    &:has([data-color-scheme="dark"]) {
-      background-color: var(--ds-color-neutral-background-default-dark);
-    }
-  }
   .sb-show-main:has([data-color-scheme="dark"]) {
     background-color: var(--ds-color-neutral-background-default-dark);
   }
+  @media (prefers-color-scheme: dark) {
+    .sb-show-main:has([data-color-scheme="auto"]) {
+      background-color: var(--ds-color-neutral-background-default-dark);
+    }
+}
 
 </style>
 

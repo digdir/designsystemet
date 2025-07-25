@@ -222,6 +222,7 @@ const preview: Preview = {
         items: [
           { title: 'Light', value: 'light' },
           { title: 'Dark', value: 'dark' },
+          { title: 'Auto', value: 'auto' },
         ],
         dynamicTitle: true,
       },
@@ -229,7 +230,7 @@ const preview: Preview = {
   },
   initialGlobals: {
     codePreview: 'react',
-    colorScheme: 'light',
+    colorScheme: 'auto',
   },
   parameters: {
     layout: 'centered',
