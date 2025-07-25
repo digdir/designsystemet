@@ -27,16 +27,20 @@
         padding-inline-start: var(--ds-size-4);
         border-radius: var(--ds-border-radius-md);
 
+        /*It needs to be decided if level 3 should be included
+        and if so, how to style it. This is just placeholder*/
         &[data-level='3'] {
           color: var(--ds-color-neutral-text-subtle);
           padding-inline-start: var(--ds-size-6);
         }
+
         &:focus-visible {
           color: var(--ds-color-neutral-base-contrast-default);
         }
 
         &[aria-current='true'] {
           font-weight: 500;
+          margin-inline-end: -3px; /*prevents line break due to bolder text*/
           &::before {
             content: '';
             width: 3px;
