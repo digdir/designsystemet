@@ -7,8 +7,6 @@ on:
       - main
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
-env:
-  PUBLISHED: 'false'
 
 jobs:
   release:
@@ -42,12 +40,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Set published output
-        run: echo "PUBLISHED=${{ steps.changesets.outputs.published }}" >> $GITHUB_ENV
+
+
 
   deploy-www:
     needs: release
-    if: ${{ github.env.PUBLISHED == 'true' }}
+    if: ${{ needs.release.outputs.published == 'true' }}
     uses: ./.github/workflows/vercel-deploy-www.yml
     with:
       environment: 'production'
@@ -59,7 +57,7 @@ jobs:
       VERCEL_PROJECT_ID_WWW: ${{ secrets.VERCEL_PROJECT_ID_WWW }}
   deploy-theme:
     needs: release
-    if: ${{ github.env.PUBLISHED == 'true' }}
+    if: ${{ needs.release.outputs.published == 'true' }}
     uses: ./.github/workflows/vercel-deploy-theme.yml
     with:
       environment: 'production'
@@ -71,7 +69,7 @@ jobs:
       VERCEL_PROJECT_ID_THEMEBUILDER: ${{ secrets.VERCEL_PROJECT_ID_THEMEBUILDER }}
   deploy-storybook:
     needs: release
-    if: ${{ github.env.PUBLISHED == 'true' }}
+    if: ${{ needs.release.outputs.published == 'true' }}
     uses: ./.github/workflows/vercel-deploy-storybook.yml
     with:
       environment: 'production'

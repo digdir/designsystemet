@@ -1,5 +1,17 @@
 # Change Log
 
+## 1.1.9
+
+### Patch Changes
+
+- Add documentation for augmented React data attribute types (`data-color`, `data-size`, `data-color-scheme`) ([#3881](https://github.com/digdir/designsystemet/pull/3881))
+
+## 1.1.8
+
+### Patch Changes
+
+- Add typings for `data-color-scheme` on JSX elements in React using `react-types.d.ts` ([#3879](https://github.com/digdir/designsystemet/pull/3879))
+
 ## 1.1.7
 
 ### Patch Changes

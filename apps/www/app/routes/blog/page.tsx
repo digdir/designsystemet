@@ -1,5 +1,6 @@
 import { join } from 'node:path';
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import cl from 'clsx';
 import { useTranslation } from 'react-i18next';
 import { Image } from '~/_components/image/image';
 import { RRLink } from '~/_components/link';
@@ -95,7 +96,7 @@ export default function Blog({
         caption={imageCaption}
         boxShadow={false}
       />
-      <div className={classes.content}>
+      <div className={cl(classes.content, 'u-rich-text')}>
         <MDXComponents code={code} />
         <div className={classes.wantToWrite} data-color='brand3'>
           <Heading level={3} data-size='xs'>

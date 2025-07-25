@@ -1,5 +1,6 @@
 import { join } from 'node:path';
 import { Breadcrumbs, Heading, Paragraph } from '@digdir/designsystemet-react';
+import cl from 'clsx';
 import { useTranslation } from 'react-i18next';
 import { Link as RouterLink } from 'react-router';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
@@ -87,7 +88,7 @@ export default function BestPractices({
         </div>
       </div>
       <div className={classes.container}>
-        <div className={classes.content}>
+        <div className={cl(classes.content, 'u-rich-text')}>
           <MDXComponents code={code} />
           <EditPageOnGithub />
         </div>

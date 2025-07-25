@@ -88,16 +88,6 @@
     }
   }
 
-  & > :not(summary, u-summary) {
-    border-radius: inherit;
-    padding-inline: var(--ds-size-5, 1rem);
-    &:nth-child(2) {
-      padding-block-start: var(--ds-size-5, 1rem);
-    }
-    &:last-child {
-      padding-block-end: var(--ds-size-5, 1rem);
-    }
-  }
   &[open] > :is(summary, u-summary) {
     background: var(--dsc-details-summary-background--open);
 
@@ -126,5 +116,17 @@
 
   &[open]::part(details-content) {
     height: auto;
+  }
+}
+
+/* Wrap in :where to allow all other components to overwrite (i.e placing a <Button> inside <Details>) */
+:where(.ds-details > :not(summary, u-summary)) {
+  border-radius: inherit;
+  margin-inline: var(--ds-size-5, 1rem);
+  &:nth-child(2) {
+    margin-block-start: var(--ds-size-5, 1rem);
+  }
+  &:last-child {
+    margin-block-end: var(--ds-size-5, 1rem);
   }
 }
