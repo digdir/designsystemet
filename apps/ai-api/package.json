@@ -4,22 +4,30 @@
   "type": "module",
   "version": "0.1.0",
   "scripts": {
-    "dev": "tsx src/server.ts",
+    "dev": "tsx watch src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
     "smoke-test": "node scripts/ai-smoke-test.mjs",
-    "ingest": "node scripts/ingest.mjs"
+    "ingest": "node scripts/ingest.mjs",
+    "test-rag": "node scripts/test-rag-endpoint.mjs",
+    "setup-embedder": "node scripts/setup-embedder.mjs"
   },
   "dependencies": {
-    "meilisearch": "^0.36.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "ioredis": "^5.4.2",
-    "dotenv": "^16.4.5"
+    "ioredis": "^5.6.1",
+    "meilisearch": "^0.51.0",
+    "node-cache": "^5.1.2",
+    "node-fetch": "^3.3.2"
   },
   "devDependencies": {
-    "tsx": "^4.7.0",
-    "typescript": "^5.4.2",
+    "@types/cors": "^2.8.19",
     "@types/express": "^4.17.21",
-    "@types/node": "^20.11.30"
+    "@types/node": "^20.11.30",
+    "@types/node-cache": "^4.1.3",
+    "ts-node-dev": "^2.0.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
   }
 }
