@@ -52,7 +52,7 @@ async function setupEmbedder() {
     process.exit(1);
   }
 
-  const INDEX_NAME = 'designsystemet-docs';
+  const INDEX_NAME = env.MEILISEARCH_PROJECT_NAME || 'designsystemet-search';
   console.log(`Setting up embedder "${EMBEDDER_UID}" for index "${INDEX_NAME}" in Meilisearch...`);
 
   try {
