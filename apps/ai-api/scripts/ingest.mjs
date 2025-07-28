@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Ingestion script: walk repo, chunk content, embed, and store in Meilisearch
+// Enhanced ingestion script: walk repo, chunk content, embed, and store in Meilisearch
 // Usage: node scripts/ingest.mjs [--force] [--dry-run]
 
 import fs from 'fs';
@@ -36,11 +36,25 @@ const env = process.env;
 // Configuration
 const REPO_ROOT = path.resolve(__dirname, '../../..');
 const CONTENT_DIRS = [
+  // Component documentation (MDX + stories)
   'packages/react/src/components',
-  'apps/storybook/stories',
+  // Utility/hook documentation
+  'packages/react/src/utilities',
+  // Design token documentation
+  'apps/www/app/content/fundamentals/*/design-tokens',
+  // Figma documentation
+  'apps/www/app/content/fundamentals/*/figma',
+  // Themebuilder documentation
+  'apps/www/app/content/fundamentals/*/themebuilder',
+  // Best practices documentation
+  'apps/www/app/content/best-practices',
+  // General website content
   'apps/www/app/content',
+  // Theme CSS files
+  'packages/theme/brand',
+  'packages/theme/src/themes',
 ];
-const FILE_PATTERNS = /\.(md|mdx|tsx)$/i;
+const FILE_PATTERNS = /\.(md|mdx|tsx|css)$/i;
 const CHUNK_SIZE = 300; // tokens (approximate)
 const CHUNK_OVERLAP = 50;
 const INDEX_NAME = env.MEILISEARCH_PROJECT_NAME || 'designsystemet-search';
@@ -52,8 +66,16 @@ const meiliClient = new Meilisearch({
 });
 
 // Helper functions
+function extractLanguageFromPath(filePath) {
+  // Extract language from path structure
+  if (filePath.includes('/en/')) return 'en';
+  if (filePath.includes('/no/')) return 'no';
+  return 'en'; // default to English
+}
+
 function extractTextFromFile(filePath, content) {
   const ext = path.extname(filePath).toLowerCase();
+  const lang = extractLanguageFromPath(filePath);
   
   if (ext === '.md' || ext === '.mdx') {
     // Extract frontmatter and content
@@ -66,14 +88,14 @@ function extractTextFromFile(filePath, content) {
       const titleMatch = frontmatter.match(/title:\s*["']?([^"'\n]+)["']?/);
       const title = titleMatch ? titleMatch[1] : path.basename(filePath, ext);
       
-      return { title, content: body.trim() };
+      return { title, content: body.trim(), lang };
     }
     
     // No frontmatter, use first heading as title
     const headingMatch = content.match(/^#\s+(.+)$/m);
     const title = headingMatch ? headingMatch[1] : path.basename(filePath, ext);
     
-    return { title, content: content.trim() };
+    return { title, content: content.trim(), lang };
   }
   
   if (ext === '.tsx') {
@@ -87,10 +109,24 @@ function extractTextFromFile(filePath, content) {
       comment.replace(/\/\*\*|\*\/|\s*\*\s?/g, '').trim()
     ).join('\n\n');
     
-    return { title, content: comments || `Component: ${title}` };
+    return { title, content: comments || `Component: ${title}`, lang };
+  }
+
+  if (ext === '.css') {
+    // Extract CSS custom properties and their values
+    const customProps = content.match(/--[\w-]+:\s*[^;]+;/g) || [];
+    const title = `${path.basename(filePath, ext)} Theme`;
+    
+    if (customProps.length > 0) {
+      const propList = customProps.slice(0, 20).join('\n'); // Limit to first 20 props
+      const content_text = `CSS Custom Properties:\n\n${propList}\n\n${customProps.length > 20 ? `...and ${customProps.length - 20} more properties` : ''}`;
+      return { title, content: content_text, lang };
+    }
+    
+    return { title, content: `CSS theme file: ${title}`, lang };
   }
   
-  return { title: path.basename(filePath, ext), content: content.trim() };
+  return { title: path.basename(filePath, ext), content: content.trim(), lang };
 }
 
 function chunkText(text, maxTokens = CHUNK_SIZE) {
@@ -118,34 +154,90 @@ function chunkText(text, maxTokens = CHUNK_SIZE) {
   return chunks.length > 0 ? chunks : [text];
 }
 
+async function combineComponentFiles(componentDir) {
+  // Combine MDX documentation with stories for a single component
+  const componentName = path.basename(componentDir);
+  const files = fs.readdirSync(componentDir);
+  
+  let mdxContent = '';
+  let storiesContent = '';
+  let title = componentName;
+  
+  // Read MDX file
+  const mdxFile = files.find(f => f.endsWith('.mdx'));
+  if (mdxFile) {
+    const mdxPath = path.join(componentDir, mdxFile);
+    const mdxRaw = fs.readFileSync(mdxPath, 'utf8');
+    const extracted = extractTextFromFile(mdxPath, mdxRaw);
+    title = extracted.title;
+    mdxContent = extracted.content;
+  }
+  
+  // Read stories file
+  const storiesFile = files.find(f => f.endsWith('.stories.tsx'));
+  if (storiesFile) {
+    const storiesPath = path.join(componentDir, storiesFile);
+    const storiesRaw = fs.readFileSync(storiesPath, 'utf8');
+    
+    // Extract story names and descriptions
+    const storyMatches = storiesRaw.match(/export const (\w+)[^=]*=[\s\S]*?(?=export|\Z)/g) || [];
+    const stories = storyMatches.map(story => {
+      const nameMatch = story.match(/export const (\w+)/);
+      return nameMatch ? nameMatch[1] : '';
+    }).filter(Boolean);
+    
+    if (stories.length > 0) {
+      storiesContent = `\n\nExamples:\n${stories.join(', ')}`;
+    }
+  }
+  
+  // Generate Storybook URL
+  const storybookUrl = `https://storybook.designsystemet.no/?path=/docs/komponenter-${componentName.toLowerCase()}--docs`;
+  
+  const combinedContent = mdxContent + storiesContent;
+  
+  return {
+    title: `${title} Component`,
+    content: combinedContent,
+    url: storybookUrl,
+    lang: 'en', // Components are primarily English
+    type: 'component'
+  };
+}
+
 function generateUrl(filePath) {
   // Convert file path to URL
   const relativePath = path.relative(REPO_ROOT, filePath);
   
   if (relativePath.startsWith('packages/react/src/components/')) {
-    // Map component MDX files to Storybook URLs
-    const componentMatch = relativePath.match(/packages\/react\/src\/components\/([^\/]+)\//);
-    if (componentMatch) {
-      const componentName = componentMatch[1].toLowerCase();
-      return `https://storybook.designsystemet.no/?path=/docs/komponenter-${componentName}--docs`;
-    }
+    // Component files are handled by combineComponentFiles - this shouldn't be called for them
+    const componentName = relativePath.split('/')[4];
+    return `https://storybook.designsystemet.no/?path=/docs/komponenter-${componentName?.toLowerCase()}--docs`;
   }
   
-  if (relativePath.startsWith('apps/storybook/stories/')) {
-    // Map storybook stories to storybook URLs
-    const storyPath = relativePath.replace(/^apps\/storybook\/stories\//, '').replace(/\.(md|mdx)$/, '');
-    return `https://storybook.designsystemet.no/?path=/docs/${storyPath.replace(/\//g, '-')}--docs`;
+  if (relativePath.startsWith('packages/react/src/utilities/')) {
+    // Utility/hook documentation
+    const utilityName = relativePath.split('/').slice(-2, -1)[0]; // Get parent directory name
+    return `https://storybook.designsystemet.no/?path=/docs/utilities-${utilityName?.toLowerCase()}--docs`;
   }
   
-  if (relativePath.startsWith('apps/www/')) {
-    // Map www content to website URLs
-    const contentPath = relativePath.replace(/^apps\/www\/(app|content)\//, '');
-    const urlPath = contentPath.replace(/\.(md|mdx|tsx)$/, '').replace(/\/index$/, '');
+  if (relativePath.startsWith('packages/theme/')) {
+    // Theme CSS files
+    return `https://designsystemet.no/en/fundamentals/design-tokens/colors`;
+  }
+  
+  if (relativePath.startsWith('apps/www/app/content/')) {
+    // Website content
+    let urlPath = relativePath
+      .replace('apps/www/app/content/', '')
+      .replace(/\.(md|mdx)$/, '')
+      .replace('/index', '');
+    
     return `https://designsystemet.no/${urlPath}`;
   }
   
-  // Fallback to GitHub URL
-  return `https://github.com/digdir/designsystemet/blob/main/${relativePath}`;
+  // Fallback
+  return `https://designsystemet.no/`;
 }
 
 async function embedText(text) {
@@ -171,79 +263,135 @@ async function embedText(text) {
 async function processFile(filePath, dryRun = false) {
   try {
     const content = fs.readFileSync(filePath, 'utf8');
-    const { title, content: extractedContent } = extractTextFromFile(filePath, content);
+    const { title, content: extractedContent, lang } = extractTextFromFile(filePath, content);
     
-    if (!extractedContent || extractedContent.length < 20) {
-      console.log(`⏭️  Skipping ${filePath} (too short)`);
-      return [];
+    if (!extractedContent || extractedContent.trim().length < 50) {
+      return []; // Skip very short content
     }
     
     const chunks = chunkText(extractedContent);
     const url = generateUrl(filePath);
-    const documents = [];
+    const relativePath = path.relative(REPO_ROOT, filePath);
     
-    console.log(`📄 Processing ${filePath} → ${chunks.length} chunks`);
+    // Generate embeddings for all chunks if not dry run
+    const vectors = dryRun ? [] : await Promise.all(chunks.map(chunk => embedText(chunk)));
     
-    for (let i = 0; i < chunks.length; i++) {
-      const chunk = chunks[i];
-      const chunkId = crypto.createHash('md5')
-        .update(`${filePath}#${i}`)
+    const documents = chunks.map((chunk, index) => {
+      const id = crypto
+        .createHash('md5')
+        .update(filePath + chunk + index)
         .digest('hex');
       
-      if (dryRun) {
-        documents.push({
-          id: chunkId,
-          title: i === 0 ? title : `${title} (part ${i + 1})`,
-          url,
-          content: chunk,
-          file_path: path.relative(REPO_ROOT, filePath),
-          chunk_index: i,
-          // vector would be added here
-        });
-      } else {
-        const embedding = await embedText(chunk);
-        
-        documents.push({
-          id: chunkId,
-          title: i === 0 ? title : `${title} (part ${i + 1})`,
-          url,
-          content: chunk,
-          file_path: path.relative(REPO_ROOT, filePath),
-          chunk_index: i,
-          _vectors: { default: embedding },
-        });
-        
-        // Small delay to avoid rate limiting
-        await new Promise(resolve => setTimeout(resolve, 100));
-      }
+      return {
+        id,
+        title: chunks.length > 1 ? `${title} (Part ${index + 1})` : title,
+        content: chunk,
+        url,
+        file_path: relativePath,
+        lang,
+        type: relativePath.includes('components/') ? 'component' : 
+              relativePath.includes('design-tokens/') ? 'design-token' :
+              relativePath.includes('figma/') ? 'figma' :
+              relativePath.includes('themebuilder/') ? 'themebuilder' :
+              relativePath.includes('best-practices/') ? 'best-practice' :
+              'general',
+        vector: dryRun ? null : vectors[index],
+      };
+    });
+    
+    if (!dryRun) {
+      console.log(`  ✓ ${title} (${chunks.length} chunks, ${lang})`);
     }
     
     return documents;
   } catch (error) {
-    console.error(`❌ Error processing ${filePath}:`, error.message);
+    console.error(`  ✗ Error processing ${filePath}:`, error.message);
+    return [];
+  }
+}
+
+async function processComponentDirectory(componentDir, dryRun = false) {
+  try {
+    const combinedData = await combineComponentFiles(componentDir);
+    
+    if (!combinedData.content || combinedData.content.trim().length < 50) {
+      return [];
+    }
+    
+    const chunks = chunkText(combinedData.content);
+    const relativePath = path.relative(REPO_ROOT, componentDir);
+    
+    // Generate embeddings for all chunks if not dry run
+    const vectors = dryRun ? [] : await Promise.all(chunks.map(chunk => embedText(chunk)));
+    
+    const documents = chunks.map((chunk, index) => {
+      const id = crypto
+        .createHash('md5')
+        .update(componentDir + chunk + index)
+        .digest('hex');
+      
+      return {
+        id,
+        title: chunks.length > 1 ? `${combinedData.title} (Part ${index + 1})` : combinedData.title,
+        content: chunk,
+        url: combinedData.url,
+        file_path: relativePath,
+        lang: combinedData.lang,
+        type: 'component',
+        vector: dryRun ? null : vectors[index],
+      };
+    });
+    
+    if (!dryRun) {
+      console.log(`  ✓ ${combinedData.title} (${chunks.length} chunks, combined)`);
+    }
+    
+    return documents;
+  } catch (error) {
+    console.error(`  ✗ Error processing component directory ${componentDir}:`, error.message);
     return [];
   }
 }
 
 async function walkDirectory(dir) {
   const files = [];
+  const componentDirs = [];
   
   function walk(currentDir) {
+    if (!fs.existsSync(currentDir)) return;
+    
     const entries = fs.readdirSync(currentDir, { withFileTypes: true });
     
     for (const entry of entries) {
       const fullPath = path.join(currentDir, entry.name);
       
       if (entry.isDirectory() && !entry.name.startsWith('.') && entry.name !== 'node_modules') {
+        // Check if this is a component directory (has both .mdx and .stories.tsx)
+        if (currentDir.includes('packages/react/src/components')) {
+          const dirFiles = fs.readdirSync(fullPath);
+          const hasMdx = dirFiles.some(f => f.endsWith('.mdx'));
+          const hasStories = dirFiles.some(f => f.endsWith('.stories.tsx'));
+          
+          if (hasMdx && hasStories) {
+            componentDirs.push(fullPath);
+            continue; // Skip walking into component dirs - we'll process them specially
+          }
+        }
+        
         walk(fullPath);
       } else if (entry.isFile() && FILE_PATTERNS.test(entry.name)) {
-        files.push(fullPath);
+        // Skip individual component files if they're in a component directory
+        const isComponentFile = fullPath.includes('packages/react/src/components') && 
+                               (entry.name.endsWith('.mdx') || entry.name.endsWith('.stories.tsx'));
+        if (!isComponentFile) {
+          files.push(fullPath);
+        }
       }
     }
   }
   
   walk(dir);
-  return files;
+  return { files, componentDirs };
 }
 
 async function setupIndex() {
@@ -286,26 +434,46 @@ async function main() {
   const force = args.includes('--force');
   const testMode = args.includes('--test');
   
-  console.log(`🚀 Starting ingestion ${dryRun ? '(dry run)' : ''}`);
+  console.log(`🚀 Starting enhanced ingestion ${dryRun ? '(dry run)' : ''}`);
   console.log(`📁 Repo root: ${REPO_ROOT}`);
   
-  // Collect all files
+  // Collect all files and component directories
   const allFiles = [];
+  const allComponentDirs = [];
+  
   for (const dir of CONTENT_DIRS) {
     const fullDir = path.join(REPO_ROOT, dir);
-    if (fs.existsSync(fullDir)) {
-      const files = await walkDirectory(fullDir);
+    if (fullDir.includes('*')) {
+      // Handle glob patterns for language-specific directories
+      const basePath = fullDir.split('*')[0];
+      const suffix = fullDir.split('*')[1];
+      
+      for (const lang of ['en', 'no']) {
+        const langDir = basePath + lang + suffix;
+        if (fs.existsSync(langDir)) {
+          const { files, componentDirs } = await walkDirectory(langDir);
+          allFiles.push(...files);
+          allComponentDirs.push(...componentDirs);
+          console.log(`📂 Found ${files.length} files and ${componentDirs.length} component dirs in ${lang}${suffix}`);
+        }
+      }
+    } else if (fs.existsSync(fullDir)) {
+      const { files, componentDirs } = await walkDirectory(fullDir);
       allFiles.push(...files);
-      console.log(`📂 Found ${files.length} files in ${dir}`);
+      allComponentDirs.push(...componentDirs);
+      console.log(`📂 Found ${files.length} files and ${componentDirs.length} component dirs in ${dir}`);
     }
   }
   
   console.log(`📄 Total files to process: ${allFiles.length}`);
+  console.log(`📦 Total component directories to process: ${allComponentDirs.length}`);
   
-  // In test mode, only process first 3 files
+  // In test mode, only process first 3 files and 3 component dirs
   const filesToProcess = testMode ? allFiles.slice(0, 3) : allFiles;
+  const componentDirsToProcess = testMode ? allComponentDirs.slice(0, 3) : allComponentDirs;
+  
   if (testMode) {
-    console.log(`🧪 Test mode: processing only ${filesToProcess.length} files`);
+    console.log(`🧪 Test mode: processing only ${filesToProcess.length} files and ${componentDirsToProcess.length} component dirs`);
   }
   
   if (!dryRun) {
@@ -314,8 +482,16 @@ async function main() {
     
     // Process files and collect documents
     const allDocuments = [];
+    
+    // Process individual files
     for (const filePath of filesToProcess) {
       const documents = await processFile(filePath, dryRun);
+      allDocuments.push(...documents);
+    }
+    
+    // Process component directories (combine MDX + stories)
+    for (const componentDir of componentDirsToProcess) {
+      const documents = await processComponentDirectory(componentDir, dryRun);
       allDocuments.push(...documents);
     }
     
@@ -327,26 +503,45 @@ async function main() {
   } else {
     // Dry run: just show what would be processed
     let totalChunks = 0;
-    const samplesToShow = testMode ? filesToProcess : allFiles.slice(0, 5);
+    const samplesToShow = testMode ? filesToProcess : allFiles.slice(0, 3);
+    const componentSamplesToShow = testMode ? componentDirsToProcess : allComponentDirs.slice(0, 3);
+    
+    console.log('\n📄 Sample files:');
     for (const filePath of samplesToShow) {
       const documents = await processFile(filePath, true);
       totalChunks += documents.length;
       
       if (documents.length > 0) {
-        console.log(`   → ${documents[0].title}`);
+        console.log(`   → ${documents[0].title} (${documents[0].lang})`);
         console.log(`   → ${documents[0].url}`);
         console.log(`   → ${documents[0].content.substring(0, 100)}...`);
         console.log('');
       }
     }
+    
+    console.log('\n📦 Sample component directories:');
+    for (const componentDir of componentSamplesToShow) {
+      const documents = await processComponentDirectory(componentDir, true);
+      totalChunks += documents.length;
+      
+      if (documents.length > 0) {
+        console.log(`   → ${documents[0].title} (${documents[0].lang})`);
+        console.log(`   → ${documents[0].url}`);
+        console.log(`   → ${documents[0].content.substring(0, 100)}...`);
+        console.log('');
+      }
+    }
+    
     if (!testMode) {
-      console.log(`📊 Would create ~${totalChunks * (allFiles.length / samplesToShow.length)} total chunks`);
+      const fileEstimate = totalChunks * (allFiles.length / Math.max(samplesToShow.length, 1));
+      const componentEstimate = totalChunks * (allComponentDirs.length / Math.max(componentSamplesToShow.length, 1));
+      console.log(`📊 Would create ~${Math.round(fileEstimate + componentEstimate)} total chunks`);
     } else {
       console.log(`📊 Would create ${totalChunks} total chunks`);
     }
   }
   
-  console.log('🎉 Ingestion complete!');
+  console.log('🎉 Enhanced ingestion complete!');
 }
 
 // Run the script
