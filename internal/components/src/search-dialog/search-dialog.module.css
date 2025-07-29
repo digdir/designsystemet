@@ -1,0 +1,184 @@
+.dialog {
+  min-width: min(90vw, 600px);
+  max-width: 90vw;
+  max-height: 80vh;
+  border-radius: var(--ds-border-radius-md);
+  border: var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle);
+  padding: 0;
+  box-shadow: var(--ds-shadow-lg);
+}
+
+.headerBlock {
+  border-bottom: var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle);
+  padding: var(--ds-spacing-4);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+  color: var(--ds-color-neutral-text-default);
+}
+
+.closeButton {
+  margin-left: var(--ds-spacing-2);
+}
+
+.searchBlock {
+  padding: var(--ds-spacing-4);
+  border-bottom: var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle);
+}
+
+.search {
+  width: 100%;
+}
+
+.resultsBlock {
+  padding: var(--ds-spacing-4);
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--ds-spacing-8);
+  color: var(--ds-color-neutral-text-subtle);
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-4);
+}
+
+.result {
+  padding: var(--ds-spacing-3);
+  border-radius: var(--ds-border-radius-sm);
+  border: var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle);
+  background-color: var(--ds-color-neutral-background-default);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.result:hover {
+  border-color: var(--ds-color-accent-border-default);
+  background-color: var(--ds-color-accent-background-subtle);
+}
+
+.resultHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--ds-spacing-2);
+}
+
+.resultTitle {
+  margin: 0;
+  font-size: var(--ds-font-size-md);
+  font-weight: var(--ds-font-weight-medium);
+  color: var(--ds-color-neutral-text-default);
+}
+
+.resultType {
+  font-size: var(--ds-font-size-xs);
+  padding: var(--ds-spacing-1) var(--ds-spacing-2);
+  background-color: var(--ds-color-accent-background-default);
+  color: var(--ds-color-accent-text-default);
+  border-radius: var(--ds-border-radius-sm);
+  text-transform: capitalize;
+}
+
+.resultContent {
+  margin: 0 0 var(--ds-spacing-2) 0;
+  color: var(--ds-color-neutral-text-subtle);
+  font-size: var(--ds-font-size-sm);
+  line-height: var(--ds-line-height-md);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.resultLink {
+  color: var(--ds-color-accent-text-default);
+  text-decoration: none;
+  font-size: var(--ds-font-size-sm);
+  font-weight: var(--ds-font-weight-medium);
+}
+
+.resultLink:hover {
+  text-decoration: underline;
+}
+
+.noResults {
+  text-align: center;
+  padding: var(--ds-spacing-8);
+  color: var(--ds-color-neutral-text-subtle);
+}
+
+.suggestions {
+  padding: var(--ds-spacing-4) 0;
+}
+
+.suggestions p {
+  margin: 0 0 var(--ds-spacing-3) 0;
+  color: var(--ds-color-neutral-text-default);
+  font-weight: var(--ds-font-weight-medium);
+}
+
+.suggestionsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-2);
+}
+
+.suggestionButton {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: var(--ds-spacing-2) var(--ds-spacing-3);
+  border: var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle);
+  border-radius: var(--ds-border-radius-sm);
+  background-color: var(--ds-color-neutral-background-default);
+  color: var(--ds-color-neutral-text-default);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: var(--ds-font-size-sm);
+}
+
+.suggestionButton:hover {
+  border-color: var(--ds-color-accent-border-default);
+  background-color: var(--ds-color-accent-background-subtle);
+}
+
+.suggestionButton:focus {
+  outline: var(--ds-border-width-md) solid var(--ds-color-accent-border-default);
+  outline-offset: var(--ds-border-width-default);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .dialog {
+    min-width: 95vw;
+    max-height: 90vh;
+  }
+  
+  .headerBlock,
+  .searchBlock,
+  .resultsBlock {
+    padding: var(--ds-spacing-3);
+  }
+  
+  .resultsBlock {
+    max-height: 60vh;
+  }
+}
