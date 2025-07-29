@@ -14,6 +14,8 @@ node_modules
 # Local env variables should stay local
 .env
 .env.local
+
+# For the AI search
 .ai-env
 
 coverage/
