@@ -24,7 +24,7 @@
     "react-code-block": "^1.1.3",
     "react": "^19.1.0",
     "react-i18next": "^15.6.0",
-    "react-router": "^7.6.3",
+    "react-router": "^7.7.0",
     "@radix-ui/react-slot": "^1.2.3",
     "react-dom": "^19.1.0"
   },
