@@ -9,8 +9,7 @@
 }
 
 .headerBlock {
-  border-bottom: var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle);
-  padding: var(--ds-spacing-4);
+  padding: var(--ds-size-4);
 }
 
 .header {
@@ -29,8 +28,7 @@
 }
 
 .searchBlock {
-  padding: var(--ds-spacing-4);
-  border-bottom: var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle);
+  padding: var(--ds-size-4);
 }
 
 .search {
@@ -38,7 +36,7 @@
 }
 
 .resultsBlock {
-  padding: var(--ds-spacing-4);
+  padding: var(--ds-size-4);
   max-height: 50vh;
   overflow-y: auto;
 }
@@ -47,7 +45,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: var(--ds-spacing-8);
+  padding: var(--ds-size-8);
   color: var(--ds-color-neutral-text-subtle);
 }
 
@@ -58,16 +56,14 @@
 }
 
 .result {
-  padding: var(--ds-spacing-3);
+  padding: var(--ds-size-3);
   border-radius: var(--ds-border-radius-sm);
-  border: var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle);
   background-color: var(--ds-color-neutral-background-default);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .result:hover {
-  border-color: var(--ds-color-accent-border-default);
   background-color: var(--ds-color-accent-background-subtle);
 }
 
@@ -87,7 +83,7 @@
 
 .resultType {
   font-size: var(--ds-font-size-xs);
-  padding: var(--ds-spacing-1) var(--ds-spacing-2);
+  padding: var(--ds-size-1) var(--ds-spacing-2);
   background-color: var(--ds-color-accent-background-default);
   color: var(--ds-color-accent-text-default);
   border-radius: var(--ds-border-radius-sm);
@@ -118,12 +114,12 @@
 
 .noResults {
   text-align: center;
-  padding: var(--ds-spacing-8);
+  padding: var(--ds-size-8);
   color: var(--ds-color-neutral-text-subtle);
 }
 
 .suggestions {
-  padding: var(--ds-spacing-4) 0;
+  padding: var(--ds-size-4) 0;
 }
 
 .suggestions p {
@@ -145,8 +141,8 @@
   display: block;
   width: 100%;
   text-align: left;
-  padding: var(--ds-spacing-2) var(--ds-spacing-3);
-  border: var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle);
+  padding: var(--ds-size-2) var(--ds-spacing-3);
+  border: none;
   border-radius: var(--ds-border-radius-sm);
   background-color: var(--ds-color-neutral-background-default);
   color: var(--ds-color-neutral-text-default);
@@ -156,7 +152,6 @@
 }
 
 .suggestionButton:hover {
-  border-color: var(--ds-color-accent-border-default);
   background-color: var(--ds-color-accent-background-subtle);
 }
 
@@ -175,7 +170,7 @@
   .headerBlock,
   .searchBlock,
   .resultsBlock {
-    padding: var(--ds-spacing-3);
+    padding: var(--ds-size-3);
   }
   
   .resultsBlock {

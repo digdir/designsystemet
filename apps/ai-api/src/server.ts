@@ -45,7 +45,7 @@ app.use(express.json());
 app.use(cors({
   origin: process.env.CORS_ALLOWED_ORIGINS ? 
     process.env.CORS_ALLOWED_ORIGINS.split(',') : 
-    ['http://localhost:3000', 'https://designsystemet.no'],
+    ['http://localhost:3000', 'http://localhost:5173', 'https://designsystemet.no'],
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));

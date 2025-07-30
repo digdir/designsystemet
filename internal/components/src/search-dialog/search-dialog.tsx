@@ -49,7 +49,7 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
 
     setIsLoading(true);
     try {
-      const response = await fetch('/api/ai-search', {
+      const response = await fetch('http://localhost:3001/api/ai-search', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
