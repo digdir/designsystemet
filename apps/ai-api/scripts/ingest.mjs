@@ -284,7 +284,7 @@ async function processFile(filePath, dryRun = false) {
       
       return {
         id,
-        title: chunks.length > 1 ? `${title} (Part ${index + 1})` : title,
+        title: title, // Clean title without (Part X)
         content: chunk,
         url,
         file_path: relativePath,
@@ -295,6 +295,9 @@ async function processFile(filePath, dryRun = false) {
               relativePath.includes('themebuilder/') ? 'themebuilder' :
               relativePath.includes('best-practices/') ? 'best-practice' :
               'general',
+        // Metadata for chunk tracking (doesn't affect search quality)
+        part_index: chunks.length > 1 ? index + 1 : null,
+        total_parts: chunks.length > 1 ? chunks.length : null,
         vector: dryRun ? null : vectors[index],
       };
     });
@@ -410,18 +413,13 @@ async function setupIndex() {
   
   const index = meiliClient.index(INDEX_NAME);
   
-  // Configure index settings
+  // Configure index settings 
   await index.updateSettings({
     searchableAttributes: ['title', 'content'],
     displayedAttributes: ['id', 'title', 'url', 'content', 'file_path'],
     filterableAttributes: ['file_path'],
     sortableAttributes: ['title'],
-    synonyms: {
-      'autocomplete': ['combobox', 'select'],
-      'dropdown': ['combobox', 'select'],
-      'input': ['textfield', 'text field'],
-      'button': ['btn'],
-    },
+    // Note: synonyms are managed by setup-synonyms.mjs, synonyms are not affected by running the ingest script
   });
   
   console.log(`⚙️  Index settings updated`);

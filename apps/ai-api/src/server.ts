@@ -214,6 +214,88 @@ async function vectorSearch(query: string, limit = 5) {
   }
 }
 
+// Quick search endpoint (fast, direct results without AI)
+app.post('/api/search', async (req, res) => {
+  const { query } = req.body;
+  
+  if (!query || typeof query !== 'string' || !query.trim()) {
+    return res.status(400).json({
+      error: 'Invalid or missing query parameter',
+    });
+  }
+  
+  try {
+    // Get search results
+    const searchResults = await vectorSearch(query);
+    
+    // Deduplicate by URL - keep only the highest scoring result per document
+    const deduplicatedResults = deduplicateByDocument(searchResults);
+    
+    // Format results for quick search
+    const formattedResults = deduplicatedResults.slice(0, 8).map((doc: any) => ({
+      title: doc.title,
+      content: doc.content?.substring(0, 200) + (doc.content?.length > 200 ? '...' : ''),
+      url: doc.url,
+      type: doc.type || 'component'
+    }));
+    
+    res.status(200).json({
+      query,
+      results: formattedResults,
+      count: formattedResults.length,
+      deduplication: {
+        original: searchResults.length,
+        deduplicated: deduplicatedResults.length
+      }
+    });
+    
+  } catch (error: any) {
+    console.error('Quick search error:', error);
+    res.status(500).json({
+      error: 'An error occurred processing your search',
+      message: process.env.NODE_ENV === 'development' ? error.message : undefined,
+    });
+  }
+});
+
+// Helper function to normalize URLs for deduplication
+function normalizeUrl(url: string): string {
+  return url
+    .replace('/content/', '/') // Remove /content/ prefix variations
+    .replace(/\/$/, '')        // Remove trailing slash
+    .toLowerCase()            // Case insensitive matching
+    .replace(/[?#].*$/, '');  // Remove query params and fragments
+}
+
+// Helper function to deduplicate search results by document URL
+// Keeps the highest-scoring result for each normalized URL
+function deduplicateByDocument(results: Array<any>): Array<any> {
+  const urlMap = new Map<string, any>();
+  
+  for (const result of results) {
+    // Skip test files and other unwanted content
+    if (result.title?.includes('.test') || 
+        result.title?.toLowerCase().includes('test file') ||
+        result.url?.includes('/test/')) {
+      continue;
+    }
+    
+    const normalizedUrl = normalizeUrl(result.url);
+    const existing = urlMap.get(normalizedUrl);
+    
+    // Keep the one with higher score, or first if no score available
+    if (!existing || 
+        (result._score && existing._score && result._score > existing._score) ||
+        (result._score && !existing._score)) {
+      urlMap.set(normalizedUrl, result);
+    }
+  }
+  
+  // Return results sorted by score (highest first)
+  return Array.from(urlMap.values())
+    .sort((a, b) => (b._score || 0) - (a._score || 0));
+}
+
 // AI search endpoint with RAG pipeline
 app.post('/api/ai-search', async (req, res) => {
   const startTime = Date.now();
