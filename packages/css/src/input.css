@@ -67,7 +67,7 @@
     border-width: round(up, var(--dsc-input-border-width), 1px);
   }
 
-  &:not([data-size]) {
+  &:not([data-font-size]) {
     font-size: inherit; /* Ensure inheriting font-size */
   }
 

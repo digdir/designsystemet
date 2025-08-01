@@ -113,7 +113,7 @@ const ComboboxInput = ({
   });
 
   return (
-    <Paragraph data-size={size} asChild>
+    <Paragraph data-font-size={size} asChild>
       <div
         {...props}
         aria-disabled={disabled ? 'true' : undefined}
@@ -127,7 +127,7 @@ const ComboboxInput = ({
         <div className={'ds-combobox__chip-and-input'}>
           {/* If the input is in multiple mode, we need to display chips */}
           {multiple && !hideChips && <ComboboxChips />}
-          <Paragraph data-size={size} asChild>
+          <Paragraph data-font-size={size} asChild>
             <input
               ref={mergedRefs}
               aria-activedescendant={props['aria-activedescendant'] as string}
