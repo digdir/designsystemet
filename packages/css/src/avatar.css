@@ -65,4 +65,20 @@
     border-style: solid;
     border-color: CanvasText;
   }
+
+  &[data-size='xs'] {
+    font-size: var(--ds-body-xs-font-size);
+  }
+
+  &[data-size='sm'] {
+    font-size: var(--ds-body-sm-font-size);
+  }
+
+  &[data-size='md'] {
+    font-size: var(--ds-body-md-font-size);
+  }
+
+  &[data-size='lg'] {
+    font-size: var(--ds-body-lg-font-size);
+  }
 }
