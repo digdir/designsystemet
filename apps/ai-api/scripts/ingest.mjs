@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-// Enhanced ingestion script: walk repo, chunk content, embed, and store in Meilisearch
+
+// Ingestion script: walks repo, chunks content, embeds content, and stores in Meilisearch
 // Usage: node scripts/ingest.mjs [--force] [--dry-run]
 
 import fs from 'fs';
