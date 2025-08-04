@@ -34,7 +34,7 @@ export default {
 
 export const Preview: StoryFn<typeof Tooltip> = (args) => (
   <Tooltip {...args}>
-    <Button icon>
+    <Button icon aria-label='Kopier'>
       <FilesIcon aria-hidden />
     </Button>
   </Tooltip>
@@ -73,7 +73,7 @@ export const Placement: Story = {
     content: 'Kopier',
     placement: 'bottom',
     children: (
-      <Button icon>
+      <Button icon aria-label='Kopier'>
         <FilesIcon aria-hidden />
       </Button>
     ),
