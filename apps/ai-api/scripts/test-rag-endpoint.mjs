@@ -1,12 +1,10 @@
 #!/usr/bin/env node
 
-// Test script for the RAG API endpoint
-import fetch from 'node-fetch';
+import fs from 'node:fs';
+import path, { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import dotenv from 'dotenv';
-import path from 'path';
-import fs from 'fs';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import fetch from 'node-fetch';
 
 // Get current file and directory
 const __filename = fileURLToPath(import.meta.url);
@@ -29,25 +27,25 @@ for (const p of envPathCandidates) {
 
 async function testRAGEndpoint() {
   console.log('Testing RAG API endpoint...');
-  
+
   const port = process.env.PORT || 3001;
   const baseUrl = `http://localhost:${port}`;
   const endpoint = `${baseUrl}/api/ai-search`;
-  
+
   // Test queries
   const queries = [
     'What is Designsystemet?',
     'How do I use the Button component?',
     'Can you explain the Accordion component?',
-    'What color tokens are available?'
+    'What color tokens are available?',
   ];
-  
+
   console.log(`Will send ${queries.length} test queries to: ${endpoint}`);
-  
+
   for (const query of queries) {
     console.log(`\n------------------------------`);
     console.log(`Testing query: "${query}"`);
-    
+
     try {
       const response = await fetch(endpoint, {
         method: 'POST',
@@ -56,9 +54,9 @@ async function testRAGEndpoint() {
         },
         body: JSON.stringify({ query }),
       });
-      
+
       const result = await response.json();
-      
+
       if (response.ok) {
         console.log('✅ Successful response:');
         console.log(`Query: ${result.query}`);
@@ -73,13 +71,13 @@ async function testRAGEndpoint() {
     } catch (error) {
       console.error('❌ Error executing test:', error.message);
     }
-    
+
     // Wait 1 second between requests
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
   }
 }
 
 // Run the test
 testRAGEndpoint()
   .then(() => console.log('\nTest completed'))
-  .catch(err => console.error('Test failed:', err));
+  .catch((err) => console.error('Test failed:', err));
