@@ -55,7 +55,7 @@ export const WithString: Story = {
 WithString.play = async (ctx) => {
   // When not in Docs mode, automatically open the tooltip
   const canvas = within(ctx.canvasElement);
-  const button = canvas.getByText('My trigger');
+  const button = canvas.getByText('Org.nr.');
   await userEvent.hover(button);
   /* wait 1s for tooltip to show */
   await new Promise((resolve) => {
