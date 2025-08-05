@@ -159,6 +159,8 @@ type SuggestionMultipleProps = SuggestionBaseProps & {
 
 export type SuggestionProps = SuggestionSingleProps | SuggestionMultipleProps;
 
+export type SuggestionSelected = string | Array<string | Partial<Item>>; // Kept for backwards compatibility
+
 const text = (el: Element): string => el.textContent?.trim() || '';
 const sanitizeItems = (
   values: Array<string | Partial<Item>> | string = [],
