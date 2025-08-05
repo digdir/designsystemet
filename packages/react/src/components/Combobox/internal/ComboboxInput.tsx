@@ -128,6 +128,7 @@ const ComboboxInput = ({
           {/* If the input is in multiple mode, we need to display chips */}
           {multiple && !hideChips && <ComboboxChips />}
           <Paragraph data-size={size} asChild>
+            {/* biome-ignore lint/a11y/useSemanticElements: This is a combobox input */}
             <input
               ref={mergedRefs}
               aria-activedescendant={props['aria-activedescendant'] as string}
