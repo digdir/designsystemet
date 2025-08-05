@@ -194,4 +194,7 @@ export default {
       dark: 'Mørk',
     },
   },
+  toc: {
+    title: 'Innhold',
+  },
 };
