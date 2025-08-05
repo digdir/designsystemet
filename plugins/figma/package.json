@@ -20,22 +20,22 @@
     "@digdir/designsystemet-theme": "workspace:^",
     "@navikt/aksel-icons": "^7.25.1",
     "clsx": "^2.1.1",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-router-dom": "^7.7.0"
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.7.1"
   },
   "devDependencies": {
     "@figma/plugin-typings": "^1.116.0",
-    "@types/react": "^19.1.8",
+    "@types/react": "^19.1.9",
     "@types/react-color": "^3.0.13",
-    "@types/react-dom": "^19.1.6",
+    "@types/react-dom": "^19.1.7",
     "@vitejs/plugin-react": "^4.7.0",
     "postcss": "^8.5.6",
-    "rollup": "^4.45.1",
-    "typescript": "^5.8.3",
-    "vite": "^7.0.5",
+    "rollup": "^4.46.2",
+    "typescript": "^5.9.2",
+    "vite": "^7.0.6",
     "vite-plugin-react-rich-svg": "^1.2.1",
     "vite-plugin-singlefile": "^2.3.0",
-    "zustand": "^5.0.6"
+    "zustand": "^5.0.7"
   }
 }
