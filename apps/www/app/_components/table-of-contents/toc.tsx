@@ -2,6 +2,7 @@ import { Link, Paragraph } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { TableOfContentsItem } from '~/_utils/extract-toc';
 import classes from './toc.module.css';
 
@@ -17,6 +18,8 @@ export const TableOfContents = ({
   ...props
 }: TableOfContentsProps) => {
   const [activeItem, setActiveItem] = useState<string>('');
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -57,7 +60,7 @@ export const TableOfContents = ({
       {...props}
     >
       <Paragraph data-size='md' asChild>
-        <h2>{title}</h2>
+        <h2>{t('toc.title')}</h2>
       </Paragraph>
       <ol>
         {items.map((item) => (
