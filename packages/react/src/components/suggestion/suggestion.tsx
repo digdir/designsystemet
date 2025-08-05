@@ -15,8 +15,6 @@ import cl from 'clsx/lite';
 import { useMergeRefs } from '../../utilities/hooks';
 import { Chip } from '../chip';
 
-export type SuggestionSelected = Array<string | Partial<Item>> | string;
-
 type Item = { label: string; value: string };
 type EventBeforeMatch = Omit<
   CustomEvent<HTMLOptionElement | undefined>,
@@ -62,7 +60,7 @@ export const SuggestionContext = createContext<SuggestionContextType>({
   handleFilter: () => undefined,
 });
 
-export type SuggestionProps = {
+type SuggestionBaseProps = {
   /**
    * Filter options; boolean or a custom callback.
    *
@@ -77,34 +75,6 @@ export type SuggestionProps = {
    * @default false
    */
   creatable?: boolean;
-  /**
-   * Allows the user to select multiple items
-   *
-   * @default false
-   */
-  multiple?: boolean;
-  /**
-   * The selected items of the Suggestion.
-   *
-   * If `label` and `value` is the same, you can use `string[]`.
-   *
-   * If `label` and `value` is different, you must use `{ value: string; label: string}[]`.
-   *
-   * Using this makes the component controlled and it must be used in combination with `onSelectedChange`.
-   */
-  selected?: SuggestionSelected;
-  /**
-   * @deprecated Use `selected` instead
-   */
-  value?: SuggestionSelected; // Kept for backwards compatibility
-  /**
-   * Default selected items when uncontrolled
-   */
-  defaultSelected?: SuggestionSelected;
-  /**
-   * @deprecated Use `defaultSelected` instead
-   */
-  defaultValue?: SuggestionSelected; // Kept for backwards compatibility
   /**
    * Callback when selected items changes
    */
@@ -131,11 +101,71 @@ export type SuggestionProps = {
   renderSelected?: (args: { label: string; value: string }) => ReactNode;
 } & HTMLAttributes<UHTMLComboboxElement>;
 
+type SuggestionSingleProps = SuggestionBaseProps & {
+  /**
+   * Allows the user to select multiple items
+   *
+   * @default false
+   */
+  multiple?: false;
+  /**
+   * The selected item of the Suggestion.
+   *
+   * Using this makes the component controlled and it must be used in combination with `onSelectedChange`.
+   */
+  selected?: string;
+  /**
+   * @deprecated Use `selected` instead
+   */
+  value?: string; // Kept for backwards compatibility
+  /**
+   * Default selected item when uncontrolled
+   */
+  defaultSelected?: string;
+  /**
+   * @deprecated Use `defaultSelected` instead
+   */
+  defaultValue?: string; // Kept for backwards compatibility
+};
+
+type SuggestionMultipleProps = SuggestionBaseProps & {
+  /**
+   * Allows the user to select multiple items
+   */
+  multiple: true;
+  /**
+   * The selected items of the Suggestion.
+   *
+   * If `label` and `value` is the same, you can use `string[]`.
+   *
+   * If `label` and `value` is different, you must use `{ value: string; label: string}[]`.
+   *
+   * Using this makes the component controlled and it must be used in combination with `onSelectedChange`.
+   */
+  selected?: Array<string | Partial<Item>>;
+  /**
+   * @deprecated Use `selected` instead
+   */
+  value?: Array<string | Partial<Item>>; // Kept for backwards compatibility
+  /**
+   * Default selected items when uncontrolled
+   */
+  defaultSelected?: Array<string | Partial<Item>>;
+  /**
+   * @deprecated Use `defaultSelected` instead
+   */
+  defaultValue?: Array<string | Partial<Item>>; // Kept for backwards compatibility
+};
+
+export type SuggestionProps = SuggestionSingleProps | SuggestionMultipleProps;
+
 const text = (el: Element): string => el.textContent?.trim() || '';
-const sanitizeItems = (values: SuggestionSelected = []): Item[] =>
+const sanitizeItems = (
+  values: Array<string | Partial<Item>> | string = [],
+): Item[] =>
   (typeof values === 'string'
     ? [{ label: values, value: values }]
-    : values.map((value) =>
+    : values.map((value: string | Partial<Item>) =>
         typeof value === 'string'
           ? { label: value, value }
           : {
@@ -143,11 +173,11 @@ const sanitizeItems = (values: SuggestionSelected = []): Item[] =>
               value: value.value || '',
             },
       )
-  ).filter((x) => !!x.label);
+  ).filter((x: Item) => !!x.label);
 
 const nextItems = (
   data: HTMLDataElement,
-  prev?: SuggestionSelected,
+  prev?: Array<string | Partial<Item>> | string,
   multiple?: boolean,
 ) => {
   const item = { label: text(data), value: data.value };
