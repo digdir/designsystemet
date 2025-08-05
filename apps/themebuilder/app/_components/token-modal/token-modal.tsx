@@ -8,6 +8,7 @@ import {
   Button,
   Dialog,
   Divider,
+  Dropdown,
   Heading,
   Input,
   Link,
@@ -15,7 +16,11 @@ import {
   Switch,
 } from '@digdir/designsystemet-react';
 import { CodeBlock } from '@internal/components';
-import { InformationSquareIcon, StarIcon } from '@navikt/aksel-icons';
+import {
+  ChevronDownIcon,
+  InformationSquareIcon,
+  StarIcon,
+} from '@navikt/aksel-icons';
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLoaderData } from 'react-router';
@@ -110,15 +115,40 @@ export const TokenModal = () => {
 
   return (
     <Dialog.TriggerContext>
-      <Dialog.Trigger
-        className={classes.trigger}
-        onClick={() => {
-          return modalRef.current?.showModal();
-        }}
-      >
-        <StarIcon aria-hidden fontSize='1.5rem' />
-        {t('themeModal.use-theme')}
-      </Dialog.Trigger>
+      <div style={{ display: 'flex' }}>
+        <Dialog.Trigger
+          className={classes.trigger}
+          onClick={() => {
+            return modalRef.current?.showModal();
+          }}
+          style={{
+            borderTopRightRadius: 0,
+            borderBottomRightRadius: 0,
+          }}
+        >
+          <StarIcon aria-hidden fontSize='1.5rem' />
+          {t('themeModal.use-theme')} med CLI
+        </Dialog.Trigger>
+        <Dropdown.TriggerContext>
+          <Dropdown.Trigger
+            style={{
+              borderTopLeftRadius: 0,
+              borderBottomLeftRadius: 0,
+              borderLeft: '1px solid var(--ds-color-neutral-border-subtle)',
+            }}
+          >
+            <ChevronDownIcon aria-hidden fontSize='1.5rem' />
+          </Dropdown.Trigger>
+          <Dropdown>
+            <Dropdown.Item>
+              <Dropdown.Button>CLI Config</Dropdown.Button>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Dropdown.Button>CSS Fil</Dropdown.Button>
+            </Dropdown.Item>
+          </Dropdown>
+        </Dropdown.TriggerContext>
+      </div>
       <Dialog
         className={classes.modal}
         style={{ maxWidth: 1000 }}
