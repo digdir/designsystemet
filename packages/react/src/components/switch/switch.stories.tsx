@@ -29,20 +29,13 @@ export const Checked: Story = {
 export const Group: Story = {
   render: ({ 'aria-label': a, 'aria-labelledby': b, ...args }) => (
     <Fieldset>
-      <Fieldset.Legend>Skru av/på en eller flere innstillinger</Fieldset.Legend>
+      <Fieldset.Legend>Skru av/på lys</Fieldset.Legend>
+      <Switch label='Stue' checked {...args} />
+      <Switch label='Kjøkken' {...args} />
+      <Switch label='Bad' {...args} />
       <Switch
-        label='Innstilling 1'
-        description='Beskrivelse av innstilling'
-        value='alt1'
-        checked
-        {...args}
-      />
-      <Switch label='Innstilling 2' value='alt2' {...args} />
-      <Switch label='Innstilling 3' value='alt3' {...args} />
-      <Switch
-        label='Innstilling 4'
-        value='alt4'
-        description='Du mangler rettigheter for denne instillingen'
+        label='Soverom'
+        description='Får ikke kontakt med lyspærene'
         readOnly
         {...args}
       />
@@ -50,9 +43,8 @@ export const Group: Story = {
   ),
 };
 
-export const GroupEnd: Story = {
-  ...Group,
-  args: {
-    position: 'end',
-  },
+export const RigthAligned: Story = {
+  render: ({ 'aria-label': a, 'aria-labelledby': b, ...args }) => (
+    <Switch label='Flymodus' position='end' checked {...args} />
+  ),
 };
