@@ -195,4 +195,7 @@ export default {
       dark: 'Dark',
     },
   },
+  toc: {
+    title: 'Contents',
+  },
 } satisfies typeof no;
