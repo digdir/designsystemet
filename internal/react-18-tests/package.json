@@ -8,7 +8,7 @@
     "@radix-ui/react-slot": "^1.2.3",
     "@tanstack/react-virtual": "^3.13.12",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "19.1.1"
   },
   "devDependencies": {
     "@testing-library/react": "^16.3.0",
