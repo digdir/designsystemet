@@ -551,11 +551,11 @@ importers:
         specifier: ^3.13.12
         version: 3.13.12(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@u-elements/u-combobox':
-        specifier: ^0.0.18
-        version: 0.0.18
+        specifier: ^0.0.19
+        version: 0.0.19
       '@u-elements/u-datalist':
-        specifier: ^1.0.10
-        version: 1.0.10
+        specifier: ^1.0.11
+        version: 1.0.11
       '@u-elements/u-details':
         specifier: ^0.1.1
         version: 0.1.1
@@ -2221,11 +2221,11 @@ packages:
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
 
-  '@u-elements/u-combobox@0.0.18':
-    resolution: {integrity: sha512-0WttCjvLVTmJkEoTx7jkOu2thV3titNrQmo12jeBU/c+uviSAOfh5jMAwUj8ms2sZfvFkRy+d73VxjOHo0Iskw==}
+  '@u-elements/u-combobox@0.0.19':
+    resolution: {integrity: sha512-hKG5FmD/qQ6i0cE+y6K/qCKhUt1eiFMmajoMBR6vdPVL4UjNOkjmaodFYM6cVWs5UFwwVlnjfK4BgLEVEWS/5Q==}
 
-  '@u-elements/u-datalist@1.0.10':
-    resolution: {integrity: sha512-ctPlx8SL4njfsA0/JINVlVbfBW31HCswj8hDt/SsPUiF89n/fLmTLG49DxOW7RZNcXrWW+AudJy5zsuPCmCGRA==}
+  '@u-elements/u-datalist@1.0.11':
+    resolution: {integrity: sha512-Mc951aOtgMQ98mI+6KytZJRCkvE4bT4KIarLMLWGOmd/YO+Do6bd/AuRlBysQoryfWlYIt0Th4eA9rx1MPi6/w==}
 
   '@u-elements/u-details@0.1.1':
     resolution: {integrity: sha512-VQDwumgWzXWe/vEUVs+jPvRVlNw+1epHjkNlCjx3IA5BSKSxAPRFZ47ew5iKuZhAKmK0wke0rreA7SO/pjZN6w==}
@@ -7552,9 +7552,9 @@ snapshots:
 
   '@types/unist@3.0.3': {}
 
-  '@u-elements/u-combobox@0.0.18': {}
+  '@u-elements/u-combobox@0.0.19': {}
 
-  '@u-elements/u-datalist@1.0.10': {}
+  '@u-elements/u-datalist@1.0.11': {}
 
   '@u-elements/u-details@0.1.1': {}
 
