@@ -18,6 +18,7 @@ import { DocsContainer } from '@storybook/addon-docs/blocks';
 import type { Preview } from '@storybook/react-vite';
 import isChromatic from 'chromatic/isChromatic';
 import { Children, type MouseEventHandler } from 'react';
+import { addons } from 'storybook/preview-api';
 import { customStylesDecorator } from '../story-utils/customStylesDecorator';
 import { fontsLoader } from '../story-utils/fontsLoader';
 import { allModes, viewportWidths } from '../story-utils/modes';
@@ -188,11 +189,7 @@ const DocsContainerWithWrapper: typeof DocsContainer = ({
   ...props
 }) => {
   return (
-    <div
-      className='custom-docs-wrapper'
-      //@ts-ignore
-      data-color-scheme={context.store.userGlobals.globals.colorScheme}
-    >
+    <div className='custom-docs-wrapper'>
       <DocsContainer context={context} {...props}>
         {children}
       </DocsContainer>
@@ -214,10 +211,16 @@ const preview: Preview = {
         dynamicTitle: true,
       },
     },
+    // Hidden global for manager-preview communication
+    managerColorScheme: {
+      description: 'Color scheme from manager (internal communication)',
+      defaultValue: 'auto',
+    },
+    // Visible global for story-specific theme switching
     colorScheme: {
-      description: 'Set color-scheme in stories',
+      description: 'Set color-scheme for stories only',
       toolbar: {
-        title: 'Theme',
+        title: 'Story Theme',
         icon: 'contrast',
         items: [
           { title: 'Light', value: 'light' },
@@ -230,6 +233,7 @@ const preview: Preview = {
   },
   initialGlobals: {
     codePreview: 'react',
+    managerColorScheme: 'auto',
     colorScheme: 'auto',
   },
   parameters: {
@@ -308,5 +312,39 @@ const preview: Preview = {
       '.sbdocs-preview .docs-story div:first-of-type, .sb-show-main:has(#storybook-docs[hidden="true"])',
   }),
 ]; */
+
+// Listen for global changes from manager
+const channel = addons.getChannel();
+
+// Store manager theme for decorator access
+let currentManagerTheme = 'auto';
+
+channel.on('globalsUpdated', (data) => {
+  console.log('Preview: Received globals update:', data);
+
+  if (data.globals?.managerColorScheme) {
+    const newScheme = data.globals.managerColorScheme;
+    console.log('Preview: Manager color scheme updated to:', newScheme);
+
+    // Store the theme for decorator access
+    currentManagerTheme = newScheme;
+
+    // You can add your logic here to handle the manager color scheme change
+    // This affects the overall Storybook UI/iframe but not individual stories
+    document.body.setAttribute('data-color-scheme', newScheme);
+
+    // Force re-render of stories when manager theme changes in auto mode
+    window.dispatchEvent(
+      new CustomEvent('storybook-manager-theme-changed', {
+        detail: newScheme,
+      }),
+    );
+  }
+});
+
+// Export manager theme getter for decorator
+(
+  window as unknown as { __storybookManagerTheme: () => string }
+).__storybookManagerTheme = () => currentManagerTheme;
 
 export default preview;

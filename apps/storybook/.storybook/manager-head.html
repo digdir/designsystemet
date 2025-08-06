@@ -50,6 +50,11 @@
     color-scheme: auto;
   }
 
+  body {
+    color: var(--ds-color-neutral-text-default);
+    background-color: var(--ds-color-neutral-background-default);
+  }
+
   .ds-focus:focus-visible {
     outline: var(--ds-border-width-focus) solid var(--ds-color-focus-outer);
     outline-offset: var(--ds-border-width-focus);
@@ -61,7 +66,8 @@
     height: 96px;
     display: flex;
     align-items: center;
-    background-color: white;
+    background-color: var(--ds-color-neutral-background-default);
+    color: var(--ds-color-neutral-text-default);
   }
 
   .header__container {
@@ -380,6 +386,20 @@
           </a>
         </li>
       </ul>
+      <button id="theme-toggle" class="ds-button" data-icon data-variant="tertiary" data-color="neutral">
+        dark
+      </button>
     </nav>
   </div>
 </header>
+
+<script>
+document.body.setAttribute('data-color-scheme', 'auto');
+const button = document.getElementById('theme-toggle');
+button.addEventListener('click', () => {
+  const currentScheme = document.body.getAttribute('data-color-scheme');
+  const newScheme = currentScheme === 'light' ? 'dark' : 'light';
+  document.body.setAttribute('data-color-scheme', newScheme);
+  button.textContent = newScheme === 'light' ? 'light' : 'dark';
+});
+</script>
