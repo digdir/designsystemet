@@ -32,25 +32,25 @@ import { Tag } from '@digdir/designsystemet-react';
 
 
 ## Retningsliner
-
-- Bruk korte etiketter for enkel skanning. Helst ett ord. Maks to ord dersom det er nødvendig for å beskrive statusen og skille den fra andre tagger.
-- Bruk stor forbokstav og små bokstaver for resten.
-- Bruk ord og begreper som er gjenkjennelige for løsningen, unngå ukjente og fremmede ord.
-- Tags bør som regel plasseres bak tittelen eller navnet på tilhørende element.
-- Tags bør ikke plasseres sammen med knapper da det kan forvirre brukeren. Vurder plasseringen og brukertest gjerne.
-- Vil du bruke flere tags sammen, bør du bruke en `<ul>` med en `<li>` for hver tag for å sikre at tagsene blir lest opp hver for seg som en liste og ikke som en setning.
+Bruk `Tag` når du vil hjelpe brukeren med å raskt identifisere innhold basert på kategori, status eller egenskap. `Tag` fungerer godt for å vise metadata, som for eksempel hvilken type dokument det er, hvilken status noe har, eller hvilket tema det tilhører. De bør brukes konsistent, være korte og lett forståelige, og unngås dersom informasjonen allerede er tydelig i konteksten.
 
 **Passer til å** 
 - Kategorisere innhold, for eksempel «Beta», «Ny» eller «Populær».
 - Vise status, for eksempel «Pågående», «Fullført» eller «Avbrutt».
 
 **Passer ikke til** 
-- link til andre sider (bruk heller link).
-- handlinger (bruk heller [button](/docs/komponenter-button--docs)).
+- link til andre sider (bruk heller [Link](/docs/komponenter-link--docs)).
+- handlinger (bruk heller [Button](/docs/komponenter-button--docs)).
 - filtrering (bruk heller [Chip](/docs/komponenter-chip--docs)).
 
-## Tekst
+### Plassering
+`Tag` bør som regel plasseres bak tittelen eller navnet på tilhørende element. Tags bør ikke plasseres sammen med knapper da det kan forvirre brukeren. Vurder plasseringen og brukertest gjerne.
 
+## Tekst
+- Bruk korte etiketter for enkel skanning. Helst ett ord. Maks to ord dersom det er nødvendig for å beskrive statusen og skille den fra andre tagger.
+- Bruk stor forbokstav og små bokstaver for resten.
+- Bruk ord og begreper som er gjenkjennelige for løsningen, unngå ukjente og fremmede ord.
+- Vil du bruke flere tags sammen, bør du bruke en `<ul>` med en `<li>` for hver tag for å sikre at tagsene blir lest opp hver for seg som en liste og ikke som en setning.
 
 ## CSS Variabler
 
