@@ -10,12 +10,9 @@ import * as ValidationMessageStories from '../src/components/validation-message/
 
 # Typography
 
-Typografi er en viktig del av det å bygge opp innhold på en nettside. Det er avgjørende
-at tekst blir brukt konsekvent på tvers av et nettsted slik at brukeren enkelt kan
-prosessere informasjonen som er der. Typografien er delt inn i fire kategorier som er
-ment å dekke alle behov som måtte dukke opp på et nettsted:
+Typografi er en viktig del av det å bygge opp innhold på en nettside. Det er avgjørende at tekst blir brukt konsekvent på tvers av et nettsted slik at brukeren enkelt kan prosessere informasjonen som er der. 
 
-## Bruk
+## Font
 
 Typografikomponentene kommer med hverken innebygd eller definert font-familie. Det er opp til bruker å selv å importere ønsket font.
 
@@ -38,7 +35,11 @@ Til `font-family` anbefaler vi følgende sammensetning med fallback til `Arial`.
 font-family: 'Inter', Arial, sans-serif;
 ```
 
-## Heading
+## Bruk
+Typografien er delt inn i fire kategorier som er ment å dekke alle behov som måtte dukke opp på et nettsted:
+
+
+### Heading
 
 Alle oversikrifter skal bruke `Heading`-komponenten. Dette er tekst med en tyngre font-vektning og større font-størrelse som grupperer innhold som kommer under.
 
@@ -49,28 +50,29 @@ H1 trenger ikke vere samme størrelse på alle nettsider. I en intern admin appl
 <Canvas of={HeadingStories.Preview} />
 <Controls of={HeadingStories.Preview} />
 
-## Paragraph
+### Paragraph
 
 Brukes når det trengs tekst over flere linjer. Mesteparten av teksten på et nettsted vil bruke `Paragraph`.
 
 <Canvas of={ParagraphStories.Preview} />
 <Controls of={ParagraphStories.Preview} />
 
-## Label
+### Label
 
 `Label` blir brukt for å framheve tekst, ofte sammen med `Paragraph`. Den har mindre linjehøyde enn `Paragraph`, og fungerer slik fint inne i komponenter. Ofte brukt som navn på skjemakomponenter.
 
 <Canvas of={LabelStories.Preview} />
 <Controls of={LabelStories.Preview} />
 
-## ValidationMessage
+### ValidationMessage
 
 Dersom du setter `data-color="neutral"` vil `color` følge nærmeste tekstfarge som er satt.
 
 <Canvas of={ValidationMessageStories.Preview} />
 <Controls of={ValidationMessageStories.Preview} />
 
-## Eksempel
+## Kodeeksempler
+Eksempel på hvordan du kan kombinere de ulike typografi-komponentene:
 
 <Canvas of={typographyStories.EksempelTekst} />
 
