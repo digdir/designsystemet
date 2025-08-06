@@ -32,7 +32,7 @@ import { Tag } from '@digdir/designsystemet-react';
 
 
 ## Retningsliner
-Bruk `Tag` når du vil hjelpe brukeren med å raskt identifisere innhold basert på kategori, status eller egenskap. `Tag` fungerer godt for å vise metadata, som for eksempel hvilken type dokument det er, hvilken status noe har, eller hvilket tema det tilhører. De bør brukes konsistent, være korte og lett forståelige, og unngås dersom informasjonen allerede er tydelig i konteksten.
+Bruk `Tag` når du vil hjelpe brukeren med å raskt identifisere innhold basert på kategori, status eller egenskap. `Tag` fungerer godt for å vise metadata, som for eksempel hvilken type dokument det er, hvilken status noe har, eller hvilket tema det tilhører. De bør brukes konsistent, være korte og lett forståelige, og unngås dersom informasjonen allerede er tydelig i konteksten. Tag er ikke klikkbar, det er bare en merkelapp.
 
 **Passer til å** 
 - Kategorisere innhold, for eksempel «Beta», «Ny» eller «Populær».
@@ -51,6 +51,10 @@ Bruk `Tag` når du vil hjelpe brukeren med å raskt identifisere innhold basert 
 - Bruk stor forbokstav og små bokstaver for resten.
 - Bruk ord og begreper som er gjenkjennelige for løsningen, unngå ukjente og fremmede ord.
 - Vil du bruke flere tags sammen, bør du bruke en `<ul>` med en `<li>` for hver tag for å sikre at tagsene blir lest opp hver for seg som en liste og ikke som en setning.
+
+## Tilgjengelighet
+Skal du vise flere `Tag` sammen, anbefaler vi å bruke en <ul>-liste med én <li> per `Tag`. På den måten blir de lest opp som en liste, ikke som én sammenhengende setning, noe som gir en bedre opplevelse for brukere av hjelpemiddelteknologi.
+
 
 ## CSS Variabler
 
