@@ -221,7 +221,7 @@ const preview: Preview = {
       description: 'Set color-scheme for stories only',
       toolbar: {
         title: 'Story Theme',
-        icon: 'contrast',
+        icon: 'moon',
         items: [
           { title: 'Light', value: 'light' },
           { title: 'Dark', value: 'dark' },
