@@ -20,20 +20,7 @@ import { Tag } from '@digdir/designsystemet-react';
 <Tag>Beta</Tag>;
 ```
 
-### Anbefalinger
-
-- Bruk korte etiketter for enkel skanning. Helst ett ord. Maks to ord dersom det er nødvendig for å beskrive statusen og skille den fra andre tagger.
-- Bruk stor forbokstav og små bokstaver for resten.
-- Bruk ord og begreper som er gjenkjennelige for løsningen, unngå ukjente og fremmede ord.
-- Tags bør som regel plasseres bak tittelen eller navnet på tilhørende element.
-- Tags bør ikke plasseres sammen med knapper da det kan forvirre brukeren. Vurder plasseringen og brukertest gjerne.
-- Vil du bruke flere tags sammen, bør du bruke en `<ul>` med en `<li>` for hver tag for å sikre at tagsene blir lest opp hver for seg som en liste og ikke som en setning.
-
-### Ikke egnet til
-
-- Tag er ikke egnet som link til andre sider (bruk heller link).
-- Tag er ikke egnet til handlinger (bruk heller [button](/docs/komponenter-button--docs)).
-- For filtrering der brukeren kan filtrere data og bare se elementer innenfor ønsket kategori kan du bruke Chip komponenten.
+## Kodeeksempler
 
 ## Sizes
 
@@ -42,6 +29,28 @@ import { Tag } from '@digdir/designsystemet-react';
 ## Colors
 
 <Canvas of={TagStories.Colors} />
+
+
+## Retningsliner
+
+- Bruk korte etiketter for enkel skanning. Helst ett ord. Maks to ord dersom det er nødvendig for å beskrive statusen og skille den fra andre tagger.
+- Bruk stor forbokstav og små bokstaver for resten.
+- Bruk ord og begreper som er gjenkjennelige for løsningen, unngå ukjente og fremmede ord.
+- Tags bør som regel plasseres bak tittelen eller navnet på tilhørende element.
+- Tags bør ikke plasseres sammen med knapper da det kan forvirre brukeren. Vurder plasseringen og brukertest gjerne.
+- Vil du bruke flere tags sammen, bør du bruke en `<ul>` med en `<li>` for hver tag for å sikre at tagsene blir lest opp hver for seg som en liste og ikke som en setning.
+
+**Passer til å** 
+- Kategorisere innhold, for eksempel «Beta», «Ny» eller «Populær».
+- Vise status, for eksempel «Pågående», «Fullført» eller «Avbrutt».
+
+**Passer ikke til** 
+- link til andre sider (bruk heller link).
+- handlinger (bruk heller [button](/docs/komponenter-button--docs)).
+- filtrering (bruk heller [Chip](/docs/komponenter-chip--docs)).
+
+## Tekst
+
 
 ## CSS Variabler
 
