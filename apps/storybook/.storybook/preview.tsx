@@ -25,7 +25,7 @@ import { allModes, viewportWidths } from '../story-utils/modes';
 import { transformSource } from '../story-utils/transformSource';
 import type { MdxComponentOverrides } from '../story-utils/type-extensions';
 import componentStyles from './componentOverrides.module.scss';
-import customTheme from './customTheme';
+import customTheme from './customThemeLight';
 
 const viewports: Record<string, object> = {};
 

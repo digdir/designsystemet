@@ -1,6 +1,6 @@
 import { addons } from 'storybook/manager-api';
 
-import customTheme from './customTheme';
+import customTheme from './customThemeLight';
 
 addons.setConfig({
   theme: customTheme,

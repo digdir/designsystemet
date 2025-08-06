@@ -50,6 +50,34 @@
     color-scheme: auto;
   }
 
+  #storybook-explorer-menu {
+    & :not([data-selected="true"]) button,
+    & :not([data-selected="true"]) a {
+      color: var(--ds-color-neutral-text-default) !important;
+    }
+  }
+
+  .sidebar-header {
+    & a {
+      color: var(--ds-color-neutral-text-default) !important;
+    }
+  }
+
+  .sb-bar {
+    & button,
+    & a {
+      color: var(--ds-color-neutral-text-default) !important;
+    }
+  }
+
+  [data-testid="tooltip"] {
+    & button span span,
+    & a,
+    & a span span {
+      color: var(--ds-color-neutral-text-default) !important;
+    }
+  }
+
   body {
     color: var(--ds-color-neutral-text-default);
     background-color: var(--ds-color-neutral-background-default);
