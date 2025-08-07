@@ -77,11 +77,25 @@ Colors.parameters = {
 export const Icons: StoryFn<typeof Tag> = ({ ...rest }) => {
   return (
     <>
-      <Tag data-color='neutral' data-size='md' {...rest}>
+      <Tag
+        data-color='neutral'
+        data-size='md'
+        style={{
+          paddingInlineStart: 'var(--ds-size-1)',
+        }}
+        {...rest}
+      >
         <RobotIcon style={{ marginInlineEnd: 'var(--ds-size-1)' }} />
         Teksten er KI-generert
       </Tag>
-      <Tag data-color='info' data-size='md' {...rest}>
+      <Tag
+        data-color='info'
+        data-size='md'
+        style={{
+          paddingInlineStart: 'var(--ds-size-1)',
+        }}
+        {...rest}
+      >
         <ParagraphIcon style={{ marginInlineEnd: 'var(--ds-size-1)' }} />
         Forvaltningsloven §1
       </Tag>
