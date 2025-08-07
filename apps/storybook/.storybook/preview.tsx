@@ -298,53 +298,13 @@ const preview: Preview = {
   loaders: isChromatic() && document.fonts ? [fontsLoader] : [],
 };
 
-/* Add this back when https://github.com/storybookjs/storybook/issues/29189 is fixed */
-/* export const decorators = [
-  withThemeByDataAttribute({
-    themes: {
-      Light: 'light',
-      Dark: 'dark',
-      Auto: 'auto',
-    },
-    defaultTheme: 'Light',
-    attributeName: 'data-color-scheme',
-    parentSelector:
-      '.sbdocs-preview .docs-story div:first-of-type, .sb-show-main:has(#storybook-docs[hidden="true"])',
-  }),
-]; */
-
-// Listen for global changes from manager
 const channel = addons.getChannel();
 
-// Store manager theme for decorator access
-let currentManagerTheme = 'auto';
-
 channel.on('globalsUpdated', (data) => {
-  console.log('Preview: Received globals update:', data);
-
   if (data.globals?.managerColorScheme) {
     const newScheme = data.globals.managerColorScheme;
-    console.log('Preview: Manager color scheme updated to:', newScheme);
-
-    // Store the theme for decorator access
-    currentManagerTheme = newScheme;
-
-    // You can add your logic here to handle the manager color scheme change
-    // This affects the overall Storybook UI/iframe but not individual stories
     document.body.setAttribute('data-color-scheme', newScheme);
-
-    // Force re-render of stories when manager theme changes in auto mode
-    window.dispatchEvent(
-      new CustomEvent('storybook-manager-theme-changed', {
-        detail: newScheme,
-      }),
-    );
   }
 });
-
-// Export manager theme getter for decorator
-(
-  window as unknown as { __storybookManagerTheme: () => string }
-).__storybookManagerTheme = () => currentManagerTheme;
 
 export default preview;
