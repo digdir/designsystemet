@@ -7,7 +7,7 @@ import * as ListStories from './list.stories';
 
 # List
 
-Lister er strukturelementer, som gjør at vi kan utheve viktig informasjon for brukerne, eller fortelle dem at de må gjøre noe i en bestemt rekkefølge.
+`List` brukes for å presentere innhold på en oversiktlig og strukturert måte, for eksempel for å oppsummere hovedpunkter eller vise brukeren hvilke trinn som må følges i en bestemt rekkefølge.
 
 <Primary />
 <Controls />
@@ -66,15 +66,14 @@ Vi kan bruke `List` til å lage en liste med lenker, og i eksempelet under har v
 <Canvas of={ListStories.ListeMedLenker} />
 
 ## Retningslinjer
+Lister gjør innhold lettere å skumme og forstå. Bruk sorterte (ordnede) lister når rekkefølgen er viktig, og usorterte når den ikke er det. Vær bevisst på strukturen, og unngå lange punktrekker. Del heller opp i flere korte lister for bedre lesbarhet.
 
-Vi bruker lister til å strukturere innhold og utheve informasjon som er viktig for brukerne, eller fortelle dem at de må gjøre noe i en bestemt rekkefølge.
-
-Passer til å
+**Passer til å**
 
 - gi brukerne rask oversikt over innhold i lengre tekster
 - liste opp kriterier
 
-Passer ikke til å
+**Passer ikke til å**
 
 - vise brukerne lengre innhold
 - sammenligne flere grupper av informasjon
@@ -83,26 +82,26 @@ Passer ikke til å
 
 Alle elementer i en liste bør ha samme form og struktur.
 
-Når hvert punkt er en fortsettelse av innledningen til punktlisten, bruker vi
+Når hvert punkt er en fortsettelse av innledningen bruker vi
 
 - liten forbokstav i punktene
 - ikke kolon etter innledningen
 - ikke punktum eller komma til slutt på hvert punkt
 
-Når punktene er hele setninger, bruker vi
+Når punktene er hele setninger, bruker vi:
 
-- stor forbokstav i det første ordet
-- punktum til slutt på hvert punkt
+- Stor forbokstav i det første ordet, slik at hvert punkt leses som en selvstendig setning.
+- Punktum til slutt på hvert punkt, for å markere at setningen er avsluttet.
 
 ## Tilgjengelighet
 
 ### Lister til navigasjon
 
-Dersom liste brukes som navigasjonselement (for eksempel i bunn eller ved siden av hovedinnholdet), 
-kan du legge et `<nav>` element rundt med `aria-label=""` for å gi skjermlesere en bedre brukeropplevelse.
-Dette gjøres siden [W3C anbefaler](https://www.w3.org/TR/using-aria/#label-support) å unngå `aria-label` / `aria-labelledby` rett på `ul`/`ol`.
+Dersom `List` brukes som navigasjonselement (for eksempel i bunn eller ved siden av hovedinnholdet), 
+kan du legge `<nav>` rundt med `aria-label=""` for å gi skjermlesere en bedre brukeropplevelse.
+Dette gjøres siden W3C anbefaler å unngå `aria-label` / `aria-labelledby` rett på `<ul>`/`<ol>`. Les mer på W3Cs artikkel ["Practical Support: aria-label, aria-labelledby and aria-describedby" (w3.org)](https://www.w3.org/TR/using-aria/#label-support)
 
-#### Eksempel på `nav`
+#### Eksempel på `<nav>`
 
 ```tsx
 <nav aria-label="Snarveier">
@@ -120,15 +119,15 @@ Dette gjøres siden [W3C anbefaler](https://www.w3.org/TR/using-aria/#label-supp
 </nav>
 ```
 
-### `menu` istedenfor `ul`
+### `<menu>` istedenfor `<ul>`
 
-Usorterte lister kan byttest ut med `menu`, som er et semantisk alternativ til `ul`.
+Usorterte lister kan byttest ut med `<menu>`, som er et semantisk alternativ til `<ul>`.
 Begge elementene representerer en usortert liste, og nettlesere oppfatter disse likt.
-Forskjellen er at `menu` er tiltenkt interaktive elementer.
+Forskjellen er at `<menu>` er tiltenkt interaktive elementer.
 
-#### Eksempel på `menu`
+#### Eksempel på `<menu>`
 
-Dette er et eksempel der `List.Unordered` har blitt endra til `menu`, og intensjonen
+Dette er et eksempel der `List.Unordered` har blitt endra til `<menu>`, og intensjonen
 for listen er å vise knapper som utfører en funksjonalitet i applikasjonen.
 
 ```tsx
