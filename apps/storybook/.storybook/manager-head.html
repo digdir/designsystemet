@@ -442,8 +442,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     & [data-highlightable="true"] {
       &:hover {
-        background-color: var(--ds-color-accent-base-hover) !important;
-        color: var(--ds-color-accent-base-contrast-default) !important;
+        background-color: var(--ds-color-accent-surface-hover) !important;
+        color: var(--ds-color-accent-text-default) !important;
+      }
+
+      &[data-selected="true"] {
+        &:hover {
+          background-color: var(--ds-color-accent-base-hover) !important;
+          color: var(--ds-color-accent-base-contrast-default) !important;
+        }
       }
     }
 }
