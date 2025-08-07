@@ -21,5 +21,7 @@ jobs:
       - uses: ./.github/actions/gh-setup
       - name: Install Dependencies
         run: pnpm install
-      - name: Check Node Compatibility (Node ${{ matrix.node-version }})
+      - name: Build CLI (Node ${{ matrix.node-version }})
+        run: pnpm build:cli
+      - name: Test CLI (Node ${{ matrix.node-version }})
         run: pnpm test:cli
