@@ -85,7 +85,7 @@
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^22.17.0",
     "@types/object-hash": "^3.0.6",
-    "@types/ramda": "^0.30.2",
+    "@types/ramda": "^0.31.0",
     "fs-extra": "^11.3.0",
     "tslib": "^2.8.1",
     "tsup": "^8.5.0",
