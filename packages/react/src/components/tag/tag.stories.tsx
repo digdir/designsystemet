@@ -85,7 +85,10 @@ export const Icons: StoryFn<typeof Tag> = ({ ...rest }) => {
         }}
         {...rest}
       >
-        <RobotIcon style={{ marginInlineEnd: 'var(--ds-size-1)' }} />
+        <RobotIcon
+          aria-hidden
+          style={{ marginInlineEnd: 'var(--ds-size-1)' }}
+        />
         Teksten er KI-generert
       </Tag>
       <Tag
@@ -96,7 +99,10 @@ export const Icons: StoryFn<typeof Tag> = ({ ...rest }) => {
         }}
         {...rest}
       >
-        <ParagraphIcon style={{ marginInlineEnd: 'var(--ds-size-1)' }} />
+        <ParagraphIcon
+          aria-hidden
+          style={{ marginInlineEnd: 'var(--ds-size-1)' }}
+        />
         Forvaltningsloven §1
       </Tag>
     </>
