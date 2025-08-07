@@ -18,7 +18,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-      - uses: ./.github/actions/gh-setup
+          cache: 'pnpm'
       - name: Install Dependencies
         run: pnpm install
       - name: Build CLI (Node ${{ matrix.node-version }})
