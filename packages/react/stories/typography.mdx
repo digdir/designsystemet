@@ -14,7 +14,7 @@ Typografi er en viktig del av det å bygge opp innhold på en nettside. Det er a
 
 ## Font
 
-Typografikomponentene har verken innebygd eller forhåndsdefinert fontfamilie. Det er opp til brukeren å importere ønsket skrifttype selv. Komponentene i Designsystemet er testet med fonten [Inter](https://rsms.me/inter/) som er spesielt utviklet for å gi god lesbarhet på skjermer. [Mer om hvorfor vi valgte Inter](https://www.designsystemet.no/no/fundamentals/design-tokens/typography#font-family). 
+Typografikomponentene har verken innebygd eller forhåndsdefinert fontfamilie. Det er opp til brukeren å importere ønsket skrifttype selv. Komponentene i Designsystemet er testet med fonten [Inter](https://rsms.me/inter/), som er spesielt utviklet for å gi god lesbarhet på skjermer. [Mer om hvorfor vi valgte Inter](https://www.designsystemet.no/no/fundamentals/design-tokens/typography#font-family). 
 
 Inter er tilgjengelig i Altinn CDN.
 
@@ -33,17 +33,24 @@ Til `font-family` anbefaler vi følgende sammensetning med fallback til `Arial`.
 font-family: 'Inter', Arial, sans-serif;
 ```
 
-## Bruk
-Typografien er delt inn i fire kategorier som er ment å dekke alle behov som måtte dukke opp på et nettsted:
+## Typografikomponenter
+Typografien er delt inn i fire kategorier som skal dekke de vanligste behovene på et nettsted:
 
+- [`Heading`](#heading)
+- [`Paragraph`](#paragraph)
+- [`Label`](#label)
+- [`ValidationMessage`](#validationmessage)
 
 ### Heading
 
-Alle oversikrifter skal bruke `Heading`-komponenten. Dette er tekst med en tyngre font-vektning og større font-størrelse som grupperer innhold som kommer under.
+## Overskrifter
 
-Det skal kun vere 1 `<h1>` tag per side, men det kan vere flere h2-h6. Det er viktig at heading-hirarkiet på en side går logisk fra `<h1>` og nedover både når det kommer til størrelse og rekkefølge (se bruk).
+Alle overskrifter skal bruke `Heading`-komponenten. Denne har tyngre fontvekt og større skriftstørrelse, og brukes til å strukturere innholdet visuelt og semantisk.
 
-H1 trenger ikke vere samme størrelse på alle nettsider. I en intern admin applikasjon kan H1 for eksempel vere 36px, mens på en annen nettside 44px. Det som er viktig er at H1-H6 skalerer logiske nedover i størrelse.
+Det skal kun være én `<h1>` per side, men det kan være flere `<h2>` til `<h6>`. Det er viktig at overskriftene følger en logisk, hierarkisk rekkefølge – både i størrelse og semantisk struktur – fra `<h1>` og nedover.  
+*(Se eksempler under "Bruk").*
+
+Størrelsen på `<h1>` kan variere mellom ulike løsninger. I en intern admin-applikasjon kan den for eksempel være 36 px, mens den på et offentlig nettsted kan være 44 px. Det viktigste er at nivåene fra `<h1>` til `<h6>` skalerer logisk nedover i størrelse.
 
 <Canvas of={HeadingStories.Preview} />
 <Controls of={HeadingStories.Preview} />
