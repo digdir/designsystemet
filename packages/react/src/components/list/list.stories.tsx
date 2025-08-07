@@ -11,9 +11,9 @@ export default {
 
 export const Preview: Story = (args) => (
   <List.Unordered {...args}>
-    <List.Item>du har endret familiesituasjon</List.Item>
-    <List.Item>du har mistet inntekt eller jobb</List.Item>
-    <List.Item>du har behov for tilrettelegging i hverdagen</List.Item>
+    <List.Item>Bøyabreen</List.Item>
+    <List.Item>Briksdalsbreen</List.Item>
+    <List.Item>Nigardsbreen</List.Item>
   </List.Unordered>
 );
 
