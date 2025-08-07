@@ -160,6 +160,10 @@
       background-color: var(--ds-color-neutral-background-tinted);
       border-color: var(--ds-color-neutral-border-subtle);
     }
+
+    pre code {
+      border-color: transparent !important;
+    }
   }
 }
 
@@ -235,6 +239,10 @@
         color: var(--ds-color-neutral-text-default);
         background-color: var(--ds-color-neutral-background-tinted);
         border-color: var(--ds-color-neutral-border-subtle);
+      }
+
+      pre code {
+        border-color: transparent !important;
       }
     }
   }
