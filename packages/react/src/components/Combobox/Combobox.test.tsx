@@ -2,7 +2,7 @@ import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import type { FormEvent } from 'react';
 import { act } from 'react';
-import { Combobox } from '.';
+import { Combobox } from './';
 import type { ComboboxProps } from './Combobox';
 
 const PLACES = [
@@ -27,20 +27,18 @@ const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const Comp = (args: Partial<ComboboxProps>) => {
   return (
-    <>
-      <Combobox {...args}>
-        <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-        {PLACES.map((option, index) => (
-          <Combobox.Option
-            key={index}
-            value={option.value}
-            displayValue={option.name}
-          >
-            {option.name}
-          </Combobox.Option>
-        ))}
-      </Combobox>
-    </>
+    <Combobox {...args}>
+      <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+      {PLACES.map((option, index) => (
+        <Combobox.Option
+          key={index}
+          value={option.value}
+          displayValue={option.name}
+        >
+          {option.name}
+        </Combobox.Option>
+      ))}
+    </Combobox>
   );
 };
 

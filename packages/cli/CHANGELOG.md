@@ -1,5 +1,47 @@
 # Change Log
 
+## 1.1.9
+
+## 1.1.8
+
+### Patch Changes
+
+- Add typings for `ColorScheme` (used for `data-color-scheme`) ([#3879](https://github.com/digdir/designsystemet/pull/3879))
+
+## 1.1.7
+
+## 1.1.6
+
+### Patch Changes
+
+- Added new type declaration files for theme types when building tokens; `types.d.ts`. **_Use this instead of `colors.d.ts`._** ([#3837](https://github.com/digdir/designsystemet/pull/3837))
+
+- Deprecate `colors.d.ts` from `tokens build`. Replaced by `types.d.ts`. ([#3837](https://github.com/digdir/designsystemet/pull/3837))
+
+- Updated non-major dependencies ([#3868](https://github.com/digdir/designsystemet/pull/3868))
+
+- Add new export for augmented theme types; `@digdir/designsystemet/types`. ([#3837](https://github.com/digdir/designsystemet/pull/3837))
+  Use this with generated theme declaration file for types for your theme.
+
+## 1.1.5
+
+## 1.1.4
+
+### Patch Changes
+
+- Updated non-major dependencies ([#3803](https://github.com/digdir/designsystemet/pull/3803))
+
+- Fixed type declaration producing invalid syntax when a color name includes hyphens ([#3802](https://github.com/digdir/designsystemet/pull/3802))
+
+- fix: letter-spacing now uses `em` unit instead of invalid percentage unit ([#3759](https://github.com/digdir/designsystemet/pull/3759))
+  - **Note:** Users should run `npx @digdir/designsystemet@latest tokens build <options>` to rebuild css-variables with now valid letter-spacing. This will result in a slight visual change in the typography.
+
+- Removed non-working `--preview` option ([#3758](https://github.com/digdir/designsystemet/pull/3758))
+
+- Updated non-major dependencies ([#3838](https://github.com/digdir/designsystemet/pull/3838))
+
+## 1.1.3
+
 ## 1.1.2
 
 ## 1.1.1

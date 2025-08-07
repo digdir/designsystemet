@@ -38,31 +38,60 @@ const copyDirectory = (src, dest) => {
         }
       }
     }
+    console.log(`Successfully copied from ${src} to ${dest}`);
   } catch (error) {
     console.error(`Error reading directory ${src}:`, error);
   }
 };
 
+console.log('Executing copy files script...');
 const contentPath = join(dirname, 'app/content');
-const distPath = join(dirname, 'dist/content');
-const clientPath = join(dirname, 'dist/client/app/content');
+const serverDistPath = join(dirname, 'dist/server');
 
 try {
-  if (!existsSync(distPath)) {
-    mkdirSync(distPath, { recursive: true });
+  if (!existsSync(serverDistPath)) {
+    mkdirSync(serverDistPath, { recursive: true });
   }
 
-  copyDirectory(contentPath, distPath);
+  const folders = readdirSync(serverDistPath, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name);
+
+  for (const folder of folders) {
+    const folderPath = join(serverDistPath, folder, 'app', 'content');
+    copyDirectory(contentPath, folderPath);
+    console.log(
+      `Successfully copied content from ${contentPath} to ${folderPath}`,
+    );
+  }
+
+  copyDirectory(contentPath, join(serverDistPath, 'app', 'content'));
 } catch (error) {
   console.error(`Error copying content directory:`, error);
 }
 
-try {
-  if (!existsSync(clientPath)) {
-    mkdirSync(clientPath, { recursive: true });
-  }
+/* take generated sitemap.xml from /public and move it to /dist/client */
+const sitemapPath = join(dirname, 'public', 'sitemap.xml');
+const sitemapClientPath = join(dirname, 'dist', 'client', 'sitemap.xml');
 
-  copyDirectory(contentPath, clientPath);
-} catch (error) {
-  console.error(`Error copying content directory:`, error);
+if (existsSync(sitemapPath)) {
+  try {
+    copyFileSync(sitemapPath, sitemapClientPath);
+    console.log(`Successfully copied sitemap.xml to ${sitemapClientPath}`);
+  } catch (error) {
+    console.error(`Error copying sitemap.xml:`, error);
+  }
+}
+
+/* take generated robots.txt from /public and move it to /dist/client */
+const robotsPath = join(dirname, 'public', 'robots.txt');
+const robotsClientPath = join(dirname, 'dist', 'client', 'robots.txt');
+
+if (existsSync(robotsPath)) {
+  try {
+    copyFileSync(robotsPath, robotsClientPath);
+    console.log(`Successfully copied robots.txt to ${robotsClientPath}`);
+  } catch (error) {
+    console.error(`Error copying robots.txt:`, error);
+  }
 }

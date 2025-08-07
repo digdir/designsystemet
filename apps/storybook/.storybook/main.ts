@@ -86,6 +86,7 @@ const config: StorybookConfig = {
   framework: {
     name: '@storybook/react-vite',
     options: {
+      strictMode: true,
       builder: {
         viteConfigPath: resolve(dirname, '../../../vite.config.ts'),
       },

@@ -1,0 +1,18 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Alert } from '../../../../components';
+
+<Meta title='Utilities/useIsomorphicLayoutEffect' />
+
+<Alert data-color="warning">Denne React hooken deprecated, vi anbefaler å bruke et utility/hook bibliotek eller kopier kildekoden om du fortsatt trenger denne funksjonaliteten.</Alert>
+
+# useIsomorphicLayoutEffect
+
+Hook som bruker enten `useLayoutEffect` eller `useEffect` avhengig av om det kjører på klienten eller serveren.
+
+```tsx
+useIsomorphicLayoutEffect(() => {
+  console.log(
+    'I nettleseren, er eg `useLayoutEffect`, men i SSR, er eg `useEffect`.',
+  );
+}, []);
+```

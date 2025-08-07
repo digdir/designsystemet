@@ -2,14 +2,7 @@ import type { Meta, StoryFn } from '@storybook/react-vite';
 import type { FormEvent } from 'react';
 import { useState } from 'react';
 import { expect, userEvent, within } from 'storybook/test';
-
-import { Button } from '../Button';
-import { Chip } from '../Chip';
-import { Dialog } from '../Dialog';
-import { Divider } from '../Divider';
-import { Heading } from '../Heading';
-import { Paragraph } from '../Paragraph';
-import { Switch } from '../Switch';
+import { Button, Chip, Dialog, Divider, Heading, Paragraph, Switch } from '../';
 import { data } from './data/data';
 import { Combobox } from './index';
 
@@ -105,16 +98,14 @@ const PLACES = [
 
 export const Preview: StoryFn<typeof Combobox> = (args) => {
   return (
-    <>
-      <Combobox {...args}>
-        <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-        {PLACES.map((item, index) => (
-          <Combobox.Option key={index} value={item.value}>
-            {item.name}
-          </Combobox.Option>
-        ))}
-      </Combobox>
-    </>
+    <Combobox {...args}>
+      <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+      {PLACES.map((item, index) => (
+        <Combobox.Option key={index} value={item.value}>
+          {item.name}
+        </Combobox.Option>
+      ))}
+    </Combobox>
   );
 };
 
@@ -135,22 +126,20 @@ export const Multiple: StoryFn<typeof Combobox> = (args) => {
   const [value, setValue] = useState<string[]>([]);
 
   return (
-    <>
-      <Combobox
-        {...args}
-        value={value}
-        onValueChange={(value) => {
-          setValue(value);
-        }}
-      >
-        <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-        {PLACES.map((item, index) => (
-          <Combobox.Option key={index} value={item.value}>
-            {item.name}
-          </Combobox.Option>
-        ))}
-      </Combobox>
-    </>
+    <Combobox
+      {...args}
+      value={value}
+      onValueChange={(value) => {
+        setValue(value);
+      }}
+    >
+      <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+      {PLACES.map((item, index) => (
+        <Combobox.Option key={index} value={item.value}>
+          {item.name}
+        </Combobox.Option>
+      ))}
+    </Combobox>
   );
 };
 
@@ -275,35 +264,33 @@ export const InForm: StoryFn<typeof Combobox> = (args) => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <Combobox
-          {...args}
-          value={value}
-          multiple={true}
-          onValueChange={(value) => {
-            setValue(value);
-          }}
-          name='sted'
-        >
-          <Combobox.Empty>Fant ingen treff</Combobox.Empty>
-          {PLACES.map((item, index) => (
-            <Combobox.Option key={index} value={item.value}>
-              {item.name}
-            </Combobox.Option>
-          ))}
-        </Combobox>
+    <form onSubmit={handleSubmit}>
+      <Combobox
+        {...args}
+        value={value}
+        multiple={true}
+        onValueChange={(value) => {
+          setValue(value);
+        }}
+        name='sted'
+      >
+        <Combobox.Empty>Fant ingen treff</Combobox.Empty>
+        {PLACES.map((item, index) => (
+          <Combobox.Option key={index} value={item.value}>
+            {item.name}
+          </Combobox.Option>
+        ))}
+      </Combobox>
 
-        <Button
-          style={{
-            marginTop: '1rem',
-          }}
-          type='submit'
-        >
-          Send!
-        </Button>
-      </form>
-    </>
+      <Button
+        style={{
+          marginTop: '1rem',
+        }}
+        type='submit'
+      >
+        Send!
+      </Button>
+    </form>
   );
 };
 

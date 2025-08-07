@@ -28,8 +28,8 @@
       display: flex;
     }
 
-    & button,
-    & u-tab {
+    & > [role='tab'] /* Using role= instead og <button> to allow non-tab-buttons in same parent */,
+    & > u-tab {
       align-items: center;
       background: none;
       border: 0;

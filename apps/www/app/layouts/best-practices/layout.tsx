@@ -8,7 +8,10 @@ import {
   BannerIcon,
   BannerIngress,
 } from '~/_components/banner/banner';
-import { getFileFromContentDir, getFilesFromContentDir } from '~/_utils/files';
+import {
+  getFileFromContentDir,
+  getFilesFromContentDir,
+} from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import type { Route } from './+types/layout';
 import classes from './layout.module.css';

@@ -1,5 +1,51 @@
 # Change Log
 
+## 1.1.9
+
+## 1.1.8
+
+## 1.1.7
+
+## 1.1.6
+
+## 1.1.5
+
+### Patch Changes
+
+- **Table:** ([#3859](https://github.com/digdir/designsystemet/pull/3859))
+  - sorting icon never shrinks, even when using `Button` component (which is `display: flex`) as parent
+  - with `data-border` adjusts `border-radius` according to `border-width`
+
+- **Tabs:** adjusted to allow non-tab-button-elements inside `tablist` ([#3859](https://github.com/digdir/designsystemet/pull/3859))
+
+- **Details:** content using `overflow: hidden` to prevent margin clipping ([#3859](https://github.com/digdir/designsystemet/pull/3859))
+
+## 1.1.4
+
+### Patch Changes
+
+- **Avatar**: Text as children have same font-size as data-initials ([#3835](https://github.com/digdir/designsystemet/pull/3835))
+
+- **Select**: Flip chevron when open, uses [`:open` with limited availability](https://developer.mozilla.org/en-US/docs/Web/CSS/:open). Does not work in Safari ([#3846](https://github.com/digdir/designsystemet/pull/3846))
+
+- Updated non-major dependencies ([#3803](https://github.com/digdir/designsystemet/pull/3803))
+
+- **SkipLink**: Class is now `ds-skip-link`. Filename is now `skip-link.css`. ([#3829](https://github.com/digdir/designsystemet/pull/3829))
+  The old class and file is still present, and can imported and used as before. This will be removed in the next major version.
+
+- **ToggleGroup**: Class is now `ds-toggle-group`. Filename is now `toggle-group.css`. ([#3829](https://github.com/digdir/designsystemet/pull/3829))
+  The old class and file is still present, and can imported and used as before. This will be removed in the next major version.
+
+## 1.1.3
+
+### Patch Changes
+
+- **Field**: The gap between `label` and `Radio`/`Checkbox`/`Switch` is now clickable ([#3785](https://github.com/digdir/designsystemet/pull/3785))
+
+- **Details**: Single outer padding when multiple children ([#3796](https://github.com/digdir/designsystemet/pull/3796))
+
+- Round to nearest 1px a few places ([#3786](https://github.com/digdir/designsystemet/pull/3786))
+
 ## 1.1.2
 
 ### Patch Changes

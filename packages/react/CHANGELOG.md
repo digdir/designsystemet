@@ -1,5 +1,87 @@
 # Change Log
 
+## 1.1.9
+
+### Patch Changes
+
+- Add documentation for augmented React data attribute types (`data-color`, `data-size`, `data-color-scheme`) ([#3881](https://github.com/digdir/designsystemet/pull/3881))
+
+## 1.1.8
+
+### Patch Changes
+
+- Add typings for `data-color-scheme` on JSX elements in React using `react-types.d.ts` ([#3879](https://github.com/digdir/designsystemet/pull/3879))
+
+## 1.1.7
+
+### Patch Changes
+
+- Deprecate unintended exported `omit` utility ([#3873](https://github.com/digdir/designsystemet/pull/3873))
+
+- Deprecate `useDebounceCallback`, `useIsomorphicLayoutEffect` and `useMediaQuery`. Use utility libraries or create your own utility function. ([#3873](https://github.com/digdir/designsystemet/pull/3873))
+
+## 1.1.6
+
+### Patch Changes
+
+- Fix missing jsdocs for compound components (Component with sub-components on the component, e.g. `Details.Summary` etc) ([#3865](https://github.com/digdir/designsystemet/pull/3865))
+
+- Updated non-major dependencies ([#3868](https://github.com/digdir/designsystemet/pull/3868))
+
+- Deprecate `@digdir/designsystemet-react/color` module. Replaced by `@digdir/designsystemet/types`. ([#3837](https://github.com/digdir/designsystemet/pull/3837))
+
+## 1.1.5
+
+### Patch Changes
+
+- **Suggestion:** Fix controlled value being cleared if edited in React 18 strict mode. ([#3853](https://github.com/digdir/designsystemet/pull/3853))
+
+- **Dialog**: Fix `onClose` being called twice when React is in strict mode ([#3854](https://github.com/digdir/designsystemet/pull/3854))
+
+- **Field, Checkbox, Radio, Switch, Textfield**: Fix duplicate ids in `aria-describedby` when React is in strict mode ([#3854](https://github.com/digdir/designsystemet/pull/3854))
+
+- **Suggestion:** ([#3857](https://github.com/digdir/designsystemet/pull/3857))
+  - Deprecated `value`, use `selected` instead
+  - Deprecated `defaultValue`, use `defaultSelected` instead
+  - Deprecated `onValueChange`, use `onSelectedChange` instead
+  - Deprecated `Suggestion.Chips`, use `renderSelected` on `Suggestion` instead
+  - Add `onBeforeMatch` to `Suggestion` for custom matching
+  - Revert input `value` to current `selected` when no match
+
+## 1.1.4
+
+### Patch Changes
+
+- Internal change: Removed index files that only exported one component. ([#3836](https://github.com/digdir/designsystemet/pull/3836))
+
+- **Avatar**: Text as children have same font-size as data-initials ([#3835](https://github.com/digdir/designsystemet/pull/3835))
+
+- **Suggestion**: fix crash when changing the value if the initial value was an empty string ([#3818](https://github.com/digdir/designsystemet/pull/3818))
+
+- Updated non-major dependencies ([#3803](https://github.com/digdir/designsystemet/pull/3803))
+
+- **Suggestion**: now triggers change on enter or blur, or when clicking an option - not while typing ([#3833](https://github.com/digdir/designsystemet/pull/3833))
+
+- **Suggestion**: Use popover API for datalist ([#3845](https://github.com/digdir/designsystemet/pull/3845))
+
+- Updated non-major dependencies ([#3838](https://github.com/digdir/designsystemet/pull/3838))
+
+- Internal change: Use kebab case instead of pascal case for files and folders ([#3819](https://github.com/digdir/designsystemet/pull/3819))
+
+## 1.1.3
+
+### Patch Changes
+
+- **Field**: Make sure there will be no duplicate IDs when having multiple of the same `data-field` type ([#3794](https://github.com/digdir/designsystemet/pull/3794))
+
+- **Textfield**: Fix wrong type definition for `type` prop ([#3797](https://github.com/digdir/designsystemet/pull/3797))
+
+- **Suggestion**: Visual value didn't correctly update in single mode when controlled value was updated externally ([#3782](https://github.com/digdir/designsystemet/pull/3782))
+
+- Fix typo in `Suggestion.Chips` jsdoc ([#3798](https://github.com/digdir/designsystemet/pull/3798))
+
+- **usePagination**: Don't send negative pages if `showPages` is greater than `totalPages` ([#3793](https://github.com/digdir/designsystemet/pull/3793))
+
 ## 1.1.2
 
 ### Patch Changes

@@ -1,12 +1,11 @@
-export type { UseCheckboxGroupProps } from './useCheckboxGroup/useCheckboxGroup';
-export { useCheckboxGroup } from './useCheckboxGroup/useCheckboxGroup';
-export { useDebounceCallback } from './useDebounceCallback/useDebounceCallback';
-export { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect/useIsomorphicLayoutEffect';
-export { useMediaQuery } from './useMediaQuery/useMediaQuery';
-export { useMergeRefs } from './useMergeRefs/useMergeRefs';
-export type { UsePaginationProps } from './usePagination/usePagination';
-export { usePagination } from './usePagination/usePagination';
-
-export type { UseRadioGroupProps } from './useRadioGroup/useRadioGroup';
-export { useRadioGroup } from './useRadioGroup/useRadioGroup';
-export { useSynchronizedAnimation } from './useSynchronizedAnimation/useSynchronizedAnimation';
+export { useDebounceCallback } from './deprecated/use-debounce-callback/use-debounce-callback';
+export { useIsomorphicLayoutEffect } from './deprecated/use-isomorphic-layout-effect/use-isomorphic-layout-effect';
+export { useMediaQuery } from './deprecated/use-media-query/use-media-query';
+export type { UseCheckboxGroupProps } from './use-checkbox-group/use-checkbox-group';
+export { useCheckboxGroup } from './use-checkbox-group/use-checkbox-group';
+export { useMergeRefs } from './use-merge-refs/use-merge-refs';
+export type { UsePaginationProps } from './use-pagination/use-pagination';
+export { usePagination } from './use-pagination/use-pagination';
+export type { UseRadioGroupProps } from './use-radio-group/use-radio-group';
+export { useRadioGroup } from './use-radio-group/use-radio-group';
+export { useSynchronizedAnimation } from './use-synchronized-animation/use-synchronized-animation';

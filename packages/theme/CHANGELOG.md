@@ -1,5 +1,28 @@
 # Change Log
 
+## 1.1.9
+
+## 1.1.8
+
+## 1.1.7
+
+## 1.1.6
+
+### Patch Changes
+
+- Deprecate `colors.d.ts` from `tokens build`. Replaced by `types.d.ts`. ([#3837](https://github.com/digdir/designsystemet/pull/3837))
+
+## 1.1.5
+
+## 1.1.4
+
+### Patch Changes
+
+- fix: letter-spacing now uses `em` unit instead of invalid percentage unit ([#3759](https://github.com/digdir/designsystemet/pull/3759))
+  - **Note:** Users should run `npx @digdir/designsystemet@latest tokens build <options>` to rebuild css-variables with now valid letter-spacing. This will result in a slight visual change in the typography.
+
+## 1.1.3
+
 ## 1.1.2
 
 ## 1.1.1

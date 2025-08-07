@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.0.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.1.3/schema.json",
   "assist": {
     "actions": { "source": { "organizeImports": "on" } }
   },
@@ -16,13 +16,11 @@
       "!**/.github/**",
       "!**/.changeset/**",
       "!**/design-tokens/**/*",
-      "!**/apps/www/app/tokens/**",
       "!**/dist/**/*",
       "!**/packages/theme/**/*.css",
       "!**/tsconfig.*.json", // https://github.com/biomejs/biome/issues/1151
       "!**/.react-router/**",
-      "!**/package.json", // changeset wants the files to be formatted differently
-      "!**/colors.d.ts" // Ignore empty import for now
+      "!**/package.json" // changeset wants the files to be formatted differently
     ]
   },
   "formatter": {
@@ -55,7 +53,10 @@
       },
       "correctness": {
         "useExhaustiveDependencies": "off",
-        "noUnusedImports": "error"
+        "noUnusedImports": {
+          "level": "warn",
+          "fix": "none" // we need empty imports in generated types.d.ts from @digdir/designsystemet
+        }
       },
       "style": {
         "useTemplate": "off",

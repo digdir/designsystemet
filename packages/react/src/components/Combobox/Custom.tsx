@@ -3,12 +3,10 @@ import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext, useId, useMemo } from 'react';
-
-import { omit } from '../../utilities';
-import { Label } from '../Label';
-
+import { Label } from '../label/label';
 import { ComboboxContext } from './ComboboxContext';
 import { useComboboxId } from './ComboboxIdContext';
+import { omit } from './omit/omit';
 
 type InteractiveProps = {
   interactive: true;
@@ -76,6 +74,7 @@ const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
 
     return (
       <Label data-size={size} asChild>
+        {/* biome-ignore lint/a11y/useSemanticElements: we want this to be an option */}
         <Component
           ref={combinedRef}
           tabIndex={-1}

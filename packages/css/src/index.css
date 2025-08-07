@@ -15,7 +15,7 @@
 @import url('./fieldset.css') layer(ds.components);
 @import url('./alert.css') layer(ds.components);
 @import url('./popover.css') layer(ds.components);
-@import url('./skiplink.css') layer(ds.components);
+@import url('./skip-link.css') layer(ds.components);
 @import url('./details.css') layer(ds.components);
 @import url('./search.css') layer(ds.components);
 @import url('./dialog.css') layer(ds.components);
@@ -29,7 +29,7 @@
 @import url('./skeleton.css') layer(ds.components);
 @import url('./tag.css') layer(ds.components);
 @import url('./error-summary.css') layer(ds.components);
-@import url('./togglegroup.css') layer(ds.components);
+@import url('./toggle-group.css') layer(ds.components);
 @import url('./tooltip.css') layer(ds.components);
 @import url('./spinner.css') layer(ds.components);
 @import url('./table.css') layer(ds.components);

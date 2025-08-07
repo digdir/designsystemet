@@ -15,7 +15,10 @@ import BlogCard from '~/_components/blog-card/blog-card';
 import { ImageBanner } from '~/_components/image-banner/image-banner';
 import { NavigationCard } from '~/_components/navigation-card/navigation-card';
 import { Section } from '~/_components/section/section';
-import { getFileFromContentDir, getFilesFromContentDir } from '~/_utils/files';
+import {
+  getFileFromContentDir,
+  getFilesFromContentDir,
+} from '~/_utils/files.server';
 import { generateMetadata } from '~/_utils/metadata';
 import i18nConf from '~/i18n';
 import i18n from '~/i18next.server';

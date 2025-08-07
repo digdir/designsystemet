@@ -1,9 +1,5 @@
-import {
-  Button,
-  Heading,
-  Textfield,
-  useDebounceCallback,
-} from '@digdir/designsystemet-react';
+import { Button, Heading, Textfield } from '@digdir/designsystemet-react';
+import { useDebounceCallback } from '@internal/components';
 import cl from 'clsx/lite';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -64,6 +60,7 @@ export const BorderRadiusInput = () => {
             )}
             key={index}
           >
+            {/** biome-ignore lint/a11y/useSemanticElements: TODO: convert to label + input*/}
             <Button
               variant='tertiary'
               data-color='neutral'
@@ -75,7 +72,6 @@ export const BorderRadiusInput = () => {
                   inputRef.current.value = item.value.toString();
                 }
               }}
-              // biome-ignore lint/a11y/useSemanticElements: explaination needed
               role='radio'
               aria-checked={baseBorderRadius === item.value}
               aria-current={baseBorderRadius === item.value}

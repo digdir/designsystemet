@@ -10,7 +10,10 @@ import {
   BannerIngress,
 } from '~/_components/banner/banner';
 import { Sidebar } from '~/_components/sidebar/sidebar';
-import { getFileFromContentDir, getFilesFromContentDir } from '~/_utils/files';
+import {
+  getFileFromContentDir,
+  getFilesFromContentDir,
+} from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import type { Route } from './+types/layout';
 import classes from './layout.module.css';
@@ -26,6 +29,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   }
 
   const mdxFiles = getFilesFromContentDir(join('fundamentals', lang));
+  // console.log('Found MDX files:', mdxFiles);
 
   const cats: {
     [key: string]: {

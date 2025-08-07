@@ -12,6 +12,11 @@ export {
   useRadioGroup,
   useSynchronizedAnimation,
 } from './hooks';
-export * from './omit/omit';
-export * from './RovingFocus';
-export type * from './types';
+export {
+  getNextFocusableValue,
+  getPrevFocusableValue,
+  RovingFocusItem,
+} from './roving-focus/roving-focus-item';
+export { RovingFocusRoot } from './roving-focus/roving-focus-root';
+export { useRovingFocus } from './roving-focus/use-roving-focus';
+export type { MergeRight } from './types';
