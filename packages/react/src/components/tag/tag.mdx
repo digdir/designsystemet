@@ -32,7 +32,7 @@ import { Tag } from '@digdir/designsystemet-react';
 
 ### Ikoner
 
-Du kan bruke ikoner i tags for å gi ekstra visuell informasjon. Du må selv bestemme mellomrom mellom tekst og ikon.
+Du kan bruke ikoner i `Tag` for å gi ekstra visuell informasjon. Du må selv bestemme mellomrom mellom tekst og ikon. Vi anbefaler at `padding` på `Tag` mot ytterste kant er likt `margin` på ikonet.
 
 <Canvas of={TagStories.Icons} />
 
@@ -53,13 +53,11 @@ Bruk `Tag` når du vil hjelpe brukeren med å raskt identifisere innhold basert 
 
 ## Tekst
 - Bruk korte etiketter for enkel skanning. Helst ett ord. Maks to ord dersom det er nødvendig for å beskrive statusen og skille den fra andre tagger.
-- Bruk stor forbokstav og små bokstaver for resten.
 - Bruk ord og begreper som er gjenkjennelige for løsningen, unngå ukjente og fremmede ord.
-- Vil du bruke flere tags sammen, bør du bruke en `<ul>` med en `<li>` for hver tag for å sikre at tagsene blir lest opp hver for seg som en liste og ikke som en setning.
+- Vil du bruke flere tags sammen, bør du bruke en `<ul>` med `<li>` element, slik at tags blir lest opp som en liste.
 
 ## Tilgjengelighet
 Skal du vise flere `Tag` sammen, anbefaler vi å bruke en `<ul>`-liste med én `<li>` per `Tag`. På den måten blir de lest opp som en liste, ikke som én sammenhengende setning, noe som gir en bedre opplevelse for brukere av hjelpemiddelteknologi.
-
 
 ## CSS Variabler
 
