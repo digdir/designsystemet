@@ -22,7 +22,7 @@ jobs:
           cache: 'pnpm'
       - name: Install Dependencies
         run: pnpm install
-      - name : Check Node Version
+      - name: Check Node Version
         run: node --version
       - name: Build CLI (Node ${{ matrix.node-version }})
         run: pnpm build:cli
