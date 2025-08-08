@@ -8,7 +8,7 @@
 
 <script>
   document.documentElement.setAttribute('lang', 'no');
-  document.documentElement.setAttribute('data-color-scheme', 'auto');
+  document.documentElement.setAttribute('data-color-scheme', window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 </script>
 
 <style>

@@ -42,6 +42,7 @@ declare module 'storybook/internal/types' {
   interface Globals {
     codePreview?: 'react' | 'html';
     colorScheme?: 'light' | 'dark' | 'auto';
+    managerColorScheme?: 'light' | 'dark' | 'auto';
   }
 
   interface Parameters {
