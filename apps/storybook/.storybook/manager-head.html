@@ -337,13 +337,24 @@
 }
 
 #panel-tab-content {
+  & button {
+    background: var(--ds-color-neutral-base-default) !important;
+    box-shadow: unset !important;
+    color: var(--ds-color-neutral-base-contrast-default) !important;
+
+    &:hover {
+      background: var(--ds-color-neutral-base-hover) !important;
+    }
+  }
+
   & input,
-  & textarea {
+  & textarea,
+  & select {
     background-color: var(--ds-color-neutral-surface-default) !important;
     color: var(--ds-color-neutral-text-default) !important;
     border-color: var(--ds-color-neutral-border-default) !important;
-
   }
+
 
   & label:has(> input[role="switch"]) {
     background-color: var(--ds-color-neutral-background-tinted) !important;
