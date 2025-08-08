@@ -8,6 +8,7 @@
 
 <script>
   document.documentElement.setAttribute('lang', 'no');
+  document.documentElement.setAttribute('data-color-scheme', window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 </script>
 
 <style>
@@ -21,20 +22,20 @@
   }
   body {
     background-color: var(--ds-color-neutral-background-default);
+    color: var(--ds-color-neutral-text-default) !important;
   }
   .sbdocs-wrapper {
     padding-bottom: 10rem !important;
   }
 
-  .docs-story {
-    background-color: var(--ds-color-neutral-background-default);
-    &:has([data-color-scheme="dark"]) {
-      background-color: var(--ds-color-neutral-background-default-dark);
-    }
-  }
   .sb-show-main:has([data-color-scheme="dark"]) {
     background-color: var(--ds-color-neutral-background-default-dark);
   }
+  @media (prefers-color-scheme: dark) {
+    .sb-show-main:has([data-color-scheme="auto"]) {
+      background-color: var(--ds-color-neutral-background-default-dark);
+    }
+}
 
 </style>
 
@@ -43,5 +44,11 @@
 
   [data-typography='secondary'] {
     font-family: var(--ds-font-family), monospace;
+  }
+</style>
+
+<style>
+  .docblock-code-toggle {
+    background-color: var(--ds-color-neutral-background-tinted) !important;
   }
 </style>
