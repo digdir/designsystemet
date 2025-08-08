@@ -158,29 +158,14 @@ const components = {
       zebra
       className='sb-unstyled'
       style={{ width: '100%' }}
-      data-color-scheme='light'
       data-color='neutral'
     />
   ),
-  thead: (props) => (
-    <Table.Head {...props} className='sb-unstyled' data-color-scheme='light' />
-  ),
-  tbody: (props) => (
-    <Table.Body {...props} className='sb-unstyled' data-color-scheme='light' />
-  ),
-  tr: (props) => (
-    <Table.Row {...props} className='sb-unstyled' data-color-scheme='light' />
-  ),
-  th: (props) => (
-    <Table.HeaderCell
-      {...props}
-      className='sb-unstyled'
-      data-color-scheme='light'
-    />
-  ),
-  td: (props) => (
-    <Table.Cell {...props} className='sb-unstyled' data-color-scheme='light' />
-  ),
+  thead: (props) => <Table.Head {...props} className='sb-unstyled' />,
+  tbody: (props) => <Table.Body {...props} className='sb-unstyled' />,
+  tr: (props) => <Table.Row {...props} className='sb-unstyled' />,
+  th: (props) => <Table.HeaderCell {...props} className='sb-unstyled' />,
+  td: (props) => <Table.Cell {...props} className='sb-unstyled' />,
 } satisfies MdxComponentOverrides;
 
 const DocsContainerWithWrapper: typeof DocsContainer = ({
