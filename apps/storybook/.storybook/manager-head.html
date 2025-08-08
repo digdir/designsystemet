@@ -328,10 +328,45 @@
     color: var(--ds-color-neutral-text-default) !important;
   }
 
-  & input {
+  & input,
+  & textarea {
     background-color: var(--ds-color-neutral-surface-default) !important;
     color: var(--ds-color-neutral-text-default) !important;
     border-color: var(--ds-color-neutral-border-default) !important;
+  }
+}
+
+#panel-tab-content {
+  & input,
+  & textarea {
+    background-color: var(--ds-color-neutral-surface-default) !important;
+    color: var(--ds-color-neutral-text-default) !important;
+    border-color: var(--ds-color-neutral-border-default) !important;
+
+  }
+
+  & label:has(> input[role="switch"]) {
+    background-color: var(--ds-color-neutral-background-tinted) !important;
+
+    & span {
+      color: var(--ds-color-neutral-text-default) !important;
+    }
+  }
+
+
+  & input[role="switch"] {
+    background-color: transparent !important;
+
+
+    &:not(:checked) ~ span:first-of-type {
+      background-color: var(--ds-color-neutral-border-default) !important;
+      color: var(--ds-color-neutral-text-default) !important;
+    }
+
+    &:checked ~ span:last-of-type {
+      background-color: var(--ds-color-neutral-border-default) !important;
+      color: var(--ds-color-neutral-text-default) !important;
+    }
   }
 }
 </style>
