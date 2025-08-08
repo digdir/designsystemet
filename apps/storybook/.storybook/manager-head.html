@@ -251,6 +251,88 @@
   document.documentElement.setAttribute('lang', 'no');
 </script>
 
+<style>
+#storybook-explorer-menu {
+  & button,
+  & a {
+    color: var(--ds-color-neutral-text-default) !important;
+  }
+
+  & [data-selected="true"] {
+    background-color: var(--ds-color-accent-base-default) !important;
+    color: var(--ds-color-accent-base-contrast-default) !important;
+
+    & a,
+    & button,
+    & svg {
+      color: var(--ds-color-accent-base-contrast-default) !important;
+    }
+  }
+
+  & [data-highlightable="true"] {
+    &:hover {
+      background-color: var(--ds-color-accent-surface-hover) !important;
+      color: var(--ds-color-accent-text-default) !important;
+    }
+
+    &[data-selected="true"] {
+      &:hover {
+        background-color: var(--ds-color-accent-base-hover) !important;
+        color: var(--ds-color-accent-base-contrast-default) !important;
+      }
+    }
+  }
+  & li {
+    color: var(--ds-color-neutral-text-default) !important;
+  }
+}
+
+.search-field {
+  box-shadow: var(--ds-color-neutral-border-default)  0px 0px 0px 1px inset !important;
+
+  & input {
+    color: var(--ds-color-neutral-text-subtle) !important;
+  }
+}
+
+.sidebar-header {
+  & a {
+    color: var(--ds-color-neutral-text-default) !important;
+  }
+}
+
+.sb-bar {
+  & button,
+  & a {
+    color: var(--ds-color-neutral-text-default) !important;
+  }
+}
+
+[data-testid="tooltip"] {
+  & button span span,
+  & a,
+  & a span span {
+    color: var(--ds-color-neutral-text-default) !important;
+  }
+}
+
+.docblock-argstable {
+  color: var(--ds-color-neutral-text-default) !important;
+  border-color: var(--ds-color-neutral-border-default) !important;
+
+  & th {
+    color: var(--ds-color-neutral-text-default) !important;
+  }
+
+  & input {
+    background-color: var(--ds-color-neutral-surface-default) !important;
+    color: var(--ds-color-neutral-text-default) !important;
+    border-color: var(--ds-color-neutral-border-default) !important;
+  }
+}
+</style>
+
+
 <header class="header">
   <div class="header__container">
     <div>
@@ -422,78 +504,3 @@ document.addEventListener('DOMContentLoaded', () => {
     button.innerHTML = moonSvg;
 });
 </script>
-
-<style>
-#storybook-explorer-menu {
-    & button,
-    & a {
-      color: var(--ds-color-neutral-text-default) !important;
-    }
-
-    & [data-selected="true"] {
-      background-color: var(--ds-color-accent-base-default) !important;
-      color: var(--ds-color-accent-base-contrast-default) !important;
-
-      & a,
-      & button {
-        color: var(--ds-color-accent-base-contrast-default) !important;
-      }
-    }
-
-    & [data-highlightable="true"] {
-      &:hover {
-        background-color: var(--ds-color-accent-surface-hover) !important;
-        color: var(--ds-color-accent-text-default) !important;
-      }
-
-      &[data-selected="true"] {
-        &:hover {
-          background-color: var(--ds-color-accent-base-hover) !important;
-          color: var(--ds-color-accent-base-contrast-default) !important;
-        }
-      }
-    }
-}
-
-#storybook-explorer-menu {
-  & li {
-    color: var(--ds-color-neutral-text-default) !important;
-  }
-}
-
-.sidebar-header {
-  & a {
-    color: var(--ds-color-neutral-text-default) !important;
-  }
-}
-
-.sb-bar {
-  & button,
-  & a {
-    color: var(--ds-color-neutral-text-default) !important;
-  }
-}
-
-[data-testid="tooltip"] {
-  & button span span,
-  & a,
-  & a span span {
-    color: var(--ds-color-neutral-text-default) !important;
-  }
-}
-
-.docblock-argstable {
-  color: var(--ds-color-neutral-text-default) !important;
-  border-color: var(--ds-color-neutral-border-default) !important;
-
-  & th {
-    color: var(--ds-color-neutral-text-default) !important;
-  }
-
-  & input {
-    background-color: var(--ds-color-neutral-surface-default) !important;
-    color: var(--ds-color-neutral-text-default) !important;
-    border-color: var(--ds-color-neutral-border-default) !important;
-  }
-}
-</style>
