@@ -14,7 +14,6 @@ import {
 import {
   EXPERIMENTAL_Suggestion as Suggestion,
   type SuggestionProps,
-  type SuggestionSelected,
 } from './';
 
 export default {
@@ -445,7 +444,7 @@ export const CustomMatching: StoryFn<typeof Suggestion> = (args) => {
 };
 
 export const AlwaysShowAll: StoryFn<typeof Suggestion> = (args) => {
-  const [selected, setSelected] = useState<SuggestionSelected>('Sogndal');
+  const [selected, setSelected] = useState('Sogndal');
 
   return (
     <Field>
