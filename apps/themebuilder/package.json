@@ -14,7 +14,7 @@
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
     "@internal/components": "workspace:^",
-    "@navikt/aksel-icons": "^7.25.1",
+    "@navikt/aksel-icons": "^7.26.0",
     "@radix-ui/react-slot": "^1.2.3",
     "@react-router/node": "^7.7.1",
     "@react-router/serve": "^7.7.1",
