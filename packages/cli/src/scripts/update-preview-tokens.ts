@@ -1,5 +1,5 @@
 import path from 'node:path';
-import chalk from 'chalk';
+import pc from 'picocolors';
 import type { TransformedToken } from 'style-dictionary/types';
 import config from '../../../theme/configs/designsystemet.config.json' with { type: 'json' };
 import { generate$Themes } from '../tokens/create/generators/$themes.js';
@@ -15,7 +15,7 @@ async function write(files: OutputFile[], outDir: string, dry?: boolean) {
       const filePath = path.join(outDir, destination);
       const fileDir = path.dirname(filePath);
 
-      console.log(`Writing file: ${chalk.green(filePath)}`);
+      console.log(`Writing file: ${pc.green(filePath)}`);
 
       await mkdir(fileDir, dry);
       await writeFile(filePath, output, dry);
@@ -56,7 +56,7 @@ export const formatTheme = async (themeConfig: Theme) => {
 
   console.log(
     buildOptions?.buildTokenFormats
-      ? `\n🏗️ Start building preview tokens for ${chalk.blue('Designsystemet')}\n`
+      ? `\n🏗️ Start building preview tokens for ${pc.blue('Designsystemet')}\n`
       : '\n🚫 No token formats to build.',
   );
 
@@ -66,7 +66,7 @@ export const formatTheme = async (themeConfig: Theme) => {
     for (const [destination, tokenFormats] of Object.entries(buildOptions.buildTokenFormats)) {
       if (destination === 'typography/secondary.css') continue; // Skip secondary typography preview tokens
 
-      console.log(`Processing preview tokens for ${chalk.green(destination)}`);
+      console.log(`Processing preview tokens for ${pc.green(destination)}`);
 
       const splits = destination.replace('.css', '').split('/');
       const [type, name] = splits;
@@ -103,7 +103,7 @@ export const formatTheme = async (themeConfig: Theme) => {
         false,
       );
     }
-    console.log(`\n✅ Finished building preview tokens for ${chalk.blue('Designsystemet')}`);
+    console.log(`\n✅ Finished building preview tokens for ${pc.blue('Designsystemet')}`);
   }
 };
 

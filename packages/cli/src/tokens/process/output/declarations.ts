@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import pc from 'picocolors';
 import pkg from '../../../../package.json' with { type: 'json' };
 import type { OutputFile } from '../../types.js';
 import { buildOptions } from '../platform.js';
@@ -24,7 +24,7 @@ export const createTypeDeclarationFiles = (processed$themes: ProcessedThemeObjec
 };
 
 function createColorTypeDeclaration(colors: string[]) {
-  console.log(`\n🍱 Building ${chalk.green('type declarations')}`);
+  console.log(`\n🍱 Building ${pc.green('type declarations')}`);
 
   const typeDeclaration = `
 /* ${defaultFileHeader} */

@@ -1,7 +1,7 @@
 import type { ThemeObject } from '@tokens-studio/types';
 import { TokenSetStatus } from '@tokens-studio/types';
-import chalk from 'chalk';
 import { kebabCase } from 'change-case';
+import pc from 'picocolors';
 import * as R from 'ramda';
 import type { ThemeDimension, ThemePermutation } from '../../types.js';
 import { buildOptions } from '../platform.js';
@@ -25,8 +25,8 @@ export const getMultidimensionalThemes = (processed$themes: ProcessedThemeObject
   const keys = R.keys(grouped$themes);
   const nonDependentKeys = keys.filter((x) => ![...ALL_DEPENDENT_ON, ...dimensions].includes(x));
   if (verboseLogging) {
-    console.log(chalk.cyan(`🔎 Finding theme permutations for ${dimensions}`));
-    console.log(chalk.cyan(`   (ignoring permutations for ${nonDependentKeys})`));
+    console.log(pc.cyan(`🔎 Finding theme permutations for ${dimensions}`));
+    console.log(pc.cyan(`   (ignoring permutations for ${nonDependentKeys})`));
   }
   return permutations.filter((val: PermutatedTheme) => {
     const filters = nonDependentKeys.map((x) => val.permutation[x] === grouped$themes[x][0].name);

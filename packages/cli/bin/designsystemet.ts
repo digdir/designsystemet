@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { Argument, createCommand, program } from '@commander-js/extra-typings';
-import chalk from 'chalk';
+import pc from 'picocolors';
 import * as R from 'ramda';
 import { convertToHex } from '../src/colors/index.js';
 import type { CssColor } from '../src/colors/types.js';
@@ -26,14 +26,14 @@ function makeTokenCommands() {
   tokenCmd
     .command('build')
     .description('Build Designsystemet tokens')
-    .option('-t, --tokens <string>', `Path to ${chalk.blue('design-tokens')}`, DEFAULT_TOKENS_CREATE_DIR)
+    .option('-t, --tokens <string>', `Path to ${pc.blue('design-tokens')}`, DEFAULT_TOKENS_CREATE_DIR)
     .option(
       '-o, --out-dir <string>',
-      `Output directory for built ${chalk.blue('design-tokens')}`,
+      `Output directory for built ${pc.blue('design-tokens')}`,
       DEFAULT_TOKENS_BUILD_DIR,
     )
     .option(`--${cliOptions.clean} [boolean]`, 'Clean output directory before building tokens', parseBoolean, false)
-    .option('--dry [boolean]', `Dry run for built ${chalk.blue('design-tokens')}`, parseBoolean, false)
+    .option('--dry [boolean]', `Dry run for built ${pc.blue('design-tokens')}`, parseBoolean, false)
     .option('--verbose', 'Enable verbose output', false)
     .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILE}")`)
     .option('--experimental-tailwind', 'Generate Tailwind CSS classes for tokens', false)
@@ -67,11 +67,11 @@ function makeTokenCommands() {
     .option(`-n, --${cliOptions.theme.colors.neutral} <hex>`, `Neutral hex color`, convertToHex)
     .option(
       `-o, --${cliOptions.outDir} <string>`,
-      `Output directory for created ${chalk.blue('design-tokens')}`,
+      `Output directory for created ${pc.blue('design-tokens')}`,
       DEFAULT_TOKENS_CREATE_DIR,
     )
     .option(`--${cliOptions.clean} [boolean]`, 'Clean output directory before creating tokens', parseBoolean, false)
-    .option('--dry [boolean]', `Dry run for created ${chalk.blue('design-tokens')}`, parseBoolean, false)
+    .option('--dry [boolean]', `Dry run for created ${pc.blue('design-tokens')}`, parseBoolean, false)
     .option(`-f, --${cliOptions.theme.typography.fontFamily} <string>`, `Font family (experimental)`, DEFAULT_FONT)
     .option(
       `-b, --${cliOptions.theme.borderRadius} <number>`,
@@ -135,9 +135,9 @@ program
         throw 'Aborting';
       }
 
-      console.log(`Applying migration ${chalk.blue(migrationKey)} with glob: ${chalk.green(glob)}`);
+      console.log(`Applying migration ${pc.blue(migrationKey)} with glob: ${pc.green(glob)}`);
       migration?.(glob)
-        .then(() => console.log(`Migration ${chalk.blue(migrationKey)} finished`))
+        .then(() => console.log(`Migration ${pc.blue(migrationKey)} finished`))
         .catch((error) => console.log(error));
     } else {
       console.log('Migrate: please specify a migration name or --list');

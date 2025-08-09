@@ -432,9 +432,6 @@ importers:
       apca-w3:
         specifier: ^0.1.9
         version: 0.1.9
-      chalk:
-        specifier: ^5.4.1
-        version: 5.4.1
       change-case:
         specifier: ^5.4.4
         version: 5.4.4
@@ -456,6 +453,9 @@ importers:
       object-hash:
         specifier: ^3.0.0
         version: 3.0.0
+      picocolors:
+        specifier: ^1.1.1
+        version: 1.1.1
       postcss:
         specifier: ^8.5.6
         version: 8.5.6

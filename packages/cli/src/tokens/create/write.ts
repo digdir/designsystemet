@@ -1,6 +1,6 @@
 import path from 'node:path';
 import type { ThemeObject } from '@tokens-studio/types';
-import chalk from 'chalk';
+import pc from 'picocolors';
 import * as R from 'ramda';
 import { mkdir, readFile, writeFile } from '../../utils.js';
 import type { Theme, TokenSets } from '../types.js';
@@ -51,7 +51,7 @@ export const writeTokens = async (options: WriteTokensOptions) => {
 
   const themes = concatThemeNames(themeObjects);
 
-  console.log(`\nThemes: ${chalk.blue(themes.join(', '))}`);
+  console.log(`\nThemes: ${pc.blue(themes.join(', '))}`);
 
   // Create metadata and themes json for Token Studio and build script
   const $themes = await generate$Themes(['dark', 'light'], themes, colors);
@@ -71,7 +71,5 @@ export const writeTokens = async (options: WriteTokensOptions) => {
     await writeFile(filePath, stringify(tokens), dry);
   }
 
-  console.log(
-    `Finished creating Designsystem design tokens in ${chalk.green(outDir)} for theme ${chalk.blue(themeName)}`,
-  );
+  console.log(`Finished creating Designsystem design tokens in ${pc.green(outDir)} for theme ${pc.blue(themeName)}`);
 };
