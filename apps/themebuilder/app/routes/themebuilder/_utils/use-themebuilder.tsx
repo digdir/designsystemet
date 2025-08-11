@@ -1,7 +1,7 @@
 import {
   type CssColor,
-  type ThemeInfo,
   generateColorSchemes,
+  type ThemeInfo,
 } from '@digdir/designsystemet';
 import { useLoaderData } from 'react-router';
 import {
@@ -30,7 +30,8 @@ export const useThemebuilder = () => {
   };
 };
 
-export function createColorsFromQuery(colors: string) {
+export function createColorsFromQuery(colors: string | null) {
+  if (!colors) return [];
   return colors.split(QUERY_SEPARATOR).map((color) => {
     const [name, hex] = color.split(':');
     return {

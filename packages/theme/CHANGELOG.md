@@ -1,5 +1,42 @@
 # Change Log
 
+## 1.1.9
+
+## 1.1.8
+
+## 1.1.7
+
+## 1.1.6
+
+### Patch Changes
+
+- Deprecate `colors.d.ts` from `tokens build`. Replaced by `types.d.ts`. ([#3837](https://github.com/digdir/designsystemet/pull/3837))
+
+## 1.1.5
+
+## 1.1.4
+
+### Patch Changes
+
+- fix: letter-spacing now uses `em` unit instead of invalid percentage unit ([#3759](https://github.com/digdir/designsystemet/pull/3759))
+  - **Note:** Users should run `npx @digdir/designsystemet@latest tokens build <options>` to rebuild css-variables with now valid letter-spacing. This will result in a slight visual change in the typography.
+
+## 1.1.3
+
+## 1.1.2
+
+## 1.1.1
+
+## 1.1.0
+
+### Patch Changes
+
+- Round `--ds-size-*` CSS variables by 1px instead of by 0.0625rem. With the ([#3681](https://github.com/digdir/designsystemet/pull/3681))
+  default root font size (16px) the result is the same, but if the user has
+  changed the browser's font size we now avoid fractional pixels.
+
+- Add export for tailwind config for default theme - `@digdir/designsystemet-theme/tailwind`. ([#3710](https://github.com/digdir/designsystemet/pull/3710))
+
 ## 1.0.8
 
 ### Patch Changes

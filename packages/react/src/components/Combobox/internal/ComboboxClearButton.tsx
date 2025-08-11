@@ -1,7 +1,7 @@
 import { XMarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { forwardRef, useContext } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
+import { forwardRef, useContext } from 'react';
 
 import { ComboboxContext } from '../ComboboxContext';
 

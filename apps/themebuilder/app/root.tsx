@@ -1,12 +1,12 @@
 import {
+  data,
+  isRouteErrorResponse,
   Links,
   Meta,
   Outlet,
+  redirect,
   Scripts,
   ScrollRestoration,
-  data,
-  isRouteErrorResponse,
-  redirect,
 } from 'react-router';
 
 import type { Route } from './+types/root';
@@ -43,6 +43,12 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 
   if (lang !== 'no' && lang !== 'en') {
     return redirect('/no');
+  }
+
+  if (url.pathname.match('/.*/$')) {
+    /* do this to make sure we keep params */
+    url.pathname = url.pathname.replace(/\/+$/, '');
+    return redirect(url.toString());
   }
 
   const centerLinks = [

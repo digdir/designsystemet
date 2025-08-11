@@ -1,11 +1,11 @@
-import type { ThemeObject } from '@tokens-studio/types';
 import chalk from 'chalk';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
+import type { TransformedToken } from 'style-dictionary/types';
 import type { OutputFile, TokenSet } from '../types.js';
-import { type BuildConfig, type ThemePermutation, colorCategories } from '../types.js';
+import { type BuildConfig, colorCategories, type ThemePermutation } from '../types.js';
 import { configs, getConfigsForThemeDimensions } from './configs.js';
-import { type ProcessedThemeObject, processThemeObject } from './utils/getMultidimensionalThemes.js';
+import { getCustomColors, type ProcessedThemeObject } from './utils/getMultidimensionalThemes.js';
 
 type SharedOptions = {
   /** Enable verbose output */
@@ -14,10 +14,12 @@ type SharedOptions = {
   defaultColor?: string;
   /** Dry run, no files will be written */
   dry?: boolean;
-  /** Generate preview tokens */
-  preview: boolean;
   /** Token Studio `$themes.json` content */
-  $themes: ThemeObject[];
+  processed$themes: ProcessedThemeObject[];
+  /** Color groups */
+  colorGroups?: string[];
+  /** Build token format map */
+  buildTokenFormats: Record<string, { token: TransformedToken; formatted: string }[]>;
 };
 
 export type BuildOptions = {
@@ -36,19 +38,21 @@ export type FormatOptions = {
   tokenSets: Map<string, TokenSet>;
 } & SharedOptions;
 
-type ProcessOptions = BuildOptions | FormatOptions;
+export type ProcessOptions = BuildOptions | FormatOptions;
 
-type ProcessedBuildConfigs<T> = Record<keyof typeof buildConfigs | 'types', T>;
+type ProcessedBuildConfigs<T> = Record<keyof typeof buildConfigs, T>;
 
 export type ProcessReturn = ProcessedBuildConfigs<BuildResult[]>;
 
 type BuildResult = {
   permutation: ThemePermutation;
   formatted: OutputFile[];
+  tokens: TransformedToken[];
 };
 
 const initResult: BuildResult = {
   formatted: [],
+  tokens: [],
   permutation: {
     'color-scheme': '',
     'main-color': '',
@@ -60,20 +64,13 @@ const initResult: BuildResult = {
   },
 };
 
-export let buildOptions: ProcessOptions | undefined;
+export let buildOptions: SharedOptions = {
+  verbose: false,
+  processed$themes: [],
+  buildTokenFormats: {},
+};
 
 const sd = new StyleDictionary();
-
-const getCustomColors = (processed$themes: ProcessedThemeObject[], colorGroups: (string | RegExp)[]) =>
-  processed$themes
-    .filter((x) => {
-      if (!x.group) {
-        return false;
-      }
-
-      return colorGroups.includes(x.group);
-    })
-    .map((x) => x.name);
 
 /*
  * Declarative configuration of the build output
@@ -109,20 +106,17 @@ const buildConfigs = {
     log: ({ permutation: { theme } }) => `${theme} - info`,
   },
   semantic: { getConfig: configs.semanticVariables, dimensions: ['semantic'] },
-  // storefront: {
-  //   name: 'Storefront preview tokens',
-  //   getConfig: configs.typescriptTokens,
-  //   dimensions: ['color-scheme'],
-  //   options: { outPath: path.resolve('../../apps/storefront/tokens') },
-  //   enabled: () => buildOptions?.preview ?? false,
-  // },
 } satisfies Record<string, BuildConfig>;
 
-export async function processPlatform<T>(options: ProcessOptions): Promise<ProcessReturn> {
-  const { type, $themes } = options;
+export async function processPlatform(options: ProcessOptions): Promise<ProcessReturn> {
+  const { type, processed$themes } = options;
   const platform = 'css';
   const tokenSets = type === 'format' ? options.tokenSets : undefined;
   const tokensDir = type === 'build' ? options.tokensDir : undefined;
+
+  const filteredProcessed$themes = processed$themes.filter((theme) =>
+    R.not(theme.group === 'size' && theme.name !== 'medium'),
+  );
 
   const UNSAFE_DEFAULT_COLOR = process.env.UNSAFE_DEFAULT_COLOR ?? '';
   if (UNSAFE_DEFAULT_COLOR) {
@@ -149,14 +143,10 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
   /** For sharing build options in other files */
   buildOptions = options;
   buildOptions.defaultColor = UNSAFE_DEFAULT_COLOR;
-
-  const processed$themes = $themes
-    .map(processThemeObject)
-    .filter((theme) => R.not(theme.group === 'size' && theme.name !== 'medium'));
-
-  const customColors = getCustomColors(processed$themes, colorGroups);
+  buildOptions.colorGroups = colorGroups;
 
   if (!buildOptions.defaultColor) {
+    const customColors = getCustomColors(filteredProcessed$themes, colorGroups);
     const firstMainColor = R.head(customColors);
     buildOptions.defaultColor = firstMainColor;
   }
@@ -166,10 +156,15 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
   }
 
   const buildAndSdConfigs = R.map((buildConfig: BuildConfig) => {
-    const sdConfigs = getConfigsForThemeDimensions(buildConfig.getConfig, processed$themes, buildConfig.dimensions, {
-      tokensDir,
-      tokenSets,
-    });
+    const sdConfigs = getConfigsForThemeDimensions(
+      buildConfig.getConfig,
+      filteredProcessed$themes,
+      buildConfig.dimensions,
+      {
+        tokensDir,
+        tokenSets,
+      },
+    );
 
     // Disable build if all sdConfigs dimensions permutation are unknown
     const unknownConfigs = buildConfig.dimensions.map((dimension) =>
@@ -198,7 +193,6 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
     'info-color': [initResult],
     semantic: [initResult],
     typography: [initResult],
-    types: [initResult],
   };
 
   try {
@@ -221,10 +215,13 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
 
             const sdOptions = { cache: true };
             const sdExtended = await sd.extend(config);
+            const formatted = await sdExtended.formatPlatform(platform, sdOptions);
+            const tokens = (await sdExtended.getPlatformTokens(platform, sdOptions)).allTokens;
 
             const result: BuildResult = {
               permutation,
-              formatted: (await sdExtended.formatPlatform(platform, sdOptions)) as OutputFile[],
+              formatted: formatted as OutputFile[],
+              tokens,
             };
 
             return Promise.resolve(result);
@@ -245,31 +242,5 @@ export async function processPlatform<T>(options: ProcessOptions): Promise<Proce
     throw err;
   }
 
-  const colorsFileName = 'colors.d.ts';
-  const reactColorTypes = await createColorTypeDeclaration(customColors);
-
-  processedBuilds.types = [
-    {
-      ...initResult,
-      formatted: [{ output: reactColorTypes, destination: colorsFileName }] as unknown as OutputFile[],
-    },
-  ];
-
   return processedBuilds;
-}
-
-async function createColorTypeDeclaration(colors: string[]) {
-  console.log(`\n🍱 Building ${chalk.green('type declarations')}`);
-
-  const typeDeclaration = `
-import type {} from '@digdir/designsystemet-react/colors';
-
-declare module '@digdir/designsystemet-react/colors' {
-  export interface MainAndSupportColors {
-${colors.map((color) => `    ${color}: never;`).join('\n')}
-  }
-}
-`.trimStart();
-
-  return typeDeclaration;
 }

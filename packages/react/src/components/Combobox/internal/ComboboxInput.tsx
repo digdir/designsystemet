@@ -8,14 +8,12 @@ import type {
   MouseEvent,
 } from 'react';
 import { useContext, useRef } from 'react';
-
-import { omit } from '../../../utilities';
-import { Paragraph } from '../../Paragraph';
+import { Paragraph } from '../../paragraph/paragraph';
 import type { ComboboxProps } from '../Combobox';
 import { ComboboxContext } from '../ComboboxContext';
 import { useComboboxIdDispatch } from '../ComboboxIdContext';
+import { omit } from '../omit/omit';
 import { prefix } from '../utilities';
-
 import ComboboxChips from './ComboboxChips';
 import ComboboxClearButton from './ComboboxClearButton';
 
@@ -130,6 +128,7 @@ const ComboboxInput = ({
           {/* If the input is in multiple mode, we need to display chips */}
           {multiple && !hideChips && <ComboboxChips />}
           <Paragraph data-size={size} asChild>
+            {/* biome-ignore lint/a11y/useSemanticElements: This is a combobox input */}
             <input
               ref={mergedRefs}
               aria-activedescendant={props['aria-activedescendant'] as string}

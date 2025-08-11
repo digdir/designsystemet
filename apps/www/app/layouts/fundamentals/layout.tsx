@@ -10,10 +10,14 @@ import {
   BannerIngress,
 } from '~/_components/banner/banner';
 import { Sidebar } from '~/_components/sidebar/sidebar';
-import { getFileFromContentDir, getFilesFromContentDir } from '~/_utils/files';
+import {
+  getFileFromContentDir,
+  getFilesFromContentDir,
+} from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import type { Route } from './+types/layout';
 import classes from './layout.module.css';
+
 export { ErrorBoundary } from '~/root';
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
@@ -25,6 +29,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   }
 
   const mdxFiles = getFilesFromContentDir(join('fundamentals', lang));
+  // console.log('Found MDX files:', mdxFiles);
 
   const cats: {
     [key: string]: {
@@ -33,21 +38,26 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
       icon: string;
       color: 'red' | 'blue' | 'yellow';
       description: string;
+      order: number;
     }[];
   } = {};
 
   if (lang === 'no') {
     cats.Introduksjon = [];
-    cats.Designelementer = [];
-    cats['For designere'] = [];
-    cats['For utviklere'] = [];
+    cats['Design Tokens'] = [];
+    cats.Temabygger = [];
+    cats.Kode = [];
+    cats.Figma = [];
+    cats.Ressurser = [];
   }
 
   if (lang === 'en') {
     cats.Introduction = [];
-    cats['Design elements'] = [];
-    cats['For designers'] = [];
-    cats['For developers'] = [];
+    cats['Design Tokens'] = [];
+    cats['Theme Builder'] = [];
+    cats.Code = [];
+    cats.Figma = [];
+    cats.Resources = [];
   }
 
   /* Map over files with mdx parser to get title */
@@ -80,9 +90,16 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     cats[result.frontmatter.category].push({
       title: result.frontmatter.sidebar_title || title,
       url,
+      order: result.frontmatter.order,
       icon: result.frontmatter.icon,
       color: result.frontmatter.color || 'red',
       description: result.frontmatter.description || '',
+    });
+  }
+  /* Sort articles by given order */
+  for (const cat in cats) {
+    cats[cat].sort((a, b) => {
+      return a.order - b.order;
     });
   }
 

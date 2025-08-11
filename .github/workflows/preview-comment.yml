@@ -1,21 +1,111 @@
-name: Create Initial Preview Comment
+name: Preview Comment
 on:
-  pull_request:
-    types: [opened]
-
-env:
-  PR_NUMBER: ${{ github.event.number }}
+  workflow_call:
+    inputs:
+      pr_number:
+        required: true
+        type: string
+        description: 'PR number for the comment'
+      deployment_type:
+        required: true
+        type: string
+        description: 'Type of deployment (www, theme, storybook)'
+      deployment_url:
+        required: true
+        type: string
+        description: 'The deployment URL'
 
 jobs:
-  Deploy-Preview:
+  update-comment:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Find Preview Comment
+        uses: peter-evans/find-comment@v3
+        id: fc
+        with:
+          issue-number: ${{ inputs.pr_number }}
+          body-includes: |
+            **Preview deployments for this pull request:**
 
-      - name: Create comment
+      - name: Find Storybook deployment
+        uses: actions-ecosystem/action-regex-match@v2
+        id: regex-storybook
+        with:
+          text: ${{ steps.fc.outputs.comment-body }}
+          regex: '(\[storybook\]\([^)]+\)[^\n]*)'
+
+      - name: Find Theme deployment
+        uses: actions-ecosystem/action-regex-match@v2
+        id: regex-theme
+        with:
+          text: ${{ steps.fc.outputs.comment-body }}
+          regex: '(\[themebuilder\]\([^)]+\)[^\n]*)'
+
+      - name: Find www deployment
+        uses: actions-ecosystem/action-regex-match@v2
+        id: regex-www
+        with:
+          text: ${{ steps.fc.outputs.comment-body }}
+          regex: '(\[www\]\([^)]+\)[^\n]*)'
+
+      - name: Get current time in CEST
+        uses: josStorer/get-current-time@v2
+        id: current-time
+        with:
+          format: D. MMM YYYY - HH:mm
+          timezone: Europe/Oslo
+
+      - name: Set deployment links
+        id: links
+        run: |
+          STORYBOOK_EXISTING=$(cat <<< '${{ steps.regex-storybook.outputs.match }}')
+          THEME_EXISTING=$(cat <<< '${{ steps.regex-theme.outputs.match }}')
+          WWW_EXISTING=$(cat <<< '${{ steps.regex-www.outputs.match }}')
+
+          STORYBOOK=""
+          THEME=""
+          WWW=""
+
+          if [ "${{ inputs.deployment_type }}" = "storybook" ]; then
+            STORYBOOK="[storybook](${{ inputs.deployment_url }}) - \`${{ steps.current-time.outputs.formattedTime }}\`"
+          elif [ "${{ inputs.deployment_type }}" = "theme" ]; then
+            THEME="[themebuilder](${{ inputs.deployment_url }}) - \`${{ steps.current-time.outputs.formattedTime }}\`"
+          elif [ "${{ inputs.deployment_type }}" = "www" ]; then
+            WWW="[www](${{ inputs.deployment_url }}) - \`${{ steps.current-time.outputs.formattedTime }}\`"
+          fi
+
+          if [ "${{ inputs.deployment_type }}" != "storybook" ] && [ -n "$STORYBOOK_EXISTING" ]; then
+            STORYBOOK="$STORYBOOK_EXISTING"
+          fi
+          if [ "${{ inputs.deployment_type }}" != "theme" ] && [ -n "$THEME_EXISTING" ]; then
+            THEME="$THEME_EXISTING"
+          fi
+          if [ "${{ inputs.deployment_type }}" != "www" ] && [ -n "$WWW_EXISTING" ]; then
+            WWW="$WWW_EXISTING"
+          fi
+
+          {
+            echo "body<<EOF"
+            echo "**Preview deployments for this pull request:**"
+            if [ -n "$STORYBOOK" ]; then
+              echo ""
+              printf '%s\n' "$STORYBOOK"
+            fi
+            if [ -n "$THEME" ]; then
+              echo ""
+              printf '%s\n' "$THEME"
+            fi
+            if [ -n "$WWW" ]; then
+              echo ""
+              printf '%s\n' "$WWW"
+            fi
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
+
+      - name: Update comment with deployment
         uses: peter-evans/create-or-update-comment@v4
         with:
-          issue-number: ${{ env.PR_NUMBER }}
-          body: |
-            **Preview deployments for this pull request:**
-            > No deployments found.
+          issue-number: ${{ inputs.pr_number }}
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          edit-mode: replace
+          body: ${{ steps.links.outputs.body }}

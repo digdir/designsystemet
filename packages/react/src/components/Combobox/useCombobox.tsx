@@ -1,5 +1,5 @@
-import { Children, useCallback, useMemo, useState } from 'react';
 import type { ReactElement, ReactNode } from 'react';
+import { Children, useCallback, useMemo, useState } from 'react';
 
 import type { ComboboxProps } from './Combobox';
 import type { ComboboxCustomProps } from './Custom';

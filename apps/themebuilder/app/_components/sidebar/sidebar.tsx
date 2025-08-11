@@ -1,13 +1,8 @@
+import { Dialog, Heading, Tabs } from '@digdir/designsystemet-react';
+import { useMediaQuery } from '@internal/components';
+import { CogIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { useEffect, useState } from 'react';
-
-import {
-  Dialog,
-  Heading,
-  Tabs,
-  useMediaQuery,
-} from '@digdir/designsystemet-react';
-import { CogIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import { BorderRadiusInput } from '../border-radius-input/border-radius-input';
 import { TokenModal } from '../token-modal/token-modal';

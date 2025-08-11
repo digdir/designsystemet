@@ -10,4 +10,7 @@ export default defineConfig({
     },
   },
   plugins: [tsconfigPaths(), envOnlyMacros(), reactRouter()],
+  ssr: {
+    noExternal: ['@navikt/aksel-icons', 'ramda'],
+  },
 });

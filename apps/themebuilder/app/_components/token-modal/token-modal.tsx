@@ -1,3 +1,9 @@
+import type { Color, CssColor } from '@digdir/designsystemet/color';
+import {
+  type CreateTokensOptions,
+  cliOptions,
+  formatThemeCSS,
+} from '@digdir/designsystemet/tokens';
 import {
   Button,
   Dialog,
@@ -8,17 +14,10 @@ import {
   Paragraph,
   Switch,
 } from '@digdir/designsystemet-react';
-import {
-  type CreateTokensOptions,
-  cliOptions,
-  formatThemeCSS,
-} from '@digdir/designsystemet/tokens';
+import { CodeBlock } from '@internal/components';
 import { InformationSquareIcon, StarIcon } from '@navikt/aksel-icons';
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import type { Color, CssColor } from '@digdir/designsystemet/color';
-import { CodeBlock } from '@internal/components';
 import { useLoaderData } from 'react-router';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import type { ColorTheme } from '~/store';
@@ -194,7 +193,7 @@ export const TokenModal = () => {
                   {t('themeModal.to-update')}{' '}
                   <Link
                     target='_blank'
-                    href='https://www.designsystemet.no/no/fundamentals/for-designers/own-theme'
+                    href='https://www.designsystemet.no/no/fundamentals/themebuilder/own-theme'
                   >
                     {t('themeModal.own-theme')}
                   </Link>{' '}

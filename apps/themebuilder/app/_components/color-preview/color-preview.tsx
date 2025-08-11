@@ -17,19 +17,27 @@ type ViewType = 'list' | 'grid';
 
 const DEFAULT_VIEW: ViewType = 'grid';
 
+const CardWrapper = ({ color, view, ...rest }: CardProps) =>
+  view === 'list' ? (
+    <VerticalCard color={color} {...rest} />
+  ) : (
+    <HorizontalCard color={color} {...rest} />
+  );
+
 export const ColorPreview = () => {
   const { t } = useTranslation();
   const { colorScheme, colors } = useThemebuilder();
   const [view, setView] = useState<ViewType>(DEFAULT_VIEW);
 
-  const CardWrapper = ({ color, ...rest }: CardProps) =>
-    view === 'list' ? (
-      <VerticalCard color={color} {...rest} />
-    ) : (
-      <HorizontalCard color={color} {...rest} />
-    );
-
   const allColors = [...colors.main, ...colors.neutral, ...colors.support];
+
+  const prepVariables = (variables: Record<string, string>) => {
+    const prepped: Record<string, string> = {};
+    Object.entries(variables).forEach(([key, value]) => {
+      prepped[key.replace('neutral-', '')] = value;
+    });
+    return prepped;
+  };
 
   return (
     <div className='panelContainer'>
@@ -62,11 +70,12 @@ export const ColorPreview = () => {
         {allColors.map((color, index) => {
           return (
             <CardWrapper
+              view={view}
               key={`${color.name}-${index}`}
               color={color}
-              style={
-                color.variables[colorScheme as keyof typeof color.variables]
-              }
+              style={prepVariables(
+                color.variables[colorScheme as keyof typeof color.variables],
+              )}
             />
           );
         })}
@@ -77,6 +86,7 @@ export const ColorPreview = () => {
 
 type CardProps = {
   color: ReturnType<typeof useThemebuilder>['colors']['main'][number];
+  view?: ViewType;
 } & Omit<HTMLAttributes<HTMLDivElement>, 'color'>;
 
 const HorizontalCard = ({ color, ...rest }: CardProps) => {

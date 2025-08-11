@@ -35,7 +35,6 @@ body {
 
   abbr[title] {
     border-bottom: none; /* 1 */
-    text-decoration: underline; /* 2 */
     text-decoration: underline dotted; /* 2 */
   }
 
@@ -89,10 +88,6 @@ body {
   box-shadow: 0 2px 20px 0 #c5c5c5;
   background-color: #fff !important;
   animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
-}
-
-.is-sticky .ColorPicker_label__kYLHj {
-  display: #b4b4b4;
 }
 
 /* code {

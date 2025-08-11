@@ -1,0 +1,53 @@
+---
+title: Typografi
+sidebar_title: Typografi
+description: For å presentere innholdet korrekt bruker vi stiler og komponenter for typografi.
+date: 2024-04-28
+category: Design Tokens
+color: blue
+icon: TokenIcon
+published: true
+order: 40
+---
+
+For å presentere tekst på korrekt måte er det laget stiler som har ulike kombinasjoner av størrelse, fontvekt og linjehøyde. Det er også laget et sett med typografi-komponenter som innkapsler disse stilene, slik at de enkelt kan brukes i ulike sammenhenger. Beskrivelse av hvordan typografi-komponenter brukes finner du i komponentartikkelen [Typography](https://storybook.designsystemet.no/?path=/docs/komponenter-typography--docs).
+
+## Font-family
+
+Font-family er ikke en del av designsystem-biblioteket, du må selv importere ønsket font i din app. Komponentene har kun blitt testet med fonten "Inter". Velger du en annen font må du selv teste at det ser bra ut. 
+
+Når du velger font bør du passe på at den har god lesbarhet på dataskjermer. Da vi valgte "Inter" la vi vekt på følgende kriterier:
+
+- [Open font license](https://github.com/rsms/inter/blob/master/LICENSE.txt) + har et [aktivt community](https://github.com/rsms/inter)
+- Stor skriftfamilie (light, regular, italic, bold, semibold)
+- Gjenkjennelige bokstaver, tall og spesialtegn (ikke for kreativ)
+- Tydelige overlengder og underlengde på bokstavene.
+- Synlig forskjell på lignende tegn (I, l, 1) (må aktiveres)
+- Åpne bokstaver gror ikke igjen (f.eks tegn som a, e og c)
+- Lik strektykkelse i overgangene.
+- Tabular numbers ([monospace](https://fonts.google.com/knowledge/introducing_type/understanding_numerals))
+- [Variabel font](https://rsms.me/inter/#variable)
+- God bokstav og ordmellomrom
+- Språkstøtte
+
+*"Inter"* er tilgjengelig i Figma uten at du trenger å laste ned og installere den selv. Trenger du den til andre formål kan du laste den ned fra [github.com/rsms/inter](https://github.com/rsms/inter/releases/tag/v3.19).
+
+For hosting kan Altinn CDN benyttes:
+
+```html
+<link
+  rel='stylesheet'
+  href='https://altinncdn.no/fonts/inter/v4.1/inter.css'
+  integrity="sha384-OcHzc/By/OPw9uJREawUCjP2inbOGKtKb4A/I2iXxmknUfog2H8Adx71tWVZRscD"
+  crossorigin="anonymous"
+/>
+```
+
+### Aktiver hale på L
+Inter har liten "l" uten hale som standard. Dette kan føre til forveksling med stor "I". For å forbedre lesbarheten og unngå forvirring, anbefaler vi å aktivere en hale på liten "l". Legg til følgende i din CSS for å aktivere dette:
+
+```css
+font-family: 'Inter', sans-serif;
+font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */
+```
+

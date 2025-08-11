@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url';
 import type { StorybookConfig } from '@storybook/react-vite';
 import * as R from 'ramda';
 import type { PropItem } from 'react-docgen-typescript';
+import remarkGfm from 'remark-gfm';
 import { defineConfig, mergeConfig } from 'vite';
 
 const dirname =
@@ -80,12 +81,22 @@ const config: StorybookConfig = {
     'storybook-addon-pseudo-states',
     '@storybook/addon-vitest',
     //'@whitespace/storybook-addon-html', //wait for it to be updated to support sb9
-    '@storybook/addon-docs',
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        mdxPluginOptions: {
+          mdxCompileOptions: {
+            remarkPlugins: [remarkGfm],
+          },
+        },
+      },
+    },
   ],
   staticDirs: ['../assets'],
   framework: {
     name: '@storybook/react-vite',
     options: {
+      strictMode: true,
       builder: {
         viteConfigPath: resolve(dirname, '../../../vite.config.ts'),
       },

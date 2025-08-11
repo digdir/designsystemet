@@ -1,13 +1,15 @@
 import * as R from 'ramda';
-import { createTokens } from './create.js';
 import { generate$Themes } from './create/generators/$themes.js';
+import { createTokens } from './create.js';
 import { createThemeCSSFiles } from './process/output/theme.js';
 import { type FormatOptions, processPlatform } from './process/platform.js';
-import type { OutputFile, Theme } from './types.js';
+import { processThemeObject } from './process/utils/getMultidimensionalThemes.js';
+import type { Theme } from './types.js';
 
-export const formatTokens = async (options: Omit<FormatOptions, 'type'>) => {
-  const processedBuilds = await processPlatform<OutputFile>({
+export const formatTokens = async (options: Omit<FormatOptions, 'type' | 'buildTokenFormats'>) => {
+  const processedBuilds = await processPlatform({
     type: 'format',
+    buildTokenFormats: {},
     ...options,
   });
 
@@ -18,11 +20,12 @@ export const formatTheme = async (themeConfig: Theme) => {
   const { tokenSets } = await createTokens(themeConfig);
 
   const $themes = await generate$Themes(['dark', 'light'], [themeConfig.name], themeConfig.colors);
+  const processed$themes = $themes.map(processThemeObject);
+
   const processedBuilds = await formatTokens({
     tokenSets,
-    $themes,
+    processed$themes,
     verbose: false,
-    preview: false,
   });
 
   return processedBuilds;

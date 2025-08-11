@@ -5,6 +5,7 @@ import { createPropertyFormatter } from 'style-dictionary/utils';
 
 import { colorCategories } from '../../../types.js';
 import { isColorCategoryToken, isGlobalColorToken, isSemanticToken } from '../../../utils.js';
+import { buildOptions } from '../../platform.js';
 
 const prefersColorScheme = (colorScheme: string, content: string) => `
 @media (prefers-color-scheme: ${colorScheme}) {
@@ -14,7 +15,7 @@ const prefersColorScheme = (colorScheme: string, content: string) => `
 
 export const colorScheme: Format = {
   name: 'ds/css-colorscheme',
-  format: async ({ dictionary, file, options, platform }) => {
+  format: async ({ dictionary, options, platform }) => {
     const { allTokens } = dictionary;
     const { outputReferences, usesDtcg } = options;
     const { selector, colorScheme, layer } = platform;
@@ -43,7 +44,13 @@ export const colorScheme: Format = {
         (t) => !isColorCategoryToken(t),
       ]),
     );
-    const formattedTokens = filteredAllTokens.map(format).join('\n');
+    const formattedMap = filteredAllTokens.map((token: TransformedToken) => ({
+      token,
+      formatted: format(token),
+    }));
+
+    // If the token is a color category token, we want to use the original value
+    const formattedTokens = formattedMap.map(R.view(R.lensProp('formatted'))).join('\n');
     const content = `{\n${formattedTokens}\n${colorSchemeProperty}}\n`;
     const autoSelectorContent = ['light', 'dark'].includes(colorScheme_)
       ? prefersColorScheme(colorScheme_, content)
@@ -58,9 +65,10 @@ export const colorScheme: Format = {
 
 export const colorCategory: Format = {
   name: 'ds/css-colorcategory',
-  format: async ({ dictionary, file, options, platform }) => {
+  format: async ({ dictionary, options, platform }) => {
     const { outputReferences, usesDtcg } = options;
-    const { selector, layer } = platform;
+    const { selector, layer, files } = platform;
+    const destination = files?.[0]?.destination as string;
 
     const format = R.compose(
       createPropertyFormatter({
@@ -81,7 +89,15 @@ export const colorCategory: Format = {
       }),
     );
 
-    const formattedTokens = dictionary.allTokens.map(format).join('\n');
+    const formattedMap = dictionary.allTokens.map((token: TransformedToken) => ({
+      token,
+      formatted: format(token),
+    }));
+
+    buildOptions.buildTokenFormats[destination] = formattedMap;
+
+    // If the token is a color category token, we want to use the original value
+    const formattedTokens = formattedMap.map(R.view(R.lensProp('formatted'))).join('\n');
     const content = `{\n${formattedTokens}\n}\n`;
     const body = R.isNotNil(layer) ? `@layer ${layer} {\n${selector} ${content}\n}\n` : `${selector} ${content}\n`;
 

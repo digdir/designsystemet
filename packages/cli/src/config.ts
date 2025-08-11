@@ -1,15 +1,15 @@
 import chalk from 'chalk';
 import * as R from 'ramda';
+import { z } from 'zod';
 import { fromError } from 'zod-validation-error';
-import { z } from 'zod/v4';
 import { convertToHex } from './colors/index.js';
 import { RESERVED_COLORS } from './colors/theme.js';
 import { cliOptions } from './tokens/create.js';
 
-function mapPathToOptionName(path: (string | number)[]) {
+function mapPathToOptionName(path: PropertyKey[]) {
   // replace "themes.some-theme-name" with "theme" to match cliOptions object
   const normalisedPath = path[0] === 'themes' ? ['theme', ...R.drop(2, path)] : path;
-  const option = R.path(normalisedPath, cliOptions);
+  const option = R.path(normalisedPath as Array<string | number>, cliOptions);
   if (typeof option !== 'string') {
     return;
   }
@@ -17,20 +17,25 @@ function mapPathToOptionName(path: (string | number)[]) {
 }
 
 function makeFriendlyError(err: unknown) {
-  return fromError(err, {
-    messageBuilder: (issues) =>
-      issues
-        .map((issue) => {
-          const issuePath = issue.path.join('.');
-          const optionName = mapPathToOptionName(issue.path);
+  try {
+    return fromError(err, {
+      messageBuilder: (issues) =>
+        issues
+          .map((issue) => {
+            const issuePath = issue.path.join('.');
+            const optionName = mapPathToOptionName(issue.path);
 
-          const errorCode = `(error code: ${issue.code})`;
-          const optionMessage = optionName ? ` or CLI option --${optionName}` : '';
-          return `  - Error in JSON value ${chalk.red(issuePath)}${optionMessage}:
-    ${issue.message} ${chalk.dim(errorCode)}`;
-        })
-        .join('\n'),
-  });
+            const errorCode = `(error code: ${issue.code})`;
+            const optionMessage = optionName ? ` or CLI option --${optionName}` : '';
+            return `  - Error in JSON value ${chalk.red(issuePath)}${optionMessage}:
+      ${issue.message} ${chalk.dim(errorCode)}`;
+          })
+          .join('\n'),
+    });
+  } catch (_err2) {
+    console.error(chalk.red(err instanceof Error ? err.message : 'Unknown error occurred while parsing config file'));
+    console.error(err instanceof Error ? err.stack : 'No stack trace available');
+  }
 }
 
 /**
@@ -51,24 +56,26 @@ export function validateConfig<T>(
     return schema.parse(unvalidatedConfig) as T;
   } catch (err) {
     console.error(chalk.redBright(`Invalid config file at ${chalk.red(configPath)}`));
+
     const validationError = makeFriendlyError(err);
-    console.error(validationError.toString());
+    console.error(validationError?.toString());
     process.exit(1);
   }
 }
 
-export function parseConfig<T>(schema: z.ZodType<T>, configFile: string, configPath: string): T {
+export function parseConfig<T>(configFile: string, configPath: string): T {
   if (!configFile) {
     return {} as T;
   }
 
   try {
-    const parsedConfig = JSON.parse(configFile);
-    return schema.parse(parsedConfig) as T;
+    return JSON.parse(configFile) as T;
   } catch (err) {
     console.error(chalk.redBright(`Failed parsing config file at ${chalk.red(configPath)}`));
+
     const validationError = makeFriendlyError(err);
-    console.error(validationError.toString());
+    console.error(validationError?.toString());
+
     process.exit(1);
   }
 }
@@ -126,17 +133,13 @@ const themeSchema = z
   })
   .meta({ description: 'An object defining a theme. The property name holding the object becomes the theme name.' });
 
-export const configFileBuildSchema = z.object({
+export const commonConfig = z.object({
   clean: z.boolean().meta({ description: 'Delete the output directory before building or creating tokens' }).optional(),
 });
 
-export const configFileCreateSchema = z
+const _configFileCreateSchema = z
   .object({
     outDir: z.string().meta({ description: 'Path to the output directory for the created design tokens' }),
-    clean: z
-      .boolean()
-      .meta({ description: 'Delete the output directory before building or creating tokens' })
-      .optional(),
     themes: z.record(z.string(), themeSchema).meta({
       description:
         'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name.',
@@ -147,8 +150,8 @@ export const configFileCreateSchema = z
 /**
  * This defines the structure of the final configuration file
  */
-export const combinedConfigSchema = configFileCreateSchema.extend(configFileBuildSchema.shape);
-export type ConfigSchema = z.infer<typeof combinedConfigSchema>;
-export type ConfigSchemaBuild = z.infer<typeof configFileBuildSchema>;
-export type ConfigSchemaCreate = z.infer<typeof configFileCreateSchema>;
+export const configFileCreateSchema = _configFileCreateSchema.extend(commonConfig.shape);
+export type CommonConfigSchema = z.infer<typeof commonConfig>;
+export type BuildConfigSchema = z.infer<typeof commonConfig>;
+export type CreateConfigSchema = z.infer<typeof configFileCreateSchema>;
 export type ConfigSchemaTheme = z.infer<typeof themeSchema>;

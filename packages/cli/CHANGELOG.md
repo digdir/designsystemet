@@ -1,5 +1,76 @@
 # Change Log
 
+## 1.1.9
+
+## 1.1.8
+
+### Patch Changes
+
+- Add typings for `ColorScheme` (used for `data-color-scheme`) ([#3879](https://github.com/digdir/designsystemet/pull/3879))
+
+## 1.1.7
+
+## 1.1.6
+
+### Patch Changes
+
+- Added new type declaration files for theme types when building tokens; `types.d.ts`. **_Use this instead of `colors.d.ts`._** ([#3837](https://github.com/digdir/designsystemet/pull/3837))
+
+- Deprecate `colors.d.ts` from `tokens build`. Replaced by `types.d.ts`. ([#3837](https://github.com/digdir/designsystemet/pull/3837))
+
+- Updated non-major dependencies ([#3868](https://github.com/digdir/designsystemet/pull/3868))
+
+- Add new export for augmented theme types; `@digdir/designsystemet/types`. ([#3837](https://github.com/digdir/designsystemet/pull/3837))
+  Use this with generated theme declaration file for types for your theme.
+
+## 1.1.5
+
+## 1.1.4
+
+### Patch Changes
+
+- Updated non-major dependencies ([#3803](https://github.com/digdir/designsystemet/pull/3803))
+
+- Fixed type declaration producing invalid syntax when a color name includes hyphens ([#3802](https://github.com/digdir/designsystemet/pull/3802))
+
+- fix: letter-spacing now uses `em` unit instead of invalid percentage unit ([#3759](https://github.com/digdir/designsystemet/pull/3759))
+  - **Note:** Users should run `npx @digdir/designsystemet@latest tokens build <options>` to rebuild css-variables with now valid letter-spacing. This will result in a slight visual change in the typography.
+
+- Removed non-working `--preview` option ([#3758](https://github.com/digdir/designsystemet/pull/3758))
+
+- Updated non-major dependencies ([#3838](https://github.com/digdir/designsystemet/pull/3838))
+
+## 1.1.3
+
+## 1.1.2
+
+## 1.1.1
+
+### Patch Changes
+
+- Updated non-major dependencies ([#3774](https://github.com/digdir/designsystemet/pull/3774))
+
+- Fix zod schema error when creating tokens from config file ([#3774](https://github.com/digdir/designsystemet/pull/3774))
+
+## 1.1.0
+
+### Patch Changes
+
+- Update dependency `@commander-js/extra-typings` to v14 ([#3734](https://github.com/digdir/designsystemet/pull/3734))
+
+- Add experimental option to generate Tailwind config. ([#3710](https://github.com/digdir/designsystemet/pull/3710))
+  Use `--experimental-tailwind` when running `tokens build` to generate.
+
+- Round `--ds-size-*` CSS variables by 1px instead of by 0.0625rem. With the ([#3681](https://github.com/digdir/designsystemet/pull/3681))
+  default root font size (16px) the result is the same, but if the user has
+  changed the browser's font size we now avoid fractional pixels.
+
+- Remove unused dependencies ([#3737](https://github.com/digdir/designsystemet/pull/3737))
+
+- Updated non-major dependencies ([#3696](https://github.com/digdir/designsystemet/pull/3696))
+
+- Updated non-major dependencies ([#3732](https://github.com/digdir/designsystemet/pull/3732))
+
 ## 1.0.8
 
 ## 1.0.7
@@ -61,7 +132,6 @@
 - Fix `data-color` and `data-color-scheme` used on the same element not working in some browsers ([#3354](https://github.com/digdir/designsystemet/pull/3354))
 
 - Dark mode color adjustments ([#3386](https://github.com/digdir/designsystemet/pull/3386))
-
   - Reduced the saturation of the colors in dark mode by about 50%.
   - Made the background- and surface colors a bit darker.
   - Made the text-default color a bit brighter for better contrast.
@@ -211,12 +281,10 @@
 - 9d54191: Moved typography based sizing formula to design-tokens
 - 4ff02ff: **Feat**: New `clean` option for cleaning `outDir` before `tokens create/build`
 - 48bd80e: Fix crash when running CLI command `tokens build`:
-
   - add --verbose option to `tokens build` for easier debugging
   - `tokens build` crashed when run on result of `tokens create`
 
   Update tokens template used by CLI command `tokens create`
-
   - removes `ingress`, renames `paragraph` to `body`, and adds `xl` size
 
 - 9b6401b: Fix crash when running @digdir/designsystemet CLI due to differences in module resolution when used as a package
@@ -452,12 +520,10 @@
 ### Minor Changes
 
 - Fix crash when running CLI command `tokens build`: ([#2549](https://github.com/digdir/designsystemet/pull/2549))
-
   - add --verbose option to `tokens build` for easier debugging
   - `tokens build` crashed when run on result of `tokens create`
 
   Update tokens template used by CLI command `tokens create`
-
   - removes `ingress`, renames `paragraph` to `body`, and adds `xl` size
 
 ### Patch Changes

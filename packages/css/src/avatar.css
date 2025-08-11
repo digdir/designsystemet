@@ -19,6 +19,7 @@
   text-transform: uppercase;
   user-select: none;
   width: var(--dsc-avatar-size);
+  @composes ds-print-preserve from './base.css';
 
   &:not([hidden]) {
     display: inline-flex;
@@ -34,10 +35,13 @@
     width: 100%;
     height: 100%;
   }
+  > span {
+    font-size: round(down, 1.3em, 1px); /* Default to 130% */
+  }
 
   &[data-initials]:empty::before {
     content: attr(data-initials);
-    font-size: round(down, 1.3em, 0.0625rem); /* Default to 130% */
+    font-size: round(down, 1.3em, 1px); /* Default to 130% */
   }
 
   &:not([data-initials]):empty::before {

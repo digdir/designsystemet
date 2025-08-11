@@ -1,13 +1,10 @@
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import cl from 'clsx/lite';
-import { forwardRef, useEffect, useRef, useState } from 'react';
 import type { InputHTMLAttributes, ReactNode } from 'react';
-import { omit, useDebounceCallback } from '../../utilities';
-import { Spinner } from '../Spinner';
-import type { FormFieldProps } from './useFormField/useFormField';
-import { useFormField } from './useFormField/useFormField';
-
+import { forwardRef, useEffect, useRef, useState } from 'react';
+import { useDebounceCallback } from '../../utilities';
+import { Spinner } from '../spinner/spinner';
 import { ComboboxContext } from './ComboboxContext';
 import { ComboboxIdProvider } from './ComboboxIdContext';
 import { ComboboxCustom } from './Custom';
@@ -15,10 +12,13 @@ import ComboboxError from './internal/ComboboxError';
 import ComboboxInput from './internal/ComboboxInput';
 import ComboboxLabel from './internal/ComboboxLabel';
 import ComboboxNative from './internal/ComboboxNative';
+import { omit } from './omit/omit';
 import type { Option } from './useCombobox';
 import { useCombobox } from './useCombobox';
 import { useComboboxKeyboard } from './useComboboxKeyboard';
 import { useFloatingCombobox } from './useFloatingCombobox';
+import type { FormFieldProps } from './useFormField/useFormField';
+import { useFormField } from './useFormField/useFormField';
 import { prefix, removePrefix, setReactInputValue } from './utilities';
 
 export type ComboboxProps = {
@@ -420,6 +420,7 @@ export const ComboboxComponent = forwardRef<HTMLInputElement, ComboboxProps>(
               initialFocus={-1}
               visuallyHiddenDismiss
             >
+              {/** biome-ignore lint/a11y/useAriaPropsSupportedByRole: deprecated component, will not fix */}
               <div
                 aria-labelledby={formFieldProps.inputProps.id}
                 aria-autocomplete='list'

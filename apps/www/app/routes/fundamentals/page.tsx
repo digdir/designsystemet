@@ -1,11 +1,15 @@
 import { join } from 'node:path';
-import { Heading } from '@digdir/designsystemet-react';
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Error404 } from '@internal/components';
 import * as Aksel from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
+import { useTranslation } from 'react-i18next';
+import { isRouteErrorResponse } from 'react-router';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
+import { TableOfContents } from '~/_components/table-of-contents/toc';
 import { formatDate } from '~/_utils/date';
-import { getFileFromContentDir } from '~/_utils/files';
+import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { generateMetadata } from '~/_utils/metadata';
 import type { Route } from './+types/page';
@@ -33,6 +37,7 @@ export async function loader({ params }: Route.LoaderArgs) {
     code: result.code,
     frontmatter: result.frontmatter,
     lang: params.lang,
+    toc: result.toc,
   };
 }
 
@@ -53,10 +58,11 @@ export const meta = ({ data }: Route.MetaArgs) => {
 };
 
 export default function Fundamentals({
-  loaderData: { code, frontmatter, lang },
+  loaderData: { code, frontmatter, lang, toc },
 }: Route.ComponentProps) {
   const Icon = frontmatter.icon
-    ? Aksel[frontmatter.icon as keyof typeof Aksel]
+    ? // biome-ignore lint/performance/noDynamicNamespaceImportAccess: this should be safe because we prerender the page
+      Aksel[frontmatter.icon as keyof typeof Aksel]
     : Aksel.LayersIcon;
 
   return (
@@ -81,10 +87,37 @@ export default function Fundamentals({
           <Icon fontSize='4rem' aria-hidden='true' />
         </div>
       </div>
-      <div className={classes.content}>
+      <TableOfContents
+        className={classes.tableOfContents}
+        title={frontmatter.title}
+        items={toc}
+      />
+      <div className={cl(classes.content, 'u-rich-text')}>
         <MDXComponents code={code} />
         <EditPageOnGithub />
       </div>
     </>
+  );
+}
+
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  const { t } = useTranslation();
+
+  const message = t('errors.default.title');
+  let details = t('errors.default.details');
+
+  if (isRouteErrorResponse(error)) {
+    if (error.status === 404) {
+      return <Error404 />;
+    }
+  } else if (import.meta.env.DEV && error && error instanceof Error) {
+    details = error.message;
+  }
+
+  return (
+    <div>
+      <Heading level={1}>{message}</Heading>
+      <Paragraph>{details}</Paragraph>
+    </div>
   );
 }

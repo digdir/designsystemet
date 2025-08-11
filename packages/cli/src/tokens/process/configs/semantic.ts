@@ -1,11 +1,9 @@
-import {} from '@tokens-studio/sd-transforms';
 import * as R from 'ramda';
-import type {} from 'style-dictionary/types';
 import { outputReferencesFilter } from 'style-dictionary/utils';
 import { isDigit, pathStartsWithOneOf, typeEquals } from '../../utils.js';
 import { formats } from '../formats/css.js';
 
-import { type GetStyleDictionaryConfig, basePxFontSize, dsTransformers, prefix } from './shared.js';
+import { basePxFontSize, dsTransformers, type GetStyleDictionaryConfig, prefix } from './shared.js';
 
 export const semanticVariables: GetStyleDictionaryConfig = ({ theme }) => {
   const selector = `:root`;

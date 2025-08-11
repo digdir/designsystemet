@@ -3,7 +3,7 @@ import { pathStartsWithOneOf, typeEquals } from '../../utils.js';
 import { formats } from '../formats/css.js';
 import { sizeRem, typographyName } from '../transformers.js';
 
-import { type GetStyleDictionaryConfig, basePxFontSize, prefix } from './shared.js';
+import { basePxFontSize, type GetStyleDictionaryConfig, prefix } from './shared.js';
 
 export const typographyVariables: GetStyleDictionaryConfig = ({ theme, typography }) => {
   const selector = `${typography === 'primary' ? ':root, ' : ''}[data-typography="${typography}"]`;
@@ -30,6 +30,7 @@ export const typographyVariables: GetStyleDictionaryConfig = ({ theme, typograph
           sizeRem.name,
           'ts/size/lineheight',
           'ts/typography/fontWeight',
+          'ts/size/css/letterspacing',
           typographyName.name,
         ],
         files: [

@@ -1,5 +1,73 @@
 # Change Log
 
+## 1.1.9
+
+## 1.1.8
+
+## 1.1.7
+
+## 1.1.6
+
+## 1.1.5
+
+### Patch Changes
+
+- **Table:** ([#3859](https://github.com/digdir/designsystemet/pull/3859))
+  - sorting icon never shrinks, even when using `Button` component (which is `display: flex`) as parent
+  - with `data-border` adjusts `border-radius` according to `border-width`
+
+- **Tabs:** adjusted to allow non-tab-button-elements inside `tablist` ([#3859](https://github.com/digdir/designsystemet/pull/3859))
+
+- **Details:** content using `overflow: hidden` to prevent margin clipping ([#3859](https://github.com/digdir/designsystemet/pull/3859))
+
+## 1.1.4
+
+### Patch Changes
+
+- **Avatar**: Text as children have same font-size as data-initials ([#3835](https://github.com/digdir/designsystemet/pull/3835))
+
+- **Select**: Flip chevron when open, uses [`:open` with limited availability](https://developer.mozilla.org/en-US/docs/Web/CSS/:open). Does not work in Safari ([#3846](https://github.com/digdir/designsystemet/pull/3846))
+
+- Updated non-major dependencies ([#3803](https://github.com/digdir/designsystemet/pull/3803))
+
+- **SkipLink**: Class is now `ds-skip-link`. Filename is now `skip-link.css`. ([#3829](https://github.com/digdir/designsystemet/pull/3829))
+  The old class and file is still present, and can imported and used as before. This will be removed in the next major version.
+
+- **ToggleGroup**: Class is now `ds-toggle-group`. Filename is now `toggle-group.css`. ([#3829](https://github.com/digdir/designsystemet/pull/3829))
+  The old class and file is still present, and can imported and used as before. This will be removed in the next major version.
+
+## 1.1.3
+
+### Patch Changes
+
+- **Field**: The gap between `label` and `Radio`/`Checkbox`/`Switch` is now clickable ([#3785](https://github.com/digdir/designsystemet/pull/3785))
+
+- **Details**: Single outer padding when multiple children ([#3796](https://github.com/digdir/designsystemet/pull/3796))
+
+- Round to nearest 1px a few places ([#3786](https://github.com/digdir/designsystemet/pull/3786))
+
+## 1.1.2
+
+### Patch Changes
+
+- Preserve visual appearance of components in print, excluding large surface backgrounds ([#3765](https://github.com/digdir/designsystemet/pull/3765))
+
+## 1.1.1
+
+### Patch Changes
+
+- Updated non-major dependencies ([#3774](https://github.com/digdir/designsystemet/pull/3774))
+
+- **Suggestion**: Reduced padding around `chip` remove-button ([#3774](https://github.com/digdir/designsystemet/pull/3774))
+
+## 1.1.0
+
+### Patch Changes
+
+- Updated non-major dependencies ([#3696](https://github.com/digdir/designsystemet/pull/3696))
+
+- Updated non-major dependencies ([#3732](https://github.com/digdir/designsystemet/pull/3732))
+
 ## 1.0.8
 
 ## 1.0.7
@@ -39,7 +107,6 @@
 ### Patch Changes
 
 - Replaced usage of `background-default`/`background-tinted` color-variables with `surface-default`/`surface-tinted` in components ([#3412](https://github.com/digdir/designsystemet/pull/3412))
-
   - `Details`
   - `Input`
   - `Field`
@@ -374,13 +441,11 @@
 - \*_Table_: Background is now transparent by default ([#3147](https://github.com/digdir/designsystemet/pull/3147))
 
 - **Details**: Add `data-variant="default/tinted"`, `default` is default. ([#3131](https://github.com/digdir/designsystemet/pull/3131))
-
   - This can also be controlled from `Card`
 
 - **Details**: Change default variant colors for open and hover ([#3159](https://github.com/digdir/designsystemet/pull/3159))
 
 - **Dialog**: ([#3148](https://github.com/digdir/designsystemet/pull/3148))
-
   - Correctly centers position also when placed in `display: flex`
   - Only prevents scroll if opened with `.showModal()`
 
@@ -463,14 +528,12 @@
 - Link: Fix missing underline when using Tailwind ([#2923](https://github.com/digdir/designsystemet/pull/2923))
 
 - Table: ([#2933](https://github.com/digdir/designsystemet/pull/2933))
-
   - Correct footer styling
   - Automatic focus styling for sorting buttons
 
 - Switch: Adjust design to better align with radio and checkbox ([#2929](https://github.com/digdir/designsystemet/pull/2929))
 
 - Tooltip: Use popover API ([#2916](https://github.com/digdir/designsystemet/pull/2916))
-
   - Removes `delay`, this is now `--dsc-tooltip-transition-delay`
   - Removes `defaultOpen`
   - Removes `portal`
@@ -594,13 +657,11 @@
   ValidationMessage: Use data attributes for styling
 
 - Select + Textarea: ([#2571](https://github.com/digdir/designsystemet/pull/2571))
-
   - Remove `label`, `hideLabel`, `description`, `characterLimit` and `error` as these will be part of `Field` API
 
 - Pagination: Add css variable for chevron ([#2626](https://github.com/digdir/designsystemet/pull/2626))
 
 - Field.Affix: ([#2793](https://github.com/digdir/designsystemet/pull/2793))
-
   - Rename `Field.AffixWrapper` to `Field.Affixes`
   - Support inputs with `size` attribute
 
@@ -615,7 +676,6 @@
 ### Patch Changes
 
 - Pagination: ([#2460](https://github.com/digdir/designsystemet/pull/2460))
-
   - Remove attributes `currentPage` and `totalPages` on `Pagination`
   - Replace `Pagination.Root` with `Paginaton`
   - Replace `Pagination.Next`, `Pagination.Previous` and `Pagination.Ellipsis` with `Paginaton.Button`
@@ -623,21 +683,17 @@
   - Add support for `showPages` and `onChange` in `usePagination`
 
 - Skiplink: ([#2577](https://github.com/digdir/designsystemet/pull/2577))
-
   - Simplify DOM
   - Add support for `forwardRef`
 
 - Accordion: Animate open/close with CSS ([#2527](https://github.com/digdir/designsystemet/pull/2527))
-
   - Replace onFound with onToggle
 
 - Heading: ([#2525](https://github.com/digdir/designsystemet/pull/2525))
-
   - Classes with data attributes
   - Move base style to utility classes
 
 - Modal: ([#2440](https://github.com/digdir/designsystemet/pull/2440))
-
   - Rename `Modal.Dialog` to `Modal`
   - Rename `Modal.Root` to `Modal.Context`
   - Replace `onInteractOutside` event with `backdropClose` boolean
@@ -648,19 +704,16 @@
   - Remove `subtitle` from `Modal.Header`
 
 - Body/Paragraph ([#2529](https://github.com/digdir/designsystemet/pull/2529))
-
   - Add body-xl token
   - Add xl paragraph
   - Remove ingress tokens
 
 - Ingress: Remove component ([#2515](https://github.com/digdir/designsystemet/pull/2515))
-
   - Use `Paragraph variant='long'` instead
 
 - Heading: Fix `md` heading size ([#2485](https://github.com/digdir/designsystemet/pull/2485))
 
 - Card: ([#2509](https://github.com/digdir/designsystemet/pull/2509))
-
   - Allow `Card` with content placed directly inside
   - Replace `Card.Header`, `Card.Content` and `Card.Footer` with `Card.Block`
   - Replace `isLink` with anchor-in-heading + `click` handler for better accessibility
@@ -685,7 +738,6 @@
 - ErrorSummary: Rename ErrorSummary.Root to ErrorSummary ([#2437](https://github.com/digdir/designsystemet/pull/2437))
 
 - Tabs: ([#2448](https://github.com/digdir/designsystemet/pull/2448))
-
   - Renames `Tabs.Root` to `Tabs`
   - Renames `Tabs.Content` to `Tabs.Panel`
 
@@ -694,7 +746,6 @@
 - Modal: css changes ([#2418](https://github.com/digdir/designsystemet/pull/2418))
 
 - DropdownMenu: ([#2432](https://github.com/digdir/designsystemet/pull/2432))
-
   - Rename from `DropdownMenu` to `Dropdown`
   - Change API and structure
   - Rename `.Root` to `.Context`
@@ -711,7 +762,6 @@
 - Breadcrumbs: Rename `Breadcrumbs.Root` to `Breadcrumbs` and remove `Breadcrumbs.Nav` ([#2428](https://github.com/digdir/designsystemet/pull/2428))
 
 - HelpText: ([#2438](https://github.com/digdir/designsystemet/pull/2438))
-
   - Use Popover API
   - Remove `portal` prop
   - Render icon with pseudo element and require aria-label
@@ -739,7 +789,6 @@
 - Box: Remove component ([#2372](https://github.com/digdir/designsystemet/pull/2372))
 
 - Popover: ([#2369](https://github.com/digdir/designsystemet/pull/2369))
-
   - Rename `<Popover.Root>` to `<Popover.Context>`
   - use Popover API, allowing `<Popover>` to be used without `Popover.Context`
   - Remove `portal` prop

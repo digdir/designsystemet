@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet-theme",
-  "version": "1.0.8",
+  "version": "1.1.9",
   "description": "Predefined themes for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -11,7 +11,7 @@
   "license": "MIT",
   "exports": {
     ".": {
-      "types": "./src/themes/colors.d.ts",
+      "types": "./src/themes/types.d.ts",
       "default": "./src/themes/designsystemet.css"
     },
     "./tailwind": {
@@ -33,7 +33,8 @@
   "scripts": {
     "designsystemet:tokens-create": "pnpm designsystemet tokens create --config ./configs/designsystemet.config.json",
     "designsystemet:tokens-build": "pnpm designsystemet tokens build --config ./configs/designsystemet.config.json -t ../../design-tokens -o ./src/themes --clean --experimental-tailwind",
-    "update:theme": "pnpm designsystemet:tokens-create && pnpm designsystemet:tokens-build"
+    "designsystemet:tokens-preview": "pnpm --filter @digdir/designsystemet run update:preview-tokens",
+    "update:theme": "pnpm designsystemet:tokens-create && pnpm designsystemet:tokens-build && pnpm designsystemet:tokens-preview"
   },
   "devDependencies": {
     "rimraf": "^6.0.1",

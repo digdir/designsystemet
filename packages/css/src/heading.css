@@ -1,6 +1,7 @@
 .ds-heading {
   font-size: 1.3em; /* Fallback if not supporting round() */
-  font-size: round(down, 1.3em, 0.0625rem); /* Default to 130% */
+  /* biome-ignore lint/suspicious/noDuplicateProperties: fallback */
+  font-size: round(down, 1.3em, 1px); /* Default to 130% */
   font-weight: var(--ds-heading-md-font-weight);
   letter-spacing: var(--ds-heading-md-letter-spacing);
   line-height: var(--ds-heading-md-line-height);

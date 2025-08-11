@@ -1,0 +1,69 @@
+import { Meta, Canvas, Controls, Primary, ArgTypes } from '@storybook/addon-docs/blocks';
+import * as SuggestionStories from './suggestion.stories';
+import { Alert } from '../';
+import { SuggestionList } from './suggestion-list';
+
+<Meta of={SuggestionStories} />
+
+<Alert data-color="warning">Suggestion er under utvikling. Finner du feil eller mangler, meld i fra på Slack eller Github.</Alert>
+
+# Suggestion
+
+Søkbar "select" med mulighet for flervalg/multiselect. Bruk dersom `Select` ikke er tilstrekkelig.
+
+<Primary />
+<Controls />
+
+## Bruk
+
+```tsx
+import { EXPERIMENTAL_Suggestion as Suggestion } from '@digdir/designsystemet-react';
+
+
+<Suggestion>
+  <Suggestion.Input />
+  <Suggestion.Clear />
+  <Suggestion.List>
+    <Suggestion.Empty>Tomt</Suggestion.Empty>
+    <Suggestion.Option label="Sogndal" value="sogndal">
+      Sogndal
+    </Suggestion.Option>
+    <Suggestion.Option label="Oslo" value="oslo">
+      Oslo
+    </Suggestion.Option>
+  </Suggestion.List>
+</Suggestion>
+```
+
+## Eksempler
+
+### Flervalg
+
+Bruk `multiple` på `Suggestion`. Dersom du vil endre hvordan valgte alternativer vises, kan du bruke `renderSelected` .
+
+<Canvas of={SuggestionStories.Multiple} />
+
+### Filter
+
+Filter er som standard på, og filteret ser etter etter teksten i input.
+Skal du ha eget filter kan du sende inn en funksjon til `filter`.
+
+Dersom du vil vise alle alternativer, uavhengig av input, kan du sette `filter={false}`.
+
+<Canvas of={SuggestionStories.CustomFilterAlt1} />
+
+### Asynkrone data
+
+`Suggestion` har ikke en egen `loading` state, så dette må håndereres selv. 
+I eksempelet under viser vi `Spinner` i `Suggestion.Empty`.
+
+<Canvas of={SuggestionStories.FetchExternal} />
+
+## `Suggestion.List`
+
+<ArgTypes of={SuggestionList} />
+
+## Tilleggsinformasjon
+
+`Suggestion` baserer seg på [u-combobox fra u-elements](https://u-elements.github.io/u-elements/elements/u-combobox). 
+Den er inspisert av [open-ui sitt combobox mønster](https://open-ui.org/components/combobox.explainer/).

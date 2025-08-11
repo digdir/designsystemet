@@ -3,15 +3,15 @@ import type { Command, OptionValues } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 import * as R from 'ramda';
 import {
-  type ConfigSchemaBuild,
-  type ConfigSchemaCreate,
-  configFileBuildSchema,
+  type BuildConfigSchema,
+  type CreateConfigSchema,
+  commonConfig,
   configFileCreateSchema,
   parseConfig,
   validateConfig,
 } from '../src/config.js';
 import { readFile } from '../src/utils.js';
-import { type OptionGetter, getCliOption, getDefaultCliOption, getSuppliedCliOption } from './options.js';
+import { getCliOption, getDefaultCliOption, getSuppliedCliOption, type OptionGetter } from './options.js';
 
 export async function readConfigFile(configPath: string, allowFileNotFound = true): Promise<string> {
   const resolvedPath = path.resolve(process.cwd(), configPath);
@@ -37,14 +37,10 @@ export async function readConfigFile(configPath: string, allowFileNotFound = tru
 export async function parseCreateConfig(
   configFile: string,
   options: { theme: string; cmd: Command<unknown[], OptionValues>; configPath: string },
-): Promise<ConfigSchemaCreate> {
+): Promise<CreateConfigSchema> {
   const { cmd, theme = 'theme', configPath } = options;
 
-  const configParsed: ConfigSchemaCreate = parseConfig<ConfigSchemaCreate>(
-    configFileCreateSchema,
-    configFile,
-    configPath,
-  );
+  const configParsed: CreateConfigSchema = parseConfig<CreateConfigSchema>(configFile, configPath);
 
   /*
    * Check that we're not creating multiple themes with different color names.
@@ -105,14 +101,14 @@ export async function parseCreateConfig(
         },
   });
 
-  return validateConfig<ConfigSchemaCreate>(configFileCreateSchema, unvalidatedConfig, configPath);
+  return validateConfig<CreateConfigSchema>(configFileCreateSchema, unvalidatedConfig, configPath);
 }
 
 export async function parseBuildConfig(
   configFile: string,
   { configPath }: { configPath: string },
-): Promise<ConfigSchemaBuild> {
-  const configParsed: ConfigSchemaBuild = parseConfig<ConfigSchemaBuild>(configFileBuildSchema, configFile, configPath);
+): Promise<BuildConfigSchema> {
+  const configParsed: BuildConfigSchema = parseConfig<BuildConfigSchema>(configFile, configPath);
 
-  return validateConfig<ConfigSchemaBuild>(configFileBuildSchema, configParsed, configPath);
+  return validateConfig<BuildConfigSchema>(commonConfig, configParsed, configPath);
 }

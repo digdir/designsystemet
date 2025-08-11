@@ -1,20 +1,29 @@
 import { SkipLink } from '@digdir/designsystemet-react';
+import type { FooterLinkListItemProps } from '@internal/components';
 import {
   ContentContainer,
   Error404,
   Footer,
   Header,
 } from '@internal/components';
-import type { FooterLinkListItemProps } from '@internal/components';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
-import { Outlet, isRouteErrorResponse, useRouteLoaderData } from 'react-router';
+import { isRouteErrorResponse, Outlet, useRouteLoaderData } from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
 import { Figma } from '~/_components/logos/figma';
 import { Github } from '~/_components/logos/github';
 import { Slack } from '~/_components/logos/slack';
-import type { Route } from './+types/layout';
+import i18n from '~/i18n';
 import type { Route as RootRoute } from './../../+types/root';
+import type { Route } from './+types/layout';
+
+export const loader = ({ params }: Route.LoaderArgs) => {
+  if (!i18n.supportedLngs.includes(params.lang || '')) {
+    throw new Response('Not Found', {
+      status: 404,
+    });
+  }
+};
 
 const rightLinks: FooterLinkListItemProps[] = [
   {

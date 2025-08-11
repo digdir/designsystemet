@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { ChipRemovable } from '../../Chip';
+import { ChipRemovable } from '../../chip';
 import { ComboboxContext } from '../ComboboxContext';
 
 const ComboboxChips = () => {

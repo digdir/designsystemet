@@ -1,7 +1,7 @@
 {
   "name": "@plugin/figma",
   "private": true,
-  "version": "0.5.0",
+  "version": "0.5.1",
   "type": "module",
   "scripts": {
     "watch:ui": "npm run build:ui -- --watch --mode=development",
@@ -18,24 +18,24 @@
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
-    "@navikt/aksel-icons": "^7.22.0",
+    "@navikt/aksel-icons": "^7.25.1",
     "clsx": "^2.1.1",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-router-dom": "^7.6.1"
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.7.1"
   },
   "devDependencies": {
-    "@figma/plugin-typings": "^1.113.0",
-    "@types/react": "^19.1.6",
+    "@figma/plugin-typings": "^1.116.0",
+    "@types/react": "^19.1.9",
     "@types/react-color": "^3.0.13",
-    "@types/react-dom": "^19.1.5",
-    "@vitejs/plugin-react": "^4.5.1",
-    "postcss": "^8.5.4",
-    "rollup": "^4.41.1",
-    "typescript": "^5.8.3",
-    "vite": "^6.3.5",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^4.7.0",
+    "postcss": "^8.5.6",
+    "rollup": "^4.46.2",
+    "typescript": "^5.9.2",
+    "vite": "^7.0.6",
     "vite-plugin-react-rich-svg": "^1.2.1",
-    "vite-plugin-singlefile": "^2.2.0",
-    "zustand": "^5.0.5"
+    "vite-plugin-singlefile": "^2.3.0",
+    "zustand": "^5.0.7"
   }
 }

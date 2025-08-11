@@ -7,6 +7,7 @@ import accentColorCategoryJson from '../../../../internal/design-tokens/semantic
 };
 import digdirThemeJson from '../../../../internal/design-tokens/themes/digdir.json' with { type: 'json' };
 import { cleanDir, cp, mkdir, readFile, writeFile } from '../utils.js';
+
 const DIRNAME: string = import.meta.dirname || __dirname;
 
 const SOURCE_FILES_PATH = path.join(DIRNAME, '../../../../internal/design-tokens');

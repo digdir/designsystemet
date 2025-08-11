@@ -20,6 +20,11 @@
   border-color: var(--dsc-details-border-color);
   box-sizing: border-box;
 
+  & + & {
+    border-top: 0; /* Skip border-top when .ds-details is followed by .ds-details */
+    margin-top: 0; /* Prevent gap when places as child of .ds-card */
+  }
+
   &[data-variant='default'] {
     --dsc-details-background: var(--ds-color-surface-default);
     --dsc-details-summary-background--hover: var(--ds-color-surface-tinted);
@@ -60,6 +65,8 @@
 
     /* Render focus inside so it is easier to make full window width and place in overflow: hidden containers */
     @composes ds-focus--inset from './base.css';
+    /*preserve header for print but not background-color on content*/
+    @composes ds-print-preserve from './base.css';
 
     &::before {
       all: unset;
@@ -81,16 +88,6 @@
     }
   }
 
-  & + & {
-    border-top: 0; /* Skip border-top when .ds-details is followed by .ds-details */
-    margin-top: 0; /* Prevent gap when places as child of .ds-card */
-  }
-
-  & > :not(summary, u-summary) {
-    border-radius: inherit;
-    padding: var(--ds-size-5, 1rem);
-  }
-
   &[open] > :is(summary, u-summary) {
     background: var(--dsc-details-summary-background--open);
 
@@ -106,17 +103,30 @@
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    /* biome-ignore lint/correctness/noUnknownProperty: biome does not know about this property yet */
     interpolate-size: allow-keywords;
   }
 
   &::part(details-content) {
     block-size: 0;
-    overflow-y: clip;
-    transition: content-visibility 400ms allow-discrete, height 400ms;
+    overflow-y: hidden; /* Using hidden instead of clip to contain margins */
+    transition:
+      content-visibility 400ms allow-discrete,
+      height 400ms;
   }
 
   &[open]::part(details-content) {
     height: auto;
+  }
+}
+
+/* Wrap in :where to allow all other components to overwrite (i.e placing a <Button> inside <Details>) */
+:where(.ds-details > :not(summary, u-summary)) {
+  border-radius: inherit;
+  margin-inline: var(--ds-size-5, 1rem);
+  &:nth-child(2) {
+    margin-block-start: var(--ds-size-5, 1rem);
+  }
+  &:last-child {
+    margin-block-end: var(--ds-size-5, 1rem);
   }
 }

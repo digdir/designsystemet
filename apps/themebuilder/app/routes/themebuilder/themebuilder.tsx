@@ -11,12 +11,12 @@ import { parsePath, redirect } from 'react-router';
 import { isProduction } from '~/_utils/is-production.server';
 import { generateMetadata } from '~/_utils/metadata';
 import i18n from '~/i18next.server';
-import type { Route } from './+types/themebuilder';
 import {
-  QUERY_SEPARATOR,
   createColorsAndNeutralVariables,
   createColorsFromQuery,
+  QUERY_SEPARATOR,
 } from './_utils/use-themebuilder';
+import type { Route } from './+types/themebuilder';
 
 const toQueryString = (obj: Record<string, string>) =>
   Object.entries(obj)
@@ -61,8 +61,7 @@ export const loader = async ({
         hex: (urlParams.get('neutral') as CssColor) || NEUTRAL_COLOR,
       },
     ],
-    support:
-      createColorsFromQuery(urlParams.get('support') || SUPPORT_COLORS) || [],
+    support: createColorsFromQuery(urlParams.get('support')),
   };
 
   return {

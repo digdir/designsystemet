@@ -1,4 +1,4 @@
-import { ValidationMessage } from '../../ValidationMessage';
+import { ValidationMessage } from '../../validation-message/validation-message';
 import type { ComboboxProps } from '../Combobox';
 import type { useFormField } from '../useFormField/useFormField';
 

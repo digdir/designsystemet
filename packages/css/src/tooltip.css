@@ -49,6 +49,19 @@
     rotate: 45deg;
   }
 
+  /* Transparent box to make tooltip stay open when mouse is over it */
+  &::after {
+    content: '';
+    background: transparent;
+    box-sizing: border-box;
+    height: var(--_dsc-tooltip-safearea-height, 0px);
+    width: var(--_dsc-tooltip-safearea-width, 0px);
+    translate: var(--_dsc-tooltip-safearea-translate);
+    position: absolute;
+    left: var(--dsc-tooltip-arrow-x, 50%);
+    top: var(--dsc-tooltip-arrow-y, 100%);
+  }
+
   @media (forced-colors: active) {
     background: CanvasText;
   }

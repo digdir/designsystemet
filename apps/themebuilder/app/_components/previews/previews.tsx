@@ -1,7 +1,6 @@
-import { useState } from 'react';
-
 import type { ColorScheme, CssColor } from '@digdir/designsystemet';
 import { ToggleGroup } from '@digdir/designsystemet-react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { OverviewComponents } from '../overview-components/overview-components';
 import classes from './previews.module.css';

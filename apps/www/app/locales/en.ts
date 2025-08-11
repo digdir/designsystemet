@@ -5,19 +5,19 @@ export default {
   ...en,
   frontpage: {
     heading: 'Designsystemet helps you build better digital services',
-    'for-designers': {
-      title: 'For designers',
-      description:
-        'Learn how to get started with Designsystemet as a designer.',
+    'get-started': {
+      title: 'Get started',
+      description: 'Learn how to get started with Designsystemet',
     },
-    'for-developers': {
-      title: 'For developers',
+    patterns: {
+      title: 'Patterns',
       description:
-        'Learn how to get started with Designsystemet as a developer.',
+        'Understand how shared patterns contribute to consistent user experiences',
     },
     components: {
       title: 'Components',
-      description: 'See the overview of UI components created in React.',
+      description:
+        'See the overview of UI components created in React, CSS and Figma.',
     },
     toolbox: {
       title: 'A common digital toolbox',
@@ -29,6 +29,7 @@ export default {
       title: 'Accessible and flexible components',
       description:
         'By creating the most basic components once, we ensure high quality. Each component is thoroughly tested and meets accessibility requirements. Components are built in both Figma and React, and can be combined in various ways to support different patterns.',
+      link: 'Read more about accessibility',
       fallbackImgAlt:
         'Design sketch of a mobile phone containing components from Designsystemet.',
     },
@@ -36,6 +37,7 @@ export default {
       title: 'Use your own themes',
       description:
         'With theming, Designsystemet makes it possible to support different visual identities. This means everyone can build on the same foundation while tailoring the design to their own brand.',
+      link: 'Build your theme',
       fallbackImgAlt:
         'Design sketch of a website showing how Designsystemet can be adapted to different identities.',
     },
@@ -79,8 +81,8 @@ export default {
     categories: {
       'Getting Started': 'Getting Started',
       'Design Principles': 'Design Principles',
-      'For Designers': 'For Designers',
-      'For Developers': 'For Developers',
+      Figma: 'Figma',
+      Code: 'Kode',
       About: 'About',
     },
     items: {
@@ -113,9 +115,8 @@ export default {
       details: 'An unexpected error occurred.',
     },
     '404': {
-      title: '404',
-      details:
-        'The page you are looking for does not exist. Please check the URL or go back to the homepage.',
+      title: '404 - Page Not Found',
+      details: 'It might have been removed or moved.',
     },
     generic: {
       title: 'Error',
@@ -154,6 +155,47 @@ export default {
     },
   },
   video: {
-    'watch-video': 'Watch video on vimeo.com',
+    'watch-video': 'Watch video on {{url}}',
+  },
+  image: {
+    'enlarged-text': 'Click the image or press Escape to close',
+    'aria-label': {
+      enlarged: 'Click to minimize image.',
+      normal: 'Click to enlarge image.',
+    },
+  },
+  'image-banner': {
+    'play-video': 'Play video',
+    'pause-video': 'Pause video',
+  },
+  'token-preview': {
+    size: {
+      description:
+        'The value of size variables is set by the `data-size` attribute.',
+      'select-label': 'Select size (data-size)',
+    },
+    color: {
+      description:
+        'The value of color variables is set by the `data-color` attribute.',
+      'select-label': 'Select color (data-color)',
+    },
+    'search-in-design-tokens': 'Search in design tokens',
+    'search-input-aria-label':
+      'Search for variable names in CSS for design tokens',
+    colors: 'Colors',
+    typography: 'Typography',
+    semantic: 'Semantic tokens',
+    'no-results': 'No results found',
+    table: {
+      variable: 'Variable',
+      value: 'Value',
+      name: 'Name',
+      preview: 'Preview',
+      light: 'Light',
+      dark: 'Dark',
+    },
+  },
+  toc: {
+    title: 'Contents',
   },
 } satisfies typeof no;

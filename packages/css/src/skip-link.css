@@ -1,0 +1,34 @@
+/* TODO: ds-skiplink can be removed in the next major version */
+.ds-skip-link,
+.ds-skiplink {
+  --dsc-skiplink-padding: var(--ds-size-4) var(--ds-size-4) var(--ds-size-5) var(--ds-size-4);
+  --dsc-skiplink-background: var(--ds-color-surface-hover);
+  --dsc-skiplink-color: var(--ds-color-text-default);
+
+  @composes ds-sr-only from './base.css';
+}
+
+.ds-skip-link:focus,
+.ds-skiplink:focus {
+  place-items: center;
+  outline: 0;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: inherit;
+  padding: var(--dsc-skiplink-padding);
+  color: var(--dsc-skiplink-color);
+  background: var(--dsc-skiplink-background);
+  box-sizing: border-box;
+  text-decoration: underline;
+  text-decoration-thickness: max(1px, 0.0625rem);
+  text-underline-offset: max(5px, 0.25rem);
+
+  &:not([hidden]) {
+    display: grid;
+  }
+}

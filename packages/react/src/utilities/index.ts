@@ -1,4 +1,3 @@
-export * from './omit/omit';
 export type {
   UseCheckboxGroupProps,
   UsePaginationProps,
@@ -6,12 +5,18 @@ export type {
 } from './hooks';
 export {
   useCheckboxGroup,
-  useRadioGroup,
-  usePagination,
   useDebounceCallback,
   useIsomorphicLayoutEffect,
   useMediaQuery,
+  usePagination,
+  useRadioGroup,
   useSynchronizedAnimation,
 } from './hooks';
-export * from './RovingFocus';
-export type * from './types';
+export {
+  getNextFocusableValue,
+  getPrevFocusableValue,
+  RovingFocusItem,
+} from './roving-focus/roving-focus-item';
+export { RovingFocusRoot } from './roving-focus/roving-focus-root';
+export { useRovingFocus } from './roving-focus/use-roving-focus';
+export type { MergeRight } from './types';

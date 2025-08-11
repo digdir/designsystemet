@@ -3,6 +3,7 @@
   "git.autofetch": true,
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit",
     "quickfix.biome": "explicit",
     "source.organizeImports.biome": "explicit"
   },
@@ -33,5 +34,11 @@
   },
   "[ignore]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
   }
 }

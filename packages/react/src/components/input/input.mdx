@@ -1,0 +1,50 @@
+import { Meta, Canvas, Controls, Primary } from '@storybook/addon-docs/blocks';
+import { CssVariables } from '@doc-components';
+import css from '@digdir/designsystemet-css/input.css?inline';
+import { Alert } from '../';
+import * as InputStories from './input.stories';
+
+<Meta of={InputStories} />
+
+
+# Input
+
+`Input` er et skjemaelement for å samle inn brukerdata. Det tilbyr grunnleggende funksjonalitet og er ideell når du trenger full kontroll over komponentens oppsett og validering, noe som gjør det ideelt for bygging av spesialtilpassede elementer.
+
+Se også [`Textfield`](/docs/komponenter-textfield--docs) som er en gruppering av komponenter som ofte brukes sammen. Med `Textfield` slipper du å sy sammen `Label`, `Description`, `Input`, `ValidationMessage` selv hver gang.
+
+<Primary />
+<Controls />
+## Eksempler
+
+### Kontrollert
+
+<Canvas of={InputStories.Controlled} />
+
+### Html size
+
+Attributtet `size` kan brukes for å angi bredden på tekstfeltet. Verdien kan være et tall fra 1 til 99.
+
+<Canvas of={InputStories.HtmlSize} />
+
+## Retningslinjer
+
+Se retningslinjer for [`Textfield`](/docs/komponenter-textfield--docs).
+
+### Plassering av ledeteksten
+
+Ledeteksten og eventuell beskrivelse skal alltid stå over tekstfeltet. Dette gjør dem lette å se på små skjermer og hindres ikke av eventuelle feilmeldinger.
+
+
+I spesielle tilfeller kan vi skjule ledeteksten ved å ikke bruke `Label`. Det kan for eksempel være i tabeller, hvis feltet får ledeteksten fra tabelloverskriften. Selv om vi har tenkt å skjule ledeteksten, må vi alltid skrive en ledetekst som gir mening, siden den leses opp av skjermlesere. Det kan gjøres i en `aria-label` eller `aria-labelledby`.
+
+
+## Tilgjengelighet
+For god praksis se [`Textfield`](/docs/komponenter-textfield--docs).
+
+
+## CSS Variabler
+
+<Alert data-color="warning">Her kan det komme endringer på CSS variabler.</Alert>
+
+<CssVariables css={css} />

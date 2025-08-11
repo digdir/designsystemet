@@ -1,8 +1,7 @@
 import { PadlockLockedFillIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-
-import { Label } from '../../Label';
-import { Paragraph } from '../../Paragraph';
+import { Label } from '../../label/label';
+import { Paragraph } from '../../paragraph/paragraph';
 import type { ComboboxProps } from '../Combobox';
 import type { useFormField } from '../useFormField/useFormField';
 

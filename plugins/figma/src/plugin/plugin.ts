@@ -1,5 +1,6 @@
 import { Messages } from '@common/types';
-import type { ColorTheme, StoreThemes } from '../common/store';
+import type { StoreThemes } from '../common/store';
+import type { ColorTheme } from '../common/utils';
 
 import { getVariables } from './figma/getVariables';
 import { getThemes } from './figma/themes';

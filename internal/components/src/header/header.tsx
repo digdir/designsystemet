@@ -250,7 +250,7 @@ const Header = ({
                   onClick={() => setLangOpen(!langOpen)}
                   aria-label={t('header.language-toggle')}
                 >
-                  <LanguageIcon />
+                  <LanguageIcon aria-hidden />
                 </Dropdown.Trigger>
               </div>
             </Tooltip>

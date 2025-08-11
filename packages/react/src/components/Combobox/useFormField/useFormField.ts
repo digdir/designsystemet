@@ -1,8 +1,7 @@
+import type { Size } from '@digdir/designsystemet/types';
 import cl from 'clsx/lite';
-import { useContext, useId } from 'react';
 import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from 'react';
-
-import type { Size } from '../../../types';
+import { useContext, useId } from 'react';
 import { FieldsetContext } from './FieldsetContext';
 
 export type FormFieldProps = {

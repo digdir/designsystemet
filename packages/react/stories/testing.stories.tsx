@@ -1,3 +1,4 @@
+import type { Size } from '@digdir/designsystemet/types';
 import { PrinterSmallIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
@@ -34,10 +35,9 @@ import {
   Textfield,
   ToggleGroup,
   Tooltip,
-  ValidationMessage,
   usePagination,
+  ValidationMessage,
 } from '../src';
-import type { Size } from '../src/types';
 
 export default {
   title: 'Testing',

@@ -33,9 +33,9 @@ export const Sidebar = ({ cats, title, ...props }: SidebarProps) => {
         {t(`sidebar.sidebar`)}
       </Button>
 
-      <div className={cl(classes.menu, showMenu && classes.activeMenu)}>
-        <Paragraph data-size='md' asChild>
-          <h2 className={classes.title}>{t(`sidebar.${title}`, title)}</h2>
+      <nav className={cl(classes.menu, showMenu && classes.activeMenu)}>
+        <Paragraph data-size='md' className={classes.title}>
+          {t(`sidebar.${title}`, title)}
         </Paragraph>
         <ul className={classes.list}>
           {Object.entries(cats).map(([key, value]) => {
@@ -74,7 +74,7 @@ export const Sidebar = ({ cats, title, ...props }: SidebarProps) => {
             );
           })}
         </ul>
-      </div>
+      </nav>
     </div>
   );
 };

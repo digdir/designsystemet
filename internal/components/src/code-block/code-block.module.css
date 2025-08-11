@@ -4,15 +4,16 @@
   width: auto;
   padding: var(--ds-size-5);
   border-top-left-radius: var(--ds-border-radius-md);
-  border-top-left-radius: var(--ds-border-radius-md);
   height: fit-content;
-  font-size: min(0.8em, 14px);
   background-color: var(--ds-color-neutral-background-tinted);
   font-family: monospace;
   margin-bottom: 0;
 
   & [class~='plain-text'] {
     color: var(--ds-color-neutral-text-default);
+  }
+  code {
+    font-size: min(0.8em, 14px);
   }
 }
 

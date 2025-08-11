@@ -1,9 +1,7 @@
 import cl from 'clsx/lite';
-import { forwardRef, useContext } from 'react';
 import type { HTMLAttributes } from 'react';
-
-import { Label } from '../Label';
-
+import { forwardRef, useContext } from 'react';
+import { Label } from '../label/label';
 import { ComboboxContext } from './ComboboxContext';
 
 export type ComboboxEmptyProps = HTMLAttributes<HTMLDivElement>;

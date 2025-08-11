@@ -2,12 +2,12 @@ import path from 'node:path';
 import type { ThemeObject } from '@tokens-studio/types';
 import chalk from 'chalk';
 import * as R from 'ramda';
-import type { DesignToken } from 'style-dictionary/types';
 import { mkdir, readFile, writeFile } from '../utils.js';
-import { createThemeCSSFiles, defaultFileHeader } from './process/output/theme.js';
-
+import { createTypeDeclarationFiles } from './process/output/declarations.js';
 import { createTailwindCSSFiles } from './process/output/tailwind.js';
+import { createThemeCSSFiles, defaultFileHeader } from './process/output/theme.js';
 import { type BuildOptions, processPlatform } from './process/platform.js';
+import { processThemeObject } from './process/utils/getMultidimensionalThemes.js';
 import type { DesignsystemetObject, OutputFile } from './types.js';
 
 async function write(files: OutputFile[], outDir: string, dry?: boolean) {
@@ -24,25 +24,27 @@ async function write(files: OutputFile[], outDir: string, dry?: boolean) {
   }
 }
 
-export const buildTokens = async (options: Omit<BuildOptions, 'type' | '$themes'>) => {
+export const buildTokens = async (options: Omit<BuildOptions, 'type' | 'processed$themes' | 'buildTokenFormats'>) => {
   const outDir = path.resolve(options.outDir);
   const tokensDir = path.resolve(options.tokensDir);
   const $themes = JSON.parse(await readFile(`${tokensDir}/$themes.json`)) as ThemeObject[];
+  const processed$themes = $themes.map(processThemeObject);
   let $designsystemet: DesignsystemetObject | undefined;
 
   try {
     const $designsystemetContent = await readFile(`${tokensDir}/$designsystemet.json`);
     $designsystemet = JSON.parse($designsystemetContent) as DesignsystemetObject;
-  } catch (error) {}
+  } catch (_error) {}
 
   console.log(`\n🏗️ Start building tokens in ${chalk.green(tokensDir)}`);
 
-  const processedBuilds = await processPlatform<DesignToken>({
+  const processedBuilds = await processPlatform({
     ...options,
     outDir: outDir,
     tokensDir: tokensDir,
     type: 'build',
-    $themes,
+    processed$themes,
+    buildTokenFormats: {},
   });
 
   // https://github.com/digdir/designsystemet/issues/3434
@@ -58,22 +60,21 @@ export const buildTokens = async (options: Omit<BuildOptions, 'type' | '$themes'
     $designsystemet ? `\ndesign-tokens: v${$designsystemet.version}` : '',
   ]);
 
-  let cssFiles = createThemeCSSFiles({ processedBuilds, fileHeader });
+  let files: OutputFile[] = [];
+
+  const declarationFiles = createTypeDeclarationFiles(processed$themes);
+  const cssFiles = createThemeCSSFiles({ processedBuilds, fileHeader });
+
+  files = [...declarationFiles, ...cssFiles];
 
   if (options.tailwind) {
     const tailwindFiles = createTailwindCSSFiles(cssFiles);
-    cssFiles = cssFiles.concat(tailwindFiles.filter(Boolean) as OutputFile[]);
+    files = files.concat(tailwindFiles.filter(Boolean) as OutputFile[]);
   }
 
   console.log(`\n💾 Writing build to ${chalk.green(outDir)}`);
 
-  // Write types (colors.d.ts) to the output directory
-  for (const { formatted } of processedBuilds.types) {
-    await write(formatted, outDir, options.dry);
-  }
-
-  // Write theme CSS files (<theme>.css) to the output directory
-  await write(cssFiles, outDir, options.dry);
+  await write(files, outDir, options.dry);
 
   console.log(`\n✅ Finished building tokens!`);
   return processedBuilds;
