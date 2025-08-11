@@ -74,7 +74,10 @@ export const RovingFocusRoot = forwardRef<
   ) => {
     const Component = asChild ? Slot : 'div';
 
-    const [focusableValue, setFocusableValue] = useState<string | null>(null);
+    const activeValueOrNull = activeValue ?? null;
+    const [focusableValue, setFocusableValue] = useState<string | null>(
+      activeValueOrNull,
+    );
     const [isShiftTabbing, setIsShiftTabbing] = useState(false);
     const elements = useRef(new Map<string, HTMLElement>());
     const myRef = useRef<HTMLElement | null>(null);
@@ -98,8 +101,8 @@ export const RovingFocusRoot = forwardRef<
     };
 
     useEffect(() => {
-      setFocusableValue(activeValue ?? null);
-    }, [activeValue]);
+      setFocusableValue(activeValueOrNull);
+    }, [activeValueOrNull]);
 
     return (
       <RovingFocusContext.Provider
