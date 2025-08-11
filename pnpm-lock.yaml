@@ -105,8 +105,8 @@ importers:
         specifier: ^9.1.0
         version: 9.1.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(rollup@4.46.2)(storybook@9.1.1(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.0.6(@types/node@22.17.0)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.30.1)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.20.3)(yaml@2.7.1)))(typescript@5.9.2)(vite@7.0.6(@types/node@22.17.0)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.30.1)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.20.3)(yaml@2.7.1))
       '@types/ramda':
-        specifier: ^0.30.2
-        version: 0.30.2
+        specifier: ^0.31.0
+        version: 0.31.0
       '@types/react':
         specifier: ^19.1.9
         version: 19.1.9
@@ -220,8 +220,8 @@ importers:
         specifier: ^22.17.0
         version: 22.17.0
       '@types/ramda':
-        specifier: ^0.30.2
-        version: 0.30.2
+        specifier: ^0.31.0
+        version: 0.31.0
       '@types/react':
         specifier: ^19.1.9
         version: 19.1.9
@@ -323,8 +323,8 @@ importers:
         specifier: ^22.17.0
         version: 22.17.0
       '@types/ramda':
-        specifier: ^0.30.2
-        version: 0.30.2
+        specifier: ^0.31.0
+        version: 0.31.0
       '@types/react':
         specifier: ^19.1.9
         version: 19.1.9
@@ -466,11 +466,11 @@ importers:
         specifier: ^5.0.1
         version: 5.0.1
       zod:
-        specifier: ^3.25.76
-        version: 3.25.76
+        specifier: ^4.0.15
+        version: 4.0.17
       zod-validation-error:
         specifier: ^3.5.3
-        version: 3.5.3(zod@3.25.76)
+        version: 3.5.3(zod@4.0.17)
     devDependencies:
       '@tokens-studio/types':
         specifier: 0.5.2
@@ -491,8 +491,8 @@ importers:
         specifier: ^3.0.6
         version: 3.0.6
       '@types/ramda':
-        specifier: ^0.30.2
-        version: 0.30.2
+        specifier: ^0.31.0
+        version: 0.31.0
       fs-extra:
         specifier: ^11.3.0
         version: 11.3.0
@@ -551,11 +551,11 @@ importers:
         specifier: ^3.13.12
         version: 3.13.12(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@u-elements/u-combobox':
-        specifier: ^0.0.18
-        version: 0.0.18
+        specifier: ^0.0.20
+        version: 0.0.20
       '@u-elements/u-datalist':
-        specifier: ^1.0.10
-        version: 1.0.10
+        specifier: ^1.0.12
+        version: 1.0.12
       '@u-elements/u-details':
         specifier: ^0.1.1
         version: 0.1.1
@@ -2180,8 +2180,8 @@ packages:
   '@types/prop-types@15.7.15':
     resolution: {integrity: sha512-F6bEyamV9jKGAFBEmlQnesRPGOQqS2+Uwi0Em15xenOxHaf2hv6L8YCVn3rPdPJOiJfPiCnLIRyvwVaqMY3MIw==}
 
-  '@types/ramda@0.30.2':
-    resolution: {integrity: sha512-PyzHvjCalm2BRYjAU6nIB3TprYwMNOUY/7P/N8bSzp9W/yM2YrtGtAnnVtaCNSeOZ8DzKyFDvaqQs7LnWwwmBA==}
+  '@types/ramda@0.31.0':
+    resolution: {integrity: sha512-1lWWZ/2YiNttGcIUxQwnvMuh55GIEbn/zlpzzEojAsbxquI/TXQZCRaXsfxG1CHjlqGoqxWePkvaM/5qYHNuvQ==}
 
   '@types/react-color@3.0.13':
     resolution: {integrity: sha512-2c/9FZ4ixC5T3JzN0LP5Cke2Mf0MKOP2Eh0NPDPWmuVH3NjPyhEjqNMQpN1Phr5m74egAy+p2lYNAFrX1z9Yrg==}
@@ -2221,11 +2221,11 @@ packages:
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
 
-  '@u-elements/u-combobox@0.0.18':
-    resolution: {integrity: sha512-0WttCjvLVTmJkEoTx7jkOu2thV3titNrQmo12jeBU/c+uviSAOfh5jMAwUj8ms2sZfvFkRy+d73VxjOHo0Iskw==}
+  '@u-elements/u-combobox@0.0.20':
+    resolution: {integrity: sha512-M3vVdXX8FKQssTwOyWNJtBwgG5JT4JgTckquFkoFjHUE5lcFsoBR3L+X48nCK+wv7UC2DOxuEL7OqMbmXtWh1Q==}
 
-  '@u-elements/u-datalist@1.0.10':
-    resolution: {integrity: sha512-ctPlx8SL4njfsA0/JINVlVbfBW31HCswj8hDt/SsPUiF89n/fLmTLG49DxOW7RZNcXrWW+AudJy5zsuPCmCGRA==}
+  '@u-elements/u-datalist@1.0.12':
+    resolution: {integrity: sha512-8UqWJCkORdwOQWl9Q/+W0prT+sSX6AQStEas9ufTJofCp3RIIFfcJoeof5WqvZTt6IMSMdb2awvHfpxnvb1Zhw==}
 
   '@u-elements/u-details@0.1.1':
     resolution: {integrity: sha512-VQDwumgWzXWe/vEUVs+jPvRVlNw+1epHjkNlCjx3IA5BSKSxAPRFZ47ew5iKuZhAKmK0wke0rreA7SO/pjZN6w==}
@@ -5434,8 +5434,8 @@ packages:
     resolution: {integrity: sha512-TkRKr9sUTxEH8MdfuCSP7VizJyzRNMjj2J2do2Jr3Kym598JVdEksuzPQCnlFPW4ky9Q+iA+ma9BGm06XQBy8g==}
     engines: {node: '>= 0.6'}
 
-  types-ramda@0.30.1:
-    resolution: {integrity: sha512-1HTsf5/QVRmLzcGfldPFvkVsAdi1db1BBKzi7iW3KBUlOICg/nKnFS+jGqDJS3YD8VsWbAh7JiHeBvbsw8RPxA==}
+  types-ramda@0.31.0:
+    resolution: {integrity: sha512-vaoC35CRC3xvL8Z6HkshDbi6KWM1ezK0LHN0YyxXWUn9HKzBNg/T3xSGlJZjCYspnOD3jE7bcizsp0bUXZDxnQ==}
 
   typescript-plugin-css-modules@5.2.0:
     resolution: {integrity: sha512-c5pAU5d+m3GciDr/WhkFldz1NIEGBafuP/3xhFt9BEXS2gmn/LvjkoZ11vEBIuP8LkXfPNhOt1BUhM5efFuwOw==}
@@ -5773,8 +5773,8 @@ packages:
     peerDependencies:
       zod: ^3.25.0 || ^4.0.0
 
-  zod@3.25.76:
-    resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
+  zod@4.0.17:
+    resolution: {integrity: sha512-1PHjlYRevNxxdy2JZ8JcNAw7rX8V9P1AKkP+x/xZfxB0K5FYfuV+Ug6P/6NVSR2jHQ+FzDDoDHS04nYUsOIyLQ==}
 
   zustand@5.0.7:
     resolution: {integrity: sha512-Ot6uqHDW/O2VdYsKLLU8GQu8sCOM1LcoE8RwvLv9uuRT9s6SOHCKs0ZEOhxg+I1Ld+A1Q5lwx+UlKXXUoCZITg==}
@@ -7514,9 +7514,9 @@ snapshots:
 
   '@types/prop-types@15.7.15': {}
 
-  '@types/ramda@0.30.2':
+  '@types/ramda@0.31.0':
     dependencies:
-      types-ramda: 0.30.1
+      types-ramda: 0.31.0
 
   '@types/react-color@3.0.13(@types/react@19.1.9)':
     dependencies:
@@ -7552,9 +7552,9 @@ snapshots:
 
   '@types/unist@3.0.3': {}
 
-  '@u-elements/u-combobox@0.0.18': {}
+  '@u-elements/u-combobox@0.0.20': {}
 
-  '@u-elements/u-datalist@1.0.10': {}
+  '@u-elements/u-datalist@1.0.12': {}
 
   '@u-elements/u-details@0.1.1': {}
 
@@ -11238,7 +11238,7 @@ snapshots:
       media-typer: 0.3.0
       mime-types: 2.1.35
 
-  types-ramda@0.30.1:
+  types-ramda@0.31.0:
     dependencies:
       ts-toolbelt: 9.6.0
 
@@ -11615,11 +11615,11 @@ snapshots:
 
   yocto-queue@1.2.1: {}
 
-  zod-validation-error@3.5.3(zod@3.25.76):
+  zod-validation-error@3.5.3(zod@4.0.17):
     dependencies:
-      zod: 3.25.76
+      zod: 4.0.17
 
-  zod@3.25.76: {}
+  zod@4.0.17: {}
 
   zustand@5.0.7(@types/react@19.1.9)(react@19.1.1):
     optionalDependencies:

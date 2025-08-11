@@ -1,6 +1,6 @@
 import pc from 'picocolors';
 import * as R from 'ramda';
-import { z } from 'zod/v4';
+import { z } from 'zod';
 import { fromError } from 'zod-validation-error/v4';
 import { convertToHex } from './colors/index.js';
 import { RESERVED_COLORS } from './colors/theme.js';

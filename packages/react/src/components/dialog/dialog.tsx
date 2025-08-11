@@ -95,6 +95,7 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
     useEffect(() => {
       const dialog = dialogRef.current;
       const handleClosedby = (event: Event) => {
+        if (event.defaultPrevented) return; // Skip if default action is prevented
         const { clientY: y, clientX: x, target } = event as MouseEvent;
         if (event instanceof KeyboardEvent)
           return (

@@ -75,7 +75,7 @@
     "postcss": "^8.5.6",
     "ramda": "^0.31.3",
     "style-dictionary": "^5.0.1",
-    "zod": "^3.25.76",
+    "zod": "^4.0.15",
     "zod-validation-error": "^3.5.3"
   },
   "devDependencies": {
@@ -85,7 +85,7 @@
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^22.17.0",
     "@types/object-hash": "^3.0.6",
-    "@types/ramda": "^0.30.2",
+    "@types/ramda": "^0.31.0",
     "fs-extra": "^11.3.0",
     "tslib": "^2.8.1",
     "tsup": "^8.5.0",
