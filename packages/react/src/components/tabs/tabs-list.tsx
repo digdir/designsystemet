@@ -1,9 +1,16 @@
+import { Slot } from '@radix-ui/react-slot';
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext } from 'react';
 import { RovingFocusRoot } from '../../utilities/roving-focus/roving-focus-root';
 import { Context } from './tabs';
 
-export type TabsListProps = HTMLAttributes<HTMLDivElement>;
+export type TabsListProps = {
+  /**
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   * @default false
+   */
+  asChild?: boolean;
+} & HTMLAttributes<HTMLDivElement>;
 
 /**
  * The container for all `Tab` components.
@@ -15,7 +22,9 @@ export type TabsListProps = HTMLAttributes<HTMLDivElement>;
  * </TabsList>
  */
 export const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
-  function TabsList({ children, ...rest }, ref) {
+  function TabsList({ asChild, ...rest }, ref) {
+    const Component = asChild ? Slot : 'div';
+
     const { value } = useContext(Context);
 
     return (
@@ -24,9 +33,10 @@ export const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
         activeValue={value}
         orientation='ambiguous'
         ref={ref}
+        asChild
         {...rest}
       >
-        {children}
+        <Component {...rest} />
       </RovingFocusRoot>
     );
   },
