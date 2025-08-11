@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 import * as R from 'ramda';
 import { z } from 'zod';
-import { fromError } from 'zod-validation-error/v4';
+import { fromError } from 'zod-validation-error';
 import { convertToHex } from './colors/index.js';
 import { RESERVED_COLORS } from './colors/theme.js';
 import { cliOptions } from './tokens/create.js';
