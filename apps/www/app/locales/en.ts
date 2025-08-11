@@ -20,7 +20,7 @@ export default {
         'See the overview of UI components created in React, CSS and Figma.',
     },
     toolbox: {
-      title: 'A common digital toolbox',
+      title: 'A common design system',
       description:
         'Designsystemet is a shared toolbox of foundational UI components, guidelines, and patterns to support the development of digital services. It helps teams build efficiently while ensuring consistent and user-friendly experiences.',
       link: 'Read more about Designsystemet',
