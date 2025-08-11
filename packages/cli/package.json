@@ -76,7 +76,7 @@
     "ramda": "^0.31.3",
     "style-dictionary": "^5.0.1",
     "zod": "^4.0.15",
-    "zod-validation-error": "^3.5.3"
+    "zod-validation-error": "^4.0.1"
   },
   "devDependencies": {
     "@tokens-studio/types": "0.5.2",
