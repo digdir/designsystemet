@@ -1,8 +1,9 @@
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
-import { createContext, forwardRef, useState } from 'react';
+import { createContext, forwardRef, useRef, useState } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
+import { useMergeRefs } from '../../utilities/hooks';
 
 export type TabsProps = MergeRight<
   DefaultProps & Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'value'>,
@@ -29,6 +30,7 @@ export type ContextProps = {
   value?: string;
   defaultValue?: string;
   onChange?: (value: string) => void;
+  tabsRef?: React.RefObject<HTMLDivElement | null>;
 };
 
 export const Context = createContext<ContextProps>({});
@@ -52,6 +54,9 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
   { value, defaultValue, className, onChange, ...rest },
   ref,
 ) {
+  const tabsRef = useRef<HTMLDivElement>(null);
+  const mergedRef = useMergeRefs([ref, tabsRef]);
+
   const isControlled = value !== undefined;
   const [uncontrolledValue, setUncontrolledValue] = useState<
     string | undefined
@@ -65,15 +70,17 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
     };
     value = uncontrolledValue;
   }
+
   return (
     <Context.Provider
       value={{
         value,
         defaultValue,
         onChange: onValueChange,
+        tabsRef,
       }}
     >
-      <div className={cl('ds-tabs', className)} ref={ref} {...rest} />
+      <div className={cl('ds-tabs', className)} ref={mergedRef} {...rest} />
     </Context.Provider>
   );
 });

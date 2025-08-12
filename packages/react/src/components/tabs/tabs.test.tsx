@@ -117,4 +117,33 @@ describe('Tabs', () => {
     const panel = screen.getByRole('tabpanel');
     expect(panel).not.toHaveAttribute('tabindex', '0');
   });
+
+  it('panel is aria-labelledby button', () => {
+    render(
+      <Tabs defaultValue='value1'>
+        <Tabs.List>
+          <Tabs.Tab value='value1' id='custom-id'>
+            Tab 1
+          </Tabs.Tab>
+          <Tabs.Tab value='value2' data-testid='button'>
+            Tab 2
+          </Tabs.Tab>
+        </Tabs.List>
+        <Tabs.Panel value='value1' data-testid='panel-1'>
+          content 1
+        </Tabs.Panel>
+        <Tabs.Panel value='value2' data-testid='panel-2'>
+          content 2
+        </Tabs.Panel>
+      </Tabs>,
+    );
+
+    const testButton = screen.getByRole('tab', { name: 'Tab 2' });
+
+    const panelOne = screen.getByTestId('panel-1');
+    expect(panelOne).toHaveAttribute('aria-labelledby', 'custom-id');
+
+    const panelTwo = screen.getByTestId('panel-2');
+    expect(panelTwo).toHaveAttribute('aria-labelledby', testButton.id);
+  });
 });
