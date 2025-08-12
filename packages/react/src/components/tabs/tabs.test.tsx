@@ -146,4 +146,32 @@ describe('Tabs', () => {
     const panelTwo = screen.getByTestId('panel-2');
     expect(panelTwo).toHaveAttribute('aria-labelledby', testButton.id);
   });
+
+  it('button has aria-controls for panel', () => {
+    render(
+      <Tabs defaultValue='value1'>
+        <Tabs.List>
+          <Tabs.Tab value='value1' data-testid='button-1'>
+            Tab 1
+          </Tabs.Tab>
+          <Tabs.Tab value='value2' data-testid='button-2'>
+            Tab 2
+          </Tabs.Tab>
+        </Tabs.List>
+        <Tabs.Panel value='value1' data-testid='panel'>
+          content 1
+        </Tabs.Panel>
+        <Tabs.Panel value='value2' id='panel2'>
+          content 2
+        </Tabs.Panel>
+      </Tabs>,
+    );
+
+    const buttonOne = screen.getByTestId('button-1');
+    const buttonTwo = screen.getByTestId('button-2');
+    const panel = screen.getByTestId('panel');
+
+    expect(buttonOne).toHaveAttribute('aria-controls', panel.id);
+    expect(buttonTwo).toHaveAttribute('aria-controls', 'panel2');
+  });
 });
