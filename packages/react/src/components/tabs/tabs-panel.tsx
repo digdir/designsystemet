@@ -31,6 +31,7 @@ export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
     const active = value === tabsValue;
 
     const [hasTabbableElement, setHasTabbableElement] = useState(false);
+    const [labelledBy, setLabelledBy] = useState<string | undefined>(undefined);
 
     const internalRef = useRef<HTMLDivElement>(null);
     const mergedRef = useMergeRefs([ref, internalRef]);
@@ -44,12 +45,25 @@ export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
       setHasTabbableElement(tabbableElements.length > 0);
     }, [children]);
 
+    /* get associated button */
+    useEffect(() => {
+      if (!internalRef.current) return;
+      const parent = internalRef.current.parentElement;
+      if (parent) {
+        const button = parent.querySelector(
+          `[role="tab"][data-value="${value}"]`,
+        );
+        setLabelledBy(button ? button.id : undefined);
+      }
+    }, [internalRef]);
+
     return (
       <Component
         ref={mergedRef}
         role='tabpanel'
         tabIndex={hasTabbableElement ? undefined : 0}
         hidden={!active}
+        aria-labelledby={labelledBy}
         {...rest}
       >
         {children}
