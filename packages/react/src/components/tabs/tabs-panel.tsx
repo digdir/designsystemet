@@ -46,7 +46,7 @@ export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
         `[role="tab"][data-value="${value}"]`,
       );
       setLabelledBy(button ? button.id : undefined);
-    }, [internalRef]);
+    }, [tabsRef?.current]);
 
     return (
       <div
