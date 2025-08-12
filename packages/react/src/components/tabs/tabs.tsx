@@ -1,4 +1,3 @@
-import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { createContext, forwardRef, useState } from 'react';
@@ -18,11 +17,6 @@ export type TabsProps = MergeRight<
      * @default undefined
      */
     defaultValue?: string;
-    /**
-     * Change the default rendered element for the one passed as a child, merging their props and behavior.
-     * @default false
-     */
-    asChild?: boolean;
     /**
      * Callback with selected `TabItem` `value`
      * @default undefined
@@ -55,11 +49,9 @@ export const Context = createContext<ContextProps>({});
  * </Tabs>
  */
 export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
-  { value, defaultValue, asChild, className, onChange, ...rest },
+  { value, defaultValue, className, onChange, ...rest },
   ref,
 ) {
-  const Component = asChild ? Slot : 'div';
-
   const isControlled = value !== undefined;
   const [uncontrolledValue, setUncontrolledValue] = useState<
     string | undefined
@@ -73,7 +65,6 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
     };
     value = uncontrolledValue;
   }
-
   return (
     <Context.Provider
       value={{
@@ -82,7 +73,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
         onChange: onValueChange,
       }}
     >
-      <Component className={cl('ds-tabs', className)} ref={ref} {...rest} />
+      <div className={cl('ds-tabs', className)} ref={ref} {...rest} />
     </Context.Provider>
   );
 });

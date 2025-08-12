@@ -1,6 +1,6 @@
-import { Slot } from '@radix-ui/react-slot';
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext, useEffect, useRef, useState } from 'react';
+
 import { useMergeRefs } from '../../utilities/hooks';
 import { Context } from './tabs';
 
@@ -10,11 +10,6 @@ export type TabsPanelProps = {
    * Must match the `value` of a `Tabs.Tab` component.
    */
   value: string;
-  /**
-   * Change the default rendered element for the one passed as a child, merging their props and behavior.
-   * @default false
-   */
-  asChild?: boolean;
 } & Omit<HTMLAttributes<HTMLDivElement>, 'value'>;
 
 /**
@@ -24,9 +19,7 @@ export type TabsPanelProps = {
  * <TabsPanel value='1'>content 1</TabsPanel>
  */
 export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
-  function TabsPanel({ children, value, asChild, ...rest }, ref) {
-    const Component = asChild ? Slot : 'div';
-
+  function TabsPanel({ children, value, ...rest }, ref) {
     const { value: tabsValue } = useContext(Context);
     const active = value === tabsValue;
 
@@ -58,16 +51,16 @@ export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
     }, [internalRef]);
 
     return (
-      <Component
+      <div
         ref={mergedRef}
         role='tabpanel'
         tabIndex={hasTabbableElement ? undefined : 0}
-        hidden={!active}
         aria-labelledby={labelledBy}
+        hidden={!active}
         {...rest}
       >
         {children}
-      </Component>
+      </div>
     );
   },
 );
