@@ -17,7 +17,7 @@ export type TabsTabProps = {
  * <TabsTab value='1'>Tab 1</TabsTab>
  */
 export const TabsTab = forwardRef<HTMLButtonElement, TabsTabProps>(
-  function TabsTab({ value, id, ...rest }, ref) {
+  function TabsTab({ value, id, onClick, ...rest }, ref) {
     const tabs = useContext(Context);
     const generatedId = useId();
     const buttonId = id ?? `tab-${generatedId}`;
@@ -25,10 +25,14 @@ export const TabsTab = forwardRef<HTMLButtonElement, TabsTabProps>(
     return (
       <RovingFocusItem value={value} {...rest} asChild>
         <button
+          /* We spread rest first to make sure we keep a11y */
           {...rest}
           aria-selected={tabs.value === value}
           id={buttonId}
-          onClick={() => tabs.onChange?.(value)}
+          onClick={(e) => {
+            tabs.onChange?.(value);
+            onClick?.(e);
+          }}
           ref={ref}
           role='tab'
           type='button'
