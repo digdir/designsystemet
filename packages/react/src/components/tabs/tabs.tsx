@@ -30,7 +30,7 @@ export type ContextProps = {
   value?: string;
   defaultValue?: string;
   onChange?: (value: string) => void;
-  tabsRef?: React.RefObject<HTMLDivElement | null>;
+  tablistRef?: React.RefObject<HTMLDivElement | null>;
 };
 
 export const Context = createContext<ContextProps>({});
@@ -54,8 +54,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
   { value, defaultValue, className, onChange, ...rest },
   ref,
 ) {
-  const tabsRef = useRef<HTMLDivElement>(null);
-  const mergedRef = useMergeRefs([ref, tabsRef]);
+  const tablistRef = useRef<HTMLDivElement | null>(null);
 
   const isControlled = value !== undefined;
   const [uncontrolledValue, setUncontrolledValue] = useState<
@@ -77,10 +76,10 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
         value,
         defaultValue,
         onChange: onValueChange,
-        tabsRef,
+        tablistRef,
       }}
     >
-      <div className={cl('ds-tabs', className)} ref={mergedRef} {...rest} />
+      <div className={cl('ds-tabs', className)} ref={ref} {...rest} />
     </Context.Provider>
   );
 });

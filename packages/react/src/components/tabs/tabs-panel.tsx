@@ -20,7 +20,7 @@ export type TabsPanelProps = {
  */
 export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
   function TabsPanel({ children, value, ...rest }, ref) {
-    const { value: tabsValue, tabsRef } = useContext(Context);
+    const { value: tabsValue, tablistRef } = useContext(Context);
     const active = value === tabsValue;
 
     const [hasTabbableElement, setHasTabbableElement] = useState(false);
@@ -40,13 +40,13 @@ export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
 
     /* get associated button */
     useEffect(() => {
-      if (!tabsRef) return;
+      if (!tablistRef) return;
 
-      const button = tabsRef.current?.querySelector(
+      const button = tablistRef.current?.querySelector(
         `[role="tab"][data-value="${value}"]`,
       );
       setLabelledBy(button ? button.id : undefined);
-    }, [tabsRef]);
+    }, [tablistRef]);
 
     return (
       <div
