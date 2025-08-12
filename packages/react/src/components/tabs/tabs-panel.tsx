@@ -30,7 +30,6 @@ export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
     const {
       value: tabsValue,
       tablistRef,
-      panelButtonMap,
       setPanelButtonMap,
     } = useContext(Context);
     const active = value === tabsValue;

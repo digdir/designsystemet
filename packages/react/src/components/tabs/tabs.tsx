@@ -3,7 +3,6 @@ import type { HTMLAttributes } from 'react';
 import { createContext, forwardRef, useRef, useState } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
-import { useMergeRefs } from '../../utilities/hooks';
 
 export type TabsProps = MergeRight<
   DefaultProps & Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'value'>,
