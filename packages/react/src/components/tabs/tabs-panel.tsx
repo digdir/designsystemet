@@ -1,5 +1,12 @@
 import type { HTMLAttributes } from 'react';
-import { forwardRef, useContext, useEffect, useRef, useState } from 'react';
+import {
+  forwardRef,
+  useContext,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+} from 'react';
 
 import { useMergeRefs } from '../../utilities/hooks';
 import { Context } from './tabs';
@@ -19,9 +26,17 @@ export type TabsPanelProps = {
  * <TabsPanel value='1'>content 1</TabsPanel>
  */
 export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
-  function TabsPanel({ children, value, ...rest }, ref) {
-    const { value: tabsValue, tablistRef } = useContext(Context);
+  function TabsPanel({ children, value, id, ...rest }, ref) {
+    const {
+      value: tabsValue,
+      tablistRef,
+      panelButtonMap,
+      setPanelButtonMap,
+    } = useContext(Context);
     const active = value === tabsValue;
+
+    const generatedId = useId();
+    const panelId = id ?? `tabpanel-${generatedId}`;
 
     const [hasTabbableElement, setHasTabbableElement] = useState(false);
     const [labelledBy, setLabelledBy] = useState<string | undefined>(undefined);
@@ -46,11 +61,16 @@ export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
         `[role="tab"][data-value="${value}"]`,
       );
       setLabelledBy(button ? button.id : undefined);
+
+      if (button) {
+        setPanelButtonMap?.((prev) => new Map(prev).set(button.id, panelId));
+      }
     }, [tablistRef]);
 
     return (
       <div
         ref={mergedRef}
+        id={panelId}
         role='tabpanel'
         tabIndex={hasTabbableElement ? undefined : 0}
         aria-labelledby={labelledBy}

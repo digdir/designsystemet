@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react';
-import { forwardRef, useContext, useId } from 'react';
+import { forwardRef, useContext, useEffect, useId, useState } from 'react';
 import { RovingFocusItem } from '../../utilities/roving-focus/roving-focus-item';
 import { Context } from './tabs';
 
@@ -35,6 +35,7 @@ export const TabsTab = forwardRef<HTMLButtonElement, TabsTabProps>(
             tabs.onChange?.(value);
             onClick?.(e);
           }}
+          aria-controls={tabs.panelButtonMap?.get(buttonId)}
           {...rest}
         />
       </RovingFocusItem>
