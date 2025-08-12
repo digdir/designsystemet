@@ -11,9 +11,9 @@ export default {
 
 export const Preview: Story = (args) => (
   <List.Unordered {...args}>
-    <List.Item>List Item 1</List.Item>
-    <List.Item>List Item 2</List.Item>
-    <List.Item>List Item 3</List.Item>
+    <List.Item>Bøyabreen</List.Item>
+    <List.Item>Briksdalsbreen</List.Item>
+    <List.Item>Nigardsbreen</List.Item>
   </List.Unordered>
 );
 
@@ -67,52 +67,57 @@ export const Usortert: Story = (args) => (
 );
 
 export const Innrykk: Story = (args) => (
-  <List.Unordered {...args}>
-    <List.Item>
-      <Heading
-        level={3}
-        data-size='xs'
-        style={{ marginBottom: 'var(--ds-size-2)' }}
-      >
-        {' '}
-        List Item 1
-      </Heading>
-      <List.Ordered>
-        <List.Item>List Item 1.1</List.Item>
-        <List.Item>List Item 1.2</List.Item>
-        <List.Item>List Item 1.3</List.Item>
-      </List.Ordered>
-    </List.Item>
-    <List.Item>
-      <Heading
-        level={3}
-        data-size='xs'
-        style={{ marginBottom: 'var(--ds-size-2)' }}
-      >
-        {' '}
-        List Item 2
-      </Heading>
-      <List.Unordered>
-        <List.Item>List Item 2.1</List.Item>
-        <List.Item>List Item 2.2</List.Item>
-        <List.Item>List Item 2.3</List.Item>
-      </List.Unordered>
-    </List.Item>
-    <List.Item>
-      <Heading
-        level={3}
-        data-size='xs'
-        style={{ marginBottom: 'var(--ds-size-2)' }}
-      >
-        List Item 3
-      </Heading>
-      <List.Unordered>
-        <List.Item>List Item 3.1</List.Item>
-        <List.Item>List Item 3.2</List.Item>
-        <List.Item>List Item 3.3</List.Item>
-      </List.Unordered>
-    </List.Item>
-  </List.Unordered>
+  <>
+    <Heading style={{ marginBlockEnd: 'var(--ds-size-3)' }}>
+      Slik søker du:
+    </Heading>
+    <List.Unordered {...args}>
+      <List.Item>
+        <Heading
+          level={3}
+          data-size='xs'
+          style={{ marginBlock: 'var(--ds-size-2)' }}
+        >
+          {' '}
+          Forbered dokumentasjon
+        </Heading>
+        <List.Ordered>
+          <List.Item>Pass eller annen gyldig ID</List.Item>
+          <List.Item>Dokumentasjon på adresse</List.Item>
+          <List.Item>Eventuell tilleggsdokumentasjon</List.Item>
+        </List.Ordered>
+      </List.Item>
+      <List.Item>
+        <Heading
+          level={3}
+          data-size='xs'
+          style={{ marginBlock: 'var(--ds-size-2)' }}
+        >
+          {' '}
+          Fyll ut søknadsskjema
+        </Heading>
+        <List.Unordered>
+          <List.Item>Oppgi personopplysninger</List.Item>
+          <List.Item>Beskriv formålet med søknaden</List.Item>
+          <List.Item>Last opp dokumentasjon</List.Item>
+        </List.Unordered>
+      </List.Item>
+      <List.Item>
+        <Heading
+          level={3}
+          data-size='xs'
+          style={{ marginBlock: 'var(--ds-size-2)' }}
+        >
+          Send inn og følg opp
+        </Heading>
+        <List.Unordered>
+          <List.Item>Kontroller opplysningene før innsending</List.Item>
+          <List.Item>Send inn søknaden</List.Item>
+          <List.Item>Følg med på svar i innboksen din</List.Item>
+        </List.Unordered>
+      </List.Item>
+    </List.Unordered>
+  </>
 );
 
 export const ListeMedLenker: Story = (args) => (

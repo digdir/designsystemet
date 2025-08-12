@@ -38,18 +38,15 @@ export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
     }, [children]);
 
     return (
-      <>
-        {active && (
-          <div
-            ref={mergedRef}
-            role='tabpanel'
-            tabIndex={hasTabbableElement ? undefined : 0}
-            {...rest}
-          >
-            {children}
-          </div>
-        )}
-      </>
+      <div
+        ref={mergedRef}
+        role='tabpanel'
+        tabIndex={hasTabbableElement ? undefined : 0}
+        hidden={!active}
+        {...rest}
+      >
+        {children}
+      </div>
     );
   },
 );

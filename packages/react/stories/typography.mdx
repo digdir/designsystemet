@@ -10,18 +10,13 @@ import * as ValidationMessageStories from '../src/components/validation-message/
 
 # Typography
 
-Typografi er en viktig del av det å bygge opp innhold på en nettside. Det er avgjørende
-at tekst blir brukt konsekvent på tvers av et nettsted slik at brukeren enkelt kan
-prosessere informasjonen som er der. Typografien er delt inn i fire kategorier som er
-ment å dekke alle behov som måtte dukke opp på et nettsted:
+Typografi er en viktig del av det å bygge opp innhold på en nettside. Det er avgjørende at tekst blir brukt konsekvent på tvers av et nettsted slik at brukeren enkelt kan prosessere informasjonen som er der. 
 
-## Bruk
+## Font
 
-Typografikomponentene kommer med hverken innebygd eller definert font-familie. Det er opp til bruker å selv å importere ønsket font.
+Typografikomponentene har verken innebygd eller forhåndsdefinert fontfamilie. Det er opp til brukeren å importere ønsket skrifttype selv. Komponentene i Designsystemet er testet med fonten [Inter (github.com)](https://github.com/rsms/inter), som er spesielt utviklet for å gi god lesbarhet på skjermer. Bruker du denne fonten, anbefaler vi å [aktivere hale på liten "l"](https://www.designsystemet.no/no/fundamentals/design-tokens/typography#aktiver-hale-på-l). 
 
-Vi anbefaler å bruke fonten [Inter](https://rsms.me/inter/) da det er denne fonten komponentene i designsystemet har blitt designet og testet med. Inter er en skrifttype spesielt designet for god lesbarhet på dataskjermer.
-
-Den er tilgjengelig i Altinn CDN.
+Inter er tilgjengelig i Altinn CDN.
 
 ```html
 <link
@@ -38,42 +33,51 @@ Til `font-family` anbefaler vi følgende sammensetning med fallback til `Arial`.
 font-family: 'Inter', Arial, sans-serif;
 ```
 
-## Heading
+## Typografikomponenter
+Typografien er delt inn i fire kategorier som dekker de vanligste behovene på et nettsted:
 
-Alle oversikrifter skal bruke `Heading`-komponenten. Dette er tekst med en tyngre font-vektning og større font-størrelse som grupperer innhold som kommer under.
+- [`Heading`](#heading)
+- [`Paragraph`](#paragraph)
+- [`Label`](#label)
+- [`ValidationMessage`](#validationmessage)
 
-Det skal kun vere 1 `<h1>` tag per side, men det kan vere flere h2-h6. Det er viktig at heading-hirarkiet på en side går logisk fra `<h1>` og nedover både når det kommer til størrelse og rekkefølge (se bruk).
+### Heading
 
-H1 trenger ikke vere samme størrelse på alle nettsider. I en intern admin applikasjon kan H1 for eksempel vere 36px, mens på en annen nettside 44px. Det som er viktig er at H1-H6 skalerer logiske nedover i størrelse.
+Alle overskrifter skal bruke `Heading`-komponenten. Denne har tyngre fontvekt og større skriftstørrelse, og brukes til å strukturere innholdet visuelt og semantisk.
+
+Det skal kun være én `<h1>` per side, men det kan være flere `<h2>` til `<h6>`. Det er viktig at overskriftene følger en logisk hierarkisk rekkefølge og semantisk struktur fra `<h1>` og nedover.
+
+Størrelsen på `<h1>` kan variere mellom ulike løsninger. I en intern admin-applikasjon kan den for eksempel være 36 px, mens den på et offentlig nettsted kan være 44 px. Det viktigste er at nivåene fra `<h1>` til `<h6>` skalerer logisk nedover i størrelse.
 
 <Canvas of={HeadingStories.Preview} />
 <Controls of={HeadingStories.Preview} />
 
-## Paragraph
+### Paragraph
 
 Brukes når det trengs tekst over flere linjer. Mesteparten av teksten på et nettsted vil bruke `Paragraph`.
+
+`Paragraph` brukes til brødtekst – altså løpende tekst som strekker seg over flere linjer. Dette er den mest brukte teksttypen på et nettsted og benyttes typisk i artikler, komponenter, hjelpetekster og lignende.  
 
 <Canvas of={ParagraphStories.Preview} />
 <Controls of={ParagraphStories.Preview} />
 
-## Label
-
-`Label` blir brukt for å framheve tekst, ofte sammen med `Paragraph`. Den har mindre linjehøyde enn `Paragraph`, og fungerer slik fint inne i komponenter. Ofte brukt som navn på skjemakomponenter.
+### Label
+`Label` fungerer som en tydelig og tilgjengelig tekstlig «etikett» som forteller brukeren hva et tilhørende skjemaelement handler om. `Label` har mindre linjehøyde enn `Paragraph`. Hvis du  vil ha label-stil på et annet element, for eksempel en `<p>`, kan du bruke `asChild`.
 
 <Canvas of={LabelStories.Preview} />
 <Controls of={LabelStories.Preview} />
 
-## ValidationMessage
+### ValidationMessage
+`ValidationMessage` brukes til å vise tilbakemeldinger knyttet til validering av brukerinput, for eksempel feilmeldinger eller advarsler i skjema. Den er designet for å være tydelig og lett å oppfatte, med riktig farge og ikonbruk. 
 
-Dersom du setter `data-color="neutral"` vil `color` følge nærmeste tekstfarge som er satt.
+Dersom du setter `data-color="neutral"` på `ValidationMessage` vil `color` følge nærmeste tekstfarge som er satt.
 
 <Canvas of={ValidationMessageStories.Preview} />
 <Controls of={ValidationMessageStories.Preview} />
 
-## Eksempel
+## Kodeeksempler
+Eksempel på hvordan du kan kombinere de ulike typografi-komponentene. Du må selv passe på at du legger ønsket avstand mellom dem. 
 
 <Canvas of={typographyStories.EksempelTekst} />
-
-Vi endrer `color` og `background-color` for deg når du setter `data-color-scheme`.
 
 <Canvas of={typographyStories.EksempelTekstDark} />

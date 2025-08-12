@@ -1,3 +1,4 @@
+import { inline } from '@floating-ui/dom';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import { Paragraph } from '../';
@@ -32,7 +33,7 @@ export const InText: StoryFn = (args) => (
     <Paragraph>
       Vi bruker komponenter fra{' '}
       <Link href={designsystemetLink} {...args}>
-        et fantastisk designsystem
+        designsystemet.no
       </Link>
       .
     </Paragraph>
@@ -41,7 +42,12 @@ export const InText: StoryFn = (args) => (
 
 export const WithIcon: StoryFn = (args) => (
   <Link href='mailto:designsystem@digdir.no' {...args}>
-    <EnvelopeClosedIcon aria-hidden /> Kontakt oss
+    <EnvelopeClosedIcon
+      aria-hidden
+      fontSize={24}
+      style={{ marginInlineEnd: 'var(--ds-size-1)' }}
+    />
+    Kontakt oss
   </Link>
 );
 
