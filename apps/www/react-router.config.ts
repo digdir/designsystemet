@@ -110,7 +110,10 @@ const allPages = ['/no/components', '/en/components', ...contentPaths];
 const config: Config = {
   ssr: true,
   buildDirectory: 'dist',
-  prerender: allPages,
+  prerender: async () => {
+    const contentPaths = getContentPathsWithLanguages();
+    return ['/no/components', '/no/components/button', ...allPages];
+  },
   presets: [vercelPreset()],
   buildEnd: async ({ buildManifest: rrBuild }) => {
     const manifestPath = join(
