@@ -30,8 +30,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
   ({ asChild, className, children, ...rest }, ref) => {
     const Component = asChild ? Slot : 'a';
     // Ensure bare strings are trimmed if there are 2 or more children.
-    // This is necessary for styling which removes underline between icon and text.
-    // We add spacing to the icon using css instead.
+    // This removes underline between icon and text. We add spacing to the icon using css instead.
     const fixedChildren =
       Children.count(children) > 1
         ? Children.map(children, (child) =>
