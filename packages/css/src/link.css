@@ -25,7 +25,6 @@
    * This avoids underline on space between icon and text.
    */
   &:has(img, svg) {
-    text-decoration: none;
     > img,
     > svg {
       &:first-child {
@@ -34,9 +33,6 @@
       &:last-child {
         margin-inline-start: var(--ds-size-1);
       }
-    }
-    > span {
-      text-decoration: underline;
     }
   }
 
