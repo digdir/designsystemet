@@ -32,9 +32,6 @@
     &:last-child {
       margin-inline-end: 0;
     }
-    & + :is(img,svg) {
-      margin-inline-start: 0;
-    }
   }
 
   /* What do we do here? */

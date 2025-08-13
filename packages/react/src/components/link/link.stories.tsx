@@ -67,11 +67,6 @@ export const WithOnlyIcon: StoryFn = (args) => (
     <ComponentIcon title="Designsystemet" fontSize={52} />
   </Link>
 );
-export const WithTwoIcons: StoryFn = (args) => (
-  <Link href={designsystemetLink} {...args}>
-    <ComponentIcon title="Designsystemet" fontSize={52} /><ComponentIcon title="Designsystemet" fontSize={52} />
-  </Link>
-);
 
 export const LongLink: StoryFn = (args) => (
   <Paragraph>
