@@ -26,9 +26,17 @@
    */
   &:has(img, svg) {
     text-decoration: none;
+    > img,
+    > svg {
+      &:first-child {
+        margin-inline-end: var(--ds-size-1);
+      }
+      &:last-child {
+        margin-inline-start: var(--ds-size-1);
+      }
+    }
     > span {
       text-decoration: underline;
-      margin-left: var(--ds-size-1);
     }
   }
 

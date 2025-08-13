@@ -34,7 +34,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
     const fixedChildren =
       Children.count(children) > 1
         ? Children.map(children, (child) =>
-            typeof child === 'string' ? <span>{child}</span> : child,
+            typeof child === 'string' ? <span>{child.trim()}</span> : child,
           )
         : children;
     return (

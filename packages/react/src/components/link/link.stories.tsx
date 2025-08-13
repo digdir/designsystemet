@@ -42,12 +42,12 @@ export const InText: StoryFn = (args) => (
 
 export const WithIcon: StoryFn = (args) => (
   <Link href='mailto:designsystem@digdir.no' {...args}>
-    <EnvelopeClosedIcon
-      aria-hidden
-      fontSize={24}
-      style={{ marginInlineEnd: 'var(--ds-size-1)' }}
-    />
-    Kontakt oss
+    <EnvelopeClosedIcon aria-hidden fontSize={24} /> Kontakt oss
+  </Link>
+);
+export const WithIconRight: StoryFn = (args) => (
+  <Link href='mailto:designsystem@digdir.no' {...args}>
+    Kontakt oss <EnvelopeClosedIcon aria-hidden fontSize={24} />
   </Link>
 );
 
