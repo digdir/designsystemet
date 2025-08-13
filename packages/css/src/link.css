@@ -21,18 +21,15 @@
   }
 
   /*
-   * Set underline only on span elements if there is an svg or img.
-   * This avoids underline on space between icon and text.
+   * Ensure proper spacing if there is an svg or img.
    */
-  &:has(img, svg) {
-    > img,
-    > svg {
-      &:first-child {
-        margin-inline-end: var(--ds-size-1);
-      }
-      &:last-child {
-        margin-inline-start: var(--ds-size-1);
-      }
+  & > img,
+  & > svg {
+    &:first-child {
+      margin-inline-end: var(--ds-size-1);
+    }
+    &:last-child {
+      margin-inline-start: var(--ds-size-1);
     }
   }
 
