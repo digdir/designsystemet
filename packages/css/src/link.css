@@ -20,6 +20,18 @@
     vertical-align: middle; /* Align img or svg icon with text */
   }
 
+  /*
+   * Set underline only on span elements if there is an svg or img.
+   * This avoids underline on space between icon and text.
+   */
+  &:has(img, svg) {
+    text-decoration: none;
+    > span {
+      text-decoration: underline;
+      margin-left: var(--ds-size-1);
+    }
+  }
+
   /* What do we do here? */
   &[data-color='neutral'] {
     --dsc-link-color--active: var(--ds-color-neutral-text-subtle);

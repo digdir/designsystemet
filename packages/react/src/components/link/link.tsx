@@ -1,7 +1,7 @@
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { AnchorHTMLAttributes, ReactNode } from 'react';
-import { forwardRef } from 'react';
+import { Children, forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
@@ -27,11 +27,20 @@ export type LinkProps = MergeRight<
  * <Link href='#'>Link</Link>
  */
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
-  ({ asChild, className, ...rest }, ref) => {
+  ({ asChild, className, children, ...rest }, ref) => {
     const Component = asChild ? Slot : 'a';
-
+    // Ensure bare strings are wrapped in <span> if there are 2 or more children.
+    // This is necessary for styling which removes underline between icon and text.
+    const fixedChildren =
+      Children.count(children) > 1
+        ? Children.map(children, (child) =>
+            typeof child === 'string' ? <span>{child}</span> : child,
+          )
+        : children;
     return (
-      <Component className={cl('ds-link', className)} ref={ref} {...rest} />
+      <Component className={cl('ds-link', className)} ref={ref} {...rest}>
+        {fixedChildren}
+      </Component>
     );
   },
 );
