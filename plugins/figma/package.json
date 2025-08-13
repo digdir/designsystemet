@@ -18,11 +18,11 @@
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
-    "@navikt/aksel-icons": "^7.25.1",
+    "@navikt/aksel-icons": "^7.27.0",
     "clsx": "^2.1.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-router-dom": "^7.7.1"
+    "react-router-dom": "^7.8.0"
   },
   "devDependencies": {
     "@figma/plugin-typings": "^1.116.0",
@@ -33,7 +33,7 @@
     "postcss": "^8.5.6",
     "rollup": "^4.46.2",
     "typescript": "^5.9.2",
-    "vite": "^7.0.6",
+    "vite": "^7.1.1",
     "vite-plugin-react-rich-svg": "^1.2.1",
     "vite-plugin-singlefile": "^2.3.0",
     "zustand": "^5.0.7"
