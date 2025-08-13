@@ -21,15 +21,19 @@
   }
 
   /*
-   * Ensure proper spacing if there is an svg or img.
+   * Ensure proper spacing if there are any svg or img.
    */
   & > img,
   & > svg {
+    margin-inline: var(--ds-size-1);
     &:first-child {
-      margin-inline-end: var(--ds-size-1);
+      margin-inline-start: 0;
     }
     &:last-child {
-      margin-inline-start: var(--ds-size-1);
+      margin-inline-end: 0;
+    }
+    & + :is(img,svg) {
+      margin-inline-start: 0;
     }
   }
 
