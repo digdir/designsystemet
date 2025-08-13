@@ -41,6 +41,8 @@ export type DialogProps = MergeRight<
     /**
      * Change the default rendered element for the one passed as a child, merging their props and behavior.
      * @default false
+     *
+     * @deprecated Will be removed in the next major version. Should always be a `<dialog>` element
      */
     asChild?: boolean;
   }
