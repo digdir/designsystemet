@@ -1,0 +1,65 @@
+// Quick health check for self-hosted Meilisearch
+// Usage: node scripts/check-meili.mjs
+// Loads .ai-env from common locations to read MEILISEARCH_API_URL and MEILISEARCH_PROJECT_NAME
+
+import fs from 'fs';
+import path from 'path';
+import url from 'url';
+import dotenv from 'dotenv';
+
+const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+
+const candidateEnvPaths = [
+  path.resolve(__dirname, '../../.ai-env'),
+  path.resolve(__dirname, '../../../apps/.ai-env'),
+  path.resolve(__dirname, '../../../.ai-env'),
+];
+for (const p of candidateEnvPaths) {
+  if (fs.existsSync(p)) {
+    dotenv.config({ path: p });
+    break;
+  }
+}
+
+const API_URL = process.env.MEILISEARCH_API_URL || 'http://localhost:7700';
+const INDEX_NAME = process.env.MEILISEARCH_PROJECT_NAME || 'designsystemet-search';
+const ADMIN_KEY = process.env.MEILISEARCH_ADMIN_KEY || process.env.MEILI_MASTER_KEY || '';
+
+async function check() {
+  const healthRes = await fetch(`${API_URL}/health`);
+  const health = healthRes.ok ? await healthRes.json() : { error: `${healthRes.status} ${healthRes.statusText}` };
+  console.log(`Health:`, health);
+
+  const headers = ADMIN_KEY ? { Authorization: `Bearer ${ADMIN_KEY}` } : {};
+  const idxRes = await fetch(`${API_URL}/indexes`, { headers });
+  if (!idxRes.ok) {
+    const text = await idxRes.text();
+    console.error(`Indexes error: ${idxRes.status} ${idxRes.statusText} - ${text}`);
+    return;
+  }
+  const indexes = await idxRes.json();
+  console.log(`Indexes (${indexes.length}):`, indexes.map(i => i.uid).join(', ') || '(none)');
+
+  // Optional: show embedder settings if available
+  const embRes = await fetch(`${API_URL}/indexes/${INDEX_NAME}/settings/embedders`, { headers });
+  if (embRes.ok) {
+    const emb = await embRes.json();
+    console.log(`Embedders for '${INDEX_NAME}':`, JSON.stringify(emb, null, 2));
+  } else {
+    console.log(`Embedders endpoint unavailable or not configured for '${INDEX_NAME}'`);
+  }
+
+  // Version (auth protected in v1.x)
+  const verRes = await fetch(`${API_URL}/version`, { headers });
+  if (verRes.ok) {
+    const ver = await verRes.json();
+    console.log(`Version:`, ver);
+  } else {
+    console.log(`Version endpoint not available without auth (${verRes.status})`);
+  }
+}
+
+check().catch(err => {
+  console.error('❌ Check failed:', err.message);
+  process.exit(1);
+});

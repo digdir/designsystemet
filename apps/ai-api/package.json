@@ -11,7 +11,9 @@
     "test:rag": "node scripts/test-rag-endpoint.mjs",
     "setup:ingest": "node scripts/ingest.mjs",
     "setup:embedder": "node scripts/setup-embedder.mjs",
-    "setup:synonyms": "node scripts/setup-synonyms.mjs"
+    "setup:synonyms": "node scripts/setup-synonyms.mjs",
+    "setup:create-keys": "node scripts/create-meili-keys.mjs",
+    "check:meili": "node scripts/check-meili.mjs"
   },
   "dependencies": {
     "cors": "^2.8.5",
