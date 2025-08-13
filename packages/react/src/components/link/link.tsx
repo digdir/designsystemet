@@ -27,20 +27,11 @@ export type LinkProps = MergeRight<
  * <Link href='#'>Link</Link>
  */
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
-  ({ asChild, className, children, ...rest }, ref) => {
+  ({ asChild, className, ...rest }, ref) => {
     const Component = asChild ? Slot : 'a';
-    // Ensure bare strings are wrapped in <span> if there are 2 or more children.
-    // This is necessary for styling which removes underline between icon and text.
-    const fixedChildren =
-      Children.count(children) > 1
-        ? Children.map(children, (child) =>
-            typeof child === 'string' ? <span>{child.trim()}</span> : child,
-          )
-        : children;
+
     return (
-      <Component className={cl('ds-link', className)} ref={ref} {...rest}>
-        {fixedChildren}
-      </Component>
+      <Component className={cl('ds-link', className)} ref={ref} {...rest} />
     );
   },
 );

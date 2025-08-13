@@ -47,24 +47,28 @@ export const InText: StoryFn = (args) => (
 
 export const WithIcon: StoryFn = (args) => (
   <Link href='mailto:designsystem@digdir.no' {...args}>
-    <EnvelopeClosedIcon aria-hidden fontSize={24} /> Kontakt oss
+    <EnvelopeClosedIcon aria-hidden fontSize={24} />
+    <span>Kontakt oss</span>
   </Link>
 );
 export const WithIconRight: StoryFn = (args) => (
   <Link href='mailto:designsystem@digdir.no' {...args}>
-    Kontakt oss <EnvelopeClosedIcon aria-hidden fontSize={24} />
+    <span>Kontakt oss</span>
+    <EnvelopeClosedIcon aria-hidden fontSize={24} />
   </Link>
 );
 export const WithMultipleIcons: StoryFn = (args) => (
   <Link href={designsystemetLink} {...args}>
-    <ComponentIcon aria-hidden fontSize={24} /> Komponenter og{' '}
-    <BookIcon aria-hidden fontSize={24} /> dokumentasjon på designsystemet.no{' '}
+    <ComponentIcon aria-hidden fontSize={24} />
+    <span>Komponenter og</span>
+    <BookIcon aria-hidden fontSize={24} />
+    <span>dokumentasjon på designsystemet.no</span>
     <ExternalLinkIcon aria-hidden fontSize={24} />
   </Link>
 );
 export const WithOnlyIcon: StoryFn = (args) => (
   <Link href={designsystemetLink} {...args}>
-    <ComponentIcon title="Designsystemet" fontSize={52} />
+    <ComponentIcon title='Designsystemet' fontSize={52} />
   </Link>
 );
 

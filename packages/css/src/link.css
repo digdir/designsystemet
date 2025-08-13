@@ -23,14 +23,15 @@
   /*
    * Ensure proper spacing if there are any svg or img.
    */
-  & > img,
-  & > svg {
-    margin-inline: var(--ds-size-1);
-    &:first-child {
-      margin-inline-start: 0;
-    }
-    &:last-child {
-      margin-inline-end: 0;
+  &:has(> span) {
+    & > :is(img, svg) {
+      margin-inline: var(--ds-size-1);
+      &:first-child {
+        margin-inline-start: 0;
+      }
+      &:last-child {
+        margin-inline-end: 0;
+      }
     }
   }
 
