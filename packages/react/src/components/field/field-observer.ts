@@ -24,7 +24,7 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
 
       if (isLabel(el)) elements.set(el, el.htmlFor);
       else if (el.hasAttribute('data-field')) elements.set(el, el.id);
-      else if (isInputLike(el)) {
+      else if (isInputLike(el) && !el.hidden) {
         input = el;
         describedby = el.getAttribute('aria-describedby') || '';
       }
