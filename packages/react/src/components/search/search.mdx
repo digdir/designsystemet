@@ -12,7 +12,7 @@ import * as SearchStories from './search.stories';
 <Primary />
 <Controls />
 
-## Slik bruker du Search
+## Bruk
 
 Du velger selv om du vil bruke `Search.Clear` og `Search.Button`. Vi anbefaler at du bruker `Search.Clear` for å gi brukeren mulighet til å fjerne søket.
 Dersom du ikke har `Search.Button` vil input feltet få et søkeikon.
@@ -28,54 +28,53 @@ import { Search } from '@digdir/designsystemet-react';
   <Search.Button />
 </Search.Clear>
 ```
+## Kodeeksempler
 
-## Kontrollert
+### Kontrollert
 
 <Canvas of={SearchStories.Controlled} />
 
-## Varianter
+### Varianter
 
 Du kan endre `variant` på `Button` for å tilpasse visningen. Alternativt kan du fjerne knappen for å bruke et søkefelt med ikon. Eksemplene nedenfor viser varianter som inkluderer ikon, primær- og sekundærknapp.
 
 
 <Canvas of={SearchStories.Variants} />
 
-## Med Label
+### Med Label
 
 Dersom du vil ha label på søkefeltet, må du legge til en `Label` komponent som du kobler sammen med `Search.Input`.
 I eksempelet har vi brukt `Field` for å få oppkobling mellom `Label` og `Search.Input`.
 
 <Canvas of={SearchStories.WithLabel} />
 
-## Skjema
+### Skjema
 
 Søkeknappen har typen `"submit"` og vil dermed automatisk sende inn skjema.
 
 <Canvas of={SearchStories.Form} />
 
-## Retningslinjer for `Search`
+## Retningslinjer 
 
-Bredden på søkefeltet bør tilsvare lengden på søkeordene brukerne vanligvis skriver inn. Størrelsen på feltet er et viktig signal om hva de kan skrive inn (input). For eksempel bør et søkefelt for personnumre ha en bredde som tilsvarer et personnummer. Hovedsøkefeltet for et nettsted bør være bredere, slik at brukerne kan se flere ord samtidig.
-For å unngå at brukerne må scrolle i søkefeltet ved typiske søk:
-* Bør søkefeltet være bredt nok til å romme flere søkeord.
-* Må vi unngå søkefelt som er så korte at deler av innholdet ikke synes.
+Bredden på søkefeltet bør tilsvare lengden på søkeordene brukerne vanligvis skriver inn. Størrelsen på feltet er et viktig signal om hva de kan skrive inn. For eksempel bør et søkefelt for personnumre ha en bredde som tilsvarer et personnummer. Hovedsøkefeltet for et nettsted bør være bredere, slik at brukerne kan se flere ord samtidig. For å unngå at brukerne må scrolle i søkefeltet må vi unngå søkefelt som er så korte at deler av innholdet ikke synes.
 
-Passer til:
+**Passer til:**
 
 * Å hjelpe brukerne med å finne relevant informasjon raskt på et nettsted eller i en applikasjon.
 * Situasjoner der brukerne skriver nøkkelord eller setninger for å finne mest relevant innhold.
 
-Passer ikke til:
+**Passer ikke til:**
 
 * Når innholdet er lett å navigere uten søk.
+* Erstatning for god navigasjon. Søk skal være et supplement, ikke eneste navigasjonsmetode.
 
-## Tekst i komponenten:
+## Tekst
 
 Placeholder-tekst bør brukes med forsiktighet, da den forsvinner når brukeren skriver og kan skape forvirring. Den må også oppfylle kontrastkrav for tilgjengelighet, noe som kan gjøre teksten vanskelig å skille fra utfylt innhold. Skjermlesere håndterer placeholder-tekst ulikt, så informasjonen bør heller gis via Label eller beskrivelse.
 
 ## Tilgjengelighet
 
-Tastaturinterkasjon:
+Tastaturinteraksjon:
 
 * <kbd>Esc</kbd>-tasten tømmer søkefeltet for en enhetlig opplevelse på tvers av nettlesere.
 * <kbd>Tab</kbd>-navigasjon lar brukere bevege seg mellom inputfelt, clear-knapp og søkeknapp.
