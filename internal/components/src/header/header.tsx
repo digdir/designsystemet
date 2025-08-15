@@ -17,8 +17,6 @@ import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router';
 import { DsEmbledLogo, DsFullLogo } from '../logos/designsystemet';
 import classes from './header.module.css';
-import { FigmaLogo } from './logos/figma-logo';
-import { GithubLogo } from './logos/github-logo';
 
 type HeaderProps = {
   menu: { name: TemplateStringsArray; href: string }[];
@@ -141,14 +139,14 @@ const Header = ({
           </Link>
           {betaTag && <div className={classes.tag}>Beta</div>}
         </div>
-        <nav className={isHamburger ? classes.mobile : ''}>
+        <nav data-mobile={isHamburger}>
           {isHamburger && (
             <Button
               variant='tertiary'
               icon={true}
               data-color='neutral'
               aria-expanded={open}
-              aria-label={t('header.menu')}
+              aria-label={open ? t('header.close-menu') : t('header.open-menu')}
               className={cl(classes.toggle, 'ds-focus')}
               onClick={() => {
                 setOpen(!open);
@@ -156,24 +154,23 @@ const Header = ({
             >
               {open && (
                 <XMarkIcon
+                  aria-hidden
                   fontSize={26}
                   color='var(--ds-color-neutral-text-default)'
                 />
               )}
               {!open && (
                 <MenuHamburgerIcon
+                  aria-hidden
                   fontSize={26}
                   color='var(--ds-color-neutral-text-default)'
                 />
               )}
             </Button>
           )}
-          <ul
-            ref={menuRef}
-            className={cl(classes.menu, open && classes.active)}
-          >
+          <ul ref={menuRef} data-open={open}>
             {menu.map((item, index) => (
-              <li className={classes.item} key={index}>
+              <li key={index}>
                 <Paragraph data-size='md' asChild>
                   <Link
                     suppressHydrationWarning
@@ -190,26 +187,6 @@ const Header = ({
                 </Paragraph>
               </li>
             ))}
-            <li
-              className={cl(classes.item, classes.itemIcon, classes.firstIcon)}
-            >
-              <Link
-                to='https://github.com/digdir/designsystemet'
-                className={cl(classes.linkIcon, classes.github, 'ds-focus')}
-                title={t('header.github-title')}
-              >
-                <GithubLogo />
-              </Link>
-            </li>
-            <li className={cl(classes.item, classes.itemIcon)}>
-              <Link
-                to='https://www.figma.com/@designsystemet'
-                className={cl(classes.linkIcon, classes.figma, 'ds-focus')}
-                title={t('header.figma-title')}
-              >
-                <FigmaLogo />
-              </Link>
-            </li>
           </ul>
           {themeSwitcher && (
             <Tooltip
