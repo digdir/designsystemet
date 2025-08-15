@@ -157,9 +157,11 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         }
       };
 
-      window.addEventListener('keydown', handleKeyDown);
-      /* Add click listener to handle mobile tap-to-close */
-      document.addEventListener('click', handleClick);
+      if (controlledOpen) {
+        window.addEventListener('keydown', handleKeyDown);
+        /* Add click listener to handle mobile tap-to-close */
+        document.addEventListener('click', handleClick);
+      }
 
       return () => {
         window.removeEventListener('keydown', handleKeyDown);
