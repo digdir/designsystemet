@@ -6,7 +6,7 @@ import * as PopoverStories from './popover.stories.tsx';
 <Meta of={PopoverStories} />
 
 # Popover
-`Popover` vises over andre elementer i grensesnittet og er koblet til et spesifikt element. Den brukes til å vise tilleggsinformasjon, interaktive elementer eller korte forklaringer uten å navigere bort fra siden. `Popover` kan brukes som en utvidet løsning når `tooltip` ikke strekker til.
+`Popover` vises over andre elementer i grensesnittet og er koblet til et spesifikt element. Den brukes til å vise tilleggsinformasjon, interaktive elementer eller korte forklaringer uten å navigere bort fra siden. `Popover` kan brukes som en utvidet løsning når [`Tooltip`](/docs/komponenter-tooltip--docs) ikke strekker til.
 
 
 <Primary />
@@ -27,6 +27,15 @@ import { Popover } from '@digdir/designsystemet-react';
 <Button popovertarget="my-popover">Trigger</Button>
 <Popover id="my-popover">Content</Popover>
 ```
+
+### React og `popovertarget`
+Når du bruker `Popover` uten `Popover.TriggerContext`, kobler du selv sammen utløseren og `Popover`.
+Da brukes `popovertarget` i små bokstaver, slik at alle versjoner av React korrekt gjengir attributtet.
+Når du bruker `@digdir/designsystemet-react` utvider vi `@types/react-dom` til å akseptere dette.
+
+### Polyfill
+
+`Popover` bruker [popover (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover). Dette apiet er klassifisert som [Baseline: Newly available (mozilla.org)](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) fra april 2024, da Firefox som siste nettleser la det til. I noen tilfeller kan en oppleve at brukere av ulike grunner er låst til eldre nettleserversjoner, og da kan det være aktuelt å legge til en [Popover-Polyfill (github.com)](https://github.com/oddbird/popover-polyfill) for å sikre at `Tooltip` fungerer for alle.
 
 ## Kodeeksempler
 ### Interaktive elementer i en popover
@@ -69,27 +78,17 @@ Dette er nyttig dersom du har innhold som skal lukke `popover` når du klikker p
 * Å vise innhold ved `hover`.
 
 ### Plassering
-Standard oppførsel er at `popover` alltid vil prøve å være i viewporten, men ankret til triggeren.
-`popover` har en `autoPlacement` prop som kan brukes til å slå av automatisk plassering. Standardverdien er `true`.
+Standard oppførsel er at `Popover` alltid vil prøve å være i viewporten, men ankret til triggeren.
+`Popover` har en `autoPlacement` prop som kan brukes til å slå av automatisk plassering. Standardverdien er `true`.
 
-`Popover` kan plasseres etter ønske. Hvis `popover` blir for stor for den valgte retningen, justerer den automatisk plasseringen. Hvis du vil skru av auto plassering bruker du `autoPlacement={false}` .
+`Popover` kan plasseres etter ønske. Hvis `Popover` blir for stor for den valgte retningen, justerer den automatisk plasseringen. Hvis du vil skru av auto plassering bruker du `autoPlacement={false}` .
 
 ## Tekst 
 Unngå lange tekster og kompliserte forklaringer. I noen tilfeller er det kanskje bedre å lenke til en annen side med utdypende informasjon om temaet.
 
 ## Tilgjengelighet
 
-Det er innebygd tilgjengelighet i [Popover APIet](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) i henhold til åpne/lukket tilstand og tastatur navigasjon.
-
-## React og `popovertarget`
-Når du bruker `popover` uten `Popover.TriggerContext`, kobler du selv sammen utløseren og `popover`.
-Da brukes `popovertarget` i små bokstaver, slik at alle versjoner av React korrekt gjengir attributtet.
-Når du bruker `@digdir/designsystemet-react` utvider vi `@types/react-dom` til å akseptere dette.
-
-## Polyfill
-
-`Popover` bruker [popover](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover). Dette apiet er klassifisert som [Baseline: Newly available](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) fra april 2024, da Firefox som siste nettleser la det til. I noen tilfeller kan en oppleve at brukere av ulike grunner er låst til eldre nettleserversjoner, og da kan det være aktuelt å legge til en polyfill for å sikre at `Popover` fungerer for alle.
-* [Popover-Polyfill](https://github.com/oddbird/popover-polyfill)
+Det er innebygd tilgjengelighet i [Popover APIet (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) i henhold til åpne/lukket tilstand og tastatur navigasjon.
 
 
 ## CSS Variabler

@@ -33,8 +33,8 @@ export default {
 export const Preview: StoryFn<typeof Popover> = (args) => {
   return (
     <Popover.TriggerContext>
-      <Popover.Trigger>My trigger!</Popover.Trigger>
-      <Popover {...args}>popover content</Popover>
+      <Popover.Trigger>Mine varsler</Popover.Trigger>
+      <Popover {...args}>Du har ingen varsler</Popover>
     </Popover.TriggerContext>
   );
 };
@@ -189,7 +189,7 @@ export const Controlled: StoryFn<typeof Popover> = () => {
   return (
     <Popover.TriggerContext>
       <Popover.Trigger onClick={() => setOpen(!open)}>
-        My trigger
+        Slett
       </Popover.Trigger>
       <Popover open={open} onClose={() => setOpen(false)} data-color='neutral'>
         <Paragraph>Er du sikker på at du vil slette?</Paragraph>
@@ -200,6 +200,15 @@ export const Controlled: StoryFn<typeof Popover> = () => {
           style={{ marginTop: 'var(--ds-size-2)' }}
         >
           Slett
+        </Button>
+        <Button
+          data-variant='tertiary'
+          data-color='danger'
+          onClick={() => setOpen(false)}
+          data-size='sm'
+          style={{ marginTop: 'var(--ds-size-2)' }}
+        >
+          Avbryt
         </Button>
       </Popover>
     </Popover.TriggerContext>
