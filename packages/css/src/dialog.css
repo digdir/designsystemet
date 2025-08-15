@@ -103,7 +103,7 @@
     margin-inline-end: var(--_dsc-dialog-icon-top-right-margin);
     color: inherit;
 
-    & ::before {
+    &::before {
       content: '';
       background: currentcolor;
       height: var(--ds-size-6);
