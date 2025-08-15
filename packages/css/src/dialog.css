@@ -73,6 +73,28 @@
   }
 
   /* Close button */
+  & button[data-command='close']:empty::before {
+    content: '';
+    background: currentcolor;
+    height: var(--ds-size-6);
+    width: var(--ds-size-6);
+    mask: center / contain no-repeat var(--dsc-dialog-icon-url);
+
+    @media (forced-colors: active) {
+      background: ButtonText;
+    }
+  }
+
+  & > button[data-command='close']:first-child {
+    float: inline-end;
+    margin-block-start: var(--_dsc-dialog-icon-top-right-margin);
+    margin-block-end: var(--dsc-dialog-icon-spacing);
+    margin-inline-start: var(--dsc-dialog-icon-spacing);
+    margin-inline-end: var(--_dsc-dialog-icon-top-right-margin);
+    color: inherit;
+  }
+
+  /* old selector for backwards compatibility */
   & > form[method='dialog']:first-child > button:only-child {
     float: inline-end;
     margin-block-start: var(--_dsc-dialog-icon-top-right-margin);
