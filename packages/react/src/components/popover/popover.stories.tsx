@@ -188,9 +188,7 @@ export const Controlled: StoryFn<typeof Popover> = () => {
 
   return (
     <Popover.TriggerContext>
-      <Popover.Trigger onClick={() => setOpen(!open)}>
-        Slett
-      </Popover.Trigger>
+      <Popover.Trigger onClick={() => setOpen(!open)}>Slett</Popover.Trigger>
       <Popover open={open} onClose={() => setOpen(false)} data-color='neutral'>
         <Paragraph>Er du sikker på at du vil slette?</Paragraph>
         <Button
