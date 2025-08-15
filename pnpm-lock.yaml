@@ -557,8 +557,8 @@ importers:
         specifier: ^1.0.13
         version: 1.0.13
       '@u-elements/u-details':
-        specifier: ^0.1.1
-        version: 0.1.1
+        specifier: ^0.1.2
+        version: 0.1.2
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -2230,8 +2230,8 @@ packages:
   '@u-elements/u-datalist@1.0.13':
     resolution: {integrity: sha512-dm3ljVfbfYe3Heos3acbtEOpWM6IQDT+wtB9ay0JLd4KVDIgBE0ZX4UX+lvu+GKP9ohL0h6yDXlKoo9ADw6eiA==}
 
-  '@u-elements/u-details@0.1.1':
-    resolution: {integrity: sha512-VQDwumgWzXWe/vEUVs+jPvRVlNw+1epHjkNlCjx3IA5BSKSxAPRFZ47ew5iKuZhAKmK0wke0rreA7SO/pjZN6w==}
+  '@u-elements/u-details@0.1.2':
+    resolution: {integrity: sha512-3IhSIvsSEPKIUDn5oR4pQ4cSoK4pnYTrtJcWLrNsXvT5G2+hW+6073A0hUraEPPTMENtJo6TRXZxNUj7rdwDuQ==}
 
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
@@ -7592,7 +7592,7 @@ snapshots:
 
   '@u-elements/u-datalist@1.0.13': {}
 
-  '@u-elements/u-details@0.1.1': {}
+  '@u-elements/u-details@0.1.2': {}
 
   '@ungap/structured-clone@1.3.0': {}
 
