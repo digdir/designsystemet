@@ -55,8 +55,20 @@ const dialogRef = useRef<HTMLDialogElement>(null);
 
 ### Lukk knapp
 
-Vår lukk knapp bruker `<form>`, som betyr at du ikke kan bruke den i andre `<form>`-elementer.
-Du kan skru av vår lukk knapp ved å sette `closeButton={false}`. Da må du selv sørge for at dialogen kan lukkes, for eksempel ved å bruke `Dialog.close()` på en knapp du lager selv.
+For å legge til egen lukk knapp, kan du enten bruke `ref` og `Dialog.close()` på en knapp du lager selv, eller legge på `data-command="close"` på en knapp inni dialogen.
+Dersom knappen er tom vil den få et ikon.
+Dersom knappen er direkte barn av dialogen og første element, vil den flyte til topp høyre.
+
+```tsx
+<Dialog>
+  <Dialog.Block>
+    <Heading>Header</Heading>
+  </Dialog.Block>
+  <Dialog.Block>
+    <Button data-command="close">Lukk</Button>
+  </Dialog.Block>
+</Dialog>
+```
 
 ## Eksempler
 
