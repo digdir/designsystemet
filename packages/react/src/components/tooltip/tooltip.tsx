@@ -158,7 +158,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       };
 
       window.addEventListener('keydown', handleKeyDown);
-      // Add click listener only when tooltip is open to handle mobile tap-to-close
+      /* Add click listener to handle mobile tap-to-close */
       document.addEventListener('click', handleClick);
 
       return () => {
