@@ -1,5 +1,19 @@
 # Change Log
 
+## 1.1.10
+
+### Patch Changes
+
+- Update dependency zod-validation-error to v4 ([#3897](https://github.com/digdir/designsystemet/pull/3897))
+
+- update dependency @types/ramda to ^0.31.0 ([#3922](https://github.com/digdir/designsystemet/pull/3922))
+
+- Update dependency zod to v4 ([#3896](https://github.com/digdir/designsystemet/pull/3896))
+
+- Updated non-major dependencies ([#3890](https://github.com/digdir/designsystemet/pull/3890))
+
+- Updated non-major dependencies ([#3894](https://github.com/digdir/designsystemet/pull/3894))
+
 ## 1.1.9
 
 ## 1.1.8

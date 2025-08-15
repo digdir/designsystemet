@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.1.10
+
+### Patch Changes
+
+- **Details:** Using `margin` instead `margin` to style children of `Details` to allow direct children such as `Button` ([#3883](https://github.com/digdir/designsystemet/pull/3883))
+
+- Updated non-major dependencies ([#3890](https://github.com/digdir/designsystemet/pull/3890))
+
 ## 1.1.9
 
 ## 1.1.8

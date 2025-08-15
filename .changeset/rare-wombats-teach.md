@@ -3,4 +3,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-Updated non-major dependencies
+Update npm non-major dependencies

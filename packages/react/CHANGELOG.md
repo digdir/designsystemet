@@ -1,5 +1,21 @@
 # Change Log
 
+## 1.1.10
+
+### Patch Changes
+
+- **Dialog**: Respect default prevented keydown event ([#3908](https://github.com/digdir/designsystemet/pull/3908))
+
+- Update `@u-elements/u-datalist` to 1.0.12 ([#3908](https://github.com/digdir/designsystemet/pull/3908))
+
+- Updated non-major dependencies ([#3890](https://github.com/digdir/designsystemet/pull/3890))
+
+- Update `@u-elements/u-combobox` to 0.0.20 ([#3908](https://github.com/digdir/designsystemet/pull/3908))
+
+- **RovingFocus**: Eliminate unnecessary rerender ([#3929](https://github.com/digdir/designsystemet/pull/3929))
+
+- Updated non-major dependencies ([#3894](https://github.com/digdir/designsystemet/pull/3894))
+
 ## 1.1.9
 
 ### Patch Changes
