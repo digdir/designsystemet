@@ -10,8 +10,8 @@ const Wrapper = ({ variant, description, image, alt }: WrapperProps) => {
 
   return (
     <figure
-      className={cl(styles.wrapper, styles[variant])}
       data-color-scheme='light'
+      className={cl(styles.wrapper, styles[variant])}
     >
       <div className={styles.header}>
         <div className={styles.icon}>{icon}</div>
