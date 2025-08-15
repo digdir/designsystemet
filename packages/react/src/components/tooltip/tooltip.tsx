@@ -135,20 +135,39 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       }
     }, [controlledOpen, placement]);
 
-    /* Add listener for ESC to dismiss */
+    /* Add listeners for ESC to dismiss and click outside on mobile */
     useEffect(() => {
+      const tooltip = tooltipRef.current;
+      const trigger = triggerRef.current;
+
       const handleKeyDown = (event: KeyboardEvent) => {
         if (event.key === 'Escape') {
           setInternalOpen(false);
         }
       };
 
-      window.addEventListener('keydown', handleKeyDown);
+      const handleClick = (event: MouseEvent) => {
+        const el = event.target as Element | null;
+        const isTooltip = tooltip?.contains(el as Node);
+        const isTrigger = trigger?.contains(el as Node);
+        const isOutside = !isTrigger && !isTooltip;
+
+        if (isOutside && controlledOpen) {
+          setInternalOpen(false);
+        }
+      };
+
+      if (controlledOpen) {
+        window.addEventListener('keydown', handleKeyDown);
+        /* Add click listener to handle mobile tap-to-close */
+        document.addEventListener('click', handleClick);
+      }
 
       return () => {
         window.removeEventListener('keydown', handleKeyDown);
+        document.removeEventListener('click', handleClick);
       };
-    }, []);
+    }, [controlledOpen]);
 
     /* If children is only a string, make a span */
     const ChildContainer = typeof children === 'string' ? 'span' : Slot;
