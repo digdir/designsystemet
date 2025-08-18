@@ -48,6 +48,10 @@
 
   & .ds-badge::before {
     position: absolute;
+    top: var(--dsc-badge-top);
+    bottom: var(--dsc-badge-bottom);
+    left: var(--dsc-badge-left);
+    right: var(--dsc-badge-right);
   }
 
   & :where(img, svg) {
@@ -56,26 +60,26 @@
   }
 
   &[data-placement='top-right'] .ds-badge::before {
-    top: 0;
-    right: 0;
+    top: var(--dsc-badge-top, 0);
+    right: var(--dsc-badge-right, 0);
     translate: 50% -50%;
   }
 
   &[data-placement='top-left'] .ds-badge::before {
-    top: 0;
-    left: 0;
+    top: var(--dsc-badge-top, 0);
+    left: var(--dsc-badge-left, 0);
     translate: -50% -50%;
   }
 
   &[data-placement='bottom-right'] .ds-badge::before {
-    bottom: 0;
-    right: 0;
+    bottom: var(--dsc-badge-bottom, 0);
+    right: var(--dsc-badge-right, 0);
     translate: 50% 50%;
   }
 
   &[data-placement='bottom-left'] .ds-badge::before {
-    bottom: 0;
-    left: 0;
+    bottom: var(--dsc-badge-bottom, 0);
+    left: var(--dsc-badge-left, 0);
     translate: -50% 50%;
   }
 
