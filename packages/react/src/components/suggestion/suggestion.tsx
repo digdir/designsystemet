@@ -60,6 +60,9 @@ export const SuggestionContext = createContext<SuggestionContextType>({
   handleFilter: () => undefined,
 });
 
+type SuggestionValue<T extends { multiple: boolean }> =
+  T['multiple'] extends true ? Array<string | Partial<Item>> : string;
+
 type SuggestionBaseProps = {
   /**
    * Filter options; boolean or a custom callback.
@@ -101,61 +104,38 @@ type SuggestionBaseProps = {
   renderSelected?: (args: { label: string; value: string }) => ReactNode;
 } & HTMLAttributes<UHTMLComboboxElement>;
 
-type SuggestionSingleProps = SuggestionBaseProps & {
+type SuggestionValueProps<T extends { multiple: boolean }> = {
   /**
    * Allows the user to select multiple items
    *
    * @default false
    */
-  multiple?: false;
+  multiple?: T['multiple'];
   /**
    * The selected item of the Suggestion.
    *
    * Using this makes the component controlled and it must be used in combination with `onSelectedChange`.
    */
-  selected?: string;
+  selected?: SuggestionValue<T>;
   /**
    * @deprecated Use `selected` instead
    */
-  value?: string; // Kept for backwards compatibility
+  value?: SuggestionValue<T>; // Kept for backwards compatibility
   /**
    * Default selected item when uncontrolled
    */
-  defaultSelected?: string;
+  defaultSelected?: SuggestionValue<T>;
   /**
    * @deprecated Use `defaultSelected` instead
    */
-  defaultValue?: string; // Kept for backwards compatibility
+  defaultValue?: SuggestionValue<T>; // Kept for backwards compatibility
 };
 
-type SuggestionMultipleProps = SuggestionBaseProps & {
-  /**
-   * Allows the user to select multiple items
-   */
-  multiple: true;
-  /**
-   * The selected items of the Suggestion.
-   *
-   * If `label` and `value` is the same, you can use `string[]`.
-   *
-   * If `label` and `value` is different, you must use `{ value: string; label: string}[]`.
-   *
-   * Using this makes the component controlled and it must be used in combination with `onSelectedChange`.
-   */
-  selected?: Array<string | Partial<Item>>;
-  /**
-   * @deprecated Use `selected` instead
-   */
-  value?: Array<string | Partial<Item>>; // Kept for backwards compatibility
-  /**
-   * Default selected items when uncontrolled
-   */
-  defaultSelected?: Array<string | Partial<Item>>;
-  /**
-   * @deprecated Use `defaultSelected` instead
-   */
-  defaultValue?: Array<string | Partial<Item>>; // Kept for backwards compatibility
-};
+type SuggestionSingleProps = SuggestionBaseProps &
+  SuggestionValueProps<{ multiple: false }>;
+
+type SuggestionMultipleProps = SuggestionBaseProps &
+  SuggestionValueProps<{ multiple: true }>;
 
 export type SuggestionProps = SuggestionSingleProps | SuggestionMultipleProps;
 
