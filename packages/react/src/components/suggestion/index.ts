@@ -115,9 +115,11 @@ export {
   SuggestionClear as EXPERIMENTAL_SuggestionClear,
 };
 export type {
+  SuggestionMultipleProps,
   SuggestionProps,
   SuggestionSelected, // Export SuggestionValues for easier useState
   SuggestionSelected as SuggestionValues, // Kept for backwards compatibility
+  SuggestionSingleProps,
 } from './suggestion';
 export type { SuggestionChipsProps } from './suggestion-chips';
 export type { SuggestionClearProps } from './suggestion-clear';

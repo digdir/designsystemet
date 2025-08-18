@@ -131,10 +131,10 @@ type SuggestionValueProps<T extends { multiple: boolean }> = {
   defaultValue?: SuggestionValue<T>; // Kept for backwards compatibility
 };
 
-type SuggestionSingleProps = SuggestionBaseProps &
+export type SuggestionSingleProps = SuggestionBaseProps &
   SuggestionValueProps<{ multiple: false }>;
 
-type SuggestionMultipleProps = SuggestionBaseProps &
+export type SuggestionMultipleProps = SuggestionBaseProps &
   SuggestionValueProps<{ multiple: true }>;
 
 export type SuggestionProps = SuggestionSingleProps | SuggestionMultipleProps;

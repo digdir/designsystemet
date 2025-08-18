@@ -15,6 +15,10 @@ import {
   EXPERIMENTAL_Suggestion as Suggestion,
   type SuggestionProps,
 } from './';
+import type {
+  SuggestionMultipleProps,
+  SuggestionSingleProps,
+} from './suggestion';
 
 export default {
   title: 'Komponenter/Suggestion',
@@ -95,7 +99,9 @@ export const Preview: StoryFn<typeof Suggestion> = (args) => {
   );
 };
 
-export const ControlledSingleArray: StoryFn<typeof Suggestion> = (args) => {
+export const ControlledSingleArray: StoryFn<SuggestionMultipleProps> = (
+  args,
+) => {
   const [selected, setSelected] = useState<string[]>(['Oslo']);
 
   return (
@@ -162,7 +168,7 @@ ControlledSingleArray.play = async ({ canvasElement, step }) => {
   });
 };
 
-export const ControlledSingle: StoryFn<typeof Suggestion> = (args) => {
+export const ControlledSingle: StoryFn<SuggestionSingleProps> = (args) => {
   const [selected, setSelected] = useState<string>('');
 
   return (
@@ -227,7 +233,7 @@ ControlledSingle.play = async ({ canvasElement, step }) => {
   });
 };
 
-export const ControlledMultiple: StoryFn<typeof Suggestion> = (args) => {
+export const ControlledMultiple: StoryFn<SuggestionMultipleProps> = (args) => {
   const [selected, setSelected] = useState<string[]>(['Oslo']);
 
   return (
@@ -303,12 +309,12 @@ ControlledMultiple.play = async ({ canvasElement, step }) => {
   });
 };
 
-export const ControlledIndependentLabelValue: StoryFn<typeof Suggestion> = (
+export const ControlledIndependentLabelValue: StoryFn<SuggestionSingleProps> = (
   args,
 ) => {
-  const [items, setItems] = useState<typeof DATA_PEOPLE>(
-    DATA_PEOPLE.slice(0, 1),
-  );
+  const [item, setItem] = useState<
+    { label: string; value: string } | undefined
+  >(DATA_PEOPLE[0]);
 
   return (
     <>
@@ -316,8 +322,8 @@ export const ControlledIndependentLabelValue: StoryFn<typeof Suggestion> = (
         <Label>Velg person</Label>
         <Suggestion
           {...args}
-          selected={items.slice(0, 1)}
-          onSelectedChange={(items) => setItems(items)}
+          selected={item?.label}
+          onSelectedChange={(items) => setItem(items[0])}
           filter={false}
         >
           <Suggestion.Input />
@@ -344,13 +350,13 @@ export const ControlledIndependentLabelValue: StoryFn<typeof Suggestion> = (
             width: 400,
           }}
         >
-          {JSON.stringify(items)}
+          {JSON.stringify(item)}
         </pre>
       </div>
 
       <Button
         onClick={() => {
-          setItems(DATA_PEOPLE.slice(2, 3));
+          setItem(DATA_PEOPLE[2]);
         }}
       >
         Sett Nina
@@ -443,7 +449,7 @@ export const CustomMatching: StoryFn<typeof Suggestion> = (args) => {
   );
 };
 
-export const AlwaysShowAll: StoryFn<typeof Suggestion> = (args) => {
+export const AlwaysShowAll: StoryFn<SuggestionSingleProps> = (args) => {
   const [selected, setSelected] = useState('Sogndal');
 
   return (
@@ -453,7 +459,7 @@ export const AlwaysShowAll: StoryFn<typeof Suggestion> = (args) => {
         {...args}
         selected={selected}
         filter={false}
-        onSelectedChange={(values) => setSelected(values)}
+        onSelectedChange={(values) => setSelected(values[0]?.value)}
       >
         <Suggestion.Input />
         <Suggestion.Clear />
@@ -527,11 +533,11 @@ FetchExternal.parameters = {
   },
 };
 
-export const DefaultValue: StoryFn<typeof Suggestion> = (args) => {
+export const DefaultValue: StoryFn<SuggestionSingleProps> = (args) => {
   return (
     <Field>
       <Label>Velg en destinasjon</Label>
-      <Suggestion {...args} defaultSelected={['Sogndal']}>
+      <Suggestion {...args} defaultSelected={'Sogndal'}>
         <Suggestion.Input />
         <Suggestion.Clear />
         <Suggestion.List>
