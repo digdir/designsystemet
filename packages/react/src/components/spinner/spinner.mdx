@@ -1,28 +1,52 @@
 import { Meta, Primary, Controls, Canvas } from '@storybook/addon-docs/blocks';
-
+import { CssVariables } from '@doc-components';
 import * as SpinnerStories from './spinner.stories';
+import cssSpinner from '@digdir/designsystemet-css/spinner.css?inline';
 
 <Meta of={SpinnerStories} />
 
 # Spinner
 
-`Spinner` brukes for å indikere at en handling pågår. Dette kan være når vi venter på at et skjema skal sendes inn.
+`Spinner` brukes for å indikere at innhold eller en handling er i ferd med å laste, og at brukeren må vente før de kan fortsette. 
 
 <Primary />
 <Controls />
 
-## Størrelser
+## Kodeeksempler
+
+### Størrelser
 
 Du kan justere størrelsen på `Spinner` etter hvor den skal plasseres. 
 Størrelsen vil være mindre i knapper, men større dersom den er ved et skjemafelt.
 
 <Canvas of={SpinnerStories.Sizes} />
 
-## Varianter
+### Farger
 
 <Canvas of={SpinnerStories.Variants} />
+
+## Retningslinjer
+Formålet med `Spinner` er å gi en visuell bekreftelse på at systemet jobber, og på den måten skape trygghet for at prosessen ikke har stoppet opp. Den kan brukes for eksempel i en knapp, et felt eller et annet avgrenset område der brukeren venter på at noe skal skje, som for eksempel lagring eller oppdatering.
+
+**Passer til å**
+- indikere at systemet jobber med en oppgave som brukeren må vente på
+- lokale handlinger, som å sende inn et skjema eller oppdatere en tabell
+- fortelle brukeren når lasting vil ta mer enn 1 sekund
+
+**Passer ikke**
+- å vise at enkeltelementer på siden blir lastet inn (vurder [Skeleton](/docs/komponenter-loaders-skeleton--docs) i stedet)
+- når en lasting tar mindre enn 1 sekund
+
+## Tekst 
+I noen tilfeller gir det en bedre brukeropplevelse å vise en forklarende tekst sammen med `Spinner` som beskriver hvorfor brukeren må vente. En tydelig forklaring bidrar til å redusere usikkerhet og forvirring hos brukeren.
 
 ## Tilgjengelighet
 
 Når brukeren har `prefers-reduced-motion` satt til `reduce` vil spinneren ha en animasjon på 6 sekunder.
 Animasjonen er ikke dekorativ, og vi skrur den derfor ikke av.
+
+For å sikre en god brukeropplevelse bør `Spinner` kombineres med tekst eller ha en `aria-label`, slik at også brukere med hjelpemidler får informasjon om at lasting pågår. Når du har tekst som indikerer lasting sammen med `Spinner`, må du skjule `Spinner` med `aria-hidden="true"` for å unngå at "lasting" leses opp flere ganger. Hvis du ikke har tekst skal `Spinner` i stedet ha en `aria-label`.
+
+## CSS Variabler
+
+<CssVariables css={cssSpinner} />

@@ -23,11 +23,9 @@ export type SkeletonProps = {
    * @default false
    */
   asChild?: boolean;
-} & HTMLAttributes<HTMLSpanElement> &
-  (
-    | { variant: 'text'; characters?: number }
-    | { variant?: 'rectangle' | 'circle'; characters?: never }
-  );
+  /** @deprecated This prop has no effect. Use `width` or supply text as children instead */
+  characters?: number;
+} & HTMLAttributes<HTMLSpanElement>;
 
 /**
  * Skeleton is used to represent a draft of page while the content loads.

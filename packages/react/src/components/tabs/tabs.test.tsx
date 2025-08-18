@@ -41,10 +41,10 @@ describe('Tabs', () => {
     );
 
     expect(screen.queryByText('content 1')).toBeVisible();
-    expect(screen.queryByText('content 2')).not.toBeInTheDocument();
+    expect(screen.queryByText('content 2')).toHaveAttribute('hidden', '');
     await user.click(screen.getByRole('tab', { name: 'Tab 2' }));
     expect(screen.queryByText('content 2')).toBeVisible();
-    expect(screen.queryByText('content 1')).not.toBeInTheDocument();
+    expect(screen.queryByText('content 1')).toHaveAttribute('hidden', '');
   });
 
   it('item renders with correct aria attributes', async () => {

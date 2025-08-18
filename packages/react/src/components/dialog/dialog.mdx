@@ -53,6 +53,10 @@ const dialogRef = useRef<HTMLDialogElement>(null);
 
 <Canvas of={DialogStories.WithoutDialogTriggerContext} />
 
+### Lukk knapp
+
+Vår lukk knapp bruker `<form>`, som betyr at du ikke kan bruke den i andre `<form>`-elementer.
+Du kan skru av vår lukk knapp ved å sette `closeButton={false}`. Da må du selv sørge for at dialogen kan lukkes, for eksempel ved å bruke `Dialog.close()` på en knapp du lager selv.
 
 ## Eksempler
 
@@ -66,8 +70,6 @@ Dette fungerer kun når `modal={true}`, fordi en ikke-modal dialog ikke har noe 
 ### Med inndeling
 
 Bruk flere `Dialog.Block` hvis du vil dele opp dialogen med skillelinjer til for eksempel topp- og bunn-område. Merk at innhold kan ikke plasseres direkte i `Dialog` dersom du bruker `Dialog.Block`; da burde alt innholdet være inni en av av dialogens `Dialog.Block`-seksjoner.
-
-
 
 <Canvas of={DialogStories.WithHeaderAndFooter} />
 
