@@ -214,7 +214,7 @@ export const Controlled: StoryFn<typeof Popover> = () => {
 };
 Controlled.parameters = {
   customStyles: {
-    padding: '8rem 6rem 1rem',
+    padding: '9rem 6rem 1rem',
   },
 };
 
