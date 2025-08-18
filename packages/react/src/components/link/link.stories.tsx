@@ -1,4 +1,3 @@
-import { inline } from '@floating-ui/dom';
 import {
   BookIcon,
   ComponentIcon,

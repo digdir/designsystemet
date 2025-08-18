@@ -30,6 +30,12 @@ import { Tooltip } from '@digdir/designsystemet-react';
   <Button>Trigger</Button>
 </Tooltip>
 ```
+
+### Polyfill
+
+`Tooltip` bruker [popover](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover). Dette apiet er klassifisert som [Baseline: Newly available](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) fra april 2024, da Firefox som siste nettleser la det til. I noen tilfeller kan en oppleve at brukere av ulike grunner er låst til eldre nettleserversjoner, og da kan det være aktuelt å legge til en [Popover-Polyfill (github.com)](https://github.com/oddbird/popover-polyfill) for å sikre at `Tooltip` fungerer for alle.
+
+
 ## Kodeeksempler
 
 ### Med `string`
@@ -78,10 +84,6 @@ På berøringsskjermer er `Tooltip` mindre egnet, fordi de vanligvis aktiveres v
 ## Kjente mangler
 
 I Safari fungerer ikke fade-in animasjon.
-
-### Polyfill
-
-`Tooltip` bruker [popover](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover). Dette apiet er klassifisert som [Baseline: Newly available](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) fra april 2024, da Firefox som siste nettleser la det til. I noen tilfeller kan en oppleve at brukere av ulike grunner er låst til eldre nettleserversjoner, og da kan det være aktuelt å legge til en [Popover-Polyfill (github.com)](https://github.com/oddbird/popover-polyfill) for å sikre at `Tooltip` fungerer for alle.
 
 ## CSS Variabler
 
