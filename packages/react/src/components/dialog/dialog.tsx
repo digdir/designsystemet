@@ -157,8 +157,6 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
             autoFocus
             data-color='neutral'
             icon
-            name='close'
-            type='submit'
             variant='tertiary'
             data-command='close'
           />
