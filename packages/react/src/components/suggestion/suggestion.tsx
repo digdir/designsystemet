@@ -135,7 +135,7 @@ export type SuggestionSingleProps = SuggestionBaseProps &
   SuggestionValueProps<{ multiple: false }>;
 
 export type SuggestionMultipleProps = SuggestionBaseProps &
-  SuggestionValueProps<{ multiple: true }>;
+  SuggestionValueProps<{ multiple: true }> & { multiple: true }; // ensures multiple: true is never inferred from other props
 
 export type SuggestionProps = SuggestionSingleProps | SuggestionMultipleProps;
 
