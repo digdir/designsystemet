@@ -191,30 +191,36 @@ export const Controlled: StoryFn<typeof Popover> = () => {
       <Popover.Trigger onClick={() => setOpen(!open)}>Slett</Popover.Trigger>
       <Popover open={open} onClose={() => setOpen(false)} data-color='neutral'>
         <Paragraph>Er du sikker på at du vil slette?</Paragraph>
-        <Button
-          data-color='danger'
-          onClick={() => setOpen(false)}
-          data-size='sm'
-          style={{ marginTop: 'var(--ds-size-2)' }}
+        <div
+          style={{
+            display: 'flex',
+            gap: 'var(--ds-size-2)',
+            marginTop: 'var(--ds-size-2)',
+          }}
         >
-          Slett
-        </Button>
-        <Button
-          data-variant='tertiary'
-          data-color='danger'
-          onClick={() => setOpen(false)}
-          data-size='sm'
-          style={{ marginTop: 'var(--ds-size-2)' }}
-        >
-          Avbryt
-        </Button>
+          <Button
+            data-color='danger'
+            onClick={() => setOpen(false)}
+            data-size='sm'
+          >
+            Slett
+          </Button>
+          <Button
+            data-variant='tertiary'
+            data-color='danger'
+            onClick={() => setOpen(false)}
+            data-size='sm'
+          >
+            Avbryt
+          </Button>
+        </div>
       </Popover>
     </Popover.TriggerContext>
   );
 };
 Controlled.parameters = {
   customStyles: {
-    padding: '9rem 6rem 1rem',
+    padding: '8rem 6rem 1rem',
   },
 };
 
