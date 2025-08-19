@@ -79,10 +79,6 @@ type SuggestionBaseProps = {
    */
   creatable?: boolean;
   /**
-   * @deprecated Use `onSelectedChange` instead
-   */
-  onValueChange?: (value: Item[]) => void; // Kept for backwards compatibility
-  /**
    * Callback when matching input value against options
    */
   onBeforeMatch?: (event: EventBeforeMatch) => void;
@@ -131,6 +127,12 @@ type SuggestionValueProps<T extends { multiple: boolean }> = {
   onSelectedChange?: (
     value: T['multiple'] extends true ? Item[] : Item | undefined,
   ) => void;
+  /**
+   * @deprecated Use `onSelectedChange` instead
+   */
+  onValueChange?: (
+    value: T['multiple'] extends true ? Item[] : Item | undefined,
+  ) => void; // Kept for backwards compatibility
 };
 
 export type SuggestionSingleProps = SuggestionBaseProps &
