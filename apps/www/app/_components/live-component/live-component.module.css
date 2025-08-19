@@ -1,8 +1,10 @@
 .preview {
   background-color: var(--ds-color-neutral-background-default);
   padding: var(--ds-size-8);
-  border-radius: var(--ds-border-radius-md);
+  border-top-left-radius: var(--ds-border-radius-md);
+  border-top-right-radius: var(--ds-border-radius-md);
   border: 2px solid var(--ds-color-neutral-border-subtle);
+  position: relative;
 
   & > div {
     display: flex;
@@ -10,4 +12,18 @@
     justify-content: center;
     gap: var(--ds-size-2);
   }
+
+  & .codeButton {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: var(--ds-font-size-2);
+  }
+}
+
+.editor {
+  font-family: monospace;
+  border-bottom-left-radius: var(--ds-border-radius-md);
+  border-bottom-right-radius: var(--ds-border-radius-md);
+  overflow: hidden;
 }

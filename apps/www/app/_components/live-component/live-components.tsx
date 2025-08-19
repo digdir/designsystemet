@@ -1,4 +1,5 @@
 import * as ds from '@digdir/designsystemet-react';
+import { useState } from 'react';
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
 import classes from './live-component.module.css';
 
@@ -11,15 +12,24 @@ type LiveComponentProps = {
 };
 
 export const LiveComponent = ({ code }: LiveComponentProps) => {
+  const [showEditor, setShowEditor] = useState(false);
   return (
     <LiveProvider code={code} scope={scopes} noInline>
-      <div className='grid grid-cols-2 gap-4'>
-        <div className={classes.preview}>
-          <LivePreview />
-          <LiveError className='ds-alert' />
-        </div>
-        <LiveEditor className='font-mono' />
+      <div className={classes.preview}>
+        <LivePreview />
+        <ds.Button
+          data-color='neutral'
+          data-size='sm'
+          variant='tertiary'
+          onClick={() => setShowEditor((v) => !v)}
+          aria-pressed={showEditor}
+          className={classes.codeButton}
+        >
+          {showEditor ? 'Hide code' : 'Show code'}
+        </ds.Button>
+        <LiveError className='ds-alert' />
       </div>
+      {showEditor ? <LiveEditor className={classes.editor} /> : null}
     </LiveProvider>
   );
 };
