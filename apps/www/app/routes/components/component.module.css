@@ -1,0 +1,12 @@
+.content {
+  --text-max-width: 900px;
+
+  max-width: var(--text-max-width);
+  margin: 0 auto;
+  width: 100%;
+  flex-basis: 800px;
+
+  &:last-child {
+    margin-bottom: var(--ds-size-12);
+  }
+}

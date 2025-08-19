@@ -1,4 +1,13 @@
 .preview {
-  background-color: var(--ds-color-neutral-background-tinted);
+  background-color: var(--ds-color-neutral-background-default);
   padding: var(--ds-size-8);
+  border-radius: var(--ds-border-radius-md);
+  border: 2px solid var(--ds-color-neutral-border-subtle);
+
+  & > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ds-size-2);
+  }
 }

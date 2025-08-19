@@ -3,8 +3,16 @@ import { join } from 'node:path';
 import { cwd } from 'node:process';
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import { ContentContainer } from '@internal/components';
+import cl from 'clsx/lite';
+import { bundleMDX } from 'mdx-bundler';
+import { getMDXComponent } from 'mdx-bundler/client';
+import * as React from 'react';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
 import { LiveComponent } from '~/_components/live-component/live-components';
 import type { Route } from './+types/component';
+import classes from './component.module.css';
 
 const dirname = cwd();
 
@@ -12,19 +20,13 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
   const { component } = params;
 
   if (!component) {
-    throw new Response('Not Found', {
-      status: 404,
-      statusText: 'Not Found',
-    });
+    throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
   }
 
   const basePath = join(dirname, './app/content');
-
-  /* load component metadata */
   const componentDir = join(basePath, 'components', component);
-  const metadata = readFileSync(join(componentDir, 'metadata.json'), 'utf-8');
 
-  /* extract exported story functions as separate plaintext entries from *.stories.tsx */
+  // Extract exported story functions from *.stories.tsx
   const storyEntries: { name: string; code: string; file: string }[] = (() => {
     try {
       if (!existsSync(componentDir)) return [];
@@ -37,27 +39,22 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
         source: string,
       ): { name: string; code: string }[] => {
         const results: { name: string; code: string }[] = [];
-
-        // export function Name(...) { ... }
         const funcDeclRe =
           /export\s+function\s+([A-Za-z0-9_]+)\s*\([^)]*\)\s*\{[\s\S]*?\}/g;
-        // export const Name = (...) => { ... };
         const arrowBlockRe =
           /export\s+const\s+([A-Za-z0-9_]+)\s*(?::[^=]+)?=\s*\([^)]*\)\s*=>\s*\{[\s\S]*?\};/g;
-        // export const Name = (...) => ( ... );
         const arrowParenRe =
           /export\s+const\s+([A-Za-z0-9_]+)\s*(?::[^=]+)?=\s*\([^)]*\)\s*=>\s*\([\s\S]*?\);/g;
 
         const pushMatches = (re: RegExp) => {
-          const text = source;
-          const matches = Array.from(text.matchAll(re));
-          for (const m of matches) {
+          for (const m of source.matchAll(re)) {
             const name = m?.[1];
             const code = m?.[0];
             if (name && code) {
-              // Remove leading export keyword while preserving the definition
-              const codeWithoutExport = code.replace(/^\s*export\s+/, '');
-              results.push({ name, code: codeWithoutExport.trim() });
+              results.push({
+                name,
+                code: code.replace(/^\s*export\s+/, '').trim(),
+              });
             }
           }
         };
@@ -65,51 +62,101 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
         pushMatches(funcDeclRe);
         pushMatches(arrowBlockRe);
         pushMatches(arrowParenRe);
-
         return results;
       };
 
-      const collected = files.flatMap((file) => {
+      return files.flatMap((file) => {
         const full = join(componentDir, file);
         const src = readFileSync(full, 'utf-8');
         const fns = extractExportedFunctions(src);
         return fns.map((f) => ({ ...f, file }));
       });
-
-      return collected;
     } catch {
       return [];
     }
   })();
 
-  return {
-    component,
-    metadata: JSON.parse(metadata),
-    stories: storyEntries,
-  };
+  let mdxCode: string | undefined;
+  let frontmatter: Record<string, unknown> | undefined;
+  try {
+    const mdxSource = readFileSync(
+      join(componentDir, `${component}.md`),
+      'utf-8',
+    );
+    const result = await bundleMDX({
+      source: mdxSource,
+      cwd: componentDir,
+      mdxOptions(options) {
+        options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkGfm];
+        options.rehypePlugins = [
+          ...(options.rehypePlugins ?? []),
+          rehypeSlug,
+          [rehypeAutolinkHeadings, { behavior: 'wrap' }],
+        ];
+        return options;
+      },
+    });
+    mdxCode = result.code;
+    if (result.frontmatter && typeof result.frontmatter === 'object') {
+      frontmatter = result.frontmatter as Record<string, unknown>;
+    }
+  } catch {
+    // ignore MDX errors and fall back to default rendering
+  }
+
+  return { component, stories: storyEntries, mdxCode, frontmatter };
 };
 
 export default function Components({
-  loaderData: { metadata, stories },
+  loaderData: { stories, mdxCode, frontmatter, component },
 }: Route.ComponentProps) {
-  console.log(stories);
+  const MDXContent = React.useMemo(() => {
+    if (!mdxCode) return undefined;
+    try {
+      return getMDXComponent(mdxCode);
+    } catch {
+      return undefined;
+    }
+  }, [mdxCode]);
+
+  const Story = ({ story }: { story: string }) => {
+    const foundStory = stories.find((s) => s.name === story);
+    if (!foundStory) return <div>Story not found: {story}</div>;
+    return (
+      <LiveComponent
+        code={`${foundStory.code}\n render(<${foundStory.name} />)`}
+      />
+    );
+  };
+
+  const title =
+    typeof frontmatter?.title === 'string' && frontmatter.title
+      ? (frontmatter.title as string)
+      : component;
+  const desc =
+    typeof frontmatter?.description === 'string' && frontmatter.description
+      ? (frontmatter.description as string)
+      : undefined;
+
   return (
-    <div
-      style={{
-        paddingBlock: 'var(--ds-size-8)',
-      }}
-    >
+    <div style={{ paddingBlock: 'var(--ds-size-8)' }}>
       <ContentContainer>
-        <Heading data-size='xl' level={1}>
-          {metadata.title}
-        </Heading>
-        <Paragraph>{metadata.description}</Paragraph>
-        {stories.map((story) => (
-          <LiveComponent
-            key={story.name}
-            code={`${story.code}\n render(<${story.name} />)`}
-          />
-        ))}
+        <div className={cl(classes.content, 'u-rich-text')}>
+          <Heading data-size='xl' level={1}>
+            {title}
+          </Heading>
+          {desc ? <Paragraph>{desc}</Paragraph> : null}
+          {MDXContent ? (
+            <MDXContent components={{ Story, LiveComponent }} />
+          ) : (
+            stories.map((story) => (
+              <LiveComponent
+                key={story.name}
+                code={`${story.code}\n render(<${story.name} />)`}
+              />
+            ))
+          )}
+        </div>
       </ContentContainer>
     </div>
   );
