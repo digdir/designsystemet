@@ -25,5 +25,60 @@ Bruk `primary`, `secondary` eller `tertiary` for å vekte knappen rett.
 
 ### Fargar
 
-Knappane finst i alle temafargar i tillegg til `danger`. Det er opp til deg kva farge du vel for knappen. 
-`Danger`-fargen brukar vi til handlingar som brukaren ikkje kan angre, for eksempel «Slett».
+Ei gruppe med knappar bør bruke same fargevariant. 
+Unntaket er når vi vil tydeleggjere ei handling brukaren ikkje kan angre, for eksempel «Slett». 
+Elles skal vi som regel ikkje kombinere ulike fargevariantar.
+
+<Story story="ColorVariants" />
+
+### Plassering av knappar
+
+Når vi legg fleire knappar ved sida av kvarandre, skal primærknappen stå først.  
+Unntaket er «Forrige» og «Neste» - då skal den sekundære knappen «Forrige» stå først.
+
+### Knapp med berre ikon
+Knappar med berre ikon brukar vi kun for godt kjende ikon som "Lukk" og "Slett". 
+Når knappen ikkje har tekst, må vi leggje til ein tilgjengeleg tekst som forklarer kva knappen gjer. 
+Dette kan leggjast i `title`, `aria-label`, eller i ein [`Tooltip`](/docs/komponenter-tooltip--docs).
+
+### Knapp med tekst og ikon
+
+Når vi bruker ikon saman med tekst, skal ikonet ha `aria-hidden`, slik at teksten ikkje blir lesen opp to gonger av skjermlesar.
+
+Vi plasserer ikonet til venstre eller høgre for teksten, avhengig av kva knappen kommuniserer og kvar han er plassert i grensesnittet.
+
+Som oftast er **venstre** den beste plasseringa, men det finst unntak:
+
+- Dersom knappen for eksempel seier «Start» og har ei pil som peikar mot høgre, er det naturleg at pila står til høgre for teksten.
+- Dersom knappen er fast plassert på høgre side av grensesnittet, er det best at ikonet òg er plassert til høgre for teksten.
+
+Vi skal halde oss til eitt ikon per knapp.
+
+### Unngå å bruke deaktiverte knappar
+
+Vi unngår å bruke deaktiverte (`disabled`) knappar fordi dei kan vere vanskelege å oppfatte. Nokre brukarar vil ikkje forstå kva knappen betyr, eller kvifor han ikkje er klikkbar.  
+Ei aktiv knapp som viser ei feilmelding når brukaren klikkar, gjev i dei fleste tilfelle ei betre brukaroppleving. NAV har ei god forklaring på [kvifor deaktiverte tilstandar er problematiske](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) og kva alternativ som finst.
+
+**Dersom du likevel må bruke ein deaktivert knapp:**
+
+- Sørg for at alle brukarane dine både merkar og forstår at knappen finst, at han er deaktivert, og kvifor.
+- Bruk gjerne støttetekst som alltid er synleg når knappen er deaktivert.
+- Dersom det er fornuftig at knappen framleis kan få fokus med tastatur,  
+eller det av andre grunnar er viktig å bevare tab-rekkjefølgja, bruk `aria-disabled` i staden for `disabled`.  
+Hugs då å sjølv hindre at callback-funksjonar (for eksempel `onClick`) blir køyrde.
+
+### Ein knapp skal utføre berre éi handling
+
+Vi skal tydeleg beskrive kva handling knappen utfører. Ein knapp skal berre ha éi handling - ikkje fleire.
+
+### Éi hovudhandling per side
+
+Vi skal halde oss til éin primærknapp per side. Dersom det er fleire hovudhandlingar, kan brukarane bli usikre på kva dei skal gjere.
+
+## Tekst
+
+Knappeteksten skal vere kort, helst ikkje meir enn to, maks. tre ord. Tenk på at knappen tydeleg skal beskrive kva som skjer når brukaren klikkar på den.
+
+### Unngå å blande skrivemåtar
+
+Bruk stor forbokstav på det første ordet, som du ville gjort i ei setning. Ikkje bruk berre store bokstavar (all caps), det er vanskelegare å lese.
