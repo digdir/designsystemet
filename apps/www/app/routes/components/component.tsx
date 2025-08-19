@@ -4,13 +4,11 @@ import { cwd } from 'node:process';
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import { ContentContainer } from '@internal/components';
 import cl from 'clsx/lite';
-import { bundleMDX } from 'mdx-bundler';
-import type { ComponentType } from 'react';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypeSlug from 'rehype-slug';
-import remarkGfm from 'remark-gfm';
+import { type ComponentType, useEffect } from 'react';
 import { LiveComponent } from '~/_components/live-component/live-components';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
+import { getFileFromContentDir } from '~/_utils/files.server';
+import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import type { Route } from './+types/component';
 import classes from './component.module.css';
 
@@ -79,26 +77,18 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
   let mdxCode: string | undefined;
   let frontmatter: Record<string, unknown> | undefined;
   try {
-    const mdxSource = readFileSync(
-      join(componentDir, `${component}.mdx`),
-      'utf-8',
-    );
-    const result = await bundleMDX({
-      source: mdxSource,
-      cwd: componentDir,
-      mdxOptions(options) {
-        options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkGfm];
-        options.rehypePlugins = [
-          ...(options.rehypePlugins ?? []),
-          rehypeSlug,
-          [rehypeAutolinkHeadings],
-        ];
-        return options;
-      },
-    });
-    mdxCode = result.code;
-    if (result.frontmatter && typeof result.frontmatter === 'object') {
-      frontmatter = result.frontmatter as Record<string, unknown>;
+    const mdxSource =
+      getFileFromContentDir(
+        join('components', component, `${component}.mdx`),
+      ) ||
+      getFileFromContentDir(join('components', component, `${component}.md`));
+
+    if (mdxSource) {
+      const result = await generateFromMdx(mdxSource);
+      mdxCode = result.code;
+      if (result.frontmatter && typeof result.frontmatter === 'object') {
+        frontmatter = result.frontmatter as Record<string, unknown>;
+      }
     }
   } catch {
     // ignore MDX errors and fall back to default rendering
@@ -142,8 +132,6 @@ export default function Components({
               code={mdxCode}
               components={{
                 Story: Story as unknown as ComponentType<unknown>,
-                LiveComponent:
-                  LiveComponent as unknown as ComponentType<unknown>,
               }}
             />
           ) : (
