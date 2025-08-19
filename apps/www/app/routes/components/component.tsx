@@ -1,6 +1,6 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Alert, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { ContentContainer } from '@internal/components';
 import cl from 'clsx/lite';
 import type { ComponentType } from 'react';
@@ -96,7 +96,7 @@ export default function Components({
 }: Route.ComponentProps) {
   const Story = ({ story }: { story: string }) => {
     const foundStory = stories.find((s) => s.name === story);
-    if (!foundStory) return <div>Story not found: {story}</div>;
+    if (!foundStory) return <Alert>Story not found: {story}</Alert>;
     return (
       <LiveComponent
         code={`${foundStory.code}\n render(<${foundStory.name} />)`}

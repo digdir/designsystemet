@@ -1,10 +1,12 @@
 import * as ds from '@digdir/designsystemet-react';
+import * as aksel from '@navikt/aksel-icons';
 import { useState } from 'react';
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
 import classes from './live-component.module.css';
 
 const scopes = {
   ...ds,
+  ...aksel,
 };
 
 type LiveComponentProps = {
