@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import pc from 'picocolors';
 import * as R from 'ramda';
 import { z } from 'zod';
 import { fromError } from 'zod-validation-error';
@@ -27,13 +27,13 @@ function makeFriendlyError(err: unknown) {
 
             const errorCode = `(error code: ${issue.code})`;
             const optionMessage = optionName ? ` or CLI option --${optionName}` : '';
-            return `  - Error in JSON value ${chalk.red(issuePath)}${optionMessage}:
-      ${issue.message} ${chalk.dim(errorCode)}`;
+            return `  - Error in JSON value ${pc.red(issuePath)}${optionMessage}:
+      ${issue.message} ${pc.dim(errorCode)}`;
           })
           .join('\n'),
     });
   } catch (_err2) {
-    console.error(chalk.red(err instanceof Error ? err.message : 'Unknown error occurred while parsing config file'));
+    console.error(pc.red(err instanceof Error ? err.message : 'Unknown error occurred while parsing config file'));
     console.error(err instanceof Error ? err.stack : 'No stack trace available');
   }
 }
@@ -55,7 +55,7 @@ export function validateConfig<T>(
   try {
     return schema.parse(unvalidatedConfig) as T;
   } catch (err) {
-    console.error(chalk.redBright(`Invalid config file at ${chalk.red(configPath)}`));
+    console.error(pc.redBright(`Invalid config file at ${pc.red(configPath)}`));
 
     const validationError = makeFriendlyError(err);
     console.error(validationError?.toString());
@@ -71,7 +71,7 @@ export function parseConfig<T>(configFile: string, configPath: string): T {
   try {
     return JSON.parse(configFile) as T;
   } catch (err) {
-    console.error(chalk.redBright(`Failed parsing config file at ${chalk.red(configPath)}`));
+    console.error(pc.redBright(`Failed parsing config file at ${pc.red(configPath)}`));
 
     const validationError = makeFriendlyError(err);
     console.error(validationError?.toString());
