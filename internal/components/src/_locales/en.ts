@@ -16,9 +16,8 @@ export default {
   },
   header: {
     'home-link': 'Designsystemet home page',
-    menu: 'Menu',
-    'github-title': 'Designsystemet GitHub repository',
-    'figma-title': 'Designsystemet Figma project',
+    'open-menu': 'Open menu',
+    'close-menu': 'Close menu',
     'theme-toggle': 'Switch to {{theme}} mode',
     'theme-toggle-aria': 'Switch to {{theme}} mode',
     light: 'light',

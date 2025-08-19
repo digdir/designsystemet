@@ -14,16 +14,18 @@ import {
 } from '@digdir/designsystemet-react';
 import { CodeBlock } from '@internal/components';
 import { LinkIcon } from '@navikt/aksel-icons';
+import { DocsContainer } from '@storybook/addon-docs/blocks';
 import type { Preview } from '@storybook/react-vite';
 import isChromatic from 'chromatic/isChromatic';
 import { Children, type MouseEventHandler } from 'react';
+import { addons } from 'storybook/preview-api';
 import { customStylesDecorator } from '../story-utils/customStylesDecorator';
 import { fontsLoader } from '../story-utils/fontsLoader';
 import { allModes, viewportWidths } from '../story-utils/modes';
 import { transformSource } from '../story-utils/transformSource';
 import type { MdxComponentOverrides } from '../story-utils/type-extensions';
 import componentStyles from './componentOverrides.module.scss';
-import customTheme from './customTheme';
+import customTheme from './customThemeLight';
 
 const viewports: Record<string, object> = {};
 
@@ -113,28 +115,24 @@ const components = {
     <Paragraph
       {...props}
       className={`sb-unstyled ${componentStyles.paragraph}`}
-      data-color-scheme='light'
     />
   ),
   ol: (props) => (
     <List.Ordered
       {...props}
       className={`sb-unstyled ${componentStyles.list}`}
-      data-color-scheme='light'
     />
   ),
   ul: (props) => (
     <List.Unordered
       {...props}
       className={`sb-unstyled ${componentStyles.list}`}
-      data-color-scheme='light'
     />
   ),
   li: (props) => (
     <List.Item
       {...props}
       className={`sb-unstyled ${componentStyles.listItem}`}
-      data-color-scheme='light'
     />
   ),
   a: ({ children = '', ...props }) => {
@@ -160,30 +158,29 @@ const components = {
       zebra
       className='sb-unstyled'
       style={{ width: '100%' }}
-      data-color-scheme='light'
       data-color='neutral'
     />
   ),
-  thead: (props) => (
-    <Table.Head {...props} className='sb-unstyled' data-color-scheme='light' />
-  ),
-  tbody: (props) => (
-    <Table.Body {...props} className='sb-unstyled' data-color-scheme='light' />
-  ),
-  tr: (props) => (
-    <Table.Row {...props} className='sb-unstyled' data-color-scheme='light' />
-  ),
-  th: (props) => (
-    <Table.HeaderCell
-      {...props}
-      className='sb-unstyled'
-      data-color-scheme='light'
-    />
-  ),
-  td: (props) => (
-    <Table.Cell {...props} className='sb-unstyled' data-color-scheme='light' />
-  ),
+  thead: (props) => <Table.Head {...props} className='sb-unstyled' />,
+  tbody: (props) => <Table.Body {...props} className='sb-unstyled' />,
+  tr: (props) => <Table.Row {...props} className='sb-unstyled' />,
+  th: (props) => <Table.HeaderCell {...props} className='sb-unstyled' />,
+  td: (props) => <Table.Cell {...props} className='sb-unstyled' />,
 } satisfies MdxComponentOverrides;
+
+const DocsContainerWithWrapper: typeof DocsContainer = ({
+  children,
+  context,
+  ...props
+}) => {
+  return (
+    <div className='custom-docs-wrapper'>
+      <DocsContainer context={context} {...props}>
+        {children}
+      </DocsContainer>
+    </div>
+  );
+};
 
 const preview: Preview = {
   tags: ['a11y-test'],
@@ -199,14 +196,21 @@ const preview: Preview = {
         dynamicTitle: true,
       },
     },
+    // Hidden global for manager-preview communication
+    managerColorScheme: {
+      description: 'Color scheme from manager (internal communication)',
+      defaultValue: 'auto',
+    },
+    // Visible global for story-specific theme switching
     colorScheme: {
-      description: 'Set color-scheme in stories',
+      description: 'Set color-scheme for stories only',
       toolbar: {
-        title: 'Theme',
-        icon: 'contrast',
+        title: 'Story Theme',
+        icon: 'moon',
         items: [
           { title: 'Light', value: 'light' },
           { title: 'Dark', value: 'dark' },
+          { title: 'Auto', value: 'auto' },
         ],
         dynamicTitle: true,
       },
@@ -214,7 +218,8 @@ const preview: Preview = {
   },
   initialGlobals: {
     codePreview: 'react',
-    colorScheme: 'light',
+    managerColorScheme: 'auto',
+    colorScheme: 'auto',
   },
   parameters: {
     layout: 'centered',
@@ -222,6 +227,8 @@ const preview: Preview = {
     docs: {
       theme: customTheme,
       components,
+      //@ts-ignore
+      container: DocsContainerWithWrapper,
 
       source: {
         transform: transformSource,
@@ -276,19 +283,13 @@ const preview: Preview = {
   loaders: isChromatic() && document.fonts ? [fontsLoader] : [],
 };
 
-/* Add this back when https://github.com/storybookjs/storybook/issues/29189 is fixed */
-/* export const decorators = [
-  withThemeByDataAttribute({
-    themes: {
-      Light: 'light',
-      Dark: 'dark',
-      Auto: 'auto',
-    },
-    defaultTheme: 'Light',
-    attributeName: 'data-color-scheme',
-    parentSelector:
-      '.sbdocs-preview .docs-story div:first-of-type, .sb-show-main:has(#storybook-docs[hidden="true"])',
-  }),
-]; */
+const channel = addons.getChannel();
+
+channel.on('globalsUpdated', (data) => {
+  if (data.globals?.managerColorScheme) {
+    const newScheme = data.globals.managerColorScheme;
+    document.body.setAttribute('data-color-scheme', newScheme);
+  }
+});
 
 export default preview;
