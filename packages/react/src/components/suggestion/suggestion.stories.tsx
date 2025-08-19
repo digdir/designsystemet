@@ -100,7 +100,7 @@ export const Preview: StoryFn<typeof Suggestion> = (args) => {
 };
 
 export const ControlledSingle: StoryFn<SuggestionSingleProps> = (args) => {
-  const [selected, setSelected] = useState<string>('');
+  const [selected, setSelected] = useState<string | undefined>('');
 
   return (
     <>
@@ -109,7 +109,7 @@ export const ControlledSingle: StoryFn<SuggestionSingleProps> = (args) => {
         <Suggestion
           {...args}
           selected={selected}
-          onSelectedChange={(items) => setSelected(items.at(0)?.value ?? '')}
+          onSelectedChange={(item) => setSelected(item?.value)}
         >
           <Suggestion.Input />
           <Suggestion.Clear />
@@ -254,7 +254,7 @@ export const ControlledIndependentLabelValue: StoryFn<SuggestionSingleProps> = (
         <Suggestion
           {...args}
           selected={item?.label}
-          onSelectedChange={(items) => setItem(items[0])}
+          onSelectedChange={setItem}
           filter={false}
         >
           <Suggestion.Input />
@@ -381,7 +381,7 @@ export const CustomMatching: StoryFn<typeof Suggestion> = (args) => {
 };
 
 export const AlwaysShowAll: StoryFn<SuggestionSingleProps> = (args) => {
-  const [selected, setSelected] = useState('Sogndal');
+  const [selected, setSelected] = useState<string | undefined>('Sogndal');
 
   return (
     <Field>
@@ -390,7 +390,7 @@ export const AlwaysShowAll: StoryFn<SuggestionSingleProps> = (args) => {
         {...args}
         selected={selected}
         filter={false}
-        onSelectedChange={(values) => setSelected(values[0]?.value)}
+        onSelectedChange={(item) => setSelected(item?.value)}
       >
         <Suggestion.Input />
         <Suggestion.Clear />

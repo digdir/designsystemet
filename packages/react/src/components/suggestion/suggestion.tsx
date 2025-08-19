@@ -79,10 +79,6 @@ type SuggestionBaseProps = {
    */
   creatable?: boolean;
   /**
-   * Callback when selected items changes
-   */
-  onSelectedChange?: (value: Item[]) => void;
-  /**
    * @deprecated Use `onSelectedChange` instead
    */
   onValueChange?: (value: Item[]) => void; // Kept for backwards compatibility
@@ -129,6 +125,12 @@ type SuggestionValueProps<T extends { multiple: boolean }> = {
    * @deprecated Use `defaultSelected` instead
    */
   defaultValue?: SuggestionValue<T>; // Kept for backwards compatibility
+  /**
+   * Callback when selected items changes
+   */
+  onSelectedChange?: (
+    value: T['multiple'] extends true ? Item[] : Item | undefined,
+  ) => void;
 };
 
 export type SuggestionSingleProps = SuggestionBaseProps &
@@ -162,9 +164,9 @@ const nextItems = (
   prev?: Array<string | Partial<Item>> | string,
   multiple?: boolean,
 ) => {
-  const item = { label: text(data), value: data.value };
+  const item: Item = { label: text(data), value: data.value };
 
-  if (!multiple) return data.isConnected ? [] : [item];
+  if (!multiple) return data.isConnected ? undefined : item;
   return data.isConnected
     ? sanitizeItems(prev).filter(({ value }) => value !== item.value)
     : [...sanitizeItems(prev), item];
@@ -229,8 +231,13 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
         const data = event.detail;
 
         if (isControlled)
-          onSelectedChange?.(nextItems(data, selectedItems, multiple));
-        else setDefaultItems(nextItems(data, selectedItems, multiple));
+          onSelectedChange?.(
+            nextItems(data, selectedItems, multiple) as Item & Item[],
+          );
+        else
+          setDefaultItems(
+            nextItems(data, selectedItems, multiple) as Item & Item[],
+          );
       };
 
       combobox?.addEventListener('beforechange', beforeChange);
