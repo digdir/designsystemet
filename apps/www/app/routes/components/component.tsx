@@ -159,7 +159,6 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
 export default function Components({
   loaderData: { stories, mdxCode, frontmatter, component, cssVars },
 }: Route.ComponentProps) {
-  console.log(cssVars);
   const Story = ({ story }: { story: string }) => {
     const foundStory = stories.find((s) => s.name === story);
     if (!foundStory) return <Alert>Story not found: {story}</Alert>;
