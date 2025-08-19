@@ -163,11 +163,6 @@ const nextItems = (
 const defaultFilter: Filter = ({ label, input }) =>
   label.toLowerCase().includes(input.value.trim().toLowerCase());
 
-const deprecate = (from: string, to: string) =>
-  console.warn(
-    `Suggestion: Using "${from}" is deprecated, please use "${to}" instead.`,
-  );
-
 export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
   function Suggestion(
     {
