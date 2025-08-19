@@ -61,7 +61,9 @@ export const SuggestionContext = createContext<SuggestionContextType>({
 });
 
 type SuggestionValue<T extends { multiple: boolean }> =
-  T['multiple'] extends true ? Array<string | Partial<Item>> : string;
+  T['multiple'] extends true
+    ? Array<string | Partial<Item>>
+    : string | Partial<Item>;
 
 type SuggestionBaseProps = {
   /**
@@ -129,22 +131,26 @@ export type SuggestionMultipleProps = SuggestionBaseProps &
 
 export type SuggestionProps = SuggestionSingleProps | SuggestionMultipleProps;
 
-export type SuggestionSelected = string | Array<string | Partial<Item>>; // Kept for backwards compatibility
+export type SuggestionSelected = string | Item | Array<string | Partial<Item>>; // Kept for backwards compatibility
+
+const sanitizePartialItem = (item: Partial<Item>): Item => ({
+  label: item.label || item.value || '',
+  value: item.value || '',
+});
 
 const text = (el: Element): string => el.textContent?.trim() || '';
 const sanitizeItems = (
-  values: Array<string | Partial<Item>> | string = [],
+  values: Array<string | Partial<Item>> | string | Partial<Item> = [],
 ): Item[] =>
   (typeof values === 'string'
     ? [{ label: values, value: values }]
-    : values.map((value: string | Partial<Item>) =>
-        typeof value === 'string'
-          ? { label: value, value }
-          : {
-              label: value.label || value.value || '',
-              value: value.value || '',
-            },
-      )
+    : !Array.isArray(values)
+      ? [sanitizePartialItem(values)]
+      : values.map((value: string | Partial<Item>) =>
+          typeof value === 'string'
+            ? { label: value, value }
+            : sanitizePartialItem(value),
+        )
   ).filter((x: Item) => !!x.label);
 
 const nextItems = (

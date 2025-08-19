@@ -253,7 +253,7 @@ export const ControlledIndependentLabelValue: StoryFn<SuggestionSingleProps> = (
         <Label>Velg person</Label>
         <Suggestion
           {...args}
-          selected={item?.label}
+          selected={item}
           onSelectedChange={setItem}
           filter={false}
         >
