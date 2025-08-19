@@ -5,12 +5,12 @@ import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import { ContentContainer } from '@internal/components';
 import cl from 'clsx/lite';
 import { bundleMDX } from 'mdx-bundler';
-import { getMDXComponent } from 'mdx-bundler/client';
-import * as React from 'react';
+import type { ComponentType } from 'react';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import { LiveComponent } from '~/_components/live-component/live-components';
+import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import type { Route } from './+types/component';
 import classes from './component.module.css';
 
@@ -80,7 +80,7 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
   let frontmatter: Record<string, unknown> | undefined;
   try {
     const mdxSource = readFileSync(
-      join(componentDir, `${component}.md`),
+      join(componentDir, `${component}.mdx`),
       'utf-8',
     );
     const result = await bundleMDX({
@@ -91,7 +91,7 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
         options.rehypePlugins = [
           ...(options.rehypePlugins ?? []),
           rehypeSlug,
-          [rehypeAutolinkHeadings, { behavior: 'wrap' }],
+          [rehypeAutolinkHeadings],
         ];
         return options;
       },
@@ -110,15 +110,6 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
 export default function Components({
   loaderData: { stories, mdxCode, frontmatter, component },
 }: Route.ComponentProps) {
-  const MDXContent = React.useMemo(() => {
-    if (!mdxCode) return undefined;
-    try {
-      return getMDXComponent(mdxCode);
-    } catch {
-      return undefined;
-    }
-  }, [mdxCode]);
-
   const Story = ({ story }: { story: string }) => {
     const foundStory = stories.find((s) => s.name === story);
     if (!foundStory) return <div>Story not found: {story}</div>;
@@ -146,8 +137,15 @@ export default function Components({
             {title}
           </Heading>
           {desc ? <Paragraph>{desc}</Paragraph> : null}
-          {MDXContent ? (
-            <MDXContent components={{ Story, LiveComponent }} />
+          {mdxCode ? (
+            <MDXComponents
+              code={mdxCode}
+              components={{
+                Story: Story as unknown as ComponentType<unknown>,
+                LiveComponent:
+                  LiveComponent as unknown as ComponentType<unknown>,
+              }}
+            />
           ) : (
             stories.map((story) => (
               <LiveComponent

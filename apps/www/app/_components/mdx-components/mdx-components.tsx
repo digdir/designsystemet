@@ -20,7 +20,7 @@ import {
 } from '@digdir/designsystemet-react';
 import { CodeBlock } from '@internal/components';
 import { getMDXComponent } from 'mdx-bundler/dist/client';
-import { type JSX, useMemo } from 'react';
+import { type ComponentType, type JSX, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link as RRLink } from 'react-router';
 import { ColorInfoTable } from '~/_components/color-info-table/color-info-table';
@@ -106,9 +106,7 @@ export const MDXComponents = ({
   components,
   code,
 }: {
-  components?: {
-    [key: string]: JSX.Element;
-  };
+  components?: Record<string, ComponentType<unknown>>;
   code?: string;
 }) => {
   const { t } = useTranslation();
