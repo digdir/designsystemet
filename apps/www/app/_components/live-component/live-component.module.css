@@ -26,4 +26,14 @@
   border-bottom-left-radius: var(--ds-border-radius-md);
   border-bottom-right-radius: var(--ds-border-radius-md);
   overflow: hidden;
+
+  & > pre {
+    background-color: var(--ds-color-neutral-background-tinted) !important;
+    font-size: min(0.8em, 14px);
+    padding: var(--ds-size-5) !important;
+  }
+
+  & [class~='plain-text'] {
+    color: var(--ds-color-neutral-text-default);
+  }
 }

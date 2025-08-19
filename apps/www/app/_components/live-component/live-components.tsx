@@ -1,5 +1,6 @@
 import * as ds from '@digdir/designsystemet-react';
 import * as aksel from '@navikt/aksel-icons';
+import { themes } from 'prism-react-renderer';
 import { useState } from 'react';
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
 import classes from './live-component.module.css';
@@ -16,7 +17,7 @@ type LiveComponentProps = {
 export const LiveComponent = ({ code }: LiveComponentProps) => {
   const [showEditor, setShowEditor] = useState(false);
   return (
-    <LiveProvider code={code} scope={scopes} noInline>
+    <LiveProvider code={code} scope={scopes} noInline theme={themes.vsDark}>
       <div className={classes.preview}>
         <LivePreview />
         <ds.Button

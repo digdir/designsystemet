@@ -285,6 +285,9 @@ importers:
       mdx-bundler:
         specifier: ^10.1.1
         version: 10.1.1(acorn@8.14.1)(esbuild@0.25.3)
+      prism-react-renderer:
+        specifier: ^2.4.1
+        version: 2.4.1(react@19.1.1)
       ramda:
         specifier: ^0.31.3
         version: 0.31.3
