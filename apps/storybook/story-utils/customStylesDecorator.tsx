@@ -58,7 +58,6 @@ export const customStylesDecorator: Decorator = (Story, ctx) => {
 
   return (
     <div
-      data-color-scheme={ctx.globals.colorScheme}
       data-storybook-decorator
       style={{
         boxSizing: 'border-box',
