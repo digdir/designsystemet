@@ -12,14 +12,13 @@ import type { Route } from './+types/component';
 import classes from './component.module.css';
 
 export const loader = async ({ params }: Route.LoaderArgs) => {
-  const { component } = params;
+  const { component, lang } = params;
 
   if (!component) {
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
   }
 
-  const basePath = join('app', 'content');
-  const componentDir = join(basePath, 'components', component);
+  const componentDir = join('app', 'content', 'components', component);
 
   // Extract exported story functions from *.stories.tsx
   const storyEntries: { name: string; code: string; file: string }[] = (() => {
@@ -74,11 +73,9 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
   let mdxCode: string | undefined;
   let frontmatter: Record<string, unknown> | undefined;
   try {
-    const mdxSource =
-      getFileFromContentDir(
-        join('components', component, `${component}.mdx`),
-      ) ||
-      getFileFromContentDir(join('components', component, `${component}.md`));
+    const mdxSource = getFileFromContentDir(
+      join('components', component, lang, `${component}.mdx`),
+    );
 
     if (mdxSource) {
       const result = await generateFromMdx(mdxSource);
