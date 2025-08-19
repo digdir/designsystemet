@@ -94,7 +94,7 @@ type SuggestionBaseProps = {
    * @default ({ label }) => label
    */
   renderSelected?: (args: { label: string; value: string }) => ReactNode;
-} & HTMLAttributes<UHTMLComboboxElement>;
+} & Omit<HTMLAttributes<UHTMLComboboxElement>, 'defaultValue'>;
 
 type SuggestionValueProps<T extends { multiple: boolean }> = {
   /**
@@ -110,29 +110,15 @@ type SuggestionValueProps<T extends { multiple: boolean }> = {
    */
   selected?: SuggestionValue<T>;
   /**
-   * @deprecated Use `selected` instead
-   */
-  value?: SuggestionValue<T>; // Kept for backwards compatibility
-  /**
    * Default selected item when uncontrolled
    */
   defaultSelected?: SuggestionValue<T>;
-  /**
-   * @deprecated Use `defaultSelected` instead
-   */
-  defaultValue?: SuggestionValue<T>; // Kept for backwards compatibility
   /**
    * Callback when selected items changes
    */
   onSelectedChange?: (
     value: T['multiple'] extends true ? Item[] : Item | undefined,
   ) => void;
-  /**
-   * @deprecated Use `onSelectedChange` instead
-   */
-  onValueChange?: (
-    value: T['multiple'] extends true ? Item[] : Item | undefined,
-  ) => void; // Kept for backwards compatibility
 };
 
 export type SuggestionSingleProps = SuggestionBaseProps &
@@ -188,29 +174,18 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
       children,
       className,
       creatable = false,
-      defaultSelected: _defaultSelected,
-      defaultValue,
+      defaultSelected,
       filter = true,
       multiple = false,
       name,
       onBeforeMatch,
-      onSelectedChange: _onSelectedChange,
-      onValueChange,
+      onSelectedChange,
       renderSelected = ({ label }) => label,
-      selected: _selected,
-      value,
+      selected,
       ...rest
     },
     ref,
   ) {
-    // For backwards compatibility:
-    const selected = _selected ?? value;
-    const defaultSelected = _defaultSelected ?? defaultValue;
-    const onSelectedChange = _onSelectedChange ?? onValueChange;
-    if (value) deprecate('value', 'selected');
-    if (defaultValue) deprecate('defaultValue', 'defaultSelected');
-    if (onValueChange) deprecate('onValueChange', 'onSelectedChange');
-
     const uComboboxRef = useRef<UHTMLComboboxElement>(null);
     const genId = useId();
     const selectId = rest.id ? `${rest.id}-select` : genId;
