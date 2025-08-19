@@ -1,18 +1,15 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { cwd } from 'node:process';
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import { ContentContainer } from '@internal/components';
 import cl from 'clsx/lite';
-import { type ComponentType, useEffect } from 'react';
+import type { ComponentType } from 'react';
 import { LiveComponent } from '~/_components/live-component/live-components';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import type { Route } from './+types/component';
 import classes from './component.module.css';
-
-const dirname = cwd();
 
 export const loader = async ({ params }: Route.LoaderArgs) => {
   const { component } = params;
@@ -21,7 +18,7 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
   }
 
-  const basePath = join(dirname, './app/content');
+  const basePath = join('app', 'content');
   const componentDir = join(basePath, 'components', component);
 
   // Extract exported story functions from *.stories.tsx
