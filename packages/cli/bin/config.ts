@@ -1,6 +1,6 @@
 import path from 'node:path';
 import type { Command, OptionValues } from '@commander-js/extra-typings';
-import chalk from 'chalk';
+import pc from 'picocolors';
 import * as R from 'ramda';
 import {
   type BuildConfigSchema,
@@ -23,12 +23,12 @@ export async function readConfigFile(configPath: string, allowFileNotFound = tru
     if (allowFileNotFound) {
       return '';
     }
-    console.error(chalk.redBright(`Could not read config file at ${chalk.blue(resolvedPath)}`));
+    console.error(pc.redBright(`Could not read config file at ${pc.blue(resolvedPath)}`));
     throw err;
   }
 
   if (configFile) {
-    console.log(`Found config file: ${chalk.green(resolvedPath)}`);
+    console.log(`Found config file: ${pc.green(resolvedPath)}`);
   }
 
   return configFile;
@@ -50,7 +50,7 @@ export async function parseCreateConfig(
     (x) => new Set([...R.keys(x.colors.main), ...R.keys(x.colors.support)]),
   );
   if (!R.all(R.equals(R.__, themeColors[0]), themeColors)) {
-    console.error(chalk.redBright(`In config, all themes must have the same custom color names, but we found:`));
+    console.error(pc.redBright(`In config, all themes must have the same custom color names, but we found:`));
     const themeNames = R.keys(configParsed.themes ?? {});
     themeColors.forEach((colors, index) => {
       const colorNames = Array.from(colors);

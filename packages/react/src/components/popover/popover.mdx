@@ -6,13 +6,13 @@ import * as PopoverStories from './popover.stories.tsx';
 <Meta of={PopoverStories} />
 
 # Popover
-`Popover` vises over andre elementer i grensesnittet og er koblet til et spesifikt element. Den brukes til å vise tilleggsinformasjon, interaktive elementer eller korte forklaringer uten å navigere bort fra siden. `Popover` kan brukes som en utvidet løsning når `tooltip` ikke strekker til.
+`Popover` vises over andre elementer i grensesnittet og er koblet til et spesifikt element. Den brukes til å vise tilleggsinformasjon, interaktive elementer eller korte forklaringer uten å navigere bort fra siden. `Popover` kan brukes som en utvidet løsning når [`Tooltip`](/docs/komponenter-tooltip--docs) ikke strekker til.
 
 
 <Primary />
 <Controls />
 
-## Slik bruker du `Popover`
+## Bruk
 
 ```tsx
 import { Popover } from '@digdir/designsystemet-react';
@@ -28,7 +28,16 @@ import { Popover } from '@digdir/designsystemet-react';
 <Popover id="my-popover">Content</Popover>
 ```
 
-## Eksempler
+### React og `popovertarget`
+Når du bruker `Popover` uten `Popover.TriggerContext`, kobler du selv sammen utløseren og `Popover`.
+Da brukes `popovertarget` i små bokstaver, slik at alle versjoner av React korrekt gjengir attributtet.
+Når du bruker `@digdir/designsystemet-react` utvider vi `@types/react-dom` til å akseptere dette.
+
+### Polyfill
+
+`Popover` bruker [popover (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover). Dette apiet er klassifisert som [Baseline: Newly available (mozilla.org)](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) fra april 2024, da Firefox som siste nettleser la det til. I noen tilfeller kan en oppleve at brukere av ulike grunner er låst til eldre nettleserversjoner, og da kan det være aktuelt å legge til en [Popover-Polyfill (github.com)](https://github.com/oddbird/popover-polyfill) for å sikre at `Popover` fungerer for alle.
+
+## Kodeeksempler
 ### Interaktive elementer i en popover
 
 Bruk `popover` for å inkludere interaksjoner som knapper eller lenker. Et typisk brukstilfelle er å be brukeren bekrefte en handling, som sletting av en rad i en tabell.
@@ -55,45 +64,29 @@ Dette er nyttig dersom du har innhold som skal lukke `popover` når du klikker p
 
 <Canvas of={PopoverStories.Controlled} />
 
-### Auto Plassering
+## Retningslinjer
+`Popover` brukes for å vise mer detaljert eller interaktiv tilleggsinformasjon uten å ta brukeren bort fra konteksten. Den åpnes ved et bevisst brukerklikk og kan inneholde både tekst, lenker og enkle skjemaelementer. Innholdet bør være kort og relevant, og ikke kritisk for å fullføre oppgaven.
 
-Standard oppførsel er at `popover` alltid vil prøve å være i viewporten, men ankret til triggeren.
-`popover` har en `autoPlacement` prop som kan brukes til å slå av automatisk plassering. Standardverdien er `true`.
+**Passer til:** 
+* Utfyllende forklaringer som krever mer plass enn en kort [`Tooltip`](/docs/komponenter-tooltip--docs), f.eks. definisjoner eller utdypende instruksjoner.
+* Kontekstspesifikk hjelp som brukeren kan velge å åpne/lukke uten å forlate siden.
+* Visning av tilleggsinformasjon som ikke er kritisk for å fullføre oppgaven, men som kan være nyttig for enkelte brukere.
 
+**Passer ikke til:**
+* Å beskrive et symbol eller tastatursnartvei, bruk heller [`Tooltip`](/docs/komponenter-tooltip--docs).
+* Navigasjon eller valg av alternativer (bruk [`Dropdown`](/docs/komponenter-dropdown--docs) i stedet)
+* Å vise innhold ved `hover`.
 
-## Retningslinjer for når du skal bruke popover
+### Plassering
 
-`Popover` kan plasseres etter ønske. Hvis `popover` blir for stor for den valgte retningen, justerer den automatisk plasseringen. Hvis du vil skru av auto plassering bruker du `autoPlacement={false}` .
+`Popover` plasseres etter ønske, men holder seg automatisk innenfor det synlige området i nettleseren. Denne oppførselen kan deaktiveres med `autoPlacement`.
 
-Passer til 
-
-* å forklare ord eller konsepter som trenger mer enn en kort definisjon
-* å gi mer omfattende informasjon (maksimalt ett avsnitt) 
-* når interaktivitet kreves, som lenker, knapper eller valg
-
-Passer ikke til å
-
-* beskrive et symbol – bruk heller `tooltip`
-* vise mye innhold 
-
-## Tekst i komponenten
-
+## Tekst 
 Unngå lange tekster og kompliserte forklaringer. I noen tilfeller er det kanskje bedre å lenke til en annen side med utdypende informasjon om temaet.
-
 
 ## Tilgjengelighet
 
-Det er innebygd tilgjengelighet i [Popover APIet](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) i henhold til åpne/lukket tilstand og tastatur navigasjon.
-
-## React og `popovertarget`
-Når du bruker `popover` uten `Popover.TriggerContext`, kobler du selv sammen utløseren og `popover`.
-Da brukes `popovertarget` i små bokstaver, slik at alle versjoner av React korrekt gjengir attributtet.
-Når du bruker `@digdir/designsystemet-react` utvider vi `@types/react-dom` til å akseptere dette.
-
-## Polyfill
-
-`Popover` bruker [popover](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover). Dette apiet er klassifisert som [Baseline: Newly available](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) fra april 2024, da Firefox som siste nettleser la det til. I noen tilfeller kan en oppleve at brukere av ulike grunner er låst til eldre nettleserversjoner, og da kan det være aktuelt å legge til en polyfill for å sikre at `Popover` fungerer for alle.
-* [Popover-Polyfill](https://github.com/oddbird/popover-polyfill)
+Det er innebygd tilgjengelighet i [Popover APIet (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) i henhold til åpne/lukket tilstand og tastatur navigasjon.
 
 
 ## CSS Variabler

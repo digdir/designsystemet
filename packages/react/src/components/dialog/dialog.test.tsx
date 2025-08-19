@@ -127,4 +127,26 @@ describe('Dialog', () => {
 
     expect(onClose).toHaveBeenCalledTimes(1);
   });
+
+  it('a custom data-command=close button should close the dialog', async () => {
+    const onClose = vi.fn();
+
+    const { user } = await render({
+      children: (
+        <Dialog.Block>
+          <button data-command='close' data-testid='closebutton'>
+            Close
+          </button>
+        </Dialog.Block>
+      ),
+      onClose,
+      closeButton: false,
+    });
+
+    user.click(screen.getByRole('button', { name: OPEN_Dialog }));
+    await act(
+      async () => await userEvent.click(screen.getByTestId('closebutton')),
+    );
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
 });

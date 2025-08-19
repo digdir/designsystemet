@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import pc from 'picocolors';
 import * as R from 'ramda';
 import pkg from '../../../../package.json' with { type: 'json' };
 import type { OutputFile } from '../../types.js';
@@ -70,10 +70,10 @@ export const createThemeCSSFiles = ({
     if (sortIndex === -1) {
       // Ensure file names that don't have a specified sort order appear last
       console.error(
-        chalk.yellow('WARNING: CSS section does not have a defined sort order:', filePath.replace('.css', '')),
+        pc.yellow(`WARNING: CSS section does not have a defined sort order: ${filePath.replace('.css', '')}`),
       );
       console.log(
-        chalk.dim(
+        pc.dim(
           `
 The section will currently be added to the end of the entry file, but the exact
 order may change due to nondeterminism.`.trim(),

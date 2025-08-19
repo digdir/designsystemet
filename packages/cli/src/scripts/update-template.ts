@@ -1,5 +1,5 @@
 import path from 'node:path';
-import chalk from 'chalk';
+import pc from 'picocolors';
 import * as R from 'ramda';
 import semanticColorJson from '../../../../internal/design-tokens/semantic/color.json' with { type: 'json' };
 import accentColorCategoryJson from '../../../../internal/design-tokens/semantic/modes/main-color/accent.json' with {
@@ -98,7 +98,7 @@ export const updateTemplates = async () => {
     JSON.stringify(themeColorTemplate, null, 2).replaceAll('digdir.accent', '<theme>.<color>'),
   );
 
-  console.log(chalk.green('Templates updated'));
+  console.log(pc.green('Templates updated'));
 };
 
 await updateTemplates();
