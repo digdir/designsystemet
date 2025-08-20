@@ -1,5 +1,29 @@
 # Change Log
 
+## 1.2.0
+
+### Patch Changes
+
+- **Field**: Don't check for hidden elements ([#3950](https://github.com/digdir/designsystemet/pull/3950))
+
+- **Dialog**: Add `data-command="close"`, which you can use to close the modal. ([#3959](https://github.com/digdir/designsystemet/pull/3959))
+  - This removes use of `<form>` on our close button
+
+- **Dialog**: Deprecate `asChild`. Should always be a `<dialog>` element. Will be removed in the next major version ([#3940](https://github.com/digdir/designsystemet/pull/3940))
+
+- **Tabs.Panel**: Add `aria-labelledby` to associated button ([#3939](https://github.com/digdir/designsystemet/pull/3939))
+
+- **Tabs**: Don't conditionally render `TabPanel`, use `hidden` instead ([#3936](https://github.com/digdir/designsystemet/pull/3936))
+  - If any of your `TabPanel` components have heavy code, consider conditional rendering to improve performance
+
+- Update dependency @u-elements/u-details to ^0.1.2 ([#3955](https://github.com/digdir/designsystemet/pull/3955))
+
+- Update npm non-major dependencies ([#3923](https://github.com/digdir/designsystemet/pull/3923))
+
+- **Skeleton**: Deprecate `characters` prop, which never had any effect. ([#3961](https://github.com/digdir/designsystemet/pull/3961))
+
+- **Tooltip**: Close on click outside, applicable for mobile devices ([#3957](https://github.com/digdir/designsystemet/pull/3957))
+
 ## 1.1.10
 
 ### Patch Changes

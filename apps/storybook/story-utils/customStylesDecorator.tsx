@@ -1,4 +1,5 @@
 import type { Decorator } from '@storybook/react-vite';
+import { useEffect } from 'react';
 
 /**
  * This decorator is used to customize the style of the root story element.
@@ -37,9 +38,26 @@ import type { Decorator } from '@storybook/react-vite';
 export const customStylesDecorator: Decorator = (Story, ctx) => {
   const { docs, story, ...style } = ctx.parameters.customStyles ?? {};
 
+  useEffect(() => {
+    const stories = document.body.getElementsByClassName('docs-story');
+    for (const story of stories) {
+      story.setAttribute(
+        'data-color-scheme',
+        ctx.globals.colorScheme || 'auto',
+      );
+    }
+
+    const centeredStories = document.getElementsByClassName('sb-main-centered');
+    for (const story of centeredStories) {
+      story.setAttribute(
+        'data-color-scheme',
+        ctx.globals.colorScheme || 'auto',
+      );
+    }
+  }, [ctx.globals.colorScheme]);
+
   return (
     <div
-      data-color-scheme={ctx.globals.colorScheme}
       data-storybook-decorator
       style={{
         boxSizing: 'border-box',
