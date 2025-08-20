@@ -2,12 +2,13 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { join } from 'node:path';
 import { Alert, Heading, Paragraph } from '@digdir/designsystemet-react';
-import { ContentContainer } from '@internal/components';
 import cl from 'clsx/lite';
 import type { ComponentType } from 'react';
 import { CssVariables } from '~/_components/css-variables/css-variables';
+import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { LiveComponent } from '~/_components/live-component/live-components';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
+import { TableOfContents } from '~/_components/table-of-contents/toc';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import type { Route } from './+types/component';
@@ -109,23 +110,11 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
     }
   })();
 
-  let mdxCode: string | undefined;
-  let frontmatter: Record<string, unknown> | undefined;
-  try {
-    const mdxSource = getFileFromContentDir(
-      join('components', component, lang, `${component}.mdx`),
-    );
+  const mdxSource = getFileFromContentDir(
+    join('components', component, lang, `${component}.mdx`),
+  );
 
-    if (mdxSource) {
-      const result = await generateFromMdx(mdxSource);
-      mdxCode = result.code;
-      if (result.frontmatter && typeof result.frontmatter === 'object') {
-        frontmatter = result.frontmatter as Record<string, unknown>;
-      }
-    }
-  } catch {
-    // ignore MDX errors and fall back to default rendering
-  }
+  const result = await generateFromMdx(mdxSource);
 
   // Resolve raw CSS for this component from @digdir/designsystemet-css
 
@@ -149,15 +138,16 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
   return {
     component,
     stories: storyEntries,
-    mdxCode,
-    frontmatter,
+    mdxCode: result.code,
+    frontmatter: result.frontmatter as Record<string, unknown>,
     cssSource,
     cssVars,
+    toc: result.toc,
   };
 };
 
 export default function Components({
-  loaderData: { stories, mdxCode, frontmatter, component, cssVars },
+  loaderData: { stories, mdxCode, frontmatter, component, cssVars, toc },
 }: Route.ComponentProps) {
   const Story = ({ story }: { story: string }) => {
     const foundStory = stories.find((s) => s.name === story);
@@ -179,31 +169,40 @@ export default function Components({
       : undefined;
 
   return (
-    <div style={{ paddingBlock: 'var(--ds-size-8)' }}>
-      <ContentContainer>
-        <div className={cl(classes.content, 'u-rich-text')}>
-          <Heading data-size='xl' level={1}>
-            {title}
+    <>
+      <div className={classes.header}>
+        <div className={classes.headerText}>
+          <Heading data-size='lg' level={1}>
+            {frontmatter.title}
           </Heading>
-          {desc ? <Paragraph>{desc}</Paragraph> : null}
-          {mdxCode ? (
-            <MDXComponents
-              code={mdxCode}
-              components={{
-                Story: Story as unknown as ComponentType<unknown>,
-              }}
-            />
-          ) : (
-            stories.map((story) => (
-              <LiveComponent
-                key={story.name}
-                code={`${story.code.trim()}\nrender(<${story.name} />)`}
-              />
-            ))
-          )}
-          {cssVars ? <CssVariables vars={cssVars} /> : null}
         </div>
-      </ContentContainer>
-    </div>
+      </div>
+      <TableOfContents
+        className={classes.tableOfContents}
+        title={frontmatter.title || ''}
+        items={toc}
+      />
+
+      <div className={cl(classes.content, 'u-rich-text')}>
+        {desc ? <Paragraph>{desc}</Paragraph> : null}
+        {mdxCode ? (
+          <MDXComponents
+            code={mdxCode}
+            components={{
+              Story: Story as unknown as ComponentType<unknown>,
+            }}
+          />
+        ) : (
+          stories.map((story) => (
+            <LiveComponent
+              key={story.name}
+              code={`${story.code.trim()}\nrender(<${story.name} />)`}
+            />
+          ))
+        )}
+        {cssVars ? <CssVariables vars={cssVars} /> : null}
+        <EditPageOnGithub />
+      </div>
+    </>
   );
 }
