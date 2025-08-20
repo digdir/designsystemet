@@ -18,7 +18,7 @@ export const LiveComponent = ({ code }: LiveComponentProps) => {
   const [showEditor, setShowEditor] = useState(false);
   return (
     <LiveProvider code={code} scope={scopes} noInline theme={themes.vsDark}>
-      <div className={classes.preview}>
+      <div className={classes.preview} data-color='accent'>
         <LivePreview />
         <ds.Button
           data-color='neutral'
