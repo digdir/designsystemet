@@ -16,7 +16,7 @@ jobs:
     outputs:
       published: ${{ steps.changesets.outputs.published }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ./.github/actions/gh-setup
       - name: Store release version for changeset
         id: release_version
