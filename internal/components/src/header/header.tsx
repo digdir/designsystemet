@@ -83,9 +83,23 @@ const Header = ({
 
   const [theme, setTheme] = useState('light');
 
-  const handleThemeChange = (newTheme: 'dark' | 'light') => {
+  const handleThemeChange = (
+    newTheme: 'dark' | 'light',
+    skipTransition = false,
+  ) => {
     setTheme(newTheme);
-    document.documentElement.setAttribute('data-color-scheme', newTheme);
+
+    if (
+      !document.startViewTransition ||
+      window.matchMedia('(prefers-reduced-motion)').matches ||
+      skipTransition
+    ) {
+      document.documentElement.setAttribute('data-color-scheme', newTheme);
+      return;
+    }
+    document.startViewTransition(() => {
+      document.documentElement.setAttribute('data-color-scheme', newTheme);
+    });
   };
 
   useEffect(() => {
@@ -95,7 +109,7 @@ const Header = ({
     const userPrefersDark = userPreference.matches;
 
     // set theme based on user preference
-    handleThemeChange(userPrefersDark ? 'dark' : 'light');
+    handleThemeChange(userPrefersDark ? 'dark' : 'light', true);
   }, []);
 
   useEffect(() => {
@@ -178,7 +192,6 @@ const Header = ({
                     onClick={() => setOpen(false)}
                     className={cl(
                       pathname?.includes(item.href) && classes.active,
-                      classes.link,
                       'ds-focus',
                     )}
                   >

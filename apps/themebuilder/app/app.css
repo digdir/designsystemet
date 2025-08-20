@@ -1,5 +1,27 @@
 @layer normalize, ds;
 
+@layer view-transitions {
+  @property --circle-wipe-progress {
+    inherits: false;
+    initial-value: 0vmax;
+    syntax: '<length>';
+  }
+  @keyframes --circle-wipe {
+    to {
+      --circle-wipe-progress: 150vmax;
+    }
+  }
+  /* biome-ignore lint/correctness/noUnknownTypeSelector: new feature */
+  ::view-transition-old(root) {
+    animation: none;
+  }
+  /* biome-ignore lint/correctness/noUnknownTypeSelector: new feature */
+  &::view-transition-new(root) {
+    mask-image: radial-gradient(circle var(--circle-wipe-progress) at center, black 70%, transparent 100%);
+    animation: 0.8s linear both --circle-wipe;
+  }
+}
+
 :root {
   --grid-max-width: 1400px;
   --grid-padding: clamp(1rem, calc(0.27rem + 3.64vw), 3rem);
@@ -7,6 +29,7 @@
   --page-spacing-top: var(--ds-size-14);
   --page-spacing-bottom: var(--ds-size-14);
   --media-max-width: 800px;
+  scrollbar-gutter: stable; /*prevent layout shift when opening dialog (on windows)*/
 }
 
 body {
