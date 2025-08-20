@@ -7,14 +7,15 @@ import * as ToggleGroupStories from './toggle-group.stories';
 
 # ToggleGroup
 
-Med `ToggleGroup` kan brukerne velge alternativer som påvirker innholdet på en side. Komponenten består av en gruppe knapper som henger sammen, der kun én knapp er mulig å velge om gangen.
+`ToggleGroup` kan brukast til å samle relaterte alternativ. Komponenten består av ei gruppe knappar som heng saman, der berre éin knapp er mogleg å velje om gongen.
+
 
 <Primary />
 <Controls />
 
 ## Bruk
+Plasser helst innhaldet du skal styre rett etter `ToggleGroup` i DOM-en. Viss ikkje, bør du bruke `aria-controls` på `ToggleGroup` for å knyte komponenten til den containeren for innhaldet som endrar seg.
 
-Plasser helst innholdet du skal styre rett etter `ToggleGroup` i DOM-en. Hvis ikke, bør du bruke `aria-controls` på `ToggleGroup` for å knytte komponenten til den containeren for innholdet som endrer seg.
 
 ```tsx
 import { ToggleGroup } from '@digdir/designsystemet-react';
@@ -47,6 +48,7 @@ Bruk `value` på `ToggleGroup.Item` og `ToggleGroup` for å kontrollere verdiene
 
 
 ## Retningslinjer
+Det er ikkje alltid heilt rett fram å avgjere når du bør bruke ein `ToggleGroup` i staden for eksempelvis `Tabs` eller `Radio`. Valet kjem ofte an på situasjonen og korleis grensesnittet elles er bygd opp. Som ei tommelfingerregel bør `ToggleGroup` berre brukast når valet har ein direkte og synleg effekt i grensesnittet, til dømes at innhaldet på sida eller eit element vert oppdatert med ein gong basert på kva brukaren vel.
 
 Det bør være minst to, men ikke flere enn fem valg i en `ToggleGroup`. Trenger du flere valg enn fem, bruker du [`Combobox`](/docs/komponenter-combobox--docs).
 
@@ -57,8 +59,7 @@ Det bør være minst to, men ikke flere enn fem valg i en `ToggleGroup`. Trenger
 - styre hvilke felter i et skjema som skal vises
 
 **Passer ikke til å**
-- bruke som skjemaelement – bruk heller [`Radio`](/docs/komponenter-radio--docs)
-- navigere – bruk heller [`Tabs`](/docs/komponenter-tabs--docs) hvis det dreier seg om panelnavigasjon
+- bruke som radioknapp – bruk heller [`Radio`](/docs/komponenter-radio--docs)
 
 ### Gi nok plass til komponenten
 
