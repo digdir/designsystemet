@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import pc from 'picocolors';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
 import type { TransformedToken } from 'style-dictionary/types';
@@ -121,8 +121,8 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
   const UNSAFE_DEFAULT_COLOR = process.env.UNSAFE_DEFAULT_COLOR ?? '';
   if (UNSAFE_DEFAULT_COLOR) {
     console.warn(
-      chalk.yellow(
-        `\n⚠️ UNSAFE_DEFAULT_COLOR is set to ${chalk.blue(UNSAFE_DEFAULT_COLOR)}. This will override the default color.`,
+      pc.yellow(
+        `\n⚠️ UNSAFE_DEFAULT_COLOR is set to ${pc.blue(UNSAFE_DEFAULT_COLOR)}. This will override the default color.`,
       ),
     );
   }
@@ -130,8 +130,8 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
   const UNSAFE_COLOR_GROUPS = Array.from(process.env.UNSAFE_COLOR_GROUPS?.split(',') ?? []);
   if (UNSAFE_COLOR_GROUPS.length > 0) {
     console.warn(
-      chalk.yellow(
-        `\n⚠️ UNSAFE_COLOR_GROUPS is set to ${chalk.blue(`[${UNSAFE_COLOR_GROUPS.join(', ')}]`)}. This will override the default color groups.`,
+      pc.yellow(
+        `\n⚠️ UNSAFE_COLOR_GROUPS is set to ${pc.blue(`[${UNSAFE_COLOR_GROUPS.join(', ')}]`)}. This will override the default color groups.`,
       ),
     );
   }
@@ -152,7 +152,7 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
   }
 
   if (buildOptions.defaultColor) {
-    console.log(`\n🎨 Using ${chalk.blue(buildOptions.defaultColor)} as default color`);
+    console.log(`\n🎨 Using ${pc.blue(buildOptions.defaultColor)} as default color`);
   }
 
   const buildAndSdConfigs = R.map((buildConfig: BuildConfig) => {
@@ -202,7 +202,7 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
       }
 
       if (sdConfigs.length > 0) {
-        console.log(`\n🍱 Building ${chalk.green(buildConfig.name ?? buildName)}`);
+        console.log(`\n🍱 Building ${pc.green(buildConfig.name ?? buildName)}`);
 
         const results = await Promise.all(
           sdConfigs.map(async (sdConfig) => {

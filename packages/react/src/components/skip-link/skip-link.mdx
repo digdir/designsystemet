@@ -24,7 +24,7 @@ import { SkipLink } from '@digdir/designsystemet-react';
 </main>
 ```
 
-## Retningslinjer for `SkipLink`
+## Retningslinjer
 
 Noen brukere navigerer med Tab på tastaturet når de skal flytte markøren forbi lenker eller skjemalementer på en nettside. Når vi inkluderer en snarvei-komponent på siden, får disse brukerne muligheten til å gå forbi alle navigeringslenkene øverst på siden, og kan gå direkte til hovedinnholdet.
 
@@ -36,7 +36,7 @@ Vi plasserer snarveien som det første fokuserbare elementet. Hvis siden har et 
 
 Snarveien bør skille seg tydelig ut fra resten av innholdet, slik at folk som kan se, men bruker tastaturet til å navigere, kjenner igjen dette element før de flytter videre.
 
-## Tekst i komponenten
+## Tekst
 
 Pass på at teksten tydelig sier hva snarveien skal brukes til. Bruk en enkel tekst, som for eksempel «Gå direkte til innholdet» eller «Hopp direkte til innholdet».
 
@@ -51,6 +51,11 @@ Vær oppmerksom på at noen automatiske tester for tilgjengelighet kan varsle om
 
 Pass på at snarveier oppfører seg forutsigbart. En snarvei med teksten «Gå direkte til innholdet» skal flytte brukerens fokus til starten på innholdet, ikke til starten av første avsnitt under overskriften.
 
+### Tastaturnavigasjon
+* <kbd>Enter</kbd> følger lenken og hopper til mål
+
 ## CSS Variabler
 
 <CssVariables css={css} />
+
+

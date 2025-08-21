@@ -1,5 +1,30 @@
 # Change Log
 
+## 1.2.0
+
+### Minor Changes
+
+- **Badge**: Allow adjusting the position of the badge using css variables `--dsc-badge-{top,bottom,left,right}` ([#3965](https://github.com/digdir/designsystemet/pull/3965))
+
+- **Link**: Automatically add recommended spacing to icons (svg or img), when there is also a `<span>` present. ([#3942](https://github.com/digdir/designsystemet/pull/3942))
+  - `<Link><Icon />Text</Link>` will not get spacing
+  - `<Link><Icon /> Text</Link>` will get a leading underlined space character between icon and text, which looks bad
+  - `<Link><Icon /><span>Text</span></Link>` will get recommended spacing
+
+### Patch Changes
+
+- **Dialog**: Rework close button ([#3959](https://github.com/digdir/designsystemet/pull/3959))
+  - An empty button with `data-command="close"` will get an "X" icon
+  - If `button[data-command="close"]` is the first child of `.ds-dialog`, it will float to the top right
+
+## 1.1.10
+
+### Patch Changes
+
+- **Details:** Using `margin` instead of `padding` to style children of `Details`, to allow direct children such as `Button` ([#3883](https://github.com/digdir/designsystemet/pull/3883))
+
+- Updated non-major dependencies ([#3890](https://github.com/digdir/designsystemet/pull/3890))
+
 ## 1.1.9
 
 ## 1.1.8
