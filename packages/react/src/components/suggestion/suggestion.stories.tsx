@@ -13,12 +13,11 @@ import {
 } from '../';
 import {
   EXPERIMENTAL_Suggestion as Suggestion,
+  type SuggestionItem,
+  type SuggestionMultipleProps,
   type SuggestionProps,
+  type SuggestionSingleProps,
 } from './';
-import type {
-  SuggestionMultipleProps,
-  SuggestionSingleProps,
-} from './suggestion';
 
 export default {
   title: 'Komponenter/Suggestion',
@@ -243,9 +242,7 @@ ControlledMultiple.play = async ({ canvasElement, step }) => {
 export const ControlledIndependentLabelValue: StoryFn<SuggestionSingleProps> = (
   args,
 ) => {
-  const [item, setItem] = useState<
-    { label: string; value: string } | undefined
-  >(DATA_PEOPLE[0]);
+  const [item, setItem] = useState<SuggestionItem | undefined>(DATA_PEOPLE[0]);
 
   return (
     <>
