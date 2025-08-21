@@ -136,7 +136,7 @@ export type SuggestionMultipleProps = SuggestionBaseProps &
 
 export type SuggestionProps = SuggestionSingleProps | SuggestionMultipleProps;
 
-export type SuggestionSelected =
+type SuggestionSelected =
   | string
   | SuggestionItem
   | Array<string | SuggestionItem>;
