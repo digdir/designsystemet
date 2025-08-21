@@ -1,6 +1,7 @@
 .preview {
   background-color: var(--ds-color-neutral-background-default);
   padding: var(--ds-size-8);
+  padding-bottom: var(--ds-size-12);
   border-top-left-radius: var(--ds-border-radius-md);
   border-top-right-radius: var(--ds-border-radius-md);
   border: 2px solid var(--ds-color-neutral-border-subtle);

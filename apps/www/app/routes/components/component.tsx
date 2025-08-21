@@ -147,26 +147,17 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
 };
 
 export default function Components({
-  loaderData: { stories, mdxCode, frontmatter, component, cssVars, toc },
+  loaderData: { stories, mdxCode, frontmatter, cssVars, toc },
 }: Route.ComponentProps) {
   const Story = ({ story }: { story: string }) => {
     const foundStory = stories.find((s) => s.name === story);
     if (!foundStory) return <Alert>Story not found: {story}</Alert>;
     return (
       <LiveComponent
-        code={`${foundStory.code}\n render(<${foundStory.name} />)`}
+        code={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
       />
     );
   };
-
-  const title =
-    typeof frontmatter?.title === 'string' && frontmatter.title
-      ? (frontmatter.title as string)
-      : component;
-  const desc =
-    typeof frontmatter?.description === 'string' && frontmatter.description
-      ? (frontmatter.description as string)
-      : undefined;
 
   return (
     <>
@@ -184,7 +175,6 @@ export default function Components({
       />
 
       <div className={cl(classes.content, 'u-rich-text')}>
-        {desc ? <Paragraph>{desc}</Paragraph> : null}
         {mdxCode ? (
           <MDXComponents
             code={mdxCode}
