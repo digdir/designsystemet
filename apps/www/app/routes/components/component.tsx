@@ -1,7 +1,7 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { join } from 'node:path';
-import { Alert, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Alert, Heading } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import type { ComponentType } from 'react';
 import { CssVariables } from '~/_components/css-variables/css-variables';
@@ -167,6 +167,12 @@ export default function Components({
             {frontmatter.title}
           </Heading>
         </div>
+        <img
+          src={'/img/component-previews/' + frontmatter.image}
+          alt={frontmatter.title}
+          className={classes.image}
+          aria-hidden='true'
+        />
       </div>
       <TableOfContents
         className={classes.tableOfContents}

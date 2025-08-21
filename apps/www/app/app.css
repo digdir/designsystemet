@@ -105,6 +105,11 @@ body {
       }
     }
 
+    /* reset non-direct child targets in stories */
+    [data-live] p {
+      margin-bottom: initial;
+    }
+
     & > h1,
     & > h2,
     & > h3,

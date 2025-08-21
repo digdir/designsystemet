@@ -2,6 +2,7 @@ import { ContentContainer } from '@internal/components';
 import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router';
 import { Sidebar } from '~/_components/sidebar/sidebar';
+import { getFoldersInContentDir } from '~/_utils/files.server';
 import type { Route } from './+types/layout';
 import classes from './layout.module.css';
 
@@ -15,12 +16,31 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     });
   }
 
+  /* read all folders in content/components */
+  const folders = await getFoldersInContentDir('/components');
+  const cats: {
+    [key: string]: {
+      title: string;
+      url: string;
+    }[];
+  } = {
+    components: [],
+  };
+
+  folders.forEach((folder) => {
+    cats.components.push({
+      title: folder,
+      url: `/${lang}/components/${folder}`,
+    });
+  });
+
   return {
     lang,
+    cats,
   };
 };
 
-export default function Layout({ loaderData }: Route.ComponentProps) {
+export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
   const { t } = useTranslation();
 
   return (
@@ -28,7 +48,12 @@ export default function Layout({ loaderData }: Route.ComponentProps) {
       className={classes['sidebar-container']}
       data-color='neutral'
     >
-      <Sidebar cats={{}} title={'components'} className={classes.sidebar} />
+      <Sidebar
+        cats={cats}
+        title={'components'}
+        className={classes.sidebar}
+        hideCatTitle
+      />
       <div className={classes.content}>
         <Outlet />
       </div>
