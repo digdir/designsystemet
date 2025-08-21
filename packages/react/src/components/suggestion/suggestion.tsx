@@ -15,7 +15,8 @@ import cl from 'clsx/lite';
 import { useMergeRefs } from '../../utilities/hooks';
 import { Chip } from '../chip';
 
-type Item = { label: string; value: string };
+export type SuggestionItem = { label: string; value: string };
+
 type EventBeforeMatch = Omit<
   CustomEvent<HTMLOptionElement | undefined>,
   'currentTarget'
@@ -62,8 +63,8 @@ export const SuggestionContext = createContext<SuggestionContextType>({
 
 type SuggestionValue<T extends { multiple: boolean }> =
   T['multiple'] extends true
-    ? Array<string | Partial<Item>>
-    : string | Partial<Item>;
+    ? Array<string | SuggestionItem>
+    : string | SuggestionItem;
 
 type SuggestionBaseProps = {
   /**
@@ -108,6 +109,8 @@ type SuggestionValueProps<T extends { multiple: boolean }> = {
   /**
    * The selected item of the Suggestion.
    *
+   * If `label` and `value` are the same, each item can be a `string`. Otherwise, each item must be a `SuggestionItem`.
+   *
    * Using this makes the component controlled and it must be used in combination with `onSelectedChange`.
    */
   selected?: SuggestionValue<T>;
@@ -119,7 +122,9 @@ type SuggestionValueProps<T extends { multiple: boolean }> = {
    * Callback when selected items changes
    */
   onSelectedChange?: (
-    value: T['multiple'] extends true ? Item[] : Item | undefined,
+    value: T['multiple'] extends true
+      ? SuggestionItem[]
+      : SuggestionItem | undefined,
   ) => void;
 };
 
@@ -131,34 +136,28 @@ export type SuggestionMultipleProps = SuggestionBaseProps &
 
 export type SuggestionProps = SuggestionSingleProps | SuggestionMultipleProps;
 
-export type SuggestionSelected = string | Item | Array<string | Partial<Item>>; // Kept for backwards compatibility
-
-const sanitizePartialItem = (item: Partial<Item>): Item => ({
-  label: item.label || item.value || '',
-  value: item.value || '',
-});
+export type SuggestionSelected =
+  | string
+  | SuggestionItem
+  | Array<string | SuggestionItem>;
 
 const text = (el: Element): string => el.textContent?.trim() || '';
-const sanitizeItems = (
-  values: Array<string | Partial<Item>> | string | Partial<Item> = [],
-): Item[] =>
+const sanitizeItems = (values: SuggestionSelected = []): SuggestionItem[] =>
   (typeof values === 'string'
     ? [{ label: values, value: values }]
     : !Array.isArray(values)
-      ? [sanitizePartialItem(values)]
-      : values.map((value: string | Partial<Item>) =>
-          typeof value === 'string'
-            ? { label: value, value }
-            : sanitizePartialItem(value),
+      ? [values]
+      : values.map((value) =>
+          typeof value === 'string' ? { label: value, value } : value,
         )
-  ).filter((x: Item) => !!x.label);
+  ).filter((x: SuggestionItem) => !!x.label);
 
 const nextItems = (
   data: HTMLDataElement,
-  prev?: Array<string | Partial<Item>> | string,
+  prev?: SuggestionSelected,
   multiple?: boolean,
 ) => {
-  const item: Item = { label: text(data), value: data.value };
+  const item: SuggestionItem = { label: text(data), value: data.value };
 
   if (!multiple) return data.isConnected ? undefined : item;
   return data.isConnected
@@ -193,7 +192,7 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
     const isControlled = selected !== undefined;
     const mergedRefs = useMergeRefs([ref, uComboboxRef]);
     const [isEmpty, setIsEmpty] = useState(false);
-    const [defaultItems, setDefaultItems] = useState<Item[]>(
+    const [defaultItems, setDefaultItems] = useState<SuggestionItem[]>(
       sanitizeItems(defaultSelected),
     );
     const selectedItems = selected ? sanitizeItems(selected) : defaultItems;
@@ -210,11 +209,13 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
 
         if (isControlled)
           onSelectedChange?.(
-            nextItems(data, selectedItems, multiple) as Item & Item[],
+            nextItems(data, selectedItems, multiple) as SuggestionItem &
+              SuggestionItem[],
           );
         else
           setDefaultItems(
-            nextItems(data, selectedItems, multiple) as Item & Item[],
+            nextItems(data, selectedItems, multiple) as SuggestionItem &
+              SuggestionItem[],
           );
       };
 

@@ -115,6 +115,7 @@ export {
   SuggestionClear as EXPERIMENTAL_SuggestionClear,
 };
 export type {
+  SuggestionItem,
   SuggestionMultipleProps,
   SuggestionProps,
   SuggestionSelected, // Export SuggestionValues for easier useState
