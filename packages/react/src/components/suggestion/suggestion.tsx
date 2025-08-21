@@ -143,14 +143,13 @@ export type SuggestionSelected =
 
 const text = (el: Element): string => el.textContent?.trim() || '';
 const sanitizeItems = (values: SuggestionSelected = []): SuggestionItem[] =>
-  (typeof values === 'string'
+  typeof values === 'string'
     ? [{ label: values, value: values }]
     : !Array.isArray(values)
       ? [values]
       : values.map((value) =>
           typeof value === 'string' ? { label: value, value } : value,
-        )
-  ).filter((x: SuggestionItem) => !!x.label);
+        );
 
 const nextItems = (
   data: HTMLDataElement,
