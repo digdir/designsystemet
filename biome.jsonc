@@ -12,15 +12,15 @@
     "ignoreUnknown": true,
     "includes": [
       "**/*",
-      "!**/.vscode/**",
-      "!**/.github/**",
-      "!**/.changeset/**",
-      "!**/design-tokens/**/*",
-      "!**/dist/**/*",
-      "!**/packages/theme/**/*.css",
-      "!**/tsconfig.*.json", // https://github.com/biomejs/biome/issues/1151
-      "!**/.react-router/**",
-      "!**/package.json" // changeset wants the files to be formatted differently
+      "!.vscode",
+      "!.github",
+      "!.changeset",
+      "!./**/design-tokens/**/*",
+      "!./**/dist",
+      "!./**/packages/theme/**/*.css",
+      "!./**/tsconfig.*.json", // https://github.com/biomejs/biome/issues/1151
+      "!./**/.react-router/",
+      "!./**/package.json" // changeset wants the files to be formatted differently
     ]
   },
   "formatter": {
@@ -71,7 +71,12 @@
         "noUselessElse": "error"
       },
       "suspicious": {
-        "noArrayIndexKey": "off"
+        "noArrayIndexKey": "off",
+        "noUnknownAtRules": "off",
+        "noTsIgnore": "off"
+      },
+      "complexity": {
+        "noImportantStyles": "off"
       }
     }
   },

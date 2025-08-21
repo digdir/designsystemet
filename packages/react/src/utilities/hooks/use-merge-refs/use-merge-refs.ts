@@ -13,7 +13,7 @@ export function useMergeRefs<Instance>(
   const refEffect = useCallback((instance: Instance | null) => {
     const cleanups = refs.map((ref) => {
       if (ref == null) {
-        return;
+        return null;
       }
 
       if (typeof ref === 'function') {
