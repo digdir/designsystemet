@@ -29,14 +29,14 @@ import { ToggleGroup } from '@digdir/designsystemet-react';
 
 ## Kodeeksempler
 
-### Innholdet på knappene
-`ToggleGroup` kan ha tre typer innhold:
-- Bare tekst.
-- Tekst med ikon til venstre for teksten.
-- Bare ikon.
+### Innhaldet på knappane
+`ToggleGroup` kan ha tre typar innhald:
+- Berre tekst
+- Tekst med ikon til venstre for teksten
+- Berre ikon
 
-#### Bare ikon
-Alternativet "Bare ikon" brukes kun når du vet at brukerne vil forstå ikonet. Det kan for eksempel være ekspertbrukere eller brukere av interne tjenester, som kjenner symbolene i den aktuelle `ToggleGroup` godt. Forklar handlingene med [`Tooltip`](/docs/komponenter-tooltip--docs) når du bruker kun ikoner. 
+#### Berre ikon
+`ToggleGroup` utan tekst, med berre ikon, bør berre brukast når ikona er lett forståelege for brukarane. Det kan til dømes vere ekspertbrukarar eller brukarar av interne tenester som kjenner symbola i den aktuelle `ToggleGroup` godt. Forklar handlingane med [`Tooltip`](/docs/komponenter-tooltip--docs) når du brukar berre ikon.
 
 
 <Canvas of={ToggleGroupStories.OnlyIcons} />
@@ -50,29 +50,27 @@ Bruk `value` på `ToggleGroup.Item` og `ToggleGroup` for å kontrollere verdiene
 ## Retningslinjer
 Det er ikkje alltid heilt rett fram å avgjere når du bør bruke ein `ToggleGroup` i staden for eksempelvis `Tabs` eller `Radio`. Valet kjem ofte an på situasjonen og korleis grensesnittet elles er bygd opp. Som ei tommelfingerregel bør `ToggleGroup` berre brukast når valet har ein direkte og synleg effekt i grensesnittet, til dømes at innhaldet på sida eller eit element vert oppdatert med ein gong basert på kva brukaren vel.
 
-Det bør være minst to, men ikke flere enn fem valg i en `ToggleGroup`. Trenger du flere valg enn fem, bruker du [`Combobox`](/docs/komponenter-combobox--docs).
+Ein `ToggleGroup` bør ha minst to val, men ikkje fleire enn at alle vala får plass i breidda. Du må sjølv passe på at det er nok plass til både innhaldet i vala og talet på val utan å bryte linja. Pass på at heile komponenten får plass på skjermen, også på mobil, og at alle vala er godt synlege for brukarane.
 
-**Passer til å**
+**Passar til å**
+- filtrere innhald i lister og tabellar  
+- bytte mellom ulike innstillingsalternativ  
+- veksle mellom visingar, for eksempel mellom tabell og graf  
+- styre kva felt i eit skjema som skal visast  
 
-- filtrere innhold i lister og tabeller
-- veksle mellom datavisning og innhold, for eksempel mellom tabell og graf
-- styre hvilke felter i et skjema som skal vises
+**Passar ikkje**
+- når du har så mange val at dei ikkje får plass i breidda  
+- når vala inneheld lange tekstar som gjer at gruppa verkar tung og uoversiktleg  
 
-**Passer ikke til å**
-- bruke som radioknapp – bruk heller [`Radio`](/docs/komponenter-radio--docs)
+## Tekst
 
-### Gi nok plass til komponenten
+Ha gjerne med ei ledetekst for gruppa som forklarer kva vala gjeld. Skriv tydelege tekstar for vala i komponenten, og pass på at dei har same språklege form. Bruk gjerne [`Tooltip`](/docs/komponenter-tooltip--docs) til å gje hint, særleg dersom du berre viser ikon.
 
-Pass på at hele komponenten får plass på skjermen og at alle valgene er godt synlig for brukerne. I grensesnitt med liten plass, for eksempel på mobil, kan vi bruke [`Combobox`](/docs/komponenter-combobox--docs) i stedet.
+## Tilgjengelegheit
 
-## Tekst 
+`ToggleGroup` har standard fokusindikator (ramme).  
+Vi brukar `roving tabindex` for å handtere fokusbevegelse mellom knappane.
 
-Ha gjerne med en ledetekst for gruppen, som forklarer hva valgene gjelder. Skriv tydelige tekster for valgene i komponenten, og pass på at de har samme språklige form. Ta med hint i [`Tooltip`](/docs/komponenter-tooltip--docs), særlig hvis du bare viser ikoner.
-
-## Tilgjengelighet
-
-`ToggleGroup` har standard fokusindikator (ramme).
-Vi bruker `roving tabindex` for å håndtere fokusbevegelse mellom knappene.
 
 ### Tastaturinteraksjon 
 
