@@ -103,11 +103,11 @@ const Header = ({
 
     document.documentElement.style.setProperty(
       '--_theme-x',
-      left + width / 2 + 'px',
+      `${left + width / 2}px`,
     );
     document.documentElement.style.setProperty(
       '--_theme-y',
-      bottom - height / 2 + 'px',
+      `${bottom - height / 2}px`,
     );
 
     document.startViewTransition(() => {
