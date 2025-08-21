@@ -12,7 +12,7 @@ import {
   XMarkIcon,
 } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { useEffect, useRef, useState } from 'react';
+import { type MouseEvent, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router';
 import { DsEmbledLogo, DsFullLogo } from '../logos/designsystemet';
@@ -85,18 +85,31 @@ const Header = ({
 
   const handleThemeChange = (
     newTheme: 'dark' | 'light',
-    skipTransition = false,
+    event?: MouseEvent<HTMLButtonElement> | null,
   ) => {
     setTheme(newTheme);
 
     if (
       !document.startViewTransition ||
       window.matchMedia('(prefers-reduced-motion)').matches ||
-      skipTransition
+      !event
     ) {
       document.documentElement.setAttribute('data-color-scheme', newTheme);
       return;
     }
+
+    const { left, bottom, width, height } =
+      event.currentTarget.getBoundingClientRect();
+
+    document.documentElement.style.setProperty(
+      '--_theme-x',
+      left + width / 2 + 'px',
+    );
+    document.documentElement.style.setProperty(
+      '--_theme-y',
+      bottom - height / 2 + 'px',
+    );
+
     document.startViewTransition(() => {
       document.documentElement.setAttribute('data-color-scheme', newTheme);
     });
@@ -109,7 +122,7 @@ const Header = ({
     const userPrefersDark = userPreference.matches;
 
     // set theme based on user preference
-    handleThemeChange(userPrefersDark ? 'dark' : 'light', true);
+    handleThemeChange(userPrefersDark ? 'dark' : 'light', null);
   }, []);
 
   useEffect(() => {
@@ -216,8 +229,8 @@ const Header = ({
                 variant='tertiary'
                 data-color='neutral'
                 icon={true}
-                onClick={() => {
-                  handleThemeChange(theme === 'light' ? 'dark' : 'light');
+                onClick={(e) => {
+                  handleThemeChange(theme === 'light' ? 'dark' : 'light', e);
                 }}
                 className={classes.toggleButton}
               >
