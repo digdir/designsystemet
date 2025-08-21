@@ -203,10 +203,12 @@ export type {
   SuggestionClearProps,
   SuggestionEmptyProps,
   SuggestionInputProps,
+  SuggestionItem,
   SuggestionListProps,
+  SuggestionMultipleProps,
   SuggestionOptionProps,
   SuggestionProps,
-  SuggestionValues,
+  SuggestionSingleProps,
 } from './suggestion';
 export {
   EXPERIMENTAL_Suggestion,
