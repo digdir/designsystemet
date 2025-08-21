@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.1.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
   "assist": {
     "actions": { "source": { "organizeImports": "on" } }
   },
@@ -36,9 +36,6 @@
     "enabled": true,
     "includes": ["**/*"],
     "rules": {
-      "nursery": {
-        "useUniqueElementIds": "off"
-      },
       "recommended": true,
       "a11y": {
         "noNoninteractiveElementToInteractiveRole": "off",
@@ -52,8 +49,10 @@
         "useAriaPropsForRole": "off"
       },
       "correctness": {
+        "useUniqueElementIds": "off",
         "useExhaustiveDependencies": "off",
         "noUnusedImports": {
+          "options": {},
           "level": "warn",
           "fix": "none" // we need empty imports in generated types.d.ts from @digdir/designsystemet
         }
