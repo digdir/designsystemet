@@ -551,14 +551,14 @@ importers:
         specifier: ^3.13.12
         version: 3.13.12(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@u-elements/u-combobox':
-        specifier: ^0.0.20
-        version: 0.0.20
+        specifier: ^1.0.1
+        version: 1.0.1
       '@u-elements/u-datalist':
-        specifier: ^1.0.13
-        version: 1.0.13
+        specifier: ^1.0.14
+        version: 1.0.14
       '@u-elements/u-details':
-        specifier: ^0.1.2
-        version: 0.1.2
+        specifier: ^0.1.3
+        version: 0.1.3
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -2233,14 +2233,14 @@ packages:
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
 
-  '@u-elements/u-combobox@0.0.20':
-    resolution: {integrity: sha512-M3vVdXX8FKQssTwOyWNJtBwgG5JT4JgTckquFkoFjHUE5lcFsoBR3L+X48nCK+wv7UC2DOxuEL7OqMbmXtWh1Q==}
+  '@u-elements/u-combobox@1.0.1':
+    resolution: {integrity: sha512-mvRL+uI0m1XaESgNUdDK2zkC2K/6NQsHA9hHkLgXf7Rl2bs2LPm62WkUYRCsPhvzRTDcywMPjPvHYaj8zkkfAw==}
 
-  '@u-elements/u-datalist@1.0.13':
-    resolution: {integrity: sha512-dm3ljVfbfYe3Heos3acbtEOpWM6IQDT+wtB9ay0JLd4KVDIgBE0ZX4UX+lvu+GKP9ohL0h6yDXlKoo9ADw6eiA==}
+  '@u-elements/u-datalist@1.0.14':
+    resolution: {integrity: sha512-wgh7BMLySzPF3xcfxeNnZgy/JmFZOQVJVY+XwAiIBgDYkCWQqERJrHjxRHv8C6t4h2PWnO7mwDIqdLQHEq12XQ==}
 
-  '@u-elements/u-details@0.1.2':
-    resolution: {integrity: sha512-3IhSIvsSEPKIUDn5oR4pQ4cSoK4pnYTrtJcWLrNsXvT5G2+hW+6073A0hUraEPPTMENtJo6TRXZxNUj7rdwDuQ==}
+  '@u-elements/u-details@0.1.3':
+    resolution: {integrity: sha512-3DzAgUHvkbxY5NbRgQQ73qJOuXKACTZ16or1MFbD78rwbwqLUCBYqwW6XCEtHhVBLuVwlksIKXWh6Ln4EPPYJg==}
 
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
@@ -7600,11 +7600,11 @@ snapshots:
 
   '@types/unist@3.0.3': {}
 
-  '@u-elements/u-combobox@0.0.20': {}
+  '@u-elements/u-combobox@1.0.1': {}
 
-  '@u-elements/u-datalist@1.0.13': {}
+  '@u-elements/u-datalist@1.0.14': {}
 
-  '@u-elements/u-details@0.1.2': {}
+  '@u-elements/u-details@0.1.3': {}
 
   '@ungap/structured-clone@1.3.0': {}
 
