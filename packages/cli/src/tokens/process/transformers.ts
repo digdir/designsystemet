@@ -21,7 +21,7 @@ export const sizeRem: Transform = {
 
     if (isPx(value)) {
       const baseFont = (config.basePxFontSize as unknown as number) || 16;
-      const size = parseInt(value);
+      const size = parseInt(value, 10);
 
       if (size === 0) {
         return '0';
@@ -62,5 +62,5 @@ export const unitless: Transform = {
   type: 'value',
   transitive: true,
   filter: (token) => pathStartsWithOneOf(['size', '_size'], token),
-  transform: (token) => parseInt(getValue<string>(token)),
+  transform: (token) => parseInt(getValue<string>(token), 10),
 };
