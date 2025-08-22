@@ -218,8 +218,8 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
           );
       };
 
-      combobox?.addEventListener('beforechange', beforeChange);
-      return () => combobox?.removeEventListener('beforechange', beforeChange);
+      combobox?.addEventListener('comboboxbeforeselect', beforeChange);
+      return () => combobox?.removeEventListener('comboboxbeforeselect', beforeChange);
     }, [selectedItems, isControlled]);
 
     // Before match event listener
