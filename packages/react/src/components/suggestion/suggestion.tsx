@@ -205,15 +205,16 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
         event.preventDefault();
         const multiple = combobox?.multiple;
         const data = event.detail;
+        const nextItem = nextItems(data, selectedItems, multiple);
 
         if (isControlled)
           onSelectedChange?.(
-            nextItems(data, selectedItems, multiple) as SuggestionItem &
+            (multiple ? nextItem : [nextItem]) as SuggestionItem &
               SuggestionItem[],
           );
         else
           setDefaultItems(
-            nextItems(data, selectedItems, multiple) as SuggestionItem &
+            (multiple ? nextItem : [nextItem]) as SuggestionItem &
               SuggestionItem[],
           );
       };
@@ -256,6 +257,8 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
 
       setIsEmpty(index === disabled);
     }, [filter]);
+
+    console.log(selectedItems);
 
     return (
       <SuggestionContext.Provider

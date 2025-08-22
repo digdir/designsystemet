@@ -199,7 +199,6 @@ export type { SpinnerProps } from './spinner/spinner';
 export { Spinner } from './spinner/spinner';
 
 export type {
-  SuggestionChipsProps,
   SuggestionClearProps,
   SuggestionEmptyProps,
   SuggestionInputProps,
@@ -212,7 +211,6 @@ export type {
 } from './suggestion';
 export {
   EXPERIMENTAL_Suggestion,
-  EXPERIMENTAL_SuggestionChips,
   EXPERIMENTAL_SuggestionClear,
   EXPERIMENTAL_SuggestionEmpty,
   EXPERIMENTAL_SuggestionInput,
