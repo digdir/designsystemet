@@ -209,10 +209,7 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
 
         if (isControlled)
           onSelectedChange?.(nextItem as SuggestionItem & SuggestionItem[]);
-        else
-          setDefaultItems(
-            sanitizeItems(nextItem) as SuggestionItem & SuggestionItem[],
-          );
+        else setDefaultItems(sanitizeItems(nextItem));
       };
 
       combobox?.addEventListener('comboboxbeforeselect', beforeChange);
