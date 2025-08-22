@@ -19,6 +19,9 @@
     bottom: 0;
     right: 0;
     font-size: var(--ds-font-size-2);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
   }
 }
 
