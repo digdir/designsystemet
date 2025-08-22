@@ -219,7 +219,8 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
       };
 
       combobox?.addEventListener('comboboxbeforeselect', beforeChange);
-      return () => combobox?.removeEventListener('comboboxbeforeselect', beforeChange);
+      return () =>
+        combobox?.removeEventListener('comboboxbeforeselect', beforeChange);
     }, [selectedItems, isControlled]);
 
     // Before match event listener
@@ -228,7 +229,8 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
       const beforeMatch = (e: Event) => onBeforeMatch?.(e as EventBeforeMatch);
 
       combobox?.addEventListener('comboboxbeforematch', beforeMatch);
-      return () => combobox?.removeEventListener('comboboxbeforematch', beforeMatch);
+      return () =>
+        combobox?.removeEventListener('comboboxbeforematch', beforeMatch);
     }, [onBeforeMatch]);
 
     const handleFilter = useCallback(() => {
