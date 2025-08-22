@@ -28,7 +28,7 @@ async function updateDesignTokens() {
   await cp(path.join(INTERNAL, 'semantic'), path.join(TARGET, 'semantic'));
 
   await cp(path.join(INTERNAL, 'themes'), path.join(TARGET, 'themes'));
-  await cp(path.join(INTERNAL, '$designsystemet.json'), path.join(TARGET, '$designsystemet.json'));
+  await cp(path.join(INTERNAL, '$designsystemet.jsonc'), path.join(TARGET, '$designsystemet.jsonc'));
 
   console.log('✅ Finished copying design tokens');
 }
