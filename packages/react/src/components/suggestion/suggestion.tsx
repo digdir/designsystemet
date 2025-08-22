@@ -255,8 +255,6 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
       setIsEmpty(index === disabled);
     }, [filter]);
 
-    console.log(selectedItems);
-
     return (
       <SuggestionContext.Provider
         value={{ isEmpty, handleFilter, uComboboxRef }}
