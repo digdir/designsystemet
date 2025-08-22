@@ -7,12 +7,13 @@ import * as SkipLinkStories from './skip-link.stories';
 
 # SkipLink
 
-Vi bruker snarvei-komponenten `SkipLink` når vi vil hjelpe folk som kun bruker tastaturet til å navigere, slik at de enkelt kan gå til det viktigste innholdet på en side. Snarveien bør være det første elementet markøren går til når du navigerer med tastaturet.
+Vi bruker `SkipLink` for å hjelpe folk som bruker tastaturnavigasjon til å navigere, slik at dei enkelt kan gå til det viktigaste innhaldet på ei side. 
 
 <Primary />
 <Controls />
 
 ## Bruk
+`SkipLink` bør vere eit av dei første elementa markøren går til når du navigerer med tastaturet.
 
 ```tsx
 import { SkipLink } from '@digdir/designsystemet-react';
@@ -25,31 +26,28 @@ import { SkipLink } from '@digdir/designsystemet-react';
 ```
 
 ## Retningslinjer
+Når ein navigerer med tastatur, skal det vere mogleg å hoppe over innhald som går igjen på fleire sider, til dømes menyar, lenker og topptekst. `SkipLink` gjer at brukaren raskare kjem rett til hovudinnhaldet på sida.
 
-Noen brukere navigerer med Tab på tastaturet når de skal flytte markøren forbi lenker eller skjemalementer på en nettside. Når vi inkluderer en snarvei-komponent på siden, får disse brukerne muligheten til å gå forbi alle navigeringslenkene øverst på siden, og kan gå direkte til hovedinnholdet.
+Dersom det berre er nokre få tab-stopp fram til hovudinnhaldet, til dømes om du berre har ei «Heim»-lenke øvst på sida, kan det vere unødvendig å leggje inn ein `SkipLink`. Då risikerer du at det vert fleire knappar å forhalde seg til enn nødvendig. 
 
-Det er vanligvis et krav at det skal være med en snarvei-komponent i faste sidemaler til alle nettsteder.
+Vi plasserer `SkipLink` som det første fokuserbare elementet. Dersom sida har eit varsel om informasjonskapslar, legg du `SkipLink` rett etter koden for dette varselet.
 
-Hvis det er færre enn fem tab-stopp til hovedinnholdet er det ikke sikkert at du trenger å legge inn en `SkipLink`, det fører bare til at det blir flere knapper å forholde seg til.
+`SkipLink` bør skilje seg frå resten av innhaldet, slik at folk som kan sjå, men bruker tastaturet til å navigere, kjenner att dette elementet før dei flyttar vidare.
 
-Vi plasserer snarveien som det første fokuserbare elementet. Hvis siden har et varsel om informasjonskapsler, legger du `SkipLink` rett etter koden for dette varselet.
-
-Snarveien bør skille seg tydelig ut fra resten av innholdet, slik at folk som kan se, men bruker tastaturet til å navigere, kjenner igjen dette element før de flytter videre.
 
 ## Tekst
 
-Pass på at teksten tydelig sier hva snarveien skal brukes til. Bruk en enkel tekst, som for eksempel «Gå direkte til innholdet» eller «Hopp direkte til innholdet».
+Pass på at teksten tydeleg seier kva snarvegen skal brukast til. Bruk ein enkel tekst, som for eksempel «Gå direkte til innhaldet» eller «Hopp direkte til innhaldet».
 
-## Tilgjengelighet
 
-Snarvei-komponenten er vanligvis ikke synlig før et trykk på tastaturet aktiverer den.
+## Tilgjengelegheit
 
-- Snarveien må bli godt synlig når den får fokus.
-- Teksten på snarveien må ha riktig fargekontrast.
+`SkipLink` er vanlegvis ikkje synleg før eit trykk på tastaturet aktiverer han.
 
-Vær oppmerksom på at noen automatiske tester for tilgjengelighet kan varsle om at snarveien mangler i et landemerke. Dette varslet gjelder ikke for snarveier, så det kan du overse.
+Ver merksam på at nokre automatiske testar for tilgjengelegheit kan varsle om at `SkipLink` manglar i eit landemerke, for eksempel `<nav>`. Dette varselet gjeld ikkje for `SkipLink`, så det kan du oversjå.  
 
-Pass på at snarveier oppfører seg forutsigbart. En snarvei med teksten «Gå direkte til innholdet» skal flytte brukerens fokus til starten på innholdet, ikke til starten av første avsnitt under overskriften.
+Pass på at `SkipLink` oppfører seg føreseieleg. Ein `SkipLink` med teksten «Gå direkte til innhaldet» skal flytte brukarens fokus til starten på innhaldet, ikkje til starten av det første avsnittet under overskrifta.  
+
 
 ### Tastaturnavigasjon
 * <kbd>Enter</kbd> følger lenken og hopper til mål
