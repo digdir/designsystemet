@@ -49,7 +49,7 @@ export const extractToc = () => (tree: Root, file: VFile) => {
       toc.push({
         title,
         id: node.properties?.id as string,
-        level: parseInt(node.tagName.charAt(1)) as 2 | 3,
+        level: parseInt(node.tagName.charAt(1), 10) as 2 | 3,
       });
     }
 

@@ -34,7 +34,7 @@ export const BorderRadiusInput = () => {
   ];
 
   const debouncedCallback = useDebounceCallback((value: string) => {
-    const updatedValue = parseInt(value);
+    const updatedValue = parseInt(value, 10);
     if (updatedValue >= 0) {
       setBorderRadius(updatedValue);
     } else {
