@@ -15,9 +15,8 @@ import cl from 'clsx/lite';
 import { useMergeRefs } from '../../utilities/hooks';
 import { Chip } from '../chip';
 
-export type SuggestionSelected = Array<string | Partial<Item>> | string;
+export type SuggestionItem = { label: string; value: string };
 
-type Item = { label: string; value: string };
 type EventBeforeMatch = Omit<
   CustomEvent<HTMLOptionElement | undefined>,
   'currentTarget'
@@ -62,7 +61,12 @@ export const SuggestionContext = createContext<SuggestionContextType>({
   handleFilter: () => undefined,
 });
 
-export type SuggestionProps = {
+type SuggestionValue<T extends { multiple: boolean }> =
+  T['multiple'] extends true
+    ? Array<string | SuggestionItem>
+    : string | SuggestionItem;
+
+type SuggestionBaseProps = {
   /**
    * Filter options; boolean or a custom callback.
    *
@@ -77,42 +81,6 @@ export type SuggestionProps = {
    * @default false
    */
   creatable?: boolean;
-  /**
-   * Allows the user to select multiple items
-   *
-   * @default false
-   */
-  multiple?: boolean;
-  /**
-   * The selected items of the Suggestion.
-   *
-   * If `label` and `value` is the same, you can use `string[]`.
-   *
-   * If `label` and `value` is different, you must use `{ value: string; label: string}[]`.
-   *
-   * Using this makes the component controlled and it must be used in combination with `onSelectedChange`.
-   */
-  selected?: SuggestionSelected;
-  /**
-   * @deprecated Use `selected` instead
-   */
-  value?: SuggestionSelected; // Kept for backwards compatibility
-  /**
-   * Default selected items when uncontrolled
-   */
-  defaultSelected?: SuggestionSelected;
-  /**
-   * @deprecated Use `defaultSelected` instead
-   */
-  defaultValue?: SuggestionSelected; // Kept for backwards compatibility
-  /**
-   * Callback when selected items changes
-   */
-  onSelectedChange?: (value: Item[]) => void;
-  /**
-   * @deprecated Use `onSelectedChange` instead
-   */
-  onValueChange?: (value: Item[]) => void; // Kept for backwards compatibility
   /**
    * Callback when matching input value against options
    */
@@ -129,30 +97,68 @@ export type SuggestionProps = {
    * @default ({ label }) => label
    */
   renderSelected?: (args: { label: string; value: string }) => ReactNode;
-} & HTMLAttributes<UHTMLComboboxElement>;
+} & Omit<HTMLAttributes<UHTMLComboboxElement>, 'defaultValue'>;
+
+type SuggestionValueProps<T extends { multiple: boolean }> = {
+  /**
+   * Allows the user to select multiple items
+   *
+   * @default false
+   */
+  multiple?: T['multiple'];
+  /**
+   * The selected item of the Suggestion.
+   *
+   * If `label` and `value` are the same, each item can be a `string`. Otherwise, each item must be a `SuggestionItem`.
+   *
+   * Using this makes the component controlled and it must be used in combination with `onSelectedChange`.
+   */
+  selected?: SuggestionValue<T>;
+  /**
+   * Default selected item when uncontrolled
+   */
+  defaultSelected?: SuggestionValue<T>;
+  /**
+   * Callback when selected items changes
+   */
+  onSelectedChange?: (
+    value: T['multiple'] extends true
+      ? SuggestionItem[]
+      : SuggestionItem | undefined,
+  ) => void;
+};
+
+export type SuggestionSingleProps = SuggestionBaseProps &
+  SuggestionValueProps<{ multiple: false }>;
+
+export type SuggestionMultipleProps = SuggestionBaseProps &
+  SuggestionValueProps<{ multiple: true }> & { multiple: true }; // ensures multiple: true is never inferred from other props
+
+export type SuggestionProps = SuggestionSingleProps | SuggestionMultipleProps;
+
+type SuggestionSelected =
+  | string
+  | SuggestionItem
+  | Array<string | SuggestionItem>;
 
 const text = (el: Element): string => el.textContent?.trim() || '';
-const sanitizeItems = (values: SuggestionSelected = []): Item[] =>
-  (typeof values === 'string'
+const sanitizeItems = (values: SuggestionSelected = []): SuggestionItem[] =>
+  typeof values === 'string'
     ? [{ label: values, value: values }]
-    : values.map((value) =>
-        typeof value === 'string'
-          ? { label: value, value }
-          : {
-              label: value.label || value.value || '',
-              value: value.value || '',
-            },
-      )
-  ).filter((x) => !!x.label);
+    : !Array.isArray(values)
+      ? [values]
+      : values.map((value) =>
+          typeof value === 'string' ? { label: value, value } : value,
+        );
 
 const nextItems = (
   data: HTMLDataElement,
   prev?: SuggestionSelected,
   multiple?: boolean,
 ) => {
-  const item = { label: text(data), value: data.value };
+  const item: SuggestionItem = { label: text(data), value: data.value };
 
-  if (!multiple) return data.isConnected ? [] : [item];
+  if (!multiple) return data.isConnected ? undefined : item;
   return data.isConnected
     ? sanitizeItems(prev).filter(({ value }) => value !== item.value)
     : [...sanitizeItems(prev), item];
@@ -161,47 +167,31 @@ const nextItems = (
 const defaultFilter: Filter = ({ label, input }) =>
   label.toLowerCase().includes(input.value.trim().toLowerCase());
 
-const deprecate = (from: string, to: string) =>
-  console.warn(
-    `Suggestion: Using "${from}" is deprecated, please use "${to}" instead.`,
-  );
-
 export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
   function Suggestion(
     {
       children,
       className,
       creatable = false,
-      defaultSelected: _defaultSelected,
-      defaultValue,
+      defaultSelected,
       filter = true,
       multiple = false,
       name,
       onBeforeMatch,
-      onSelectedChange: _onSelectedChange,
-      onValueChange,
+      onSelectedChange,
       renderSelected = ({ label }) => label,
-      selected: _selected,
-      value,
+      selected,
       ...rest
     },
     ref,
   ) {
-    // For backwards compatibility:
-    const selected = _selected ?? value;
-    const defaultSelected = _defaultSelected ?? defaultValue;
-    const onSelectedChange = _onSelectedChange ?? onValueChange;
-    if (value) deprecate('value', 'selected');
-    if (defaultValue) deprecate('defaultValue', 'defaultSelected');
-    if (onValueChange) deprecate('onValueChange', 'onSelectedChange');
-
     const uComboboxRef = useRef<UHTMLComboboxElement>(null);
     const genId = useId();
     const selectId = rest.id ? `${rest.id}-select` : genId;
     const isControlled = selected !== undefined;
     const mergedRefs = useMergeRefs([ref, uComboboxRef]);
     const [isEmpty, setIsEmpty] = useState(false);
-    const [defaultItems, setDefaultItems] = useState<Item[]>(
+    const [defaultItems, setDefaultItems] = useState<SuggestionItem[]>(
       sanitizeItems(defaultSelected),
     );
     const selectedItems = selected ? sanitizeItems(selected) : defaultItems;
@@ -217,8 +207,15 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
         const data = event.detail;
 
         if (isControlled)
-          onSelectedChange?.(nextItems(data, selectedItems, multiple));
-        else setDefaultItems(nextItems(data, selectedItems, multiple));
+          onSelectedChange?.(
+            nextItems(data, selectedItems, multiple) as SuggestionItem &
+              SuggestionItem[],
+          );
+        else
+          setDefaultItems(
+            nextItems(data, selectedItems, multiple) as SuggestionItem &
+              SuggestionItem[],
+          );
       };
 
       combobox?.addEventListener('beforechange', beforeChange);
