@@ -208,10 +208,7 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
         const nextItem = nextItems(data, selectedItems, multiple);
 
         if (isControlled)
-          onSelectedChange?.(
-            (multiple ? nextItem : [nextItem]) as SuggestionItem &
-              SuggestionItem[],
-          );
+          onSelectedChange?.(nextItem as SuggestionItem & SuggestionItem[]);
         else
           setDefaultItems(
             (multiple ? nextItem : [nextItem]) as SuggestionItem &
