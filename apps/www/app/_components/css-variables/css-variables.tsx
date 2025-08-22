@@ -38,7 +38,7 @@ export const CssVariables = forwardRef<HTMLTableElement, CssVariablesProps>(
 );
 
 /* get variables and its value from css file */
-function getCssVariables(css: string) {
+export function getCssVariables(css: string) {
   const res: { [key: string]: string } = {};
 
   // temporarily remove inline strings, as they may contain ; and } characters
@@ -64,7 +64,7 @@ function getCssVariables(css: string) {
       // Return the original inline string from the value, if it was removed earlier
       const valueWithOriginalString = value.replace(
         /<placeholder-(\d+)>/,
-        (_, p1: string) => stringsRemovedFromCss[parseInt(p1)],
+        (_, p1: string) => stringsRemovedFromCss[parseInt(p1, 10)],
       );
       res[name] = valueWithOriginalString;
     }

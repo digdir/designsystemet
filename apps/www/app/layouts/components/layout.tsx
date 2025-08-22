@@ -1,5 +1,4 @@
 import { ContentContainer } from '@internal/components';
-import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router';
 import { Sidebar } from '~/_components/sidebar/sidebar';
 import { getFoldersInContentDir } from '~/_utils/files.server';
@@ -41,8 +40,6 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
 };
 
 export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
-  const { t } = useTranslation();
-
   return (
     <ContentContainer
       className={classes['sidebar-container']}

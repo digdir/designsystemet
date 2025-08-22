@@ -4,7 +4,11 @@ import { join } from 'node:path';
 import { Alert, Heading } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import type { ComponentType } from 'react';
-import { CssVariables } from '~/_components/css-variables/css-variables';
+import { useRouteLoaderData } from 'react-router';
+import {
+  CssVariables,
+  getCssVariables,
+} from '~/_components/css-variables/css-variables';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { LiveComponent } from '~/_components/live-component/live-components';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
@@ -15,41 +19,6 @@ import type { Route } from './+types/component';
 import classes from './component.module.css';
 
 const require = createRequire(import.meta.url);
-
-function getCssVariables(css: string) {
-  const res: { [key: string]: string } = {};
-
-  // temporarily remove inline strings, as they may contain ; and } characters
-  // and thus ruin the matching for property declarations
-  const stringsRemovedFromCss = Array.from(css.matchAll(/"[^"]*"/g)).map(
-    (x) => x[0],
-  );
-  const cssWithRemovedStrings = stringsRemovedFromCss.reduce(
-    (prev, curr, idx) => prev.replace(curr, `<placeholder-${idx}>`),
-    css,
-  );
-  // get all --dsc-* property declarations
-  const cssVars = Array.from(
-    cssWithRemovedStrings.matchAll(/(?<!var\()(--dsc-[^;}]+)[;}]/g),
-  ).map((matches) => matches[1]);
-
-  /* Iterate over the CSS properties */
-  for (const declaration of cssVars) {
-    const [name, value] = declaration.split(':');
-    // Choose the earliest declaration of the property.
-    // We assume later declarations are part of a sub-selector.
-    if (!res[name]) {
-      // Return the original inline string from the value, if it was removed earlier
-      const valueWithOriginalString = value.replace(
-        /<placeholder-(\d+)>/,
-        (_, p1: string) => stringsRemovedFromCss[parseInt(p1)],
-      );
-      res[name] = valueWithOriginalString;
-    }
-  }
-
-  return res;
-}
 
 export const loader = async ({ params }: Route.LoaderArgs) => {
   const { component, lang } = params;
@@ -149,16 +118,6 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
 export default function Components({
   loaderData: { stories, mdxCode, frontmatter, cssVars, toc },
 }: Route.ComponentProps) {
-  const Story = ({ story }: { story: string }) => {
-    const foundStory = stories.find((s) => s.name === story);
-    if (!foundStory) return <Alert>Story not found: {story}</Alert>;
-    return (
-      <LiveComponent
-        code={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
-      />
-    );
-  };
-
   return (
     <>
       <div className={classes.header}>
@@ -170,7 +129,6 @@ export default function Components({
         <img
           src={'/img/component-previews/' + frontmatter.image}
           alt={frontmatter.title}
-          className={classes.image}
           aria-hidden='true'
         />
       </div>
@@ -202,3 +160,19 @@ export default function Components({
     </>
   );
 }
+
+const Story = ({ story }: { story: string }) => {
+  const data =
+    useRouteLoaderData<Route.ComponentProps['loaderData']>('components-page');
+  if (!data) return null;
+
+  const { stories } = data;
+
+  const foundStory = stories.find((s) => s.name === story);
+  if (!foundStory) return <Alert>Story not found: {story}</Alert>;
+  return (
+    <LiveComponent
+      code={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
+    />
+  );
+};
