@@ -15,12 +15,12 @@
       "!.vscode",
       "!.github",
       "!.changeset",
-      "!./**/design-tokens/*",
-      "!./**/dist",
-      "!./packages/theme/**/*.css",
-      "!./**/tsconfig.*.json", // https://github.com/biomejs/biome/issues/1151
-      "!./**/.react-router/",
-      "!./**/package.json" // changeset wants the files to be formatted differently
+      "!**/design-tokens/*",
+      "!**/dist",
+      "!**/packages/theme/**/*.css",
+      "!**/tsconfig.*.json", // https://github.com/biomejs/biome/issues/1151
+      "!**/.react-router/",
+      "!**/package.json" // changeset wants the files to be formatted differently
     ]
   },
   "formatter": {
