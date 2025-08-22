@@ -227,8 +227,8 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
       const combobox = uComboboxRef.current;
       const beforeMatch = (e: Event) => onBeforeMatch?.(e as EventBeforeMatch);
 
-      combobox?.addEventListener('beforematch', beforeMatch);
-      return () => combobox?.removeEventListener('beforematch', beforeMatch);
+      combobox?.addEventListener('comboboxbeforematch', beforeMatch);
+      return () => combobox?.removeEventListener('comboboxbeforematch', beforeMatch);
     }, [onBeforeMatch]);
 
     const handleFilter = useCallback(() => {
