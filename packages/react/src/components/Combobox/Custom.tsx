@@ -74,7 +74,6 @@ const ComboboxCustom = forwardRef<HTMLDivElement, ComboboxCustomProps>(
 
     return (
       <Label data-size={size} asChild>
-        {/* biome-ignore lint/a11y/useSemanticElements: we want this to be an option */}
         <Component
           ref={combinedRef}
           tabIndex={-1}

@@ -45,7 +45,6 @@ const ComboboxOption = memo(
 
       return (
         <Label data-size='md' asChild>
-          {/** biome-ignore lint/a11y/useSemanticElements: no need to change - deprecated */}
           <button
             ref={ref}
             id={id}
