@@ -1,5 +1,4 @@
 ---
-"@digdir/designsystemet-theme": patch
 "@digdir/designsystemet": minor
 ---
 
