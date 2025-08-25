@@ -105,7 +105,13 @@ const getContentPathsWithLanguages = (): string[] => {
 };
 
 const contentPaths = getContentPathsWithLanguages();
-const allPages = ['/no/components', '/en/components', ...contentPaths];
+const allPages = [
+  '/no/components',
+  '/en/components',
+  '/no/components/button',
+  '/en/components/button',
+  ...contentPaths,
+];
 
 const config: Config = {
   ssr: true,
