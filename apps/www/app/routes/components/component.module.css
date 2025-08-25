@@ -1,7 +1,6 @@
 .content {
   padding: var(--ds-size-4) var(--ds-size-10) 0 var(--ds-size-10);
   height: fit-content;
-  max-width: 65ch;
   min-width: 0;
   grid-area: content;
 }
