@@ -32,7 +32,11 @@ export const LiveComponent = ({ code }: LiveComponentProps) => {
         </ds.Button>
         <LiveError className='ds-alert' />
       </div>
-      {showEditor ? <span data-color-scheme="dark"><LiveEditor className={classes.editor} /></span> : null}
+      {showEditor ? (
+        <span data-color-scheme='dark'>
+          <LiveEditor className={classes.editor} />
+        </span>
+      ) : null}
     </LiveProvider>
   );
 };
