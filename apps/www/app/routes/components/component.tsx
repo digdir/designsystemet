@@ -6,6 +6,10 @@ import cl from 'clsx/lite';
 import type { ComponentType } from 'react';
 import { useRouteLoaderData } from 'react-router';
 import {
+  CssAttributes,
+  getAttributes,
+} from '~/_components/css-attributes/css-attributes';
+import {
   CssVariables,
   getCssVariables,
 } from '~/_components/css-variables/css-variables';
@@ -97,10 +101,14 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
   let cssVars: {
     [key: string]: string;
   } = {};
+  let cssAttrs: {
+    [key: string]: string;
+  } = {};
   if (cssPath) {
     try {
       cssSource = readFileSync(cssPath, 'utf-8');
       cssVars = getCssVariables(cssSource);
+      cssAttrs = getAttributes(cssSource);
     } catch {}
   }
 
@@ -111,12 +119,13 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
     frontmatter: result.frontmatter as Record<string, unknown>,
     cssSource,
     cssVars,
+    cssAttrs,
     toc: result.toc,
   };
 };
 
 export default function Components({
-  loaderData: { stories, mdxCode, frontmatter, cssVars, toc },
+  loaderData: { stories, mdxCode, frontmatter, cssVars, cssAttrs, toc },
 }: Route.ComponentProps) {
   return (
     <>
@@ -155,6 +164,7 @@ export default function Components({
           ))
         )}
         {cssVars ? <CssVariables vars={cssVars} /> : null}
+        {cssAttrs ? <CssAttributes vars={cssAttrs} /> : null}
         <EditPageOnGithub />
       </div>
     </>
