@@ -1,0 +1,31 @@
+---
+title: Suggestion
+image: Suggestion.svg
+---
+
+Searchable select with support for multi-select. Use when Select is not sufficient.
+
+<Story story="Preview" />
+
+## Usage
+
+```tsx
+import { EXPERIMENTAL_Suggestion as Suggestion } from '@digdir/designsystemet-react'
+
+<Suggestion>
+  <Suggestion.Input />
+  <Suggestion.Clear />
+  <Suggestion.List>
+    <Suggestion.Empty>Tomt</Suggestion.Empty>
+    <Suggestion.Option label="Sogndal" value="sogndal">
+      Sogndal
+    </Suggestion.Option>
+    <Suggestion.Option label="Oslo" value="oslo">
+      Oslo
+    </Suggestion.Option>
+  </Suggestion.List>
+</Suggestion>
+```
+
+## Code Examples
+
