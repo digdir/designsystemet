@@ -14,7 +14,7 @@ export type SwitchProps = MergeRight<
      */
     'aria-label'?: string;
     /**
-     * Radio label
+     * Switch label
      */
     label?: ReactNode;
     /**
