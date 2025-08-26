@@ -29,8 +29,8 @@
   border-bottom-left-radius: var(--ds-border-radius-md);
   border-bottom-right-radius: var(--ds-border-radius-md);
   &:focus-within {
-    outline: 2px solid white;
-    outline-offset: -4px;
+    outline: 2px solid var(--ds-color-neutral-border-default);
+    outline-offset: -3px;
   }
 }
 .editor {
