@@ -28,7 +28,7 @@ export const LiveComponent = ({ code }: LiveComponentProps) => {
           aria-pressed={showEditor}
           className={classes.codeButton}
         >
-          {showEditor ? 'Hide code' : 'Show code'}
+          {showEditor ? 'Hide code' : 'Edit code'}
         </ds.Button>
         <LiveError className='ds-alert' />
       </div>
