@@ -12,7 +12,7 @@ export const sizeRem: Transform = {
   transitive: true,
   filter: (token) => {
     const hasWantedType = typeEquals(['dimension', 'fontsize'], token);
-    const hasWantedPath = pathStartsWithOneOf(['spacing', 'sizing', 'border-radius', 'font-size'], token);
+    const hasWantedPath = pathStartsWithOneOf(['border-radius', 'font-size' /*, ['_size', 'mode-font-size']*/], token);
 
     return hasWantedType && hasWantedPath;
   },
