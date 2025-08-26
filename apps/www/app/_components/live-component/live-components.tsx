@@ -1,7 +1,7 @@
 import * as ds from '@digdir/designsystemet-react';
 import * as aksel from '@navikt/aksel-icons';
 import { themes } from 'prism-react-renderer';
-import { type ComponentType, useState } from 'react';
+import { type ComponentType, use, useEffect, useState } from 'react';
 import {
   LiveEditor,
   LiveError,
@@ -27,14 +27,14 @@ type ContextValue = {
   code: string;
   newCode?: string;
   disabled: boolean;
-  theme?: typeof themes.nightOwl;
+  theme?: typeof themes.vsDark;
   language: string;
   onError(error: Error): void;
   onChange(value: string): void;
 };
 
 const Editor = ({ live }: { live: ContextValue }) => {
-  console.log(live);
+  //console.log(live);
   const [resetCount, setResetCount] = useState(0);
 
   const reset = () => {
@@ -43,12 +43,13 @@ const Editor = ({ live }: { live: ContextValue }) => {
   };
 
   return (
-    <div data-color-scheme='dark' className={classes.editorWrapper}>
+    <div className={classes.editorWrapper}>
       <ds.Button
         data-color='neutral'
         variant='secondary'
         className={classes.reset}
         onClick={reset}
+        data-size='sm'
       >
         Reset
       </ds.Button>
@@ -64,8 +65,41 @@ const EditorWithLive = withLive(Editor) as ComponentType;
 
 export const LiveComponent = ({ code }: LiveComponentProps) => {
   const [showEditor, setShowEditor] = useState(false);
+  const [colorScheme, setColorScheme] = useState<string | null>('dark');
+
+  useEffect(() => {
+    // Set initial color scheme
+    setColorScheme(
+      document?.documentElement?.getAttribute('data-color-scheme'),
+    );
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        console.log(mutation);
+        setColorScheme(
+          (mutation.target as HTMLElement).getAttribute('data-color-scheme'),
+        );
+      });
+    });
+
+    // Observe document.documentElement for data-color-scheme changes
+    if (document?.documentElement) {
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['data-color-scheme'],
+      });
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <LiveProvider code={code} scope={scopes} noInline theme={themes.vsDark}>
+    <LiveProvider
+      code={code}
+      scope={scopes}
+      noInline
+      theme={colorScheme === 'dark' ? themes.vsDark : themes.vsLight}
+    >
       <div className={classes.preview} data-color='accent' data-live='true'>
         <LivePreview />
         <ds.Button
