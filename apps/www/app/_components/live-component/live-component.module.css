@@ -24,7 +24,15 @@
     border-bottom-left-radius: 0;
   }
 }
-
+.editorWrapper {
+  position: relative;
+  border-bottom-left-radius: var(--ds-border-radius-md);
+  border-bottom-right-radius: var(--ds-border-radius-md);
+  &:focus-within {
+    outline: 2px solid white;
+    outline-offset: -4px;
+  }
+}
 .editor {
   font-family: monospace;
   border-bottom-left-radius: var(--ds-border-radius-md);
@@ -40,4 +48,9 @@
   & [class~='plain-text'] {
     color: var(--ds-color-neutral-text-default);
   }
+}
+.reset {
+  right: 8px;
+  top: 8px;
+  position: absolute;
 }
