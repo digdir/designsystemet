@@ -23,7 +23,7 @@ design-tokens: v1.1.5
 }
 
 @layer ds.theme.size-mode {
-:root, [data-size] {
+:root, [data-size]:not(:is(.ds-avatar, .ds-heading, .ds-paragraph, .ds-spinner)) {
   --ds-size: var(--ds-size--md);
   --ds-size--sm: var(--ds-size,);
   --ds-size--md: var(--ds-size,);
