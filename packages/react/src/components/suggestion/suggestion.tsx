@@ -205,21 +205,16 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
         event.preventDefault();
         const multiple = combobox?.multiple;
         const data = event.detail;
+        const nextItem = nextItems(data, selectedItems, multiple);
 
         if (isControlled)
-          onSelectedChange?.(
-            nextItems(data, selectedItems, multiple) as SuggestionItem &
-              SuggestionItem[],
-          );
-        else
-          setDefaultItems(
-            nextItems(data, selectedItems, multiple) as SuggestionItem &
-              SuggestionItem[],
-          );
+          onSelectedChange?.(nextItem as SuggestionItem & SuggestionItem[]);
+        else setDefaultItems(sanitizeItems(nextItem));
       };
 
-      combobox?.addEventListener('beforechange', beforeChange);
-      return () => combobox?.removeEventListener('beforechange', beforeChange);
+      combobox?.addEventListener('comboboxbeforeselect', beforeChange);
+      return () =>
+        combobox?.removeEventListener('comboboxbeforeselect', beforeChange);
     }, [selectedItems, isControlled]);
 
     // Before match event listener
@@ -227,8 +222,9 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
       const combobox = uComboboxRef.current;
       const beforeMatch = (e: Event) => onBeforeMatch?.(e as EventBeforeMatch);
 
-      combobox?.addEventListener('beforematch', beforeMatch);
-      return () => combobox?.removeEventListener('beforematch', beforeMatch);
+      combobox?.addEventListener('comboboxbeforematch', beforeMatch);
+      return () =>
+        combobox?.removeEventListener('comboboxbeforematch', beforeMatch);
     }, [onBeforeMatch]);
 
     const handleFilter = useCallback(() => {

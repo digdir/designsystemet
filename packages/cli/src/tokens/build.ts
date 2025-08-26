@@ -32,7 +32,7 @@ export const buildTokens = async (options: Omit<BuildOptions, 'type' | 'processe
   let $designsystemet: DesignsystemetObject | undefined;
 
   try {
-    const $designsystemetContent = await readFile(`${tokensDir}/$designsystemet.json`);
+    const $designsystemetContent = await readFile(`${tokensDir}/$designsystemet.jsonc`);
     $designsystemet = JSON.parse($designsystemetContent) as DesignsystemetObject;
   } catch (_error) {}
 
