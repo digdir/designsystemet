@@ -1,7 +1,7 @@
 import * as ds from '@digdir/designsystemet-react';
 import * as aksel from '@navikt/aksel-icons';
 import { themes } from 'prism-react-renderer';
-import { useState } from 'react';
+import { type ComponentType, useState } from 'react';
 import {
   LiveEditor,
   LiveError,
@@ -19,7 +19,21 @@ const scopes = {
 type LiveComponentProps = {
   code: string;
 };
-const Editor = ({ live }: any) => {
+
+//copied from https://github.com/FormidableLabs/react-live/blob/master/packages/react-live/src/components/Live/LiveContext.ts
+type ContextValue = {
+  error?: string;
+  element?: ComponentType | null;
+  code: string;
+  newCode?: string;
+  disabled: boolean;
+  theme?: typeof themes.nightOwl;
+  language: string;
+  onError(error: Error): void;
+  onChange(value: string): void;
+};
+
+const Editor = ({ live }: { live: ContextValue }) => {
   console.log(live);
   const [resetCount, setResetCount] = useState(0);
 
@@ -46,7 +60,7 @@ const Editor = ({ live }: any) => {
     </div>
   );
 };
-const EditorWithLive = withLive(Editor);
+const EditorWithLive = withLive(Editor) as ComponentType;
 
 export const LiveComponent = ({ code }: LiveComponentProps) => {
   const [showEditor, setShowEditor] = useState(false);
