@@ -276,6 +276,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      htmlfy:
+        specifier: ^1.0.0
+        version: 1.0.0
       i18next:
         specifier: ^25.3.6
         version: 25.4.0(typescript@5.9.2)
@@ -3370,6 +3373,9 @@ packages:
 
   html-parse-stringify@3.0.1:
     resolution: {integrity: sha512-KknJ50kTInJ7qIScF3jeaFRpMpE8/lfiTdzf/twXyPBLAGrLRTmkz3AdTnKeh40X8k9L2fdYwEp/42WGXIRGcg==}
+
+  htmlfy@1.0.0:
+    resolution: {integrity: sha512-XM6zkMWIekSHqT55GhXXuf9BbIIsxidbIpj9uwY2I5MsnQPw4llWL1QD2BbzsmD5ozyi+t5gJQsuFIJj+shOYQ==}
 
   http-errors@2.0.0:
     resolution: {integrity: sha512-FtwrG/euBzaEjYeRqOgly7G0qviiXoJWnvEH2Z1plBdXgbyjv34pHTSb9zoeHMyDy33+DWy5Wt9Wo+TURtOYSQ==}
@@ -8876,6 +8882,8 @@ snapshots:
   html-parse-stringify@3.0.1:
     dependencies:
       void-elements: 3.1.0
+
+  htmlfy@1.0.0: {}
 
   http-errors@2.0.0:
     dependencies:

@@ -20,6 +20,7 @@
     "@react-router/serve": "^7.8.1",
     "@vercel/react-router": "^1.2.2",
     "clsx": "^2.1.1",
+    "htmlfy": "^1.0.0",
     "i18next": "^25.3.6",
     "isbot": "^5.1.29",
     "mdx-bundler": "^10.1.1",
@@ -36,8 +37,8 @@
     "remix-i18next": "^7.2.1"
   },
   "devDependencies": {
-    "@types/hast": "^3.0.4",
     "@react-router/dev": "^7.8.1",
+    "@types/hast": "^3.0.4",
     "@types/node": "^22.17.2",
     "@types/ramda": "^0.31.0",
     "@types/react": "^19.1.10",
