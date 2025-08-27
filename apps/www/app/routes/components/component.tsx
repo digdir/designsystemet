@@ -94,6 +94,7 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
   let cssPath: string | undefined;
 
   try {
+    //@TODO: not all components have 1:1 name mapping to css files (checkbox/radio/switch/select/textarea are all inside input.css)
     cssPath = require.resolve(`@digdir/designsystemet-css/${component}.css`);
   } catch {}
 
