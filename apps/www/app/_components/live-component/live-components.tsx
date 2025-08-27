@@ -70,7 +70,6 @@ const Editor = ({ live, html }: EditorProps) => {
       />
       <p>Output html:</p>
       <LiveEditor
-        key={rawHtml}
         className={classes.editor}
         disabled
         code={rawHtml}
