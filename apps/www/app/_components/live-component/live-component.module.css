@@ -28,21 +28,22 @@
   position: relative;
   border-bottom-left-radius: var(--ds-border-radius-md);
   border-bottom-right-radius: var(--ds-border-radius-md);
-  &:focus-within {
-    outline: 2px solid var(--ds-color-neutral-border-default);
-    outline-offset: -3px;
-  }
 }
 .editor {
   font-family: monospace;
   border-bottom-left-radius: var(--ds-border-radius-md);
   border-bottom-right-radius: var(--ds-border-radius-md);
   overflow: hidden;
+  &:focus-within {
+    outline: 2px solid var(--ds-color-neutral-border-default);
+    outline-offset: -3px;
+  }
 
   & > pre {
     background-color: var(--ds-color-neutral-background-tinted) !important;
     font-size: min(0.8em, 14px);
     padding: var(--ds-size-5) !important;
+    white-space: pre-wrap;
   }
 
   & [class~='plain-text'] {

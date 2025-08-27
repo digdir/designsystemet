@@ -1,7 +1,8 @@
 import * as ds from '@digdir/designsystemet-react';
 import * as aksel from '@navikt/aksel-icons';
+import { prettify } from 'htmlfy';
 import { themes } from 'prism-react-renderer';
-import { type ComponentType, use, useEffect, useState } from 'react';
+import { type ComponentType, useEffect, useState } from 'react';
 import {
   LiveEditor,
   LiveError,
@@ -33,9 +34,17 @@ type ContextValue = {
   onChange(value: string): void;
 };
 
-const Editor = ({ live }: { live: ContextValue }) => {
-  //console.log(live);
+type EditorProps = {
+  live: ContextValue;
+  html: HTMLElement | null;
+};
+
+const Editor = ({ live, html }: EditorProps) => {
   const [resetCount, setResetCount] = useState(0);
+  const rawHtml = prettify(html?.innerHTML.toString() || '', {
+    tag_wrap: 63,
+    content_wrap: 70,
+  });
 
   const reset = () => {
     live.onChange(live.code);
@@ -50,6 +59,7 @@ const Editor = ({ live }: { live: ContextValue }) => {
         className={classes.reset}
         onClick={reset}
         data-size='sm'
+        disabled={live.code === live.newCode}
       >
         Reset
       </ds.Button>
@@ -58,14 +68,25 @@ const Editor = ({ live }: { live: ContextValue }) => {
         onChange={live.onChange}
         className={classes.editor}
       />
+      <p>Output html:</p>
+      <LiveEditor
+        key={rawHtml}
+        className={classes.editor}
+        disabled
+        code={rawHtml}
+        language='html'
+      />
     </div>
   );
 };
-const EditorWithLive = withLive(Editor) as ComponentType;
+const EditorWithLive = withLive(Editor) as ComponentType<{
+  html: HTMLElement | null;
+}>;
 
 export const LiveComponent = ({ code }: LiveComponentProps) => {
   const [showEditor, setShowEditor] = useState(false);
   const [colorScheme, setColorScheme] = useState<string | null>('dark');
+  const [html, setHtml] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
     // Set initial color scheme
@@ -101,7 +122,7 @@ export const LiveComponent = ({ code }: LiveComponentProps) => {
       theme={colorScheme === 'dark' ? themes.vsDark : themes.vsLight}
     >
       <div className={classes.preview} data-color='accent' data-live='true'>
-        <LivePreview />
+        <LivePreview ref={setHtml} />
         <ds.Button
           data-color='neutral'
           data-size='sm'
@@ -114,7 +135,7 @@ export const LiveComponent = ({ code }: LiveComponentProps) => {
         </ds.Button>
         <LiveError className='ds-alert' />
       </div>
-      {showEditor ? <EditorWithLive /> : null}
+      {showEditor ? <EditorWithLive html={html} /> : null}
     </LiveProvider>
   );
 };
