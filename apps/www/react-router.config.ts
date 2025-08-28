@@ -109,7 +109,7 @@ const allPages = ['/no/components', '/en/components', ...contentPaths];
 
 const config: Config = {
   ssr: true,
-  buildDirectory: 'dist',
+  buildDirectory: 'build',
   prerender: allPages,
   presets: [],
   buildEnd: async ({ buildManifest: rrBuild }) => {
@@ -148,7 +148,7 @@ const config: Config = {
         };
         typedBundle.config = typedBundle.config || {};
         typedBundle.config.runtime = 'nodejs';
-        typedBundle.config.includeFiles = '**/dist/server/app/content/**';
+        typedBundle.config.includeFiles = '**/build/server/app/content/**';
       }
     }
 
@@ -174,7 +174,7 @@ const config: Config = {
       join(dirname, 'app'),
     );
     newBuildResult.reactRouterConfig.buildDirectory = normalizePath(
-      join(dirname, 'dist'),
+      join(dirname, 'build'),
     );
 
     // write back to the file
