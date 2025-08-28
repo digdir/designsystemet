@@ -111,7 +111,7 @@ const config: Config = {
   ssr: true,
   buildDirectory: 'dist',
   prerender: allPages,
-  presets: [vercelPreset()],
+  presets: [],
   buildEnd: async ({ buildManifest: rrBuild }) => {
     const manifestPath = join(
       dirname,
