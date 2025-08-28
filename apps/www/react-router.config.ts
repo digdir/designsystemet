@@ -164,7 +164,7 @@ const config: Config = {
       for (const route of Object.values(newBuildResult.buildManifest.routes)) {
         const typedRoute = route as { config?: { runtime?: string } };
         typedRoute.config = typedRoute.config || {};
-        (route as { config: { runtime: string } }).config.runtime = 'nodejs';
+        // (route as { config: { runtime: string } }).config.runtime = 'nodejs';
       }
     }
 
