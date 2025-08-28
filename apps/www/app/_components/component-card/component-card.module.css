@@ -7,9 +7,11 @@
   border-radius: var(--ds-border-radius-md);
   box-shadow: var(--ds-shadow-xs);
   text-decoration: none;
-  transition:
-    0.2s transform ease-in-out,
-    0.2s box-shadow ease-in-out;
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      0.2s transform ease-in-out,
+      0.2s box-shadow ease-in-out;
+  }
 
   [data-color-scheme='dark'] &,
   [data-color-scheme='auto'] & {
