@@ -105,13 +105,19 @@ const getContentPathsWithLanguages = (): string[] => {
 };
 
 const contentPaths = getContentPathsWithLanguages();
-const allPages = ['/no/components', '/en/components', ...contentPaths];
+const allPages = [
+  '/no/components',
+  '/en/components',
+  '/no/components/button',
+  '/en/components/button',
+  ...contentPaths,
+];
 
 const config: Config = {
   ssr: true,
-  buildDirectory: 'build',
+  buildDirectory: 'dist',
   prerender: allPages,
-  presets: [],
+  presets: [vercelPreset()],
   buildEnd: async ({ buildManifest: rrBuild }) => {
     const manifestPath = join(
       dirname,
@@ -148,7 +154,7 @@ const config: Config = {
         };
         typedBundle.config = typedBundle.config || {};
         typedBundle.config.runtime = 'nodejs';
-        typedBundle.config.includeFiles = '**/build/server/app/content/**';
+        typedBundle.config.includeFiles = '**/dist/server/app/content/**';
       }
     }
 
@@ -174,7 +180,7 @@ const config: Config = {
       join(dirname, 'app'),
     );
     newBuildResult.reactRouterConfig.buildDirectory = normalizePath(
-      join(dirname, 'build'),
+      join(dirname, 'dist'),
     );
 
     // write back to the file
