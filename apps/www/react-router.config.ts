@@ -153,8 +153,8 @@ const config: Config = {
           config?: { runtime?: string; includeFiles?: string };
         };
         typedBundle.config = typedBundle.config || {};
-        typedBundle.config.runtime = 'nodejs';
-        typedBundle.config.includeFiles = '**/dist/server/app/content/**';
+        /* typedBundle.config.runtime = 'nodejs'; */
+        // typedBundle.config.includeFiles = '**/dist/server/app/content/**';
       }
     }
 
