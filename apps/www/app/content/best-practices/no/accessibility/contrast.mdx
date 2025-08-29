@@ -56,9 +56,9 @@ Alle brukerne, også de med svekket syn, skal kunne se innholdet i digitale tjen
       W3C](https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance.html)
     </li>
     <li>
-      **WCAG 3** har et krav om farge og kontrast, visuell kontrast i tekst
+      **WCAG 3** diskuterer et krav om farge og kontrast, visuell kontrast i tekst
       (sølv): Sørg for tilstrekkelig kontrast mellom tekst i forgrunnen og
-      bakgrunnen for teksten. Her brukes det en ny metode, med navn APCA,
+      bakgrunnen for teksten. Her foreslås en ny metode, med navn APCA,
       for å regne ut kontrasten.
     </li>
   </ul>
@@ -66,7 +66,7 @@ Alle brukerne, også de med svekket syn, skal kunne se innholdet i digitale tjen
 
 ## Mer presis metode
 
-WCAG 3.0 foreslår nå en mer presis metode enn dagens standard, for å kalkulere kontrast og sette terskelverdier.
+WCAG 3.0 diskuteres det en mer presis metode enn dagens standard, for å kalkulere kontrast og sette terskelverdier.
 
 <ul>
   <li>
@@ -90,7 +90,7 @@ WCAG 3.0 foreslår nå en mer presis metode enn dagens standard, for å kalkuler
 
 For at innholdet i offentlige, digitale tjenester skal være tilgjengelig for alle brukere, følger vi i dag en ønsket standard for kontrast som er høyere enn kravene som stilles til tilgjengelighet. Standarden heter WCAG 2.1, nivå AAA.
 
-For å øke lesbarheten enda mer, har vi ambisjoner om å oppnå kontrast på nivå 4. Det er toppnivået i APCA-metoden, som nå blir foreslått i WCAG 3.0
+For å øke lesbarheten enda mer, har vi ambisjoner om å oppnå kontrast på nivå 4. Det er toppnivået i en modell nivåer, som ble diskutert i et [foreløpig parkert arbeid om kontrast i WCAG 3.0.](https://www.w3.org/WAI/GL/task-forces/silver/wiki/Visual_Contrast_of_Text_Subgroup)
 
 ## Hvorfor duger ikke dagens standard?
 
@@ -111,7 +111,7 @@ Hvis vi oppfyller metoden i WCAG 2, etterlever vi teknisk sett kravet til univer
 <br />
 
 <Card data-color='brand2' variant="tinted">
-  **Kontrast i WCAG 3 «visual contrast algorithm»** <br />I WCAG 3 benyttes en
+  **Kontrast i WCAG 3 «visual contrast algorithm»** <br />I WCAG 3 foreslås en
   visuell-kontrast algoritme som kalles for APCA, det er fremdeles
   fargeverdiene som benyttes for å kalkulere kontrasten, men også om fargen er
   tekst, grafikk, forgrunn eller bakgrunn, i tillegg har også valg av font,
@@ -146,6 +146,26 @@ Terskelverdiene (over) som viser om kontrasten er godkjent eller ikke, er forenk
 I eksempelet over ser vi at selv om kontrasten som er utregnet til å være lik med WCAG 2-metoden, er graden av lesbarhet ulik for tekstene i variant A og Variant B.
 Begge tekstene har 16px stor tekst i normal vekt, og begge variantene har 4,6 til 1 i kontrast.
 I variant A har teksten fargen #6D7879og bakgrunnen er hvit. Teksten er sånn passe lesbar. I variant B er teksten svart, og bakgrunnen er farge #6D7879. Teksten er noe mindre lesbar enn variant A.
+
+## Referanser og videre diskusjon
+WCAG 3 er enda under arbeid og det er svært mange diskusjoner som går inn på kontrast, det er også wiki-artikler fra aktive og inaktive arbeidsgrupper som kan være til hjelp for å belyse situasjonen
+<ul>
+  <li>
+Visual Contrast of Text Subgroup er en inaktiv gruppe som jobbet med kontrast og [foreslo blant annet at det å oppnå AAA-krav for kontrast fra WCAG 2.1 ville tilsvare nivå 3 i det som var den tidens nivåer diskutert for WCAG 3 | w3.org](https://www.w3.org/WAI/GL/task-forces/silver/wiki/Visual_Contrast_of_Text_Subgroup#)
+  </li>
+  <li>
+Publisert utkast per august 2025, av [WCAG 3.0 inkluderer ikke enda kontrastreglenes utforming og heller ikke da APCA som kontrastmetode.](https://www.w3.org/TR/wcag-3.0/#maximum-text-contrast)
+  </li>
+  <li>
+Det er flere [tabeller foreslått brukt for oppfyllelse av ulike nivå i standarden](https://www.w3.org/WAI/GL/task-forces/silver/wiki/User:Myndex/Conformance), noen av dem foreslått av skaperen av APCA kan gi en forståelse av kompleksiteten.
+  </li>
+  <li>
+[Myndex Github repo for w3c WCAG 3](https://github.com/Myndex/apca-w3)
+  </li>
+  <li>
+I [WCAG 3 Github repoet er det rikelig med diskusjoner](https://github.com/w3c/wcag3/issues?q=is%3Aissue%20state%3Aopen%20contrast%20label%3A%22Path%3A%20Visual%20appearance%22) om emnet, for eksempel en liste over [kilder som har gjort sine individuelle undersøkelser rundt APCA.](https://github.com/w3c/wcag3/issues/29)
+  </li>
+</ul>
 
 <br />
 <br />
