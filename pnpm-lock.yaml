@@ -259,8 +259,8 @@ importers:
         specifier: workspace:^
         version: link:../../internal/components
       '@mjackson/node-fetch-server':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^0.2.0
+        version: 0.2.0
       '@navikt/aksel-icons':
         specifier: ^7.28.1
         version: 7.28.1(react@19.1.1)
