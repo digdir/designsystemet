@@ -14,7 +14,7 @@
   }
 
   /* Stack everything that is not directly after legend */
-  & > *:not(.ds-sr-only) + *:not(p) {
+  & > * + * {
     margin-block-start: var(--ds-size-4);
   }
 
@@ -23,8 +23,8 @@
     margin-block: var(--ds-size-1) 0;
   }
 
-  & > legend.ds-sr-only + p {
-    margin-block: 0;
+  & > *.ds-sr-only + * {
+    margin-block-start: 0;
   }
 
   &:disabled > legend,
