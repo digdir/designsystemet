@@ -3,12 +3,15 @@
   box-shadow: var(--ds-shadow-sm);
   border: none;
   border-radius: 8px;
-  transition:
-    0.2s transform,
-    0.2s box-shadow;
+
   position: relative;
   z-index: 2;
   height: 100%;
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      0.2s transform,
+      0.2s box-shadow;
+  }
 }
 
 .card:hover {
