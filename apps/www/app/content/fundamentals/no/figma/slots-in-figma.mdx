@@ -1,6 +1,6 @@
 ---
-title: Slots i Figma
-description: Lær hvordan du kan bruke slots i Figma for å tilpasse komponenter uten å detache dem.
+title: Bytte innhold med "swap"
+description: Lær hvordan du kan bruke "swap"-funksjonen i Figma for å tilpasse komponenter uten å detache dem.
 date: 2025-08-21
 category: Figma
 color: yellow
@@ -10,25 +10,46 @@ order: 20
 ---
 Når du jobber med komponenter i Figma kan du ofte ha behov for å tilpasse innholdet uten å ødelegge koblingen til hovedkomponenten. Mange løser dette ved å *detache* komponenten, men det gjør at du mister fordelene med å arve endringer og forbedringer fra biblioteket.  
 
-Med **slots** kan du i stedet beholde koblingen og samtidig legge inn eget innhold. Slots fungerer som åpne områder i en komponent, der du kan plassere inn andre komponenter. Trenger du kompliserte sammensetninger av innhold og ulike komponenter kan du sette dem sammen til en egen komponent, og deretter hente denne inn i sloten. 
+Med **"swap"** kan du i stedet beholde koblingen og samtidig legge inn eget innhold. Når du har valgt en komponent, kan du åpne instans-menyen i høyresidepanelet. Her kan du bytte ut komponenten med andre komponenter fra biblioteket. 
 
-Flere av komponentene våre er laget med slots slik at du kan tilpasse hvilket innhold du ønsker å legge inn i dem. Dette gjelder `Card`, `Details` og `Dialog`. 
+I videoen under bytter vi ut `body` i `Alert`-komponenten med en selvlaget sammensatt komponent som inneholder både tekst, `details` og knapper. 
 
-## Hvorfor bruke slots?
+<ResponsiveIframe
+  src='/img/swap-alert.mp4'
+  title='Skjermopptak av Figma som viser hvordan bytte ut en komponent med en annen.'
+  frameBorder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+  allowFullScreen
+  aspectRatio='16-9'
+/>
+
+Du markerer altså komponenten du vil bytte ut, åpner instans-menyen i høyresidepanelet, og finner komponenten du vil bruke i stedet. Hvis innholdet består av flere elementer, kan du lage en ny komponent med det innholdet du ønsker. Husk å bruke punktum (.) foran navnet på komponenten hvis den ikke skal eksporteres til biblioteket. 
+
+
+## Hvorfor bruke swap?
 - **Beholder koblingen til biblioteket.** Du slipper å oppdatere manuelt når hovedkomponenten endres.  
 - **Mer fleksibel bruk.** Du kan sette inn innhold som varierer fra gang til gang, uten å endre selve komponenten.  
 - **Konsistens og kontroll.** Grunnstrukturen og stilen kommer fra Designsystemet, mens du har frihet til å fylle innholdet.  
 
+## "Slots"-områder
+Flere av komponentene våre har innebygde "slots"-områder, siden vi ikke vet hva du har behov for av innhold. Dette gjelder `Card`, `Details` og `Dialog`. "Slots" i disse komponentene fungerer som åpne områder der du kan plassere det innholdet du trenger. Trenger du kompliserte sammensetninger av innhold og ulike komponenter kan du sette dem sammen til en egen komponent, og deretter bytte ut Slot-komponenten med din egen.
 
 ## Hvordan fungerer det i praksis?
-La oss ta et eksempel med en **dialog-komponent**. En dialog kan ha ulikt innhold avhengig av behov – alt fra en enkel tekstmelding til komplekse grensesnitt.
+La oss ta et eksempel med en **dialog-komponent**. En `Dialog` kan ha ulikt innhold avhengig av behov, alt fra en enkel tekst til komplekse grensesnitt.
 
 1. Sett inn dialog-komponenten fra biblioteket.  
 2. I stedet for å *detache*, bruk slot-området som er tilgjengelig inne i komponenten.  
 3. Legg inn innholdet du trenger, for eksempel en tabell eller en liste.  
 4. Hvis innholdet består av flere elementer, kan du lage en ny komponent av dette innholdet og plassere den inn i sloten.  
 
-[VIDEO]
+<ResponsiveIframe
+  src='/img/swap-alert.mp4'
+  title='Skjermopptak av Figma som viser hvordan bytte ut en komponent med en annen.'
+  frameBorder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+  allowFullScreen
+  aspectRatio='16-9'
+/>
 
 <br/>
 
