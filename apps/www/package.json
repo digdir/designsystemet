@@ -8,13 +8,17 @@
     "start": "react-router-serve ./dist/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js",
     "types": "react-router typegen && tsc"
   },
+    "pnpm": {
+    "overrides": {
+      "@mjackson/node-fetch-server": "npm:@remix-run/node-fetch-server@^0.8.0"
+    }
+  },
   "dependencies": {
     "@digdir/designsystemet": "workspace:^",
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
     "@internal/components": "workspace:^",
-    "@mjackson/node-fetch-server": "^0.7.0",
     "@navikt/aksel-icons": "^7.28.1",
     "@radix-ui/react-slot": "^1.2.3",
     "@react-router/node": "^7.8.2",
@@ -32,7 +36,8 @@
     "rehype-autolink-headings": "^7.1.0",
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.1",
-    "remix-i18next": "^7.3.0"
+    "remix-i18next": "^7.3.0",
+    "@remix-run/node-fetch-server": "^0.8.0"
   },
   "devDependencies": {
     "@react-router/dev": "^7.8.2",
