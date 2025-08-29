@@ -34,7 +34,7 @@ const colorModes = ['light', 'dark', 'auto'];
 const typography = ['primary', 'secondary'];
 
 export const ShowcaseStory: StoryFn = () => {
-  const [size, setSize] = useState<Size>('sm');
+  const [size, setSize] = useState<Size>('md');
   const [colorMode, setColorMode] = useState('auto');
   const [typographyMode, setTypographyMode] = useState('primary');
 
@@ -44,7 +44,7 @@ export const ShowcaseStory: StoryFn = () => {
         <Fieldset>
           <Fieldset.Legend>
             Størrelse
-            <code data-size='xs'>(data-size)</code>
+            <code>(data-size)</code>
           </Fieldset.Legend>
           <ToggleGroup value={size} onChange={(val) => setSize(val as Size)}>
             {sizes.map((size) => (
@@ -57,7 +57,7 @@ export const ShowcaseStory: StoryFn = () => {
         <Fieldset>
           <Fieldset.Legend>
             Fargemodus
-            <code data-size='xs'>(data-color-scheme)</code>
+            <code>(data-color-scheme)</code>
           </Fieldset.Legend>
           <ToggleGroup value={colorMode} onChange={setColorMode}>
             {colorModes.map((colorMode) => (
@@ -70,7 +70,7 @@ export const ShowcaseStory: StoryFn = () => {
         <Fieldset>
           <Fieldset.Legend>
             Typografi
-            <code data-size='xs'>(data-typography)</code>
+            <code>(data-typography)</code>
           </Fieldset.Legend>
           <ToggleGroup value={typographyMode} onChange={setTypographyMode}>
             {typography.map((typographyMode) => (

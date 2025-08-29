@@ -59,8 +59,8 @@ export default function BestPractices() {
             <Heading
               data-size='md'
               style={{
-                marginTop: index === 0 ? '0' : 'var(--ds-size-10)',
-                marginBottom: `var(--ds-size-3)`,
+                marginTop: index === 0 ? '0' : 'var(--ds-size-15)',
+                marginBottom: `var(--ds-size-5)`,
               }}
             >
               {key}

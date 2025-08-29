@@ -65,10 +65,10 @@ export const colorScheme: Format = {
 
 export const colorCategory: Format = {
   name: 'ds/css-colorcategory',
-  format: async ({ dictionary, options, platform }) => {
+  format: async ({ dictionary, file, options, platform }) => {
     const { outputReferences, usesDtcg } = options;
-    const { selector, layer, files } = platform;
-    const destination = files?.[0]?.destination as string;
+    const { selector, layer } = platform;
+    const destination = file.destination as string;
 
     const format = R.compose(
       createPropertyFormatter({
