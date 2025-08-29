@@ -8,11 +8,6 @@
     "start": "react-router-serve ./dist/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js",
     "types": "react-router typegen && tsc"
   },
-  "pnpm": {
-    "overrides": {
-      "@mjackson/node-fetch-server": "npm:@remix-run/node-fetch-server@^0.8.0"
-    }
-  },
   "dependencies": {
     "@digdir/designsystemet": "workspace:^",
     "@digdir/designsystemet-css": "workspace:^",
