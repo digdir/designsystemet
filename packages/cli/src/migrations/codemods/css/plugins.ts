@@ -1,14 +1,14 @@
-import chalk from 'chalk';
 import hash from 'object-hash';
+import pc from 'picocolors';
 import type { Declaration, Plugin } from 'postcss';
 import * as R from 'ramda';
 
 type PluginGenerator = (dictionary: Record<string, string>) => Plugin;
 
-const printDelete = (text: string) => console.log(`${chalk.red('Deleted:')} ${text}`.replace(/"|'/g, ''));
+const printDelete = (text: string) => console.log(`${pc.red('Deleted:')} ${text}`.replace(/"|'/g, ''));
 
 const deleteMsg = (decl: Declaration, from: string) =>
-  `${chalk.yellow(from)} @ ${chalk.gray(`${JSON.stringify(decl.source?.input.file)}:${decl.source?.start?.line}:${decl.source?.start?.column}`)}`;
+  `${pc.yellow(from)} @ ${pc.gray(`${JSON.stringify(decl.source?.input.file)}:${decl.source?.start?.line}:${decl.source?.start?.column}`)}`;
 
 export const cssClassRename: PluginGenerator = (dictionary) => ({
   postcssPlugin: `Renames CSS classes ${hash(dictionary)}`,

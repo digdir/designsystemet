@@ -70,6 +70,7 @@ export function createSingleStory<
                 </StoryStyles>
               );
             }
+            return null;
           })}
         </>
       );

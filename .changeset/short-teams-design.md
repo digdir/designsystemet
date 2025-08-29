@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-**Field**: Don't check for hidden elements
+**Switch**: correct jsdoc on `label` prop

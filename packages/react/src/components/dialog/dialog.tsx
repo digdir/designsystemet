@@ -41,6 +41,8 @@ export type DialogProps = MergeRight<
     /**
      * Change the default rendered element for the one passed as a child, merging their props and behavior.
      * @default false
+     *
+     * @deprecated Will be removed in the next major version. Should always be a `<dialog>` element
      */
     asChild?: boolean;
   }
@@ -97,12 +99,20 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
       const handleClosedby = (event: Event) => {
         if (event.defaultPrevented) return; // Skip if default action is prevented
         const { clientY: y, clientX: x, target } = event as MouseEvent;
+
         if (event instanceof KeyboardEvent)
           return (
             closedby === 'none' &&
             event.key === 'Escape' &&
             event.preventDefault()
           ); // Skip ESC-key if closedby="none"
+
+        /* Check if clicked element or its closest parent has data-command='close' */
+        if (target instanceof Element) {
+          const closeElement = target.closest('[data-command="close"]');
+          if (closeElement) return dialog?.close();
+        }
+
         if (window.getSelection()?.toString()) return; // Fix bug where if you select text spanning two divs it thinks you clicked outside
         if (dialog && target === dialog && closedby === 'any') {
           const { top, left, right, bottom } = dialog.getBoundingClientRect();
@@ -144,17 +154,14 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
         {...rest}
       >
         {closeButton !== false && (
-          <form method='dialog'>
-            <Button
-              aria-label={closeButton}
-              autoFocus
-              data-color='neutral'
-              icon
-              name='close'
-              type='submit'
-              variant='tertiary'
-            />
-          </form>
+          <Button
+            aria-label={closeButton}
+            autoFocus
+            data-color='neutral'
+            icon
+            variant='tertiary'
+            data-command='close'
+          />
         )}
         {children}
       </Component>

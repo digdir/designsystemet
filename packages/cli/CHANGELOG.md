@@ -1,5 +1,23 @@
 # Change Log
 
+## 1.3.0
+
+### Minor Changes
+
+- Renamed $designsystemet.json to $designsystemet.jsonc so token-studio ignores the file ([#3970](https://github.com/digdir/designsystemet/pull/3970))
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#3973](https://github.com/digdir/designsystemet/pull/3973))
+
+## 1.2.0
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#3923](https://github.com/digdir/designsystemet/pull/3923))
+
+- Replace `chalk` with `picocolors` ([#3910](https://github.com/digdir/designsystemet/pull/3910))
+
 ## 1.1.10
 
 ### Patch Changes
