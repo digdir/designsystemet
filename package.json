@@ -33,6 +33,11 @@
     "update:theme-digdir": "pnpm --filter @digdir/designsystemet update:theme-digdir",
     "update:theme": "pnpm build:cli && pnpm --filter @digdir/designsystemet-theme update:theme"
   },
+  "pnpm": {
+    "overrides": {
+      "@mjackson/node-fetch-server": "npm:@remix-run/node-fetch-server@^0.8.0"
+    }
+  },
   "devDependencies": {
     "@biomejs/biome": "2.2.2",
     "@changesets/changelog-github": "^0.5.1",
