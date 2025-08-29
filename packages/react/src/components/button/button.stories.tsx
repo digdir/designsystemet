@@ -78,7 +78,7 @@ ColorsPressed.parameters = {
 
 export const Icons: StoryFn<typeof Button> = () => (
   <>
-    <Button icon aria-label='Kun ikon'>
+    <Button icon aria-label='Rediger'>
       <PencilWritingIcon aria-hidden />
     </Button>
     <Button>
