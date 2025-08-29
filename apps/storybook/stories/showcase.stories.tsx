@@ -29,12 +29,12 @@ export default {
   },
 } as Meta;
 
-const sizes: (Size | 'auto')[] = ['sm', 'md', 'lg', 'auto'];
+const sizes: Size[] = ['sm', 'md', 'lg'];
 const colorModes = ['light', 'dark', 'auto'];
 const typography = ['primary', 'secondary'];
 
 export const ShowcaseStory: StoryFn = () => {
-  const [size, setSize] = useState<Size | 'auto'>('auto');
+  const [size, setSize] = useState<Size>('md');
   const [colorMode, setColorMode] = useState('auto');
   const [typographyMode, setTypographyMode] = useState('primary');
 
