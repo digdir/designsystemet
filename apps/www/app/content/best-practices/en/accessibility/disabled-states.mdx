@@ -27,7 +27,7 @@ That said, all meaningful content on the page must be available to everyone. If 
 
 Disabled states can be difficult to perceive. They are usually designed with low colour contrast and rely on a colour change as the only graphical means of communicating the state. This can be problematic not only for people with visual impairments, but also for those in bright surroundings or with poor-quality screens.
 
-If disabled elements have the same level of contrast as active ones, users may think they are interactive. They might try to click them, without receiving any response or explanation, and become stuck without understanding why. The reason an element is disabled is usually implicit—we do not explain why it is disabled. The user must guess, and they may guess wrong.
+If disabled elements have the same level of contrast as active ones, users may think they are interactive. They might try to click them, without receiving any response or explanation, and become stuck without understanding why. The reason an element is disabled is usually implicit, we do not explain why it is disabled. The user must guess, and they may guess wrong.
 
 In some cases, the user may not even notice when an element becomes active. For example, if activation occurs after filling in something higher up in a form and the button is out of sight, the user may not realise that the button has suddenly become available.
 
@@ -83,7 +83,7 @@ Developers are sometimes tempted to “disable” an element visually using CSS,
 ## Harm reduction
 When you must display a disabled control, make it both visible and clear.
 
-Ensure the component can be perceived and understood by everyone, including people with visual impairments, assistive technology users, those on devices with poor screens, those in bright environments, as well as people with limited digital skills or cognitive impairments. The state should stand out from active elements without fading into the background. You may add an icon, pattern, or other indicator. At the same time, the element should still look like a control—otherwise nobody will know the function exists.
+Ensure the component can be perceived and understood by everyone, including people with visual impairments, assistive technology users, those on devices with poor screens, those in bright environments, as well as people with limited digital skills or cognitive impairments. The state should stand out from active elements without fading into the background. You may add an icon, pattern, or other indicator. At the same time, the element should still look like a control, otherwise nobody will know the function exists.
 
 Always explain why the control is disabled, and what is required to enable it. Place the explanation directly in the interface, not only on hover, so that everyone gets the information regardless of device or assistive technology. This prevents guesswork and avoids users trying to use something that cannot be used.
 
