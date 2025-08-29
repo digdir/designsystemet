@@ -1,0 +1,99 @@
+---
+title: Disabled states
+description: Why disabled states are challenging, and how to avoid them
+date: 2025-07-18
+author: Nav
+category: Accessibility
+published: true
+---
+
+Disabled states can be difficult for users to perceive and understand, which is why we recommend avoiding them in your solution. In this article, we look at technical details and alternative approaches. In cases where using disabled states is still relevant, we suggest harm-reducing measures.
+
+<br/>
+
+<Card
+  data-color="info"
+  data-variant="tinted"
+>
+## What does WCAG say about disabled states?
+WCAG does not prohibit the use of disabled states. However, it is often the way such states are designed and implemented that leads to WCAG violations.
+
+What WCAG actually says is that “inactive components” are exempt from contrast requirements (1.4.3 and 1.4.11)... without defining what “inactive components” means. W3C’s “Understanding” articles, which are non-normative, clarify that disabled components do not need to meet contrast requirements.
+
+That said, all meaningful content on the page must be available to everyone. If your disabled component does not add meaning, it is probably best not to show it at all.
+</Card>
+
+## Why are disabled states problematic?
+
+Disabled states can be difficult to perceive. They are usually designed with low colour contrast and rely on a colour change as the only graphical means of communicating the state. This can be problematic not only for people with visual impairments, but also for those in bright surroundings or with poor-quality screens.
+
+If disabled elements have the same level of contrast as active ones, users may think they are interactive. They might try to click them, without receiving any response or explanation, and become stuck without understanding why. The reason an element is disabled is usually implicit—we do not explain why it is disabled. The user must guess, and they may guess wrong.
+
+In some cases, the user may not even notice when an element becomes active. For example, if activation occurs after filling in something higher up in a form and the button is out of sight, the user may not realise that the button has suddenly become available.
+
+Disabled states also do not receive keyboard focus, meaning screen reader and braille display users may miss them entirely.
+
+## Common use cases
+
+Designers mainly use disabled states in three situations:
+
+- To show that an option is not relevant at the moment, but may become relevant later.
+- To show that a form has not been correctly or fully completed.
+- To show that an element cannot be changed (“read only”).
+
+## Alternative solutions
+Fortunately, there are alternatives to using disabled states.
+
+### Form validation
+Considering using a disabled submit button as a form of validation? Instead, validate inline as usual, keep the button active, and show an error message when the user tries to submit the form.
+
+### Irrelevant choices
+If a choice is not relevant, it is usually better to remove the option altogether rather than disable it. You may also wish to provide the user with information about why the option is not available.
+
+### Read-only content
+Use plain text rather than disabling read-only input fields, optionally with additional information explaining why the content cannot be changed.
+
+## HTML and ARIA attributes
+HTML offers several ways to indicate that something is non-interactive, each with slightly different behaviour.
+
+### `disabled`
+
+Form elements with `disabled` are completely inactive. They cannot be focused with keyboard or mouse: they are skipped in the tab order, and the user cannot click them (no `onClick` event is fired). Browsers often change their appearance automatically. A disabled form field is also not submitted when the form is posted.
+
+If you set `disabled` on a `<fieldset>`, all controls within the group are disabled, except for the `<legend>` content.
+
+### `aria-disabled="true"`
+You can use `aria-disabled="true"` when an element does not support the built-in `disabled` attribute. Screen readers will announce the element as “dimmed” or “disabled”, helping the user understand that the function exists but is not currently available. Applying `aria-disabled="true"` to a grouping (e.g. `<fieldset>` or `role="radiogroup"`) tells assistive technologies that the whole group is disabled.
+
+As with other ARIA attributes, only the semantics change, not the behaviour: the element can still receive focus via keyboard or mouse. You therefore need to prevent the action or provide clear feedback if the user tries to activate it. The benefit is that keyboard and screen reader users discover the function; the drawback is that they may still attempt to use it, so you must handle this in code.
+
+### `readonly`
+`readonly` only applies to input types where the value can be changed by the user, i.e. `textarea` and text inputs (text, search, email, etc.). It cannot be used on a radio group or fieldset. Fields with `readonly` remain in the tab order, and users can copy content but not change it. Data in `readonly` fields is submitted with the form.
+
+Input fields with `readonly` receive no default styling that distinguishes them from regular editable fields. This can be confusing if users do not understand why they cannot change the content. If you choose to use `readonly`, make sure to style the field differently from normal text fields and explain why the content cannot be changed.
+
+### `aria-readonly="true"`
+For form elements other than text inputs and `textarea`, you can use `aria-readonly="true"`. This attribute is most relevant for custom components, when you want to communicate to assistive technologies that the element is read-only. `aria-readonly="true"` can be applied to a group, though support is inconsistent.
+
+As with all ARIA attributes, `aria-readonly` only changes semantics, not functionality. You must ensure that users cannot change the values of elements marked with `aria-readonly`.
+
+### CSS `pointer-events: none`
+Developers are sometimes tempted to “disable” an element visually using CSS, for example by adding a semi-transparent overlay or by setting `pointer-events: none` to block mouse clicks. The element remains keyboard focusable and will be perceived as active by screen readers.
+
+## Harm reduction
+When you must display a disabled control, make it both visible and clear.
+
+Ensure the component can be perceived and understood by everyone, including people with visual impairments, assistive technology users, those on devices with poor screens, those in bright environments, as well as people with limited digital skills or cognitive impairments. The state should stand out from active elements without fading into the background. You may add an icon, pattern, or other indicator. At the same time, the element should still look like a control—otherwise nobody will know the function exists.
+
+Always explain why the control is disabled, and what is required to enable it. Place the explanation directly in the interface, not only on hover, so that everyone gets the information regardless of device or assistive technology. This prevents guesswork and avoids users trying to use something that cannot be used.
+
+Ultimately, our main recommendation remains: avoid disabled states whenever possible, by designing the solution so that users do not encounter a blocked path without explanation.
+
+
+<Contributors
+  authors={[
+    'Sarah Brodwall (Nav)'
+  ]}
+/>
+
+<br/>
