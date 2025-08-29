@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.3.1
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#3989](https://github.com/digdir/designsystemet/pull/3989))
+
+- **Switch**: correct jsdoc on `label` prop ([#3984](https://github.com/digdir/designsystemet/pull/3984))
+
 ## 1.3.0
 
 ### Minor Changes
