@@ -14,10 +14,12 @@
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
     "@internal/components": "workspace:^",
+    "@mjackson/node-fetch-server": "^0.7.0",
     "@navikt/aksel-icons": "^7.28.1",
     "@radix-ui/react-slot": "^1.2.3",
     "@react-router/node": "^7.8.2",
     "@react-router/serve": "^7.8.2",
+    "@remix-run/node-fetch-server": "^0.8.0",
     "@vercel/react-router": "^1.2.2",
     "clsx": "^2.1.1",
     "htmlfy": "^1.0.0",
@@ -37,8 +39,8 @@
     "remix-i18next": "^7.3.0"
   },
   "devDependencies": {
-    "@types/hast": "^3.0.4",
     "@react-router/dev": "^7.8.2",
+    "@types/hast": "^3.0.4",
     "@types/node": "^22.17.2",
     "@types/ramda": "^0.31.0",
     "@types/react": "^19.1.11",
