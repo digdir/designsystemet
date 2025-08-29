@@ -19,7 +19,7 @@
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
     "@internal/components": "workspace:^",
-    "@mjackson/node-fetch-server": "^0.2.0",
+    "@mjackson/node-fetch-server": "^0.7.0",
     "@navikt/aksel-icons": "^7.28.1",
     "@radix-ui/react-slot": "^1.2.3",
     "@react-router/node": "^7.8.2",
