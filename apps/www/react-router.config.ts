@@ -110,6 +110,10 @@ const allPages = [
   '/en/components',
   '/no/components/button',
   '/en/components/button',
+  '/no/components/alert',
+  '/en/components/alert',
+  '/no/components/suggestion',
+  '/en/components/suggestion',
   ...contentPaths,
 ];
 
