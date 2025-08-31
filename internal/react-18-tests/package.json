@@ -3,7 +3,7 @@
   "type": "module",
   "private": true,
   "dependencies": {
-    "@floating-ui/react": "0.26.23",
+    "@floating-ui/react": "0.27.16",
     "@navikt/aksel-icons": "^7.28.1",
     "@radix-ui/react-slot": "^1.2.3",
     "@tanstack/react-virtual": "^3.13.12",
