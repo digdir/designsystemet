@@ -7,7 +7,7 @@ category: Accessibility
 published: true
 ---
 
-To ensure good readability, all text should have sufficient contrast against the background. This is important for all users, especially under challenging lighting conditions. Those who need this most are the visually impaired, dyslexics, and the color blind (source: [uutilsynet](https://www.uutilsynet.no/veiledning/kontrast/48)).
+To ensure good readability, all text should have sufficient contrast against the background. This is important for all users, especially under challenging lighting conditions. Those who need this most are the visually impaired, dyslexics, and the color blind (source: [uutilsynet.no](https://www.uutilsynet.no/veiledning/kontrast/48)).
 
 ## Need for stricter contrast requirements
 
@@ -52,20 +52,20 @@ All users, including those with impaired vision, should be able to perceive cont
       the focus indicator requires that contrast ratio between the same 
       pixels in the focused and unfocused states must be at least 3:1.
       [Understanding Success Criterion 2.4.13: Focus Appearance | WAI |
-      W3C](https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance.html)
+      (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance.html)
     </li>
     <li>
-      **WCAG 3** has a requirement for color and contrast, visual contrast in text
+      **WCAG 3** discuss a requirement for color and contrast, visual contrast in text
       (silver): Ensure sufficient contrast between foreground text and the
       background of the text. A new method, called APCA,
-      is now used to calculate the contrast.
+      is suggested to calculate the contrast.
     </li>
   </ul>
 </Card>
 
 ## A new and more accurate method
 
-WCAG 3.0 now proposes a more accurate method than today's standard for calculating contrast and setting threshold values.
+In WCAG 3.0 there is discussions around a more accurate method than today's standard for calculating contrast and setting threshold values.
 
 <ul>
   <li>
@@ -89,7 +89,7 @@ WCAG 3.0 now proposes a more accurate method than today's standard for calculati
 
 To ensure that the content in public digital services is accessible to all users, we aim to achieve compliance with WCAG 2.1 AAA.
 
-To further enhance readability, we have ambitions to achieve contrast at level 4. This is the top level in the APCA method, which is now being proposed in WCAG 3.0.
+To further enhance readability, we have ambitions to achieve contrast at level 4. This is the top level conformance, which is being discussed in a for now [inactive work on contrast in WCAG 3.0 (w3.org)](https://www.w3.org/WAI/GL/task-forces/silver/wiki/Visual_Contrast_of_Text_Subgroup)
 
 ## Why isn't today's standard good enough?
 
@@ -110,7 +110,7 @@ If we follow the method in WCAG 2, we technically meet the requirement for unive
 
 <Card data-color='brand2' variant="tinted">
   **Contrast in WCAG 3 "visual contrast algorithm"** <br />In WCAG 3 a
-  visual-contrast algorithm called APCA is used. It still uses the
+  visual-contrast algorithm called APCA is suggested. It still uses the
   color values to calculate the contrast, but also whether the color is
   text, graphics, foreground or background. In addition, the choice of font,
   font weight and size also have an impact on which contrast values are
@@ -122,7 +122,7 @@ If we follow the method in WCAG 2, we technically meet the requirement for unive
 
 ## Tools for testing contrast values
 
-The Brønnøysund Register Centre's color system can be found in [the contrast tool](https://contrast.brreg.no/). You can test how contrast values change depending on which text color, size, and weight you choose. And you can see which levels of requirements are met, whether they are WCAG AA or AAA levels, or APCA.
+The Brønnøysund Register Centre's color system can be found in [the contrast tool (brreg.no)](https://contrast.brreg.no/). You can test how contrast values change depending on which text color, size, and weight you choose. And you can see which levels of requirements are met, whether they are WCAG AA or AAA levels, or APCA.
 
 <Image
   src='/img/Kontrast-terskelverdier.png'
@@ -145,6 +145,15 @@ In the example above, we see that even though the contrast is calculated to be t
 Both texts are 16px in normal weight, and both variants have a contrast of 4.6 to 1.
 In variant A, the text has the color #6D7879 with a white background. The text is somewhat readable.
 In variant B, the text is black, and the background has the color #6D7879. The text is slightly less readable than variant A.
+
+## References and further discussions
+Severall discussions in the ongoing work on WCAG 3 is on the tpoic of contrast. There is also wikis from both active and inactive working subgroups that can shed light on the situation.
+- Visual Contrast of Text Subgroup, an inactive group working on contrast, [suggested that conformance for AAA-level in WCAG 2 would be equal to Score 3 in what was then the discussed conformance-levels of WCAG 3 (w3.org)](https://www.w3.org/WAI/GL/task-forces/silver/wiki/Visual_Contrast_of_Text_Subgroup#)
+- The published draft as of august 2025, for [WCAG 3 does not include the contrast requirements or the method for APCA method. (w3.org)](https://www.w3.org/TR/wcag-3.0/#maximum-text-contrast)
+- Multiple [reference tables have been suggested used for various conformance levels (w3.org)](https://www.w3.org/WAI/GL/task-forces/silver/wiki/User:Myndex/Conformance), some of them suggested by the author of APCA can provide an understanding of the complexity.
+- [Myndex Github repo for w3c WCAG 3 (github.com)](https://github.com/Myndex/apca-w3)
+- Find [multiple discussions in the WCAG 3 Github repo on the subject of contrast (github.com)](https://github.com/w3c/wcag3/issues?q=is%3Aissue%20state%3Aopen%20contrast%20label%3A%22Path%3A%20Visual%20appearance%22), i.e. there is a [list of independent sources that has made their own investigations on APCA. (github.com)](https://github.com/w3c/wcag3/issues/29)
+- Interview with the creator of APCA, where he talk about subject like why the WCAG 2 contrast method is problematic and also about the science behind APCA, all with examples. [Video: How APCA Changes Accessible Contrast with Andrew Somers (youtube.com).](https://www.youtube.com/watch?v=E-CZial5VkU)
 
 <br />
 <br />
