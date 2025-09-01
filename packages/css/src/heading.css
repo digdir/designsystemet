@@ -54,3 +54,28 @@
     letter-spacing: var(--ds-heading-2xl-letter-spacing);
   }
 }
+
+/*
+Workaround for data-size meaning both "change size mode" and "set font size"
+As long as data-size is overloaded in this way, this workaround is needed for
+the component to scale based on the surrounding data-size.
+*/
+.ds-heading {
+  /* Default to medium no matter what size is set on the element */
+  &[data-size] {
+    --ds-size: var(--ds-size--md);
+  }
+}
+/* Try using the nearest ancestor size mode */
+[data-size='sm'] :not([data-size]) .ds-heading,
+[data-size='sm'] > .ds-heading {
+  --ds-size: var(--ds-size--sm);
+}
+[data-size='md'] :not([data-size]) .ds-heading,
+[data-size='md'] > .ds-heading {
+  --ds-size: var(--ds-size--md);
+}
+[data-size='lg'] :not([data-size]) .ds-heading,
+[data-size='lg'] > .ds-heading {
+  --ds-size: var(--ds-size--lg);
+}

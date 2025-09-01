@@ -10,44 +10,114 @@ order: 30
 ---
 
 
-HTML data attributes are used to define the size of a component. Components can use all available sizes.
+HTML data attributes and css custom properties can be used to define the *size mode* of a component. This works for all components and regular HTML elements, with a few exceptions noted below.
 
-Our `size` variables (`--ds-size-*`) change based on the local font size (formula based on `em`). You can easily change this by setting `data-size` for our recommended sizes, or define your own sizes by setting `font-size` in CSS.
+The size mode affects our size variables (`--ds-size-*`), and font-size variables (`--ds-font-size-*` and `--ds-*-font-size-*`).
 
-## `data-size`
+## Setting size mode with `data-size`
 
-This data attribute is used to change sizes on all components beneath it.
-All components can be in the sizes `sm`, `md` or `lg`. By default, `md` will be used.
+This data attribute is used to change the size mode, which affects the element itself and all descendant elements.
+We support three size modes out of the box: `sm`, `md` and `lg`. By default, `md` will be used.
 
 ```html
 <body>
   <div>
-    <!-- Content here will have MD sizes -->
+    <!-- The md size mode is used by default -->
   </div>
 
-  <div data-size="sm">
-    <!-- Content here will have SM sizes -->
+  <div data-size="sm"> <!-- This element will use the sm size mode -->
+    <!-- Descendants will also use the sm size mode -->
   </div>
 </body>
 ```
 
-Some components support more sizes, such as `xs` and `xl`. These sizes will be specified in the component's documentation,
-and it is recommended to use the sizes that are specified.
+## Setting size mode with css custom properties
 
-## How components are affected
+Instead of setting a specific size mode in the markup, you can set the css custom property `--ds-size`.
+The advantage of this is it allows you to set the size mode based on a media query or container query.
 
-We divide components into 2 groups for sizes:
+This is done by defining `--ds-size: var(--ds-size--<mode>)` where `<mode>` is either `sm`, `md` or `lg`.
+Note that for an element to be affected, the `data-size` attribute also needs to be set,
+but it can be blank or set to anything other than `"sm"`, `"md"` or `"lg"`.
 
-- Explicit
-- Cascading
+Example: Adding an "auto" size mode
 
-### Explicit
+```css
+[data-size='auto'] {
+    --ds-size: var(--ds-size--sm);
 
-Components that will not follow the size of the parent. These components must have `data-size` set directly on them.
+    @media (min-width: 600px) {
+      --ds-size: var(--ds-size--md);
+    }
+    @media (min-width: 992px) {
+      --ds-size: var(--ds-size--lg);
+    }
+}
+```
 
-These are components like:
-- `Heading`
+```html
+<body data-size="auto">
+  <div data-size="sm"> <!-- This element will use the sm size mode -->
+    <!-- Descendants will also use the sm size mode -->
+  </div>
+  <!--
+    Descendants of <body> without an explicit data-size attribute
+    will now use sm, md or lg based on the viewport width
+  -->
+</body>
+```
 
-### Cascading
+## Exceptions
 
-This group contains the rest of the components, and will inherit size from the nearest parent with `data-size` set.
+For certain components, `data-size` doesn't set the size mode, but instead only sets the component size.
+This is the case for
+  - `Avatar`
+  - `Heading`
+  - `Paragraph`
+  - `Spinner`
+
+These components support other sizes, such as `xs` and `xl`. Refer to the component's documentation to see exactly which sizes are supported.
+
+They are still affected by the surrounding size mode, e.g. in this example the first paragraph will be smaller than the second:
+```jsx
+<div data-size="sm">
+  <Paragraph data-size="xs">Lorem ipsum</Paragraph>
+</div>
+<div data-size="md">
+  <Paragraph data-size="xs">Lorem ipsum</Paragraph>
+</div>
+```
+
+It is confusing that `data-size` means *size mode* in certain contexts, and *component size* in other contexts. This will likely be remedied in the next major version as a breaking change.
+
+## Defining custom sizes
+
+Under the hood, our variables change based on the local value of `--ds-size-mode-font-size`, and use `rem` for scaling based on browser settings. We have defined shorthands for setting `--ds-size-mode-font-size` through `data-size="<mode>"` or `--ds-size: var(--ds-size--<mode>)`, but you can also set this variable directly for custom sizing.
+
+Note that for an element to be affected, the `data-size` attribute also needs to be set,
+but it can be blank or set to anything other than `"sm"`, `"md"` or `"lg"`.
+
+```css
+.example {
+  --ds-size-mode-font-size: 0.9;
+}
+[data-size="giant"] {
+   --ds-size-mode-font-size: 1.5;
+}
+```
+
+```html
+<body>
+  <div>
+    <!-- The md size mode is used by default -->
+  </div>
+
+  <div data-size class="example">
+    <!-- This element and descenants will use 0.9 as a scaling factor, as defined by the .example class  -->
+  </div>
+
+  <div data-size="giant" >
+    <!-- This element and descenants will use the custom size mode "giant", with 1.5 as the scaling factor -->
+  </div>
+</body>
+```
