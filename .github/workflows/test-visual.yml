@@ -6,14 +6,7 @@ on:
       - 'renovate/**'
   pull_request:
     branches: [main, next]
-    types:
-      # Ensure workflow is run when PR is ready for review
-      - ready_for_review
-      # Also enable the default trigger types, for instances when
-      # the PR is not opened as a draft first
-      - opened
-      - reopened
-      - synchronize
+    types: [ready_for_review, synchronize, opened]
     paths:
       - .github/workflows/visual-tests.yml
       - 'packages/**/*.@(tsx|ts)'
@@ -32,6 +25,7 @@ jobs:
         with:
           # Necessary for Chromatic
           fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
       - uses: ./.github/actions/gh-setup
       - name: Build
         run: pnpm build
