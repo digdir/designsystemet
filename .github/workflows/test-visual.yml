@@ -1,6 +1,9 @@
 name: Visual tests
 on:
   workflow_dispatch:
+  push:
+    branches-ignore:
+      - 'renovate/**'
   pull_request:
     branches: [main, next]
     types:
@@ -11,13 +14,13 @@ on:
       - opened
       - reopened
       - synchronize
-
     paths:
       - .github/workflows/visual-tests.yml
-      - 'packages/**'
+      - 'packages/**/*.@(tsx|ts)'
+      - 'packages/**/*.css'
+      - 'packages/**/*.stories.@(ts|tsx)'
       - 'apps/storybook/**'
-  push:
-    branches: [main, next]
+      - 'design-tokens/**/*.(json|jsonc)'
 
 jobs:
   checks:
@@ -41,3 +44,5 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           exitZeroOnChanges: true
           autoAcceptChanges: '{main,next}'
+          onlyChanged: true
+          skip: '@(renovate/**|dependabot/**)'
