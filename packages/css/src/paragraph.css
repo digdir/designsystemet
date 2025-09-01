@@ -45,28 +45,3 @@
     line-height: var(--ds-line-height-sm);
   }
 }
-
-/*
-Workaround for data-size meaning both "change size mode" and "set font size".
-As long as data-size is overloaded in this way, this workaround is needed for
-the component to scale based on the surrounding data-size.
-*/
-.ds-paragraph {
-  /* Default to medium no matter what size is set on the element */
-  &[data-size] {
-    --ds-size: var(--ds-size--md);
-  }
-}
-/* Try using the nearest ancestor size mode */
-[data-size='sm'] :not([data-size]) .ds-paragraph,
-[data-size='sm'] > .ds-paragraph {
-  --ds-size: var(--ds-size--sm);
-}
-[data-size='md'] :not([data-size]) .ds-paragraph,
-[data-size='md'] > .ds-paragraph {
-  --ds-size: var(--ds-size--md);
-}
-[data-size='lg'] :not([data-size]) .ds-paragraph,
-[data-size='lg'] > .ds-paragraph {
-  --ds-size: var(--ds-size--lg);
-}

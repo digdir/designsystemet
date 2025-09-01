@@ -82,28 +82,3 @@
     font-size: var(--ds-body-lg-font-size);
   }
 }
-
-/*
-Workaround for data-size meaning both "change size mode" and "set avatar size".
-As long as data-size is overloaded in this way, this workaround is needed for
-the component to scale based on the surrounding data-size.
-*/
-.ds-avatar {
-  /* Default to medium no matter what size is set on the element */
-  &[data-size] {
-    --ds-size: var(--ds-size--md);
-  }
-}
-/* Try using the nearest ancestor size mode */
-[data-size='sm'] :not([data-size]) .ds-avatar,
-[data-size='sm'] > .ds-avatar {
-  --ds-size: var(--ds-size--sm);
-}
-[data-size='md'] :not([data-size]) .ds-avatar,
-[data-size='md'] > .ds-avatar {
-  --ds-size: var(--ds-size--md);
-}
-[data-size='lg'] :not([data-size]) .ds-avatar,
-[data-size='lg'] > .ds-avatar {
-  --ds-size: var(--ds-size--lg);
-}
