@@ -10,9 +10,9 @@ order: 30
 ---
 
 
-HTML data attributes and css custom properties can be used to define the *size mode* of a component. This works for all components and regular HTML elements, with a few exceptions noted below.
+HTML data attributes and css custom properties (variables) can be used to define the *size mode* of a component. This works for all components and regular HTML elements, with a few exceptions noted below.
 
-The size mode affects our size variables (`--ds-size-*`), and font-size variables (`--ds-font-size-*` and `--ds-*-font-size-*`).
+The size mode affects our size variables (`--ds-size-*`) and font-size variables (`--ds-font-size-*` and `--ds-*-font-size-*`).
 
 ## Setting size mode with `data-size`
 
@@ -44,14 +44,14 @@ Example: Adding an "auto" size mode
 
 ```css
 [data-size='auto'] {
-    --ds-size: var(--ds-size--sm);
+  --ds-size: var(--ds-size--sm);
 
-    @media (min-width: 600px) {
-      --ds-size: var(--ds-size--md);
-    }
-    @media (min-width: 992px) {
-      --ds-size: var(--ds-size--lg);
-    }
+  @media (min-width: 600px) {
+    --ds-size: var(--ds-size--md);
+  }
+  @media (min-width: 992px) {
+    --ds-size: var(--ds-size--lg);
+  }
 }
 ```
 
@@ -90,9 +90,9 @@ They are still affected by the surrounding size mode, e.g. in this example the f
 
 It is confusing that `data-size` means *size mode* in certain contexts, and *component size* in other contexts. This will likely be remedied in the next major version as a breaking change.
 
-## Defining custom sizes
+## Defining custom size modes
 
-Under the hood, our variables change based on the local value of `--ds-size-mode-font-size`, and use `rem` for scaling based on browser settings. We have defined shorthands for setting `--ds-size-mode-font-size` through `data-size="<mode>"` or `--ds-size: var(--ds-size--<mode>)`, but you can also set this variable directly for custom sizing.
+Under the hood, our variables change based on the local value of `--ds-size-mode-font-size`, and use `rem` for scaling based on the user's browser settings. `data-size="<mode>"` og `--ds-size: var(--ds-size--<mode>)` work by setting `--ds-size-mode-font-size` to values which correspond to the same size modes in Figma, but you can also set this variable directly for custom sizing.
 
 Note that for an element to be affected, the `data-size` attribute also needs to be set,
 but it can be blank or set to anything other than `"sm"`, `"md"` or `"lg"`.
@@ -113,11 +113,17 @@ but it can be blank or set to anything other than `"sm"`, `"md"` or `"lg"`.
   </div>
 
   <div data-size class="example">
-    <!-- This element and descenants will use 0.9 as a scaling factor, as defined by the .example class  -->
+    <!--
+      This element and descenants will use 0.9 as a scaling factor,
+      as defined by the .example class
+    -->
   </div>
 
   <div data-size="giant" >
-    <!-- This element and descenants will use the custom size mode "giant", with 1.5 as the scaling factor -->
+    <!--
+      This element and descenants will use the custom size mode "giant",
+      with 1.5 as the scaling factor
+    -->
   </div>
 </body>
 ```
