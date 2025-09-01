@@ -13,7 +13,6 @@ the component to scale based on the surrounding data-size.
     var(--ds-size--lg, var(--ds-size-mode-font-size--lg));
 }
 /* Hack: use the nearest ancestor size mode */
-[data-size] :not([data-size]) :is(.ds-avatar, .ds-heading, .ds-paragraph, .ds-spinner),
-[data-size] > :is(.ds-avatar, .ds-heading, .ds-paragraph, .ds-spinner) {
+[data-size] :is(.ds-avatar, .ds-heading, .ds-paragraph, .ds-spinner) {
   --ds-size-mode-font-size: var(--_ds-size-mode__hack);
 }
