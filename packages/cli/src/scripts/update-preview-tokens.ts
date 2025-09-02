@@ -1,7 +1,6 @@
 import path from 'node:path';
 import pc from 'picocolors';
 import type { TransformedToken } from 'style-dictionary/types';
-//import config from '../../../theme/configs/designsystemet.config.json' with { type: 'json' };
 import config from './../../configs/digdir.config.json' with { type: 'json' };
 import { generate$Themes } from '../tokens/create/generators/$themes.js';
 import { createTokens } from '../tokens/create.js';
