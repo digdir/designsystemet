@@ -1,5 +1,5 @@
 ---
-"@digdir/designsystemet-theme": patch
+"@digdir/designsystemet-theme": minor
 ---
 
 **Default export**: changed color values and removed `brand3`
