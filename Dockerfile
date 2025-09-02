@@ -12,13 +12,15 @@ RUN pnpm deploy --filter=@web/www --prod /prod/@web/www
 RUN pnpm deploy --filter=@web/themebuilder --prod /prod/@web/themebuilder
 
 FROM base AS www
-COPY --from=build /prod/@web/www /prod/@web/www
-WORKDIR /prod/@web/www
+COPY --from=build /prod/@web/www /srv/app
+WORKDIR /srv/app
+ENV NODE_ENV=production HOST=0.0.0.0 PORT=8000
 EXPOSE 8000
-CMD [ "pnpm", "start" ]
+CMD ["pnpm","start"]
 
 FROM base AS themebuilder
-COPY --from=build /prod/@web/themebuilder /prod/@web/themebuilder
-WORKDIR /prod/@web/themebuilder
-EXPOSE 8001
+COPY --from=build /prod/@web/themebuilder /srv/app
+WORKDIR /srv/app
+ENV NODE_ENV=production HOST=0.0.0.0 PORT=8000
+EXPOSE 8000
 CMD [ "pnpm", "start" ]
