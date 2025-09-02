@@ -21,4 +21,6 @@ packageExtensions:
     peerDependenciesMeta:
       react:
         optional: true
-
+syncInjectedDepsAfterScripts:
+  - dist
+injectWorkspacePackages: true
