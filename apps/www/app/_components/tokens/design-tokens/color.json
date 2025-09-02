@@ -437,6 +437,152 @@
       "value": "var(--ds-color-brand2-base-contrast-default)"
     }
   ],
+  "brand3": [
+    {
+      "path": [
+        "color",
+        "support",
+        "background-default"
+      ],
+      "variable": "--ds-color-background-default",
+      "value": "var(--ds-color-brand3-background-default)"
+    },
+    {
+      "path": [
+        "color",
+        "support",
+        "background-tinted"
+      ],
+      "variable": "--ds-color-background-tinted",
+      "value": "var(--ds-color-brand3-background-tinted)"
+    },
+    {
+      "path": [
+        "color",
+        "support",
+        "surface-default"
+      ],
+      "variable": "--ds-color-surface-default",
+      "value": "var(--ds-color-brand3-surface-default)"
+    },
+    {
+      "path": [
+        "color",
+        "support",
+        "surface-tinted"
+      ],
+      "variable": "--ds-color-surface-tinted",
+      "value": "var(--ds-color-brand3-surface-tinted)"
+    },
+    {
+      "path": [
+        "color",
+        "support",
+        "surface-hover"
+      ],
+      "variable": "--ds-color-surface-hover",
+      "value": "var(--ds-color-brand3-surface-hover)"
+    },
+    {
+      "path": [
+        "color",
+        "support",
+        "surface-active"
+      ],
+      "variable": "--ds-color-surface-active",
+      "value": "var(--ds-color-brand3-surface-active)"
+    },
+    {
+      "path": [
+        "color",
+        "support",
+        "border-subtle"
+      ],
+      "variable": "--ds-color-border-subtle",
+      "value": "var(--ds-color-brand3-border-subtle)"
+    },
+    {
+      "path": [
+        "color",
+        "support",
+        "border-default"
+      ],
+      "variable": "--ds-color-border-default",
+      "value": "var(--ds-color-brand3-border-default)"
+    },
+    {
+      "path": [
+        "color",
+        "support",
+        "border-strong"
+      ],
+      "variable": "--ds-color-border-strong",
+      "value": "var(--ds-color-brand3-border-strong)"
+    },
+    {
+      "path": [
+        "color",
+        "support",
+        "text-subtle"
+      ],
+      "variable": "--ds-color-text-subtle",
+      "value": "var(--ds-color-brand3-text-subtle)"
+    },
+    {
+      "path": [
+        "color",
+        "support",
+        "text-default"
+      ],
+      "variable": "--ds-color-text-default",
+      "value": "var(--ds-color-brand3-text-default)"
+    },
+    {
+      "path": [
+        "color",
+        "support",
+        "base-default"
+      ],
+      "variable": "--ds-color-base-default",
+      "value": "var(--ds-color-brand3-base-default)"
+    },
+    {
+      "path": [
+        "color",
+        "support",
+        "base-hover"
+      ],
+      "variable": "--ds-color-base-hover",
+      "value": "var(--ds-color-brand3-base-hover)"
+    },
+    {
+      "path": [
+        "color",
+        "support",
+        "base-active"
+      ],
+      "variable": "--ds-color-base-active",
+      "value": "var(--ds-color-brand3-base-active)"
+    },
+    {
+      "path": [
+        "color",
+        "support",
+        "base-contrast-subtle"
+      ],
+      "variable": "--ds-color-base-contrast-subtle",
+      "value": "var(--ds-color-brand3-base-contrast-subtle)"
+    },
+    {
+      "path": [
+        "color",
+        "support",
+        "base-contrast-default"
+      ],
+      "variable": "--ds-color-base-contrast-default",
+      "value": "var(--ds-color-brand3-base-contrast-default)"
+    }
+  ],
   "neutral": [
     {
       "path": [
