@@ -85,7 +85,6 @@
   border-radius: 50%;
   border: 1px solid var(--ds-color-neutral-border-subtle);
   display: none;
-  z-index: 5;
   background-color: var(--ds-color-neutral-background-default);
   cursor: pointer;
   place-items: center;
