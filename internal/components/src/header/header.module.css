@@ -63,9 +63,8 @@
       &[data-mobile='true'] {
         & .desktopMenu {
           display: none;
+        }
       }
-      }
-
     }
   }
 }

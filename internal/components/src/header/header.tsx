@@ -12,7 +12,13 @@ import {
   XMarkIcon,
 } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { type MouseEvent, type FocusEvent, useEffect, useRef, useState } from 'react';
+import {
+  type FocusEvent,
+  type MouseEvent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router';
 import { DsEmbledLogo, DsFullLogo } from '../logos/designsystemet';
@@ -94,7 +100,7 @@ const Header = ({
     ) {
       setOpen(false);
     }
-  }
+  };
 
   const handleThemeChange = (
     newTheme: 'dark' | 'light',
@@ -161,6 +167,7 @@ const Header = ({
   }, [menu, isHamburger, viewportWidth]);
 
   return (
+    // biome-ignore lint/a11y/noStaticElementInteractions: onBlur bubbles from children that are interactive and must be captured here
     <header
       className={cl(
         classes.header,
@@ -265,52 +272,54 @@ const Header = ({
           </Dropdown.TriggerContext>
           {isHamburger && (
             <>
-            <Button
-              variant='tertiary'
-              icon={true}
-              data-color='neutral'
-              aria-expanded={open}
-              aria-label={open ? t('header.close-menu') : t('header.open-menu')}
-              className={cl(classes.toggle, 'ds-focus')}
-              onClick={() => {
-                setOpen(!open);
-              }}
-            >
-              {open && (
-                <XMarkIcon
-                  aria-hidden
-                  fontSize={26}
-                  color='var(--ds-color-neutral-text-default)'
-                />
-              )}
-              {!open && (
-                <MenuHamburgerIcon
-                  aria-hidden
-                  fontSize={26}
-                  color='var(--ds-color-neutral-text-default)'
-                />
-              )}
-            </Button>
-            <ul data-open={open}>
-            {menu.map((item, index) => (
-              <li key={index}>
-                <Paragraph data-size='md' asChild>
-                  <Link
-                    suppressHydrationWarning
-                    to={item.href}
-                    onClick={() => setOpen(false)}
-                    className={cl(
-                      pathname?.includes(item.href) && classes.active,
-                      'ds-focus',
-                    )}
-                  >
-                    {t(item.name)}
-                  </Link>
-                </Paragraph>
-              </li>
-            ))}
-          </ul>
-          </>
+              <Button
+                variant='tertiary'
+                icon={true}
+                data-color='neutral'
+                aria-expanded={open}
+                aria-label={
+                  open ? t('header.close-menu') : t('header.open-menu')
+                }
+                className={cl(classes.toggle, 'ds-focus')}
+                onClick={() => {
+                  setOpen(!open);
+                }}
+              >
+                {open && (
+                  <XMarkIcon
+                    aria-hidden
+                    fontSize={26}
+                    color='var(--ds-color-neutral-text-default)'
+                  />
+                )}
+                {!open && (
+                  <MenuHamburgerIcon
+                    aria-hidden
+                    fontSize={26}
+                    color='var(--ds-color-neutral-text-default)'
+                  />
+                )}
+              </Button>
+              <ul data-open={open}>
+                {menu.map((item, index) => (
+                  <li key={index}>
+                    <Paragraph data-size='md' asChild>
+                      <Link
+                        suppressHydrationWarning
+                        to={item.href}
+                        onClick={() => setOpen(false)}
+                        className={cl(
+                          pathname?.includes(item.href) && classes.active,
+                          'ds-focus',
+                        )}
+                      >
+                        {t(item.name)}
+                      </Link>
+                    </Paragraph>
+                  </li>
+                ))}
+              </ul>
+            </>
           )}
         </nav>
       </div>
