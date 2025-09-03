@@ -24,16 +24,29 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      - name: build & deploy to container apps
+      - name: acr login
+        run: az acr login --name designsystemetacr
+
+      - name: build & push (www)
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          target: www
+          platforms: linux/amd64
+          push: true
+          tags: designsystemetacr.azurecr.io/www:${{ github.sha }}
+
+      - name: deploy
         uses: azure/container-apps-deploy-action@v1
         with:
           resourceGroup: rg-designsystemet-test
           containerAppName: www-test-ca-app
-          containerAppEnvironment: www-test-ca         # existing env name
+          containerAppEnvironment: www-test-ca
           acrName: designsystemetacr
-          imageToBuild: designsystemetacr.azurecr.io/www:${{ github.sha }}
-          dockerfilePath: ./Dockerfile
-          buildArguments: "--target www"
+          imageToDeploy: designsystemetacr.azurecr.io/www:${{ github.sha }}
           targetPort: 8000
           ingress: external
-          envVars: "PORT=8000,HOST=0.0.0.0"
+          environmentVariables: |
+            PORT=8000
+            HOST=0.0.0.0
