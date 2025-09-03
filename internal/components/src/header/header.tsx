@@ -12,7 +12,7 @@ import {
   XMarkIcon,
 } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { type MouseEvent, useEffect, useRef, useState } from 'react';
+import { type MouseEvent, type FocusEvent, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router';
 import { DsEmbledLogo, DsFullLogo } from '../logos/designsystemet';
@@ -77,11 +77,24 @@ const Header = ({
 
   const [open, setOpen] = useState(false);
   const [isHamburger, setIsHamburger] = useState(false);
+  const [viewportWidth, setViewportWidth] = useState(0);
   const [langOpen, setLangOpen] = useState(false);
   const menuRef = useRef<HTMLUListElement>(null);
   const headerRef = useRef<HTMLElement>(null);
 
   const [theme, setTheme] = useState('light');
+
+  //close mobile menu when tabfocus leaves the header
+  const handleBlur = (e: FocusEvent) => {
+    if (!open) return;
+    if (
+      headerRef.current &&
+      e.relatedTarget instanceof Node &&
+      !headerRef.current.contains(e.relatedTarget)
+    ) {
+      setOpen(false);
+    }
+  }
 
   const handleThemeChange = (
     newTheme: 'dark' | 'light',
@@ -127,17 +140,25 @@ const Header = ({
 
   useEffect(() => {
     const handleResize = () => {
-      if (isHamburger) return;
-      if (menuRef.current && headerRef.current) {
+      if (isHamburger && viewportWidth > 0) {
+        const SAFETY_MARGIN = 50;
+        if (window.innerWidth > viewportWidth + SAFETY_MARGIN) {
+          setIsHamburger(false);
+          setOpen(false);
+        }
+      } else if (menuRef.current && headerRef.current) {
         const wrappedItems = detectWrap(menuRef.current.children);
-        setIsHamburger(wrappedItems.length > 0);
+        if (wrappedItems.length > 0) {
+          setViewportWidth(window.innerWidth);
+          setIsHamburger(true);
+        }
       }
     };
 
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [menu, isHamburger]);
+  }, [menu, isHamburger, viewportWidth]);
 
   return (
     <header
@@ -148,6 +169,7 @@ const Header = ({
         className,
       )}
       ref={headerRef}
+      onBlur={handleBlur}
       {...props}
     >
       <div className={classes.container}>
@@ -167,42 +189,13 @@ const Header = ({
           {betaTag && <div className={classes.tag}>Beta</div>}
         </div>
         <nav data-mobile={isHamburger}>
-          {isHamburger && (
-            <Button
-              variant='tertiary'
-              icon={true}
-              data-color='neutral'
-              aria-expanded={open}
-              aria-label={open ? t('header.close-menu') : t('header.open-menu')}
-              className={cl(classes.toggle, 'ds-focus')}
-              onClick={() => {
-                setOpen(!open);
-              }}
-            >
-              {open && (
-                <XMarkIcon
-                  aria-hidden
-                  fontSize={26}
-                  color='var(--ds-color-neutral-text-default)'
-                />
-              )}
-              {!open && (
-                <MenuHamburgerIcon
-                  aria-hidden
-                  fontSize={26}
-                  color='var(--ds-color-neutral-text-default)'
-                />
-              )}
-            </Button>
-          )}
-          <ul ref={menuRef} data-open={open}>
+          <ul ref={menuRef} className={classes.desktopMenu}>
             {menu.map((item, index) => (
               <li key={index}>
                 <Paragraph data-size='md' asChild>
                   <Link
                     suppressHydrationWarning
                     to={item.href}
-                    onClick={() => setOpen(false)}
                     className={cl(
                       pathname?.includes(item.href) && classes.active,
                       'ds-focus',
@@ -270,6 +263,55 @@ const Header = ({
               </Dropdown.Button>
             </Dropdown>
           </Dropdown.TriggerContext>
+          {isHamburger && (
+            <>
+            <Button
+              variant='tertiary'
+              icon={true}
+              data-color='neutral'
+              aria-expanded={open}
+              aria-label={open ? t('header.close-menu') : t('header.open-menu')}
+              className={cl(classes.toggle, 'ds-focus')}
+              onClick={() => {
+                setOpen(!open);
+              }}
+            >
+              {open && (
+                <XMarkIcon
+                  aria-hidden
+                  fontSize={26}
+                  color='var(--ds-color-neutral-text-default)'
+                />
+              )}
+              {!open && (
+                <MenuHamburgerIcon
+                  aria-hidden
+                  fontSize={26}
+                  color='var(--ds-color-neutral-text-default)'
+                />
+              )}
+            </Button>
+            <ul data-open={open}>
+            {menu.map((item, index) => (
+              <li key={index}>
+                <Paragraph data-size='md' asChild>
+                  <Link
+                    suppressHydrationWarning
+                    to={item.href}
+                    onClick={() => setOpen(false)}
+                    className={cl(
+                      pathname?.includes(item.href) && classes.active,
+                      'ds-focus',
+                    )}
+                  >
+                    {t(item.name)}
+                  </Link>
+                </Paragraph>
+              </li>
+            ))}
+          </ul>
+          </>
+          )}
         </nav>
       </div>
     </header>
