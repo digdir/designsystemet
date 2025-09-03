@@ -1,0 +1,39 @@
+name: deploy www to aca
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'apps/www/**'
+      - 'internal/components/**'
+
+permissions:
+  id-token: write   # needed for OIDC
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: az login (oidc)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: build & deploy to container apps
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          resourceGroup: rg-designsystemet-test
+          containerAppName: www-test-ca-app
+          containerAppEnvironment: www-test-ca         # existing env name
+          acrName: designsystemetacr
+          imageToBuild: designsystemetacr.azurecr.io/www:${{ github.sha }}
+          dockerfilePath: ./Dockerfile
+          buildArguments: "--target www"
+          targetPort: 8000
+          ingress: external
+          envVars: "PORT=8000,HOST=0.0.0.0"
