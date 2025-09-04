@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.4.0
+
+### Minor Changes
+
+- **Default export**: changed color values and removed `brand3` ([#4008](https://github.com/digdir/designsystemet/pull/4008))
+  - The old values are still available from `import '@digdir/designsystemet-theme/digdir.css'`;
+
 ## 1.3.0
 
 ## 1.2.0
