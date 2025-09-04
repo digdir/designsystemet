@@ -180,3 +180,10 @@ body {
 .content {
   min-height: 100svh;
 }
+
+@layer overrides {
+  .ds-skip-link:focus {
+    position: relative;
+    z-index: 1;
+  }
+}
