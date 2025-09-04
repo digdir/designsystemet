@@ -28,6 +28,7 @@ jobs:
   deploy:
     if: ${{ github.repository == 'digdir/designsystemet' }}
     runs-on: ubuntu-latest
+    environment: azure
     steps:
       - uses: actions/checkout@v4
 
