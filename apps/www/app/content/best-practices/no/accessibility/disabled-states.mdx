@@ -1,0 +1,99 @@
+---
+title: Deaktiverte tilstander
+description: Hvorfor er deaktiverte tilstander utfordrende, og hvordan unngår man dem?
+date: 2025-07-18
+author: Nav
+category: Tilgjengelighet
+published: true
+---
+
+Deaktiverte tilstander kan være utfordrende for brukere å oppfatte og forstå, og vi anbefaler derfor at du ikke bruker dem i løsningen din. I denne artikkelen ser vi på tekniske detaljer og alternative løsninger. I tilfeller der det likevel er aktuelt å bruke deaktiverte tilstander, foreslår vi skadereduserende tiltak.
+
+<br/>
+
+<Card
+  data-color="info"
+  data-variant="tinted"
+>
+## Hva sier WCAG om deaktiverte tilstander?
+WCAG forbyr ikke bruk av deaktiverte tilstander. Derimot er det ofte måten slike tilstander designes og implementeres på som bryter WCAG.
+
+Det WCAG faktisk sier er at «inaktive komponenter» er unntatt fra kontrastkravene (1.4.3 og 1.4.11)...uten å definere hva «inaktive komponenter» betyr. W3Cs «Understanding»-artikler, som ikke er normative, presiserer at deaktiverte komponenter ikke trenger å oppfylle kontrastkravene.
+
+Når det er sagt, skal alt meningsbærende innhold på siden være tilgjengelig for alle. Hvis den deaktiverte komponenten din ikke tilfører mening, er det trolig best å ikke vise den i det hele tatt.
+</Card>
+
+## Hvorfor er deaktiverte tilstander problematiske?
+
+Deaktiverte tilstander kan være vanskelig å oppfatte. De er vanligvis designet med lav fargekontrast og med en endring i farge som det eneste grafiske virkemiddelet for å kommunisere tilstanden. Dette kan være problematisk ikke bare for folk som er svaksynte, men også folk som sitter i lysrike omgivelser eller som har dårlig skjerm.
+
+Hvis deaktiverte elementer har like høy kontrast som aktive, kan brukeren tro at de faktisk kan brukes. Da prøver de å klikke, uten å få respons eller forklaring, og kan bli stående fast uten å skjønne hvorfor. Grunnen til at et element er deaktivert er vanligvis implisitt—vi forklarer ikke hvorfor elementet er deaktivert. Brukeren må gjette, det kan hende at de gjetter feil.
+
+I noen tilfeller kan brukeren heller ikke få med seg når elementet blir aktivt. For eksempel, hvis aktiveringen skjer etter at brukeren har fylt ut noe lengre oppe på skjemaet og knappen er utenfor synsfeltet, risikerer man at brukeren ikke legger merke til at knappen plutselig ble tilgjengelig.
+
+Deaktiverte tilstander mottar heller ikke tastaturfokus, og leselist- og skjermleserbrukere kan gå glipp av dem.
+
+## Vanlige bruksområder
+
+Designere bruker deaktiverte tilstander hovedsakelig i tre forskjellige situasjoner:
+
+- For å vise at et valg ikke er relevant per det tidspunktet, men kan bli relevant i fremtiden.
+- For å vise at et skjema ikke er utfylt riktig eller ikke er ferdig utfylt ennå.
+- For å vise at et element ikke kan endres («read only»).
+
+## Alternative løsninger
+Heldigvis så finnes det alternativer til bruk av deaktiverte tilstander.
+
+### Skjemavalidering
+Vurderer du å bruke en deaktivert submit-knapp som en form for skjemavalidering? Du bør heller validere inline som vanlig, la knappen forbli aktiv og vise en feilmelding når brukeren prøver å sende inn skjemaet.
+
+### Ikke-aktuelle valg
+Hvis et valg ikke er relevant, bør du helst fjerne valget fremfor å deaktivere det. Tilby gjerne brukeren informasjon om hvorfor valget ikke er tilgjengelig.
+
+### Skrivebeskyttet innhold
+Bruk vanlig tekst fremfor å deaktivere skrivebeskyttede inputfelter, eventuelt med tilleggsinformasjon som forteller hvorfor informasjonen ikke kan endres.
+
+## HTML- og ARIA-attributter
+HTML tilbyr ulike måter å markere at noe er ikke-interaktivt, og de har litt forskjellig oppførsel.
+
+### `disabled`
+
+Skjemaelementer med `disabled` blir helt inaktive. De kan ikke fokuseres med tastatur eller mus: de kommer ikke med i tabrekkefølgen, og brukeren kan ikke klikke på dem (dvs. det blir ingen `onClick`-event utløst). Nettleseren endrer ofte utseendet automatisk. Et deaktivert skjemafelt blir heller ikke sendt med når skjemaet postes.
+
+Setter du `disabled` på et `<fieldset>`, blir alle kontrollene inni grupperingen deaktivert, bortsett fra innholdet i `<legend>`-elementet.
+
+### `aria-disabled="true"`
+Det er mulig å bruke `aria-disabled="true"` når et element ikke støtter det innebygde `disabled`-attributtet. Skjermlesere vil da lese opp elementet som «dimmet» eller «deaktivert», slik at brukeren skjønner at funksjonen finnes, men ikke er tilgjengelig akkurat nå. `aria-disabled="true"` på en gruppering (for eksempel `<fieldset>` eller `role="radiogroup"`) gir hjelpemiddelteknologi beskjed om at hele gruppen er deaktivert.
+
+Akkurat som med andre ARIA-attributteter er det bare semantikken som endres, ikke oppførselen: elementet kan fortsatt få fokus via tastatur og mus. Derfor må du selv stoppe handlingen eller gi klar tilbakemelding hvis brukeren prøver å aktivere elementet. Fordelen er at tastatur- og skjermleserbrukere oppdager funksjonen; ulempen er at de fortsatt kan forsøke å klikke, så du må håndtere dette i koden.
+
+### `readonly`
+`readonly` er bare relevant for inputtyper som har en value som kan endres av brukeren, dvs. `textarea` og tekstfelter (text, search, email, osv.). Attributtet kan derfor ikke brukes på en radiogruppe eller fieldset. Felter med `readonly`-attributtet kommer i tabrekkefølgen, og brukere kan kopiere innholdet men ikke endre det. Informasjon i `readonly`-felter kommer med når skjemaet sendes inn.
+
+Inputfelter med `readonly`-attributtet får ingen default styling som skiller dem ut fra vanlige, redigerbare felter. Dette kan være svært forvirrende for folk hvis de ikke skjønner hvorfor de ikke kan endre innholdet i feltet. Hvis du velger å bruke readonly, sørg for at du styler feltet annerledes fra vanlige tekstfelter og forklarer for folk hvorfor innholdet ikke kan endres.
+
+### `aria-readonly="true"`
+For andre skjemaelementer enn tekstfelter og `textarea` kan du bruke `aria-readonly="true"`. Attributtet er mest relevant for custom komponenter, når du ønsker å kommunisere til hjelpemidler at elementet er skrivebeskyttet. `aria-readonly="true"` kan settes på en gruppe, men støtten er ujevn.
+
+Ta i betraktning at som med all ARIA, er det bare semantikken som blir endret av `aria-readonly`, ikke funksjonaliteten. Det vil si at du selv må sørge for at brukere ikke kan endre verdien til elementene `aria-readonly` brukes på.
+
+### CSS `pointer-events: none`
+Utviklere fristes noen ganger til å "deaktivere" et element rent visuelt via CSS, for eksempel ved å legge et semi-transparent lag over eller sette pointer-events: none for å blokkere museklikk. Elementet forblir fokuserbart med tastatur og vil bli oppfattet som aktivt av skjermlesere.
+
+## Skadereduksjon
+Når du likevel må vise en deaktivert kontroll, gjør den både synlig og tydelig.
+
+Sørg for at komponenten kan oppfattes og forstås av alle, inkludert folk som er svaksynte og de som bruker hjelpemiddelteknologi, folk som bruker enheter med dårlig skjerm og de som sitter i omgivelser med sterk lys, i tillegg til folk som ikke er datakyndige og folk med kognitiv funksjonsnedsettelse. Tilstanden skal skille seg fra aktive elementer uten å forsvinne i bakgrunnen. Legg gjerne til et ikon, mønster eller annen måte å markere tilstanden på. Samtidig må elementet fortsatt se ut som en kontroll, ellers vet ingen at funksjonen finnes.
+
+Fortell alltid hvorfor kontrollen er deaktivert, og hva som trengs for å aktivere den. Plasser forklaringen rett i grensesnittet, ikke kun på hover, så alle får informasjonen uansett enhet eller hjelpemiddel. Da slipper brukeren å gjette, og du unngår at noen forsøker å bruke noe som ikke kan brukes.
+
+Uansett, vårt overordnede råd står ved lag: unngå deaktiverte tilstander der det er mulig, ved heller å designe løsningen slik at brukeren slipper å møte en veg sperret uten forklaring.
+
+
+<Contributors
+  authors={[
+    'Sarah Brodwall (Nav)'
+  ]}
+/>
+
+<br/>
