@@ -29,6 +29,7 @@ jobs:
     if: ${{ github.repository == 'digdir/designsystemet' }}
     runs-on: ubuntu-latest
     environment: azure
+
     steps:
       - uses: actions/checkout@v4
 
@@ -39,7 +40,7 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      - name: acr login
+      - name: acr login (for docker push)
         run: az acr login --name ${{ env.ACR_NAME }}
 
       - name: build & push image (www)
@@ -52,19 +53,33 @@ jobs:
           push: true
           tags: ${{ env.ACR_NAME }}.azurecr.io/www:${{ env.IMAGE }}
 
-      - name: deploy
+      - name: get acr creds (masked)
+        id: acr
+        shell: bash
+        run: |
+          set -euo pipefail
+          az acr update -n "${ACR_NAME}" --admin-enabled true >/dev/null
+          USER=$(az acr credential show -n "${ACR_NAME}" --query username -o tsv)
+          PASS=$(az acr credential show -n "${ACR_NAME}" --query 'passwords[0].value' -o tsv)
+          echo "::add-mask::${USER}"
+          echo "::add-mask::${PASS}"
+          echo "user=${USER}" >> "$GITHUB_OUTPUT"
+          echo "pass=${PASS}" >> "$GITHUB_OUTPUT"
+
+      - name: deploy (no mi; use registry creds)
         uses: azure/container-apps-deploy-action@v1
         with:
           resourceGroup: ${{ env.RESOURCE_GROUP }}
-          containerAppName: ${{ env.APP_NAME }}
           containerAppEnvironment: ${{ env.CONTAINERAPPS_ENV }}
-          acrName: ${{ env.ACR_NAME }}
+          containerAppName: ${{ env.APP_NAME }}
           imageToDeploy: ${{ env.ACR_NAME }}.azurecr.io/www:${{ env.IMAGE }}
-          imageToBuild: ${{ env.ACR_NAME }}.azurecr.io/www:${{ env.IMAGE }}
-          targetPort: 8000
+          registryUrl: ${{ env.ACR_NAME }}.azurecr.io
+          registryUsername: ${{ steps.acr.outputs.user }}
+          registryPassword: ${{ steps.acr.outputs.pass }}
+          targetPort: ${{ env.PORT }}
           ingress: external
           environmentVariables: |
-            PORT=8000
+            PORT=${{ env.PORT }}
             HOST=0.0.0.0
 
       - name: fetch fqdn
