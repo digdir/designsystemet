@@ -1,5 +1,19 @@
 # Change Log
 
+## 1.4.0
+
+### Patch Changes
+
+- **Card**: If `.ds-link` is used in a heading, remove focus and active styling ([#4005](https://github.com/digdir/designsystemet/pull/4005))
+
+- **Fieldset**: Removed uneccessary margin when visually hiding `Fieldset.Legend` with `.ds-sr-only` ([#3996](https://github.com/digdir/designsystemet/pull/3996))
+
+- Update npm non-major dependencies ([#3989](https://github.com/digdir/designsystemet/pull/3989))
+
+- **Button**: Change sizes of svg and icon ([#3998](https://github.com/digdir/designsystemet/pull/3998))
+  - In icon button (`[data-icon]`), it is `1.5em`
+  - In normal button, it is `1.3em`
+
 ## 1.3.0
 
 ## 1.2.0
