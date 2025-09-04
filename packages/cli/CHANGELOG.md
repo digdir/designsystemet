@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.4.0
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#3989](https://github.com/digdir/designsystemet/pull/3989))
+
+- Update npm non-major dependencies ([#4014](https://github.com/digdir/designsystemet/pull/4014))
+
 ## 1.3.0
 
 ### Minor Changes
