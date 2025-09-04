@@ -75,7 +75,6 @@ export default {
     tv: 'TV',
     sports: 'Sport',
     news: 'Nyheter',
-    domestic: 'Innenriks',
     'news-title': 'Reiste alene til storbyen',
     'news-description': 'Mona kvist ville finne drømmen i New York City',
     articles: 'Artikler',

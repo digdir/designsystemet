@@ -5,6 +5,7 @@ import * as R from 'ramda';
 import type { PropItem } from 'react-docgen-typescript';
 import remarkGfm from 'remark-gfm';
 import { defineConfig, mergeConfig } from 'vite';
+import { tag } from '../stories/component/showcase.module.css';
 
 const dirname =
   typeof __dirname !== 'undefined'
@@ -102,13 +103,15 @@ const config: StorybookConfig = {
       },
     },
   },
-  tags: (_, options) => {
+  tags: (tagOptions, options) => {
     return {
+      ...tagOptions,
       // Configure stories with the 'chromatic' tag to only be visible in development.
       // In production, they will be picked up by snapshot tests etc but not be visible.
       chromatic: {
         excludeFromDocsStories: true,
         excludeFromSidebar: options.configType === 'PRODUCTION',
+        ...tagOptions?.chromatic,
       },
     };
   },
