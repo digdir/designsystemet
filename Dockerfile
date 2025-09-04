@@ -34,12 +34,13 @@ EXPOSE 8000
 CMD [ "pnpm", "start" ]
 
 FROM packages AS storybook-build
-RUN pnpm build:storybook || pnpm --filter @web/storybook run build
+RUN pnpm build:storybook
 RUN pnpm deploy --filter=@web/storybook --prod /prod/@web/storybook
 
-FROM base AS storybook
-COPY --from=storybook-build /prod/@web/storybook /srv/app
-WORKDIR /srv/app
-ENV NODE_ENV=production HOST=0.0.0.0 PORT=6006
+FROM nginx:alpine AS storybook
+# remove default config
+RUN rm /etc/nginx/conf.d/default.conf
+COPY /apps/storybook/nginx.conf /etc/nginx/conf.d/storybook.conf
+COPY --from=storybook-build /prod/@web/storybook/dist /usr/share/nginx/html
 EXPOSE 6006
-CMD ["pnpm","dlx","serve","-s","dist","-l","6006"]
+CMD ["nginx", "-g", "daemon off;"]

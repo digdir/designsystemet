@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "build": "storybook build -o ./dist --stats-json",
+    "build": "storybook build -o ./dist --stats-json --disable-telemetry",
     "test-storybook": "pnpm exec playwright install --with-deps chromium && vitest",
     "chromatic": "pnpx chromatic",
     "types": "tsc --noEmit -p ../../packages/react/tsconfig.stories.json --emitDeclarationOnly false"
