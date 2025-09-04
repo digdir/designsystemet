@@ -80,7 +80,7 @@ const config: StorybookConfig = {
     '@storybook/addon-themes',
     'storybook-addon-pseudo-states',
     '@storybook/addon-vitest',
-    //'@whitespace/storybook-addon-html', //wait for it to be updated to support sb9
+    '@whitespace/storybook-addon-html',
     {
       name: '@storybook/addon-docs',
       options: {
