@@ -28,6 +28,8 @@ jobs:
   deploy:
     if: ${{ github.repository == 'digdir/designsystemet' }}
     runs-on: ubuntu-latest
+    outputs:
+      fqdn: ${{ steps.fqdn.outputs.fqdn }}
 
     steps:
       - uses: actions/checkout@v4
@@ -86,3 +88,13 @@ jobs:
         run: |
           FQDN=$(az containerapp show -n "${APP_NAME}" -g "${RESOURCE_GROUP}" --query properties.configuration.ingress.fqdn -o tsv)
           echo "fqdn=${FQDN}" >> "$GITHUB_OUTPUT"
+          echo "Resolved FQDN: ${FQDN}"  # log for visibility
+
+  update-comment:
+    if: ${{ inputs.update_comment }}
+    needs: deploy
+    uses: ./.github/workflows/preview-comment.yml
+    with:
+      pr_number: ${{ inputs.pr_number }}
+      deployment_type: theme
+      deployment_url: https://${{ needs.deploy.outputs.fqdn }}
