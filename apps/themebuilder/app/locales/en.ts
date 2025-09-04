@@ -76,7 +76,6 @@ export default {
     tv: 'TV',
     sports: 'Sports',
     news: 'News',
-    domestic: 'Domestic',
     'news-title': 'Travelled alone to the big city',
     'news-description': 'Mona Kvist wanted to find her dream in New York City',
     articles: 'Articles',

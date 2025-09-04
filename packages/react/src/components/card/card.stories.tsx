@@ -1,8 +1,9 @@
 import cat1 from '@assets/img/cats/Cat 1.jpg';
 import cat5 from '@assets/img/cats/Cat 5.jpg';
 import type { Meta, StoryFn } from '@storybook/react-vite';
-import themeConfig from '../../../../theme/configs/designsystemet.config.json';
-import { Card, Heading, Paragraph } from '../';
+import themeConfig from '../../../../cli/configs/digdir.config.json';
+import { Card, Heading, Link, Paragraph } from '../';
+
 import type { CardProps } from './';
 
 type Story = StoryFn<typeof Card>;
@@ -24,8 +25,8 @@ export default {
 } satisfies Meta;
 
 const colorVariants = [
-  ...Object.keys(themeConfig.themes.designsystemet.colors.main),
-  ...Object.keys(themeConfig.themes.designsystemet.colors.support),
+  ...Object.keys(themeConfig.themes.digdir.colors.main),
+  ...Object.keys(themeConfig.themes.digdir.colors.support),
   'neutral',
 ];
 
@@ -162,13 +163,13 @@ export const WithLink: Story = (args) => (
     <Card {...args} data-color='neutral'>
       <Card.Block>
         <Heading>
-          <a
+          <Link
             href='https://designsystemet.no'
             target='_blank'
             rel='noopener noreferrer'
           >
             Link Card
-          </a>
+          </Link>
         </Heading>
         <Paragraph>
           Most provide as with carried business are much better more the

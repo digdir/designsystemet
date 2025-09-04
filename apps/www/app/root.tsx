@@ -9,7 +9,7 @@ import {
   ScrollRestoration,
 } from 'react-router';
 import type { Route } from './+types/root';
-import '@digdir/designsystemet-theme';
+import '@digdir/designsystemet-theme/digdir.css';
 import '@digdir/designsystemet-css';
 import './app.css';
 import { Error404 } from '@internal/components';
