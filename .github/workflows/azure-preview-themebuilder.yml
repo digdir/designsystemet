@@ -1,0 +1,88 @@
+name: azure preview themebuilder
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'apps/themebuilder/**'
+      - 'internal/components/**'
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  RESOURCE_GROUP: rg-designsystemet-test
+  CONTAINERAPPS_ENV: themebuilder-test-ca
+  ACR_NAME: designsystemetacr
+  APP_NAME: themebuilder-pr-${{ github.event.number }}
+  IMAGE: ${{ github.event.number }}-${{ github.sha }}
+  PORT: 8000
+
+concurrency:
+  group: azure-themebuilder-preview-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    if: ${{ github.repository == 'digdir/designsystemet' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: az login (oidc)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: acr login (for docker push)
+        run: az acr login --name ${{ env.ACR_NAME }}
+
+      - name: build & push image (themebuilder)
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          target: themebuilder
+          platforms: linux/amd64
+          push: true
+          tags: ${{ env.ACR_NAME }}.azurecr.io/themebuilder:${{ env.IMAGE }}
+
+      - name: get acr creds (masked)
+        id: acr
+        shell: bash
+        run: |
+          set -euo pipefail
+          az acr update -n "${ACR_NAME}" --admin-enabled true >/dev/null
+          USER=$(az acr credential show -n "${ACR_NAME}" --query username -o tsv)
+          PASS=$(az acr credential show -n "${ACR_NAME}" --query 'passwords[0].value' -o tsv)
+          echo "::add-mask::${USER}"
+          echo "::add-mask::${PASS}"
+          echo "user=${USER}" >> "$GITHUB_OUTPUT"
+          echo "pass=${PASS}" >> "$GITHUB_OUTPUT"
+
+      - name: deploy (no mi; use registry creds)
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          resourceGroup: ${{ env.RESOURCE_GROUP }}
+          containerAppEnvironment: ${{ env.CONTAINERAPPS_ENV }}
+          containerAppName: ${{ env.APP_NAME }}
+          imageToDeploy: ${{ env.ACR_NAME }}.azurecr.io/themebuilder:${{ env.IMAGE }}
+          registryUrl: ${{ env.ACR_NAME }}.azurecr.io
+          registryUsername: ${{ steps.acr.outputs.user }}
+          registryPassword: ${{ steps.acr.outputs.pass }}
+          targetPort: ${{ env.PORT }}
+          ingress: external
+          environmentVariables: |
+            PORT=${{ env.PORT }}
+            HOST=0.0.0.0
+
+      - name: fetch fqdn
+        id: fqdn
+        run: |
+          FQDN=$(az containerapp show -n "${APP_NAME}" -g "${RESOURCE_GROUP}" --query properties.configuration.ingress.fqdn -o tsv)
+          echo "fqdn=${FQDN}" >> "$GITHUB_OUTPUT"
