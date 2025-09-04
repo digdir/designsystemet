@@ -125,13 +125,5 @@
       "semantic/modes/support-color/brand2": "enabled"
     },
     "group": "Support color"
-  },
-  {
-    "id": "eade528bedd174a995da87bf38c35a30de0760bb",
-    "name": "brand3",
-    "selectedTokenSets": {
-      "semantic/modes/support-color/brand3": "enabled"
-    },
-    "group": "Support color"
   }
 ]
