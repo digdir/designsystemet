@@ -52,36 +52,20 @@ jobs:
           push: true
           tags: ${{ env.ACR_NAME }}.azurecr.io/www:${{ env.APP_NAME }}-${{ github.sha }}
 
-      # fetch acr admin creds at runtime (mask them), for runtime pulls
-      - name: get acr creds (masked)
-        id: acr
-        shell: bash
-        run: |
-          set -euo pipefail
-          az acr update -n "${ACR_NAME}" --admin-enabled true >/dev/null
-          USER=$(az acr credential show -n "${ACR_NAME}" --query username -o tsv)
-          PASS=$(az acr credential show -n "${ACR_NAME}" --query 'passwords[0].value' -o tsv)
-          echo "::add-mask::${USER}"
-          echo "::add-mask::${PASS}"
-          echo "user=${USER}" >> "$GITHUB_OUTPUT"
-          echo "pass=${PASS}" >> "$GITHUB_OUTPUT"
-
-      # create/update the container app (avoid MI; feed registry creds explicitly)
-      - name: deploy preview
+      - name: deploy
         uses: azure/container-apps-deploy-action@v1
         with:
           resourceGroup: ${{ env.RESOURCE_GROUP }}
-          containerAppEnvironment: ${{ env.CONTAINERAPPS_ENV }}
           containerAppName: ${{ env.APP_NAME }}
+          containerAppEnvironment: www-test-ca
+          acrName: ${{ env.ACR_NAME }}
           imageToDeploy: ${{ env.ACR_NAME }}.azurecr.io/www:${{ env.APP_NAME }}-${{ github.sha }}
-          registryUrl: ${{ env.ACR_NAME }}.azurecr.io
-          registryUsername: ${{ steps.acr.outputs.user }}
-          registryPassword: ${{ steps.acr.outputs.pass }}
-          targetPort: ${{ env.PORT }}
+          targetPort: 8000
           ingress: external
           environmentVariables: |
-            PORT=${{ env.PORT }}
+            PORT=8000
             HOST=0.0.0.0
+
 
       - name: fetch fqdn
         id: fqdn
