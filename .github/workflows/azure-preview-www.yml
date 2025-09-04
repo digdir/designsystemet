@@ -17,6 +17,7 @@ env:
   CONTAINERAPPS_ENV: www-test-ca
   ACR_NAME: designsystemetacr
   APP_NAME: www-pr-${{ github.event.number }}
+  IMAGE: ${{ github.event.number }}-${{ github.sha }}
   PORT: 8000
 
 concurrency:
@@ -30,7 +31,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # oidc login (no stored creds)
       - name: az login (oidc)
         uses: azure/login@v2
         with:
@@ -38,8 +38,7 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      # build & push the www stage to acr
-      - name: acr login for docker
+      - name: acr login
         run: az acr login --name ${{ env.ACR_NAME }}
 
       - name: build & push image (www)
@@ -50,22 +49,22 @@ jobs:
           target: www
           platforms: linux/amd64
           push: true
-          tags: ${{ env.ACR_NAME }}.azurecr.io/www:${{ env.APP_NAME }}-${{ github.sha }}
+          tags: ${{ env.ACR_NAME }}.azurecr.io/www:${{ env.IMAGE }}
 
       - name: deploy
         uses: azure/container-apps-deploy-action@v1
         with:
           resourceGroup: ${{ env.RESOURCE_GROUP }}
           containerAppName: ${{ env.APP_NAME }}
-          containerAppEnvironment: www-test-ca
+          containerAppEnvironment: ${{ env.CONTAINERAPPS_ENV }}
           acrName: ${{ env.ACR_NAME }}
-          imageToDeploy: ${{ env.ACR_NAME }}.azurecr.io/www:${{ env.APP_NAME }}-${{ github.sha }}
+          imageToDeploy: ${{ env.ACR_NAME }}.azurecr.io/www:${{ env.IMAGE }}
+          imageToBuild: ${{ env.ACR_NAME }}.azurecr.io/www:${{ env.IMAGE }}
           targetPort: 8000
           ingress: external
           environmentVariables: |
             PORT=8000
             HOST=0.0.0.0
-
 
       - name: fetch fqdn
         id: fqdn
