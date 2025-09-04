@@ -1,7 +1,6 @@
 import { PencilWritingIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
-
-import themeConfig from '../../../../theme/configs/designsystemet.config.json';
+import themeConfig from '../../../../cli/configs/digdir.config.json';
 import { Button, type ButtonProps } from './button';
 
 type Story = StoryObj<typeof Button>;
@@ -24,8 +23,8 @@ const meta: Meta<typeof Button> = {
 export default meta;
 
 const colorVariants = [
-  ...Object.keys(themeConfig.themes.designsystemet.colors.main),
-  ...Object.keys(themeConfig.themes.designsystemet.colors.support),
+  ...Object.keys(themeConfig.themes.digdir.colors.main),
+  ...Object.keys(themeConfig.themes.digdir.colors.support),
   'neutral',
   'danger',
 ];

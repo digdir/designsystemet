@@ -49,7 +49,7 @@ Install the essential packages to get started with Designsystemet:
 @digdir/designsystemet-theme # or custom theme 
 ```
 
-Install `@digdir/designsystemet-theme` if you need any of the Digdir themes. Uses `digdir` theme by default.
+Install `@digdir/designsystemet-theme` if you need any of the Digdir themes. Uses a custom theme for the themebuilder by default.
 
 #### 1.1 Custom theme
 
@@ -87,7 +87,7 @@ Add the following to your `tsconfig.json`
 {
   "compilerOptions": {
     "types": [
-      "<custom-theme>/types.d.ts" or "@digdir/designsystemet-theme",
+      "<custom-theme>/types.d.ts" or "@digdir/designsystemet-theme" (default theme) or "@digdir/designsystemet-theme/types.d.ts" (pre made brand themes),
       ]
   },
 }
@@ -104,7 +104,7 @@ If you want this, add the following to your `tsconfig.json` in addition to types
 {
   "compilerOptions": {
     "types": [
-      "@digdir/designsystemet-react/react-types", // adds typesefety for data-color, data-size on React JSX elements
+      "@digdir/designsystemet-react/react-types", // adds typesafety for data-color, data-size on React JSX elements
       ]
   },
 }

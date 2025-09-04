@@ -1,7 +1,7 @@
 import cat1 from '@assets/img/cats/Cat 3.jpg';
 import { BriefcaseIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react-vite';
-import themeConfig from '../../../../theme/configs/designsystemet.config.json';
+import themeConfig from '../../../../cli/configs/digdir.config.json';
 import { Avatar, type AvatarProps, Badge, Dropdown } from '../';
 
 type Story = StoryFn<typeof Avatar>;
@@ -22,8 +22,8 @@ const meta: Meta<typeof Avatar> = {
 };
 
 const colorVariants = [
-  ...Object.keys(themeConfig.themes.designsystemet.colors.main),
-  ...Object.keys(themeConfig.themes.designsystemet.colors.support),
+  ...Object.keys(themeConfig.themes.digdir.colors.main),
+  ...Object.keys(themeConfig.themes.digdir.colors.support),
   'neutral',
 ];
 
