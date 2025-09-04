@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react-vite';
-import themeConfig from '../../../../theme/configs/designsystemet.config.json';
+import themeConfig from '../../../../cli/configs/digdir.config.json';
 import { Spinner } from './spinner';
 
 type Story = StoryFn<typeof Spinner>;
@@ -19,8 +19,8 @@ export default {
 } as Meta;
 
 const colorVariants = [
-  ...Object.keys(themeConfig.themes.designsystemet.colors.main),
-  ...Object.keys(themeConfig.themes.designsystemet.colors.support),
+  ...Object.keys(themeConfig.themes.digdir.colors.main),
+  ...Object.keys(themeConfig.themes.digdir.colors.support),
   'neutral',
 ];
 
