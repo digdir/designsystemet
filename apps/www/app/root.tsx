@@ -79,7 +79,7 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 
   const menu = [
     {
-      name: 'navigation.fundamentals!!',
+      name: 'navigation.fundamentals',
       href: `/${lang}/fundamentals`,
     },
     {
