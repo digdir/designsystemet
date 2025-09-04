@@ -3,6 +3,8 @@ name: deploy www to aca
 on:
   workflow_dispatch:
   push:
+    branches:
+      - main
     paths:
       - 'apps/www/**'
       - 'internal/components/**'
