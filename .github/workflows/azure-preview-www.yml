@@ -17,7 +17,7 @@ env:
   CONTAINERAPPS_ENV: www-test-ca
   ACR_NAME: designsystemetacr
   APP_NAME: www-pr-${{ github.event.number }}
-  PORT: '8000'
+  PORT: 8000
 
 concurrency:
   group: azure-www-preview-${{ github.event.pull_request.number || github.run_id }}
@@ -51,45 +51,20 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: ${{ env.ACR_NAME }}.azurecr.io/www:${{ env.APP_NAME }}-${{ github.sha }}
-      - name: Create/Update Container App (Managed Identity)
-        run: |
-          set -euo pipefail
-          if ! az containerapp show -n $APP_NAME -g $RESOURCE_GROUP >/dev/null 2>&1; then
-            echo "Creating container app $APP_NAME (temporary public image)"
-            az containerapp create \
-              -n $APP_NAME \
-              -g $RESOURCE_GROUP \
-              --environment $CONTAINERAPPS_ENV \
-              --image mcr.microsoft.com/k8se/quickstart:latest \
-              --ingress external --target-port $PORT \
-              --env-vars PORT=$PORT HOST=0.0.0.0 \
-              --system-assigned
-          else
-            echo "Container app $APP_NAME exists"
-            # Assign identity only if missing
-            PID=$(az containerapp show -n $APP_NAME -g $RESOURCE_GROUP --query identity.principalId -o tsv 2>/dev/null || true)
-            if [ -z "$PID" ] || [ "$PID" = "null" ]; then
-              echo "Adding system identity"
-              az containerapp identity assign -n $APP_NAME -g $RESOURCE_GROUP --system-assigned >/dev/null || true
-            fi
-          fi
 
-          PRINCIPAL_ID=$(az containerapp show -n $APP_NAME -g $RESOURCE_GROUP --query identity.principalId -o tsv)
-          ACR_ID=$(az acr show -n $ACR_NAME --query id -o tsv)
-          echo "Ensuring AcrPull role (principal: $PRINCIPAL_ID) on $ACR_ID"
-          az role assignment create --assignee $PRINCIPAL_ID --scope $ACR_ID --role AcrPull >/dev/null 2>&1 || echo "Role already assigned"
-
-          # Brief wait for RBAC propagation (kept minimal)
-          sleep 3
-
-          echo "Setting registry (managed identity)"
-          az containerapp registry set -n $APP_NAME -g $RESOURCE_GROUP --server $ACR_NAME.azurecr.io --identity system >/dev/null || true
-
-          NEW_IMAGE="$ACR_NAME.azurecr.io/www:${APP_NAME}-${GITHUB_SHA}"
-          echo "Updating image -> $NEW_IMAGE (no wait)"
-          az containerapp update -n $APP_NAME -g $RESOURCE_GROUP --image "$NEW_IMAGE" --set-env-vars PORT=$PORT HOST=0.0.0.0 --only-show-errors --no-wait || true
-
-          echo "Skipping wait for Healthy state; proceeding to comment with FQDN."
+      - name: deploy preview
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          resourceGroup: ${{ env.RESOURCE_GROUP }}
+          containerAppEnvironment: ${{ env.CONTAINERAPPS_ENV }}
+          containerAppName: ${{ env.APP_NAME }}
+          acrName: ${{ env.ACR_NAME }}
+          imageToDeploy: ${{ env.ACR_NAME }}.azurecr.io/www:${{ env.APP_NAME }}-${{ github.sha }}
+          targetPort: ${{ env.PORT }}
+          ingress: external
+          environmentVariables: |
+            PORT=${{ env.PORT }}
+            HOST=0.0.0.0
 
       - name: Fetch FQDN
         id: fqdn
