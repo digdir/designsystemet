@@ -54,7 +54,7 @@
 
   & :where(img, svg) {
     flex-shrink: 0;
-    font-size: 1.25em;
+    font-size: 1.3em;
   }
 
   &:focus-visible {
@@ -69,6 +69,10 @@
     width: var(--dsc-button-size); /* Ensure it keeps square shape */
     height: var(--dsc-button-size); /* Ensure it keeps square shape */
     padding: 0;
+
+    & :where(img, svg) {
+      font-size: 1.5em;
+    }
   }
 
   &[data-fullwidth] {
