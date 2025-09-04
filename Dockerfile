@@ -14,17 +14,17 @@ WORKDIR /usr/src/app
 RUN pnpm build:www
 RUN pnpm deploy --filter=@web/www --prod /prod/@web/www
 
-FROM packages AS themebuilder-build
-WORKDIR /usr/src/app
-RUN pnpm build:themebuilder
-RUN pnpm deploy --filter=@web/themebuilder --prod /prod/@web/themebuilder
-
 FROM base AS www
 COPY --from=www-build /prod/@web/www /srv/app
 WORKDIR /srv/app
 ENV NODE_ENV=production HOST=0.0.0.0 PORT=8000
 EXPOSE 8000
-CMD ["pnpm","start"]
+CMD [ "pnpm", "start" ]
+
+FROM packages AS themebuilder-build
+WORKDIR /usr/src/app
+RUN pnpm build:themebuilder
+RUN pnpm deploy --filter=@web/themebuilder --prod /prod/@web/themebuilder
 
 FROM base AS themebuilder
 COPY --from=themebuilder-build /prod/@web/themebuilder /srv/app
@@ -32,3 +32,14 @@ WORKDIR /srv/app
 ENV NODE_ENV=production HOST=0.0.0.0 PORT=8000
 EXPOSE 8000
 CMD [ "pnpm", "start" ]
+
+FROM packages AS storybook-build
+RUN pnpm build:storybook || pnpm --filter @web/storybook run build
+RUN pnpm deploy --filter=@web/storybook --prod /prod/@web/storybook
+
+FROM base AS storybook
+COPY --from=storybook-build /prod/@web/storybook /srv/app
+WORKDIR /srv/app
+ENV NODE_ENV=production HOST=0.0.0.0 PORT=6006
+EXPOSE 6006
+CMD ["pnpm","dlx","serve","-s","dist","-l","6006"]
