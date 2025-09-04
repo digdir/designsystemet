@@ -136,7 +136,6 @@ export const OverviewComponents = ({
             <div className={classes.tags} data-size='sm'>
               <Tag data-color='brand1'>{t('overview.sports')}</Tag>
               <Tag data-color='brand2'>{t('overview.news')}</Tag>
-              <Tag data-color='brand3'>{t('overview.domestic')}</Tag>
             </div>
             <Heading data-size='2xs' className={classes.imgTitle}>
               {t('overview.news-title')}
