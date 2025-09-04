@@ -12,7 +12,8 @@ const formatBaseSizeToken =
     ...token,
     originalName: token.name,
     name: `${token.name}--${shortSizeName(size)}`,
-    $value: token.$value / basePxFontSize,
+    $value: token.path.includes('_ratio') ? token.$value : token.$value / basePxFontSize,
+    $description: undefined, // removes comment from output
   });
 
 export const sizeMode: Format = {
@@ -57,6 +58,10 @@ export const sizeMode: Format = {
 ${sizes.map((size) => `  --ds-size--${size}: var(--ds-size,);`).join('\n')}
   --ds-size-mode-font-size:
 ${sizes.map((size) => `    var(--ds-size--${size}, var(--ds-size-mode-font-size--${size}))`).join('\n')};
+  --ds-font-scale-base:
+${sizes.map((size) => `    var(--ds-size--${size}, var(--ds-font-scale-base--${size}))`).join('\n')};
+  --ds-font-scale-ratio:
+${sizes.map((size) => `    var(--ds-size--${size}, var(--ds-font-scale-ratio--${size}))`).join('\n')};
 }`;
     const sizingHelpers = sizes
       .map((size) => `[data-size='${size}'] { --ds-size: var(--ds-size--${size}); }`)
