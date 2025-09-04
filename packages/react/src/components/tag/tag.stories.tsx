@@ -1,6 +1,6 @@
 import { ParagraphIcon, RobotIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
-import themeConfig from '../../../../theme/configs/designsystemet.config.json';
+import themeConfig from '../../../../cli/configs/digdir.config.json';
 import type { TagProps } from './tag';
 import { Tag } from './tag';
 
@@ -15,8 +15,8 @@ export default {
 } satisfies Meta;
 
 const colorVariants = [
-  ...Object.keys(themeConfig.themes.designsystemet.colors.main),
-  ...Object.keys(themeConfig.themes.designsystemet.colors.support),
+  ...Object.keys(themeConfig.themes.digdir.colors.main),
+  ...Object.keys(themeConfig.themes.digdir.colors.support),
   'neutral',
   'success',
   'warning',

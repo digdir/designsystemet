@@ -1,8 +1,9 @@
 import cat1 from '@assets/img/cats/Cat 1.jpg';
 import cat5 from '@assets/img/cats/Cat 5.jpg';
 import type { Meta, StoryFn } from '@storybook/react-vite';
-import themeConfig from '../../../../theme/configs/designsystemet.config.json';
+import themeConfig from '../../../../cli/configs/digdir.config.json';
 import { Card, Heading, Link, Paragraph } from '../';
+
 import type { CardProps } from './';
 
 type Story = StoryFn<typeof Card>;
@@ -24,8 +25,8 @@ export default {
 } satisfies Meta;
 
 const colorVariants = [
-  ...Object.keys(themeConfig.themes.designsystemet.colors.main),
-  ...Object.keys(themeConfig.themes.designsystemet.colors.support),
+  ...Object.keys(themeConfig.themes.digdir.colors.main),
+  ...Object.keys(themeConfig.themes.digdir.colors.support),
   'neutral',
 ];
 
