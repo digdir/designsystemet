@@ -33,7 +33,6 @@ export const sizeVariables: GetStyleDictionaryConfig = ({ theme }) => {
               const isUwantedToken = R.anyPass([R.includes('primitives/global')])(token.filePath);
               const isPrivateToken = R.includes('_', token.path);
               return pathStartsWithOneOf(['size', '_size'], token) && !(isUwantedToken || isPrivateToken);
-              // R.equals(['_size', 'mode-font-size'], token.path) ||
             },
           },
         ],
