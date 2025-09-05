@@ -98,7 +98,7 @@ export default {
     sidebar: 'sidemeny',
   },
   navigation: {
-    fundamentals: 'Grunnleggende update',
+    fundamentals: 'Grunnleggende',
     'best-practices': 'God praksis',
     patterns: 'Mønstre',
     blog: 'Bloggen',

@@ -3,14 +3,6 @@ import type no from './no';
 
 export default {
   ...en,
-  navigation: {
-    fundamentals: 'Fundamentals',
-    'best-practices': 'Best Practices',
-    patterns: 'Patterns',
-    blog: 'Blog',
-    components: 'Components',
-    'theme-builder': 'Theme Builder',
-  },
   errors: {
     default: {
       title: 'Sorry, something went wrong.',
