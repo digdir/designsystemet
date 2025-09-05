@@ -92,7 +92,7 @@ It is confusing that `data-size` means *size mode* in certain contexts, and *com
 
 ## Defining custom size modes
 
-Under the hood, our variables change based on the local value of `--ds-size-mode-font-size`, and use `rem` for scaling based on the user's browser settings. `data-size="<mode>"` og `--ds-size: var(--ds-size--<mode>)` work by setting `--ds-size-mode-font-size` to values which correspond to the same size modes in Figma, but you can also set this variable directly for custom sizing.
+Under the hood, our variables change based on the local value of `--ds-size-mode-font-size`, and use `rem` for scaling based on the user's browser settings. `data-size="<mode>"` and `--ds-size: var(--ds-size--<mode>)` work by setting `--ds-size-mode-font-size` to values which correspond to the same size modes in Figma, but you can also set this variable directly for custom sizing.
 
 Note that for an element to be affected, the `data-size` attribute also needs to be set,
 but it can be blank or set to anything other than `"sm"`, `"md"` or `"lg"`.
