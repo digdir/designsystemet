@@ -2,12 +2,12 @@
   --dsc-avatar-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' fill='none' viewBox='0 0 24 24' focusable='false' role='img'%3E%3Cpath fill='currentColor' fill-rule='evenodd' d='M8.25 7.5a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0M12 2.25a5.25 5.25 0 1 0 0 10.5 5.25 5.25 0 0 0 0-10.5M8.288 17.288A5.25 5.25 0 0 1 17.25 21a.75.75 0 0 0 1.5 0 6.75 6.75 0 0 0-13.5 0 .75.75 0 0 0 1.5 0 5.25 5.25 0 0 1 1.538-3.712' clip-rule='evenodd'%3E%3C/path%3E%3C/svg%3E");
   --dsc-avatar-background: var(--ds-color-base-default);
   --dsc-avatar-color: var(--ds-color-base-contrast-default);
-  /* biome-ignore-start lint/suspicious/noDuplicateCustomProperties: fallback */
   --dsc-avatar-size: 2.625em; /* Fallback if not supporting round() */
-  --dsc-avatar-size: round(up, 2.625em, 1px);
   --dsc-avatar-padding: 0.45em; /* Fallback if not supporting round() */
-  --dsc-avatar-padding: round(down, 0.45em, 1px);
-  /* biome-ignore-end lint/suspicious/noDuplicateCustomProperties: fallback */
+  @supports (width: round(down, 0.1em, 1px)) {
+    --dsc-avatar-size: round(up, 2.625em, 1px);
+    --dsc-avatar-padding: round(down, 0.45em, 1px);
+  }
 
   align-items: center;
   background: var(--dsc-avatar-background);
@@ -40,18 +40,18 @@
     height: 100%;
   }
   > span {
-    /* biome-ignore-start lint/suspicious/noDuplicateProperties: fallback */
     font-size: 1.3em; /* Fallback if not supporting round() */
-    font-size: round(down, 1.3em, 1px); /* Default to 130% */
-    /* biome-ignore-end lint/suspicious/noDuplicateProperties: fallback */
+    @supports (font-size: round(down, 0.1em, 1px)) {
+      font-size: round(down, 1.3em, 1px); /* Default to 130% */
+    }
   }
 
   &[data-initials]:empty::before {
     content: attr(data-initials);
-    /* biome-ignore-start lint/suspicious/noDuplicateProperties: fallback */
     font-size: 1.3em; /* Fallback if not supporting round() */
-    font-size: round(down, 1.3em, 1px); /* Default to 130% */
-    /* biome-ignore-end lint/suspicious/noDuplicateProperties: fallback */
+    @supports (font-size: round(down, 0.1em, 1px)) {
+      font-size: round(down, 1.3em, 1px); /* Default to 130% */
+    }
   }
 
   &:not([data-initials]):empty::before {
