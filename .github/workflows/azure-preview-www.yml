@@ -89,7 +89,7 @@ jobs:
           echo "Resolved FQDN: ${FQDN}"  # log for visibility
 
   update-comment:
-    if: ${{ inputs.update_comment }}
+    if: ${{ github.event_name == 'pull_request' }}
     needs: deploy
     uses: ./.github/workflows/preview-comment.yml
     with:
