@@ -19,11 +19,17 @@ export const isInlineTokens = R.anyPass([isNumericBorderRadiusToken, isNumericSi
  * @returns Object with formatted CSS strings for calc and round.
  */
 export const overrideSizingFormula = (format: (t: TransformedToken) => string, token: TransformedToken) => {
-  const [name, value] = format(token).split(':');
+  const [name, value] = format(token).replace(/;$/, '').split(': ');
 
-  const calc = value.replace(/floor\((.*)\);/, 'calc(1rem * $1)');
-
-  const round = `round(down, ${calc}, 1px)`;
+  let calc: string;
+  let round: string;
+  if (value.startsWith('floor')) {
+    calc = value.replace(/^floor\((.*)\)$/, 'calc(1rem * $1)');
+    round = `round(down, ${calc}, 1px)`;
+  } else {
+    calc = value.includes('*') ? `calc(${value})` : value;
+    round = calc;
+  }
 
   return {
     name,
@@ -54,11 +60,14 @@ const formatSizingTokens = (format: (t: TransformedToken) => string, tokens: Tra
     tokens,
   );
 
-const sizingTemplate = ({ round, calc }: { round: string[]; calc: string[] }) => `
+const sizingTemplate = ({ round, calc }: { round: string[]; calc: string[] }) => {
+  const usesRounding = round.filter((val, i) => val !== calc[i]);
+  return `
 ${calc.join('\n')}\n
   @supports (width: round(down, .1em, 1px)) {
-${round.join('\n')}
+  ${usesRounding.join('  \n')}
   }`;
+};
 
 export const size: Format = {
   name: 'ds/css-size',
