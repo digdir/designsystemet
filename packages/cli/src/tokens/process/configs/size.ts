@@ -1,4 +1,3 @@
-import {} from '@tokens-studio/sd-transforms';
 import * as R from 'ramda';
 import type {} from 'style-dictionary/types';
 import { outputReferencesFilter } from 'style-dictionary/utils';
