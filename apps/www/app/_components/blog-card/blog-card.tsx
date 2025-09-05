@@ -55,7 +55,11 @@ export const BlogCard = ({
               {tagText}
             </Tag>
           )}
-          <Heading level={level} data-size={featured ? 'lg' : 'sm'}>
+          <Heading
+            className={classes.heading}
+            level={level}
+            data-size={featured ? 'lg' : 'sm'}
+          >
             <Link to={href}>{title}</Link>
           </Heading>
           <Paragraph data-size={featured ? 'lg' : 'sm'}>{desc}</Paragraph>

@@ -1,0 +1,178 @@
+[
+  {
+    "path": [
+      "_size",
+      "base"
+    ],
+    "variable": "--ds-size-base",
+    "value": "18"
+  },
+  {
+    "path": [
+      "_size",
+      "step"
+    ],
+    "variable": "--ds-size-step",
+    "value": "4"
+  },
+  {
+    "path": [
+      "_size",
+      "0"
+    ],
+    "variable": "--ds-size-0",
+    "value": "0"
+  },
+  {
+    "path": [
+      "_size",
+      "1"
+    ],
+    "variable": "--ds-size-1",
+    "value": "round(down, calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size)), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "2"
+    ],
+    "variable": "--ds-size-2",
+    "value": "calc(var(--ds-size-1) * 2)"
+  },
+  {
+    "path": [
+      "_size",
+      "3"
+    ],
+    "variable": "--ds-size-3",
+    "value": "calc(var(--ds-size-1) * 3)"
+  },
+  {
+    "path": [
+      "_size",
+      "4"
+    ],
+    "variable": "--ds-size-4",
+    "value": "calc(var(--ds-size-1) * 4)"
+  },
+  {
+    "path": [
+      "_size",
+      "5"
+    ],
+    "variable": "--ds-size-5",
+    "value": "calc(var(--ds-size-1) * 5)"
+  },
+  {
+    "path": [
+      "_size",
+      "6"
+    ],
+    "variable": "--ds-size-6",
+    "value": "calc(var(--ds-size-1) * 6)"
+  },
+  {
+    "path": [
+      "_size",
+      "7"
+    ],
+    "variable": "--ds-size-7",
+    "value": "calc(var(--ds-size-1) * 7)"
+  },
+  {
+    "path": [
+      "_size",
+      "8"
+    ],
+    "variable": "--ds-size-8",
+    "value": "calc(var(--ds-size-1) * 8)"
+  },
+  {
+    "path": [
+      "_size",
+      "9"
+    ],
+    "variable": "--ds-size-9",
+    "value": "calc(var(--ds-size-1) * 9)"
+  },
+  {
+    "path": [
+      "_size",
+      "10"
+    ],
+    "variable": "--ds-size-10",
+    "value": "calc(var(--ds-size-1) * 10)"
+  },
+  {
+    "path": [
+      "_size",
+      "11"
+    ],
+    "variable": "--ds-size-11",
+    "value": "calc(var(--ds-size-1) * 11)"
+  },
+  {
+    "path": [
+      "_size",
+      "12"
+    ],
+    "variable": "--ds-size-12",
+    "value": "calc(var(--ds-size-1) * 12)"
+  },
+  {
+    "path": [
+      "_size",
+      "13"
+    ],
+    "variable": "--ds-size-13",
+    "value": "calc(var(--ds-size-1) * 13)"
+  },
+  {
+    "path": [
+      "_size",
+      "14"
+    ],
+    "variable": "--ds-size-14",
+    "value": "calc(var(--ds-size-1) * 14)"
+  },
+  {
+    "path": [
+      "_size",
+      "15"
+    ],
+    "variable": "--ds-size-15",
+    "value": "calc(var(--ds-size-1) * 15)"
+  },
+  {
+    "path": [
+      "_size",
+      "18"
+    ],
+    "variable": "--ds-size-18",
+    "value": "calc(var(--ds-size-1) * 18)"
+  },
+  {
+    "path": [
+      "_size",
+      "22"
+    ],
+    "variable": "--ds-size-22",
+    "value": "calc(var(--ds-size-1) * 22)"
+  },
+  {
+    "path": [
+      "_size",
+      "26"
+    ],
+    "variable": "--ds-size-26",
+    "value": "calc(var(--ds-size-1) * 26)"
+  },
+  {
+    "path": [
+      "_size",
+      "30"
+    ],
+    "variable": "--ds-size-30",
+    "value": "calc(var(--ds-size-1) * 30)"
+  }
+]

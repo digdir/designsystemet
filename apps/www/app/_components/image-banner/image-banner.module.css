@@ -63,7 +63,7 @@
 }
 
 .title {
-  margin-bottom: var(--ds-size-4);
+  margin-bottom: var(--ds-size-8);
 }
 
 .tag {
@@ -112,6 +112,8 @@
 }
 
 .videoControl {
+  --ds-size-mode-font-size: 0.875; /* override the size calculation for data-size="sm'
+                                      to match old "xs" which no longer exists */
   margin-top: var(--ds-size-2);
   margin-left: auto;
   position: absolute;
