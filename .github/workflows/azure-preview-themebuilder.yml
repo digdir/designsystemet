@@ -11,6 +11,7 @@ on:
 permissions:
   id-token: write
   contents: read
+  pull-requests: write
 
 env:
   RESOURCE_GROUP: rg-designsystemet-test
