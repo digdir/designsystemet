@@ -15,6 +15,10 @@ on:
         type: string
         description: 'The deployment URL'
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   update-comment:
     runs-on: ubuntu-latest
