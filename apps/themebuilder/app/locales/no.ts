@@ -2,6 +2,14 @@ import no from '@internal/components/src/_locales/no';
 
 export default {
   ...no,
+  navigation: {
+    fundamentals: 'Grunnleggende',
+    'best-practices': 'God praksis',
+    patterns: 'Mønstre',
+    blog: 'Bloggen',
+    components: 'Komponenter',
+    'theme-builder': 'Temabygger',
+  },
   errors: {
     default: {
       title: 'Oops!',
