@@ -29,6 +29,8 @@ jobs:
   deploy:
     if: ${{ github.repository == 'digdir/designsystemet' }}
     runs-on: ubuntu-latest
+    outputs:
+      fqdn: ${{ steps.fqdn.outputs.fqdn }}
 
     steps:
       - uses: actions/checkout@v4
