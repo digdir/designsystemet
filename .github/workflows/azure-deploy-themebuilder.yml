@@ -1,0 +1,55 @@
+name: deploy themebuilder to aca
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'apps/themebuilder/**'
+      - 'internal/components/**'
+
+permissions:
+  id-token: write   # needed for OIDC
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: azure
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: az login (oidc)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: acr login
+        run: az acr login --name designsystemetacr
+
+      - name: build & push (themebuilder)
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          target: themebuilder
+          platforms: linux/amd64
+          push: true
+          tags: designsystemetacr.azurecr.io/themebuilder:${{ github.sha }}
+
+      - name: deploy
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          resourceGroup: rg-designsystemet-test
+          containerAppName: themebuilder-test-ca-app
+          containerAppEnvironment: themebuilder-test-ca
+          acrName: designsystemetacr
+          imageToDeploy: designsystemetacr.azurecr.io/themebuilder:${{ github.sha }}
+          targetPort: 8000
+          ingress: external
+          environmentVariables: |
+            PORT=8000
+            HOST=0.0.0.0
