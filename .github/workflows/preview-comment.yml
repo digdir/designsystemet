@@ -105,6 +105,7 @@ jobs:
       - name: Update comment with deployment
         uses: peter-evans/create-or-update-comment@v4
         with:
+          token: ${{ secrets.PREVIEW_COMMENT_TOKEN }}
           issue-number: ${{ inputs.pr_number }}
           comment-id: ${{ steps.fc.outputs.comment-id }}
           edit-mode: replace
