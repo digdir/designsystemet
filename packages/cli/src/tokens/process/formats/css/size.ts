@@ -19,15 +19,22 @@ export const isInlineTokens = R.anyPass([isNumericBorderRadiusToken, isNumericSi
  * @returns Object with formatted CSS strings for calc and round.
  */
 export const overrideSizingFormula = (format: (t: TransformedToken) => string, token: TransformedToken) => {
-  const [name, value] = format(token).split(':');
+  const [name, value] = format(token).replace(/;$/, '').split(': ');
 
-  const calc = value.replace(/floor\((.*)\);/, 'calc(1rem * $1)');
-
-  const round = `round(down, ${calc}, 1px)`;
+  let calc: string;
+  let round: string | undefined;
+  if (token.path[1] === 'unit') {
+    calc = `calc(1rem * ${value})`;
+  } else if (value.startsWith('floor')) {
+    calc = value.replace(/^floor\((.*)\)$/, 'calc($1)');
+    round = `round(down, ${calc}, 1px)`;
+  } else {
+    calc = value.includes('*') ? `calc(${value})` : value;
+  }
 
   return {
     name,
-    round,
+    round: round ?? calc,
     calc,
   };
 };
@@ -54,11 +61,14 @@ const formatSizingTokens = (format: (t: TransformedToken) => string, tokens: Tra
     tokens,
   );
 
-const sizingTemplate = ({ round, calc }: { round: string[]; calc: string[] }) => `
+const sizingTemplate = ({ round, calc }: { round: string[]; calc: string[] }) => {
+  const usesRounding = round.filter((val, i) => val !== calc[i]);
+  return `
 ${calc.join('\n')}\n
   @supports (width: round(down, .1em, 1px)) {
-${round.join('\n')}
+  ${usesRounding.join('\n  ')}
   }`;
+};
 
 export const size: Format = {
   name: 'ds/css-size',
@@ -77,7 +87,7 @@ export const size: Format = {
     const tokens = inlineTokens(isInlineTokens, dictionary.allTokens);
     const filteredTokens = R.reject((token) => R.equals(['_size', 'mode-font-size'], token.path), tokens);
     const [sizingTokens, restTokens] = R.partition(
-      (t: TransformedToken) => pathStartsWithOneOf(['_size'], t) && isDigit(t.path[1]),
+      (t: TransformedToken) => pathStartsWithOneOf(['_size'], t) && (isDigit(t.path[1]) || t.path[1] === 'unit'),
       filteredTokens,
     );
     const formattedSizingTokens = formatSizingTokens(format, sizingTokens);

@@ -37,7 +37,8 @@ export const sizeVariables: GetStyleDictionaryConfig = ({ theme }) => {
         ],
         options: {
           outputReferences: (token, options) => {
-            const isWantedSize = pathStartsWithOneOf(['size', '_size'], token) && isDigit(token.path[1]);
+            const isWantedSize =
+              pathStartsWithOneOf(['size', '_size'], token) && (isDigit(token.path[1]) || token.path[1] === 'unit');
             return isWantedSize && outputReferencesFilter(token, options);
           },
         },
