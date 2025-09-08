@@ -143,7 +143,10 @@ function Document({ children }: DocumentProps) {
         <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === 'production' && (
-          <script src='https://siteimproveanalytics.com/js/siteanalyze_6255470.js' />
+          <script
+            src='https://siteimproveanalytics.com/js/siteanalyze_6255470.js'
+            crossOrigin='anonymous'
+          />
         )}
       </body>
     </html>
