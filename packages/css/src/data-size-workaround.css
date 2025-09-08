@@ -9,8 +9,7 @@ the component to scale based on the surrounding data-size.
 }
 /* Hack: Preserve --ds-size-mode-font-size on ancestor so we can look it up at the descendant */
 [data-size]:not(.ds-avatar, .ds-heading, .ds-paragraph, .ds-spinner) {
-  --_ds-size-mode__hack: var(--ds-size--sm, var(--ds-size-mode-font-size--sm)) var(--ds-size--md, var(--ds-size-mode-font-size--md))
-    var(--ds-size--lg, var(--ds-size-mode-font-size--lg));
+  --_ds-size-mode__hack: var(--ds-size-mode-font-size);
 }
 /* Hack: use the nearest ancestor size mode */
 [data-size] :is(.ds-avatar, .ds-heading, .ds-paragraph, .ds-spinner) {
