@@ -1,9 +1,14 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { join } from 'node:path';
-import { Alert, Heading } from '@digdir/designsystemet-react';
+import { Alert, Heading, Table } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import type { ComponentType } from 'react';
+import {
+  type ComponentDoc,
+  type PropItem,
+  withCustomConfig,
+} from 'react-docgen-typescript';
 import { useRouteLoaderData } from 'react-router';
 import {
   CssAttributes,
@@ -27,9 +32,29 @@ const require = createRequire(import.meta.url);
 export const loader = async ({ params }: Route.LoaderArgs) => {
   const { component, lang } = params;
 
+  const parser = withCustomConfig(
+    require.resolve('../../../../../packages/react/tsconfig.json'),
+    {
+      savePropValueAsString: true,
+      shouldExtractLiteralValuesFromEnum: true,
+      shouldRemoveUndefinedFromOptional: true,
+      propFilter: (prop: PropItem) => {
+        const defaultLogicFromStorybook = prop.parent
+          ? !/node_modules/.test(prop.parent.fileName)
+          : true;
+        return defaultLogicFromStorybook && prop.name !== 'popovertarget';
+      },
+    },
+  );
+
   if (!component) {
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
   }
+
+  const reactComponentPath = require.resolve(
+    `../../../../../packages/react/src/components/${component}/${component}.tsx`,
+  );
+  const [componentDocs]: ComponentDoc[] = parser.parse(reactComponentPath);
 
   const componentDir = join('app', 'content', 'components', component);
 
@@ -123,11 +148,20 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
     cssVars,
     cssAttrs,
     toc: result.toc,
+    componentDocs,
   };
 };
 
 export default function Components({
-  loaderData: { stories, mdxCode, frontmatter, cssVars, cssAttrs, toc },
+  loaderData: {
+    stories,
+    mdxCode,
+    frontmatter,
+    cssVars,
+    cssAttrs,
+    componentDocs,
+    toc,
+  },
 }: Route.ComponentProps) {
   return (
     <>
@@ -165,6 +199,32 @@ export default function Components({
             />
           ))
         )}
+        {componentDocs ? (
+          <Table
+            zebra
+            style={{
+              tableLayout: 'fixed',
+            }}
+          >
+            <caption>Temporary propstable test</caption>
+            <Table.Head>
+              <Table.Row>
+                <Table.HeaderCell>Name</Table.HeaderCell>
+                <Table.HeaderCell>Description</Table.HeaderCell>
+                <Table.HeaderCell>Default</Table.HeaderCell>
+              </Table.Row>
+            </Table.Head>
+            <Table.Body>
+              {Object.entries(componentDocs.props).map(([name, prop]) => (
+                <Table.Row key={name}>
+                  <Table.Cell>{prop.name}</Table.Cell>
+                  <Table.Cell>{prop.description}</Table.Cell>
+                  <Table.Cell>{prop.defaultValue?.value}</Table.Cell>
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table>
+        ) : null}
         {cssVars ? <CssVariables vars={cssVars} /> : null}
         {cssAttrs ? <CssAttributes vars={cssAttrs} /> : null}
         <EditPageOnGithub />
