@@ -27,6 +27,7 @@
     "src/**/*.chromatic.ts*",
     "../../apps/storybook/story-utils/**/*.ts*",
     "../theme/configs/designsystemet.config.json",
+    "../cli/configs/digdir.config.json",
 
   ],
   "references": [{ "path": "tsconfig.lib.json" }]

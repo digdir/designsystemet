@@ -2,7 +2,7 @@ import './style.css';
 import './customTheme.scss';
 /* We use relative imports to get HMR updates when developing */
 import '../../../packages/css/src/index.css';
-import '../../../packages/theme/src/themes/designsystemet.css';
+import '../../../packages/theme/brand/digdir.css';
 
 import type { HeadingProps } from '@digdir/designsystemet-react';
 import {

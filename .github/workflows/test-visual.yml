@@ -1,34 +1,35 @@
 name: Visual tests
 on:
   workflow_dispatch:
+  push:
+    branches-ignore:
+      - 'renovate/**'
   pull_request:
     branches: [main, next]
-    types:
-      # Ensure workflow is run when PR is ready for review
-      - ready_for_review
-      # Also enable the default trigger types, for instances when
-      # the PR is not opened as a draft first
-      - opened
-      - reopened
-      - synchronize
-
+    types: [ready_for_review, synchronize, opened]
     paths:
       - .github/workflows/visual-tests.yml
-      - 'packages/**'
+      - 'packages/**/*.@(tsx|ts)'
+      - 'packages/**/*.css'
+      - 'packages/**/*.stories.@(ts|tsx)'
       - 'apps/storybook/**'
-  push:
-    branches: [main, next]
+      - 'design-tokens/**/*.(json|jsonc)'
+
+concurrency:
+  group: test-visual-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: true
 
 jobs:
   checks:
     name: Build & run visual/interaction tests
     runs-on: ubuntu-latest
-    if: ${{ !github.event.pull_request.draft || github.repository == 'digdir/designsystemet' }}
+    if: '!github.event.pull_request.draft'
     steps:
       - uses: actions/checkout@v4
         with:
           # Necessary for Chromatic
           fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
       - uses: ./.github/actions/gh-setup
       - name: Build
         run: pnpm build
@@ -41,3 +42,5 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           exitZeroOnChanges: true
           autoAcceptChanges: '{main,next}'
+          onlyChanged: true
+          skip: '@(renovate/**|dependabot/**)'

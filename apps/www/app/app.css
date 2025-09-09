@@ -232,3 +232,9 @@ body {
     }
   }
 }
+@layer overrides {
+  .ds-skip-link:focus {
+    position: relative;
+    z-index: 1;
+  }
+}
