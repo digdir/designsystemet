@@ -84,7 +84,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ) : (
           loading // Allow custom loading spinner
         )}
-        <Slottable>{children}</Slottable>
+        <Slottable>{icon && loading ? null : children}</Slottable>
       </Component>
     );
   },
