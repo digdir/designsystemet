@@ -94,7 +94,9 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
   let cssPath: string | undefined;
 
   try {
-    cssPath = require.resolve(`@digdir/designsystemet-css/${result.frontmatter.cssfile}.css`);
+    cssPath = require.resolve(
+      `@digdir/designsystemet-css/${result.frontmatter.cssfile}.css`,
+    );
   } catch {}
 
   let cssSource: string | undefined;
