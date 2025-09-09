@@ -5,7 +5,6 @@ import * as R from 'ramda';
 import type { PropItem } from 'react-docgen-typescript';
 import remarkGfm from 'remark-gfm';
 import { defineConfig, mergeConfig } from 'vite';
-import { tag } from '../stories/component/showcase.module.css';
 
 const dirname =
   typeof __dirname !== 'undefined'
