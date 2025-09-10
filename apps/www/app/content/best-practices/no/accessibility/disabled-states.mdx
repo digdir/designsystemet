@@ -1,7 +1,7 @@
 ---
 title: Deaktiverte tilstander
 description: Hvorfor er deaktiverte tilstander utfordrende, og hvordan unngår man dem?
-date: 2025-07-18
+date: 2025-09-09
 author: Nav
 category: Tilgjengelighet
 published: true
@@ -15,7 +15,7 @@ Deaktiverte tilstander kan være utfordrende for brukere å oppfatte og forstå,
   data-color="brand3"
   data-variant="tinted"
 >
-Denne artikkelen ble opprinnelig publisert på [aksel.nav.no](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) og er skrevet av Sarah Brodwall. Den er gjengitt her med tillatelse og tilpasset med eksempler for bruk i Designsystemet.
+Denne artikkelen ble opprinnelig publisert på [aksel.nav.no](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander), skrevet av Sarah Brodwall. Den er gjengitt her med tillatelse og tilpasset for bruk i Designsystemet.
 </Card>
 
 
@@ -56,6 +56,63 @@ Hvis et valg ikke er relevant, bør du helst fjerne valget fremfor å deaktivere
 
 ### Skrivebeskyttet innhold
 Bruk vanlig tekst fremfor å deaktivere skrivebeskyttede inputfelter, eventuelt med tilleggsinformasjon som forteller hvorfor informasjonen ikke kan endres.
+
+<br/>
+
+<Table
+  style={{
+    tableLayout: 'fixed'
+  }}
+>
+  <TableHead>
+    <TableRow>
+      <TableHeaderCell>
+        Bruksområde
+      </TableHeaderCell>
+      <TableHeaderCell>
+        Problem med disabled
+      </TableHeaderCell>
+      <TableHeaderCell>
+        Anbefalt løsning
+      </TableHeaderCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <TableCell>
+        Skjemavalidering
+      </TableCell>
+      <TableCell>
+        Brukeren får ikke sendt inn skjema og vet ikke hvorfor
+      </TableCell>
+      <TableCell>
+        La knappen være aktiv, vis feilmelding
+      </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>
+        Ikke-aktuelle valg
+      </TableCell>
+      <TableCell>
+        Lav kontrast eller uklart hvorfor valget ikke fungerer
+      </TableCell>
+      <TableCell>
+        Fjern valget, gi forklaring
+      </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>
+        Skrivebeskyttet innhold
+      </TableCell>
+      <TableCell>
+        Brukeren forstår ikke hvorfor feltet ikke kan endres
+      </TableCell>
+      <TableCell>
+        Bruk tekst eller readonly med tydelig styling og forklaring
+      </TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
 
 ## HTML- og ARIA-attributter
 HTML tilbyr ulike måter å markere at noe er ikke-interaktivt, og de har litt forskjellig oppførsel.
