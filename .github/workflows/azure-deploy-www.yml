@@ -53,3 +53,11 @@ jobs:
           environmentVariables: |
             PORT=8000
             HOST=0.0.0.0
+
+      - name: keep container always on
+        run: |
+          az containerapp update \
+            -g rg-designsystemet-test \
+            -n www-test-ca-app \
+            --min-replicas 1 \
+            --max-replicas 1
