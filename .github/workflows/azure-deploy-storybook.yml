@@ -1,5 +1,5 @@
-name: azure deploy storybook prod
-run-name:  Deploy to storybook to ${{ inputs.environment }} by @${{ github.actor }}
+name: azure deploy storybook
+run-name: Deploy to storybook to ${{ inputs.environment }} by @${{ github.actor }}
 on:
   workflow_call:
     inputs:
@@ -37,7 +37,7 @@ env:
   RESOURCE_GROUP: ${{ inputs.environment == 'production' && 'rg-designsystemet-prod' || 'rg-designsystemet-test' }}
   CONTAINERAPPS_ENV: ${{ inputs.environment == 'production' && 'storybook-prod-ca' || 'storybook-test-ca' }}
   ACR_NAME: designsystemetacr
-  APP_NAME: ${{ inputs.environment == 'production' && 'storybook-prod' || format('storybook-test-pr-{0}', inputs.pr_number) }}
+  APP_NAME: ${{ inputs.environment == 'production' && 'storybook-prod' || format('storybook-pr-{0}', inputs.pr_number) }}
   IMAGE: ${{ inputs.pr_number && format('{0}-{1}', inputs.pr_number, github.sha) || format('{0}-{1}', github.run_id, github.sha) }}
   PORT: 8000
 
@@ -56,11 +56,11 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      - name: acr login
-        run: az acr login --name designsystemetacr
+      - name: acr login (for docker push)
+        run: az acr login --name ${{ env.ACR_NAME }}
 
       - name: build & push image
-        uses: docker/build-push-action@ca052bb54ab0790a636c9b5f226502c73d547a25
+        uses: docker/build-push-action@ca052bb54ab0790a636c9b5f226502c73d547a25 # v5
         with:
           context: .
           file: ./Dockerfile
@@ -83,7 +83,7 @@ jobs:
           echo "pass=${PASS}" >> "$GITHUB_OUTPUT"
 
       - name: deploy (no mi; use registry creds)
-        uses: azure/container-apps-deploy-action@v1
+        uses: azure/container-apps-deploy-action@29ee19866ec987ededd70b8412d9ee241a9102d1 # v1
         with:
           resourceGroup: ${{ env.RESOURCE_GROUP }}
           containerAppEnvironment: ${{ env.CONTAINERAPPS_ENV }}
@@ -102,7 +102,7 @@ jobs:
       - name: fetch fqdn
         id: fqdn
         run: |
-          FQDN=$(az containerapp show -n "${{ env.APP_NAME }}" -g "${{ env.RESOURCE_GROUP }}" --query properties.configuration.ingress.fqdn -o tsv)
+          FQDN=$(az containerapp show -n "${APP_NAME}" -g "${RESOURCE_GROUP}" --query properties.configuration.ingress.fqdn -o tsv)
           echo "fqdn=${FQDN}" >> "$GITHUB_OUTPUT"
 
   update-comment:
