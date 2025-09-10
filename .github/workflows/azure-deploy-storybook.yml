@@ -39,7 +39,7 @@ env:
   ACR_NAME: designsystemetacr
   APP_NAME: ${{ inputs.environment == 'production' && 'storybook-prod' || format('storybook-pr-{0}', inputs.pr_number) }}
   IMAGE: ${{ inputs.pr_number && format('{0}-{1}', inputs.pr_number, github.sha) || format('{0}-{1}', github.run_id, github.sha) }}
-  PORT: 8000
+  PORT: 6006
 
 jobs:
   deploy:
