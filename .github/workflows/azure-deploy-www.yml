@@ -72,15 +72,15 @@ jobs:
       - name: deploy
         uses: azure/container-apps-deploy-action@29ee19866ec987ededd70b8412d9ee241a9102d1 # v1
         with:
-          resourceGroup: ${{ RESOURCE_GROUP }}
-          containerAppName: ${{ APP_NAME }}
-          containerAppEnvironment: ${{ CONTAINERAPPS_ENV }}
-          acrName: ${{ ACR_NAME }}
-          imageToDeploy: ${{ IMAGE }}
-          targetPort: ${{ PORT }}
+          resourceGroup: ${{ env.RESOURCE_GROUP }}
+          containerAppName: ${{ env.APP_NAME }}
+          containerAppEnvironment: ${{ env.CONTAINERAPPS_ENV }}
+          acrName: ${{ env.ACR_NAME }}
+          imageToDeploy: ${{ env.IMAGE }}
+          targetPort: ${{ env.PORT }}
           ingress: external
           environmentVariables: |
-            PORT=${PORT}
+            PORT=${{ env.PORT }}
             HOST=0.0.0.0
             ENV=${{ inputs.environment }}
 
