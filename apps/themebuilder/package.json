@@ -18,7 +18,6 @@
     "@radix-ui/react-slot": "^1.2.3",
     "@react-router/node": "^7.8.2",
     "@react-router/serve": "^7.8.2",
-    "@vercel/react-router": "^1.2.3",
     "clsx": "^2.1.1",
     "i18next": "^25.4.2",
     "isbot": "^5.1.30",

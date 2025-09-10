@@ -4,7 +4,7 @@ import { cwd } from 'node:process';
 import type { Config } from '@react-router/dev/config';
 import i18nConf from './app/i18n';
 
-// Ensure we always have a valid dirname, even in Vercel's environment
+// Ensure we always have a valid dirname
 const dirname = cwd();
 
 // Function to get all content paths taking into account the language structure

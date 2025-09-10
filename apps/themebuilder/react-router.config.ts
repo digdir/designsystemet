@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import { cwd } from 'node:process';
 import type { Config } from '@react-router/dev/config';
 
-// Ensure we always have a valid dirname, even in Vercel's environment
+// Ensure we always have a valid dirname
 const dirname = cwd();
 
 const config: Config = {
