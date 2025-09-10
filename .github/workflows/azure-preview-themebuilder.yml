@@ -46,7 +46,7 @@ jobs:
         run: az acr login --name ${{ env.ACR_NAME }}
 
       - name: build & push image (themebuilder)
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@ca052bb
         with:
           context: .
           file: ./Dockerfile

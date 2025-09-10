@@ -31,7 +31,7 @@ jobs:
         run: az acr login --name designsystemetacr
 
       - name: build & push (themebuilder)
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@ca052bb
         with:
           context: .
           file: ./Dockerfile
