@@ -25,8 +25,9 @@ on:
         required: true
 
 permissions:
-  id-token: write   # needed for OIDC
+  id-token: write
   contents: read
+  pull-requests: write
 
 concurrency:
   group: azure-www-prod-deploy
