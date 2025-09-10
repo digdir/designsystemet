@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: az login (oidc)
-        uses: azure/login@v2
+        uses: azure/login@a457da9ea143d694b1b9c7c869ebb04ebe844ef5 # v2.3.0
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
@@ -31,7 +31,7 @@ jobs:
         run: az acr login --name designsystemetacr
 
       - name: build & push (themebuilder)
-        uses: docker/build-push-action@ca052bb
+        uses: docker/build-push-action@ca052bb54ab0790a636c9b5f226502c73d547a25 # v5
         with:
           context: .
           file: ./Dockerfile
@@ -41,7 +41,7 @@ jobs:
           tags: designsystemetacr.azurecr.io/themebuilder:${{ github.sha }}
 
       - name: deploy
-        uses: azure/container-apps-deploy-action@v1
+        uses: azure/container-apps-deploy-action@29ee19866ec987ededd70b8412d9ee241a9102d1 # v1
         with:
           resourceGroup: rg-designsystemet-test
           containerAppName: themebuilder-test-ca-app
