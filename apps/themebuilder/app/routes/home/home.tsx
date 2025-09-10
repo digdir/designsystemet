@@ -58,7 +58,7 @@ export default function Home({ params: { lang } }: Route.ComponentProps) {
         <div className={classes.header}>
           <Paragraph data-size='lg'>{t('themeBuilder.intro')}</Paragraph>
           <Heading data-size='xl' level={1} className={classes.heading}>
-            {t('themeBuilder.heading')}{' '}
+            {t('themeBuilder.heading')}!{' '}
             <span className={classes.headerText}>
               {t('themeBuilder.heading-highlight')}
             </span>
