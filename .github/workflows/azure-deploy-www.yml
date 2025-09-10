@@ -44,7 +44,6 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: azure
     outputs:
       fqdn: ${{ steps.fqdn.outputs.fqdn }}
     steps:
