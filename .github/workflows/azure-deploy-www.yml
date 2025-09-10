@@ -36,7 +36,7 @@ env:
   RESOURCE_GROUP: ${{ inputs.environment == 'production' && 'rg-designsystemet-prod' || 'rg-designsystemet-test' }}
   CONTAINERAPPS_ENV: ${{ inputs.environment == 'production' && 'www-prod-ca' || 'www-test-ca' }}
   ACR_NAME: designsystemetacr
-  APP_NAME: ${{ inputs.environment == 'production' && 'www-prod' || 'www-test-pr'-${{ inputs.pr_number }} }}
+  APP_NAME: ${{ inputs.environment == 'production' && 'www-prod' || www-test-pr-${{ inputs.pr_number }} }}
   IMAGE: ${{ github.event.number }}-${{ github.sha }}
   PORT: 8000
 
