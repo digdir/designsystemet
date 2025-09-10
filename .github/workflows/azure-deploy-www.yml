@@ -59,24 +59,39 @@ jobs:
       - name: acr login
         run: az acr login --name designsystemetacr
 
-      - name: build & push (www)
-        uses: docker/build-push-action@ca052bb54ab0790a636c9b5f226502c73d547a25 # v5
+      - name: build & push image
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: ./Dockerfile
           target: www
           platforms: linux/amd64
           push: true
-          tags: designsystemetacr.azurecr.io/www:latest
+          tags: ${{ env.ACR_NAME }}.azurecr.io/www:${{ env.IMAGE }}
 
-      - name: deploy
-        uses: azure/container-apps-deploy-action@29ee19866ec987ededd70b8412d9ee241a9102d1 # v1
+      - name: get acr creds (masked)
+        id: acr
+        shell: bash
+        run: |
+          set -euo pipefail
+          az acr update -n "${ACR_NAME}" --admin-enabled true >/dev/null
+          USER=$(az acr credential show -n "${ACR_NAME}" --query username -o tsv)
+          PASS=$(az acr credential show -n "${ACR_NAME}" --query 'passwords[0].value' -o tsv)
+          echo "::add-mask::${USER}"
+          echo "::add-mask::${PASS}"
+          echo "user=${USER}" >> "$GITHUB_OUTPUT"
+          echo "pass=${PASS}" >> "$GITHUB_OUTPUT"
+
+      - name: deploy (no mi; use registry creds)
+        uses: azure/container-apps-deploy-action@v1
         with:
           resourceGroup: ${{ env.RESOURCE_GROUP }}
-          containerAppName: ${{ env.APP_NAME }}
           containerAppEnvironment: ${{ env.CONTAINERAPPS_ENV }}
-          acrName: ${{ env.ACR_NAME }}
-          imageToDeploy: ${{ env.IMAGE }}
+          containerAppName: ${{ env.APP_NAME }}
+          imageToDeploy: ${{ env.ACR_NAME }}.azurecr.io/www:${{ env.IMAGE }}
+          registryUrl: ${{ env.ACR_NAME }}.azurecr.io
+          registryUsername: ${{ steps.acr.outputs.user }}
+          registryPassword: ${{ steps.acr.outputs.pass }}
           targetPort: ${{ env.PORT }}
           ingress: external
           environmentVariables: |
