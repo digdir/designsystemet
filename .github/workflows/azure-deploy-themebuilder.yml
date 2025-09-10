@@ -36,8 +36,8 @@ env:
   RESOURCE_GROUP: ${{ inputs.environment == 'production' && 'rg-designsystemet-prod' || 'rg-designsystemet-test' }}
   CONTAINERAPPS_ENV: ${{ inputs.environment == 'production' && 'themebuilder-prod-ca' || 'themebuilder-test-ca' }}
   ACR_NAME: designsystemetacr
-  APP_NAME: ${{ inputs.environment == 'production' && 'themebuilder-prod' || themebuilder-test-pr-${{ inputs.pr_number }} }}
-  IMAGE: ${{ github.event.number }}-${{ github.sha }}
+  APP_NAME: ${{ inputs.environment == 'production' && 'themebuilder-prod' || format('themebuilder-test-pr-{0}', inputs.pr_number) }}
+  IMAGE: ${{ inputs.pr_number && format('{0}-{1}', inputs.pr_number, github.sha) || format('{0}-{1}', github.run_id, github.sha) }}
   PORT: 8000
 
 jobs:
@@ -70,15 +70,15 @@ jobs:
       - name: deploy
         uses: azure/container-apps-deploy-action@29ee19866ec987ededd70b8412d9ee241a9102d1 # v1
         with:
-          resourceGroup: ${RESOURCE_GROUP}
-          containerAppName: ${APP_NAME}
-          containerAppEnvironment: ${CONTAINERAPPS_ENV}
-          acrName: ${ACR_NAME}
-          imageToDeploy: ${IMAGE}
-          targetPort: ${PORT}
+          resourceGroup: ${{ RESOURCE_GROUP }}
+          containerAppName: ${{ APP_NAME }}
+          containerAppEnvironment: ${{ CONTAINERAPPS_ENV }}
+          acrName: ${{ ACR_NAME }}
+          imageToDeploy: ${{ IMAGE }}
+          targetPort: ${{ PORT }}
           ingress: external
           environmentVariables: |
-            PORT=${PORT}
+            PORT=${{ PORT }}
             HOST=0.0.0.0
             ENV=${{ inputs.environment }}
 
