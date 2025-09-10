@@ -9,6 +9,7 @@ on:
       - 'internal/components/**'
 
 permissions:
+  id-token: write
   contents: read
 
 jobs:
