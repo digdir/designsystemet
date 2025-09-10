@@ -1,17 +1,44 @@
-name: deploy www to aca
-
+name: azure deploy www prod
+run-name:  Deploy to www to ${{ inputs.environment }} by @${{ github.actor }}
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - 'apps/www/**'
-      - 'internal/components/**'
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+        description: 'Deployment environment (production, preview)'
+      pr_number:
+        required: false
+        type: string
+        description: 'PR number for preview deployments'
+      update_comment:
+        required: false
+        type: boolean
+        default: false
+        description: 'Whether to update PR comment with deployment URL'
+    secrets:
+      AZURE_CLIENT_ID:
+        required: true
+      AZURE_TENANT_ID:
+        required: true
+      AZURE_SUBSCRIPTION_ID:
+        required: true
 
 permissions:
   id-token: write   # needed for OIDC
   contents: read
+
+concurrency:
+  group: azure-www-prod-deploy
+  cancel-in-progress: true
+
+env:
+  RESOURCE_GROUP: ${{ inputs.environment == 'production' && 'rg-designsystemet-prod' || 'rg-designsystemet-test' }}
+  CONTAINERAPPS_ENV: ${{ inputs.environment == 'production' && 'www-prod-ca' || 'www-test-ca' }}
+  ACR_NAME: designsystemetacr
+  APP_NAME: ${{ inputs.environment == 'production' && 'www-prod' || 'www-test-pr-${{ inputs.pr_number }}' }}
+  IMAGE: ${{ github.event.number }}-${{ github.sha }}
+  PORT: 8000
 
 jobs:
   deploy:
@@ -43,14 +70,14 @@ jobs:
       - name: deploy
         uses: azure/container-apps-deploy-action@29ee19866ec987ededd70b8412d9ee241a9102d1 # v1
         with:
-          resourceGroup: rg-designsystemet-prod
-          containerAppName: www-prod-env
-          containerAppEnvironment: www-prod-app
-          acrName: designsystemetacr
-          imageToDeploy: designsystemetacr.azurecr.io/www:latest
-          targetPort: 8000
+          resourceGroup: ${RESOURCE_GROUP}
+          containerAppName: ${APP_NAME}
+          containerAppEnvironment: ${CONTAINERAPPS_ENV}
+          acrName: ${ACR_NAME}
+          imageToDeploy: ${IMAGE}
+          targetPort: ${PORT}
           ingress: external
           environmentVariables: |
-            PORT=8000
+            PORT=${PORT}
             HOST=0.0.0.0
-            ENV=production
+            ENV=${{ inputs.environment }}
