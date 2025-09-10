@@ -8,6 +8,9 @@ on:
       - 'apps/www/**'
       - 'internal/components/**'
 
+permissions:
+  contents: read
+
 jobs:
   deploy-preview:
     uses: ./.github/workflows/azure-deploy-www.yml

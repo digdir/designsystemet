@@ -107,7 +107,7 @@ const config: Config = {
   buildEnd: async () => {
     const robotsPath = join(dirname, 'public', 'robots.txt');
     const robotsContent =
-      process.env.VERCEL_ENV === 'production'
+      process.env.ENV === 'production'
         ? `User-agent: *\nAllow: /`
         : `User-agent: *\nDisallow: /`;
 

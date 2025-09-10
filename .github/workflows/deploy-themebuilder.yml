@@ -1,4 +1,4 @@
-name: Deploy www to production
+name: Deploy themebuilder
 on:
   workflow_dispatch:
     inputs:
@@ -13,11 +13,11 @@ on:
     branches:
       - main
     paths:
-      - 'apps/www/**'
+      - 'apps/themebuilder/**'
 
 jobs:
   deploy-production:
-    uses: ./.github/workflows/vercel-deploy-www.yml
+    uses: ./.github/workflows/azure-deploy-themebuilder.yml
     with:
       environment: ${{ github.event.inputs.environment == 'production' && 'production' || 'preview' }}
     secrets:

@@ -1,5 +1,5 @@
-name: azure deploy themebuilder prod
-run-name:  Deploy to themebuilder to ${{ inputs.environment }} by @${{ github.actor }}
+name: azure deploy storybook prod
+run-name:  Deploy to storybook to ${{ inputs.environment }} by @${{ github.actor }}
 on:
   workflow_call:
     inputs:
@@ -29,14 +29,14 @@ permissions:
   contents: read
 
 concurrency:
-  group: azure-themebuilder-prod-deploy
+  group: azure-storybook-prod-deploy
   cancel-in-progress: true
 
 env:
   RESOURCE_GROUP: ${{ inputs.environment == 'production' && 'rg-designsystemet-prod' || 'rg-designsystemet-test' }}
-  CONTAINERAPPS_ENV: ${{ inputs.environment == 'production' && 'themebuilder-prod-ca' || 'themebuilder-test-ca' }}
+  CONTAINERAPPS_ENV: ${{ inputs.environment == 'production' && 'storybook-prod-ca' || 'storybook-test-ca' }}
   ACR_NAME: designsystemetacr
-  APP_NAME: ${{ inputs.environment == 'production' && 'themebuilder-prod' || 'themebuilder-test-pr'-${{ inputs.pr_number }} }}
+  APP_NAME: ${{ inputs.environment == 'production' && 'storybook-prod' || 'storybook-test-pr'-${{ inputs.pr_number }} }}
   IMAGE: ${{ github.event.number }}-${{ github.sha }}
   PORT: 8000
 
@@ -57,15 +57,15 @@ jobs:
       - name: acr login
         run: az acr login --name designsystemetacr
 
-      - name: build & push (themebuilder)
+      - name: build & push (storybook)
         uses: docker/build-push-action@ca052bb54ab0790a636c9b5f226502c73d547a25 # v5
         with:
           context: .
           file: ./Dockerfile
-          target: themebuilder
+          target: storybook
           platforms: linux/amd64
           push: true
-          tags: designsystemetacr.azurecr.io/themebuilder:latest
+          tags: designsystemetacr.azurecr.io/storybook:latest
 
       - name: deploy
         uses: azure/container-apps-deploy-action@29ee19866ec987ededd70b8412d9ee241a9102d1 # v1
