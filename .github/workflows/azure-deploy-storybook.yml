@@ -111,5 +111,5 @@ jobs:
     uses: ./.github/workflows/preview-comment.yml
     with:
       pr_number: ${{ github.event.number }}
-      deployment_type: theme
+      deployment_type: storybook
       deployment_url: https://${{ needs.deploy.outputs.fqdn }}
