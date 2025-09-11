@@ -19,6 +19,12 @@ concurrency:
   group: test-visual-${{ github.event.pull_request.number || github.run_id }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+  pull-requests: read
+  actions: read
+  checks: write
+
 jobs:
   fail_if_pull_request_is_draft:
     if: github.event.pull_request.draft == true
@@ -32,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     if: '!github.event.pull_request.draft'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
         with:
           # Necessary for Chromatic
           fetch-depth: 0
@@ -43,7 +49,7 @@ jobs:
       - name: Build storybook
         run: pnpm build:storybook
       - name: Run Chromatic (visual and interaction tests)
-        uses: chromaui/action@latest
+        uses: chromaui/action@latest # wants us to always use latest https://github.com/chromaui/action
         with:
           workingDir: apps/storybook
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

@@ -9,7 +9,6 @@ on:
 
 permissions:
   checks: write
-  # Required to put a comment into the pull-request
   pull-requests: write
 
 jobs:
@@ -17,7 +16,7 @@ jobs:
     name: Build & test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
       - uses: ./.github/actions/gh-setup
       - name: Build
         run: pnpm build
@@ -28,11 +27,11 @@ jobs:
         run: pnpm test
       - name: 'Report Coverage'
         if: success() || failure()
-        uses: davelosert/vitest-coverage-report-action@v2
+        uses: davelosert/vitest-coverage-report-action@8ab049ff5a2c6e78f78af446329379b318544a1a # v2.8.3
         with:
           comment-on: none
       - name: Publish unit test report
-        uses: mikepenz/action-junit-report@v5
+        uses: mikepenz/action-junit-report@3585e9575db828022551b4231f165eb59a0e74e3 # v5.6.2
         if: success() || failure()
         with:
           report_paths: 'test-report.xml'
@@ -47,7 +46,7 @@ jobs:
       - name: Install playwright and run Storybook tests
         run: pnpm test:storybook
       - name: Replace relative paths in test report
-        uses: jacobtomlinson/gha-find-replace@v3
+        uses: jacobtomlinson/gha-find-replace@f1069b438f125e5395d84d1c6fd3b559a7880cb5 # v3.0.5
         if: success() || failure()
         with:
           include: 'apps/storybook/test-report.xml'
@@ -55,7 +54,7 @@ jobs:
           replace: ''
           regex: false
       - name: Publish Storybook test report
-        uses: mikepenz/action-junit-report@v5
+        uses: mikepenz/action-junit-report@3585e9575db828022551b4231f165eb59a0e74e3 # v5.6.2
         if: success() || failure()
         with:
           report_paths: 'apps/storybook/test-report.xml'
