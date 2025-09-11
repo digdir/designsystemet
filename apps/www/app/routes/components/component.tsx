@@ -169,6 +169,8 @@ export default function Components({
             code={mdxCode}
             components={{
               Story: Story as unknown as ComponentType<unknown>,
+              ReactComponentDocs:
+                PropsTable as unknown as ComponentType<unknown>,
             }}
           />
         ) : (
@@ -205,4 +207,13 @@ const Story = ({ story }: { story: string }) => {
       code={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
     />
   );
+};
+const PropsTable = ({ docs }: { docs: ComponentDoc[] }) => {
+  const data =
+    useRouteLoaderData<Route.ComponentProps['loaderData']>('components-page');
+  if (!data) return null;
+
+  const { componentDocs } = data;
+
+  return <ReactComponentDocs docs={componentDocs as ComponentDoc[]} />;
 };
