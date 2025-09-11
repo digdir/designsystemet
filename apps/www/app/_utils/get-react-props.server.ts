@@ -9,20 +9,22 @@ import {
 
 const require = createRequire(import.meta.url);
 
-const parser = withCustomConfig(
-  require.resolve(path.join(process.cwd(), '../../packages/react/tsconfig.json')),
-  {
-    savePropValueAsString: true,
-    shouldExtractLiteralValuesFromEnum: true,
-    shouldRemoveUndefinedFromOptional: true,
-    propFilter: (prop: PropItem) => {
-      const defaultLogicFromStorybook = prop.parent
-        ? !/node_modules/.test(prop.parent.fileName)
-        : true;
-      return defaultLogicFromStorybook && prop.name !== 'popovertarget';
+const getParser = () => {
+  return withCustomConfig(
+    require.resolve(path.join(process.cwd(), '../../packages/react/tsconfig.json')),
+    {
+      savePropValueAsString: true,
+      shouldExtractLiteralValuesFromEnum: true,
+      shouldRemoveUndefinedFromOptional: true,
+      propFilter: (prop: PropItem) => {
+        const defaultLogicFromStorybook = prop.parent
+          ? !/node_modules/.test(prop.parent.fileName)
+          : true;
+        return defaultLogicFromStorybook && prop.name !== 'popovertarget';
+      },
     },
-  },
-);
+  );
+};
 
 // Get the absolute path to the component directory using require.resolve
 const getReactDir = (component: string) => {
@@ -62,7 +64,7 @@ export const getComponentDocs = (component: string): ComponentDoc[] => {
     const mainComponentFile = files.find((f) => f === `${component}.tsx`);
     if (mainComponentFile) {
       const mainComponentPath = join(reactDir, mainComponentFile);
-      const mainDocs = parser.parse(mainComponentPath);
+      const mainDocs = getParser().parse(mainComponentPath);
       allDocs.push(...mainDocs);
     }
 
@@ -70,7 +72,7 @@ export const getComponentDocs = (component: string): ComponentDoc[] => {
     const otherFiles = files.filter((f) => f !== `${component}.tsx`);
     for (const file of otherFiles) {
       const filePath = join(reactDir, file);
-      const docs = parser.parse(filePath);
+      const docs = getParser().parse(filePath);
       allDocs.push(...docs);
     }
 
