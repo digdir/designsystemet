@@ -11,41 +11,41 @@ export const ReactComponentDocs = forwardRef<
   HTMLTableElement,
   ReactComponentProps
 >(function CssVariables({ docs, ...rest }, ref) {
-  console.log(docs);
+  if (!docs || docs.length === 0) {
+    return null;
+  }
   return (
     <div {...rest} ref={ref}>
-      {docs?.length
-        ? docs
-            .filter((doc) => Object.keys(doc.props).length > 0)
-            .map((doc) => (
-              <Table
-                key={doc.displayName}
-                zebra
-                style={{
-                  tableLayout: 'fixed',
-                  marginBottom: '4rem',
-                }}
-              >
-                <caption>{doc.displayName}</caption>
-                <Table.Head>
-                  <Table.Row>
-                    <Table.HeaderCell>Name</Table.HeaderCell>
-                    <Table.HeaderCell>Description</Table.HeaderCell>
-                    <Table.HeaderCell>Default</Table.HeaderCell>
-                  </Table.Row>
-                </Table.Head>
-                <Table.Body>
-                  {Object.entries(doc.props).map(([name, prop]) => (
-                    <Table.Row key={name}>
-                      <Table.Cell>{name}</Table.Cell>
-                      <Table.Cell>{prop.description}</Table.Cell>
-                      <Table.Cell>{prop.defaultValue?.value}</Table.Cell>
-                    </Table.Row>
-                  ))}
-                </Table.Body>
-              </Table>
-            ))
-        : null}
+      {docs
+        .filter((doc) => Object.keys(doc.props).length > 0)
+        .map((doc) => (
+          <Table
+            key={doc.displayName}
+            zebra
+            style={{
+              tableLayout: 'fixed',
+              marginBottom: '4rem',
+            }}
+          >
+            <caption>{doc.displayName}</caption>
+            <Table.Head>
+              <Table.Row>
+                <Table.HeaderCell>Name</Table.HeaderCell>
+                <Table.HeaderCell>Description</Table.HeaderCell>
+                <Table.HeaderCell>Default</Table.HeaderCell>
+              </Table.Row>
+            </Table.Head>
+            <Table.Body>
+              {Object.entries(doc.props).map(([name, prop]) => (
+                <Table.Row key={name}>
+                  <Table.Cell>{name}</Table.Cell>
+                  <Table.Cell>{prop.description}</Table.Cell>
+                  <Table.Cell>{prop.defaultValue?.value}</Table.Cell>
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table>
+        ))}
     </div>
   );
 });
