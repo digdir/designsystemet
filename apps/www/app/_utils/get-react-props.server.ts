@@ -11,7 +11,9 @@ const require = createRequire(import.meta.url);
 
 const getParser = () => {
   return withCustomConfig(
-    require.resolve(path.join(process.cwd(), '../../packages/react/tsconfig.json')),
+    require.resolve(
+      path.join(process.cwd(), '../../packages/react/tsconfig.json'),
+    ),
     {
       savePropValueAsString: true,
       shouldExtractLiteralValuesFromEnum: true,
