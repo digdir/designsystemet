@@ -1,6 +1,6 @@
 import { existsSync, readdirSync } from 'node:fs';
 import { createRequire } from 'node:module';
-import { join } from 'node:path';
+import path, { join } from 'node:path';
 import {
   type ComponentDoc,
   type PropItem,
@@ -10,7 +10,7 @@ import {
 const require = createRequire(import.meta.url);
 
 const parser = withCustomConfig(
-  require.resolve('../../../../packages/react/tsconfig.json'),
+  require.resolve(path.join(process.cwd(), '../../packages/react/tsconfig.json')),
   {
     savePropValueAsString: true,
     shouldExtractLiteralValuesFromEnum: true,
@@ -29,7 +29,10 @@ const getReactDir = (component: string) => {
   try {
     // First, resolve the path to the main component file
     const mainFilePath = require.resolve(
-      `../../../../packages/react/src/components/${component}/${component}.tsx`,
+      path.join(
+        process.cwd(),
+        `../../packages/react/src/components/${component}/${component}.tsx`,
+      ),
     );
     // Then get its directory
     return join(mainFilePath, '..');
