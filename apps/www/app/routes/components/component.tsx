@@ -171,6 +171,8 @@ export default function Components({
               Story: Story as unknown as ComponentType<unknown>,
               ReactComponentDocs:
                 PropsTable as unknown as ComponentType<unknown>,
+              CssVariables: CssVars as unknown as ComponentType<unknown>,
+              CssAttributes: Attributes as unknown as ComponentType<unknown>,
             }}
           />
         ) : (
@@ -208,7 +210,8 @@ const Story = ({ story }: { story: string }) => {
     />
   );
 };
-const PropsTable = ({ docs }: { docs: ComponentDoc[] }) => {
+
+const PropsTable = () => {
   const data =
     useRouteLoaderData<Route.ComponentProps['loaderData']>('components-page');
   if (!data) return null;
@@ -216,4 +219,24 @@ const PropsTable = ({ docs }: { docs: ComponentDoc[] }) => {
   const { componentDocs } = data;
 
   return <ReactComponentDocs docs={componentDocs as ComponentDoc[]} />;
+};
+
+const CssVars = () => {
+  const data =
+    useRouteLoaderData<Route.ComponentProps['loaderData']>('components-page');
+  if (!data) return null;
+
+  const { cssVars } = data;
+
+  return cssVars ? <CssVariables vars={cssVars} /> : null;
+};
+
+const Attributes = () => {
+  const data =
+    useRouteLoaderData<Route.ComponentProps['loaderData']>('components-page');
+  if (!data) return null;
+
+  const { cssAttrs } = data;
+
+  return cssAttrs ? <CssAttributes vars={cssAttrs} /> : null;
 };
