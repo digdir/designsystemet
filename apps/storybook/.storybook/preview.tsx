@@ -49,7 +49,6 @@ const getPath = (href: string | undefined): string => {
   // if link starts with /, add current path to link
   if (href.startsWith('/')) {
     const { origin = '' } = document.location;
-
     return `${origin}/?path=${href}`;
   }
 

@@ -1,0 +1,23 @@
+# monorepo hygiene
+**/node_modules
+**/.turbo
+**/.next
+**/dist
+**/build
+**/coverage
+
+# pnpm
+**/.pnpm
+**/.pnp.*
+.pnpm-store
+.pnpm-debug.log
+
+# vcs/editor
+.git
+.gitignore
+.vscode
+.idea
+
+# os
+.DS_Store
+Thumbs.db
