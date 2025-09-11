@@ -21,7 +21,7 @@ import { ReactComponentDocs } from '~/_components/react-component-props/react-co
 import { TableOfContents } from '~/_components/table-of-contents/toc';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
-import { getComponentDocs } from '~/_utils/get-react-props';
+import { getComponentDocs } from '~/_utils/get-react-props.server';
 import type { Route } from './+types/component';
 import classes from './component.module.css';
 
