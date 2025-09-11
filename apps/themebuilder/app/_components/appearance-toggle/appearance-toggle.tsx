@@ -29,7 +29,6 @@ export const AppearanceToggle = ({
   return (
     <div className={classes.toggle} role='radiogroup'>
       {colorSchemes.map((scheme) => (
-        // biome-ignore lint/a11y/useSemanticElements: TODO: convert to real radios
         <Button
           data-size='sm'
           className={cl(classes.item)}
