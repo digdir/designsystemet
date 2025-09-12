@@ -1,15 +1,22 @@
 name: Visual tests
 
 on:
-  workflow_dispatch:
-  push:
-    branches-ignore:
-      - 'renovate/**'
+  # pr runs ONLY when the pr is in review, and on new pushes to that pr
   pull_request:
     branches: [main, next]
-    types: [ready_for_review, synchronize, opened]
+    types: [ready_for_review, synchronize, reopened]
     paths:
-      - .github/workflows/visual-tests.yml
+      - .github/workflows/test-visual.yml
+      - 'packages/**/*.@(tsx|ts)'
+      - 'packages/**/*.css'
+      - 'packages/**/*.stories.@(ts|tsx)'
+      - 'apps/storybook/**'
+      - 'design-tokens/**/*.(json|jsonc)'
+
+  # main gets a push run so chromatic can auto-accept baselines there
+  push:
+    branches: [main]
+    paths:
       - 'packages/**/*.@(tsx|ts)'
       - 'packages/**/*.css'
       - 'packages/**/*.stories.@(ts|tsx)'
@@ -17,7 +24,7 @@ on:
       - 'design-tokens/**/*.(json|jsonc)'
 
 concurrency:
-  group: test-visual-${{ github.event.pull_request.number || github.run_id }}
+  group: visual-${{ github.event.pull_request.number || github.run_id }}
   cancel-in-progress: true
 
 permissions:
@@ -27,34 +34,55 @@ permissions:
   checks: write
 
 jobs:
-  fail_if_pull_request_is_draft:
-    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.draft == true }}
+  pr-visual-tests:
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.draft == false }}
     runs-on: ubuntu-latest
-    steps:
-      - name: pr is draft → fail fast
-        run: exit 1
-
-  checks:
-    name: Build & run visual/interaction tests
-    runs-on: ubuntu-latest
-    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.draft == false }}
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+      checks: write
     steps:
       - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
         with:
-          # Necessary for Chromatic
           fetch-depth: 0
-          ref: ${{ github.event.pull_request.head.ref || github.ref }}
+          # build the PR HEAD exactly
+          ref: ${{ github.event.pull_request.head.sha }}
       - uses: ./.github/actions/gh-setup
       - name: Build
         run: pnpm build
       - name: Build storybook
         run: pnpm build:storybook
-      - name: Run Chromatic (visual and interaction tests)
-        uses: chromaui/action@latest # wants us to always use latest https://github.com/chromaui/action
+      - name: Chromatic (visual + interaction)
+        uses: chromaui/action@latest
         with:
           workingDir: apps/storybook
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           exitZeroOnChanges: true
-          autoAcceptChanges: '{main,next}'
           onlyChanged: true
           skip: '@(renovate/**|dependabot/**)'
+
+  main-visual-tests:
+    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/heads/main') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+      checks: write
+    steps:
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/gh-setup
+      - name: Build
+        run: pnpm build
+      - name: Build storybook
+        run: pnpm build:storybook
+      - name: Chromatic (auto-accept on main)
+        uses: chromaui/action@latest
+        with:
+          workingDir: apps/storybook
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          autoAcceptChanges: true
+          onlyChanged: true
