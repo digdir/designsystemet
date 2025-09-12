@@ -1,0 +1,83 @@
+.preview {
+  background-color: var(--ds-color-neutral-background-default);
+  padding: var(--ds-size-8);
+  padding-bottom: var(--ds-size-12);
+  border-top-left-radius: var(--ds-border-radius-md);
+  border-top-right-radius: var(--ds-border-radius-md);
+  border: 2px solid var(--ds-color-neutral-border-subtle);
+  position: relative;
+
+  & > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ds-size-2);
+  }
+
+  & .codeButton {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: var(--ds-font-size-2);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+.editorWrapper {
+  position: relative;
+  border-bottom-left-radius: var(--ds-border-radius-md);
+  border-bottom-right-radius: var(--ds-border-radius-md);
+}
+.activate-editor {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  pointer-events: none;
+  transform: translateX(-50%);
+  font-size: var(--ds-font-size-2);
+  padding: var(--ds-size-2) var(--ds-size-3);
+  border-radius: var(--ds-border-radius-md);
+  background-color: var(--ds-color-neutral-surface-default);
+  opacity: 0;
+  &:focus-visible {
+    opacity: 1;
+  }
+
+  kbd {
+    font-family: ui-monospace, Menlo, Monaco, 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro', 'Droid Sans Mono', 'Courier New', monospace;
+    background-color: var(--ds-color-neutral-surface-tinted);
+    padding: var(--ds-size-1);
+    border-radius: inherit;
+    border: solid 1px var(--ds-color-neutral-border-subtle);
+    position: relative;
+    bottom: 2px;
+    box-shadow: 0.5px 1px 0 0 var(--ds-color-neutral-border-strong);
+  }
+}
+.editor {
+  font-family: monospace;
+  border-bottom-left-radius: var(--ds-border-radius-md);
+  border-bottom-right-radius: var(--ds-border-radius-md);
+  overflow: hidden;
+  &:focus-within {
+    outline: 2px solid var(--ds-color-neutral-border-default);
+    outline-offset: -3px;
+  }
+
+  & > pre {
+    background-color: var(--ds-color-neutral-background-tinted) !important;
+    font-size: min(0.8em, 14px);
+    padding: var(--ds-size-5) !important;
+    white-space: pre-wrap;
+  }
+
+  & [class~='plain-text'] {
+    color: var(--ds-color-neutral-text-default);
+  }
+}
+.reset {
+  right: 8px;
+  top: 8px;
+  position: absolute;
+}

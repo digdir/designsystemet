@@ -73,3 +73,18 @@ export const getFileFromContentDir = (path: string) => {
     return '';
   }
 };
+
+export const getFoldersInContentDir = (path: string) => {
+  const basePath = join(dirname, './app/content');
+
+  try {
+    const entries = safeReadDir(join(basePath, path));
+    return entries.filter((entry) => {
+      const entryPath = join(basePath, path, entry);
+      return statSync(entryPath).isDirectory();
+    });
+  } catch (_error) {
+    console.error(`Error reading folders from content directory: ${path}`);
+    return [];
+  }
+};
