@@ -1,4 +1,5 @@
 name: Visual tests
+
 on:
   workflow_dispatch:
   push:
@@ -27,22 +28,22 @@ permissions:
 
 jobs:
   fail_if_pull_request_is_draft:
-    if: github.event.pull_request.draft == true
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.draft == true }}
     runs-on: ubuntu-latest
     steps:
-    - name: Fails in order to indicate that the PR needs to be marked as ready for review and other workflows need to pass.
-      run: exit 1
+      - name: pr is draft → fail fast
+        run: exit 1
+
   checks:
-    needs: fail_if_pull_request_is_draft
     name: Build & run visual/interaction tests
     runs-on: ubuntu-latest
-    if: github.event.pull_request.draft == true
+    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.draft == false }}
     steps:
       - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
         with:
           # Necessary for Chromatic
           fetch-depth: 0
-          ref: ${{ github.event.pull_request.head.ref }}
+          ref: ${{ github.event.pull_request.head.ref || github.ref }}
       - uses: ./.github/actions/gh-setup
       - name: Build
         run: pnpm build
