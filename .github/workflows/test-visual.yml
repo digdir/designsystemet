@@ -6,7 +6,7 @@ on:
     branches: [main, next]
     types: [ready_for_review, synchronize, reopened]
     paths:
-      - .github/workflows/visual-tests.yml
+      - .github/workflows/test-visual.yml
       - 'packages/**/*.@(tsx|ts)'
       - 'packages/**/*.css'
       - 'packages/**/*.stories.@(ts|tsx)'
