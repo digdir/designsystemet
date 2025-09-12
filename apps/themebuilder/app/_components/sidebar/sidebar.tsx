@@ -49,6 +49,7 @@ export const Sidebar = () => {
             isMobile && setModalOpen(true);
           }}
           aria-label='Toggle sidebar'
+          aria-expanded={showSidebar}
         >
           <CogIcon aria-hidden fontSize='1.5rem' />
         </button>
