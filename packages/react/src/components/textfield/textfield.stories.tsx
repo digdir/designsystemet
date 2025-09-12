@@ -55,6 +55,7 @@ export const Controlled: StoryFn<typeof Textfield> = () => {
         label='Kontroller meg!'
         value={value}
         onChange={(e) => setValue(e.target.value)}
+        counter={5}
       />
 
       <Divider style={{ marginTop: 'var(--ds-size-4)' }} />

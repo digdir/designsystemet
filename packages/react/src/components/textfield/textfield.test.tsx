@@ -99,6 +99,37 @@ describe('Textfield', () => {
     render({ type, 'aria-label': 'label' });
     expect(screen.getByRole('textbox')).toHaveAttribute('type', type);
   });
+
+  it('updates counter when value prop changes programmatically', () => {
+    const { rerender } = renderRtl(
+      <Textfield label='Test' counter={5} value='' onChange={() => {}} />,
+    );
+
+    // Initial counter text
+    expect(screen.getByText('5 tegn igjen')).toBeInTheDocument();
+
+    // Update value programmatically
+    rerender(
+      <Textfield label='Test' counter={5} value='123' onChange={() => {}} />,
+    );
+
+    // Effect runs synchronously after render cycle, so no need for waitFor/async
+    expect(screen.getByText('2 tegn igjen')).toBeInTheDocument();
+  });
+
+  it('shows over limit message when value exceeds limit via prop change', () => {
+    const { rerender } = renderRtl(
+      <Textfield label='Test' counter={3} value='' onChange={() => {}} />,
+    );
+
+    expect(screen.getByText('3 tegn igjen')).toBeInTheDocument();
+
+    rerender(
+      <Textfield label='Test' counter={3} value={'abcd'} onChange={() => {}} />,
+    );
+
+    expect(screen.getAllByText('1 tegn for mye')[0]).toBeInTheDocument();
+  });
 });
 
 const render = (

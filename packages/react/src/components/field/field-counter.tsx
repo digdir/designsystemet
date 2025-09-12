@@ -51,6 +51,7 @@ export const FieldCounter = forwardRef<HTMLParagraphElement, FieldCounterProps>(
     const hasExceededLimit = count > limit;
     const remainder = limit - count;
 
+    // Listen to native input events (user typing) to update the counter in real time
     useEffect(() => {
       const field = counterRef.current?.closest('.ds-field');
       const input = Array.from(field?.getElementsByTagName('*') || []).find(
@@ -64,7 +65,20 @@ export const FieldCounter = forwardRef<HTMLParagraphElement, FieldCounterProps>(
 
       field?.addEventListener('input', onInput);
       return () => field?.removeEventListener('input', onInput);
-    }, [setCount]);
+    }, []);
+
+    /* React does not dispatch a native input event when the value prop changes externally.
+    Since the parent re-renders this component when value changes, we can sync on render. */
+    useEffect(() => {
+      const field = counterRef.current?.closest('.ds-field');
+      const input = Array.from(field?.getElementsByTagName('*') || []).find(
+        isInputLike,
+      );
+      if (input) {
+        const valueLength = input.value.length;
+        setCount((prev) => (prev === valueLength ? prev : valueLength));
+      }
+    });
 
     return (
       <>
