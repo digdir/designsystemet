@@ -18,7 +18,8 @@
 
   & input:not([hidden]),
   & select:not([hidden]),
-  & textarea:not([hidden]) {
+  & textarea:not([hidden]),
+  & .ds-input:not([hidden]) {
     display: block; /* Ensure input is not placed on same line as label/description/validation */
   }
 
