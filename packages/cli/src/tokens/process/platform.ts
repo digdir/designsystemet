@@ -12,6 +12,10 @@ type SharedOptions = {
   verbose: boolean;
   /** Set the default color for ":root" */
   defaultColor?: string;
+  /** Set the default size mode */
+  defaultSize?: string;
+  /** Set the available size modes */
+  sizeModes?: string[];
   /** Dry run, no files will be written */
   dry?: boolean;
   /** Token Studio `$themes.json` content */
@@ -77,6 +81,9 @@ const sd = new StyleDictionary();
  */
 const buildConfigs = {
   typography: { getConfig: configs.typographyVariables, dimensions: ['typography'] },
+  sizeMode: { getConfig: configs.sizeModeVariables, dimensions: ['size'] },
+  size: { getConfig: configs.sizeVariables, dimensions: ['semantic'] },
+  typeScale: { getConfig: configs.typeScaleVariables, dimensions: ['semantic'] },
   'color-scheme': { getConfig: configs.colorSchemeVariables, dimensions: ['color-scheme'] },
   'main-color': { getConfig: configs.mainColorVariables, dimensions: ['main-color'] },
   'support-color': { getConfig: configs.supportColorVariables, dimensions: ['support-color'] },
@@ -114,10 +121,6 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
   const tokenSets = type === 'format' ? options.tokenSets : undefined;
   const tokensDir = type === 'build' ? options.tokensDir : undefined;
 
-  const filteredProcessed$themes = processed$themes.filter((theme) =>
-    R.not(theme.group === 'size' && theme.name !== 'medium'),
-  );
-
   const UNSAFE_DEFAULT_COLOR = process.env.UNSAFE_DEFAULT_COLOR ?? '';
   if (UNSAFE_DEFAULT_COLOR) {
     console.warn(
@@ -146,7 +149,7 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
   buildOptions.colorGroups = colorGroups;
 
   if (!buildOptions.defaultColor) {
-    const customColors = getCustomColors(filteredProcessed$themes, colorGroups);
+    const customColors = getCustomColors(processed$themes, colorGroups);
     const firstMainColor = R.head(customColors);
     buildOptions.defaultColor = firstMainColor;
   }
@@ -155,16 +158,21 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
     console.log(`\n🎨 Using ${pc.blue(buildOptions.defaultColor)} as default color`);
   }
 
+  const sizeModes = processed$themes.filter((x) => x.group === 'size').map((x) => x.name);
+  buildOptions.sizeModes = sizeModes;
+  if (!buildOptions.defaultSize) {
+    const defaultSize = R.head(sizeModes);
+    buildOptions.defaultSize = defaultSize;
+  }
+  if (buildOptions.defaultSize) {
+    console.log(`\n📏 Using ${pc.blue(buildOptions.defaultSize)} as default size`);
+  }
+
   const buildAndSdConfigs = R.map((buildConfig: BuildConfig) => {
-    const sdConfigs = getConfigsForThemeDimensions(
-      buildConfig.getConfig,
-      filteredProcessed$themes,
-      buildConfig.dimensions,
-      {
-        tokensDir,
-        tokenSets,
-      },
-    );
+    const sdConfigs = getConfigsForThemeDimensions(buildConfig.getConfig, processed$themes, buildConfig.dimensions, {
+      tokensDir,
+      tokenSets,
+    });
 
     // Disable build if all sdConfigs dimensions permutation are unknown
     const unknownConfigs = buildConfig.dimensions.map((dimension) =>
@@ -193,6 +201,9 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
     'info-color': [initResult],
     semantic: [initResult],
     typography: [initResult],
+    sizeMode: [initResult],
+    size: [initResult],
+    typeScale: [initResult],
   };
 
   try {

@@ -16,6 +16,10 @@
   }
 }
 
+.heading:not(:first-child) {
+  margin-block-start: var(--ds-size-4);
+}
+
 .tag {
   margin-bottom: 0;
   padding: 3px 9px;
@@ -24,7 +28,7 @@
 
 .meta {
   display: flex;
-  gap: var(--ds-size-3);
+  gap: 10px;
   color: var(--ds-color-neutral-text-subtle);
   font-size: 14px !important;
 }

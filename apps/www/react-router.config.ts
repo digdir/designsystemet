@@ -76,7 +76,7 @@ const getContentPathsWithLanguages = (): string[] => {
                 // For content files, add the route (removing .mdx extension)
                 const routePath =
                   `/${lang}/${contentFolder}/${entryRelativePath.replace(/\.mdx$/, '')}`.replace(
-                    '\\',
+                    /\\/g,
                     '/',
                   );
                 paths.push(routePath);

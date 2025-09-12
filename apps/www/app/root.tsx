@@ -142,6 +142,12 @@ function Document({ children }: DocumentProps) {
         {/* This uses sessionStorage, but we deem it necessary to make navigation work as expected */}
         <ScrollRestoration />
         <Scripts />
+        {process.env.NODE_ENV === 'production' && (
+          <script
+            src='https://siteimproveanalytics.com/js/siteanalyze_6255470.js'
+            crossOrigin='anonymous'
+          />
+        )}
       </body>
     </html>
   );

@@ -5,7 +5,6 @@ import * as R from 'ramda';
 import type { PropItem } from 'react-docgen-typescript';
 import remarkGfm from 'remark-gfm';
 import { defineConfig, mergeConfig } from 'vite';
-import { tag } from '../stories/component/showcase.module.css';
 
 const dirname =
   typeof __dirname !== 'undefined'
@@ -81,7 +80,6 @@ const config: StorybookConfig = {
     '@storybook/addon-themes',
     'storybook-addon-pseudo-states',
     '@storybook/addon-vitest',
-    //'@whitespace/storybook-addon-html', //wait for it to be updated to support sb9
     {
       name: '@storybook/addon-docs',
       options: {

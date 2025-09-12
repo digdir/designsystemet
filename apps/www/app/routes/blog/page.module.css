@@ -37,7 +37,7 @@
   display: flex;
   justify-content: center;
   margin-top: var(--ds-size-1);
-  gap: var(--ds-size-3);
+  gap: 10px;
   color: var(--ds-color-neutral-text-subtle);
 }
 
