@@ -105,15 +105,12 @@ describe('Textfield', () => {
       <Textfield label='Test' counter={5} value='' onChange={() => {}} />,
     );
 
-    // Initial counter text
     expect(screen.getByText('5 tegn igjen')).toBeInTheDocument();
 
-    // Update value programmatically
     rerender(
       <Textfield label='Test' counter={5} value='123' onChange={() => {}} />,
     );
 
-    // Effect runs synchronously after render cycle, so no need for waitFor/async
     expect(screen.getByText('2 tegn igjen')).toBeInTheDocument();
   });
 
