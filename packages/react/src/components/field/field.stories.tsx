@@ -82,17 +82,3 @@ Position.decorators = [
     </div>
   ),
 ];
-
-export const AutoWidth: Story = () => (
-  <>
-    <Field>
-      <Label>Flymodus</Label>
-      <Select style={{ width: 'auto' }}>
-        <option>Vel ein</option>
-        <option>Option 1</option>
-        <option>Option 2</option>
-        <option>Option 3</option>
-      </Select>
-    </Field>
-  </>
-);
