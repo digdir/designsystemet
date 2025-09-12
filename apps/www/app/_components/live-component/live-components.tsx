@@ -1,8 +1,15 @@
 import * as ds from '@digdir/designsystemet-react';
 import * as aksel from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
 import { prettify } from 'htmlfy';
 import { themes } from 'prism-react-renderer';
-import { type ComponentType, useEffect, useState } from 'react';
+import {
+  type ComponentType,
+  type KeyboardEvent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import {
   LiveEditor,
   LiveError,
@@ -40,19 +47,68 @@ type EditorProps = {
 };
 
 const Editor = ({ live, html }: EditorProps) => {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const activateEditorRef = useRef<HTMLDivElement>(null);
   const [resetCount, setResetCount] = useState(0);
   const rawHtml = prettify(html?.innerHTML.toString() || '', {
     tag_wrap: 63,
     content_wrap: 70,
   });
 
+  useEffect(() => {
+    const preEl = wrapperRef.current?.querySelector(
+      '.live-editor > pre',
+    ) as HTMLElement | null;
+    if (preEl) {
+      preEl.tabIndex = -1;
+    }
+  }, []);
+
   const reset = () => {
     live.onChange(live.code);
     setResetCount(resetCount + 1);
   };
 
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Tab') {
+      return;
+    }
+
+    if (event.key === 'Escape') {
+      activateEditorRef.current?.focus();
+      return;
+    }
+
+    if (event.key === 'Enter') {
+      if (document.activeElement?.nodeName === 'BUTTON') {
+        return;
+      }
+      const preEl = wrapperRef.current?.querySelector(
+        '.live-editor > pre',
+      ) as HTMLElement | null;
+      if (preEl !== document.activeElement) {
+        event.preventDefault();
+        event.stopPropagation();
+        preEl?.focus();
+      }
+    }
+  };
+
   return (
-    <div className={classes.editorWrapper}>
+    // biome-ignore lint/a11y/noStaticElementInteractions: <need to manage keyboard events from here>
+    <div
+      ref={wrapperRef}
+      className={classes.editorWrapper}
+      onKeyDown={handleKeyDown}
+    >
+      <div
+        className={cl(classes['activate-editor'], 'ds-focus--visible')}
+        ref={activateEditorRef}
+        aria-live='polite'
+        tabIndex={0}
+      >
+        Press <kbd>Enter</kbd> to start editing
+      </div>
       <ds.Button
         data-color='neutral'
         variant='secondary'
@@ -66,7 +122,7 @@ const Editor = ({ live, html }: EditorProps) => {
       <LiveEditor
         key={resetCount}
         onChange={live.onChange}
-        className={classes.editor}
+        className={cl(classes.editor, 'live-editor')}
       />
       <p>Output html:</p>
       <LiveEditor

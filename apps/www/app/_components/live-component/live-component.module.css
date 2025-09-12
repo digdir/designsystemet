@@ -29,6 +29,32 @@
   border-bottom-left-radius: var(--ds-border-radius-md);
   border-bottom-right-radius: var(--ds-border-radius-md);
 }
+.activate-editor {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  pointer-events: none;
+  transform: translateX(-50%);
+  font-size: var(--ds-font-size-2);
+  padding: var(--ds-size-2) var(--ds-size-3);
+  border-radius: var(--ds-border-radius-md);
+  background-color: var(--ds-color-neutral-surface-default);
+  opacity: 0;
+  &:focus-visible {
+    opacity: 1;
+  }
+
+  kbd {
+    font-family: ui-monospace, Menlo, Monaco, 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro', 'Droid Sans Mono', 'Courier New', monospace;
+    background-color: var(--ds-color-neutral-surface-tinted);
+    padding: var(--ds-size-1);
+    border-radius: inherit;
+    border: solid 1px var(--ds-color-neutral-border-subtle);
+    position: relative;
+    bottom: 2px;
+    box-shadow: 0.5px 1px 0 0 var(--ds-color-neutral-border-strong);
+  }
+}
 .editor {
   font-family: monospace;
   border-bottom-left-radius: var(--ds-border-radius-md);
