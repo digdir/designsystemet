@@ -48,13 +48,14 @@ export const Counter: Story = {
 };
 
 export const Controlled: StoryFn<typeof Textfield> = () => {
-  const [value, setValue] = useState<string>('');
+  const [value, setValue] = useState<string>('Ost');
   return (
     <>
       <Textfield
         label='Kontroller meg!'
         value={value}
         onChange={(e) => setValue(e.target.value)}
+        counter={5}
       />
 
       <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
