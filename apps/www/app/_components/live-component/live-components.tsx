@@ -46,14 +46,18 @@ type EditorProps = {
   html: HTMLElement | null;
 };
 
+//@TODO: i18n
 const Editor = ({ live, html }: EditorProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const activateEditorRef = useRef<HTMLDivElement>(null);
   const [resetCount, setResetCount] = useState(0);
-  const rawHtml = prettify(html?.innerHTML.toString() || '', {
-    tag_wrap: 63,
-    content_wrap: 70,
-  });
+  const rawHtml = prettify(
+    html?.innerHTML.toString() || 'Unable to parse html',
+    {
+      tag_wrap: 63,
+      content_wrap: 70,
+    },
+  );
 
   const setupEditorTabIndex = () => {
     const preEl = wrapperRef.current?.querySelector(
