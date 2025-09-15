@@ -7,21 +7,21 @@ on:
     types: [ready_for_review, synchronize, reopened]
     paths:
       - .github/workflows/test-visual.yml
-      - 'packages/**/*.@(tsx|ts)'
+      - 'packages/**/*.tsx?'
       - 'packages/**/*.css'
-      - 'packages/**/*.stories.@(ts|tsx)'
+      - 'packages/**/*.stories.tsx?'
       - 'apps/storybook/**'
-      - 'design-tokens/**/*.(json|jsonc)'
+      - 'design-tokens/**/*.jsonc?'
 
   # main gets a push run so chromatic can auto-accept baselines there
   push:
     branches: [main]
     paths:
-      - 'packages/**/*.@(tsx|ts)'
+      - 'packages/**/*.tsx?'
       - 'packages/**/*.css'
-      - 'packages/**/*.stories.@(ts|tsx)'
+      - 'packages/**/*.stories.tsx?'
       - 'apps/storybook/**'
-      - 'design-tokens/**/*.(json|jsonc)'
+      - 'design-tokens/**/*.jsonc?'
 
 concurrency:
   group: visual-${{ github.event.pull_request.number || github.run_id }}
