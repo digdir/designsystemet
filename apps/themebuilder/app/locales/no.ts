@@ -130,8 +130,8 @@ export default {
     'example-2': 'Eksempel 2',
   },
   colorPane: {
-    'main-color': 'hovedfarge',
-    'support-color': 'støttefarge',
+    'main-color': 'main-farge',
+    'support-color': 'support-farge',
     add: 'Legg til',
     'edit-color': 'Rediger farge',
     save: 'Lagre',
