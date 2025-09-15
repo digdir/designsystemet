@@ -75,7 +75,6 @@ export default {
     tv: 'TV',
     sports: 'Sport',
     news: 'Nyheter',
-    domestic: 'Innenriks',
     'news-title': 'Reiste alene til storbyen',
     'news-description': 'Mona kvist ville finne drømmen i New York City',
     articles: 'Artikler',
@@ -131,8 +130,8 @@ export default {
     'example-2': 'Eksempel 2',
   },
   colorPane: {
-    'main-color': 'hovedfarge',
-    'support-color': 'støttefarge',
+    'main-color': 'main-farge',
+    'support-color': 'support-farge',
     add: 'Legg til',
     'edit-color': 'Rediger farge',
     save: 'Lagre',

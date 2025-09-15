@@ -15,7 +15,10 @@
     background: currentcolor;
     content: '';
     height: var(--dsc-validation-message-icon-size);
-    margin-inline: calc((var(--dsc-validation-message-icon-size) + var(--dsc-validation-message-spacing)) * -1); /* Using margin instead of top/left to avoid position: relative and to support dir="rtl" */
+    margin-inline: calc(
+      (var(--dsc-validation-message-icon-size) + var(--dsc-validation-message-spacing)) *
+      -1
+    ); /* Using margin instead of top/left to avoid position: relative and to support dir="rtl" */
     mask: var(--dsc-validation-message-icon-url) center / contain no-repeat;
     position: absolute;
     translate: 0 calc((1lh - var(--dsc-validation-message-icon-size)) / 2); /* Center icon to line height */

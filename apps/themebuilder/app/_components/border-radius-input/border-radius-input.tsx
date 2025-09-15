@@ -60,7 +60,6 @@ export const BorderRadiusInput = () => {
             )}
             key={index}
           >
-            {/** biome-ignore lint/a11y/useSemanticElements: TODO: convert to label + input*/}
             <Button
               variant='tertiary'
               data-color='neutral'

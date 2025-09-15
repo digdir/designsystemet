@@ -25,10 +25,6 @@
       display: flex;
       gap: var(--ds-size-2);
 
-      &[data-mobile='true'] {
-        flex-direction: row-reverse;
-      }
-
       & button {
         height: fit-content;
       }
@@ -62,6 +58,11 @@
               font-weight: 500;
             }
           }
+        }
+      }
+      &[data-mobile='true'] {
+        & .desktopMenu {
+          display: none;
         }
       }
     }

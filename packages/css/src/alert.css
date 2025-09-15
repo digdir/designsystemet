@@ -30,7 +30,10 @@
     background: var(--dsc-alert-icon-color);
     content: '';
     height: var(--dsc-alert-icon-size);
-    margin-inline: calc((var(--dsc-alert-icon-size) + var(--dsc-alert-spacing)) * -1); /* Using margin instead of top/left to avoid position: relative and to support dir="rtl" */
+    margin-inline: calc(
+      (var(--dsc-alert-icon-size) + var(--dsc-alert-spacing)) *
+      -1
+    ); /* Using margin instead of top/left to avoid position: relative and to support dir="rtl" */
     mask: var(--dsc-alert-icon-url) center / contain no-repeat;
     position: absolute;
     translate: 0 calc((1lh - var(--dsc-alert-icon-size)) / 2); /* Center icon to line height */

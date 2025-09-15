@@ -40,14 +40,18 @@ export const typeEquals: (types: string[] | string, token: TransformedToken) => 
   },
 );
 
-export const pathStartsWithOneOf: (paths: string[], token: TransformedToken) => boolean = R.curry(
-  (paths: string[], token: TransformedToken) => {
+export const pathStartsWithOneOf: ((paths: (string | string[])[], token: TransformedToken) => boolean) &
+  ((paths: (string | string[])[]) => (token: TransformedToken) => boolean) = R.curry(
+  (paths: (string | string[])[], token: TransformedToken) => {
     if (R.isNil(token)) {
       return false;
     }
 
     const tokenPath = mapToLowerCase(token.path);
-    const matchPathsStartingWith = R.map((path) => R.startsWith([path], tokenPath), mapToLowerCase(paths));
+    const matchPathsStartingWith = R.map((pathOrString) => {
+      const path = typeof pathOrString === 'string' ? [pathOrString] : pathOrString;
+      return R.startsWith(mapToLowerCase(path), tokenPath);
+    }, paths);
 
     return hasAnyTruth(matchPathsStartingWith);
   },
@@ -133,4 +137,25 @@ export function inlineTokens(shouldInline: (t: TransformedToken) => boolean, tok
     const tokenWithInlinedRefs = R.set(R.lensPath(['original', '$value']), transformed, token);
     return tokenWithInlinedRefs;
   });
+}
+
+const sizeMap: Record<string, string | undefined> = {
+  xsmall: 'xs',
+  small: 'sm',
+  medium: 'md',
+  large: 'lg',
+  xlarge: 'xl',
+};
+
+export function shortSizeName(size: string): string {
+  return sizeMap[size] ?? size;
+}
+
+export const sizeComparator = (size: string): number => {
+  const sortIndex = Object.entries(sizeMap).findIndex(([key, val]) => key === size || val === size);
+  return sortIndex ?? 0;
+};
+
+export function orderBySize(sizes: string[]): string[] {
+  return R.sortBy(sizeComparator, sizes);
 }

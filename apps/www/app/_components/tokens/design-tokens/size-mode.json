@@ -1,0 +1,32 @@
+{
+  "medium": [
+    {
+      "path": [
+        "_size",
+        "mode-font-size"
+      ],
+      "variable": "--ds-size-mode-font-size",
+      "value": "1.125"
+    }
+  ],
+  "large": [
+    {
+      "path": [
+        "_size",
+        "mode-font-size"
+      ],
+      "variable": "--ds-size-mode-font-size",
+      "value": "1.3125"
+    }
+  ],
+  "small": [
+    {
+      "path": [
+        "_size",
+        "mode-font-size"
+      ],
+      "variable": "--ds-size-mode-font-size",
+      "value": "1"
+    }
+  ]
+}
