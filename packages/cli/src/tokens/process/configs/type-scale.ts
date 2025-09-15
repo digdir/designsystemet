@@ -3,7 +3,7 @@ import { formats } from '../formats/css.js';
 import { sizeRem, typographyName } from '../transformers.js';
 import { basePxFontSize, type GetStyleDictionaryConfig, prefix } from './shared.js';
 
-export const typeScaleVariables: GetStyleDictionaryConfig = ({ theme, size }) => {
+export const typeScaleVariables: GetStyleDictionaryConfig = ({ theme }) => {
   const selector = ':root, [data-size]';
   const layer = `ds.theme.type-scale`;
 
