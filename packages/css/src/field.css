@@ -16,7 +16,10 @@
     ); /* TODO: Change to opacity or color-mix(currentColor, trasparent) to ensure contrast when parent element color changes? */
   }
 
-  & input:not([hidden]) {
+  & input:not([hidden]),
+  & select:not([hidden]),
+  & textarea:not([hidden]),
+  & .ds-input:not([hidden]) {
     display: block; /* Ensure input is not placed on same line as label/description/validation */
   }
 
