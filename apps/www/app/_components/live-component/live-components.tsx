@@ -55,18 +55,27 @@ const Editor = ({ live, html }: EditorProps) => {
     content_wrap: 70,
   });
 
-  useEffect(() => {
+  const setupEditorTabIndex = () => {
     const preEl = wrapperRef.current?.querySelector(
       '.live-editor > pre',
     ) as HTMLElement | null;
     if (preEl) {
       preEl.tabIndex = -1;
     }
+  };
+
+  useEffect(() => {
+    setupEditorTabIndex();
   }, []);
+
+  useEffect(() => {
+    setupEditorTabIndex();
+  }, [resetCount]);
 
   const reset = () => {
     live.onChange(live.code);
     setResetCount(resetCount + 1);
+    activateEditorRef.current?.focus();
   };
 
   const handleKeyDown = (event: KeyboardEvent) => {
@@ -116,6 +125,7 @@ const Editor = ({ live, html }: EditorProps) => {
         onClick={reset}
         data-size='sm'
         disabled={live.code === live.newCode}
+        type='button'
       >
         Reset
       </ds.Button>
