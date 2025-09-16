@@ -13,6 +13,7 @@
   grid-template-columns: auto 1fr;
   border: 1px solid var(--ds-color-neutral-border-subtle);
   border-radius: var(--ds-border-radius-lg);
+  background-color: var(--ds-color-neutral-surface-default);
   dl {
     display: grid;
     grid-column: 1 / 3;
