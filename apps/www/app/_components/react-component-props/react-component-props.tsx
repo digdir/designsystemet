@@ -1,12 +1,12 @@
-import { Table } from '@digdir/designsystemet-react';
+import { Tag } from '@digdir/designsystemet-react';
 import { forwardRef, type HTMLAttributes } from 'react';
 import type { ComponentDoc } from 'react-docgen-typescript';
+import classes from './react-component-props.module.css';
 
 type ReactComponentProps = {
   docs: ComponentDoc[];
 } & HTMLAttributes<HTMLDivElement>;
 
-//TODO: this is a temporary markup while we figure out how the props listing should look
 export const ReactComponentDocs = forwardRef<
   HTMLTableElement,
   ReactComponentProps
@@ -15,36 +15,49 @@ export const ReactComponentDocs = forwardRef<
     return null;
   }
   return (
-    <div {...rest} ref={ref}>
+    <div {...rest} ref={ref} className={classes.wrapper} data-color='accent'>
       {docs
         .filter((doc) => Object.keys(doc.props).length > 0)
-        .map((doc) => (
-          <Table
-            key={doc.displayName}
-            zebra
-            style={{
-              tableLayout: 'fixed',
-              marginBottom: '4rem',
-            }}
-          >
-            <caption>{doc.displayName}</caption>
-            <Table.Head>
-              <Table.Row>
-                <Table.HeaderCell>Name</Table.HeaderCell>
-                <Table.HeaderCell>Description</Table.HeaderCell>
-                <Table.HeaderCell>Default</Table.HeaderCell>
-              </Table.Row>
-            </Table.Head>
-            <Table.Body>
+        .map((doc, index) => (
+          <div key={doc.displayName} className={classes.component}>
+            {index > 0 && <h3>{doc.displayName}</h3>}
+            <div className={classes.props}>
               {Object.entries(doc.props).map(([name, prop]) => (
-                <Table.Row key={name}>
-                  <Table.Cell>{name}</Table.Cell>
-                  <Table.Cell>{prop.description}</Table.Cell>
-                  <Table.Cell>{prop.defaultValue?.value}</Table.Cell>
-                </Table.Row>
+                <dl key={name}>
+                  <dt key={name}>
+                    <Tag>{name}</Tag>
+                  </dt>
+                  {prop.required && (
+                    <dt className={classes.required}>Required</dt>
+                  )}
+                  {prop.description && (
+                    <>
+                      <dt>Description</dt>
+                      <dd>{prop.description}</dd>
+                    </>
+                  )}
+                  {prop.type && (
+                    <>
+                      <dt>Type</dt>
+                      <dd className={classes.type}>
+                        <code>
+                          {prop.type.raw ? prop.type.raw : prop.type.name}
+                        </code>
+                      </dd>
+                    </>
+                  )}
+                  {prop.defaultValue && (
+                    <>
+                      <dt>Default</dt>
+                      <dd className={classes.default}>
+                        <code>{prop.defaultValue.value}</code>
+                      </dd>
+                    </>
+                  )}
+                </dl>
               ))}
-            </Table.Body>
-          </Table>
+            </div>
+          </div>
         ))}
     </div>
   );
