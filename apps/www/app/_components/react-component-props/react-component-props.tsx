@@ -24,7 +24,7 @@ export const ReactComponentDocs = forwardRef<
             <div className={classes.props}>
               {Object.entries(doc.props).map(([name, prop]) => (
                 <dl key={name}>
-                  <dt key={name}>
+                  <dt className={classes.propName}>
                     <Tag>{name}</Tag>
                   </dt>
                   {prop.required && (

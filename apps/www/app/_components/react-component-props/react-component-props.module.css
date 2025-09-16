@@ -29,6 +29,10 @@
     dt {
       grid-column: 1 / 2;
       color: var(--ds-color-neutral-text-subtle);
+      &.propName {
+        grid-column: 1 / 3;
+        margin-bottom: var(--ds-size-2);
+      }
     }
     dd {
       margin: 0;
