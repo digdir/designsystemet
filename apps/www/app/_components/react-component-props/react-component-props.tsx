@@ -20,7 +20,7 @@ export const ReactComponentDocs = forwardRef<
         .filter((doc) => Object.keys(doc.props).length > 0)
         .map((doc, index) => (
           <div key={doc.displayName} className={classes.component}>
-            {index > 0 && <h3>{doc.displayName}</h3>}
+            {index > 0 && <h3 className='ds-heading'>{doc.displayName}</h3>}
             <div className={classes.props}>
               {Object.entries(doc.props).map(([name, prop]) => (
                 <dl key={name}>

@@ -3,7 +3,7 @@
 }
 .component {
   margin-bottom: var(--ds-size-8);
-  h3 {
+  :is(h3, .ds-heading) {
     margin-top: 0;
     margin-bottom: var(--ds-size-3);
   }
