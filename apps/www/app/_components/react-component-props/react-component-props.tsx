@@ -15,7 +15,7 @@ export const ReactComponentDocs = forwardRef<
     return null;
   }
   return (
-    <div {...rest} ref={ref} className={classes.wrapper} data-color='accent'>
+    <div {...rest} ref={ref} className={classes.wrapper} data-color='accent' lang="en">
       {docs
         .filter((doc) => Object.keys(doc.props).length > 0)
         .map((doc, index) => (
