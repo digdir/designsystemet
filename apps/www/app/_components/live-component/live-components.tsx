@@ -51,6 +51,7 @@ const Editor = ({ live, html }: EditorProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const activateEditorRef = useRef<HTMLDivElement>(null);
   const [resetCount, setResetCount] = useState(0);
+  const [showHTML, setShowHTML] = useState(false);
   const rawHtml = prettify(
     html?.innerHTML.toString() || 'Unable to parse html',
     {
@@ -108,24 +109,24 @@ const Editor = ({ live, html }: EditorProps) => {
   };
 
   return (
-    // biome-ignore lint/a11y/noStaticElementInteractions: <need to manage keyboard events from here>
-    <div
-      ref={wrapperRef}
-      className={classes.editorWrapper}
-      onKeyDown={handleKeyDown}
-    >
-      <div
-        className={cl(classes['activate-editor'], 'ds-focus--visible')}
-        ref={activateEditorRef}
-        aria-live='polite'
-        tabIndex={0}
-      >
-        Press <kbd>Enter</kbd> to start editing
-      </div>
+    <div className={classes.editorOuterWrapper}>
+      <ds.Paragraph className={classes.language}>
+        {showHTML ? 'HTML' : 'React'}
+      </ds.Paragraph>
       <ds.Button
         data-color='neutral'
-        variant='secondary'
-        className={classes.reset}
+        variant='tertiary'
+        className={cl(classes.htmlToggle)}
+        onClick={() => setShowHTML((v) => !v)}
+        data-size='sm'
+        type='button'
+      >
+        HTML / React
+      </ds.Button>
+      <ds.Button
+        data-color='neutral'
+        variant='tertiary'
+        className={cl(classes.reset)}
         onClick={reset}
         data-size='sm'
         disabled={live.code === live.newCode}
@@ -133,18 +134,35 @@ const Editor = ({ live, html }: EditorProps) => {
       >
         Reset
       </ds.Button>
-      <LiveEditor
-        key={resetCount}
-        onChange={live.onChange}
-        className={cl(classes.editor, 'live-editor')}
-      />
-      <p>Output html:</p>
-      <LiveEditor
-        className={classes.editor}
-        disabled
-        code={rawHtml}
-        language='html'
-      />
+      {/* biome-ignore lint/a11y/noStaticElementInteractions: <need to manage keyboard events from here> */}
+      <div
+        ref={wrapperRef}
+        className={classes.editorWrapper}
+        onKeyDown={handleKeyDown}
+      >
+        <div
+          className={cl(classes['activate-editor'], 'ds-focus--visible')}
+          ref={activateEditorRef}
+          aria-live='polite'
+          tabIndex={0}
+        >
+          Press <kbd>Enter</kbd> to start editing
+        </div>
+        {showHTML ? (
+          <LiveEditor
+            className={classes.editor}
+            disabled
+            code={rawHtml}
+            language='html'
+          />
+        ) : (
+          <LiveEditor
+            key={resetCount}
+            onChange={live.onChange}
+            className={cl(classes.editor, classes['live-editor'])}
+          />
+        )}
+      </div>
     </div>
   );
 };
@@ -191,7 +209,7 @@ export const LiveComponent = ({ code }: LiveComponentProps) => {
       theme={colorScheme === 'dark' ? themes.vsDark : themes.vsLight}
     >
       <div className={classes.preview} data-color='accent' data-live='true'>
-        <LivePreview ref={setHtml} />
+        <LivePreview className={classes['live-preview']} ref={setHtml} />
         <ds.Button
           data-color='neutral'
           data-size='sm'
@@ -200,7 +218,8 @@ export const LiveComponent = ({ code }: LiveComponentProps) => {
           aria-pressed={showEditor}
           className={classes.codeButton}
         >
-          {showEditor ? 'Hide code' : 'Edit code'}
+          <aksel.ChevronDownIcon />
+          {showEditor ? 'Hide code' : 'Show code'}
         </ds.Button>
         <LiveError className='ds-alert' />
       </div>
