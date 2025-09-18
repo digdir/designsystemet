@@ -5,9 +5,6 @@ settings:
   excludeLinksFromLockfile: false
   injectWorkspacePackages: true
 
-overrides:
-  '@mjackson/node-fetch-server': npm:@remix-run/node-fetch-server@^0.8.0
-
 packageExtensionsChecksum: sha256-IQSNU9cJtri1P9xMWAvG91nRHacWCj8xtjZCK1etLxM=
 
 importers:
@@ -168,9 +165,6 @@ importers:
       '@internal/components':
         specifier: workspace:^
         version: link:../../internal/components
-      '@mjackson/node-fetch-server':
-        specifier: npm:@remix-run/node-fetch-server@^0.8.0
-        version: '@remix-run/node-fetch-server@0.8.0'
       '@navikt/aksel-icons':
         specifier: ^7.29.1
         version: 7.29.1(react@19.1.1)
@@ -183,9 +177,6 @@ importers:
       '@react-router/serve':
         specifier: ^7.8.2
         version: 7.8.2(react-router@7.8.2(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(typescript@5.9.2)
-      '@remix-run/node-fetch-server':
-        specifier: ^0.8.0
-        version: 0.8.0
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -262,9 +253,6 @@ importers:
       '@internal/components':
         specifier: workspace:^
         version: link:../../internal/components
-      '@mjackson/node-fetch-server':
-        specifier: npm:@remix-run/node-fetch-server@^0.8.0
-        version: '@remix-run/node-fetch-server@0.8.0'
       '@navikt/aksel-icons':
         specifier: ^7.29.1
         version: 7.29.1(react@19.1.1)
@@ -277,9 +265,6 @@ importers:
       '@react-router/serve':
         specifier: ^7.8.2
         version: 7.8.2(react-router@7.8.2(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(typescript@5.9.2)
-      '@remix-run/node-fetch-server':
-        specifier: ^0.8.0
-        version: 0.8.0
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -1581,6 +1566,12 @@ packages:
       '@types/react': '>=16'
       react: '>=16'
 
+  '@mjackson/node-fetch-server@0.2.0':
+    resolution: {integrity: sha512-EMlH1e30yzmTpGLQjlFmaDAjyOeZhng1/XCd7DExR8PNAnG/G1tyruZxEoUe11ClnwGhGrtsdnyyUx1frSzjng==}
+
+  '@mjackson/node-fetch-server@0.7.0':
+    resolution: {integrity: sha512-un8diyEBKU3BTVj3GzlTPA1kIjCkGdD+AMYQy31Gf9JCkfoZzwgJ79GUtHrF2BN3XPNMLpubbzPcxys+a3uZEw==}
+
   '@navikt/aksel-icons@7.29.1':
     resolution: {integrity: sha512-ERX4lUCYcPDQN3UT1051UY8bDb6vBwAePMSDuRO5bLnTSSq8ZqNxPDtSxaihp35DeqZi08j7AJQXGGpn0exd9g==}
     peerDependencies:
@@ -1765,9 +1756,6 @@ packages:
     hasBin: true
     peerDependencies:
       react-router: 7.8.2
-
-  '@remix-run/node-fetch-server@0.8.0':
-    resolution: {integrity: sha512-8/sKegb4HrM6IdcQeU0KPhj9VOHm5SUqswJDHuMCS3mwbr/NRx078QDbySmn0xslahvvZoOENd7EnK40kWKxkg==}
 
   '@rolldown/pluginutils@1.0.0-beta.32':
     resolution: {integrity: sha512-QReCdvxiUZAPkvp1xpAg62IeNzykOFA6syH2CnClif4YmALN1XKpB39XneL80008UbtMShthSVDKmrx05N1q/g==}
@@ -6959,6 +6947,10 @@ snapshots:
       '@types/react': 19.1.12
       react: 19.1.1
 
+  '@mjackson/node-fetch-server@0.2.0': {}
+
+  '@mjackson/node-fetch-server@0.7.0': {}
+
   '@navikt/aksel-icons@7.29.1(react@18.3.1)':
     optionalDependencies:
       react: 18.3.1
@@ -7163,7 +7155,7 @@ snapshots:
 
   '@react-router/node@7.8.2(react-router@7.8.2(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(typescript@5.9.2)':
     dependencies:
-      '@mjackson/node-fetch-server': '@remix-run/node-fetch-server@0.8.0'
+      '@mjackson/node-fetch-server': 0.2.0
       react-router: 7.8.2(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
     optionalDependencies:
       typescript: 5.9.2
@@ -7181,8 +7173,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
       - typescript
-
-  '@remix-run/node-fetch-server@0.8.0': {}
 
   '@rolldown/pluginutils@1.0.0-beta.32': {}
 
@@ -7842,7 +7832,7 @@ snapshots:
 
   '@vitejs/plugin-rsc@0.4.11(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(vite@7.1.5(@types/node@22.18.1)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.30.1)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.20.5)(yaml@2.7.1))':
     dependencies:
-      '@mjackson/node-fetch-server': '@remix-run/node-fetch-server@0.8.0'
+      '@mjackson/node-fetch-server': 0.7.0
       es-module-lexer: 1.7.0
       estree-walker: 3.0.3
       magic-string: 0.30.17
