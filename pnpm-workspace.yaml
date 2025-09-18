@@ -23,7 +23,4 @@ packageExtensions:
         optional: true
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
-- react
-- "@u-elements/u-details"
-- "@u-elements/u-combobox"
-- "@u-elements/u-datalist"
+- "@u-elements/*"
