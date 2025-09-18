@@ -21,4 +21,6 @@ packageExtensions:
     peerDependenciesMeta:
       react:
         optional: true
-
+minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - "@u-elements/*"

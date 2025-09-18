@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.5.1
+
+### Patch Changes
+
+- Update dependency @types/ramda to ^0.31.1 ([#4060](https://github.com/digdir/designsystemet/pull/4060))
+
 ## 1.5.0
 
 ### Minor Changes

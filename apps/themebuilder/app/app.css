@@ -43,6 +43,9 @@ body {
   &:has(dialog[open]) {
     overflow: scroll;
     scrollbar-color: transparent transparent;
+    * {
+      scrollbar-color: initial;
+    }
   }
 }
 

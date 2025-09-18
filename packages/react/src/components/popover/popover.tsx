@@ -134,7 +134,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
           setInternalOpen((open) => !open);
           onOpen?.();
         }
-        if (isOutside) {
+        if (isOutside && internalOpen) {
           setInternalOpen(false);
           onClose?.();
         }

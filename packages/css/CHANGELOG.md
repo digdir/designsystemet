@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.5.1
+
+### Patch Changes
+
+- **Field**: Make sure `<select>` and `<textarea>` is not on same line as label ([#4048](https://github.com/digdir/designsystemet/pull/4048))
+
 ## 1.5.0
 
 ### Minor Changes
