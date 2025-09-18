@@ -1,6 +1,7 @@
 import * as R from 'ramda';
 import type { Dictionary, Format, TransformedToken } from 'style-dictionary/types';
 import { createPropertyFormatter } from 'style-dictionary/utils';
+import { shortSizeName } from '../../../utils.js';
 import { buildOptions } from '../../platform.js';
 import { sizingTemplate } from './size.js';
 
@@ -18,12 +19,14 @@ const formatTypographySizeToken = (
   dictionary: Dictionary,
   format: (t: TransformedToken) => string,
   token: TransformedToken,
+  size?: string,
 ): { name: string; calc: string; round: string } => {
-  const [name, value] = format(token).replace(/;$/, '').split(': ');
+  const [originalName, value] = format(token).replace(/;$/, '').split(': ');
+  const name = size ? `${originalName}--${shortSizeName(size)}` : originalName;
 
   let calc: string;
   let round: string | undefined;
-  if (R.startsWith(['font-size'], token.path)) {
+  if (!size && R.startsWith(['font-size'], token.path)) {
     const originalWithCssReference = (token.original.$value as string).replaceAll(/\{font-scale\.[^}]+\}/g, (match) => {
       const t = dictionary.unfilteredTokenMap?.get(match);
       return `var(--${t?.name as string})`;
@@ -41,10 +44,11 @@ const formatTypographySizeTokens = (
   dictionary: Dictionary,
   format: (t: TransformedToken) => string,
   tokens: TransformedToken[],
+  size?: string,
 ) =>
   R.reduce<TransformedToken, TokensWithCalcAndRoundFormatting>(
     (acc, token) => {
-      const { name, calc, round } = formatTypographySizeToken(dictionary, format, token);
+      const { name, calc, round } = formatTypographySizeToken(dictionary, format, token, size);
       acc.tokens.push(token);
       acc.calc.push(`${name}: ${calc};`);
       acc.round.push(`${name}: ${round};`);
@@ -58,7 +62,7 @@ export const typeScale: Format = {
   name: 'ds/css-type-scale',
   format: async ({ dictionary, file, options, platform }) => {
     const { outputReferences, usesDtcg } = options;
-    const { selector, layer } = platform;
+    const { selector, layer, size } = platform as { selector: string; layer: string; size?: string };
     const destination = file.destination as string;
 
     const format = createPropertyFormatter({
@@ -69,7 +73,7 @@ export const typeScale: Format = {
     });
 
     const filteredTokens = R.reject(R.anyPass([isTypographyFontFamilyToken, isFontScaleToken]), dictionary.allTokens);
-    const formattedTokens = formatTypographySizeTokens(dictionary, format, filteredTokens);
+    const formattedTokens = formatTypographySizeTokens(dictionary, format, filteredTokens, size);
 
     const formattedMap = formattedTokens.round.map((t, i) => ({
       token: formattedTokens.tokens[i],
