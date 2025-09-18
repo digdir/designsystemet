@@ -163,4 +163,18 @@ describe('Popover', () => {
     );
     expect(content).toBeVisible();
   });
+
+  it('should not call onClose when the popover is closed', async () => {
+    const onClose = vi.fn();
+    const { user } = await render({ onClose });
+    const popoverTrigger = screen.getByRole('button');
+
+    await act(async () => await user.click(document.body));
+    expect(onClose).toHaveBeenCalledTimes(0);
+
+    await act(async () => await user.click(popoverTrigger));
+    expect(screen.queryByText(contentText)).toBeVisible();
+    await act(async () => await user.click(document.body));
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
 });
