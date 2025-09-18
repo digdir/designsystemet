@@ -2,4 +2,4 @@
 "@digdir/designsystemet": patch
 ---
 
-Set `engines` to `<22`
+Set `engines` to `^22`
