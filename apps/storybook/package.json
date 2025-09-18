@@ -29,7 +29,7 @@
     "@storybook/addon-themes": "^9.1.5",
     "@storybook/addon-vitest": "^9.1.5",
     "@storybook/react-vite": "^9.1.5",
-    "@types/ramda": "^0.31.0",
+    "@types/ramda": "^0.31.1",
     "@types/react": "^19.1.12",
     "@types/react-dom": "^19.1.9",
     "@vitest/browser": "3.2.4",
