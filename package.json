@@ -35,7 +35,7 @@
   },
   "pnpm": {
     "overrides": {
-      "@mjackson/node-fetch-server": "npm:@remix-run/node-fetch-server@^0.8.0"
+      "@mjackson/node-fetch-server": "npm:@remix-run/node-fetch-server@^0.8.1"
     }
   },
   "devDependencies": {
