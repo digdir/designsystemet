@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.5.1
+
+### Patch Changes
+
+- **Field.Counter**: Update count when react controls the input ([#4047](https://github.com/digdir/designsystemet/pull/4047))
+
+- **Popover**: Only call `onClose` when `Popover` is open ([#4065](https://github.com/digdir/designsystemet/pull/4065))
+
 ## 1.5.0
 
 ### Minor Changes
