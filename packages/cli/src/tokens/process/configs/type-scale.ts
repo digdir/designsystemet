@@ -33,7 +33,7 @@ export const typeScaleVariables: GetStyleDictionaryConfig = ({ theme }) => {
             destination: `type-scale.css`,
             format: formats.typeScale.name,
             filter: (token) => {
-              const included = typeEquals(['typography', 'dimension', 'fontsize'], token);
+              const included = typeEquals(['typography', 'dimension', 'fontsize', 'number'], token);
 
               // Remove primitive typgography tokens
               if (/primitives\/modes\/typography\/(primary|secondary)/.test(token.filePath)) return false;
@@ -41,7 +41,7 @@ export const typeScaleVariables: GetStyleDictionaryConfig = ({ theme }) => {
               return (
                 included &&
                 !pathStartsWithOneOf(['spacing', 'sizing', 'size', 'border-width', 'border-radius'], token) &&
-                (pathStartsWithOneOf(['font-size'], token) || token.path.includes('fontSize'))
+                (pathStartsWithOneOf(['font-size', 'font-scale'], token) || token.path.includes('fontSize'))
               );
             },
           },
