@@ -13,7 +13,8 @@ export type Typography = Theme['typography'];
 
 export type Theme = {
   name: string;
-} & Required<ConfigSchemaTheme>;
+} & Required<Omit<ConfigSchemaTheme, 'overrides'>> &
+  Pick<ConfigSchemaTheme, 'overrides'>;
 
 export const colorCategories = {
   main: 'main',

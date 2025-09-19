@@ -20,7 +20,21 @@
       "typography": {
         "fontFamily": "Inter"
       },
-      "borderRadius": 8
+      "borderRadius": 8,
+      "overrides": {
+        "colors": {
+          "accent": {
+            "background-default": {
+              "light": "#ff0000",
+              "dark": "#001122"
+            },
+            "background-tinted": {
+              "light": "#e6f3ff",
+              "dark": "#002244"
+            }
+          }
+        }
+      }
     },
     "other-org": {
       "colors": {
