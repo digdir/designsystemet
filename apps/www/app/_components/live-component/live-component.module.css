@@ -1,0 +1,110 @@
+.preview {
+  border-radius: var(--ds-border-radius-xl);
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  margin-bottom: var(--ds-size-4);
+
+  & .live-preview {
+    background-color: var(--ds-color-neutral-background-tinted);
+    grid-column: 1 / -1;
+    padding: var(--ds-size-8);
+    padding-bottom: var(--ds-size-12);
+    border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
+    /*@TODO: this probably needs to be customizable per story*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ds-size-2);
+  }
+
+  & .codeButton {
+    font-size: var(--ds-font-size-3);
+    color: var(--ds-color-neutral-text-subtle);
+    font-weight: var(--ds-font-weight-regular);
+    border-radius: 0;
+    border-bottom-right-radius: var(--ds-border-radius-xl);
+    grid-column: 4 / 5;
+    &[aria-pressed='true'] {
+      > svg {
+        rotate: 180deg;
+      }
+    }
+  }
+}
+.editorOuterWrapper {
+  border-radius: var(--ds-border-radius-xl);
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  background-color: var(--ds-color-neutral-background-tinted);
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  /*overflow: clip;*/
+}
+.editorWrapper {
+  position: relative;
+  grid-column: 1 / -1;
+}
+.activate-editor {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  pointer-events: none;
+  transform: translateX(-50%);
+  font-size: var(--ds-font-size-2);
+  padding: var(--ds-size-2) var(--ds-size-3);
+  border-radius: var(--ds-border-radius-md);
+  background-color: var(--ds-color-neutral-surface-default);
+  opacity: 0;
+  &:focus-visible {
+    opacity: 1;
+  }
+
+  kbd {
+    font-family: ui-monospace, Menlo, Monaco, 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro', 'Droid Sans Mono', 'Courier New', monospace;
+    background-color: var(--ds-color-neutral-surface-tinted);
+    padding: var(--ds-size-1);
+    border-radius: inherit;
+    border: solid 1px var(--ds-color-neutral-border-subtle);
+    position: relative;
+    bottom: 2px;
+    box-shadow: 0.5px 1px 0 0 var(--ds-color-neutral-border-strong);
+  }
+}
+.live-editor:hover {
+  outline: 2px solid var(--ds-color-neutral-border-subtle);
+}
+.editor {
+  border-top: 1px solid var(--ds-color-neutral-border-subtle);
+  font-family: monospace;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: var(--ds-border-radius-xl);
+  border-bottom-left-radius: var(--ds-border-radius-xl);
+  outline-offset: -1px;
+  &:focus-within {
+    outline: 2px solid var(--ds-color-neutral-border-default);
+  }
+
+  & > pre {
+    background-color: var(--ds-color-neutral-background-default) !important;
+    font-size: min(0.8em, 14px);
+    padding: var(--ds-size-5) !important;
+    white-space: pre-wrap;
+  }
+
+  & [class~='plain-text'] {
+    color: var(--ds-color-neutral-text-default);
+  }
+}
+
+.reset {
+  grid-column: 4 / 5;
+}
+.htmlToggle {
+  grid-column: 3 / 4;
+}
+.language {
+  margin: 0;
+  margin-left: var(--ds-size-4);
+  align-self: center;
+}
