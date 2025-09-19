@@ -37,15 +37,8 @@ jobs:
           node -v
           pnpm -v
       - name: install deps (frozen)
-        run: cd packages/cli && pnpm install --ignore-workspace
+        run: pnpm install --ignore-workspace
       - name: build cli
-        run: cd packages/cli && pnpm build
+        run: pnpm --filter "@digdir/designsystemet" build
       - name: test cli
-        run: cd packages/cli && pnpm test
-      - name: inspect potential node pins
-        run: |
-          jq -r '.volta // empty' package.json || true
-          [ -f .nvmrc ] && echo ".nvmrc: $(cat .nvmrc)" || true
-          [ -f .node-version ] && echo ".node-version: $(cat .node-version)" || true
-          [ -f .tool-versions ] && echo ".tool-versions: $(cat .tool-versions)" || true
-
+        run: pnpm --filter "@digdir/designsystemet" test
