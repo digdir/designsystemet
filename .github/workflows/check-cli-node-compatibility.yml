@@ -25,6 +25,16 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+      - name: neutralize pnpm's pinned node
+        run: |
+          sed -i '/^useNodeVersion:/d' pnpm-workspace.yaml || true
+          # if it's indented or has comments, be thorough:
+          awk 'BEGIN{skip=0}
+               /^useNodeVersion:/{skip=1; next}
+               skip && NF==0{skip=0; next}
+               !skip{print}' pnpm-workspace.yaml > pnpm-workspace.yaml.tmp && mv pnpm-workspace.yaml.tmp pnpm-workspace.yaml
+          echo "removed useNodeVersion from pnpm-workspace.yaml"
+          echo "PNPM_CONFIG_ENGINE_STRICT=false" >> $GITHUB_ENV
       - name: setup pnpm
         uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
         with:
@@ -39,10 +49,10 @@ jobs:
           node -v
           pnpm -v
       - name: install deps (ignore engines)
-        run: pnpm install --use-node-version=${{ matrix.node }}
+        run: pnpm install --frozen-lockfile
         env:
           PNPM_CONFIG_ENGINE_STRICT: "false"
       - name: build cli
-        run: pnpm --use-node-version=${{ matrix.node }} --filter "@digdir/designsystemet" build
+        run: pnpm --filter "@digdir/designsystemet" build
       - name: test cli
-        run: pnpm --use-node-version=${{ matrix.node }} --filter "@digdir/designsystemet" test
+        run: pnpm --filter "@digdir/designsystemet" test
