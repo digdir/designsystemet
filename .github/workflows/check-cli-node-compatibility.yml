@@ -39,6 +39,6 @@ jobs:
       - name: install deps (frozen)
         run: pnpm install --frozen-lockfile
       - name: build cli
-        run: pnpm --filter "@designsystemet/cli" build
+        run: pnpm --filter "@digdir/designsystemet" build
       - name: test cli
-        run: pnpm --filter "@designsystemet/cli" test
+        run: pnpm --filter "@digdir/designsystemet" test
