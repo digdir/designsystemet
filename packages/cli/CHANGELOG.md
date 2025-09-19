@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.5.2
+
+### Patch Changes
+
+- Set `engines` to `^22` ([#4055](https://github.com/digdir/designsystemet/pull/4055))
+
 ## 1.5.1
 
 ### Patch Changes
