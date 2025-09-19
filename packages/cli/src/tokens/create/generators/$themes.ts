@@ -7,7 +7,7 @@ const capitalize = (word: string) => word.charAt(0).toUpperCase() + word.slice(1
 
 async function createHash(text: string, algo = 'SHA-1') {
   const bytes = new TextEncoder().encode(text);
-  const subtle = globalThis.crypto.subtle;
+  const subtle = globalThis.crypto?.subtle;
 
   try {
     if (subtle.digest) {
