@@ -6,8 +6,9 @@ import type { Colors } from '../../types.js';
 const capitalize = (word: string) => word.charAt(0).toUpperCase() + word.slice(1);
 
 async function createHash(text: string, algo = 'SHA-1') {
+  /* This function is written to work in node 18, 20, 22 */
   const bytes = new TextEncoder().encode(text);
-  const subtle = globalThis.crypto?.subtle;
+  const subtle = globalThis.crypto?.subtle; // questionmark here since subtle is not available in node 18
 
   try {
     if (subtle.digest) {
