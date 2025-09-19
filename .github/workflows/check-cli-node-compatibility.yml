@@ -12,47 +12,69 @@ permissions:
   contents: read
 
 jobs:
+  build:
+    name: build (workspace node)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # no setup-node here; let pnpm's useNodeVersion rule
+      - uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
+        with: { run_install: false }
+
+      - name: install (workspace node via useNodeVersion)
+        run: pnpm install
+
+      - name: build cli
+        run: pnpm --filter "@digdir/designsystemet" build
+
+      - name: upload dist
+        uses: actions/upload-artifact@v4
+        with:
+          name: cli-dist
+          path: packages/cli/dist
+
   test:
     name: node ${{ matrix.node }} • cli
+    needs: build
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         node: [18.x, 20.x, 22.x]
-    env:
-      PNPM_CONFIG_ENGINE_STRICT: "false"
-
     steps:
-      - name: checkout
-        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
-      - name: neutralize pnpm's pinned node
+      - uses: actions/checkout@v4
+
+      - name: neuter pnpm node pin
         run: |
+          # drop useNodeVersion so pnpm won't hijack
           sed -i '/^useNodeVersion:/d' pnpm-workspace.yaml || true
-          # if it's indented or has comments, be thorough:
-          awk 'BEGIN{skip=0}
-               /^useNodeVersion:/{skip=1; next}
-               skip && NF==0{skip=0; next}
-               !skip{print}' pnpm-workspace.yaml > pnpm-workspace.yaml.tmp && mv pnpm-workspace.yaml.tmp pnpm-workspace.yaml
-          echo "removed useNodeVersion from pnpm-workspace.yaml"
-          echo "PNPM_CONFIG_ENGINE_STRICT=false" >> $GITHUB_ENV
-      - name: setup pnpm
-        uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
-        with:
-          run_install: false
-      - name: setup node ${{ matrix.node }}
-        uses: actions/setup-node@v4
+          awk 'BEGIN{skip=0}/^useNodeVersion:/{skip=1;next} skip&&NF==0{skip=0;next}!skip{print}' pnpm-workspace.yaml \
+            > pnpm-workspace.yaml.tmp && mv pnpm-workspace.yaml.tmp pnpm-workspace.yaml
+
+      - uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
+        with: { run_install: false }
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: ${{ matrix.node }}
-          cache: 'pnpm'
-      - name: print versions (sanity)
+          cache: pnpm
+
+      - name: print versions
         run: |
           node -v
           pnpm -v
-      - name: install deps (ignore engines)
-        run: pnpm install --frozen-lockfile
+
+      - name: install deps for this node
+        run: pnpm install
         env:
           PNPM_CONFIG_ENGINE_STRICT: "false"
-      - name: build cli
-        run: pnpm --filter "@digdir/designsystemet" build
+
+      - name: fetch built dist
+        uses: actions/download-artifact@v4
+        with:
+          name: cli-dist
+          path: packages/cli/dist
+
       - name: test cli
         run: pnpm --filter "@digdir/designsystemet" test
