@@ -20,27 +20,41 @@ jobs:
       matrix:
         node: [18.x, 20.x, 22.x]
 
+    env:
+      PNPM_CONFIG_ENGINE_STRICT: "false" # we’re testing engines; don’t fail installs
+
     steps:
-      - name: checkout
-        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
-      - name: setup pnpm
-        uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
-        with:
-          run_install: false
+      - uses: actions/checkout@v4
+
+      # 1) install node first so its bin dir is registered
       - name: setup node ${{ matrix.node }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
           cache: 'pnpm'
-      - name: print versions (sanity)
+
+      # 2) remove volta shims & vars so scripts don't jump to 22.x
+      - name: disable volta
         run: |
+          echo "PATH=$(echo "$PATH" | tr ':' '\n' | grep -v '/.volta/bin' | paste -sd: -)" >> $GITHUB_ENV
+          echo "VOLTA_HOME=" >> $GITHUB_ENV
+          echo "VOLTA_NODE_VERSION=" >> $GITHUB_ENV
+
+      - name: diag node seen by this step
+        run: |
+          which node
           node -v
-          pnpm -v
-      - name: install deps (ignore engines)
-        run: pnpm install
-        env:
-          PNPM_CONFIG_ENGINE_STRICT: "false"
+
+      - name: setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: install deps
+        run: pnpm install --frozen-lockfile
+
       - name: build cli
         run: pnpm --filter "@digdir/designsystemet" build
+
       - name: test cli
         run: pnpm --filter "@digdir/designsystemet" test
