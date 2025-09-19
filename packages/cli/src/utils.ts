@@ -1,6 +1,6 @@
 import type { CopyOptions } from 'node:fs';
 import fs from 'node:fs/promises';
-import chalk from 'chalk';
+import pc from 'picocolors';
 
 /**
  * Creates a directory if it does not already exist.
@@ -14,7 +14,7 @@ import chalk from 'chalk';
  */
 export const mkdir = async (dir: string, dry?: boolean) => {
   if (dry) {
-    console.log(`${chalk.blue('mkdir')} ${dir}`);
+    console.log(`${pc.blue('mkdir')} ${dir}`);
     return Promise.resolve();
   }
 
@@ -32,20 +32,20 @@ export const mkdir = async (dir: string, dry?: boolean) => {
 
 export const writeFile = async (path: string, data: string, dry?: boolean) => {
   if (dry) {
-    console.log(`${chalk.blue('writeFile')} ${path}`);
+    console.log(`${pc.blue('writeFile')} ${path}`);
     return Promise.resolve();
   }
 
   return fs.writeFile(path, data, { encoding: 'utf-8' }).catch((error) => {
-    console.error(chalk.red(`Error writing file: ${path}`));
-    console.error(chalk.red(error));
+    console.error(pc.red(`Error writing file: ${path}`));
+    console.error(pc.red(error));
     throw error;
   });
 };
 
 export const cp = async (src: string, dest: string, dry?: boolean, filter?: CopyOptions['filter']) => {
   if (dry) {
-    console.log(`${chalk.blue('cp')} ${src} ${dest}`);
+    console.log(`${pc.blue('cp')} ${src} ${dest}`);
     return Promise.resolve();
   }
 
@@ -54,7 +54,7 @@ export const cp = async (src: string, dest: string, dry?: boolean, filter?: Copy
 
 export const copyFile = async (src: string, dest: string, dry?: boolean) => {
   if (dry) {
-    console.log(`${chalk.blue('copyFile')} ${src} to ${dest}`);
+    console.log(`${pc.blue('copyFile')} ${src} to ${dest}`);
     return Promise.resolve();
   }
 
@@ -63,18 +63,18 @@ export const copyFile = async (src: string, dest: string, dry?: boolean) => {
 
 export const cleanDir = async (dir: string, dry?: boolean) => {
   if (dry) {
-    console.log(`${chalk.blue('cleanDir')} ${dir}`);
+    console.log(`${pc.blue('cleanDir')} ${dir}`);
     return Promise.resolve();
   }
 
-  console.log(`\n🔥 Cleaning dir ${chalk.red(`${dir.trim()}`)} `);
+  console.log(`\n🔥 Cleaning dir ${pc.red(`${dir.trim()}`)} `);
 
   return fs.rm(dir, { recursive: true, force: true });
 };
 
 export const readFile = async (path: string, dry?: boolean, allowFileNotFound?: boolean) => {
   if (dry) {
-    console.log(`${chalk.blue('readFile')} ${path}`);
+    console.log(`${pc.blue('readFile')} ${path}`);
     return Promise.resolve('');
   }
 

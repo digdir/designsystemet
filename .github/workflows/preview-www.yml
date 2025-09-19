@@ -5,6 +5,7 @@ on:
     types: [opened, synchronize]
     paths:
       - 'apps/www/**'
+      - 'internal/components/**'
 
 jobs:
   deploy-preview:

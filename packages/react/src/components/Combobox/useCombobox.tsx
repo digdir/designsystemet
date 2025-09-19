@@ -113,6 +113,8 @@ export function useCombobox({
         displayValue: props.displayValue,
         description: props.description,
       };
+
+      return null;
     });
 
     return allOptions;
@@ -161,7 +163,7 @@ export function useCombobox({
           return optionsChildren[index];
         }
 
-        return;
+        return null;
       })
       .filter((child) => child);
 

@@ -1,6 +1,6 @@
 import path from 'node:path';
 import type { ThemeObject } from '@tokens-studio/types';
-import chalk from 'chalk';
+import pc from 'picocolors';
 import * as R from 'ramda';
 import { mkdir, readFile, writeFile } from '../utils.js';
 import { createTypeDeclarationFiles } from './process/output/declarations.js';
@@ -32,11 +32,11 @@ export const buildTokens = async (options: Omit<BuildOptions, 'type' | 'processe
   let $designsystemet: DesignsystemetObject | undefined;
 
   try {
-    const $designsystemetContent = await readFile(`${tokensDir}/$designsystemet.json`);
+    const $designsystemetContent = await readFile(`${tokensDir}/$designsystemet.jsonc`);
     $designsystemet = JSON.parse($designsystemetContent) as DesignsystemetObject;
   } catch (_error) {}
 
-  console.log(`\n🏗️ Start building tokens in ${chalk.green(tokensDir)}`);
+  console.log(`\n🏗️ Start building tokens in ${pc.green(tokensDir)}`);
 
   const processedBuilds = await processPlatform({
     ...options,
@@ -72,7 +72,7 @@ export const buildTokens = async (options: Omit<BuildOptions, 'type' | 'processe
     files = files.concat(tailwindFiles.filter(Boolean) as OutputFile[]);
   }
 
-  console.log(`\n💾 Writing build to ${chalk.green(outDir)}`);
+  console.log(`\n💾 Writing build to ${pc.green(outDir)}`);
 
   await write(files, outDir, options.dry);
 

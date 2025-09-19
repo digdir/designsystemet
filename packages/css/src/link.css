@@ -20,6 +20,21 @@
     vertical-align: middle; /* Align img or svg icon with text */
   }
 
+  /*
+   * Ensure proper spacing if there are any svg or img.
+   */
+  &:has(> span) {
+    & > :is(img, svg) {
+      margin-inline: var(--ds-size-1);
+      &:first-child {
+        margin-inline-start: 0;
+      }
+      &:last-child {
+        margin-inline-end: 0;
+      }
+    }
+  }
+
   /* What do we do here? */
   &[data-color='neutral'] {
     --dsc-link-color--active: var(--ds-color-neutral-text-subtle);

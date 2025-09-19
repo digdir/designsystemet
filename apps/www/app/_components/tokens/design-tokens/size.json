@@ -1,0 +1,186 @@
+[
+  {
+    "path": [
+      "_size",
+      "base"
+    ],
+    "variable": "--ds-size-base",
+    "value": "18"
+  },
+  {
+    "path": [
+      "_size",
+      "step"
+    ],
+    "variable": "--ds-size-step",
+    "value": "4"
+  },
+  {
+    "path": [
+      "_size",
+      "0"
+    ],
+    "variable": "--ds-size-0",
+    "value": "round(down, calc(var(--ds-size-unit) * 0), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "1"
+    ],
+    "variable": "--ds-size-1",
+    "value": "round(down, calc(var(--ds-size-unit) * 1), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "2"
+    ],
+    "variable": "--ds-size-2",
+    "value": "round(down, calc(var(--ds-size-unit) * 2), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "3"
+    ],
+    "variable": "--ds-size-3",
+    "value": "round(down, calc(var(--ds-size-unit) * 3), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "4"
+    ],
+    "variable": "--ds-size-4",
+    "value": "round(down, calc(var(--ds-size-unit) * 4), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "5"
+    ],
+    "variable": "--ds-size-5",
+    "value": "round(down, calc(var(--ds-size-unit) * 5), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "6"
+    ],
+    "variable": "--ds-size-6",
+    "value": "round(down, calc(var(--ds-size-unit) * 6), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "7"
+    ],
+    "variable": "--ds-size-7",
+    "value": "round(down, calc(var(--ds-size-unit) * 7), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "8"
+    ],
+    "variable": "--ds-size-8",
+    "value": "round(down, calc(var(--ds-size-unit) * 8), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "9"
+    ],
+    "variable": "--ds-size-9",
+    "value": "round(down, calc(var(--ds-size-unit) * 9), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "10"
+    ],
+    "variable": "--ds-size-10",
+    "value": "round(down, calc(var(--ds-size-unit) * 10), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "11"
+    ],
+    "variable": "--ds-size-11",
+    "value": "round(down, calc(var(--ds-size-unit) * 11), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "12"
+    ],
+    "variable": "--ds-size-12",
+    "value": "round(down, calc(var(--ds-size-unit) * 12), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "13"
+    ],
+    "variable": "--ds-size-13",
+    "value": "round(down, calc(var(--ds-size-unit) * 13), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "14"
+    ],
+    "variable": "--ds-size-14",
+    "value": "round(down, calc(var(--ds-size-unit) * 14), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "15"
+    ],
+    "variable": "--ds-size-15",
+    "value": "round(down, calc(var(--ds-size-unit) * 15), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "18"
+    ],
+    "variable": "--ds-size-18",
+    "value": "round(down, calc(var(--ds-size-unit) * 18), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "22"
+    ],
+    "variable": "--ds-size-22",
+    "value": "round(down, calc(var(--ds-size-unit) * 22), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "26"
+    ],
+    "variable": "--ds-size-26",
+    "value": "round(down, calc(var(--ds-size-unit) * 26), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "30"
+    ],
+    "variable": "--ds-size-30",
+    "value": "round(down, calc(var(--ds-size-unit) * 30), 1px)"
+  },
+  {
+    "path": [
+      "_size",
+      "unit"
+    ],
+    "variable": "--ds-size-unit",
+    "value": "calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size))"
+  }
+]

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.1.3/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.2.3/schema.json",
   "assist": {
     "actions": { "source": { "organizeImports": "on" } }
   },
@@ -12,14 +12,14 @@
     "ignoreUnknown": true,
     "includes": [
       "**/*",
-      "!**/.vscode/**",
-      "!**/.github/**",
-      "!**/.changeset/**",
-      "!**/design-tokens/**/*",
-      "!**/dist/**/*",
+      "!.vscode",
+      "!.github",
+      "!.changeset",
+      "!**/design-tokens/*",
+      "!**/dist",
       "!**/packages/theme/**/*.css",
       "!**/tsconfig.*.json", // https://github.com/biomejs/biome/issues/1151
-      "!**/.react-router/**",
+      "!**/.react-router/",
       "!**/package.json" // changeset wants the files to be formatted differently
     ]
   },
@@ -36,9 +36,6 @@
     "enabled": true,
     "includes": ["**/*"],
     "rules": {
-      "nursery": {
-        "useUniqueElementIds": "off"
-      },
       "recommended": true,
       "a11y": {
         "noNoninteractiveElementToInteractiveRole": "off",
@@ -52,8 +49,10 @@
         "useAriaPropsForRole": "off"
       },
       "correctness": {
+        "useUniqueElementIds": "off",
         "useExhaustiveDependencies": "off",
         "noUnusedImports": {
+          "options": {},
           "level": "warn",
           "fix": "none" // we need empty imports in generated types.d.ts from @digdir/designsystemet
         }
@@ -72,7 +71,12 @@
         "noUselessElse": "error"
       },
       "suspicious": {
-        "noArrayIndexKey": "off"
+        "noArrayIndexKey": "off",
+        "noUnknownAtRules": "off",
+        "noTsIgnore": "off"
+      },
+      "complexity": {
+        "noImportantStyles": "off"
       }
     }
   },

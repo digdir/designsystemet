@@ -418,3 +418,11 @@ export const ContentEx3: StoryFn<typeof Fieldset> = () => (
     <Checkbox label='Kolleger' value='kolleger' />
   </Fieldset>
 );
+export const hiddenLegend: StoryFn<typeof Fieldset> = () => (
+  <Fieldset>
+    <Fieldset.Legend className='ds-sr-only'>
+      Tekst for skjermleser
+    </Fieldset.Legend>
+    <Checkbox label='Test av skjermleser legend' value='selvstendige' />
+  </Fieldset>
+);

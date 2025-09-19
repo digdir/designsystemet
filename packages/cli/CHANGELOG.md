@@ -1,5 +1,65 @@
 # Change Log
 
+## 1.5.1
+
+### Patch Changes
+
+- Update dependency @types/ramda to ^0.31.1 ([#4060](https://github.com/digdir/designsystemet/pull/4060))
+
+## 1.5.0
+
+### Minor Changes
+
+- Sizing and size modes have been reimplemented align code and Figma implementations, and to support setting size mode in css queries. ([#3866](https://github.com/digdir/designsystemet/pull/3866))
+
+  `--ds-size-*` variables are now independent of the element's font size, and only depend on the size mode, which aligns the code implementation with how the modes already worked in Figma. **Important**: This will have a large visual impact on existing code where size variables have been used to style Heading elements (e.g. margin).
+
+  Read [Sizes in code](https://www.designsystemet.no/en/fundamentals/code/sizes) for info on how size modes work after these changes.
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4039](https://github.com/digdir/designsystemet/pull/4039))
+
+## 1.4.0
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#3989](https://github.com/digdir/designsystemet/pull/3989))
+
+- Update npm non-major dependencies ([#4014](https://github.com/digdir/designsystemet/pull/4014))
+
+## 1.3.0
+
+### Minor Changes
+
+- Renamed $designsystemet.json to $designsystemet.jsonc so token-studio ignores the file ([#3970](https://github.com/digdir/designsystemet/pull/3970))
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#3973](https://github.com/digdir/designsystemet/pull/3973))
+
+## 1.2.0
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#3923](https://github.com/digdir/designsystemet/pull/3923))
+
+- Replace `chalk` with `picocolors` ([#3910](https://github.com/digdir/designsystemet/pull/3910))
+
+## 1.1.10
+
+### Patch Changes
+
+- Update dependency zod-validation-error to v4 ([#3897](https://github.com/digdir/designsystemet/pull/3897))
+
+- update dependency @types/ramda to ^0.31.0 ([#3922](https://github.com/digdir/designsystemet/pull/3922))
+
+- Update dependency zod to v4 ([#3896](https://github.com/digdir/designsystemet/pull/3896))
+
+- Updated non-major dependencies ([#3890](https://github.com/digdir/designsystemet/pull/3890))
+
+- Updated non-major dependencies ([#3894](https://github.com/digdir/designsystemet/pull/3894))
+
 ## 1.1.9
 
 ## 1.1.8
