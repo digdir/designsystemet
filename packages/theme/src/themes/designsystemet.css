@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*
-build: v1.4.0
-design-tokens: v1.4.0
+build: v1.5.1
+design-tokens: v1.5.1
 */
 
 @layer ds.theme.size-mode {
@@ -74,6 +74,19 @@ design-tokens: v1.4.0
   --ds-body-long-md-font-size: var(--ds-font-size-4);
   --ds-body-long-sm-font-size: var(--ds-font-size-3);
   --ds-body-long-xs-font-size: var(--ds-font-size-2);
+
+  @supports (width: round(down, .1em, 1px)) {
+    --ds-font-size-1: round(calc(0.75rem * var(--_ds-font-size-factor)), 1px);
+    --ds-font-size-2: round(calc(0.875rem * var(--_ds-font-size-factor)), 1px);
+    --ds-font-size-3: round(calc(1rem * var(--_ds-font-size-factor)), 1px);
+    --ds-font-size-4: round(calc(1.125rem * var(--_ds-font-size-factor)), 1px);
+    --ds-font-size-5: round(calc(1.3125rem * var(--_ds-font-size-factor)), 1px);
+    --ds-font-size-6: round(calc(1.5rem * var(--_ds-font-size-factor)), 1px);
+    --ds-font-size-7: round(calc(1.875rem * var(--_ds-font-size-factor)), 1px);
+    --ds-font-size-8: round(calc(2.25rem * var(--_ds-font-size-factor)), 1px);
+    --ds-font-size-9: round(calc(3rem * var(--_ds-font-size-factor)), 1px);
+    --ds-font-size-10: round(calc(3.75rem * var(--_ds-font-size-factor)), 1px);
+  }
 }
 }
 @layer ds.theme.color-scheme.light {
