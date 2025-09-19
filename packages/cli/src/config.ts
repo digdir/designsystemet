@@ -114,6 +114,32 @@ const colorCategorySchema = z
   })
   .describe('An object with one or more color definitions. The property name is used as the color name.');
 
+// Schema for color overrides in light/dark modes
+const colorModeOverrideSchema = z
+  .object({
+    light: colorSchema.optional(),
+    dark: colorSchema.optional(),
+  })
+  .describe('Override values for light and dark color modes');
+
+// Schema for weight-based color overrides (e.g., background-subtle.1, background-subtle.2)
+const colorWeightOverrideSchema = z
+  .record(z.union([z.string(), z.number()]), colorModeOverrideSchema)
+  .describe('Override values for different color weights (1-16)');
+
+// Schema for semantic color overrides
+const semanticColorOverrideSchema = z
+  .record(z.string(), colorWeightOverrideSchema)
+  .describe('Override values for semantic color tokens like "background-subtle", "border-default", etc.');
+
+// Schema for the overrides object
+const overridesSchema = z
+  .object({
+    colors: semanticColorOverrideSchema.optional(),
+  })
+  .describe('Overrides for generated design tokens')
+  .optional();
+
 const themeSchema = z
   .object({
     colors: z
@@ -130,6 +156,7 @@ const themeSchema = z
       .describe('Defines the typography for a given theme')
       .optional(),
     borderRadius: z.number().meta({ description: 'Defines the border-radius for this theme' }).optional(),
+    overrides: overridesSchema,
   })
   .meta({ description: 'An object defining a theme. The property name holding the object becomes the theme name.' });
 
@@ -155,3 +182,4 @@ export type CommonConfigSchema = z.infer<typeof commonConfig>;
 export type BuildConfigSchema = z.infer<typeof commonConfig>;
 export type CreateConfigSchema = z.infer<typeof configFileCreateSchema>;
 export type ConfigSchemaTheme = z.infer<typeof themeSchema>;
+export type ColorOverrideSchema = z.infer<typeof overridesSchema>;
