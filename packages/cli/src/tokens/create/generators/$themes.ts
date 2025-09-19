@@ -6,10 +6,20 @@ import type { Colors } from '../../types.js';
 const capitalize = (word: string) => word.charAt(0).toUpperCase() + word.slice(1);
 
 async function createHash(text: string, algo = 'SHA-1') {
-  const crypto = globalThis.crypto;
-  return Array.from(new Uint8Array(await crypto.subtle.digest(algo, new TextEncoder().encode(text))), (byte) =>
-    byte.toString(16).padStart(2, '0'),
-  ).join('');
+  const bytes = new TextEncoder().encode(text);
+  const subtle = globalThis.crypto.subtle;
+
+  try {
+    if (subtle.digest) {
+      const buf = await subtle.digest(algo, bytes);
+      return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, '0')).join('');
+    }
+    throw new Error('no subtle');
+  } catch {
+    const { createHash } = await import('node:crypto');
+    const nodeAlgo = algo.replace('-', '').toLowerCase(); // e.g. 'SHA-1' -> 'sha1'
+    return createHash(nodeAlgo).update(bytes).digest('hex');
+  }
 }
 
 type ColorSchemes = Array<ColorScheme>;
