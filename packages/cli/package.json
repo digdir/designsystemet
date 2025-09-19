@@ -4,7 +4,7 @@
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "engines": {
-    "node": "23"
+    "node": "^18 || ^20 || ^22.18.0"
   },
   "repository": {
     "type": "git",
@@ -52,7 +52,7 @@
     "test:tokens-build-config-tailwind": "pnpm run designsystemet tokens build -t ./temp/config/design-tokens -o ./temp/config/build --clean --experimental-tailwind",
     "test:tokens-create-and-build-options": "pnpm test:tokens-create-options && pnpm test:tokens-build",
     "test:tokens-create-and-build-config": "pnpm test:tokens-create-config && pnpm test:tokens-build-config",
-    "test": "pnpm test:tokens-create-and-build-options && pnpm test:tokens-create-and-build-config",
+    "test": "node -v && pnpm test:tokens-create-and-build-options && pnpm test:tokens-create-and-build-config",
     "digdir:tokens-build": "pnpm run designsystemet tokens build -t ../../internal/design-tokens -o ../../packages/theme/brand --clean --experimental-tailwind",
     "digdir:tokens-create": "pnpm run designsystemet tokens create --config ./configs/digdir.config.json",
     "update:template": "tsx ./src/scripts/update-template.ts",
