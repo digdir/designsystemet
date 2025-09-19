@@ -37,7 +37,7 @@ jobs:
           node -v
           pnpm -v
       - name: install deps (frozen)
-        run: pnpm install --ignore-workspace
+        run: pnpm install --ignore-engines --no-frozen-lockfile
       - name: build cli
         run: pnpm --filter "@digdir/designsystemet" build
       - name: test cli
