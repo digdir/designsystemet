@@ -24,3 +24,6 @@ packageExtensions:
 syncInjectedDepsAfterScripts:
   - dist
 injectWorkspacePackages: true
+minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - "@u-elements/*"
