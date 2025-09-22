@@ -113,25 +113,20 @@ const Editor = ({ live, html }: EditorProps) => {
       <ds.Paragraph className={classes.language}>
         {showHTML ? 'HTML' : 'React'}
       </ds.Paragraph>
-      <ds.Button
-        data-color='neutral'
-        variant='tertiary'
-        className={cl(classes.htmlToggle)}
-        onClick={() => setShowHTML((v) => !v)}
-        data-size='sm'
-        type='button'
-      >
-        HTML / React
-      </ds.Button>
+      <ds.ToggleGroup value={showHTML.toString()} onChange={(v)=> setShowHTML(v === 'true' ? true : false)}>
+        <ds.ToggleGroup.Item value='false'>React</ds.ToggleGroup.Item>
+        <ds.ToggleGroup.Item value='true'>HTML</ds.ToggleGroup.Item>
+      </ds.ToggleGroup>
       <ds.Button
         data-color='neutral'
         variant='tertiary'
         className={cl(classes.reset)}
         onClick={reset}
         data-size='sm'
-        disabled={live.code === live.newCode}
+        /* disabled={live.code === live.newCode} */
         type='button'
       >
+        <aksel.ArrowsCirclepathIcon />
         Reset
       </ds.Button>
       {/* biome-ignore lint/a11y/noStaticElementInteractions: <need to manage keyboard events from here> */}
