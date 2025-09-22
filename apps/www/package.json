@@ -39,7 +39,7 @@
     "@react-router/dev": "^7.8.2",
     "@types/hast": "^3.0.4",
     "@types/node": "^22.18.1",
-    "@types/ramda": "^0.31.0",
+    "@types/ramda": "^0.31.1",
     "@types/react": "^19.1.12",
     "@types/react-dom": "^19.1.9",
     "typescript": "^5.9.2",

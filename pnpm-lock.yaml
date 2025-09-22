@@ -108,8 +108,8 @@ importers:
         specifier: ^9.1.5
         version: 9.1.5(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(rollup@4.50.1)(storybook@9.1.5(@testing-library/dom@10.4.1)(prettier@3.6.2)(vite@7.1.5(@types/node@22.18.1)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.30.1)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.20.5)(yaml@2.7.1)))(typescript@5.9.2)(vite@7.1.5(@types/node@22.18.1)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.30.1)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.20.5)(yaml@2.7.1))
       '@types/ramda':
-        specifier: ^0.31.0
-        version: 0.31.0
+        specifier: ^0.31.1
+        version: 0.31.1
       '@types/react':
         specifier: ^19.1.12
         version: 19.1.12
@@ -226,8 +226,8 @@ importers:
         specifier: ^22.18.1
         version: 22.18.1
       '@types/ramda':
-        specifier: ^0.31.0
-        version: 0.31.0
+        specifier: ^0.31.1
+        version: 0.31.1
       '@types/react':
         specifier: ^19.1.12
         version: 19.1.12
@@ -335,8 +335,8 @@ importers:
         specifier: ^22.18.1
         version: 22.18.1
       '@types/ramda':
-        specifier: ^0.31.0
-        version: 0.31.0
+        specifier: ^0.31.1
+        version: 0.31.1
       '@types/react':
         specifier: ^19.1.12
         version: 19.1.12
@@ -503,8 +503,8 @@ importers:
         specifier: ^3.0.6
         version: 3.0.6
       '@types/ramda':
-        specifier: ^0.31.0
-        version: 0.31.0
+        specifier: ^0.31.1
+        version: 0.31.1
       fs-extra:
         specifier: ^11.3.1
         version: 11.3.1
@@ -2413,8 +2413,8 @@ packages:
   '@types/prop-types@15.7.15':
     resolution: {integrity: sha512-F6bEyamV9jKGAFBEmlQnesRPGOQqS2+Uwi0Em15xenOxHaf2hv6L8YCVn3rPdPJOiJfPiCnLIRyvwVaqMY3MIw==}
 
-  '@types/ramda@0.31.0':
-    resolution: {integrity: sha512-1lWWZ/2YiNttGcIUxQwnvMuh55GIEbn/zlpzzEojAsbxquI/TXQZCRaXsfxG1CHjlqGoqxWePkvaM/5qYHNuvQ==}
+  '@types/ramda@0.31.1':
+    resolution: {integrity: sha512-Vt6sFXnuRpzaEj+yeutA0q3bcAsK7wdPuASIzR9LXqL4gJPyFw8im9qchlbp4ltuf3kDEIRmPJTD/Fkg60dn7g==}
 
   '@types/react-color@3.0.13':
     resolution: {integrity: sha512-2c/9FZ4ixC5T3JzN0LP5Cke2Mf0MKOP2Eh0NPDPWmuVH3NjPyhEjqNMQpN1Phr5m74egAy+p2lYNAFrX1z9Yrg==}
@@ -7842,7 +7842,7 @@ snapshots:
 
   '@types/prop-types@15.7.15': {}
 
-  '@types/ramda@0.31.0':
+  '@types/ramda@0.31.1':
     dependencies:
       types-ramda: 0.31.0
 

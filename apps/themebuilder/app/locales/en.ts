@@ -165,6 +165,9 @@ export default {
       'Text and background must have a contrast of at least 3:1 and a font size of 18 px or larger to meet the WCAG AA requirement.',
     'deco-description':
       'Does not meet any WCAG contrast requirements and should only be used for decorative purposes.',
+    'text-vs-background': 'Text and Border against Background and Surface',
+    'text-vs-background-desc':
+      'When you switch between the color scales, you will see that the contrasts between the colors in the section below are almost identical. This means you only need to consider the contrasts for one color scale to understand how all of them work. Since the contrasts are consistent, you can also combine different colors across the scales.',
     'base-colors': 'Base colours',
     'base-colors-description':
       'The colours selected in the tool get the Base Default token in each colour scale. This means it is important to choose a colour that has over 3:1 contrast against surface colours if it is to be used as an important, meaningful colour. The tool also creates two contrast colours that can be safely used on top of the base colours. These contrast colours become either light or dark depending on the base colour.',
