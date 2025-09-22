@@ -52,6 +52,7 @@ const Editor = ({ live, html }: EditorProps) => {
   const activateEditorRef = useRef<HTMLDivElement>(null);
   const [resetCount, setResetCount] = useState(0);
   const [showHTML, setShowHTML] = useState(false);
+  const [copied, setCopied] = useState('');
   const rawHtml = prettify(
     html?.innerHTML.toString() || 'Unable to parse html',
     {
@@ -83,6 +84,15 @@ const Editor = ({ live, html }: EditorProps) => {
     activateEditorRef.current?.focus();
   };
 
+  const copy = async () => {
+  try {
+    await navigator.clipboard.writeText(showHTML ? rawHtml : live.code);
+    setCopied(classes.copied);
+  } catch (error) {
+    throw Error(String(error));
+  }
+}
+
   const handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Tab') {
       return;
@@ -113,14 +123,14 @@ const Editor = ({ live, html }: EditorProps) => {
       <ds.Paragraph className={classes.language}>
         {showHTML ? 'HTML' : 'React'}
       </ds.Paragraph>
-      <ds.ToggleGroup value={showHTML.toString()} onChange={(v)=> setShowHTML(v === 'true' ? true : false)}>
+      <ds.ToggleGroup data-size="sm" value={showHTML.toString()} onChange={(v)=> setShowHTML(v === 'true' ? true : false)}>
         <ds.ToggleGroup.Item value='false'>React</ds.ToggleGroup.Item>
         <ds.ToggleGroup.Item value='true'>HTML</ds.ToggleGroup.Item>
       </ds.ToggleGroup>
       <ds.Button
         data-color='neutral'
         variant='tertiary'
-        className={cl(classes.reset)}
+        className={classes.action}
         onClick={reset}
         data-size='sm'
         /* disabled={live.code === live.newCode} */
@@ -128,6 +138,21 @@ const Editor = ({ live, html }: EditorProps) => {
       >
         <aksel.ArrowsCirclepathIcon />
         Reset
+      </ds.Button>
+      <ds.Button
+        data-color='neutral'
+        variant='tertiary'
+        className={cl(classes.copy, classes.action)}
+        onClick={copy}
+        onMouseOver={() => setCopied('')}
+        data-size='sm'
+        type='button'
+      >
+        <span className={cl(classes.stack, copied)}>
+          <aksel.FilesIcon aria-hidden />
+          <aksel.ClipboardCheckmarkIcon aria-hidden />
+        </span>
+        Copy
       </ds.Button>
       {/* biome-ignore lint/a11y/noStaticElementInteractions: <need to manage keyboard events from here> */}
       <div
@@ -178,7 +203,6 @@ export const LiveComponent = ({ code }: LiveComponentProps) => {
 
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
-        console.log(mutation);
         setColorScheme(
           (mutation.target as HTMLElement).getAttribute('data-color-scheme'),
         );
