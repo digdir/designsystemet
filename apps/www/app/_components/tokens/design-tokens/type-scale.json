@@ -5,7 +5,7 @@
       "1"
     ],
     "variable": "--ds-font-size-1",
-    "value": "round(calc(0.75rem * var(--_ds-font-size-factor)), 1px)"
+    "value": "round(calc(1rem * var(--ds-font-scale-base) / pow(var(--ds-font-scale-ratio), 3)), 1px)"
   },
   {
     "path": [
@@ -13,7 +13,7 @@
       "2"
     ],
     "variable": "--ds-font-size-2",
-    "value": "round(calc(0.875rem * var(--_ds-font-size-factor)), 1px)"
+    "value": "round(calc(1rem * var(--ds-font-scale-base) / pow(var(--ds-font-scale-ratio), 2)), 1px)"
   },
   {
     "path": [
@@ -21,7 +21,7 @@
       "3"
     ],
     "variable": "--ds-font-size-3",
-    "value": "round(calc(1rem * var(--_ds-font-size-factor)), 1px)"
+    "value": "round(calc(1rem * var(--ds-font-scale-base) / pow(var(--ds-font-scale-ratio), 1)), 1px)"
   },
   {
     "path": [
@@ -29,7 +29,7 @@
       "4"
     ],
     "variable": "--ds-font-size-4",
-    "value": "round(calc(1.125rem * var(--_ds-font-size-factor)), 1px)"
+    "value": "round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 0)), 1px)"
   },
   {
     "path": [
@@ -37,7 +37,7 @@
       "5"
     ],
     "variable": "--ds-font-size-5",
-    "value": "round(calc(1.3125rem * var(--_ds-font-size-factor)), 1px)"
+    "value": "round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 1)), 1px)"
   },
   {
     "path": [
@@ -45,7 +45,7 @@
       "6"
     ],
     "variable": "--ds-font-size-6",
-    "value": "round(calc(1.5rem * var(--_ds-font-size-factor)), 1px)"
+    "value": "round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 2)), 1px)"
   },
   {
     "path": [
@@ -53,7 +53,7 @@
       "7"
     ],
     "variable": "--ds-font-size-7",
-    "value": "round(calc(1.875rem * var(--_ds-font-size-factor)), 1px)"
+    "value": "round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 3)), 1px)"
   },
   {
     "path": [
@@ -61,7 +61,7 @@
       "8"
     ],
     "variable": "--ds-font-size-8",
-    "value": "round(calc(2.25rem * var(--_ds-font-size-factor)), 1px)"
+    "value": "round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 5)), 1px)"
   },
   {
     "path": [
@@ -69,7 +69,7 @@
       "9"
     ],
     "variable": "--ds-font-size-9",
-    "value": "round(calc(3rem * var(--_ds-font-size-factor)), 1px)"
+    "value": "round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 7)), 1px)"
   },
   {
     "path": [
@@ -77,7 +77,7 @@
       "10"
     ],
     "variable": "--ds-font-size-10",
-    "value": "round(calc(3.75rem * var(--_ds-font-size-factor)), 1px)"
+    "value": "round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 9)), 1px)"
   },
   {
     "path": [
