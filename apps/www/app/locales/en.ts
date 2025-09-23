@@ -199,5 +199,5 @@ export default {
     title: 'Contents',
   },
   contributors: 'Contributors',
-  editOnGithub: 'Edit this page on GitHub (opens in a new tab)',
+  editOnGithub: 'Edit this page on github.com (opens in a new tab)',
 } satisfies typeof no;
