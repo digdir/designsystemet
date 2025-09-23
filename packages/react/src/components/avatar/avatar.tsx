@@ -6,13 +6,17 @@ import { Fragment, forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
+type AriaLabel = {
+  /**
+   * The name of the person the avatar represents.
+   */
+  'aria-label': string;
+};
+type AriaHidden = Partial<AriaLabel> & { 'aria-hidden': true | 'true' };
+
 export type AvatarProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLSpanElement>,
-  {
-    /**
-     * The name of the person the avatar represents.
-     */
-    'aria-label': string;
+  (AriaLabel | AriaHidden) & {
     /**
      * The size of the avatar.
      */
