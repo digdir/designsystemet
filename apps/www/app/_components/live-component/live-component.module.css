@@ -34,6 +34,11 @@
       }
     }
   }
+  & .themeToggle {
+    font-size: var(--ds-font-size-3);
+    border-radius: 0;
+    border-bottom-left-radius: var(--_br);
+  }
 }
 .editorOuterWrapper {
   --_br: var(--ds-border-radius-lg);

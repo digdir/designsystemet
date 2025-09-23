@@ -17,6 +17,7 @@ import {
   LiveProvider,
   withLive,
 } from 'react-live';
+import { useLocation } from 'react-router';
 import classes from './live-component.module.css';
 
 const scopes = {
@@ -195,9 +196,15 @@ const EditorWithLive = withLive(Editor) as ComponentType<{
 }>;
 
 export const LiveComponent = ({ code }: LiveComponentProps) => {
+  const location = useLocation();
   const [showEditor, setShowEditor] = useState(false);
   const [colorScheme, setColorScheme] = useState<string | null>('dark');
+  const [invertedColorScheme, setInvertedColorScheme] = useState<string | null>(
+    'light',
+  );
+  const [useInverted, setUseInverted] = useState(false);
   const [html, setHtml] = useState<HTMLElement | null>(null);
+  const finalColorScheme = useInverted ? invertedColorScheme : colorScheme;
 
   useEffect(() => {
     // Set initial color scheme
@@ -207,9 +214,15 @@ export const LiveComponent = ({ code }: LiveComponentProps) => {
 
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
-        setColorScheme(
-          (mutation.target as HTMLElement).getAttribute('data-color-scheme'),
-        );
+        const currentColorScheme = (
+          mutation.target as HTMLElement
+        ).getAttribute('data-color-scheme');
+        setColorScheme(currentColorScheme);
+        if (currentColorScheme === 'dark') {
+          setInvertedColorScheme('light');
+        } else {
+          setInvertedColorScheme('dark');
+        }
       });
     });
 
@@ -222,7 +235,7 @@ export const LiveComponent = ({ code }: LiveComponentProps) => {
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [location]);
 
   return (
     <LiveProvider
@@ -231,8 +244,28 @@ export const LiveComponent = ({ code }: LiveComponentProps) => {
       noInline
       theme={colorScheme === 'dark' ? themes.vsDark : themes.vsLight}
     >
-      <div className={classes.preview} data-color='accent' data-live='true'>
+      <div
+        className={classes.preview}
+        data-color='accent'
+        data-live='true'
+        data-color-scheme={finalColorScheme}
+      >
         <LivePreview className={classes['live-preview']} ref={setHtml} />
+        <ds.Button
+          data-color='neutral'
+          data-size='sm'
+          variant='tertiary'
+          icon
+          onClick={() => setUseInverted((v) => !v)}
+          aria-pressed={useInverted}
+          className={classes.themeToggle}
+        >
+          {finalColorScheme === 'dark' ? (
+            <aksel.SunIcon aria-hidden />
+          ) : (
+            <aksel.MoonIcon aria-hidden />
+          )}
+        </ds.Button>
         <ds.Button
           data-color='neutral'
           data-size='sm'
