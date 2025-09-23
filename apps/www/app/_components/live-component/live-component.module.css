@@ -51,7 +51,7 @@
     margin-block: var(--ds-size-2);
     margin-inline-end: var(--ds-size-3);
     font-size: var(--ds-font-size-3);
-    > [data-variant="primary"] {
+    > [data-variant='primary'] {
       --dsc-button-color: var(--ds-color-text-default);
       --dsc-button-color--hover: var(--ds-color-text-default);
       --dsc-button-background--active: var(--ds-color-surface-active);
@@ -123,13 +123,13 @@
 }
 
 .action {
-   align-self: stretch;
-   height: unset;
-   border-radius: 0;
-   font-size: var(--ds-font-size-3);
-   font-weight: var(--ds-font-weight-regular);
-   z-index: 1;
-   --dsc-button-padding: var(--ds-size-2);
+  align-self: stretch;
+  height: unset;
+  border-radius: 0;
+  font-size: var(--ds-font-size-3);
+  font-weight: var(--ds-font-weight-regular);
+  z-index: 1;
+  --dsc-button-padding: var(--ds-size-2);
 }
 .copy {
   border-top-right-radius: var(--_br);
@@ -154,7 +154,7 @@
     }
     > :nth-child(2) {
       display: block;
-      transition: .3s ease all;
+      transition: 0.3s ease all;
       @starting-style {
         opacity: 0.5;
         transform: scale(3);

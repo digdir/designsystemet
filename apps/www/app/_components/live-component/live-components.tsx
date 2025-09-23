@@ -85,13 +85,13 @@ const Editor = ({ live, html }: EditorProps) => {
   };
 
   const copy = async () => {
-  try {
-    await navigator.clipboard.writeText(showHTML ? rawHtml : live.code);
-    setCopied(classes.copied);
-  } catch (error) {
-    throw Error(String(error));
-  }
-}
+    try {
+      await navigator.clipboard.writeText(showHTML ? rawHtml : live.code);
+      setCopied(classes.copied);
+    } catch (error) {
+      throw Error(String(error));
+    }
+  };
 
   const handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Tab') {
@@ -123,7 +123,11 @@ const Editor = ({ live, html }: EditorProps) => {
       <ds.Paragraph className={classes.language}>
         {showHTML ? 'HTML' : 'React'}
       </ds.Paragraph>
-      <ds.ToggleGroup data-size="sm" value={showHTML.toString()} onChange={(v)=> setShowHTML(v === 'true' ? true : false)}>
+      <ds.ToggleGroup
+        data-size='sm'
+        value={showHTML.toString()}
+        onChange={(v) => setShowHTML(v === 'true')}
+      >
         <ds.ToggleGroup.Item value='false'>React</ds.ToggleGroup.Item>
         <ds.ToggleGroup.Item value='true'>HTML</ds.ToggleGroup.Item>
       </ds.ToggleGroup>
