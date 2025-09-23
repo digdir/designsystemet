@@ -14,7 +14,7 @@ export type SpinnerProps = {
   'data-size'?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 } & ComponentPropsWithoutRef<'svg'> &
   (
-    | { 'aria-label': string; 'aria-hidden'?: never }
+    | { 'aria-label': string }
     | { 'aria-label'?: string; 'aria-hidden': true | 'true' } // Make aria-label optional when aria-hidden is true
   );
 
