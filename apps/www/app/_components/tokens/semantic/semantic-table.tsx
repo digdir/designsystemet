@@ -29,7 +29,7 @@ const groupedByPathIndex = (index = 0) =>
   groupBy((token: PreviewToken) => token.path[index] || 'rest');
 
 const getValuePreview = (variable: string, value: string, size?: string) => {
-  if (/^--ds-size.*\d$/.test(variable)) {
+  if (/^--ds-size.*(\d+|unit)$/.test(variable)) {
     return <SizePreview value={value} size={size} />;
   }
   if (/^--ds-border-radius(?!.*(scale|base)$)/.test(variable)) {
