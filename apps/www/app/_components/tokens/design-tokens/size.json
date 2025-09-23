@@ -181,6 +181,6 @@
       "unit"
     ],
     "variable": "--ds-size-unit",
-    "value": "calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size))"
+    "value": "calc(1rem * var(--ds-size-step) / (var(--ds-size-base) * var(--ds-size-mode-font-size)))"
   }
 ]
