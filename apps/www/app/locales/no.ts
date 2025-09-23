@@ -198,5 +198,5 @@ export default {
     title: 'Innhold',
   },
   contributors: 'Bidragsytere',
-  editOnGithub: 'Rediger denne siden på GitHub (åpnes i ny fane)',
+  editOnGithub: 'Rediger denne siden på github.com (åpnes i ny fane)',
 };
