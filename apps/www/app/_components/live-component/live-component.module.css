@@ -1,5 +1,5 @@
 .preview {
-  --_br: var(--ds-border-radius-xl);
+  --_br: var(--ds-border-radius-lg);
   border-radius: var(--_br);
   border: 1px solid var(--ds-color-neutral-border-subtle);
   display: grid;
@@ -36,7 +36,7 @@
   }
 }
 .editorOuterWrapper {
-  --_br: var(--ds-border-radius-xl);
+  --_br: var(--ds-border-radius-lg);
   border-radius: var(--_br);
   border: 1px solid var(--ds-color-neutral-border-subtle);
   background-color: var(--ds-color-neutral-background-tinted);

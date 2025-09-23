@@ -1,4 +1,5 @@
 import { Table } from '@digdir/designsystemet-react';
+import cl from 'clsx';
 import { forwardRef } from 'react';
 
 type CssVariablesProps = {
@@ -8,10 +9,13 @@ type CssVariablesProps = {
 } & React.HTMLAttributes<HTMLTableElement>;
 
 export const CssVariables = forwardRef<HTMLTableElement, CssVariablesProps>(
-  function CssVariables({ vars, ...rest }, ref) {
+  function CssVariables({ vars, className, ...rest }, ref) {
     return (
       <Table
         zebra
+        className={cl('component-table', className)}
+        data-color='accent'
+        border
         style={{
           tableLayout: 'fixed',
         }}

@@ -1,4 +1,5 @@
 import { Table } from '@digdir/designsystemet-react';
+import cl from 'clsx';
 import { forwardRef } from 'react';
 
 type CssAttributesProps = {
@@ -8,11 +9,14 @@ type CssAttributesProps = {
 } & React.HTMLAttributes<HTMLTableElement>;
 
 export const CssAttributes = forwardRef<HTMLTableElement, CssAttributesProps>(
-  function CssAttributes({ vars, ...rest }, ref) {
+  function CssAttributes({ vars, className, ...rest }, ref) {
     if (Object.keys(vars).length === 0) return null;
     return (
       <Table
+        className={cl('component-table', className)}
+        data-color='accent'
         zebra
+        border
         style={{
           tableLayout: 'fixed',
         }}

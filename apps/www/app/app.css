@@ -232,6 +232,13 @@ body {
     }
   }
 }
+@layer global-components {
+  .component-table {
+    --dsc-table-border-radius: var(--ds-border-radius-lg);
+    border-collapse: separate;
+    word-break: break-all;
+  }
+}
 @layer overrides {
   .ds-skip-link:focus {
     position: relative;
