@@ -244,13 +244,12 @@ export const LiveComponent = ({ code }: LiveComponentProps) => {
       noInline
       theme={colorScheme === 'dark' ? themes.vsDark : themes.vsLight}
     >
-      <div
-        className={classes.preview}
-        data-color='accent'
-        data-live='true'
-        data-color-scheme={finalColorScheme}
-      >
-        <LivePreview className={classes['live-preview']} ref={setHtml} />
+      <div className={classes.preview} data-color='accent' data-live='true'>
+        <LivePreview
+          data-color-scheme={finalColorScheme}
+          className={classes['live-preview']}
+          ref={setHtml}
+        />
         <ds.Button
           data-color='neutral'
           data-size='sm'
@@ -259,6 +258,7 @@ export const LiveComponent = ({ code }: LiveComponentProps) => {
           onClick={() => setUseInverted((v) => !v)}
           aria-pressed={useInverted}
           className={classes.themeToggle}
+          aria-label='Invert color scheme'
         >
           {finalColorScheme === 'dark' ? (
             <aksel.SunIcon aria-hidden />
