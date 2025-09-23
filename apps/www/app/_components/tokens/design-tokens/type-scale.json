@@ -4,80 +4,80 @@
       "font-size",
       "1"
     ],
-    "variable": "--ds-font-size-1",
-    "value": "round(calc(1rem * var(--ds-font-scale-base) / pow(var(--ds-font-scale-ratio), 3)), 1px)"
+    "variable": "--ds-font-size-1--sm",
+    "value": "0.6875rem"
   },
   {
     "path": [
       "font-size",
       "2"
     ],
-    "variable": "--ds-font-size-2",
-    "value": "round(calc(1rem * var(--ds-font-scale-base) / pow(var(--ds-font-scale-ratio), 2)), 1px)"
+    "variable": "--ds-font-size-2--sm",
+    "value": "0.8125rem"
   },
   {
     "path": [
       "font-size",
       "3"
     ],
-    "variable": "--ds-font-size-3",
-    "value": "round(calc(1rem * var(--ds-font-scale-base) / pow(var(--ds-font-scale-ratio), 1)), 1px)"
+    "variable": "--ds-font-size-3--sm",
+    "value": "0.875rem"
   },
   {
     "path": [
       "font-size",
       "4"
     ],
-    "variable": "--ds-font-size-4",
-    "value": "round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 0)), 1px)"
+    "variable": "--ds-font-size-4--sm",
+    "value": "1rem"
   },
   {
     "path": [
       "font-size",
       "5"
     ],
-    "variable": "--ds-font-size-5",
-    "value": "round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 1)), 1px)"
+    "variable": "--ds-font-size-5--sm",
+    "value": "1.125rem"
   },
   {
     "path": [
       "font-size",
       "6"
     ],
-    "variable": "--ds-font-size-6",
-    "value": "round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 2)), 1px)"
+    "variable": "--ds-font-size-6--sm",
+    "value": "1.25rem"
   },
   {
     "path": [
       "font-size",
       "7"
     ],
-    "variable": "--ds-font-size-7",
-    "value": "round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 3)), 1px)"
+    "variable": "--ds-font-size-7--sm",
+    "value": "1.4375rem"
   },
   {
     "path": [
       "font-size",
       "8"
     ],
-    "variable": "--ds-font-size-8",
-    "value": "round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 5)), 1px)"
+    "variable": "--ds-font-size-8--sm",
+    "value": "1.875rem"
   },
   {
     "path": [
       "font-size",
       "9"
     ],
-    "variable": "--ds-font-size-9",
-    "value": "round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 7)), 1px)"
+    "variable": "--ds-font-size-9--sm",
+    "value": "2.375rem"
   },
   {
     "path": [
       "font-size",
       "10"
     ],
-    "variable": "--ds-font-size-10",
-    "value": "round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 9)), 1px)"
+    "variable": "--ds-font-size-10--sm",
+    "value": "3rem"
   },
   {
     "path": [
@@ -86,7 +86,7 @@
       "2xl",
       "fontSize"
     ],
-    "variable": "--ds-heading-2xl-font-size",
+    "variable": "--ds-heading-2xl-font-size--sm",
     "value": "var(--ds-font-size-10)"
   },
   {
@@ -96,7 +96,7 @@
       "xl",
       "fontSize"
     ],
-    "variable": "--ds-heading-xl-font-size",
+    "variable": "--ds-heading-xl-font-size--sm",
     "value": "var(--ds-font-size-9)"
   },
   {
@@ -106,7 +106,7 @@
       "lg",
       "fontSize"
     ],
-    "variable": "--ds-heading-lg-font-size",
+    "variable": "--ds-heading-lg-font-size--sm",
     "value": "var(--ds-font-size-8)"
   },
   {
@@ -116,7 +116,7 @@
       "md",
       "fontSize"
     ],
-    "variable": "--ds-heading-md-font-size",
+    "variable": "--ds-heading-md-font-size--sm",
     "value": "var(--ds-font-size-7)"
   },
   {
@@ -126,7 +126,7 @@
       "sm",
       "fontSize"
     ],
-    "variable": "--ds-heading-sm-font-size",
+    "variable": "--ds-heading-sm-font-size--sm",
     "value": "var(--ds-font-size-6)"
   },
   {
@@ -136,7 +136,7 @@
       "xs",
       "fontSize"
     ],
-    "variable": "--ds-heading-xs-font-size",
+    "variable": "--ds-heading-xs-font-size--sm",
     "value": "var(--ds-font-size-5)"
   },
   {
@@ -146,7 +146,7 @@
       "2xs",
       "fontSize"
     ],
-    "variable": "--ds-heading-2xs-font-size",
+    "variable": "--ds-heading-2xs-font-size--sm",
     "value": "var(--ds-font-size-4)"
   },
   {
@@ -156,7 +156,7 @@
       "xl",
       "fontSize"
     ],
-    "variable": "--ds-body-xl-font-size",
+    "variable": "--ds-body-xl-font-size--sm",
     "value": "var(--ds-font-size-6)"
   },
   {
@@ -166,7 +166,7 @@
       "lg",
       "fontSize"
     ],
-    "variable": "--ds-body-lg-font-size",
+    "variable": "--ds-body-lg-font-size--sm",
     "value": "var(--ds-font-size-5)"
   },
   {
@@ -176,7 +176,7 @@
       "md",
       "fontSize"
     ],
-    "variable": "--ds-body-md-font-size",
+    "variable": "--ds-body-md-font-size--sm",
     "value": "var(--ds-font-size-4)"
   },
   {
@@ -186,7 +186,7 @@
       "sm",
       "fontSize"
     ],
-    "variable": "--ds-body-sm-font-size",
+    "variable": "--ds-body-sm-font-size--sm",
     "value": "var(--ds-font-size-3)"
   },
   {
@@ -196,7 +196,7 @@
       "xs",
       "fontSize"
     ],
-    "variable": "--ds-body-xs-font-size",
+    "variable": "--ds-body-xs-font-size--sm",
     "value": "var(--ds-font-size-2)"
   },
   {
@@ -207,7 +207,7 @@
       "xl",
       "fontSize"
     ],
-    "variable": "--ds-body-short-xl-font-size",
+    "variable": "--ds-body-short-xl-font-size--sm",
     "value": "var(--ds-font-size-6)"
   },
   {
@@ -218,7 +218,7 @@
       "lg",
       "fontSize"
     ],
-    "variable": "--ds-body-short-lg-font-size",
+    "variable": "--ds-body-short-lg-font-size--sm",
     "value": "var(--ds-font-size-5)"
   },
   {
@@ -229,7 +229,7 @@
       "md",
       "fontSize"
     ],
-    "variable": "--ds-body-short-md-font-size",
+    "variable": "--ds-body-short-md-font-size--sm",
     "value": "var(--ds-font-size-4)"
   },
   {
@@ -240,7 +240,7 @@
       "sm",
       "fontSize"
     ],
-    "variable": "--ds-body-short-sm-font-size",
+    "variable": "--ds-body-short-sm-font-size--sm",
     "value": "var(--ds-font-size-3)"
   },
   {
@@ -251,7 +251,7 @@
       "xs",
       "fontSize"
     ],
-    "variable": "--ds-body-short-xs-font-size",
+    "variable": "--ds-body-short-xs-font-size--sm",
     "value": "var(--ds-font-size-2)"
   },
   {
@@ -262,7 +262,7 @@
       "xl",
       "fontSize"
     ],
-    "variable": "--ds-body-long-xl-font-size",
+    "variable": "--ds-body-long-xl-font-size--sm",
     "value": "var(--ds-font-size-6)"
   },
   {
@@ -273,7 +273,7 @@
       "lg",
       "fontSize"
     ],
-    "variable": "--ds-body-long-lg-font-size",
+    "variable": "--ds-body-long-lg-font-size--sm",
     "value": "var(--ds-font-size-5)"
   },
   {
@@ -284,7 +284,7 @@
       "md",
       "fontSize"
     ],
-    "variable": "--ds-body-long-md-font-size",
+    "variable": "--ds-body-long-md-font-size--sm",
     "value": "var(--ds-font-size-4)"
   },
   {
@@ -295,7 +295,7 @@
       "sm",
       "fontSize"
     ],
-    "variable": "--ds-body-long-sm-font-size",
+    "variable": "--ds-body-long-sm-font-size--sm",
     "value": "var(--ds-font-size-3)"
   },
   {
@@ -306,7 +306,7 @@
       "xs",
       "fontSize"
     ],
-    "variable": "--ds-body-long-xs-font-size",
+    "variable": "--ds-body-long-xs-font-size--sm",
     "value": "var(--ds-font-size-2)"
   }
 ]

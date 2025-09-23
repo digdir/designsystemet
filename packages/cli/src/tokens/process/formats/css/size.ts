@@ -63,11 +63,15 @@ const formatSizingTokens = (format: (t: TransformedToken) => string, tokens: Tra
 
 export const sizingTemplate = ({ round, calc }: { round: string[]; calc: string[] }) => {
   const usesRounding = round.filter((val, i) => val !== calc[i]);
-  return `
-${calc.join('\n')}\n
+  const supportsRoundCss = usesRounding.length
+    ? `\n
   @supports (width: round(down, .1em, 1px)) {
   ${usesRounding.join('\n  ')}
-  }`;
+  }`
+    : '';
+
+  return `
+${calc.join('\n')}${supportsRoundCss}`;
 };
 
 export const size: Format = {

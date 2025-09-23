@@ -55,51 +55,110 @@ design-tokens: v1.5.1
 
 @layer ds.theme.type-scale {
 :root, [data-size] {
-  --ds-font-size-1: calc(1rem * var(--ds-font-scale-base) / pow(var(--ds-font-scale-ratio), 3));
-  --ds-font-size-2: calc(1rem * var(--ds-font-scale-base) / pow(var(--ds-font-scale-ratio), 2));
-  --ds-font-size-3: calc(1rem * var(--ds-font-scale-base) / pow(var(--ds-font-scale-ratio), 1));
-  --ds-font-size-4: calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 0));
-  --ds-font-size-5: calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 1));
-  --ds-font-size-6: calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 2));
-  --ds-font-size-7: calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 3));
-  --ds-font-size-8: calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 5));
-  --ds-font-size-9: calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 7));
-  --ds-font-size-10: calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 9));
-  --ds-heading-2xl-font-size: var(--ds-font-size-10);
-  --ds-heading-xl-font-size: var(--ds-font-size-9);
-  --ds-heading-lg-font-size: var(--ds-font-size-8);
-  --ds-heading-md-font-size: var(--ds-font-size-7);
-  --ds-heading-sm-font-size: var(--ds-font-size-6);
-  --ds-heading-xs-font-size: var(--ds-font-size-5);
-  --ds-heading-2xs-font-size: var(--ds-font-size-4);
-  --ds-body-xl-font-size: var(--ds-font-size-6);
-  --ds-body-lg-font-size: var(--ds-font-size-5);
-  --ds-body-md-font-size: var(--ds-font-size-4);
-  --ds-body-sm-font-size: var(--ds-font-size-3);
-  --ds-body-xs-font-size: var(--ds-font-size-2);
-  --ds-body-short-xl-font-size: var(--ds-font-size-6);
-  --ds-body-short-lg-font-size: var(--ds-font-size-5);
-  --ds-body-short-md-font-size: var(--ds-font-size-4);
-  --ds-body-short-sm-font-size: var(--ds-font-size-3);
-  --ds-body-short-xs-font-size: var(--ds-font-size-2);
-  --ds-body-long-xl-font-size: var(--ds-font-size-6);
-  --ds-body-long-lg-font-size: var(--ds-font-size-5);
-  --ds-body-long-md-font-size: var(--ds-font-size-4);
-  --ds-body-long-sm-font-size: var(--ds-font-size-3);
-  --ds-body-long-xs-font-size: var(--ds-font-size-2);
-
-  @supports (width: round(down, .1em, 1px)) {
-    --ds-font-size-1: round(calc(1rem * var(--ds-font-scale-base) / pow(var(--ds-font-scale-ratio), 3)), 1px);
-    --ds-font-size-2: round(calc(1rem * var(--ds-font-scale-base) / pow(var(--ds-font-scale-ratio), 2)), 1px);
-    --ds-font-size-3: round(calc(1rem * var(--ds-font-scale-base) / pow(var(--ds-font-scale-ratio), 1)), 1px);
-    --ds-font-size-4: round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 0)), 1px);
-    --ds-font-size-5: round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 1)), 1px);
-    --ds-font-size-6: round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 2)), 1px);
-    --ds-font-size-7: round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 3)), 1px);
-    --ds-font-size-8: round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 5)), 1px);
-    --ds-font-size-9: round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 7)), 1px);
-    --ds-font-size-10: round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 9)), 1px);
-  }
+  --ds-font-size-1--md: 0.75rem;
+  --ds-font-size-2--md: 0.875rem;
+  --ds-font-size-3--md: 1rem;
+  --ds-font-size-4--md: 1.125rem;
+  --ds-font-size-5--md: 1.3125rem;
+  --ds-font-size-6--md: 1.5rem;
+  --ds-font-size-7--md: 1.6875rem;
+  --ds-font-size-8--md: 2.1875rem;
+  --ds-font-size-9--md: 2.875rem;
+  --ds-font-size-10--md: 3.75rem;
+  --ds-heading-2xl-font-size--md: var(--ds-font-size-10);
+  --ds-heading-xl-font-size--md: var(--ds-font-size-9);
+  --ds-heading-lg-font-size--md: var(--ds-font-size-8);
+  --ds-heading-md-font-size--md: var(--ds-font-size-7);
+  --ds-heading-sm-font-size--md: var(--ds-font-size-6);
+  --ds-heading-xs-font-size--md: var(--ds-font-size-5);
+  --ds-heading-2xs-font-size--md: var(--ds-font-size-4);
+  --ds-body-xl-font-size--md: var(--ds-font-size-6);
+  --ds-body-lg-font-size--md: var(--ds-font-size-5);
+  --ds-body-md-font-size--md: var(--ds-font-size-4);
+  --ds-body-sm-font-size--md: var(--ds-font-size-3);
+  --ds-body-xs-font-size--md: var(--ds-font-size-2);
+  --ds-body-short-xl-font-size--md: var(--ds-font-size-6);
+  --ds-body-short-lg-font-size--md: var(--ds-font-size-5);
+  --ds-body-short-md-font-size--md: var(--ds-font-size-4);
+  --ds-body-short-sm-font-size--md: var(--ds-font-size-3);
+  --ds-body-short-xs-font-size--md: var(--ds-font-size-2);
+  --ds-body-long-xl-font-size--md: var(--ds-font-size-6);
+  --ds-body-long-lg-font-size--md: var(--ds-font-size-5);
+  --ds-body-long-md-font-size--md: var(--ds-font-size-4);
+  --ds-body-long-sm-font-size--md: var(--ds-font-size-3);
+  --ds-body-long-xs-font-size--md: var(--ds-font-size-2);
+}
+}
+@layer ds.theme.type-scale {
+:root, [data-size] {
+  --ds-font-size-1--lg: 0.875rem;
+  --ds-font-size-2--lg: 1rem;
+  --ds-font-size-3--lg: 1.125rem;
+  --ds-font-size-4--lg: 1.3125rem;
+  --ds-font-size-5--lg: 1.5rem;
+  --ds-font-size-6--lg: 1.75rem;
+  --ds-font-size-7--lg: 2rem;
+  --ds-font-size-8--lg: 2.625rem;
+  --ds-font-size-9--lg: 3.4375rem;
+  --ds-font-size-10--lg: 4.5rem;
+  --ds-heading-2xl-font-size--lg: var(--ds-font-size-10);
+  --ds-heading-xl-font-size--lg: var(--ds-font-size-9);
+  --ds-heading-lg-font-size--lg: var(--ds-font-size-8);
+  --ds-heading-md-font-size--lg: var(--ds-font-size-7);
+  --ds-heading-sm-font-size--lg: var(--ds-font-size-6);
+  --ds-heading-xs-font-size--lg: var(--ds-font-size-5);
+  --ds-heading-2xs-font-size--lg: var(--ds-font-size-4);
+  --ds-body-xl-font-size--lg: var(--ds-font-size-6);
+  --ds-body-lg-font-size--lg: var(--ds-font-size-5);
+  --ds-body-md-font-size--lg: var(--ds-font-size-4);
+  --ds-body-sm-font-size--lg: var(--ds-font-size-3);
+  --ds-body-xs-font-size--lg: var(--ds-font-size-2);
+  --ds-body-short-xl-font-size--lg: var(--ds-font-size-6);
+  --ds-body-short-lg-font-size--lg: var(--ds-font-size-5);
+  --ds-body-short-md-font-size--lg: var(--ds-font-size-4);
+  --ds-body-short-sm-font-size--lg: var(--ds-font-size-3);
+  --ds-body-short-xs-font-size--lg: var(--ds-font-size-2);
+  --ds-body-long-xl-font-size--lg: var(--ds-font-size-6);
+  --ds-body-long-lg-font-size--lg: var(--ds-font-size-5);
+  --ds-body-long-md-font-size--lg: var(--ds-font-size-4);
+  --ds-body-long-sm-font-size--lg: var(--ds-font-size-3);
+  --ds-body-long-xs-font-size--lg: var(--ds-font-size-2);
+}
+}
+@layer ds.theme.type-scale {
+:root, [data-size] {
+  --ds-font-size-1--sm: 0.6875rem;
+  --ds-font-size-2--sm: 0.8125rem;
+  --ds-font-size-3--sm: 0.875rem;
+  --ds-font-size-4--sm: 1rem;
+  --ds-font-size-5--sm: 1.125rem;
+  --ds-font-size-6--sm: 1.25rem;
+  --ds-font-size-7--sm: 1.4375rem;
+  --ds-font-size-8--sm: 1.875rem;
+  --ds-font-size-9--sm: 2.375rem;
+  --ds-font-size-10--sm: 3rem;
+  --ds-heading-2xl-font-size--sm: var(--ds-font-size-10);
+  --ds-heading-xl-font-size--sm: var(--ds-font-size-9);
+  --ds-heading-lg-font-size--sm: var(--ds-font-size-8);
+  --ds-heading-md-font-size--sm: var(--ds-font-size-7);
+  --ds-heading-sm-font-size--sm: var(--ds-font-size-6);
+  --ds-heading-xs-font-size--sm: var(--ds-font-size-5);
+  --ds-heading-2xs-font-size--sm: var(--ds-font-size-4);
+  --ds-body-xl-font-size--sm: var(--ds-font-size-6);
+  --ds-body-lg-font-size--sm: var(--ds-font-size-5);
+  --ds-body-md-font-size--sm: var(--ds-font-size-4);
+  --ds-body-sm-font-size--sm: var(--ds-font-size-3);
+  --ds-body-xs-font-size--sm: var(--ds-font-size-2);
+  --ds-body-short-xl-font-size--sm: var(--ds-font-size-6);
+  --ds-body-short-lg-font-size--sm: var(--ds-font-size-5);
+  --ds-body-short-md-font-size--sm: var(--ds-font-size-4);
+  --ds-body-short-sm-font-size--sm: var(--ds-font-size-3);
+  --ds-body-short-xs-font-size--sm: var(--ds-font-size-2);
+  --ds-body-long-xl-font-size--sm: var(--ds-font-size-6);
+  --ds-body-long-lg-font-size--sm: var(--ds-font-size-5);
+  --ds-body-long-md-font-size--sm: var(--ds-font-size-4);
+  --ds-body-long-sm-font-size--sm: var(--ds-font-size-3);
+  --ds-body-long-xs-font-size--sm: var(--ds-font-size-2);
 }
 }
 @layer ds.theme.color-scheme.light {
