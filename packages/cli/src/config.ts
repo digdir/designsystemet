@@ -2,6 +2,7 @@ import pc from 'picocolors';
 import * as R from 'ramda';
 import { z } from 'zod';
 import { fromError } from 'zod-validation-error';
+import { colorNameArr } from './colors/colorMetadata.js';
 import { convertToHex } from './colors/index.js';
 import { RESERVED_COLORS } from './colors/theme.js';
 import { cliOptions } from './tokens/create.js';
@@ -122,7 +123,7 @@ const colorModeOverrideSchema = z
   .describe('Override values for semantic color tokens like "background-subtle", "border-default", etc.');
 
 const colorWeightOverrideSchema = z
-  .record(z.string(), colorModeOverrideSchema)
+  .record(z.enum(colorNameArr), colorModeOverrideSchema)
   .describe('The name of the color to add overrides for, e.g. "accent"');
 
 const semanticColorOverrideSchema = z
