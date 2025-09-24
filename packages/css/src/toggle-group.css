@@ -37,6 +37,7 @@
       --dsc-button-color: var(--ds-color-text-default);
       --dsc-button-color--hover: var(--ds-color-text-default);
       border-radius: var(--dsc-togglegroup-border-radius);
+      min-height: calc(var(--dsc-togglegroup-button-size) + (var(--dsc-togglegroup-border-width) * 2));
     }
     button[aria-checked='true'] {
       isolation: isolate;
