@@ -114,25 +114,21 @@ const colorCategorySchema = z
   })
   .describe('An object with one or more color definitions. The property name is used as the color name.');
 
-// Schema for color overrides in light/dark modes
 const colorModeOverrideSchema = z
   .object({
     light: colorSchema.optional(),
     dark: colorSchema.optional(),
   })
-  .describe('Override values for light and dark color modes');
-
-// Schema for weight-based color overrides (e.g., background-subtle.1, background-subtle.2)
-const colorWeightOverrideSchema = z
-  .record(z.union([z.string(), z.number()]), colorModeOverrideSchema)
-  .describe('Override values for different color weights (1-16)');
-
-// Schema for semantic color overrides
-const semanticColorOverrideSchema = z
-  .record(z.string(), colorWeightOverrideSchema)
   .describe('Override values for semantic color tokens like "background-subtle", "border-default", etc.');
 
-// Schema for the overrides object
+const colorWeightOverrideSchema = z
+  .record(z.string(), colorModeOverrideSchema)
+  .describe('The name of the color to add overrides for, e.g. "accent"');
+
+const semanticColorOverrideSchema = z
+  .record(z.string(), colorWeightOverrideSchema)
+  .describe('An object with color names as keys');
+
 const overridesSchema = z
   .object({
     colors: semanticColorOverrideSchema.optional(),

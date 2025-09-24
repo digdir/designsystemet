@@ -23,14 +23,14 @@
       "borderRadius": 8,
       "overrides": {
         "colors": {
-          "accent": {
+          "dominant": {
             "background-default": {
               "light": "#ff0000",
-              "dark": "#001122"
+              "dark": "#000fff"
             },
             "background-tinted": {
-              "light": "#e6f3ff",
-              "dark": "#002244"
+              "light": "#f0ff00",
+              "dark": "#ff00ff"
             }
           }
         }

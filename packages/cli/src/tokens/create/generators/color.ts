@@ -1,9 +1,9 @@
 import * as R from 'ramda';
+import { colorMetadata } from '../../../colors/colorMetadata.js';
 import { baseColors, generateColorScale } from '../../../colors/index.js';
 import type { Color, ColorScheme } from '../../../colors/types.js';
 import type { ColorOverrideSchema } from '../../../config.js';
 import type { Colors, TokenSet } from '../../types.js';
-import { SEMANTIC_TOKEN_TO_SCALE_POSITION } from '../semantic-mapping.js';
 
 const generateColor = (colorArray: Color[], overrides?: Record<number, string>): TokenSet => {
   const obj: TokenSet = {};
@@ -25,7 +25,7 @@ export const generateColorScheme = (
   colors: Colors,
   overrides?: ColorOverrideSchema,
 ): TokenSet => {
-  // Create override mappings for each color
+  /* Create override mappings for each color */
   const createColorOverrides = (colorName: string) => {
     if (!overrides?.colors || !(colorName in overrides.colors)) {
       return undefined;
@@ -36,7 +36,7 @@ export const generateColorScheme = (
 
     // Map semantic token names to color scale positions
     Object.entries(colorOverrides).forEach(([semanticTokenName, modeOverrides]) => {
-      const position = SEMANTIC_TOKEN_TO_SCALE_POSITION[semanticTokenName];
+      const position = colorMetadata[semanticTokenName as keyof typeof colorMetadata].number;
       if (position) {
         let overrideValue: string | undefined;
 
