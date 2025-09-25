@@ -27,9 +27,7 @@ export const ToggleGroupItem = forwardRef<
       <Button
         variant={
           active
-            ? variant === 'primary'
-              ? 'primary'
-              : 'secondary'
+            ? variant
             : 'tertiary'
         }
         ref={ref}
