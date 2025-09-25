@@ -4,9 +4,10 @@
   --dsc-togglegroup-background: var(--ds-color-surface-default);
   --dsc-togglegroup-border-width: var(--ds-border-width-default);
   --dsc-togglegroup-border-style: solid;
-  --dsc-togglegroup-border-color: var(--ds-color-neutral-border-default);
+  --dsc-togglegroup-border-color: var(--ds-color-border-default);
+  --dsc-togglegroup-text-color: var(--ds-color-text-default);
   --dsc-togglegroup-spacing: 0;
-  --dsc-togglegroup-border-radius: var(--ds-border-radius-md);
+  --dsc-togglegroup-border-radius: var(--ds-border-radius-default);
   --dsc-togglegroup-button-size: var(--ds-size-12);
 
   background: var(--dsc-togglegroup-background);
@@ -26,17 +27,34 @@
   &:not([hidden]) {
     display: grid;
   }
+  &[data-variant='secondary'] {
+    --dsc-togglegroup-background: var(--ds-color-surface-tinted);
+    --dsc-togglegroup-border-color: var(--ds-color-border-subtle);
+    border: none;
+    outline: var(--dsc-togglegroup-border-width) var(--dsc-togglegroup-border-style) var(--dsc-togglegroup-border-color);
+    outline-offset: calc(var(--dsc-togglegroup-border-width) * -1);
+    button {
+      --dsc-button-color: var(--ds-color-text-default);
+      --dsc-button-color--hover: var(--ds-color-text-default);
+      border-radius: inherit;
+      min-height: calc(var(--dsc-togglegroup-button-size) + (var(--dsc-togglegroup-border-width) * 2));
+    }
+    button[aria-checked='true'] {
+      isolation: isolate; /*creates a new stacking context so button shows above the parent's overlapping outline*/
+      background-color: var(--ds-color-surface-default);
+    }
+  }
 
   button {
-    border-radius: calc(var(--dsc-togglegroup-border-radius) - calc(var(--dsc-togglegroup-spacing) / 2));
+    border-radius: calc(var(--dsc-togglegroup-border-radius) - var(--dsc-togglegroup-border-width));
     min-height: var(--dsc-togglegroup-button-size);
     min-width: fit-content;
+    &:not([aria-checked='true']) {
+      --dsc-button-color: var(--ds-color-text-default);
+      --dsc-button-color--hover: var(--ds-color-text-default);
+    }
 
     @composes ds-focus--inset from './base.css';
-
-    &:focus-visible {
-      border-radius: var(--dsc-togglegroup-border-radius);
-    }
 
     &[data-icon] {
       height: var(--dsc-togglegroup-button-size);
