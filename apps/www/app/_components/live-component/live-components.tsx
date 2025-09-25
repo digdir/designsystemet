@@ -82,7 +82,6 @@ const Editor = ({ live, html }: EditorProps) => {
   const reset = () => {
     live.onChange(live.code);
     setResetCount(resetCount + 1);
-    activateEditorRef.current?.focus();
   };
 
   const copy = async () => {
@@ -105,9 +104,6 @@ const Editor = ({ live, html }: EditorProps) => {
     }
 
     if (event.key === 'Enter') {
-      if (document.activeElement?.nodeName === 'BUTTON') {
-        return;
-      }
       const preEl = wrapperRef.current?.querySelector(
         '.live-editor > pre',
       ) as HTMLElement | null;
@@ -184,7 +180,11 @@ const Editor = ({ live, html }: EditorProps) => {
           <LiveEditor
             key={resetCount}
             onChange={live.onChange}
-            className={cl(classes.editor, classes['live-editor'])}
+            className={cl(
+              classes.editor,
+              classes['live-editor'],
+              'live-editor',
+            )}
           />
         )}
       </div>
