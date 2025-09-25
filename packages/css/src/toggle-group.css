@@ -41,7 +41,7 @@
     }
     button[aria-checked='true'] {
       isolation: isolate;
-      --dsc-button-background: var(--ds-color-surface-default);
+      background-color: var(--ds-color-surface-default);
     }
   }
 
