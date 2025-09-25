@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@mjackson/node-fetch-server': npm:@remix-run/node-fetch-server@^0.8.0
+  '@mjackson/node-fetch-server': npm:@remix-run/node-fetch-server@^0.9.0
 
 packageExtensionsChecksum: sha256-IQSNU9cJtri1P9xMWAvG91nRHacWCj8xtjZCK1etLxM=
 
@@ -168,8 +168,8 @@ importers:
         specifier: workspace:^
         version: link:../../internal/components
       '@mjackson/node-fetch-server':
-        specifier: npm:@remix-run/node-fetch-server@^0.8.0
-        version: '@remix-run/node-fetch-server@0.8.0'
+        specifier: npm:@remix-run/node-fetch-server@^0.9.0
+        version: '@remix-run/node-fetch-server@0.9.0'
       '@navikt/aksel-icons':
         specifier: ^7.30.1
         version: 7.31.0(react@19.1.1)
@@ -265,8 +265,8 @@ importers:
         specifier: workspace:^
         version: link:../../internal/components
       '@mjackson/node-fetch-server':
-        specifier: npm:@remix-run/node-fetch-server@^0.8.0
-        version: '@remix-run/node-fetch-server@0.8.0'
+        specifier: npm:@remix-run/node-fetch-server@^0.9.0
+        version: '@remix-run/node-fetch-server@0.9.0'
       '@navikt/aksel-icons':
         specifier: ^7.30.1
         version: 7.31.0(react@19.1.1)
@@ -1773,6 +1773,9 @@ packages:
 
   '@remix-run/node-fetch-server@0.8.0':
     resolution: {integrity: sha512-8/sKegb4HrM6IdcQeU0KPhj9VOHm5SUqswJDHuMCS3mwbr/NRx078QDbySmn0xslahvvZoOENd7EnK40kWKxkg==}
+
+  '@remix-run/node-fetch-server@0.9.0':
+    resolution: {integrity: sha512-SoLMv7dbH+njWzXnOY6fI08dFMI5+/dQ+vY3n8RnnbdG7MdJEgiP28Xj/xWlnRnED/aB6SFw56Zop+LbmaaKqA==}
 
   '@rolldown/pluginutils@1.0.0-beta.35':
     resolution: {integrity: sha512-slYrCpoxJUqzFDDNlvrOYRazQUNRvWPjXA17dAOISY3rDMxX6k8K4cj2H+hEYMHF81HO3uNd5rHVigAWRM5dSg==}
@@ -7236,7 +7239,7 @@ snapshots:
 
   '@react-router/node@7.9.1(react-router@7.9.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(typescript@5.9.2)':
     dependencies:
-      '@mjackson/node-fetch-server': '@remix-run/node-fetch-server@0.8.0'
+      '@mjackson/node-fetch-server': '@remix-run/node-fetch-server@0.9.0'
       react-router: 7.9.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
     optionalDependencies:
       typescript: 5.9.2
@@ -7256,6 +7259,8 @@ snapshots:
       - typescript
 
   '@remix-run/node-fetch-server@0.8.0': {}
+
+  '@remix-run/node-fetch-server@0.9.0': {}
 
   '@rolldown/pluginutils@1.0.0-beta.35': {}
 
@@ -7941,7 +7946,7 @@ snapshots:
 
   '@vitejs/plugin-rsc@0.4.11(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(vite@7.1.7(@types/node@22.18.6)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.30.1)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.20.5)(yaml@2.7.1))':
     dependencies:
-      '@mjackson/node-fetch-server': '@remix-run/node-fetch-server@0.8.0'
+      '@mjackson/node-fetch-server': '@remix-run/node-fetch-server@0.9.0'
       es-module-lexer: 1.7.0
       estree-walker: 3.0.3
       magic-string: 0.30.17
