@@ -25,11 +25,7 @@ export const ToggleGroupItem = forwardRef<
   return (
     <RovingFocusItem asChild value={value}>
       <Button
-        variant={
-          active
-            ? variant
-            : 'tertiary'
-        }
+        variant={active ? variant : 'tertiary'}
         ref={ref}
         {...rest}
         {...buttonProps}
