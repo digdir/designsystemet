@@ -9,7 +9,7 @@ export const typeScaleVariables =
     if (scaleValues === 'static') {
       console.log('typescalevariables: size =', size);
     }
-    const selector = ':root, [data-size]';
+    const selector = ':root';
     const layer = `ds.theme.type-scale`;
 
     return {
@@ -37,7 +37,7 @@ export const typeScaleVariables =
           ],
           files: [
             {
-              destination: `type-scale.css`,
+              destination: scaleValues === 'static' ? `type-scale/${size}.css` : `type-scale.css`,
               format: formats.typeScale.name,
               filter: (token) => {
                 const included = typeEquals(['typography', 'dimension', 'fontsize', 'number'], token);

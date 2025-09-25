@@ -29,10 +29,14 @@ const formatTypographySizeToken = (
   size?: string,
 ): { name: string; originalName: string; calc: string; round: string } => {
   const [originalName, value] = format(token).trim().replace(/;$/, '').split(': ');
-  const name = size ? `${originalName}--${shortSizeName(size)}` : originalName;
+  // If we have a size, we're using static type scale values, and need to output the static values per mode.
+  const name =
+    size && R.startsWith(['font-size'], token.path) ? `${originalName}--${shortSizeName(size)}` : originalName;
 
   let calc: string;
   let round: string | undefined;
+  // If we don't have a size, it means we're using modular type scale values.
+  // That means we need to translate the Tokens Studio formulas to css.
   if (!size && R.startsWith(['font-size'], token.path)) {
     const originalWithCssReference = (token.original.$value as string).replaceAll(/\{font-scale\.[^}]+\}/g, (match) => {
       const t = dictionary.unfilteredTokenMap?.get(match);
@@ -82,7 +86,8 @@ export const typeScale: Format = {
     });
 
     const filteredTokens = R.reject(R.anyPass([isTypographyFontFamilyToken, isFontScaleToken]), dictionary.allTokens);
-    const formatted = formatTypographySizeTokens(dictionary, format, filteredTokens, size);
+    const [typeScaleTokens, restTokens] = R.partition((t) => R.startsWith(['font-size'], t.path), filteredTokens);
+    const formatted = formatTypographySizeTokens(dictionary, format, typeScaleTokens, size);
 
     const formattedMap = formatted.round.map((s, i) => ({
       token: formatted.tokens[i],
@@ -92,7 +97,8 @@ export const typeScale: Format = {
 
     buildOptions.buildTokenFormats[destination] = formattedMap;
 
-    const content = `${selector} {${sizingTemplate(formatted)}\n}`;
+    const optionalSizeComment = size ? ` /* ${size} */` : '';
+    const content = `${selector}${optionalSizeComment} {${sizingTemplate(formatted)}\n}`;
     const body = wrapInLayer(content, layer);
 
     /*
@@ -112,9 +118,12 @@ ${sizes.map((size) => `    var(--ds-size--${size}, var(--ds-font-scale-base--${s
   --ds-font-scale-ratio:
 ${sizes.map((size) => `    var(--ds-size--${size}, var(--ds-font-scale-ratio--${size}))`).join('\n')};`;
 
+    const referenceVariables = restTokens.map(format).join('\n');
     const sharedContent = `:root, [data-size] {
 ${fontScaleToggles}
+${referenceVariables}
 }`;
+
     const sharedBody = !size || shortSizeName(size) === R.last(sizes) ? `\n${wrapInLayer(sharedContent, layer)}` : '';
     /*
      * End of generated-once CSS
