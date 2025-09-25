@@ -19,7 +19,7 @@ export const isInlineTokens = R.anyPass([isNumericBorderRadiusToken, isNumericSi
  * @returns Object with formatted CSS strings for calc and round.
  */
 export const overrideSizingFormula = (format: (t: TransformedToken) => string, token: TransformedToken) => {
-  const [name, value] = format(token).replace(/;$/, '').split(': ');
+  const [name, value] = format(token).trim().replace(/;$/, '').split(': ');
 
   let calc: string;
   let round: string | undefined;
@@ -66,12 +66,12 @@ export const sizingTemplate = ({ round, calc }: { round: string[]; calc: string[
   const supportsRoundCss = usesRounding.length
     ? `\n
   @supports (width: round(down, .1em, 1px)) {
-  ${usesRounding.join('\n  ')}
+    ${usesRounding.join('\n    ')}
   }`
     : '';
 
   return `
-${calc.join('\n')}${supportsRoundCss}`;
+  ${calc.join('\n  ')}${supportsRoundCss}`;
 };
 
 export const size: Format = {

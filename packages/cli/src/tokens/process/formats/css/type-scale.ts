@@ -28,7 +28,7 @@ const formatTypographySizeToken = (
   token: TransformedToken,
   size?: string,
 ): { name: string; originalName: string; calc: string; round: string } => {
-  const [originalName, value] = format(token).replace(/;$/, '').split(': ');
+  const [originalName, value] = format(token).trim().replace(/;$/, '').split(': ');
   const name = size ? `${originalName}--${shortSizeName(size)}` : originalName;
 
   let calc: string;
@@ -82,17 +82,17 @@ export const typeScale: Format = {
     });
 
     const filteredTokens = R.reject(R.anyPass([isTypographyFontFamilyToken, isFontScaleToken]), dictionary.allTokens);
-    const formattedTokens = formatTypographySizeTokens(dictionary, format, filteredTokens, size);
+    const formatted = formatTypographySizeTokens(dictionary, format, filteredTokens, size);
 
-    const formattedMap = formattedTokens.round.map((t, i) => ({
-      token: formattedTokens.tokens[i],
+    const formattedMap = formatted.round.map((s, i) => ({
+      token: formatted.tokens[i],
       // Remove the `--<size>` suffix for the token listing, since that is the only token we actually use
-      formatted: t.replace(formattedTokens.name[i], formattedTokens.originalName[i]),
+      formatted: s.replace(formatted.name[i], formatted.originalName[i]),
     }));
 
     buildOptions.buildTokenFormats[destination] = formattedMap;
 
-    const content = `${selector} {${sizingTemplate(formattedTokens)}\n}`;
+    const content = `${selector} {${sizingTemplate(formatted)}\n}`;
     const body = wrapInLayer(content, layer);
 
     /*
@@ -101,7 +101,12 @@ export const typeScale: Format = {
     const sizes = orderBySize(buildOptions?.sizeModes ?? []).map(shortSizeName);
 
     const fontScaleToggles = size
-      ? ''
+      ? formatted.originalName
+          .map(
+            (variable) => `  ${variable}:
+${sizes.map((size) => `    var(--ds-size--${size}, var(${variable}--${size}))`).join('\n')};`,
+          )
+          .join('\n')
       : `  --ds-font-scale-base:
 ${sizes.map((size) => `    var(--ds-size--${size}, var(--ds-font-scale-base--${size}))`).join('\n')};
   --ds-font-scale-ratio:

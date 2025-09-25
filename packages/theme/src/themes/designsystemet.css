@@ -121,7 +121,134 @@ design-tokens: v1.5.1
 
 @layer ds.theme.type-scale {
 :root, [data-size] {
-
+  --ds-font-size-1:
+    var(--ds-size--sm, var(--ds-font-size-1--sm))
+    var(--ds-size--md, var(--ds-font-size-1--md))
+    var(--ds-size--lg, var(--ds-font-size-1--lg));
+  --ds-font-size-2:
+    var(--ds-size--sm, var(--ds-font-size-2--sm))
+    var(--ds-size--md, var(--ds-font-size-2--md))
+    var(--ds-size--lg, var(--ds-font-size-2--lg));
+  --ds-font-size-3:
+    var(--ds-size--sm, var(--ds-font-size-3--sm))
+    var(--ds-size--md, var(--ds-font-size-3--md))
+    var(--ds-size--lg, var(--ds-font-size-3--lg));
+  --ds-font-size-4:
+    var(--ds-size--sm, var(--ds-font-size-4--sm))
+    var(--ds-size--md, var(--ds-font-size-4--md))
+    var(--ds-size--lg, var(--ds-font-size-4--lg));
+  --ds-font-size-5:
+    var(--ds-size--sm, var(--ds-font-size-5--sm))
+    var(--ds-size--md, var(--ds-font-size-5--md))
+    var(--ds-size--lg, var(--ds-font-size-5--lg));
+  --ds-font-size-6:
+    var(--ds-size--sm, var(--ds-font-size-6--sm))
+    var(--ds-size--md, var(--ds-font-size-6--md))
+    var(--ds-size--lg, var(--ds-font-size-6--lg));
+  --ds-font-size-7:
+    var(--ds-size--sm, var(--ds-font-size-7--sm))
+    var(--ds-size--md, var(--ds-font-size-7--md))
+    var(--ds-size--lg, var(--ds-font-size-7--lg));
+  --ds-font-size-8:
+    var(--ds-size--sm, var(--ds-font-size-8--sm))
+    var(--ds-size--md, var(--ds-font-size-8--md))
+    var(--ds-size--lg, var(--ds-font-size-8--lg));
+  --ds-font-size-9:
+    var(--ds-size--sm, var(--ds-font-size-9--sm))
+    var(--ds-size--md, var(--ds-font-size-9--md))
+    var(--ds-size--lg, var(--ds-font-size-9--lg));
+  --ds-font-size-10:
+    var(--ds-size--sm, var(--ds-font-size-10--sm))
+    var(--ds-size--md, var(--ds-font-size-10--md))
+    var(--ds-size--lg, var(--ds-font-size-10--lg));
+  --ds-heading-2xl-font-size:
+    var(--ds-size--sm, var(--ds-heading-2xl-font-size--sm))
+    var(--ds-size--md, var(--ds-heading-2xl-font-size--md))
+    var(--ds-size--lg, var(--ds-heading-2xl-font-size--lg));
+  --ds-heading-xl-font-size:
+    var(--ds-size--sm, var(--ds-heading-xl-font-size--sm))
+    var(--ds-size--md, var(--ds-heading-xl-font-size--md))
+    var(--ds-size--lg, var(--ds-heading-xl-font-size--lg));
+  --ds-heading-lg-font-size:
+    var(--ds-size--sm, var(--ds-heading-lg-font-size--sm))
+    var(--ds-size--md, var(--ds-heading-lg-font-size--md))
+    var(--ds-size--lg, var(--ds-heading-lg-font-size--lg));
+  --ds-heading-md-font-size:
+    var(--ds-size--sm, var(--ds-heading-md-font-size--sm))
+    var(--ds-size--md, var(--ds-heading-md-font-size--md))
+    var(--ds-size--lg, var(--ds-heading-md-font-size--lg));
+  --ds-heading-sm-font-size:
+    var(--ds-size--sm, var(--ds-heading-sm-font-size--sm))
+    var(--ds-size--md, var(--ds-heading-sm-font-size--md))
+    var(--ds-size--lg, var(--ds-heading-sm-font-size--lg));
+  --ds-heading-xs-font-size:
+    var(--ds-size--sm, var(--ds-heading-xs-font-size--sm))
+    var(--ds-size--md, var(--ds-heading-xs-font-size--md))
+    var(--ds-size--lg, var(--ds-heading-xs-font-size--lg));
+  --ds-heading-2xs-font-size:
+    var(--ds-size--sm, var(--ds-heading-2xs-font-size--sm))
+    var(--ds-size--md, var(--ds-heading-2xs-font-size--md))
+    var(--ds-size--lg, var(--ds-heading-2xs-font-size--lg));
+  --ds-body-xl-font-size:
+    var(--ds-size--sm, var(--ds-body-xl-font-size--sm))
+    var(--ds-size--md, var(--ds-body-xl-font-size--md))
+    var(--ds-size--lg, var(--ds-body-xl-font-size--lg));
+  --ds-body-lg-font-size:
+    var(--ds-size--sm, var(--ds-body-lg-font-size--sm))
+    var(--ds-size--md, var(--ds-body-lg-font-size--md))
+    var(--ds-size--lg, var(--ds-body-lg-font-size--lg));
+  --ds-body-md-font-size:
+    var(--ds-size--sm, var(--ds-body-md-font-size--sm))
+    var(--ds-size--md, var(--ds-body-md-font-size--md))
+    var(--ds-size--lg, var(--ds-body-md-font-size--lg));
+  --ds-body-sm-font-size:
+    var(--ds-size--sm, var(--ds-body-sm-font-size--sm))
+    var(--ds-size--md, var(--ds-body-sm-font-size--md))
+    var(--ds-size--lg, var(--ds-body-sm-font-size--lg));
+  --ds-body-xs-font-size:
+    var(--ds-size--sm, var(--ds-body-xs-font-size--sm))
+    var(--ds-size--md, var(--ds-body-xs-font-size--md))
+    var(--ds-size--lg, var(--ds-body-xs-font-size--lg));
+  --ds-body-short-xl-font-size:
+    var(--ds-size--sm, var(--ds-body-short-xl-font-size--sm))
+    var(--ds-size--md, var(--ds-body-short-xl-font-size--md))
+    var(--ds-size--lg, var(--ds-body-short-xl-font-size--lg));
+  --ds-body-short-lg-font-size:
+    var(--ds-size--sm, var(--ds-body-short-lg-font-size--sm))
+    var(--ds-size--md, var(--ds-body-short-lg-font-size--md))
+    var(--ds-size--lg, var(--ds-body-short-lg-font-size--lg));
+  --ds-body-short-md-font-size:
+    var(--ds-size--sm, var(--ds-body-short-md-font-size--sm))
+    var(--ds-size--md, var(--ds-body-short-md-font-size--md))
+    var(--ds-size--lg, var(--ds-body-short-md-font-size--lg));
+  --ds-body-short-sm-font-size:
+    var(--ds-size--sm, var(--ds-body-short-sm-font-size--sm))
+    var(--ds-size--md, var(--ds-body-short-sm-font-size--md))
+    var(--ds-size--lg, var(--ds-body-short-sm-font-size--lg));
+  --ds-body-short-xs-font-size:
+    var(--ds-size--sm, var(--ds-body-short-xs-font-size--sm))
+    var(--ds-size--md, var(--ds-body-short-xs-font-size--md))
+    var(--ds-size--lg, var(--ds-body-short-xs-font-size--lg));
+  --ds-body-long-xl-font-size:
+    var(--ds-size--sm, var(--ds-body-long-xl-font-size--sm))
+    var(--ds-size--md, var(--ds-body-long-xl-font-size--md))
+    var(--ds-size--lg, var(--ds-body-long-xl-font-size--lg));
+  --ds-body-long-lg-font-size:
+    var(--ds-size--sm, var(--ds-body-long-lg-font-size--sm))
+    var(--ds-size--md, var(--ds-body-long-lg-font-size--md))
+    var(--ds-size--lg, var(--ds-body-long-lg-font-size--lg));
+  --ds-body-long-md-font-size:
+    var(--ds-size--sm, var(--ds-body-long-md-font-size--sm))
+    var(--ds-size--md, var(--ds-body-long-md-font-size--md))
+    var(--ds-size--lg, var(--ds-body-long-md-font-size--lg));
+  --ds-body-long-sm-font-size:
+    var(--ds-size--sm, var(--ds-body-long-sm-font-size--sm))
+    var(--ds-size--md, var(--ds-body-long-sm-font-size--md))
+    var(--ds-size--lg, var(--ds-body-long-sm-font-size--lg));
+  --ds-body-long-xs-font-size:
+    var(--ds-size--sm, var(--ds-body-long-xs-font-size--sm))
+    var(--ds-size--md, var(--ds-body-long-xs-font-size--md))
+    var(--ds-size--lg, var(--ds-body-long-xs-font-size--lg));
 }
 }
 
