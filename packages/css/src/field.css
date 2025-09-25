@@ -11,9 +11,9 @@
   }
 
   & [data-field='description'] {
-    color: var(
-      --ds-color-neutral-text-subtle
-    ); /* TODO: Change to opacity or color-mix(currentColor, trasparent) to ensure contrast when parent element color changes? */
+    color: var(--ds-color-neutral-text-subtle);
+    /* biome-ignore lint/suspicious/noDuplicateProperties: We need a fallback for older browsers */
+    color: color-mix(in srgb, currentColor, transparent 30%);
   }
 
   & input:not([hidden]),
