@@ -165,7 +165,7 @@ const Editor = ({ live, html }: EditorProps) => {
           className={cl(classes['activate-editor'], 'ds-focus--visible')}
           ref={activateEditorRef}
           aria-live='polite'
-          tabIndex={0}
+          tabIndex={showHTML ? -1 : 0}
         >
           Press <kbd>Enter</kbd> to start editing
         </div>
