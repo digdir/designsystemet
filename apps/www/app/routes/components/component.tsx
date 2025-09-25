@@ -1,4 +1,4 @@
-import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { join } from 'node:path';
 import { Alert, Heading } from '@digdir/designsystemet-react';
@@ -19,6 +19,7 @@ import { LiveComponent } from '~/_components/live-component/live-components';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { ReactComponentDocs } from '~/_components/react-component-props/react-component-props';
 import { TableOfContents } from '~/_components/table-of-contents/toc';
+import { extractStories } from '~/_utils/extract-stories';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { getComponentDocs } from '~/_utils/get-react-props.server';
@@ -39,54 +40,7 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
   const componentDir = join('app', 'content', 'components', component);
 
   // Extract exported story functions from *.stories.tsx
-  const storyEntries: { name: string; code: string; file: string }[] = (() => {
-    try {
-      if (!existsSync(componentDir)) return [];
-      const files = readdirSync(componentDir).filter((f) =>
-        f.endsWith('.stories.tsx'),
-      );
-      if (files.length === 0) return [];
-
-      const extractExportedFunctions = (
-        source: string,
-      ): { name: string; code: string }[] => {
-        const results: { name: string; code: string }[] = [];
-        const funcDeclRe =
-          /export\s+function\s+([A-Za-z0-9_]+)\s*\([^)]*\)\s*\{[\s\S]*?\}/g;
-        const arrowBlockRe =
-          /export\s+const\s+([A-Za-z0-9_]+)\s*(?::[^=]+)?=\s*\([^)]*\)\s*=>\s*\{[\s\S]*?\};/g;
-        const arrowParenRe =
-          /export\s+const\s+([A-Za-z0-9_]+)\s*(?::[^=]+)?=\s*\([^)]*\)\s*=>\s*\([\s\S]*?\);/g;
-
-        const pushMatches = (re: RegExp) => {
-          for (const m of source.matchAll(re)) {
-            const name = m?.[1];
-            const code = m?.[0];
-            if (name && code) {
-              results.push({
-                name,
-                code: code.replace(/^\s*export\s+/, '').trim(),
-              });
-            }
-          }
-        };
-
-        pushMatches(funcDeclRe);
-        pushMatches(arrowBlockRe);
-        pushMatches(arrowParenRe);
-        return results;
-      };
-
-      return files.flatMap((file) => {
-        const full = join(componentDir, file);
-        const src = readFileSync(full, 'utf-8');
-        const fns = extractExportedFunctions(src);
-        return fns.map((f) => ({ ...f, file }));
-      });
-    } catch {
-      return [];
-    }
-  })();
+  const storyEntries = extractStories(componentDir);
 
   const mdxSource = getFileFromContentDir(
     join('components', component, lang, `${component}.mdx`),
