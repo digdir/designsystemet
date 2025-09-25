@@ -204,7 +204,7 @@ export const LiveComponent = ({ code }: LiveComponentProps) => {
   );
   const [useInverted, setUseInverted] = useState(false);
   const [html, setHtml] = useState<HTMLElement | null>(null);
-  const finalColorScheme = useInverted ? invertedColorScheme : colorScheme;
+  const previewColorScheme = useInverted ? invertedColorScheme : colorScheme;
 
   useEffect(() => {
     // Set initial color scheme
@@ -246,7 +246,7 @@ export const LiveComponent = ({ code }: LiveComponentProps) => {
     >
       <div className={classes.preview} data-color='accent' data-live='true'>
         <LivePreview
-          data-color-scheme={finalColorScheme}
+          data-color-scheme={previewColorScheme}
           className={classes['live-preview']}
           ref={setHtml}
         />
@@ -260,7 +260,7 @@ export const LiveComponent = ({ code }: LiveComponentProps) => {
           className={classes.themeToggle}
           aria-label='Invert color scheme'
         >
-          {finalColorScheme === 'dark' ? (
+          {previewColorScheme === 'dark' ? (
             <aksel.SunIcon aria-hidden />
           ) : (
             <aksel.MoonIcon aria-hidden />
