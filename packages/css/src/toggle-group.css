@@ -36,11 +36,11 @@
     button {
       --dsc-button-color: var(--ds-color-text-default);
       --dsc-button-color--hover: var(--ds-color-text-default);
-      border-radius: var(--dsc-togglegroup-border-radius);
+      border-radius: inherit;
       min-height: calc(var(--dsc-togglegroup-button-size) + (var(--dsc-togglegroup-border-width) * 2));
     }
     button[aria-checked='true'] {
-      isolation: isolate;
+      isolation: isolate; /*creates a new stacking context so button shows above the parent's overlapping outline*/
       background-color: var(--ds-color-surface-default);
     }
   }
