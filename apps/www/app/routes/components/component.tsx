@@ -41,6 +41,8 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
 
   // Extract exported story functions from *.stories.tsx
   const storyEntries = extractStories(componentDir);
+  const doDontEntries = extractStories(componentDir, true);
+  console.log(doDontEntries);
 
   const mdxSource = getFileFromContentDir(
     join('components', component, lang, `${component}.mdx`),

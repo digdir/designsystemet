@@ -8,12 +8,14 @@ type StoryEntry = {
 };
 
 // Extract exported story functions from *.stories.tsx
-export const extractStories = (componentDir: string): StoryEntry[] => {
+export const extractStories = (
+  componentDir: string,
+  dodont?: boolean,
+): StoryEntry[] => {
   try {
     if (!existsSync(componentDir)) return [];
-    const files = readdirSync(componentDir).filter((f) =>
-      f.endsWith('.stories.tsx'),
-    );
+    const variant = dodont ? '.dodont.tsx' : '.stories.tsx';
+    const files = readdirSync(componentDir).filter((f) => f.endsWith(variant));
     if (files.length === 0) return [];
 
     const extractExportedFunctions = (
