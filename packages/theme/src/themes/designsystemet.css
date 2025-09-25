@@ -38,14 +38,6 @@ design-tokens: v1.5.1
     var(--ds-size--sm, var(--ds-size-mode-font-size--sm))
     var(--ds-size--md, var(--ds-size-mode-font-size--md))
     var(--ds-size--lg, var(--ds-size-mode-font-size--lg));
-  --ds-font-scale-base:
-    var(--ds-size--sm, var(--ds-font-scale-base--sm))
-    var(--ds-size--md, var(--ds-font-scale-base--md))
-    var(--ds-size--lg, var(--ds-font-scale-base--lg));
-  --ds-font-scale-ratio:
-    var(--ds-size--sm, var(--ds-font-scale-ratio--sm))
-    var(--ds-size--md, var(--ds-font-scale-ratio--md))
-    var(--ds-size--lg, var(--ds-font-scale-ratio--lg));
 }
 
 [data-size='sm'] { --ds-size: var(--ds-size--sm); }
@@ -89,6 +81,7 @@ design-tokens: v1.5.1
   --ds-body-long-xs-font-size--md: var(--ds-font-size-2);
 }
 }
+
 @layer ds.theme.type-scale {
 :root, [data-size] {
   --ds-font-size-1--lg: 0.875rem;
@@ -125,6 +118,13 @@ design-tokens: v1.5.1
   --ds-body-long-xs-font-size--lg: var(--ds-font-size-2);
 }
 }
+
+@layer ds.theme.type-scale {
+:root, [data-size] {
+
+}
+}
+
 @layer ds.theme.type-scale {
 :root, [data-size] {
   --ds-font-size-1--sm: 0.6875rem;
@@ -161,6 +161,7 @@ design-tokens: v1.5.1
   --ds-body-long-xs-font-size--sm: var(--ds-font-size-2);
 }
 }
+
 @layer ds.theme.color-scheme.light {
 :root, [data-color-scheme="light"] {
   --ds-color-accent-background-default: #ffffff;

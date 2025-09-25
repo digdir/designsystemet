@@ -20,7 +20,11 @@ export const sizeMode: Format = {
   name: 'ds/css-size-mode',
   format: async ({ dictionary, file, options, platform }) => {
     const { outputReferences, usesDtcg } = options;
-    const { selector, layer, size } = platform;
+    const { selector, layer, size } = platform as {
+      selector: string;
+      layer?: string;
+      size: string;
+    };
     const destination = file.destination as string;
 
     const format = createPropertyFormatter({
@@ -58,10 +62,6 @@ export const sizeMode: Format = {
 ${sizes.map((size) => `  --ds-size--${size}: var(--ds-size,);`).join('\n')}
   --ds-size-mode-font-size:
 ${sizes.map((size) => `    var(--ds-size--${size}, var(--ds-size-mode-font-size--${size}))`).join('\n')};
-  --ds-font-scale-base:
-${sizes.map((size) => `    var(--ds-size--${size}, var(--ds-font-scale-base--${size}))`).join('\n')};
-  --ds-font-scale-ratio:
-${sizes.map((size) => `    var(--ds-size--${size}, var(--ds-font-scale-ratio--${size}))`).join('\n')};
 }`;
     const sizingHelpers = sizes
       .map((size) => `[data-size='${size}'] { --ds-size: var(--ds-size--${size}); }`)

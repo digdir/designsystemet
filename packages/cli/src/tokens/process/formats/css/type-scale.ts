@@ -1,9 +1,10 @@
 import * as R from 'ramda';
 import type { Dictionary, Format, TransformedToken } from 'style-dictionary/types';
 import { createPropertyFormatter } from 'style-dictionary/utils';
-import { shortSizeName } from '../../../utils.js';
+import { orderBySize, shortSizeName } from '../../../utils.js';
 import { buildOptions } from '../../platform.js';
 import { sizingTemplate } from './size.js';
+import { wrapInLayer } from './size-mode.js';
 
 // Predicate to filter tokens with .path array that includes both typography and fontFamily
 const isTypographyFontFamilyToken = R.allPass([
@@ -13,14 +14,20 @@ const isTypographyFontFamilyToken = R.allPass([
 // Predicate to filter font-scale tokens
 const isFontScaleToken = R.pathSatisfies(R.includes('font-scale'), ['path']);
 
-type TokensWithCalcAndRoundFormatting = { tokens: TransformedToken[]; calc: string[]; round: string[] };
+type TokensWithCalcAndRoundFormatting = {
+  tokens: TransformedToken[];
+  calc: string[];
+  round: string[];
+  name: string[];
+  originalName: string[];
+};
 
 const formatTypographySizeToken = (
   dictionary: Dictionary,
   format: (t: TransformedToken) => string,
   token: TransformedToken,
   size?: string,
-): { name: string; calc: string; round: string } => {
+): { name: string; originalName: string; calc: string; round: string } => {
   const [originalName, value] = format(token).replace(/;$/, '').split(': ');
   const name = size ? `${originalName}--${shortSizeName(size)}` : originalName;
 
@@ -37,7 +44,7 @@ const formatTypographySizeToken = (
   } else {
     calc = value;
   }
-  return { name, calc, round: round ?? calc };
+  return { name, originalName, calc, round: round ?? calc };
 };
 
 const formatTypographySizeTokens = (
@@ -48,13 +55,15 @@ const formatTypographySizeTokens = (
 ) =>
   R.reduce<TransformedToken, TokensWithCalcAndRoundFormatting>(
     (acc, token) => {
-      const { name, calc, round } = formatTypographySizeToken(dictionary, format, token, size);
+      const { name, calc, round, originalName } = formatTypographySizeToken(dictionary, format, token, size);
       acc.tokens.push(token);
+      acc.name.push(name);
+      acc.originalName.push(originalName);
       acc.calc.push(`${name}: ${calc};`);
       acc.round.push(`${name}: ${round};`);
       return acc;
     },
-    { tokens: [], calc: [], round: [] },
+    { tokens: [], calc: [], round: [], name: [], originalName: [] },
     tokens,
   );
 
@@ -62,7 +71,7 @@ export const typeScale: Format = {
   name: 'ds/css-type-scale',
   format: async ({ dictionary, file, options, platform }) => {
     const { outputReferences, usesDtcg } = options;
-    const { selector, layer, size } = platform as { selector: string; layer: string; size?: string };
+    const { selector, layer, size } = platform as { selector: string; layer?: string; size?: string };
     const destination = file.destination as string;
 
     const format = createPropertyFormatter({
@@ -77,14 +86,35 @@ export const typeScale: Format = {
 
     const formattedMap = formattedTokens.round.map((t, i) => ({
       token: formattedTokens.tokens[i],
-      formatted: t,
+      // Remove the `--<size>` suffix for the token listing, since that is the only token we actually use
+      formatted: t.replace(formattedTokens.name[i], formattedTokens.originalName[i]),
     }));
 
     buildOptions.buildTokenFormats[destination] = formattedMap;
 
     const content = `${selector} {${sizingTemplate(formattedTokens)}\n}`;
-    const body = R.isNotNil(layer) ? `@layer ${layer} {\n${content}\n}` : content;
+    const body = wrapInLayer(content, layer);
 
-    return body;
+    /*
+     * The following CSS is only generated once, not per mode
+     */
+    const sizes = orderBySize(buildOptions?.sizeModes ?? []).map(shortSizeName);
+
+    const fontScaleToggles = size
+      ? ''
+      : `  --ds-font-scale-base:
+${sizes.map((size) => `    var(--ds-size--${size}, var(--ds-font-scale-base--${size}))`).join('\n')};
+  --ds-font-scale-ratio:
+${sizes.map((size) => `    var(--ds-size--${size}, var(--ds-font-scale-ratio--${size}))`).join('\n')};`;
+
+    const sharedContent = `:root, [data-size] {
+${fontScaleToggles}
+}`;
+    const sharedBody = !size || shortSizeName(size) === R.last(sizes) ? `\n${wrapInLayer(sharedContent, layer)}` : '';
+    /*
+     * End of generated-once CSS
+     */
+
+    return body + sharedBody;
   },
 };

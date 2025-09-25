@@ -81,9 +81,10 @@ const sd = new StyleDictionary();
  */
 const buildConfigs = {
   typography: { getConfig: configs.typographyVariables, dimensions: ['typography'] },
-  sizeMode: { getConfig: configs.sizeModeVariables, dimensions: ['size'] },
+  // sizeMode: { getConfig: configs.sizeModeVariables('modular'), dimensions: ['size'] },
+  sizeMode: { getConfig: configs.sizeModeVariables('static'), dimensions: ['size'] },
   size: { getConfig: configs.sizeVariables, dimensions: ['semantic'] },
-  // typeScale: { getConfig: configs.typeScaleVariables("modular"), dimensions: ['semantic'] },
+  // typeScale: { getConfig: configs.typeScaleVariables('modular'), dimensions: ['semantic'] },
   typeScale: { getConfig: configs.typeScaleVariables('static'), dimensions: ['semantic', 'size'] },
   'color-scheme': { getConfig: configs.colorSchemeVariables, dimensions: ['color-scheme'] },
   'main-color': { getConfig: configs.mainColorVariables, dimensions: ['main-color'] },
