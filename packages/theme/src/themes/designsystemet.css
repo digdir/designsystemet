@@ -478,7 +478,7 @@ design-tokens: v1.5.1
   --ds-size-22: calc(var(--ds-size-unit) * 22);
   --ds-size-26: calc(var(--ds-size-unit) * 26);
   --ds-size-30: calc(var(--ds-size-unit) * 30);
-  --ds-size-unit: calc(1rem * var(--ds-size-step) / var(--ds-size-base) * var(--ds-size-mode-font-size));
+  --ds-size-unit: calc(1rem * var(--ds-size-step) / (var(--ds-size-base) * var(--ds-size-mode-font-size)));
 
   @supports (width: round(down, .1em, 1px)) {
     --ds-size-0: round(down, calc(var(--ds-size-unit) * 0), 1px);
