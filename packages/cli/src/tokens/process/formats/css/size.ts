@@ -61,7 +61,7 @@ const formatSizingTokens = (format: (t: TransformedToken) => string, tokens: Tra
     tokens,
   );
 
-const sizingTemplate = ({ round, calc }: { round: string[]; calc: string[] }) => {
+export const sizingTemplate = ({ round, calc }: { round: string[]; calc: string[] }) => {
   const usesRounding = round.filter((val, i) => val !== calc[i]);
   return `
 ${calc.join('\n')}\n

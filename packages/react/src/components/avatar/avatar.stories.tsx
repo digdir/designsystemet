@@ -97,7 +97,7 @@ export const InDropdown: Story = () => (
           <Dropdown.Button>
             <Badge.Position overlap='circle'>
               <Badge data-color='danger' data-size='sm'></Badge>
-              <Avatar aria-label='Ola Nordmann' data-size='xs'>
+              <Avatar aria-hidden={true} data-size='xs'>
                 ON
               </Avatar>
             </Badge.Position>
@@ -106,8 +106,8 @@ export const InDropdown: Story = () => (
         </Dropdown.Item>
         <Dropdown.Item>
           <Dropdown.Button>
-            <Avatar data-size='xs' aria-label='Sogndal Kommune'>
-              <BriefcaseIcon aria-hidden />
+            <Avatar aria-hidden data-size='xs'>
+              <BriefcaseIcon />
             </Avatar>
             Sogndal kommune
           </Dropdown.Button>
