@@ -32,10 +32,10 @@ export const ReactComponentDocs = forwardRef<
                 <dl key={name}>
                   <dt className={classes.propName}>
                     <Tag>{name}</Tag>
+                    {prop.required && (
+                      <span className={classes.required}>Required</span>
+                    )}
                   </dt>
-                  {prop.required && (
-                    <dt className={classes.required}>Required</dt>
-                  )}
                   {prop.description && (
                     <>
                       <dt>Description</dt>
