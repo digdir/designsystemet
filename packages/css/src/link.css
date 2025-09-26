@@ -6,6 +6,7 @@
   --dsc-link-color--visited: var(--ds-link-color-visited);
   --dsc-link-text-decoration-thickness--hover: 0.125em; /* 2px ish */
   --dsc-link-text-decoration-thickness: 0.0625em; /* 1px ish */
+  --dsc-link-border-radius: var(--ds-border-radius-md);
 
   color: var(--dsc-link-color);
   outline: none;
@@ -13,6 +14,7 @@
   text-decoration-style: solid;
   text-decoration-thickness: var(--dsc-link-text-decoration-thickness);
   text-underline-offset: 0.27em; /* 5px ish */
+  border-radius: var(--dsc-link-border-radius);
 
   & :is(img, svg) {
     vertical-align: middle; /* Align img or svg icon with text */
