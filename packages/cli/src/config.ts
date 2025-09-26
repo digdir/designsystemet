@@ -2,6 +2,7 @@ import pc from 'picocolors';
 import * as R from 'ramda';
 import { z } from 'zod';
 import { fromError } from 'zod-validation-error';
+import { colorNames } from './colors/colorMetadata.js';
 import { convertToHex } from './colors/index.js';
 import { RESERVED_COLORS } from './colors/theme.js';
 import { cliOptions } from './tokens/create.js';
@@ -114,6 +115,28 @@ const colorCategorySchema = z
   })
   .describe('An object with one or more color definitions. The property name is used as the color name.');
 
+const colorModeOverrideSchema = z
+  .object({
+    light: colorSchema.optional(),
+    dark: colorSchema.optional(),
+  })
+  .describe('Override values for semantic color tokens like "background-subtle", "border-default", etc.');
+
+const colorWeightOverrideSchema = z
+  .partialRecord(z.enum(colorNames), colorModeOverrideSchema)
+  .describe('The name of the color to add overrides for, e.g. "accent"');
+
+const semanticColorOverrideSchema = z
+  .record(z.string(), colorWeightOverrideSchema)
+  .describe('An object with color names as keys');
+
+const overridesSchema = z
+  .object({
+    colors: semanticColorOverrideSchema.optional(),
+  })
+  .describe('Overrides for generated design tokens. Currently only supports colors defined in your theme')
+  .optional();
+
 const themeSchema = z
   .object({
     colors: z
@@ -130,6 +153,7 @@ const themeSchema = z
       .describe('Defines the typography for a given theme')
       .optional(),
     borderRadius: z.number().meta({ description: 'Defines the border-radius for this theme' }).optional(),
+    overrides: overridesSchema,
   })
   .meta({ description: 'An object defining a theme. The property name holding the object becomes the theme name.' });
 
@@ -155,3 +179,4 @@ export type CommonConfigSchema = z.infer<typeof commonConfig>;
 export type BuildConfigSchema = z.infer<typeof commonConfig>;
 export type CreateConfigSchema = z.infer<typeof configFileCreateSchema>;
 export type ConfigSchemaTheme = z.infer<typeof themeSchema>;
+export type ColorOverrideSchema = z.infer<typeof overridesSchema>;
