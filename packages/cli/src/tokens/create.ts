@@ -25,7 +25,7 @@ export const cliOptions = {
 } as const;
 
 export const createTokens = async (opts: Theme) => {
-  const { colors, typography, name, borderRadius } = opts;
+  const { colors, typography, name, borderRadius, overrides } = opts;
   const colorSchemes: ColorScheme[] = ['light', 'dark'];
 
   const semantic = generateSemantic(colors);
@@ -45,7 +45,7 @@ export const createTokens = async (opts: Theme) => {
     [`primitives/modes/typography/secondary/${name}`, generateTypography(name, typography)],
     ...colorSchemes.flatMap((scheme): [string, TokenSet][] => [
       [`primitives/modes/color-scheme/${scheme}/global`, generateColorGlobal(scheme)],
-      [`primitives/modes/color-scheme/${scheme}/${name}`, generateColorScheme(name, scheme, colors)],
+      [`primitives/modes/color-scheme/${scheme}/${name}`, generateColorScheme(name, scheme, colors, overrides)],
     ]),
     [`themes/${name}`, generateTheme(colors, name, borderRadius)],
     ['semantic/color', semantic.color],

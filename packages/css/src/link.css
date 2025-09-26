@@ -3,11 +3,10 @@
   --dsc-link-color--active: var(--ds-color-text-default);
   --dsc-link-color--hover: var(--ds-color-text-default);
   --dsc-link-color: var(--ds-color-text-subtle);
-  --dsc-link-background--focus: var(--ds-color-focus-outer);
-  --dsc-link-color--focus: var(--ds-color-focus-inner);
   --dsc-link-color--visited: var(--ds-link-color-visited);
   --dsc-link-text-decoration-thickness--hover: 0.125em; /* 2px ish */
   --dsc-link-text-decoration-thickness: 0.0625em; /* 1px ish */
+  --dsc-link-border-radius: var(--ds-border-radius-md);
 
   color: var(--dsc-link-color);
   outline: none;
@@ -15,6 +14,7 @@
   text-decoration-style: solid;
   text-decoration-thickness: var(--dsc-link-text-decoration-thickness);
   text-underline-offset: 0.27em; /* 5px ish */
+  border-radius: var(--dsc-link-border-radius);
 
   & :is(img, svg) {
     vertical-align: middle; /* Align img or svg icon with text */
@@ -57,11 +57,7 @@
     }
   }
 
-  &:focus-visible {
-    background: var(--dsc-link-background--focus);
-    color: var(--dsc-link-color--focus);
-    outline: 2px solid transparent;
-  }
+  @composes ds-focus from './base.css';
 
   &:active {
     background: var(--dsc-link-background--active);

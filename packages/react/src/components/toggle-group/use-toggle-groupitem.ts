@@ -5,6 +5,7 @@ import type { ToggleGroupItemProps } from './toggle-group-item';
 
 type UseToggleGroupItem = (props: ToggleGroupItemProps) => {
   active: boolean;
+  variant?: 'primary' | 'secondary';
   value: string;
   buttonProps?: Pick<
     ButtonProps,
@@ -21,12 +22,14 @@ export const useToggleGroupItem: UseToggleGroupItem = (
   const toggleGroup = useContext(ToggleGroupContext);
   const value = props.value ?? genValue;
   const active = toggleGroup.value === value;
+  const variant = toggleGroup.variant;
   const buttonId = `togglegroup-item-${useId()}`;
 
   return {
     ...rest,
     active: active,
     value,
+    variant,
     buttonProps: {
       id: buttonId,
       'aria-checked': active,
