@@ -121,6 +121,7 @@ const Editor = ({ live, html }: EditorProps) => {
         {showHTML ? 'HTML' : 'React'}
       </ds.Paragraph>
       <ds.ToggleGroup
+        variant='secondary'
         data-size='sm'
         value={showHTML.toString()}
         onChange={(v) => setShowHTML(v === 'true')}

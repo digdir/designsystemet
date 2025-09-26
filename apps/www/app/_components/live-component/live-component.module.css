@@ -50,22 +50,9 @@
   :global(.ds-toggle-group) {
     --dsc-togglegroup-button-size: var(--ds-size-8);
     --dsc-togglegroup-background: transparent;
-    border: none;
-    outline: 1px solid var(--ds-color-neutral-border-subtle);
-    outline-offset: -1px;
     margin-block: var(--ds-size-2);
     margin-inline-end: var(--ds-size-4);
     font-size: var(--ds-font-size-3);
-    > [data-variant='primary'] {
-      --dsc-button-color: var(--ds-color-text-default);
-      --dsc-button-color--hover: var(--ds-color-text-default);
-      --dsc-button-background--active: var(--ds-color-surface-active);
-      --dsc-button-background--hover: var(--ds-color-surface-hover);
-      --dsc-button-background: var(--ds-color-surface-default);
-      --dsc-button-border-color: var(--ds-color-border-default);
-      border-radius: var(--ds-border-radius-default);
-      z-index: 1;
-    }
   }
 }
 .editorWrapper {
