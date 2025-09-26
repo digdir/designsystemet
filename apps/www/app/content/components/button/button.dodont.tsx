@@ -6,7 +6,7 @@ import {
   PlusIcon,
 } from '@navikt/aksel-icons';
 
-export const doIcon = () => {
+export const DoIcon = () => {
   return (
     <>
       <Button variant='primary'>
@@ -19,7 +19,7 @@ export const doIcon = () => {
     </>
   );
 };
-export const dontIcon = () => {
+export const DontIcon = () => {
   return (
     <>
       <Button variant='primary'>

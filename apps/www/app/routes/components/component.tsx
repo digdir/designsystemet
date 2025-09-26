@@ -3,7 +3,7 @@ import { createRequire } from 'node:module';
 import { join } from 'node:path';
 import { Alert, Heading } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
-import type { ComponentType } from 'react';
+import type { ComponentType, ReactNode } from 'react';
 import type { ComponentDoc } from 'react-docgen-typescript';
 import { useRouteLoaderData } from 'react-router';
 import {
@@ -14,6 +14,7 @@ import {
   CssVariables,
   getCssVariables,
 } from '~/_components/css-variables/css-variables';
+import { DoDont } from '~/_components/do-dont/do-dont';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { LiveComponent } from '~/_components/live-component/live-components';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
@@ -78,6 +79,7 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
   return {
     component,
     stories: storyEntries,
+    dodont: doDontEntries,
     mdxCode: result.code,
     frontmatter: result.frontmatter as Record<string, unknown>,
     cssSource,
@@ -91,6 +93,7 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
 export default function Components({
   loaderData: {
     stories,
+    dodont,
     mdxCode,
     frontmatter,
     cssVars,
@@ -125,6 +128,7 @@ export default function Components({
             code={mdxCode}
             components={{
               Story: Story as unknown as ComponentType<unknown>,
+              DoDont: DoDontComponent as unknown as ComponentType<unknown>,
               ReactComponentDocs:
                 PropsTable as unknown as ComponentType<unknown>,
               CssVariables: CssVars as unknown as ComponentType<unknown>,
@@ -164,6 +168,35 @@ const Story = ({ story }: { story: string }) => {
     <LiveComponent
       code={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
     />
+  );
+};
+
+const DoDontComponent = ({
+  story,
+  children,
+  layout,
+}: {
+  story: string;
+  layout?: 'row' | 'column' | 'centered';
+  children?: ReactNode;
+}) => {
+  const data =
+    useRouteLoaderData<Route.ComponentProps['loaderData']>('components-page');
+  if (!data) return null;
+
+  const { dodont } = data;
+
+  const foundStory = dodont.find((s) => s.name === story);
+  if (!foundStory) return <Alert>Do/Dont not found: {story}</Alert>;
+  const variant = story.toLowerCase().includes('dont') ? 'dont' : 'do';
+  return (
+    <DoDont
+      layout={layout}
+      variant={variant}
+      code={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
+    >
+      {children}
+    </DoDont>
   );
 };
 
