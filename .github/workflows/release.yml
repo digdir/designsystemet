@@ -46,36 +46,30 @@ jobs:
   deploy-www:
     needs: release
     if: ${{ needs.release.outputs.published == 'true' }}
-    uses: ./.github/workflows/vercel-deploy-www.yml
+    uses: ./.github/workflows/azure-deploy-www.yml
     with:
       environment: 'production'
-      vercel_alias: ''
     secrets:
-      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-      VERCEL_TEAM: ${{ secrets.VERCEL_TEAM }}
-      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-      VERCEL_PROJECT_ID_WWW: ${{ secrets.VERCEL_PROJECT_ID_WWW }}
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
   deploy-theme:
     needs: release
     if: ${{ needs.release.outputs.published == 'true' }}
-    uses: ./.github/workflows/vercel-deploy-theme.yml
+    uses: ./.github/workflows/azure-deploy-themebuilder.yml
     with:
       environment: 'production'
-      vercel_alias: ''
     secrets:
-      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-      VERCEL_TEAM: ${{ secrets.VERCEL_TEAM }}
-      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-      VERCEL_PROJECT_ID_THEMEBUILDER: ${{ secrets.VERCEL_PROJECT_ID_THEMEBUILDER }}
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
   deploy-storybook:
     needs: release
     if: ${{ needs.release.outputs.published == 'true' }}
-    uses: ./.github/workflows/vercel-deploy-storybook.yml
+    uses: ./.github/workflows/azure-deploy-storybook.yml
     with:
       environment: 'production'
-      vercel_alias: ''
     secrets:
-      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-      VERCEL_TEAM: ${{ secrets.VERCEL_TEAM }}
-      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-      VERCEL_PROJECT_ID_STORYBOOK: ${{ secrets.VERCEL_PROJECT_ID_STORYBOOK }}
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
