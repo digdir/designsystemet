@@ -1,5 +1,19 @@
 # Change Log
 
+## 1.6.0
+
+### Minor Changes
+
+- **ToggleGroup**: Added new prop `variant` to enable new `secondary` design option ([#4092](https://github.com/digdir/designsystemet/pull/4092))
+
+### Patch Changes
+
+- **Spinner**: Allow using `aria-hidden` when `aria-label` is set, which can be useful to hide or show the element from the accessibility tree based on some UI state like whether a visual label is also rendered. ([#4077](https://github.com/digdir/designsystemet/pull/4077))
+
+- Update npm non-major dependencies ([#4093](https://github.com/digdir/designsystemet/pull/4093))
+
+- **Avatar**: Allow using `aria-hidden` instead of `aria-label` in situations with visible text ([#4077](https://github.com/digdir/designsystemet/pull/4077))
+
 ## 1.5.1
 
 ### Patch Changes
