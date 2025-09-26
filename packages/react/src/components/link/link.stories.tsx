@@ -17,7 +17,7 @@ export default {
   title: 'Komponenter/Link',
   component: Link,
   parameters: {
-    customStyles: { padding: '2px' },
+    customStyles: { padding: 'var(--ds-size-6)' },
     status: {
       type: 'beta',
       url: 'http://www.url.com/status',
