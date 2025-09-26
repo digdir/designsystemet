@@ -6,7 +6,7 @@ on:
     paths:
       - 'packages/cli/**'
       - 'pnpm-lock.yaml'
-      - '.github/workflows/check-cli-node-compat.yml'
+      - '.github/workflows/check-cli-node-compatibility.yml'
 
 permissions:
   contents: read
