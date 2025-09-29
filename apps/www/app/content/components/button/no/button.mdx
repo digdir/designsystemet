@@ -122,13 +122,14 @@ Som oftast er **venstre** den beste plasseringa, men det finst unntak:
 - Dersom knappen er fast plassert på høgre side av grensesnittet, er det best at ikonet òg er plassert til høgre for teksten.
 
 Vi skal halde oss til eitt ikon per knapp.
-{/* TODO: a row component or just div class=row */}
-<DoDont story="DoIcon">
-  Bare bruk ett ikon per knapp.
-</DoDont>
-<DoDont story="DontIcon">
-  Ikke bruk flere ikoner i samme knapp.
-</DoDont>
+<div className="dodont-row">
+  <DoDont story="DoIcon">
+    Bare bruk ett ikon per knapp.
+  </DoDont>
+  <DoDont story="DontIcon">
+    Ikke bruk flere ikoner i samme knapp.
+  </DoDont>
+  </div>
 
 ### Unngå å bruke deaktiverte knappar
 

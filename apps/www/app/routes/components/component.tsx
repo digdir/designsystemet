@@ -92,7 +92,6 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
 export default function Components({
   loaderData: {
     stories,
-    dodont,
     mdxCode,
     frontmatter,
     cssVars,

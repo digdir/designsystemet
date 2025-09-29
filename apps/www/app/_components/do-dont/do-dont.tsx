@@ -24,7 +24,6 @@ export const DoDont = ({
   children,
   ...rest
 }: doDontProps) => {
-  console.log(code);
   return (
     <div
       className={classes.dodont}
