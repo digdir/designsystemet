@@ -29,9 +29,7 @@
 
 - Update npm non-major dependencies ([#4093](https://github.com/digdir/designsystemet/pull/4093))
 
-- Set `engines` to `^22` ([#4055](https://github.com/digdir/designsystemet/pull/4055))
-
-- Update supported engines. Now supports node 18, 20 and 22 ([#3925](https://github.com/digdir/designsystemet/pull/3925))
+- Update supported engines. Now supports node >=20 <25 ([#3925](https://github.com/digdir/designsystemet/pull/3925))
 
 ## 1.5.1
 
