@@ -27,6 +27,7 @@ const scopes = {
 
 type LiveComponentProps = {
   code: string;
+  layout?: 'row' | 'column' | 'centered';
 };
 
 //copied from https://github.com/FormidableLabs/react-live/blob/master/packages/react-live/src/components/Live/LiveContext.ts
@@ -215,7 +216,10 @@ const EditorWithLive = withLive(Editor) as ComponentType<{
   html: HTMLElement | null;
 }>;
 
-export const LiveComponent = ({ code }: LiveComponentProps) => {
+export const LiveComponent = ({
+  code,
+  layout = 'centered',
+}: LiveComponentProps) => {
   const location = useLocation();
   const [showEditor, setShowEditor] = useState(false);
   const [colorScheme, setColorScheme] = useState<string | null>('dark');
@@ -264,7 +268,12 @@ export const LiveComponent = ({ code }: LiveComponentProps) => {
       noInline
       theme={colorScheme === 'dark' ? themes.vsDark : themes.vsLight}
     >
-      <div className={classes.preview} data-color='accent' data-live='true'>
+      <div
+        className={classes.preview}
+        data-color='accent'
+        data-live='true'
+        data-layout={layout}
+      >
         <LivePreview
           data-color-scheme={previewColorScheme}
           className={classes['live-preview']}

@@ -153,7 +153,13 @@ export default function Components({
   );
 }
 
-const Story = ({ story }: { story: string }) => {
+const Story = ({
+  story,
+  layout,
+}: {
+  story: string;
+  layout?: 'row' | 'column' | 'centered';
+}) => {
   const data =
     useRouteLoaderData<Route.ComponentProps['loaderData']>('components-page');
   if (!data) return null;
@@ -165,6 +171,7 @@ const Story = ({ story }: { story: string }) => {
   return (
     <LiveComponent
       code={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
+      layout={layout}
     />
   );
 };

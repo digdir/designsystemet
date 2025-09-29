@@ -14,11 +14,21 @@
     padding: var(--ds-size-8);
     padding-bottom: var(--ds-size-12);
     border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
-    /*@TODO: this probably needs to be customizable per story*/
     display: flex;
-    align-items: center;
-    justify-content: center;
     gap: var(--ds-size-2);
+    flex-wrap: wrap;
+
+    [data-layout='centered'] & {
+      justify-content: center;
+      align-items: center;
+    }
+    [data-layout='row'] & {
+      justify-content: flex-start;
+    }
+    [data-layout='column'] & {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 
   & .codeButton {
