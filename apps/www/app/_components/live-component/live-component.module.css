@@ -118,6 +118,9 @@
     white-space: pre-wrap;
     border-bottom-left-radius: var(--_br);
     border-bottom-right-radius: var(--_br);
+    &:global(.language-html) [class~='plain'] {
+      color: var(--ds-color-neutral-text-default);
+    }
   }
 
   & [class~='plain-text'] {

@@ -42,6 +42,7 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
 
   // Extract exported story functions from *.stories.tsx
   const storyEntries = extractStories(componentDir);
+  // Extract exported dodont functions from *.dodont.tsx
   const doDontEntries = extractStories(componentDir, true);
 
   const mdxSource = getFileFromContentDir(
