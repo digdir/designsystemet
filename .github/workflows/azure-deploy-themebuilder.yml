@@ -30,7 +30,7 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: azure-themebuilder-prod-deploy-${{ inputs.environment == 'production' && 'production' || github.pr.number || 'preview' }}
+  group: azure-themebuilder-prod-deploy-${{ inputs.environment == 'production' && 'production' || inputs.pr_number || 'preview' }}
   cancel-in-progress: true
 
 env:
