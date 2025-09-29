@@ -89,6 +89,7 @@
   outline: 2px solid var(--ds-color-neutral-border-subtle);
 }
 .editor {
+  background-color: var(--ds-color-neutral-background-default);
   border-top: 1px solid var(--ds-color-neutral-border-subtle);
   font-family: monospace;
   border-top-left-radius: 0;
@@ -101,7 +102,7 @@
   }
 
   & > pre {
-    background-color: var(--ds-color-neutral-background-default) !important;
+    background-color: transparent !important;
     font-size: min(0.8em, 14px);
     padding: var(--ds-size-5) !important;
     white-space: pre-wrap;

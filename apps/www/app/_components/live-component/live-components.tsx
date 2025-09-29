@@ -82,6 +82,25 @@ const Editor = ({ live, html }: EditorProps) => {
   const reset = () => {
     live.onChange(live.code);
     setResetCount(resetCount + 1);
+    setTimeout(() => {
+      const editor = wrapperRef.current?.querySelector(
+        '.live-editor',
+      ) as HTMLElement | null;
+      editor?.animate(
+        [
+          {
+            offset: 0.01,
+            backgroundColor:
+              'color-mix(in oklab, var(--ds-color-neutral-background-default), yellow 50%)',
+          },
+        ],
+        {
+          duration: 900,
+          easing: 'ease',
+          fill: 'forwards',
+        },
+      );
+    }, 0);
   };
 
   const copy = async () => {
