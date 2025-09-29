@@ -6,7 +6,7 @@ ARG PORT
 ENV PORT=${PORT:-8000}
 ARG HOST
 ENV HOST=${HOST:-0.0.0.0}
-ARG ENV=${{ inputs.environment }}
+ARG ENV
 ENV ENV=${ENV:-preview}
 
 FROM base AS packages
