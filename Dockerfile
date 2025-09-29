@@ -15,9 +15,10 @@ RUN pnpm build
 
 FROM packages AS www-build
 WORKDIR /usr/src/app
-ENV PORT=$PORT
-ENV HOST=$HOST
-ENV ENV=$ENV
+ARG PORT
+ARG HOST
+ARG APP_ENV
+ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
 RUN pnpm build:www
 RUN pnpm deploy --filter=@web/www --prod /prod/@web/www
 

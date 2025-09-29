@@ -68,7 +68,7 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: ${{ env.ACR_NAME }}.azurecr.io/storybook:${{ env.IMAGE }}
-          secrets: |
+          build-args: |
             PORT=${{ env.PORT }}
             HOST=0.0.0.0
             ENV=${{ inputs.environment }}
