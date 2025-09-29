@@ -6,6 +6,7 @@ import type { MergeRight } from '../../utilities';
 import { RovingFocusRoot } from '../../utilities/roving-focus/roving-focus-root';
 
 export type ToggleGroupContextProps = {
+  variant?: 'primary' | 'secondary';
   value?: string;
   defaultValue?: string;
   onChange?: (value: string) => void;
@@ -17,6 +18,11 @@ export const ToggleGroupContext = createContext<ToggleGroupContextProps>({});
 export type ToggleGroupProps = MergeRight<
   DefaultProps & Omit<HTMLAttributes<HTMLDivElement>, 'value' | 'onChange'>,
   {
+    /**
+     * Specify which variant to use
+     * @default 'primary'
+     */
+    variant?: 'primary' | 'secondary';
     /**
      * Controlled state for `ToggleGroup` component.
      */
@@ -48,7 +54,16 @@ export type ToggleGroupProps = MergeRight<
  */
 export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
   function ToggleGroup(
-    { children, value, defaultValue, onChange, name, className, ...rest },
+    {
+      children,
+      variant = 'primary',
+      value,
+      defaultValue,
+      onChange,
+      name,
+      className,
+      ...rest
+    },
     ref,
   ) {
     const nameId = useId();
@@ -69,6 +84,7 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
     return (
       <ToggleGroupContext.Provider
         value={{
+          variant,
           value,
           defaultValue,
           name: name ?? `togglegroup-name-${nameId}`,
@@ -79,6 +95,7 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
           <div
             className={cl('ds-toggle-group', className)}
             role='radiogroup'
+            data-variant={variant}
             ref={ref}
             {...rest}
           >

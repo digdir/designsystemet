@@ -100,7 +100,7 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     },
     {
       name: 'navigation.theme-builder',
-      href: 'https://theme.designsystemet.no',
+      href: `https://theme.designsystemet.no/${lang}`,
     },
   ];
 

@@ -1,3 +1,3 @@
 export function isProduction() {
-  return process.env.VERCEL_ENV === 'production';
+  return process.env.ENV === 'production';
 }

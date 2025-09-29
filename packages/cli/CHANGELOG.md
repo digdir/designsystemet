@@ -1,5 +1,36 @@
 # Change Log
 
+## 1.6.0
+
+### Patch Changes
+
+- Add possiblity to override colors in config: ([#4073](https://github.com/digdir/designsystemet/pull/4073))
+
+  ```json
+  "theme": {
+    "overrides": {
+      "colors": {
+        "dominant": {
+          "background-default": {
+            "light": "#ff0000",
+            "dark": "#000fff"
+          },
+          "background-tinted": {
+            "light": "#f0ff00",
+            "dark": "#ff00ff"
+          }
+        }
+      }
+    }
+  }
+  ```
+
+- Font size variables are now rounded to the nearest pixel. This affects size modes "sm" and "lg", which had subpixel values after v1.5.0. ([#4070](https://github.com/digdir/designsystemet/pull/4070))
+
+- Update npm non-major dependencies ([#4093](https://github.com/digdir/designsystemet/pull/4093))
+
+- Update supported engines. Now supports node >=20 <25 ([#3925](https://github.com/digdir/designsystemet/pull/3925))
+
 ## 1.5.1
 
 ### Patch Changes

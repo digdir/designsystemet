@@ -1,5 +1,23 @@
 # Change Log
 
+## 1.6.0
+
+### Minor Changes
+
+- **toggle-group**: Added new secondary design available with `data-variant="secondary"` (or `variant="secondary"` in react) ([#4092](https://github.com/digdir/designsystemet/pull/4092))
+
+- **toggle-group**: Changed border-radius to `--ds-border-radius-default`, border-color to `--ds-color-border-default` and color to `--ds-color-text-default`. ([#4092](https://github.com/digdir/designsystemet/pull/4092))
+
+### Patch Changes
+
+- **link**: Change `:focus-visible` styling to use border, not background ([#4095](https://github.com/digdir/designsystemet/pull/4095))
+  - Removes `--dsc-link-background--focus`
+  - Removes `--dsc-link-color--focus`
+
+- **link**: Add `--dsc-link-border-radius`, default is `var(--ds-border-radius-md)` ([#4095](https://github.com/digdir/designsystemet/pull/4095))
+
+- **Dropdown**: `Dropdown.Heading` (h2-h6) - changed color to text-default and font-weight to 500 ([#4076](https://github.com/digdir/designsystemet/pull/4076))
+
 ## 1.5.1
 
 ### Patch Changes
