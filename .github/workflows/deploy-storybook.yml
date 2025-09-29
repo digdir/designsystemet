@@ -1,4 +1,4 @@
-name: Deploy www
+name: Deploy storybook
 on:
   workflow_dispatch:
     inputs:
@@ -13,9 +13,12 @@ on:
     branches:
       - main
     paths:
-      - 'apps/www/**'
+      - 'apps/storybook/**'
 
-permissions: {}
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
 
 jobs:
   deploy-production:

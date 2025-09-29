@@ -15,7 +15,10 @@ on:
     paths:
       - 'apps/www/**'
 
-permissions: {}
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
 
 jobs:
   deploy-production:
