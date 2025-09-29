@@ -30,7 +30,7 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: azure-www-prod-deploy
+  group: azure-www-prod-deploy-${{ inputs.environment == 'production' && 'production' || github.pr.number || 'preview' }}
   cancel-in-progress: true
 
 env:
