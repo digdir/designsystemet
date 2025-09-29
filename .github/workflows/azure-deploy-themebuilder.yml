@@ -98,7 +98,7 @@ jobs:
           registryPassword: ${{ steps.acr.outputs.pass }}
           targetPort: ${{ env.PORT }}
           ingress: external
-          environmentVariables: "PORT=${{ env.PORT }} HOST=0.0.0.0 ENV=${{ inputs.environment }}"
+          environmentVariables: "PORT=${{ env.PORT }} HOST=0.0.0.0 APP_ENV=${{ inputs.environment }}"
 
       - name: fetch fqdn
         id: fqdn
