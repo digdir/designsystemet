@@ -23,6 +23,10 @@
     margin-block: var(--ds-size-1) 0;
   }
 
+  & > *.ds-sr-only + * {
+    margin-block-start: 0;
+  }
+
   &:disabled > legend,
   &:disabled > legend + p {
     opacity: var(--ds-opacity-disabled);

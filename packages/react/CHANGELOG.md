@@ -1,5 +1,53 @@
 # Change Log
 
+## 1.6.0
+
+### Minor Changes
+
+- **ToggleGroup**: Added new prop `variant` to enable new `secondary` design option ([#4092](https://github.com/digdir/designsystemet/pull/4092))
+
+### Patch Changes
+
+- **Spinner**: Allow using `aria-hidden` when `aria-label` is set, which can be useful to hide or show the element from the accessibility tree based on some UI state like whether a visual label is also rendered. ([#4077](https://github.com/digdir/designsystemet/pull/4077))
+
+- Update npm non-major dependencies ([#4093](https://github.com/digdir/designsystemet/pull/4093))
+
+- **Avatar**: Allow using `aria-hidden` instead of `aria-label` in situations with visible text ([#4077](https://github.com/digdir/designsystemet/pull/4077))
+
+## 1.5.1
+
+### Patch Changes
+
+- **Field.Counter**: Update count when react controls the input ([#4047](https://github.com/digdir/designsystemet/pull/4047))
+
+- **Popover**: Only call `onClose` when `Popover` is open ([#4065](https://github.com/digdir/designsystemet/pull/4065))
+
+## 1.5.0
+
+### Minor Changes
+
+- Sizing and size modes have been reimplemented align code and Figma implementations, and to support setting size mode in css queries. ([#3866](https://github.com/digdir/designsystemet/pull/3866))
+
+  `--ds-size-*` variables are now independent of the element's font size, and only depend on the size mode, which aligns the code implementation with how the modes already worked in Figma. **Important**: This will have a large visual impact on existing code where size variables have been used to style Heading elements (e.g. margin).
+
+  Read [Sizes in code](https://www.designsystemet.no/en/fundamentals/code/sizes) for info on how size modes work after these changes.
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4039](https://github.com/digdir/designsystemet/pull/4039))
+
+- **Details**: Updated `u-details` package to adress an issue where you could tab into the content when details was closed (firefox only) ([#4022](https://github.com/digdir/designsystemet/pull/4022))
+
+## 1.4.0
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#3989](https://github.com/digdir/designsystemet/pull/3989))
+
+- Update npm non-major dependencies ([#4014](https://github.com/digdir/designsystemet/pull/4014))
+
+- **Switch**: correct jsdoc on `label` prop ([#3984](https://github.com/digdir/designsystemet/pull/3984))
+
 ## 1.3.0
 
 ### Minor Changes

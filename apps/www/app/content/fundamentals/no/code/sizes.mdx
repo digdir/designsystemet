@@ -1,7 +1,7 @@
 ---
 title: Størrelsar i kode
 description: Informasjon om korleis du bruker størrelsar på frontend.
-date: 2025-01-10
+date: 2025-09-11
 category: Kode
 color: blue
 icon: CodeIcon
@@ -10,44 +10,122 @@ order: 30
 ---
 
 
-HTML data-attributt vert brukt for å definere størrelse på ein komponent. Komponentane kan nytte alle størrelsar.
+HTML data-attributt og css custom properties (variablar) vert brukt for å definere *størrelsesmodus* for ein komponent. Dette fungerar for alle komponentar og HTML-element, med nokon få unntak som er nemnt lenger ned.
 
-Våre `size`-variablar (`--ds-size-*`) endrar seg basert på den lokale skriftstørrelsen (formel basert på `em`). Du kan lett endre den ved bruk av `data-size` for våre anbefalte størrelsar, eller definere dine eigne størrelsar ved å setje `font-size` i CSS.
+Størrelsesmodusen påverkar våre størrelsesvariablar (`--ds-size-*`) og fontstørrelsesvariablar (`--ds-font-size-*` og `--ds-*-font-size-*`).
 
-## `data-size`
+## Sette størrelsesmodus med `data-size`
 
-Dette data-attributtet blir brukt for å endre størrelsar på alle komponentar under seg.
-Alle komponentar kan være i størrelsane, `sm`, `md` eller `lg`. Som standard vil `md` bli nytta.
+Dette data-attributtet blir brukt for å endre størrelsesmodus, som påverkar elementet og alle etterkommar-element.
+Vi støttar tre størrelsesmodusar ut av boksen: `sm`, `md` eller `lg`. Som standard vil `md` bli brukt.
 
 ```html
 <body>
   <div>
-    <!-- Innhaldet her vil ha MD størrelsar -->
+    <!-- Størrelsesmodus md blir brukt som standard -->
   </div>
 
-  <div data-size="sm">
-    <!-- Innhaldet her vil ha SM størrelsar -->
+  <div data-size="sm"> <!-- Dette elementet bruker størrelsesmodus sm -->
+    <!-- Etterkommarar vil òg bruke størrelsesmodus sm -->
   </div>
 </body>
 ```
 
-Nokre komponentar har støtte for fleire størrelsar, som `xs` og `xl`. Desse størrelsane vil bli spesifisert i dokumentasjonen til komponenten,
-og det er anbefalt å bruke dei størrelsane som er spesifisert.
+## Sette størrelsesmodus med css custom properties
 
-## Korleis komponentar blir påverka
+Du kan sette css-variabelen `--ds-size` i staden for å sette ein spesifikk størrelsesmodus i markupen.
+Fordelen med dette er at du då kan endre størrelsesmodus basert på ein media query eller container query.
 
-Me delar komponentar inn i 2 grupper for størrelsar:
+Du gjer dette ved å definere `--ds-size: var(--ds-size--<mode>)`, der `<mode>` er anten `sm`, `md` eller `lg`.
+Merk at du også må sette attributtet `data-size` på elementet der modusen skal inntreffe,
+men det kan vere blankt eller kva som helst anna enn `"sm"`, `"md"` eller `"lg"`.
 
-- Eksplisitt
-- Cascading
+Eksempel: Legge til ein "auto"-størrelsesmodus
 
-### Eksplisitt
+```css
+[data-size='auto'] {
+  --ds-size: var(--ds-size--sm);
 
-Komponentar som ikkje vil følgje størrelsen til forelderen. Desse komponentane må ha `data-size` satt direkte på seg.
+  @media (min-width: 600px) {
+    --ds-size: var(--ds-size--md);
+  }
+  @media (min-width: 992px) {
+    --ds-size: var(--ds-size--lg);
+  }
+}
+```
 
-Dette er komponentar som
-- `Heading`
+```html
+<body data-size="auto">
+  <div data-size="sm"> <!-- Dette element bruker størrelsesmodus sm -->
+    <!-- Etterkommarar vil òg bruke størrelsesmodus sm -->
+  </div>
+  <!--
+    Etterkommarar av <body> utan eit eksplisitt data-size-attributt
+    bruker no størrelsesmodus sm, md eller lg basert på on breidda
+    til visningsområdet
+  -->
+</body>
+```
 
-### Cascading
+## Unntak
 
-Denne gruppa inneheld resten av komponentane, og vil arve størrelse frå næraste forelder med `data-size` satt.
+Enkelte komponentar bruker ikkje `data-size` for å sette størrelsesmodus. I staden vil
+attributtet sette komponentstørrelsen. Dette gjeld
+  - `Avatar`
+  - `Heading`
+  - `Paragraph`
+  - `Spinner`
+
+Desse komponentane støttar andre størrelsar, som `xs` og `xl`. Sjekk komponentdokumentasjonen for å sjå kva størrelsar dei støttar.
+
+Dei vil likevel bli påverka av størrelsesmodus på forfedrar. Til dømes vil det første avsnittet i dette eksempelet vere mindre enn det andre:
+```jsx
+<div data-size="sm">
+  <Paragraph data-size="xs">Lorem ipsum</Paragraph>
+</div>
+<div data-size="md">
+  <Paragraph data-size="xs">Lorem ipsum</Paragraph>
+</div>
+```
+
+Det er forvirrande at `data-size` betyr *størrelsesmodus* i nokre samanhengar, og *komponentstørrelse* i andre.
+Dette vil sannsynlegvis bli endra i neste major-versjon som ein breaking change.
+
+## Eigendefinerte størrelsesmodusar
+
+Under panseret endrar variablane våre seg basert på den lokale verdien av `--ds-size-mode-font-size`, og bruker `rem` for å skalere med nettlesarinnstillingane til brukaren. `data-size="<mode>"` og `--ds-size: var(--ds-size--<mode>)` fungerar ved å sette `--ds-size-mode-font-size` til verdiar som samsvarar med dei samme størrelsesmodusane i Figma, men du kan òg sette denne variabelen direkte for eigendefinerte størrelsar.
+
+Merk at du også må sette attributtet `data-size` på elementet der modusen skal inntreffe,
+men det kan vere blankt eller kva som helst anna enn `"sm"`, `"md"` eller `"lg"`.
+
+```css
+.example {
+  --ds-size-mode-font-size: 0.9;
+}
+[data-size="giant"] {
+  --ds-size-mode-font-size: 1.5;
+}
+```
+
+```html
+<body>
+  <div>
+    <!-- Størrelsesmodus md blir brukt som standard -->
+  </div>
+
+  <div data-size class="example">
+    <!--
+      Dette elementet og etterkommarar bruker 0.9 som skaleringsfaktor,
+      som definert av klassen .example
+    -->
+  </div>
+
+  <div data-size="giant" >
+    <!--
+      Dette elementet og etterkommarar bruker den eigendefinerte
+      størrelsesmodusen "giant", med 1.5 som skaleringsfaktor
+    -->
+  </div>
+</body>
+```

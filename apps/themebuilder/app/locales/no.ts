@@ -75,7 +75,6 @@ export default {
     tv: 'TV',
     sports: 'Sport',
     news: 'Nyheter',
-    domestic: 'Innenriks',
     'news-title': 'Reiste alene til storbyen',
     'news-description': 'Mona kvist ville finne drømmen i New York City',
     articles: 'Artikler',
@@ -131,8 +130,8 @@ export default {
     'example-2': 'Eksempel 2',
   },
   colorPane: {
-    'main-color': 'hovedfarge',
-    'support-color': 'støttefarge',
+    'main-color': 'main-farge',
+    'support-color': 'support-farge',
     add: 'Legg til',
     'edit-color': 'Rediger farge',
     save: 'Lagre',
@@ -165,6 +164,9 @@ export default {
       'Tekst og bakgrunn må ha en kontrast på minst 3:1 og en skriftstørrelse på 18 px eller større for å oppfylle WCAG AA-kravet.',
     'deco-description':
       'Oppfyller ingen kontrastkrav i WCAG og bør kun brukes til dekorative formål.',
+    'text-vs-background': 'Text og Border mot Background og Surface',
+    'text-vs-background-desc':
+      'Når du bytter mellom fargeskalaene, vil du se at kontrastene mellom fargene i seksjonen nedenfor er nesten identiske. Dette gjør at du kun trenger å vurdere kontrastene for én fargeskala for å forstå hvordan alle fungerer. Siden kontrastene er konsistente, kan du også kombinere ulike farger på tvers av skalaene.',
     'base-colors': 'Base fargene',
     'base-colors-description':
       'Fargene som blir valgt i verktøyet får tokenet Base Default i hver fargeskala. Dette betyr at det er viktig å velge en farge som har over 3:1 kontrast mot overflatefarger om den skal brukes som en viktig, meningsbærende farge. Verktøyet lager også to kontrastfarger som trygt kan brukes oppå base fargene. Disse kontrastfargene blir enten lyse eller mørke avhengig av base fargen.',
