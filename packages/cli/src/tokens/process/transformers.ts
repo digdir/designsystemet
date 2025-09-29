@@ -12,7 +12,7 @@ export const sizeRem: Transform = {
   transitive: true,
   filter: (token) => {
     const hasWantedType = typeEquals(['dimension', 'fontsize'], token);
-    const hasWantedPath = pathStartsWithOneOf(['spacing', 'sizing', 'border-radius', 'font-size'], token);
+    const hasWantedPath = pathStartsWithOneOf(['border-radius', 'font-size' /*, ['_size', 'mode-font-size']*/], token);
 
     return hasWantedType && hasWantedPath;
   },
@@ -21,7 +21,7 @@ export const sizeRem: Transform = {
 
     if (isPx(value)) {
       const baseFont = (config.basePxFontSize as unknown as number) || 16;
-      const size = parseInt(value);
+      const size = parseInt(value, 10);
 
       if (size === 0) {
         return '0';
@@ -62,5 +62,5 @@ export const unitless: Transform = {
   type: 'value',
   transitive: true,
   filter: (token) => pathStartsWithOneOf(['size', '_size'], token),
-  transform: (token) => parseInt(getValue<string>(token)),
+  transform: (token) => parseInt(getValue<string>(token), 10),
 };

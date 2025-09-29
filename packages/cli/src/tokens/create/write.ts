@@ -28,7 +28,7 @@ export const writeTokens = async (options: WriteTokensOptions) => {
   const targetDir = path.resolve(process.cwd(), String(outDir));
   const $themesPath = path.join(targetDir, '$themes.json');
   const $metadataPath = path.join(targetDir, '$metadata.json');
-  const $designsystemetPath = path.join(targetDir, '$designsystemet.json');
+  const $designsystemetPath = path.join(targetDir, '$designsystemet.jsonc');
   let themeObjects: ThemeObject[] = [];
 
   await mkdir(targetDir, dry);

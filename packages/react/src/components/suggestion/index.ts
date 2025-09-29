@@ -1,5 +1,4 @@
 import { Suggestion as SuggestionRoot } from './suggestion';
-import { SuggestionChips } from './suggestion-chips';
 import { SuggestionClear } from './suggestion-clear';
 import { SuggestionEmpty } from './suggestion-empty';
 import { SuggestionInput } from './suggestion-input';
@@ -7,10 +6,6 @@ import { SuggestionList } from './suggestion-list';
 import { SuggestionOption } from './suggestion-option';
 
 type Suggestion = typeof SuggestionRoot & {
-  /**
-   * @deprecated Suggestion.Chips is deprecated, use `renderSelected` on `Suggestion` instead
-   */
-  Chips: typeof SuggestionChips;
   /**
    * Component that provides a Suggestion list.
    *
@@ -89,7 +84,6 @@ type Suggestion = typeof SuggestionRoot & {
  * </Suggestion>
  */
 const EXPERIMENTAL_Suggestion: Suggestion = Object.assign(SuggestionRoot, {
-  Chips: SuggestionChips,
   List: SuggestionList,
   Input: SuggestionInput,
   Empty: SuggestionEmpty,
@@ -98,7 +92,6 @@ const EXPERIMENTAL_Suggestion: Suggestion = Object.assign(SuggestionRoot, {
 });
 
 EXPERIMENTAL_Suggestion.displayName = 'EXPERIMENTAL_Suggestion';
-EXPERIMENTAL_Suggestion.Chips.displayName = 'EXPERIMENTAL_Suggestion.Chips';
 EXPERIMENTAL_Suggestion.List.displayName = 'EXPERIMENTAL_Suggestion.List';
 EXPERIMENTAL_Suggestion.Input.displayName = 'EXPERIMENTAL_Suggestion.Input';
 EXPERIMENTAL_Suggestion.Empty.displayName = 'EXPERIMENTAL_Suggestion.Empty';
@@ -107,7 +100,6 @@ EXPERIMENTAL_Suggestion.Clear.displayName = 'EXPERIMENTAL_Suggestion.Clear';
 
 export {
   EXPERIMENTAL_Suggestion,
-  SuggestionChips as EXPERIMENTAL_SuggestionChips,
   SuggestionList as EXPERIMENTAL_SuggestionList,
   SuggestionInput as EXPERIMENTAL_SuggestionInput,
   SuggestionEmpty as EXPERIMENTAL_SuggestionEmpty,
@@ -115,11 +107,11 @@ export {
   SuggestionClear as EXPERIMENTAL_SuggestionClear,
 };
 export type {
+  SuggestionItem,
+  SuggestionMultipleProps,
   SuggestionProps,
-  SuggestionSelected, // Export SuggestionValues for easier useState
-  SuggestionSelected as SuggestionValues, // Kept for backwards compatibility
+  SuggestionSingleProps,
 } from './suggestion';
-export type { SuggestionChipsProps } from './suggestion-chips';
 export type { SuggestionClearProps } from './suggestion-clear';
 export type { SuggestionEmptyProps } from './suggestion-empty';
 export type { SuggestionInputProps } from './suggestion-input';

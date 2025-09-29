@@ -257,3 +257,5 @@ const colorMetadataByNumber = R.indexBy((metadata) => metadata.number, Object.va
 export const getColorMetadataByNumber = (number: ColorNumber) => {
   return colorMetadataByNumber[number];
 };
+
+export const colorNames = Object.keys(colorMetadata) as Array<keyof typeof colorMetadata>;
