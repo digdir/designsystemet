@@ -6,21 +6,10 @@ import type { Colors } from '../../types.js';
 const capitalize = (word: string) => word.charAt(0).toUpperCase() + word.slice(1);
 
 async function createHash(text: string, algo = 'SHA-1') {
-  /* This function is written to work in node 18, 20, 22 */
-  const bytes = new TextEncoder().encode(text);
-  const subtle = globalThis.crypto?.subtle; // questionmark here since subtle is not available in node 18
-
-  try {
-    if (subtle.digest) {
-      const buf = await subtle.digest(algo, bytes);
-      return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, '0')).join('');
-    }
-    throw new Error('no subtle');
-  } catch {
-    const { createHash } = await import('node:crypto');
-    const nodeAlgo = algo.replace('-', '').toLowerCase(); // e.g. 'SHA-1' -> 'sha1'
-    return createHash(nodeAlgo).update(bytes).digest('hex');
-  }
+  const crypto = globalThis.crypto;
+  return Array.from(new Uint8Array(await crypto.subtle.digest(algo, new TextEncoder().encode(text))), (byte) =>
+    byte.toString(16).padStart(2, '0'),
+  ).join('');
 }
 
 type ColorSchemes = Array<ColorScheme>;
