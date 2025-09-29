@@ -4,7 +4,7 @@
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "engines": {
-    "node": ">=18 <25"
+    "node": ">=20 <25"
   },
   "repository": {
     "type": "git",
