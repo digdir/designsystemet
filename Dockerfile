@@ -2,6 +2,12 @@ FROM node:22-slim AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
+ARG PORT
+ENV PORT=${PORT:-8000}
+ARG HOST
+ENV HOST=${HOST:-0.0.0.0}
+ARG ENV=${{ inputs.environment }}
+ENV ENV=${ENV:-preview}
 
 FROM base AS packages
 COPY . /usr/src/app
