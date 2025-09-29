@@ -1,19 +1,12 @@
-name: Deploy www
+name: azure preview www
+
 on:
   workflow_dispatch:
-    inputs:
-      environment:
-        type: choice
-        default: next
-        description: Deploy to environment
-        options:
-          - production
-          - next
-  push:
-    branches:
-      - main
+  pull_request:
+    types: [opened, synchronize]
     paths:
       - 'apps/www/**'
+      - 'internal/components/**'
 
 permissions:
   id-token: write
@@ -21,10 +14,12 @@ permissions:
   pull-requests: write
 
 jobs:
-  deploy-production:
+  deploy-preview:
     uses: ./.github/workflows/azure-deploy-www.yml
     with:
-      environment: ${{ github.event.inputs.environment == 'production' && 'production' || 'preview' }}
+      environment: preview
+      pr_number: ${{ github.event.number }}
+      update_comment: true
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
