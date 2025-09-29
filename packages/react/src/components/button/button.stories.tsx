@@ -120,7 +120,7 @@ export const Loading: StoryFn<typeof Button> = () => (
     <Button variant='tertiary' loading>
       Laster...
     </Button>
-    <Button icon loading>
+    <Button icon loading aria-label='Rediger'>
       {/* When loading is true and icon is set, loading will take precedence */}
       <PencilWritingIcon aria-hidden />
     </Button>
