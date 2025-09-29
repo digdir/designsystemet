@@ -1,6 +1,6 @@
 ARG PORT
 ARG HOST
-ARG ENV
+ARG APP_ENV
 
 FROM node:22-slim AS base
 ENV PNPM_HOME="/pnpm"

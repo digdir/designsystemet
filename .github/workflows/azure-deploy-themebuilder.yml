@@ -71,7 +71,7 @@ jobs:
           build-args: |
             PORT=${{ env.PORT }}
             HOST=0.0.0.0
-            ENV=${{ inputs.environment }}
+            APP_ENV=${{ inputs.environment }}
 
       - name: get acr creds (masked)
         id: acr
