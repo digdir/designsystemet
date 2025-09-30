@@ -127,6 +127,19 @@ describe('Textfield', () => {
 
     expect(screen.getAllByText('1 tegn for mye')[0]).toBeInTheDocument();
   });
+
+  it('Render counter before error validation messages', () => {
+    render({
+      value: 'lorem',
+      label: 'test',
+      counter: 2,
+      error: 'Other invalid condition',
+    });
+
+    const countText = screen.getAllByText('3 tegn for mye')[0];
+    const errorText = screen.getByText('Other invalid condition');
+    expect(countText.compareDocumentPosition(errorText)).toBe(4);
+  });
 });
 
 const render = (
