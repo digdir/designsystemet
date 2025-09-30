@@ -1,7 +1,7 @@
 import * as ds from '@digdir/designsystemet-react';
 import * as aksel from '@navikt/aksel-icons';
 import type { HTMLAttributes, ReactNode } from 'react';
-//import cl from 'clsx/lite';
+import { useTranslation } from 'react-i18next';
 import { LiveError, LivePreview, LiveProvider } from 'react-live';
 import classes from './do-dont.module.css';
 
@@ -24,6 +24,7 @@ export const DoDont = ({
   children,
   ...rest
 }: doDontProps) => {
+  const { t } = useTranslation();
   return (
     <div
       className={classes.dodont}
@@ -38,12 +39,12 @@ export const DoDont = ({
         {variant === 'do' ? (
           <>
             <aksel.CheckmarkCircleFillIcon />
-            <p className='ds-paragraph'>Gjør</p>
+            <p className='ds-paragraph'>{t('do')}</p>
           </>
         ) : (
           <>
             <aksel.XMarkOctagonFillIcon />
-            <p className='ds-paragraph'>Gjør ikke</p>
+            <p className='ds-paragraph'>{t('dont')}</p>
           </>
         )}
       </div>
