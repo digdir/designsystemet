@@ -21,4 +21,9 @@ packageExtensions:
     peerDependenciesMeta:
       react:
         optional: true
-
+syncInjectedDepsAfterScripts:
+  - dist
+injectWorkspacePackages: true
+minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - "@u-elements/*"

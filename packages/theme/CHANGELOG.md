@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.6.0
+
+### Patch Changes
+
+- Font size variables are now rounded to the nearest pixel. This affects size modes "sm" and "lg", which had subpixel values after v1.5.0. ([#4070](https://github.com/digdir/designsystemet/pull/4070))
+
+## 1.5.1
+
 ## 1.5.0
 
 ### Minor Changes

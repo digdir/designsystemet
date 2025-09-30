@@ -1,0 +1,116 @@
+name: azure deploy www
+run-name: Deploy to www to ${{ inputs.environment }} by @${{ github.actor }}
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+        description: 'Deployment environment (production, preview)'
+      pr_number:
+        required: false
+        type: string
+        description: 'PR number for preview deployments'
+      update_comment:
+        required: false
+        type: boolean
+        default: false
+        description: 'Whether to update PR comment with deployment URL'
+    secrets:
+      AZURE_CLIENT_ID:
+        required: true
+      AZURE_TENANT_ID:
+        required: true
+      AZURE_SUBSCRIPTION_ID:
+        required: true
+
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: azure-www-prod-deploy-${{ inputs.environment == 'production' && 'production' || inputs.pr_number || 'preview' }}
+  cancel-in-progress: true
+
+env:
+  RESOURCE_GROUP: ${{ inputs.environment == 'production' && 'rg-designsystemet-prod' || 'rg-designsystemet-test' }}
+  CONTAINERAPPS_ENV: ${{ inputs.environment == 'production' && 'www-prod-ca' || 'www-test-ca' }}
+  ACR_NAME: designsystemetacr
+  APP_NAME: ${{ inputs.environment == 'production' && 'www-prod' || format('www-pr-{0}', inputs.pr_number) }}
+  IMAGE: ${{ inputs.pr_number && format('{0}-{1}', inputs.pr_number, github.sha) || format('{0}-{1}', github.run_id, github.sha) }}
+  PORT: 8000
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    outputs:
+      fqdn: ${{ steps.fqdn.outputs.fqdn }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: az login (oidc)
+        uses: azure/login@a457da9ea143d694b1b9c7c869ebb04ebe844ef5 # v2.3.0
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: acr login (for docker push)
+        run: az acr login --name ${{ env.ACR_NAME }}
+
+      - name: build & push image
+        uses: docker/build-push-action@ca052bb54ab0790a636c9b5f226502c73d547a25 # v5
+        with:
+          context: .
+          file: ./Dockerfile
+          target: www
+          platforms: linux/amd64
+          push: true
+          tags: ${{ env.ACR_NAME }}.azurecr.io/www:${{ env.IMAGE }}
+          build-args: |
+            PORT=${{ env.PORT }}
+            HOST=0.0.0.0
+            APP_ENV=${{ inputs.environment }}
+
+      - name: get acr creds (masked)
+        id: acr
+        shell: bash
+        run: |
+          set -euo pipefail
+          az acr update -n "${ACR_NAME}" --admin-enabled true >/dev/null
+          USER=$(az acr credential show -n "${ACR_NAME}" --query username -o tsv)
+          PASS=$(az acr credential show -n "${ACR_NAME}" --query 'passwords[0].value' -o tsv)
+          echo "::add-mask::${USER}"
+          echo "::add-mask::${PASS}"
+          echo "user=${USER}" >> "$GITHUB_OUTPUT"
+          echo "pass=${PASS}" >> "$GITHUB_OUTPUT"
+
+      - name: deploy (no mi; use registry creds)
+        uses: azure/container-apps-deploy-action@29ee19866ec987ededd70b8412d9ee241a9102d1 # v1
+        with:
+          resourceGroup: ${{ env.RESOURCE_GROUP }}
+          containerAppEnvironment: ${{ env.CONTAINERAPPS_ENV }}
+          containerAppName: ${{ env.APP_NAME }}
+          imageToDeploy: ${{ env.ACR_NAME }}.azurecr.io/www:${{ env.IMAGE }}
+          registryUrl: ${{ env.ACR_NAME }}.azurecr.io
+          registryUsername: ${{ steps.acr.outputs.user }}
+          registryPassword: ${{ steps.acr.outputs.pass }}
+          targetPort: ${{ env.PORT }}
+          ingress: external
+          environmentVariables: "PORT=${{ env.PORT }} HOST=0.0.0.0 APP_ENV=${{ inputs.environment }}"
+
+      - name: fetch fqdn
+        id: fqdn
+        run: |
+          FQDN=$(az containerapp show -n "${APP_NAME}" -g "${RESOURCE_GROUP}" --query properties.configuration.ingress.fqdn -o tsv)
+          echo "fqdn=${FQDN}" >> "$GITHUB_OUTPUT"
+
+  update-comment:
+    if: ${{ inputs.update_comment }}
+    needs: deploy
+    uses: ./.github/workflows/preview-comment.yml
+    with:
+      pr_number: ${{ github.event.number }}
+      deployment_type: www
+      deployment_url: https://${{ needs.deploy.outputs.fqdn }}

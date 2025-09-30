@@ -1,10 +1,10 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "engines": {
-    "node": ">=22.19.0"
+    "node": ">=20 <25"
   },
   "repository": {
     "type": "git",
@@ -52,7 +52,7 @@
     "test:tokens-build-config-tailwind": "pnpm run designsystemet tokens build -t ./temp/config/design-tokens -o ./temp/config/build --clean --experimental-tailwind",
     "test:tokens-create-and-build-options": "pnpm test:tokens-create-options && pnpm test:tokens-build",
     "test:tokens-create-and-build-config": "pnpm test:tokens-create-config && pnpm test:tokens-build-config",
-    "test": "pnpm test:tokens-create-and-build-options && pnpm test:tokens-create-and-build-config",
+    "test": "node -v && pnpm test:tokens-create-and-build-options && pnpm test:tokens-create-and-build-config",
     "digdir:tokens-build": "pnpm run designsystemet tokens build -t ../../internal/design-tokens -o ../../packages/theme/brand --clean --experimental-tailwind",
     "digdir:tokens-create": "pnpm run designsystemet tokens create --config ./configs/digdir.config.json",
     "update:template": "tsx ./src/scripts/update-template.ts",
@@ -67,7 +67,7 @@
     "change-case": "^5.4.4",
     "chroma-js": "^3.1.2",
     "colorjs.io": "^0.6.0-alpha.1",
-    "commander": "^14.0.0",
+    "commander": "^14.0.1",
     "fast-glob": "^3.3.3",
     "hsluv": "^1.0.1",
     "object-hash": "^3.0.0",
@@ -75,18 +75,18 @@
     "postcss": "^8.5.6",
     "ramda": "^0.31.3",
     "style-dictionary": "^5.0.4",
-    "zod": "^4.1.5",
-    "zod-validation-error": "^4.0.1"
+    "zod": "^4.1.11",
+    "zod-validation-error": "^4.0.2"
   },
   "devDependencies": {
     "@tokens-studio/types": "0.5.2",
     "@types/apca-w3": "^0.1.3",
     "@types/chroma-js": "^3.1.1",
     "@types/fs-extra": "^11.0.4",
-    "@types/node": "^22.18.1",
+    "@types/node": "^22.18.6",
     "@types/object-hash": "^3.0.6",
     "@types/ramda": "^0.31.1",
-    "fs-extra": "^11.3.1",
+    "fs-extra": "^11.3.2",
     "tslib": "^2.8.1",
     "tsup": "^8.5.0",
     "tsx": "^4.20.5",
