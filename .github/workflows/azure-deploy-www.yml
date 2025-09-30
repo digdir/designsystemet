@@ -30,7 +30,7 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: azure-www-prod-deploy
+  group: azure-www-prod-deploy-${{ inputs.environment == 'production' && 'production' || inputs.pr_number || 'preview' }}
   cancel-in-progress: true
 
 env:
@@ -68,6 +68,10 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: ${{ env.ACR_NAME }}.azurecr.io/www:${{ env.IMAGE }}
+          build-args: |
+            PORT=${{ env.PORT }}
+            HOST=0.0.0.0
+            APP_ENV=${{ inputs.environment }}
 
       - name: get acr creds (masked)
         id: acr
@@ -94,10 +98,7 @@ jobs:
           registryPassword: ${{ steps.acr.outputs.pass }}
           targetPort: ${{ env.PORT }}
           ingress: external
-          environmentVariables: |
-            PORT=${{ env.PORT }}
-            HOST=0.0.0.0
-            ENV=${{ inputs.environment }}
+          environmentVariables: "PORT=${{ env.PORT }} HOST=0.0.0.0 APP_ENV=${{ inputs.environment }}"
 
       - name: fetch fqdn
         id: fqdn

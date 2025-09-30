@@ -107,7 +107,7 @@ const config: Config = {
   buildEnd: async () => {
     const robotsPath = join(dirname, 'public', 'robots.txt');
     const robotsContent =
-      process.env.ENV === 'production'
+      process.env.APP_ENV === 'production'
         ? `User-agent: *\nAllow: /`
         : `User-agent: *\nDisallow: /`;
 
