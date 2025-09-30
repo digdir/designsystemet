@@ -1,5 +1,64 @@
 # Change Log
 
+## 1.6.0
+
+### Patch Changes
+
+- Add possiblity to override colors in config: ([#4073](https://github.com/digdir/designsystemet/pull/4073))
+
+  ```json
+  "theme": {
+    "overrides": {
+      "colors": {
+        "dominant": {
+          "background-default": {
+            "light": "#ff0000",
+            "dark": "#000fff"
+          },
+          "background-tinted": {
+            "light": "#f0ff00",
+            "dark": "#ff00ff"
+          }
+        }
+      }
+    }
+  }
+  ```
+
+- Font size variables are now rounded to the nearest pixel. This affects size modes "sm" and "lg", which had subpixel values after v1.5.0. ([#4070](https://github.com/digdir/designsystemet/pull/4070))
+
+- Update npm non-major dependencies ([#4093](https://github.com/digdir/designsystemet/pull/4093))
+
+- Update supported engines. Now supports node >=20 <25 ([#3925](https://github.com/digdir/designsystemet/pull/3925))
+
+## 1.5.1
+
+### Patch Changes
+
+- Update dependency @types/ramda to ^0.31.1 ([#4060](https://github.com/digdir/designsystemet/pull/4060))
+
+## 1.5.0
+
+### Minor Changes
+
+- Sizing and size modes have been reimplemented align code and Figma implementations, and to support setting size mode in css queries. ([#3866](https://github.com/digdir/designsystemet/pull/3866))
+
+  `--ds-size-*` variables are now independent of the element's font size, and only depend on the size mode, which aligns the code implementation with how the modes already worked in Figma. **Important**: This will have a large visual impact on existing code where size variables have been used to style Heading elements (e.g. margin).
+
+  Read [Sizes in code](https://www.designsystemet.no/en/fundamentals/code/sizes) for info on how size modes work after these changes.
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4039](https://github.com/digdir/designsystemet/pull/4039))
+
+## 1.4.0
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#3989](https://github.com/digdir/designsystemet/pull/3989))
+
+- Update npm non-major dependencies ([#4014](https://github.com/digdir/designsystemet/pull/4014))
+
 ## 1.3.0
 
 ### Minor Changes

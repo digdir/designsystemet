@@ -1,6 +1,7 @@
 import { Link } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router';
 import { Github } from '../logos/github';
 import classes from './edit-page-on-github.module.css';
@@ -9,6 +10,7 @@ export const EditPageOnGithub = ({
   className,
   ...rest
 }: Omit<HTMLAttributes<HTMLAnchorElement>, 'color'>) => {
+  const { t } = useTranslation();
   const { pathname } = useLocation();
   const pathParts = pathname.split('/');
   const lang = pathParts[1];
@@ -29,7 +31,7 @@ export const EditPageOnGithub = ({
       className={cl(classes.githubLink, className)}
     >
       <Github aria-hidden='true' />
-      Rediger denne siden på Github (åpnes i ny fane)
+      {t('editOnGithub')}
     </Link>
   );
 };

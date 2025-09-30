@@ -38,17 +38,15 @@ export const typographyVariables: GetStyleDictionaryConfig = ({ theme, typograph
             destination: `typography/${typography}.css`,
             format: formats.typography.name,
             filter: (token) => {
-              const included = typeEquals(
-                ['typography', 'fontweight', 'fontFamily', 'lineHeight', 'dimension', 'font', 'fontsize'],
-                token,
-              );
+              const included = typeEquals(['fontweight', 'fontFamily', 'lineHeight', 'dimension'], token);
 
               // Remove primitive typgography tokens
               if (/primitives\/modes\/typography\/(primary|secondary)/.test(token.filePath)) return false;
 
               return (
                 included &&
-                !pathStartsWithOneOf(['spacing', 'sizing', 'size', '_size', 'border-width', 'border-radius'], token)
+                !pathStartsWithOneOf(['spacing', 'sizing', 'size', '_size', 'border-width', 'border-radius'], token) &&
+                !(pathStartsWithOneOf(['typography'], token) && token.path.includes('fontSize'))
               );
             },
           },

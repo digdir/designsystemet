@@ -50,6 +50,20 @@
     text-decoration: underline;
     text-decoration-thickness: max(1px, 0.0625rem, 0.1025em);
     text-underline-offset: max(6px, 0.25rem, 0.22em);
+
+    /* reset .ds-link focus styles */
+    &.ds-link {
+      &:focus-visible {
+        background: none;
+        color: inherit;
+        outline: 0;
+      }
+
+      &:active {
+        background: none;
+        color: inherit;
+      }
+    }
   }
 
   /* Add states when Card is a anchor, button, or when containing a anchor in heading */

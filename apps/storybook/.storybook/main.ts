@@ -80,7 +80,6 @@ const config: StorybookConfig = {
     '@storybook/addon-themes',
     'storybook-addon-pseudo-states',
     '@storybook/addon-vitest',
-    //'@whitespace/storybook-addon-html', //wait for it to be updated to support sb9
     {
       name: '@storybook/addon-docs',
       options: {
@@ -102,13 +101,15 @@ const config: StorybookConfig = {
       },
     },
   },
-  tags: (_, options) => {
+  tags: (tagOptions, options) => {
     return {
+      ...tagOptions,
       // Configure stories with the 'chromatic' tag to only be visible in development.
       // In production, they will be picked up by snapshot tests etc but not be visible.
       chromatic: {
         excludeFromDocsStories: true,
         excludeFromSidebar: options.configType === 'PRODUCTION',
+        ...tagOptions?.chromatic,
       },
     };
   },

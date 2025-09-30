@@ -61,6 +61,7 @@ export const ColorContrasts = () => {
       </div>
       <div className='panelRight'>
         <ColorContrastMapper
+          variant='text-vs-background'
           vertical={[
             'border-subtle',
             'border-default',
@@ -77,6 +78,7 @@ export const ColorContrasts = () => {
           ]}
         />
         <ColorContrastMapper
+          variant='base-colors'
           vertical={['base-default', 'base-hover', 'base-active']}
           horizontal={[
             'background-default',
@@ -94,9 +96,11 @@ export const ColorContrasts = () => {
 const ColorContrastMapper = ({
   vertical,
   horizontal,
+  variant,
 }: {
   vertical: string[];
   horizontal: string[];
+  variant: string;
 }) => {
   const { t } = useTranslation();
   const { colorScheme, colors } = useThemebuilder();
@@ -132,9 +136,15 @@ const ColorContrastMapper = ({
   return (
     <>
       {' '}
-      <Heading data-size='2xs'>{t('colorContrasts.base-colors')}</Heading>
+      <Heading data-size='2xs'>
+        {variant === 'base-colors'
+          ? t('colorContrasts.base-colors')
+          : t('colorContrasts.text-vs-background')}
+      </Heading>
       <Paragraph data-size='sm' className={classes.desc}>
-        {t('colorContrasts.base-colors-description')}
+        {variant === 'base-colors'
+          ? t('colorContrasts.base-colors-description')
+          : t('colorContrasts.text-vs-background-desc')}
       </Paragraph>
       <Field className={classes.fieldGroup}>
         <Select

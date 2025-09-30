@@ -93,3 +93,13 @@ export const Kontrollert: StoryFn<typeof ToggleGroup> = () => {
     </>
   );
 };
+export const Secondary: StoryFn<typeof ToggleGroup> = () => {
+  return (
+    <ToggleGroup defaultValue={'innboks'} variant='secondary'>
+      <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
+      <ToggleGroup.Item value='utkast'>Utkast</ToggleGroup.Item>
+      <ToggleGroup.Item value='arkiv'>Arkiv</ToggleGroup.Item>
+      <ToggleGroup.Item value='sendt'>Sendt</ToggleGroup.Item>
+    </ToggleGroup>
+  );
+};

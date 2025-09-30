@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "types": ["../../packages/theme/src/themes/types.d.ts"]
+    "types": ["../../packages/theme/brand/types.d.ts"]
   },
   "files": ["./.storybook/componentOverrides.module.scss"],
   "include": [

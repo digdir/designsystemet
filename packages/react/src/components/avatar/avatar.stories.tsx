@@ -1,7 +1,7 @@
 import cat1 from '@assets/img/cats/Cat 3.jpg';
 import { BriefcaseIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react-vite';
-import themeConfig from '../../../../theme/configs/designsystemet.config.json';
+import themeConfig from '../../../../cli/configs/digdir.config.json';
 import { Avatar, type AvatarProps, Badge, Dropdown } from '../';
 
 type Story = StoryFn<typeof Avatar>;
@@ -22,8 +22,8 @@ const meta: Meta<typeof Avatar> = {
 };
 
 const colorVariants = [
-  ...Object.keys(themeConfig.themes.designsystemet.colors.main),
-  ...Object.keys(themeConfig.themes.designsystemet.colors.support),
+  ...Object.keys(themeConfig.themes.digdir.colors.main),
+  ...Object.keys(themeConfig.themes.digdir.colors.support),
   'neutral',
 ];
 
@@ -97,7 +97,7 @@ export const InDropdown: Story = () => (
           <Dropdown.Button>
             <Badge.Position overlap='circle'>
               <Badge data-color='danger' data-size='sm'></Badge>
-              <Avatar aria-label='Ola Nordmann' data-size='xs'>
+              <Avatar aria-hidden={true} data-size='xs'>
                 ON
               </Avatar>
             </Badge.Position>
@@ -106,8 +106,8 @@ export const InDropdown: Story = () => (
         </Dropdown.Item>
         <Dropdown.Item>
           <Dropdown.Button>
-            <Avatar data-size='xs' aria-label='Sogndal Kommune'>
-              <BriefcaseIcon aria-hidden />
+            <Avatar aria-hidden data-size='xs'>
+              <BriefcaseIcon />
             </Avatar>
             Sogndal kommune
           </Dropdown.Button>
