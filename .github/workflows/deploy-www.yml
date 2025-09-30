@@ -15,14 +15,17 @@ on:
     paths:
       - 'apps/www/**'
 
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
+
 jobs:
   deploy-production:
-    uses: ./.github/workflows/vercel-deploy-www.yml
+    uses: ./.github/workflows/azure-deploy-www.yml
     with:
       environment: ${{ github.event.inputs.environment == 'production' && 'production' || 'preview' }}
-      vercel_alias: ${{ github.event.inputs.environment != 'production' && 'next.www.designsystemet.no' || '' }}
     secrets:
-      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-      VERCEL_TEAM: ${{ secrets.VERCEL_TEAM }}
-      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-      VERCEL_PROJECT_ID_WWW: ${{ secrets.VERCEL_PROJECT_ID_WWW }}
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
