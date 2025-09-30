@@ -3,7 +3,7 @@ export default {
     about: 'Om designsystemet',
     privacy: 'Personvernerklæring',
     accessibility: 'Tilgjengelighetserklæring',
-    slack: 'Bli invitert til slack',
+    slack: 'Slack (åpen for alle)',
     agencies: {
       title: 'Lages på tvers av offentlige etater:',
       contact: 'Din etat? Ta kontakt!',
