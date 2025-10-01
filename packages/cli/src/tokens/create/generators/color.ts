@@ -67,11 +67,18 @@ export const generateColorScheme = (
 
   const neutral = generateColor(generateColorScale(colors.neutral, colorScheme), createColorOverrides('neutral'));
 
+  const globalColors: Record<string, TokenSet> = {};
+  Object.entries(baseColors).forEach(([semanticName, baseColorName]) => {
+    const colorScale = generateColorScale(baseColorName, colorScheme);
+    globalColors[semanticName] = generateColor(colorScale);
+  });
+
   return {
     [themeName]: {
       ...main,
       ...support,
       neutral,
+      ...globalColors,
     },
   };
 };

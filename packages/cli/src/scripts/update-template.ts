@@ -66,13 +66,13 @@ export const updateTemplates = async () => {
   // semantic/color.json
   const colorBaseFile = {
     ...semanticColorJson,
-    // Remove custom colors as they are defined from by theme
+    // Remove custom colors and severity colors as they are defined by theme
     color: R.omit(['accent', 'neutral', 'brand1', 'brand2', 'brand3'], semanticColorJson.color),
   };
-  await writeFile(
-    path.join(TEMPLATE_FILES_PATH, `semantic/color.base.template.json`),
-    JSON.stringify(colorBaseFile, null, 2),
-  );
+
+  const colorBaseFileString = JSON.stringify(colorBaseFile, null, 2).replace('{global.purple.12}', '{color.purple.12}');
+
+  await writeFile(path.join(TEMPLATE_FILES_PATH, `semantic/color.base.template.json`), colorBaseFileString);
 
   const semanticColorTemplate = semanticColorJson.color.accent;
   await writeFile(

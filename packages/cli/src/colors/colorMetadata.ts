@@ -2,11 +2,11 @@ import * as R from 'ramda';
 import type { ColorMetadataByName, ColorNumber, CssColor, GlobalColors } from './types.js';
 
 export const baseColors: Record<GlobalColors, CssColor> = {
-  blue: '#0A71C0',
-  green: '#068718',
-  orange: '#EA9B1B',
+  info: '#0A71C0',
+  success: '#068718',
+  warning: '#EA9B1B',
   purple: '#663299',
-  red: '#C01B1B',
+  danger: '#C01B1B',
 };
 
 export const colorMetadata: ColorMetadataByName = {
