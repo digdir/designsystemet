@@ -76,20 +76,18 @@ export const generateColorScheme = (
   };
 };
 
-export const generateColorGlobal = (colorScheme: ColorScheme): TokenSet => {
-  const blueScale = generateColorScale(baseColors.blue, colorScheme);
-  const greenScale = generateColorScale(baseColors.green, colorScheme);
-  const orangeScale = generateColorScale(baseColors.orange, colorScheme);
-  const purpleScale = generateColorScale(baseColors.purple, colorScheme);
-  const redScale = generateColorScale(baseColors.red, colorScheme);
+export const generateColorGlobal = (colorScheme: ColorScheme): Map<string, TokenSet> => {
+  const globalColorSets = new Map<string, TokenSet>();
 
-  return {
-    global: {
-      blue: generateColor(blueScale),
-      green: generateColor(greenScale),
-      orange: generateColor(orangeScale),
-      purple: generateColor(purpleScale),
-      red: generateColor(redScale),
-    },
-  };
+  // Generate separate token sets for each global color
+  Object.entries(baseColors).forEach(([colorName, colorValue]) => {
+    const colorScale = generateColorScale(colorValue, colorScheme);
+    globalColorSets.set(`primitives/modes/color-scheme/${colorScheme}/global/${colorName}`, {
+      global: {
+        [colorName]: generateColor(colorScale),
+      },
+    });
+  });
+
+  return globalColorSets;
 };
