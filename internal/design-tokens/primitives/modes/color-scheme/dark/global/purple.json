@@ -1,0 +1,70 @@
+{
+  "global": {
+    "purple": {
+      "1": {
+        "$type": "color",
+        "$value": "#1d1328"
+      },
+      "2": {
+        "$type": "color",
+        "$value": "#261a35"
+      },
+      "3": {
+        "$type": "color",
+        "$value": "#312043"
+      },
+      "4": {
+        "$type": "color",
+        "$value": "#38254d"
+      },
+      "5": {
+        "$type": "color",
+        "$value": "#412b59"
+      },
+      "6": {
+        "$type": "color",
+        "$value": "#513670"
+      },
+      "7": {
+        "$type": "color",
+        "$value": "#614185"
+      },
+      "8": {
+        "$type": "color",
+        "$value": "#8e78a8"
+      },
+      "9": {
+        "$type": "color",
+        "$value": "#b1a2c3"
+      },
+      "10": {
+        "$type": "color",
+        "$value": "#b1a2c3"
+      },
+      "11": {
+        "$type": "color",
+        "$value": "#eeebf2"
+      },
+      "12": {
+        "$type": "color",
+        "$value": "#b49acd"
+      },
+      "13": {
+        "$type": "color",
+        "$value": "#a282c1"
+      },
+      "14": {
+        "$type": "color",
+        "$value": "#906ab5"
+      },
+      "15": {
+        "$type": "color",
+        "$value": "#18151c"
+      },
+      "16": {
+        "$type": "color",
+        "$value": "#000000"
+      }
+    }
+  }
+}
