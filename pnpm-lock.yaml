@@ -204,9 +204,6 @@ importers:
       remix-i18next:
         specifier: ^7.3.0
         version: 7.3.0(i18next@25.5.2(typescript@5.9.2))(react-i18next@15.7.3(i18next@25.5.2(typescript@5.9.2))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.2))(react-router@7.9.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react@19.1.1)
-      zustand:
-        specifier: ^5.0.8
-        version: 5.0.8(@types/react@19.1.13)(react@19.1.1)
     devDependencies:
       '@react-router/dev':
         specifier: ^7.9.1
