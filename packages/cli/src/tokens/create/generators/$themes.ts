@@ -1,6 +1,5 @@
 import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
 
-import { baseColors } from '../../../colors/colorMetadata.js';
 import type { ColorScheme } from '../../../colors/types.js';
 import type { Colors } from '../../types.js';
 
@@ -110,11 +109,6 @@ function generateColorSchemesGroup(colorSchemes: ColorSchemes, themes: string[])
     (scheme): ThemeObject_ => ({
       ...colorSchemeDefaults[scheme],
       selectedTokenSets: Object.fromEntries([
-        // Include all the separate global color files instead of a single global file
-        ...Object.keys(baseColors).map((colorName) => [
-          `primitives/modes/color-scheme/${scheme}/global/${colorName}`,
-          TokenSetStatus.ENABLED,
-        ]),
         ...themes.map((theme) => [`primitives/modes/color-scheme/${scheme}/${theme}`, TokenSetStatus.ENABLED]),
       ]),
       group: 'Color scheme',
