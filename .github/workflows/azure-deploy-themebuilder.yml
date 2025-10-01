@@ -99,7 +99,7 @@ jobs:
           targetPort: ${{ env.PORT }}
           ingress: external
           environmentVariables: "PORT=${{ env.PORT }} HOST=0.0.0.0 APP_ENV=${{ inputs.environment }}"
-          location: "Norway East"
+          location: "norwayeast"
 
       - name: fetch fqdn
         id: fqdn
