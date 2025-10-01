@@ -21,6 +21,7 @@ export type ButtonProps = MergeRight<
     'data-color'?: Color | Extract<SeverityColors, 'danger'>;
     /**
      * Toggle icon only styling, pass icon as children
+     * When combined with loading, the loading-icon will be shown instead of the icon.
      * @default false
      */
     icon?: boolean;
@@ -84,7 +85,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ) : (
           loading // Allow custom loading spinner
         )}
-        <Slottable>{children}</Slottable>
+        <Slottable>{icon && loading ? null : children}</Slottable>
       </Component>
     );
   },
