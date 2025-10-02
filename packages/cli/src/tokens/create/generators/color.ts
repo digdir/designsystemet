@@ -67,10 +67,15 @@ export const generateColorScheme = (
 
   const neutral = generateColor(generateColorScale(colors.neutral, colorScheme), createColorOverrides('neutral'));
 
+  const baseColorsWithOverrides = {
+    ...baseColors,
+    ...overrides?.severityColors,
+  };
+
   const globalColors: Record<string, TokenSet> = {};
-  Object.entries(baseColors).forEach(([semanticName, baseColorName]) => {
+  Object.entries(baseColorsWithOverrides).forEach(([semanticName, baseColorName]) => {
     const colorScale = generateColorScale(baseColorName, colorScheme);
-    globalColors[semanticName] = generateColor(colorScale);
+    globalColors[semanticName] = generateColor(colorScale, createColorOverrides(semanticName));
   });
 
   const linkColor = generateColor(generateColorScale(dsLinkColor, colorScheme));

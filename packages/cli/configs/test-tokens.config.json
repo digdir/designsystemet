@@ -32,7 +32,16 @@
               "light": "#f0ff00",
               "dark": "#ff00ff"
             }
+          },
+          "danger": {
+            "background-default": {
+              "light": "#0000ff",
+              "dark": "#0000ff"
+            }
           }
+        },
+        "severityColors": {
+          "danger": "#ff00ff"
         }
       }
     },

@@ -260,3 +260,5 @@ export const getColorMetadataByNumber = (number: ColorNumber) => {
 };
 
 export const colorNames = Object.keys(colorMetadata) as Array<keyof typeof colorMetadata>;
+
+export const baseColorNames = Object.keys(baseColors) as Array<keyof typeof baseColors>;
