@@ -122,7 +122,7 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
     }
 
     // Debounce search with 300ms delay (industry standard)
-    debounceTimeoutRef.current = setTimeout(() => {
+    debounceTimeoutRef.current = window.setTimeout(() => {
       performSearch(value);
     }, 300);
   };
