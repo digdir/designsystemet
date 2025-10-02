@@ -609,7 +609,7 @@
     "color": {
       "visited": {
         "$type": "color",
-        "$value": "{portal.link.visited}"
+        "$value": "{color.link.visited}"
       }
     }
   }
