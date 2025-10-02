@@ -24,6 +24,17 @@ export default async function handleRequest(
   const ns = i18next.getRouteNamespaces(routerContext);
 
   const url = new URL(request.url);
+
+  /* if url is www.designsystemet.no -> redirect to designsystemet.no */
+  if (url.hostname === 'www.designsystemet.no') {
+    return new Response(null, {
+      status: 301,
+      headers: {
+        Location: `https://designsystemet.no${url.pathname}${url.search}`,
+      },
+    });
+  }
+
   const lng = url.pathname.startsWith('/no')
     ? 'no'
     : url.pathname.startsWith('/en')
