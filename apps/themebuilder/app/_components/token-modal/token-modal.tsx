@@ -1,4 +1,4 @@
-import type { Color, CssColor } from '@digdir/designsystemet/color';
+import type { Color, CssColor, ThemeInfo } from '@digdir/designsystemet/color';
 import {
   type CreateTokensOptions,
   cliOptions,
@@ -20,8 +20,12 @@ import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLoaderData } from 'react-router';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
-import type { ColorTheme } from '~/store';
 import classes from './token-modal.module.css';
+
+type ColorTheme = {
+  name: string;
+  colors: ThemeInfo;
+};
 
 const colorCliOptions = cliOptions.theme.colors;
 
