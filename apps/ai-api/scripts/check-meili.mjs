@@ -37,8 +37,16 @@ async function check() {
     console.error(`Indexes error: ${idxRes.status} ${idxRes.statusText} - ${text}`);
     return;
   }
-  const indexes = await idxRes.json();
+  const indexData = await idxRes.json();
+  const indexes = indexData.results || [];
   console.log(`Indexes (${indexes.length}):`, indexes.map(i => i.uid).join(', ') || '(none)');
+  
+  // Get detailed stats for our index
+  const statsRes = await fetch(`${API_URL}/indexes/${INDEX_NAME}/stats`, { headers });
+  if (statsRes.ok) {
+    const stats = await statsRes.json();
+    console.log(`\n📊 Index '${INDEX_NAME}': ${stats.numberOfDocuments} documents`);
+  }
 
   // Optional: show embedder settings if available
   const embRes = await fetch(`${API_URL}/indexes/${INDEX_NAME}/settings/embedders`, { headers });

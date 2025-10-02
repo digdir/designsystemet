@@ -318,7 +318,10 @@ async function processFile(filePath, dryRun = false) {
         // Metadata for chunk tracking (doesn't affect search quality)
         part_index: chunks.length > 1 ? index + 1 : null,
         total_parts: chunks.length > 1 ? chunks.length : null,
-        vector: dryRun ? null : vectors[index],
+        // Use _vectors with embedder name for Meilisearch
+        _vectors: dryRun ? null : {
+          [process.env.MEILISEARCH_EMBEDDER_UID || 'azure-openai-small']: vectors[index],
+        },
       };
     });
 
@@ -366,7 +369,10 @@ async function processComponentDirectory(componentDir, dryRun = false) {
         file_path: relativePath,
         lang: combinedData.lang,
         type: 'component',
-        vector: dryRun ? null : vectors[index],
+        // Use _vectors with embedder name for Meilisearch
+        _vectors: dryRun ? null : {
+          [process.env.MEILISEARCH_EMBEDDER_UID || 'azure-openai-small']: vectors[index],
+        },
       };
     });
 

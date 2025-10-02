@@ -7,6 +7,7 @@
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
+    "setup": "node scripts/setup.mjs",
     "test:smoke": "node scripts/ai-smoke-test.mjs",
     "test:rag": "node scripts/test-rag-endpoint.mjs",
     "setup:ingest": "node scripts/ingest.mjs",
