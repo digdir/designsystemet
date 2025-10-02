@@ -8,8 +8,8 @@ on:
       - 'apps/storybook/**'
       - 'internal/components/**'
       - 'packages/**'
-      - './github/workflows/azure-preview-storybook.yml'
-      - './github/workflows/azure-deploy-storybook.yml'
+      - '.github/workflows/azure-preview-storybook.yml'
+      - '.github/workflows/azure-deploy-storybook.yml'
       - 'Dockerfile'
 
 permissions:

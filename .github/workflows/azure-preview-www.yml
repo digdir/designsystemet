@@ -7,8 +7,8 @@ on:
     paths:
       - 'apps/www/**'
       - 'internal/components/**'
-      - './github/workflows/azure-preview-www.yml'
-      - './github/workflows/azure-deploy-www.yml'
+      - '.github/workflows/azure-preview-www.yml'
+      - '.github/workflows/azure-deploy-www.yml'
       - 'Dockerfile'
 
 permissions:
