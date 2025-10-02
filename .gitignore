@@ -50,3 +50,4 @@ packages/cli/temp
 # React Router
 .react-router
 apps/www/build
+*env.backup.*
