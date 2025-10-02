@@ -48,30 +48,17 @@ async function setupEmbedder() {
     process.exit(1);
   }
 
-  if (
-    !env.AZURE_ENDPOINT ||
-    !env.AZURE_KEY ||
-    !env.AZURE_EMBEDDING_DEPLOY_SMALL
-  ) {
-    console.error(
-      'Error: Azure OpenAI credentials are missing from environment',
-    );
-    process.exit(1);
-  }
-
   const INDEX_NAME = env.MEILISEARCH_PROJECT_NAME || 'designsystemet-search';
   console.log(
     `Setting up embedder "${EMBEDDER_UID}" for index "${INDEX_NAME}" in Meilisearch...`,
   );
 
   try {
-    // Configure the embedder according to Meilisearch API spec
+    // Since we generate embeddings ourselves (see ingest.mjs),
+    // "source: 'userProvided'" tells MeiliSearch to use those
     const embedderConfig = {
       [EMBEDDER_UID]: {
-        source: 'openAi',
-        apiKey: env.AZURE_KEY,
-        model: env.AZURE_EMBEDDING_DEPLOY_SMALL,
-        url: `${env.AZURE_ENDPOINT}/openai/deployments/${env.AZURE_EMBEDDING_DEPLOY_SMALL}/embeddings?api-version=2024-02-01`,
+        source: 'userProvided',
         dimensions: VECTOR_DIMENSIONS,
       },
     };
@@ -110,15 +97,15 @@ async function setupEmbedder() {
 
     console.log('\nNext steps:');
     console.log(
-      `1. Add MEILISEARCH_EMBEDDER_UID=${EMBEDDER_UID} to your .ai-env file if not already there`,
+      `1. MEILISEARCH_EMBEDDER_UID=${EMBEDDER_UID} is already in your .ai-env file`,
     );
     console.log(
       '2. Wait for the embedder setup task to complete (check task status if needed)',
     );
     console.log(
-      '3. Run your search queries to test vector search capabilities',
+      '3. Make sure you have documents with embeddings ingested (run: node scripts/ingest.mjs)',
     );
-    console.log('4. Test the RAG endpoint with: npm run test-rag');
+    console.log('4. Test the search with: npm run test-rag');
   } catch (error) {
     console.error('Error setting up embedder:', error);
     process.exit(1);
