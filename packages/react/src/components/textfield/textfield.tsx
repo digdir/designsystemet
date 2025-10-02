@@ -130,12 +130,12 @@ export const Textfield = forwardRef<
         )}
         {suffix === undefined || <FieldAffix>{suffix}</FieldAffix>}
       </FieldAffixes>
-      {!!error && <ValidationMessage>{error}</ValidationMessage>}
       {!!counter && (
         <Field.Counter
           {...(typeof counter === 'number' ? { limit: counter } : counter)}
         />
       )}
+      {!!error && <ValidationMessage>{error}</ValidationMessage>}
     </Field>
   );
 });

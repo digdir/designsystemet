@@ -87,7 +87,7 @@ jobs:
           echo "pass=${PASS}" >> "$GITHUB_OUTPUT"
 
       - name: deploy (no mi; use registry creds)
-        uses: azure/container-apps-deploy-action@29ee19866ec987ededd70b8412d9ee241a9102d1 # v1
+        uses: azure/container-apps-deploy-action@8dff69dac3367c32ceb2690d8f13adbeab462703 # v2
         with:
           resourceGroup: ${{ env.RESOURCE_GROUP }}
           containerAppEnvironment: ${{ env.CONTAINERAPPS_ENV }}
@@ -99,6 +99,7 @@ jobs:
           targetPort: ${{ env.PORT }}
           ingress: external
           environmentVariables: "PORT=${{ env.PORT }} HOST=0.0.0.0 APP_ENV=${{ inputs.environment }}"
+          location: "norwayeast"
 
       - name: fetch fqdn
         id: fqdn
