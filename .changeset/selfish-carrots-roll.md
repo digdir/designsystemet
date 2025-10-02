@@ -1,6 +1,5 @@
 ---
 "@digdir/designsystemet": minor
-"@digdir/designsystemet-theme": patch
 ---
 
 Restructure design tokens:
