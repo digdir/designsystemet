@@ -67,7 +67,15 @@ export const updateTemplates = async () => {
   const colorBaseFile = {
     ...semanticColorJson,
     // Remove custom colors and severity colors as they are defined by theme
-    color: R.omit(['accent', 'neutral', 'brand1', 'brand2', 'brand3'], semanticColorJson.color),
+    color: R.pick(['focus'], semanticColorJson.color),
+    link: {
+      color: {
+        visited: {
+          $type: 'color',
+          $value: '{<theme>.link-color-visited}',
+        },
+      },
+    },
   };
 
   const colorBaseFileString = JSON.stringify(colorBaseFile, null, 2).replace('{global.purple.12}', '{color.purple.12}');
