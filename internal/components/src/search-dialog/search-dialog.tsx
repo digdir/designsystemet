@@ -1,21 +1,27 @@
 import {
   Button,
-  Details,
   Dialog,
+  Divider,
   Heading,
   Search,
+  Skeleton,
+  Tag,
 } from '@digdir/designsystemet-react';
+import { XMarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import classes from './search-dialog.module.css';
+
+// Helper for safely accessing CSS Module classes that may not yet be in the generated .d.ts
+const cx = (key: string) => (classes as Record<string, string>)[key] ?? '';
 
 type SearchDialogProps = {
   open: boolean;
   onClose: () => void;
 };
 
-type SearchResult = {
+type QuickResult = {
   title: string;
   content: string;
   url: string;
@@ -23,27 +29,137 @@ type SearchResult = {
   sources?: { title: string; url: string }[];
 };
 
-type SearchMode = 'quick' | 'chat';
+type SmartResult = {
+  content: string;
+  sources: { title: string; url: string }[];
+};
 
-// Simple markdown parser for bold text
+// Basic, safe markdown renderer: supports headings (#/##/###), unordered lists (-/* ),
+// bold (**text**), italics (*text* or _text_), and inline code (`code`). Links [text](url) are supported.
 const parseMarkdown = (text: string): React.ReactNode => {
-  const parts = text.split(/\*\*(.*?)\*\*/g);
-  return parts.map((part, index) => {
-    if (index % 2 === 1) {
-      // Odd indices are bold content
-      return <strong key={index}>{part}</strong>;
+  const inline = (input: string, keyPrefix: string) => {
+    // Render links [text](url)
+    const linkPattern = /\[([^\]]+)\]\(([^)]+)\)/g;
+    const segments: React.ReactNode[] = [];
+    let lastIndex = 0;
+    let segIndex = 0;
+    const matches = Array.from(input.matchAll(linkPattern));
+    for (const m of matches) {
+      const [full, label, href] = m;
+      const idx = m.index ?? 0;
+      if (idx > lastIndex) {
+        segments.push(input.slice(lastIndex, idx));
+      }
+      segments.push(
+        <a key={`${keyPrefix}-link-${segIndex++}`} href={href}>
+          {label}
+        </a>,
+      );
+      lastIndex = idx + full.length;
     }
-    return part;
-  });
+    if (lastIndex < input.length) segments.push(input.slice(lastIndex));
+
+    // Now process bold/italic/code on each plain string segment
+    const processInline = (
+      node: React.ReactNode,
+      idx: number,
+    ): React.ReactNode => {
+      if (typeof node !== 'string') return node;
+      const tokenPattern = /(\*\*[^*]+\*\*|`[^`]+`|\*[^*]+\*|_[^_]+_)/g;
+      const parts = node.split(tokenPattern);
+      return parts.map((part, i) => {
+        if (/^\*\*.*\*\*$/.test(part)) {
+          return (
+            <strong key={`${keyPrefix}-b-${idx}-${i}`}>
+              {part.slice(2, -2)}
+            </strong>
+          );
+        }
+        if (/^`.*`$/.test(part)) {
+          return (
+            <code key={`${keyPrefix}-c-${idx}-${i}`}>{part.slice(1, -1)}</code>
+          );
+        }
+        if (/^(\*.*\*|_.*_)$/.test(part)) {
+          return (
+            <em key={`${keyPrefix}-i-${idx}-${i}`}>{part.slice(1, -1)}</em>
+          );
+        }
+        return part;
+      });
+    };
+
+    return segments.flatMap(processInline);
+  };
+
+  const lines = text.split(/\r?\n/);
+  const result: React.ReactNode[] = [];
+  let listBuffer: string[] = [];
+  let key = 0;
+
+  const flushList = () => {
+    if (listBuffer.length) {
+      result.push(
+        <ul key={`ul-${key++}`}>
+          {listBuffer.map((item, i) => (
+            <li key={`li-${key}-${i}`}>{inline(item, `li-${key}-${i}`)}</li>
+          ))}
+        </ul>,
+      );
+      listBuffer = [];
+    }
+  };
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed) {
+      flushList();
+      result.push(<br key={`br-${key++}`} />);
+      continue;
+    }
+
+    // Headings
+    const hMatch = /^(#{1,3})\s+(.*)$/.exec(trimmed);
+    if (hMatch) {
+      flushList();
+      const level = hMatch[1].length; // 1-3
+      const content = hMatch[2];
+      const size: 'sm' | 'xs' | '2xs' =
+        level === 1 ? 'sm' : level === 2 ? 'xs' : '2xs';
+      result.push(
+        <Heading key={`h-${key++}`} data-size={size}>
+          {inline(content, `h-${key}`)}
+        </Heading>,
+      );
+      continue;
+    }
+
+    // Unordered list items
+    if (/^[-*]\s+/.test(trimmed)) {
+      listBuffer.push(trimmed.replace(/^[-*]\s+/, ''));
+      continue;
+    }
+
+    // Paragraph
+    flushList();
+    result.push(<p key={`p-${key++}`}>{inline(trimmed, `p-${key}`)}</p>);
+  }
+
+  flushList();
+  return result;
 };
 
 export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
   const { t } = useTranslation();
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<SearchResult[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [searchMode, setSearchMode] = useState<SearchMode>('quick');
+  const [quickResults, setQuickResults] = useState<QuickResult[]>([]);
+  const [smartResult, setSmartResult] = useState<SmartResult | null>(null);
+  const [isQuickLoading, setIsQuickLoading] = useState(false);
+  const [isSmartLoading, setIsSmartLoading] = useState(false);
+  const [smartExpanded, setSmartExpanded] = useState(false);
+  const [visibleQuickCount, setVisibleQuickCount] = useState(8);
+  const latestQueryRef = useRef<string>('');
   const debounceTimeoutRef = useRef<number | null>(null);
 
   // Handle dialog open/close with ref
@@ -70,45 +186,101 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
   // Handle search
   const performSearch = async (searchQuery: string) => {
     if (!searchQuery.trim()) {
-      setResults([]);
+      setQuickResults([]);
+      setSmartResult(null);
+      setIsQuickLoading(false);
+      setIsSmartLoading(false);
       return;
     }
 
-    setIsLoading(true);
-    try {
-      const endpoint =
-        searchMode === 'quick' ? '/api/search' : '/api/ai-search';
-      const response = await fetch(`http://localhost:3001${endpoint}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ query: searchQuery }),
-      });
+    latestQueryRef.current = searchQuery;
+    const isSingleWord = searchQuery.trim().split(/\s+/).length === 1;
+    setVisibleQuickCount(8);
+    setSmartExpanded(false);
 
-      if (response.ok) {
-        const data = await response.json();
-
-        if (searchMode === 'quick') {
-          // Quick mode: multiple direct results
-          setResults(data.results || []);
+    if (isSingleWord) {
+      // Quick only
+      setSmartResult(null);
+      setIsSmartLoading(false);
+      setIsQuickLoading(true);
+      try {
+        const response = await fetch(`http://localhost:3001/api/search`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ query: searchQuery }),
+        });
+        if (response.ok) {
+          const data = await response.json();
+          if (latestQueryRef.current === searchQuery) {
+            setQuickResults(data.results || []);
+          }
         } else {
-          // Chat mode: single AI response with sources
-          const result: SearchResult = {
-            title: `Search results for "${searchQuery}"`,
-            content: data.answer || 'No answer available',
-            url: '#',
-            type: 'guide',
-            sources: data.sources || [],
-          };
-          setResults([result]);
+          if (latestQueryRef.current === searchQuery) setQuickResults([]);
         }
+      } catch (error) {
+        console.error('Search error (quick):', error);
+        if (latestQueryRef.current === searchQuery) setQuickResults([]);
+      } finally {
+        if (latestQueryRef.current === searchQuery) setIsQuickLoading(false);
       }
-    } catch (error) {
-      console.error('Search error:', error);
-      setResults([]);
-    } finally {
-      setIsLoading(false);
+      return;
+    }
+
+    // Two or more words: run both in parallel
+    setIsQuickLoading(true);
+    setIsSmartLoading(true);
+    setSmartResult(null);
+    try {
+      const quickPromise = fetch(`http://localhost:3001/api/search`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query: searchQuery }),
+      })
+        .then((res) => (res.ok ? res.json() : Promise.resolve({ results: [] })))
+        .then((data) => {
+          if (latestQueryRef.current === searchQuery) {
+            setQuickResults(data.results || []);
+          }
+        })
+        .catch((err) => {
+          console.error('Search error (quick):', err);
+          if (latestQueryRef.current === searchQuery) setQuickResults([]);
+        })
+        .finally(() => {
+          if (latestQueryRef.current === searchQuery) setIsQuickLoading(false);
+        });
+
+      const smartPromise = fetch(`http://localhost:3001/api/ai-search`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query: searchQuery }),
+      })
+        .then((res) =>
+          res.ok ? res.json() : Promise.resolve({ answer: '', sources: [] }),
+        )
+        .then((data) => {
+          if (latestQueryRef.current === searchQuery) {
+            setSmartResult({
+              content: data.answer || '',
+              sources: data.sources || [],
+            });
+          }
+        })
+        .catch((err) => {
+          console.error('Search error (smart):', err);
+          if (latestQueryRef.current === searchQuery) setSmartResult(null);
+        })
+        .finally(() => {
+          if (latestQueryRef.current === searchQuery) setIsSmartLoading(false);
+        });
+
+      await Promise.allSettled([quickPromise, smartPromise]);
+    } catch (e) {
+      console.error('Search error (parallel):', e);
+      if (latestQueryRef.current === searchQuery) {
+        setIsQuickLoading(false);
+        setIsSmartLoading(false);
+      }
     }
   };
 
@@ -129,12 +301,18 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
 
   const handleClear = () => {
     setQuery('');
-    setResults([]);
+    setQuickResults([]);
+    setSmartResult(null);
+    setIsQuickLoading(false);
+    setIsSmartLoading(false);
   };
 
   const handleClose = () => {
     setQuery('');
-    setResults([]);
+    setQuickResults([]);
+    setSmartResult(null);
+    setIsQuickLoading(false);
+    setIsSmartLoading(false);
     onClose();
   };
 
@@ -149,34 +327,19 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
       <Dialog.Block className={cl(classes.headerBlock)}>
         <div className={cl(classes.header)}>
           <Heading data-size='xs' className={cl(classes.title)}>
-            {t('search.title', 'Search Designsystemet')}
+            {t('search.title', 'Søk i Designsystemet')}
           </Heading>
-          <div className={cl(classes.modeToggle)}>
-            <Button
-              variant={searchMode === 'quick' ? 'primary' : 'secondary'}
-              data-size='sm'
-              onClick={() => {
-                setSearchMode('quick');
-                if (query.trim()) {
-                  performSearch(query);
-                }
-              }}
-            >
-              {t('search.quick', 'Quick')}
-            </Button>
-            <Button
-              variant={searchMode === 'chat' ? 'primary' : 'secondary'}
-              data-size='sm'
-              onClick={() => {
-                setSearchMode('chat');
-                if (query.trim()) {
-                  performSearch(query);
-                }
-              }}
-            >
-              {t('search.chat', 'Chat')}
-            </Button>
-          </div>
+          <Button
+            icon
+            variant='tertiary'
+            data-size='sm'
+            className={cl(classes.closeButton)}
+            aria-label={t('search.close', 'Lukk')}
+            title={t('search.close', 'Lukk')}
+            onClick={handleClose}
+          >
+            <XMarkIcon aria-hidden />
+          </Button>
         </div>
       </Dialog.Block>
 
@@ -196,97 +359,130 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
             autoFocus
           />
           <Search.Clear onClick={handleClear} />
-          <Search.Button disabled={isLoading} />
+          <Search.Button disabled={isQuickLoading || isSmartLoading} />
         </Search>
       </Dialog.Block>
 
       <Dialog.Block className={cl(classes.resultsBlock)}>
-        {isLoading && (
-          <div className={cl(classes.loading)}>
-            {t('search.loading', 'Searching...')}
-          </div>
-        )}
-
-        {!isLoading && results.length > 0 && (
+        {query && (
           <div className={cl(classes.results)}>
-            {searchMode === 'quick'
-              ? // Quick mode: Simple list of results
-                results.map((result, index) => (
-                  <div key={index} className={cl(classes.quickResult)}>
-                    <div className={cl(classes.resultHeader)}>
-                      <h3 className={cl(classes.resultTitle)}>
-                        <a
-                          href={result.url}
-                          className={cl(classes.quickResultLink)}
-                          onClick={handleClose}
-                        >
-                          {result.title}
-                        </a>
-                      </h3>
-                      <span className={cl(classes.resultType)}>
-                        {result.type}
-                      </span>
-                    </div>
-                    <p className={cl(classes.quickResultContent)}>
-                      {result.content}
-                    </p>
-                  </div>
-                ))
-              : // Chat mode: Expandable details with sources
-                results.map((result, index) => (
-                  <Details
-                    key={index}
-                    defaultOpen={true}
-                    className={cl(classes.result)}
+            {/* Smart answer section (only for 2+ words) */}
+            {query.trim().split(/\s+/).length > 1 && (
+              <section aria-live='polite' aria-busy={isSmartLoading}>
+                {isSmartLoading ? (
+                  <div
+                    className={cl(cx('smartBox'))}
+                    style={{ minHeight: 275 }}
                   >
-                    <Details.Summary className={cl(classes.resultSummary)}>
-                      <div className={cl(classes.resultHeader)}>
-                        <h3 className={cl(classes.resultTitle)}>
-                          {result.title}
-                        </h3>
-                        <span className={cl(classes.resultType)}>
-                          {result.type}
-                        </span>
-                      </div>
-                    </Details.Summary>
-                    <Details.Content className={cl(classes.resultContent)}>
-                      <div className={cl(classes.answerContent)}>
-                        {parseMarkdown(result.content)}
-                      </div>
-                      {result.sources && result.sources.length > 0 && (
-                        <div className={cl(classes.sources)}>
-                          <h4 className={cl(classes.sourcesTitle)}>
-                            {t('search.sources', 'Sources')}
-                          </h4>
-                          <ul className={cl(classes.sourcesList)}>
-                            {result.sources.map((source, sourceIndex) => (
-                              <li
-                                key={sourceIndex}
-                                className={cl(classes.sourceItem)}
-                              >
-                                <a
-                                  href={source.url}
-                                  className={cl(classes.sourceLink)}
-                                  onClick={handleClose}
-                                  target='_blank'
-                                  rel='noopener noreferrer'
-                                >
-                                  {source.title}
-                                </a>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
+                    <div className={cl(cx('smartSkeletonLines'))}>
+                      <Skeleton variant='text' width={40} />
+                      <Skeleton variant='text' width={48} />
+                      <Skeleton variant='text' width={36} />
+                      <Skeleton height='12px' width='40%' />
+                    </div>
+                  </div>
+                ) : smartResult?.content ? (
+                  <div className={cl(cx('smartBox'))}>
+                    <div
+                      className={cl(
+                        cx('smartContent'),
+                        !smartExpanded && cx('smartCollapsed'),
                       )}
-                    </Details.Content>
-                  </Details>
-                ))}
-          </div>
-        )}
+                    >
+                      {parseMarkdown(smartResult.content)}
+                    </div>
+                    <div className={cl(cx('smartActions'))}>
+                      <Button
+                        variant='secondary'
+                        data-size='sm'
+                        onClick={() => setSmartExpanded((v) => !v)}
+                        className={cl(cx('smartToggle'))}
+                      >
+                        {smartExpanded
+                          ? t('search.show-less', 'Vis mindre')
+                          : t('search.show-more', 'Vis mer')}
+                      </Button>
+                    </div>
+                    {smartExpanded && smartResult.sources?.length > 0 && (
+                      <nav
+                        aria-label={t('search.sources', 'Kilder')}
+                        className={cl(classes.sources)}
+                      >
+                        <Heading
+                          data-size='2xs'
+                          className={cl(classes.sourcesTitle)}
+                        >
+                          {t('search.sources', 'Kilder')}
+                        </Heading>
+                        <ul className={cl(cx('sourcesList'))}>
+                          {smartResult.sources.map((source, idx) => (
+                            <li key={idx} className={cl(cx('sourceItem'))}>
+                              <a
+                                href={source.url}
+                                onClick={handleClose}
+                                className={cl(classes.sourceLink)}
+                              >
+                                {source.title}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </nav>
+                    )}
+                  </div>
+                ) : null}
+                <Divider />
+              </section>
+            )}
 
-        {!isLoading && query && results.length === 0 && (
-          <div className={cl(classes.noResults)}>
-            {t('search.no-results', 'No results found for')} "{query}"
+            {/* Quick results */}
+            {quickResults.slice(0, visibleQuickCount).map((result, index) => (
+              <div key={index} className={cl(classes.quickResult)}>
+                <div className={cl(classes.resultHeader)}>
+                  <h3 className={cl(classes.resultTitle)}>
+                    <a
+                      href={result.url}
+                      className={cl(classes.quickResultLink)}
+                      onClick={handleClose}
+                    >
+                      {result.title}
+                    </a>
+                  </h3>
+                  <Tag
+                    data-size='sm'
+                    data-color={
+                      result.type === 'component'
+                        ? 'brand1'
+                        : result.type === 'guide'
+                          ? 'brand2'
+                          : result.type === 'pattern'
+                            ? 'brand3'
+                            : 'neutral'
+                    }
+                  >
+                    {result.type}
+                  </Tag>
+                </div>
+                <p className={cl(classes.quickResultContent)}>
+                  {result.content}
+                </p>
+              </div>
+            ))}
+            {quickResults.length > visibleQuickCount && (
+              <div>
+                <Button
+                  variant='secondary'
+                  data-size='sm'
+                  onClick={() =>
+                    setVisibleQuickCount((c) =>
+                      Math.min(c + 8, quickResults.length),
+                    )
+                  }
+                >
+                  {t('search.show-more-results', 'Vis flere resultater')}
+                </Button>
+              </div>
+            )}
           </div>
         )}
 
@@ -330,6 +526,16 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
             </ul>
           </div>
         )}
+
+        {query &&
+          !isQuickLoading &&
+          !isSmartLoading &&
+          quickResults.length === 0 &&
+          !smartResult && (
+            <div className={cl(classes.noResults)}>
+              {t('search.no-results', 'No results found for')} "{query}"
+            </div>
+          )}
       </Dialog.Block>
     </Dialog>
   );
