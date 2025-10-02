@@ -6,6 +6,7 @@ import {
 } from '@digdir/designsystemet-react';
 import {
   LanguageIcon,
+  MagnifyingGlassIcon,
   MenuHamburgerIcon,
   MoonIcon,
   SunIcon,
@@ -22,6 +23,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router';
 import { DsEmbledLogo, DsFullLogo } from '../logos/designsystemet';
+import { SearchDialog } from '../search-dialog';
 import classes from './header.module.css';
 
 type HeaderProps = {
@@ -85,6 +87,7 @@ const Header = ({
   const [isHamburger, setIsHamburger] = useState(false);
   const [viewportWidth, setViewportWidth] = useState(0);
   const [langOpen, setLangOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const menuRef = useRef<HTMLUListElement>(null);
   const headerRef = useRef<HTMLElement>(null);
 
@@ -214,6 +217,21 @@ const Header = ({
               </li>
             ))}
           </ul>
+          <Tooltip
+            content={t('header.search-toggle', 'Søk i Designsystemet')}
+            placement='bottom'
+          >
+            <Button
+              aria-label={t('header.search-toggle-aria', 'Open search dialog')}
+              variant='tertiary'
+              data-color='neutral'
+              icon={true}
+              onClick={() => setSearchOpen(true)}
+              className={classes.toggleButton}
+            >
+              <MagnifyingGlassIcon fontSize='1.75em' aria-hidden /> Søk
+            </Button>
+          </Tooltip>
           {themeSwitcher && (
             <Tooltip
               content={t('header.theme-toggle', {
@@ -323,6 +341,7 @@ const Header = ({
           )}
         </nav>
       </div>
+      <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );
 };

@@ -15,6 +15,9 @@ node_modules
 .env
 .env.local
 
+# For the AI search
+.ai-env
+
 coverage/
 .eslintcache
 
@@ -22,8 +25,10 @@ coverage/
 *.coverage
 *.coveragexml
 
-# JetBrains IntelliJ IDEA
+# Code editors
 .idea
+.windsurf
+.cursor
 
 # Hidden macOS files
 .DS_Store
@@ -45,3 +50,4 @@ packages/cli/temp
 # React Router
 .react-router
 apps/www/build
+*env.backup.*

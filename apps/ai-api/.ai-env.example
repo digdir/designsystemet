@@ -1,0 +1,32 @@
+# ===========================
+# AI/Search Environment (.ai-env.example)
+# Copy to .ai-env and fill values. This file is NOT loaded automatically by shells.
+# Our scripts try several candidate paths to load .ai-env.
+# ===========================
+
+# ---- Meilisearch (self-hosted) ----
+# Base URL to your Meilisearch instance
+MEILISEARCH_API_URL=http://localhost:7700
+
+# Admin key (created via /keys using the master key). Used by ingest/setup scripts and admin-only endpoints
+MEILISEARCH_ADMIN_KEY=REPLACE_WITH_CREATED_ADMIN_KEY
+
+# Search key (created via /keys). Used by the backend for search-only client if exposed
+MEILISEARCH_SEARCH_KEY=REPLACE_WITH_CREATED_SEARCH_KEY
+
+# Index name used across scripts and server
+MEILISEARCH_PROJECT_NAME=designsystemet-search
+
+# Embedder UID (must match what you set via setup:embedder)
+MEILISEARCH_EMBEDDER_UID=azure-openai-small
+
+# ---- Azure OpenAI (embeddings + chat) ----
+AZURE_KEY=REPLACE
+AZURE_ENDPOINT=REPLACE
+AZURE_API_VERSION=2024-08-01-preview
+AZURE_EMBEDDING_DEPLOY_SMALL=text-embedding-3-small
+AZURE_GPT_DEPLOY=gpt-4o
+
+# Notes:
+# - Use the SAME embedding model for ingestion and query. Do NOT mix models.
+# - After self-hosting Meilisearch, create Admin/Search keys and paste them here.
