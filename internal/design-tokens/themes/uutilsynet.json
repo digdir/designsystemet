@@ -593,6 +593,12 @@
         "$type": "color",
         "$value": "{uutilsynet.danger.16}"
       }
+    },
+    "link": {
+      "visited": {
+        "$type": "color",
+        "$value": "{uutilsynet.link.visited}"
+      }
     }
   },
   "font-family": {

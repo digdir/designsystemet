@@ -26,6 +26,12 @@ export const generateTheme = (colors: Colors, themeName: string, borderRadius: n
     color: {
       ...themeColorTokens,
       ...themeBaseFileColor,
+      link: {
+        visited: {
+          $type: 'color',
+          $value: `{${themeName}.link.visited}`,
+        },
+      },
     },
     ...remainingThemeFile,
   };

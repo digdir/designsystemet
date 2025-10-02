@@ -594,9 +594,11 @@
         "$value": "#ffffff"
       }
     },
-    "link-color-visited": {
-      "$type": "color",
-      "$value": "#663299"
+    "link": {
+      "visited": {
+        "$type": "color",
+        "$value": "#663299"
+      }
     }
   }
 }

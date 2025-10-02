@@ -593,6 +593,12 @@
         "$type": "color",
         "$value": "{digdir.danger.16}"
       }
+    },
+    "link": {
+      "visited": {
+        "$type": "color",
+        "$value": "{digdir.link.visited}"
+      }
     }
   },
   "font-family": {

@@ -81,7 +81,9 @@ export const generateColorScheme = (
       ...support,
       neutral,
       ...globalColors,
-      'link-color-visited': linkColor[12],
+      link: {
+        visited: linkColor[12],
+      },
     },
   };
 };

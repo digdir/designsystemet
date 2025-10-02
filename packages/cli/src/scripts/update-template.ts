@@ -72,7 +72,7 @@ export const updateTemplates = async () => {
       color: {
         visited: {
           $type: 'color',
-          $value: '{<theme>.link-color-visited}',
+          $value: '{<theme>.link.visited}',
         },
       },
     },
