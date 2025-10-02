@@ -1,6 +1,6 @@
 import * as R from 'ramda';
-import { colorMetadata } from '../../../colors/colorMetadata.js';
-import { baseColors, generateColorScale } from '../../../colors/index.js';
+import { baseColors, colorMetadata, dsLinkColor } from '../../../colors/colorMetadata.js';
+import { generateColorScale } from '../../../colors/index.js';
 import type { Color, ColorScheme } from '../../../colors/types.js';
 import type { ColorOverrideSchema } from '../../../config.js';
 import type { Colors, TokenSet } from '../../types.js';
@@ -73,12 +73,15 @@ export const generateColorScheme = (
     globalColors[semanticName] = generateColor(colorScale);
   });
 
+  const linkColor = generateColor(generateColorScale(dsLinkColor, colorScheme));
+
   return {
     [themeName]: {
       ...main,
       ...support,
       neutral,
       ...globalColors,
+      'link-color-visited': linkColor[12],
     },
   };
 };

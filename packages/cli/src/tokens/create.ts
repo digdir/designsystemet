@@ -28,7 +28,7 @@ export const createTokens = async (opts: Theme) => {
   const { colors, typography, name, borderRadius, overrides } = opts;
   const colorSchemes: ColorScheme[] = ['light', 'dark'];
 
-  const semantic = generateSemantic(colors);
+  const semantic = generateSemantic(colors, name);
 
   const tokenSets: TokenSets = new Map([
     ...getDefaultTokens([

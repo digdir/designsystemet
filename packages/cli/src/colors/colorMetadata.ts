@@ -5,9 +5,10 @@ export const baseColors: Record<GlobalColors, CssColor> = {
   info: '#0A71C0',
   success: '#068718',
   warning: '#EA9B1B',
-  purple: '#663299',
   danger: '#C01B1B',
 };
+
+export const dsLinkColor = '#663299';
 
 export const colorMetadata: ColorMetadataByName = {
   'background-default': {

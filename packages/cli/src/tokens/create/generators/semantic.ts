@@ -13,7 +13,7 @@ type SemanticModes = {
   'support-color': Record<string, TokenSet>;
 };
 
-export const generateSemantic = (colors: Colors) => {
+export const generateSemantic = (colors: Colors, themeName: string) => {
   const mainColorNames = Object.keys(colors.main);
   const supportColorNames = Object.keys(colors.support);
 
@@ -64,13 +64,24 @@ export const generateSemantic = (colors: Colors) => {
       ] as const,
   );
 
-  const color = {
-    ...semanticColorBase,
-    color: {
-      ...Object.fromEntries(semanticColorTokens),
-      ...semanticColorBase.color,
-    },
-  };
+  const color = JSON.parse(
+    JSON.stringify(
+      {
+        ...semanticColorBase,
+        color: {
+          ...Object.fromEntries(semanticColorTokens),
+          ...semanticColorBase.color,
+        },
+      },
+      (key, value) => {
+        if (key === '$value' && typeof value === 'string') {
+          return value.replace('<theme>', themeName);
+        }
+        return value;
+      },
+      2,
+    ),
+  ) as typeof semanticColorBase;
 
   return {
     modes,

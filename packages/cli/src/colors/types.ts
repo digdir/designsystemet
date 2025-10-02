@@ -2,7 +2,7 @@ export type ColorScheme = 'light' | 'dark' | 'contrast';
 export type ContrastMode = 'aa' | 'aaa';
 export type ColorNumber = SemanticColorNumberMap[keyof SemanticColorNumberMap];
 export type ColorNames = keyof SemanticColorNumberMap;
-export type GlobalColors = 'danger' | 'info' | 'success' | 'warning' | 'purple';
+export type GlobalColors = 'danger' | 'info' | 'success' | 'warning';
 export type ColorError = 'none' | 'decorative' | 'interaction';
 
 type SemanticColorNumberMap = {
