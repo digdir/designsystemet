@@ -63,8 +63,8 @@ async function setupEmbedder() {
       },
     };
 
-    console.log('Embedder configuration:');
-    console.log(JSON.stringify(embedderConfig, null, 2));
+    console.log(`Embedder "${EMBEDDER_UID}" will be configured with dimension ${VECTOR_DIMENSIONS}.`);
+    // Detailed embedderConfig object not logged to avoid exposing sensitive information.
 
     // Update embedders settings for the index
     const response = await fetch(
