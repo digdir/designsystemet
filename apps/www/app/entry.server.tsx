@@ -24,21 +24,6 @@ export default async function handleRequest(
   const ns = i18next.getRouteNamespaces(routerContext);
 
   const url = new URL(request.url);
-  const host = (
-    request.headers.get('x-forwarded-host') ||
-    request.headers.get('host') ||
-    ''
-  ).toLowerCase();
-
-  if (host === 'www.designsystemet.no') {
-    const url = new URL(request.url);
-    url.host = 'designsystemet.no';
-    url.protocol = 'https:'; // in aca/front door this is what users see
-    return new Response(null, {
-      status: 301,
-      headers: { Location: url.toString() },
-    });
-  }
 
   const lng = url.pathname.startsWith('/no')
     ? 'no'
