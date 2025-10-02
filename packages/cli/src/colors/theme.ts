@@ -4,7 +4,7 @@ import { colorMetadata, getColorMetadataByNumber } from './colorMetadata.js';
 import type { Color, ColorNumber, ColorScheme, CssColor, ThemeInfo } from './types.js';
 import { getLightnessFromHex, getLuminanceFromLightness } from './utils.js';
 
-export const RESERVED_COLORS = ['neutral', 'success', 'warning', 'danger', 'info', 'purple'];
+export const RESERVED_COLORS = ['neutral', 'success', 'warning', 'danger', 'info'];
 
 /**
  * Generates a color scale based on a base color and a color mode.

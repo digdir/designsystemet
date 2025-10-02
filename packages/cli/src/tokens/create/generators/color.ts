@@ -72,11 +72,10 @@ export const generateColorScheme = (
     ...overrides?.severityColors,
   };
 
-  const globalColors: Record<string, TokenSet> = {};
-  Object.entries(baseColorsWithOverrides).forEach(([semanticName, baseColorName]) => {
-    const colorScale = generateColorScale(baseColorName, colorScheme);
-    globalColors[semanticName] = generateColor(colorScale, createColorOverrides(semanticName));
-  });
+  const globalColors = R.mapObjIndexed(
+    (color, colorName) => generateColor(generateColorScale(color, colorScheme), createColorOverrides(colorName)),
+    baseColorsWithOverrides,
+  );
 
   const linkColor = generateColor(generateColorScale(dsLinkColor, colorScheme));
 

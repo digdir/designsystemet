@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import { baseColors } from '../../../colors/colorMetadata.js';
+import { baseColorNames } from '../../../colors/colorMetadata.js';
 import themeBase from '../../template/design-tokens/themes/theme.base.template.json' with { type: 'json' };
 import themeColorTemplate from '../../template/design-tokens/themes/theme.template.json' with { type: 'json' };
 
@@ -8,8 +8,7 @@ import type { Colors, TokenSet } from '../../types.js';
 export const generateTheme = (colors: Colors, themeName: string, borderRadius: number) => {
   const mainColorNames = Object.keys(colors.main);
   const supportColorNames = Object.keys(colors.support);
-  const baseColorsNames = Object.keys(baseColors);
-  const customColors = [...mainColorNames, 'neutral', ...supportColorNames, ...baseColorsNames];
+  const customColors = [...mainColorNames, 'neutral', ...supportColorNames, ...baseColorNames];
 
   const themeColorTokens = Object.fromEntries(
     customColors.map(

@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import { baseColors } from '../../../colors/colorMetadata.js';
+import { baseColorNames } from '../../../colors/colorMetadata.js';
 import semanticColorBase from '../../template/design-tokens/semantic/color.base.template.json' with { type: 'json' };
 import semanticColorTemplate from '../../template/design-tokens/semantic/color.template.json' with { type: 'json' };
 import categoryColorTemplate from '../../template/design-tokens/semantic/modes/color.template.json' with {
@@ -13,7 +13,7 @@ type SemanticModes = {
   'support-color': Record<string, TokenSet>;
 };
 
-export const generateSemantic = (colors: Colors, themeName: string) => {
+export const generateSemantic = (colors: Colors, _themeName: string) => {
   const mainColorNames = Object.keys(colors.main);
   const supportColorNames = Object.keys(colors.support);
 
@@ -53,8 +53,7 @@ export const generateSemantic = (colors: Colors, themeName: string) => {
 
   const customColors = [...mainColorNames, 'neutral', ...supportColorNames];
 
-  const globalColorNames = Object.keys(baseColors);
-  const allColors = [...customColors, ...globalColorNames];
+  const allColors = [...customColors, ...baseColorNames];
 
   const semanticColorTokens = allColors.map(
     (colorName) =>
@@ -64,24 +63,13 @@ export const generateSemantic = (colors: Colors, themeName: string) => {
       ] as const,
   );
 
-  const color = JSON.parse(
-    JSON.stringify(
-      {
-        ...semanticColorBase,
-        color: {
-          ...Object.fromEntries(semanticColorTokens),
-          ...semanticColorBase.color,
-        },
-      },
-      (key, value) => {
-        if (key === '$value' && typeof value === 'string') {
-          return value.replace('<theme>', themeName);
-        }
-        return value;
-      },
-      2,
-    ),
-  ) as typeof semanticColorBase;
+  const color = {
+    ...semanticColorBase,
+    color: {
+      ...Object.fromEntries(semanticColorTokens),
+      ...semanticColorBase.color,
+    },
+  };
 
   return {
     modes,
