@@ -23,14 +23,17 @@ export default async function handleRequest(
   const instance = createInstance();
   const ns = i18next.getRouteNamespaces(routerContext);
 
+  const host = request.headers.get('host');
   const url = new URL(request.url);
 
-  /* if url is www.designsystemet.no -> redirect to designsystemet.no */
-  if (url.hostname === 'www.designsystemet.no') {
+  // if host is www.designsystemet.no → redirect
+  if (host?.startsWith('www.designsystemet.no')) {
+    const url = new URL(request.url);
+    url.host = 'designsystemet.no';
     return new Response(null, {
       status: 301,
       headers: {
-        Location: `https://designsystemet.no${url.pathname}${url.search}`,
+        Location: url.toString() + (url.search ?? ''),
       },
     });
   }
