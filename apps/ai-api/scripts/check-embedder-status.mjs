@@ -62,7 +62,7 @@ async function checkEmbedderStatus() {
     // Check what embedder UID the server expects
     const expectedEmbedderUID =
       env.MEILISEARCH_EMBEDDER_UID || 'azure-openai-small';
-    console.log(`🎯 Expected embedder UID: ${expectedEmbedderUID}`);
+    console.log(`🎯 Expected embedder UID is set (value not shown for security).`);
 
     // Test if embedder exists by trying to use it
     try {
