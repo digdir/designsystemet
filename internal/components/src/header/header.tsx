@@ -218,7 +218,7 @@ const Header = ({
             ))}
           </ul>
           <Tooltip
-            content={t('header.search-toggle', 'Search Designsystemet')}
+            content={t('header.search-toggle', 'Søk i Designsystemet')}
             placement='bottom'
           >
             <Button
@@ -229,7 +229,7 @@ const Header = ({
               onClick={() => setSearchOpen(true)}
               className={classes.toggleButton}
             >
-              <MagnifyingGlassIcon fontSize='1.75em' aria-hidden />
+              <MagnifyingGlassIcon fontSize='1.75em' aria-hidden /> Søk
             </Button>
           </Tooltip>
           {themeSwitcher && (
