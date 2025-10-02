@@ -359,7 +359,6 @@ app.post('/api/ai-search', async (req, res) => {
     // Check cache first
     const cachedResponse = responseCache.get(cacheKey);
     if (cachedResponse) {
-      console.log(`Cache hit for query: ${query.substring(0, 30)}...`);
       return res.status(200).json({
         ...cachedResponse,
         fromCache: true,
@@ -370,7 +369,6 @@ app.post('/api/ai-search', async (req, res) => {
     let searchResults: Array<SearchResult> = [];
     try {
       searchResults = await vectorSearch(query);
-      console.log(`Search returned ${searchResults.length} results`);
       if (searchResults.length > 0) {
         console.log('First result:', {
           title: searchResults[0].title,

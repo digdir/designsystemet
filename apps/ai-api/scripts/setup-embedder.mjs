@@ -49,9 +49,6 @@ async function setupEmbedder() {
   }
 
   const INDEX_NAME = env.MEILISEARCH_PROJECT_NAME || 'designsystemet-search';
-  console.log(
-    `Setting up embedder "${EMBEDDER_UID}" for index "${INDEX_NAME}" in Meilisearch...`,
-  );
 
   try {
     // Since we generate embeddings ourselves (see ingest.mjs),
@@ -62,9 +59,6 @@ async function setupEmbedder() {
         dimensions: VECTOR_DIMENSIONS,
       },
     };
-
-    console.log(`Embedder "${EMBEDDER_UID}" will be configured with dimension ${VECTOR_DIMENSIONS}.`);
-    // Detailed embedderConfig object not logged to avoid exposing sensitive information.
 
     // Update embedders settings for the index
     const response = await fetch(
@@ -89,16 +83,10 @@ async function setupEmbedder() {
     }
 
     const result = await response.json();
-    console.log(
-      `Successfully configured embedder "${EMBEDDER_UID}" for index "${INDEX_NAME}"`,
-    );
     console.log('Response:');
     console.log(JSON.stringify(result, null, 2));
 
     console.log('\nNext steps:');
-    console.log(
-      `1. MEILISEARCH_EMBEDDER_UID=${EMBEDDER_UID} is already in your .ai-env file`,
-    );
     console.log(
       '2. Wait for the embedder setup task to complete (check task status if needed)',
     );
