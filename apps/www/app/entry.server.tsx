@@ -23,18 +23,20 @@ export default async function handleRequest(
   const instance = createInstance();
   const ns = i18next.getRouteNamespaces(routerContext);
 
-  const host = request.headers.get('host');
   const url = new URL(request.url);
+  const host = (
+    request.headers.get('x-forwarded-host') ||
+    request.headers.get('host') ||
+    ''
+  ).toLowerCase();
 
-  // if host is www.designsystemet.no → redirect
-  if (host?.startsWith('www.designsystemet.no')) {
+  if (host === 'www.designsystemet.no') {
     const url = new URL(request.url);
     url.host = 'designsystemet.no';
+    url.protocol = 'https:'; // in aca/front door this is what users see
     return new Response(null, {
       status: 301,
-      headers: {
-        Location: url.toString() + (url.search ?? ''),
-      },
+      headers: { Location: url.toString() },
     });
   }
 
