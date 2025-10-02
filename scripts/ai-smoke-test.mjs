@@ -3,9 +3,9 @@
 // Usage:  node scripts/ai-smoke-test.mjs  (ensure `.ai-env` is loaded in your shell)
 
 // Load environment variables from .ai-env if running directly (optional)
-import fs from 'fs';
-import path from 'path';
-import { MeiliSearch } from 'meilisearch'
+import fs from 'node:fs';
+import path from 'node:path';
+import { MeiliSearch } from 'meilisearch';
 
 const envPathCandidates = [
   path.resolve(process.cwd(), 'apps/.ai-env'),
@@ -14,7 +14,8 @@ const envPathCandidates = [
 
 for (const p of envPathCandidates) {
   if (fs.existsSync(p)) {
-    const lines = fs.readFileSync(p, 'utf8')
+    const lines = fs
+      .readFileSync(p, 'utf8')
       .split(/\r?\n/)
       .filter((l) => l.trim() && !l.startsWith('#'));
     for (const line of lines) {
@@ -32,13 +33,23 @@ function assertEnv(name) {
 }
 
 try {
-  ['AZURE_KEY', 'AZURE_ENDPOINT', 'AZURE_API_VERSION', 'AZURE_EMBEDDING_DEPLOY_SMALL', 'AZURE_GPT_DEPLOY', 'MEILISEARCH_ADMIN_KEY', 'MEILISEARCH_API_URL'].forEach(assertEnv);
+  [
+    'AZURE_KEY',
+    'AZURE_ENDPOINT',
+    'AZURE_API_VERSION',
+    'AZURE_EMBEDDING_DEPLOY_SMALL',
+    'AZURE_GPT_DEPLOY',
+    'MEILISEARCH_ADMIN_KEY',
+    'MEILISEARCH_API_URL',
+  ].forEach(assertEnv);
 } catch (e) {
-  console.error(`❌ ${e.message}\nLoad env vars with:  export $(grep -v '^#' apps/.ai-env | xargs)`);
+  console.error(
+    `❌ ${e.message}\nLoad env vars with:  export $(grep -v '^#' apps/.ai-env | xargs)`,
+  );
   process.exit(1);
 }
 
-async function testEmbedding() {
+async function _testEmbedding() {
   const url = `${env.AZURE_ENDPOINT}/openai/deployments/${env.AZURE_EMBEDDING_DEPLOY_SMALL}/embeddings?api-version=${env.AZURE_API_VERSION}`;
   const resp = await fetch(url, {
     method: 'POST',
@@ -46,13 +57,16 @@ async function testEmbedding() {
       'Content-Type': 'application/json',
       'api-key': env.AZURE_KEY,
     },
-    body: JSON.stringify({ input: 'What is the answer to life, the universe and everything?' }),
+    body: JSON.stringify({
+      input: 'What is the answer to life, the universe and everything?',
+    }),
   });
-  if (!resp.ok) throw new Error(`Embedding failed: ${resp.status} ${resp.statusText}`);
+  if (!resp.ok)
+    throw new Error(`Embedding failed: ${resp.status} ${resp.statusText}`);
   console.log('✔ Azure embedding endpoint reachable');
 }
 
-async function testChat() {
+async function _testChat() {
   const url = `${env.AZURE_ENDPOINT}/openai/deployments/${env.AZURE_GPT_DEPLOY}/chat/completions?api-version=${env.AZURE_API_VERSION}`;
   const resp = await fetch(url, {
     method: 'POST',
@@ -61,14 +75,24 @@ async function testChat() {
       'api-key': env.AZURE_KEY,
     },
     body: JSON.stringify({
-      messages: [{ role: 'user', content: 'What is the answer to life, the universe and everything? in short.' }],
+      messages: [
+        {
+          role: 'user',
+          content:
+            'What is the answer to life, the universe and everything? in short.',
+        },
+      ],
       max_tokens: 3,
       temperature: 0,
     }),
   });
-  if (!resp.ok) throw new Error(`Chat failed: ${resp.status} ${resp.statusText}`);
+  if (!resp.ok)
+    throw new Error(`Chat failed: ${resp.status} ${resp.statusText}`);
   const data = await resp.json();
-  console.log('✔ Azure chat endpoint reachable - response:', data.choices?.[0]?.message?.content);
+  console.log(
+    '✔ Azure chat endpoint reachable - response:',
+    data.choices?.[0]?.message?.content,
+  );
 }
 
 async function testMeili() {
@@ -77,7 +101,9 @@ async function testMeili() {
     apiKey: env.MEILISEARCH_ADMIN_KEY,
   });
   const indexes = await client.indexes.getIndexes();
-  console.log(`✔ Meilisearch reachable - ${Array.isArray(indexes) ? indexes.length : Object.keys(indexes).length} indexes found`);
+  console.log(
+    `✔ Meilisearch reachable - ${Array.isArray(indexes) ? indexes.length : Object.keys(indexes).length} indexes found`,
+  );
 }
 
 (async () => {

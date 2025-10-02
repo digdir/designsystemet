@@ -85,8 +85,6 @@
   background-color: var(--ds-color-accent-background-subtle);
 }
 
-
-
 .answerContent {
   margin-bottom: var(--ds-size-3);
   line-height: 1.6;
@@ -280,13 +278,13 @@
     min-width: 95vw;
     max-height: 90vh;
   }
-  
+
   .headerBlock,
   .searchBlock,
   .resultsBlock {
     padding: var(--ds-size-3);
   }
-  
+
   .resultsBlock {
     max-height: 60vh;
   }

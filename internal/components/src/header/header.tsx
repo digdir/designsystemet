@@ -341,10 +341,7 @@ const Header = ({
           )}
         </nav>
       </div>
-      <SearchDialog 
-        open={searchOpen} 
-        onClose={() => setSearchOpen(false)} 
-      />
+      <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );
 };

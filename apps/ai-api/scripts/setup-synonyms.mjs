@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
+import fs from 'node:fs';
+import path from 'node:path';
 import dotenv from 'dotenv';
-import fs from 'fs';
 import { Meilisearch } from 'meilisearch';
-import path from 'path';
 
 // Load environment variables
 const envPathCandidates = [

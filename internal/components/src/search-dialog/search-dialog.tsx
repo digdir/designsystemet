@@ -5,9 +5,9 @@ import {
   Heading,
   Search,
 } from '@digdir/designsystemet-react';
+import cl from 'clsx/lite';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import cl from 'clsx/lite';
 import classes from './search-dialog.module.css';
 
 type SearchDialogProps = {
@@ -76,7 +76,8 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
 
     setIsLoading(true);
     try {
-      const endpoint = searchMode === 'quick' ? '/api/search' : '/api/ai-search';
+      const endpoint =
+        searchMode === 'quick' ? '/api/search' : '/api/ai-search';
       const response = await fetch(`http://localhost:3001${endpoint}`, {
         method: 'POST',
         headers: {
@@ -87,7 +88,7 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
 
       if (response.ok) {
         const data = await response.json();
-        
+
         if (searchMode === 'quick') {
           // Quick mode: multiple direct results
           setResults(data.results || []);
@@ -114,12 +115,12 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setQuery(value);
-    
+
     // Clear existing timeout
     if (debounceTimeoutRef.current) {
       clearTimeout(debounceTimeoutRef.current);
     }
-    
+
     // Debounce search with 300ms delay (industry standard)
     debounceTimeoutRef.current = setTimeout(() => {
       performSearch(value);
@@ -141,19 +142,19 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
     <Dialog
       ref={dialogRef}
       modal={true}
-      closedby="any"
+      closedby='any'
       onClose={handleClose}
       className={cl(classes.dialog)}
     >
       <Dialog.Block className={cl(classes.headerBlock)}>
         <div className={cl(classes.header)}>
-          <Heading data-size="xs" className={cl(classes.title)}>
+          <Heading data-size='xs' className={cl(classes.title)}>
             {t('search.title', 'Search Designsystemet')}
           </Heading>
-          <div className={cl(classes.modeToggle)}> 
+          <div className={cl(classes.modeToggle)}>
             <Button
               variant={searchMode === 'quick' ? 'primary' : 'secondary'}
-              data-size="sm"
+              data-size='sm'
               onClick={() => {
                 setSearchMode('quick');
                 if (query.trim()) {
@@ -165,7 +166,7 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
             </Button>
             <Button
               variant={searchMode === 'chat' ? 'primary' : 'secondary'}
-              data-size="sm"
+              data-size='sm'
               onClick={() => {
                 setSearchMode('chat');
                 if (query.trim()) {
@@ -176,15 +177,20 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
               {t('search.chat', 'Chat')}
             </Button>
           </div>
-
         </div>
       </Dialog.Block>
 
       <Dialog.Block className={cl(classes.searchBlock)}>
         <Search className={cl(classes.search)}>
           <Search.Input
-            aria-label={t('search.input-label', 'Search for components, guides, and more')}
-            placeholder={t('search.placeholder', 'Search for components, guides, and more...')}
+            aria-label={t(
+              'search.input-label',
+              'Search for components, guides, and more',
+            )}
+            placeholder={t(
+              'search.placeholder',
+              'Search for components, guides, and more...',
+            )}
             value={query}
             onChange={handleInputChange}
             autoFocus
@@ -203,67 +209,78 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
 
         {!isLoading && results.length > 0 && (
           <div className={cl(classes.results)}>
-            {searchMode === 'quick' ? (
-              // Quick mode: Simple list of results
-              results.map((result, index) => (
-                <div key={index} className={cl(classes.quickResult)}>
-                  <div className={cl(classes.resultHeader)}> 
-                    <h3 className={cl(classes.resultTitle)}>
-                      <a 
-                        href={result.url} 
-                        className={cl(classes.quickResultLink)}
-                        onClick={handleClose}
-                      >
-                        {result.title}
-                      </a>
-                    </h3>
-                    <span className={cl(classes.resultType)}>{result.type}</span>
-                  </div>
-                  <p className={cl(classes.quickResultContent)}>
-                    {result.content}
-                  </p>
-                </div>
-              ))
-            ) : (
-              // Chat mode: Expandable details with sources
-              results.map((result, index) => (
-                <Details key={index} defaultOpen={true} className={cl(classes.result)}>
-                  <Details.Summary className={cl(classes.resultSummary)}>
+            {searchMode === 'quick'
+              ? // Quick mode: Simple list of results
+                results.map((result, index) => (
+                  <div key={index} className={cl(classes.quickResult)}>
                     <div className={cl(classes.resultHeader)}>
-                      <h3 className={cl(classes.resultTitle)}>{result.title}</h3>
-                      <span className={cl(classes.resultType)}>{result.type}</span>
+                      <h3 className={cl(classes.resultTitle)}>
+                        <a
+                          href={result.url}
+                          className={cl(classes.quickResultLink)}
+                          onClick={handleClose}
+                        >
+                          {result.title}
+                        </a>
+                      </h3>
+                      <span className={cl(classes.resultType)}>
+                        {result.type}
+                      </span>
                     </div>
-                  </Details.Summary>
-                  <Details.Content className={cl(classes.resultContent)}>
-                    <div className={cl(classes.answerContent)}>
-                      {parseMarkdown(result.content)}
-                    </div>
-                    {result.sources && result.sources.length > 0 && (
-                      <div className={cl(classes.sources)}>
-                        <h4 className={cl(classes.sourcesTitle)}>
-                          {t('search.sources', 'Sources')}
-                        </h4>
-                        <ul className={cl(classes.sourcesList)}>
-                          {result.sources.map((source, sourceIndex) => (
-                            <li key={sourceIndex} className={cl(classes.sourceItem)}>
-                              <a 
-                                href={source.url} 
-                                className={cl(classes.sourceLink)}
-                                onClick={handleClose}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                {source.title}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
+                    <p className={cl(classes.quickResultContent)}>
+                      {result.content}
+                    </p>
+                  </div>
+                ))
+              : // Chat mode: Expandable details with sources
+                results.map((result, index) => (
+                  <Details
+                    key={index}
+                    defaultOpen={true}
+                    className={cl(classes.result)}
+                  >
+                    <Details.Summary className={cl(classes.resultSummary)}>
+                      <div className={cl(classes.resultHeader)}>
+                        <h3 className={cl(classes.resultTitle)}>
+                          {result.title}
+                        </h3>
+                        <span className={cl(classes.resultType)}>
+                          {result.type}
+                        </span>
                       </div>
-                    )}
-                  </Details.Content>
-                </Details>
-              ))
-            )}
+                    </Details.Summary>
+                    <Details.Content className={cl(classes.resultContent)}>
+                      <div className={cl(classes.answerContent)}>
+                        {parseMarkdown(result.content)}
+                      </div>
+                      {result.sources && result.sources.length > 0 && (
+                        <div className={cl(classes.sources)}>
+                          <h4 className={cl(classes.sourcesTitle)}>
+                            {t('search.sources', 'Sources')}
+                          </h4>
+                          <ul className={cl(classes.sourcesList)}>
+                            {result.sources.map((source, sourceIndex) => (
+                              <li
+                                key={sourceIndex}
+                                className={cl(classes.sourceItem)}
+                              >
+                                <a
+                                  href={source.url}
+                                  className={cl(classes.sourceLink)}
+                                  onClick={handleClose}
+                                  target='_blank'
+                                  rel='noopener noreferrer'
+                                >
+                                  {source.title}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </Details.Content>
+                  </Details>
+                ))}
           </div>
         )}
 
@@ -278,7 +295,7 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
             <p>{t('search.suggestions-title', 'Try searching for:')}</p>
             <ul className={cl(classes.suggestionsList)}>
               <li>
-                <button 
+                <button
                   className={cl(classes.suggestionButton)}
                   onClick={() => {
                     setQuery('Button component');
@@ -289,7 +306,7 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
                 </button>
               </li>
               <li>
-                <button 
+                <button
                   className={cl(classes.suggestionButton)}
                   onClick={() => {
                     setQuery('Design tokens');
@@ -300,7 +317,7 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
                 </button>
               </li>
               <li>
-                <button 
+                <button
                   className={cl(classes.suggestionButton)}
                   onClick={() => {
                     setQuery('Accessibility guidelines');

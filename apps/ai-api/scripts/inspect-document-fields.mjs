@@ -53,7 +53,7 @@ async function inspectDocumentFields() {
     const fieldAnalysis = {};
     const sampleValues = {};
 
-    results.hits.forEach((doc, index) => {
+    results.hits.forEach((doc) => {
       Object.keys(doc).forEach((field) => {
         if (!fieldAnalysis[field]) {
           fieldAnalysis[field] = 0;
