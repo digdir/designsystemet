@@ -50,10 +50,10 @@
     "@u-elements/u-combobox": "^1.0.1",
     "@u-elements/u-datalist": "^1.0.14",
     "@u-elements/u-details": "^0.1.5",
-    "clsx": "^2.1.1"
+    "clsx": "^2.1.1",
+    "@digdir/designsystemet": "workspace:^"
   },
   "devDependencies": {
-    "@digdir/designsystemet": "workspace:^",
     "@digdir/designsystemet-css": "workspace:^",
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-node-resolve": "^16.0.1",
