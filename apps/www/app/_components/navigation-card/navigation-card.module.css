@@ -3,12 +3,15 @@
   box-shadow: var(--ds-shadow-sm);
   border: none;
   border-radius: 8px;
-  transition:
-    0.2s transform,
-    0.2s box-shadow;
+
   position: relative;
   z-index: 2;
   height: 100%;
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      0.2s transform,
+      0.2s box-shadow;
+  }
 }
 
 .card:hover {
@@ -29,8 +32,8 @@
   border-radius: var(--ds-border-radius-sm);
   transform: rotate(45deg);
   margin: 0 auto;
-  margin-bottom: calc(var(--ds-size-3) + 11px);
-  margin-top: var(--ds-size-3);
+  margin-bottom: var(--ds-size-8);
+  margin-top: var(--ds-size-5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,8 +80,8 @@
 }
 
 .title {
-  margin-top: var(--ds-size-4);
-  margin-bottom: var(--ds-size-4);
+  margin-top: var(--ds-size-5);
+  margin-bottom: var(--ds-size-5);
   text-align: center;
   text-decoration: underline;
   text-underline-offset: 7px;

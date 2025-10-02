@@ -13,7 +13,7 @@ onlyBuiltDependencies:
   - esbuild
   - just-pnpm
   - style-dictionary
-useNodeVersion: 22.17.1
+useNodeVersion: 22.20.0
 packageExtensions:
   '@navikt/aksel-icons':
     peerDependencies:
@@ -21,4 +21,9 @@ packageExtensions:
     peerDependenciesMeta:
       react:
         optional: true
-
+syncInjectedDepsAfterScripts:
+  - dist
+injectWorkspacePackages: true
+minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - "@u-elements/*"

@@ -12,6 +12,8 @@ import { capitalizeString } from '~/_utils/string-helpers';
 import { ColorTokensTable } from '../color/color-table';
 import colorTokens from '../design-tokens/color.json';
 import semanticTokens from '../design-tokens/semantic.json';
+import sizeTokens from '../design-tokens/size.json';
+import typeScaleTokens from '../design-tokens/type-scale.json';
 import typographyTokens from '../design-tokens/typography.json';
 import { SemanticTokensTable } from '../semantic/semantic-table';
 import type { PreviewToken } from '../types';
@@ -101,7 +103,7 @@ export const TokenList = () => {
                   <Heading level={4} data-size='md'>
                     {capitalizeString(name)}
                   </Heading>
-                  <TypographyTable tokens={tokens} />
+                  <TypographyTable tokens={[...tokens, ...typeScaleTokens]} />
                 </div>
               </Fragment>
             );
@@ -113,6 +115,7 @@ export const TokenList = () => {
             </Heading>
             <Paragraph>{t('token-preview.size.description')}</Paragraph>
             <div className={classes.section}>
+              <SemanticTokensTable tokens={sizeTokens} />
               <SemanticTokensTable tokens={filteredSemanticTokens} />
             </div>
           </>

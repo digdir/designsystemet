@@ -3,7 +3,7 @@ export default {
     about: 'Om designsystemet',
     privacy: 'Personvernerklæring',
     accessibility: 'Tilgjengelighetserklæring',
-    slack: 'Bli invitert til slack',
+    slack: 'Bli med på Slack',
     agencies: {
       title: 'Lages på tvers av offentlige etater:',
       contact: 'Din etat? Ta kontakt!',
@@ -14,9 +14,8 @@ export default {
   },
   header: {
     'home-link': 'Designsystem forside',
-    menu: 'Meny',
-    'github-title': 'Designsystemets GitHub-repositorium',
-    'figma-title': 'Designsystemets Figma-prosjekt',
+    'open-menu': 'Åpne meny',
+    'close-menu': 'Lukk meny',
     'theme-toggle': 'Bytt til {{theme}} modus',
     'theme-toggle-aria': 'Bytt til {{theme}} modus',
     light: 'lys',

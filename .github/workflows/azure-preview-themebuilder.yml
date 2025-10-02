@@ -1,0 +1,29 @@
+name: azure preview themebuilder
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - 'apps/themebuilder/**'
+      - 'internal/components/**'
+      - '.github/workflows/azure-preview-themebuilder.yml'
+      - '.github/workflows/azure-deploy-themebuilder.yml'
+      - 'Dockerfile'
+
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
+
+jobs:
+  deploy-preview:
+    uses: ./.github/workflows/azure-deploy-themebuilder.yml
+    with:
+      environment: preview
+      pr_number: ${{ github.event.number }}
+      update_comment: true
+    secrets:
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}

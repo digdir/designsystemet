@@ -52,12 +52,6 @@
     }
   }
 
-  &:focus-visible {
-    & svg * {
-      fill: var(--dsc-link-color--focus);
-    }
-  }
-
   &:hover {
     & svg * {
       fill: var(--dsc-link-color--hover);

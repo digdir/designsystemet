@@ -194,4 +194,9 @@ export default {
       dark: 'Mørk',
     },
   },
+  toc: {
+    title: 'Innhold',
+  },
+  contributors: 'Bidragsytere',
+  editOnGithub: 'Rediger denne siden på github.com (åpnes i ny fane)',
 };

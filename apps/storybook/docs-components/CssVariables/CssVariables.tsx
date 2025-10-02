@@ -19,7 +19,6 @@ export const CssVariables = forwardRef<HTMLTableElement, CssVariablesProps>(
     return (
       <Table
         zebra
-        data-color-scheme='light'
         className={cl('sb-unstyled', className)}
         style={{
           tableLayout: 'fixed',
@@ -73,7 +72,7 @@ function getCssVariables(css: string) {
       // Return the original inline string from the value, if it was removed earlier
       const valueWithOriginalString = value.replace(
         /<placeholder-(\d+)>/,
-        (_, p1: string) => stringsRemovedFromCss[parseInt(p1)],
+        (_, p1: string) => stringsRemovedFromCss[parseInt(p1, 10)],
       );
       res[name] = valueWithOriginalString;
     }

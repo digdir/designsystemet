@@ -8,6 +8,7 @@ import {
   VideoIcon,
 } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react-vite';
+import type { CSSProperties } from 'react';
 import { Badge, Button, Tabs } from '../';
 
 type Story = StoryFn<typeof Badge>;
@@ -107,10 +108,12 @@ export const CustomPlacement: Story = () => (
   <>
     <Badge.Position
       placement='top-right'
-      style={{
-        top: '16%',
-        right: '10%',
-      }}
+      style={
+        {
+          '--dsc-badge-top': '16%',
+          '--dsc-badge-right': '10%',
+        } as CSSProperties
+      }
     >
       <Badge data-color='accent'></Badge>
       <EnvelopeClosedFillIcon title='Meldinger' />

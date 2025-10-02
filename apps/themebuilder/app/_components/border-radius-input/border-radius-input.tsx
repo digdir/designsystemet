@@ -34,7 +34,7 @@ export const BorderRadiusInput = () => {
   ];
 
   const debouncedCallback = useDebounceCallback((value: string) => {
-    const updatedValue = parseInt(value);
+    const updatedValue = parseInt(value, 10);
     if (updatedValue >= 0) {
       setBorderRadius(updatedValue);
     } else {
@@ -60,7 +60,6 @@ export const BorderRadiusInput = () => {
             )}
             key={index}
           >
-            {/** biome-ignore lint/a11y/useSemanticElements: TODO: convert to label + input*/}
             <Button
               variant='tertiary'
               data-color='neutral'

@@ -1,5 +1,80 @@
 # Change Log
 
+## 1.6.0
+
+### Minor Changes
+
+- **toggle-group**: Added new secondary design available with `data-variant="secondary"` (or `variant="secondary"` in react) ([#4092](https://github.com/digdir/designsystemet/pull/4092))
+
+- **toggle-group**: Changed border-radius to `--ds-border-radius-default`, border-color to `--ds-color-border-default` and color to `--ds-color-text-default`. ([#4092](https://github.com/digdir/designsystemet/pull/4092))
+
+### Patch Changes
+
+- **link**: Change `:focus-visible` styling to use border, not background ([#4095](https://github.com/digdir/designsystemet/pull/4095))
+  - Removes `--dsc-link-background--focus`
+  - Removes `--dsc-link-color--focus`
+
+- **link**: Add `--dsc-link-border-radius`, default is `var(--ds-border-radius-md)` ([#4095](https://github.com/digdir/designsystemet/pull/4095))
+
+- **Dropdown**: `Dropdown.Heading` (h2-h6) - changed color to text-default and font-weight to 500 ([#4076](https://github.com/digdir/designsystemet/pull/4076))
+
+## 1.5.1
+
+### Patch Changes
+
+- **Field**: Make sure `<select>` and `<textarea>` is not on same line as label ([#4048](https://github.com/digdir/designsystemet/pull/4048))
+
+## 1.5.0
+
+### Minor Changes
+
+- Sizing and size modes have been reimplemented align code and Figma implementations, and to support setting size mode in css queries. ([#3866](https://github.com/digdir/designsystemet/pull/3866))
+
+  `--ds-size-*` variables are now independent of the element's font size, and only depend on the size mode, which aligns the code implementation with how the modes already worked in Figma. **Important**: This will have a large visual impact on existing code where size variables have been used to style Heading elements (e.g. margin).
+
+  Read [Sizes in code](https://www.designsystemet.no/en/fundamentals/code/sizes) for info on how size modes work after these changes.
+
+## 1.4.0
+
+### Patch Changes
+
+- **Card**: If `.ds-link` is used in a heading, remove focus and active styling ([#4005](https://github.com/digdir/designsystemet/pull/4005))
+
+- **Fieldset**: Removed uneccessary margin when visually hiding `Fieldset.Legend` with `.ds-sr-only` ([#3996](https://github.com/digdir/designsystemet/pull/3996))
+
+- Update npm non-major dependencies ([#3989](https://github.com/digdir/designsystemet/pull/3989))
+
+- **Button**: Change sizes of svg and icon ([#3998](https://github.com/digdir/designsystemet/pull/3998))
+  - In icon button (`[data-icon]`), it is `1.5em`
+  - In normal button, it is `1.3em`
+
+## 1.3.0
+
+## 1.2.0
+
+### Minor Changes
+
+- **Badge**: Allow adjusting the position of the badge using css variables `--dsc-badge-{top,bottom,left,right}` ([#3965](https://github.com/digdir/designsystemet/pull/3965))
+
+- **Link**: Automatically add recommended spacing to icons (svg or img), when there is also a `<span>` present. ([#3942](https://github.com/digdir/designsystemet/pull/3942))
+  - `<Link><Icon />Text</Link>` will not get spacing
+  - `<Link><Icon /> Text</Link>` will get a leading underlined space character between icon and text, which looks bad
+  - `<Link><Icon /><span>Text</span></Link>` will get recommended spacing
+
+### Patch Changes
+
+- **Dialog**: Rework close button ([#3959](https://github.com/digdir/designsystemet/pull/3959))
+  - An empty button with `data-command="close"` will get an "X" icon
+  - If `button[data-command="close"]` is the first child of `.ds-dialog`, it will float to the top right
+
+## 1.1.10
+
+### Patch Changes
+
+- **Details:** Using `margin` instead of `padding` to style children of `Details`, to allow direct children such as `Button` ([#3883](https://github.com/digdir/designsystemet/pull/3883))
+
+- Updated non-major dependencies ([#3890](https://github.com/digdir/designsystemet/pull/3890))
+
 ## 1.1.9
 
 ## 1.1.8

@@ -1,11 +1,10 @@
+import { FilesIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, within } from 'storybook/test';
 import { Button } from '../../';
 import { Tooltip } from './tooltip';
 
 type Story = StoryObj<typeof Tooltip>;
-
-const defaultChildren = <Button>My trigger</Button>;
 
 export default {
   title: 'Komponenter/Tooltip',
@@ -35,26 +34,28 @@ export default {
 
 export const Preview: StoryFn<typeof Tooltip> = (args) => (
   <Tooltip {...args}>
-    <Button>My trigger</Button>
+    <Button icon aria-label='Kopier'>
+      <FilesIcon aria-hidden />
+    </Button>
   </Tooltip>
 );
 
 Preview.args = {
-  content: 'Tooltip text',
+  content: 'Kopier',
   placement: 'top',
 };
 
 export const WithString: Story = {
   args: {
-    content: 'Tooltip text',
-    children: 'My trigger',
+    content: 'Organisasjonsnummer',
+    children: 'Org.nr.',
   },
 };
 
 WithString.play = async (ctx) => {
   // When not in Docs mode, automatically open the tooltip
   const canvas = within(ctx.canvasElement);
-  const button = canvas.getByText('My trigger');
+  const button = canvas.getByText('Org.nr.');
   await userEvent.hover(button);
   /* wait 1s for tooltip to show */
   await new Promise((resolve) => {
@@ -69,8 +70,12 @@ WithString.play = async (ctx) => {
 
 export const Placement: Story = {
   args: {
-    content: 'Tooltip text',
+    content: 'Kopier',
     placement: 'bottom',
-    children: defaultChildren,
+    children: (
+      <Button icon aria-label='Kopier'>
+        <FilesIcon aria-hidden />
+      </Button>
+    ),
   },
 };

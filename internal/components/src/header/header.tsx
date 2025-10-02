@@ -13,14 +13,18 @@ import {
   XMarkIcon,
 } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { useEffect, useRef, useState } from 'react';
+import {
+  type FocusEvent,
+  type MouseEvent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router';
 import { DsEmbledLogo, DsFullLogo } from '../logos/designsystemet';
 import { SearchDialog } from '../search-dialog';
 import classes from './header.module.css';
-import { FigmaLogo } from './logos/figma-logo';
-import { GithubLogo } from './logos/github-logo';
 
 type HeaderProps = {
   menu: { name: TemplateStringsArray; href: string }[];
@@ -81,6 +85,7 @@ const Header = ({
 
   const [open, setOpen] = useState(false);
   const [isHamburger, setIsHamburger] = useState(false);
+  const [viewportWidth, setViewportWidth] = useState(0);
   const [langOpen, setLangOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const menuRef = useRef<HTMLUListElement>(null);
@@ -88,9 +93,48 @@ const Header = ({
 
   const [theme, setTheme] = useState('light');
 
-  const handleThemeChange = (newTheme: 'dark' | 'light') => {
+  //close mobile menu when tabfocus leaves the header
+  const handleBlur = (e: FocusEvent) => {
+    if (!open) return;
+    if (
+      headerRef.current &&
+      e.relatedTarget instanceof Node &&
+      !headerRef.current.contains(e.relatedTarget)
+    ) {
+      setOpen(false);
+    }
+  };
+
+  const handleThemeChange = (
+    newTheme: 'dark' | 'light',
+    event?: MouseEvent<HTMLButtonElement> | null,
+  ) => {
     setTheme(newTheme);
-    document.documentElement.setAttribute('data-color-scheme', newTheme);
+
+    if (
+      !document.startViewTransition ||
+      window.matchMedia('(prefers-reduced-motion)').matches ||
+      !event
+    ) {
+      document.documentElement.setAttribute('data-color-scheme', newTheme);
+      return;
+    }
+
+    const { left, bottom, width, height } =
+      event.currentTarget.getBoundingClientRect();
+
+    document.documentElement.style.setProperty(
+      '--_theme-x',
+      `${left + width / 2}px`,
+    );
+    document.documentElement.style.setProperty(
+      '--_theme-y',
+      `${bottom - height / 2}px`,
+    );
+
+    document.startViewTransition(() => {
+      document.documentElement.setAttribute('data-color-scheme', newTheme);
+    });
   };
 
   useEffect(() => {
@@ -100,24 +144,33 @@ const Header = ({
     const userPrefersDark = userPreference.matches;
 
     // set theme based on user preference
-    handleThemeChange(userPrefersDark ? 'dark' : 'light');
+    handleThemeChange(userPrefersDark ? 'dark' : 'light', null);
   }, []);
 
   useEffect(() => {
     const handleResize = () => {
-      if (isHamburger) return;
-      if (menuRef.current && headerRef.current) {
+      if (isHamburger && viewportWidth > 0) {
+        const SAFETY_MARGIN = 50;
+        if (window.innerWidth > viewportWidth + SAFETY_MARGIN) {
+          setIsHamburger(false);
+          setOpen(false);
+        }
+      } else if (menuRef.current && headerRef.current) {
         const wrappedItems = detectWrap(menuRef.current.children);
-        setIsHamburger(wrappedItems.length > 0);
+        if (wrappedItems.length > 0) {
+          setViewportWidth(window.innerWidth);
+          setIsHamburger(true);
+        }
       }
     };
 
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [menu, isHamburger]);
+  }, [menu, isHamburger, viewportWidth]);
 
   return (
+    // biome-ignore lint/a11y/noStaticElementInteractions: onBlur bubbles from children that are interactive and must be captured here
     <header
       className={cl(
         classes.header,
@@ -126,6 +179,7 @@ const Header = ({
         className,
       )}
       ref={headerRef}
+      onBlur={handleBlur}
       {...props}
     >
       <div className={classes.container}>
@@ -144,47 +198,16 @@ const Header = ({
           </Link>
           {betaTag && <div className={classes.tag}>Beta</div>}
         </div>
-        <nav className={isHamburger ? classes.mobile : ''}>
-          {isHamburger && (
-            <Button
-              variant='tertiary'
-              icon={true}
-              data-color='neutral'
-              aria-expanded={open}
-              aria-label={t('header.menu')}
-              className={cl(classes.toggle, 'ds-focus')}
-              onClick={() => {
-                setOpen(!open);
-              }}
-            >
-              {open && (
-                <XMarkIcon
-                  fontSize={26}
-                  color='var(--ds-color-neutral-text-default)'
-                />
-              )}
-              {!open && (
-                <MenuHamburgerIcon
-                  fontSize={26}
-                  color='var(--ds-color-neutral-text-default)'
-                />
-              )}
-            </Button>
-          )}
-          <ul
-            ref={menuRef}
-            className={cl(classes.menu, open && classes.active)}
-          >
+        <nav data-mobile={isHamburger}>
+          <ul ref={menuRef} className={classes.desktopMenu}>
             {menu.map((item, index) => (
-              <li className={classes.item} key={index}>
+              <li key={index}>
                 <Paragraph data-size='md' asChild>
                   <Link
                     suppressHydrationWarning
                     to={item.href}
-                    onClick={() => setOpen(false)}
                     className={cl(
                       pathname?.includes(item.href) && classes.active,
-                      classes.link,
                       'ds-focus',
                     )}
                   >
@@ -193,26 +216,6 @@ const Header = ({
                 </Paragraph>
               </li>
             ))}
-            <li
-              className={cl(classes.item, classes.itemIcon, classes.firstIcon)}
-            >
-              <Link
-                to='https://github.com/digdir/designsystemet'
-                className={cl(classes.linkIcon, classes.github, 'ds-focus')}
-                title={t('header.github-title')}
-              >
-                <GithubLogo />
-              </Link>
-            </li>
-            <li className={cl(classes.item, classes.itemIcon)}>
-              <Link
-                to='https://www.figma.com/@designsystemet'
-                className={cl(classes.linkIcon, classes.figma, 'ds-focus')}
-                title={t('header.figma-title')}
-              >
-                <FigmaLogo />
-              </Link>
-            </li>
           </ul>
           <Tooltip
             content={t('header.search-toggle', 'Search Designsystemet')}
@@ -244,8 +247,8 @@ const Header = ({
                 variant='tertiary'
                 data-color='neutral'
                 icon={true}
-                onClick={() => {
-                  handleThemeChange(theme === 'light' ? 'dark' : 'light');
+                onClick={(e) => {
+                  handleThemeChange(theme === 'light' ? 'dark' : 'light', e);
                 }}
                 className={classes.toggleButton}
               >
@@ -285,6 +288,57 @@ const Header = ({
               </Dropdown.Button>
             </Dropdown>
           </Dropdown.TriggerContext>
+          {isHamburger && (
+            <>
+              <Button
+                variant='tertiary'
+                icon={true}
+                data-color='neutral'
+                aria-expanded={open}
+                aria-label={
+                  open ? t('header.close-menu') : t('header.open-menu')
+                }
+                className={cl(classes.toggle, 'ds-focus')}
+                onClick={() => {
+                  setOpen(!open);
+                }}
+              >
+                {open && (
+                  <XMarkIcon
+                    aria-hidden
+                    fontSize={26}
+                    color='var(--ds-color-neutral-text-default)'
+                  />
+                )}
+                {!open && (
+                  <MenuHamburgerIcon
+                    aria-hidden
+                    fontSize={26}
+                    color='var(--ds-color-neutral-text-default)'
+                  />
+                )}
+              </Button>
+              <ul data-open={open}>
+                {menu.map((item, index) => (
+                  <li key={index}>
+                    <Paragraph data-size='md' asChild>
+                      <Link
+                        suppressHydrationWarning
+                        to={item.href}
+                        onClick={() => setOpen(false)}
+                        className={cl(
+                          pathname?.includes(item.href) && classes.active,
+                          'ds-focus',
+                        )}
+                      >
+                        {t(item.name)}
+                      </Link>
+                    </Paragraph>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
         </nav>
       </div>
       <SearchDialog 

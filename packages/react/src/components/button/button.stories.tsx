@@ -1,7 +1,6 @@
 import { PencilWritingIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
-
-import themeConfig from '../../../../theme/configs/designsystemet.config.json';
+import themeConfig from '../../../../cli/configs/digdir.config.json';
 import { Button, type ButtonProps } from './button';
 
 type Story = StoryObj<typeof Button>;
@@ -24,8 +23,8 @@ const meta: Meta<typeof Button> = {
 export default meta;
 
 const colorVariants = [
-  ...Object.keys(themeConfig.themes.designsystemet.colors.main),
-  ...Object.keys(themeConfig.themes.designsystemet.colors.support),
+  ...Object.keys(themeConfig.themes.digdir.colors.main),
+  ...Object.keys(themeConfig.themes.digdir.colors.support),
   'neutral',
   'danger',
 ];
@@ -78,7 +77,7 @@ ColorsPressed.parameters = {
 
 export const Icons: StoryFn<typeof Button> = () => (
   <>
-    <Button icon aria-label='Kun ikon'>
+    <Button icon aria-label='Rediger'>
       <PencilWritingIcon aria-hidden />
     </Button>
     <Button>
@@ -120,6 +119,10 @@ export const Loading: StoryFn<typeof Button> = () => (
     </Button>
     <Button variant='tertiary' loading>
       Laster...
+    </Button>
+    <Button icon loading aria-label='Rediger'>
+      {/* When loading is true and icon is set, loading will take precedence */}
+      <PencilWritingIcon aria-hidden />
     </Button>
   </>
 );

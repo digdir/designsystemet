@@ -12,7 +12,7 @@ Vi bruker `Switch` til å gi brukerne et valg mellom to alternativer. Bryteren k
 <Primary />
 <Controls />
 
-## Slik bruker du `Switch`
+## Bruk
 
 ```tsx
 import { Switch } from '@digdir/designsystemet-react';
@@ -20,9 +20,11 @@ import { Switch } from '@digdir/designsystemet-react';
 <Switch label="Mørk modus" value="dark" />
 ```
 
-## Gruppering
+## Kodeeksempler
 
-Bruker [Fieldset](/docs/komponenter-fieldset--docs) til gruppering.
+### Gruppering
+
+Bruk [Fieldset](/docs/komponenter-fieldset--docs) for å gruppere flere `Switch`-komponenter sammen. 
 
 <Canvas of={SwitchStories.Group} />
 
@@ -31,59 +33,63 @@ Bruker [Fieldset](/docs/komponenter-fieldset--docs) til gruppering.
 Bruk `position="end"` til å plassere `Switch` på høyre side av ledeteksten hvis
 du trenger det.
 
-<Canvas of={SwitchStories.GroupEnd} />
+<Canvas of={SwitchStories.RigthAligned} />
 
-## Retningslinjer for `Switch`
+## Retningslinjer
 
 `Switch` skal være et valg mellom to alternativer. Vi bruker `Switch` til innstillinger, ikke i skjema.
 
 
-Passer til å
+**Passer til å**
 
 - aktivere eller deaktivere funksjoner/tilstander med en gang
-- slå varsler av
-  og på
-- endre visning av innhold mellom to kategorier, for eksempel se
-  statistikk per måned eller år
-  
-Passer ikke til
+- slå varsler av og på
 
-- å gi flere alternativer enn to
+
+**Passer ikke til**
+
 - å bruke i stedet for `Checkbox` eller `Radio` i et skjema
 - situasjoner der brukerne må lagre informasjon før en endring får effekt
+- endre visning av innhold mellom to kategorier, bruk heller [`ToggleGroup`](/docs/komponenter-togglegroup--docs)
 
 
-Bruk heller
+**Bruk heller**
 
 - `Checkbox` hvis du skal tilby brukerne flere valg, der de skal velge ett eller flere alternativer
 - `Radio` hvis brukerne skal få flere valg, men bare skal velge ett
-- chip til å filtrere innhold
+- `Chip` til å filtrere innhold
 
-## Tekst i komponenten
+## Tekst
 
-Teksten til en switch må være kort og presis, ofte betyr det bare ett eller to ord. Det skal gi mening når du sier ledeteksten høyt og legger til av/på etterpå. Unngå tekst med flere ord og mellomrom.
+Teksten til en `Switch` må være kort og presis, ofte betyr det bare ett eller to ord. Det skal gi mening når du sier ledeteksten høyt og legger til av/på etterpå. Unngå tekst med flere ord og mellomrom.
 
-### Eksempel
+Hvis du har flere `Switch` i en gruppe, må du passe på at du er konsekvent med hvordan du formulerer tekstene til hver av dem også, ikke formulerer dem forskjellig.
 
-- ⚠️ Ikke: Skru på flymodus (Av/på)
-- 👍 Riktig: Flymodus (Av/på)
-  
+Teksten skal beskrive hva funksjonen gjelder, ikke om den er på eller av. Hvis statusen skrives inn i labelen, kan det bli forvirrende og vanskelig å vite hvilken tilstand switchen faktisk er i.
+
+### Eksempel 1
+- Riktig: Varsle på epost (Av/på)
+- Feil: Skru av varsel på epost (Av/på)
+
+### Eksempel 2
+- Riktig: Flymodus (Av/på)
+- Feil: Skru på flymodus (Av/på)
+
 ### Plassering av tekst
 
 Som regel er det høyre som er den beste plasseringen for tekst, unntaket er når `Switch` er fast plassert på høyre side i grensesnittet er det best at teksten er på venstre side. Slik at alle knappene blir justert etter samme vertikale linje.
 
 ## Tilgjengelighet
+Vi bruker `role="switch"` for å fortelle skjermlesere at dette er en vippebryter. Dette gjør at skjermlesere kan gi brukeren informasjon om at dette er en vippebryter og at den kan skrus av og på. Det er ikke lagt på `aria-checked` siden dette er ikke nødvendig når bryteren er en input med `type="checkbox"`. <sup>1</sup>
 
-Sørg for at komponenten oppfører seg konsekvent gjennom en hel tjeneste.
-Hvis du har en gruppe med flere vippebrytere, må du passe på at du er konsekvent med hvordan du formulerer tekstene til hver av dem også, ikke formulerer dem forskjellig.
-
-Vi bruker `role="switch"` for å fortelle skjermlesere at dette er en vippebryter. Dette gjør at skjermlesere kan gi brukeren informasjon om at dette er en vippebryter og at den kan skrus av og på.
-Det er ikke lagt på `aria-checked` siden dette er ikke nødvendig når bryteren er en input med `type="checkbox"`. <sup>1</sup>
-
+### Tastaturnavigasjon
+* <kbd>Space</kbd> slår av/på
 ## CSS Variabler
 
 <CssVariables css={css} />
 
 ### Referanser
 
-[1. Switch rolle](https://www.w3.org/WAI/ARIA/apg/patterns/switch/#:~:text=If%20the%20switch%20element%20is%20an%20HTML%20input%5Btype%3D%22checkbox%22%5D%2C%20it%20uses%20the%20HTML%20checked%20attribute%20instead%20of%20the%20aria%2Dchecked%20property.)
+1. [Switch pattern (w3.org)](https://www.w3.org/WAI/ARIA/apg/patterns/switch/#:~:text=If%20the%20switch%20element%20is%20an%20HTML%20input%5Btype%3D%22checkbox%22%5D%2C%20it%20uses%20the%20HTML%20checked%20attribute%20instead%20of%20the%20aria%2Dchecked%20property.)
+
+

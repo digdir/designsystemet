@@ -41,10 +41,10 @@ describe('Tabs', () => {
     );
 
     expect(screen.queryByText('content 1')).toBeVisible();
-    expect(screen.queryByText('content 2')).not.toBeInTheDocument();
+    expect(screen.queryByText('content 2')).toHaveAttribute('hidden', '');
     await user.click(screen.getByRole('tab', { name: 'Tab 2' }));
     expect(screen.queryByText('content 2')).toBeVisible();
-    expect(screen.queryByText('content 1')).not.toBeInTheDocument();
+    expect(screen.queryByText('content 1')).toHaveAttribute('hidden', '');
   });
 
   it('item renders with correct aria attributes', async () => {
@@ -116,5 +116,62 @@ describe('Tabs', () => {
 
     const panel = screen.getByRole('tabpanel');
     expect(panel).not.toHaveAttribute('tabindex', '0');
+  });
+
+  it('panel is aria-labelledby button', () => {
+    render(
+      <Tabs defaultValue='value1'>
+        <Tabs.List>
+          <Tabs.Tab value='value1' id='custom-id'>
+            Tab 1
+          </Tabs.Tab>
+          <Tabs.Tab value='value2' data-testid='button'>
+            Tab 2
+          </Tabs.Tab>
+        </Tabs.List>
+        <Tabs.Panel value='value1' data-testid='panel-1'>
+          content 1
+        </Tabs.Panel>
+        <Tabs.Panel value='value2' data-testid='panel-2'>
+          content 2
+        </Tabs.Panel>
+      </Tabs>,
+    );
+
+    const testButton = screen.getByRole('tab', { name: 'Tab 2' });
+
+    const panelOne = screen.getByTestId('panel-1');
+    expect(panelOne).toHaveAttribute('aria-labelledby', 'custom-id');
+
+    const panelTwo = screen.getByTestId('panel-2');
+    expect(panelTwo).toHaveAttribute('aria-labelledby', testButton.id);
+  });
+
+  it('button has aria-controls for panel', () => {
+    render(
+      <Tabs defaultValue='value1'>
+        <Tabs.List>
+          <Tabs.Tab value='value1' data-testid='button-1'>
+            Tab 1
+          </Tabs.Tab>
+          <Tabs.Tab value='value2' data-testid='button-2'>
+            Tab 2
+          </Tabs.Tab>
+        </Tabs.List>
+        <Tabs.Panel value='value1' data-testid='panel'>
+          content 1
+        </Tabs.Panel>
+        <Tabs.Panel value='value2' id='panel2'>
+          content 2
+        </Tabs.Panel>
+      </Tabs>,
+    );
+
+    const buttonOne = screen.getByTestId('button-1');
+    const buttonTwo = screen.getByTestId('button-2');
+    const panel = screen.getByTestId('panel');
+
+    expect(buttonOne).toHaveAttribute('aria-controls', panel.id);
+    expect(buttonTwo).toHaveAttribute('aria-controls', 'panel2');
   });
 });

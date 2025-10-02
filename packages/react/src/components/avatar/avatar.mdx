@@ -27,6 +27,12 @@ import { Avatar } from '@digdir/designsystemet-react';
 <Avatar aria-label="Ola Nordmann">
   <img src="..." />
 </Avatar>
+
+/* Sammen med synlig tekst */
+<>
+  <Avatar aria-hidden>ON</Avatar>
+  <span>Ola Nordmann</span>
+</>
 ```
 
 ## Kodeeksempler
@@ -89,11 +95,11 @@ Du må selv sette styling dersom du skal ha en interaktiv `Avatar`.
 - Å representere noe annet enn en person eller enhet, for eksempel et dokument. Bruk heller ikoner eller andre visuelle symboler.
 - Å brukes rent visuelt, uten funksjon eller mening.
 
-## Tekst i komponenten
+## Tekst
 `Avatar` skal som hovedregel ikke inneholde tekst i selve komponenten, med unntak av når initialer brukes. Annen tekst, for eksempel fullt navn, rolle eller organisasjon, bør vises utenfor avataren for å sikre god lesbarhet. 
 
 ## Tilgjengelighet
-`Avatar` må alltid ha en `aria-label` som forklarer hvem eller hva avataren representerer, spesielt dersom den er interaktiv eller del av et brukargrensesnitt med flere brukere. Ikke spesifiser i `aria-label`  at det er et bilde, skjermleseren formidler dette automatisk. Det holder å bruke navnet, som for eksempel `aria-label="Ola Nordmann"`.
+`Avatar` må enten ha en `aria-label` som forklarer hvem eller hva avataren representerer, eller ha `aria-hidden` og synlig tekst som formidler den samme informasjonen. Ikke spesifiser i `aria-label` at det er et bilde, skjermleseren formidler dette automatisk. Det holder å bruke navnet, som for eksempel `aria-label="Ola Nordmann"`.
 
 Bilder, og andre `children`, får automatisk `aria-hidden="true"` for å unngå dobbel informasjon.
 

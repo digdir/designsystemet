@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url';
 import type { StorybookConfig } from '@storybook/react-vite';
 import * as R from 'ramda';
 import type { PropItem } from 'react-docgen-typescript';
+import remarkGfm from 'remark-gfm';
 import { defineConfig, mergeConfig } from 'vite';
 
 const dirname =
@@ -79,8 +80,16 @@ const config: StorybookConfig = {
     '@storybook/addon-themes',
     'storybook-addon-pseudo-states',
     '@storybook/addon-vitest',
-    //'@whitespace/storybook-addon-html', //wait for it to be updated to support sb9
-    '@storybook/addon-docs',
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        mdxPluginOptions: {
+          mdxCompileOptions: {
+            remarkPlugins: [remarkGfm],
+          },
+        },
+      },
+    },
   ],
   staticDirs: ['../assets'],
   framework: {
@@ -92,13 +101,15 @@ const config: StorybookConfig = {
       },
     },
   },
-  tags: (_, options) => {
+  tags: (tagOptions, options) => {
     return {
+      ...tagOptions,
       // Configure stories with the 'chromatic' tag to only be visible in development.
       // In production, they will be picked up by snapshot tests etc but not be visible.
       chromatic: {
         excludeFromDocsStories: true,
         excludeFromSidebar: options.configType === 'PRODUCTION',
+        ...tagOptions?.chromatic,
       },
     };
   },

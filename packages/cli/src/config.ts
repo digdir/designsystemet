@@ -1,7 +1,8 @@
-import chalk from 'chalk';
+import pc from 'picocolors';
 import * as R from 'ramda';
-import { z } from 'zod/v4';
-import { fromError } from 'zod-validation-error/v4';
+import { z } from 'zod';
+import { fromError } from 'zod-validation-error';
+import { colorNames } from './colors/colorMetadata.js';
 import { convertToHex } from './colors/index.js';
 import { RESERVED_COLORS } from './colors/theme.js';
 import { cliOptions } from './tokens/create.js';
@@ -27,13 +28,13 @@ function makeFriendlyError(err: unknown) {
 
             const errorCode = `(error code: ${issue.code})`;
             const optionMessage = optionName ? ` or CLI option --${optionName}` : '';
-            return `  - Error in JSON value ${chalk.red(issuePath)}${optionMessage}:
-      ${issue.message} ${chalk.dim(errorCode)}`;
+            return `  - Error in JSON value ${pc.red(issuePath)}${optionMessage}:
+      ${issue.message} ${pc.dim(errorCode)}`;
           })
           .join('\n'),
     });
   } catch (_err2) {
-    console.error(chalk.red(err instanceof Error ? err.message : 'Unknown error occurred while parsing config file'));
+    console.error(pc.red(err instanceof Error ? err.message : 'Unknown error occurred while parsing config file'));
     console.error(err instanceof Error ? err.stack : 'No stack trace available');
   }
 }
@@ -55,7 +56,7 @@ export function validateConfig<T>(
   try {
     return schema.parse(unvalidatedConfig) as T;
   } catch (err) {
-    console.error(chalk.redBright(`Invalid config file at ${chalk.red(configPath)}`));
+    console.error(pc.redBright(`Invalid config file at ${pc.red(configPath)}`));
 
     const validationError = makeFriendlyError(err);
     console.error(validationError?.toString());
@@ -71,7 +72,7 @@ export function parseConfig<T>(configFile: string, configPath: string): T {
   try {
     return JSON.parse(configFile) as T;
   } catch (err) {
-    console.error(chalk.redBright(`Failed parsing config file at ${chalk.red(configPath)}`));
+    console.error(pc.redBright(`Failed parsing config file at ${pc.red(configPath)}`));
 
     const validationError = makeFriendlyError(err);
     console.error(validationError?.toString());
@@ -114,6 +115,28 @@ const colorCategorySchema = z
   })
   .describe('An object with one or more color definitions. The property name is used as the color name.');
 
+const colorModeOverrideSchema = z
+  .object({
+    light: colorSchema.optional(),
+    dark: colorSchema.optional(),
+  })
+  .describe('Override values for semantic color tokens like "background-subtle", "border-default", etc.');
+
+const colorWeightOverrideSchema = z
+  .partialRecord(z.enum(colorNames), colorModeOverrideSchema)
+  .describe('The name of the color to add overrides for, e.g. "accent"');
+
+const semanticColorOverrideSchema = z
+  .record(z.string(), colorWeightOverrideSchema)
+  .describe('An object with color names as keys');
+
+const overridesSchema = z
+  .object({
+    colors: semanticColorOverrideSchema.optional(),
+  })
+  .describe('Overrides for generated design tokens. Currently only supports colors defined in your theme')
+  .optional();
+
 const themeSchema = z
   .object({
     colors: z
@@ -130,6 +153,7 @@ const themeSchema = z
       .describe('Defines the typography for a given theme')
       .optional(),
     borderRadius: z.number().meta({ description: 'Defines the border-radius for this theme' }).optional(),
+    overrides: overridesSchema,
   })
   .meta({ description: 'An object defining a theme. The property name holding the object becomes the theme name.' });
 
@@ -155,3 +179,4 @@ export type CommonConfigSchema = z.infer<typeof commonConfig>;
 export type BuildConfigSchema = z.infer<typeof commonConfig>;
 export type CreateConfigSchema = z.infer<typeof configFileCreateSchema>;
 export type ConfigSchemaTheme = z.infer<typeof themeSchema>;
+export type ColorOverrideSchema = z.infer<typeof overridesSchema>;

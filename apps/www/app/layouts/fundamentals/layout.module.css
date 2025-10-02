@@ -16,8 +16,18 @@
   flex-grow: 500;
   max-width: 100%;
 
+  [data-is-main='false'] & {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'header header'
+      'content aside'
+      'content aside';
+  }
+
   > h2 {
-    margin-bottom: var(--ds-size-3);
+    margin-bottom: var(--ds-size-5);
   }
   > p {
     margin-bottom: var(--ds-size-4);

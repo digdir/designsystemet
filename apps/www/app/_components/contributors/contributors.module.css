@@ -62,7 +62,7 @@
   flex-wrap: wrap;
   text-wrap: nowrap;
   justify-content: center;
-  gap: var(--ds-size-3);
+  gap: 10px;
   color: var(--ds-color-neutral-text-subtle);
 }
 

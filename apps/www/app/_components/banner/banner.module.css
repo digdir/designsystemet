@@ -31,8 +31,8 @@
   transform: rotate(45deg);
   background-color: var(--ds-color-brand2-border-subtle);
   border-radius: 3px;
-  margin-top: var(--ds-size-2);
-  margin-bottom: var(--ds-size-2);
+  margin-top: var(--ds-size-3);
+  margin-bottom: var(--ds-size-3);
   font-size: 32px;
 }
 

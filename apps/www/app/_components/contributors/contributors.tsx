@@ -1,5 +1,6 @@
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import { Fragment } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import classes from './contributors.module.css';
 
@@ -12,6 +13,7 @@ export const Contributors = ({
   authors,
   headingLevel = 3,
 }: ContributorsProps) => {
+  const { t } = useTranslation();
   return (
     <section className={classes.container}>
       <div className={classes.logo}>
@@ -22,7 +24,7 @@ export const Contributors = ({
         />
       </div>
       <Heading level={headingLevel} data-size='2xs'>
-        Bidragsytere
+        {t('contributors')}
       </Heading>
       <Paragraph data-size='sm' className={classes.meta}>
         {authors?.map((author, index) => (
