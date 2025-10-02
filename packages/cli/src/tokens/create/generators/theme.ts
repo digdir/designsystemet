@@ -21,7 +21,6 @@ export const generateTheme = (colors: Colors, themeName: string, borderRadius: n
     ),
   );
 
-  // The themeBase already includes other non-color theme tokens
   const { color: themeBaseFileColor, ...remainingThemeFile } = themeBase;
   const themeFile = {
     color: {

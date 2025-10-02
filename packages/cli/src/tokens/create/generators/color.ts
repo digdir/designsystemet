@@ -82,19 +82,3 @@ export const generateColorScheme = (
     },
   };
 };
-
-export const generateColorGlobal = (colorScheme: ColorScheme): Map<string, TokenSet> => {
-  const globalColorSets = new Map<string, TokenSet>();
-
-  // Generate separate token sets for each global color
-  Object.entries(baseColors).forEach(([colorName, colorValue]) => {
-    const colorScale = generateColorScale(colorValue, colorScheme);
-    globalColorSets.set(`primitives/modes/color-scheme/${colorScheme}/global/${colorName}`, {
-      global: {
-        [colorName]: generateColor(colorScale),
-      },
-    });
-  });
-
-  return globalColorSets;
-};
