@@ -7,7 +7,7 @@ import classes from './layout.module.css';
 
 export { ErrorBoundary } from '~/root';
 
-export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
+export const loader = async ({ params: { lang }, request }: Route.LoaderArgs) => {
   if (!lang) {
     throw new Response('Not Found', {
       status: 404,
@@ -33,13 +33,16 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     });
   });
 
+  const isOverviewPage = request.url.endsWith('/overview') || request.url.endsWith('/overview/');
+
   return {
     lang,
     cats,
+    sidebarSuffix: isOverviewPage ? '/overview' : '/code',
   };
 };
 
-export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
+export default function Layout({ loaderData: { cats, sidebarSuffix } }: Route.ComponentProps) {
   return (
     <ContentContainer
       className={classes['sidebar-container']}
@@ -49,6 +52,7 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
         cats={cats}
         title={'components'}
         className={classes.sidebar}
+        suffix={sidebarSuffix}
         hideCatTitle
       />
       <div className={classes.content}>

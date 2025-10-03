@@ -12,7 +12,6 @@
     background-color: var(--ds-color-neutral-background-tinted);
     grid-column: 1 / -1;
     padding: var(--ds-size-8);
-    padding-bottom: var(--ds-size-12);
     border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
     display: flex;
     gap: var(--ds-size-2);

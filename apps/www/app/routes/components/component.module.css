@@ -12,21 +12,40 @@
 
 .header {
   grid-area: header;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: relative;
   overflow: hidden;
   margin-bottom: var(--ds-size-6);
   padding: var(--ds-size-10);
+  padding-bottom: 0;
   width: 100%;
   border-radius: var(--ds-border-radius-lg);
   background-color: var(--ds-color-neutral-background-tinted);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-6);
+}
+
+.headerUpper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .headerText {
   color: inherit;
-  padding-right: 290px;
+}
+
+.headerBottom {
+  display: flex;
+
+  & a {
+    border-radius: 0;
+
+    &[aria-current='page'] {
+      border-bottom: 1px solid currentColor;
+      color: var(--ds-color-text-default);
+    }
+  }
 }
 
 @media (max-width: 1200px) {

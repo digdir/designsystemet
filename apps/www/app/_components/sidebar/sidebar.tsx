@@ -14,12 +14,14 @@ export type SidebarProps = {
   };
   title: string;
   hideCatTitle?: boolean;
+  suffix?: string
 } & HTMLAttributes<HTMLDivElement>;
 
 export const Sidebar = ({
   cats,
   title,
   hideCatTitle = false,
+  suffix = '',
   ...props
 }: SidebarProps) => {
   const { t } = useTranslation();
@@ -66,7 +68,7 @@ export const Sidebar = ({
                         <Paragraph asChild data-size='sm'>
                           <Link asChild>
                             <NavLink
-                              to={url}
+                              to={url + suffix}
                               className={cl(classes.link)}
                               onClick={() => setShowMenu(false)}
                             >

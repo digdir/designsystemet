@@ -1,11 +1,11 @@
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { join } from 'node:path';
-import { Alert, Heading } from '@digdir/designsystemet-react';
+import { Alert, Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import type { ComponentType, ReactNode } from 'react';
 import type { ComponentDoc } from 'react-docgen-typescript';
-import { useRouteLoaderData } from 'react-router';
+import { Link, NavLink, useRouteLoaderData } from 'react-router';
 import {
   CssAttributes,
   getAttributes,
@@ -29,12 +29,14 @@ import classes from './component.module.css';
 
 const require = createRequire(import.meta.url);
 
-export const loader = async ({ params }: Route.LoaderArgs) => {
+export const loader = async ({ params, request }: Route.LoaderArgs) => {
   const { component, lang } = params;
 
   if (!component) {
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
   }
+
+  const isOverviewPage = request.url.endsWith('/overview') || request.url.endsWith('/overview/');
 
   const componentDocs = getComponentDocs(component);
 
@@ -46,7 +48,7 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
   const doDontEntries = extractStories(componentDir, true);
 
   const mdxSource = getFileFromContentDir(
-    join('components', component, lang, `${component}.mdx`),
+    join('components', component, lang, `${isOverviewPage ? 'overview' : 'code'}.mdx`),
   );
 
   const result = await generateFromMdx(mdxSource);
@@ -87,6 +89,10 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
     cssAttrs,
     toc: result.toc,
     componentDocs,
+    navigation: {
+      overviewLink: `/${lang}/components/${component}/overview`,
+      codeLink: `/${lang}/components/${component}/code`,
+    }
   };
 };
 
@@ -95,25 +101,34 @@ export default function Components({
     stories,
     mdxCode,
     frontmatter,
-    cssVars,
-    cssAttrs,
-    componentDocs,
     toc,
+    navigation
   },
 }: Route.ComponentProps) {
   return (
     <>
       <div className={classes.header}>
-        <div className={classes.headerText}>
-          <Heading data-size='lg' level={1}>
-            {frontmatter.title}
-          </Heading>
+        <div className={classes.headerUpper}>
+          <div className={classes.headerText}>
+            <Heading data-size='lg' level={1}>
+              {frontmatter.title}
+            </Heading>
+            <Paragraph>{frontmatter.subtitle}</Paragraph>
+          </div>
+          <img
+            src={'/img/component-previews/' + frontmatter.image}
+            alt={frontmatter.title}
+            aria-hidden='true'
+          />
         </div>
-        <img
-          src={'/img/component-previews/' + frontmatter.image}
-          alt={frontmatter.title}
-          aria-hidden='true'
-        />
+        <div className={classes.headerBottom}>
+          <Button asChild variant="tertiary">
+            <NavLink to={navigation.overviewLink}>Oversikt</NavLink>
+          </Button>
+          <Button asChild variant="tertiary">
+            <NavLink to={navigation.codeLink}>Kode</NavLink>
+          </Button>
+        </div>
       </div>
       <TableOfContents
         className={classes.tableOfContents}
@@ -142,12 +157,6 @@ export default function Components({
             />
           ))
         )}
-
-        {componentDocs?.length ? (
-          <ReactComponentDocs docs={componentDocs as ComponentDoc[]} />
-        ) : null}
-        {cssVars ? <CssVariables vars={cssVars} /> : null}
-        {cssAttrs ? <CssAttributes vars={cssAttrs} /> : null}
         <EditPageOnGithub />
       </div>
     </>
