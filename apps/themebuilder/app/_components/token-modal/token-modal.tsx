@@ -13,6 +13,7 @@ import {
   Link,
   Paragraph,
   Switch,
+  Tabs,
 } from '@digdir/designsystemet-react';
 import { CodeBlock } from '@internal/components';
 import { InformationSquareIcon, StarIcon } from '@navikt/aksel-icons';
@@ -177,45 +178,63 @@ export const TokenModal = () => {
                   )}
                 </div>
               )}{' '}
-              <div className={classes.step}>
-                <span>1</span>
-                <Paragraph>
-                  {t('themeModal.step-one')}{' '}
-                  <Link
-                    target='_blank'
-                    href='https://www.figma.com/community/plugin/1382044395533039221/designsystemet-beta'
-                  >
-                    {t('themeModal.figma-plugin')}
-                  </Link>{' '}
-                  {t('themeModal.in')}{' '}
-                  <Link
-                    target='_blank'
-                    href='https://www.figma.com/community/file/1322138390374166141'
-                  >
-                    {t('themeModal.core-ui-kit')}
-                  </Link>{' '}
-                  {t('themeModal.to-update')}{' '}
-                  <Link
-                    target='_blank'
-                    href='https://www.designsystemet.no/no/fundamentals/themebuilder/own-theme'
-                  >
-                    {t('themeModal.own-theme')}
-                  </Link>{' '}
-                  {t('themeModal.page')}
-                </Paragraph>
-              </div>
-              <div className={classes.snippet}>
-                <Switch
-                  style={{ marginInlineStart: 'auto', width: 'fit-content' }}
-                  position='end'
-                  label={t('themeModal.format')}
-                  checked={formatWin}
-                  onChange={(e) => {
-                    setFormatWin(e.currentTarget.checked);
-                  }}
-                />
-                <CodeBlock language='bash'>{cliSnippet}</CodeBlock>
-              </div>
+              <Tabs defaultValue='config'>
+                <Tabs.List>
+                  <Tabs.Tab value='config'>Config File</Tabs.Tab>
+                  <Tabs.Tab value='cli'>CLI</Tabs.Tab>
+                </Tabs.List>
+                <Tabs.Panel value='cli' className={classes.tabpanel}>
+                  <div className={classes.step}>
+                    <span>1</span>
+                    <Paragraph>
+                      {t('themeModal.step-one')}{' '}
+                      <Link
+                        target='_blank'
+                        href='https://www.figma.com/community/plugin/1382044395533039221/designsystemet-beta'
+                      >
+                        {t('themeModal.figma-plugin')}
+                      </Link>{' '}
+                      {t('themeModal.in')}{' '}
+                      <Link
+                        target='_blank'
+                        href='https://www.figma.com/community/file/1322138390374166141'
+                      >
+                        {t('themeModal.core-ui-kit')}
+                      </Link>{' '}
+                      {t('themeModal.to-update')}{' '}
+                      <Link
+                        target='_blank'
+                        href='https://www.designsystemet.no/no/fundamentals/themebuilder/own-theme'
+                      >
+                        {t('themeModal.own-theme')}
+                      </Link>{' '}
+                      {t('themeModal.page')}
+                    </Paragraph>
+                  </div>
+                  <div className={classes.snippet}>
+                    <Switch
+                      style={{
+                        marginInlineStart: 'auto',
+                        width: 'fit-content',
+                      }}
+                      position='end'
+                      label={t('themeModal.format')}
+                      checked={formatWin}
+                      onChange={(e) => {
+                        setFormatWin(e.currentTarget.checked);
+                      }}
+                    />
+                    <CodeBlock language='bash'>{cliSnippet}</CodeBlock>
+                  </div>
+                </Tabs.Panel>
+                <Tabs.Panel value='config' className={classes.tabpanel}>
+                  <div className={classes.step}>
+                    <span>1</span>
+                    <Paragraph>Kopier config fila di</Paragraph>
+                    <div className={classes.snippet}></div>
+                  </div>
+                </Tabs.Panel>
+              </Tabs>
               <div
                 className={classes.step}
                 style={{

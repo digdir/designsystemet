@@ -126,6 +126,10 @@
   font-size: var(--ds-body-sm-font-size);
 }
 
+.tabpanel {
+  padding: var(--ds-size-4) 0;
+}
+
 @media (max-width: 1150px) {
   .content {
     flex-direction: column;
