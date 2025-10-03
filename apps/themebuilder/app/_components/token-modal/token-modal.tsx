@@ -1,11 +1,4 @@
-import type { Color, CssColor, ThemeInfo } from '@digdir/designsystemet/color';
 import {
-  type CreateTokensOptions,
-  cliOptions,
-  formatThemeCSS,
-} from '@digdir/designsystemet/tokens';
-import {
-  Button,
   Dialog,
   Divider,
   Heading,
@@ -17,101 +10,23 @@ import {
 } from '@digdir/designsystemet-react';
 import { CodeBlock } from '@internal/components';
 import { InformationSquareIcon, StarIcon } from '@navikt/aksel-icons';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLoaderData } from 'react-router';
-import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from './token-modal.module.css';
-
-type ColorTheme = {
-  name: string;
-  colors: ThemeInfo;
-};
-
-const colorCliOptions = cliOptions.theme.colors;
-
-const getBaseDefault = (colorTheme: Color[]) =>
-  colorTheme.find((color) => color.name === 'base-default');
-
-const LOADING_CSS_MESSAGE = 'Generating CSS...';
-const FEAT_THEME_CSS = false; // TODO set to false before merging
+import { useTokenModal } from './use-token-modal';
 
 export const TokenModal = () => {
   const { t } = useTranslation();
   const modalRef = useRef<HTMLDialogElement>(null);
-  const { isProduction } = useLoaderData();
-
-  // Use separate selectors for better performance
-  const { colors, baseBorderRadius } = useThemebuilder();
-
-  const [themeName, setThemeName] = useState('theme');
-  const [themeCSS, setThemeCSS] = useState('');
-  const [formatWin, setFormatWin] = useState(
-    navigator.userAgent.includes('Windows'),
-  );
-
-  const setCliColors = (colorTheme: ColorTheme[]) => {
-    if (!colorTheme.length) return '';
-
-    return (
-      colorTheme
-        .map((theme) => {
-          const baseColor = getBaseDefault(theme.colors.light);
-          return `"${theme.name}:${baseColor?.hex}"`;
-        })
-        .join(' ') + ' '
-    );
-  };
-
-  const packageWithTag = `@digdir/designsystemet${isProduction ? '@latest' : '@next'}`;
-  const buildSnippet = `npx ${packageWithTag} tokens build`;
-  const seperator = formatWin ? ' ^\n' : ' \\\n';
-
-  const cliSnippet = [
-    `npx ${packageWithTag} tokens create`,
-    `--${colorCliOptions.main} ${setCliColors(colors.main).trimEnd()}`,
-    `--${colorCliOptions.neutral} "${getBaseDefault(colors.neutral[0]?.colors.light)?.hex}"`,
-    `${colors.support.length > 0 ? `--${colorCliOptions.support} ${setCliColors(colors.support).trimEnd()}` : ''}`,
-    `--border-radius ${baseBorderRadius}`,
-    `--theme "${themeName}"`,
-  ]
-    .filter(Boolean)
-    .join(seperator);
-
-  const theme: CreateTokensOptions = {
-    name: themeName,
-    colors: {
-      main: colors.main.reduce(
-        (acc, color) => {
-          acc[color.name] = getBaseDefault(color.colors.light)?.hex || '#';
-          return acc;
-        },
-        {} as Record<string, CssColor>,
-      ),
-      support: colors.support.reduce(
-        (acc, color) => {
-          acc[color.name] = getBaseDefault(color.colors.light)?.hex || '#';
-          return acc;
-        },
-        {} as Record<string, CssColor>,
-      ),
-      neutral: getBaseDefault(colors.neutral[0]?.colors.light)?.hex || '#',
-    },
-    borderRadius: baseBorderRadius,
-    typography: {
-      fontFamily: 'Inter',
-    },
-  };
-
-  const onThemeButtonClick = () => {
-    if (themeCSS !== LOADING_CSS_MESSAGE) {
-      setThemeCSS(LOADING_CSS_MESSAGE);
-
-      formatThemeCSS(theme).then((css) => {
-        setThemeCSS(css);
-      });
-    }
-  };
+  const {
+    themeName,
+    setThemeName,
+    formatWin,
+    setFormatWin,
+    cliSnippet,
+    buildSnippet,
+    configSnippet,
+  } = useTokenModal();
 
   return (
     <Dialog.TriggerContext>
@@ -163,21 +78,6 @@ export const TokenModal = () => {
         <Dialog.Block>
           <div className={classes.content}>
             <div className={classes.rightSection}>
-              {FEAT_THEME_CSS && (
-                <div className={classes['snippet-themecss']}>
-                  <Button
-                    onClick={onThemeButtonClick}
-                    loading={themeCSS === LOADING_CSS_MESSAGE}
-                  >
-                    {themeCSS === LOADING_CSS_MESSAGE
-                      ? t('themeModal.generating-css')
-                      : t('themeModal.generate-css')}
-                  </Button>
-                  {themeCSS && themeCSS !== LOADING_CSS_MESSAGE && (
-                    <CodeBlock language='css'>{themeCSS}</CodeBlock>
-                  )}
-                </div>
-              )}{' '}
               <Tabs defaultValue='config'>
                 <Tabs.List>
                   <Tabs.Tab value='config'>Config File</Tabs.Tab>
@@ -231,7 +131,9 @@ export const TokenModal = () => {
                   <div className={classes.step}>
                     <span>1</span>
                     <Paragraph>Kopier config fila di</Paragraph>
-                    <div className={classes.snippet}></div>
+                  </div>
+                  <div className={classes.snippet}>
+                    <CodeBlock language='json'>{configSnippet}</CodeBlock>
                   </div>
                 </Tabs.Panel>
               </Tabs>

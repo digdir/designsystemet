@@ -114,7 +114,7 @@
   gap: var(--ds-size-4);
 }
 
-.step span {
+.step > span {
   background-color: var(--ds-color-accent-base-default);
   color: var(--ds-color-accent-base-contrast-default);
   aspect-ratio: 1;
