@@ -57,10 +57,6 @@ type SuggestionContextType = {
   uComboboxRef?: React.RefObject<UHTMLComboboxElement | null>;
 };
 
-export const SuggestionContext = createContext<SuggestionContextType>({
-  handleFilter: () => undefined,
-});
-
 type SuggestionValue<T extends { multiple: boolean }> =
   T['multiple'] extends true
     ? Array<string | SuggestionItem>
@@ -277,3 +273,7 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
     );
   },
 );
+
+export const SuggestionContext = createContext<SuggestionContextType>({
+  handleFilter: () => undefined,
+});

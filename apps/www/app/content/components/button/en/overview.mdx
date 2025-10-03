@@ -1,0 +1,40 @@
+---
+title: Button
+image: Button.svg
+cssfile: button
+---
+
+Buttons let users perform actions.
+
+<Story story="Preview" />
+
+## Props
+<ReactComponentDocs />
+
+## Usage
+
+```tsx
+import { Button } from '@digdir/designsystemet-react';
+
+<Button>Click me!</Button>;
+```
+
+## Code Examples
+
+### Variants
+
+Use `primary`, `secondary` or `tertiary` to weight the button correctly.
+
+<Story story="Variants" />
+
+### Do and Don't
+
+<div className="dodont-row">
+  <DoDont story="DoIcon">
+    Use only one icon in a button.
+  </DoDont>
+  <DoDont story="DontIcon">
+    Don't use multiple icons in a button.
+  </DoDont>
+  </div>
+
