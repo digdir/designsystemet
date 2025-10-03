@@ -59,11 +59,8 @@ export default [
         }),
         layout('./layouts/components/layout.tsx', [
           ...prefix(':component', [
-            route('/overview', 'routes/components/component.tsx', {
-              id: 'components-page-overview',
-            }),
-            route('/code', 'routes/components/component.tsx', {
-              id: 'components-page-code',
+            route('/*', 'routes/components/component.tsx', {
+              id: 'components-page',
             }),
           ]),
         ]),

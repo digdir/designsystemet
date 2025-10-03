@@ -41,6 +41,10 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
   }
 
+  if (!request.url.includes('code') && !request.url.includes('overview')) {
+    throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
+  }
+
   const isOverviewPage =
     request.url.endsWith('/overview') || request.url.endsWith('/overview/');
 
