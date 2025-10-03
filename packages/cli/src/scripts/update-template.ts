@@ -66,9 +66,18 @@ export const updateTemplates = async () => {
   // semantic/color.json
   const colorBaseFile = {
     ...semanticColorJson,
-    // Remove custom colors as they are defined from by theme
-    color: R.omit(['accent', 'neutral', 'brand1', 'brand2', 'brand3'], semanticColorJson.color),
+    // Remove custom colors and severity colors as they are defined by theme
+    color: R.pick(['focus'], semanticColorJson.color),
+    link: {
+      color: {
+        visited: {
+          $type: 'color',
+          $value: '{color.link.visited}',
+        },
+      },
+    },
   };
+
   await writeFile(
     path.join(TEMPLATE_FILES_PATH, `semantic/color.base.template.json`),
     JSON.stringify(colorBaseFile, null, 2),

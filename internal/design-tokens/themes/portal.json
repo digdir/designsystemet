@@ -329,6 +329,276 @@
         "$type": "color",
         "$value": "{portal.brand3.16}"
       }
+    },
+    "info": {
+      "1": {
+        "$type": "color",
+        "$value": "{portal.info.1}"
+      },
+      "2": {
+        "$type": "color",
+        "$value": "{portal.info.2}"
+      },
+      "3": {
+        "$type": "color",
+        "$value": "{portal.info.3}"
+      },
+      "4": {
+        "$type": "color",
+        "$value": "{portal.info.4}"
+      },
+      "5": {
+        "$type": "color",
+        "$value": "{portal.info.5}"
+      },
+      "6": {
+        "$type": "color",
+        "$value": "{portal.info.6}"
+      },
+      "7": {
+        "$type": "color",
+        "$value": "{portal.info.7}"
+      },
+      "8": {
+        "$type": "color",
+        "$value": "{portal.info.8}"
+      },
+      "9": {
+        "$type": "color",
+        "$value": "{portal.info.9}"
+      },
+      "10": {
+        "$type": "color",
+        "$value": "{portal.info.10}"
+      },
+      "11": {
+        "$type": "color",
+        "$value": "{portal.info.11}"
+      },
+      "12": {
+        "$type": "color",
+        "$value": "{portal.info.12}"
+      },
+      "13": {
+        "$type": "color",
+        "$value": "{portal.info.13}"
+      },
+      "14": {
+        "$type": "color",
+        "$value": "{portal.info.14}"
+      },
+      "15": {
+        "$type": "color",
+        "$value": "{portal.info.15}"
+      },
+      "16": {
+        "$type": "color",
+        "$value": "{portal.info.16}"
+      }
+    },
+    "success": {
+      "1": {
+        "$type": "color",
+        "$value": "{portal.success.1}"
+      },
+      "2": {
+        "$type": "color",
+        "$value": "{portal.success.2}"
+      },
+      "3": {
+        "$type": "color",
+        "$value": "{portal.success.3}"
+      },
+      "4": {
+        "$type": "color",
+        "$value": "{portal.success.4}"
+      },
+      "5": {
+        "$type": "color",
+        "$value": "{portal.success.5}"
+      },
+      "6": {
+        "$type": "color",
+        "$value": "{portal.success.6}"
+      },
+      "7": {
+        "$type": "color",
+        "$value": "{portal.success.7}"
+      },
+      "8": {
+        "$type": "color",
+        "$value": "{portal.success.8}"
+      },
+      "9": {
+        "$type": "color",
+        "$value": "{portal.success.9}"
+      },
+      "10": {
+        "$type": "color",
+        "$value": "{portal.success.10}"
+      },
+      "11": {
+        "$type": "color",
+        "$value": "{portal.success.11}"
+      },
+      "12": {
+        "$type": "color",
+        "$value": "{portal.success.12}"
+      },
+      "13": {
+        "$type": "color",
+        "$value": "{portal.success.13}"
+      },
+      "14": {
+        "$type": "color",
+        "$value": "{portal.success.14}"
+      },
+      "15": {
+        "$type": "color",
+        "$value": "{portal.success.15}"
+      },
+      "16": {
+        "$type": "color",
+        "$value": "{portal.success.16}"
+      }
+    },
+    "warning": {
+      "1": {
+        "$type": "color",
+        "$value": "{portal.warning.1}"
+      },
+      "2": {
+        "$type": "color",
+        "$value": "{portal.warning.2}"
+      },
+      "3": {
+        "$type": "color",
+        "$value": "{portal.warning.3}"
+      },
+      "4": {
+        "$type": "color",
+        "$value": "{portal.warning.4}"
+      },
+      "5": {
+        "$type": "color",
+        "$value": "{portal.warning.5}"
+      },
+      "6": {
+        "$type": "color",
+        "$value": "{portal.warning.6}"
+      },
+      "7": {
+        "$type": "color",
+        "$value": "{portal.warning.7}"
+      },
+      "8": {
+        "$type": "color",
+        "$value": "{portal.warning.8}"
+      },
+      "9": {
+        "$type": "color",
+        "$value": "{portal.warning.9}"
+      },
+      "10": {
+        "$type": "color",
+        "$value": "{portal.warning.10}"
+      },
+      "11": {
+        "$type": "color",
+        "$value": "{portal.warning.11}"
+      },
+      "12": {
+        "$type": "color",
+        "$value": "{portal.warning.12}"
+      },
+      "13": {
+        "$type": "color",
+        "$value": "{portal.warning.13}"
+      },
+      "14": {
+        "$type": "color",
+        "$value": "{portal.warning.14}"
+      },
+      "15": {
+        "$type": "color",
+        "$value": "{portal.warning.15}"
+      },
+      "16": {
+        "$type": "color",
+        "$value": "{portal.warning.16}"
+      }
+    },
+    "danger": {
+      "1": {
+        "$type": "color",
+        "$value": "{portal.danger.1}"
+      },
+      "2": {
+        "$type": "color",
+        "$value": "{portal.danger.2}"
+      },
+      "3": {
+        "$type": "color",
+        "$value": "{portal.danger.3}"
+      },
+      "4": {
+        "$type": "color",
+        "$value": "{portal.danger.4}"
+      },
+      "5": {
+        "$type": "color",
+        "$value": "{portal.danger.5}"
+      },
+      "6": {
+        "$type": "color",
+        "$value": "{portal.danger.6}"
+      },
+      "7": {
+        "$type": "color",
+        "$value": "{portal.danger.7}"
+      },
+      "8": {
+        "$type": "color",
+        "$value": "{portal.danger.8}"
+      },
+      "9": {
+        "$type": "color",
+        "$value": "{portal.danger.9}"
+      },
+      "10": {
+        "$type": "color",
+        "$value": "{portal.danger.10}"
+      },
+      "11": {
+        "$type": "color",
+        "$value": "{portal.danger.11}"
+      },
+      "12": {
+        "$type": "color",
+        "$value": "{portal.danger.12}"
+      },
+      "13": {
+        "$type": "color",
+        "$value": "{portal.danger.13}"
+      },
+      "14": {
+        "$type": "color",
+        "$value": "{portal.danger.14}"
+      },
+      "15": {
+        "$type": "color",
+        "$value": "{portal.danger.15}"
+      },
+      "16": {
+        "$type": "color",
+        "$value": "{portal.danger.16}"
+      }
+    },
+    "link": {
+      "visited": {
+        "$type": "color",
+        "$value": "{portal.link.visited}"
+      }
     }
   },
   "font-family": {
