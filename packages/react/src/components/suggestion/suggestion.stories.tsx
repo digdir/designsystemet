@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react-vite';
-import { type ChangeEvent, useState } from 'react';
+import { type ChangeEvent, useRef, useState } from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import { useDebounceCallback } from '../../utilities';
 import {
@@ -290,6 +290,71 @@ export const ControlledIndependentLabelValue: StoryFn<SuggestionSingleProps> = (
         Sett Nina
       </Button>
     </>
+  );
+};
+
+export const ControlledEmptyStringBug: StoryFn<SuggestionSingleProps> = () => {
+  const [selected, setSelected] = useState<SuggestionItem>();
+  const clearRef = useRef<HTMLButtonElement>(null);
+
+  const kornkjopere = [
+    {
+      id: '1',
+      organisasjonsnummer: '123456789',
+      organisasjonsnavn: 'Kornhandel AS',
+    },
+    {
+      id: '2',
+      organisasjonsnummer: '987654321',
+      organisasjonsnavn: 'Landbruk AB',
+    },
+    {
+      id: '3',
+      organisasjonsnummer: '555666777',
+      organisasjonsnavn: 'Felleskjøpet SA',
+    },
+  ];
+
+  return (
+    <div>
+      <Suggestion
+        onSelectedChange={setSelected}
+        selected={selected ?? { label: '', value: '' }}
+      >
+        <Suggestion.Input />
+        <Suggestion.Clear ref={clearRef} />
+        <Suggestion.List>
+          {kornkjopere?.map((kornkjoper) => (
+            <Suggestion.Option
+              key={kornkjoper.id}
+              value={kornkjoper.organisasjonsnummer}
+            >{`${kornkjoper.organisasjonsnavn} - ${kornkjoper.organisasjonsnummer}`}</Suggestion.Option>
+          ))}
+        </Suggestion.List>
+      </Suggestion>
+
+      <div>{JSON.stringify(selected)}</div>
+      {/* <Button onClick={() => clearRef.current?.click()}>Resett</Button> */}
+      <Button onClick={() => setSelected({ label: '', value: '' })}>
+        set empty string
+      </Button>
+      <Button onClick={() => setSelected({ label: '\u00A0', value: '' })}>
+        set non-breaking space
+      </Button>
+      <Button onClick={() => setSelected({ label: 'a', value: '' })}>
+        set "a"
+      </Button>
+      <Button
+        onClick={() =>
+          setSelected({
+            label: 'Kornhandel AS - 123456789',
+            value: '123456789',
+          })
+        }
+      >
+        set valid value
+      </Button>
+    </div>
   );
 };
 
