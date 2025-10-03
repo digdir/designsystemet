@@ -100,12 +100,10 @@ const contentPaths = getContentPathsWithLanguages();
 const allPages = [
   '/no/components',
   '/en/components',
-  '/no/components/button',
-  '/en/components/button',
-  '/no/components/alert',
-  '/en/components/alert',
-  '/no/components/suggestion',
-  '/en/components/suggestion',
+  '/no/components/button/overview',
+  '/en/components/button/overview',
+  '/no/components/button/code',
+  '/en/components/button/code',
   ...contentPaths,
 ];
 
