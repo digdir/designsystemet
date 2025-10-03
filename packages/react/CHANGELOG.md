@@ -1,5 +1,21 @@
 # Change Log
 
+## 1.6.1
+
+### Patch Changes
+
+- **Button**: For `icon`-buttons, dont render children if loading is true ([#4023](https://github.com/digdir/designsystemet/pull/4023))
+
+- Add `@digdir/designsystemet` to dependencies ([#4114](https://github.com/digdir/designsystemet/pull/4114))
+  - This is needed for `react-types` to work as expected
+
+- Update npm non-major dependencies ([#4110](https://github.com/digdir/designsystemet/pull/4110))
+
+- **Textfield**: Move counter error message before error ([#4104](https://github.com/digdir/designsystemet/pull/4104))
+
+- Updated dependencies [[`8e39fef`](https://github.com/digdir/designsystemet/commit/8e39fef7fd77db2eace8b9cb9603ca036773acfc)]:
+  - @digdir/designsystemet@1.6.1
+
 ## 1.6.0
 
 ### Minor Changes
