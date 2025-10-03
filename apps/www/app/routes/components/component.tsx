@@ -34,6 +34,8 @@ import classes from './component.module.css';
 
 const require = createRequire(import.meta.url);
 
+export { ErrorBoundary } from '~/root';
+
 export const loader = async ({ params, request }: Route.LoaderArgs) => {
   const { component, lang } = params;
 
