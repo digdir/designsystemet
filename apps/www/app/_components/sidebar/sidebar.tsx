@@ -14,7 +14,7 @@ export type SidebarProps = {
   };
   title: string;
   hideCatTitle?: boolean;
-  suffix?: string
+  suffix?: string;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const Sidebar = ({

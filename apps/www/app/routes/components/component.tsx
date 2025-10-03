@@ -1,11 +1,16 @@
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { join } from 'node:path';
-import { Alert, Button, Heading, Paragraph } from '@digdir/designsystemet-react';
+import {
+  Alert,
+  Button,
+  Heading,
+  Paragraph,
+} from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import type { ComponentType, ReactNode } from 'react';
 import type { ComponentDoc } from 'react-docgen-typescript';
-import { Link, NavLink, useRouteLoaderData } from 'react-router';
+import { NavLink, useRouteLoaderData } from 'react-router';
 import {
   CssAttributes,
   getAttributes,
@@ -36,7 +41,8 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
   }
 
-  const isOverviewPage = request.url.endsWith('/overview') || request.url.endsWith('/overview/');
+  const isOverviewPage =
+    request.url.endsWith('/overview') || request.url.endsWith('/overview/');
 
   const componentDocs = getComponentDocs(component);
 
@@ -48,7 +54,12 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   const doDontEntries = extractStories(componentDir, true);
 
   const mdxSource = getFileFromContentDir(
-    join('components', component, lang, `${isOverviewPage ? 'overview' : 'code'}.mdx`),
+    join(
+      'components',
+      component,
+      lang,
+      `${isOverviewPage ? 'overview' : 'code'}.mdx`,
+    ),
   );
 
   const result = await generateFromMdx(mdxSource);
@@ -92,18 +103,12 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     navigation: {
       overviewLink: `/${lang}/components/${component}/overview`,
       codeLink: `/${lang}/components/${component}/code`,
-    }
+    },
   };
 };
 
 export default function Components({
-  loaderData: {
-    stories,
-    mdxCode,
-    frontmatter,
-    toc,
-    navigation
-  },
+  loaderData: { stories, mdxCode, frontmatter, toc, navigation },
 }: Route.ComponentProps) {
   return (
     <>
@@ -122,10 +127,10 @@ export default function Components({
           />
         </div>
         <div className={classes.headerBottom}>
-          <Button asChild variant="tertiary">
+          <Button asChild variant='tertiary'>
             <NavLink to={navigation.overviewLink}>Oversikt</NavLink>
           </Button>
-          <Button asChild variant="tertiary">
+          <Button asChild variant='tertiary'>
             <NavLink to={navigation.codeLink}>Kode</NavLink>
           </Button>
         </div>

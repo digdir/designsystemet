@@ -65,7 +65,7 @@ export default [
             route('/code', 'routes/components/component.tsx', {
               id: 'components-page-code',
             }),
-          ])
+          ]),
         ]),
       ]),
       route('*', 'routes/not-found.tsx', {
