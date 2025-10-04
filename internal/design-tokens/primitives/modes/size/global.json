@@ -94,7 +94,7 @@
     },
     "unit": {
       "$type": "number",
-      "$value": "{_size.step} / {_size.base} * {_size.mode-font-size}"
+      "$value": "{_size.step} / ({_size.base} * {_size.mode-font-size})"
     }
   }
 }
