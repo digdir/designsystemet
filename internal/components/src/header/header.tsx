@@ -225,9 +225,8 @@ const Header = ({
               aria-label={t('header.search-toggle-aria', 'Open search dialog')}
               variant='tertiary'
               data-color='neutral'
-              icon={true}
               onClick={() => setSearchOpen(true)}
-              className={classes.toggleButton}
+              className={classes.searchButton}
             >
               <MagnifyingGlassIcon fontSize='1.75em' aria-hidden /> Søk
             </Button>
