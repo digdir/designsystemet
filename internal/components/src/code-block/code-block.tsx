@@ -1,8 +1,9 @@
-import { Button } from '@digdir/designsystemet-react';
+import { Button, Skeleton } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CodeBlock as ReactCodeBlock } from 'react-code-block';
 import classes from './code-block.module.css';
+import { isPrettifySupported, prettifyCode } from './prettify';
 
 export type CodeBlockProps = {
   children: string;
@@ -41,8 +42,32 @@ export const CodeBlock = ({
   className,
   language = 'text',
 }: CodeBlockProps) => {
+  const [prettyCode, setPrettyCode] = useState<string>(children);
+  const [isFormatting, setIsFormatting] = useState(false);
+
+  useEffect(() => {
+    if (isPrettifySupported(language)) {
+      setIsFormatting(true);
+      prettifyCode(children, language)
+        .then((formatted) => {
+          setPrettyCode(formatted);
+          setIsFormatting(false);
+        })
+        .catch(() => {
+          setPrettyCode(children);
+          setIsFormatting(false);
+        });
+    } else {
+      setPrettyCode(children);
+    }
+  }, [children, language]);
+
+  if (isFormatting) {
+    return <Skeleton height={120} />;
+  }
+
   return (
-    <ReactCodeBlock code={children} language={language}>
+    <ReactCodeBlock code={prettyCode} language={language}>
       <div className={classes.codeBlockWrapper}>
         <ReactCodeBlock.Code
           data-color-scheme='dark'
@@ -55,7 +80,7 @@ export const CodeBlock = ({
           </code>
         </ReactCodeBlock.Code>
         <div data-color-scheme='dark' className={classes.toolbar}>
-          <CopyButton text={children} />
+          <CopyButton text={prettyCode} />
         </div>
       </div>
     </ReactCodeBlock>

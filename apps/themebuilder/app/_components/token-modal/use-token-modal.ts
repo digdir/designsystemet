@@ -80,18 +80,18 @@ export const useTokenModal = () => {
     .filter(Boolean)
     .join(seperator);
 
-  const configSnippet = `
-{"name": "${theme.name}",
-  "colors": {
-    "main": ${JSON.stringify(theme.colors.main, null, 2)},
-    "support": ${JSON.stringify(theme.colors.support, null, 2)},
-    "neutral": "${theme.colors.neutral}"
-  },
-  "borderRadius": "${theme.borderRadius}",
-  "typography": {
-    "fontFamily": "Inter"
-  }
-}`;
+  const configSnippet = {
+    name: theme.name,
+    colors: {
+      main: theme.colors.main,
+      support: theme.colors.support,
+      neutral: theme.colors.neutral,
+    },
+    borderRadius: theme.borderRadius,
+    typography: {
+      fontFamily: 'Inter',
+    },
+  };
 
   return {
     themeName: name,
@@ -101,6 +101,6 @@ export const useTokenModal = () => {
     buildSnippet,
     formatWin,
     setFormatWin,
-    configSnippet,
+    configSnippet: JSON.stringify(configSnippet, null, 2),
   };
 };
