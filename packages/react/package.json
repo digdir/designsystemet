@@ -42,16 +42,16 @@
     "access": "public"
   },
   "dependencies": {
+    "@digdir/designsystemet": "workspace:^",
     "@floating-ui/dom": "^1.7.4",
     "@floating-ui/react": "0.26.23",
     "@navikt/aksel-icons": "^7.31.0",
     "@radix-ui/react-slot": "^1.2.3",
     "@tanstack/react-virtual": "^3.13.12",
-    "@u-elements/u-combobox": "^1.0.1",
+    "@u-elements/u-combobox": "^1.0.2",
     "@u-elements/u-datalist": "^1.0.14",
     "@u-elements/u-details": "^0.1.5",
-    "clsx": "^2.1.1",
-    "@digdir/designsystemet": "workspace:^"
+    "clsx": "^2.1.1"
   },
   "devDependencies": {
     "@digdir/designsystemet-css": "workspace:^",

@@ -152,7 +152,7 @@ importers:
     dependencies:
       '@digdir/designsystemet':
         specifier: workspace:^
-        version: link:../../packages/cli
+        version: file:packages/cli
       '@digdir/designsystemet-css':
         specifier: workspace:^
         version: link:../../packages/css
@@ -237,7 +237,7 @@ importers:
     dependencies:
       '@digdir/designsystemet':
         specifier: workspace:^
-        version: link:../../packages/cli
+        version: file:packages/cli
       '@digdir/designsystemet-css':
         specifier: workspace:^
         version: link:../../packages/css
@@ -337,7 +337,7 @@ importers:
     dependencies:
       '@digdir/designsystemet':
         specifier: workspace:^
-        version: link:../../packages/cli
+        version: file:packages/cli
       '@digdir/designsystemet-react':
         specifier: workspace:^
         version: link:../../packages/react
@@ -526,7 +526,7 @@ importers:
     dependencies:
       '@digdir/designsystemet':
         specifier: workspace:^
-        version: link:../cli
+        version: file:packages/cli
       '@floating-ui/dom':
         specifier: ^1.7.4
         version: 1.7.4
@@ -543,8 +543,8 @@ importers:
         specifier: ^3.13.12
         version: 3.13.12(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@u-elements/u-combobox':
-        specifier: ^1.0.1
-        version: 1.0.1
+        specifier: ^1.0.2
+        version: 1.0.2
       '@u-elements/u-datalist':
         specifier: ^1.0.14
         version: 1.0.14
@@ -623,7 +623,7 @@ importers:
     devDependencies:
       '@digdir/designsystemet':
         specifier: workspace:^
-        version: link:../cli
+        version: file:packages/cli
       rimraf:
         specifier: ^6.0.1
         version: 6.0.1
@@ -632,7 +632,7 @@ importers:
     dependencies:
       '@digdir/designsystemet':
         specifier: workspace:^
-        version: link:../../packages/cli
+        version: file:packages/cli
       '@digdir/designsystemet-css':
         specifier: workspace:^
         version: link:../../packages/css
@@ -1090,6 +1090,11 @@ packages:
     peerDependencies:
       postcss-selector-parser: ^7.0.0
 
+  '@digdir/designsystemet@file:packages/cli':
+    resolution: {directory: packages/cli, type: directory}
+    engines: {node: '>=20 <25'}
+    hasBin: true
+
   '@esbuild-plugins/node-resolve@0.2.2':
     resolution: {integrity: sha512-+t5FdX3ATQlb53UFDBRb4nqjYBz492bIrnVWvpQHpzZlu9BQL5HasMZhqc409ygUwOWCXZhrWr6NyZ6T6Y+cxw==}
     peerDependencies:
@@ -1494,6 +1499,9 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.30':
     resolution: {integrity: sha512-GQ7Nw5G2lTu/BtHTKfXhKHok2WGetd4XYcVKGx00SjAk8GMwgJM3zr6zORiPGuOE+/vkc90KtTosSSvaCjKb2Q==}
+
+  '@jridgewell/trace-mapping@0.3.31':
+    resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
   '@jsonjoy.com/base64@1.1.2':
     resolution: {integrity: sha512-q6XAnWQDIMA3+FTiOYajoYqySkO+JSat0ytXGSuRdq9uXE7o92gzuQwQM14xaCRlBLGq3v5miDGC4vkVTn54xA==}
@@ -2562,8 +2570,8 @@ packages:
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
 
-  '@u-elements/u-combobox@1.0.1':
-    resolution: {integrity: sha512-mvRL+uI0m1XaESgNUdDK2zkC2K/6NQsHA9hHkLgXf7Rl2bs2LPm62WkUYRCsPhvzRTDcywMPjPvHYaj8zkkfAw==}
+  '@u-elements/u-combobox@1.0.2':
+    resolution: {integrity: sha512-fso0O9CtPKcqSELLO84MMi3gXGpX+VNZSEgOwvVyuUE/38OvE3iAFa5Ynr/B7TaWGXt9dWb36CSO4FTTET+IKg==}
 
   '@u-elements/u-datalist@1.0.14':
     resolution: {integrity: sha512-wgh7BMLySzPF3xcfxeNnZgy/JmFZOQVJVY+XwAiIBgDYkCWQqERJrHjxRHv8C6t4h2PWnO7mwDIqdLQHEq12XQ==}
@@ -2654,6 +2662,10 @@ packages:
   '@zip.js/zip.js@2.7.60':
     resolution: {integrity: sha512-vA3rLyqdxBrVo1FWSsbyoecaqWTV+vgPRf0QKeM7kVDG0r+lHUqd7zQDv1TO9k4BcAoNzNDSNrrel24Mk6addA==}
     engines: {bun: '>=0.7.0', deno: '>=1.0.0', node: '>=16.5.0'}
+
+  '@zip.js/zip.js@2.8.7':
+    resolution: {integrity: sha512-8daf29EMM3gUpH/vSBSCYo2bY/wbamgRPxPpE2b+cDnbOLBHAcZikWad79R4Guemth/qtipzEHrZMq1lFXxWIA==}
+    engines: {bun: '>=0.7.0', deno: '>=1.0.0', node: '>=18.0.0'}
 
   accepts@1.3.8:
     resolution: {integrity: sha512-PYAthTa2m2VKxuvSD3DPC/Gy+U+sOA1LAuT8mkmRuvw+NACSaeXEQ+NHcVF7rONl6qcaxV3Uuemwawk+7+SJLw==}
@@ -2896,6 +2908,10 @@ packages:
 
   chalk@5.5.0:
     resolution: {integrity: sha512-1tm8DTaJhPBG3bIkVeZt1iZM9GfSX2lzOeDVZH9R9ffRHpmHvxZ/QhgQH/aDTkswQVt+YHdXAdS/In/30OjCbg==}
+    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
+
+  chalk@5.6.2:
+    resolution: {integrity: sha512-7NzBL0rN6fMUW+f7A6Io4h40qQlG+xGmtMxfbnH/K7TAtt8JQWVQK+6g0UXKMeVJoyV5EkkNsErQ8pVD3bLHbA==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
 
   change-case@5.4.4:
@@ -3223,8 +3239,8 @@ packages:
     engines: {node: '>=0.10'}
     hasBin: true
 
-  detect-libc@2.0.4:
-    resolution: {integrity: sha512-3UDv+G9CsCKO1WKMGw9fwq/SWJYbI0c5Y7LU1AXYoDdbhE2AHQ6N6Nb34sG8Fj7T5APy8qXDCKuuIHd1BR0tVA==}
+  detect-libc@2.1.1:
+    resolution: {integrity: sha512-ecqj/sy1jcK1uWrwpR67UhYrIFQ+5WlGxth34WquCbamhFA6hkkwiu37o6J5xCHdo1oixJRfVRw+ywV+Hq/0Aw==}
     engines: {node: '>=8'}
 
   devlop@1.1.0:
@@ -4117,6 +4133,9 @@ packages:
 
   magic-string@0.30.17:
     resolution: {integrity: sha512-sNPKHvyjVf7gyjwS4xGTaW/mCnF8wnjtifKBEhxfZ7E/S8tQ0rssrwGNn6q8JH/ohItJfSQp9mBtQYuTlH5QnA==}
+
+  magic-string@0.30.19:
+    resolution: {integrity: sha512-2N21sPY9Ws53PZvsEpVtNuSW+ScYbQdp4b9qUaL+9QkHUrGFKo56Lg9Emg5s9V/qrtNBmiR01sYhUOwu3H+VOw==}
 
   magicast@0.3.5:
     resolution: {integrity: sha512-L0WhttDl+2BOsybvEOLK7fW3UA0OQ0IQ2d6Zl2x/a6vVRs3bAY0ECOSHHeL5jD+SbOpOCUEi0y1DgHEn9Qn1AQ==}
@@ -5489,6 +5508,11 @@ packages:
     engines: {node: '>=22.0.0'}
     hasBin: true
 
+  style-dictionary@5.1.0:
+    resolution: {integrity: sha512-HsCPJAqJIjQaxhHmiHSEqM96TAC/+6B6aLYeXAbcfLcrooKClKLaWl5T5vqJNNfqmJlpoRP9k0dkcqfAk0q4Kg==}
+    engines: {node: '>=22.0.0'}
+    hasBin: true
+
   style-to-js@1.1.16:
     resolution: {integrity: sha512-/Q6ld50hKYPH3d/r6nr117TZkHR0w0kGGIVfpG9N6D8NymRPM9RqCUv4pRpJ62E5DqOYx2AFpbZMyCPnjQCnOw==}
 
@@ -6060,8 +6084,8 @@ packages:
     resolution: {integrity: sha512-AyeEbWOu/TAXdxlV9wmGcR0+yh2j3vYPGOECcIj2S7MkrLyC7ne+oye2BKTItt0ii2PHk4cDy+95+LshzbXnGg==}
     engines: {node: '>=12.20'}
 
-  zimmerframe@1.1.2:
-    resolution: {integrity: sha512-rAbqEGa8ovJy4pyBxZM70hg4pE6gDgaQ0Sl9M3enG3I0d6H4XSAM3GeNGLKnsBpuijUow064sf7ww1nutC5/3w==}
+  zimmerframe@1.1.4:
+    resolution: {integrity: sha512-B58NGBEoc8Y9MWWCQGl/gq9xBCe4IiKM0a2x7GZdQKOW5Exr8S1W24J6OgM1njK8xCRGvAJIL/MxXHf6SkmQKQ==}
 
   zod-validation-error@4.0.2:
     resolution: {integrity: sha512-Q6/nZLe6jxuU80qb/4uJ4t5v2VEZ44lzQjPDhYJNztRQ4wyWc6VF3D3Kb/fAuPetZQnhS3hnajCf9CsWesghLQ==}
@@ -6657,6 +6681,25 @@ snapshots:
     dependencies:
       postcss-selector-parser: 7.1.0
 
+  '@digdir/designsystemet@file:packages/cli':
+    dependencies:
+      '@commander-js/extra-typings': 14.0.0(commander@14.0.1)
+      '@tokens-studio/sd-transforms': 1.3.0(style-dictionary@5.1.0)
+      apca-w3: 0.1.9
+      change-case: 5.4.4
+      chroma-js: 3.1.2
+      colorjs.io: 0.6.0-alpha.1
+      commander: 14.0.1
+      fast-glob: 3.3.3
+      hsluv: 1.0.1
+      object-hash: 3.0.0
+      picocolors: 1.1.1
+      postcss: 8.5.6
+      ramda: 0.31.3
+      style-dictionary: 5.1.0
+      zod: 4.1.11
+      zod-validation-error: 4.0.2(zod@4.1.11)
+
   '@esbuild-plugins/node-resolve@0.2.2(esbuild@0.25.9)':
     dependencies:
       '@types/resolve': 1.20.6
@@ -6919,7 +6962,7 @@ snapshots:
   '@jridgewell/source-map@0.3.11':
     dependencies:
       '@jridgewell/gen-mapping': 0.3.13
-      '@jridgewell/trace-mapping': 0.3.30
+      '@jridgewell/trace-mapping': 0.3.31
     optional: true
 
   '@jridgewell/sourcemap-codec@1.5.0': {}
@@ -6935,6 +6978,12 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
+
+  '@jridgewell/trace-mapping@0.3.31':
+    dependencies:
+      '@jridgewell/resolve-uri': 3.1.2
+      '@jridgewell/sourcemap-codec': 1.5.5
+    optional: true
 
   '@jsonjoy.com/base64@1.1.2(tslib@2.8.1)':
     dependencies:
@@ -7799,6 +7848,16 @@ snapshots:
       is-mergeable-object: 1.1.1
       style-dictionary: 5.0.4
 
+  '@tokens-studio/sd-transforms@1.3.0(style-dictionary@5.1.0)':
+    dependencies:
+      '@bundled-es-modules/deepmerge': 4.3.1
+      '@bundled-es-modules/postcss-calc-ast-parser': 0.1.6
+      '@tokens-studio/types': 0.5.2
+      colorjs.io: 0.5.2
+      expr-eval-fork: 2.0.2
+      is-mergeable-object: 1.1.1
+      style-dictionary: 5.1.0
+
   '@tokens-studio/types@0.5.2': {}
 
   '@trysound/sax@0.2.0': {}
@@ -7942,7 +8001,7 @@ snapshots:
 
   '@types/unist@3.0.3': {}
 
-  '@u-elements/u-combobox@1.0.1': {}
+  '@u-elements/u-combobox@1.0.2': {}
 
   '@u-elements/u-datalist@1.0.14': {}
 
@@ -7975,7 +8034,7 @@ snapshots:
       '@mjackson/node-fetch-server': 0.7.0
       es-module-lexer: 1.7.0
       estree-walker: 3.0.3
-      magic-string: 0.30.17
+      magic-string: 0.30.19
       periscopic: 4.0.2
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
@@ -8078,6 +8137,8 @@ snapshots:
       tinyrainbow: 2.0.0
 
   '@zip.js/zip.js@2.7.60': {}
+
+  '@zip.js/zip.js@2.8.7': {}
 
   accepts@1.3.8:
     dependencies:
@@ -8328,6 +8389,8 @@ snapshots:
       supports-color: 7.2.0
 
   chalk@5.5.0: {}
+
+  chalk@5.6.2: {}
 
   change-case@5.4.4: {}
 
@@ -8611,7 +8674,7 @@ snapshots:
   detect-libc@1.0.3:
     optional: true
 
-  detect-libc@2.0.4:
+  detect-libc@2.1.1:
     optional: true
 
   devlop@1.1.0:
@@ -9521,7 +9584,7 @@ snapshots:
 
   lightningcss@1.30.1:
     dependencies:
-      detect-libc: 2.0.4
+      detect-libc: 2.1.1
     optionalDependencies:
       lightningcss-darwin-arm64: 1.30.1
       lightningcss-darwin-x64: 1.30.1
@@ -9592,6 +9655,11 @@ snapshots:
   magic-string@0.30.17:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
+
+  magic-string@0.30.19:
+    dependencies:
+      '@jridgewell/sourcemap-codec': 1.5.5
+    optional: true
 
   magicast@0.3.5:
     dependencies:
@@ -10378,7 +10446,7 @@ snapshots:
     dependencies:
       '@types/estree': 1.0.8
       is-reference: 3.0.3
-      zimmerframe: 1.1.2
+      zimmerframe: 1.1.4
     optional: true
 
   picocolors@1.1.1: {}
@@ -11355,6 +11423,21 @@ snapshots:
       prettier: 3.6.2
       tinycolor2: 1.6.0
 
+  style-dictionary@5.1.0:
+    dependencies:
+      '@bundled-es-modules/deepmerge': 4.3.1
+      '@bundled-es-modules/glob': 11.0.3
+      '@bundled-es-modules/memfs': 4.17.0
+      '@zip.js/zip.js': 2.8.7
+      chalk: 5.6.2
+      change-case: 5.4.4
+      commander: 12.1.0
+      is-plain-obj: 4.1.0
+      json5: 2.2.3
+      path-unified: 0.2.0
+      prettier: 3.6.2
+      tinycolor2: 1.6.0
+
   style-to-js@1.1.16:
     dependencies:
       style-to-object: 1.0.8
@@ -11965,7 +12048,7 @@ snapshots:
 
   yocto-queue@1.2.1: {}
 
-  zimmerframe@1.1.2:
+  zimmerframe@1.1.4:
     optional: true
 
   zod-validation-error@4.0.2(zod@4.1.11):
