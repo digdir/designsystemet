@@ -100,7 +100,7 @@ const CopyButton = ({ text }: { text: string }) => {
     <>
       {/* @ts-ignore */}
       <Button
-        onMouseEnter={() => setToolTipText('Kopier')}
+        onMouseLeave={() => setToolTipText('Kopier')}
         onClick={() => onButtonClick()}
         className={classes.copyButton}
         aria-label='Kopier kodesnutt'

@@ -82,15 +82,18 @@ export const useTokenModal = () => {
 
   const configSnippet = {
     $schema: 'node_modules/@digdir/designsystemet/dist/config.schema.json',
-    name: theme.name,
-    colors: {
-      main: theme.colors.main,
-      support: theme.colors.support,
-      neutral: theme.colors.neutral,
-    },
-    borderRadius: theme.borderRadius,
-    typography: {
-      fontFamily: 'Inter',
+    themes: {
+      [theme.name]: {
+        colors: {
+          main: theme.colors.main,
+          support: theme.colors.support,
+          neutral: theme.colors.neutral,
+        },
+        borderRadius: theme.borderRadius,
+        typography: {
+          fontFamily: 'Inter',
+        },
+      },
     },
   };
 
