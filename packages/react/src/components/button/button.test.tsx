@@ -8,6 +8,13 @@ import { Button } from './button';
 const user = userEvent.setup();
 
 describe('Button', () => {
+  beforeAll(() => {
+    // Spinner for loading state uses animations, which we need to mock
+    if (!document.getAnimations) {
+      document.getAnimations = () => [];
+    }
+  });
+
   it('should render as aria-disabled when aria-disabled is true regardless of variant', () => {
     render({
       'aria-disabled': true,
@@ -58,6 +65,12 @@ describe('Button', () => {
     render({ asChild: true, children: <a href='#'>Link</a> });
     expect(screen.getByRole('link')).not.toHaveAttribute('type');
     expect(screen.queryByRole('button')).toBeNull();
+  });
+
+  it('should not render children when icon-only button is loading', () => {
+    render({ loading: true, icon: true, children: 'Button text' });
+    expect(screen.queryByText('Button text')).toBeNull();
+    expect(screen.getByRole('button')).toHaveAttribute('aria-busy');
   });
 });
 
