@@ -125,6 +125,8 @@ export default {
     or: 'or create a',
     'github-issue': 'Github issue (opens in new tab)',
     color: 'Colour',
+    'use-config-file':
+      'Save your config file as "designsystemet.config.json". If you want to use the schema, install "@digdir/designsystemet"',
   },
   examples: {
     'example-1': 'Example 1',

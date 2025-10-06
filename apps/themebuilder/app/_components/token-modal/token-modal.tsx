@@ -130,7 +130,7 @@ export const TokenModal = () => {
                 <Tabs.Panel value='config' className={classes.tabpanel}>
                   <div className={classes.step}>
                     <span>1</span>
-                    <Paragraph>Kopier config fila di</Paragraph>
+                    <Paragraph>{t('themeModal.use-config-file')}</Paragraph>
                   </div>
                   <div className={classes.snippet}>
                     <CodeBlock language='json'>{configSnippet}</CodeBlock>

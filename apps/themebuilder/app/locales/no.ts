@@ -124,6 +124,8 @@ export default {
     or: 'eller lag et',
     'github-issue': 'Github issue (åpnes i ny fane)',
     color: 'Farge',
+    'use-config-file':
+      'Lagre config fila di som "designsystemet.config.json". Dersom du vil ha schema må du installere "@digdir/designsystemet"',
   },
   examples: {
     'example-1': 'Eksempel 1',
