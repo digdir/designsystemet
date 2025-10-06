@@ -1,6 +1,6 @@
 import { Button, Skeleton } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
-import { useEffect, useState } from 'react';
+import { Suspense, use, useMemo, useState } from 'react';
 import { CodeBlock as ReactCodeBlock } from 'react-code-block';
 import classes from './code-block.module.css';
 import { isPrettifySupported, prettifyCode } from './prettify';
@@ -37,34 +37,20 @@ export type CodeBlockProps = {
     | string;
 };
 
-export const CodeBlock = ({
+/* This component uses "use", it needs to be wrapped in Suspense */
+const CodeBlockContent = ({
   children,
   className,
   language = 'text',
 }: CodeBlockProps) => {
-  const [prettyCode, setPrettyCode] = useState<string>(children);
-  const [isFormatting, setIsFormatting] = useState(false);
-
-  useEffect(() => {
+  const prettifyPromise = useMemo(() => {
     if (isPrettifySupported(language)) {
-      setIsFormatting(true);
-      prettifyCode(children, language)
-        .then((formatted) => {
-          setPrettyCode(formatted);
-          setIsFormatting(false);
-        })
-        .catch(() => {
-          setPrettyCode(children);
-          setIsFormatting(false);
-        });
-    } else {
-      setPrettyCode(children);
+      return prettifyCode(children, language);
     }
+    return Promise.resolve(children);
   }, [children, language]);
 
-  if (isFormatting) {
-    return <Skeleton height={120} />;
-  }
+  const prettyCode = use(prettifyPromise);
 
   return (
     <ReactCodeBlock code={prettyCode} language={language}>
@@ -84,6 +70,20 @@ export const CodeBlock = ({
         </div>
       </div>
     </ReactCodeBlock>
+  );
+};
+
+export const CodeBlock = ({
+  children,
+  className,
+  language = 'text',
+}: CodeBlockProps) => {
+  return (
+    <Suspense fallback={<Skeleton height={120} />}>
+      <CodeBlockContent className={className} language={language}>
+        {children}
+      </CodeBlockContent>
+    </Suspense>
   );
 };
 

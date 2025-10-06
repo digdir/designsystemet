@@ -81,6 +81,7 @@ export const useTokenModal = () => {
     .join(seperator);
 
   const configSnippet = {
+    $schema: 'node_modules/@digdir/designsystemet/dist/config.schema.json',
     name: theme.name,
     colors: {
       main: theme.colors.main,
@@ -101,6 +102,6 @@ export const useTokenModal = () => {
     buildSnippet,
     formatWin,
     setFormatWin,
-    configSnippet: JSON.stringify(configSnippet, null, 2),
+    configSnippet: JSON.stringify(configSnippet),
   };
 };
