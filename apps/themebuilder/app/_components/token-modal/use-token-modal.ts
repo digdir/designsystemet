@@ -90,9 +90,6 @@ export const useTokenModal = () => {
           neutral: theme.colors.neutral,
         },
         borderRadius: theme.borderRadius,
-        typography: {
-          fontFamily: 'Inter',
-        },
       },
     },
   };

@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/a11y/useAriaPropsSupportedByRole: it wants the spans with aria-label to have a role */
 import {
   Dialog,
   Divider,
@@ -59,7 +60,6 @@ export const TokenModal = () => {
           </Heading>
           <Paragraph>{t('themeModal.theme-name-description')}</Paragraph>
           <Input
-            aria-label={t('themeModal.theme-name-label')}
             name='themeName'
             value={themeName}
             onChange={(e) => {
@@ -85,7 +85,15 @@ export const TokenModal = () => {
                 </Tabs.List>
                 <Tabs.Panel value='cli' className={classes.tabpanel}>
                   <div className={classes.step}>
-                    <span>1</span>
+                    <span
+                      className={classes.stepLabel}
+                      aria-label={t('themeModal.step-aria', {
+                        step: '1',
+                        totalSteps: '2',
+                      })}
+                    >
+                      1
+                    </span>
                     <Paragraph>
                       {t('themeModal.step-one')}{' '}
                       <Link
@@ -129,7 +137,15 @@ export const TokenModal = () => {
                 </Tabs.Panel>
                 <Tabs.Panel value='config' className={classes.tabpanel}>
                   <div className={classes.step}>
-                    <span>1</span>
+                    <span
+                      className={classes.stepLabel}
+                      aria-label={t('themeModal.step-aria', {
+                        step: '2',
+                        totalSteps: '2',
+                      })}
+                    >
+                      1
+                    </span>
                     <Paragraph>{t('themeModal.use-config-file')}</Paragraph>
                   </div>
                   <div className={classes.snippet}>
@@ -143,7 +159,15 @@ export const TokenModal = () => {
                   marginTop: 'var(--ds-size-4)',
                 }}
               >
-                <span>2</span>
+                <span
+                  className={classes.stepLabel}
+                  aria-label={t('themeModal.step-aria', {
+                    step: '2',
+                    totalSteps: '2',
+                  })}
+                >
+                  2
+                </span>
                 <Paragraph>{t('themeModal.step-two')}</Paragraph>
               </div>
               <div className={classes.snippet}>

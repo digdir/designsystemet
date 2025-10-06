@@ -108,6 +108,7 @@ export default {
     'theme-name-label': 'Theme name',
     'generate-css': 'Generate CSS',
     'generating-css': 'Generating CSS...',
+    'step-aria': 'Step {{step}} of {{totalSteps}}',
     'step-one':
       "Copy the code snippet and run it on your machine to generate design tokens (JSON files), or paste it into the Designsystemet's",
     'figma-plugin': 'Figma plugin (opens in new tab)',

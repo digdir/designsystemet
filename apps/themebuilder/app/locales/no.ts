@@ -107,6 +107,7 @@ export default {
     'theme-name-label': 'Navn på tema',
     'generate-css': 'Generer CSS',
     'generating-css': 'Genererer CSS...',
+    'step-aria': 'Steg {{step}} av {{totalSteps}}',
     'step-one':
       'Kopier kodesnutten og kjør den på maskinen din for å generere design tokens (json-filer), eller lim den inn i Designsystemet sin',
     'figma-plugin': 'Figma plugin (åpnes i ny fane)',
