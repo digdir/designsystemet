@@ -15,6 +15,9 @@ node_modules
 .env
 .env.local
 
+# For the AI search
+.ai-env
+
 coverage/
 .eslintcache
 
