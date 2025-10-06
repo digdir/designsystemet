@@ -319,28 +319,14 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
   return (
     <Dialog
       ref={dialogRef}
-      modal={true}
       closedby='any'
       onClose={handleClose}
       className={cl(classes.dialog)}
     >
-      <Dialog.Block className={cl(classes.headerBlock)}>
-        <div className={cl(classes.header)}>
-          <Heading data-size='xs' className={cl(classes.title)}>
-            {t('search.title', 'Søk i Designsystemet')}
-          </Heading>
-          <Button
-            icon
-            variant='tertiary'
-            data-size='sm'
-            className={cl(classes.closeButton)}
-            aria-label={t('search.close', 'Lukk')}
-            title={t('search.close', 'Lukk')}
-            onClick={handleClose}
-          >
-            <XMarkIcon aria-hidden />
-          </Button>
-        </div>
+      <Dialog.Block>
+        <Heading data-size='xs' className={cl(classes.title)}>
+          {t('search.title', 'Søk i Designsystemet')}
+        </Heading>
       </Dialog.Block>
 
       <Dialog.Block className={cl(classes.searchBlock)}>
