@@ -25,6 +25,19 @@
 
 .search {
   width: 100%;
+  > input {
+    border: 2px solid transparent;
+    background:
+      linear-gradient(var(--ds-color-neutral-surface-default) 0 0) padding-box,
+      linear-gradient(90deg, var(--ds-color-accent-base-default)) border-box;
+    &:focus {
+      outline: unset;
+      box-shadow: unset;
+      background:
+        linear-gradient(var(--ds-color-neutral-surface-default) 0 0) padding-box,
+        linear-gradient(90deg, #f45f63, #e5aa20, var(--ds-color-accent-base-default)) border-box;
+    }
+  }
 }
 
 .resultsBlock {
