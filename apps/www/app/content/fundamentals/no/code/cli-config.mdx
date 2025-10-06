@@ -1,0 +1,110 @@
+---
+title: CLI Config
+description: Informasjon om korleis du bruker CLI config fil.
+date: 2025-10-06
+category: Kode
+color: blue
+icon: CodeIcon
+published: true
+order: 60
+---
+
+Å bruke config fil med CLI gjer at du kan ha meir kontroll over fargane dine, lettare oppdatere og vedlikehalde dei.
+
+## Kom i gang
+
+Config fila skal heite det du vil, men me anbefalar `designsystemet.config.json`. Du kan legge den kor du vil i prosjektet ditt. 
+Ligger den i mappa du køyrer CLI kommandoane frå, vil den bli funne automatisk dersom den heiter `designsystemet.config.json`. 
+
+Har du plassert fila di ein anna plass, eller eit anna navn, kan du bruke `--config <path>` i CLI-kommandoar.
+
+```json
+{
+  "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
+  "themes": {
+    "my-theme": {
+      "colors": {
+        "main": { "primary": "#0062BA" },
+        "neutral": "#1E2B3C",
+        "support": { "extra1": "#F45F63" }
+      },
+      "borderRadius": 4
+    }
+  }
+}
+```
+
+Over har me definert eit tema som heiter `my-theme` med nokre fargar og border radius.
+Legg merke til at `neutral` er definert som ein streng, medan `main` og `support` er objekt. 
+Dette er fordi `neutral` berre har ein farge, medan `main` og `support` har fleire.
+
+## Overskrivingar
+
+Du kan overskrive fargeverdiar for severity-fargar og individuelle fargesteg.
+Under viser me kun eit utdrag av ein config fil som berre inneheld overskrivingar.
+
+```json
+{
+  "my-theme": {
+    "overrides": {
+      "colors": {
+        "dominant": {
+          "background-default": {
+            "light": "#ff0000",
+            "dark": "#000fff"
+          },
+        },
+        "danger": {
+          "background-tinted": {
+            "light": "#f0ff00",
+            "dark": "#ff00ff"
+          }
+        }
+      },
+      "severityColors": {
+        "danger": "#ff0000",
+      }
+    }
+  }
+}
+```
+
+### overrides.colors
+Dette er eit objekt som inneheld navn på fargen din.
+På kvar farge legg eit objekt der du kan overskrive individuelle fargesteg.
+For kvart fargesteg kan du definere ein `light` og ein `dark` verdi
+
+### overrides.severityColors
+Dette er eit objekt der du kan overskrive fargar for severity-fargar som er `danger`, `warning`, `success` og `info`.
+Her definerer du berre fargen som ein streng.
+
+## Border radius
+
+Du definerer base-border radius for temaet ditt med `borderRadius` i tema-objektet ditt.
+Dette er ein talverdi som blir brukt som basis for alle border radius i temaet ditt.
+
+```json
+{
+  "themes": {
+    "my-theme": {
+      "borderRadius": 4
+    }
+  }
+}
+```
+
+## Typografi
+
+Du kan sette font-familie som skal bli brukt av temaet ditt.
+
+```json
+{
+  "themes": {
+    "my-theme": {
+      "typography": {
+        "fontFamily": "Inter"
+      }
+    }
+  }
+}
+```
