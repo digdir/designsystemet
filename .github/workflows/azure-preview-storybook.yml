@@ -1,5 +1,4 @@
 name: azure preview storybook
-
 on:
   workflow_dispatch:
   pull_request:
