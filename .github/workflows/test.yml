@@ -23,6 +23,7 @@ jobs:
       - name: Types
         run: pnpm types:react
       - name: Install playwright
+        working-directory: packages/react
         run: pnpm exec playwright install
       - name: Test
         run: pnpm test
