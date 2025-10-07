@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Find Preview Comment
-        uses: peter-evans/find-comment@v3
+        uses: peter-evans/find-comment@b30e6a3c0ed37e7c023ccd3f1db5c6c0b0c23aad # v4.0.0
         id: fc
         with:
           issue-number: ${{ inputs.pr_number }}
@@ -53,7 +53,7 @@ jobs:
           regex: '(\[www\]\([^)]+\)[^\n]*)'
 
       - name: Get current time in CEST
-        uses: josStorer/get-current-time@v2
+        uses: josStorer/get-current-time@060cae3fbd32c181c6841788189a601ac8df8389 # v2.1.2
         id: current-time
         with:
           format: D. MMM YYYY - HH:mm
@@ -107,7 +107,7 @@ jobs:
           } >> $GITHUB_OUTPUT
 
       - name: Update comment with deployment
-        uses: peter-evans/create-or-update-comment@v4
+        uses: peter-evans/create-or-update-comment@e8674b075228eee787fea43ef493e45ece1004c9 # v5.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ inputs.pr_number }}
