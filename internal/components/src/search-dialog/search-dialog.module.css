@@ -2,7 +2,7 @@
   width: min(77ch, 90vw);
   max-width: unset;
   max-height: 90vh;
-
+  overflow: hidden;
   border-radius: var(--ds-border-radius-md);
   border: var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle);
   padding: 0;
@@ -14,6 +14,17 @@
     /*this only works in dark mode. Perhaps we can use relative color-sytax with accent-base as input*/
     background-image: linear-gradient(180deg, var(--ds-color-accent-surface-tinted) 0%, var(--ds-color-accent-background-default) 100%);
   }
+  /* close button */
+  > button {
+    position: relative;
+    z-index: 1;
+  }
+}
+.sticky {
+  border-bottom: var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle);
+  position: sticky;
+  top: 0;
+  background-color: var(--dsc-dialog-background);
 }
 
 .title {
@@ -69,9 +80,10 @@
   }
 }
 
-.resultsBlock {
-  padding: var(--ds-size-4);
-  /* max-height: 50vh; */
+.resultsContainer {
+  padding: 0;
+  /* subtract header height. TODO: measure or set extrinsic height instead of magic number  */
+  max-height: calc(90vh - 157px);
   overflow-y: auto;
 }
 
@@ -87,12 +99,13 @@
   display: flex;
   flex-direction: column;
   gap: var(--ds-spacing-4);
+  padding: var(--ds-size-6);
+  padding-left: var(--ds-size-14);
 }
 
 .result {
   padding: 0;
   border-radius: var(--ds-border-radius-sm);
-  background-color: var(--ds-color-neutral-background-default);
   margin-bottom: var(--ds-size-3);
 }
 
@@ -112,10 +125,7 @@
 }
 
 .smartBox {
-  padding: var(--ds-spacing-3);
-  border: 1px solid var(--ds-color-neutral-border-default);
-  border-radius: var(--ds-border-radius-sm);
-  background-color: var(--ds-color-neutral-background-default);
+  display: block;
 }
 
 .smartContent {
@@ -144,7 +154,7 @@
 .smartSkeletonLines {
   display: flex;
   flex-direction: column;
-  gap: var(--ds-spacing-2);
+  gap: var(--ds-spacing-3);
 }
 
 @keyframes ds-shimmer {

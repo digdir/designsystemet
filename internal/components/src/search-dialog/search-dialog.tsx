@@ -7,7 +7,7 @@ import {
   Skeleton,
   Tag,
 } from '@digdir/designsystemet-react';
-import { XMarkIcon } from '@navikt/aksel-icons';
+import { FileSearchIcon, RobotSmileIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -323,33 +323,35 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
       onClose={handleClose}
       className={cl(classes.dialog)}
     >
-      <Dialog.Block>
-        <Heading data-size='xs' className={cl(classes.title)}>
-          {t('search.title', 'Hva leter du etter eller lurer på?')}
-        </Heading>
-      </Dialog.Block>
+      <div className={classes.sticky}>
+        <Dialog.Block>
+          <Heading data-size='xs' className={cl(classes.title)}>
+            {t('search.title', 'Hva leter du etter eller lurer på?')}
+          </Heading>
+        </Dialog.Block>
 
-      <Dialog.Block className={cl(classes.searchBlock)}>
-        <Search className={cl(classes.search)}>
-          <Search.Input
-            aria-label={t(
-              'search.input-label',
-              'Search for components, guides, and more',
-            )}
-            placeholder={t(
-              'search.placeholder',
-              'Search for components, guides, and more...',
-            )}
-            value={query}
-            onChange={handleInputChange}
-            autoFocus
-          />
-          <Search.Clear onClick={handleClear} />
-          <Search.Button disabled={isQuickLoading || isSmartLoading} />
-        </Search>
-      </Dialog.Block>
+        <Dialog.Block className={cl(classes.searchBlock)}>
+          <Search className={cl(classes.search)}>
+            <Search.Input
+              aria-label={t(
+                'search.input-label',
+                'Search for components, guides, and more',
+              )}
+              placeholder={t(
+                'search.placeholder',
+                'Search for components, guides, and more...',
+              )}
+              value={query}
+              onChange={handleInputChange}
+              autoFocus
+            />
+            <Search.Clear onClick={handleClear} />
+            <Search.Button disabled={isQuickLoading || isSmartLoading} />
+          </Search>
+        </Dialog.Block>
+      </div>
 
-      <Dialog.Block className={cl(classes.resultsBlock)}>
+      <Dialog.Block className={cl(classes.resultsContainer)}>
         {query && (
           <div className={cl(classes.results)}>
             {/* Smart answer section (only for 2+ words) */}
@@ -369,6 +371,7 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
                   </div>
                 ) : smartResult?.content ? (
                   <div className={cl(cx('smartBox'))}>
+                    <Heading data-size='xs'>KI-Oversikt</Heading>
                     <div
                       className={cl(
                         cx('smartContent'),
