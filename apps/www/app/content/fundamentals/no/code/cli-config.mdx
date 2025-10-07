@@ -77,7 +77,7 @@ Merk at typografi er eksperimentelt. Config skjema kan endre seg når som helst.
 | neutral | Streng | Ja | Nøytral farge for temaet. |
 | support | Objekt | Nei | Støttefargar for temaet. |
 
-Objektet for main og support inneheld fargar, der navnet er fargen sitt namn og verdien er ein hexkode.
+Objektet for main og support inneheld fargar, der nøkkelen er fargen sitt namn og verdien er ein hexkode.
 
 ```json
 {
@@ -100,8 +100,12 @@ Objektet for main og support inneheld fargar, der navnet er fargen sitt namn og 
 | ---- | ---- | ------- | ----------- |
 | "fargeNavn" | Objekt | Nei | Overskrivingar for dominant fargar |
 
-Kvart objekt begynner med ein nøkkel som er namnet på fargen du vil overskrive.
-I dette objektet legg du så til fargesteg som objekt, der kvart fargesteg har ein `light` og ein `dark` verdi som at i mot ein hexkode.
+Overstyringen av `colors` lar deg tilpasse spesifikke semantiske fargetokens for kvar farge som er definert i temaets.
+
+Kvar nøkkel i `colors`-objektet skal samsvare med eit fargenavn frå fargane dine.
+
+For kvar farge kan du overstyre individuelle semantiske tokener som `background-default`, `border-subtle`, `text-default` osv.
+Kvar tokenoverstyring har ein `light` og/eller `dark` verdi som peikar til ein heksadesimal kode.
 
 ```json
 {
