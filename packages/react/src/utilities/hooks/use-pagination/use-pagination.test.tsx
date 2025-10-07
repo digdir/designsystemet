@@ -44,8 +44,8 @@ describe('usePagination', () => {
 
     expect(result.current.hasPrev).toBe(false);
     expect(result.current.hasNext).toBe(true);
-    expect(result.current.prevButtonProps['aria-disabled']).toBe(true);
-    expect(result.current.nextButtonProps['aria-disabled']).toBe(false);
+    expect(result.current.prevButtonProps['aria-hidden']).toBe(true);
+    expect(result.current.nextButtonProps['aria-hidden']).toBe(false);
   });
 
   it('should prevet next when at end', () => {
@@ -55,8 +55,8 @@ describe('usePagination', () => {
 
     expect(result.current.hasPrev).toBe(true);
     expect(result.current.hasNext).toBe(false);
-    expect(result.current.prevButtonProps['aria-disabled']).toBe(false);
-    expect(result.current.nextButtonProps['aria-disabled']).toBe(true);
+    expect(result.current.prevButtonProps['aria-hidden']).toBe(false);
+    expect(result.current.nextButtonProps['aria-hidden']).toBe(true);
   });
 
   it('should trigger onChange when clickinging button', async () => {
