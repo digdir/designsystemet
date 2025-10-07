@@ -6,6 +6,11 @@
   border: var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle);
   padding: 0;
   box-shadow: var(--ds-shadow-lg);
+  &::backdrop {
+    opacity: 0.8;
+    /*this only works in dark mode. Perhaps we can use relative color-sytax with accent-base as input*/
+    background-image: linear-gradient(180deg, var(--ds-color-accent-surface-tinted) 0%, var(--ds-color-accent-background-default) 100%);
+  }
 }
 
 .title {
@@ -26,7 +31,7 @@
 .search {
   width: 100%;
   > input {
-    border: 2px solid transparent;
+    border: 3px solid transparent;
     --bg: var(--ds-color-neutral-surface-default);
     background:
       linear-gradient(var(--bg) 0 0) padding-box,
