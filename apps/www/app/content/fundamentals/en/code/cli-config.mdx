@@ -93,6 +93,7 @@ The object for main and support contains colors, where the name is the color's n
 | Name | Type | Required | Description |
 | ---- | ---- | ------- | ----------- |
 | colors | Object | No | Contains overrides for individual color tokens |
+| severityColors | Object | No | Contains overrides for severity colors |
 
 #### overrides.colors
 
@@ -120,6 +121,14 @@ Each token override has a `light` and/or `dark` value that points to a hex code.
   }
 }
 ```
+
+#### overrides.severityColors
+
+| Name | Type | Required | Description |
+| ---- | ---- | ------- | ----------- |
+| "colorName" | string | No | Hex-color to set as base |
+
+The `severityColors` override allows you to customize the colors used for severity, which are `success`, `warning`, `danger`, and `info`.
 
 ## Complete Example
 
