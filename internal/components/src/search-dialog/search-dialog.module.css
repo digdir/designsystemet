@@ -1,11 +1,14 @@
 .dialog {
-  width: min(75ch, 90vw);
+  width: min(77ch, 90vw);
   max-width: unset;
   max-height: 90vh;
+
   border-radius: var(--ds-border-radius-md);
   border: var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle);
   padding: 0;
   box-shadow: var(--ds-shadow-lg);
+  transform: translate(-50%, 0);
+  top: 5vh;
   &::backdrop {
     opacity: 0.8;
     /*this only works in dark mode. Perhaps we can use relative color-sytax with accent-base as input*/
@@ -68,7 +71,7 @@
 
 .resultsBlock {
   padding: var(--ds-size-4);
-  max-height: 50vh;
+  /* max-height: 50vh; */
   overflow-y: auto;
 }
 

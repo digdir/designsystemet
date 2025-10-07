@@ -325,7 +325,7 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
     >
       <Dialog.Block>
         <Heading data-size='xs' className={cl(classes.title)}>
-          {t('search.title', 'Søk i Designsystemet')}
+          {t('search.title', 'Hva leter du etter eller lurer på?')}
         </Heading>
       </Dialog.Block>
 
