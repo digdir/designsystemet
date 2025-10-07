@@ -115,8 +115,7 @@ export const usePagination = ({
       /** Properties to spread on Pagination.Button used for previous naviagation */
       prevButtonProps: {
         style: {
-          opacity: hasPrev ? undefined : '0',
-          pointerEvents: hasPrev ? undefined : 'none',
+          visibility: hasPrev ? undefined : 'hidden',
         },
         'aria-hidden': !hasPrev, // Using aria-disabled to support all HTML elements because of potential asChild
         onClick: handleClick(currentPage - 1),
@@ -125,8 +124,7 @@ export const usePagination = ({
       /** Properties to spread on Pagination.Button used for next naviagation */
       nextButtonProps: {
         style: {
-          opacity: hasNext ? undefined : '0',
-          pointerEvents: hasNext ? undefined : 'none',
+          visibility: hasNext ? undefined : 'hidden',
         },
         'aria-hidden': !hasNext, // Using aria-disabled to support all HTML elements because of potential asChild
         onClick: handleClick(currentPage + 1),
