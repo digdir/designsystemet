@@ -37,7 +37,7 @@ describe('usePagination', () => {
     }
   });
 
-  it('should prevet previous when at start', () => {
+  it('should prevent previous when at start', () => {
     const { result } = renderHook(() =>
       usePagination({ totalPages: 10, currentPage: 1 }),
     );
@@ -48,7 +48,7 @@ describe('usePagination', () => {
     expect(result.current.nextButtonProps['aria-hidden']).toBe(false);
   });
 
-  it('should prevet next when at end', () => {
+  it('should prevent next when at end', () => {
     const { result } = renderHook(() =>
       usePagination({ totalPages: 10, currentPage: 10 }),
     );
@@ -59,7 +59,7 @@ describe('usePagination', () => {
     expect(result.current.nextButtonProps['aria-hidden']).toBe(true);
   });
 
-  it('should trigger onChange when clickinging button', async () => {
+  it('should trigger onChange when clicking button', async () => {
     const mockOnChange = vi.fn();
     const event = { preventDefault: () => {} } as MouseEvent<HTMLButtonElement>;
     const { result } = renderHook(() =>
@@ -71,7 +71,7 @@ describe('usePagination', () => {
     expect(mockOnChange).toHaveBeenCalledWith(event, 2);
   });
 
-  it('should not trigger onChange when clickinging previous button and in start', async () => {
+  it('should not trigger onChange when clicking previous button and in start', async () => {
     const mockOnChange = vi.fn();
     const event = { preventDefault: () => {} } as MouseEvent<HTMLButtonElement>;
     const { result } = renderHook(() =>
