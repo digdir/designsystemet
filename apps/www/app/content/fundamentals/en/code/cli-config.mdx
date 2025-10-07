@@ -1,0 +1,147 @@
+---
+title: CLI Config
+description: Information on how to use the CLI config file.
+date: 2025-10-06
+category: Code
+color: blue
+icon: CodeIcon
+published: true
+order: 60
+---
+
+Using a config file with the CLI gives you more control over your colors and makes it easier to update and maintain them.
+
+## Getting Started
+
+The config file can be named whatever you want, but if you use `designsystemet.config.json`, we will find it automatically when you run commands in the same folder.
+You can place it anywhere in your project.
+
+If you've placed your file in a different location or with a different name, you can use `--config <path>` in CLI commands.
+
+```json
+{
+  "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
+  "themes": {
+    "my-theme": {
+      "colors": {
+        "main": { "primary": "#0062BA" },
+        "neutral": "#1E2B3C",
+        "support": { "extra1": "#F45F63" }
+      },
+      "borderRadius": 4,
+      "typography": {
+        "fontFamily": "Inter"
+      }
+    }
+  }
+}
+```
+
+Above, we have defined a theme called `my-theme` with some colors and border radius.
+Note that `neutral` is defined as a string, while `main` and `support` are objects.
+This is because `neutral` only has one color, while `main` and `support` have multiple.
+
+## Structure
+
+| Name | Type | Required | Description |
+| ---- | ---- | ------- | ----------- |
+| themes | Object | Yes | Contains all themes you want to define. Each key is the name of the theme. |
+| outDir | String | No | The folder where design tokens should be saved. Default is `./design-tokens`. |
+| clean | Boolean | No | Delete the output directory before creating tokens. Useful for removing deprecated files. |
+
+### Themes
+
+| Name | Type | Required | Description |
+| ---- | ---- | ------- | ----------- |
+| colors | Object | Yes | Contains all colors for the theme. |
+| borderRadius | Number | No | Base border radius for the theme. |
+| typography | Object | No | Contains typography settings for the theme. |
+| overrides | Object | No | Contains overrides for individual color tokens. |
+
+### Colors
+| Name | Type | Required | Description |
+| ---- | ---- | ------- | ----------- |
+| main | Object | Yes | Main colors for the theme. |
+| neutral | String | Yes | Neutral color for the theme. |
+| support | Object | No | Support colors for the theme. |
+
+The object for main and support contains colors, where the name is the color's name and the value is a hex code.
+
+```json
+{
+  "main": {
+    "primary": "#0062BA",
+    "accent": "#1E98F5"
+  },
+  "neutral": "#1E2B3C"
+}
+```
+
+### Overrides
+| Name | Type | Required | Description |
+| ---- | ---- | ------- | ----------- |
+| colors | Object | No | Contains overrides for individual color tokens |
+
+#### overrides.colors
+
+The `colors` override allows you to customize specific semantic color tokens for any color defined in your theme's `main` colors.
+
+Each key in the `colors` object should match a color name from your `main` colors (e.g., "primary", "accent", "dominant", "complimentary").
+For each color, you can override individual semantic tokens like `background-default`, `border-subtle`, `text-default`, etc.
+Each token override has a `light` and/or `dark` value that points to a hex code.
+
+```json
+{
+  "overrides": {
+    "colors": {
+      "primary": {
+        "background-default": {
+          "light": "#ff0000",
+          "dark": "#000fff"
+        },
+        "text-subtle": {
+          "light": "#333333",
+          "dark": "#cccccc"
+        }
+      }
+    }
+  }
+}
+```
+
+## Complete Example
+
+```json
+{
+  "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
+  "outDir": "./design-tokens",
+  "clean": true,
+  "themes": {
+    "my-theme": {
+      "colors": {
+        "main": { "primary": "#0062BA", "accent": "#1E98F5" },
+        "neutral": "#1E2B3C",
+        "support": { "extra1": "#F45F63", "extra2": "#E5AA20" }
+      },
+      "borderRadius": 4,
+      "typography": {
+        "fontFamily": "Inter"
+      },
+      "overrides": {
+        "colors": {
+          "primary": {
+            "background-default": {
+              "light": "#0052a3",
+              "dark": "#006dd9"
+            },
+            "text-subtle": {
+              "light": "#004a94",
+              "dark": "#7cb8f7"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
