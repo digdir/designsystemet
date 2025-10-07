@@ -1,4 +1,5 @@
 import {
+  Alert,
   Card,
   Details,
   DetailsContent,
@@ -33,6 +34,7 @@ import classes from './mdx-components.module.css';
 
 const defaultComponents = {
   VideoCard,
+  Alert,
   Details,
   DetailsContent,
   DetailsSummary,
