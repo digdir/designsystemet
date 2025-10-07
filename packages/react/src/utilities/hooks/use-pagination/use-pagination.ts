@@ -114,13 +114,21 @@ export const usePagination = ({
       ),
       /** Properties to spread on Pagination.Button used for previous naviagation */
       prevButtonProps: {
-        'aria-disabled': !hasPrev, // Using aria-disabled to support all HTML elements because of potential asChild
+        style: {
+          opacity: hasPrev ? undefined : '0',
+          pointerEvents: hasPrev ? undefined : 'none',
+        },
+        'aria-hidden': !hasPrev, // Using aria-disabled to support all HTML elements because of potential asChild
         onClick: handleClick(currentPage - 1),
         variant: 'tertiary',
       } as PaginationButtonProps,
       /** Properties to spread on Pagination.Button used for next naviagation */
       nextButtonProps: {
-        'aria-disabled': !hasNext, // Using aria-disabled to support all HTML elements because of potential asChild
+        style: {
+          opacity: hasNext ? undefined : '0',
+          pointerEvents: hasNext ? undefined : 'none',
+        },
+        'aria-hidden': !hasNext, // Using aria-disabled to support all HTML elements because of potential asChild
         onClick: handleClick(currentPage + 1),
         variant: 'tertiary',
       } as PaginationButtonProps,
