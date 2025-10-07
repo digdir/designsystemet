@@ -1,15 +1,21 @@
 import {
   Button,
+  Chip,
   Dialog,
-  Divider,
   Heading,
+  Link,
   Paragraph,
   Search,
   Skeleton,
   Tag,
 } from '@digdir/designsystemet-react';
-import { FileSearchIcon, RobotSmileIcon } from '@navikt/aksel-icons';
+import {
+  ChevronDownIcon,
+  FileSearchIcon,
+  RobotSmileIcon,
+} from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
+import type { CSSProperties } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import classes from './search-dialog.module.css';
@@ -357,7 +363,12 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
           <div className={cl(classes.results)}>
             {/* Smart answer section (only for 2+ words) */}
             {query.trim().split(/\s+/).length > 1 && (
-              <section aria-live='polite' aria-busy={isSmartLoading}>
+              <section
+                aria-live='polite'
+                aria-busy={isSmartLoading}
+                className={cl(classes.resultsBlock)}
+                style={{ borderBottom: 'var(--this-border)' }}
+              >
                 {isSmartLoading ? (
                   <div
                     className={cl(cx('smartBox'))}
@@ -389,7 +400,9 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
                   </div>
                 ) : smartResult?.content ? (
                   <div className={cl(cx('smartBox'))}>
-                    <Heading data-size='xs'>KI-Oversikt</Heading>
+                    <Heading className={cl(classes.iconHeading)} data-size='xs'>
+                      KI-Oversikt
+                    </Heading>
                     <div
                       className={cl(
                         cx('smartContent'),
@@ -398,18 +411,28 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
                     >
                       {parseMarkdown(smartResult.content)}
                     </div>
-                    <div className={cl(cx('smartActions'))}>
-                      <Button
-                        variant='secondary'
-                        data-size='sm'
-                        onClick={() => setSmartExpanded((v) => !v)}
-                        className={cl(cx('smartToggle'))}
-                      >
-                        {smartExpanded
-                          ? t('search.show-less', 'Vis mindre')
-                          : t('search.show-more', 'Vis mer')}
-                      </Button>
-                    </div>
+                    <Button
+                      variant='secondary'
+                      data-size='sm'
+                      onClick={() => setSmartExpanded((v) => !v)}
+                      className={cl(cx('smartToggle'))}
+                    >
+                      {smartExpanded ? (
+                        <>
+                          {t('search.show-less', 'Vis mindre')}
+                          <ChevronDownIcon
+                            aria-hidden
+                            style={{ rotate: '180deg' }}
+                          />
+                        </>
+                      ) : (
+                        <>
+                          {t('search.show-more', 'Vis mer')}{' '}
+                          <ChevronDownIcon aria-hidden />
+                        </>
+                      )}
+                    </Button>
+
                     {smartExpanded && smartResult.sources?.length > 0 && (
                       <nav
                         aria-label={t('search.sources', 'Kilder')}
@@ -438,99 +461,116 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
                     )}
                   </div>
                 ) : null}
-                <Divider />
               </section>
             )}
 
             {/* Quick results */}
-            {quickResults.slice(0, visibleQuickCount).map((result, index) => (
-              <div key={index} className={cl(classes.quickResult)}>
-                <div className={cl(classes.resultHeader)}>
-                  <h3 className={cl(classes.resultTitle)}>
-                    <a
-                      href={result.url}
-                      className={cl(classes.quickResultLink)}
-                      onClick={handleClose}
-                    >
-                      {result.title}
-                    </a>
-                  </h3>
-                  <Tag
-                    data-size='sm'
-                    data-color={
-                      result.type === 'component'
-                        ? 'brand1'
-                        : result.type === 'guide'
-                          ? 'brand2'
-                          : result.type === 'pattern'
-                            ? 'brand3'
-                            : 'neutral'
-                    }
-                  >
-                    {result.type}
-                  </Tag>
-                </div>
-                <p className={cl(classes.quickResultContent)}>
-                  {result.content}
-                </p>
-              </div>
-            ))}
-            {quickResults.length > visibleQuickCount && (
-              <div>
-                <Button
-                  variant='secondary'
-                  data-size='sm'
-                  onClick={() =>
-                    setVisibleQuickCount((c) =>
-                      Math.min(c + 8, quickResults.length),
-                    )
-                  }
+            {quickResults.length && (
+              <section className={cl(classes.resultsBlock)}>
+                <Heading
+                  style={{ marginBottom: 'var(--ds-size-6)' }}
+                  className={cl(classes.iconHeading)}
+                  data-size='xs'
                 >
-                  {t('search.show-more-results', 'Vis flere resultater')}
-                </Button>
-              </div>
+                  Søkeresultater
+                </Heading>
+                {quickResults
+                  .slice(0, visibleQuickCount)
+                  .map((result, index) => (
+                    <div
+                      key={index}
+                      style={{ '--i': `${index}` } as CSSProperties}
+                      className={cl(classes.quickResult)}
+                    >
+                      <div className={cl(classes.resultHeader)}>
+                        <h3 className={cl(classes.resultTitle)}>
+                          <Link
+                            href={result.url}
+                            className={cl(classes.quickResultLink)}
+                            onClick={handleClose}
+                          >
+                            {result.title}
+                          </Link>
+                        </h3>
+                        <Tag
+                          data-size='sm'
+                          data-color={
+                            result.type === 'component'
+                              ? 'brand1'
+                              : result.type === 'guide'
+                                ? 'brand2'
+                                : result.type === 'pattern'
+                                  ? 'brand3'
+                                  : 'neutral'
+                          }
+                        >
+                          {result.type}
+                        </Tag>
+                      </div>
+                      <Paragraph className={cl(classes.quickResultContent)}>
+                        {result.content}
+                      </Paragraph>
+                      <Paragraph
+                        className={cl(classes.quickResultUrl)}
+                        data-size='xs'
+                      >
+                        {result.url}
+                      </Paragraph>
+                    </div>
+                  ))}
+                {quickResults.length > visibleQuickCount && (
+                  <div>
+                    <Button
+                      variant='secondary'
+                      data-size='sm'
+                      onClick={() =>
+                        setVisibleQuickCount((c) =>
+                          Math.min(c + 8, quickResults.length),
+                        )
+                      }
+                    >
+                      {t('search.show-more-results', 'Vis flere resultater')}
+                    </Button>
+                  </div>
+                )}
+              </section>
             )}
           </div>
         )}
 
         {!query && (
-          <div className={cl(classes.suggestions)}>
-            <p>{t('search.suggestions-title', 'Try searching for:')}</p>
-            <ul className={cl(classes.suggestionsList)}>
-              <li>
-                <button
-                  className={cl(classes.suggestionButton)}
-                  onClick={() => {
-                    setQuery('Button component');
-                    performSearch('Button component');
-                  }}
-                >
-                  Button component
-                </button>
-              </li>
-              <li>
-                <button
-                  className={cl(classes.suggestionButton)}
-                  onClick={() => {
-                    setQuery('Design tokens');
-                    performSearch('Design tokens');
-                  }}
-                >
-                  Design tokens
-                </button>
-              </li>
-              <li>
-                <button
-                  className={cl(classes.suggestionButton)}
-                  onClick={() => {
-                    setQuery('Accessibility guidelines');
-                    performSearch('Accessibility guidelines');
-                  }}
-                >
-                  Accessibility guidelines
-                </button>
-              </li>
-            </ul>
+          <div className={cl(classes.suggestions, classes.resultsBlock)}>
+            <Paragraph>
+              {t('search.suggestions-title', 'Try searching for:')}
+            </Paragraph>
+            <div className={cl(classes.suggestionsList)}>
+              <Chip.Button
+                onClick={() => {
+                  setQuery('Button component');
+                  performSearch('Button component');
+                }}
+              >
+                Button component
+              </Chip.Button>
+
+              <Chip.Button
+                onClick={() => {
+                  setQuery('Design tokens');
+                  performSearch('Design tokens');
+                }}
+              >
+                Design tokens
+              </Chip.Button>
+
+              <Chip.Button
+                onClick={() => {
+                  setQuery('Accessibility guidelines');
+                  performSearch('Accessibility guidelines');
+                }}
+              >
+                Accessibility guidelines
+              </Chip.Button>
+            </div>
           </div>
         )}
 
