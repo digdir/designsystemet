@@ -9,7 +9,7 @@ published: true
 order: 60
 ---
 
-Å bruke config fil med CLI gjer at du kan ha meir kontroll over fargane dine, lettare oppdatere og vedlikehalde dei.
+Å bruke config fil med CLI gjer at du kan ha meir kontroll over fargane dine, og kan lettare oppdatere og vedlikehalde dei.
 
 ## Kom i gang
 
@@ -50,6 +50,14 @@ Dette er fordi `neutral` berre har ein farge, medan `main` og `support` har flei
 | clean | Boolean | Nei | Slett utdata-mappa før du lagar tokens. Nyttig for å fjerne utdaterte filer. |
 
 ### Themes
+
+| Navn | Type | Påkrevd | Forklaring |
+| ---- | ---- | ------- | ----------- |
+| "temaNavn" | Objekt | Ja | Temaet du vil definere. |
+
+Du kan ha fleire tema, og kvart tema kan ha sine eigne fargar, border radius, typografi og overrides.
+
+### Theme
 
 | Navn | Type | Påkrevd | Forklaring |
 | ---- | ---- | ------- | ----------- |
