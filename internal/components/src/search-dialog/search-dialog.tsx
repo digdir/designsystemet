@@ -3,6 +3,7 @@ import {
   Dialog,
   Divider,
   Heading,
+  Paragraph,
   Search,
   Skeleton,
   Tag,
@@ -363,10 +364,27 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
                     style={{ minHeight: 275 }}
                   >
                     <div className={cl(cx('smartSkeletonLines'))}>
-                      <Skeleton variant='text' width={40} />
-                      <Skeleton variant='text' width={48} />
-                      <Skeleton variant='text' width={36} />
-                      <Skeleton height='12px' width='40%' />
+                      <Heading>
+                        <Skeleton variant='text' width={10} />
+                      </Heading>
+                      <Paragraph>
+                        <Skeleton variant='text' width={75} />
+                      </Paragraph>
+                      <Paragraph>
+                        <Skeleton variant='text' width={50} />
+                      </Paragraph>
+                      <Paragraph>
+                        <Skeleton variant='text' width={36} />
+                      </Paragraph>
+                      <Paragraph>
+                        <Skeleton variant='text' width={25} />
+                      </Paragraph>
+                      <Heading style={{ marginTop: '32px' }}>
+                        <Skeleton variant='text' width={20} />
+                      </Heading>
+                      <Paragraph>
+                        <Skeleton variant='text' width={55} />
+                      </Paragraph>
                     </div>
                   </div>
                 ) : smartResult?.content ? (
