@@ -13,10 +13,10 @@ order: 60
 
 ## Kom i gang
 
-Config fila skal heite det du vil, men me anbefalar `designsystemet.config.json`. Du kan legge den kor du vil i prosjektet ditt. 
-Ligger den i mappa du køyrer CLI kommandoane frå, vil den bli funne automatisk dersom den heiter `designsystemet.config.json`. 
+Config fila kan heite det du vil, men bruker du `designsystemet.config.json` vil me finne den automatisk om du køyrer kommando i samme mappe. 
+Du kan legge den kor du vil i prosjektet ditt. 
 
-Har du plassert fila di ein anna plass, eller eit anna navn, kan du bruke `--config <path>` i CLI-kommandoar.
+Har du plassert fila di ein anna plass, eller med eit anna navn, kan du bruke `--config <path>` i CLI-kommandoar.
 
 ```json
 {
@@ -28,7 +28,10 @@ Har du plassert fila di ein anna plass, eller eit anna navn, kan du bruke `--con
         "neutral": "#1E2B3C",
         "support": { "extra1": "#F45F63" }
       },
-      "borderRadius": 4
+      "borderRadius": 4,
+      "typography": {
+        "fontFamily": "Inter"
+      }
     }
   }
 }
@@ -38,71 +41,107 @@ Over har me definert eit tema som heiter `my-theme` med nokre fargar og border r
 Legg merke til at `neutral` er definert som ein streng, medan `main` og `support` er objekt. 
 Dette er fordi `neutral` berre har ein farge, medan `main` og `support` har fleire.
 
-## Overskrivingar
+## Struktur
 
-Du kan overskrive fargeverdiar for severity-fargar og individuelle fargesteg.
-Under viser me kun eit utdrag av ein config fil som berre inneheld overskrivingar.
+| Navn | Type | Påkrevd | Forklaring |
+| ---- | ---- | ------- | ----------- |
+| themes | Objekt | Ja | Inneheld alle tema du vil definere. Ny nøkkel er namnet på temaet. |
+| colors | Objekt | Ja | Inneheld alle fargar for temaet. |
+| outDir | Streng | Nei | Mappa der design tokens skal lagrast. Standard er `./design-tokens`. |
+
+### Themes
+
+| Navn | Type | Påkrevd | Forklaring |
+| ---- | ---- | ------- | ----------- |
+| colors | Objekt | Ja | Inneheld alle fargar for temaet. |
+| borderRadius | Tal | Ja | Base border radius for temaet. |
+| typography | Objekt | Nei | Inneheld typografi innstillingar for temaet. |
+| overrides | Objekt | Nei | Inneheld overskrivingar for fargar og severity-fargar. |
+
+### Colors
+| Navn | Type | Påkrevd | Forklaring |
+| ---- | ---- | ------- | ----------- |
+| main | Objekt | Ja | Hovudfargar for temaet. |
+| neutral | Streng | Ja | Nøytral farge for temaet. |
+| support | Objekt | Nei | Støttefargar for temaet. |
+
+Objektet for main og support inneheld fargar, der navnet er fargen sitt namn og verdien er ein hexkode.
 
 ```json
 {
-  "my-theme": {
-    "overrides": {
-      "colors": {
-        "dominant": {
-          "background-default": {
-            "light": "#ff0000",
-            "dark": "#000fff"
-          },
+  "main": {
+    "primary": "#0062BA",
+    "accent": "#1E98F5"
+  },
+  "neutral": "#1E2B3C"
+}
+```
+
+### Overrides
+| Navn | Type | Påkrevd | Forklaring |
+| ---- | ---- | ------- | ----------- |
+| colors | Objekt | Nei | Inneheld overskrivingar for individuelle fargesteg |
+| severityColors | Objekt | Nei | Inneheld overskrivingar for severity-fargar |
+
+#### overrides.colors
+| Navn | Type | Påkrevd | Forklaring |
+| ---- | ---- | ------- | ----------- |
+| "fargeNavn" | Objekt | Nei | Overskrivingar for dominant fargar |
+
+Kvart objekt begynner med ein nøkkel som er namnet på fargen du vil overskrive.
+I dette objektet legg du så til fargesteg som objekt, der kvart fargesteg har ein `light` og ein `dark` verdi som at i mot ein hexkode.
+
+```json
+{
+  "overrides": {
+    "colors": {
+      "dominant": {
+        "background-default": {
+          "light": "#ff0000",
+          "dark": "#000fff"
         },
-        "danger": {
-          "background-tinted": {
-            "light": "#f0ff00",
-            "dark": "#ff00ff"
-          }
-        }
-      },
-      "severityColors": {
-        "danger": "#ff0000",
       }
     }
   }
 }
 ```
 
-### overrides.colors
-Dette er eit objekt som inneheld navn på fargen din.
-På kvar farge legg eit objekt der du kan overskrive individuelle fargesteg.
-For kvart fargesteg kan du definere ein `light` og ein `dark` verdi
-
-### overrides.severityColors
-Dette er eit objekt der du kan overskrive fargar for severity-fargar som er `danger`, `warning`, `success` og `info`.
-Her definerer du berre fargen som ein streng.
-
-## Border radius
-
-Du definerer base-border radius for temaet ditt med `borderRadius` i tema-objektet ditt.
-Dette er ein talverdi som blir brukt som basis for alle border radius i temaet ditt.
+## Komplett Eksempel
 
 ```json
 {
+  "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
+  "outDir": "./design-tokens",
   "themes": {
     "my-theme": {
-      "borderRadius": 4
-    }
-  }
-}
-```
-
-## Typografi
-
-Du kan sette font-familie som skal bli brukt av temaet ditt.
-
-```json
-{
-  "themes": {
-    "my-theme": {
+      "colors": {
+        "main": { "primary": "#0062BA", "accent": "#1E98F5" },
+        "neutral": "#1E2B3C",
+        "support": { "extra1": "#F45F63", "extra2": "#E5AA20" }
+      },
+      "borderRadius": 4,
       "typography": {
         "fontFamily": "Inter"
+      },
+      "overrides": {
+        "colors": {
+          "primary": {
+            "background-default": {
+              "light": "#ff0000",
+              "dark": "#000fff"
+            },
+            "text-default": {
+              "light": "#00ff00",
+              "dark": "#00ffff"
+            }
+          }
+        },
+        "severityColors": {
+          "success":  "#28a745",
+          "warning": "#ffc107",
+          "danger": "#dc3545",
+          "info": "#17a2b8"
+        }
       }
     }
   }
