@@ -20,7 +20,7 @@ import {
   TableRow,
 } from '@digdir/designsystemet-react';
 import { CodeBlock } from '@internal/components';
-import { getMDXComponent } from 'mdx-bundler/dist/client';
+import { getMDXComponent, type MDXContentProps } from 'mdx-bundler/dist/client';
 import { type JSX, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link as RRLink } from 'react-router';
@@ -108,9 +108,7 @@ export const MDXComponents = ({
   components,
   code,
 }: {
-  components?: {
-    [key: string]: JSX.Element;
-  };
+  components?: MDXContentProps['components'];
   code?: string;
 }) => {
   const { t } = useTranslation();
