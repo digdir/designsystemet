@@ -52,7 +52,7 @@
   @composes ds-focus from './base.css';
 
   &:not(:focus-visible):not(:disabled):not([readonly]):hover {
-    outline: var(--dsc-input-border-width);
+    outline-width: var(--dsc-input-border-width);
     outline-color: var(--dsc-input-border-color);
     outline-style: var(--dsc-input-border-style);
   }
