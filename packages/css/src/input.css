@@ -54,7 +54,7 @@
   &:not(:focus-visible):not(:disabled):not([readonly]):hover {
     outline: var(--dsc-input-border-width);
     outline-color: var(--dsc-input-border-color);
-    outline-style: solid;
+    outline-style: var(--dsc-input-border-style);
   }
 
   @media (forced-colors: active) {
