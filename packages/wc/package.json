@@ -1,0 +1,46 @@
+{
+  "name": "@digdir/designsystemet-wc",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Web components for Designsystemet",
+  "author": "Designsystemet team",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digdir/designsystemet.git"
+  },
+  "homepage": "https://github.com/digdir/designsystemet/tree/main/packages/react",
+  "license": "MIT",
+  "types": "dist/types/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist/**"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
+  "scripts": {
+    "build": "pnpm run clean && tsc -b tsconfig.lib.json --emitDeclarationOnly false && rollup -c --bundleConfigAsCjs",
+    "clean": "rimraf dist && rimraf tsc-build && rimraf --glob \"*.tsbuildinfo\"",
+    "copy-css-to-build": "copyfiles -u 1 ./src/**/*.css ./tsc-build/",
+    "types": "tsc --noEmit"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "dependencies": {
+    "lit": "^3.3.1"
+  },
+  "devDependencies": {
+    "rollup-plugin-copy": "^3.5.0",
+    "@rollup/plugin-commonjs": "^28.0.6",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "rimraf": "^6.0.1",
+    "rollup": "4.52.3",
+    "tslib": "^2.8.1",
+    "typescript": "^5.9.2"
+  }
+}

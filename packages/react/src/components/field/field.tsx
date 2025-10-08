@@ -6,6 +6,8 @@ import type { DefaultProps } from '../../types';
 import { useMergeRefs } from '../../utilities/hooks';
 import { fieldObserver } from './field-observer';
 
+import '@digdir/designsystemet-wc';
+
 export type FieldProps = {
   /**
    * Position of toggle inputs (radio, checkbox, switch) in field
@@ -32,7 +34,7 @@ export type FieldProps = {
  * </Field>
  */
 export const Field = forwardRef<HTMLDivElement, FieldProps>(function Field(
-  { className, position, asChild, ...rest },
+  { className, position, asChild, children, ...rest },
   ref,
 ) {
   const Component = asChild ? Slot : 'div';
@@ -41,11 +43,8 @@ export const Field = forwardRef<HTMLDivElement, FieldProps>(function Field(
   useEffect(() => fieldObserver(fieldRef.current), []);
 
   return (
-    <Component
-      className={cl('ds-field', className)}
-      data-position={position}
-      ref={mergedRefs}
-      {...rest}
-    />
-  );
+    <ds-field>
+      <div className="ds-field" {...rest}>{children}</div>
+    </ds-field>
+  )
 });

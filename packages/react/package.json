@@ -50,6 +50,7 @@
     "@u-elements/u-combobox": "^1.0.2",
     "@u-elements/u-datalist": "^1.0.14",
     "@u-elements/u-details": "^0.1.5",
+    "@digdir/designsystemet-wc": "workspace:^",
     "clsx": "^2.1.1"
   },
   "devDependencies": {
