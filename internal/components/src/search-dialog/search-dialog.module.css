@@ -16,21 +16,26 @@
     /*this only works in dark mode. Perhaps we can use relative color-sytax with accent-base as input*/
     background-image: linear-gradient(180deg, var(--ds-color-accent-surface-tinted) 0%, var(--ds-color-accent-background-default) 100%);
   }
+  &[open] {
+    display: flex;
+    flex-direction: column;
+  }
   /* close button */
   > button {
-    position: relative;
+    position: absolute;
     z-index: 1;
+    align-self: flex-end;
   }
 }
 .wrapper {
-  position: absolute;
-  inset: 0;
+  display: flex;
+  flex-direction: column;
+}
+.innerWrapper {
 }
 
 .sticky {
   border-bottom: var(--this-border);
-  position: sticky;
-  top: 0;
   background-color: var(--dsc-dialog-background);
 }
 
@@ -53,7 +58,6 @@
   width: 100%;
   > input {
     border: 3px solid transparent;
-    /*border-right-width: 0;*/
     --bg: var(--ds-color-neutral-surface-default);
     background:
       linear-gradient(var(--bg) 0 0) padding-box,
@@ -103,8 +107,6 @@
 
 .resultsContainer {
   padding: 0;
-  /* subtract header height. TODO: measure or set extrinsic height instead of magic number  */
-  max-height: calc(90vh - 157px);
   overflow-y: auto;
 }
 .resultsBlock {
