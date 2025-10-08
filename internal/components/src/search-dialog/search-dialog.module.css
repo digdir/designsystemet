@@ -143,10 +143,12 @@
 }
 
 .smartContent {
+  /* interpolate-size: allow-keywords;
+  transition: height 1s ease; */
   color: var(--ds-color-neutral-text-default);
   font-size: var(--ds-font-size-sm);
   line-height: var(--ds-line-height-md);
-  max-height: none;
+  max-height: unset;
 }
 
 .smartCollapsed {
