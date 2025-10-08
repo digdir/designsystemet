@@ -22,6 +22,11 @@
     z-index: 1;
   }
 }
+.wrapper {
+  position: absolute;
+  inset: 0;
+}
+
 .sticky {
   border-bottom: var(--this-border);
   position: sticky;
@@ -84,7 +89,16 @@
 }
 
 .iconHeading {
-  display: block;
+  --icon-size: 24px;
+  --gap: var(--ds-size-2);
+  margin-left: calc((var(--icon-size) + var(--gap)) * -1);
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  > svg {
+    font-size: var(--icon-size);
+  }
 }
 
 .resultsContainer {

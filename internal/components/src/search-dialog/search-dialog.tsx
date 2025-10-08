@@ -342,11 +342,11 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
             <Search.Input
               aria-label={t(
                 'search.input-label',
-                'Search for components, guides, and more',
+                'Søk etter komponenter, retningslinjer og mer...',
               )}
               placeholder={t(
                 'search.placeholder',
-                'Search for components, guides, and more...',
+                'Søk etter komponenter, retningslinjer og mer...',
               )}
               value={query}
               onChange={handleInputChange}
@@ -401,7 +401,7 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
                 ) : smartResult?.content ? (
                   <div className={cl(cx('smartBox'))}>
                     <Heading className={cl(classes.iconHeading)} data-size='xs'>
-                      KI-Oversikt
+                      <RobotSmileIcon /> KI-Oversikt
                     </Heading>
                     <div
                       className={cl(
@@ -472,7 +472,7 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
                   className={cl(classes.iconHeading)}
                   data-size='xs'
                 >
-                  Søkeresultater
+                  <FileSearchIcon /> Søkeresultater
                 </Heading>
                 {quickResults
                   .slice(0, visibleQuickCount)
@@ -541,7 +541,7 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
         {!query && (
           <div className={cl(classes.suggestions, classes.resultsBlock)}>
             <Paragraph>
-              {t('search.suggestions-title', 'Try searching for:')}
+              {t('search.suggestions-title', 'Prøv å søke etter...')}
             </Paragraph>
             <div className={cl(classes.suggestionsList)}>
               <Chip.Button
@@ -580,7 +580,7 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
           quickResults.length === 0 &&
           !smartResult && (
             <div className={cl(classes.noResults)}>
-              {t('search.no-results', 'No results found for')} "{query}"
+              {t('search.no-results', 'Ingen resultat for')} "{query}"
             </div>
           )}
       </Dialog.Block>
