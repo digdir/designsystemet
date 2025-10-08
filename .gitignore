@@ -44,6 +44,7 @@ next-env.d.ts
 
 # jest/vitest test reports
 test-report.xml
+__screenshots__
 
 packages/cli/temp
 

@@ -13,6 +13,11 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write
+      packages: write
     outputs:
       published: ${{ steps.changesets.outputs.published }}
     steps:
@@ -27,7 +32,7 @@ jobs:
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         # Forked version of the changesets action that supports aggregated releases
-        uses: dotansimha/changesets-action@v1.5.2
+        uses: dotansimha/changesets-action@069996e9be15531bd598272996fa23853d61590e # v1.5.2
         with:
           publish: pnpm publish-packages
           version: pnpm version-packages
@@ -44,6 +49,10 @@ jobs:
 
 
   deploy-www:
+    permissions:
+      id-token: write
+      contents: read
+      pull-requests: write
     needs: release
     if: ${{ needs.release.outputs.published == 'true' }}
     uses: ./.github/workflows/azure-deploy-www.yml
@@ -54,6 +63,10 @@ jobs:
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
   deploy-theme:
+    permissions:
+      id-token: write
+      contents: read
+      pull-requests: write
     needs: release
     if: ${{ needs.release.outputs.published == 'true' }}
     uses: ./.github/workflows/azure-deploy-themebuilder.yml
@@ -64,6 +77,10 @@ jobs:
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
   deploy-storybook:
+    permissions:
+        id-token: write
+        contents: read
+        pull-requests: write
     needs: release
     if: ${{ needs.release.outputs.published == 'true' }}
     uses: ./.github/workflows/azure-deploy-storybook.yml

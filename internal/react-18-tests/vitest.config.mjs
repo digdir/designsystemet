@@ -28,7 +28,7 @@ export default defineProject({
     ...baseConfig.test,
     env: {
       ...baseConfig.test.env,
-      REACT_VERSION: '18',
+      VITE_REACT_VERSION: '18',
     },
     root: reactRoot,
   },
