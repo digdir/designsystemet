@@ -13,8 +13,14 @@
   top: 5vh;
   &::backdrop {
     opacity: 0.8;
-    /*this only works in dark mode. Perhaps we can use relative color-sytax with accent-base as input*/
-    background-image: linear-gradient(180deg, var(--ds-color-accent-surface-tinted) 0%, var(--ds-color-accent-background-default) 100%);
+    /* always use the dark version of these colors but loose single source of truth */
+    --ds-color-accent-surface-tinted: #172f4b;
+    --ds-color-accent-background-default: #0c1927;
+    background-image: linear-gradient(180deg, var(--ds-color-accent-surface-tinted), var(--ds-color-accent-background-default));
+    /* alternate: use light-dark to fetch darkest and second darkest color from light scale, but it looks way bluer */
+    /* --a: light-dark(var(--ds-color-accent-base-active), var(--ds-color-accent-surface-tinted));
+    --b: light-dark(var(--ds-color-accent-text-default), var(--ds-color-accent-background-default));
+    background-image: linear-gradient(180deg, var(--a), var(--b)); */
   }
   &[open] {
     display: flex;
@@ -26,12 +32,6 @@
     z-index: 1;
     align-self: flex-end;
   }
-}
-.wrapper {
-  display: flex;
-  flex-direction: column;
-}
-.innerWrapper {
 }
 
 .sticky {
