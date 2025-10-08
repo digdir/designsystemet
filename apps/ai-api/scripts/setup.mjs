@@ -59,9 +59,18 @@ function runScript(scriptPath) {
 }
 
 async function main() {
-  log('\n╔════════════════════════════════════════════════════════════╗', colors.bright);
-  log('║          AI Search - Complete Setup                       ║', colors.bright);
-  log('╚════════════════════════════════════════════════════════════╝\n', colors.bright);
+  log(
+    '\n╔════════════════════════════════════════════════════════════╗',
+    colors.bright,
+  );
+  log(
+    '║          AI Search - Complete Setup                       ║',
+    colors.bright,
+  );
+  log(
+    '╚════════════════════════════════════════════════════════════╝\n',
+    colors.bright,
+  );
 
   const steps = [
     {
@@ -107,9 +116,18 @@ async function main() {
   const minutes = Math.floor(duration / 60);
   const seconds = duration % 60;
 
-  log('\n╔════════════════════════════════════════════════════════════╗', colors.green);
-  log('║          ✓ Setup Complete!                                ║', colors.green);
-  log('╚════════════════════════════════════════════════════════════╝', colors.green);
+  log(
+    '\n╔════════════════════════════════════════════════════════════╗',
+    colors.green,
+  );
+  log(
+    '║          ✓ Setup Complete!                                ║',
+    colors.green,
+  );
+  log(
+    '╚════════════════════════════════════════════════════════════╝',
+    colors.green,
+  );
   log(`\n   Time taken: ${minutes}m ${seconds}s\n`, colors.bright);
   log('Next steps:', colors.bright);
   log('  1. Start AI API:    pnpm run dev', colors.yellow);

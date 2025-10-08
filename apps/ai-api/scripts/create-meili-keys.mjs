@@ -5,9 +5,9 @@
 //   MEILI_MASTER_KEY (from your Meili server)
 //   MEILISEARCH_PROJECT_NAME (optional, defaults to 'designsystemet-search')
 
-import fs from 'fs';
-import path from 'path';
-import url from 'url';
+import fs from 'node:fs';
+import path from 'node:path';
+import url from 'node:url';
 import dotenv from 'dotenv';
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
@@ -27,7 +27,8 @@ for (const p of candidateEnvPaths) {
 
 const API_URL = process.env.MEILISEARCH_API_URL;
 const MASTER_KEY = process.env.MEILI_MASTER_KEY;
-const INDEX_NAME = process.env.MEILISEARCH_PROJECT_NAME || 'designsystemet-search';
+const INDEX_NAME =
+  process.env.MEILISEARCH_PROJECT_NAME || 'designsystemet-search';
 
 function assertEnv(name) {
   if (!process.env[name]) {
@@ -40,9 +41,13 @@ try {
   assertEnv('MEILI_MASTER_KEY');
 } catch (e) {
   console.error(`❌ ${e.message}`);
-  console.error('Set MEILI_MASTER_KEY in your environment (not in .ai-env), e.g.:');
+  console.error(
+    'Set MEILI_MASTER_KEY in your environment (not in .ai-env), e.g.:',
+  );
   console.error('  export MEILI_MASTER_KEY=...');
-  console.error('And ensure MEILISEARCH_API_URL is set in .ai-env or your shell.');
+  console.error(
+    'And ensure MEILISEARCH_API_URL is set in .ai-env or your shell.',
+  );
   process.exit(1);
 }
 
@@ -57,7 +62,9 @@ async function createKey(description, actions, indexes) {
   });
   if (!res.ok) {
     const text = await res.text();
-    throw new Error(`Failed to create key '${description}': ${res.status} ${res.statusText} - ${text}`);
+    throw new Error(
+      `Failed to create key '${description}': ${res.status} ${res.statusText} - ${text}`,
+    );
   }
   return res.json();
 }
@@ -77,7 +84,9 @@ async function createKey(description, actions, indexes) {
     console.log('Next steps:');
     console.log('1) Put Admin key into .ai-env as MEILISEARCH_ADMIN_KEY');
     console.log('2) Put Search key into .ai-env as MEILISEARCH_SEARCH_KEY');
-    console.log('3) Run: pnpm -w -C apps/ai-api run setup:embedder (if you use Meili embedders)');
+    console.log(
+      '3) Run: pnpm -w -C apps/ai-api run setup:embedder (if you use Meili embedders)',
+    );
     console.log('4) Run: pnpm -w -C apps/ai-api run setup:ingest');
     console.log('5) Run: pnpm -w -C apps/ai-api run setup:synonyms');
   } catch (err) {

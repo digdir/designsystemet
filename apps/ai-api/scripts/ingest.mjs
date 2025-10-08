@@ -319,9 +319,12 @@ async function processFile(filePath, dryRun = false) {
         part_index: chunks.length > 1 ? index + 1 : null,
         total_parts: chunks.length > 1 ? chunks.length : null,
         // Use _vectors with embedder name for Meilisearch
-        _vectors: dryRun ? null : {
-          [process.env.MEILISEARCH_EMBEDDER_UID || 'azure-openai-small']: vectors[index],
-        },
+        _vectors: dryRun
+          ? null
+          : {
+              [process.env.MEILISEARCH_EMBEDDER_UID || 'azure-openai-small']:
+                vectors[index],
+            },
       };
     });
 
@@ -370,9 +373,12 @@ async function processComponentDirectory(componentDir, dryRun = false) {
         lang: combinedData.lang,
         type: 'component',
         // Use _vectors with embedder name for Meilisearch
-        _vectors: dryRun ? null : {
-          [process.env.MEILISEARCH_EMBEDDER_UID || 'azure-openai-small']: vectors[index],
-        },
+        _vectors: dryRun
+          ? null
+          : {
+              [process.env.MEILISEARCH_EMBEDDER_UID || 'azure-openai-small']:
+                vectors[index],
+            },
       };
     });
 

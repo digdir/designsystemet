@@ -2,9 +2,9 @@
 // Usage: node scripts/check-meili.mjs
 // Loads .ai-env from common locations to read MEILISEARCH_API_URL and MEILISEARCH_PROJECT_NAME
 
-import fs from 'fs';
-import path from 'path';
-import url from 'url';
+import fs from 'node:fs';
+import path from 'node:path';
+import url from 'node:url';
 import dotenv from 'dotenv';
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
@@ -22,39 +22,57 @@ for (const p of candidateEnvPaths) {
 }
 
 const API_URL = process.env.MEILISEARCH_API_URL || 'http://localhost:7700';
-const INDEX_NAME = process.env.MEILISEARCH_PROJECT_NAME || 'designsystemet-search';
-const ADMIN_KEY = process.env.MEILISEARCH_ADMIN_KEY || process.env.MEILI_MASTER_KEY || '';
+const INDEX_NAME =
+  process.env.MEILISEARCH_PROJECT_NAME || 'designsystemet-search';
+const ADMIN_KEY =
+  process.env.MEILISEARCH_ADMIN_KEY || process.env.MEILI_MASTER_KEY || '';
 
 async function check() {
   const healthRes = await fetch(`${API_URL}/health`);
-  const health = healthRes.ok ? await healthRes.json() : { error: `${healthRes.status} ${healthRes.statusText}` };
+  const health = healthRes.ok
+    ? await healthRes.json()
+    : { error: `${healthRes.status} ${healthRes.statusText}` };
   console.log(`Health:`, health);
 
   const headers = ADMIN_KEY ? { Authorization: `Bearer ${ADMIN_KEY}` } : {};
   const idxRes = await fetch(`${API_URL}/indexes`, { headers });
   if (!idxRes.ok) {
     const text = await idxRes.text();
-    console.error(`Indexes error: ${idxRes.status} ${idxRes.statusText} - ${text}`);
+    console.error(
+      `Indexes error: ${idxRes.status} ${idxRes.statusText} - ${text}`,
+    );
     return;
   }
   const indexData = await idxRes.json();
   const indexes = indexData.results || [];
-  console.log(`Indexes (${indexes.length}):`, indexes.map(i => i.uid).join(', ') || '(none)');
-  
+  console.log(
+    `Indexes (${indexes.length}):`,
+    indexes.map((i) => i.uid).join(', ') || '(none)',
+  );
+
   // Get detailed stats for our index
-  const statsRes = await fetch(`${API_URL}/indexes/${INDEX_NAME}/stats`, { headers });
+  const statsRes = await fetch(`${API_URL}/indexes/${INDEX_NAME}/stats`, {
+    headers,
+  });
   if (statsRes.ok) {
     const stats = await statsRes.json();
-    console.log(`\n📊 Index '${INDEX_NAME}': ${stats.numberOfDocuments} documents`);
+    console.log(
+      `\n📊 Index '${INDEX_NAME}': ${stats.numberOfDocuments} documents`,
+    );
   }
 
   // Optional: show embedder settings if available
-  const embRes = await fetch(`${API_URL}/indexes/${INDEX_NAME}/settings/embedders`, { headers });
+  const embRes = await fetch(
+    `${API_URL}/indexes/${INDEX_NAME}/settings/embedders`,
+    { headers },
+  );
   if (embRes.ok) {
     const emb = await embRes.json();
     console.log(`Embedders for '${INDEX_NAME}':`, JSON.stringify(emb, null, 2));
   } else {
-    console.log(`Embedders endpoint unavailable or not configured for '${INDEX_NAME}'`);
+    console.log(
+      `Embedders endpoint unavailable or not configured for '${INDEX_NAME}'`,
+    );
   }
 
   // Version (auth protected in v1.x)
@@ -63,11 +81,13 @@ async function check() {
     const ver = await verRes.json();
     console.log(`Version:`, ver);
   } else {
-    console.log(`Version endpoint not available without auth (${verRes.status})`);
+    console.log(
+      `Version endpoint not available without auth (${verRes.status})`,
+    );
   }
 }
 
-check().catch(err => {
+check().catch((err) => {
   console.error('❌ Check failed:', err.message);
   process.exit(1);
 });
