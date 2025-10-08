@@ -217,20 +217,15 @@ const Header = ({
               </li>
             ))}
           </ul>
-          <Tooltip
-            content={t('header.search-toggle', 'Søk i Designsystemet')}
-            placement='bottom'
+          <Button
+            aria-label={t('header.search-toggle-aria', 'Open search dialog')}
+            variant='tertiary'
+            data-color='neutral'
+            onClick={() => setSearchOpen(true)}
+            className={classes.searchButton}
           >
-            <Button
-              aria-label={t('header.search-toggle-aria', 'Open search dialog')}
-              variant='tertiary'
-              data-color='neutral'
-              onClick={() => setSearchOpen(true)}
-              className={classes.searchButton}
-            >
-              <MagnifyingGlassIcon fontSize='1.75em' aria-hidden /> Søk
-            </Button>
-          </Tooltip>
+            <MagnifyingGlassIcon fontSize='1.75em' aria-hidden /> Søk
+          </Button>
           {themeSwitcher && (
             <Tooltip
               content={t('header.theme-toggle', {
