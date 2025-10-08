@@ -96,6 +96,9 @@
 .resultsBlock {
   padding: var(--ds-size-6);
   padding-left: var(--ds-size-14);
+  &:empty {
+    display: none;
+  }
 }
 
 .loading {

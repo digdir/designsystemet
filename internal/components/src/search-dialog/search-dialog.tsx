@@ -465,7 +465,7 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
             )}
 
             {/* Quick results */}
-            {quickResults.length && (
+            {quickResults.length > 0 && (
               <section className={cl(classes.resultsBlock)}>
                 <Heading
                   style={{ marginBottom: 'var(--ds-size-6)' }}
