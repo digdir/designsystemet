@@ -5,6 +5,7 @@ import { forwardRef, useEffect, useRef } from 'react';
 import type { DefaultProps } from '../../types';
 import { useMergeRefs } from '../../utilities/hooks';
 import { fieldObserver } from './field-observer';
+import type { DsField } from '@digdir/designsystemet-wc';
 
 import '@digdir/designsystemet-wc';
 
@@ -33,18 +34,13 @@ export type FieldProps = {
  *   <ValidationMessage>Feilmelding</ValidationMessage>
  * </Field>
  */
-export const Field = forwardRef<HTMLDivElement, FieldProps>(function Field(
+export const Field = forwardRef<DsField, FieldProps>(function Field(
   { className, position, asChild, children, ...rest },
   ref,
 ) {
-  const Component = asChild ? Slot : 'div';
-  const fieldRef = useRef<HTMLDivElement>(null);
-  const mergedRefs = useMergeRefs([fieldRef, ref]);
-  useEffect(() => fieldObserver(fieldRef.current), []);
-
   return (
-    <ds-field>
-      <div className="ds-field" {...rest}>{children}</div>
+    <ds-field ref={ref}>
+      <div className="ds-field" data-position={position} {...rest}>{children}</div>
     </ds-field>
   )
 });
