@@ -1,5 +1,3 @@
-import { html, LitElement } from 'lit';
-import { customElement } from 'lit/decorators.js';
 import { fieldObserver } from './field-observer';
 
 declare global {
@@ -8,21 +6,19 @@ declare global {
   }
 }
 
-@customElement('ds-field')
-export class DsField extends LitElement {
+export class DsField extends HTMLElement {
+  constructor() {
+    super();
+    if (!this.shadowRoot) {
+      this.attachShadow({ mode: 'open' }).appendChild(
+        document.createElement('slot'),
+      );
+    }
+  }
+
   connectedCallback() {
-    super.connectedCallback();
-    console.log(this)
     fieldObserver(this);
-  }
-
-  update(changedProperties: Map<string | number | symbol, unknown>): void {
-    super.update(changedProperties);
-    fieldObserver(this);
-  }
-
-  render() {
-    return html`<slot></slot>`;
   }
 }
 
+customElements.define('ds-field', DsField);

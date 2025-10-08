@@ -1,11 +1,7 @@
-import { Slot } from '@radix-ui/react-slot';
-import cl from 'clsx/lite';
-import type { HTMLAttributes } from 'react';
-import { forwardRef, useEffect, useRef } from 'react';
-import type { DefaultProps } from '../../types';
-import { useMergeRefs } from '../../utilities/hooks';
-import { fieldObserver } from './field-observer';
 import type { DsField } from '@digdir/designsystemet-wc';
+import type { HTMLAttributes } from 'react';
+import { forwardRef } from 'react';
+import type { DefaultProps } from '../../types';
 
 import '@digdir/designsystemet-wc';
 
@@ -40,7 +36,9 @@ export const Field = forwardRef<DsField, FieldProps>(function Field(
 ) {
   return (
     <ds-field ref={ref}>
-      <div className="ds-field" data-position={position} {...rest}>{children}</div>
+      <div className='ds-field' data-position={position} {...rest}>
+        {children}
+      </div>
     </ds-field>
-  )
+  );
 });
