@@ -35,10 +35,8 @@ export const Field = forwardRef<DsField, FieldProps>(function Field(
   ref,
 ) {
   return (
-    <ds-field ref={ref}>
-      <div className='ds-field' data-position={position} {...rest}>
-        {children}
-      </div>
+    <ds-field ref={ref} class='ds-field' data-position={position} {...rest}>
+      {children}
     </ds-field>
   );
 });
