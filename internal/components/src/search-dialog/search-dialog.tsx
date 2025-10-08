@@ -156,6 +156,17 @@ const parseMarkdown = (text: string): React.ReactNode => {
   return result;
 };
 
+const Star = () => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    fill='none'
+    aria-hidden='true'
+    viewBox='0 0 96 96'
+  >
+    <path d='M93.8 51.6A4 4 0 0 0 96 48c0-1.4-1-3-2.2-3.6 0 0-22.9-1.5-31.8-10.4S51.6 2.2 51.6 2.2C51 1 49.4 0 48 0s-3 1-3.6 2.2c0 0-1.5 22.9-10.4 31.8S2.2 44.4 2.2 44.4A4 4 0 0 0 0 48c0 1.4 1 3 2.2 3.6 0 0 22.9 1.5 31.8 10.4s10.4 31.8 10.4 31.8C45 95 46.6 96 48 96s3-1 3.6-2.2c0 0 1.5-22.9 10.4-31.8s31.8-10.4 31.8-10.4' />
+  </svg>
+);
+
 export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
   const { t } = useTranslation();
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -401,7 +412,12 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
                 ) : smartResult?.content ? (
                   <div className={cl(cx('smartBox'))}>
                     <Heading className={cl(classes.iconHeading)} data-size='xs'>
-                      <RobotSmileIcon /> KI-Oversikt
+                      <RobotSmileIcon /> KI-Oversikt{' '}
+                      <span className={cl(classes.sparkles)}>
+                        <Star />
+                        <Star />
+                        <Star />
+                      </span>
                     </Heading>
                     <div
                       className={cl(

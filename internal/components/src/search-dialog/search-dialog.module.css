@@ -99,11 +99,67 @@
   position: relative;
   display: flex;
   align-items: center;
+  width: fit-content;
   gap: var(--gap);
   > svg {
     font-size: var(--icon-size);
   }
 }
+.sparkles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  & svg {
+    width: 40px;
+    position: absolute;
+    --delay: 0.15;
+    top: calc(var(--y, 50) * 1%);
+    left: calc(var(--x, 0) * 1%);
+    translate: -50% -50%;
+    scale: 0;
+    animation: --sparkle 0.75s calc(0.1s + ((var(--delay) * var(--d)) * 1s));
+    animation-fill-mode: both;
+  }
+  & svg:nth-of-type(1) {
+    fill: var(--ds-color-accent-base-default);
+    --x: 0;
+    --y: 40;
+    --s: 1.1;
+    --d: 2;
+  }
+  & svg:nth-of-type(2) {
+    fill: #e8b43a;
+    --x: 50;
+    --y: 100;
+    --s: 1.1;
+    --d: 3;
+  }
+  & svg:nth-of-type(3) {
+    fill: #cb4f53;
+    --x: 100;
+    --y: 10;
+    --s: 1.1;
+    --d: 4;
+  }
+}
+
+@keyframes --sparkle {
+  50% {
+    scale: var(--s, 1);
+  }
+}
+
+/* .iconHeading:has(svg:hover) .sparkles svg {
+  animation-name: --sparkle-hover;
+  animation-duration: 0.75s;
+  animation-delay: calc(0.1s + ((var(--delay) * (var(--d) - 2)) * 1s));
+} */
+
+/* @keyframes --sparkle-hover {
+  50% {
+    scale: var(--s, 1);
+  }
+} */
 
 .resultsContainer {
   padding: 0;
@@ -278,6 +334,7 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-wrap: pretty;
 }
 .quickResultUrl {
   margin-top: var(--ds-size-3);
