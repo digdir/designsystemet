@@ -62,7 +62,7 @@
     outline-style: var(--dsc-input-outline-style--hover);
 
     &:is(:checked, :indeterminate:where([type='checkbox'])):not([aria-invalid='true']) {
-      outline-color: var(--dsc-input-outline-color-checkbox-radio-select--hover);
+      outline-color: var(--dsc-input-outline-color-checkbox-radio-switch--hover);
     }
 
     &:is([aria-invalid='true']) {
