@@ -225,6 +225,18 @@ body {
     & > div + p {
       margin-top: var(--ds-size-5);
     }
+
+    & > .ds-alert {
+      margin: var(--ds-size-8) 0;
+
+      & :first-child {
+        margin-top: 0 !important;
+      }
+
+      & :last-child {
+        margin-bottom: 0 !important;
+      }
+    }
   }
 }
 @layer overrides {

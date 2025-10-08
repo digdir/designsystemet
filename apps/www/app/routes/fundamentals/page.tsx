@@ -5,6 +5,7 @@ import * as Aksel from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { useTranslation } from 'react-i18next';
 import { isRouteErrorResponse } from 'react-router';
+import { ColorScaleTable } from '~/_components/color-scale-table/color-scale-table';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { TableOfContents } from '~/_components/table-of-contents/toc';
@@ -93,7 +94,12 @@ export default function Fundamentals({
         items={toc}
       />
       <div className={cl(classes.content, 'u-rich-text')}>
-        <MDXComponents code={code} />
+        <MDXComponents
+          code={code}
+          components={{
+            ColorScaleTable,
+          }}
+        />
         <EditPageOnGithub />
       </div>
     </>
