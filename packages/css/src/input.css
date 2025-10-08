@@ -16,7 +16,7 @@
   --dsc-input-border-width: var(--ds-border-width-default);
   /* hover */
   --dsc-input-outline-color--hover: var(--ds-color-neutral-border-default);
-  --dsc-input-outline-color-checkbox-radio-select--hover: var(--dsc-input-accent-color);
+  --dsc-input-outline-color-checkbox-radio-switch--hover: var(--dsc-input-accent-color);
   --dsc-input-outline-width--hover: var(--ds-border-width-default);
   --dsc-input-outline-style--hover: solid;
   /* Color */
