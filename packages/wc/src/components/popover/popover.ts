@@ -109,6 +109,30 @@ export class DsPopover extends HTMLElement {
         popover.style.translate = `${x}px ${y}px`;
       });
     });
+
+    const handleClick = (event: MouseEvent) => {
+      const el = event.target as Element | null;
+      const isTrigger = el?.closest?.(`[popovertarget="${popover?.id}"]`);
+      const isOutside = !isTrigger && !popover?.contains(el as Node);
+
+      if (isTrigger) {
+        event.preventDefault(); // Prevent native Popover API
+        popover.togglePopover?.();
+      }
+      if (isOutside && popover.matches(':popover-open')) {
+        popover.togglePopover?.();
+      }
+    };
+
+    const handleKeydown = (event: KeyboardEvent) => {
+      console.log('keydown!');
+      if (event.key !== 'Escape' || !popover.matches(':popover-open')) return;
+      event.preventDefault(); // Prevent closing fullscreen in Safari
+      popover.togglePopover?.();
+    };
+
+    addEventListener('click', handleClick);
+    addEventListener('keydown', handleKeydown);
   }
 }
 
