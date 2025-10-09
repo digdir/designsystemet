@@ -14,6 +14,11 @@
   --dsc-input-border-style: solid;
   --dsc-input-border-width--toggle: max(var(--ds-border-width-default), calc(var(--ds-size-1) / 2)); /* Allow border-width to grow with font-size */
   --dsc-input-border-width: var(--ds-border-width-default);
+  /* hover */
+  --dsc-input-outline-color--hover: var(--ds-color-neutral-border-default);
+  --dsc-input-outline-color--toggle--hover: var(--dsc-input-accent-color);
+  --dsc-input-outline-width--hover: var(--ds-border-width-default);
+  --dsc-input-outline-style--hover: solid;
   /* Color */
   --dsc-input-color--readonly: var(--ds-color-neutral-text-default);
   --dsc-input-color: var(--ds-color-neutral-text-default);
@@ -50,6 +55,20 @@
 
   @composes ds-print-preserve from './base.css';
   @composes ds-focus from './base.css';
+
+  &:not(:focus-visible, :disabled, [readonly]):hover {
+    outline-color: var(--dsc-input-outline-color--hover);
+    outline-width: var(--dsc-input-outline-width--hover);
+    outline-style: var(--dsc-input-outline-style--hover);
+
+    &:is(:checked, :indeterminate:where([type='checkbox'])):not([aria-invalid='true']) {
+      outline-color: var(--dsc-input-outline-color--toggle--hover);
+    }
+
+    &:is([aria-invalid='true']) {
+      outline-color: var(--dsc-input-accent-color--invalid);
+    }
+  }
 
   @media (forced-colors: active) {
     border-color: ButtonText;

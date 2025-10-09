@@ -198,6 +198,8 @@ export default {
   toc: {
     title: 'Contents',
   },
+  do: 'Do',
+  dont: "Don't",
   contributors: 'Contributors',
   editOnGithub: 'Edit this page on github.com (opens in a new tab)',
 } satisfies typeof no;

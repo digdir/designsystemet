@@ -197,6 +197,8 @@ export default {
   toc: {
     title: 'Innhold',
   },
+  do: 'Gjør',
+  dont: 'Ikke gjør',
   contributors: 'Bidragsytere',
   editOnGithub: 'Rediger denne siden på github.com (åpnes i ny fane)',
 };
