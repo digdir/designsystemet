@@ -18,6 +18,7 @@ import cl from 'clsx/lite';
 import type { CSSProperties } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDebounceCallback } from '../_hooks/use-debounce-callback/use-debounce-callback';
 import classes from './search-dialog.module.css';
 
 // Helper for safely accessing CSS Module classes that may not yet be in the generated .d.ts
@@ -178,7 +179,6 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
   const [smartExpanded, setSmartExpanded] = useState(false);
   const [visibleQuickCount, setVisibleQuickCount] = useState(8);
   const latestQueryRef = useRef<string>('');
-  const debounceTimeoutRef = useRef<number | null>(null);
 
   // Handle dialog open/close with ref
   useEffect(() => {
@@ -191,15 +191,6 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
       dialog.close();
     }
   }, [open]);
-
-  // Cleanup debounce timeout on unmount or dialog close
-  useEffect(() => {
-    return () => {
-      if (debounceTimeoutRef.current) {
-        clearTimeout(debounceTimeoutRef.current);
-      }
-    };
-  }, []);
 
   // Handle search
   const performSearch = async (searchQuery: string) => {
@@ -301,20 +292,13 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
       }
     }
   };
-
+  const debouncedCallback = useDebounceCallback((value: string) => {
+    performSearch(value);
+  }, 400);
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setQuery(value);
-
-    // Clear existing timeout
-    if (debounceTimeoutRef.current) {
-      clearTimeout(debounceTimeoutRef.current);
-    }
-
-    // Debounce search with 300ms delay (industry standard)
-    debounceTimeoutRef.current = window.setTimeout(() => {
-      performSearch(value);
-    }, 300);
+    debouncedCallback(value);
   };
 
   const handleClear = () => {
