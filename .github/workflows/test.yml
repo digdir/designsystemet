@@ -22,7 +22,8 @@ jobs:
         run: pnpm build
       - name: Types
         run: pnpm types:react
-
+      - name: Install playwright and run Storybook tests
+        run: pnpm test:storybook
       - name: Test
         run: pnpm test
       - name: 'Report Coverage'
@@ -43,8 +44,6 @@ jobs:
       - name: Test CLI (create tokens, then build the theme)
         run: pnpm test:cli
 
-      - name: Install playwright and run Storybook tests
-        run: pnpm test:storybook
       - name: Replace relative paths in test report
         uses: jacobtomlinson/gha-find-replace@f1069b438f125e5395d84d1c6fd3b559a7880cb5 # v3.0.5
         if: success() || failure()

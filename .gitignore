@@ -15,6 +15,9 @@ node_modules
 .env
 .env.local
 
+# For the AI search
+.ai-env
+
 coverage/
 .eslintcache
 
@@ -39,6 +42,7 @@ next-env.d.ts
 
 # jest/vitest test reports
 test-report.xml
+__screenshots__
 
 packages/cli/temp
 
