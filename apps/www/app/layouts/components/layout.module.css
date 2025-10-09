@@ -1,0 +1,32 @@
+.sidebar-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-size-10);
+  margin-top: var(--page-spacing-top);
+  padding-bottom: var(--page-spacing-bottom);
+  flex-direction: unset;
+}
+
+.sidebar {
+  flex-basis: 220px;
+}
+
+.content {
+  flex-basis: 600px;
+  flex-grow: 500;
+  max-width: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    'header header'
+    'content aside'
+    'content aside';
+
+  > h2 {
+    margin-bottom: var(--ds-size-3);
+  }
+  > p {
+    margin-bottom: var(--ds-size-4);
+  }
+}
