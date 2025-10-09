@@ -17,28 +17,31 @@ const dependencies = Object.keys({
   ...pkg.peerDependencies,
 }).filter((dep) => dep !== '@floating-ui/dom'); // Bundle floating-ui
 
-/*
-Regexes to correctly mark submodules from dependencies as being external
-*/
 const dependenciesSubmodules = dependencies.map(
   (dep) => new RegExp(`^${dep}/`),
 );
 
 export default [
   {
-    input: './tsc-build/index.js',
+    input: {
+      index: './tsc-build/index.js',
+      'components/field/field': './tsc-build/components/field/field.js',
+      'components/popover/popover': './tsc-build/components/popover/popover.js',
+    },
     output: [
       {
         dir: './dist/cjs',
         format: 'cjs',
-        preserveModules: true,
-        preserveModulesRoot: 'tsc-build',
+        entryFileNames: '[name].js',
+        chunkFileNames: 'chunks/[name]-[hash].js',
+        inlineDynamicImports: false,
       },
       {
         dir: './dist/esm',
         format: 'es',
-        preserveModules: true,
-        preserveModulesRoot: 'tsc-build',
+        entryFileNames: '[name].js',
+        chunkFileNames: 'chunks/[name]-[hash].js',
+        inlineDynamicImports: false,
       },
     ],
     external: [...dependencies, ...dependenciesSubmodules],
