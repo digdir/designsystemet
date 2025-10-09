@@ -41,6 +41,14 @@
       <div popover="manual" id="popover">
         This is some popover content. It can be very long, but it will wrap and
         stay within the viewport.
+
+        <ds-popover anchor="p-anc1" placement="right">
+          <button class="ds-button" id="p-anc1">Open nested popover</button>
+          <div popover="manual">
+            This is some nested popover content. It can be very long, but it will wrap and
+            stay within the viewport.
+          </div>
+        </ds-popover>
       </div>
     </ds-popover>
     <ds-popover anchor="p-anc2" placement="bottom-end">
