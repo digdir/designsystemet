@@ -1,4 +1,4 @@
-/* build: v1.5.1 */
+/* build: v1.6.0 */
 import type {} from '@digdir/designsystemet/types';
 
 // Augment types based on theme

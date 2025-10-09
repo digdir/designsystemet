@@ -109,7 +109,6 @@ function generateColorSchemesGroup(colorSchemes: ColorSchemes, themes: string[])
     (scheme): ThemeObject_ => ({
       ...colorSchemeDefaults[scheme],
       selectedTokenSets: Object.fromEntries([
-        [`primitives/modes/color-scheme/${scheme}/global`, TokenSetStatus.ENABLED],
         ...themes.map((theme) => [`primitives/modes/color-scheme/${scheme}/${theme}`, TokenSetStatus.ENABLED]),
       ]),
       group: 'Color scheme',
