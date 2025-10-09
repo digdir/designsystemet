@@ -15,7 +15,7 @@ const dependencies = Object.keys({
   ...implicitDependencies,
   ...pkg.dependencies,
   ...pkg.peerDependencies,
-});
+}).filter((dep) => dep !== '@floating-ui/dom'); // Bundle floating-ui
 
 /*
 Regexes to correctly mark submodules from dependencies as being external

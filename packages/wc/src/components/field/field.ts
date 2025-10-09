@@ -13,7 +13,6 @@ export class DsField extends HTMLElement {
       this.attachShadow({ mode: 'open' }).appendChild(
         document.createElement('slot'),
       );
-      console.log(this);
     }
   }
 
