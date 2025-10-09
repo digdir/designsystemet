@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./tsc-build",
+    "allowSyntheticDefaultImports": true,
+    "composite": true,
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "incremental": true,
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false
+  },
+  "include": [
+    "src"
+  ]
+}
