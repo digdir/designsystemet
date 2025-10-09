@@ -13,9 +13,17 @@ export type SidebarProps = {
     }[];
   };
   title: string;
+  hideCatTitle?: boolean;
+  suffix?: string;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const Sidebar = ({ cats, title, ...props }: SidebarProps) => {
+export const Sidebar = ({
+  cats,
+  title,
+  hideCatTitle = false,
+  suffix = '',
+  ...props
+}: SidebarProps) => {
   const { t } = useTranslation();
   const [showMenu, setShowMenu] = useState(false);
 
@@ -34,9 +42,11 @@ export const Sidebar = ({ cats, title, ...props }: SidebarProps) => {
       </Button>
 
       <nav className={cl(classes.menu, showMenu && classes.activeMenu)}>
-        <Paragraph data-size='md' className={classes.title}>
-          {t(`sidebar.${title}`, title)}
-        </Paragraph>
+        {hideCatTitle ? null : (
+          <Paragraph data-size='md' className={classes.title}>
+            {t(`sidebar.${title}`, title)}
+          </Paragraph>
+        )}
         <ul className={classes.list}>
           {Object.entries(cats).map(([key, value]) => {
             if (!value.length) {
@@ -58,7 +68,7 @@ export const Sidebar = ({ cats, title, ...props }: SidebarProps) => {
                         <Paragraph asChild data-size='sm'>
                           <Link asChild>
                             <NavLink
-                              to={url}
+                              to={url + suffix}
                               className={cl(classes.link)}
                               onClick={() => setShowMenu(false)}
                             >
