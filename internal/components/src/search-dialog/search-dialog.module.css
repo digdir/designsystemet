@@ -63,19 +63,20 @@
       linear-gradient(var(--bg) 0 0) padding-box,
       linear-gradient(
         130deg,
-        var(--ds-color-accent-base-default) 45%,
-        color-mix(in srgb, var(--ds-color-accent-base-default), white 50%),
-        var(--ds-color-accent-base-default) 55%
+        var(--ds-color-neutral-border-default) 45%,
+        color-mix(in srgb, var(--ds-color-neutral-border-default), white 50%),
+        var(--ds-color-neutral-border-default) 55%
       )
       border-box;
     background-size: 250%;
     animation: --glare 6s infinite ease-in-out;
     &:focus {
+      --bg: var(--ds-color-neutral-background-default);
       outline: unset;
       box-shadow: unset;
       animation: none;
       background:
-        linear-gradient(var(--ds-color-neutral-surface-default) 0 0) padding-box,
+        linear-gradient(var(--bg) 0 0) padding-box,
         linear-gradient(90deg, #cb4f53, #e8b43a, var(--ds-color-accent-base-default)) border-box;
       background-size: 100%;
     }
