@@ -265,22 +265,234 @@
       }
     }
   },
-  "font-family": {
-    "$type": "fontFamilies",
-    "$value": "{designsystemet.font-family}"
-  },
-  "font-weight": {
-    "medium": {
-      "$type": "fontWeights",
-      "$value": "{designsystemet.font-weight.medium}"
+  "typography": {
+    "primary": {
+      "font-family": {
+        "$type": "fontFamilies",
+        "$value": "{typography.designsystemet.primary.font-family}"
+      },
+      "font-weight": {
+        "medium": {
+          "$type": "fontWeights",
+          "$value": "{typography.designsystemet.primary.font-weight.medium}"
+        },
+        "semibold": {
+          "$type": "fontWeights",
+          "$value": "{typography.designsystemet.primary.font-weight.semibold}"
+        },
+        "regular": {
+          "$type": "fontWeights",
+          "$value": "{typography.designsystemet.primary.font-weight.regular}"
+        }
+      },
+      "font-size": {
+        "1": {
+          "$type": "fontSizes",
+          "$value": "{typography.designsystemet.primary.font-size.1}"
+        },
+        "2": {
+          "$type": "fontSizes",
+          "$value": "{typography.designsystemet.primary.font-size.2}"
+        },
+        "3": {
+          "$type": "fontSizes",
+          "$value": "{typography.designsystemet.primary.font-size.3}"
+        },
+        "4": {
+          "$type": "fontSizes",
+          "$value": "{typography.designsystemet.primary.font-size.4}"
+        },
+        "5": {
+          "$type": "fontSizes",
+          "$value": "{typography.designsystemet.primary.font-size.5}"
+        },
+        "6": {
+          "$type": "fontSizes",
+          "$value": "{typography.designsystemet.primary.font-size.6}"
+        },
+        "7": {
+          "$type": "fontSizes",
+          "$value": "{typography.designsystemet.primary.font-size.7}"
+        },
+        "8": {
+          "$type": "fontSizes",
+          "$value": "{typography.designsystemet.primary.font-size.8}"
+        },
+        "9": {
+          "$type": "fontSizes",
+          "$value": "{typography.designsystemet.primary.font-size.9}"
+        },
+        "10": {
+          "$type": "fontSizes",
+          "$value": "{typography.designsystemet.primary.font-size.10}"
+        }
+      },
+      "line-height": {
+        "sm": {
+          "$type": "lineHeights",
+          "$value": "{typography.designsystemet.primary.line-height.sm}"
+        },
+        "md": {
+          "$type": "lineHeights",
+          "$value": "{typography.designsystemet.primary.line-height.md}"
+        },
+        "lg": {
+          "$type": "lineHeights",
+          "$value": "{typography.designsystemet.primary.line-height.lg}"
+        }
+      },
+      "letter-spacing": {
+        "1": {
+          "$type": "letterSpacing",
+          "$value": "{typography.designsystemet.primary.letter-spacing.1}"
+        },
+        "2": {
+          "$type": "letterSpacing",
+          "$value": "{typography.designsystemet.primary.letter-spacing.2}"
+        },
+        "3": {
+          "$type": "letterSpacing",
+          "$value": "{typography.designsystemet.primary.letter-spacing.3}"
+        },
+        "4": {
+          "$type": "letterSpacing",
+          "$value": "{typography.designsystemet.primary.letter-spacing.4}"
+        },
+        "5": {
+          "$type": "letterSpacing",
+          "$value": "{typography.designsystemet.primary.letter-spacing.5}"
+        },
+        "6": {
+          "$type": "letterSpacing",
+          "$value": "{typography.designsystemet.primary.letter-spacing.6}"
+        },
+        "7": {
+          "$type": "letterSpacing",
+          "$value": "{typography.designsystemet.primary.letter-spacing.7}"
+        },
+        "8": {
+          "$type": "letterSpacing",
+          "$value": "{typography.designsystemet.primary.letter-spacing.8}"
+        },
+        "9": {
+          "$type": "letterSpacing",
+          "$value": "{typography.designsystemet.primary.letter-spacing.9}"
+        }
+      }
     },
-    "semibold": {
-      "$type": "fontWeights",
-      "$value": "{designsystemet.font-weight.semibold}"
-    },
-    "regular": {
-      "$type": "fontWeights",
-      "$value": "{designsystemet.font-weight.regular}"
+    "secondary": {
+      "font-family": {
+        "$type": "fontFamilies",
+        "$value": "{typography.designsystemet.secondary.font-family}"
+      },
+      "font-weight": {
+        "medium": {
+          "$type": "fontWeights",
+          "$value": "{typography.designsystemet.secondary.font-weight.medium}"
+        },
+        "semibold": {
+          "$type": "fontWeights",
+          "$value": "{typography.designsystemet.secondary.font-weight.semibold}"
+        },
+        "regular": {
+          "$type": "fontWeights",
+          "$value": "{typography.designsystemet.secondary.font-weight.regular}"
+        }
+      },
+      "font-size": {
+        "1": {
+          "$type": "fontSizes",
+          "$value": "{typography.designsystemet.secondary.font-size.1}"
+        },
+        "2": {
+          "$type": "fontSizes",
+          "$value": "{typography.designsystemet.secondary.font-size.2}"
+        },
+        "3": {
+          "$type": "fontSizes",
+          "$value": "{typography.designsystemet.secondary.font-size.3}"
+        },
+        "4": {
+          "$type": "fontSizes",
+          "$value": "{typography.designsystemet.secondary.font-size.4}"
+        },
+        "5": {
+          "$type": "fontSizes",
+          "$value": "{typography.designsystemet.secondary.font-size.5}"
+        },
+        "6": {
+          "$type": "fontSizes",
+          "$value": "{typography.designsystemet.secondary.font-size.6}"
+        },
+        "7": {
+          "$type": "fontSizes",
+          "$value": "{typography.designsystemet.secondary.font-size.7}"
+        },
+        "8": {
+          "$type": "fontSizes",
+          "$value": "{typography.designsystemet.secondary.font-size.8}"
+        },
+        "9": {
+          "$type": "fontSizes",
+          "$value": "{typography.designsystemet.secondary.font-size.9}"
+        },
+        "10": {
+          "$type": "fontSizes",
+          "$value": "{typography.designsystemet.secondary.font-size.10}"
+        }
+      },
+      "line-height": {
+        "sm": {
+          "$type": "lineHeights",
+          "$value": "{typography.designsystemet.secondary.line-height.sm}"
+        },
+        "md": {
+          "$type": "lineHeights",
+          "$value": "{typography.designsystemet.secondary.line-height.md}"
+        },
+        "lg": {
+          "$type": "lineHeights",
+          "$value": "{typography.designsystemet.secondary.line-height.lg}"
+        }
+      },
+      "letter-spacing": {
+        "1": {
+          "$type": "letterSpacing",
+          "$value": "{typography.designsystemet.secondary.letter-spacing.1}"
+        },
+        "2": {
+          "$type": "letterSpacing",
+          "$value": "{typography.designsystemet.secondary.letter-spacing.2}"
+        },
+        "3": {
+          "$type": "letterSpacing",
+          "$value": "{typography.designsystemet.secondary.letter-spacing.3}"
+        },
+        "4": {
+          "$type": "letterSpacing",
+          "$value": "{typography.designsystemet.secondary.letter-spacing.4}"
+        },
+        "5": {
+          "$type": "letterSpacing",
+          "$value": "{typography.designsystemet.secondary.letter-spacing.5}"
+        },
+        "6": {
+          "$type": "letterSpacing",
+          "$value": "{typography.designsystemet.secondary.letter-spacing.6}"
+        },
+        "7": {
+          "$type": "letterSpacing",
+          "$value": "{typography.designsystemet.secondary.letter-spacing.7}"
+        },
+        "8": {
+          "$type": "letterSpacing",
+          "$value": "{typography.designsystemet.secondary.letter-spacing.8}"
+        },
+        "9": {
+          "$type": "letterSpacing",
+          "$value": "{typography.designsystemet.secondary.letter-spacing.9}"
+        }
+      }
     }
   },
   "border-radius": {

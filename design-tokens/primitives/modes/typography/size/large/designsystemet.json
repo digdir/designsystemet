@@ -1,0 +1,94 @@
+{
+  "typography": {
+    "designsystemet": {
+      "primary" : {
+        "font-size": {
+          "1": {
+            "$type": "fontSizes",
+            "$value": "13"
+          },
+          "2": {
+            "$type": "fontSizes",
+            "$value": "16"
+          },
+          "3": {
+            "$type": "fontSizes",
+            "$value": "18"
+          },
+          "4": {
+            "$type": "fontSizes",
+            "$value": "21"
+          },
+          "5": {
+            "$type": "fontSizes",
+            "$value": "24"
+          },
+          "6": {
+            "$type": "fontSizes",
+            "$value": "30"
+          },
+          "7": {
+            "$type": "fontSizes",
+            "$value": "36"
+          },
+          "8": {
+            "$type": "fontSizes",
+            "$value": "48"
+          },
+          "9": {
+            "$type": "fontSizes",
+            "$value": "60"
+          },
+          "10": {
+            "$type": "fontSizes",
+            "$value": "72"
+          }
+        }
+      },
+      "secondary" : {
+        "font-size": {
+          "1": {
+            "$type": "fontSizes",
+            "$value": "14"
+          },
+          "2": {
+            "$type": "fontSizes",
+            "$value": "17"
+          },
+          "3": {
+            "$type": "fontSizes",
+            "$value": "19"
+          },
+          "4": {
+            "$type": "fontSizes",
+            "$value": "22"
+          },
+          "5": {
+            "$type": "fontSizes",
+            "$value": "25"
+          },
+          "6": {
+            "$type": "fontSizes",
+            "$value": "32"
+          },
+          "7": {
+            "$type": "fontSizes",
+            "$value": "38"
+          },
+          "8": {
+            "$type": "fontSizes",
+            "$value": "50"
+          },
+          "9": {
+            "$type": "fontSizes",
+            "$value": "64"
+          },
+          "10": {
+            "$type": "fontSizes",
+            "$value": "76"
+          }
+        }
+      }
+    }
+  }
+}
