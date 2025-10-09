@@ -364,7 +364,6 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
               autoFocus
             />
             <Search.Clear onClick={handleClear} />
-            <Search.Button disabled={isQuickLoading || isSmartLoading} />
           </Search>
         </Dialog.Block>
       </div>
