@@ -166,6 +166,10 @@ export class DSTooltip extends HTMLElement {
   private handleMouseLeaveAnchor?: (event: MouseEvent) => void;
   private handleBeforeToggle?: (event: Event) => void;
   private handleToggle?: () => void;
+  private handleKeydown?: (event: KeyboardEvent) => void;
+  private handleFocusAnchor?: (event: FocusEvent) => void;
+  private handleBlurAnchor?: (event: FocusEvent) => void;
+
   constructor() {
     super();
     if (!this.shadowRoot) {
@@ -269,19 +273,27 @@ export class DSTooltip extends HTMLElement {
     anchor.setAttribute('popovertarget', tooltip.id);
 
     this.handleMouseLeaveTooltip = () => {
-      if (this.anchor && !this.anchor.matches(':hover')) {
+      if (
+        this.anchor &&
+        !this.anchor.matches(':hover') &&
+        !anchor.matches(':focus-visible')
+      ) {
+        tooltip.togglePopover?.();
+      }
+    };
+
+    this.handleMouseLeaveAnchor = () => {
+      if (
+        tooltip &&
+        !tooltip.matches(':hover') &&
+        !anchor.matches(':focus-visible')
+      ) {
         tooltip.togglePopover?.();
       }
     };
 
     this.handleMouseEnterTooltip = () => {
       if (!tooltip.matches(':popover-open')) {
-        tooltip.togglePopover?.();
-      }
-    };
-
-    this.handleMouseLeaveAnchor = () => {
-      if (tooltip && !tooltip.matches(':hover')) {
         tooltip.togglePopover?.();
       }
     };
@@ -299,6 +311,24 @@ export class DSTooltip extends HTMLElement {
       }
     };
 
+    this.handleKeydown = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape' || !tooltip.matches(':popover-open')) return;
+      event.preventDefault();
+      tooltip.togglePopover?.();
+    };
+
+    this.handleFocusAnchor = (_event: FocusEvent) => {
+      if (!tooltip.matches(':popover-open')) {
+        tooltip.togglePopover?.();
+      }
+    };
+
+    this.handleBlurAnchor = (_event: FocusEvent) => {
+      if (tooltip?.matches(':popover-open')) {
+        tooltip.togglePopover?.();
+      }
+    };
+
     this.handleToggle = () => {
       if (tooltip.matches(':popover-open')) {
         this.startAutoUpdate();
@@ -307,8 +337,11 @@ export class DSTooltip extends HTMLElement {
       }
     };
 
+    addEventListener('keydown', this.handleKeydown);
     anchor.addEventListener('mouseenter', this.handleMouseEnterAnchor);
     anchor.addEventListener('mouseleave', this.handleMouseLeaveAnchor);
+    anchor.addEventListener('focus', this.handleFocusAnchor);
+    anchor.addEventListener('blur', this.handleBlurAnchor);
     tooltip.addEventListener('mouseenter', this.handleMouseEnterTooltip);
     tooltip.addEventListener('mouseleave', this.handleMouseLeaveTooltip);
     tooltip.addEventListener('beforetoggle', this.handleBeforeToggle);
@@ -327,6 +360,9 @@ export class DSTooltip extends HTMLElement {
       }
       if (this.handleToggle) {
         this.tooltip.removeEventListener('toggle', this.handleToggle);
+      }
+      if (this.handleKeydown) {
+        removeEventListener('keydown', this.handleKeydown);
       }
     }
   }
