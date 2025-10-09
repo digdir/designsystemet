@@ -1,5 +1,19 @@
 # Change Log
 
+## 1.6.1
+
+### Patch Changes
+
+- **pagination**: If direct child of `li` has `aria-hidden="true"` it sets `visibility: hidden;` ([#4123](https://github.com/digdir/designsystemet/pull/4123))
+
+- **input**: Add outline on `:hover` when not `:focus-visible`, `:disabled` or `[readonly]`. This adds a few new CSS variables: ([#4125](https://github.com/digdir/designsystemet/pull/4125))
+  - `--dsc-input-outline-color--hover`
+  - `--dsc-input-outline-color--toggle--hover`
+  - `--dsc-input-outline-width--hover`
+  - `--dsc-input-outline-style--hover`
+
+- **Chip, Tag**: Ensure font size scales correctly with the current size mode by using the token `--ds-body-sm-font-size`. Note: there might be a small visual change for `Chip` used without explicit `data-size`, since it used to have `font-size: 90%`. ([#4098](https://github.com/digdir/designsystemet/pull/4098))
+
 ## 1.6.0
 
 ### Minor Changes
