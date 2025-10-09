@@ -27,7 +27,7 @@
     "clean": "rimraf dist && rimraf tsc-build && rimraf --glob \"*.tsbuildinfo\"",
     "copy-css-to-build": "copyfiles -u 1 ./src/**/*.css ./tsc-build/",
     "types": "tsc --noEmit",
-    "dev": "npx http-server . -p 5173"
+    "dev": "pnpm build && npx http-server . -p 5173"
   },
   "publishConfig": {
     "access": "restricted"
