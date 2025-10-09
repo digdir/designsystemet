@@ -524,9 +524,6 @@ importers:
 
   packages/react:
     dependencies:
-      '@digdir/designsystemet-wc':
-        specifier: workspace:^
-        version: link:../wc
       '@floating-ui/dom':
         specifier: ^1.7.4
         version: 1.7.4

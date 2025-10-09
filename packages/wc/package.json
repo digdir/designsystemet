@@ -26,7 +26,8 @@
     "build": "pnpm run clean && tsc -b tsconfig.lib.json --emitDeclarationOnly false && rollup -c --bundleConfigAsCjs",
     "clean": "rimraf dist && rimraf tsc-build && rimraf --glob \"*.tsbuildinfo\"",
     "copy-css-to-build": "copyfiles -u 1 ./src/**/*.css ./tsc-build/",
-    "types": "tsc --noEmit"
+    "types": "tsc --noEmit",
+    "dev": "npx http-server . -p 5173"
   },
   "publishConfig": {
     "access": "restricted"

@@ -1,9 +1,10 @@
-import type { DsField } from '@digdir/designsystemet-wc';
+import { Slot } from '@radix-ui/react-slot';
+import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
-import { forwardRef } from 'react';
+import { forwardRef, useEffect, useRef } from 'react';
 import type { DefaultProps } from '../../types';
-
-import '@digdir/designsystemet-wc';
+import { useMergeRefs } from '../../utilities/hooks';
+import { fieldObserver } from './field-observer';
 
 export type FieldProps = {
   /**
@@ -30,13 +31,21 @@ export type FieldProps = {
  *   <ValidationMessage>Feilmelding</ValidationMessage>
  * </Field>
  */
-export const Field = forwardRef<DsField, FieldProps>(function Field(
-  { className, position, asChild, children, ...rest },
+export const Field = forwardRef<HTMLDivElement, FieldProps>(function Field(
+  { className, position, asChild, ...rest },
   ref,
 ) {
+  const Component = asChild ? Slot : 'div';
+  const fieldRef = useRef<HTMLDivElement>(null);
+  const mergedRefs = useMergeRefs([fieldRef, ref]);
+  useEffect(() => fieldObserver(fieldRef.current), []);
+
   return (
-    <ds-field ref={ref} class='ds-field' data-position={position} {...rest}>
-      {children}
-    </ds-field>
+    <Component
+      className={cl('ds-field', className)}
+      data-position={position}
+      ref={mergedRefs}
+      {...rest}
+    />
   );
 });
