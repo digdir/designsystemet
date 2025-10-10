@@ -104,9 +104,9 @@ export default {
     'theme-name': 'Gi temaet ditt et navn',
     'theme-name-description':
       'Navnet bør representere virksomheter eller produktet du skal profilere.',
-    'theme-name-label': 'Navn på tema',
     'generate-css': 'Generer CSS',
     'generating-css': 'Genererer CSS...',
+
     'step-one':
       'Kopier kodesnutten og kjør den på maskinen din for å generere design tokens (json-filer), eller lim den inn i Designsystemet sin',
     'figma-plugin': 'Figma plugin (åpnes i ny fane)',
@@ -124,6 +124,8 @@ export default {
     or: 'eller lag et',
     'github-issue': 'Github issue (åpnes i ny fane)',
     color: 'Farge',
+    'use-config-file':
+      'Lagre config fila di som "designsystemet.config.json". Dersom du vil ha schema må du installere "@digdir/designsystemet"',
   },
   examples: {
     'example-1': 'Eksempel 1',
