@@ -16,9 +16,10 @@ import {
 } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import type { CSSProperties } from 'react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useTransition } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDebounceCallback } from '../_hooks/use-debounce-callback/use-debounce-callback';
+import { MDXComponents } from '../mdx-components/mdx-components';
 import classes from './search-dialog.module.css';
 
 // Helper for safely accessing CSS Module classes that may not yet be in the generated .d.ts
@@ -27,6 +28,23 @@ const cx = (key: string) => (classes as Record<string, string>)[key] ?? '';
 type SearchDialogProps = {
   open: boolean;
   onClose: () => void;
+  onSearch?: (query: string) => void;
+  onAiSearch?: (query: string) => void;
+  isSearching?: boolean;
+  isAiSearching?: boolean;
+  searchResult?: {
+    success: boolean;
+    results: unknown[];
+    query: string;
+    error?: string;
+  } | null;
+  aiSearchResult?: {
+    success: boolean;
+    content: string;
+    sources: { title: string; url: string }[];
+    query: string;
+    error?: string;
+  } | null;
 };
 
 type QuickResult = {
@@ -168,7 +186,16 @@ const Star = () => (
   </svg>
 );
 
-export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
+export const SearchDialog = ({
+  open,
+  onClose,
+  onSearch,
+  onAiSearch,
+  isSearching,
+  isAiSearching,
+  searchResult,
+  aiSearchResult,
+}: SearchDialogProps) => {
   const { t } = useTranslation();
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [query, setQuery] = useState('');
@@ -179,6 +206,11 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
   const [smartExpanded, setSmartExpanded] = useState(false);
   const [visibleQuickCount, setVisibleQuickCount] = useState(8);
   const latestQueryRef = useRef<string>('');
+
+  console.log('isAiSearching ', isAiSearching, aiSearchResult);
+  //console.log('isSearching ', isSearching, searchResult);
+
+  //const [isPending, startTransition] = useTransition();
 
   // Handle dialog open/close with ref
   useEffect(() => {
@@ -208,6 +240,7 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
     setSmartExpanded(false);
 
     if (isSingleWord) {
+      //onSearch?.(searchQuery);
       // Quick only
       setSmartResult(null);
       setIsSmartLoading(false);
@@ -239,6 +272,7 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
     setIsQuickLoading(true);
     setIsSmartLoading(true);
     setSmartResult(null);
+    //onAiSearch?.(searchQuery);
     try {
       const quickPromise = fetch(`http://localhost:3001/api/search`, {
         method: 'POST',
@@ -269,6 +303,7 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
         )
         .then((data) => {
           if (latestQueryRef.current === searchQuery) {
+            //console.log(data.answer);
             setSmartResult({
               content: data.answer || '',
               sources: data.sources || [],
@@ -409,6 +444,7 @@ export const SearchDialog = ({ open, onClose }: SearchDialogProps) => {
                       )}
                     >
                       {parseMarkdown(smartResult.content)}
+                      {/* <MDXComponents code={smartResult.content} /> */}
                     </div>
                     <Button
                       variant='secondary'

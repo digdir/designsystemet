@@ -8,7 +8,12 @@ import {
 } from '@internal/components';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
-import { isRouteErrorResponse, Outlet, useRouteLoaderData } from 'react-router';
+import {
+  isRouteErrorResponse,
+  Outlet,
+  useFetcher,
+  useRouteLoaderData,
+} from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
 import { Figma } from '~/_components/logos/figma';
 import { Github } from '~/_components/logos/github';
@@ -16,6 +21,8 @@ import { Slack } from '~/_components/logos/slack';
 import i18n from '~/i18n';
 import type { Route as RootRoute } from './../../+types/root';
 import type { Route } from './+types/layout';
+import type { action as searchAction } from '~/routes/api/search';
+import type { action as aiSearchAction } from '~/routes/api/ai-search';
 
 export const loader = ({ params }: Route.LoaderArgs) => {
   if (!i18n.supportedLngs.includes(params.lang || '')) {
@@ -50,6 +57,8 @@ const rightLinks: FooterLinkListItemProps[] = [
 
 export default function RootLayout() {
   const { t } = useTranslation();
+  const searchFetcher = useFetcher<typeof searchAction>();
+  const aiSearchFetcher = useFetcher<typeof aiSearchAction>();
   const { lang, centerLinks, menu } = useRouteLoaderData('root') as Omit<
     RootRoute.ComponentProps['loaderData'],
     'centerLinks'
@@ -63,6 +72,17 @@ export default function RootLayout() {
 
   useChangeLanguage(lang);
 
+  const handleSearch = (query: string) => {
+    searchFetcher.submit({ query }, { method: 'post', action: '/api/search' });
+  };
+
+  const handleAiSearch = (query: string) => {
+    aiSearchFetcher.submit(
+      { query },
+      { method: 'post', action: '/api/ai-search' },
+    );
+  };
+
   return (
     <>
       <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
@@ -70,6 +90,12 @@ export default function RootLayout() {
         menu={menu}
         logoLink={`/${lang === 'no' ? 'no' : lang === 'en' ? 'en' : 'no'}`}
         themeSwitcher
+        onSearch={handleSearch}
+        onAiSearch={handleAiSearch}
+        isSearching={searchFetcher.state === 'submitting'}
+        isAiSearching={aiSearchFetcher.state === 'submitting'}
+        searchResult={searchFetcher.data}
+        aiSearchResult={aiSearchFetcher.data}
       />
       <main id='main'>
         <Outlet />
@@ -108,6 +134,19 @@ const ErrorWrapperRoot = ({
   rightLinks,
 }: ErrorWrapperRootProps) => {
   const { t } = useTranslation();
+  const searchFetcher = useFetcher<typeof searchAction>();
+  const aiSearchFetcher = useFetcher<typeof aiSearchAction>();
+
+  const handleSearch = (query: string) => {
+    searchFetcher.submit({ query }, { method: 'post', action: '/api/search' });
+  };
+
+  const handleAiSearch = (query: string) => {
+    aiSearchFetcher.submit(
+      { query },
+      { method: 'post', action: '/api/ai-search' },
+    );
+  };
 
   return (
     <>
@@ -116,6 +155,12 @@ const ErrorWrapperRoot = ({
         menu={menu}
         logoLink={`/${lang === 'no' ? 'no' : lang === 'en' ? 'en' : 'no'}`}
         themeSwitcher
+        onSearch={handleSearch}
+        onAiSearch={handleAiSearch}
+        isSearching={searchFetcher.state === 'submitting'}
+        isAiSearching={aiSearchFetcher.state === 'submitting'}
+        searchResult={searchFetcher.data}
+        aiSearchResult={aiSearchFetcher.data}
       />
       <main id='main'>
         <ContentContainer>{children}</ContentContainer>

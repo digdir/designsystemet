@@ -32,6 +32,24 @@ type HeaderProps = {
   themeSwitcher?: boolean;
   transparentBackground?: boolean;
   logoLink?: string;
+  onSearch?: (query: string) => void;
+  onAiSearch?: (query: string) => void;
+  isSearching?: boolean;
+  isAiSearching?: boolean;
+  searchResult?: {
+    success: boolean;
+    results: unknown[];
+    query: string;
+    error?: string;
+  } | null;
+  aiSearchResult?: {
+    success: boolean;
+    content: string;
+    sources: { title: string; url: string }[];
+    query: string;
+    error?: string;
+  } | null;
+  className?: string;
 } & React.HTMLAttributes<HTMLElement>;
 
 /**
@@ -66,6 +84,12 @@ const Header = ({
   betaTag,
   themeSwitcher = false,
   transparentBackground = false,
+  onSearch,
+  onAiSearch,
+  isSearching,
+  isAiSearching,
+  searchResult,
+  aiSearchResult,
   logoLink = '/',
   className,
   ...props
@@ -335,7 +359,16 @@ const Header = ({
           )}
         </nav>
       </div>
-      <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
+      <SearchDialog
+        onSearch={onSearch}
+        onAiSearch={onAiSearch}
+        open={searchOpen}
+        onClose={() => setSearchOpen(false)}
+        isSearching={isSearching}
+        isAiSearching={isAiSearching}
+        searchResult={searchResult}
+        aiSearchResult={aiSearchResult}
+      />
     </header>
   );
 };
