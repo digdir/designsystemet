@@ -72,7 +72,10 @@
     animation: --glare 6s infinite ease-in-out;
     &:focus {
       --bg: var(--ds-color-neutral-background-default);
-      outline: unset;
+      /*needs more design work*/
+      outline-color: light-dark(var(--ds-color-accent-surface-active), transparent);
+      outline-offset: 0;
+      outline-width: 5px;
       box-shadow: unset;
       animation: none;
       background:
