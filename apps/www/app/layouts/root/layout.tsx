@@ -46,13 +46,17 @@ type PendingRequest = {
   reject: (error: any) => void;
   timeout: NodeJS.Timeout;
 };
-type SearchPromise = (query: string) => Promise<{
+
+type SearchPromiseReturn = {
   success: boolean;
   results: QuickResult[];
   query: string;
   error?: string;
-}>;
-type AiSearchPromise = (query: string) => Promise<{
+};
+
+type SearchPromise = (query: string) => Promise<SearchPromiseReturn>;
+
+type AiSearchPromiseReturn = {
   success: boolean;
   result: {
     content: string;
@@ -60,7 +64,9 @@ type AiSearchPromise = (query: string) => Promise<{
   };
   query: string;
   error?: string;
-}>;
+};
+
+type AiSearchPromise = (query: string) => Promise<AiSearchPromiseReturn>;
 
 const rightLinks: FooterLinkListItemProps[] = [
   {
@@ -108,25 +114,31 @@ export default function RootLayout() {
   const pendingAiSearchRef = useRef<PendingRequest | null>(null);
 
   useEffect(() => {
-    if (
-      searchFetcher.state === 'idle' &&
-      searchFetcher.data &&
-      pendingSearchRef.current
-    ) {
+    if (searchFetcher.state === 'idle' && pendingSearchRef.current) {
       clearTimeout(pendingSearchRef.current.timeout);
-      pendingSearchRef.current.resolve(searchFetcher.data);
+
+      if (searchFetcher.data) {
+        pendingSearchRef.current.resolve(searchFetcher.data);
+      } else {
+        pendingSearchRef.current.reject(
+          new Error('Search request failed or returned no data.'),
+        );
+      }
       pendingSearchRef.current = null;
     }
   }, [searchFetcher.state, searchFetcher.data]);
 
   useEffect(() => {
-    if (
-      aiSearchFetcher.state === 'idle' &&
-      aiSearchFetcher.data &&
-      pendingAiSearchRef.current
-    ) {
+    if (aiSearchFetcher.state === 'idle' && pendingAiSearchRef.current) {
       clearTimeout(pendingAiSearchRef.current.timeout);
-      pendingAiSearchRef.current.resolve(aiSearchFetcher.data);
+
+      if (aiSearchFetcher.data) {
+        pendingAiSearchRef.current.resolve(aiSearchFetcher.data);
+      } else {
+        pendingAiSearchRef.current.reject(
+          new Error('AI search request failed or returned no data.'),
+        );
+      }
       pendingAiSearchRef.current = null;
     }
   }, [aiSearchFetcher.state, aiSearchFetcher.data]);
@@ -139,10 +151,12 @@ export default function RootLayout() {
         pendingSearchRef.current = null;
       }
 
-      return new Promise((resolve, reject) => {
+      const promise = new Promise<SearchPromiseReturn>((resolve, reject) => {
         const timeout = setTimeout(() => {
-          pendingSearchRef.current = null;
-          reject(new Error('Search request timed out'));
+          if (pendingSearchRef.current) {
+            pendingSearchRef.current = null;
+            reject(new Error('Search request timed out'));
+          }
         }, 30000);
 
         pendingSearchRef.current = { resolve, reject, timeout };
@@ -152,6 +166,8 @@ export default function RootLayout() {
           { method: 'post', action: '/api/search' },
         );
       });
+
+      return promise;
     },
     [searchFetcher],
   );
@@ -164,10 +180,12 @@ export default function RootLayout() {
         pendingAiSearchRef.current = null;
       }
 
-      return new Promise((resolve, reject) => {
+      const promise = new Promise<AiSearchPromiseReturn>((resolve, reject) => {
         const timeout = setTimeout(() => {
-          pendingAiSearchRef.current = null;
-          reject(new Error('Search request timed out'));
+          if (pendingAiSearchRef.current) {
+            pendingAiSearchRef.current = null;
+            reject(new Error('AI search request timed out'));
+          }
         }, 30000);
 
         pendingAiSearchRef.current = { resolve, reject, timeout };
@@ -177,6 +195,8 @@ export default function RootLayout() {
           { method: 'post', action: '/api/ai-search' },
         );
       });
+
+      return promise;
     },
     [aiSearchFetcher],
   );
@@ -185,10 +205,12 @@ export default function RootLayout() {
     return () => {
       if (pendingSearchRef.current) {
         clearTimeout(pendingSearchRef.current.timeout);
+        pendingSearchRef.current.reject(new Error('Component unmounted'));
         pendingSearchRef.current = null;
       }
       if (pendingAiSearchRef.current) {
         clearTimeout(pendingAiSearchRef.current.timeout);
+        pendingAiSearchRef.current.reject(new Error('Component unmounted'));
         pendingAiSearchRef.current = null;
       }
     };
