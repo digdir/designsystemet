@@ -72,6 +72,7 @@ jobs:
             PORT=${{ env.PORT }}
             HOST=0.0.0.0
             APP_ENV=${{ inputs.environment }}
+            SLACK_INVITE_URL=${{ secrets.SLACK_INVITE_URL }}
 
       - name: get acr creds (masked)
         id: acr
@@ -98,7 +99,7 @@ jobs:
           registryPassword: ${{ steps.acr.outputs.pass }}
           targetPort: ${{ env.PORT }}
           ingress: external
-          environmentVariables: "PORT=${{ env.PORT }} HOST=0.0.0.0 APP_ENV=${{ inputs.environment }}"
+          environmentVariables: "PORT=${{ env.PORT }} HOST=0.0.0.0 APP_ENV=${{ inputs.environment }} SLACK_INVITE_URL=${{ secrets.SLACK_INVITE_URL }}"
           location: "norwayeast"
 
       - name: fetch fqdn
