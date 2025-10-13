@@ -25,6 +25,11 @@ export default {
       'go-to-homepage': 'Gå til forsiden',
     },
   },
+  mdx: {
+    error: {
+      loading: 'Kunne ikke laste innhold',
+    },
+  },
   accessibility: {
     'skip-link': 'Hopp til hovedinnhold',
   },
