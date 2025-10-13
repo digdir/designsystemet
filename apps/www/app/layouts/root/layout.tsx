@@ -7,6 +7,7 @@ import {
   Header,
 } from '@internal/components';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
+import { useCallback, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   isRouteErrorResponse,
@@ -19,10 +20,10 @@ import { Figma } from '~/_components/logos/figma';
 import { Github } from '~/_components/logos/github';
 import { Slack } from '~/_components/logos/slack';
 import i18n from '~/i18n';
+import type { action as aiSearchAction } from '~/routes/api/ai-search';
+import type { action as searchAction } from '~/routes/api/search';
 import type { Route as RootRoute } from './../../+types/root';
 import type { Route } from './+types/layout';
-import type { action as searchAction } from '~/routes/api/search';
-import type { action as aiSearchAction } from '~/routes/api/ai-search';
 
 export const loader = ({ params }: Route.LoaderArgs) => {
   if (!i18n.supportedLngs.includes(params.lang || '')) {
@@ -31,6 +32,35 @@ export const loader = ({ params }: Route.LoaderArgs) => {
     });
   }
 };
+
+type QuickResult = {
+  title: string;
+  content: string;
+  url: string;
+  type: 'component' | 'guide' | 'pattern' | 'blog';
+  sources?: { title: string; url: string }[];
+};
+
+type PendingRequest = {
+  resolve: (value: any) => void;
+  reject: (error: any) => void;
+  timeout: NodeJS.Timeout;
+};
+type SearchPromise = (query: string) => Promise<{
+  success: boolean;
+  results: QuickResult[];
+  query: string;
+  error?: string;
+}>;
+type AiSearchPromise = (query: string) => Promise<{
+  success: boolean;
+  result: {
+    content: string;
+    sources: { title: string; url: string }[];
+  };
+  query: string;
+  error?: string;
+}>;
 
 const rightLinks: FooterLinkListItemProps[] = [
   {
@@ -57,8 +87,7 @@ const rightLinks: FooterLinkListItemProps[] = [
 
 export default function RootLayout() {
   const { t } = useTranslation();
-  const searchFetcher = useFetcher<typeof searchAction>();
-  const aiSearchFetcher = useFetcher<typeof aiSearchAction>();
+
   const { lang, centerLinks, menu } = useRouteLoaderData('root') as Omit<
     RootRoute.ComponentProps['loaderData'],
     'centerLinks'
@@ -72,16 +101,99 @@ export default function RootLayout() {
 
   useChangeLanguage(lang);
 
-  const handleSearch = (query: string) => {
-    searchFetcher.submit({ query }, { method: 'post', action: '/api/search' });
-  };
+  // MARK: Search handling
+  const searchFetcher = useFetcher<typeof searchAction>();
+  const aiSearchFetcher = useFetcher<typeof aiSearchAction>();
+  const pendingSearchRef = useRef<PendingRequest | null>(null);
+  const pendingAiSearchRef = useRef<PendingRequest | null>(null);
 
-  const handleAiSearch = (query: string) => {
-    aiSearchFetcher.submit(
-      { query },
-      { method: 'post', action: '/api/ai-search' },
-    );
-  };
+  useEffect(() => {
+    if (
+      searchFetcher.state === 'idle' &&
+      searchFetcher.data &&
+      pendingSearchRef.current
+    ) {
+      clearTimeout(pendingSearchRef.current.timeout);
+      pendingSearchRef.current.resolve(searchFetcher.data);
+      pendingSearchRef.current = null;
+    }
+  }, [searchFetcher.state, searchFetcher.data]);
+
+  useEffect(() => {
+    if (
+      aiSearchFetcher.state === 'idle' &&
+      aiSearchFetcher.data &&
+      pendingAiSearchRef.current
+    ) {
+      clearTimeout(pendingAiSearchRef.current.timeout);
+      pendingAiSearchRef.current.resolve(aiSearchFetcher.data);
+      pendingAiSearchRef.current = null;
+    }
+  }, [aiSearchFetcher.state, aiSearchFetcher.data]);
+
+  const handleSearch: SearchPromise = useCallback(
+    (query: string) => {
+      if (pendingSearchRef.current) {
+        clearTimeout(pendingSearchRef.current.timeout);
+        pendingSearchRef.current.reject(new Error('Request cancelled'));
+        pendingSearchRef.current = null;
+      }
+
+      return new Promise((resolve, reject) => {
+        const timeout = setTimeout(() => {
+          pendingSearchRef.current = null;
+          reject(new Error('Search request timed out'));
+        }, 30000);
+
+        pendingSearchRef.current = { resolve, reject, timeout };
+
+        searchFetcher.submit(
+          { query },
+          { method: 'post', action: '/api/search' },
+        );
+      });
+    },
+    [searchFetcher],
+  );
+
+  const handleAiSearch: AiSearchPromise = useCallback(
+    (query: string) => {
+      if (pendingAiSearchRef.current) {
+        clearTimeout(pendingAiSearchRef.current.timeout);
+        pendingAiSearchRef.current.reject(new Error('Request cancelled'));
+        pendingAiSearchRef.current = null;
+      }
+
+      return new Promise((resolve, reject) => {
+        const timeout = setTimeout(() => {
+          pendingAiSearchRef.current = null;
+          reject(new Error('Search request timed out'));
+        }, 30000);
+
+        pendingAiSearchRef.current = { resolve, reject, timeout };
+
+        aiSearchFetcher.submit(
+          { query },
+          { method: 'post', action: '/api/ai-search' },
+        );
+      });
+    },
+    [aiSearchFetcher],
+  );
+
+  useEffect(() => {
+    return () => {
+      if (pendingSearchRef.current) {
+        clearTimeout(pendingSearchRef.current.timeout);
+        pendingSearchRef.current = null;
+      }
+      if (pendingAiSearchRef.current) {
+        clearTimeout(pendingAiSearchRef.current.timeout);
+        pendingAiSearchRef.current = null;
+      }
+    };
+  }, []);
+  // MARK: End search handling
 
   return (
     <>
@@ -92,10 +204,6 @@ export default function RootLayout() {
         themeSwitcher
         onSearch={handleSearch}
         onAiSearch={handleAiSearch}
-        isSearching={searchFetcher.state === 'submitting'}
-        isAiSearching={aiSearchFetcher.state === 'submitting'}
-        searchResult={searchFetcher.data}
-        aiSearchResult={aiSearchFetcher.data}
       />
       <main id='main'>
         <Outlet />
@@ -134,19 +242,6 @@ const ErrorWrapperRoot = ({
   rightLinks,
 }: ErrorWrapperRootProps) => {
   const { t } = useTranslation();
-  const searchFetcher = useFetcher<typeof searchAction>();
-  const aiSearchFetcher = useFetcher<typeof aiSearchAction>();
-
-  const handleSearch = (query: string) => {
-    searchFetcher.submit({ query }, { method: 'post', action: '/api/search' });
-  };
-
-  const handleAiSearch = (query: string) => {
-    aiSearchFetcher.submit(
-      { query },
-      { method: 'post', action: '/api/ai-search' },
-    );
-  };
 
   return (
     <>
@@ -155,12 +250,6 @@ const ErrorWrapperRoot = ({
         menu={menu}
         logoLink={`/${lang === 'no' ? 'no' : lang === 'en' ? 'en' : 'no'}`}
         themeSwitcher
-        onSearch={handleSearch}
-        onAiSearch={handleAiSearch}
-        isSearching={searchFetcher.state === 'submitting'}
-        isAiSearching={aiSearchFetcher.state === 'submitting'}
-        searchResult={searchFetcher.data}
-        aiSearchResult={aiSearchFetcher.data}
       />
       <main id='main'>
         <ContentContainer>{children}</ContentContainer>

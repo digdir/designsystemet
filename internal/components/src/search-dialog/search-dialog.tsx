@@ -28,23 +28,21 @@ const cx = (key: string) => (classes as Record<string, string>)[key] ?? '';
 type SearchDialogProps = {
   open: boolean;
   onClose: () => void;
-  onSearch?: (query: string) => void;
-  onAiSearch?: (query: string) => void;
-  isSearching?: boolean;
-  isAiSearching?: boolean;
-  searchResult?: {
+  onSearch?: (query: string) => Promise<{
     success: boolean;
-    results: unknown[];
+    results: QuickResult[];
     query: string;
     error?: string;
-  } | null;
-  aiSearchResult?: {
+  }>;
+  onAiSearch?: (query: string) => Promise<{
     success: boolean;
-    content: string;
-    sources: { title: string; url: string }[];
+    result: {
+      content: string;
+      sources: { title: string; url: string }[];
+    };
     query: string;
     error?: string;
-  } | null;
+  }>;
 };
 
 type QuickResult = {
@@ -58,121 +56,6 @@ type QuickResult = {
 type SmartResult = {
   content: string;
   sources: { title: string; url: string }[];
-};
-
-// Basic, safe markdown renderer: supports headings (#/##/###), unordered lists (-/* ),
-// bold (**text**), italics (*text* or _text_), and inline code (`code`). Links [text](url) are supported.
-const parseMarkdown = (text: string): React.ReactNode => {
-  const inline = (input: string, keyPrefix: string) => {
-    // Render links [text](url)
-    const linkPattern = /\[([^\]]+)\]\(([^)]+)\)/g;
-    const segments: React.ReactNode[] = [];
-    let lastIndex = 0;
-    let segIndex = 0;
-    const matches = Array.from(input.matchAll(linkPattern));
-    for (const m of matches) {
-      const [full, label, href] = m;
-      const idx = m.index ?? 0;
-      if (idx > lastIndex) {
-        segments.push(input.slice(lastIndex, idx));
-      }
-      segments.push(
-        <a key={`${keyPrefix}-link-${segIndex++}`} href={href}>
-          {label}
-        </a>,
-      );
-      lastIndex = idx + full.length;
-    }
-    if (lastIndex < input.length) segments.push(input.slice(lastIndex));
-
-    // Now process bold/italic/code on each plain string segment
-    const processInline = (
-      node: React.ReactNode,
-      idx: number,
-    ): React.ReactNode => {
-      if (typeof node !== 'string') return node;
-      const tokenPattern = /(\*\*[^*]+\*\*|`[^`]+`|\*[^*]+\*|_[^_]+_)/g;
-      const parts = node.split(tokenPattern);
-      return parts.map((part, i) => {
-        if (/^\*\*.*\*\*$/.test(part)) {
-          return (
-            <strong key={`${keyPrefix}-b-${idx}-${i}`}>
-              {part.slice(2, -2)}
-            </strong>
-          );
-        }
-        if (/^`.*`$/.test(part)) {
-          return (
-            <code key={`${keyPrefix}-c-${idx}-${i}`}>{part.slice(1, -1)}</code>
-          );
-        }
-        if (/^(\*.*\*|_.*_)$/.test(part)) {
-          return (
-            <em key={`${keyPrefix}-i-${idx}-${i}`}>{part.slice(1, -1)}</em>
-          );
-        }
-        return part;
-      });
-    };
-
-    return segments.flatMap(processInline);
-  };
-
-  const lines = text.split(/\r?\n/);
-  const result: React.ReactNode[] = [];
-  let listBuffer: string[] = [];
-  let key = 0;
-
-  const flushList = () => {
-    if (listBuffer.length) {
-      result.push(
-        <ul key={`ul-${key++}`}>
-          {listBuffer.map((item, i) => (
-            <li key={`li-${key}-${i}`}>{inline(item, `li-${key}-${i}`)}</li>
-          ))}
-        </ul>,
-      );
-      listBuffer = [];
-    }
-  };
-
-  for (const line of lines) {
-    const trimmed = line.trim();
-    if (!trimmed) {
-      flushList();
-      result.push(<br key={`br-${key++}`} />);
-      continue;
-    }
-
-    // Headings
-    const hMatch = /^(#{1,3})\s+(.*)$/.exec(trimmed);
-    if (hMatch) {
-      flushList();
-      const level = hMatch[1].length; // 1-3
-      const content = hMatch[2];
-      const size: 'sm' | 'xs' | '2xs' =
-        level === 1 ? 'sm' : level === 2 ? 'xs' : '2xs';
-      result.push(
-        <Heading key={`h-${key++}`} data-size={size}>
-          {inline(content, `h-${key}`)}
-        </Heading>,
-      );
-      continue;
-    }
-
-    // Unordered list items
-    if (/^[-*]\s+/.test(trimmed)) {
-      listBuffer.push(trimmed.replace(/^[-*]\s+/, ''));
-      continue;
-    }
-
-    // Paragraph
-    flushList();
-    result.push(<p key={`p-${key++}`}>{inline(trimmed, `p-${key}`)}</p>);
-  }
-
-  flushList();
-  return result;
 };
 
 const Star = () => (
@@ -191,10 +74,6 @@ export const SearchDialog = ({
   onClose,
   onSearch,
   onAiSearch,
-  isSearching,
-  isAiSearching,
-  searchResult,
-  aiSearchResult,
 }: SearchDialogProps) => {
   const { t } = useTranslation();
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -206,9 +85,6 @@ export const SearchDialog = ({
   const [smartExpanded, setSmartExpanded] = useState(false);
   const [visibleQuickCount, setVisibleQuickCount] = useState(8);
   const latestQueryRef = useRef<string>('');
-
-  console.log('isAiSearching ', isAiSearching, aiSearchResult);
-  //console.log('isSearching ', isSearching, searchResult);
 
   //const [isPending, startTransition] = useTransition();
 
@@ -233,98 +109,28 @@ export const SearchDialog = ({
       setIsSmartLoading(false);
       return;
     }
+    if (!onSearch) return;
 
     latestQueryRef.current = searchQuery;
     const isSingleWord = searchQuery.trim().split(/\s+/).length === 1;
     setVisibleQuickCount(8);
     setSmartExpanded(false);
+    setSmartResult(null);
 
     if (isSingleWord) {
-      //onSearch?.(searchQuery);
       // Quick only
-      setSmartResult(null);
       setIsSmartLoading(false);
-      setIsQuickLoading(true);
-      try {
-        const response = await fetch(`http://localhost:3001/api/search`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ query: searchQuery }),
-        });
-        if (response.ok) {
-          const data = await response.json();
-          if (latestQueryRef.current === searchQuery) {
-            setQuickResults(data.results || []);
-          }
-        } else {
-          if (latestQueryRef.current === searchQuery) setQuickResults([]);
-        }
-      } catch (error) {
-        console.error('Search error (quick):', error);
-        if (latestQueryRef.current === searchQuery) setQuickResults([]);
-      } finally {
-        if (latestQueryRef.current === searchQuery) setIsQuickLoading(false);
-      }
+      await handleSearch(searchQuery);
       return;
     }
 
-    // Two or more words: run both in parallel
-    setIsQuickLoading(true);
-    setIsSmartLoading(true);
-    setSmartResult(null);
-    //onAiSearch?.(searchQuery);
     try {
-      const quickPromise = fetch(`http://localhost:3001/api/search`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: searchQuery }),
-      })
-        .then((res) => (res.ok ? res.json() : Promise.resolve({ results: [] })))
-        .then((data) => {
-          if (latestQueryRef.current === searchQuery) {
-            setQuickResults(data.results || []);
-          }
-        })
-        .catch((err) => {
-          console.error('Search error (quick):', err);
-          if (latestQueryRef.current === searchQuery) setQuickResults([]);
-        })
-        .finally(() => {
-          if (latestQueryRef.current === searchQuery) setIsQuickLoading(false);
-        });
-
-      const smartPromise = fetch(`http://localhost:3001/api/ai-search`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: searchQuery }),
-      })
-        .then((res) =>
-          res.ok ? res.json() : Promise.resolve({ answer: '', sources: [] }),
-        )
-        .then((data) => {
-          if (latestQueryRef.current === searchQuery) {
-            //console.log(data.answer);
-            setSmartResult({
-              content: data.answer || '',
-              sources: data.sources || [],
-            });
-          }
-        })
-        .catch((err) => {
-          console.error('Search error (smart):', err);
-          if (latestQueryRef.current === searchQuery) setSmartResult(null);
-        })
-        .finally(() => {
-          if (latestQueryRef.current === searchQuery) setIsSmartLoading(false);
-        });
-
-      await Promise.allSettled([quickPromise, smartPromise]);
+      await Promise.allSettled([
+        handleSearch(searchQuery),
+        handleAiSearch(searchQuery),
+      ]);
     } catch (e) {
       console.error('Search error (parallel):', e);
-      if (latestQueryRef.current === searchQuery) {
-        setIsQuickLoading(false);
-        setIsSmartLoading(false);
-      }
     }
   };
   const debouncedCallback = useDebounceCallback((value: string) => {
@@ -351,6 +157,48 @@ export const SearchDialog = ({
     setIsQuickLoading(false);
     setIsSmartLoading(false);
     onClose();
+  };
+
+  const handleSearch = async (searchQuery: string) => {
+    if (isQuickLoading || !onSearch) return;
+    setIsQuickLoading(true);
+    try {
+      const response = await onSearch(query);
+      if (response.success) {
+        const data = response.results;
+        if (latestQueryRef.current === searchQuery) {
+          setQuickResults(data || []);
+        }
+      } else {
+        if (latestQueryRef.current === searchQuery) setQuickResults([]);
+      }
+    } catch (error) {
+      console.error('Search error (quick):', error);
+      if (latestQueryRef.current === searchQuery) setQuickResults([]);
+    } finally {
+      if (latestQueryRef.current === searchQuery) setIsQuickLoading(false);
+    }
+  };
+
+  const handleAiSearch = async (searchQuery: string) => {
+    if (isSmartLoading || !onAiSearch) return;
+    setIsSmartLoading(true);
+    try {
+      const response = await onAiSearch(searchQuery);
+      if (response.success) {
+        const data = response.result;
+        if (latestQueryRef.current === searchQuery) {
+          setSmartResult(data || null);
+        }
+      } else {
+        if (latestQueryRef.current === searchQuery) setSmartResult(null);
+      }
+    } catch (error) {
+      console.error('Search error (smart):', error);
+      if (latestQueryRef.current === searchQuery) setSmartResult(null);
+    } finally {
+      if (latestQueryRef.current === searchQuery) setIsSmartLoading(false);
+    }
   };
 
   return (
@@ -439,12 +287,12 @@ export const SearchDialog = ({
                     </Heading>
                     <div
                       className={cl(
+                        'u-rich-text',
                         cx('smartContent'),
                         !smartExpanded && cx('smartCollapsed'),
                       )}
                     >
-                      {parseMarkdown(smartResult.content)}
-                      {/* <MDXComponents code={smartResult.content} /> */}
+                      <MDXComponents code={smartResult.content} />
                     </div>
                     <Button
                       variant='secondary'

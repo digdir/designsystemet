@@ -26,29 +26,35 @@ import { DsEmbledLogo, DsFullLogo } from '../logos/designsystemet';
 import { SearchDialog } from '../search-dialog';
 import classes from './header.module.css';
 
+type QuickResult = {
+  title: string;
+  content: string;
+  url: string;
+  type: 'component' | 'guide' | 'pattern' | 'blog';
+  sources?: { title: string; url: string }[];
+};
+
 type HeaderProps = {
   menu: { name: TemplateStringsArray; href: string }[];
   betaTag?: boolean;
   themeSwitcher?: boolean;
   transparentBackground?: boolean;
   logoLink?: string;
-  onSearch?: (query: string) => void;
-  onAiSearch?: (query: string) => void;
-  isSearching?: boolean;
-  isAiSearching?: boolean;
-  searchResult?: {
+  onSearch?: (query: string) => Promise<{
     success: boolean;
-    results: unknown[];
+    results: QuickResult[];
     query: string;
     error?: string;
-  } | null;
-  aiSearchResult?: {
+  }>;
+  onAiSearch?: (query: string) => Promise<{
     success: boolean;
-    content: string;
-    sources: { title: string; url: string }[];
+    result: {
+      content: string;
+      sources: { title: string; url: string }[];
+    };
     query: string;
     error?: string;
-  } | null;
+  }>;
   className?: string;
 } & React.HTMLAttributes<HTMLElement>;
 
@@ -86,10 +92,6 @@ const Header = ({
   transparentBackground = false,
   onSearch,
   onAiSearch,
-  isSearching,
-  isAiSearching,
-  searchResult,
-  aiSearchResult,
   logoLink = '/',
   className,
   ...props
@@ -364,10 +366,6 @@ const Header = ({
         onAiSearch={onAiSearch}
         open={searchOpen}
         onClose={() => setSearchOpen(false)}
-        isSearching={isSearching}
-        isAiSearching={isAiSearching}
-        searchResult={searchResult}
-        aiSearchResult={aiSearchResult}
       />
     </header>
   );
