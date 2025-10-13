@@ -88,7 +88,6 @@ export const SearchDialog = ({
 
   //const [isPending, startTransition] = useTransition();
 
-  // Handle dialog open/close with ref
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
@@ -100,7 +99,6 @@ export const SearchDialog = ({
     }
   }, [open]);
 
-  // Handle search
   const performSearch = async (searchQuery: string) => {
     if (!searchQuery.trim()) {
       setQuickResults([]);
@@ -125,10 +123,19 @@ export const SearchDialog = ({
     }
 
     try {
-      await Promise.allSettled([
+      const results = await Promise.allSettled([
         handleSearch(searchQuery),
         handleAiSearch(searchQuery),
       ]);
+
+      results.forEach((result, index) => {
+        if (result.status === 'rejected') {
+          console.error(
+            `Search error (parallel, index ${index}):`,
+            result.reason,
+          );
+        }
+      });
     } catch (e) {
       console.error('Search error (parallel):', e);
     }
@@ -160,45 +167,50 @@ export const SearchDialog = ({
   };
 
   const handleSearch = async (searchQuery: string) => {
-    if (isQuickLoading || !onSearch) return;
+    if (isQuickLoading || !onSearch) return Promise.resolve();
     setIsQuickLoading(true);
-    try {
-      const response = await onSearch(query);
-      if (response.success) {
-        const data = response.results;
-        if (latestQueryRef.current === searchQuery) {
-          setQuickResults(data || []);
+    return onSearch(searchQuery)
+      .then((response) => {
+        console.log('Search response: ', response);
+        if (response.success) {
+          const data = response.results;
+          if (latestQueryRef.current === searchQuery) {
+            setQuickResults(data || []);
+          }
+        } else {
+          if (latestQueryRef.current === searchQuery) setQuickResults([]);
         }
-      } else {
+      })
+      .catch((error) => {
+        console.error('Search error (quick):', error);
         if (latestQueryRef.current === searchQuery) setQuickResults([]);
-      }
-    } catch (error) {
-      console.error('Search error (quick):', error);
-      if (latestQueryRef.current === searchQuery) setQuickResults([]);
-    } finally {
-      if (latestQueryRef.current === searchQuery) setIsQuickLoading(false);
-    }
+      })
+      .finally(() => {
+        if (latestQueryRef.current === searchQuery) setIsQuickLoading(false);
+      });
   };
 
   const handleAiSearch = async (searchQuery: string) => {
-    if (isSmartLoading || !onAiSearch) return;
+    if (isSmartLoading || !onAiSearch) return Promise.resolve();
     setIsSmartLoading(true);
-    try {
-      const response = await onAiSearch(searchQuery);
-      if (response.success) {
-        const data = response.result;
-        if (latestQueryRef.current === searchQuery) {
-          setSmartResult(data || null);
+    return onAiSearch(searchQuery)
+      .then((response) => {
+        if (response.success) {
+          const data = response.result;
+          if (latestQueryRef.current === searchQuery) {
+            setSmartResult(data || null);
+          }
+        } else {
+          if (latestQueryRef.current === searchQuery) setSmartResult(null);
         }
-      } else {
+      })
+      .catch((error) => {
+        console.error('Search error (smart):', error);
         if (latestQueryRef.current === searchQuery) setSmartResult(null);
-      }
-    } catch (error) {
-      console.error('Search error (smart):', error);
-      if (latestQueryRef.current === searchQuery) setSmartResult(null);
-    } finally {
-      if (latestQueryRef.current === searchQuery) setIsSmartLoading(false);
-    }
+      })
+      .finally(() => {
+        if (latestQueryRef.current === searchQuery) setIsSmartLoading(false);
+      });
   };
 
   return (
