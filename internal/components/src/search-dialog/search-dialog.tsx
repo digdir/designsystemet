@@ -154,7 +154,7 @@ export const SearchDialog = ({
   };
 
   const handleSearch = async (searchQuery: string) => {
-    if (isQuickLoading || !onSearch) return Promise.resolve();
+    if (!onSearch) return Promise.resolve();
     setIsQuickLoading(true);
     return onSearch(searchQuery)
       .then((response) => {
@@ -168,7 +168,7 @@ export const SearchDialog = ({
         }
       })
       .catch((error) => {
-        console.error('Search error (quick):', error);
+        console.warn('Search (quick):', error);
         if (latestQueryRef.current === searchQuery) setQuickResults([]);
       })
       .finally(() => {
@@ -177,10 +177,11 @@ export const SearchDialog = ({
   };
 
   const handleAiSearch = async (searchQuery: string) => {
-    if (isSmartLoading || !onAiSearch) return Promise.resolve();
+    if (!onAiSearch) return Promise.resolve();
     setIsSmartLoading(true);
     return onAiSearch(searchQuery)
       .then((response) => {
+        console.log('AI Search response: ', response);
         if (response.success) {
           const data = response.result;
           if (latestQueryRef.current === searchQuery) {
@@ -191,7 +192,7 @@ export const SearchDialog = ({
         }
       })
       .catch((error) => {
-        console.error('Search error (smart):', error);
+        console.warn('Search (smart):', error);
         if (latestQueryRef.current === searchQuery) setSmartResult(null);
       })
       .finally(() => {
@@ -347,6 +348,18 @@ export const SearchDialog = ({
             )}
 
             {/* Quick results */}
+            {isQuickLoading && quickResults.length === 0 && (
+              <section className={cl(classes.resultsBlock)}>
+                <div className={cl(classes.quickResult)}>
+                  <Skeleton variant='text' width={30} />
+                  <Skeleton variant='rectangle' height={80} />
+                </div>
+                <div className={cl(classes.quickResult)}>
+                  <Skeleton variant='text' width={40} />
+                  <Skeleton variant='rectangle' height={80} />
+                </div>
+              </section>
+            )}
             {quickResults.length > 0 && (
               <section className={cl(classes.resultsBlock)}>
                 <Heading

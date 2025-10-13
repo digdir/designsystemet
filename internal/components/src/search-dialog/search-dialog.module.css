@@ -209,6 +209,9 @@
   font-size: var(--ds-font-size-sm);
   line-height: var(--ds-line-height-md);
   max-height: unset;
+  &:not(.smartCollapsed) {
+    margin-bottom: var(--ds-size-4);
+  }
 }
 
 .smartCollapsed {
