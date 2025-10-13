@@ -23,6 +23,10 @@
     display: block; /* Ensure input is not placed on same line as label/description/validation */
   }
 
+  & label {
+    display: block;
+  }
+
   /**
    * States
    */
