@@ -19,6 +19,7 @@ WORKDIR /usr/src/app
 ARG PORT
 ARG HOST
 ARG APP_ENV
+ARG SLACK_INVITE_URL
 ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV SLACK_INVITE_URL=$SLACK_INVITE_URL
 RUN pnpm build:www
 RUN pnpm deploy --filter=@web/www --prod /prod/@web/www
