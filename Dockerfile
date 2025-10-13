@@ -27,6 +27,7 @@ RUN pnpm deploy --filter=@web/www --prod /prod/@web/www
 FROM base AS www
 COPY --from=www-build /prod/@web/www /srv/app
 WORKDIR /srv/app
+ARG SLACK_INVITE_URL
 ENV NODE_ENV=production HOST=0.0.0.0 PORT=8000 SLACK_INVITE_URL=$SLACK_INVITE_URL
 EXPOSE 8000
 CMD [ "pnpm", "start" ]
