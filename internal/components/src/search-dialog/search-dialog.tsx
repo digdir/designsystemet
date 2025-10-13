@@ -16,7 +16,7 @@ import {
 } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import type { CSSProperties } from 'react';
-import { useEffect, useRef, useState, useTransition } from 'react';
+import { useRef, useState, useTransition } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDebounceCallback } from '../_hooks/use-debounce-callback/use-debounce-callback';
 import { MDXComponents } from '../mdx-components/mdx-components';
@@ -36,10 +36,7 @@ type SearchDialogProps = {
   }>;
   onAiSearch?: (query: string) => Promise<{
     success: boolean;
-    result: {
-      content: string;
-      sources: { title: string; url: string }[];
-    };
+    result: SmartResult;
     query: string;
     error?: string;
   }>;
@@ -88,17 +85,6 @@ export const SearchDialog = ({
 
   //const [isPending, startTransition] = useTransition();
 
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-
-    if (open) {
-      dialog.showModal();
-    } else {
-      dialog.close();
-    }
-  }, [open]);
-
   const performSearch = async (searchQuery: string) => {
     if (!searchQuery.trim()) {
       setQuickResults([]);
@@ -107,7 +93,6 @@ export const SearchDialog = ({
       setIsSmartLoading(false);
       return;
     }
-    if (!onSearch) return;
 
     latestQueryRef.current = searchQuery;
     const isSingleWord = searchQuery.trim().split(/\s+/).length === 1;
@@ -140,9 +125,11 @@ export const SearchDialog = ({
       console.error('Search error (parallel):', e);
     }
   };
+
   const debouncedCallback = useDebounceCallback((value: string) => {
     performSearch(value);
   }, 400);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setQuery(value);
@@ -171,7 +158,6 @@ export const SearchDialog = ({
     setIsQuickLoading(true);
     return onSearch(searchQuery)
       .then((response) => {
-        console.log('Search response: ', response);
         if (response.success) {
           const data = response.results;
           if (latestQueryRef.current === searchQuery) {
@@ -217,6 +203,7 @@ export const SearchDialog = ({
     <Dialog
       ref={dialogRef}
       closedby='any'
+      open={open}
       onClose={handleClose}
       className={cl(classes.dialog)}
     >
