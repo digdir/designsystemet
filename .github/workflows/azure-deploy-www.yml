@@ -60,7 +60,7 @@ jobs:
         run: az acr login --name ${{ env.ACR_NAME }}
 
       - name: build & push image
-        uses: docker/build-push-action@ca052bb54ab0790a636c9b5f226502c73d547a25 # v5
+        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6
         with:
           context: .
           file: ./Dockerfile
@@ -72,6 +72,7 @@ jobs:
             PORT=${{ env.PORT }}
             HOST=0.0.0.0
             APP_ENV=${{ inputs.environment }}
+            SLACK_INVITE_URL=${{ secrets.SLACK_INVITE_URL }}
 
       - name: get acr creds (masked)
         id: acr
@@ -98,7 +99,7 @@ jobs:
           registryPassword: ${{ steps.acr.outputs.pass }}
           targetPort: ${{ env.PORT }}
           ingress: external
-          environmentVariables: "PORT=${{ env.PORT }} HOST=0.0.0.0 APP_ENV=${{ inputs.environment }}"
+          environmentVariables: "PORT=${{ env.PORT }} HOST=0.0.0.0 APP_ENV=${{ inputs.environment }} SLACK_INVITE_URL=${{ secrets.SLACK_INVITE_URL }}"
           location: "norwayeast"
 
       - name: fetch fqdn

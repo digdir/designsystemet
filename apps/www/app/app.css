@@ -127,6 +127,11 @@ body {
       }
     }
 
+    /* reset non-direct child targets in stories */
+    [data-live] p {
+      margin-bottom: initial;
+    }
+
     & > h1,
     & > h2,
     & > h3,
@@ -237,6 +242,13 @@ body {
         margin-bottom: 0 !important;
       }
     }
+  }
+}
+@layer global-components {
+  .component-table {
+    --dsc-table-border-radius: var(--ds-border-radius-lg);
+    border-collapse: separate;
+    word-break: break-all;
   }
 }
 @layer overrides {

@@ -20,8 +20,8 @@ import {
   TableRow,
 } from '@digdir/designsystemet-react';
 import { CodeBlock } from '@internal/components';
-import { getMDXComponent, type MDXContentProps } from 'mdx-bundler/dist/client';
-import { type JSX, useMemo } from 'react';
+import { getMDXComponent } from 'mdx-bundler/dist/client';
+import { type ComponentType, type JSX, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link as RRLink } from 'react-router';
 import { ColorInfoTable } from '~/_components/color-info-table/color-info-table';
@@ -29,6 +29,7 @@ import { Contributors } from '~/_components/contributors/contributors';
 import { Image } from '~/_components/image/image';
 import { ResponsiveIframe } from '~/_components/responsive-iframe/responsive-iframe';
 import { TokenList } from '~/_components/tokens/token-list/token-list';
+import { CssVariables } from '../css-variables/css-variables';
 import { VideoCard } from '../video-card/video-card';
 import classes from './mdx-components.module.css';
 
@@ -102,13 +103,14 @@ const defaultComponents = {
       <Table data-color='neutral' border zebra {...props} />
     </div>
   ),
+  CssVariables,
 };
 
 export const MDXComponents = ({
   components,
   code,
 }: {
-  components?: MDXContentProps['components'];
+  components?: Record<string, ComponentType<unknown>>;
   code?: string;
 }) => {
   const { t } = useTranslation();
