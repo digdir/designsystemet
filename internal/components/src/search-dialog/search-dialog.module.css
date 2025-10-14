@@ -105,6 +105,7 @@
   align-items: center;
   width: fit-content;
   gap: var(--gap);
+  margin-bottom: var(--ds-size-6);
   > svg {
     font-size: var(--icon-size);
   }

@@ -362,11 +362,7 @@ export const SearchDialog = ({
             )}
             {quickResults.length > 0 && (
               <section className={cl(classes.resultsBlock)}>
-                <Heading
-                  style={{ marginBottom: 'var(--ds-size-6)' }}
-                  className={cl(classes.iconHeading)}
-                  data-size='xs'
-                >
+                <Heading className={cl(classes.iconHeading)} data-size='xs'>
                   <FileSearchIcon /> Søkeresultater
                 </Heading>
                 {quickResults
@@ -464,6 +460,14 @@ export const SearchDialog = ({
                 }}
               >
                 Accessibility guidelines
+              </Chip.Button>
+              <Chip.Button
+                onClick={() => {
+                  setQuery('Hvordan legger jeg til scroll i dropdown?');
+                  performSearch('Hvordan legger jeg til scroll i dropdown?');
+                }}
+              >
+                Hvordan legger jeg til scroll i dropdown?
               </Chip.Button>
             </div>
           </div>
