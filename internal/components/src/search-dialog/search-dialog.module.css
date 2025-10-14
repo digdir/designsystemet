@@ -203,8 +203,6 @@
 }
 
 .smartContent {
-  /* interpolate-size: allow-keywords;
-  transition: height 1s ease; */
   color: var(--ds-color-neutral-text-default);
   font-size: var(--ds-font-size-sm);
   line-height: var(--ds-line-height-md);
@@ -214,10 +212,22 @@
   }
 }
 
+@property --search-wipe-progress {
+  inherits: false;
+  initial-value: 0%;
+  syntax: '<percentage>';
+}
+
 .smartCollapsed {
   max-height: 240px;
   overflow: hidden;
-  mask-image: linear-gradient(to bottom, white 60%, transparent);
+  mask-image: linear-gradient(to bottom, white var(--search-wipe-lower), transparent var(--search-wipe-progress));
+  --search-wipe-progress: 100%;
+  --search-wipe-lower: calc(var(--search-wipe-progress) - 40%);
+  transition: --search-wipe-progress 1s ease;
+  @starting-style {
+    --search-wipe-progress: 0%;
+  }
 }
 
 .smartToggle {
