@@ -23,6 +23,13 @@ export type FieldCounterProps = {
    */
   under?: string;
   /**
+   * Text for screen readers of how many characters are allowed.
+   * Only read when entering the field.
+   *
+   * @default 'Maks %d tegn tillatt.'
+   */
+  hint?: string;
+  /**
    * The maximum allowed characters.
    *
    * @default undefined
@@ -44,7 +51,13 @@ const label = (text: string, count: number) =>
  */
 export const FieldCounter = forwardRef<HTMLParagraphElement, FieldCounterProps>(
   function FieldCounter(
-    { limit, under = '%d tegn igjen', over = '%d tegn for mye', ...rest },
+    {
+      limit,
+      under = '%d tegn igjen',
+      over = '%d tegn for mye',
+      hint = 'Maks %d tegn tillatt.',
+      ...rest
+    },
     ref,
   ) {
     const [count, setCount] = useState(0);
@@ -56,7 +69,7 @@ export const FieldCounter = forwardRef<HTMLParagraphElement, FieldCounterProps>(
 
     const debouncedSetLiveRegionText = useDebounceCallback(
       (text: string) => setLiveRegionText(text),
-      500,
+      1200,
     );
 
     // Listen to native input events (user typing) to update the counter in real time
@@ -111,6 +124,9 @@ export const FieldCounter = forwardRef<HTMLParagraphElement, FieldCounterProps>(
             {label(under, remainder)}
           </Paragraph>
         )}
+        <div className='ds-sr-only' aria-hidden='true' data-field='description'>
+          {label(hint, limit)}
+        </div>
       </>
     );
   },
