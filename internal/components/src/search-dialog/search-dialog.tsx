@@ -22,9 +22,6 @@ import { useDebounceCallback } from '../_hooks/use-debounce-callback/use-debounc
 import { MDXComponents } from '../mdx-components/mdx-components';
 import classes from './search-dialog.module.css';
 
-// Helper for safely accessing CSS Module classes that may not yet be in the generated .d.ts
-const cx = (key: string) => (classes as Record<string, string>)[key] ?? '';
-
 type SearchDialogProps = {
   open: boolean;
   onClose: () => void;
@@ -204,17 +201,14 @@ export const SearchDialog = ({
       closedby='any'
       open={open}
       onClose={handleClose}
-      className={cl(classes.dialog)}
+      className={classes.dialog}
     >
-      <div className={classes.sticky}>
-        <Dialog.Block>
-          <Heading data-size='xs' className={cl(classes.title)}>
+      <div className={classes.aboveScroll}>
+        <Dialog.Block className={classes.searchBlock}>
+          <Heading data-size='xs' className={classes.title}>
             {t('search.title', 'Hva leter du etter eller lurer på?')}
           </Heading>
-        </Dialog.Block>
-
-        <Dialog.Block className={cl(classes.searchBlock)}>
-          <Search className={cl(classes.search)}>
+          <Search className={classes.search}>
             <Search.Input
               aria-label={t(
                 'search.input-label',
@@ -233,51 +227,46 @@ export const SearchDialog = ({
         </Dialog.Block>
       </div>
 
-      <Dialog.Block className={cl(classes.resultsContainer)}>
+      <div className={classes.resultsContainer}>
         {query && (
-          <div className={cl(classes.results)}>
+          <div className={classes.results}>
             {/* Smart answer section (only for 2+ words) */}
             {query.trim().split(/\s+/).length > 1 && (
               <section
                 aria-live='polite'
                 aria-busy={isSmartLoading}
-                className={cl(classes.resultsBlock)}
+                className={classes.resultsBlock}
                 style={{ borderBottom: 'var(--this-border)' }}
               >
                 {isSmartLoading ? (
-                  <div
-                    className={cl(cx('smartBox'))}
-                    style={{ minHeight: 275 }}
-                  >
-                    <div className={cl(cx('smartSkeletonLines'))}>
-                      <Heading>
-                        <Skeleton variant='text' width={10} />
-                      </Heading>
-                      <Paragraph>
-                        <Skeleton variant='text' width={75} />
-                      </Paragraph>
-                      <Paragraph>
-                        <Skeleton variant='text' width={50} />
-                      </Paragraph>
-                      <Paragraph>
-                        <Skeleton variant='text' width={36} />
-                      </Paragraph>
-                      <Paragraph>
-                        <Skeleton variant='text' width={25} />
-                      </Paragraph>
-                      <Heading style={{ marginTop: '32px' }}>
-                        <Skeleton variant='text' width={20} />
-                      </Heading>
-                      <Paragraph>
-                        <Skeleton variant='text' width={55} />
-                      </Paragraph>
-                    </div>
+                  <div className={classes.smartSkeletonLines}>
+                    <Heading>
+                      <Skeleton variant='text' width={10} />
+                    </Heading>
+                    <Paragraph>
+                      <Skeleton variant='text' width={75} />
+                    </Paragraph>
+                    <Paragraph>
+                      <Skeleton variant='text' width={50} />
+                    </Paragraph>
+                    <Paragraph>
+                      <Skeleton variant='text' width={36} />
+                    </Paragraph>
+                    <Paragraph>
+                      <Skeleton variant='text' width={25} />
+                    </Paragraph>
+                    <Heading style={{ marginTop: '32px' }}>
+                      <Skeleton variant='text' width={20} />
+                    </Heading>
+                    <Paragraph>
+                      <Skeleton variant='text' width={55} />
+                    </Paragraph>
                   </div>
                 ) : smartResult?.content ? (
-                  <div className={cl(cx('smartBox'))}>
-                    <Heading className={cl(classes.iconHeading)} data-size='xs'>
+                  <>
+                    <Heading className={classes.iconHeading} data-size='xs'>
                       <RobotSmileIcon /> KI-Oversikt{' '}
-                      <span className={cl(classes.sparkles)}>
+                      <span className={classes.sparkles}>
                         <Star />
                         <Star />
                         <Star />
@@ -286,8 +275,8 @@ export const SearchDialog = ({
                     <div
                       className={cl(
                         'u-rich-text',
-                        cx('smartContent'),
-                        !smartExpanded && cx('smartCollapsed'),
+                        classes.smartContent,
+                        !smartExpanded && classes.smartCollapsed,
                       )}
                     >
                       <MDXComponents code={smartResult.content} />
@@ -296,7 +285,7 @@ export const SearchDialog = ({
                       variant='secondary'
                       data-size='sm'
                       onClick={() => setSmartExpanded((v) => !v)}
-                      className={cl(cx('smartToggle'))}
+                      className={classes.smartToggle}
                     >
                       {smartExpanded ? (
                         <>
@@ -317,21 +306,21 @@ export const SearchDialog = ({
                     {smartExpanded && smartResult.sources?.length > 0 && (
                       <nav
                         aria-label={t('search.sources', 'Kilder')}
-                        className={cl(classes.sources)}
+                        className={classes.sources}
                       >
                         <Heading
                           data-size='2xs'
-                          className={cl(classes.sourcesTitle)}
+                          className={classes.sourcesTitle}
                         >
                           {t('search.sources', 'Kilder')}
                         </Heading>
-                        <ul className={cl(cx('sourcesList'))}>
+                        <ul className={classes.sourcesList}>
                           {smartResult.sources.map((source, idx) => (
-                            <li key={idx} className={cl(cx('sourceItem'))}>
+                            <li key={idx} className={classes.sourceItem}>
                               <a
                                 href={source.url}
                                 onClick={handleClose}
-                                className={cl(classes.sourceLink)}
+                                className={classes.sourceLink}
                               >
                                 {source.title}
                               </a>
@@ -340,27 +329,27 @@ export const SearchDialog = ({
                         </ul>
                       </nav>
                     )}
-                  </div>
+                  </>
                 ) : null}
               </section>
             )}
 
             {/* Quick results */}
             {isQuickLoading && quickResults.length === 0 && (
-              <section className={cl(classes.resultsBlock)}>
-                <div className={cl(classes.quickResult)}>
+              <section className={classes.resultsBlock}>
+                <div className={classes.quickResult}>
                   <Skeleton variant='text' width={30} />
                   <Skeleton variant='rectangle' height={80} />
                 </div>
-                <div className={cl(classes.quickResult)}>
+                <div className={classes.quickResult}>
                   <Skeleton variant='text' width={40} />
                   <Skeleton variant='rectangle' height={80} />
                 </div>
               </section>
             )}
             {quickResults.length > 0 && (
-              <section className={cl(classes.resultsBlock)}>
-                <Heading className={cl(classes.iconHeading)} data-size='xs'>
+              <section className={classes.resultsBlock}>
+                <Heading className={classes.iconHeading} data-size='xs'>
                   <FileSearchIcon /> Søkeresultater
                 </Heading>
                 {quickResults
@@ -369,13 +358,13 @@ export const SearchDialog = ({
                     <div
                       key={index}
                       style={{ '--i': `${index}` } as CSSProperties}
-                      className={cl(classes.quickResult)}
+                      className={classes.quickResult}
                     >
-                      <div className={cl(classes.resultHeader)}>
-                        <h3 className={cl(classes.resultTitle)}>
+                      <div className={classes.resultHeader}>
+                        <h3 className={classes.resultTitle}>
                           <Link
                             href={result.url}
-                            className={cl(classes.quickResultLink)}
+                            className={classes.quickResultLink}
                             onClick={handleClose}
                           >
                             {result.title}
@@ -396,11 +385,11 @@ export const SearchDialog = ({
                           {result.type}
                         </Tag>
                       </div>
-                      <Paragraph className={cl(classes.quickResultContent)}>
+                      <Paragraph className={classes.quickResultContent}>
                         {result.content}
                       </Paragraph>
                       <Paragraph
-                        className={cl(classes.quickResultUrl)}
+                        className={classes.quickResultUrl}
                         data-size='xs'
                       >
                         {result.url}
@@ -428,11 +417,11 @@ export const SearchDialog = ({
         )}
 
         {!query && (
-          <div className={cl(classes.suggestions, classes.resultsBlock)}>
-            <Paragraph>
+          <div className={classes.resultsBlock}>
+            <Paragraph className={classes.suggestionsTitle}>
               {t('search.suggestions-title', 'Prøv å søke etter...')}
             </Paragraph>
-            <div className={cl(classes.suggestionsList)}>
+            <div className={classes.suggestionsList}>
               <Chip.Button
                 onClick={() => {
                   setQuery('Button component');
@@ -476,11 +465,11 @@ export const SearchDialog = ({
           !isSmartLoading &&
           quickResults.length === 0 &&
           !smartResult && (
-            <div className={cl(classes.noResults)}>
+            <div className={classes.noResults}>
               {t('search.no-results', 'Ingen resultat for')} "{query}"
             </div>
           )}
-      </Dialog.Block>
+      </div>
     </Dialog>
   );
 };
