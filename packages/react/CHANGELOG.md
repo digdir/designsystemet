@@ -1,5 +1,21 @@
 # Change Log
 
+## 1.6.1
+
+### Patch Changes
+
+- **Button**: For `icon`-buttons, dont render children if loading is true ([#4023](https://github.com/digdir/designsystemet/pull/4023))
+
+- Update npm non-major dependencies ([#4129](https://github.com/digdir/designsystemet/pull/4129))
+
+- **Suggestion**: Updated u-combobox to 1.0.2 to fix a bug where input would not clear in conrolled mode ([#4119](https://github.com/digdir/designsystemet/pull/4119))
+
+- Update npm non-major dependencies ([#4110](https://github.com/digdir/designsystemet/pull/4110))
+
+- **usePagination**: Hide prev/next buttons with `aria-hidden="true"` and `visibility: hidden;` instead of disabling ([#4123](https://github.com/digdir/designsystemet/pull/4123))
+
+- **Textfield**: Move counter error message before error ([#4104](https://github.com/digdir/designsystemet/pull/4104))
+
 ## 1.6.0
 
 ### Minor Changes
