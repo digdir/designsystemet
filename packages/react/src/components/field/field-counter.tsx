@@ -1,4 +1,5 @@
 import { forwardRef, useEffect, useRef, useState } from 'react';
+import { useDebounceCallback } from '../../utilities';
 import { Paragraph } from '../paragraph/paragraph';
 import {
   ValidationMessage,
@@ -47,10 +48,16 @@ export const FieldCounter = forwardRef<HTMLParagraphElement, FieldCounterProps>(
     ref,
   ) {
     const [count, setCount] = useState(0);
+    const [liveRegionText, setLiveRegionText] = useState('');
     const fieldInputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
     const counterRef = useRef<HTMLDivElement>(null);
     const hasExceededLimit = count > limit;
     const remainder = limit - count;
+
+    const debouncedSetLiveRegionText = useDebounceCallback(
+      (text: string) => setLiveRegionText(text),
+      500,
+    );
 
     // Listen to native input events (user typing) to update the counter in real time
     useEffect(() => {
@@ -78,10 +85,17 @@ export const FieldCounter = forwardRef<HTMLParagraphElement, FieldCounterProps>(
       }
     });
 
+    // Update live region text when count or limit changes
+    useEffect(() => {
+      debouncedSetLiveRegionText(
+        label(hasExceededLimit ? over : under, remainder),
+      );
+    }, [count, limit, over, under, hasExceededLimit, remainder]);
+
     return (
       <>
         <div className='ds-sr-only' aria-live='polite' ref={counterRef}>
-          {label(hasExceededLimit ? over : under, remainder)}
+          {liveRegionText}
         </div>
         {hasExceededLimit ? (
           <ValidationMessage
