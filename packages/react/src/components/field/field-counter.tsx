@@ -51,7 +51,6 @@ export const FieldCounter = forwardRef<HTMLParagraphElement, FieldCounterProps>(
     const counterRef = useRef<HTMLDivElement>(null);
     const hasExceededLimit = count > limit;
     const remainder = limit - count;
-    const Element = hasExceededLimit ? ValidationMessage : Paragraph;
 
     // Listen to native input events (user typing) to update the counter in real time
     useEffect(() => {
@@ -81,18 +80,23 @@ export const FieldCounter = forwardRef<HTMLParagraphElement, FieldCounterProps>(
 
     return (
       <>
-        <div
-          data-field='description'
-          className='ds-sr-only'
-          aria-live='polite'
-          ref={counterRef}
-        >
-          {hasExceededLimit && label(over, remainder)}
-        </div>
-
-        <Element ref={ref} {...rest} data-field='validation' aria-hidden='true'>
+        <div className='ds-sr-only' aria-live={'polite'} ref={counterRef}>
           {label(hasExceededLimit ? over : under, remainder)}
-        </Element>
+        </div>
+        {hasExceededLimit ? (
+          <ValidationMessage
+            ref={ref}
+            {...rest}
+            aria-hidden='true'
+            data-field={null}
+          >
+            {label(over, remainder)}
+          </ValidationMessage>
+        ) : (
+          <Paragraph ref={ref} {...rest} aria-hidden='true'>
+            {label(under, remainder)}
+          </Paragraph>
+        )}
       </>
     );
   },
