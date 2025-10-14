@@ -42,22 +42,22 @@ const defaultComponents = {
   TableFoot,
   TableCell,
   h1: (props: JSX.IntrinsicElements['h1']) => (
-    <Heading className={classes.heading} level={1} data-size='xl' {...props} />
+    <Heading level={1} data-size='xl' {...props} />
   ),
   h2: (props: JSX.IntrinsicElements['h2']) => (
-    <Heading className={classes.heading} level={2} data-size='md' {...props} />
+    <Heading level={2} data-size='md' {...props} />
   ),
   h3: (props: JSX.IntrinsicElements['h3']) => (
-    <Heading className={classes.heading} level={3} data-size='sm' {...props} />
+    <Heading level={3} data-size='sm' {...props} />
   ),
   h4: (props: JSX.IntrinsicElements['h4']) => (
-    <Heading className={classes.heading} level={4} data-size='xs' {...props} />
+    <Heading level={4} data-size='xs' {...props} />
   ),
   h5: (props: JSX.IntrinsicElements['h5']) => (
-    <Heading className={classes.heading} level={5} data-size='xs' {...props} />
+    <Heading level={5} data-size='xs' {...props} />
   ),
   h6: (props: JSX.IntrinsicElements['h6']) => (
-    <Heading className={classes.heading} level={6} data-size='xs' {...props} />
+    <Heading level={6} data-size='xs' {...props} />
   ),
   ol: (props: JSX.IntrinsicElements['ol']) => <ListOrdered {...props} />,
   ul: (props: JSX.IntrinsicElements['ul']) => <ListUnordered {...props} />,
