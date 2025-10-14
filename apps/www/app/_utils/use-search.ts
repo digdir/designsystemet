@@ -1,15 +1,8 @@
+import type { QuickResult, SmartResult } from '@internal/components/src/types';
 import { useCallback, useEffect, useRef } from 'react';
 import { useFetcher } from 'react-router';
 import type { action as aiSearchAction } from '~/routes/api/ai-search';
 import type { action as searchAction } from '~/routes/api/search';
-
-type QuickResult = {
-  title: string;
-  content: string;
-  url: string;
-  type: 'component' | 'guide' | 'pattern' | 'blog';
-  sources?: { title: string; url: string }[];
-};
 
 type PendingRequest<T> = {
   resolve: (value: T) => void;
@@ -28,10 +21,7 @@ type SearchPromise = (query: string) => Promise<SearchPromiseReturn>;
 
 type AiSearchPromiseReturn = {
   success: boolean;
-  result: {
-    content: string;
-    sources: { title: string; url: string }[];
-  };
+  result: SmartResult;
   query: string;
   error?: string;
 };

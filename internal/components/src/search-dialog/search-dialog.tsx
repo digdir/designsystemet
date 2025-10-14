@@ -20,36 +20,14 @@ import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDebounceCallback } from '../_hooks/use-debounce-callback/use-debounce-callback';
 import { MDXComponents } from '../mdx-components/mdx-components';
+import type { OnAiSearch, OnSearch, QuickResult, SmartResult } from '../types';
 import classes from './search-dialog.module.css';
 
 type SearchDialogProps = {
   open: boolean;
   onClose: () => void;
-  onSearch?: (query: string) => Promise<{
-    success: boolean;
-    results: QuickResult[];
-    query: string;
-    error?: string;
-  }>;
-  onAiSearch?: (query: string) => Promise<{
-    success: boolean;
-    result: SmartResult;
-    query: string;
-    error?: string;
-  }>;
-};
-
-type QuickResult = {
-  title: string;
-  content: string;
-  url: string;
-  type: 'component' | 'guide' | 'pattern' | 'blog';
-  sources?: { title: string; url: string }[];
-};
-
-type SmartResult = {
-  content: string;
-  sources: { title: string; url: string }[];
+  onSearch?: OnSearch;
+  onAiSearch?: OnAiSearch;
 };
 
 const Star = () => (

@@ -24,15 +24,8 @@ import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router';
 import { DsEmbledLogo, DsFullLogo } from '../logos/designsystemet';
 import { SearchDialog } from '../search-dialog';
+import type { OnAiSearch, OnSearch } from '../types';
 import classes from './header.module.css';
-
-type QuickResult = {
-  title: string;
-  content: string;
-  url: string;
-  type: 'component' | 'guide' | 'pattern' | 'blog';
-  sources?: { title: string; url: string }[];
-};
 
 type HeaderProps = {
   menu: { name: TemplateStringsArray; href: string }[];
@@ -40,21 +33,8 @@ type HeaderProps = {
   themeSwitcher?: boolean;
   transparentBackground?: boolean;
   logoLink?: string;
-  onSearch?: (query: string) => Promise<{
-    success: boolean;
-    results: QuickResult[];
-    query: string;
-    error?: string;
-  }>;
-  onAiSearch?: (query: string) => Promise<{
-    success: boolean;
-    result: {
-      content: string;
-      sources: { title: string; url: string }[];
-    };
-    query: string;
-    error?: string;
-  }>;
+  onSearch?: OnSearch;
+  onAiSearch?: OnAiSearch;
   className?: string;
 } & React.HTMLAttributes<HTMLElement>;
 
