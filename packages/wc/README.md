@@ -16,6 +16,6 @@ These components include:
 
 ## Current implementation
 We have implemented this as simple as possible. No framework, but pure JS.
-Roolup bundles it, and adds all dependencies (floating-ui) to the bundle, making for a single JS file.
+Rollup bundles it, and adds all dependencies (floating-ui) to the bundle, making for a single JS file.
 
 Run `pnpm dev` to build and start a local server. It does not have hot reloading.
