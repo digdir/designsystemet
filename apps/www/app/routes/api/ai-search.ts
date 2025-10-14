@@ -1,5 +1,5 @@
+import { bundleMDX } from 'mdx-bundler';
 import type { ActionFunctionArgs } from 'react-router';
-import { processMdx } from '../../_utils/mdx.server';
 
 type SmartResult = {
   content: string;
@@ -26,9 +26,11 @@ export async function action({ request }: ActionFunctionArgs) {
     }
     const data = await response.json();
 
-    const content = await processMdx(data.answer);
+    const { code } = await bundleMDX({
+      source: data.answer,
+    });
     const result: SmartResult = {
-      content: content || '',
+      content: code || '',
       sources: data.sources || [],
     };
 
