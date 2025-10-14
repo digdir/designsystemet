@@ -7,21 +7,14 @@ import {
   Header,
 } from '@internal/components';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
-import { useCallback, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import {
-  isRouteErrorResponse,
-  Outlet,
-  useFetcher,
-  useRouteLoaderData,
-} from 'react-router';
+import { isRouteErrorResponse, Outlet, useRouteLoaderData } from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
 import { Figma } from '~/_components/logos/figma';
 import { Github } from '~/_components/logos/github';
 import { Slack } from '~/_components/logos/slack';
+import { useSearch } from '~/_utils/use-search';
 import i18n from '~/i18n';
-import type { action as aiSearchAction } from '~/routes/api/ai-search';
-import type { action as searchAction } from '~/routes/api/search';
 import type { Route as RootRoute } from './../../+types/root';
 import type { Route } from './+types/layout';
 
@@ -32,41 +25,6 @@ export const loader = ({ params }: Route.LoaderArgs) => {
     });
   }
 };
-
-type QuickResult = {
-  title: string;
-  content: string;
-  url: string;
-  type: 'component' | 'guide' | 'pattern' | 'blog';
-  sources?: { title: string; url: string }[];
-};
-
-type PendingRequest = {
-  resolve: (value: any) => void;
-  reject: (error: any) => void;
-  timeout: NodeJS.Timeout;
-};
-
-type SearchPromiseReturn = {
-  success: boolean;
-  results: QuickResult[];
-  query: string;
-  error?: string;
-};
-
-type SearchPromise = (query: string) => Promise<SearchPromiseReturn>;
-
-type AiSearchPromiseReturn = {
-  success: boolean;
-  result: {
-    content: string;
-    sources: { title: string; url: string }[];
-  };
-  query: string;
-  error?: string;
-};
-
-type AiSearchPromise = (query: string) => Promise<AiSearchPromiseReturn>;
 
 const rightLinks: FooterLinkListItemProps[] = [
   {
@@ -107,115 +65,7 @@ export default function RootLayout() {
 
   useChangeLanguage(lang);
 
-  // MARK: Search handling
-  const searchFetcher = useFetcher<typeof searchAction>();
-  const aiSearchFetcher = useFetcher<typeof aiSearchAction>();
-  const pendingSearchRef = useRef<PendingRequest | null>(null);
-  const pendingAiSearchRef = useRef<PendingRequest | null>(null);
-
-  useEffect(() => {
-    if (searchFetcher.state === 'idle' && pendingSearchRef.current) {
-      clearTimeout(pendingSearchRef.current.timeout);
-
-      if (searchFetcher.data) {
-        pendingSearchRef.current.resolve(searchFetcher.data);
-      } else {
-        pendingSearchRef.current.reject(
-          new Error('Search request failed or returned no data.'),
-        );
-      }
-      pendingSearchRef.current = null;
-    }
-  }, [searchFetcher.state, searchFetcher.data]);
-
-  useEffect(() => {
-    if (aiSearchFetcher.state === 'idle' && pendingAiSearchRef.current) {
-      clearTimeout(pendingAiSearchRef.current.timeout);
-
-      if (aiSearchFetcher.data) {
-        pendingAiSearchRef.current.resolve(aiSearchFetcher.data);
-      } else {
-        pendingAiSearchRef.current.reject(
-          new Error('AI search request failed or returned no data.'),
-        );
-      }
-      pendingAiSearchRef.current = null;
-    }
-  }, [aiSearchFetcher.state, aiSearchFetcher.data]);
-
-  const handleSearch: SearchPromise = useCallback(
-    (query: string) => {
-      if (pendingSearchRef.current) {
-        clearTimeout(pendingSearchRef.current.timeout);
-        pendingSearchRef.current.reject(new Error('Request cancelled'));
-        pendingSearchRef.current = null;
-      }
-
-      const promise = new Promise<SearchPromiseReturn>((resolve, reject) => {
-        const timeout = setTimeout(() => {
-          if (pendingSearchRef.current) {
-            pendingSearchRef.current = null;
-            reject(new Error('Search request timed out'));
-          }
-        }, 30000);
-
-        pendingSearchRef.current = { resolve, reject, timeout };
-
-        searchFetcher.submit(
-          { query },
-          { method: 'post', action: '/api/search' },
-        );
-      });
-
-      return promise;
-    },
-    [searchFetcher],
-  );
-
-  const handleAiSearch: AiSearchPromise = useCallback(
-    (query: string) => {
-      if (pendingAiSearchRef.current) {
-        clearTimeout(pendingAiSearchRef.current.timeout);
-        pendingAiSearchRef.current.reject(new Error('Request cancelled'));
-        pendingAiSearchRef.current = null;
-      }
-
-      const promise = new Promise<AiSearchPromiseReturn>((resolve, reject) => {
-        const timeout = setTimeout(() => {
-          if (pendingAiSearchRef.current) {
-            pendingAiSearchRef.current = null;
-            reject(new Error('AI search request timed out'));
-          }
-        }, 30000);
-
-        pendingAiSearchRef.current = { resolve, reject, timeout };
-
-        aiSearchFetcher.submit(
-          { query },
-          { method: 'post', action: '/api/ai-search' },
-        );
-      });
-
-      return promise;
-    },
-    [aiSearchFetcher],
-  );
-
-  useEffect(() => {
-    return () => {
-      if (pendingSearchRef.current) {
-        clearTimeout(pendingSearchRef.current.timeout);
-        pendingSearchRef.current.reject(new Error('Component unmounted'));
-        pendingSearchRef.current = null;
-      }
-      if (pendingAiSearchRef.current) {
-        clearTimeout(pendingAiSearchRef.current.timeout);
-        pendingAiSearchRef.current.reject(new Error('Component unmounted'));
-        pendingAiSearchRef.current = null;
-      }
-    };
-  }, []);
-  // MARK: End search handling
+  const { handleSearch, handleAiSearch } = useSearch();
 
   return (
     <>
@@ -264,6 +114,7 @@ const ErrorWrapperRoot = ({
   rightLinks,
 }: ErrorWrapperRootProps) => {
   const { t } = useTranslation();
+  const { handleSearch, handleAiSearch } = useSearch();
 
   return (
     <>
@@ -272,6 +123,8 @@ const ErrorWrapperRoot = ({
         menu={menu}
         logoLink={`/${lang === 'no' ? 'no' : lang === 'en' ? 'en' : 'no'}`}
         themeSwitcher
+        onSearch={handleSearch}
+        onAiSearch={handleAiSearch}
       />
       <main id='main'>
         <ContentContainer>{children}</ContentContainer>
