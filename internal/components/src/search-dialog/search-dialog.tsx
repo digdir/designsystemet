@@ -16,7 +16,7 @@ import {
 } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import type { CSSProperties } from 'react';
-import { useRef, useState, useTransition } from 'react';
+import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDebounceCallback } from '../_hooks/use-debounce-callback/use-debounce-callback';
 import { MDXComponents } from '../mdx-components/mdx-components';
@@ -83,8 +83,6 @@ export const SearchDialog = ({
   const [visibleQuickCount, setVisibleQuickCount] = useState(8);
   const latestQueryRef = useRef<string>('');
 
-  //const [isPending, startTransition] = useTransition();
-
   const performSearch = async (searchQuery: string) => {
     if (!searchQuery.trim()) {
       setQuickResults([]);
@@ -128,7 +126,7 @@ export const SearchDialog = ({
 
   const debouncedCallback = useDebounceCallback((value: string) => {
     performSearch(value);
-  }, 400);
+  }, 1000);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
