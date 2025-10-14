@@ -42,6 +42,7 @@
     button[aria-checked='true'] {
       isolation: isolate; /*creates a new stacking context so button shows above the parent's overlapping outline*/
       background-color: var(--ds-color-surface-default);
+      --dsc-button-border-color: var(--ds-color-text-default);
     }
   }
 
