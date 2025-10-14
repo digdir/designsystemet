@@ -23,7 +23,7 @@
     display: block; /* Ensure input is not placed on same line as label/description/validation */
   }
 
-  & label {
+  & label:where(:not([hidden])) { /* Respect hidden attribute and make overwrites easy */
     display: block;
   }
 
