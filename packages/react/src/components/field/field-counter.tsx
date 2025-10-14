@@ -80,7 +80,12 @@ export const FieldCounter = forwardRef<HTMLParagraphElement, FieldCounterProps>(
 
     return (
       <>
-        <div className='ds-sr-only' aria-live={'polite'} ref={counterRef}>
+        <div
+          className='ds-sr-only'
+          aria-live={'polite'}
+          data-field='validation'
+          ref={counterRef}
+        >
           {label(hasExceededLimit ? over : under, remainder)}
         </div>
         {hasExceededLimit ? (
