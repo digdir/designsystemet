@@ -41,9 +41,9 @@ Preview.args = {
   name: 'toggle-group-nuts',
 };
 
-export const OnlyIcons: StoryFn<typeof ToggleGroup> = () => {
+export const OnlyIcons: StoryFn<typeof ToggleGroup> = (args) => {
   return (
-    <ToggleGroup defaultValue={'option-1'}>
+    <ToggleGroup {...args} defaultValue='option-1'>
       <Tooltip content='Venstrestilt'>
         <ToggleGroup.Item value='option-1' icon>
           <AlignLeftIcon title='AlignLeftIcon' />
@@ -93,13 +93,8 @@ export const Kontrollert: StoryFn<typeof ToggleGroup> = () => {
     </>
   );
 };
-export const Secondary: StoryFn<typeof ToggleGroup> = () => {
-  return (
-    <ToggleGroup defaultValue={'innboks'} variant='secondary'>
-      <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
-      <ToggleGroup.Item value='utkast'>Utkast</ToggleGroup.Item>
-      <ToggleGroup.Item value='arkiv'>Arkiv</ToggleGroup.Item>
-      <ToggleGroup.Item value='sendt'>Sendt</ToggleGroup.Item>
-    </ToggleGroup>
-  );
-};
+export const Secondary = Preview.bind({});
+Secondary.args = { defaultValue: 'innboks', variant: 'secondary' };
+
+export const SecondaryOnlyIcons = OnlyIcons.bind({});
+SecondaryOnlyIcons.args = { variant: 'secondary' };
