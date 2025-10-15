@@ -43,7 +43,7 @@
 }
 
 .searchBlock {
-  padding: var(--ds-size-4) var(--ds-size-6);
+  padding: var(--ds-size-6);
 }
 .title {
   margin-bottom: var(--ds-size-6);
@@ -191,9 +191,7 @@
 
 .smartContent {
   max-height: unset;
-  &:not(.smartCollapsed) {
-    margin-bottom: var(--ds-size-4);
-  }
+  margin-bottom: var(--ds-size-4);
 }
 
 @property --search-wipe-progress {
