@@ -34,7 +34,7 @@
     "@types/ramda": "^0.31.1",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
-    "ramda": "^0.31.3",
+    "ramda": "^0.32.0",
     "typescript": "^5.9.3",
     "vite": "^7.1.9",
     "vite-tsconfig-paths": "^5.1.4"

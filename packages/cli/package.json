@@ -73,7 +73,7 @@
     "object-hash": "^3.0.0",
     "picocolors": "^1.1.1",
     "postcss": "^8.5.6",
-    "ramda": "^0.31.3",
+    "ramda": "^0.32.0",
     "style-dictionary": "^5.1.0",
     "zod": "^4.1.11",
     "zod-validation-error": "^4.0.2"
