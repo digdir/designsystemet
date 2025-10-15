@@ -25,6 +25,10 @@ export async function action({ request }: ActionFunctionArgs) {
       throw new Error(`Search API error: ${response.status}`);
     }
     const data = await response.json();
+    /*TODO: perhaps we should omit "Show more" button and make it always expanded for short answers.
+    Easiest way is to just check length of data.answer here with a threshold of say 300 characters
+    and add a boolean to SmartResult
+    */
 
     const { code } = await bundleMDX({
       source: data.answer,

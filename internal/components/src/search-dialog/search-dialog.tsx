@@ -54,6 +54,7 @@ export const SearchDialog = ({
   const [smartResult, setSmartResult] = useState<SmartResult | null>(null);
   const [isQuickLoading, setIsQuickLoading] = useState(false);
   const [isSmartLoading, setIsSmartLoading] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
   const [smartExpanded, setSmartExpanded] = useState(false);
   const [visibleQuickCount, setVisibleQuickCount] = useState(8);
   const latestQueryRef = useRef<string>('');
@@ -101,10 +102,12 @@ export const SearchDialog = ({
 
   const debouncedCallback = useDebounceCallback((value: string) => {
     performSearch(value);
+    setIsTyping(false);
   }, 1000);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
+    setIsTyping(true);
     setQuery(value);
     debouncedCallback(value);
   };
@@ -154,7 +157,6 @@ export const SearchDialog = ({
     setIsSmartLoading(true);
     return onAiSearch(searchQuery)
       .then((response) => {
-        console.log('AI Search response: ', response);
         if (response.success) {
           const data = response.result;
           if (latestQueryRef.current === searchQuery) {
@@ -439,6 +441,7 @@ export const SearchDialog = ({
         )}
 
         {query &&
+          !isTyping &&
           !isQuickLoading &&
           !isSmartLoading &&
           quickResults.length === 0 &&
