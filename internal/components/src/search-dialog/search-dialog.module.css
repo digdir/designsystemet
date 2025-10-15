@@ -279,6 +279,9 @@
     opacity: 0;
     translate: -16px 0;
   }
+  :global(.ds-skeleton) {
+    --dsc-skeleton-background: var(--ds-color-neutral-surface-active);
+  }
 }
 
 .quickResultLink {
