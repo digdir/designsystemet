@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "noEmit": true,
+    "types": [],
+    "composite": true
+  },
+  "references": [{ "path": "./tsconfig.lib.json" }],
+  "files": [],
+  "include": []
+}
