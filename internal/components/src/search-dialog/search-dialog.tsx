@@ -48,7 +48,6 @@ export const SearchDialog = ({
   onAiSearch,
 }: SearchDialogProps) => {
   const { t } = useTranslation();
-  const dialogRef = useRef<HTMLDialogElement>(null);
   const [query, setQuery] = useState('');
   const [quickResults, setQuickResults] = useState<QuickResult[]>([]);
   const [smartResult, setSmartResult] = useState<SmartResult | null>(null);
@@ -177,7 +176,6 @@ export const SearchDialog = ({
 
   return (
     <Dialog
-      ref={dialogRef}
       closedby='any'
       open={open}
       onClose={handleClose}
