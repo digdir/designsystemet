@@ -18,7 +18,8 @@
   gap: var(--dsc-togglegroup-spacing);
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
-  height: fit-content;
+  box-sizing: border-box;
+  height: var(--dsc-togglegroup-button-size);
   padding: var(--dsc-togglegroup-spacing);
   max-width: fit-content;
   overflow-x: auto;
@@ -37,17 +38,19 @@
       --dsc-button-color: var(--ds-color-text-default);
       --dsc-button-color--hover: var(--ds-color-text-default);
       border-radius: inherit;
-      min-height: calc(var(--dsc-togglegroup-button-size) + (var(--dsc-togglegroup-border-width) * 2));
     }
     button[aria-checked='true'] {
       isolation: isolate; /*creates a new stacking context so button shows above the parent's overlapping outline*/
       background-color: var(--ds-color-surface-default);
+      --dsc-button-border-color: var(--ds-color-text-default);
     }
   }
 
   button {
     border-radius: calc(var(--dsc-togglegroup-border-radius) - var(--dsc-togglegroup-border-width));
-    min-height: var(--dsc-togglegroup-button-size);
+    height: 100%;
+    min-height: unset;
+    white-space: nowrap;
     min-width: fit-content;
     &:not([aria-checked='true']) {
       --dsc-button-color: var(--ds-color-text-default);
@@ -57,7 +60,7 @@
     @composes ds-focus--inset from './base.css';
 
     &[data-icon] {
-      height: var(--dsc-togglegroup-button-size);
+      height: 100%;
       width: var(--dsc-togglegroup-button-size);
     }
 
