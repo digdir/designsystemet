@@ -261,7 +261,8 @@ app.post('/api/search', async (req, res) => {
 
     // Deduplicate by URL - keep only the highest scoring result per document
     const deduplicatedResults = deduplicateByDocument(searchResults);
-
+    // Regex to move language field in URL if present
+    const langRegex = /^(https?:\/\/[^/]+\/)([^/]+)\/(no|en)\/(.*)$/;
     // Format results for quick search
     const formattedResults = deduplicatedResults
       .slice(0, 8)
@@ -270,7 +271,7 @@ app.post('/api/search', async (req, res) => {
         content:
           doc.content?.substring(0, 200) +
           ((doc.content?.length ?? 0) > 200 ? '...' : ''),
-        url: doc.url,
+        url: doc.url?.replace(langRegex, '$1$3/$2/$4'),
         type: doc.type || 'component',
       }));
 
@@ -402,22 +403,22 @@ app.post('/api/ai-search', async (req, res) => {
     const messages = [
       {
         role: 'system',
-        content: `You are an AI assistant for Digdir Designsystemet, a Norwegian design system for digital services. 
+        content: `You are an AI assistant for Digdir Designsystemet, a Norwegian design system for digital services.
         Answer questions about the components, patterns, and guidelines based on the provided context.
         Always be helpful, accurate, and concise.
-        
+
         If the question can be answered using the provided context, use that information and cite your sources using [1], [2], etc.
         If there's no relevant context, or the context doesn't contain the information needed, provide a general response based on your knowledge of design systems.
-        
+
         Use Norwegian (bokmål) for most responses, but you can respond in English if the question is in English.
-        
+
         Guidelines:
         1. Focus on providing accurate information about the design system's components and patterns.
         2. Include code examples when appropriate, formatted in markdown.
         3. When answering questions about components, mention their purpose, usage, and any important variants.
         4. Do not make up information about the design system that isn't in the provided context.
         5. If you're unsure about something, be honest about your uncertainty.
-        
+
         Context:
         ${context}`,
       },
