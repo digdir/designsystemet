@@ -1,4 +1,5 @@
 import { forwardRef, useEffect, useRef, useState } from 'react';
+import { useDebounceCallback } from '../../utilities';
 import { Paragraph } from '../paragraph/paragraph';
 import {
   ValidationMessage,
@@ -22,6 +23,13 @@ export type FieldCounterProps = {
    */
   under?: string;
   /**
+   * Text for screen readers of how many characters are allowed.
+   * Only read when entering the field.
+   *
+   * @default 'Maks %d tegn tillatt.'
+   */
+  hint?: string;
+  /**
    * The maximum allowed characters.
    *
    * @default undefined
@@ -43,14 +51,26 @@ const label = (text: string, count: number) =>
  */
 export const FieldCounter = forwardRef<HTMLParagraphElement, FieldCounterProps>(
   function FieldCounter(
-    { limit, under = '%d tegn igjen', over = '%d tegn for mye', ...rest },
+    {
+      limit,
+      under = '%d tegn igjen',
+      over = '%d tegn for mye',
+      hint = 'Maks %d tegn tillatt.',
+      ...rest
+    },
     ref,
   ) {
     const [count, setCount] = useState(0);
+    const [liveRegionText, setLiveRegionText] = useState('');
     const fieldInputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
     const counterRef = useRef<HTMLDivElement>(null);
     const hasExceededLimit = count > limit;
     const remainder = limit - count;
+
+    const debouncedSetLiveRegionText = useDebounceCallback(
+      (text: string) => setLiveRegionText(text),
+      1200,
+    );
 
     // Listen to native input events (user typing) to update the counter in real time
     useEffect(() => {
@@ -78,25 +98,35 @@ export const FieldCounter = forwardRef<HTMLParagraphElement, FieldCounterProps>(
       }
     });
 
+    // Update live region text when count or limit changes
+    useEffect(() => {
+      debouncedSetLiveRegionText(
+        label(hasExceededLimit ? over : under, remainder),
+      );
+    }, [count, limit, over, under, hasExceededLimit, remainder]);
+
     return (
       <>
-        <div
-          data-field='description'
-          className='ds-sr-only'
-          aria-live={'polite'}
-          ref={counterRef}
-        >
-          {hasExceededLimit && label(over, remainder)}
+        <div className='ds-sr-only' aria-live='polite' ref={counterRef}>
+          {liveRegionText}
         </div>
         {hasExceededLimit ? (
-          <ValidationMessage ref={ref} {...rest}>
+          <ValidationMessage
+            ref={ref}
+            {...rest}
+            aria-hidden='true'
+            data-field={null}
+          >
             {label(over, remainder)}
           </ValidationMessage>
         ) : (
-          <Paragraph ref={ref} {...rest} data-field='validation'>
+          <Paragraph ref={ref} {...rest} aria-hidden='true'>
             {label(under, remainder)}
           </Paragraph>
         )}
+        <div className='ds-sr-only' aria-hidden='true' data-field='description'>
+          {label(hint, limit)}
+        </div>
       </>
     );
   },

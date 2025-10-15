@@ -1,15 +1,13 @@
-import { Meta, Controls, Primary, Canvas } from '@storybook/addon-docs/blocks';
-import { CssVariables } from '@doc-components';
-import css from '@digdir/designsystemet-css/field.css?inline';
-import * as FieldStories from './field.stories';
+---
+title: Field
+image: Field.svg
+cssfile: field
+---
 
-<Meta of={FieldStories} />
+<Story story="Preview" />
 
 # Field
 `Field` er et hjelpemiddel for å automatisk koble et felt sammen med [`Label`](/docs/komponenter-typography--docs#label), `Field.Description`, [`ValidationMessage`](/docs/komponenter-typography--docs#validationmessage) og `Field.Counter`. `Field` kan brukes sammen med `Input`, `Textarea` og `Select`. **OBS**: `Textfield` har allerede `Field` innebygd, og kan derfor ikke brukes i en `Field`.
-
-<Primary />
-<Controls />
 
 ##  Bruk
 
@@ -30,18 +28,18 @@ Prefixer og suffixer er nyttige for å vise enheter, valuta eller andre typer in
 Du skal **ikke** bruke disse alene, siden skjermlesere ikke leser dem opp.
 Det er viktig at samme informasjon som vises i prefixet eller suffixet også er inkludert i ledeteksten.
 
-<Canvas of={FieldStories.Affix} />
+<Story story="Affix" />
 
 ### Antall tegn
 
 Bruk `Field.Counter` til å informere om antall tegn brukerne kan skrive i feltet.
 
-<Canvas of={FieldStories.Counter} />
+<Story story="Counter" />
 
 ### Plassering
 Bruk `position="end"` når du ønsker å plassere for eksempel en `Switch` til høyre for `Label`. Dette kan være nyttig i innstillingsgrensesnitt, slik at brukeren først kan lese etiketten til venstre - som forklarer hva innstillingen gjelder - og deretter handlingselementet (bryteren) til høyre. 
 
-<Canvas of={FieldStories.Position} />
+<Story story="Position" />
 
 ## Retningslinjer
 `Field` hjelper deg med å strukturere skjemafelt på en tilgjengelig og konsistent måte. Den kobler automatisk sammen [`Label`](/docs/komponenter-typography--docs#label), `Field.Description`, [`ValidationMessage`](/docs/komponenter-typography--docs#validationmessage) og `Field.Counter` med det tilhørende feltet via riktige ARIA-attributter.
@@ -53,8 +51,4 @@ Bruk `position="end"` når du ønsker å plassere for eksempel en `Switch` til h
 - å semantisk gruppere flere felt - bruk heller [`Fieldset`](/docs/komponenter-fieldset--docs)
 
 ## Kjente mangler
-VoiceOver kan noen ganger lese `Field.Counter` to ganger om den ligger i en iframe. [Bug report hos apple.com](https://discussions.apple.com/thread/256085771?sortBy=rank).
-
-## CSS Variabler
-
-<CssVariables css={css} />
+VoiceOver kan noen ganger lese `Field.Counter` to ganger. [Bug report hos apple.com](https://discussions.apple.com/thread/256085771?sortBy=rank).
