@@ -18,17 +18,17 @@
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
-    "@navikt/aksel-icons": "^7.31.0",
+    "@navikt/aksel-icons": "^7.32.1",
     "clsx": "^2.1.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-router-dom": "^7.9.3"
+    "react-router-dom": "^7.9.4"
   },
   "devDependencies": {
-    "@figma/plugin-typings": "^1.117.1",
-    "@types/react": "^19.2.0",
+    "@figma/plugin-typings": "^1.118.0",
+    "@types/react": "^19.2.2",
     "@types/react-color": "^3.0.13",
-    "@types/react-dom": "^19.2.0",
+    "@types/react-dom": "^19.2.1",
     "@vitejs/plugin-react": "^5.0.4",
     "postcss": "^8.5.6",
     "rollup": "^4.52.4",
