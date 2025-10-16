@@ -32,9 +32,9 @@
     "@react-router/dev": "^7.9.4",
     "@types/node": "^22.18.10",
     "@types/ramda": "^0.31.1",
+    "ramda": "^0.32.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.1",
-    "ramda": "^0.31.3",
     "typescript": "^5.9.3",
     "vite": "^7.1.10",
     "vite-tsconfig-paths": "^5.1.4"

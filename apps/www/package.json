@@ -24,7 +24,7 @@
     "isbot": "^5.1.31",
     "mdx-bundler": "^10.1.1",
     "prism-react-renderer": "^2.4.1",
-    "ramda": "^0.31.3",
+    "ramda": "^0.32.0",
     "react": "^19.2.0",
     "react-docgen-typescript": "^2.4.0",
     "react-dom": "^19.2.0",
