@@ -397,7 +397,7 @@ export const SearchDialog = ({
         {!query && (
           <div className={classes.resultsBlock}>
             <Paragraph className={classes.suggestionsTitle}>
-              {t('search.suggestions-title', 'Prøv å søke etter...')}
+              {t('search.suggestions-title', 'Prøv å søke etter…')}
             </Paragraph>
             <div className={classes.suggestionsList}>
               <Chip.Button

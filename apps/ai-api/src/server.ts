@@ -261,6 +261,7 @@ app.post('/api/search', async (req, res) => {
 
     // Deduplicate by URL - keep only the highest scoring result per document
     const deduplicatedResults = deduplicateByDocument(searchResults);
+
     // Regex to move language field in URL if present
     const langRegex = /^(https?:\/\/[^/]+\/)([^/]+)\/(no|en)\/(.*)$/;
     // Format results for quick search
@@ -270,7 +271,7 @@ app.post('/api/search', async (req, res) => {
         title: doc.title,
         content:
           doc.content?.substring(0, 200) +
-          ((doc.content?.length ?? 0) > 200 ? '...' : ''),
+          ((doc.content?.length ?? 0) > 200 ? '…' : ''),
         url: doc.url?.replace(langRegex, '$1$3/$2/$4'),
         type: doc.type || 'component',
       }));
