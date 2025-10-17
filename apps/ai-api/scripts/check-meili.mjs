@@ -10,6 +10,7 @@ import dotenv from 'dotenv';
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
 const candidateEnvPaths = [
+  path.resolve(__dirname, '../.ai-env'),
   path.resolve(__dirname, '../../.ai-env'),
   path.resolve(__dirname, '../../../apps/.ai-env'),
   path.resolve(__dirname, '../../../.ai-env'),

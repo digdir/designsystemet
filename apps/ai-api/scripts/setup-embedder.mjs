@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-// Setup script to register an embedder with Meilisearch
-// Usage: node scripts/setup-embedder.mjs
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -11,8 +9,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Load environment variables
 const envPathCandidates = [
+  path.resolve(__dirname, '.ai-env'),
+  path.resolve(__dirname, '../.ai-env'),
   path.resolve(__dirname, '../../.ai-env'),
-  path.resolve(__dirname, '../../../apps/.ai-env'),
   path.resolve(__dirname, '../../../.ai-env'),
 ];
 
@@ -33,9 +32,8 @@ for (const p of envPathCandidates) {
 
 const env = process.env;
 
-// Configuration
 const EMBEDDER_UID = env.MEILISEARCH_EMBEDDER_UID || 'azure-openai-small';
-const VECTOR_DIMENSIONS = 1536; // For text-embedding-3-small
+const VECTOR_DIMENSIONS = 1536;
 
 async function setupEmbedder() {
   if (!env.MEILISEARCH_API_URL) {
@@ -51,8 +49,6 @@ async function setupEmbedder() {
   const INDEX_NAME = env.MEILISEARCH_PROJECT_NAME || 'designsystemet-search';
 
   try {
-    // Since we generate embeddings ourselves (see ingest.mjs),
-    // "source: 'userProvided'" tells MeiliSearch to use those
     const embedderConfig = {
       [EMBEDDER_UID]: {
         source: 'userProvided',
@@ -60,7 +56,6 @@ async function setupEmbedder() {
       },
     };
 
-    // Update embedders settings for the index
     const response = await fetch(
       `${env.MEILISEARCH_API_URL}/indexes/${INDEX_NAME}/settings/embedders`,
       {
@@ -82,18 +77,10 @@ async function setupEmbedder() {
       process.exit(1);
     }
 
-    const result = await response.json();
-    console.log('Response:');
-    console.log(JSON.stringify(result, null, 2));
-
-    console.log('\nNext steps:');
-    console.log(
-      '2. Wait for the embedder setup task to complete (check task status if needed)',
-    );
-    console.log(
-      '3. Make sure you have documents with embeddings ingested (run: node scripts/ingest.mjs)',
-    );
-    console.log('4. Test the search with: npm run test-rag');
+    const _result = await response.json();
+    console.log('✅ Embedder configured successfully');
+    console.log(`   Embedder UID: ${EMBEDDER_UID}`);
+    console.log(`   Dimensions: ${VECTOR_DIMENSIONS}`);
   } catch (error) {
     console.error('Error setting up embedder:', error);
     process.exit(1);

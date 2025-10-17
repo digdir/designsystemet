@@ -121,7 +121,7 @@ async function main() {
       failedStep = i;
       log(`   ✗ ${step.name} failed: ${error.message}`, colors.red);
       log('\n❌ Setup failed. Please check the error above.\n', colors.red);
-      
+
       // Mark remaining steps as skipped
       for (let j = i + 1; j < steps.length; j++) {
         steps[j].status = 'skipped';
@@ -155,7 +155,10 @@ async function main() {
   log('📋 Setup Summary:', colors.bright);
   for (const step of steps) {
     if (step.status === 'success') {
-      log(`   ✅ ${step.name}${step.details ? ' ' + step.details : ''}`, colors.green);
+      log(
+        `   ✅ ${step.name}${step.details ? ' ' + step.details : ''}`,
+        colors.green,
+      );
     } else if (step.status === 'failed') {
       log(`   ❌ ${step.name} - FAILED`, colors.red);
     } else if (step.status === 'skipped') {

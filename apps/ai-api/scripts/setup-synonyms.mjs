@@ -2,14 +2,18 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import dotenv from 'dotenv';
 import { Meilisearch } from 'meilisearch';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 // Load environment variables
 const envPathCandidates = [
-  path.resolve(process.cwd(), '../.ai-env'),
-  path.resolve(process.cwd(), 'apps/.ai-env'),
-  path.resolve(process.cwd(), '.ai-env'),
+  path.resolve(__dirname, '../.ai-env'),
+  path.resolve(__dirname, '../../.ai-env'),
+  path.resolve(__dirname, '../../../apps/.ai-env'),
+  path.resolve(__dirname, '../../../.ai-env'),
 ];
 
 for (const p of envPathCandidates) {

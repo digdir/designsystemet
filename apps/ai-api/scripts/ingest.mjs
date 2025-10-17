@@ -13,6 +13,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Load environment variables
 const envPathCandidates = [
+  path.resolve(__dirname, '../.ai-env'),
   path.resolve(__dirname, '../../.ai-env'),
   path.resolve(__dirname, '../../../apps/.ai-env'),
   path.resolve(__dirname, '../../../.ai-env'),
