@@ -77,25 +77,34 @@ async function main() {
       name: 'Configure Embedder',
       script: path.join(__dirname, 'setup-embedder.mjs'),
       description: 'Setting up Azure OpenAI embedder in Meilisearch',
+      status: 'pending',
+      details: '',
     },
     {
       name: 'Ingest Documents',
       script: path.join(__dirname, 'ingest.mjs'),
       description: 'Ingesting 768+ documents (this takes 5-10 minutes)',
+      status: 'pending',
+      details: '',
     },
     {
       name: 'Configure Synonyms',
       script: path.join(__dirname, 'setup-synonyms.mjs'),
       description: 'Configuring 32 synonym groups for better search',
+      status: 'pending',
+      details: '(32 groups)',
     },
     {
       name: 'Verify Setup',
       script: path.join(__dirname, 'check-meili.mjs'),
       description: 'Checking Meilisearch index and document count',
+      status: 'pending',
+      details: '',
     },
   ];
 
   const startTime = Date.now();
+  let failedStep = null;
 
   for (let i = 0; i < steps.length; i++) {
     const step = steps[i];
@@ -104,11 +113,20 @@ async function main() {
 
     try {
       await runScript(step.script);
+      step.status = 'success';
       log(`   ✓ ${step.name} completed`, colors.green);
     } catch (error) {
+      step.status = 'failed';
+      step.error = error.message;
+      failedStep = i;
       log(`   ✗ ${step.name} failed: ${error.message}`, colors.red);
       log('\n❌ Setup failed. Please check the error above.\n', colors.red);
-      process.exit(1);
+      
+      // Mark remaining steps as skipped
+      for (let j = i + 1; j < steps.length; j++) {
+        steps[j].status = 'skipped';
+      }
+      break;
     }
   }
 
@@ -116,20 +134,41 @@ async function main() {
   const minutes = Math.floor(duration / 60);
   const seconds = duration % 60;
 
-  log(
-    '\n╔════════════════════════════════════════════════════════════╗',
-    colors.green,
-  );
-  log(
-    '║          ✓ Setup Complete!                                ║',
-    colors.green,
-  );
-  log(
-    '╚════════════════════════════════════════════════════════════╝',
-    colors.green,
-  );
-  log(`\n   Time taken: ${minutes}m ${seconds}s\n`, colors.bright);
-  log('Next steps:', colors.bright);
+  // Display summary
+  if (failedStep === null) {
+    log(
+      '\n╔════════════════════════════════════════════════════════════╗',
+      colors.green,
+    );
+    log(
+      '║          ✓ Setup Complete!                                ║',
+      colors.green,
+    );
+    log(
+      '╚════════════════════════════════════════════════════════════╝',
+      colors.green,
+    );
+    log(`\n   Time taken: ${minutes}m ${seconds}s\n`, colors.bright);
+  }
+
+  // Print summary
+  log('📋 Setup Summary:', colors.bright);
+  for (const step of steps) {
+    if (step.status === 'success') {
+      log(`   ✅ ${step.name}${step.details ? ' ' + step.details : ''}`, colors.green);
+    } else if (step.status === 'failed') {
+      log(`   ❌ ${step.name} - FAILED`, colors.red);
+    } else if (step.status === 'skipped') {
+      log(`   ⏭️  ${step.name} - SKIPPED`, colors.yellow);
+    }
+  }
+
+  if (failedStep !== null) {
+    log("\nPlease fix the error and run 'pnpm run setup' again.\n", colors.red);
+    process.exit(1);
+  }
+
+  log('\nNext steps:', colors.bright);
   log('  1. Start AI API:    pnpm run dev', colors.yellow);
   log('  2. Start frontend:  pnpm run www (from repo root)', colors.yellow);
   log('  3. Open browser:    http://localhost:5173\n', colors.yellow);
