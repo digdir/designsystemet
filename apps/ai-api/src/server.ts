@@ -14,7 +14,7 @@ interface SearchResult {
   content?: string;
   type?: string;
   _score?: number;
-  [key: string]: unknown; // Allow for additional properties
+  [key: string]: unknown;
 }
 
 // Load environment variables
@@ -35,7 +35,7 @@ for (const p of envPathCandidates) {
 // Meilisearch client for searching
 const meiliSearchClient = new Meilisearch({
   host: process.env.MEILISEARCH_API_URL || '',
-  apiKey: process.env.MEILISEARCH_SEARCH_KEY || '', // Use search key for frontend-facing API
+  apiKey: process.env.MEILISEARCH_SEARCH_KEY || '',
 });
 
 // Meilisearch client for admin operations (anything that isnt searching)
@@ -243,7 +243,7 @@ async function vectorSearch(query: string, limit = 5) {
             limit: limit,
             vector: embedding,
             hybrid: {
-              semanticRatio: 0.7, // 70% vector search, 30% keyword search
+              semanticRatio: 0.7,
               embedder: embedderUid,
             },
           });
@@ -499,7 +499,7 @@ app.post('/api/ai-search', async (req, res) => {
 // Endpoint to clear cache (admin only)
 app.post('/api/admin/clear-cache', (req, res) => {
   const authHeader = req.headers.authorization;
-  const apiKey = authHeader?.split(' ')[1]; // Format: Bearer <API_KEY>
+  const apiKey = authHeader?.split(' ')[1];
 
   if (apiKey !== process.env.MEILISEARCH_ADMIN_KEY) {
     return res.status(401).json({ error: 'Unauthorized' });
@@ -517,7 +517,7 @@ app.post('/api/admin/clear-cache', (req, res) => {
 // Endpoint to get index info (admin only)
 app.get('/api/admin/index-info', async (req, res) => {
   const authHeader = req.headers.authorization;
-  const apiKey = authHeader?.split(' ')[1]; // Format: Bearer <API_KEY>
+  const apiKey = authHeader?.split(' ')[1];
 
   if (apiKey !== process.env.MEILISEARCH_ADMIN_KEY) {
     return res.status(401).json({ error: 'Unauthorized' });

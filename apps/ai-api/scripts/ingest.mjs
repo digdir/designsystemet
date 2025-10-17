@@ -57,7 +57,7 @@ const CONTENT_DIRS = [
   'packages/theme/src/themes',
 ];
 const FILE_PATTERNS = /\.(md|mdx|tsx|css)$/i;
-const CHUNK_SIZE = 300; // tokens (approximate)
+const CHUNK_SIZE = 300;
 // const CHUNK_OVERLAP = 50; // Could be used to create more context between chunks
 const INDEX_NAME = env.MEILISEARCH_PROJECT_NAME || 'designsystemet-search';
 
@@ -72,7 +72,7 @@ function extractLanguageFromPath(filePath) {
   // Extract language from path structure
   if (filePath.includes('/en/')) return 'en';
   if (filePath.includes('/no/')) return 'no';
-  return 'en'; // default to English
+  return 'en';
 }
 
 function extractTextFromFile(filePath, content) {
@@ -124,7 +124,7 @@ function extractTextFromFile(filePath, content) {
     const title = `${path.basename(filePath, ext)} Theme`;
 
     if (customProps.length > 0) {
-      const propList = customProps.slice(0, 20).join('\n'); // Limit to first 20 props
+      const propList = customProps.slice(0, 20).join('\n');
       const content_text = `CSS Custom Properties:\n\n${propList}\n\n${customProps.length > 20 ? `...and ${customProps.length - 20} more properties` : ''}`;
       return { title, content: content_text, lang };
     }
@@ -207,7 +207,7 @@ async function combineComponentFiles(componentDir) {
     title: `${title} Component`,
     content: combinedContent,
     url: storybookUrl,
-    lang: 'en', // Components are primarily English
+    lang: 'en',
     type: 'component',
   };
 }
@@ -224,7 +224,7 @@ function generateUrl(filePath) {
 
   if (relativePath.startsWith('packages/react/src/utilities/')) {
     // Utility/hook documentation
-    const utilityName = relativePath.split('/').slice(-2, -1)[0]; // Get parent directory name
+    const utilityName = relativePath.split('/').slice(-2, -1)[0];
     return `https://storybook.designsystemet.no/?path=/docs/utilities-${utilityName?.toLowerCase()}--docs`;
   }
 
@@ -279,7 +279,7 @@ async function processFile(filePath, dryRun = false) {
     } = extractTextFromFile(filePath, content);
 
     if (!extractedContent || extractedContent.trim().length < 50) {
-      return []; // Skip very short content
+      return [];
     }
 
     const chunks = chunkText(extractedContent);
@@ -299,7 +299,7 @@ async function processFile(filePath, dryRun = false) {
 
       return {
         id,
-        title: title, // Clean title without (Part X)
+        title: title,
         content: chunk,
         url,
         file_path: relativePath,
@@ -420,7 +420,7 @@ async function walkDirectory(dir) {
 
           if (hasMdx && hasStories) {
             componentDirs.push(fullPath);
-            continue; // Skip walking into component dirs - we'll process them specially
+            continue;
           }
         }
 
