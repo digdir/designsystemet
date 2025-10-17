@@ -49,7 +49,7 @@ Whenever a new version of the CLI is released, or you have done changes, we reco
 ### Using a config file
 
 > ⚠️ **WARNING** ⚠️  
-> This feature is experimental. The config schema may change at any time.
+> The typography feature is experimental. The config schema may change at any time.
 
 
 The `tokens create` command supports a config file. It will auto-detect a `designsystemet.config.json` file in the current directory. You can also use the `--config <path>` option to supply a different config name and location.
