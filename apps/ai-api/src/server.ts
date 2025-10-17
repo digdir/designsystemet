@@ -93,7 +93,38 @@ app.get('/health', async (_req, res) => {
 });
 
 // Helper functions
-async function embedText(text: string) {
+// Azure OpenAI Response Types
+interface ChatCompletionMessage {
+  role: string;
+  content: string;
+}
+
+interface ChatCompletionChoice {
+  message: ChatCompletionMessage;
+  finish_reason: string;
+  index: number;
+}
+
+interface ChatCompletionResponse {
+  id: string;
+  object: string;
+  created: number;
+  model: string;
+  choices: ChatCompletionChoice[];
+  usage?: {
+    prompt_tokens: number;
+    completion_tokens: number;
+    total_tokens: number;
+  };
+}
+
+interface EmbeddingResponse {
+  data: {
+    embedding: number[];
+  }[];
+}
+
+async function generateEmbedding(text: string): Promise<number[]> {
   if (!text || typeof text !== 'string' || !text.trim()) {
     throw new Error('No text provided for embedding');
   }
@@ -118,13 +149,13 @@ async function embedText(text: string) {
     );
   }
 
-  const data = await response.json();
+  const data = (await response.json()) as EmbeddingResponse;
   return data.data[0].embedding;
 }
 
 async function generateChatCompletion(
   messages: Array<{ role: string; content: string }>,
-) {
+): Promise<ChatCompletionResponse> {
   const url = `${process.env.AZURE_ENDPOINT}/openai/deployments/${process.env.AZURE_GPT_DEPLOY}/chat/completions?api-version=${process.env.AZURE_API_VERSION}`;
 
   const headers: Record<string, string> = {
@@ -150,7 +181,7 @@ async function generateChatCompletion(
     );
   }
 
-  return await response.json();
+  return (await response.json()) as ChatCompletionResponse;
 }
 
 function formatChatResponse(
@@ -189,7 +220,7 @@ async function vectorSearch(query: string, limit = 5) {
     // Try to generate embedding for semantic search
     let embedding: number[] | null = null;
     try {
-      embedding = await embedText(query);
+      embedding = await generateEmbedding(query);
     } catch (embeddingError) {
       console.warn(
         'Embedding generation failed, falling back to keyword search:',
@@ -375,7 +406,7 @@ app.post('/api/ai-search', async (req, res) => {
         console.log('First result:', {
           title: searchResults[0].title,
           url: searchResults[0].url,
-          content: searchResults[0].content?.substring(0, 100) + '...', // Log just the beginning
+          content: searchResults[0].content?.substring(0, 100) + '...',
         });
       }
     } catch (searchError) {
