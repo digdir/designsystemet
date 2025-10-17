@@ -183,7 +183,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
               arrowPseudoElement,
             ],
           }).then(({ x, y }) => {
-            popover.style.translate = `${x}px ${y}px`;
+            popover.style.translate = `${Math.round(x)}px ${Math.round(y)}px`;
           });
         });
     }, [controlledOpen, placement, id, autoPlacement]);
