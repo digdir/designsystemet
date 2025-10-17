@@ -62,18 +62,31 @@ async function check() {
     );
   }
 
-  // Optional: show embedder settings if available
+  // Check embedder settings
   const embRes = await fetch(
     `${API_URL}/indexes/${INDEX_NAME}/settings/embedders`,
     { headers },
   );
   if (embRes.ok) {
     const emb = await embRes.json();
-    console.log(`Embedders for '${INDEX_NAME}':`, JSON.stringify(emb, null, 2));
+    console.log(`\n🔧 Embedders configured:`, Object.keys(emb).length > 0 ? '✅' : '❌');
   } else {
     console.log(
-      `Embedders endpoint unavailable or not configured for '${INDEX_NAME}'`,
+      `\n🔧 Embedders: ❌ Not configured`,
     );
+  }
+
+  // Check synonyms
+  const synRes = await fetch(
+    `${API_URL}/indexes/${INDEX_NAME}/settings/synonyms`,
+    { headers },
+  );
+  if (synRes.ok) {
+    const synonyms = await synRes.json();
+    const synonymCount = Object.keys(synonyms).length;
+    console.log(`🔤 Synonyms configured: ${synonymCount > 0 ? '✅' : '❌'} (${synonymCount} terms)`);
+  } else {
+    console.log(`🔤 Synonyms: ❌ Failed to check`);
   }
 
   // Version (auth protected in v1.x)
