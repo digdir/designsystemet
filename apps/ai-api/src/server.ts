@@ -297,14 +297,19 @@ app.post('/api/search', async (req, res) => {
     // Format results for quick search
     const formattedResults = deduplicatedResults
       .slice(0, 8)
-      .map((doc: SearchResult) => ({
-        title: doc.title,
-        content:
-          doc.content?.substring(0, 200) +
-          ((doc.content?.length ?? 0) > 200 ? '…' : ''),
-        url: doc.url?.replace(langRegex, '$1$3/$2/$4'),
-        type: doc.type || 'component',
-      }));
+      .map((doc: SearchResult) => {
+        // Strip markdown formatting for clean, consistent snippets
+        const plainText = stripMarkdown(doc.content || '');
+        const snippet =
+          plainText.substring(0, 200) + (plainText.length > 200 ? '…' : '');
+
+        return {
+          title: doc.title,
+          content: snippet,
+          url: doc.url?.replace(langRegex, '$1$3/$2/$4'),
+          type: doc.type || 'component',
+        };
+      });
 
     res.status(200).json({
       query,
@@ -335,6 +340,43 @@ function normalizeUrl(url: string): string {
     .toLowerCase() // Case insensitive matching
     .replace(/[?#].*$/, ''); // Remove query params and fragments
 }
+
+// Helper function to strip markdown formatting and return clean plain text
+function stripMarkdown(text: string): string {
+  if (!text) return '';
+
+  return (
+    text
+      // Remove code blocks
+      .replace(/```[\s\S]*?```/g, '')
+      // Remove inline code
+      .replace(/`([^`]+)`/g, '$1')
+      // Remove bold/italic (**, __, *, _)
+      .replace(/\*\*([^*]+)\*\*/g, '$1')
+      .replace(/__([^_]+)__/g, '$1')
+      .replace(/\*([^*]+)\*/g, '$1')
+      .replace(/_([^_]+)_/g, '$1')
+      // Remove links but keep text: [text](url) -> text
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+      // Remove images: ![alt](url) -> ''
+      .replace(/!\[[^\]]*\]\([^)]+\)/g, '')
+      // Remove headings #
+      .replace(/^#{1,6}\s+/gm, '')
+      // Remove horizontal rules
+      .replace(/^[-*_]{3,}$/gm, '')
+      // Remove list markers
+      .replace(/^\s*[-*+]\s+/gm, '')
+      .replace(/^\s*\d+\.\s+/gm, '')
+      // Remove blockquotes
+      .replace(/^>\s+/gm, '')
+      // Clean up multiple spaces and newlines
+      .replace(/\n{3,}/g, '\n\n')
+      .replace(/\s{2,}/g, ' ')
+      .trim()
+  );
+}
+
+// The first 200
 
 // Helper function to deduplicate search results by document URL
 // Keeps the highest-scoring result/chunk for each normalized URL
@@ -434,17 +476,17 @@ app.post('/api/ai-search', async (req, res) => {
       {
         role: 'system',
         content: `You are an AI assistant for Digdir's Designsystemet, a Norwegian design system for public sector digital services.
-        Answer questions about the components, patterns, and guidelines based on the provided context.
+        Answer questions about the components, patterns, and guidelines based on the provided context (at designsystemet.no).
         Always be helpful, accurate, and concise.
 
-        If the question can be answered using the provided context, use that information and cite your sources using [1], [2], etc.
-        If there's no relevant context, or the context doesn't contain the information needed, provide a general response based on your knowledge of design systems.
+        If the question can be answered using the provided context (designsystemet.no), use that information and cite your sources using [1], [2], etc.
+        If there's no relevant context, or the context doesn't contain the information needed, provide a general response based on your knowledge of design systems. it should be clear that you are able to find it in Designsystemet.
 
         Use Norwegian (bokmål) for most responses, but you can respond in English if the question is in English.
 
         Guidelines:
         1. Focus on providing accurate information about the design system's components and patterns.
-        2. Include code examples from the provided context when appropriate, formatted in markdown. Do not make up code examples, unless explicitly asked for.
+        2. When showing code, also show where in designsystemet.no the code is found. Otherwise never, ever show code.
         3. When answering questions about components, mention their purpose, usage, and any important variants.
         4. Do not make up information about the design system that isn't in the provided context.
         5. If you're unsure about something, be honest about your uncertainty.
