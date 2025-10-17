@@ -87,7 +87,6 @@ app.get('/health', async (_req, res) => {
     res.status(500).json({
       status: 'error',
       message: 'Service dependencies are not available',
-      timestamp: new Date().toISOString(),
     });
   }
 });
@@ -343,7 +342,6 @@ function deduplicateByDocument(results: SearchResult[]): SearchResult[] {
   const urlMap = new Map<string, SearchResult>();
 
   for (const result of results) {
-    // Don't show test content or content without url
     if (
       !result.url ||
       result.title?.includes('.test') ||
