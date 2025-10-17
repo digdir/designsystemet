@@ -1,5 +1,5 @@
 # ===========================
-# AI/Search Environment (.ai-env.example)
+# AI Search Environment (.ai-env.example)
 # Copy to .ai-env and fill values. This file is NOT loaded automatically by shells.
 # Our scripts try several candidate paths to load .ai-env.
 # ===========================
@@ -29,4 +29,4 @@ AZURE_GPT_DEPLOY=gpt-4o
 
 # Notes:
 # - Use the SAME embedding model for ingestion and query. Do NOT mix models.
-# - After self-hosting Meilisearch, create Admin/Search keys and paste them here.
+# - After self-hosting Meilisearch, create Admin Search keys and paste them here.
