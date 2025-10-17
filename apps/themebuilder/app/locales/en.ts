@@ -26,6 +26,11 @@ export default {
       'go-to-homepage': 'Go to homepage',
     },
   },
+  mdx: {
+    error: {
+      loading: 'Could not load content',
+    },
+  },
   accessibility: {
     'skip-link': 'Skip to main content',
   },

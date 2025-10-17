@@ -13,6 +13,7 @@ import { useChangeLanguage } from 'remix-i18next/react';
 import { Figma } from '~/_components/logos/figma';
 import { Github } from '~/_components/logos/github';
 import { Slack } from '~/_components/logos/slack';
+import { useSearch } from '~/_utils/use-search';
 import i18n from '~/i18n';
 import type { Route as RootRoute } from './../../+types/root';
 import type { Route } from './+types/layout';
@@ -50,6 +51,7 @@ const rightLinks: FooterLinkListItemProps[] = [
 
 export default function RootLayout() {
   const { t } = useTranslation();
+
   const { lang, centerLinks, menu } = useRouteLoaderData('root') as Omit<
     RootRoute.ComponentProps['loaderData'],
     'centerLinks'
@@ -63,6 +65,8 @@ export default function RootLayout() {
 
   useChangeLanguage(lang);
 
+  const { handleSearch, handleAiSearch } = useSearch();
+
   return (
     <>
       <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
@@ -70,6 +74,8 @@ export default function RootLayout() {
         menu={menu}
         logoLink={`/${lang === 'no' ? 'no' : lang === 'en' ? 'en' : 'no'}`}
         themeSwitcher
+        onSearch={handleSearch}
+        onAiSearch={handleAiSearch}
       />
       <main id='main'>
         <Outlet />
@@ -108,6 +114,7 @@ const ErrorWrapperRoot = ({
   rightLinks,
 }: ErrorWrapperRootProps) => {
   const { t } = useTranslation();
+  const { handleSearch, handleAiSearch } = useSearch();
 
   return (
     <>
@@ -116,6 +123,8 @@ const ErrorWrapperRoot = ({
         menu={menu}
         logoLink={`/${lang === 'no' ? 'no' : lang === 'en' ? 'en' : 'no'}`}
         themeSwitcher
+        onSearch={handleSearch}
+        onAiSearch={handleAiSearch}
       />
       <main id='main'>
         <ContentContainer>{children}</ContentContainer>
