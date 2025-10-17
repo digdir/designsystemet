@@ -343,9 +343,8 @@ async function processComponentDirectory(componentDir, dryRun = false) {
   try {
     const combinedData = await combineComponentFiles(componentDir);
 
-    if (!combinedData.content || combinedData.content.trim().length < 50) {
+    if (!combinedData.content || combinedData.content.trim().length < 50)
       return [];
-    }
 
     const chunks = chunkText(combinedData.content);
     const relativePath = path.relative(REPO_ROOT, componentDir);
@@ -363,16 +362,14 @@ async function processComponentDirectory(componentDir, dryRun = false) {
 
       return {
         id,
-        title:
-          chunks.length > 1
-            ? `${combinedData.title} (Part ${index + 1})`
-            : combinedData.title,
+        title: combinedData.title,
+        chunk_part: chunks.length > 1 ? index + 1 : null,
+        total_chunks: chunks.length > 1 ? chunks.length : null,
         content: chunk,
         url: combinedData.url,
         file_path: relativePath,
         lang: combinedData.lang,
         type: 'component',
-        // Use _vectors with embedder name for Meilisearch
         _vectors: dryRun
           ? null
           : {
