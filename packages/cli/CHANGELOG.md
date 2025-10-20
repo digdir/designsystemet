@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.6.1
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4129](https://github.com/digdir/designsystemet/pull/4129))
+
+- Update npm non-major dependencies ([#4110](https://github.com/digdir/designsystemet/pull/4110))
+
 ## 1.6.0
 
 ### Patch Changes
