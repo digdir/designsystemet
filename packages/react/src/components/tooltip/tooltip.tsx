@@ -129,7 +129,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
               safeAreaElement,
             ],
           }).then(({ x, y }) => {
-            tooltip.style.translate = `${x}px ${y}px`;
+            tooltip.style.translate = `${Math.round(x)}px ${Math.round(y)}px`;
           });
         });
       }

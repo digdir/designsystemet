@@ -60,7 +60,7 @@ export const SuggestionList = forwardRef<
           strategy: 'fixed',
           middleware: [triggerWidth],
         }).then(({ x, y }) => {
-          list.style.translate = `${x}px calc(${y}px + var(--dsc-suggestion-list-gap))`;
+          list.style.translate = `${Math.round(x)}px calc(${Math.round(y)}px + var(--dsc-suggestion-list-gap))`;
         });
       });
     }
