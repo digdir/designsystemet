@@ -22,11 +22,6 @@ export const useTokenModal = () => {
   const { colors, baseBorderRadius } = useThemebuilder();
 
   const [name, setName] = useState('theme');
-  const [formatWin, setFormatWin] = useState(
-    navigator.userAgent.includes('Windows'),
-  );
-
-  const seperator = formatWin ? ' ^\n' : ' \\\n';
 
   const theme: CreateTokensOptions = {
     name,
@@ -67,7 +62,8 @@ export const useTokenModal = () => {
   };
 
   const packageWithTag = `@digdir/designsystemet${isProduction ? '@latest' : '@next'}`;
-  const buildSnippet = `npx ${packageWithTag} tokens build`;
+  const cliBuildSnippet = `npx ${packageWithTag} tokens build`;
+  const configBuildSnippet = `npx ${packageWithTag} tokens create --config designsystemet.config.json\nnpx ${packageWithTag} tokens build --config designsystemet.config.json`;
 
   const cliSnippet = [
     `npx ${packageWithTag} tokens create`,
@@ -76,12 +72,11 @@ export const useTokenModal = () => {
     `${colors.support.length > 0 ? `--${colorCliOptions.support} ${setCliColors(colors.support).trimEnd()}` : ''}`,
     `--border-radius ${baseBorderRadius}`,
     `--theme "${name}"`,
-  ]
-    .filter(Boolean)
-    .join(seperator);
+  ].filter(Boolean);
 
   const configSnippet = {
     $schema: 'node_modules/@digdir/designsystemet/dist/config.schema.json',
+    outDir: './design-tokens',
     themes: {
       [theme.name]: {
         colors: {
@@ -98,10 +93,14 @@ export const useTokenModal = () => {
     themeName: name,
     setThemeName: setName,
     theme,
-    cliSnippet,
-    buildSnippet,
-    formatWin,
-    setFormatWin,
+    cliSnippet: {
+      windows: cliSnippet.join(' ^\n'),
+      unix: cliSnippet.join(' \\\n'),
+    },
+    buildSnippet: {
+      cli: cliBuildSnippet,
+      config: configBuildSnippet,
+    },
     configSnippet: JSON.stringify(configSnippet),
   };
 };
