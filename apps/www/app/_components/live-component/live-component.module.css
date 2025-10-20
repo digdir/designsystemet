@@ -62,6 +62,7 @@
     margin-block: var(--ds-size-2);
     margin-inline-end: var(--ds-size-4);
     font-size: var(--ds-font-size-3);
+    height: fit-content;
   }
 }
 .editorWrapper {
