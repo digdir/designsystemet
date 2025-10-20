@@ -7,21 +7,23 @@ import {
 } from '@digdir/designsystemet-react';
 import { useRef, useState } from 'react';
 
-export const Preview = () => (
-  <Dialog.TriggerContext>
-    <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-    <Dialog>
-      <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
-        Dialog header
-      </Heading>
-      <Paragraph style={{ marginBottom: 'var(--ds-size-2)' }}>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
-        doloremque obcaecati assumenda odio ducimus sunt et.
-      </Paragraph>
-      <Paragraph data-size='sm'>Dialog footer</Paragraph>
-    </Dialog>
-  </Dialog.TriggerContext>
-);
+export const Preview = () => {
+  return (
+    <Dialog.TriggerContext>
+      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+      <Dialog>
+        <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
+          Dialog header
+        </Heading>
+        <Paragraph style={{ marginBottom: 'var(--ds-size-2)' }}>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
+          doloremque obcaecati assumenda odio ducimus sunt et.
+        </Paragraph>
+        <Paragraph data-size='sm'>Dialog footer</Paragraph>
+      </Dialog>
+    </Dialog.TriggerContext>
+  );
+};
 
 export const WithRef = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -84,25 +86,27 @@ export const WithForm = () => {
   );
 };
 
-export const WithBlocks = () => (
-  <Dialog.TriggerContext>
-    <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-    <Dialog>
-      <Dialog.Block>
-        <Paragraph data-size='sm'>Dialog subtitle</Paragraph>
-        <Heading>Dialog with dividers</Heading>
-      </Dialog.Block>
-      <Dialog.Block>
-        <Paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-          sodales eros justo.
-        </Paragraph>
-      </Dialog.Block>
-      <Dialog.Block>
-        <Button variant='secondary' data-command='close'>
-          Close
-        </Button>
-      </Dialog.Block>
-    </Dialog>
-  </Dialog.TriggerContext>
-);
+export const WithBlocks = () => {
+  return (
+    <Dialog.TriggerContext>
+      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+      <Dialog>
+        <Dialog.Block>
+          <Paragraph data-size='sm'>Dialog subtitle</Paragraph>
+          <Heading>Dialog with dividers</Heading>
+        </Dialog.Block>
+        <Dialog.Block>
+          <Paragraph>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+            sodales eros justo.
+          </Paragraph>
+        </Dialog.Block>
+        <Dialog.Block>
+          <Button variant='secondary' data-command='close'>
+            Close
+          </Button>
+        </Dialog.Block>
+      </Dialog>
+    </Dialog.TriggerContext>
+  );
+};

@@ -1,6 +1,8 @@
 import { Heading } from '@digdir/designsystemet-react';
 
-export const Preview = () => <Heading>Tittel tekst</Heading>;
+export const Preview = () => {
+  return <Heading>Tittel tekst</Heading>;
+};
 
 export const Sizes = () => (
   <>

@@ -23,6 +23,9 @@ import classes from './live-component.module.css';
 const scopes = {
   ...ds,
   ...aksel,
+  useState,
+  useEffect,
+  useRef,
 };
 
 type LiveComponentProps = {

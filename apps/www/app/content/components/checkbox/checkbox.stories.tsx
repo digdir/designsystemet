@@ -5,9 +5,11 @@ import {
 } from '@digdir/designsystemet-react';
 import { useState } from 'react';
 
-export const Preview = () => (
-  <Checkbox label='Checkbox label' description='Description' value='value' />
-);
+export const Preview = () => {
+  return (
+    <Checkbox label='Checkbox label' description='Description' value='value' />
+  );
+};
 
 export const Group = () => {
   const [value, setValue] = useState<string[]>(['epost']);
@@ -114,10 +116,10 @@ export const WithError = () => {
   );
 };
 
-export const Disabled = () => (
-  <Checkbox label='Checkbox label' value='value' disabled />
-);
+export const Disabled = () => {
+  return <Checkbox label='Checkbox label' value='value' disabled />;
+};
 
-export const ReadOnly = () => (
-  <Checkbox label='Checkbox label' value='value' readOnly checked />
-);
+export const ReadOnly = () => {
+  return <Checkbox label='Checkbox label' value='value' readOnly checked />;
+};

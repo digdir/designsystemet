@@ -1,7 +1,9 @@
 import { Tag } from '@digdir/designsystemet-react';
 import { RobotIcon } from '@navikt/aksel-icons';
 
-export const Preview = () => <Tag>New</Tag>;
+export const Preview = () => {
+  return <Tag>New</Tag>;
+};
 
 export const Sizes = () => {
   const sizes = ['sm', 'md', 'lg'] as const;
@@ -39,8 +41,8 @@ export const Colors = () => {
   );
 };
 
-export const Icons = () => (
-  <>
+export const Icons = () => {
+  return (
     <Tag
       data-color='neutral'
       data-size='md'
@@ -51,5 +53,5 @@ export const Icons = () => (
       <RobotIcon aria-hidden style={{ marginInlineEnd: 'var(--ds-size-1)' }} />
       Teksten er KI-generert
     </Tag>
-  </>
-);
+  );
+};

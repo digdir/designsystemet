@@ -1,6 +1,8 @@
 import { Heading, Paragraph, Skeleton } from '@digdir/designsystemet-react';
 
-export const Preview = () => <Skeleton width={200} height={100} />;
+export const Preview = () => {
+  return <Skeleton width={200} height={100} />;
+};
 
 export const Components = () => {
   return (
@@ -36,21 +38,23 @@ export const UsageExample = () => {
   );
 };
 
-export const Text = () => (
-  <>
-    <div style={{ flex: '1 1 200px' }}>
-      <Heading>En tittel</Heading>
-      <Paragraph data-size='sm'>
-        Her er en paragraf som går over flere linjer
-      </Paragraph>
-    </div>
-    <div style={{ flex: '1 1 200px' }}>
-      <Heading>
-        <Skeleton variant='text'>En tittel</Skeleton>
-      </Heading>
-      <Paragraph data-size='sm'>
-        <Skeleton variant='text' width={40} />
-      </Paragraph>
-    </div>
-  </>
-);
+export const Text = () => {
+  return (
+    <>
+      <div style={{ flex: '1 1 200px' }}>
+        <Heading>En tittel</Heading>
+        <Paragraph data-size='sm'>
+          Her er en paragraf som går over flere linjer
+        </Paragraph>
+      </div>
+      <div style={{ flex: '1 1 200px' }}>
+        <Heading>
+          <Skeleton variant='text'>En tittel</Skeleton>
+        </Heading>
+        <Paragraph data-size='sm'>
+          <Skeleton variant='text' width={40} />
+        </Paragraph>
+      </div>
+    </>
+  );
+};
