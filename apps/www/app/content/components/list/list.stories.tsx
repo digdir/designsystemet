@@ -20,7 +20,9 @@ export const Ordered = () => (
     <List.Ordered>
       <List.Item>Tørk over kyllingfiletene før du krydrer og steker.</List.Item>
       <List.Item>Ha salt og pepper på filetene.</List.Item>
-      <List.Item>Stek filetene på sterk varme i to minutter på hver side.</List.Item>
+      <List.Item>
+        Stek filetene på sterk varme i to minutter på hver side.
+      </List.Item>
     </List.Ordered>
   </>
 );
@@ -39,9 +41,7 @@ export const Unordered = () => (
         et gjennomsnittlig antall ansatte som tilsvarer ti årsverk eller mer
       </List.Item>
       <List.Item>balansesum som er 27 millioner kroner eller mer</List.Item>
-      <List.Item>
-        driftsinntekter på 35 millioner kroner eller mer
-      </List.Item>
+      <List.Item>driftsinntekter på 35 millioner kroner eller mer</List.Item>
     </List.Unordered>
   </>
 );

@@ -1,8 +1,12 @@
-import { Checkbox, Fieldset, ValidationMessage } from '@digdir/designsystemet-react';
+import {
+  Checkbox,
+  Fieldset,
+  ValidationMessage,
+} from '@digdir/designsystemet-react';
 import { useState } from 'react';
 
 export const Preview = () => (
-  <Checkbox label="Checkbox label" description="Description" value="value" />
+  <Checkbox label='Checkbox label' description='Description' value='value' />
 );
 
 export const Group = () => {
@@ -17,8 +21,8 @@ export const Group = () => {
         Velg alle alternativene som er relevante for deg.
       </Fieldset.Description>
       <Checkbox
-        label="E-post"
-        value="epost"
+        label='E-post'
+        value='epost'
         checked={value.includes('epost')}
         onChange={(e) => {
           if (e.target.checked) {
@@ -29,8 +33,8 @@ export const Group = () => {
         }}
       />
       <Checkbox
-        label="Telefon"
-        value="telefon"
+        label='Telefon'
+        value='telefon'
         checked={value.includes('telefon')}
         onChange={(e) => {
           if (e.target.checked) {
@@ -41,8 +45,8 @@ export const Group = () => {
         }}
       />
       <Checkbox
-        label="SMS"
-        value="sms"
+        label='SMS'
+        value='sms'
         checked={value.includes('sms')}
         onChange={(e) => {
           if (e.target.checked) {
@@ -58,7 +62,8 @@ export const Group = () => {
 
 export const WithError = () => {
   const [value, setValue] = useState<string[]>([]);
-  const error = value.length < 2 ? 'Du må velge minst to kontaktalternativ' : '';
+  const error =
+    value.length < 2 ? 'Du må velge minst to kontaktalternativ' : '';
 
   return (
     <Fieldset>
@@ -69,8 +74,8 @@ export const WithError = () => {
         Velg alle alternativene som er relevante for deg.
       </Fieldset.Description>
       <Checkbox
-        label="E-post"
-        value="epost"
+        label='E-post'
+        value='epost'
         checked={value.includes('epost')}
         onChange={(e) => {
           if (e.target.checked) {
@@ -81,8 +86,8 @@ export const WithError = () => {
         }}
       />
       <Checkbox
-        label="Telefon"
-        value="telefon"
+        label='Telefon'
+        value='telefon'
         checked={value.includes('telefon')}
         onChange={(e) => {
           if (e.target.checked) {
@@ -93,8 +98,8 @@ export const WithError = () => {
         }}
       />
       <Checkbox
-        label="SMS"
-        value="sms"
+        label='SMS'
+        value='sms'
         checked={value.includes('sms')}
         onChange={(e) => {
           if (e.target.checked) {
@@ -110,9 +115,9 @@ export const WithError = () => {
 };
 
 export const Disabled = () => (
-  <Checkbox label="Checkbox label" value="value" disabled />
+  <Checkbox label='Checkbox label' value='value' disabled />
 );
 
 export const ReadOnly = () => (
-  <Checkbox label="Checkbox label" value="value" readOnly checked />
+  <Checkbox label='Checkbox label' value='value' readOnly checked />
 );

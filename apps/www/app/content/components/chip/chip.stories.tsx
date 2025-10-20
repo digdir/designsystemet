@@ -11,9 +11,7 @@ export const Preview = () => (
   </>
 );
 
-export const CheckboxVariant = () => (
-  <Chip.Checkbox>Nynorsk</Chip.Checkbox>
-);
+export const CheckboxVariant = () => <Chip.Checkbox>Nynorsk</Chip.Checkbox>;
 
 export const Removable = () => (
   <Chip.Removable aria-label='Slett Norge'>Norge</Chip.Removable>

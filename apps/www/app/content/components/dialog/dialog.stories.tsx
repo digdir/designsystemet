@@ -1,4 +1,10 @@
-import { Dialog, Heading, Paragraph, Button, Textfield } from '@digdir/designsystemet-react';
+import {
+  Button,
+  Dialog,
+  Heading,
+  Paragraph,
+  Textfield,
+} from '@digdir/designsystemet-react';
 import { useRef, useState } from 'react';
 
 export const Preview = () => (
@@ -12,7 +18,7 @@ export const Preview = () => (
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
         doloremque obcaecati assumenda odio ducimus sunt et.
       </Paragraph>
-      <Paragraph data-size="sm">Dialog footer</Paragraph>
+      <Paragraph data-size='sm'>Dialog footer</Paragraph>
     </Dialog>
   </Dialog.TriggerContext>
 );
@@ -45,12 +51,12 @@ export const WithForm = () => {
   return (
     <Dialog.TriggerContext>
       <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-      <Dialog ref={dialogRef} onClose={() => setInput('')} closedby="any">
+      <Dialog ref={dialogRef} onClose={() => setInput('')} closedby='any'>
         <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
           Dialog med skjema
         </Heading>
         <Textfield
-          label="Navn"
+          label='Navn'
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
@@ -69,7 +75,7 @@ export const WithForm = () => {
           >
             Send inn skjema
           </Button>
-          <Button variant="secondary" data-command="close">
+          <Button variant='secondary' data-command='close'>
             Avbryt
           </Button>
         </div>
@@ -83,7 +89,7 @@ export const WithBlocks = () => (
     <Dialog.Trigger>Open Dialog</Dialog.Trigger>
     <Dialog>
       <Dialog.Block>
-        <Paragraph data-size="sm">Dialog subtitle</Paragraph>
+        <Paragraph data-size='sm'>Dialog subtitle</Paragraph>
         <Heading>Dialog with dividers</Heading>
       </Dialog.Block>
       <Dialog.Block>
@@ -93,7 +99,7 @@ export const WithBlocks = () => (
         </Paragraph>
       </Dialog.Block>
       <Dialog.Block>
-        <Button variant="secondary" data-command="close">
+        <Button variant='secondary' data-command='close'>
           Close
         </Button>
       </Dialog.Block>

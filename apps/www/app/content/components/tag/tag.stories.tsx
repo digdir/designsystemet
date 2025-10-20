@@ -17,7 +17,17 @@ export const Sizes = () => {
 };
 
 export const Colors = () => {
-  const colors = ['accent', 'brand1', 'brand2', 'brand3', 'neutral', 'success', 'warning', 'danger', 'info'] as const;
+  const colors = [
+    'accent',
+    'brand1',
+    'brand2',
+    'brand3',
+    'neutral',
+    'success',
+    'warning',
+    'danger',
+    'info',
+  ] as const;
   return (
     <>
       {colors.map((color) => (
@@ -38,10 +48,7 @@ export const Icons = () => (
         paddingInlineStart: 'var(--ds-size-1)',
       }}
     >
-      <RobotIcon
-        aria-hidden
-        style={{ marginInlineEnd: 'var(--ds-size-1)' }}
-      />
+      <RobotIcon aria-hidden style={{ marginInlineEnd: 'var(--ds-size-1)' }} />
       Teksten er KI-generert
     </Tag>
   </>

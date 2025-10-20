@@ -34,9 +34,19 @@ export const WithError = () => {
         Trondheim er delt inn i fire bydeler
       </Fieldset.Description>
       <Radio label='Østbyen' value='ostbyen' name='city' aria-invalid='true' />
-      <Radio label='Lerkendal' value='lerkendal' name='city' aria-invalid='true' />
+      <Radio
+        label='Lerkendal'
+        value='lerkendal'
+        name='city'
+        aria-invalid='true'
+      />
       <Radio label='Heimdal' value='heimdal' name='city' aria-invalid='true' />
-      <Radio label='Midtbyen' value='midtbyen' name='city' aria-invalid='true' />
+      <Radio
+        label='Midtbyen'
+        value='midtbyen'
+        name='city'
+        aria-invalid='true'
+      />
     </Fieldset>
   );
 };

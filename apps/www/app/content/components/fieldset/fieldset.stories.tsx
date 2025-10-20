@@ -1,4 +1,4 @@
-import { Fieldset, Radio, Checkbox } from '@digdir/designsystemet-react';
+import { Checkbox, Fieldset, Radio } from '@digdir/designsystemet-react';
 
 export const Preview = () => (
   <Fieldset>
@@ -6,16 +6,16 @@ export const Preview = () => (
     <Fieldset.Description>
       Valget vil hjelpe oss å forbedre innholdet vi viser deg.
     </Fieldset.Description>
-    <Radio label="Barsnesfjorden" name="radio" value="barsnesfjorden" />
-    <Radio label="Eidsfjorden" name="radio" value="eidsfjorden" />
-    <Radio label="Ingen av de" name="radio" value="ingen-av-de" />
+    <Radio label='Barsnesfjorden' name='radio' value='barsnesfjorden' />
+    <Radio label='Eidsfjorden' name='radio' value='eidsfjorden' />
+    <Radio label='Ingen av de' name='radio' value='ingen-av-de' />
   </Fieldset>
 );
 
 export const WithCheckbox = () => (
   <Fieldset>
     <Fieldset.Legend>Godtar du vilkårene?</Fieldset.Legend>
-    <Checkbox label="Ja, jeg godtar" value="agree" />
+    <Checkbox label='Ja, jeg godtar' value='agree' />
   </Fieldset>
 );
 

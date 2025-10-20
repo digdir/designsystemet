@@ -47,17 +47,17 @@ export const Zebra = () => {
       </Table.Head>
       <Table.Body>
         <Table.Row>
-          <Table.HeaderCell scope="row">Januar</Table.HeaderCell>
+          <Table.HeaderCell scope='row'>Januar</Table.HeaderCell>
           <Table.Cell>1 230</Table.Cell>
           <Table.Cell>1 450</Table.Cell>
         </Table.Row>
         <Table.Row>
-          <Table.HeaderCell scope="row">Februar</Table.HeaderCell>
+          <Table.HeaderCell scope='row'>Februar</Table.HeaderCell>
           <Table.Cell>980</Table.Cell>
           <Table.Cell>1 120</Table.Cell>
         </Table.Row>
         <Table.Row>
-          <Table.HeaderCell scope="row">Mars</Table.HeaderCell>
+          <Table.HeaderCell scope='row'>Mars</Table.HeaderCell>
           <Table.Cell>1 150</Table.Cell>
           <Table.Cell>1 300</Table.Cell>
         </Table.Row>

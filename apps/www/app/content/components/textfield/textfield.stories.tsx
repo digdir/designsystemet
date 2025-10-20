@@ -16,9 +16,13 @@ export const WithCounter = () => (
   <Textfield counter={10} label='Hvor mange kroner koster det per måned?' />
 );
 
-export const Disabled = () => <Textfield label='Label' disabled value='Disabled' />;
+export const Disabled = () => (
+  <Textfield label='Label' disabled value='Disabled' />
+);
 
-export const ReadOnly = () => <Textfield label='Label' readOnly value='ReadOnly' />;
+export const ReadOnly = () => (
+  <Textfield label='Label' readOnly value='ReadOnly' />
+);
 
 export const WithError = () => (
   <Textfield label='Label' error='Dette feltet er påkrevd' />
