@@ -279,6 +279,7 @@ export const LiveComponent = ({
           className={classes['live-preview']}
           ref={setHtml}
         />
+        <LiveError className={cl('ds-alert', classes['live-preview-error'])} />
         <ds.Button
           data-color='neutral'
           data-size='sm'
@@ -306,7 +307,6 @@ export const LiveComponent = ({
           <aksel.ChevronDownIcon />
           {showEditor ? 'Hide code' : 'Show code'}
         </ds.Button>
-        <LiveError className='ds-alert' />
       </div>
       {showEditor ? <EditorWithLive html={html} /> : null}
     </LiveProvider>
