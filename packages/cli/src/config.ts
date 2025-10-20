@@ -123,7 +123,7 @@ const colorModeOverrideSchema = z
   .describe('Override values for semantic color tokens like "background-subtle", "border-default", etc.');
 
 const colorWeightOverrideSchema = z
-  .partialRecord(z.enum([...colorNames, ...baseColorNames]), colorModeOverrideSchema)
+  .partialRecord(z.enum([...colorNames]), colorModeOverrideSchema)
   .describe('The name of the color to add overrides for, e.g. "accent"');
 
 const semanticColorOverrideSchema = z
@@ -131,7 +131,7 @@ const semanticColorOverrideSchema = z
   .describe('An object with color names as keys');
 
 const severityColorOverrideSchema = z
-  .partialRecord(z.enum(baseColorNames), colorSchema)
+  .partialRecord(z.enum(baseColorNames), colorSchema.describe('A hex color, which is used for creating a color scale'))
   .optional()
   .describe('An object with severity color names as keys');
 
