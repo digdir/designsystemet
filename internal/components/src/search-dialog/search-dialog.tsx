@@ -180,7 +180,15 @@ export const SearchDialog = ({
       open={open}
       onClose={handleClose}
       className={classes.dialog}
+      closeButton={false}
     >
+      <Button
+        aria-label={t('search.close-button', 'Lukk søk')}
+        data-color='neutral'
+        icon
+        variant='tertiary'
+        data-command='close'
+      />
       <div className={classes.aboveScroll}>
         <Dialog.Block className={classes.searchBlock}>
           <Heading data-size='xs' className={classes.title}>
@@ -188,6 +196,7 @@ export const SearchDialog = ({
           </Heading>
           <Search className={classes.search}>
             <Search.Input
+              autoFocus={true}
               aria-label={t(
                 'search.input-label',
                 'Søk etter komponenter, retningslinjer og mer...',
@@ -198,7 +207,6 @@ export const SearchDialog = ({
               )}
               value={query}
               onChange={handleInputChange}
-              autoFocus
             />
             <Search.Clear onClick={handleClear} />
           </Search>
