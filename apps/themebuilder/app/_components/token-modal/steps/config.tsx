@@ -3,7 +3,13 @@ import { CodeBlock } from '@internal/components';
 import { useTranslation } from 'react-i18next';
 import classes from '../token-modal.module.css';
 
-export default function Config({ configSnippet, buildSnippet }: { configSnippet: string, buildSnippet: string }) {
+export default function Config({
+  configSnippet,
+  buildSnippet,
+}: {
+  configSnippet: string;
+  buildSnippet: string;
+}) {
   const { t } = useTranslation();
 
   return (
