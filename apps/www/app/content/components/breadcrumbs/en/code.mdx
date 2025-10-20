@@ -1,0 +1,80 @@
+---
+title: Breadcrumbs
+subtitle: Breadcrumbs er ein navigasjonskomponent med synleg sti. Vi bruker denne komponenten for å hjelpe brukarane med å forstå kvar dei er i ei struktur, for eksempel på ei nettside. Då kan dei lettare byte mellom dei ulike nivåa i strukturen.
+image: Breadcrumbs.svg
+cssfile: breadcrumbs
+---
+
+<Story story="Preview" />
+
+## Bruk
+
+Den siste lenkja i `Breadcrumbs` blir automatisk markert med `aria-current="page"`.
+
+```tsx
+<Breadcrumbs aria-label="Du er her:">
+  <Breadcrumbs.Link aria-label="Tilbake til nivå 3">Nivå 3</Breadcrumbs.Link>
+  <Breadcrumbs.List>
+    <Breadcrumbs.Item>
+      <Breadcrumbs.Link href="https://designsystemet.no/">Nivå 1</Breadcrumbs.Link>
+    </Breadcrumbs.Item>
+    <Breadcrumbs.Item>
+      <Breadcrumbs.Link href="https://designsystemet.no/niva-2/">Nivå 2</Breadcrumbs.Link>
+    </Breadcrumbs.Item>
+  </Breadcrumbs.List>
+</Breadcrumbs>
+```
+
+## Kodeeksempel
+
+### Berre tilbake-knapp
+
+Om du legg ein `Breadcrumbs.Link` direkte i `Breadcrumbs`, vil lenkja visast som ein tilbake-knapp. Det er viktig at du er konsistent i løysinga di, og bruker anten tilbake-knapp eller sti, ikkje begge delar.
+
+<Story story="BackOnly" />
+
+### Berre sti
+
+Om du legg ein `Breadcrumbs.List` direkte i `Breadcrumbs`, vil denne visast som ein sti.
+
+<Story story="ListOnly" />
+
+### Sti eller tilbake-knapp basert på skjermbreidde
+
+Om du legg både ein `Breadcrumbs.Link` og ein `Breadcrumbs.List` direkte i `Breadcrumbs`, vil tilbake-knappen visast på skjermar smalare enn 650px, og stien visast på breiare skjermar.
+
+<Story story="Preview" />
+
+## Retningslinjer
+Det er først når det er tre eller fleire nivå på ein nettstad at det er behov for `Breadcrumbs`. 
+
+**Passar til**
+- Sider der brukarane kan ønskje å gå tilbake til tidlegare nivå
+- Å hjelpe brukarar med å forstå kvar dei er i strukturen
+
+**Passar ikkje til**
+- Lineær navigasjon, for eksempel for dei ulike stega i ein arbeidsflyt eller eit skjema.
+
+### Plassering
+`Breadcrumbs` skal alltid plasserast øvst på venstre side av sida. Han skal liggje under menyen og hovudnavigasjonen, men over sidetittelen.
+
+### Skjule Breadcrumbs på mobil
+Om du har lang navigasjon, kan du setje opp komponenten til berre å vise første og siste del av søkestien på mobil.  
+Dette skjer automatisk på skjermar som er smalare enn 650px, der vi berre viser lenkja eitt nivå ned.
+
+## Tekst
+Bruk korte og tydelege namn i brødsmulestien, slik at brukarane raskt forstår kvar dei er. Teksten bør samsvare med overskriftene eller navigasjonen på nettsida, slik at det er lett å kjenne igjen nivåa.
+
+## Tilgjengelegheit
+`Breadcrumbs` kan innehalde fleire interaktive element som må kunne navigerast med tastatur. Pass derfor på at [`SkipLink`](/docs/komponenter-skiplink--docs) til hovudinnhaldet også hoppar over `Breadcrumbs`.
+
+### Siste nivå
+Den siste lenkja skal tilsvare noverande side. Den ser ut som vanleg tekst, men er koda som ein lenkje med `aria-current="page"`. På den måten får skjermlesarar korrekt informasjon om kva side brukaren er på, utan at andre brukarar feilaktig oppfattar det som ei klikkbar lenkje.
+
+## CSS
+
+### Variabler
+<CssVariables />
+
+### Attributter
+<CssAttributes />
