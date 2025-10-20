@@ -15,7 +15,7 @@ You can override the base-hexcode, as well as individual steps:
         }
       }
     },
-    "severityColors": {
+    "severity": {
       "danger": "#ff00ff"
     }
   }
