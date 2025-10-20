@@ -1,6 +1,6 @@
 import en from '@internal/components/src/_locales/en';
-import type no from './no';
 import themeModal from './en/theme-modal';
+import type no from './no';
 
 export default {
   ...en,

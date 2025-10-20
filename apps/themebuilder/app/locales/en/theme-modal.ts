@@ -12,7 +12,7 @@ export default {
   'core-ui-kit': 'Core UI Kit (opens in new tab)',
   'to-update':
     'to update a theme directly in Figma. Read more about these options on',
-    'own-theme': 'your own theme (opens in new tab)',
+  'own-theme': 'your own theme (opens in new tab)',
   page: 'page.',
   format: 'Format for Windows',
   'help-heading': 'Something not working?',
@@ -24,12 +24,14 @@ export default {
   'use-config-file':
     'Save your config file as "designsystemet.config.json". If you want to use the schema, install "@digdir/designsystemet"',
   config: {
-    'step-one': 'Save your config file as "designsystemet.config.json". If you want to use the schema, install "@digdir/designsystemet"',
-    'step-two': 'Run the code snippet to generate tokens and CSS variables for code.',
+    'step-one':
+      'Save your config file as "designsystemet.config.json". If you want to use the schema, install "@digdir/designsystemet"',
+    'step-two':
+      'Run the code snippet to generate tokens and CSS variables for code.',
   },
   cli: {
     'step-one':
-    "Copy the code snippet and run it on your machine to generate design tokens (JSON files), or paste it into the Designsystemet's",
+      "Copy the code snippet and run it on your machine to generate design tokens (JSON files), or paste it into the Designsystemet's",
     'step-two': 'Run the code snippet to generate CSS variables for code.',
-}
+  },
 } as typeof no;

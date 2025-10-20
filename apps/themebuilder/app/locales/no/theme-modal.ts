@@ -2,7 +2,7 @@ export default {
   'use-theme': 'Ta i bruk tema',
   'theme-name': 'Gi temaet ditt et navn',
   'theme-name-description':
-    'Navnet bør representere virksomheter eller produktet du skal profilere.',
+    'Navnet bør representere virksomheten eller produktet du skal profilere.',
   'generate-css': 'Generer CSS',
   'generating-css': 'Genererer CSS...',
   'figma-plugin': 'Figma plugin (åpnes i ny fane)',
@@ -20,11 +20,14 @@ export default {
   'github-issue': 'Github issue (åpnes i ny fane)',
   color: 'Farge',
   config: {
-    'step-one': 'Lagre config fila di som "designsystemet.config.json". Dersom du vil ha schema må du installere "@digdir/designsystemet"',
-    'step-two': 'Kjør kodesnutten for å generere tokens og CSS variabler til kode.',
+    'step-one':
+      'Lagre config fila di som "designsystemet.config.json". Dersom du vil ha schema må du installere "@digdir/designsystemet"',
+    'step-two':
+      'Kjør kodesnutten for å generere tokens og CSS variabler til kode.',
   },
   cli: {
-    'step-one': 'Kopier kodesnutten og kjør den på maskinen din for å generere design tokens (json-filer), eller lim den inn i Designsystemet sin',
+    'step-one':
+      'Kopier kodesnutten og kjør den på maskinen din for å generere design tokens (json-filer), eller lim den inn i Designsystemet sin',
     'step-two': 'Kjør kodesnutten for å generere CSS variabler til kode.',
-  }
-}
+  },
+};
