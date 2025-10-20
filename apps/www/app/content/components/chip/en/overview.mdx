@@ -1,0 +1,72 @@
+---
+title: Chip
+image: Chip.svg
+cssfile: chip
+---
+
+`Chip` are small, interactive components that allow users to control how they want to view content. For example, they can be used to filter categories in search results and show which filters are active.
+
+<Story story="Preview" />
+
+## Usage
+
+```tsx
+import { Chip } from '@digdir/designsystemet-react';
+
+// as radio
+<Chip.Radio name="my-chip" defaultChecked>You are using the Chip component!</Chip.Radio>;
+
+// as checkbox
+<Chip.Checkbox name="my-chip" defaultChecked>You are using the Chip component!</Chip.Checkbox>;
+
+// as removable
+<Chip.Removable>You are using the Chip component!</Chip.Removable>;
+
+// as button
+<Chip.Button>You are using the Chip component!</Chip.Button>;
+```
+
+## Code Examples
+
+### `Chip.Checkbox`
+
+`Chip.Checkbox` can be used as an alternative to `Checkbox`.
+
+<Story story="CheckboxVariant" />
+
+### `Chip.Removable`
+
+`Chip.Removable` contains a cross that indicates the filter can be removed. It's important to note that `aria-label` must be added if the content in Chip doesn't explain that it can be removed.
+
+<Story story="Removable" />
+
+### `Chip.Button`
+
+`Chip.Button` can be used as an alternative to `Button`.
+
+<Story story="Button" />
+
+## Guidelines
+
+`Chip` lets users control how they want to view content.
+
+Avoid placing `Chip` vertically. If you want to show options below each other, use [`Checkbox`](/docs/komponenter-checkbox--docs) or [`Radio`](/docs/komponenter-radio--docs) instead. A group of multiple `Chip` can wrap across multiple lines.
+
+**Suitable for:**
+
+- Filtering information, for example in lists or tables.
+- Showing which filters are selected.
+
+**Not suitable for:**
+
+- Notifications for numbers or status (use [`Badge`](/docs/komponenter-badge--docs) instead).
+- Marking content with category/topic that is not interactive. Use the [`Tag`](/docs/komponenter-tag--docs) component instead if category/topic is not clickable.
+- Menus, such as side menus or main menus
+
+## Text
+
+`Chip` should have as few words as possible, preferably just one or two.
+
+## Accessibility
+
+If parts of a page are updated while users are doing something on the page, we must ensure that users with screen readers are notified. We can use an `ARIA live region` for this, which can show the number of hits or other changes.

@@ -1,0 +1,47 @@
+---
+title: Skeleton
+image: Skeleton.svg
+cssfile: skeleton
+---
+
+`Skeleton` is used to show that content on a page is being loaded. Instead of showing a [`Spinner`](/docs/komponenter-loaders-spinner--docs) that only indicates something is happening, `Skeleton` can give the user a visual hint of how the content will eventually look.
+
+<Story story="Preview" />
+
+## Usage
+
+```tsx
+import { Skeleton } from '@digdir/designsystemet-react';
+
+<Skeleton width={200} height={100} />
+```
+
+## Code Examples
+
+### Variants
+
+Skeleton comes in three different variants: `rectangle`, `circle`, and `text`.
+
+<Story story="Components" />
+
+### Usage Example
+
+<Story story="UsageExample" />
+
+### Text Variant
+
+<Story story="Text" />
+
+## Guidelines
+
+`Skeleton` is an alternative to `Spinner` when you want to indicate that content is being loaded. `Skeleton` helps users better understand what's coming and perceive the wait time as shorter.
+
+**Suitable for**
+
+- indicating that content on a page is being loaded
+- giving the user an indication of how the content will look when loaded
+- using in areas where content is expected to take more than 1 second to load
+
+**Not suitable for**
+
+- indicating that the system is working on a task the user must wait for (use [Spinner](/docs/komponenter-loaders-spinner--docs) instead)

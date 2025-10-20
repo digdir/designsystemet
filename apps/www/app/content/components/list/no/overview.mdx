@@ -1,0 +1,46 @@
+---
+title: List
+image: List.svg
+cssfile: list
+---
+
+`List` brukes for å presentere innhold på en oversiktlig og strukturert måte.
+
+<Story story="Preview" />
+
+## Bruk
+
+Listen kan være både sortert og usortert, dette endrer du ved å bruke `List.Ordered` eller `List.Unordered`.
+
+```tsx
+import { List } from '@digdir/designsystemet-react';
+
+<List.Unordered>
+  <List.Item>Item</List.Item>
+</List.Unordered>
+```
+
+## Kodeeksempler
+
+### Usortert liste
+
+<Story story="Unordered" />
+
+### Sortert liste
+
+<Story story="Ordered" />
+
+## Retningslinjer
+
+Lister gjør innhold lettere å skumme og forstå. Bruk sorterte (ordnede) lister når rekkefølgen er viktig, og usorterte når den ikke er det.
+
+**Passer til å**
+
+- gi brukerne rask oversikt over innhold i lengre tekster
+- liste opp kriterier
+- vise trinn i en prosess
+
+**Passer ikke til å**
+
+- vise brukerne lengre innhold
+- sammenligne flere grupper av informasjon

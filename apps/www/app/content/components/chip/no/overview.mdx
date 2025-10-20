@@ -1,0 +1,72 @@
+---
+title: Chip
+image: Chip.svg
+cssfile: chip
+---
+
+`Chip` er små, interaktive komponenter som lar brukerne styre hvordan de vil se innhold. For eksempel kan de brukes til å filtrere kategorier i et søkeresultat og vise hvilke filter som er aktive.
+
+<Story story="Preview" />
+
+## Bruk
+
+```tsx
+import { Chip } from '@digdir/designsystemet-react';
+
+// som radio
+<Chip.Radio name="my-chip" defaultChecked>You are using the Chip component!</Chip.Radio>;
+
+// som checkbox
+<Chip.Checkbox name="my-chip" defaultChecked>You are using the Chip component!</Chip.Checkbox>;
+
+// som removable
+<Chip.Removable>You are using the Chip component!</Chip.Removable>;
+
+// som button
+<Chip.Button>You are using the Chip component!</Chip.Button>;
+```
+
+## Kodeeksempler
+
+### `Chip.Checkbox`
+
+`Chip.Checkbox` kan brukes som et alternativ til `Checkbox`.
+
+<Story story="CheckboxVariant" />
+
+### `Chip.Removable`
+
+`Chip.Removable` inneholder et kryss som indikerer at filteret kan fjernes. Det er viktig å merke seg at `aria-label` må legges til dersom innholdet i Chip ikke forklarer at den kan fjernes.
+
+<Story story="Removable" />
+
+### `Chip.Button`
+
+`Chip.Button` kan brukes som et alternativ til `Button`.
+
+<Story story="Button" />
+
+## Retningslinjer
+
+`Chip` lar brukerne styre hvordan de vil vise innhold.
+
+Unngå å plassere `Chip` vertikalt. Skal du vise alternativ under hverandre, bruk heller [`Checkbox`](/docs/komponenter-checkbox--docs) eller [`Radio`](/docs/komponenter-radio--docs). En gruppe med flere `Chip` kan brytes over flere linjer.
+
+**Passer til å:**
+
+- Filtrere informasjon, for eksempel i lister eller tabeller.
+- Vise hvilke filter som er valgt.
+
+**Passer ikke til:**
+
+- Varsel for tall eller status (bruk heller [`Badge`](/docs/komponenter-badge--docs)).
+- Å merke innhold med kategori/emne som ikke er interaktivt. Bruk heller [`Tag`](/docs/komponenter-tag--docs)-komponenten dersom kategori/emne ikke er klikkbart.
+- Menyer, som sidemenyer eller hovedmenyer
+
+## Tekst
+
+`Chip` bør ha så få ord som mulig, helst bare ett eller to.
+
+## Tilgjengelighet
+
+Hvis deler av en side blir oppdatert samtidig som brukerne gjør noe på siden, må vi passe på at brukere med skjermlesere får beskjed om det. Vi kan bruke en `ARIA live region` til det, som kan vise antall treff eller andre endringer.
