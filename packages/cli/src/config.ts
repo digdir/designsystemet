@@ -138,7 +138,7 @@ const severityColorOverrideSchema = z
 const overridesSchema = z
   .object({
     colors: semanticColorOverrideSchema.optional(),
-    severityColors: severityColorOverrideSchema.optional(),
+    severity: severityColorOverrideSchema.optional(),
   })
   .describe('Overrides for generated design tokens. Currently only supports colors defined in your theme')
   .optional();

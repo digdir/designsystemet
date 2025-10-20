@@ -40,7 +40,7 @@
             }
           }
         },
-        "severityColors": {
+        "severity": {
           "danger": "#ff00ff"
         }
       }

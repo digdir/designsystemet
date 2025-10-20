@@ -69,7 +69,7 @@ export const generateColorScheme = (
 
   const baseColorsWithOverrides = {
     ...baseColors,
-    ...overrides?.severityColors,
+    ...overrides?.severity,
   };
 
   const globalColors = R.mapObjIndexed(
