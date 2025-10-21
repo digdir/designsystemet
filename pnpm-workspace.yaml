@@ -22,7 +22,8 @@ packageExtensions:
       react:
         optional: true
 syncInjectedDepsAfterScripts:
-  - dist
+  - build
+  - build:all
 injectWorkspacePackages: true
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
