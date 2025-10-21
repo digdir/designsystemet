@@ -21,9 +21,9 @@ export default {
   color: 'Farge',
   config: {
     'step-one':
-      'Lagre config fila di som "designsystemet.config.json". Dersom du vil ha schema må du installere "@digdir/designsystemet"',
+      'Lagre config fila di som "designsystemet.config.json" der du vil at tokens og CSS skal bli generert.',
     'step-two':
-      'Kjør kodesnutten for å generere tokens og CSS variabler til kode.',
+      'Åpne terminal i samme mappe som config fila. Kjør kodesnuttene for å generere tokens og CSS variabler til kode.',
   },
   cli: {
     'step-one':

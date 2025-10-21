@@ -25,9 +25,9 @@ export default {
     'Save your config file as "designsystemet.config.json". If you want to use the schema, install "@digdir/designsystemet"',
   config: {
     'step-one':
-      'Save your config file as "designsystemet.config.json". If you want to use the schema, install "@digdir/designsystemet"',
+      'Save your config file as "designsystemet.config.json" where you want the tokens and CSS to be generated.',
     'step-two':
-      'Run the code snippet to generate tokens and CSS variables for code.',
+      'Open a terminal in the same folder as the config file. Run the code snippets to generate tokens and CSS variables for code.',
   },
   cli: {
     'step-one':
