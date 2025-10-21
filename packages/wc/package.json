@@ -2,6 +2,7 @@
   "name": "@digdir/designsystemet-wc",
   "type": "module",
   "version": "0.0.1",
+  "private": true,
   "description": "Web components for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
