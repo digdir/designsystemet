@@ -9,11 +9,11 @@
  * 4. Verify setup
  */
 
-import { spawn, exec } from 'node:child_process';
-import { promisify } from 'node:util';
+import { exec, spawn } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { promisify } from 'node:util';
 import fetch from 'node-fetch';
 
 const execAsync = promisify(exec);
@@ -112,9 +112,7 @@ async function generateApiKeys() {
   }
 
   const meilisearchEnv = fs.readFileSync(meilisearchEnvPath, 'utf8');
-  const masterKeyMatch = meilisearchEnv.match(
-    /MEILI_MASTER_KEY=(.+)/,
-  );
+  const masterKeyMatch = meilisearchEnv.match(/MEILI_MASTER_KEY=(.+)/);
   if (!masterKeyMatch) {
     throw new Error('MEILI_MASTER_KEY not found in infra/meilisearch/.env');
   }
@@ -159,7 +157,9 @@ async function generateApiKeys() {
   });
 
   if (!searchResponse.ok) {
-    throw new Error(`Failed to create search key: ${searchResponse.statusText}`);
+    throw new Error(
+      `Failed to create search key: ${searchResponse.statusText}`,
+    );
   }
 
   const searchKeyData = await searchResponse.json();
@@ -239,10 +239,7 @@ async function main() {
   const dockerRunning = await checkDocker();
   if (!dockerRunning) {
     log('   ✗ Docker is not running', colors.red);
-    log(
-      '\n❌ Please start Docker Desktop and try again.\n',
-      colors.red,
-    );
+    log('\n❌ Please start Docker Desktop and try again.\n', colors.red);
     process.exit(1);
   }
   log('   ✓ Docker is running', colors.green);
@@ -318,13 +315,21 @@ async function main() {
   const requiredAzureVars = [
     { key: 'AZURE_KEY', pattern: /AZURE_KEY=(.+)/ },
     { key: 'AZURE_ENDPOINT', pattern: /AZURE_ENDPOINT=(.+)/ },
-    { key: 'AZURE_EMBEDDING_DEPLOY_SMALL', pattern: /AZURE_EMBEDDING_DEPLOY_SMALL=(.+)/ },
+    {
+      key: 'AZURE_EMBEDDING_DEPLOY_SMALL',
+      pattern: /AZURE_EMBEDDING_DEPLOY_SMALL=(.+)/,
+    },
     { key: 'AZURE_GPT_DEPLOY', pattern: /AZURE_GPT_DEPLOY=(.+)/ },
   ];
 
   for (const { key, pattern } of requiredAzureVars) {
     const match = aiEnvContent.match(pattern);
-    if (!match || match[1].includes('REPLACE') || match[1].includes('provided') || match[1].trim().length === 0) {
+    if (
+      !match ||
+      match[1].includes('REPLACE') ||
+      match[1].includes('provided') ||
+      match[1].trim().length === 0
+    ) {
       log(`   ✗ ${key} missing or invalid`, colors.red);
       log(`\n❌ [${key}] missing in [apps/ai-api/.ai-env]`, colors.red);
       log('   Set your Azure OpenAI credentials\n', colors.yellow);

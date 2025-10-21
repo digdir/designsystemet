@@ -69,11 +69,12 @@ async function check() {
   );
   if (embRes.ok) {
     const emb = await embRes.json();
-    console.log(`\n🔧 Embedders configured:`, Object.keys(emb).length > 0 ? '✅' : '❌');
-  } else {
     console.log(
-      `\n🔧 Embedders: ❌ Not configured`,
+      `\n🔧 Embedders configured:`,
+      Object.keys(emb).length > 0 ? '✅' : '❌',
     );
+  } else {
+    console.log(`\n🔧 Embedders: ❌ Not configured`);
   }
 
   // Check synonyms
@@ -84,7 +85,9 @@ async function check() {
   if (synRes.ok) {
     const synonyms = await synRes.json();
     const synonymCount = Object.keys(synonyms).length;
-    console.log(`🔤 Synonyms configured: ${synonymCount > 0 ? '✅' : '❌'} (${synonymCount} terms)`);
+    console.log(
+      `🔤 Synonyms configured: ${synonymCount > 0 ? '✅' : '❌'} (${synonymCount} terms)`,
+    );
   } else {
     console.log(`🔤 Synonyms: ❌ Failed to check`);
   }
