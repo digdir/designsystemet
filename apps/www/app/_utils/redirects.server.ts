@@ -7,7 +7,9 @@ export const designsystemetRedirects = (pathname: string) => {
       r.from + '/' === pathname.toLowerCase(),
   );
   if (redirectUrl) {
-    return redirect(redirectUrl.to);
+    return redirect(redirectUrl.to, {
+      status: 301,
+    });
   }
   return null;
 };
