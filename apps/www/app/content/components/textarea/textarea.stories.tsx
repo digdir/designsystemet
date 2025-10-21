@@ -4,7 +4,7 @@ export const Preview = () => {
   return (
     <>
       <Label htmlFor='my-textarea'>Label</Label>
-      <Textarea id='my-textarea' cols={40} />
+      <Textarea id='my-textarea' />
     </>
   );
 };

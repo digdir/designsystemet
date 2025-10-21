@@ -21,6 +21,6 @@ export const Removable = () => {
   return <Chip.Removable aria-label='Slett Norge'>Norge</Chip.Removable>;
 };
 
-export const Button = () => {
+export const AsButton = () => {
   return <Chip.Button>Tøm alle filtre</Chip.Button>;
 };
