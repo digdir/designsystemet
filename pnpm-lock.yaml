@@ -54,7 +54,7 @@ importers:
         specifier: ^5.2.0
         version: 5.2.0(typescript@5.9.3)
       vite:
-        specifier: ^7.1.10
+        specifier: ^7.1.11
         version: 7.1.11(@types/node@22.18.10)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.30.1)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.20.6)(yaml@2.7.1)
       vitest:
         specifier: 3.2.4
@@ -83,7 +83,7 @@ importers:
         version: link:../../packages/theme
       '@internal/components':
         specifier: workspace:^
-        version: file:internal/components(@types/react@19.2.2)(i18next@25.6.0(typescript@5.9.3))(prism-react-renderer@2.4.1(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)
+        version: link:../../internal/components
       '@navikt/aksel-icons':
         specifier: ^7.32.1
         version: 7.32.1(react@19.2.0)
@@ -164,7 +164,7 @@ importers:
         version: link:../../packages/theme
       '@internal/components':
         specifier: workspace:^
-        version: file:internal/components(@types/react@19.2.2)(i18next@25.6.0(typescript@5.9.3))(prism-react-renderer@2.4.1(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)
+        version: link:../../internal/components
       '@navikt/aksel-icons':
         specifier: ^7.32.1
         version: 7.32.1(react@19.2.0)
@@ -227,7 +227,7 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
       vite:
-        specifier: ^7.1.10
+        specifier: ^7.1.11
         version: 7.1.11(@types/node@22.18.10)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.30.1)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.20.6)(yaml@2.7.1)
       vite-tsconfig-paths:
         specifier: ^5.1.4
@@ -249,7 +249,7 @@ importers:
         version: link:../../packages/theme
       '@internal/components':
         specifier: workspace:^
-        version: file:internal/components(@types/react@19.2.2)(i18next@25.6.0(typescript@5.9.3))(prism-react-renderer@2.4.1(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)
+        version: link:../../internal/components
       '@navikt/aksel-icons':
         specifier: ^7.32.1
         version: 7.32.1(react@19.2.0)
@@ -336,7 +336,7 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
       vite:
-        specifier: ^7.1.10
+        specifier: ^7.1.11
         version: 7.1.11(@types/node@22.18.10)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.30.1)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.20.6)(yaml@2.7.1)
       vite-env-only:
         specifier: ^3.0.3
@@ -720,7 +720,7 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
       vite:
-        specifier: ^7.1.10
+        specifier: ^7.1.11
         version: 7.1.11(@types/node@22.18.10)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.30.1)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.20.6)(yaml@2.7.1)
       vite-plugin-react-rich-svg:
         specifier: ^1.3.0
@@ -918,10 +918,6 @@ packages:
 
   '@babel/runtime@7.27.6':
     resolution: {integrity: sha512-vbavdySgbTTrmFE+EsiqUTzlOr5bzlnJtUv9PynGCAKvfQqjIXbvFdumPM/GxMDfyuGMJaJAU6TO4zc1Jf1i8Q==}
-    engines: {node: '>=6.9.0'}
-
-  '@babel/runtime@7.28.4':
-    resolution: {integrity: sha512-Q/N6JNWvIvPnLDvjlE1OUBLPQHH6l3CltCEsHIujp45zQUSSh8K+gHnaEX45yAT1nyngnINhvWtzN+Nb9D8RAQ==}
     engines: {node: '>=6.9.0'}
 
   '@babel/template@7.27.1':
@@ -1130,20 +1126,6 @@ packages:
     engines: {node: '>=18'}
     peerDependencies:
       postcss-selector-parser: ^7.0.0
-
-  '@digdir/designsystemet-react@file:packages/react':
-    resolution: {directory: packages/react, type: directory}
-    peerDependencies:
-      react: '>=18.3.1 || ^19.0.0'
-      react-dom: '>=18.3.1 || ^19.0.0'
-
-  '@digdir/designsystemet-theme@file:packages/theme':
-    resolution: {directory: packages/theme, type: directory}
-
-  '@digdir/designsystemet@file:packages/cli':
-    resolution: {directory: packages/cli, type: directory}
-    engines: {node: '>=20 <25'}
-    hasBin: true
 
   '@esbuild-plugins/node-resolve@0.2.2':
     resolution: {integrity: sha512-+t5FdX3ATQlb53UFDBRb4nqjYBz492bIrnVWvpQHpzZlu9BQL5HasMZhqc409ygUwOWCXZhrWr6NyZ6T6Y+cxw==}
@@ -1647,12 +1629,6 @@ packages:
     peerDependenciesMeta:
       '@types/node':
         optional: true
-
-  '@internal/components@file:internal/components':
-    resolution: {directory: internal/components, type: directory}
-    peerDependencies:
-      react: '>=18.3.1'
-      react-dom: '>=18.3.1'
 
   '@isaacs/balanced-match@4.0.1':
     resolution: {integrity: sha512-yzMTt9lEb8Gv7zRioUilSglI0c0smZ9k5D65677DLWLtWJaXIS3CqcGyUFByYKlnUj6TkjLVs54fBl6+TiGQDQ==}
@@ -5312,22 +5288,6 @@ packages:
       typescript:
         optional: true
 
-  react-i18next@16.1.0:
-    resolution: {integrity: sha512-10qpoODc0ntrWpZdko9CQnl2Xf4VJXUAS9sa7WOkTrQzbbfyoSSUZ3Rsnpgt8la6qCxeB61yzYjyW8U1g3hUUg==}
-    peerDependencies:
-      i18next: '>= 25.5.2'
-      react: '>= 16.8.0'
-      react-dom: '*'
-      react-native: '*'
-      typescript: ^5
-    peerDependenciesMeta:
-      react-dom:
-        optional: true
-      react-native:
-        optional: true
-      typescript:
-        optional: true
-
   react-is@17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
 
@@ -6617,8 +6577,6 @@ snapshots:
 
   '@babel/runtime@7.27.6': {}
 
-  '@babel/runtime@7.28.4': {}
-
   '@babel/template@7.27.1':
     dependencies:
       '@babel/code-frame': 7.27.1
@@ -6931,43 +6889,6 @@ snapshots:
     dependencies:
       postcss-selector-parser: 7.1.0
 
-  '@digdir/designsystemet-react@file:packages/react(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
-    dependencies:
-      '@floating-ui/dom': 1.7.4
-      '@floating-ui/react': 0.26.23(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@navikt/aksel-icons': 7.32.1(react@19.2.0)
-      '@radix-ui/react-slot': 1.2.3(@types/react@19.2.2)(react@19.2.0)
-      '@tanstack/react-virtual': 3.13.12(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@u-elements/u-combobox': 1.0.2
-      '@u-elements/u-datalist': 1.0.14
-      '@u-elements/u-details': 0.1.5
-      clsx: 2.1.1
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
-    transitivePeerDependencies:
-      - '@types/react'
-
-  '@digdir/designsystemet-theme@file:packages/theme': {}
-
-  '@digdir/designsystemet@file:packages/cli':
-    dependencies:
-      '@commander-js/extra-typings': 14.0.0(commander@14.0.1)
-      '@tokens-studio/sd-transforms': 1.3.0(style-dictionary@5.1.1)
-      apca-w3: 0.1.9
-      change-case: 5.4.4
-      chroma-js: 3.1.2
-      colorjs.io: 0.6.0-alpha.1
-      commander: 14.0.1
-      fast-glob: 3.3.3
-      hsluv: 1.0.1
-      object-hash: 3.0.0
-      picocolors: 1.1.1
-      postcss: 8.5.6
-      ramda: 0.32.0
-      style-dictionary: 5.1.1
-      zod: 4.1.12
-      zod-validation-error: 4.0.2(zod@4.1.12)
-
   '@esbuild-plugins/node-resolve@0.2.2(esbuild@0.25.11)':
     dependencies:
       '@types/resolve': 1.20.6
@@ -7258,26 +7179,6 @@ snapshots:
       iconv-lite: 0.6.3
     optionalDependencies:
       '@types/node': 22.18.10
-
-  '@internal/components@file:internal/components(@types/react@19.2.2)(i18next@25.6.0(typescript@5.9.3))(prism-react-renderer@2.4.1(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)':
-    dependencies:
-      '@digdir/designsystemet': file:packages/cli
-      '@digdir/designsystemet-react': file:packages/react(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@digdir/designsystemet-theme': file:packages/theme
-      '@navikt/aksel-icons': 7.32.1(react@19.2.0)
-      '@radix-ui/react-slot': 1.2.3(@types/react@19.2.2)(react@19.2.0)
-      clsx: 2.1.1
-      react: 19.2.0
-      react-code-block: 1.1.3(prism-react-renderer@2.4.1(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      react-dom: 19.2.0(react@19.2.0)
-      react-i18next: 16.1.0(i18next@25.6.0(typescript@5.9.3))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)
-      react-router: 7.9.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-    transitivePeerDependencies:
-      - '@types/react'
-      - i18next
-      - prism-react-renderer
-      - react-native
-      - typescript
 
   '@isaacs/balanced-match@4.0.1': {}
 
@@ -11281,16 +11182,6 @@ snapshots:
   react-i18next@16.0.0(i18next@25.6.0(typescript@5.9.3))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3):
     dependencies:
       '@babel/runtime': 7.27.6
-      html-parse-stringify: 3.0.1
-      i18next: 25.6.0(typescript@5.9.3)
-      react: 19.2.0
-    optionalDependencies:
-      react-dom: 19.2.0(react@19.2.0)
-      typescript: 5.9.3
-
-  react-i18next@16.1.0(i18next@25.6.0(typescript@5.9.3))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3):
-    dependencies:
-      '@babel/runtime': 7.28.4
       html-parse-stringify: 3.0.1
       i18next: 25.6.0(typescript@5.9.3)
       react: 19.2.0
