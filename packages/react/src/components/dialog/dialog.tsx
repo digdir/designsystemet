@@ -156,7 +156,6 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
         {closeButton !== false && (
           <Button
             aria-label={closeButton}
-            autoFocus
             data-color='neutral'
             icon
             variant='tertiary'
