@@ -14,6 +14,7 @@
     color: var(
       --ds-color-neutral-text-subtle
     ); /* TODO: Change to opacity or color-mix(currentColor, trasparent) to ensure contrast when parent element color changes? */
+    margin-top: 0; /* Line-height removes the need for this */
   }
 
   & input:not([hidden]),
