@@ -73,13 +73,13 @@ importers:
         version: 19.2.0(react@19.2.0)
     devDependencies:
       '@digdir/designsystemet-css':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/css
       '@digdir/designsystemet-react':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/react
       '@digdir/designsystemet-theme':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/theme
       '@internal/components':
         specifier: workspace:^
@@ -151,19 +151,19 @@ importers:
   apps/themebuilder:
     dependencies:
       '@digdir/designsystemet':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/cli
       '@digdir/designsystemet-css':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/css
       '@digdir/designsystemet-react':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/react
       '@digdir/designsystemet-theme':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/theme
       '@internal/components':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../internal/components
       '@navikt/aksel-icons':
         specifier: ^7.32.1
@@ -236,19 +236,19 @@ importers:
   apps/www:
     dependencies:
       '@digdir/designsystemet':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/cli
       '@digdir/designsystemet-css':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/css
       '@digdir/designsystemet-react':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/react
       '@digdir/designsystemet-theme':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/theme
       '@internal/components':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../internal/components
       '@navikt/aksel-icons':
         specifier: ^7.32.1
@@ -348,13 +348,13 @@ importers:
   internal/components:
     dependencies:
       '@digdir/designsystemet':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/cli
       '@digdir/designsystemet-react':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/react
       '@digdir/designsystemet-theme':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/theme
       '@navikt/aksel-icons':
         specifier: ^7.32.1
@@ -565,10 +565,10 @@ importers:
         version: 2.1.1
     devDependencies:
       '@digdir/designsystemet':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../cli
       '@digdir/designsystemet-css':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../css
       '@rollup/plugin-commonjs':
         specifier: ^28.0.6
@@ -631,7 +631,7 @@ importers:
   packages/theme:
     devDependencies:
       '@digdir/designsystemet':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../cli
       rimraf:
         specifier: ^6.0.1
@@ -668,16 +668,16 @@ importers:
   plugins/figma:
     dependencies:
       '@digdir/designsystemet':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/cli
       '@digdir/designsystemet-css':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/css
       '@digdir/designsystemet-react':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/react
       '@digdir/designsystemet-theme':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/theme
       '@navikt/aksel-icons':
         specifier: ^7.32.1
