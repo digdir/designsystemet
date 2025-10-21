@@ -103,87 +103,75 @@ export const Video = () => {
 
 export const WithLink = () => {
   return (
-    <>
-      <Card data-color="neutral">
+    <Card data-color='neutral'>
+      <Card.Block>
         <Heading>
-            <Link
-              href="https://designsystemet.no"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Link Card
-            </Link>
-          </Heading>
-          <Paragraph>
-            Most provide as with carried business are much better more the
-            perfected designer. Writing slightly explain desk unable at supposedly
-            about this
-          </Paragraph>
-          <Paragraph data-size="sm">Footer text</Paragraph>
-        </Card.Block>
-      </Card>
-  </>
-  )
+          <Link
+            href='https://designsystemet.no'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            Link Card
+          </Link>
+        </Heading>
+        <Paragraph>
+          Most provide as with carried business are much better more the
+          perfected designer. Writing slightly explain desk unable at supposedly
+          about this
+        </Paragraph>
+        <Paragraph data-size='sm'>Footer text</Paragraph>
+      </Card.Block>
+    </Card>
+  );
+};
 
-  export const AsLink = () => {
+export const AsLink = () => {
   return (
-    <>
-      <Card data-color="neutral" asChild>
-        <a
-          href="https://designsystemet.no"
-        rel="noopener noreferrer"
-        >
-          <Heading>Link Card with asChild</Heading>
+    <Card data-color='neutral' asChild>
+      <a href='https://designsystemet.no' rel='noopener noreferrer'>
+        <Heading>Link Card with asChild</Heading>
+        <Paragraph>
+          Most provide as with carried business are much better more the
+          perfected designer.
+        </Paragraph>
+      </a>
+    </Card>
+  );
+};
+
+export const AsButton = () => {
+  return (
+    <Card asChild data-color='neutral'>
+      <button type='button'>
+        <Card.Block>
+          <Heading>Button Card with blocks</Heading>
+        </Card.Block>
+        <Card.Block>
           <Paragraph>
             Most provide as with carried business are much better more the
             perfected designer.
           </Paragraph>
-        </a>
-      </Card>
-    </>
+        </Card.Block>
+      </button>
+    </Card>
   );
 };
-  const AsButton = () => {
-    return (
-    <>
-      <Card asChild data-color="neutral">
-        <button type="button">
-          <Card.Block>
-            <Heading>Button Card with blocks</Heading>
-          </Card.Block>
-          <Paragraph>
-              Most provide as with carried business are much better more the
-              perfected designer.
-            </Paragraph>
-          </Card.Block>
-        </button>
-      </Card>
-    </>
-  )
-  };
 
-  export const AsGrid = () => {
-  return (ard
-      data-color="neutral"
+export const AsGrid = () => {
+  return (
+    <Card
+      data-color='neutral'
       style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}
-  >
+    >
       <Card.Block>
-        <Heading>Button Card
-  with blocks</Heading>
-  </Card.Block>
+        <Heading>Button Card with blocks</Heading>
+      </Card.Block>
       <Card.Block>
         <Paragraph>
-          Most provide as
-  with carried business
-  are;
-  much;
-  better;
-  more;
-  the;
-  perfected;
-  designer.
-  </Paragraph>
+          Most provide as with carried business are; much; better; more; the;
+          perfected; designer.
+        </Paragraph>
       </Card.Block>
     </Card>
-  )
+  );
 };

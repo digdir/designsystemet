@@ -1,0 +1,43 @@
+---
+title: Details
+subtitle: Details is a collapsible component that allows users to show or hide content.
+image: Details.svg
+cssfile: details
+---
+
+<Story story="Preview" />
+
+## Usage
+
+`Details` consists of two sub-components:
+
+- `Details.Summary` - The heading that can be clicked to show/hide content
+- `Details.Content` - The content that is shown/hidden
+
+## Guidelines
+
+- Use Details when you have content that not all users need to see immediately
+- Keep the heading short and descriptive
+- Avoid hiding important information that users always need
+
+## Accessibility
+
+The Details component uses native HTML elements `<details>` and `<summary>`, which have built-in accessibility support.
+
+## In Card
+
+Details can be used inside the Card component for nice grouping:
+
+<Story story="InCard" />
+
+## Color variants
+
+Details works well with Card's color variants:
+
+<Story story="InCardWithColor" />
+
+## Controlled state
+
+You can control whether Details is open or closed:
+
+<Story story="Controlled" />

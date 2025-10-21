@@ -1,0 +1,44 @@
+---
+title: Error Summary
+subtitle: Error Summary provides users with an overview of errors or missing information that must be corrected on a page or step to proceed.
+image: ErrorSummary.svg
+cssfile: error-summary
+---
+
+<Story story="Preview" />
+
+## Usage
+
+`ErrorSummary` consists of several sub-components that must be used correctly:
+
+- `ErrorSummary.Heading` defines the heading
+- `ErrorSummary.List` defines the list of errors
+- Each error is represented as an `ErrorSummary.Item` containing an `ErrorSummary.Link`
+- Each `ErrorSummary.Link` must have an `href` to the unique identifier for a form field, so the user can navigate to the correct location in the form
+
+## Guidelines
+
+- Place `ErrorSummary` at the top of the page or step where the error occurs
+- Always use together with validation errors on the relevant fields
+- Link to the specific fields that have errors
+- Write clear and descriptive error messages
+
+## Text
+
+- Use a clear heading like "To proceed, you must correct the following errors:"
+- Error messages should be specific and state what is wrong
+- Tell the user what they need to do to fix the error
+
+## Accessibility
+
+When `ErrorSummary` becomes visible, this must be communicated to screen reader users.
+
+### Move focus
+
+It is important that `ErrorSummary` receives focus on submit so the user notices that there are errors or missing information in the form. You can use a ref to move focus:
+
+<Story story="ShowHide" layout="column" />
+
+### Do not use live region for ErrorSummary
+
+`ErrorSummary` should not use live region (`aria-live`). This is because screen readers often have their own alerts when a form is submitted, and a combination of these can lead to confusing narration.
