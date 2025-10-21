@@ -5,10 +5,8 @@ import {
   Input,
   Link,
   Paragraph,
-  Switch,
   Tabs,
 } from '@digdir/designsystemet-react';
-import { CodeBlock } from '@internal/components';
 import { InformationSquareIcon, StarIcon } from '@navikt/aksel-icons';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
