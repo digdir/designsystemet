@@ -34,9 +34,9 @@ export default {
       "Copy the code snippet and run it on your machine to generate design tokens (JSON files), or paste it into the Designsystemet's",
     'step-two': 'Run the code snippet to generate CSS variables for code.',
     'severity-warning':
-      'Note: Severity colors are enabled in your theme. These will not be included if you use the CLI.',
+      'Note: Severity colors have changed in your theme. These will not be included if you use the CLI.',
   },
   'max-X-colors': 'Maximum {count} colors allowed.',
   'severity-colors': 'Severity',
-  'severity-colors-switch': 'Activate to edit severity colors',
+  'severity-colors-switch': 'Activate to override severity colors',
 } as typeof no;

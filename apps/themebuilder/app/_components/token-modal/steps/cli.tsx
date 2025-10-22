@@ -16,15 +16,19 @@ export default function Cli({
   };
 }) {
   const { t } = useTranslation();
-  const { severityEnabled } = useThemebuilder();
+  const { severityColors } = useThemebuilder();
 
   const [formatWin, setFormatWin] = useState(
     navigator.userAgent.includes('Windows'),
   );
 
+  const severityHasChanged = severityColors
+    .map((c) => c.isDefault)
+    .includes(false);
+
   return (
     <>
-      {severityEnabled && (
+      {severityHasChanged && (
         <Alert
           data-color='warning'
           style={{
