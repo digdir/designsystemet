@@ -1,10 +1,18 @@
-import { Button, Heading } from '@digdir/designsystemet-react';
+import {
+  Button,
+  Heading,
+  Paragraph,
+  Switch,
+} from '@digdir/designsystemet-react';
 import { PlusIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
 import { ColorService, useColor } from 'react-color-palette';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router';
-import type { ColorTheme } from '~/routes/themebuilder/_utils/use-themebuilder';
+import type {
+  ColorTheme,
+  SeverityColorTheme,
+} from '~/routes/themebuilder/_utils/use-themebuilder';
 import {
   QUERY_SEPARATOR,
   useThemebuilder,
@@ -14,8 +22,8 @@ import { ColorPane } from '../color-pane/color-pane';
 import classes from './color-page.module.css';
 
 type ColorEditorState = {
-  activePanel: 'add-color' | 'edit-color' | 'none';
-  colorType: 'main' | 'neutral' | 'support';
+  activePanel: 'add-color' | 'edit-color' | 'edit-severity' | 'none';
+  colorType: 'main' | 'neutral' | 'support' | 'severity';
   index: number;
   name: string;
   initialName: string;
@@ -26,7 +34,7 @@ const DEFAULT_COLOR = '#0062ba';
 
 export const ColorPage = () => {
   const { t } = useTranslation();
-  const { colors } = useThemebuilder();
+  const { colors, severityColors, severityEnabled } = useThemebuilder();
   const [query, setQuery] = useSearchParams();
 
   const [editorState, setEditorState] = useState<ColorEditorState>({
@@ -63,9 +71,40 @@ export const ColorPage = () => {
       updatedParams.set(type, colorArray.join(QUERY_SEPARATOR));
     } else if (type === 'neutral') {
       updatedParams.set('neutral', hex);
+    } else if (type === 'severity') {
+      updateSeverityColorInParams(hex, name, updatedParams);
     }
 
     setQuery(updatedParams, { replace: true, preventScrollReset: true });
+  };
+
+  const updateSeverityColorInParams = (
+    hex: string,
+    name: string,
+    params: URLSearchParams,
+  ) => {
+    const severityParam = params.get('severity') || '';
+    const severityArray = severityParam.split(QUERY_SEPARATOR).filter(Boolean);
+
+    // Find the severity color and check if it's the default
+    const defaultColor = severityColors.find((sc) => sc.name === name);
+    if (!defaultColor) return;
+
+    const isDefault = hex.toLowerCase() === defaultColor.hex.toLowerCase();
+
+    // Remove existing entry for this severity color
+    const filtered = severityArray.filter((s) => !s.startsWith(`${name}:`));
+
+    // Only add if it's not the default value
+    if (!isDefault) {
+      filtered.push(`${name}:${hex}`);
+    }
+
+    if (filtered.length > 0) {
+      params.set('severity', filtered.join(QUERY_SEPARATOR));
+    } else {
+      params.delete('severity');
+    }
   };
 
   const openColorEditor = (
@@ -105,6 +144,24 @@ export const ColorPage = () => {
     updateColorInParams(DEFAULT_COLOR, newColorName, type, colorCount);
   };
 
+  const openSeverityColorEditor = (
+    severityColor: SeverityColorTheme,
+    index: number,
+  ) => {
+    const hexColor = severityColor.hex;
+
+    setColor(ColorService.convert('hex', hexColor));
+
+    setEditorState({
+      activePanel: 'edit-severity',
+      colorType: 'severity',
+      index: index,
+      name: severityColor.name,
+      initialName: severityColor.name,
+      initialHex: hexColor,
+    });
+  };
+
   const closeEditor = () => {
     setEditorState((prev) => ({
       ...prev,
@@ -128,6 +185,17 @@ export const ColorPage = () => {
         preventScrollReset: true,
       });
     }
+  };
+
+  const toggleSeverityColors = (enabled: boolean) => {
+    const updatedParams = new URLSearchParams(query);
+    if (enabled) {
+      updatedParams.set('severity-enabled', 'true');
+    } else {
+      updatedParams.delete('severity-enabled');
+      updatedParams.delete('severity'); // Also remove any severity color overrides
+    }
+    setQuery(updatedParams, { replace: true, preventScrollReset: true });
   };
 
   return (
@@ -208,6 +276,50 @@ export const ColorPage = () => {
               ))}
             </div>
           </div>
+
+          <div className={classes.separator}></div>
+          <div className={classes.group}>
+            <div className={classes.groupHeader}>
+              <Heading data-size='2xs' id='severity-colors-heading'>
+                Severity Colors
+              </Heading>
+              <Switch
+                name='severity-colors-switch'
+                data-size='sm'
+                checked={severityEnabled}
+                onChange={(e) => toggleSeverityColors(e.target.checked)}
+                aria-labelledby='severity-colors-heading'
+                aria-describedby='severity-colors-description'
+              />
+            </div>
+            {!severityEnabled && (
+              <Paragraph
+                id='severity-colors-description'
+                data-size='sm'
+                style={{
+                  marginTop: '-4px',
+                  marginBottom: '8px',
+                  color: 'var(--ds-color-neutral-text-subtle)',
+                }}
+              >
+                Enable to customize info, success, warning, and danger colors
+              </Paragraph>
+            )}
+            {severityEnabled && (
+              <div className={classes.colors}>
+                {severityColors.map((severityColor, index) => (
+                  <ColorInput
+                    key={severityColor.name}
+                    color={severityColor.hex}
+                    name={severityColor.name}
+                    onClick={() =>
+                      openSeverityColorEditor(severityColor, index)
+                    }
+                  />
+                ))}
+              </div>
+            )}
+          </div>
         </>
       )}
 
@@ -218,7 +330,12 @@ export const ColorPage = () => {
             closeEditor();
           }}
           onRemove={() => {
-            removeColor(editorState.index, editorState.colorType);
+            if (
+              editorState.colorType === 'main' ||
+              editorState.colorType === 'support'
+            ) {
+              removeColor(editorState.index, editorState.colorType);
+            }
             closeEditor();
           }}
           onCancel={() => {
@@ -253,7 +370,58 @@ export const ColorPage = () => {
               editorState.index,
             );
           }}
-          colorType={editorState.colorType}
+          colorType={
+            editorState.colorType === 'severity'
+              ? 'neutral'
+              : editorState.colorType
+          }
+        />
+      )}
+
+      {editorState.activePanel === 'edit-severity' && (
+        <ColorPane
+          onClose={() => {
+            closeEditor();
+          }}
+          onRemove={() => {
+            // Reset to default by removing from query params
+            const updatedParams = new URLSearchParams(query);
+            updateSeverityColorInParams(
+              editorState.initialHex,
+              editorState.name,
+              updatedParams,
+            );
+            setQuery(updatedParams, {
+              replace: true,
+              preventScrollReset: true,
+            });
+            closeEditor();
+          }}
+          onCancel={() => {
+            updateColorInParams(
+              editorState.initialHex,
+              editorState.initialName,
+              editorState.colorType,
+              editorState.index,
+            );
+            closeEditor();
+          }}
+          type='edit-color'
+          color={color}
+          name={editorState.name}
+          setColor={(newColor) => {
+            setColor(newColor);
+            updateColorInParams(
+              newColor.hex,
+              editorState.name,
+              editorState.colorType,
+              editorState.index,
+            );
+          }}
+          setName={() => {
+            // Name changes not allowed for severity colors
+          }}
+          colorType='neutral'
         />
       )}
     </div>
