@@ -1,0 +1,48 @@
+---
+title: Checkbox
+image: Checkbox.svg
+cssfile: checkbox
+---
+
+Vi bruker `Checkbox` for å gi brukerne valg der de kan velge ett eller flere alternativer.
+
+<Story story="Preview" />
+
+## Bruk
+
+```tsx
+import { Checkbox } from '@digdir/designsystemet-react';
+
+<Checkbox label="Checkbox label" value="value" />
+```
+
+## Kodeeksempler
+
+### Gruppering
+
+<Story story="Group" />
+
+### Med feil
+
+<Story story="WithError" />
+
+### Disabled
+
+<Story story="Disabled" />
+
+### ReadOnly
+
+<Story story="ReadOnly" />
+
+## Retningslinjer
+
+Bruk `Checkbox` når brukeren kan velge ett eller flere alternativer.
+
+**Passer til å**
+
+- velge flere alternativer i skjemaer
+- akseptere vilkår og betingelser
+
+**Passer ikke til å**
+
+- velge kun ett alternativ, bruk heller [`Radio`](/docs/komponenter-radio--docs)

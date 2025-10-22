@@ -1,0 +1,49 @@
+---
+title: Switch
+image: Switch.svg
+cssfile: switch
+---
+
+Vi bruker `Switch` til å gi brukerne et valg mellom to alternativer. Bryteren kan enten slås av eller på.
+
+<Story story="Preview" />
+
+## Bruk
+
+```tsx
+import { Switch } from '@digdir/designsystemet-react';
+
+<Switch label="Mørk modus" value="dark" />
+```
+
+## Kodeeksempler
+
+### Checked
+
+<Story story="Checked" />
+
+### Gruppering
+
+<Story story="Group" />
+
+### Høyrejustert
+
+<Story story="RightAligned" />
+
+## Retningslinjer
+
+`Switch` skal være et valg mellom to alternativer. Vi bruker `Switch` til innstillinger, ikke i skjema.
+
+**Passer til å**
+
+- aktivere eller deaktivere funksjoner/tilstander med en gang
+- slå varsler av og på
+
+**Passer ikke til**
+
+- å bruke i stedet for `Checkbox` eller `Radio` i et skjema
+- situasjoner der brukerne må lagre informasjon før en endring får effekt
+
+## Tilgjengelighet
+
+Vi bruker `role="switch"` for å fortelle skjermlesere at dette er en vippebryter.

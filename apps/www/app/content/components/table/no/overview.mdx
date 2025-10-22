@@ -1,0 +1,42 @@
+---
+title: Table
+image: Table.svg
+cssfile: table
+---
+
+`Table` brukes til å vise strukturert data i rader og kolonner.
+
+<Story story="Preview" />
+
+## Bruk
+
+```tsx
+import { Table } from '@digdir/designsystemet-react';
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.HeaderCell>Header</Table.HeaderCell>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell>Cell</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
+```
+
+## Kodeeksempler
+
+### Zebra striper
+
+<Story story="Zebra" />
+
+### Med border
+
+<Story story="Border" />
+
+### Hover effekt
+
+<Story story="Hover" />

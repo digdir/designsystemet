@@ -1,0 +1,45 @@
+---
+title: Dropdown
+subtitle: Dropdown is a menu that appears when the user clicks a trigger button.
+image: Dropdown.svg
+cssfile: dropdown
+---
+
+<Story story="Preview" />
+
+## Usage
+
+`Dropdown` consists of several sub-components:
+
+- `Dropdown.TriggerContext` - Wrapper to connect trigger and dropdown
+- `Dropdown.Trigger` - The button that opens the menu
+- `Dropdown` - The dropdown menu itself
+- `Dropdown.Heading` - Heading in the menu
+- `Dropdown.List` - List of items
+- `Dropdown.Item` - An item in the list
+- `Dropdown.Button` - Button inside an item
+
+## Guidelines
+
+- Use Dropdown for actions or navigation that don't need to be visible all the time
+- Keep the number of items manageable
+- Use headings to group related items
+- Avoid multiple levels of dropdowns (nested menus)
+
+## With icons
+
+You can use icons together with text in dropdown items:
+
+<Story story="Icons" />
+
+## Controlled state
+
+You can control when the dropdown is open or closed:
+
+<Story story="Controlled" />
+
+## Without TriggerContext
+
+You can also use Dropdown without TriggerContext by using `popovertarget`:
+
+<Story story="WithoutTrigger" />

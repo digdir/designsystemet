@@ -1,0 +1,31 @@
+---
+title: Fieldset
+subtitle: '`Fieldset` brukes til å gruppere relaterte skjemaelementer.'
+image: Fieldset.svg
+cssfile: fieldset
+---
+
+<Story story="Preview" />
+
+## Bruk
+
+```tsx
+import { Fieldset, Radio } from '@digdir/designsystemet-react';
+
+<Fieldset>
+  <Fieldset.Legend>Spørsmål</Fieldset.Legend>
+  <Fieldset.Description>Beskrivelse</Fieldset.Description>
+  <Radio label="Alternativ 1" name="radio" value="1" />
+  <Radio label="Alternativ 2" name="radio" value="2" />
+</Fieldset>
+```
+
+## Kodeeksempler
+
+### Med checkbox
+
+<Story story="WithCheckbox" />
+
+### Legend som heading
+
+<Story story="LegendAsHeading" />

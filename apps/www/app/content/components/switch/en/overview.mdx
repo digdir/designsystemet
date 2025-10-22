@@ -1,0 +1,49 @@
+---
+title: Switch
+image: Switch.svg
+cssfile: switch
+---
+
+We use `Switch` to give users a choice between two alternatives. The switch can either be turned off or on.
+
+<Story story="Preview" />
+
+## Usage
+
+```tsx
+import { Switch } from '@digdir/designsystemet-react';
+
+<Switch label="Dark mode" value="dark" />
+```
+
+## Code Examples
+
+### Checked
+
+<Story story="Checked" />
+
+### Grouping
+
+<Story story="Group" />
+
+### Right aligned
+
+<Story story="RightAligned" />
+
+## Guidelines
+
+`Switch` should be a choice between two alternatives. We use `Switch` for settings, not in forms.
+
+**Suitable for**
+
+- activating or deactivating features/states immediately
+- turning notifications off and on
+
+**Not suitable for**
+
+- using instead of `Checkbox` or `Radio` in a form
+- situations where users must save information before a change takes effect
+
+## Accessibility
+
+We use `role="switch"` to tell screen readers that this is a toggle switch.
