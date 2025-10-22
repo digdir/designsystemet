@@ -22,7 +22,11 @@ packageExtensions:
       react:
         optional: true
 syncInjectedDepsAfterScripts:
-  - dist
+  - build
+  - build:all
+  - build:www
+  - build:themebuilder
+  - build:storybook
 injectWorkspacePackages: true
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
