@@ -1,13 +1,17 @@
 ---
 title: CLI Config
 description: Informasjon om korleis du bruker CLI config fil.
-date: 2025-10-06
+date: 2025-10-22
 category: Kode
 color: blue
-icon: CodeIcon
+icon: FileJsonIcon
 published: true
 order: 60
 ---
+
+<Alert data-color="warning">
+Merk at config er eksperimentelt. Config skjema kan endre seg når som helst, og vil bli kommunisert i changelog.
+</Alert>
 
 Å bruke config fil med CLI gjer at du kan ha meir kontroll over fargane dine, og kan lettare oppdatere og vedlikehalde dei.
 
@@ -43,10 +47,11 @@ Dette er fordi `neutral` berre har ein farge, medan `main` og `support` har flei
 
 ## Struktur
 
-| Navn | Type | Påkrevd | Forklaring |
+| Namn | Type | Påkrevd | Forklaring |
 | ---- | ---- | ------- | ----------- |
+| $schema | Streng | Nei | Sti til JSON schema for validering. Anbefalt: `node_modules/@digdir/designsystemet/dist/config.schema.json`. |
 | themes | Objekt | Ja | Inneheld alle tema du vil definere. Ny nøkkel er namnet på temaet. |
-| outDir | Streng | Nei | Mappa der design tokens skal lagrast. Standard er `./design-tokens`. |
+| outDir | Streng | Ja | Mappa der design tokens skal lagrast. |
 | clean | Boolean | Nei | Slett utdata-mappa før du lagar tokens. Nyttig for å fjerne utdaterte filer. |
 
 ### Themes
@@ -59,23 +64,28 @@ Du kan ha fleire tema, og kvart tema kan ha sine eigne fargar, border radius, ty
 
 ### Theme
 
-| Navn | Type | Påkrevd | Forklaring |
+| Namn | Type | Påkrevd | Forklaring |
 | ---- | ---- | ------- | ----------- |
 | colors | Objekt | Ja | Inneheld alle fargar for temaet. |
-| borderRadius | Tal | Ja | Base border radius for temaet. |
+| borderRadius | Tal | Nei | Base border radius for temaet. |
 | typography | Objekt | Nei | Inneheld typografi innstillingar for temaet. |
 | overrides | Objekt | Nei | Inneheld overskrivingar for fargar og severity-fargar. |
 
-<Alert data-color="warning">
-Merk at typografi er eksperimentelt. Config skjema kan endre seg når som helst.
+### Typography
+| Namn | Type | Påkrevd | Forklaring |
+| ---- | ---- | ------- | ----------- |
+| fontFamily | Streng | Ja | Font-familien for temaet. |
+
+<Alert data-color="info">
+Viss du inkluderer `typography` i temaet ditt, må `fontFamily` vere definert.
 </Alert>
 
 ### Colors
-| Navn | Type | Påkrevd | Forklaring |
+| Namn | Type | Påkrevd | Forklaring |
 | ---- | ---- | ------- | ----------- |
 | main | Objekt | Ja | Hovudfargar for temaet. |
 | neutral | Streng | Ja | Nøytral farge for temaet. |
-| support | Objekt | Nei | Støttefargar for temaet. |
+| support | Objekt | Nei | Støttefargar for temaet. Standard er tomt objekt. |
 
 Objektet for main og support inneheld fargar, der nøkkelen er fargen sitt namn og verdien er ein hexkode.
 
@@ -90,19 +100,19 @@ Objektet for main og support inneheld fargar, der nøkkelen er fargen sitt namn 
 ```
 
 ### Overrides
-| Navn | Type | Påkrevd | Forklaring |
+| Namn | Type | Påkrevd | Forklaring |
 | ---- | ---- | ------- | ----------- |
 | colors | Objekt | Nei | Inneheld overskrivingar for individuelle fargesteg |
-| severityColors | Objekt | Nei | Inneheld overskrivingar for severity-fargar |
+| severity | Objekt | Nei | Inneheld overskrivingar for severity-fargar |
 
 #### overrides.colors
-| Navn | Type | Påkrevd | Forklaring |
+| Namn | Type | Påkrevd | Forklaring |
 | ---- | ---- | ------- | ----------- |
-| "fargeNavn" | Objekt | Nei | Overskrivingar for dominant fargar |
+| "fargeNavn" | Objekt | Nei | Overskrivingar for ein spesifikk farge |
 
 Overstyringen av `colors` lar deg tilpasse spesifikke semantiske fargetokens for kvar farge som er definert i temaets.
 
-Kvar nøkkel i `colors`-objektet skal samsvare med eit fargenavn frå fargane dine.
+Kvar nøkkel i `colors`-objektet skal samsvare med eit fargenavn frå fargane dine (både `main` og `support` fargar), eller ein av severity-fargane (`success`, `warning`, `danger`, `info`).
 
 For kvar farge kan du overstyre individuelle semantiske tokener som `background-default`, `border-subtle`, `text-default` osv.
 Kvar tokenoverstyring har ein `light` og/eller `dark` verdi som peikar til ein heksadesimal kode.
@@ -125,12 +135,12 @@ Kvar tokenoverstyring har ein `light` og/eller `dark` verdi som peikar til ein h
 
 <ColorScaleTable />
 
-#### overrides.severityColors
-| Navn | Type | Påkrevd | Forklaring |
+#### overrides.severity
+| Namn | Type | Påkrevd | Forklaring |
 | ---- | ---- | ------- | ----------- |
 | "fargeNavn" | Streng | Nei | Hex-farge som skal settast som base |
 
-Overstyringen av `severityColors` lar deg tilpasse fargane som blir brukt for severity, som er `success`, `warning`, `danger` og `info`.
+Overstyringen av `severity` lar deg tilpasse fargane som blir brukt for severity, som er `success`, `warning`, `danger` og `info`.
 
 
 ## Komplett Eksempel
@@ -163,7 +173,7 @@ Overstyringen av `severityColors` lar deg tilpasse fargane som blir brukt for se
             }
           }
         },
-        "severityColors": {
+        "severity": {
           "success":  "#28a745",
           "warning": "#ffc107",
           "danger": "#dc3545",

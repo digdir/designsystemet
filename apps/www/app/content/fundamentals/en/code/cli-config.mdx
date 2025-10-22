@@ -1,15 +1,19 @@
 ---
 title: CLI Config
 description: Information on how to use the CLI config file.
-date: 2025-10-06
+date: 2025-10-22
 category: Code
 color: blue
-icon: CodeIcon
+icon: FileJsonIcon
 published: true
 order: 60
 ---
 
-Using a config file with the CLI gives you more control over your colors and makes it easier to update and maintain them.
+<Alert data-color="warning">
+Note that config is experimental. The config schema may change at any time, and will be communicated in the changelog.
+</Alert>
+
+Using a config file with the CLI gives you more control over your colours and makes it easier to update and maintain them.
 
 ## Getting Started
 
@@ -37,16 +41,17 @@ If you've placed your file in a different location or with a different name, you
 }
 ```
 
-Above, we have defined a theme called `my-theme` with some colors and border radius.
+Above, we have defined a theme called `my-theme` with some colours and border radius.
 Note that `neutral` is defined as a string, while `main` and `support` are objects.
-This is because `neutral` only has one color, while `main` and `support` have multiple.
+This is because `neutral` only has one colour, while `main` and `support` have multiple.
 
 ## Structure
 
 | Name | Type | Required | Description |
 | ---- | ---- | ------- | ----------- |
+| $schema | String | No | Path to JSON schema for validation. Recommended: `node_modules/@digdir/designsystemet/dist/config.schema.json`. |
 | themes | Object | Yes | Contains all themes you want to define. Each key is the name of the theme. |
-| outDir | String | No | The folder where design tokens should be saved. Default is `./design-tokens`. |
+| outDir | String | Yes | The folder where design tokens should be saved. |
 | clean | Boolean | No | Delete the output directory before creating tokens. Useful for removing deprecated files. |
 
 ### Themes
@@ -55,16 +60,25 @@ This is because `neutral` only has one color, while `main` and `support` have mu
 | ---- | ---- | ------- | ----------- |
 | "themeName" | Object | Yes | The theme you want to define. |
 
-You can have multiple themes, and each theme can have its own colors, border radius, typography, and overrides.
+You can have multiple themes, and each theme can have its own colours, border radius, typography, and overrides.
 
 ### Theme
 
 | Name | Type | Required | Description |
 | ---- | ---- | ------- | ----------- |
-| colors | Object | Yes | Contains all colors for the theme. |
+| colors | Object | Yes | Contains all colours for the theme. |
 | borderRadius | Number | No | Base border radius for the theme. |
 | typography | Object | No | Contains typography settings for the theme. |
-| overrides | Object | No | Contains overrides for individual color tokens. |
+| overrides | Object | No | Contains overrides for colours and severity colours. |
+
+### Typography
+| Name | Type | Required | Description |
+| ---- | ---- | ------- | ----------- |
+| fontFamily | String | Yes | The font family for the theme. |
+
+<Alert data-color="info">
+If you include `typography` in your theme, `fontFamily` must be defined.
+</Alert>
 
 <Alert data-color="warning">
 Note that typography is experimental. The config schema may change at any time.
@@ -73,11 +87,11 @@ Note that typography is experimental. The config schema may change at any time.
 ### Colors
 | Name | Type | Required | Description |
 | ---- | ---- | ------- | ----------- |
-| main | Object | Yes | Main colors for the theme. |
-| neutral | String | Yes | Neutral color for the theme. |
-| support | Object | No | Support colors for the theme. |
+| main | Object | Yes | Main colours for the theme. |
+| neutral | String | Yes | Neutral colour for the theme. |
+| support | Object | No | Support colours for the theme. Defaults to empty object. |
 
-The object for main and support contains colors, where the name is the color's name and the value is a hex code.
+The object for main and support contains colours, where the name is the colour's name and the value is a hex code.
 
 ```json
 {
@@ -92,15 +106,19 @@ The object for main and support contains colors, where the name is the color's n
 ### Overrides
 | Name | Type | Required | Description |
 | ---- | ---- | ------- | ----------- |
-| colors | Object | No | Contains overrides for individual color tokens |
-| severityColors | Object | No | Contains overrides for severity colors |
+| colors | Object | No | Contains overrides for individual colour tokens |
+| severity | Object | No | Contains overrides for severity colours |
 
 #### overrides.colors
+| Name | Type | Required | Description |
+| ---- | ---- | ------- | ----------- |
+| "colorName" | Object | No | Overrides for a specific colour |
 
-The `colors` override allows you to customize specific semantic color tokens for any color defined in your theme.
+The `colors` override allows you to customise specific semantic colour tokens for any colour defined in your theme.
 
-Each key in the `colors` object should match a color name from your colors.
-For each color, you can override individual semantic tokens like `background-default`, `border-subtle`, `text-default`, etc.
+Each key in the `colors` object should match a colour name from your colours (both `main` and `support` colours), or one of the severity colours (`success`, `warning`, `danger`, `info`).
+
+For each colour, you can override individual semantic tokens like `background-default`, `border-subtle`, `text-default`, etc.
 Each token override has a `light` and/or `dark` value that points to a hex code.
 
 ```json
@@ -122,13 +140,17 @@ Each token override has a `light` and/or `dark` value that points to a hex code.
 }
 ```
 
-#### overrides.severityColors
+##### Colour names
+
+<ColorScaleTable />
+
+#### overrides.severity
 
 | Name | Type | Required | Description |
 | ---- | ---- | ------- | ----------- |
-| "colorName" | string | No | Hex-color to set as base |
+| "colorName" | String | No | Hex colour to set as base |
 
-The `severityColors` override allows you to customize the colors used for severity, which are `success`, `warning`, `danger`, and `info`.
+The `severity` override allows you to customise the colours used for severity, which are `success`, `warning`, `danger`, and `info`.
 
 ## Complete Example
 
@@ -136,7 +158,6 @@ The `severityColors` override allows you to customize the colors used for severi
 {
   "$schema": "node_modules/@digdir/designsystemet/dist/config.schema.json",
   "outDir": "./design-tokens",
-  "clean": true,
   "themes": {
     "my-theme": {
       "colors": {
@@ -152,14 +173,20 @@ The `severityColors` override allows you to customize the colors used for severi
         "colors": {
           "primary": {
             "background-default": {
-              "light": "#0052a3",
-              "dark": "#006dd9"
+              "light": "#ff0000",
+              "dark": "#000fff"
             },
-            "text-subtle": {
-              "light": "#004a94",
-              "dark": "#7cb8f7"
+            "text-default": {
+              "light": "#00ff00",
+              "dark": "#00ffff"
             }
           }
+        },
+        "severity": {
+          "success":  "#28a745",
+          "warning": "#ffc107",
+          "danger": "#dc3545",
+          "info": "#17a2b8"
         }
       }
     }
