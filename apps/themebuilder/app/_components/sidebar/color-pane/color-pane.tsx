@@ -8,7 +8,7 @@ import {
 import { ChevronLeftIcon, TrashIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { useState } from 'react';
-import { ColorPicker, type IColor } from 'react-color-palette';
+import { ColorPicker, type IColor, useColor } from 'react-color-palette';
 import { useTranslation } from 'react-i18next';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from './color-pane.module.css';
@@ -37,6 +37,7 @@ export const ColorPane = ({
   colorType,
 }: ColorPaneProps) => {
   const { t } = useTranslation();
+  const [localColor, setLocalColor] = useColor(color.hex);
 
   const {
     colors: { main: mainColors },
@@ -157,14 +158,15 @@ export const ColorPane = ({
       <div className={classes.label}>{t('colorPane.color')}</div>
       <div className={classes.colorPreviewContainer}>
         <div
-          style={{ backgroundColor: color.hex }}
+          style={{ backgroundColor: localColor.hex }}
           className={classes.colorPreview}
         />
       </div>
       <ColorPicker
         hideAlpha
-        color={color}
-        onChange={setColor}
+        color={localColor}
+        onChange={setLocalColor}
+        onChangeComplete={setColor}
         hideInput={['rgb', 'hsv']}
       />
     </div>
