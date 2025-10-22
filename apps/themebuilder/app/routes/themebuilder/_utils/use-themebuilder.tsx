@@ -3,6 +3,7 @@ import {
   generateColorSchemes,
   type ThemeInfo,
 } from '@digdir/designsystemet';
+import { baseColors, type GlobalColors } from '@digdir/designsystemet/color';
 import { useLoaderData } from 'react-router';
 import {
   generateColorVars,
@@ -16,14 +17,33 @@ export type ColorTheme = {
   hex?: string;
 };
 
+export type SeverityColorTheme = {
+  name: GlobalColors;
+  colors: ThemeInfo;
+  hex: CssColor;
+  isDefault: boolean;
+  variables: {
+    light: Record<string, string>;
+    dark: Record<string, string>;
+  };
+};
+
 export const QUERY_SEPARATOR = ' ';
 
 export const useThemebuilder = () => {
-  const { colors, colorScheme, baseBorderRadius, tab } =
-    useLoaderData<Route.ComponentProps['loaderData']>();
+  const {
+    colors,
+    severityColors,
+    severityEnabled,
+    colorScheme,
+    baseBorderRadius,
+    tab,
+  } = useLoaderData<Route.ComponentProps['loaderData']>();
 
   return {
     colors,
+    severityColors,
+    severityEnabled,
     colorScheme,
     baseBorderRadius,
     tab,
@@ -62,4 +82,41 @@ export function createColorsAndNeutralVariables(color: CssColor) {
       dark: generateNeutralColorVars(colors, 'dark'),
     },
   };
+}
+
+export function createSeverityColorsFromQuery(
+  severityParam: string | null,
+): SeverityColorTheme[] {
+  const severityColors: SeverityColorTheme[] = [];
+  const severityKeys: GlobalColors[] = ['info', 'success', 'warning', 'danger'];
+
+  for (const key of severityKeys) {
+    let hex = baseColors[key];
+    let isDefault = true;
+
+    // Check if this severity color is overridden in the query params
+    if (severityParam) {
+      const params = severityParam.split(QUERY_SEPARATOR);
+      const override = params.find((p) => p.startsWith(`${key}:`));
+      if (override) {
+        const [, value] = override.split(':');
+        hex = value as CssColor;
+        isDefault = false;
+      }
+    }
+
+    const colors = generateColorSchemes(hex);
+    severityColors.push({
+      name: key,
+      hex,
+      colors,
+      isDefault,
+      variables: {
+        light: generateColorVars(colors, 'light'),
+        dark: generateColorVars(colors, 'dark'),
+      },
+    });
+  }
+
+  return severityColors;
 }

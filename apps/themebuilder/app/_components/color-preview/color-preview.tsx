@@ -26,10 +26,16 @@ const CardWrapper = ({ color, view, ...rest }: CardProps) =>
 
 export const ColorPreview = () => {
   const { t } = useTranslation();
-  const { colorScheme, colors } = useThemebuilder();
+  const { colorScheme, colors, severityColors, severityEnabled } =
+    useThemebuilder();
   const [view, setView] = useState<ViewType>(DEFAULT_VIEW);
 
-  const allColors = [...colors.main, ...colors.neutral, ...colors.support];
+  const allColors = [
+    ...colors.main,
+    ...colors.neutral,
+    ...colors.support,
+    ...(severityEnabled ? severityColors : []),
+  ];
 
   const prepVariables = (variables: Record<string, string>) => {
     const prepped: Record<string, string> = {};

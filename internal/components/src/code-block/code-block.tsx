@@ -1,6 +1,6 @@
 import { Button, Skeleton } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
-import { Suspense, use, useMemo, useState } from 'react';
+import { Suspense, use, useEffect, useMemo, useState } from 'react';
 import { CodeBlock as ReactCodeBlock } from 'react-code-block';
 import classes from './code-block.module.css';
 import { isPrettifySupported, prettifyCode } from './prettify';
@@ -43,17 +43,30 @@ const CodeBlockContent = ({
   className,
   language = 'text',
 }: CodeBlockProps) => {
+  // Initial prettify promise for Suspense (only runs once on mount)
   const prettifyPromise = useMemo(() => {
     if (isPrettifySupported(language)) {
       return prettifyCode(children, language);
     }
     return Promise.resolve(children);
+  }, []);
+
+  const initialText = use(prettifyPromise);
+
+  const [text, setText] = useState(initialText);
+
+  useEffect(() => {
+    if (isPrettifySupported(language)) {
+      prettifyCode(children, language).then((pretty) => {
+        setText(pretty);
+      });
+    } else {
+      setText(children);
+    }
   }, [children, language]);
 
-  const prettyCode = use(prettifyPromise);
-
   return (
-    <ReactCodeBlock code={prettyCode} language={language}>
+    <ReactCodeBlock code={text} language={language}>
       <div className={classes.codeBlockWrapper}>
         <ReactCodeBlock.Code
           data-color-scheme='dark'
@@ -66,7 +79,7 @@ const CodeBlockContent = ({
           </code>
         </ReactCodeBlock.Code>
         <div data-color-scheme='dark' className={classes.toolbar}>
-          <CopyButton text={prettyCode} />
+          <CopyButton text={text} />
         </div>
       </div>
     </ReactCodeBlock>
