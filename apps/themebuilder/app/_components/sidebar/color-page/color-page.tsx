@@ -262,7 +262,9 @@ export const ColorPage = () => {
                 </Button>
               )}{' '}
               {colors.support.length >= 40 && (
-                <div className={classes.error}>Maximum 4 support colours</div>
+                <div className={classes.error}>
+                  {t('themeModal.max-X-colors', { count: 4 })}
+                </div>
               )}
             </div>
             <div className={classes.colors}>
@@ -281,7 +283,7 @@ export const ColorPage = () => {
           <div className={classes.group}>
             <div className={classes.groupHeader}>
               <Heading data-size='2xs' id='severity-colors-heading'>
-                Severity Colors
+                {t('themeModal.severity-colors')}
               </Heading>
               <Switch
                 name='severity-colors-switch'
@@ -302,7 +304,7 @@ export const ColorPage = () => {
                   color: 'var(--ds-color-neutral-text-subtle)',
                 }}
               >
-                Enable to customize info, success, warning, and danger colors
+                {t('themeModal.severity-colors-switch')}
               </Paragraph>
             )}
             {severityEnabled && (
@@ -421,7 +423,7 @@ export const ColorPage = () => {
           setName={() => {
             // Name changes not allowed for severity colors
           }}
-          colorType='neutral'
+          colorType='severity'
         />
       )}
     </div>

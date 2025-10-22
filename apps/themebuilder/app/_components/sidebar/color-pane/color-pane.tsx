@@ -22,7 +22,7 @@ type ColorPaneProps = {
   setName: (name: string) => void;
   onCancel: () => void;
   onRemove: () => void;
-  colorType: 'main' | 'neutral' | 'support';
+  colorType: 'main' | 'neutral' | 'support' | 'severity';
 };
 
 export const ColorPane = ({
@@ -112,6 +112,7 @@ export const ColorPane = ({
           className={cl(classes.removeBtn)}
           hidden={
             colorType === 'neutral' ||
+            colorType === 'severity' ||
             (colorType === 'main' && mainColors.length <= 1)
           }
         >
@@ -127,7 +128,12 @@ export const ColorPane = ({
           {t('colorPane.neutral-info')}
         </Paragraph>
       )}
-      {colorType !== 'neutral' && (
+      {colorType === 'severity' && (
+        <Paragraph data-size='sm' className={classes.desc}>
+          {t('colorPane.severity-info')}
+        </Paragraph>
+      )}
+      {colorType !== 'neutral' && colorType !== 'severity' && (
         <Textfield
           placeholder={t('colorPane.name-placeholder')}
           label={t('colorPane.name')}

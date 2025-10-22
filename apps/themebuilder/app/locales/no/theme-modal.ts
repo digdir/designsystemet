@@ -30,4 +30,7 @@ export default {
       'Kopier kodesnutten og kjør den på maskinen din for å generere design tokens (json-filer), eller lim den inn i Designsystemet sin',
     'step-two': 'Kjør kodesnutten for å generere CSS variabler til kode.',
   },
+  'max-X-colors': 'Maks {count} farger tillatt.',
+  'severity-colors': 'Severity',
+  'severity-colors-switch': 'Aktiver for å redigere alvorlighetsfarger',
 };
