@@ -32,5 +32,5 @@ export default {
   },
   'max-X-colors': 'Maks {count} farger tillatt.',
   'severity-colors': 'Severity',
-  'severity-colors-switch': 'Aktiver for å redigere alvorlighetsfarger',
+  'severity-colors-switch': 'Aktiver for å redigere severity-farger',
 };
