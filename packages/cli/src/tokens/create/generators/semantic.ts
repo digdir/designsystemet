@@ -1,4 +1,5 @@
 import * as R from 'ramda';
+import { baseColorNames } from '../../../colors/colorMetadata.js';
 import semanticColorBase from '../../template/design-tokens/semantic/color.base.template.json' with { type: 'json' };
 import semanticColorTemplate from '../../template/design-tokens/semantic/color.template.json' with { type: 'json' };
 import categoryColorTemplate from '../../template/design-tokens/semantic/modes/color.template.json' with {
@@ -12,7 +13,7 @@ type SemanticModes = {
   'support-color': Record<string, TokenSet>;
 };
 
-export const generateSemantic = (colors: Colors) => {
+export const generateSemantic = (colors: Colors, _themeName: string) => {
   const mainColorNames = Object.keys(colors.main);
   const supportColorNames = Object.keys(colors.support);
 
@@ -52,7 +53,9 @@ export const generateSemantic = (colors: Colors) => {
 
   const customColors = [...mainColorNames, 'neutral', ...supportColorNames];
 
-  const semanticColorTokens = customColors.map(
+  const allColors = [...customColors, ...baseColorNames];
+
+  const semanticColorTokens = allColors.map(
     (colorName) =>
       [
         colorName,

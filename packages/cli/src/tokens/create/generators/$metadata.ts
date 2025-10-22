@@ -18,10 +18,7 @@ export function generate$Metadata(schemes: ColorScheme[], themes: string[], colo
       'primitives/modes/typography/size/large',
       ...themes.map((theme) => `primitives/modes/typography/primary/${theme}`),
       ...themes.map((theme) => `primitives/modes/typography/secondary/${theme}`),
-      ...schemes.flatMap((scheme) => [
-        `primitives/modes/color-scheme/${scheme}/global`,
-        ...themes.map((theme) => `primitives/modes/color-scheme/${scheme}/${theme}`),
-      ]),
+      ...schemes.flatMap((scheme) => [...themes.map((theme) => `primitives/modes/color-scheme/${scheme}/${theme}`)]),
       ...themes.map((theme) => `themes/${theme}`),
       'semantic/color',
       ...Object.entries(colors.main).map(([color]) => `semantic/modes/main-color/${color}`),

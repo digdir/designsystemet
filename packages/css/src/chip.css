@@ -51,6 +51,7 @@
     --dsc-input-accent-color: var(--dsc-chip-input-accent-color);
     --dsc-input-stroke-color: var(--dsc-chip-input-stroke-color);
     --dsc-input-size--toggle: var(--dsc-chip-input-size);
+    --dsc-input-outline-width--hover: 0;
   }
 
   &:not([hidden]) {

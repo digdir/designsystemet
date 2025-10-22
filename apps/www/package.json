@@ -44,7 +44,7 @@
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.1",
     "typescript": "^5.9.3",
-    "vite": "^7.1.10",
+    "vite": "^7.1.11",
     "vite-env-only": "^3.0.3",
     "vite-tsconfig-paths": "^5.1.4"
   }

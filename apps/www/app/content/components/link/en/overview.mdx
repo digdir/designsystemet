@@ -1,0 +1,53 @@
+---
+title: Link
+image: Link.svg
+cssfile: link
+---
+
+`Link` is clickable text or graphics that makes it easy for users to navigate to files or pages internally or externally.
+
+<Story story="Preview" />
+
+## Usage
+
+```tsx
+import { Link } from '@digdir/designsystemet-react';
+
+<Link href='https://designsystemet.no/'>Go to designsystemet</Link>;
+```
+
+## Code Examples
+
+### In text
+
+A link is often used as part of a text.
+
+<Story story="InText" />
+
+### With icon
+
+The icon is placed on the left side. This is a functional icon that tells users where the link leads them.
+
+<Story story="WithIcon" />
+
+### Neutral color
+
+<Story story="Neutral" />
+
+## Guidelines
+
+It's important not to overuse links, as it can make it difficult for users to find their way forward.
+
+**Suitable for**
+
+- navigating to another page or location in the application
+- navigating to an external page
+- downloading a file
+
+**Not suitable for:**
+
+- Performing an action not related to navigation, such as submitting a form. Then you should use a [`Button`](/docs/komponenter-button--docs)).
+
+## Accessibility
+
+`Link` functions as `<a>`, and no functionality has been changed. When the user has visited a link previously, the color of the link will change.
