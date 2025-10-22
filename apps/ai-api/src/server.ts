@@ -293,7 +293,7 @@ app.post('/api/search', async (req, res) => {
     const deduplicatedResults = deduplicateByDocument(searchResults);
 
     // Regex to move language field in URL if present
-    const langRegex = /^(https?:\/\/[^/]+\/)([^/]+)\/(no|en)\/(.*)$/;
+    const langRegex = /^(https?:\/\/[^/]+\/)(.*?)\/(no|en)(\/.*)$/;
     // Format results for quick search
     const formattedResults = deduplicatedResults
       .slice(0, 8)
@@ -303,10 +303,14 @@ app.post('/api/search', async (req, res) => {
         const snippet =
           plainText.substring(0, 200) + (plainText.length > 200 ? '…' : '');
 
+        const fixedUrl = doc.url
+          ?.replace(langRegex, '$1$3/$2$4')
+          .replace(/\/$/, '');
+
         return {
           title: doc.title,
           content: snippet,
-          url: doc.url?.replace(langRegex, '$1$3/$2/$4'),
+          url: fixedUrl,
           type: doc.type || 'component',
         };
       });
