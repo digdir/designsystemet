@@ -1,4 +1,3 @@
-import { readFile } from 'node:fs';
 import { join } from 'node:path';
 import { ContentContainer } from '@internal/components';
 import { Outlet } from 'react-router';

@@ -19,9 +19,20 @@ const getBaseDefault = (colorTheme: Color[]) =>
 
 export const useTokenModal = () => {
   const { isProduction } = useLoaderData();
-  const { colors, baseBorderRadius } = useThemebuilder();
+  const { colors, severityColors, baseBorderRadius } = useThemebuilder();
 
   const [name, setName] = useState('theme');
+
+  // Get non-default severity colors
+  const severityOverrides = severityColors
+    .filter((sc) => !sc.isDefault)
+    .reduce(
+      (acc, sc) => {
+        acc[sc.name] = sc.hex;
+        return acc;
+      },
+      {} as Record<string, CssColor>,
+    );
 
   const theme: CreateTokensOptions = {
     name,
@@ -84,6 +95,11 @@ export const useTokenModal = () => {
           support: theme.colors.support,
           neutral: theme.colors.neutral,
         },
+        ...(Object.keys(severityOverrides).length > 0 && {
+          overrides: {
+            severity: severityOverrides,
+          },
+        }),
         borderRadius: theme.borderRadius,
       },
     },
@@ -101,6 +117,6 @@ export const useTokenModal = () => {
       cli: cliBuildSnippet,
       config: configBuildSnippet,
     },
-    configSnippet: JSON.stringify(configSnippet),
+    configSnippet: JSON.stringify(configSnippet, null, 2),
   };
 };

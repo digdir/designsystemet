@@ -29,5 +29,10 @@ export default {
     'step-one':
       'Kopier kodesnutten og kjør den på maskinen din for å generere design tokens (json-filer), eller lim den inn i Designsystemet sin',
     'step-two': 'Kjør kodesnutten for å generere CSS variabler til kode.',
+    'severity-warning':
+      'Merk: Severity farger er endret i temaet ditt. Disse vil ikke komme med dersom du bruker CLI.',
   },
+  'max-X-colors': 'Maks {count} farger tillatt.',
+  'severity-colors': 'Severity',
+  'severity-colors-switch': 'Aktiver for å overstyre severity-farger',
 };

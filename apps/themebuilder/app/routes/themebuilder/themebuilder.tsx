@@ -14,6 +14,7 @@ import i18n from '~/i18next.server';
 import {
   createColorsAndNeutralVariables,
   createColorsFromQuery,
+  createSeverityColorsFromQuery,
   QUERY_SEPARATOR,
 } from './_utils/use-themebuilder';
 import type { Route } from './+types/themebuilder';
@@ -64,8 +65,16 @@ export const loader = async ({
     support: createColorsFromQuery(urlParams.get('support')),
   };
 
+  const severityColors = createSeverityColorsFromQuery(
+    urlParams.get('severity'),
+  );
+
+  const severityEnabled = urlParams.get('severity-enabled') === 'true';
+
   return {
     colors,
+    severityColors,
+    severityEnabled,
     colorScheme: (urlParams.get('appearance') || 'light') as ColorScheme,
     baseBorderRadius: parseInt(urlParams.get('border-radius') || '4', 10),
     tab: urlParams.get('tab') || 'overview',
