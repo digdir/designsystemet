@@ -97,7 +97,7 @@ export default function Fundamentals({
         <MDXComponents
           code={code}
           components={{
-            ColorScaleTable,
+            ColorScaleTable: ColorScaleTable as React.ComponentType<unknown>,
           }}
         />
         <EditPageOnGithub />
