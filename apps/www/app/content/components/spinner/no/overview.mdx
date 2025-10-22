@@ -1,0 +1,44 @@
+---
+title: Spinner
+image: Spinner.svg
+cssfile: spinner
+---
+
+`Spinner` brukes for å indikere at innhold eller en handling er i ferd med å laste, og at brukeren må vente før de kan fortsette.
+
+<Story story="Preview" />
+
+## Bruk
+
+```tsx
+import { Spinner } from '@digdir/designsystemet-react';
+
+<Spinner aria-label="Laster" />
+```
+
+## Kodeeksempler
+
+### Størrelser
+
+Du kan justere størrelsen på `Spinner` etter hvor den skal plasseres.
+
+<Story story="Sizes" />
+
+## Retningslinjer
+
+Formålet med `Spinner` er å gi en visuell bekreftelse på at systemet jobber, og på den måten skape trygghet for at prosessen ikke har stoppet opp.
+
+**Passer til å**
+
+- indikere at systemet jobber med en oppgave som brukeren må vente på
+- lokale handlinger, som å sende inn et skjema eller oppdatere en tabell
+- fortelle brukeren når lasting vil ta mer enn 1 sekund
+
+**Passer ikke**
+
+- å vise at enkeltelementer på siden blir lastet inn (vurder [Skeleton](/docs/komponenter-loaders-skeleton--docs) i stedet)
+- når en lasting tar mindre enn 1 sekund
+
+## Tilgjengelighet
+
+For å sikre en god brukeropplevelse bør `Spinner` kombineres med tekst eller ha en `aria-label`, slik at også brukere med hjelpemidler får informasjon om at lasting pågår.

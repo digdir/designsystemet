@@ -1,0 +1,39 @@
+---
+title: Radio
+image: Radio.svg
+cssfile: radio
+---
+
+Vi bruker `Radio` for å gi brukerne valg der de skal velge kun ett alternativ.
+
+<Story story="Preview" />
+
+## Bruk
+
+```tsx
+import { Radio } from '@digdir/designsystemet-react';
+
+<Radio label="Radio" value="value" name="name" />
+```
+
+## Kodeeksempler
+
+### Gruppering
+
+<Story story="Group" />
+
+### Med feil
+
+<Story story="WithError" />
+
+## Retningslinjer
+
+Bruk `Radio` når brukeren skal velge kun ett alternativ blant flere.
+
+**Passer til å**
+
+- velge ett alternativ i skjemaer
+
+**Passer ikke til å**
+
+- velge flere alternativer, bruk heller [`Checkbox`](/docs/komponenter-checkbox--docs)
