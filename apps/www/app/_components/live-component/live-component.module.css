@@ -30,6 +30,11 @@
     }
   }
 
+  & .live-preview-error {
+    grid-column: 1 / -1;
+    margin: var(--ds-size-4);
+  }
+
   & .codeButton {
     font-size: var(--ds-font-size-3);
     color: var(--ds-color-neutral-text-subtle);

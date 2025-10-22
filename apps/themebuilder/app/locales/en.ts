@@ -1,4 +1,5 @@
 import en from '@internal/components/src/_locales/en';
+import themeModal from './en/theme-modal';
 import type no from './no';
 
 export default {
@@ -105,32 +106,7 @@ export default {
     'dark-mode': 'Dark mode',
     'display-mode': 'Display mode',
   },
-  themeModal: {
-    'use-theme': 'Use theme',
-    'theme-name': 'Give your theme a name',
-    'theme-name-description':
-      'The name should represent the organisation or product you are profiling.',
-    'theme-name-label': 'Theme name',
-    'generate-css': 'Generate CSS',
-    'generating-css': 'Generating CSS...',
-    'step-one':
-      "Copy the code snippet and run it on your machine to generate design tokens (JSON files), or paste it into the Designsystemet's",
-    'figma-plugin': 'Figma plugin (opens in new tab)',
-    in: 'in',
-    'core-ui-kit': 'Core UI Kit (opens in new tab)',
-    'to-update':
-      'to update a theme directly in Figma. Read more about these options on',
-    'own-theme': 'your own theme (opens in new tab)',
-    page: 'page.',
-    format: 'Format for Windows',
-    'step-two': 'Run the code snippet to generate CSS variables for code.',
-    'help-heading': 'Something not working?',
-    'help-description': 'Send us a message on',
-    slack: 'Slack (opens in new tab)',
-    or: 'or create a',
-    'github-issue': 'Github issue (opens in new tab)',
-    color: 'Colour',
-  },
+  themeModal,
   examples: {
     'example-1': 'Example 1',
     'example-2': 'Example 2',

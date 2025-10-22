@@ -1,0 +1,46 @@
+---
+title: Tag
+image: Tag.svg
+cssfile: tag
+---
+
+Tags er merkelapper som kan brukes til å kategorisere elementer eller kommunisere fremdrift, status eller prosess. Tags er statiske merkelapper; de kan ikke klikkes på.
+
+<Story story="Preview" />
+
+## Bruk
+
+```tsx
+import { Tag } from '@digdir/designsystemet-react';
+
+<Tag>Beta</Tag>;
+```
+
+## Kodeeksempler
+
+### Størrelser
+
+<Story story="Sizes" />
+
+### Farger
+
+<Story story="Colors" />
+
+### Ikoner
+
+<Story story="Icons" />
+
+## Retningslinjer
+
+Bruk `Tag` når du vil hjelpe brukeren med å raskt identifisere innhold basert på kategori, status eller egenskap.
+
+**Passer til å:**
+
+- Kategorisere innhold, for eksempel «Beta», «Ny» eller «Populær».
+- Vise status, for eksempel «Pågående», «Fullført» eller «Avbrutt».
+
+**Passer ikke til**
+
+- link til andre sider (bruk heller [`Link`](/docs/komponenter-link--docs))
+- handlinger (bruk heller [`Button`](/docs/komponenter-button--docs))
+- filtrering (bruk heller [`Chip`](/docs/komponenter-chip--docs))

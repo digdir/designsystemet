@@ -1,0 +1,31 @@
+---
+title: Textarea
+subtitle: '`Textarea` er et felt der brukeren kan fylle inn lengre tekst over flere linjer.'
+image: Textarea.svg
+cssfile: textarea
+---
+
+<Story story="Preview" layout="column" />
+
+## Bruk
+
+```tsx
+import { Textarea, Label } from '@digdir/designsystemet-react';
+
+<Label htmlFor="my-textarea">Label</Label>
+<Textarea id="my-textarea" />
+```
+
+## Kodeeksempler
+
+### Med rader
+
+<Story story="WithRows" layout="column" />
+
+### Disabled
+
+<Story story="Disabled" layout="column" />
+
+### ReadOnly
+
+<Story story="ReadOnly" layout="column" />
