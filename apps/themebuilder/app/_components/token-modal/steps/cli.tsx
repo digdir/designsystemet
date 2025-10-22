@@ -1,7 +1,8 @@
-import { Link, Paragraph, Switch } from '@digdir/designsystemet-react';
+import { Alert, Link, Paragraph, Switch } from '@digdir/designsystemet-react';
 import { CodeBlock } from '@internal/components';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from '../token-modal.module.css';
 
 export default function Cli({
@@ -15,6 +16,7 @@ export default function Cli({
   };
 }) {
   const { t } = useTranslation();
+  const { severityEnabled } = useThemebuilder();
 
   const [formatWin, setFormatWin] = useState(
     navigator.userAgent.includes('Windows'),
@@ -22,6 +24,16 @@ export default function Cli({
 
   return (
     <>
+      {severityEnabled && (
+        <Alert
+          data-color='info'
+          style={{
+            marginBottom: 'var(--ds-size-4)',
+          }}
+        >
+          {t('themeModal.cli.severity-warning')}
+        </Alert>
+      )}
       <div className={classes.step}>
         <span>1</span>
         <Paragraph>

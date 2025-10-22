@@ -37,6 +37,7 @@ export const ColorPane = ({
   colorType,
 }: ColorPaneProps) => {
   const { t } = useTranslation();
+
   const {
     colors: { main: mainColors },
   } = useThemebuilder();
@@ -53,6 +54,7 @@ export const ColorPane = ({
 
   const checkNameIsValid = () => {
     if (colorType === 'neutral') return true;
+    if (colorType === 'severity') return true;
     if (!name?.trim()) {
       setColorError(t('colorPane.name-empty-error'));
       return false;
