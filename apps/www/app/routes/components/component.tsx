@@ -39,6 +39,10 @@ export { ErrorBoundary } from '~/root';
 export const loader = async ({ params, request }: Route.LoaderArgs) => {
   const { component, lang } = params;
 
+  if (process.env.APP_ENV === 'production') {
+    throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
+  }
+
   if (!component) {
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
   }
