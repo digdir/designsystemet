@@ -26,7 +26,7 @@ export default function Cli({
     <>
       {severityEnabled && (
         <Alert
-          data-color='info'
+          data-color='warning'
           style={{
             marginBottom: 'var(--ds-size-4)',
           }}
