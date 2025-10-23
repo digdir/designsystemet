@@ -114,6 +114,7 @@ const ColorOverrideInput = ({
   return (
     <Field data-size='sm'>
       <Label>
+        <span className="ds-sr-only">{colorName} </span>
         {tokenName} {mode === 'light' ? 'Light' : 'Dark'}
       </Label>
       <Field.Affixes>
