@@ -1,0 +1,35 @@
+---
+title: Search
+image: Search.svg
+cssfile: search
+---
+
+`Search` er en søkekomponent som kombinerer et tekstfelt med søkefunksjonalitet.
+
+<Story story="Preview" />
+
+## Bruk
+
+```tsx
+import { Search } from '@digdir/designsystemet-react';
+
+<Search>
+  <Search.Input aria-label="Søk" />
+  <Search.Clear />
+  <Search.Button />
+</Search>
+```
+
+## Kodeeksempler
+
+### Med label
+
+<Story story="WithLabel" />
+
+### Varianter
+
+<Story story="Variants" />
+
+### Kontrollert
+
+<Story story="Controlled" layout="column" />

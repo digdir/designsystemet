@@ -1,0 +1,57 @@
+---
+title: Popover
+subtitle: Popover is a component that displays additional information or actions when the user clicks a trigger.
+image: Popover.svg
+cssfile: popover
+---
+
+<Story story="Preview" />
+
+## Usage
+
+`Popover` consists of several sub-components:
+
+- `Popover.TriggerContext` - Wrapper to connect trigger and popover
+- `Popover.Trigger` - The element that opens the popover (can be a button or inline text)
+- `Popover` - The popover content itself
+
+## Guidelines
+
+- Use Popover for additional information that doesn't need to be visible all the time
+- Keep content short and relevant
+- Use color variants to indicate different types of content (neutral, info, warning, danger)
+- Avoid critical information in Popover that users must see
+
+## Interactive popover
+
+Popover can contain buttons and other interactive elements:
+
+<Story story="Interactive" />
+
+## Inline trigger
+
+You can use Popover inline in text with a dotted underline:
+
+<Story story="DottedUnderline" />
+
+## Controlled state
+
+You can control when the popover is open or closed:
+
+<Story story="Controlled" />
+
+## Without TriggerContext
+
+You can also use Popover without TriggerContext by using `popovertarget`:
+
+<Story story="WithoutContext" />
+
+## Color variants
+
+Popover supports the following color variants:
+- `neutral` - Standard gray color
+- `info` - Blue information color
+- `warning` - Yellow warning color
+- `danger` - Red danger color
+
+Each variant also has a `tinted` version that is lighter.

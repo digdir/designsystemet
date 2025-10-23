@@ -1,0 +1,33 @@
+---
+title: ToggleGroup
+subtitle: '`ToggleGroup` er en gruppe av knapper hvor brukeren kan velge ett alternativ.'
+image: ToggleGroup.svg
+cssfile: toggle-group
+---
+
+<Story story="Preview" />
+
+## Bruk
+
+```tsx
+import { ToggleGroup } from '@digdir/designsystemet-react';
+
+<ToggleGroup defaultValue="option1">
+  <ToggleGroup.Item value="option1">Alternativ 1</ToggleGroup.Item>
+  <ToggleGroup.Item value="option2">Alternativ 2</ToggleGroup.Item>
+</ToggleGroup>
+```
+
+## Kodeeksempler
+
+### Kun ikoner
+
+<Story story="OnlyIcons" />
+
+### Kontrollert
+
+<Story story="Controlled" />
+
+### Secondary variant
+
+<Story story="Secondary" />

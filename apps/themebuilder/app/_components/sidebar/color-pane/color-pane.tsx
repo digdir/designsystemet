@@ -8,7 +8,7 @@ import {
 import { ChevronLeftIcon, TrashIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { useState } from 'react';
-import { ColorPicker, type IColor } from 'react-color-palette';
+import { ColorPicker, type IColor, useColor } from 'react-color-palette';
 import { useTranslation } from 'react-i18next';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from './color-pane.module.css';
@@ -22,7 +22,7 @@ type ColorPaneProps = {
   setName: (name: string) => void;
   onCancel: () => void;
   onRemove: () => void;
-  colorType: 'main' | 'neutral' | 'support';
+  colorType: 'main' | 'neutral' | 'support' | 'severity';
 };
 
 export const ColorPane = ({
@@ -37,6 +37,8 @@ export const ColorPane = ({
   colorType,
 }: ColorPaneProps) => {
   const { t } = useTranslation();
+  const [localColor, setLocalColor] = useColor(color.hex);
+
   const {
     colors: { main: mainColors },
   } = useThemebuilder();
@@ -53,6 +55,7 @@ export const ColorPane = ({
 
   const checkNameIsValid = () => {
     if (colorType === 'neutral') return true;
+    if (colorType === 'severity') return true;
     if (!name?.trim()) {
       setColorError(t('colorPane.name-empty-error'));
       return false;
@@ -112,6 +115,7 @@ export const ColorPane = ({
           className={cl(classes.removeBtn)}
           hidden={
             colorType === 'neutral' ||
+            colorType === 'severity' ||
             (colorType === 'main' && mainColors.length <= 1)
           }
         >
@@ -127,7 +131,12 @@ export const ColorPane = ({
           {t('colorPane.neutral-info')}
         </Paragraph>
       )}
-      {colorType !== 'neutral' && (
+      {colorType === 'severity' && (
+        <Paragraph data-size='sm' className={classes.desc}>
+          {t('colorPane.severity-info')}
+        </Paragraph>
+      )}
+      {colorType !== 'neutral' && colorType !== 'severity' && (
         <Textfield
           placeholder={t('colorPane.name-placeholder')}
           label={t('colorPane.name')}
@@ -149,14 +158,15 @@ export const ColorPane = ({
       <div className={classes.label}>{t('colorPane.color')}</div>
       <div className={classes.colorPreviewContainer}>
         <div
-          style={{ backgroundColor: color.hex }}
+          style={{ backgroundColor: localColor.hex }}
           className={classes.colorPreview}
         />
       </div>
       <ColorPicker
         hideAlpha
-        color={color}
-        onChange={setColor}
+        color={localColor}
+        onChange={setLocalColor}
+        onChangeComplete={setColor}
         hideInput={['rgb', 'hsv']}
       />
     </div>

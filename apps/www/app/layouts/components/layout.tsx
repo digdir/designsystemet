@@ -1,7 +1,12 @@
+import { join } from 'node:path';
 import { ContentContainer } from '@internal/components';
 import { Outlet } from 'react-router';
 import { Sidebar } from '~/_components/sidebar/sidebar';
-import { getFoldersInContentDir } from '~/_utils/files.server';
+import {
+  getFileFromContentDir,
+  getFoldersInContentDir,
+} from '~/_utils/files.server';
+import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import type { Route } from './+types/layout';
 import classes from './layout.module.css';
 
@@ -29,12 +34,24 @@ export const loader = async ({
     components: [],
   };
 
-  folders.forEach((folder) => {
-    cats.components.push({
-      title: folder,
-      url: `/${lang}/components/${folder}`,
-    });
-  });
+  await Promise.all(
+    folders.map(async (folder) => {
+      /* read overview.mdx file in lang folder */
+      const mdxSource = getFileFromContentDir(
+        join('components', folder, lang, 'overview.mdx'),
+      );
+
+      const result = await generateFromMdx(mdxSource);
+
+      cats.components.push({
+        title: result.frontmatter.title || folder,
+        url: `/${lang}/components/${folder}`,
+      });
+    }),
+  );
+
+  /* sort cats by title */
+  cats.components.sort((a, b) => a.title.localeCompare(b.title));
 
   const isOverviewPage =
     request.url.endsWith('/overview') || request.url.endsWith('/overview/');

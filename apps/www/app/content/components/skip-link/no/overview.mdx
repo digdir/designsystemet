@@ -1,0 +1,21 @@
+---
+title: SkipLink
+image: SkipLink.svg
+cssfile: skip-link
+---
+
+`SkipLink` lar brukere hoppe over repeterende innhold og navigere direkte til hovedinnholdet på siden.
+
+<Story story="Preview" layout="column" />
+
+## Bruk
+
+```tsx
+import { SkipLink } from '@digdir/designsystemet-react';
+
+<SkipLink href="#main-content">Hopp til hovedinnhold</SkipLink>
+```
+
+## Tilgjengelighet
+
+`SkipLink` vises kun når den får fokus, for eksempel når brukeren trykker Tab. Dette hjelper tastaturbrukere med å navigere raskt til hovedinnholdet.

@@ -1,0 +1,44 @@
+---
+title: Spinner
+image: Spinner.svg
+cssfile: spinner
+---
+
+`Spinner` is used to indicate that content or an action is loading, and that the user must wait before they can continue.
+
+<Story story="Preview" />
+
+## Usage
+
+```tsx
+import { Spinner } from '@digdir/designsystemet-react';
+
+<Spinner aria-label="Loading" />
+```
+
+## Code Examples
+
+### Sizes
+
+You can adjust the size of `Spinner` based on where it should be placed.
+
+<Story story="Sizes" />
+
+## Guidelines
+
+The purpose of `Spinner` is to provide visual confirmation that the system is working, thereby creating confidence that the process hasn't stopped.
+
+**Suitable for**
+
+- indicating that the system is working on a task the user must wait for
+- local actions, such as submitting a form or updating a table
+- telling the user when loading will take more than 1 second
+
+**Not suitable for**
+
+- showing that individual elements on the page are being loaded (consider [Skeleton](/docs/komponenter-loaders-skeleton--docs) instead)
+- when loading takes less than 1 second
+
+## Accessibility
+
+To ensure a good user experience, `Spinner` should be combined with text or have an `aria-label`, so that users with assistive technologies also get information that loading is in progress.
