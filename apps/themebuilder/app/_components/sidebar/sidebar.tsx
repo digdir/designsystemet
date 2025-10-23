@@ -6,15 +6,14 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BorderRadiusInput } from '../border-radius-input/border-radius-input';
 import { TokenModal } from '../token-modal/token-modal';
-import { ColorOverrides } from './color-overrides/color-overrides';
 import { ColorPage } from './color-page/color-page';
 import classes from './sidebar.module.css';
 
 export const Sidebar = () => {
   const { t } = useTranslation();
-  const [activePage, setActivePage] = useState<
-    'colors' | 'dimensions' | 'overrides'
-  >('colors');
+  const [activePage, setActivePage] = useState<'colors' | 'dimensions'>(
+    'colors',
+  );
 
   const isMobile = useMediaQuery('(max-width: 768px)');
   const [modalOpen, setModalOpen] = useState(false);
@@ -64,13 +63,12 @@ export const Sidebar = () => {
           <Tabs
             value={activePage}
             onChange={(value) =>
-              setActivePage(value as 'colors' | 'dimensions' | 'overrides')
+              setActivePage(value as 'colors' | 'dimensions')
             }
           >
             <Tabs.List>
               <Tabs.Tab value='colors'>{t('tabs.colors')}</Tabs.Tab>
               <Tabs.Tab value='dimensions'>{t('tabs.dimensions')}</Tabs.Tab>
-              <Tabs.Tab value='overrides'>Overrides</Tabs.Tab>
             </Tabs.List>
             <div className={classes.tabContent}>
               <Tabs.Panel className={classes.tabPanel} value='colors'>
@@ -78,9 +76,6 @@ export const Sidebar = () => {
               </Tabs.Panel>
               <Tabs.Panel className={classes.tabPanel} value='dimensions'>
                 <BorderRadiusInput />
-              </Tabs.Panel>
-              <Tabs.Panel className={classes.tabPanel} value='overrides'>
-                <ColorOverrides />
               </Tabs.Panel>
             </div>
           </Tabs>
@@ -105,22 +100,18 @@ export const Sidebar = () => {
             <Tabs
               value={activePage}
               onChange={(value) =>
-                setActivePage(value as 'colors' | 'dimensions' | 'overrides')
+                setActivePage(value as 'colors' | 'dimensions')
               }
             >
               <Tabs.List>
                 <Tabs.Tab value='colors'>{t('tabs.colors')}</Tabs.Tab>
                 <Tabs.Tab value='dimensions'>{t('tabs.dimensions')}</Tabs.Tab>
-                <Tabs.Tab value='overrides'>Overrides</Tabs.Tab>
               </Tabs.List>
               <Tabs.Panel className={classes.tabPanel} value='colors'>
                 <ColorPage />
               </Tabs.Panel>
               <Tabs.Panel className={classes.tabPanel} value='dimensions'>
                 <BorderRadiusInput />
-              </Tabs.Panel>
-              <Tabs.Panel className={classes.tabPanel} value='overrides'>
-                <ColorOverrides />
               </Tabs.Panel>
             </Tabs>
             <div className={classes.modalBottom}>

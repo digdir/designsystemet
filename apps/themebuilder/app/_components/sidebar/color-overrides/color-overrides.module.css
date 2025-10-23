@@ -71,12 +71,6 @@
   gap: var(--ds-size-2);
 }
 
-.tokenName {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--ds-color-neutral-text-default);
-}
-
 .tokenInputs {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -86,4 +80,30 @@
 .input {
   font-size: 12px;
   font-family: 'Roboto Mono', monospace;
+}
+
+.dialog {
+  height: 90vh;
+  min-width: 50vw;
+  overflow-y: scroll;
+}
+
+.tokenInputsWrapper {
+  display: flex;
+  gap: var(--ds-size-3);
+}
+
+.tokenInputGroup {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-1);
+}
+
+.colorPreview {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--ds-border-radius-sm);
+  border: 1px solid var(--ds-color-neutral-border-default);
+  flex-shrink: 0;
 }

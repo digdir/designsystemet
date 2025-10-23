@@ -74,7 +74,8 @@ export const ColorPreview = () => {
         )}
       >
         {allColors.map((color, index) => {
-          const variables = color.variables?.[colorScheme as keyof typeof color.variables];
+          const variables =
+            color.variables?.[colorScheme as keyof typeof color.variables];
           return (
             <CardWrapper
               view={view}

@@ -65,3 +65,13 @@
   width: 100%;
   background-color: var(--ds-color-neutral-border-subtle);
 }
+
+.overridesSection {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.overridesBtn {
+  width: 100%;
+}
