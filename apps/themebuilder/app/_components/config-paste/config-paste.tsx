@@ -1,10 +1,5 @@
 import { type ConfigSchema, configSchema } from '@digdir/designsystemet';
-import {
-  Button,
-  Heading,
-  Paragraph,
-  Textfield,
-} from '@digdir/designsystemet-react';
+import { Button, Paragraph, Textfield } from '@digdir/designsystemet-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router';
