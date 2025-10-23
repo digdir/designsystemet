@@ -111,6 +111,7 @@ body {
 
 @layer rich-text {
   .u-rich-text {
+    overflow: hidden;
     & > *:first-child {
       margin-top: 0;
     }
