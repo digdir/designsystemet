@@ -74,14 +74,13 @@ export const ColorPreview = () => {
         )}
       >
         {allColors.map((color, index) => {
+          const variables = color.variables?.[colorScheme as keyof typeof color.variables];
           return (
             <CardWrapper
               view={view}
               key={`${color.name}-${index}`}
               color={color}
-              style={prepVariables(
-                color.variables[colorScheme as keyof typeof color.variables],
-              )}
+              style={variables ? prepVariables(variables) : {}}
             />
           );
         })}

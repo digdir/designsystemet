@@ -1,4 +1,4 @@
-import type { ThemeInfo } from '@digdir/designsystemet/color';
+import type { CssColor, ThemeInfo } from '@digdir/designsystemet/color';
 import { RovingFocusRoot } from '@digdir/designsystemet-react';
 import { Group } from '../group/group';
 
@@ -8,9 +8,15 @@ type ScaleProps = {
   colorScale: ThemeInfo;
   showHeader?: boolean;
   namespace: string;
+  overrides?: Record<string, { light?: CssColor; dark?: CssColor }>;
 };
 
-export const Scale = ({ colorScale, showHeader, namespace }: ScaleProps) => {
+export const Scale = ({
+  colorScale,
+  showHeader,
+  namespace,
+  overrides,
+}: ScaleProps) => {
   return (
     <div className={classes.themes}>
       <RovingFocusRoot activeValue={namespace + '1'} asChild>
@@ -21,6 +27,7 @@ export const Scale = ({ colorScale, showHeader, namespace }: ScaleProps) => {
             colorScale={colorScale}
             names={['Default', 'Tinted']}
             namespace={namespace}
+            overrides={overrides}
           />
           <Group
             header={showHeader ? 'Surface' : ''}
@@ -33,6 +40,7 @@ export const Scale = ({ colorScale, showHeader, namespace }: ScaleProps) => {
             colorScale={colorScale}
             names={['Default', 'Tinted', 'Hover', 'Active']}
             namespace={namespace}
+            overrides={overrides}
           />
           <Group
             header={showHeader ? 'Border' : ''}
@@ -40,6 +48,7 @@ export const Scale = ({ colorScale, showHeader, namespace }: ScaleProps) => {
             colorScale={colorScale}
             names={['Subtle', 'Default', 'Strong']}
             namespace={namespace}
+            overrides={overrides}
           />
           <Group
             header={showHeader ? 'Text' : ''}
@@ -47,6 +56,7 @@ export const Scale = ({ colorScale, showHeader, namespace }: ScaleProps) => {
             colorScale={colorScale}
             names={['Subtle', 'Default']}
             namespace={namespace}
+            overrides={overrides}
           />
           <Group
             header={showHeader ? 'Base' : ''}
@@ -66,6 +76,7 @@ export const Scale = ({ colorScale, showHeader, namespace }: ScaleProps) => {
               'Contrast Default',
             ]}
             namespace={namespace}
+            overrides={overrides}
           />
         </div>
       </RovingFocusRoot>

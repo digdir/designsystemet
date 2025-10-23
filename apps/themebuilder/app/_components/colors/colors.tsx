@@ -37,6 +37,7 @@ const MainColors = () => {
             colorScale={color.colors}
             showHeader={index === 0}
             namespace={color.name}
+            overrides={color.overrides}
           />
         </div>
       ))}
@@ -54,7 +55,11 @@ const NeutralColor = () => {
       {neutral.map((color, index) => (
         <div key={index} className={classes.row}>
           <div className={classes.scaleLabel}>{color.name}</div>
-          <Scale colorScale={color.colors} namespace={color.name} />
+          <Scale
+            colorScale={color.colors}
+            namespace={color.name}
+            overrides={color.overrides}
+          />
         </div>
       ))}
     </div>
@@ -71,7 +76,11 @@ const SupportColors = () => {
       {support.map((color, index) => (
         <div key={index} className={classes.row}>
           <div className={classes.scaleLabel}>{color.name}</div>
-          <Scale colorScale={color.colors} namespace={color.name} />
+          <Scale
+            colorScale={color.colors}
+            namespace={color.name}
+            overrides={color.overrides}
+          />
         </div>
       ))}
     </div>

@@ -1,6 +1,7 @@
 import {
   type Color,
   type ColorNames,
+  type CssColor,
   colorMetadata,
   getColorMetadataByNumber,
   type ThemeInfo,
@@ -19,6 +20,7 @@ type GroupProps = {
   colorScale: ThemeInfo;
   names?: string[];
   namespace: string;
+  overrides?: Record<string, { light?: CssColor; dark?: CssColor }>;
 };
 
 export const Group = ({
@@ -27,6 +29,7 @@ export const Group = ({
   names,
   colorScale,
   namespace,
+  overrides,
 }: GroupProps) => {
   const { colorScheme } = useThemebuilder();
   const { openColorModal } = useColorModalContext();
@@ -46,16 +49,23 @@ export const Group = ({
         {colorNames.map((colorName, index) => {
           const { number, hex } =
             colorScale[colorScheme][colorMetadata[colorName].number - 1];
+
+          const override = overrides?.[colorName];
+          const overrideHex =
+            override && (colorScheme === 'light' || colorScheme === 'dark')
+              ? override[colorScheme]
+              : undefined;
+
           const color: Color = {
             ...getColorMetadataByNumber(number),
             number,
-            hex,
+            hex: overrideHex || hex,
           };
           return (
             <Fragment key={index + 'fragment' + namespace}>
               <RovingFocusItem value={namespace + number} asChild>
                 <ColorPreview
-                  color={hex}
+                  color={overrideHex || hex}
                   colorName={colorName}
                   aria-label={`Se mer om ${namespace} ${color?.displayName}`}
                   onClick={() => openColorModal(color, namespace)}

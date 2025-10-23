@@ -1,5 +1,6 @@
 import {
   type Color,
+  type CssColor,
   generateColorSchemes,
   getContrastFromHex,
 } from '@digdir/designsystemet';
@@ -111,12 +112,16 @@ const ColorContrastMapper = ({
     const mappedColors: { [key: string]: Color } = {};
 
     let colorTheme = colors?.main[0]?.colors || initialTheme;
+    let colorOverrides:
+      | Record<string, { light?: string; dark?: string }>
+      | undefined;
 
     if (selectedColor !== 'dominant') {
       for (const group of colorGroups) {
         for (const color of colors[group]) {
           if (color.name === selectedColor) {
             colorTheme = color.colors;
+            colorOverrides = color.overrides;
             break;
           }
         }
@@ -127,14 +132,27 @@ const ColorContrastMapper = ({
         for (const color of severityColors) {
           if (color.name === selectedColor) {
             colorTheme = color.colors;
+            colorOverrides = color.overrides;
             break;
           }
         }
       }
+    } else {
+      colorOverrides = colors?.main[0]?.overrides;
     }
 
     for (const [, value] of Object.entries(colorTheme[colorScheme])) {
-      mappedColors[value.name] = value;
+      // Check if there's an override for this color name
+      const override = colorOverrides?.[value.name];
+      const overrideHex =
+        override && (colorScheme === 'light' || colorScheme === 'dark')
+          ? override[colorScheme]
+          : undefined;
+
+      mappedColors[value.name] = {
+        ...value,
+        hex: (overrideHex || value.hex) as CssColor,
+      };
     }
 
     return mappedColors;

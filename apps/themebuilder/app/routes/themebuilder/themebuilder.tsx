@@ -12,9 +12,11 @@ import { isProduction } from '~/_utils/is-production.server';
 import { generateMetadata } from '~/_utils/metadata';
 import i18n from '~/i18next.server';
 import {
+  applyOverridesToColors,
   createColorsAndNeutralVariables,
   createColorsFromQuery,
   createSeverityColorsFromQuery,
+  parseColorOverrides,
   QUERY_SEPARATOR,
 } from './_utils/use-themebuilder';
 import type { Route } from './+types/themebuilder';
@@ -65,6 +67,16 @@ export const loader = async ({
     support: createColorsFromQuery(urlParams.get('support')),
   };
 
+  // Parse and apply color overrides
+  const overridesParam = urlParams.get('color-overrides');
+  const overridesMap = parseColorOverrides(overridesParam);
+
+  const colorsWithOverrides = {
+    main: applyOverridesToColors(colors.main, overridesMap),
+    neutral: applyOverridesToColors(colors.neutral, overridesMap),
+    support: applyOverridesToColors(colors.support, overridesMap),
+  };
+
   const severityColors = createSeverityColorsFromQuery(
     urlParams.get('severity'),
   );
@@ -72,7 +84,7 @@ export const loader = async ({
   const severityEnabled = urlParams.get('severity-enabled') === 'true';
 
   return {
-    colors,
+    colors: colorsWithOverrides,
     severityColors,
     severityEnabled,
     colorScheme: (urlParams.get('appearance') || 'light') as ColorScheme,
