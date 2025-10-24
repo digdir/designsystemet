@@ -1,5 +1,11 @@
 import { colorNames } from '@digdir/designsystemet/color';
-import { Details, Field, Input, Label } from '@digdir/designsystemet-react';
+import {
+  Details,
+  Field,
+  Input,
+  Label,
+  ValidationMessage,
+} from '@digdir/designsystemet-react';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router';
 import type { ColorTheme } from '~/routes/themebuilder/_utils/use-themebuilder';
@@ -16,6 +22,14 @@ type ColorOverrideInputProps = {
   defaultColor?: string;
 };
 
+const hexPatterns = [
+  // Hex colors: #000, #0000, #000000, #00000000
+  `#[0-9a-fA-F]{3}`,
+  `#[0-9a-fA-F]{4}`,
+  `#[0-9a-fA-F]{6}`,
+  `#[0-9a-fA-F]{8}`,
+];
+
 const ColorOverrideInput = ({
   colorName,
   tokenName,
@@ -24,6 +38,7 @@ const ColorOverrideInput = ({
 }: ColorOverrideInputProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [localValue, setLocalValue] = useState<string | undefined>(undefined);
+  const [validHex, setValidHex] = useState(true);
 
   // Get the committed value from URL
   const getCommittedValue = (): string => {
@@ -101,6 +116,13 @@ const ColorOverrideInput = ({
       overridesArray.push(parts.join('|'));
     }
 
+    // check if the new localValue is a valid hex color
+    const hexRegex = new RegExp(`^(${hexPatterns.join('|')})$`);
+    if (localValue.trim() && !hexRegex.test(localValue.trim())) {
+      setValidHex(false);
+      return;
+    }
+
     // Update URL params
     const newParams = new URLSearchParams(searchParams);
     if (overridesArray.length > 0) {
@@ -114,7 +136,7 @@ const ColorOverrideInput = ({
   return (
     <Field data-size='sm'>
       <Label>
-        <span className="ds-sr-only">{colorName}{' '}</span>
+        <span className='ds-sr-only'>{colorName} </span>
         {tokenName} {mode === 'light' ? 'Light' : 'Dark'}
       </Label>
       <Field.Affixes>
@@ -129,11 +151,19 @@ const ColorOverrideInput = ({
         <Input
           placeholder='#hex'
           value={displayValue}
-          onChange={(e) => handleChange(e.target.value)}
+          onChange={(e) => {
+            handleChange(e.target.value);
+            setValidHex(true);
+          }}
           onBlur={handleBlur}
           className={classes.input}
         />
       </Field.Affixes>
+      {!validHex && (
+        <ValidationMessage>
+          Please enter a valid hex color code.
+        </ValidationMessage>
+      )}
     </Field>
   );
 };
