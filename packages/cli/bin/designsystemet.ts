@@ -12,6 +12,17 @@ import type { Theme } from '../src/tokens/types.js';
 import { cleanDir } from '../src/utils.js';
 import { parseBuildConfig, parseCreateConfig, readConfigFile } from './config.js';
 
+export const figletAscii = `
+ _____            _                           _                      _
+|  __ \\          (_)                         | |                    | |
+| |  | | ___  ___ _  __ _ _ __  ___ _   _ ___| |_ ___ _ __ ___   ___| |_
+| |  | |/ _ \\/ __| |/ _\` | '_ \\/ __| | | / __| __/ _ \\ '_ \` _ \\ / _ \\ __|
+| |__| |  __/\\__ \\ | (_| | | | \\__ \\ |_| \\__ \\ ||  __/ | | | | |  __/ |_
+|_____/ \\___||___/_|\\__, |_| |_|___/\\__, |___/\\__\\___|_| |_| |_|\\___|\\__|
+                     __/ |           __/ |
+                    |___/           |___/
+`
+
 program.name('designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
 
 const DEFAULT_TOKENS_CREATE_DIR = './design-tokens';
@@ -37,8 +48,8 @@ function makeTokenCommands() {
     .option('--verbose', 'Enable verbose output', false)
     .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILE}")`)
     .option('--experimental-tailwind', 'Generate Tailwind CSS classes for tokens', false)
-
     .action(async (opts) => {
+      console.log(figletAscii);
       const { verbose, clean, dry, experimentalTailwind } = opts;
       const tokensDir = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_CREATE_DIR;
       const outDir = typeof opts.outDir === 'string' ? opts.outDir : './dist/tokens';
@@ -82,6 +93,7 @@ function makeTokenCommands() {
     .option('--theme <string>', 'Theme name (ignored when using JSON config file)', DEFAULT_THEME_NAME)
     .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILE}")`)
     .action(async (opts, cmd) => {
+      console.log(figletAscii);
       if (opts.dry) {
         console.log(`Performing dry run, no files will be written`);
       }
@@ -122,6 +134,7 @@ program
   .option('-l --list', 'List available migrations')
   .option('-g --glob <glob>', 'Glob for files upon which to apply the migration', './**/*.(tsx|css)')
   .action((migrationKey, opts) => {
+    console.log(figletAscii);
     const { glob, list } = opts;
 
     if (list) {
