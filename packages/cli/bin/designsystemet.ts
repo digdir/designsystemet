@@ -12,7 +12,6 @@ import type { Theme } from '../src/tokens/types.js';
 import { cleanDir } from '../src/utils.js';
 import { parseBuildConfig, parseCreateConfig, readConfigFile } from './config.js';
 
-// biome-ignore-start syntax
 export const figletAscii = `
  _____            _                           _                      _
 |  __ \\          (_)                         | |                    | |
@@ -22,8 +21,7 @@ export const figletAscii = `
 |_____/ \\___||___/_|\\__, |_| |_|___/\\__, |___/\\__\\___|_| |_| |_|\\___|\\__|
                      __/ |           __/ |
                     |___/           |___/
-`
-// biome-ignore-end
+`;
 
 program.name('designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
 
