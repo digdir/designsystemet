@@ -7,7 +7,7 @@ type StoryEntry = {
   file: string;
 };
 
-// Extract exported story functions from *.stories.tsx
+// Extract exported story functions from *.stories.tsx and *.dodont.tsx
 export const extractStories = (
   componentDir: string,
   dodont?: boolean,
@@ -22,29 +22,36 @@ export const extractStories = (
       source: string,
     ): { name: string; code: string }[] => {
       const results: { name: string; code: string }[] = [];
-      const funcDeclRe =
-        /export\s+function\s+([A-Za-z0-9_]+)\s*\([^)]*\)\s*\{[\s\S]*?\}/g;
-      const arrowBlockRe =
-        /export\s+const\s+([A-Za-z0-9_]+)\s*(?::[^=]+)?=\s*\([^)]*\)\s*=>\s*\{[\s\S]*?\};/g;
-      const arrowParenRe =
-        /export\s+const\s+([A-Za-z0-9_]+)\s*(?::[^=]+)?=\s*\([^)]*\)\s*=>\s*\([\s\S]*?\);/g;
 
-      const pushMatches = (re: RegExp) => {
-        for (const m of source.matchAll(re)) {
-          const name = m?.[1];
-          const code = m?.[0];
-          if (name && code) {
-            results.push({
-              name,
-              code: code.replace(/^\s*export\s+/, '').trim(),
-            });
-          }
-        }
-      };
+      // Get all positions where exports start
+      const exportStarts: Array<{ index: number; name: string }> = [];
+      const exportRegex = /export\s+(const|function)\s+([A-Za-z0-9_]+)/g;
+      let match = exportRegex.exec(source);
 
-      pushMatches(funcDeclRe);
-      pushMatches(arrowBlockRe);
-      pushMatches(arrowParenRe);
+      while (match !== null) {
+        exportStarts.push({
+          index: match.index,
+          name: match[2],
+        });
+        match = exportRegex.exec(source);
+      }
+
+      // Process each export by looking at the text between this export and the next one
+      for (let i = 0; i < exportStarts.length; i++) {
+        const currentExport = exportStarts[i];
+        const nextExport = exportStarts[i + 1];
+
+        // Get the text from this export to either the next export or end of file
+        const startPos = currentExport.index;
+        const endPos = nextExport ? nextExport.index : source.length;
+        const code = source.slice(startPos, endPos).trim();
+
+        results.push({
+          name: currentExport.name,
+          code: code.replace(/^\s*export\s+/, '').trim(),
+        });
+      }
+
       return results;
     };
 
@@ -54,7 +61,8 @@ export const extractStories = (
       const fns = extractExportedFunctions(src);
       return fns.map((f) => ({ ...f, file }));
     });
-  } catch {
+  } catch (error) {
+    console.error('Error extracting stories:', error);
     return [];
   }
 };
