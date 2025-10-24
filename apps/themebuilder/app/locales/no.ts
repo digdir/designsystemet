@@ -98,7 +98,8 @@ export default {
     settings: 'Innstillinger',
     'admin-display': 'Her kan du administrere visning',
     'dark-mode': 'Mørk modus',
-    'display-mode': 'Visnigsmodus',
+    'display-mode': 'Visningsmodus',
+    'select-color': 'Velg farge',
   },
   themeModal,
   examples: {
