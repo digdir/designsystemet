@@ -4,7 +4,7 @@
   --dsc-tag-min-height: var(--ds-size-8);
   --dsc-tag-padding: 0 var(--ds-size-2);
   --dsc-tag-border-width: var(--ds-border-width-default);
-  --dsc-tag-border-color: var(--ds-color-neutral-border-subtle);
+  --dsc-tag-border-color: var(--ds-color-border-subtle);
   --dsc-tag-border-style: solid;
 
   align-items: center;
