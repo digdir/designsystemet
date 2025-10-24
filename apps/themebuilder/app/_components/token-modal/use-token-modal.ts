@@ -34,6 +34,17 @@ export const useTokenModal = () => {
       {} as Record<string, CssColor>,
     );
 
+  const colorOverrides: Record<
+    string,
+    Record<string, { light?: CssColor; dark?: CssColor }>
+  > = {};
+
+  [...colors.main, ...colors.support, ...colors.neutral].forEach((color) => {
+    if (color.overrides && Object.keys(color.overrides).length > 0) {
+      colorOverrides[color.name] = color.overrides;
+    }
+  });
+
   const theme: CreateTokensOptions = {
     name,
     colors: {
@@ -95,11 +106,19 @@ export const useTokenModal = () => {
           support: theme.colors.support,
           neutral: theme.colors.neutral,
         },
-        ...(Object.keys(severityOverrides).length > 0 && {
-          overrides: {
-            severity: severityOverrides,
-          },
-        }),
+        ...(Object.keys(severityOverrides).length > 0 ||
+        Object.keys(colorOverrides).length > 0
+          ? {
+              overrides: {
+                ...(Object.keys(severityOverrides).length > 0 && {
+                  severity: severityOverrides,
+                }),
+                ...(Object.keys(colorOverrides).length > 0 && {
+                  colors: colorOverrides,
+                }),
+              },
+            }
+          : {}),
         borderRadius: theme.borderRadius,
       },
     },

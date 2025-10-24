@@ -1,10 +1,11 @@
 import {
   Button,
+  Divider,
   Heading,
   Paragraph,
   Switch,
 } from '@digdir/designsystemet-react';
-import { PlusIcon } from '@navikt/aksel-icons';
+import { PencilIcon, PlusIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
 import { ColorService, useColor } from 'react-color-palette';
 import { useTranslation } from 'react-i18next';
@@ -18,6 +19,7 @@ import {
   useThemebuilder,
 } from '~/routes/themebuilder/_utils/use-themebuilder';
 import { ColorInput } from '../../color-input/color-input';
+import { ColorOverrides } from '../color-overrides/color-overrides';
 import { ColorPane } from '../color-pane/color-pane';
 import classes from './color-page.module.css';
 
@@ -199,7 +201,7 @@ export const ColorPage = () => {
   };
 
   return (
-    <div>
+    <div className={classes.container}>
       {editorState.activePanel === 'none' && (
         <>
           <div className={classes.group}>
@@ -232,7 +234,7 @@ export const ColorPage = () => {
               ))}
             </div>
           </div>
-          <div className={classes.separator}></div>
+          <Divider />
           <div className={classes.group}>
             <div className={classes.colors}>
               {colors.neutral.map((colorTheme, index) => (
@@ -245,6 +247,8 @@ export const ColorPage = () => {
               ))}
             </div>
           </div>
+
+          <Divider />
 
           <div className={classes.group}>
             <div className={classes.groupHeader}>
@@ -278,8 +282,7 @@ export const ColorPage = () => {
               ))}
             </div>
           </div>
-
-          <div className={classes.separator}></div>
+          <Divider />
           <div className={classes.group}>
             <div className={classes.groupHeader}>
               <Heading data-size='2xs' id='severity-colors-heading'>
@@ -321,6 +324,21 @@ export const ColorPage = () => {
                 ))}
               </div>
             )}
+          </div>
+          <Divider />
+          <div className={classes.overridesSection}>
+            <ColorOverrides
+              triggerButton={
+                <Button
+                  variant='secondary'
+                  data-size='sm'
+                  className={classes.overridesBtn}
+                >
+                  <PencilIcon aria-hidden fontSize='1.25rem' />
+                  Token Overrides
+                </Button>
+              }
+            />
           </div>
         </>
       )}
