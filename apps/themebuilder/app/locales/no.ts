@@ -159,4 +159,9 @@ export default {
     large: 'Large',
     full: 'Full',
   },
+  overrides: {
+    heading: 'Fargeoverstyringer',
+    description:
+      'Overstyr spesifikke tokenfarger for lys og mørk modus. Sørg for å sjekke kontraster etter endringer.',
+  },
 };

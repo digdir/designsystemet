@@ -1,5 +1,6 @@
 import { Card, Dialog, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { ColorTheme } from '~/routes/themebuilder/_utils/use-themebuilder';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import ColorDetails from './_components/color-details';
@@ -11,6 +12,7 @@ type ColorOverridesProps = {
 
 export const ColorOverrides = ({ triggerButton }: ColorOverridesProps) => {
   const { colors, severityColors, severityEnabled } = useThemebuilder();
+  const { t } = useTranslation();
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   const allColors: Array<{ color: ColorTheme; type: string }> = [
@@ -32,9 +34,9 @@ export const ColorOverrides = ({ triggerButton }: ColorOverridesProps) => {
       </Dialog.Trigger>
       <Dialog ref={dialogRef} closedby='any' className={classes.dialog}>
         <Dialog.Block>
-          <Heading data-size='xs'>Color Overrides</Heading>
+          <Heading data-size='xs'>{t('overrides.heading')}</Heading>
           <Paragraph data-size='sm' className={classes.description}>
-            Override specific token colors for light and dark modes
+            {t('overrides.description')}
           </Paragraph>
         </Dialog.Block>
 

@@ -1,5 +1,5 @@
 .container hr {
-  margin-block: var(--ds-size-5)
+  margin-block: var(--ds-size-5);
 }
 
 .group:last-child {

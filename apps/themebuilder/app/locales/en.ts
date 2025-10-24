@@ -160,4 +160,9 @@ export default {
     large: 'Large',
     full: 'Full',
   },
+  overrides: {
+    heading: 'Color Overrides',
+    description:
+      'Override specific token colors for light and dark modes. Make sure to check contrasts after changes.',
+  },
 } satisfies typeof no;
