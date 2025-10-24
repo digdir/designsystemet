@@ -12,7 +12,7 @@ import type { Theme } from '../src/tokens/types.js';
 import { cleanDir } from '../src/utils.js';
 import { parseBuildConfig, parseCreateConfig, readConfigFile } from './config.js';
 
-// biome-ignore-start syntax: Needs to be in a specific format
+// biome-ignore-start syntax
 export const figletAscii = `
  _____            _                           _                      _
 |  __ \\          (_)                         | |                    | |
@@ -23,7 +23,7 @@ export const figletAscii = `
                      __/ |           __/ |
                     |___/           |___/
 `
-// biome-ignore-end syntax:
+// biome-ignore-end
 
 program.name('designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
 
