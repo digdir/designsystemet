@@ -12,6 +12,7 @@ import type { Theme } from '../src/tokens/types.js';
 import { cleanDir } from '../src/utils.js';
 import { parseBuildConfig, parseCreateConfig, readConfigFile } from './config.js';
 
+// biome-ignore lint: Needs to be in a specific format
 export const figletAscii = `
  _____            _                           _                      _
 |  __ \\          (_)                         | |                    | |
