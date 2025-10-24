@@ -1,4 +1,4 @@
-import { colorNames } from '@digdir/designsystemet/color';
+import { colorMetadata, colorNames } from '@digdir/designsystemet/color';
 import {
   Details,
   Field,
@@ -137,7 +137,8 @@ const ColorOverrideInput = ({
     <Field data-size='sm'>
       <Label>
         <span className='ds-sr-only'>{colorName} </span>
-        {tokenName} {mode === 'light' ? 'Light' : 'Dark'}
+        {colorMetadata[tokenName as keyof typeof colorMetadata].displayName}{' '}
+        {mode === 'light' ? 'Light' : 'Dark'}
       </Label>
       <Field.Affixes>
         <Field.Affix>
