@@ -43,6 +43,7 @@
     "@vitejs/plugin-react-swc": "^4.1.0",
     "@vitest/coverage-v8": "3.2.4",
     "@vitest/ui": "3.2.4",
+    "acorn": "^8.15.0",
     "chromatic": "^13.3.0",
     "just-pnpm": "^1.0.2",
     "tsconfck": "^3.1.6",

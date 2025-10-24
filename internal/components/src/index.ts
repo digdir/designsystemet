@@ -9,3 +9,4 @@ export type { FooterLinkListItemProps } from './footer/footer';
 export { Footer } from './footer/footer';
 export { Header } from './header/header';
 export * from './logos';
+export { SearchDialog } from './search-dialog';

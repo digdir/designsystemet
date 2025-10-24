@@ -6,6 +6,7 @@ import {
 } from '@digdir/designsystemet-react';
 import {
   LanguageIcon,
+  MagnifyingGlassIcon,
   MenuHamburgerIcon,
   MoonIcon,
   SunIcon,
@@ -22,6 +23,8 @@ import {
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router';
 import { DsEmbledLogo, DsFullLogo } from '../logos/designsystemet';
+import { SearchDialog } from '../search-dialog';
+import type { OnAiSearch, OnSearch } from '../types';
 import classes from './header.module.css';
 
 type HeaderProps = {
@@ -30,6 +33,9 @@ type HeaderProps = {
   themeSwitcher?: boolean;
   transparentBackground?: boolean;
   logoLink?: string;
+  onSearch?: OnSearch;
+  onAiSearch?: OnAiSearch;
+  className?: string;
 } & React.HTMLAttributes<HTMLElement>;
 
 /**
@@ -64,6 +70,8 @@ const Header = ({
   betaTag,
   themeSwitcher = false,
   transparentBackground = false,
+  onSearch,
+  onAiSearch,
   logoLink = '/',
   className,
   ...props
@@ -85,6 +93,7 @@ const Header = ({
   const [isHamburger, setIsHamburger] = useState(false);
   const [viewportWidth, setViewportWidth] = useState(0);
   const [langOpen, setLangOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const menuRef = useRef<HTMLUListElement>(null);
   const headerRef = useRef<HTMLElement>(null);
 
@@ -214,6 +223,15 @@ const Header = ({
               </li>
             ))}
           </ul>
+          <Button
+            aria-label={t('header.search-toggle-aria', 'Open search dialog')}
+            variant='tertiary'
+            data-color='neutral'
+            onClick={() => setSearchOpen(true)}
+            className={classes.searchButton}
+          >
+            <MagnifyingGlassIcon fontSize='1.75em' aria-hidden /> Søk
+          </Button>
           {themeSwitcher && (
             <Tooltip
               content={t('header.theme-toggle', {
@@ -323,6 +341,12 @@ const Header = ({
           )}
         </nav>
       </div>
+      <SearchDialog
+        onSearch={onSearch}
+        onAiSearch={onAiSearch}
+        open={searchOpen}
+        onClose={() => setSearchOpen(false)}
+      />
     </header>
   );
 };
