@@ -175,7 +175,7 @@ export function applyOverridesToColors(
   overrides: Record<
     string,
     Record<string, { light?: CssColor; dark?: CssColor }>
-  >,
+  >
 ): ColorTheme[] {
   return colors.map((color) => {
     const colorOverrides = overrides[color.name];
@@ -195,6 +195,23 @@ export function applyOverridesToColors(
         }
         if (override.dark) {
           updatedVariables.dark[varName] = override.dark;
+        }
+      }
+
+      for (const [tokenName, override] of Object.entries(colorOverrides)) {
+        if (override.light) {
+          const lightColor = color.colors.light.find(
+            (c) => c.name === tokenName,
+          );
+          if (lightColor) {
+            lightColor.hex = override.light;
+          }
+        }
+        if (override.dark) {
+          const darkColor = color.colors.dark.find((c) => c.name === tokenName);
+          if (darkColor) {
+            darkColor.hex = override.dark;
+          }
         }
       }
 

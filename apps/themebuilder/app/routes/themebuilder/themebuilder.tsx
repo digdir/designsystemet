@@ -85,7 +85,7 @@ export const loader = async ({
 
   return {
     colors: colorsWithOverrides,
-    severityColors,
+    severityColors: applyOverridesToColors(severityColors, overridesMap),
     severityEnabled,
     colorScheme: (urlParams.get('appearance') || 'light') as ColorScheme,
     baseBorderRadius: parseInt(urlParams.get('border-radius') || '4', 10),
