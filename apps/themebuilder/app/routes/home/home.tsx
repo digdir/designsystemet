@@ -4,6 +4,7 @@ import { BookIcon, PaletteIcon } from '@navikt/aksel-icons';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
+import { ConfigPaste } from '~/_components/config-paste/config-paste';
 import { Previews } from '~/_components/previews/previews';
 import { generateMetadata } from '~/_utils/metadata';
 import i18n from '~/i18next.server';
@@ -84,6 +85,9 @@ export default function Home({ params: { lang } }: Route.ComponentProps) {
           </div>
         </div>
         <Previews />
+        <div className={classes.configSection}>
+          <ConfigPaste />
+        </div>
       </ContentContainer>
     </main>
   );

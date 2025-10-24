@@ -53,3 +53,9 @@ div[data-color-scheme='dark'][data-theme='two'] .main {
   color: var(--ds-color-accent-base-default);
   font-weight: 600;
 }
+
+.configSection {
+  margin-top: var(--ds-size-12);
+  margin-left: auto;
+  margin-right: auto;
+}
