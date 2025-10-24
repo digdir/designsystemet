@@ -1,7 +1,6 @@
 import {
   type Color,
   type ColorNames,
-  type CssColor,
   colorMetadata,
   getColorMetadataByNumber,
   type ThemeInfo,
