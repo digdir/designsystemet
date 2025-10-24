@@ -43,6 +43,7 @@ export const useThemebuilder = () => {
     severityEnabled,
     colorScheme,
     baseBorderRadius,
+    overrides,
     tab,
   } = useLoaderData<Route.ComponentProps['loaderData']>();
 
@@ -52,6 +53,7 @@ export const useThemebuilder = () => {
     severityEnabled,
     colorScheme,
     baseBorderRadius,
+    overrides,
     tab,
   };
 };
@@ -175,7 +177,7 @@ export function applyOverridesToColors(
   overrides: Record<
     string,
     Record<string, { light?: CssColor; dark?: CssColor }>
-  >
+  >,
 ): ColorTheme[] {
   return colors.map((color) => {
     const colorOverrides = overrides[color.name];

@@ -134,10 +134,7 @@ const ColorContrastMapper = ({
     }
 
     for (const [, value] of Object.entries(colorTheme[colorScheme])) {
-      mappedColors[value.name] = {
-        ...value,
-        hex: value.hex,
-      };
+      mappedColors[value.name] = value;
     }
 
     return mappedColors;

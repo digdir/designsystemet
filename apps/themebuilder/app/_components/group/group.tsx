@@ -46,7 +46,6 @@ export const Group = ({
         {colorNames.map((colorName, index) => {
           const { number, hex } =
             colorScale[colorScheme][colorMetadata[colorName].number - 1];
-
           const color: Color = {
             ...getColorMetadataByNumber(number),
             number,

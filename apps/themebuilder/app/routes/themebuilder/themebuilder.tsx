@@ -18,6 +18,7 @@ import {
   createSeverityColorsFromQuery,
   parseColorOverrides,
   QUERY_SEPARATOR,
+  type SeverityColorTheme,
 } from './_utils/use-themebuilder';
 import type { Route } from './+types/themebuilder';
 
@@ -85,8 +86,12 @@ export const loader = async ({
 
   return {
     colors: colorsWithOverrides,
-    severityColors: applyOverridesToColors(severityColors, overridesMap),
+    severityColors: applyOverridesToColors(
+      severityColors,
+      overridesMap,
+    ) as SeverityColorTheme[],
     severityEnabled,
+    overrides: overridesMap,
     colorScheme: (urlParams.get('appearance') || 'light') as ColorScheme,
     baseBorderRadius: parseInt(urlParams.get('border-radius') || '4', 10),
     tab: urlParams.get('tab') || 'overview',

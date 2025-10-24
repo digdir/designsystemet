@@ -170,8 +170,8 @@ const ColorOverrideInput = ({
 
 export default function ColorDetails({ color }: ColorDetailsProps) {
   return (
-    <Details>
-      <Details.Summary>
+    <Details suppressHydrationWarning>
+      <Details.Summary suppressHydrationWarning>
         <div className={classes.colorInfo}>
           <div
             className={classes.colorSwatch}
