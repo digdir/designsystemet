@@ -21,7 +21,10 @@ import {
 } from '~/_components/css-variables/css-variables';
 import { DoDont } from '~/_components/do-dont/do-dont';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
-import { LiveComponent } from '~/_components/live-component/live-components';
+import {
+  LiveComponent,
+  type LiveComponentProps,
+} from '~/_components/live-component/live-components';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { ReactComponentDocs } from '~/_components/react-component-props/react-component-props';
 import { TableOfContents } from '~/_components/table-of-contents/toc';
@@ -168,7 +171,7 @@ export default function Components({
           stories.map((story) => (
             <LiveComponent
               key={story.name}
-              code={`${story.code.trim()}\nrender(<${story.name} />)`}
+              story={`${story.code.trim()}\nrender(<${story.name} />)`}
             />
           ))
         )}
@@ -178,13 +181,7 @@ export default function Components({
   );
 }
 
-const Story = ({
-  story,
-  layout,
-}: {
-  story: string;
-  layout?: 'row' | 'column' | 'centered';
-}) => {
+const Story = ({ story, layout }: LiveComponentProps) => {
   const data =
     useRouteLoaderData<Route.ComponentProps['loaderData']>('components-page');
   if (!data) return null;
@@ -195,7 +192,7 @@ const Story = ({
   if (!foundStory) return <Alert>Story not found: {story}</Alert>;
   return (
     <LiveComponent
-      code={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
+      story={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
       layout={layout}
     />
   );

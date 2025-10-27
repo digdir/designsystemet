@@ -28,9 +28,9 @@ const scopes = {
   useRef,
 };
 
-type LiveComponentProps = {
-  code: string;
-  layout?: 'row' | 'column' | 'centered';
+export type LiveComponentProps = {
+  story: string;
+  layout?: 'row' | 'column' | 'centered' | 'block';
 };
 
 //copied from https://github.com/FormidableLabs/react-live/blob/master/packages/react-live/src/components/Live/LiveContext.ts
@@ -220,7 +220,7 @@ const EditorWithLive = withLive(Editor) as ComponentType<{
 }>;
 
 export const LiveComponent = ({
-  code,
+  story,
   layout = 'centered',
 }: LiveComponentProps) => {
   const location = useLocation();
@@ -266,7 +266,7 @@ export const LiveComponent = ({
 
   return (
     <LiveProvider
-      code={code}
+      code={story}
       scope={scopes}
       noInline
       theme={colorScheme === 'dark' ? themes.vsDark : themes.vsLight}

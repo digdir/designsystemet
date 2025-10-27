@@ -16,7 +16,9 @@
     display: flex;
     gap: var(--ds-size-2);
     flex-wrap: wrap;
-
+    [data-layout='block'] & {
+      display: block;
+    }
     [data-layout='centered'] & {
       justify-content: center;
       align-items: center;
