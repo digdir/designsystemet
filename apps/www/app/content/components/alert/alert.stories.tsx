@@ -1,4 +1,11 @@
-import { Alert, Heading, Link, Paragraph } from '@digdir/designsystemet-react';
+import {
+  Alert,
+  Button,
+  Heading,
+  Link,
+  Paragraph,
+} from '@digdir/designsystemet-react';
+import { useState } from 'react';
 
 export const Preview = () => {
   return <Alert>En beskjed det er viktig at brukeren ser</Alert>;
@@ -117,4 +124,48 @@ export const MedLenke = () => (
       <Link href='https://designsystemet.no/'>Søk nå</Link>
     </Paragraph>
   </Alert>
+);
+
+export const CorrectLiveRegionReact = () => {
+  const [showAlert, setShowAlert] = useState(false);
+  return (
+    <>
+      <Button
+        data-size='sm'
+        variant='secondary'
+        onClick={() => setShowAlert((value) => !value)}
+      >
+        {showAlert ? 'Skjul varsel' : 'Handling som fører til varsel'}
+      </Button>
+      {/* Korrekt bruk: role="alert" ligger på elementet der varselet dukker opp */}
+      <div role='alert'>
+        {showAlert && (
+          <Alert data-color='warning'>
+            <Heading
+              level={2}
+              data-size='xs'
+              style={{
+                marginBottom: 'var(--ds-size-2)',
+              }}
+            >
+              Vi klarer ikke lagre skjemaet
+            </Heading>
+            <Paragraph>
+              Vi har mistet forbindelsen med serveren og får ikke lagret
+              skjemaet. Vent litt og prøv en gang til.
+            </Paragraph>
+          </Alert>
+        )}
+      </div>
+    </>
+  );
+};
+
+export const Variants = () => (
+  <>
+    <Alert data-color='info'>Dette er en info alert</Alert>
+    <Alert data-color='success'>Dette er en success alert</Alert>
+    <Alert data-color='warning'>Dette er en warning alert</Alert>
+    <Alert data-color='danger'>Dette er en danger alert</Alert>
+  </>
 );

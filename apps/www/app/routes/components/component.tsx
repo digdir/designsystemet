@@ -29,6 +29,7 @@ import { extractStories } from '~/_utils/extract-stories.server';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { getComponentDocs } from '~/_utils/get-react-props.server';
+import { generateMetadata } from '~/_utils/metadata';
 import type { Route } from './+types/component';
 import classes from './component.module.css';
 
@@ -114,7 +115,21 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
       overviewLink: `/${lang}/components/${component}/overview`,
       codeLink: `/${lang}/components/${component}/code`,
     },
+    metadata: generateMetadata({
+      title: result.frontmatter.title as string,
+      description: result.frontmatter.description as string,
+    }),
   };
+};
+
+export const meta = ({ loaderData }: Route.MetaArgs) => {
+  if (!loaderData?.metadata)
+    return [
+      {
+        title: 'Designsystemet',
+      },
+    ];
+  return loaderData.metadata;
 };
 
 export default function Components({
