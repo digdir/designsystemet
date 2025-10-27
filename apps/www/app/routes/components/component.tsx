@@ -32,7 +32,6 @@ import { getComponentDocs } from '~/_utils/get-react-props.server';
 import type { Route } from './+types/component';
 import classes from './component.module.css';
 import { generateMetadata } from '~/_utils/metadata';
-import i18n from '~/i18next.server';
 
 const require = createRequire(import.meta.url);
 
