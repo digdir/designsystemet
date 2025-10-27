@@ -1,4 +1,10 @@
-import { Alert, Button, Heading, Link, Paragraph } from '@digdir/designsystemet-react';
+import {
+  Alert,
+  Button,
+  Heading,
+  Link,
+  Paragraph,
+} from '@digdir/designsystemet-react';
 import { useState } from 'react';
 
 export const Preview = () => {
@@ -157,18 +163,9 @@ export const CorrectLiveRegionReact = () => {
 
 export const Variants = () => (
   <>
-    <Alert data-color="info">
-      Dette er en info alert
-    </Alert>
-    <Alert data-color="success">
-      Dette er en success alert
-    </Alert>
-    <Alert data-color="warning">
-      Dette er en warning alert
-    </Alert>
-    <Alert data-color="danger">
-      Dette er en danger alert
-    </Alert>
+    <Alert data-color='info'>Dette er en info alert</Alert>
+    <Alert data-color='success'>Dette er en success alert</Alert>
+    <Alert data-color='warning'>Dette er en warning alert</Alert>
+    <Alert data-color='danger'>Dette er en danger alert</Alert>
   </>
-)
-
+);

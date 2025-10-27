@@ -29,9 +29,9 @@ import { extractStories } from '~/_utils/extract-stories.server';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { getComponentDocs } from '~/_utils/get-react-props.server';
+import { generateMetadata } from '~/_utils/metadata';
 import type { Route } from './+types/component';
 import classes from './component.module.css';
-import { generateMetadata } from '~/_utils/metadata';
 
 const require = createRequire(import.meta.url);
 
