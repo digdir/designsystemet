@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.7.1
+
+### Patch Changes
+
+- **Suggestion**: Fix `onSelectedChange` not always calling the latest callback ([#4176](https://github.com/digdir/designsystemet/pull/4176))
+
 ## 1.7.0
 
 ### Patch Changes
