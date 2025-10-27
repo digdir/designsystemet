@@ -2,20 +2,13 @@
 title: Alert
 image: Alert.svg
 cssfile: alert
+subtitle: Brukes til å gi brukeren informasjon som det er ekstra viktig at de ser og forstår. Komponenten er designet for å fange brukernes oppmerksomhet. Teksten i varselet skal være kort og tydelig.
+
 ---
 
-Vi bruker `Alert` til å gi brukeren informasjon som det er ekstra viktig at de ser og forstår. Komponenten er designet for å fange brukernes oppmerksomhet. Teksten i varselet skal være kort og tydelig.
-
 <Story story="Preview" />
-## Bruk
 
-```tsx
-import { Alert } from '@digdir/designsystemet-react';
-
-<Alert>You are using the Alert component!</Alert>;
-```
-
-## Kodeeksempler
+## Eksempler
 
 `Alert` kan brukes til fire ulike budskap: Informasjon, suksess, advarsler og feilmelding. 
 
@@ -45,7 +38,7 @@ Bruk `danger` for å informere om noe som er kritisk eller som hindrer brukeren 
 
 ### Med og uten overskrift
 
-Hvis meldingen er lenger enn en setning kan det være nyttig å bruke en overskrift til å fremheve det viktigste. Dette kan gjøres ved bruk av [Typografi](/docs/komponenter-typography--docs)-komponentene. Husk å velge riktig overskriftsnivå ut fra plassen alert har i innholdsstrukturen på siden.
+Hvis meldingen er lenger enn en setning kan det være nyttig å bruke en overskrift til å fremheve det viktigste. Dette kan gjøres ved bruk av [Heading](/no/components/heading/overview)-komponentene. Husk å velge riktig overskriftsnivå ut fra plassen alert har i innholdsstrukturen på siden.
 
 <Story story="WithHeading" />
 
@@ -73,7 +66,7 @@ Pass på at `Alert` har samme utseende og formspråk i alle tjenester og produkt
 - informere om tilkoblingsproblemer eller API-feil som sannsynligvis løser seg ved å laste inn siden på nytt
 
 **Passer ikke til å**
-- validere individuelle skjemaelementer, bruk heller komponentens egen feilmelding
+- validere individuelle skjemaelementer, bruk heller komponentens egen feilmelding (Se [`ValidationMessage`](/no/components/validation-message/overview))
 - oppsummere flere feilmeldinger i et skjema, bruk heller [`ErrorSummary`](/docs/komponenter-errorsummary--docs)
 - vise feil som hindrer all videre bruk av tjenesten, bruk heller en feilside
 - vise statisk informasjon som skal vises hele tiden, bruk heller [`Card`](/docs/komponenter-card--docs)
@@ -85,7 +78,7 @@ Det er ikke alltid lett å forstå forskjellen på varslene, selv om de har ulik
 
 Hvis det er noe brukerne må eller kan gjøre for å komme videre med oppgaven sin, skal teksten formidle dette. Når meldingen er lengre enn en setning, kan det være lurt å ha med en overskrift som fremhever det viktigste. 
 
-Her er en liste med hvilken type informasjon en varsel bør inneholde:
+Her er en liste med hvilken type informasjon varsel bør inneholde:
 
 - Fortell hva som har skjedd
   - Eksempel: "Kunne ikke koble til konto."
@@ -97,27 +90,3 @@ Her er en liste med hvilken type informasjon en varsel bør inneholde:
   - Eksempel: "Hvis dette problemet oppstår igjen, kontakt kundeservice."
 - Hjelp dem å fikse problemet selv
   - Eksempel: "Vennligst prøv igjen."
-    
-    
-## Tilgjengelighet
-
-### Interaksjon med skjermleser
-
-Ut av boksen blir `Alert` presentert for skjermleserbrukere som vanlig statisk innhold. For varsler som oppstår dynamisk kan du selv definere en *live region* for skjermlesere, men vær opperksom på hvilken oppførsel dette medfører.
-Du kan lese mer om dette i [MDN sin dokumentasjon om ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions).
-
-Legg spesielt merke til at live-regionen — altså elementet med attributt `role="alert"`, `role="status"` eller `aria-live` med verdi `"assertive"` eller `"polite"` — må eksistere på siden **før** varselet som skal leses opp.
-
-For dynamiske varsler er det mest aktuelt å bruke `role="alert"` for kritiske varsel eller `role="status"` for mindre kritiske vasel, som beskrevet i [mønsteret for systemvarsler](https:// designsystemet.no/no/patterns/systemnotifications). Se også [alert role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role) og [status role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role) hos MDN.
-
-**Ikke** kombiner `role="alert"` og `aria-live`, siden [dette fører at varselet leses opp dobbelt i VoiceOver](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions#:~:text=adding%20both%20aria%2Dlive%20and%20role=%22alert%22%20causes%20double%20speaking%20issues%20in%20VoiceOver%20on%20iOS).
-
-Du **bør** kombinere `role="status"` og `aria-live="polite"` [for å maksimere kompatibilitet](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions#roles_with_implicit_live_region_attributes).
-
-#### Ikke gjør dette
-
-Ikke definer en *live region* direkte på `Alert`. For statiske varsler har det ingen effekt, og for dynamiske varsler vil det ikke bli tolket riktig av alle skjermlesere, selv om mange skjermlesere har spesialhåndtering som går ut over ARIA-spesifikasjonen for akkurat `role="alert"`.
-
-#### Gjør dette for dynamiske varsler
-
-Definer en *live region*, f.eks. med `role="alert"`, for varsler som kan dukke opp dynamisk underveis som følge av brukerens handlinger eller andre faktorer. Dette vil også fungere på samme måte med `role="status"`.
