@@ -64,11 +64,6 @@
   width: 100%;
 }
 
-.content {
-  flex-basis: 600px;
-  flex-grow: 500;
-}
-
 .main > figure {
   margin: auto;
   width: 100%;
