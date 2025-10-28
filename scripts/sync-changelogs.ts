@@ -8,8 +8,6 @@ const WWW = path.join(ROOT, 'apps/www/app/content/changelogs');
 type Pkg = { name: string; dir: string; version?: string };
 
 async function findPackages(): Promise<Pkg[]> {
-  // naive glob-less walk; replace with your workspace tool if you like (pnpm -r exec node -p "...")
-  // assumes packages live under packages/* and libs/* — tweak to match designsystemet
   const dirs = ['packages'].map((p) => path.join(ROOT, p));
   const out: Pkg[] = [];
   for (const d of dirs) {
@@ -46,7 +44,6 @@ async function main() {
     try {
       const md = await fs.readFile(src, 'utf8');
       const dst = path.join(WWW, `${toSlug(pkg.name)}.mdx`);
-      // optional: wrap with frontmatter the www app expects
       const content = `---
 title: "${pkg.name}"
 package: "${pkg.name}"
@@ -58,7 +55,7 @@ ${md.replace(`# Change Log`, '')}
       await fs.writeFile(dst, content, 'utf8');
       console.log(`synced ${pkg.name}`);
     } catch {
-      // no changelog? skip
+      // skip
     }
   }
 }

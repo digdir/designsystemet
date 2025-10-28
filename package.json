@@ -26,7 +26,7 @@
     "build:themebuilder": "pnpm --filter @web/themebuilder build",
     "types": "pnpm -r types",
     "types:react": "pnpm --filter @digdir/designsystemet-react types",
-    "version-packages": "changeset version && tsx scripts/sync-changelogs.ts",
+    "version-packages": "changeset version && tsx scripts/sync-changelogs.ts && git add apps/www/content/changelogs && git commit -m \"sync www changelogs\" || true",
     "publish-packages": "pnpm build && changeset publish",
     "chromatic": "pnpm --filter @web/storybook chromatic",
     "update:template": "pnpm --filter @digdir/designsystemet update:template",
