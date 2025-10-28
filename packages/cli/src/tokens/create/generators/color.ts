@@ -3,7 +3,7 @@ import { baseColors, colorMetadata, dsLinkColor } from '../../../colors/colorMet
 import { generateColorScale } from '../../../colors/index.js';
 import type { Color, ColorScheme } from '../../../colors/types.js';
 import type { ColorOverrideSchema } from '../../../config.js';
-import type { Colors, TokenSet } from '../../types.js';
+import type { Colors, Token, TokenSet } from '../../types.js';
 
 const generateColor = (colorArray: Color[], overrides?: Record<number, string>): TokenSet => {
   const obj: TokenSet = {};
@@ -78,6 +78,12 @@ export const generateColorScheme = (
   );
 
   const linkColor = generateColor(generateColorScale(dsLinkColor, colorScheme));
+  const linkOverride: Token | undefined = overrides?.linkVisited?.[colorScheme as 'light' | 'dark']
+    ? ({
+        $type: 'color',
+        $value: overrides.linkVisited[colorScheme as 'light' | 'dark'],
+      } as Token)
+    : undefined;
 
   return {
     [themeName]: {
@@ -85,9 +91,7 @@ export const generateColorScheme = (
       ...support,
       neutral,
       ...globalColors,
-      link: {
-        visited: linkColor[12],
-      },
+      link: linkOverride || linkColor[12],
     },
   };
 };

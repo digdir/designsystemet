@@ -135,10 +135,18 @@ const severityColorOverrideSchema = z
   .optional()
   .describe('An object with severity color names as keys');
 
+const linkVisitedOverrideSchema = z
+  .object({
+    light: colorSchema.optional(),
+    dark: colorSchema.optional(),
+  })
+  .describe('Overrides for the "link-visited" color');
+
 const overridesSchema = z
   .object({
     colors: semanticColorOverrideSchema.optional(),
     severity: severityColorOverrideSchema.optional(),
+    linkVisited: linkVisitedOverrideSchema.optional(),
   })
   .describe('Overrides for generated design tokens. Currently only supports colors defined in your theme')
   .optional();
