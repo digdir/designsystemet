@@ -57,7 +57,7 @@ export const meta = ({ data }: Route.MetaArgs) => {
   });
 };
 
-export default function Patterns({
+export default function Changelogs({
   loaderData: { code, frontmatter, lang },
 }: Route.ComponentProps) {
   return (
