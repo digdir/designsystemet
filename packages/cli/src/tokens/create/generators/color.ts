@@ -79,10 +79,7 @@ export const generateColorScheme = (
 
   const linkColor = generateColor(generateColorScale(dsLinkColor, colorScheme));
   const linkOverride: Token | undefined = overrides?.linkVisited?.[colorScheme as 'light' | 'dark']
-    ? ({
-        $type: 'color',
-        $value: overrides.linkVisited[colorScheme as 'light' | 'dark'],
-      } as Token)
+    ? ({ $type: 'color', $value: overrides.linkVisited[colorScheme as 'light' | 'dark'] } as Token)
     : undefined;
 
   return {
@@ -91,7 +88,9 @@ export const generateColorScheme = (
       ...support,
       neutral,
       ...globalColors,
-      link: linkOverride || linkColor[12],
+      link: {
+        visited: linkOverride || linkColor[12],
+      },
     },
   };
 };
