@@ -19,7 +19,7 @@ const cats: {
     url: string;
   }[];
 } = {
-  packages: [],
+  changelogs: [],
   components: [],
 };
 
@@ -61,7 +61,7 @@ export const loader = async ({
       );
       const result = await generateFromMdx(fileContent);
 
-      cats.packages.push({
+      cats.changelogs.push({
         title: result.frontmatter.title,
         url: `/${lang}/changelog/${result.frontmatter.url}`,
       });
@@ -77,7 +77,7 @@ export const loader = async ({
   return {
     lang,
     cats,
-    sidebarSuffix: isOverviewPage ? '/overview' : '/code',
+    sidebarSuffix: { components: isOverviewPage ? '/overview' : '/code' },
   };
 };
 
