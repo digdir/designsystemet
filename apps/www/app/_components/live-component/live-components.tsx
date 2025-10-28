@@ -147,7 +147,7 @@ const Editor = ({ live, html, id, hidden }: EditorProps) => {
     <section
       className={classes.editorOuterWrapper}
       id={id}
-      aria-labelledby={`for_${id}`}
+      aria-label={t('live-component.show-code')}
       hidden={hidden}
     >
       <ds.Paragraph className={classes.language}>
@@ -323,7 +323,6 @@ export const LiveComponent = ({
           aria-expanded={showEditor}
           className={classes.codeButton}
           aria-controls={editorId}
-          id={`for_${editorId}`}
         >
           <aksel.ChevronDownIcon />
           {showEditor
