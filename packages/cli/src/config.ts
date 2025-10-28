@@ -157,7 +157,7 @@ const themeSchema = z
       .object({
         main: colorCategorySchema,
         support: colorCategorySchema.optional().default({}),
-        neutral: colorSchema,
+        neutral: colorSchema.describe('A hex color, which is used for creating a color scale.'),
       })
       .meta({ description: 'Defines the colors for this theme' }),
     typography: z
