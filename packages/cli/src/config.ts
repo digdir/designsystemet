@@ -117,8 +117,8 @@ const colorCategorySchema = z
 
 const colorModeOverrideSchema = z
   .object({
-    light: colorSchema.optional(),
-    dark: colorSchema.optional(),
+    light: colorSchema.optional().describe('A hex color that overrides light mode'),
+    dark: colorSchema.optional().describe('A hex color that overrides dark mode'),
   })
   .describe('Override values for semantic color tokens like "background-subtle", "border-default", etc.');
 
@@ -137,8 +137,8 @@ const severityColorOverrideSchema = z
 
 const linkVisitedOverrideSchema = z
   .object({
-    light: colorSchema.optional(),
-    dark: colorSchema.optional(),
+    light: colorSchema.optional().describe('A hex color that overrides light mode'),
+    dark: colorSchema.optional().describe('A hex color that overrides dark mode'),
   })
   .describe('Overrides for the "link-visited" color');
 
