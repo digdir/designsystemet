@@ -63,6 +63,9 @@
   background-color: var(--ds-color-neutral-background-tinted);
   display: grid;
   grid-template-columns: 1fr auto auto auto;
+  &[hidden] {
+    display: none;
+  }
   :global(.ds-toggle-group) {
     --dsc-togglegroup-button-size: var(--ds-size-8);
     --dsc-togglegroup-background: transparent;

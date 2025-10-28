@@ -9,6 +9,7 @@ import {
   useEffect,
   useRef,
   useState,
+  useId,
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
@@ -50,10 +51,12 @@ type ContextValue = {
 type EditorProps = {
   live: ContextValue;
   html: HTMLElement | null;
+  id?: string;
+  hidden?: boolean;
 };
 
 //@TODO: i18n
-const Editor = ({ live, html }: EditorProps) => {
+const Editor = ({ live, html, id, hidden }: EditorProps) => {
   const { t } = useTranslation();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const activateEditorRef = useRef<HTMLDivElement>(null);
@@ -141,7 +144,12 @@ const Editor = ({ live, html }: EditorProps) => {
   };
 
   return (
-    <div className={classes.editorOuterWrapper}>
+    <section
+      className={classes.editorOuterWrapper}
+      id={id}
+      aria-labelledby={`for_${id}`}
+      hidden={hidden}
+    >
       <ds.Paragraph className={classes.language}>
         {showHTML ? 'HTML' : 'React'}
       </ds.Paragraph>
@@ -216,11 +224,13 @@ const Editor = ({ live, html }: EditorProps) => {
           />
         )}
       </div>
-    </div>
+    </section>
   );
 };
 const EditorWithLive = withLive(Editor) as ComponentType<{
   html: HTMLElement | null;
+  id?: string;
+  hidden?: boolean;
 }>;
 
 export const LiveComponent = ({
@@ -237,6 +247,7 @@ export const LiveComponent = ({
   const [useInverted, setUseInverted] = useState(false);
   const [html, setHtml] = useState<HTMLElement | null>(null);
   const previewColorScheme = useInverted ? invertedColorScheme : colorScheme;
+  const editorId = useId();
 
   useEffect(() => {
     // Set initial color scheme
@@ -309,8 +320,10 @@ export const LiveComponent = ({
           data-size='sm'
           variant='tertiary'
           onClick={() => setShowEditor((v) => !v)}
-          aria-pressed={showEditor}
+          aria-expanded={showEditor}
           className={classes.codeButton}
+          aria-controls={editorId}
+          id={`for_${editorId}`}
         >
           <aksel.ChevronDownIcon />
           {showEditor
@@ -318,7 +331,7 @@ export const LiveComponent = ({
             : t('live-component.show-code')}
         </ds.Button>
       </div>
-      {showEditor ? <EditorWithLive html={html} /> : null}
+      <EditorWithLive id={editorId} html={html} hidden={!showEditor} />
     </LiveProvider>
   );
 };
