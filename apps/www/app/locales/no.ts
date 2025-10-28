@@ -179,7 +179,7 @@ export default {
     activateC: 'for å redigere',
     'show-code': 'Vis kode',
     'hide-code': 'Skjul kode',
-    'invert-color-scheme': 'flipp fargeskjema',
+    'invert-color-scheme': 'flipp mellom mørk og lys modus',
     copy: 'Kopier',
     reset: 'Nullstill',
   },
