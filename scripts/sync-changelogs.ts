@@ -51,6 +51,7 @@ async function main() {
 title: "${pkg.name}"
 package: "${pkg.name}"
 latestVersion: ${pkg.version}
+url: ${pkg.name.replace('@digdir/', '')}
 ---
 ${md}
 `;
