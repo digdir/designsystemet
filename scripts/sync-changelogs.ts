@@ -53,7 +53,7 @@ package: "${pkg.name}"
 latestVersion: ${pkg.version}
 url: ${pkg.name.replace('@digdir/', '')}
 ---
-${md}
+${md.replace(`# Change Log`, '')}
 `;
       await fs.writeFile(dst, content, 'utf8');
       console.log(`synced ${pkg.name}`);

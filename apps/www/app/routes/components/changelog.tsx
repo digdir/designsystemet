@@ -1,14 +1,21 @@
 import { join } from 'node:path';
-import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import {
+  Alert,
+  Button,
+  Heading,
+  Paragraph,
+} from '@digdir/designsystemet-react';
 import { Error404 } from '@internal/components';
+import cl from 'clsx/lite';
 import { useTranslation } from 'react-i18next';
-import { isRouteErrorResponse } from 'react-router';
+import { isRouteErrorResponse, Link } from 'react-router';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { generateMetadata } from '~/_utils/metadata';
 import type { Route } from './+types/changelog';
+import classes from './component.module.css';
 
 export async function loader({ params }: Route.LoaderArgs) {
   const file = params.package;
@@ -51,14 +58,36 @@ export const meta = ({ data }: Route.MetaArgs) => {
 };
 
 export default function Patterns({
-  loaderData: { code, frontmatter },
+  loaderData: { code, frontmatter, lang },
 }: Route.ComponentProps) {
   return (
-    <div className={'u-rich-text'}>
-      <Heading>{frontmatter.title}</Heading>
-      <MDXComponents code={code} />
-      <EditPageOnGithub />
-    </div>
+    <>
+      <div className={classes.header}>
+        <div className={classes.headerUpper}>
+          <div className={classes.headerText}>
+            <Heading data-size='lg' level={1}>
+              {frontmatter.title}
+            </Heading>
+          </div>
+        </div>
+        <div className={classes.headerBottom}>
+          <Button asChild variant='tertiary'>
+            <Link to={`https://www.npmjs.com/package/${frontmatter.package}`}>
+              NPM
+            </Link>
+          </Button>
+        </div>
+      </div>
+      <div className={cl(classes.content, 'u-rich-text')} lang='en'>
+        {lang !== 'en' ? (
+          <Alert lang='no'>
+            Endringslogger er kun tilgjengelige på engelsk
+          </Alert>
+        ) : null}
+        <MDXComponents code={code} />
+        <EditPageOnGithub />
+      </div>
+    </>
   );
 }
 
