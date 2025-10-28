@@ -168,6 +168,16 @@ export default {
     'play-video': 'Play video',
     'pause-video': 'Pause video',
   },
+  'live-component': {
+    activateA: 'Press',
+    activateB: 'Enter',
+    activateC: 'to start editing',
+    'show-code': 'Show code',
+    'hide-code': 'Hide code',
+    'invert-color-scheme': 'invert color scheme',
+    copy: 'Copy',
+    reset: 'Reset',
+  },
   'token-preview': {
     size: {
       description:

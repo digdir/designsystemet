@@ -10,6 +10,7 @@ import {
   useRef,
   useState,
 } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   LiveEditor,
   LiveError,
@@ -53,6 +54,7 @@ type EditorProps = {
 
 //@TODO: i18n
 const Editor = ({ live, html }: EditorProps) => {
+  const { t } = useTranslation();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const activateEditorRef = useRef<HTMLDivElement>(null);
   const [resetCount, setResetCount] = useState(0);
@@ -162,7 +164,7 @@ const Editor = ({ live, html }: EditorProps) => {
         type='button'
       >
         <aksel.ArrowsCirclepathIcon />
-        Reset
+        {t('live-component.reset')}
       </ds.Button>
       <ds.Button
         data-color='neutral'
@@ -177,7 +179,7 @@ const Editor = ({ live, html }: EditorProps) => {
           <aksel.FilesIcon aria-hidden />
           <aksel.ClipboardCheckmarkIcon aria-hidden />
         </span>
-        Copy
+        {t('live-component.copy')}
       </ds.Button>
       {/* biome-ignore lint/a11y/noStaticElementInteractions: <need to manage keyboard events from here> */}
       <div
@@ -191,7 +193,9 @@ const Editor = ({ live, html }: EditorProps) => {
           aria-live='polite'
           tabIndex={showHTML ? -1 : 0}
         >
-          Press <kbd>Enter</kbd> to start editing
+          {t('live-component.activateA')}{' '}
+          <kbd>{t('live-component.activateB')}</kbd>{' '}
+          {t('live-component.activateC')}
         </div>
         {showHTML ? (
           <LiveEditor
@@ -224,6 +228,7 @@ export const LiveComponent = ({
   layout = 'centered',
 }: LiveComponentProps) => {
   const location = useLocation();
+  const { t } = useTranslation();
   const [showEditor, setShowEditor] = useState(false);
   const [colorScheme, setColorScheme] = useState<string | null>('dark');
   const [invertedColorScheme, setInvertedColorScheme] = useState<string | null>(
@@ -291,7 +296,7 @@ export const LiveComponent = ({
           onClick={() => setUseInverted((v) => !v)}
           aria-pressed={useInverted}
           className={classes.themeToggle}
-          aria-label='Invert color scheme'
+          aria-label={t('live-component.invert-color-scheme')}
         >
           {previewColorScheme === 'dark' ? (
             <aksel.SunIcon aria-hidden />
@@ -308,7 +313,9 @@ export const LiveComponent = ({
           className={classes.codeButton}
         >
           <aksel.ChevronDownIcon />
-          {showEditor ? 'Hide code' : 'Show code'}
+          {showEditor
+            ? t('live-component.hide-code')
+            : t('live-component.show-code')}
         </ds.Button>
       </div>
       {showEditor ? <EditorWithLive html={html} /> : null}

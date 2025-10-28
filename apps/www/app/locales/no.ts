@@ -168,6 +168,16 @@ export default {
     'play-video': 'Spill av video',
     'pause-video': 'Sett video på pause',
   },
+  'live-component': {
+    activateA: 'Trykk',
+    activateB: 'Enter',
+    activateC: 'for å redigere',
+    'show-code': 'Vis kode',
+    'hide-code': 'Skjul kode',
+    'invert-color-scheme': 'flipp fargeskjema',
+    copy: 'Kopier',
+    reset: 'Nullstill',
+  },
   'token-preview': {
     size: {
       description:
