@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import copy from 'rollup-plugin-copy';
@@ -47,6 +48,17 @@ export default [
     plugins: [
       resolve(),
       commonjs(),
+      babel({
+        babelHelpers: 'bundled',
+        plugins: [
+          [
+            'babel-plugin-react-compiler',
+            {
+              target: '18',
+            },
+          ],
+        ],
+      }),
       copy({
         targets: [
           {
