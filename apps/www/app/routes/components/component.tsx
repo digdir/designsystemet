@@ -10,6 +10,7 @@ import {
 import cl from 'clsx/lite';
 import type { ComponentType, ReactNode } from 'react';
 import type { ComponentDoc } from 'react-docgen-typescript';
+import { useTranslation } from 'react-i18next';
 import { NavLink, useRouteLoaderData } from 'react-router';
 import {
   CssAttributes,
@@ -34,7 +35,6 @@ import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { getComponentDocs } from '~/_utils/get-react-props.server';
 import type { Route } from './+types/component';
 import classes from './component.module.css';
-import { useTranslation } from 'react-i18next';
 
 const require = createRequire(import.meta.url);
 
