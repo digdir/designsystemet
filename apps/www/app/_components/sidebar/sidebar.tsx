@@ -18,7 +18,7 @@ export type SidebarProps = {
    * mapped list of suffixes to it's category key
    */
   suffix?: {
-    [categoryKey: string]: string
+    [categoryKey: string]: string;
   };
 } & HTMLAttributes<HTMLDivElement>;
 
