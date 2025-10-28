@@ -34,6 +34,7 @@ import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { getComponentDocs } from '~/_utils/get-react-props.server';
 import type { Route } from './+types/component';
 import classes from './component.module.css';
+import { useTranslation } from 'react-i18next';
 
 const require = createRequire(import.meta.url);
 
@@ -123,6 +124,7 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 export default function Components({
   loaderData: { stories, mdxCode, frontmatter, toc, navigation },
 }: Route.ComponentProps) {
+  const { t } = useTranslation();
   return (
     <>
       <div className={classes.header}>
@@ -141,10 +143,12 @@ export default function Components({
         </div>
         <div className={classes.headerBottom}>
           <Button asChild variant='tertiary'>
-            <NavLink to={navigation.overviewLink}>Oversikt</NavLink>
+            <NavLink to={navigation.overviewLink}>
+              {t('component.overview')}
+            </NavLink>
           </Button>
           <Button asChild variant='tertiary'>
-            <NavLink to={navigation.codeLink}>Kode</NavLink>
+            <NavLink to={navigation.codeLink}>{t('component.code')}</NavLink>
           </Button>
         </div>
       </div>

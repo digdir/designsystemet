@@ -83,6 +83,7 @@ export default {
       Figma: 'Figma',
       Code: 'Kode',
       About: 'Om',
+      components: 'Komponenter',
     },
     items: {
       Introduction: 'Introduksjon',
@@ -126,6 +127,10 @@ export default {
     title: 'Komponenter',
     description:
       'Designsystemet inneholder grunnleggende komponenter som kan settes sammen på mange ulike måter og i forskjellige mønstre.',
+  },
+  component: {
+    overview: 'Oversikt',
+    code: 'Kode',
   },
   patterns: {
     meta: {
