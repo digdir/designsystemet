@@ -1,5 +1,52 @@
 # Change Log
 
+## 1.7.1
+
+## 1.7.0
+
+### Minor Changes
+
+- Restructure design tokens: ([#4105](https://github.com/digdir/designsystemet/pull/4105))
+  - Removes `primitives/modes/color-scheme/[dark/light]/global.json`
+  - Removes global colors (red, green, blue, orange, purple)
+  - Moved severity colors directly to your theme file
+  - `"link.color.visited"` now references `"$value": "color.link.visited"` from your theme file
+
+  Make sure to regenerate your design tokens: `npx @digdir/designsystemet tokens create <options> --clean`
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4147](https://github.com/digdir/designsystemet/pull/4147))
+
+- Export zod schema and type for config file: ([#4170](https://github.com/digdir/designsystemet/pull/4170))
+  - `configSchema`
+  - `type ConfigSchema`
+
+- Add option override severity colors from config. ([#4105](https://github.com/digdir/designsystemet/pull/4105))
+  You can override the base-hexcode, as well as individual steps:
+
+  ```json
+  "theme": {
+    "overrides": {
+      "colors": {
+        "danger": {
+          "background-default": {
+            "light": "#0000ff",
+            "dark": "#0000ff"
+          }
+        }
+      },
+      "severity": {
+        "danger": "#ff00ff"
+      }
+    }
+  }
+  ```
+
+- Update npm non-major dependencies ([#4167](https://github.com/digdir/designsystemet/pull/4167))
+
+- Update dependency ramda to ^0.32.0 ([#4146](https://github.com/digdir/designsystemet/pull/4146))
+
 ## 1.6.1
 
 ### Patch Changes

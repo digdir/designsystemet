@@ -1,5 +1,23 @@
 # Change Log
 
+## 1.7.1
+
+## 1.7.0
+
+### Patch Changes
+
+- **Field**: Set `display: block` on `<label>` ([#4134](https://github.com/digdir/designsystemet/pull/4134))
+
+- **ToggleGroup**: ensure ToggleGroup has same height as Button, and that individual buttons within the group never wrap their text ([#4139](https://github.com/digdir/designsystemet/pull/4139))
+
+- **ToggleGroup**: use correct border-color (`--ds-color-text-default`) to match text/icon color on selected button in secondary variant ([#4139](https://github.com/digdir/designsystemet/pull/4139))
+
+- **Label**: Use `line-height: var(--ds-body-md-line-height);` ([#4134](https://github.com/digdir/designsystemet/pull/4134))
+
+- **Field**: `data-field="description"` no longer gets `margin-top` ([#4134](https://github.com/digdir/designsystemet/pull/4134))
+
+- **chip**: Remove hover effect on `.ds-input` ([#4165](https://github.com/digdir/designsystemet/pull/4165))
+
 ## 1.6.1
 
 ### Patch Changes
