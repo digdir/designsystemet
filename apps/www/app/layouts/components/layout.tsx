@@ -62,7 +62,7 @@ export const loader = async ({
       const result = await generateFromMdx(fileContent);
 
       cats.changelogs.push({
-        title: result.frontmatter.title,
+        title: result.frontmatter.sidebarTitle,
         url: `/${lang}/changelog/${result.frontmatter.url}`,
       });
     }

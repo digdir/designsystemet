@@ -36,6 +36,18 @@ function toSlug(pkgName: string) {
     .toLowerCase();
 }
 
+function getShortName(pkgName: string) {
+  const nameMap: {
+    [key: string]: string;
+  } = {
+    '@digdir/designsystemet-react': 'react',
+    '@digdir/designsystemet-css': 'css',
+    '@digdir/designsystemet-theme': 'theme',
+    '@digdir/designsystemet': 'cli',
+  };
+  return nameMap[pkgName] || pkgName;
+}
+
 async function main() {
   await fs.mkdir(WWW, { recursive: true });
   const pkgs = await findPackages();
@@ -49,6 +61,7 @@ title: "${pkg.name}"
 package: "${pkg.name}"
 latestVersion: ${pkg.version}
 url: ${pkg.name.replace('@digdir/', '')}
+sidebarTitle: ${getShortName(pkg.name)}
 ---
 ${md.replace(`# Change Log`, '')}
 `;
