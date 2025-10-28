@@ -10,6 +10,7 @@ import {
 import cl from 'clsx/lite';
 import type { ComponentType, ReactNode } from 'react';
 import type { ComponentDoc } from 'react-docgen-typescript';
+import { useTranslation } from 'react-i18next';
 import { NavLink, useRouteLoaderData } from 'react-router';
 import {
   CssAttributes,
@@ -21,7 +22,10 @@ import {
 } from '~/_components/css-variables/css-variables';
 import { DoDont } from '~/_components/do-dont/do-dont';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
-import { LiveComponent } from '~/_components/live-component/live-components';
+import {
+  LiveComponent,
+  type LiveComponentProps,
+} from '~/_components/live-component/live-components';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { ReactComponentDocs } from '~/_components/react-component-props/react-component-props';
 import { TableOfContents } from '~/_components/table-of-contents/toc';
@@ -120,6 +124,7 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 export default function Components({
   loaderData: { stories, mdxCode, frontmatter, toc, navigation },
 }: Route.ComponentProps) {
+  const { t } = useTranslation();
   return (
     <>
       <div className={classes.header}>
@@ -138,10 +143,12 @@ export default function Components({
         </div>
         <div className={classes.headerBottom}>
           <Button asChild variant='tertiary'>
-            <NavLink to={navigation.overviewLink}>Oversikt</NavLink>
+            <NavLink to={navigation.overviewLink}>
+              {t('component.overview')}
+            </NavLink>
           </Button>
           <Button asChild variant='tertiary'>
-            <NavLink to={navigation.codeLink}>Kode</NavLink>
+            <NavLink to={navigation.codeLink}>{t('component.code')}</NavLink>
           </Button>
         </div>
       </div>
@@ -168,7 +175,7 @@ export default function Components({
           stories.map((story) => (
             <LiveComponent
               key={story.name}
-              code={`${story.code.trim()}\nrender(<${story.name} />)`}
+              story={`${story.code.trim()}\nrender(<${story.name} />)`}
             />
           ))
         )}
@@ -178,13 +185,7 @@ export default function Components({
   );
 }
 
-const Story = ({
-  story,
-  layout,
-}: {
-  story: string;
-  layout?: 'row' | 'column' | 'centered';
-}) => {
+const Story = ({ story, layout }: LiveComponentProps) => {
   const data =
     useRouteLoaderData<Route.ComponentProps['loaderData']>('components-page');
   if (!data) return null;
@@ -195,7 +196,7 @@ const Story = ({
   if (!foundStory) return <Alert>Story not found: {story}</Alert>;
   return (
     <LiveComponent
-      code={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
+      story={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
       layout={layout}
     />
   );
