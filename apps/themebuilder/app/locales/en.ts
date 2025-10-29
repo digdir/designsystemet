@@ -100,7 +100,7 @@ export default {
     'admin-display': 'Here you can manage display',
     'dark-mode': 'Dark mode',
     'display-mode': 'Display mode',
-    'select-color': 'Choose farge',
+    'select-color': 'Choose colour',
   },
   themeModal,
   examples: {
