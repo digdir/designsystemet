@@ -106,3 +106,27 @@
   border: 1px solid var(--ds-color-neutral-border-default);
   flex-shrink: 0;
 }
+
+.colorInput {
+  width: var(--ds-size-8);
+  height: var(--ds-size-8);
+  border: 1px solid var(--ds-color-neutral-border-default);
+  border-radius: var(--ds-border-radius-sm);
+  cursor: pointer;
+  padding: 0;
+  background: transparent;
+}
+
+.colorInput::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.colorInput::-webkit-color-swatch {
+  border: none;
+  border-radius: var(--ds-border-radius-xs);
+}
+
+.colorInput::-moz-color-swatch {
+  border: none;
+  border-radius: var(--ds-border-radius-xs);
+}

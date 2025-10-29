@@ -6,7 +6,8 @@ import {
   Label,
   ValidationMessage,
 } from '@digdir/designsystemet-react';
-import { useState } from 'react';
+import cl from 'clsx/lite';
+import { useId, useState } from 'react';
 import { useSearchParams } from 'react-router';
 import type { ColorTheme } from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from '../color-overrides.module.css';
@@ -39,6 +40,10 @@ const ColorOverrideInput = ({
   const [searchParams, setSearchParams] = useSearchParams();
   const [localValue, setLocalValue] = useState<string | undefined>(undefined);
   const [validHex, setValidHex] = useState(true);
+
+  const genId = useId();
+  const colorInputId = `color-input-${genId}`;
+  const inputId = `input-${genId}`;
 
   // Get the committed value from URL
   const getCommittedValue = (): string => {
@@ -134,22 +139,32 @@ const ColorOverrideInput = ({
   };
 
   return (
-    <Field data-size='sm'>
-      <Label>
+    <div className='ds-field'>
+      <Label htmlFor={inputId}>
         <span className='ds-sr-only'>{colorName} </span>
         {colorMetadata[tokenName as keyof typeof colorMetadata].displayName}{' '}
         {mode === 'light' ? 'Light' : 'Dark'}
       </Label>
       <Field.Affixes>
-        <Field.Affix>
-          <div
-            className={classes.colorPreview}
-            style={{
-              backgroundColor: committedValue || defaultColor,
+        <Field.Affix aria-hidden='false'>
+          <label htmlFor={colorInputId} className='ds-sr-only'>
+            {colorName} color picker
+          </label>
+          <input
+            type='color'
+            value={displayValue || defaultColor || '#000000'}
+            onChange={(e) => {
+              handleChange(e.target.value);
+              setValidHex(true);
             }}
+            onBlur={handleBlur}
+            className={cl(classes.colorInput, 'ds-focus')}
+            title='Pick a color'
+            id={colorInputId}
           />
         </Field.Affix>
         <Input
+          id={inputId}
           placeholder='#hex'
           value={displayValue}
           onChange={(e) => {
@@ -165,7 +180,7 @@ const ColorOverrideInput = ({
           Please enter a valid hex color code.
         </ValidationMessage>
       )}
-    </Field>
+    </div>
   );
 };
 
