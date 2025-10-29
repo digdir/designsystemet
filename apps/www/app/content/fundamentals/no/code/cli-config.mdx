@@ -1,7 +1,7 @@
 ---
 title: CLI Config
 description: Informasjon om korleis du bruker CLI config fil.
-date: 2025-10-22
+date: 2025-10-29
 category: Kode
 color: blue
 icon: FileJsonIcon
@@ -104,6 +104,7 @@ Objektet for main og support inneheld fargar, der nøkkelen er fargen sitt namn 
 | ---- | ---- | ------- | ----------- |
 | colors | Objekt | Nei | Inneheld overskrivingar for individuelle fargesteg |
 | severity | Objekt | Nei | Inneheld overskrivingar for severity-fargar |
+| linkVisited | Objekt | Nei | Inneheld overskrivingar for farge på besøkte lenker |
 
 #### overrides.colors
 | Namn | Type | Påkrevd | Forklaring |
@@ -142,6 +143,11 @@ Kvar tokenoverstyring har ein `light` og/eller `dark` verdi som peikar til ein h
 
 Overstyringen av `severity` lar deg tilpasse fargane som blir brukt for severity, som er `success`, `warning`, `danger` og `info`.
 
+#### overrides.linkVisited
+| Namn | Type | Påkrevd | Forklaring |
+| ---- | ---- | ------- | ----------- |
+| light | Streng | Nei | Hex-farge for besøkte lenker i lyst tema |
+| dark | Streng | Nei | Hex-farge for besøkte lenker i mørkt tema |
 
 ## Komplett Eksempel
 
@@ -178,6 +184,10 @@ Overstyringen av `severity` lar deg tilpasse fargane som blir brukt for severity
           "warning": "#ffc107",
           "danger": "#dc3545",
           "info": "#17a2b8"
+        },
+        "linkVisited": {
+          "light": "#ff1234",
+          "dark": "#1234ff"
         }
       }
     }

@@ -117,8 +117,8 @@ const colorCategorySchema = z
 
 const colorModeOverrideSchema = z
   .object({
-    light: colorSchema.optional(),
-    dark: colorSchema.optional(),
+    light: colorSchema.optional().describe('A hex color that overrides light mode'),
+    dark: colorSchema.optional().describe('A hex color that overrides dark mode'),
   })
   .describe('Override values for semantic color tokens like "background-subtle", "border-default", etc.');
 
@@ -135,10 +135,18 @@ const severityColorOverrideSchema = z
   .optional()
   .describe('An object with severity color names as keys');
 
+const linkVisitedOverrideSchema = z
+  .object({
+    light: colorSchema.optional().describe('A hex color that overrides light mode'),
+    dark: colorSchema.optional().describe('A hex color that overrides dark mode'),
+  })
+  .describe('Overrides for the "link-visited" color');
+
 const overridesSchema = z
   .object({
     colors: semanticColorOverrideSchema.optional(),
     severity: severityColorOverrideSchema.optional(),
+    linkVisited: linkVisitedOverrideSchema.optional(),
   })
   .describe('Overrides for generated design tokens. Currently only supports colors defined in your theme')
   .optional();
@@ -149,7 +157,7 @@ const themeSchema = z
       .object({
         main: colorCategorySchema,
         support: colorCategorySchema.optional().default({}),
-        neutral: colorSchema,
+        neutral: colorSchema.describe('A hex color, which is used for creating a color scale.'),
       })
       .meta({ description: 'Defines the colors for this theme' }),
     typography: z
