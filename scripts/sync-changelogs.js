@@ -5,13 +5,11 @@ import path from 'node:path';
 const ROOT = process.cwd();
 const WWW = path.join(ROOT, 'apps/www/app/content/changelogs');
 
-type Pkg = { name: string; dir: string; version?: string };
-
-async function findPackages(): Promise<Pkg[]> {
+async function findPackages() {
   const dirs = ['packages'].map((p) => path.join(ROOT, p));
-  const out: Pkg[] = [];
+  const out = [];
   for (const d of dirs) {
-    let entries: string[] = [];
+    let entries = [];
     try {
       entries = await fs.readdir(d);
     } catch {}
@@ -28,7 +26,7 @@ async function findPackages(): Promise<Pkg[]> {
   return out;
 }
 
-function toSlug(pkgName: string) {
+function toSlug(pkgName) {
   // e.g. @digdir/designsystemet-foo -> designsystemet-foo
   return pkgName
     .replace(/^@[^/]+\//, '')
@@ -36,10 +34,8 @@ function toSlug(pkgName: string) {
     .toLowerCase();
 }
 
-function getShortName(pkgName: string) {
-  const nameMap: {
-    [key: string]: string;
-  } = {
+function getShortName(pkgName) {
+  const nameMap = {
     '@digdir/designsystemet-react': 'react',
     '@digdir/designsystemet-css': 'css',
     '@digdir/designsystemet-theme': 'theme',
