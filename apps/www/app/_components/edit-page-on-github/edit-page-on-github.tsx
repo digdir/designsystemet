@@ -1,6 +1,5 @@
-import { Link } from '@digdir/designsystemet-react';
+import { Link, type LinkProps } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
-import type { HTMLAttributes } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router';
 import { Github } from '../logos/github';
@@ -8,8 +7,9 @@ import classes from './edit-page-on-github.module.css';
 
 export const EditPageOnGithub = ({
   className,
+  href,
   ...rest
-}: Omit<HTMLAttributes<HTMLAnchorElement>, 'color'>) => {
+}: Omit<LinkProps, 'children'>) => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
   const pathParts = pathname.split('/');
@@ -20,11 +20,13 @@ export const EditPageOnGithub = ({
     ? pathParts.slice(3).join('/').slice(0, -1)
     : pathParts.slice(3).join('/');
 
-  const href = `https://github.com/digdir/designsystemet/tree/main/apps/www/app/content/${page}/${lang}/${restPath}.mdx`;
+  const genRef = href
+    ? href
+    : `https://github.com/digdir/designsystemet/tree/main/apps/www/app/content/${page}/${lang}/${restPath}.mdx`;
 
   return (
     <Link
-      href={href}
+      href={genRef}
       target='_blank'
       rel='noopener noreferrer'
       {...rest}

@@ -9,7 +9,6 @@ import { Error404 } from '@internal/components';
 import cl from 'clsx/lite';
 import { useTranslation } from 'react-i18next';
 import { isRouteErrorResponse, Link } from 'react-router';
-import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
@@ -85,7 +84,6 @@ export default function Changelogs({
           </Alert>
         ) : null}
         <MDXComponents code={code} />
-        <EditPageOnGithub />
       </div>
     </>
   );
