@@ -18,7 +18,10 @@ import {
 } from '@digdir/designsystemet-react';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { generateNeutralColorVars } from '~/_utils/generate-color-vars';
+import {
+  generateColorVars,
+  generateNeutralColorVars,
+} from '~/_utils/generate-color-vars';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from './overview-components.module.css';
 import { SettingsCard } from './settings-card/settings-card';
@@ -57,7 +60,9 @@ export const OverviewComponents = ({
   const ref = useRef<HTMLDivElement>(null);
   const { colors } = useThemebuilder();
 
-  const [previewColor, setPreviewColor] = useState(colors.main[0]);
+  const [previewColor, setPreviewColor] = useState(
+    colors?.main[0].hex || color,
+  );
 
   useEffect(() => {
     // we need to set these properties on the preview element because they are immutable on :root
@@ -94,50 +99,65 @@ export const OverviewComponents = ({
     );
     Object.assign(
       vars,
-      previewColor.variables?.[colorScheme as 'light' | 'dark'],
+      generateColorVars(
+        generateColorSchemes(previewColor as CssColor),
+        colorScheme,
+      ),
     );
 
     return vars;
   };
 
   useEffect(() => {
+    setPreviewColor(color);
+  }, [color]);
+
+  useEffect(() => {
+    if (!colors) return;
     const allColors = [...colors.main, ...colors.support];
     /* if select colors is gone, set to default */
-    if (!allColors.find((c) => c.name === previewColor.name)) {
-      setPreviewColor(colors.main[0]);
+    if (!allColors.find((c) => c.hex === previewColor)) {
+      setPreviewColor(colors.main[0].hex || color);
     }
   }, [colors]);
 
   return (
     <>
-      <Field>
-        <Label>{t('overview.select-color')}</Label>
-        <Select
-          value={previewColor.name}
-          onChange={(v) => {
-            const allColors = [...colors.main, ...colors.support];
-            /* find the selected color */
-            let selected = allColors.find((c) => c.name === v.target.value);
-            if (!selected) {
-              selected = colors.main[0];
-            }
-            setPreviewColor(selected || colors.main[0]);
-          }}
-        >
-          {colors.main.map((color) => (
-            <Select.Option key={color.name} value={color.name}>
-              {color.name}
-            </Select.Option>
-          ))}
-          {colors.support.map((color) => (
-            <Select.Option key={color.name} value={color.name}>
-              {color.name}
-            </Select.Option>
-          ))}
-        </Select>
-      </Field>
+      {colors ? (
+        <>
+          <Field>
+            <Label>{t('overview.select-color')}</Label>
+            <Select
+              value={previewColor}
+              onChange={(v) => {
+                if (!colors) return;
+                const allColors = [...colors.main, ...colors.support];
+                /* find the selected color */
+                let selected = allColors.find(
+                  (c) => c.hex === v.target.value,
+                )?.hex;
+                if (!selected) {
+                  selected = colors.main[0].hex;
+                }
+                setPreviewColor(selected as CssColor);
+              }}
+            >
+              {colors.main.map((color) => (
+                <Select.Option key={color.name} value={color.hex}>
+                  {color.name}
+                </Select.Option>
+              ))}
+              {colors.support.map((color) => (
+                <Select.Option key={color.name} value={color.hex}>
+                  {color.name}
+                </Select.Option>
+              ))}
+            </Select>
+          </Field>
 
-      <Divider />
+          <Divider />
+        </>
+      ) : null}
 
       <div ref={ref} style={style()}>
         <div className={classes.inner}>
