@@ -53,11 +53,16 @@ export default [
           }),
         ]),
       ]),
-      ...prefix('/components', [
-        route('/', 'routes/components/components.tsx', {
-          id: 'components',
-        }),
-        layout('./layouts/components/layout.tsx', [
+      route('/components', 'routes/components/components.tsx', {
+        id: 'components',
+      }),
+      layout('./layouts/components/layout.tsx', [
+        ...prefix('/changelog', [
+          route('/:package', 'routes/components/changelog.tsx', {
+            id: 'changelog-page',
+          }),
+        ]),
+        ...prefix('/components', [
           ...prefix(':component', [
             route('/*', 'routes/components/component.tsx', {
               id: 'components-page',

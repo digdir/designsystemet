@@ -4,6 +4,7 @@ import { Outlet } from 'react-router';
 import { Sidebar } from '~/_components/sidebar/sidebar';
 import {
   getFileFromContentDir,
+  getFilesFromContentDir,
   getFoldersInContentDir,
 } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
@@ -18,6 +19,7 @@ const cats: {
     url: string;
   }[];
 } = {
+  changelogs: [],
   components: [],
 };
 
@@ -52,6 +54,19 @@ export const loader = async ({
       }),
     );
 
+    const packages = getFilesFromContentDir('/changelogs');
+    for (const pkg of packages) {
+      const fileContent = getFileFromContentDir(
+        join('changelogs', `${pkg.relativePath}`),
+      );
+      const result = await generateFromMdx(fileContent);
+
+      cats.changelogs.push({
+        title: result.frontmatter.sidebarTitle,
+        url: `/${lang}/changelog/${result.frontmatter.url}`,
+      });
+    }
+
     /* sort cats by title */
     cats.components.sort((a, b) => a.title.localeCompare(b.title));
   }
@@ -62,7 +77,7 @@ export const loader = async ({
   return {
     lang,
     cats,
-    sidebarSuffix: isOverviewPage ? '/overview' : '/code',
+    sidebarSuffix: { components: isOverviewPage ? '/overview' : '/code' },
   };
 };
 
