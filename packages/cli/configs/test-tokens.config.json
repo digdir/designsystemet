@@ -42,6 +42,10 @@
         },
         "severity": {
           "danger": "#ff00ff"
+        },
+        "linkVisited": {
+          "light": "#ff1234",
+          "dark": "#1234ff"
         }
       }
     },

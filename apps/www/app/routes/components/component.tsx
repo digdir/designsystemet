@@ -118,11 +118,12 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
       overviewLink: `/${lang}/components/${component}/overview`,
       codeLink: `/${lang}/components/${component}/code`,
     },
+    githubLink: `https://github.com/digdir/designsystemet/tree/main/apps/www/app/content/components/${component}/${lang}/${isOverviewPage ? 'overview' : 'code'}.mdx`,
   };
 };
 
 export default function Components({
-  loaderData: { stories, mdxCode, frontmatter, toc, navigation },
+  loaderData: { stories, mdxCode, frontmatter, toc, navigation, githubLink },
 }: Route.ComponentProps) {
   const { t } = useTranslation();
   return (
@@ -179,7 +180,7 @@ export default function Components({
             />
           ))
         )}
-        <EditPageOnGithub />
+        <EditPageOnGithub href={githubLink} />
       </div>
     </>
   );
