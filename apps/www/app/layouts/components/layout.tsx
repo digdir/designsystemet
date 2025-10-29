@@ -35,6 +35,8 @@ export const loader = async ({
   }
 
   if (!cats.components.length) {
+    cats.components = [];
+
     /* read all folders in content/components */
     const folders = getFoldersInContentDir('/components');
 
