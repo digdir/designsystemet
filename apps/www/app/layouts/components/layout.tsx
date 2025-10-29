@@ -12,6 +12,15 @@ import classes from './layout.module.css';
 
 export { ErrorBoundary } from '~/root';
 
+const cats: {
+  [key: string]: {
+    title: string;
+    url: string;
+  }[];
+} = {
+  components: [],
+};
+
 export const loader = async ({
   params: { lang },
   request,
@@ -23,35 +32,29 @@ export const loader = async ({
     });
   }
 
-  /* read all folders in content/components */
-  const folders = await getFoldersInContentDir('/components');
-  const cats: {
-    [key: string]: {
-      title: string;
-      url: string;
-    }[];
-  } = {
-    components: [],
-  };
+  if (!cats.components.length) {
+    /* read all folders in content/components */
+    const folders = getFoldersInContentDir('/components');
 
-  await Promise.all(
-    folders.map(async (folder) => {
-      /* read overview.mdx file in lang folder */
-      const mdxSource = getFileFromContentDir(
-        join('components', folder, lang, 'overview.mdx'),
-      );
+    await Promise.all(
+      folders.map(async (folder) => {
+        /* read overview.mdx file in lang folder */
+        const mdxSource = getFileFromContentDir(
+          join('components', folder, lang, 'overview.mdx'),
+        );
 
-      const result = await generateFromMdx(mdxSource);
+        const result = await generateFromMdx(mdxSource);
 
-      cats.components.push({
-        title: result.frontmatter.title || folder,
-        url: `/${lang}/components/${folder}`,
-      });
-    }),
-  );
+        cats.components.push({
+          title: result.frontmatter.title || folder,
+          url: `/${lang}/components/${folder}`,
+        });
+      }),
+    );
 
-  /* sort cats by title */
-  cats.components.sort((a, b) => a.title.localeCompare(b.title));
+    /* sort cats by title */
+    cats.components.sort((a, b) => a.title.localeCompare(b.title));
+  }
 
   const isOverviewPage =
     request.url.endsWith('/overview') || request.url.endsWith('/overview/');
@@ -73,7 +76,7 @@ export default function Layout({
     >
       <Sidebar
         cats={cats}
-        title={'components'}
+        title={'Components'}
         className={classes.sidebar}
         suffix={sidebarSuffix}
         hideCatTitle
