@@ -13,6 +13,10 @@ import classes from './layout.module.css';
 
 export { ErrorBoundary } from '~/root';
 
+// Maps to store unique entries
+const componentsMap = new Map<string, { title: string; url: string }>();
+const changelogsMap = new Map<string, { title: string; url: string }>();
+
 const cats: {
   [key: string]: {
     title: string;
@@ -35,7 +39,8 @@ export const loader = async ({
   }
 
   if (!cats.components.length) {
-    cats.components = [];
+    componentsMap.clear();
+    changelogsMap.clear();
 
     /* read all folders in content/components */
     const folders = getFoldersInContentDir('/components');
@@ -49,10 +54,11 @@ export const loader = async ({
 
         const result = await generateFromMdx(mdxSource);
 
-        cats.components.push({
+        const component = {
           title: result.frontmatter.title || folder,
           url: `/${lang}/components/${folder}`,
-        });
+        };
+        componentsMap.set(component.url, component);
       }),
     );
 
@@ -63,14 +69,17 @@ export const loader = async ({
       );
       const result = await generateFromMdx(fileContent);
 
-      cats.changelogs.push({
+      const changelog = {
         title: result.frontmatter.sidebarTitle,
         url: `/${lang}/changelog/${result.frontmatter.url}`,
-      });
+      };
+      changelogsMap.set(changelog.url, changelog);
     }
 
-    /* sort cats by title */
-    cats.components.sort((a, b) => a.title.localeCompare(b.title));
+    cats.components = Array.from(componentsMap.values()).sort((a, b) =>
+      a.title.localeCompare(b.title),
+    );
+    cats.changelogs = Array.from(changelogsMap.values());
   }
 
   const isOverviewPage =
