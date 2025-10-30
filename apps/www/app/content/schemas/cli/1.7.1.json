@@ -47,14 +47,10 @@
                 }
               },
               "neutral": {
-                "description": "A hex color, which is used for creating a color scale."
+                "description": "A hex color, which is used for creating a color scale. Invalid color names: neutral, success, warning, danger, info"
               }
             },
-            "required": [
-              "main",
-              "support",
-              "neutral"
-            ],
+            "required": ["main", "support", "neutral"],
             "additionalProperties": false
           },
           "typography": {
@@ -66,9 +62,7 @@
                 "type": "string"
               }
             },
-            "required": [
-              "fontFamily"
-            ],
+            "required": ["fontFamily"],
             "additionalProperties": false
           },
           "borderRadius": {
@@ -114,10 +108,10 @@
                     "type": "object",
                     "properties": {
                       "light": {
-                        "description": "A hex color that overrides light mode"
+                        "description": "A hex color, which is used for creating a color scale. Invalid color names: neutral, success, warning, danger, info"
                       },
                       "dark": {
-                        "description": "A hex color that overrides dark mode"
+                        "description": "A hex color, which is used for creating a color scale. Invalid color names: neutral, success, warning, danger, info"
                       }
                     },
                     "additionalProperties": false
@@ -129,37 +123,17 @@
                 "type": "object",
                 "propertyNames": {
                   "type": "string",
-                  "enum": [
-                    "info",
-                    "success",
-                    "warning",
-                    "danger"
-                  ]
+                  "enum": ["info", "success", "warning", "danger"]
                 },
                 "additionalProperties": {
                   "description": "A hex color, which is used for creating a color scale"
                 }
-              },
-              "linkVisited": {
-                "description": "Overrides for the \"link-visited\" color",
-                "type": "object",
-                "properties": {
-                  "light": {
-                    "description": "A hex color that overrides light mode"
-                  },
-                  "dark": {
-                    "description": "A hex color that overrides dark mode"
-                  }
-                },
-                "additionalProperties": false
               }
             },
             "additionalProperties": false
           }
         },
-        "required": [
-          "colors"
-        ],
+        "required": ["colors"],
         "additionalProperties": false
       }
     },
@@ -168,9 +142,6 @@
       "type": "boolean"
     }
   },
-  "required": [
-    "outDir",
-    "themes"
-  ],
+  "required": ["outDir", "themes"],
   "additionalProperties": false
 }
