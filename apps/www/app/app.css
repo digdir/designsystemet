@@ -231,16 +231,16 @@ body {
       box-shadow: var(--ds-shadow-md);
     }
 
-    & td > code,
-    & > p > code,
-    & li > code,
-    & h2 > code {
-      padding: 0.2em 0.5em;
+    & code:not(pre > code) {
+      padding: 3px 5px;
       margin: 1px;
       font-size: 0.9em;
+      line-height: 1;
       white-space: break-spaces;
-      background-color: var(--ds-color-neutral-surface-tinted);
+      background-color: var(--ds-color-neutral-background-tinted);
       border-radius: var(--ds-border-radius-md);
+      display: inline;
+      border: 1px solid var(--ds-color-neutral-border-subtle);
     }
 
     & > div + p {
