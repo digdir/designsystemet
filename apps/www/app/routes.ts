@@ -10,6 +10,8 @@ export default [
   route('/slack', 'routes/slack.tsx', {
     id: 'slack-redirect',
   }),
+  route('/api/search', 'routes/api/search.ts'),
+  route('/api/ai-search', 'routes/api/ai-search.ts'),
   layout('./layouts/root/layout.tsx', [
     ...prefix('/:lang', [
       index('routes/home/home.tsx', {

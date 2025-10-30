@@ -30,6 +30,9 @@
   --page-spacing-top: var(--ds-size-14);
   --page-spacing-bottom: var(--ds-size-14);
   --media-max-width: 800px;
+  &:has(dialog[open]) {
+    overflow: hidden;
+  }
 }
 
 body {
@@ -37,6 +40,13 @@ body {
   font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */
   margin: 0;
   padding: 0;
+  &:has(dialog[open]) {
+    overflow: scroll;
+    scrollbar-color: transparent transparent;
+    * {
+      scrollbar-color: initial;
+    }
+  }
 }
 
 /*make each section front page have tinted background */

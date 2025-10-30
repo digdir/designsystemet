@@ -148,3 +148,14 @@
 .toggleButton svg {
   font-size: 1.5em;
 }
+.searchButton {
+  border-radius: 1e3px;
+  --dsc-button-color: var(--ds-color-neutral-text-default);
+  background: linear-gradient(
+      104deg,
+      var(--ds-color-accent-surface-hover) 16%,
+      var(--ds-color-warning-surface-hover) 50%,
+      var(--ds-color-danger-surface-hover) 75%
+    )
+    padding-box;
+}

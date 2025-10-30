@@ -1,0 +1,23 @@
+services:
+  meilisearch:
+    image: getmeili/meilisearch:v1.7
+    restart: always
+    # If you expose publicly, put it behind HTTPS (reverse proxy) and a firewall.
+    # For local-only binding behind a reverse proxy, uncomment the bind address line below.
+    ports:
+      - "7700:7700"        # or use "127.0.0.1:7700:7700" to bind locally only
+    env_file:
+      - ./.env              # copy .env.example -> .env and fill in secrets
+    environment:
+      MEILI_MASTER_KEY: ${MEILI_MASTER_KEY:?must be set}
+      MEILI_ENV: "production"
+      MEILI_DB_PATH: "/meili_data"
+      MEILI_NO_ANALYTICS: "true"
+      MEILI_EXPERIMENTAL_ENABLE_VECTOR_SEARCH: "enabled"
+      # Enable built-in embedders API if you use setup:embedder
+      MEILI_EXPERIMENTAL_ENABLE_EMBEDDERS: "enabled"
+    volumes:
+      - meili_data:/meili_data
+
+volumes:
+  meili_data:
