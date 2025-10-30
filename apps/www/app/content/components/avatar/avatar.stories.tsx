@@ -58,7 +58,7 @@ export const ShapeVariants = () => (
 
 export const WithImage = () => (
   <Avatar aria-label='Ola Nordman'>
-    <img src='/assets/cat1.png' alt='' />
+    <img src='/img/component-docs/cats/cat1.webp' alt='' />
   </Avatar>
 );
 

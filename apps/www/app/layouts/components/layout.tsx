@@ -4,6 +4,7 @@ import { Outlet } from 'react-router';
 import { Sidebar } from '~/_components/sidebar/sidebar';
 import {
   getFileFromContentDir,
+  getFilesFromContentDir,
   getFoldersInContentDir,
 } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
@@ -11,6 +12,20 @@ import type { Route } from './+types/layout';
 import classes from './layout.module.css';
 
 export { ErrorBoundary } from '~/root';
+
+// Maps to store unique entries
+const componentsMap = new Map<string, { title: string; url: string }>();
+const changelogsMap = new Map<string, { title: string; url: string }>();
+
+const cats: {
+  [key: string]: {
+    title: string;
+    url: string;
+  }[];
+} = {
+  changelogs: [],
+  components: [],
+};
 
 export const loader = async ({
   params: { lang },
@@ -23,35 +38,49 @@ export const loader = async ({
     });
   }
 
-  /* read all folders in content/components */
-  const folders = await getFoldersInContentDir('/components');
-  const cats: {
-    [key: string]: {
-      title: string;
-      url: string;
-    }[];
-  } = {
-    components: [],
-  };
+  if (!cats.components.length) {
+    componentsMap.clear();
+    changelogsMap.clear();
 
-  await Promise.all(
-    folders.map(async (folder) => {
-      /* read overview.mdx file in lang folder */
-      const mdxSource = getFileFromContentDir(
-        join('components', folder, lang, 'overview.mdx'),
+    /* read all folders in content/components */
+    const folders = getFoldersInContentDir('/components');
+
+    await Promise.all(
+      folders.map(async (folder) => {
+        /* read overview.mdx file in lang folder */
+        const mdxSource = getFileFromContentDir(
+          join('components', folder, lang, 'overview.mdx'),
+        );
+
+        const result = await generateFromMdx(mdxSource);
+
+        const component = {
+          title: result.frontmatter.title || folder,
+          url: `/${lang}/components/${folder}`,
+        };
+        componentsMap.set(component.url, component);
+      }),
+    );
+
+    const packages = getFilesFromContentDir('/changelogs');
+    for (const pkg of packages) {
+      const fileContent = getFileFromContentDir(
+        join('changelogs', `${pkg.relativePath}`),
       );
+      const result = await generateFromMdx(fileContent);
 
-      const result = await generateFromMdx(mdxSource);
+      const changelog = {
+        title: result.frontmatter.sidebarTitle,
+        url: `/${lang}/changelog/${result.frontmatter.url}`,
+      };
+      changelogsMap.set(changelog.url, changelog);
+    }
 
-      cats.components.push({
-        title: result.frontmatter.title || folder,
-        url: `/${lang}/components/${folder}`,
-      });
-    }),
-  );
-
-  /* sort cats by title */
-  cats.components.sort((a, b) => a.title.localeCompare(b.title));
+    cats.components = Array.from(componentsMap.values()).sort((a, b) =>
+      a.title.localeCompare(b.title),
+    );
+    cats.changelogs = Array.from(changelogsMap.values());
+  }
 
   const isOverviewPage =
     request.url.endsWith('/overview') || request.url.endsWith('/overview/');
@@ -59,7 +88,7 @@ export const loader = async ({
   return {
     lang,
     cats,
-    sidebarSuffix: isOverviewPage ? '/overview' : '/code',
+    sidebarSuffix: { components: isOverviewPage ? '/overview' : '/code' },
   };
 };
 
@@ -73,7 +102,7 @@ export default function Layout({
     >
       <Sidebar
         cats={cats}
-        title={'components'}
+        title={'Components'}
         className={classes.sidebar}
         suffix={sidebarSuffix}
         hideCatTitle

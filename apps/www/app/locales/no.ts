@@ -83,6 +83,7 @@ export default {
       Figma: 'Figma',
       Code: 'Kode',
       About: 'Om',
+      components: 'Komponenter',
     },
     items: {
       Introduction: 'Introduksjon',
@@ -127,6 +128,10 @@ export default {
     description:
       'Designsystemet inneholder grunnleggende komponenter som kan settes sammen på mange ulike måter og i forskjellige mønstre.',
   },
+  component: {
+    overview: 'Oversikt',
+    code: 'Kode',
+  },
   patterns: {
     meta: {
       title: 'Mønstre',
@@ -167,6 +172,16 @@ export default {
   'image-banner': {
     'play-video': 'Spill av video',
     'pause-video': 'Sett video på pause',
+  },
+  'live-component': {
+    activateA: 'Trykk',
+    activateB: 'Enter',
+    activateC: 'for å redigere',
+    'show-code': 'Vis kode',
+    'hide-code': 'Skjul kode',
+    'invert-color-scheme': 'flipp mellom mørk og lys modus',
+    copy: 'Kopier',
+    reset: 'Nullstill',
   },
   'token-preview': {
     size: {
