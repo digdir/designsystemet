@@ -1,5 +1,6 @@
 .ds-field {
   --dsc-field-content-spacing: var(--ds-size-2);
+  --dsc-field-label-gap: var(--ds-size-2);
   @composes ds-print-preserve from './base.css';
 
   /* The stack (https://every-layout.dev/layouts/stack/) */
@@ -27,7 +28,13 @@
 
   /* Respect hidden attribute and make overwrites easy */
   & label:where(:not([hidden])) {
-    display: block;
+    display: flex;
+  }
+
+  & label {
+    gap: var(--dsc-field-label-gap);
+    align-items: center;
+    width: fit-content;
   }
 
   /**

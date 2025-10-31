@@ -1,5 +1,13 @@
 import type { Meta, StoryFn } from '@storybook/react-vite';
-import { Divider, Field, Input, Label, Textarea, ValidationMessage } from '../';
+import {
+  Divider,
+  Field,
+  Input,
+  Label,
+  Tag,
+  Textarea,
+  ValidationMessage,
+} from '../';
 
 type Story = StoryFn<typeof Field>;
 
@@ -74,3 +82,12 @@ Position.decorators = [
     </div>
   ),
 ];
+
+export const Optional: Story = () => (
+  <Field>
+    <Label>
+      Hvor bor du?<Tag data-color='info'>Valgfritt</Tag>
+    </Label>
+    <Input />
+  </Field>
+);
