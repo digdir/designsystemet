@@ -57,6 +57,7 @@
   @composes ds-focus from './base.css';
 
   .ds-field:not(:has(label:hover)) &:not(:focus-visible, :disabled, :read-only):hover,
+  :not(.ds-field) > &:not(:focus-visible, :disabled, :read-only):hover,
   &:is([type='radio'], [type='checkbox']):not(:focus-visible, :disabled, [readonly]):hover {
     outline-color: var(--dsc-input-outline-color--hover);
     outline-width: var(--dsc-input-outline-width--hover);
