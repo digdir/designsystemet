@@ -1,7 +1,7 @@
 ---
 title: CLI Config
 description: Information on how to use the CLI config file.
-date: 2025-10-22
+date: 2025-10-29
 category: Code
 color: blue
 icon: FileJsonIcon
@@ -108,6 +108,7 @@ The object for main and support contains colours, where the name is the colour's
 | ---- | ---- | ------- | ----------- |
 | colors | Object | No | Contains overrides for individual colour tokens |
 | severity | Object | No | Contains overrides for severity colours |
+| linkVisited | Object | No | Contains overrides for visited link colour |
 
 #### overrides.colors
 | Name | Type | Required | Description |
@@ -152,6 +153,12 @@ Each token override has a `light` and/or `dark` value that points to a hex code.
 
 The `severity` override allows you to customise the colours used for severity, which are `success`, `warning`, `danger`, and `info`.
 
+#### overrides.linkVisited
+| Name | Type | Required | Description |
+| ---- | ---- | ------- | ----------- |
+| light | String | No | Hex colour for visited links in light theme |
+| dark | String | No | Hex colour for visited links in dark theme |
+
 ## Complete Example
 
 ```json
@@ -187,6 +194,10 @@ The `severity` override allows you to customise the colours used for severity, w
           "warning": "#ffc107",
           "danger": "#dc3545",
           "info": "#17a2b8"
+        },
+        "linkVisited": {
+          "light": "#ff1234",
+          "dark": "#1234ff"
         }
       }
     }
