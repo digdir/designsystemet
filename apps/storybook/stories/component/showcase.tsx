@@ -197,7 +197,7 @@ export function Showcase({ className, ...props }: ShowcaseProps) {
       <div className={cl(classes.card, classes.radio)}>
         <Fieldset>
           <Fieldset.Legend>Hvilken iskremsmak er best?</Fieldset.Legend>
-          <Radio name='iskremsmak' label='Vanile' value='vanilje' />
+          <Radio name='iskremsmak' label='Vanilje' value='vanilje' />
           <Radio
             name='iskremsmak'
             label='Jordbær'

@@ -1,0 +1,31 @@
+---
+title: Select
+image: Select.svg
+cssfile: select
+---
+
+`Select` lar brukeren velge ett alternativ fra en liste.
+
+<Story story="Preview" />
+
+## Bruk
+
+```tsx
+import { Select, Label } from '@digdir/designsystemet-react';
+<>
+<Label>Velg et fjell</Label>
+<Select>
+  <Select.Option value="everest">Mount Everest</Select.Option>
+</Select>
+</>
+```
+
+## Kodeeksempler
+
+### Disabled
+
+<Story story="Disabled" />
+
+### ReadOnly
+
+<Story story="ReadOnly" />

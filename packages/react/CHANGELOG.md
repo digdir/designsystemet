@@ -1,5 +1,44 @@
 # Change Log
 
+## 1.7.1
+
+### Patch Changes
+
+- **Suggestion**: Fix `onSelectedChange` not always calling the latest callback ([#4176](https://github.com/digdir/designsystemet/pull/4176))
+
+## 1.7.0
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4147](https://github.com/digdir/designsystemet/pull/4147))
+
+- **Suggestion, Tooltip, Popover**: Positioning of floating elements rounded to nearest pixel ([#4142](https://github.com/digdir/designsystemet/pull/4142))
+
+- Update npm non-major dependencies ([#4167](https://github.com/digdir/designsystemet/pull/4167))
+
+- **Dialog**: Removed the autofocus attribute from built in closeButton, which prevented setting autofocus on other elements in Dialog. ([#4159](https://github.com/digdir/designsystemet/pull/4159))
+
+- **Field.Counter**: Adjustments to how it works internally. ([#4140](https://github.com/digdir/designsystemet/pull/4140))
+  Now, none of the validation messages underneath are `aria-described` on the input/textarea. This is done by an `aria-live` region only for screenreaders.
+
+  A new `hint` prop has been added, to announce how many characters are allowed when entering the input/textarea. Default value is `'Maks %d tegn tillatt.'`.
+
+## 1.6.1
+
+### Patch Changes
+
+- **Button**: For `icon`-buttons, dont render children if loading is true ([#4023](https://github.com/digdir/designsystemet/pull/4023))
+
+- Update npm non-major dependencies ([#4129](https://github.com/digdir/designsystemet/pull/4129))
+
+- **Suggestion**: Updated u-combobox to 1.0.2 to fix a bug where input would not clear in conrolled mode ([#4119](https://github.com/digdir/designsystemet/pull/4119))
+
+- Update npm non-major dependencies ([#4110](https://github.com/digdir/designsystemet/pull/4110))
+
+- **usePagination**: Hide prev/next buttons with `aria-hidden="true"` and `visibility: hidden;` instead of disabling ([#4123](https://github.com/digdir/designsystemet/pull/4123))
+
+- **Textfield**: Move counter error message before error ([#4104](https://github.com/digdir/designsystemet/pull/4104))
+
 ## 1.6.0
 
 ### Minor Changes
@@ -504,7 +543,7 @@
 - ce23f32: Chip: Use correct `32px` height to align nicely with `<Tag>`
 - 36cefe3: Rename `Accordion` to `Details`
 - 5a77def: SkipLink: Remove ds-sr-only class
-- 03d776b: Skeleton: Replace Skeleton.Text, Skeleton.Circle and Skeleton.Rectangle with <Skeleton variant="">
+- 03d776b: Skeleton: Replace Skeleton.Text, Skeleton.Circle and Skeleton.Rectangle with `<Skeleton variant="">`
 - 5d1c506: Accordion: Now uses details and summary HTML elements
 - 529d942: **Popover**: Add `data-variant="default/tinted"`, `default` is default
 - 1afa5c5: Spinner: Style using data attributes
@@ -889,7 +928,7 @@
 
 - Badge: Only use single DOM element for rendering ([#2422](https://github.com/digdir/designsystemet/pull/2422))
 
-- Skeleton: Replace Skeleton.Text, Skeleton.Circle and Skeleton.Rectangle with <Skeleton variant=""> ([#2435](https://github.com/digdir/designsystemet/pull/2435))
+- Skeleton: Replace Skeleton.Text, Skeleton.Circle and Skeleton.Rectangle with `<Skeleton variant="">` ([#2435](https://github.com/digdir/designsystemet/pull/2435))
 
 - Breadcrumbs: Rename `Breadcrumbs.Root` to `Breadcrumbs` and remove `Breadcrumbs.Nav` ([#2428](https://github.com/digdir/designsystemet/pull/2428))
 

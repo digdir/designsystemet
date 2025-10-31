@@ -32,6 +32,7 @@
   color: var(--dsc-chip-color);
   cursor: pointer;
   font-family: inherit;
+  font-size: var(--ds-body-sm-font-size);
   gap: var(--dsc-chip-spacing);
   line-height: var(--ds-line-height-sm);
   margin: 0;
@@ -50,14 +51,11 @@
     --dsc-input-accent-color: var(--dsc-chip-input-accent-color);
     --dsc-input-stroke-color: var(--dsc-chip-input-stroke-color);
     --dsc-input-size--toggle: var(--dsc-chip-input-size);
+    --dsc-input-outline-width--hover: 0;
   }
 
   &:not([hidden]) {
     display: inline-flex;
-  }
-
-  &:not([data-size]) {
-    font-size: var(--ds-font-size-minus-1);
   }
 
   /* Show focus ring when input inside is focused by keyboard interaction */

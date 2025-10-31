@@ -1,8 +1,16 @@
 .githubLink {
   margin-block: var(--ds-size-6);
-  display: block;
+  display: inline-block;
+
+  svg {
+    margin-inline-end: var(--ds-size-1);
+  }
 
   path {
     fill: var(--ds-color-neutral-text-default);
+  }
+
+  &:visited path {
+    fill: var(--dsc-link-color--visited);
   }
 }

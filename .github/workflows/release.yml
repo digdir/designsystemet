@@ -2,6 +2,18 @@ name: Release
 
 on:
   workflow_dispatch:
+    inputs:
+      snapshot:
+        description: 'Create snapshot release'
+        type: boolean
+        default: false
+      tag:
+        description: 'npm tag (for snapshot releases)'
+        type: choice
+        default: 'test'
+        options:
+          - next
+          - test
   push:
     branches:
       - main
@@ -9,10 +21,48 @@ on:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
+  snapshot:
+    name: Snapshot Release
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.snapshot == 'true' }}
+    permissions:
+      contents: read
+      pull-requests: write
+      id-token: write
+      packages: write
+    steps:
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+      - uses: ./.github/actions/gh-setup
+      - name: Build
+        run: pnpm build
+      - id: snapshot
+        name: Set Snapshot Name
+        run: |
+          NAME="${{ github.ref_name }}"
+          NAME="${NAME//\//-}"
+          echo "name=${NAME}" >> $GITHUB_OUTPUT
+      - name: Create Snapshot Release
+        run: |
+          pnpm run version-packages --snapshot "${{ steps.snapshot.outputs.name }}"
+          echo '---'
+          echo 'Detected Changes:'
+          git diff
+          echo '---'
+          pnpm run publish-packages --tag "${{ github.event.inputs.tag }}" --no-git-tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ''
+
   release:
     name: Release
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    if: ${{ github.event.inputs.snapshot != 'true' }}
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write
+      packages: write
     outputs:
       published: ${{ steps.changesets.outputs.published }}
     steps:
@@ -27,7 +77,7 @@ jobs:
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         # Forked version of the changesets action that supports aggregated releases
-        uses: dotansimha/changesets-action@v1.5.2
+        uses: dotansimha/changesets-action@069996e9be15531bd598272996fa23853d61590e # v1.5.2
         with:
           publish: pnpm publish-packages
           version: pnpm version-packages
@@ -39,11 +89,13 @@ jobs:
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-
+          NPM_TOKEN: '' # https://github.com/changesets/changesets/issues/1152#issuecomment-3190884868
 
   deploy-www:
+    permissions:
+      id-token: write
+      contents: read
+      pull-requests: write
     needs: release
     if: ${{ needs.release.outputs.published == 'true' }}
     uses: ./.github/workflows/azure-deploy-www.yml
@@ -53,7 +105,12 @@ jobs:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      SLACK_INVITE_URL: ${{ secrets.SLACK_INVITE_URL }}
   deploy-theme:
+    permissions:
+      id-token: write
+      contents: read
+      pull-requests: write
     needs: release
     if: ${{ needs.release.outputs.published == 'true' }}
     uses: ./.github/workflows/azure-deploy-themebuilder.yml
@@ -64,6 +121,10 @@ jobs:
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
   deploy-storybook:
+    permissions:
+        id-token: write
+        contents: read
+        pull-requests: write
     needs: release
     if: ${{ needs.release.outputs.published == 'true' }}
     uses: ./.github/workflows/azure-deploy-storybook.yml

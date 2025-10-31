@@ -1,0 +1,36 @@
+---
+title: Dialog
+subtitle: '`Dialog` is a modal dialog that appears above the rest of the page content.'
+image: Dialog.svg
+cssfile: dialog
+---
+
+<Story story="Preview" />
+
+## Usage
+
+```tsx
+import { Dialog, Heading, Paragraph } from '@digdir/designsystemet-react';
+
+<Dialog.TriggerContext>
+  <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+  <Dialog>
+    <Heading>Dialog header</Heading>
+    <Paragraph>Dialog content</Paragraph>
+  </Dialog>
+</Dialog.TriggerContext>
+```
+
+## Code Examples
+
+### With ref
+
+<Story story="WithRef" />
+
+### With form
+
+<Story story="WithForm" />
+
+### With blocks
+
+<Story story="WithBlocks" />

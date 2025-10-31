@@ -1,5 +1,60 @@
 # Change Log
 
+## 1.7.1
+
+## 1.7.0
+
+### Minor Changes
+
+- Restructure design tokens: ([#4105](https://github.com/digdir/designsystemet/pull/4105))
+  - Removes `primitives/modes/color-scheme/[dark/light]/global.json`
+  - Removes global colors (red, green, blue, orange, purple)
+  - Moved severity colors directly to your theme file
+  - `"link.color.visited"` now references `"$value": "color.link.visited"` from your theme file
+
+  Make sure to regenerate your design tokens: `npx @digdir/designsystemet tokens create <options> --clean`
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4147](https://github.com/digdir/designsystemet/pull/4147))
+
+- Export zod schema and type for config file: ([#4170](https://github.com/digdir/designsystemet/pull/4170))
+  - `configSchema`
+  - `type ConfigSchema`
+
+- Add option override severity colors from config. ([#4105](https://github.com/digdir/designsystemet/pull/4105))
+  You can override the base-hexcode, as well as individual steps:
+
+  ```json
+  "theme": {
+    "overrides": {
+      "colors": {
+        "danger": {
+          "background-default": {
+            "light": "#0000ff",
+            "dark": "#0000ff"
+          }
+        }
+      },
+      "severity": {
+        "danger": "#ff00ff"
+      }
+    }
+  }
+  ```
+
+- Update npm non-major dependencies ([#4167](https://github.com/digdir/designsystemet/pull/4167))
+
+- Update dependency ramda to ^0.32.0 ([#4146](https://github.com/digdir/designsystemet/pull/4146))
+
+## 1.6.1
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4129](https://github.com/digdir/designsystemet/pull/4129))
+
+- Update npm non-major dependencies ([#4110](https://github.com/digdir/designsystemet/pull/4110))
+
 ## 1.6.0
 
 ### Patch Changes
@@ -7,17 +62,19 @@
 - Add possiblity to override colors in config: ([#4073](https://github.com/digdir/designsystemet/pull/4073))
 
   ```json
-  "theme": {
-    "overrides": {
-      "colors": {
-        "dominant": {
-          "background-default": {
-            "light": "#ff0000",
-            "dark": "#000fff"
-          },
-          "background-tinted": {
-            "light": "#f0ff00",
-            "dark": "#ff00ff"
+  {
+    "theme": {
+      "overrides": {
+        "colors": {
+          "dominant": {
+            "background-default": {
+              "light": "#ff0000",
+              "dark": "#000fff"
+            },
+            "background-tinted": {
+              "light": "#f0ff00",
+              "dark": "#ff00ff"
+            }
           }
         }
       }
@@ -29,7 +86,7 @@
 
 - Update npm non-major dependencies ([#4093](https://github.com/digdir/designsystemet/pull/4093))
 
-- Update supported engines. Now supports node >=20 <25 ([#3925](https://github.com/digdir/designsystemet/pull/3925))
+- Update supported engines. Now supports node `>=20 <25` ([#3925](https://github.com/digdir/designsystemet/pull/3925))
 
 ## 1.5.1
 

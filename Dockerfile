@@ -1,4 +1,8 @@
-FROM node:22-slim AS base
+ARG PORT
+ARG HOST
+ARG APP_ENV
+
+FROM node:22.21.0-slim AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
@@ -11,6 +15,10 @@ RUN pnpm build
 
 FROM packages AS www-build
 WORKDIR /usr/src/app
+ARG PORT
+ARG HOST
+ARG APP_ENV
+ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
 RUN pnpm build:www
 RUN pnpm deploy --filter=@web/www --prod /prod/@web/www
 
@@ -23,6 +31,10 @@ CMD [ "pnpm", "start" ]
 
 FROM packages AS themebuilder-build
 WORKDIR /usr/src/app
+ARG PORT
+ARG HOST
+ARG APP_ENV
+ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
 RUN pnpm build:themebuilder
 RUN pnpm deploy --filter=@web/themebuilder --prod /prod/@web/themebuilder
 
@@ -35,6 +47,11 @@ CMD [ "pnpm", "start" ]
 
 FROM packages AS storybook-build
 RUN pnpm build:storybook
+ARG PORT
+ARG HOST
+ARG APP_ENV
+ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
+ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
 RUN pnpm deploy --filter=@web/storybook --prod /prod/@web/storybook
 
 FROM nginx:alpine AS storybook

@@ -2,7 +2,7 @@ import pc from 'picocolors';
 import * as R from 'ramda';
 import { z } from 'zod';
 import { fromError } from 'zod-validation-error';
-import { colorNames } from './colors/colorMetadata.js';
+import { baseColorNames, colorNames } from './colors/colorMetadata.js';
 import { convertToHex } from './colors/index.js';
 import { RESERVED_COLORS } from './colors/theme.js';
 import { cliOptions } from './tokens/create.js';
@@ -117,22 +117,36 @@ const colorCategorySchema = z
 
 const colorModeOverrideSchema = z
   .object({
-    light: colorSchema.optional(),
-    dark: colorSchema.optional(),
+    light: colorSchema.optional().describe('A hex color that overrides light mode'),
+    dark: colorSchema.optional().describe('A hex color that overrides dark mode'),
   })
   .describe('Override values for semantic color tokens like "background-subtle", "border-default", etc.');
 
 const colorWeightOverrideSchema = z
-  .partialRecord(z.enum(colorNames), colorModeOverrideSchema)
+  .partialRecord(z.enum([...colorNames]), colorModeOverrideSchema)
   .describe('The name of the color to add overrides for, e.g. "accent"');
 
 const semanticColorOverrideSchema = z
   .record(z.string(), colorWeightOverrideSchema)
   .describe('An object with color names as keys');
 
+const severityColorOverrideSchema = z
+  .partialRecord(z.enum(baseColorNames), colorSchema.describe('A hex color, which is used for creating a color scale'))
+  .optional()
+  .describe('An object with severity color names as keys');
+
+const linkVisitedOverrideSchema = z
+  .object({
+    light: colorSchema.optional().describe('A hex color that overrides light mode'),
+    dark: colorSchema.optional().describe('A hex color that overrides dark mode'),
+  })
+  .describe('Overrides for the "link-visited" color');
+
 const overridesSchema = z
   .object({
     colors: semanticColorOverrideSchema.optional(),
+    severity: severityColorOverrideSchema.optional(),
+    linkVisited: linkVisitedOverrideSchema.optional(),
   })
   .describe('Overrides for generated design tokens. Currently only supports colors defined in your theme')
   .optional();
@@ -143,7 +157,7 @@ const themeSchema = z
       .object({
         main: colorCategorySchema,
         support: colorCategorySchema.optional().default({}),
-        neutral: colorSchema,
+        neutral: colorSchema.describe('A hex color, which is used for creating a color scale.'),
       })
       .meta({ description: 'Defines the colors for this theme' }),
     typography: z

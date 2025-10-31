@@ -127,10 +127,17 @@ body {
       }
     }
 
+    /* reset non-direct child targets in stories */
+    [data-live] p {
+      margin-bottom: initial;
+    }
+
     & > h1,
     & > h2,
     & > h3,
-    & > h4 {
+    & > h4,
+    & > h5,
+    & > h6 {
       position: relative;
       padding-left: 26px;
       margin-left: -26px;
@@ -138,7 +145,9 @@ body {
 
     & > h2,
     & > h3,
-    & > h4 {
+    & > h4,
+    & > h5,
+    & > h6 {
       margin-top: var(--ds-size-15);
       margin-bottom: var(--ds-size-5);
     }
@@ -155,7 +164,9 @@ body {
     & > h1:hover a,
     & > h2:hover a,
     & > h3:hover a,
-    & > h4:hover a {
+    & > h4:hover a,
+    & > h5:hover a,
+    & > h6:hover a {
       opacity: 1;
     }
 
@@ -210,21 +221,40 @@ body {
       box-shadow: var(--ds-shadow-md);
     }
 
-    & td > code,
-    & > p > code,
-    & li > code,
-    & h2 > code {
-      padding: 0.2em 0.5em;
+    & code:not(pre > code) {
+      padding: 3px 5px;
       margin: 1px;
       font-size: 0.9em;
+      line-height: 1;
       white-space: break-spaces;
-      background-color: var(--ds-color-neutral-surface-tinted);
+      background-color: var(--ds-color-neutral-background-tinted);
       border-radius: var(--ds-border-radius-md);
+      display: inline;
+      border: 1px solid var(--ds-color-neutral-border-subtle);
     }
 
     & > div + p {
       margin-top: var(--ds-size-5);
     }
+
+    & > .ds-alert {
+      margin: var(--ds-size-8) 0;
+
+      & :first-child {
+        margin-top: 0 !important;
+      }
+
+      & :last-child {
+        margin-bottom: 0 !important;
+      }
+    }
+  }
+}
+@layer global-components {
+  .component-table {
+    --dsc-table-border-radius: var(--ds-border-radius-lg);
+    border-collapse: separate;
+    word-break: break-all;
   }
 }
 @layer overrides {

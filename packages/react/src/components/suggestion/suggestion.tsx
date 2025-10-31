@@ -57,10 +57,6 @@ type SuggestionContextType = {
   uComboboxRef?: React.RefObject<UHTMLComboboxElement | null>;
 };
 
-export const SuggestionContext = createContext<SuggestionContextType>({
-  handleFilter: () => undefined,
-});
-
 type SuggestionValue<T extends { multiple: boolean }> =
   T['multiple'] extends true
     ? Array<string | SuggestionItem>
@@ -195,6 +191,12 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
       sanitizeItems(defaultSelected),
     );
     const selectedItems = selected ? sanitizeItems(selected) : defaultItems;
+    const onSelectedChangeRef = useRef(onSelectedChange);
+
+    // Keep the ref updated with the latest callback
+    useEffect(() => {
+      onSelectedChangeRef.current = onSelectedChange;
+    }, [onSelectedChange]);
 
     /**
      * Listerners and handling of adding/removing
@@ -208,7 +210,9 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
         const nextItem = nextItems(data, selectedItems, multiple);
 
         if (isControlled)
-          onSelectedChange?.(nextItem as SuggestionItem & SuggestionItem[]);
+          onSelectedChangeRef.current?.(
+            nextItem as SuggestionItem & SuggestionItem[],
+          );
         else setDefaultItems(sanitizeItems(nextItem));
       };
 
@@ -277,3 +281,7 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
     );
   },
 );
+
+export const SuggestionContext = createContext<SuggestionContextType>({
+  handleFilter: () => undefined,
+});

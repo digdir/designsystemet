@@ -1,5 +1,37 @@
 # Change Log
 
+## 1.7.1
+
+## 1.7.0
+
+### Patch Changes
+
+- **Field**: Set `display: block` on `<label>` ([#4134](https://github.com/digdir/designsystemet/pull/4134))
+
+- **ToggleGroup**: ensure ToggleGroup has same height as Button, and that individual buttons within the group never wrap their text ([#4139](https://github.com/digdir/designsystemet/pull/4139))
+
+- **ToggleGroup**: use correct border-color (`--ds-color-text-default`) to match text/icon color on selected button in secondary variant ([#4139](https://github.com/digdir/designsystemet/pull/4139))
+
+- **Label**: Use `line-height: var(--ds-body-md-line-height);` ([#4134](https://github.com/digdir/designsystemet/pull/4134))
+
+- **Field**: `data-field="description"` no longer gets `margin-top` ([#4134](https://github.com/digdir/designsystemet/pull/4134))
+
+- **chip**: Remove hover effect on `.ds-input` ([#4165](https://github.com/digdir/designsystemet/pull/4165))
+
+## 1.6.1
+
+### Patch Changes
+
+- **pagination**: If direct child of `li` has `aria-hidden="true"` it sets `visibility: hidden;` ([#4123](https://github.com/digdir/designsystemet/pull/4123))
+
+- **input**: Add outline on `:hover` when not `:focus-visible`, `:disabled` or `[readonly]`. This adds a few new CSS variables: ([#4125](https://github.com/digdir/designsystemet/pull/4125))
+  - `--dsc-input-outline-color--hover`
+  - `--dsc-input-outline-color--toggle--hover`
+  - `--dsc-input-outline-width--hover`
+  - `--dsc-input-outline-style--hover`
+
+- **Chip, Tag**: Ensure font size scales correctly with the current size mode by using the token `--ds-body-sm-font-size`. Note: there might be a small visual change for `Chip` used without explicit `data-size`, since it used to have `font-size: 90%`. ([#4098](https://github.com/digdir/designsystemet/pull/4098))
+
 ## 1.6.0
 
 ### Minor Changes
@@ -417,7 +449,7 @@
 - 95f67ce: `ds-input` will now by default fill width.
 - 36cefe3: Rename `Accordion` to `Details`
 - 5a77def: SkipLink: Remove ds-sr-only class
-- 03d776b: Skeleton: Replace Skeleton.Text, Skeleton.Circle and Skeleton.Rectangle with <Skeleton variant="">
+- 03d776b: Skeleton: Replace Skeleton.Text, Skeleton.Circle and Skeleton.Rectangle with `<Skeleton variant="">`
 - 5d1c506: Accordion: Now uses details and summary HTML elements
 - 2238293: Combobox: fix overflow on screens narrower than ~340px
 - c43a438: Label: Fix icon abandoning parent in scroll container
@@ -832,7 +864,7 @@
 
 - Badge: Only use single DOM element for rendering ([#2422](https://github.com/digdir/designsystemet/pull/2422))
 
-- Skeleton: Replace Skeleton.Text, Skeleton.Circle and Skeleton.Rectangle with <Skeleton variant=""> ([#2435](https://github.com/digdir/designsystemet/pull/2435))
+- Skeleton: Replace Skeleton.Text, Skeleton.Circle and Skeleton.Rectangle with `<Skeleton variant="">` ([#2435](https://github.com/digdir/designsystemet/pull/2435))
 
 - Breadcrumbs: Rename `Breadcrumbs.Root` to `Breadcrumbs` and remove `Breadcrumbs.Nav` ([#2428](https://github.com/digdir/designsystemet/pull/2428))
 

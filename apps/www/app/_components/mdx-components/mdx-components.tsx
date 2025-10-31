@@ -1,4 +1,5 @@
 import {
+  Alert,
   Card,
   Details,
   DetailsContent,
@@ -20,7 +21,7 @@ import {
 } from '@digdir/designsystemet-react';
 import { CodeBlock } from '@internal/components';
 import { getMDXComponent } from 'mdx-bundler/dist/client';
-import { type JSX, useMemo } from 'react';
+import { type ComponentType, type JSX, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link as RRLink } from 'react-router';
 import { ColorInfoTable } from '~/_components/color-info-table/color-info-table';
@@ -29,11 +30,13 @@ import { Image } from '~/_components/image/image';
 import { ResponsiveIframe } from '~/_components/responsive-iframe/responsive-iframe';
 import { TokenList } from '~/_components/tokens/token-list/token-list';
 import { Blockquote } from '../blockquote/blockquote';
+import { CssVariables } from '../css-variables/css-variables';
 import { VideoCard } from '../video-card/video-card';
 import classes from './mdx-components.module.css';
 
 const defaultComponents = {
   VideoCard,
+  Alert,
   Details,
   DetailsContent,
   DetailsSummary,
@@ -104,15 +107,14 @@ const defaultComponents = {
       <Table data-color='neutral' border zebra {...props} />
     </div>
   ),
+  CssVariables,
 };
 
 export const MDXComponents = ({
   components,
   code,
 }: {
-  components?: {
-    [key: string]: JSX.Element;
-  };
+  components?: Record<string, ComponentType<unknown>>;
   code?: string;
 }) => {
   const { t } = useTranslation();

@@ -1,0 +1,57 @@
+---
+title: Popover
+subtitle: Popover er en komponent som viser tilleggsinformasjon eller handlinger når brukeren klikker på en trigger.
+image: Popover.svg
+cssfile: popover
+---
+
+<Story story="Preview" />
+
+## Bruk
+
+`Popover` består av flere delkomponenter:
+
+- `Popover.TriggerContext` - Wrapper for å koble sammen trigger og popover
+- `Popover.Trigger` - Elementet som åpner popover (kan være knapp eller inline tekst)
+- `Popover` - Selve popover-innholdet
+
+## Retningslinjer
+
+- Bruk Popover for tilleggsinformasjon som ikke trenger å være synlig hele tiden
+- Hold innholdet kort og relevant
+- Bruk fargevariantene for å indikere ulike typer innhold (neutral, info, warning, danger)
+- Unngå kritisk informasjon i Popover som brukeren må se
+
+## Interaktiv popover
+
+Popover kan inneholde knapper og andre interaktive elementer:
+
+<Story story="Interactive" />
+
+## Inline trigger
+
+Du kan bruke Popover inline i tekst med stiplet understrek:
+
+<Story story="DottedUnderline" />
+
+## Kontrollert tilstand
+
+Du kan kontrollere når popover er åpen eller lukket:
+
+<Story story="Controlled" />
+
+## Uten TriggerContext
+
+Du kan også bruke Popover uten TriggerContext ved å bruke `popovertarget`:
+
+<Story story="WithoutContext" />
+
+## Fargevarianter
+
+Popover støtter følgende fargevarianter:
+- `neutral` - Standard grå farge
+- `info` - Blå informasjonsfarge
+- `warning` - Gul advarselsfarge
+- `danger` - Rød farefarge
+
+Hver variant har også en `tinted` versjon som er lysere.

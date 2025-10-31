@@ -84,6 +84,7 @@ export default {
       Figma: 'Figma',
       Code: 'Kode',
       About: 'About',
+      components: 'Components',
     },
     items: {
       Introduction: 'Introduction',
@@ -128,6 +129,10 @@ export default {
     description:
       'Designsystemet contains basic components that can be combined in many different ways and in various patterns.',
   },
+  component: {
+    overview: 'Overview',
+    code: 'Code',
+  },
   patterns: {
     meta: {
       title: 'Patterns',
@@ -168,6 +173,16 @@ export default {
     'play-video': 'Play video',
     'pause-video': 'Pause video',
   },
+  'live-component': {
+    activateA: 'Press',
+    activateB: 'Enter',
+    activateC: 'to start editing',
+    'show-code': 'Show code',
+    'hide-code': 'Hide code',
+    'invert-color-scheme': 'invert color scheme',
+    copy: 'Copy',
+    reset: 'Reset',
+  },
   'token-preview': {
     size: {
       description:
@@ -198,6 +213,8 @@ export default {
   toc: {
     title: 'Contents',
   },
+  do: 'Do',
+  dont: "Don't",
   contributors: 'Contributors',
   editOnGithub: 'Edit this page on github.com (opens in a new tab)',
 } satisfies typeof no;
