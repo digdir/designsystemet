@@ -33,7 +33,7 @@
 
   &[data-variant='outline'] {
     --dsc-tag-background: transparent;
-    --dsc-tag-border-color: var(--ds-color-border-default);
+    --dsc-tag-border-color: var(--ds-color-border-subtle);
   }
 
   @media (forced-colors: active) {
