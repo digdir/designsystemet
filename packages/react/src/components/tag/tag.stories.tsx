@@ -27,6 +27,7 @@ const colorVariants = [
 export const Preview: Story = {
   args: {
     children: 'New',
+    variant: 'default',
   },
 };
 
@@ -112,6 +113,34 @@ export const Icons: StoryFn<typeof Tag> = ({ ...rest }) => {
 Icons.parameters = {
   customStyles: {
     display: 'flex',
+    gap: 'var(--ds-size-2)',
+    height: '100%',
+    width: '100%',
+    placeItems: 'center',
+  },
+};
+
+export const VariantOutline: StoryFn<typeof Tag> = ({ ...rest }) => {
+  return (
+    <>
+      {colorVariants.map((color) => (
+        <Tag
+          key={color}
+          data-color={color as TagProps['data-color']}
+          variant='outline'
+          {...rest}
+        >
+          {color}
+        </Tag>
+      ))}
+    </>
+  );
+};
+
+VariantOutline.parameters = {
+  customStyles: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
     gap: 'var(--ds-size-2)',
     height: '100%',
     width: '100%',
