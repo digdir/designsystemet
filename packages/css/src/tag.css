@@ -31,7 +31,7 @@
     display: inline-flex;
   }
 
-  [data-variant='outline'] {
+  &[data-variant='outline'] {
     --dsc-tag-background: transparent;
     --dsc-tag-border-color: var(--ds-color-border-default);
   }
