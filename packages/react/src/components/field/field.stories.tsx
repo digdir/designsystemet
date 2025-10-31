@@ -86,7 +86,10 @@ Position.decorators = [
 export const Optional: Story = () => (
   <Field>
     <Label>
-      Hvor bor du?<Tag data-color='info'>Valgfritt</Tag>
+      Hvor bor du?
+      <Tag data-color='info' style={{ marginInlineStart: 'var(--ds-size-2)' }}>
+        Valgfritt
+      </Tag>
     </Label>
     <Input />
   </Field>

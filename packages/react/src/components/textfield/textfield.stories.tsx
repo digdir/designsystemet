@@ -72,7 +72,13 @@ export const Required: Story = {
   args: {
     label: (
       <>
-        Hvor bor du? <Tag data-color='warning'>Må fylles ut</Tag>
+        Hvor bor du?
+        <Tag
+          data-color='warning'
+          style={{ marginInlineStart: 'var(--ds-size-2)' }}
+        >
+          Må fylles ut
+        </Tag>
       </>
     ),
     required: true,
