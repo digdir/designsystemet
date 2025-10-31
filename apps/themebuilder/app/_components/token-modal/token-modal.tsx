@@ -1,8 +1,10 @@
 import {
   Dialog,
   Divider,
+  Field,
   Heading,
   Input,
+  Label,
   Link,
   Paragraph,
   Tabs,
@@ -47,25 +49,26 @@ export const TokenModal = () => {
           </Heading>
         </Dialog.Block>
         <Dialog.Block>
-          <Heading className={classes.modalHeader} data-size='xs' level={3}>
-            {t('themeModal.theme-name')}
-          </Heading>
-          <Paragraph>{t('themeModal.theme-name-description')}</Paragraph>
-          <Input
-            name='themeName'
-            value={themeName}
-            onChange={(e) => {
-              const value = e.currentTarget.value
-                .replace(/\s+/g, '-')
-                .replace(/[^A-Z0-9-]+/gi, '')
-                .toLowerCase();
+          <Field>
+            <Heading className={classes.modalHeader} data-size='xs' level={3}>
+              <Label>{t('themeModal.theme-name')}</Label>
+            </Heading>
+            <Field.Description>
+              {t('themeModal.theme-name-description')}
+            </Field.Description>
+            <Input
+              name='themeName'
+              value={themeName}
+              onChange={(e) => {
+                const value = e.currentTarget.value
+                  .replace(/\s+/g, '-')
+                  .replace(/[^A-Z0-9-]+/gi, '')
+                  .toLowerCase();
 
-              setThemeName(value);
-            }}
-            style={{
-              marginTop: 'var(--ds-size-6)',
-            }}
-          />
+                setThemeName(value);
+              }}
+            />
+          </Field>
         </Dialog.Block>
         <Dialog.Block>
           <div className={classes.content}>
