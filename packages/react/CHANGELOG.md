@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.7.2
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4193](https://github.com/digdir/designsystemet/pull/4193))
+
 ## 1.7.1
 
 ### Patch Changes

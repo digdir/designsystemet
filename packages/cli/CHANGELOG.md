@@ -1,5 +1,29 @@
 # Change Log
 
+## 1.7.2
+
+### Patch Changes
+
+- Add option to override `linkVisited` color in config: ([#4182](https://github.com/digdir/designsystemet/pull/4182))
+
+  ```json
+  "theme": {
+    "overrides": {
+      "linkVisited": {
+        "light": "#ff1234",
+        "dark": "#1234ff"
+      }
+    }
+  }
+  ```
+
+- Update npm non-major dependencies ([#4193](https://github.com/digdir/designsystemet/pull/4193))
+
+- For your config file, you can now get the schema file from designsystemet.no ([#4195](https://github.com/digdir/designsystemet/pull/4195))
+  ```json
+  "$schema": "https://designsystemet.no/schemas/cli/[VERSION].json"
+  ```
+
 ## 1.7.1
 
 ## 1.7.0
