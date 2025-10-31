@@ -6,6 +6,10 @@ export const loader = async ({ params: { version } }: Route.LoaderArgs) => {
   /* get JSON schema from /content/schemas/cli/{VERSION} */
   const file = getFileFromContentDir(`schemas/cli/${version}`);
 
+  if (!file) {
+    throw new Response('File not found', { status: 404 });
+  }
+
   return data(JSON.parse(file), {
     headers: {
       'Content-Type': 'application/json',
