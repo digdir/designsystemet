@@ -39,3 +39,4 @@
 @import url('./avatar.css') layer(ds.components);
 @import url('./suggestion.css') layer(ds.components);
 @import url('./combobox.css') layer(ds.components);
+@import url('./tree-view.css') layer(ds.components);
