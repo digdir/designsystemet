@@ -56,6 +56,7 @@
   @composes ds-print-preserve from './base.css';
   @composes ds-focus from './base.css';
 
+  /* only hover effect on input, but with label if it is a radio or checkbox */
   :has(label):not(:has(label:hover)) &:not(:focus-visible, :disabled, :read-only):hover,
   &:read-only:not(:focus-visible, :disabled, [readonly]):hover {
     outline-color: var(--dsc-input-outline-color--hover);
