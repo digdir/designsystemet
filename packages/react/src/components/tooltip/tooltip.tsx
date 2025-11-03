@@ -197,6 +197,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
           onMouseLeave={setClose}
           onFocus={setOpen}
           onBlur={setClose}
+          aria-describedby={id ?? randomTooltipId}
         >
           {children}
         </ChildContainer>
