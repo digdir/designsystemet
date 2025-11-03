@@ -87,10 +87,14 @@ export const loader = async ({
     : request.url;
   const compPage = trimmedUrl.split('/').pop();
 
+  const isComponentPage = request.url.includes('/components/');
+
   return {
     lang,
     cats,
-    sidebarSuffix: { components: '/' + compPage },
+    sidebarSuffix: {
+      components: isComponentPage ? '/' + compPage : '/overview',
+    },
   };
 };
 
