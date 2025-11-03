@@ -82,4 +82,16 @@ describe('Tooltip', () => {
 
     expect(tooltipTrigger.tagName).toBe('SPAN');
   });
+
+  it('should be aria-describedby when there is text in the trigger', async () => {
+    await render();
+    const trigger = screen.getByRole('button');
+    expect(trigger.getAttribute('aria-describedby')).toBeDefined();
+  });
+
+  it('should be aria-labelledby when there is no text in the trigger', async () => {
+    await render({ children: <button /> });
+    const trigger = screen.getByRole('button');
+    expect(trigger.getAttribute('aria-labelledby')).toBeDefined();
+  });
 });

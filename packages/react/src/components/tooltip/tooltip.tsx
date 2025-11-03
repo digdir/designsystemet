@@ -52,6 +52,11 @@ export type TooltipProps = MergeRight<
      * This overrides the internal state of the tooltip.
      */
     open?: boolean;
+    /**
+     * Override if `aria-describedby` or `aria-labelledby` is used.
+     * By default, if the trigger element has no inner text, `aria-labelledby` is used.
+     */
+    type?: 'describedby' | 'labelledby';
   }
 >;
 
@@ -78,6 +83,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       autoPlacement = true,
       open,
       className,
+      type,
       ...rest
     },
     ref,
@@ -188,6 +194,11 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         : 'popovertargetaction']: 'show',
     };
 
+    const ariaDescribedOrLabel =
+      triggerRef.current?.innerText.trim() === ''
+        ? { 'aria-labelledby': id ?? randomTooltipId }
+        : { 'aria-describedby': id ?? randomTooltipId };
+
     return (
       <>
         <ChildContainer
@@ -197,7 +208,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
           onMouseLeave={setClose}
           onFocus={setOpen}
           onBlur={setClose}
-          aria-describedby={id ?? randomTooltipId}
+          {...(!type ? ariaDescribedOrLabel : { [type]: 'id' })}
         >
           {children}
         </ChildContainer>
