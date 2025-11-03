@@ -104,3 +104,5 @@ Aria.decorators = [
     </div>
   ),
 ];
+
+Aria.play = async () => {};
