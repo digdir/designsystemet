@@ -10,6 +10,11 @@ export default [
   route('/slack', 'routes/slack.tsx', {
     id: 'slack-redirect',
   }),
+  ...prefix('/schemas', [
+    route('/cli/:version', 'routes/cli-schema.tsx', {
+      id: 'schemas-cli',
+    }),
+  ]),
   layout('./layouts/root/layout.tsx', [
     ...prefix('/:lang', [
       index('routes/home/home.tsx', {
