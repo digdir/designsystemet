@@ -82,13 +82,15 @@ export const loader = async ({
     cats.changelogs = Array.from(changelogsMap.values());
   }
 
-  const isOverviewPage =
-    request.url.endsWith('/overview') || request.url.endsWith('/overview/');
+  const trimmedUrl = request.url.endsWith('/')
+    ? request.url.slice(0, -1)
+    : request.url;
+  const compPage = trimmedUrl.split('/').pop();
 
   return {
     lang,
     cats,
-    sidebarSuffix: { components: isOverviewPage ? '/overview' : '/code' },
+    sidebarSuffix: { components: '/' + compPage },
   };
 };
 

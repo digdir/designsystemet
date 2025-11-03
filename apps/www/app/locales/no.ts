@@ -131,6 +131,7 @@ export default {
   component: {
     overview: 'Oversikt',
     code: 'Kode',
+    accessibility: 'Tilgjengelighet',
   },
   patterns: {
     meta: {
