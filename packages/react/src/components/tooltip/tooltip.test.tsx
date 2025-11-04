@@ -94,4 +94,12 @@ describe('Tooltip', () => {
     const trigger = screen.getByRole('button');
     expect(trigger.getAttribute('aria-labelledby')).toBeDefined();
   });
+
+  it('should be able to override aria type', async () => {
+    await render({
+      type: 'labelledby',
+    });
+    const trigger = screen.getByRole('button');
+    expect(trigger.getAttribute('aria-labelledby')).toBeDefined();
+  });
 });
