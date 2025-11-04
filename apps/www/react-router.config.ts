@@ -96,8 +96,63 @@ const getContentPathsWithLanguages = (): string[] => {
   }
 };
 
+// Function to get all component paths (overview and code pages)
+const getComponentPaths = (): string[] => {
+  const componentsBasePath = join(dirname, './app/content/components');
+  const paths: string[] = [];
+  const supportedLanguages = i18nConf.supportedLngs;
+
+  try {
+    // Get all component folders
+    const componentFolders = readdirSync(componentsBasePath).filter((dir) => {
+      const fullPath = join(componentsBasePath, dir);
+      return statSync(fullPath).isDirectory();
+    });
+
+    // For each component folder
+    for (const component of componentFolders) {
+      const componentPath = join(componentsBasePath, component);
+
+      // Check each language
+      for (const lang of supportedLanguages) {
+        const langPath = join(componentPath, lang);
+
+        // Skip if language folder doesn't exist
+        if (!existsSync(langPath) || !statSync(langPath).isDirectory()) {
+          continue;
+        }
+
+        // Check for overview.mdx and code.mdx
+        const overviewPath = join(langPath, 'overview.mdx');
+        const codePath = join(langPath, 'code.mdx');
+
+        if (existsSync(overviewPath)) {
+          paths.push(`/${lang}/components/${component}/overview`);
+        }
+
+        if (existsSync(codePath)) {
+          paths.push(`/${lang}/components/${component}/code`);
+        }
+      }
+    }
+
+    return paths;
+  } catch (error) {
+    console.warn(`Error determining component paths: ${error}`);
+    return [];
+  }
+};
+
 const contentPaths = getContentPathsWithLanguages();
-const allPages = ['/no/components', '/en/components', ...contentPaths];
+const componentPaths = getComponentPaths();
+const allPages = [
+  '/no/components',
+  '/en/components',
+  '/no/changelog',
+  '/en/changelog',
+  ...contentPaths,
+  ...componentPaths,
+];
 
 const config: Config = {
   ssr: true,
