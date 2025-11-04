@@ -5,9 +5,10 @@ image: Alert.svg
 cssfile: alert
 ---
 
+## Bruk
 <Story story="Preview" />
 
-## Bruk
+<ReactComponentDocs />
 
 ```tsx
 import { Alert } from '@digdir/designsystemet-react';
@@ -15,10 +16,7 @@ import { Alert } from '@digdir/designsystemet-react';
 <Alert>You are using the Alert component!</Alert>;
 ```
 
-### Props
-<ReactComponentDocs />
-
-## Kodeeksempler
+## Eksempel
 
 ### Endre varsel
 
@@ -42,7 +40,6 @@ For dynamiske varsler er det mest aktuelt å bruke `role="alert"` for kritiske v
 **Ikke** kombiner `role="alert"` og `aria-live`, siden [dette fører at varselet leses opp dobbelt i VoiceOver (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions#:~:text=adding%20both%20aria%2Dlive%20and%20role=%22alert%22%20causes%20double%20speaking%20issues%20in%20VoiceOver%20on%20iOS).
 
 Du **bør** kombinere `role="status"` og `aria-live="polite"` [for å maksimere kompatibilitet (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions#roles_with_implicit_live_region_attributes).
-
 
 <Story story="CorrectLiveRegionReact" />
 
@@ -76,5 +73,18 @@ For statusbeskjeder, som implementeres ved hjelp av oppmerkingsspråk, gjelder f
 Kilde: [4.1.3 Statusbeskjeder (Nivå AA) (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)
 </Card>
 
-## CSS variablar
+## HTML
+
+For HTML bruker du klassenavnet `ds-alert` og attributtet `data-color` for å endre type varsel.
+Les over for når du skal bruke `role` og `aria-live`.
+
+```html
+<div class="ds-alert" data-color="info">
+  Dette er en info alert.
+</div>
+```
+
+## CSS variabler og data-attributter
 <CssVariables />
+
+<CssAttributes />

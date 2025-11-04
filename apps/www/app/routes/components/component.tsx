@@ -270,9 +270,13 @@ const CssVars = () => {
 const Attributes = () => {
   const data =
     useRouteLoaderData<Route.ComponentProps['loaderData']>('components-page');
-  if (!data) return null;
+  if (!data) return <Paragraph>Ingen relevante data-attributter.</Paragraph>;
 
   const { cssAttrs } = data;
 
-  return cssAttrs ? <CssAttributes vars={cssAttrs} /> : null;
+  return cssAttrs ? (
+    <CssAttributes vars={cssAttrs} />
+  ) : (
+    <Paragraph>Ingen relevante data-attributter.</Paragraph>
+  );
 };

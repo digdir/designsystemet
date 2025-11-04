@@ -3,14 +3,25 @@ title: Alert
 image: Alert.svg
 cssfile: alert
 subtitle: Brukes til å gi brukeren informasjon som det er ekstra viktig at de ser og forstår. Komponenten er designet for å fange brukernes oppmerksomhet. Teksten i varselet skal være kort og tydelig.
-
 ---
+
+**Bruk `Alert` når**
+- du skal gi korte og informative tidsbegrensede varsler
+- du skal informere om feil som kun påvirker én del av systemet eller en mindre funksjon
+- du skal informere om tilkoblingsproblemer eller API-feil som sannsynligvis løser seg ved å laste inn siden på nytt
+
+**Unngå `Alert` når**
+- du skal validere individuelle skjemaelementer, bruk heller komponentens egen feilmelding (Se [`ValidationMessage`](/no/components/validation-message/overview))
+- du skal oppsummere flere feilmeldinger i et skjema, bruk heller [`ErrorSummary`](/docs/komponenter-errorsummary--docs)
+- du skal vise feil som hindrer all videre bruk av tjenesten, bruk heller en feilside
+- du skal vise statisk informasjon som skal vises hele tiden, bruk heller [`Card`](/docs/komponenter-card--docs)
+
 
 <Story story="Preview" />
 
-## Eksempler
+## Eksempel
 
-`Alert` kan brukes til fire ulike budskap: Informasjon, suksess, advarsler og feilmelding. 
+`Alert` kan brukes til fire ulike budskap: Informasjon, suksess, advarsel og feilmelding.
 
 ### Informasjon
 
@@ -38,7 +49,9 @@ Bruk `danger` for å informere om noe som er kritisk eller som hindrer brukeren 
 
 ### Med og uten overskrift
 
-Hvis meldingen er lenger enn en setning kan det være nyttig å bruke en overskrift til å fremheve det viktigste. Dette kan gjøres ved bruk av [Heading](/no/components/heading/overview)-komponentene. Husk å velge riktig overskriftsnivå ut fra plassen alert har i innholdsstrukturen på siden.
+Hvis meldingen er lenger enn en setning kan det være nyttig å bruke en overskrift til å fremheve det viktigste. 
+Dette kan gjøres ved bruk av [Heading](/no/components/heading/overview)-komponentene. 
+Husk å velge riktig overskriftsnivå ut fra plassen alert har i innholdsstrukturen på siden.
 
 <Story story="WithHeading" />
 
@@ -48,45 +61,40 @@ Dersom tittel og beskrivelse gjentar det samme er det bedre å bruke en enkel se
 
 ### Med lenke
 
-Du kan ha en lenke i `Alert` hvis det hjelper brukeren med å løse oppgaven. Men vær obs på at en lenke tar brukeren ut av tjenesten, så bruk lenke kun når det er absolutt nødvendig, for eksempel hvis du vil at brukeren skal åpne et skjema eller utføre en viktig oppgave.
+Du kan ha en lenke i `Alert` hvis det hjelper brukeren med å løse oppgaven. 
+Men vær obs på at en lenke tar brukeren ut av tjenesten, så bruk lenke kun når det er absolutt nødvendig, for eksempel hvis du vil at brukeren skal åpne et skjema eller utføre en viktig oppgave.
 
 <Story story="MedLenke" />
 
 ## Retningslinjer
-`Alert` brukes for å vise viktige meldinger som krever oppmerksomhet, men ikke nødvendigvis handling. Den kan brukes til å informere brukeren om status, endringer eller problemer i en løsning. Meldingen vises tydelig og skiller seg visuelt fra resten av innholdet. 
 
-Bruk komponenten varsomt. Brukere kan forveksle varsler med reklame, og dermed overse dem. Hvis vi bruker varsler for ofte, kan vi forverre dette problemet.
+`Alert` brukes for å vise viktige meldinger som krever oppmerksomhet, men ikke nødvendigvis handling. 
+Den kan brukes til å informere brukeren om status, endringer eller problemer i en løsning.
+Meldingen vises tydelig og skiller seg visuelt fra resten av innholdet.
 
-Pass på at `Alert` har samme utseende og formspråk i alle tjenester og produkter. Denne komponenten skal være mulig å kjenne igjen over alt, så vi skal ikke justere den.
+Bruk komponenten varsomt. 
+Brukere kan forveksle varsler med reklame, og dermed overse dem. 
+Hvis vi bruker varsler for ofte, kan vi forverre dette problemet.
 
-
-**Passer til å**
-- gi korte og informative tidsbegrensede varsler
-- informere om feil som kun påvirker én del av systemet eller en mindre funksjon
-- informere om tilkoblingsproblemer eller API-feil som sannsynligvis løser seg ved å laste inn siden på nytt
-
-**Passer ikke til å**
-- validere individuelle skjemaelementer, bruk heller komponentens egen feilmelding (Se [`ValidationMessage`](/no/components/validation-message/overview))
-- oppsummere flere feilmeldinger i et skjema, bruk heller [`ErrorSummary`](/docs/komponenter-errorsummary--docs)
-- vise feil som hindrer all videre bruk av tjenesten, bruk heller en feilside
-- vise statisk informasjon som skal vises hele tiden, bruk heller [`Card`](/docs/komponenter-card--docs)
-
+Pass på at `Alert` har samme utseende og formspråk i alle tjenester og produkter. 
+Denne komponenten skal være mulig å kjenne igjen over alt, så vi skal unngå å justere den.
 
 ## Tekst
 
-Det er ikke alltid lett å forstå forskjellen på varslene, selv om de har ulike ikoner og farger. Derfor er det viktig at teksten vi skriver i varselet er tydelig og lett å forstå.
+Det er ikke alltid lett å forstå forskjellen på varslene, selv om de har ulike ikoner og farger. 
+Derfor er det viktig at teksten vi skriver i varselet er tydelig og lett å forstå.
 
-Hvis det er noe brukerne må eller kan gjøre for å komme videre med oppgaven sin, skal teksten formidle dette. Når meldingen er lengre enn en setning, kan det være lurt å ha med en overskrift som fremhever det viktigste. 
+Hvis det er noe brukerne må eller kan gjøre for å komme videre med oppgaven sin, skal teksten formidle dette. 
+Når meldingen er lengre enn en setning, kan det være lurt å ha med en overskrift som fremhever det viktigste. 
 
 Her er en liste med hvilken type informasjon varsel bør inneholde:
-
 - Fortell hva som har skjedd
-  - Eksempel: "Kunne ikke koble til konto."
+  - **Eksempel:** "Kunne ikke koble til konto."
 - Fortell hvorfor det skjedde
-  - Eksempel: "Vi kunne ikke koble til kontoen din på grunn av tekniske problemer fra vår side."
+  - **Eksempel:** "Vi kunne ikke koble til kontoen din på grunn av tekniske problemer fra vår side."
 - Forsikre brukeren
-  - Eksempel: "Endringene dine har blitt lagret."
+  - **Eksempel:** "Endringene dine har blitt lagret."
 - Gi dem en vei ut av problemet
-  - Eksempel: "Hvis dette problemet oppstår igjen, kontakt kundeservice."
+  - **Eksempel:** "Hvis dette problemet oppstår igjen, kontakt kundeservice."
 - Hjelp dem å fikse problemet selv
-  - Eksempel: "Vennligst prøv igjen."
+  - **Eksempel:** "Vennligst prøv igjen."

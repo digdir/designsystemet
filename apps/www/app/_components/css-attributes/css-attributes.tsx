@@ -1,4 +1,4 @@
-import { Table } from '@digdir/designsystemet-react';
+import { Paragraph, Table } from '@digdir/designsystemet-react';
 import cl from 'clsx';
 import { forwardRef } from 'react';
 
@@ -10,7 +10,8 @@ type CssAttributesProps = {
 
 export const CssAttributes = forwardRef<HTMLTableElement, CssAttributesProps>(
   function CssAttributes({ vars, className, ...rest }, ref) {
-    if (Object.keys(vars).length === 0) return null;
+    if (Object.keys(vars).length === 0)
+      return <Paragraph>Ingen relevante data-attributter.</Paragraph>;
     return (
       <Table
         className={cl('component-table', className)}
@@ -23,6 +24,7 @@ export const CssAttributes = forwardRef<HTMLTableElement, CssAttributesProps>(
         {...rest}
         ref={ref}
       >
+        <caption>Data-attributter</caption>
         <Table.Head>
           <Table.Row>
             <Table.HeaderCell>Name</Table.HeaderCell>

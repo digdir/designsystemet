@@ -22,6 +22,7 @@ export const CssVariables = forwardRef<HTMLTableElement, CssVariablesProps>(
         {...rest}
         ref={ref}
       >
+        <caption>CSS-variabler</caption>
         <Table.Head>
           <Table.Row>
             <Table.HeaderCell>Name</Table.HeaderCell>
