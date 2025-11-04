@@ -140,7 +140,8 @@
   &:has(> :is(audio, figure, iframe, img, picture, video):only-child) {
     padding: 0;
 
-    & > :not([hidden]), & > picture img:not([hidden]) {
+    & > :not([hidden]), 
+    & > picture img:not([hidden]) {
       border: 0;
       display: block;
       height: auto;
