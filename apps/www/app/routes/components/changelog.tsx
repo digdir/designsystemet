@@ -17,10 +17,10 @@ import type { Route } from './+types/changelog';
 import classes from './component.module.css';
 
 export async function loader({ params }: Route.LoaderArgs) {
-  const file = params.package;
-
   // Read the file content
-  const fileContent = getFileFromContentDir(join('changelogs', `${file}.mdx`));
+  const fileContent = getFileFromContentDir(
+    join('changelogs', `changelog.mdx`),
+  );
 
   if (!fileContent) {
     throw new Response('Not Found', {
@@ -33,7 +33,6 @@ export async function loader({ params }: Route.LoaderArgs) {
   const result = await generateFromMdx(fileContent);
 
   return {
-    name: params.package,
     code: result.code,
     frontmatter: result.frontmatter,
     lang: params.lang,

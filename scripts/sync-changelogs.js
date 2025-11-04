@@ -25,47 +25,111 @@ async function findPackages() {
   return out;
 }
 
-function toSlug(pkgName) {
-  // e.g. @digdir/designsystemet-foo -> designsystemet-foo
-  return pkgName
-    .replace(/^@[^/]+\//, '')
-    .replace(/[^a-z0-9-]/gi, '-')
-    .toLowerCase();
-}
+function parseChangelog(content, packageName) {
+  // Remove "# Change Log" header
+  const cleaned = content.replace(/^#\s+Change Log\s*\n*/i, '');
 
-function getShortName(pkgName) {
-  const nameMap = {
-    '@digdir/designsystemet-react': 'react',
-    '@digdir/designsystemet-css': 'css',
-    '@digdir/designsystemet-theme': 'theme',
-    '@digdir/designsystemet': 'cli',
-  };
-  return nameMap[pkgName] || pkgName;
+  // Split by version headers (## X.Y.Z)
+  const versionRegex = /^##\s+(\d+\.\d+\.\d+)/gm;
+  const versions = new Map();
+
+  const matches = [];
+  let match = versionRegex.exec(cleaned);
+  while (match !== null) {
+    matches.push({ version: match[1], index: match.index });
+    match = versionRegex.exec(cleaned);
+  }
+
+  // Extract content for each version
+  for (let i = 0; i < matches.length; i++) {
+    const { version, index } = matches[i];
+    const nextIndex =
+      i < matches.length - 1 ? matches[i + 1].index : cleaned.length;
+    let content = cleaned
+      .substring(index, nextIndex)
+      .replace(/^##\s+\d+\.\d+\.\d+\s*\n*/, '')
+      .trim();
+
+    // Adjust heading levels: ### (h3) -> #### (h4)
+    content = content.replace(/^###\s+/gm, '#### ');
+
+    if (!versions.has(version)) {
+      versions.set(version, new Map());
+    }
+    versions.get(version).set(packageName, content);
+  }
+
+  return versions;
 }
 
 async function main() {
   await fs.mkdir(WWW, { recursive: true });
   const pkgs = await findPackages();
+
+  // Collect all changelogs and parse them
+  const allVersions = new Map();
+
   for (const pkg of pkgs) {
     const src = path.join(pkg.dir, 'CHANGELOG.md');
     try {
       const md = await fs.readFile(src, 'utf8');
-      const dst = path.join(WWW, `${toSlug(pkg.name)}.mdx`);
-      const content = `---
-title: "${pkg.name}"
-package: "${pkg.name}"
-latestVersion: ${pkg.version}
-url: ${pkg.name.replace('@digdir/', '')}
-sidebarTitle: ${getShortName(pkg.name)}
----
-${md.replace(`# Change Log`, '')}
-`;
-      await fs.writeFile(dst, content, 'utf8');
-      console.log(`synced ${pkg.name}`);
+      const versions = parseChangelog(md, pkg.name);
+
+      // Merge versions into allVersions
+      for (const [version, packages] of versions) {
+        if (!allVersions.has(version)) {
+          allVersions.set(version, new Map());
+        }
+        for (const [pkgName, content] of packages) {
+          allVersions.get(version).set(pkgName, content);
+        }
+      }
     } catch {
       // skip
     }
   }
+
+  // Sort versions in descending order
+  const sortedVersions = Array.from(allVersions.keys()).sort((a, b) => {
+    const aParts = a.split('.').map(Number);
+    const bParts = b.split('.').map(Number);
+    for (let i = 0; i < 3; i++) {
+      if (aParts[i] !== bParts[i]) {
+        return bParts[i] - aParts[i];
+      }
+    }
+    return 0;
+  });
+
+  // Build consolidated changelog
+  let consolidatedContent = '';
+  for (const version of sortedVersions) {
+    consolidatedContent += `## ${version}\n\n`;
+    const packages = allVersions.get(version);
+
+    for (const [pkgName, content] of packages) {
+      if (content) {
+        consolidatedContent += `### ${pkgName}\n\n${content}\n\n`;
+      }
+    }
+  }
+
+  // Get latest version
+  const latestVersion = sortedVersions[0] || pkgs[0]?.version || '0.0.0';
+
+  // Write consolidated changelog
+  const dst = path.join(WWW, 'changelog.mdx');
+  const content = `---
+title: "Changelog"
+latestVersion: ${latestVersion}
+---
+
+${consolidatedContent}`;
+
+  await fs.writeFile(dst, content, 'utf8');
+  console.log(
+    `Synced consolidated changelog with ${sortedVersions.length} versions`,
+  );
 }
 main().catch((e) => {
   console.error(e);
