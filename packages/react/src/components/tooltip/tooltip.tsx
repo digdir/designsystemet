@@ -97,6 +97,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
     const mergedRefs = useMergeRefs([tooltipRef, ref]);
 
     const controlledOpen = open ?? internalOpen;
+    const tooltipId = id ?? randomTooltipId;
 
     const setOpen = () => {
       setInternalOpen(true);
@@ -187,8 +188,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
     }
 
     const popoverProps = {
-      [version.startsWith('19') ? 'popoverTarget' : 'popovertarget']:
-        id ?? randomTooltipId,
+      [version.startsWith('19') ? 'popoverTarget' : 'popovertarget']: tooltipId,
       [version.startsWith('19')
         ? 'popoverTargetAction'
         : 'popovertargetaction']: 'show',
@@ -205,7 +205,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
           onMouseLeave={setClose}
           onFocus={setOpen}
           onBlur={setClose}
-          {...{ [type ? 'aria-' + type : autoType]: id ?? randomTooltipId }}
+          {...{ [type ? 'aria-' + type : autoType]: tooltipId }}
         >
           {children}
         </ChildContainer>
@@ -215,7 +215,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
           ref={mergedRefs}
           role='tooltip'
           className={cl('ds-tooltip', className)}
-          id={id ?? randomTooltipId}
+          id={tooltipId}
           popover='manual'
           {...rest}
         >
