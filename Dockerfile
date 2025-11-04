@@ -1,9 +1,8 @@
 ARG PORT
 ARG HOST
 ARG APP_ENV
-ARG SLACK_INVITE_URL
 
-FROM node:22.20.0-slim AS base
+FROM node:22.21.0-slim AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
@@ -19,16 +18,14 @@ WORKDIR /usr/src/app
 ARG PORT
 ARG HOST
 ARG APP_ENV
-ARG SLACK_INVITE_URL
-ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV SLACK_INVITE_URL=$SLACK_INVITE_URL
+ENV PORT=$PORT HOST=$HOST APP_ENV=$APP_ENV
 RUN pnpm build:www
 RUN pnpm deploy --filter=@web/www --prod /prod/@web/www
 
 FROM base AS www
 COPY --from=www-build /prod/@web/www /srv/app
 WORKDIR /srv/app
-ARG SLACK_INVITE_URL
-ENV NODE_ENV=production HOST=0.0.0.0 PORT=8000 SLACK_INVITE_URL=$SLACK_INVITE_URL
+ENV NODE_ENV=production HOST=0.0.0.0 PORT=8000
 EXPOSE 8000
 CMD [ "pnpm", "start" ]
 

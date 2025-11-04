@@ -1,0 +1,50 @@
+---
+title: Pagination
+subtitle: Pagination lar brukeren navigere mellom flere sider med innhold.
+image: Pagination.svg
+cssfile: pagination
+---
+
+<Story story="Preview" />
+
+## Bruk
+
+`Pagination` består av flere delkomponenter:
+
+- `Pagination` - Wrapper for hele komponenten
+- `Pagination.List` - Liste med sideknapper
+- `Pagination.Item` - Et element i listen (kan være tom for å vise "...")
+- `Pagination.Button` - Knapp for å navigere til en side
+
+## Retningslinjer
+
+- Bruk Pagination når innholdet er delt over flere sider
+- Vis alltid hvilken side brukeren er på
+- Inkluder "Forrige" og "Neste" knapper
+- Bruk `aria-label` for å gi kontekst til skjermlesere
+- Vurder å bruke "Last mer" knapp for mindre datasett
+
+## Med lenker
+
+Du kan bruke Pagination med lenker (anchor tags) for bedre navigasjon:
+
+<Story story="WithAnchor" />
+
+## Mobil variant
+
+For mobile enheter kan du vise færre sider:
+
+<Story story="Mobile" />
+
+## usePagination hook
+
+Bruk `usePagination` hook for å håndtere logikken for paginering:
+
+```tsx
+const { pages, nextButtonProps, prevButtonProps } = usePagination({
+  currentPage: 1,
+  setCurrentPage: (page) => console.log(page),
+  totalPages: 10,
+  showPages: 7,
+});
+```

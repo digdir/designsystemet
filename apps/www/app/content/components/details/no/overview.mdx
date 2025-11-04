@@ -1,0 +1,43 @@
+---
+title: Details
+subtitle: Details er en sammenleggbar komponent som lar brukeren vise eller skjule innhold.
+image: Details.svg
+cssfile: details
+---
+
+<Story layout="block" story="Preview" />
+
+## Bruk
+
+`Details` består av to delkomponenter:
+
+- `Details.Summary` - Overskriften som kan klikkes for å vise/skjule innholdet
+- `Details.Content` - Innholdet som vises/skjules
+
+## Retningslinjer
+
+- Bruk Details når du har innhold som ikke alle brukere trenger å se med en gang
+- Hold overskriften kort og beskrivende
+- Unngå å skjule viktig informasjon som brukeren alltid trenger
+
+## Tilgjengelighet
+
+Details-komponenten bruker de native HTML-elementene `<details>` og `<summary>`, som har innebygd tilgjengelighetsstøtte.
+
+## I Card
+
+Details kan brukes inne i Card-komponenten for en fin gruppering:
+
+<Story layout="block" story="InCard" />
+
+## Fargevarianter
+
+Details fungerer godt sammen med Card sine fargevarianter:
+
+<Story layout="block" story="InCardWithColor" />
+
+## Kontrollert tilstand
+
+Du kan kontrollere om Details er åpen eller lukket:
+
+<Story layout="block" story="Controlled" />

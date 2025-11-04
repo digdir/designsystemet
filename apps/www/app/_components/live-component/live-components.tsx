@@ -7,9 +7,11 @@ import {
   type ComponentType,
   type KeyboardEvent,
   useEffect,
+  useId,
   useRef,
   useState,
 } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   LiveEditor,
   LiveError,
@@ -23,11 +25,14 @@ import classes from './live-component.module.css';
 const scopes = {
   ...ds,
   ...aksel,
+  useState,
+  useEffect,
+  useRef,
 };
 
-type LiveComponentProps = {
-  code: string;
-  layout?: 'row' | 'column' | 'centered';
+export type LiveComponentProps = {
+  story: string;
+  layout?: 'row' | 'column' | 'centered' | 'block';
 };
 
 //copied from https://github.com/FormidableLabs/react-live/blob/master/packages/react-live/src/components/Live/LiveContext.ts
@@ -46,10 +51,13 @@ type ContextValue = {
 type EditorProps = {
   live: ContextValue;
   html: HTMLElement | null;
+  id?: string;
+  hidden?: boolean;
 };
 
 //@TODO: i18n
-const Editor = ({ live, html }: EditorProps) => {
+const Editor = ({ live, html, id, hidden }: EditorProps) => {
+  const { t } = useTranslation();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const activateEditorRef = useRef<HTMLDivElement>(null);
   const [resetCount, setResetCount] = useState(0);
@@ -136,7 +144,12 @@ const Editor = ({ live, html }: EditorProps) => {
   };
 
   return (
-    <div className={classes.editorOuterWrapper}>
+    <section
+      className={classes.editorOuterWrapper}
+      id={id}
+      aria-label={t('live-component.show-code')}
+      hidden={hidden}
+    >
       <ds.Paragraph className={classes.language}>
         {showHTML ? 'HTML' : 'React'}
       </ds.Paragraph>
@@ -159,7 +172,7 @@ const Editor = ({ live, html }: EditorProps) => {
         type='button'
       >
         <aksel.ArrowsCirclepathIcon />
-        Reset
+        {t('live-component.reset')}
       </ds.Button>
       <ds.Button
         data-color='neutral'
@@ -174,7 +187,7 @@ const Editor = ({ live, html }: EditorProps) => {
           <aksel.FilesIcon aria-hidden />
           <aksel.ClipboardCheckmarkIcon aria-hidden />
         </span>
-        Copy
+        {t('live-component.copy')}
       </ds.Button>
       {/* biome-ignore lint/a11y/noStaticElementInteractions: <need to manage keyboard events from here> */}
       <div
@@ -188,7 +201,9 @@ const Editor = ({ live, html }: EditorProps) => {
           aria-live='polite'
           tabIndex={showHTML ? -1 : 0}
         >
-          Press <kbd>Enter</kbd> to start editing
+          {t('live-component.activateA')}{' '}
+          <kbd>{t('live-component.activateB')}</kbd>{' '}
+          {t('live-component.activateC')}
         </div>
         {showHTML ? (
           <LiveEditor
@@ -209,18 +224,21 @@ const Editor = ({ live, html }: EditorProps) => {
           />
         )}
       </div>
-    </div>
+    </section>
   );
 };
 const EditorWithLive = withLive(Editor) as ComponentType<{
   html: HTMLElement | null;
+  id?: string;
+  hidden?: boolean;
 }>;
 
 export const LiveComponent = ({
-  code,
+  story,
   layout = 'centered',
 }: LiveComponentProps) => {
   const location = useLocation();
+  const { t } = useTranslation();
   const [showEditor, setShowEditor] = useState(false);
   const [colorScheme, setColorScheme] = useState<string | null>('dark');
   const [invertedColorScheme, setInvertedColorScheme] = useState<string | null>(
@@ -229,6 +247,7 @@ export const LiveComponent = ({
   const [useInverted, setUseInverted] = useState(false);
   const [html, setHtml] = useState<HTMLElement | null>(null);
   const previewColorScheme = useInverted ? invertedColorScheme : colorScheme;
+  const editorId = useId();
 
   useEffect(() => {
     // Set initial color scheme
@@ -263,7 +282,7 @@ export const LiveComponent = ({
 
   return (
     <LiveProvider
-      code={code}
+      code={story}
       scope={scopes}
       noInline
       theme={colorScheme === 'dark' ? themes.vsDark : themes.vsLight}
@@ -279,6 +298,7 @@ export const LiveComponent = ({
           className={classes['live-preview']}
           ref={setHtml}
         />
+        <LiveError className={cl('ds-alert', classes['live-preview-error'])} />
         <ds.Button
           data-color='neutral'
           data-size='sm'
@@ -287,7 +307,7 @@ export const LiveComponent = ({
           onClick={() => setUseInverted((v) => !v)}
           aria-pressed={useInverted}
           className={classes.themeToggle}
-          aria-label='Invert color scheme'
+          aria-label={t('live-component.invert-color-scheme')}
         >
           {previewColorScheme === 'dark' ? (
             <aksel.SunIcon aria-hidden />
@@ -300,15 +320,17 @@ export const LiveComponent = ({
           data-size='sm'
           variant='tertiary'
           onClick={() => setShowEditor((v) => !v)}
-          aria-pressed={showEditor}
+          aria-expanded={showEditor}
           className={classes.codeButton}
+          aria-controls={editorId}
         >
           <aksel.ChevronDownIcon />
-          {showEditor ? 'Hide code' : 'Show code'}
+          {showEditor
+            ? t('live-component.hide-code')
+            : t('live-component.show-code')}
         </ds.Button>
-        <LiveError className='ds-alert' />
       </div>
-      {showEditor ? <EditorWithLive html={html} /> : null}
+      <EditorWithLive id={editorId} html={html} hidden={!showEditor} />
     </LiveProvider>
   );
 };

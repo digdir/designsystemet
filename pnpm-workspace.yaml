@@ -13,7 +13,7 @@ onlyBuiltDependencies:
   - esbuild
   - just-pnpm
   - style-dictionary
-useNodeVersion: 22.20.0
+useNodeVersion: 22.21.0
 packageExtensions:
   '@navikt/aksel-icons':
     peerDependencies:
@@ -22,7 +22,11 @@ packageExtensions:
       react:
         optional: true
 syncInjectedDepsAfterScripts:
-  - dist
+  - build
+  - build:all
+  - build:www
+  - build:themebuilder
+  - build:storybook
 injectWorkspacePackages: true
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:

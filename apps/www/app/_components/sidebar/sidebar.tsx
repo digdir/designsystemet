@@ -14,14 +14,19 @@ export type SidebarProps = {
   };
   title: string;
   hideCatTitle?: boolean;
-  suffix?: string;
+  /**
+   * mapped list of suffixes to it's category key
+   */
+  suffix?: {
+    [categoryKey: string]: string;
+  };
 } & HTMLAttributes<HTMLDivElement>;
 
 export const Sidebar = ({
   cats,
   title,
   hideCatTitle = false,
-  suffix = '',
+  suffix = {},
   ...props
 }: SidebarProps) => {
   const { t } = useTranslation();
@@ -68,7 +73,7 @@ export const Sidebar = ({
                         <Paragraph asChild data-size='sm'>
                           <Link asChild>
                             <NavLink
-                              to={url + suffix}
+                              to={url + (suffix[key] || '')}
                               className={cl(classes.link)}
                               onClick={() => setShowMenu(false)}
                             >

@@ -7,7 +7,7 @@ import { Tooltip } from './tooltip';
 
 const render = async (props: Partial<TooltipProps> = {}) => {
   const allProps: TooltipProps = {
-    children: <button>My button</button>,
+    children: <button data-testid='button'>My button</button>,
     content: 'Tooltip text',
     ...props,
   };
@@ -32,7 +32,7 @@ const render = async (props: Partial<TooltipProps> = {}) => {
 describe('Tooltip', () => {
   it('should render child', async () => {
     await render();
-    const tooltipTrigger = screen.getByRole('button', { name: 'My button' });
+    const tooltipTrigger = screen.getByTestId('button');
 
     expect(tooltipTrigger).toBeInTheDocument();
   });
@@ -54,7 +54,7 @@ describe('Tooltip', () => {
     const { user } = await render();
 
     expect(screen.queryByText('Tooltip text')).not.toBeVisible();
-    await user.click(screen.getByRole('button', { name: 'My button' }));
+    await user.click(screen.getByTestId('button'));
     const tooltip = await screen.findByText('Tooltip text');
     expect(tooltip).toBeInTheDocument();
     expect(screen.queryByRole('tooltip')).toBeVisible();
@@ -81,5 +81,25 @@ describe('Tooltip', () => {
     const tooltipTrigger = screen.getByText('My string child');
 
     expect(tooltipTrigger.tagName).toBe('SPAN');
+  });
+
+  it('should be aria-describedby when there is text in the trigger', async () => {
+    await render();
+    const trigger = screen.getByRole('button');
+    expect(trigger.getAttribute('aria-describedby')).toBeDefined();
+  });
+
+  it('should be aria-labelledby when there is no text in the trigger', async () => {
+    await render({ children: <button /> });
+    const trigger = screen.getByRole('button');
+    expect(trigger.getAttribute('aria-labelledby')).toBeDefined();
+  });
+
+  it('should be able to override aria type', async () => {
+    await render({
+      type: 'labelledby',
+    });
+    const trigger = screen.getByRole('button');
+    expect(trigger.getAttribute('aria-labelledby')).toBeDefined();
   });
 });

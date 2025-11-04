@@ -1,8 +1,9 @@
-import { Button } from '@digdir/designsystemet-react';
+import { Button, Skeleton } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
-import { useState } from 'react';
+import { Suspense, use, useEffect, useMemo, useState } from 'react';
 import { CodeBlock as ReactCodeBlock } from 'react-code-block';
 import classes from './code-block.module.css';
+import { isPrettifySupported, prettifyCode } from './prettify';
 
 export type CodeBlockProps = {
   children: string;
@@ -36,13 +37,36 @@ export type CodeBlockProps = {
     | string;
 };
 
-export const CodeBlock = ({
+/* This component uses "use", it needs to be wrapped in Suspense */
+const CodeBlockContent = ({
   children,
   className,
   language = 'text',
 }: CodeBlockProps) => {
+  // Initial prettify promise for Suspense (only runs once on mount)
+  const prettifyPromise = useMemo(() => {
+    if (isPrettifySupported(language)) {
+      return prettifyCode(children, language);
+    }
+    return Promise.resolve(children);
+  }, []);
+
+  const initialText = use(prettifyPromise);
+
+  const [text, setText] = useState(initialText);
+
+  useEffect(() => {
+    if (isPrettifySupported(language)) {
+      prettifyCode(children, language).then((pretty) => {
+        setText(pretty);
+      });
+    } else {
+      setText(children);
+    }
+  }, [children, language]);
+
   return (
-    <ReactCodeBlock code={children} language={language}>
+    <ReactCodeBlock code={text} language={language}>
       <div className={classes.codeBlockWrapper}>
         <ReactCodeBlock.Code
           data-color-scheme='dark'
@@ -55,10 +79,24 @@ export const CodeBlock = ({
           </code>
         </ReactCodeBlock.Code>
         <div data-color-scheme='dark' className={classes.toolbar}>
-          <CopyButton text={children} />
+          <CopyButton text={text} />
         </div>
       </div>
     </ReactCodeBlock>
+  );
+};
+
+export const CodeBlock = ({
+  children,
+  className,
+  language = 'text',
+}: CodeBlockProps) => {
+  return (
+    <Suspense fallback={<Skeleton height={120} />}>
+      <CodeBlockContent className={className} language={language}>
+        {children}
+      </CodeBlockContent>
+    </Suspense>
   );
 };
 
@@ -75,7 +113,7 @@ const CopyButton = ({ text }: { text: string }) => {
     <>
       {/* @ts-ignore */}
       <Button
-        onMouseEnter={() => setToolTipText('Kopier')}
+        onMouseLeave={() => setToolTipText('Kopier')}
         onClick={() => onButtonClick()}
         className={classes.copyButton}
         aria-label='Kopier kodesnutt'

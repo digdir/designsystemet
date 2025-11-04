@@ -12,9 +12,13 @@ import { isProduction } from '~/_utils/is-production.server';
 import { generateMetadata } from '~/_utils/metadata';
 import i18n from '~/i18next.server';
 import {
+  applyOverridesToColors,
   createColorsAndNeutralVariables,
   createColorsFromQuery,
+  createSeverityColorsFromQuery,
+  parseColorOverrides,
   QUERY_SEPARATOR,
+  type SeverityColorTheme,
 } from './_utils/use-themebuilder';
 import type { Route } from './+types/themebuilder';
 
@@ -64,8 +68,30 @@ export const loader = async ({
     support: createColorsFromQuery(urlParams.get('support')),
   };
 
+  // Parse and apply color overrides
+  const overridesParam = urlParams.get('color-overrides');
+  const overridesMap = parseColorOverrides(overridesParam);
+
+  const colorsWithOverrides = {
+    main: applyOverridesToColors(colors.main, overridesMap),
+    neutral: applyOverridesToColors(colors.neutral, overridesMap),
+    support: applyOverridesToColors(colors.support, overridesMap),
+  };
+
+  const severityColors = createSeverityColorsFromQuery(
+    urlParams.get('severity'),
+  );
+
+  const severityEnabled = urlParams.get('severity-enabled') === 'true';
+
   return {
-    colors,
+    colors: colorsWithOverrides,
+    severityColors: applyOverridesToColors(
+      severityColors,
+      overridesMap,
+    ) as SeverityColorTheme[],
+    severityEnabled,
+    overrides: overridesMap,
     colorScheme: (urlParams.get('appearance') || 'light') as ColorScheme,
     baseBorderRadius: parseInt(urlParams.get('border-radius') || '4', 10),
     tab: urlParams.get('tab') || 'overview',

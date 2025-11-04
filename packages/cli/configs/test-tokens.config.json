@@ -32,7 +32,20 @@
               "light": "#f0ff00",
               "dark": "#ff00ff"
             }
+          },
+          "danger": {
+            "background-default": {
+              "light": "#0000ff",
+              "dark": "#0000ff"
+            }
           }
+        },
+        "severity": {
+          "danger": "#ff00ff"
+        },
+        "linkVisited": {
+          "light": "#ff1234",
+          "dark": "#1234ff"
         }
       }
     },

@@ -84,6 +84,8 @@ export default {
       Figma: 'Figma',
       Code: 'Kode',
       About: 'About',
+      components: 'Components',
+      getStarted: 'Getting Started',
     },
     items: {
       Introduction: 'Introduction',
@@ -127,6 +129,13 @@ export default {
     title: 'Components',
     description:
       'Designsystemet contains basic components that can be combined in many different ways and in various patterns.',
+    changelog: {
+      title: 'Changelog',
+    },
+  },
+  component: {
+    overview: 'Overview',
+    code: 'Code',
   },
   patterns: {
     meta: {
@@ -167,6 +176,16 @@ export default {
   'image-banner': {
     'play-video': 'Play video',
     'pause-video': 'Pause video',
+  },
+  'live-component': {
+    activateA: 'Press',
+    activateB: 'Enter',
+    activateC: 'to start editing',
+    'show-code': 'Show code',
+    'hide-code': 'Hide code',
+    'invert-color-scheme': 'invert color scheme',
+    copy: 'Copy',
+    reset: 'Reset',
   },
   'token-preview': {
     size: {

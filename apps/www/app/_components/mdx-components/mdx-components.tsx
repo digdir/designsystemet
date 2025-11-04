@@ -1,8 +1,10 @@
 import {
+  Alert,
   Card,
   Details,
   DetailsContent,
   DetailsSummary,
+  Divider,
   Heading,
   Link,
   ListOrdered,
@@ -34,10 +36,12 @@ import classes from './mdx-components.module.css';
 
 const defaultComponents = {
   VideoCard,
+  Alert,
   Details,
   DetailsContent,
   DetailsSummary,
   Card,
+  Divider,
   Table: (props: TableProps) => (
     <div className={classes.tableWrapper}>
       <Table {...props} />

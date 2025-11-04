@@ -1,5 +1,15 @@
 # Change Log
 
+## 1.7.1
+
+## 1.7.0
+
+### Patch Changes
+
+- Update design-tokens to reflect changes made in `@digdir/designsystemet`. See changelog for changes ([#4105](https://github.com/digdir/designsystemet/pull/4105))
+
+## 1.6.1
+
 ## 1.6.0
 
 ### Patch Changes

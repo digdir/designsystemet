@@ -16,7 +16,9 @@
     display: flex;
     gap: var(--ds-size-2);
     flex-wrap: wrap;
-
+    [data-layout='block'] & {
+      display: block;
+    }
     [data-layout='centered'] & {
       justify-content: center;
       align-items: center;
@@ -28,6 +30,11 @@
       flex-direction: column;
       align-items: flex-start;
     }
+  }
+
+  & .live-preview-error {
+    grid-column: 1 / -1;
+    margin: var(--ds-size-4);
   }
 
   & .codeButton {
@@ -56,12 +63,16 @@
   background-color: var(--ds-color-neutral-background-tinted);
   display: grid;
   grid-template-columns: 1fr auto auto auto;
+  &[hidden] {
+    display: none;
+  }
   :global(.ds-toggle-group) {
     --dsc-togglegroup-button-size: var(--ds-size-8);
     --dsc-togglegroup-background: transparent;
     margin-block: var(--ds-size-2);
     margin-inline-end: var(--ds-size-4);
     font-size: var(--ds-font-size-3);
+    height: fit-content;
   }
 }
 .editorWrapper {

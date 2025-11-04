@@ -1,0 +1,66 @@
+---
+title: Avatar
+subtitle: Avatar er en komponent som viser et bilde, initialer eller ikon for en person, enhet eller profil.
+image: Avatar.svg
+cssfile: avatar
+---
+
+<Story story="Preview" />
+
+## Props
+<ReactComponentDocs />
+
+## Bruk
+
+```tsx
+import { Avatar } from '@digdir/designsystemet-react';
+
+<>
+/* Med standard brukerikon */
+<Avatar aria-label="Ola Nordmann" />
+
+/* Med initialer */
+<Avatar aria-label="Ola Nordmann">ON</Avatar>
+
+/* Med bilde */
+<Avatar aria-label="Ola Nordmann">
+  <img src="..." />
+</Avatar>
+
+/* Sammen med synlig tekst */
+<>
+  <Avatar aria-hidden>ON</Avatar>
+  <span>Ola Nordmann</span>
+</>
+</>
+```
+
+## Kodeeksempler
+
+### Standard Ikon
+
+<Story story="NoName" />
+
+### Størrelser
+
+<Story story="Sizes" />
+
+### Farger
+
+<Story story="ColorVariants" />
+
+### Varianter
+
+<Story story="ShapeVariants" />
+
+### Med bilde
+
+<Story story="WithImage" />
+
+### I `Dropdown`
+
+<Story story="InDropdown" />
+
+### Som lenke
+
+<Story story="AsLink" />

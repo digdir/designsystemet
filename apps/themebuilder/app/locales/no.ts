@@ -1,4 +1,5 @@
 import no from '@internal/components/src/_locales/no';
+import themeModal from './no/theme-modal';
 
 export default {
   ...no,
@@ -97,34 +98,10 @@ export default {
     settings: 'Innstillinger',
     'admin-display': 'Her kan du administrere visning',
     'dark-mode': 'Mørk modus',
-    'display-mode': 'Visnigsmodus',
+    'display-mode': 'Visningsmodus',
+    'select-color': 'Velg farge',
   },
-  themeModal: {
-    'use-theme': 'Ta i bruk tema',
-    'theme-name': 'Gi temaet ditt et navn',
-    'theme-name-description':
-      'Navnet bør representere virksomheter eller produktet du skal profilere.',
-    'theme-name-label': 'Navn på tema',
-    'generate-css': 'Generer CSS',
-    'generating-css': 'Genererer CSS...',
-    'step-one':
-      'Kopier kodesnutten og kjør den på maskinen din for å generere design tokens (json-filer), eller lim den inn i Designsystemet sin',
-    'figma-plugin': 'Figma plugin (åpnes i ny fane)',
-    in: 'i',
-    'core-ui-kit': 'Core UI Kit (åpnes i ny fane)',
-    'to-update':
-      'for å oppdatere et tema direkte i Figma. Les mer om disse alternativene på',
-    'own-theme': 'eget tema (åpnes i ny fane)',
-    page: 'siden.',
-    format: 'Formatering for Windows',
-    'step-two': 'Kjør kodesnutten for å generere CSS variabler til kode.',
-    'help-heading': 'Noe som ikke fungerer?',
-    'help-description': 'Send oss en melding på',
-    slack: 'Slack (åpnes i ny fane)',
-    or: 'eller lag et',
-    'github-issue': 'Github issue (åpnes i ny fane)',
-    color: 'Farge',
-  },
+  themeModal,
   examples: {
     'example-1': 'Eksempel 1',
     'example-2': 'Eksempel 2',
@@ -138,6 +115,7 @@ export default {
     cancel: 'Avbryt',
     'remove-color': 'Fjern farge',
     'neutral-info': 'Neutral fargen kan ikke fjernes eller endres navn på.',
+    'severity-info': 'Severity fargen kan ikke fjernes eller endres navn på.',
     name: 'Navn',
     'name-placeholder': 'Skriv navnet her...',
     'name-description': 'Bruk kun bokstavene a-z, tall og bindestrek',
@@ -181,5 +159,10 @@ export default {
     medium: 'Medium',
     large: 'Large',
     full: 'Full',
+  },
+  overrides: {
+    heading: 'Fargeoverstyringer',
+    description:
+      'Overstyr spesifikke tokenfarger for lys og mørk modus. Sørg for å sjekke kontraster etter endringer.',
   },
 };
