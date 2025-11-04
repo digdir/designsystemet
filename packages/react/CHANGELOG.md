@@ -543,7 +543,7 @@
 - ce23f32: Chip: Use correct `32px` height to align nicely with `<Tag>`
 - 36cefe3: Rename `Accordion` to `Details`
 - 5a77def: SkipLink: Remove ds-sr-only class
-- 03d776b: Skeleton: Replace Skeleton.Text, Skeleton.Circle and Skeleton.Rectangle with <Skeleton variant="">
+- 03d776b: Skeleton: Replace Skeleton.Text, Skeleton.Circle and Skeleton.Rectangle with `<Skeleton variant="">`
 - 5d1c506: Accordion: Now uses details and summary HTML elements
 - 529d942: **Popover**: Add `data-variant="default/tinted"`, `default` is default
 - 1afa5c5: Spinner: Style using data attributes
@@ -928,7 +928,7 @@
 
 - Badge: Only use single DOM element for rendering ([#2422](https://github.com/digdir/designsystemet/pull/2422))
 
-- Skeleton: Replace Skeleton.Text, Skeleton.Circle and Skeleton.Rectangle with <Skeleton variant=""> ([#2435](https://github.com/digdir/designsystemet/pull/2435))
+- Skeleton: Replace Skeleton.Text, Skeleton.Circle and Skeleton.Rectangle with `<Skeleton variant="">` ([#2435](https://github.com/digdir/designsystemet/pull/2435))
 
 - Breadcrumbs: Rename `Breadcrumbs.Root` to `Breadcrumbs` and remove `Breadcrumbs.Nav` ([#2428](https://github.com/digdir/designsystemet/pull/2428))
 

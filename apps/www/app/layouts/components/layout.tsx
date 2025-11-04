@@ -7,15 +7,34 @@ import {
   getFoldersInContentDir,
 } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
+import i18n from '~/i18next.server';
 import type { Route } from './+types/layout';
 import classes from './layout.module.css';
 
 export { ErrorBoundary } from '~/root';
 
+// Maps to store unique entries
+const componentsMap = new Map<string, { title: string; url: string }>();
+const getStartedMap = new Map<string, { title: string; url: string }>();
+
+const cats: {
+  [key: string]: {
+    title: string;
+    url: string;
+  }[];
+} = {
+  getStarted: [],
+  components: [],
+};
+
 export const loader = async ({
   params: { lang },
   request,
 }: Route.LoaderArgs) => {
+  if (process.env.APP_ENV === 'production') {
+    throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
+  }
+
   if (!lang) {
     throw new Response('Not Found', {
       status: 404,
@@ -23,35 +42,42 @@ export const loader = async ({
     });
   }
 
-  /* read all folders in content/components */
-  const folders = await getFoldersInContentDir('/components');
-  const cats: {
-    [key: string]: {
-      title: string;
-      url: string;
-    }[];
-  } = {
-    components: [],
-  };
+  const t = await i18n.getFixedT(lang);
 
-  await Promise.all(
-    folders.map(async (folder) => {
-      /* read overview.mdx file in lang folder */
-      const mdxSource = getFileFromContentDir(
-        join('components', folder, lang, 'overview.mdx'),
-      );
+  if (!cats.components.length) {
+    componentsMap.clear();
+    getStartedMap.clear();
 
-      const result = await generateFromMdx(mdxSource);
+    /* read all folders in content/components */
+    const folders = getFoldersInContentDir('/components');
 
-      cats.components.push({
-        title: result.frontmatter.title || folder,
-        url: `/${lang}/components/${folder}`,
-      });
-    }),
-  );
+    await Promise.all(
+      folders.map(async (folder) => {
+        /* read overview.mdx file in lang folder */
+        const mdxSource = getFileFromContentDir(
+          join('components', folder, lang, 'overview.mdx'),
+        );
 
-  /* sort cats by title */
-  cats.components.sort((a, b) => a.title.localeCompare(b.title));
+        const result = await generateFromMdx(mdxSource);
+
+        const component = {
+          title: result.frontmatter.title || folder,
+          url: `/${lang}/components/${folder}`,
+        };
+        componentsMap.set(component.url, component);
+      }),
+    );
+
+    getStartedMap.set(`/${lang}/changelog`, {
+      title: t('components.changelog.title'),
+      url: `/${lang}/changelog`,
+    });
+
+    cats.components = Array.from(componentsMap.values()).sort((a, b) =>
+      a.title.localeCompare(b.title),
+    );
+    cats.getStarted = Array.from(getStartedMap.values());
+  }
 
   const isOverviewPage =
     request.url.endsWith('/overview') || request.url.endsWith('/overview/');
@@ -59,7 +85,7 @@ export const loader = async ({
   return {
     lang,
     cats,
-    sidebarSuffix: isOverviewPage ? '/overview' : '/code',
+    sidebarSuffix: { components: isOverviewPage ? '/overview' : '/code' },
   };
 };
 
@@ -73,7 +99,7 @@ export default function Layout({
     >
       <Sidebar
         cats={cats}
-        title={'components'}
+        title={'Components'}
         className={classes.sidebar}
         suffix={sidebarSuffix}
         hideCatTitle

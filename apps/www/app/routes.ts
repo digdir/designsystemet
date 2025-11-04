@@ -10,6 +10,11 @@ export default [
   route('/slack', 'routes/slack.tsx', {
     id: 'slack-redirect',
   }),
+  ...prefix('/schemas', [
+    route('/cli/:version', 'routes/cli-schema.tsx', {
+      id: 'schemas-cli',
+    }),
+  ]),
   layout('./layouts/root/layout.tsx', [
     ...prefix('/:lang', [
       index('routes/home/home.tsx', {
@@ -53,11 +58,14 @@ export default [
           }),
         ]),
       ]),
-      ...prefix('/components', [
-        route('/', 'routes/components/components.tsx', {
-          id: 'components',
+      route('/components', 'routes/components/components.tsx', {
+        id: 'components',
+      }),
+      layout('./layouts/components/layout.tsx', [
+        route('/changelog', 'routes/components/changelog.tsx', {
+          id: 'changelog-page',
         }),
-        layout('./layouts/components/layout.tsx', [
+        ...prefix('/components', [
           ...prefix(':component', [
             route('/*', 'routes/components/component.tsx', {
               id: 'components-page',

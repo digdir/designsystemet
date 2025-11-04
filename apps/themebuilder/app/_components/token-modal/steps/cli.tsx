@@ -16,7 +16,7 @@ export default function Cli({
   };
 }) {
   const { t } = useTranslation();
-  const { severityColors } = useThemebuilder();
+  const { severityColors, overrides } = useThemebuilder();
 
   const [formatWin, setFormatWin] = useState(
     navigator.userAgent.includes('Windows'),
@@ -25,6 +25,8 @@ export default function Cli({
   const severityHasChanged = severityColors
     .map((c) => c.isDefault)
     .includes(false);
+
+  const hasOverrides = Object.keys(overrides).length > 0;
 
   return (
     <>
@@ -36,6 +38,16 @@ export default function Cli({
           }}
         >
           {t('themeModal.cli.severity-warning')}
+        </Alert>
+      )}
+      {hasOverrides && (
+        <Alert
+          data-color='warning'
+          style={{
+            marginBottom: 'var(--ds-size-4)',
+          }}
+        >
+          {t('themeModal.cli.overrides-warning')}
         </Alert>
       )}
       <div className={classes.step}>

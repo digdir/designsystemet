@@ -43,6 +43,15 @@ Unngå å bruke samme tekst i både `label` og `legend`. Ha gjerne med en hjelpe
 ## Tilgjengelighet
 Sørg for at du alltid bruker en `legend` for å sikre god tilgjengelighet for skjermlesere og andre hjelpemidler. Dersom `legend` kun er for skjermleser, bruk hjelpeklassen `ds-sr-only`, da sørger vi for at det ikke blir en unødvendig toppmarg på elementet direkte under `legend`.
 
+### `Fieldset.Description`
+Denne blir ikke kodet som sammenkoblet til verker `<fieldset>` eller input-feltene.
+Dette er fordi vi ikke vil koble denne til `<fieldset>`, som da arver sine attributter til alle underliggende input-felter. For eksempel skal `disabled` satt på `<fieldset>`, også gjelde for alle underliggende `<input>`-element.
+Det er også forskjellig implementasjon av dette mellom nettlesere.
+
+En skjermleserbruker vil fortsatt kunne navigere seg til beskrivelsen.
+
+Vi vil heller ikke koble beskrivelsen til alle input-feltene, fordi da blir det samme lest opp for hvert felt, noe som kan bli veldig tungvint for brukeren.
+
 ## Referanser
 
 - [Providing a description for groups of form controls using fieldset and legend elements](https://www.w3.org/WAI/WCAG21/Techniques/html/H71)

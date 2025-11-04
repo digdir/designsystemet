@@ -8,8 +8,9 @@
   background-color: var(--ds-color-neutral-background-tinted);
   font-family: monospace;
   margin-bottom: 0;
+  line-height: 1.5;
 
-  & [class~='plain-text'] {
+  & :global(.token.plain) {
     color: var(--ds-color-neutral-text-default);
   }
   code {
