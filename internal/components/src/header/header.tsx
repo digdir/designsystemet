@@ -68,14 +68,14 @@ const Header = ({
   className,
   ...props
 }: HeaderProps) => {
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
   const { t } = useTranslation();
 
   const getNewLangPaths = () => {
     const pathWithoutLang = pathname.split('/').slice(2).join('/');
     return {
-      no: `/no/${pathWithoutLang}`,
-      en: `/en/${pathWithoutLang}`,
+      no: `/no/${pathWithoutLang}${search}`,
+      en: `/en/${pathWithoutLang}${search}`,
     };
   };
 
