@@ -33,9 +33,10 @@ import { Details, Card } from '@digdir/designsystemet-react';
 
 ## Eksempler
 
-### Ramme
+### Ramme og variant
 
 Dersom du legg `Details` som einaste barn av `Card` får du ramme rundt heile `Details`.
+Du kan også bruke `variant="tinted"` på enten `Details` eller `Card` for å få ein lysare bakgrunn. 
 
 <Story layout="block" story="InCardWithColor" />
 
@@ -48,10 +49,12 @@ Dersom du legg `Details` som einaste barn av `Card` får du ramme rundt heile `D
 ## HTML
 
 `Details` er bygd på web-komponenten [u-details (github.io)](https://u-elements.github.io/u-elements/elements/u-details), som du kan bruke.
-Den er ein bygd funksjonelt lik som `<details>`, men med betre tilgjengelegheit.
+Den er bygd funksjonelt lik som native-elementet `<details>`, men med betre tilgjengelegheit.
 
 Du bruker klassenavnet `.ds-details` på hovudelementet.
 Du kan velge å ikkje ha ein nøsta `<div>` rundt hovudinnhaldet, men har du denne får den `margin`.
+
+Dersom du vil bruke tinta variant, legg til attributtet `data-variant="tinted"` på hovudelementet eller `.ds-card`.
 
 ```html
 <!-- uten ramme -->
@@ -64,18 +67,6 @@ Du kan velge å ikkje ha ein nøsta `<div>` rundt hovudinnhaldet, men har du den
   </div>
 </u-details>
 
-<!-- uten u-elements -->
-<div class="ds-details">
-  <details class="ds-details">
-    <summary class="ds-details__summary">
-      Details heading text
-    </summary>
-    <div>
-      Details content
-    </div>
-  </details>
-</div>
-
 <!-- med ramme -->
 <div class="ds-card">
   <u-details class="ds-details">
@@ -86,6 +77,18 @@ Du kan velge å ikkje ha ein nøsta `<div>` rundt hovudinnhaldet, men har du den
       Details content
     </div>
   </u-details>
+</div>
+
+<!-- uten u-elements -->
+<div class="ds-details">
+  <details class="ds-details">
+    <summary class="ds-details__summary">
+      Details heading text
+    </summary>
+    <div>
+      Details content
+    </div>
+  </details>
 </div>
 ```
 
