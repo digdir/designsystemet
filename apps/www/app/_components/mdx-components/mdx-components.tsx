@@ -4,6 +4,7 @@ import {
   Details,
   DetailsContent,
   DetailsSummary,
+  Divider,
   Heading,
   Link,
   ListOrdered,
@@ -40,6 +41,7 @@ const defaultComponents = {
   DetailsContent,
   DetailsSummary,
   Card,
+  Divider,
   Table: (props: TableProps) => (
     <div className={classes.tableWrapper}>
       <Table {...props} />

@@ -35,6 +35,8 @@ export default {
     'step-two': 'Run the code snippet to generate CSS variables for code.',
     'severity-warning':
       'Note: Severity colors have changed in your theme. These will not be included if you use the CLI.',
+    'overrides-warning':
+      'Note: Color overrides have been added in your theme. These will not be included if you use the CLI.',
   },
   'max-X-colors': 'Maximum {count} colors allowed.',
   'severity-colors': 'Severity',

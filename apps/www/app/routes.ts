@@ -62,11 +62,9 @@ export default [
         id: 'components',
       }),
       layout('./layouts/components/layout.tsx', [
-        ...prefix('/changelog', [
-          route('/:package', 'routes/components/changelog.tsx', {
-            id: 'changelog-page',
-          }),
-        ]),
+        route('/changelog', 'routes/components/changelog.tsx', {
+          id: 'changelog-page',
+        }),
         ...prefix('/components', [
           ...prefix(':component', [
             route('/*', 'routes/components/component.tsx', {
