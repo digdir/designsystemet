@@ -45,11 +45,12 @@ export const meta = ({ data }: Route.MetaArgs) => {
       },
     ];
   const {
-    frontmatter: { title, description },
+    metadata: { title },
+    frontmatter,
   } = data;
   return generateMetadata({
     title,
-    description,
+    description: frontmatter.description,
   });
 };
 
