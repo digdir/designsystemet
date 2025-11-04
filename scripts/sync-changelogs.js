@@ -95,20 +95,9 @@ async function main() {
     }
   }
 
-  const sortedVersions = Array.from(allVersions.keys()).sort((a, b) => {
-    const aParts = a.split('.').map(Number);
-    const bParts = b.split('.').map(Number);
-    for (let i = 0; i < 3; i++) {
-      if (aParts[i] !== bParts[i]) {
-        return bParts[i] - aParts[i];
-      }
-    }
-    return 0;
-  });
-
   // Build consolidated changelog
   let consolidatedContent = '';
-  for (const version of sortedVersions) {
+  for (const version of Array.from(allVersions.keys())) {
     consolidatedContent += `<div style={{
   border: "1px solid var(--ds-color-neutral-border-subtle)",
   borderRadius: "var(--ds-border-radius-md)",
@@ -128,7 +117,7 @@ async function main() {
   }
 
   // Get latest version
-  const latestVersion = sortedVersions[0] || pkgs[0]?.version || '0.0.0';
+  const latestVersion = pkgs[0]?.version;
 
   // Write consolidated changelog
   const dst = path.join(WWW, 'changelog.mdx');
@@ -140,9 +129,6 @@ latestVersion: ${latestVersion}
 ${consolidatedContent}`;
 
   await fs.writeFile(dst, content, 'utf8');
-  console.log(
-    `Synced consolidated changelog with ${sortedVersions.length} versions`,
-  );
 }
 main().catch((e) => {
   console.error(e);
