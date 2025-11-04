@@ -50,6 +50,74 @@ body {
   min-height: 80svh;
 }
 
+@layer new-layout {
+  :root {
+    --max-content-width: 1920px;
+    --sidebar-left-width: 300px;
+    --sidebar-right-width: 300px;
+    --short-content-width: 700px;
+    --content-inline-padding: var(--ds-size-7);
+    --header-height: 75px;
+    @media screen and (max-width: 1500px) {
+      --sidebar-left-width: 200px;
+      --sidebar-right-width: 200px;
+    }
+  }
+  .l-sidebar-left {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    container-type: scroll-state;
+    container-name: sticky-nav;
+    border-right: 1px solid var(--ds-color-neutral-border-subtle);
+    top: 0;
+    overflow: auto;
+    /*@TODO: better solution for non-sticky header + sticky sidebar?*/
+    max-height: 100vh;
+    padding-top: var(--ds-size-6);
+    scrollbar-color: var(--ds-color-neutral-border-subtle) transparent;
+
+    overscroll-behavior: contain;
+    > nav {
+      margin-bottom: var(--header-height);
+    }
+
+    /* progressively dehance clunkyness if biome permits*/
+    /*@container sticky-nav scroll-state(stuck: none) {
+      nav {
+        margin-bottom: var(--header-height, 100px);
+      }
+    }
+    @container sticky-nav scroll-state(stuck: top) {
+      nav {
+        margin-bottom: 0;
+      }
+    }*/
+  }
+  .l-content-container {
+    container: content-container / inline-size;
+    width: 100%;
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    padding-inline: var(--content-inline-padding);
+    display: grid;
+    &:has(.l-sidebar-left) {
+      grid-template-columns: var(--sidebar-left-width) minmax(0, 1fr);
+      column-gap: 110px;
+      @media screen and (max-width: 1500px) {
+        column-gap: 48px;
+      }
+      @media screen and (max-width: 958px) {
+        display: block;
+        .l-sidebar-left {
+          border-right: initial;
+          position: static;
+        }
+      }
+    }
+  }
+}
+
 @layer normalize {
   * {
     box-sizing: border-box;
@@ -117,6 +185,11 @@ body {
 
     & > *:last-child {
       margin-bottom: 0;
+    }
+    &.left-adjusted {
+      > *:not(img, div, section, figure, table) {
+        max-width: var(--short-content-width);
+      }
     }
 
     & p {

@@ -1,9 +1,10 @@
 .header {
-  height: 100px;
+  height: var(--header-height, 100px);
   display: flex;
   align-items: center;
   position: relative;
   z-index: 5;
+  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
 
   [data-color-scheme='dark'] &,
   [data-color-scheme='auto'] & {
@@ -19,7 +20,9 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 0 var(--ds-size-8);
+    max-width: var(--max-content-width);
+    padding: 0 var(--content-inline-padding, var(--ds-size-8));
+    margin: 0 auto;
 
     & nav {
       display: flex;

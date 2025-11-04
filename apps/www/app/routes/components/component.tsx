@@ -141,11 +141,13 @@ export default function Components({
             </Heading>
             <Paragraph>{frontmatter.subtitle}</Paragraph>
           </div>
-          <img
-            src={'/img/component-previews/' + frontmatter.image}
-            alt={frontmatter.title}
-            aria-hidden='true'
-          />
+          <div className={classes.imageContainer}>
+            <img
+              src={'/img/component-previews/' + frontmatter.image}
+              alt={frontmatter.title}
+              aria-hidden='true'
+            />
+          </div>
         </div>
         <div className={classes.headerBottom}>
           <Button asChild variant='tertiary'>
@@ -169,7 +171,7 @@ export default function Components({
         items={toc}
       />
 
-      <div className={cl(classes.content, 'u-rich-text')}>
+      <div className={cl(classes.content, 'u-rich-text', 'left-adjusted')}>
         {mdxCode ? (
           <MDXComponents
             code={mdxCode}

@@ -13,10 +13,6 @@
   list-style: none;
 }
 
-.listGroupCompact {
-  margin-bottom: var(--ds-size-4);
-}
-
 .innerList {
   margin: 0 0 0 2px;
   display: flex;
@@ -70,16 +66,11 @@
   }
 }
 
-.linkCompact {
-  margin-top: 0;
-  border-left: 1px solid var();
-}
-
 .toggleBtn {
   display: none;
 }
 
-@media (max-width: 958.98px) {
+@media (max-width: 958px) {
   .menu {
     display: none;
     margin-top: var(--ds-size-7);
@@ -88,6 +79,7 @@
   .toggleBtn {
     display: block;
     margin-bottom: var(--ds-size-2);
+    width: fit-content;
   }
 
   .activeMenu {

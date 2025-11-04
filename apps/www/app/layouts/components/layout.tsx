@@ -1,5 +1,5 @@
 import { join } from 'node:path';
-import { ContentContainer } from '@internal/components';
+import cl from 'clsx';
 import { Outlet } from 'react-router';
 import { Sidebar } from '~/_components/sidebar/sidebar';
 import {
@@ -99,20 +99,20 @@ export default function Layout({
   loaderData: { cats, sidebarSuffix },
 }: Route.ComponentProps) {
   return (
-    <ContentContainer
-      className={classes['sidebar-container']}
+    <div
+      className={cl(classes['components-container'], 'l-content-container')}
       data-color='neutral'
     >
       <Sidebar
         cats={cats}
         title={'Components'}
-        className={classes.sidebar}
+        className={cl(classes.sidebar, 'l-sidebar-left')}
         suffix={sidebarSuffix}
         hideCatTitle
       />
       <div className={classes.content}>
         <Outlet />
       </div>
-    </ContentContainer>
+    </div>
   );
 }

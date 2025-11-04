@@ -1,9 +1,7 @@
 .table-of-contents {
   position: sticky;
   top: var(--ds-size-6);
-  max-width: 220px;
   padding: var(--ds-size-4);
-  background-color: var(--ds-color-neutral-background-tinted);
   border-radius: var(--ds-border-radius-lg);
 
   > h2 {
@@ -17,7 +15,7 @@
     border-inline-start: 1px solid var(--ds-color-neutral-border-subtle);
     display: flex;
     flex-direction: column;
-    gap: var(--ds-size-2);
+    gap: var(--ds-size-1);
     > li {
       > a {
         color: inherit;
@@ -25,7 +23,8 @@
         position: relative;
         text-decoration: none;
         padding-inline-start: var(--ds-size-4);
-        border-radius: var(--ds-border-radius-md);
+        border-radius: var(--ds-border-radius-sm);
+        padding-block: 3px;
 
         /*It needs to be decided if level 3 should be included
         and if so, how to style it. This is just placeholder*/
@@ -40,7 +39,8 @@
 
         &[aria-current='true'] {
           font-weight: 500;
-          margin-inline-end: -3px; /*prevents line break due to bolder text*/
+          margin-inline-end: -2px; /*prevents line break due to bolder text*/
+          background-color: var(--ds-color-neutral-background-tinted);
           &::before {
             content: '';
             width: 3px;
