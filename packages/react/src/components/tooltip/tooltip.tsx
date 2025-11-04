@@ -194,10 +194,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         : 'popovertargetaction']: 'show',
     };
 
-    const ariaDescribedOrLabel =
-      triggerRef.current?.innerText.trim() === ''
-        ? { 'aria-labelledby': id ?? randomTooltipId }
-        : { 'aria-describedby': id ?? randomTooltipId };
+    const autoType = `aria-${triggerRef.current?.innerText.trim() ? 'describedby' : 'labelledby'}`;
 
     return (
       <>
@@ -208,7 +205,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
           onMouseLeave={setClose}
           onFocus={setOpen}
           onBlur={setClose}
-          {...(!type ? ariaDescribedOrLabel : { [type]: 'id' })}
+          {...{ [type ? 'aria-' + type : autoType]: id ?? randomTooltipId }}
         >
           {children}
         </ChildContainer>
