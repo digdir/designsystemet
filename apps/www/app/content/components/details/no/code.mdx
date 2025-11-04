@@ -4,20 +4,92 @@ image: Details.svg
 cssfile: details
 ---
 
-## Eksempler
-
-### Standard
+## Bruk
 
 <Story layout="block" story="Preview" />
 
-### I Card
+<ReactComponentDocs />
 
-<Story layout="block" story="InCard" />
+```tsx
+/* Utan ramme */
+import { Details } from '@digdir/designsystemet-react';
 
-### Med farger
+<Details>
+  <Details.Summary>Details heading text</Details.Summary>
+  <Details.Content>Details content</Details.Content>
+</Details>
+
+/* Med ramme */
+
+import { Details, Card } from '@digdir/designsystemet-react';
+
+<Card>
+  <Details>
+    <Details.Summary>Details heading text</Details.Summary>
+    <Details.Content>Details content</Details.Content>
+  </Details>
+</Card>
+```
+
+## Eksempler
+
+### Ramme
+
+Dersom du legg `Details` som einaste barn av `Card` får du ramme rundt heile `Details`.
 
 <Story layout="block" story="InCardWithColor" />
 
 ### Kontrollert
 
+`Details` held sjølv styr på om den er open eller lukka, men dette kan òg kontrollerast utanfrå.
+
 <Story layout="block" story="Controlled" />
+
+## HTML
+
+`Details` er bygd på web-komponenten [u-details (github.io)](https://u-elements.github.io/u-elements/elements/u-details), som du kan bruke.
+Den er ein bygd funksjonelt lik som `<details>`, men med betre tilgjengelegheit.
+
+Du bruker klassenavnet `.ds-details` på hovudelementet.
+Du kan velge å ikkje ha ein nøsta `<div>` rundt hovudinnhaldet, men har du denne får den `margin`.
+
+```html
+<!-- uten ramme -->
+<u-details class="ds-details">
+  <u-summary class="ds-details__summary">
+    Details heading text
+  </u-summary>
+  <div>
+    Details content
+  </div>
+</u-details>
+
+<!-- uten u-elements -->
+<div class="ds-details">
+  <details class="ds-details">
+    <summary class="ds-details__summary">
+      Details heading text
+    </summary>
+    <div>
+      Details content
+    </div>
+  </details>
+</div>
+
+<!-- med ramme -->
+<div class="ds-card">
+  <u-details class="ds-details">
+    <u-summary class="ds-details__summary">
+      Details heading text
+    </u-summary>
+    <div>
+      Details content
+    </div>
+  </u-details>
+</div>
+```
+
+## CSS variabler og data-attributter
+<CssVariables />
+
+<CssAttributes />
