@@ -26,6 +26,12 @@ async function findPackages() {
 }
 
 function parseChangelog(content, packageName) {
+  // Truncate content at "## 0.101.0" - This is the first entry after version 1
+  const cutoffIndex = content.indexOf('## 0.101.0');
+  if (cutoffIndex !== -1) {
+    content = content.substring(0, cutoffIndex);
+  }
+
   // Remove "# Change Log" header
   const cleaned = content.replace(/^#\s+Change Log\s*\n*/i, '');
 
@@ -89,7 +95,6 @@ async function main() {
     }
   }
 
-  // Sort versions in descending order
   const sortedVersions = Array.from(allVersions.keys()).sort((a, b) => {
     const aParts = a.split('.').map(Number);
     const bParts = b.split('.').map(Number);
@@ -104,14 +109,22 @@ async function main() {
   // Build consolidated changelog
   let consolidatedContent = '';
   for (const version of sortedVersions) {
-    consolidatedContent += `## ${version}\n\n`;
+    consolidatedContent += `<div style={{
+  border: "1px solid var(--ds-color-neutral-border-subtle)",
+  borderRadius: "var(--ds-border-radius-md)",
+  padding: "var(--ds-size-5)",
+  marginBottom: "var(--ds-size-4)"
+  }}
+>\n\n## ${version}\n\n`;
     const packages = allVersions.get(version);
 
     for (const [pkgName, content] of packages) {
       if (content) {
-        consolidatedContent += `### ${pkgName}\n\n${content}\n\n`;
+        consolidatedContent += `<Divider/>\n\n### ${pkgName}\n\n${content}\n\n`;
       }
     }
+
+    consolidatedContent += `</div>\n\n`;
   }
 
   // Get latest version
