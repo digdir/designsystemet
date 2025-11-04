@@ -1,4 +1,4 @@
-import type { ConfigSchemaTheme } from '@digdir/designsystemet';
+import type { ConfigSchema } from '@digdir/designsystemet';
 
 const QUERY_SEPARATOR = ' ';
 
@@ -6,7 +6,7 @@ const QUERY_SEPARATOR = ' ';
  * Converts a theme config object to a themebuilder URL with query parameters
  */
 export function configThemeToUrl(
-  theme: ConfigSchemaTheme,
+  theme: ConfigSchema['themes']['default'],
   lang = 'no',
 ): string {
   const params = new URLSearchParams();
