@@ -112,6 +112,7 @@ export default {
     'admin-display': 'Here you can manage display',
     'dark-mode': 'Dark mode',
     'display-mode': 'Display mode',
+    'select-color': 'Choose colour',
   },
   themeModal,
   examples: {
@@ -171,5 +172,10 @@ export default {
     medium: 'Medium',
     large: 'Large',
     full: 'Full',
+  },
+  overrides: {
+    heading: 'Color Overrides',
+    description:
+      'Override specific token colors for light and dark modes. Make sure to check contrasts after changes.',
   },
 } satisfies typeof no;
