@@ -32,7 +32,6 @@
   }
 
   &[data-variant='outline'] {
-    --dsc-tag-background: transparent;
     --dsc-tag-border-color: var(--ds-color-border-subtle);
   }
 
