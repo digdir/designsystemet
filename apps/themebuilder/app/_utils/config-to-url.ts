@@ -41,6 +41,28 @@ export function configThemeToUrl(
     params.set('severity-enabled', 'true');
   }
 
+  // Convert color overrides to URL params
+  if (theme.overrides?.colors) {
+    // patterns: <colorname>|<tokenname>|<mode>:<hex>
+    const colorOverrides = Object.entries(theme.overrides.colors)
+      .map(([colorName, tokenObj]) =>
+        Object.entries(tokenObj)
+          .map(([tokenname, modeObj]) => {
+            let paramStr = `${colorName}|${tokenname}`;
+            if (modeObj.light) {
+              paramStr += `|light:${modeObj.light}`;
+            }
+            if (modeObj.dark) {
+              paramStr += `|dark:${modeObj.dark}`;
+            }
+            return paramStr;
+          })
+          .join(QUERY_SEPARATOR),
+      )
+      .join(QUERY_SEPARATOR);
+    params.set('color-overrides', colorOverrides);
+  }
+
   // Convert border radius
   if (theme.borderRadius !== undefined) {
     params.set('border-radius', theme.borderRadius.toString());
