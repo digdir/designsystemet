@@ -1,7 +1,6 @@
 .table-of-contents {
   position: sticky;
   top: var(--ds-size-6);
-  padding: var(--ds-size-4);
   border-radius: var(--ds-border-radius-lg);
 
   > h2 {
@@ -12,7 +11,6 @@
     margin: 0;
     padding: 0;
     list-style-type: none;
-    border-inline-start: 1px solid var(--ds-color-neutral-border-subtle);
     display: flex;
     flex-direction: column;
     gap: var(--ds-size-1);

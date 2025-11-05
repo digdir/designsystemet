@@ -7,6 +7,7 @@ import {
   Heading,
   Paragraph,
 } from '@digdir/designsystemet-react';
+import { PencilLineIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import type { ComponentType, ReactNode } from 'react';
 import type { ComponentDoc } from 'react-docgen-typescript';
@@ -175,7 +176,22 @@ export default function Components({
         className={classes.tableOfContents}
         title={frontmatter.title || ''}
         items={toc}
-      />
+      >
+        <div className={classes.feedback}>
+          <Paragraph data-size='sm'>
+            {t(
+              'component.feedback.text',
+              'Har du innspill til komponentent? Gi oss tilbakemelding på Github',
+            )}
+          </Paragraph>
+          <Button data-size='sm' variant='secondary' asChild>
+            <a href='#'>
+              <PencilLineIcon aria-hidden />{' '}
+              {t('component.feedback.link', 'Send innspill')}
+            </a>
+          </Button>
+        </div>
+      </TableOfContents>
 
       <div className={cl(classes.content, 'u-rich-text', 'left-adjusted')}>
         {mdxCode ? (
