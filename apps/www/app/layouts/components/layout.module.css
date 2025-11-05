@@ -26,6 +26,7 @@
     margin-bottom: var(--ds-size-4);
   }
   @media screen and (max-width: 1279px) {
+    margin-top: 0;
     grid-template-areas:
       'header header'
       'content content';

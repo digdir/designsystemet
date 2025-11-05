@@ -141,7 +141,13 @@ export default function Components({
             </Heading>
             <Paragraph>{frontmatter.subtitle}</Paragraph>
           </div>
-          <div className={classes.imageContainer}>
+          <div
+            className={classes.imageContainer}
+            aria-hidden='true'
+            data-color='accent'
+          >
+            <div className={classes.decorator}></div>
+            <div className={classes.decorator}></div>
             <img
               src={'/img/component-previews/' + frontmatter.image}
               alt={frontmatter.title}
