@@ -42,57 +42,6 @@
   align-items: center;
   gap: var(--ds-size-8);
 }
-.imageContainer {
-  width: 100%;
-  aspect-ratio: 52 / 19;
-  display: grid;
-  place-items: center;
-  position: relative;
-  container-type: size;
-
-  border-radius: 16px;
-  background-color: var(--ds-color-surface-tinted);
-  overflow: clip;
-  img {
-    isolation: isolate;
-    height: 60cqh;
-  }
-}
-.decorator {
-  --sq-border-w: 2.5cqh;
-  --sq-w: 56cqh;
-  --sq-spacing: 15cqh;
-  transform-origin: top left;
-  position: absolute;
-  rotate: 45deg;
-  top: 13cqh;
-  left: calc(var(--sq-border-w) * -1);
-  width: var(--sq-w);
-  aspect-ratio: 1;
-  outline: var(--sq-border-w) solid var(--ds-color-surface-active);
-  border-radius: 3cqh;
-  &::after {
-    position: absolute;
-    top: 0;
-    left: calc(100% + var(--sq-spacing));
-    content: '';
-    width: var(--sq-w);
-    outline: inherit;
-    border-radius: inherit;
-    aspect-ratio: inherit;
-  }
-  &:nth-of-type(2) {
-    transform-origin: bottom right;
-    left: unset;
-    top: unset;
-    bottom: 13cqh;
-    right: calc(var(--sq-border-w) * -1);
-    &::after {
-      right: calc(100% + var(--sq-spacing));
-      left: unset;
-    }
-  }
-}
 
 .headerText {
   max-width: var(--short-content-width);
@@ -125,7 +74,7 @@
   .headerUpper {
     display: block;
   }
-  .imageContainer {
+  .iconFrame {
     width: 100%;
     max-width: var(--short-content-width);
     margin-top: var(--ds-size-8);

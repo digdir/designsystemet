@@ -13,6 +13,7 @@ import type { ComponentType, ReactNode } from 'react';
 import type { ComponentDoc } from 'react-docgen-typescript';
 import { useTranslation } from 'react-i18next';
 import { NavLink, redirect, useRouteLoaderData } from 'react-router';
+import { IconFrame } from '~/_components/component-icon-frame/component-icon-frame';
 import {
   CssAttributes,
   getAttributes,
@@ -142,19 +143,13 @@ export default function Components({
             </Heading>
             <Paragraph>{frontmatter.subtitle}</Paragraph>
           </div>
-          <div
-            className={classes.imageContainer}
-            aria-hidden='true'
-            data-color='accent'
-          >
-            <div className={classes.decorator}></div>
-            <div className={classes.decorator}></div>
+          <IconFrame className={classes.iconFrame} data-color='accent'>
             <img
               src={'/img/component-previews/' + frontmatter.image}
               alt={frontmatter.title}
               aria-hidden='true'
             />
-          </div>
+          </IconFrame>
         </div>
         <div className={classes.headerBottom}>
           <Button asChild variant='tertiary'>
