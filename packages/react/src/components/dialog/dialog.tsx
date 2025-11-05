@@ -102,7 +102,7 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
         if (event.defaultPrevented) return; // Skip if default action is prevented
         const { clientY: y, clientX: x, target } = event as MouseEvent;
         /* Check if clicked element or its closest parent has data-command='close' */
-        if (target instanceof Element) {
+        if (target instanceof Element && event.type === 'click') {
           const closeElement = target.closest('[data-command="close"]');
           if (closeElement) return dialog?.close();
         }
