@@ -54,6 +54,8 @@ export default {
     'validation-success': 'Konfigurasjonen er gyldig! Velg et tema nedenfor.',
     'no-themes': 'Ingen temaer funnet i konfigurasjonen',
     'edit-theme': 'Rediger tema',
+    button: 'Fortsett fra konfigurasjonsfil',
+    'dialog-heading': 'Lim inn config',
   },
   tabs: {
     overview: 'Oversikt',

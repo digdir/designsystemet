@@ -1,7 +1,12 @@
-import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
+import {
+  Button,
+  Dialog,
+  Heading,
+  Paragraph,
+} from '@digdir/designsystemet-react';
 import { ContentContainer } from '@internal/components';
 import { BookIcon, PaletteIcon } from '@navikt/aksel-icons';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
 import { ConfigPaste } from '~/_components/config-paste/config-paste';
@@ -36,6 +41,8 @@ export const meta: Route.MetaFunction = ({ data }: Route.MetaArgs) => {
 
 export default function Home({ params: { lang } }: Route.ComponentProps) {
   const { t } = useTranslation();
+
+  const configPasteDialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
     window.addEventListener('scroll', isSticky);
@@ -82,12 +89,28 @@ export default function Home({ params: { lang } }: Route.ComponentProps) {
                 {t('themeBuilder.documentation')}
               </Link>
             </Button>
+            <Button
+              onClick={() => configPasteDialogRef.current?.showModal()}
+              className={classes.configButton}
+              variant='tertiary'
+            >
+              {t('configPaste.button')}
+            </Button>
           </div>
         </div>
         <Previews />
-        <div className={classes.configSection}>
-          <ConfigPaste />
-        </div>
+        <Dialog
+          ref={configPasteDialogRef}
+          closedby='any'
+          className={classes.configDialog}
+        >
+          <Dialog.Block>
+            <Heading level={2}>{t('configPaste.dialog-heading')}</Heading>
+          </Dialog.Block>
+          <Dialog.Block>
+            <ConfigPaste />
+          </Dialog.Block>
+        </Dialog>
       </ContentContainer>
     </main>
   );

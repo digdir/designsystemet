@@ -55,6 +55,8 @@ export default {
     'validation-success': 'Config is valid! Select a theme below.',
     'no-themes': 'No themes found in config',
     'edit-theme': 'Edit theme',
+    button: 'Continue from config file',
+    'dialog-heading': 'Paste config',
   },
   tabs: {
     overview: 'Overview',

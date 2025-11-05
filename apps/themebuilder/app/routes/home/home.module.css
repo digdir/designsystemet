@@ -43,6 +43,7 @@ div[data-color-scheme='dark'][data-theme='two'] .main {
   align-items: center;
   justify-content: center;
   margin-top: var(--ds-size-7);
+  flex-wrap: wrap;
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
@@ -54,8 +55,11 @@ div[data-color-scheme='dark'][data-theme='two'] .main {
   font-weight: 600;
 }
 
-.configSection {
-  margin-top: var(--ds-size-12);
-  margin-left: auto;
-  margin-right: auto;
+.configButton {
+  display: block;
+}
+
+.configDialog {
+  width: 90vw;
+  max-width: 1200px;
 }

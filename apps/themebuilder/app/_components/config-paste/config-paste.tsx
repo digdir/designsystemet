@@ -1,5 +1,11 @@
 import { type ConfigSchema, configSchema } from '@digdir/designsystemet';
-import { Button, Paragraph, Textfield } from '@digdir/designsystemet-react';
+import {
+  Button,
+  Paragraph,
+  Textfield,
+  ValidationMessage,
+} from '@digdir/designsystemet-react';
+import { PencilIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router';
@@ -58,6 +64,7 @@ export function ConfigPaste() {
           placeholder={t('configPaste.placeholder')}
           rows={15}
           error={error ? error : undefined}
+          autoFocus
         />
       </div>
 
@@ -74,6 +81,7 @@ export function ConfigPaste() {
             }}
             variant='secondary'
             data-size='sm'
+            data-command='close'
           >
             {t('colorPane.cancel')}
           </Button>
@@ -82,15 +90,11 @@ export function ConfigPaste() {
 
       {validatedConfig && themes.length > 0 && (
         <>
-          <Paragraph
-            data-size='sm'
-            style={{ color: 'var(--ds-color-success-text-default)' }}
-          >
+          <ValidationMessage data-color='success'>
             {t('configPaste.validation-success')}
-          </Paragraph>
+          </ValidationMessage>
           <div>
             <Paragraph
-              data-size='sm'
               style={{ fontWeight: 500, marginBottom: 'var(--ds-size-2)' }}
             >
               {t('configPaste.select-theme')}
@@ -99,7 +103,9 @@ export function ConfigPaste() {
               {themes.map(([themeName, themeConfig]) => (
                 <div key={themeName} className={classes.themeItem}>
                   <div>
-                    <div className={classes.themeName}>{themeName}</div>
+                    <Paragraph className={classes.themeName}>
+                      {themeName}
+                    </Paragraph>
                     <div className={classes.colorPreview}>
                       {themeConfig.colors.main &&
                         Object.values(themeConfig.colors.main)
@@ -121,10 +127,27 @@ export function ConfigPaste() {
                           title={themeConfig.colors.neutral}
                         />
                       )}
+                      {themeConfig.colors?.support &&
+                        Object.values(themeConfig.colors.support)
+                          .slice(0, 3)
+                          .map((color, idx) => (
+                            <div
+                              key={idx}
+                              className={classes.colorDot}
+                              style={{ backgroundColor: color }}
+                              title={color}
+                            />
+                          ))}
                     </div>
                   </div>
-                  <Button asChild data-size='sm' variant='secondary'>
+                  <Button
+                    asChild
+                    data-size='sm'
+                    variant='secondary'
+                    aria-label={`${t('configPaste.edit-theme')} ${themeName}`}
+                  >
                     <Link to={configThemeToUrl(themeConfig, lang || 'no')}>
+                      <PencilIcon aria-hidden='true' />
                       {t('configPaste.edit-theme')}
                     </Link>
                   </Button>
