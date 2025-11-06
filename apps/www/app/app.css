@@ -52,7 +52,8 @@ body {
 
 @layer new-layout {
   :root {
-    --max-content-width: 1920px;
+    --max-page-width: 1920px;
+    --max-content-width: 1300px;
     --sidebar-left-width: 300px;
     --sidebar-right-width: 300px;
     --short-content-width: 700px;
@@ -97,11 +98,12 @@ body {
   .l-content-container {
     container: content-container / inline-size;
     width: 100%;
-    max-width: var(--max-content-width);
+    max-width: calc(var(--max-content-width) + (var(--content-inline-padding) * 2));
     margin: 0 auto;
     padding-inline: var(--content-inline-padding);
     display: grid;
     &:has(.l-sidebar-left) {
+      max-width: var(--max-page-width);
       grid-template-columns: var(--sidebar-left-width) minmax(0, 1fr);
       column-gap: 110px;
       @media screen and (max-width: 1500px) {
