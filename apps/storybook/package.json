@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "storybook dev -p 6006",
+    "dev": "storybook dev -p 6006 --disable-telemetry",
     "build": "storybook build -o ./dist --stats-json --disable-telemetry",
     "test-storybook": "pnpm exec playwright install --with-deps chromium && vitest",
     "chromatic": "pnpx chromatic",
