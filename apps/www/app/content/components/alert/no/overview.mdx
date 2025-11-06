@@ -5,19 +5,18 @@ cssfile: alert
 subtitle: Brukes til å gi brukeren informasjon som det er ekstra viktig at de ser og forstår. Komponenten er designet for å fange brukernes oppmerksomhet. Teksten i varselet skal være kort og tydelig.
 ---
 
+<Story story="Preview" />
+
 **Bruk `Alert` når**
-- du skal gi korte og informative tidsbegrensede varsler
-- du skal informere om feil som kun påvirker én del av systemet eller en mindre funksjon
-- du skal informere om tilkoblingsproblemer eller API-feil som sannsynligvis løser seg ved å laste inn siden på nytt
+- det er korte og informative tidsbegrensede varsler
+- det er informasjon om feil som kun påvirker én del av systemet eller en mindre funksjon
+- informasjonen er om tilkoblingsproblemer eller API-feil som sannsynligvis løser seg ved å laste inn siden på nytt
 
 **Unngå `Alert` når**
 - du skal validere individuelle skjemaelementer, bruk heller komponentens egen feilmelding (Se [`ValidationMessage`](/no/components/validation-message/overview))
 - du skal oppsummere flere feilmeldinger i et skjema, bruk heller [`ErrorSummary`](/docs/komponenter-errorsummary--docs)
 - du skal vise feil som hindrer all videre bruk av tjenesten, bruk heller en feilside
 - du skal vise statisk informasjon som skal vises hele tiden, bruk heller [`Card`](/docs/komponenter-card--docs)
-
-
-<Story story="Preview" />
 
 ## Eksempel
 
