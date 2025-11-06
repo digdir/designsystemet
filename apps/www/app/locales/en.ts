@@ -85,6 +85,7 @@ export default {
       Code: 'Kode',
       About: 'About',
       components: 'Components',
+      getStarted: 'Getting Started',
     },
     items: {
       Introduction: 'Introduction',
@@ -128,10 +129,14 @@ export default {
     title: 'Components',
     description:
       'Designsystemet contains basic components that can be combined in many different ways and in various patterns.',
+    changelog: {
+      title: 'Changelog',
+    },
   },
   component: {
     overview: 'Overview',
     code: 'Code',
+    accessibility: 'Accessibility',
   },
   patterns: {
     meta: {

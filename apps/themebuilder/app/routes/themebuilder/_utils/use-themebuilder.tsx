@@ -15,6 +15,11 @@ export type ColorTheme = {
   name: string;
   colors: ThemeInfo;
   hex?: string;
+  overrides?: Record<string, { light?: CssColor; dark?: CssColor }>;
+  variables?: {
+    light: Record<string, string>;
+    dark: Record<string, string>;
+  };
 };
 
 export type SeverityColorTheme = {
@@ -22,6 +27,7 @@ export type SeverityColorTheme = {
   colors: ThemeInfo;
   hex: CssColor;
   isDefault: boolean;
+  overrides?: Record<string, { light?: CssColor; dark?: CssColor }>;
   variables: {
     light: Record<string, string>;
     dark: Record<string, string>;
@@ -37,6 +43,7 @@ export const useThemebuilder = () => {
     severityEnabled,
     colorScheme,
     baseBorderRadius,
+    overrides,
     tab,
   } = useLoaderData<Route.ComponentProps['loaderData']>();
 
@@ -46,6 +53,7 @@ export const useThemebuilder = () => {
     severityEnabled,
     colorScheme,
     baseBorderRadius,
+    overrides,
     tab,
   };
 };
@@ -57,6 +65,7 @@ export function createColorsFromQuery(colors: string | null) {
     return {
       name,
       hex,
+      overrides: {},
       ...createColorsAndVariables(hex as CssColor),
     };
   });
@@ -119,4 +128,101 @@ export function createSeverityColorsFromQuery(
   }
 
   return severityColors;
+}
+
+export function parseColorOverrides(
+  overridesParam: string | null,
+): Record<string, Record<string, { light?: CssColor; dark?: CssColor }>> {
+  if (!overridesParam) return {};
+
+  const result: Record<
+    string,
+    Record<string, { light?: CssColor; dark?: CssColor }>
+  > = {};
+
+  try {
+    // TODO: validate this using cli
+    const entries = overridesParam.split(QUERY_SEPARATOR);
+
+    for (const entry of entries) {
+      const parts = entry.split('|');
+      if (parts.length < 2) continue;
+
+      const [colorName, tokenName, ...modeParts] = parts;
+
+      if (!result[colorName]) {
+        result[colorName] = {};
+      }
+
+      if (!result[colorName][tokenName]) {
+        result[colorName][tokenName] = {};
+      }
+
+      for (const modePart of modeParts) {
+        const [mode, hex] = modePart.split(':');
+        if (mode === 'light' || mode === 'dark') {
+          result[colorName][tokenName][mode] = hex as CssColor;
+        }
+      }
+    }
+  } catch (error) {
+    console.error('Error parsing color overrides:', error);
+  }
+
+  return result;
+}
+
+export function applyOverridesToColors(
+  colors: ColorTheme[],
+  overrides: Record<
+    string,
+    Record<string, { light?: CssColor; dark?: CssColor }>
+  >,
+): ColorTheme[] {
+  return colors.map((color) => {
+    const colorOverrides = overrides[color.name];
+    if (colorOverrides && Object.keys(colorOverrides).length > 0) {
+      // Apply overrides to variables
+      const updatedVariables = {
+        light: { ...(color.variables?.light || {}) },
+        dark: { ...(color.variables?.dark || {}) },
+      };
+
+      // Update variables with overrides
+      for (const [tokenName, override] of Object.entries(colorOverrides)) {
+        // CSS variables are created without the color name
+        const varName = `--ds-color-${tokenName}`;
+        if (override.light) {
+          updatedVariables.light[varName] = override.light;
+        }
+        if (override.dark) {
+          updatedVariables.dark[varName] = override.dark;
+        }
+      }
+
+      for (const [tokenName, override] of Object.entries(colorOverrides)) {
+        if (override.light) {
+          const lightColor = color.colors.light.find(
+            (c) => c.name === tokenName,
+          );
+          if (lightColor) {
+            lightColor.hex = override.light;
+          }
+        }
+        if (override.dark) {
+          const darkColor = color.colors.dark.find((c) => c.name === tokenName);
+          if (darkColor) {
+            darkColor.hex = override.dark;
+          }
+        }
+      }
+
+      return {
+        ...color,
+        overrides: colorOverrides,
+        variables: updatedVariables,
+      };
+    }
+    return color;
+  });
 }

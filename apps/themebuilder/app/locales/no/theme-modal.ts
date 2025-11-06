@@ -31,6 +31,8 @@ export default {
     'step-two': 'Kjør kodesnutten for å generere CSS variabler til kode.',
     'severity-warning':
       'Merk: Severity farger er endret i temaet ditt. Disse vil ikke komme med dersom du bruker CLI.',
+    'overrides-warning':
+      'Merk: Fargeoverstyringer er lagt til i temaet ditt. Disse vil ikke komme med dersom du bruker CLI.',
   },
   'max-X-colors': 'Maks {count} farger tillatt.',
   'severity-colors': 'Severity',

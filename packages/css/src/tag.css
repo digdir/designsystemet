@@ -3,10 +3,16 @@
   --dsc-tag-color: var(--ds-color-text-default);
   --dsc-tag-min-height: var(--ds-size-8);
   --dsc-tag-padding: 0 var(--ds-size-2);
+  --dsc-tag-border-width: var(--ds-border-width-default);
+  --dsc-tag-border-color: transparent;
+  --dsc-tag-border-style: solid;
 
   align-items: center;
   background: var(--dsc-tag-background);
   border-radius: var(--ds-border-radius-sm);
+  border-width: var(--dsc-tag-border-width);
+  border-color: var(--dsc-tag-border-color);
+  border-style: var(--dsc-tag-border-style);
   box-sizing: border-box;
   color: var(--dsc-tag-color);
   height: fit-content; /* In case placed in display: flex */
@@ -25,6 +31,10 @@
 
   &:not([hidden]) {
     display: inline-flex;
+  }
+
+  &[data-variant='outline'] {
+    --dsc-tag-border-color: var(--ds-color-border-subtle);
   }
 
   @media (forced-colors: active) {

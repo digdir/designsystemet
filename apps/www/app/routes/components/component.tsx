@@ -11,7 +11,7 @@ import cl from 'clsx/lite';
 import type { ComponentType, ReactNode } from 'react';
 import type { ComponentDoc } from 'react-docgen-typescript';
 import { useTranslation } from 'react-i18next';
-import { NavLink, useRouteLoaderData } from 'react-router';
+import { NavLink, redirect, useRouteLoaderData } from 'react-router';
 import {
   CssAttributes,
   getAttributes,
@@ -43,20 +43,29 @@ export { ErrorBoundary } from '~/root';
 export const loader = async ({ params, request }: Route.LoaderArgs) => {
   const { component, lang } = params;
 
-  if (process.env.APP_ENV === 'production') {
-    throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
-  }
-
   if (!component) {
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
   }
 
-  if (!request.url.includes('code') && !request.url.includes('overview')) {
+  if (
+    !request.url.includes('code') &&
+    !request.url.includes('overview') &&
+    !request.url.includes('accessibility')
+  ) {
+    if (
+      request.url.endsWith(`/${component}`) ||
+      request.url.endsWith(`/${component}/`)
+    ) {
+      return redirect(`/${lang}/components/${component}/overview`);
+    }
+
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
   }
 
-  const isOverviewPage =
-    request.url.endsWith('/overview') || request.url.endsWith('/overview/');
+  const trimmedUrl = request.url.endsWith('/')
+    ? request.url.slice(0, -1)
+    : request.url;
+  const compPage = trimmedUrl.split('/').pop();
 
   const componentDocs = getComponentDocs(component);
 
@@ -68,12 +77,7 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   const doDontEntries = extractStories(componentDir, true);
 
   const mdxSource = getFileFromContentDir(
-    join(
-      'components',
-      component,
-      lang,
-      `${isOverviewPage ? 'overview' : 'code'}.mdx`,
-    ),
+    join('components', component, lang, `${compPage}.mdx`),
   );
 
   const result = await generateFromMdx(mdxSource);
@@ -117,8 +121,9 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     navigation: {
       overviewLink: `/${lang}/components/${component}/overview`,
       codeLink: `/${lang}/components/${component}/code`,
+      accessibilityLink: `/${lang}/components/${component}/accessibility`,
     },
-    githubLink: `https://github.com/digdir/designsystemet/tree/main/apps/www/app/content/components/${component}/${lang}/${isOverviewPage ? 'overview' : 'code'}.mdx`,
+    githubLink: `https://github.com/digdir/designsystemet/tree/main/apps/www/app/content/components/${component}/${lang}/${compPage}.mdx`,
   };
 };
 
@@ -150,6 +155,11 @@ export default function Components({
           </Button>
           <Button asChild variant='tertiary'>
             <NavLink to={navigation.codeLink}>{t('component.code')}</NavLink>
+          </Button>
+          <Button asChild variant='tertiary'>
+            <NavLink to={navigation.accessibilityLink}>
+              {t('component.accessibility')}
+            </NavLink>
           </Button>
         </div>
       </div>

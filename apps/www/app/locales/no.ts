@@ -84,6 +84,7 @@ export default {
       Code: 'Kode',
       About: 'Om',
       components: 'Komponenter',
+      getStarted: 'Kom i gang',
     },
     items: {
       Introduction: 'Introduksjon',
@@ -127,10 +128,14 @@ export default {
     title: 'Komponenter',
     description:
       'Designsystemet inneholder grunnleggende komponenter som kan settes sammen på mange ulike måter og i forskjellige mønstre.',
+    changelog: {
+      title: 'Endringslogg',
+    },
   },
   component: {
     overview: 'Oversikt',
     code: 'Kode',
+    accessibility: 'Tilgjengelighet',
   },
   patterns: {
     meta: {
