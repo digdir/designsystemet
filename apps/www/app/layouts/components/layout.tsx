@@ -79,13 +79,19 @@ export const loader = async ({
     cats.getStarted = Array.from(getStartedMap.values());
   }
 
-  const isOverviewPage =
-    request.url.endsWith('/overview') || request.url.endsWith('/overview/');
+  const trimmedUrl = request.url.endsWith('/')
+    ? request.url.slice(0, -1)
+    : request.url;
+  const compPage = trimmedUrl.split('/').pop();
+
+  const isComponentPage = request.url.includes('/components/');
 
   return {
     lang,
     cats,
-    sidebarSuffix: { components: isOverviewPage ? '/overview' : '/code' },
+    sidebarSuffix: {
+      components: isComponentPage ? '/' + compPage : '/overview',
+    },
   };
 };
 

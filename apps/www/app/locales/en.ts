@@ -136,6 +136,7 @@ export default {
   component: {
     overview: 'Overview',
     code: 'Code',
+    accessibility: 'Accessibility',
   },
   patterns: {
     meta: {
