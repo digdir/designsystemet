@@ -9,9 +9,13 @@
   border-radius: 16px;
   background-color: var(--ds-color-surface-tinted);
   overflow: clip;
-  img {
+  img,
+  svg {
     isolation: isolate;
     height: 60cqh;
+  }
+  svg {
+    width: unset;
   }
 }
 .decorator {

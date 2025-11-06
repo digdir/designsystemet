@@ -1,6 +1,6 @@
 import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
-import classes from './component-icon-frame.module.css';
+import classes from './icon-frame.module.css';
 
 type IconFrameProps = {
   children: ReactNode;

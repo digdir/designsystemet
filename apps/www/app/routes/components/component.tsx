@@ -13,7 +13,6 @@ import type { ComponentType, ReactNode } from 'react';
 import type { ComponentDoc } from 'react-docgen-typescript';
 import { useTranslation } from 'react-i18next';
 import { NavLink, redirect, useRouteLoaderData } from 'react-router';
-import { IconFrame } from '~/_components/component-icon-frame/component-icon-frame';
 import {
   CssAttributes,
   getAttributes,
@@ -24,6 +23,7 @@ import {
 } from '~/_components/css-variables/css-variables';
 import { DoDont } from '~/_components/do-dont/do-dont';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
+import { IconFrame } from '~/_components/icon-frame/icon-frame';
 import {
   LiveComponent,
   type LiveComponentProps,
