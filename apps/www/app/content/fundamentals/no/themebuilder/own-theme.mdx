@@ -114,4 +114,38 @@ Velg "Themes" og deretter "Select All":
   boxShadow={false}
 />
 
-12. Nå skal du se alle komponentene med dine egne profilfarger i Figma. Når Design Tokens oppdateres i koden, kan du enkelt hente de nye verdiene inn i Figma ved å bruke "Pull"-knappen i Tokens Studio igjen.
+12. Nå skal du se alle komponentene med dine egne profilfarger i Figma. 
+
+13. Ønsker du flere tema, kan du generere et nytt tema i Temabyggeren og oppdatere config-fila i ditt repo. Kjør kommandoen for å generere Design Tokens på nytt, push endringene og bruk "Pull"-knappen i Tokens Studio for å hente inn de nye temaene i Figma.
+
+```json
+{
+  "outDir": "./design-tokens",
+  "clean": "true",
+  "themes": {
+    "theme-one": {
+      "colors": {
+        "main": { "primary": "#0062BA", "accent": "#1E98F5" },
+        "neutral": "#1E2B3C",
+        "support": { "extra1": "#F45F63", "extra2": "#E5AA20" }
+      },
+      "borderRadius": 4
+    },
+    "theme-two": {
+      "colors": {
+        "main": { "primary": "#0062BA", "accent": "#1E98F5" },
+        "neutral": "#1E2B3C",
+        "support": { "extra1": "#F45F63", "extra2": "#E5AA20" }
+      },
+      "borderRadius": 4
+    }
+  }
+}
+```
+
+14. Når Design Tokens oppdateres i koden, kan du enkelt hente de nye verdiene inn i Figma ved å bruke "Pull"-knappen i Tokens Studio igjen.
+
+## Video
+Hvis du foretrekker en video som viser prosessen, kan du se denne korte veiledningen:
+
+Legg inn video her.
