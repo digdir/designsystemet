@@ -45,6 +45,9 @@
 
 .headerText {
   max-width: var(--short-content-width);
+  p {
+    text-wrap: pretty;
+  }
 }
 
 .headerBottom {

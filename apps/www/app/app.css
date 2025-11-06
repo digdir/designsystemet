@@ -194,6 +194,7 @@ body {
 
     & p {
       margin-bottom: var(--ds-size-4);
+      text-wrap: pretty;
 
       & > strong {
         margin: 0 !important;
@@ -255,6 +256,7 @@ body {
     & > ol > li {
       line-height: 1.9em;
       word-break: break-word; /* Add this to prevent text from overflowing */
+      text-wrap: pretty;
     }
 
     & > ul > li > ol,
@@ -304,6 +306,7 @@ body {
       border-radius: var(--ds-border-radius-md);
       display: inline;
       border: 1px solid var(--ds-color-neutral-border-subtle);
+      box-decoration-break: clone;
     }
 
     & > div + p {
