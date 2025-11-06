@@ -59,7 +59,7 @@ Dersom du vil bruke tinta variant, legg til attributtet `data-variant="tinted"` 
 ```html
 <!-- uten ramme -->
 <u-details class="ds-details">
-  <u-summary class="ds-details__summary">
+  <u-summary>
     Details heading text
   </u-summary>
   <div>
@@ -70,7 +70,7 @@ Dersom du vil bruke tinta variant, legg til attributtet `data-variant="tinted"` 
 <!-- med ramme -->
 <div class="ds-card">
   <u-details class="ds-details">
-    <u-summary class="ds-details__summary">
+    <u-summary>
       Details heading text
     </u-summary>
     <div>
@@ -80,16 +80,14 @@ Dersom du vil bruke tinta variant, legg til attributtet `data-variant="tinted"` 
 </div>
 
 <!-- uten u-elements -->
-<div class="ds-details">
-  <details class="ds-details">
-    <summary class="ds-details__summary">
-      Details heading text
-    </summary>
-    <div>
-      Details content
-    </div>
-  </details>
-</div>
+<details class="ds-details">
+  <summary>
+    Details heading text
+  </summary>
+  <div>
+    Details content
+  </div>
+</details>
 ```
 
 ## CSS variabler og data-attributter
