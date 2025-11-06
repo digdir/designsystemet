@@ -8,6 +8,7 @@ import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
 import { writeTokens } from '../src/tokens/create/write.js';
 import { cliOptions, createTokens } from '../src/tokens/create.js';
+import { generateConfigFromTokens } from '../src/tokens/generate-config.js';
 import type { Theme } from '../src/tokens/types.js';
 import { cleanDir } from '../src/utils.js';
 import { parseBuildConfig, parseCreateConfig, readConfigFile } from './config.js';
@@ -126,6 +127,37 @@ function makeTokenCommands() {
 }
 
 program.addCommand(makeTokenCommands());
+
+program
+  .command('generate-config-from-tokens')
+  .description('Generate a config file from existing design tokens. Will not include overrides.')
+  .option('-d, --dir <string>', 'Path to design tokens directory', DEFAULT_TOKENS_CREATE_DIR)
+  .option('-o, --out <string>', 'Output path for config file', DEFAULT_CONFIG_FILE)
+  .option('--dry [boolean]', 'Dry run - show config without writing file', parseBoolean, false)
+  .action(async (opts) => {
+    console.log(figletAscii);
+    const { dry } = opts;
+    const tokensDir = typeof opts.dir === 'string' ? opts.dir : DEFAULT_TOKENS_CREATE_DIR;
+    const outFile = typeof opts.out === 'string' ? opts.out : DEFAULT_CONFIG_FILE;
+
+    try {
+      const config = await generateConfigFromTokens({
+        tokensDir,
+        outFile: dry ? undefined : outFile,
+        dry,
+      });
+
+      if (dry) {
+        console.log();
+        console.log('Generated config (dry run):');
+        console.log(JSON.stringify(config, null, 2));
+      }
+    } catch (error) {
+      console.error(pc.redBright('Error generating config:'));
+      console.error(error instanceof Error ? error.message : String(error));
+      process.exit(1);
+    }
+  });
 
 program
   .command('migrate')
