@@ -1,7 +1,8 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
-import { defineConfig, mergeConfig } from 'vitest/config';
+import { mergeConfig } from 'vitest/config';
+import { playwright } from '@vitest/browser-playwright'
 
 import viteConfig from '../../vite.config';
 
@@ -12,7 +13,7 @@ const dirname =
 
 export default mergeConfig(
   viteConfig,
-  defineConfig({
+  {
     plugins: [
       storybookTest({
         configDir: path.join(dirname, '.storybook'),
@@ -25,7 +26,7 @@ export default mergeConfig(
       browser: {
         enabled: true,
         instances: [{ browser: 'chromium' }],
-        provider: 'playwright',
+        provider: playwright(),
         headless: true,
       },
       setupFiles: ['./.storybook/vitest.setup.ts'],
@@ -46,5 +47,5 @@ export default mergeConfig(
         ],
       ],
     },
-  }),
+  },
 );

@@ -2,6 +2,7 @@ import { resolve } from 'node:path';
 import { parse } from 'tsconfck';
 /// <reference types="vitest" />
 import { defineProject } from 'vitest/config';
+import { playwright } from '@vitest/browser-playwright'
 
 // Resolve the test-specific tsconfig file, including "extends".
 // This is necessary because Vitest doesn't support specifying which tsconfig to use when
@@ -28,7 +29,7 @@ export default defineProject({
     browser: {
       enabled: true,
       instances: [{ browser: 'chromium' }],
-      provider: 'playwright',
+      provider: playwright(),
       headless: true,
     },
   },
