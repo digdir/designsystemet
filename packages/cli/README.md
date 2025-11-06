@@ -105,3 +105,11 @@ npx @digdir/designsystemet tokens build
 #### Complex config example
 
 Have a look at the `*.config.json` files under the `packages/cli` in the Github repo for more complex examples.
+
+#### Create config from existing tokens
+
+You can get a minimal config file, meaning without overrides, generated from existing design tokens using the following command:
+
+```sh
+npx @digdir/designsystemet generate-config-from-tokens --dir <path to design tokens>
+```

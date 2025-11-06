@@ -37,7 +37,7 @@
     "update:theme": "pnpm designsystemet:tokens-create && pnpm designsystemet:tokens-build && pnpm designsystemet:tokens-preview"
   },
   "devDependencies": {
-    "rimraf": "^6.0.1",
+    "rimraf": "^6.1.0",
     "@digdir/designsystemet": "workspace:^"
   }
 }
