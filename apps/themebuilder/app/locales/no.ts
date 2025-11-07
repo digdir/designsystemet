@@ -56,6 +56,7 @@ export default {
     'edit-theme': 'Rediger tema',
     button: 'Fortsett fra konfigurasjonsfil',
     'dialog-heading': 'Lim inn config',
+    'import-config': 'Importer config',
   },
   tabs: {
     overview: 'Oversikt',

@@ -57,6 +57,7 @@ export default {
     'edit-theme': 'Edit theme',
     button: 'Continue from config file',
     'dialog-heading': 'Paste config',
+    'import-config': 'Import config',
   },
   tabs: {
     overview: 'Overview',
