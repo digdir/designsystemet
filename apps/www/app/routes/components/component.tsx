@@ -1,11 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { join } from 'node:path';
-import {
-  Alert,
-  Button,
-  Heading,
-  Paragraph,
+import { Alert, Button, Heading 
 } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import type { ComponentType, ReactNode } from 'react';
@@ -158,9 +154,7 @@ export default function Components({
             <Heading data-size='lg' level={1}>
               {metadata.title}
             </Heading>
-            <Paragraph>
-              <MDXComponents code={metadata.subtitle} />
-            </Paragraph>
+            <MDXComponents code={metadata.subtitle} />
           </div>
           <img
             src={'/img/component-previews/' + metadata.image}
