@@ -11,6 +11,10 @@ permissions:
   checks: write
   pull-requests: write
 
+concurrency:
+  group: test-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
   test:
     name: Build & test
