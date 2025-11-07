@@ -5,7 +5,7 @@ import {
   Tooltip,
 } from '@digdir/designsystemet-react';
 import {
-  GlobeIcon,
+  LanguageIcon,
   MenuHamburgerIcon,
   MoonIcon,
   SunIcon,
@@ -258,14 +258,14 @@ const Header = ({
               <Tooltip content={t('header.language-toggle')} placement='bottom'>
                 <div>
                   <Dropdown.Trigger
-                    icon={true}
                     variant='tertiary'
                     data-color='neutral'
                     className={classes.toggleButton}
                     onClick={() => setLangOpen(!langOpen)}
-                    aria-label={t('header.language-toggle')}
+                    lang="en"
                   >
-                    <GlobeIcon aria-hidden />
+                    <LanguageIcon aria-hidden />
+                    Language
                   </Dropdown.Trigger>
                 </div>
               </Tooltip>
