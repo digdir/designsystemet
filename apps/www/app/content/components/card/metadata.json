@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "Card",
+    "subtitle": "Med `Card` kan vi fremheve informasjon eller oppgaver som hører sammen. `Card` finnes i to varianter og kan inneholde tekst, bilde, tekstfelt, knapper og lenker."
+  },
+  "en": {
+    "title": "Card",
+    "subtitle": "With `Card`, we can highlight information or tasks that are related. `Card` comes in two variants and can contain text, images, text fields, buttons, and links."
+  },
+  "image": "Card.svg",
+  "cssFile": "card.css"
+}
