@@ -10,11 +10,10 @@ published: true
 order: 10
 ---
 
-Designsystemet er laget for å kunne brukes sammen med din egen visuelle profil - inkludert farger og andre preferanser. Du trenger dermed ikke å bygge et nytt designsystem fra bunnen av. Med [Designsystemets Temabygger](https://theme.designsystemet.no) kan du sette opp et eget tema og generere Design Tokens som kan brukes både i designverktøy og i kode.
+Designsystemet er laget for å kunne brukes sammen med din egen visuelle profil - inkludert farger og andre preferanser. Med [Designsystemets Temabygger](https://theme.designsystemet.no) kan du sette opp ditt tema og generere Design Tokens som kan brukes både i designverktøy og i kode. Design Tokens sørger for at det er de samme verdiene vi jobber etter i design og kode. 
 
 <Alert data-color="info">
-Vi anbefaler å ha en kobling mellom design og kode, slik at designere og utviklere arbeider etter de samme reglene. 
-Derfor er det viktig at dere er både en utvikler og en designer med i prosessen når dere setter opp deres eget tema.
+Vi anbefaler at både utvikler og designer er med i prosessen når dere setter opp deres eget tema.
 </Alert>
 
 
@@ -39,7 +38,7 @@ Derfor er det viktig at dere er både en utvikler og en designer med i prosessen
 }
 ```
 
-2. Opprett et Git repository du kan bruke for å lagre Design Tokens. Legg `designsystemet.config.json`-fila i roten av repoet.
+2. Finn et Git repository du kan lagre Design Tokens i. Legg `designsystemet.config.json`-fila i roten av repoet.
 
 3. Klon repoet lokalt på din maskin, åpne en terminal og naviger til mappen med repoet.
 
@@ -49,17 +48,15 @@ Derfor er det viktig at dere er både en utvikler og en designer med i prosessen
 ```bash
 npx @digdir/designsystemet@latest tokens create --config designsystemet.config.json
 ```
-Dette vil generere Design Tokens basert på config-fila og lagre dem i en mappe som heter `design-tokens`.
-
-6. Nå er Design Tokens generert og du kan pushe endringene til ditt repo.
+Dette vil generere Design Tokens basert på config-fila og lagre dem i en mappe som heter `design-tokens`. Push endringene til ditt repo.
 
 <Alert data-color="info">
 Nå skal vi inn i Figma. Pass på at du bruker desktop-appen til Figma, ikke nettleserversjonen.
 </Alert>
 
-7. Hent komponentbiblioteket fra [Figma Community (figma.com)](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (Trykk "Open in Figma") til din organisasjon som har mimimum pro-lisens. Merk at dette blir en kopi av komponentbiblioteket uten noen kobling mot hovedfilen. 
+6. Hent komponentbiblioteket fra [Figma Community (figma.com)](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (Trykk "Open in Figma") til din organisasjon som har mimimum pro-lisens. Merk at dette blir en kopi av komponentbiblioteket uten noen kobling mot hovedfilen. 
 
-8. Installer pluginen [Tokens Studio (figma.com)](https://www.figma.com/community/plugin/843461159747178978/Tokens-Studio-for-Figma-(Figma-Tokens)) for Figma. Tokens Studio sørger for kobling mellom Figma og kode. 
+7. Installer pluginen [Tokens Studio (figma.com)](https://www.figma.com/community/plugin/843461159747178978/Tokens-Studio-for-Figma-(Figma-Tokens)). Den sørger for kobling mellom Figma og kode. Du trenger *ikke* pro-lisens. 
 
 <Image
   src='/img/tokenstudio.png'
@@ -67,14 +64,14 @@ Nå skal vi inn i Figma. Pass på at du bruker desktop-appen til Figma, ikke net
   boxShadow={false}
 />
 
-  - Følg Tokens Studio sin guide "[Sync your Design Tokens with code (tokens.studio)](https://docs.tokens.studio/token-storage-and-sync/sync-provider-overview)" for å sette opp kobling til ditt Git repo. 
+  - I pluginen skal du nå sette opp kobling til ditt Git repo. Se Tokens Studio sin guide "[Sync your Design Tokens with code (tokens.studio)](https://docs.tokens.studio/token-storage-and-sync/sync-provider-overview)" som forklarer hvordan du gjør dette for ulike Git Providers. 
   - Husk å sette "Token storage location" til `design-tokens` (eller det du har valgt å kalle mappen din med Design Tokens).
 
 <Alert data-color="info">
-Vi anbefaler å *ikke* pushe endringer i Design Tokens via Tokens Studio, da dette kan føre til at du miste overstyringene dine når du oppdatererer.
+Vi anbefaler å *ikke* pushe endringer i Design Tokens via Tokens Studio, da dette kan føre til at du mister overstyringene dine når du oppdatererer.
 </Alert>
 
-9. Gå til [Temabyggeren](https://theme.designsystemet.no) og generer fargeskalaer ut fra dine profilfarger. Klikk "Ta i bruk tema". Kopier config-filen og lim inn i `designsystemet.config.json`-fila i ditt repo. Kjør kommandoen under og push endringene.
+8. Gå til [Temabyggeren](https://theme.designsystemet.no) og generer fargeskalaer ut fra dine profilfarger. Klikk "Ta i bruk tema". Kopier config-filen og lim inn i `designsystemet.config.json`-fila i ditt repo. Kjør kommandoen under og push endringene.
 
 ```bash
 npx @digdir/designsystemet@latest tokens create --config designsystemet.config.json
@@ -82,7 +79,7 @@ npx @digdir/designsystemet@latest tokens create --config designsystemet.config.j
 **Husk at du må kjøre denne kommandoen hver gang du gjør endringer i config-filen.**
 
 
-10. I Tokens Studio velg "Pull"-ikonet for å hente de nye tokenene inn i Figma.
+9. I Tokens Studio velg "Pull"-ikonet for å hente de nye tokenene inn i Figma.
 
 <Image
   src='/img/fundamentals/themebuilder/own-theme/tokens-studio-pull-button.png'
@@ -90,7 +87,7 @@ npx @digdir/designsystemet@latest tokens create --config designsystemet.config.j
   boxShadow={false}
 />
 
-11. Velg `Styles & variables` og `Export styles & variables to Figma`. 
+Velg `Styles & variables` og `Export styles & variables to Figma`. 
 
 <Image
   src='/img/fundamentals/themebuilder/own-theme/tokens-export.png'
@@ -98,7 +95,7 @@ npx @digdir/designsystemet@latest tokens create --config designsystemet.config.j
   boxShadow={false}
 />
 
-Pass på at du har disse innstillingene når du eksporterer variablene: 
+Pass på at du har disse innstillingene før du trykker `Confirm`: 
 
 <Image
   src='/img/fundamentals/themebuilder/own-theme/tokens-export-options.png'
@@ -106,7 +103,7 @@ Pass på at du har disse innstillingene når du eksporterer variablene:
   boxShadow={false}
 />
 
-Velg "Themes" og deretter "Select All":
+Velg `Themes`, `Select All` og `Export to Figma`:
 
 <Image
   src='/img/fundamentals/themebuilder/own-theme/tokens-export-themes-select.png'
@@ -114,9 +111,9 @@ Velg "Themes" og deretter "Select All":
   boxShadow={false}
 />
 
-12. Nå skal du se alle komponentene med dine egne profilfarger i Figma. 
+Nå skal du se alle komponentene med dine egne profilfarger i Figma. 
 
-13. Ønsker du flere tema, kan du generere et nytt tema i Temabyggeren og oppdatere config-fila i ditt repo. Kjør kommandoen for å generere Design Tokens på nytt, push endringene og bruk "Pull"-knappen i Tokens Studio for å hente inn de nye temaene i Figma.
+Ønsker du flere tema, kan du generere et nytt tema i Temabyggeren og oppdatere config-fila i ditt repo. Kjør kommandoen for å generere Design Tokens på nytt, push endringene og bruk "Pull"-knappen i Tokens Studio for å hente inn de nye temaene i Figma.
 
 ```json
 {
@@ -143,7 +140,7 @@ Velg "Themes" og deretter "Select All":
 }
 ```
 
-14. Når Design Tokens oppdateres i koden, kan du enkelt hente de nye verdiene inn i Figma ved å bruke "Pull"-knappen i Tokens Studio igjen.
+Når Design Tokens oppdateres i koden, kan du enkelt hente de nye verdiene inn i Figma ved å bruke "Pull"-knappen i Tokens Studio igjen.
 
 ## Video
 Hvis du foretrekker en video som viser prosessen, kan du se denne korte veiledningen:
