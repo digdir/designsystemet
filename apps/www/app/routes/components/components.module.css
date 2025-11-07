@@ -1,6 +1,9 @@
+.components {
+  padding-top: var(--page-spacing-top);
+}
 .grid {
   padding-bottom: var(--ds-size-18);
-  padding-top: var(--ds-size-12);
+  padding-top: var(--ds-size-13);
   display: grid;
   grid-row-gap: 32px;
   grid-column-gap: 32px;

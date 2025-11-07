@@ -16,7 +16,7 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: var(--max-content-width);
+    max-width: var(--max-page-width);
     padding: 0 var(--content-inline-padding, var(--ds-size-8));
     margin: 0 auto;
 

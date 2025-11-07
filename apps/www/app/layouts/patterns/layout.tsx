@@ -7,7 +7,6 @@ import { Outlet, useMatches } from 'react-router';
 import {
   Banner,
   BannerHeading,
-  BannerIcon,
   BannerIngress,
 } from '~/_components/banner/banner';
 import { Sidebar } from '~/_components/sidebar/sidebar';
@@ -95,10 +94,7 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
   return (
     <>
       {!isPatternsPage ? (
-        <Banner color='yellow'>
-          <BannerIcon>
-            <LayersIcon />
-          </BannerIcon>
+        <Banner color='yellow' icon={<LayersIcon />}>
           <BannerHeading level={1}>{t('patterns.title')}</BannerHeading>
           <BannerIngress>{t('patterns.description')}</BannerIngress>
         </Banner>

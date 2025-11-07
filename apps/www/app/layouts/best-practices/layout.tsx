@@ -5,7 +5,6 @@ import { Outlet, useMatches } from 'react-router';
 import {
   Banner,
   BannerHeading,
-  BannerIcon,
   BannerIngress,
 } from '~/_components/banner/banner';
 import {
@@ -132,10 +131,7 @@ export default function Layout() {
     <>
       {!isGodPraksisPage ? (
         <>
-          <Banner color='yellow'>
-            <BannerIcon>
-              <HandShakeHeartIcon fontSize={34} />
-            </BannerIcon>
+          <Banner color='yellow' icon={<HandShakeHeartIcon />}>
             <BannerHeading level={1}>{t('best-practices.title')}</BannerHeading>
             <BannerIngress>{t('best-practices.description')}</BannerIngress>
           </Banner>
