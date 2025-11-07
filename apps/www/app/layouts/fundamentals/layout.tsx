@@ -128,7 +128,7 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
   return (
     <>
       {!isGrunnleggendePage ? (
-        <Banner color='yellow' icon={<LayersIcon />}>
+        <Banner data-color='warning' icon={<LayersIcon />}>
           <BannerHeading level={1}>{t('fundamentals.title')}</BannerHeading>
           <BannerIngress>{t('fundamentals.description')}</BannerIngress>
         </Banner>

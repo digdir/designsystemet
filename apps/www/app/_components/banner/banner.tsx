@@ -7,22 +7,15 @@ import { IconFrame } from '../icon-frame/icon-frame';
 import classes from './banner.module.css';
 
 type BannerProps = {
-  color?: 'blue' | 'red' | 'yellow';
   icon: ReactNode;
 } & HTMLAttributes<HTMLDivElement>;
 
-const BannerRoot = ({
-  color = 'red',
-  icon,
-  className,
-  children,
-  ...props
-}: BannerProps) => {
+const BannerRoot = ({ icon, className, children, ...props }: BannerProps) => {
   return (
     <div {...props} className={cl(classes.bannerContainer, className)}>
       <div className={classes.banner}>
         <div className={classes.text}>{children}</div>
-        <IconFrame className={classes.iconFrame} data-color={color} {...props}>
+        <IconFrame className={classes.iconFrame} {...props}>
           {icon}
         </IconFrame>
       </div>

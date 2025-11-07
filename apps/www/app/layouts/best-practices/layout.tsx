@@ -131,7 +131,7 @@ export default function Layout() {
     <>
       {!isGodPraksisPage ? (
         <>
-          <Banner color='yellow' icon={<HandShakeHeartIcon />}>
+          <Banner data-color='warning' icon={<HandShakeHeartIcon />}>
             <BannerHeading level={1}>{t('best-practices.title')}</BannerHeading>
             <BannerIngress>{t('best-practices.description')}</BannerIngress>
           </Banner>

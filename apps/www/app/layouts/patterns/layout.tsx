@@ -94,7 +94,7 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
   return (
     <>
       {!isPatternsPage ? (
-        <Banner color='yellow' icon={<LayersIcon />}>
+        <Banner data-color='warning' icon={<LayersIcon />}>
           <BannerHeading level={1}>{t('patterns.title')}</BannerHeading>
           <BannerIngress>{t('patterns.description')}</BannerIngress>
         </Banner>

@@ -69,7 +69,7 @@ export default function Components() {
 
   return (
     <div className={cl('l-content-container', classes.components)}>
-      <Banner color='blue' icon={<ComponentFillIcon />}>
+      <Banner data-color='accent' icon={<ComponentFillIcon />}>
         <BannerHeading level={1}>{t('components.title')}</BannerHeading>
         <BannerIngress>{t('components.description')}</BannerIngress>
       </Banner>

@@ -20,11 +20,13 @@
 .ingress {
   text-wrap: pretty;
 }
-.iconFrame {
-}
 
 @container banner-container (max-width: 768px) {
   .banner {
-    display: block;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .iconFrame {
+    margin-bottom: var(--ds-size-6);
   }
 }

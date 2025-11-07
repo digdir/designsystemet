@@ -12,7 +12,7 @@ export default function Layout() {
 
   return (
     <div data-is-main={true}>
-      <Banner color='red' icon={<PencilIcon />}>
+      <Banner data-color='danger' icon={<PencilIcon />}>
         <BannerHeading level={1}>{t('blog.title')}</BannerHeading>
       </Banner>
       <ContentContainer className={classes.main}>
