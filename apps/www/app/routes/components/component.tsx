@@ -1,8 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { join } from 'node:path';
-import { Alert, Button, Heading 
-} from '@digdir/designsystemet-react';
+import { Alert, Button, Heading } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import type { ComponentType, ReactNode } from 'react';
 import type { ComponentDoc } from 'react-docgen-typescript';
