@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "Avatar",
+    "subtitle": "Avatar er en komponent som viser et bilde, initialer eller ikon for en person, enhet eller profil."
+  },
+  "en": {
+    "title": "Avatar",
+    "subtitle": "Avatar is a component that displays an image, initials, or icon for a person, entity, or profile."
+  },
+  "image": "Avatar.svg",
+  "cssFile": "avatar.css"
+}

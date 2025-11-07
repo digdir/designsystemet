@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "Badge",
+    "subtitle": "Badge er ein ikkje-interaktiv komponent som viser status med eller utan tal. Bruk [Tag](/docs/komponenter-tag--docs) dersom du skal ha tekst i staden for tal."
+  },
+  "en": {
+    "title": "Badge",
+    "subtitle": "Badge is a non-interactive component that displays status with or without a number. Use [Tag](/docs/komponenter-tag--docs) if you want text instead of a number."
+  },
+  "image": "Badge.svg",
+  "cssFile": "badge.css"
+}

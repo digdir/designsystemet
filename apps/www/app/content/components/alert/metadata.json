@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "Alert",
+    "subtitle": "Vi bruker `Alert` til å gi brukeren informasjon som det er ekstra viktig at de ser og forstår. Komponenten er designet for å fange brukernes oppmerksomhet. Teksten i varselet skal være kort og tydelig."
+  },
+  "en": {
+    "title": "Alert",
+    "subtitle": "We use `Alert` to provide users with information that is especially important for them to see and understand. The component is designed to capture users' attention. The text in the alert should be short and clear."
+  },
+  "image": "Alert.svg",
+  "cssFile": "alert.css"
+}
