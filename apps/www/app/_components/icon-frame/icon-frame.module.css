@@ -7,7 +7,7 @@
   container-type: size;
 
   border-radius: 16px;
-  background-color: var(--ds-color-surface-tinted);
+  background-color: var(--ds-color-background-tinted);
   overflow: clip;
   img,
   svg {
@@ -16,10 +16,13 @@
   }
   svg {
     width: unset;
+    > path {
+      fill: var(--ds-color-base-default);
+    }
   }
 }
 .decorator {
-  --sq-border-w: 2.5cqh;
+  --sq-border-w: 3cqh;
   --sq-w: 56cqh;
   --sq-spacing: 15cqh;
   transform-origin: top left;
@@ -29,7 +32,7 @@
   left: calc(var(--sq-border-w) * -1);
   width: var(--sq-w);
   aspect-ratio: 1;
-  outline: var(--sq-border-w) solid var(--ds-color-surface-active);
+  outline: var(--sq-border-w) solid var(--ds-color-surface-hover);
   border-radius: 3cqh;
   &::after {
     position: absolute;
