@@ -78,11 +78,26 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   // Extract exported dodont functions from *.dodont.tsx
   const doDontEntries = extractStories(componentDir, true);
 
+  const jsonMetadata: {
+    [lang: string]: {
+      title: string;
+      subtitle: string;
+    };
+  } & {
+    image: string;
+    cssFile: string;
+  } = JSON.parse(
+    getFileFromContentDir(join('components', component, 'metadata.json')),
+  );
+
   const mdxSource = getFileFromContentDir(
     join('components', component, lang, `${compPage}.mdx`),
   );
 
   const result = await generateFromMdx(mdxSource);
+  const subtitleFromMetadata = await generateFromMdx(
+    jsonMetadata[lang].subtitle,
+  );
 
   // Resolve raw CSS for this component from @digdir/designsystemet-css
 
@@ -90,7 +105,7 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 
   try {
     cssPath = require.resolve(
-      `@digdir/designsystemet-css/${result.frontmatter.cssfile}.css`,
+      `@digdir/designsystemet-css/${jsonMetadata.cssfile}`,
     );
   } catch {}
 
@@ -114,7 +129,11 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     stories: storyEntries,
     dodont: doDontEntries,
     mdxCode: result.code,
-    frontmatter: result.frontmatter as Record<string, unknown>,
+    metadata: {
+      ...jsonMetadata[lang],
+      image: jsonMetadata.image,
+      subtitle: subtitleFromMetadata.code,
+    },
     cssSource,
     cssVars,
     cssAttrs,
@@ -130,7 +149,7 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 };
 
 export default function Components({
-  loaderData: { stories, mdxCode, frontmatter, toc, navigation, githubLink },
+  loaderData: { stories, mdxCode, metadata, toc, navigation, githubLink },
 }: Route.ComponentProps) {
   const { t } = useTranslation();
   return (
@@ -139,14 +158,14 @@ export default function Components({
         <div className={classes.headerUpper}>
           <div className={classes.headerText}>
             <Heading data-size='lg' level={1}>
-              {frontmatter.title}
+              {metadata.title}
             </Heading>
-            <Paragraph>{frontmatter.subtitle}</Paragraph>
+            <MDXComponents code={metadata.subtitle} />
           </div>
           <IconFrame className={classes.iconFrame} data-color='accent'>
             <img
-              src={'/img/component-previews/' + frontmatter.image}
-              alt={frontmatter.title}
+              src={'/img/component-previews/' + metadata.image}
+              alt={metadata.title}
               aria-hidden='true'
             />
           </IconFrame>
@@ -169,7 +188,7 @@ export default function Components({
       </div>
       <TableOfContents
         className={classes.tableOfContents}
-        title={frontmatter.title || ''}
+        title={metadata.title || ''}
         items={toc}
       >
         <div className={classes.feedback}>

@@ -6,7 +6,6 @@ import {
   getFileFromContentDir,
   getFoldersInContentDir,
 } from '~/_utils/files.server';
-import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import i18n from '~/i18next.server';
 import type { Route } from './+types/layout';
 import classes from './layout.module.css';
@@ -53,15 +52,22 @@ export const loader = async ({
 
     await Promise.all(
       folders.map(async (folder) => {
-        /* read overview.mdx file in lang folder */
-        const mdxSource = getFileFromContentDir(
-          join('components', folder, lang, 'overview.mdx'),
+        const metadataJson = getFileFromContentDir(
+          join('components', folder, 'metadata.json'),
         );
 
-        const result = await generateFromMdx(mdxSource);
+        if (!metadataJson) {
+          componentsMap.set(`/${lang}/components/${folder}`, {
+            title: folder,
+            url: `/${lang}/components/${folder}`,
+          });
+          return;
+        }
+
+        const parsedMetadata = JSON.parse(metadataJson);
 
         const component = {
-          title: result.frontmatter.title || folder,
+          title: parsedMetadata[lang].title || folder,
           url: `/${lang}/components/${folder}`,
         };
         componentsMap.set(component.url, component);
