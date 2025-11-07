@@ -23,6 +23,18 @@
   display: flex;
   flex-direction: column;
   gap: var(--ds-size-6);
+
+  & code:not(pre > code) {
+    padding: 3px 5px;
+    margin: 1px;
+    font-size: 0.9em;
+    line-height: 1;
+    white-space: break-spaces;
+    background-color: var(--ds-color-neutral-background-tinted);
+    border-radius: var(--ds-border-radius-md);
+    display: inline;
+    border: 1px solid var(--ds-color-neutral-border-subtle);
+  }
 }
 
 .headerUpper {

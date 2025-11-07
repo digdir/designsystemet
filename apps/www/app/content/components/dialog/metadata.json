@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "Dialog",
+    "subtitle": "`Dialog` er en modal dialog som vises over resten av innholdet på siden."
+  },
+  "en": {
+    "title": "Dialog",
+    "subtitle": "`Dialog` is a modal dialog that appears over the rest of the content on the page."
+  },
+  "image": "Dialog.svg",
+  "cssFile": "dialog.css"
+}
