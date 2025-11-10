@@ -1,7 +1,6 @@
 import { join } from 'node:path';
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import { Error404 } from '@internal/components';
-import * as Aksel from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { useTranslation } from 'react-i18next';
 import { isRouteErrorResponse } from 'react-router';
@@ -61,11 +60,6 @@ export const meta = ({ data }: Route.MetaArgs) => {
 export default function Fundamentals({
   loaderData: { code, frontmatter, lang, toc },
 }: Route.ComponentProps) {
-  const Icon = frontmatter.icon
-    ? // biome-ignore lint/performance/noDynamicNamespaceImportAccess: this should be safe because we prerender the page
-      Aksel[frontmatter.icon as keyof typeof Aksel]
-    : Aksel.LayersIcon;
-
   return (
     <>
       <div className={classes.header}>
@@ -79,21 +73,13 @@ export default function Fundamentals({
             </div>
           )}
         </div>
-        <div
-          className={cl(
-            classes.iconContainer,
-            classes[frontmatter.color as keyof typeof classes],
-          )}
-        >
-          <Icon fontSize='4rem' aria-hidden='true' />
-        </div>
       </div>
       <TableOfContents
         className={classes.tableOfContents}
         title={frontmatter.title}
         items={toc}
       />
-      <div className={cl(classes.content, 'u-rich-text')}>
+      <div className={cl(classes.content, 'u-rich-text', 'left-adjusted')}>
         <MDXComponents
           code={code}
           components={{

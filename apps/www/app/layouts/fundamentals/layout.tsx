@@ -1,13 +1,7 @@
 import { join } from 'node:path';
-import { ContentContainer } from '@internal/components';
-import { LayersIcon } from '@navikt/aksel-icons';
+import cl from 'clsx';
 import { useTranslation } from 'react-i18next';
 import { Outlet, useMatches } from 'react-router';
-import {
-  Banner,
-  BannerHeading,
-  BannerIngress,
-} from '~/_components/banner/banner';
 import { Sidebar } from '~/_components/sidebar/sidebar';
 import {
   getFileFromContentDir,
@@ -126,27 +120,18 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
   );
 
   return (
-    <>
-      {!isGrunnleggendePage ? (
-        <Banner data-color='warning' icon={<LayersIcon />}>
-          <BannerHeading level={1}>{t('fundamentals.title')}</BannerHeading>
-          <BannerIngress>{t('fundamentals.description')}</BannerIngress>
-        </Banner>
-      ) : null}
-      <ContentContainer
-        className={classes['sidebar-container']}
-        data-color='neutral'
-        data-is-main={!isGrunnleggendePage}
-      >
-        <Sidebar
-          cats={cats}
-          title={t('fundamentals.title')}
-          className={classes.sidebar}
-        />
-        <div className={classes.content}>
-          <Outlet />
-        </div>
-      </ContentContainer>
-    </>
+    <div
+      className={cl(classes['content-container'], 'l-content-container')}
+      data-is-main={!isGrunnleggendePage}
+    >
+      <Sidebar
+        cats={cats}
+        title={t('fundamentals.title')}
+        className={'l-sidebar-left'}
+      />
+      <div className={classes.content}>
+        <Outlet />
+      </div>
+    </div>
   );
 }
