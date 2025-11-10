@@ -543,8 +543,8 @@ importers:
         specifier: ^3.13.12
         version: 3.13.12(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@u-elements/u-combobox':
-        specifier: ^1.0.2
-        version: 1.0.2
+        specifier: ^1.0.4
+        version: 1.0.4
       '@u-elements/u-datalist':
         specifier: ^1.0.14
         version: 1.0.14
@@ -2615,8 +2615,8 @@ packages:
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
 
-  '@u-elements/u-combobox@1.0.2':
-    resolution: {integrity: sha512-fso0O9CtPKcqSELLO84MMi3gXGpX+VNZSEgOwvVyuUE/38OvE3iAFa5Ynr/B7TaWGXt9dWb36CSO4FTTET+IKg==}
+  '@u-elements/u-combobox@1.0.4':
+    resolution: {integrity: sha512-YX4kGqpc4TkCG6f9yM6wcAgS8zG9LYUvqecb0MOs/Q7NiQlkAe085Fh0Ir8PJDRyxVrQKFt2DyGybVOF0/7uEw==}
 
   '@u-elements/u-datalist@1.0.14':
     resolution: {integrity: sha512-wgh7BMLySzPF3xcfxeNnZgy/JmFZOQVJVY+XwAiIBgDYkCWQqERJrHjxRHv8C6t4h2PWnO7mwDIqdLQHEq12XQ==}
@@ -8038,7 +8038,7 @@ snapshots:
 
   '@types/unist@3.0.3': {}
 
-  '@u-elements/u-combobox@1.0.2': {}
+  '@u-elements/u-combobox@1.0.4': {}
 
   '@u-elements/u-datalist@1.0.14': {}
 
