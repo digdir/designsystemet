@@ -3,6 +3,10 @@
   width: 100%;
   max-width: var(--short-content-width);
   margin-bottom: var(--ds-size-10);
+  [data-size='xs'] {
+    margin-bottom: var(--ds-size-3);
+    color: var(--ds-color-neutral-text-subtle);
+  }
 }
 
 .headerText {

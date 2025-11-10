@@ -64,9 +64,15 @@ export default function Fundamentals({
     <>
       <div className={classes.header}>
         <div className={classes.headerText}>
+          <Heading data-size='xs'>Grunnleggende</Heading>
           <Heading data-size='lg' level={1}>
             {frontmatter.title}
           </Heading>
+          {frontmatter.description && (
+            <Paragraph data-size='lg' style={{ marginTop: '12px' }}>
+              {frontmatter.description}
+            </Paragraph>
+          )}
           {frontmatter.date && (
             <div className={classes.date}>
               {formatDate(frontmatter.date, lang)}
