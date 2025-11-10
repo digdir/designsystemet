@@ -1,7 +1,12 @@
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { join } from 'node:path';
-import { Alert, Button, Heading } from '@digdir/designsystemet-react';
+import {
+  Alert,
+  Button,
+  Heading,
+  Paragraph,
+} from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import type { ComponentType, ReactNode } from 'react';
 import type { ComponentDoc } from 'react-docgen-typescript';
@@ -128,6 +133,10 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
       image: jsonMetadata.image,
       subtitle: subtitleFromMetadata.code,
     },
+    linkMetadata: generateMetadata({
+      title: jsonMetadata[lang].title,
+      description: jsonMetadata[lang].subtitle,
+    }),
     cssSource,
     cssVars,
     cssAttrs,
@@ -138,22 +147,18 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
       codeLink: `/${lang}/components/${component}/code`,
       accessibilityLink: `/${lang}/components/${component}/accessibility`,
     },
-    metadata: generateMetadata({
-      title: result.frontmatter.title as string,
-      description: result.frontmatter.description as string,
-    }),
     githubLink: `https://github.com/digdir/designsystemet/tree/main/apps/www/app/content/components/${component}/${lang}/${compPage}.mdx`,
   };
 };
 
 export const meta = ({ loaderData }: Route.MetaArgs) => {
-  if (!loaderData?.metadata)
+  if (!loaderData?.linkMetadata)
     return [
       {
         title: 'Designsystemet',
       },
     ];
-  return loaderData.metadata;
+  return loaderData.linkMetadata;
 };
 
 export default function Components({
