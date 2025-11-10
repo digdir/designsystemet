@@ -106,7 +106,11 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     cssPath = require.resolve(
       `@digdir/designsystemet-css/${jsonMetadata.cssfile}`,
     );
-  } catch {}
+  } catch {
+    console.warn(
+      `Could not resolve CSS file for component ${component}: ${jsonMetadata.cssFile}`,
+    );
+  }
 
   let cssSource: string | undefined;
   let cssVars: {
@@ -122,6 +126,8 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
       cssAttrs = getAttributes(cssSource);
     } catch {}
   }
+
+  console.log(cssSource);
 
   return {
     component,
