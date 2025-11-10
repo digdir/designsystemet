@@ -15,9 +15,7 @@ const BannerRoot = ({ icon, className, children, ...props }: BannerProps) => {
     <div {...props} className={cl(classes.bannerContainer, className)}>
       <div className={classes.banner}>
         <div className={classes.text}>{children}</div>
-        <IconFrame className={classes.iconFrame} {...props}>
-          {icon}
-        </IconFrame>
+        <IconFrame className={classes.iconFrame}>{icon}</IconFrame>
       </div>
     </div>
   );
