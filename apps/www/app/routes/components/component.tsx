@@ -35,6 +35,7 @@ import { extractStories } from '~/_utils/extract-stories.server';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { getComponentDocs } from '~/_utils/get-react-props.server';
+import { generateMetadata } from '~/_utils/metadata';
 import type { Route } from './+types/component';
 import classes from './component.module.css';
 
@@ -134,6 +135,10 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
       image: jsonMetadata.image,
       subtitle: subtitleFromMetadata.code,
     },
+    linkMetadata: generateMetadata({
+      title: jsonMetadata[lang].title,
+      description: jsonMetadata[lang].subtitle,
+    }),
     cssSource,
     cssVars,
     cssAttrs,
@@ -146,6 +151,16 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     },
     githubLink: `https://github.com/digdir/designsystemet/tree/main/apps/www/app/content/components/${component}/${lang}/${compPage}.mdx`,
   };
+};
+
+export const meta = ({ loaderData }: Route.MetaArgs) => {
+  if (!loaderData?.linkMetadata)
+    return [
+      {
+        title: 'Designsystemet',
+      },
+    ];
+  return loaderData.linkMetadata;
 };
 
 export default function Components({
@@ -242,7 +257,7 @@ const Story = ({ story, layout }: LiveComponentProps) => {
   const { stories } = data;
 
   const foundStory = stories.find((s) => s.name === story);
-  if (!foundStory) return <Alert>Story not found: {story}</Alert>;
+  if (!foundStory) return <Alert lang='en'>Story not found: {story}</Alert>;
   return (
     <LiveComponent
       story={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
@@ -267,7 +282,7 @@ const DoDontComponent = ({
   const { dodont } = data;
 
   const foundStory = dodont.find((s) => s.name === story);
-  if (!foundStory) return <Alert>Do/Dont not found: {story}</Alert>;
+  if (!foundStory) return <Alert lang='en'>Do/Dont not found: {story}</Alert>;
   const variant = story.toLowerCase().includes('dont') ? 'dont' : 'do';
   return (
     <DoDont
@@ -301,11 +316,18 @@ const CssVars = () => {
 };
 
 const Attributes = () => {
+  const { t } = useTranslation();
+
   const data =
     useRouteLoaderData<Route.ComponentProps['loaderData']>('components-page');
-  if (!data) return null;
+  if (!data)
+    return <Paragraph>{t('components.no-relevant-data-attributes')}</Paragraph>;
 
   const { cssAttrs } = data;
 
-  return cssAttrs ? <CssAttributes vars={cssAttrs} /> : null;
+  return cssAttrs ? (
+    <CssAttributes vars={cssAttrs} />
+  ) : (
+    <Paragraph>{t('components.no-relevant-data-attributes')}</Paragraph>
+  );
 };

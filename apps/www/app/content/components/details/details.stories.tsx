@@ -38,7 +38,7 @@ export const InCard = () => {
 export const InCardWithColor = () => {
   return (
     <>
-      <Card data-color='accent'>
+      <Card data-color='brand1'>
         <Details>
           <Details.Summary>
             Hvordan får jeg tildelt et jegernummer?
@@ -61,7 +61,7 @@ export const InCardWithColor = () => {
         </Details>
       </Card>
       <br />
-      <Card data-color='accent' data-variant='tinted'>
+      <Card data-color='brand1' data-variant='tinted'>
         <Details>
           <Details.Summary>
             Hvordan får jeg tildelt et jegernummer?
@@ -69,17 +69,6 @@ export const InCardWithColor = () => {
           <Details.Content>
             Du vil automatisk få tildelt jegernummer og bli registrert i
             Jegerregisteret når du har bestått jegerprøven.
-          </Details.Content>
-        </Details>
-        <Details>
-          <Details.Summary>
-            Jeg har glemt jegernummeret mitt. Hvor finner jeg dette?
-          </Details.Summary>
-          <Details.Content>
-            <Paragraph>
-              Du kan finne dette ved å logge inn på{' '}
-              <Link href='https://minjegerside.brreg.no/'>Min side</Link>
-            </Paragraph>
           </Details.Content>
         </Details>
       </Card>
@@ -90,12 +79,10 @@ export const InCardWithColor = () => {
 export const Controlled = () => {
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
-  const [open3, setOpen3] = useState(false);
-  const isOpen = [open1, open2, open3].every(Boolean);
+  const isOpen = [open1, open2].every(Boolean);
   const toggleOpen = () => {
     setOpen1(!isOpen);
     setOpen2(!isOpen);
-    setOpen3(!isOpen);
   };
 
   return (
@@ -104,12 +91,12 @@ export const Controlled = () => {
         {isOpen ? (
           <>
             <ChevronDownUpIcon aria-hidden />
-            Lukk alle
+            Close both
           </>
         ) : (
           <>
             <ChevronUpDownIcon aria-hidden />
-            Åpne alle
+            Open both
           </>
         )}
       </Button>
@@ -132,15 +119,6 @@ export const Controlled = () => {
           rettigheter som arbeidstaker og muligheten til at andre kan investere
           i selskapet ditt? Da kan aksjeselskap være en hensiktsmessig
           organisasjonsform.
-        </Details.Content>
-      </Details>
-      <Details open={open3} onToggle={() => setOpen3(!open3)}>
-        <Details.Summary>Ansvarlig selskap (ANS/DA)</Details.Summary>
-        <Details.Content>
-          Er dere minst to personer som skal starte opp egen virksomhet?
-          Samarbeider du godt med den/de som du skal starte opp sammen med?
-          Krever virksomheten få investeringer og tar du liten økonomisk risiko?
-          Da kan du vurdere å etablere et ansvarlig selskap.
         </Details.Content>
       </Details>
     </>
