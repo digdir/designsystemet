@@ -110,7 +110,7 @@ Select `Themes`, `Select All`, and `Export to Figma`:
   boxShadow={false}
 />
 
-You should now see all components using your brand colours in Figma.
+You should now see all components using your brand colours in Figma. Note: If you changed the names of the colours in the Theme Builder, you must go into Figma Variables and manually delete the old colours.
 
 If you want additional themes, you can generate a new theme in the Theme Builder and update the configuration file in your repository. Run the command again to generate new Design Tokens, push the changes, and use the “Pull” button in Tokens Studio to fetch the new themes into Figma.
 
@@ -145,3 +145,10 @@ When the Design Tokens are updated in code, you can easily fetch the new values 
 </Alert>
 
 
+10. To generate CSS from your theme, run the following command:
+
+```bash
+npx @digdir/designsystemet@latest tokens build --config designsystemet.config.json
+```
+
+Remember that this must also be done whenever the tokens are updated.
