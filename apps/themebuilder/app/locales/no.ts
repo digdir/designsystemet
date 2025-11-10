@@ -43,6 +43,21 @@ export default {
     'build-theme': 'Bygg tema',
     documentation: 'Dokumentasjon',
   },
+  configPaste: {
+    title: 'Importer fra konfigurasjonsfil',
+    description:
+      'Har du allerede en konfigurasjonsfil? Lim den inn her for å velge og redigere et tema.',
+    placeholder: 'Lim inn innholdet fra designsystemet.config.json her...',
+    validate: 'Valider konfigurasjon',
+    'select-theme': 'Velg et tema å redigere',
+    'validation-error': 'Ugyldig konfigurasjonsfil',
+    'validation-success': 'Konfigurasjonen er gyldig! Velg et tema nedenfor.',
+    'no-themes': 'Ingen temaer funnet i konfigurasjonen',
+    'edit-theme': 'Rediger tema',
+    button: 'Fortsett fra konfigurasjonsfil',
+    'dialog-heading': 'Lim inn config',
+    'import-config': 'Importer config',
+  },
   tabs: {
     overview: 'Oversikt',
     colorsystem: 'Fargesystem',
