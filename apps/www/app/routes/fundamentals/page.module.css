@@ -35,30 +35,3 @@
     display: none;
   }
 }
-
-@media (max-width: 576px) {
-  .content {
-    padding: 0;
-  }
-
-  .header {
-    padding: 135px 24px 24px;
-  }
-
-  .iconContainer {
-    position: absolute;
-    top: 37px;
-    left: 37px;
-    height: 70px;
-    width: 70px;
-    border-width: 4px;
-  }
-
-  .iconContainer svg {
-    font-size: 2rem;
-  }
-
-  .headerText {
-    padding-right: 0;
-  }
-}

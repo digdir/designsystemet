@@ -14,17 +14,16 @@
 }
 
 .innerList {
-  margin: 0 0 0 2px;
   display: flex;
   flex-direction: column;
   gap: 4px;
   padding: 0;
-  border-left: 1px solid var(--ds-color-neutral-border-subtle);
 }
 
 .innerTitle {
   font-weight: 500;
   margin-bottom: 12px;
+  padding: var(--ds-size-1) var(--ds-size-4);
 }
 
 .listItem {
@@ -49,9 +48,10 @@
     display: block;
     position: absolute;
     top: 0;
-    left: -2px;
+    left: 0;
     bottom: 0;
-    border-radius: 10px;
+    border-bottom-left-radius: var(--ds-border-radius-sm);
+    border-top-left-radius: var(--ds-border-radius-sm);
   }
 
   &[aria-current='page'] {
