@@ -104,7 +104,7 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 
   try {
     cssPath = require.resolve(
-      `@digdir/designsystemet-css/${jsonMetadata.cssfile}`,
+      `@digdir/designsystemet-css/${jsonMetadata.cssFile}`,
     );
   } catch {
     console.warn(
