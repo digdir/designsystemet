@@ -2,9 +2,7 @@ import { Badge, Button, Tabs } from '@digdir/designsystemet-react';
 import {
   ChatIcon,
   EnvelopeClosedFillIcon,
-  HeartFillIcon,
   InboxIcon,
-  PencilIcon,
   VideoFillIcon,
   VideoIcon,
 } from '@navikt/aksel-icons';
@@ -117,13 +115,11 @@ export const InTabs = () => (
   <Tabs defaultValue='value1'>
     <Tabs.List>
       <Tabs.Tab value='value1'>
-        <HeartFillIcon aria-hidden />
         Favoritter
         <Badge count={64} maxCount={10} data-color='neutral' />
       </Tabs.Tab>
-      <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
+      <Tabs.Tab value='value2'>Arkiv</Tabs.Tab>
       <Tabs.Tab value='value3'>
-        <PencilIcon aria-hidden />
         Nylige
         <Badge count={2} data-color='neutral' />
       </Tabs.Tab>
