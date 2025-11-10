@@ -238,7 +238,7 @@ const Story = ({ story, layout }: LiveComponentProps) => {
   const { stories } = data;
 
   const foundStory = stories.find((s) => s.name === story);
-  if (!foundStory) return <Alert>Story not found: {story}</Alert>;
+  if (!foundStory) return <Alert lang='en'>Story not found: {story}</Alert>;
   return (
     <LiveComponent
       story={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
@@ -263,7 +263,7 @@ const DoDontComponent = ({
   const { dodont } = data;
 
   const foundStory = dodont.find((s) => s.name === story);
-  if (!foundStory) return <Alert>Do/Dont not found: {story}</Alert>;
+  if (!foundStory) return <Alert lang='en'>Do/Dont not found: {story}</Alert>;
   const variant = story.toLowerCase().includes('dont') ? 'dont' : 'do';
   return (
     <DoDont
@@ -297,15 +297,18 @@ const CssVars = () => {
 };
 
 const Attributes = () => {
+  const { t } = useTranslation();
+
   const data =
     useRouteLoaderData<Route.ComponentProps['loaderData']>('components-page');
-  if (!data) return <Paragraph>Ingen relevante data-attributter.</Paragraph>;
+  if (!data)
+    return <Paragraph>{t('components.no-relevant-data-attributes')}</Paragraph>;
 
   const { cssAttrs } = data;
 
   return cssAttrs ? (
     <CssAttributes vars={cssAttrs} />
   ) : (
-    <Paragraph>Ingen relevante data-attributter.</Paragraph>
+    <Paragraph>{t('components.no-relevant-data-attributes')}</Paragraph>
   );
 };

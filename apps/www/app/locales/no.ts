@@ -131,6 +131,12 @@ export default {
     changelog: {
       title: 'Endringslogg',
     },
+    'css-variables': {
+      caption: 'CSS-variabler',
+      name: 'Navn',
+      value: 'Verdi',
+    },
+    'no-relevant-data-attributes': 'Ingen relevante data-attributter funnet.',
   },
   component: {
     overview: 'Oversikt',

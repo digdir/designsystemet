@@ -1,6 +1,7 @@
 import { Table } from '@digdir/designsystemet-react';
 import cl from 'clsx';
 import { forwardRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 type CssVariablesProps = {
   vars: {
@@ -10,6 +11,8 @@ type CssVariablesProps = {
 
 export const CssVariables = forwardRef<HTMLTableElement, CssVariablesProps>(
   function CssVariables({ vars, className, ...rest }, ref) {
+    const { t } = useTranslation();
+
     return (
       <Table
         zebra
@@ -22,11 +25,15 @@ export const CssVariables = forwardRef<HTMLTableElement, CssVariablesProps>(
         {...rest}
         ref={ref}
       >
-        <caption>CSS-variabler</caption>
+        <caption>{t('components.css-variables.caption')}</caption>
         <Table.Head>
           <Table.Row>
-            <Table.HeaderCell>Name</Table.HeaderCell>
-            <Table.HeaderCell>Value</Table.HeaderCell>
+            <Table.HeaderCell>
+              {t('components.css-variables.name')}
+            </Table.HeaderCell>
+            <Table.HeaderCell>
+              {t('components.css-variables.value')}
+            </Table.HeaderCell>
           </Table.Row>
         </Table.Head>
         <Table.Body>

@@ -132,6 +132,12 @@ export default {
     changelog: {
       title: 'Changelog',
     },
+    'css-variables': {
+      caption: 'CSS Variables',
+      name: 'Name',
+      value: 'Value',
+    },
+    'no-relevant-data-attributes': 'No relevant data attributes found.',
   },
   component: {
     overview: 'Overview',
