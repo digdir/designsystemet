@@ -1,4 +1,5 @@
 import { resolve } from 'node:path';
+import { playwright } from '@vitest/browser-playwright';
 import { parse } from 'tsconfck';
 /// <reference types="vitest" />
 import { defineProject } from 'vitest/config';
@@ -28,7 +29,7 @@ export default defineProject({
     browser: {
       enabled: true,
       instances: [{ browser: 'chromium' }],
-      provider: 'playwright',
+      provider: playwright(),
       headless: true,
     },
   },
