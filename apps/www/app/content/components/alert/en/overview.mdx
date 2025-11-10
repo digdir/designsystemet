@@ -2,19 +2,83 @@ Buttons let users perform actions.
 
 <Story story="Preview" />
 
-## Usage
+## Examples
 
-```tsx
-import { Button } from '@digdir/designsystemet-react';
+`Alert` can be used for four different messages: Information, success, warnings and error messages.
 
-<Button>Click me!</Button>;
-```
+### Information
 
-## Code Examples
+Use `info` when you want to provide the user with neutral and useful information.
 
-### Variants
+<Story story="VariantInfo" />
 
-Use `primary`, `secondary` or `tertiary` to weight the button correctly.
+### Success
 
-<Story story="Variants" />
+Use `success` when you want to confirm that the user has completed a task, that the action was successful.
 
+<Story story="VariantSuccess" />
+
+### Warning
+
+Use `warning` when you want the user to take a specific action or to warn them about something important.
+
+<Story story="VariantWarning" />
+
+### Error message
+
+Use `danger` to inform about something that is critical or that prevents the user from moving forward.
+
+<Story story="VariantDanger" />
+
+### With and without heading
+
+If the message is longer than a sentence, it can be useful to use a heading to highlight the most important thing. This can be done using the [Heading](/no/components/heading/overview) components. Remember to choose the correct heading level based on the space the alert has in the content structure of the page.
+
+<Story story="WithHeading" />
+
+If the title and description repeat the same thing, it is better to use a simple sentence without a heading.
+
+<Story story="WithOnlyHeading" />
+
+### With link
+
+You can have a link in the `Alert` if it helps the user solve the task. But be aware that a link takes the user out of the service, so use links only when absolutely necessary, for example if you want the user to open a form or perform an important task.
+
+<Story story="WithLink" />
+
+## Guidelines
+`Alert` is used to display important messages that require attention, but not necessarily action. It can be used to inform the user about the status, changes, or problems in a solution. The message is displayed clearly and visually distinguished from the rest of the content.
+
+Use the component with caution. Users can confuse alerts with advertising, and thus ignore them. If we use alerts too often, we can exacerbate this problem.
+
+Make sure that `Alert` has the same look and feel across all services and products. This component should be recognizable everywhere, so we should not adjust it.
+
+**Suitable for**
+- provide short and informative time-limited notifications
+- inform about errors that only affect one part of the system or a minor function
+- inform about connection problems or API errors that are likely to be resolved by reloading the page
+
+**Not suitable for**
+- validate individual form elements, instead use the component's own error message (See [`ValidationMessage`](/no/components/validation-message/overview))
+- summarize multiple error messages in a form, instead use [`ErrorSummary`](/docs/komponenter-errorsummary--docs)
+- display errors that prevent all further use of the service, instead use an error page
+- display static information that should be displayed all the time, instead use [`Card`](/docs/komponenter-card--docs)
+
+## Text
+
+It is not always easy to understand the difference between the notifications, even though they have different icons and colors. Therefore, it is important that the text we write in the notification is clear and easy to understand.
+
+If there is something users need to or can do to get through their task, the text should convey that. When the message is longer than a sentence, it may be a good idea to include a headline that highlights the most important points.
+
+Here is a list of the types of information that a notification should contain:
+
+- Tell them what happened
+- Example: "Couldn't connect to account."
+- Tell them why it happened
+- Example: "We were unable to connect to your account due to technical issues on our end."
+- Reassure the user
+- Example: "Your changes have been saved."
+- Give them a way out of the problem
+- Example: "If this problem occurs again, contact customer service."
+- Help them fix the problem themselves
+- Example: "Please try again."
