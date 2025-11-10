@@ -137,6 +137,7 @@ export default {
       value: 'Verdi',
     },
     'no-relevant-data-attributes': 'Ingen relevante data-attributter funnet.',
+    'data-attributes': 'Data-attributter',
   },
   component: {
     overview: 'Oversikt',

@@ -1,6 +1,7 @@
 import { Paragraph, Table } from '@digdir/designsystemet-react';
 import cl from 'clsx';
 import { forwardRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 type CssAttributesProps = {
   vars: {
@@ -10,8 +11,12 @@ type CssAttributesProps = {
 
 export const CssAttributes = forwardRef<HTMLTableElement, CssAttributesProps>(
   function CssAttributes({ vars, className, ...rest }, ref) {
+    const { t } = useTranslation();
+
     if (Object.keys(vars).length === 0)
-      return <Paragraph>Ingen relevante data-attributter.</Paragraph>;
+      return (
+        <Paragraph>{t('components.no-relevant-data-attributes')}</Paragraph>
+      );
     return (
       <Table
         className={cl('component-table', className)}
@@ -24,11 +29,15 @@ export const CssAttributes = forwardRef<HTMLTableElement, CssAttributesProps>(
         {...rest}
         ref={ref}
       >
-        <caption>Data-attributter</caption>
+        <caption>{t('components.data-attributes')}</caption>
         <Table.Head>
           <Table.Row>
-            <Table.HeaderCell>Name</Table.HeaderCell>
-            <Table.HeaderCell>Value(s)</Table.HeaderCell>
+            <Table.HeaderCell>
+              {t('components.css-variables.name')}
+            </Table.HeaderCell>
+            <Table.HeaderCell>
+              {t('components.css-variables.value')}
+            </Table.HeaderCell>
           </Table.Row>
         </Table.Head>
         <Table.Body>

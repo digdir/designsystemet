@@ -138,6 +138,7 @@ export default {
       value: 'Value',
     },
     'no-relevant-data-attributes': 'No relevant data attributes found.',
+    'data-attributes': 'Data Attributes',
   },
   component: {
     overview: 'Overview',
