@@ -228,4 +228,5 @@ export default {
   dont: 'Ikke gjør',
   contributors: 'Bidragsytere',
   editOnGithub: 'Rediger denne siden på github.com (åpnes i ny fane)',
+  updated: 'Oppdatert',
 };

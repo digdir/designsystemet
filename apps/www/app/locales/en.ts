@@ -229,4 +229,5 @@ export default {
   dont: "Don't",
   contributors: 'Contributors',
   editOnGithub: 'Edit this page on github.com (opens in a new tab)',
+  updated: 'Updated',
 } satisfies typeof no;

@@ -60,11 +60,12 @@ export const meta = ({ data }: Route.MetaArgs) => {
 export default function Fundamentals({
   loaderData: { code, frontmatter, lang, toc },
 }: Route.ComponentProps) {
+  const { t } = useTranslation();
   return (
     <>
       <div className={classes.header}>
         <div className={classes.headerText}>
-          <Heading data-size='xs'>Grunnleggende</Heading>
+          <Heading data-size='xs'>{t('fundamentals.title')}</Heading>
           <Heading data-size='lg' level={1}>
             {frontmatter.title}
           </Heading>
@@ -75,7 +76,7 @@ export default function Fundamentals({
           )}
           {frontmatter.date && (
             <div className={classes.date}>
-              {formatDate(frontmatter.date, lang)}
+              {`${t('updated')} ${formatDate(frontmatter.date, lang)}`}
             </div>
           )}
         </div>
