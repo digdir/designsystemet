@@ -7,6 +7,7 @@
   border: 1px solid var(--ds-color-neutral-border-subtle);
   background: var(--ds-color-neutral-background-tinted);
   color: var(--ds-color-neutral-text-subtle);
+  width: 100%;
   &:hover {
     color: var(--ds-color-neutral-text-default);
   }

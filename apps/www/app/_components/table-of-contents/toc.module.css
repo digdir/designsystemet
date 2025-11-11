@@ -6,6 +6,7 @@
   > h2 {
     font-weight: 500;
     margin-bottom: var(--ds-size-4);
+    padding-inline-start: var(--ds-size-4);
   }
   > ol {
     margin: 0;

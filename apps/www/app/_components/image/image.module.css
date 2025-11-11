@@ -10,11 +10,6 @@
   position: relative;
   width: 100%;
   cursor: zoom-in;
-  border-radius: var(--ds-border-radius-xl);
-  overflow: clip;
-  @media (max-width: 1280px) {
-    border-radius: var(--ds-border-radius-lg);
-  }
 }
 
 .image {
@@ -22,6 +17,11 @@
   width: 100%;
   box-shadow: none;
   display: block;
+  border-radius: var(--ds-border-radius-xl);
+  overflow: clip;
+  @media (max-width: 1280px) {
+    border-radius: var(--ds-border-radius-lg);
+  }
 }
 
 .openButton {
