@@ -1,5 +1,23 @@
 # Change Log
 
+## 1.7.2
+
+### Patch Changes
+
+- Update `@u-elements/combobox` to v1.0.4 ([#4226](https://github.com/digdir/designsystemet/pull/4226))
+
+- **Dialog**: If the browser supports `closedBy` on `<dialog>`, we let the browser handle it ([#4210](https://github.com/digdir/designsystemet/pull/4210))
+
+- **Tooltip**: Tooltip is now automatically `aria-describedby` or `aria-labelledby` based on the content of the trigger component. ([#4202](https://github.com/digdir/designsystemet/pull/4202))
+  - This can be overridden with the new `type`-prop that accepts `decribedby` or `labelledby`.
+
+- Update npm non-major dependencies ([#4193](https://github.com/digdir/designsystemet/pull/4193))
+
+- Update npm non-major dependencies ([#4214](https://github.com/digdir/designsystemet/pull/4214))
+
+- **Tag**: Add new prop `variant` ([#4173](https://github.com/digdir/designsystemet/pull/4173))
+  - Accepts `default|outline`. `default` is the default value.
+
 ## 1.7.1
 
 ### Patch Changes

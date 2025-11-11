@@ -26,7 +26,7 @@ If a [config file](#using-a-config-file) you can also re-run with `"clean": true
 > ⚠️ **WARNING** ⚠️  
 > The design tokens created by this tool are considered an implementation detail, and is subject
 > to change at any time without being considered a breaking change. We **only** support customisations
-> done through the CLI options. Direct editing of the design tokens are **not** supported.
+> done through the CLI options and config. Direct editing of the design tokens are **not** supported.
 > 
 > Since tokens may be added or removed at any time, it is necessary to routinely re-run this
 > command when upgrading the libraries. This will remove any direct edits to the design tokens.

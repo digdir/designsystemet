@@ -1,7 +1,102 @@
 ---
 title: "Changelog"
-latestVersion: 1.7.1
+latestVersion: 1.7.2
 ---
+
+<div style={{
+  border: "1px solid var(--ds-color-neutral-border-subtle)",
+  borderRadius: "var(--ds-border-radius-md)",
+  padding: "var(--ds-size-5)",
+  marginBottom: "var(--ds-size-4)"
+  }}
+>
+
+## 1.7.2
+
+<Divider/>
+
+### @digdir/designsystemet
+
+#### Patch Changes
+
+- Add option to override `linkVisited` color in config: ([#4182](https://github.com/digdir/designsystemet/pull/4182))
+
+  ```json
+  "theme": {
+    "overrides": {
+      "linkVisited": {
+        "light": "#ff1234",
+        "dark": "#1234ff"
+      }
+    }
+  }
+  ```
+
+- New command that lets you generate a config file from your design tokens: ([#4207](https://github.com/digdir/designsystemet/pull/4207))
+  `npx @digdir/designsystemet generate-config-from-tokens --dir <path to design tokens>`
+  - This command does not include any overrides you may have done.
+
+- Update npm non-major dependencies ([#4193](https://github.com/digdir/designsystemet/pull/4193))
+
+- Update npm non-major dependencies ([#4214](https://github.com/digdir/designsystemet/pull/4214))
+
+- For your config file, you can now get the schema file from designsystemet.no ([#4195](https://github.com/digdir/designsystemet/pull/4195))
+  ```json
+  "$schema": "https://designsystemet.no/schemas/cli/[VERSION].json"
+  ```
+
+<Divider/>
+
+### @digdir/designsystemet-css
+
+#### Patch Changes
+
+- **input**: Remove hover effect when `<label>` is hovered ([#4196](https://github.com/digdir/designsystemet/pull/4196))
+
+- **tag**: Add new variant, `[data-variant="outline"]`. ([#4173](https://github.com/digdir/designsystemet/pull/4173))
+  - To use the old variant, either don't set `data-variant`, or set it to `default`.
+
+- Update npm non-major dependencies ([#4214](https://github.com/digdir/designsystemet/pull/4214))
+
+- **card**: Add support for `<picture>` ([#4137](https://github.com/digdir/designsystemet/pull/4137))
+
+- **search**: Don't set `position: relative`, but use `isolation: isolate` on `.ds-search` ([#4212](https://github.com/digdir/designsystemet/pull/4212))
+  - This removes `z-index` on `button[type="reset"]`
+
+- **tag**: New css variables to go with `[data-variant="outline"]`: ([#4173](https://github.com/digdir/designsystemet/pull/4173))
+  - `--dsc-tag-border-width`
+  - `--dsc-tag-border-color`
+  - `--dsc-tag-border-style`
+
+<Divider/>
+
+### @digdir/designsystemet-react
+
+#### Patch Changes
+
+- Update `@u-elements/combobox` to v1.0.4 ([#4226](https://github.com/digdir/designsystemet/pull/4226))
+
+- **Dialog**: If the browser supports `closedBy` on `<dialog>`, we let the browser handle it ([#4210](https://github.com/digdir/designsystemet/pull/4210))
+
+- **Tooltip**: Tooltip is now automatically `aria-describedby` or `aria-labelledby` based on the content of the trigger component. ([#4202](https://github.com/digdir/designsystemet/pull/4202))
+  - This can be overridden with the new `type`-prop that accepts `decribedby` or `labelledby`.
+
+- Update npm non-major dependencies ([#4193](https://github.com/digdir/designsystemet/pull/4193))
+
+- Update npm non-major dependencies ([#4214](https://github.com/digdir/designsystemet/pull/4214))
+
+- **Tag**: Add new prop `variant` ([#4173](https://github.com/digdir/designsystemet/pull/4173))
+  - Accepts `default|outline`. `default` is the default value.
+
+<Divider/>
+
+### @digdir/designsystemet-theme
+
+#### Patch Changes
+
+- Update npm non-major dependencies ([#4214](https://github.com/digdir/designsystemet/pull/4214))
+
+</div>
 
 <div style={{
   border: "1px solid var(--ds-color-neutral-border-subtle)",
