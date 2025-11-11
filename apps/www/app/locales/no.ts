@@ -222,7 +222,7 @@ export default {
     },
   },
   toc: {
-    title: 'Innhold',
+    title: 'På denne siden',
   },
   do: 'Gjør',
   dont: 'Ikke gjør',

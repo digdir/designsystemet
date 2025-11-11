@@ -30,7 +30,7 @@
   margin-block: 0;
   color: var(--ds-color-neutral-text-subtle);
 }
-.interpunct {
+.seperator {
   font-size: 2rem;
   line-height: 1rem;
 }

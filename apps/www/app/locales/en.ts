@@ -223,7 +223,7 @@ export default {
     },
   },
   toc: {
-    title: 'Contents',
+    title: 'On this page',
   },
   do: 'Do',
   dont: "Don't",

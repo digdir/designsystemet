@@ -28,7 +28,7 @@ const TeaserCard = ({
           <div className={classes.meta}>
             {/* @Todo: contributor logo row component for here and in article. Needs logos */}
             <span>{author}</span>
-            <span className={classes.interpunct}>·</span>
+            <span className={classes.seperator}>·</span>
             <span>{date}</span>
           </div>
         )}

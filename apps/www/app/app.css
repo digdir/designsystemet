@@ -28,7 +28,6 @@
   --grid-padding: clamp(1rem, calc(0.27rem + 3.64vw), 3rem);
   --grid-gap: var(--ds-size-8);
 
-  --page-spacing-bottom: var(--ds-size-14);
   --media-max-width: 100%;
 }
 
@@ -46,6 +45,7 @@ body {
 @layer new-layout {
   :root {
     --page-spacing-top: var(--ds-size-14);
+    --page-spacing-bottom: var(--ds-size-14);
     --max-page-width: 1920px;
     --max-content-width: 1300px;
     --sidebar-left-width: 300px;
@@ -57,6 +57,7 @@ body {
       --sidebar-left-width: 200px;
       --sidebar-right-width: 200px;
       --page-spacing-top: var(--ds-size-8);
+      --page-spacing-bottom: var(--ds-size-12);
     }
   }
   .l-sidebar-left {
