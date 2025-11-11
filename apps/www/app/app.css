@@ -113,6 +113,9 @@ body {
       }
     }
   }
+  .u-default-padding-top {
+    padding-top: var(--page-spacing-top);
+  }
 }
 
 @layer normalize {

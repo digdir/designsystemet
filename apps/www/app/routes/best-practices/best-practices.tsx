@@ -1,6 +1,13 @@
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { HandShakeHeartIcon } from '@navikt/aksel-icons';
 import { Fragment } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useRouteLoaderData } from 'react-router';
+import {
+  Banner,
+  BannerHeading,
+  BannerIngress,
+} from '~/_components/banner/banner';
 import { Grid } from '~/_components/grid/grid';
 import { TeaserCard } from '~/_components/teaser-card/teaser-card';
 import { formatDate } from '~/_utils/date';
@@ -50,9 +57,18 @@ export default function BestPractices() {
   const { cats, descriptions, lang } = useRouteLoaderData(
     'layouts/best-practices/layout',
   ) as LayoutRoute.ComponentProps['loaderData'];
+  const { t } = useTranslation();
 
   return (
-    <>
+    <div className={'l-content-container u-default-padding-top'}>
+      <Banner
+        style={{ marginBottom: 'var(--page-spacing-top)' }}
+        data-color='danger'
+        icon={<HandShakeHeartIcon />}
+      >
+        <BannerHeading level={1}>{t('best-practices.title')}</BannerHeading>
+        <BannerIngress>{t('best-practices.description')}</BannerIngress>
+      </Banner>
       {Object.entries(cats).map(([key, value], index) => {
         return (
           <Fragment key={key}>
@@ -89,6 +105,6 @@ export default function BestPractices() {
           </Fragment>
         );
       })}
-    </>
+    </div>
   );
 }
