@@ -2,7 +2,6 @@
   display: flex;
   max-width: var(--media-max-width);
   margin: var(--ds-size-12) 0;
-  border-radius: var(--ds-border-radius-md);
   flex-wrap: wrap;
   gap: var(--ds-size-4);
 }
@@ -11,6 +10,11 @@
   position: relative;
   width: 100%;
   cursor: zoom-in;
+  border-radius: var(--ds-border-radius-xl);
+  overflow: clip;
+  @media (max-width: 1280px) {
+    border-radius: var(--ds-border-radius-lg);
+  }
 }
 
 .image {
