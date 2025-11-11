@@ -127,8 +127,6 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     } catch {}
   }
 
-  console.log(cssSource);
-
   return {
     component,
     stories: storyEntries,
