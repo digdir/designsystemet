@@ -18,59 +18,15 @@ export const Floating = () => (
       <Badge data-color='accent'></Badge>
       <EnvelopeClosedFillIcon title='Meldinger' />
     </Badge.Position>
-    <Badge.Position placement='top-left'>
-      <Badge data-color='accent'></Badge>
-      <EnvelopeClosedFillIcon title='Meldinger' />
-    </Badge.Position>
-    <Badge.Position placement='bottom-right'>
-      <Badge data-color='accent'></Badge>
-      <EnvelopeClosedFillIcon title='Meldinger' />
-    </Badge.Position>
-    <Badge.Position placement='bottom-left'>
-      <Badge data-color='accent'></Badge>
-      <EnvelopeClosedFillIcon title='Meldinger' />
-    </Badge.Position>
-    <Badge.Position placement='top-right' overlap='circle'>
-      <Badge data-color='accent'></Badge>
-      <div
-        style={{
-          width: '2rem',
-          height: '2rem',
-          borderRadius: '50%',
-          backgroundColor: 'var(--ds-color-brand2-base-default)',
-        }}
-      />
-    </Badge.Position>
-    <Badge.Position placement='top-left' overlap='circle'>
-      <Badge data-color='accent'></Badge>
-      <div
-        style={{
-          width: '2rem',
-          height: '2rem',
-          borderRadius: '50%',
-          backgroundColor: 'var(--ds-color-brand2-base-default)',
-        }}
-      />
-    </Badge.Position>
+
     <Badge.Position placement='bottom-right' overlap='circle'>
       <Badge data-color='accent'></Badge>
       <div
         style={{
-          width: '2rem',
-          height: '2rem',
+          width: '1.5rem',
+          height: '1.5rem',
           borderRadius: '50%',
-          backgroundColor: 'var(--ds-color-brand2-base-default)',
-        }}
-      />
-    </Badge.Position>
-    <Badge.Position placement='bottom-left' overlap='circle'>
-      <Badge data-color='accent'></Badge>
-      <div
-        style={{
-          width: '2rem',
-          height: '2rem',
-          borderRadius: '50%',
-          backgroundColor: 'var(--ds-color-brand2-base-default)',
+          backgroundColor: 'var(--ds-color-brand1-base-default)',
         }}
       />
     </Badge.Position>
