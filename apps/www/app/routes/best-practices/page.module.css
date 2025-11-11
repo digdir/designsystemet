@@ -1,6 +1,4 @@
 .container {
-  /*  margin-top: var(--page-spacing-top);
-  margin-bottom: var(--page-spacing-bottom); */
   padding-top: var(--ds-size-18);
   padding-bottom: var(--page-spacing-bottom);
   display: grid;
@@ -14,11 +12,11 @@
 
   @media screen and (max-width: 1500px) {
     --sidebar-right-width: 300px;
+    padding-top: var(--ds-size-8);
   }
 
   @media (max-width: 1100px) {
     --sidebar-right-width: 200px;
-    padding-top: var(--ds-size-8);
   }
 }
 

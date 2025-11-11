@@ -206,17 +206,17 @@ export default function Components({
         title={metadata.title || ''}
         items={toc}
       >
-        <div className={classes.feedback}>
+        <div className={'toc-feedback'}>
           <Paragraph data-size='sm'>
             {t(
-              'component.feedback.text',
-              'Har du innspill til komponentent? Gi oss tilbakemelding på Github',
+              'toc.feedback.component.text',
+              'Har du innspill til komponentent? Gi oss tilbakemelding på Github.',
             )}
           </Paragraph>
           <Button data-size='sm' variant='secondary' asChild>
             <a href='#'>
               <PencilLineIcon aria-hidden />{' '}
-              {t('component.feedback.link', 'Send innspill')}
+              {t('toc.feedback.link', 'Send innspill')}
             </a>
           </Button>
         </div>

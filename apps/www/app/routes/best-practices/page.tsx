@@ -1,5 +1,6 @@
 import { join } from 'node:path';
-import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { PencilLineIcon } from '@navikt/aksel-icons';
 import cl from 'clsx';
 import { useTranslation } from 'react-i18next';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
@@ -91,7 +92,27 @@ export default function BestPractices({
           className={classes.tableOfContents}
           title={'På denne siden'}
           items={toc}
-        />
+        >
+          <div className='toc-feedback'>
+            <Paragraph data-size='sm'>
+              {t(
+                'toc.feedback.page.text',
+                'Har du innspill til denne siden? Gi oss tilbakemelding på Github.',
+              )}
+            </Paragraph>
+            <Button
+              data-color='neutral'
+              data-size='sm'
+              variant='secondary'
+              asChild
+            >
+              <a href='#'>
+                <PencilLineIcon aria-hidden />{' '}
+                {t('toc.feedback.link', 'Send innspill')}
+              </a>
+            </Button>
+          </div>
+        </TableOfContents>
         <div className={cl(classes.content, 'u-rich-text', 'left-adjusted')}>
           <MDXComponents code={code} />
           <EditPageOnGithub />

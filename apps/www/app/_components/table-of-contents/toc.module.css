@@ -55,3 +55,16 @@
     }
   }
 }
+:global(.toc-feedback) {
+  font-weight: var(--ds-font-weight-medium);
+  margin-top: var(--ds-size-4);
+  padding-top: var(--ds-size-4);
+  padding-inline: var(--ds-size-4);
+  border-top: 1px solid var(--ds-color-neutral-border-subtle);
+  > p {
+    margin-bottom: var(--ds-size-4);
+  }
+  a {
+    width: fit-content;
+  }
+}
