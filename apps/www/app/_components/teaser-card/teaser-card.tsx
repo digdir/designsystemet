@@ -26,7 +26,9 @@ const TeaserCard = ({
         <p className={classes.desc}>{description}</p>
         {author && date && (
           <div className={classes.meta}>
+            {/* @Todo: contributor logo row component for here and in article. Needs logos */}
             <span>{author}</span>
+            <span className={classes.interpunct}>·</span>
             <span>{date}</span>
           </div>
         )}
