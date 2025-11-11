@@ -148,8 +148,6 @@ const componentPaths = getComponentPaths();
 const allPages = [
   '/no/components',
   '/en/components',
-  '/no/changelog',
-  '/en/changelog',
   ...contentPaths,
   ...componentPaths,
 ];
