@@ -148,10 +148,10 @@ const componentPaths = getComponentPaths();
 const allPages = [
   '/no/components',
   '/en/components',
-  '/no/changelog',
-  '/en/changelog',
   ...contentPaths,
-  ...componentPaths,
+  ...(process.env.APP_ENV === 'production'
+    ? []
+    : ['/no/changelog', '/en/changelog', ...componentPaths]),
 ];
 
 const config: Config = {
