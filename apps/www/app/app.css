@@ -29,7 +29,7 @@
   --grid-gap: var(--ds-size-8);
 
   --page-spacing-bottom: var(--ds-size-14);
-  --media-max-width: 800px;
+  --media-max-width: 100%;
 }
 
 body {
