@@ -144,8 +144,15 @@ const getComponentPaths = (): string[] => {
 };
 
 const contentPaths = getContentPathsWithLanguages();
-const _componentPathsss = getComponentPaths();
-const allPages = ['/no/components', '/en/components', ...contentPaths];
+const componentPaths = getComponentPaths();
+const allPages = [
+  '/no/components',
+  '/en/components',
+  ...contentPaths,
+  ...(process.env.APP_ENV === 'production'
+    ? []
+    : ['/no/changelog', '/en/changelog', ...componentPaths]),
+];
 
 const config: Config = {
   ssr: true,
