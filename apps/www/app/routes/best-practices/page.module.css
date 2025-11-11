@@ -1,77 +1,70 @@
 .container {
-  max-width: var(--grid-max-width, 1500px);
-  margin: 0 auto;
-  width: 100%;
-  padding-left: var(--grid-padding, 16px);
-  padding-right: var(--grid-padding, 16px);
+  /*  margin-top: var(--page-spacing-top);
+  margin-bottom: var(--page-spacing-bottom); */
+  padding-top: var(--ds-size-18);
+  padding-bottom: var(--page-spacing-bottom);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr var(--sidebar-right-width, 300px);
+  grid-column-gap: var(--ds-size-12);
+  grid-template-areas:
+    'header aside'
+    'content aside'
+    'content aside';
 
-  margin-top: var(--page-spacing-top);
-  margin-bottom: var(--page-spacing-bottom);
+  @media screen and (max-width: 1500px) {
+    --sidebar-right-width: 300px;
+  }
+
+  @media (max-width: 1100px) {
+    --sidebar-right-width: 200px;
+    padding-top: var(--ds-size-8);
+  }
 }
 
 .header {
-  background-color: var(--ds-color-brand3-surface-tinted);
-  padding-top: var(--ds-size-7);
-}
+  max-width: var(--short-content-width);
+  padding-bottom: var(--ds-size-11);
+  grid-area: header;
 
-.headerContent {
-  max-width: 780px;
-  margin: 0 auto;
-  padding-bottom: var(--ds-size-18);
-}
-
-.headerContent h1,
-.headerContent h2,
-.headerContent p {
-  color: var(--ds-color-brand3-text-default);
+  p {
+    text-wrap: pretty;
+  }
 }
 
 .title {
   margin-bottom: 0;
-  text-align: center;
-}
-
-.backBtn {
-  margin-bottom: var(--ds-size-10);
-}
-
-.backBtn svg {
-  margin-right: var(--ds-size-2);
 }
 
 .separator {
-  margin: 0 var(--ds-size-2);
+  font-size: 2rem;
+  line-height: 1rem;
 }
 
 .meta {
+  color: var(--ds-color-neutral-text-subtle);
   display: flex;
-  text-align: center;
-  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--ds-size-3);
   margin-bottom: var(--ds-size-3);
   margin-top: var(--ds-size-8);
 }
 
-.content {
-  max-width: 780px;
-  margin: 0 auto;
+.tableOfContents {
+  grid-area: aside;
+  align-self: start;
 }
 
-@media (max-width: 576px) {
-  .content {
-    padding: 0;
-  }
+.content {
+  grid-area: content;
+}
 
-  .title {
-    text-align: left;
+@media (max-width: 950px) {
+  .container {
+    display: block;
   }
-
-  .meta {
-    flex-direction: column;
-    text-align: left;
-    gap: var(--ds-size-1);
-  }
-
-  .separator {
+  .tableOfContents {
     display: none;
   }
 }
