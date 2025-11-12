@@ -1,8 +1,6 @@
-import { ContentContainer } from '@internal/components';
-import { PencilIcon } from '@navikt/aksel-icons';
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router';
-import { Banner, BannerHeading } from '~/_components/banner/banner';
 import classes from './layout.module.css';
 
 export { ErrorBoundary } from '~/root';
@@ -11,13 +9,16 @@ export default function Layout() {
   const { t } = useTranslation();
 
   return (
-    <div data-is-main={true}>
-      <Banner data-color='danger' icon={<PencilIcon />}>
-        <BannerHeading level={1}>{t('blog.title')}</BannerHeading>
-      </Banner>
-      <ContentContainer className={classes.main}>
+    <div className='l-content-container'>
+      <div className={classes.header}>
+        <Heading data-size='lg' level={1}>
+          {t('blog.title')}
+        </Heading>
+        <Paragraph data-size='lg'>{t('blog.description')}</Paragraph>
+      </div>
+      <div className={classes.main}>
         <Outlet />
-      </ContentContainer>
+      </div>
     </div>
   );
 }

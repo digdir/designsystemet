@@ -6,6 +6,14 @@
   gap: var(--ds-size-18);
   column-gap: var(--ds-size-12);
 }
+.header {
+  text-align: center;
+  max-width: var(--short-content-width);
+  margin: var(--page-spacing-top) auto 0 auto;
+  h1 {
+    margin-bottom: var(--ds-size-4);
+  }
+}
 
 .main [data-featured='true'] {
   grid-column: span 3;
@@ -22,6 +30,16 @@
 }
 
 @media screen and (max-width: 768px) {
+  .header {
+    text-align: start;
+    h1 {
+      margin-bottom: var(--ds-size-2);
+      font-size: var(--ds-font-size-6);
+    }
+    p {
+      font-size: var(--ds-font-size-4);
+    }
+  }
   .main {
     grid-template-columns: 1fr;
   }
