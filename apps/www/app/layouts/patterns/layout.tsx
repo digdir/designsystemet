@@ -1,14 +1,8 @@
 import { join } from 'node:path';
-import { ContentContainer } from '@internal/components';
-import { LayersIcon } from '@navikt/aksel-icons';
+import cl from 'clsx';
 import { bundleMDX } from 'mdx-bundler';
 import { useTranslation } from 'react-i18next';
 import { Outlet, useMatches } from 'react-router';
-import {
-  Banner,
-  BannerHeading,
-  BannerIngress,
-} from '~/_components/banner/banner';
 import { Sidebar } from '~/_components/sidebar/sidebar';
 import {
   getFileFromContentDir,
@@ -92,25 +86,19 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
   const isPatternsPage = matches.some((match) => match.id === 'patterns-page');
 
   return (
-    <>
-      {!isPatternsPage ? (
-        <Banner data-color='warning' icon={<LayersIcon />}>
-          <BannerHeading level={1}>{t('patterns.title')}</BannerHeading>
-          <BannerIngress>{t('patterns.description')}</BannerIngress>
-        </Banner>
-      ) : null}
-      <ContentContainer data-is-main={!isPatternsPage}>
-        <div className={classes['sidebar-container']} data-color='neutral'>
-          <Sidebar
-            cats={cats}
-            title={t('patterns.title')}
-            className={classes.sidebar}
-          />
-          <div className={classes.content}>
-            <Outlet />
-          </div>
-        </div>
-      </ContentContainer>
-    </>
+    <div
+      className={cl(classes['content-container'], 'l-content-container')}
+      data-is-main={!isPatternsPage}
+    >
+      <Sidebar
+        cats={cats}
+        title={t('patterns.title')}
+        hideCatTitle
+        className={'l-sidebar-left'}
+      />
+      <div className={classes.content}>
+        <Outlet />
+      </div>
+    </div>
   );
 }
