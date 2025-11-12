@@ -41,9 +41,6 @@
 .title {
   margin-top: 0px;
   margin-bottom: var(--ds-size-3);
-  a {
-    text-decoration: none;
-  }
 }
 
 .desc {
