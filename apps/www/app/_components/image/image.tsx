@@ -79,7 +79,7 @@ const Image = ({
       </dialog>
 
       {caption && (
-        <Paragraph data-size='sm' asChild>
+        <Paragraph className={classes.caption} data-size='sm' asChild>
           <figcaption>{caption}</figcaption>
         </Paragraph>
       )}
