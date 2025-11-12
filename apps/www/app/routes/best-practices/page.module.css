@@ -24,6 +24,10 @@
   max-width: var(--short-content-width);
   padding-bottom: var(--ds-size-11);
   grid-area: header;
+  [data-size='xs'] {
+    margin-bottom: var(--ds-size-3);
+    color: var(--ds-color-neutral-text-subtle);
+  }
 
   p {
     text-wrap: pretty;

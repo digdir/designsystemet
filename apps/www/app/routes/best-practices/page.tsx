@@ -68,6 +68,9 @@ export default function BestPractices({
     <div className={cl('l-content-container')}>
       <div className={classes.container}>
         <div className={classes.header}>
+          <Heading data-size='xs' asChild>
+            <p>{t('best-practices.title')}</p>
+          </Heading>
           <Heading level={1} data-size='lg' className={classes.title}>
             {title}
           </Heading>
