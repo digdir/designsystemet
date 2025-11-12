@@ -1,23 +1,12 @@
 {
   "recommendations": [
+    "biomejs.biome",
     "unifiedjs.vscode-mdx",
     "christian-kohler.npm-intellisense",
-    "techer.open-in-browser",
     "ionutvmi.path-autocomplete",
-    "jock.svg",
-    "naumovs.color-highlight",
     "clinyong.vscode-css-modules",
-    "aaron-bond.better-comments",
     "eamodio.gitlens",
     "ms-vsliveshare.vsliveshare",
-    "vivaxy.vscode-conventional-commits",
-    "bierner.color-info",
-    "formulahendry.auto-rename-tag",
-    "formulahendry.auto-close-tag",
-    "usernamehw.errorlens",
-    "phoenisx.cssvar",
-    "editorconfig.editorconfig",
-    "zignd.html-css-class-completion",
-    "biomejs.biome"
+    "phoenisx.cssvar"
   ]
 }

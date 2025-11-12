@@ -19,7 +19,6 @@
   "cssvar.files": [
     "packages/theme/src/themes/designsystemet.css",
   ],
-  "html-css-class-completion.includeGlobPattern": "packages/css/**/*.{css,html}",
   "[github-actions-workflow]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
@@ -34,9 +33,6 @@
   },
   "[ignore]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
   "[typescript]": {
     "editor.defaultFormatter": "biomejs.biome"
