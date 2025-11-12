@@ -1,6 +1,7 @@
 import {
   Checkbox,
   Fieldset,
+  Table,
   useCheckboxGroup,
   ValidationMessage,
 } from '@digdir/designsystemet-react';
@@ -146,5 +147,81 @@ export const ReadOnly = () => {
       <Checkbox label='SMS' {...getCheckboxProps('sms')} />
       <ValidationMessage {...validationMessageProps} />
     </Fieldset>
+  );
+};
+
+export const InTable = () => {
+  const tableData = [
+    {
+      id: 1,
+      navn: 'Lise Nordmann',
+      epost: 'lise@nordmann.no',
+      telefon: '68051156',
+    },
+    {
+      id: 2,
+      navn: 'Kari Nordmann',
+      epost: 'kari@nordmann.no',
+      telefon: '68059679',
+    },
+    {
+      id: 3,
+      navn: 'Ola Nordmann',
+      epost: 'ola@nordmann.no',
+      telefon: '68055731',
+    },
+    {
+      id: 4,
+      navn: 'Per Nordmann',
+      epost: 'per@nordmann.no',
+      telefon: '68059631',
+    },
+  ];
+
+  const { getCheckboxProps } = useCheckboxGroup({
+    name: 'checkbox-table',
+    value: ['2', '3'],
+  });
+
+  return (
+    <Table>
+      <colgroup>
+        {/* ensure the first column only takes up the necessary space */}
+        <col style={{ width: '1px' }} />
+        <col />
+        <col />
+      </colgroup>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell>
+            <Checkbox
+              aria-label='Velg alle'
+              {...getCheckboxProps({
+                allowIndeterminate: true,
+                value: 'all',
+              })}
+            />
+          </Table.HeaderCell>
+          <Table.HeaderCell>Navn</Table.HeaderCell>
+          <Table.HeaderCell>E-post</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        {tableData.map((person) => (
+          <Table.Row key={person.id}>
+            <Table.Cell>
+              <Checkbox
+                aria-labelledby={`checkbox-${person.id}-name`}
+                {...getCheckboxProps(person.id.toString())}
+              />
+            </Table.Cell>
+            <Table.Cell id={`checkbox-${person.id}-name`}>
+              {person.navn}
+            </Table.Cell>
+            <Table.Cell>{person.epost}</Table.Cell>
+          </Table.Row>
+        ))}
+      </Table.Body>
+    </Table>
   );
 };
