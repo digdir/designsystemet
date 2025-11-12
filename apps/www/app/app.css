@@ -27,8 +27,6 @@
   --grid-max-width: 1400px;
   --grid-padding: clamp(1rem, calc(0.27rem + 3.64vw), 3rem);
   --grid-gap: var(--ds-size-8);
-
-  --media-max-width: 100%;
 }
 
 body {
@@ -44,13 +42,15 @@ body {
 
 @layer new-layout {
   :root {
-    --page-spacing-top: var(--ds-size-14);
-    --page-spacing-bottom: var(--ds-size-14);
+    --page-spacing-top: var(--ds-size-14); /*legacy*/
+    --page-spacing-bottom: var(--ds-size-14); /*legacy*/
     --max-page-width: 1920px;
     --max-content-width: 1300px;
     --sidebar-left-width: 300px;
     --sidebar-right-width: 300px;
     --short-content-width: 700px;
+    --long-content-width: 950px;
+    --media-max-width: var(--long-content-width); /*legacy*/
     --content-inline-padding: var(--ds-size-7);
     --header-height: 75px;
     @media screen and (max-width: 1500px) {
@@ -191,8 +191,8 @@ body {
       > * {
         max-width: var(--short-content-width);
       }
-      :where(img, section, figure, table, video) {
-        max-width: 100%;
+      :where(img, section, figure, table, video, .u-long-content, .dodont-row) {
+        max-width: var(--long-content-width);
       }
       hr {
         margin-inline: 0;

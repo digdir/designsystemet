@@ -288,7 +288,7 @@ export const LiveComponent = ({
       theme={colorScheme === 'dark' ? themes.vsDark : themes.vsLight}
     >
       <div
-        className={classes.preview}
+        className={cl(classes.preview, 'u-long-content')}
         data-color='accent'
         data-live='true'
         data-layout={layout}

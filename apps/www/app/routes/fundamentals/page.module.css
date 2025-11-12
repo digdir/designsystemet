@@ -24,11 +24,6 @@
   grid-area: content;
 }
 
-.githubLink {
-  display: inline-block;
-  margin-top: var(--ds-size-12);
-}
-
 .tableOfContents {
   grid-area: aside;
   align-self: start;
