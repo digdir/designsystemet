@@ -65,7 +65,9 @@ export default function Fundamentals({
     <>
       <div className={classes.header}>
         <div className={classes.headerText}>
-          <Heading data-size='xs'>{t('fundamentals.title')}</Heading>
+          <Heading data-size='xs' asChild>
+            <p>{t('fundamentals.title')}</p>
+          </Heading>
           <Heading data-size='lg' level={1}>
             {frontmatter.title}
           </Heading>
