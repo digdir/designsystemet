@@ -64,7 +64,7 @@ export default {
     tag: 'Blog',
     title: 'Blog',
     description:
-      'The blog features articles about Designsystemet, design, and development. It’s a space for sharing knowledge and experiences across teams.',
+      'Here you will find stories, experiences, and updates from Designsystemet. A place to learn from each other and stay up to date.',
     write: {
       title: 'Want to write for the blog?',
       description:
