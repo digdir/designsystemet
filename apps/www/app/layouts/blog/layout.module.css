@@ -3,8 +3,7 @@
   padding-bottom: var(--ds-size-18);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: var(--ds-size-18);
-  column-gap: var(--ds-size-12);
+  gap: var(--ds-size-10);
 }
 .header {
   text-align: center;
