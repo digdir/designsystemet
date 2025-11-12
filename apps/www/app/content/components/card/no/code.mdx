@@ -58,7 +58,35 @@ Du kan endre mellom `display: flex` og `display: grid` for å legge `Card.Block`
 
 <Story story="AsGrid" />
 
+## HTML
+
+`Card` har to klassenavn du kan bruke.
+- `ds-card`: Hovedklassen som omfavner hele kortet.
+- `ds-card__block`: Klassen som brukes for hver seksjon i kortet.
+
+```html
+<!-- uten inndeling -->
+<div class="ds-card">
+  Et kort
+</div>
+
+<!-- med inndeling -->
+<div class="ds-card">
+  <div class="ds-card__block">
+    Tittel
+  </div>
+  <div class="ds-card__block">
+    Innhold
+  </div>
+  <div class="ds-card__block">
+    Valgfri fotnote
+  </div>
+</div>
+```
+
 ## CSS variabler og data-attributter
+`Card` har to css klasser, men alle css variabler er knyttet til hovedklassen `ds-card`.
+
 <CssVariables />
 
 <CssAttributes />
