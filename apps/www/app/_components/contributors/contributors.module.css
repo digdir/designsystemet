@@ -1,4 +1,6 @@
 .container {
+  --_column-gap: 10px;
+  --_square-size: 7px;
   display: grid;
   grid-template-columns: auto 1fr;
   gap: var(--ds-size-3);
@@ -8,9 +10,23 @@
   border: 1px solid var(--ds-color-neutral-border-subtle);
   max-width: var(--short-content-width);
 
+  > div {
+    overflow: clip;
+  }
+
   & span {
-    word-break: break-word;
-    text-wrap: balance;
+    &::before {
+      display: inline-block;
+      content: '';
+      width: var(--_square-size);
+      aspect-ratio: 1;
+      transform: rotate(45deg);
+      border-radius: 1px;
+      background-color: var(--ds-color-brand1-border-default);
+      margin: auto 0;
+      margin-right: var(--_column-gap);
+      vertical-align: middle;
+    }
   }
 
   @media screen and (max-width: 860px) {
@@ -25,6 +41,9 @@
 .container h3 {
   margin: 0;
 }
+.container p {
+  margin-left: calc(-1 * (var(--_column-gap) + var(--_square-size)));
+}
 .container h3 {
   margin-bottom: 4px;
 }
@@ -38,17 +57,7 @@
   display: flex;
   flex-wrap: wrap;
   text-wrap: nowrap;
-  column-gap: 10px;
+  column-gap: var(--_column-gap);
   row-gap: 8px;
   color: var(--ds-color-neutral-text-subtle);
-}
-
-.metaSquare {
-  width: 7px;
-  height: 7px;
-  transform: rotate(45deg);
-  border-radius: 1px;
-  background-color: var(--ds-color-brand1-border-default);
-  margin: auto 0;
-  break-after: avoid;
 }

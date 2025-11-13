@@ -1,5 +1,4 @@
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
-import { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import classes from './contributors.module.css';
@@ -28,12 +27,7 @@ export const Contributors = ({
         </Heading>
         <Paragraph data-size='sm' className={classes.meta}>
           {authors?.map((author, index) => (
-            <Fragment key={index}>
-              {index !== 0 && (
-                <span aria-hidden className={classes.metaSquare} />
-              )}
-              <span>{author}</span>
-            </Fragment>
+            <span key={index}>{author}</span>
           ))}
         </Paragraph>
       </div>
