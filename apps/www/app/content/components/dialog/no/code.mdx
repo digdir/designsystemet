@@ -84,8 +84,10 @@ Blokker inne i dialogen får klassenavn som `ds-dialog__block`.
 
 I HTML må du selv koble `<dialog>`-elementet til en trigger, og håndtere åpning og lukking av dialogen med JavaScript.
 
+**Merk at knappen som åpner dialogen bør ha `aria-haspopup="dialog"`-attributtet.**
+
 ```html
-<button id="openDialog">Open Dialog</button>
+<button id="openDialog" aria-haspopup="dialog" type="button">Open Dialog</button>
 <dialog id="myDialog" class="ds-dialog">
   <div>Content</div>
   <button id="closeDialog">Close</button>
