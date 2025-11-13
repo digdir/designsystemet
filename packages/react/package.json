@@ -55,7 +55,7 @@
   "devDependencies": {
     "@digdir/designsystemet": "workspace:^",
     "@digdir/designsystemet-css": "workspace:^",
-    "@rollup/plugin-commonjs": "^28.0.9",
+    "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@storybook/addon-docs": "^9.1.16",
     "@storybook/addon-vitest": "^9.1.16",
