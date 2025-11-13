@@ -71,6 +71,26 @@ Koden vi bruker er ikke react-spesifikk, så du kan kopiere koden vår inntil vi
 
 `data-field="validation"` trengst kun dersom du kobler opp `fieldObserver`.
 
+### Plassering
+
+For å endre plassering av elementer i `Field`, som for eksempel en `Switch`, kan du legge til `data-position="end|start"` på samme element som `ds-field`.
+
+```html
+<div class="ds-field" data-position="end">
+  <label
+    class="ds-label"
+    data-weight="medium"
+    for=":mhxbylqzlb8"
+  >Flymodus</label>
+  <input
+    class="ds-input"
+    role="switch"
+    type="checkbox"
+    id=":mhxbylqzlb8"
+  >
+</div>
+```
+
 ## CSS variabler og data-attributter
 
 <CssVariables />
