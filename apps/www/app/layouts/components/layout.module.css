@@ -8,15 +8,23 @@
 
 .content {
   margin-top: var(--ds-size-13);
-  display: grid;
-  grid-template-rows: auto 1fr;
-  grid-template-columns: 1fr var(--sidebar-right-width, 300px);
-  grid-column-gap: var(--ds-size-12);
-  max-width: var(--max-content-width);
-  grid-template-areas:
-    'header header'
-    'content aside'
-    'content aside';
+  [data-is-component='true'] & {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr var(--sidebar-right-width, 300px);
+    grid-column-gap: var(--ds-size-12);
+    max-width: var(--max-content-width);
+    grid-template-areas:
+      'header header'
+      'content aside'
+      'content aside';
+
+    @media (max-width: 1279px) {
+      grid-template-areas:
+        'header header'
+        'content content';
+    }
+  }
 
   > h2 {
     margin-bottom: var(--ds-size-3);
@@ -26,8 +34,5 @@
   }
   @media screen and (max-width: 1279px) {
     margin-top: 0;
-    grid-template-areas:
-      'header header'
-      'content content';
   }
 }

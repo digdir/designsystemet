@@ -1,9 +1,4 @@
 .components {
-  padding-top: var(--page-spacing-top);
-  /* @todo: generalize and what breakpint should it be? */
-  @media screen and (max-width: 768px) {
-    padding-top: var(--ds-size-8);
-  }
 }
 .grid {
   padding-bottom: var(--ds-size-18);

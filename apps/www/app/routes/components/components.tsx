@@ -68,7 +68,7 @@ export default function Components() {
   const { t } = useTranslation();
 
   return (
-    <div className={cl('l-content-container', classes.components)}>
+    <>
       <Banner data-color='accent' icon={<ComponentFillIcon />}>
         <BannerHeading level={1}>{t('components.title')}</BannerHeading>
         <BannerIngress>{t('components.description')}</BannerIngress>
@@ -78,6 +78,6 @@ export default function Components() {
           <ComponentCard key={component.title} {...component} />
         ))}
       </div>
-    </div>
+    </>
   );
 }
