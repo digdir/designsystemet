@@ -446,8 +446,8 @@ importers:
         specifier: ^3.1.2
         version: 3.1.2
       colorjs.io:
-        specifier: ^0.6.0-alpha.1
-        version: 0.6.0-alpha.1
+        specifier: ^0.6.0-beta.3
+        version: 0.6.0-beta.3
       commander:
         specifier: ^14.0.2
         version: 14.0.2
@@ -3079,8 +3079,8 @@ packages:
   colorjs.io@0.5.2:
     resolution: {integrity: sha512-twmVoizEW7ylZSN32OgKdXRmo1qg+wT5/6C3xu5b9QsWzSFAhHLn2xd8ro0diCsKfCj1RdaTP/nrcW+vAoQPIw==}
 
-  colorjs.io@0.6.0-alpha.1:
-    resolution: {integrity: sha512-c/h/8uAmPydQcriRdX8UTAFHj6SpSHFHBA8LvMikvYWAVApPTwg/pyOXNsGmaCBd6L/EeDlRHSNhTtnIFp/qsg==}
+  colorjs.io@0.6.0-beta.3:
+    resolution: {integrity: sha512-LuZuWmlCc3oeGnZ9IdH6Uo0OOf1wBfLCedZEoaNsO8VYqTbsqkFp9QHcd9Yt2KilpCHJArOM3kHmG43arZ7OHw==}
 
   colorparsley@0.1.8:
     resolution: {integrity: sha512-rObESTTTE6G5qO5WFwFxWPggpw4KfpxnLC6Ssl8bITBnNVRhDsyCeTRAUxWQNVTx2pRknKlO2nddYTxjkdNFaw==}
@@ -8558,7 +8558,7 @@ snapshots:
 
   colorjs.io@0.5.2: {}
 
-  colorjs.io@0.6.0-alpha.1: {}
+  colorjs.io@0.6.0-beta.3: {}
 
   colorparsley@0.1.8: {}
 
