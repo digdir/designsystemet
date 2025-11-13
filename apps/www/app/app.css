@@ -316,6 +316,21 @@ body {
       box-decoration-break: clone;
     }
 
+      kbd {
+    font-family:
+      ui-monospace, Menlo, Monaco, 'Roboto Mono', 'Oxygen Mono',
+      'Ubuntu Monospace', 'Source Code Pro', 'Droid Sans Mono', 'Courier New',
+      monospace;
+    background: var(--ds-color-neutral-surface-tinted);
+    padding: var(--ds-size-1);
+    border-radius: var(--ds-border-radius-md);
+    border: solid 1px var(--ds-color-neutral-border-subtle);
+    position: relative;
+    bottom: 2px;
+    box-shadow: 0.5px 1px 0 0 var(--ds-color-neutral-border-strong);
+    font-size: round(down, 0.8em, 1px);
+  }
+
     & > div + p {
       margin-top: var(--ds-size-5);
     }
