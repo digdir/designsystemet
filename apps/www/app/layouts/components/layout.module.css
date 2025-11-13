@@ -7,7 +7,7 @@
 }
 
 .content {
-  margin-top: var(--ds-size-13);
+  margin-top: var(--page-spacing-top);
   max-width: var(--max-content-width);
   [data-is-component='true'] & {
     display: grid;
@@ -32,8 +32,5 @@
   }
   > p {
     margin-bottom: var(--ds-size-4);
-  }
-  @media screen and (max-width: 1279px) {
-    margin-top: 0;
   }
 }

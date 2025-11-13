@@ -172,6 +172,9 @@ export default function Components({
       <div className={classes.header}>
         <div className={classes.headerUpper}>
           <div className={classes.headerText}>
+            <Heading data-size='xs' asChild>
+              <p>{t('components.title')}</p>
+            </Heading>
             <Heading data-size='lg' level={1}>
               {metadata.title}
             </Heading>

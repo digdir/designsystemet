@@ -14,7 +14,7 @@
   position: relative;
   overflow: hidden;
   margin-bottom: var(--ds-size-6);
-  padding-block: var(--ds-size-10);
+  padding-block-end: var(--ds-size-10);
   border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
   padding-bottom: 0;
   width: 100%;
@@ -44,6 +44,10 @@
 
 .headerText {
   max-width: var(--short-content-width);
+  [data-size='xs'] {
+    margin-bottom: var(--ds-size-3);
+    color: var(--ds-color-neutral-text-subtle);
+  }
   p {
     text-wrap: pretty;
   }
