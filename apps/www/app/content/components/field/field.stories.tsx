@@ -47,7 +47,7 @@ export const Position = () => (
       <Label>Flymodus</Label>
       <Input type='checkbox' role='switch' />
     </Field>
-    <Divider />
+
     <Field position='end'>
       <Label>Lydløs</Label>
       <Input type='checkbox' role='switch' />

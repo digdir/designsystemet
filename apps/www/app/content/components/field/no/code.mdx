@@ -1,12 +1,20 @@
----
-title: Field
-image: Field.svg
-cssfile: field
----
-
 <Story story="Preview" />
+<ReactComponentDocs />
 
-## Prefix/Suffix
+##  Bruk
+
+```tsx
+<Field>
+  <Label>Kort beskrivelse</Label>
+  <Field.Description>Beskrivelse</Field.Description>
+  <Input />
+  <ValidationMessage>Feilmelding</ValidationMessage>
+</Field>
+```
+
+## Eksempel
+
+### Prefix/Suffix
 
 Prefixer og suffixer er nyttige for å vise enheter, valuta eller andre typer informasjon som er relevant for feltet.
 Du skal **ikke** bruke disse alene, siden skjermlesere ikke leser dem opp.
@@ -14,13 +22,57 @@ Det er viktig at samme informasjon som vises i prefixet eller suffixet også er 
 
 <Story story="Affix" />
 
-## Antall tegn
+### Antall tegn
 
 Bruk `Field.Counter` til å informere om antall tegn brukerne kan skrive i feltet.
 
 <Story story="Counter" />
 
-## Plassering
-Bruk `position="end"` når du ønsker å plassere for eksempel en `Switch` til høyre for `Label`. Dette kan være nyttig i innstillingsgrensesnitt, slik at brukeren først kan lese etiketten til venstre - som forklarer hva innstillingen gjelder - og deretter handlingselementet (bryteren) til høyre. 
+### Plassering
+
+Bruk `position="end"` når du ønsker å plassere for eksempel en `Switch` til høyre for `Label`.
+
+Du kan endre teksten ved å sende inn props, som du kan se øverst på siden. Språket er standard norsk bokmål.
 
 <Story story="Position" />
+
+## HTML
+
+Du kan få styling fra `Field` med klassenavnet `ds-field`.
+På beskrivelse må du sette `data-field="description"` for å få korrekt styling.
+
+Diverre er det ein del javascript som `Field` køyrer internt, så dette må koblest opp selv.
+Koden vi bruker er ikke react-spesifikk, så du kan kopiere koden vår inntil vi har et bedre alternativ utenfor React.
+
+[`fieldObserver` (github.com)](https://github.com/digdir/designsystemet/blob/main/packages/react/src/components/field/field-observer.ts)
+
+```html
+<div class="ds-field">
+  <label
+    class="ds-label"
+    data-weight="medium"
+    for="field-input"
+  >Etternavn</label>
+  <div data-field="description" id="field-description">Etternavn kan ikke inneholde mellomrom</div>
+  <input
+    class="ds-input"
+    type="text"
+    value="Nordmann Svenske"
+    id="field-input"
+    aria-describedby="field-error field-description"
+  >
+  <p
+    class="ds-validation-message"
+    data-field="validation"
+    id="field-error"
+  >Du kan ikke ha mellomrom i etternavnet ditt</p>
+</div>
+```
+
+`data-field="validation"` trengst kun dersom du kobler opp `fieldObserver`.
+
+## CSS variabler og data-attributter
+
+<CssVariables />
+
+<CssAttributes />
