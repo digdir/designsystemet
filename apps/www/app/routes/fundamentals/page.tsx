@@ -1,7 +1,6 @@
 import { join } from 'node:path';
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import { Error404 } from '@internal/components';
-import * as Aksel from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { useTranslation } from 'react-i18next';
 import { isRouteErrorResponse } from 'react-router';
@@ -61,31 +60,27 @@ export const meta = ({ data }: Route.MetaArgs) => {
 export default function Fundamentals({
   loaderData: { code, frontmatter, lang, toc },
 }: Route.ComponentProps) {
-  const Icon = frontmatter.icon
-    ? // biome-ignore lint/performance/noDynamicNamespaceImportAccess: this should be safe because we prerender the page
-      Aksel[frontmatter.icon as keyof typeof Aksel]
-    : Aksel.LayersIcon;
-
+  const { t } = useTranslation();
   return (
     <>
       <div className={classes.header}>
         <div className={classes.headerText}>
+          <Heading data-size='xs' asChild>
+            <p>{t('fundamentals.title')}</p>
+          </Heading>
           <Heading data-size='lg' level={1}>
             {frontmatter.title}
           </Heading>
+          {frontmatter.description && (
+            <Paragraph data-size='lg' style={{ marginTop: '12px' }}>
+              {frontmatter.description}
+            </Paragraph>
+          )}
           {frontmatter.date && (
             <div className={classes.date}>
-              {formatDate(frontmatter.date, lang)}
+              {`${t('updated')} ${formatDate(frontmatter.date, lang)}`}
             </div>
           )}
-        </div>
-        <div
-          className={cl(
-            classes.iconContainer,
-            classes[frontmatter.color as keyof typeof classes],
-          )}
-        >
-          <Icon fontSize='4rem' aria-hidden='true' />
         </div>
       </div>
       <TableOfContents
@@ -93,7 +88,7 @@ export default function Fundamentals({
         title={frontmatter.title}
         items={toc}
       />
-      <div className={cl(classes.content, 'u-rich-text')}>
+      <div className={cl(classes.content, 'u-rich-text', 'left-adjusted')}>
         <MDXComponents
           code={code}
           components={{

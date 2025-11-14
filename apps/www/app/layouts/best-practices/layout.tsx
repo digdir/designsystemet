@@ -1,20 +1,11 @@
 import { join } from 'node:path';
-import { HandShakeHeartIcon } from '@navikt/aksel-icons';
-import { useTranslation } from 'react-i18next';
-import { Outlet, useMatches } from 'react-router';
-import {
-  Banner,
-  BannerHeading,
-  BannerIcon,
-  BannerIngress,
-} from '~/_components/banner/banner';
+import { Outlet } from 'react-router';
 import {
   getFileFromContentDir,
   getFilesFromContentDir,
 } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import type { Route } from './+types/layout';
-import classes from './layout.module.css';
 
 export { ErrorBoundary } from '~/root';
 
@@ -120,34 +111,5 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
 };
 
 export default function Layout() {
-  const matches = useMatches();
-  const { t } = useTranslation();
-
-  /* if we have id best-practices-page, hide banner */
-  const isGodPraksisPage = matches.some(
-    (match) => match.id === 'best-practices-page',
-  );
-
-  return (
-    <>
-      {!isGodPraksisPage ? (
-        <>
-          <Banner color='yellow'>
-            <BannerIcon>
-              <HandShakeHeartIcon fontSize={34} />
-            </BannerIcon>
-            <BannerHeading level={1}>{t('best-practices.title')}</BannerHeading>
-            <BannerIngress>{t('best-practices.description')}</BannerIngress>
-          </Banner>
-          <div className={classes.content} data-is-main={true}>
-            <div className={classes.container}>
-              <Outlet />
-            </div>
-          </div>
-        </>
-      ) : (
-        <Outlet />
-      )}
-    </>
-  );
+  return <Outlet />;
 }

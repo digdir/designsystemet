@@ -27,9 +27,6 @@
   --grid-max-width: 1400px;
   --grid-padding: clamp(1rem, calc(0.27rem + 3.64vw), 3rem);
   --grid-gap: var(--ds-size-8);
-  --page-spacing-top: var(--ds-size-14);
-  --page-spacing-bottom: var(--ds-size-14);
-  --media-max-width: 800px;
 }
 
 body {
@@ -39,15 +36,179 @@ body {
   padding: 0;
 }
 
-/*make each section front page have tinted background */
-[data-color-scheme='light'] {
-  main:has([data-is-main='true']) {
-    background-color: var(--ds-color-neutral-background-tinted);
-  }
-}
-
 #main {
   min-height: 80svh;
+}
+
+@layer layout {
+  :root {
+    --logo-red: #f05f63;
+    --logo-blue: #1e98f5;
+    --logo-yellow: #e5aa20;
+    --logo-slate: #626b77;
+
+    --page-spacing-top: var(--ds-size-14); /*legacy*/
+    --page-spacing-bottom: var(--ds-size-14); /*legacy*/
+    --max-page-width: 1920px;
+    --max-content-width: 1300px;
+    --sidebar-left-width: 300px;
+    --sidebar-right-width: 300px;
+    --short-content-width: 700px;
+    --long-content-width: 950px;
+    --media-max-width: var(--long-content-width); /*legacy*/
+    --content-inline-padding: var(--ds-size-7);
+    --header-height: 75px;
+    @media screen and (max-width: 1500px) {
+      --sidebar-left-width: 200px;
+      --sidebar-right-width: 200px;
+      --page-spacing-top: var(--ds-size-8);
+      --page-spacing-bottom: var(--ds-size-12);
+    }
+  }
+  .l-sidebar-left {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    container-type: scroll-state;
+    container-name: sticky-nav;
+    border-right: 1px solid var(--ds-color-neutral-border-subtle);
+    top: 0;
+    overflow: auto;
+    /*@TODO: better solution for non-sticky header + sticky sidebar?*/
+    max-height: 100vh;
+    padding-top: var(--ds-size-6);
+    scrollbar-color: var(--ds-color-neutral-border-subtle) transparent;
+
+    overscroll-behavior: contain;
+    > nav {
+      margin-bottom: var(--header-height);
+    }
+
+    /* progressively dehance clunkyness if biome permits*/
+    /*@container sticky-nav scroll-state(stuck: none) {
+      nav {
+        margin-bottom: var(--header-height, 100px);
+      }
+    }
+    @container sticky-nav scroll-state(stuck: top) {
+      nav {
+        margin-bottom: 0;
+      }
+    }*/
+  }
+  .l-content-container {
+    container: content-container / inline-size;
+    width: 100%;
+    max-width: calc(var(--max-content-width) + (var(--content-inline-padding) * 2));
+    margin: 0 auto;
+    padding-inline: var(--content-inline-padding);
+    display: grid;
+    &:has(.l-sidebar-left) {
+      max-width: var(--max-page-width);
+      grid-template-columns: var(--sidebar-left-width) minmax(0, 1fr);
+      column-gap: 110px;
+      @media screen and (max-width: 1500px) {
+        column-gap: 48px;
+      }
+      @media screen and (max-width: 958px) {
+        display: block;
+        .l-sidebar-left {
+          border-right: initial;
+          position: static;
+        }
+      }
+    }
+  }
+  .u-default-padding-top {
+    padding-top: var(--page-spacing-top);
+  }
+}
+@layer breakout-grid {
+  /*https://layout-breakouts-builder.vercel.app/*/
+  .l-breakout-grid {
+    --long-content-width: 860px;
+    --short-content-width: 640px;
+    /** Track sizes **/
+    --content-full-bleed: minmax(var(--content-inline-padding), 1fr);
+    --content-max: minmax(0, calc((var(--max-content-width) - var(--long-content-width)) * 0.5));
+    --content: minmax(0, calc((var(--long-content-width) - var(--short-content-width)) * 0.5));
+    --text: min(var(--short-content-width), 100% - var(--content-inline-padding) * 2);
+
+    display: grid;
+    grid-template-columns:
+      [content-full-bleed-start]
+      var(--content-full-bleed)
+      [content-max-start]
+      var(--content-max)
+      [content-start]
+      var(--content)
+      [text-start]
+      var(--text)
+      [text-end]
+      var(--content)
+      [content-end]
+      var(--content-max)
+      [content-max-end]
+      var(--content-full-bleed)
+      [content-full-bleed-end];
+
+    & > * {
+      grid-column: text;
+    }
+
+    > :where(div:not([class]), img, section, figure, table, video, .u-long-content, .dodont-row) {
+      grid-column: content;
+    }
+
+    /** Utility classes **/
+    .content-full-bleed {
+      grid-column: content-full-bleed;
+    }
+    .content-full-bleed-start {
+      grid-column-start: content-full-bleed-start;
+    }
+    .content-full-bleed-end {
+      grid-column-end: content-full-bleed-end;
+    }
+
+    .content-max {
+      grid-column: content-max;
+    }
+    .content-max-start {
+      grid-column-start: content-max-start;
+    }
+    .content-max-end {
+      grid-column-end: content-max-end;
+    }
+
+    .content {
+      grid-column: content;
+    }
+    .content-start {
+      grid-column-start: content-start;
+    }
+    .content-end {
+      grid-column-end: content-end;
+    }
+
+    .text {
+      grid-column: text;
+    }
+    .text-start {
+      grid-column-start: text-start;
+    }
+    .text-end {
+      grid-column-end: text-end;
+    }
+
+    .full-width {
+      grid-column: full;
+    }
+    .full-content {
+      grid-column: full;
+      padding-inline: var(--content-inline-padding);
+    }
+  }
 }
 
 @layer normalize {
@@ -118,9 +279,21 @@ body {
     & > *:last-child {
       margin-bottom: 0;
     }
+    &.left-adjusted {
+      > * {
+        max-width: var(--short-content-width);
+      }
+      :where(div:not([class]), img, section, figure, table, video, .u-long-content, .dodont-row) {
+        max-width: var(--long-content-width);
+      }
+      hr {
+        margin-inline: 0;
+      }
+    }
 
     & p {
       margin-bottom: var(--ds-size-4);
+      text-wrap: pretty;
 
       & > strong {
         margin: 0 !important;
@@ -182,6 +355,7 @@ body {
     & > ol > li {
       line-height: 1.9em;
       word-break: break-word; /* Add this to prevent text from overflowing */
+      text-wrap: pretty;
     }
 
     & > ul > li > ol,
@@ -231,6 +405,20 @@ body {
       border-radius: var(--ds-border-radius-md);
       display: inline;
       border: 1px solid var(--ds-color-neutral-border-subtle);
+      box-decoration-break: clone;
+    }
+
+    kbd {
+      font-family:
+        ui-monospace, Menlo, Monaco, 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro', 'Droid Sans Mono', 'Courier New', monospace;
+      background: var(--ds-color-neutral-surface-tinted);
+      padding: var(--ds-size-1);
+      border-radius: var(--ds-border-radius-md);
+      border: solid 1px var(--ds-color-neutral-border-subtle);
+      position: relative;
+      bottom: 2px;
+      box-shadow: 0.5px 1px 0 0 var(--ds-color-neutral-border-strong);
+      font-size: round(down, 0.8em, 1px);
     }
 
     & > div + p {

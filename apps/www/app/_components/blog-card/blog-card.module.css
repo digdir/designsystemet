@@ -16,6 +16,14 @@
     padding: var(--ds-size-8) var(--ds-size-10);
   }
 }
+@media screen and (max-width: 768px) {
+  .heading {
+    font-size: var(--ds-font-size-4);
+  }
+  p {
+    font-size: var(--ds-font-size-3);
+  }
+}
 
 .heading:not(:first-child) {
   margin-block-start: var(--ds-size-4);
@@ -31,7 +39,6 @@
   display: flex;
   gap: 10px;
   color: var(--ds-color-neutral-text-subtle);
-  font-size: 14px !important;
 }
 
 .metaSquare {
