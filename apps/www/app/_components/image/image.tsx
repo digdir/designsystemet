@@ -15,6 +15,7 @@ const Image = ({
   src,
   boxShadow = false,
   caption,
+  className,
   ...rest
 }: ImageProps) => {
   const { t } = useTranslation();
@@ -49,7 +50,13 @@ const Image = ({
   }, []);
 
   return (
-    <figure className={cl(classes.container, boxShadow && classes.boxShadow)}>
+    <figure
+      className={cl(
+        classes.container,
+        className,
+        boxShadow && classes.boxShadow,
+      )}
+    >
       <div className={classes.imageContainer}>
         <img className={classes.image} src={src} alt={alt} {...rest} />
         <button
