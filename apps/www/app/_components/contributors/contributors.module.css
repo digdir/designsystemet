@@ -15,17 +15,16 @@
   }
 
   & span {
+    display: flex;
+    align-items: center;
     &::before {
-      display: inline-block;
       content: '';
       width: var(--_square-size);
       aspect-ratio: 1;
       transform: rotate(45deg);
       border-radius: 1px;
-      background-color: var(--ds-color-brand1-border-default);
-      margin: auto 0;
+      background-color: var(--logo-red);
       margin-right: var(--_column-gap);
-      vertical-align: middle;
     }
   }
 
@@ -34,6 +33,9 @@
       padding: var(--ds-size-5);
       margin-top: var(--ds-size-8);
     }
+  }
+  :global(.l-breakout-grid):has(&) & {
+    grid-column: text;
   }
 }
 
