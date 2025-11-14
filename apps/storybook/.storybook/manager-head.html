@@ -32,7 +32,7 @@
   #root > * {
     height: calc(100dvh - 100px) !important;
   }
-
+/* biome-ignore lint/style/noDescendingSpecificity: because  */
   * {
     font-feature-settings: 'cv05' 1;
   }
@@ -208,7 +208,7 @@
       padding: 20px 0;
       margin-left: 16px;
     }
-
+    /* biome-ignore lint/style/noDescendingSpecificity: because  */
     .header__active {
       display: block;
     }
@@ -228,7 +228,7 @@
 </style>
 
 <script>
-  function openMenu() {
+  function _openMenu() {
     document.getElementById('header-menu').classList.add('header__menu--open');
     document
       .getElementById('header-bars')
@@ -237,7 +237,7 @@
       .getElementById('header-close')
       .classList.remove('header__toggle--hidden');
   }
-  function closeMenu() {
+  function _closeMenu() {
     document
       .getElementById('header-menu')
       .classList.remove('header__menu--open');
@@ -303,13 +303,16 @@
 }
 
 .sidebar-header {
+  /* biome-ignore lint/style/noDescendingSpecificity: because  */
   & a {
     color: var(--ds-color-neutral-text-default) !important;
   }
 }
 
 .sb-bar {
+  /* biome-ignore lint/style/noDescendingSpecificity: because  */
   & button,
+  /* biome-ignore lint/style/noDescendingSpecificity: because  */
   & a {
     color: var(--ds-color-neutral-text-default) !important;
   }
@@ -317,6 +320,7 @@
 
 [data-testid="tooltip"] {
   & button span span,
+  /* biome-ignore lint/style/noDescendingSpecificity: because  */
   & a,
   & a span span {
     color: var(--ds-color-neutral-text-default) !important;
@@ -344,11 +348,11 @@
     background: var(--ds-color-neutral-base-default) !important;
     box-shadow: unset !important;
     color: var(--ds-color-neutral-base-contrast-default) !important;
-
+/* biome-ignore lint/style/noDescendingSpecificity: because  */
     &:hover {
       background: var(--ds-color-neutral-base-hover) !important;
     }
-    
+
     &[aria-label~='step'] {
       background-color: white !important;
     }
