@@ -40,8 +40,13 @@ body {
   min-height: 80svh;
 }
 
-@layer new-layout {
+@layer layout {
   :root {
+    --logo-red: #f05f63;
+    --logo-blue: #1e98f5;
+    --logo-yellow: #e5aa20;
+    --logo-slate: #626b77;
+
     --page-spacing-top: var(--ds-size-14); /*legacy*/
     --page-spacing-bottom: var(--ds-size-14); /*legacy*/
     --max-page-width: 1920px;
@@ -116,6 +121,93 @@ body {
   }
   .u-default-padding-top {
     padding-top: var(--page-spacing-top);
+  }
+}
+@layer breakout-grid {
+  /*https://layout-breakouts-builder.vercel.app/*/
+  .l-breakout-grid {
+    --long-content-width: 860px;
+    --short-content-width: 640px;
+    /** Track sizes **/
+    --content-full-bleed: minmax(var(--content-inline-padding), 1fr);
+    --content-max: minmax(0, calc((var(--max-content-width) - var(--long-content-width)) * 0.5));
+    --content: minmax(0, calc((var(--long-content-width) - var(--short-content-width)) * 0.5));
+    --text: min(var(--short-content-width), 100% - var(--content-inline-padding) * 2);
+
+    display: grid;
+    grid-template-columns:
+      [content-full-bleed-start]
+      var(--content-full-bleed)
+      [content-max-start]
+      var(--content-max)
+      [content-start]
+      var(--content)
+      [text-start]
+      var(--text)
+      [text-end]
+      var(--content)
+      [content-end]
+      var(--content-max)
+      [content-max-end]
+      var(--content-full-bleed)
+      [content-full-bleed-end];
+
+    & > * {
+      grid-column: text;
+    }
+
+    > :where(div:not([class]), img, section, figure, table, video, .u-long-content, .dodont-row) {
+      grid-column: content;
+    }
+
+    /** Utility classes **/
+    .content-full-bleed {
+      grid-column: content-full-bleed;
+    }
+    .content-full-bleed-start {
+      grid-column-start: content-full-bleed-start;
+    }
+    .content-full-bleed-end {
+      grid-column-end: content-full-bleed-end;
+    }
+
+    .content-max {
+      grid-column: content-max;
+    }
+    .content-max-start {
+      grid-column-start: content-max-start;
+    }
+    .content-max-end {
+      grid-column-end: content-max-end;
+    }
+
+    .content {
+      grid-column: content;
+    }
+    .content-start {
+      grid-column-start: content-start;
+    }
+    .content-end {
+      grid-column-end: content-end;
+    }
+
+    .text {
+      grid-column: text;
+    }
+    .text-start {
+      grid-column-start: text-start;
+    }
+    .text-end {
+      grid-column-end: text-end;
+    }
+
+    .full-width {
+      grid-column: full;
+    }
+    .full-content {
+      grid-column: full;
+      padding-inline: var(--content-inline-padding);
+    }
   }
 }
 
