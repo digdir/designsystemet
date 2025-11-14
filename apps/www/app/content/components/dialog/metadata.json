@@ -1,11 +1,11 @@
 {
   "no": {
     "title": "Dialog",
-    "subtitle": "`Dialog` er en modal dialog som vises over resten av innholdet på siden."
+    "subtitle": "`Dialog` lar deg lage modale og ikke-modale dialoger basert på HTML-elementet `dialog`."
   },
   "en": {
     "title": "Dialog",
-    "subtitle": "`Dialog` is a modal dialog that appears over the rest of the content on the page."
+    "subtitle": "`Dialog` allows you to create both modal and non-modal dialogs based on the HTML `dialog` element."
   },
   "image": "Dialog.svg",
   "cssFile": "dialog.css"

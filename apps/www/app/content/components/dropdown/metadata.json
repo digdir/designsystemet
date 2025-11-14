@@ -1,12 +1,12 @@
 {
   "no": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` er en modal dialog som vises over resten av innholdet på siden."
+    "title": "Dropdown",
+    "subtitle": "`Dropdown` er en generisk nedtrekksliste. Den legger grunnmuren for å bygge menyer og lister. "
   },
   "en": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` is a modal dialog that appears over the rest of the content on the page."
+    "title": "Dropdown",
+    "subtitle": "`Dropdown` is a generic dropdown list. It lays the foundation for building menus and lists."
   },
-  "image": "Dialog.svg",
-  "cssFile": "dialog.css"
+  "image": "Dropdown.svg",
+  "cssFile": "dropdown.css"
 }

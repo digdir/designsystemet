@@ -1,4 +1,12 @@
-import { Checkbox, Fieldset, Radio } from '@digdir/designsystemet-react';
+import {
+  Checkbox,
+  Field,
+  Fieldset,
+  Input,
+  Label,
+  Radio,
+  Select,
+} from '@digdir/designsystemet-react';
 
 export const Preview = () => {
   return (
@@ -29,6 +37,29 @@ export const LegendAsHeading = () => {
       <Fieldset.Legend>
         <h1>Hvor skal du reise?</h1>
       </Fieldset.Legend>
+    </Fieldset>
+  );
+};
+
+export const WithFields = () => {
+  return (
+    <Fieldset>
+      <Fieldset.Legend>Personopplysninger</Fieldset.Legend>
+      <Fieldset.Description>
+        Fyll inn dine personopplysninger nedenfor.
+      </Fieldset.Description>
+      <Field>
+        <Label>Fornavn</Label>
+        <Input />
+      </Field>
+      <Field>
+        <Label>Kjønn</Label>
+        <Select>
+          <Select.Option value='male'>Mann</Select.Option>
+          <Select.Option value='female'>Kvinne</Select.Option>
+          <Select.Option value='other'>Annet</Select.Option>
+        </Select>
+      </Field>
     </Fieldset>
   );
 };

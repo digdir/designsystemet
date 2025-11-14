@@ -1,40 +1,88 @@
 <Story story="Preview" />
 
-## Bruk
+**Bruk `Checkbox` når**
+- flere alternativer skal velges i skjemaer
+- en brukrr skal akseptere vilkår og betingelser
 
-```tsx
-import { Checkbox } from '@digdir/designsystemet-react';
+**Unngå `Checkbox` når**
+- det er kun ett alternativ, bruk heller [`Radio`](/no/components/radio/overview) eller en enkel [`Switch`](/no/components/switch/overview)
 
-<Checkbox label="Checkbox label" value="value" />
-```
 
 ## Kodeeksempler
 
+### Kun ett valg
+
+Hvis brukeren skal bekrefte noe, men ikke velge noe, kan en `Checkbox` stå alene. For eksempel når brukeren skal samtykke til vilkår.
+
+<Story story="OneOption" />
+
 ### Gruppering
+
+De aller fleste ganger brukes `Checkbox` i grupper, der brukeren kan velge flere alternativer.
+`<fieldset>` som er rundt gruppen burde ha en tittel som forklarer hva valgene handler om.
 
 <Story story="Group" />
 
 ### Med feil
 
+Når `Checkbox` brukes i grupper, skal feilmeldingen vises på `Fieldset`, så den blir samlet for hele gruppen.
+
 <Story story="WithError" />
+
+### Skrivebeskyttet Checkbox
+
+`Checkbox` støtter `readOnly`-attributtet for å gjøre feltet skrivebeskyttet, og gir en visuell indikasjon
+som skiller seg fra redigerbare felter.
+Selv om de ikke kan redigeres, er felter med `readOnly`-attributtet med i tabrekkefølgen, og informasjon blir
+med når skjemaet sendes inn.
+
+Vi unngår `readOnly` så langt det lar seg gjøre, fordi slike felter kan være forvirrende for noen brukere.
+Ikke alle vil skjønne hvorfor de ikke får til å endre innholdet i feltet.
+
+<Story story="ReadOnly" />
 
 ### Disabled
 
+Vi bør unngå at `Checkbox` er deaktivert (`disabled`) fordi det kan være vanskelig å oppfatte.
+Noen brukere vil ikke forstå hva valget sier eller hvorfor det ikke er klikkbart.
+Hvis en `Checkbox` eller gruppe med `Checkbox` ikke er relevant, bør du helst fjerne valgene fremfor å deaktivere dem.
+Tilby gjerne brukeren informasjon om hvorfor valgene ikke er tilgjengelige.
+
+Nav har en god forklaring på [hvorfor deaktiverte tilstander er problematisk (nav.no)](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) og hvilke alternativer som finnes.
+
 <Story story="Disabled" />
-
-### ReadOnly
-
-<Story story="ReadOnly" />
 
 ## Retningslinjer
 
 Bruk `Checkbox` når brukeren kan velge ett eller flere alternativer.
 
-**Passer til å**
+### Rekkefølge
 
-- velge flere alternativer i skjemaer
-- akseptere vilkår og betingelser
+Vær bevisst på rekkefølgen du velger for alternativene. Ofte er en alfabetisk sortering det beste, men dersom det finnes en logisk rekkefølge, f.eks. _vinter, vår, sommer, høst_, bør du
+heller bruke denne.
 
-**Passer ikke til å**
+I noen tilfeller kan det være hjelpsomt å ha de mest aktuelle alternativene først, men vær forsiktig så rekkefølgen ikke påvirker svaret eller gjør det vanskelig å finne ønsket alternativ.
 
-- velge kun ett alternativ, bruk heller [`Radio`](/docs/komponenter-radio--docs)
+### Plassering
+
+`Checkbox` skal som hovedregel kun plasseres vertikalt, av hensyn
+til lesbarhet. Det er enklere for brukere å skanne listen når alternativene ligger
+under hverandre. For brukere som trenger å forstørre (zoome inn) nettsiden for å
+se godt nok, er en horisontal liste ekstra vanskelig.
+
+<div className="dodont-row">
+  <DoDont story="DoPlacement">
+    Plasser `Checkbox` vertikalt for bedre lesbarhet.
+  </DoDont>
+  <DoDont story="DontPlacement">
+    Unngå å plassere `Checkbox` horisontalt, da det reduserer lesbarheten.
+  </DoDont>
+</div>
+
+## Tekst 
+
+I et skjema er ofte forklaringen formulert som et spørsmål. I noen sammenhenger kan det være uklart for brukeren om det er lov å velge flere alternativer, eller om de må velge kun ett. Vurder derfor om du bør spesifisere at brukeren kan velge flere svaralternativer.
+
+Bruk et aktivt og positivt språk. Tenk på innholdet som en samtale. Når `legend`
+er en setning, kan du skrive den i du-form og svaralternativene (`label`) i jeg-form. `label` skal alltid ha stor forbokstav.
+

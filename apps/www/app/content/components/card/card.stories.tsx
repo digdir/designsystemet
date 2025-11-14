@@ -48,53 +48,32 @@ export const Media = () => {
   return (
     <Card data-color='neutral'>
       <Card.Block>
-        <iframe
-          src='https://player.vimeo.com/video/863563441?app_id=122963&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1'
-          width='320px'
-          height='179px'
-          allow='autoplay; fullscreen; picture-in-picture'
-          title='30 år med digitalt innsyn'
-        ></iframe>
+        <video controls preload='metadata' width='100%'>
+          <source
+            src='/videos/designsystemet/designsystemet-info.mp4'
+            type='video/mp4'
+          />
+          <track
+            label='Norwegian'
+            kind='subtitles'
+            srcLang='nb'
+            src='/videos/designsystemet/designsystemet-info-no.vtt'
+            default
+          />
+          <track
+            label='English'
+            kind='subtitles'
+            srcLang='en'
+            src='/videos/designsystemet/designsystemet-info-en.vtt'
+          />
+          Your browser does not support the video tag.
+        </video>
       </Card.Block>
       <Card.Block>
-        <Heading>Card Neutral</Heading>
+        <Heading>Om Designsystemet</Heading>
         <Paragraph>
-          Most provide as with carried business are much better more the
-          perfected designer. Writing slightly explain desk unable at supposedly
-          about this
-        </Paragraph>
-      </Card.Block>
-    </Card>
-  );
-};
-
-export const Video = () => {
-  return (
-    <Card data-color='neutral' style={{ maxWidth: '320px' }}>
-      <Card.Block>
-        <iframe
-          src='https://player.vimeo.com/video/863563441?app_id=122963&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1'
-          width='320px'
-          height='179px'
-          allow='autoplay; fullscreen; picture-in-picture'
-          title='30 år med digitalt innsyn'
-        ></iframe>
-      </Card.Block>
-      <Card.Block>
-        <Heading>
-          <a
-            href='https://www.digdir.no/felleslosninger/30-ar-med-digitalt-innsyn/5015'
-            target='_blank'
-            rel='noreferrer'
-          >
-            Vi feira 30 år med digitalt innsyn
-          </a>
-        </Heading>
-        <Paragraph>
-          Det er i år 30 år sidan dei første forsøka med elektronisk postjournal
-          i Noreg. Sjå opptak frå feiringa på Pressens Hus der det både var
-          historiske tilbakeblikk og debatt om innsyn og openheit i
-          forvaltninga.
+          Videoen over gir en kort introduksjon til hva Designsystemet er, og
+          hvordan det kan brukes i utviklingen av digitale tjenester.
         </Paragraph>
       </Card.Block>
     </Card>

@@ -114,9 +114,3 @@ export const MobileViewport = () => (
     </Breadcrumbs.List>
   </Breadcrumbs>
 );
-
-MobileViewport.parameters = {
-  viewport: {
-    defaultViewport: '375px', // Large mobile default viewport
-  },
-};

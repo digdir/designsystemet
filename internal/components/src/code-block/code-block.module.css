@@ -10,7 +10,8 @@
   margin-bottom: 0;
   line-height: 1.5;
 
-  & :global(.token.plain) {
+  & :global(.token.plain),
+  & :global(.token.plain-text) {
     color: var(--ds-color-neutral-text-default);
   }
   code {

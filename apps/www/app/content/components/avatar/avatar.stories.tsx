@@ -56,16 +56,21 @@ export const ShapeVariants = () => (
   </>
 );
 
-export const WithImage = () => (
-  <Avatar aria-label='Ola Nordman'>
-    <img src='/img/component-docs/cats/cat1.webp' alt='' />
-  </Avatar>
+export const WithImageAndIcon = () => (
+  <>
+    <Avatar aria-label='Ola Nordman'>
+      <img src='/img/component-docs/cats/cat1.webp' alt='' />
+    </Avatar>
+    <Avatar aria-label='Ola Nordman'>
+      <BriefcaseIcon />
+    </Avatar>
+  </>
 );
 
 export const InDropdown = () => (
   <Dropdown.TriggerContext>
     <Dropdown.Trigger variant='tertiary'>
-      <Avatar aria-label='Ola Nordmann' data-size='sm'>
+      <Avatar aria-hidden='true' data-size='sm'>
         ON
       </Avatar>
       Velg Profil
@@ -76,7 +81,7 @@ export const InDropdown = () => (
           <Dropdown.Button>
             <Badge.Position overlap='circle'>
               <Badge data-color='danger' data-size='sm'></Badge>
-              <Avatar aria-hidden={true} data-size='xs'>
+              <Avatar aria-hidden='true' data-size='xs'>
                 ON
               </Avatar>
             </Badge.Position>
@@ -85,7 +90,7 @@ export const InDropdown = () => (
         </Dropdown.Item>
         <Dropdown.Item>
           <Dropdown.Button>
-            <Avatar aria-hidden data-size='xs'>
+            <Avatar aria-hidden='true' data-size='xs'>
               <BriefcaseIcon />
             </Avatar>
             Sogndal kommune
@@ -94,16 +99,4 @@ export const InDropdown = () => (
       </Dropdown.List>
     </Dropdown>
   </Dropdown.TriggerContext>
-);
-InDropdown.parameters = {
-  layout: 'fullscreen',
-  customStyles: {
-    height: '320px',
-  },
-};
-
-export const AsLink = () => (
-  <a href='#'>
-    <Avatar aria-label='Ola Nordmann' />
-  </a>
 );

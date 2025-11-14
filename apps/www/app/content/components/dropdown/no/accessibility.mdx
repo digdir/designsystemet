@@ -1,0 +1,15 @@
+Det er innebygd tilgjengelighet i [Popover APIet](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) i henhold til åpne/lukket tilstand og tastatur navigasjon.
+
+### Tastaturnavigasjon
+* <kbd>Enter</kbd> eller <kbd>Space</kbd> åpner/lukker menyen
+* <kbd>Enter</kbd> eller <kbd>Space</kbd> velger markert element
+* <kbd>Esc</kbd> lukker menyen
+
+### Tastatur
+
+På grunn av forskjellige bruksmønstre for `Dropdown` har vi ikke innebygd tastaturhåndtering.
+Dersom du lager en meny må du selv implementere tastaturhåndtering for å navigere i menyen.
+Se ["Menu and Menubar Pattern" hos w3c](https://www.w3.org/WAI/ARIA/apg/patterns/menubar/).
+Vi har [`RovingFocus`](/docs/utilities-rovingfocus--docs) som er en hjelpekomponent for tastaturnavigasjon.
+
+Dersom du bruker `Dropdown` uten å gjøre noe selv, vil fokuserbare elementer i `Dropdown.List` kunne navigeres med tabulator-tasten, og du kan lukke `Dropdown` med Escape-tasten.

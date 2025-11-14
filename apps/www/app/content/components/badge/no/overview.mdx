@@ -1,18 +1,36 @@
 <Story story="Preview" />
 
+**Bruk `Badge` når:**
+- det er tal som viser antall nye meldingar, varsel eller oppgåver.
+- du skal formulere som statusindikatorar i form av ein sirkel, som for eksempel viser om ein person er opptatt, borte eller aktiv.
+
+**Unngå `Badge` når:**
+- det trengs tekst - bruk [`Tag`](/no/components/tag/overview) i staden.
+- det trengs interaktive handlingar - bruk `Chip` eller `Button` i staden.
+
+## Eksempel
+
+### Ved sida av tekst
+
+Badge kan plasserast inline med annan tekst eller komponentar. 
+
+<Story story="InTabs" />
+
+### Flytande
+
+Badge kan plasserast flytande over andre element. Merk deg at dette kan påverke tilgjengelegheita.
+
+<Story story="Floating" />
+
+### Fargar og variantar
+
+Alle fargane som er i temaet ditt kan brukast på `Badge`.
+Komponenten kjem i to variantar: `base` og `tinted`.
+
+<Story story="Variants" />
+
 ## Retningslinjer
 Bruk `Badge` for å trekkje merksemd mot statusar, varslar eller tal. 
 
-**Passer til:**
-- Tal som viser antall nye meldingar, varsel eller oppgåver.
-- Små statusindikatorar i form av ein sirkel, som for eksempel viser om ein person er opptatt, borte eller aktiv.
-
-**Passer ikkje til:**
-- Tekstar - bruk `Tag` i staden.
-- Interaktive handlingar - bruk `Chip` eller `Button` i staden.
-
 ## Tekst
 Denne komponenten er ikkje meint for tekst. Viss du treng å vise ord eller korte frasar, bør du heller bruke `Tag`-komponenten.
-
-## Tilgjengeligheit
-Sørg for at informasjonen også er tilgjengeleg for skjermlesarar. [Meir informasjon kjem.](https://github.com/digdir/designsystemet/issues/3560)

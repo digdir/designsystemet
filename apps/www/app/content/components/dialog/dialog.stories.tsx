@@ -61,6 +61,8 @@ export const WithForm = () => {
           label='Navn'
           value={input}
           onChange={(e) => setInput(e.target.value)}
+          // @ts-expect-error We want the native "autofocus" and Reacts onMount smartness (see https://react.dev/reference/react-dom/components/input#input)
+          autofocus='true'
         />
         <div
           style={{
@@ -103,9 +105,20 @@ export const WithBlocks = () => {
         </Dialog.Block>
         <Dialog.Block>
           <Button variant='secondary' data-command='close'>
-            Close
+            Lukk
           </Button>
         </Dialog.Block>
+      </Dialog>
+    </Dialog.TriggerContext>
+  );
+};
+
+export const CloseWithClickOutside = () => {
+  return (
+    <Dialog.TriggerContext>
+      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+      <Dialog closedby='any'>
+        <Heading>Click outside to close</Heading>
       </Dialog>
     </Dialog.TriggerContext>
   );

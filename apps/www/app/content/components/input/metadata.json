@@ -1,12 +1,12 @@
 {
   "no": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` er en modal dialog som vises over resten av innholdet på siden."
+    "title": "Input",
+    "subtitle": "`Input` er et skjemaelement for å samle inn brukerdata. Det tilbyr grunnleggende funksjonalitet og er ideell når du trenger full kontroll over komponentens oppsett og validering, noe som gjør den ideell for bygging av spesialtilpassede elementer."
   },
   "en": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` is a modal dialog that appears over the rest of the content on the page."
+    "title": "Input",
+    "subtitle": "`Input` is a form element used to collect user data. It offers basic functionality and is ideal when you need full control over the component's layout and validation, making it suitable for building custom elements."
   },
-  "image": "Dialog.svg",
-  "cssFile": "dialog.css"
+  "image": "Input.svg",
+  "cssFile": "input.css"
 }
