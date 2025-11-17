@@ -1,12 +1,12 @@
 {
   "no": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` er en modal dialog som vises over resten av innholdet på siden."
+    "title": "Paragraph",
+    "subtitle": "`Paragraph` brukes til brødtekst - altså løpende tekst som strekker seg over flere linjer. Dette er den mest brukte teksttypen på et nettsted og benyttes typisk i artikler, komponenter, hjelpetekster og lignende. "
   },
   "en": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` is a modal dialog that appears over the rest of the content on the page."
+    "title": "Paragraph",
+    "subtitle": "`Paragraph` is used for body text - that is, running text that spans multiple lines. This is the most commonly used text type on a website and is typically used in articles, components, help texts, and similar."
   },
-  "image": "Dialog.svg",
-  "cssFile": "dialog.css"
+  "image": "Paragraph.svg",
+  "cssFile": "paragraph.css"
 }
