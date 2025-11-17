@@ -1,11 +1,5 @@
----
-title: Radio
-subtitle: 'Vi bruker `Radio` for å gi brukerne valg der de skal velge kun ett alternativ.'
-image: Radio.svg
-cssfile: radio
----
-
 <Story story="Preview" />
+<ReactComponentDocs />
 
 ## Bruk
 
@@ -19,8 +13,85 @@ import { Radio } from '@digdir/designsystemet-react';
 
 ### Gruppering
 
+Bruk [`Fieldset`](/no/components/fieldset) rundt en gruppe med radioknapper for å gi en felles tittel og eventuelt hjelpetekst.
+
 <Story story="Group" />
 
 ### Med feil
 
 <Story story="WithError" />
+
+### Readonly
+
+<Story story="ReadOnly" />
+
+### Inline
+
+<Story story="Inline" />
+
+## HTML
+
+`Radio` er ein samansatt komponent, så i HTML må du bygge den opp av fleire komponentar.
+Me bruker [`Fieldset`](/no/components/fieldset/code), [`Label`](/no/components/label/code) og [`Input`](/no/components/input/code) for å lage ein `Radio`.
+
+Koden under viser hvordan du visuelt kan bygge opp en `Radio` i HTML, men du må selv passe på at `<input>` blir koblet sammen med `<label>` og beskrivelse.
+
+```html
+<div class="ds-field">
+  <input
+    class="ds-input"
+    type="radio"
+    value="value"
+    name="name"
+    id="my-radio"
+  >
+  <label
+    class="ds-label"
+    data-weight="regular"
+    for="my-radio"
+  >Radio</label>
+</div>
+```
+
+### I Fieldset
+
+Koden under er et eksempel på hvordan du bruker flere `Radio` inni `<fieldset>`.
+
+```html
+<fieldset class="ds-fieldset">
+  <legend class="ds-label" data-weight="medium">Kan vi kontake deg på epost?</legend>
+  <p class="ds-paragraph" data-variant="default">Dersom du ikke ønsker å bli kontaktet på epost sender vi brev i posten.</p>
+  <div class="ds-field">
+    <input
+      class="ds-input"
+      type="radio"
+      value="yes"
+      id="radio-input"
+    >
+    <label
+      class="ds-label"
+      data-weight="regular"
+      for="radio-input"
+    >Ja</label>
+  </div>
+  <div class="ds-field">
+    <input
+      class="ds-input"
+      type="radio"
+      value="no"
+      id="radio-input"
+    >
+    <label
+      class="ds-label"
+      data-weight="regular"
+      for="radio-input"
+    >Nei</label>
+  </div>
+</fieldset>
+```
+
+## CSS variabler og data-attributter
+
+<CssVariables />
+
+<CssAttributes />
