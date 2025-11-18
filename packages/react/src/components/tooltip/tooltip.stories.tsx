@@ -106,3 +106,11 @@ Aria.decorators = [
 ];
 
 Aria.play = async () => {};
+
+export const OnlyIcon: StoryFn<typeof Tooltip> = () => {
+  return (
+    <Tooltip content='Content'>
+      <FilesIcon aria-hidden />
+    </Tooltip>
+  );
+};
