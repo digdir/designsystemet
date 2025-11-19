@@ -405,6 +405,7 @@ body {
       border-radius: var(--ds-border-radius-md);
       display: inline;
       border: 1px solid var(--ds-color-neutral-border-subtle);
+      -webkit-box-decoration-break: clone;
       box-decoration-break: clone;
     }
 
