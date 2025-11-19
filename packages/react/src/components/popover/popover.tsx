@@ -1,4 +1,4 @@
-import type { Color, SeverityColors } from '@digdir/designsystemet/types';
+import type { Color, SeverityColors } from '@digdir/designsystemet-types';
 import type { MiddlewareState, Placement } from '@floating-ui/dom';
 import {
   autoUpdate,
