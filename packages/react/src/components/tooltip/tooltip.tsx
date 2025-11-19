@@ -194,7 +194,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         : 'popovertargetaction']: 'show',
     };
 
-    const autoType = `aria-${triggerRef.current?.innerText.trim() ? 'describedby' : 'labelledby'}`;
+    const autoType = `aria-${triggerRef.current?.innerText?.trim() ? 'describedby' : 'labelledby'}`;
 
     return (
       <>
