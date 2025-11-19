@@ -1,12 +1,5 @@
----
-title: SkipLink
-subtitle: '`SkipLink` lar brukere hoppe over repeterende innhold og navigere direkte til hovedinnholdet på siden.'
-image: SkipLink.svg
-cssfile: skip-link
----
-
-<Story story="Preview" layout="column" />
-
+<Story story="Preview" />
+<ReactComponentDocs />
 ## Bruk
 
 ```tsx
@@ -14,3 +7,23 @@ import { SkipLink } from '@digdir/designsystemet-react';
 
 <SkipLink href="#main-content">Hopp til hovedinnhold</SkipLink>
 ```
+
+## HTML
+
+Legg klassenavnet `ds-skip-link` på ein `<a>`-tagg som peikar til hovudinnhaldet på sida.
+
+```html
+<a class="ds-skip-link" href="#main-content">Hopp til hovedinnhold</a>
+
+<!--  -->
+
+<main id="main-content" tabindex="-1">
+  Region som kan motta fokus fra skiplink.
+</main>
+```
+
+## CSS variabler og data-attributter
+
+<CssVariables />
+
+<CssAttributes />
