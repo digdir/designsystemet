@@ -1,5 +1,4 @@
 import {
-  Button,
   Divider,
   Field,
   Label,
@@ -58,26 +57,33 @@ export const Variants = () => {
   );
 };
 
-export const Controlled = () => {
-  const [value, setValue] = useState<string>('');
+export const Form = () => {
+  const [value, setValue] = useState<string>();
+  const [submittedValue, setSubmittedValue] = useState<string>();
+
   return (
     <>
-      <Search>
-        <Search.Input
-          aria-label='Søk'
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        />
-        <Search.Clear />
-        <Search.Button />
-      </Search>
+      <form
+        onSubmit={(e) => {
+          // Prevent navigation from Storybook
+          e.preventDefault();
+          setSubmittedValue(value);
+        }}
+      >
+        <Search>
+          <Search.Input
+            aria-label='Søk'
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
+          <Search.Clear />
+          <Search.Button />
+        </Search>
+      </form>
 
-      <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
-
-      <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
-        Du har skrevet inn: {value}
+      <Paragraph data-size='md' style={{ marginTop: 'var(--ds-size-2)' }}>
+        Submitted value: {submittedValue}
       </Paragraph>
-      <Button onClick={() => setValue('Pizza')}>Jeg vil ha Pizza</Button>
     </>
   );
 };
