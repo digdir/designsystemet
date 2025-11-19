@@ -1,11 +1,5 @@
----
-title: Select
-subtitle: '`Select` lar brukeren velge ett alternativ fra en liste.'
-image: Select.svg
-cssfile: select
----
-
 <Story story="Preview" />
+<ReactComponentDocs />
 
 ## Bruk
 
@@ -19,7 +13,12 @@ import { Select, Label } from '@digdir/designsystemet-react';
 </>
 ```
 
-## Kodeeksempler
+## Eksempel
+
+### Gruppering
+Du kan bruke `Select.Optgroup` for å gruppere alternativer i kategorier, noe som gjør lange lister mer oversiktlige og enklere å navigere.
+
+<Story story="WithOptgroup" />
 
 ### Disabled
 
@@ -28,3 +27,22 @@ import { Select, Label } from '@digdir/designsystemet-react';
 ### ReadOnly
 
 <Story story="ReadOnly" />
+
+## HTML
+Legg klassenavnet `ds-select` på `<select>`.
+
+```html
+<select class="ds-select">
+  <option value="1">Alternativ 1</option>
+  <option value="2">Alternativ 2</option>
+  <option value="3">Alternativ 3</option>
+</select>
+```
+
+## CSS variabler og data-attributter
+
+Klassen `ds-input` kan bli brukt for å style [`Input`](/no/components/input/overview) og [`Textarea`](/no/components/textarea/overview) også.
+
+<CssVariables />
+
+<CssAttributes />

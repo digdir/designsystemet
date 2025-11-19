@@ -1,12 +1,12 @@
 {
   "no": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` er en modal dialog som vises over resten av innholdet på siden."
+    "title": "Select",
+    "subtitle": "`Select` er en nedtrekksliste som lar brukeren velge ett eller flere alternativer fra et statisk utvalg."
   },
   "en": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` is a modal dialog that appears over the rest of the content on the page."
+    "title": "Select",
+    "subtitle": "`Select` is a dropdown list that allows the user to select one or more options from a static set."
   },
-  "image": "Dialog.svg",
-  "cssFile": "dialog.css"
+  "image": "Select.svg",
+  "cssFile": "input.css"
 }
