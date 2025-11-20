@@ -1,46 +1,39 @@
----
-title: Tag
-image: Tag.svg
-cssfile: tag
----
-
-Tags er merkelapper som kan brukes til å kategorisere elementer eller kommunisere fremdrift, status eller prosess. Tags er statiske merkelapper; de kan ikke klikkes på.
-
 <Story story="Preview" />
 
-## Bruk
+**Bruk `Tag` når** 
+- du skal kategorisere innhold, for eksempel «Beta», «Ny» eller «Populær»
+- du skal vise status, for eksempel «Pågående», «Fullført» eller «Avbrutt»
 
-```tsx
-import { Tag } from '@digdir/designsystemet-react';
+**Unngå `Tag` når** 
+- du skal lenke til andre sider (bruk heller [`Link`](/no/components/link/overview))
+- det er handlinger (bruk heller [`Button`](/no/components/button/overview))
+- brukeren skal filtrere (bruk heller [`Chip`](/no/components/chip/overview))
 
-<Tag>Beta</Tag>;
-```
-
-## Kodeeksempler
-
-### Størrelser
-
-<Story story="Sizes" />
-
-### Farger
-
-<Story story="Colors" />
-
+## Eksempel
 ### Ikoner
+Du kan bruke ikoner i `Tag` for å gi ekstra visuell informasjon.
+Du må selv bestemme mellomrom mellom tekst og ikon. Vi anbefaler at `padding` på `Tag` mot ytterste kant er likt `margin` på ikonet.
 
 <Story story="Icons" />
 
+### Varianter
+`Tag` kommer i to varianer, med og uten outline.
+Taggen kan være svak på noen bakgrunnsfarger, og da kan du endre variant for å gjøre den mer synlig.
+
+<Story story="Variants" />
+
 ## Retningslinjer
-
 Bruk `Tag` når du vil hjelpe brukeren med å raskt identifisere innhold basert på kategori, status eller egenskap.
+`Tag` fungerer godt for å vise metadata, som for eksempel hvilken type dokument det er, hvilken status noe har, eller hvilket tema det tilhører.
+De bør brukes konsistent, være korte og lett forståelige, og unngås dersom informasjonen allerede er tydelig i konteksten.
+Tag er ikke klikkbar, det er bare en merkelapp.
 
-**Passer til å:**
+### Plassering
+`Tag` bør som regel plasseres bak tittelen eller navnet på tilhørende element.
+Tags bør ikke plasseres sammen med knapper da det kan forvirre brukeren.
+Vurder plasseringen og brukertest gjerne.
 
-- Kategorisere innhold, for eksempel «Beta», «Ny» eller «Populær».
-- Vise status, for eksempel «Pågående», «Fullført» eller «Avbrutt».
-
-**Passer ikke til**
-
-- link til andre sider (bruk heller [`Link`](/docs/komponenter-link--docs))
-- handlinger (bruk heller [`Button`](/docs/komponenter-button--docs))
-- filtrering (bruk heller [`Chip`](/docs/komponenter-chip--docs))
+## Tekst
+- Bruk korte etiketter for enkel skanning. Helst ett ord. Maks to ord dersom det er nødvendig for å beskrive statusen og skille den fra andre tagger.
+- Bruk ord og begreper som er gjenkjennelige for løsningen, unngå ukjente og fremmede ord.
+- Vil du bruke flere tags sammen, bør du bruke en `<ul>` med `<li>` element, slik at tags blir lest opp som en liste.
