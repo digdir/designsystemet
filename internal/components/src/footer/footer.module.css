@@ -1,16 +1,39 @@
 .footer {
-  background-color: var(--ds-color-neutral-background-tinted);
-  border-top: 1px solid var(--ds-color-neutral-border-default);
+  background-color: var(--ds-color-neutral-base-default);
+  display: flex;
+  align-items: center;
+  padding-block: 64px;
+  color: var(--ds-color-neutral-base-contrast-subtle);
 }
 
 .container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-  gap: var(--ds-size-10);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); */
+  column-gap: var(--ds-size-8);
+  row-gap: var(--ds-size-8);
+  max-width: calc(var(--max-content-width) + (var(--content-inline-padding) * 2));
+  width: 100%;
+  padding-inline: var(--content-inline-padding);
+  margin: 0 auto;
+}
+
+.logo {
+  margin-bottom: var(--ds-size-3);
+  & g {
+    fill: var(--ds-color-neutral-base-contrast-default);
+  }
 }
 
 .title {
   margin-bottom: var(--ds-size-4);
+  color: var(--ds-color-neutral-base-contrast-default);
+}
+
+.description {
+  margin-bottom: var(--ds-size-4);
+  max-width: 370px;
 }
 
 .logos {
@@ -42,10 +65,14 @@
 }
 
 .link {
-  --dsc-link-color--visited: var(--ds-color-neutral-text-default);
+  --dsc-link-color--visited: var(--ds-color-neutral-base-contrast-subtle);
+  --dsc-link-color--active: var(--ds-color-neutral-base-contrast-default);
+  --dsc-link-color--hover: var(--ds-color-neutral-base-contrast-default);
+  --dsc-link-color: var(--ds-color-neutral-base-contrast-subtle);
 
   & svg {
     max-width: 24px;
+    margin-right: 8px;
 
     & * {
       fill: var(--dsc-link-color);
@@ -63,33 +90,4 @@
       fill: var(--dsc-link-color--active);
     }
   }
-}
-
-.footer .logos svg {
-  height: 26px;
-  width: auto;
-  margin-right: var(--ds-size-2);
-
-  &.udir {
-    height: 32px;
-  }
-}
-
-.top {
-  padding: var(--ds-size-18) 0;
-}
-
-.bottom {
-  background-color: var(--ds-color-neutral-background-default);
-  padding: var(--ds-size-7) 0;
-}
-
-.button {
-  --dsc-button-color: var(--ds-color-neutral-text-default);
-  --dsc-button-padding-block: var(--ds-size-4);
-  --dsc-button-padding-inline: var(--ds-size-5);
-
-  border: 2px dashed var(--ds-color-neutral-border-strong);
-  width: fit-content;
-  margin-top: var(--ds-size-8);
 }
