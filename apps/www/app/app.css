@@ -69,13 +69,10 @@ body {
     display: flex;
     flex-direction: column;
     position: sticky;
-    container-type: scroll-state;
-    container-name: sticky-nav;
     border-right: 1px solid var(--ds-color-neutral-border-subtle);
-    top: 0;
+    top: var(--header-height);
     overflow: auto;
-    /*@TODO: better solution for non-sticky header + sticky sidebar?*/
-    max-height: 100vh;
+    max-height: calc(100vh - var(--header-height));
     padding-top: var(--ds-size-6);
     scrollbar-color: var(--ds-color-neutral-border-subtle) transparent;
 
@@ -83,18 +80,6 @@ body {
     > nav {
       margin-bottom: var(--header-height);
     }
-
-    /* progressively dehance clunkyness if biome permits*/
-    /*@container sticky-nav scroll-state(stuck: none) {
-      nav {
-        margin-bottom: var(--header-height, 100px);
-      }
-    }
-    @container sticky-nav scroll-state(stuck: top) {
-      nav {
-        margin-bottom: 0;
-      }
-    }*/
   }
   .l-content-container {
     container: content-container / inline-size;

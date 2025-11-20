@@ -1,6 +1,6 @@
 .table-of-contents {
   position: sticky;
-  top: var(--ds-size-6);
+  top: calc(var(--ds-size-6) + var(--header-height, 75px));
   border-radius: var(--ds-border-radius-lg);
 
   > h2 {
