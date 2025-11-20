@@ -16,8 +16,53 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
-    name: Build & test
+  build:
+    name: Build & type check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+
+      - uses: ./.github/actions/gh-setup
+
+      - name: Build
+        run: pnpm build
+
+      - name: Types
+        run: pnpm types:react
+
+  unit-tests:
+    name: Unit tests
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+      - uses: ./.github/actions/gh-setup
+
+      - name: Build
+        run: pnpm build
+
+      - name: Test
+        run: pnpm test
+
+      - name: 'Report Coverage'
+        if: success() || failure()
+        uses: davelosert/vitest-coverage-report-action@8ab049ff5a2c6e78f78af446329379b318544a1a # v2.8.3
+        with:
+          comment-on: none
+
+      - name: Publish unit test report
+        uses: mikepenz/action-junit-report@5b7ee5a21e8674b695313d769f3cbdfd5d4d53a4 # v6.0.0
+        if: success() || failure()
+        with:
+          report_paths: 'test-report.xml'
+          detailed_summary: true
+          check_name: Unit Test Report
+          check_annotations: true
+          check_title_template: '{{FILE_NAME}} / {{TEST_NAME}}'
+
+  storybook-tests:
+    name: Storybook tests
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
@@ -28,7 +73,6 @@ jobs:
           sudo rm -rf /opt/ghc
           sudo rm -rf /usr/local/share/boost
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-          df -h
 
       - uses: ./.github/actions/gh-setup
 
@@ -56,30 +100,8 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Types
-        run: pnpm types:react
-
       - name: Run Storybook tests
         run: pnpm --filter @web/storybook vitest
-      - name: Test
-        run: pnpm test
-      - name: 'Report Coverage'
-        if: success() || failure()
-        uses: davelosert/vitest-coverage-report-action@8ab049ff5a2c6e78f78af446329379b318544a1a # v2.8.3
-        with:
-          comment-on: none
-      - name: Publish unit test report
-        uses: mikepenz/action-junit-report@5b7ee5a21e8674b695313d769f3cbdfd5d4d53a4 # v6.0.0
-        if: success() || failure()
-        with:
-          report_paths: 'test-report.xml'
-          detailed_summary: true
-          check_name: Unit Test Report
-          check_annotations: true
-          check_title_template: '{{FILE_NAME}} / {{TEST_NAME}}'
-
-      - name: Test CLI (create tokens, then build the theme)
-        run: pnpm test:cli
 
       - name: Replace relative paths in test report
         uses: jacobtomlinson/gha-find-replace@f1069b438f125e5395d84d1c6fd3b559a7880cb5 # v3.0.5
@@ -89,6 +111,7 @@ jobs:
           find: '../../'
           replace: ''
           regex: false
+
       - name: Publish Storybook test report
         uses: mikepenz/action-junit-report@5b7ee5a21e8674b695313d769f3cbdfd5d4d53a4 # v6.0.0
         if: success() || failure()
@@ -98,3 +121,17 @@ jobs:
           check_name: Storybook Test Report
           check_annotations: true
           check_title_template: '{{FILE_NAME}} / {{TEST_NAME}}'
+
+  cli-tests:
+    name: CLI tests
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+      - uses: ./.github/actions/gh-setup
+
+      - name: Build
+        run: pnpm build
+
+      - name: Test CLI (create tokens, then build the theme)
+        run: pnpm test:cli
