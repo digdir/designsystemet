@@ -8,5 +8,5 @@
     "subtitle": "A `Radio` is an option the user can select. Use multiple `Radio` to show a list of options. Users can switch between the options, but can only select one."
   },
   "image": "Radio.svg",
-  "cssFile": "radio.css"
+  "cssFile": "input.css"
 }
