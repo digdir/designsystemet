@@ -16,36 +16,51 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
-    name: Build & type check
+  test:
+    name: Build & test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+
+      - name: Free up disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /usr/local/share/boost
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          df -h
+
       - uses: ./.github/actions/gh-setup
+
+      - name: Get Playwright version
+        id: playwright-version
+        run: echo "version=$(pnpm list playwright --depth=0 --json | jq -r '.[0].devDependencies.playwright.version')" >> $GITHUB_OUTPUT
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@1f7067ccf029d78e8d117f020e0bbca8a5a8dcfe # v4.2.1
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}
+
+      - name: Install Playwright browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: pnpm exec playwright install --with-deps chromium
+        working-directory: apps/storybook
+
+      - name: Install Playwright system dependencies (if cached)
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        run: pnpm exec playwright install-deps chromium
+        working-directory: apps/storybook
+
       - name: Build
         run: pnpm build
+
       - name: Types
         run: pnpm types:react
 
-  cli-tests:
-    name: CLI tests
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
-      - uses: ./.github/actions/gh-setup
-      - name: Test CLI (create tokens, then build the theme)
-        run: pnpm test:cli
-
-  test:
-    name: Tests
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
-      - uses: ./.github/actions/gh-setup
-      - name: Install playwright and run Storybook tests
-        run: pnpm test:storybook
+      - name: Run Storybook tests
+        run: pnpm --filter @web/storybook vitest
       - name: Test
         run: pnpm test
       - name: 'Report Coverage'
@@ -62,6 +77,10 @@ jobs:
           check_name: Unit Test Report
           check_annotations: true
           check_title_template: '{{FILE_NAME}} / {{TEST_NAME}}'
+
+      - name: Test CLI (create tokens, then build the theme)
+        run: pnpm test:cli
+
       - name: Replace relative paths in test report
         uses: jacobtomlinson/gha-find-replace@f1069b438f125e5395d84d1c6fd3b559a7880cb5 # v3.0.5
         if: success() || failure()
