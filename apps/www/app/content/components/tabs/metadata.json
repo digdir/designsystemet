@@ -1,12 +1,12 @@
 {
   "no": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` er en modal dialog som vises over resten av innholdet på siden."
+    "title": "Tabs",
+    "subtitle": "`Tabs` lar brukerne navigere mellom relaterte deler av innholdet, der én del vises om gangen. Dette er en effektiv måte å organisere og presentere relatert innhold på samme side."
   },
   "en": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` is a modal dialog that appears over the rest of the content on the page."
+    "title": "Tabs",
+    "subtitle": "`Tabs` allow users to navigate between related sections of content, with only one section visible at a time. This is an effective way to organize and present related content on the same page."
   },
-  "image": "Dialog.svg",
-  "cssFile": "dialog.css"
+  "image": "Tabs.svg",
+  "cssFile": "tabs.css"
 }

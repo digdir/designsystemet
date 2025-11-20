@@ -1,14 +1,13 @@
-For å sikre at tabeller fungerer optimalt for alle brukere er det viktig å følge disse retningslinjene:
+* `Tabs` støtter tastaturnavigasjon med piltaster
+* Hver tab må ha en unik tittel
+* Ved bruk av ikoner, sørg for at de er dekorative (`aria-hidden`) eller har beskrivende titler
+* Dersom et tabpanel ikke har fokuserbare elementer, får selve panelet fokus
 
-- **Enkelt celleinnhold:**
-  Tabellceller bør ikke slås sammen, og hver celle bør inneholde kun ett interaktivt element. Dette bidrar til at brukerne raskt får oversikt over innholdet og lettere kan sammenligne og skanne informasjonen.
-- **Overskrifter:**
-  For at brukerne skal kunne navigere i innholdet med skjermleser, er det viktig å bruke rad- og/eller kolonneoverskrifter (`<Table.HeaderCell>`). Bruk `scope="row"` og `scope="col"` for å angi om overskriften gjelder en rad eller kolonne. Hvis det er behov for å spare plass, kan vi visuelt skjule én eller flere overskrifter.
-- **Caption-element:**
-  Tabeller skal alltid ha et caption-element med kort tekst om hva tabellen viser. Skjermlesere vil lese caption-elementet, og brukerne kan ta stilling til om de vil lese videre i tabellen.
-- **Tomme celler:**
-  Tomme celler skal være `Table.Cell`. Dette er viktig for å sikre at skjermlesere kan navigere riktig i tabellen.
-- **Tastaturnavigering:**
-  Sjekk at du kan velge ulik sortering med tastatur. Test med skjermleser at du hører hva som er sorterbart, typer sortering og at du ikke mister fokus når du endrer sortering.
-- **Tilpasning for mobil:**
-  Det kan være vanskelig å vise tabeller på mobil, siden det ikke finnes et felles design som fungerer i alle sammenhenger. De vanligste alternativene som brukes på mobil er en tabell som ruller horisontalt eller omgjøring til listevisning.
+
+### Tastaturnavigasjon
+* <kbd>Tab</kbd> flytter fokus til neste interaktive element
+* <kbd data-icon>→</kbd> flytter til neste tab
+* <kbd data-icon>←</kbd> flytter til forrige tab
+* <kbd>Home</kbd> flytter til første tab
+* <kbd>End</kbd> flytter til siste tab
+* <kbd>Enter</kbd> eller <kbd>Space</kbd> aktiverer valgt tab
