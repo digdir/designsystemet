@@ -25,7 +25,7 @@
     "@navikt/aksel-icons": "^7.33.1",
     "@storybook/addon-a11y": "^9.1.16",
     "@storybook/addon-docs": "^9.1.16",
-    "@storybook/addon-links": "^9.1.16",
+    "@storybook/addon-links": "^10.0.7",
     "@storybook/addon-themes": "^9.1.16",
     "@storybook/addon-vitest": "^9.1.16",
     "@storybook/react-vite": "^9.1.16",
