@@ -1,10 +1,3 @@
----
-title: Textfield
-subtitle: '`Textfield` kombinerer `Input` eller `Textarea` med `Label` og `ValidationMessage` i én komponent.'
-image: Textfield.svg
-cssfile: textfield
----
-
 <Story story="Preview" />
 
 ## Bruk
@@ -29,14 +22,42 @@ import { Textfield } from '@digdir/designsystemet-react';
 
 <Story story="WithCounter" />
 
-### Disabled
+## HTML
 
-<Story story="Disabled" />
+Dette er en samensatt komponent, som bruker [`Field`](/no/components/field/code), [`Input`](/no/components/input/code) eller [`Textarea`](/no/components/textarea/code) og [`Label`](/no/components/label/code) under panseret.
 
-### ReadOnly
+Siden denne komponenten bygges opp av flere komponenter, anbefaler vi å lese dokumentasjonen for de underliggende komponentene for å få en full oversikt over HTML-strukturen.
 
-<Story story="ReadOnly" />
+```html
+<!-- input -->
+<div class="ds-field">
+  <label
+    class="ds-label"
+    data-weight="medium"
+    for="my-input"
+  >Label</label>
+  <div class="ds-field-affixes">
+    <input class="ds-input" type="text" id="my-input">
+  </div>
+</div>
 
-### Med feil
+<!-- textarea -->
+<div class="ds-field">
+  <label
+    class="ds-label"
+    data-weight="medium"
+    for="my-textarea"
+  >Label</label>
+  <div class="ds-field-affixes">
+    <textarea class="ds-input" type="text" id="my-textarea">
+  </div>
+</div>
+```
 
-<Story story="WithError" />
+## CSS variablar og data-attributter
+`Textfield`er en samensatt komponent, med [`Field`](/no/components/field/code), [`Input`](/no/components/input/code) eller [`Textarea`](/no/components/textarea/code) og [`Label`](/no/components/label/code). 
+
+Her viser vi kun `ds-input` sine variabler og data-attributter.
+<CssVariables />
+
+<CssAttributes />
