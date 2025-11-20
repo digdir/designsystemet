@@ -9,7 +9,7 @@
   "scripts": {
     "test": "vitest",
     "test:cli": "pnpm --filter @digdir/designsystemet test --verbose",
-    "test:storybook": "pnpm --filter @web/storybook vitest",
+    "test:storybook": "pnpm --filter @web/storybook test-storybook",
     "test:coverage": "vitest run --coverage",
     "storybook": "pnpm --filter @web/storybook dev",
     "www": "pnpm --filter @web/www dev",
