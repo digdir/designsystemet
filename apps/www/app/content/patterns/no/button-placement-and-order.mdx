@@ -60,16 +60,24 @@ På de resterende sidene i skjemaet bør "Forrige"-knappen være plassert i nær
 På små skjermer bør "Forrige" ligge under "Neste", og følge hovedprinsippet for rekkkefølge. På større skjermer er det ulike syn på om det bør være et unntak fra regelen her eller ikke. Noen velger å gjøre et unntak til fordel for lese- og handlingsretningen, men vi har foreløpig ikke noe dokumentert innsikt på at dette faktisk er en fordel. 
 
 
-
-
 <Card
   data-color='warning'
   variant="tinted"
 >
 **Arbeid pågår** \
-En tverretatlig arbeidsgruppe arbeider høsten 2025 med å utvikle felles retningslinjer og anbefalinger for dette temaet. Vi setter stor pris på innspill fra alle som har erfaringer, innsikt eller resultater fra brukertester. Bidra gjerne i den tilhørende [diskusjontråden på github.com](https://github.com/digdir/designsystemet/discussions/1671).
-
+Merk: Vi ønsker å gjennomføre en A/B-test for å lande på et valg for plassering av Neste/Forrige. Vi deler innsikten når vi vet mer. Har du innsikt om dette, del gjerne i pågående [diskusjon på Github](https://github.com/digdir/designsystemet/discussions/1684#discussioncomment-9339006).
 </Card>
+
+[BILDE AV side 2 i skjema]
+Eksempelet over følger hovedregelen om at knapper i en gruppe skal presenteres i rekkefølgen primærknapp → sekundærknapp → tertiærknapp.
+
+[BILDE AV SIDE 2 i skjema med snudd rekkefølge]
+Eksempel: Her er det gjort et unntak fra regelen på større skjermer. 
+
+Hvis du gjør unntak her, bør unntaket kun gjøres for større skjermer, ikke små skjermer der knappene ligger under hverandre. Det er viktig at den visuelle fremstillingen speiler DOM-en. Dette kan løses ved å sette inn en ekstra knapp som skjules med display: none; og fjerner innholdet fullstendig for skjermlesere. [Se eksempel(nav.no)).
+
+
+
 
 <Contributors
   headingLevel={2}
