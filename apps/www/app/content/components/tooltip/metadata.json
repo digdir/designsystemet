@@ -1,12 +1,12 @@
 {
   "no": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` er en modal dialog som vises over resten av innholdet på siden."
+    "title": "Tooltip",
+    "subtitle": "`Tooltip` viser kort informasjon når brukeren holder musepekeren over (`hover`) eller fokuserer på et element. Den brukes til sekundær informasjon, for eksempel til å forklare hva et symbol betyr."
   },
   "en": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` is a modal dialog that appears over the rest of the content on the page."
+    "title": "Tooltip",
+    "subtitle": "`Tooltip` displays brief information when the user hovers over or focuses on an element. It is used for secondary information, such as explaining the meaning of an icon."
   },
-  "image": "Dialog.svg",
-  "cssFile": "dialog.css"
+  "image": "Tooltip.svg",
+  "cssFile": "tooltip.css"
 }
