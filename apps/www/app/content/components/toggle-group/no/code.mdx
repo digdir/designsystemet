@@ -1,11 +1,5 @@
----
-title: ToggleGroup
-subtitle: '`ToggleGroup` er en gruppe av knapper hvor brukeren kan velge ett alternativ.'
-image: ToggleGroup.svg
-cssfile: toggle-group
----
-
 <Story story="Preview" />
+<ReactComponentDocs />
 
 ## Bruk
 
@@ -21,6 +15,7 @@ import { ToggleGroup } from '@digdir/designsystemet-react';
 ## Eksempel
 
 ### Kun ikoner
+Bruk [`Tooltip`](/no/components/tooltip/code) for å forklare handlingane når du brukar berre ikon.
 
 <Story story="OnlyIcons" />
 
@@ -31,3 +26,45 @@ import { ToggleGroup } from '@digdir/designsystemet-react';
 ### Secondary variant
 
 <Story story="Secondary" />
+
+## HTML
+**Det trengst også javascript for å håndtere fokus.**
+Du kan lese om kva du må gjere for å implementere dette i [tilgjengelighetsdokumentasjonen](/no/components/toggle-group/accessibility).
+
+Klassenavnet `ds-toggle-group` blir lagt på ein `<div>` med `role="radiogroup"`.
+
+Kvar knapp i gruppa er ein `<button>` med klassenavn `ds-button` med `role="radio"` og `aria-checked` som indikerer om knappen er vald eller ikkje.
+`data-variant` for valde knappar skal stemme med `data-variant` på `ToggleGroup`.
+Resterande knappar skal ha `data-variant="tertiary"`.
+
+```html
+<div
+  class="ds-toggle-group"
+  role="radiogroup"
+  data-variant="primary"
+>
+  <button
+    class="ds-button"
+    data-variant="primary"
+    type="button"
+    id="togglegroup-item-1"
+    aria-checked="true"
+    aria-current="true"
+    role="radio"
+  >Innboks</button>
+  <button
+    class="ds-button"
+    data-variant="tertiary"
+    type="button"
+    id="togglegroup-item-2"
+    aria-checked="false"
+    aria-current="false"
+    role="radio"
+  >Sendt</button>
+</div>
+```
+
+## CSS variablar og data-attributter
+<CssVariables />
+
+<CssAttributes />
