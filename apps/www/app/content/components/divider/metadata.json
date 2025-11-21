@@ -1,12 +1,12 @@
 {
   "no": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` er en modal dialog som vises over resten av innholdet på siden."
+    "title": "Divider",
+    "subtitle": "`Divider` brukes for å skape et visuelt skille mellom innhold. Det er en enkel horisontal linje som strekker seg over tilgjengelig bredde."
   },
   "en": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` is a modal dialog that appears over the rest of the content on the page."
+    "title": "Divider",
+    "subtitle": "`Divider` is used to create a visual separation between content. It is a simple horizontal line that spans the available width."
   },
-  "image": "Dialog.svg",
-  "cssFile": "dialog.css"
+  "image": "Divider.svg",
+  "cssFile": "divider.css"
 }

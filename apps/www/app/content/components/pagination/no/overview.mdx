@@ -1,50 +1,29 @@
----
-title: Pagination
-subtitle: Pagination lar brukeren navigere mellom flere sider med innhold.
-image: Pagination.svg
-cssfile: pagination
----
-
 <Story story="Preview" />
 
-## Bruk
+**Bruk `Pagination` når**
+- det skal navigeres mellom relaterte sider
+- du vil dele inn store mengder innhold i flere sider - for eksempel i tabeller
 
-`Pagination` består av flere delkomponenter:
+**Unngå `Pagination` når**
+- du skal dele inn et skjema i steg - bruk heller en stegindikator
+- fremdrift skal vises
 
-- `Pagination` - Wrapper for hele komponenten
-- `Pagination.List` - Liste med sideknapper
-- `Pagination.Item` - Et element i listen (kan være tom for å vise "...")
-- `Pagination.Button` - Knapp for å navigere til en side
+## Eksempel
 
-## Retningslinjer
+### Med lenker
 
-- Bruk Pagination når innholdet er delt over flere sider
-- Vis alltid hvilken side brukeren er på
-- Inkluder "Forrige" og "Neste" knapper
-- Bruk `aria-label` for å gi kontekst til skjermlesere
-- Vurder å bruke "Last mer" knapp for mindre datasett
-
-## Med lenker
-
-Du kan bruke Pagination med lenker (anchor tags) for bedre navigasjon:
-
+Du kan bruke Pagination med lenker (anchor tags) for bedre navigasjon
 <Story story="WithAnchor" />
 
-## Mobil variant
+### Mobil variant
 
-For mobile enheter kan du vise færre sider:
-
+For mobile enheter kan du vise færre sider, og ikke tekst for forrige/neste
 <Story story="Mobile" />
 
-## usePagination hook
+## Retningslinjer
+Bruk `Pagination` når innholdet er for stort for én side, for eksempel ved søkeresultater eller lange lister, og brukeren trenger å navigere frem og tilbake. Vi deler kun opp innhold i flere sider når det forbedrer lastetiden eller brukervennligheten. 
 
-Bruk `usePagination` hook for å håndtere logikken for paginering:
+## Tekst
+Vi bruker et fast mønster for `Pagination` med ord: «Forrige» og «Neste». 
 
-```tsx
-const { pages, nextButtonProps, prevButtonProps } = usePagination({
-  currentPage: 1,
-  setCurrentPage: (page) => console.log(page),
-  totalPages: 10,
-  showPages: 7,
-});
-```
+Unngå «Forrige side», «Neste side», «Gå tilbake», «Gå videre», «Videre» og «Tilbake».

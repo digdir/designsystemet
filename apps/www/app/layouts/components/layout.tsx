@@ -12,8 +12,11 @@ import classes from './layout.module.css';
 
 export { ErrorBoundary } from '~/root';
 
-// Maps to store unique entries
-const componentsMap = new Map<string, { title: string; url: string }>();
+// Maps to store unique entries per category
+const categoryMaps = new Map<
+  string,
+  Map<string, { title: string; url: string }>
+>();
 const getStartedMap = new Map<string, { title: string; url: string }>();
 
 const cats: {
@@ -23,7 +26,6 @@ const cats: {
   }[];
 } = {
   getStarted: [],
-  components: [],
 };
 
 export const loader = async ({
@@ -43,8 +45,8 @@ export const loader = async ({
 
   const t = await i18n.getFixedT(lang);
 
-  if (!cats.components.length) {
-    componentsMap.clear();
+  if (!cats.getStarted.length) {
+    categoryMaps.clear();
     getStartedMap.clear();
 
     /* read all folders in content/components */
@@ -57,20 +59,35 @@ export const loader = async ({
         );
 
         if (!metadataJson) {
-          componentsMap.set(`/${lang}/components/${folder}`, {
-            title: folder,
-            url: `/${lang}/components/${folder}`,
-          });
+          const category = 'components';
+          if (!categoryMaps.has(category)) {
+            categoryMaps.set(category, new Map());
+          }
+          const categoryMap = categoryMaps.get(category);
+          if (categoryMap) {
+            categoryMap.set(`/${lang}/components/${folder}`, {
+              title: folder,
+              url: `/${lang}/components/${folder}`,
+            });
+          }
           return;
         }
 
         const parsedMetadata = JSON.parse(metadataJson);
+        const category = parsedMetadata.category || 'components';
 
         const component = {
           title: parsedMetadata[lang].title || folder,
           url: `/${lang}/components/${folder}`,
         };
-        componentsMap.set(component.url, component);
+
+        if (!categoryMaps.has(category)) {
+          categoryMaps.set(category, new Map());
+        }
+        const categoryMap = categoryMaps.get(category);
+        if (categoryMap) {
+          categoryMap.set(component.url, component);
+        }
       }),
     );
 
@@ -79,9 +96,11 @@ export const loader = async ({
       url: `/${lang}/changelog`,
     });
 
-    cats.components = Array.from(componentsMap.values()).sort((a, b) =>
-      a.title.localeCompare(b.title),
-    );
+    for (const [category, map] of categoryMaps.entries()) {
+      cats[category] = Array.from(map.values()).sort((a, b) =>
+        a.title.localeCompare(b.title),
+      );
+    }
     cats.getStarted = Array.from(getStartedMap.values());
   }
 
@@ -92,12 +111,15 @@ export const loader = async ({
 
   const isComponentPage = request.url.includes('/components/');
 
+  const sidebarSuffix: { [key: string]: string } = {};
+  for (const category of categoryMaps.keys()) {
+    sidebarSuffix[category] = isComponentPage ? '/' + compPage : '/overview';
+  }
+
   return {
     lang,
     cats,
-    sidebarSuffix: {
-      components: isComponentPage ? '/' + compPage : '/overview',
-    },
+    sidebarSuffix,
   };
 };
 

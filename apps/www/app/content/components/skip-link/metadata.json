@@ -1,12 +1,12 @@
 {
   "no": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` er en modal dialog som vises over resten av innholdet på siden."
+    "title": "SkipLink",
+    "subtitle": "Vi bruker `SkipLink` for å hjelpe folk som bruker tastaturnavigasjon til å navigere, slik at dei enkelt kan gå til det viktigaste innhaldet på ei side. "
   },
   "en": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` is a modal dialog that appears over the rest of the content on the page."
+    "title": "SkipLink",
+    "subtitle": "We use `SkipLink` to help people using keyboard navigation to navigate, so they can easily go to the main content on a page."
   },
-  "image": "Dialog.svg",
-  "cssFile": "dialog.css"
+  "image": "SkipLink.svg",
+  "cssFile": "skip-link.css"
 }

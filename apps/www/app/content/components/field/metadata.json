@@ -1,12 +1,12 @@
 {
   "no": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` er en modal dialog som vises over resten av innholdet på siden."
+    "title": "Field",
+    "subtitle": "`Field` er et hjelpemiddel for å automatisk koble et felt sammen med [`Label`](/no/components/label/overview), `Field.Description`, [`ValidationMessage`](/no/components/validatio-nmessage/overview) og `Field.Counter`. `Field` kan brukes sammen med `Input`, `Textarea` og `Select`. **OBS**: `Textfield` har allerede `Field` innebygd, og kan derfor ikke brukes i en `Field`."
   },
   "en": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` is a modal dialog that appears over the rest of the content on the page."
+    "title": "Field",
+    "subtitle": "`Field` is a helper component to automatically associate a field with [`Label`](/en/components/label/overview), `Field.Description`, [`ValidationMessage`](/en/components/validationmessage/overview) and `Field.Counter`. `Field` can be used together with `Input`, `Textarea` and `Select`. **Note**: `Textfield` already has `Field` built-in, and therefore cannot be used inside a `Field`."
   },
-  "image": "Dialog.svg",
-  "cssFile": "dialog.css"
+  "image": "Field.svg",
+  "cssFile": "field.css"
 }

@@ -1,19 +1,122 @@
----
-title: Pagination
-image: Pagination.svg
-cssfile: pagination
----
+<Story story="Preview" />
+<ReactComponentDocs />
 
+## Bruk
+`Pagination` er en komponent uten state, og du må selv styre hvilke sider som er vist.
+
+Bruk `usePagination` for paginering-logikk sammen med de enkelt del-komponentene.
+[Les mer om `usePagination`](/no/hooks/use-pagination).
+
+```tsx
+import { Pagination } from '@digdir/designsystemet-react';
+
+<Pagination>
+  <Pagination.List>
+    <Pagination.Item>
+      <Pagination.Button aria-label='Forrige side'>
+        Forrige
+      </Pagination.Button>
+    </Pagination.Item>
+
+    <Pagination.Item>
+      <Pagination.Button aria-label='Side 1'>
+        1
+      </Pagination.Button>
+    </Pagination.Item>
+
+    <Pagination.Item />
+
+    <Pagination.Item>
+      <Pagination.Button aria-label='Side 10'>
+        10
+      </Pagination.Button>
+    </Pagination.Item>
+
+    <Pagination.Item>
+      <Pagination.Button aria-label='Neste side'>
+        Neste
+      </Pagination.Button>
+    </Pagination.Item>
+  </Pagination.List>
+</Pagination>
+```
 ## Eksempler
 
 ### Standard
+
+Eksempelet viser `Pagination` med knapper som ikke er koblet til noen handling.
+Når du trykker vil du ikke navigere til en annen side.
 
 <Story story="Preview" />
 
 ### Med lenker
 
+Under ser du `usePagination` brukt sammen med `Pagination` for å lage paginering med lenker.
+Du bruker `asChild` for å endre `Pagination.Button` til `<a>`.
+
 <Story story="WithAnchor" />
 
 ### Mobil
 
+Det er ikke noe innebygget mobilstøtte i `Pagination`, men du kan vise færre sider og fjerne tekst for forrige/neste knapper på mobile enheter.
+
 <Story story="Mobile" />
+
+## HTML
+
+Du bruker klassenavnet `ds-pagination` på et `<nav>`-element.
+Deretter bruker du en `<ul>` med `<li>` som har `<button>` eller `<a>` med klassenavn `ds-button` som barn.
+
+Dersom du legger en tom `<li>` vil denne vises som en ellipsis (`\2026`).
+
+Første og siste `<li>` sitt barn vil få et pil-ikon basert på om det først eller siste `<li>`.
+
+Merk at du må legge `data-variant` på `<button>` eller `<a>` for å få riktig stil.
+
+**Hver knapp burde også ha en beskrivende `aria-label` for skjermlesere.**
+
+```html
+<nav aria-label="Sidenavigering" class="ds-pagination">
+  <ul>
+    <li>
+      <button
+        class="ds-button"
+        data-variant="tertiary"
+        type="button"
+        aria-label="Forrige side"
+      ></button>
+    </li>
+    <li>
+      <button
+        class="ds-button"
+        data-variant="tertiary"
+        type="button"
+        aria-label="Side 3"
+      >3</button>
+    </li>
+    <li></li>
+    <li>
+      <button
+        class="ds-button"
+        data-variant="tertiary"
+        type="button"
+        aria-label="Side 10"
+      >10</button>
+    </li>
+    <li>
+      <button
+        class="ds-button"
+        data-variant="tertiary"
+        type="button"
+        aria-label="Neste side"
+      ></button>
+    </li>
+  </ul>
+</nav>
+```
+
+## CSS variabler og data-attributter
+
+<CssVariables />
+
+<CssAttributes />

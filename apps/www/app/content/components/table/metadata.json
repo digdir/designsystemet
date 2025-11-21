@@ -1,12 +1,12 @@
 {
   "no": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` er en modal dialog som vises over resten av innholdet på siden."
+    "title": "Table",
+    "subtitle": "`Table` brukes for å vise strukturert informasjon på en ryddig og oversiktlig måte. Tabeller kan gjøre det enklere for brukerne å skanne og sammenligne informasjon."
   },
   "en": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` is a modal dialog that appears over the rest of the content on the page."
+    "title": "Table",
+    "subtitle": "`Table` is used to display structured information in a neat and organized manner. Tables can make it easier for users to scan and compare information."
   },
-  "image": "Dialog.svg",
-  "cssFile": "dialog.css"
+  "image": "Table.svg",
+  "cssFile": "table.css"
 }
