@@ -1,5 +1,5 @@
 ---
-title: Plassering og rekkefølge på knapper
+title: Plassering, rekkefølge og innhold på knapper
 sidebar_title: Plassering av knapper
 category: Kommende
 description: Hvordan kan vi skape en mer forutsigbar og inkluderende opplevelse ved å standardisere plassering og rekkefølge på knapper?
@@ -74,10 +74,38 @@ Eksempelet over følger hovedregelen om at knapper i en gruppe skal presenteres 
 [BILDE AV SIDE 2 i skjema med snudd rekkefølge]
 Eksempel: Her er det gjort et unntak fra regelen på større skjermer. 
 
-Hvis du gjør unntak her, bør unntaket kun gjøres for større skjermer, ikke små skjermer der knappene ligger under hverandre. Det er viktig at den visuelle fremstillingen speiler DOM-en. Dette kan løses ved å sette inn en ekstra knapp som skjules med display: none; og fjerner innholdet fullstendig for skjermlesere. [Se eksempel(nav.no)).
+Hvis du gjør unntak her, bør unntaket kun gjøres for større skjermer, ikke små skjermer der knappene ligger under hverandre. Det er viktig at den visuelle fremstillingen speiler DOM-en. Dette kan løses ved å sette inn en ekstra knapp som skjules med `display: none;` og fjerner innholdet fullstendig for skjermlesere. [Se eksempel(nav.no)).
 
+##### Siste steg i et skjema
+På siste steg i et skjema bør det være tydelig at brukeren sender inn skjemaet. “Send inn” er primærknappen. 
 
+[Bilde]
+Bildetekst: Eksempelet over viser siste steg i et skjema, der det er "Forrige"-knapp og "Send inn"-knapp
 
+## Språk
+Tekst i knapper skal alltid beskrive hva som skjer når brukeren trykker. Knappeteksten skal være kort og konsis, helst ikke mer enn tre ord. Velg verb i oppfordringsform (imperativ), for eksempel "send" og "signer".
+
+Unngå abstrakte begreper som “Ok“ eller ”Avbryt“ når det finnes alternativer som beskriver nøyaktig hva som skjer. Brukeren skal slippe å tolke knappene. Det skal være åpenbart hva som skjer når man trykker.
+
+[Bilde Unngå]
+[bilde gjør]
+
+### Bruk ordlyden "Forrige steg"
+Bruk ordlyden «Forrige steg» i skjema i stedet for “Tilbake”. Det gjør det tydelig at handlingen kun fører brukeren tilbake til det foregående steget i skjemaet, ikke ut av prosessen.
+
+### Bruk “Avbryt” konsekvent
+“Avbryt” skal alltid bety at brukeren avbryter en handling uten at noe lagres eller endres. Om det finnes risiko for tap av data, vurder å spørre brukeren “Er du sikker på at du vil avbryte? Endringene du har gjort vil gå tapt.” Når funksjonen er noe annet, bruk begreper som beskriver handlingen, f.eks “Lagre og fortsett senere”. Da slipper brukerne å tolke hva som skjer. 
+
+## Kode 
+
+### Fokusrekkefølge
+Tab-rekkefølgen skal som hovedregel alltid følge leseretningen. Det betyr at når en bruker navigerer med tastatur, skal fokus gå gjennom elementene i samme rekkefølge som de presenteres visuelt.
+
+Hvis «Neste» er plassert til høyre for «Forrige», kan det være fristende å endre fokusrekkefølgen i koden slik at brukeren hopper til «Neste» først. Dette bør unngås, da det skaper en uforutsigbar oppførsel for tastaturbrukere. Det er bedre at Fokusrekkefølgen i koden samsvarer med den visuelle rekkefølgen. Dette gir en forutsigbar og tilgjengelig brukeropplevelse.
+
+## Relevante kilder
+*  [Understanding SC 2.4.3: Focus Order (W3C)](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html)
+* [2.4.3 Fokusrekkefølge (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/243-fokusrekkefolge-niva/105)
 
 <Contributors
   headingLevel={2}
