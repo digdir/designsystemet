@@ -1,4 +1,4 @@
-import type { SeverityColors } from '@digdir/designsystemet/types';
+import type { SeverityColors } from '@digdir/designsystemet-types';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';

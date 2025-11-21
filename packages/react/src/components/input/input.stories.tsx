@@ -1,4 +1,4 @@
-import type { Size } from '@digdir/designsystemet/types';
+import type { Size } from '@digdir/designsystemet-types';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import { useEffect, useState } from 'react';
 import {

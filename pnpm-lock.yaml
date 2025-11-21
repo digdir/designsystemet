@@ -433,6 +433,9 @@ importers:
       '@commander-js/extra-typings':
         specifier: ^14.0.0
         version: 14.0.0(commander@14.0.2)
+      '@digdir/designsystemet-types':
+        specifier: workspace:^
+        version: link:../types
       '@tokens-studio/sd-transforms':
         specifier: 1.3.0
         version: 1.3.0(style-dictionary@5.1.1)
@@ -542,6 +545,9 @@ importers:
 
   packages/react:
     dependencies:
+      '@digdir/designsystemet-types':
+        specifier: workspace:^
+        version: link:../types
       '@floating-ui/dom':
         specifier: ^1.7.4
         version: 1.7.4
@@ -635,6 +641,10 @@ importers:
         version: 5.9.3
 
   packages/theme:
+    dependencies:
+      '@digdir/designsystemet-types':
+        specifier: workspace:^
+        version: link:../types
     devDependencies:
       '@digdir/designsystemet':
         specifier: workspace:^
@@ -642,6 +652,8 @@ importers:
       rimraf:
         specifier: ^6.1.0
         version: 6.1.0
+
+  packages/types: {}
 
   packages/wc:
     dependencies:
