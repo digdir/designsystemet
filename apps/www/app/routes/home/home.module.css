@@ -54,6 +54,29 @@
   width: 100%;
 }
 
+.joinCard {
+  background-color: var(--ds-color-neutral-surface-default);
+  border: 4px dashed var(--ds-color-neutral-border-subtle);
+  border-radius: var(--ds-border-radius-lg);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  padding: var(--ds-size-14);
+  padding-bottom: var(--ds-size-8);
+  gap: var(--ds-size-14);
+  margin-bottom: var(--ds-size-26);
+
+  > img {
+    max-width: 240px;
+  }
+  > div {
+    max-width: var(--short-content-width);
+  }
+  h2 {
+    margin-bottom: var(--ds-size-4);
+  }
+}
+
 .betaTag {
   background-color: light-dark(#e0d6eb, #4f2776);
   display: inline-block;

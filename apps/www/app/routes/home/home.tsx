@@ -1,6 +1,5 @@
 import { join } from 'node:path';
-import { Heading } from '@digdir/designsystemet-react';
-import { ContentContainer } from '@internal/components';
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import {
   BranchingIcon,
   ComponentIcon,
@@ -9,6 +8,7 @@ import {
   PersonChatIcon,
   WrenchIcon,
 } from '@navikt/aksel-icons';
+import cl from 'clsx/lite';
 import { bundleMDX } from 'mdx-bundler';
 import { useTranslation } from 'react-i18next';
 import BlogCard from '~/_components/blog-card/blog-card';
@@ -119,7 +119,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
           /* We need this for firefox, because it focuses anything with overflow: hidden */
           tabIndex={-1}
         >
-          <ContentContainer className={classes.container}>
+          <div className={cl('l-content-container', classes.container)}>
             <div className={classes.text}>
               <Heading data-size='lg' level={1}>
                 {t('frontpage.heading')}
@@ -153,7 +153,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
                 level={2}
               />
             </div>
-          </ContentContainer>
+          </div>
         </div>
       </div>
 
@@ -239,6 +239,18 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
           },
         ]}
       />
+      <div className='l-content-container'>
+        <div className={classes.joinCard}>
+          <img src='/img/Logotest.svg' alt='' />
+          <div>
+            <Heading level={2} data-size='md'>
+              {t('frontpage.join-section.title')}
+            </Heading>
+            <Paragraph>{t('frontpage.join-section.description')}</Paragraph>
+            <div data-links></div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

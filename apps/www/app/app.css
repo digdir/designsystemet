@@ -56,6 +56,8 @@ body {
     --short-content-width: 700px;
     --long-content-width: 950px;
     --media-max-width: var(--long-content-width); /*legacy*/
+    /*use the old clamp-based padding?*/
+    /*--content-inline-padding: clamp(1rem, calc(0.27rem + 3.64vw), 3rem);*/
     --content-inline-padding: var(--ds-size-7);
     --header-height: 75px;
     @media screen and (max-width: 1500px) {
