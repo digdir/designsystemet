@@ -37,7 +37,7 @@
     "@floating-ui/dom": "^1.7.4"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^28.0.9",
+    "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "rimraf": "^6.1.0",
     "rollup": "4.53.1",
