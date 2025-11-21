@@ -6,7 +6,7 @@ description: Hvordan kan vi skape en mer forutsigbar og inkluderende opplevelse 
 date: 2025-11-21
 ---
 
-Ulik plassering og rekkefølge på knapper skaper unødvendig friksjon. Det øker risikoen for feil og gjør oppgavene tyngre, spesielt for personer med nedsatt syn, motoriske utfordringer eller kognitive barrierer. Når vi bruker samme rekkefølge og plassering på tvers av løsninger, blir opplevelsen mer forutsigbar. Brukerne finner raskere fram og gjør færre feil.
+Ulik plassering og rekkefølge på knapper skaper unødvendig friksjon. Det øker risikoen for feil og gjør oppgavene tyngre, spesielt for personer med nedsatt syn, motoriske utfordringer eller kognitive barrierer. Når vi bruker samme plassering, rekkefølge og språk på tvers av løsninger, blir opplevelsen mer forutsigbar. Brukerne finner raskere fram og gjør færre feil.
 
 ## Design og opplevelse
 
@@ -25,7 +25,7 @@ Som hovedregel skal knapper som står i en gruppe alltid presenteres i rekkeføl
 />
 
 ### Plasser knapper til venstre
-Når du plasserer knapper til venstre i grensesnittet blir de enklere å finne for alle brukere, og særlig for dem med nedsatt synsfelt eller de som bruker skjermforstørrelse. Når handlinger plasseres til venstre, blir de lettere å oppdage og raskere å ta stilling til.<sup>2</sup>
+Plasserer knapper til venstre i grensesnittet. Da blir de enklere å finne for alle brukere, og særlig for dem med nedsatt synsfelt eller de som bruker skjermforstørrelse.<sup>2</sup>
 
 <Image
   src="/img/patterns/button-left.png"
@@ -43,10 +43,8 @@ Når du plasserer knapper til venstre i grensesnittet blir de enklere å finne f
 />
 
 ### Praktiske eksempler
-Eksemplene tar utgangspunkt i tre vanlige situasjoner: modal, popover og skjema.
-
-#### Modal (dialog)
-For å skape en forutsigbar opplevelse bør knappene i en modal plasseres og følge samme rekkefølge som ellers. 
+**Modal (dialog)** \
+For å skape en forutsigbar opplevelse skal knappene i en modal plasseres og følge samme rekkefølge som ellers. 
 
 <Image
   src="/img/patterns/button-modal.png"
@@ -56,9 +54,9 @@ For å skape en forutsigbar opplevelse bør knappene i en modal plasseres og fø
   caption='Eksempel på modal som har knappene plassert til venstre.'
 />
 
-Lukk-knappen (X) skal være plassert øverst til høyre i modalen. Knappen bør ha samme funksjon som når brukeren klikker utenfor modalen eller trykker på Esc-tasten. Modalen lukkes og dersom et spørsmål krever svar er det alltid det minst inngripende eller minst destruktive valget for brukeren det faller tilbake på. 
+Lukk-knappen (X) skal være plassert øverst til høyre i modalen. Knappen skal ha samme funksjon som når brukeren klikker utenfor modalen eller trykker på Esc-tasten. Modalen lukkes og dersom et spørsmål krever svar er det alltid det minst inngripende eller minst destruktive valget for brukeren det faller tilbake på. 
 
-#### Popover
+**Popover** \
 En popover brukes for korte, avgrensede valg eller bekreftelser som krever en umiddelbar handling uten å ta brukeren bort fra konteksten. Knapper i en popover skal følge samme plassering og rekkefølge som ellers.
 
 <Image
@@ -69,7 +67,7 @@ En popover brukes for korte, avgrensede valg eller bekreftelser som krever en um
   caption='Eksempel på popover som har knappene plassert til venstre.'
 />
 
-#### Skjema med én side
+**Skjema med én side** \
 I skjemaer der alt fylles ut på én side, vil «Send inn»-knappen som regel være den eneste primærhandlingen. 
 
 <Image
@@ -80,7 +78,7 @@ I skjemaer der alt fylles ut på én side, vil «Send inn»-knappen som regel v�
   caption='Eksempel på skjema med kun èn utfyllingsside.'
 />
 
-#### Skjema med flere sider
+**Skjema med flere sider** \
 Ikke bruk deaktivert "Forrige"-knapp på første side i et skjema med flere sider.<sup>3</sup>
 
 <Image
@@ -91,9 +89,9 @@ Ikke bruk deaktivert "Forrige"-knapp på første side i et skjema med flere side
   caption='Eksempelet over viser første steg i et skjema, som ikke inneholder "Forrige"-knapp. '
 />
 
-På de resterende sidene i skjemaet bør "Forrige"-knappen være plassert i nærheten av Neste-knappen. Elementer som står nær hverandre, oppfattes som relatert.<sup>4</sup> Alternative valg som «Fortsett senere» eller «Slett skjemaet» er andre type handlinger som ikke bør i samme gruppe som Neste/Forrige.
+På de resterende sidene i skjemaet skal "Forrige"-knappen være plassert i nærheten av Neste-knappen. Elementer som står nær hverandre, oppfattes som relatert.<sup>4</sup> Alternative valg som «Fortsett senere» eller «Slett skjemaet» er andre type handlinger som ikke bør være i samme gruppe som Neste/Forrige.
 
-På små skjermer bør "Forrige" ligge under "Neste", og følge hovedprinsippet for rekkkefølge. På større skjermer er det ulike syn på om det bør være et unntak fra regelen her eller ikke. Noen velger å gjøre et unntak til fordel for lese- og handlingsretningen, men vi har foreløpig ikke noe dokumentert innsikt på at dette faktisk er en fordel. 
+På små skjermer skal "Forrige" ligge under "Neste", og følge hovedprinsippet for rekkkefølge. På større skjermer er det ulike syn på om det bør være et unntak fra regelen her eller ikke. Noen velger å gjøre et unntak til fordel for lese- og handlingsretningen, men vi har foreløpig ikke noe dokumentert innsikt på at dette faktisk er en fordel. 
 
 
 <Card
@@ -123,8 +121,8 @@ Vi ønsker å gjennomføre en brukertest for å lande på et valg for plassering
 
 Hvis du gjør unntak her, bør unntaket kun gjøres for større skjermer, ikke små skjermer der knappene ligger under hverandre. Det er viktig at den visuelle fremstillingen speiler DOM-en. Dette kan løses ved å sette inn en ekstra knapp som skjules med `display: none;` og fjerner innholdet fullstendig for skjermlesere. Se [kodeeksempel med ekstra knapp (nav.no)](https://aksel.nav.no/templates/skjemavalidering/demo?darkside=true).
 
-##### Siste steg i et skjema
-På siste steg i et skjema bør det være tydelig at brukeren sender inn skjemaet. “Send inn” er primærknappen. 
+**Siste steg i et skjema** \
+På siste steg i et skjema skal det være tydelig at brukeren sender inn skjemaet. “Send inn” er primærknappen. 
 
 <Image
   src="/img/patterns/button-form-lastpage.png"
@@ -164,9 +162,9 @@ Bruk ordlyden «Forrige steg» i skjema i stedet for “Tilbake”. Det gjør de
 ## Kode 
 
 ### Fokusrekkefølge
-Tab-rekkefølgen skal som hovedregel alltid følge leseretningen. Det betyr at når en bruker navigerer med tastatur, skal fokus gå gjennom elementene i samme rekkefølge som de presenteres visuelt.
+Tab-rekkefølgen skal som hovedregel alltid følge leseretningen. Det betyr at når en bruker navigerer med tastatur, skal fokus gå gjennom elementene i samme rekkefølge som de presenteres visuelt.<sup>5-6</sup>
 
-Hvis «Neste» er plassert til høyre for «Forrige», kan det være fristende å endre fokusrekkefølgen i koden slik at brukeren hopper til «Neste» først. Dette bør unngås, da det skaper en uforutsigbar oppførsel for tastaturbrukere. Det er bedre at Fokusrekkefølgen i koden samsvarer med den visuelle rekkefølgen. Dette gir en forutsigbar og tilgjengelig brukeropplevelse.
+Hvis «Neste» er plassert til høyre for «Forrige», kan det være fristende å endre fokusrekkefølgen i koden slik at brukeren hopper til «Neste» først. Dette skal unngås, da det skaper en uforutsigbar oppførsel for tastaturbrukere. Det er bedre at Fokusrekkefølgen i koden samsvarer med den visuelle rekkefølgen. Dette gir en forutsigbar og tilgjengelig brukeropplevelse.
 
 ## Relevante kilder
 * [1] [Simplicity Wins over Abundance of Choice (baymard.com)](https://baymard.com/learn/button-design)
