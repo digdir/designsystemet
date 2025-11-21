@@ -20,7 +20,7 @@ jobs:
     name: Build & test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
       - name: Free up disk space
         run: |
@@ -69,7 +69,7 @@ jobs:
         with:
           comment-on: none
       - name: Publish unit test report
-        uses: mikepenz/action-junit-report@5b7ee5a21e8674b695313d769f3cbdfd5d4d53a4 # v6.0.0
+        uses: mikepenz/action-junit-report@e08919a3b1fb83a78393dfb775a9c37f17d8eea6 # v6.0.1
         if: success() || failure()
         with:
           report_paths: 'test-report.xml'
@@ -90,7 +90,7 @@ jobs:
           replace: ''
           regex: false
       - name: Publish Storybook test report
-        uses: mikepenz/action-junit-report@5b7ee5a21e8674b695313d769f3cbdfd5d4d53a4 # v6.0.0
+        uses: mikepenz/action-junit-report@e08919a3b1fb83a78393dfb775a9c37f17d8eea6 # v6.0.1
         if: success() || failure()
         with:
           report_paths: 'apps/storybook/test-report.xml'
