@@ -81,10 +81,15 @@ I skjemaer der alt fylles ut på én side, vil «Send inn»-knappen som regel v�
 />
 
 #### Skjema med flere sider
-Ikke bruk deaktivert "Forrige"-knapp på første side.<sup>3</sup>
+Ikke bruk deaktivert "Forrige"-knapp på første side i et skjema med flere sider.<sup>3</sup>
 
-[BILDE AV SIDE 1 i skjema]
-Bildetekst: Eksempelet over viser første steg i et skjema, som ikke inneholder "Forrige"-knapp. 
+<Image
+  src="/img/patterns/button-form-firstpage.png"
+  alt=""
+  boxShadow={true}
+  dataUnstyled
+  caption='Eksempelet over viser første steg i et skjema, som ikke inneholder "Forrige"-knapp. '
+/>
 
 På de resterende sidene i skjemaet bør "Forrige"-knappen være plassert i nærheten av Neste-knappen. Elementer som står nær hverandre, oppfattes som relatert. Alternative valg som «Fortsett senere» eller «Slett skjemaet» er andre type handlinger som ikke bør i samme gruppe som Neste/Forrige. 
 
@@ -135,9 +140,10 @@ Tab-rekkefølgen skal som hovedregel alltid følge leseretningen. Det betyr at n
 Hvis «Neste» er plassert til høyre for «Forrige», kan det være fristende å endre fokusrekkefølgen i koden slik at brukeren hopper til «Neste» først. Dette bør unngås, da det skaper en uforutsigbar oppførsel for tastaturbrukere. Det er bedre at Fokusrekkefølgen i koden samsvarer med den visuelle rekkefølgen. Dette gir en forutsigbar og tilgjengelig brukeropplevelse.
 
 ## Relevante kilder
-* [1] [Simplicity Wins over Abundance of Choice (baymard.com)](https://baymard.com/learn/button-design?utm_source=chatgpt.com)
+* [1] [Simplicity Wins over Abundance of Choice (baymard.com)](https://baymard.com/learn/button-design)
 * [2] [Forstå synsnedsettelse](https://designsystemet.no/no/best-practices/accessibility/understanding-vision-impairment)
 * [3] [Deaktiverte tilstander (nav.no)](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander)
+* [4] [Proximity Principle in Visual Design (nngroup.com)](https://www.nngroup.com/articles/gestalt-proximity/
 * [4] [Understanding SC 2.4.3: Focus Order (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html)
 * [5] [2.4.3 Fokusrekkefølge (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/243-fokusrekkefolge-niva/105)
 
