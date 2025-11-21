@@ -85,6 +85,7 @@ export default {
       About: 'Om',
       components: 'Komponenter',
       getStarted: 'Kom i gang',
+      typography: 'Typografi',
     },
     items: {
       Introduction: 'Introduksjon',
