@@ -86,6 +86,7 @@ export default {
       About: 'About',
       components: 'Components',
       getStarted: 'Getting Started',
+      typography: 'Typography',
     },
     items: {
       Introduction: 'Introduction',

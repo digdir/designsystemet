@@ -1,12 +1,12 @@
 {
   "no": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` er en modal dialog som vises over resten av innholdet på siden."
+    "title": "Popover",
+    "subtitle": "`Popover` vises over andre elementer i grensesnittet og er koblet til et spesifikt element. Den brukes til å vise tilleggsinformasjon, interaktive elementer eller korte forklaringer uten å navigere bort fra siden. `Popover` kan brukes som en utvidet løsning når [`Tooltip`](/no/components/tooltip) ikke strekker til."
   },
   "en": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` is a modal dialog that appears over the rest of the content on the page."
+    "title": "Popover",
+    "subtitle": "`Popover` appears above other elements in the interface and is linked to a specific element. It is used to display additional information, interactive elements, or brief explanations without navigating away from the page. `Popover` can be used as an extended solution when [`Tooltip`](/en/components/tooltip) is not sufficient."
   },
-  "image": "Dialog.svg",
-  "cssFile": "dialog.css"
+  "image": "Popover.svg",
+  "cssFile": "popover.css"
 }

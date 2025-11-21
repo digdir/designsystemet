@@ -1,38 +1,52 @@
----
-title: Tabs
-image: Tabs.svg
-cssfile: tabs
----
-
-`Tabs` organiserer innhold i ulike seksjoner som brukeren kan bytte mellom.
-
 <Story story="Preview" />
 
-## Bruk
+**Bruk `Tabs` når** 
+* du skal strukturere innhold uten å laste en ny side
+* du skal dele opp innhold i tydelig merkede seksjoner
+* du skal forenkle navigasjon når brukeren ikke trenger å se alt samtidig
 
-```tsx
-import { Tabs } from '@digdir/designsystemet-react';
+**Unngå `Tabs` når**
+* du skal gi en umiddelbar oversikt over innhold, da `Tabs` skjuler informasjon
+* du skal presentere innhold som må sammenlignes på tvers av seksjoner
+* du skal veilede brukeren gjennom en steg-for-steg-prosess der rekkefølgen er viktig
+* du skal håndtere store mengder innhold som kan gjøre siden treg å laste
+* du skal erstatte hovednavigasjon eller brukes til filtrering og sortering
+* innholdet like gjerne kan vises på én side eller fordeles på flere sider
 
-<Tabs defaultValue="tab1">
-  <Tabs.List>
-    <Tabs.Tab value="tab1">Tab 1</Tabs.Tab>
-    <Tabs.Tab value="tab2">Tab 2</Tabs.Tab>
-  </Tabs.List>
-  <Tabs.Panel value="tab1">Content 1</Tabs.Panel>
-  <Tabs.Panel value="tab2">Content 2</Tabs.Panel>
-</Tabs>
-```
-
-## Kodeeksempler
+## Eksempel
 
 ### Kun ikoner
+`Tabs` kan vises med bare ikoner for et mer kompakt utseende.
+Sørg for at ikonene er intuitive og har beskrivende titler for skjermlesere.
+I eksempelet under har vi lagt [`Tooltip`](/no/components/tooltip/code) rundt `Tabs.Tab` for å gi beskrivende tekst til ikonene.
 
 <Story story="IconsOnly" />
 
 ### Ikoner med tekst
+Kombinasjonen av ikoner og tekst gir både visuell og tekstlig beskrivelse av innholdet.
+Ikonene bør være dekorative og markeres med `aria-hidden`.
 
 <Story story="IconsWithText" />
 
-### Kontrollert
+## Retningslinjer
 
-<Story story="Controlled" />
+`Tabs` skal brukes til å organisere relatert innhold i separate seksjoner.
+
+### Alternativer til Tabs
+Før du velger `Tabs`, vurder om det er bedre å:
+- Forenkle og redusere mengden innhold
+- Fordele innholdet på flere sider
+- Beholde alt på én side, med tydelige overskrifter
+- Bruke en innholdsfortegnelse for enklere navigasjon
+
+### Beste praksis
+- **Begrens antall `Tabs`** - for mange skaper dårlig oversikt, særlig på små skjermer
+- **Bruk tydelig navn på `Tabs`** - `Tabs` skjuler innhold, så `Tabs`en må klart indikere hva brukeren får se
+- **Plasser viktigst innhold først** - organiser `Tabs` etter brukerens behov
+- **Hold `Tabs` på én linje** - Lange `Tabs` eller for mange `Tabs` kan gjøre navigasjonen vanskelig
+- **Unngå deaktiverte `Tabs`** - Fjern deaktiverte `Tabs` eller forklar hvorfor de er tomme
+
+## Tekst
+`Tabs` bør være korte og beskrivende, slik at brukeren lett forstår hva de vil se når de klikker. Hvis det er vanskelig å lage presise `Tabs`, kan det tyde på at innholdet ikke er godt strukturert.
+
+Hvis det er behov for å gi en overordnet kontekst, kan en felles tittel plasseres over `Tabs`-komponenten. Dette kan fungere som en "catchall"-beskrivelse som gir brukeren rask oversikt over innholdet i `Tabs`.

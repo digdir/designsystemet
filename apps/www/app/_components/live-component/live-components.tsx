@@ -28,6 +28,7 @@ const scopes = {
   useState,
   useEffect,
   useRef,
+  useId,
 };
 
 export type LiveComponentProps = {

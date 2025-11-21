@@ -1,44 +1,46 @@
 <Story story="Preview" />
 
-## Bruk
+**Bruk `Dialog` når** 
+- brukeren skal fokusere på en spesifikk oppgave
+- du skal sikre at brukeren får med seg viktig informasjon
+- mer informasjon skal bli gitt uten at brukeren må forlate hovedinnholdet
 
-```tsx
-import { Dialog, Heading, Paragraph } from '@digdir/designsystemet-react';
+**Unngå `Dialog` når**
+- innhold er omfattende eller komplekst som krever langvarig interaksjon 
+- informasjon avbryter brukerens arbeidsflyt - bruk heller [`Alert`](/no/components/alert/overview), [`Popover`](/no/components/popover/overview), eller "ikke-modal" `Dialog`
 
-<Dialog.TriggerContext>
-  <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-  <Dialog>
-    <Heading>Dialog header</Heading>
-    <Paragraph>Dialog content</Paragraph>
-  </Dialog>
-</Dialog.TriggerContext>
-```
-
-## Kodeeksempler
-
-### Med ref
-
-<Story story="WithRef" />
-
-### Med skjema
-
-<Story story="WithForm" />
+## Eksempel
 
 ### Med blokker
 
+`Dialog` kan deles inn med visuelle skillelinjer, slik at innhold blir visuelt adskilt.
+
 <Story story="WithBlocks" />
+
+### Med skjema
+
+Når vi har skjemaelementer i en `Dialog` er det nyttig at foksu blir flyttet direkte til det første feltet, dersom det ikke ligger annet viktig innhold først.
+
+<Story story="WithForm" />
+
 
 ## Retningslinjer
 
 Bruk `Dialog` for å vise viktig innhold som krever brukerens oppmerksomhet eller handling.
+Vi unngår å kalle komponenten for "modal", siden den også kan brukes som "ikke-modal".
 
-**Passer til å**
+`Dialog` kan brukes som både **modal** og **ikke-modal**.
 
-- bekrefte viktige handlinger
-- vise skjemaer som krever fokus
-- vise kritisk informasjon
+### Modal Dialog
+En modal `Dialog` er et midlertidig vindu som åpnes over resten av innholdet på nettsiden.
+Modal `Dialog` fanger brukerens oppmerksomhet og hindrer interaksjon med annet innhold, samtidig som konteksten til nettsiden beholdes.
+Bruk av modal `Dialog` bør generelt begrenses, men kan være nyttig når brukeren må ta stilling til informasjon, bekrefte en handling eller fokusere på en spesifikk oppgave - uten å navigere bort fra siden.
 
-**Passer ikke til å**
+### Ikke-modal Dialog
+En "ikke-modal" `Dialog` lar brukeren fortsatt bruke resten av siden mens dialogen er åpen.
+Den bør brukes med varsomhet, og passer best når du skal gi støtteinformasjon eller ekstra funksjonalitet som ikke krever full oppmerksomhet. 
 
-- vise mye innhold, bruk heller en egen side
-- informasjon som ikke krever umiddelbar handling
+## Tekst
+- Ha en kort og konsis overskrift. Overskriften skal gjøre det tydelig for brukeren at konteksten er endret. 
+- Unngå mange avsnitt med tekst. 
+- Sørg for at formålet er tydelig og at all nødvendig informasjon er tilgjengelig i modalen.

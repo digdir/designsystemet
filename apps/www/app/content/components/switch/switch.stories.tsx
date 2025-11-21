@@ -4,10 +4,6 @@ export const Preview = () => {
   return <Switch label='Switch' />;
 };
 
-export const Checked = () => {
-  return <Switch label='Switch' checked />;
-};
-
 export const Group = () => {
   return (
     <Fieldset>
@@ -25,5 +21,5 @@ export const Group = () => {
 };
 
 export const RightAligned = () => {
-  return <Switch label='Flymodus' position='end' checked />;
+  return <Switch label='Flymodus' position='end' defaultChecked />;
 };

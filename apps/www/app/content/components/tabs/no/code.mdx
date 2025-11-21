@@ -1,11 +1,5 @@
----
-title: Tabs
-subtitle: '`Tabs` organiserer innhold i ulike seksjoner som brukeren kan bytte mellom.'
-image: Tabs.svg
-cssfile: tabs
----
-
 <Story story="Preview" />
+<ReactComponentDocs />
 
 ## Bruk
 
@@ -22,16 +16,37 @@ import { Tabs } from '@digdir/designsystemet-react';
 </Tabs>
 ```
 
-## Kodeeksempler
+## Eksempel
 
 ### Kun ikoner
 
+I eksempelet under har vi lagt [`Tooltip`](/no/components/tooltip/code) rundt `Tabs.Tab` for å gi beskrivende tekst til ikonene.
+
 <Story story="IconsOnly" />
-
-### Ikoner med tekst
-
-<Story story="IconsWithText" />
 
 ### Kontrollert
 
 <Story story="Controlled" />
+
+### HTML
+Du kan bruke [u-tabs (u-elements.github.io)](https://u-elements.github.io/u-elements/elements/u-tabs), som er en web-komponent som implementerer tabs.
+Legg på klassenavnet `ds-tabs`.
+
+```html
+<u-tabs class="ds-tabs">
+  <u-tablist>
+    <u-tab>Tab 1</u-tab>
+    <u-tab>Tab 2</u-tab>
+  </u-tablist>
+  <u-tabpanel>Panel 1</u-tabpanel>
+  <u-tabpanel>Panel 2</u-tabpanel>
+</u-tabs>
+```
+
+Vi anbefaler å bruke `<u-tabs>`, og ikke bygge egne tabs fra bunnen av, for å sikre god tilgjengelighet og funksjonalitet.
+
+## CSS variabler og data-attributter
+
+<CssVariables />
+
+<CssAttributes />

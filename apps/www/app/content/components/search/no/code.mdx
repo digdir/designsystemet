@@ -1,11 +1,5 @@
----
-title: Search
-subtitle: '`Search` er en søkekomponent som kombinerer et tekstfelt med søkefunksjonalitet.'
-image: Search.svg
-cssfile: search
----
-
 <Story story="Preview" />
+<ReactComponentDocs />
 
 ## Bruk
 
@@ -19,16 +13,45 @@ import { Search } from '@digdir/designsystemet-react';
 </Search>
 ```
 
-## Kodeeksempler
-
-### Med label
-
-<Story story="WithLabel" />
+## Eksempel
 
 ### Varianter
 
+Basert på korleis del-komponentar, og strukturen i HTML, kan du sendre på korleis `Search` vert vist.
+
 <Story story="Variants" />
 
-### Kontrollert
+### `<form>`
 
-<Story story="Controlled" layout="column" />
+<Story story="Form" layout="column" />
+
+## HTML
+
+Du brukar klassenavnet `ds-search` på eit wrapper element rundt `<input>`.
+Vil du ha ein "tøm"-knapp, legg du ved ein `<button>` med `type="reset"`
+
+**Det er viktig at du legger til ein tom `placeholder` på `<input>` dersom du har "tøm"-knapp**
+
+```html
+<div class="ds-search">
+  <input
+    class="ds-input"
+    placeholder=""
+    aria-label="Søk"
+    type="search"
+  >
+  <button
+    class="ds-button"
+    data-icon="true"
+    data-variant="tertiary"
+    type="reset"
+    aria-label="Tøm"
+  ></button>
+</div>
+```
+
+## CSS variabler og data-attributter
+
+<CssVariables />
+
+<CssAttributes />
