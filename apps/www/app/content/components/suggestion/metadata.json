@@ -1,12 +1,12 @@
 {
   "no": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` er en modal dialog som vises over resten av innholdet på siden."
+    "title": "Suggestion",
+    "subtitle": "Søkbar \"`<select>`\" med mulighet for flervalg/multiselect. Bruk dersom `Select` ikke er tilstrekkelig."
   },
   "en": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` is a modal dialog that appears over the rest of the content on the page."
+    "title": "Suggestion",
+    "subtitle": "`Suggestion` is a searchable \"`<select>`\" with support for multiple selection/multiselect. Use when `Select` is not sufficient."
   },
-  "image": "Dialog.svg",
-  "cssFile": "dialog.css"
+  "image": "Suggestion.svg",
+  "cssFile": "suggestion.css"
 }

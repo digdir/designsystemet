@@ -7,38 +7,45 @@ cssfile: error-summary
 
 <Story story="Preview" />
 
-## Bruk
+**Bruk `ErrorSummary` når**
+- du skal vise en tydelig oversikt over hvilke feil som må rettes før de kan sende inn et skjema
+- et skjema har mange felt, der det kan være vanskelig å få oversikt over hvor feilene befinner seg
 
-`ErrorSummary` består av flere delkomponenter som må brukes riktig:
+**Unngå `ErrorSummary` når**
+- du skal vise systemvarsler, bruk [`Alert`](/no/components/alert/overview)
+- du skal vise tilbakemeldinger som ikke hindrer innsending - for eksempel advarsler eller anbefalinger
 
-- `ErrorSummary.Heading` definerer overskriften
-- `ErrorSummary.List` definerer listen med feil
-- Hver feil representeres som en `ErrorSummary.Item` som inneholder en `ErrorSummary.Link`
-- Hver `ErrorSummary.Link` må ha en `href` til den unike identifikatoren for et skjemafelt, slik at brukeren kan navigere til riktig sted i skjemaet
+## Eksempel
+
+### Bruk i skjema
+
+I eksempelet under kan du trykke på hver lenke i `ErrorSummary` for å navigere til det aktuelle feltet med feil.
+
+<Story story="WithForm" layout="column" />
 
 ## Retningslinjer
 
-- Plasser `ErrorSummary` øverst på siden eller trinnet der feilen oppstår
-- Bruk alltid sammen med valideringsfeil på de aktuelle feltene
-- Lenk til de spesifikke feltene som har feil
-- Skriv tydelige og beskrivende feilmeldinger
+`ErrorSummary` brukes til å vise en oppsummering når det er feil eller mangler i noe brukeren har gjort.
+En oppsummering kan gjelde for én eller flere feil.
+`ErrorSummary` skal inneholde alle feilmeldingene som er på siden, så brukerne kan navigere direkte til feilene og manglene ved å klikke på lenkene i oppsummeringen
+
+### Plassering
+
+Vi anbefaler å vise `ErrorSummary` like over Neste/Send inn-knappen.
+Dette for at brukerne skal forstå sammenhengen mellom feilen og hvorfor de blir hindret i å gå videre. 
+
+I noen tilfeller kan det likevel være bedre å vise oppsummeringen i toppen, det kan du lese mer om i [artikkelen om feilmeldinger](https://designsystemet.no/no/patterns/errors).
+
+### Synlighet
+
+Oppsummeringen skal ikke være synlig uten at brukeren foretar seg noe.
+Den skal bli synlig først når brukeren har utført en handling om utløser feil.
+- Hvis vi validerer fortløpende (feks. ved `onBlur` på hvert felt), venter vi med å vise ErrorSummary til brukeren prøver å sende inn skjemaet.
+- Det er viktig at komponenten får fokus når den blir vist, slik at brukeren får med seg at det er feil eller mangler i skjemaet.
+- Feilmeldingene skal lenke direkte til feltet det gjelder.
+- Hvis feilen gjelder flere felt, for eksempel når to felt valideres på tvers, lenker vi til det første tilfellet av feilen.
 
 ## Tekst
 
-- Bruk en tydelig overskrift som "For å gå videre må du rette opp følgende feil:"
-- Feilmeldingene skal være konkrete og si hva som er feil
-- Fortell hva brukeren må gjøre for å rette feilen
-
-## Tilgjengelighet
-
-Når `ErrorSummary` blir synlig, må dette kommuniseres til skjermleserbrukere.
-
-### Flytt fokus
-
-Det er viktig at `ErrorSummary` får fokus ved submit slik at brukeren får med seg at det er feil eller mangler i skjemaet. Du kan bruke en ref for å flytte fokuset:
-
-<Story story="ShowHide" layout="column" />
-
-### Ikke bruk live region for ErrorSummary
-
-`ErrorSummary` skal ikke bruke live region (`aria-live`). Dette er fordi skjermlesere ofte har egne varsler når et skjema blir submittet, og en kombinasjon av disse kan føre til forvirrende opplesing.
+Pass på at overskriften “For å gå videre må du rette opp følgende feil” brukes i `ErrorSummary`.
+Feilmeldingene i oppsummeringen skal være formulert lik feilmeldingen ved feltet.

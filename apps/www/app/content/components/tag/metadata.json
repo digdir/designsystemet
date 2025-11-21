@@ -1,12 +1,12 @@
 {
   "no": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` er en modal dialog som vises over resten av innholdet på siden."
+    "title": "Tag",
+    "subtitle": "Tags er merkelapper som kan brukes til å kategorisere elementer eller kommunisere fremdrift, status eller prosess. Tags kan gi brukeren et raskere overblikk over innholdet."
   },
   "en": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` is a modal dialog that appears over the rest of the content on the page."
+    "title": "Tag",
+    "subtitle": "Tags are labels that can be used to categorize items or communicate progress, status, or process. Tags can provide users with a quicker overview of content."
   },
-  "image": "Dialog.svg",
-  "cssFile": "dialog.css"
+  "image": "Tag.svg",
+  "cssFile": "tag.css"
 }

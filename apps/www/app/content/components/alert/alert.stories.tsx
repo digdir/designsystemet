@@ -121,7 +121,7 @@ export const MedLenke = () => (
     </Heading>
     <Paragraph>
       Fristen for å søke opptak til utdanning er 15. april.{' '}
-      <Link href='https://designsystemet.no/'>Søk nå</Link>
+      <Link href='#'>Søk nå</Link>
     </Paragraph>
   </Alert>
 );

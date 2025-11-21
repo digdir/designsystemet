@@ -1,12 +1,13 @@
 {
+  "category": "typography",
   "no": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` er en modal dialog som vises over resten av innholdet på siden."
+    "title": "Label",
+    "subtitle": "`Label` fungerer som en tydelig og tilgjengelig tekstlig \"etikett\" som forteller brukeren hva et tilhørende skjemaelement handler om. "
   },
   "en": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` is a modal dialog that appears over the rest of the content on the page."
+    "title": "Label",
+    "subtitle": "`Label` functions as a clear and accessible textual \"label\" that tells the user what an associated form element is about."
   },
-  "image": "Dialog.svg",
-  "cssFile": "dialog.css"
+  "image": "Typography.svg",
+  "cssFile": "label.css"
 }

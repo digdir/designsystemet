@@ -1,11 +1,5 @@
----
-title: Textarea
-subtitle: '`Textarea` er et felt der brukeren kan fylle inn lengre tekst over flere linjer.'
-image: Textarea.svg
-cssfile: textarea
----
-
 <Story story="Preview" layout="column" />
+<ReactComponentDocs />
 
 ## Bruk
 
@@ -17,9 +11,11 @@ import { Textarea, Label } from '@digdir/designsystemet-react';
 </>
 ```
 
-## Kodeeksempler
+## Eksempel
 
 ### Med rader
+Bruk `rows`-attributtet for å sette antall synlige rader i tekstområdet.
+Dette påvirker kun den initielle høyden på feltet.
 
 <Story story="WithRows" layout="column" />
 
@@ -30,3 +26,16 @@ import { Textarea, Label } from '@digdir/designsystemet-react';
 ### ReadOnly
 
 <Story story="ReadOnly" layout="column" />
+
+## HTML
+Legg klassenavnet `ds-input` på `<textarea>`.
+
+```html
+<textarea class="ds-input"></textarea>
+```
+
+## CSS variablar og data-attributter
+`Textarea` får styling fra `ds-input`, og derfor viser vi variabler og data-attributter fra den klassen her.
+<CssVariables />
+
+<CssAttributes />

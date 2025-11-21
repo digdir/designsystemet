@@ -43,3 +43,28 @@ export const ReadOnly = () => {
     </Field>
   );
 };
+
+export const WithOptgroup = () => {
+  return (
+    <Field>
+      <Label>Velg en park</Label>
+      <Select>
+        <Select.Optgroup label='Grünerløkka'>
+          <Select.Option value='sofienbergparken'>
+            Sofienbergparken
+          </Select.Option>
+          <Select.Option value='birkelunden'>Birkelunden</Select.Option>
+          <Select.Option value='olafryesplass'>Olaf Ryes plass</Select.Option>
+        </Select.Optgroup>
+        <Select.Optgroup label='Sentrum'>
+          <Select.Option value='slottsparken'>Slottsparken</Select.Option>
+          <Select.Option value='studenterlunden'>Studenterlunden</Select.Option>
+        </Select.Optgroup>
+        <Select.Optgroup label='Gamle Oslo'>
+          <Select.Option value='botsparken'>Botsparken</Select.Option>
+          <Select.Option value='klosterenga'>Klosterenga park</Select.Option>
+        </Select.Optgroup>
+      </Select>
+    </Field>
+  );
+};

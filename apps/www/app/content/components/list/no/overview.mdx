@@ -1,26 +1,15 @@
----
-title: List
-image: List.svg
-cssfile: list
----
-
-`List` brukes for å presentere innhold på en oversiktlig og strukturert måte.
-
 <Story story="Preview" />
 
-## Bruk
+**Bruk `List` når**
+- brukerne skal ha en rask oversikt over innhold i lengre tekster
+- du skal liste opp kriterier
+- du skal vise trinn i en prosess
 
-Listen kan være både sortert og usortert, dette endrer du ved å bruke `List.Ordered` eller `List.Unordered`.
+**Unngå `List` når**
+- brukerne skal lese lengre innhold
+- du skal sammenligne flere grupper av informasjon
 
-```tsx
-import { List } from '@digdir/designsystemet-react';
-
-<List.Unordered>
-  <List.Item>Item</List.Item>
-</List.Unordered>
-```
-
-## Kodeeksempler
+## Eksempel
 
 ### Usortert liste
 
@@ -31,16 +20,24 @@ import { List } from '@digdir/designsystemet-react';
 <Story story="Ordered" layout="column" />
 
 ## Retningslinjer
-
 Lister gjør innhold lettere å skumme og forstå. Bruk sorterte (ordnede) lister når rekkefølgen er viktig, og usorterte når den ikke er det.
+Vær bevisst på strukturen, og unngå lange punktrekker.
+Del heller opp i flere korte lister for bedre lesbarhet.
 
-**Passer til å**
+### Liste eller tabell?
+Lister og tabeller har forskjellige bruksområder.
+Riktig bruk gjør opplevelsen tydelig for alle brukere, spesielt for de med kognitive vansker og læringsvansker, eller de som bruker skjermlesere.
+- En liste presenterer relatert informasjon på en oversiktlig måte.
+- En tabell lar brukeren se og sammenligne flere grupper av informasjon.
 
-- gi brukerne rask oversikt over innhold i lengre tekster
-- liste opp kriterier
-- vise trinn i en prosess
+## Tekst
+Alle elementer i en liste bør ha samme form og struktur.
 
-**Passer ikke til å**
+Når hvert punkt er en fortsettelse av innledningen bruker vi
+- liten forbokstav i punktene
+- ikke kolon etter innledningen
+- ikke punktum eller komma til slutt på hvert punkt
 
-- vise brukerne lengre innhold
-- sammenligne flere grupper av informasjon
+Når punktene er hele setninger, bruker vi
+- stor forbokstav i det første ordet, slik at hvert punkt leses som en selvstendig setning
+- punktum til slutt på hvert punkt, for å markere at setningen er avsluttet

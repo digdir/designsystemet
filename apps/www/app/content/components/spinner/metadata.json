@@ -1,12 +1,12 @@
 {
   "no": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` er en modal dialog som vises over resten av innholdet på siden."
+    "title": "Spinner",
+    "subtitle": "`Spinner` brukes for å indikere at innhold eller en handling er i ferd med å laste, og at brukeren må vente før de kan fortsette. "
   },
   "en": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` is a modal dialog that appears over the rest of the content on the page."
+    "title": "Spinner",
+    "subtitle": "The `Spinner` component is used to indicate that content or an action is loading, and that the user must wait before they can continue."
   },
-  "image": "Dialog.svg",
-  "cssFile": "dialog.css"
+  "image": "Spinner.svg",
+  "cssFile": "spinner.css"
 }

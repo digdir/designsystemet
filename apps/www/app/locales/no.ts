@@ -85,6 +85,7 @@ export default {
       About: 'Om',
       components: 'Komponenter',
       getStarted: 'Kom i gang',
+      typography: 'Typografi',
     },
     items: {
       Introduction: 'Introduksjon',
@@ -224,8 +225,8 @@ export default {
   toc: {
     title: 'På denne siden',
   },
-  do: 'Gjør',
-  dont: 'Ikke gjør',
+  do: 'Gjør slik',
+  dont: 'Unngå dette',
   contributors: 'Bidragsytere',
   editOnGithub: 'Rediger denne siden på github.com (åpnes i ny fane)',
   updated: 'Oppdatert',

@@ -1,10 +1,6 @@
----
-title: Suggestion
-image: Suggestion.svg
-cssfile: suggestion
----
-
-Søkbar "select" med mulighet for flervalg/multiselect. Bruk dersom Select ikke er tilstrekkelig.
+<Alert data-color="warning">
+Suggestion er under utvikling. Finner du feil eller mangler, meld i fra på Github eller Slack.
+</Alert>
 
 <Story story="Preview" />
 
@@ -28,4 +24,21 @@ import { EXPERIMENTAL_Suggestion as Suggestion } from '@digdir/designsystemet-re
 </Suggestion>
 ```
 
-## Code Examples
+## Eksempel
+
+### Flervalg
+Du kan gi brukeren mulighet til å velge flere alternativer.
+Slettbare `Chip`s vil komme etter `<label>`, men før inndatafeltet.
+
+<Story story='Multiple' />
+
+### Filter
+Filter er som standard på, og filteret ser etter etter teksten i input.
+Du kan sende inn ditt eget filkter.
+Under viser vi et eksempel som skrur av filteret helt.
+
+<Story story='Filter' />
+
+## Tilleggsinformasjon
+`Suggestion` baserer seg på [u-combobox fra u-elements (github.io)](https://u-elements.github.io/u-elements/elements/u-combobox). 
+Den er inspisert av [open-ui sitt combobox mønster (open-ui.org)](https://open-ui.org/components/combobox.explainer/).

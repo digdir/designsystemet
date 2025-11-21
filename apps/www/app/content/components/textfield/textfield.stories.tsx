@@ -1,4 +1,4 @@
-import { Textfield } from '@digdir/designsystemet-react';
+import { Tag, Textfield } from '@digdir/designsystemet-react';
 
 export const Preview = () => {
   return <Textfield label='Label' />;
@@ -24,14 +24,19 @@ export const WithCounter = () => {
   );
 };
 
-export const Disabled = () => {
-  return <Textfield label='Label' disabled value='Disabled' />;
-};
-
-export const ReadOnly = () => {
-  return <Textfield label='Label' readOnly value='ReadOnly' />;
-};
-
-export const WithError = () => {
-  return <Textfield label='Label' error='Dette feltet er påkrevd' />;
-};
+export const Required = () => (
+  <Textfield
+    label={
+      <>
+        Hvor bor du?
+        <Tag
+          data-color='warning'
+          style={{ marginInlineStart: 'var(--ds-size-2)' }}
+        >
+          Må fylles ut
+        </Tag>
+      </>
+    }
+    required
+  />
+);

@@ -1,12 +1,12 @@
 {
   "no": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` er en modal dialog som vises over resten av innholdet på siden."
+    "title": "Textfield",
+    "subtitle": "`Textfield` gir brukere muligheten til å skrive fritekst eller tall. "
   },
   "en": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` is a modal dialog that appears over the rest of the content on the page."
+    "title": "Textfield",
+    "subtitle": "`Textfield` allows users to enter free text or numbers. "
   },
-  "image": "Dialog.svg",
-  "cssFile": "dialog.css"
+  "image": "Textfield.svg",
+  "cssFile": "input.css"
 }
