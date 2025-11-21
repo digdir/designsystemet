@@ -28,7 +28,6 @@ type HeaderProps = {
   menu: { name: TemplateStringsArray; href: string }[];
   betaTag?: boolean;
   themeSwitcher?: boolean;
-  transparentBackground?: boolean;
   logoLink?: string;
 } & React.HTMLAttributes<HTMLElement>;
 
@@ -63,7 +62,6 @@ const Header = ({
   menu,
   betaTag,
   themeSwitcher = false,
-  transparentBackground = false,
   logoLink = '/',
   className,
   ...props
@@ -183,7 +181,6 @@ const Header = ({
         className={cl(
           classes.header,
           isHamburger && classes.hamburger,
-          transparentBackground && classes.transparentHeader,
           className,
         )}
         ref={headerRef}

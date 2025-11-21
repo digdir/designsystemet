@@ -12,6 +12,7 @@ export type TableOfContentsProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 export const TableOfContents = ({
+  children,
   items,
   title,
   className,
@@ -76,6 +77,7 @@ export const TableOfContents = ({
           </li>
         ))}
       </ol>
+      {children}
     </aside>
   );
 };

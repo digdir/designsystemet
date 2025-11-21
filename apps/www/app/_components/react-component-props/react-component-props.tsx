@@ -1,4 +1,5 @@
 import { Tag } from '@digdir/designsystemet-react';
+import cl from 'clsx/lite';
 import { forwardRef, type HTMLAttributes } from 'react';
 import type { ComponentDoc } from 'react-docgen-typescript';
 import classes from './react-component-props.module.css';
@@ -18,7 +19,7 @@ export const ReactComponentDocs = forwardRef<
     <div
       {...rest}
       ref={ref}
-      className={classes.wrapper}
+      className={cl(classes.wrapper, 'u-long-content')}
       data-color='accent'
       lang='en'
     >

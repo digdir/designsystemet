@@ -63,7 +63,7 @@ export default {
     tag: 'Bloggen',
     title: 'Bloggen',
     description:
-      'Her deler vi nyheter, tips og erfaringer fra utviklingen av Designsystemet. Vi ønsker å dele kunnskap og erfaringer med hverandre, og bidra til å gjøre det enklere å lage gode digitale tjenester.',
+      'Her finner du historier, erfaringer og oppdateringer fra designsystemet. Et sted for å lære av hverandre og holde deg oppdatert.',
     write: {
       title: 'Vil du skrive for bloggen?',
       description:
@@ -223,10 +223,11 @@ export default {
     },
   },
   toc: {
-    title: 'Innhold',
+    title: 'På denne siden',
   },
   do: 'Gjør slik',
   dont: 'Unngå dette',
   contributors: 'Bidragsytere',
   editOnGithub: 'Rediger denne siden på github.com (åpnes i ny fane)',
+  updated: 'Oppdatert',
 };

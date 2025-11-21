@@ -4,10 +4,8 @@ export default {
     privacy: 'Personvernerklæring',
     accessibility: 'Tilgjengelighetserklæring',
     slack: 'Bli med på Slack',
-    agencies: {
-      title: 'Lages på tvers av offentlige etater:',
-      contact: 'Din etat? Ta kontakt!',
-    },
+    description:
+      'Designsystemet er en felles verktøykasse med grunnleggende UI-komponenter, retningslinjer og mønstre du kan bruke når du utvikler digitale løsninger. Det er åpent og gratis for alle.',
     'about-site': 'Om nettstedet',
     'contact-us': 'Kom i kontakt med oss',
     copyright: 'Designsystemet',

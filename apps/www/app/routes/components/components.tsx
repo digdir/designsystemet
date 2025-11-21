@@ -1,10 +1,9 @@
-import { ContentContainer } from '@internal/components';
 import { ComponentFillIcon } from '@navikt/aksel-icons';
+import cl from 'clsx';
 import { useTranslation } from 'react-i18next';
 import {
   Banner,
   BannerHeading,
-  BannerIcon,
   BannerIngress,
 } from '~/_components/banner/banner';
 import { ComponentCard } from '~/_components/component-card/component-card';
@@ -70,18 +69,15 @@ export default function Components() {
 
   return (
     <>
-      <Banner color='blue'>
-        <BannerIcon>
-          <ComponentFillIcon />
-        </BannerIcon>
+      <Banner data-color='accent' icon={<ComponentFillIcon />}>
         <BannerHeading level={1}>{t('components.title')}</BannerHeading>
         <BannerIngress>{t('components.description')}</BannerIngress>
       </Banner>
-      <ContentContainer className={classes.grid} data-is-main={true}>
+      <div className={classes.grid} data-is-main={true}>
         {sortedData.map((component) => (
           <ComponentCard key={component.title} {...component} />
         ))}
-      </ContentContainer>
+      </div>
     </>
   );
 }

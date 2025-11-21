@@ -2,14 +2,12 @@ import type no from './no';
 
 export default {
   footer: {
-    about: 'About the design system',
+    about: 'About Designsystemet',
     privacy: 'Privacy policy',
     accessibility: 'Accessibility statement',
     slack: 'Join us on Slack',
-    agencies: {
-      title: 'Created across public agencies:',
-      contact: 'Your agency? Contact us!',
-    },
+    description:
+      'Designsystemet is a shared toolbox of basic UI components, guidelines, and patterns that you can use when developing digital solutions. It is open and free for everyone.',
     'about-site': 'About this site',
     'contact-us': 'Get in touch with us',
     copyright: 'Designsystemet',
