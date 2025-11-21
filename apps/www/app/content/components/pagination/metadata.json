@@ -1,12 +1,12 @@
 {
   "no": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` er en modal dialog som vises over resten av innholdet på siden."
+    "title": "Pagination",
+    "subtitle": "`Pagination` er en liste med knapper som brukes for å navigere mellom ulike sider med innhold, for eksempel søkeresultater eller tabeller."
   },
   "en": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` is a modal dialog that appears over the rest of the content on the page."
+    "title": "Pagination",
+    "subtitle": "`Pagination` is a list of buttons used to navigate between different pages of content, such as search results or tables."
   },
-  "image": "Dialog.svg",
-  "cssFile": "dialog.css"
+  "image": "Pagination.svg",
+  "cssFile": "pagination.css"
 }

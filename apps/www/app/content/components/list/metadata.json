@@ -1,12 +1,12 @@
 {
   "no": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` er en modal dialog som vises over resten av innholdet på siden."
+    "title": "List",
+    "subtitle": "`List` brukes for å presentere innhold på en oversiktlig og strukturert måte, for eksempel for å oppsummere hovedpunkter eller vise brukeren hvilke trinn som må følges i en bestemt rekkefølge."
   },
   "en": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` is a modal dialog that appears over the rest of the content on the page."
+    "title": "List",
+    "subtitle": "`List` is used to present content in a clear and structured way, for example to summarize main points or show the user which steps must be followed in a specific order."
   },
-  "image": "Dialog.svg",
-  "cssFile": "dialog.css"
+  "image": "List.svg",
+  "cssFile": "list.css"
 }

@@ -24,3 +24,18 @@ export const Placement = () => {
     </Tooltip>
   );
 };
+
+export const Aria = () => {
+  return (
+    <>
+      <Tooltip content='Eg er aria-describedby'>
+        <Button>Eg er aria-describedby</Button>
+      </Tooltip>
+      <Tooltip content='Eg er aria-labelledby'>
+        <Button icon>
+          <FilesIcon aria-hidden />
+        </Button>
+      </Tooltip>
+    </>
+  );
+};

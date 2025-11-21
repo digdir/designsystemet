@@ -1,12 +1,12 @@
 {
   "no": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` er en modal dialog som vises over resten av innholdet på siden."
+    "title": "ToggleGroup",
+    "subtitle": "`ToggleGroup` kan brukast til å samle relaterte alternativ. Komponenten består av ei gruppe knappar som heng saman, der berre éin knapp er mogleg å velje om gongen."
   },
   "en": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` is a modal dialog that appears over the rest of the content on the page."
+    "title": "ToggleGroup",
+    "subtitle": "`ToggleGroup` can be used to group related options. The component consists of a group of buttons that are connected, where only one button can be selected at a time."
   },
-  "image": "Dialog.svg",
-  "cssFile": "dialog.css"
+  "image": "ToggleGroup.svg",
+  "cssFile": "toggle-group.css"
 }

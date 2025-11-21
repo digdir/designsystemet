@@ -68,7 +68,7 @@ export const Controlled = () => {
   return (
     <Popover.TriggerContext>
       <Popover.Trigger onClick={() => setOpen(!open)}>Slett</Popover.Trigger>
-      <Popover open={open} onClose={() => setOpen(false)} data-color='neutral'>
+      <Popover open={open} onClose={() => setOpen(false)} data-color='danger'>
         <Paragraph>Er du sikker på at du vil slette?</Paragraph>
         <div
           style={{
@@ -78,15 +78,14 @@ export const Controlled = () => {
           }}
         >
           <Button
-            data-color='danger'
             onClick={() => setOpen(false)}
             data-size='sm'
+            data-color='danger'
           >
             Slett
           </Button>
           <Button
             data-variant='tertiary'
-            data-color='danger'
             onClick={() => setOpen(false)}
             data-size='sm'
           >
@@ -103,18 +102,21 @@ export const WithoutContext = () => {
 
   return (
     <>
-      <Button popovertarget='my-popover' onClick={() => setOpen(!open)}>
-        My trigger
+      <Button
+        data-color='danger'
+        popovertarget='my-popover'
+        onClick={() => setOpen(!open)}
+      >
+        Slett
       </Button>
       <Popover
         id='my-popover'
         open={open}
         onClose={() => setOpen(false)}
-        data-color='neutral'
+        data-color='danger'
       >
         <Paragraph>Er du sikker på at du vil slette?</Paragraph>
         <Button
-          data-color='danger'
           onClick={() => setOpen(false)}
           data-size='sm'
           style={{ marginTop: 'var(--ds-size-2)' }}

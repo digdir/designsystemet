@@ -1,57 +1,49 @@
----
-title: Popover
-subtitle: Popover er en komponent som viser tilleggsinformasjon eller handlinger når brukeren klikker på en trigger.
-image: Popover.svg
-cssfile: popover
----
-
 <Story story="Preview" />
 
-## Bruk
+**Bruk `Popover` når** 
+* du skal gi utfyllende forklaringer som krever mer plass enn en kort [`Tooltip`](/no/components/tooltip), f.eks. definisjoner eller utdypende instruksjoner
+* det trengst kontekstspesifikk hjelp som brukeren kan velge å åpne/lukke uten å forlate siden
+* tilleggsinformasjon som ikke er kritisk for å fullføre oppgaven skal visest, men som kan være nyttig for enkelte brukere
 
-`Popover` består av flere delkomponenter:
+**Unngå `Popover` når**
+* du skal beskrive et symbol eller tastatursnartvei, bruk heller [`Tooltip`](/no/components/tooltip)
+* det skal være navigasjon eller valg av alternativer, bruk heller [`Dropdown`](/no/components/dropdown)
+* du skal vise innhold ved `hover`
 
-- `Popover.TriggerContext` - Wrapper for å koble sammen trigger og popover
-- `Popover.Trigger` - Elementet som åpner popover (kan være knapp eller inline tekst)
-- `Popover` - Selve popover-innholdet
-
-## Retningslinjer
-
-- Bruk Popover for tilleggsinformasjon som ikke trenger å være synlig hele tiden
-- Hold innholdet kort og relevant
-- Bruk fargevariantene for å indikere ulike typer innhold (neutral, info, warning, danger)
-- Unngå kritisk informasjon i Popover som brukeren må se
-
-## Interaktiv popover
+## Eksempel
+### Interaktiv popover
 
 Popover kan inneholde knapper og andre interaktive elementer:
 
 <Story story="Interactive" />
 
-## Inline trigger
+### Inline trigger
 
 Du kan bruke Popover inline i tekst med stiplet understrek:
 
 <Story story="DottedUnderline" />
 
-## Kontrollert tilstand
+### Kontrollert tilstand
 
 Du kan kontrollere når popover er åpen eller lukket:
 
 <Story story="Controlled" />
 
-## Uten TriggerContext
+### Uten TriggerContext
 
 Du kan også bruke Popover uten TriggerContext ved å bruke `popovertarget`:
 
 <Story story="WithoutContext" />
 
-## Fargevarianter
+## Retningslinjer
+`Popover` brukes for å vise mer detaljert eller interaktiv tilleggsinformasjon uten å ta brukeren bort fra konteksten.
+Den åpnes ved et bevisst brukerklikk og kan inneholde både tekst, lenker og enkle skjemaelementer.
+Innholdet bør være kort og relevant, og ikke kritisk for å fullføre oppgaven.
 
-Popover støtter følgende fargevarianter:
-- `neutral` - Standard grå farge
-- `info` - Blå informasjonsfarge
-- `warning` - Gul advarselsfarge
-- `danger` - Rød farefarge
+### Plassering
+`Popover` plasseres etter ønske, men holder seg automatisk innenfor det synlige området i nettleseren.
+Denne oppførselen kan deaktiveres med `autoPlacement`.
 
-Hver variant har også en `tinted` versjon som er lysere.
+## Tekst 
+Unngå lange tekster og kompliserte forklaringer.
+I noen tilfeller er det kanskje bedre å lenke til en annen side med utdypende informasjon om temaet.

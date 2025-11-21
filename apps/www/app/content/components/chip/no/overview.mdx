@@ -1,24 +1,16 @@
 <Story story="Preview" />
 
-## Bruk
+**Bruk `Chip` når**
+- brukeren skal filtrere informasjon, for eksempel i lister eller tabeller
+- det skal vises hvilke filter som er aktive
 
-```tsx
-import { Chip } from '@digdir/designsystemet-react';
+**Unngå `Chip` når**
+- det er tall eller status (bruk heller [`Badge`](/no/components/badge/overview))
+- innhold skal merkes med kategori/emne som ikke er interaktivt. Bruk heller [`Tag`](/no/components/tag/overview)-komponenten dersom kategori/emne ikke er klikkbart
+- det skal ligge i menyer, som sidemenyer eller hovedmenyer
 
-// som radio
-<Chip.Radio name="my-chip" defaultChecked>You are using the Chip component!</Chip.Radio>;
 
-// som checkbox
-<Chip.Checkbox name="my-chip" defaultChecked>You are using the Chip component!</Chip.Checkbox>;
-
-// som removable
-<Chip.Removable>You are using the Chip component!</Chip.Removable>;
-
-// som button
-<Chip.Button>You are using the Chip component!</Chip.Button>;
-```
-
-## Kodeeksempler
+## Eksempel
 
 ### `Chip.Checkbox`
 
@@ -28,7 +20,8 @@ import { Chip } from '@digdir/designsystemet-react';
 
 ### `Chip.Removable`
 
-`Chip.Removable` inneholder et kryss som indikerer at filteret kan fjernes. Det er viktig å merke seg at `aria-label` må legges til dersom innholdet i Chip ikke forklarer at den kan fjernes.
+`Chip.Removable` inneholder et kryss som indikerer at filteret kan fjernes.
+Det er viktig å merke seg at `aria-label` må legges til dersom innholdet i `Chip` ikke forklarer at den kan fjernes.
 
 <Story story="Removable" />
 
@@ -44,21 +37,6 @@ import { Chip } from '@digdir/designsystemet-react';
 
 Unngå å plassere `Chip` vertikalt. Skal du vise alternativ under hverandre, bruk heller [`Checkbox`](/docs/komponenter-checkbox--docs) eller [`Radio`](/docs/komponenter-radio--docs). En gruppe med flere `Chip` kan brytes over flere linjer.
 
-**Passer til å:**
-
-- Filtrere informasjon, for eksempel i lister eller tabeller.
-- Vise hvilke filter som er valgt.
-
-**Passer ikke til:**
-
-- Varsel for tall eller status (bruk heller [`Badge`](/docs/komponenter-badge--docs)).
-- Å merke innhold med kategori/emne som ikke er interaktivt. Bruk heller [`Tag`](/docs/komponenter-tag--docs)-komponenten dersom kategori/emne ikke er klikkbart.
-- Menyer, som sidemenyer eller hovedmenyer
-
 ## Tekst
 
 `Chip` bør ha så få ord som mulig, helst bare ett eller to.
-
-## Tilgjengelighet
-
-Hvis deler av en side blir oppdatert samtidig som brukerne gjør noe på siden, må vi passe på at brukere med skjermlesere får beskjed om det. Vi kan bruke en `ARIA live region` til det, som kan vise antall treff eller andre endringer.

@@ -1,12 +1,12 @@
 {
   "no": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` er en modal dialog som vises over resten av innholdet på siden."
+    "title": "ErrorSummary",
+    "subtitle": "`ErrorSummary` er en oppsummering av feil. Det gir brukeren oversikt over feil eller mangler som må rettes på en side eller trinn, for å komme videre."
   },
   "en": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` is a modal dialog that appears over the rest of the content on the page."
+    "title": "ErrorSummary",
+    "subtitle": "`ErrorSummary` is a summary of errors. It provides the user with an overview of errors or issues that need to be addressed on a page or step in order to proceed."
   },
-  "image": "Dialog.svg",
-  "cssFile": "dialog.css"
+  "image": "ErrorSummary.svg",
+  "cssFile": "error-summary.css"
 }
