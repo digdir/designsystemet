@@ -45,12 +45,7 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
   const { t } = useTranslation();
 
   return (
-    <footer
-      ref={ref}
-      className={cl(classes.footer, className)}
-      data-color-scheme='light'
-      {...rest}
-    >
+    <footer ref={ref} className={cl(classes.footer, className)} {...rest}>
       <div className={classes.container}>
         <div>
           <DsFullNeutralLogo className={classes.logo} />
