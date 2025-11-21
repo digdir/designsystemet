@@ -47,7 +47,7 @@
   margin-left: calc(-1 * (var(--_column-gap) + var(--_square-size)));
 }
 .container h3 {
-  margin-bottom: 4px;
+  margin-bottom: 12px;
 }
 
 .logo {
