@@ -131,17 +131,13 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
 
         if (isTrigger) {
           event.preventDefault(); // Prevent native Popover API
-          if (!controlledOpen) {
-            setInternalOpen(true);
-            onOpen?.();
-          } else {
-            setInternalOpen(false);
-            onClose?.();
-          }
         }
-        if (isOutside && controlledOpen) {
+        if (controlledOpen && (isTrigger || isOutside)) {
           setInternalOpen(false);
           onClose?.();
+        } else if (isTrigger) {
+          setInternalOpen(true);
+          onOpen?.();
         }
       };
 
