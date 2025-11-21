@@ -6,9 +6,7 @@ description: Hvordan kan vi skape en mer forutsigbar og inkluderende opplevelse 
 date: 2025-11-21
 ---
 
-
-Ulik plassering og rekkefølge på knapper skaper unødvendig friksjon for brukerne. Manglende konsistens gjør at brukerne må tenke mer enn nødvendig. Oppgaver kan ta lengre tid, risikoen for å gjøre feil øker, og det kan skape ekstra belastning, spesielt for personer med nedsatt syn, motoriske utfordringer eller kognitive barrierer. Ved å bli enige om en felles rekkefølge og plassering av knapper på tvers kan vi gjøre det enklere for alle brukere. Når forventningene stemmer, går oppgavene raskere og helheten i de digitale tjenestene blir sterkere.
-
+Ulik plassering og rekkefølge på knapper skaper unødvendig friksjon. Det øker risikoen for feil og gjør oppgavene tyngre, spesielt for personer med nedsatt syn, motoriske utfordringer eller kognitive barrierer. Når vi bruker samme rekkefølge og plassering på tvers av løsninger, blir opplevelsen mer forutsigbar. Brukerne finner raskere fram og gjør færre feil.
 
 ## Design og opplevelse
 
@@ -27,10 +25,22 @@ Som hovedregel skal knapper som står i en gruppe alltid presenteres i rekkeføl
 />
 
 ### Plasser knapper til venstre
-Når du plasserer knapper til venstre i grensesnittet blir de enklere å finne for alle brukere, og særlig for dem med nedsatt synsfelt eller de som bruker skjermforstørrelse. Når handlinger plasseres til venstre, blir de lettere å oppdage og raskere å ta stilling til. [KILDE video brreg)
+Når du plasserer knapper til venstre i grensesnittet blir de enklere å finne for alle brukere, og særlig for dem med nedsatt synsfelt eller de som bruker skjermforstørrelse. Når handlinger plasseres til venstre, blir de lettere å oppdage og raskere å ta stilling til.<sup>2</sup>
 
-[BILDE GJØR]
-[BILDE UNNGÅ]
+<Image
+  src="/img/patterns/button-left.png"
+  alt="Tre knapper plassert til venstre i grensesnittet."
+  boxShadow={false}
+  dataUnstyled
+  caption='Plasser knapper til venstre. Da er det større sannsynlighet for at brukeren ser dem.'
+/>
+<Image
+  src="/img/patterns/button-right.png"
+  alt="Tre knapper plassert til høyre i grensesnittet."
+  boxShadow={false}
+  dataUnstyled
+  caption='Unngå å plassere knapper til høyre. Da må brukeren lese mindre viktige alternativer før hen kommer til primærhandlingen. I tillegg kan det gjøre det vanskelig for noen brukere å finne knappene.'
+/>
 
 ### Praktiske eksempler
 Eksemplene tar utgangspunkt i tre vanlige situasjoner: modal, popover og skjema.
@@ -38,24 +48,40 @@ Eksemplene tar utgangspunkt i tre vanlige situasjoner: modal, popover og skjema.
 #### Modal (dialog)
 For å skape en forutsigbar opplevelse bør knappene i en modal plasseres og følge samme rekkefølge som ellers. 
 
-[BILDE MODAL]
-Bildetekst: Eksempel på modal som har alle knappene plassert til venstre.
+<Image
+  src="/img/patterns/button-modal.png"
+  alt="Modal med teksten 'Vil du fortsatt være pålogget?' og to knapper plassert til venstre i rekkefølgen primær 'Hold meg pålogget' og sekundær 'Logg ut'."
+  boxShadow={false}
+  dataUnstyled
+  caption='Eksempel på modal som har knappene plassert til venstre.'
+/>
 
 Lukk-knappen (X) skal være plassert øverst til høyre i modalen. Knappen bør ha samme funksjon som når brukeren klikker utenfor modalen eller trykker på Esc-tasten. Modalen lukkes og dersom et spørsmål krever svar er det alltid det minst inngripende eller minst destruktive valget for brukeren det faller tilbake på. 
 
 #### Popover
 En popover brukes for korte, avgrensede valg eller bekreftelser som krever en umiddelbar handling uten å ta brukeren bort fra konteksten. Knapper i en popover skal følge samme plassering og rekkefølge som ellers.
 
-[BILDE POPOVER]
+<Image
+  src="/img/patterns/button-popover.png"
+  alt="Popover med teksten 'Er du sikker på at du vil slette raden? Du kan ikke angre' og to knapper plassert til venstre i rekkefølgen primær 'Ja, slett rad' og sekundær 'Behold rad'."
+  boxShadow={true}
+  dataUnstyled
+  caption='Eksempel på popover som har knappene plassert til venstre.'
+/>
 
 #### Skjema med én side
-I skjemaer der alt fylles ut på én side, vil «Send inn»-knappen som regel være den eneste primærhandlingen. Hvis det er behov for alternative valg som «Fortsett senere» eller «Slett skjemaet» 
+I skjemaer der alt fylles ut på én side, vil «Send inn»-knappen som regel være den eneste primærhandlingen. 
 
-[BILDE SKJEMA ÉN SIDE]
-Bildetekst: Eksempel på skjema med kun èn utfyllingsside.
+<Image
+  src="/img/patterns/button-form-onepage.png"
+  alt=""
+  boxShadow={true}
+  dataUnstyled
+  caption='Eksempel på skjema med kun èn utfyllingsside.'
+/>
 
 #### Skjema med flere sider
-Ikke bruk deaktivert "Forrige"-knapp på første side. (Se artikkelen deaktiverte tilstander hos nav.no). 
+Ikke bruk deaktivert "Forrige"-knapp på første side.<sup>3</sup>
 
 [BILDE AV SIDE 1 i skjema]
 Bildetekst: Eksempelet over viser første steg i et skjema, som ikke inneholder "Forrige"-knapp. 
@@ -109,9 +135,12 @@ Tab-rekkefølgen skal som hovedregel alltid følge leseretningen. Det betyr at n
 Hvis «Neste» er plassert til høyre for «Forrige», kan det være fristende å endre fokusrekkefølgen i koden slik at brukeren hopper til «Neste» først. Dette bør unngås, da det skaper en uforutsigbar oppførsel for tastaturbrukere. Det er bedre at Fokusrekkefølgen i koden samsvarer med den visuelle rekkefølgen. Dette gir en forutsigbar og tilgjengelig brukeropplevelse.
 
 ## Relevante kilder
-* [1] [Simplicity Wins over Abundance of Choice](https://baymard.com/learn/button-design?utm_source=chatgpt.com)
-* [2] [Understanding SC 2.4.3: Focus Order (W3C)](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html)
-* [3] [2.4.3 Fokusrekkefølge (uutilsynet)](https://www.uutilsynet.no/wcag-standarden/243-fokusrekkefolge-niva/105)
+* [1] [Simplicity Wins over Abundance of Choice (baymard.com)](https://baymard.com/learn/button-design?utm_source=chatgpt.com)
+* [2] [Forstå synsnedsettelse](https://designsystemet.no/no/best-practices/accessibility/understanding-vision-impairment)
+* [3] [Deaktiverte tilstander (nav.no)](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander)
+* [4] [Understanding SC 2.4.3: Focus Order (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html)
+* [5] [2.4.3 Fokusrekkefølge (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/243-fokusrekkefolge-niva/105)
+
 
 <Contributors
   headingLevel={2}
