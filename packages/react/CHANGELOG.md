@@ -1,5 +1,14 @@
 # Change Log
 
+## 1.7.3
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4233](https://github.com/digdir/designsystemet/pull/4233))
+
+- **Tooltip**: Check if `trim()` is available ([#4239](https://github.com/digdir/designsystemet/pull/4239))
+  - Fixes if `Tooltip` has `<svg>` as a child
+
 ## 1.7.2
 
 ### Patch Changes
