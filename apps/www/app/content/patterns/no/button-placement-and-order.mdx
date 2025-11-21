@@ -100,23 +100,39 @@ På små skjermer bør "Forrige" ligge under "Neste", og følge hovedprinsippet 
   data-color='warning'
   variant="tinted"
 >
-**Arbeid pågår** \
-Merk: Vi ønsker å gjennomføre en A/B-test for å lande på et valg for plassering av Neste/Forrige. Vi deler innsikten når vi vet mer. Har du innsikt om dette, del gjerne i pågående [diskusjon på Github](https://github.com/digdir/designsystemet/discussions/1684#discussioncomment-9339006).
+**Mer innsikt kreves** \
+Vi ønsker å gjennomføre en brukertest for å lande på et valg for plassering av Neste/Forrige. Vi deler innsikten når vi vet mer. Har du innsikt om dette, del gjerne i pågående [diskusjon på Github](https://github.com/digdir/designsystemet/discussions/1684#discussioncomment-9339006).
 </Card>
 
-[BILDE AV side 2 i skjema]
-Eksempelet over følger hovedregelen om at knapper i en gruppe skal presenteres i rekkefølgen primærknapp → sekundærknapp → tertiærknapp.
 
-[BILDE AV SIDE 2 i skjema med snudd rekkefølge]
-Eksempel: Her er det gjort et unntak fra regelen på større skjermer. 
+<Image
+  src="/img/patterns/button-form-secondpage.png"
+  alt=""
+  boxShadow={true}
+  dataUnstyled
+  caption='Eksempelet over følger hovedregelen om at knapper i en gruppe skal presenteres i rekkefølgen primærknapp → sekundærknapp → tertiærknapp.'
+/>
 
-Hvis du gjør unntak her, bør unntaket kun gjøres for større skjermer, ikke små skjermer der knappene ligger under hverandre. Det er viktig at den visuelle fremstillingen speiler DOM-en. Dette kan løses ved å sette inn en ekstra knapp som skjules med `display: none;` og fjerner innholdet fullstendig for skjermlesere. [Se eksempel(nav.no)).
+<Image
+  src="/img/patterns/button-form-secondpage-alt2.png"
+  alt=""
+  boxShadow={true}
+  dataUnstyled
+  caption='Her er det gjort et unntak fra regelen på større skjermer.'
+/>
+
+Hvis du gjør unntak her, bør unntaket kun gjøres for større skjermer, ikke små skjermer der knappene ligger under hverandre. Det er viktig at den visuelle fremstillingen speiler DOM-en. Dette kan løses ved å sette inn en ekstra knapp som skjules med `display: none;` og fjerner innholdet fullstendig for skjermlesere. Se [kodeeksempel med ekstra knapp (nav.no)](https://aksel.nav.no/templates/skjemavalidering/demo?darkside=true).
 
 ##### Siste steg i et skjema
 På siste steg i et skjema bør det være tydelig at brukeren sender inn skjemaet. “Send inn” er primærknappen. 
 
-[Bilde]
-Bildetekst: Eksempelet over viser siste steg i et skjema, der det er "Forrige"-knapp og "Send inn"-knapp
+<Image
+  src="/img/patterns/button-form-lastpage.png"
+  alt=""
+  boxShadow={true}
+  dataUnstyled
+  caption='Eksempelet over viser siste steg i et skjema, der det er "Forrige"-knapp og "Send inn"-knapp.'
+/>
 
 ## Språk
 Tekst i knapper skal alltid beskrive hva som skjer når brukeren trykker. Knappeteksten skal være kort og konsis, helst ikke mer enn tre ord. Velg verb i oppfordringsform (imperativ), for eksempel "send" og "signer".
