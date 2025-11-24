@@ -1,44 +1,42 @@
----
-title: Error Summary
-subtitle: Error Summary provides users with an overview of errors or missing information that must be corrected on a page or step to proceed.
-image: ErrorSummary.svg
-cssfile: error-summary
----
-
 <Story story="Preview" />
 
-## Usage
+**Use `ErrorSummary` when**
+- you need to present a clear overview of the errors that must be corrected before a form can be submitted
+- a form contains many fields, making it difficult for users to understand where the errors are located
 
-`ErrorSummary` consists of several sub-components that must be used correctly:
+**Avoid `ErrorSummary` when**
+- the feedback does not prevent submission, such as warnings or recommendations
+- you need to display system-level messages; use [`Alert`](/no/components/alert/overview) instead
 
-- `ErrorSummary.Heading` defines the heading
-- `ErrorSummary.List` defines the list of errors
-- Each error is represented as an `ErrorSummary.Item` containing an `ErrorSummary.Link`
-- Each `ErrorSummary.Link` must have an `href` to the unique identifier for a form field, so the user can navigate to the correct location in the form
+## Example
+
+### Use in forms
+
+In the example below, each link in the `ErrorSummary` lets you navigate directly to the field containing an error.
+
+<Story story="WithForm" layout="column" />
 
 ## Guidelines
 
-- Place `ErrorSummary` at the top of the page or step where the error occurs
-- Always use together with validation errors on the relevant fields
-- Link to the specific fields that have errors
-- Write clear and descriptive error messages
+`ErrorSummary` is used to display a summary when there are errors or omissions in something the user has done. A summary may include one or several errors.  
+`ErrorSummary` should contain all error messages present on the page, so users can navigate directly to them by clicking the links in the summary.
+
+### Placement
+
+We recommend placing `ErrorSummary` just above the Next/Submit button. This helps users understand the connection between the errors and why they cannot proceed.
+
+In some cases, it may be better to show the summary at the top of the page.  
+You can read more about this in the [article on error messages](https://designsystemet.no/no/patterns/errors).
+
+### Visibility
+
+The summary should not be visible before the user has taken an action that triggers an error. It should become visible only after the user performs an action that results in errors.
+
+- If validation happens continuously (for example using `onBlur` on each field), wait to show `ErrorSummary` until the user attempts to submit the form.  
+- It is important that the component receives focus when it appears, so the user notices that there are errors or missing information.  
+- Error messages must link directly to the relevant field.  
+- If the error applies to several fields, for example when two fields are validated together, link to the first instance of the error.
 
 ## Text
 
-- Use a clear heading like "To proceed, you must correct the following errors:"
-- Error messages should be specific and state what is wrong
-- Tell the user what they need to do to fix the error
-
-## Accessibility
-
-When `ErrorSummary` becomes visible, this must be communicated to screen reader users.
-
-### Move focus
-
-It is important that `ErrorSummary` receives focus on submit so the user notices that there are errors or missing information in the form. You can use a ref to move focus:
-
-<Story story="ShowHide" layout="column" />
-
-### Do not use live region for ErrorSummary
-
-`ErrorSummary` should not use live region (`aria-live`). This is because screen readers often have their own alerts when a form is submitted, and a combination of these can lead to confusing narration.
+Ensure that the heading “To continue, you must correct the following errors” is used in `ErrorSummary`. The error messages in the summary should be phrased exactly the same as the error messages displayed at the relevant fields.
