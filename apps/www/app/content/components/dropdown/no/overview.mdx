@@ -1,6 +1,14 @@
 
 <Story story="Preview" />
 
+**Bruk `Dropdown` når**
+- du vil tilby flere alternativer uten at de tar mye plass i grensesnittet
+- valgene er sekundære, men bør være lett tilgjengelige
+
+**Unngå `Dropdown` når**
+- en handling er primær eller brukes ofte, bruk heller en synlig [`Button`](/no/components/button/overview)
+- det kun finnes ett valg, en dropdown gir unødvendig kompleksitet
+
 ## Eksempel
 
 ### Med ikoner
@@ -11,11 +19,9 @@ Du kan bruke ikoner sammen med tekst i dropdown-elementene:
 
 ## Retningslinjer
 
-`Dropdown` lager ikke en semantisk meny, men legger grunnmuren for at du kan bygge din egen.
-Les ["Menu and Menubar Pattern" på w3.org](https://www.w3.org/WAI/ARIA/apg/patterns/menubar/) for mer informasjon om hvordan du lager tilgjengelige menyer.
+`Dropdown` lager ikke en semantisk meny, men legger grunnmuren for at du kan bygge din egen. Les ["Menu and Menubar Pattern" på w3.org](https://www.w3.org/WAI/ARIA/apg/patterns/menubar/) for mer informasjon om hvordan du lager tilgjengelige menyer.
 
-
-- Bruk Dropdown for handlinger eller navigasjon som ikke trenger å være synlig hele tiden
+- Bruk `Dropdown` for handlinger eller navigasjon som ikke trenger å være synlig hele tiden
 - Hold antall elementer på et overkommelig nivå
 - Bruk overskrifter for å gruppere relaterte elementer
 - Unngå flere nivåer av dropdowns (nøstede menyer)
