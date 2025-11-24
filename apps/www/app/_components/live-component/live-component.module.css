@@ -157,6 +157,9 @@
   margin: 0;
   margin-left: var(--ds-size-4);
   align-self: center;
+  @media screen and (max-width: 480px) {
+    display: none;
+  }
 }
 .stack {
   display: grid;
