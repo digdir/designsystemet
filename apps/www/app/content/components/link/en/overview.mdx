@@ -1,22 +1,15 @@
----
-title: Link
-image: Link.svg
-cssfile: link
----
-
-`Link` is clickable text or graphics that makes it easy for users to navigate to files or pages internally or externally.
-
 <Story story="Preview" />
 
-## Usage
+**Use `Link` when**
+- the user needs to navigate to another page within the solution
+- the navigation leads to an external website
+- a file should be downloaded
 
-```tsx
-import { Link } from '@digdir/designsystemet-react';
+**Avoid `Link` when**
+- the purpose is not navigation; use a [`Button`](/no/components/button/overview) instead
+- the action changes the state of the solution, such as opening a dialog, starting a process or saving data
 
-<Link href='https://designsystemet.no/'>Go to designsystemet</Link>;
-```
-
-## Code Examples
+## Example
 
 ### In text
 
@@ -26,28 +19,23 @@ A link is often used as part of a text.
 
 ### With icon
 
-The icon is placed on the left side. This is a functional icon that tells users where the link leads them.
+The icon is placed on the left. This is a functional icon that helps users understand where the link will take them.
 
 <Story story="WithIcon" />
 
-### Neutral color
+### Neutral colour
 
 <Story story="Neutral" />
 
 ## Guidelines
 
-It's important not to overuse links, as it can make it difficult for users to find their way forward.
+It is important not to overuse links, as this can make it harder for users to find their way forward.
 
-**Suitable for**
+### Opening links in a new tab/window
 
-- navigating to another page or location in the application
-- navigating to an external page
-- downloading a file
+Both internal and external links should open in the same tab/window.  
+This ensures a predictable user experience by respecting the user’s own browser settings for how links should open. Read more about this in the article [Labelling links](https://www.designsystemet.no/no/patterns/external-links).
 
-**Not suitable for:**
+## Text
 
-- Performing an action not related to navigation, such as submitting a form. Then you should use a [`Button`](/docs/komponenter-button--docs)).
-
-## Accessibility
-
-`Link` functions as `<a>`, and no functionality has been changed. When the user has visited a link previously, the color of the link will change.
+The article [Labelling links](https://www.designsystemet.no/no/patterns/external-links#spr%C3%A5k) contains guidelines for how to write link text. It is important that link text is descriptive and gives users a clear indication of what to expect when they activate the link.
