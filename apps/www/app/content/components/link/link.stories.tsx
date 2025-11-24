@@ -1,15 +1,26 @@
 import { Link, Paragraph } from '@digdir/designsystemet-react';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
+import { useId } from 'react';
 
 export const Preview = () => {
-  return <Link href='https://designsystemet.no'>Gå til designsystemet</Link>;
+  const rand = useId();
+  return (
+    <Link href={'https://designsystemet.no?q=' + rand}>
+      Gå til designsystemet
+    </Link>
+  );
 };
 
 export const InText = () => {
+  const rand = useId();
+
   return (
     <Paragraph>
       Vi bruker komponenter fra{' '}
-      <Link href='https://designsystemet.no'>designsystemet.no</Link>.
+      <Link href={'https://designsystemet.no?q=' + rand}>
+        designsystemet.no
+      </Link>
+      .
     </Paragraph>
   );
 };
@@ -24,8 +35,9 @@ export const WithIcon = () => {
 };
 
 export const Neutral = () => {
+  const rand = useId();
   return (
-    <Link href='https://designsystemet.no' data-color='neutral'>
+    <Link href={'https://designsystemet.no?q=' + rand} data-color='neutral'>
       Gå til designsystemet
     </Link>
   );

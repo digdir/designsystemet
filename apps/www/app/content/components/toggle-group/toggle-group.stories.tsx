@@ -32,17 +32,17 @@ export const OnlyIcons = () => {
     <ToggleGroup defaultValue='option-1'>
       <Tooltip content='Venstrestilt'>
         <ToggleGroup.Item value='option-1' icon>
-          <AlignLeftIcon title='AlignLeftIcon' />
+          <AlignLeftIcon aria-hidden />
         </ToggleGroup.Item>
       </Tooltip>
       <Tooltip content='Midtstilt'>
         <ToggleGroup.Item value='option-2' icon>
-          <AlignCenterIcon title='AlignCenterIcon' />
+          <AlignCenterIcon aria-hidden />
         </ToggleGroup.Item>
       </Tooltip>
       <Tooltip content='Høyrestilt'>
         <ToggleGroup.Item value='option-3' icon>
-          <AlignRightIcon title='AlignRightIcon' />
+          <AlignRightIcon aria-hidden />
         </ToggleGroup.Item>
       </Tooltip>
     </ToggleGroup>

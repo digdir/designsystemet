@@ -1,12 +1,12 @@
 {
   "no": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` er en modal dialog som vises over resten av innholdet på siden."
+    "title": "Switch",
+    "subtitle": "Brukes til å gi brukerne et valg mellom to alternativer. Bryteren kan enten slås av eller på og skal alltid være innstilt med et standardvalg."
   },
   "en": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` is a modal dialog that appears over the rest of the content on the page."
+    "title": "Switch",
+    "subtitle": "Used to give users a choice between two alternatives. The switch can either be turned off or on and must always be set with a default choice."
   },
-  "image": "Dialog.svg",
-  "cssFile": "dialog.css"
+  "image": "Switch.svg",
+  "cssFile": "input.css"
 }

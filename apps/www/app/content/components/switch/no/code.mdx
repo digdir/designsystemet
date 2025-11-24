@@ -1,11 +1,5 @@
----
-title: Switch
-subtitle: 'Vi bruker `Switch` til å gi brukerne et valg mellom to alternativer. Bryteren kan enten slås av eller på.'
-image: Switch.svg
-cssfile: switch
----
-
 <Story story="Preview" />
+<ReactComponentDocs />
 
 ## Bruk
 
@@ -15,16 +9,54 @@ import { Switch } from '@digdir/designsystemet-react';
 <Switch label="Mørk modus" value="dark" />
 ```
 
-## Kodeeksempler
-
-### Checked
-
-<Story story="Checked" />
+## Eksempel
 
 ### Gruppering
+Bruk [Fieldset](/docs/komponenter-fieldset--docs) for å gruppere flere `Switch`-komponenter sammen. 
 
 <Story story="Group" />
 
 ### Høyrejustert
+Bruk `position="end"` til å plassere `Switch` på høyre side av ledeteksten hvis
+du trenger det.
 
 <Story story="RightAligned" />
+
+## HTML
+Klassenavnet `ds-input` legges på `<input>` sammen med `type="checkbox"` og `role="switch"`.
+
+```html
+<input
+  class="ds-input"
+  role="switch"
+  type="checkbox"
+/>
+```
+
+For å speile det som den samensatte komponenten i React gjør, må du bruke `ds-field` sammen med en `<label>`.
+
+Skal du høyrejustere `<input>` legger du `data-position="end"` på `ds-field`.
+
+```html
+<div class="ds-field" data-position="end">
+  <input
+    class="ds-input"
+    role="switch"
+    type="checkbox"
+    id="my-switch"
+  >
+  <label
+    class="ds-label"
+    data-weight="regular"
+    for="my-switch"
+  >Flymodus</label>
+</div>
+```
+
+
+## CSS variabler og data-attributter
+Switch er en sammensatt komponent, og derfor viser vi variabler og data-attributter fra `ds-input` her.
+
+<CssVariables />
+
+<CssAttributes />

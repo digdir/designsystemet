@@ -1,12 +1,12 @@
 {
   "no": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` er en modal dialog som vises over resten av innholdet på siden."
+    "title": "Radio",
+    "subtitle": "`Radio` er et alternativ brukeren kan velge. Bruk flere `Radio` for å vise en liste med alternativer. Brukerne kan bytte mellom alternativene, men kan kun velge ett."
   },
   "en": {
-    "title": "Dialog",
-    "subtitle": "`Dialog` is a modal dialog that appears over the rest of the content on the page."
+    "title": "Radio",
+    "subtitle": "A `Radio` is an option the user can select. Use multiple `Radio` to show a list of options. Users can switch between the options, but can only select one."
   },
-  "image": "Dialog.svg",
-  "cssFile": "dialog.css"
+  "image": "Radio.svg",
+  "cssFile": "input.css"
 }
