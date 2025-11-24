@@ -5,7 +5,7 @@
   },
   "en": {
     "title": "Button",
-    "subtitle": "`Button` allow users to perform actions."
+    "subtitle": "`Button` allows users to perform actions."
   },
   "image": "Button.svg",
   "cssFile": "button.css"

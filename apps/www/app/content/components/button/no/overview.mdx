@@ -3,7 +3,7 @@
 **Bruk `Button` når**
 - ein prosess skal starte
 - eit skjema skal sendast inn
-- ei handling skal utførast i tenesta
+- ei handling skal utførast
 
 **Unngå `Button` når**
 - det skal navigerast til andre sider eller ut av tenesta - bruk heller [`Link`](/docs/komponenter-link--docs)
@@ -20,8 +20,7 @@ Bruk `primary`-, `secondary`- eller `tertiary`-variant for å vekte knappen rett
 
 ### Fargar
 
-Ei gruppe med knappar bør bruke same fargevariant. 
-Unntaket er når vi vil tydeleggjere ei handling brukaren ikkje kan angre, for eksempel «Slett». 
+Ei gruppe med knappar bør bruke same fargevariant. Unntaket er når vi vil tydeleggjere ei handling brukaren ikkje kan angre, for eksempel «Slett». 
 Elles skal vi som regel ikkje kombinere ulike fargevariantar.
 
 Knappen kjem i alle fargane som er i temaet ditt.
@@ -36,8 +35,7 @@ Ikon i knappar får automatisk luft til teksten.
 
 ### Knapp som lenkje
 
-Lenker kan få utsjånad som ein knapp.
-Vurder først om det er betre å bruke [`Link`](/docs/komponenter-link--docs)-komponenten. 
+Lenker kan få utsjånad som ein knapp, men vurder først om det er betre å bruke [`Link`](/docs/komponenter-link--docs)-komponenten. 
 
 <Story story="AsLink" />
 
@@ -59,16 +57,14 @@ Vi har ulike knappetypar for å framheve bestemte handlingar. Variantane `primar
 **`Primary`** Vi brukar denne knappen til den viktigaste handlinga for brukaren, for eksempel "Lagre", "Neste" eller "Send inn". Det skal som oftast berre vere éin primærknapp per side.
 
 **`Secondary`** Vi brukar denne knappen til handlingar som ikkje er hovudhandlingar. 
-Den står ofte saman med ein primærknapp - dersom primærknappen er "Lagre", kan sekundærknappen vere "Avbryt".
+Den står ofte saman med ein primærknapp. Dersom primærknappen er "Lagre", kan sekundærknappen vere "Avbryt".
 
-**`Tertiary`** Denne knappen er endå meir diskré enn sekundærknappen. 
-Den blir ofte brukt saman med ein primær- eller sekundærknapp, til mindre viktige handlingar. 
+**`Tertiary`** Denne knappen er endå meir diskré enn sekundærknappen. Den blir ofte brukt saman med ein primær- eller sekundærknapp, til mindre viktige handlingar. 
 Dersom vi vil bruke han åleine, må han ha eit ikon - elles kan det vere vanskeleg å sjå at det er ein knapp.
 
 ### Farger
 
-Ei gruppe med knappar bør bruke same fargevariant. 
-Unntaket er når vi vil tydeleggjere ei handling brukaren ikkje kan angre, for eksempel «Slett». 
+Ei gruppe med knappar bør bruke same fargevariant. Unntaket er når vi vil tydeleggjere ei handling brukaren ikkje kan angre, for eksempel «Slett». 
 Elles skal vi som regel ikkje kombinere ulike fargevariantar.
 
 <Story story="CombinedColors" />
@@ -106,8 +102,7 @@ Vi skal halde oss til eitt ikon per knapp.
 
 ### Unngå å bruke deaktiverte knappar
 
-Vi unngår å bruke deaktiverte (`disabled`) knappar fordi dei kan vere vanskelege å oppfatte. Nokre brukarar vil ikkje forstå kva knappen betyr, eller kvifor han ikkje er klikkbar.  
-Ein aktiv knapp som viser ein feilmelding når brukaren klikkar, gjev i dei fleste tilfelle ein betre brukaroppleving. NAV har ei god forklaring på [kvifor deaktiverte tilstandar er problematiske (nav.no)](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) og kva alternativ som finst.
+Vi unngår å bruke deaktiverte (`disabled`) knappar fordi dei kan vere vanskelege å oppfatte. Nokre brukarar vil ikkje forstå kva knappen betyr, eller kvifor han ikkje er klikkbar. Ein aktiv knapp som viser ein feilmelding når brukaren klikkar, gjev i dei fleste tilfelle ein betre brukaroppleving. NAV har ei god forklaring på [kvifor deaktiverte tilstandar er problematiske (nav.no)](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) og kva alternativ som finst.
 
 **Dersom du likevel må bruke ein deaktivert knapp:**
 
