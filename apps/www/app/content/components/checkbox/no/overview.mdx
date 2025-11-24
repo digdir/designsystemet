@@ -1,12 +1,13 @@
 <Story story="Preview" />
 
 **Bruk `Checkbox` når**
-- flere alternativer skal velges i skjemaer
-- en brukrr skal akseptere vilkår og betingelser
+- flere alternativer skal velges mellom i skjemaer
+- en bruker skal akseptere vilkår og betingelser
 
 **Unngå `Checkbox` når**
-- det er kun ett alternativ, bruk heller [`Radio`](/no/components/radio/overview) eller en enkel [`Switch`](/no/components/switch/overview)
-
+- brukeren skal velge kun ett alternativ, bruk heller en [`Select`](/no/components/select/overview), [`Radio`](/no/components/radio/overview) eller en enkel [`Switch`](/no/components/switch/overview)
+- brukeren skal velge mellom flere enn 7 svaralternativer, bruk heller en [`Select`](/no/components/select/overview) eller [`Suggestion`](/no/components/suggestion/overview)
+- noe skal slåes av eller på, bruk heller en [`Switch`](/no/components/switch/overview)
 
 ## Eksempel
 
@@ -37,7 +38,7 @@ Selv om de ikke kan redigeres, er felter med `readOnly`-attributtet med i tabrek
 med når skjemaet sendes inn.
 
 Vi unngår `readOnly` så langt det lar seg gjøre, fordi slike felter kan være forvirrende for noen brukere.
-Ikke alle vil skjønne hvorfor de ikke får til å endre innholdet i feltet.
+Ikke alle vil forstå hvorfor de ikke får til å endre innholdet i feltet.
 
 <Story story="ReadOnly" />
 
@@ -83,6 +84,6 @@ se godt nok, er en horisontal liste ekstra vanskelig.
 
 I et skjema er ofte forklaringen formulert som et spørsmål. I noen sammenhenger kan det være uklart for brukeren om det er lov å velge flere alternativer, eller om de må velge kun ett. Vurder derfor om du bør spesifisere at brukeren kan velge flere svaralternativer.
 
-Bruk et aktivt og positivt språk. Tenk på innholdet som en samtale. Når `legend`
-er en setning, kan du skrive den i du-form og svaralternativene (`label`) i jeg-form. `label` skal alltid ha stor forbokstav.
+Bruk et aktivt og positivt språk. Tenk på innholdet som en samtale.
+Når `<legend>` er en setning, kan du skrive den i du-form og svaralternativene (`<label>`) i jeg-form. `<label>` skal alltid ha stor forbokstav.
 

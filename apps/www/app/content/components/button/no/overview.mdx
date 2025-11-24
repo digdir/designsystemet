@@ -1,7 +1,7 @@
 <Story story="Preview" />
 
 **Bruk `Button` når**
-- ein prosess skal startas
+- ein prosess skal starte
 - eit skjema skal sendast inn
 - ei handling skal utførast i tenesta
 
@@ -23,6 +23,8 @@ Bruk `primary`-, `secondary`- eller `tertiary`-variant for å vekte knappen rett
 Ei gruppe med knappar bør bruke same fargevariant. 
 Unntaket er når vi vil tydeleggjere ei handling brukaren ikkje kan angre, for eksempel «Slett». 
 Elles skal vi som regel ikkje kombinere ulike fargevariantar.
+
+Knappen kjem i alle fargane som er i temaet ditt.
 
 <Story story="ColorVariants" />
 
@@ -57,10 +59,10 @@ Vi har ulike knappetypar for å framheve bestemte handlingar. Variantane `primar
 **`Primary`** Vi brukar denne knappen til den viktigaste handlinga for brukaren, for eksempel "Lagre", "Neste" eller "Send inn". Det skal som oftast berre vere éin primærknapp per side.
 
 **`Secondary`** Vi brukar denne knappen til handlingar som ikkje er hovudhandlingar. 
-Han står ofte saman med ein primærknapp - dersom primærknappen er "Lagre", kan sekundærknappen vere "Avbryt".
+Den står ofte saman med ein primærknapp - dersom primærknappen er "Lagre", kan sekundærknappen vere "Avbryt".
 
 **`Tertiary`** Denne knappen er endå meir diskré enn sekundærknappen. 
-Han blir ofte brukt saman med ein primær- eller sekundærknapp, til mindre viktige handlingar. 
+Den blir ofte brukt saman med ein primær- eller sekundærknapp, til mindre viktige handlingar. 
 Dersom vi vil bruke han åleine, må han ha eit ikon - elles kan det vere vanskeleg å sjå at det er ein knapp.
 
 ### Farger
@@ -83,7 +85,7 @@ Dette kan leggjast i `title`, `aria-label`, eller i ein [`Tooltip`](/docs/kompon
 
 ### Knapp med tekst og ikon
 
-Når vi bruker ikon saman med tekst, skal ikonet ha `aria-hidden`, slik at teksten ikkje blir lesen opp to gonger av skjermlesar.
+Når vi bruker ikon saman med tekst, burde ikonet ha `aria-hidden`, slik at det ikkje blir lest opp unødvendig tekst for skejmlesarar.
 
 Vi plasserer ikonet til venstre eller høgre for teksten, avhengig av kva knappen kommuniserer og kvar han er plassert i grensesnittet.
 
@@ -95,17 +97,17 @@ Som oftast er **venstre** den beste plasseringa, men det finst unntak:
 Vi skal halde oss til eitt ikon per knapp.
 <div className="dodont-row">
   <DoDont story="DoIcon">
-    Bare bruk ett ikon per knapp.
+    Berre bruk eitt ikon per knapp.
   </DoDont>
   <DoDont story="DontIcon">
-    Ikke bruk flere ikoner i samme knapp.
+    Ikkje bruk fleire ikon i same knapp.
   </DoDont>
 </div>
 
 ### Unngå å bruke deaktiverte knappar
 
 Vi unngår å bruke deaktiverte (`disabled`) knappar fordi dei kan vere vanskelege å oppfatte. Nokre brukarar vil ikkje forstå kva knappen betyr, eller kvifor han ikkje er klikkbar.  
-Ei aktiv knapp som viser ei feilmelding når brukaren klikkar, gjev i dei fleste tilfelle ei betre brukaroppleving. NAV har ei god forklaring på [kvifor deaktiverte tilstandar er problematiske](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) og kva alternativ som finst.
+Ein aktiv knapp som viser ein feilmelding når brukaren klikkar, gjev i dei fleste tilfelle ein betre brukaroppleving. NAV har ei god forklaring på [kvifor deaktiverte tilstandar er problematiske (nav.no)](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) og kva alternativ som finst.
 
 **Dersom du likevel må bruke ein deaktivert knapp:**
 
