@@ -1,18 +1,36 @@
 <Story story="Preview" />
 
-## Retningslinjer
-Bruk `Badge` for å trekkje merksemd mot statusar, varslar eller tal. 
+**Use `Badge` when**
+- displaying numbers that show the count of new messages, notifications or tasks
+- indicating status using a circular marker, such as showing whether a person is busy, away or active
 
-**Passer til:**
-- Tal som viser antall nye meldingar, varsel eller oppgåver.
-- Små statusindikatorar i form av ein sirkel, som for eksempel viser om ein person er opptatt, borte eller aktiv.
+**Avoid `Badge` when**
+- text is needed — use [`Tag`](/no/components/tag/overview) instead
+- interactive actions are required — use [`Chip`](/no/components/chip/overview) or [`Button`](/no/components/button/overview) instead
 
-**Passer ikkje til:**
-- Tekstar - bruk `Tag` i staden.
-- Interaktive handlingar - bruk `Chip` eller `Button` i staden.
+## Example
 
-## Tekst
-Denne komponenten er ikkje meint for tekst. Viss du treng å vise ord eller korte frasar, bør du heller bruke `Tag`-komponenten.
+### Next to text
 
-## Tilgjengeligheit
-Sørg for at informasjonen også er tilgjengeleg for skjermlesarar. [Meir informasjon kjem.](https://github.com/digdir/designsystemet/issues/3560)
+Badges can be placed next to other text or components.
+
+<Story story="InTabs" />
+
+### Floating
+
+Badges can be positioned floating over other elements. Note that this may affect accessibility.
+
+<Story story="Floating" />
+
+### Colours and variants
+
+All colours in your theme can be used with `Badge`.  
+The component comes in two variants: `base` and `tinted`.
+
+<Story story="Variants" />
+
+## Guidelines
+Use `Badge` to draw attention to statuses, notifications or numbers.
+
+## Text
+This component is not intended for text. If you need to display words or short phrases, use [`Tag`](/no/components/tag/overview) instead.
