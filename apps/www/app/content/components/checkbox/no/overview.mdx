@@ -5,8 +5,8 @@
 - en bruker skal akseptere vilkår og betingelser
 
 **Unngå `Checkbox` når**
-- brukeren skal velge kun ett alternativ, bruk heller en [`Select`](/no/components/select/overview), [`Radio`](/no/components/radio/overview) eller en enkel [`Switch`](/no/components/switch/overview)
-- brukeren skal velge mellom flere enn 7 svaralternativer, bruk heller en [`Select`](/no/components/select/overview) eller [`Suggestion`](/no/components/suggestion/overview)
+- brukeren kun skal velge ett alternativ, bruk heller en [`Select`](/no/components/select/overview), [`Radio`](/no/components/radio/overview) eller en enkel [`Switch`](/no/components/switch/overview)
+- brukeren må velge mellom mer enn sju alternativer, bruk heller en [`Select`](/no/components/select/overview) eller [`Suggestion`](/no/components/suggestion/overview)
 - noe skal slåes av eller på, bruk heller en [`Switch`](/no/components/switch/overview)
 
 ## Eksempel
@@ -19,8 +19,7 @@ Hvis brukeren skal bekrefte noe, men ikke velge noe, kan en `Checkbox` stå alen
 
 ### Gruppering
 
-De aller fleste ganger brukes `Checkbox` i grupper, der brukeren kan velge flere alternativer.
-`<fieldset>` som er rundt gruppen burde ha en tittel som forklarer hva valgene handler om.
+De aller fleste ganger brukes `Checkbox` i grupper, der brukeren kan velge flere alternativer. `<fieldset>` som er rundt gruppen burde ha en tittel som forklarer hva valgene handler om.
 
 <Story story="Group" />
 
@@ -32,22 +31,16 @@ Når `Checkbox` brukes i grupper, skal feilmeldingen vises på `Fieldset`, så d
 
 ### Skrivebeskyttet Checkbox
 
-`Checkbox` støtter `readOnly`-attributtet for å gjøre feltet skrivebeskyttet, og gir en visuell indikasjon
-som skiller seg fra redigerbare felter.
-Selv om de ikke kan redigeres, er felter med `readOnly`-attributtet med i tabrekkefølgen, og informasjon blir
-med når skjemaet sendes inn.
+`Checkbox` støtter `readOnly`-attributtet for å gjøre feltet skrivebeskyttet, og gir en visuell indikasjon som skiller seg fra redigerbare felter. Selv om de ikke kan redigeres, er felter med `readOnly`-attributtet med i tabrekkefølgen, og informasjon blir med når skjemaet sendes inn.
 
-Vi unngår `readOnly` så langt det lar seg gjøre, fordi slike felter kan være forvirrende for noen brukere.
-Ikke alle vil forstå hvorfor de ikke får til å endre innholdet i feltet.
+Vi unngår `readOnly` så langt det lar seg gjøre, fordi slike felter kan være forvirrende for noen brukere. Ikke alle vil forstå hvorfor de ikke får til å endre innholdet i feltet.
 
 <Story story="ReadOnly" />
 
 ### Disabled
 
-Vi bør unngå at `Checkbox` er deaktivert (`disabled`) fordi det kan være vanskelig å oppfatte.
-Noen brukere vil ikke forstå hva valget sier eller hvorfor det ikke er klikkbart.
-Hvis en `Checkbox` eller gruppe med `Checkbox` ikke er relevant, bør du helst fjerne valgene fremfor å deaktivere dem.
-Tilby gjerne brukeren informasjon om hvorfor valgene ikke er tilgjengelige.
+Vi bør unngå at `Checkbox` er deaktivert (`disabled`) fordi det kan være vanskelig å oppfatte. Noen brukere vil ikke forstå hva valget sier eller hvorfor det ikke er klikkbart.
+Hvis en `Checkbox` eller gruppe med `Checkbox` ikke er relevant, bør du helst fjerne valgene fremfor å deaktivere dem. Tilby gjerne brukeren informasjon om hvorfor valgene ikke er tilgjengelige.
 
 Nav har en god forklaring på [hvorfor deaktiverte tilstander er problematisk (nav.no)](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) og hvilke alternativer som finnes.
 
@@ -66,10 +59,7 @@ I noen tilfeller kan det være hjelpsomt å ha de mest aktuelle alternativene f�
 
 ### Plassering
 
-`Checkbox` skal som hovedregel kun plasseres vertikalt, av hensyn
-til lesbarhet. Det er enklere for brukere å skanne listen når alternativene ligger
-under hverandre. For brukere som trenger å forstørre (zoome inn) nettsiden for å
-se godt nok, er en horisontal liste ekstra vanskelig.
+`Checkbox` skal som hovedregel kun plasseres vertikalt, av hensyn til lesbarhet. Det er enklere for brukere å skanne listen når alternativene ligger under hverandre. For brukere som trenger å forstørre (zoome inn) nettsiden for å se godt nok, er en horisontal liste ekstra vanskelig.
 
 <div className="dodont-row">
   <DoDont story="DoPlacement">
@@ -82,8 +72,7 @@ se godt nok, er en horisontal liste ekstra vanskelig.
 
 ## Tekst 
 
-I et skjema er ofte forklaringen formulert som et spørsmål. I noen sammenhenger kan det være uklart for brukeren om det er lov å velge flere alternativer, eller om de må velge kun ett. Vurder derfor om du bør spesifisere at brukeren kan velge flere svaralternativer.
+I et skjema er ofte forklaringen formulert som et spørsmål. I noen sammenhenger kan det være uklart for brukeren om det er lov å velge flere alternativer, eller om de må velge kun ett.  Vurder derfor om du bør spesifisere at brukeren kan velge flere svaralternativer.
 
-Bruk et aktivt og positivt språk. Tenk på innholdet som en samtale.
-Når `<legend>` er en setning, kan du skrive den i du-form og svaralternativene (`<label>`) i jeg-form. `<label>` skal alltid ha stor forbokstav.
+Bruk et aktivt og positivt språk. Tenk på innholdet som en samtale. Når `<legend>` er en setning, kan du skrive den i du-form og svaralternativene (`<label>`) i jeg-form. `<label>` skal alltid ha stor forbokstav.
 

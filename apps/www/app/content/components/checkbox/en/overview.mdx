@@ -1,40 +1,75 @@
 <Story story="Preview" />
 
-## Usage
+**Use `Checkbox` when**
+- users need to choose between several options in forms
+- a user must accept terms and conditions
 
-```tsx
-import { Checkbox } from '@digdir/designsystemet-react';
+**Avoid using `Checkbox` when**
+- the user should choose only one option; use a [`Select`](/no/components/select/overview), [`Radio`](/no/components/radio/overview) or a single [`Switch`](/no/components/switch/overview) instead
+- the user must choose from more than seven options; use a [`Select`](/no/components/select/overview) or [`Suggestion`](/no/components/suggestion/overview) instead
+- something should be turned on or off; use a [`Switch`](/no/components/switch/overview) instead
 
-<Checkbox label="Checkbox label" value="value" />
-```
+## Example
 
-## Code Examples
+### Single option
+
+If the user must confirm something rather than choose between alternatives, a single `Checkbox` can stand alone. For example, when the user must consent to terms.
+
+<Story story="OneOption" />
 
 ### Grouping
+
+Most of the time, `Checkbox` is used in groups where the user can select more than one option. The `<fieldset>` around the group should have a legend that explains what the options relate to.
 
 <Story story="Group" />
 
 ### With error
 
+When `Checkbox` is used in groups, the error message should be placed on the `Fieldset`, so it applies to the entire group.
+
 <Story story="WithError" />
+
+### Read-only checkbox
+
+`Checkbox` supports the `readOnly` attribute to make the field non-editable and gives a visual indication that distinguishes it from editable fields. Although they cannot be changed, fields with `readOnly` are still part of the tab order, and the information is included when the form is submitted.
+
+We avoid using `readOnly` whenever possible because such fields can be confusing. Not all users will understand why they cannot change the content.
+
+<Story story="ReadOnly" />
 
 ### Disabled
 
+We should avoid disabling (`disabled`) `Checkbox`, because it can be difficult to perceive.  
+Some users will not understand what the option means or why it is not clickable. If a `Checkbox` or group of `Checkbox` options is not relevant, it is usually better to remove them rather than disable them. If possible, give users an explanation of why options are unavailable.
+
+Nav has a helpful explanation of [why disabled states are problematic (nav.no)](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) and which alternatives exist.
+
 <Story story="Disabled" />
-
-### ReadOnly
-
-<Story story="ReadOnly" />
 
 ## Guidelines
 
 Use `Checkbox` when the user can select one or more options.
 
-**Suitable for**
+### Order
 
-- selecting multiple options in forms
-- accepting terms and conditions
+Be mindful of the order of the options. Alphabetical ordering is often best, but if there is a logical order – for example *winter, spring, summer, autumn* – use that instead.
 
-**Not suitable for**
+In some cases, placing the most relevant options first can be helpful, but take care that the order does not influence the answer or make it harder to find the desired option.
 
-- selecting only one option, use [`Radio`](/docs/komponenter-radio--docs) instead
+### Placement
+
+As a general rule, `Checkbox` should be placed vertically for readability.  
+It is easier for users to scan a list when the options are stacked. For users who need to enlarge (zoom in on) the page, a horizontal list is particularly difficult.
+
+<div className="dodont-row">
+  <DoDont story="DoPlacement">
+    Place `Checkbox` vertically for improved readability.
+  </DoDont>
+  <DoDont story="DontPlacement">
+    Avoid placing `Checkbox` horizontally, as it reduces readability.
+  </DoDont>
+</div>
+
+## Text
+
+In forms, the explanation is often phrased as a question. In some situations, it may be unclear whether the user may choo
