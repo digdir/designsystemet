@@ -53,6 +53,11 @@ export default {
         email: 'Send en epost',
       },
     },
+    'collaborators-section': {
+      title: 'Lages på tvers av virksomheter',
+      description:
+        'Et felles løft for bedre brukeropplevelser på tvers. Sammen utvikler vi et felles fundament for gode, tilgjengelige og helhetlige digitale løsninger.',
+    },
     meta: {
       title: 'En felles digital verktøykasse',
       description:

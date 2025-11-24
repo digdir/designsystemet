@@ -13,6 +13,11 @@ import { bundleMDX } from 'mdx-bundler';
 import { useTranslation } from 'react-i18next';
 import BlogCard from '~/_components/blog-card/blog-card';
 import { ImageBanner } from '~/_components/image-banner/image-banner';
+import { Bronnoysund } from '~/_components/logos/bronnoysund';
+import { Digdir } from '~/_components/logos/digdir';
+import { KsDigital } from '~/_components/logos/ks-digital';
+import { Mattilsynet } from '~/_components/logos/mattilsynet';
+import { Udir } from '~/_components/logos/udir';
 import { NavigationCard } from '~/_components/navigation-card/navigation-card';
 import { Section } from '~/_components/section/section';
 import {
@@ -213,41 +218,62 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
           />
         ))}
       </Section>
-      <ImageBanner
-        title={t('frontpage.join-section.title')}
-        description={t('frontpage.join-section.description')}
-        imgSrc='/img/Logotest.svg'
-        headingLevel='h2'
-        imgWidth='small'
-        className='ds-logo-image'
-        buttons={[
-          {
-            text: t('frontpage.join-section.buttons.slack'),
-            href: '/slack',
-            prefix: <PersonChatIcon fontSize={24} aria-hidden='true' />,
-            variant: 'primary',
-          },
-          {
-            text: t('frontpage.join-section.buttons.github'),
-            href: 'https://github.com/digdir/designsystemet',
-            prefix: <BranchingIcon fontSize={24} aria-hidden='true' />,
-          },
-          {
-            text: t('frontpage.join-section.buttons.email'),
-            href: 'mailto:designsystem@digdir.no',
-            prefix: <EnvelopeClosedIcon fontSize={24} aria-hidden='true' />,
-          },
-        ]}
-      />
       <div className='l-content-container'>
+        <div className={classes.collaborators}>
+          <Heading level={2} data-size='md'>
+            {t('frontpage.collaborators-section.title')}
+          </Heading>
+          <Paragraph>
+            {t('frontpage.collaborators-section.description')}
+          </Paragraph>
+          <div data-logos>
+            <span data-digdir>
+              <Digdir aria-label='Digitaliseringsdirektoratet' />
+            </span>
+            <span>
+              <Mattilsynet aria-label='Mattilsynet' />
+            </span>
+            <span>
+              <KsDigital aria-label='KS Digital' />
+            </span>
+            <span>
+              <Udir aria-label='Utdanningsdirektoratet' />
+            </span>
+            <span data-span-2>
+              <Bronnoysund aria-label='Brønnøysundregistrene' />
+            </span>
+          </div>
+        </div>
         <div className={classes.joinCard}>
           <img src='/img/Logotest.svg' alt='' />
           <div>
             <Heading level={2} data-size='md'>
               {t('frontpage.join-section.title')}
             </Heading>
-            <Paragraph>{t('frontpage.join-section.description')}</Paragraph>
-            <div data-links></div>
+            <Paragraph data-size='md'>
+              {t('frontpage.join-section.description')}
+            </Paragraph>
+            <div data-links>
+              <a href='/slack'>
+                <span>
+                  <PersonChatIcon fontSize={24} aria-hidden='true' />
+                </span>
+
+                {t('frontpage.join-section.buttons.slack')}
+              </a>
+              <a href='https://github.com/digdir/designsystemet'>
+                <span>
+                  <BranchingIcon fontSize={24} aria-hidden='true' />
+                </span>
+                {t('frontpage.join-section.buttons.github')}
+              </a>
+              <a href='mailto:designsystem@digdir.no'>
+                <span>
+                  <EnvelopeClosedIcon fontSize={24} aria-hidden='true' />
+                </span>
+                {t('frontpage.join-section.buttons.email')}
+              </a>
+            </div>
           </div>
         </div>
       </div>
