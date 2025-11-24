@@ -1,25 +1,17 @@
----
-title: Input
-image: Input.svg
-cssfile: input
----
-
-`Input` is a field where the user can enter text.
-
 <Story story="Preview" />
 
-## Usage
+**Use `Input` when**
+- you need a basic input field without additional functionality
+- you are building custom fields or composite components
+- you want to control your own logic for error handling and description
 
-```tsx
-import { Input, Label } from '@digdir/designsystemet-react';
+**Avoid `Input` when**
+- you need a complete form field with label, description and validation message, use [`Textfield`](/no/components/textfield/overview) instead
+- the field requires additional logic already provided by higher-level components such as [`Textfield`](/no/components/textfield/overview)
 
-<>
-<Label htmlFor="my-input">Label</Label>
-<Input id="my-input" />
-</>
-```
+## Example
 
-## Code Examples
+This component is used as a building block for other components, such as `Textfield`. For that reason, `Input` will not have many examples or detailed guidance.
 
 ### With label
 
@@ -31,8 +23,20 @@ import { Input, Label } from '@digdir/designsystemet-react';
 
 ### Disabled
 
+Avoid using `disabled` where possible. Consider using `readOnly` instead.
+
 <Story story="Disabled" />
 
 ### ReadOnly
 
 <Story story="ReadOnly" />
+
+## Guidelines
+
+See the guidelines for [`Textfield`](/no/components/textfield/overview).
+
+### Placement of the label
+
+The label and any description should always be placed above the text field. This makes them easier to see on small screens and prevents them from being hidden by validation messages.
+
+In special cases, the label may be visually hidden by not using `Label`. This may be appropriate in tables, for example, when the field receives its label from the table header. Even when the label is visually hidden, it must still be written in a meaningful way, as it will be announced by screen readers. This can be done using `aria-label` or `aria-labelledby`.
