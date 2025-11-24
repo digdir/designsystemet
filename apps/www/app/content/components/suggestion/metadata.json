@@ -1,7 +1,7 @@
 {
   "no": {
     "title": "Suggestion",
-    "subtitle": "Søkbar \"`<select>`\" med mulighet for flervalg/multiselect. Bruk dersom `Select` ikke er tilstrekkelig."
+    "subtitle": "`Suggestion` er en søkbar \"`<select>`\" med mulighet for flervalg/multiselect. Bruk dersom `Select` ikke er tilstrekkelig."
   },
   "en": {
     "title": "Suggestion",

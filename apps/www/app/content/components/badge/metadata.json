@@ -1,11 +1,11 @@
 {
   "no": {
     "title": "Badge",
-    "subtitle": "Badge er ein ikkje-interaktiv komponent som viser status med eller utan tal. Bruk [`Tag`](/no/components/tag/overview) dersom du skal ha tekst i staden for tal."
+    "subtitle": "`Badge` er ein ikkje-interaktiv komponent som viser status med eller utan tal. Bruk [`Tag`](/no/components/tag/overview) dersom du skal ha tekst i staden for tal."
   },
   "en": {
     "title": "Badge",
-    "subtitle": "Badge is a non-interactive component that displays status with or without a number. Use [`Tag`](/en/components/tag/overview) if you want text instead of a number."
+    "subtitle": "`Badge` is a non-interactive component that displays status with or without a number. Use [`Tag`](/en/components/tag/overview) if you want text instead of a number."
   },
   "image": "Badge.svg",
   "cssFile": "badge.css"
