@@ -19,6 +19,19 @@ export const Preview = () => {
   );
 };
 
+export const PreviewEn = () => {
+  return (
+    <Card style={{ maxWidth: '320px' }} data-color='neutral'>
+      <Heading>Lykkeland Primary School</Heading>
+      <Paragraph>
+        Lykkeland Primary School is a safe and inclusive local school where
+        play, learning and curiosity go hand in hand.
+      </Paragraph>
+      <Paragraph data-size='sm'>Solslett Municipality</Paragraph>
+    </Card>
+  );
+};
+
 export const Variants = () => {
   const colorVariants = ['accent', 'brand1', 'brand2', 'brand3', 'neutral'];
   const variants = ['default', 'tinted'];
