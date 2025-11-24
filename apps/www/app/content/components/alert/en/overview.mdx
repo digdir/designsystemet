@@ -2,6 +2,18 @@ Buttons let users perform actions.
 
 <Story story="Preview" />
 
+**Use `Alert` when**
+- the message is a short, informative and time-limited notification
+- the information concerns an error that affects only one part of the system or a minor function
+- the information relates to connectivity issues or API errors that are likely to resolve by reloading the page
+
+**Avoid `Alert` when**
+- individual form fields need validation, use the component’s built-in error message instead [`ValidationMessage`](/no/components/validation-message/overview)
+- multiple error messages need to be summarised, use [`ErrorSummary`](/docs/komponenter-errorsummary--docs)
+- the error prevents any further use of the service, use an error page instead
+- the information is static and should always be visible, use [`Card`](/docs/komponenter-card--docs) instead
+
+
 ## Examples
 
 `Alert` can be used for four different messages: Information, success, warnings and error messages.
