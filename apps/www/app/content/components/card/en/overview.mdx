@@ -1,90 +1,47 @@
 <Story story="Preview" />
 
-## Usage
+**Use `Card` when**
+- content should be grouped
+- functionality should be separated from the rest of the content
 
-```tsx
-import { Card } from '@digdir/designsystemet-react';
+**Avoid `Card` when**
+- long text blocks or detailed explanations need to be displayed
+- important messages should be presented as alerts (use [`Alert`](/no/components/alert) instead)
 
-<Card>
-  <Card.Block>Title</Card.Block>
-  <Card.Block>Content</Card.Block>
-  <Card.Block>Optional footer</Card.Block>
-</Card>;
-```
+## Examples
 
-## Code Examples
+### Colours
 
-### With divisions
+`Card` is available in all theme colours, and in the default and tinted variants.
 
-Use multiple `Card.Block` if you want to divide the card with separator lines or add images or videos that extend to the edges. Note that when using `Card.Block`, all content must be placed inside `Card.Block` - not directly in `Card`.
+<Story story="Variants" />
+
+### With sections
+
+You can divide the card into sections. These get dividers between them and may include images or video that extend to the edge.
 
 <Story story="Media" />
 
-### With video
+### Link card
 
-<Story story="Video" />
-
-### Navigation cards
-
-`Card` can be used as navigation cards to take users to another page.
-
-There are two different ways to do this.
-
-#### 1. Card with link in title
-
-If the card should link to another page, you can place a link in the card's title. The entire card then becomes clickable, but screen readers get a [better user experience than if the entire card was a link](https://adrianroselli.com/2020/02/block-links-cards-clickable-regions-etc.html).
-
-In this example, `Card` renders `<a>` inside the title element. This is useful when `Card` contains text or media and should navigate to another page.
+`Card` can be used as a navigation card to take users to another page. Developers must ensure it is used correctly. This is documented in the code examples.
 
 <Story story="WithLink" />
 
-#### 2. Card as a link
-
-The entire card can become a link by using `asChild`. This is useful when you want all text and content in `Card` to be read by screen readers as one continuous link.
-
-In this example, `Card` renders as `<a>`.
-
-<Story story="AsLink" />
-
 ### Card as a button
 
-In this example, `Card` renders as `<button>`. This is useful when `Card` contains little text and should open a dialog or perform another action on the same page.
+In this example, `Card` renders as a button. This is useful when the card contains little text and should open a dialogue or perform another action on the same page.
+
+**When the card is a button, the content inside loses all semantics, so use this carefully.**
 
 <Story story="AsButton" />
 
 ### Horizontal
 
-`Card` supports both `display: flex` and `display: grid` to place `Card.Block` side by side:
+You can change the display mode of the card so that it appears horizontally instead of vertically.
 
 <Story story="AsGrid" />
 
-### Colors
-
-`Card` comes in all theme colors, and the variants default and tinted.
-
-<Story story="Variants" />
-
 ## Guidelines
 
-`Card` is a flexible component used to structure and present content in a clear and visually defined way. The card can contain various types of content, such as text, media and links, and is often used in overviews, navigation or to highlight individual topics.
-
-**Suitable for:**
-
-- Grouping content or functionality that you want to separate from the rest of the content.
-
-**Not suitable for:**
-
-- Displaying long text blocks or detailed explanations.
-- Important messages that should be presented as alerts (use [`Alert`](/docs/komponenter-alert--docs) instead).
-
-## Text
-
-The text in a `Card` should be clear, relevant and give the user enough information to understand what the card is about.
-
-How you formulate the text depends on the context. The card can be an entry to a new page, a choice in a process, or part of an information overview. The text should reflect this.
-
-Avoid unnecessary details, and ensure that title and description are coherent and make sense in the context of the rest of the content.
-
-## Accessibility
-
-If the entire card is a link with an image, the image should **not** be informative, and the `alt` attribute should be empty.
+`Card` is a flexible component used to structure and present content in a clear and visually distinct way. The card can contain different

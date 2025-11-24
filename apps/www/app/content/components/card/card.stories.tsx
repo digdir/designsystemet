@@ -9,12 +9,12 @@ import {
 export const Preview = () => {
   return (
     <Card style={{ maxWidth: '320px' }} data-color='neutral'>
-      <Heading>Card</Heading>
+      <Heading>Lykkeland Barneskole</Heading>
       <Paragraph>
-        Most provide as with carried business are much better more the perfected
-        designer. Writing slightly explain desk unable at supposedly about this
+        Lykkeland Barneskole er ein trygg og inkluderande nærskule der leik,
+        læring og nysgjerrigheit går hand i hand.
       </Paragraph>
-      <Paragraph data-size='sm'>Footer text</Paragraph>
+      <Paragraph data-size='sm'>Solslett kommune</Paragraph>
     </Card>
   );
 };
