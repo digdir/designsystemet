@@ -1,32 +1,36 @@
----
-title: Fieldset
-image: Fieldset.svg
-cssfile: fieldset
----
-
-`Fieldset` is used to group related form elements.
-
 <Story story="Preview" />
 
-## Usage
+**Use `Fieldset` when**
+- you have a group or list of multiple `Radio` or `Checkbox` components that naturally belong together
+- a form needs to be divided into sections with explanatory headings
+- several fields naturally belong together such as contact information
 
-```tsx
-import { Fieldset, Radio } from '@digdir/designsystemet-react';
+**Avoid `Fieldset` when**
+- you are grouping elements that are not part of a form
+- the fields do not share a common purpose
 
-<Fieldset>
-  <Fieldset.Legend>Question</Fieldset.Legend>
-  <Fieldset.Description>Description</Fieldset.Description>
-  <Radio label="Option 1" name="radio" value="1" />
-  <Radio label="Option 2" name="radio" value="2" />
-</Fieldset>
-```
+## Example
 
-## Code Examples
+### Checkbox
 
-### With checkbox
+There may be scenarios where a `Fieldset` contains only one `Checkbox`, depending on the context. Below is an example of such a scenario.
 
 <Story story="WithCheckbox" />
 
-### Legend as heading
+### Legend as a heading
+
+Using the question itself as a heading is good practice in many cases, because screen reader users then hear the question only once.
+
+On pages with several input fields that relate to the same question, it is easier for screen reader users if the question is a heading. This makes it clearer that all the fields that follow belong to the group indicated by the heading.
+
+In the example below, we use an `<h1>`, which would act as the main heading of the page, together with the `<legend>`.
 
 <Story story="LegendAsHeading" />
+
+## Guidelines
+
+When using `Fieldset`, start with a `Fieldset.Legend` that explains what the fields below relate to. This may be a question such as “Where do you currently live?” or a descriptive phrase like “Personal details”. This helps users understand the relationship between the fields and what they need to fill in.
+
+## Text
+
+Avoid using the same text in both `<label>` and `<legend>`. Include helper text (`Fieldset.Description`) if it makes the form easier to complete. Note that the description is not associated with the input fields. Keep the text as short as possible.
