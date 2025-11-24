@@ -12,21 +12,16 @@ import classes from './layout.module.css';
 
 export { ErrorBoundary } from '~/root';
 
-// Maps to store unique entries per category
-const categoryMaps = new Map<
+// Language-specific cache
+const langCache = new Map<
   string,
-  Map<string, { title: string; url: string }>
+  {
+    [key: string]: {
+      title: string;
+      url: string;
+    }[];
+  }
 >();
-const getStartedMap = new Map<string, { title: string; url: string }>();
-
-const cats: {
-  [key: string]: {
-    title: string;
-    url: string;
-  }[];
-} = {
-  getStarted: [],
-};
 
 export const loader = async ({
   params: { lang },
@@ -45,9 +40,14 @@ export const loader = async ({
 
   const t = await i18n.getFixedT(lang);
 
-  if (!cats.getStarted.length) {
-    categoryMaps.clear();
-    getStartedMap.clear();
+  let cats = langCache.get(lang);
+
+  if (!cats) {
+    const categoryMaps = new Map<
+      string,
+      Map<string, { title: string; url: string }>
+    >();
+    const getStartedMap = new Map<string, { title: string; url: string }>();
 
     /* read all folders in content/components */
     const folders = getFoldersInContentDir('/components');
@@ -96,12 +96,15 @@ export const loader = async ({
       url: `/${lang}/changelog`,
     });
 
+    cats = { getStarted: [] };
     for (const [category, map] of categoryMaps.entries()) {
       cats[category] = Array.from(map.values()).sort((a, b) =>
         a.title.localeCompare(b.title),
       );
     }
     cats.getStarted = Array.from(getStartedMap.values());
+
+    langCache.set(lang, cats);
   }
 
   const trimmedUrl = request.url.endsWith('/')
@@ -112,8 +115,10 @@ export const loader = async ({
   const isComponentPage = request.url.includes('/components/');
 
   const sidebarSuffix: { [key: string]: string } = {};
-  for (const category of categoryMaps.keys()) {
-    sidebarSuffix[category] = isComponentPage ? '/' + compPage : '/overview';
+  for (const category of Object.keys(cats)) {
+    if (category !== 'getStarted') {
+      sidebarSuffix[category] = isComponentPage ? '/' + compPage : '/overview';
+    }
   }
 
   return {

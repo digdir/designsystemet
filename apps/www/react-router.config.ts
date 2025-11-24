@@ -125,6 +125,7 @@ const getComponentPaths = (): string[] => {
         // Check for overview.mdx and code.mdx
         const overviewPath = join(langPath, 'overview.mdx');
         const codePath = join(langPath, 'code.mdx');
+        const a11yPath = join(langPath, 'accessibility.mdx');
 
         if (existsSync(overviewPath)) {
           paths.push(`/${lang}/components/${component}/overview`);
@@ -132,6 +133,10 @@ const getComponentPaths = (): string[] => {
 
         if (existsSync(codePath)) {
           paths.push(`/${lang}/components/${component}/code`);
+        }
+
+        if (existsSync(a11yPath)) {
+          paths.push(`/${lang}/components/${component}/accessibility`);
         }
       }
     }
