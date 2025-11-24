@@ -1,4 +1,4 @@
-import type { Size } from '@digdir/designsystemet/types';
+import type { Size } from '@digdir/designsystemet-types';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
 import { Fieldset, Heading, Paragraph, ToggleGroup } from '../src';

@@ -36,6 +36,9 @@
     "designsystemet:tokens-preview": "pnpm --filter @digdir/designsystemet run update:preview-tokens",
     "update:theme": "pnpm designsystemet:tokens-create && pnpm designsystemet:tokens-build && pnpm designsystemet:tokens-preview"
   },
+  "dependencies": {
+    "@digdir/designsystemet-types": "workspace:^"
+  },
   "devDependencies": {
     "rimraf": "^6.1.0",
     "@digdir/designsystemet": "workspace:^"
