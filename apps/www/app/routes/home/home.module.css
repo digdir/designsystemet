@@ -61,6 +61,7 @@
   h2 {
     max-width: 650px;
     margin-inline: auto;
+    text-wrap: pretty;
   }
   p {
     margin-top: var(--ds-size-4);
