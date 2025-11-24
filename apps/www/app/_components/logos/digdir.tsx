@@ -3,8 +3,6 @@ type DigdirProps = React.HTMLAttributes<SVGElement>;
 export function Digdir(rest: DigdirProps) {
   return (
     <svg
-      width='102'
-      height='28'
       viewBox='0 0 102 28'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'

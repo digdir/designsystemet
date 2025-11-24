@@ -54,6 +54,11 @@ export default {
         email: 'Send an email',
       },
     },
+    'collaborators-section': {
+      title: 'Created across services',
+      description:
+        'A joint effort to improve user experiences across public services. Together we develop a common foundation for good, accessible and holistic digital solutions.',
+    },
     meta: {
       title: 'A common digital toolbox',
       description:

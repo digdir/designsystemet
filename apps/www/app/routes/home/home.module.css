@@ -54,6 +54,60 @@
   width: 100%;
 }
 
+.collaborators {
+  margin-block: var(--ds-size-15);
+  text-align: center;
+  p,
+  h2 {
+    max-width: 650px;
+    margin-inline: auto;
+  }
+  p {
+    margin-top: var(--ds-size-4);
+    line-height: 170%;
+  }
+  [data-logos] {
+    margin-top: var(--ds-size-22);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: var(--ds-size-10);
+    span {
+      padding: var(--ds-size-15);
+      background-color: var(--ds-color-neutral-background-tinted);
+      border-radius: var(--ds-border-radius-xl);
+      display: grid;
+      place-items: center;
+    }
+    svg {
+      width: 100%;
+      fill: var(--ds-color-neutral-text-default);
+    }
+    [data-digdir] {
+      svg {
+        max-width: 200px;
+      }
+    }
+
+    [data-span-2] {
+      grid-column: span 2;
+    }
+    @media (max-width: 860px) {
+      gap: var(--ds-size-5);
+      grid-template-columns: 1fr 1fr;
+      span {
+        padding: var(--ds-size-8);
+      }
+    }
+  }
+  @media screen and (max-width: 958px) {
+    margin-block: var(--ds-size-10);
+    text-align: start;
+    [data-logos] {
+      margin-top: var(--ds-size-5);
+    }
+  }
+}
+
 .joinCard {
   background-color: var(--ds-color-neutral-surface-default);
   border: 4px dashed var(--ds-color-neutral-border-subtle);
@@ -74,6 +128,38 @@
   }
   h2 {
     margin-bottom: var(--ds-size-4);
+  }
+  [data-links] {
+    margin-top: var(--ds-size-5);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ds-size-8);
+
+    > a {
+      color: var(--ds-color-neutral-text-default);
+      display: flex;
+      align-items: center;
+      gap: var(--ds-size-3);
+      &:nth-child(1) span {
+        background-color: var(--ds-color-brand2-surface-hover);
+      }
+      &:nth-child(2) span {
+        background-color: var(--ds-color-brand1-surface-hover);
+      }
+      &:nth-child(3) span {
+        background-color: var(--ds-color-brand3-surface-hover);
+      }
+    }
+    span {
+      width: 36px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+    }
+  }
+  @media (max-width: 960px) {
+    display: block;
   }
 }
 
