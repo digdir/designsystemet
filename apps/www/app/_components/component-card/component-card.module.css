@@ -1,8 +1,9 @@
 .card {
+  --border-color: var(--ds-color-neutral-border-subtle);
   display: grid;
   grid-template-rows: 1fr auto;
   background-color: var(--ds-color-neutral-surface-default);
-  border: 1px solid var(--ds-color-neutral-border-subtle);
+  border: 2px solid var(--border-color);
   color: var(--ds-color-neutral-text-default);
   border-radius: var(--ds-border-radius-lg);
   text-decoration: none;
@@ -14,14 +15,13 @@
 }
 
 .card:hover {
-  box-shadow: var(--ds-shadow-md);
-  transform: translateY(-4px);
+  --border-color: var(--ds-color-neutral-border-strong);
 }
 
 .title {
   padding: 20px;
   padding-bottom: 24px;
-  border-top: 1px solid var(--ds-color-neutral-border-subtle);
+  border-top: 2px solid var(--border-color);
   text-decoration: underline;
   text-underline-offset: 5px;
 }

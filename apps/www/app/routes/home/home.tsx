@@ -1,5 +1,5 @@
 import { join } from 'node:path';
-import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
 import {
   BranchingIcon,
   ComponentIcon,
@@ -254,25 +254,25 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
               {t('frontpage.join-section.description')}
             </Paragraph>
             <div data-links>
-              <a href='/slack'>
+              <Link href='/slack'>
                 <span>
                   <PersonChatIcon fontSize={24} aria-hidden='true' />
                 </span>
 
                 {t('frontpage.join-section.buttons.slack')}
-              </a>
-              <a href='https://github.com/digdir/designsystemet'>
+              </Link>
+              <Link href='https://github.com/digdir/designsystemet'>
                 <span>
                   <BranchingIcon fontSize={24} aria-hidden='true' />
                 </span>
                 {t('frontpage.join-section.buttons.github')}
-              </a>
-              <a href='mailto:designsystem@digdir.no'>
+              </Link>
+              <Link href='mailto:designsystem@digdir.no'>
                 <span>
                   <EnvelopeClosedIcon fontSize={24} aria-hidden='true' />
                 </span>
                 {t('frontpage.join-section.buttons.email')}
-              </a>
+              </Link>
             </div>
           </div>
         </div>
