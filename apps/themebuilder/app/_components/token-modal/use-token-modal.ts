@@ -39,7 +39,12 @@ export const useTokenModal = () => {
     Record<string, { light?: CssColor; dark?: CssColor }>
   > = {};
 
-  [...colors.main, ...colors.support, ...colors.neutral].forEach((color) => {
+  [
+    ...colors.main,
+    ...colors.support,
+    ...colors.neutral,
+    ...severityColors,
+  ].forEach((color) => {
     if (color.overrides && Object.keys(color.overrides).length > 0) {
       colorOverrides[color.name] = color.overrides;
     }
