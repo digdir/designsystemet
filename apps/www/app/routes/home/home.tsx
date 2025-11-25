@@ -1,5 +1,5 @@
 import { join } from 'node:path';
-import { Heading, Paragraph, Link } from '@digdir/designsystemet-react';
+import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
 import {
   BranchingIcon,
   ComponentIcon,

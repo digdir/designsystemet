@@ -1,5 +1,4 @@
 import { ComponentFillIcon } from '@navikt/aksel-icons';
-import cl from 'clsx';
 import { useTranslation } from 'react-i18next';
 import {
   Banner,
