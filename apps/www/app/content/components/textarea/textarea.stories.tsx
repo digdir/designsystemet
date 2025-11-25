@@ -1,10 +1,23 @@
-import { Label, Textarea } from '@digdir/designsystemet-react';
+import {
+  FieldDescription,
+  Label,
+  Textarea,
+} from '@digdir/designsystemet-react';
 
 export const Preview = () => {
   return (
     <>
       <Label htmlFor='my-textarea'>Label</Label>
       <Textarea id='my-textarea' />
+    </>
+  );
+};
+
+export const WithRowsEn = () => {
+  return (
+    <>
+      <Label htmlFor='my-textarea-rows'>Description</Label>
+      <Textarea id='my-textarea-rows' rows={6} />
     </>
   );
 };
@@ -30,8 +43,33 @@ export const Disabled = () => {
 export const ReadOnly = () => {
   return (
     <>
-      <Label htmlFor='my-textarea-readonly'>Label</Label>
-      <Textarea id='my-textarea-readonly' readOnly value='ReadOnly textarea' />
+      <Label htmlFor='my-textarea-readonly'>Beskrivelse av saken</Label>
+      <FieldDescription>
+        Teksten er lagt inn automatisk basert på det du allerede har sendt inn,
+        og kan ikke redigeres.
+      </FieldDescription>
+      <Textarea
+        id='my-textarea-readonly'
+        readOnly
+        value='Jeg søker om støtte fordi jeg trenger midler til å gjennomføre prosjektet slik det er planlagt.'
+      />
+    </>
+  );
+};
+
+export const ReadOnlyEn = () => {
+  return (
+    <>
+      <Label htmlFor='my-textarea-readonly'>Case description</Label>
+      <FieldDescription>
+        This text has been added automatically based on information you have
+        already submitted, and cannot be edited.
+      </FieldDescription>
+      <Textarea
+        id='my-textarea-readonly'
+        readOnly
+        value='I am applying for support because I need funding to carry out the project as planned.'
+      />
     </>
   );
 };
