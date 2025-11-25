@@ -1,35 +1,29 @@
----
-title: Search
-image: Search.svg
-cssfile: search
----
+<Story story="PreviewEn" />
 
-`Search` is a search component that combines a text field with search functionality.
+**Use `Search` when**
+* users need help finding relevant information quickly on a website or in an application  
+* users are expected to enter keywords or phrases to locate the most relevant content
 
-<Story story="Preview" />
+**Avoid `Search` when**
+* the content is easy to navigate without search  
+* it replaces good navigation — search should complement navigation, not be the only method
 
-## Usage
-
-```tsx
-import { Search } from '@digdir/designsystemet-react';
-
-<Search>
-  <Search.Input aria-label="Search" />
-  <Search.Clear />
-  <Search.Button />
-</Search>
-```
-
-## Code Examples
-
-### With label
-
-<Story story="WithLabel" />
+## Example
 
 ### Variants
 
-<Story story="Variants" />
+You can change the `variant` on the `Button` to adjust its appearance. Alternatively, you may remove the button and use a search field with an icon. The examples below show variants that include an icon, primary button and secondary button.
 
-### Controlled
+<Story story="VariantsEn" />
 
-<Story story="Controlled" layout="column" />
+## Guidelines
+
+The width of the search field should reflect the length of the search terms users typically enter. The size of the field signals what users can type. For example, a search field for national identity numbers should match the length of such a number. A main search field for a website should be wider so users can see several words at once. To avoid forcing users to scroll within the field, ensure it is not so short that parts of the text become hidden.
+
+## Text
+
+Placeholder text should be used with caution, as it disappears when users start typing and may cause confusion. It must also meet accessibility contrast requirements, which may make it difficult to distinguish from entered text. Screen readers handle placeholder text inconsistently, so information should instead be provided through a label or description.
+
+You should use a `label` above the search field when it is not obvious what users are expected to search for, or when the search field is part of a form.
+
+<Story story="WithLabelEn" />
