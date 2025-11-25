@@ -10,6 +10,30 @@ export const Preview = () => {
   );
 };
 
+export const OrderedEn = () => {
+  return (
+    <>
+      <Heading
+        level={2}
+        data-size='xs'
+        style={{ marginBottom: 'var(--ds-size-2)' }}
+      >
+        How to do it:
+      </Heading>
+
+      <List.Ordered>
+        <List.Item>
+          Pat the chicken breasts dry before seasoning and frying
+        </List.Item>
+        <List.Item>Add salt and pepper to the breasts</List.Item>
+        <List.Item>
+          Fry the breasts on high heat for two minutes on each side
+        </List.Item>
+      </List.Ordered>
+    </>
+  );
+};
+
 export const Ordered = () => {
   return (
     <>
@@ -29,6 +53,31 @@ export const Ordered = () => {
           Stek filetene på sterk varme i to minutter på hver side
         </List.Item>
       </List.Ordered>
+    </>
+  );
+};
+
+export const UnorderedEn = () => {
+  return (
+    <>
+      <Heading
+        level={2}
+        data-size='xs'
+        style={{ marginBottom: 'var(--ds-size-2)' }}
+      >
+        The association is required to have an auditor if it has
+      </Heading>
+
+      <List.Unordered>
+        <List.Item>
+          an average number of employees equivalent to ten full-time positions
+          or more
+        </List.Item>
+        <List.Item>
+          a balance sheet total of 27 million kroner or more
+        </List.Item>
+        <List.Item>operating income of 35 million kroner or more</List.Item>
+      </List.Unordered>
     </>
   );
 };
