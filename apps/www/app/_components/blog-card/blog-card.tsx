@@ -6,8 +6,8 @@ import {
   Tag,
 } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
-
 import { Link } from 'react-router';
+import { AvatarStack } from '~/_components/avatar-stack/avatar-stack';
 import classes from './blog-card.module.css';
 
 type BlogCardProps = {
@@ -64,6 +64,7 @@ export const BlogCard = ({
           </Heading>
           <Paragraph data-size={featured ? 'md' : 'sm'}>{desc}</Paragraph>
           <Paragraph data-size={'md'} className={classes.meta}>
+            <AvatarStack authors={author || ''} />
             {author ||
               (date && (
                 <>
