@@ -1,5 +1,14 @@
 <Story story="Preview" />
 
+**Bruk `Textfield` når**
+- du trenger et komplett skjemafelt med label, hjelpetekst og valideringsmelding
+- feltet skal valideres underveis eller ved innsending  
+- verdien er unik og ikke kan velges fra en liste
+
+**Unngå `Textfield` når**
+- du trenger et helt enkelt inputfelt uten skjemalogikk, bruk heller [`Input`](/no/components/input/overview)
+- brukeren skal velge fra et begrenset sett med alternativer, bruk heller [`Radio`](/no/components/radio/overview), [`Checkbox`](/no/components/checkbox/overview), [`Select`](/no/components/select/overview) eller [`Suggestion`](/no/components/suggestion/overview)  
+
 ## Eksempel
 
 ### Multiline
@@ -21,8 +30,7 @@ Bruk `counter` til å informere om antall tegn brukerne kan skrive i feltet.
 <Story story="WithCounter" />
 
 ### Påkrevde og valgfrie felt
-Det er lovpålagt å markere feltene dine, du kan lese vårt mønster om [obligatoriske og valgfrie felt](/no/patterns/required-and-optional-fields) for mer informasjon.
-Når du plasserer `Tag` i `<label>` anbefaler vi at du bruker `margin-inline-start: var(--ds-size-2)` for å skape avstand mellom teksten og taggen.
+Det er lovpålagt å markere påkrevde felt. Les om [obligatoriske og valgfrie felt](/no/patterns/required-and-optional-fields) for mer informasjon. Når du plasserer `Tag` i `<label>` anbefaler vi at du bruker `margin-inline-start: var(--ds-size-2)` for å skape avstand mellom teksten og taggen.
 
 <Story story="Required" />
 
