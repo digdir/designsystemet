@@ -22,11 +22,11 @@ export const Ordered = () => {
       </Heading>
       <List.Ordered>
         <List.Item>
-          Tørk over kyllingfiletene før du krydrer og steker.
+          Tørk over kyllingfiletene før du krydrer og steker
         </List.Item>
-        <List.Item>Ha salt og pepper på filetene.</List.Item>
+        <List.Item>Ha salt og pepper på filetene</List.Item>
         <List.Item>
-          Stek filetene på sterk varme i to minutter på hver side.
+          Stek filetene på sterk varme i to minutter på hver side
         </List.Item>
       </List.Ordered>
     </>
