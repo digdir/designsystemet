@@ -4,7 +4,7 @@
 - the user must choose one of several options in a form
 
 **Avoid `Radio` when**
-- the user should be able to choose more than one option; use [`Checkbox`](/docs/komponenter-checkbox--docs) instead
+- the user should be able to choose more than one option, use [`Checkbox`](/docs/komponenter-checkbox--docs) instead
 
 ## Example
 
@@ -12,59 +12,47 @@
 
 Use a legend to ask the question, and include a description if additional explanation is needed.
 
-<Story story="Group" />
+<Story story="GroupEn" />
 
 ### With error
 
 If the user attempts to continue without answering a required question, the error message should apply to the entire group of options.
 
-<Story story="WithError" />
+<Story story="WithErrorEn" />
 
 ## Guidelines
 
-Use `Radio` when users must select only one option.  
-If they need to select more, use [`Checkbox`](/docs/komponenter-checkbox--docs).
+Use `Radio` when users must select only one option. If they need to select more, use [`Checkbox`](/docs/komponenter-checkbox--docs).
 
-There should not be more than seven options in one group.  
-If users need more choices, consider using [`Suggestion`](/no/components/suggestion) or [`Select`](/no/components/select).  
-If there is only one choice to make, a [`Switch`](/no/components/switch) or a [`Checkbox`](/no/components/checkbox) may be more suitable.
+There should not be more than seven options in one group. If users need more choices, consider using [`Suggestion`](/no/components/suggestion) or [`Select`](/no/components/select). If there is only one choice to make, a [`Switch`](/no/components/switch) or a [`Checkbox`](/no/components/checkbox) may be more suitable.
 
 ### Sorting
 
-Sort options alphabetically unless there is a clear reason not to.  
-Be careful about placing the most common option first if the question is personal or value-based, such as sexual orientation or political affiliation.
+Sort options alphabetically unless there is a clear reason not to. Be careful about placing the most common option first if the question is personal or value-based, such as sexual orientation or political affiliation.
 
 ### Placement
 
-Place radio buttons vertically whenever possible.  
-This makes the list easier to scan and the options easier to read.  
-For users who need to zoom in, horizontal layouts can be challenging.
+Place radio buttons vertically whenever possible. This makes the list easier to scan and the options easier to read. For users who need to zoom in, horizontal layouts can be challenging.
 
-If you have only two options with short labels such as “Yes” and “No”, you may consider placing them side by side.  
-When displayed horizontally, it must be clear which label belongs to which button.  
-Horizontal placement is suitable only when there are two short options, or in rating scales such as “strongly disagree” to “strongly agree” (Likert scale)  
-[likert scale (snl.no)](https://snl.no/Likert-skala).
+If you have only two options with short labels such as “Yes” and “No”, you may consider placing them side by side. When displayed horizontally, it must be clear which label belongs to which button. Horizontal placement is suitable only when there are two short options, or in rating scales such as “strongly disagree” to “strongly agree” ([likert scale (snl.no)](https://snl.no/Likert-skala)).
 
-<Story story="Inline" />
+<Story story="InlineEn" />
 
 ### Avoid pre-selected options
 
 Consider carefully whether you really need a pre-selected option.  
-It may have the opposite effect of what you intend — users may feel influenced towards a particular choice, or may not realise they need to make an active decision.
+It may have the opposite effect of what you intend, users may feel influenced towards a particular choice, or may not realise they need to make an active decision.
 
 ## Text
 
-A group with several options should always have a heading (`<legend>`) and, if needed, a description (`description`) for further explanation.  
-The description should appear immediately after the legend and provide the necessary information before the user makes a choice.
+A group with several options should always have a heading (`<legend>`) and, if needed, a description (`description`) for further explanation. The description should appear immediately after the legend and provide the necessary information before the user makes a choice.
 
 <div className="dodont-row">
-  <DoDont story="DoIcon">
-    Here, users receive all important and relevant information *before* making a choice.  
-    This follows a logical reading order and helps them feel confident in choosing the correct option.
+  <DoDont story="DoIconEn">
+    Here, users receive all important and relevant information *before* making a choice. This follows a logical reading order and helps them feel confident in choosing the correct option.
   </DoDont>
-  <DoDont story="DontIcon">
-    Here, important and relevant information appears *after* the choice and is less visible to users.  
-    This breaks the logical reading order and may lead to incorrect selections.
+  <DoDont story="DontIconEn">
+    Here, important and relevant information appears *after* the choice and is less visible to users. This breaks the logical reading order and may lead to incorrect selections.
   </DoDont>
 </div>
 
