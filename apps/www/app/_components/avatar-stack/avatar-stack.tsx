@@ -17,6 +17,9 @@ export const AvatarStack = ({ authors }: AvatarStackProps) => {
   const matchedAvatars = avatars.filter((avatar) =>
     authorsLowercase.includes(avatar),
   );
+  if (matchedAvatars.length === 0) {
+    return null;
+  }
 
   return (
     <span

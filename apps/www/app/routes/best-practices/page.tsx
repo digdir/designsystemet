@@ -3,6 +3,7 @@ import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { PencilLineIcon } from '@navikt/aksel-icons';
 import cl from 'clsx';
 import { useTranslation } from 'react-i18next';
+import { AvatarStack } from '~/_components/avatar-stack/avatar-stack';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { TableOfContents } from '~/_components/table-of-contents/toc';
@@ -81,7 +82,12 @@ export default function BestPractices({
           )}
           <Paragraph variant='short' asChild>
             <div className={classes.meta}>
-              <span>{author && <span>{author}</span>}</span>
+              {author && (
+                <>
+                  <AvatarStack authors={author} /> <span>{author}</span>
+                </>
+              )}
+
               <span className={classes.separator}>·</span>
               <span>
                 {date && (
