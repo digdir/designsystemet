@@ -20,6 +20,26 @@ export const Group = () => {
   );
 };
 
+export const GroupEn = () => {
+  return (
+    <Fieldset>
+      <Fieldset.Legend>Turn lights on/off</Fieldset.Legend>
+      <Switch label='Living room' checked />
+      <Switch label='Kitchen' />
+      <Switch label='Bathroom' />
+      <Switch
+        label='Bedroom'
+        description='Unable to connect to the light bulbs'
+        readOnly
+      />
+    </Fieldset>
+  );
+};
+
 export const RightAligned = () => {
   return <Switch label='Flymodus' position='end' defaultChecked />;
+};
+
+export const RightAlignedEn = () => {
+  return <Switch label='Flight mode' position='end' defaultChecked />;
 };

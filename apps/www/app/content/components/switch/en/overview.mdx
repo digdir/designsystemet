@@ -1,49 +1,45 @@
----
-title: Switch
-image: Switch.svg
-cssfile: switch
----
-
-We use `Switch` to give users a choice between two alternatives. The switch can either be turned off or on.
-
 <Story story="Preview" />
 
-## Usage
+**Use the `Switch` when**
+- the choice controls a function or setting that can be turned on or off
+- the change takes effect immediately when the user toggles the switch
 
-```tsx
-import { Switch } from '@digdir/designsystemet-react';
+**Avoid using the `Switch` when**
+- users are answering questions in forms, use [`Radio`](/no/components/radio/overview) or [`Checkbox`](/no/components/checkbox/overview) instead
+- content should switch between two categories, use [`ToggleGroup`](/no/components/togglegroup/overview) instead
+- content should be filtered, use [`Chip`](/no/components/chip/overview) instead
 
-<Switch label="Dark mode" value="dark" />
-```
-
-## Code Examples
-
-### Checked
-
-<Story story="Checked" />
+## Example
 
 ### Grouping
+Use [Fieldset](/docs/komponenter-fieldset--docs) to group multiple `Switch` components together.
 
-<Story story="Group" />
+<Story story="GroupEn" />
 
 ### Right aligned
+Sometimes it can be useful to right-align a `Switch`, for example when it is placed in a table or within a fixed layout.
 
-<Story story="RightAligned" />
+<Story story="RightAlignedEn" />
 
 ## Guidelines
+Use the `Switch` to turn settings, functions, or notifications on or off. It provides users with a clear visual indication of state.
 
-`Switch` should be a choice between two alternatives. We use `Switch` for settings, not in forms.
+## Text
 
-**Suitable for**
+The text for a `Switch` must be short and precise, often just one or two words. It should make sense when you read the label aloud and add “on/off” afterwards.
 
-- activating or deactivating features/states immediately
-- turning notifications off and on
+If you have several `Switch` components in a group, make sure the wording is consistent. Do not phrase them differently.
 
-**Not suitable for**
+The text should describe what the function relates to, not whether it is on or off. If the state is written directly in the label, it can become confusing and make it harder to understand the actual position of the switch.
 
-- using instead of `Checkbox` or `Radio` in a form
-- situations where users must save information before a change takes effect
+### Example 1
+- Correct: Email notifications (On/off)
+- Incorrect: Turn off email notifications (On/off)
 
-## Accessibility
+### Example 2
+- Correct: Flight mode (On/off)
+- Incorrect: Turn on flight mode (On/off)
 
-We use `role="switch"` to tell screen readers that this is a toggle switch.
+### Placement of text
+
+In most cases, placing the text on the right is best. The exception is when the `Switch` itself is positioned on the far right of the interface – then the text should be placed to the left, so all switches align along the same vertical line.
