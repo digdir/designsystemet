@@ -14,7 +14,7 @@ import classes from './component.module.css';
 export async function loader({ params }: Route.LoaderArgs) {
   // Read the file content
   const fileContent = getFileFromContentDir(
-    join('changelogs', `changelog.mdx`),
+    join('components-docs', `changelog.mdx`),
   );
 
   if (!fileContent) {

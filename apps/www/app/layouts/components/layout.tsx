@@ -4,29 +4,15 @@ import { Outlet } from 'react-router';
 import { Sidebar } from '~/_components/sidebar/sidebar';
 import {
   getFileFromContentDir,
+  getFilesFromContentDir,
   getFoldersInContentDir,
 } from '~/_utils/files.server';
+import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import i18n from '~/i18next.server';
 import type { Route } from './+types/layout';
 import classes from './layout.module.css';
 
 export { ErrorBoundary } from '~/root';
-
-// Maps to store unique entries per category
-const categoryMaps = new Map<
-  string,
-  Map<string, { title: string; url: string }>
->();
-const getStartedMap = new Map<string, { title: string; url: string }>();
-
-const cats: {
-  [key: string]: {
-    title: string;
-    url: string;
-  }[];
-} = {
-  getStarted: [],
-};
 
 export const loader = async ({
   params: { lang },
@@ -45,75 +31,93 @@ export const loader = async ({
 
   const t = await i18n.getFixedT(lang);
 
-  if (!cats.getStarted.length) {
-    categoryMaps.clear();
-    getStartedMap.clear();
+  const cats: {
+    [key: string]: {
+      title: string;
+      url: string;
+    }[];
+  } = {};
 
-    /* read all folders in content/components */
-    const folders = getFoldersInContentDir('/components');
-
-    await Promise.all(
-      folders.map(async (folder) => {
-        const metadataJson = getFileFromContentDir(
-          join('components', folder, 'metadata.json'),
-        );
-
-        if (!metadataJson) {
-          const category = 'components';
-          if (!categoryMaps.has(category)) {
-            categoryMaps.set(category, new Map());
-          }
-          const categoryMap = categoryMaps.get(category);
-          if (categoryMap) {
-            categoryMap.set(`/${lang}/components/${folder}`, {
-              title: folder,
-              url: `/${lang}/components/${folder}`,
-            });
-          }
-          return;
-        }
-
-        const parsedMetadata = JSON.parse(metadataJson);
-        const category = parsedMetadata.category || 'components';
-
-        const component = {
-          title: parsedMetadata[lang].title || folder,
-          url: `/${lang}/components/${folder}`,
-        };
-
-        if (!categoryMaps.has(category)) {
-          categoryMaps.set(category, new Map());
-        }
-        const categoryMap = categoryMaps.get(category);
-        if (categoryMap) {
-          categoryMap.set(component.url, component);
-        }
-      }),
-    );
-
-    getStartedMap.set(`/${lang}/changelog`, {
+  // Get started items (added first)
+  const getStartedItems = [
+    {
       title: t('components.changelog.title'),
-      url: `/${lang}/changelog`,
-    });
+      url: `/${lang}/components/changelog`,
+    },
+  ];
 
-    for (const [category, map] of categoryMaps.entries()) {
-      cats[category] = Array.from(map.values()).sort((a, b) =>
-        a.title.localeCompare(b.title),
+  const getStartedFolders = getFilesFromContentDir(
+    join('components-docs', lang),
+  );
+
+  for (const file of getStartedFolders) {
+    /* parse mdx */
+    const fileContent = await generateFromMdx(file.path);
+
+    getStartedItems.push({
+      title:
+        fileContent.frontmatter.sidebar_title ||
+        file.relativePath.replace('.mdx', ''),
+      url: `/${lang}/components/${file.relativePath.replace('.mdx', '')}`,
+    });
+  }
+
+  cats.getStarted = getStartedItems;
+
+  /* read all folders in content/components */
+  const folders = getFoldersInContentDir('/components');
+
+  const components = await Promise.all(
+    folders.map(async (folder) => {
+      const metadataJson = getFileFromContentDir(
+        join('components', folder, 'metadata.json'),
       );
+
+      if (!metadataJson) {
+        return {
+          category: 'components',
+          title: folder,
+          url: `/${lang}/components/docs/${folder}`,
+        };
+      }
+
+      const parsedMetadata = JSON.parse(metadataJson);
+      const category = parsedMetadata.category || 'components';
+
+      return {
+        category,
+        title: parsedMetadata[lang].title || folder,
+        url: `/${lang}/components/docs/${folder}`,
+      };
+    }),
+  );
+
+  // Group components by category
+  const componentCategories = new Set<string>();
+  for (const component of components) {
+    const { category, ...item } = component;
+    componentCategories.add(category);
+    if (!cats[category]) {
+      cats[category] = [];
     }
-    cats.getStarted = Array.from(getStartedMap.values());
+    cats[category].push(item);
+  }
+
+  // Sort each category
+  for (const category in cats) {
+    cats[category].sort((a, b) => a.title.localeCompare(b.title));
   }
 
   const trimmedUrl = request.url.endsWith('/')
-    ? request.url.slice(0, -1)
-    : request.url;
-  const compPage = trimmedUrl.split('/').pop();
+    ? request.url.slice(0, -1).split('/')
+    : request.url.split('/');
+  const compPage = trimmedUrl[trimmedUrl.length - 1];
 
-  const isComponentPage = request.url.includes('/components/');
+  const isComponentPage = request.url.includes('/components/docs/');
 
   const sidebarSuffix: { [key: string]: string } = {};
-  for (const category of categoryMaps.keys()) {
-    sidebarSuffix[category] = isComponentPage ? '/' + compPage : '/overview';
+  for (const category of componentCategories) {
+    sidebarSuffix[category] = isComponentPage ? `/${compPage}` : '/overview';
   }
 
   return {
@@ -126,6 +130,7 @@ export const loader = async ({
 export default function Layout({
   loaderData: { cats, sidebarSuffix },
 }: Route.ComponentProps) {
+  console.log(sidebarSuffix);
   return (
     <ContentContainer
       className={classes['sidebar-container']}
