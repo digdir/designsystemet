@@ -1,38 +1,53 @@
----
-title: Tabs
-image: Tabs.svg
-cssfile: tabs
----
-
-`Tabs` organize content into different sections that users can switch between.
-
 <Story story="Preview" />
 
-## Usage
+**Use `Tabs` when**  
+* content needs to be structured without loading a new page  
+* information benefits from being divided into clearly labelled sections  
+* navigation becomes easier when users do not need to view all content at once  
 
-```tsx
-import { Tabs } from '@digdir/designsystemet-react';
+**Avoid using `Tabs` when**  
+* it is important to give an immediate overview of the content  
+* information needs to be compared across sections  
+* users must go through a step-by-step process where the order matters  
+* large amounts of content may slow down the page  
+* the content could just as well be shown on a single page or spread across several pages  
 
-<Tabs defaultValue="tab1">
-  <Tabs.List>
-    <Tabs.Tab value="tab1">Tab 1</Tabs.Tab>
-    <Tabs.Tab value="tab2">Tab 2</Tabs.Tab>
-  </Tabs.List>
-  <Tabs.Panel value="tab1">Content 1</Tabs.Panel>
-  <Tabs.Panel value="tab2">Content 2</Tabs.Panel>
-</Tabs>
-```
-
-## Code Examples
+## Example
 
 ### Icons only
+`Tabs` can be displayed with icons only for a more compact layout.  
+Ensure that the icons are intuitive and have descriptive titles for screen readers.  
+In the example below, we wrap `Tabs.Tab` in a [`Tooltip`](/en/components/tooltip/code) to provide descriptive text for the icons.
 
-<Story story="IconsOnly" />
+<Story story="IconsOnlyEn" />
 
 ### Icons with text
+Combining icons with text provides both a visual and textual description of the content.  
+Icons should be decorative and marked with `aria-hidden`.
 
-<Story story="IconsWithText" />
+<Story story="IconsWithTextEn" />
 
-### Controlled
+## Guidelines
 
-<Story story="Controlled" />
+`Tabs` are used to organise related content into separate sections.
+
+### Alternatives to Tabs
+Before choosing `Tabs`, consider whether it might be better to:
+- simplify and reduce the amount of content
+- distribute the content across several pages
+- keep everything on a single page with clear headings
+- use a table of contents for easier navigation
+
+### Best practice
+- **Limit the number of `Tabs`** – too many make it difficult to get an overview, especially on small screens  
+- **Use clear, descriptive names** – `Tabs` hide content, so it must be obvious what each section contains  
+- **Place the most important content first** – organise `Tabs` according to users’ needs  
+- **Keep `Tabs` on a single line** – long labels or too many `Tabs` make navigation harder  
+- **Avoid disabled `Tabs`** – remove them or explain why they contain no content  
+
+## Text
+`Tabs` labels should be short and descriptive so users can easily understand what they will find when clicking.  
+If it is difficult to create clear labels, it may indicate that the content is not well structured.
+
+If additional context is needed, a shared heading can be placed above the `Tabs` component.  
+This can act as an overall description, giving users a quick overview of what the `Tabs` contain.
