@@ -33,7 +33,7 @@
         }
 
         &:focus-visible {
-          color: var(--ds-color-neutral-base-contrast-default);
+          outline-offset: calc(-1 * var(--ds-border-width-focus));
         }
 
         &[aria-current='true'] {

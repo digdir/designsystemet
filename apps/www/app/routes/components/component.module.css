@@ -59,6 +59,9 @@
   & a {
     border-radius: 0;
     font-weight: var(--ds-font-weight-regular);
+    &:focus-visible {
+      outline-offset: calc(-1 * var(--ds-border-width-focus));
+    }
 
     &[aria-current='page'] {
       border-bottom: 3px solid currentColor;

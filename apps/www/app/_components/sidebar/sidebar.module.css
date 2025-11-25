@@ -41,6 +41,9 @@
   position: relative;
   border-radius: var(--ds-border-radius-md);
   text-wrap: balance;
+  &:focus-visible {
+    outline-offset: calc(-1 * var(--ds-border-width-focus));
+  }
 
   &[aria-current='page']::before {
     content: '';
