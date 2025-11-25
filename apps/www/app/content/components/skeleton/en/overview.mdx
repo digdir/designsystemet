@@ -1,47 +1,31 @@
----
-title: Skeleton
-image: Skeleton.svg
-cssfile: skeleton
----
-
-`Skeleton` is used to show that content on a page is being loaded. Instead of showing a [`Spinner`](/docs/komponenter-loaders-spinner--docs) that only indicates something is happening, `Skeleton` can give the user a visual hint of how the content will eventually look.
-
 <Story story="Preview" />
 
-## Usage
+**Use `Skeleton` when**
+- you need to indicate that content on a page is in the process of loading  
+- you want to show users what the layout of the content will look like once it has loaded  
+- the content is expected to take more than one second to load
 
-```tsx
-import { Skeleton } from '@digdir/designsystemet-react';
+**Avoid `Skeleton` when**
+- you need to indicate that the system is working on a task the user must wait for, use a [`Spinner`](/en/components/spinner/overview) instead
 
-<Skeleton width={200} height={100} />
-```
-
-## Code Examples
+## Example
 
 ### Variants
 
-Skeleton comes in three different variants: `rectangle`, `circle`, and `text`.
+`Skeleton` comes in three variants: `rectangle`, `circle`, and `text`.
 
 <Story story="Components" />
 
-### Usage Example
+### Usage example
 
 <Story story="UsageExample" layout="column" />
 
-### Text Variant
+### Text variant
 
 <Story story="Text" />
 
 ## Guidelines
 
-`Skeleton` is an alternative to `Spinner` when you want to indicate that content is being loaded. `Skeleton` helps users better understand what's coming and perceive the wait time as shorter.
+`Skeleton` is an alternative to [`Spinner`](/en/components/spinner/overview) when you want to indicate that content is loading. It helps users understand what is coming and can make the waiting time feel shorter.
 
-**Suitable for**
-
-- indicating that content on a page is being loaded
-- giving the user an indication of how the content will look when loaded
-- using in areas where content is expected to take more than 1 second to load
-
-**Not suitable for**
-
-- indicating that the system is working on a task the user must wait for (use [Spinner](/docs/komponenter-loaders-spinner--docs) instead)
+Choose the `Skeleton` variant based on the type of content being loaded, such as headings, text blocks or images. Try to mimic the structure of the actual content to make the transition to the fully loaded content feel smooth.
