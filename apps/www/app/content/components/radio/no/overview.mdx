@@ -9,28 +9,13 @@
 ## Eksempel
 
 ### Gruppering
-Bruk [`Fieldset`](/no/components/fieldset) rundt en gruppe med radioknapper for å gi en felles ledetekst(`<legend>`) og eventuelt en beskrivelse (`description`).
+Bruk ledetekst til å stille spørsmålet og legg eventuelt ved beskrivelse der det er nødvendig.
 
 <Story story="Group" />
 
 ### Med feil
-Her må vi bruke `Fieldset`, fordi den aktiverer riktig stil og sørger for at innholdet har de riktige sammenkoblingene for tilgjengelighet.
-
+Hvis brukeren prøver å gå videre uten å svare på et obligatorisk spørsmål, skal feilmeldingen gjelde for hele gruppen med alternativer.
 <Story story="WithError" />
-
-### Readonly
-
-Felter med `readonly`-attributtet er med i tabrekkefølgen. Brukerne kan kopiere innholdet men ikke redigere det. Informasjon blir med når skjemaet sendes inn.
-
-`readonly`-felter kan være forvirrende for noen brukere. Ikke alle vil skjønne hvorfor de ikke får til å endre innholdet i feltet. Vi anbefaler derfor å unngå `readonly` så langt det lar seg gjøre.
-
-<Story story="ReadOnly" />
-
-### Inline
-
-`Radio` skal som hovedregel *ikke* plasseres på samme linje. Men, hvis du har kun to alternativer med korte tekster som "Ja" og "Nei", kan du vurdere om de bør plasseres ved siden av hverandre. 
-
-<Story story="Inline" />
 
 ## Retningslinjer
 Vi bruker `Radio` når vi skal gi brukerne mulighet til å velge kun ett alternativ. Skal de kunne velge flere, bruker du [`Checkbox`](/docs/komponenter-checkbox--docs).
@@ -43,9 +28,9 @@ Sorter svaralternativene alfabetisk hvis det ikke er en god grunn til å gjøre 
 ### Plassering
 Plasser helst radioknapper vertikalt. Da blir det lettere å skanne listen og lese alternativene. For brukere som må forstørre teksten, er horisontale lister utfordrende. 
 
-Hvis vi bare har to valg med korte ledetekster, kan vi vise dem ved siden av hverandre. I en [likert-skala (snl.no)](https://snl.no/Likert-skala) vil det også være naturlig å vise dem ved siden av hverandre. 
+Hvis du har kun to alternativer med korte tekster som "Ja" og "Nei", kan du vurdere om de bør plasseres ved siden av hverandre. Ved horisontal visning må det være klart hvilken tekst som hører til hvilken knapp. Du kan bruke horisontal visning når det bare er to alternativer med korte tekster, eller i en vurderingsskala som går fra «helt uenig» til «helt enig» [likert-skala (snl.no)](https://snl.no/Likert-skala). 
 
-Ved horisontal visning må det være klart hvilken tekst som hører til hvilken knapp. Du kan bruke horisontal visning når det bare er to alternativer med korte tekster, eller i en vurderingsskala som går fra «helt uenig» til «helt enig» (likert-skala). 
+<Story story="Inline" />
 
 ### Unngå forhåndsvalgt alternativ
 Tenk nøye over om du virkelig trenger å ha et forhåndsvalgt alternativ.

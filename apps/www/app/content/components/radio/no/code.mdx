@@ -12,21 +12,25 @@ import { Radio } from '@digdir/designsystemet-react';
 ## Eksempel
 
 ### Gruppering
-
-Bruk [`Fieldset`](/no/components/fieldset) rundt en gruppe med radioknapper for å gi en felles tittel og eventuelt hjelpetekst.
+Bruk [`Fieldset`](/no/components/fieldset) rundt en gruppe med radioknapper for å gi en felles ledetekst(`<legend>`) og eventuelt en beskrivelse (`description`).
 
 <Story story="Group" />
 
 ### Med feil
+Her må vi bruke [`Fieldset`](/no/components/fieldset), fordi den aktiverer riktig stil og sørger for at innholdet har de riktige sammenkoblingene for tilgjengelighet.
 
 <Story story="WithError" />
 
 ### Readonly
 
+Felter med `readonly`-attributtet er med i tabrekkefølgen. Brukerne kan kopiere innholdet men ikke redigere det. Informasjon blir med når skjemaet sendes inn.
+
+`readonly`-felter kan være forvirrende for noen brukere. Ikke alle vil skjønne hvorfor de ikke får til å endre innholdet i feltet. Vi anbefaler derfor å unngå `readonly` så langt det lar seg gjøre.
+
 <Story story="ReadOnly" />
 
 ### Inline
-
+Radio *kan* plasseres horisontalt med `flex`, men skal som hovedregel [plasseres vertikalt](/no/components/radio/overview#plassering).
 <Story story="Inline" />
 
 ## HTML

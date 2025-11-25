@@ -11,19 +11,29 @@ export const Preview = () => {
 export const Group = () => {
   return (
     <Fieldset>
-      <Fieldset.Legend>Hvor reiste du fra?</Fieldset.Legend>
+      <Fieldset.Legend>Hvordan ønsker du at vi kontakter deg?</Fieldset.Legend>
       <Fieldset.Description>
-        Vi bruker dette for å regne ut distanse til din reiseregning.
+        Velg metoden som passer best for deg. Vi bruker dette kun til å sende
+        viktig informasjon om saken din.
       </Fieldset.Description>
-      <Radio label='Sogndal (SOG)' value='sogndal' name='reise' />
       <Radio
-        label='Oslo (OSL)'
-        description='Velg denne selv om du reiste fra en annen flyplass i Oslo-området'
-        value='oslo'
-        name='reise'
+        label='E-post'
+        description='Vi bruker e-postadressen du har oppgitt tidligere (navn@epost.no)'
+        value='epost'
+        name='kontakt'
       />
-      <Radio label='Trondheim (TRD)' value='trondheim' name='reise' />
-      <Radio label='Jeg tok ikke fly' value='tok-ikke-fly' name='reise' />
+      <Radio
+        label='SMS'
+        description='Vi bruker telefonnummeret du har oppgitt tidligere (99 99 99 99)'
+        value='sms'
+        name='kontakt'
+      />
+      <Radio
+        label='Brev'
+        description='Levering kan ta 3–5 virkedager, avhengig av posttjenesten.'
+        value='brev'
+        name='kontakt'
+      />
     </Fieldset>
   );
 };
