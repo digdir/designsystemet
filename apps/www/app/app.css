@@ -143,7 +143,7 @@ body {
       grid-column: text;
     }
 
-    > :where(div:not([class]), img, section, figure, table, video, .u-long-content, .dodont-row) {
+    > :where(div:not([class]), img, section, figure, table, video, iframe, [data-iframe-video], .u-long-content, .dodont-row) {
       grid-column: content;
     }
 
@@ -270,7 +270,7 @@ body {
       > * {
         max-width: var(--short-content-width);
       }
-      :where(div:not([class]), img, section, figure, table, video, .u-long-content, .dodont-row) {
+      :where(div:not([class]), img, section, figure, table, video, iframe, [data-iframe-video], .u-long-content, .dodont-row) {
         max-width: var(--long-content-width);
       }
       hr {
