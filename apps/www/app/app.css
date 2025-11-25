@@ -310,6 +310,7 @@ body {
     & > h6 {
       margin-top: var(--ds-size-15);
       margin-bottom: var(--ds-size-5);
+      scroll-margin-top: calc(var(--header-height) + 1lh);
     }
 
     /* Anchor link styling for <h1> */
