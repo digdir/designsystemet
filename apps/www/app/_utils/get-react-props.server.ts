@@ -30,30 +30,26 @@ const getParser = () => {
 
 // Get the absolute path to the component directory using require.resolve
 const getReactDir = (component: string) => {
-  // Try singular form first
-  try {
-    const mainFilePath = require.resolve(
-      path.join(
-        process.cwd(),
-        `../../packages/react/src/components/${component}/${component}.tsx`,
-      ),
-    );
-    return join(mainFilePath, '..');
-  } catch (error) {
-    // If singular form fails, try plural form
+  const basePath = path.join(
+    process.cwd(),
+    '../../packages/react/src/components',
+  );
+
+  const variants = [component, `${component}s`];
+
+  for (const variant of variants) {
     try {
       const mainFilePath = require.resolve(
-        path.join(
-          process.cwd(),
-          `../../packages/react/src/components/${component}/${component}s.tsx`,
-        ),
+        path.join(basePath, component, `${variant}.tsx`),
       );
       return join(mainFilePath, '..');
-    } catch (pluralError) {
-      console.error('Error resolving component path:', error);
-      return '';
+    } catch {
+      // Continue to next variant
     }
   }
+
+  console.error(`Component path not found for: ${component}`);
+  return '';
 };
 
 export const getComponentDocs = (component: string): ComponentDoc[] => {
