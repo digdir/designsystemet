@@ -2,6 +2,7 @@ import { join } from 'node:path';
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import cl from 'clsx';
 import { useTranslation } from 'react-i18next';
+import { AvatarStack } from '~/_components/avatar-stack/avatar-stack';
 import { Image } from '~/_components/image/image';
 import { RRLink } from '~/_components/link';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
@@ -87,6 +88,7 @@ export default function Blog({
           {description}
         </Paragraph>
         <Paragraph data-size='sm' className={classes.meta}>
+          <AvatarStack authors={author} />
           <span className={classes.authors}>{author}</span>
           <span className={classes.date}>{formatDate(date, lang)}</span>
         </Paragraph>
