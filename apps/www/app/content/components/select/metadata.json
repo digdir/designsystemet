@@ -1,11 +1,11 @@
 {
   "no": {
     "title": "Select",
-    "subtitle": "`Select` er en nedtrekksliste som lar brukeren velge ett eller flere alternativer fra et statisk utvalg."
+    "subtitle": "`Select` er en nedtrekksliste som lar brukeren velge ett eller flere alternativer fra en liste med valg."
   },
   "en": {
     "title": "Select",
-    "subtitle": "`Select` is a dropdown list that allows the user to select one or more options from a static set."
+    "subtitle": "`Select` allows the user to select one or more options from a list of options."
   },
   "image": "Select.svg",
   "cssFile": "input.css"
