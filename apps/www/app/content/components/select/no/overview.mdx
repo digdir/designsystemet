@@ -1,9 +1,11 @@
 <Story story="Preview" />
 
 **Bruk `Select` når**
-* brukeren skal velge ett alternativ
+* du skal vise mange alternativer, og brukeren kun kan velge ett
+* du trenger en kompakt måte å vise mange alternativer på
 
 **Unngå `Select` når**
+* du har få valg og god plass, bruk heller [`Radio`](/docs/komponenter-radio--docs)
 * du skal navigere mellom sider eller seksjoner i en applikasjon
 * du skal velge flere alternativer. Selv om HTML select støtter dette via `multiple`-attributtet, er det lite brukervennlig, spesielt på mobil. Vi anbefaler `Checkbox` eller `Suggestion` for en mer oversiktlig og tilgjengelig løsning
 
@@ -15,6 +17,8 @@ Gruppering brukes for å organisere alternativer i kategorier, noe som gjør lan
 <Story story="WithOptgroup" />
 
 ### Disabled
+Unngå å deaktivere `Select` hvis du kan. Det kan være vanskelig for brukerne å forstå hvorfor feltet ikke kan brukes. Les mer om [hvorfor deaktiverte tilstander er problematiske (nav.no)](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) og hvilke alternativer som finnes.
+
 <Story story="Disabled" />
 
 ### ReadOnly
