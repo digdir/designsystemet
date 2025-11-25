@@ -144,7 +144,6 @@ export default function Layout({
       <Sidebar
         cats={cats}
         title={'Components'}
-        className={cl(classes.sidebar, 'l-sidebar-left')}
         suffix={sidebarSuffix}
         hideCatTitle
       />

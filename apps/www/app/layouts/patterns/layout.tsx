@@ -90,12 +90,7 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
       className={cl(classes['content-container'], 'l-content-container')}
       data-is-main={!isPatternsPage}
     >
-      <Sidebar
-        cats={cats}
-        title={t('patterns.title')}
-        hideCatTitle
-        className={'l-sidebar-left'}
-      />
+      <Sidebar cats={cats} title={t('patterns.title')} hideCatTitle />
       <div className={classes.content}>
         <Outlet />
       </div>

@@ -27,13 +27,14 @@ export const Sidebar = ({
   title,
   hideCatTitle = false,
   suffix = {},
+  className,
   ...props
 }: SidebarProps) => {
   const { t } = useTranslation();
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <div {...props}>
+    <div className={cl(className, 'l-sidebar-left')} {...props}>
       <Button
         className={classes.toggleBtn}
         data-size='md'
