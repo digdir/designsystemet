@@ -30,19 +30,29 @@ const getParser = () => {
 
 // Get the absolute path to the component directory using require.resolve
 const getReactDir = (component: string) => {
+  // Try singular form first
   try {
-    // First, resolve the path to the main component file
     const mainFilePath = require.resolve(
       path.join(
         process.cwd(),
         `../../packages/react/src/components/${component}/${component}.tsx`,
       ),
     );
-    // Then get its directory
     return join(mainFilePath, '..');
   } catch (error) {
-    console.error('Error resolving component path:', error);
-    return '';
+    // If singular form fails, try plural form
+    try {
+      const mainFilePath = require.resolve(
+        path.join(
+          process.cwd(),
+          `../../packages/react/src/components/${component}/${component}s.tsx`,
+        ),
+      );
+      return join(mainFilePath, '..');
+    } catch (pluralError) {
+      console.error('Error resolving component path:', error);
+      return '';
+    }
   }
 };
 
