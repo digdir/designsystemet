@@ -41,6 +41,11 @@ body {
 }
 
 @layer layout {
+  @property --captured-length {
+    syntax: '<length>';
+    inherits: true;
+    initial-value: 0px;
+  }
   :root {
     --logo-red: #f05f63;
     --logo-blue: #1e98f5;
