@@ -12,6 +12,9 @@
   &:hover {
     --captured-length: 0px;
   }
+  &:empty {
+    display: none;
+  }
   img {
     width: var(--avatar-size);
     aspect-ratio: 1;
