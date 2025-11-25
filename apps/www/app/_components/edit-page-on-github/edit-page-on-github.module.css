@@ -20,10 +20,10 @@
   }
 
   path {
-    fill: var(--ds-color-neutral-text-default);
+    fill: currentColor;
   }
 
-  &:visited path {
-    fill: var(--dsc-link-color--visited);
+  &:visited {
+    color: var(--dsc-link-color--visited);
   }
 }
