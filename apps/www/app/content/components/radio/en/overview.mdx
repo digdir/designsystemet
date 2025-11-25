@@ -1,39 +1,76 @@
----
-title: Radio
-image: Radio.svg
-cssfile: radio
----
-
-We use `Radio` to give users choices where they should select only one option.
-
 <Story story="Preview" />
 
-## Usage
+**Use `Radio` when**
+- the user must choose one option from a set of alternatives in a form
 
-```tsx
-import { Radio } from '@digdir/designsystemet-react';
+**Avoid `Radio` when**
+- the user should be able to choose several options; use [`Checkbox`](/docs/komponenter-checkbox--docs) instead
 
-<Radio label="Radio" value="value" name="name" />
-```
-
-## Code Examples
+## Example
 
 ### Grouping
+
+Use a [`Fieldset`](/no/components/fieldset) around a group of radio buttons to provide a shared heading and, if needed, a description.
 
 <Story story="Group" />
 
 ### With error
 
+Here we must use `Fieldset`, as it applies the correct styling and ensures the proper accessibility connections.
+
 <Story story="WithError" />
+
+### Readonly
+
+Fields with the `readonly` attribute remain in the tab order. Users can copy the content but cannot edit it. The information is included when the form is submitted.
+
+`readonly` fields may be confusing for some users, as not everyone understands why they cannot edit the field. We therefore recommend avoiding `readonly` whenever possible.
+
+<Story story="ReadOnly" />
+
+### Inline
+
+As a general rule, `Radio` should *not* be placed on the same line. However, if you have only two options with short labels such as “Yes” and “No”, you can consider placing them side by side.
+
+<Story story="Inline" />
 
 ## Guidelines
 
-Use `Radio` when the user should select only one option among several.
+Use `Radio` when users must select only one option. If they need to choose more than one, use [`Checkbox`](/docs/komponenter-checkbox--docs).
 
-**Suitable for**
+There should not be more than seven options in one group. If users need more choices, consider using [`Suggestion`](/no/components/suggestion) or [`Select`](/no/components/select). If there is only one choice to be made, a [`Switch`](/no/components/switch) or [`Checkbox`](/no/components/checkbox) may be more suitable.
 
-- selecting one option in forms
+### Sorting
 
-**Not suitable for**
+Sort options alphabetically unless there is a clear reason to use a different order. Be cautious about placing the most common answer first if the topic is personal or sensitive, such as sexual orientation or political affiliation.
 
-- selecting multiple options, use [`Checkbox`](/docs/komponenter-checkbox--docs) instead
+### Pre-selected option
+
+A pre-selected option can make the choice easier, especially when most people choose the same option. However, consider the context and whether this affects the user’s ability to make a conscious choice. Some users may perceive it as discriminatory or manipulative.
+
+### Placement
+
+Place radio buttons vertically whenever possible. This makes the list easier to scan and the options easier to read. For users who need to zoom in, horizontal lists can be challenging.
+
+If there are only two options with short labels, they may be placed side by side. In a [Likert scale (snl.no)](https://snl.no/Likert-skala), it is also natural for options to appear horizontally.
+
+When displayed horizontally, it must be clear which label belongs to which button. Use horizontal placement only when there are two short options, or in rating scales such as “strongly disagree” to “strongly agree” (Likert scale).
+
+### Avoid pre-selected options
+
+Think carefully before pre-selecting an option. It may have the opposite effect of what you intend, for example by making users feel pressured towards a certain choice, or by preventing them from making a conscious decision.
+
+## Text
+
+A group with several options should always have a heading (`<legend>`) and, if needed, a description (`description`). If one or more radio buttons require a description, place it directly below the answer option (`<label>`).
+
+Options should be as short as possible, and each option should follow the same linguistic form.
+
+<div className="dodont-row">
+  <DoDont story="DoIconEn">
+    Users receive all important and relevant information before making a choice. This supports a logical reading order and helps them feel confident in selecting the correct option.
+  </DoDont>
+  <DoDont story="DontIconEn">
+    Important and relevant information appears *after* the choice, making it harder for users to notice. This breaks the logical reading order and may lead to incorrect selections.
+  </DoDont>
+</div>
