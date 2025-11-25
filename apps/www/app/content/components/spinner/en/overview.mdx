@@ -1,44 +1,28 @@
----
-title: Spinner
-image: Spinner.svg
-cssfile: spinner
----
-
-`Spinner` is used to indicate that content or an action is loading, and that the user must wait before they can continue.
-
 <Story story="Preview" />
 
-## Usage
+**Use `Spinner` when**
+- you need to indicate that the system is working on a task the user must wait for  
+- a local action is being performed, such as submitting a form or updating a table  
+- loading will take more than one second
 
-```tsx
-import { Spinner } from '@digdir/designsystemet-react';
+**Avoid `Spinner` when**
+- only specific parts of the page are loading — consider using [`Skeleton`](/no/components/skeleton/overview) instead  
+- loading takes less than one second
 
-<Spinner aria-label="Loading" />
-```
-
-## Code Examples
+## Example
 
 ### Sizes
 
-You can adjust the size of `Spinner` based on where it should be placed.
+You can adjust the size of the `Spinner` depending on where it is placed.
 
 <Story story="Sizes" />
 
 ## Guidelines
 
-The purpose of `Spinner` is to provide visual confirmation that the system is working, thereby creating confidence that the process hasn't stopped.
+The purpose of `Spinner` is to reassure the user that the system is working and has not stopped. It can be used in a button, a field, or another defined area where the user is waiting for something to happen, such as saving or updating content.
 
-**Suitable for**
+## Text
 
-- indicating that the system is working on a task the user must wait for
-- local actions, such as submitting a form or updating a table
-- telling the user when loading will take more than 1 second
+In some cases, it may improve the user experience to show explanatory text alongside the `Spinner`, describing why the user has to wait. A clear explanation helps reduce uncertainty and confusion.
 
-**Not suitable for**
-
-- showing that individual elements on the page are being loaded (consider [Skeleton](/docs/komponenter-loaders-skeleton--docs) instead)
-- when loading takes less than 1 second
-
-## Accessibility
-
-To ensure a good user experience, `Spinner` should be combined with text or have an `aria-label`, so that users with assistive technologies also get information that loading is in progress.
+<Story story="TextEn" />
