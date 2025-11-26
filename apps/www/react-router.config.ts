@@ -70,6 +70,10 @@ const getContentPathsWithLanguages = (): string[] => {
                 if (contentFolder === 'components-docs') {
                   folder = 'components';
                 }
+                if (contentFolder === 'components') {
+                  // Skip component content files here; they are handled separately
+                  continue;
+                }
                 // For content files, add the route (removing .mdx extension)
                 const routePath =
                   `/${lang}/${folder}/${entryRelativePath.replace(/\.mdx$/, '')}`.replace(
@@ -142,10 +146,6 @@ const getComponentPaths = (): string[] => {
 
         if (existsSync(a11yPath)) {
           paths.push(`/${lang}/components/docs/${component}/accessibility`);
-        }
-
-        if (existsSync(a11yPath)) {
-          paths.push(`/${lang}/components/${component}/accessibility`);
         }
       }
     }
