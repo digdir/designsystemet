@@ -48,6 +48,9 @@
     margin-bottom: var(--ds-size-3);
     color: var(--ds-color-neutral-text-subtle);
   }
+  h1 {
+    margin-bottom: var(--ds-size-3);
+  }
   p {
     text-wrap: pretty;
   }
