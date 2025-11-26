@@ -1,29 +1,34 @@
----
-title: Tooltip
-image: Tooltip.svg
-cssfile: tooltip
----
+<Story story="PreviewEn" />
 
-`Tooltip` displays helper text when the user hovers over or focuses on an element.
+**Use `Tooltip` when**
+* a symbol needs a brief explanation  
+* the action of an interactive element needs to be clarified  
+* keyboard shortcuts need to be shown  
 
-<Story story="Preview" />
+**Avoid using `Tooltip` when**
+* the text is already visible on the page  
+* the explanation is longer than four words, use [`Popover`](/en/components/popover/overview) instead
+* the content contains links or other interactive elements, use [`Popover`](/en/components/popover/overview) instead  
 
-## Usage
-
-```tsx
-import { Tooltip, Button } from '@digdir/designsystemet-react';
-
-<Tooltip content="Helper text">
-  <Button>Hover me</Button>
-</Tooltip>
-```
-
-## Code Examples
+## Example
 
 ### With text
 
-<Story story="WithString" />
+<Story story="WithStringEn" />
 
 ### Placement
+Consider whether the `Tooltip` should be placed above, below, or beside the element.
 
-<Story story="Placement" />
+<Story story="PlacementEn" />
+
+## Guidelines
+`Tooltip` provides brief supplementary information without distracting from the main content. It is not intended for information that is essential for completing a task. Important content should instead appear as body text or help text on the page.
+
+If richer content is needed – for example longer text, images, or buttons – use a [`Popover`](/no/components/popover/overview) instead.
+
+`Tooltip` should never be used as a replacement for `alt` text or `title`.
+
+## Text
+A `Tooltip` should not contain more than one sentence or more than four words, to avoid obstructing other important elements on the screen.
+
+`Tooltip` should not repeat text that is already present on the page. It should provide additional help or clarification that is not immediately obvious.
