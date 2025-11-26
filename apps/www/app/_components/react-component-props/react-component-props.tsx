@@ -28,7 +28,7 @@ export const ReactComponentDocs = forwardRef<
         .map((doc, index) => (
           <div key={doc.displayName} className={classes.component}>
             {index > 0 && <h3 className='ds-heading'>{doc.displayName}</h3>}
-            {/* <div className={classes.props}>
+            <div className={classes.props}>
               {Object.entries(doc.props).map(([name, prop]) => (
                 <dl key={name}>
                   <dt className={classes.propName}>
@@ -63,7 +63,7 @@ export const ReactComponentDocs = forwardRef<
                   )}
                 </dl>
               ))}
-            </div> */}
+            </div>
             <Table
               data-color='neutral'
               data-size='sm'

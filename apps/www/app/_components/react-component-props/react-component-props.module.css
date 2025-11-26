@@ -14,6 +14,7 @@
   }
 }
 .props {
+  grid-column: 1 / -1;
   display: grid;
   grid-template-columns: auto 1fr;
   border: 1px solid var(--ds-color-neutral-border-subtle);
@@ -26,7 +27,7 @@
     row-gap: var(--ds-size-2);
     column-gap: var(--ds-size-4);
     font-size: 0.875rem;
-    padding: var(--ds-size-5);
+    padding: var(--ds-size-3);
     margin: 0;
     border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
     &:last-child {
@@ -45,6 +46,9 @@
       grid-column: 2 / 3;
     }
   }
+  @media (min-width: 700px) {
+    display: none;
+  }
 }
 .table {
   background-color: var(--ds-color-neutral-surface-default);
@@ -60,6 +64,9 @@
   }
   tbody {
     font-size: 0.875rem /*14px*/;
+  }
+  @media (max-width: 700px) {
+    display: none;
   }
 }
 .type,
