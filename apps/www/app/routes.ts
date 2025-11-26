@@ -62,15 +62,18 @@ export default [
         route('/components', 'routes/components/components.tsx', {
           id: 'components',
         }),
-        route('/changelog', 'routes/components/changelog.tsx', {
-          id: 'changelog-page',
-        }),
         ...prefix('/components', [
-          ...prefix(':component', [
+          ...prefix('/docs/:component', [
             route('/*', 'routes/components/component.tsx', {
               id: 'components-page',
             }),
           ]),
+          route('/changelog', 'routes/components/changelog.tsx', {
+            id: 'changelog-page',
+          }),
+          route('/*', 'routes/components/text.tsx', {
+            id: 'component-text-page',
+          }),
         ]),
       ]),
       route('*', 'routes/not-found.tsx', {

@@ -1,4 +1,5 @@
 import {
+  Field,
   FieldDescription,
   Label,
   Textarea,
@@ -42,7 +43,7 @@ export const Disabled = () => {
 
 export const ReadOnly = () => {
   return (
-    <>
+    <Field>
       <Label htmlFor='my-textarea-readonly'>Beskrivelse av saken</Label>
       <FieldDescription>
         Teksten er lagt inn automatisk basert på det du allerede har sendt inn,
@@ -53,7 +54,7 @@ export const ReadOnly = () => {
         readOnly
         value='Jeg søker om støtte fordi jeg trenger midler til å gjennomføre prosjektet slik det er planlagt.'
       />
-    </>
+    </Field>
   );
 };
 
