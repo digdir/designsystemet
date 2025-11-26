@@ -71,7 +71,7 @@ export default [
           route('/changelog', 'routes/components/changelog.tsx', {
             id: 'changelog-page',
           }),
-          route('/:file', 'routes/components/text.tsx', {
+          route('/*', 'routes/components/text.tsx', {
             id: 'component-text-page',
           }),
         ]),

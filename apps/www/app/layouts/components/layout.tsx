@@ -32,17 +32,25 @@ export const loader = async ({
   const t = await i18n.getFixedT(lang);
 
   const cats: {
+    getStarted: {
+      title: string;
+      url: string;
+      order: number;
+    }[];
     [key: string]: {
       title: string;
       url: string;
     }[];
-  } = {};
+  } = {
+    getStarted: [],
+  };
 
   // Get started items (added first)
   const getStartedItems = [
     {
       title: t('components.changelog.title'),
       url: `/${lang}/components/changelog`,
+      order: 1,
     },
   ];
 
@@ -51,13 +59,17 @@ export const loader = async ({
   );
 
   for (const file of getStartedFolders) {
-    const fileContent = await generateFromMdx(file.path);
+    const fileContent = getFileFromContentDir(
+      join('components-docs', lang, `${file.relativePath}`),
+    );
+    const result = await generateFromMdx(fileContent);
 
     getStartedItems.push({
       title:
-        fileContent.frontmatter.sidebar_title ||
+        result.frontmatter.sidebar_title ||
         file.relativePath.replace('.mdx', ''),
       url: `/${lang}/components/${file.relativePath.replace('.mdx', '')}`,
+      order: parseInt(result.frontmatter.order, 10) || 9999,
     });
   }
 
@@ -119,6 +131,10 @@ export const loader = async ({
     sidebarSuffix[category] = isComponentPage ? `/${compPage}` : '/overview';
   }
 
+  cats.getStarted.sort((a, b) => {
+    return a.order - b.order;
+  });
+
   return {
     lang,
     cats,
@@ -129,7 +145,6 @@ export const loader = async ({
 export default function Layout({
   loaderData: { cats, sidebarSuffix },
 }: Route.ComponentProps) {
-  console.log(sidebarSuffix);
   return (
     <ContentContainer
       className={classes['sidebar-container']}

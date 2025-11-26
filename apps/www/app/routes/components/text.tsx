@@ -12,7 +12,7 @@ import type { Route } from './+types/text';
 import classes from './component.module.css';
 
 export async function loader({ params }: Route.LoaderArgs) {
-  const { file, lang } = params;
+  const { '*': file, lang } = params;
 
   // Read the file content
   const fileContent = getFileFromContentDir(
