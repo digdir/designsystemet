@@ -65,9 +65,14 @@ const getContentPathsWithLanguages = (): string[] => {
                 // Process subdirectories recursively
                 processLanguageFolder(entryPath, entryRelativePath);
               } else if (entry.endsWith('.mdx')) {
+                let folder = contentFolder;
+                /* special case for component docs, since it has two folders */
+                if (contentFolder === 'components-docs') {
+                  folder = 'components';
+                }
                 // For content files, add the route (removing .mdx extension)
                 const routePath =
-                  `/${lang}/${contentFolder}/${entryRelativePath.replace(/\.mdx$/, '')}`.replace(
+                  `/${lang}/${folder}/${entryRelativePath.replace(/\.mdx$/, '')}`.replace(
                     /\\/g,
                     '/',
                   );
@@ -128,11 +133,15 @@ const getComponentPaths = (): string[] => {
         const a11yPath = join(langPath, 'accessibility.mdx');
 
         if (existsSync(overviewPath)) {
-          paths.push(`/${lang}/components/${component}/overview`);
+          paths.push(`/${lang}/components/docs/${component}/overview`);
         }
 
         if (existsSync(codePath)) {
-          paths.push(`/${lang}/components/${component}/code`);
+          paths.push(`/${lang}/components/docs/${component}/code`);
+        }
+
+        if (existsSync(a11yPath)) {
+          paths.push(`/${lang}/components/docs/${component}/accessibility`);
         }
 
         if (existsSync(a11yPath)) {

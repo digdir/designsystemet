@@ -1,5 +1,5 @@
 import { join } from 'node:path';
-import { Alert, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import { Error404 } from '@internal/components';
 import cl from 'clsx/lite';
 import { useTranslation } from 'react-i18next';
@@ -8,13 +8,15 @@ import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { generateMetadata } from '~/_utils/metadata';
-import type { Route } from './+types/changelog';
+import type { Route } from './+types/text';
 import classes from './component.module.css';
 
 export async function loader({ params }: Route.LoaderArgs) {
+  const { '*': file, lang } = params;
+
   // Read the file content
   const fileContent = getFileFromContentDir(
-    join('components-docs', `changelog.mdx`),
+    join('components-docs', lang, `${file}.mdx`),
   );
 
   if (!fileContent) {
@@ -54,8 +56,8 @@ export const meta = ({ data }: Route.MetaArgs) => {
   });
 };
 
-export default function Changelogs({
-  loaderData: { code, lang },
+export default function Text({
+  loaderData: { code, frontmatter },
 }: Route.ComponentProps) {
   const { t } = useTranslation();
 
@@ -65,18 +67,13 @@ export default function Changelogs({
         <div className={classes.headerUpper}>
           <div className={classes.headerText}>
             <Heading data-size='lg' level={1}>
-              {t('components.changelog.title', 'Changelog')}
+              {frontmatter.title}
             </Heading>
           </div>
         </div>
         <div className={classes.headerBottom}></div>
       </div>
-      <div className={cl('u-rich-text left-adjusted')} lang='en'>
-        {lang !== 'en' ? (
-          <Alert lang='no'>
-            Endringslogger er kun tilgjengelige på engelsk
-          </Alert>
-        ) : null}
+      <div className={cl(classes.content, 'u-rich-text')}>
         <MDXComponents code={code} />
       </div>
     </>
