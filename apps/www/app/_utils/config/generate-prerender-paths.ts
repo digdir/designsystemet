@@ -3,168 +3,203 @@ import { join } from 'node:path';
 import { cwd } from 'node:process';
 import i18nConf from '../../i18n';
 
-// Ensure we always have a valid dirname
-const dirname = cwd();
+const APP_ROOT = cwd();
+const CONTENT_BASE_PATH = join(APP_ROOT, './app/content');
+const COMPONENTS_BASE_PATH = join(CONTENT_BASE_PATH, 'components');
 
-// Function to get all content paths taking into account the language structure
-const getContentPathsWithLanguages = (): string[] => {
-  const contentBasePath = join(dirname, './app/content');
-  const paths: string[] = [];
-  const supportedLanguages = i18nConf.supportedLngs;
+const SECTIONS_WITH_INDEX_ROUTES = [
+  'patterns',
+  'components',
+  'blog',
+  'fundamentals',
+  'best-practices',
+] as const;
+
+const COMPONENT_PAGE_TYPES = ['overview', 'code', 'accessibility'] as const;
+
+/**
+ * Checks if a path exists and is a directory
+ */
+function isDirectory(path: string): boolean {
+  return existsSync(path) && statSync(path).isDirectory();
+}
+
+/**
+ * Gets all directory names in a given path
+ */
+function getDirectories(path: string): string[] {
+  if (!isDirectory(path)) return [];
+
+  return readdirSync(path).filter((entry) => isDirectory(join(path, entry)));
+}
+
+/**
+ * Normalizes a route path to use forward slashes
+ */
+function normalizeRoutePath(path: string): string {
+  return path.replace(/\\/g, '/');
+}
+
+/**
+ * Maps content folder names to their route names
+ */
+function getRouteFolder(contentFolder: string): string {
+  return contentFolder === 'components-docs' ? 'components' : contentFolder;
+}
+
+/**
+ * Recursively processes MDX files in a language folder and generates routes
+ */
+function processMdxFiles(
+  folderPath: string,
+  lang: string,
+  contentFolder: string,
+  relativePath = '',
+): string[] {
+  const routes: string[] = [];
 
   try {
-    // First, get all top-level content folders (e.g., patterns, blog, etc.)
-    const contentFolders = readdirSync(contentBasePath).filter((dir) =>
-      statSync(join(contentBasePath, dir)).isDirectory(),
-    );
+    const entries = readdirSync(folderPath);
 
-    // For each content section folder
-    for (const contentFolder of contentFolders) {
-      const sectionPath = join(contentBasePath, contentFolder);
+    for (const entry of entries) {
+      const entryPath = join(folderPath, entry);
+      const entryRelativePath = relativePath
+        ? join(relativePath, entry)
+        : entry;
 
-      // Add index routes for sections that have specific index handling
-      if (
-        [
-          'patterns',
-          'components',
-          'blog',
-          'fundamentals',
-          'best-practices',
-        ].includes(contentFolder)
-      ) {
-        for (const lang of supportedLanguages) {
-          paths.push(`/${lang}/${contentFolder}`);
-        }
-      }
-
-      // Now find language folders inside each content section
-      for (const lang of supportedLanguages) {
-        const langPath = join(sectionPath, lang);
-
-        // Skip if language folder doesn't exist
-        if (!existsSync(langPath) || !statSync(langPath).isDirectory()) {
-          continue;
-        }
-
-        // Process all files and subfolders within this language folder
-        const processLanguageFolder = (
-          folderPath: string,
-          relativePath = '',
-        ) => {
-          try {
-            const entries = readdirSync(folderPath);
-
-            for (const entry of entries) {
-              const entryPath = join(folderPath, entry);
-              const entryRelativePath = relativePath
-                ? join(relativePath, entry)
-                : entry;
-
-              if (statSync(entryPath).isDirectory()) {
-                // Process subdirectories recursively
-                processLanguageFolder(entryPath, entryRelativePath);
-              } else if (entry.endsWith('.mdx')) {
-                let folder = contentFolder;
-                /* special case for component docs, since it has two folders */
-                if (contentFolder === 'components-docs') {
-                  folder = 'components';
-                }
-                if (contentFolder === 'components') {
-                  // Skip component content files here; they are handled separately
-                  continue;
-                }
-                // For content files, add the route (removing .mdx extension)
-                const routePath =
-                  `/${lang}/${folder}/${entryRelativePath.replace(/\.mdx$/, '')}`.replace(
-                    /\\/g,
-                    '/',
-                  );
-                paths.push(routePath);
-              }
-            }
-          } catch (error) {
-            console.warn(
-              `Error processing language folder: ${folderPath}`,
-              error,
-            );
-          }
-        };
-
-        processLanguageFolder(langPath);
+      if (statSync(entryPath).isDirectory()) {
+        routes.push(
+          ...processMdxFiles(entryPath, lang, contentFolder, entryRelativePath),
+        );
+      } else if (entry.endsWith('.mdx')) {
+        const routeFolder = getRouteFolder(contentFolder);
+        const routeWithoutExtension = entryRelativePath.replace(/\.mdx$/, '');
+        const routePath = normalizeRoutePath(
+          `/${lang}/${routeFolder}/${routeWithoutExtension}`,
+        );
+        routes.push(routePath);
       }
     }
+  } catch (error) {
+    console.warn(`Error processing folder: ${folderPath}`, error);
+  }
 
-    // Add root paths for each language
-    paths.push(...supportedLanguages.map((lang) => `/${lang}`));
+  return routes;
+}
 
-    return paths;
+/**
+ * Generates index routes for content sections (e.g., /no/patterns, /en/blog)
+ */
+function getContentIndexRoutes(
+  contentFolders: string[],
+  languages: string[],
+): string[] {
+  const routes: string[] = [];
+  const sectionsSet = new Set(SECTIONS_WITH_INDEX_ROUTES);
+
+  for (const folder of contentFolders) {
+    if (
+      sectionsSet.has(folder as (typeof SECTIONS_WITH_INDEX_ROUTES)[number])
+    ) {
+      for (const lang of languages) {
+        routes.push(`/${lang}/${folder}`);
+      }
+    }
+  }
+
+  return routes;
+}
+
+/**
+ * Generates routes for all content MDX files
+ */
+function getContentFileRoutes(
+  contentFolders: string[],
+  languages: string[],
+): string[] {
+  const routes: string[] = [];
+
+  for (const contentFolder of contentFolders) {
+    // Skip regular components folder - handled separately
+    if (contentFolder === 'components') continue;
+
+    const sectionPath = join(CONTENT_BASE_PATH, contentFolder);
+
+    for (const lang of languages) {
+      const langPath = join(sectionPath, lang);
+      if (!isDirectory(langPath)) continue;
+
+      routes.push(...processMdxFiles(langPath, lang, contentFolder));
+    }
+  }
+
+  return routes;
+}
+
+/**
+ * Generates all content-related routes
+ */
+function getContentPaths(): string[] {
+  const languages = i18nConf.supportedLngs;
+
+  try {
+    const contentFolders = getDirectories(CONTENT_BASE_PATH);
+    const indexRoutes = getContentIndexRoutes(contentFolders, languages);
+    const fileRoutes = getContentFileRoutes(contentFolders, languages);
+    const languageRoots = languages.map((lang) => `/${lang}`);
+
+    return [...indexRoutes, ...fileRoutes, ...languageRoots];
   } catch (error) {
     console.warn(`Error determining content paths: ${error}`);
     return [];
   }
-};
+}
 
-// Function to get all component paths (overview and code pages)
-const getComponentPaths = (): string[] => {
-  const componentsBasePath = join(dirname, './app/content/components');
-  const paths: string[] = [];
-  const supportedLanguages = i18nConf.supportedLngs;
+/**
+ * Generates routes for component documentation pages
+ */
+function getComponentPaths(): string[] {
+  const languages = i18nConf.supportedLngs;
+  const routes: string[] = [];
 
   try {
-    // Get all component folders
-    const componentFolders = readdirSync(componentsBasePath).filter((dir) => {
-      const fullPath = join(componentsBasePath, dir);
-      return statSync(fullPath).isDirectory();
-    });
+    const componentFolders = getDirectories(COMPONENTS_BASE_PATH);
 
-    // For each component folder
     for (const component of componentFolders) {
-      const componentPath = join(componentsBasePath, component);
+      const componentPath = join(COMPONENTS_BASE_PATH, component);
 
-      // Check each language
-      for (const lang of supportedLanguages) {
+      for (const lang of languages) {
         const langPath = join(componentPath, lang);
+        if (!isDirectory(langPath)) continue;
 
-        // Skip if language folder doesn't exist
-        if (!existsSync(langPath) || !statSync(langPath).isDirectory()) {
-          continue;
-        }
-
-        // Check for overview.mdx and code.mdx
-        const overviewPath = join(langPath, 'overview.mdx');
-        const codePath = join(langPath, 'code.mdx');
-        const a11yPath = join(langPath, 'accessibility.mdx');
-
-        if (existsSync(overviewPath)) {
-          paths.push(`/${lang}/components/docs/${component}/overview`);
-        }
-
-        if (existsSync(codePath)) {
-          paths.push(`/${lang}/components/docs/${component}/code`);
-        }
-
-        if (existsSync(a11yPath)) {
-          paths.push(`/${lang}/components/docs/${component}/accessibility`);
+        for (const pageType of COMPONENT_PAGE_TYPES) {
+          const pagePath = join(langPath, `${pageType}.mdx`);
+          if (existsSync(pagePath)) {
+            routes.push(`/${lang}/components/docs/${component}/${pageType}`);
+          }
         }
       }
     }
 
-    return paths;
+    return routes;
   } catch (error) {
     console.warn(`Error determining component paths: ${error}`);
     return [];
   }
-};
+}
 
-export function generatePrerenderPaths() {
-  const contentPaths = getContentPathsWithLanguages();
+/**
+ * Generates all prerender paths for the application
+ */
+export function generatePrerenderPaths(): string[] {
+  const contentPaths = getContentPaths();
   const componentPaths = getComponentPaths();
-  return [
-    '/no/components',
-    '/en/components',
-    ...contentPaths,
-    ...(process.env.APP_ENV === 'production'
-      ? []
-      : ['/no/changelog', '/en/changelog', ...componentPaths]),
-  ];
+  const isProduction = process.env.APP_ENV === 'production';
+
+  const basePaths = ['/no/components', '/en/components'];
+  const devOnlyPaths = isProduction
+    ? []
+    : ['/no/changelog', '/en/changelog', ...componentPaths];
+
+  return [...basePaths, ...contentPaths, ...devOnlyPaths];
 }
