@@ -73,7 +73,7 @@ export default function Text({
         </div>
         <div className={classes.headerBottom}></div>
       </div>
-      <div className={cl(classes.content, 'u-rich-text')}>
+      <div className={cl(classes.textPage, 'u-rich-text left-adjusted')}>
         <MDXComponents code={code} />
       </div>
     </>
