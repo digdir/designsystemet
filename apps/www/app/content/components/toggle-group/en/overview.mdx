@@ -1,34 +1,31 @@
----
-title: ToggleGroup
-image: ToggleGroup.svg
-cssfile: toggle-group
----
+<Story story="PreviewEn" />
 
-`ToggleGroup` is a group of buttons where the user can select one option.
+**Use `ToggleGroup` when**
+- you need to switch between views, for example between a list and a graph  
+- content in a list or table needs to be filtered  
 
-<Story story="Preview" />
+**Avoid using `ToggleGroup` when**
+- there are so many options that they do not fit within the available width  
+- the options contain long text, making the group heavy and difficult to scan  
+- the options represent answers in a form – use [`Radio`](/en/components/radio/overview) instead  
+- the choice is an on/off setting – use [`Switch`](/en/components/switch/overview) instead  
 
-## Usage
+## Example
 
-```tsx
-import { ToggleGroup } from '@digdir/designsystemet-react';
-
-<ToggleGroup defaultValue="option1">
-  <ToggleGroup.Item value="option1">Option 1</ToggleGroup.Item>
-  <ToggleGroup.Item value="option2">Option 2</ToggleGroup.Item>
-</ToggleGroup>
-```
-
-## Code Examples
-
-### Only icons
+### Icons only
+A `ToggleGroup` without text should only be used when the icons are easy for users to understand. This may be suitable for expert users or internal services where the symbols are already familiar. Use [`Tooltip`](/en/components/tooltip/overview) to clarify the actions when using icons alone.
 
 <Story story="OnlyIcons" />
 
-### Controlled
-
-<Story story="Controlled" />
-
 ### Secondary variant
 
-<Story story="Secondary" />
+<Story story="SecondaryEn" />
+
+## Guidelines
+It is not always straightforward to decide when to use a `ToggleGroup` instead of components such as `Tabs` or `Radio`. The choice depends on the context and how the rest of the interface is structured.As a general rule, `ToggleGroup` should be used when the selection has a direct and visible effect in the interface — for example when the content on the page or a specific element is updated immediately based on the user’s choice.
+
+A `ToggleGroup` should have at least two options, but not so many that they no longer fit horizontally. Ensure there is enough space for both the content of each option and the number of options without causing line breaks. Make sure the entire component fits on screen, including on mobile, and that all options remain clearly visible to users.
+
+## Text
+Include a label for the group that explains what the options refer to.  
+Write clear, consistent labels for each option, ensuring they follow the same linguistic pattern. Use [`Tooltip`](/en/components/tooltip/overview) to provide hints when needed, especially when using icons only.
