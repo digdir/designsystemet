@@ -63,14 +63,17 @@ export default [
       }),
       layout('./layouts/components/layout.tsx', [
         ...prefix('/components', [
-          route('/changelog', 'routes/components/changelog.tsx', {
-            id: 'changelog-page',
-          }),
           ...prefix('/docs/:component', [
             route('/*', 'routes/components/component.tsx', {
               id: 'components-page',
             }),
           ]),
+          route('/changelog', 'routes/components/changelog.tsx', {
+            id: 'changelog-page',
+          }),
+          route('/:file', 'routes/components/text.tsx', {
+            id: 'component-text-page',
+          }),
         ]),
       ]),
       route('*', 'routes/not-found.tsx', {

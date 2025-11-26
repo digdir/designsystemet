@@ -51,7 +51,6 @@ export const loader = async ({
   );
 
   for (const file of getStartedFolders) {
-    /* parse mdx */
     const fileContent = await generateFromMdx(file.path);
 
     getStartedItems.push({
