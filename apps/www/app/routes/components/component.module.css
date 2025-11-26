@@ -2,6 +2,9 @@
   min-width: 0;
   grid-area: content;
 }
+.textPage {
+  max-width: var(--long-content-width);
+}
 
 .tableOfContents {
   grid-area: aside;

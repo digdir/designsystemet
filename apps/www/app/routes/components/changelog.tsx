@@ -71,7 +71,10 @@ export default function Changelogs({
         </div>
         <div className={classes.headerBottom}></div>
       </div>
-      <div className={cl('u-rich-text left-adjusted')} lang='en'>
+      <div
+        className={cl(classes.textPage, 'u-rich-text left-adjusted')}
+        lang='en'
+      >
         {lang !== 'en' ? (
           <Alert lang='no'>
             Endringslogger er kun tilgjengelige på engelsk
