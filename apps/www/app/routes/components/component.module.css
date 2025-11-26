@@ -26,8 +26,7 @@
   gap: var(--ds-size-6);
 
   & code:not(pre > code) {
-    padding: 3px 5px;
-    margin: 1px;
+    padding: 2px 5px;
     font-size: 0.9em;
     line-height: 1;
     white-space: break-spaces;
