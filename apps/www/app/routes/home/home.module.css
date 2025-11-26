@@ -91,12 +91,16 @@
 
     [data-span-2] {
       grid-column: span 2;
+      padding-inline: 130px;
     }
     @media (max-width: 860px) {
       gap: var(--ds-size-5);
       grid-template-columns: 1fr 1fr;
       span {
         padding: var(--ds-size-8);
+      }
+      [data-span-2] {
+        padding-inline: var(--ds-size-15);
       }
     }
   }
