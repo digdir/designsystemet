@@ -44,6 +44,7 @@
     dd {
       margin: 0;
       grid-column: 2 / 3;
+      overflow: hidden;
     }
   }
   @media (min-width: 700px) {
@@ -62,6 +63,9 @@
     grid-template-columns: subgrid;
     grid-column: 1 / -1;
   }
+  td {
+    overflow: hidden;
+  }
   tbody {
     font-size: 0.875rem /*14px*/;
   }
@@ -72,6 +76,10 @@
 .type,
 .default {
   color: var(--ds-color-text-subtle);
+}
+.description {
+  margin: 0;
+  overflow-wrap: break-word;
 }
 .type code {
   border: none;

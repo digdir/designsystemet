@@ -1,4 +1,4 @@
-import { Table, Tag } from '@digdir/designsystemet-react';
+import { Paragraph, Table, Tag } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { forwardRef, type HTMLAttributes } from 'react';
 import type { ComponentDoc } from 'react-docgen-typescript';
@@ -40,7 +40,11 @@ export const ReactComponentDocs = forwardRef<
                   {prop.description && (
                     <>
                       <dt>Description</dt>
-                      <dd>{prop.description}</dd>
+                      <dd>
+                        <Paragraph className={classes.description}>
+                          {prop.description}
+                        </Paragraph>
+                      </dd>
                     </>
                   )}
                   {prop.type && (
@@ -99,7 +103,11 @@ export const ReactComponentDocs = forwardRef<
                         '-'
                       )}
                     </Table.Cell>
-                    <Table.Cell>{prop.description || '-'}</Table.Cell>
+                    <Table.Cell>
+                      <Paragraph className={classes.description}>
+                        {prop.description || '-'}
+                      </Paragraph>
+                    </Table.Cell>
                   </Table.Row>
                 ))}
               </Table.Body>
