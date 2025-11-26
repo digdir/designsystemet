@@ -41,9 +41,30 @@
     }
   }
 }
+.table {
+  background-color: var(--ds-color-neutral-surface-default);
+  display: grid;
+  grid-template-columns: auto min-content auto 1fr;
+  tbody,
+  thead,
+  tr {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / -1;
+  }
+  tbody {
+    font-size: 0.875rem /*14px*/;
+  }
+}
 .type,
 .default {
   color: var(--ds-color-text-subtle);
+}
+.type code {
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  font-size: 1em;
 }
 .required {
   color: var(--ds-color-neutral-text-subtle);
