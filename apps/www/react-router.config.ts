@@ -65,9 +65,14 @@ const getContentPathsWithLanguages = (): string[] => {
                 // Process subdirectories recursively
                 processLanguageFolder(entryPath, entryRelativePath);
               } else if (entry.endsWith('.mdx')) {
+                let folder = contentFolder;
+                /* special case for component docs, since it has two folders */
+                if (contentFolder === 'components-docs') {
+                  folder = 'components';
+                }
                 // For content files, add the route (removing .mdx extension)
                 const routePath =
-                  `/${lang}/${contentFolder}/${entryRelativePath.replace(/\.mdx$/, '')}`.replace(
+                  `/${lang}/${folder}/${entryRelativePath.replace(/\.mdx$/, '')}`.replace(
                     /\\/g,
                     '/',
                   );
@@ -125,13 +130,18 @@ const getComponentPaths = (): string[] => {
         // Check for overview.mdx and code.mdx
         const overviewPath = join(langPath, 'overview.mdx');
         const codePath = join(langPath, 'code.mdx');
+        const a11yPath = join(langPath, 'accessibility.mdx');
 
         if (existsSync(overviewPath)) {
-          paths.push(`/${lang}/components/${component}/overview`);
+          paths.push(`/${lang}/components/docs/${component}/overview`);
         }
 
         if (existsSync(codePath)) {
-          paths.push(`/${lang}/components/${component}/code`);
+          paths.push(`/${lang}/components/docs/${component}/code`);
+        }
+
+        if (existsSync(a11yPath)) {
+          paths.push(`/${lang}/components/docs/${component}/accessibility`);
         }
       }
     }
@@ -143,23 +153,26 @@ const getComponentPaths = (): string[] => {
   }
 };
 
-const contentPaths = getContentPathsWithLanguages();
-const componentPaths = getComponentPaths();
-const allPages = [
-  '/no/components',
-  '/en/components',
-  ...contentPaths,
-  ...(process.env.APP_ENV === 'production'
-    ? []
-    : ['/no/changelog', '/en/changelog', ...componentPaths]),
-];
+const getAllPages = () => {
+  const contentPaths = getContentPathsWithLanguages();
+  const componentPaths = getComponentPaths();
+  return [
+    '/no/components',
+    '/en/components',
+    ...contentPaths,
+    ...(process.env.APP_ENV === 'production'
+      ? []
+      : ['/no/changelog', '/en/changelog', ...componentPaths]),
+  ];
+};
 
 const config: Config = {
   ssr: true,
   buildDirectory: 'dist',
-  prerender: allPages,
+  prerender: getAllPages(),
   presets: [],
   buildEnd: async () => {
+    const allPages = getAllPages();
     const robotsPath = join(dirname, 'public', 'robots.txt');
     const robotsContent =
       process.env.APP_ENV === 'production'
@@ -173,12 +186,12 @@ const config: Config = {
       console.error(`Error writing robots.txt file: ${error}`);
       throw new Error(`Failed to write robots.txt file: ${error}`);
     }
-    await generateSitemap();
+    await generateSitemap(allPages);
   },
 };
 
 // Function to generate sitemap.xml
-const generateSitemap = async (): Promise<void> => {
+const generateSitemap = async (allPages: string[]): Promise<void> => {
   try {
     const baseUrl = 'https://designsystemet.no';
 

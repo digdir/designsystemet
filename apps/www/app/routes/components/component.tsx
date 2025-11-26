@@ -57,7 +57,7 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
       request.url.endsWith(`/${component}`) ||
       request.url.endsWith(`/${component}/`)
     ) {
-      return redirect(`/${lang}/components/${component}/overview`);
+      return redirect(`/${lang}/components/docs/${component}/overview`);
     }
 
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
@@ -147,9 +147,9 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     toc: result.toc,
     componentDocs,
     navigation: {
-      overviewLink: `/${lang}/components/${component}/overview`,
-      codeLink: `/${lang}/components/${component}/code`,
-      accessibilityLink: `/${lang}/components/${component}/accessibility`,
+      overviewLink: `/${lang}/components/docs/${component}/overview`,
+      codeLink: `/${lang}/components/docs/${component}/code`,
+      accessibilityLink: `/${lang}/components/docs/${component}/accessibility`,
     },
     githubLink: `https://github.com/digdir/designsystemet/tree/main/apps/www/app/content/components/${component}/${lang}/${compPage}.mdx`,
   };
