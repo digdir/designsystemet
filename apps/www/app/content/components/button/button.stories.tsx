@@ -5,6 +5,10 @@ export const Preview = () => {
   return <Button>min knapp!</Button>;
 };
 
+export const PreviewEn = () => {
+  return <Button>my button!</Button>;
+};
+
 export const Variants = () => {
   return (
     <>
@@ -52,6 +56,18 @@ export const Icons = () => (
   </>
 );
 
+export const IconsEn = () => (
+  <>
+    <Button icon aria-label='Icon only'>
+      <PencilWritingIcon aria-hidden />
+    </Button>
+    <Button>
+      <PencilWritingIcon aria-hidden />
+      Edit
+    </Button>
+  </>
+);
+
 export const CombinedColors = () => (
   <>
     <Button variant='primary' data-color='neutral'>
@@ -66,6 +82,20 @@ export const CombinedColors = () => (
   </>
 );
 
+export const CombinedColorsEn = () => (
+  <>
+    <Button variant='primary' data-color='neutral'>
+      Publish
+    </Button>
+    <Button variant='secondary' data-color='neutral'>
+      Save draft
+    </Button>
+    <Button variant='tertiary' data-color='danger'>
+      Delete
+    </Button>
+  </>
+);
+
 export const AsLink = () => (
   <Button asChild>
     <a target='_blank' rel='noreferrer' href='https://www.designsystemet.no'>
@@ -74,16 +104,24 @@ export const AsLink = () => (
   </Button>
 );
 
-export const Loading = () => (
+export const AsLinkEn = () => (
+  <Button asChild>
+    <a target='_blank' rel='noreferrer' href='https://www.designsystemet.no'>
+      Go to designsystemet.no
+    </a>
+  </Button>
+);
+
+export const LoadingEn = () => (
   <>
     <Button variant='primary' loading>
-      Laster...
+      Loading…
     </Button>
     <Button variant='secondary' loading>
-      Laster...
+      Loading…
     </Button>
     <Button variant='tertiary' loading>
-      Laster...
+      Loading…
     </Button>
   </>
 );
