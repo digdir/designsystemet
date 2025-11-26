@@ -1,3 +1,4 @@
+import { join } from 'node:path';
 import { ComponentFillIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import {
@@ -6,26 +7,15 @@ import {
   BannerIngress,
 } from '~/_components/banner/banner';
 import { ComponentCard } from '~/_components/component-card/component-card';
+import {
+  getFileFromContentDir,
+  getFoldersInContentDir,
+} from '~/_utils/files.server';
 import { generateMetadata } from '~/_utils/metadata';
-import { data } from '~/content/components';
 import i18nConf from '~/i18n';
 import i18n from '~/i18next.server';
 import type { Route } from './+types/components';
 import classes from './components.module.css';
-
-const sortedData = data.sort((a, b) => a.title.localeCompare(b.title));
-
-const IS_NEXT_BRANCH = false;
-
-/* If we are in the next branch, send us to the next storybook */
-if (IS_NEXT_BRANCH) {
-  for (const component of sortedData) {
-    component.url = component.url.replace(
-      'storybook.designsystemet.no',
-      'next.storybook.designsystemet.no',
-    );
-  }
-}
 
 export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   if (!lang) {
@@ -44,12 +34,42 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
 
   const t = await i18n.getFixedT(lang);
 
+  const folders = getFoldersInContentDir('/components');
+  const components: {
+    title: string;
+    image: string;
+    url: string;
+  }[] = [];
+
+  folders.map(async (folder) => {
+    const metadataJson = getFileFromContentDir(
+      join('components', folder, 'metadata.json'),
+    );
+
+    if (!metadataJson) {
+      return {
+        category: 'components',
+        title: folder,
+        url: `/${lang}/components/docs/${folder}`,
+      };
+    }
+
+    const parsedMetadata = JSON.parse(metadataJson);
+
+    components.push({
+      image: parsedMetadata.image || '',
+      title: parsedMetadata[lang].title || folder,
+      url: `/${lang}/components/docs/${folder}/overview`,
+    });
+  });
+
   return {
     lang,
     metadata: generateMetadata({
       title: t('components.title'),
       description: t('components.description'),
     }),
+    components,
   };
 };
 
@@ -63,7 +83,9 @@ export const meta = ({ data }: Route.MetaArgs) => {
   return data.metadata;
 };
 
-export default function Components() {
+export default function Components({
+  loaderData: { components },
+}: Route.ComponentProps) {
   const { t } = useTranslation();
 
   return (
@@ -73,7 +95,7 @@ export default function Components() {
         <BannerIngress>{t('components.description')}</BannerIngress>
       </Banner>
       <div className={classes.grid} data-is-main={true}>
-        {sortedData.map((component) => (
+        {components.map((component) => (
           <ComponentCard key={component.title} {...component} />
         ))}
       </div>
