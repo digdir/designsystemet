@@ -1,7 +1,12 @@
 .wrapper {
   margin-bottom: var(--ds-size-14);
+  display: grid;
+  grid-template-columns: auto min-content auto 1fr;
 }
 .component {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
   margin-bottom: var(--ds-size-8);
   :is(h3, .ds-heading) {
     margin-top: 0;
@@ -44,7 +49,8 @@
 .table {
   background-color: var(--ds-color-neutral-surface-default);
   display: grid;
-  grid-template-columns: auto min-content auto 1fr;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
   tbody,
   thead,
   tr {
