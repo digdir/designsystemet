@@ -1,5 +1,7 @@
 .heading {
   position: relative;
+  padding-left: 26px;
+  margin-left: -26px;
 
   &:hover {
     & a {
