@@ -72,7 +72,11 @@ export default function Changelogs({
         <div className={classes.headerBottom}></div>
       </div>
       <div
-        className={cl(classes.textPage, 'u-rich-text left-adjusted')}
+        className={cl(
+          classes.textPage,
+          classes.changelog,
+          'u-rich-text left-adjusted',
+        )}
         lang='en'
       >
         {lang !== 'en' ? (
