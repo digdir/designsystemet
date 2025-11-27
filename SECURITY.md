@@ -10,7 +10,7 @@ In general:
 
 - The **latest major version** receives both security fixes and regular bug fixes.
 - **Older major versions** may receive security fixes when feasible.
-- **Deprecated versions and 0.* versions** receive no further maintenance.
+- **Deprecated versions and `0.*` versions** receive no further maintenance.
 
 If you are using an older version, we recommend upgrading to the latest stable release before reporting a security issue, as it may already be resolved.
 
