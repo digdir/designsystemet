@@ -56,7 +56,6 @@
 }
 
 .wantToWrite {
-  margin-top: var(--ds-size-12);
   border-radius: var(--ds-border-radius-lg);
   background: var(--ds-color-surface-tinted);
   color: var(--ds-color-text-default);

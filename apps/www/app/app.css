@@ -333,7 +333,7 @@ body {
       margin-bottom: var(--ds-size-3);
     }
 
-    & > :where(div, table) {
+    & > :where(div, table, section) {
       margin-block: var(--ds-size-8);
     }
 
@@ -449,6 +449,10 @@ body {
     }
     /*headings determine margin for stuff above them*/
     *:not(:where(h2, h3, h4, h5, h6)):has(+ h2, + h3, + h4, + h5, + h6) {
+      margin-bottom: 0;
+    }
+    /*text above these elements dont need margin*/
+    :where(p, ul, ol):has(+ div, + section, + table, + figure) {
       margin-bottom: 0;
     }
   }
