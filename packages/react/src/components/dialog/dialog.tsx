@@ -19,7 +19,7 @@ export type DialogProps = MergeRight<
     /**
      * Light dismiss behavior, allowing to close on backdrop click  by setting `closedby="any"`.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy
+     * @see [mdn closedBy](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy)
      *
      * @default 'closerequest'
      */
@@ -27,7 +27,7 @@ export type DialogProps = MergeRight<
     /**
      * Toogle modal and non-modal dialog.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#creating_a_modal_dialog
+     * @see [mdn modal dialog](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#creating_a_modal_dialog)
      *
      * @default true
      */
