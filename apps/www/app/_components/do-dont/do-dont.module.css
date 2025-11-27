@@ -5,7 +5,6 @@
   display: grid;
   overflow: hidden;
   grid-template-rows: auto 1fr auto;
-  margin-top: var(--ds-size-6);
 
   .preview {
     padding: var(--ds-size-6);
@@ -54,10 +53,9 @@
 }
 /*TODO: needs more work*/
 :global(.dodont-row) {
-  column-gap: var(--ds-size-6);
+  gap: var(--ds-size-6);
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: var(--ds-size-8);
   > * {
     flex: 1 1 min(100%, 350px);
   }

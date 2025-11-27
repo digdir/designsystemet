@@ -4,7 +4,6 @@
   border: 1px solid var(--ds-color-neutral-border-subtle);
   display: grid;
   grid-template-columns: auto auto 1fr auto;
-  margin-bottom: var(--ds-size-4);
 
   & .live-preview {
     border-top-left-radius: var(--_br);

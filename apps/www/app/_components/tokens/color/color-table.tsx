@@ -24,7 +24,7 @@ export const ColorTokensTable = ({ colorTokens }: TokenTableProps) => {
 
   return (
     <div data-color={selectedColor}>
-      <Field>
+      <Field className='u-short-content'>
         <Label>{t('token-preview.color.select-label')}</Label>
         <Select
           value={selectedColor || ''}

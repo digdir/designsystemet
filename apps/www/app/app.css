@@ -1,4 +1,4 @@
-@layer normalize, ds;
+@layer normalize, ds, site;
 
 @layer view-transitions {
   @property --circle-wipe-progress {
@@ -40,7 +40,7 @@ body {
   min-height: 80svh;
 }
 
-@layer layout {
+@layer site.layout {
   @property --captured-length {
     syntax: '<length>';
     inherits: true;
@@ -115,7 +115,7 @@ body {
     padding-top: var(--page-spacing-top);
   }
 }
-@layer breakout-grid {
+@layer site.breakout-grid {
   /*https://layout-breakouts-builder.vercel.app/*/
   .l-breakout-grid {
     --long-content-width: 860px;
@@ -262,7 +262,7 @@ body {
   }
 }
 
-@layer rich-text {
+@layer site.rich-text {
   .u-rich-text {
     & > *:first-child {
       margin-top: 0;
@@ -278,13 +278,16 @@ body {
       :where(div:not([class]), img, section, figure, table, video, iframe, [data-iframe-video], .u-long-content, .dodont-row) {
         max-width: var(--long-content-width);
       }
+      :where(.u-short-content) {
+        max-width: var(--short-content-width);
+      }
       hr {
         margin-inline: 0;
       }
     }
 
     & p {
-      margin-bottom: var(--ds-size-4);
+      margin-bottom: var(--ds-size-5);
       text-wrap: pretty;
 
       & > strong {
@@ -313,9 +316,25 @@ body {
     & > h4,
     & > h5,
     & > h6 {
-      margin-top: var(--ds-size-15);
-      margin-bottom: var(--ds-size-5);
       scroll-margin-top: calc(var(--header-height) + 1lh);
+    }
+    & > h2 {
+      margin-top: var(--ds-size-10);
+      margin-bottom: var(--ds-size-4);
+    }
+    & > h3 {
+      margin-top: var(--ds-size-9);
+      margin-bottom: var(--ds-size-3);
+    }
+    & > h4,
+    & > h5,
+    & > h6 {
+      margin-top: var(--ds-size-8);
+      margin-bottom: var(--ds-size-3);
+    }
+
+    & > :where(div, table) {
+      margin-block: var(--ds-size-8);
     }
 
     /* Anchor link styling for <h1> */
@@ -341,7 +360,7 @@ body {
       max-width: 100%;
       padding-left: var(--ds-size-5);
       box-sizing: border-box;
-      margin-bottom: 24px;
+      margin-bottom: var(--ds-size-5);
     }
 
     & > ul > li,
@@ -377,7 +396,6 @@ body {
 
     & > table {
       width: 100%;
-      margin: var(--ds-size-7) 0;
       border-collapse: collapse;
     }
 
@@ -414,10 +432,6 @@ body {
       font-size: round(down, 0.8em, 1px);
     }
 
-    & > div + p {
-      margin-top: var(--ds-size-5);
-    }
-
     & > .ds-alert {
       margin: var(--ds-size-8) 0;
 
@@ -429,16 +443,24 @@ body {
         margin-bottom: 0 !important;
       }
     }
+    /*headings determine margin for stuff under them*/
+    & > :is(h2, h3, h4, h5, h6) + * {
+      margin-top: 0;
+    }
+    /*headings determine margin for stuff above them*/
+    *:not(:where(h2, h3, h4, h5, h6)):has(+ h2, + h3, + h4, + h5, + h6) {
+      margin-bottom: 0;
+    }
   }
 }
-@layer global-components {
+@layer site.global-components {
   .component-table {
     --dsc-table-border-radius: var(--ds-border-radius-lg);
     border-collapse: separate;
     word-break: break-all;
   }
 }
-@layer overrides {
+@layer site.overrides {
   .ds-skip-link:focus {
     position: relative;
     z-index: 1;

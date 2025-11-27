@@ -1,7 +1,9 @@
 .wrapper {
-  margin-bottom: var(--ds-size-14);
   display: grid;
   grid-template-columns: auto 0.5fr auto 1fr;
+  &:empty {
+    display: none;
+  }
 }
 .component {
   display: grid;
@@ -11,6 +13,9 @@
   :is(h3, .ds-heading) {
     margin-top: 0;
     margin-bottom: var(--ds-size-3);
+  }
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 .props {
