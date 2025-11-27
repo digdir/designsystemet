@@ -1,4 +1,4 @@
-@layer normalize, ds, site;
+@layer normalize, site, ds;
 
 @layer view-transitions {
   @property --circle-wipe-progress {
@@ -300,17 +300,6 @@ body {
       margin-bottom: initial;
     }
 
-    & > h1,
-    & > h2,
-    & > h3,
-    & > h4,
-    & > h5,
-    & > h6 {
-      position: relative;
-      padding-left: 26px;
-      margin-left: -26px;
-    }
-
     & > h2,
     & > h3,
     & > h4,
@@ -337,24 +326,6 @@ body {
       margin-block: var(--ds-size-8);
     }
 
-    /* Anchor link styling for <h1> */
-    & > h1 a {
-      height: 24px;
-      width: 24px;
-      margin-top: -2px;
-      left: -4px;
-    }
-
-    /* Anchor links appear on heading hover */
-    & > h1:hover a,
-    & > h2:hover a,
-    & > h3:hover a,
-    & > h4:hover a,
-    & > h5:hover a,
-    & > h6:hover a {
-      opacity: 1;
-    }
-
     & > ul,
     & > ol {
       max-width: 100%;
@@ -368,6 +339,9 @@ body {
       line-height: 1.9em;
       word-break: break-word; /* Add this to prevent text from overflowing */
       text-wrap: pretty;
+      & > p {
+        line-height: var(--ds-body-md-line-height);
+      }
     }
 
     & > ul > li > ol,
