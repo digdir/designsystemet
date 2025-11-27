@@ -1,7 +1,7 @@
 .wrapper {
   margin-bottom: var(--ds-size-14);
   display: grid;
-  grid-template-columns: auto min-content auto 1fr;
+  grid-template-columns: auto 0.5fr auto 1fr;
 }
 .component {
   display: grid;
