@@ -22,7 +22,12 @@ const getParser = () => {
         const defaultLogicFromStorybook = prop.parent
           ? !/node_modules/.test(prop.parent.fileName)
           : true;
-        return defaultLogicFromStorybook && prop.name !== 'popovertarget';
+        return (
+          defaultLogicFromStorybook &&
+          prop.name !== 'popovertarget' &&
+          prop.name !== 'data-color' &&
+          prop.name !== 'data-size'
+        );
       },
     },
   );
