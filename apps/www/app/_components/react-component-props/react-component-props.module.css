@@ -85,7 +85,7 @@
   border: none;
   padding: 0;
   background-color: transparent;
-  font-size: 1em;
+  font-size: 0.9em;
 }
 .optional {
   &::after {
