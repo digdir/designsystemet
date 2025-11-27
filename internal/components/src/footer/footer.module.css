@@ -56,6 +56,7 @@
 .link {
   --dsc-link-color--visited: var(--text-muted);
   --dsc-link-color--active: var(--text);
+  --dsc-link-background--active: transparent;
   --dsc-link-color--hover: var(--text);
   --dsc-link-color: var(--text-muted);
 
