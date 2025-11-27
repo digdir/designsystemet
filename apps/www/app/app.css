@@ -286,7 +286,7 @@ body {
       }
     }
 
-    & p {
+    & > p {
       margin-bottom: var(--ds-size-5);
       text-wrap: pretty;
 
