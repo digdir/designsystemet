@@ -32,10 +32,9 @@ export const ReactComponentDocs = forwardRef<
               {Object.entries(doc.props).map(([name, prop]) => (
                 <dl key={name}>
                   <dt className={classes.propName}>
-                    <Tag>{name}</Tag>
-                    {prop.required && (
-                      <span className={classes.required}>Required</span>
-                    )}
+                    <Tag className={cl(!prop.required && classes.optional)}>
+                      {name}
+                    </Tag>
                   </dt>
                   {prop.description && (
                     <>
@@ -86,10 +85,12 @@ export const ReactComponentDocs = forwardRef<
                 {Object.entries(doc.props).map(([name, prop]) => (
                   <Table.Row key={name}>
                     <Table.Cell>
-                      <Tag data-color='accent'>{name}</Tag>
-                      {prop.required && (
-                        <span className={classes.required}>Required</span>
-                      )}
+                      <Tag
+                        className={cl(!prop.required && classes.optional)}
+                        data-color='accent'
+                      >
+                        {name}
+                      </Tag>
                     </Table.Cell>
                     <Table.Cell data-color='accent' className={classes.type}>
                       <code>

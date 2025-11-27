@@ -87,6 +87,11 @@
   background-color: transparent;
   font-size: 1em;
 }
+.optional {
+  &::after {
+    content: '?' / '; optional';
+  }
+}
 .required {
   color: var(--ds-color-neutral-text-subtle);
   margin-inline-start: var(--ds-size-4);

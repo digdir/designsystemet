@@ -325,7 +325,7 @@ export const LiveComponent = ({
           className={classes.codeButton}
           aria-controls={editorId}
         >
-          <aksel.ChevronDownIcon />
+          <aksel.ChevronDownIcon aria-hidden />
           {showEditor
             ? t('live-component.hide-code')
             : t('live-component.show-code')}
