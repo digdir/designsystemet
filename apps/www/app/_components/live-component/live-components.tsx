@@ -1,4 +1,5 @@
 import * as ds from '@digdir/designsystemet-react';
+import { useSynchronizedAnimation } from '@digdir/designsystemet-react';
 import * as aksel from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { prettify } from 'htmlfy';
@@ -22,6 +23,23 @@ import {
 import { useLocation } from 'react-router';
 import classes from './live-component.module.css';
 
+const SyncedBox = () => {
+  const ref = useSynchronizedAnimation<HTMLDivElement>('spin');
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        animation: 'spin 2s linear infinite',
+
+        width: '30px',
+        height: '30px',
+        backgroundColor: 'red',
+      }}
+    />
+  );
+};
+
 const scopes = {
   ...ds,
   ...aksel,
@@ -29,6 +47,7 @@ const scopes = {
   useEffect,
   useRef,
   useId,
+  SyncedBox,
 };
 
 export type LiveComponentProps = {
