@@ -68,7 +68,7 @@ export const TokenList = () => {
 
   return (
     <>
-      <Field>
+      <Field className='u-short-content'>
         <Label>{t('token-preview.search-in-design-tokens')}</Label>
         <Search>
           <Search.Input

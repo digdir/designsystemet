@@ -1,21 +1,23 @@
----
-title: SkipLink
-image: SkipLink.svg
-cssfile: skip-link
----
+<Story story="PreviewEn" layout="column" />
 
-`SkipLink` allows users to skip repetitive content and navigate directly to the main content on the page.
+**Use `SkipLink` when**
+- there are several tab stops before reaching the main content  
+- users need a way to skip repeated elements such as menus, links, or headers
 
-<Story story="Preview" layout="column" />
+**Avoid `SkipLink` when**
+- the page has only a few tab stops before the main content  
+- the website consists of a single page without repeated content  
 
-## Usage
+## Guidelines
+`SkipLink` should be one of the first elements the keyboard focus reaches when navigating with the keyboard.
 
-```tsx
-import { SkipLink } from '@digdir/designsystemet-react';
+When navigating with a keyboard, users must be able to skip content that appears on multiple pages, such as menus, links, and the page header. `SkipLink` helps users move quickly to the main content.
 
-<SkipLink href="#main-content">Skip to main content</SkipLink>
-```
+If there are only a few tab stops before the main content — for example, if the page only contains a single “Home” link at the top — adding a `SkipLink` may be unnecessary. In such cases, it could introduce more focusable elements than needed.
 
-## Accessibility
+Place `SkipLink` as the first focusable element on the page. If the page includes a cookie banner or similar message, place the `SkipLink` immediately after that element in the code.
 
-`SkipLink` is only visible when it receives focus, for example when the user presses Tab. This helps keyboard users navigate quickly to the main content.
+`SkipLink` should visually stand out from the rest of the content when focused, so users who can see but navigate with a keyboard can easily recognise it before moving on.
+
+## Text
+Make sure the text clearly describes what the shortcut does. Use simple and direct wording, such as “Skip to main content”.

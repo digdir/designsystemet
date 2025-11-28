@@ -1,11 +1,11 @@
 {
   "no": {
     "title": "Skeleton",
-    "subtitle": "`Skeleton` brukes for å vise at innhold på en side er i ferd med å lastes inn. I stedet for å vise en [`Spinner`](/no/components/spinner/overview) som kun indikerer at noe skjer, kan `Skeleton` gi brukeren et visuelt hint om hvordan innholdet til slutt vil se ut."
+    "subtitle": "`Skeleton` brukes for å vise at innhold på en side er i ferd med å lastes inn. Den gir brukeren et visuelt hint om hvordan innholdet til slutt vil se ut."
   },
   "en": {
     "title": "Skeleton",
-    "subtitle": "`Skeleton` is used to indicate that content on a page is loading. Instead of showing a [`Spinner`](/en/components/spinner/overview) that only indicates that something is happening, `Skeleton` provides the user with a visual hint of what the content will eventually look like."
+    "subtitle": "`Skeleton` is used to indicate that content on a page is loading. It provides the user with a visual hint of what the content will eventually look like."
   },
   "image": "Skeleton.svg",
   "cssFile": "skeleton.css"

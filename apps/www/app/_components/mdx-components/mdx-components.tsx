@@ -73,6 +73,7 @@ const defaultComponents = {
   ),
   ol: (props: JSX.IntrinsicElements['ol']) => <ListOrdered {...props} />,
   ul: (props: JSX.IntrinsicElements['ul']) => <ListUnordered {...props} />,
+  hr: (props: JSX.IntrinsicElements['hr']) => <Divider {...props} />,
   Image,
   ResponsiveIframe,
   Contributors,

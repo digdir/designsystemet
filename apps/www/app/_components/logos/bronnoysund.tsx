@@ -5,8 +5,6 @@ export function Bronnoysund(rest: BronnoysundProps) {
     <svg
       xmlns='http://www.w3.org/2000/svg'
       version='1.1'
-      width='306'
-      height='37'
       viewBox='0 0 306.88 37'
       {...rest}
     >

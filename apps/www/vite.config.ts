@@ -25,4 +25,12 @@ export default defineConfig({
   ssr: {
     noExternal: ['@navikt/aksel-icons', 'ramda'],
   },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router'],
+  },
+  server: {
+    warmup: {
+      clientFiles: ['./app/root.tsx', './app/entry.client.tsx'],
+    },
+  },
 });

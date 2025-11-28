@@ -1,50 +1,36 @@
----
-title: Pagination
-subtitle: Pagination allows users to navigate between multiple pages of content.
-image: Pagination.svg
-cssfile: pagination
----
-
 <Story story="Preview" />
 
-## Usage
+**Use `Pagination` when**
+- search results or large amounts of data need to be divided across multiple pages
+- users need to understand where they are within a larger set of content
+- loading the entire dataset at once would be too heavy or result in poor performance
 
-`Pagination` consists of several sub-components:
+**Avoid `Pagination` when**
+- the total amount of content is small enough to fit on a single page
+- you want to divide a form into several pages
+- progress needs to be displayed
 
-- `Pagination` - Wrapper for the entire component
-- `Pagination.List` - List of page buttons
-- `Pagination.Item` - An item in the list (can be empty to show "...")
-- `Pagination.Button` - Button to navigate to a page
+## Example
 
-## Guidelines
+### With links
 
-- Use Pagination when content is divided across multiple pages
-- Always show which page the user is on
-- Include "Previous" and "Next" buttons
-- Use `aria-label` to provide context for screen readers
-- Consider using a "Load more" button for smaller datasets
-
-## With links
-
-You can use Pagination with links (anchor tags) for better navigation:
+You can use Pagination with anchor links for improved navigation.
 
 <Story story="WithAnchor" />
 
-## Mobile variant
+### Mobile variant
 
-For mobile devices, you can show fewer pages:
+On mobile devices, you can show fewer pages and remove the text for previous/next.
 
 <Story story="Mobile" />
 
-## usePagination hook
+## Guidelines
 
-Use the `usePagination` hook to handle pagination logic:
+Use `Pagination` when content is too large for a single page, such as search results or long lists, and the user needs to navigate back and forth.  
+Content should only be split across multiple pages if it improves loading time or usability.
 
-```tsx
-const { pages, nextButtonProps, prevButtonProps } = usePagination({
-  currentPage: 1,
-  setCurrentPage: (page) => console.log(page),
-  totalPages: 10,
-  showPages: 7,
-});
-```
+## Text
+
+We use a fixed pattern for `Pagination` with the words “Previous” and “Next”.
+
+Avoid “Previous page”, “Next page”, “Go back”, “Go forward”, “Continue” and “Back”.

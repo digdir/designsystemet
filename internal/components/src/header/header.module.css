@@ -1,33 +1,25 @@
 .header {
-  height: 100px;
+  height: var(--header-height, 75px);
+  width: 100%;
   display: flex;
   align-items: center;
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 5;
-
-  [data-color-scheme='dark'] &,
-  [data-color-scheme='auto'] & {
-    background-color: var(--ds-color-neutral-background-tinted);
-  }
-
-  &.transparentHeader {
-    background-color: transparent;
-  }
+  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
+  background-color: var(--ds-color-neutral-background-default);
 
   & .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 0 var(--ds-size-8);
+    max-width: var(--max-page-width);
+    padding: 0 var(--content-inline-padding, var(--ds-size-8));
+    margin: 0 auto;
 
     & nav {
       display: flex;
-      gap: var(--ds-size-2);
-
-      & button {
-        height: fit-content;
-      }
 
       & ul {
         display: flex;
@@ -35,7 +27,7 @@
         padding: 0;
         max-width: 100%;
         align-items: center;
-        margin-right: var(--ds-size-2);
+        margin-right: var(--ds-size-6);
 
         li {
           list-style: none;
@@ -75,7 +67,7 @@
   gap: var(--ds-size-4);
 
   & .logo {
-    height: 34px;
+    height: 29px;
     width: auto;
   }
 

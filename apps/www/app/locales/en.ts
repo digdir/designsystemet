@@ -54,6 +54,11 @@ export default {
         email: 'Send an email',
       },
     },
+    'collaborators-section': {
+      title: 'Created across services',
+      description:
+        'A joint effort to improve user experiences across public services. Together we develop a common foundation for good, accessible and holistic digital solutions.',
+    },
     meta: {
       title: 'A common digital toolbox',
       description:
@@ -64,7 +69,7 @@ export default {
     tag: 'Blog',
     title: 'Blog',
     description:
-      'The blog features articles about Designsystemet, design, and development. It’s a space for sharing knowledge and experiences across teams.',
+      'Here you will find stories, experiences, and updates from Designsystemet. A place to learn from each other and stay up to date.',
     write: {
       title: 'Want to write for the blog?',
       description:
@@ -87,6 +92,7 @@ export default {
       components: 'Components',
       getStarted: 'Getting Started',
       typography: 'Typography',
+      utilities: 'Utilities',
     },
     items: {
       Introduction: 'Introduction',
@@ -224,10 +230,11 @@ export default {
     },
   },
   toc: {
-    title: 'Contents',
+    title: 'On this page',
   },
   do: 'Do',
   dont: "Don't",
   contributors: 'Contributors',
   editOnGithub: 'Edit this page on github.com (opens in a new tab)',
+  updated: 'Updated',
 } satisfies typeof no;

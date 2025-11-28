@@ -1,0 +1,5 @@
+## How to describe `Avatar` for screen readers
+
+`Avatar` must either have an `aria-label` that describes who or what the avatar represents, or be set to `aria-hidden` with visible text conveying the same information. Do not state in the `aria-label` that it is an image – screen readers announce this automatically. It is sufficient to use the name, for example `aria-label="Ola Nordmann"`.
+
+Images and other `children` are automatically given `aria-hidden="true"` to prevent information from being repeated.

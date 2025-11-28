@@ -1,43 +1,75 @@
----
-title: Textfield
-image: Textfield.svg
-cssfile: textfield
----
-
-`Textfield` combines `Input` or `Textarea` with `Label` and `ValidationMessage` in one component.
-
 <Story story="Preview" />
 
-## Usage
+**Use `Textfield` when**
+- you need a complete form field with label, help text, and validation message  
+- the field must be validated either continuously or on submission  
+- the value is unique and cannot be selected from a list  
 
-```tsx
-import { Textfield } from '@digdir/designsystemet-react';
+**Avoid using `Textfield` when**
+- you need a simple input field without form logic, use [`Input`](/en/components/docs/input/overview) instead  
+- the user should choose from a limited set of options, use [`Radio`](/en/components/docs/radio/overview), [`Checkbox`](/en/components/docs/checkbox/overview), [`Select`](/en/components/docs/select/overview), or [`Suggestion`](/en/components/docs/suggestion/overview) instead  
 
-<Textfield label="Label" />
-```
+## Example
 
-## Code Examples
-
-### With rows
+### Multiline
+You can switch to a `textarea` by setting `multiline` to `true`. This allows users to write longer text.
 
 <Story story="WithRows" />
 
 ### With prefix and suffix
+Prefixes and suffixes are useful for showing units, currency, or other information relevant to the field. These must **not** be used without a `<label>`, since screen readers will not announce them. The information shown in the prefix or suffix must also be reflected in the label text.
 
-<Story story="WithAffix" />
+<Story story="WithAffixEn" />
 
 ### With counter
+Use `counter` to inform users about the number of characters they can enter.
 
-<Story story="WithCounter" />
+<Story story="WithCounterEn" />
 
-### Disabled
+### Required and optional fields
+It is legally required to mark mandatory fields. Read more about [required and optional fields](/en/patterns/required-and-optional-fields) for details. When placing a `Tag` inside a `<label>`, we recommend using `margin-inline-start: var(--ds-size-2)` to add space between the text and the tag.
 
-<Story story="Disabled" />
+<Story story="RequiredEn" />
 
-### ReadOnly
+## Guidelines
+`Input` is suitable for short, simple text.  
+`Textarea` is better for more detailed or longer responses.
 
-<Story story="ReadOnly" />
+### Avoid placeholder text
 
-### With error
+Placeholder text disappears once users begin typing. It is therefore better to provide hints or important information in the label or the associated description.  
+WCAG contrast requirements apply to `placeholder` text as well, which can make it appear dark enough to be mistaken for pre-filled content.
 
-<Story story="WithError" />
+### Adjust the width of the text field
+
+Adjust the width according to what users will enter: short width for phone numbers, wider for place names. Varying field widths makes it easier to navigate forms with many inputs.
+
+### Allow copy and paste
+
+Users often need to copy and paste information into a text field. This functionality must not be disabled. It helps users complete forms more efficiently and without unnecessary friction.
+
+### Input data
+To ensure a good user experience, it is important to choose the correct `input` type together with the right `autocomplete` attributes. Read more about [autocomplete on MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/autocomplete).
+
+- Allow variation in how users enter data, as long as it is understandable. For example, phone numbers may include spaces, ID numbers may include dots, and email addresses should be accepted even with a trailing space.  
+- Ensure that any automatic formatting is visible to the user, but without interrupting their typing.
+
+#### Purpose of input
+Autocomplete is required in fields where a predefined purpose exists, as defined in [1.3.5 Identify Input Purpose (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/135-identifiser-formal-med-inndata-niva-aa/142). This helps browsers and assistive technologies recognise and autofill personal information.
+
+- Use `autocomplete` only when the field matches an item from the predefined list on UUtilsynet (for example `given-name`, `email`, or `address-line1`).  
+- If the field concerns **someone other than the user**, set `autocomplete="off"`.  
+  If all fields in a form require this, you can apply `autocomplete="off"` on the parent `<form>` element. All `input`, `select`, and `textarea` elements will inherit this.
+
+#### Input type
+- Choose input types that match the information you are asking for, such as `tel`, `search`, or `email`. This provides mobile users with an appropriate keyboard.  
+  Be aware that some input types trigger client-side validation.  
+- Avoid `type="number"` unless you have user research showing that it works well.  
+  This type may remove leading zeros, change values on scroll, cause issues with screen readers, and round long numbers. Use `type="text"` with `inputmode="numeric"` instead for better accessibility. Read more: [Why the GOV.UK Design System team changed the input type for numbers (gov.uk)](https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/)
+
+## Text
+A `Textfield` must always have a label.
+
+- Keep the label short, ideally not more than two lines  
+- Avoid adding descriptions that are not meaningful to the user  
+- Avoid using a colon after the `<label>`

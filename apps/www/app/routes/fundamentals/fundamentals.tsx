@@ -1,9 +1,15 @@
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import * as Aksel from '@navikt/aksel-icons';
 import { Fragment } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useRouteLoaderData } from 'react-router';
+import {
+  Banner,
+  BannerHeading,
+  BannerIngress,
+} from '~/_components/banner/banner';
+import { FundamentalsCard } from '~/_components/fundamentals-card/fundamentals-card';
 import { Grid } from '~/_components/grid/grid';
-import { NavigationCard } from '~/_components/navigation-card/navigation-card';
 import { generateMetadata } from '~/_utils/metadata';
 import i18nConf from '~/i18n';
 import i18n from '~/i18next.server';
@@ -42,12 +48,21 @@ export const meta = ({ data }: Route.MetaArgs) => {
 };
 
 export default function Fundamentals() {
+  const { t } = useTranslation();
   const { cats, descriptions } = useRouteLoaderData(
     'layouts/fundamentals/layout',
   ) as LayoutRoute.ComponentProps['loaderData'];
 
   return (
     <>
+      <Banner
+        style={{ marginBottom: 'var(--page-spacing-top)' }}
+        data-color='brand2'
+        icon={<Aksel.LayersIcon />}
+      >
+        <BannerHeading level={1}>{t('fundamentals.title')}</BannerHeading>
+        <BannerIngress>{t('fundamentals.description')}</BannerIngress>
+      </Banner>
       {Object.entries(cats).map(([key, value]) => {
         return (
           <Fragment key={key}>
@@ -66,7 +81,7 @@ export default function Fundamentals() {
                     Aksel[item.icon as keyof typeof Aksel]
                   : Aksel.LayersIcon;
                 return (
-                  <NavigationCard
+                  <FundamentalsCard
                     key={item.title}
                     title={item.title}
                     url={item.url}

@@ -1,40 +1,13 @@
----
-title: Divider
-image: Divider.svg
-cssfile: divider
----
-
-`Divider` is used to create a visual separation between content. It is a simple horizontal line that extends across the available width.
-
 <Story story="Preview" />
 
-## Usage
+**Use `Divider` when**
+- you want to create a clear separation between sections of content
+- whitespace alone does not provide sufficient separation
 
-```tsx
-import { Divider } from '@digdir/designsystemet-react';
-
-<Divider />
-```
+**Avoid `Divider` when**
+- natural spacing or other visual elements provide enough separation
+- too many `Divider` elements create a cluttered visual appearance
 
 ## Guidelines
 
-`Divider` is used to break content into smaller parts, making it more organized and easier to read. It can also be used to separate related content that still needs a visual distinction.
-
-**Suitable when**
-
-- you want to create a clear division of content
-- you want to structure content visually for better readability
-- whitespace alone doesn't provide sufficient separation
-
-**Not suitable when**
-
-- natural spacing or other visual elements provide sufficient separation
-- too many `Divider` elements create a cluttered visual appearance
-
-## Accessibility
-
-`Divider` is a purely visual tool and is not read by screen readers.
-
-However, avoid using `Divider` solely for visual effect without functional significance. A `Divider` represents a thematic division of content. To communicate this division in an accessible way, you must also use elements that a screen reader understands. This can be, for example, a [`Heading`](/docs/komponenter-heading--docs), a [`List`](/docs/komponenter-list--docs), [`<section>` elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/section), or elements with [`role="group"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/group_role).
-
-The component should be used to mark a separation between content that doesn't logically belong together, such as different sections in an article or different functional areas on a page. Use it to visually clarify the structure, not just to fill empty space or "decorate" the page.
+`Divider` is used to break content into smaller sections, making it easier to read and understand. It can also be used to separate content that is related but still benefits from a visual distinction.

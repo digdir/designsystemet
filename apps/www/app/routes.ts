@@ -58,10 +58,10 @@ export default [
           }),
         ]),
       ]),
-      route('/components', 'routes/components/components.tsx', {
-        id: 'components',
-      }),
       layout('./layouts/components/layout.tsx', [
+        route('/components', 'routes/components/components.tsx', {
+          id: 'components',
+        }),
         ...prefix('/components', [
           ...prefix('/docs/:component', [
             route('/*', 'routes/components/component.tsx', {

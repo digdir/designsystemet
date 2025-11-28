@@ -1,6 +1,5 @@
 import type { ButtonProps } from '@digdir/designsystemet-react';
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
-import { ContentContainer } from '@internal/components';
 import { PauseFillIcon, PlayFillIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import type React from 'react';
@@ -77,9 +76,10 @@ const ImageBanner = ({
       className={cl(classes[backgroundColor], classes.section, className)}
       {...rest}
     >
-      <ContentContainer
+      <div
         className={cl(
           classes.container,
+          'l-content-container',
           imgPosition === 'right' ? classes.reverseContainer : '',
         )}
       >
@@ -168,7 +168,7 @@ const ImageBanner = ({
 
           {children}
         </div>
-      </ContentContainer>
+      </div>
     </section>
   );
 };

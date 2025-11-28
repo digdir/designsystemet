@@ -17,10 +17,7 @@ export type VFile = {
 export const extractToc = () => (tree: Root, file: VFile) => {
   const toc: TableOfContentsItem[] = [];
   const traverse = (node: Root | Element) => {
-    if (
-      'tagName' in node &&
-      node.tagName === 'h2' /*|| node.tagName === 'h3'*/
-    ) {
+    if ('tagName' in node && (node.tagName === 'h2' || node.tagName === 'h3')) {
       const title = node.children
         .map((child) => {
           if ('type' in child) {

@@ -27,6 +27,17 @@ export const Preview = () => {
   );
 };
 
+export const PreviewEn = () => {
+  return (
+    <ToggleGroup defaultValue='inbox'>
+      <ToggleGroup.Item value='inbox'>Inbox</ToggleGroup.Item>
+      <ToggleGroup.Item value='drafts'>Drafts</ToggleGroup.Item>
+      <ToggleGroup.Item value='archive'>Archive</ToggleGroup.Item>
+      <ToggleGroup.Item value='sent'>Sent</ToggleGroup.Item>
+    </ToggleGroup>
+  );
+};
+
 export const OnlyIcons = () => {
   return (
     <ToggleGroup defaultValue='option-1'>
@@ -87,6 +98,17 @@ export const Secondary = () => {
       <ToggleGroup.Item value='utkast'>Utkast</ToggleGroup.Item>
       <ToggleGroup.Item value='arkiv'>Arkiv</ToggleGroup.Item>
       <ToggleGroup.Item value='sendt'>Sendt</ToggleGroup.Item>
+    </ToggleGroup>
+  );
+};
+
+export const SecondaryEn = () => {
+  return (
+    <ToggleGroup defaultValue='inbox' variant='secondary'>
+      <ToggleGroup.Item value='inbox'>Inbox</ToggleGroup.Item>
+      <ToggleGroup.Item value='drafts'>Drafts</ToggleGroup.Item>
+      <ToggleGroup.Item value='archive'>Archive</ToggleGroup.Item>
+      <ToggleGroup.Item value='sent'>Sent</ToggleGroup.Item>
     </ToggleGroup>
   );
 };

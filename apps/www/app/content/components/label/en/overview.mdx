@@ -1,23 +1,20 @@
----
-title: Label
-image: Label.svg
-cssfile: label
----
-
-`Label` is used to mark form fields and other interactive elements.
-
 <Story story="Preview" />
 
-## Usage
+`Label` is a typography component used to describe the content of form fields that the user needs to complete or interact with. Use it to provide short, precise, and understandable information about what a field contains or what the user is expected to do.
 
-```tsx
-import { Label } from '@digdir/designsystemet-react';
-
-<Label>Social security number (11 digits)</Label>;
-```
-
-## Code Examples
+## Example
 
 ### Weights
+`Label` uses medium `font-weight` by default, which provides a balanced and clear expression in most forms. Use different weights only when needed to create a clearer hierarchy. Avoid changing the `font-weight` merely for decoration. The distinction in weight must always serve a clear and meaningful purpose for the user.
 
 <Story story="Weights" layout="column" />
+
+## Guidelines
+`Label` must be clearly connected to the associated field so that both visual users and users of assistive technologies understand the relationship.
+
+If the field requires a specific format or limitations, this can be supplemented with a description (`description`) underneath rather than making the `Label` unnecessarily long.
+
+<Story story="TextFieldLabelEn" layout="column" />
+
+## Text
+Text in `Label` should be simple, consistent, and easy to understand. Write in plain language so that all users immediately know what to enter or select. Avoid abbreviations and internal terminology unless the target audience is already familiar with them.

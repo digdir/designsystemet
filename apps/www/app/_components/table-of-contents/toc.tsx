@@ -9,17 +9,22 @@ import classes from './toc.module.css';
 export type TableOfContentsProps = {
   items: TableOfContentsItem[];
   title: string;
+  level?: number;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const TableOfContents = ({
+  children,
   items,
   title,
+  level = 2,
   className,
   ...props
 }: TableOfContentsProps) => {
   const [activeItem, setActiveItem] = useState<string>('');
 
   const { t } = useTranslation();
+
+  const filteredItems = items.filter((item) => item.level <= level);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -34,7 +39,7 @@ export const TableOfContents = ({
       { rootMargin: '0px 0px -60% 0px' },
     );
 
-    const headingElements = items.map((item) =>
+    const headingElements = filteredItems.map((item) =>
       document.getElementById(item.id),
     );
 
@@ -48,13 +53,14 @@ export const TableOfContents = ({
       });
       observer.disconnect();
     };
-  }, [items]);
+  }, [filteredItems]);
 
   // If there are less than 2 items, we don't render the TOC
-  if (items.length < 2) return null;
+  if (filteredItems.length < 2) return null;
 
   return (
     <aside
+      data-color='neutral'
       data-size='md'
       className={cl(classes['table-of-contents'], className)}
       {...props}
@@ -63,7 +69,7 @@ export const TableOfContents = ({
         <h2>{t('toc.title')}</h2>
       </Paragraph>
       <ol>
-        {items.map((item) => (
+        {filteredItems.map((item) => (
           <li key={item.id}>
             <Link
               data-size='sm'
@@ -76,6 +82,7 @@ export const TableOfContents = ({
           </li>
         ))}
       </ol>
+      {children}
     </aside>
   );
 };

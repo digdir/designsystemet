@@ -1,4 +1,5 @@
 import {
+  Button,
   Divider,
   Field,
   Label,
@@ -17,6 +18,16 @@ export const Preview = () => {
   );
 };
 
+export const PreviewEn = () => {
+  return (
+    <Search>
+      <Search.Input aria-label='Søk' />
+      <Search.Clear />
+      <Button>Search</Button>
+    </Search>
+  );
+};
+
 export const WithLabel = () => {
   return (
     <Field>
@@ -25,6 +36,19 @@ export const WithLabel = () => {
         <Search.Input name='cat-search' />
         <Search.Clear />
         <Search.Button />
+      </Search>
+    </Field>
+  );
+};
+
+export const WithLabelEn = () => {
+  return (
+    <Field>
+      <Label>Search for cats</Label>
+      <Search>
+        <Search.Input name='cat-search' />
+        <Search.Clear />
+        <Button>Search</Button>
       </Search>
     </Field>
   );
@@ -52,6 +76,33 @@ export const Variants = () => {
         <Search.Input aria-label='Søk' />
         <Search.Clear />
         <Search.Button variant='secondary' />
+      </Search>
+    </>
+  );
+};
+
+export const VariantsEn = () => {
+  return (
+    <>
+      <Search>
+        <Search.Input aria-label='Søk' />
+        <Search.Clear />
+      </Search>
+
+      <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
+
+      <Search>
+        <Search.Input aria-label='Søk' />
+        <Search.Clear />
+        <Button>Search</Button>
+      </Search>
+
+      <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
+
+      <Search>
+        <Search.Input aria-label='Søk' />
+        <Search.Clear />
+        <Button variant='secondary'>Search</Button>
       </Search>
     </>
   );

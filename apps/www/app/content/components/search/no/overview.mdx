@@ -16,13 +16,6 @@ Du kan endre `variant` på `Button` for å tilpasse visningen. Alternativt kan d
 
 <Story story="Variants" />
 
-### Med Label
-
-Dersom du vil ha label på søkefeltet, må du legge til en `Label` komponent som du kobler sammen med `Search.Input`.
-I eksempelet har vi brukt `Field` for å få oppkobling mellom `Label` og `Search.Input`.
-
-<Story story="WithLabel" />
-
 ## Retningslinjer 
 
 Bredden på søkefeltet bør tilsvare lengden på søkeordene brukerne vanligvis skriver inn. Størrelsen på feltet er et viktig signal om hva de kan skrive inn. For eksempel bør et søkefelt for personnumre ha en bredde som tilsvarer et personnummer. Hovedsøkefeltet for et nettsted bør være bredere, slik at brukerne kan se flere ord samtidig. For å unngå at brukerne må scrolle i søkefeltet må vi unngå søkefelt som er så korte at deler av innholdet ikke synes.
@@ -30,3 +23,7 @@ Bredden på søkefeltet bør tilsvare lengden på søkeordene brukerne vanligvis
 ## Tekst
 
 Placeholder-tekst bør brukes med forsiktighet, da den forsvinner når brukeren skriver og kan skape forvirring. Den må også oppfylle kontrastkrav for tilgjengelighet, noe som kan gjøre teksten vanskelig å skille fra utfylt innhold. Skjermlesere håndterer placeholder-tekst ulikt, så informasjonen bør heller gis via Label eller beskrivelse.
+
+Du bør bruke en `label` over søkefeltet når det ikke er åpenbart hva brukeren skal søke etter, eller når søkefeltet er en del av et skjema.
+
+<Story story="WithLabel" />

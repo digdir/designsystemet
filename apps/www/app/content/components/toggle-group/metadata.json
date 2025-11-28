@@ -1,11 +1,11 @@
 {
   "no": {
     "title": "ToggleGroup",
-    "subtitle": "`ToggleGroup` kan brukast til å samle relaterte alternativ. Komponenten består av ei gruppe knappar som heng saman, der berre éin knapp er mogleg å velje om gongen."
+    "subtitle": "`ToggleGroup` samler relaterte alternativ. Komponenten består av ei gruppe knappar som heng saman, der berre éin knapp er mogleg å velje om gongen."
   },
   "en": {
     "title": "ToggleGroup",
-    "subtitle": "`ToggleGroup` can be used to group related options. The component consists of a group of buttons that are connected, where only one button can be selected at a time."
+    "subtitle": "`ToggleGroup` groups related options. The component consists of a group of buttons that are connected, where only one button can be selected at a time."
   },
   "image": "ToggleGroup.svg",
   "cssFile": "toggle-group.css"

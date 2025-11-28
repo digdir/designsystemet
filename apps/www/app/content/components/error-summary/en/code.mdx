@@ -1,8 +1,15 @@
----
-title: Error Summary
-image: ErrorSummary.svg
-cssfile: error-summary
----
+<Story story="Preview" />
+<ReactComponentDocs />
+
+## Usage
+
+`ErrorSummary` consists of several sub-components that must be used correctly:
+
+- `ErrorSummary.Heading` defines the heading
+- `ErrorSummary.List` defines the list of errors
+- Each error is represented as an `ErrorSummary.Item` containing an `ErrorSummary.Link`
+- Each `ErrorSummary.Link` must have an `href` to the unique identifier for a form field, so the user can navigate to the correct location in the form
+
 
 ## Examples
 

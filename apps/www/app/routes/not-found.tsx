@@ -1,5 +1,4 @@
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
-import { ContentContainer } from '@internal/components';
 import { Link, redirect } from 'react-router';
 import type { Route } from './+types/not-found';
 
@@ -31,7 +30,7 @@ export const loader = async ({ request }: Route.LoaderArgs) => {
 export default function NotFound({ loaderData }: Route.ComponentProps) {
   const { lang } = loaderData;
   return (
-    <ContentContainer>
+    <div className='l-content-container'>
       <div
         lang='no'
         style={{
@@ -95,6 +94,6 @@ export default function NotFound({ loaderData }: Route.ComponentProps) {
           <Link to='/en'>Go to the front page</Link>
         </Button>
       </div>
-    </ContentContainer>
+    </div>
   );
 }

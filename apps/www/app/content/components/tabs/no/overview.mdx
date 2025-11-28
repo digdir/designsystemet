@@ -1,24 +1,23 @@
 <Story story="Preview" />
 
 **Bruk `Tabs` når** 
-* du skal strukturere innhold uten å laste en ny side
-* du skal dele opp innhold i tydelig merkede seksjoner
-* du skal forenkle navigasjon når brukeren ikke trenger å se alt samtidig
+* innhold skal struktureres uten å laste en ny side
+* informasjonen med fordel kan deles opp i tydelig merkede seksjoner
+* navigasjonen blir enklere ved at brukeren slipper å se alt innhold samtidig
 
 **Unngå `Tabs` når**
-* du skal gi en umiddelbar oversikt over innhold, da `Tabs` skjuler informasjon
-* du skal presentere innhold som må sammenlignes på tvers av seksjoner
-* du skal veilede brukeren gjennom en steg-for-steg-prosess der rekkefølgen er viktig
-* du skal håndtere store mengder innhold som kan gjøre siden treg å laste
-* du skal erstatte hovednavigasjon eller brukes til filtrering og sortering
-* innholdet like gjerne kan vises på én side eller fordeles på flere sider
+* det er viktig å gi en umiddelbar oversikt over innholdet
+* innhold må kunne sammenlignes på tvers av seksjoner
+* brukeren skal gjennom en stegvis prosess der rekkefølgen er viktig
+* store mengder innhold gjør at siden kan bli treg å laste
+* innholdet like godt kan vises samlet på én side eller fordeles på flere sider
 
 ## Eksempel
 
 ### Kun ikoner
 `Tabs` kan vises med bare ikoner for et mer kompakt utseende.
 Sørg for at ikonene er intuitive og har beskrivende titler for skjermlesere.
-I eksempelet under har vi lagt [`Tooltip`](/no/components/tooltip/code) rundt `Tabs.Tab` for å gi beskrivende tekst til ikonene.
+I eksempelet under har vi lagt [`Tooltip`](/no/components/docs/tooltip/code) rundt `Tabs.Tab` for å gi beskrivende tekst til ikonene.
 
 <Story story="IconsOnly" />
 
@@ -41,7 +40,7 @@ Før du velger `Tabs`, vurder om det er bedre å:
 
 ### Beste praksis
 - **Begrens antall `Tabs`** - for mange skaper dårlig oversikt, særlig på små skjermer
-- **Bruk tydelig navn på `Tabs`** - `Tabs` skjuler innhold, så `Tabs`en må klart indikere hva brukeren får se
+- **Bruk tydelig navn på `Tabs`** - Den skjuler innhold, så det er viktig å indikere hva som ligger bak
 - **Plasser viktigst innhold først** - organiser `Tabs` etter brukerens behov
 - **Hold `Tabs` på én linje** - Lange `Tabs` eller for mange `Tabs` kan gjøre navigasjonen vanskelig
 - **Unngå deaktiverte `Tabs`** - Fjern deaktiverte `Tabs` eller forklar hvorfor de er tomme

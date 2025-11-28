@@ -23,7 +23,7 @@ export const generateFromMdx = async (
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
         rehypeSlug,
-        rehypeAutolinkHeadings,
+        [rehypeAutolinkHeadings, { behavior: 'append' }],
         () => (tree: Root, file: VFile) => {
           extractToc()(tree, file);
           tocData = file.data.toc || [];

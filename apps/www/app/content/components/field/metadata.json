@@ -1,11 +1,11 @@
 {
   "no": {
     "title": "Field",
-    "subtitle": "`Field` er et hjelpemiddel for å automatisk koble et felt sammen med [`Label`](/no/components/label/overview), `Field.Description`, [`ValidationMessage`](/no/components/validatio-nmessage/overview) og `Field.Counter`. `Field` kan brukes sammen med `Input`, `Textarea` og `Select`. **OBS**: `Textfield` har allerede `Field` innebygd, og kan derfor ikke brukes i en `Field`."
+    "subtitle": "`Field` er et hjelpemiddel for å automatisk koble et felt sammen med [`Label`](/no/components/docs/label/overview), `Field.Description`, [`ValidationMessage`](/no/components/docs/validatio-nmessage/overview) og `Field.Counter`."
   },
   "en": {
     "title": "Field",
-    "subtitle": "`Field` is a helper component to automatically associate a field with [`Label`](/en/components/label/overview), `Field.Description`, [`ValidationMessage`](/en/components/validationmessage/overview) and `Field.Counter`. `Field` can be used together with `Input`, `Textarea` and `Select`. **Note**: `Textfield` already has `Field` built-in, and therefore cannot be used inside a `Field`."
+    "subtitle": "`Field` is a helper component to automatically associate a field with [`Label`](/en/components/docs/label/overview), `Field.Description`, [`ValidationMessage`](/en/components/docs/validationmessage/overview) and `Field.Counter`."
   },
   "image": "Field.svg",
   "cssFile": "field.css"
