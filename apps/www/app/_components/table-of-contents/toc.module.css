@@ -1,4 +1,5 @@
 .table-of-contents {
+  --padding-left: 14px;
   position: sticky;
   top: calc(var(--ds-size-6) + var(--header-height, 75px));
   border-radius: var(--ds-border-radius-lg);
@@ -6,7 +7,7 @@
   > h2 {
     font-weight: 500;
     margin-bottom: var(--ds-size-4);
-    padding-inline-start: var(--ds-size-4);
+    padding-inline-start: var(--padding-left);
   }
   > ol {
     margin: 0;
@@ -21,7 +22,7 @@
         display: block;
         position: relative;
         text-decoration: none;
-        padding-inline-start: var(--ds-size-4);
+        padding-inline-start: var(--padding-left);
         border-radius: var(--ds-border-radius-sm);
         padding-block: 3px;
 
