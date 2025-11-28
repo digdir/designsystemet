@@ -60,7 +60,7 @@ export default function Patterns({
     <>
       <Banner
         style={{ marginBottom: 'var(--page-spacing-top)' }}
-        data-color='warning'
+        data-color='brand3'
         icon={<LayersIcon />}
       >
         <BannerHeading level={1}>{t('patterns.title')}</BannerHeading>

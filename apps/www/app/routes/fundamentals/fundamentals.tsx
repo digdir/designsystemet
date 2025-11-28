@@ -57,7 +57,7 @@ export default function Fundamentals() {
     <>
       <Banner
         style={{ marginBottom: 'var(--page-spacing-top)' }}
-        data-color='warning'
+        data-color='brand2'
         icon={<Aksel.LayersIcon />}
       >
         <BannerHeading level={1}>{t('fundamentals.title')}</BannerHeading>
