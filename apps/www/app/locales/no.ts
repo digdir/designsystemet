@@ -91,6 +91,7 @@ export default {
       components: 'Komponenter',
       getStarted: 'Kom i gang',
       typography: 'Typografi',
+      utilities: 'Hjelpeverktøy',
     },
     items: {
       Introduction: 'Introduksjon',
