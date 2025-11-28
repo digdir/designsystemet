@@ -40,7 +40,6 @@ export async function loader({ params }: Route.LoaderArgs) {
   const storyEntries = extractStories(
     join(basePath, 'components-docs', lang, `${file}.stories.tsx`),
   );
-  console.log('Extracted stories:', storyEntries);
 
   return {
     code: result.code,
