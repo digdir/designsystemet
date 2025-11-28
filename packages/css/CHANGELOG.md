@@ -1,5 +1,15 @@
 # Change Log
 
+## 1.8.0
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4242](https://github.com/digdir/designsystemet/pull/4242))
+
+- **select**: Fix `:hover` on `<label>` adding border to `<select>` ([#4248](https://github.com/digdir/designsystemet/pull/4248))
+
+- Update npm non-major dependencies ([#4262](https://github.com/digdir/designsystemet/pull/4262))
+
 ## 1.7.3
 
 ## 1.7.2
