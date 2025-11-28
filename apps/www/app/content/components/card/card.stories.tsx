@@ -59,7 +59,7 @@ export const Variants = () => {
 
 export const Media = () => {
   return (
-    <Card data-color='neutral'>
+    <Card data-color='neutral' style={{ maxWidth: '380px' }}>
       <Card.Block>
         <video controls preload='metadata' width='100%'>
           <source

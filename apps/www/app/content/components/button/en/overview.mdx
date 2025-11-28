@@ -12,12 +12,6 @@
 
 ## Examples
 
-### Variants
-
-Use the `primary`, `secondary` or `tertiary` variant to give the button the right weight.
-
-<Story story="Variants" />
-
 ### Colours
 
 A group of buttons should use the same colour variant.  
@@ -98,19 +92,6 @@ Use only one icon per button.
     Don't use multiple icons in the same button.
   </DoDont>
   </div>
-
-
-### Avoid using disabled buttons
-
-Disabled buttons (`disabled`) can be difficult to notice. Some users may not understand what the button means or why it cannot be clicked. An active button that shows an error message when clicked usually provides a better user experience. Nav has a good explanation of [why disabled states are problematic (nav.no)](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) and what alternatives exist.
-
-**If you still need to use a disabled button:**
-
-- Ensure that all users can both notice and understand that it exists, that it is disabled, and why.
-- Provide supporting text that is always visible when the button is disabled.
-- If it makes sense for the button to still receive keyboard focus,  
-or if maintaining the tab order is important, use `aria-disabled` instead of `disabled`.  
-Remember to prevent callback functions (such as `onClick`) from running.
 
 ### A button should perform only one action
 

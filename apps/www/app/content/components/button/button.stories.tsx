@@ -112,6 +112,20 @@ export const AsLinkEn = () => (
   </Button>
 );
 
+export const Loading = () => (
+  <>
+    <Button variant='primary' loading>
+      Laster…
+    </Button>
+    <Button variant='secondary' loading>
+      Laster…
+    </Button>
+    <Button variant='tertiary' loading>
+      Laster…
+    </Button>
+  </>
+);
+
 export const LoadingEn = () => (
   <>
     <Button variant='primary' loading>

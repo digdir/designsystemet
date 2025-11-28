@@ -12,17 +12,7 @@
 
 ## Eksempel
 
-### Varianter
-
-Bruk `primary`-, `secondary`- eller `tertiary`-variant for å vekte knappen rett.
-
-<Story story="Variants" />
-
 ### Fargar
-
-Ei gruppe med knappar bør bruke same fargevariant. Unntaket er når vi vil tydeleggjere ei handling brukaren ikkje kan angre, for eksempel «Slett». 
-Elles skal vi som regel ikkje kombinere ulike fargevariantar.
-
 Knappen kjem i alle fargane som er i temaet ditt.
 
 <Story story="ColorVariants" />
@@ -62,7 +52,7 @@ Den står ofte saman med ein primærknapp. Dersom primærknappen er "Lagre", kan
 **`Tertiary`** Denne knappen er endå meir diskré enn sekundærknappen. Den blir ofte brukt saman med ein primær- eller sekundærknapp, til mindre viktige handlingar. 
 Dersom vi vil bruke han åleine, må han ha eit ikon - elles kan det vere vanskeleg å sjå at det er ein knapp.
 
-### Farger
+### Fargar
 
 Ei gruppe med knappar bør bruke same fargevariant. Unntaket er når vi vil tydeleggjere ei handling brukaren ikkje kan angre, for eksempel «Slett». 
 Elles skal vi som regel ikkje kombinere ulike fargevariantar.
@@ -99,18 +89,6 @@ Vi skal halde oss til eitt ikon per knapp.
     Ikkje bruk fleire ikon i same knapp.
   </DoDont>
 </div>
-
-### Unngå å bruke deaktiverte knappar
-
-Vi unngår å bruke deaktiverte (`disabled`) knappar fordi dei kan vere vanskelege å oppfatte. Nokre brukarar vil ikkje forstå kva knappen betyr, eller kvifor han ikkje er klikkbar. Ein aktiv knapp som viser ein feilmelding når brukaren klikkar, gjev i dei fleste tilfelle ein betre brukaroppleving. NAV har ei god forklaring på [kvifor deaktiverte tilstandar er problematiske (nav.no)](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) og kva alternativ som finst.
-
-**Dersom du likevel må bruke ein deaktivert knapp:**
-
-- Sørg for at alle brukarane dine både merkar og forstår at knappen finst, at han er deaktivert, og kvifor.
-- Bruk gjerne støttetekst som alltid er synleg når knappen er deaktivert.
-- Dersom det er fornuftig at knappen framleis kan få fokus med tastatur,  
-eller det av andre grunnar er viktig å bevare tab-rekkjefølgja, bruk `aria-disabled` i staden for `disabled`.  
-Hugs då å sjølv hindre at callback-funksjonar (for eksempel `onClick`) blir køyrde.
 
 ### Ein knapp skal utføre berre éi handling
 
