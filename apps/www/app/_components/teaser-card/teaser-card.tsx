@@ -21,7 +21,7 @@ const TeaserCard = ({
   return (
     <Card className={classes.card} asChild>
       <article>
-        <Heading level={3} data-size='sm' className={classes.title}>
+        <Heading level={3} data-size='xs' className={classes.title}>
           <Link to={href}>{title}</Link>
         </Heading>
         <p className={classes.desc}>{description}</p>
