@@ -78,10 +78,12 @@ body {
     position: sticky;
     border-right: 1px solid var(--ds-color-neutral-border-subtle);
     top: var(--header-height);
-    overflow: auto;
+    overflow-y: auto;
     max-height: calc(100vh - var(--header-height));
     padding-top: var(--ds-size-6);
     scrollbar-color: var(--ds-color-neutral-border-subtle) transparent;
+    /*counter the padding to align with logo while not breaking the active style*/
+    margin-left: calc(var(--ds-size-4) * -1);
 
     overscroll-behavior: contain;
     > nav {
