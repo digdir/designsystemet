@@ -1,3 +1,5 @@
-`Avatar` må enten ha en `aria-label` som forklarer hvem eller hva avataren representerer, eller ha `aria-hidden` og synlig tekst som formidler den samme informasjonen. Ikke spesifiser i `aria-label` at det er et bilde, skjermleseren formidler dette automatisk. Det holder å bruke navnet, som for eksempel `aria-label="Ola Nordmann"`.
+## Hvordan beskrive `Avatar` for skjermlesere
 
-Bilder, og andre `children`, får automatisk `aria-hidden="true"` for å unngå dobbel informasjon.
+`Avatar` må enten ha en `aria-label` som beskriver hvem eller hva avataren representerer, eller settes til `aria-hidden` og ha synlig tekst som formidler den samme informasjonen. Ikke oppgi i `aria-label` at det er et bilde – skjermlesere formidler dette automatisk. Det holder å bruke navnet, for eksempel `aria-label="Ola Nordmann"`.
+
+Bilder og andre `children` blir automatisk satt til `aria-hidden="true"` for å unngå at informasjonen gjentas.
