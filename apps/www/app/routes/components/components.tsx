@@ -90,7 +90,7 @@ export default function Components({
 
   return (
     <>
-      <Banner data-color='accent' icon={<ComponentFillIcon />}>
+      <Banner data-color='brand3' icon={<ComponentFillIcon />}>
         <BannerHeading level={1}>{t('components.title')}</BannerHeading>
         <BannerIngress>{t('components.description')}</BannerIngress>
       </Banner>

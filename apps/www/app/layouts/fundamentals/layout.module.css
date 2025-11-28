@@ -12,7 +12,7 @@
       'content aside'
       'content aside';
 
-    @media (max-width: 1100px) {
+    @media (max-width: 1180px) {
       grid-template-areas:
         'header header'
         'content content'

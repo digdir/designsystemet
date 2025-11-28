@@ -63,7 +63,7 @@ export default function BestPractices() {
     <div className={'l-content-container u-default-padding-top'}>
       <Banner
         style={{ marginBottom: 'var(--page-spacing-top)' }}
-        data-color='danger'
+        data-color='brand1'
         icon={<HandShakeHeartIcon />}
       >
         <BannerHeading level={1}>{t('best-practices.title')}</BannerHeading>

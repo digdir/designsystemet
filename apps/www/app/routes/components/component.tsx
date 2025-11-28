@@ -184,7 +184,7 @@ export default function Components({
             </Heading>
             <MDXComponents code={metadata.subtitle} />
           </div>
-          <IconFrame className={classes.iconFrame} data-color='accent'>
+          <IconFrame className={classes.iconFrame} data-color='brand3'>
             <img
               src={'/img/component-previews/' + metadata.image}
               alt={metadata.title}
