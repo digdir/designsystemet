@@ -74,15 +74,10 @@ export default function Text({
 }: Route.ComponentProps) {
   return (
     <>
-      <div className={classes.header}>
-        <div className={classes.headerUpper}>
-          <div className={classes.headerText}>
-            <Heading data-size='lg' level={1}>
-              {frontmatter.title}
-            </Heading>
-          </div>
-        </div>
-        <div className={classes.headerBottom}></div>
+      <div className={classes.textPageHeader}>
+        <Heading data-size='lg' level={1}>
+          {frontmatter.title}
+        </Heading>
       </div>
       <div className={cl(classes.textPage, 'u-rich-text left-adjusted')}>
         <MDXComponents
