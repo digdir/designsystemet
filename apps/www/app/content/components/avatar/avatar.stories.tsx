@@ -69,7 +69,7 @@ export const InDropdown = () => (
       <Avatar aria-hidden='true' data-size='sm'>
         ON
       </Avatar>
-      Velg Profil
+      Ola Nordmann
     </Dropdown.Trigger>
     <Dropdown placement='bottom-end' autoPlacement={false} data-size='md'>
       <Dropdown.List>
