@@ -20,11 +20,6 @@
 
     & nav {
       display: flex;
-      gap: var(--ds-size-2);
-
-      & button {
-        height: fit-content;
-      }
 
       & ul {
         display: flex;
@@ -32,7 +27,7 @@
         padding: 0;
         max-width: 100%;
         align-items: center;
-        margin-right: var(--ds-size-2);
+        margin-right: var(--ds-size-6);
 
         li {
           list-style: none;
@@ -72,7 +67,7 @@
   gap: var(--ds-size-4);
 
   & .logo {
-    height: 34px;
+    height: 28px;
     width: auto;
   }
 
