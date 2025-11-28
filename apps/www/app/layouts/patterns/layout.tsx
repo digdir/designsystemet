@@ -1,5 +1,4 @@
 import { join } from 'node:path';
-import cl from 'clsx';
 import { bundleMDX } from 'mdx-bundler';
 import { useTranslation } from 'react-i18next';
 import { Outlet, useMatches } from 'react-router';
@@ -86,10 +85,7 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
   const isPatternsPage = matches.some((match) => match.id === 'patterns-page');
 
   return (
-    <div
-      className={cl(classes['content-container'], 'l-content-container')}
-      data-is-main={!isPatternsPage}
-    >
+    <div className={'l-content-container'} data-is-main={!isPatternsPage}>
       <Sidebar cats={cats} title={t('patterns.title')} hideCatTitle />
       <div className={classes.content}>
         <Outlet />

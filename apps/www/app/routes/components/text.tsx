@@ -59,8 +59,6 @@ export const meta = ({ data }: Route.MetaArgs) => {
 export default function Text({
   loaderData: { code, frontmatter },
 }: Route.ComponentProps) {
-  const { t } = useTranslation();
-
   return (
     <>
       <div className={classes.header}>

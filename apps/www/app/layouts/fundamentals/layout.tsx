@@ -1,5 +1,4 @@
 import { join } from 'node:path';
-import cl from 'clsx';
 import { useTranslation } from 'react-i18next';
 import { Outlet, useMatches } from 'react-router';
 import { Sidebar } from '~/_components/sidebar/sidebar';
@@ -120,10 +119,7 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
   );
 
   return (
-    <div
-      className={cl(classes['content-container'], 'l-content-container')}
-      data-is-main={!isGrunnleggendePage}
-    >
+    <div className={'l-content-container'} data-is-main={!isGrunnleggendePage}>
       <Sidebar cats={cats} hideCatTitle title={t('fundamentals.title')} />
       <div className={classes.content}>
         <Outlet />

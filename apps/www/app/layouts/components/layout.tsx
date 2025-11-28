@@ -1,5 +1,4 @@
 import { join } from 'node:path';
-import cl from 'clsx';
 import { Outlet, useMatches } from 'react-router';
 import { Sidebar } from '~/_components/sidebar/sidebar';
 import {
@@ -151,7 +150,7 @@ export default function Layout({
   );
   return (
     <div
-      className={cl(classes['components-container'], 'l-content-container')}
+      className={'l-content-container'}
       data-color='neutral'
       data-is-component={isComponentPage}
     >
