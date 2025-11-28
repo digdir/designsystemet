@@ -29,8 +29,7 @@
         /*It needs to be decided if level 3 should be included
         and if so, how to style it. This is just placeholder*/
         &[data-level='3'] {
-          color: var(--ds-color-neutral-text-subtle);
-          padding-inline-start: var(--ds-size-6);
+          padding-inline-start: 22px;
         }
 
         &:focus-visible {
