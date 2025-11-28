@@ -121,7 +121,6 @@
   grid-template-columns: auto 1fr;
   align-items: center;
   padding: var(--ds-size-14);
-  padding-bottom: var(--ds-size-8);
   gap: var(--ds-size-14);
   margin-bottom: var(--ds-size-26);
 
