@@ -6,7 +6,10 @@ import cl from 'clsx/lite';
 import type { ComponentType } from 'react';
 import { useTranslation } from 'react-i18next';
 import { isRouteErrorResponse, useRouteLoaderData } from 'react-router';
-import { LiveComponent } from '~/_components/live-component/live-components';
+import {
+  LiveComponent,
+  type LiveComponentProps,
+} from '~/_components/live-component/live-components';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { extractStories } from '~/_utils/extract-stories.server';
 import { getFileFromContentDir } from '~/_utils/files.server';
