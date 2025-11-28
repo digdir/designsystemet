@@ -124,7 +124,7 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
       className={cl(classes['content-container'], 'l-content-container')}
       data-is-main={!isGrunnleggendePage}
     >
-      <Sidebar cats={cats} title={t('fundamentals.title')} />
+      <Sidebar cats={cats} hideCatTitle title={t('fundamentals.title')} />
       <div className={classes.content}>
         <Outlet />
       </div>
