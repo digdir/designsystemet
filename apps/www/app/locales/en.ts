@@ -92,6 +92,7 @@ export default {
       components: 'Components',
       getStarted: 'Getting Started',
       typography: 'Typography',
+      utilities: 'Utilities',
     },
     items: {
       Introduction: 'Introduction',
