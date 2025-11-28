@@ -1,4 +1,4 @@
-import { Badge, Button, Tabs } from '@digdir/designsystemet-react';
+import { Badge, Button, Paragraph, Tabs } from '@digdir/designsystemet-react';
 import {
   ChatIcon,
   EnvelopeClosedFillIcon,
@@ -15,21 +15,18 @@ export const Preview = () => {
 export const Floating = () => (
   <>
     <Badge.Position placement='top-right'>
-      <Badge data-color='accent'></Badge>
-      <EnvelopeClosedFillIcon title='Meldinger' />
+      <Badge data-color='danger' count={2}></Badge>
+      <EnvelopeClosedFillIcon title='Meldinger' style={{ fontSize: '2rem' }} />
     </Badge.Position>
+  </>
+);
 
-    <Badge.Position placement='bottom-right' overlap='circle'>
-      <Badge data-color='accent'></Badge>
-      <div
-        style={{
-          width: '1.5rem',
-          height: '1.5rem',
-          borderRadius: '50%',
-          backgroundColor: 'var(--ds-color-brand1-base-default)',
-        }}
-      />
-    </Badge.Position>
+export const Bullet = () => (
+  <>
+    <Paragraph>
+      <Badge data-color='success'></Badge>
+      Aktiv
+    </Paragraph>
   </>
 );
 
