@@ -66,8 +66,8 @@ body {
     --content-inline-padding: var(--ds-size-7);
     --header-height: 75px;
     @media screen and (max-width: 1500px) {
-      --sidebar-left-width: 200px;
-      --sidebar-right-width: 200px;
+      --sidebar-left-width: 240px;
+      --sidebar-right-width: 240px;
       --page-spacing-top: var(--ds-size-8);
       --page-spacing-bottom: var(--ds-size-12);
     }
