@@ -1,40 +1,199 @@
 ---
-title: Plassering og rekkefølge på knapper
+title: Plassering, rekkefølge og språk i knapper
 sidebar_title: Plassering av knapper
-category: Kommende
+category: Ferdig
 description: Hvordan kan vi skape en mer forutsigbar og inkluderende opplevelse ved å standardisere plassering og rekkefølge på knapper?
-date: 2025-08-19
+date: 2025-11-21
 ---
 
-Ulik plassering og rekkefølge på knapper, særlig navigasjonsknapper, kan skape unødvendig forvirring for brukerne. Dette gjelder blant annet i skjemaer, steg-for-steg-prosesser, dialoger og popover, der knappene ofte leder brukeren videre eller fullfører en handling. Felles mønstre for knapperekkefølge og plassering kan bidra til en mer forutsigbar og inkluderende opplevelse.
+Ulik plassering og rekkefølge på knapper skaper unødvendig friksjon. Det øker risikoen for feil og gjør oppgavene tyngre, spesielt for personer med nedsatt syn, motoriske utfordringer eller kognitive barrierer. Når vi bruker samme plassering, rekkefølge og språk på tvers av løsninger, blir opplevelsen mer forutsigbar. Brukerne finner raskere fram og gjør færre feil.
 
-<br/>
+## Design og opplevelse
 
+### Begrens antall knapper
+Begrens antall knapper til det brukeren faktisk trenger i situasjonen. Når hvert valg er tydelig og entydig, blir det enklere å forstå hva som skjer og tryggere å trykke.<sup>1</sup>
+
+### Bruk rekkefølgen primær, sekundær, tertiær
+Som hovedregel skal knapper som står i en gruppe alltid presenteres i rekkefølgen primærknapp → sekundærknapp → tertiærknapp.
+
+<Image
+  src="/img/patterns/button-order.png"
+  alt="Tre knapper plassert horisontalt med rekkefølgen primær, sekundær og tertiær fra venstre mot høyre på en desktop-skjerm, og vertikalt med samme rekkefølge fra topp til bunn på en mobilskjerm."
+  boxShadow={false}
+  dataUnstyled
+  caption='Eksempelet over viser tre knapper i en gruppe, der rekkefølgen primær → sekundær → tertiær følges på både mobil og desktop.'
+/>
+
+### Plasser knapper til venstre
+Plasserer knapper til venstre i grensesnittet. Da blir de enklere å finne for alle brukere, og særlig for dem med nedsatt synsfelt eller de som bruker skjermforstørrelse.<sup>2</sup>
+
+<Image
+  src="/img/patterns/button-left.png"
+  alt="Tre knapper plassert til venstre i grensesnittet."
+  boxShadow={false}
+  dataUnstyled
+  caption='Plasser knapper til venstre. Da er det større sannsynlighet for at brukeren ser dem.'
+/>
+<Image
+  src="/img/patterns/button-right.png"
+  alt="Tre knapper plassert til høyre i grensesnittet."
+  boxShadow={false}
+  dataUnstyled
+  caption='Unngå å plassere knapper til høyre. Da må brukeren lese mindre viktige alternativer før hen kommer til primærhandlingen. I tillegg kan det gjøre det vanskelig for noen brukere å finne knappene.'
+/>
+
+### Praktiske eksempler
+**Modal (dialog)** \
+For å skape en forutsigbar opplevelse skal knappene i en modal plasseres og følge samme rekkefølge som ellers. 
+
+<Image
+  src="/img/patterns/button-modal.png"
+  alt="Modal med teksten 'Vil du fortsatt være pålogget?' og to knapper plassert til venstre i rekkefølgen primær 'Hold meg pålogget' og sekundær 'Logg ut'."
+  boxShadow={false}
+  dataUnstyled
+  caption='Eksempel på modal som har knappene plassert til venstre.'
+/>
+
+Lukk-knappen (X) skal være plassert øverst til høyre i modalen. Knappen skal ha samme funksjon som når brukeren klikker utenfor modalen eller trykker på Esc-tasten. Modalen lukkes og dersom et spørsmål krever svar er det alltid det minst inngripende eller minst destruktive valget for brukeren det faller tilbake på. 
+
+**Popover** \
+En popover brukes for korte, avgrensede valg eller bekreftelser som krever en umiddelbar handling uten å ta brukeren bort fra konteksten. Knapper i en popover skal følge samme plassering og rekkefølge som ellers.
+
+<Image
+  src="/img/patterns/button-popover.png"
+  alt="Popover med teksten 'Er du sikker på at du vil slette raden? Du kan ikke angre' og to knapper plassert til venstre i rekkefølgen primær 'Ja, slett rad' og sekundær 'Behold rad'."
+  boxShadow={true}
+  dataUnstyled
+  caption='Eksempel på popover som har knappene plassert til venstre.'
+/>
+
+**Skjema med én side** \
+I skjemaer der alt fylles ut på én side, vil «Send inn»-knappen som regel være den eneste primærhandlingen. 
+
+<Image
+  src="/img/patterns/button-form-onepage.png"
+  alt=""
+  boxShadow={false}
+  dataUnstyled
+  caption='Eksempel på skjema med kun èn utfyllingsside.'
+/>
+
+**Skjema med flere sider** \
+Ikke bruk deaktivert "Forrige"-knapp på første side i et skjema med flere sider.<sup>3</sup>
+
+<Image
+  src="/img/patterns/button-form-firstpage.png"
+  alt=""
+  boxShadow={false}
+  dataUnstyled
+  caption='Eksempelet over viser første steg i et skjema, som ikke inneholder "Forrige"-knapp. '
+/>
+
+På de resterende sidene i skjemaet skal "Forrige"-knappen være plassert i nærheten av Neste-knappen. Elementer som står nær hverandre, oppfattes som relatert.<sup>4</sup> Alternative valg som «Fortsett senere» eller «Slett skjemaet» er andre type handlinger som ikke bør være i samme gruppe som Neste/Forrige.
+
+På små skjermer skal "Forrige" ligge under "Neste", og følge hovedprinsippet for rekkkefølge. På større skjermer er det ulike syn på om det bør være et unntak fra regelen her eller ikke. Noen velger å gjøre et unntak til fordel for lese- og handlingsretningen, men vi har foreløpig ikke noe dokumentert innsikt på at dette faktisk er en fordel. 
 
 
 <Card
   data-color='warning'
   variant="tinted"
 >
-**Arbeid pågår** \
-En tverretatlig arbeidsgruppe arbeider høsten 2025 med å utvikle felles retningslinjer og anbefalinger for dette temaet. Vi setter stor pris på innspill fra alle som har erfaringer, innsikt eller resultater fra brukertester. Bidra gjerne i den tilhørende [diskusjontråden på github.com](https://github.com/digdir/designsystemet/discussions/1671).
-
+**Mer innsikt kreves** \
+Vi ønsker å gjennomføre en brukertest for å lande på et valg for plassering av Neste/Forrige. Vi deler innsikten når vi vet mer. Har du innsikt om dette, del gjerne i pågående [diskusjon på Github](https://github.com/digdir/designsystemet/discussions/1671).
 </Card>
+
+
+<Image
+  src="/img/patterns/button-form-secondpage.png"
+  alt=""
+  boxShadow={false}
+  dataUnstyled
+  caption='Eksempelet over følger hovedregelen om at knapper i en gruppe skal presenteres i rekkefølgen primærknapp → sekundærknapp → tertiærknapp.'
+/>
+
+<Image
+  src="/img/patterns/button-form-secondpage-alt2.png"
+  alt=""
+  boxShadow={false}
+  dataUnstyled
+  caption='Her er det gjort et unntak fra regelen på større skjermer.'
+/>
+
+Hvis du gjør unntak her, bør unntaket kun gjøres for større skjermer, ikke små skjermer der knappene ligger under hverandre. Det er viktig at den visuelle fremstillingen speiler DOM-en. Dette kan løses ved å sette inn en ekstra knapp som skjules med `display: none;` og fjerner innholdet fullstendig for skjermlesere. Se [kodeeksempel med ekstra knapp (nav.no)](https://aksel.nav.no/templates/skjemavalidering/demo?darkside=true).
+
+**Siste steg i et skjema** \
+På siste steg i et skjema skal det være tydelig at brukeren sender inn skjemaet. “Send inn” er primærknappen. 
+
+<Image
+  src="/img/patterns/button-form-lastpage.png"
+  alt=""
+  boxShadow={false}
+  dataUnstyled
+  caption='Eksempelet over viser siste steg i et skjema.'
+/>
+
+## Språk
+Tekst i knapper skal alltid beskrive hva som skjer når brukeren trykker. Knappeteksten skal være kort og konsis, helst ikke mer enn tre ord. Velg verb i oppfordringsform (imperativ), for eksempel "send" og "signer".
+
+Unngå abstrakte begreper som “Ok“ eller ”Avbryt“ når det finnes alternativer som beskriver nøyaktig hva som skjer. Brukeren skal slippe å tolke knappene. Det skal være åpenbart hva som skjer når man trykker.
+
+<Image
+  src="/img/patterns/button-language-bad.png"
+  alt=""
+  boxShadow={false}
+  dataUnstyled
+  caption='Spørsmålet og teksten på knappene øker risikoen for at noen velger feil fordi det er uklart hva som skjer når man trykker på knappene.'
+/>
+
+<Image
+  src="/img/patterns/button-language-good.png"
+  alt=""
+  boxShadow={false}
+  dataUnstyled
+  caption='Gjør det tydelig hva som skjer. Beskriv handlingen og konsekvensen i både tekst og knapp.'
+/>
+
+### Bruk ordlyden "Forrige steg"
+Bruk ordlyden «Forrige steg» i skjema i stedet for “Tilbake”. Det gjør det tydelig at handlingen kun fører brukeren tilbake til det foregående steget i skjemaet, ikke ut av prosessen.
+
+### Bruk “Avbryt” konsekvent
+“Avbryt” skal alltid bety at brukeren avbryter en handling uten at noe lagres eller endres. Om det finnes risiko for tap av data, vurder å spørre brukeren “Er du sikker på at du vil avbryte? Endringene du har gjort vil gå tapt.” Når funksjonen er noe annet, bruk begreper som beskriver handlingen, f.eks “Lagre og fortsett senere”. Da slipper brukerne å tolke hva som skjer. 
+
+## Kode 
+
+### Fokusrekkefølge
+Tab-rekkefølgen skal som hovedregel alltid følge leseretningen. Det betyr at når en bruker navigerer med tastatur, skal fokus gå gjennom elementene i samme rekkefølge som de presenteres visuelt.<sup>5-6</sup>
+
+Hvis «Neste» er plassert til høyre for «Forrige», kan det være fristende å endre fokusrekkefølgen i koden slik at brukeren hopper til «Neste» først. Dette skal unngås, da det skaper en uforutsigbar oppførsel for tastaturbrukere. Det er bedre at Fokusrekkefølgen i koden samsvarer med den visuelle rekkefølgen. Dette gir en forutsigbar og tilgjengelig brukeropplevelse.
+
+## Relevante kilder
+* [1] [Simplicity Wins over Abundance of Choice (baymard.com)](https://baymard.com/learn/button-design)
+* [2] [Forstå synsnedsettelse](https://designsystemet.no/no/best-practices/accessibility/understanding-vision-impairment)
+* [3] [Deaktiverte tilstander (nav.no)](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander)
+* [4] [Proximity Principle in Visual Design (nngroup.com)](https://www.nngroup.com/articles/gestalt-proximity/)
+* [5] [Understanding SC 2.4.3: Focus Order (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html)
+* [6] [2.4.3 Fokusrekkefølge (uutilsynet.no)](https://www.uutilsynet.no/wcag-standarden/243-fokusrekkefolge-niva/105)
+
 
 <Contributors
   headingLevel={2}
   authors={[
     'Victoria Nerem (Oslo Kommune)',
+    'Jan Schjetne (Oslo Kommune)',
     'Sjur Grønningsæter (Nav)',
     'Morten Tollefsen (Nav)',
-    'Tonje Fiskvik (Skatteetaten)',
     'Charles Aleksander Ravndal (Skatteetaten)',
+    'Vilde Skardal (Skatteetaten)',
     'Roy Halvor Frimanslund (Brønnøysundregistrene)',
     'Wenche Schjølberg (Brønnøysundregistrene)',
+    'Thomas Vincent Saly (Brønnøysundregistrene)',
     'Chris Arnesen (Politiet)',
     'Øyvind Hjartnes (Entur)',
     'Lasse Febakke Straum (Digdir)',
     'Eira Bjerkeng Scherjon (Digdir)',
+    'Frank Dahle (Digdir)',
+    'Dorte Drange (Digdir)',
+    'Anniken Bråthen (Digdir)',
     'Marianne Røsvik (Digdir)',
   ]}
 />
