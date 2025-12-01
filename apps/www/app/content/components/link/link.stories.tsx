@@ -5,18 +5,14 @@ import { useId } from 'react';
 export const Preview = () => {
   const rand = useId();
   return (
-    <Link href={'https://designsystemet.no/no/patterns/external-links/' + rand}>
-      Merking av lenker
-    </Link>
+    <Link href={'/no/patterns/external-links/' + rand}>Merking av lenker</Link>
   );
 };
 
 export const PreviewEn = () => {
   const rand = useId();
   return (
-    <Link href={'https://designsystemet.no/en/patterns/external-links/' + rand}>
-      Labelling links
-    </Link>
+    <Link href={'/en/patterns/external-links/' + rand}>Labelling links</Link>
   );
 };
 
