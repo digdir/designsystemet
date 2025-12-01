@@ -1,26 +1,90 @@
-<Story layout="block" story="Preview" />
+<Story layout="block" story="PreviewEn" />
+
+<ReactComponentDocs />
 
 ## Usage
+```tsx
+/* Without frame */
+import { Details } from '@digdir/designsystemet-react';
 
-`Details` consists of two sub-components:
+<Details> 
+<Details.Summary>Details heading text</Details.Summary> 
+<Details.Content>Details content</Details.Content>
+</Details>
 
-- `Details.Summary` - The heading that can be clicked to show/hide content
-- `Details.Content` - The content that is shown/hidden
+/* With frame */
+
+import { Details, Card } from '@digdir/designsystemet-react';
+
+<Card> 
+<Details> 
+<Details.Summary>Details heading text</Details.Summary> 
+<Details.Content>Details content</Details.Content> 
+</Details>
+</Card>
+```
 
 ## Examples
 
-### Default
+### Frame and variant
 
-<Story layout="block" story="Preview" />
+If you put `Details` as the only child of `Card`, you get a frame around the whole `Details`.
+You can also use `variant="tinted"` on either `Details` or `Card` to get a lighter background.
 
-### In Card
-
-<Story layout="block" story="InCard" />
-
-### With colors
-
-<Story layout="block" story="InCardWithColor" />
+<Story layout="block" story="InCardWithColorEn" />
 
 ### Controlled
 
+`Details` keeps track of whether it is open or closed, but this can also be controlled externally.
+
 <Story layout="block" story="Controlled" />
+
+## HTML
+
+`Details` is built on the web component [u-details (github.io)](https://u-elements.github.io/u-elements/elements/u-details), which you can use.
+It is built functionally similar to the native element `<details>`, but with better accessibility.
+
+You use the class name `.ds-details` on the main element.
+
+You can choose not to have a nested `<div>` around the main content, but if you have this, it gets `margin`.
+
+If you want to use tinted variant, add the attribute `data-variant="tinted"` to the main element or `.ds-card`.
+
+```html
+<!-- without frame -->
+<u-details class="ds-details"> 
+<u-summary> 
+Details heading text 
+</u-summary> 
+<div> 
+Details content 
+</div>
+</u-details>
+
+<!-- with frame -->
+<div class="ds-card"> 
+<u-details class="ds-details"> 
+<u-summary> 
+Details heading text 
+</u-summary> 
+<div> 
+Details content 
+</div> 
+</u-details>
+</div>
+
+<!-- without u-elements -->
+<details class="ds-details"> 
+<summary> 
+Details heading text 
+</summary> 
+<div> 
+Details content 
+</div>
+</details>
+```
+
+## CSS variables and data attributes
+<CssVariables />
+
+<CssAttributes />
