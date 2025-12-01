@@ -2,11 +2,11 @@ import { Button, type ButtonProps } from '@digdir/designsystemet-react';
 import { PencilWritingIcon } from '@navikt/aksel-icons';
 
 export const Preview = () => {
-  return <Button>min knapp!</Button>;
+  return <Button>Min knapp</Button>;
 };
 
 export const PreviewEn = () => {
-  return <Button>my button!</Button>;
+  return <Button>My button</Button>;
 };
 
 export const Variants = () => {
@@ -29,6 +29,8 @@ export const ColorVariants = () => {
     'danger',
   ];
 
+  const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
   return (
     <>
       {colorVariants.map((color) => (
@@ -37,7 +39,7 @@ export const ColorVariants = () => {
           data-color={color as ButtonProps['data-color']}
           variant='primary'
         >
-          {color}
+          {capitalize(color)}
         </Button>
       ))}
     </>
