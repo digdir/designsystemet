@@ -1,12 +1,11 @@
-import {
-  Field,
-  FieldDescription,
-  Label,
-  Textfield,
-} from '@digdir/designsystemet-react';
+import { Label, Textfield } from '@digdir/designsystemet-react';
 
 export const Preview = () => {
   return <Label>Fødselsnummer (11 sifre)</Label>;
+};
+
+export const PreviewEn = () => {
+  return <Label>Social Security Number (11 digits)</Label>;
 };
 
 export const Weights = () => {

@@ -1,38 +1,52 @@
----
-title: Input
-subtitle: '`Input` is a field where the user can enter text.'
-image: Input.svg
-cssfile: input
----
-
 <Story story="Preview" />
+<ReactComponentDocs />
 
 ## Usage
 
+`Input` is a styled native `<input>` element, so the documentation is sparse.
+
+You can use this component to style most `type` attributes of `<input>`.
+
+You can read about [The HTML Input element on MDN (mozilla.com)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input).
+
 ```tsx
 import { Input, Label } from '@digdir/designsystemet-react';
+
 <>
-  <Label htmlFor="my-input">Label</Label>
-  <Input id="my-input" />
+<Label htmlFor="my-input">Label</Label>
+<Input id="my-input" />
 </>
-
-
 ```
 
-## Code Examples
+## Examples
 
 ### With label
 
-<Story story="WithLabel" />
+<Story story="WithLabelEn" />
 
 ### With error
 
-<Story story="WithError" />
+<Story story="WithErrorEn" />
 
 ### Disabled
 
-<Story story="Disabled" />
+<Story story="DisabledEn" />
 
 ### ReadOnly
 
-<Story story="ReadOnly" />
+<Story story="ReadOnlyEn" />
+
+## HTML
+Append the class name to the `<input>` element to get the design from the design system.
+
+```html
+<input class="ds-input" />
+```
+
+## CSS variables and data attributes
+
+The `ds-input` class can be used to style [`Select`](/no/components/docs/select/overview) and [`Textarea`](/no/components/docs/textarea/overview) as well.
+
+<CssVariables />
+
+<CssAttributes />

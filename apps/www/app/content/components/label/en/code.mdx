@@ -1,22 +1,32 @@
----
-title: Label
-subtitle: '`Label` is used to mark form fields and other interactive elements.'
-image: Label.svg
-cssfile: label
----
-
 <Story story="Preview" />
+<ReactComponentDocs />
 
 ## Usage
 
 ```tsx
 import { Label } from '@digdir/designsystemet-react';
 
-<Label>Social security number (11 digits)</Label>;
+<Label>Social Security Number (11 digits)</Label>;
 ```
 
-## Code Examples
+## Examples
 
 ### Weights
 
-<Story story="Weights" layout="column" />
+<Story story="WeightsEn" layout="column" />
+
+## HTML
+
+Use the class name `ds-label` to style an HTML `<label>` element.
+
+Use `data-weight` to set the font weight.
+
+```html
+<label class="ds-label" for="my-input">Birth Number (11 digits)</label>
+```
+
+## CSS variables and data attributes
+
+<CssVariables />
+
+<CssAttributes />
