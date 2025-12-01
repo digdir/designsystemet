@@ -1,36 +1,113 @@
----
-title: Dropdown
-image: Dropdown.svg
-cssfile: dropdown
----
+<Story story="Preview" />
+<ReactComponentDocs />
 
 ## Usage
 
-`Dropdown` consists of several sub-components:
+`Dropdown` uses [`Popover`](/en/components/docs/popover/code) internally.
 
-- `Dropdown.TriggerContext` - Wrapper to connect trigger and dropdown
-- `Dropdown.Trigger` - The button that opens the menu
-- `Dropdown` - The dropdown menu itself
-- `Dropdown.Heading` - Heading in the menu
-- `Dropdown.List` - List of items
-- `Dropdown.Item` - An item in the list
-- `Dropdown.Button` - Button inside an item
+```tsx
+import { Dropdown } from '@digdir/designsystemet-react';
+<>
+{/* with context */}
+<Dropdown.TriggerContext> 
+  <Dropdown.Trigger>Trigger</Dropdown.Trigger> 
+  <Dropdown> 
+    <Dropdown.Heading>Heading</Dropdown.Heading> 
+    <Dropdown.List> 
+      <Dropdown.Item> 
+        <Dropdown.Button>Item</Dropdown.Button> 
+      </Dropdown.Item> 
+    </Dropdown.List> 
+  </Dropdown>
+</Dropdown.TriggerContext>
 
+{/* without context */}
+<Button popovertarget="my-dropdown">Trigger</Button>
+<Dropdown id="my-dropdown"> 
+  <Dropdown.Heading>Heading</Dropdown.Heading> 
+  <Dropdown.List> 
+    <Dropdown.Item> 
+      <Dropdown.Button>Item</Dropdown.Button>
+    </Dropdown.Item> 
+  </Dropdown.List>
+</Dropdown>
+</>
+```
+
+### React and `popovertarget`
+
+When you use `popover` without `Dropdown.TriggerContext`, you link yourself trigger and `popover`.
+Then `popovertarget` is used in lowercase, so that all versions of React correctly render the attribute.
+When using `@digdir/designsystemet-react` we extend `@types/react-dom` to accept this.
+
+### Polyfill
+
+`Dropdown` uses the [Popover API (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover). This API is classified as [Baseline:
+Newly available (mozilla.org)](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) as of April 2024,
+with Firefox as the last browser to add it. In some cases, you may find that users are locked to older browser versions for various reasons, and then it may be appropriate to add a [Popover-Polyfill (github.com)](https://github.com/oddbird/popover-polyfill) to ensure that `Dropdown` works for everyone.
 
 ## Examples
 
-### Default
-
-<Story story="Preview" />
-
-### With icons
-
-<Story story="Icons" />
-
 ### Controlled
 
-<Story story="Controlled" />
+If you submit `open`, then you use `Dropdown` controlled. You can use `onClose` to get notified when `Dropdown` wants to close.
 
-### Without TriggerContext
+<Story story="ControlledEn" />
+
+### Without `TriggerContext`
+
+`Dropdown` uses the popover API, so you can use `Dropdown` without `Dropdown.Trigger`.
+
+You must then add `popovertarget={id}` to `Dropdown`, and `id` to `Dropdown`.
 
 <Story story="WithoutTrigger" />
+
+## HTML
+
+You can use the native popover API directly in HTML.
+This can be used without JavaScript, if you don't want to polyfill.
+
+Note that the element with `popover="manual"` uses two classes, `ds-popover` and `ds-dropdown`.
+
+You choose whether you want to use `popover="manual"` or just `popover` to open the dropdown.
+
+[Popover API (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using)
+
+```html
+<button
+class="ds-button"
+data-variant="primary"
+type="button"
+popovertarget="dropdown"
+>Dropdown</button>
+<div
+class="ds-popover ds-dropdown"
+id="dropdown"
+popover="manual"
+data-variant="default"
+>
+<ul>
+<li>
+<button
+class="ds-button"
+data-variant="tertiary"
+type="button"
+>Item</button>
+</li>
+</ul>
+</div>
+
+```
+
+## CSS variables and data attributes
+
+<CssVariables />
+
+<CssAttributes />
+
+### References
+
+We use `ul` and `li` tags in the dropdown, the choice is based on these:
+
+- [https://www.w3.org/WAI/tutorials/menus/flyout/#flyoutnavkbbtn](https://www.w3.org/WAI/tutorials/menus/flyout/#flyoutnavkbbtn)
+- [https://www.w3.org/WAI/ARIA/apg/patterns/menu-button](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button)
