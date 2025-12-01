@@ -1,3 +1,6 @@
+.mainContainer {
+  overflow-x: clip;
+}
 .header {
   height: 600px;
   margin-top: -106px;
@@ -27,6 +30,38 @@
   padding-bottom: 20px;
   overflow-x: hidden;
 }
+.decoration {
+  position: absolute;
+  isolation: isolate;
+  &[data-variant='1'] {
+    right: calc(100% + 40px);
+    width: 150px;
+    top: 30px;
+  }
+  &[data-variant='2'] {
+    left: calc(100% + 80px);
+    width: 190px;
+    top: 70px;
+  }
+  &[data-variant='3'] {
+    left: calc(100% + 70px);
+    width: 120px;
+    top: 90%;
+  }
+  &[data-variant='4'] {
+    right: calc(100% + 70px);
+    width: 200px;
+    top: 80%;
+  }
+  &[data-variant='5'] {
+    left: calc(100% + 90px);
+    width: 170px;
+    top: 90%;
+  }
+  @media (max-width: 1740px) {
+    display: none;
+  }
+}
 
 .text {
   width: 550px;
@@ -39,6 +74,7 @@
 }
 
 .container {
+  position: relative;
   display: flex;
   align-items: center;
   flex-direction: column;

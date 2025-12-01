@@ -117,7 +117,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
   const { t } = useTranslation();
 
   return (
-    <>
+    <div className={classes.mainContainer}>
       <div className={classes.header}>
         <div
           className={classes.content}
@@ -125,6 +125,18 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
           tabIndex={-1}
         >
           <div className={cl('l-content-container', classes.container)}>
+            <img
+              className={classes.decoration}
+              src='img/elements/second.svg'
+              alt=''
+              data-variant='1'
+            />
+            <img
+              className={classes.decoration}
+              src='img/elements/third.svg'
+              alt=''
+              data-variant='2'
+            />
             <div className={classes.text}>
               <Heading data-size='lg' level={1}>
                 {t('frontpage.heading')}
@@ -172,7 +184,15 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
           text: t('frontpage.toolbox.link'),
           href: 'fundamentals/introduction/about-the-design-system',
         }}
-      />
+      >
+        <img
+          className={classes.decoration}
+          src='img/elements/second.svg'
+          style={{ rotate: '90deg' }}
+          alt=''
+          data-variant='3'
+        />
+      </ImageBanner>
 
       <ImageBanner
         title={t('frontpage.components-section.title')}
@@ -187,7 +207,14 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
         }}
         fallbackImgSrc='/img/reduced-motion/Page.png'
         fallbackImgAlt={t('frontpage.components-section.fallbackImgAlt')}
-      />
+      >
+        <img
+          className={classes.decoration}
+          src='img/elements/fourth.svg'
+          alt=''
+          data-variant='4'
+        />
+      </ImageBanner>
 
       <ImageBanner
         title={t('frontpage.theme-section.title')}
@@ -201,7 +228,14 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
         }}
         fallbackImgSrc='/img/reduced-motion/Theme.png'
         fallbackImgAlt={t('frontpage.theme-section.fallbackImgAlt')}
-      />
+      >
+        <img
+          className={classes.decoration}
+          src='img/elements/first.svg'
+          alt=''
+          data-variant='5'
+        />
+      </ImageBanner>
 
       <Section title={t('frontpage.latest-news.title')}>
         {posts.map((post) => (
@@ -277,6 +311,6 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
