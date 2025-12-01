@@ -5,7 +5,7 @@
 - the user needs to accept terms and conditions
 
 **Avoid using `Checkbox` when**
-- the user should choose only one option; use a [`Select`](/en/components/docs/select/overview), [`Radio`](/en/components/docs/radio/overview) or a single [`Switch`](/en/components/docs/switch/overview) instead
+- the user should choose only one option; use a [`Radio`](/en/components/docs/radio/overview) instead
 - the user must choose from more than seven options; use a [`Select`](/en/components/docs/select/overview) or [`Suggestion`](/en/components/docs/suggestion/overview) instead
 - something should be turned on or off; use a [`Switch`](/en/components/docs/switch/overview) instead
 
@@ -14,6 +14,9 @@
 ### Single option
 
 If the user must confirm something rather than choose between alternatives, a single `Checkbox` can stand alone. For example, when the user must consent to terms.
+
+A `Checkbox` for consent must always require an active action, and you should never preselect the box. This ensures that the consent is given voluntarily.
+
 
 <Story story="OneOption" />
 
@@ -50,16 +53,13 @@ Nav has a helpful explanation of [why disabled states are problematic (nav.no)](
 
 Use `Checkbox` when the user can select one or more options.
 
-### Order
+### Sort the options
 
-Be mindful of the order of the options. Alphabetical ordering is often best, but if there is a logical order – for example *winter, spring, summer, autumn* – use that instead.
-
-In some cases, placing the most relevant options first can be helpful, but take care that the order does not influence the answer or make it harder to find the desired option.
+Sort the answer options alphabetically unless there is a good reason to do otherwise. Be careful about placing the most common answer option first if the question is personal or value-based, such as sexual orientation or party affiliation.
 
 ### Placement
 
-As a general rule, `Checkbox` should be placed vertically for readability.  
-It is easier for users to scan a list when the options are stacked. For users who need to enlarge (zoom in on) the page, a horizontal list is particularly difficult.
+Preferably place the response options vertically. This makes it easier to scan the list and read the options. For users who need to enlarge the text, horizontal lists can be challenging.
 
 <div className="dodont-row">
   <DoDont story="DoPlacement">
@@ -72,4 +72,8 @@ It is easier for users to scan a list when the options are stacked. For users wh
 
 ## Text
 
-In forms, the explanation is often phrased as a question. In some situations, it may be unclear whether the user may choo
+- The question should connect well with the response options. Think of the text as a conversation, and use “you” in the question and “I” in the options.
+
+- Make it clear that users can choose multiple options, and specify it if they can only choose a limited number of options.
+
+- Response options should always start with a capital letter.

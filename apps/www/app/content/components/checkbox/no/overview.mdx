@@ -5,7 +5,7 @@
 - brukeren skal akseptere vilkår og betingelser
 
 **Unngå `Checkbox` når**
-- brukeren kun skal velge ett alternativ, bruk heller en [`Select`](/no/components/docs/select/overview), [`Radio`](/no/components/docs/radio/overview) eller en enkel [`Switch`](/no/components/docs/switch/overview)
+- brukeren kun skal velge ett alternativ, bruk heller en [`Radio`](/no/components/docs/radio/overview)
 - brukeren må velge mellom mer enn sju alternativer, bruk heller en [`Select`](/no/components/docs/select/overview) eller [`Suggestion`](/no/components/docs/suggestion/overview)
 - noe skal slåes av eller på, bruk heller en [`Switch`](/no/components/docs/switch/overview)
 
@@ -14,6 +14,8 @@
 ### Kun ett valg
 
 Hvis brukeren skal bekrefte noe, men ikke velge noe, kan en `Checkbox` stå alene. For eksempel når brukeren skal samtykke til vilkår.
+
+En `Checkbox` for samtykke skal alltid kreve en aktiv handling, du skal aldri forhåndsvelge boksen. Dette sikrer at samtykket er gitt frivillig.
 
 <Story story="OneOption" />
 
@@ -50,16 +52,13 @@ Nav har en god forklaring på [hvorfor deaktiverte tilstander er problematisk (n
 
 Bruk `Checkbox` når brukeren kan velge ett eller flere alternativer.
 
-### Rekkefølge
+### Sorter alternativene
 
-Vær bevisst på rekkefølgen du velger for alternativene. Ofte er en alfabetisk sortering det beste, men dersom det finnes en logisk rekkefølge, f.eks. _vinter, vår, sommer, høst_, bør du
-heller bruke denne.
-
-I noen tilfeller kan det være hjelpsomt å ha de mest aktuelle alternativene først, men vær forsiktig så rekkefølgen ikke påvirker svaret eller gjør det vanskelig å finne ønsket alternativ.
+Sorter svaralternativene alfabetisk hvis det ikke er en god grunn til å gjøre noe annet. Vær forsiktig med å la det mest brukte svaralternativet stå først hvis det er et personlig spørsmål eller et verdispørsmål, som for eksempel legning eller partitilhørighet.
 
 ### Plassering
 
-`Checkbox` skal som hovedregel kun plasseres vertikalt, av hensyn til lesbarhet. Det er enklere for brukere å skanne listen når alternativene ligger under hverandre. For brukere som trenger å forstørre (zoome inn) nettsiden for å se godt nok, er en horisontal liste ekstra vanskelig.
+Plasser helst svaralternativene vertikalt. Da blir det lettere å skanne listen og lese alternativene. For brukere som må forstørre teksten, er horisontale lister utfordrende.
 
 <div className="dodont-row">
   <DoDont story="DoPlacement">
@@ -72,7 +71,6 @@ I noen tilfeller kan det være hjelpsomt å ha de mest aktuelle alternativene f�
 
 ## Tekst 
 
-I et skjema er ofte forklaringen formulert som et spørsmål. I noen sammenhenger kan det være uklart for brukeren om det er lov å velge flere alternativer, eller om de må velge kun ett.  Vurder derfor om du bør spesifisere at brukeren kan velge flere svaralternativer.
-
-Bruk et aktivt og positivt språk. Tenk på innholdet som en samtale. Når `<legend>` er en setning, kan du skrive den i du-form og svaralternativene (`<label>`) i jeg-form. `<label>` skal alltid ha stor forbokstav.
-
+- Ledeteksten skal henge godt sammen med svaralternativene. Tenk på teksten som en samtale, og bruk du-form i ledeteksten og jeg-form i alternativene.
+- Få frem at brukerne kan velge flere alternativer, og presiser det hvis de bare kan velge et begrenset antall alternativer.
+- Svaralternativene skal alltid ha stor forbokstav. 
