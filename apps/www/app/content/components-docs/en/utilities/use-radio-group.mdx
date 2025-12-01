@@ -1,0 +1,47 @@
+---
+title: useRadioGroup
+sidebar_title: useRadioGroup
+order: 30
+---
+
+## Usage
+
+Below is a simple example of how to use the `useRadioGroup` hook to handle a group of `Radio` components.
+
+In the `getRadioProps` function, the first parameter is `value`, which is a unique identifier for the option, or an object with props to be placed on the `Radio` component.
+
+If you pass in an object, make sure it contains `value`.
+
+**Important:** If you are going to pass props to a `Radio`, it is important that you pass them as objects to `getRadioProps` and **not** directly on the `Radio`. Otherwise, you risk overriding the functionality of `useRadioGroup`.
+
+```tsx
+const { getRadioProps, validationMessageProps } = useRadioGroup({
+  name: 'my-radio-group',
+  value: 'chocolate',
+  error: 'You must select an option',
+});
+
+return (
+  <Fieldset>
+    <Fieldset.Legend>Which ice cream flavor is best?</Fieldset.Legend>
+    <Fieldset.Description>
+      Choose your favorite flavor from the options.
+    </Fieldset.Description>
+    <Radio label='Vanilla' {...getRadioProps('vanilla')} />
+    <Radio label='Strawberry' {...getRadioProps('strawberry')} />
+    <Radio label='Chocolate' {...getRadioProps('chocolate')} />
+    <ValidationMessage {...validationMessageProps} />
+  </Fieldset>
+);
+```
+
+In response you get the object:
+
+```ts
+{
+  getRadioProps: (value: string | RadioProps) => RadioProps, // Returns props you can spread on <Radio /> or <input type="radio" />
+  validationMessageProps: ValidationMessageProps, // Props you optionally spread on ValidationMessage to link error message to radio group
+  setValue: string, // Function to set radio group value
+  value: string, // Current value of radio group
+}
+```
