@@ -29,8 +29,6 @@ export const ColorVariants = () => {
     'danger',
   ];
 
-  const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
-
   return (
     <>
       {colorVariants.map((color) => (
@@ -39,7 +37,7 @@ export const ColorVariants = () => {
           data-color={color as ButtonProps['data-color']}
           variant='primary'
         >
-          {capitalize(color)}
+          {color}
         </Button>
       ))}
     </>
