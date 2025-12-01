@@ -25,9 +25,10 @@ export const AvatarStack = ({ authors }: AvatarStackProps) => {
     <span
       className={classes.avatarStack}
       style={{ '--n': matchedAvatars.length } as CSSProperties}
+      aria-hidden
     >
       {matchedAvatars.map((avatar) => (
-        <img key={avatar} src={`/img/avatars/${avatar}.svg`} alt={avatar} />
+        <img key={avatar} src={`/img/avatars/${avatar}.svg`} alt='' />
       ))}
     </span>
   );
