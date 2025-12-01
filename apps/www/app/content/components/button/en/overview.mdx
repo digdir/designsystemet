@@ -10,37 +10,6 @@
 - showing which filters are selected, use [`Chip`](/en/components/docs/chip/overview) instead
 
 ## Examples
-
-### Colours
-
-A group of buttons should use the same colour variant.  
-The exception is when you want to highlight an action that cannot be undone, such as “Delete”.  Otherwise, different colour variants should normally not be combined.
-
-The button is available in all colours from your theme.
-
-<Story story="ColorVariants" />
-
-### Icons
-`Button` can have an icon placed either to the left or the right of the text. As a general rule, we recommend placing the icon on the left. Icons inside buttons automatically get spacing to the text.
-
-<Story story="IconsEn" />
-
-### Button styled as a link
-
-Links can be styled to look like a button, but consider whether the [`Link`](/en/components/docs/link/overview) component is a more appropriate choice.
-
-<Story story="AsLinkEn" />
-
-### Loading buttons
-
-When showing that the button is loading something, you can combine it with a spinner.
-
-<Story story="LoadingEn" />
-
-## Guidelines
-
-Buttons have an important function and are directly tied to an action. They give the user the ability to complete tasks.
-
 ### Emphasis levels
 
 We use different button variants to emphasise certain actions. The `primary`, `secondary` and `tertiary` variants show how important the action is, and help users understand what should be prioritised.
@@ -58,19 +27,27 @@ More discreet than the secondary button. Often used together with a primary or s
 
 ### Colours
 
+A group of buttons should use the same colour variant.  
+The exception is when you want to highlight an action that cannot be undone, such as “Delete”.  Otherwise, different colour variants should normally not be combined.
+
+The button is available in all colours from your theme.
+
+<Story story="ColorVariants" />
+
 A group of buttons should use the same colour variant. The exception is when you need to highlight an action that cannot be undone, such as “Delete”. Otherwise, different colour variants should generally not be mixed.
 
 <Story story="CombinedColorsEn" />
 
-### Button placement
+### Icons
+`Button` can have an icon placed either to the left or the right of the text. As a general rule, we recommend placing the icon on the left. Icons inside buttons automatically get spacing to the text.
 
-When placing buttons next to each other, the primary button should come first. The exception is “Previous” and “Next” — in that case, the secondary “Previous” button should come first.
+<Story story="IconsEn" />
 
-### Icon-only buttons
+#### Icon-only buttons
 
 Use icon-only buttons only for well-known icons such as “Close” and “Delete”. When the button has no text, you must add an accessible label describing what it does. This can be added via `title`, `aria-label`, or a [`Tooltip`](/en/components/docs/tooltip/overview).
 
-### Button with text and icon
+#### Button with text and icon
 
 When using an icon together with text, the icon should have `aria-hidden` so screen readers don’t read unnecessary content.
 
@@ -90,6 +67,26 @@ Use only one icon per button.
     Don't use multiple icons in the same button.
   </DoDont>
   </div>
+
+### Button styled as a link
+
+Links can be styled to look like a button, but consider whether the [`Link`](/en/components/docs/link/overview) component is a more appropriate choice.
+
+<Story story="AsLinkEn" />
+
+### Loading buttons
+
+When showing that the button is loading something, you can combine it with a spinner.
+
+<Story story="LoadingEn" />
+
+## Guidelines
+
+Buttons have an important function and are directly tied to an action. They give the user the ability to complete tasks.
+
+### Button placement
+
+When placing buttons next to each other, the primary button should come first. The exception is “Previous” and “Next” — in that case, the secondary “Previous” button should come first.
 
 ### A button should perform only one action
 
@@ -115,9 +112,7 @@ Button text should be short, ideally no more than two, at most three words. The 
 
 Use verbs in the imperative form on buttons to show users that they can perform an action. Examples of the imperative form are “send”, “sign”, “change”.
 
-### Avoid mixing writing styles
-
-Use a capital letter only for the first word, as in a normal sentence. Do not use all-uppercase text, as it is harder to read.
+**Avoid mixing writing styles**. Use a capital letter only for the first word, as in a normal sentence. Do not use all-uppercase text, as it is harder to read.
 
 <div className="dodont-row">
   <DoDont story="DoIcon3En">
