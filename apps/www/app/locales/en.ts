@@ -231,6 +231,11 @@ export default {
   },
   toc: {
     title: 'On this page',
+    feedback: {
+      link: 'Feedback on GitHub',
+      page: 'Do you have any feedback for this page?',
+      component: 'Do you have any feedback for this component?',
+    },
   },
   do: 'Do',
   dont: "Don't",

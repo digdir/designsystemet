@@ -13,3 +13,17 @@ export const Preview = () => {
     </>
   );
 };
+
+export const PreviewEn = () => {
+  return (
+    <>
+      <Paragraph>
+        Divider is used to separate content into smaller parts.
+      </Paragraph>
+      <Divider />
+      <Paragraph>
+        It can also be used to separate content that is related to each other.
+      </Paragraph>
+    </>
+  );
+};

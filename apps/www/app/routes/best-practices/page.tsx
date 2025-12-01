@@ -65,6 +65,7 @@ export default function BestPractices({
   },
 }: Route.ComponentProps) {
   const { t } = useTranslation();
+  const feedbackUrl = `https://github.com/digdir/designsystemet/issues/new?template=BLANK_ISSUE&title=Feedback: Best practices - ${title}`;
   return (
     <div className={cl('l-content-container')}>
       <div className={classes.container}>
@@ -103,21 +104,15 @@ export default function BestPractices({
           items={toc}
         >
           <div className='toc-feedback'>
-            <Paragraph data-size='sm'>
-              {t(
-                'toc.feedback.page.text',
-                'Har du innspill til denne siden? Gi oss tilbakemelding på Github.',
-              )}
-            </Paragraph>
+            <Paragraph data-size='sm'>{t('toc.feedback.page')}</Paragraph>
             <Button
               data-color='neutral'
               data-size='sm'
               variant='secondary'
               asChild
             >
-              <a href='#'>
-                <PencilLineIcon aria-hidden />{' '}
-                {t('toc.feedback.link', 'Send innspill')}
+              <a href={feedbackUrl}>
+                <PencilLineIcon aria-hidden /> {t('toc.feedback.link')}
               </a>
             </Button>
           </div>
