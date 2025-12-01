@@ -83,6 +83,25 @@ export const InTabs = () => (
   </Tabs>
 );
 
+export const InTabsEn = () => (
+  <Tabs defaultValue='value1'>
+    <Tabs.List>
+      <Tabs.Tab value='value1'>
+        Favorites
+        <Badge count={64} maxCount={10} data-color='neutral' />
+      </Tabs.Tab>
+      <Tabs.Tab value='value2'>Archive</Tabs.Tab>
+      <Tabs.Tab value='value3'>
+        Recent
+        <Badge count={2} data-color='neutral' />
+      </Tabs.Tab>
+    </Tabs.List>
+    <Tabs.Panel value='value1'>content 1</Tabs.Panel>
+    <Tabs.Panel value='value2'>content 2</Tabs.Panel>
+    <Tabs.Panel value='value3'>content 3</Tabs.Panel>
+  </Tabs>
+);
+
 export const InButton = () => (
   <>
     <Button icon variant='tertiary'>

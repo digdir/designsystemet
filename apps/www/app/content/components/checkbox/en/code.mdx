@@ -1,5 +1,7 @@
 <Story story="Preview" />
 
+<ReactComponentDocs />
+
 ## Usage
 
 ```tsx
@@ -8,20 +10,74 @@ import { Checkbox } from '@digdir/designsystemet-react';
 <Checkbox label="Checkbox label" value="value" />
 ```
 
-## Code Examples
+## Examples
 
 ### Grouping
 
-<Story story="Group" />
+Use [`Fieldset`](/no/components/docs/fieldset/code) and `useCheckboxGroup` for grouping multiple options.
 
-### With error
+<Story story="GroupEn" />
 
-<Story story="WithError" />
+### Indeterminate checkbox
 
-### Disabled
+Add `allowIndeterminate: true` to `getCheckboxProps` to create a parent `Checkbox` that can select or clear all options.
+This activates an additional state, `indeterminate`, next to `checked` and `unchecked`.
+It is displayed with a horizontal line when one or more `Checkbox` are selected in the group.
+It will be displayed as a regular `Checkbox` if everyone in the group has the same state.
 
-<Story story="Disabled" />
+<Story story="InTableEn" />
 
-### ReadOnly
+## HTML
 
-<Story story="ReadOnly" />
+`Checkbox` is a composite component, so in HTML you have to build it from multiple components.
+We use [`Fieldset`](/no/components/docs/fieldset/code), [`Label`](/no/components/docs/label/code) and [`Input`](/no/components/docs/input/code) to create a `Checkbox`.
+
+The code below shows how you can visually build a `Checkbox` in HTML, but you have to make sure that `<input>` is connected to `<label>` and description.
+
+```html
+<div class="ds-field"> 
+<input 
+class="ds-input" 
+type="checkbox" 
+value="value" 
+id="check-input" 
+aria-describedby="description" 
+> 
+<label 
+class="ds-label" 
+data-weight="regular" 
+for="check-input">Checkbox label</label> 
+<div data-field="description" id="description">Description</div>
+</div>
+```
+
+### In Fieldset
+
+The code below is an example of how to use `Checkbox` inside `<fieldset>`.
+Note that we only show one `Checkbox' here, in practice this will often be several.
+
+```html
+<fieldset class="ds-fieldset">
+<legend class="ds-label" data-weight="medium">How would you prefer us to contact you?</legend>
+<p class="ds-paragraph" data-variant="default">Select all the options that are relevant to you.</p>
+<div class="ds-field">
+<input
+class="ds-input"
+type="checkbox"
+value="email"
+id="check-input"
+>
+<label
+class="ds-label"
+data-weight="regular"
+for="check-input"
+>Email</label>
+</div>
+</fieldset>
+```
+
+## CSS variables and data attributes
+Checkbox is a composite component, so we show variables and data attributes from `ds-input` here.
+<CssVariables />
+
+<CssAttributes />

@@ -1,59 +1,98 @@
 <Story story="Preview" />
 
-## Props
 <ReactComponentDocs />
 
-## Bruk
+## Usage
 
 ```tsx
 import { Avatar } from '@digdir/designsystemet-react';
 
 <>
-/* Med standard brukerikon */
+{/* With default user icon */}
 <Avatar aria-label="Ola Nordmann" />
 
-/* Med initialer */
+{/* With initials */}
 <Avatar aria-label="Ola Nordmann">ON</Avatar>
+{/* or */}
+<Avatar aria-label="Ola Nordmann" data-initials="ON" />
 
-/* Med bilde */
+{/* With image */}
 <Avatar aria-label="Ola Nordmann">
-  <img src="..." />
+<img src="..." />
 </Avatar>
 
-/* Sammen med synlig tekst */
-<>
-  <Avatar aria-hidden>ON</Avatar>
-  <span>Ola Nordmann</span>
-</>
+{/* Together with visible text */}
+<Avatar aria-hidden>ON</Avatar>
+<span>Ola Nordmann</span>
 </>
 ```
 
-## Eksempel
+## Examples
 
-### Standard Ikon
+### Default Icon
+
+If you do not send any `children`, `Avatar` will display a default user icon.
+
+This can be overridden in CSS with the `--dsc-avatar-icon-url` variable. See list of CSS variables at the bottom of the page.
 
 <Story story="NoName" />
 
-### Størrelser
+### Sizes
+
+The component is controlled by `data-size`, and will inherit size from the closest parent with `data-size` set.
+
+In addition to `sm`, `md` and `lg`, `Avatar` also supports the `xs` size.
 
 <Story story="Sizes" />
 
-### Farger
+### Colors
+
+All colors in your theme are valid, and the component will inherit the closest `data-color`.
 
 <Story story="ColorVariants" />
 
-### Varianter
+### Variants
+
+The `variant` prop can be set to `square` or `circle`. `circle` is the default.
 
 <Story story="ShapeVariants" />
 
-### Med bilde
+### With image or icon
 
-<Story story="WithImage" />
+If you add images or icons as children, they will automatically get `aria-hidden="true"` to avoid duplicate information.
 
-### I `Dropdown`
+You must set `aria-label` on `Avatar` yourself to explain who or what the avatar represents.
+
+<Story story="WithImageAndIcon" />
+
+### Composition
+
+The component should be able to be composed into other components.
+Here is an example of using `Avatar` inside a `Dropdown` component.
 
 <Story story="InDropdown" />
 
-### Som lenke
+## HTML
 
-<Story story="AsLink" />
+Avatar uses the class name `ds-avatar` on a `<span>` with `role="img"`.
+
+```html
+<!-- With default user icon -->
+<span class="ds-avatar" role="img" aria-label="Ola Nordmann"></span>
+
+<!-- With initials -->
+<span class="ds-avatar" role="img" aria-label="Ola Nordmann">ON</span>
+<!-- or -->
+<span class="ds-avatar" role="img" aria-label="Ola Nordmann" data-initials="ON"></span>
+
+<!-- With image -->
+<span class="ds-avatar" role="img" aria-label="Ola Nordmann">
+<img src="..." aria-hidden="true" />
+</span>
+
+<!-- Together with visible text -->
+<span class="ds-avatar" aria-hidden="true">ON</span>
+<span>Ola Nordmann</span>
+```
+
+## CSS variables and data attributes
