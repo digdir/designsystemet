@@ -10,15 +10,18 @@
 }
 
 .container {
+  /*fallbacks*/
+  --_max-content-width: 1300px;
+  --_content-inline-padding: var(--ds-size-7);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   /* grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); */
   column-gap: var(--ds-size-8);
   row-gap: var(--ds-size-8);
-  max-width: calc(var(--max-content-width) + (var(--content-inline-padding) * 2));
+  max-width: calc(var(--max-content-width, var(--_max-content-width)) + (var(--content-inline-padding, var(--_content-inline-padding)) * 2));
   width: 100%;
-  padding-inline: var(--content-inline-padding);
+  padding-inline: var(--content-inline-padding, var(--_content-inline-padding));
   margin: 0 auto;
 }
 

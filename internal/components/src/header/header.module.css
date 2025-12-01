@@ -1,4 +1,6 @@
 .header {
+  --_max-page-width: 1920px;
+  --_content-inline-padding: var(--ds-size-7);
   height: var(--header-height, 75px);
   width: 100%;
   display: flex;
@@ -14,8 +16,8 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: var(--max-page-width);
-    padding: 0 var(--content-inline-padding, var(--ds-size-8));
+    max-width: var(--max-page-width, var(--_max-page-width));
+    padding: 0 var(--content-inline-padding, var(--_content-inline-padding));
     margin: 0 auto;
 
     & nav {
