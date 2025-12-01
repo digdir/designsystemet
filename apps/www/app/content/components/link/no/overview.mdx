@@ -9,48 +9,53 @@
 - brukeren skal utføre en handling, for eksempel «Lagre» eller «Logg inn», bruk heller [`Button`](/no/components/docs/button/overview).
 - tilstanden i løsningen påvirkes, som å åpne en dialog, starte en prosess eller lagre data, bruk heller [`Button`](/no/components/docs/button/overview).
 
-## Example
+## Eksempel
 
-### In text
+### I tekst
 
-A link is often used as part of a text.
+En lenke brukes ofte som en del av en tekst.
 
 <Story story="InText" />
 
-### With icon
+### Med ikon
 
-The icon is placed on the left.  
-It is a functional icon that helps users understand where the link will take them.
+Ikonet plasseres til venstre.  
+Det er et funksjonelt ikon som hjelper brukeren å forstå hvor lenken fører.
 
 <Story story="WithIcon" />
 
-### Neutral colour
+### Nøytral farge
 
 <Story story="Neutral" />
 
-## Guidelines
+## Retningslinjer
 
-A link should point to information the user needs, or to a place where they can complete their task.  
-Avoid linking to general pages where users must search for the relevant information themselves.
+Lenken må peke til informasjon brukeren trenger, eller der de kan løse oppgaven. Unngå å lenke til generelle sider der brukeren må finne fram selv.   
 
-It is important not to overuse links, as this can make it harder for users to find their way forward.
+Det er viktig å ikke overbruke lenker, fordi dette kan gjøre det vanskeligere for brukeren å finne veien videre.
 
-### Opening links in a new tab/window
+### Unngå at lenker blir åpnet i ny fane
 
-Both internal and external links should open in the same tab or window.  
-This ensures a predictable user experience.  
-Read more about this in the article [Labelling links](https://www.designsystemet.no/no/patterns/external-links).
+Både interne og eksterne lenker skal åpnes i samme fane eller vindu. Dette sikrer en forutsigbar brukeropplevelse. 
 
-## Text
+Det finnes likevel noen unntak, der lenken bør åpnes i ny fane:
+- Hvis systemet må logge ut brukeren når det navigeres til en annen side, og det er hensiktsmessig å unngå utlogging.
+- Når brukeren er midt i en prosess og risikerer å miste innhold ved å klikke på lenken. Ny fane bør vurderes hvis systemet ikke klarer å lagre brukerens inndata.
+- Hvis du lenker til innhold som brukerne trenger når de utfører en oppgave, for eksempel veiledning
 
-Good link text is self-explanatory and makes it clear where the link will take the user.  
-When writing link text, imagine it being read aloud by a screen reader.  
-The text should make sense on its own, whether it appears in a sentence, menu or list.
+I disse tilfellene anbefaler vi å skrive “åpnes i ny fane” som en del av lenketeksten, slik at det er tydelig for brukeren.
 
-### Principles for link text
-- Place important words (trigger words) early in the link text.  
-- “Go to”, “Click here”, “Link to” or “Read more” should never be the entire link text.  
-- All links on the same page must have unique link text.  
-- A verb should appear early in the link text.
+Les mer om dette i artikkelen [Merking av lenker](https://www.designsystemet.no/no/patterns/external-links).
 
-Find more guidance in the article [Labelling links](https://www.designsystemet.no/no/patterns/external-links#spr%C3%A5k).
+
+## Tekst
+
+Gode lenker er selvforklarende og forteller hvor du havner når du trykker på dem.  Se for deg at lenketeksten skal leses av en skjermleser når du skriver den. Lenketeksten skal gi mening når den leses isolert, uavhengig av om den er en del av en setning, meny eller liste. 
+
+### Prinsipper for lenketekst
+- Bruk de viktige ordene (triggerord) tidlig i lenketeksten.
+- “Gå til”, “Klikk her”, “Lenke til” eller “Les mer” skal aldri være hele lenketeksten. 
+- Alle lenker på samme side må ha unike lenketekster. 
+- Det bør være et verb tidlig i lenketeksten. 
+
+Få flere råd om lenker i artikkelen om [Merking av lenker](https://www.designsystemet.no/no/patterns/external-links#spr%C3%A5k).

@@ -20,7 +20,7 @@ A link is often used as part of a text.
 
 ### With icon
 
-The icon is placed on the left. This is a functional icon that helps users understand where the link will take them.
+The icon is placed on the left. It is a functional icon that helps users understand where the link will take them.
 
 <Story story="WithIcon" />
 
@@ -30,13 +30,31 @@ The icon is placed on the left. This is a functional icon that helps users under
 
 ## Guidelines
 
+The link must point to information the user needs, or to a place where they can complete their task. Avoid linking to general pages where the user must search for the relevant information themselves.
+
 It is important not to overuse links, as this can make it harder for users to find their way forward.
 
-### Opening links in a new tab/window
+### Avoid opening links in a new tab
 
-Both internal and external links should open in the same tab/window.  
-This ensures a predictable user experience by respecting the user’s own browser settings for how links should open. Read more about this in the article [Labelling links](https://www.designsystemet.no/no/patterns/external-links).
+Both internal and external links should open in the same tab or window. This ensures a predictable user experience.
+
+There are, however, some exceptions where a link should open in a new tab:
+- If the system needs to log the user out when navigating to another page, and it is beneficial to avoid logging them out.
+- When the user is in the middle of a process and risks losing content by clicking the link. A new tab should be considered if the system cannot save the user's input.
+- When linking to content users need while completing a task, for example guidance.
+
+In these cases, we recommend adding “opens in a new tab” as part of the link text so that it is clear to the user.
+
+Read more about this in the article [Labelling links](https://www.designsystemet.no/en/patterns/external-links).
 
 ## Text
 
-The article [Labelling links](https://www.designsystemet.no/no/patterns/external-links#spr%C3%A5k) contains guidelines for how to write link text. It is important that link text is descriptive and gives users a clear indication of what to expect when they activate the link.
+Good links are self-explanatory and make it clear where the user will end up when selecting them. When writing link text, imagine it being read aloud by a screen reader. The text must make sense on its own, whether it appears in a sentence, menu or list.
+
+### Principles for link text
+- Use the important words (trigger words) early in the link text.
+- “Go to”, “Click here”, “Link to” or “Read more” should never be the entire link text.
+- All links on the same page must have unique link text.
+- A verb should appear early in the link text.
+
+Find more guidance in the article [Labelling links](https://www.designsystemet.no/en/patterns/external-links#spr%C3%A5k).
