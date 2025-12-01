@@ -1,4 +1,4 @@
-import { Badge, Button, Paragraph, Tabs } from '@digdir/designsystemet-react';
+import { Badge, Button, Tabs } from '@digdir/designsystemet-react';
 import {
   ChatIcon,
   EnvelopeClosedFillIcon,
@@ -22,12 +22,10 @@ export const Floating = () => (
 );
 
 export const Bullet = () => (
-  <>
-    <Paragraph>
-      <Badge data-color='success'></Badge>
-      Aktiv
-    </Paragraph>
-  </>
+  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+    <Badge data-color='success' style={{ display: 'inline-flex' }} />
+    Aktiv
+  </div>
 );
 
 export const CustomPlacement = () => (
