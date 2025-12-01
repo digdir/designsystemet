@@ -1,5 +1,5 @@
-import { existsSync, readdirSync, readFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
+import { basename, dirname, join } from 'node:path';
 
 type StoryEntry = {
   name: string;
@@ -9,13 +9,29 @@ type StoryEntry = {
 
 // Extract exported story functions from *.stories.tsx and *.dodont.tsx
 export const extractStories = (
-  componentDir: string,
+  componentPath: string,
   dodont?: boolean,
 ): StoryEntry[] => {
   try {
-    if (!existsSync(componentDir)) return [];
+    if (!existsSync(componentPath)) return [];
+
     const variant = dodont ? '.dodont.tsx' : '.stories.tsx';
-    const files = readdirSync(componentDir).filter((f) => f.endsWith(variant));
+    const stats = statSync(componentPath);
+
+    // Determine if it's a file or directory
+    let files: string[];
+    let baseDir: string;
+
+    if (stats.isFile()) {
+      // If it's a file, check if it matches the variant
+      files = [basename(componentPath)];
+      baseDir = dirname(componentPath);
+    } else {
+      // If it's a directory, filter for matching files
+      files = readdirSync(componentPath).filter((f) => f.endsWith(variant));
+      baseDir = componentPath;
+    }
+
     if (files.length === 0) return [];
 
     const extractExportedFunctions = (
@@ -56,7 +72,7 @@ export const extractStories = (
     };
 
     return files.flatMap((file) => {
-      const full = join(componentDir, file);
+      const full = join(baseDir, file);
       const src = readFileSync(full, 'utf-8');
       const fns = extractExportedFunctions(src);
       return fns.map((f) => ({ ...f, file }));

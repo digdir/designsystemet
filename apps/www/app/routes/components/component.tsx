@@ -212,6 +212,7 @@ export default function Components({
         className={classes.tableOfContents}
         title={metadata.title || ''}
         items={toc}
+        level={3}
       >
         <div className={'toc-feedback'}>
           <Paragraph data-size='sm'>

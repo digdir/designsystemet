@@ -5,6 +5,10 @@
 .textPage {
   max-width: var(--long-content-width);
 }
+/*work in progress*/
+.textPageHeader {
+  margin-bottom: var(--ds-size-5);
+}
 /*needs spacings for nested headings*/
 .changelog {
   h2,

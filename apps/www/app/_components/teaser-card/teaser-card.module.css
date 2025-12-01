@@ -32,6 +32,7 @@
 }
 
 .meta {
+  font-size: 1rem;
   margin-top: auto;
   color: var(--ds-color-neutral-text-subtle);
   display: flex;

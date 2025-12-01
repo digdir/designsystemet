@@ -36,7 +36,7 @@ const FundamentalsCard = ({
           {icon}
         </div>
         <div>
-          <Heading level={level} data-size='sm' className={classes.title}>
+          <Heading level={level} data-size='xs' className={classes.title}>
             <Link to={url}>{title}</Link>
           </Heading>
           <Paragraph data-size='sm' variant='long' className={classes.desc}>

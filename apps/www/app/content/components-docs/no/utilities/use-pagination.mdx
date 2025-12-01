@@ -4,6 +4,8 @@ sidebar_title: usePagination
 order: 40
 ---
 
+<Story story="Preview" />
+
 En React-hook for å håndtere paginering.
 
 ## Props
@@ -11,7 +13,7 @@ En React-hook for å håndtere paginering.
 I respons får du objektet:
 
 ```ts
-{
+const pagination = {
   hasPrev: boolean, // Indikererer om det finnes en forrige side
   hasNext: boolean, // Indikererer om det finnes en neste side
   prevButtonProps: PaginationButtonProps, // Properties du kan spre på forrige-knappen
@@ -34,7 +36,7 @@ const { pages, prevButtonProps, nextButtonProps, hasNext, hasPrevious } = usePag
   setCurrentPage,
   onChange,
   totalPages: 10,
-  showPages: 7,
+  showPages: 7
 });
 ```
 
@@ -44,7 +46,7 @@ Du looper gjennom `pages` fra respons-objektet, og sprer `buttonProps` på `Pagi
 Legg merke til at vi sjekker `typeof` på `page`. Dette er fordi ellipser skal være en tom `li`.
 
 ```tsx
-{pages.map(({ page, itemKey, buttonProps }) => (
+pages.map(({ page, itemKey, buttonProps }) => (
   <Pagination.Item key={itemKey}>
     {typeof page === 'number' && (
       <Pagination.Button
@@ -56,5 +58,5 @@ Legg merke til at vi sjekker `typeof` på `page`. Dette er fordi ellipser skal v
       </Pagination.Button>
     )}
   </Pagination.Item>
-))}
+))
 ```
