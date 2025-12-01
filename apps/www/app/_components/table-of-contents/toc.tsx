@@ -55,9 +55,6 @@ export const TableOfContents = ({
     };
   }, [filteredItems]);
 
-  // If there are less than 2 items, we don't render the TOC
-  if (filteredItems.length < 2) return null;
-
   return (
     <aside
       data-color='neutral'
@@ -65,23 +62,27 @@ export const TableOfContents = ({
       className={cl(classes['table-of-contents'], className)}
       {...props}
     >
-      <Paragraph data-size='md' asChild>
-        <h2>{t('toc.title')}</h2>
-      </Paragraph>
-      <ol>
-        {filteredItems.map((item) => (
-          <li key={item.id}>
-            <Link
-              data-size='sm'
-              href={`#${item.id}`}
-              data-level={item.level}
-              aria-current={activeItem === item.id}
-            >
-              {item.title}
-            </Link>
-          </li>
-        ))}
-      </ol>
+      {filteredItems.length > 1 && (
+        <>
+          <Paragraph data-size='md' asChild>
+            <h2>{t('toc.title')}</h2>
+          </Paragraph>
+          <ol>
+            {filteredItems.map((item) => (
+              <li key={item.id}>
+                <Link
+                  data-size='sm'
+                  href={`#${item.id}`}
+                  data-level={item.level}
+                  aria-current={activeItem === item.id}
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ol>
+        </>
+      )}
       {children}
     </aside>
   );
