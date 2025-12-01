@@ -1,6 +1,7 @@
 import { join } from 'node:path';
-import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { Error404 } from '@internal/components';
+import { PencilLineIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { useTranslation } from 'react-i18next';
 import { isRouteErrorResponse } from 'react-router';
@@ -61,6 +62,7 @@ export default function Patterns({
   loaderData: { lang, frontmatter, code, toc },
 }: Route.ComponentProps) {
   const { t } = useTranslation();
+  const feedbackUrl = `https://github.com/digdir/designsystemet/issues/new?template=BLANK_ISSUE&title=Feedback: Patterns - ${frontmatter.title}`;
   return (
     <>
       <div className={classes.header}>
@@ -87,7 +89,21 @@ export default function Patterns({
         className={classes.tableOfContents}
         title={frontmatter.title}
         items={toc}
-      />
+      >
+        <div className='toc-feedback'>
+          <Paragraph data-size='sm'>{t('toc.feedback.page')}</Paragraph>
+          <Button
+            data-color='neutral'
+            data-size='sm'
+            variant='secondary'
+            asChild
+          >
+            <a href={feedbackUrl}>
+              <PencilLineIcon aria-hidden /> {t('toc.feedback.link')}
+            </a>
+          </Button>
+        </div>
+      </TableOfContents>
       <div className={cl(classes.content, 'u-rich-text left-adjusted')}>
         <MDXComponents code={code} />
         <EditPageOnGithub />

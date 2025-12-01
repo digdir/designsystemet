@@ -230,6 +230,11 @@ export default {
   },
   toc: {
     title: 'På denne siden',
+    feedback: {
+      link: 'Send innspill på GitHub',
+      page: 'Har du innspill til denne siden?',
+      component: 'Har du innspill til komponenten?',
+    },
   },
   do: 'Gjør slik',
   dont: 'Unngå dette',

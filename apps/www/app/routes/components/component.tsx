@@ -171,6 +171,7 @@ export default function Components({
   loaderData: { stories, mdxCode, metadata, toc, navigation, githubLink },
 }: Route.ComponentProps) {
   const { t } = useTranslation();
+  const feedbackUrl = `https://github.com/digdir/designsystemet/issues/new?template=BLANK_ISSUE&title=Feedback: ${metadata.title}`;
   return (
     <>
       <div className={classes.header}>
@@ -215,16 +216,10 @@ export default function Components({
         level={3}
       >
         <div className={'toc-feedback'}>
-          <Paragraph data-size='sm'>
-            {t(
-              'toc.feedback.component.text',
-              'Har du innspill til komponentent? Gi oss tilbakemelding på Github.',
-            )}
-          </Paragraph>
+          <Paragraph data-size='sm'>{t('toc.feedback.component')}</Paragraph>
           <Button data-size='sm' variant='secondary' asChild>
-            <a href='#'>
-              <PencilLineIcon aria-hidden />{' '}
-              {t('toc.feedback.link', 'Send innspill')}
+            <a href={feedbackUrl}>
+              <PencilLineIcon aria-hidden /> {t('toc.feedback.link')}
             </a>
           </Button>
         </div>
