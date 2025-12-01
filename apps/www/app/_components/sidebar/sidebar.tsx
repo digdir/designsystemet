@@ -60,7 +60,7 @@ export const Sidebar = ({
             }
             return (
               <li key={key} className={classes.listGroup}>
-                <Paragraph asChild data-size='md'>
+                <Paragraph asChild>
                   <div className={classes.innerTitle}>
                     {t(`sidebar.categories.${key}`, key)}
                   </div>

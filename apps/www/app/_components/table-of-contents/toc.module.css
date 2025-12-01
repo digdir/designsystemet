@@ -5,8 +5,8 @@
   border-radius: var(--ds-border-radius-lg);
 
   > h2 {
-    font-weight: 500;
-    margin-bottom: var(--ds-size-4);
+    font-weight: 600;
+    margin-bottom: var(--ds-size-2);
     padding-inline-start: var(--padding-left);
   }
   > ol {
