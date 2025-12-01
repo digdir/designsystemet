@@ -40,17 +40,6 @@ export const PreviewEn = () => {
   );
 };
 
-export const InCard = () => {
-  return (
-    <Card data-color='neutral'>
-      <Details>
-        <Details.Summary>Vedlegg</Details.Summary>
-        <Details.Content>Vedlegg 1, vedlegg 2, vedlegg 3</Details.Content>
-      </Details>
-    </Card>
-  );
-};
-
 export const InCardWithColor = () => {
   return (
     <>
@@ -79,13 +68,8 @@ export const InCardWithColor = () => {
       <br />
       <Card data-color='brand1' data-variant='tinted'>
         <Details>
-          <Details.Summary>
-            Hvordan får jeg tildelt et jegernummer?
-          </Details.Summary>
-          <Details.Content>
-            Du vil automatisk få tildelt jegernummer og bli registrert i
-            Jegerregisteret når du har bestått jegerprøven.
-          </Details.Content>
+          <Details.Summary>Vedlegg</Details.Summary>
+          <Details.Content>Vedlegg 1, vedlegg 2, vedlegg 3</Details.Content>
         </Details>
       </Card>
     </>
@@ -120,12 +104,9 @@ export const InCardWithColorEn = () => {
       <br />
       <Card data-color='brand1' data-variant='tinted'>
         <Details>
-          <Details.Summary>
-            How do I get assigned a hunter number?
-          </Details.Summary>
+          <Details.Summary>Attachments</Details.Summary>
           <Details.Content>
-            You will automatically be assigned a hunter number and registered in
-            the Hunter Register when you have passed the hunter's exam.
+            Attachment 1, attachment 2, attachment 3
           </Details.Content>
         </Details>
       </Card>
