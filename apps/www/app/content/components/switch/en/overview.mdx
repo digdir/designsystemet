@@ -32,14 +32,13 @@ If you have several `Switch` components in a group, make sure the wording is con
 
 The text should describe what the function relates to, not whether it is on or off. If the state is written directly in the label, it can become confusing and make it harder to understand the actual position of the switch.
 
-### Example 1
-- Correct: Email notifications (On/off)
-- Incorrect: Turn off email notifications (On/off)
+<div className="dodont-row">
+  <DoDont story="DoIconEn">
+    Describe what the function applies to.
+  </DoDont>
+  <DoDont story="DontIconEn">
+    Do not mention whether it is on or off.
+  </DoDont>
+</div>
 
-### Example 2
-- Correct: Flight mode (On/off)
-- Incorrect: Turn on flight mode (On/off)
 
-### Placement of text
-
-In most cases, placing the text on the right is best. The exception is when the `Switch` itself is positioned on the far right of the interface – then the text should be placed to the left, so all switches align along the same vertical line.
