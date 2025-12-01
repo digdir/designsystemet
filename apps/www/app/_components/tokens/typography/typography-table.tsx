@@ -104,6 +104,7 @@ const TypographySetTables = ({
 
 export const TypographyTable = ({ tokens }: TokenTableProps) => {
   const groupedTokens = groupedByPathIndex(0)(tokens);
+  const { t } = useTranslation();
 
   return Object.entries(groupedTokens).map(([path, tokens]) => {
     if (tokens?.length === 0) {
@@ -127,9 +128,15 @@ export const TypographyTable = ({ tokens }: TokenTableProps) => {
           </caption>
           <Table.Head>
             <Table.Row>
-              <Table.HeaderCell>Navn</Table.HeaderCell>
-              <Table.HeaderCell>Verdi</Table.HeaderCell>
-              <Table.HeaderCell>Forhåndsvisning</Table.HeaderCell>
+              <Table.HeaderCell>
+                {t('token-preview.table.name')}
+              </Table.HeaderCell>
+              <Table.HeaderCell>
+                {t('token-preview.table.value')}
+              </Table.HeaderCell>
+              <Table.HeaderCell>
+                {t('token-preview.table.preview')}
+              </Table.HeaderCell>
             </Table.Row>
           </Table.Head>
           <Table.Body>
