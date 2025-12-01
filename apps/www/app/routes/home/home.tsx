@@ -126,12 +126,14 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
         >
           <div className={cl('l-content-container', classes.container)}>
             <img
+              draggable='false'
               className={classes.decoration}
               src='img/elements/second.svg'
               alt=''
               data-variant='1'
             />
             <img
+              draggable='false'
               className={classes.decoration}
               src='img/elements/third.svg'
               alt=''
@@ -186,6 +188,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
         }}
       >
         <img
+          draggable='false'
           className={classes.decoration}
           src='img/elements/second.svg'
           style={{ rotate: '90deg' }}
@@ -209,6 +212,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
         fallbackImgAlt={t('frontpage.components-section.fallbackImgAlt')}
       >
         <img
+          draggable='false'
           className={classes.decoration}
           src='img/elements/fourth.svg'
           alt=''
@@ -230,6 +234,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
         fallbackImgAlt={t('frontpage.theme-section.fallbackImgAlt')}
       >
         <img
+          draggable='false'
           className={classes.decoration}
           src='img/elements/first.svg'
           alt=''
