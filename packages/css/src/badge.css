@@ -7,6 +7,8 @@
   --dsc-badge-bottom: inherit;
   --dsc-badge-left: inherit;
   --dsc-badge-right: inherit;
+
+  display: inline-flex;
   @composes ds-print-preserve from './base.css';
 
   &::before {
