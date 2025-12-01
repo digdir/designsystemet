@@ -441,6 +441,15 @@ body {
   }
 }
 @layer site.overrides {
+  :root {
+    --ds-heading-md-font-weight: var(--ds-font-weight-semibold);
+    --ds-heading-2xs-font-weight: var(--ds-font-weight-semibold);
+    --ds-heading-xs-font-weight: var(--ds-font-weight-semibold);
+    --ds-heading-sm-font-weight: var(--ds-font-weight-semibold);
+    --ds-heading-lg-font-weight: var(--ds-font-weight-semibold);
+    --ds-heading-xl-font-weight: var(--ds-font-weight-semibold);
+    --ds-heading-2xl-font-weight: var(--ds-font-weight-semibold);
+  }
   .ds-skip-link:focus {
     position: relative;
     z-index: 1;
