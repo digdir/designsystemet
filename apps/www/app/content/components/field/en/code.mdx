@@ -1,86 +1,99 @@
-<Story story="Preview" />
+It is common to get confused between `Fieldset` and `Field`.
+A good rule of thumb is that **`Fieldset` is a set of `Field`**
+
+<Story story="PreviewEn" />
 <ReactComponentDocs />
 
 ## Usage
-`Field` can be used together with `Input`, `Textarea` and `Select`. **Note**: `Textfield` already has `Field` built-in, and therefore cannot be used inside a `Field`.
+`Field` can be used with `Input`, `Textarea` and `Select`. **NOTE**: `Textfield` already has `Field` built in, and therefore cannot be used in a `Field`.
 
+```tsx
+<Field>
+<Label>Short description</Label>
+<Field.Description>Description</Field.Description>
+<Input />
+<ValidationMessage>Error message</ValidationMessage>
+</Field>
+```
 
-## Example
+## Examples
 
-### Prefix / Suffix
+### Prefix/Suffix
 
-Prefixes and suffixes are useful for showing units, currency or other information relevant to the field. You should **not** use these on their own, as screen readers do not announce them. It is important that the same information shown in the prefix or suffix is also included in the label.
+Prefixes and suffixes are useful for displaying units, currency or other types of information relevant to the field. You should **not** use these on their own, as screen readers do not read them out. It is important that the same information displayed in the prefix or suffix is ​​also included in the prompt.
 
-<Story story="Affix" />
+<Story story="AffixEn" />
 
-### Character count
+### Number of characters
 
-Use `Field.Counter` to inform users about the number of characters they can enter in the field.
+Use `Field.Counter` to inform about the number of characters users can type in the field.
 
-<Story story="Counter" />
+<Story story="CounterEn" />
 
-### Placement
+### Position
 
-Use `position="end"` when you want to place, for example, a `Switch` to the right of the `Label`.
+Use `position="end"` when you want to place, for example, a `Switch` to the right of `Label`.
 
-You can change the text by passing props, as shown at the top of the page. The language is Norwegian Bokmål by default.
+You can change the text by submitting props, which you can see at the top of the page. The language is standard Norwegian Bokmål.
 
-<Story story="Position" layout="column" />
+<Story story="PositionEn" layout="column" />
 
 ## HTML
 
-You can get styling from `Field` using the class name `ds-field`.
-For the description you must set `data-field="description"` to get correct styling.
+You can get styling from `Field` with the class name `ds-field`.
+On the description you must set `data-field="description"` to get correct styling.
 
-Unfortunately there is some JavaScript that `Field` runs internally, so this needs to be wired up by you.
-The code we use is not React-specific, so you can copy our code until we have a better alternative outside React.
+Also, there is some javascript that `Field` runs internally, so this must be connected yourself.
+
+The code we use is not react-specific, so you can copy our code until we have a better alternative outside of React.
 
 [`fieldObserver` (github.com)](https://github.com/digdir/designsystemet/blob/main/packages/react/src/components/field/field-observer.ts)
 
 ```html
 <div class="ds-field">
   <label
-    class="ds-label"
-    data-weight="medium"
-    for="field-input"
+  class="ds-label"
+  data-weight="medium"
+  for="field-input"
   >Last name</label>
   <div data-field="description" id="field-description">Last name cannot contain spaces</div>
   <input
-    class="ds-input"
-    type="text"
-    value="Doe Smith"
-    id="field-input"
-    aria-describedby="field-error field-description"
+  class="ds-input"
+  type="text"
+  value="Nordic Swedish"
+  id="field-input"
+  aria-describedby="field-error field-description"
   >
   <p
-    class="ds-validation-message"
-    data-field="validation"
-    id="field-error"
+  class="ds-validation-message"
+  data-field="validation"
+  id="field-error"
   >You cannot have spaces in your last name</p>
 </div>
+
 ```
 
-**Make sure the form field has `aria-describedby` that refers to both the description and the validation message.**
-The error should come first in `aria-describedby` so that screen readers announce the error message first.
+**Make sure the form field has `aria-describedby` which refers to both description and validation message.**.
+Error should be placed first in `aria-describedby` so that screen readers read the error message first.
 
-`data-field="validation"` is only needed if you connect the `fieldObserver`.
+`data-field="validation"` is only needed if you connect `fieldObserver`.
 
-### Placement
+### Position
 
-To change the placement of elements in `Field`, for example a `Switch`, you can add `data-position="end|start"` on the same element as `ds-field`.
+To change the position of elements in `Field`, such as a `Switch`, you can add `data-position="end|start"` to the same element as `ds-field`.
 
 ```html
 <div class="ds-field" data-position="end">
   <label
-    class="ds-label"
-    data-weight="medium"
-    for=":mhxbylqzlb8"
-  >Flight mode</label>
+  class="ds-label"
+  data-weight="medium"
+  for=":mhxbylqzlb8"
+  >Flightmode</label>
   <input
-    class="ds-input"
-    role="switch"
-    type="checkbox"
-    id=":mhxbylqzlb8"
+  class="ds-input"
+  role="switch"
+  type="checkbox"
+  id=":mhxbylqzlb8"
   >
 </div>
 ```

@@ -122,7 +122,7 @@
   align-items: center;
   padding: var(--ds-size-14);
   gap: var(--ds-size-14);
-  margin-bottom: var(--ds-size-26);
+  margin-bottom: var(--ds-size-18);
 
   > img {
     max-width: 240px;
