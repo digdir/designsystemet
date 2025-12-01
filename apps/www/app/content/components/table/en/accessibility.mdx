@@ -1,0 +1,19 @@
+To ensure that tables work well for all users, it is important to follow these guidelines:
+
+- **Simple cell content:**  
+  Table cells should not be merged, and each cell should contain only one interactive element. This helps users quickly get an overview of the content and makes it easier to compare and scan information.
+
+- **Headings:**  
+  For screen reader users to navigate the content, it is important to use row and/or column headers (`<Table.HeaderCell>`). Use `scope="row"` and `scope="col"` to indicate whether the header applies to a row or a column. If space is limited, you may visually hide one or more headers.
+
+- **Caption element:**  
+  Tables must always include a caption element that provides a brief description of what the table shows. Screen readers will read the caption, allowing users to decide whether they want to continue reading the table.
+
+- **Empty cells:**  
+  Empty cells must use `Table.Cell`. This is important to ensure that screen readers can navigate the table correctly.
+
+- **Keyboard navigation:**  
+  Make sure you can change the sorting using the keyboard. Test with a screen reader to verify that you hear what is sortable, the sorting types, and that focus is not lost when sorting changes.
+
+- **Mobile adaptation:**  
+  Tables can be challenging on mobile, as there is no universal design that works well in all contexts. The most common approaches are a table that scrolls horizontally or converting the table into a list view.
