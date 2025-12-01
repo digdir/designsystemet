@@ -47,7 +47,6 @@
   align-items: center;
   padding: var(--ds-size-3);
   border-radius: var(--ds-border-radius-md);
-  background-color: #fff;
   height: 70px;
   width: 90px;
   aspect-ratio: 1;
@@ -55,7 +54,7 @@
   .bar {
     height: 100%;
     width: 100%;
-    border-color: var(--ds-color-base-contrast-default);
+    border-color: var(--ds-color-neutral-border-strong);
     border-style: solid;
   }
 }
@@ -63,8 +62,4 @@
 .overflow-table {
   max-width: 100%;
   overflow-x: auto;
-
-  @media (max-width: 768px) {
-    max-width: 340px;
-  }
 }
