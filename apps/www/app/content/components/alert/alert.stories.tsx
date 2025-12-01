@@ -34,7 +34,7 @@ export const VariantInfo = () => (
 );
 
 export const VariantInfoEn = () => (
-  <Alert data-colour='info'>
+  <Alert data-color='info'>
     <Heading
       level={2}
       data-size='xs'

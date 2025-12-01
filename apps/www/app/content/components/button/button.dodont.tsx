@@ -113,7 +113,7 @@ export const DontIcon3 = () => {
         Send Søknad
       </Button>
       <Button variant='primary' data-color='accent'>
-        send Søknad
+        send søknad
       </Button>
     </>
   );
@@ -137,7 +137,7 @@ export const DontIcon3En = () => {
         Submit Application
       </Button>
       <Button variant='primary' data-color='accent'>
-        submit Application
+        submit application
       </Button>
     </>
   );
