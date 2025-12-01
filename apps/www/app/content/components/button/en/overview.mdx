@@ -1,14 +1,13 @@
 <Story story="PreviewEn" />
 
 **Use `Button` when**
-- starting a process
-- submitting a form
-- performing an action
+- a concrete action needs to be performed, for example saving or submitting a form
+- the state of the solution changes, for example when opening a dialog or starting a process
 
 **Avoid `Button` when**
-- navigating to other pages or out of the service — use [`Link`](/en/components/docs/link/overview) instead
-- filtering information, for example in lists or tables — use [`Chip`](/en/components/docs/chip/overview) instead
-- showing which filters are selected — use [`Chip`](/en/components/docs/chip/overview) instead
+- navigating to other pages or out of the service, use [`Link`](/en/components/docs/link/overview) instead
+- filtering information, for example in lists or tables, use [`Chip`](/en/components/docs/chip/overview) instead
+- showing which filters are selected, use [`Chip`](/en/components/docs/chip/overview) instead
 
 ## Examples
 
@@ -102,6 +101,7 @@ Clearly describe what the button does. A button should perform only one action, 
 There should be only one primary button per page. If there are multiple main actions, users may become unsure of what to do.
 
 ## Text
+All buttons on the same page should have unique button text.
 
 Button text should be short, ideally no more than two, at most three words. The text should clearly describe what happens when the user clicks the button.
 
@@ -114,6 +114,7 @@ Button text should be short, ideally no more than two, at most three words. The 
   </DoDont>
 </div>
 
+Use verbs in the imperative form on buttons to show users that they can perform an action. Examples of the imperative form are “send”, “sign”, “change”.
 
 ### Avoid mixing writing styles
 

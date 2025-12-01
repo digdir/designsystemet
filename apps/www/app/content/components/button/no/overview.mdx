@@ -1,14 +1,13 @@
 <Story story="Preview" />
 
 **Bruk `Button` når**
-- ein prosess skal starte
-- eit skjema skal sendast inn
-- ei handling skal utførast
+- ei konkret handling skal utførast, for eksempel å lagre eller sende inn eit skjema 
+- tilstanden i løysinga vert påverka, for eksempel når ein dialog skal opnast eller ein prosess skal startast
 
 **Unngå `Button` når**
-- det skal navigerast til andre sider eller ut av tenesta - bruk heller [`Link`](/no/components/docs/link/overview)
-- det skal filtrerast informasjon, for eksempel i lister eller tabeller - bruk heller [`Chip`](/no/components/docs/chip/overview)
-- vise hvilke filtre som er valgt - bruk heller [`Chip`](/no/components/docs/chip/overview)
+- det skal navigerast til andre sider eller ut av tenesta, bruk heller [`Link`](/no/components/docs/link/overview)
+- det skal filtrerast informasjon, bruk heller [`Chip`](/no/components/docs/chip/overview)
+- vise hvilke filtre som er valgt, bruk heller [`Chip`](/no/components/docs/chip/overview)
 
 ## Eksempel
 
@@ -99,27 +98,30 @@ Vi skal tydeleg beskrive kva handling knappen utfører. Ein knapp skal berre ha 
 Vi skal halde oss til éin primærknapp per side. Dersom det er fleire hovudhandlingar, kan brukarane bli usikre på kva dei skal gjere.
 
 ## Tekst
+Alle knappar på same side bør ha unike knappetekstar.
 
-Knappeteksten skal vere kort, helst ikkje meir enn to, maks. tre ord. Tenk på at knappen tydeleg skal beskrive kva som skjer når brukaren klikkar på den.
+Knappeteksten bør vere kort, helst ikkje meir enn tre ord. Tenk på at knappen tydeleg skal beskrive kva som skjer når brukaren klikkar på han.
 
 <div className="dodont-row">
   <DoDont story="DoIcon2">
-    Teksten skal forklare hva som skjer.
+    Teksten skal forklare kva som skjer.
   </DoDont>
   <DoDont story="DontIcon2">
-    Unngå ufullstendig og uklart innhold.
+    Unngå ufullstendig og uklårt innhald.
   </DoDont>
 </div>
 
+Vel verb i oppfordringsform (imperativ) på knappar for å vise brukarane at dei kan utføre ei handling. Døme på oppfordringsform er «send», «signer», «endre».
+
 ### Unngå å blande skrivemåtar
 
-Bruk stor forbokstav på det første ordet, som du ville gjort i ei setning. Ikkje bruk berre store bokstavar (all caps), det er vanskelegare å lese.
+Bruk stor forbokstav i det første ordet, som du ville gjort i ei vanleg setning. Ikkje bruk berre store bokstavar (all caps), for det er vanskelegare å lese.
 
 <div className="dodont-row">
   <DoDont story="DoIcon3">
-    Bruk stor forbokstav og små bokstaver på resten av ordene (sentence case).
+    Bruk stor forbokstav og små bokstavar på resten av orda (sentence case).
   </DoDont>
   <DoDont story="DontIcon3">
-    Unngå ulike skrivemåter.
+    Unngå ulike skrivemåtar.
   </DoDont>
 </div>
