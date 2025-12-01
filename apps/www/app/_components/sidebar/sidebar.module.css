@@ -9,7 +9,7 @@
 }
 
 .listGroup {
-  margin-bottom: var(--ds-size-5);
+  margin-bottom: var(--ds-size-4);
   list-style: none;
 }
 
@@ -21,9 +21,10 @@
 }
 
 .innerTitle {
-  font-weight: 500;
-  margin-bottom: 12px;
-  padding: var(--ds-size-1) var(--ds-size-4);
+  font-weight: var(--ds-font-weight-semibold);
+  margin-bottom: var(--ds-size-1);
+  padding: 0 var(--ds-size-4);
+  font-size: var(--ds-body-long-sm-font-size);
 }
 
 .listItem {
