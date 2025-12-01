@@ -32,8 +32,7 @@ Dersom du har kun ikon i knappen kan du sette `icon={true}` for å få den firka
 
 ### Knapp som lenkje
 
-`asChild` brukast for å endre knappen til ei lenkje.
-Les meir kom [komposisjon i Designsystemet](/no/fundamentals/code/composition).
+Lenker kan få utsjånad som ein knapp, men vurder først om det er betre å bruke [`Link`](/no/components/docs/link/overview)-komponenten. For å endre knappen til ei lenkje brukast `asChild`. Les meir kom [komposisjon i Designsystemet](/no/fundamentals/code/composition).
 
 <Story story="AsLink" />
 
@@ -45,8 +44,7 @@ Under brukar me `loading={true}` for å vise at knappen lastar noko. Her kan du 
 
 I eksempelet over blir `aria-disabled` sett automatisk når `loading={true}`. Dette er den anbefalte måten å vise at ein knapp er deaktivert på. Då kan knappen framleis få fokus når brukaren navigerer med tastatur. Slik blir skjermlesarar og andre hjelpemiddel informerte om at knappen finst, men at han ikkje er aktiv.
 
-**Merk:** Verken `loading="true"` eller `aria-disabled` hindrar automatisk at knappen utløyser `onClick`.  
-Du må sjølv sørgje for at callback-funksjonen ikkje køyrer når knappen er deaktivert.
+**Merk:** Verken `loading="true"` eller `aria-disabled` hindrar automatisk at knappen utløyser `onClick`. Du må sjølv sørgje for at callback-funksjonen ikkje køyrer når knappen er deaktivert.
 
 ## HTML
 
