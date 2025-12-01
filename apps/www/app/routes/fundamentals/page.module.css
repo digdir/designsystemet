@@ -18,6 +18,7 @@
   background-color: var(--ds-color-neutral-background-tinted);
   border-radius: var(--ds-border-radius-md);
   padding: var(--ds-size-4);
+  font-size: var(--ds-body-long-sm-font-size);
 }
 
 .content {
