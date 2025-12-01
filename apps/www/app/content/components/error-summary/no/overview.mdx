@@ -18,8 +18,7 @@ I eksempelet under kan du trykke på hver lenke i `ErrorSummary` for å navigere
 
 ## Retningslinjer
 
-`ErrorSummary` brukes til å vise en oppsummering når det er feil eller mangler i noe brukeren har gjort. En oppsummering kan gjelde for én eller flere feil.
-`ErrorSummary` skal inneholde alle feilmeldingene som er på siden, så brukerne kan navigere direkte til feilene og manglene ved å klikke på lenkene i oppsummeringen
+`ErrorSummary` brukes til å vise en oppsummering når det er feil eller mangler i noe brukeren har gjort. En oppsummering kan gjelde for én eller flere feil. `ErrorSummary` skal inneholde alle feilmeldingene som er på siden, så brukerne kan navigere direkte til feilene og manglene ved å klikke på lenkene i oppsummeringen.
 
 ### Plassering
 
@@ -29,8 +28,8 @@ I noen tilfeller kan det likevel være bedre å vise oppsummeringen i toppen, de
 
 ### Synlighet
 
-Oppsummeringen skal ikke være synlig uten at brukeren foretar seg noe. Den skal bli synlig først når brukeren har utført en handling om utløser feil.
-- Hvis vi validerer fortløpende (feks. ved `onBlur` på hvert felt), venter vi med å vise ErrorSummary til brukeren prøver å sende inn skjemaet.
+Oppsummeringen skal ikke være synlig uten at brukeren foretar seg noe. Den skal bli synlig først når brukeren har utført en handling som utløser feil.
+- Hvis vi validerer fortløpende (for eksempel ved `onBlur` på hvert felt), venter vi med å vise ErrorSummary til brukeren prøver å sende inn skjemaet.
 - Det er viktig at komponenten får fokus når den blir vist, slik at brukeren får med seg at det er feil eller mangler i skjemaet.
 - Feilmeldingene skal lenke direkte til feltet det gjelder.
 - Hvis feilen gjelder flere felt, for eksempel når to felt valideres på tvers, lenker vi til det første tilfellet av feilen.
