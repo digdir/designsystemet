@@ -8,29 +8,31 @@
 ```tsx
 import { Dropdown } from '@digdir/designsystemet-react';
 
-// med context
-<Dropdown.TriggerContext>
-  <Dropdown.Trigger>Trigger</Dropdown.Trigger>
-  <Dropdown>
-    <Dropdown.Heading>Heading</Dropdown.Heading>
-    <Dropdown.List>
-      <Dropdown.Item>
-        <Dropdown.Button>Item</Dropdown.Button>
-      </Dropdown.Item>
-    </Dropdown.List>
+<>
+{/* med context */}
+<Dropdown.TriggerContext> 
+  <Dropdown.Trigger>Trigger</Dropdown.Trigger> 
+  <Dropdown> 
+    <Dropdown.Heading>Heading</Dropdown.Heading> 
+    <Dropdown.List> 
+      <Dropdown.Item> 
+        <Dropdown.Button>Item</Dropdown.Button> 
+      </Dropdown.Item> 
+    </Dropdown.List> 
   </Dropdown>
 </Dropdown.TriggerContext>
 
-// uten context
+{/* uten context */}
 <Button popovertarget="my-dropdown">Trigger</Button>
-<Dropdown id="my-dropdown">
-  <Dropdown.Heading>Heading</Dropdown.Heading>
-  <Dropdown.List>
-    <Dropdown.Item>
+<Dropdown id="my-dropdown"> 
+  <Dropdown.Heading>Heading</Dropdown.Heading> 
+  <Dropdown.List> 
+    <Dropdown.Item> 
       <Dropdown.Button>Item</Dropdown.Button>
-    </Dropdown.Item>
+    </Dropdown.Item> 
   </Dropdown.List>
 </Dropdown>
+</>
 ```
 
 ### React og `popovertarget`
