@@ -21,6 +21,19 @@ export const Preview = () => {
   );
 };
 
+export const PreviewEn = () => {
+  return (
+    <Field>
+      <Label>Last name</Label>
+      <Field.Description>Last name cannot contain spaces</Field.Description>
+      <Input defaultValue='Smith Washington' />
+      <ValidationMessage>
+        You cannot have spaces in your last name
+      </ValidationMessage>
+    </Field>
+  );
+};
+
 export const Affix = () => (
   <Field>
     <Label>Hvor mange kroner koster det per måned?</Label>
@@ -32,9 +45,28 @@ export const Affix = () => (
   </Field>
 );
 
+export const AffixEn = () => (
+  <Field>
+    <Label>How many pounds does it cost per month?</Label>
+    <Field.Affixes>
+      <Field.Affix>GBP</Field.Affix>
+      <Input />
+      <Field.Affix>per month</Field.Affix>
+    </Field.Affixes>
+  </Field>
+);
+
 export const Counter = () => (
   <Field>
     <Label>Legg til en beskrivelse</Label>
+    <Textarea rows={2} />
+    <Field.Counter limit={10} />
+  </Field>
+);
+
+export const CounterEn = () => (
+  <Field>
+    <Label>Add a description</Label>
     <Textarea rows={2} />
     <Field.Counter limit={10} />
   </Field>
@@ -48,6 +80,19 @@ export const Position = () => (
     </Field>
     <Field position='end'>
       <Label>Lydløs</Label>
+      <Input type='checkbox' role='switch' />
+    </Field>
+  </>
+);
+
+export const PositionEn = () => (
+  <>
+    <Field position='end'>
+      <Label>Airplane mode</Label>
+      <Input type='checkbox' role='switch' />
+    </Field>
+    <Field position='end'>
+      <Label>Silent</Label>
       <Input type='checkbox' role='switch' />
     </Field>
   </>
