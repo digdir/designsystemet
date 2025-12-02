@@ -63,7 +63,6 @@ export default function Patterns({
   loaderData: { lang, frontmatter, code, toc },
 }: Route.ComponentProps) {
   const { t } = useTranslation();
-  console.log(frontmatter);
   const feedbackUrl = `https://github.com/digdir/designsystemet/issues/new?template=BLANK_ISSUE&title=Feedback: Patterns - ${frontmatter.title}`;
   return (
     <>

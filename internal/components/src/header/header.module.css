@@ -102,23 +102,36 @@
     & nav {
       gap: var(--ds-size-1);
 
-      & ul {
-        position: absolute;
+      & .listContainer {
+        margin: 0;
+        position: fixed;
         border: none;
         z-index: 1;
-        left: 0;
-        right: 0;
-        top: 75px;
+        inset: 0;
+        display: none;
         background-color: var(--ds-color-neutral-background-default);
         box-shadow: var(--ds-shadow-lg);
-        flex-direction: column;
-        display: none;
         padding: 20px 0;
         width: 100%;
-
-        &[data-open='true'] {
+        max-height: 100svh;
+        overflow-y: auto;
+        &:popover-open {
           display: block;
         }
+        &::backdrop {
+          background-color: rgb(0 0 0 / 0.5);
+        }
+        & button {
+          position: absolute;
+          right: var(--content-inline-padding);
+          top: calc(var(--header-height) / 2);
+          translate: 0 -50%;
+        }
+      }
+
+      & ul {
+        flex-direction: column;
+        align-items: start;
 
         & li {
           padding: 20px 0;
