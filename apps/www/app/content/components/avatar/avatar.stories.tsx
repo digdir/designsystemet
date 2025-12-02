@@ -43,10 +43,10 @@ export const ShapeVariants = () => (
   <>
     <Avatar variant='circle' aria-label='variant circle' />
     <Avatar variant='square' aria-label='variant square' />
-    <Avatar variant='circle' aria-label='Ola Nordman'>
+    <Avatar variant='circle' aria-label='Ola Nordmann'>
       ON
     </Avatar>
-    <Avatar variant='square' aria-label='Ola Nordman'>
+    <Avatar variant='square' aria-label='Ola Nordmann'>
       ON
     </Avatar>
   </>
@@ -54,10 +54,10 @@ export const ShapeVariants = () => (
 
 export const WithImageAndIcon = () => (
   <>
-    <Avatar aria-label='Ola Nordman'>
+    <Avatar aria-label='Ola Nordmann'>
       <img src='/img/component-docs/cats/cat1.webp' alt='' />
     </Avatar>
-    <Avatar aria-label='Ola Nordman'>
+    <Avatar aria-label='Ola Nordmann'>
       <BriefcaseIcon />
     </Avatar>
   </>
