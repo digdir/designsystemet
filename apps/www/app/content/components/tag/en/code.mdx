@@ -1,11 +1,5 @@
----
-title: Tag
-subtitle: 'Tags are labels that can be used to categorize elements or communicate progress, status, or process.'
-image: Tag.svg
-cssfile: tag
----
-
 <Story story="Preview" />
+<ReactComponentDocs />
 
 ## Usage
 
@@ -15,16 +9,34 @@ import { Tag } from '@digdir/designsystemet-react';
 <Tag>Beta</Tag>;
 ```
 
-## Code Examples
+## Examples
 
 ### Sizes
 
 <Story story="Sizes" />
 
-### Colors
-
-<Story story="Colors" />
-
 ### Icons
+You must determine the spacing between text and icon yourself. We recommend that the `padding` on the `Tag` towards the outer edge is equal to the `margin` on the icon.
 
-<Story story="Icons" />
+<Story story="IconsEn" />
+
+### Variants
+You can set `variant="outline"` to make the tag more visible on some background colors.
+
+<Story story="Variants" />
+
+## HTML
+Apply the class name `ds-tag` to the element that is to be a tag.
+
+```html
+<span class="ds-tag">Beta</span>
+
+<!-- outline -->
+<span class="ds-tag" data-variant="outline">Beta</span>
+```
+
+## CSS variables and data attributes
+
+<CssVariables />
+
+<CssAttributes />
