@@ -78,10 +78,6 @@ export const Position = () => (
       <Label>Flymodus</Label>
       <Input type='checkbox' role='switch' />
     </Field>
-    <Field position='end'>
-      <Label>Lydløs</Label>
-      <Input type='checkbox' role='switch' />
-    </Field>
   </>
 );
 
@@ -89,10 +85,6 @@ export const PositionEn = () => (
   <>
     <Field position='end'>
       <Label>Airplane mode</Label>
-      <Input type='checkbox' role='switch' />
-    </Field>
-    <Field position='end'>
-      <Label>Silent</Label>
       <Input type='checkbox' role='switch' />
     </Field>
   </>

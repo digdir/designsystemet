@@ -1,4 +1,11 @@
-import { Fieldset, Switch } from '@digdir/designsystemet-react';
+import {
+  Divider,
+  Field,
+  Fieldset,
+  Input,
+  Label,
+  Switch,
+} from '@digdir/designsystemet-react';
 
 export const Preview = () => {
   return <Switch label='Switch' />;
@@ -43,3 +50,41 @@ export const RightAligned = () => {
 export const RightAlignedEn = () => {
   return <Switch label='Flight mode' position='end' defaultChecked />;
 };
+
+export const RightAligned2 = () => (
+  <div
+    style={{
+      flexDirection: 'column',
+      width: '100%',
+      maxWidth: '380px',
+    }}
+  >
+    <Divider />
+
+    <Field
+      position='end'
+      style={{
+        alignItems: 'center',
+        padding: 'var(--ds-size-2) 0',
+      }}
+    >
+      <Label>Flymodus</Label>
+      <Input type='checkbox' role='switch' />
+    </Field>
+
+    <Divider />
+
+    <Field
+      position='end'
+      style={{
+        alignItems: 'center',
+        padding: 'var(--ds-size-2) 0',
+      }}
+    >
+      <Label>Lydløs</Label>
+      <Input type='checkbox' role='switch' />
+    </Field>
+
+    <Divider />
+  </div>
+);
