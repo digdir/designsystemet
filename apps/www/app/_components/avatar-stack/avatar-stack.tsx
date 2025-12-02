@@ -6,10 +6,16 @@ type AvatarStackProps = {
 };
 const avatars = [
   'ardoq',
-  'digdir',
+  'avinor',
   'brønnøysundregistrene',
-  'mattilsynet',
+  'digdir',
   'designsystemet',
+  'ksdigital',
+  'ks',
+  'mattilsynet',
+  'oslokommune',
+  'skatteetaten',
+  'nav',
 ];
 
 export const AvatarStack = ({ authors }: AvatarStackProps) => {
