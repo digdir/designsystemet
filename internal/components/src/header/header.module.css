@@ -138,7 +138,7 @@
         }
         & button {
           position: absolute;
-          right: var(--content-inline-padding);
+          right: var(--content-inline-padding, var(--ds-size-7));
           top: calc(var(--header-height) / 2);
           translate: 0 -50%;
         }
