@@ -1,6 +1,7 @@
 import { join } from 'node:path';
 import { Heading } from '@digdir/designsystemet-react';
 import { ComponentFillIcon } from '@navikt/aksel-icons';
+import { Fragment } from 'react/jsx-runtime';
 import { useTranslation } from 'react-i18next';
 import {
   Banner,
@@ -103,7 +104,7 @@ export default function Components({
       </Banner>
       {Object.keys(components).map((category, index) => {
         return (
-          <>
+          <Fragment key={category}>
             {category !== 'components' ? (
               <Heading data-size='md'>
                 {/* @ts-ignore -- this key will exist */}
@@ -125,7 +126,7 @@ export default function Components({
                 />
               ))}
             </div>
-          </>
+          </Fragment>
         );
       })}
     </>
