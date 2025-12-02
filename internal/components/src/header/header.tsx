@@ -192,11 +192,8 @@ const Header = ({
               to={logoLink}
               aria-label={t('header.home-link')}
             >
-              {isHamburger ? (
-                <DsEmbledLogo className={classes.logo} />
-              ) : (
-                <DsFullLogo className={classes.logo} />
-              )}
+              <DsEmbledLogo className={classes.logo} />
+              <DsFullLogo className={classes.logoWide} />
             </Link>
             {betaTag && <div className={classes.tag}>Beta</div>}
           </div>
