@@ -30,7 +30,7 @@ export const Group = () => {
       />
       <Radio
         label='Brev'
-        description='Levering kan ta 3–5 virkedager, avhengig av posttjenesten.'
+        description='Levering kan ta 3-5 virkedager, avhengig av posttjenesten.'
         value='brev'
         name='kontakt'
       />
@@ -60,7 +60,7 @@ export const GroupEn = () => {
       />
       <Radio
         label='Letter'
-        description='Delivery may take 3–5 working days, depending on the postal service.'
+        description='Delivery may take 3-5 working days, depending on the postal service.'
         value='letter'
         name='contact'
       />
