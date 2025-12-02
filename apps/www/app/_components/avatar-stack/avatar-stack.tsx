@@ -13,9 +13,9 @@ const avatars = [
   'ksdigital',
   'ks',
   'mattilsynet',
+  'nav',
   'oslokommune',
   'skatteetaten',
-  'nav',
 ];
 
 export const AvatarStack = ({ authors }: AvatarStackProps) => {
