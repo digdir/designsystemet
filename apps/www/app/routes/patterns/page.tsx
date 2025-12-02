@@ -83,7 +83,12 @@ export default function Patterns({
             <div className={classes.meta}>
               {frontmatter.partners && (
                 <>
-                  <AvatarStack authors={frontmatter.partners} />{' '}
+                  <a
+                    href='#article-contributors'
+                    aria-label={t('contributors')}
+                  >
+                    <AvatarStack authors={frontmatter.partners} />
+                  </a>
                   <span className={classes.partners}>
                     {frontmatter.partners}
                   </span>

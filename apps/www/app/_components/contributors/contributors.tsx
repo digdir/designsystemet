@@ -14,7 +14,7 @@ export const Contributors = ({
 }: ContributorsProps) => {
   const { t } = useTranslation();
   return (
-    <section className={classes.container}>
+    <section className={classes.container} id='article-contributors'>
       <img
         src='/img/diamond-logo.svg'
         alt='Designsystemet logo'

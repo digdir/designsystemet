@@ -43,6 +43,16 @@
   margin-top: var(--ds-size-6);
   font-size: var(--ds-body-long-sm-font-size);
   color: var(--ds-color-neutral-text-subtle);
+  padding-block: 2px;
+  & a {
+    padding: 2px 2px 2px 0;
+    border-radius: 4px;
+  }
+  & a:focus-visible {
+    display: block;
+    outline: 2px solid var(--ds-color-focus-outer);
+    outline-offset: -2px;
+  }
 }
 .content {
   grid-area: content;
