@@ -1,8 +1,12 @@
+<Alert data-color="info">
+We are working to improve the accessibility documentation for this component. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
+</Alert>
+
 ## Alert in a live region
 
 If you want the alert to be read out dynamically, you must place the `Alert` inside a live region. The region **must wrap around** the `Alert` component, not be placed on the component itself.
 
-Out of the box, `Alert` is presented to screen reader users as regular static content. For alerts that appear dynamically, you can define a *live region* for screen readers yourself, but be aware of the behaviour this introduces. You can read more about this in [MDN’s documentation on ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions).
+Out of the box, `Alert` is presented to screen reader users as regular static content. For alerts that appear dynamically, you can define a *live region* for screen readers yourself, but be aware of the behaviour this introduces. You can read more about this in [MDN's documentation on ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions).
 
 Pay particular attention to the fact that the live region — that is, the element with the attribute `role="alert"`, `role="status"`, or `aria-live` with the value `"assertive"` or `"polite"` — must exist on the page **before** the alert that is to be read out.
 
