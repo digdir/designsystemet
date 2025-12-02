@@ -69,13 +69,28 @@
   gap: var(--ds-size-4);
 
   & .logo {
-    height: 29px;
-    width: auto;
+    display: none;
+  }
+  & .logoWide {
+    display: block;
+  }
+  @media screen and (max-width: 540px) {
+    & .logo {
+      display: block;
+    }
+    & .logoWide {
+      display: none;
+    }
   }
 
   & .logoLink {
     display: flex;
     align-items: center;
+
+    & svg {
+      height: 29px;
+      width: auto;
+    }
 
     & svg [data-text] {
       fill: var(--ds-color-neutral-text-default);
@@ -123,7 +138,7 @@
         }
         & button {
           position: absolute;
-          right: var(--content-inline-padding);
+          right: var(--content-inline-padding, var(--ds-size-7));
           top: calc(var(--header-height) / 2);
           translate: 0 -50%;
         }
@@ -143,10 +158,6 @@
         }
       }
     }
-  }
-
-  .logo {
-    height: 26px;
   }
 }
 

@@ -30,6 +30,7 @@
   --page-spacing-top: var(--ds-size-14);
   --page-spacing-bottom: var(--ds-size-14);
   --media-max-width: 800px;
+  --content-inline-padding: var(--ds-size-7);
   &:has(dialog[open]) {
     overflow: hidden;
   }
