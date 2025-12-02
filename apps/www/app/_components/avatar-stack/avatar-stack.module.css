@@ -6,6 +6,7 @@
 
   --captured-length: var(--overlap); /*overlap*/
   display: flex;
+  padding-block: 1px;
   transition: --captured-length 0.2s ease;
   width: calc(var(--avatar-size) * var(--n) + var(--overlap) * (var(--n) - 1));
   filter: drop-shadow(0 0 0.5px var(--outline-color)) drop-shadow(0 0 0.5px var(--outline-color)) drop-shadow(0 0 0.5px var(--outline-color));
