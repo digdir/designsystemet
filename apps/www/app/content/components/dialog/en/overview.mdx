@@ -37,6 +37,12 @@ Use of modal `Dialog` should generally be limited, but it can be helpful when th
 ### Non-modal Dialog
 A non-modal `Dialog` allows the user to continue interacting with the rest of the page while the dialog is open. It should be used with care and is most suitable for providing supplementary information or extra functionality that does not require full attention.
 
+### Closing a `Dialog`
+Ensure that users always have a clear and simple way to close a `Dialog`. The most common solution is a close button (X) in the top right corner. It must remain visible even when the dialog contains a lot of content and scrolling is required.
+
+If placing a close button (X) in the top right corner is not appropriate, the dialog must include a clear close action within the content, for example a Cancel button. This gives users control and prevents them from getting stuck in the dialog.
+
+
 ## Text
 - Use a short and concise heading. The heading must make it clear to the user that the context has changed.  
 - Avoid long blocks of text.  

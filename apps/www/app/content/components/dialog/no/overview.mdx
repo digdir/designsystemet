@@ -29,13 +29,19 @@ Bruk `Dialog` for å vise viktig innhold som krever brukerens oppmerksomhet elle
 
 `Dialog` kan brukes som både **modal** og **ikke-modal**.
 
-### Modal Dialog
+### Modal `Dialog`
 En modal `Dialog` er et midlertidig vindu som åpnes over resten av innholdet på nettsiden. Modal `Dialog` fanger brukerens oppmerksomhet og hindrer interaksjon med annet innhold, samtidig som konteksten til nettsiden beholdes. 
 
 Bruk av modal `Dialog` bør generelt begrenses, men kan være nyttig når brukeren må ta stilling til informasjon, bekrefte en handling eller fokusere på en spesifikk oppgave - uten å navigere bort fra siden.
 
-### "Ikke-modal" Dialog
+### "Ikke-modal" `Dialog`
 En "ikke-modal" `Dialog` lar brukeren fortsatt bruke resten av siden mens dialogen er åpen. Den bør brukes med varsomhet, og passer best når du skal gi støtteinformasjon eller ekstra funksjonalitet som ikke krever full oppmerksomhet. 
+
+### Lukking av `Dialog`
+Sørg for at brukeren alltid har en synlig og enkel måte å lukke en `Dialog` på. Det vanligste er en lukkeknapp (X) øverst til høyre. Den skal være synlig selv om dialogen inneholder mye innhold og brukeren må scrolle.
+
+Hvis det ikke er naturlig å plassere en lukkeknapp (X) øverst til høyre, må dialogen ha en tydelig lukkehandling inne i innholdet, for eksempel en Avbryt-knapp. Dette gir brukeren kontro
+
 
 ## Tekst
 - Ha en kort og konsis overskrift. Overskriften skal gjøre det tydelig for brukeren at konteksten er endret. 
