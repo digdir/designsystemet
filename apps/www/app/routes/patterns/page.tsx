@@ -5,6 +5,7 @@ import { PencilLineIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { useTranslation } from 'react-i18next';
 import { isRouteErrorResponse } from 'react-router';
+import { AvatarStack } from '~/_components/avatar-stack/avatar-stack';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { TableOfContents } from '~/_components/table-of-contents/toc';
@@ -62,6 +63,7 @@ export default function Patterns({
   loaderData: { lang, frontmatter, code, toc },
 }: Route.ComponentProps) {
   const { t } = useTranslation();
+  console.log(frontmatter);
   const feedbackUrl = `https://github.com/digdir/designsystemet/issues/new?template=BLANK_ISSUE&title=Feedback: Patterns - ${frontmatter.title}`;
   return (
     <>
@@ -78,11 +80,25 @@ export default function Patterns({
               {frontmatter.description}
             </Paragraph>
           )}
-          {frontmatter.date && (
-            <div className={classes.date}>
-              {formatDate(frontmatter.date, lang)}
+          <Paragraph variant='short' asChild>
+            <div className={classes.meta}>
+              {frontmatter.partners && (
+                <>
+                  <AvatarStack authors={frontmatter.partners} />{' '}
+                  <span className={classes.partners}>
+                    {frontmatter.partners}
+                  </span>
+                </>
+              )}
+              <span>
+                {frontmatter.date && (
+                  <span
+                    className={classes.date}
+                  >{`${t('updated')} ${formatDate(frontmatter.date, lang)}`}</span>
+                )}
+              </span>
             </div>
-          )}
+          </Paragraph>
         </div>
       </div>
       <TableOfContents

@@ -1,4 +1,5 @@
 import { join } from 'node:path';
+import { Heading } from '@digdir/designsystemet-react';
 import { ComponentFillIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import {
@@ -36,10 +37,12 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
 
   const folders = getFoldersInContentDir('/components');
   const components: {
-    title: string;
-    image: string;
-    url: string;
-  }[] = [];
+    [category: string]: {
+      title: string;
+      image: string;
+      url: string;
+    }[];
+  } = {};
 
   folders.map(async (folder) => {
     const metadataJson = getFileFromContentDir(
@@ -56,7 +59,11 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
 
     const parsedMetadata = JSON.parse(metadataJson);
 
-    components.push({
+    if (!components[parsedMetadata.category || 'components']) {
+      components[parsedMetadata.category || 'components'] = [];
+    }
+
+    components[parsedMetadata.category || 'components'].push({
       image: parsedMetadata.image || '',
       title: parsedMetadata[lang].title || folder,
       url: `/${lang}/components/docs/${folder}/overview`,
@@ -94,11 +101,33 @@ export default function Components({
         <BannerHeading level={1}>{t('components.title')}</BannerHeading>
         <BannerIngress>{t('components.description')}</BannerIngress>
       </Banner>
-      <div className={classes.grid} data-is-main={true}>
-        {components.map((component) => (
-          <ComponentCard key={component.title} {...component} />
-        ))}
-      </div>
+      {Object.keys(components).map((category, index) => {
+        return (
+          <>
+            {category !== 'components' ? (
+              <Heading data-size='md'>
+                {/* @ts-ignore -- this key will exist */}
+                {t(`sidebar.categories.${category}`)}
+              </Heading>
+            ) : null}
+            <div
+              className={classes.grid}
+              data-is-main={true}
+              key={category}
+              data-index={index}
+            >
+              {components[category].map((component) => (
+                <ComponentCard
+                  key={component.url}
+                  title={component.title}
+                  image={component.image}
+                  url={component.url}
+                />
+              ))}
+            </div>
+          </>
+        );
+      })}
     </>
   );
 }

@@ -99,14 +99,12 @@
 
 .hamburger {
   &.header {
-    height: 72px;
-
     & nav {
       gap: var(--ds-size-1);
 
       & ul {
-        border-top: 1px solid var(--ds-color-neutral-border-subtle);
         position: absolute;
+        border: none;
         z-index: 1;
         left: 0;
         right: 0;

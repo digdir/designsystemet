@@ -13,12 +13,36 @@
   color: inherit;
 }
 
+.partners {
+  margin-right: calc(var(--_column-gap) + var(--_square-size));
+}
+
 .date {
+  display: flex;
+  align-items: center;
+  margin-left: calc(-1 * (var(--_column-gap) + var(--_square-size)));
+  &::before {
+    content: '';
+    width: var(--_square-size);
+    aspect-ratio: 1;
+    transform: rotate(45deg);
+    border-radius: 1px;
+    background-color: var(--logo-red);
+    margin-right: var(--_column-gap);
+  }
+}
+.meta {
+  --_column-gap: 10px;
+  --_square-size: 7px;
+  justify-content: start;
+  overflow: clip;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--_column-gap);
   margin-top: var(--ds-size-6);
-  background-color: var(--ds-color-neutral-background-tinted);
-  border-radius: var(--ds-border-radius-md);
-  padding: var(--ds-size-4);
   font-size: var(--ds-body-long-sm-font-size);
+  color: var(--ds-color-neutral-text-subtle);
 }
 .content {
   grid-area: content;
