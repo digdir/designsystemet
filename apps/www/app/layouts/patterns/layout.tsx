@@ -32,6 +32,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     [key: string]: {
       title: string;
       url: string;
+      partners: string;
     }[];
   } = {};
 
@@ -71,6 +72,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
     cats[result.frontmatter.category].push({
       title: result.frontmatter.sidebar_title || title,
       url,
+      partners: result.frontmatter.partners || '',
     });
   }
 
