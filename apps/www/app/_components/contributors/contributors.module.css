@@ -40,13 +40,13 @@
 }
 
 .container p,
-.container h3 {
+.container :where(h2, h3, h4) {
   margin: 0;
 }
 .container p {
   margin-left: calc(-1 * (var(--_column-gap) + var(--_square-size)));
 }
-.container h3 {
+.container :where(h2, h3, h4) {
   margin-bottom: 12px;
 }
 
