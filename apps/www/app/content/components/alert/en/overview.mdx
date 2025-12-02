@@ -1,15 +1,17 @@
 <Story story="PreviewEn" />
 
 **Use `Alert` when**
-- the message is a short, informative and time-limited notification
+- you need to show short and informative time-limited messages
 - the information concerns an error that affects only one part of the system or a minor function
-- the information relates to connectivity issues or API errors that are likely to resolve by reloading the page
+- there are connection issues or API errors that are likely to be resolved by reloading the page
 
 **Avoid `Alert` when**
-- individual form fields need validation, use the component's built-in error message instead [`ValidationMessage`](/en/components/docs/validation-message/overview)
-- multiple error messages need to be summarised, use [`ErrorSummary`](/en/components/docs/error-summary/overview)
-- the error prevents any further use of the service, use an error page instead
-- the information is static and should always be visible, use [`Card`](/en/components/docs/card/overview) instead
+- the error prevents further use of the service, use an [error page](/en/patterns/systemnotifications#n%C3%A5r-bruker-vi-feilsider) instead
+- you need to notify the user about an error in a single form field, use the component’s own error message [`ValidationMessage`](/en/components/docs/validation-message/overview)
+- the message is a static info box, use [`Card`](/en/components/docs/card/overview) instead
+- multiple error messages need to be summarised, use [`ErrorSummary`](/en/components/docs/error-summary/overview) instead
+
+For more comprehensive guidelines on how to use alerts in services, see the pattern for [System notifications](/en/patterns/systemnotifications). There you will find examples and recommendations on when to use `Alert`, and when other solutions may be more appropriate.
 
 
 ## Examples
@@ -92,3 +94,5 @@ Here is a list of the types of information that a notification should contain:
     - Example: "If this problem occurs again, contact customer service."
 - Help them fix the problem themselves
     - Example: "Please try again."
+
+For more guidance on how to write clear and effective alert text, see the language recommendations in the [System notifications pattern](/no/patterns/systemnotifications#språk).
