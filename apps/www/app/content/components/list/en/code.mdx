@@ -1,11 +1,5 @@
----
-title: List
-subtitle: '`List` is used to present content in a clear and structured manner.'
-image: List.svg
-cssfile: list
----
-
 <Story story="Preview" />
+<ReactComponentDocs />
 
 ## Usage
 
@@ -13,16 +7,41 @@ cssfile: list
 import { List } from '@digdir/designsystemet-react';
 
 <List.Unordered>
-  <List.Item>Item</List.Item>
+<List.Item>Item</List.Item>
 </List.Unordered>
 ```
 
-## Code Examples
+## Example
 
 ### Unordered list
 
-<Story story="Unordered" layout="column" />
+<Story story="UnorderedEn" layout="column" />
 
 ### Ordered list
 
-<Story story="Ordered" layout="column" />
+<Story story="OrderedEn" layout="column" />
+
+## HTML
+
+You use either `<ul>` or `<ol>` with the class name `ds-list`.
+`<li>` is used for each list item, and does not need a class name.
+
+```html
+<!-- unsorted list -->
+<ul class="ds-list">
+<li>Item</li>
+<li>Item</li>
+</ul>
+
+<!-- sorted list -->
+<ol class="ds-list">
+<li>Item</li>
+<li>Item</li>
+</ol>
+```
+
+## CSS variables and data attributes
+
+<CssVariables />
+
+<CssAttributes />

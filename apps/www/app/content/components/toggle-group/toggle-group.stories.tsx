@@ -60,6 +60,28 @@ export const OnlyIcons = () => {
   );
 };
 
+export const OnlyIconsEn = () => {
+  return (
+    <ToggleGroup defaultValue='option-1'>
+      <Tooltip content='Left aligned'>
+        <ToggleGroup.Item value='option-1' icon>
+          <AlignLeftIcon aria-hidden />
+        </ToggleGroup.Item>
+      </Tooltip>
+      <Tooltip content='Center aligned'>
+        <ToggleGroup.Item value='option-2' icon>
+          <AlignCenterIcon aria-hidden />
+        </ToggleGroup.Item>
+      </Tooltip>
+      <Tooltip content='Right aligned'>
+        <ToggleGroup.Item value='option-3' icon>
+          <AlignRightIcon aria-hidden />
+        </ToggleGroup.Item>
+      </Tooltip>
+    </ToggleGroup>
+  );
+};
+
 export const Controlled = () => {
   const [value, setValue] = useState<string>('utkast');
   return (
@@ -86,6 +108,37 @@ export const Controlled = () => {
       <Paragraph>Du har valgt: {value}</Paragraph>
       <Button data-size='sm' onClick={() => setValue('arkiv')}>
         Velg Arkiv
+      </Button>
+    </>
+  );
+};
+
+export const ControlledEn = () => {
+  const [value, setValue] = useState<string>('drafts');
+  return (
+    <>
+      <ToggleGroup value={value} onChange={setValue}>
+        <ToggleGroup.Item value='inbox'>
+          <EnvelopeClosedIcon aria-hidden />
+          Inbox
+        </ToggleGroup.Item>
+        <ToggleGroup.Item value='drafts'>
+          <DocPencilIcon aria-hidden />
+          Drafts
+        </ToggleGroup.Item>
+        <ToggleGroup.Item value='archive'>
+          <ArchiveIcon aria-hidden />
+          Archive
+        </ToggleGroup.Item>
+        <ToggleGroup.Item value='sent'>
+          <PaperplaneIcon aria-hidden />
+          Sent
+        </ToggleGroup.Item>
+      </ToggleGroup>
+      <Divider />
+      <Paragraph>You have selected: {value}</Paragraph>
+      <Button data-size='sm' onClick={() => setValue('archive')}>
+        Select Archive
       </Button>
     </>
   );

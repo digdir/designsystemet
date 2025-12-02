@@ -1,14 +1,12 @@
----
-title: Suggestion
-image: Suggestion.svg
-cssfile: suggestion
----
+<Alert data-color="warning">
+Suggestion is under development. If you find any errors or bugs, please report them on Github or Slack.
+</Alert>
 
-Searchable select with support for multi-select. Use when Select is not sufficient.
-
-<Story story="Preview" />
+<Story story="PreviewEn" />
+<ReactComponentDocs />
 
 ## Usage
+`Suggestion` is based on [u-combobox from u-elements (github.io)](https://u-elements.github.io/u-elements/elements/u-combobox). It is inspected by [open-ui's combobox pattern (open-ui.org)](https://open-ui.org/components/combobox.explainer/).
 
 ```tsx
 import { EXPERIMENTAL_Suggestion as Suggestion } from '@digdir/designsystemet-react'
@@ -17,16 +15,55 @@ import { EXPERIMENTAL_Suggestion as Suggestion } from '@digdir/designsystemet-re
   <Suggestion.Input />
   <Suggestion.Clear />
   <Suggestion.List>
-    <Suggestion.Empty>Tomt</Suggestion.Empty>
+    <Suggestion.Empty>Empty</Suggestion.Empty>
     <Suggestion.Option label="Sogndal" value="sogndal">
-      Sogndal
+    Sogndal
     </Suggestion.Option>
     <Suggestion.Option label="Oslo" value="oslo">
-      Oslo
+    Oslo
     </Suggestion.Option>
   </Suggestion.List>
 </Suggestion>
 ```
 
-## Code Examples
+## Examples
 
+### Multiple Choice
+
+Use `multiple` on `Suggestion`.
+If you want to change how selected options are displayed, you can use `renderSelected`.
+
+<Story story='MultipleEn' />
+
+### Controlled Multiple Choice
+
+<Story story='ControlledMultipleEn' layout='column' />
+
+## HTML
+You can find general documentation on using `u-combobox` at u-elements:
+[https://u-elements.github.io/u-elements/elements/u-combobox](https://u-elements.github.io/u-elements/elements/u-combobox).
+
+To get the Design System styling, add the class name `ds-suggestion` to the `<u-combobox>` element.
+`<input>` should have the `ds-input` class.
+
+If you enable multiple choice, `<data>` should have the class name `ds-chip` and the data attribute `data-removable="true"`.
+
+```html
+<u-combobox class="ds-suggestion" ...>
+  <data class="ds-chip" data-removable="true" ...>Selected option</data>
+  <input class="ds-input" ... />
+  <u-datalist>
+    <u-option label="Sogndal" value="sogndal">Sogndal</u-option>
+    <u-option label="Oslo" value="oslo">Oslo</u-option>
+  </u-datalist>
+</u-combobox>
+```
+
+## CSS variables and data attributes
+
+<CssVariables />
+
+<CssAttributes />
+
+`Suggestion` is based on [u-combobox from u-elements (github.io)](https://u-elements.github.io/u-elements/elements/u-combobox).
+It is inspected by [open-ui's combobox pattern (open-ui.org)](https://open-ui.org/components/combobox.explainer/).

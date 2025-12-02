@@ -1,3 +1,7 @@
+<Alert data-color="info">
+We are working to improve the accessibility documentation for this component. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
+</Alert>
+
 When the user has `prefers-reduced-motion` set to `reduce`, the spinner will use a 6-second animation. The animation is not decorative, so we do not disable it.
 
 To ensure a good user experience, the `Spinner` should be combined with text or have an `aria-label`, so that users of assistive technologies are informed that loading is in progress. When you display text indicating loading together with a `Spinner`, you must hide the `Spinner` using `aria-hidden="true"` to prevent “loading” from being announced multiple times. If you do not include text, the `Spinner` should instead have an `aria-label`.

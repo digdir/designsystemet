@@ -4,6 +4,10 @@ export const Preview = () => {
   return <Heading>Tittel tekst</Heading>;
 };
 
+export const PreviewEn = () => {
+  return <Heading>Title text</Heading>;
+};
+
 export const Sizes = () => (
   <>
     <Heading data-size='2xl' style={{ marginBottom: 'var(--ds-size-4)' }}>
