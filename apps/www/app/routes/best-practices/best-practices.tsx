@@ -60,7 +60,10 @@ export default function BestPractices() {
   const { t } = useTranslation();
 
   return (
-    <div className={'l-content-container u-default-padding-top'}>
+    <div
+      className={'l-content-container u-default-padding-top'}
+      style={{ paddingBottom: 'var(--ds-size-22)' }}
+    >
       <Banner
         style={{ marginBottom: 'var(--page-spacing-top)' }}
         data-color='brand1'
