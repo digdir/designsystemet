@@ -1,3 +1,7 @@
+<Alert data-color="info">
+Vi jobber med å forbedre dokumentasjonen for tilgjengelighet på denne komponenten. Har du spørsmål eller ser noe som bør prioriteres, ta gjerne kontakt med oss på [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) eller [Slack](https://designsystemet.no/slack).
+</Alert>
+
 ## Alert i live region
 
 Dersom du vil at varselet skal bli lest opp dynamisk, må du legge `Alert` i en live region. Regionen **skal være rundt** `Alert`-komponenten, ikke på den.
@@ -6,7 +10,7 @@ Ut av boksen blir `Alert` presentert for skjermleserbrukere som vanlig statisk i
 
 Legg spesielt merke til at live-regionen — altså elementet med attributt `role="alert"`, `role="status"` eller `aria-live` med verdi `"assertive"` eller `"polite"` — må eksistere på siden **før** varselet som skal leses opp.
 
-For dynamiske varsler er det mest aktuelt å bruke `role="alert"` for kritiske varsel eller `role="status"` for mindre kritiske varsel, som beskrevet i [mønsteret for systemvarsler](https://designsystemet.no/no/patterns/systemnotifications). Se også [alert role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role) og [status role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role) hos MDN.
+For dynamiske varsler er det mest aktuelt å bruke `role="alert"` for kritiske varsel eller `role="status"` for mindre kritiske varsel, som beskrevet i [mønsteret for systemvarsler](/no/patterns/systemnotifications). Se også [alert role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role) og [status role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role) hos MDN.
 
 **Ikke** kombiner `role="alert"` og `aria-live`, siden [dette kan føre til at varselet leses opp dobbelt i VoiceOver (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions#:~:text=adding%20both%20aria%2Dlive%20and%20role=%22alert%22%20causes%20double%20speaking%20issues%20in%20VoiceOver%20on%20iOS).
 
