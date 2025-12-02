@@ -24,7 +24,7 @@ export const Sizes = () => (
 );
 
 export const ColorVariants = () => {
-  const colors = ['neutral', 'accent', 'brand1', 'brand2', 'nramd3'];
+  const colors = ['neutral', 'accent', 'brand1', 'brand2', 'brand3'];
 
   return (
     <>
