@@ -1,7 +1,11 @@
 .grid {
   padding-bottom: var(--ds-size-18);
-  padding-top: var(--ds-size-13);
+  padding-top: var(--ds-size-4);
   display: grid;
   grid-gap: var(--ds-size-6);
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+
+  &:nth-of-type(1) {
+    padding-top: var(--ds-size-13);
+  }
 }
