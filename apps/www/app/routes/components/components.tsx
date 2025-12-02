@@ -101,16 +101,21 @@ export default function Components({
         <BannerHeading level={1}>{t('components.title')}</BannerHeading>
         <BannerIngress>{t('components.description')}</BannerIngress>
       </Banner>
-      {Object.keys(components).map((category) => {
+      {Object.keys(components).map((category, index) => {
         return (
           <>
             {category !== 'components' ? (
-              <Heading data-size='lg'>
+              <Heading data-size='md'>
                 {/* @ts-ignore -- this key will exist */}
                 {t(`sidebar.categories.${category}`)}
               </Heading>
             ) : null}
-            <div className={classes.grid} data-is-main={true} key={category}>
+            <div
+              className={classes.grid}
+              data-is-main={true}
+              key={category}
+              data-index={index}
+            >
               {components[category].map((component) => (
                 <ComponentCard
                   key={component.url}
