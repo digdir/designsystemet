@@ -43,7 +43,7 @@ export const PreviewEn = () => {
 export const InCardWithColor = () => {
   return (
     <>
-      <Card data-color='brand1'>
+      <Card data-color='brand3' data-variant='tinted'>
         <Details>
           <Details.Summary>
             Hvordan får jeg tildelt et jegernummer?
@@ -66,7 +66,7 @@ export const InCardWithColor = () => {
         </Details>
       </Card>
       <br />
-      <Card data-color='brand1' data-variant='tinted'>
+      <Card data-color='brand1'>
         <Details>
           <Details.Summary>Vedlegg</Details.Summary>
           <Details.Content>Vedlegg 1, vedlegg 2, vedlegg 3</Details.Content>
@@ -79,7 +79,7 @@ export const InCardWithColor = () => {
 export const InCardWithColorEn = () => {
   return (
     <>
-      <Card data-color='brand1'>
+      <Card data-color='brand3' data-variant='tinted'>
         <Details>
           <Details.Summary>
             How do I get assigned a hunter number?
@@ -102,7 +102,7 @@ export const InCardWithColorEn = () => {
         </Details>
       </Card>
       <br />
-      <Card data-color='brand1' data-variant='tinted'>
+      <Card data-color='brand1'>
         <Details>
           <Details.Summary>Attachments</Details.Summary>
           <Details.Content>
