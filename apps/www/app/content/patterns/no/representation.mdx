@@ -1,14 +1,218 @@
 ---
-title: Hvem representerer du?
+title: Innlogging og representasjon
 sidebar_title: Representasjon
 category: Kommende
 description: Hvordan håndterer aktørbytte på tvers av tjenester?
-date: 2025-01-29
+date: 2025-08-08
 ---
 
-Hvordan tydeliggjør vi hvem du representerer? Det kan være deg selv som privatperson, en virksomhet, frivillig organisasjon, eller at du hjelper en annen privatperson. Hvordan kan vi gjøre dette skillet tydelig med bruk av ulike visuelle, tekstlige og interaktive virkemidler som er gjenkjennelig på tvers av løsningene våre?
+<Card
+  data-color='warning'
+  variant="tinted"
+  data-unstyled
+>
+**Artikkelen er under arbeid** \
+En tverretatlig arbeidsgruppe jobber med å utarbeide disse anbefalingene. Selv om artikkelen ikke er ferdig, deler vi utkast underveis for å gi alle mulighet til å påvirke arbeidet. Vi setter stor pris på innspill fra alle med erfaringer, innsikt eller resultater fra brukertester. Bidra gjerne i den tilhørende [diskusjontråden på github.com](https://github.com/digdir/designsystemet/discussions/1671).
 
-Mønsteret er under arbeid i en tverretatlig arbeidsgruppe våren 2025. Du kan påvirke mønsteret og dele din innsikt i [Github](https://github.com/digdir/designsystemet/discussions/2296). 
+</Card>
+
+Når folk logger inn i offentlige digitale tjenester, er det ikke alltid for å gjøre noe på vegne av seg selv. Mange utfører oppgaver på vegne av andre, kanskje som en del av jobben, eller i rollen som verge, forelder eller styreleder. Dersom det ikke er tydelig hvem de handler på vegne av, eller hvilken virksomhet de representerer, kan det føre til feil, forsinkelser eller andre uheldige konsekvenser.
+
+Derfor må vi sørge for at innlogging og valg av representasjon skjer på en tydelig og forståelig måte. Det må komme klart frem:
+
+- hvilke valg brukeren har
+- hvorfor disse valgene er tilgjengelige
+- hvordan man eventuelt kan bytte representasjon
+
+Brukeren må også få hjelp dersom noe mangler:
+- Hva gjør man hvis en forventet representasjon ikke er tilgjengelig?
+- Hvorfor vises ikke en bestemt representasjon i denne tjenesten?
+- Er det tydelig for brukeren at en gitt representasjon ikke er relevant i akkurat denne sammenhengen?
+
+I noen kontekster kan feil representasjon få store konsekvenser. Det gjør tydelighet og god veiledning enda viktigere.
+
+<Card
+  data-color='warning'
+  variant="tinted"
+  data-unstyled
+>
+**Artikkelen er under arbeid** \
+En tverretatlig arbeidsgruppe jobber med å utarbeide disse anbefalingene. Selv om artikkelen ikke er ferdig, deler vi utkast underveis for å gi alle mulighet til å påvirke arbeidet. Vi setter stor pris på innspill fra alle med erfaringer, innsikt eller resultater fra brukertester. Bidra gjerne i den tilhørende [diskusjontråden på github.com](https://github.com/digdir/designsystemet/discussions/1671).
+
+</Card>
+
+## Språk og begreper
+Hvilke ord og begreper bruker vi når vi snakker om representasjon og innlogging? For å skape forståelige og brukervennlige løsninger, må vi skille mellom begreper som gir mening for brukerne, og de som bare gir mening internt i forvaltningen.
+
+
+### 1. Definisjoner
+
+| Begrep            | Forklaring |
+|-------------------|------------|
+| **Innlogging**    | Prosessen der brukeren identifiserer og autentiserer seg for å få tilgang til en digital tjeneste. Før brukeren kan representere noen andre, må de være identifisert som seg selv. |
+| **Representasjon**| Når en person handler eller ser informasjon på vegne av en annen person eller virksomhet. Representasjonen er knyttet til en rolle, et formelt ansvar eller en rettighet. |
+| **Fullmakt**     | En fullmektig kan se representasjon der hen har myndighet til å handle innen gitte rammer og vilkår, på vegne av fullmaktsgiver. |
+| **Vergemål**     | En verge kan se representasjon der hen tar hånd om, på bakgrunn av frivillig eller tvungent tiltak, interessene til en person som ikke kan ta hånd om disse selv. |
+| **Foresatt**     | En foresatt kan se representasjon der hen er juridisk ansvarlig for den daglige omsorgen for en person, foreldre er ofte også foresatte. |
+
+<br/>
+
+### 2. Bruk disse begrepene
+
+| Anbefalt begrep/formulering                                  | Unngå                            | Begrunnelse |
+|---------------------------------------------|---------------------------------------|-------------|
+| **Hvem skal du representere?**              | Hvem ønsker du å representere?        |  Unngår "ønsker". Brukeren søker ikke om å få representere, de skal representere. |
+| **Personer du kan representere** | Brukere du kan representere                                | «Bruker» kan være et belastet ord og forstås ulikt, f.eks. som rusmisbruker. |
+| **Virksomheter du kan representere**        | Aktører du kan representere                          | «Aktør» er for generelt da det kan vise til både personer, virksomheter og organisasjoner. Del heller inn i kategorier og bruk egnede underoverskrifter for dem.|
+| **Avdeling**      | Hovedenhet / underenhet               | Hovedenhet og underenhet er ofte uklart for sluttbruker.  |
+|  | Aktivitet / næringsaktivitet          | Ikke bruk "aktivitet" eller "næringsaktivitet" for å skille underenheter fordi de ikke alltid er et direkte forhold til underenheter. |
+
+
+<br/>
+<Card
+  data-color='warning'
+  variant="tinted"
+  data-unstyled
+>
+**Arbeid pågår** \
+Artikkelen er under arbeid. Kom gjerne med innspill i [diskusjontråden på github.com](https://github.com/digdir/designsystemet/discussions/1671).
+
+</Card>
+
+
+### Min side, din side, eller noens side?
+Begreper som «Min side» og «Din side» kan skape forvirring når flere offentlige tjenester bruker samme eller lignende navn for innloggede sider. Brukere kan ha problemer med å huske hvilken tjeneste de gjorde hva i: «Jeg fant det jo på Min side, men var det hos Skatteetaten eller NAV?»
+
+Når mange aktører bruker samme betegnelser uten tydelig avsender, risikerer vi at brukeropplevelsen blir fragmentert. Det som oppleves som én type side, kan ha ulikt innhold, struktur og formål fra tjeneste til tjeneste.
+
+For å unngå forvirring, bør vi:
+- Koble navnet til konteksten eller avsenderen, der det er hensiktsmessig:
+Min skatt, Mitt NAV, Min Altinn
+- Vurdere om det er mest naturlig å bruke «min» eller «din», avhengig av hvem som er avsender:
+   - ??? → Bruk din.
+   - ??? → Bruk min.
+
+- Unngå helt generiske navn som "Min side" uten noen form for presisering eller visuell forankring i tjenesteeieren. Det er også viktig å vurdere om det faktisk er behov for en navngitt side i det hele tatt, eller om brukeren kan finne det de trenger uten å måtte forstå et konsept som «Min side».
+
+<Card
+  data-color='warning'
+  variant="tinted"
+  data-unstyled
+>
+**Arbeid pågår** \
+Artikkelen er under arbeid. Kom gjerne med innspill i [diskusjontråden på github.com](https://github.com/digdir/designsystemet/discussions/1671).
+
+</Card>
+
+## Brukerens forståelse av innlogging og representasjon
+
+For å sikre en god og trygg opplevelse må brukeren forstå:
+
+1. [At de er logget inn](#1-forstår-brukeren-at-de-er-logget-inn)
+2. [Hvem de kan representere](#2-forstår-brukeren-hvem-de-kan-representere)
+3. [Hvordan de velger hvem de skal representere](#3-forstår-brukeren-hvordan-de-velger-hvem-de-skal-representere)
+4. [Hvem de representerer akkurat nå](#4-forstår-brukerne-hvem-de-representerer)
+5. [Hvordan de kan bytte hvem de representerer](#5-forstår-brukeren-hvordan-de-bytter-hvem-de-representerer)
+
+<br/>
+---
+<br/>
+
+### 1. Forstår brukeren at de er logget inn?
+Brukeren bør få en tydelig bekreftelse umiddelbart etter innlogging, for eksempel ved at grensesnittet endres, eller ved en klar melding som sier:  
+**«Du er logget inn som [navn]».**
+
+Det skal også være tydelig hele tiden at brukeren er logget inn, og hvem de eventuelt representerer. Denne informasjonen bør være lett synlig og konsistent plassert i grensesnittet gjennom hele brukerreisen.
+
+Dersom brukeren videresendes til en annen nettside som del av samme reise, bør både innlogging og representasjon videreføres der det er mulig og forsvarlig. Dette krever federert innlogging og vurdering av personvern, særlig når reisen går via ulike aktører.
+
+
+*[Legg inn eksempel på tydelig innlogging]*
+
+<br/>
+---
+<br/>
+
+
+### 2. Forstår brukeren hvem de *kan* representere?
+Representasjonsvalg bygger på registrerte forhold, for eksempel roller i Enhetsregisteret (daglig leder, signaturrett), eller relasjoner i Folkeregisteret (forelder, verge). Også fullmakter og andre rettigheter kan gi grunnlag.
+
+Forklar tydelig hvorfor en representasjon er tilgjengelig, og på hvilket grunnlag. Bruk forklarende etiketter som:
+
+- _Er foresatt/forelder_  
+- _Har fått fullmakt_  
+- _Er daglig leder_
+
+Hvis retten til å representere er tidsbegrenset, bør det fremgå når den utløper. I noen tilfeller kan konteksten gjøre det unødvendig å vise detaljer, bruk skjønn.
+
+
+*[Legg inn eksempel på godt representasjonsvalg]*
+
+<br/>
+---
+<br/>
+
+
+### 3. Forstår brukeren hvordan de velger hvem de skal representere?
+
+Dersom representasjon er nødvendig, bør valget komme rett etter innlogging. Har brukeren bare én mulig representasjon, trenger de ikke velge, men det må fortsatt være tydelig hvem de representerer.
+
+Vær oppmerksom på:
+
+- Likt navngitte personer eller virksomheter
+- Behov for å vise fødselsdato, organisasjonsnummer eller relasjon
+- Mulighet for kallenavn eller favoritter
+- Søke- og filtreringsfunksjoner, spesielt for brukere med mange rettigheter
+
+<br/>
+---
+<br/>
+
+
+### 4. Forstår brukerne hvem de representerer?
+
+Det bør alltid vises tydelig hvem brukeren representerer. Ikke bare hvem de er logget inn som, men også hvilken rolle eller relasjon de handler på vegne av.
+
+I tjenester med innhold fra flere representasjoner, som for eksempel en samlet innboks, må det fremgå hvilken representasjon hver del hører til.
+
+
+*[Legg inn eksempler på visualisering av representasjon]*
+
+<br/>
+---
+<br/>
+
+
+### 5. Forstår brukeren hvordan de bytter representasjon?
+
+Brukeren bør enkelt kunne bytte representasjon, for eksempel via en meny i toppen. Samtidig må det være tydelig når bytte ikke er mulig, og hvorfor.
+
+Dersom representasjonen endres automatisk (for eksempel fordi man kommer fra en annen tjeneste), bør det opplyses om dette, med mindre det skjer i forbindelse med ny innlogging, der bytte allerede er forventet.
+
+
+
+*[Legg inn eksempler på god representasjonsbytte-funksjon]*
+
+
+<br/>
+
+<Card
+  data-color='warning'
+  variant="tinted"
+  data-unstyled
+>
+**Arbeid pågår** \
+Artikkelen er under arbeid. Kom gjerne med innspill i [diskusjontråden på github.com](https://github.com/digdir/designsystemet/discussions/1671).
+
+</Card>
+
+
+
+-------
+
+<br/>
+
+Mønsteret er under arbeid i en tverretatlig arbeidsgruppe i 2025. Du kan påvirke mønsteret og dele din innsikt i [Github](https://github.com/digdir/designsystemet/discussions/2296). 
 
 <Contributors
   headingLevel={2}
