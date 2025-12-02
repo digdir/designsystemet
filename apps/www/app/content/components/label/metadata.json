@@ -8,6 +8,6 @@
     "title": "Label",
     "subtitle": "`Label` functions as a clear and accessible text label that tells the user what an associated form element is about."
   },
-  "image": "Typography.svg",
+  "image": "Label.svg",
   "cssFile": "label.css"
 }
