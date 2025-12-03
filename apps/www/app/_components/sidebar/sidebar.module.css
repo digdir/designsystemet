@@ -85,6 +85,7 @@
     display: block;
     margin-bottom: var(--ds-size-2);
     width: fit-content;
+    margin-left: var(--ds-size-4);
   }
 
   .activeMenu {

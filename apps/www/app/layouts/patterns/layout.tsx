@@ -33,6 +33,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
       title: string;
       url: string;
       partners: string;
+      order: number;
     }[];
   } = {};
 
@@ -73,6 +74,13 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
       title: result.frontmatter.sidebar_title || title,
       url,
       partners: result.frontmatter.partners || '',
+      order: result.frontmatter.order || 10,
+    });
+  }
+
+  for (const cat in cats) {
+    cats[cat].sort((a, b) => {
+      return a.order - b.order;
     });
   }
 

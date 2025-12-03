@@ -61,9 +61,10 @@ body {
     --short-content-width: 700px;
     --long-content-width: 950px;
     --media-max-width: var(--long-content-width); /*legacy*/
-    /*use the old clamp-based padding?*/
-    /*--content-inline-padding: clamp(1rem, calc(0.27rem + 3.64vw), 3rem);*/
-    --content-inline-padding: var(--ds-size-7);
+    /*padding shrinks from size-7 to size-4 between 1000px and 500px*/
+    /*https://chrisburnell.com/clamp-calculator/?font-size-root=16&size-min=16&size-max=28&viewport-min=500&viewport-max=1000&viewport-units=vi*/
+    --content-inline-padding: clamp(var(--ds-size-4), calc(0.27rem + 2.4vw), var(--ds-size-7));
+    /*--content-inline-padding: var(--ds-size-7);*/
     --header-height: 75px;
     @media screen and (max-width: 1500px) {
       --sidebar-left-width: 240px;
@@ -438,6 +439,12 @@ body {
     --dsc-table-border-radius: var(--ds-border-radius-lg);
     border-collapse: separate;
     word-break: break-all;
+    thead {
+      font-size: 1rem;
+    }
+    tbody {
+      font-size: 0.875rem /*14px*/;
+    }
   }
 }
 @layer site.overrides {

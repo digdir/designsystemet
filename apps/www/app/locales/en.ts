@@ -145,6 +145,7 @@ export default {
       value: 'Value',
     },
     'no-relevant-data-attributes': 'No relevant data attributes found.',
+    'no-relevant-css-variables': 'No relevant css variables found.',
     'data-attributes': 'Data Attributes',
   },
   component: {

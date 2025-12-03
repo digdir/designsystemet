@@ -9,19 +9,20 @@
   text-decoration: none;
   @media (prefers-reduced-motion: no-preference) {
     transition:
-      0.2s transform ease-in-out,
-      0.2s box-shadow ease-in-out;
+      0.2s border-color ease-in-out,
+      0.2s outline ease-in-out;
   }
 }
 
 .card:hover {
   --border-color: var(--ds-color-neutral-border-strong);
+  outline: 1px solid var(--ds-color-neutral-border-strong);
 }
 
 .title {
   padding: 20px;
   padding-bottom: 24px;
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid var(--ds-color-neutral-border-subtle);
   text-decoration: underline;
   text-underline-offset: 5px;
 }

@@ -16,6 +16,7 @@
 
 .card:hover {
   border-color: var(--ds-color-neutral-border-strong);
+  outline: 1px solid var(--ds-color-neutral-border-strong);
   cursor: pointer;
 }
 .title {

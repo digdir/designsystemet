@@ -113,6 +113,24 @@
 }
 
 .hamburger {
+  .hamburgerHeader {
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid transparent;
+  }
+  .hamburgerLogo {
+    line-height: 0;
+    & svg {
+      height: 29px;
+      width: auto;
+    }
+
+    & svg [data-text] {
+      fill: var(--ds-color-neutral-text-default);
+    }
+  }
   &.header {
     & nav {
       gap: var(--ds-size-1);
@@ -126,7 +144,9 @@
         display: none;
         background-color: var(--ds-color-neutral-background-default);
         box-shadow: var(--ds-shadow-lg);
-        padding: 20px 0;
+        padding-bottom: var(--ds-size-5);
+        padding-top: 0;
+        padding-inline: var(--content-inline-padding, var(--_content-inline-padding));
         width: 100%;
         max-height: 100svh;
         overflow-y: auto;
@@ -136,12 +156,6 @@
         &::backdrop {
           background-color: rgb(0 0 0 / 0.5);
         }
-        & button {
-          position: absolute;
-          right: var(--content-inline-padding, var(--ds-size-7));
-          top: calc(var(--header-height) / 2);
-          translate: 0 -50%;
-        }
       }
 
       & ul {
@@ -150,7 +164,7 @@
 
         & li {
           padding: 20px 0;
-          margin-left: 16px;
+          margin-left: 0;
 
           & .active {
             display: inline-block;
