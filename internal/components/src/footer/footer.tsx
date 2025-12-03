@@ -49,7 +49,11 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
       <div className={classes.container}>
         <div>
           <DsFullNeutralLogo className={classes.logo} />
-          <Paragraph data-size='sm' className={classes.description}>
+          <Paragraph
+            data-size='sm'
+            variant='long'
+            className={classes.description}
+          >
             {t('footer.description')}
           </Paragraph>
           <Paragraph data-size='sm'>
@@ -57,13 +61,13 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
           </Paragraph>
         </div>
         <div>
-          <Heading data-size='xs' level={2} className={classes.title}>
+          <Heading data-size='2xs' level={2} className={classes.title}>
             {t('footer.about-site')}
           </Heading>
           {LinkList(centerLinks)}
         </div>
         <div>
-          <Heading data-size='xs' level={2} className={classes.title}>
+          <Heading data-size='2xs' level={2} className={classes.title}>
             {t('footer.contact-us')}
           </Heading>
           {LinkList(rightLinks)}

@@ -81,7 +81,7 @@ body {
     top: var(--header-height);
     overflow-y: auto;
     max-height: calc(100vh - var(--header-height));
-    padding-top: var(--ds-size-6);
+    padding-top: var(--ds-size-7);
     scrollbar-color: var(--ds-color-neutral-border-subtle) transparent;
     /*counter the padding to align with logo while not breaking the active style*/
     margin-left: calc(var(--ds-size-4) * -1);
