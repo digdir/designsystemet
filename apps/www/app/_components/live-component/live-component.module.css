@@ -43,7 +43,7 @@
     border-radius: 0;
     border-bottom-right-radius: var(--_br);
     grid-column: 4 / 5;
-    &[aria-pressed='true'] {
+    &[aria-expanded='true'] {
       > svg {
         rotate: 180deg;
       }
