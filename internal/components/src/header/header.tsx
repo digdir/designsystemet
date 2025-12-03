@@ -293,21 +293,30 @@ const Header = ({
                   popover='auto'
                   ref={hamburgerMenu}
                 >
-                  <Button
-                    data-color='neutral'
-                    ref={closeMenuRef}
-                    icon={true}
-                    popoverTarget='hamburgerMenu'
-                    popoverTargetAction='hide'
-                    variant='tertiary'
-                    aria-label={t('header.close-menu')}
-                  >
-                    <XMarkIcon
-                      aria-hidden
-                      fontSize={26}
-                      color='var(--ds-color-neutral-text-default)'
-                    />
-                  </Button>
+                  <div className={classes.hamburgerHeader}>
+                    <Link
+                      className={cl(classes.hamburgerLogo, 'ds-focus')}
+                      to={logoLink}
+                      aria-label={t('header.home-link')}
+                    >
+                      <DsFullLogo />
+                    </Link>
+                    <Button
+                      data-color='neutral'
+                      ref={closeMenuRef}
+                      icon={true}
+                      popoverTarget='hamburgerMenu'
+                      popoverTargetAction='hide'
+                      variant='tertiary'
+                      aria-label={t('header.close-menu')}
+                    >
+                      <XMarkIcon
+                        aria-hidden
+                        fontSize={26}
+                        color='var(--ds-color-neutral-text-default)'
+                      />
+                    </Button>
+                  </div>
                   <ul>
                     {menu.map((item, index) => (
                       <li key={index}>
