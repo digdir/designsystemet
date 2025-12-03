@@ -438,7 +438,9 @@ body {
     --dsc-table-border-radius: var(--ds-border-radius-lg);
     border-collapse: separate;
     word-break: break-all;
-    thead,
+    thead {
+      font-size: 1rem;
+    }
     tbody {
       font-size: 0.875rem /*14px*/;
     }
