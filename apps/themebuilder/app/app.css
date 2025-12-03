@@ -30,7 +30,9 @@
   --page-spacing-top: var(--ds-size-14);
   --page-spacing-bottom: var(--ds-size-14);
   --media-max-width: 800px;
-  --content-inline-padding: var(--ds-size-7);
+  /*padding shrinks from size-7 to size-4 between 1000px and 500px*/
+  /*https://chrisburnell.com/clamp-calculator/?font-size-root=16&size-min=16&size-max=28&viewport-min=500&viewport-max=1000&viewport-units=vi*/
+  --content-inline-padding: clamp(var(--ds-size-4), calc(0.27rem + 2.4vw), var(--ds-size-7));
   &:has(dialog[open]) {
     overflow: hidden;
   }
