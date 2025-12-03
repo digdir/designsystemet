@@ -88,7 +88,9 @@ export default function Blog({
           {description}
         </Paragraph>
         <Paragraph data-size='sm' className={classes.meta}>
-          <AvatarStack authors={author} />
+          <a href='#article-contributors' aria-label={t('contributors')}>
+            <AvatarStack authors={author} />
+          </a>
           <span className={classes.authors}>{author}</span>
           <span className={classes.date}>{formatDate(date, lang)}</span>
         </Paragraph>

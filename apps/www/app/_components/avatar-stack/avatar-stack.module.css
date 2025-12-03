@@ -2,7 +2,7 @@
   --avatar-size: 30px;
   --gap: 4px;
   --overlap: -12px;
-  --outline-color: var(--ds-color-neutral-text-default);
+  --outline-color: light-dark(transparent, white);
 
   --captured-length: var(--overlap); /*overlap*/
   display: flex;
