@@ -8,6 +8,7 @@
     font-weight: 600;
     margin-bottom: var(--ds-size-2);
     padding-inline-start: var(--padding-left);
+    color: var(--ds-color-neutral-text-subtle);
   }
   > ol {
     margin: 0;

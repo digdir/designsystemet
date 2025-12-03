@@ -6,6 +6,7 @@
   color: var(--ds-color-neutral-text-default);
   border-radius: var(--ds-border-radius-lg);
   padding: var(--ds-size-4);
+  padding-bottom: var(--ds-size-6);
   gap: var(--ds-size-4);
   @media (prefers-reduced-motion: no-preference) {
     transition: 0.2s all;
@@ -25,7 +26,7 @@
 }
 
 .iconContainer {
-  width: 60px;
+  width: 56px;
   aspect-ratio: 1;
 }
 .iconContainer svg {

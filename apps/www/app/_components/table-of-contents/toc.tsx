@@ -64,7 +64,7 @@ export const TableOfContents = ({
     >
       {filteredItems.length > 1 && (
         <>
-          <Paragraph data-size='md' asChild>
+          <Paragraph data-size='sm' asChild>
             <h2>{t('toc.title')}</h2>
           </Paragraph>
           <ol>
