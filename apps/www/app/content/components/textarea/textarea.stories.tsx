@@ -60,17 +60,17 @@ export const ReadOnly = () => {
 
 export const ReadOnlyEn = () => {
   return (
-    <>
-      <Label htmlFor='my-textarea-readonly'>Case description</Label>
+    <Field>
+      <Label htmlFor='my-textarea-readonly-en'>Case description</Label>
       <FieldDescription>
         This text has been added automatically based on information you have
         already submitted, and cannot be edited.
       </FieldDescription>
       <Textarea
-        id='my-textarea-readonly'
+        id='my-textarea-readonly-en'
         readOnly
         value='I am applying for support because I need funding to carry out the project as planned.'
       />
-    </>
+    </Field>
   );
 };

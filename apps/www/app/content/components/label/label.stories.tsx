@@ -5,7 +5,7 @@ export const Preview = () => {
 };
 
 export const PreviewEn = () => {
-  return <Label>Social Security Number (11 digits)</Label>;
+  return <Label>National identity number (11 digits)</Label>;
 };
 
 export const Weights = () => {
