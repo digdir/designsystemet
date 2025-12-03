@@ -1,4 +1,4 @@
-import { Table } from '@digdir/designsystemet-react';
+import { Paragraph, Table } from '@digdir/designsystemet-react';
 import cl from 'clsx';
 import { forwardRef } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -13,11 +13,13 @@ export const CssVariables = forwardRef<HTMLTableElement, CssVariablesProps>(
   function CssVariables({ vars, className, ...rest }, ref) {
     const { t } = useTranslation();
 
+    if (Object.keys(vars).length === 0)
+      return <Paragraph>{t('components.no-relevant-css-variables')}</Paragraph>;
+
     return (
       <Table
-        zebra
         className={cl('component-table', className)}
-        data-color='accent'
+        data-color='neutral'
         border
         style={{
           tableLayout: 'fixed',
@@ -25,7 +27,9 @@ export const CssVariables = forwardRef<HTMLTableElement, CssVariablesProps>(
         {...rest}
         ref={ref}
       >
-        <caption>{t('components.css-variables.caption')}</caption>
+        <caption style={{ marginBottom: 'var(--ds-size-4)' }}>
+          {t('components.css-variables.caption')}
+        </caption>
         <Table.Head>
           <Table.Row>
             <Table.HeaderCell>
