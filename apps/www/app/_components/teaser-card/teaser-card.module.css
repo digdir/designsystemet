@@ -21,6 +21,10 @@
 }
 .title {
   margin-block: 0;
+  a {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
 }
 
 .desc {
