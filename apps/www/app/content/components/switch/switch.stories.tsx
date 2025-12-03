@@ -88,3 +88,41 @@ export const RightAligned2 = () => (
     <Divider />
   </div>
 );
+
+export const RightAligned2En = () => (
+  <div
+    style={{
+      flexDirection: 'column',
+      width: '100%',
+      maxWidth: '380px',
+    }}
+  >
+    <Divider />
+
+    <Field
+      position='end'
+      style={{
+        alignItems: 'center',
+        padding: 'var(--ds-size-2) 0',
+      }}
+    >
+      <Label>Airplane mode</Label>
+      <Input type='checkbox' role='switch' />
+    </Field>
+
+    <Divider />
+
+    <Field
+      position='end'
+      style={{
+        alignItems: 'center',
+        padding: 'var(--ds-size-2) 0',
+      }}
+    >
+      <Label>Silent mode</Label>
+      <Input type='checkbox' role='switch' />
+    </Field>
+
+    <Divider />
+  </div>
+);
