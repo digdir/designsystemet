@@ -49,7 +49,6 @@
     border-radius: 4px;
   }
   & a:focus-visible {
-    display: block;
     outline: 2px solid var(--ds-color-focus-outer);
     outline-offset: -2px;
   }

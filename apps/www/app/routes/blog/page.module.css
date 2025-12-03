@@ -1,8 +1,30 @@
-/* .content {
-  figcaption {
-    margin: 0 auto;
+.decoration {
+  &[data-variant='1'] {
+    grid-column-start: content-max-start;
+    grid-column-end: content-start;
+    left: 0;
+    width: 200px;
+    top: 30px;
   }
-} */
+  &[data-variant='2'] {
+    left: calc(100% + 80px);
+    width: 190px;
+    top: 70px;
+  }
+  &[data-variant='3'] {
+    left: calc(100% + 70px);
+    width: 120px;
+    top: 90%;
+  }
+  &[data-variant='4'] {
+    right: calc(100% + 70px);
+    width: 200px;
+    top: 80%;
+  }
+  /*   @media (max-width: 1740px) {
+    display: none;
+  } */
+}
 .intro {
   display: flex;
   flex-wrap: wrap;
@@ -26,6 +48,14 @@
   margin: 0;
   gap: var(--_column-gap);
   color: var(--ds-color-neutral-text-subtle);
+  & a {
+    border-radius: 4px;
+    outline: 2px solid transparent;
+    outline-offset: -2px;
+  }
+  & a:focus-visible {
+    outline-color: var(--ds-color-focus-outer);
+  }
 }
 
 .date {

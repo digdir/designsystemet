@@ -85,7 +85,13 @@ export default function BestPractices({
             <div className={classes.meta}>
               {author && (
                 <>
-                  <AvatarStack authors={author} /> <span>{author}</span>
+                  <a
+                    href='#article-contributors'
+                    aria-label={t('contributors')}
+                  >
+                    <AvatarStack authors={author} />
+                  </a>
+                  <span>{author}</span>
                 </>
               )}
 
