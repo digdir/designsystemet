@@ -196,5 +196,5 @@ export function generatePrerenderPaths(): string[] {
   const componentPaths = getComponentPaths();
   const basePaths = ['/no/components', '/en/components'];
 
-  return [...basePaths, ...contentPaths, '/no/changelog', '/en/changelog', ...componentPaths];
+  return [...basePaths, ...contentPaths, '/no/components/changelog', '/en/components/changelog', ...componentPaths];
 }
