@@ -1,3 +1,2 @@
 ---
-"@digdir/designsystemet-css": patch
 ---
