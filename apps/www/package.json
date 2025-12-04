@@ -14,7 +14,7 @@
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
     "@internal/components": "workspace:^",
-    "@navikt/aksel-icons": "^7.34.0",
+    "@navikt/aksel-icons": "^7.35.0",
     "@radix-ui/react-slot": "^1.2.4",
     "@react-router/node": "^7.10.0",
     "@react-router/serve": "^7.10.0",
@@ -44,7 +44,7 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "typescript": "^5.9.3",
-    "vite": "^7.2.4",
+    "vite": "^7.2.6",
     "vite-env-only": "^3.0.3",
     "vite-tsconfig-paths": "^5.1.4"
   }

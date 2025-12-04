@@ -67,7 +67,7 @@
     "@tokens-studio/sd-transforms": "2.0.2",
     "apca-w3": "^0.1.9",
     "change-case": "^5.4.4",
-    "chroma-js": "^3.1.2",
+    "chroma-js": "^3.2.0",
     "colorjs.io": "^0.6.0-alpha.1",
     "commander": "^14.0.2",
     "fast-glob": "^3.3.3",
@@ -91,7 +91,7 @@
     "fs-extra": "^11.3.2",
     "tslib": "^2.8.1",
     "tsup": "^8.5.1",
-    "tsx": "^4.20.6",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   }
 }
