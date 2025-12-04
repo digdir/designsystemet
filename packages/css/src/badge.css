@@ -11,9 +11,9 @@
   vertical-align: middle;
   @composes ds-print-preserve from './base.css';
 
-  &:not([hidden])  {
+  &:not([hidden]) {
     display: inline-flex;
-  };
+  }
 
   &::before {
     content: attr(data-count);
