@@ -1,8 +1,6 @@
 import {
   EXPERIMENTAL_Suggestion,
   Field,
-  FieldDescription,
-  Fieldset,
   Label,
 } from '@digdir/designsystemet-react';
 
