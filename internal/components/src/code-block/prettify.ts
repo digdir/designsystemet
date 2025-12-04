@@ -117,7 +117,6 @@ export async function prettifyCode(
     return formatted;
   } catch (error) {
     // If formatting fails, return original code
-    console.warn(`Failed to prettify ${language} code:`, error);
     return code;
   }
 }
