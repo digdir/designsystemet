@@ -99,6 +99,8 @@
   .menu {
     display: none;
     padding-top: var(--ds-size-7);
+    height: calc(100vh - var(--header-height));
+    /* biome-ignore lint/suspicious/noDuplicateProperties: fallback */
     height: calc(100dvh - var(--header-height));
     overflow-y: auto;
     position: fixed;
