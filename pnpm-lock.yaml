@@ -6506,6 +6506,13 @@ snapshots:
       picocolors: 1.1.1
       semver: 7.7.1
 
+  '@changesets/get-github-info@0.6.0':
+    dependencies:
+      dataloader: 1.4.0
+      node-fetch: 2.7.0
+    transitivePeerDependencies:
+      - encoding
+
   '@changesets/get-github-info@0.7.0':
     dependencies:
       dataloader: 1.4.0
