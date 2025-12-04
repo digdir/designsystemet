@@ -75,7 +75,6 @@ type EditorProps = {
   hidden?: boolean;
 };
 
-//@TODO: i18n
 const Editor = ({ live, html, id, hidden }: EditorProps) => {
   const { t } = useTranslation();
   const wrapperRef = useRef<HTMLDivElement>(null);

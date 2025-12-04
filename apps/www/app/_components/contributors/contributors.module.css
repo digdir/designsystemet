@@ -63,4 +63,7 @@
   column-gap: var(--_column-gap);
   row-gap: 8px;
   color: var(--ds-color-neutral-text-subtle);
+  span {
+    text-wrap: wrap;
+  }
 }
