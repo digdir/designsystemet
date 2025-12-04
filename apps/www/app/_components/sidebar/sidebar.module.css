@@ -99,7 +99,7 @@
   .menu {
     display: none;
     padding-top: var(--ds-size-7);
-    height: calc(100svh - var(--header-height));
+    height: calc(100dvh - var(--header-height));
     overflow-y: auto;
     position: fixed;
     width: var(--sidebar-left-width);
