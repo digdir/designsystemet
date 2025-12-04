@@ -17,10 +17,6 @@ export const loader = async ({
   params: { lang },
   request,
 }: Route.LoaderArgs) => {
-  if (process.env.APP_ENV === 'production') {
-    throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
-  }
-
   if (!lang) {
     throw new Response('Not Found', {
       status: 404,
