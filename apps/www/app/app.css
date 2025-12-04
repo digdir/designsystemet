@@ -133,6 +133,7 @@ body {
     --short-content-width: 640px;
     /** Track sizes **/
     --content-full-bleed: minmax(var(--content-inline-padding), 1fr);
+    --content-page: minmax(0, calc((var(--max-page-width) - var(--max-content-width)) * 0.5));
     --content-max: minmax(0, calc((var(--max-content-width) - var(--long-content-width)) * 0.5));
     --content: minmax(0, calc((var(--long-content-width) - var(--short-content-width)) * 0.5));
     --text: min(var(--short-content-width), 100% - var(--content-inline-padding) * 2);
@@ -141,6 +142,8 @@ body {
     grid-template-columns:
       [content-full-bleed-start]
       var(--content-full-bleed)
+      [content-page-start]
+      var(--content-page)
       [content-max-start]
       var(--content-max)
       [content-start]
@@ -152,6 +155,8 @@ body {
       [content-end]
       var(--content-max)
       [content-max-end]
+      var(--content-page)
+      [content-page-end]
       var(--content-full-bleed)
       [content-full-bleed-end];
 
