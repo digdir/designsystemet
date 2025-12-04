@@ -8,9 +8,12 @@
   --dsc-badge-left: inherit;
   --dsc-badge-right: inherit;
 
-  display: inline-flex;
   vertical-align: middle;
   @composes ds-print-preserve from './base.css';
+
+  &:not([hidden])  {
+    display: inline-flex;
+  };
 
   &::before {
     content: attr(data-count);
