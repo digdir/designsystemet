@@ -13,22 +13,19 @@
   list-style: none;
 }
 
-.listGroupCompact {
-  margin-bottom: var(--ds-size-4);
-}
-
 .innerList {
-  margin: 0 0 0 2px;
   display: flex;
   flex-direction: column;
   gap: 4px;
   padding: 0;
-  border-left: 1px solid var(--ds-color-neutral-border-subtle);
 }
 
 .innerTitle {
-  font-weight: 500;
-  margin-bottom: 12px;
+  font-weight: var(--ds-font-weight-semibold);
+  margin-bottom: var(--ds-size-2);
+  padding: 0 var(--ds-size-4);
+  font-size: var(--ds-body-long-sm-font-size);
+  color: var(--ds-color-neutral-text-subtle);
 }
 
 .listItem {
@@ -37,6 +34,7 @@
 }
 
 .link {
+  --dsc-link-background--active: var(--ds-color-neutral-surface-tinted);
   color: inherit;
   text-decoration: none;
   padding: var(--ds-size-1) var(--ds-size-4);
@@ -45,6 +43,9 @@
   position: relative;
   border-radius: var(--ds-border-radius-md);
   text-wrap: balance;
+  &:focus-visible {
+    outline-offset: calc(-1 * var(--ds-border-width-focus));
+  }
 
   &[aria-current='page']::before {
     content: '';
@@ -53,9 +54,10 @@
     display: block;
     position: absolute;
     top: 0;
-    left: -2px;
+    left: 0;
     bottom: 0;
-    border-radius: 10px;
+    border-bottom-left-radius: var(--ds-border-radius-sm);
+    border-top-left-radius: var(--ds-border-radius-sm);
   }
 
   &[aria-current='page'] {
@@ -70,27 +72,63 @@
   }
 }
 
-.linkCompact {
-  margin-top: 0;
-  border-left: 1px solid var();
-}
-
 .toggleBtn {
   display: none;
 }
 
-@media (max-width: 958.98px) {
+.menu {
+  /*popover resets*/
+  display: block;
+  position: static;
+  background-color: var(--ds-color-neutral-background-default);
+  border: none;
+  margin: 0;
+  padding: 0;
+  overflow: unset;
+  height: auto;
+  inset: unset;
+  width: auto;
+  margin-bottom: var(--header-height);
+}
+
+.closeButton {
+  display: none;
+}
+
+@media (max-width: 958px) {
   .menu {
     display: none;
-    margin-top: var(--ds-size-7);
+    padding-top: var(--ds-size-7);
+    height: calc(100vh - var(--header-height));
+    /* biome-ignore lint/suspicious/noDuplicateProperties: fallback */
+    height: calc(100dvh - var(--header-height));
+    overflow-y: auto;
+    position: fixed;
+    width: var(--sidebar-left-width);
+    left: 0;
+    top: var(--header-height);
+    overscroll-behavior: contain;
+    border-right: 1px solid var(--ds-color-neutral-border-subtle);
+    &:popover-open {
+      display: block;
+    }
+    &::backdrop {
+      /*background-color: rgb(0 0 0 / 0.5);*/
+      background: linear-gradient(to bottom, transparent var(--header-height), rgb(0 0 0 / 0.5) var(--header-height), rgb(0 0 0 / 0.5) 100%);
+    }
+  }
+  .closeButton {
+    display: flex;
+    position: fixed;
+    left: calc(var(--sidebar-left-width) + 1rem);
+    background-color: var(--ds-color-neutral-background-default);
   }
 
   .toggleBtn {
-    display: block;
+    display: flex;
     margin-bottom: var(--ds-size-2);
-  }
-
-  .activeMenu {
-    display: block;
+    width: fit-content;
+    margin-left: var(--ds-size-4);
+    background-color: var(--ds-color-neutral-background-default);
   }
 }

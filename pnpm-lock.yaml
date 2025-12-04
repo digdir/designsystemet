@@ -371,6 +371,9 @@ importers:
       prettier:
         specifier: ^3.7.3
         version: 3.7.4
+      prism-react-renderer:
+        specifier: ^2.4.1
+        version: 2.4.1(react@19.2.1)
       react:
         specifier: ^19.2.1
         version: 19.2.1

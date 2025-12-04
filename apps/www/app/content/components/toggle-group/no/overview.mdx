@@ -1,21 +1,21 @@
 <Story story="Preview" />
 
 **Bruk `ToggleGroup` når**
-- innhold i lister og tabellar skal filtrere  
-- du skal bytte mellom ulike innstillingsalternativ  
-- du skal veksle mellom visingar, for eksempel mellom tabell og graf  
-- du skal styre kva felt i eit skjema som skal visast  
+- du skal veksle mellom visningar, til dømes mellom liste og graf  
+- innhald i ei liste eller tabell skal filtrerast  
 
 **Unngå `ToggleGroup` når**
 - du har så mange val at dei ikkje får plass i breidda  
-- vala inneheld lange tekstar som gjer at gruppa verkar tung og uoversiktleg  
+- vala inneheld lange tekstar som gjer at gruppa verkar tung og uoversiktleg
+- alternativa er svar i eit skjema - bruk heller [`Radio`](/no/components/docs/radio/overview)  
+- valet er ein av/på-innstilling - bruk heller [`Switch`](/no/components/docs/switch/overview)  
 
 ## Eksempel
 
 ### Kun ikoner
 `ToggleGroup` står utan tekst bør berre brukast når ikona er lett forståelege for brukarane.
 Det kan til dømes vere ekspertbrukarar eller brukarar av interne tenester som kjenner symbola i den aktuelle `ToggleGroup` godt.
-Forklar handlingane med [`Tooltip`](/no/components/tooltip/overview) når du brukar berre ikon.
+Forklar handlingane med [`Tooltip`](/no/components/docs/tooltip/overview) når du brukar berre ikon.
 
 <Story story="OnlyIcons" />
 
@@ -32,4 +32,4 @@ Som ein tommelfingerregel bør `ToggleGroup` berre brukast når valet har ein di
 Du må sjølv passe på at det er nok plass til både innhaldet i vala og talet på val utan å bryte linja. Pass på at heile komponenten får plass på skjermen, også på mobil, og at alle vala er godt synlege for brukarane.
 
 ## Tekst
-Ha gjerne med ei ledetekst for gruppa som forklarer kva vala gjeld. Skriv tydelege tekstar for vala i komponenten, og pass på at dei har same språklege form. Bruk gjerne [`Tooltip`](/no/components/tooltip/overview) til å gje hint, særleg dersom du berre viser ikon.
+Ha gjerne med ei ledetekst for gruppa som forklarer kva vala gjeld. Skriv tydelege tekstar for vala i komponenten, og pass på at dei har same språklege form. Bruk gjerne [`Tooltip`](/no/components/docs/tooltip/overview) til å gje hint, særleg dersom du berre viser ikon.

@@ -1,18 +1,17 @@
 <Story story="Preview" />
 
 **Bruk `Breadcrumbs` når**
-- det er sider der brukarane kan ønskje å gå tilbake til tidlegare nivå
-- brukarar treng hjelp med å forstå kvar dei er i strukturen
+- brukarane kan ønskje å gå tilbake til tidlegare nivå
+- brukarane treng hjelp med å forstå kvar dei er i strukturen
 
 **Unngå `Breadcrumbs` når**
 - navigasjonen er lineær, for eksempel for dei ulike stega i ein arbeidsflyt eller eit skjema
 
 ## Eksempel
 
-### Berre tilbake-knapp
+### Tilbake-knapp
 
-Å vise berre ein tilbake-knapp kan vere nyttig på mobil, eller på sider der det blir lang navigasjon.
-Det er viktig at du er konsistent i løysinga di, og bruker anten tilbake-knapp eller sti, ikkje begge delar.
+Å vise berre ein tilbake-knapp kan vere nyttig på mobil, eller på sider der det blir lang navigasjon. Det er viktig at du er konsistent i løysinga di, og bruker anten tilbake-knapp eller sti, ikkje begge delar.
 
 <Story story="BackOnly" />
 
@@ -24,11 +23,10 @@ Under er eit døme på korleis ein lang navigasjon ser ut.
 Det er først når det er tre eller fleire nivå på ein nettstad at det er behov for `Breadcrumbs`. 
 
 ### Plassering
-`Breadcrumbs` skal alltid plasserast øvst på venstre side av sida. Han skal liggje under menyen og hovudnavigasjonen, men over sidetittelen.
+`Breadcrumbs` skal alltid plasserast øvst til venstre på sida når det er venstre til høgre tekst. Den skal ligge under menyen og hovudnavigasjonen, men over sidetittelen.
 
-### Skjule Breadcrumbs på mobil
-Om du har lang navigasjon, kan du setje opp komponenten til berre å vise første og siste del av søkestien på mobil.  
-Dette skjer automatisk på skjermar som er smalare enn 650px, der vi berre viser lenkja eitt nivå ned.
+### Skjule `Breadcrumbs` på mobil
+Om du har lang navigasjon, kan du sette opp komponenten til å berre vise første og siste del av søkestien på mobil. Dette kan skje automatisk på skjermar som er smalare enn 650px, der vi berre viser lenka eitt nivå ned. Det ligg implementasjonsdøme på kode-fana.
 
 ## Tekst
-Bruk korte og tydelege namn i brødsmulestien, slik at brukarane raskt forstår kvar dei er. Teksten bør samsvare med overskriftene eller navigasjonen på nettsida, slik at det er lett å kjenne igjen nivåa.
+Bruk korte og tydelege namn i `Breadcrumbs`, slik at brukarane raskt forstår kvar dei er. Teksten bør samsvare med overskriftene eller navigasjonen på nettsida, slik at det er lett å kjenne igjen nivåa.

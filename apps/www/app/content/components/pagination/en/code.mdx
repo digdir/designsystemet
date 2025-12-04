@@ -1,19 +1,126 @@
----
-title: Pagination
-image: Pagination.svg
-cssfile: pagination
----
+<Story story="PreviewEn" />
+<ReactComponentDocs />
 
+## Usage
+`Pagination` is a stateless component, and you must control which pages are displayed.
+
+Use `usePagination` for pagination logic together with the single-part components.
+[Read more about `usePagination`](/en/hooks/use-pagination).
+
+```tsx
+import { Pagination } from '@digdir/designsystemet-react';
+
+<Pagination>
+  <Pagination.List>
+    <Pagination.Item>
+      <Pagination.Button aria-label='Previous page'>
+      Previous
+      </Pagination.Button>
+    </Pagination.Item>
+
+    <Pagination.Item>
+      <Pagination.Button aria-label='Page 1'>
+      1
+      </Pagination.Button>
+    </Pagination.Item>
+
+    <Pagination.Item />
+
+    <Pagination.Item>
+      <Pagination.Button aria-label='Page 10'>
+      10
+      </Pagination.Button>
+    </Pagination.Item>
+
+    <Pagination.Item>
+      <Pagination.Button aria-label='Next Page'>
+      Next
+      </Pagination.Button>
+    </Pagination.Item>
+  </Pagination.List>
+</Pagination>
+```
 ## Examples
 
 ### Default
 
-<Story story="Preview" />
+The example shows `Pagination' with buttons that are not linked to any action.
+When you press, you will not navigate to another page.
+
+<Story story="PreviewEn" />
 
 ### With links
 
-<Story story="WithAnchor" />
+Below you see `usePagination` used with `Pagination` to create pagination with links.
+
+You use `asChild` to change `Pagination.Button` to `<a>`.
+
+<Story story="WithAnchorEn" />
 
 ### Mobile
 
-<Story story="Mobile" />
+There is no built-in mobile support in `Pagination`, but you can show fewer pages and remove text for the previous/next buttons on mobile devices.
+
+<Story story="MobileEn" />
+
+## HTML
+
+You use the class name `ds-pagination` on a `<nav>` element.
+
+Then you use a `<ul>` with `<li>` that has `<button>` or `<a>` with class name `ds-button` as a child.
+
+If you add an empty `<li>` it will be displayed as an ellipsis (`\2026`).
+
+The first and last `<li>` children will get an arrow icon based on whether it is the first or last `<li>`.
+
+Note that you must add `data-variant` to `<button>` or `<a>` to get the correct style.
+
+**Each button should also have a descriptive `aria-label` for screen readers.**
+
+```html
+<nav aria-label="Page navigation" class="ds-pagination">
+  <ul>
+    <li>
+      <button
+      class="ds-button"
+      data-variant="tertiary"
+      type="button"
+      aria-label="Previous page"
+      ></button>
+    </li>
+    <li>
+      <button
+      class="ds-button"
+      data-variant="tertiary"
+      type="button"
+      aria-label="Page 3"
+      >3</button>
+    </li>
+
+    <li></li>
+
+    <li>
+      <button
+      class="ds-button"
+      data-variant="tertiary"
+      type="button"
+      aria-label="Page 10"
+      >10</button>
+    </li>
+    <li>
+      <button
+      class="ds-button"
+      data-variant="tertiary"
+      type="button"
+      aria-label="Next page"
+      ></button>
+    </li>
+  </ul>
+</nav>
+```
+
+## CSS variables and data attributes
+
+<CssVariables />
+
+<CssAttributes />

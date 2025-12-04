@@ -1,13 +1,20 @@
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
-import { ContentContainer } from '../content-container/content-container';
 
 export const Error404 = () => {
   const { t } = useTranslation();
 
   return (
-    <ContentContainer>
+    <div
+      style={{
+        gridArea: 'content',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--ds-size-4)',
+        paddingInline: '8px',
+      }}
+    >
       <Heading
         level={1}
         data-size='xl'
@@ -26,6 +33,6 @@ export const Error404 = () => {
       >
         <Link to='/'>{t('errors.generic.go-to-homepage')}</Link>
       </Button>
-    </ContentContainer>
+    </div>
   );
 };

@@ -1,0 +1,53 @@
+---
+title: RovingFocus
+sidebar_title: RovingFocus
+order: 10
+---
+
+To create a list of items that will use arrow keys to move focus.
+This component is used internally in `Tabs` and `ToggleGroup`.
+
+## Usage
+
+You must always have `RovingFocusRoot` around `RovingFocusItem` for it to work.
+The element of `RovingFocusItem` must be able to be focused.
+
+```tsx
+import { RovingFocusRoot, RovingFocusItem } from '@digdir/designsystemet-react';
+
+<RovingFocusRoot>
+  <RovingFocusItem>Item 1</RovingFocusItem>
+  <RovingFocusItem>Item 2</RovingFocusItem>
+  <RovingFocusItem>Item 3</RovingFocusItem>
+</RovingFocusRoot>;
+```
+
+### Using custom items
+
+If you need to use custom items, you can use `asChild`, both on `RovingFocusRoot` and `RovingFocusItem`.
+
+```tsx
+<RovingFocusRoot asChild>
+  <MyComponent>
+    <RovingFocusItem asChild>
+      <MyButton>Item 1</MyButton>
+    </RovingFocusItem>
+    <RovingFocusItem asChild>
+      <MyButton>Item 2</MyButton>
+    </RovingFocusItem>
+    <RovingFocusItem asChild>
+      <MyButton>Item 3</MyButton>
+    </RovingFocusItem>
+  </MyComponent>
+</RovingFocusRoot>
+```
+
+## Props
+
+### `RovingFocusRoot`
+
+Must be around `RovingFocusItem`.
+
+### `RovingFocusItem`
+
+Must be inside `RovingFocusRoot`, but doesn't have to be a direct child.

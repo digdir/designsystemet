@@ -1,18 +1,42 @@
 <Story story="Preview" />
 
-## Retningslinjer
-Bruk `Badge` for å trekkje merksemd mot statusar, varslar eller tal. 
+**Use `Badge` when**
+- displaying numbers that show the count of new messages, notifications or tasks
+- indicating status using a circular marker, such as showing whether a person is busy, away or active
 
-**Passer til:**
-- Tal som viser antall nye meldingar, varsel eller oppgåver.
-- Små statusindikatorar i form av ein sirkel, som for eksempel viser om ein person er opptatt, borte eller aktiv.
+**Avoid `Badge` when**
+- text is needed, use [`Tag`](/en/components/docs/tag/overview) instead
+- interactive actions are required, use [`Chip`](/en/components/docs/chip/overview) or [`Button`](/en/components/docs/button/overview) instead
 
-**Passer ikkje til:**
-- Tekstar - bruk `Tag` i staden.
-- Interaktive handlingar - bruk `Chip` eller `Button` i staden.
+## Examples
 
-## Tekst
-Denne komponenten er ikkje meint for tekst. Viss du treng å vise ord eller korte frasar, bør du heller bruke `Tag`-komponenten.
+### Colours and variants
 
-## Tilgjengeligheit
-Sørg for at informasjonen også er tilgjengeleg for skjermlesarar. [Meir informasjon kjem.](https://github.com/digdir/designsystemet/issues/3560)
+All colours in your theme can be used with `Badge`. The component comes in two variants: `base` and `tinted`.
+
+<Story story="Variants" />
+
+### Next to text
+
+`Badge` can be placed next to other text or components.
+
+<Story story="InTabs" />
+
+### Floating
+
+`Badge` can be placed floating above other elements.
+
+<Story story="Floating" />
+
+### Without text
+
+`Badge` can be used without text inside it, but it must then have accompanying text next to it. Information should not be communicated through colour or shape alone.<sup>1</sup>
+
+<Story story="Bullet" />
+
+
+## Guidelines
+Use `Badge` to draw attention to statuses, notifications or numbers.
+
+## Text
+This component is not intended for text. If you need to display words or short phrases, use [`Tag`](/en/components/docs/tag/overview) instead.

@@ -1,42 +1,58 @@
----
-title: Table
-image: Table.svg
-cssfile: table
----
-
-`Table` is used to display structured data in rows and columns.
-
 <Story story="Preview" />
 
-## Usage
+**Use the `Table` when**
+- the goal is to help users compare information easily
+- the data needs a clear structure with rows and columns
+- the content can benefit from sorting
 
-```tsx
-import { Table } from '@digdir/designsystemet-react';
+**Avoid using the `Table` when**
+- the purpose is to create layout or visually organise content on a page
+- the information is better suited to a list or card view
+- the content is very limited, for example only one column or very few data points without a need for comparison
+- the table becomes difficult to read on mobile because the data set is large
 
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.HeaderCell>Header</Table.HeaderCell>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell>Cell</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-```
-
-## Code Examples
+## Example
 
 ### Zebra stripes
 
-<Story story="Zebra" />
+<Story story="ZebraEn" />
 
 ### With border
+Use `border` to add a visible outline around the table.
+This can help users distinguish it from other content on the page and provides a more structured presentation of the data.
 
 <Story story="Border" />
 
-### Hover effect
+### Sorting
+You can show that the table supports sorting based on the content of a column.
 
-<Story story="Hover" />
+- You can sort in 3 directions:
+  - `"none"` no sorting
+  - `"ascending"` increasing order
+  - `"descending"` decreasing order
+
+This gives users a visual indication of the sorting status and makes it possible to implement custom sorting logic.
+
+<Story story="SortableEn" />
+
+### Fixed column width
+Fixed column widths are especially useful in tables with pagination or other dynamic content updates, where stable widths improve the user experience.
+
+<Story story='FixedTable' />
+
+### Numbers in a table
+When numbers appear in a table and are meant to be compared, align them to the right within the cell.
+
+<Story story='NumbersEn' />
+
+## Guidelines
+Use the `Table` to structure and present data clearly in rows and columns.
+- Content in tables should be left-aligned, except for numbers, which should be right-aligned to make comparison easier.
+- Use `<Table.HeaderCell>` for header cells, not `<Table.Cell>`. A cell counts as a header when it describes the content of the same row or column.
+- In table rows with several actions, you can use a menu to save space if the actions do not need to be visible at all times.
+
+## Text
+Avoid long texts in table cells. Keep content short and concise so it is easy to scan across rows and columns. If you need to show more information, consider linking to a detail page.
+Use headers to tell users what type of content they will find in the rows and columns.
+
+As a general rule, content in cells should be left-aligned to make it easier to read and scan. The exception is numbers and currency and sometimes form elements and buttons. 

@@ -22,6 +22,7 @@
     "@radix-ui/react-slot": "^1.2.4",
     "@navikt/aksel-icons": "^7.35.0",
     "clsx": "^2.1.1",
+    "prism-react-renderer": "^2.4.1",
     "prettier": "^3.7.3",
     "react-code-block": "^1.1.3",
     "react": "^19.2.1",

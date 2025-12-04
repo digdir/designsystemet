@@ -1,46 +1,52 @@
----
-title: List
-image: List.svg
-cssfile: list
----
-
-`List` is used to present content in a clear and structured manner.
-
 <Story story="Preview" />
 
-## Usage
+**Use `List` when**
+- users need a quick overview of content in longer texts
+- several steps in a process should be listed
+- criteria need to be presented clearly
 
-The list can be both ordered and unordered, change this by using `List.Ordered` or `List.Unordered`.
+**Avoid `List` when**
+- users are expected to read longer blocks of text
+- several groups of information need to be compared, use a [`Table`](/en/components/docs/table/overview) instead
 
-```tsx
-import { List } from '@digdir/designsystemet-react';
-
-<List.Unordered>
-  <List.Item>Item</List.Item>
-</List.Unordered>
-```
-
-## Code Examples
+## Example
 
 ### Unordered list
 
-<Story story="Unordered" layout="column" />
+<Story story="UnorderedEn" layout="column" />
 
 ### Ordered list
 
-<Story story="Ordered" layout="column" />
+<Story story="OrderedEn" layout="column" />
 
 ## Guidelines
 
-Lists make content easier to scan and understand. Use ordered lists when the order is important, and unordered when it is not.
+Lists make content easier to scan and understand. Use ordered lists when the sequence matters, and unordered lists when it does not. Be mindful of structure and avoid long lists. Consider splitting content into several shorter lists to improve readability.
 
-**Suitable for**
+### List or table?
 
-- giving users a quick overview of content in longer texts
-- listing criteria
-- showing steps in a process
+Lists and tables serve different purposes. Using the correct component makes the experience clearer for all users, especially for those with cognitive or learning difficulties, or those using screen readers.
 
-**Not suitable for**
+- A list presents related information in a clear, scannable way.  
+- A table allows users to view and compare multiple groups of information.
 
-- showing users longer content
-- comparing multiple groups of information
+## Text
+All items in a list should have the same form and structure.
+
+When each item is a continuation of the introduction, we use
+- a lowercase initial letter in each item
+- no full stop or comma at the end of each item
+
+When the items are full sentences, we use
+- A capital initial letter in the first word, so that each item reads as an independent sentence.
+- A full stop at the end of each item, to indicate that the sentence is complete.
+
+### Use of colon
+A colon should not be used before a list when the items are a natural continuation of the introduction. Use a colon only when it would also be correct in a normal enumeration without a list.<sup>1</sup> See the example below.
+
+When you fill in your tax return, remember this:
+- You must enter net income from renting out a dwelling.
+- You must enter net income from renting out land.
+
+## Relevant sources
+[1] [The Language Council of Norway’s recommendation on colons and lists](https://sprakradet.no/spraksporsmal-og-svar/kolon-og-punktlister/)

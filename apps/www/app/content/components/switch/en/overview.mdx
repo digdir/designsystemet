@@ -1,49 +1,44 @@
----
-title: Switch
-image: Switch.svg
-cssfile: switch
----
-
-We use `Switch` to give users a choice between two alternatives. The switch can either be turned off or on.
-
 <Story story="Preview" />
 
-## Usage
+**Use the `Switch` when**
+- the choice controls a function or setting that can be turned on or off
+- the change takes effect immediately when the user toggles the switch
 
-```tsx
-import { Switch } from '@digdir/designsystemet-react';
+**Avoid using the `Switch` when**
+- users are answering questions in forms, use [`Radio`](/en/components/docs/radio/overview) or [`Checkbox`](/en/components/docs/checkbox/overview) instead
+- content should switch between two categories, use [`ToggleGroup`](/en/components/docs/togglegroup/overview) instead
+- content should be filtered, use [`Chip`](/en/components/docs/chip/overview) instead
 
-<Switch label="Dark mode" value="dark" />
-```
-
-## Code Examples
-
-### Checked
-
-<Story story="Checked" />
+## Example
 
 ### Grouping
+Use [Fieldset](/en/components/docs/fieldset/overview) to group multiple `Switch` components together.
 
-<Story story="Group" />
+<Story story="GroupEn" />
 
 ### Right aligned
+Sometimes it can be useful to right-align a `Switch`, for example when it is placed in a table or within a fixed layout.
 
-<Story story="RightAligned" />
+<Story story="RightAligned2En" />
 
 ## Guidelines
+Use the `Switch` to turn settings, functions, or notifications on or off. It provides users with a clear visual indication of state.
 
-`Switch` should be a choice between two alternatives. We use `Switch` for settings, not in forms.
+## Text
 
-**Suitable for**
+The text for a `Switch` must be short and precise, often just one or two words. It should make sense when you read the label aloud and add “on/off” afterwards.
 
-- activating or deactivating features/states immediately
-- turning notifications off and on
+If you have several `Switch` components in a group, make sure the wording is consistent. Do not phrase them differently.
 
-**Not suitable for**
+The text should describe what the function relates to, not whether it is on or off. If the state is written directly in the label, it can become confusing and make it harder to understand the actual position of the switch.
 
-- using instead of `Checkbox` or `Radio` in a form
-- situations where users must save information before a change takes effect
+<div className="dodont-row">
+  <DoDont story="DoIconEn">
+    Describe what the function applies to.
+  </DoDont>
+  <DoDont story="DontIconEn">
+    Do not mention whether it is on or off.
+  </DoDont>
+</div>
 
-## Accessibility
 
-We use `role="switch"` to tell screen readers that this is a toggle switch.

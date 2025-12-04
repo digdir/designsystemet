@@ -3,13 +3,16 @@
 **Bruk `Alert` når**
 - det er korte og informative tidsbegrensede varsler
 - det er informasjon om feil som kun påvirker én del av systemet eller en mindre funksjon
-- informasjonen er om tilkoblingsproblemer eller API-feil som sannsynligvis løser seg ved å laste inn siden på nytt
+- det oppstår tilkoblingsproblemer eller API-feil som vil løse seg med en ny innlasting av siden
 
 **Unngå `Alert` når**
-- du skal validere individuelle skjemaelementer, bruk heller komponentens egen feilmelding (Se [`ValidationMessage`](/no/components/validation-message/overview))
-- du skal oppsummere flere feilmeldinger i et skjema, bruk heller [`ErrorSummary`](/docs/komponenter-errorsummary--docs)
-- du skal vise feil som hindrer all videre bruk av tjenesten, bruk heller en feilside
-- du skal vise statisk informasjon som skal vises hele tiden, bruk heller [`Card`](/docs/komponenter-card--docs)
+- feilen hindrer all videre bruk av tjenesten, bruk [feilside](/no/patterns/systemnotifications#når-bruker-vi-feilsider) i stedet
+- du skal gjøre brukeren oppmerksom på feil i enkeltfelt, bruk heller komponentens egen feilmelding [`ValidationMessage`](/no/components/docs/validation-message/overview)
+- varslene er statiske infobokser, bruk heller [`Card`](/no/components/docs/card/overview)
+- flere feilmeldinger skal oppsummeres, bruk heller [`ErrorSummary`](/no/components/docs/error-summary/overview)
+
+For mer helhetlige retningslinjer for bruk av varsler i tjenester, se mønsteret for [Systemvarsler](/no/patterns/systemnotifications). Der finner du eksempler og anbefalinger for når du skal bruke `Alert`, og når andre løsninger passer bedre.
+
 
 ## Eksempel
 
@@ -42,7 +45,7 @@ Bruk `danger` for å informere om noe som er kritisk eller som hindrer brukeren 
 ### Med og uten overskrift
 
 Hvis meldingen er lenger enn en setning kan det være nyttig å bruke en overskrift til å fremheve det viktigste. 
-Dette kan gjøres med [`Heading`](/no/components/heading/overview). 
+Dette kan gjøres med [`Heading`](/no/components/docs/heading/overview). 
 Husk å velge riktig overskriftsnivå ut fra plassen `Alert` har i innholdsstrukturen på siden.
 
 <Story story="WithHeading" />
@@ -60,24 +63,19 @@ Men vær obs på at en lenke tar brukeren ut av tjenesten, så bruk lenke kun n�
 
 ## Retningslinjer
 
-`Alert` brukes for å vise viktige meldinger som krever oppmerksomhet, men ikke nødvendigvis handling. 
-Den kan brukes til å informere brukeren om status, endringer eller problemer i en løsning.
-Meldingen vises tydelig og skiller seg visuelt fra resten av innholdet.
+`Alert` brukes for å vise viktige meldinger som krever oppmerksomhet, men ikke nødvendigvis handling. Den kan brukes til å informere brukeren om status, endringer eller problemer i en løsning. Meldingen vises tydelig og skiller seg visuelt fra resten av innholdet.
 
-Bruk komponenten varsomt. 
-Brukere kan forveksle varsler med reklame, og dermed overse dem. 
+Bruk komponenten varsomt. Brukere kan forveksle varsler med reklame, og dermed overse dem. 
 Hvis vi bruker varsler for ofte, kan vi forverre dette problemet.
 
 Pass på at `Alert` har samme utseende og formspråk i alle tjenester og produkter. 
-Denne komponenten skal være mulig å kjenne igjen over alt, så vi skal unngå å justere den.
+Denne komponenten skal være mulig å kjenne igjen overalt, så vi skal unngå å justere den.
 
 ## Tekst
 
-Det er ikke alltid lett å forstå forskjellen på varslene, selv om de har ulike ikoner og farger. 
-Derfor er det viktig at teksten vi skriver i varselet er tydelig og lett å forstå.
+Det er ikke alltid lett å forstå forskjellen på varslene, selv om de har ulike ikoner og farger. Derfor er det viktig at teksten vi skriver i varselet er tydelig og lett å forstå.
 
-Hvis det er noe brukerne må eller kan gjøre for å komme videre med oppgaven sin, skal teksten formidle dette. 
-Når meldingen er lengre enn en setning, kan det være lurt å ha med en overskrift som fremhever det viktigste. 
+Hvis det er noe brukerne må eller kan gjøre for å komme videre med oppgaven sin, skal teksten formidle dette. Når meldingen er lengre enn en setning, kan det være lurt å ha med en overskrift som fremhever det viktigste. 
 
 Her er en liste med hvilken type informasjon varsel bør inneholde:
 - Fortell hva som har skjedd
@@ -90,3 +88,5 @@ Her er en liste med hvilken type informasjon varsel bør inneholde:
   - **Eksempel:** "Hvis dette problemet oppstår igjen, kontakt kundeservice."
 - Hjelp dem å fikse problemet selv
   - **Eksempel:** "Vennligst prøv igjen."
+
+For mer veiledning om hvordan du skriver tydelig og effektiv tekst i varsler, se språkanbefalingene i [mønsteret for Systemvarsler](/no/patterns/systemnotifications#språk).

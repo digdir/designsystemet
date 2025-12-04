@@ -1,30 +1,50 @@
----
-title: Select
-subtitle: '`Select` lets the user choose one option from a list.'
-image: Select.svg
-cssfile: select
----
+<Story story="PreviewEn" />
+<ReactComponentDocs />
 
-<Story story="Preview" />
-
-## Usage
+## Use
 
 ```tsx
 import { Select, Label } from '@digdir/designsystemet-react';
+
 <>
-<Label>Choose a mountain</Label>
-<Select>
-  <Select.Option value="everest">Mount Everest</Select.Option>
-</Select>
+  <Label>Select a mountain</Label>
+  <Select>
+    <Select.Option value="everest">Mount Everest</Select.Option>
+  </Select>
 </>
 ```
 
-## Code Examples
+## Example
+
+### Grouping
+
+You can use `Select.Optgroup` to group options into categories, making long lists more manageable and easier to navigate.
+
+<Story story="WithOptgroupEn" />
 
 ### Disabled
 
-<Story story="Disabled" />
+<Story story="DisabledEn" />
 
 ### ReadOnly
 
-<Story story="ReadOnly" />
+<Story story="ReadOnlyEn" />
+
+## HTML
+Append the class name `ds-select` to `<select>`.
+
+```html
+<select class="ds-select">
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+  <option value="3">Option 3</option>
+</select>
+```
+
+## CSS variables and data attributes
+
+The `ds-input` class can be used to style [`Input`](/en/components/docs/input/overview) and [`Textarea`](/en/components/docs/textarea/overview) as well.
+
+<CssVariables />
+
+<CssAttributes />

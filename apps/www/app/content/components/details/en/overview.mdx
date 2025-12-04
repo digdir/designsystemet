@@ -1,36 +1,33 @@
 <Story layout="block" story="Preview" />
 
-## Usage
+**Use `Details` when**
 
-`Details` consists of two sub-components:
+- less important content should be optional to open
+- additional information may be useful for some users
+- you need to provide examples or answer frequently asked questions
 
-- `Details.Summary` - The heading that can be clicked to show/hide content
-- `Details.Content` - The content that is shown/hidden
+**Avoid `Details` when**
+
+- important content needs to be visible as soon as users arrive on the page
+- error messages must be summarised, use [`ErrorSummary`](/en/components/docs/error-summary/overview) instead
+
+## Example
+
+You can use `Details` inside a card to give the content a framed appearance. This works well when `Details` does not span the full width of the page, or when it contains only a single line.
+
+<Story layout="block" story="InCardWithColorEn" />
 
 ## Guidelines
+Large amounts of text can be demanding for many users. The `Details` component allows users to decide for themselves what is relevant to read. However, you should not use `Details` to hide content just to make the page look tidier. When content is hidden, there is a risk that users will not notice it at all. Carefully consider whether the content really needs to be hidden, and be clear about why you are doing so.
 
-- Use Details when you have content that not all users need to see immediately
-- Keep the heading short and descriptive
-- Avoid hiding important information that users always need
+### Avoid nested lists
 
-## Accessibility
+Do not place one `Details` inside another. Nested lists can make it difficult for users to understand what is open and what is closed, especially when several levels can be expanded at once.
 
-The Details component uses native HTML elements `<details>` and `<summary>`, which have built-in accessibility support.
+## Text
 
-## In Card
+Make sure the heading clearly describes what the `Details` contains.  Headings can strongly influence whether users find what they need, whether the content is read, and whether it is considered accessible to all.
 
-Details can be used inside the Card component for nice grouping:
+“Show more” or “Read more here” are not good enough headings. If you have many expandable sections, consider adding a main heading or thematic heading above the entire list.
 
-<Story layout="block" story="InCard" />
-
-## Color variants
-
-Details works well with Card's color variants:
-
-<Story layout="block" story="InCardWithColor" />
-
-## Controlled state
-
-You can control whether Details is open or closed:
-
-<Story layout="block" story="Controlled" />
+Keep the content inside `Details` short so it is easy to relate to the heading. If the content is too long, divide it into several `Details`. For very large amounts of content, it may be better to create separate pages.

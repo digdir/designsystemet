@@ -1,29 +1,34 @@
 <Story story="Preview" layout="column" />
 
 **Bruk `Textarea` når**
-- det er situasjoner der bruker skal skrive mer enn én linje tekst
-- du skal vise åpne tekstfelt der det ikke finnes en forhåndsdefinert liste med svaralternativer
+- brukeren skal kunne skrive mer enn én linje tekst
 - brukeren skal få plass til å formulere seg fritt
+- svaret ikke har en fast struktur
 
 **Unngå `Textarea` når**
-- det er korte svar som navn, e-postadresser og telefonnummer - bruk [`input`](/docs/komponenter-input--docs) for disse
+- du forventer korte svar, bruk heller [`Textfield`](/no/components/docs/textfield/overview)
 - det er strukturerte data som skal valideres, f.eks fødselsnummer eller dato
 
 ## Eksempel
 
-### Med rader
-I kode kan en utvikler bestemme hvor mange rader et tekstområde skal ha ved å sette `rows`-attributtet.
-Dette påvirker kun den initielle høyden på feltet.
+### Angi høyden
+I kode kan en utvikler bestemme hvor mange rader et tekstområde skal ha ved å sette `rows`-attributtet. Dette påvirker kun den initielle høyden på feltet.
 
 Dette er nyttig for å gi brukeren en indikasjon på hvor mye tekst som forventes.
 
 <Story story="WithRows" layout="column" />
 
 ### Disabled
+Unngå å deaktivere `Textarea` hvis du kan. Det kan være vanskelig for brukerne å forstå hvorfor feltet ikke kan brukes. Les mer om [hvorfor deaktiverte tilstander er problematiske (nav.no)](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) og hvilke alternativer som finnes.
 
 <Story story="Disabled" layout="column" />
 
 ### ReadOnly
+Siden et tekstfelt normalt forventes å være redigerbart, kan `readOnly` virke forvirrende. Bruk det derfor bare når det er helt nødvendig. I mange tilfeller er det bedre å vise informasjonen som vanlig tekst enn å bruke `readOnly`.
+
+Felter med `readonly`-attributtet er en del av tabrekkefølgen. Brukere kan kopiere innholdet, men ikke endre det. Informasjonen i et readonly-felt blir sendt inn sammen med skjemaet. `readOnly` kan derfor være aktuelt når informasjonen skal inngå i en oppsummering som sendes inn i skjemaet.
+
+**Viktig: Hvis du velger å bruke `readOnly`, må du forklare brukeren hvorfor innholdet ikke kan redigeres.**
 
 <Story story="ReadOnly" layout="column" />
 
@@ -42,9 +47,9 @@ Høyden på `textarea` bør tilpasses forventet tekstmengde. Forventer du at bru
 Et tekstområde bør ikke være bredere enn 50-75 tegn inkludert mellomrom. Hvis vi holder oss til det, blir lesbarheten best for alle brukere.
 
 ### Øvrige retningslinjer
-I tillegg til disse retningslinjene, bør du også følge de generelle retninglinjene for [`textfield`](/docs/komponenter-Textfield--docs) og [`input`](/docs/komponenter-input--docs). 
+I tillegg til disse retningslinjene, bør du også følge de generelle retninglinjene for [`Textfield`](/no/components/docs/textfield/overview):
 
-* [Unngå plassholdertekster](/docs/komponenter-textfield--docs#unng%C3%A5-plassholdertekster)
-* [Inndata og formatering](/docs/komponenter-textfield--docs#inndata)
-* [Tekst](/docs/komponenter-textfield--docs#tekst)
-* [Tilgjengelighet](/docs/komponenter-textfield--docs#tilgjengelighet)
+* [Unngå plassholdertekster](/no/components/docs/textfield/overview#unngå-plassholdertekster)
+* [Inndata og formatering](/no/components/docs/textfield/overview#inndata)
+* [Tekst](/no/components/docs/textfield/overview#tekst)
+* [Tilgjengelighet](/no/components/docs/textfield/accessibility)

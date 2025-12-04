@@ -1,11 +1,11 @@
 {
   "no": {
     "title": "Button",
-    "subtitle": "Knappar lèt brukarane utføre handlingar."
+    "subtitle": "`Button` lèt brukarane utføre handlingar."
   },
   "en": {
     "title": "Button",
-    "subtitle": "Buttons allow users to perform actions."
+    "subtitle": "`Button` allows users to perform actions."
   },
   "image": "Button.svg",
   "cssFile": "button.css"

@@ -28,7 +28,6 @@ type HeaderProps = {
   menu: { name: TemplateStringsArray; href: string }[];
   betaTag?: boolean;
   themeSwitcher?: boolean;
-  transparentBackground?: boolean;
   logoLink?: string;
 } & React.HTMLAttributes<HTMLElement>;
 
@@ -63,7 +62,6 @@ const Header = ({
   menu,
   betaTag,
   themeSwitcher = false,
-  transparentBackground = false,
   logoLink = '/',
   className,
   ...props
@@ -80,25 +78,24 @@ const Header = ({
   };
 
   const langPaths = getNewLangPaths();
-
-  const [open, setOpen] = useState(false);
   const [isHamburger, setIsHamburger] = useState(false);
   const [viewportWidth, setViewportWidth] = useState(0);
   const [langOpen, setLangOpen] = useState(false);
   const menuRef = useRef<HTMLUListElement>(null);
+  const hamburgerMenu = useRef<HTMLDivElement>(null);
+  const closeMenuRef = useRef<HTMLButtonElement>(null);
   const headerRef = useRef<HTMLElement>(null);
 
   const [theme, setTheme] = useState('light');
 
   //close mobile menu when tabfocus leaves the header
   const handleBlur = (e: FocusEvent) => {
-    if (!open) return;
     if (
-      headerRef.current &&
+      hamburgerMenu.current &&
       e.relatedTarget instanceof Node &&
-      !headerRef.current.contains(e.relatedTarget)
+      !hamburgerMenu.current.contains(e.relatedTarget)
     ) {
-      setOpen(false);
+      closeMenuRef.current?.click();
     }
   };
 
@@ -150,7 +147,6 @@ const Header = ({
         const SAFETY_MARGIN = 50;
         if (window.innerWidth > viewportWidth + SAFETY_MARGIN) {
           setIsHamburger(false);
-          setOpen(false);
         }
       } else if (menuRef.current && headerRef.current) {
         const wrappedItems = detectWrap(menuRef.current.children);
@@ -183,7 +179,6 @@ const Header = ({
         className={cl(
           classes.header,
           isHamburger && classes.hamburger,
-          transparentBackground && classes.transparentHeader,
           className,
         )}
         ref={headerRef}
@@ -196,13 +191,9 @@ const Header = ({
               className={cl(classes.logoLink, 'ds-focus')}
               to={logoLink}
               aria-label={t('header.home-link')}
-              onClick={() => setOpen(false)}
             >
-              {isHamburger ? (
-                <DsEmbledLogo className={classes.logo} />
-              ) : (
-                <DsFullLogo className={classes.logo} />
-              )}
+              <DsEmbledLogo className={classes.logo} />
+              <DsFullLogo className={classes.logoWide} />
             </Link>
             {betaTag && <div className={classes.tag}>Beta</div>}
           </div>
@@ -285,49 +276,67 @@ const Header = ({
                   variant='tertiary'
                   icon={true}
                   data-color='neutral'
-                  aria-expanded={open}
-                  aria-label={
-                    open ? t('header.close-menu') : t('header.open-menu')
-                  }
+                  aria-label={t('header.open-menu')}
                   className={cl(classes.toggle, 'ds-focus')}
-                  onClick={() => {
-                    setOpen(!open);
-                  }}
+                  popoverTarget='hamburgerMenu'
+                  popoverTargetAction='show'
                 >
-                  {open && (
-                    <XMarkIcon
-                      aria-hidden
-                      fontSize={26}
-                      color='var(--ds-color-neutral-text-default)'
-                    />
-                  )}
-                  {!open && (
-                    <MenuHamburgerIcon
-                      aria-hidden
-                      fontSize={26}
-                      color='var(--ds-color-neutral-text-default)'
-                    />
-                  )}
+                  <MenuHamburgerIcon
+                    aria-hidden
+                    fontSize={26}
+                    color='var(--ds-color-neutral-text-default)'
+                  />
                 </Button>
-                <ul data-open={open}>
-                  {menu.map((item, index) => (
-                    <li key={index}>
-                      <Paragraph data-size='md' asChild>
-                        <Link
-                          suppressHydrationWarning
-                          to={item.href}
-                          onClick={() => setOpen(false)}
-                          className={cl(
-                            pathname?.includes(item.href) && classes.active,
-                            'ds-focus',
-                          )}
-                        >
-                          {t(item.name)}
-                        </Link>
-                      </Paragraph>
-                    </li>
-                  ))}
-                </ul>
+                <div
+                  className={classes.listContainer}
+                  id='hamburgerMenu'
+                  popover='auto'
+                  ref={hamburgerMenu}
+                >
+                  <div className={classes.hamburgerHeader}>
+                    <Link
+                      className={cl(classes.hamburgerLogo, 'ds-focus')}
+                      to={logoLink}
+                      aria-label={t('header.home-link')}
+                    >
+                      <DsFullLogo />
+                    </Link>
+                    <Button
+                      data-color='neutral'
+                      ref={closeMenuRef}
+                      icon={true}
+                      popoverTarget='hamburgerMenu'
+                      popoverTargetAction='hide'
+                      variant='tertiary'
+                      aria-label={t('header.close-menu')}
+                    >
+                      <XMarkIcon
+                        aria-hidden
+                        fontSize={26}
+                        color='var(--ds-color-neutral-text-default)'
+                      />
+                    </Button>
+                  </div>
+                  <ul>
+                    {menu.map((item, index) => (
+                      <li key={index}>
+                        <Paragraph data-size='md' asChild>
+                          <Link
+                            suppressHydrationWarning
+                            to={item.href}
+                            onClick={() => closeMenuRef.current?.click()}
+                            className={cl(
+                              pathname?.includes(item.href) && classes.active,
+                              'ds-focus',
+                            )}
+                          >
+                            {t(item.name)}
+                          </Link>
+                        </Paragraph>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </>
             )}
           </nav>

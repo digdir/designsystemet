@@ -1,4 +1,4 @@
-@layer normalize, ds;
+@layer normalize, site, ds;
 
 @layer view-transitions {
   @property --circle-wipe-progress {
@@ -27,9 +27,8 @@
   --grid-max-width: 1400px;
   --grid-padding: clamp(1rem, calc(0.27rem + 3.64vw), 3rem);
   --grid-gap: var(--ds-size-8);
-  --page-spacing-top: var(--ds-size-14);
-  --page-spacing-bottom: var(--ds-size-14);
-  --media-max-width: 800px;
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -39,15 +38,180 @@ body {
   padding: 0;
 }
 
-/*make each section front page have tinted background */
-[data-color-scheme='light'] {
-  main:has([data-is-main='true']) {
-    background-color: var(--ds-color-neutral-background-tinted);
-  }
-}
-
 #main {
   min-height: 80svh;
+}
+
+@layer site.layout {
+  @property --captured-length {
+    syntax: '<length>';
+    inherits: true;
+    initial-value: 0px;
+  }
+  :root {
+    --logo-red: #f05f63;
+    --logo-blue: #1e98f5;
+    --logo-yellow: #e5aa20;
+    --logo-slate: #626b77;
+
+    --page-spacing-top: var(--ds-size-14); /*legacy*/
+    --page-spacing-bottom: var(--ds-size-14); /*legacy*/
+    --max-page-width: 1920px;
+    --max-content-width: 1300px;
+    --sidebar-left-width: 300px;
+    --sidebar-right-width: 300px;
+    --short-content-width: 700px;
+    --long-content-width: 950px;
+    --media-max-width: var(--long-content-width); /*legacy*/
+    /*padding shrinks from size-7 to size-4 between 1000px and 500px*/
+    /*https://chrisburnell.com/clamp-calculator/?font-size-root=16&size-min=16&size-max=28&viewport-min=500&viewport-max=1000&viewport-units=vi*/
+    --content-inline-padding: clamp(var(--ds-size-4), calc(0.27rem + 2.4vw), var(--ds-size-7));
+    /*--content-inline-padding: var(--ds-size-7);*/
+    --header-height: 75px;
+    @media screen and (max-width: 1500px) {
+      --sidebar-left-width: 240px;
+      --sidebar-right-width: 240px;
+      --page-spacing-top: var(--ds-size-8);
+      --page-spacing-bottom: var(--ds-size-12);
+    }
+  }
+  /*postcss or whatever struggles with multiple mediaqueries in the same :root*/
+  :root {
+    @media screen and (max-width: 600px) {
+      --header-height: 68px;
+    }
+  }
+  .l-sidebar-left {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    border-right: 1px solid var(--ds-color-neutral-border-subtle);
+    top: var(--header-height);
+    overflow-y: auto;
+    max-height: calc(100vh - var(--header-height));
+    padding-top: var(--ds-size-7);
+    scrollbar-color: var(--ds-color-neutral-border-subtle) transparent;
+    /*counter the padding to align with logo while not breaking the active style*/
+    margin-left: calc(var(--ds-size-4) * -1);
+
+    overscroll-behavior: contain;
+    > nav {
+      margin-bottom: var(--header-height);
+    }
+  }
+  .l-content-container {
+    container: content-container / inline-size;
+    width: 100%;
+    max-width: calc(var(--max-content-width) + (var(--content-inline-padding) * 2));
+    margin: 0 auto;
+    padding-inline: var(--content-inline-padding);
+    display: grid;
+    &:has(.l-sidebar-left) {
+      max-width: var(--max-page-width);
+      grid-template-columns: var(--sidebar-left-width) minmax(0, 1fr);
+      column-gap: 110px;
+      @media screen and (max-width: 1500px) {
+        column-gap: 48px;
+      }
+      @media screen and (max-width: 958px) {
+        display: block;
+        .l-sidebar-left {
+          border-right: initial;
+          position: static;
+        }
+      }
+    }
+  }
+  .u-default-padding-top {
+    padding-top: var(--page-spacing-top);
+  }
+}
+@layer site.breakout-grid {
+  /*https://layout-breakouts-builder.vercel.app/*/
+  .l-breakout-grid {
+    --long-content-width: 860px;
+    --short-content-width: 640px;
+    /** Track sizes **/
+    --content-full-bleed: minmax(var(--content-inline-padding), 1fr);
+    --content-max: minmax(0, calc((var(--max-content-width) - var(--long-content-width)) * 0.5));
+    --content: minmax(0, calc((var(--long-content-width) - var(--short-content-width)) * 0.5));
+    --text: min(var(--short-content-width), 100% - var(--content-inline-padding) * 2);
+
+    display: grid;
+    grid-template-columns:
+      [content-full-bleed-start]
+      var(--content-full-bleed)
+      [content-max-start]
+      var(--content-max)
+      [content-start]
+      var(--content)
+      [text-start]
+      var(--text)
+      [text-end]
+      var(--content)
+      [content-end]
+      var(--content-max)
+      [content-max-end]
+      var(--content-full-bleed)
+      [content-full-bleed-end];
+
+    & > * {
+      grid-column: text;
+    }
+
+    > :where(div:not([class]), img, section, figure, table, video, iframe, [data-iframe-video], .u-long-content, .dodont-row) {
+      grid-column: content;
+    }
+
+    /** Utility classes **/
+    .content-full-bleed {
+      grid-column: content-full-bleed;
+    }
+    .content-full-bleed-start {
+      grid-column-start: content-full-bleed-start;
+    }
+    .content-full-bleed-end {
+      grid-column-end: content-full-bleed-end;
+    }
+
+    .content-max {
+      grid-column: content-max;
+    }
+    .content-max-start {
+      grid-column-start: content-max-start;
+    }
+    .content-max-end {
+      grid-column-end: content-max-end;
+    }
+
+    .content {
+      grid-column: content;
+    }
+    .content-start {
+      grid-column-start: content-start;
+    }
+    .content-end {
+      grid-column-end: content-end;
+    }
+
+    .text {
+      grid-column: text;
+    }
+    .text-start {
+      grid-column-start: text-start;
+    }
+    .text-end {
+      grid-column-end: text-end;
+    }
+
+    .full-width {
+      grid-column: full;
+    }
+    .full-content {
+      grid-column: full;
+      padding-inline: var(--content-inline-padding);
+    }
+  }
 }
 
 @layer normalize {
@@ -109,7 +273,7 @@ body {
   }
 }
 
-@layer rich-text {
+@layer site.rich-text {
   .u-rich-text {
     & > *:first-child {
       margin-top: 0;
@@ -118,9 +282,24 @@ body {
     & > *:last-child {
       margin-bottom: 0;
     }
+    &.left-adjusted {
+      > * {
+        max-width: var(--short-content-width);
+      }
+      :where(div:not([class]), img, section, figure, table, video, iframe, [data-iframe-video], .u-long-content, .dodont-row) {
+        max-width: var(--long-content-width);
+      }
+      :where(.u-short-content) {
+        max-width: var(--short-content-width);
+      }
+      hr {
+        margin-inline: 0;
+      }
+    }
 
-    & p {
-      margin-bottom: var(--ds-size-4);
+    & > p {
+      margin-bottom: var(--ds-size-6);
+      text-wrap: pretty;
 
       & > strong {
         margin: 0 !important;
@@ -132,42 +311,30 @@ body {
       margin-bottom: initial;
     }
 
-    & > h1,
     & > h2,
     & > h3,
     & > h4,
     & > h5,
     & > h6 {
-      position: relative;
-      padding-left: 26px;
-      margin-left: -26px;
+      scroll-margin-top: calc(var(--header-height) + 1lh);
     }
-
-    & > h2,
-    & > h3,
+    & > h2 {
+      margin-top: var(--ds-size-10);
+      margin-bottom: var(--ds-size-4);
+    }
+    & > h3 {
+      margin-top: var(--ds-size-9);
+      margin-bottom: var(--ds-size-3);
+    }
     & > h4,
     & > h5,
     & > h6 {
-      margin-top: var(--ds-size-15);
-      margin-bottom: var(--ds-size-5);
+      margin-top: var(--ds-size-8);
+      margin-bottom: var(--ds-size-3);
     }
 
-    /* Anchor link styling for <h1> */
-    & > h1 a {
-      height: 24px;
-      width: 24px;
-      margin-top: -2px;
-      left: -4px;
-    }
-
-    /* Anchor links appear on heading hover */
-    & > h1:hover a,
-    & > h2:hover a,
-    & > h3:hover a,
-    & > h4:hover a,
-    & > h5:hover a,
-    & > h6:hover a {
-      opacity: 1;
+    & > :where(div, table, section) {
+      margin-block: var(--ds-size-8);
     }
 
     & > ul,
@@ -175,13 +342,18 @@ body {
       max-width: 100%;
       padding-left: var(--ds-size-5);
       box-sizing: border-box;
-      margin-bottom: 24px;
+      margin-bottom: var(--ds-size-5);
+      margin-top: calc(var(--ds-size-2) * -1);
     }
 
     & > ul > li,
     & > ol > li {
       line-height: 1.9em;
       word-break: break-word; /* Add this to prevent text from overflowing */
+      text-wrap: pretty;
+      & > p {
+        line-height: var(--ds-body-md-line-height);
+      }
     }
 
     & > ul > li > ol,
@@ -210,7 +382,6 @@ body {
 
     & > table {
       width: 100%;
-      margin: var(--ds-size-7) 0;
       border-collapse: collapse;
     }
 
@@ -222,8 +393,7 @@ body {
     }
 
     & code:not(pre > code) {
-      padding: 3px 5px;
-      margin: 1px;
+      padding: 2px 5px;
       font-size: 0.9em;
       line-height: 1;
       white-space: break-spaces;
@@ -231,10 +401,21 @@ body {
       border-radius: var(--ds-border-radius-md);
       display: inline;
       border: 1px solid var(--ds-color-neutral-border-subtle);
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
     }
 
-    & > div + p {
-      margin-top: var(--ds-size-5);
+    kbd {
+      font-family:
+        ui-monospace, Menlo, Monaco, 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro', 'Droid Sans Mono', 'Courier New', monospace;
+      background: var(--ds-color-neutral-surface-tinted);
+      padding: var(--ds-size-1);
+      border-radius: var(--ds-border-radius-md);
+      border: solid 1px var(--ds-color-neutral-border-subtle);
+      position: relative;
+      bottom: 2px;
+      box-shadow: 0.5px 1px 0 0 var(--ds-color-neutral-border-strong);
+      font-size: round(down, 0.8em, 1px);
     }
 
     & > .ds-alert {
@@ -248,16 +429,43 @@ body {
         margin-bottom: 0 !important;
       }
     }
+    /*headings determine margin for stuff under them*/
+    & > :is(h2, h3, h4, h5, h6) + * {
+      margin-top: 0;
+    }
+    /*headings determine margin for stuff above them*/
+    *:not(:where(h2, h3, h4, h5, h6)):has(+ h2, + h3, + h4, + h5, + h6) {
+      margin-bottom: 0;
+    }
+    /*text above these elements dont need margin*/
+    :where(p, ul, ol):has(+ div, + section, + table, + figure) {
+      margin-bottom: 0;
+    }
   }
 }
-@layer global-components {
+@layer site.global-components {
   .component-table {
     --dsc-table-border-radius: var(--ds-border-radius-lg);
     border-collapse: separate;
     word-break: break-all;
+    thead {
+      font-size: 1rem;
+    }
+    tbody {
+      font-size: 0.875rem /*14px*/;
+    }
   }
 }
-@layer overrides {
+@layer site.overrides {
+  :root {
+    --ds-heading-md-font-weight: var(--ds-font-weight-semibold);
+    --ds-heading-2xs-font-weight: var(--ds-font-weight-semibold);
+    --ds-heading-xs-font-weight: var(--ds-font-weight-semibold);
+    --ds-heading-sm-font-weight: var(--ds-font-weight-semibold);
+    --ds-heading-lg-font-weight: var(--ds-font-weight-semibold);
+    --ds-heading-xl-font-weight: var(--ds-font-weight-semibold);
+    --ds-heading-2xl-font-weight: var(--ds-font-weight-semibold);
+  }
   .ds-skip-link:focus {
     position: relative;
     z-index: 1;

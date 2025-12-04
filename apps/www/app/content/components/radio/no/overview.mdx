@@ -1,70 +1,57 @@
 <Story story="Preview" />
 
 **Bruk `Radio` når**
-- brukeren velger ett alternativ i skjemaer
+- brukeren skal velge ett av flere alternativer i skjemaer
 
 **Unngå `Radio` når**
-- brukeren skal velge flere alternativer, bruk heller [`Checkbox`](/docs/komponenter-checkbox--docs)
+- brukeren skal kunne velge flere alternativer, bruk heller [`Checkbox`](/en/components/docs/checkbox/overview)
 
 ## Eksempel
 
 ### Gruppering
-Bruk [`Fieldset`](/no/components/fieldset) rundt en gruppe med radioknapper for å gi en felles tittel og eventuelt hjelpetekst.
+Bruk ledetekst til å stille spørsmålet og legg eventuelt ved beskrivelse der det er nødvendig.
 
 <Story story="Group" />
 
 ### Med feil
-Her må vi bruke `Fieldset`, fordi den aktiverer riktig stil og sørger for at innholdet har de riktige sammenkoblingene for tilgjengelighet.
-
+Hvis brukeren prøver å gå videre uten å svare på et obligatorisk spørsmål, skal feilmeldingen gjelde for hele gruppen med alternativer.
 <Story story="WithError" />
 
-### Readonly
-
-Felter med `readonly`-attributtet er med i tabrekkefølgen.
-Brukerne kan kopiere innholdet men ikke redigere det.
-Informasjon blir med når skjemaet sendes inn.
-
-`readonly`-felter kan være forvirrende for noen brukere.
-Ikke alle vil skjønne hvorfor de ikke får til å endre innholdet i feltet.
-Vi anbefaler derfor å unngå `readonly` så langt det lar seg gjøre.
-
-<Story story="ReadOnly" />
-
-### Inline
-
-`Radio` skal som hovedregel *ikke* plasseres på samme linje.
-Men, hvis du har kun to alternativer med korte tekster som "Ja" og "Nei", kan du vurdere om de bør plasseres ved siden av hverandre. 
-
-<Story story="Inline" />
-
 ## Retningslinjer
-Vi bruker `Radio` når vi skal gi brukerne mulighet til å velge kun ett alternativ.
-Skal de kunne velge flere, bruker du [`Checkbox`](/docs/komponenter-checkbox--docs).
+Vi bruker `Radio` når vi skal gi brukerne mulighet til å velge kun ett alternativ. Skal de kunne velge flere, bruker du [`Checkbox`](/en/components/docs/checkbox/overview).
 
-Vi bør ikke ha mer enn syv alternativer i en gruppe.
-Trenger vi å gi brukerne flere valg, bør vi heller bruke [`Suggestion`](/no/components/suggestion) eller [`Select`](/no/components/select).
-Hvis vi bare skal gi brukerne ett valg, kan en [`Switch`](/no/components/switch) eller [`Checkbox`](/no/components/checkbox) passe bedre.
+Vi bør ikke ha mer enn syv alternativer i en gruppe. Trenger vi å gi brukerne flere valg, bør vi heller bruke [`Suggestion`](/no/components/docs/suggestion) eller [`Select`](/no/components/docs/select). Hvis vi bare skal gi brukerne ett valg, kan en [`Switch`](/no/components/docs/switch) eller [`Checkbox`](/no/components/docs/checkbox) passe bedre.
 
 ### Sortering
-Alternativene skal som hovedregel sorteres alfabetisk.
-Velger du å presentere de mest aktuelle alternativene først kan det bli vanskelig å finne ønsket alternativ.
-Du kan også risikere å påvirke svaret, noe som er uheldig.
+Sorter svaralternativene alfabetisk hvis det ikke er en god grunn til å gjøre noe annet. Vær forsiktig med å la det mest brukte svaralternativet stå først hvis det er et personlig spørsmål eller et verdispørsmål, som for eksempel legning eller partitilhørighet. 
 
 ### Plassering
-`Radio` skal som hovedregel plasseres vertikalt, av hensyn til lesbarhet.
-Det er enklere for brukere å skanne listen når alternativene ligger under hverandre.
-For brukere som trenger å forstørre (zoome inn) nettsiden for å se godt nok, er en horisontal liste ekstra vanskelig. Hvis vi bare har to valg med korte ledetekster, kan vi vise dem ved siden av hverandre. 
+Plasser helst radioknapper vertikalt. Da blir det lettere å skanne listen og lese alternativene. For brukere som må forstørre teksten, er horisontale lister utfordrende. 
 
-I en [likert-skala (snl.no)](https://snl.no/Likert-skala) vil det også være naturlig å vise dem ved siden av hverandre.
-I en horisontal visning er det viktig at det kommer tydelig fram hvilken tekst som hører til hvilken boks.
+Hvis du har kun to alternativer med korte tekster som "Ja" og "Nei", kan du vurdere om de bør plasseres ved siden av hverandre. Ved horisontal visning må det være klart hvilken tekst som hører til hvilken knapp. Du kan bruke horisontal visning når det bare er to alternativer med korte tekster, eller i en vurderingsskala som går fra «helt uenig» til «helt enig» [likert-skala (snl.no)](https://snl.no/Likert-skala). 
+
+<Story story="Inline" />
 
 ### Unngå forhåndsvalgt alternativ
 Tenk nøye over om du virkelig trenger å ha et forhåndsvalgt alternativ.
 Det kan ha motsatt effekt av det du ønsker, for eksempel at brukeren føler seg manipulert til å ta ett bestemt valg, eller ikke klarer å ta et bevisst valg selv.
 
 ## Tekst
-En gruppe med flere alternativer bør alltid ha en `<legend>` og eventuelt en `description` dersom hjelpetekst er nødvendig.
+En gruppe med flere alternativer bør alltid ha ledetekst (`<legend>`) og eventuelt en beskrivelse (`description`) for mer forklaring. Beskrivelsen skal komme like etter ledeteksten og gi brukeren nødvendig informasjon før de tar et valg.
 
-Radioknapper skal alltid ha en `<label>`. Den skal være så kort som mulig og hvert alternativ bør være formulert på samme måte.
-Radio-komponenten kan også ha `description`.
-Da kommer den rett under `<label>`.
+<div className="dodont-row">
+  <DoDont story="DoIcon">
+    Her får brukerne all viktig og relevant informasjon før valget. Det følger den logiske rekkefølgen og gjør brukerne tryggere på at de velger riktig.
+  </DoDont>
+  <DoDont story="DontIcon">
+    Her kommer viktig og relevant informasjon etter valget, og er lite synlig for brukerne. Det bryter den logiske rekkefølgen og kan gjøre at brukerne velger feil.
+  </DoDont>
+</div>
+
+
+Hvis en eller flere av radioknappene skal ha beskrivelse, skal den ligge rett under svaralternativet (`<label>`). 
+
+Svaralternativene skal være så korte som mulig, og hvert alternativ bør ha samme språklige form. 
+
+
+

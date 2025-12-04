@@ -1,44 +1,44 @@
 <Alert data-color="warning">
-Suggestion er under utvikling. Finner du feil eller mangler, meld i fra på Github eller Slack.
+Suggestion er under utvikling. Finner du feil eller mangler, meld fra på [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) eller i [Slack](https://designsystemet.no/slack).
 </Alert>
 
 <Story story="Preview" />
 
-## Bruk
+**Bruk `Suggestion` når**
+- brukeren skal velge ett eller flere alternativer fra en større liste
+- det er nyttig at listen filtreres basert på det brukeren skriver
+- det er raskere å søke enn å skrolle
 
-```tsx
-import { EXPERIMENTAL_Suggestion as Suggestion } from '@digdir/designsystemet-react'
-
-<Suggestion>
-  <Suggestion.Input />
-  <Suggestion.Clear />
-  <Suggestion.List>
-    <Suggestion.Empty>Tomt</Suggestion.Empty>
-    <Suggestion.Option label="Sogndal" value="sogndal">
-      Sogndal
-    </Suggestion.Option>
-    <Suggestion.Option label="Oslo" value="oslo">
-      Oslo
-    </Suggestion.Option>
-  </Suggestion.List>
-</Suggestion>
-```
+**Unngå `Suggestion` når**
+- brukeren skal velge mellom få alternativer, bruk heller [`Radio`](/no/components/docs/radio/overview) eller [`Checkbox`](/no/components/docs/checkbox/overview)
+- brukeren forventer en operativsystem-styrt opplevelse, bruk heller en native `<select>`-komponent
 
 ## Eksempel
 
 ### Flervalg
-Du kan gi brukeren mulighet til å velge flere alternativer.
-Slettbare `Chip`s vil komme etter `<label>`, men før inndatafeltet.
+Du kan gi brukeren mulighet til å velge flere alternativer. Slettbare `Chip`s vil komme etter `<label>`, men før inndatafeltet.
 
 <Story story='Multiple' />
 
 ### Filter
-Filter er som standard på, og filteret ser etter etter teksten i input.
-Du kan sende inn ditt eget filkter.
-Under viser vi et eksempel som skrur av filteret helt.
+Filter er som standard på, og filteret ser etter etter teksten i input. Du kan sende inn ditt eget filter. Under vises et eksempel som skrur av filteret helt.
 
 <Story story='Filter' />
 
-## Tilleggsinformasjon
-`Suggestion` baserer seg på [u-combobox fra u-elements (github.io)](https://u-elements.github.io/u-elements/elements/u-combobox). 
-Den er inspisert av [open-ui sitt combobox mønster (open-ui.org)](https://open-ui.org/components/combobox.explainer/).
+## Retningslinjer
+`Suggestion` fungerer best når brukeren skal finne riktig alternativ i en større liste. Komponentens styrke ligger i muligheten til å filtrere mens brukeren skriver, og dermed gjøre det enklere å navigere i mange valg.
+
+## Tekst 
+Bruk tydelig label som forklarer hva brukeren skal velge. 
+
+<div className="dodont-row">
+  <DoDont story="DoIcon">
+    Bruk en tydelig og beskrivende label som forklarer hva brukeren skal velge.
+  </DoDont>
+  <DoDont story="DontIcon">
+    Label skal beskrive informasjonen, ikke hvordan feltet brukes.
+  </DoDont>
+</div>
+
+
+Hvert alternativ bør være kort, helst ett ord eller en kort frase. Hvis ingen treff finnes, vis en kort melding, for eksempel «Ingen treff».

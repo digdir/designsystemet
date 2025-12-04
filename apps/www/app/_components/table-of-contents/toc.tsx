@@ -9,17 +9,22 @@ import classes from './toc.module.css';
 export type TableOfContentsProps = {
   items: TableOfContentsItem[];
   title: string;
+  level?: number;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const TableOfContents = ({
+  children,
   items,
   title,
+  level = 2,
   className,
   ...props
 }: TableOfContentsProps) => {
   const [activeItem, setActiveItem] = useState<string>('');
 
   const { t } = useTranslation();
+
+  const filteredItems = items.filter((item) => item.level <= level);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -34,7 +39,7 @@ export const TableOfContents = ({
       { rootMargin: '0px 0px -60% 0px' },
     );
 
-    const headingElements = items.map((item) =>
+    const headingElements = filteredItems.map((item) =>
       document.getElementById(item.id),
     );
 
@@ -48,34 +53,37 @@ export const TableOfContents = ({
       });
       observer.disconnect();
     };
-  }, [items]);
-
-  // If there are less than 2 items, we don't render the TOC
-  if (items.length < 2) return null;
+  }, [filteredItems]);
 
   return (
     <aside
+      data-color='neutral'
       data-size='md'
       className={cl(classes['table-of-contents'], className)}
       {...props}
     >
-      <Paragraph data-size='md' asChild>
-        <h2>{t('toc.title')}</h2>
-      </Paragraph>
-      <ol>
-        {items.map((item) => (
-          <li key={item.id}>
-            <Link
-              data-size='sm'
-              href={`#${item.id}`}
-              data-level={item.level}
-              aria-current={activeItem === item.id}
-            >
-              {item.title}
-            </Link>
-          </li>
-        ))}
-      </ol>
+      {filteredItems.length > 1 && (
+        <>
+          <Paragraph data-size='sm' asChild>
+            <h2>{t('toc.title')}</h2>
+          </Paragraph>
+          <ol>
+            {filteredItems.map((item) => (
+              <li key={item.id}>
+                <Link
+                  data-size='sm'
+                  href={`#${item.id}`}
+                  data-level={item.level}
+                  aria-current={activeItem === item.id}
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ol>
+        </>
+      )}
+      {children}
     </aside>
   );
 };

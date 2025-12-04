@@ -2,12 +2,14 @@
 title: Systemvarsler
 sidebar_title: Systemvarsler
 category: Ferdig
-description: Systemvarsler brukes for å varsle brukeren enten om feil i systemet eller holde dem informert om viktige ting de bør få med seg.
+description: Slik hjelper du brukerne å forstå situasjoner i tjenesten som ikke skyldes deres egne handlinger.
+partners: Digdir, Nav, Skatteetaten ++
 date: 2024-12-10
+order: 40
 ---
 
 ## Innledning
-Vi bruker systemvarsler for å informere brukerne om feil i systemet, eller viktige hendelser de bør være oppmerksomme på. Systemvarsler er ikke knyttet til brukernes handlinger, slik valideringer er. Du finner informasjon om valideringsfeil i [artikkelen om brukerutløste feil](/no/patterns/errors). Denne artikkelen fokuserer på feil og varsler i systemet. 
+Vi bruker systemvarsler for å informere brukerne om feil i systemet, eller viktige hendelser de bør være oppmerksomme på. Systemvarsler er *ikke* knyttet til brukernes handlinger, slik valideringer er. Du finner informasjon om valideringsfeil i [artikkelen om brukerutløste feil](/no/patterns/errors). 
 
 Systemvarsler kan komme i ulike former, for eksempel som `alert` eller `modal`. Måten vi kommuniserer systemvarslene på avhenger av svaret på disse spørsmålene:
 - Hvilken type informasjon er det? 
@@ -203,7 +205,7 @@ Les mer på [uu-tilsynet](https://www.uutilsynet.no/wcag-standarden/413-statusbe
 
 
 ### Modaler
-Når en [dialog](https://storybook.designsystemet.no/?path=/docs/komponenter-dialog--docs) åpnes, er det viktig at den får fokus, slik at brukere umiddelbart kan interagere med innholdet. Ofte er det naturlig å sette fokus til det første interaktive elementet. I noen tilfeller kan det passe å fokusere på et annet element, for eksempel overskriften. Da må du bruke `tabindex="-1" `for å sikre at fokus kan settes på et ikke-interaktivt element. 
+Når en [dialog](/no/components/docs/dialog/overview) åpnes, er det viktig at den får fokus, slik at brukere umiddelbart kan interagere med innholdet. Ofte er det naturlig å sette fokus til det første interaktive elementet. I noen tilfeller kan det passe å fokusere på et annet element, for eksempel overskriften. Da må du bruke `tabindex="-1" `for å sikre at fokus kan settes på et ikke-interaktivt element. 
 
 **Eksempel:**
 

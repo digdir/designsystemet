@@ -1,54 +1,31 @@
----
-title: Field
-image: Field.svg
-cssfile: field
----
-
 <Story story="Preview" />
 
-# Field
-`Field` er et hjelpemiddel for å automatisk koble et felt sammen med [`Label`](/docs/komponenter-typography--docs#label), `Field.Description`, [`ValidationMessage`](/docs/komponenter-typography--docs#validationmessage) og `Field.Counter`. `Field` kan brukes sammen med `Input`, `Textarea` og `Select`. **OBS**: `Textfield` har allerede `Field` innebygd, og kan derfor ikke brukes i en `Field`.
+**Use `Field` when**
+- you need to ensure that [`Label`](/en/components/docs/label/overview), `Field.Description`, [`ValidationMessage`](/en/components/docs/validation-message/overview) and `Field.Counter` are correctly associated with a field
 
-##  Bruk
+**Avoid `Field` when**
+- you need to semantically group multiple fields; use [`Fieldset`](/en/components/docs/fieldset/overview) instead
 
-```tsx
-<Field>
-  <Label>Kort beskrivelse</Label>
-  <Field.Description>Beskrivelse</Field.Description>
-  <Input />
-  <ValidationMessage>Feilmelding</ValidationMessage>
-</Field>
-```
-
-## Eksempler
+## Example
 
 ### Prefix/Suffix
 
-Prefixer og suffixer er nyttige for å vise enheter, valuta eller andre typer informasjon som er relevant for feltet.
-Du skal **ikke** bruke disse alene, siden skjermlesere ikke leser dem opp.
-Det er viktig at samme informasjon som vises i prefixet eller suffixet også er inkludert i ledeteksten.
+Prefixes and suffixes are useful for showing units, currency or other types of information relevant to the field. You should **not** use these on their own, as screen readers do not announce them.  It is important that the same information shown in the prefix or suffix is also included in the label.
 
 <Story story="Affix" />
 
-### Antall tegn
+### Character count
 
-Bruk `Field.Counter` til å informere om antall tegn brukerne kan skrive i feltet.
+Use `Field.Counter` to inform users about the number of characters they can enter in the field.
 
 <Story story="Counter" />
 
-### Plassering
-Bruk `position="end"` når du ønsker å plassere for eksempel en `Switch` til høyre for `Label`. Dette kan være nyttig i innstillingsgrensesnitt, slik at brukeren først kan lese etiketten til venstre - som forklarer hva innstillingen gjelder - og deretter handlingselementet (bryteren) til høyre. 
+### Placement
+When you use `Field` together with choice components such as `Switch`, you can place the label either before or after the control. This makes it easy to adapt the component to the context.
 
 <Story story="Position" />
 
-## Retningslinjer
-`Field` hjelper deg med å strukturere skjemafelt på en tilgjengelig og konsistent måte. Den kobler automatisk sammen [`Label`](/docs/komponenter-typography--docs#label), `Field.Description`, [`ValidationMessage`](/docs/komponenter-typography--docs#validationmessage) og `Field.Counter` med det tilhørende feltet via riktige ARIA-attributter.
+## Guidelines
 
-**Passer til å**
-- sørge for at [`Label`](/docs/komponenter-typography--docs#label), `Field.Description`, [`ValidationMessage`](/docs/komponenter-typography--docs#validationmessage) og `Field.Counter` er riktig koblet til et felt
+`Field` helps you structure form fields in an accessible and consistent way. It automatically links [`Label`](/en/components/docs/label/overview), `Field.Description`, [`ValidationMessage`](/en/components/docs/validation-message/overview) and `Field.Counter` to the relevant field using the correct ARIA attributes.
 
-**Passer ikke til**
-- å semantisk gruppere flere felt - bruk heller [`Fieldset`](/docs/komponenter-fieldset--docs)
-
-## Kjente mangler
-VoiceOver kan noen ganger lese `Field.Counter` to ganger. [Bug report hos apple.com](https://discussions.apple.com/thread/256085771?sortBy=rank).

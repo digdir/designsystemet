@@ -115,9 +115,8 @@ export async function prettifyCode(
       plugins: config.plugins as any,
     });
     return formatted;
-  } catch (error) {
+  } catch (_error) {
     // If formatting fails, return original code
-    console.warn(`Failed to prettify ${language} code:`, error);
     return code;
   }
 }

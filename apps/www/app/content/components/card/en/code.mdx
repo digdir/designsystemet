@@ -1,4 +1,4 @@
-<Story story="Preview" />
+<Story story="PreviewEn" />
 
 ## Usage
 
@@ -12,32 +12,82 @@ import { Card } from '@digdir/designsystemet-react';
 </Card>;
 ```
 
-## Code Examples
+## Code examples
 
-### With divisions
+### Colours
 
-<Story story="Media" />
+Cards come in all theme colours and have two variants.
 
-### With video
+<Story story="Variants" />
 
-<Story story="Video" />
+### With sections
 
-### With link in title
+Use multiple `Card.Block` elements if you want to divide the card with separators or add images or video that extend to the edge. Note that when you use `Card.Block`, all content must be placed inside a `Card.Block` and not directly in the `Card`.
 
-<Story story="WithLink" />
+<Story story="MediaEn" />
 
-### Card as a link
+### Link card
+
+`Card` can be used as a navigation card to take users to another page.
+
+There are two ways to do this.
+
+#### 1. Card with a link in the title
+
+If the card should link to another page, you can place a link in the card’s title.  
+The entire card then becomes clickable, but screen reader users get a [better experience than if the whole card were a link (adrianroselli.com)](https://adrianroselli.com/2020/02/block-links-cards-clickable-regions-etc.html).
+
+In this example, `Card` renders an `<a>` inside the heading element.  
+This is useful when `Card` contains text or media and should navigate to another page.
+
+<Story story="WithLinkEn" />
+
+#### 2. Card as a link
+
+The entire card can become a link by using `asChild`. This is useful when you want all text and content in the `Card` to be read by screen readers as one continuous link.
+
+In this example, `Card` renders as `<a>`.
 
 <Story story="AsLink" />
 
-### Card as a button
-
-<Story story="AsButton" />
-
 ### Horizontal
 
-<Story story="AsGrid" />
+You can switch between `display: flex` and `display: grid` to place `Card.Block` next to each other:
 
-### Colors
+<Story story="AsGridEn" />
 
-<Story story="Variants" />
+## HTML
+
+`Card` has two class names you can use.
+- `ds-card`: The main class that wraps the entire card.
+- `ds-card__block`: The class used for each section within the card.
+
+```html
+<!-- without sections -->
+<div class="ds-card">
+  A card
+</div>
+
+<!-- with sections -->
+<div class="ds-card">
+  <div class="ds-card__block">
+    Title
+  </div>
+  <div class="ds-card__block">
+    Content
+  </div>
+  <div class="ds-card__block">
+    Optional footer
+  </div>
+</div>
+```
+
+## CSS variables and data attributes
+
+`Card` has two CSS classes, but all CSS variables are attached to the main class `ds-card`.
+
+<CssVariables />
+
+<CssAttributes />
+
+

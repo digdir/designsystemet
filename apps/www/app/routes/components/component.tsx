@@ -7,6 +7,7 @@ import {
   Heading,
   Paragraph,
 } from '@digdir/designsystemet-react';
+import { PencilLineIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import type { ComponentType, ReactNode } from 'react';
 import type { ComponentDoc } from 'react-docgen-typescript';
@@ -22,6 +23,7 @@ import {
 } from '~/_components/css-variables/css-variables';
 import { DoDont } from '~/_components/do-dont/do-dont';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
+import { IconFrame } from '~/_components/icon-frame/icon-frame';
 import {
   LiveComponent,
   type LiveComponentProps,
@@ -169,21 +171,27 @@ export default function Components({
   loaderData: { stories, mdxCode, metadata, toc, navigation, githubLink },
 }: Route.ComponentProps) {
   const { t } = useTranslation();
+  const feedbackUrl = `https://github.com/digdir/designsystemet/issues/new?template=BLANK_ISSUE&title=Feedback: ${metadata.title}`;
   return (
     <>
       <div className={classes.header}>
         <div className={classes.headerUpper}>
           <div className={classes.headerText}>
+            <Heading data-size='xs' asChild>
+              <p>{t('components.title')}</p>
+            </Heading>
             <Heading data-size='lg' level={1}>
               {metadata.title}
             </Heading>
             <MDXComponents code={metadata.subtitle} />
           </div>
-          <img
-            src={'/img/component-previews/' + metadata.image}
-            alt={metadata.title}
-            aria-hidden='true'
-          />
+          <IconFrame className={classes.iconFrame} data-color='brand3'>
+            <img
+              src={'/img/component-previews/' + metadata.image}
+              alt={metadata.title}
+              aria-hidden='true'
+            />
+          </IconFrame>
         </div>
         <div className={classes.headerBottom}>
           <Button asChild variant='tertiary'>
@@ -205,9 +213,19 @@ export default function Components({
         className={classes.tableOfContents}
         title={metadata.title || ''}
         items={toc}
-      />
+        level={3}
+      >
+        <div className={'toc-feedback'}>
+          <Paragraph data-size='sm'>{t('toc.feedback.component')}</Paragraph>
+          <Button data-size='sm' variant='secondary' asChild>
+            <a href={feedbackUrl}>
+              <PencilLineIcon aria-hidden /> {t('toc.feedback.link')}
+            </a>
+          </Button>
+        </div>
+      </TableOfContents>
 
-      <div className={cl(classes.content, 'u-rich-text')}>
+      <div className={cl(classes.content, 'u-rich-text', 'left-adjusted')}>
         {mdxCode ? (
           <MDXComponents
             code={mdxCode}

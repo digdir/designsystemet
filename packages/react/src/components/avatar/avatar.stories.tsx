@@ -68,17 +68,17 @@ export const ShapeVariants: Story = () => (
   <>
     <Avatar variant='circle' aria-label='variant circle' />
     <Avatar variant='square' aria-label='variant square' />
-    <Avatar variant='circle' aria-label='Ola Nordman'>
+    <Avatar variant='circle' aria-label='Ola Nordmann'>
       ON
     </Avatar>
-    <Avatar variant='square' aria-label='Ola Nordman'>
+    <Avatar variant='square' aria-label='Ola Nordmann'>
       ON
     </Avatar>
   </>
 );
 
 export const WithImage: Story = () => (
-  <Avatar aria-label='Ola Nordman'>
+  <Avatar aria-label='Ola Nordmann'>
     <img src={cat1} alt='' />
   </Avatar>
 );

@@ -1,45 +1,26 @@
----
-title: Dropdown
-subtitle: Dropdown is a menu that appears when the user clicks a trigger button.
-image: Dropdown.svg
-cssfile: dropdown
----
-
 <Story story="Preview" />
 
-## Usage
+**Use `Dropdown` when**
+- you want to offer multiple options without taking up much space in the interface
+- the options are secondary but should still be easily accessible
 
-`Dropdown` consists of several sub-components:
+**Avoid `Dropdown` when**
+- an action is primary or frequently used; use a visible [`Button`](/en/components/docs/button/overview) instead
+- there is only one option, as a dropdown adds unnecessary complexity
 
-- `Dropdown.TriggerContext` - Wrapper to connect trigger and dropdown
-- `Dropdown.Trigger` - The button that opens the menu
-- `Dropdown` - The dropdown menu itself
-- `Dropdown.Heading` - Heading in the menu
-- `Dropdown.List` - List of items
-- `Dropdown.Item` - An item in the list
-- `Dropdown.Button` - Button inside an item
+## Example
 
-## Guidelines
+### With icons
 
-- Use Dropdown for actions or navigation that don't need to be visible all the time
-- Keep the number of items manageable
-- Use headings to group related items
-- Avoid multiple levels of dropdowns (nested menus)
-
-## With icons
-
-You can use icons together with text in dropdown items:
+You can use icons together with text in the dropdown items:
 
 <Story story="Icons" />
 
-## Controlled state
+## Guidelines
 
-You can control when the dropdown is open or closed:
+`Dropdown` does not create a semantic menu, but provides the foundation for building one yourself. Read the ["Menu and Menubar Pattern" on w3.org](https://www.w3.org/WAI/ARIA/apg/patterns/menubar/) for more information on how to create accessible menus.
 
-<Story story="Controlled" />
-
-## Without TriggerContext
-
-You can also use Dropdown without TriggerContext by using `popovertarget`:
-
-<Story story="WithoutTrigger" />
+- Use `Dropdown` for actions or navigation that do not need to be visible at all times  
+- Keep the number of items manageable  
+- Use headings to group related items  
+- Avoid multiple levels of dropdowns (nested menus)

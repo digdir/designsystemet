@@ -1,57 +1,36 @@
----
-title: Popover
-subtitle: Popover is a component that displays additional information or actions when the user clicks a trigger.
-image: Popover.svg
-cssfile: popover
----
+<Story story="PreviewEn" />
 
-<Story story="Preview" />
+**Use `Popover` when**
+- you need to provide additional explanations that require more space than a short [`Tooltip`](/en/components/docs/tooltip), such as definitions or detailed instructions
+- context-specific help is needed that users can open and close without leaving the page
+- supplementary information should be shown that is not critical for completing the task, but may be useful for some users
 
-## Usage
+**Avoid `Popover` when**
+- you need to describe a symbol or keyboard shortcut; use [`Tooltip`](/en/components/docs/tooltip) instead
+- the purpose is navigation or choosing between options; use [`Dropdown`](/en/components/docs/dropdown) instead
+- the content is intended to appear on hover
 
-`Popover` consists of several sub-components:
+## Example
 
-- `Popover.TriggerContext` - Wrapper to connect trigger and popover
-- `Popover.Trigger` - The element that opens the popover (can be a button or inline text)
-- `Popover` - The popover content itself
+### Interactive `Popover`
+
+A `Popover` may contain buttons and other interactive elements.
+
+<Story story="InteractiveEn" />
+
+### Inline trigger
+You can use a `Popover` inline within text, marked with a dotted underline, for example when explaining a term.
+
+<Story story="DottedUnderlineEn" />
 
 ## Guidelines
 
-- Use Popover for additional information that doesn't need to be visible all the time
-- Keep content short and relevant
-- Use color variants to indicate different types of content (neutral, info, warning, danger)
-- Avoid critical information in Popover that users must see
+`Popover` is used to display more detailed or interactive supplementary information without taking the user out of context. It can be used as an extended solution when a [`Tooltip`](/en/components/docs/tooltip) is not sufficient. `Popover` is opened through an intentional user click and may contain text, links and simple form elements. The content should be short, relevant, and not critical for completing the task.
 
-## Interactive popover
+### Placement
 
-Popover can contain buttons and other interactive elements:
+`Popover` can be placed as needed, and will automatically stay within the visible browser area. This behaviour can be disabled using `autoPlacement`.
 
-<Story story="Interactive" />
+## Text
 
-## Inline trigger
-
-You can use Popover inline in text with a dotted underline:
-
-<Story story="DottedUnderline" />
-
-## Controlled state
-
-You can control when the popover is open or closed:
-
-<Story story="Controlled" />
-
-## Without TriggerContext
-
-You can also use Popover without TriggerContext by using `popovertarget`:
-
-<Story story="WithoutContext" />
-
-## Color variants
-
-Popover supports the following color variants:
-- `neutral` - Standard gray color
-- `info` - Blue information color
-- `warning` - Yellow warning color
-- `danger` - Red danger color
-
-Each variant also has a `tinted` version that is lighter.
+Avoid long texts and complex explanations. In some cases, it may be better to link to another page with more detailed information on the topic.

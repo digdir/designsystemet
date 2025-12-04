@@ -1,18 +1,16 @@
 <Story story="Preview" />
 
 **Bruk `Field` når**
-- du skal sørge for at [`Label`](/no/components/label/overview), `Field.Description`, [`ValidationMessage`](/no/components/validation-message/overview) og `Field.Counter` er riktig koblet til et felt
+- du skal sørge for at [`Label`](/no/components/docs/label/overview), `Field.Description`, [`ValidationMessage`](/no/components/docs/validation-message/overview) og `Field.Counter` er riktig koblet til et felt
 
 **Unngå `Field` når**
-- du skal semantisk gruppere flere felt - bruk heller [`Fieldset`](/no/components/fieldset/overview)
+- du skal semantisk gruppere flere felt - bruk heller [`Fieldset`](/no/components/docs/fieldset/overview)
 
 ## Eksempel
 
 ### Prefix/Suffix
 
-Prefixer og suffixer er nyttige for å vise enheter, valuta eller andre typer informasjon som er relevant for feltet.
-Du skal **ikke** bruke disse alene, siden skjermlesere ikke leser dem opp.
-Det er viktig at samme informasjon som vises i prefixet eller suffixet også er inkludert i ledeteksten.
+Prefixer og suffixer er nyttige for å vise enheter, valuta eller andre typer informasjon som er relevant for feltet. Du skal **ikke** bruke disse alene, siden skjermlesere ikke leser dem opp. Det er viktig at samme informasjon som vises i prefixet eller suffixet også er inkludert i ledeteksten.
 
 <Story story="Affix" />
 
@@ -23,21 +21,9 @@ Bruk `Field.Counter` til å informere om antall tegn brukerne kan skrive i felte
 <Story story="Counter" />
 
 ### Plassering
-Du kan endre plassering (`start/end`) av enkelte elementer i `Field`, som for eksempel en `Switch`.
-Dette kan være nyttig i innstillingsgrensesnitt, slik at brukeren først kan lese etiketten til venstre - som forklarer hva innstillingen gjelder - og deretter handlingselementet (bryteren) til høyre.
+Når du bruker `Field` sammen med valgkomponenter som `Switch`, kan du plassere etiketten enten før eller etter kontrollen. Dette gjør det mulig å tilpasse komponenten til sammenhengen.
 
 <Story story="Position" />
 
 ## Retningslinjer
-`Field` hjelper deg med å strukturere skjemafelt på en tilgjengelig og konsistent måte.
-Den kobler automatisk sammen [`Label`](/docs/komponenter-typography--docs#label), `Field.Description`, [`ValidationMessage`](/docs/komponenter-typography--docs#validationmessage) og `Field.Counter` med det tilhørende feltet via riktige ARIA-attributter.
-
-**Passer til å**
-- sørge for at [`Label`](/docs/komponenter-typography--docs#label), `Field.Description`, [`ValidationMessage`](/docs/komponenter-typography--docs#validationmessage) og `Field.Counter` er riktig koblet til et felt
-
-**Passer ikke til**
-- å semantisk gruppere flere felt - bruk heller [`Fieldset`](/docs/komponenter-fieldset--docs)
-
-## Kjente mangler
-
-VoiceOver kan noen ganger lese `Field.Counter` to ganger om den ligger i en iframe. [Bug report hos apple.com](https://discussions.apple.com/thread/256085771?sortBy=rank).
+`Field` hjelper deg med å strukturere skjemafelt på en tilgjengelig og konsistent måte. Den kobler automatisk sammen [`Label`](/no/components/docs/label/overview), `Field.Description`, [`ValidationMessage`](/no/components/docs/validation-message/overview) og `Field.Counter` med det tilhørende feltet via riktige ARIA-attributter.

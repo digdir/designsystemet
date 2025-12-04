@@ -1,11 +1,11 @@
 {
   "no": {
     "title": "Link",
-    "subtitle": "`Link` er klikkbar tekst eller grafikk, som gjør det enkelt for brukerne å navigere til filer eller sider internt eller eksternt. Komponenten er basert på [anchor HTML-taggen (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a)."
+    "subtitle": "`Link` er klikkbar tekst eller grafikk som tar brukeren videre til andre sider eller dokumenter."
   },
   "en": {
     "title": "Link",
-    "subtitle": "A `Link` is clickable text or graphics that makes it easy for users to navigate to files or pages internally or externally. The component is based on the [anchor HTML tag (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a)."
+    "subtitle": "`Link` is clickable text or graphics that take the user to other pages or documents."
   },
   "image": "Link.svg",
   "cssFile": "link.css"

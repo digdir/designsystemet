@@ -1,50 +1,62 @@
-Buttons let users perform actions.
+<Story story="PreviewEn" />
 
-<Story story="Preview" />
+**Use `Alert` when**
+- you need to show short and informative time-limited messages
+- the information concerns an error that affects only one part of the system or a minor function
+- there are connection issues or API errors that are likely to be resolved by reloading the page
+
+**Avoid `Alert` when**
+- the error prevents further use of the service, use an [error page](/en/patterns/systemnotifications#n%C3%A5r-bruker-vi-feilsider) instead
+- you need to notify the user about an error in a single form field, use the component’s own error message [`ValidationMessage`](/en/components/docs/validation-message/overview)
+- the message is a static info box, use [`Card`](/en/components/docs/card/overview) instead
+- multiple error messages need to be summarised, use [`ErrorSummary`](/en/components/docs/error-summary/overview) instead
+
+For more comprehensive guidelines on how to use alerts in services, see the pattern for [System notifications](/en/patterns/systemnotifications). There you will find examples and recommendations on when to use `Alert`, and when other solutions may be more appropriate.
+
 
 ## Examples
 
-`Alert` can be used for four different messages: Information, success, warnings and error messages.
+`Alert` can be used for four types of messages: information, success, warning and error.
 
 ### Information
 
 Use `info` when you want to provide the user with neutral and useful information.
 
-<Story story="VariantInfo" />
+<Story story="VariantInfoEn" />
 
 ### Success
 
 Use `success` when you want to confirm that the user has completed a task, that the action was successful.
 
-<Story story="VariantSuccess" />
+<Story story="VariantSuccessEn" />
 
 ### Warning
 
 Use `warning` when you want the user to take a specific action or to warn them about something important.
 
-<Story story="VariantWarning" />
+<Story story="VariantWarningEn" />
 
 ### Error message
 
 Use `danger` to inform about something that is critical or that prevents the user from moving forward.
 
-<Story story="VariantDanger" />
+<Story story="VariantDangerEn" />
 
 ### With and without heading
 
-If the message is longer than a sentence, it can be useful to use a heading to highlight the most important thing. This can be done using the [Heading](/no/components/heading/overview) components. Remember to choose the correct heading level based on the space the alert has in the content structure of the page.
+If the message is longer than a sentence, it can be useful to use a heading to highlight the most important thing. This can be done using the [Heading](/en/components/docs/heading/overview) components. Remember to choose the correct heading level based on the space the alert has in the content structure of the page.
 
-<Story story="WithHeading" />
+<Story story="WithHeadingEn" />
 
 If the title and description repeat the same thing, it is better to use a simple sentence without a heading.
 
-<Story story="WithOnlyHeading" />
+<Story story="WithOnlyHeadingEn" />
 
 ### With link
 
 You can have a link in the `Alert` if it helps the user solve the task. But be aware that a link takes the user out of the service, so use links only when absolutely necessary, for example if you want the user to open a form or perform an important task.
 
-<Story story="WithLink" />
+<Story story="MedLenkeEn" />
 
 ## Guidelines
 `Alert` is used to display important messages that require attention, but not necessarily action. It can be used to inform the user about the status, changes, or problems in a solution. The message is displayed clearly and visually distinguished from the rest of the content.
@@ -59,26 +71,28 @@ Make sure that `Alert` has the same look and feel across all services and produc
 - inform about connection problems or API errors that are likely to be resolved by reloading the page
 
 **Not suitable for**
-- validate individual form elements, instead use the component's own error message (See [`ValidationMessage`](/no/components/validation-message/overview))
-- summarize multiple error messages in a form, instead use [`ErrorSummary`](/docs/komponenter-errorsummary--docs)
+- validate individual form elements, instead use the component's own error message (See [`ValidationMessage`](/en/components/docs/validation-message/overview))
+- summarize multiple error messages in a form, instead use [`ErrorSummary`](/en/components/docs/error-summary/overview)
 - display errors that prevent all further use of the service, instead use an error page
-- display static information that should be displayed all the time, instead use [`Card`](/docs/komponenter-card--docs)
+- display static information that should be displayed all the time, instead use [`Card`](/en/components/docs/card/overview)
 
 ## Text
 
-It is not always easy to understand the difference between the notifications, even though they have different icons and colors. Therefore, it is important that the text we write in the notification is clear and easy to understand.
+It is not always easy to understand the difference between the notifications, even though they have different icons and colours. Therefore, it is important that the text we write in the notification is clear and easy to understand.
 
-If there is something users need to or can do to get through their task, the text should convey that. When the message is longer than a sentence, it may be a good idea to include a headline that highlights the most important points.
+If there is something users need to or can do to get through their task, the text should convey that. When the message is longer than a sentence, it may be a good idea to include a heading that highlights the most important points.
 
 Here is a list of the types of information that a notification should contain:
 
 - Tell them what happened
-- Example: "Couldn't connect to account."
+    - Example: "Couldn't connect to account."
 - Tell them why it happened
-- Example: "We were unable to connect to your account due to technical issues on our end."
+    - Example: "We were unable to connect to your account due to technical issues on our end."
 - Reassure the user
-- Example: "Your changes have been saved."
+    - Example: "Your changes have been saved."
 - Give them a way out of the problem
-- Example: "If this problem occurs again, contact customer service."
+    - Example: "If this problem occurs again, contact customer service."
 - Help them fix the problem themselves
-- Example: "Please try again."
+    - Example: "Please try again."
+
+For more guidance on how to write clear and effective alert text, see the language recommendations in the [System notifications pattern](/no/patterns/systemnotifications#språk).

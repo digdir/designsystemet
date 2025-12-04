@@ -4,7 +4,6 @@
   border: 1px solid var(--ds-color-neutral-border-subtle);
   display: grid;
   grid-template-columns: auto auto 1fr auto;
-  margin-bottom: var(--ds-size-4);
 
   & .live-preview {
     border-top-left-radius: var(--_br);
@@ -44,7 +43,7 @@
     border-radius: 0;
     border-bottom-right-radius: var(--_br);
     grid-column: 4 / 5;
-    &[aria-pressed='true'] {
+    &[aria-expanded='true'] {
       > svg {
         rotate: 180deg;
       }
@@ -157,6 +156,9 @@
   margin: 0;
   margin-left: var(--ds-size-4);
   align-self: center;
+  @media screen and (max-width: 480px) {
+    display: none;
+  }
 }
 .stack {
   display: grid;

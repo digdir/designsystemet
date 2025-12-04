@@ -1,44 +1,49 @@
 <Story story="Preview" />
 
-## Usage
+**Use `Dialog` when** 
+- the user needs to focus on a specific task
+- you need to ensure that the user notices important information
 
-```tsx
-import { Dialog, Heading, Paragraph } from '@digdir/designsystemet-react';
+**Avoid `Dialog` when**
+- the content is extensive or complex
+- the process contains several steps
+- interrupting the user’s workflow may be problematic, use [`Alert`](/en/components/docs/alert/overview), [`Popover`](/en/components/docs/popover/overview) or a non-modal `Dialog` instead
 
-<Dialog.TriggerContext>
-  <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-  <Dialog>
-    <Heading>Dialog header</Heading>
-    <Paragraph>Dialog content</Paragraph>
-  </Dialog>
-</Dialog.TriggerContext>
-```
-
-## Code Examples
-
-### With ref
-
-<Story story="WithRef" />
-
-### With form
-
-<Story story="WithForm" />
+## Example
 
 ### With blocks
 
+`Dialog` can be divided with visual separators to keep the content clearly structured.
+
 <Story story="WithBlocks" />
+
+### With form
+
+When a `Dialog` contains form elements, it is helpful to move focus directly to the first field, unless other important content should be read first.
+
+<Story story="WithFormEn" />
 
 ## Guidelines
 
-Use `Dialog` to display important content that requires the user's attention or action.
+Use `Dialog` to present important content that requires the user’s attention or action. We avoid calling the component “modal”, since it can also function as non-modal.
 
-**Suitable for**
+`Dialog` can be used as both **modal** and **non-modal**.
 
-- confirming important actions
-- displaying forms that require focus
-- showing critical information
+### Modal Dialog
+A modal `Dialog` is a temporary window that opens above the rest of the page. It captures the user’s attention and prevents interaction with other content, while still preserving the context of the page.
 
-**Not suitable for**
+Use of modal `Dialog` should generally be limited, but it can be helpful when the user must consider information, confirm an action, or focus on a specific task without navigating away from the page.
 
-- displaying lots of content, use a separate page instead
-- information that doesn't require immediate action
+### Non-modal Dialog
+A non-modal `Dialog` allows the user to continue interacting with the rest of the page while the dialog is open. It should be used with care and is most suitable for providing supplementary information or extra functionality that does not require full attention.
+
+### Closing a `Dialog`
+Ensure that users always have a clear and simple way to close a `Dialog`. The most common solution is a close button (X) in the top right corner. It must remain visible even when the dialog contains a lot of content and scrolling is required.
+
+If placing a close button (X) in the top right corner is not appropriate, the dialog must include a clear close action within the content, for example a Cancel button. This gives users control and prevents them from getting stuck in the dialog.
+
+
+## Text
+- Use a short and concise heading. The heading must make it clear to the user that the context has changed.  
+- Avoid long blocks of text.  
+- Ensure that the purpose is clear and that all necessary information is available within the dialog.

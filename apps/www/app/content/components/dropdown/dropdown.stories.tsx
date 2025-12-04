@@ -93,6 +93,33 @@ export const Controlled = () => {
   );
 };
 
+export const ControlledEn = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Dropdown.TriggerContext>
+      <Dropdown.Trigger onClick={() => setOpen(!open)}>
+        Dropdown
+        {open ? <ChevronDownIcon aria-hidden /> : <ChevronUpIcon aria-hidden />}
+      </Dropdown.Trigger>
+      <Dropdown open={open} onClose={() => setOpen(false)}>
+        <Dropdown.List>
+          <Dropdown.Item>
+            <Dropdown.Button onClick={() => setOpen(false)}>
+              Click me to close
+            </Dropdown.Button>
+          </Dropdown.Item>
+          <Dropdown.Item>
+            <Dropdown.Button onClick={() => setOpen(false)}>
+              I close too
+            </Dropdown.Button>
+          </Dropdown.Item>
+        </Dropdown.List>
+      </Dropdown>
+    </Dropdown.TriggerContext>
+  );
+};
+
 export const WithoutTrigger = () => {
   return (
     <>

@@ -20,16 +20,18 @@ export const CssAttributes = forwardRef<HTMLTableElement, CssAttributesProps>(
     return (
       <Table
         className={cl('component-table', className)}
-        data-color='accent'
-        zebra
+        data-color='neutral'
         border
+        zebra
         style={{
           tableLayout: 'fixed',
         }}
         {...rest}
         ref={ref}
       >
-        <caption>{t('components.data-attributes')}</caption>
+        <caption style={{ marginBottom: 'var(--ds-size-4)' }}>
+          {t('components.data-attributes')}
+        </caption>
         <Table.Head>
           <Table.Row>
             <Table.HeaderCell>
