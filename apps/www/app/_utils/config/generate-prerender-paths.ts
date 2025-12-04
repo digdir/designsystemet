@@ -194,12 +194,7 @@ function getComponentPaths(): string[] {
 export function generatePrerenderPaths(): string[] {
   const contentPaths = getContentPaths();
   const componentPaths = getComponentPaths();
-  const isProduction = process.env.APP_ENV === 'production';
-
   const basePaths = ['/no/components', '/en/components'];
-  const devOnlyPaths = isProduction
-    ? []
-    : ['/no/changelog', '/en/changelog', ...componentPaths];
 
-  return [...basePaths, ...contentPaths, ...devOnlyPaths];
+  return [...basePaths, ...contentPaths, '/no/changelog', '/en/changelog', ...componentPaths];
 }
