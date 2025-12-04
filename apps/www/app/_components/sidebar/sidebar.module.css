@@ -76,20 +76,57 @@
   display: none;
 }
 
+.menu {
+  /*popover resets*/
+  display: block;
+  position: static;
+  background-color: var(--ds-color-neutral-background-default);
+  border: none;
+  margin: 0;
+  padding: 0;
+  overflow: unset;
+  height: auto;
+  inset: unset;
+  width: auto;
+  margin-bottom: var(--header-height);
+}
+
+.closeButton {
+  display: none;
+}
+
 @media (max-width: 958px) {
   .menu {
     display: none;
-    margin-top: var(--ds-size-7);
+    padding-top: var(--ds-size-7);
+    height: calc(100svh - var(--header-height));
+    overflow-y: auto;
+    position: fixed;
+    width: var(--sidebar-left-width);
+    left: 0;
+    top: var(--header-height);
+    overscroll-behavior: contain;
+    border-right: 1px solid var(--ds-color-neutral-border-subtle);
+    &:popover-open {
+      display: block;
+    }
+    &::backdrop {
+      /*background-color: rgb(0 0 0 / 0.5);*/
+      background: linear-gradient(to bottom, transparent var(--header-height), rgb(0 0 0 / 0.5) var(--header-height), rgb(0 0 0 / 0.5) 100%);
+    }
+  }
+  .closeButton {
+    display: flex;
+    position: fixed;
+    left: calc(var(--sidebar-left-width) + 1rem);
+    background-color: var(--ds-color-neutral-background-default);
   }
 
   .toggleBtn {
-    display: block;
+    display: flex;
     margin-bottom: var(--ds-size-2);
     width: fit-content;
     margin-left: var(--ds-size-4);
-  }
-
-  .activeMenu {
-    display: block;
+    background-color: var(--ds-color-neutral-background-default);
   }
 }

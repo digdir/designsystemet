@@ -1,6 +1,7 @@
 import { Button, Link, Paragraph } from '@digdir/designsystemet-react';
+import { ChevronRightLastIcon, XMarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { type HTMLAttributes, useState } from 'react';
+import { type HTMLAttributes, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router';
 import classes from './sidebar.module.css';
@@ -31,7 +32,7 @@ export const Sidebar = ({
   ...props
 }: SidebarProps) => {
   const { t } = useTranslation();
-  const [showMenu, setShowMenu] = useState(false);
+  const closeMenuRef = useRef<HTMLButtonElement>(null);
 
   return (
     <div className={cl(className, 'l-sidebar-left')} {...props}>
@@ -40,14 +41,33 @@ export const Sidebar = ({
         data-size='md'
         data-color='neutral'
         variant='secondary'
-        onClick={() => setShowMenu(!showMenu)}
-        aria-expanded={showMenu}
+        popoverTarget='sidebar-nav'
+        popoverTargetAction='show'
       >
-        {showMenu ? t('sidebar.hide') : t('sidebar.show')}{' '}
-        {t(`sidebar.sidebar`)}
+        {t('sidebar.show')} {t(`sidebar.sidebar`)}
+        <ChevronRightLastIcon
+          aria-hidden
+          fontSize={26}
+        />
       </Button>
 
-      <nav className={cl(classes.menu, showMenu && classes.activeMenu)}>
+      <nav popover='auto' id='sidebar-nav' className={cl(classes.menu)}>
+        <Button
+          data-color='neutral'
+          ref={closeMenuRef}
+          icon={true}
+          popoverTarget='sidebar-nav'
+          popoverTargetAction='hide'
+          variant='secondary'
+          aria-label={t('header.close-menu')}
+          className={classes.closeButton}
+        >
+           <XMarkIcon
+          aria-hidden
+          fontSize={26}
+        />
+          {/* {t('sidebar.hide')} {t(`sidebar.sidebar`)} */}
+        </Button>
         {hideCatTitle ? null : (
           <Paragraph data-size='md' className={classes.title}>
             {t(`sidebar.${title}`, title)}
@@ -76,7 +96,7 @@ export const Sidebar = ({
                             <NavLink
                               to={url + (suffix[key] || '')}
                               className={cl(classes.link)}
-                              onClick={() => setShowMenu(false)}
+                              onClick={() => closeMenuRef.current?.click()}
                             >
                               {t(`sidebar.items.${item.title}`, item.title)}
                             </NavLink>

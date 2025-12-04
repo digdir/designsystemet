@@ -27,6 +27,7 @@
   --grid-max-width: 1400px;
   --grid-padding: clamp(1rem, calc(0.27rem + 3.64vw), 3rem);
   --grid-gap: var(--ds-size-8);
+  overscroll-behavior: none;
 }
 
 body {
