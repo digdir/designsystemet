@@ -36,6 +36,9 @@
   &:has(dialog[open]) {
     overflow: hidden;
   }
+  @media screen and (max-width: 600px) {
+    --header-height: 68px;
+  }
 }
 
 body {

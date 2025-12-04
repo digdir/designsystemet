@@ -6,6 +6,10 @@
   margin-top: -106px;
   position: relative;
   margin-bottom: 40px;
+  /*--breakpoint-mobile: 600px*/
+  @media (max-width: 600px) {
+    margin-top: -122px;
+  }
 }
 
 .content::before {
@@ -200,6 +204,7 @@
   }
   @media (max-width: 960px) {
     display: block;
+    padding: var(--ds-size-5);
   }
 }
 

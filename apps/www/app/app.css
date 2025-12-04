@@ -75,6 +75,12 @@ body {
       --page-spacing-bottom: var(--ds-size-12);
     }
   }
+  /*postcss or whatever struggles with multiple mediaqueries in the same :root*/
+  :root {
+    @media screen and (max-width: 600px) {
+      --header-height: 68px;
+    }
+  }
   .l-sidebar-left {
     display: flex;
     flex-direction: column;

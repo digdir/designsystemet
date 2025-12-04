@@ -22,6 +22,7 @@ export const CssAttributes = forwardRef<HTMLTableElement, CssAttributesProps>(
         className={cl('component-table', className)}
         data-color='neutral'
         border
+        zebra
         style={{
           tableLayout: 'fixed',
         }}

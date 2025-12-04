@@ -1,6 +1,10 @@
 .section {
   position: relative;
   margin: 110px 0;
+  /*--breakpoint-mobile: 600px*/
+  @media (max-width: 600px) {
+    margin-block: 82px;
+  }
 }
 
 .blue {
