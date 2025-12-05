@@ -81,24 +81,6 @@ body {
       --header-height: 68px;
     }
   }
-  .l-sidebar-left {
-    display: flex;
-    flex-direction: column;
-    position: sticky;
-    border-right: 1px solid var(--ds-color-neutral-border-subtle);
-    top: var(--header-height);
-    overflow-y: auto;
-    max-height: calc(100vh - var(--header-height));
-    padding-top: var(--ds-size-7);
-    scrollbar-color: var(--ds-color-neutral-border-subtle) transparent;
-    /*counter the padding to align with logo while not breaking the active style*/
-    margin-left: calc(var(--ds-size-4) * -1);
-
-    overscroll-behavior: contain;
-    > nav {
-      margin-bottom: var(--header-height);
-    }
-  }
   .l-content-container {
     container: content-container / inline-size;
     width: 100%;
@@ -279,7 +261,8 @@ body {
 }
 
 @layer site.rich-text {
-  .u-rich-text {
+  .u-rich-text,
+  .u-rich-text .ds-card__block {
     & > *:first-child {
       margin-top: 0;
     }
