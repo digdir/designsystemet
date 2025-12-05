@@ -26,7 +26,6 @@ import classes from './header.module.css';
 
 type HeaderProps = {
   menu: { name: TemplateStringsArray; href: string }[];
-  betaTag?: boolean;
   themeSwitcher?: boolean;
   logoLink?: string;
 } & React.HTMLAttributes<HTMLElement>;
@@ -60,7 +59,6 @@ const detectWrap = (items: HTMLCollection) => {
 
 const Header = ({
   menu,
-  betaTag,
   themeSwitcher = false,
   logoLink = '/',
   className,
@@ -195,7 +193,6 @@ const Header = ({
               <DsEmbledLogo className={classes.logo} />
               <DsFullLogo className={classes.logoWide} />
             </Link>
-            {betaTag && <div className={classes.tag}>Beta</div>}
           </div>
           <nav data-mobile={isHamburger}>
             <ul ref={menuRef} className={classes.desktopMenu}>
