@@ -20,6 +20,10 @@ export default async function handleRequest(
   responseHeaders: Headers,
   routerContext: EntryContext,
 ) {
+  if (request.method === 'TRACE') {
+    return new Response(null, { status: 405 });
+  }
+
   const instance = createInstance();
   const ns = i18next.getRouteNamespaces(routerContext);
 

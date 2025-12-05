@@ -6,6 +6,7 @@ import cl from 'clsx/lite';
 import type { ComponentType } from 'react';
 import { useTranslation } from 'react-i18next';
 import { isRouteErrorResponse, useRouteLoaderData } from 'react-router';
+import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import {
   LiveComponent,
   type LiveComponentProps,
@@ -49,6 +50,7 @@ export async function loader({ params }: Route.LoaderArgs) {
     metadata: {
       title: result.frontmatter.title,
     },
+    githubLink: `https://github.com/digdir/designsystemet/tree/main/apps/www/app/content/components-docs/${lang}/${file}.mdx`,
   };
 }
 
@@ -70,7 +72,7 @@ export const meta = ({ data }: Route.MetaArgs) => {
 };
 
 export default function Text({
-  loaderData: { code, frontmatter },
+  loaderData: { code, frontmatter, githubLink },
 }: Route.ComponentProps) {
   return (
     <>
@@ -86,6 +88,7 @@ export default function Text({
             Story: Story as unknown as ComponentType<unknown>,
           }}
         />
+        <EditPageOnGithub href={githubLink} />
       </div>
     </>
   );
