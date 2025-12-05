@@ -15,6 +15,10 @@
   > nav {
     margin-bottom: var(--header-height);
   }
+  @media screen and (max-width: 958px) {
+    border-right: initial;
+    position: static;
+  }
 }
 
 .title {
