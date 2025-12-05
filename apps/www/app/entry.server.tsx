@@ -20,8 +20,14 @@ export default async function handleRequest(
   responseHeaders: Headers,
   routerContext: EntryContext,
 ) {
+  console.log('in handleRequest');
+  console.log('request.method:', request.method);
   if (request.method === 'TRACE') {
-    return new Response(null, { status: 405 });
+    console.log('TRACE method not allowed');
+    return new Response('method not allowed', {
+      status: 405,
+      headers: { 'content-type': 'text/plain; charset=utf-8' },
+    });
   }
 
   const instance = createInstance();

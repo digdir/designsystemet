@@ -5,7 +5,7 @@
   "scripts": {
     "build": "react-router typegen && react-router build && node scripts/copy-content.js",
     "dev": "react-router dev",
-    "start": "react-router-serve ./dist/server/index.js",
+    "start": "cross-env NODE_ENV=production node server.js",
     "types": "react-router typegen && tsc"
   },
   "dependencies": {
@@ -16,9 +16,11 @@
     "@internal/components": "workspace:^",
     "@navikt/aksel-icons": "^7.35.0",
     "@radix-ui/react-slot": "^1.2.4",
+    "@react-router/express": "^7.10.0",
     "@react-router/node": "^7.10.0",
-    "@react-router/serve": "^7.10.0",
     "clsx": "^2.1.1",
+    "cross-env": "^10.1.0",
+    "express": "^5.2.1",
     "htmlfy": "^1.0.0",
     "i18next": "^25.6.3",
     "isbot": "^5.1.32",
