@@ -13,6 +13,7 @@
   :is(h3, .ds-heading) {
     margin-top: 0;
     margin-bottom: var(--ds-size-3);
+    grid-column: 1 / -1;
   }
   &:last-child {
     margin-bottom: 0;

@@ -80,6 +80,20 @@ export default function Blog({
 
   return (
     <div className={cl('l-breakout-grid u-rich-text', classes.content)}>
+      <img
+        draggable='false'
+        className={classes.decoration}
+        src='/img/elements/third.svg'
+        alt=''
+        data-variant='1'
+      />
+      <img
+        draggable='false'
+        className={classes.decoration}
+        src='/img/elements/third.svg'
+        alt=''
+        data-variant='2'
+      />
       <div className={classes.intro}>
         <Heading level={1} data-size='lg'>
           {title}
@@ -104,6 +118,20 @@ export default function Blog({
       />
 
       <MDXComponents code={code} />
+      <img
+        draggable='false'
+        className={classes.decoration}
+        src='/img/elements/third.svg'
+        alt=''
+        data-variant='3'
+      />
+      <img
+        draggable='false'
+        className={classes.decoration}
+        src='/img/elements/third.svg'
+        alt=''
+        data-variant='4'
+      />
       <div className={classes.wantToWrite} data-color='brand1'>
         <Heading level={3} data-size='xs'>
           {t('blog.write.title')}

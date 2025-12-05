@@ -3,7 +3,6 @@
   flex-direction: row;
 
   & .image {
-    position: relative;
     overflow: hidden;
     max-width: 300px;
     min-width: 250px;
