@@ -15,11 +15,9 @@ function mdxFullReload() {
   };
 }
 
-export default defineConfig(({ isSsrBuild  }) => ({
+export default defineConfig(({ isSsrBuild }) => ({
   build: {
-    rollupOptions: isSsrBuild
-      ? { input: "./server/app.ts" }
-      : undefined,
+    rollupOptions: isSsrBuild ? { input: './server/app.ts' } : undefined,
   },
   css: {
     postcss: {

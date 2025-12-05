@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "react-router typegen && react-router build && node scripts/copy-content.js",
+    "build": "react-router typegen && react-router build",
     "dev": "cross-env NODE_ENV=development node server.js",
     "start": "node server.js",
     "types": "react-router typegen && tsc"
