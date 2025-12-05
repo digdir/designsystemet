@@ -9,7 +9,7 @@ const avatarMap = {
   ardoq: 'ardoq.svg',
   avinor: 'avinor.svg',
   brønnøysundregistrene: 'brønnøysundregistrene.svg',
-  digdir: 'digdir.dvg',
+  digdir: 'digdir.svg',
   designsystemet: 'designsystemet.svg',
   'ks digital': 'ksdigital.svg',
   ks: 'ks.png',
