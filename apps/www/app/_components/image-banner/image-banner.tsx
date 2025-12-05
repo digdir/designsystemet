@@ -23,6 +23,7 @@ type ImageBannerProps = {
   buttons?: ImageBannerButtonProps[];
   link?: { text: string; href: string; prefix?: React.ReactNode };
   imgPosition?: 'left' | 'right';
+  imgFetchPriority?: 'high' | 'low' | 'auto';
   region?: React.ReactNode;
   regionPosition?: 'topLeft' | 'bottomLeft' | 'topRight' | 'bottomRight';
   fallbackImgSrc?: string;
@@ -50,6 +51,7 @@ const ImageBanner = ({
   link,
   imgPosition = 'left',
   imgAlt = '',
+  imgFetchPriority,
   headingLevel = 'h1',
   fallbackImgSrc,
   fallbackImgAlt,
@@ -122,13 +124,19 @@ const ImageBanner = ({
             </>
           )}
           {imgSrc && (
-            <img className={cl(classes.img)} src={imgSrc} alt={imgAlt} />
+            <img
+              className={cl(classes.img)}
+              src={imgSrc}
+              alt={imgAlt}
+              fetchPriority={imgFetchPriority}
+            />
           )}
           {fallbackImgSrc && (
             <img
               className={cl(classes.img, classes.fallbackImg)}
               src={fallbackImgSrc}
               alt={fallbackImgAlt}
+              fetchPriority={imgFetchPriority}
             />
           )}
         </div>

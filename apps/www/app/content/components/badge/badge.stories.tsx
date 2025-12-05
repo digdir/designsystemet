@@ -22,8 +22,8 @@ export const Floating = () => (
 );
 
 export const Bullet = () => (
-  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-    <Badge data-color='success' style={{ display: 'inline-flex' }} />
+  <div>
+    <Badge data-color='success' style={{ marginInlineEnd: '0.5rem' }} />
     Aktiv
   </div>
 );
