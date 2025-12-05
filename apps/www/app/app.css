@@ -22,15 +22,6 @@
   }
 }
 
-:root {
-  --color-beta: #d6d4ff;
-  --grid-max-width: 1400px;
-  --grid-padding: clamp(1rem, calc(0.27rem + 3.64vw), 3rem);
-  --grid-gap: var(--ds-size-8);
-  overscroll-behavior: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
 body {
   font-family: 'Inter', sans-serif;
   font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */
@@ -38,7 +29,7 @@ body {
   padding: 0;
 }
 
-#main {
+main {
   min-height: 80svh;
 }
 
@@ -49,6 +40,9 @@ body {
     initial-value: 0px;
   }
   :root {
+    overscroll-behavior: none;
+    -webkit-tap-highlight-color: transparent;
+    --grid-gap: var(--ds-size-8);
     --logo-red: #f05f63;
     --logo-blue: #1e98f5;
     --logo-yellow: #e5aa20;
