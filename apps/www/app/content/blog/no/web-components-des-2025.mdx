@@ -1,0 +1,43 @@
+---
+title: Korleis Web Komponenter blir i Designsystemet
+description: Designsystemet skal tilby Web Komponenter for nokre av komponentane etter kvart slik at dei kan brukast med både Svelte, Vue, Angular, og andre eller ingen teknologiar. Korleis blir dette?
+date: 2025-12-08
+author: Designsystemet
+imageSrc: /img/blog/web-components.png
+imageAlt: Illustrasjon av web komponenter
+---
+
+Alle komponentar treng ikkje være web komponentar for at dei skal kunne brukast i ulike rammeverk. Mange av komponentane i Designsystemet er bygd med tanke på å vere så nære native HTML-komponentar som mogleg, slik at dei fungerer ut av boksen med skjermlesarar, tastaturnavigasjon og andre hjelpeteknologiar utan ekstra tilpassingar. Dette gjer at dei kan brukast direkte i mange ulike teknologiar utan behov for å pakke dei inn i web komponentar. Dette gjeld for eksempel `<button>`, som du i dag kan bruke med berre eit klassenavn, og data attributtar.
+
+```html
+<button class="ds-button" data-variant="secondary">Klikk meg</button>
+```
+
+## Kvifor ikkje web komponentar for alle komponentar?
+
+Web komponentar kan vere nyttige i visse situasjonar, spesielt når ein treng å dele komponentar på tvers av ulike rammeverk eller når ein ønskjer å kapsle inn kompleks funksjonalitet. Men dei kjem også med nokre utfordringar:
+- **Ytelse:** Web komponentar kan introdusere ekstra overhead, noko som kan påverke lastetider og generell ytelse, spesielt på mobile einingar.
+- **Kompleksitet:** Å utvikle og vedlikehalde web komponentar kan vere meir komplekst enn å bruke standard HTML og CSS, noko som kan auke utviklingstida og kostnadene.
+- **Tilpassing:** Nokre gonger kan web komponentar vere mindre fleksible når det gjeld tilpassing samanlikna med å bruke standard HTML-element.
+
+## Kva komponentar vil vere web komponentar?
+
+I første omgang vil me tilby web komponentar for dei komponentane me har nytta JavaScript for å implementere funksjonalitet. Dette inkluderar for eksempel:
+- `Popover`: For anker-funksjonalitet.
+- `Field`: For å automatisk koble opp skjemafelt med `<label>` og feilmeldingar.
+- `Tabs`: For å handtere tab-navigasjon og innhald.
+
+Desse komponentane har meir kompleks funksjonalitet som kan dra nytte av å vere innkapsla i web komponentar for å sikre konsistent oppførsel på tvers av ulike rammeverk.
+
+## Kva er tidslinja?
+
+Me vil fortløpande legge ut eksperimentelle komponentar i pakken `@digdir/designsystemet-native`, slik at konsumentar raskt kan teste og gi tilbakemelding. 
+
+## Det er ikkje berre web komponentar
+
+Ikkje alt treng å være web komponenter, noko kan være vanlige JavaScript funksjonar som legge på listeners, eller anna funksjonalitet. Mattilsynet implementerer for eksempel `Tooltip` med `data-tooltip=""` attributtar og ein JavaScript funksjon som legg på event listeners for å vise og skjule tooltipen. Dette er ein enkel og effektiv måte å implementere funksjonalitet på utan å måtte bruke web komponentar.
+Dette kan du sjå her: [https://design.mattilsynet.no/?path=/docs/designsystem-tooltip--docs&globals=theme:Dark+medium](https://design.mattilsynet.no/?path=/docs/designsystem-tooltip--docs&globals=theme:Dark+medium)
+
+## Innspel
+
+Dersom du har innspel eller tankar på dette, gjerne del dine tankar på [GitHub](https://github.com/digdir/designsystemet) eller på [Slack](/slack).
