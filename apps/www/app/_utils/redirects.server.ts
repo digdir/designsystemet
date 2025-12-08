@@ -40,7 +40,47 @@ const redirects = [
     to: '/no/fundamentals/introduction/about-the-design-system#verdier',
   },
   {
-    from: '/en/fundamentals/introduction/values',
-    to: '/en/fundamentals/introduction/about-the-design-system#verdier',
+    from: '/en/fundamentals/design-tokens/variables',
+    to: '/en/fundamentals/designelementer/variables',
+  },
+  {
+    from: '/no/fundamentals/design-tokens/colors',
+    to: '/no/fundamentals/designelementer/colors',
+  },
+  {
+    from: '/en/fundamentals/design-tokens/colors',
+    to: '/en/fundamentals/designelementer/colors',
+  },
+  {
+    from: '/no/fundamentals/design-tokens/sizes-and-spacing',
+    to: '/no/fundamentals/designelementer/sizes-and-spacing',
+  },
+  {
+    from: '/en/fundamentals/design-tokens/sizes-and-spacing',
+    to: '/en/fundamentals/designelementer/sizes-and-spacing',
+  },
+  {
+    from: '/no/fundamentals/design-tokens/typography',
+    to: '/no/fundamentals/designelementer/typography',
+  },
+  {
+    from: '/en/fundamentals/design-tokens/typography',
+    to: '/en/fundamentals/designelementer/typography',
+  },
+  {
+    from: '/no/fundamentals/design-tokens/shadows',
+    to: '/no/fundamentals/designelementer/shadows',
+  },
+  {
+    from: '/en/fundamentals/design-tokens/shadows',
+    to: '/en/fundamentals/designelementer/shadows',
+  },
+  {
+    from: '/no/fundamentals/resources/icons/',
+    to: '/no/fundamentals/designelementer/icons',
+  },
+  {
+    from: '/en/fundamentals/resources/icons/',
+    to: '/en/fundamentals/designelementer/icons',
   },
 ];
