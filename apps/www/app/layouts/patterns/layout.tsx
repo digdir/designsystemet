@@ -1,7 +1,7 @@
 import { join } from 'node:path';
 import { bundleMDX } from 'mdx-bundler';
 import { useTranslation } from 'react-i18next';
-import { Outlet, useMatches } from 'react-router';
+import { Outlet } from 'react-router';
 import { Sidebar } from '~/_components/sidebar/sidebar';
 import {
   getFileFromContentDir,
@@ -88,14 +88,10 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
 };
 
 export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
-  const matches = useMatches();
   const { t } = useTranslation();
 
-  /* if we have id patterns-page, hide banner */
-  const isPatternsPage = matches.some((match) => match.id === 'patterns-page');
-
   return (
-    <div className={'l-content-container'} data-is-main={!isPatternsPage}>
+    <div className={'l-content-container'}>
       <Sidebar cats={cats} title={t('patterns.title')} hideCatTitle />
       <div className={classes.content}>
         <Outlet />
