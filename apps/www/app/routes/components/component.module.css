@@ -3,7 +3,8 @@
   grid-area: content;
 }
 .textPage {
-  max-width: var(--long-content-width);
+  max-width: var(--max-content-width);
+  grid-area: content;
 }
 /*work in progress*/
 .textPageHeader {

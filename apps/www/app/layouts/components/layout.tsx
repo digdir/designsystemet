@@ -1,5 +1,5 @@
 import { join } from 'node:path';
-import { Outlet, useMatches } from 'react-router';
+import { Outlet } from 'react-router';
 import { Sidebar } from '~/_components/sidebar/sidebar';
 import {
   getFileFromContentDir,
@@ -166,16 +166,8 @@ export const loader = async ({
 export default function Layout({
   loaderData: { cats, sidebarSuffix },
 }: Route.ComponentProps) {
-  const matches = useMatches();
-  const isComponentPage = matches.some(
-    (match) => match.id === 'components-page',
-  );
   return (
-    <div
-      className={'l-content-container'}
-      data-color='neutral'
-      data-is-component={isComponentPage}
-    >
+    <div className={'l-content-container'} data-color='neutral'>
       <Sidebar
         cats={cats}
         title={'Components'}

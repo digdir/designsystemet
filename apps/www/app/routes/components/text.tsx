@@ -1,7 +1,13 @@
 import { join } from 'node:path';
 import { cwd } from 'node:process';
-import { Alert, Heading, Paragraph } from '@digdir/designsystemet-react';
+import {
+  Alert,
+  Button,
+  Heading,
+  Paragraph,
+} from '@digdir/designsystemet-react';
 import { Error404 } from '@internal/components';
+import { PencilLineIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import type { ComponentType } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -11,6 +17,7 @@ import {
   type LiveComponentProps,
 } from '~/_components/live-component/live-components';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
+import { TableOfContents } from '~/_components/table-of-contents/toc';
 import { extractStories } from '~/_utils/extract-stories.server';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
@@ -45,6 +52,7 @@ export async function loader({ params }: Route.LoaderArgs) {
     code: result.code,
     frontmatter: result.frontmatter,
     lang: params.lang,
+    toc: result.toc,
     stories: storyEntries,
     metadata: {
       title: result.frontmatter.title,
@@ -70,8 +78,10 @@ export const meta = ({ data }: Route.MetaArgs) => {
 };
 
 export default function Text({
-  loaderData: { code, frontmatter },
+  loaderData: { code, frontmatter, toc },
 }: Route.ComponentProps) {
+  const { t } = useTranslation();
+  const feedbackUrl = `https://github.com/digdir/designsystemet/issues/new?template=BLANK_ISSUE&title=Feedback: ${frontmatter.title}`;
   return (
     <>
       <div className={classes.textPageHeader}>
@@ -79,6 +89,21 @@ export default function Text({
           {frontmatter.title}
         </Heading>
       </div>
+      <TableOfContents
+        className={classes.tableOfContents}
+        title={''}
+        items={toc}
+        level={3}
+      >
+        <div className={'toc-feedback'}>
+          <Paragraph data-size='sm'>{t('toc.feedback.component')}</Paragraph>
+          <Button data-size='sm' variant='secondary' asChild>
+            <a href={feedbackUrl}>
+              <PencilLineIcon aria-hidden /> {t('toc.feedback.link')}
+            </a>
+          </Button>
+        </div>
+      </TableOfContents>
       <div className={cl(classes.textPage, 'u-rich-text left-adjusted')}>
         <MDXComponents
           code={code}

@@ -59,6 +59,7 @@ export const TableOfContents = ({
     <aside
       data-color='neutral'
       data-size='md'
+      data-toc
       className={cl(classes['table-of-contents'], className)}
       {...props}
     >
