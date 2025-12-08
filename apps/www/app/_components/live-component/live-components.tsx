@@ -224,24 +224,22 @@ const Editor = ({ live, html, id, hidden }: EditorProps) => {
           <kbd>{t('live-component.activateB')}</kbd>{' '}
           {t('live-component.activateC')}
         </div>
-        {showHTML ? (
-          <LiveEditor
-            className={classes.editor}
-            disabled
-            code={rawHtml}
-            language='html'
-          />
-        ) : (
-          <LiveEditor
-            key={resetCount}
-            onChange={live.onChange}
-            className={cl(
-              classes.editor,
-              classes['live-editor'],
-              'live-editor',
-            )}
-          />
-        )}
+        <LiveEditor
+          className={cl(classes.editor, !showHTML && classes.hidden)}
+          disabled
+          code={rawHtml}
+          language='html'
+        />
+        <LiveEditor
+          key={resetCount}
+          onChange={live.onChange}
+          className={cl(
+            classes.editor,
+            classes['live-editor'],
+            'live-editor',
+            showHTML && classes.hidden,
+          )}
+        />
       </div>
     </section>
   );
