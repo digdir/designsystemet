@@ -225,7 +225,7 @@ export default function Components({
         </div>
       </TableOfContents>
 
-      <div className={cl(classes.content, 'u-rich-text', 'left-adjusted')}>
+      <div className={cl(classes.content, 'u-rich-text')}>
         {mdxCode ? (
           <MDXComponents
             code={mdxCode}

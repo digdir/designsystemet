@@ -123,7 +123,7 @@ export default function BestPractices({
             </Button>
           </div>
         </TableOfContents>
-        <div className={cl(classes.content, 'u-rich-text', 'left-adjusted')}>
+        <div className={cl(classes.content, 'u-rich-text')}>
           <MDXComponents code={code} />
           <EditPageOnGithub />
         </div>

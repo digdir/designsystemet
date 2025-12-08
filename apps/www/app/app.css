@@ -88,6 +88,7 @@
       grid-area: footer;
     }
   }
+  /* outer content layout used on all pages except blog*/
   .l-content-container {
     container: content-container / inline-size;
     width: 100%;
@@ -114,6 +115,7 @@
 }
 @layer site.breakout-grid {
   /*https://layout-breakouts-builder.vercel.app/*/
+  /*blog page uses this layout, which aligns different types of content with named grid lines*/
   .l-breakout-grid {
     --long-content-width: 860px;
     --short-content-width: 640px;
@@ -274,19 +276,18 @@
     & > *:last-child {
       margin-bottom: 0;
     }
-    &.left-adjusted {
-      > * {
-        max-width: var(--short-content-width);
-      }
-      :where(div:not([class]), img, section, figure, table, video, iframe, [data-iframe-video], .u-long-content, .dodont-row) {
-        max-width: var(--long-content-width);
-      }
-      :where(.u-short-content) {
-        max-width: var(--short-content-width);
-      }
-      hr {
-        margin-inline: 0;
-      }
+
+    > * {
+      max-width: var(--short-content-width);
+    }
+    :where(div:not([class]), img, section, figure, table, video, iframe, [data-iframe-video], .u-long-content, .dodont-row) {
+      max-width: var(--long-content-width);
+    }
+    :where(.u-short-content) {
+      max-width: var(--short-content-width);
+    }
+    > hr {
+      margin-inline: 0;
     }
 
     & > p {
@@ -331,7 +332,6 @@
 
     & > ul,
     & > ol {
-      max-width: 100%;
       padding-left: var(--ds-size-5);
       box-sizing: border-box;
       margin-bottom: var(--ds-size-5);

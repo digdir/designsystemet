@@ -104,7 +104,7 @@ export default function Fundamentals({
           </Button>
         </div>
       </TableOfContents>
-      <div className={cl(classes.content, 'u-rich-text', 'left-adjusted')}>
+      <div className={cl(classes.content, 'u-rich-text')}>
         <MDXComponents
           code={code}
           components={{

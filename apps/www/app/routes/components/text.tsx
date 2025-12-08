@@ -104,7 +104,7 @@ export default function Text({
           </Button>
         </div>
       </TableOfContents>
-      <div className={cl(classes.textPage, 'u-rich-text left-adjusted')}>
+      <div className={cl(classes.textPage, 'u-rich-text')}>
         <MDXComponents
           code={code}
           components={{
