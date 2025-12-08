@@ -39,8 +39,8 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 ## 🚀 Get started
 
 Please refer to our differen guides for getting started:
-- [React](https://designsystemet.no/no/components/get-started/react)
-- [without React](https://designsystemet.no/no/components/get-started/without-react)
+- [React](https://designsystemet.no/en/components/get-started/react)
+- [without React](https://designsystemet.no/en/components/get-started/without-react)
 
 ## 🫶 Contributing
 
