@@ -38,6 +38,10 @@ if (DEVELOPMENT) {
     express.static('dist/client/assets', { immutable: true, maxAge: '1y' }),
   );
   app.use(morgan('tiny'));
+  app.use(
+    '/.well-known',
+    express.static('dist/client/.well-known', { maxAge: '1y' }),
+  );
   app.use(express.static('dist/client', { maxAge: '30d' }));
   app.use(await import(BUILD_PATH).then((mod) => mod.app));
 }
