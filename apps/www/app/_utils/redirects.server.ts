@@ -35,4 +35,12 @@ const redirects = [
     from: '/grunnleggende',
     to: '/no/fundamentals',
   },
+  {
+    from: '/no/fundamentals/introduction/values',
+    to: '/no/fundamentals/introduction/about-the-design-system#verdier',
+  },
+  {
+    from: '/en/fundamentals/introduction/values',
+    to: '/en/fundamentals/introduction/about-the-design-system#verdier',
+  },
 ];
