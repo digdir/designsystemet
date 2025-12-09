@@ -90,3 +90,11 @@ export const Neutral: Story = {
     'data-color': 'neutral',
   },
 };
+
+export const AsButton: Story = {
+  args: {
+    children: <button type='button'>Gå til designsystemet</button>,
+    href: designsystemetLink,
+    asChild: true,
+  },
+};
