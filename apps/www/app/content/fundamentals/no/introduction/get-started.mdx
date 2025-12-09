@@ -21,7 +21,7 @@ Ved å bruke grunnleggende byggeklosser fra Designsystemet kan du selv bygge mer
 ## Hvordan bruke Designsystemet? 
 Designsystemet fungerer som en verktøykasse, du trenger ikke bruke alt. Du kan plukke ut de delene du har behov for. Noen bruker bare tokenstrukturen, noen bruker React-biblioteket, noen bruker CSS-biblioteket, noen bruker bare retningslinjene, mens andre bruker hele pakka. Du velger selv hva som gir mest verdi i din kontekst.
  
-Designsystemet kan brukes direkte inn i løsninger, men det går også an å bygge eget designsystem på toppen av Designsystemet. Fordelen med det er at du kan gjenbruke den underliggende strukturen og alle de grunnleggende komponentene, samtidig som du kan tilby dine mer unike komponenter som en del av ditt eget designsystem. Eksempel på designsystemer som bygger på designsystemet.no kan du se hos [Utdanningsdirektoratet](https://github.com/Utdanningsdirektoratet/designsystem) og [Mattilsynet](http://design.mattilsynet.no/). For å lykkes med dette anbefaler vi at dere har en designer og en frontend-utvikler som kan sette opp designsystemet og følge opp videre utvikling og vedlikehold. Ikke alle har mulighet eller behov for dette. Et designsystem er et produkt som krever kontinuerlig arbeid, det blir aldri «ferdig». Hvis dere vurderer å lage deres eget, bør dere sikre en felles forståelse av at det er en langsiktig investering. Ved å ta i bruk, eller bygge videre på byggeklosser fra designsystemet.no kan dere dele på en del av den investeringen.
+Designsystemet kan brukes direkte inn i løsninger, men det går også an å [bygge eget designsystem på toppen av Designsystemet](#eget-designsystem-på-toppen-av-designsystemet). Fordelen med det er at du kan gjenbruke den underliggende strukturen og alle de grunnleggende komponentene, samtidig som du kan tilby dine mer unike komponenter som en del av ditt eget designsystem. Eksempel på designsystemer som bygger på designsystemet.no kan du se hos [Utdanningsdirektoratet](https://github.com/Utdanningsdirektoratet/designsystem) og [Mattilsynet](http://design.mattilsynet.no/). For å lykkes med dette anbefaler vi at dere har en designer og en frontend-utvikler som kan sette opp designsystemet og følge opp videre utvikling og vedlikehold. Ikke alle har mulighet eller behov for dette. Et designsystem er et produkt som krever kontinuerlig arbeid, det blir aldri «ferdig». Hvis dere vurderer å lage deres eget, bør dere sikre en felles forståelse av at det er en langsiktig investering. Ved å ta i bruk, eller bygge videre på byggeklosser fra designsystemet.no kan dere dele på en del av den investeringen.
 
 <Image
   src='/img/lagvis-bruk.png'
@@ -39,6 +39,65 @@ Følg disse guidene videre for å lære hvordan du kan bruke Designsystemet med 
 [Kom i gang med kode](/no/fundamentals/code/get-started) 
 
 [Kom i gang med Figma](/no/fundamentals/figma/get-started)
+
+
+## Eget designsystem på toppen av Designsystemet
+
+Flere virksomheter velger å bruke Designsystemet som grunnlag for å etablere sitt eget designsystem. Med Designsystemet som fundament kan du utvide der dere har behov og begrense der det gir verdi. Under beskriver vi en anbefalt tilnærming basert på erfaringer fra etater som allerede har bygget egne systemer på toppen av Designsystemet.
+
+Begynn med å kartlegge behovene deres:
+- Hvilke komponenter og mønstre trenger dere som ikke finnes i Designsystemet?
+- Hvilke visuelle tilpasninger er nødvendige for å ivareta deres profil?
+- Hvilke retningslinjer og dokumentasjon trenger dere for å støtte design- og utviklingsarbeid i organisasjonen?
+
+Deretter kan dere etablere deres eget designsystem ved å følge disse prinsippene:
+
+### Tema
+Begynn med å få på plass temaet som skal brukes i kode og Figma. Temaet definerer farger, typografi, spacing og andre visuelle egenskaper. Ved å bruke [Temabyggeren](/no/fundamentals/themebuilder/own-theme) kan dere enkelt lage et tema som passer deres profil.
+
+### Figma
+
+Designsystemet deles som en community-fil i Figma. Når dere tar den i bruk, er det viktig å være klar over at:
+
+- Community-filen kopieres inn i deres miljø og blir et startpunkt for deres eget bibliotek.
+- Det finnes ingen direkte teknisk kobling tilbake til originalfila. Nye versjoner av community-filen kan ikke merges automatisk.  
+- Endringer dere ønsker å ta inn må overføres manuelt. I praksis skjer dette sjelden og er håndterbart, særlig hvis dere har gjort begrensede visuelle tilpasninger.
+
+En anbefalt praksis er:
+- Publiser et eget Figma-bibliotek som bygger på Designsystemet.  
+- Gjør visuelle tilpasninger basert på deres behov.  
+- Behold tokenstrukturen fra Designsystemet for farger, typografi, spacing, radius og semantikk.  
+- Legg egne komponenter i samme bibliotek, men merk tydelig hva som er deres egne.  
+- Dokumenter hva dere har justert, slik at endringer er enkle å forstå over tid.  
+
+
+### Kode
+
+I kode er situasjonen enklere enn i Figma.  
+
+En anbefalt modell er:
+- Bruk Designsystemet som avhengighet.  
+- Legg egne tilpasninger som konfigurasjon oppå, ikke som erstatning.  
+- Unngå å kopiere komponentkode inn i eget repo hvis det ikke er nødvendig.  
+
+Da vil oppgraderinger av Designsystemet kunne gjøres direkte via versjonsoppdatering, mens egen styling og konfigurasjon bevares automatisk. Dette reduserer risiko for merge-konflikter og gjør vedlikehold enklere.
+
+### Dokumentasjon
+
+Mange velger å:
+- Beholde Designsystemet sin dokumentasjon som referanse
+- Etablere egen dokumentasjon for egne komponenter, tilpasninger og retningslinjer
+- Utvide dokumentasjonen med profil-relevante eksempler og veiledninger, nedlasting av logo, illustrasjoner, ikonbibliotek, ol. 
+
+---
+
+### Kort oppsummert
+
+- Bruk Designsystemet som grunnmur, ikke som ferdig fasade.  
+- Pakk det inn i egne Figma-bibliotek og kodepakker.  
+- Bygg videre der dere har behov.  
+- Begrens der det gir verdi.  
+- Oppgrader jevnlig og kontrollert.  
 
 <br/>
 <br/>
