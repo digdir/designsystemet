@@ -32,35 +32,26 @@
     height: 100%;
     overscroll-behavior: none;
     -webkit-tap-highlight-color: transparent;
-    --grid-gap: var(--ds-size-8);
     --logo-red: #f05f63;
     --logo-blue: #1e98f5;
     --logo-yellow: #e5aa20;
     --logo-slate: #626b77;
 
-    --page-spacing-top: var(--ds-size-14); /*legacy*/
-    --page-spacing-bottom: var(--ds-size-14); /*legacy*/
+    --grid-gap: var(--ds-size-8);
+
+    /*https://chrisburnell.com/clamp-calculator/*/
+    --content-inline-padding: clamp(var(--ds-size-4), calc(0.27rem + 2.4vw), var(--ds-size-7)); /*from screen 500px to 1000px*/
+    --page-spacing-top: clamp(var(--ds-size-8), -3.357rem + 5.714vi, var(--ds-size-14)); /*from screen 1500px to 1920px*/
+    --page-spacing-bottom: clamp(var(--ds-size-12), 1.214rem + 1.905vi, var(--ds-size-14)); /*from screen 1500px to 1920px*/
+    --sidebar-left-width: clamp(240px, 25.714px + 14.286vi, 300px); /*from screen 1500px to 1920px*/
+    --sidebar-right-width: clamp(240px, 25.714px + 14.286vi, 300px); /*from screen 1500px to 1920px*/
     --max-page-width: 1920px;
     --max-content-width: 1300px;
-    --sidebar-left-width: 300px;
-    --sidebar-right-width: 300px;
     --short-content-width: 700px;
     --long-content-width: 950px;
     --media-max-width: var(--long-content-width); /*legacy*/
-    /*padding shrinks from size-7 to size-4 between 1000px and 500px*/
-    /*https://chrisburnell.com/clamp-calculator/?font-size-root=16&size-min=16&size-max=28&viewport-min=500&viewport-max=1000&viewport-units=vi*/
-    --content-inline-padding: clamp(var(--ds-size-4), calc(0.27rem + 2.4vw), var(--ds-size-7));
-    /*--content-inline-padding: var(--ds-size-7);*/
     --header-height: 75px;
-    @media screen and (max-width: 1500px) {
-      --sidebar-left-width: 240px;
-      --sidebar-right-width: 240px;
-      --page-spacing-top: var(--ds-size-8);
-      --page-spacing-bottom: var(--ds-size-12);
-    }
-  }
-  /*postcss or whatever struggles with multiple mediaqueries in the same :root*/
-  :root {
+
     @media screen and (max-width: 600px) {
       --header-height: 68px;
     }
@@ -103,10 +94,7 @@
     &:has(.l-sidebar-left) {
       max-width: var(--max-page-width);
       grid-template-columns: var(--sidebar-left-width) minmax(0, 1fr);
-      column-gap: 110px;
-      @media screen and (max-width: 1500px) {
-        column-gap: 48px;
-      }
+      column-gap: clamp(48px, -173.429px + 14.762vi, 110px); /*from screen 1500px to 1920px*/
 
       @media screen and (max-width: 958px) {
         display: block;
