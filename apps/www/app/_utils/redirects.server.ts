@@ -40,47 +40,51 @@ const redirects = [
     to: '/no/fundamentals/introduction/about-the-design-system#verdier',
   },
   {
+    from: '/no/fundamentals/design-tokens/variables',
+    to: '/no/fundamentals/design-elements/variables',
+  },
+  {
     from: '/en/fundamentals/design-tokens/variables',
-    to: '/en/fundamentals/designelementer/variables',
+    to: '/en/fundamentals/design-elements/variables',
   },
   {
     from: '/no/fundamentals/design-tokens/colors',
-    to: '/no/fundamentals/designelementer/colors',
+    to: '/no/fundamentals/design-elements/colors',
   },
   {
     from: '/en/fundamentals/design-tokens/colors',
-    to: '/en/fundamentals/designelementer/colors',
+    to: '/en/fundamentals/design-elements/colors',
   },
   {
     from: '/no/fundamentals/design-tokens/sizes-and-spacing',
-    to: '/no/fundamentals/designelementer/sizes-and-spacing',
+    to: '/no/fundamentals/design-elements/sizes-and-spacing',
   },
   {
     from: '/en/fundamentals/design-tokens/sizes-and-spacing',
-    to: '/en/fundamentals/designelementer/sizes-and-spacing',
+    to: '/en/fundamentals/design-elements/sizes-and-spacing',
   },
   {
     from: '/no/fundamentals/design-tokens/typography',
-    to: '/no/fundamentals/designelementer/typography',
+    to: '/no/fundamentals/design-elements/typography',
   },
   {
     from: '/en/fundamentals/design-tokens/typography',
-    to: '/en/fundamentals/designelementer/typography',
+    to: '/en/fundamentals/design-elements/typography',
   },
   {
     from: '/no/fundamentals/design-tokens/shadows',
-    to: '/no/fundamentals/designelementer/shadows',
+    to: '/no/fundamentals/design-elements/shadows',
   },
   {
     from: '/en/fundamentals/design-tokens/shadows',
-    to: '/en/fundamentals/designelementer/shadows',
+    to: '/en/fundamentals/design-elements/shadows',
   },
   {
     from: '/no/fundamentals/resources/icons/',
-    to: '/no/fundamentals/designelementer/icons',
+    to: '/no/fundamentals/design-elements/icons',
   },
   {
     from: '/en/fundamentals/resources/icons/',
-    to: '/en/fundamentals/designelementer/icons',
+    to: '/en/fundamentals/design-elements/icons',
   },
 ];
