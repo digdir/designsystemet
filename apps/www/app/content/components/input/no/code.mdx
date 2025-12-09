@@ -35,12 +35,20 @@ import { Input, Label } from '@digdir/designsystemet-react';
 
 <Story story="ReadOnly" />
 
+`type="checkbox"` og `type="radio"` er alltid `:read-only`, og har ikkje støtte for dette på samme måte som input typer du kan skrive i. Dersom du setter `readOnly` på checkbox eller radio passe vi på at den oppfører som om den kun har lesetilgang, ved å stoppe `onClick` og `onChange`.
+
+<Story story="ReadOnlyCheckAndRadio" layout="block" />
+
 ## HTML
 Legg klassenavnet på `<input>`-elementet for å få designet fra designsystemet.
+
+Flere typer av input er støttet, se propstabellen på toppen for full liste.
 
 ```html
 <input class="ds-input" />
 ```
+
+Dersom du skal ha `readonly` på checkbox eller radio, må du selv stoppe `onClick` og `onChange` for å hindre endring av tilstanden.
 
 ## CSS variabler og data-attributter
 
