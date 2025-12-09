@@ -20,7 +20,7 @@ const FundamentalsCard = ({
   color = 'red',
   icon,
   description,
-  url = '/fundamentals/design-tokens',
+  url = '/fundamentals/design-elements',
   level = 3,
 }: FundamentalsCardProps) => {
   const iconColor =
