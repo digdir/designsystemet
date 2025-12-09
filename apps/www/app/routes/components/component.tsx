@@ -212,12 +212,7 @@ export default function Components({
           </Button>
         </div>
       </div>
-      <TableOfContents
-        className={classes.tableOfContents}
-        title={metadata.title || ''}
-        items={toc}
-        level={3}
-      >
+      <TableOfContents items={toc} level={3}>
         <div className={'toc-feedback'}>
           <Paragraph data-size='sm'>{t('toc.feedback.component')}</Paragraph>
           <Button data-size='sm' variant='secondary' asChild>

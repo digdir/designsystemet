@@ -105,11 +105,7 @@ export default function Patterns({
           </Paragraph>
         </div>
       </div>
-      <TableOfContents
-        className={classes.tableOfContents}
-        title={frontmatter.title}
-        items={toc}
-      >
+      <TableOfContents title={frontmatter.title} items={toc}>
         <div className='toc-feedback'>
           <Paragraph data-size='sm'>{t('toc.feedback.page')}</Paragraph>
           <Button

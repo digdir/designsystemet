@@ -13,10 +13,18 @@
       'content aside'
       'content aside';
 
+    [data-toc] {
+      grid-area: aside;
+      align-self: start;
+    }
+
     @media (max-width: 1279px) {
       grid-template-areas:
         'header header'
         'content content';
+      [data-toc] {
+        display: none;
+      }
     }
   }
 

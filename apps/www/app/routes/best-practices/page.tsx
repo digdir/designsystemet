@@ -104,11 +104,7 @@ export default function BestPractices({
             </div>
           </Paragraph>
         </div>
-        <TableOfContents
-          className={classes.tableOfContents}
-          title={'På denne siden'}
-          items={toc}
-        >
+        <TableOfContents items={toc}>
           <div className='toc-feedback'>
             <Paragraph data-size='sm'>{t('toc.feedback.page')}</Paragraph>
             <Button

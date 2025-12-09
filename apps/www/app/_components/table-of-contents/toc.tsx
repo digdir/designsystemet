@@ -8,14 +8,12 @@ import classes from './toc.module.css';
 
 export type TableOfContentsProps = {
   items: TableOfContentsItem[];
-  title: string;
   level?: number;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const TableOfContents = ({
   children,
   items,
-  title,
   level = 2,
   className,
   ...props

@@ -34,11 +34,6 @@
   }
 }
 
-.tableOfContents {
-  grid-area: aside;
-  align-self: start;
-}
-
 .header {
   container: header-container / inline-size;
   grid-area: header;
@@ -104,12 +99,6 @@
         --dsc-button-background--hover: var(--ds-color-accent-surface-hover);
       }
     }
-  }
-}
-
-@media (max-width: 1279px) {
-  .tableOfContents {
-    display: none;
   }
 }
 @container header-container (max-width: 800px) {
