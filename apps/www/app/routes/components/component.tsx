@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { join } from 'node:path';
 import {
@@ -49,6 +49,11 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   if (!component) {
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
   }
+  const componentDir = join('app', 'content', 'components', component);
+
+  if (!existsSync(componentDir)) {
+    throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
+  }
 
   if (
     !request.url.includes('code') &&
@@ -71,8 +76,6 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   const compPage = trimmedUrl.split('/').pop();
 
   const componentDocs = getComponentDocs(component);
-
-  const componentDir = join('app', 'content', 'components', component);
 
   // Extract exported story functions from *.stories.tsx
   const storyEntries = extractStories(componentDir);
