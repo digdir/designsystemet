@@ -21,6 +21,10 @@ const config: Config = {
     console.log(`Writing robots.txt to ${robotsPath}`);
     try {
       writeFileSync(robotsPath, robotsContent);
+      writeFileSync(
+        join(dirname, 'dist', 'client', 'robots.txt'),
+        robotsContent,
+      );
     } catch (error) {
       console.error(`Error writing robots.txt file: ${error}`);
       throw new Error(`Failed to write robots.txt file: ${error}`);

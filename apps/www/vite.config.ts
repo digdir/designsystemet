@@ -15,7 +15,10 @@ function mdxFullReload() {
   };
 }
 
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
+  build: {
+    rollupOptions: isSsrBuild ? { input: './server/app.ts' } : undefined,
+  },
   css: {
     postcss: {
       plugins: [],
@@ -33,4 +36,4 @@ export default defineConfig({
       clientFiles: ['./app/root.tsx', './app/entry.client.tsx'],
     },
   },
-});
+}));
