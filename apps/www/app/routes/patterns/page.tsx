@@ -147,7 +147,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <div>
+    <div id='main'>
       <Heading level={1}>{message}</Heading>
       <Paragraph>{details}</Paragraph>
     </div>

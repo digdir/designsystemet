@@ -66,7 +66,7 @@ export default function RootLayout() {
         logoLink={`/${lang === 'no' ? 'no' : lang === 'en' ? 'en' : 'no'}`}
         themeSwitcher
       />
-      <main id='main'>
+      <main>
         <Outlet />
       </main>
       <Footer

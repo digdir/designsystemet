@@ -114,7 +114,7 @@ export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
   return (
     <div className={'l-content-container'}>
       <Sidebar cats={cats} hideCatTitle title={t('fundamentals.title')} />
-      <div className={classes.content}>
+      <div className={classes.content} id='main'>
         <Outlet />
       </div>
     </div>

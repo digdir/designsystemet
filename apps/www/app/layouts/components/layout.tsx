@@ -174,7 +174,7 @@ export default function Layout({
         suffix={sidebarSuffix}
         hideCatTitle
       />
-      <div className={classes.content}>
+      <div className={classes.content} id='main'>
         <Outlet />
       </div>
     </div>

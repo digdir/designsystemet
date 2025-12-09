@@ -30,7 +30,7 @@ export const loader = async ({ request }: Route.LoaderArgs) => {
 export default function NotFound({ loaderData }: Route.ComponentProps) {
   const { lang } = loaderData;
   return (
-    <div className='l-content-container'>
+    <div className='l-content-container' id='main'>
       <div
         lang='no'
         style={{
