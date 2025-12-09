@@ -1,11 +1,37 @@
----
-title: Avatar
-subtitle: Avatar er en komponent som viser et bilde, initialer eller ikon for en person, enhet eller profil.
-image: Avatar.svg
-cssfile: avatar
----
-
 <Story story="Preview" />
+
+**Bruk `Avatar` når**
+- en person eller enhet skal representeres
+
+**Unngå `Avatar` når**
+- noe annet enn en person eller enhet skal representeres, for eksempel et dokument. Bruk heller ikoner eller andre visuelle symboler
+- det brukes rent visuelt, uten funksjon eller mening
+
+## Eksempel
+
+### Størrelser
+I tillegg til `sm`, `md` og `lg`, støtter `Avatar` også størrelsen `xs`.
+
+<Story story="Sizes" />
+
+
+### Farger
+`Avatar` kommer i alle farger i ditt tema.
+
+<Story story="ColorVariants" />
+
+### Varianter
+`Avatar` kan være rund eller kvadratisk. Bruk dem konsekvent i hele løsningen.
+<Story story="ShapeVariants" />
+
+### Med bilde eller ikon
+`Avatar` kan bruke bilde eller ikon som innhold.
+
+<Story story="WithImageAndIcon" />
+
+### Kombinasjoner
+`Avatar` kan settes sammen med andre komponenter.
+<Story story="InDropdown" />
 
 ## Retningslinjer 
 `Avatar` skal bidra til å gjøre brukergrensesnittet mer gjenkjennelig og lett å navigere i, uten å forstyrre eller ta for mye plass. 
@@ -14,17 +40,6 @@ cssfile: avatar
 - Avataren bør som regel kombineres med tekst, med mindre det er helt åpenbart hvem eller hva avataren representerer. 
 - Bruk avatar kun når det faktisk gir verdi for brukeropplevelsen, for eksempel å vise hvem som har skrevet noe, eller hvem som er ansvarlig.
 
-**Passer til:**
-- Å representere en person eller enhet. 
-
-**Passer ikke til:**
-- Å representere noe annet enn en person eller enhet, for eksempel et dokument. Bruk heller ikoner eller andre visuelle symboler.
-- Å brukes rent visuelt, uten funksjon eller mening.
 
 ## Tekst
 `Avatar` skal som hovedregel ikke inneholde tekst i selve komponenten, med unntak av når initialer brukes. Annen tekst, for eksempel fullt navn, rolle eller organisasjon, bør vises utenfor avataren for å sikre god lesbarhet. 
-
-## Tilgjengelighet
-`Avatar` må enten ha en `aria-label` som forklarer hvem eller hva avataren representerer, eller ha `aria-hidden` og synlig tekst som formidler den samme informasjonen. Ikke spesifiser i `aria-label` at det er et bilde, skjermleseren formidler dette automatisk. Det holder å bruke navnet, som for eksempel `aria-label="Ola Nordmann"`.
-
-Bilder, og andre `children`, får automatisk `aria-hidden="true"` for å unngå dobbel informasjon.

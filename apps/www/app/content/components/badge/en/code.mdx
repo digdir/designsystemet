@@ -1,46 +1,68 @@
----
-title: Badge
-subtitle: Badge er ein ikkje-interaktiv komponent som viser status med eller utan tal. Bruk [Tag](/docs/komponenter-tag--docs) dersom du skal ha tekst i staden for tal.
-image: Badge.svg
-cssfile: badge
----
-
 <Story story="Preview" />
-
-## Props
 <ReactComponentDocs />
 
-## Bruk
-### Floating
+```tsx
+import { Badge } from '@digdir/designsystemet-react';
 
-<Story story="Floating" />
+/* Inline without numbers */
+<Badge />
 
-### CustomPlacement
+/* Inline with numbers */
+<Badge count={5} maxCount={99} />
 
-<Story story="CustomPlacement" />
+/* Floating over element */
+<Badge.Position>
+<Badge />
+<Elem />
+</Badge.Position>
+```
 
-### Status
-
-<Story story="Status" />
-
-### InTabs
-
-<Story story="InTabs" />
-
-### InButton
-
-<Story story="InButton" />
+## Examples
 
 ### Variants
 
+You can switch between `variant` and `data-color` to get different colors and styles.
+
 <Story story="Variants" />
 
-## CSS
+### Floating
 
-### Variabler
+You can set the placement with `placement`, and choose what type of `overlap` it can have.
 
-<CssVariables/>
+<Story story="Floating" />
 
-### Attributter 
+Not all icons have the same shape, and then you may have to change where the `Badge` should be placed. If you can't get the `Badge` to be where you want it, you can use `style` to override the placement.
+This also works when using `overlap="circle"`.
 
-<CssAttributes />
+<Story story="CustomPlacement" />
+
+### Inline
+
+To have the `Badge` inline, place it directly in the text or component.
+
+<Story story="InTabsEn" />
+
+## HTML
+
+`Badge` renders its text with CSS in a `:before` pseudo-element on a `span` tag.
+You use the class name `ds-badge`, in conjunction with the data attribute.
+
+If you want it to be floating, `ds-badge--position` must be used on a wrapper around the element that the `Badge` is to be placed over.
+`data-placement` is used on the wrapper to determine the placement. See the bottom of the page for supported placements.
+You can also set `data-overlap="circle"` on it to get circular overlap.
+
+```html
+<!-- inline without numbers -->
+<span class="ds-badge"></span>
+
+<!-- inline with numbers -->
+<span class="ds-badge" data-count="9+"></span>
+
+<!-- float over element -->
+<span class="ds-badge--position" data-placement="top-right" data-overlap="circle">
+<span class="ds-badge" data-count="5"></span>
+<Icon />
+</span>
+```
+
+## CSS variables and data attributes

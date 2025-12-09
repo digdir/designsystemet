@@ -1,23 +1,16 @@
----
-title: ValidationMessage
-image: ValidationMessage.svg
-cssfile: validation-message
----
-
-`ValidationMessage` brukes til å vise feilmeldinger og annen validerings-informasjon til brukeren.
-
 <Story story="Preview" />
 
-## Bruk
+`ValidationMessage` er en typografi-komponent som brukes til å vise korte, tydelige meldinger som hjelper brukeren å forstå statusen til et skjemafelt. Bruk den for å vise feil, advarsler, suksessmeldinger eller informasjon. Valideringsmeldinger er utformet for å være lett synlige, samtidig som de passer naturlig inn i skjemaoppsettet.
 
-```tsx
-import { ValidationMessage } from '@digdir/designsystemet-react';
+## Eksempel
 
-<ValidationMessage>Dette er en valideringsmelding.</ValidationMessage>
-```
+### Alle farger
 
-## Kodeeksempler
+<Story story="AllColors" />
 
-### Med feil
+## Retningslinjer
 
-<Story story="WithError" />
+Bruk `ValidationMessage` for å gi umiddelbar og kontekstavhengig tilbakemelding. Meldinger skal plasseres nær feltet de gjelder, slik at både visuelle brukere og brukere av hjelpemidler enkelt forstår sammenhengen. Se artikkelen om [brukerutløste feilemelinger](/no/patterns/errors) for mer informasjon om god praksis ved bruk av valideringsmeldinger.
+
+## Tekst
+Valideringsmeldinger skal være korte, konkrete og hjelpe brukeren videre. Les om hvordan du skriver [gode feilmeldinger](/no/patterns/errors#språk).

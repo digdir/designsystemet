@@ -1,11 +1,5 @@
----
-title: ToggleGroup
-subtitle: '`ToggleGroup` is a group of buttons where the user can select one option.'
-image: ToggleGroup.svg
-cssfile: toggle-group
----
-
-<Story story="Preview" />
+<Story story="PreviewEn" />
+<ReactComponentDocs />
 
 ## Usage
 
@@ -13,21 +7,65 @@ cssfile: toggle-group
 import { ToggleGroup } from '@digdir/designsystemet-react';
 
 <ToggleGroup defaultValue="option1">
-  <ToggleGroup.Item value="option1">Option 1</ToggleGroup.Item>
-  <ToggleGroup.Item value="option2">Option 2</ToggleGroup.Item>
+<ToggleGroup.Item value="option1">Option 1</ToggleGroup.Item>
+<ToggleGroup.Item value="option2">Option 2</ToggleGroup.Item>
 </ToggleGroup>
+
 ```
 
-## Code Examples
+## Examples
 
-### Only icons
+### Icons only
+Use [`Tooltip`](/en/components/docs/tooltip/code) to explain the actions when using only icons.
 
-<Story story="OnlyIcons" />
+<Story story="OnlyIconsEn" />
 
 ### Controlled
 
-<Story story="Controlled" />
+<Story story="ControlledEn" />
 
 ### Secondary variant
 
-<Story story="Secondary" />
+<Story story="SecondaryEn" />
+
+## HTML
+**JavaScript is also needed to handle focus.**
+You can read about what you need to do to implement this in the [accessibility documentation](/en/components/docs/toggle-group/accessibility).
+
+The class name `ds-toggle-group` is placed on a `<div>` with `role="radiogroup"`.
+
+Each button in the group is a `<button>` with class name `ds-button` with `role="radio"` and `aria-checked` which indicates whether the button is selected or not.
+`data-variant` for selected buttons should match `data-variant` on `ToggleGroup`.
+The remaining buttons should have `data-variant="tertiary"`.
+
+```html
+<div 
+  class="ds-toggle-group" 
+  role="radiogroup" 
+  data-variant="primary"
+> 
+  <button 
+    class="ds-button" 
+    data-variant="primary" 
+    type="button" 
+    id="togglegroup-item-1" 
+    aria-checked="true" 
+    aria-current="true" 
+    role="radio" 
+  >Inbox</button> 
+  <button 
+    class="ds-button" 
+    data-variant="tertiary" 
+    type="button" 
+    id="togglegroup-item-2" 
+    aria-checked="false" 
+    aria-current="false" 
+    role="radio" 
+  >Sent</button>
+</div>
+```
+
+## CSS variables and data attributes
+<CssVariables />
+
+<CssAttributes />

@@ -1,24 +1,30 @@
----
-title: Alert
-subtitle: Alerts inform users about important information
-image: Alert.svg
-cssfile: alert
----
-
-<Story story="Preview" />
+<Story story="PreviewEn" />
 
 ## Usage
-
 ```tsx
-import { Button } from '@digdir/designsystemet-react';
+import { Alert } from '@digdir/designsystemet-react';
 
-<Button>Click me!</Button>;
+<Alert>You are using the Alert component!</Alert>;
 ```
 
-## Code Examples
+## Examples
 
-### Variants
+### Changing the alert
 
+In code, you change the type of alert by changing `data-color`.
+The icon is controlled via CSS.
 
-<Story story="Variants" />
+<Story story="VariantsEn" />
 
+## HTML
+
+For HTML, use the class name `ds-alert` and the attribute `data-color` to change the type of alert.
+Read above for when to use `role` and `aria-live`.
+
+[Read about `role` and `aria-live` on the accessibility page for the `Alert` component.](/en/components/docs/alert/accessibility#alert-i-live-region)
+
+```html
+<div class="ds-alert" data-color="info">
+This is an info alert.
+</div>
+```

@@ -1,6 +1,7 @@
-import { Table } from '@digdir/designsystemet-react';
+import { Paragraph, Table } from '@digdir/designsystemet-react';
 import cl from 'clsx';
 import { forwardRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 type CssAttributesProps = {
   vars: {
@@ -10,23 +11,35 @@ type CssAttributesProps = {
 
 export const CssAttributes = forwardRef<HTMLTableElement, CssAttributesProps>(
   function CssAttributes({ vars, className, ...rest }, ref) {
-    if (Object.keys(vars).length === 0) return null;
+    const { t } = useTranslation();
+
+    if (Object.keys(vars).length === 0)
+      return (
+        <Paragraph>{t('components.no-relevant-data-attributes')}</Paragraph>
+      );
     return (
       <Table
         className={cl('component-table', className)}
-        data-color='accent'
-        zebra
+        data-color='neutral'
         border
+        zebra
         style={{
           tableLayout: 'fixed',
         }}
         {...rest}
         ref={ref}
       >
+        <caption style={{ marginBottom: 'var(--ds-size-4)' }}>
+          {t('components.data-attributes')}
+        </caption>
         <Table.Head>
           <Table.Row>
-            <Table.HeaderCell>Name</Table.HeaderCell>
-            <Table.HeaderCell>Value(s)</Table.HeaderCell>
+            <Table.HeaderCell>
+              {t('components.css-variables.name')}
+            </Table.HeaderCell>
+            <Table.HeaderCell>
+              {t('components.css-variables.value')}
+            </Table.HeaderCell>
           </Table.Row>
         </Table.Head>
         <Table.Body>

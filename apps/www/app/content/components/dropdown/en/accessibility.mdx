@@ -1,0 +1,19 @@
+<Alert data-color="info">
+We are working to improve the accessibility documentation for this component. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
+</Alert>
+
+There is built-in accessibility in the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) for open and closed state, as well as keyboard navigation.
+
+### Keyboard navigation
+* <kbd>Enter</kbd> or <kbd>Space</kbd> opens or closes the menu
+* <kbd>Enter</kbd> or <kbd>Space</kbd> selects the highlighted item
+* <kbd>Esc</kbd> closes the menu
+
+### Keyboard
+
+Because of the different usage patterns for `Dropdown`, we do not include built-in keyboard handling.
+If you are creating a menu, you must implement your own keyboard interactions to enable navigation within the menu.
+See the ["Menu and Menubar Pattern" at W3C](https://www.w3.org/WAI/ARIA/apg/patterns/menubar/).
+We offer [`RovingFocus`](/en/components/utilities/roving-focus), which is a utility component for keyboard navigation.
+
+If you use `Dropdown` without adding your own logic, any focusable elements inside `Dropdown.List` can be navigated using the Tab key, and you can close the `Dropdown` with the Escape key.

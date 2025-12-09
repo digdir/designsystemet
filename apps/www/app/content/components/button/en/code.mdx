@@ -1,14 +1,5 @@
----
-title: Button
-image: Button.svg
-cssfile: button
----
+<Story story="PreviewEn" />
 
-Buttons let users perform actions.
-
-<Story story="Preview" />
-
-## Props
 <ReactComponentDocs />
 
 ## Usage
@@ -16,11 +7,77 @@ Buttons let users perform actions.
 ```tsx
 import { Button } from '@digdir/designsystemet-react';
 
-<Button>Click me!</Button>;
+<Button>Button</Button>;
 ```
 
-## Code Examples
+## Examples
 
 ### Variants
 
+`variant` is used to change the appearance of the button.
+
 <Story story="Variants" />
+
+### Colors
+
+Either you set `data-color` directly on `Button`, or it inherits from the closest parent element with `data-color`.
+
+<Story story="ColorVariants" />
+
+### Icon
+
+If you only have an icon in the button, you can set `icon={true}` to make it square. If you have other content, such as text, the button will automatically have air around the icon.
+
+<Story story="IconsEn" />
+
+### Button as link
+
+`asChild` is used to change the button to a link.
+Read more about [composition in the Designsystem](/en/fundamentals/code/composition).
+
+<Story story="AsLinkEn" />
+
+### Buttons that load
+
+Below we use `loading={true}` to show that the button is loading something. Here you can also submit your own loading component if our [`Spinner`](/en/components/docs/spinner/code) does not fit.
+
+<Story story="LoadingEn" />
+
+In the example above, `aria-disabled` is automatically set when `loading={true}`. This is the recommended way to show that a button is disabled. Then the button can still get focus when the user navigates with the keyboard. This way, screen readers and other assistive devices are informed that the button exists, but that it is not active.
+
+**Note:** Neither `loading="true"` nor `aria-disabled` automatically prevents the button from triggering `onClick`.
+You must ensure that the callback function does not run when the button is disabled.
+
+## HTML
+
+The class name `ds-button` is set to `<button>`.
+In React, we also set `type="button"` by default, to avoid unexpected submits in forms.
+
+There are three data attributes you can use for customization:
+`data-icon` - set if the button only has an icon.
+`data-variant` - set variant of the button (`primary`, `secondary`, `tertiary`).
+`data-fullWidth` - set if the button should be full width.
+
+```html
+<button class="ds-button"type="button">Button</button>
+
+<!-- secondary variant -->
+<button class="ds-button" type="button" data-variant="secondary">Button</button>
+
+<!-- icon only -->
+<button class="ds-button" type="button" data-icon="true"><svg /></button>
+```
+
+If you want a button that loads, you have to add a loading indicator yourself.
+
+```html
+<button class="ds-button" type="button" aria-disabled="true" aria-busy="true">
+<svg class="ds-spinner" />
+Loading...
+</button>
+```
+
+## CSS variables and data attributes
+<CssVariables />
+
+<CssAttributes />

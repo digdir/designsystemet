@@ -1,0 +1,78 @@
+---
+title: Kom i gang med React
+sidebar_title: React
+order: 40
+---
+
+Følg disse stegene for å komme i gang med React-komponentene.
+
+## 1. Installer pakkene
+
+```sh
+npm i @digdir/designsystemet-react @digdir/designsystemet-theme @digdir/designsystemet-css @digdir/designsystemet-types
+```
+
+### Typescript
+
+Dersom du bruker Typescript, sørg for at du har typescript >= 3.8 i `devDependencies`:
+
+```sh
+npm i typescript --save-dev
+```
+
+## 2. Font
+
+Du kan fritt bruke hvilken som helst font-familie med komponentene.
+
+Komponentene er designet og utviklet med [Inter fonten](https://github.com/rsms/inter), så variasjoner kan forekomme dersom du bruker en annen font.
+
+### Legg til Inter fonten (valgfritt)
+
+Legg til `<link>` taggen i `<head>`, og sett `font-family` til `Inter` i din globale css fil.
+
+`font-feature-settings` legger til en hale på små `L`'er.
+
+#### HTML
+
+Du kan bruke denne koden for å legge til fonten:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://altinncdn.no/fonts/inter/v4.1/inter.css"
+  integrity="sha384-OcHzc/By/OPw9uJREawUCjP2inbOGKtKb4A/I2iXxmknUfog2H8Adx71tWVZRscD"
+  crossorigin="anonymous"
+/>
+```
+
+#### CSS
+
+Vi anbefaler sterkt at du legger til følgende i din globale css fil.
+`font-feature-settings` legger til en hale på små `L`'er.
+
+```css
+body {
+  font-family: 'Inter', sans-serif;
+  font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */
+}
+```
+
+Dersom du velger å installere fonten på en annen måte, husk å inkludere fontvektene `400`, `500` og `600`.
+
+## 3. Polyfill
+
+Designsystemet bruker [popover](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover) i enkelte komponenter. Dette apiet er klassifisert som [Baseline: Newly available](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) fra april 2024, da Firefox som siste nettleser la det til. I noen tilfeller kan en oppleve at brukere av ulike grunner er låst til eldre nettleserversjoner, og da kan det være aktuelt å legge til en polyfill for å sikre at `popover` fungerer for alle.
+* [Popover-Polyfill](https://github.com/oddbird/popover-polyfill)
+
+## 4. Bruk en React-komponent
+
+```jsx
+import '@digdir/designsystemet-theme';
+import '@digdir/designsystemet-css';
+
+import { Button } from '@digdir/designsystemet-react';
+
+<Button variant='secondary'>Jeg er en knapp!</Button>;
+```
+
+`@digdir/designsystemet-theme` og `@digdir/designsystemet-css` må kun importeres én gang i applikasjonen.

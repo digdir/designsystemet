@@ -1,42 +1,79 @@
-.codeBlock {
-  max-width: 100%;
-  overflow-x: auto;
-  width: auto;
-  padding: var(--ds-size-5);
-  border-top-left-radius: var(--ds-border-radius-md);
-  height: fit-content;
-  background-color: var(--ds-color-neutral-background-tinted);
-  font-family: monospace;
-  margin-bottom: 0;
-  line-height: 1.5;
+@layer codeblock {
+  .codeBlock {
+    max-width: 100%;
+    overflow-x: auto;
+    width: auto;
+    padding: var(--ds-size-5);
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    height: fit-content;
+    background-color: var(--ds-color-neutral-background-default);
+    font-family: monospace;
+    margin-block: 0;
+    line-height: 1.5;
+    border: 1px solid var(--ds-color-neutral-border-subtle);
+    border-top: initial;
+    scrollbar-color: var(--ds-color-neutral-border-default) transparent;
 
-  & :global(.token.plain) {
-    color: var(--ds-color-neutral-text-default);
+    & :global(.token.plain),
+    & :global(.token.plain-text) {
+      color: var(--ds-color-neutral-text-default);
+    }
+    code {
+      font-size: min(0.8em, 14px);
+    }
   }
-  code {
-    font-size: min(0.8em, 14px);
+
+  .codeBlockWrapper {
+    --border-radius: var(--ds-border-radius-lg);
+    position: relative;
+    max-width: 100%;
+    /* so it shrinks without needing overflow: hidden on its parent */
+    contain: inline-size;
+  }
+
+  .copyButton {
+    border-radius: 0;
+    margin-left: auto;
+    font-weight: var(--ds-font-weight-regular);
+    border-top-right-radius: var(--border-radius);
+  }
+  .stack {
+    display: grid;
+    > * {
+      grid-area: 1 / 1;
+      pointer-events: none;
+    }
+    & :nth-child(2) {
+      display: none;
+    }
+    &.copied {
+      > :nth-child(1) {
+        opacity: 0;
+      }
+      > :nth-child(2) {
+        display: block;
+        transition: 0.3s ease all;
+        @starting-style {
+          opacity: 0.5;
+          transform: scale(3);
+        }
+      }
+    }
+  }
+
+  .toolbar {
+    display: flex;
+    justify-content: flex-end;
+    border: 1px solid var(--ds-color-neutral-border-subtle);
+    border-top-right-radius: var(--border-radius);
+    border-top-left-radius: var(--border-radius);
+    background-color: var(--ds-color-neutral-background-tinted);
   }
 }
-
-.codeBlockWrapper {
-  position: relative;
-  max-width: 100%;
-  /* so it shrinks without needing overflow: hidden on its parent */
-  contain: inline-size;
-}
-
-.copyButton {
-  border-radius: 0;
-  margin-left: auto;
-  border-bottom-right-radius: var(--ds-border-radius-md);
-}
-
-.toolbar {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: var(--ds-size-4);
-  background-color: var(--ds-color-neutral-background-tinted);
-  border-top: 1px solid var(--ds-color-neutral-border-subtle);
-  border-bottom-right-radius: var(--ds-border-radius-md);
-  border-bottom-left-radius: var(--ds-border-radius-md);
+/*overridable styles*/
+@layer normalize.codeblock {
+  .codeBlockWrapper {
+    margin-block: var(--ds-size-4);
+  }
 }

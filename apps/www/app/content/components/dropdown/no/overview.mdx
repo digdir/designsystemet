@@ -1,45 +1,27 @@
----
-title: Dropdown
-subtitle: Dropdown er en meny som vises når brukeren klikker på en trigger-knapp.
-image: Dropdown.svg
-cssfile: dropdown
----
 
 <Story story="Preview" />
 
-## Bruk
+**Bruk `Dropdown` når**
+- du vil tilby flere alternativer uten at de tar mye plass i grensesnittet
+- valgene er sekundære, men bør være lett tilgjengelige
 
-`Dropdown` består av flere delkomponenter:
+**Unngå `Dropdown` når**
+- en handling er primær eller brukes ofte, bruk heller en synlig [`Button`](/no/components/docs/button/overview)
+- det kun finnes ett valg, en dropdown gir unødvendig kompleksitet
 
-- `Dropdown.TriggerContext` - Wrapper for å koble sammen trigger og dropdown
-- `Dropdown.Trigger` - Knappen som åpner menyen
-- `Dropdown` - Selve dropdown-menyen
-- `Dropdown.Heading` - Overskrift i menyen
-- `Dropdown.List` - Liste med elementer
-- `Dropdown.Item` - Et element i listen
-- `Dropdown.Button` - Knapp inni et element
+## Eksempel
 
-## Retningslinjer
-
-- Bruk Dropdown for handlinger eller navigasjon som ikke trenger å være synlig hele tiden
-- Hold antall elementer på et overkommelig nivå
-- Bruk overskrifter for å gruppere relaterte elementer
-- Unngå flere nivåer av dropdowns (nøstede menyer)
-
-## Med ikoner
+### Med ikoner
 
 Du kan bruke ikoner sammen med tekst i dropdown-elementene:
 
 <Story story="Icons" />
 
-## Kontrollert tilstand
+## Retningslinjer
 
-Du kan kontrollere når dropdown er åpen eller lukket:
+`Dropdown` lager ikke en semantisk meny, men legger grunnmuren for at du kan bygge din egen. Les ["Menu and Menubar Pattern" på w3.org](https://www.w3.org/WAI/ARIA/apg/patterns/menubar/) for mer informasjon om hvordan du lager tilgjengelige menyer.
 
-<Story story="Controlled" />
-
-## Uten TriggerContext
-
-Du kan også bruke Dropdown uten TriggerContext ved å bruke `popovertarget`:
-
-<Story story="WithoutTrigger" />
+- Bruk `Dropdown` for handlinger eller navigasjon som ikke trenger å være synlig hele tiden
+- Hold antall elementer på et overkommelig nivå
+- Bruk overskrifter for å gruppere relaterte elementer
+- Unngå flere nivåer av dropdowns (nøstede menyer)

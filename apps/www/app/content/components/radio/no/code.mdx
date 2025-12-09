@@ -1,11 +1,5 @@
----
-title: Radio
-subtitle: 'Vi bruker `Radio` for å gi brukerne valg der de skal velge kun ett alternativ.'
-image: Radio.svg
-cssfile: radio
----
-
 <Story story="Preview" />
+<ReactComponentDocs />
 
 ## Bruk
 
@@ -15,12 +9,93 @@ import { Radio } from '@digdir/designsystemet-react';
 <Radio label="Radio" value="value" name="name" />
 ```
 
-## Kodeeksempler
+## Eksempel
 
 ### Gruppering
+Bruk [`Fieldset`](/no/components/docs/fieldset) rundt en gruppe med radioknapper for å gi en felles ledetekst(`<legend>`) og eventuelt en beskrivelse (`description`).
 
 <Story story="Group" />
 
 ### Med feil
+Her må vi bruke [`Fieldset`](/no/components/docs/fieldset), fordi den aktiverer riktig stil og sørger for at innholdet har de riktige sammenkoblingene for tilgjengelighet.
 
 <Story story="WithError" />
+
+### Readonly
+
+Felter med `readonly`-attributtet er med i tabrekkefølgen. Brukerne kan kopiere innholdet men ikke redigere det. Informasjon blir med når skjemaet sendes inn.
+
+`readonly`-felter kan være forvirrende for noen brukere. Ikke alle vil skjønne hvorfor de ikke får til å endre innholdet i feltet. Vi anbefaler derfor å unngå `readonly` så langt det lar seg gjøre.
+
+<Story story="ReadOnly" />
+
+### Inline
+Radio *kan* plasseres horisontalt med `flex`, men skal som hovedregel [plasseres vertikalt](/no/components/docs/radio/overview#plassering).
+<Story story="Inline" />
+
+## HTML
+
+`Radio` er ein samansatt komponent, så i HTML må du bygge den opp av fleire komponentar.
+Me bruker [`Fieldset`](/no/components/docs/fieldset/code), [`Label`](/no/components/docs/label/code) og [`Input`](/no/components/docs/input/code) for å lage ein `Radio`.
+
+Koden under viser hvordan du visuelt kan bygge opp en `Radio` i HTML, men du må selv passe på at `<input>` blir koblet sammen med `<label>` og beskrivelse.
+
+```html
+<div class="ds-field">
+  <input
+    class="ds-input"
+    type="radio"
+    value="value"
+    name="name"
+    id="my-radio"
+  >
+  <label
+    class="ds-label"
+    data-weight="regular"
+    for="my-radio"
+  >Radio</label>
+</div>
+```
+
+### I Fieldset
+
+Koden under er et eksempel på hvordan du bruker flere `Radio` inni `<fieldset>`.
+
+```html
+<fieldset class="ds-fieldset">
+  <legend class="ds-label" data-weight="medium">Kan vi kontake deg på epost?</legend>
+  <p class="ds-paragraph" data-variant="default">Dersom du ikke ønsker å bli kontaktet på epost sender vi brev i posten.</p>
+  <div class="ds-field">
+    <input
+      class="ds-input"
+      type="radio"
+      value="yes"
+      id="radio-input"
+    >
+    <label
+      class="ds-label"
+      data-weight="regular"
+      for="radio-input"
+    >Ja</label>
+  </div>
+  <div class="ds-field">
+    <input
+      class="ds-input"
+      type="radio"
+      value="no"
+      id="radio-input"
+    >
+    <label
+      class="ds-label"
+      data-weight="regular"
+      for="radio-input"
+    >Nei</label>
+  </div>
+</fieldset>
+```
+
+## CSS variabler og data-attributter
+Checkbox er en sammensatt komponent, og derfor viser vi variabler og data-attributter fra `ds-input` her.
+<CssVariables />
+
+<CssAttributes />

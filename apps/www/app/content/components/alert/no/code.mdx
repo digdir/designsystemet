@@ -1,43 +1,36 @@
----
-title: Alert
-subtitle: Vi bruker `Alert` til å gi brukeren informasjon som det er ekstra viktig at de ser og forstår. Komponenten er designet for å fange brukernes oppmerksomhet. Teksten i varselet skal være kort og tydelig.
-image: Alert.svg
-cssfile: alert
----
-
 <Story story="Preview" />
-## Bruk
+<ReactComponentDocs />
 
+## Bruk
 ```tsx
 import { Alert } from '@digdir/designsystemet-react';
 
 <Alert>You are using the Alert component!</Alert>;
 ```
 
-## Kodeeksempler
+## Eksempel
 
-### Informasjon
+### Endre varsel
 
-<Story story="VariantInfo" />
+I kode endrer du typen varsel ved å endre `data-color`.
+Ikonet er styrt via CSS.
 
-### Suksess
+<Story story="Variants" />
 
-<Story story="VariantSuccess" />
+## HTML
 
-### Advarsel
+For HTML bruker du klassenavnet `ds-alert` og attributtet `data-color` for å endre type varsel.
+Les over for når du skal bruke `role` og `aria-live`.
 
-<Story story="VariantWarning" />
+[Les om `role` og `aria-live` på tilgjengeligheitssiden for `Alert`-komponenten.](/no/components/docs/alert/accessibility#alert-i-live-region)
 
-### Feilmelding
+```html
+<div class="ds-alert" data-color="info">
+  Dette er en info alert.
+</div>
+```
 
-<Story story="VariantDanger" />
+## CSS variabler og data-attributter
+<CssVariables />
 
-### Med og uten overskrift
-
-<Story story="WithHeading" />
-
-<Story story="WithOnlyHeading" />
-
-### Med lenke
-
-<Story story="MedLenke" />
+<CssAttributes />

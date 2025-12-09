@@ -24,21 +24,26 @@ export const Preview = () => {
   );
 };
 
-export const InCard = () => {
+export const PreviewEn = () => {
   return (
-    <Card data-color='neutral'>
-      <Details>
-        <Details.Summary>Vedlegg</Details.Summary>
-        <Details.Content>Vedlegg 1, vedlegg 2, vedlegg 3</Details.Content>
-      </Details>
-    </Card>
+    <Details>
+      <Details.Summary>
+        Who can register in the Volunteer Register?
+      </Details.Summary>
+      <Details.Content>
+        To be registered in the Volunteer Register, the organization must
+        conduct voluntary activities. Only associations, foundations, and
+        limited companies can be registered. The business cannot distribute
+        funds to individuals. The business must have a board.
+      </Details.Content>
+    </Details>
   );
 };
 
 export const InCardWithColor = () => {
   return (
     <>
-      <Card data-color='accent'>
+      <Card data-color='brand3' data-variant='tinted'>
         <Details>
           <Details.Summary>
             Hvordan får jeg tildelt et jegernummer?
@@ -61,25 +66,47 @@ export const InCardWithColor = () => {
         </Details>
       </Card>
       <br />
-      <Card data-color='accent' data-variant='tinted'>
+      <Card data-color='brand1'>
+        <Details>
+          <Details.Summary>Vedlegg</Details.Summary>
+          <Details.Content>Vedlegg 1, vedlegg 2, vedlegg 3</Details.Content>
+        </Details>
+      </Card>
+    </>
+  );
+};
+
+export const InCardWithColorEn = () => {
+  return (
+    <>
+      <Card data-color='brand3' data-variant='tinted'>
         <Details>
           <Details.Summary>
-            Hvordan får jeg tildelt et jegernummer?
+            How do I get assigned a hunter number?
           </Details.Summary>
           <Details.Content>
-            Du vil automatisk få tildelt jegernummer og bli registrert i
-            Jegerregisteret når du har bestått jegerprøven.
+            You will automatically be assigned a hunter number and registered in
+            the Hunter Register when you have passed the hunter's exam.
           </Details.Content>
         </Details>
         <Details>
           <Details.Summary>
-            Jeg har glemt jegernummeret mitt. Hvor finner jeg dette?
+            I have forgotten my hunter number. Where can I find it?
           </Details.Summary>
           <Details.Content>
             <Paragraph>
-              Du kan finne dette ved å logge inn på{' '}
-              <Link href='https://minjegerside.brreg.no/'>Min side</Link>
+              You can find this by logging in to{' '}
+              <Link href='https://minjegerside.brreg.no/'>My Page</Link>
             </Paragraph>
+          </Details.Content>
+        </Details>
+      </Card>
+      <br />
+      <Card data-color='brand1'>
+        <Details>
+          <Details.Summary>Attachments</Details.Summary>
+          <Details.Content>
+            Attachment 1, attachment 2, attachment 3
           </Details.Content>
         </Details>
       </Card>
@@ -90,12 +117,10 @@ export const InCardWithColor = () => {
 export const Controlled = () => {
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
-  const [open3, setOpen3] = useState(false);
-  const isOpen = [open1, open2, open3].every(Boolean);
+  const isOpen = [open1, open2].every(Boolean);
   const toggleOpen = () => {
     setOpen1(!isOpen);
     setOpen2(!isOpen);
-    setOpen3(!isOpen);
   };
 
   return (
@@ -104,12 +129,12 @@ export const Controlled = () => {
         {isOpen ? (
           <>
             <ChevronDownUpIcon aria-hidden />
-            Lukk alle
+            Close both
           </>
         ) : (
           <>
             <ChevronUpDownIcon aria-hidden />
-            Åpne alle
+            Open both
           </>
         )}
       </Button>
@@ -132,15 +157,6 @@ export const Controlled = () => {
           rettigheter som arbeidstaker og muligheten til at andre kan investere
           i selskapet ditt? Da kan aksjeselskap være en hensiktsmessig
           organisasjonsform.
-        </Details.Content>
-      </Details>
-      <Details open={open3} onToggle={() => setOpen3(!open3)}>
-        <Details.Summary>Ansvarlig selskap (ANS/DA)</Details.Summary>
-        <Details.Content>
-          Er dere minst to personer som skal starte opp egen virksomhet?
-          Samarbeider du godt med den/de som du skal starte opp sammen med?
-          Krever virksomheten få investeringer og tar du liten økonomisk risiko?
-          Da kan du vurdere å etablere et ansvarlig selskap.
         </Details.Content>
       </Details>
     </>

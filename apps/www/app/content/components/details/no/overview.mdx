@@ -1,43 +1,32 @@
----
-title: Details
-subtitle: Details er en sammenleggbar komponent som lar brukeren vise eller skjule innhold.
-image: Details.svg
-cssfile: details
----
-
 <Story layout="block" story="Preview" />
 
-## Bruk
+**Bruk `Details` når**
 
-`Details` består av to delkomponenter:
+- mindre viktig innhald skal gjerast valfritt å opne
+- tilleggsinformasjon kan vere nyttig for enkelte brukarar
+- du skal gje døme eller svare på ofte stilte spørsmål
 
-- `Details.Summary` - Overskriften som kan klikkes for å vise/skjule innholdet
-- `Details.Content` - Innholdet som vises/skjules
+**Unngå `Details` når**
 
-## Retningslinjer
+- du skal visa viktig innhald som alle bør sjå når dei kjem til sida
+- feilmeldingar skal oppsummerast - bruk heller [`ErrorSummary`](/no/components/docs/error-summary/overview)
 
-- Bruk Details når du har innhold som ikke alle brukere trenger å se med en gang
-- Hold overskriften kort og beskrivende
-- Unngå å skjule viktig informasjon som brukeren alltid trenger
+## Eksempel
 
-## Tilgjengelighet
-
-Details-komponenten bruker de native HTML-elementene `<details>` og `<summary>`, som har innebygd tilgjengelighetsstøtte.
-
-## I Card
-
-Details kan brukes inne i Card-komponenten for en fin gruppering:
-
-<Story layout="block" story="InCard" />
-
-## Fargevarianter
-
-Details fungerer godt sammen med Card sine fargevarianter:
+Du kan bruke `Details` i eit kort for å få ramme rundt innhaldet.
+Dette passar i tilfeller der `Details` ikkje dekkjer heile sida, eller når det berre er ei rad.
 
 <Story layout="block" story="InCardWithColor" />
 
-## Kontrollert tilstand
+## Retningslinjer
+Store tekstmengder kan vere krevjande for mange. `Details` gjev brukaren moglegheit til sjølv å velja kva som er relevant å lese. Samstundes bør du ikkje bruke `Details` for å skjule innhald berre for å gjere sida ryddigare. Når innhald vert skjult, er det ein risiko for at brukaren ikkje oppdagar det i det heile. Vurder difor nøye om innhaldet faktisk bør skjulast, og ver bevisst på kvifor du gjer det.
 
-Du kan kontrollere om Details er åpen eller lukket:
+### Unngå nøsta lister
 
-<Story layout="block" story="Controlled" />
+Ikkje legg ein `Details` inni ein annan, det vi kallar nøsta lister.
+Det kan bli forvirrande for brukaren å forstå kva som er opna og lukka, spesielt når fleire nivå kan opnast samtidig.
+
+## Tekst
+Sørg for at overskrifta gjev ei god skildring av kva innhaldet i `Details` er. Overskriftene kan ha stor tyding for om brukarane finn det dei treng, om innhaldet blir lese og om det kan reknast som tilgjengeleg for alle brukarar. «Vis meir» eller «Les meir her» er ikkje gode nok titlar. Har du ein `Details` med mange nedtrekk, kan du ha ei hovudoverskrift eller temaoverskrift over heile lista.
+
+Hold innholdet i `Details` kort for å sikre at det lett kan relaterast til overskriften. Om innhaldet er for langt bør du fordela innhaldet i fleire `Details`. Ved veldig mykje innhald kan det vere betre å vurdere å lage eigne sider.

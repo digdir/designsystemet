@@ -1,32 +1,15 @@
----
-title: Chip
-image: Chip.svg
-cssfile: chip
----
-
-`Chip` are small, interactive components that allow users to control how they want to view content. For example, they can be used to filter categories in search results and show which filters are active.
-
 <Story story="Preview" />
 
-## Usage
+**Use `Chip` when**
+- users need to filter information, for example in lists or tables
+- active filters should be displayed
 
-```tsx
-import { Chip } from '@digdir/designsystemet-react';
+**Avoid `Chip` when**
+- you need to show status or numbers, use [`Badge`](/en/components/docs/badge/overview) instead
+- content should be labelled with a non-interactive category or topic, use [`Tag`](/en/components/docs/tag/overview) instead
+- you are creating menus or navigation elements
 
-// as radio
-<Chip.Radio name="my-chip" defaultChecked>You are using the Chip component!</Chip.Radio>;
-
-// as checkbox
-<Chip.Checkbox name="my-chip" defaultChecked>You are using the Chip component!</Chip.Checkbox>;
-
-// as removable
-<Chip.Removable>You are using the Chip component!</Chip.Removable>;
-
-// as button
-<Chip.Button>You are using the Chip component!</Chip.Button>;
-```
-
-## Code Examples
+## Example
 
 ### `Chip.Checkbox`
 
@@ -36,7 +19,7 @@ import { Chip } from '@digdir/designsystemet-react';
 
 ### `Chip.Removable`
 
-`Chip.Removable` contains a cross that indicates the filter can be removed. It's important to note that `aria-label` must be added if the content in Chip doesn't explain that it can be removed.
+`Chip.Removable` includes a cross icon indicating that the filter can be removed.  
 
 <Story story="Removable" />
 
@@ -48,25 +31,10 @@ import { Chip } from '@digdir/designsystemet-react';
 
 ## Guidelines
 
-`Chip` lets users control how they want to view content.
+`Chip` allows users to control how they want to display content.
 
-Avoid placing `Chip` vertically. If you want to show options below each other, use [`Checkbox`](/docs/komponenter-checkbox--docs) or [`Radio`](/docs/komponenter-radio--docs) instead. A group of multiple `Chip` can wrap across multiple lines.
-
-**Suitable for:**
-
-- Filtering information, for example in lists or tables.
-- Showing which filters are selected.
-
-**Not suitable for:**
-
-- Notifications for numbers or status (use [`Badge`](/docs/komponenter-badge--docs) instead).
-- Marking content with category/topic that is not interactive. Use the [`Tag`](/docs/komponenter-tag--docs) component instead if category/topic is not clickable.
-- Menus, such as side menus or main menus
+Avoid placing `Chip` vertically. If you need to show options stacked vertically, use [`Checkbox`](/en/components/docs/checkbox/overview) or [`Radio`](/en/components/docs/radio/overview) instead. A group of `Chip` components may wrap across multiple lines.
 
 ## Text
 
-`Chip` should have as few words as possible, preferably just one or two.
-
-## Accessibility
-
-If parts of a page are updated while users are doing something on the page, we must ensure that users with screen readers are notified. We can use an `ARIA live region` for this, which can show the number of hits or other changes.
+`Chip` should contain as few words as possible, preferably just one or two.

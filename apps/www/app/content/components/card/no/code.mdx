@@ -1,13 +1,7 @@
----
-title: Card
-subtitle: Med `Card` kan vi fremheve informasjon eller oppgaver som hører sammen. `Card` finnes i to varianter og kan inneholde tekst, bilde, tekstfelt, knapper og lenker.
-image: Card.svg
-cssfile: card
----
-
+## Bruk
 <Story story="Preview" />
 
-## Bruk
+<ReactComponentDocs />
 
 ```tsx
 import { Card } from '@digdir/designsystemet-react';
@@ -19,32 +13,80 @@ import { Card } from '@digdir/designsystemet-react';
 </Card>;
 ```
 
-## Kodeeksempler
-
-### Med inndeling
-
-<Story story="Media" />
-
-### Med video
-
-<Story story="Video" />
-
-### Med lenke i tittel
-
-<Story story="WithLink" />
-
-### Kort som er en lenke
-
-<Story story="AsLink" />
-
-### Kort som er en knapp
-
-<Story story="AsButton" />
-
-### Horisontalt
-
-<Story story="AsGrid" />
+## Eksempel
 
 ### Farger
 
+Kort kommer i alle farger, og har to varianter.
+
 <Story story="Variants" />
+
+### Med inndeling
+
+Bruk flere `Card.Block` hvis du vil dele opp kortet med skillelinjer eller legge til bilder eller video som går ut i kanten. Merk at når du bruker `Card.Block`, må alt innhold ligge inni `Card.Block` - ikke plasseres direkte i `Card`.
+
+<Story story="Media" />
+
+### Lenkekort
+
+`Card` kan brukes som navigasjonskort for å ta brukerne videre til en annen side.
+
+Det er to ulike måter å gjøre dette på.
+
+#### 1. Kort med lenke i tittel
+
+Dersom kortet skal lenke til en annen side, kan du legge en lenke i kortets tittel.
+Hele kortet blir da automatisk klikkbart, men skjermlesere får en [bedre brukeropplevelse enn dersom hele kortet var en lenke (adrianroselli.com)](https://adrianroselli.com/2020/02/block-links-cards-clickable-regions-etc.html).
+
+I dette eksempelet rendrer `Card` `<a>` inni heading-elementet.
+Dette er nyttig når `Card` inneholder tekst eller media, og skal navigere til en annen side.
+
+<Story story="WithLink" />
+
+#### 2. Kort som er en lenke
+
+Hele kortet kan bli en lenke ved å benytte `asChild`. Dette er nyttig når du ønsker at all tekst og innhold i `Card` blir lest opp av skjermlesere som én sammenhengende lenke.
+
+I dette eksempelet rendrer `Card` som `<a>`.
+
+<Story story="AsLink" />
+
+### Horisontalt
+
+Du kan endre mellom `display: flex` og `display: grid` for å legge `Card.Block` ved siden av hverandre:
+
+<Story story="AsGrid" />
+
+## HTML
+
+`Card` har to klassenavn du kan bruke.
+- `ds-card`: Hovedklassen som omfavner hele kortet.
+- `ds-card__block`: Klassen som brukes for hver seksjon i kortet.
+
+```html
+<!-- uten inndeling -->
+<div class="ds-card">
+  Et kort
+</div>
+
+<!-- med inndeling -->
+<div class="ds-card">
+  <div class="ds-card__block">
+    Tittel
+  </div>
+  <div class="ds-card__block">
+    Innhold
+  </div>
+  <div class="ds-card__block">
+    Valgfri fotnote
+  </div>
+</div>
+```
+
+## CSS variabler og data-attributter
+`Card` har to css klasser, men alle css variabler er knyttet til hovedklassen `ds-card`.
+
+<CssVariables />
+
+<CssAttributes />
+

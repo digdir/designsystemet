@@ -1,40 +1,125 @@
----
-title: Button
-image: Button.svg
-cssfile: button
----
+<Story story="PreviewEn" />
 
-Buttons let users perform actions.
+**Use `Button` when**
+- a concrete action needs to be performed, for example saving or submitting a form
+- the state of the solution changes, for example when opening a dialog or starting a process
 
-<Story story="Preview" />
+**Avoid `Button` when**
+- navigating to other pages or out of the service, use [`Link`](/en/components/docs/link/overview) instead
+- filtering information, for example in lists or tables, use [`Chip`](/en/components/docs/chip/overview) instead
+- showing which filters are selected, use [`Chip`](/en/components/docs/chip/overview) instead
 
-## Props
-<ReactComponentDocs />
+## Examples
+### Emphasis levels
 
-## Usage
-
-```tsx
-import { Button } from '@digdir/designsystemet-react';
-
-<Button>Click me!</Button>;
-```
-
-## Code Examples
-
-### Variants
-
-Use `primary`, `secondary` or `tertiary` to weight the button correctly.
+We use different button variants to emphasise certain actions. The `primary`, `secondary` and `tertiary` variants show how important the action is, and help users understand what should be prioritised.
 
 <Story story="Variants" />
 
-### Do and Don't
+**`Primary`**  
+Used for the most important action for the user, for example “Save”, “Next” or “Submit”. There should normally only be one primary button per page.
+
+**`Secondary`**  
+Used for actions that are not the main action. It often appears next to a primary button — if the primary button is “Save”, the secondary button might be “Cancel”.
+
+**`Tertiary`**  
+More discreet than the secondary button. Often used together with a primary or secondary button for less important actions. If used alone, it should include an icon, otherwise it may be difficult to recognise as a button.
+
+### Colours
+
+A group of buttons should use the same colour variant.  
+The exception is when you want to highlight an action that cannot be undone, such as “Delete”.  Otherwise, different colour variants should normally not be combined.
+
+The button is available in all colours from your theme.
+
+<Story story="ColorVariants" />
+
+A group of buttons should use the same colour variant. The exception is when you need to highlight an action that cannot be undone, such as “Delete”. Otherwise, different colour variants should generally not be mixed.
+
+<Story story="CombinedColorsEn" />
+
+### Icons
+`Button` can have an icon placed either to the left or the right of the text. As a general rule, we recommend placing the icon on the left. Icons inside buttons automatically get spacing to the text.
+
+<Story story="IconsEn" />
+
+#### Icon-only buttons
+
+Use icon-only buttons only for well-known icons such as “Close” and “Delete”. When the button has no text, you must add an accessible label describing what it does. This can be added via `title`, `aria-label`, or a [`Tooltip`](/en/components/docs/tooltip/overview).
+
+#### Button with text and icon
+
+When using an icon together with text, the icon should have `aria-hidden` so screen readers don’t read unnecessary content.
+
+Icon placement depends on the context and the meaning:
+
+- In most cases, **left** is the best placement.
+- If the button says “Start” and has an arrow pointing right, it is natural for the arrow to be on the right.
+- If the button is fixed on the right side of the interface, placing the icon on the right can be more intuitive.
+
+Use only one icon per button.
 
 <div className="dodont-row">
-  <DoDont story="DoIcon">
+  <DoDont story="DoIconEn">
     Use only one icon in a button.
   </DoDont>
-  <DoDont story="DontIcon">
-    Don't use multiple icons in a button.
+  <DoDont story="DontIconEn">
+    Don't use multiple icons in the same button.
   </DoDont>
   </div>
+
+### Button styled as a link
+
+Links can be styled to look like a button, but consider whether the [`Link`](/en/components/docs/link/overview) component is a more appropriate choice.
+
+<Story story="AsLinkEn" />
+
+### Loading buttons
+
+When showing that the button is loading something, you can combine it with a spinner.
+
+<Story story="LoadingEn" />
+
+## Guidelines
+
+Buttons have an important function and are directly tied to an action. They give the user the ability to complete tasks.
+
+### Button placement
+
+When placing buttons next to each other, the primary button should come first. The exception is “Previous” and “Next” — in that case, the secondary “Previous” button should come first.
+
+### One action per button
+
+Clearly describe what the button does. A button should perform only one action, not several.
+
+### One primary action per page
+
+There should be only one primary button per page. If there are multiple main actions, users may become unsure of what to do.
+
+## Text
+All buttons on the same page should have unique button text.
+
+Button text should be short, ideally no more than two, at most three words. The text should clearly describe what happens when the user clicks the button.
+
+<div className="dodont-row">
+  <DoDont story="DoIcon2En">
+    The text should explain what will happen.
+  </DoDont>
+  <DoDont story="DontIcon2En">
+    Avoid incomplete or unclear content.
+  </DoDont>
+</div>
+
+Use verbs in the imperative form on buttons to show users that they can perform an action. Examples of the imperative form are “send”, “sign”, “change”.
+
+**Avoid mixing writing styles**. Use a capital letter only for the first word, as in a normal sentence. Do not use all-uppercase text, as it is harder to read.
+
+<div className="dodont-row">
+  <DoDont story="DoIcon3En">
+    Use a capital letter at the beginning and lower-case letters for the rest.
+  </DoDont>
+  <DoDont story="DontIcon3En">
+    Avoid inconsistent capitalisation.
+  </DoDont>
+</div>
 

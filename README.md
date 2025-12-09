@@ -80,7 +80,7 @@ import { Button } from '@digdir/designsystemet-react';
 
 #### 1.3 Typescript
 
-Types for your theme can be found under `@digdir/designsystemet/types` when combined with the generated types file, `types.d.ts`, for your theme.
+Types for your theme can be found under `@digdir/designsystemet-types` when combined with the generated types file, `types.d.ts`, for your theme.
 
 Add the following to your `tsconfig.json`
 ```jsonc

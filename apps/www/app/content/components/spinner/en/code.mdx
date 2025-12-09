@@ -1,22 +1,54 @@
----
-title: Spinner
-subtitle: '`Spinner` is used to indicate that content or an action is loading, and that the user must wait before they can continue.'
-image: Spinner.svg
-cssfile: spinner
----
-
-<Story story="Preview" />
+<Story story="PreviewEn" />
+<ReactComponentDocs />
 
 ## Usage
 
 ```tsx
 import { Spinner } from '@digdir/designsystemet-react';
 
-<Spinner aria-label="Loading" />
+<Spinner aria-label="Loader" />
 ```
 
-## Code Examples
+## Examples
 
 ### Sizes
 
-<Story story="Sizes" />
+<Story story="SizesEn" />
+
+## HTML
+Append the class name `ds-spinner` to a `<svg>` tag to create a spinner.
+The `<svg>` should have two `<circle>` elements inside it to create the spinner.
+
+Check the code snippet below for the complete HTML structure.
+
+```html
+<svg
+  aria-label="Loading coffee"
+  class="ds-spinner"
+  role="img"
+  viewBox="0 0 50 50"
+>
+  <circle
+    class="ds-spinner__background"
+    cx="25"
+    cy="25"
+    r="20"
+    fill="none"
+    stroke-width="5"
+  ></circle>
+  <circle
+    class="ds-spinner__circle"
+    cx="25"
+    cy="25"
+    r="20"
+    fill="none"
+    stroke-width="5"
+  ></circle>
+</svg>
+```
+
+## CSS variables and data attributes
+
+<CssVariables />
+
+<CssAttributes />

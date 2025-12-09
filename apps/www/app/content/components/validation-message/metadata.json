@@ -1,0 +1,13 @@
+{
+  "category": "typography",
+  "no": {
+    "title": "ValidationMessage",
+    "subtitle": "`ValidationMessage` brukes til å vise tilbakemeldinger knyttet til validering av brukerinput, for eksempel feilmeldinger eller advarsler i skjema."
+  },
+  "en": {
+    "title": "ValidationMessage",
+    "subtitle": "`ValidationMessage` is used to display feedback related to the validation of user input, such as error messages or warnings in forms."
+  },
+  "image": "ValidationMessage.svg",
+  "cssFile": "validation-message.css"
+}

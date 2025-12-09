@@ -2,9 +2,7 @@ import { Badge, Button, Tabs } from '@digdir/designsystemet-react';
 import {
   ChatIcon,
   EnvelopeClosedFillIcon,
-  HeartFillIcon,
   InboxIcon,
-  PencilIcon,
   VideoFillIcon,
   VideoIcon,
 } from '@navikt/aksel-icons';
@@ -17,66 +15,17 @@ export const Preview = () => {
 export const Floating = () => (
   <>
     <Badge.Position placement='top-right'>
-      <Badge data-color='accent'></Badge>
-      <EnvelopeClosedFillIcon title='Meldinger' />
-    </Badge.Position>
-    <Badge.Position placement='top-left'>
-      <Badge data-color='accent'></Badge>
-      <EnvelopeClosedFillIcon title='Meldinger' />
-    </Badge.Position>
-    <Badge.Position placement='bottom-right'>
-      <Badge data-color='accent'></Badge>
-      <EnvelopeClosedFillIcon title='Meldinger' />
-    </Badge.Position>
-    <Badge.Position placement='bottom-left'>
-      <Badge data-color='accent'></Badge>
-      <EnvelopeClosedFillIcon title='Meldinger' />
-    </Badge.Position>
-    <Badge.Position placement='top-right' overlap='circle'>
-      <Badge data-color='accent'></Badge>
-      <div
-        style={{
-          width: '2rem',
-          height: '2rem',
-          borderRadius: '50%',
-          backgroundColor: 'var(--ds-color-brand2-base-default)',
-        }}
-      />
-    </Badge.Position>
-    <Badge.Position placement='top-left' overlap='circle'>
-      <Badge data-color='accent'></Badge>
-      <div
-        style={{
-          width: '2rem',
-          height: '2rem',
-          borderRadius: '50%',
-          backgroundColor: 'var(--ds-color-brand2-base-default)',
-        }}
-      />
-    </Badge.Position>
-    <Badge.Position placement='bottom-right' overlap='circle'>
-      <Badge data-color='accent'></Badge>
-      <div
-        style={{
-          width: '2rem',
-          height: '2rem',
-          borderRadius: '50%',
-          backgroundColor: 'var(--ds-color-brand2-base-default)',
-        }}
-      />
-    </Badge.Position>
-    <Badge.Position placement='bottom-left' overlap='circle'>
-      <Badge data-color='accent'></Badge>
-      <div
-        style={{
-          width: '2rem',
-          height: '2rem',
-          borderRadius: '50%',
-          backgroundColor: 'var(--ds-color-brand2-base-default)',
-        }}
-      />
+      <Badge data-color='danger' count={2}></Badge>
+      <EnvelopeClosedFillIcon title='Meldinger' style={{ fontSize: '2rem' }} />
     </Badge.Position>
   </>
+);
+
+export const Bullet = () => (
+  <div>
+    <Badge data-color='success' style={{ marginInlineEnd: '0.5rem' }} />
+    Aktiv
+  </div>
 );
 
 export const CustomPlacement = () => (
@@ -117,14 +66,31 @@ export const InTabs = () => (
   <Tabs defaultValue='value1'>
     <Tabs.List>
       <Tabs.Tab value='value1'>
-        <HeartFillIcon aria-hidden />
         Favoritter
         <Badge count={64} maxCount={10} data-color='neutral' />
       </Tabs.Tab>
-      <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
+      <Tabs.Tab value='value2'>Arkiv</Tabs.Tab>
       <Tabs.Tab value='value3'>
-        <PencilIcon aria-hidden />
         Nylige
+        <Badge count={2} data-color='neutral' />
+      </Tabs.Tab>
+    </Tabs.List>
+    <Tabs.Panel value='value1'>content 1</Tabs.Panel>
+    <Tabs.Panel value='value2'>content 2</Tabs.Panel>
+    <Tabs.Panel value='value3'>content 3</Tabs.Panel>
+  </Tabs>
+);
+
+export const InTabsEn = () => (
+  <Tabs defaultValue='value1'>
+    <Tabs.List>
+      <Tabs.Tab value='value1'>
+        Favorites
+        <Badge count={64} maxCount={10} data-color='neutral' />
+      </Tabs.Tab>
+      <Tabs.Tab value='value2'>Archive</Tabs.Tab>
+      <Tabs.Tab value='value3'>
+        Recent
         <Badge count={2} data-color='neutral' />
       </Tabs.Tab>
     </Tabs.List>

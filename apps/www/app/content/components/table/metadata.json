@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "Table",
+    "subtitle": "`Table` brukes for å vise strukturert informasjon på en ryddig og oversiktlig måte. Tabeller kan gjøre det enklere for brukerne å skanne og sammenligne informasjon."
+  },
+  "en": {
+    "title": "Table",
+    "subtitle": "`Table` is used to display structured information in a neat and organized manner. Tables can make it easier for users to scan and compare information."
+  },
+  "image": "Table.svg",
+  "cssFile": "table.css"
+}

@@ -1,26 +1,15 @@
----
-title: List
-image: List.svg
-cssfile: list
----
-
-`List` brukes for å presentere innhold på en oversiktlig og strukturert måte.
-
 <Story story="Preview" />
 
-## Bruk
+**Bruk `List` når**
+- brukerne skal ha en rask oversikt over innhold i lengre tekster
+- flere trinn i en prosess skal listes opp
+- kriterier skal listes opp
 
-Listen kan være både sortert og usortert, dette endrer du ved å bruke `List.Ordered` eller `List.Unordered`.
+**Unngå `List` når**
+- brukerne skal lese lengre innhold
+- flere grupper av informasjon skal kunne sammenlignes, bruk heller en [`Table`](/no/components/docs/table/overview)
 
-```tsx
-import { List } from '@digdir/designsystemet-react';
-
-<List.Unordered>
-  <List.Item>Item</List.Item>
-</List.Unordered>
-```
-
-## Kodeeksempler
+## Eksempel
 
 ### Usortert liste
 
@@ -31,16 +20,30 @@ import { List } from '@digdir/designsystemet-react';
 <Story story="Ordered" layout="column" />
 
 ## Retningslinjer
+Lister gjør innhold lettere å skumme og forstå. Bruk sorterte (ordnede) lister når rekkefølgen er viktig, og usorterte når den ikke er det. Vær bevisst på strukturen, og unngå lange punktrekker. Del heller opp i flere korte lister for bedre lesbarhet.
 
-Lister gjør innhold lettere å skumme og forstå. Bruk sorterte (ordnede) lister når rekkefølgen er viktig, og usorterte når den ikke er det.
+### Liste eller tabell?
+Lister og tabeller har forskjellige bruksområder. Riktig bruk gjør opplevelsen tydelig for alle brukere, spesielt for de med kognitive vansker og læringsvansker, eller de som bruker skjermlesere.
+- En liste presenterer relatert informasjon på en oversiktlig måte.
+- En tabell lar brukeren se og sammenligne flere grupper av informasjon.
 
-**Passer til å**
+## Tekst
+Alle elementer i en liste bør ha samme form og struktur.
 
-- gi brukerne rask oversikt over innhold i lengre tekster
-- liste opp kriterier
-- vise trinn i en prosess
+Når hvert punkt er en fortsettelse av innledningen bruker vi
+- liten forbokstav i punktene
+- ikke punktum eller komma til slutt på hvert punkt
 
-**Passer ikke til å**
+Når punktene er hele setninger, bruker vi
+- Stor forbokstav i det første ordet, slik at hvert punkt leses som en selvstendig setning.
+- Punktum til slutt på hvert punkt, for å markere at setningen er avsluttet.
 
-- vise brukerne lengre innhold
-- sammenligne flere grupper av informasjon
+### Bruk av kolon
+Det skal ikke brukes kolon før oppramsingen dersom punktet er en naturlig fortsettelse av innledningen. Bruk kun kolon når det også ville vært riktig i en vanlig oppramsing uten punktliste.<sup>1</sup> Se eksempel under.
+
+Når du fyller ut skattemeldingen må du huske på dette:
+- Du skal føre opp nettoinntekt ved utleie av bolig.
+- Du skal føre opp nettoinntekt ved utleie av tomt.
+
+## Relevante kilder
+[1] [Språkrådets anbefaling om kolon og punktlister](https://sprakradet.no/spraksporsmal-og-svar/kolon-og-punktlister/)

@@ -26,14 +26,14 @@
 
 @media screen and (max-height: 1080px) {
   .showSidebar {
-    height: calc(100vh - 40px);
+    height: calc(100vh - 40px - var(--sidebar-height));
   }
 }
 
 .sticky {
   position: fixed;
   margin-top: 0;
-  top: 20px;
+  top: calc(var(--header-height) + 20px);
 }
 
 .tabContent {
@@ -49,7 +49,7 @@
 
 .showSidebar {
   display: block !important;
-  top: 12px;
+  top: calc(var(--header-height) + 12px);
   margin-top: 0;
   right: 12px;
   bottom: 12px;
@@ -61,9 +61,14 @@
   border-top: 1px solid var(--ds-color-neutral-border-subtle);
   background-color: var(--ds-color-neutral-background-default);
   flex-shrink: 0;
+  display: flex;
+  gap: var(--ds-size-4);
+  padding: var(--ds-size-7);
+  justify-content: space-between;
 
-  & > div {
-    padding: var(--ds-size-7);
+  & > button {
+    flex-grow: 1;
+    text-align: center;
   }
 }
 
@@ -112,6 +117,8 @@
   & .modalBottom {
     margin-top: auto;
     padding: var(--ds-size-7);
+    display: flex;
+    gap: var(--ds-size-4);
   }
 
   & .tabsWrapper {
@@ -129,4 +136,13 @@
   /* & .tabPanel {
     padding: var(--ds-size-4) 0;
   } */
+}
+
+.configButton {
+  display: block;
+}
+
+.configDialog {
+  width: 90vw;
+  max-width: 1200px;
 }

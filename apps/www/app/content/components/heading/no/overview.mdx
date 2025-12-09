@@ -1,22 +1,8 @@
----
-title: Heading
-image: Heading.svg
-cssfile: heading
----
-
-`Heading` brukes til å strukturere innhold og skape hierarki på siden.
-
 <Story story="Preview" />
 
-## Bruk
+`Heading` er en typografikomponent som brukes til å vise tekst i ulike størrelser og formater. Bruk komponenten når du skal vise sidetitler, seksjonstitler eller undertitler. Headingene er utformet for å skille seg tydelig fra brødtekst, skape visuell hierarki og hjelpe leserne med å forstå strukturen i innholdet.
 
-```tsx
-import { Heading } from '@digdir/designsystemet-react';
-
-<Heading>Tittel tekst</Heading>;
-```
-
-## Kodeeksempler
+## Eksempel
 
 ### Størrelser
 
@@ -24,14 +10,9 @@ import { Heading } from '@digdir/designsystemet-react';
 
 ## Retningslinjer
 
-`Heading` brukes til å skape struktur og hierarki i innholdet. Bruk overskrifter for å dele opp innholdet i logiske seksjoner.
+`Heading` brukes til å skape struktur og hierarki i innholdet. Bruk overskrifter for å dele opp innholdet i logiske seksjoner. Pass på at du bruker [riktige overskriftsnivåer](/no/components/docs/heading/accessibility#riktige-overskriftsnivåer) (h1-h6) for å sikre god semantisk struktur.
 
-**Passer til:**
+## Tekst
+Overskrifter og mellomtitler bør være korte og tydelige, og gi et godt bilde av innholdet de introduserer. Det er en fordel å starte både overskrifter og mellomtitler med nøkkelord. Da blir det enklere for alle å skumlese og finne relevant informasjon. 
 
-- Å strukturere innhold
-- Å skape visuelt hierarki
-- Å hjelpe brukere med å navigere innhold
-
-## Tilgjengelighet
-
-Det er viktig å bruke riktig overskriftsnivå (h1-h6) for å sikre god semantisk struktur.
+Sidens hovedoverskrift, altså `<h1>` elementet, skal beskrive hele sidens innhold, mens hver mellomtittel skal være unik og presist fortelle hva teksten under handler om. 

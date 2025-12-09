@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "List",
+    "subtitle": "`List` brukes for å presentere innhold på en oversiktlig og strukturert måte, for eksempel for å oppsummere hovedpunkter eller vise brukeren hvilke trinn som må følges i en bestemt rekkefølge."
+  },
+  "en": {
+    "title": "List",
+    "subtitle": "`List` is used to present content in a clear and structured way, for example to summarize main points or show the user which steps must be followed in a specific order."
+  },
+  "image": "List.svg",
+  "cssFile": "list.css"
+}

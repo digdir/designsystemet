@@ -1,21 +1,26 @@
----
-title: SkipLink
-image: SkipLink.svg
-cssfile: skip-link
----
-
-`SkipLink` lar brukere hoppe over repeterende innhold og navigere direkte til hovedinnholdet på siden.
-
 <Story story="Preview" layout="column" />
 
-## Bruk
+**Bruk `SkipLink` når**
+- det er fleire tab-stopp før hovudinnhaldet  
+- du skal gjere det mogleg å hoppe over innhald som blir gjenteke på fleire sider, for eksempel menyar, lenker og topptekst
 
-```tsx
-import { SkipLink } from '@digdir/designsystemet-react';
+**Unngå `SkipLink` når**
+- sida berre har nokre få tab-stopp før hovudinnhaldet  
+- nettstaden består av ei enkelt side utan gjentakande innhald  
 
-<SkipLink href="#main-content">Hopp til hovedinnhold</SkipLink>
-```
 
-## Tilgjengelighet
+## Retningslinjer
+`SkipLink` bør vere eit av dei første elementa markøren går til når du navigerer med tastaturet.
 
-`SkipLink` vises kun når den får fokus, for eksempel når brukeren trykker Tab. Dette hjelper tastaturbrukere med å navigere raskt til hovedinnholdet.
+Når ein navigerer med tastatur, skal det vere mogleg å hoppe over innhald som går igjen på fleire sider, til dømes menyar, lenker og topptekst. `SkipLink` gjer at brukaren raskare kjem rett til hovudinnhaldet på sida.
+
+Dersom det berre er nokre få tab-stopp fram til hovudinnhaldet, til dømes om du berre har ei «Heim»-lenke øvst på sida, kan det vere unødvendig å leggje inn ein `SkipLink`. Då risikerer du at det vert fleire knappar å forhalde seg til enn nødvendig. 
+
+Vi plasserer `SkipLink` som det første fokuserbare elementet. Dersom sida har eit varsel om informasjonskapslar, legg du `SkipLink` rett etter koden for dette varselet.
+
+`SkipLink` bør skilje seg frå resten av innhaldet, slik at folk som kan sjå, men bruker tastaturet til å navigere, kjenner att dette elementet før dei flyttar vidare.
+
+
+## Tekst
+
+Pass på at teksten tydeleg seier kva snarvegen skal brukast til. Bruk ein enkel tekst, som for eksempel «Hopp til hovudinnhald».

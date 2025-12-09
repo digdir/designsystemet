@@ -1,13 +1,7 @@
----
-title: Table
-subtitle: '`Table` is used to display structured data in rows and columns.'
-image: Table.svg
-cssfile: table
----
-
 <Story story="Preview" />
+<ReactComponentDocs />
 
-## Usage
+## Use
 
 ```tsx
 import { Table } from '@digdir/designsystemet-react';
@@ -26,16 +20,68 @@ import { Table } from '@digdir/designsystemet-react';
 </Table>
 ```
 
-## Code Examples
+## Example
 
-### Zebra stripes
+### Zebra Stripes
 
-<Story story="Zebra" />
+<Story story="ZebraEn" />
 
 ### With border
 
 <Story story="Border" />
 
-### Hover effect
+### Sorting
+You can use props on `Table.HeaderCell` to show that the table can be sorted by the contents of a column.
 
-<Story story="Hover" />
+- Use the `sort` prop to indicate the sort direction:
+- `"none"` - no sorting
+- `"ascending"` - ascending order
+- `"descending"` - descending order
+- Use `onClick` to handle what happens when the user clicks on the column header.
+
+<Story story="SortableEn" />
+
+### Fixed column width
+You can use `table-layout: fixed` to prevent column widths from changing when the table content is updated.
+This provides a smoother layout, and helps the browser draw the table faster.
+
+This is especially useful in tables with pagination or other dynamically updated content, where stable column widths provide a better user experience.
+
+<Story story='FixedTable' />
+
+## HTML
+It is recommended to read about [`<table>` on MDN (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/table) for a thorough review of HTML tables and their semantics.
+
+The class name `ds-table` is applied to the `<table>` element.
+
+```html
+<table class="ds-table">
+  ...
+</table>
+```
+
+### Sorting
+By placing `<button>` in a `<th>` with `aria-sort="*"` you create a visual button for sorting.
+
+You connect the logic for sorting to the button yourself.
+
+Note that we apply `type="button"` to avoid the button behaving like a submit button.
+
+```html
+<table class="ds-table">
+  <thead>
+    <tr>
+      <th aria-sort="ascending">
+        <button type="button">Header 1</button>
+      </th>
+    </tr>
+  </thead>
+  ...
+</table>
+```
+
+## CSS variables and data attributes
+
+<CssVariables />
+
+<CssAttributes />

@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "Spinner",
+    "subtitle": "`Spinner` brukes for å indikere at innhold eller en handling er i ferd med å laste, og at brukeren må vente før de kan fortsette. "
+  },
+  "en": {
+    "title": "Spinner",
+    "subtitle": "The `Spinner` component is used to indicate that content or an action is loading, and that the user must wait before they can continue."
+  },
+  "image": "Spinner.svg",
+  "cssFile": "spinner.css"
+}

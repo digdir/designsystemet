@@ -44,6 +44,21 @@ export default {
     'build-theme': 'Build theme',
     documentation: 'Documentation',
   },
+  configPaste: {
+    title: 'Import from config file',
+    description:
+      'Already have a config file? Paste it here to select and edit a theme.',
+    placeholder: 'Paste your designsystemet.config.json content here...',
+    validate: 'Validate config',
+    'select-theme': 'Select a theme to edit',
+    'validation-error': 'Invalid config file',
+    'validation-success': 'Config is valid! Select a theme below.',
+    'no-themes': 'No themes found in config',
+    'edit-theme': 'Edit theme',
+    button: 'Continue from config file',
+    'dialog-heading': 'Paste config',
+    'import-config': 'Import config',
+  },
   tabs: {
     overview: 'Overview',
     colorsystem: 'Colour system',

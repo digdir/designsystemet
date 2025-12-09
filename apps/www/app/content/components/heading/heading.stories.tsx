@@ -1,7 +1,11 @@
 import { Heading } from '@digdir/designsystemet-react';
 
 export const Preview = () => {
-  return <Heading>Tittel tekst</Heading>;
+  return <Heading>Dette er en overskrift</Heading>;
+};
+
+export const PreviewEn = () => {
+  return <Heading>This is a heading</Heading>;
 };
 
 export const Sizes = () => (

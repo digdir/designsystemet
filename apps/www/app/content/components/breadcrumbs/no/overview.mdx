@@ -1,66 +1,32 @@
----
-title: Breadcrumbs
-subtitle: Breadcrumbs er ein navigasjonskomponent med synleg sti. Vi bruker denne komponenten for å hjelpe brukarane med å forstå kvar dei er i ei struktur, for eksempel på ei nettside. Då kan dei lettare byte mellom dei ulike nivåa i strukturen.
-image: Breadcrumbs.svg
-cssfile: breadcrumbs
----
-
 <Story story="Preview" />
 
-## Bruk
+**Bruk `Breadcrumbs` når**
+- brukarane kan ønskje å gå tilbake til tidlegare nivå
+- brukarane treng hjelp med å forstå kvar dei er i strukturen
 
-Den siste lenkja i `Breadcrumbs` blir automatisk markert med `aria-current="page"`.
+**Unngå `Breadcrumbs` når**
+- navigasjonen er lineær, for eksempel for dei ulike stega i ein arbeidsflyt eller eit skjema
 
-```tsx
-<Breadcrumbs aria-label="Du er her:">
-  <Breadcrumbs.Link aria-label="Tilbake til nivå 3">Nivå 3</Breadcrumbs.Link>
-  <Breadcrumbs.List>
-    <Breadcrumbs.Item>
-      <Breadcrumbs.Link href="https://designsystemet.no/">Nivå 1</Breadcrumbs.Link>
-    </Breadcrumbs.Item>
-    <Breadcrumbs.Item>
-      <Breadcrumbs.Link href="https://designsystemet.no/niva-2/">Nivå 2</Breadcrumbs.Link>
-    </Breadcrumbs.Item>
-  </Breadcrumbs.List>
-</Breadcrumbs>
-```
+## Eksempel
 
-## Kodeeksempel
+### Tilbake-knapp
 
-### Berre tilbake-knapp
+Å vise berre ein tilbake-knapp kan vere nyttig på mobil, eller på sider der det blir lang navigasjon. Det er viktig at du er konsistent i løysinga di, og bruker anten tilbake-knapp eller sti, ikkje begge delar.
 
-Om du legg ein `Breadcrumbs.Link` direkte i `Breadcrumbs`, vil lenkja visast som ein tilbake-knapp. Det er viktig at du er konsistent i løysinga di, og bruker anten tilbake-knapp eller sti, ikkje begge delar.
+<Story story="BackOnly" />
 
-### Berre sti
+Under er eit døme på korleis ein lang navigasjon ser ut.
 
-Om du legg ein `Breadcrumbs.List` direkte i `Breadcrumbs`, vil denne visast som ein sti.
-
-### Sti eller tilbake-knapp basert på skjermbreidde
-
-Om du legg både ein `Breadcrumbs.Link` og ein `Breadcrumbs.List` direkte i `Breadcrumbs`, vil tilbake-knappen visast på skjermar smalare enn 650px, og stien visast på breiare skjermar.
+<Story story="LongItems" />
 
 ## Retningslinjer
 Det er først når det er tre eller fleire nivå på ein nettstad at det er behov for `Breadcrumbs`. 
 
-**Passar til**
-- Sider der brukarane kan ønskje å gå tilbake til tidlegare nivå
-- Å hjelpe brukarar med å forstå kvar dei er i strukturen
-
-**Passar ikkje til**
-- Lineær navigasjon, for eksempel for dei ulike stega i ein arbeidsflyt eller eit skjema.
-
 ### Plassering
-`Breadcrumbs` skal alltid plasserast øvst på venstre side av sida. Han skal liggje under menyen og hovudnavigasjonen, men over sidetittelen.
+`Breadcrumbs` skal alltid plasserast øvst til venstre på sida når det er venstre til høgre tekst. Den skal ligge under menyen og hovudnavigasjonen, men over sidetittelen.
 
-### Skjule Breadcrumbs på mobil
-Om du har lang navigasjon, kan du setje opp komponenten til berre å vise første og siste del av søkestien på mobil.  
-Dette skjer automatisk på skjermar som er smalare enn 650px, der vi berre viser lenkja eitt nivå ned.
+### Skjule `Breadcrumbs` på mobil
+Om du har lang navigasjon, kan du sette opp komponenten til å berre vise første og siste del av søkestien på mobil. Dette kan skje automatisk på skjermar som er smalare enn 650px, der vi berre viser lenka eitt nivå ned. Det ligg implementasjonsdøme på kode-fana.
 
 ## Tekst
-Bruk korte og tydelege namn i brødsmulestien, slik at brukarane raskt forstår kvar dei er. Teksten bør samsvare med overskriftene eller navigasjonen på nettsida, slik at det er lett å kjenne igjen nivåa.
-
-## Tilgjengelegheit
-`Breadcrumbs` kan innehalde fleire interaktive element som må kunne navigerast med tastatur. Pass derfor på at [`SkipLink`](/docs/komponenter-skiplink--docs) til hovudinnhaldet også hoppar over `Breadcrumbs`.
-
-### Siste nivå
-Den siste lenkja skal tilsvare noverande side. Den ser ut som vanleg tekst, men er koda som ein lenkje med `aria-current="page"`. På den måten får skjermlesarar korrekt informasjon om kva side brukaren er på, utan at andre brukarar feilaktig oppfattar det som ei klikkbar lenkje.
+Bruk korte og tydelege namn i `Breadcrumbs`, slik at brukarane raskt forstår kvar dei er. Teksten bør samsvare med overskriftene eller navigasjonen på nettsida, slik at det er lett å kjenne igjen nivåa.

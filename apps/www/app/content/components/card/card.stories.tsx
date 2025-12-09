@@ -9,12 +9,25 @@ import {
 export const Preview = () => {
   return (
     <Card style={{ maxWidth: '320px' }} data-color='neutral'>
-      <Heading>Card</Heading>
+      <Heading>Lykkeland Barneskole</Heading>
       <Paragraph>
-        Most provide as with carried business are much better more the perfected
-        designer. Writing slightly explain desk unable at supposedly about this
+        Lykkeland Barneskole er ein trygg og inkluderande nærskule der leik,
+        læring og nysgjerrigheit går hand i hand.
       </Paragraph>
-      <Paragraph data-size='sm'>Footer text</Paragraph>
+      <Paragraph data-size='sm'>Solslett kommune</Paragraph>
+    </Card>
+  );
+};
+
+export const PreviewEn = () => {
+  return (
+    <Card style={{ maxWidth: '320px' }} data-color='neutral'>
+      <Heading>Lykkeland Primary School</Heading>
+      <Paragraph>
+        Lykkeland Primary School is a safe and inclusive local school where
+        play, learning and curiosity go hand in hand.
+      </Paragraph>
+      <Paragraph data-size='sm'>Solslett Municipality</Paragraph>
     </Card>
   );
 };
@@ -46,55 +59,70 @@ export const Variants = () => {
 
 export const Media = () => {
   return (
-    <Card data-color='neutral'>
+    <Card data-color='neutral' style={{ maxWidth: '380px' }}>
       <Card.Block>
-        <iframe
-          src='https://player.vimeo.com/video/863563441?app_id=122963&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1'
-          width='320px'
-          height='179px'
-          allow='autoplay; fullscreen; picture-in-picture'
-          title='30 år med digitalt innsyn'
-        ></iframe>
+        <video controls preload='metadata' width='100%'>
+          <source
+            src='/videos/designsystemet/designsystemet-info.mp4'
+            type='video/mp4'
+          />
+          <track
+            label='Norwegian'
+            kind='subtitles'
+            srcLang='nb'
+            src='/videos/designsystemet/designsystemet-info-no.vtt'
+            default
+          />
+          <track
+            label='English'
+            kind='subtitles'
+            srcLang='en'
+            src='/videos/designsystemet/designsystemet-info-en.vtt'
+          />
+          Your browser does not support the video tag.
+        </video>
       </Card.Block>
       <Card.Block>
-        <Heading>Card Neutral</Heading>
+        <Heading>Om Designsystemet</Heading>
         <Paragraph>
-          Most provide as with carried business are much better more the
-          perfected designer. Writing slightly explain desk unable at supposedly
-          about this
+          Videoen over gir en kort introduksjon til hva Designsystemet er, og
+          hvordan det kan brukes i utviklingen av digitale tjenester.
         </Paragraph>
       </Card.Block>
     </Card>
   );
 };
 
-export const Video = () => {
+export const MediaEn = () => {
   return (
-    <Card data-color='neutral' style={{ maxWidth: '320px' }}>
+    <Card data-color='neutral' style={{ maxWidth: '380px' }}>
       <Card.Block>
-        <iframe
-          src='https://player.vimeo.com/video/863563441?app_id=122963&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1'
-          width='320px'
-          height='179px'
-          allow='autoplay; fullscreen; picture-in-picture'
-          title='30 år med digitalt innsyn'
-        ></iframe>
+        <video controls preload='metadata' width='100%'>
+          <source
+            src='/videos/designsystemet/designsystemet-info.mp4'
+            type='video/mp4'
+          />
+          <track
+            label='Norwegian'
+            kind='subtitles'
+            srcLang='nb'
+            src='/videos/designsystemet/designsystemet-info-no.vtt'
+            default
+          />
+          <track
+            label='English'
+            kind='subtitles'
+            srcLang='en'
+            src='/videos/designsystemet/designsystemet-info-en.vtt'
+          />
+          Your browser does not support the video tag.
+        </video>
       </Card.Block>
       <Card.Block>
-        <Heading>
-          <a
-            href='https://www.digdir.no/felleslosninger/30-ar-med-digitalt-innsyn/5015'
-            target='_blank'
-            rel='noreferrer'
-          >
-            Vi feira 30 år med digitalt innsyn
-          </a>
-        </Heading>
+        <Heading>About Designsystemet</Heading>
         <Paragraph>
-          Det er i år 30 år sidan dei første forsøka med elektronisk postjournal
-          i Noreg. Sjå opptak frå feiringa på Pressens Hus der det både var
-          historiske tilbakeblikk og debatt om innsyn og openheit i
-          forvaltninga.
+          The video above provides a brief introduction to what Designsystemet
+          is and how it can be used in the development of digital services.
         </Paragraph>
       </Card.Block>
     </Card>
@@ -111,15 +139,44 @@ export const WithLink = () => {
             target='_blank'
             rel='noopener noreferrer'
           >
-            Link Card
+            Myrkheim Museum
           </Link>
         </Heading>
         <Paragraph>
-          Most provide as with carried business are much better more the
-          perfected designer. Writing slightly explain desk unable at supposedly
-          about this
+          Myrkheim Museum ligg i dalen mellom dei gamle fjelltoppane og viser
+          utstillingar frå tida då dei fyrste reisefølgja kryssa landet. Her kan
+          du utforske eldgamle kart, reiskapar frå dei store vandringane og
+          forteljingar bevart av skogvaktarane.
         </Paragraph>
-        <Paragraph data-size='sm'>Footer text</Paragraph>
+        <Paragraph data-size='sm'>Myrkheim Kulturvernråd</Paragraph>
+      </Card.Block>
+    </Card>
+  );
+};
+
+export const WithLinkEn = () => {
+  return (
+    <Card data-color='neutral'>
+      <Card.Block>
+        <Heading>
+          <Link
+            href='https://designsystemet.no'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            Myrkheim Museum
+          </Link>
+        </Heading>
+        <Paragraph>
+          The Myrkheim Museum lies in the valley between the old mountain peaks
+          and displays exhibitions from the time when the first travelling
+          companies crossed the land. Here you can explore ancient maps, tools
+          from the great wanderings, and tales preserved by the wardens of the
+          forests.
+        </Paragraph>
+        <Paragraph data-size='sm'>
+          Myrkheim Council for Cultural Heritage
+        </Paragraph>
       </Card.Block>
     </Card>
   );
@@ -144,12 +201,32 @@ export const AsButton = () => {
     <Card asChild data-color='neutral'>
       <button type='button'>
         <Card.Block>
-          <Heading>Button Card with blocks</Heading>
+          <Heading>Innstillinger og personvern</Heading>
         </Card.Block>
         <Card.Block>
           <Paragraph>
-            Most provide as with carried business are much better more the
-            perfected designer.
+            Dette åpner en dialog der du kan oppdatere personvernvalg, justere
+            innstillinger og tilpasse hvordan tjenesten behandler informasjonen
+            din. Du kan se gjennom endringene før du lagrer.
+          </Paragraph>
+        </Card.Block>
+      </button>
+    </Card>
+  );
+};
+
+export const AsButtonEn = () => {
+  return (
+    <Card asChild data-color='neutral'>
+      <button type='button'>
+        <Card.Block>
+          <Heading>Settings and privacy</Heading>
+        </Card.Block>
+        <Card.Block>
+          <Paragraph>
+            This opens a dialogue where you can update your privacy choices,
+            adjust settings, and customise how the service handles your
+            information. You can review your changes before saving.
           </Paragraph>
         </Card.Block>
       </button>
@@ -164,12 +241,99 @@ export const AsGrid = () => {
       style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}
     >
       <Card.Block>
-        <Heading>Button Card with blocks</Heading>
+        <Heading>Vandrefeber</Heading>
       </Card.Block>
       <Card.Block>
         <Paragraph>
-          Most provide as with carried business are; much; better; more; the;
-          perfected; designer.
+          Symptomer kan være uro i kroppen, skjerpet årvåkenhet og en tendens
+          til å stadig se seg over skulderen. Tilstanden går vanligvis over
+          etter et godt måltid og et trygt sted å hvile.
+        </Paragraph>
+      </Card.Block>
+    </Card>
+  );
+};
+
+export const AsGridEn = () => {
+  return (
+    <Card
+      data-color='neutral'
+      style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}
+    >
+      <Card.Block>
+        <Heading>Wanderer’s Fever</Heading>
+      </Card.Block>
+      <Card.Block>
+        <Paragraph>
+          Symptoms can include restlessness, heightened alertness, and a
+          tendency to look over one’s shoulder. The condition usually eases
+          after a good meal and a safe place to rest.
+        </Paragraph>
+      </Card.Block>
+    </Card>
+  );
+};
+
+export const AsGridImage = () => {
+  return (
+    <Card
+      data-color='neutral'
+      style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}
+    >
+      <Card.Block style={{ display: 'flex', justifyContent: 'center' }}>
+        <img
+          src='/img/blog/miro.png'
+          alt='Skjermbilde av et mirobrett med 200 deltakere og mange lapper'
+        />
+      </Card.Block>
+
+      <Card.Block>
+        <Heading>
+          <Link
+            href='/no/blog/why-we-need-a-common-design-system'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            Derfor trenger vi et felles designsystem
+          </Link>
+        </Heading>
+        <Paragraph>
+          Høsten 2023 arrangerte vi en åpen presentasjon og mini-workshop om
+          felles designsystem. Over 200 deltok og vi fikk 440 tilbakemeldinger
+          på gevinster og utfordringer.
+        </Paragraph>
+      </Card.Block>
+    </Card>
+  );
+};
+
+export const AsGridImageEn = () => {
+  return (
+    <Card
+      data-color='neutral'
+      style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}
+    >
+      <Card.Block style={{ display: 'flex', justifyContent: 'center' }}>
+        <img
+          src='/img/blog/miro.png'
+          alt='Screenshot of a Miro board with 200 participants and numerous notes'
+        />
+      </Card.Block>
+
+      <Card.Block>
+        <Heading>
+          <Link
+            href='/no/blog/why-we-need-a-common-design-system'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            Why we need a common design system
+          </Link>
+        </Heading>
+        <Paragraph>
+          In autumn 2023, we hosted an open presentation and mini-workshop on a
+          shared design system. More than 200 people took part, and we received
+          440 pieces of feedback on benefits and challenges.
         </Paragraph>
       </Card.Block>
     </Card>

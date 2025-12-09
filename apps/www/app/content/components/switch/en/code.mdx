@@ -1,11 +1,5 @@
----
-title: Switch
-subtitle: 'We use `Switch` to give users a choice between two alternatives. The switch can either be turned off or on.'
-image: Switch.svg
-cssfile: switch
----
-
 <Story story="Preview" />
+<ReactComponentDocs />
 
 ## Usage
 
@@ -15,16 +9,54 @@ import { Switch } from '@digdir/designsystemet-react';
 <Switch label="Dark mode" value="dark" />
 ```
 
-## Code Examples
-
-### Checked
-
-<Story story="Checked" />
+## Examples
 
 ### Grouping
 
-<Story story="Group" />
+Use [Fieldset](/en/components/docs/fieldset) to group multiple `Switch` components together.
 
-### Right aligned
+<Story story="GroupEn" />
 
-<Story story="RightAligned" />
+### Right-aligned
+Use `position="end"` to position `Switch` on the right side of the prompt if
+you need it.
+
+<Story story="RightAlignedEn" />
+
+## HTML
+The class name `ds-input` is added to `<input>` along with `type="checkbox"` and `role="switch"`.
+
+```html
+<input
+  class="ds-input"
+  role="switch"
+  type="checkbox"
+/>
+```
+
+To mirror what the composite component in React does, you need to use `ds-field` together with a `<label>`.
+
+To right-align `<input>`, add `data-position="end"` to `ds-field`.
+
+```html
+<div class="ds-field" data-position="end">
+  <input
+    class="ds-input"
+    role="switch"
+    type="checkbox"
+    id="my-switch"
+  >
+  <label
+    class="ds-label"
+    data-weight="regular"
+    for="my-switch"
+  >Flightmode</label>
+</div>
+```
+
+## CSS variables and data attributes
+Switch is a composite component, so we show variables and data attributes from `ds-input` here.
+
+<CssVariables />
+
+<CssAttributes />

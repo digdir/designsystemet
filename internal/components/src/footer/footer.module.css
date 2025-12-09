@@ -1,30 +1,45 @@
 .footer {
-  background-color: var(--ds-color-neutral-background-tinted);
-  border-top: 1px solid var(--ds-color-neutral-border-default);
+  --bg: light-dark(var(--ds-color-neutral-base-default), var(--ds-color-neutral-background-tinted));
+  --text: light-dark(var(--ds-color-neutral-base-contrast-default), var(--ds-color-neutral-text-default));
+  --text-muted: light-dark(var(--ds-color-neutral-base-contrast-subtle), var(--ds-color-neutral-text-subtle));
+  background-color: var(--bg);
+  display: flex;
+  align-items: center;
+  padding-block: 64px;
+  color: var(--text-muted);
 }
 
 .container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-  gap: var(--ds-size-10);
+  /*fallbacks*/
+  --_max-content-width: 1300px;
+  --_content-inline-padding: var(--ds-size-7);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); */
+  column-gap: var(--ds-size-8);
+  row-gap: var(--ds-size-8);
+  max-width: calc(var(--max-content-width, var(--_max-content-width)) + (var(--content-inline-padding, var(--_content-inline-padding)) * 2));
+  width: 100%;
+  padding-inline: var(--content-inline-padding, var(--_content-inline-padding));
+  margin: 0 auto;
+}
+
+.logo {
+  margin-bottom: var(--ds-size-3);
+  & g {
+    fill: var(--text);
+  }
 }
 
 .title {
   margin-bottom: var(--ds-size-4);
+  color: var(--text);
 }
 
-.logos {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--ds-size-8);
-  margin-top: var(--ds-size-8);
-
-  & svg {
-    & * {
-      fill: var(--ds-color-neutral-text-default);
-    }
-  }
+.description {
+  margin-bottom: var(--ds-size-4);
+  max-width: 370px;
 }
 
 .links {
@@ -42,10 +57,15 @@
 }
 
 .link {
-  --dsc-link-color--visited: var(--ds-color-neutral-text-default);
+  --dsc-link-color--visited: var(--text-muted);
+  --dsc-link-color--active: var(--text);
+  --dsc-link-background--active: transparent;
+  --dsc-link-color--hover: var(--text);
+  --dsc-link-color: var(--text-muted);
 
   & svg {
     max-width: 24px;
+    margin-right: 8px;
 
     & * {
       fill: var(--dsc-link-color);
@@ -63,33 +83,4 @@
       fill: var(--dsc-link-color--active);
     }
   }
-}
-
-.footer .logos svg {
-  height: 26px;
-  width: auto;
-  margin-right: var(--ds-size-2);
-
-  &.udir {
-    height: 32px;
-  }
-}
-
-.top {
-  padding: var(--ds-size-18) 0;
-}
-
-.bottom {
-  background-color: var(--ds-color-neutral-background-default);
-  padding: var(--ds-size-7) 0;
-}
-
-.button {
-  --dsc-button-color: var(--ds-color-neutral-text-default);
-  --dsc-button-padding-block: var(--ds-size-4);
-  --dsc-button-padding-inline: var(--ds-size-5);
-
-  border: 2px dashed var(--ds-color-neutral-border-strong);
-  width: fit-content;
-  margin-top: var(--ds-size-8);
 }

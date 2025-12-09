@@ -1,13 +1,12 @@
----
-title: Input
-subtitle: '`Input` er et felt der brukeren kan fylle inn tekst.'
-image: Input.svg
-cssfile: input
----
-
 <Story story="Preview" />
+<ReactComponentDocs />
 
 ## Bruk
+
+`Input` er er styla native `<input>`-element, så dokumentasjonen er lite utfylt.
+Du kan bruke denne komponenten for å style de fleste `type`-attributtene til `<input>`.
+
+Du kan lese om [The HTML Input element på MDN (mozilla.com)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input).
 
 ```tsx
 import { Input, Label } from '@digdir/designsystemet-react';
@@ -18,7 +17,7 @@ import { Input, Label } from '@digdir/designsystemet-react';
 </>
 ```
 
-## Kodeeksempler
+## Eksempel
 
 ### Med label
 
@@ -35,3 +34,18 @@ import { Input, Label } from '@digdir/designsystemet-react';
 ### ReadOnly
 
 <Story story="ReadOnly" />
+
+## HTML
+Legg klassenavnet på `<input>`-elementet for å få designet fra designsystemet.
+
+```html
+<input class="ds-input" />
+```
+
+## CSS variabler og data-attributter
+
+Klassen `ds-input` kan bli brukt for å style [`Select`](/no/components/docs/select/overview) og [`Textarea`](/no/components/docs/textarea/overview) også.
+
+<CssVariables />
+
+<CssAttributes />

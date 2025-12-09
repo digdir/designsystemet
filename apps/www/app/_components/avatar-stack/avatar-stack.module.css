@@ -1,0 +1,39 @@
+.avatarStack {
+  --avatar-size: 30px;
+  --gap: 4px;
+  --overlap: -12px;
+  --outline-color: light-dark(transparent, white);
+
+  --captured-length: var(--overlap); /*overlap*/
+  display: flex;
+  padding-block: 1px;
+  transition: --captured-length 0.2s ease;
+  width: calc(var(--avatar-size) * var(--n) + var(--overlap) * (var(--n) - 1));
+  filter: drop-shadow(0 0 0.5px var(--outline-color)) drop-shadow(0 0 0.5px var(--outline-color)) drop-shadow(0 0 0.5px var(--outline-color));
+  &:hover {
+    --captured-length: 0px;
+  }
+  &:empty {
+    display: none;
+  }
+  img {
+    width: var(--avatar-size);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    mask: radial-gradient(50% 50% at calc(150% + var(--captured-length)), transparent calc(100% - 1px + var(--gap)), #000 calc(100% + var(--gap)));
+    &:not(:first-child) {
+      margin-left: var(--captured-length);
+    }
+    &:last-child {
+      mask: none;
+    }
+  }
+  .digdir {
+    background-color: #1e2b3c;
+  }
+  .mattilsynet {
+    background-color: #054449;
+  }
+}

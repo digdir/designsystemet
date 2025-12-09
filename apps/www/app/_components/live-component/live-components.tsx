@@ -1,4 +1,5 @@
 import * as ds from '@digdir/designsystemet-react';
+import { useSynchronizedAnimation } from '@digdir/designsystemet-react';
 import * as aksel from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { prettify } from 'htmlfy';
@@ -22,12 +23,31 @@ import {
 import { useLocation } from 'react-router';
 import classes from './live-component.module.css';
 
+const SyncedBox = () => {
+  const ref = useSynchronizedAnimation<HTMLDivElement>('spin');
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        animation: 'spin 2s linear infinite',
+
+        width: '30px',
+        height: '30px',
+        backgroundColor: 'red',
+      }}
+    />
+  );
+};
+
 const scopes = {
   ...ds,
   ...aksel,
   useState,
   useEffect,
   useRef,
+  useId,
+  SyncedBox,
 };
 
 export type LiveComponentProps = {
@@ -55,7 +75,6 @@ type EditorProps = {
   hidden?: boolean;
 };
 
-//@TODO: i18n
 const Editor = ({ live, html, id, hidden }: EditorProps) => {
   const { t } = useTranslation();
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -205,24 +224,22 @@ const Editor = ({ live, html, id, hidden }: EditorProps) => {
           <kbd>{t('live-component.activateB')}</kbd>{' '}
           {t('live-component.activateC')}
         </div>
-        {showHTML ? (
-          <LiveEditor
-            className={classes.editor}
-            disabled
-            code={rawHtml}
-            language='html'
-          />
-        ) : (
-          <LiveEditor
-            key={resetCount}
-            onChange={live.onChange}
-            className={cl(
-              classes.editor,
-              classes['live-editor'],
-              'live-editor',
-            )}
-          />
-        )}
+        <LiveEditor
+          className={cl(classes.editor, !showHTML && classes.hidden)}
+          disabled
+          code={rawHtml}
+          language='html'
+        />
+        <LiveEditor
+          key={resetCount}
+          onChange={live.onChange}
+          className={cl(
+            classes.editor,
+            classes['live-editor'],
+            'live-editor',
+            showHTML && classes.hidden,
+          )}
+        />
       </div>
     </section>
   );
@@ -288,7 +305,7 @@ export const LiveComponent = ({
       theme={colorScheme === 'dark' ? themes.vsDark : themes.vsLight}
     >
       <div
-        className={classes.preview}
+        className={cl(classes.preview, 'u-long-content')}
         data-color='accent'
         data-live='true'
         data-layout={layout}
@@ -324,7 +341,7 @@ export const LiveComponent = ({
           className={classes.codeButton}
           aria-controls={editorId}
         >
-          <aksel.ChevronDownIcon />
+          <aksel.ChevronDownIcon aria-hidden />
           {showEditor
             ? t('live-component.hide-code')
             : t('live-component.show-code')}

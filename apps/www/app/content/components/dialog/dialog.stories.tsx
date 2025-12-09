@@ -61,6 +61,8 @@ export const WithForm = () => {
           label='Navn'
           value={input}
           onChange={(e) => setInput(e.target.value)}
+          // @ts-expect-error We want the native "autofocus" and Reacts onMount smartness (see https://react.dev/reference/react-dom/components/input#input)
+          autofocus='true'
         />
         <div
           style={{
@@ -77,8 +79,50 @@ export const WithForm = () => {
           >
             Send inn skjema
           </Button>
-          <Button variant='secondary' data-command='close'>
+          <Button variant='secondary' data-color='danger' data-command='close'>
             Avbryt
+          </Button>
+        </div>
+      </Dialog>
+    </Dialog.TriggerContext>
+  );
+};
+
+export const WithFormEn = () => {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const [input, setInput] = useState('');
+
+  return (
+    <Dialog.TriggerContext>
+      <Dialog.Trigger>Open dialog</Dialog.Trigger>
+      <Dialog ref={dialogRef} onClose={() => setInput('')} closedby='any'>
+        <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
+          Dialog with form
+        </Heading>
+        <Textfield
+          label='Name'
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          // @ts-expect-error We want the native "autofocus" and Reacts onMount smartness (see https://react.dev/reference/react-dom/components/input#input)
+          autofocus='true'
+        />
+        <div
+          style={{
+            display: 'flex',
+            gap: 'var(--ds-size-4)',
+            marginTop: 'var(--ds-size-4)',
+          }}
+        >
+          <Button
+            onClick={() => {
+              window.alert(`You submitted the form with the name: ${input}`);
+              dialogRef.current?.close();
+            }}
+          >
+            Submit form
+          </Button>
+          <Button variant='secondary' data-color='danger' data-command='close'>
+            Cancel
           </Button>
         </div>
       </Dialog>
@@ -103,9 +147,20 @@ export const WithBlocks = () => {
         </Dialog.Block>
         <Dialog.Block>
           <Button variant='secondary' data-command='close'>
-            Close
+            Lukk
           </Button>
         </Dialog.Block>
+      </Dialog>
+    </Dialog.TriggerContext>
+  );
+};
+
+export const CloseWithClickOutside = () => {
+  return (
+    <Dialog.TriggerContext>
+      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+      <Dialog closedby='any'>
+        <Heading>Click outside to close</Heading>
       </Dialog>
     </Dialog.TriggerContext>
   );

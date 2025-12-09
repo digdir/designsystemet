@@ -1,35 +1,29 @@
----
-title: Search
-image: Search.svg
-cssfile: search
----
-
-`Search` er en søkekomponent som kombinerer et tekstfelt med søkefunksjonalitet.
-
 <Story story="Preview" />
 
-## Bruk
+**Bruk `Search` når**
+* brukerne trenger hjelp med å finne relevant informasjon raskt på et nettsted eller i en applikasjon
+* situasjoner der brukerne skriver nøkkelord eller setninger for å finne mest relevant innhold oppstår
 
-```tsx
-import { Search } from '@digdir/designsystemet-react';
+**Unngå `Search` når**
+* innholdet er lett å navigere uten søk
+* det er en erstatning for god navigasjon. Søk skal være et supplement, ikke eneste navigasjonsmetode
 
-<Search>
-  <Search.Input aria-label="Søk" />
-  <Search.Clear />
-  <Search.Button />
-</Search>
-```
-
-## Kodeeksempler
-
-### Med label
-
-<Story story="WithLabel" />
+## Eksempel
 
 ### Varianter
 
+Du kan endre `variant` på `Button` for å tilpasse visningen. Alternativt kan du fjerne knappen for å bruke et søkefelt med ikon. Eksemplene nedenfor viser varianter som inkluderer ikon, primær- og sekundærknapp.
+
 <Story story="Variants" />
 
-### Kontrollert
+## Retningslinjer 
 
-<Story story="Controlled" layout="column" />
+Bredden på søkefeltet bør tilsvare lengden på søkeordene brukerne vanligvis skriver inn. Størrelsen på feltet er et viktig signal om hva de kan skrive inn. For eksempel bør et søkefelt for personnumre ha en bredde som tilsvarer et personnummer. Hovedsøkefeltet for et nettsted bør være bredere, slik at brukerne kan se flere ord samtidig. For å unngå at brukerne må scrolle i søkefeltet må vi unngå søkefelt som er så korte at deler av innholdet ikke synes.
+
+## Tekst
+
+Placeholder-tekst bør brukes med forsiktighet, da den forsvinner når brukeren skriver og kan skape forvirring. Den må også oppfylle kontrastkrav for tilgjengelighet, noe som kan gjøre teksten vanskelig å skille fra utfylt innhold. Skjermlesere håndterer placeholder-tekst ulikt, så informasjonen bør heller gis via Label eller beskrivelse.
+
+Du bør bruke en `label` over søkefeltet når det ikke er åpenbart hva brukeren skal søke etter, eller når søkefeltet er en del av et skjema.
+
+<Story story="WithLabel" />

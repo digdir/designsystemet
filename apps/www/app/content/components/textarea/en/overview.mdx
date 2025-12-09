@@ -1,33 +1,57 @@
----
-title: Textarea
-image: Textarea.svg
-cssfile: textarea
----
-
-`Textarea` is a field where the user can enter longer text over multiple lines.
-
 <Story story="Preview" layout="column" />
 
-## Usage
+**Use `Textarea` when**
+- users need to write more than one line of text  
+- free-form input is required  
+- the answer does not follow a fixed structure  
 
-```tsx
-import { Textarea, Label } from '@digdir/designsystemet-react';
-<>
-<Label htmlFor="my-textarea">Label</Label>
-<Textarea id="my-textarea" />
-</>
-```
+**Avoid using `Textarea` when**
+- short answers are expected, use [`Textfield`](/en/components/docs/textfield/overview) instead  
+- the input consists of structured data that requires validation
 
-## Code Examples
+## Example
 
-### With rows
+### Set the height
+Developers can set how many rows a `Textarea` should have by using the `rows` attribute. This only affects the initial height of the field.
 
-<Story story="WithRows" layout="column" />
+It is useful for giving users an indication of how much text is expected.
+
+<Story story="WithRowsEn" layout="column" />
 
 ### Disabled
+Avoid disabling a `Textarea` if possible. It can be difficult for users to understand why the field cannot be used. Read more about [why disabled states are problematic (nav.no)](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) and which alternatives to consider.
 
 <Story story="Disabled" layout="column" />
 
 ### ReadOnly
+Since a text field is normally expected to be editable, `readOnly` can be confusing. Use it only when it is truly necessary. In many cases, it is better to display the information as plain text rather than in a `readOnly` field.
 
-<Story story="ReadOnly" layout="column" />
+Fields with the `readonly` attribute remain part of the tab order. Users can copy the content but cannot change it, and the information is submitted with the form. For this reason, `readOnly` can be appropriate when the information must be included in a summary that is submitted as part of the form.
+
+**Important: If you choose to use `readOnly`, you must explain to the user why the content cannot be edited.**
+
+
+<Story story="ReadOnlyEn" layout="column" />
+
+## Guidelines
+Use `Textarea` when users are expected to write more than one line of text, for example open questions, feedback, or other situations requiring longer input.
+
+Be aware that some users find free-text fields challenging. In certain cases, it may be better to break the question into smaller, more structured parts and let users answer with components such as `Radio`.
+
+### Size and adaptation
+
+#### Height
+The height of the `Textarea` should reflect the expected amount of text. If you expect approximately three lines of input, the initial height should match this. For longer responses, provide more visual space to ensure a good user experience. You can set the height with `rows="{number}"`.
+
+`Textarea` should expand in height when users need more space. Unless `rows` is set, the field will automatically grow as the user types so they can see their full input without scrolling.
+
+#### Width
+A `Textarea` should not be wider than 50-75 characters including spaces. Staying within this range ensures the best readability for all users.
+
+### Additional guidelines
+In addition to these recommendations, follow the general guidelines for [`Textfield`](/en/components/docs/textfield/overview):
+
+* [Avoid placeholder text](/en/components/docs/textfield/overview#unngå-plassholdertekster)  
+* [Input and formatting](/en/components/docs/textfield/overview#inndata)  
+* [Text](/en/components/docs/textfield/overview#tekst)  
+* [Accessibility](/en/components/docs/textfield/accessibility)

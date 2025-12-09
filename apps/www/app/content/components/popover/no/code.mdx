@@ -1,8 +1,33 @@
----
-title: Popover
-image: Popover.svg
-cssfile: popover
----
+<Story story="Preview" />
+<ReactComponentDocs />
+
+## Bruk
+
+```tsx
+import { Popover } from '@digdir/designsystemet-react';
+
+// med context
+<Popover.TriggerContext>
+  <Popover.Trigger>Trigger</Popover.Trigger>
+  <Popover>Content</Popover>
+</Popover.TriggerContext>
+
+// uten context med egen trigger
+<Button popovertarget="my-popover">Trigger</Button>
+<Popover id="my-popover">Content</Popover>
+```
+
+### React og `popovertarget`
+Når du bruker `Popover` uten `Popover.TriggerContext`, kobler du selv sammen utløseren og `Popover`.
+Da brukes `popovertarget` i små bokstaver, slik at alle versjoner av React korrekt gjengir attributtet.
+Når du bruker `@digdir/designsystemet-react` utvider vi `@types/react-dom` til å akseptere dette.
+
+### Polyfill
+
+`Popover` bruker [popover (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover).
+Dette apiet er klassifisert som [Baseline: Newly available (mozilla.org)](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) fra april 2024, da Firefox som siste nettleser la det til.
+I noen tilfeller kan en oppleve at brukere av ulike grunner er låst til eldre nettleserversjoner, og da kan det være aktuelt å legge til en [Popover-Polyfill (github.com)](https://github.com/oddbird/popover-polyfill) for å sikre at `Popover` fungerer for alle.
+
 
 ## Eksempler
 
@@ -10,18 +35,63 @@ cssfile: popover
 
 <Story story="Preview" />
 
-### Interaktiv
-
-<Story story="Interactive" />
-
 ### Inline trigger
-
+Du kan bruke Popover inline i tekst med stiplet understrek:
 <Story story="DottedUnderline" />
 
 ### Kontrollert
-
+Du kan kontrollere når popover er åpen eller lukket:
 <Story story="Controlled" />
 
 ### Uten TriggerContext
-
+Du kan også bruke Popover uten TriggerContext ved å bruke `popovertarget`:
 <Story story="WithoutContext" />
+
+## HTML
+
+Du kan bruke `popover` i ren HTML ved å bruke `popover`-attributtet på et element og koble det til en trigger med `popovertarget`.
+Klassenvnet `ds-popover` blir brukt på elementet som er popoveren.
+
+I React bruker vi [`floating-ui` (floating-ui.com)](https://floating-ui.com/) for plassering, og dette er et bibliotek som også kan brukes i rene JavaScript-applikasjoner.
+
+Vi anbefaler å lese om [popover (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover).
+
+```html
+<button popovertarget="my-popover">Trigger</button>
+<div id="my-popover" popover class="ds-popover">
+  Content
+</div>
+```
+
+`data-placement` er brukt for å plassere pila riktig.
+Dette attributtet henger sammen med en "plugin" vi har laget for `floating-ui`.
+Den er portabel til andre som bruker `floating-ui`, og du finner [koden på github.com](https://github.com/digdir/designsystemet/blob/f6bf5a2c84baa2bfd92207510cb6c0a00573ea61/packages/react/src/components/popover/popover.tsx#L209).
+
+### Inline popover
+
+Dersom du vil ha triggeren inline i tekst må du fortsatt bruke `<button>`, men du kan legge på `data-popover="inline"` for å få riktig styling.
+
+```html
+<p class="ds-paragraph">
+  Vi bruker
+  <button popovertarget="my-popover" data-popover="inline">design tokens</button>
+  for å sikre at vi har en konsistent design.
+</p>
+<div
+  class="ds-popover"
+  id="my-popover"
+  popover="manual"
+>
+  <p class="ds-paragraph">
+    <strong style="display: block;">Design tokens</strong>
+    Design tokens er en samling av variabler som definerer designet i et
+    designsystem.
+  </p>
+</div>
+```
+
+## CSS variabler og data-attributter
+
+<CssVariables />
+
+<CssAttributes />

@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet-theme",
-  "version": "1.7.1",
+  "version": "1.8.0",
   "description": "Predefined themes for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -36,8 +36,11 @@
     "designsystemet:tokens-preview": "pnpm --filter @digdir/designsystemet run update:preview-tokens",
     "update:theme": "pnpm designsystemet:tokens-create && pnpm designsystemet:tokens-build && pnpm designsystemet:tokens-preview"
   },
+  "dependencies": {
+    "@digdir/designsystemet-types": "workspace:^"
+  },
   "devDependencies": {
-    "rimraf": "^6.1.0",
+    "rimraf": "^6.1.2",
     "@digdir/designsystemet": "workspace:^"
   }
 }

@@ -1,11 +1,5 @@
----
-title: Heading
-subtitle: '`Heading` brukes til å strukturere innhold og skape hierarki på siden.'
-image: Heading.svg
-cssfile: heading
----
-
 <Story story="Preview" />
+<ReactComponentDocs />
 
 ## Bruk
 
@@ -15,8 +9,23 @@ import { Heading } from '@digdir/designsystemet-react';
 <Heading>Tittel tekst</Heading>;
 ```
 
-## Kodeeksempler
+## Eksempel
 
 ### Størrelser
 
 <Story story="Sizes" layout="column" />
+
+## HTML
+
+Bruk klassenavnet `ds-heading` for å style et HTML `<h1>`-`<h6>`-element.
+
+```html
+<h1 class="ds-heading" data-size="xl">Overskrift nivå 1</h1>
+<h2 class="ds-heading" data-size="lg">Overskrift nivå 2</h2>
+```
+
+## CSS variabler og data-attributter
+
+<CssVariables />
+
+<CssAttributes />

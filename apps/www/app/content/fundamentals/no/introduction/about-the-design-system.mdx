@@ -1,7 +1,7 @@
 ---
 title: Om Designsystemet
 sidebar_title: Om Designsystemet
-description: Designsystemet inneholder grunnleggende UI-komponenter, retningslinjer og mønstre som er verdifulle å dele på tvers.
+description: Hvorfor det finnes, hva det løser og hva det består av.
 date: 2025-06-27
 category: Introduksjon
 color: blue
@@ -62,7 +62,7 @@ Ved å bruke felles byggeklosser kan vi unngå å løse de samme problemene fler
 Designsystemet består av flere byggeklosser og verktøy. Du kan ta i bruk det du trenger, i den grad du ønsker.
 
 - **Design Tokens** \
-  [Design Tokens](/no/fundamentals/design-tokens/variables) er variabler som styrer farger, typografi, størrelser, avstander og former. Variablene er lagt opp til å være tema-baserte, det vil si at de tar utgangspunkt i din merkevare med de fargene og preferansene du selv velger i Temabyggeren. Fargesystemet sikrer at det er god kontrast mellom tekst og bakgrunnsfarger, uansett hvilke profilfarger du har. Token-strukturen støtter at du kan ha både flere ulike tema og flere "modes" (dark-mode, light-mode, contrast-mode, etc.). Design Tokens sørger også for at det er de samme verdiene vi jobber med i design og kode. Design tokens er hele magien!
+  [Design Tokens](/no/fundamentals/design-elements/variables) er variabler som styrer farger, typografi, størrelser, avstander og former. Variablene er lagt opp til å være tema-baserte, det vil si at de tar utgangspunkt i din merkevare med de fargene og preferansene du selv velger i Temabyggeren. Fargesystemet sikrer at det er god kontrast mellom tekst og bakgrunnsfarger, uansett hvilke profilfarger du har. Token-strukturen støtter at du kan ha både flere ulike tema og flere "modes" (dark-mode, light-mode, contrast-mode, etc.). Design Tokens sørger også for at det er de samme verdiene vi jobber med i design og kode. Design tokens er hele magien!
 
 - **UI-komponenter** \
   Designsystemet inneholder de mest grunnleggende UI-komponentene som gir verdi å dele på tvers. UI-komponentene finnes i egne bibliotek for [Figma](https://www.figma.com/@designsystemet), [CSS](https://www.npmjs.com/package/@digdir/designsystemet-css) og [React](https://www.npmjs.com/package/@digdir/designsystemet-react). Vi dokumenterer hvordan komponentene bør brukes og oppdatererer retningslinjene etter hvert som vi får mer innsikt. 
@@ -79,13 +79,46 @@ Designsystemets [CLI](https://www.npmjs.com/package/@digdir/designsystemet) hjel
 - **Blogg** \
   I bloggen kan vi fortelle om nye oppdateringer og dele historier. Vi håper flere vil bruke bloggen til å skrive om hvordan de har tatt i bruk Designsystemet.
 
-- **Community** \
-Designsystemet ønsker å legge til rette for bred erfaringsdeling rundt designsystemer og alt som hører til. Du kan bli med i [Slack](http://designsystemet.no/slack) og i [Github](https://github.com/digdir/designsystemet/discussions/categories/samarbeid-m%C3%B8nster-for-innbyggertjenester). 
 
-## Hvordan er arbeidet organisert?
-Designsystemet er etablert som et produkt i Digdir under produktgruppen «Portaler og brukeropplevelse». Produktgruppen har et tilhørende produktråd med 16 ulike virksomheter.
+## Hvordan jobber vi med Designsystemet?
 
-Utviklingsteamet består av designere og utviklere fra Digdir, Brønnøysundregistrene, Mattilsynet, Utdanningsdirektoratet og KS Digital. I tillegg har vi et samarbeid med designsystem-teamene til Nav, Skatteetaten, Oslo kommune, Politiet og Entur om å etablere felles interaksjonsmønstre på tvers. Vi har også et bredt nettverk av bidragsytere fra andre virksomheter som er med på å forme Designsystemet. Les mer om [samarbeidet](/no/fundamentals/introduction/collaboration).
+### Organisering og samarbeid
+Designsystemet er etablert som et produkt i Digdir under produktgruppen [Portaler og brukeropplevelse](https://baksia.digdir.no/produktgrupper/portaler-og-brukeropplevelse/). Produktgruppen har et tilhørende produktråd med 13 ulike virksomheter.
+
+Utviklingsteamet består av designere og utviklere fra Digdir, Brønnøysundregistrene, Mattilsynet, Utdanningsdirektoratet og KS Digital. I tillegg har vi et samarbeid med designsystem-teamene til Nav, Skatteetaten, Oslo kommune, Politiet og Entur om å etablere [felles interaksjonsmønstre](/no/patterns) på tvers. 
+
+Designsystemet ønsker å legge til rette for et aktivt og inkluderende fellesskap der alle som ønsker kan bidra, dele erfaringer og lære av hverandre. Målet er å skape et miljø der både designere og utviklere kan diskutere utfordringer, dele løsninger og bidra til å forbedre Designsystemet. Du kan delta i fellesskapet gjennom [Slack](http://designsystemet.no/slack) og i [Github](https://github.com/digdir/designsystemet/discussions/categories/samarbeid-m%C3%B8nster-for-innbyggertjenester). Les mer om [samarbeidet](/no/fundamentals/introduction/collaboration). 
+
+### Verdier
+Våre verdier åpenhet, kvalitet, helhet og tillit styrer arbeidet vårt.
+
+<Card data-color='neutral' style={{ marginBottom: 'var(--ds-size-10)' }}>
+  <Details>
+    <DetailsSummary>Åpenhet</DetailsSummary>
+    <DetailsContent>
+Designsystemet bygger på en filosofi om samarbeid. Det skal utvikles åpent og i samspill mellom offentlige og private aktører. Åpenhet er en viktig rettesnor for alt vi gjør. Når vi deler arbeidet vårt underveis, også det som ikke er ferdig, kommer vi alltid et skritt videre. Det skal være enkelt for alle å bidra og gi innspill gjennom åpne diskusjoner, og terskelen for å få til endringer skal være lav når forslag fører til bedre løsninger. Ved å samarbeide åpent unngår vi unødvendig dobbeltarbeid og utvikler løsninger som flere kan gjenbruke. Slik bidrar vi til en mer bærekraftig utvikling av digitale tjenester.
+</DetailsContent>
+  </Details>
+  <Details>
+    <DetailsSummary>Kvalitet</DetailsSummary>
+    <DetailsContent>
+Designsystemet skal holde høy kvalitet, og gjøre det effektivt å lage digitale produkter med god kvalitet. Med god kvalitet mener vi både noe som gir en god brukeropplevelse, men også har et godt teknisk fundament. Alle komponentene skal oppfylle lovpålagte krav, som universell utforming. Men kravene er bare et minimum. Vi vil strekke oss lengre for å lage [tilgjengelige](/no/fundamentals/introduction/accessibility) løsninger som fungerer best mulig for alle. Når det fungerer for personer med funksjonsnedsettelser, blir opplevelsen bedre for alle. 
+</DetailsContent>
+  </Details>
+  <Details>
+    <DetailsSummary>Helhet</DetailsSummary>
+    <DetailsContent>
+Målet er at Designsystemet skal bidra til helhetlige og konsistente brukeropplevelser på tvers av løsninger og virksomheter. Felles byggeklosser og gjenkjennbare mønstre gir forutsigbarhet og mer intuitive løsninger, og kan samtidig redusere digitalt utenforskap. Designsystemet skal gi rom for ulike visuelle profiler, men fremme at komponenter og interaksjonsmønstre oppfører seg likt på skjermlesere og andre hjelpemidler.
+</DetailsContent>
+  </Details>
+  <Details>
+    <DetailsSummary>Tillit</DetailsSummary>
+    <DetailsContent>
+Designsystemet skal håndtere utfordringer og endringer på en trygg og forutsigbar måte slik at det oppnår høy tillit blant brukerne. Komponentene skal fungere stabilt og oppføre seg som forventet. Brukerne skal kunne være trygge på at Designsystemet blir godt forvaltet og oppdatert i takt med nye krav og behov. Vi sikter på gjensidig tillit, der tillit til bidragsytere også er viktig.
+</DetailsContent>
+  </Details>
+</Card>
+I tillegg til disse fire verdiene legger vi vekt på at Designsystemet skal være enkelt å ta i bruk for både utviklere og designere. Det skal være lett å finne frem, forstå hva en komponent gjør og når den bør brukes. Komponentene skal kunne tilpasses og være fleksible nok til å fungere som byggeklosser i mer komplekse løsninger. Den tekniske løsningen skal være forutsigbar og enkel å jobbe i. Dersom det finnes utfordringer knyttet til en komponent, skal dette synliggjøres og dokumenteres.
 
 ## Hvem kan bruke Designsystemet?
 

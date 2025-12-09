@@ -18,6 +18,16 @@ export const Preview = () => {
   );
 };
 
+export const PreviewEn = () => {
+  return (
+    <Search>
+      <Search.Input aria-label='Søk' />
+      <Search.Clear />
+      <Button>Search</Button>
+    </Search>
+  );
+};
+
 export const WithLabel = () => {
   return (
     <Field>
@@ -26,6 +36,19 @@ export const WithLabel = () => {
         <Search.Input name='cat-search' />
         <Search.Clear />
         <Search.Button />
+      </Search>
+    </Field>
+  );
+};
+
+export const WithLabelEn = () => {
+  return (
+    <Field>
+      <Label>Search for cats</Label>
+      <Search>
+        <Search.Input name='cat-search' />
+        <Search.Clear />
+        <Button>Search</Button>
       </Search>
     </Field>
   );
@@ -58,26 +81,60 @@ export const Variants = () => {
   );
 };
 
-export const Controlled = () => {
-  const [value, setValue] = useState<string>('');
+export const VariantsEn = () => {
   return (
     <>
       <Search>
-        <Search.Input
-          aria-label='Søk'
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        />
+        <Search.Input aria-label='Søk' />
         <Search.Clear />
-        <Search.Button />
       </Search>
 
       <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
 
-      <Paragraph style={{ margin: 'var(--ds-size-2) 0' }}>
-        Du har skrevet inn: {value}
+      <Search>
+        <Search.Input aria-label='Søk' />
+        <Search.Clear />
+        <Button>Search</Button>
+      </Search>
+
+      <Divider style={{ marginTop: 'var(--ds-size-4)' }} />
+
+      <Search>
+        <Search.Input aria-label='Søk' />
+        <Search.Clear />
+        <Button variant='secondary'>Search</Button>
+      </Search>
+    </>
+  );
+};
+
+export const Form = () => {
+  const [value, setValue] = useState<string>();
+  const [submittedValue, setSubmittedValue] = useState<string>();
+
+  return (
+    <>
+      <form
+        onSubmit={(e) => {
+          // Prevent navigation from Storybook
+          e.preventDefault();
+          setSubmittedValue(value);
+        }}
+      >
+        <Search>
+          <Search.Input
+            aria-label='Søk'
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
+          <Search.Clear />
+          <Search.Button />
+        </Search>
+      </form>
+
+      <Paragraph data-size='md' style={{ marginTop: 'var(--ds-size-2)' }}>
+        Submitted value: {submittedValue}
       </Paragraph>
-      <Button onClick={() => setValue('Pizza')}>Jeg vil ha Pizza</Button>
     </>
   );
 };

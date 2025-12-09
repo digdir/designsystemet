@@ -1,46 +1,33 @@
----
-title: Tag
-image: Tag.svg
-cssfile: tag
----
-
-Tags are labels that can be used to categorize elements or communicate progress, status, or process. Tags are static labels; they cannot be clicked.
-
 <Story story="Preview" />
 
-## Usage
+**Use `Tag` when**  
+- content needs a category, for example “Beta”, “New”, or “Popular”  
+- a status should be shown, for example “Ongoing”, “Completed”, or “Cancelled”  
 
-```tsx
-import { Tag } from '@digdir/designsystemet-react';
+**Avoid using `Tag` when**  
+- linking to another page, use [`Link`](/en/components/docs/link/overview) instead  
+- the element triggers an action, use [`Button`](/en/components/docs/button/overview) instead  
+- the user needs to filter content, use [`Chip`](/en/components/docs/chip/overview) instead  
 
-<Tag>Beta</Tag>;
-```
-
-## Code Examples
-
-### Sizes
-
-<Story story="Sizes" />
-
-### Colors
-
-<Story story="Colors" />
+## Example
 
 ### Icons
+Icons can be used inside a `Tag` to add additional visual information. You need to set the spacing between text and icon yourself. We recommend keeping the `Tag` padding equal to the icon’s `margin`.
 
-<Story story="Icons" />
+<Story story="IconsEn" />
+
+### Variants
+`Tag` comes in two variants, with and without an outline. A tag may appear weak on certain background colours, and changing the variant can make it more visible.
+
+<Story story="Variants" />
 
 ## Guidelines
+Use `Tag` to help users quickly identify content based on category, status, or characteristics. `Tag` works well for presenting metadata, such as document type, status, or topic. They should be used consistently, kept short and easy to understand, and avoided when the information is already clear from context. A tag is not clickable, it is purely a label.
 
-Use `Tag` when you want to help users quickly identify content based on category, status, or property.
+### Placement
+`Tag` should generally be placed after the title or name of the related element. Avoid placing tags next to buttons, as this can confuse users. Consider the placement carefully and user-test when needed.
 
-**Suitable for:**
-
-- Categorizing content, such as "Beta", "New" or "Popular".
-- Showing status, such as "In Progress", "Completed" or "Canceled".
-
-**Not suitable for**
-
-- linking to other pages (use [`Link`](/docs/komponenter-link--docs) instead)
-- actions (use [`Button`](/docs/komponenter-button--docs) instead)
-- filtering (use [`Chip`](/docs/komponenter-chip--docs) instead)
+## Text
+- Use short labels for easy scanning. Preferably one word, with a maximum of two if necessary to distinguish between tag types.  
+- Use terms that are familiar within the context of the solution; avoid unfamiliar or unclear wording.  
+- When using multiple tags together, place them in a `<ul>` with `<li>` elements so screen readers announce them as a list.

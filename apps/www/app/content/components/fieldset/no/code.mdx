@@ -1,11 +1,8 @@
----
-title: Fieldset
-subtitle: '`Fieldset` brukes til å gruppere relaterte skjemaelementer.'
-image: Fieldset.svg
-cssfile: fieldset
----
+Det er vanlig å bli forvirret mellom `Fieldset` og `Field`.
+En god huskeregel er at **`Fieldset` er et sett med `Field`**
 
 <Story story="Preview" />
+<ReactComponentDocs />
 
 ## Bruk
 
@@ -20,12 +17,37 @@ import { Fieldset, Radio } from '@digdir/designsystemet-react';
 </Fieldset>
 ```
 
-## Kodeeksempler
+## Eksempel
 
 ### Med checkbox
 
+Både [`Checkbox`](/components/checkbox/code) og [`Radio`](/components/radio/code) bør grupperes i et `Fieldset`, selv om det kun er ett element i gruppen.
+
 <Story story="WithCheckbox" />
+
+### Flere felter
+
+<Story story="WithFields" />
 
 ### Legend som heading
 
+Dersom det er en side som kun har skjema på seg, og tittel på siden (`<h1>`) er samme som vil være i `<legend>`, kan du legge `<h1>` inni `Fieldset.Legend`.
+
 <Story story="LegendAsHeading" />
+
+## HTML
+
+Klassenavnet `ds-fieldset` legges på `<fieldset>`-elementet.
+
+```html
+<fieldset class="ds-fieldset">
+  <legend class="ds-label" data-weight="medium">Godtar du vilkårene?</legend>
+  <!-- dine fields -->
+</fieldset>
+```
+
+## CSS variabler og data-attributter
+
+<CssVariables />
+
+<CssAttributes />

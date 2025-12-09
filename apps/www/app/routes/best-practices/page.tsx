@@ -1,10 +1,12 @@
 import { join } from 'node:path';
-import { Breadcrumbs, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
+import { PencilLineIcon } from '@navikt/aksel-icons';
 import cl from 'clsx';
 import { useTranslation } from 'react-i18next';
-import { Link as RouterLink } from 'react-router';
+import { AvatarStack } from '~/_components/avatar-stack/avatar-stack';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
+import { TableOfContents } from '~/_components/table-of-contents/toc';
 import { formatDate } from '~/_utils/date';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
@@ -34,6 +36,7 @@ export async function loader({ params }: Route.LoaderArgs) {
     code: result.code,
     frontmatter: result.frontmatter,
     lang: params.lang,
+    toc: result.toc,
   };
 }
 
@@ -55,44 +58,76 @@ export const meta = ({ data }: Route.MetaArgs) => {
 
 export default function BestPractices({
   loaderData: {
-    frontmatter: { title, author, date },
+    frontmatter: { title, author, date, description },
     code,
     lang,
+    toc,
   },
 }: Route.ComponentProps) {
   const { t } = useTranslation();
-
+  const feedbackUrl = `https://github.com/digdir/designsystemet/issues/new?template=BLANK_ISSUE&title=Feedback: Best practices - ${title}`;
   return (
-    <>
-      <div className={classes.header}>
-        <div className={classes.container}>
-          <div className={classes.headerContent}>
-            <Breadcrumbs aria-label={t('best-practices.breadcrumbs-label')}>
-              <Breadcrumbs.Link asChild data-color='neutral'>
-                <RouterLink to={'../..'} relative='path'>
-                  {t('best-practices.title')}
-                </RouterLink>
-              </Breadcrumbs.Link>
-            </Breadcrumbs>
-            <Paragraph data-size='lg' variant='short' asChild>
-              <div className={classes.meta}>
-                <span>{author && <span>{author}</span>}</span>
-                <span className={classes.separator}> - </span>
-                <span>{date && <div>{formatDate(date, lang)}</div>}</span>
-              </div>
-            </Paragraph>
-            <Heading level={1} data-size='lg' className={classes.title}>
-              {title}
-            </Heading>
-          </div>
-        </div>
-      </div>
+    <div className={cl('l-content-container')}>
       <div className={classes.container}>
-        <div className={cl(classes.content, 'u-rich-text')}>
+        <div className={classes.header}>
+          <Heading data-size='xs' asChild>
+            <p>{t('best-practices.title')}</p>
+          </Heading>
+          <Heading level={1} data-size='lg' className={classes.title}>
+            {title}
+          </Heading>
+          {description && (
+            <Paragraph data-size='lg' style={{ marginTop: '12px' }}>
+              {description}
+            </Paragraph>
+          )}
+          <Paragraph variant='short' asChild>
+            <div className={classes.meta}>
+              {author && (
+                <>
+                  <a
+                    href='#article-contributors'
+                    aria-label={t('contributors')}
+                  >
+                    <AvatarStack authors={author} />
+                  </a>
+                  <span>{author}</span>
+                </>
+              )}
+
+              <span className={classes.separator}>·</span>
+              <span>
+                {date && (
+                  <div>{`${t('updated')} ${formatDate(date, lang)}`}</div>
+                )}
+              </span>
+            </div>
+          </Paragraph>
+        </div>
+        <TableOfContents
+          className={classes.tableOfContents}
+          title={'På denne siden'}
+          items={toc}
+        >
+          <div className='toc-feedback'>
+            <Paragraph data-size='sm'>{t('toc.feedback.page')}</Paragraph>
+            <Button
+              data-color='neutral'
+              data-size='sm'
+              variant='secondary'
+              asChild
+            >
+              <a href={feedbackUrl}>
+                <PencilLineIcon aria-hidden /> {t('toc.feedback.link')}
+              </a>
+            </Button>
+          </div>
+        </TableOfContents>
+        <div className={cl(classes.content, 'u-rich-text', 'left-adjusted')}>
           <MDXComponents code={code} />
           <EditPageOnGithub />
         </div>
       </div>
-    </>
+    </div>
   );
 }

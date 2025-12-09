@@ -14,7 +14,7 @@ import classes from './component.module.css';
 export async function loader({ params }: Route.LoaderArgs) {
   // Read the file content
   const fileContent = getFileFromContentDir(
-    join('changelogs', `changelog.mdx`),
+    join('components-docs', `changelog.mdx`),
   );
 
   if (!fileContent) {
@@ -61,17 +61,19 @@ export default function Changelogs({
 
   return (
     <>
-      <div className={classes.header}>
-        <div className={classes.headerUpper}>
-          <div className={classes.headerText}>
-            <Heading data-size='lg' level={1}>
-              {t('components.changelog.title', 'Changelog')}
-            </Heading>
-          </div>
-        </div>
-        <div className={classes.headerBottom}></div>
+      <div className={classes.textPageHeader}>
+        <Heading data-size='lg' level={1}>
+          {t('components.changelog.title', 'Changelog')}
+        </Heading>
       </div>
-      <div className={cl(classes.content, 'u-rich-text')} lang='en'>
+      <div
+        className={cl(
+          classes.textPage,
+          classes.changelog,
+          'u-rich-text left-adjusted',
+        )}
+        lang='en'
+      >
         {lang !== 'en' ? (
           <Alert lang='no'>
             Endringslogger er kun tilgjengelige på engelsk

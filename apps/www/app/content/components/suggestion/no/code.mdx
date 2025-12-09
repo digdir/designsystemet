@@ -1,14 +1,12 @@
----
-title: Suggestion
-image: Suggestion.svg
-cssfile: suggestion
----
-
-Søkbar "select" med mulighet for flervalg/multiselect. Bruk dersom Select ikke er tilstrekkelig.
+<Alert data-color="warning">
+Suggestion er under utvikling. Finner du feil eller mangler, meld fra på Github eller Slack.
+</Alert>
 
 <Story story="Preview" />
+<ReactComponentDocs />
 
 ## Bruk
+`Suggestion` baserer seg på [u-combobox fra u-elements (github.io)](https://u-elements.github.io/u-elements/elements/u-combobox). Den er inspisert av [open-ui sitt combobox mønster (open-ui.org)](https://open-ui.org/components/combobox.explainer/).
 
 ```tsx
 import { EXPERIMENTAL_Suggestion as Suggestion } from '@digdir/designsystemet-react'
@@ -28,4 +26,44 @@ import { EXPERIMENTAL_Suggestion as Suggestion } from '@digdir/designsystemet-re
 </Suggestion>
 ```
 
-## Code Examples
+## Eksempel
+
+### Flervalg
+
+Bruk `multiple` på `Suggestion`.
+Dersom du vil endre hvordan valgte alternativer vises, kan du bruke `renderSelected`.
+
+<Story story='Multiple' />
+
+### Kontrollert flervalg
+
+<Story story='ControlledMultiple' layout='column' />
+
+## HTML
+Du finner generell dokumentasjon på bruk av `u-combobox` hos u-elements:
+[https://u-elements.github.io/u-elements/elements/u-combobox](https://u-elements.github.io/u-elements/elements/u-combobox).
+
+For å få Designsystemet styling, legger du klassenavnet `ds-suggestion` på `<u-combobox>` elementet.
+`<input>` skal ha `ds-input` klassen.
+
+Dersom du skrur på flervalg, skal `<data>` ha klassenavnet `ds-chip` og data attributtet `data-removable="true"`.
+
+```html
+<u-combobox class="ds-suggestion" ...>
+  <data class="ds-chip" data-removable="true" ...>Valgt alternativ</data>
+  <input class="ds-input" ... />
+  <u-datalist>
+    <u-option label="Sogndal" value="sogndal">Sogndal</u-option>
+    <u-option label="Oslo" value="oslo">Oslo</u-option>
+  </u-datalist>
+</u-combobox>
+```
+
+## CSS variabler og data-attributter
+
+<CssVariables />
+
+<CssAttributes />
+
+`Suggestion` baserer seg på [u-combobox fra u-elements (github.io)](https://u-elements.github.io/u-elements/elements/u-combobox). 
+Den er inspisert av [open-ui sitt combobox mønster (open-ui.org)](https://open-ui.org/components/combobox.explainer/).

@@ -1,12 +1,18 @@
 import { join } from 'node:path';
+import { LayersIcon } from '@navikt/aksel-icons';
 import cl from 'clsx';
+import { useTranslation } from 'react-i18next';
+import {
+  Banner,
+  BannerHeading,
+  BannerIngress,
+} from '~/_components/banner/banner';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { generateMetadata } from '~/_utils/metadata';
 import i18n from '~/i18next.server';
 import type { Route } from './+types/patterns';
-import classes from './page.module.css';
 
 export const loader = async ({
   params: { lang },
@@ -49,9 +55,20 @@ export const meta: Route.MetaFunction = ({ data }: Route.MetaArgs) => {
 export default function Patterns({
   loaderData: { index },
 }: Route.ComponentProps) {
+  const { t } = useTranslation();
   return (
-    <div className={cl(classes.content, 'u-rich-text')}>
-      <MDXComponents code={index.code} />
-    </div>
+    <>
+      <Banner
+        style={{ marginBottom: 'var(--page-spacing-top)' }}
+        data-color='brand3'
+        icon={<LayersIcon />}
+      >
+        <BannerHeading level={1}>{t('patterns.title')}</BannerHeading>
+        <BannerIngress>{t('patterns.description')}</BannerIngress>
+      </Banner>
+      <div className={cl('u-rich-text left-adjusted')}>
+        <MDXComponents code={index.code} />
+      </div>
+    </>
   );
 }

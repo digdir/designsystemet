@@ -1,8 +1,7 @@
 .container {
   display: flex;
   max-width: var(--media-max-width);
-  margin: var(--ds-size-12) 0;
-  border-radius: var(--ds-border-radius-md);
+  margin: var(--ds-size-8) 0;
   flex-wrap: wrap;
   gap: var(--ds-size-4);
 }
@@ -18,6 +17,16 @@
   width: 100%;
   box-shadow: none;
   display: block;
+  border-radius: var(--ds-border-radius-xl);
+  overflow: clip;
+  @media (max-width: 1280px) {
+    border-radius: var(--ds-border-radius-lg);
+  }
+}
+.caption {
+  color: var(--ds-color-neutral-text-subtle);
+  text-wrap: pretty;
+  max-width: var(--short-content-width);
 }
 
 .openButton {

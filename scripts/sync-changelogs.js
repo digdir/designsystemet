@@ -2,7 +2,7 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 
 const ROOT = process.cwd();
-const WWW = path.join(ROOT, 'apps/www/app/content/changelogs');
+const WWW = path.join(ROOT, 'apps/www/app/content/components-docs');
 
 async function findPackages() {
   const dirs = ['packages'].map((p) => path.join(ROOT, p));

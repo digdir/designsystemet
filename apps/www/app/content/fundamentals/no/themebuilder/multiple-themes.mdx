@@ -1,0 +1,108 @@
+---
+title: Fleire tema
+sidebar_title: Fleire tema
+description: Lær korleis du har fleire tema i same prosjekt.
+date: 2025-11-24
+category: Temabygger
+color: yellow
+icon: SquareGridIcon
+published: true
+order: 40
+---
+
+Det er mogleg å ha fleire tema i same prosjekt dersom du bruker [config fil](/no/fundamentals/code/cli-config).
+Under vil vi gå gjennom to måter å gjere det på.
+
+**Denne sida føreset at du har lest "[Bygg ditt tema](/no/fundamentals/themebuilder/own-theme)".**
+
+## Same fargenavn
+Dersom du har to tema som skal bytast mellom i eit og same grensesnitt, vil du nok bruke same fargenamn i begge tema.
+Dette betyr at du kan legge begge inn i èi config fil, og få ut design tokens som kan bytast mellom i Figma, og som genererer to CSS-filer.
+
+```json
+{
+  "themes": {
+    "some-org": {
+      "colors": {
+        "main": {
+          "dominant": "#0062BA"
+        },
+        "support": {
+          "first": "#F45F63",
+          "second": "#E5AA20"
+        },
+        "neutral": "#303030"
+      }
+    },
+    "other-org": {
+      "colors": {
+        "main": {
+          "dominant": "#ffaaaa"
+        },
+        "support": {
+          "first": "#abcdef",
+          "second": "#123456"
+        },
+        "neutral": "#c05030"
+      },
+    }
+  }
+}
+```
+
+Config fila over blir ikkje generert frå temabyggaren, og det er lurt å ha med seg ein utviklar i prosessen når ein lagar slike config filer.
+
+Det er mogleg å validere config fila i temabyggaren. Bruk knappen "Fortsett fra konfigurasjonsfil" på framsida.
+Denne valideringen vil ikkje gi deg feil dersom fargenamna er ulike, så det er viktig å dobbeltsjekke dette manuelt.
+
+## Ulike fargenamn
+
+Dersom du har ulike fargenamn vil ikkje dette funke i design tokens og Figma.
+I dette tilfellet må du lage to config filer, ein for kvart tema.
+Du kan då køyre bygg-kommandoen to gonger, ein gong for kvar config fil.
+
+Det er vanleg å måtte gjere det på denne måten dersom du har eit repository som samlar alle design tokens og CSS for fleire applikasjonar.
+
+```json
+{
+  "outDir": "./some-org-dt",
+  "themes": {
+    "some-org": {
+      "colors": {
+        "main": {
+          "dominant": "#0062BA"
+        },
+        "support": {
+          "first": "#F45F63",
+          "second": "#E5AA20"
+        },
+        "neutral": "#303030"
+      }
+    },
+  }
+}
+```
+
+```json
+{
+  "outDir": "./other-org-dt",
+  "themes": {
+    "other-org": {
+      "colors": {
+        "main": {
+          "accent": "#0062BA"
+        },
+        "support": {
+          "brand1": "#F45F63",
+          "brand2": "#E5AA20"
+        },
+        "neutral": "#303030"
+      }
+    },
+  }
+}
+```
+
+<Alert data-color="info">
+Legg merke til at me har ulik `outDir` i desse to config filene, slik at design tokens for kvart tema blir lagt i kvar si mappe.
+</Alert>
