@@ -12,12 +12,13 @@ const require = createRequire(import.meta.url);
 const getParser = () => {
   return withCustomConfig(
     require.resolve(
-      path.join(process.cwd(), '../../packages/react/tsconfig.json'),
+      path.join(process.cwd(), '../../packages/react/tsconfig.lib.json'),
     ),
     {
       savePropValueAsString: true,
       shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
+      shouldExtractValuesFromUnion: true,
       propFilter: (prop: PropItem) => {
         const defaultLogicFromStorybook = prop.parent
           ? !/node_modules/.test(prop.parent.fileName)
@@ -26,6 +27,7 @@ const getParser = () => {
           defaultLogicFromStorybook &&
           prop.name !== 'popovertarget' &&
           prop.name !== 'data-color' &&
+          prop.name !== 'data-color-scheme' &&
           prop.name !== 'data-size'
         );
       },
