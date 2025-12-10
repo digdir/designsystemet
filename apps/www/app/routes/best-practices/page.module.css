@@ -1,6 +1,6 @@
 .container {
   --sidebar-right-width: clamp(240px, 75px + 15vi, 300px); /*from screen 1100px to 1500px*/
-  padding-top: clamp(var(--ds-size-8), -6.929rem + 9.524vi, var(--ds-size-18)); /*from screen 11´500px to 1920px*/
+  padding-top: clamp(var(--ds-size-8), -6.929rem + 9.524vi, var(--ds-size-18)); /*from screen 1500px to 1920px*/
   padding-bottom: var(--page-spacing-bottom);
   display: grid;
   grid-template-rows: auto 1fr;
