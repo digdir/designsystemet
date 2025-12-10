@@ -18,8 +18,8 @@ Ved å bruke grunnleggende byggeklosser fra Designsystemet kan du selv bygge mer
 Designsystemet fungerer som en verktøykasse, du trenger ikke bruke alt. Du kan plukke ut de delene du har behov for. Noen bruker bare tokenstrukturen, noen bruker React-biblioteket, noen bruker CSS-biblioteket, noen bruker bare retningslinjene, mens andre bruker hele pakka. Du velger selv hva som gir mest verdi i din kontekst.
  
 Designsystemet kan 
-1. [Brukes direkte inn i løsninger](#1-bruk-designsystemet-direkte-inn-i-løsninger).
-2. [Brukes som fundament for ditt eget designsystem](#2-eget-designsystem-på-toppen-av-designsystemet).
+- [brukes direkte inn i løsninger](#bruk-designsystemet-direkte-inn-i-løsninger)
+- [brukes som fundament for ditt eget designsystem](#eget-designsystem-på-toppen-av-designsystemet)
 
 <Image
   src='/img/lagvis-bruk.png'
@@ -27,7 +27,7 @@ Designsystemet kan
   boxShadow={false}
 />
 
-### 1. Bruk Designsystemet direkte inn i løsninger
+### Bruk Designsystemet direkte inn i løsninger
 
 Designsystemet kan brukes direkte i dine løsninger ved å ta i bruk komponentbiblioteket sammen med ditt eget tema.  Dette er den enkleste måten å komme i gang på, og passer fint for å teste ut Designsystemet i mindre prosjekter eller for å bygge enkle sider og verktøy.
 
@@ -36,9 +36,9 @@ Slik kommer du i gang:
 - Ta i bruk [komponentbiblioteket i kode](/components/get-started/react) 
 - Importer og bruk komponentene i dine løsninger
 
-Her kan du se en [eksempelmal på en React-app](...) som er bygget med Designsystemet. Her kan du se en [eksempelmal på en webside uten React](...) som er bygget med Designsystemet.
+Her kan du se en [eksempelmal på en React-app](https://codesandbox.io/p/sandbox/digdir-designsystemet-y4snh7?file=%2Fsrc%2FApp.tsx%3A9%2C11) som er bygget med Designsystemet. Her kan du se en [eksempelmal på en webside uten React](https://codesandbox.io/p/sandbox/naughty-darkness-gld7r9) som er bygget med Designsystemet.
 
-### 2. Bruk Designsystemet som fundament for ditt eget designsystem
+### Bruk Designsystemet som fundament for ditt eget designsystem
 Fordelen med denne tilnærmingen er at du kan gjenbruke den underliggende strukturen og alle de grunnleggende komponentene, samtidig som du kan tilby dine mer unike komponenter som en del av ditt eget designsystem. Det krever en investering å etablere et designsystem, men forvaltningsjobben blir betydelig mindre når dere slipper å forvalte alt det grunnleggende selv. Med Designsystemet som fundament kan dere utvide der dere har behov og begrense der det gir verdi. Eksempel på designsystemer som bygger på designsystemet.no kan du se hos [Utdanningsdirektoratet](https://github.com/Utdanningsdirektoratet/designsystem) og [Mattilsynet](http://design.mattilsynet.no/). 
 
 For å lykkes trenger dere: 
@@ -68,7 +68,7 @@ En anbefalt praksis er:
 - Publiser et eget Figma-bibliotek som bygger på Designsystemet.  
 - Gjør visuelle tilpasninger basert på deres behov.  
 - Behold tokenstrukturen fra Designsystemet for farger, typografi, spacing, radius og semantikk.  
-- Bruk tokens fra temaet deres når dere bygger nye komponenter.
+- Bruk tokens når dere bygger nye komponenter.
 - Legg egne komponenter i samme bibliotek, men merk tydelig hva som er deres egne. 
 - Dokumenter hva dere har justert, slik at endringer er enkle å forstå over tid.
 - Fjern eventuelle varianter dere ikke ønsker skal brukes i organisasjonen.
@@ -88,10 +88,8 @@ Da vil oppgraderinger av Designsystemet kunne gjøres direkte via versjonsoppdat
 En anbefalt praksis er å bruke et nettsted eller Storybook for all dokumentasjon. Retningslinjer og bruk bør ikke beskrives i Figma, da designerne ofte legger inn komponenter via Assets-panelet, og det vil heller ikke være naturlig å søke etter retningsliner der for utviklere.
 
 Mange velger å:
-- Bruke designsystemet.no som felles referanse for standardkomponenter og grunnleggende prinsipper.
-- Eventuelt kopiere deler av dokumentasjonen inn i egne flater, med ansvar for videre vedlikehold selv.
-- Etablere egen dokumentasjon for egne komponenter, tilpasninger og retningslinjer.
-- Utvide med profilrelevante ting, som logo, illustrasjoner og ikonbruk.
+- Bruke designsystemet.no som felles referanse for standardkomponenter og grunnleggende prinsipper. Eventuelt kopiere deler av dokumentasjonen inn i egne flater, med ansvar for videre vedlikehold selv.
+- Etablere egen dokumentasjon for egne komponenter, tilpasninger og retningslinjer. Utvide med profilrelevante ting, som logo, font, illustrasjoner, grafiske elementer og ikonbruk.
 - Lenke til mønstre og retningslinjer som er relevante for deres bruk.
 
 ### Kort oppsummert

@@ -1,6 +1,6 @@
 ---
-title: Farger i Figma
-description: Main og Support farger i Figma Dev Mode, og hvordan de brukes.
+title: Variabler i Figma
+description: Hvordan variabler brukes i Figma og hvordan du finner riktig variabel.
 date: 2025-06-30
 category: Figma
 color: red
@@ -8,8 +8,50 @@ icon: PaletteIcon
 published: true
 order: 30
 ---
+### Size-variabler
 
-## Hva er main og support?
+Size-variabler brukes til å sette både avstander og størrelser. 
+
+Størrelser kan definere bredde og høyde på et element, mens avstander definerer luften mellom ulike elementer. Avstander setter du under _**"Auto Layout"**_ i Figma. Der kan du definere avstand over, under, ved siden av, eller mellom.
+
+<Image
+  src='/img/size.png'
+  alt='Skjermbildet viser hvor du kan bruke Size-variabler i Figma'
+  boxShadow={false}
+/>
+
+## Fargevariabler i Figma
+
+Fargevariabler er navngitt etter hva de er tiltenkt å brukes til: `background`, `surface`, `border` og `text`.
+
+- Er du ute etter en `border`-farge kan det være effektiv å søke på "border" for å se alle tilgjengelige farger.
+- Er du ute etter en `fill`-farge på et element kan det være effektiv å søke på "surface" for å se alle tilgjengelige farger.
+- Er du ute etter en farge for tekst eller ikon kan det være effektiv å søke på "text" for å se alle tilgjengelige farger.
+
+<ResponsiveIframe
+  src='/img/color-variables.mp4'
+  title='Skjermopptak av Figma som viser hvordan man kan sette fargevariabler på "fill" og "border".'
+  frameBorder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+  allowFullScreen
+  aspectRatio='16-9'
+/>
+
+Les mer om [farge-tokens](/no/fundamentals/design-tokens/colors) og hva de brukes til.
+
+For å sette opp egne fargevariabler se guiden "[Designsystemet med eget tema](/no/fundamentals/themebuilder/own-theme)"
+
+<ResponsiveIframe
+  src='/img/brand-variables.mp4'
+  title='Skjermopptak av Figma som viser hvordan man kan bytte mellom ulike brands i Figma'
+  frameBorder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+  allowFullScreen
+  aspectRatio='16-9'
+/>
+
+
+### Hva er main og support?
 Main og Support er egne modes i Figma som simulerer funksjonaliteten til data-color fra kode. De finnes kun i Figma og lar deg styre hvilke farger komponenter skal bruke, basert på kontekst.
 
 I Figma uten enterprise-lisens kan du bruke 4 farger per mode, altså 8 farger totalt fordelt mellom main og support.
@@ -22,7 +64,7 @@ Hvis du hadde brukt selve fargevariablene direkte i komponentene, ville det før
 2. Du slipper å lage én variant per farge \
 I stedet for å lage separate komponenter for blå, rød, grønn osv., kan én og samme komponent endre farge basert på hvilken mode (main eller support) som er satt. Det gir mindre vedlikehold og gjør det lettere å holde orden i filen.
 
-## Figma Dev Mode
+### Farger i Figma Dev Mode
 I Figma Dev Mode vises farger på to måter:
 - Main / Support: Brukes for fleksible farger, tilsvarende [data-color i kode](/no/fundamentals/code/colors). Du setter en mode som main/border-default, og komponenten arver riktig farge. Dette gjør det enklere å gjenbruke komponenter uten å lage nye varianter. Modusene er cascading - du kan sette dem på page, frame eller element.
 - Eksplisitt farge: Brukes når en farge alltid skal være den samme, uansett mode. Visningen i Dev Mode vil da vise en spesifikk variabel, akkurat som i kode.
