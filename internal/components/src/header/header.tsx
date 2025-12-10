@@ -172,7 +172,6 @@ const Header = ({
           />
         );
       })}
-      {/* biome-ignore lint/a11y/noStaticElementInteractions: onBlur bubbles from children that are interactive and must be captured here */}
       <header
         className={cl(
           classes.header,
@@ -180,7 +179,6 @@ const Header = ({
           className,
         )}
         ref={headerRef}
-        onBlur={handleBlur}
         {...props}
       >
         <div className={classes.container}>
@@ -284,11 +282,13 @@ const Header = ({
                     color='var(--ds-color-neutral-text-default)'
                   />
                 </Button>
+                {/* biome-ignore lint/a11y/noStaticElementInteractions: onBlur bubbles from children that are interactive and must be captured here */}
                 <div
                   className={classes.listContainer}
                   id='hamburgerMenu'
                   popover='auto'
                   ref={hamburgerMenu}
+                  onBlur={handleBlur}
                 >
                   <div className={classes.hamburgerHeader}>
                     <Link
