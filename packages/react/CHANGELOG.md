@@ -1,5 +1,16 @@
 # Change Log
 
+## 1.8.1
+
+### Patch Changes
+
+- **Popover**: Fix controlled open state going out of sync ([#4314](https://github.com/digdir/designsystemet/pull/4314))
+
+- Update npm non-major dependencies ([#4308](https://github.com/digdir/designsystemet/pull/4308))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.8.1
+
 ## 1.8.0
 
 ### Minor Changes

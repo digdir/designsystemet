@@ -1,5 +1,14 @@
 # Change Log
 
+## 1.8.1
+
+### Patch Changes
+
+- Update `@tokens-studio/sd-transforms` to `2.0.3` ([#4315](https://github.com/digdir/designsystemet/pull/4315))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.8.1
+
 ## 1.8.0
 
 ### Minor Changes
