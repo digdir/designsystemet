@@ -23,7 +23,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <div className='l-content-container'>
+    <div className='l-content-container' id='main'>
       <h1>{message}</h1>
       <p>{details}</p>
       {stack && (

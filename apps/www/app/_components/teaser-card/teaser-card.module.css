@@ -8,16 +8,21 @@
   text-decoration: none;
   border-radius: var(--ds-border-radius-xl);
   border: 1px solid var(--ds-color-neutral-border-subtle);
-
-  &:not(:has(:focus-visible)) {
-    transition: 0.2s all;
+  outline: 1px solid transparent;
+  transition: 0.2s ease;
+  transition-property: border-color, outline;
+  &:hover {
+    border-color: var(--ds-color-neutral-border-strong);
+    outline: 1px solid var(--ds-color-neutral-border-strong);
   }
-}
-
-.card:hover {
-  border-color: var(--ds-color-neutral-border-strong);
-  outline: 1px solid var(--ds-color-neutral-border-strong);
-  cursor: pointer;
+  &:has(:focus-visible) {
+    box-shadow: var(--dsc-focus-boxShadow);
+    outline: var(--dsc-focus-outline);
+    outline-offset: var(--ds-border-width-focus);
+  }
+  :has(:focus-visible) & {
+    transition: none;
+  }
 }
 .title {
   margin-block: 0;

@@ -1,23 +1,26 @@
 .card {
-  --border-color: var(--ds-color-neutral-border-subtle);
   display: grid;
   grid-template-rows: 1fr auto;
   background-color: var(--ds-color-neutral-surface-default);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  outline: 1px solid transparent;
   color: var(--ds-color-neutral-text-default);
   border-radius: var(--ds-border-radius-lg);
   text-decoration: none;
-
-  @media (prefers-reduced-motion: no-preference) {
-    transition:
-      0.2s border-color ease-in-out,
-      0.2s outline ease-in-out;
+  transition: 0.2s ease;
+  transition-property: border-color, outline;
+  &:hover {
+    border-color: var(--ds-color-neutral-border-strong);
+    outline: 1px solid var(--ds-color-neutral-border-strong);
   }
-}
-
-.card:hover {
-  --border-color: var(--ds-color-neutral-border-strong);
-  outline: 1px solid var(--ds-color-neutral-border-strong);
+  &:focus-visible {
+    box-shadow: var(--dsc-focus-boxShadow);
+    outline: var(--dsc-focus-outline);
+    outline-offset: var(--ds-border-width-focus);
+  }
+  :has(:focus-visible) & {
+    transition: none;
+  }
 }
 
 .title {

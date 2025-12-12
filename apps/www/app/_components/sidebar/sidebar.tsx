@@ -35,7 +35,10 @@ export const Sidebar = ({
   const closeMenuRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <div className={cl(className, 'l-sidebar-left')} {...props}>
+    <div
+      className={cl(className, 'l-sidebar-left', classes.sidebar)}
+      {...props}
+    >
       <Button
         className={classes.toggleBtn}
         data-size='md'

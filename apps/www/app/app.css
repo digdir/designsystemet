@@ -22,26 +22,6 @@
   }
 }
 
-:root {
-  --color-beta: #d6d4ff;
-  --grid-max-width: 1400px;
-  --grid-padding: clamp(1rem, calc(0.27rem + 3.64vw), 3rem);
-  --grid-gap: var(--ds-size-8);
-  overscroll-behavior: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */
-  margin: 0;
-  padding: 0;
-}
-
-#main {
-  min-height: 80svh;
-}
-
 @layer site.layout {
   @property --captured-length {
     syntax: '<length>';
@@ -49,56 +29,61 @@ body {
     initial-value: 0px;
   }
   :root {
+    height: 100%;
+    overscroll-behavior: none;
+    -webkit-tap-highlight-color: transparent;
     --logo-red: #f05f63;
     --logo-blue: #1e98f5;
     --logo-yellow: #e5aa20;
     --logo-slate: #626b77;
 
-    --page-spacing-top: var(--ds-size-14); /*legacy*/
-    --page-spacing-bottom: var(--ds-size-14); /*legacy*/
+    --grid-gap: var(--ds-size-8);
+
+    /*https://chrisburnell.com/clamp-calculator/*/
+    --content-inline-padding: clamp(var(--ds-size-4), calc(0.27rem + 2.4vw), var(--ds-size-7)); /*from screen 500px to 1000px*/
+    --page-spacing-top: clamp(var(--ds-size-8), -3.357rem + 5.714vi, var(--ds-size-14)); /*from screen 1500px to 1920px*/
+    --page-spacing-bottom: clamp(var(--ds-size-12), 1.214rem + 1.905vi, var(--ds-size-14)); /*from screen 1500px to 1920px*/
+    --sidebar-left-width: clamp(240px, 25.714px + 14.286vi, 300px); /*from screen 1500px to 1920px*/
+    --sidebar-right-width: clamp(240px, 25.714px + 14.286vi, 300px); /*from screen 1500px to 1920px*/
     --max-page-width: 1920px;
     --max-content-width: 1300px;
-    --sidebar-left-width: 300px;
-    --sidebar-right-width: 300px;
     --short-content-width: 700px;
     --long-content-width: 950px;
     --media-max-width: var(--long-content-width); /*legacy*/
-    /*padding shrinks from size-7 to size-4 between 1000px and 500px*/
-    /*https://chrisburnell.com/clamp-calculator/?font-size-root=16&size-min=16&size-max=28&viewport-min=500&viewport-max=1000&viewport-units=vi*/
-    --content-inline-padding: clamp(var(--ds-size-4), calc(0.27rem + 2.4vw), var(--ds-size-7));
-    /*--content-inline-padding: var(--ds-size-7);*/
     --header-height: 75px;
-    @media screen and (max-width: 1500px) {
-      --sidebar-left-width: 240px;
-      --sidebar-right-width: 240px;
-      --page-spacing-top: var(--ds-size-8);
-      --page-spacing-bottom: var(--ds-size-12);
-    }
-  }
-  /*postcss or whatever struggles with multiple mediaqueries in the same :root*/
-  :root {
+
     @media screen and (max-width: 600px) {
       --header-height: 68px;
     }
   }
-  .l-sidebar-left {
-    display: flex;
-    flex-direction: column;
-    position: sticky;
-    border-right: 1px solid var(--ds-color-neutral-border-subtle);
-    top: var(--header-height);
-    overflow-y: auto;
-    max-height: calc(100vh - var(--header-height));
-    padding-top: var(--ds-size-7);
-    scrollbar-color: var(--ds-color-neutral-border-subtle) transparent;
-    /*counter the padding to align with logo while not breaking the active style*/
-    margin-left: calc(var(--ds-size-4) * -1);
+  body {
+    min-height: 100%;
+    font-family: 'Inter', sans-serif;
+    font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+      'skip'
+      'header'
+      'main'
+      'footer';
 
-    overscroll-behavior: contain;
-    > nav {
-      margin-bottom: var(--header-height);
+    .ds-skip-link {
+      grid-area: skip;
+    }
+    header {
+      grid-area: header;
+    }
+    main {
+      grid-area: main;
+    }
+    footer {
+      grid-area: footer;
     }
   }
+  /* outer content layout used on all pages except blog*/
   .l-content-container {
     container: content-container / inline-size;
     width: 100%;
@@ -109,16 +94,10 @@ body {
     &:has(.l-sidebar-left) {
       max-width: var(--max-page-width);
       grid-template-columns: var(--sidebar-left-width) minmax(0, 1fr);
-      column-gap: 110px;
-      @media screen and (max-width: 1500px) {
-        column-gap: 48px;
-      }
+      column-gap: clamp(48px, -173.429px + 14.762vi, 110px); /*from screen 1500px to 1920px*/
+
       @media screen and (max-width: 958px) {
         display: block;
-        .l-sidebar-left {
-          border-right: initial;
-          position: static;
-        }
       }
     }
   }
@@ -128,11 +107,13 @@ body {
 }
 @layer site.breakout-grid {
   /*https://layout-breakouts-builder.vercel.app/*/
+  /*blog page uses this layout, which aligns different types of content with named grid lines*/
   .l-breakout-grid {
     --long-content-width: 860px;
     --short-content-width: 640px;
     /** Track sizes **/
     --content-full-bleed: minmax(var(--content-inline-padding), 1fr);
+    --content-page: minmax(0, calc((var(--max-page-width) - var(--max-content-width)) * 0.5));
     --content-max: minmax(0, calc((var(--max-content-width) - var(--long-content-width)) * 0.5));
     --content: minmax(0, calc((var(--long-content-width) - var(--short-content-width)) * 0.5));
     --text: min(var(--short-content-width), 100% - var(--content-inline-padding) * 2);
@@ -141,6 +122,8 @@ body {
     grid-template-columns:
       [content-full-bleed-start]
       var(--content-full-bleed)
+      [content-page-start]
+      var(--content-page)
       [content-max-start]
       var(--content-max)
       [content-start]
@@ -152,6 +135,8 @@ body {
       [content-end]
       var(--content-max)
       [content-max-end]
+      var(--content-page)
+      [content-page-end]
       var(--content-full-bleed)
       [content-full-bleed-end];
 
@@ -274,7 +259,8 @@ body {
 }
 
 @layer site.rich-text {
-  .u-rich-text {
+  .u-rich-text,
+  .u-rich-text .ds-card__block {
     & > *:first-child {
       margin-top: 0;
     }
@@ -282,19 +268,18 @@ body {
     & > *:last-child {
       margin-bottom: 0;
     }
-    &.left-adjusted {
-      > * {
-        max-width: var(--short-content-width);
-      }
-      :where(div:not([class]), img, section, figure, table, video, iframe, [data-iframe-video], .u-long-content, .dodont-row) {
-        max-width: var(--long-content-width);
-      }
-      :where(.u-short-content) {
-        max-width: var(--short-content-width);
-      }
-      hr {
-        margin-inline: 0;
-      }
+
+    > * {
+      max-width: var(--short-content-width);
+    }
+    :where(div:not([class]), img, section, figure, table, video, iframe, [data-iframe-video], .u-long-content, .dodont-row) {
+      max-width: var(--long-content-width);
+    }
+    :where(.u-short-content) {
+      max-width: var(--short-content-width);
+    }
+    > hr {
+      margin-inline: 0;
     }
 
     & > p {
@@ -339,7 +324,6 @@ body {
 
     & > ul,
     & > ol {
-      max-width: 100%;
       padding-left: var(--ds-size-5);
       box-sizing: border-box;
       margin-bottom: var(--ds-size-5);

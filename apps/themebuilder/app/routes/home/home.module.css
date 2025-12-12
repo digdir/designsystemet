@@ -21,11 +21,12 @@ div[data-color-scheme='dark'][data-theme='two'] .main {
   width: 600px;
   margin: 0 auto;
   text-align: center;
-  margin-top: var(--ds-size-8);
+  margin-top: var(--ds-size-14);
 
   @media screen and (max-width: 768px) {
     width: 100%;
     padding: 0 var(--ds-size-6);
+    margin-top: var(--ds-size-8);
   }
 }
 
