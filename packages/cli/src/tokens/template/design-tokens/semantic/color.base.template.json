@@ -3,11 +3,11 @@
     "focus": {
       "inner": {
         "$type": "color",
-        "$value": "{color.neutral.background-default}"
+        "$value": "{focus.inner}"
       },
       "outer": {
         "$type": "color",
-        "$value": "{color.neutral.text-default}"
+        "$value": "{focus.outer}"
       }
     }
   },
