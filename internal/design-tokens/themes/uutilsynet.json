@@ -601,6 +601,16 @@
       }
     }
   },
+  "focus": {
+    "inner": {
+      "$type": "color",
+      "$value": "{uutilsynet.focus.inner}"
+    },
+    "outer": {
+      "$type": "color",
+      "$value": "{uutilsynet.focus.outer}"
+    }
+  },
   "font-family": {
     "$type": "fontFamilies",
     "$value": "{uutilsynet.font-family}"

@@ -601,6 +601,16 @@
       }
     }
   },
+  "focus": {
+    "inner": {
+      "$type": "color",
+      "$value": "{portal.focus.inner}"
+    },
+    "outer": {
+      "$type": "color",
+      "$value": "{portal.focus.outer}"
+    }
+  },
   "font-family": {
     "$type": "fontFamilies",
     "$value": "{portal.font-family}"
