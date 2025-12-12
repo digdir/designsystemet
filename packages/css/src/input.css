@@ -2,7 +2,9 @@
   margin: 0; /* Reset native margin, but resepect parent selevtor `.someting > * { margin: ... }` */
 }
 .ds-input {
-  --dsc-input-padding: var(--ds-size-2) var(--ds-size-3);
+  --dsc-input-padding-block: var(--ds-size-2);
+  --dsc-input-padding-inline: var(--ds-size-3);
+  --dsc-input-padding: var(--dsc-input-padding-block) var(--dsc-input-padding-inline);
   --dsc-input-size--toggle: var(--ds-size-6);
   --dsc-input-size: var(--ds-size-12);
   /* Background */
@@ -34,6 +36,7 @@
   --_dsc-input-diagonal-2: currentcolor calc(50% - var(--dsc-input-stroke-width));
   --_dsc-input-diagonal-3: currentcolor calc(50% + var(--dsc-input-stroke-width));
   --_dsc-input-diagonal-4: transparent calc(52% + var(--dsc-input-stroke-width));
+  --dsc-input-line-height: var(--ds-line-height-md);
   --_dsc-input-spacing--toggle: calc(var(--ds-size-1) / 2);
 
   appearance: none;
@@ -46,7 +49,7 @@
   color: var(--dsc-input-color);
   font-family: inherit;
   height: var(--dsc-input-size);
-  line-height: inherit;
+  line-height: var(--dsc-input-line-height);
   max-width: 100%; /* Ensure input does not grow outside bounds even with a high value in size="" or cols="" */
   min-width: 0; /* Allow shrinking in flex container, see https://ishadeed.com/article/min-max-css/#setting-min-width-to-zero-with-flexbox */
   padding: var(--dsc-input-padding);
@@ -124,6 +127,12 @@
     &:not([rows]) {
       field-sizing: content;
     }
+  }
+  &:not([type='button'], [type='radio'], [type='checkbox'], [type='color'], [type='file'], textarea, select) {
+    /* This fixes Å looking like Ă (top part of ring was cut off) in Chrome and Safari */
+    height: unset;
+    /* The following ensures the same height as before */
+    padding-block: calc((var(--dsc-input-size) - var(--dsc-input-line-height) * 1em) / 2 - var(--dsc-input-border-width));
   }
 
   /* Using select:where() to decrease specificity */
