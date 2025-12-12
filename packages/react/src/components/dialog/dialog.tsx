@@ -25,6 +25,11 @@ export type DialogProps = MergeRight<
      */
     closedby?: 'none' | 'closerequest' | 'any';
     /**
+     * Display dialog as a drawer from the specified side.
+     *
+     */
+    drawer?: 'left' | 'right' | 'top' | 'bottom';
+    /**
      * Toogle modal and non-modal dialog.
      *
      * @see [mdn modal dialog](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#creating_a_modal_dialog)
@@ -79,6 +84,7 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
       asChild,
       children,
       className,
+      drawer,
       closeButton = 'Lukk dialogvindu',
       closedby = 'closerequest',
       modal = true,
@@ -155,6 +161,7 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
       <Component
         className={cl('ds-dialog', className)}
         ref={mergedRefs}
+        data-drawer={drawer}
         data-modal={modal}
         closedby={closedby}
         {...rest}
