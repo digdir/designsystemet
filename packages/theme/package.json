@@ -17,6 +17,7 @@
     "./tailwind": {
       "default": "./src/themes/designsystemet.tailwind.css"
     },
+    "./index.css": "./src/themes/designsystemet.css",
     "./*": "./brand/*",
     "./digdir/*": "./brand/*",
     "./configs/*": "./configs/*"

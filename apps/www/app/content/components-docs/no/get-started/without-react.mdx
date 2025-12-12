@@ -1,17 +1,20 @@
 ---
 title: Kom i gang uten React
 sidebar_title: Uten React
-order: 60
+order: 50
 ---
 
-Vil du bruke Designsystemet uten React så har du lite å frykte, me tilbyr CSS pakken som er laget for å brukes uten React.
-Det anbefales at du også leser om [CSS](/no/components/get-started/css).
+Ingen React? Ingen problem! Designsystemet har som mål å vere teknologiuavhengig.
+Sjølv om vi tilbyr React-komponentar, er det ikkje eit krav for å bruke Designsystemet.
+Sidan vi nyttar standard `data-`-attributt i HTML, er allereie store delar av Designsystemet rein `HTML` + `CSS`, 
+og kan brukast saman med andre rammeverk som Vue, Angular, Svelte eller liknande.
 
-Du vil ikkje få med alle fordelane som React komponentane gir deg, men du kan fortsatt bruke Designsystemet sine stilar og tema.
+Det er berre nokre få delar av funksjonaliteten som kun er tilgjengeleg i React, som for eksempel automatisk handtering av tilgjengelegheit og plassering av popovers. 
+Dette arbeider vi med å løfte ut av React og gjere tilgjengeleg for alle teknologiar i starten av 2026. [Følg arbeidet på GitHub](https://github.com/digdir/designsystemet/issues/1044)
 
 ## Kom i gang
 
-For å bruke Designsystemets CSS, så må du installere `@digdir/designsystemet-css`. Du kan også installere `@digdir/designsystemet-theme`, eller [lage ditt eget tema](/no/fundamentals/themebuilder/own-theme). Du kan lett lage ditt eget tema senere.
+For å bruke Designsystemets uten React, trenger du CSS pakka. Du kan også installere `@digdir/designsystemet-theme` (for standard Designsystemet stil), eller [lage ditt eget tema](/no/fundamentals/themebuilder/own-theme). Du kan lett lage ditt eget tema senere.
 
 ```sh
 npm i @digdir/designsystemet-css @digdir/designsystemet-theme
@@ -24,16 +27,19 @@ Du kan importere CSS filene direkte i din hoved CSS fil, eller legge de til som 
 #### Import i CSS fil
 
 ```css
-@import '@digdir/designsystemet-theme/index.css';
 @import '@digdir/designsystemet-css/index.css';
+@import '@digdir/designsystemet-theme/index.css';
 ```
 
-#### Legg til som `<link>` tagger
+#### Import i JS fil
 
-```html
-<link rel="stylesheet" href="path/to/node_modules/@digdir/designsystemet-theme/index.css" />
-<link rel="stylesheet" href="path/to/node_modules/@digdir/designsystemet-css/index.css" />
+Hvis du har støtte for å importere CSS i JavaScript filer, kan du bruke denne metoden:
+
+```js
+import '@digdir/designsystemet-css/index.css';
+import '@digdir/designsystemet-theme/index.css';
 ```
+
 
 ## Ta i bruk
 
