@@ -128,7 +128,7 @@
       field-sizing: content;
     }
   }
-  &:not([type='button'], [type='radio'], [type='checkbox'], [type='color'], [type='file'], [type='textarea'], select) {
+  &:not([type='button'], [type='radio'], [type='checkbox'], [type='color'], [type='file'], textarea, select) {
     /* This fixes Å looking like Ă (top part of ring was cut off) in Chrome and Safari */
     height: unset;
     /* The following ensures the same height as before */
