@@ -32,6 +32,16 @@ export const generateTheme = (colors: Colors, themeName: string, borderRadius: n
         },
       },
     },
+    focus: {
+      inner: {
+        $type: 'color',
+        $value: `{${themeName}.focus.inner}`,
+      },
+      outer: {
+        $type: 'color',
+        $value: `{${themeName}.focus.outer}`,
+      },
+    },
     ...remainingThemeFile,
   };
 

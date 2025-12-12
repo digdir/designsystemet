@@ -601,6 +601,16 @@
       }
     }
   },
+  "focus": {
+    "inner": {
+      "$type": "color",
+      "$value": "{altinn.focus.inner}"
+    },
+    "outer": {
+      "$type": "color",
+      "$value": "{altinn.focus.outer}"
+    }
+  },
   "font-family": {
     "$type": "fontFamilies",
     "$value": "{altinn.font-family}"

@@ -533,6 +533,16 @@
         "$type": "color",
         "$value": "#663299"
       }
+    },
+    "focus": {
+      "inner": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
+      "outer": {
+        "$type": "color",
+        "$value": "#292c30"
+      }
     }
   }
 }
