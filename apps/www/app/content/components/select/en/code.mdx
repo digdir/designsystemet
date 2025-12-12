@@ -28,6 +28,8 @@ You can use `Select.Optgroup` to group options into categories, making long list
 
 ### ReadOnly
 
+`<select>` is always `:read-only`, and does not support this in the same way as input types you can type into. If you set `readOnly` on a select, we ensure that it behaves as if it has read-only access, by preventing `onKeyDown` and `onMouseDown`. The user will still be able to focus on the element.
+
 <Story story="ReadOnlyEn" />
 
 ## HTML
@@ -40,6 +42,8 @@ Append the class name `ds-select` to `<select>`.
   <option value="3">Option 3</option>
 </select>
 ```
+
+If you want `readonly` on a select, you must stop `onKeyDown` and `onMouseDown` yourself to prevent changing the state.
 
 ## CSS variables and data attributes
 
