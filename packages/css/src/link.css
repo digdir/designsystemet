@@ -16,6 +16,17 @@
   text-underline-offset: 0.27em; /* 5px ish */
   border-radius: var(--dsc-link-border-radius);
 
+  /* Revert <button> styling */
+  &:is(button) {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    text-align: inherit;
+  }
+
   & :is(img, svg) {
     vertical-align: middle; /* Align img or svg icon with text */
   }
