@@ -13,6 +13,7 @@
   --dsc-dialog-max-height: 80vh;
   --dsc-dialog-max-width: 40rem;
   --dsc-dialog-spacing: var(--ds-size-6);
+  --dsc-drawer-side-max-width: 40rem;
 
   /* Internal */
   --_dsc-dialog-icon-top-right-margin: calc(var(--dsc-dialog-spacing) * -1 + var(--dsc-dialog-icon-spacing));
@@ -21,7 +22,7 @@
   animation: ds-dialog-fade-in 0.2s forwards;
   background: var(--dsc-dialog-background);
   border-color: var(--dsc-dialog-border-color);
-  border-radius: var(--ds-border-radius-lg);
+  border-radius: clamp(0px, ((100vw - 4px) - 100%) * 1e5, var(--ds-border-radius-lg)); /*auto remove border-radius when it touches edge*/
   border-style: var(--dsc-dialog-border-style);
   border-width: var(--dsc-dialog-border-width);
   bottom: auto;
@@ -46,11 +47,57 @@
        custom properties in Chrome until version 122 (mid-2024) */
     background: var(--dsc-dialog-backdrop-background, rgb(0 0 0 / 0.5));
   }
+  &[data-drawer] {
+    inset: 0;
+    transform: none;
+  }
+  &[data-drawer='bottom'] {
+    top: auto;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+  &[data-drawer='top'] {
+    bottom: auto;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+  &:where([data-drawer='left'], [data-drawer='right']) {
+    border-radius: 0;
+    height: 100%;
+    /* biome-ignore lint/suspicious/noDuplicateProperties: <fallback> */
+    height: -webkit-fill-available;
+    height: stretch;
+    max-height: unset;
+    max-width: var(--dsc-drawer-side-max-width);
+  }
+  &[data-drawer='left'] {
+    right: auto;
+  }
+  &[data-drawer='right'] {
+    left: auto;
+  }
 
   &[open] {
     animation:
       ds-dialog-slide-in 300ms ease-in-out,
       ds-dialog-fade-in 300ms ease-in-out;
+
+    &[data-drawer='bottom'] {
+      animation: ds-drawer-slide-up 300ms ease;
+    }
+    &[data-drawer='top'] {
+      animation: ds-drawer-slide-down 300ms ease;
+    }
+    &[data-drawer='left'] {
+      animation: ds-drawer-slide-left 300ms ease;
+    }
+    &[data-drawer='right'] {
+      animation: ds-drawer-slide-right 300ms ease;
+    }
   }
 
   &:has(> .ds-dialog__block) {
@@ -69,7 +116,6 @@
   @media (max-width: 40rem) {
     min-width: 100%;
     max-width: 100%;
-    border-radius: 0;
   }
 
   /* Close button */
@@ -141,5 +187,25 @@ body:has(.ds-dialog:modal) {
 @keyframes ds-dialog-fade-in {
   from {
     opacity: 0;
+  }
+}
+@keyframes ds-drawer-slide-up {
+  from {
+    translate: 0 100%;
+  }
+}
+@keyframes ds-drawer-slide-down {
+  from {
+    translate: 0 -100%;
+  }
+}
+@keyframes ds-drawer-slide-left {
+  from {
+    translate: -100% 0;
+  }
+}
+@keyframes ds-drawer-slide-right {
+  from {
+    translate: 100% 0;
   }
 }
