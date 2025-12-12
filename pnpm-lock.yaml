@@ -461,8 +461,8 @@ importers:
         specifier: workspace:^
         version: link:../types
       '@tokens-studio/sd-transforms':
-        specifier: 2.0.2
-        version: 2.0.2(style-dictionary@5.1.1)
+        specifier: 2.0.3
+        version: 2.0.3(style-dictionary@5.1.1)
       apca-w3:
         specifier: ^0.1.9
         version: 0.1.9
@@ -2374,8 +2374,8 @@ packages:
     peerDependencies:
       '@testing-library/dom': '>=7.21.4'
 
-  '@tokens-studio/sd-transforms@2.0.2':
-    resolution: {integrity: sha512-ul37oAtMg3KDZS4fgvpTyFH7fvyhhRZmLrKfd4vAiyvgbio6mC7H7AqE9at1vj0hg86IBPlUU3aDS6aVSnVbyQ==}
+  '@tokens-studio/sd-transforms@2.0.3':
+    resolution: {integrity: sha512-PyrmRb7FuJBHzsbuWNk/O06hJbaZ+RL7chmK7PRbEptaSruhANai7Kxja5CiYnTcxOj373uRMDPxoFwCHaVpvA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       style-dictionary: ^5.0.0
@@ -3440,8 +3440,8 @@ packages:
     resolution: {integrity: sha512-JhFGDVJ7tmDJItKhYgJCGLOWjuK9vPxiXoUFLwLDc99NlmklilbiQJwoctZtt13+xMw91MCk/REan6MWHqDjyA==}
     engines: {node: '>=12.0.0'}
 
-  expr-eval-fork@3.0.0:
-    resolution: {integrity: sha512-29S+IZ2g8qSk5q7gOUYozO7zi4mj/sCVo+HB2h0f0ER4ZCZr9b/+5SWIedvV0SHq3IxBW2/TJrPn77YxMsoVwg==}
+  expr-eval-fork@3.0.1:
+    resolution: {integrity: sha512-JRex9aykIt6AqhcQK+u1bFcBy2f+muwJoGCtAZmOC0yrktaCegtH42sLnZdNsD2/Ko9j+3pLWi4nIkNQez02bg==}
     engines: {node: '>=16.9.0'}
 
   express@4.21.2:
@@ -7719,13 +7719,13 @@ snapshots:
     dependencies:
       '@testing-library/dom': 10.4.1
 
-  '@tokens-studio/sd-transforms@2.0.2(style-dictionary@5.1.1)':
+  '@tokens-studio/sd-transforms@2.0.3(style-dictionary@5.1.1)':
     dependencies:
       '@bundled-es-modules/deepmerge': 4.3.1
       '@bundled-es-modules/postcss-calc-ast-parser': 0.1.6
       '@tokens-studio/types': 0.5.2
       colorjs.io: 0.5.2
-      expr-eval-fork: 3.0.0
+      expr-eval-fork: 3.0.1
       is-mergeable-object: 1.1.1
       style-dictionary: 5.1.1
 
@@ -8874,7 +8874,7 @@ snapshots:
 
   expect-type@1.2.2: {}
 
-  expr-eval-fork@3.0.0: {}
+  expr-eval-fork@3.0.1: {}
 
   express@4.21.2:
     dependencies:
