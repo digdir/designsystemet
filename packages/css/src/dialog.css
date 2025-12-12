@@ -14,6 +14,7 @@
   --dsc-dialog-max-width: 40rem;
   --dsc-dialog-spacing: var(--ds-size-6);
   --dsc-drawer-side-max-width: 40rem;
+  --dsc-drawer-block-max-width: 100%;
 
   /* Internal */
   --_dsc-dialog-icon-top-right-margin: calc(var(--dsc-dialog-spacing) * -1 + var(--dsc-dialog-icon-spacing));
@@ -51,19 +52,10 @@
     inset: 0;
     transform: none;
   }
-  &[data-drawer='bottom'] {
-    top: auto;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    max-width: 100%;
+  &:where([data-drawer='bottom'], [data-drawer='top']) {
+    max-width: var(--dsc-drawer-block-max-width);
     width: 100%;
-  }
-  &[data-drawer='top'] {
-    bottom: auto;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    max-width: 100%;
-    width: 100%;
+    margin-inline: auto;
   }
   &:where([data-drawer='left'], [data-drawer='right']) {
     border-radius: 0;
@@ -73,6 +65,18 @@
     height: stretch;
     max-height: unset;
     max-width: var(--dsc-drawer-side-max-width);
+  }
+  &[data-drawer='bottom'] {
+    top: auto;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 0;
+  }
+  &[data-drawer='top'] {
+    bottom: auto;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: 0;
   }
   &[data-drawer='left'] {
     right: auto;
