@@ -13,3 +13,6 @@ Add ability to override focus colors from config:
   }
 }
 ```
+
+This comes with a change to you design tokens, where focus colors are now on the theme layer.
+Make sure you rebuild your tokens: `npx @digdir/designsystemet tokens create <options> --clean`
