@@ -15,11 +15,11 @@
   --dsc-dialog-spacing: var(--ds-size-6);
   --dsc-dialog-placement-inline-max-width: 40rem; /*max-width when placement="left | right"*/
   --dsc-dialog-placement-block-max-width: 100%; /*max-width when placement="top | bottom"*/
+  --dsc-dialog-transition-duration: 300ms;
 
   /* Internal */
   --_dsc-dialog-icon-top-right-margin: calc(var(--dsc-dialog-spacing) * -1 + var(--dsc-dialog-icon-spacing));
 
-  animation: ds-dialog-fade-in 0.2s forwards;
   background: var(--dsc-dialog-background);
   border-color: var(--dsc-dialog-border-color);
   border-radius: clamp(0px, ((100vw - 4px) - 100%) * 1e5, var(--ds-border-radius-lg)); /*auto remove border-radius when it touches edge*/
@@ -48,7 +48,7 @@
   */
 
   &::backdrop {
-    animation: ds-dialog-fade-in 300ms ease-in-out;
+    animation: ds-dialog-fade-in var(--dsc-dialog-transition-duration) ease-in-out;
     /* we include a fallback color because ::backdrop didn't inherit
        custom properties in Chrome until version 122 (mid-2024) */
     background: var(--dsc-dialog-backdrop-background, rgb(0 0 0 / 0.5));
@@ -94,20 +94,20 @@
 
   &[open] {
     animation:
-      ds-dialog-slide-in 300ms ease-in-out,
-      ds-dialog-fade-in 300ms ease-in-out;
+      ds-dialog-slide-in var(--dsc-dialog-transition-duration) ease-in-out,
+      ds-dialog-fade-in var(--dsc-dialog-transition-duration) ease-in-out;
 
     &[data-placement='bottom'] {
-      animation: ds-dialog-slide-up 300ms ease;
+      animation: ds-dialog-slide-up var(--dsc-dialog-transition-duration) ease;
     }
     &[data-placement='top'] {
-      animation: ds-dialog-slide-down 300ms ease;
+      animation: ds-dialog-slide-down var(--dsc-dialog-transition-duration) ease;
     }
     &[data-placement='left'] {
-      animation: ds-dialog-slide-left 300ms ease;
+      animation: ds-dialog-slide-left var(--dsc-dialog-transition-duration) ease;
     }
     &[data-placement='right'] {
-      animation: ds-dialog-slide-right 300ms ease;
+      animation: ds-dialog-slide-right var(--dsc-dialog-transition-duration) ease;
     }
   }
 
