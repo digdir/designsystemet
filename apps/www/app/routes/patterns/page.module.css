@@ -56,13 +56,3 @@
 .content {
   grid-area: content;
 }
-.tableOfContents {
-  grid-area: aside;
-  align-self: start;
-}
-
-@media (max-width: 1180px) {
-  .tableOfContents {
-    display: none;
-  }
-}

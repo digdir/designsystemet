@@ -105,11 +105,7 @@ export default function Patterns({
           </Paragraph>
         </div>
       </div>
-      <TableOfContents
-        className={classes.tableOfContents}
-        title={frontmatter.title}
-        items={toc}
-      >
+      <TableOfContents title={frontmatter.title} items={toc}>
         <div className='toc-feedback'>
           <Paragraph data-size='sm'>{t('toc.feedback.page')}</Paragraph>
           <Button
@@ -124,7 +120,7 @@ export default function Patterns({
           </Button>
         </div>
       </TableOfContents>
-      <div className={cl(classes.content, 'u-rich-text left-adjusted')}>
+      <div className={cl(classes.content, 'u-rich-text')}>
         <MDXComponents code={code} />
         <EditPageOnGithub />
       </div>
@@ -147,7 +143,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <div>
+    <div id='main'>
       <Heading level={1}>{message}</Heading>
       <Paragraph>{details}</Paragraph>
     </div>

@@ -22,7 +22,7 @@ export const Floating = () => (
 );
 
 export const Bullet = () => (
-  <div>
+  <div style={{ display: 'flex', alignItems: 'center' }}>
     <Badge data-color='success' style={{ marginInlineEnd: '0.5rem' }} />
     Aktiv
   </div>

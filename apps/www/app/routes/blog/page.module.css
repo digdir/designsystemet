@@ -1,29 +1,46 @@
+.content {
+  position: relative;
+  overflow-x: clip;
+}
 .decoration {
+  display: block;
+  margin: 0;
+  box-shadow: initial;
+  border-radius: 0;
+  opacity: 0.6;
+  position: relative;
+  width: 100%;
+  max-width: 200px;
+
   &[data-variant='1'] {
     grid-column-start: content-max-start;
-    grid-column-end: content-start;
-    left: 0;
-    width: 200px;
-    top: 30px;
+    grid-column-end: text-start;
+    top: 120px;
+    grid-row: 1;
   }
   &[data-variant='2'] {
-    left: calc(100% + 80px);
-    width: 190px;
-    top: 70px;
+    grid-column-start: content-end;
+    grid-column-end: content-page-end;
+    rotate: -90deg;
+    place-self: center;
+    grid-row-start: 3;
+    grid-row-end: 6;
   }
   &[data-variant='3'] {
-    left: calc(100% + 70px);
-    width: 120px;
-    top: 90%;
+    grid-column-start: content-page-start;
+    grid-column-end: content-start;
+    rotate: 45deg;
+    place-self: center;
+    position: absolute;
+    bottom: 100vh;
   }
   &[data-variant='4'] {
-    right: calc(100% + 70px);
-    width: 200px;
-    top: 80%;
+    grid-column-start: content-end;
+    grid-column-end: content-page-end;
+    place-self: center;
+    position: absolute;
+    bottom: 250px;
   }
-  /*   @media (max-width: 1740px) {
-    display: none;
-  } */
 }
 .intro {
   display: flex;
@@ -99,6 +116,12 @@
   }
   & :where(p, h3) {
     margin: 0;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .decoration {
+    display: none;
   }
 }
 

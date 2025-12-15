@@ -1,6 +1,6 @@
 import { join } from 'node:path';
 import { useTranslation } from 'react-i18next';
-import { Outlet, useMatches } from 'react-router';
+import { Outlet } from 'react-router';
 import { Sidebar } from '~/_components/sidebar/sidebar';
 import {
   getFileFromContentDir,
@@ -36,20 +36,18 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
 
   if (lang === 'no') {
     cats.Introduksjon = [];
-    cats['Design Tokens'] = [];
+    cats.Designelementer = [];
     cats.Temabygger = [];
     cats.Kode = [];
     cats.Figma = [];
-    cats.Ressurser = [];
   }
 
   if (lang === 'en') {
     cats.Introduction = [];
-    cats['Design Tokens'] = [];
+    cats['Design Elements'] = [];
     cats['Theme Builder'] = [];
     cats.Code = [];
     cats.Figma = [];
-    cats.Resources = [];
   }
 
   /* Map over files with mdx parser to get title */
@@ -110,18 +108,11 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
 };
 
 export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
-  const matches = useMatches();
   const { t } = useTranslation();
-
-  /* if we have id fundamentals-page, hide banner */
-  const isGrunnleggendePage = matches.some(
-    (match) => match.id === 'fundamentals-page',
-  );
-
   return (
-    <div className={'l-content-container'} data-is-main={!isGrunnleggendePage}>
+    <div className={'l-content-container'}>
       <Sidebar cats={cats} hideCatTitle title={t('fundamentals.title')} />
-      <div className={classes.content}>
+      <div className={classes.content} id='main'>
         <Outlet />
       </div>
     </div>

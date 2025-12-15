@@ -20,7 +20,7 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 
 [www](https://designsystemet.no/) - Documentation.
 
-[Storybook](https://storybook.designsystemet.no/) - Preview for HTML, CSS & React components.
+[Storybook](https://storybook.designsystemet.no/) - Preview for HTML, CSS & React components. Only for developers, no documentation.
 
 [Theme builder](https://theme.designsystemet.no/) - Theme builder.
 
@@ -28,125 +28,19 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 
 [`@digdir/designsystemet`](https://www.npmjs.com/package/@digdir/designsystemet) - CLI for Designsystemet.
 
-[`@digdir/designsystemet-css`](https://www.npmjs.com/package/@digdir/designsystemet-css) - CSS implementation of Designsystemet components.
+[`@digdir/designsystemet-css`](https://www.npmjs.com/package/@digdir/designsystemet-css) - CSS implementation of Designsystemet components. Used by the React package.
 
 [`@digdir/designsystemet-react`](https://www.npmjs.com/package/@digdir/designsystemet-react) - React implementation of Designsystemet components.
 
 [`@digdir/designsystemet-theme`](https://www.npmjs.com/package/@digdir/designsystemet-theme) - Digdir themes for Designsystemet.
 
-
+[`@digdir/designsystemet-types`](https://www.npmjs.com/package/@digdir/designsystemet-types) - Types for Designsystemet.
 
 ## 🚀 Get started
 
-Follow these steps to get started with Designsystemet in code.
-
-### 1. Install
-
-Install the essential packages to get started with Designsystemet:
-
-```sh
-@digdir/designsystemet-css 
-@digdir/designsystemet-theme # or custom theme 
-```
-
-Install `@digdir/designsystemet-theme` if you need any of the Digdir themes. Uses a custom theme for the themebuilder by default.
-
-#### 1.1 Custom theme
-
-Create your own theme for Designsystemet by going to our [theme builder](https://theme.designsystemet.no/).
-
-Designsystemet theming is defined using [design-tokens](https://www.uxpin.com/studio/blog/what-are-design-tokens). 
-This is done so that you can use [Token Studio](https://tokens.studio/) to sync your theme in code with [Designsystemet Figma UI kit](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit), in addition to provide future flexibility.
-
-Run `npx @digdir/designsystemet tokens build` to build a CSS file for your custom theme (from your design-tokens) which you can then import to theme Designsystemet.
-
-** Using a custom theme you can skip the `@digdir/designsystemet-theme` **
-
-
-#### 1.2 React
-
-Install `@digdir/designsystemet-react` if you want to use the React components.
-
-```jsx
-import '@digdir/designsystemet-css/index.css';
-import '@digdir/designsystemet-theme'; // or custom theme CSS file
-
-import { Button } from '@digdir/designsystemet-react';
-
-<Button variant='secondary'>I am a button!</Button>;
-```
-
-`@digdir/designsystemet-theme` and `@digdir/designsystemet-css` only needs to be imported once.
-
-#### 1.3 Typescript
-
-Types for your theme can be found under `@digdir/designsystemet-types` when combined with the generated types file, `types.d.ts`, for your theme.
-
-Add the following to your `tsconfig.json`
-```jsonc
-{
-  "compilerOptions": {
-    "types": [
-      "<custom-theme>/types.d.ts" or "@digdir/designsystemet-theme" (default theme) or "@digdir/designsystemet-theme/types.d.ts" (pre made brand themes),
-      ]
-  },
-}
-```
-
-##### React JSX elements
-
-If you are using React and Typescript you can also enable editor hints on any JSX elements for `data-color` and `data-size` based on your theme.
-
-This requires augmenting React's built-in types, and is therefore opt-in. 
-If you want this, add the following to your `tsconfig.json` in addition to types above:
-
-```jsonc
-{
-  "compilerOptions": {
-    "types": [
-      "@digdir/designsystemet-react/react-types", // adds typesafety for data-color, data-size on React JSX elements
-      ]
-  },
-}
-```
-
-##### Polyfill
-
-Designsystemet uses [popover](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover). Since this api is still classified as [Baseline: Newly available](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility), consider adding the polyfill for this feature.
-* [Popover-Polyfill](https://github.com/oddbird/popover-polyfill)
-
-### 2. Font
-
-You are free to use any font-family.
-
-The components are designed and developed using the [Inter font](https://github.com/rsms/inter) so variations might occur if a different font is used.
-
-#### 2.1 Use Inter font (optional)
-
-Add the `<link>` tag in `<head>`, and set `font-family` to `Inter` in your global css file.
-
-##### HTML
-
-```html
-<link
-  rel="stylesheet"
-  href="https://altinncdn.no/fonts/inter/v4.1/inter.css"
-  integrity="sha384-OcHzc/By/OPw9uJREawUCjP2inbOGKtKb4A/I2iXxmknUfog2H8Adx71tWVZRscD"
-  crossorigin="anonymous"
-/>
-```
-
-##### CSS
-
-```css
-body {
-  font-family: 'Inter', sans-serif;
-  font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */
-}
-```
-
-The `font-feature-settings` adds a tail to lowercase `L`'s.
-If you install the font in a different way, remember to include the `400`, `500` and `600` font weights.
+Please refer to our differen guides for getting started:
+- [React](https://designsystemet.no/en/components/get-started/react)
+- [without React](https://designsystemet.no/en/components/get-started/without-react)
 
 ## 🫶 Contributing
 
