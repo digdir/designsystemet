@@ -599,14 +599,12 @@
         "$type": "color",
         "$value": "{altinn.link.visited}"
       }
-    }
-  },
-  "focus": {
-    "inner": {
+    },
+    "focus-inner": {
       "$type": "color",
       "$value": "{altinn.focus.inner}"
     },
-    "outer": {
+    "focus-outer": {
       "$type": "color",
       "$value": "{altinn.focus.outer}"
     }

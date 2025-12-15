@@ -599,14 +599,12 @@
         "$type": "color",
         "$value": "{uutilsynet.link.visited}"
       }
-    }
-  },
-  "focus": {
-    "inner": {
+    },
+    "focus-inner": {
       "$type": "color",
       "$value": "{uutilsynet.focus.inner}"
     },
-    "outer": {
+    "focus-outer": {
       "$type": "color",
       "$value": "{uutilsynet.focus.outer}"
     }

@@ -599,14 +599,12 @@
         "$type": "color",
         "$value": "{portal.link.visited}"
       }
-    }
-  },
-  "focus": {
-    "inner": {
+    },
+    "focus-inner": {
       "$type": "color",
       "$value": "{portal.focus.inner}"
     },
-    "outer": {
+    "focus-outer": {
       "$type": "color",
       "$value": "{portal.focus.outer}"
     }

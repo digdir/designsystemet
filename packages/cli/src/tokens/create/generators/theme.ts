@@ -31,13 +31,11 @@ export const generateTheme = (colors: Colors, themeName: string, borderRadius: n
           $value: `{${themeName}.link.visited}`,
         },
       },
-    },
-    focus: {
-      inner: {
+      'focus-inner': {
         $type: 'color',
         $value: `{${themeName}.focus.inner}`,
       },
-      outer: {
+      'focus-outer': {
         $type: 'color',
         $value: `{${themeName}.focus.outer}`,
       },
