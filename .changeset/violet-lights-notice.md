@@ -6,4 +6,4 @@
 Added 3 new local variables:
  - `--dsc-dialog-placement-inline-max-width`  (max-width when placement="left | right")
  - `--dsc-dialog-placement-block-max-width` (max-width when placement="top | bottom")
- - `--dsc-dialog-transition-duration` duration for the slide in animations
+ - `--dsc-dialog-transition-duration` (duration for the slide in animations)
