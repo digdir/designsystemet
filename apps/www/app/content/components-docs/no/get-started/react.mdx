@@ -1,36 +1,41 @@
 ---
 title: Kom i gang med React
-sidebar_title: React
+sidebar_title: Med React
 order: 40
 ---
 
 Følg disse stegene for å komme i gang med React-komponentene.
+Det anbefales at du også leser om [CSS](/no/components/get-started/css).
 
 ## 1. Installer pakkene
 
 ```sh
-npm i @digdir/designsystemet-react @digdir/designsystemet-theme @digdir/designsystemet-css @digdir/designsystemet-types
+npm i @digdir/designsystemet-react @digdir/designsystemet-css
+```
+
+Dersom du ikke [lager ditt eget tema](/no/fundamentals/themebuilder/own-theme) må du også intallere `@digdir/designsystemet-theme`.
+Du kan lett lage ditt eget tema senere.
+
+```sh
+npm i @digdir/designsystemet-theme
 ```
 
 ### Typescript
 
-Dersom du bruker Typescript, sørg for at du har typescript >= 3.8 i `devDependencies`:
+Dersom du bruker Typescript, sørg for at du har typescript >= 3.8 og installerer `@digdir/designsystemet-types`:
 
 ```sh
-npm i typescript --save-dev
+npm i typescript @digdir/designsystemet-types --save-dev
 ```
 
 ## 2. Font
 
-Du kan fritt bruke hvilken som helst font-familie med komponentene.
-
 Komponentene er designet og utviklet med [Inter fonten](https://github.com/rsms/inter), så variasjoner kan forekomme dersom du bruker en annen font.
+Dersom du velger å installere fonten på en annen måte, husk å inkludere fontvektene `400`, `500` og `600`.
 
 ### Legg til Inter fonten (valgfritt)
 
-Legg til `<link>` taggen i `<head>`, og sett `font-family` til `Inter` i din globale css fil.
-
-`font-feature-settings` legger til en hale på små `L`'er.
+Legg til `<link>` taggen under i `<head>`, og sett `font-family` til `Inter` i din globale css fil.
 
 #### HTML
 
@@ -57,18 +62,11 @@ body {
 }
 ```
 
-Dersom du velger å installere fonten på en annen måte, husk å inkludere fontvektene `400`, `500` og `600`.
+## 3. Bruk en React-komponent
 
-## 3. Polyfill
-
-Designsystemet bruker [popover](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover) i enkelte komponenter. Dette apiet er klassifisert som [Baseline: Newly available](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) fra april 2024, da Firefox som siste nettleser la det til. I noen tilfeller kan en oppleve at brukere av ulike grunner er låst til eldre nettleserversjoner, og da kan det være aktuelt å legge til en polyfill for å sikre at `popover` fungerer for alle.
-* [Popover-Polyfill](https://github.com/oddbird/popover-polyfill)
-
-## 4. Bruk en React-komponent
-
-```jsx
-import '@digdir/designsystemet-theme';
-import '@digdir/designsystemet-css';
+```tsx
+import '@digdir/designsystemet-theme'; /* eller ditt tema */
+import '@digdir/designsystemet-css'; /* importeres kun en gang */
 
 import { Button } from '@digdir/designsystemet-react';
 
@@ -76,3 +74,10 @@ import { Button } from '@digdir/designsystemet-react';
 ```
 
 `@digdir/designsystemet-theme` og `@digdir/designsystemet-css` må kun importeres én gang i applikasjonen.
+
+## Eksta
+
+### Polyfill
+
+Designsystemet bruker [popover](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover) i enkelte komponenter. Dette apiet er klassifisert som [Baseline: Newly available](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) fra april 2024, da Firefox som siste nettleser la det til. I noen tilfeller kan en oppleve at brukere av ulike grunner er låst til eldre nettleserversjoner, og da kan det være aktuelt å legge til en polyfill for å sikre at `popover` fungerer for alle.
+* [Popover-Polyfill](https://github.com/oddbird/popover-polyfill)

@@ -64,7 +64,7 @@
   "dependencies": {
     "@commander-js/extra-typings": "^14.0.0",
     "@digdir/designsystemet-types": "workspace:^",
-    "@tokens-studio/sd-transforms": "2.0.2",
+    "@tokens-studio/sd-transforms": "2.0.3",
     "apca-w3": "^0.1.9",
     "change-case": "^5.4.4",
     "chroma-js": "^3.2.0",

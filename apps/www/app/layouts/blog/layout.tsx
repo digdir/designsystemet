@@ -9,7 +9,7 @@ export default function Layout() {
   const { t } = useTranslation();
 
   return (
-    <div className='l-content-container'>
+    <div className='l-content-container' id='main'>
       <div className={classes.header}>
         <Heading data-size='lg' level={1}>
           {t('blog.title')}

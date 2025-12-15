@@ -62,7 +62,6 @@
   background-color: var(--ds-color-neutral-background-tinted);
   display: grid;
   grid-template-columns: 1fr auto auto auto;
-  margin-block-end: var(--ds-size-4);
 
   &[hidden] {
     display: none;
@@ -182,4 +181,8 @@
       }
     }
   }
+}
+
+.hidden {
+  display: none;
 }
