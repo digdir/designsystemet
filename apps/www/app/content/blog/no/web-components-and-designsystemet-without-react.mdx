@@ -1,7 +1,7 @@
 ---
 title: Webkomponentar og Designsystemet utan React
-description: Snart kan du bruka designsystemet med både Svelte, Vue, Angular og alle andre teknologiar – også rein HTML og CSS. Korleis blir dette?
-date: 2025-12-08
+description: Snart kan du bruka designsystemet med både Svelte, Vue, Angular og alle andre teknologiar - også rein HTML og CSS. Korleis blir dette?
+date: 2025-12-17
 author: Designsystemet
 imageSrc: /img/blog/web-components.png
 imageAlt: Illustrasjon av webkomponentar
@@ -24,7 +24,7 @@ uavhengig av teknologi og rammeverk. Mange av komponentane fungerer faktisk alle
 ```
 
 I HTML-versjonen nyttar vi standard klassenamn og data-attributt.
-Ikkje berre fungerer dette i alle rammeverk og like godt både på server og i nettlesar – det fungerer òg for alle brukarar!
+Ikkje berre fungerer dette i alle rammeverk og like godt både på server og i nettlesar - det fungerer òg for alle brukarar!
 Standard HTML har nemleg innebygd støtte for skjermlesarar, tastaturnavigasjon og andre hjelpeteknologiar, utan behov for ekstra tilpassingar.
 
 ## Kvifor ikkje lage alt som webkomponentar?
@@ -39,7 +39,7 @@ Sjølv om det kan verke freistande å lage ein webkomponentar av alt, til dømes
 ...ville dette ført til at vi mistar mykje av den innebygde tilgjengelegheita som vanleg HTML gir oss gratis.
 I tillegg får vi dårlegare yting, sidan vi blir avhengige av JavaScript, og du som utviklar kan ikkje lenger nytte HTML-dokumentasjon for å forstå koden.
 
-Kort sagt: Mange komponentar treng – og bør – rett og slett ikkje vere webkomponentar.
+Kort sagt: Mange komponentar treng - og bør - rett og slett ikkje vere webkomponentar.
 Moderne CSS med klassenamn og data-attributt, gir i mange tilfelle både betre fleksibilitet og betre yting.
 
 ## Kva komponentar vil bli webkomponentar?
@@ -49,7 +49,7 @@ Til dømes vil `<ds-field>` kople saman skjemafelt med `<label>` og feilmeldinga
 `<ds-tabs>` vil handtere tab-navigasjon og tilhøyrande innhald.
 
 Andre komponentar, som `Popover` og `Dialog`, treng ikkje bli webkomponentar, fordi web standarden allereie
-tilbyr `events` eller moderene [`command`-attributtar](https://developer.chrome.com/blog/command-and-commandfor) (med tilhøyrende [polyfill](https://github.com/keithamus/invokers-polyfill)) som vi kan nytte for å hjelpe med opning og lukking, og plassering.
+tilbyr `events` eller moderene [`command`-attributtar](https://developer.chrome.com/blog/command-and-commandfor) (med tilhøyrende [polyfill (github.com)](https://github.com/keithamus/invokers-polyfill)) som vi kan nytte for å hjelpe med opning og lukking, og plassering.
 
 Uavhengig av teknisk løysing vil alle komponentane vere baserte på rein HTML,
 fungere på tvers av teknologiar og ha det same API-et:
@@ -61,3 +61,10 @@ Arbeidet med å gjere Designsystemet tilgjengeleg utan React startar januar 2026
 Vi vil fortløpande leggje ut eksperimentelle komponentar i pakken @digdir/designsystemet-native, slik at du raskt kan teste og kome med tilbakemeldingar.
 
 Har du innspel eller tankar, set vi stor pris på om du deler dei med oss - anten på [GitHub](https://github.com/digdir/designsystemet) eller på [Slack](/slack).
+
+<Contributors
+  authors={[
+    'Tobias Barsnes',
+    'Eirik Backer',
+  ]}
+/>
