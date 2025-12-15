@@ -37,28 +37,26 @@ Sjølv om det kan verke freistande å lage ein webkomponentar av alt, til dømes
 ```
 
 ...ville dette ført til at vi mistar mykje av den innebygde tilgjengelegheita som vanleg HTML gir oss gratis.
-I tillegg får vi dårlegare yting, sidan vi blir avhengige av JavaScript, og du som utviklar kan ikkje lenger nytte HTML-dokumentasjon for å forstå koden.
+I tillegg får vi dårlegare ytelse, sidan vi blir avhengige av JavaScript, og du som utviklar kan ikkje lenger nytte HTML-dokumentasjon for å forstå koden.
 
 Kort sagt: Mange komponentar treng - og bør - rett og slett ikkje vere webkomponentar.
-Moderne CSS med klassenamn og data-attributt, gir i mange tilfelle både betre fleksibilitet og betre yting.
+Moderne CSS med klassenamn og data-attributt, gir i mange tilfelle både betre fleksibilitet og betre ytelse.
 
 ## Kva komponentar vil bli webkomponentar?
 
-Komponentar som i dag nyttar React for å implementere logikk, vil bli gjorde tilgjengelege som webkomponentar. 
-Til dømes vil `<ds-field>` kople saman skjemafelt med `<label>` og feilmeldingar, og 
-`<ds-tabs>` vil handtere tab-navigasjon og tilhøyrande innhald.
+Komponentar som i dag nyttar React for å implementere logikk, vil bli tilgjengelege som webkomponentar. 
+Til dømes vil `<ds-field>` kople saman skjemafelt med `<label>` og feilmeldingar, og `<ds-tabs>` vil handtere tab-navigasjon og tilhøyrande innhald.
 
 Andre komponentar, som `Popover` og `Dialog`, treng ikkje bli webkomponentar, fordi web standarden allereie
-tilbyr `events` eller moderene [`command`-attributtar](https://developer.chrome.com/blog/command-and-commandfor) (med tilhøyrende [polyfill (github.com)](https://github.com/keithamus/invokers-polyfill)) som vi kan nytte for å hjelpe med opning og lukking, og plassering.
+tilbyr `events` eller moderene [`command`-attributtar (chrome.com)](https://developer.chrome.com/blog/command-and-commandfor) (med tilhøyrende [polyfill (github.com)](https://github.com/keithamus/invokers-polyfill)) som vi kan nytte for å hjelpe med opning og lukking, og plassering.
 
-Uavhengig av teknisk løysing vil alle komponentane vere baserte på rein HTML,
-fungere på tvers av teknologiar og ha det same API-et:
+Uavhengig av teknisk løysing vil alle komponentane vere baserte på rein HTML, fungere på tvers av teknologiar og ha det same API-et:
 Du nyttar klassenamn for å velje komponent, og data-attributt for å styre innstillingar og åtferd.
 
 ## Tidslinje og innspel!
 
 Arbeidet med å gjere Designsystemet tilgjengeleg utan React startar januar 2026.
-Vi vil fortløpande leggje ut eksperimentelle komponentar i pakken @digdir/designsystemet-native, slik at du raskt kan teste og kome med tilbakemeldingar.
+Me vil fortløpande leggje ut eksperimentelle komponentar i pakken `@digdir/designsystemet-native`, slik at du raskt kan teste og kome med tilbakemeldingar.
 
 Har du innspel eller tankar, set vi stor pris på om du deler dei med oss - anten på [GitHub](https://github.com/digdir/designsystemet) eller på [Slack](/slack).
 
