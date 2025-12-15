@@ -25,10 +25,11 @@ export type DialogProps = MergeRight<
      */
     closedby?: 'none' | 'closerequest' | 'any';
     /**
-     * Display dialog as a drawer from the specified side.
+     * When not center, displays dialog as a drawer from the specified side.
      *
+     * @default 'center'
      */
-    drawer?: 'left' | 'right' | 'top' | 'bottom';
+    placement?: 'center' | 'left' | 'right' | 'top' | 'bottom';
     /**
      * Toogle modal and non-modal dialog.
      *
@@ -84,7 +85,7 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
       asChild,
       children,
       className,
-      drawer,
+      placement = 'center',
       closeButton = 'Lukk dialogvindu',
       closedby = 'closerequest',
       modal = true,
@@ -161,7 +162,7 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
       <Component
         className={cl('ds-dialog', className)}
         ref={mergedRefs}
-        data-drawer={drawer}
+        data-placement={placement}
         data-modal={modal}
         closedby={closedby}
         {...rest}
