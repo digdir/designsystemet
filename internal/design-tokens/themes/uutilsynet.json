@@ -600,13 +600,15 @@
         "$value": "{uutilsynet.link.visited}"
       }
     },
-    "focus-inner": {
-      "$type": "color",
-      "$value": "{uutilsynet.focus.inner}"
-    },
-    "focus-outer": {
-      "$type": "color",
-      "$value": "{uutilsynet.focus.outer}"
+    "focus": {
+      "inner-color": {
+        "$type": "color",
+        "$value": "{uutilsynet.focus.inner}"
+      },
+      "outer-color": {
+        "$type": "color",
+        "$value": "{uutilsynet.focus.outer}"
+      }
     }
   },
   "font-family": {

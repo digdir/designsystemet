@@ -600,13 +600,15 @@
         "$value": "{altinn.link.visited}"
       }
     },
-    "focus-inner": {
-      "$type": "color",
-      "$value": "{altinn.focus.inner}"
-    },
-    "focus-outer": {
-      "$type": "color",
-      "$value": "{altinn.focus.outer}"
+    "focus": {
+      "inner-color": {
+        "$type": "color",
+        "$value": "{altinn.focus.inner}"
+      },
+      "outer-color": {
+        "$type": "color",
+        "$value": "{altinn.focus.outer}"
+      }
     }
   },
   "font-family": {

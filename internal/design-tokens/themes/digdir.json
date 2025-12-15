@@ -600,13 +600,15 @@
         "$value": "{digdir.link.visited}"
       }
     },
-    "focus-inner": {
-      "$type": "color",
-      "$value": "{digdir.focus.inner}"
-    },
-    "focus-outer": {
-      "$type": "color",
-      "$value": "{digdir.focus.outer}"
+    "focus": {
+      "inner-color": {
+        "$type": "color",
+        "$value": "{digdir.focus.inner}"
+      },
+      "outer-color": {
+        "$type": "color",
+        "$value": "{digdir.focus.outer}"
+      }
     }
   },
   "font-family": {

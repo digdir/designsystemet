@@ -597,11 +597,11 @@
     "focus": {
       "inner": {
         "$type": "color",
-        "$value": "{color.focus-inner}"
+        "$value": "{color.focus.inner-color}"
       },
       "outer": {
         "$type": "color",
-        "$value": "{color.focus-outer}"
+        "$value": "{color.focus.outer-color}"
       }
     }
   },
