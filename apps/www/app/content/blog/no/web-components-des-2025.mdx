@@ -1,43 +1,63 @@
 ---
-title: Korleis Web Komponenter blir i Designsystemet
-description: Designsystemet skal tilby Web Komponenter for nokre av komponentane etter kvart slik at dei kan brukast med både Svelte, Vue, Angular, og andre eller ingen teknologiar. Korleis blir dette?
+title: Webkomponentar og Designsystemet utan React
+description: Snart kan du bruka designsystemet med både Svelte, Vue, Angular og alle andre teknologiar – også rein HTML og CSS. Korleis blir dette?
 date: 2025-12-08
 author: Designsystemet
 imageSrc: /img/blog/web-components.png
-imageAlt: Illustrasjon av web komponenter
+imageAlt: Illustrasjon av webkomponentar
 ---
 
-Alle komponentar treng ikkje være web komponentar for at dei skal kunne brukast i ulike rammeverk. Mange av komponentane i Designsystemet er bygd med tanke på å vere så nære native HTML-komponentar som mogleg, slik at dei fungerer ut av boksen med skjermlesarar, tastaturnavigasjon og andre hjelpeteknologiar utan ekstra tilpassingar. Dette gjer at dei kan brukast direkte i mange ulike teknologiar utan behov for å pakke dei inn i web komponentar. Dette gjeld for eksempel `<button>`, som du i dag kan bruke med berre eit klassenavn, og data attributtar.
+Mange har spurt om Designsystemet kjem til å tilby webkomponentar slik at ein kan bruke komponentane utan React. Svaret er ja!
+Men ikkje alt vil vere webkomponentar. La oss forklare kvifor, og kva me planlegg:
 
-```html
+## Standardar er bra for alle
+
+Sidan starten har målet vore å nytte webstandardar så langt det let seg gjere, slik at Designsystemet kan brukast både i gamle og nye løysingar, 
+uavhengig av teknologi og rammeverk. Mange av komponentane fungerer faktisk allereie i rein HTML. Eit godt døme er knappekomponenten:
+
+```jsx
+// React:
+<Button variant="secondary">Klikk meg</Button>
+
+// HTML:
 <button class="ds-button" data-variant="secondary">Klikk meg</button>
 ```
 
-## Kvifor ikkje web komponentar for alle komponentar?
+I HTML-versjonen nyttar vi standard klassenamn og data-attributt.
+Ikkje berre fungerer dette i alle rammeverk og like godt både på server og i nettlesar – det fungerer òg for alle brukarar!
+Standard HTML har nemleg innebygd støtte for skjermlesarar, tastaturnavigasjon og andre hjelpeteknologiar, utan behov for ekstra tilpassingar.
 
-Web komponentar kan vere nyttige i visse situasjonar, spesielt når ein treng å dele komponentar på tvers av ulike rammeverk eller når ein ønskjer å kapsle inn kompleks funksjonalitet. Men dei kjem også med nokre utfordringar:
-- **Ytelse:** Web komponentar kan introdusere ekstra overhead, noko som kan påverke lastetider og generell ytelse, spesielt på mobile einingar.
-- **Kompleksitet:** Å utvikle og vedlikehalde web komponentar kan vere meir komplekst enn å bruke standard HTML og CSS, noko som kan auke utviklingstida og kostnadene.
-- **Tilpassing:** Nokre gonger kan web komponentar vere mindre fleksible når det gjeld tilpassing samanlikna med å bruke standard HTML-element.
+## Kvifor ikkje lage alt som webkomponentar?
 
-## Kva komponentar vil vere web komponentar?
+Webkomponentar er ein relativt ny standard som gjer det mogleg å lage eigne HTML-element med innkapsla funksjonalitet og stil ved hjelp av JavaScript.
+Sjølv om det kan verke freistande å lage ein webkomponentar av alt, til dømes ein eigen knapp:
 
-I første omgang vil me tilby web komponentar for dei komponentane me har nytta JavaScript for å implementere funksjonalitet. Dette inkluderar for eksempel:
-- `Popover`: For anker-funksjonalitet.
-- `Field`: For å automatisk koble opp skjemafelt med `<label>` og feilmeldingar.
-- `Tabs`: For å handtere tab-navigasjon og innhald.
+```html
+<ds-button data-variant="secondary">Klikk meg</ds-button>
+```
 
-Desse komponentane har meir kompleks funksjonalitet som kan dra nytte av å vere innkapsla i web komponentar for å sikre konsistent oppførsel på tvers av ulike rammeverk.
+...ville dette ført til at vi mistar mykje av den innebygde tilgjengelegheita som vanleg HTML gir oss gratis.
+I tillegg får vi dårlegare yting, sidan vi blir avhengige av JavaScript, og du som utviklar kan ikkje lenger nytte HTML-dokumentasjon for å forstå koden.
 
-## Kva er tidslinja?
+Kort sagt: Mange komponentar treng – og bør – rett og slett ikkje vere webkomponentar.
+Moderne CSS med klassenamn og data-attributt, gir i mange tilfelle både betre fleksibilitet og betre yting.
 
-Me vil fortløpande legge ut eksperimentelle komponentar i pakken `@digdir/designsystemet-native`, slik at konsumentar raskt kan teste og gi tilbakemelding. 
+## Kva komponentar vil bli webkomponentar?
 
-## Det er ikkje berre web komponentar
+Komponentar som i dag nyttar React for å implementere logikk, vil bli gjorde tilgjengelege som webkomponentar. 
+Til dømes vil `<ds-field>` kople saman skjemafelt med `<label>` og feilmeldingar, og 
+`<ds-tabs>` vil handtere tab-navigasjon og tilhøyrande innhald.
 
-Ikkje alt treng å være web komponenter, noko kan være vanlige JavaScript funksjonar som legge på listeners, eller anna funksjonalitet. Mattilsynet implementerer for eksempel `Tooltip` med `data-tooltip=""` attributtar og ein JavaScript funksjon som legg på event listeners for å vise og skjule tooltipen. Dette er ein enkel og effektiv måte å implementere funksjonalitet på utan å måtte bruke web komponentar.
-Dette kan du sjå her: [https://design.mattilsynet.no/?path=/docs/designsystem-tooltip--docs&globals=theme:Dark+medium](https://design.mattilsynet.no/?path=/docs/designsystem-tooltip--docs&globals=theme:Dark+medium)
+Andre komponentar, som `Popover` og `Dialog`, treng ikkje bli webkomponentar, fordi web standarden allereie
+tilbyr `events` eller moderene [`command`-attributtar](https://developer.chrome.com/blog/command-and-commandfor) (med tilhøyrende [polyfill](https://github.com/keithamus/invokers-polyfill)) som vi kan nytte for å hjelpe med opning og lukking, og plassering.
 
-## Innspel
+Uavhengig av teknisk løysing vil alle komponentane vere baserte på rein HTML,
+fungere på tvers av teknologiar og ha det same API-et:
+Du nyttar klassenamn for å velje komponent, og data-attributt for å styre innstillingar og åtferd.
 
-Dersom du har innspel eller tankar på dette, gjerne del dine tankar på [GitHub](https://github.com/digdir/designsystemet) eller på [Slack](/slack).
+## Tidslinje og innspel!
+
+Arbeidet med å gjere Designsystemet tilgjengeleg utan React startar januar 2026.
+Vi vil fortløpande leggje ut eksperimentelle komponentar i pakken @digdir/designsystemet-native, slik at du raskt kan teste og kome med tilbakemeldingar.
+
+Har du innspel eller tankar, set vi stor pris på om du deler dei med oss - anten på [GitHub](https://github.com/digdir/designsystemet) eller på [Slack](/slack).
