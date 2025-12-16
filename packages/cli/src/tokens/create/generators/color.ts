@@ -65,7 +65,8 @@ export const generateColorScheme = (
     colors.support,
   );
 
-  const neutral = generateColor(generateColorScale(colors.neutral, colorScheme), createColorOverrides('neutral'));
+  const neutralColorScale = generateColorScale(colors.neutral, colorScheme);
+  const neutral = generateColor(neutralColorScale, createColorOverrides('neutral'));
 
   const baseColorsWithOverrides = {
     ...baseColors,
@@ -78,9 +79,17 @@ export const generateColorScheme = (
   );
 
   const linkColor = generateColor(generateColorScale(dsLinkColor, colorScheme));
+  const defaultLinkVisited = linkColor[12];
   const linkOverride: Token | undefined = overrides?.linkVisited?.[colorScheme as 'light' | 'dark']
     ? ({ $type: 'color', $value: overrides.linkVisited[colorScheme as 'light' | 'dark'] } as Token)
     : undefined;
+
+  /* Default focus-inner is position 1 (background-default), focus-outer is position 11 (text-default) */
+  const defaultFocusInner = neutralColorScale[0].hex;
+  const defaultFocusOuter = neutralColorScale[10].hex;
+
+  const focusInnerOverride = overrides?.focus?.inner?.[colorScheme as 'light' | 'dark'];
+  const focusOuterOverride = overrides?.focus?.outer?.[colorScheme as 'light' | 'dark'];
 
   return {
     [themeName]: {
@@ -89,7 +98,17 @@ export const generateColorScheme = (
       neutral,
       ...globalColors,
       link: {
-        visited: linkOverride || linkColor[12],
+        visited: linkOverride || defaultLinkVisited,
+      },
+      focus: {
+        inner: {
+          $type: 'color',
+          $value: focusInnerOverride || defaultFocusInner,
+        } as Token,
+        outer: {
+          $type: 'color',
+          $value: focusOuterOverride || defaultFocusOuter,
+        } as Token,
       },
     },
   };
