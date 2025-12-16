@@ -45,7 +45,7 @@
   ],
   "scripts": {
     "build": "rimraf dist && pnpm build:theme && postcss ./src/*.css --base . --dir ./dist && postcss ./dist/theme/*.css --dir ./dist/theme",
-    "build:theme": "designsystemet tokens create --config designsystemet.config.json && designsystemet tokens build -t ./design-tokens -o ./dist/theme --experimental-tailwind"
+    "build:theme": "designsystemet tokens build -t ../../design-tokens -o ./dist/theme --experimental-tailwind"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.22",
