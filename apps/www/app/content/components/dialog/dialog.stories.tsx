@@ -1,11 +1,15 @@
 import {
   Button,
+  Checkbox,
   Dialog,
+  type DialogProps,
+  Fieldset,
   Heading,
   Paragraph,
+  Radio,
   Textfield,
 } from '@digdir/designsystemet-react';
-import { useRef, useState } from 'react';
+import { type ChangeEvent, useRef, useState } from 'react';
 
 export const Preview = () => {
   return (
@@ -163,5 +167,58 @@ export const CloseWithClickOutside = () => {
         <Heading>Click outside to close</Heading>
       </Dialog>
     </Dialog.TriggerContext>
+  );
+};
+
+export const Drawer = () => {
+  const [placement, setPlacement] =
+    useState<DialogProps['placement']>('bottom');
+  const [modal, setModal] = useState(true);
+  return (
+    <>
+      <Checkbox
+        label='Modal'
+        checked={modal}
+        style={{ marginBottom: 'var(--ds-size-4)' }}
+        onChange={(e) => setModal(e.target.checked)}
+      />
+      <Fieldset
+        onChange={(e: ChangeEvent<HTMLFieldSetElement>) => {
+          const target = e.target as unknown as HTMLInputElement;
+          setPlacement(target.value as DialogProps['placement']);
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 'var(--ds-size-5)',
+            marginBottom: 'var(--ds-size-8)',
+          }}
+        >
+          <Radio name='drawer' label='Center' value='center' />
+          <Radio name='drawer' label='Top' value='top' />
+          <Radio name='drawer' label='Bottom' value='bottom' />
+          <Radio name='drawer' label='Left' value='left' />
+          <Radio name='drawer' label='Right' value='right' />
+        </div>
+      </Fieldset>
+      <Dialog.TriggerContext>
+        <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+        <Dialog
+          modal={modal}
+          closedby='any'
+          placement={placement}
+          style={{ zIndex: '10' }}
+        >
+          <Dialog.Block>
+            <Paragraph>
+              This is a {modal ? 'modal' : 'non-modal'} Dialog with{' '}
+              <code>placement="{placement}"</code>
+            </Paragraph>
+          </Dialog.Block>
+        </Dialog>
+      </Dialog.TriggerContext>
+    </>
   );
 };

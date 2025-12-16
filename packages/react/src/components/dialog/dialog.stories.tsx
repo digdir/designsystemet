@@ -323,3 +323,51 @@ export const DialogNonModal: StoryFn<typeof Dialog> = () => {
 DialogNonModal.parameters = {
   customStyles: { padding: 'var(--ds-size-18)' },
 };
+export const DialogPlacementTop: StoryFn<typeof Dialog> = () => {
+  return (
+    <Dialog.TriggerContext>
+      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+      <Dialog placement='top'>
+        <Dialog.Block>
+          <Paragraph>This is a Dialog with placement="top"</Paragraph>
+        </Dialog.Block>
+      </Dialog>
+    </Dialog.TriggerContext>
+  );
+};
+export const DialogPlacementBottom: StoryFn<typeof Dialog> = () => {
+  return (
+    <Dialog.TriggerContext>
+      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+      <Dialog placement='bottom'>
+        <Dialog.Block>
+          <Paragraph>This is a Dialog with placement="bottom"</Paragraph>
+        </Dialog.Block>
+      </Dialog>
+    </Dialog.TriggerContext>
+  );
+};
+export const DialogPlacementLeft: StoryFn<typeof Dialog> = () => {
+  return (
+    <Dialog.TriggerContext>
+      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+      <Dialog placement='left'>
+        <Dialog.Block>
+          <Paragraph>This is a Dialog with placement="left"</Paragraph>
+        </Dialog.Block>
+      </Dialog>
+    </Dialog.TriggerContext>
+  );
+};
+export const DialogPlacementRight: StoryFn<typeof Dialog> = () => {
+  return (
+    <Dialog.TriggerContext>
+      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+      <Dialog placement='left'>
+        <Dialog.Block>
+          <Paragraph>This is a Dialog with placement="right"</Paragraph>
+        </Dialog.Block>
+      </Dialog>
+    </Dialog.TriggerContext>
+  );
+};
