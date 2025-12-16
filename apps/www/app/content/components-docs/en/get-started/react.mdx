@@ -13,12 +13,8 @@ It is recommended that you also read about [CSS](/en/components/get-started/css)
 npm i @digdir/designsystemet-react @digdir/designsystemet-css
 ```
 
-If you are not [creating your own theme](/en/fundamentals/themebuilder/own-theme) you must also install `@digdir/designsystemet-theme`.
+If you are not [creating your own theme](/en/fundamentals/themebuilder/own-theme) you can get a default theme from `@digdir/designsystemet-css/theme`.
 You can easily create your own theme later.
-
-```sh
-npm i @digdir/designsystemet-theme
-```
 
 ### Typescript
 
@@ -65,15 +61,15 @@ body {
 ## 3. Use a React component
 
 ```tsx
-import '@digdir/designsystemet-theme'; /* or your theme */
 import '@digdir/designsystemet-css'; /* imported only once */
+import '@digdir/designsystemet-css/theme'; /* or your theme */
 
 import { Button } from '@digdir/designsystemet-react';
 
 <Button variant='secondary'>I'm a button!</Button>;
 ```
 
-`@digdir/designsystemet-theme` and `@digdir/designsystemet-css` must only be imported once in the application.
+`@digdir/designsystemet-css` and `@digdir/designsystemet-css/theme` must only be imported once in the application.
 
 ## Extras
 
