@@ -45,7 +45,7 @@
   ],
   "scripts": {
     "build": "rimraf dist && pnpm build:theme && postcss ./src/*.css --base . --dir ./dist && postcss ./dist/theme/*.css --dir ./dist/theme",
-    "build:theme": "pnpm exec designsystemet tokens build -t ../../design-tokens -o ./dist/theme --experimental-tailwind"
+    "build:theme": "tsx ../cli/bin/designsystemet.ts tokens build -t ../../design-tokens -o ./dist/theme --experimental-tailwind"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.22",
@@ -55,6 +55,6 @@
     "postcss-import": "^16.1.1",
     "postcss-nesting": "^13.0.2",
     "rimraf": "^6.1.2",
-    "@digdir/designsystemet": "workspace:^"
+    "tsx": "^4.20.2"
   }
 }

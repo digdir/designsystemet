@@ -545,9 +545,6 @@ importers:
 
   packages/css:
     devDependencies:
-      '@digdir/designsystemet':
-        specifier: workspace:^
-        version: link:../cli
       autoprefixer:
         specifier: ^10.4.22
         version: 10.4.22(postcss@8.5.6)
@@ -569,6 +566,9 @@ importers:
       rimraf:
         specifier: ^6.1.2
         version: 6.1.2
+      tsx:
+        specifier: ^4.20.2
+        version: 4.21.0
 
   packages/react:
     dependencies:
