@@ -1,0 +1,44 @@
+@property --captured-length {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+
+.ds-avatar-stack {
+  --dsc-avatar-stack-size: round(up, 2.625em, 1px);
+  --dsc-avatar-stack-gap: 4px;
+  --dsc-avatar-stack-overlap: -12px;
+  --dsc-avatar-stack-outline-color: light-dark(transparent, white);
+
+  --captured-length: var(--dsc-avatar-stack-overlap); /*overlap*/
+  display: flex;
+  padding-block: 1px;
+  transition: --captured-length 0.2s ease;
+  width: calc(var(--dsc-avatar-stack-size) * var(--n) + var(--dsc-avatar-stack-overlap) * (var(--n) - 1));
+  filter: drop-shadow(0 0 0.5px var(--dsc-avatar-stack-outline-color)) drop-shadow(0 0 0.5px var(--dsc-avatar-stack-outline-color))
+    drop-shadow(0 0 0.5px var(--dsc-avatar-stack-outline-color));
+  &:hover {
+    --captured-length: 0px;
+  }
+  &:empty {
+    display: none;
+  }
+  .ds-avatar {
+    --dsc-avatar-size: var(--dsc-avatar-stack-size);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    mask: radial-gradient(
+      50% 50% at calc(150% + var(--captured-length)),
+      transparent calc(100% - 1px + var(--dsc-avatar-stack-gap)),
+      #000 calc(100% + var(--dsc-avatar-stack-gap))
+    );
+    &:not(:first-child) {
+      margin-left: var(--captured-length);
+    }
+    &:last-child {
+      mask: none;
+    }
+  }
+}
