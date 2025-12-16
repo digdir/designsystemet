@@ -30,9 +30,9 @@ export const AvatarStack = forwardRef<HTMLDivElement, AvatarStackProps>(
   function AvatarStack({ className, ...rest }, ref) {
     const style = {
       ...(rest.style || {}),
-      '--avatar-stack-gap': rest.gap ? `${rest.gap}px` : undefined,
-      '--avatar-size': rest.avatarSize ? `${rest.avatarSize}px` : undefined,
-      '--avatar-overlap': rest.overlap ? `${rest.overlap}px` : undefined,
+      '--gap': rest.gap ? `${rest.gap}px` : undefined,
+      '--size': rest.avatarSize ? `${rest.avatarSize}px` : undefined,
+      '--overlap': rest.overlap ? `${rest.overlap}px` : undefined,
     } as React.CSSProperties;
     return (
       <div
