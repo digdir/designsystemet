@@ -599,6 +599,16 @@
         "$type": "color",
         "$value": "{digdir.link.visited}"
       }
+    },
+    "focus": {
+      "inner-color": {
+        "$type": "color",
+        "$value": "{digdir.focus.inner}"
+      },
+      "outer-color": {
+        "$type": "color",
+        "$value": "{digdir.focus.outer}"
+      }
     }
   },
   "font-family": {
