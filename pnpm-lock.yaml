@@ -545,6 +545,9 @@ importers:
 
   packages/css:
     devDependencies:
+      '@digdir/designsystemet':
+        specifier: workspace:^
+        version: link:../cli
       autoprefixer:
         specifier: ^10.4.22
         version: 10.4.22(postcss@8.5.6)

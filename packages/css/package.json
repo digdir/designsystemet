@@ -10,6 +10,12 @@
   "homepage": "https://github.com/digdir/designsystemet/tree/main/packages/css",
   "license": "MIT",
   "exports": {
+    "./theme": {
+      "types": "./types.d.ts",
+      "default": "./dist/theme/designsystemet.css"
+    },
+    "./theme.css": "./dist/theme/designsystemet.css",
+    "./theme/*": "./dist/theme/*",
     ".": {
       "types": "./types.d.ts",
       "default": "./dist/src/index.css"
@@ -38,7 +44,8 @@
     "digdir"
   ],
   "scripts": {
-    "build": "rimraf dist && postcss ./src/*.css --base . --dir ./dist"
+    "build": "rimraf dist && pnpm build:theme && postcss ./src/*.css --base . --dir ./dist && postcss ./dist/theme/*.css --dir ./dist/theme",
+    "build:theme": "designsystemet tokens create --config designsystemet.config.json && designsystemet tokens build -t ./design-tokens -o ./dist/theme --experimental-tailwind"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.22",
@@ -47,6 +54,7 @@
     "postcss-cli": "^11.0.1",
     "postcss-import": "^16.1.1",
     "postcss-nesting": "^13.0.2",
-    "rimraf": "^6.1.2"
+    "rimraf": "^6.1.2",
+    "@digdir/designsystemet": "workspace:^"
   }
 }
