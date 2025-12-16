@@ -25,7 +25,7 @@ export type DialogProps = MergeRight<
      */
     closedby?: 'none' | 'closerequest' | 'any';
     /**
-     * When not center, displays dialog as a drawer from the specified side.
+     * When not center, displays dialog as a "drawer" from the specified side.
      *
      * @default 'center'
      */
