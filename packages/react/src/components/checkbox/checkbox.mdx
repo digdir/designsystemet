@@ -1,5 +1,4 @@
 import { Meta, Canvas, Controls, Primary, ArgTypes } from '@storybook/addon-docs/blocks';
-import { Do, Dont, Stack, CssVariables } from '@doc-components';
 import css from '@digdir/designsystemet-css/input.css?inline';
 import * as CheckboxStories from './checkbox.stories';
 import * as useCheckboxGroupStories from '../../utilities/hooks/use-checkbox-group/use-checkbox-group.stories';
@@ -82,70 +81,6 @@ Nav har en god forklaring på [hvorfor deaktiverte tilstander er problematisk](h
 
 <Canvas of={CheckboxStories.Disabled} />
 
-## Retningslinjer
-Bruk `Checkbox` når flere svaralternativer kan velges samtidig.
-
-**Passer til å**
-
-- velge ett eller flere alternativer i skjemaer
-- godta vilkår for en tjeneste eller lignende funksjonalitet
-
-**Passer ikke til å**
-
-- velge bare ett alternativ, bruk heller [`Radio`](/docs/komponenter-radio--docs), [`Select`](/docs/komponenter-select--docs) eller [`Suggestion`](/docs/komponenter-suggestion--docs)
-- velge mellom flere enn 7 svaralternativer, bruk heller [`Suggestion`](/docs/komponenter-suggestion--docs)
-- slå noe av eller på, bruk heller [`Switch`](/docs/komponenter-switch--docs)
-
-
-### Rekkefølge
-
-Vær bevisst på rekkefølgen du velger for alternativene. Ofte er en alfabetisk sortering det beste, men dersom det finnes en logisk rekkefølge, f.eks. _vinter, vår, sommer, høst_, bør du
-heller bruke denne.
-
-I noen tilfeller kan det være hjelpsomt å ha de mest aktuelle alternativene først, men vær forsiktig så rekkefølgen ikke påvirker svaret eller gjør det vanskelig å finne ønsket alternativ.
-
-### Plassering
-
-`Checkbox` skal som hovedregel kun plasseres vertikalt, av hensyn
-til lesbarhet. Det er enklere for brukere å skanne listen når alternativene ligger
-under hverandre. For brukere som trenger å forstørre (zoome inn) nettsiden for å
-se godt nok, er en horisontal liste ekstra vanskelig.
-
-<Stack
-  direction='row'
-  style={{
-    justifyContent: 'unset',
-    alignItems: 'unset',
-  }}
->
-  <Do
-    description={<>Plasser <code>Checkbox</code> vertikalt, slik at listen blir lettere å lese.</>}
-    image='/img/component-guidelines/checkbox/CheckboxGroupV.png'
-  />
-  <Dont
-    description={<>Du bør unngå å plassere <code>Checkbox</code> i flere kolonner.</>}
-    image='/img/component-guidelines/checkbox/CheckboxGroupH.png'
-  />
-</Stack>
-
-## Tekst 
-
-I et skjema er ofte forklaringen formulert som et spørsmål. I noen sammenhenger kan det være uklart for brukeren om det er lov å velge flere alternativer, eller om de må velge kun ett. Vurder derfor om du bør spesifisere at brukeren kan velge flere svaralternativer.
-
-Bruk et aktivt og positivt språk. Tenk på innholdet som en samtale. Når `legend`
-er en setning, kan du skrive den i du-form og svaralternativene (`label`) i jeg-form. `label` skal alltid ha stor forbokstav.
-
-<img
-  src='/img/component-guidelines/checkbox/checkbox-anatomy.png'
-  alt='Illustrasjonen viser hva som er legend, description og label i en gruppe med flere `Checkbox`.'
-/>
-
-### Lag logisk sammenheng mellom forklaringen og svaralternativene
-
-Brukeren skal kunne lese hvert svaralternativ som en logisk respons på forklaringen over boksene.
-
-Eksempel på riktig logisk sammenheng:
-
 <Canvas of={CheckboxStories.ContentEx1} />
 
 ### Gi svaralternativene samme språklige form
@@ -159,20 +94,3 @@ Det betyr at de kan ha enten fullstendige setninger eller ett ord, ikke begge de
 **Eller:**
 
 <Canvas of={CheckboxStories.ContentEx3} />
-
-## Tilgjengelighet
-
-Det skal være mulig å flytte fokus til `Checkbox`, ved å trykke <kbd>Tab</kbd> på tastaturet. Det skal være mulig å merke og fjerne avmerking ved å trykke <kbd>Space</kbd>.
-
-### Tastaturnavigasjon
-* <kbd>Space</kbd> slår av/på
-
-### Bruk label
-
-`Checkbox` skal alltid ha et tilgjengelig navn. I de fleste tilfeller er dette `label`. I spesielle tilfeller kan det gi mening å unnlate `label`, og heller bruke `aria-label` eller `aria-labelledby`. Et eksempel på begge disse aria-attributtene er [bruken av `Checkbox` i tabell](#velge-alle-alternativer-med-en-overordnet-checkbox) lenger opp.
-
-## CSS Variabler
-
-<CssVariables css={css} />
-
-

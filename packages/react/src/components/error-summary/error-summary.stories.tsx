@@ -1,5 +1,4 @@
 import { createHtmlStory } from '@story-utils/createHtmlStory';
-import { formatReactSource } from '@story-utils/transformSource';
 import { withScrollHashBehavior } from '@story-utils/withScrollHashBehavior';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useEffect, useRef, useState } from 'react';
@@ -143,7 +142,7 @@ ShowHideReact.play = async (ctx) => {
 };
 
 ShowHideReact.parameters = {
-  docs: { source: { type: 'code', transform: formatReactSource } },
+  docs: { source: { type: 'code' } },
 };
 
 export const ShowHideHtml = createHtmlStory(showHideHtml);

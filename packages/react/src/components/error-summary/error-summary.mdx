@@ -1,5 +1,4 @@
 import { Meta, Controls, Primary, ArgTypes, Canvas } from '@storybook/addon-docs/blocks';
-import { CssVariables, ReactOrHtmlCanvas } from '@doc-components';
 import css from '@digdir/designsystemet-css/error-summary.css?inline';
 import * as ErrorSummaryStories from './error-summary.stories';
 
@@ -42,12 +41,6 @@ import { ErrorSummary } from '@digdir/designsystemet-react';
 ### Bruk med tekstfelt
 
 <Canvas of={ErrorSummaryStories.WithForm} />
-
-### Flytte fokus
-
-Det er viktig at `ErrorSummary` får fokus ved submit slik at brukeren får med seg at det er feil eller mangler i skjemaet.
-
-<ReactOrHtmlCanvas react={ErrorSummaryStories.ShowHideReact} html={ErrorSummaryStories.ShowHideHtml}/>
 
 ## Retningslinjer
 
@@ -103,8 +96,3 @@ En alternativ løsning er å ikke flytte fokus, men heller definere en live regi
 ## `ErrorSummary.Item`
 
 <ArgTypes of={ErrorSummary.Item} />
-
-
-## CSS Variabler
-
-<CssVariables css={css} />

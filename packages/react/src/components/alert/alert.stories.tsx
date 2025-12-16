@@ -1,5 +1,4 @@
 import { createHtmlStory } from '@story-utils/createHtmlStory';
-import { formatReactSource } from '@story-utils/transformSource';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
 import { Alert, Button, Heading, Link, Paragraph } from '../';
@@ -194,13 +193,6 @@ export const WrongLiveRegionReact: StoryFn<typeof Alert> = () => {
   );
 };
 WrongLiveRegionReact.parameters = {
-  docs: {
-    source: {
-      // Ensure we show the actual code, and not the initially rendered output
-      type: 'code',
-      transform: formatReactSource,
-    },
-  },
   customStyles: {
     display: 'flex',
     flexDirection: 'column',

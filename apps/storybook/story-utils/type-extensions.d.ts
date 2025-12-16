@@ -40,9 +40,7 @@ declare module 'storybook/internal/types' {
   type PseudoValue = boolean | string | string[];
 
   interface Globals {
-    codePreview?: 'react' | 'html';
     colorScheme?: 'light' | 'dark' | 'auto';
-    managerColorScheme?: 'light' | 'dark' | 'auto';
   }
 
   interface Parameters {

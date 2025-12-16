@@ -1,5 +1,4 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/addon-docs/blocks';
-import { CssVariables, ReactOrHtmlCanvas } from '@doc-components';
 import css from '@digdir/designsystemet-css/alert.css?inline';
 
 import * as AlertStories from './alert.stories';
@@ -119,25 +118,3 @@ For dynamiske varsler er det mest aktuelt å bruke `role="alert"` for kritiske v
 **Ikke** kombiner `role="alert"` og `aria-live`, siden [dette fører at varselet leses opp dobbelt i VoiceOver](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions#:~:text=adding%20both%20aria%2Dlive%20and%20role=%22alert%22%20causes%20double%20speaking%20issues%20in%20VoiceOver%20on%20iOS).
 
 Du **bør** kombinere `role="status"` og `aria-live="polite"` [for å maksimere kompatibilitet](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions#roles_with_implicit_live_region_attributes).
-
-#### Ikke gjør dette
-
-Ikke definer en *live region* direkte på `Alert`. For statiske varsler har det ingen effekt, og for dynamiske varsler vil det ikke bli tolket riktig av alle skjermlesere, selv om mange skjermlesere har spesialhåndtering som går ut over ARIA-spesifikasjonen for akkurat `role="alert"`.
-
-<ReactOrHtmlCanvas
-  react={AlertStories.WrongLiveRegionReact}
-  html={AlertStories.WrongLiveRegionHtml}
-/>
-
-#### Gjør dette for dynamiske varsler
-
-Definer en *live region*, f.eks. med `role="alert"`, for varsler som kan dukke opp dynamisk underveis som følge av brukerens handlinger eller andre faktorer. Dette vil også fungere på samme måte med `role="status"`.
-
-<ReactOrHtmlCanvas
-  react={AlertStories.CorrectLiveRegionReact}
-  html={AlertStories.CorrectLiveRegionHtml}
-/>
-
-## CSS Variabler
-
-<CssVariables css={css} />
