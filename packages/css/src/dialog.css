@@ -37,15 +37,6 @@
   position: fixed;
   width: 100%;
   inset: 0;
-  /* Unresolved: Center with top+left+translate to support placement inside display: flex */
-  /*
-    right: auto;
-    top: 50%;
-    bottom: auto;
-    left: 50%;
-    margin: 0;
-    transform: translate(-50%, -50%);
-  */
 
   &::backdrop {
     animation: ds-dialog-fade-in var(--dsc-dialog-transition-duration) ease-in-out;
