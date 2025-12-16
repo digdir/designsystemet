@@ -14,10 +14,10 @@ Dette arbeider vi med å løfte ut av React og gjere tilgjengeleg for alle tekno
 
 ## Kom i gang
 
-For å bruke Designsystemets uten React, trenger du CSS pakka. Du kan også installere `@digdir/designsystemet-theme` (for standard Designsystemet stil), eller [lage ditt eget tema](/no/fundamentals/themebuilder/own-theme). Du kan lett lage ditt eget tema senere.
+For å bruke Designsystemets uten React, trenger du CSS pakka. Du kan [lage ditt eget tema](/no/fundamentals/themebuilder/own-theme), eller bruke standardtemaet fra `@digdir/designsystemet-css/theme`. Du kan lett lage ditt eget tema senere.
 
 ```sh
-npm i @digdir/designsystemet-css @digdir/designsystemet-theme
+npm i @digdir/designsystemet-css
 ```
 
 ### Legg til CSS i prosjektet ditt
@@ -28,7 +28,7 @@ Du kan importere CSS filene direkte i din hoved CSS fil, eller legge de til som 
 
 ```css
 @import '@digdir/designsystemet-css/index.css';
-@import '@digdir/designsystemet-theme/index.css';
+@import '@digdir/designsystemet-css/theme.css';
 ```
 
 #### Import i JS fil
@@ -36,10 +36,9 @@ Du kan importere CSS filene direkte i din hoved CSS fil, eller legge de til som 
 Hvis du har støtte for å importere CSS i JavaScript filer, kan du bruke denne metoden:
 
 ```js
-import '@digdir/designsystemet-css/index.css';
-import '@digdir/designsystemet-theme/index.css';
+import '@digdir/designsystemet-css';
+import '@digdir/designsystemet-css/theme';
 ```
-
 
 ## Ta i bruk
 

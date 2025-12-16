@@ -28,7 +28,7 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 
 [`@digdir/designsystemet`](https://www.npmjs.com/package/@digdir/designsystemet) - CLI for Designsystemet.
 
-[`@digdir/designsystemet-css`](https://www.npmjs.com/package/@digdir/designsystemet-css) - CSS implementation of Designsystemet components. Used by the React package.
+[`@digdir/designsystemet-css`](https://www.npmjs.com/package/@digdir/designsystemet-css) - CSS implementation of Designsystemet components. Used by the React package. Contains a default theme.
 
 [`@digdir/designsystemet-react`](https://www.npmjs.com/package/@digdir/designsystemet-react) - React implementation of Designsystemet components.
 

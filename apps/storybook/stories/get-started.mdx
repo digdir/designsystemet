@@ -9,7 +9,7 @@ Følg disse stegene for å komme i gang med React-komponentene.
 ## 1. Installer pakkene
 
 ```sh
-npm i @digdir/designsystemet-react @digdir/designsystemet-theme @digdir/designsystemet-css
+npm i @digdir/designsystemet-react @digdir/designsystemet-css
 ```
 
 ### Typescript
@@ -62,12 +62,12 @@ Designsystemet bruker [popover](https://developer.mozilla.org/en-US/docs/Web/HTM
 ## 4. Bruk en React-komponent
 
 ```jsx
-import '@digdir/designsystemet-theme';
 import '@digdir/designsystemet-css';
+import '@digdir/designsystemet-css/theme';
 
 import { Button } from '@digdir/designsystemet-react';
 
 <Button variant='secondary'>Jeg er en knapp!</Button>;
 ```
 
-`@digdir/designsystemet-theme` og `@digdir/designsystemet-css` må kun importeres én gang i applikasjonen.
+`@digdir/designsystemet-css` og `@digdir/designsystemet-css/theme` må kun importeres én gang i applikasjonen.

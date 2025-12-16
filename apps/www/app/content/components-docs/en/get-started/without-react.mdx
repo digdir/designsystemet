@@ -11,10 +11,10 @@ You will not get all the benefits that the React components give you, but you ca
 
 ## Get started
 
-To use the Designsystemet CSS, you need to install `@digdir/designsystemet-css`. You can also install `@digdir/designsystemet-theme`, or [create your own theme](/en/fundamentals/themebuilder/own-theme). You can easily create your own theme later.
+To use the Designsystemet CSS, you need to install `@digdir/designsystemet-css`. You can use the default theme from `@digdir/designsystemet-css/theme`, or [create your own theme](/en/fundamentals/themebuilder/own-theme). You can easily create your own theme later.
 
 ```sh
-npm i @digdir/designsystemet-css @digdir/designsystemet-theme
+npm i @digdir/designsystemet-css
 ```
 
 ### Add CSS to your project
@@ -24,15 +24,15 @@ You can import the CSS files directly into your main CSS file, or add them as `<
 #### Import in CSS file
 
 ```css
-@import '@digdir/designsystemet-theme/index.css';
 @import '@digdir/designsystemet-css/index.css';
+@import '@digdir/designsystemet-css/theme.css';
 ```
 
 #### Add as `<link>` tags
 
 ```html
-<link rel="stylesheet" href="path/to/node_modules/@digdir/designsystemet-theme/index.css" />
-<link rel="stylesheet" href="path/to/node_modules/@digdir/designsystemet-css/index.css" />
+<link rel="stylesheet" href="path/to/node_modules/@digdir/designsystemet-css/dist/theme/designsystemet.css" />
+<link rel="stylesheet" href="path/to/node_modules/@digdir/designsystemet-css/dist/src/index.css" />
 ```
 
 ## Get started

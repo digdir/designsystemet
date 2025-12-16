@@ -7,7 +7,7 @@ This package contains the following predefined Designsystemet themes for use in 
 - `uutilsynet`
 - `portal`
   
-As well as a default theme used in the themebuilder.
+As well as a default theme used in the themebuilder. `@digdir/designsystemet-css` also exports this theme by default under `@digdir/designsystemet-css/theme`.
 
 Build your own theme on https://theme.designsystemet.no/
 

@@ -13,12 +13,8 @@ Det anbefales at du også leser om [CSS](/no/components/get-started/css).
 npm i @digdir/designsystemet-react @digdir/designsystemet-css
 ```
 
-Dersom du ikke [lager ditt eget tema](/no/fundamentals/themebuilder/own-theme) må du også intallere `@digdir/designsystemet-theme`.
+Dersom du ikke [lager ditt eget tema](/no/fundamentals/themebuilder/own-theme) kan du bruke et standardtema fra `@digdir/designsystemet-css/theme`.
 Du kan lett lage ditt eget tema senere.
-
-```sh
-npm i @digdir/designsystemet-theme
-```
 
 ### Typescript
 
@@ -65,15 +61,15 @@ body {
 ## 3. Bruk en React-komponent
 
 ```tsx
-import '@digdir/designsystemet-theme'; /* eller ditt tema */
 import '@digdir/designsystemet-css'; /* importeres kun en gang */
+import '@digdir/designsystemet-css/theme'; /* eller ditt tema */
 
 import { Button } from '@digdir/designsystemet-react';
 
 <Button variant='secondary'>Jeg er en knapp!</Button>;
 ```
 
-`@digdir/designsystemet-theme` og `@digdir/designsystemet-css` må kun importeres én gang i applikasjonen.
+`@digdir/designsystemet-css` og `@digdir/designsystemet-css/theme` må kun importeres én gang i applikasjonen.
 
 ## Eksta
 
