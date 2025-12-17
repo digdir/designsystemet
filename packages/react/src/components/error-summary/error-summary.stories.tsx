@@ -1,4 +1,3 @@
-import { withScrollHashBehavior } from '@story-utils/withScrollHashBehavior';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useEffect, useRef, useState } from 'react';
 import { expect, userEvent, within } from 'storybook/test';
@@ -10,7 +9,6 @@ type Story = StoryFn<typeof ErrorSummary>;
 export default {
   title: 'Komponenter/ErrorSummary',
   component: ErrorSummary,
-  decorators: [withScrollHashBehavior],
 } satisfies Meta;
 
 export const Preview: Story = (args) => (

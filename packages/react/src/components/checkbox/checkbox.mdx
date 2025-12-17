@@ -1,96 +1,29 @@
-import { Meta, Canvas, Controls, Primary, ArgTypes } from '@storybook/addon-docs/blocks';
-import css from '@digdir/designsystemet-css/input.css?inline';
+import { Meta, Canvas, Controls, Primary } from '@storybook/addon-docs/blocks';
 import * as CheckboxStories from './checkbox.stories';
-import * as useCheckboxGroupStories from '../../utilities/hooks/use-checkbox-group/use-checkbox-group.stories';
 
 <Meta of={CheckboxStories} />
 
-# Checkbox
-
-Vi bruker `Checkbox` for å gi brukerne valg, der de kan velge ett eller flere alternativer. Brukerne kan både velge og oppheve valgene de gjør. Bruk [`Fieldset`](#fieldset) til å gruppere flere valg.
+**Dokumentasjonen har blitt flyttet til [Designsystemet.no](https://designsystemet.no/no/components).**
 
 <Primary />
 <Controls />
 
-## Bruk
-
-```tsx
-import { Checkbox } from '@digdir/designsystemet-react';
-
-<Fieldset>
-  <Fieldset.Legend>Skal du reise til noen av disse landene?</Fieldset.Legend>
-  <Checkbox label='Kroatia' value='kroatia' />
-  <Checkbox label='Slovakia' value='slovakia' />
-  <Checkbox label='Hobsyssel' value='hobsyssel' />
-  <Checkbox label='Jeg skal ikke til noen av disse landene' value='ingen' />
-</Fieldset>
-```
-
-## Kodeeksempler
-
-### Kun ett valg
-
-Hvis brukeren skal bekrefte noe, men ikke velge noe, kan en `Checkbox` stå alene. For eksempel når brukeren skal samtykke til vilkår.
-
 <Canvas of={CheckboxStories.OneOption} />
-
-### Gruppering av flere valg
-
-Bruk `Fieldset` og `useCheckboxGroup` for gruppering av flere valg. [Les mer om `useCheckboxGroup`](/docs/utilities-usecheckboxgroup--docs)
 
 <Canvas of={CheckboxStories.Group} />
 
-### Velge alle alternativer med en overordnet Checkbox
-
-Legg inn `allowIndeterminate: true` i `getCheckboxProps` for å opprette en overordnet `Checkbox` som kan velge eller fjerne alle alternativer. Dette aktiverer en ekstra tilstand, `indeterminate`, ved siden av `checked` og `unchecked`. Den vises med en horisontal strek når én eller flere `Checkbox` er markert i gruppen. Den vises som en vanlig `Checkbox` dersom alle i gruppen har samme tilstand.
-
 <Canvas of={CheckboxStories.InTable} />
-
-### Vise feilmelding
-
-Bruk `error` på `Fieldset` for å vise feilmelding.
-
-Her må du bruke `Fieldset` for å gjøre innholdet tilgjengelig og aktivere riktig stil.
 
 <Canvas of={CheckboxStories.WithError} />
 
-### Kontrollert
-
-Bruk `useCheckboxGroup` og `setValue` for å kontrollere hvilke alternativer som er valgt utenfor komponenten.
-I eksempelet under kontrollerer vi hvilke `Checkbox` som er valgt med både [`Button`](/docs/komponenter-button--docs) og [`Chip`](/docs/komponenter-chip--docs).
-
 <Canvas of={CheckboxStories.Controlled} />
 
-### Skrivebeskyttet Checkbox
-
-`Checkbox` støtter `readOnly`-attributtet for å gjøre feltet skrivebeskyttet, og gir en visuell indikasjon
-som skiller seg fra redigerbare felter.
-Selv om de ikke kan redigeres, er felter med `readOnly`-attributtet med i tabrekkefølgen, og informasjon blir
-med når skjemaet sendes inn.
-
-Vi unngår `readOnly` så langt det lar seg gjøre, fordi slike felter kan være forvirrende for noen brukere.
-Ikke alle vil skjønne hvorfor de ikke får til å endre innholdet i feltet.
-
 <Canvas of={CheckboxStories.ReadOnly} />
-
-### Ikke bruk deaktivert Checkbox
-
-Vi bør unngå at `Checkbox` er deaktivert (`disabled`) fordi det kan være vanskelig å oppfatte. Noen brukere vil ikke forstå hva valget sier eller hvorfor det ikke er klikkbart. Hvis en `Checkbox` eller gruppe med `Checkbox` ikke er relevant, bør du helst fjerne valgene fremfor å deaktivere dem. Tilby gjerne brukeren informasjon om hvorfor valgene ikke er tilgjengelige.
-
-Nav har en god forklaring på [hvorfor deaktiverte tilstander er problematisk](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) og hvilke alternativer som finnes.
 
 <Canvas of={CheckboxStories.Disabled} />
 
 <Canvas of={CheckboxStories.ContentEx1} />
 
-### Gi svaralternativene samme språklige form
-
-Det betyr at de kan ha enten fullstendige setninger eller ett ord, ikke begge deler.
-
-**Enten:**
-
 <Canvas of={CheckboxStories.ContentEx2} />
-
-**Eller:**
 
 <Canvas of={CheckboxStories.ContentEx3} />

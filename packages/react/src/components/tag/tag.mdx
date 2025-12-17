@@ -1,61 +1,14 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/addon-docs/blocks';
-import { CssVariables } from '@doc-components';
-import css from '@digdir/designsystemet-css/tag.css?inline';
 import * as TagStories from './tag.stories';
 
 <Meta of={TagStories} />
 
-# Tag
-
-Tags er merkelapper som kan brukes til å kategorisere elementer eller kommunisere fremdrift, status eller prosess. Tags kan gi brukeren et raskere overblikk over innholdet. Bruk tags når innholdet har mange kategorier og det er hensiktsmessig å kunne skille mellom dem. Tags er statiske merkelapper; de kan ikke klikkes på.
+**Dokumentasjonen har blitt flyttet til [Designsystemet.no](https://designsystemet.no/no/components).**
 
 <Primary />
 <Controls />
 
-## Bruk
-
-```tsx
-import { Tag } from '@digdir/designsystemet-react';
-
-<Tag>Beta</Tag>;
-```
-
-## Kodeeksempler
-
-### Ikoner
-
-Du kan bruke ikoner i `Tag` for å gi ekstra visuell informasjon. Du må selv bestemme mellomrom mellom tekst og ikon. Vi anbefaler at `padding` på `Tag` mot ytterste kant er likt `margin` på ikonet.
-
 <Canvas of={TagStories.Icons} />
-
-### Variant
-Taggen kan være svak på noen bakgrunnsfarger. Ved å sette `variant="outline"` får taggen en border som gjør den mer synlig.
 
 <Canvas of={TagStories.VariantOutline} />
 
-## Retningslinjer
-Bruk `Tag` når du vil hjelpe brukeren med å raskt identifisere innhold basert på kategori, status eller egenskap. `Tag` fungerer godt for å vise metadata, som for eksempel hvilken type dokument det er, hvilken status noe har, eller hvilket tema det tilhører. De bør brukes konsistent, være korte og lett forståelige, og unngås dersom informasjonen allerede er tydelig i konteksten. Tag er ikke klikkbar, det er bare en merkelapp.
-
-**Passer til å:** 
-- Kategorisere innhold, for eksempel «Beta», «Ny» eller «Populær».
-- Vise status, for eksempel «Pågående», «Fullført» eller «Avbrutt».
-
-**Passer ikke til** 
-- link til andre sider (bruk heller [`Link`](/docs/komponenter-link--docs))
-- handlinger (bruk heller [`Button`](/docs/komponenter-button--docs))
-- filtrering (bruk heller [`Chip`](/docs/komponenter-chip--docs))
-
-### Plassering
-`Tag` bør som regel plasseres bak tittelen eller navnet på tilhørende element. Tags bør ikke plasseres sammen med knapper da det kan forvirre brukeren. Vurder plasseringen og brukertest gjerne.
-
-## Tekst
-- Bruk korte etiketter for enkel skanning. Helst ett ord. Maks to ord dersom det er nødvendig for å beskrive statusen og skille den fra andre tagger.
-- Bruk ord og begreper som er gjenkjennelige for løsningen, unngå ukjente og fremmede ord.
-- Vil du bruke flere tags sammen, bør du bruke en `<ul>` med `<li>` element, slik at tags blir lest opp som en liste.
-
-## Tilgjengelighet
-Skal du vise flere `Tag` sammen, anbefaler vi å bruke en `<ul>`-liste med én `<li>` per `Tag`. På den måten blir de lest opp som en liste, ikke som én sammenhengende setning, noe som gir en bedre opplevelse for brukere av hjelpemiddelteknologi.
-
-## CSS Variabler
-
-<CssVariables css={css} />

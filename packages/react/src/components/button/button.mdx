@@ -1,104 +1,22 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/addon-docs/blocks';
-import { Button } from './button';
-
 import * as ButtonStories from './button.stories';
-
-import css from '@digdir/designsystemet-css/button.css?inline';
 
 <Meta of={ButtonStories} />
 
-# Button
-
-Knappar lèt brukarane utføre handlingar.
+**Dokumentasjonen har blitt flyttet til [Designsystemet.no](https://designsystemet.no/no/components).**
 
 <Primary />
 <Controls />
 
-## Bruk
-
-```tsx
-import { Button } from '@digdir/designsystemet-react';
-
-<Button>Trykk på meg!</Button>;
-```
-
-## Kodeeksempler
-
-### Varianter
-Bruk `primary`, `secondary` eller `tertiary` for å vekte knappen rett.
-
 <Canvas of={ButtonStories.Variants} />
-
-### Fargar
-
-Knappane finst i alle temafargar i tillegg til `danger`. Det er opp til deg kva farge du vel for knappen. 
-`Danger`-fargen brukar vi til handlingar som brukaren ikkje kan angre, for eksempel «Slett».
 
 <Canvas of={ButtonStories.Colors} />
 
-### Ikon
-
-Ikon i knappar får automatisk luft til teksten. 
-Bruk `icon={true}` dersom knappen kun skal ha ikon, då blir ikonet litt større.
-
 <Canvas of={ButtonStories.Icons} />
-
-### Knapp som lenkje
-
-Bruk `asChild` dersom du treng å bruke knappen som ei lenkje. 
-Vurder først om det er betre å bruke [`Link`](/docs/komponenter-link--docs)-komponenten. 
-[Les meir om komposisjon](https://designsystemet.no/no/fundamentals/code/composition).
 
 <Canvas of={ButtonStories.AsLink} />
 
-### Knappar som lastar
-
-Når vi skal vise brukaren at knappen held på å laste noko, kan vi kombinere knappen med ein spinner. I eksempelet under bruker vi proppen `loading` for å vise at knappen lastar. 
-Viss `icon` er sett saman med `loading`, vil lasteindikatoren visast i staden for ikonet.
-
 <Canvas of={ButtonStories.Loading} />
-
-I eksempelet over blir `aria-disabled` sett automatisk når `loading="true"`. Dette er den anbefalte måten å vise at ein knapp er deaktivert på. Då kan knappen framleis få fokus når brukaren navigerer med tastatur. Slik blir skjermlesarar og andre hjelpemiddel informerte om at knappen finst, men at han ikkje er aktiv.
-
-**Merk:** Verken `loading="true"` eller `aria-disabled` hindrar automatisk at knappen utløyser `onClick`.  
-Du må sjølv sørgje for at callback-funksjonen ikkje køyrer når knappen er deaktivert.
-
-
-## Retningslinjer
-Knappar har ein viktig funksjon og er direkte knytte til ei handling. Dei gjev brukaren moglegheit til å utføre oppgåver.
-
-**Passar til å**
-
-- starte ein prosess  
-- navigere i ein flyt, for eksempel med «Forrige» og «Neste»  
-- sende inn eit skjema  
-
-**Passar ikkje til å**
-
-- navigere til andre sider eller ut av tenesta - bruk heller [`Link`](/docs/komponenter-link--docs)
-- filtrere informasjon, for eksempel i lister eller tabeller - bruk heller [`Chip`](/docs/komponenter-chip--docs)
-- vise hvilke filtre som er valgt - bruk heller [`Chip`](/docs/komponenter-chip--docs)
-
-### Framhevingsnivå
-Vi har ulike knappetypar for å framheve bestemte handlingar. Variantane `primary`, `secondary` og `tertiary` viser kor viktig handlinga er, og hjelper brukaren å forstå kva som bør prioriterast.
-
-
-<Canvas of={ButtonStories.Variants} />
-
-**`Primary`** Vi brukar denne knappen til den viktigaste handlinga for brukaren, for eksempel "Lagre", "Neste" eller "Send inn". Det skal som oftast berre vere éin primærknapp per side.
-
-**`Secondary`** Vi brukar denne knappen til handlingar som ikkje er hovudhandlingar. 
-Han står ofte saman med ein primærknapp - dersom primærknappen er "Lagre", kan sekundærknappen vere "Avbryt".
-
-**`Tertiary`** Denne knappen er endå meir diskré enn sekundærknappen. 
-Han blir ofte brukt saman med ein primær- eller sekundærknapp, til mindre viktige handlingar. 
-Dersom vi vil bruke han åleine, må han ha eit ikon - elles kan det vere vanskeleg å sjå at det er ein knapp.
-
-### Farger
-
-Ei gruppe med knappar bør bruke same fargevariant. 
-Unntaket er når vi vil tydeleggjere ei handling brukaren ikkje kan angre, for eksempel «Slett». 
-Elles skal vi som regel ikkje kombinere ulike fargevariantar.
 
 <Canvas of={ButtonStories.CombinedColors} />
 
