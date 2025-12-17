@@ -23,8 +23,6 @@ const config: StorybookConfig = {
         resolve: {
           alias: resolveAliases({
             '@assets': 'apps/storybook/assets',
-            '@doc-components': 'apps/storybook/docs-components',
-            '@story-utils': 'apps/storybook/story-utils',
           }),
         },
       }),
@@ -75,7 +73,6 @@ const config: StorybookConfig = {
   },
   addons: [
     '@storybook/addon-a11y',
-    '@storybook/addon-links',
     '@storybook/addon-themes',
     'storybook-addon-pseudo-states',
     '@storybook/addon-vitest',
