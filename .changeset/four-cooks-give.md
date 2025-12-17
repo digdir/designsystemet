@@ -1,5 +1,5 @@
 ---
-"@digdir/designsystemet": patch
+"@digdir/designsystemet": minor
 ---
 
 Add ability to override focus colors from config:
