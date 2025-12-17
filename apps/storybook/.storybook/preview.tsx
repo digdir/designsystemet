@@ -76,16 +76,7 @@ const preview: Preview = {
     options: {
       storySort: {
         method: 'alphabetical',
-        order: [
-          'Oversikt',
-          'Kom i gang',
-          'Endringslogger',
-          'Komponenter',
-          'Utilities',
-          'Experimental',
-          'Primitives',
-          'Avviklet',
-        ],
+        order: ['Komponenter', 'Utilities', 'Experimental', 'Avviklet'],
       },
     },
     viewport: {
