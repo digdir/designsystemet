@@ -1,5 +1,24 @@
 # Change Log
 
+## 1.9.0
+
+### Minor Changes
+
+- **Dialog**: `data-placement` selector styles the Dialog as a "drawer"-component from the direction given (`left | right | top | bottom` or `center` which is the default) ([#4323](https://github.com/digdir/designsystemet/pull/4323))
+  Added 3 new local variables:
+  - `--dsc-dialog-placement-inline-max-width` (max-width when placement="left | right")
+  - `--dsc-dialog-placement-block-max-width` (max-width when placement="top | bottom")
+  - `--dsc-dialog-transition-duration` (duration for the slide in animations)
+
+### Patch Changes
+
+- **Input, Search, Suggestion, Textfield**: Uppercase Å was cut off at the top in Chrome and Safari, making it look like Ă ([#4301](https://github.com/digdir/designsystemet/pull/4301))
+
+- **link**: Style background, border, and padding regardless of default browser styles ([#4231](https://github.com/digdir/designsystemet/issues/4231)) ([#4302](https://github.com/digdir/designsystemet/pull/4302))
+
+- Add export for a default theme under `/theme`. ([#4328](https://github.com/digdir/designsystemet/pull/4328))
+  If you are using the default theme from `@digdir/designsystemet-theme`, we recommend importing the CSS from `@digdir/designsystemet-css/theme.css` and removing `@digdir/designsystemet-theme` from your dependencies.
+
 ## 1.8.0
 
 ### Patch Changes

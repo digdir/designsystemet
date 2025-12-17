@@ -1,5 +1,14 @@
 # Change Log
 
+## 1.9.0
+
+### Patch Changes
+
+- Export `designsystemet.css` under `@digdir/designsystemet-theme/index.css` ([#4291](https://github.com/digdir/designsystemet/pull/4291))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.9.0
+
 ## 1.8.0
 
 ### Minor Changes

@@ -1,7 +1,99 @@
 ---
 title: "Changelog"
-latestVersion: 1.8.0
+latestVersion: 1.9.0
 ---
+
+<div style={{
+  border: "1px solid var(--ds-color-neutral-border-subtle)",
+  borderRadius: "var(--ds-border-radius-md)",
+  padding: "var(--ds-size-5)",
+  marginBottom: "var(--ds-size-4)"
+  }}
+>
+
+## 1.9.0
+
+<Divider/>
+
+### @digdir/designsystemet
+
+#### Minor Changes
+
+- Add ability to override focus colors from config: ([#4320](https://github.com/digdir/designsystemet/pull/4320))
+
+  ```json
+  {
+    "overrides": {
+      "focus": {
+        "inner": { "light": "HEX", "dark": "HEX" },
+        "outer": { "light": "HEX", "dark": "HEX" }
+      }
+    }
+  }
+  ```
+
+  This comes with a change to you design tokens, where focus colors are now on the theme layer.
+  Make sure you rebuild your tokens: `npx @digdir/designsystemet tokens create <options> --clean`
+
+#### Patch Changes
+
+- Update `@tokens-studio/sd-transforms` to `2.0.3` ([#4315](https://github.com/digdir/designsystemet/pull/4315))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.9.0
+
+<Divider/>
+
+### @digdir/designsystemet-css
+
+#### Minor Changes
+
+- **Dialog**: `data-placement` selector styles the Dialog as a "drawer"-component from the direction given (`left | right | top | bottom` or `center` which is the default) ([#4323](https://github.com/digdir/designsystemet/pull/4323))
+  Added 3 new local variables:
+  - `--dsc-dialog-placement-inline-max-width` (max-width when placement="left | right")
+  - `--dsc-dialog-placement-block-max-width` (max-width when placement="top | bottom")
+  - `--dsc-dialog-transition-duration` (duration for the slide in animations)
+
+#### Patch Changes
+
+- **Input, Search, Suggestion, Textfield**: Uppercase Å was cut off at the top in Chrome and Safari, making it look like Ă ([#4301](https://github.com/digdir/designsystemet/pull/4301))
+
+- **link**: Style background, border, and padding regardless of default browser styles ([#4231](https://github.com/digdir/designsystemet/issues/4231)) ([#4302](https://github.com/digdir/designsystemet/pull/4302))
+
+- Add export for a default theme under `/theme`. ([#4328](https://github.com/digdir/designsystemet/pull/4328))
+  If you are using the default theme from `@digdir/designsystemet-theme`, we recommend importing the CSS from `@digdir/designsystemet-css/theme.css` and removing `@digdir/designsystemet-theme` from your dependencies.
+
+<Divider/>
+
+### @digdir/designsystemet-react
+
+#### Minor Changes
+
+- **Dialog**: added `placement` prop. This will set `data-placement` and style the `Dialog` as a "drawer"-component from the direction given: `left | right | top | bottom` or `center` (default) ([#4323](https://github.com/digdir/designsystemet/pull/4323))
+
+#### Patch Changes
+
+- **SuggestionClear**: send `onClick`. In earlier versions `onClick` was never called ([#4327](https://github.com/digdir/designsystemet/pull/4327))
+
+- **Popover**: Fix controlled open state going out of sync ([#4314](https://github.com/digdir/designsystemet/pull/4314))
+
+- Update npm non-major dependencies ([#4308](https://github.com/digdir/designsystemet/pull/4308))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.9.0
+
+<Divider/>
+
+### @digdir/designsystemet-theme
+
+#### Patch Changes
+
+- Export `designsystemet.css` under `@digdir/designsystemet-theme/index.css` ([#4291](https://github.com/digdir/designsystemet/pull/4291))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.9.0
+
+</div>
 
 <div style={{
   border: "1px solid var(--ds-color-neutral-border-subtle)",
