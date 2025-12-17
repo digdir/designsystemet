@@ -31,7 +31,7 @@ export const Preview: Story = (args) => (
       <BriefcaseIcon />
     </Avatar>
     <Avatar aria-label='' initials='sm' />
-    <Avatar aria-label='' initials='md' />
+    <Avatar aria-label=''>md</Avatar>
     <Avatar aria-label='' initials='lg' />
   </AvatarStack>
 );

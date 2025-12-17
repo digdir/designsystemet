@@ -5,40 +5,60 @@
 }
 
 .ds-avatar-stack {
-  --dsc-avatar-stack-size: var(--size, round(up, 2.625em, 1px));
+  /*The following variables are defined in the style attribute on .ds-avatar-stack:
+  * --size<length>, --gap<length>, --overlap<number>, --n<number>
+  */
+  --dsc-avatar-stack-size: var(--size, 2.625em);
   --dsc-avatar-stack-gap: var(--gap, 4px);
-  --dsc-avatar-stack-overlap: calc((var(--dsc-avatar-stack-size) / 100 * var(--overlap, 50)) * -1);
-  --dsc-avatar-stack-outline-color: light-dark(transparent, transparent);
+  --dsc-avatar-stack-overlap: calc(((var(--dsc-avatar-stack-size) / 100) * var(--overlap, 50)) * -1);
 
   --captured-length: var(--dsc-avatar-stack-overlap); /*overlap*/
+  container-type: inline-size;
   display: flex;
   padding-block: 1px;
   transition: --captured-length 0.2s ease;
   width: calc(var(--dsc-avatar-stack-size) * var(--n) + var(--dsc-avatar-stack-overlap) * (var(--n) - 1));
-  filter: drop-shadow(0 0 0.5px var(--dsc-avatar-stack-outline-color)) drop-shadow(0 0 0.5px var(--dsc-avatar-stack-outline-color))
-    drop-shadow(0 0 0.5px var(--dsc-avatar-stack-outline-color));
-  &:hover {
-    --captured-length: 0px;
+
+  &[data-expandable='true'] {
+    &:hover {
+      --captured-length: 0px;
+    }
   }
+
   &:empty {
     display: none;
   }
+
   .ds-avatar {
     --dsc-avatar-size: var(--dsc-avatar-stack-size);
-    aspect-ratio: 1;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
+    --font-size: max(0.75rem, calc(var(--dsc-avatar-stack-size) * 0.5));
     mask: radial-gradient(
       50% 50% at calc(150% + var(--captured-length)),
       transparent calc(100% - 1px + var(--dsc-avatar-stack-gap)),
       #000 calc(100% + var(--dsc-avatar-stack-gap))
     );
+
     &:not(:first-child) {
       margin-left: var(--captured-length);
     }
+
     &:last-child {
       mask: none;
     }
+
+    &[data-initials]:empty::before {
+      font-size: var(--font-size);
+    }
+
+    > span {
+      font-size: var(--font-size);
+    }
+  }
+
+  &[data-additionals]::after {
+    content: '+' attr(data-additionals);
+    place-self: center;
+    margin-left: 1ch;
+    font-size: max(1rem, calc(var(--dsc-avatar-stack-size) * 0.4));
   }
 }
