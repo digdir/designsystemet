@@ -1,9 +1,6 @@
-import { createHtmlStory } from '@story-utils/createHtmlStory';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
 import { Alert, Button, Heading, Link, Paragraph } from '../';
-import correctLiveRegionHtml from './html-examples/correct-live-region.html?raw';
-import wrongLiveRegionHtml from './html-examples/wrong-live-region.html?raw';
 
 type Story = StoryFn<typeof Alert>;
 
@@ -200,11 +197,6 @@ WrongLiveRegionReact.parameters = {
     alignItems: 'start',
   },
 };
-
-export const WrongLiveRegionHtml = createHtmlStory(wrongLiveRegionHtml, {
-  customStyles: WrongLiveRegionReact.parameters.customStyles,
-});
-
 export const CorrectLiveRegionReact: StoryFn<typeof Alert> = () => {
   const [showAlert, setShowAlert] = useState(false);
   return (
@@ -240,10 +232,6 @@ export const CorrectLiveRegionReact: StoryFn<typeof Alert> = () => {
   );
 };
 CorrectLiveRegionReact.parameters = WrongLiveRegionReact.parameters;
-
-export const CorrectLiveRegionHtml = createHtmlStory(correctLiveRegionHtml, {
-  customStyles: CorrectLiveRegionReact.parameters.customStyles,
-});
 
 export const MedAria: Story = (args) => (
   <Alert {...args} data-color='danger' role='alert'>
