@@ -5,7 +5,6 @@ export default {
     'Navnet bør representere virksomheten eller produktet du skal profilere.',
   'generate-css': 'Generer CSS',
   'generating-css': 'Genererer CSS...',
-  'figma-plugin': 'Figma plugin (åpnes i ny fane)',
   in: 'i',
   'core-ui-kit': 'Core UI Kit (åpnes i ny fane)',
   'to-update':
@@ -27,7 +26,7 @@ export default {
   },
   cli: {
     'step-one':
-      'Kopier kodesnutten og kjør den på maskinen din for å generere design tokens (json-filer), eller lim den inn i Designsystemet sin',
+      'Kopier kodesnutten og kjør den på maskinen din for å generere design tokens (json-filer).',
     'step-two': 'Kjør kodesnutten for å generere CSS variabler til kode.',
     'severity-warning':
       'Merk: Severity farger er endret i temaet ditt. Disse vil ikke komme med dersom du bruker CLI.',
