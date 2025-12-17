@@ -5,10 +5,14 @@ import { forwardRef } from 'react';
 export type AvatarStackProps = {
   /**
    *  Adjusts gap between avatars in the stack in px.
-   *  @default '4'
+   *  @default 4
    */
   gap?: number;
   avatarSize?: number;
+  /**
+   *  This is a percentage value of how much avatars should overlap.
+   *  @default 50
+   */
   overlap?: number;
 } & HTMLAttributes<HTMLDivElement>;
 
@@ -27,12 +31,15 @@ export type AvatarStackProps = {
  * </AvatarStack>
  */
 export const AvatarStack = forwardRef<HTMLDivElement, AvatarStackProps>(
-  function AvatarStack({ className, ...rest }, ref) {
+  function AvatarStack(
+    { className, gap, avatarSize, overlap = 50, ...rest },
+    ref,
+  ) {
     const style = {
       ...(rest.style || {}),
-      '--gap': rest.gap ? `${rest.gap}px` : undefined,
-      '--size': rest.avatarSize ? `${rest.avatarSize}px` : undefined,
-      '--overlap': rest.overlap ? `${rest.overlap}px` : undefined,
+      '--gap': gap ? `${gap}px` : undefined,
+      '--size': avatarSize ? `${avatarSize}px` : undefined,
+      '--overlap': overlap ? `${overlap}` : undefined,
     } as React.CSSProperties;
     return (
       <div

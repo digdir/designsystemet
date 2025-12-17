@@ -7,8 +7,8 @@
 .ds-avatar-stack {
   --dsc-avatar-stack-size: var(--size, round(up, 2.625em, 1px));
   --dsc-avatar-stack-gap: var(--gap, 4px);
-  --dsc-avatar-stack-overlap: var(--overlap, -12px);
-  --dsc-avatar-stack-outline-color: light-dark(transparent, white);
+  --dsc-avatar-stack-overlap: calc((var(--dsc-avatar-stack-size) / 100 * var(--overlap, 50)) * -1);
+  --dsc-avatar-stack-outline-color: light-dark(transparent, transparent);
 
   --captured-length: var(--dsc-avatar-stack-overlap); /*overlap*/
   display: flex;
