@@ -42,7 +42,8 @@ if (DEVELOPMENT) {
     '/.well-known',
     express.static('dist/client/.well-known', { maxAge: '1y' }),
   );
-  app.use(express.static('dist/client', { maxAge: '30d' }));
+  app.use(express.static('dist/client/img', { maxAge: '30d' }));
+  app.use(express.static('dist/client/animations', { maxAge: '30d' }));
   app.use(await import(BUILD_PATH).then((mod) => mod.app));
 }
 
