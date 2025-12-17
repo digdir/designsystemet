@@ -46,6 +46,16 @@
         "linkVisited": {
           "light": "#ff1234",
           "dark": "#1234ff"
+        },
+        "focus": {
+          "inner": {
+            "light": "#00ff00",
+            "dark": "#00ffff"
+          },
+          "outer": {
+            "light": "#ffff00",
+            "dark": "#ff00aa"
+          }
         }
       }
     },

@@ -53,14 +53,7 @@ export default function Cli({
       <div className={classes.step}>
         <span>1</span>
         <Paragraph>
-          {t('themeModal.cli.step-one')}{' '}
-          <Link
-            target='_blank'
-            href='https://www.figma.com/community/plugin/1382044395533039221/designsystemet-beta'
-          >
-            {t('themeModal.figma-plugin')}
-          </Link>{' '}
-          {t('themeModal.in')}{' '}
+          {t('themeModal.cli.step-one')} {t('themeModal.in')}{' '}
           <Link
             target='_blank'
             href='https://www.figma.com/community/file/1322138390374166141'
