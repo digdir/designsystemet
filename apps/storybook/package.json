@@ -13,7 +13,6 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "clsx": "^2.1.1",
     "react": "^19.2.1",
     "react-dom": "^19.2.1"
   },
@@ -31,10 +30,8 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@vitest/browser": "4.0.15",
-    "@vitest/coverage-v8": "4.0.15",
     "axe-playwright": "^2.2.2",
     "playwright": "^1.57.0",
-    "prettier": "^3.7.4",
     "ramda": "^0.32.0",
     "react-docgen-typescript": "^2.4.0",
     "storybook": "^9.1.16",
