@@ -312,3 +312,114 @@ export const WithTooltipAndLink: Story = (args) => (
 WithTooltipAndLink.args = {
   max: 4,
 };
+
+export const Overlaps: Story = (args) => (
+  <div
+    style={{
+      display: 'flex',
+      flexDirection: 'row',
+      gap: 'var(--ds-size-4)',
+      flexWrap: 'wrap',
+    }}
+  >
+    <fieldset
+      style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
+    >
+      <legend>overlap: 100</legend>
+      <AvatarStack {...args} overlap={100}>
+        <Avatar aria-label=''>
+          <img src='https://placebeard.it/100x100' alt='' />
+        </Avatar>
+        <Avatar aria-label=''>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+        <Avatar aria-label=''>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+        <Avatar aria-label=''>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+      </AvatarStack>
+    </fieldset>
+    <fieldset
+      style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
+    >
+      <legend>overlap: 70</legend>
+      <AvatarStack {...args} overlap={70}>
+        <Avatar aria-label=''>
+          <img src='https://placebeard.it/100x100' alt='' />
+        </Avatar>
+        <Avatar aria-label=''>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+        <Avatar aria-label=''>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+        <Avatar aria-label=''>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+      </AvatarStack>
+    </fieldset>
+    <fieldset
+      style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
+    >
+      <legend>overlap: 50</legend>
+      <AvatarStack {...args} overlap={50}>
+        <Avatar aria-label=''>
+          <img src='https://placebeard.it/100x100' alt='' />
+        </Avatar>
+        <Avatar aria-label=''>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+        <Avatar aria-label=''>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+        <Avatar aria-label=''>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+      </AvatarStack>
+    </fieldset>
+    <fieldset
+      style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
+    >
+      <legend>overlap: 30</legend>
+      <AvatarStack {...args} overlap={30}>
+        <Avatar aria-label=''>
+          <img src='https://placebeard.it/100x100' alt='' />
+        </Avatar>
+        <Avatar aria-label=''>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+        <Avatar aria-label=''>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+        <Avatar aria-label=''>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+      </AvatarStack>
+    </fieldset>
+    <fieldset
+      style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
+    >
+      <legend>overlap: 0</legend>
+      <AvatarStack {...args} overlap={0}>
+        <Avatar aria-label=''>
+          <img src='https://placebeard.it/100x100' alt='' />
+        </Avatar>
+        <Avatar aria-label=''>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+        <Avatar aria-label=''>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+        <Avatar aria-label=''>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+      </AvatarStack>
+    </fieldset>
+  </div>
+);
+Overlaps.args = {
+  max: 4,
+  gap: 3,
+};
