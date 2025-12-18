@@ -2,10 +2,6 @@ import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { Children, forwardRef } from 'react';
 
-/* @TODO
-- support tooltips around avatar?
-- support link avatars?
- */
 export type AvatarStackProps = {
   /**
    *  Adjusts gap-mask between avatars in the stack in px.

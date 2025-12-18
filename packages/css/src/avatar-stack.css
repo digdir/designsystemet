@@ -60,6 +60,14 @@
     > span {
       font-size: var(--font-size);
     }
+    > a {
+      line-height: 0;
+    }
+    &:has(:focus-visible) {
+      mask: none;
+      @composes ds-focus--visible from './base.css';
+      z-index: 1;
+    }
   }
 
   &[data-additionals]::after {

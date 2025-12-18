@@ -240,3 +240,75 @@ export const WithTooltip: Story = (args) => (
 WithTooltip.args = {
   max: 4,
 };
+
+export const WithTooltipAndLink: Story = (args) => (
+  <div
+    style={{ display: 'flex', flexDirection: 'row', gap: 'var(--ds-size-4)' }}
+  >
+    <fieldset
+      style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
+    >
+      <legend>Link expandable</legend>
+      <AvatarStack {...args} expandable>
+        <Avatar aria-label=''>
+          <a href='#'>
+            <img src='https://placebeard.it/100x100' alt='' />
+          </a>
+        </Avatar>
+        <Avatar aria-label=''>
+          <a href='#'>
+            <img src='https://i.pravatar.cc/100' alt='' />
+          </a>
+        </Avatar>
+        <Avatar aria-label=''>
+          <a href='#'>
+            <img src='https://i.pravatar.cc/100' alt='' />
+          </a>
+        </Avatar>
+        <Avatar aria-label=''>
+          <a href='#'>
+            <img src='https://i.pravatar.cc/100' alt='' />
+          </a>
+        </Avatar>
+      </AvatarStack>
+    </fieldset>
+    <fieldset
+      style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
+    >
+      <legend>Link + Tooltip</legend>
+      <AvatarStack {...args} overlap={20}>
+        <Tooltip content='Ola Nordmann'>
+          <Avatar aria-label=''>
+            <a href='#'>
+              <img src='https://placebeard.it/100x100' alt='' />
+            </a>
+          </Avatar>
+        </Tooltip>
+        <Tooltip content='Kari Nordmann'>
+          <Avatar aria-label=''>
+            <a href='#'>
+              <img src='https://i.pravatar.cc/100' alt='' />
+            </a>
+          </Avatar>
+        </Tooltip>
+        <Tooltip content='Person 2'>
+          <Avatar aria-label=''>
+            <a href='#'>
+              <img src='https://i.pravatar.cc/100' alt='' />
+            </a>
+          </Avatar>
+        </Tooltip>
+        <Tooltip content='Person 3'>
+          <Avatar aria-label=''>
+            <a href='#'>
+              <img src='https://i.pravatar.cc/100' alt='' />
+            </a>
+          </Avatar>
+        </Tooltip>
+      </AvatarStack>
+    </fieldset>
+  </div>
+);
+WithTooltipAndLink.args = {
+  max: 4,
+};
