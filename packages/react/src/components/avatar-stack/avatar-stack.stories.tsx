@@ -1,6 +1,6 @@
 import { BriefcaseIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react-vite';
-import { Avatar, AvatarStack } from '../';
+import { Avatar, AvatarStack, Tooltip } from '../';
 
 type Story = StoryFn<typeof AvatarStack>;
 
@@ -151,6 +151,7 @@ export const DataSize: Story = (args) => (
 DataSize.args = {
   expandable: true,
   gap: 3,
+  max: 3,
 };
 
 export const ShapeVariants: Story = (args) => (
@@ -162,9 +163,80 @@ export const ShapeVariants: Story = (args) => (
     <Avatar variant='square' aria-label='Ola Nordmann'>
       <img src='https://placebeard.it/100x100' alt='' />
     </Avatar>
+    <Avatar variant='square' aria-label='Ola Nordmann'>
+      <img src='https://i.pravatar.cc/100' alt='' />
+    </Avatar>
+    <Avatar variant='square' aria-label='Ola Nordmann'>
+      <img src='https://i.pravatar.cc/100' alt='' />
+    </Avatar>
   </AvatarStack>
 );
 ShapeVariants.args = {
   overlap: 50,
   expandable: true,
+  max: 4,
+};
+
+export const WithTooltip: Story = (args) => (
+  <div
+    style={{ display: 'flex', flexDirection: 'row', gap: 'var(--ds-size-4)' }}
+  >
+    <fieldset
+      style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
+    >
+      <legend>expandable</legend>
+      <AvatarStack {...args} expandable>
+        <Tooltip content='Ola Nordmann'>
+          <Avatar aria-label=''>
+            <img src='https://placebeard.it/100x100' alt='' />
+          </Avatar>
+        </Tooltip>
+        <Tooltip content='Kari Nordmann'>
+          <Avatar aria-label=''>
+            <img src='https://i.pravatar.cc/100' alt='' />
+          </Avatar>
+        </Tooltip>
+        <Tooltip content='Person 2'>
+          <Avatar aria-label=''>
+            <img src='https://i.pravatar.cc/100' alt='' />
+          </Avatar>
+        </Tooltip>
+        <Tooltip content='Person 3'>
+          <Avatar aria-label=''>
+            <img src='https://i.pravatar.cc/100' alt='' />
+          </Avatar>
+        </Tooltip>
+      </AvatarStack>
+    </fieldset>
+    <fieldset
+      style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
+    >
+      <legend>not expandable</legend>
+      <AvatarStack {...args}>
+        <Tooltip content='Ola Nordmann'>
+          <Avatar aria-label=''>
+            <img src='https://placebeard.it/100x100' alt='' />
+          </Avatar>
+        </Tooltip>
+        <Tooltip content='Kari Nordmann'>
+          <Avatar aria-label=''>
+            <img src='https://i.pravatar.cc/100' alt='' />
+          </Avatar>
+        </Tooltip>
+        <Tooltip content='Person 2'>
+          <Avatar aria-label=''>
+            <img src='https://i.pravatar.cc/100' alt='' />
+          </Avatar>
+        </Tooltip>
+        <Tooltip content='Person 3'>
+          <Avatar aria-label=''>
+            <img src='https://i.pravatar.cc/100' alt='' />
+          </Avatar>
+        </Tooltip>
+      </AvatarStack>
+    </fieldset>
+  </div>
+);
+WithTooltip.args = {
+  max: 4,
 };

@@ -23,7 +23,7 @@ export type AvatarStackProps = {
    */
   overlap?: number;
   /**
-   *  The maximum number of avatars to show, additional avatars will show as "+ (n - max)".
+   *  The maximum number of avatars to render, additional avatars will show as "+ (n - max)".
    *  @default 10
    */
   max?: number;

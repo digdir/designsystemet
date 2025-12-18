@@ -15,6 +15,7 @@
   --captured-length: var(--dsc-avatar-stack-overlap); /*overlap*/
   container-type: inline-size;
   display: flex;
+  isolation: isolate;
   padding-block: 1px;
   transition: --captured-length 0.2s ease;
   width: calc(var(--dsc-avatar-stack-size) * var(--n) + var(--dsc-avatar-stack-overlap) * (var(--n) - 1));
@@ -48,8 +49,7 @@
     &:not(:first-child) {
       margin-left: var(--captured-length);
     }
-
-    &:last-child {
+    &:nth-last-child(1 of .ds-avatar) {
       mask: none;
     }
 
