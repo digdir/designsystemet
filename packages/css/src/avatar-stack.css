@@ -21,7 +21,7 @@
 
   &[data-expandable='true'] {
     &:hover {
-      --captured-length: 0px;
+      --captured-length: var(--dsc-avatar-stack-gap);
     }
   }
 
@@ -37,6 +37,13 @@
       transparent calc(100% - 1px + var(--dsc-avatar-stack-gap)),
       #000 calc(100% + var(--dsc-avatar-stack-gap))
     );
+    &[data-variant='square'] {
+      mask: linear-gradient(
+        to right,
+        #000 calc(100% + var(--captured-length) - var(--dsc-avatar-stack-gap)),
+        transparent calc(100% + var(--captured-length) - var(--dsc-avatar-stack-gap))
+      );
+    }
 
     &:not(:first-child) {
       margin-left: var(--captured-length);

@@ -1,6 +1,4 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/addon-docs/blocks';
-import { CssVariables } from '@doc-components';
-/* import css from '@digdir/designsystemet-css/avatar-stack.css?inline'; */
 import * as AvatarStackStories from './avatar-stack.stories';
 
 <Meta of={AvatarStackStories} />
@@ -11,7 +9,8 @@ import * as AvatarStackStories from './avatar-stack.stories';
 
 <Primary />
 <Controls />
+## data-size
+<Canvas of={AvatarStackStories.DataSize} />
+## Square
+<Canvas of={AvatarStackStories.ShapeVariants} />
 
-## CSS Variabler
-
-{/* <CssVariables css={css} /> */}

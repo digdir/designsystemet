@@ -2,6 +2,10 @@ import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { Children, forwardRef } from 'react';
 
+/* @TODO
+- support tooltips around avatar?
+- support link avatars?
+ */
 export type AvatarStackProps = {
   /**
    *  Adjusts gap-mask between avatars in the stack in px.
@@ -12,7 +16,7 @@ export type AvatarStackProps = {
    *  Control the size of the avatars. Must be a valid css length value (px, em, rem, var(--ds-size-12) etc.)
    *  @default 'var(--ds-size-12)'
    */
-  avatarSize?: number;
+  avatarSize?: string;
   /**
    *  A number between 0 and 100 which represents the percentage value of how much avatars should overlap.
    *  @default 50
