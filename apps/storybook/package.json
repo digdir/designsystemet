@@ -13,14 +13,14 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "react": "^19.2.1",
-    "react-dom": "^19.2.1"
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
-    "@navikt/aksel-icons": "^7.35.1",
+    "@navikt/aksel-icons": "^7.35.2",
     "@storybook/addon-a11y": "^9.1.16",
     "@storybook/addon-docs": "^9.1.16",
     "@storybook/addon-themes": "^9.1.16",
