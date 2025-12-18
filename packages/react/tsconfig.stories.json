@@ -4,9 +4,6 @@
     "rootDir": "../../",
     "paths": {
       "@assets/*": ["apps/storybook/assets/*"],
-      "@doc-components": ["apps/storybook/docs-components"],
-      "@doc-components/*": ["apps/storybook/docs-components/*"],
-      "@story-utils/*": ["apps/storybook/story-utils/*"],
     },
     "outDir": "./tsc-build",
     "allowSyntheticDefaultImports": true,

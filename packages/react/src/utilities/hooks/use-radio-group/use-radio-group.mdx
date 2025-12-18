@@ -1,60 +1,11 @@
-import { Meta, ArgTypes, Canvas, Controls, Primary } from '@storybook/addon-docs/blocks';
+import { Meta, Canvas, Controls, Primary } from '@storybook/addon-docs/blocks';
 import * as useRadioGroupStories from './use-radio-group.stories';
 
 <Meta of={useRadioGroupStories} />
 
-# useRadioGroup
-
-En React-hook for å lettere håndtere en gruppe med `Radio`-komponenter.
+**Dokumentasjonen har blitt flyttet til [Designsystemet.no](https://designsystemet.no/no/components).**
 
 <Primary />
 <Controls />
-
-
-## Bruk
-
-Under er et enkelt eksempel på hvordan du bruker `useRadioGroup`-hooken for å håndtere en gruppe med `Radio`-komponenter.
-
-I funksjonen `getRadioProps` er første parameter `value`, som er en unik identifikator for alternativet, eller et objekt med props som skal legges på `Radio`-komponenten.
-Dersom du sender inn et objekt, må du passe på at det inneholder `value`.
-
-**Viktig:** Dersom du skal sende props til en `Radio`, er det viktig at du sender disse som objekt til `getRadioProps` og **ikke** direkte på `Radio`. Ellers kan du risikere å overstyre funksjonaliteten fra `useRadioGroup`.
-
-```tsx
-const { getRadioProps, validationMessageProps } = useRadioGroup({
-  name: 'my-radio-group',
-  value: 'sjokolade',
-  error: 'Du må velge et alternativ',
-});
-
-return (
-  <Fieldset>
-    <Fieldset.Legend>Hvilken iskremsmak er best?</Fieldset.Legend>
-    <Fieldset.Description>
-      Velg din favorittsmak blant alternativene.
-    </Fieldset.Description>
-    <Radio label='Vanilje' {...getRadioProps('vanilje')} />
-    <Radio label='Jordbær' {...getRadioProps('jordbær')} />
-    <Radio label='Sjokolade' {...getRadioProps('sjokolade')} />
-    <ValidationMessage {...validationMessageProps} />
-  </Fieldset>
-);
-```
-<br />
-I respons får du objektet:
-
-```ts
-{
-  getRadioProps: (value: string | RadioProps) => RadioProps, // Returnerer props du kan spre på <Radio /> eller <input type="radio" />
-  validationMessageProps: ValidationMessageProps, // Props du valgfritt sprer på ValidationMessage for å koble feilmelding til radiogruppen
-  setValue: string, // Funksjon for å sette radiogruppens verdi
-  value: string, // Nåværende verdi for radiogruppen
-}
-```
-
-## Eksempler
-
-### Kontrollert
-Du kan bruke `value` og `setValue` fra `useRadioGroup` for å kontrollere hvilket alternativ som er valgt.
 
 <Canvas of={useRadioGroupStories.Controlled} />

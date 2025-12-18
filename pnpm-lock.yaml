@@ -65,9 +65,6 @@ importers:
 
   apps/storybook:
     dependencies:
-      clsx:
-        specifier: ^2.1.1
-        version: 2.1.1
       react:
         specifier: ^19.2.1
         version: 19.2.1
@@ -84,9 +81,6 @@ importers:
       '@digdir/designsystemet-theme':
         specifier: workspace:^
         version: link:../../packages/theme
-      '@internal/components':
-        specifier: workspace:^
-        version: link:../../internal/components
       '@navikt/aksel-icons':
         specifier: ^7.35.1
         version: 7.35.1(react@19.2.1)
@@ -96,9 +90,6 @@ importers:
       '@storybook/addon-docs':
         specifier: ^9.1.16
         version: 9.1.16(@types/react@19.2.7)(storybook@9.1.16(@testing-library/dom@10.4.1)(prettier@3.7.4)(vite@7.2.7(@types/node@22.19.1)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.30.1)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.21.0)(yaml@2.7.1)))
-      '@storybook/addon-links':
-        specifier: ^9.1.16
-        version: 9.1.16(react@19.2.1)(storybook@9.1.16(@testing-library/dom@10.4.1)(prettier@3.7.4)(vite@7.2.7(@types/node@22.19.1)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.30.1)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.21.0)(yaml@2.7.1)))
       '@storybook/addon-themes':
         specifier: ^9.1.16
         version: 9.1.16(storybook@9.1.16(@testing-library/dom@10.4.1)(prettier@3.7.4)(vite@7.2.7(@types/node@22.19.1)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.30.1)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.21.0)(yaml@2.7.1)))
@@ -120,27 +111,18 @@ importers:
       '@vitest/browser':
         specifier: 4.0.15
         version: 4.0.15(vite@7.2.7(@types/node@22.19.1)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.30.1)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.21.0)(yaml@2.7.1))(vitest@4.0.15)
-      '@vitest/coverage-v8':
-        specifier: 4.0.15
-        version: 4.0.15(@vitest/browser@4.0.15(vite@7.2.7(@types/node@22.19.1)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.30.1)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.21.0)(yaml@2.7.1))(vitest@4.0.15))(vitest@4.0.15)
       axe-playwright:
         specifier: ^2.2.2
         version: 2.2.2(playwright@1.57.0)
       playwright:
         specifier: ^1.57.0
         version: 1.57.0
-      prettier:
-        specifier: ^3.7.4
-        version: 3.7.4
       ramda:
         specifier: ^0.32.0
         version: 0.32.0
       react-docgen-typescript:
         specifier: ^2.4.0
         version: 2.4.0(typescript@5.9.3)
-      remark-gfm:
-        specifier: ^4.0.1
-        version: 4.0.1
       storybook:
         specifier: ^9.1.16
         version: 9.1.16(@testing-library/dom@10.4.1)(prettier@3.7.4)(vite@7.2.7(@types/node@22.19.1)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.30.1)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.21.0)(yaml@2.7.1))
@@ -2033,15 +2015,6 @@ packages:
     resolution: {integrity: sha512-JfaUD6fC7ySLg5duRdaWZ0FUUXrgUvqbZe/agCbSyOaIHOtJdhGaPjOC3vuXTAcV8/8/wWmbu0iXFMD08iKvdw==}
     peerDependencies:
       storybook: ^9.1.16
-
-  '@storybook/addon-links@9.1.16':
-    resolution: {integrity: sha512-21SJAEuOX4Fh/5VSeakuiJJeSH2ezXBia0cZMTkKYz6GOtoojeGigo3tuebVlsn9myqnkMZxiufnnRa7Zne8vg==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      storybook: ^9.1.16
-    peerDependenciesMeta:
-      react:
-        optional: true
 
   '@storybook/addon-themes@9.1.16':
     resolution: {integrity: sha512-wAB11HfXmK7KcYI6an1+WQi2m9VPfFnM4EV66VOWR+1e1PUThfwr0LhaPXj1g32lFBWdmTZp/9YLGXTyJqSQwQ==}
@@ -7147,13 +7120,6 @@ snapshots:
       ts-dedent: 2.2.0
     transitivePeerDependencies:
       - '@types/react'
-
-  '@storybook/addon-links@9.1.16(react@19.2.1)(storybook@9.1.16(@testing-library/dom@10.4.1)(prettier@3.7.4)(vite@7.2.7(@types/node@22.19.1)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.30.1)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.21.0)(yaml@2.7.1)))':
-    dependencies:
-      '@storybook/global': 5.0.0
-      storybook: 9.1.16(@testing-library/dom@10.4.1)(prettier@3.7.4)(vite@7.2.7(@types/node@22.19.1)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.30.1)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.21.0)(yaml@2.7.1))
-    optionalDependencies:
-      react: 19.2.1
 
   '@storybook/addon-themes@9.1.16(storybook@9.1.16(@testing-library/dom@10.4.1)(prettier@3.7.4)(vite@7.2.7(@types/node@22.19.1)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.30.1)(sass@1.87.0)(stylus@0.62.0)(terser@5.39.0)(tsx@4.21.0)(yaml@2.7.1)))':
     dependencies:
