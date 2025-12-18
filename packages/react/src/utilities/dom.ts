@@ -30,6 +30,7 @@ export const off = (
   for (const type of types.split(' ')) el.removeEventListener(type, ...options);
 };
 
+// Used to store cleanup functions for hot-reloading
 declare global {
   interface Window {
     _dsHotReloadCleanup?: Map<string, Array<() => void>>;
@@ -37,12 +38,12 @@ declare global {
 }
 
 /**
- * onLoaded
+ * hotReload
  * @description Runs a callback when window is loaded in browser, and ensures cleanup when hot-reloading
  * @param key The key to identify setup and corresponding cleanup
  * @param callback The callback to run when the page is ready
  */
-export const onLoaded = (key: string, setup: () => Array<() => void>) => {
+export const onHotReload = (key: string, setup: () => Array<() => void>) => {
   if (!isBrowser()) return; // Skip if not in modern browser environment, but on each call as Vitest might have unloaded jsdom between tests
   if (!window._dsHotReloadCleanup) window._dsHotReloadCleanup = new Map(); // Hot reload cleanup support supporting all build tools
 

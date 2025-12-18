@@ -1,4 +1,4 @@
-import { on, onLoaded } from '../../utilities/dom';
+import { on, onHotReload } from '../../utilities/dom';
 
 const CLICKABLE = '[data-clickable="row"]';
 const SKIP =
@@ -22,6 +22,6 @@ const handleTableRowClick = (event: Partial<MouseEvent>) => {
   }
 };
 
-onLoaded('table-helper', () => [
+onHotReload('table-helper', () => [
   on(window, 'click auxclick', handleTableRowClick, true), // Use capture to ensure we run before other click listeners
 ]);
