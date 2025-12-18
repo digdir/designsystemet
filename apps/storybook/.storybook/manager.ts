@@ -5,7 +5,4 @@ import '@digdir/designsystemet-css';
 
 addons.setConfig({
   theme: customTheme,
-  sidebar: {
-    showRoots: true,
-  },
 });

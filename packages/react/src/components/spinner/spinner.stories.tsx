@@ -5,7 +5,7 @@ import { Spinner } from './spinner';
 type Story = StoryFn<typeof Spinner>;
 
 export default {
-  title: 'Komponenter/Loaders/Spinner',
+  title: 'Komponenter/Spinner',
   component: Spinner,
   parameters: {
     customStyles: {
