@@ -38,7 +38,7 @@ declare global {
 }
 
 /**
- * hotReload
+ * onHotReload
  * @description Runs a callback when window is loaded in browser, and ensures cleanup when hot-reloading
  * @param key The key to identify setup and corresponding cleanup
  * @param callback The callback to run when the page is ready
