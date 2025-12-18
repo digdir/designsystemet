@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet-css",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "description": "CSS for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -48,13 +48,13 @@
     "build:theme": "tsx ../cli/bin/designsystemet.ts tokens build -t ../../design-tokens -o ./dist/theme --experimental-tailwind"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.22",
+    "autoprefixer": "^10.4.23",
     "cssnano": "^7.1.2",
     "postcss": "^8.5.6",
     "postcss-cli": "^11.0.1",
     "postcss-import": "^16.1.1",
     "postcss-nesting": "^13.0.2",
     "rimraf": "^6.1.2",
-    "tsx": "^4.20.2"
+    "tsx": "^4.21.0"
   }
 }

@@ -9,11 +9,6 @@ on:
         options:
           - production
           - next
-  push:
-    branches:
-      - main
-    paths:
-      - 'apps/themebuilder/**'
 
 permissions:
   id-token: write

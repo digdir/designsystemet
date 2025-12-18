@@ -1,0 +1,71 @@
+---
+title: Web components and Designsystemet without React
+description: Soon you can use Designsystemet with both Svelte, Vue, Angular and all other technologies - also pure HTML and CSS. How will this be?
+date: 2025-12-17
+author: Designsystem
+imageSrc: /img/blog/web-components-25-en.png
+imageAlt: Illustration of web components
+---
+
+Many have asked if Designsystemet will offer web components so that you can use the components without React. The answer is yes!
+But not everything will be web components. Let us explain why, and what we plan:
+
+## Standards are good for everyone
+
+Since the beginning, the goal has been to use web standards as much as possible, so that Designsystemet can be used in both old and new solutions,
+regardless of technology and framework. Many of the components actually already work in pure HTML. A good example is the button component:
+
+```jsx
+// React:
+<Button variant="secondary">Click me</Button>
+
+// HTML:
+<button class="ds-button" data-variant="secondary">Click me</button>
+```
+
+In the HTML version, we use standard class names and data attributes.
+Not only does this work in all frameworks and equally well on both the server and in browsers - it also works for all users!
+Standard HTML has built-in support for screen readers, keyboard navigation, and other assistive technologies, without the need for additional customizations.
+
+## Why not make everything as web components?
+
+Web components are a relatively new standard that makes it possible to create your own HTML elements with encapsulated functionality and style using JavaScript.
+Although it may seem tempting to create a web component out of everything, for example a custom button:
+
+```html
+<ds-button data-variant="secondary">Click me</ds-button>
+```
+
+...this would cause us to lose much of the built-in accessibility that regular HTML gives us for free.
+In addition, we get worse performance, since we become dependent on JavaScript, and you as a developer can no longer use HTML documentation to understand the code.
+
+In short: Many components simply do not need to - and should not - be web components.
+Modern CSS with class names and data attributes, in many cases provides both better flexibility and better performance.
+
+## Which components will become web components?
+
+Components that currently use React to implement logic will be made available as web components.
+For example, `<ds-field>` will connect form fields with `<label>` and error messages, and
+`<ds-tabs>` will handle tab navigation and associated content.
+
+Other components, such as `Popover` and `Dialog`, do not need to become web components, because the web standard already
+offers `events` or the [`command` attributes (chrome.com)](https://developer.chrome.com/blog/command-and-commandfor) (with associated [polyfill (github.com)](https://github.com/keithamus/invokers-polyfill)) that we can use to help with opening and closing, and positioning.
+
+Regardless of the technical solution, all components will be based on pure HTML,
+work across technologies, and have the same API:
+You use class names to select components, and data attributes to control settings and behavior.
+
+## Timeline and input!
+
+The work to make Designsystemet available without React will start in January 2026.
+
+We will continuously release experimental versions so you can quickly test and provide feedback.
+
+If you have any input or thoughts, we would greatly appreciate it if you would share them with us - either on [GitHub](https://github.com/digdir/designsystemet) or on [Slack](/slack).
+
+<Contributors
+  authors={[
+    'Tobias Barsnes',
+    'Eirik Backer',
+  ]}
+/>

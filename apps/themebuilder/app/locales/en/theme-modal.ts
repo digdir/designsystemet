@@ -7,7 +7,6 @@ export default {
     'The name should represent the organisation or product you are profiling.',
   'generate-css': 'Generate CSS',
   'generating-css': 'Generating CSS...',
-  'figma-plugin': 'Figma plugin (opens in new tab)',
   in: 'in',
   'core-ui-kit': 'Core UI Kit (opens in new tab)',
   'to-update':
@@ -31,7 +30,7 @@ export default {
   },
   cli: {
     'step-one':
-      "Copy the code snippet and run it on your machine to generate design tokens (JSON files), or paste it into the Designsystemet's",
+      'Copy the code snippet and run it on your machine to generate design tokens (JSON files).',
     'step-two': 'Run the code snippet to generate CSS variables for code.',
     'severity-warning':
       'Note: Severity colors have changed in your theme. These will not be included if you use the CLI.',
