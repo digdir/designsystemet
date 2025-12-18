@@ -6,7 +6,7 @@ import { create } from 'storybook/theming';
  * */
 export default create({
   brandTitle: 'Designsystemet',
-  brandImage: 'logo_digdir.svg',
+  brandImage: 'logo_designsystemet.svg',
   fontBase: '"Inter", sans-serif',
   // Colors
   base: 'light',
