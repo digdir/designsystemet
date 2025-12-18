@@ -1,5 +1,32 @@
 # Change Log
 
+## 1.9.0
+
+### Minor Changes
+
+- Add ability to override focus colors from config: ([#4320](https://github.com/digdir/designsystemet/pull/4320))
+
+  ```json
+  {
+    "overrides": {
+      "focus": {
+        "inner": { "light": "HEX", "dark": "HEX" },
+        "outer": { "light": "HEX", "dark": "HEX" }
+      }
+    }
+  }
+  ```
+
+  This comes with a change to you design tokens, where focus colors are now on the theme layer.
+  Make sure you rebuild your tokens: `npx @digdir/designsystemet tokens create <options> --clean`
+
+### Patch Changes
+
+- Update `@tokens-studio/sd-transforms` to `2.0.3` ([#4315](https://github.com/digdir/designsystemet/pull/4315))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.9.0
+
 ## 1.8.0
 
 ### Minor Changes

@@ -24,7 +24,6 @@
     "@web/www",
     "@web/themebuilder",
     "@web/storybook",
-    "@plugin/figma",
     "@internal/components"
   ]
 }

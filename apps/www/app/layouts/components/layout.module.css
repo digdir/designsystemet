@@ -2,7 +2,7 @@
   padding-bottom: var(--page-spacing-bottom);
   margin-top: var(--page-spacing-top);
   max-width: var(--max-content-width);
-  [data-is-component='true'] & {
+  &:has([data-toc]) {
     display: grid;
     grid-template-rows: auto 1fr;
     grid-template-columns: 1fr var(--sidebar-right-width, 300px);
@@ -13,10 +13,18 @@
       'content aside'
       'content aside';
 
+    [data-toc] {
+      grid-area: aside;
+      align-self: start;
+    }
+
     @media (max-width: 1279px) {
       grid-template-areas:
         'header header'
         'content content';
+      [data-toc] {
+        display: none;
+      }
     }
   }
 

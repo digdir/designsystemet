@@ -142,11 +142,31 @@ const linkVisitedOverrideSchema = z
   })
   .describe('Overrides for the "link-visited" color');
 
+const focusOverrideSchema = z
+  .object({
+    inner: z
+      .object({
+        light: colorSchema.optional().describe('A hex color that overrides light mode'),
+        dark: colorSchema.optional().describe('A hex color that overrides dark mode'),
+      })
+      .optional()
+      .describe('Overrides for the "focus-inner" color'),
+    outer: z
+      .object({
+        light: colorSchema.optional().describe('A hex color that overrides light mode'),
+        dark: colorSchema.optional().describe('A hex color that overrides dark mode'),
+      })
+      .optional()
+      .describe('Overrides for the "focus-outer" color'),
+  })
+  .describe('Overrides for the focus colors');
+
 const overridesSchema = z
   .object({
     colors: semanticColorOverrideSchema.optional(),
     severity: severityColorOverrideSchema.optional(),
     linkVisited: linkVisitedOverrideSchema.optional(),
+    focus: focusOverrideSchema.optional(),
   })
   .describe('Overrides for generated design tokens. Currently only supports colors defined in your theme')
   .optional();

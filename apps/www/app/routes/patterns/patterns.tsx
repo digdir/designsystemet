@@ -66,7 +66,7 @@ export default function Patterns({
         <BannerHeading level={1}>{t('patterns.title')}</BannerHeading>
         <BannerIngress>{t('patterns.description')}</BannerIngress>
       </Banner>
-      <div className={cl('u-rich-text left-adjusted')}>
+      <div className={cl('u-rich-text')}>
         <MDXComponents code={index.code} />
       </div>
     </>

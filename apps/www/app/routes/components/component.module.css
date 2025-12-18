@@ -3,7 +3,8 @@
   grid-area: content;
 }
 .textPage {
-  max-width: var(--long-content-width);
+  max-width: var(--max-content-width);
+  grid-area: content;
 }
 /*work in progress*/
 .textPageHeader {
@@ -31,11 +32,6 @@
   li > p {
     margin-bottom: 0;
   }
-}
-
-.tableOfContents {
-  grid-area: aside;
-  align-self: start;
 }
 
 .header {
@@ -103,12 +99,6 @@
         --dsc-button-background--hover: var(--ds-color-accent-surface-hover);
       }
     }
-  }
-}
-
-@media (max-width: 1279px) {
-  .tableOfContents {
-    display: none;
   }
 }
 @container header-container (max-width: 800px) {

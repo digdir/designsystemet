@@ -4,14 +4,21 @@
 }
 .card {
   background-color: var(--ds-color-surface-default);
-  @media (prefers-reduced-motion: no-preference) {
-    transition:
-      0.2s border-color ease-in-out,
-      0.2s outline ease-in-out;
-  }
+  transition: 0.2s ease;
+  transition-property: border-color, outline;
+  outline: 1px solid transparent;
+
   &:hover {
     border-color: var(--ds-color-border-strong);
     outline: 1px solid var(--ds-color-border-strong);
+  }
+  &:has(:focus-visible) {
+    box-shadow: var(--dsc-focus-boxShadow);
+    outline: var(--dsc-focus-outline);
+    outline-offset: var(--ds-border-width-focus);
+  }
+  :has(:focus-visible) & {
+    transition: none;
   }
 }
 .heading a {

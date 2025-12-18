@@ -1,36 +1,37 @@
 ---
-title: Get started with React
+title: Get Started with React
 sidebar_title: React
 order: 40
 ---
 
 Follow these steps to get started with React components.
+It is recommended that you also read about [CSS](/en/components/get-started/css).
 
 ## 1. Install the packages
 
 ```sh
-npm in @digdir/designsystemet-react @digdir/designsystemet-theme @digdir/designsystemet-css @digdir/designsystemet-types
+npm i @digdir/designsystemet-react @digdir/designsystemet-css
 ```
+
+If you are not [creating your own theme](/en/fundamentals/themebuilder/own-theme) you can get a default theme from `@digdir/designsystemet-css/theme`.
+You can easily create your own theme later.
 
 ### Typescript
 
-If you are using Typescript, make sure you have typescript >= 3.8 in `devDependencies`:
+If you are using Typescript, make sure you have typescript >= 3.8 and install `@digdir/designsystemet-types`:
 
 ```sh
-npm in typescript --save-dev
+npm i typescript @digdir/designsystemet-types --save-dev
 ```
 
 ## 2. Font
 
-You are free to use any font family with the components.
-
 The components are designed and developed with the [Inter font](https://github.com/rsms/inter), so variations may occur if you use a different font.
+If you choose to install the font in a different way, remember to include the font weights `400`, `500` and `600`.
 
 ### Add the Inter font (optional)
 
-Add the `<link>` tag in `<head>`, and set the `font-family` to `Inter` in your global css file.
-
-`font-feature-settings` adds a tail to lowercase `L`s.
+Add the `<link>` tag below to `<head>`, and set the `font-family` to `Inter` in your global css file.
 
 #### HTML
 
@@ -38,10 +39,10 @@ You can use this code to add the font:
 
 ```html
 <link
-rel="stylesheet"
-href="https://altinncdn.no/fonts/inter/v4.1/inter.css"
-integrity="sha384-OcHzc/By/OPw9uJREawUCjP2inbOGKtKb4A/I2iXxmknUfog2H8Adx71tWVZRscD"
-crossorigin="anonymous"
+  rel="stylesheet"
+  href="https://altinncdn.no/fonts/inter/v4.1/inter.css"
+  integrity="sha384-OcHzc/By/OPw9uJREawUCjP2inbOGKtKb4A/I2iXxmknUfog2H8Adx71tWVZRscD"
+  crossorigin="anonymous"
 />
 ```
 
@@ -52,27 +53,27 @@ We strongly recommend that you add the following to your global css file.
 
 ```css
 body {
-font-family: 'Inter', sans-serif;
-font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */
+  font-family: 'Inter', sans-serif;
+  font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */
 }
 ```
 
-If you choose to install the font in a different way, remember to include the font weights `400`, `500` and `600`.
+## 3. Use a React component
 
-## 3. Polyfill
-
-The design system uses [popover](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover) in some components. This api is classified as [Baseline: Newly available](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) as of April 2024, when Firefox was the last browser to add it. In some cases, you may find that users are locked to older browser versions for various reasons, and then it may be appropriate to add a polyfill to ensure that `popover` works for everyone.
-* [Popover-Polyfill](https://github.com/oddbird/popover-polyfill)
-
-## 4. Use a React component
-
-```jsx
-import '@digdir/designsystemet-theme';
-import '@digdir/designsystemet-css';
+```tsx
+import '@digdir/designsystemet-css'; /* imported only once */
+import '@digdir/designsystemet-css/theme'; /* or your theme */
 
 import { Button } from '@digdir/designsystemet-react';
 
 <Button variant='secondary'>I'm a button!</Button>;
 ```
 
-`@digdir/designsystemet-theme` and `@digdir/designsystemet-css` must only be imported once in the application.
+`@digdir/designsystemet-css` and `@digdir/designsystemet-css/theme` must only be imported once in the application.
+
+## Extras
+
+### Polyfill
+
+The design system uses [popover](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover) in some components. This api is classified as [Baseline: Newly available](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) as of April 2024, when Firefox was the last browser to add it. In some cases, you may find that users are locked to older browser versions for various reasons, and then it may be appropriate to add a polyfill to ensure that `popover` works for everyone.
+* [Popover-Polyfill](https://github.com/oddbird/popover-polyfill)
