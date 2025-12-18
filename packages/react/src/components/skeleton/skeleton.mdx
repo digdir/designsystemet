@@ -1,61 +1,18 @@
-import { Meta, Primary, Controls, Canvas } from '@storybook/addon-docs/blocks';
-import { CssVariables } from '@doc-components';
+import { Meta, Canvas, Controls, Primary } from '@storybook/addon-docs/blocks';
 import * as SkeletonStories from './skeleton.stories';
-import cssSkeleton from '@digdir/designsystemet-css/skeleton.css?inline';
 
 <Meta of={SkeletonStories} />
 
-
-# Skeleton
-
-`Skeleton` brukes for å vise at innhold på en side er i ferd med å lastes inn.  
-I stedet for å vise en [`Spinner`](/docs/komponenter-loaders-spinner--docs) som kun indikerer at noe skjer, kan `Skeleton` gi brukeren et visuelt hint om hvordan innholdet til slutt vil se ut.
+**Dokumentasjonen har blitt flyttet til [Designsystemet.no](https://designsystemet.no/no/components).**
 
 <Primary />
 <Controls />
 
-## Bruk
-Skeleton kommer i tre ulike varianter: `Skeleton variant="rectangle"`, `Skeleton variant="circle"`, og `Skeleton variant="text"`.
-
 <Canvas of={SkeletonStories.Components} />
-
-Du kan bygge opp komponenter og seksjoner av siden din ved å bruke disse som byggeklosser. Målet er at resultatet skal etterligne innholdet som lastes.
 
 <Canvas of={SkeletonStories.UsageExample} />
 
-## Kodeeksempler
-
-### Skalering av komponenten
-
-Alle varianter av skeleton har `height` og `width` props, som kan brukes til å manuelt sette størrelser. Du kan oppgi størrelsene i `px`, `%`, eller andre enheter som kan settes direkte på style.
-For `Skeleton variant="text"` holder det ofte å sette kun `width` til det antallet bokstaver du antar vil oppstå, da høyden automatisk skaleres etter tekstinnholdet.
-
-Skeleton vil også tilpasse seg etter `children` som du sender inn til komponenten, men dette vil resultere i en høyde og bredde som matcher summen av samtlige barn.
-
 <Canvas of={SkeletonStories.Children} />
-
-### `variant="text"`
-
-`Skeleton variant="text"` skalerer automatisk etter den lokale fontstørrelsen, enten den kommer fra `parent`, `children` , eller fordi typografi-komponenter er satt til Skeletons gjennom `asChild`-propen.
-For best mulig resultat anbefaler vi at du bruker flere `Skeleton variant="text"` med  `width` til det antallet bokstaver du antar vil oppstå.
 
 <Canvas of={SkeletonStories.Text} />
 
-## Retningslinjer
-`Skeleton` er et alternativ til `Spinner` når du ønsker å indikere at innhold er i ferd med å lastes inn. `Skeleton` bidrar til at brukeren lettere forstår hva som kommer, og opplever ventetiden som kortere. Velg variant av `Skeleton` basert på typen innhold som lastes inn, for eksempel overskrifter, tekstblokker eller bilder. Forsøk å etterligne strukturen til det faktiske innholdet slik at overgangen til det ferdig lastede innholdet føles sømløs.
-
-**Passer til å**
-- indikere at innhold på en side er i ferd med å lastes inn
-- gi brukeren en indikasjon på hvordan innholdet vil se ut når det er lastet
-- bruke i områder der innholdet er forventet å ta mer enn 1 sekund å laste
-
-**Passer ikke**
-- å indikere at systemet jobber med en oppgave som brukeren må vente på (bruk [Spinner](/docs/komponenter-loaders-spinner--docs) i stedet)
-
-## Tilgjengelighet
-Når brukeren har `prefers-reduced-motion` satt til `reduce` vil spinneren ha en animasjon på 1.6 sekunder.
-Animasjonen er ikke dekorativ, og vi skrur den derfor ikke av.
-
-## CSS Variabler
-
-<CssVariables css={cssSkeleton} />

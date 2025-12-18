@@ -1,96 +1,16 @@
 import { Meta, Canvas, Controls, Primary } from '@storybook/addon-docs/blocks';
-import { CssVariables } from '@doc-components';
-import css from '@digdir/designsystemet-css/togglegroup.css?inline';
 import * as ToggleGroupStories from './toggle-group.stories';
 
 <Meta of={ToggleGroupStories} />
 
-# ToggleGroup
-
-`ToggleGroup` samler relaterte alternativ. Komponenten består av ei gruppe knappar som heng saman, der berre éin knapp er mogleg å velje om gongen.
-
+**Dokumentasjonen har blitt flyttet til [Designsystemet.no](https://designsystemet.no/no/components).**
 
 <Primary />
 <Controls />
 
-## Bruk
-Plasser helst innhaldet du skal styre rett etter `ToggleGroup` i DOM-en. Viss ikkje, bør du bruke `aria-controls` på `ToggleGroup` for å knyte komponenten til den containeren innhaldet endrar seg i.
-
-
-```tsx
-import { ToggleGroup } from '@digdir/designsystemet-react';
-
-<ToggleGroup defaultValue='value1'>
-  <ToggleGroup.Item value='value1'>Option 1</ToggleGroup.Item>
-  <ToggleGroup.Item value='value2'>Option 2</ToggleGroup.Item>
-  <ToggleGroup.Item value='value3'>Option 3</ToggleGroup.Item>
-</ToggleGroup>;
-```
-
-## Kodeeksempler
-
-### Innhaldet på knappane
-`ToggleGroup` kan ha tre typar innhald:
-- Berre tekst
-- Tekst med ikon til venstre for teksten
-- Berre ikon
-
-#### Berre ikon
-`ToggleGroup` utan tekst, med berre ikon, bør berre brukast når ikona er lett forståelege for brukarane. Det kan til dømes vere ekspertbrukarar eller brukarar av interne tenester som kjenner symbola i den aktuelle `ToggleGroup` godt. Forklar handlingane med [`Tooltip`](/docs/komponenter-tooltip--docs) når du brukar berre ikon.
-
-
 <Canvas of={ToggleGroupStories.OnlyIcons} />
-
-### Kontrollert
-Bruk `value` på `ToggleGroup.Item` og `ToggleGroup` for å kontrollere verdiene selv.
 
 <Canvas of={ToggleGroupStories.Kontrollert} />
 
-
-## Retningslinjer
-Det er ikkje alltid heilt rett fram å avgjere når du bør bruke ein `ToggleGroup` i staden for eksempelvis `Tabs` eller `Radio`. Valet kjem ofte an på situasjonen og korleis grensesnittet elles er bygd opp. Som ei tommelfingerregel bør `ToggleGroup` berre brukast når valet har ein direkte og synleg effekt i grensesnittet, til dømes at innhaldet på sida eller eit element vert oppdatert med ein gong basert på kva brukaren vel.
-
-Ein `ToggleGroup` bør ha minst to val, men ikkje fleire enn at alle vala får plass i breidda. Du må sjølv passe på at det er nok plass til både innhaldet i vala og talet på val utan å bryte linja. Pass på at heile komponenten får plass på skjermen, også på mobil, og at alle vala er godt synlege for brukarane.
-
-**Passar til å**
-- filtrere innhald i lister og tabellar  
-- bytte mellom ulike innstillingsalternativ  
-- veksle mellom visingar, for eksempel mellom tabell og graf  
-- styre kva felt i eit skjema som skal visast  
-
-**Passar ikkje**
-- når du har så mange val at dei ikkje får plass i breidda  
-- når vala inneheld lange tekstar som gjer at gruppa verkar tung og uoversiktleg  
-
-## Tekst
-
-Ha gjerne med ei ledetekst for gruppa som forklarer kva vala gjeld. Skriv tydelege tekstar for vala i komponenten, og pass på at dei har same språklege form. Bruk gjerne [`Tooltip`](/docs/komponenter-tooltip--docs) til å gje hint, særleg dersom du berre viser ikon.
-
-## Tilgjengelegheit
-
-`ToggleGroup` har standard fokusindikator (ramme).  
-Vi brukar `roving tabindex` for å handtere fokusbevegelse mellom knappane.
-
-
-### Tastaturinteraksjon 
-
-- <kbd>Tab</kbd> flytter fokuset til den aktive toggle-knappen.
-- <kbd>Shift</kbd>+<kbd>Tab</kbd> flytter fokuset til elementet før `ToggleGroup` i tabindex.
-- <kbd>Space</kbd> velger en knapp.
-- <kbd>Enter</kbd> velger en knapp.
-- <kbd data-icon>↑</kbd> flytter fokuset til forrige knapp i gruppa.
-- <kbd data-icon>←</kbd> flytter fokuset til forrige knapp i gruppa.
-- <kbd data-icon>↓</kbd> flytter fokuset til neste knapp i gruppa.
-- <kbd data-icon>→</kbd> flytter fokuset til neste knapp i gruppa.
-- <kbd>Home</kbd> går til første knapp i gruppa.
-- <kbd>End</kbd> går til siste knapp i gruppa.
-
-### Tastaturnavigasjon
-* <kbd data-icon>←</kbd>/<kbd data-icon>→</kbd> går til forrige/neste (enkeltvalg)
-* <kbd>Space</kbd> eller <kbd>Enter</kbd> aktiverer/toggler valgt element
-
-## CSS Variabler
-
-<CssVariables css={css} />
 
 

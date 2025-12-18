@@ -3,7 +3,6 @@ import { fileURLToPath } from 'node:url';
 import type { StorybookConfig } from '@storybook/react-vite';
 import * as R from 'ramda';
 import type { PropItem } from 'react-docgen-typescript';
-import remarkGfm from 'remark-gfm';
 import { defineConfig, mergeConfig } from 'vite';
 
 const dirname =
@@ -24,8 +23,6 @@ const config: StorybookConfig = {
         resolve: {
           alias: resolveAliases({
             '@assets': 'apps/storybook/assets',
-            '@doc-components': 'apps/storybook/docs-components',
-            '@story-utils': 'apps/storybook/story-utils',
           }),
         },
       }),
@@ -76,19 +73,11 @@ const config: StorybookConfig = {
   },
   addons: [
     '@storybook/addon-a11y',
-    '@storybook/addon-links',
     '@storybook/addon-themes',
     'storybook-addon-pseudo-states',
     '@storybook/addon-vitest',
     {
       name: '@storybook/addon-docs',
-      options: {
-        mdxPluginOptions: {
-          mdxCompileOptions: {
-            remarkPlugins: [remarkGfm],
-          },
-        },
-      },
     },
   ],
   staticDirs: ['../assets'],
