@@ -25,9 +25,10 @@ export type AvatarStackProps = {
   max?: number;
   /**
    *  Expand on hover to show full avatars.
+   *  'fixed': AvatarStack physical width does not change when avatars are expanded.
    *  @default false
    */
-  expandable?: boolean;
+  expandable?: 'fixed' | boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
 /**
@@ -52,7 +53,7 @@ export const AvatarStack = forwardRef<HTMLDivElement, AvatarStackProps>(
       avatarSize = 'var(--ds-size-12)',
       overlap = 50,
       max = 4,
-      expandable = false,
+      expandable,
       children,
       ...rest
     },

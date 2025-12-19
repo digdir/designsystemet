@@ -28,12 +28,15 @@
   isolation: isolate;
   padding-block: 1px;
   transition: --captured-length 0.2s ease;
-  width: calc(var(--size) * var(--n) + var(--_overlap) * (var(--n) - 1));
 
-  &[data-expandable='true'] {
+  &[data-expandable] {
     &:hover {
       --captured-length: var(--_gap);
     }
+  }
+
+  &[data-expandable='fixed'] {
+    width: calc(var(--size) * var(--n) + var(--_overlap) * (var(--n) - 1));
   }
 
   &:empty {

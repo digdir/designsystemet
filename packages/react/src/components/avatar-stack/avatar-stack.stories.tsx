@@ -39,6 +39,75 @@ Preview.args = {
   'aria-label': 'Ola Nordmann',
 };
 
+export const Expandable: Story = (args) => (
+  <div
+    style={{
+      display: 'flex',
+      flexDirection: 'row',
+      gap: 'var(--ds-size-4)',
+      flexWrap: 'wrap',
+    }}
+  >
+    <fieldset
+      style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
+    >
+      <legend>expandable</legend>
+      <AvatarStack {...args} expandable>
+        <Avatar aria-label=''>
+          <img src='https://placebeard.it/100x100' alt='' />
+        </Avatar>
+        <Avatar aria-label=''>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+        <Avatar aria-label=''>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+        <Avatar aria-label=''>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+      </AvatarStack>
+    </fieldset>
+    <fieldset
+      style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
+    >
+      <legend>expandable="fixed"</legend>
+      <AvatarStack {...args} expandable='fixed'>
+        <Avatar aria-label=''>
+          <img src='https://placebeard.it/100x100' alt='' />
+        </Avatar>
+        <Avatar aria-label=''>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+        <Avatar aria-label=''>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+        <Avatar aria-label=''>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+      </AvatarStack>
+    </fieldset>
+    <fieldset
+      style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
+    >
+      <legend>not expandable</legend>
+      <AvatarStack {...args}>
+        <Avatar aria-label=''>
+          <img src='https://placebeard.it/100x100' alt='' />
+        </Avatar>
+        <Avatar aria-label=''>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+        <Avatar aria-label=''>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+      </AvatarStack>
+    </fieldset>
+  </div>
+);
+Expandable.args = {
+  gap: 4,
+};
+
 export const DataSize: Story = (args) => (
   <>
     <fieldset
@@ -149,7 +218,7 @@ export const DataSize: Story = (args) => (
   </>
 );
 DataSize.args = {
-  expandable: true,
+  expandable: 'fixed',
   gap: 3,
   max: 3,
 };
@@ -173,7 +242,7 @@ export const ShapeVariants: Story = (args) => (
 );
 ShapeVariants.args = {
   overlap: 50,
-  expandable: true,
+  expandable: 'fixed',
   max: 4,
 };
 
@@ -185,7 +254,7 @@ export const WithTooltip: Story = (args) => (
       style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
     >
       <legend>expandable</legend>
-      <AvatarStack {...args} expandable>
+      <AvatarStack {...args} expandable='fixed'>
         <Tooltip content='Ola Nordmann'>
           <Avatar aria-label=''>
             <img src='https://placebeard.it/100x100' alt='' />
@@ -249,7 +318,7 @@ export const WithTooltipAndLink: Story = (args) => (
       style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
     >
       <legend>Link expandable</legend>
-      <AvatarStack {...args} expandable>
+      <AvatarStack {...args} expandable='fixed'>
         <Avatar aria-label=''>
           <a href='#'>
             <img src='https://placebeard.it/100x100' alt='' />
