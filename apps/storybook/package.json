@@ -21,11 +21,11 @@
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-theme": "workspace:^",
     "@navikt/aksel-icons": "^7.35.2",
-    "@storybook/addon-a11y": "^9.1.16",
-    "@storybook/addon-docs": "^9.1.16",
-    "@storybook/addon-themes": "^9.1.16",
-    "@storybook/addon-vitest": "^9.1.16",
-    "@storybook/react-vite": "^9.1.16",
+    "@storybook/addon-a11y": "^9.1.17",
+    "@storybook/addon-docs": "^9.1.17",
+    "@storybook/addon-themes": "^9.1.17",
+    "@storybook/addon-vitest": "^9.1.17",
+    "@storybook/react-vite": "^9.1.17",
     "@types/ramda": "^0.31.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
@@ -34,8 +34,8 @@
     "playwright": "^1.57.0",
     "ramda": "^0.32.0",
     "react-docgen-typescript": "^2.4.0",
-    "storybook": "^9.1.16",
-    "storybook-addon-pseudo-states": "^9.1.16",
+    "storybook": "^9.1.17",
+    "storybook-addon-pseudo-states": "^9.1.17",
     "vitest": "4.0.15"
   }
 }
