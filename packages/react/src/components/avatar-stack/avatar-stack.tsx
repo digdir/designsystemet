@@ -2,6 +2,14 @@ import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { Children, forwardRef } from 'react';
 
+/* @TODO:
+ * a11y
+ * rightAligned?
+ * vertical??
+ * support Badge?
+ * design for +n indicator
+ */
+
 export type AvatarStackProps = {
   /**
    *  Adjusts gap-mask between avatars in the stack in px.
@@ -74,6 +82,7 @@ export const AvatarStack = forwardRef<HTMLDivElement, AvatarStackProps>(
     } as React.CSSProperties;
     return (
       <figure
+        tabIndex={expandable ? 0 : -1}
         ref={ref}
         className={cl(`ds-avatar-stack`, className)}
         style={style}

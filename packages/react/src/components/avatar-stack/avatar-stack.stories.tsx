@@ -9,13 +9,9 @@ const meta: Meta<typeof AvatarStack> = {
   component: AvatarStack,
   parameters: {
     layout: 'fullscreen',
-    /*     customStyles: {
-      display: 'flex',
-      gap: 'var(--ds-size-2)',
-      justifyContent: 'center',
-      alignItems: 'center',
-      flexWrap: 'wrap',
-    }, */
+  },
+  args: {
+    'aria-label': 'Test av aria label',
   },
 };
 
@@ -34,10 +30,6 @@ export const Preview: Story = (args) => (
     <Avatar aria-label='' initials='lg' />
   </AvatarStack>
 );
-
-Preview.args = {
-  'aria-label': 'Ola Nordmann',
-};
 
 export const Expandable: Story = (args) => (
   <div

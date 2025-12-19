@@ -27,10 +27,16 @@
   display: flex;
   isolation: isolate;
   padding-block: 1px;
+  width: max-content;
   transition: --captured-length 0.2s ease;
 
+  &:focus-visible {
+    @composes ds-focus--visible from './base.css';
+  }
+
   &[data-expandable] {
-    &:hover {
+    &:hover,
+    &:focus-visible {
       --captured-length: var(--_gap);
     }
   }
