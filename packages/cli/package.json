@@ -81,7 +81,6 @@
   "devDependencies": {
     "@tokens-studio/types": "0.5.2",
     "@types/chroma-js": "^3.1.2",
-    "@types/fs-extra": "^11.0.4",
     "@types/node": "^22.19.3",
     "@types/object-hash": "^3.0.6",
     "@types/ramda": "^0.31.1",
