@@ -65,7 +65,6 @@
     "@commander-js/extra-typings": "^14.0.0",
     "@digdir/designsystemet-types": "workspace:^",
     "@tokens-studio/sd-transforms": "2.0.3",
-    "change-case": "^5.4.4",
     "chroma-js": "^3.2.0",
     "colorjs.io": "^0.6.0-alpha.1",
     "commander": "^14.0.2",

@@ -463,9 +463,6 @@ importers:
       '@tokens-studio/sd-transforms':
         specifier: 2.0.3
         version: 2.0.3(style-dictionary@5.1.1)
-      change-case:
-        specifier: ^5.4.4
-        version: 5.4.4
       chroma-js:
         specifier: ^3.2.0
         version: 3.2.0
@@ -6360,7 +6357,6 @@ snapshots:
       '@commander-js/extra-typings': 14.0.0(commander@14.0.2)
       '@digdir/designsystemet-types': file:packages/types
       '@tokens-studio/sd-transforms': 2.0.3(style-dictionary@5.1.1)
-      change-case: 5.4.4
       chroma-js: 3.2.0
       colorjs.io: 0.6.0-beta.3
       commander: 14.0.2
