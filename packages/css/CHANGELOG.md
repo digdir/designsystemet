@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.9.1
+
+### Patch Changes
+
+- update npm non-major dependencies ([#4336](https://github.com/digdir/designsystemet/pull/4336))
+
 ## 1.9.0
 
 ### Minor Changes

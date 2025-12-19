@@ -1,5 +1,16 @@
 # Change Log
 
+## 1.9.1
+
+### Patch Changes
+
+- Remove `change-case` as dependency ([#4343](https://github.com/digdir/designsystemet/pull/4343))
+
+- update npm non-major dependencies ([#4336](https://github.com/digdir/designsystemet/pull/4336))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.9.1
+
 ## 1.9.0
 
 ### Minor Changes
