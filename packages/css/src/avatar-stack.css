@@ -5,24 +5,34 @@
 }
 
 .ds-avatar-stack {
-  /*The following variables are defined in the style attribute on .ds-avatar-stack:
-  * --size<length>, --gap<length>, --overlap<number>, --n<number>
+  /*The following variables can be defined in a parent of .ds-avatar-stack:
+  * --dsc-avatar-stack-size<length>
+  * --dsc-avatar-stack-gap<number>
+  * --dsc-avatar-stack-overlap<number>
+  * --dsc-avatar-count<number>
+  *
+  * --n<number> or --dsc-avatar-count<number> must be set with javascript, but is optionally only needed
+  * when the stack is expandable, to calculate a fixed width.
   */
-  --dsc-avatar-stack-size: var(--size, 2.625em);
-  --dsc-avatar-stack-gap: var(--gap, 4px);
-  --dsc-avatar-stack-overlap: calc(((var(--dsc-avatar-stack-size) / 100) * var(--overlap, 50)) * -1);
 
-  --captured-length: var(--dsc-avatar-stack-overlap); /*overlap*/
-  container-type: inline-size;
+  --size: var(--dsc-avatar-stack-size, 2.625em);
+  --gap: var(--dsc-avatar-stack-gap, 4);
+  --overlap: var(--dsc-avatar-stack-overlap, 50);
+  --n: var(--dsc-avatar-count, initial);
+
+  --_gap: calc(var(--gap) * 1px);
+  --_overlap: calc(((var(--size) / 100) * var(--overlap)) * -1);
+
+  --captured-length: var(--_overlap);
   display: flex;
   isolation: isolate;
   padding-block: 1px;
   transition: --captured-length 0.2s ease;
-  width: calc(var(--dsc-avatar-stack-size) * var(--n) + var(--dsc-avatar-stack-overlap) * (var(--n) - 1));
+  width: calc(var(--size) * var(--n) + var(--_overlap) * (var(--n) - 1));
 
   &[data-expandable='true'] {
     &:hover {
-      --captured-length: var(--dsc-avatar-stack-gap);
+      --captured-length: var(--_gap);
     }
   }
 
@@ -31,19 +41,11 @@
   }
 
   .ds-avatar {
-    --dsc-avatar-size: var(--dsc-avatar-stack-size);
-    --font-size: max(0.75rem, calc(var(--dsc-avatar-stack-size) * 0.5));
-    mask: radial-gradient(
-      50% 50% at calc(150% + var(--captured-length)),
-      transparent calc(100% - 1px + var(--dsc-avatar-stack-gap)),
-      #000 calc(100% + var(--dsc-avatar-stack-gap))
-    );
+    --dsc-avatar-size: var(--size);
+    --font-size: max(0.75rem, calc(var(--size) * 0.5));
+    mask: radial-gradient(50% 50% at calc(150% + var(--captured-length)), transparent calc(100% - 1px + var(--_gap)), #000 calc(100% + var(--_gap)));
     &[data-variant='square'] {
-      mask: linear-gradient(
-        to right,
-        #000 calc(100% + var(--captured-length) - var(--dsc-avatar-stack-gap)),
-        transparent calc(100% + var(--captured-length) - var(--dsc-avatar-stack-gap))
-      );
+      mask: linear-gradient(to right, #000 calc(100% + var(--captured-length) - var(--_gap)), transparent calc(100% + var(--captured-length) - var(--_gap)));
     }
 
     &:not(:first-child) {
@@ -74,6 +76,6 @@
     content: '+' attr(data-additionals);
     place-self: center;
     margin-left: 1ch;
-    font-size: max(1rem, calc(var(--dsc-avatar-stack-size) * 0.4));
+    font-size: max(1rem, calc(var(--size) * 0.4));
   }
 }
