@@ -42,7 +42,6 @@
     "@vitejs/plugin-react-swc": "^4.2.2",
     "@vitest/coverage-v8": "4.0.15",
     "@vitest/browser-playwright": "4.0.15",
-    "@vitest/ui": "4.0.15",
     "chromatic": "^13.3.4",
     "just-pnpm": "^1.0.2",
     "tsconfck": "^3.1.6",
