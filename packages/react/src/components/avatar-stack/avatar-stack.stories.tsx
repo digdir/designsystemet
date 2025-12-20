@@ -1,7 +1,7 @@
 import { BriefcaseIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
-import { Avatar, AvatarStack, Label, Tooltip } from '../';
+import { Avatar, AvatarStack, Checkbox, Label, Tooltip } from '../';
 
 type Story = StoryFn<typeof AvatarStack>;
 
@@ -376,7 +376,10 @@ WithTooltipAndLink.args = {
 };
 
 export const Playground: Story = () => {
+  const [expandable, setExpandable] = useState<undefined | boolean>(undefined);
+  const [square, setSquare] = useState(false);
   const [size, setSize] = useState(64);
+  const [max, setMax] = useState(4);
   const [overlap, setOverlap] = useState(50);
   const [gap, setGap] = useState(4);
   const labelStyle = {
@@ -392,6 +395,7 @@ export const Playground: Story = () => {
         display: 'flex',
         flexDirection: 'column',
         gap: 'var(--ds-size-8)',
+        minHeight: '395px',
       }}
     >
       <fieldset
@@ -402,10 +406,40 @@ export const Playground: Story = () => {
           gap: 'var(--ds-size-4)',
         }}
       >
+        <div
+          style={{
+            display: 'flex',
+            gap: 'var(--ds-size-3)',
+            alignItems: 'center',
+          }}
+        >
+          <Checkbox
+            label='Expandable'
+            checked={expandable !== undefined}
+            onChange={() => setExpandable((prev) => (prev ? undefined : true))}
+          />
+          <Checkbox
+            label='square'
+            checked={square}
+            onChange={() => setSquare((prev) => !prev)}
+          />
+          <Label style={labelStyle}>
+            Max {max}
+            <input
+              min='1'
+              max='6'
+              step='1'
+              type='range'
+              value={max}
+              onChange={(e) =>
+                setMax(Number((e.target as HTMLInputElement).value))
+              }
+            />
+          </Label>
+        </div>
         <Label style={labelStyle}>
           Size {`${size}px`}
           <input
-            id='sizer'
             min='24'
             max='150'
             step='0.1'
@@ -419,7 +453,6 @@ export const Playground: Story = () => {
         <Label style={labelStyle}>
           Overlap {`${overlap}%`}
           <input
-            id='overlapper'
             min='0'
             max='100'
             step='1'
@@ -433,10 +466,9 @@ export const Playground: Story = () => {
         <Label style={labelStyle}>
           Gap {`${gap}px`}
           <input
-            id='gapper'
             min='0'
             max='15'
-            step='0.1'
+            step='1'
             type='range'
             value={gap}
             onChange={(e) =>
@@ -453,27 +485,28 @@ export const Playground: Story = () => {
         }}
       >
         <AvatarStack
-          max={4}
+          max={max}
           overlap={overlap}
           gap={gap}
           avatarSize={`${size}px`}
+          expandable={expandable}
         >
-          <Avatar aria-label=''>
+          <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
             <img src='https://placebeard.it/100x100' alt='' />
           </Avatar>
-          <Avatar aria-label=''>
+          <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
             <img src='https://i.pravatar.cc/100' alt='' />
           </Avatar>
-          <Avatar aria-label=''>
-            <img src='https://placebeard.it/100x100' alt='' />
+          <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
+            md
           </Avatar>
-          <Avatar aria-label=''>
+          <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
             <img src='https://i.pravatar.cc/100' alt='' />
           </Avatar>
-          <Avatar aria-label=''>
+          <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
             <img src='https://placebeard.it/100x100' alt='' />
           </Avatar>
-          <Avatar aria-label=''>
+          <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
             <img src='https://i.pravatar.cc/100' alt='' />
           </Avatar>
         </AvatarStack>
