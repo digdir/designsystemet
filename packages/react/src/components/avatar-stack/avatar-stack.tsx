@@ -58,8 +58,8 @@ export const AvatarStack = forwardRef<HTMLDivElement, AvatarStackProps>(
     {
       className,
       gap,
-      avatarSize = 'var(--ds-size-12)',
-      overlap = 50,
+      avatarSize,
+      overlap,
       max = 4,
       expandable,
       children,
@@ -68,7 +68,11 @@ export const AvatarStack = forwardRef<HTMLDivElement, AvatarStackProps>(
     ref,
   ) {
     const overflow = Math.max(Children.count(children) - max, 0);
-    const safeOverlap = Math.min(Math.max(overlap, 0.01), 100);
+    /*overlap can not be exactly 0. @Todo: can it be solved in css?*/
+    const safeOverlap =
+      overlap !== undefined
+        ? Math.min(Math.max(overlap, 0.01), 100)
+        : undefined;
     const childrenToShow =
       overflow > 0
         ? Children.toArray(children).slice(0, max)

@@ -15,7 +15,7 @@
   * when the stack is expandable, to calculate a fixed width.
   */
 
-  --size: var(--dsc-avatar-stack-size, 2.625em);
+  --size: var(--dsc-avatar-stack-size, var(--ds-size-12));
   --gap: var(--dsc-avatar-stack-gap, 4);
   --overlap: var(--dsc-avatar-stack-overlap, 50);
   --n: var(--dsc-avatar-count, initial);
@@ -51,7 +51,7 @@
 
   .ds-avatar {
     --dsc-avatar-size: var(--size);
-    --font-size: max(0.75rem, calc(var(--size) * 0.5));
+    --_font-size: max(0.75rem, calc(var(--size) * 0.5));
     mask: radial-gradient(50% 50% at calc(150% + var(--captured-length)), transparent calc(100% - 1px + var(--_gap)), #000 calc(100% + var(--_gap)));
     &[data-variant='square'] {
       mask: linear-gradient(to right, #000 calc(100% + var(--captured-length) - var(--_gap)), transparent calc(100% + var(--captured-length) - var(--_gap)));
@@ -65,11 +65,11 @@
     }
 
     &[data-initials]:empty::before {
-      font-size: var(--font-size);
+      font-size: var(--_font-size);
     }
 
     > span {
-      font-size: var(--font-size);
+      font-size: var(--_font-size);
     }
     > a {
       line-height: 0;
