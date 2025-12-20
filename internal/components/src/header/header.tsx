@@ -23,11 +23,23 @@ import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router';
 import { DsEmbledLogo, DsFullLogo } from '../logos/designsystemet';
 import classes from './header.module.css';
+import { SearchTrigger } from './search-trigger';
+
+export type HeaderSearchConfig = {
+  /**
+   * Callback when search is triggered
+   */
+  onSearchClick: () => void;
+};
 
 type HeaderProps = {
   menu: { name: TemplateStringsArray; href: string }[];
   themeSwitcher?: boolean;
   logoLink?: string;
+  /**
+   * Search configuration. If provided, shows a search trigger in the header.
+   */
+  search?: HeaderSearchConfig;
 } & React.HTMLAttributes<HTMLElement>;
 
 /**
@@ -61,6 +73,7 @@ const Header = ({
   menu,
   themeSwitcher = false,
   logoLink = '/',
+  search: searchConfig,
   className,
   ...props
 }: HeaderProps) => {
@@ -211,6 +224,9 @@ const Header = ({
                 </li>
               ))}
             </ul>
+            {searchConfig && (
+              <SearchTrigger onClick={searchConfig.onSearchClick} />
+            )}
             {themeSwitcher && (
               <Tooltip
                 content={t('header.theme-toggle', {

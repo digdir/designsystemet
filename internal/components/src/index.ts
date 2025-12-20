@@ -7,5 +7,6 @@ export { ContentContainer } from './content-container/content-container';
 export { Error404 } from './errors/error-404';
 export type { FooterLinkListItemProps } from './footer/footer';
 export { Footer } from './footer/footer';
+export type { HeaderSearchConfig } from './header/header';
 export { Header } from './header/header';
 export * from './logos';

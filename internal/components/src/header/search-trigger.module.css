@@ -1,0 +1,38 @@
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-size-2);
+  cursor: pointer;
+  font-size: var(--ds-font-size-sm);
+}
+
+.triggerIcon {
+  flex-shrink: 0;
+}
+
+.triggerText {
+  flex: 1;
+  text-align: left;
+}
+
+.kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5em;
+  height: 1.5em;
+  padding: 0 var(--ds-size-1);
+  background: var(--ds-color-neutral-surface-default);
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  border-radius: var(--ds-border-radius-sm);
+  font-family: inherit;
+  font-size: var(--ds-font-size-xs);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .triggerText,
+  .kbd {
+    display: none;
+  }
+}

@@ -20,6 +20,7 @@ export default {
     dark: 'mørk',
     'language-toggle': 'Bytt språk',
     'back-to-home': 'Gå tilbake til forsiden',
+    search: 'Søk',
   },
   'clipboard-button': {
     copy: 'Kopier',
