@@ -477,40 +477,33 @@ export const Playground: Story = () => {
           />
         </Label>
       </fieldset>
-      <fieldset
-        style={{
-          display: 'flex',
-          gap: 'var(--ds-size-4)',
-          alignItems: 'center',
-        }}
+
+      <AvatarStack
+        max={max}
+        overlap={overlap}
+        gap={gap}
+        avatarSize={`${size}px`}
+        expandable={expandable}
       >
-        <AvatarStack
-          max={max}
-          overlap={overlap}
-          gap={gap}
-          avatarSize={`${size}px`}
-          expandable={expandable}
-        >
-          <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
-            <img src='https://placebeard.it/100x100' alt='' />
-          </Avatar>
-          <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
-            <img src='https://i.pravatar.cc/100' alt='' />
-          </Avatar>
-          <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
-            md
-          </Avatar>
-          <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
-            <img src='https://i.pravatar.cc/100' alt='' />
-          </Avatar>
-          <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
-            <img src='https://placebeard.it/100x100' alt='' />
-          </Avatar>
-          <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
-            <img src='https://i.pravatar.cc/100' alt='' />
-          </Avatar>
-        </AvatarStack>
-      </fieldset>
+        <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
+          <img src='https://placebeard.it/100x100' alt='' />
+        </Avatar>
+        <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+        <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
+          md
+        </Avatar>
+        <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+        <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
+          <img src='https://placebeard.it/100x100' alt='' />
+        </Avatar>
+        <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+      </AvatarStack>
     </div>
   );
 };
