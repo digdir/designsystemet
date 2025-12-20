@@ -1,0 +1,90 @@
+@property --captured-length {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+
+.ds-avatar-stack {
+  /*The following variables can be defined in a parent of .ds-avatar-stack:
+  * --dsc-avatar-stack-size<length>
+  * --dsc-avatar-stack-gap<number>
+  * --dsc-avatar-stack-overlap<number>
+  * --dsc-avatar-count<number>
+  *
+  * --n<number> or --dsc-avatar-count<number> must be set with javascript, but is optionally only needed
+  * when the stack is expandable, to calculate a fixed width.
+  */
+
+  --size: var(--dsc-avatar-stack-size, var(--ds-size-12));
+  --gap: var(--dsc-avatar-stack-gap, 4);
+  --overlap: var(--dsc-avatar-stack-overlap, 50);
+  --n: var(--dsc-avatar-count, initial);
+
+  --_gap: calc(var(--gap) * 1px);
+  --_overlap: calc(((var(--size) / 100) * var(--overlap)) * -1);
+
+  --captured-length: var(--_overlap);
+  display: flex;
+  isolation: isolate;
+  padding-block: 1px;
+  width: max-content;
+  transition: --captured-length 0.2s ease;
+
+  &:focus-visible {
+    @composes ds-focus--visible from './base.css';
+  }
+
+  &[data-expandable] {
+    &:hover,
+    &:focus-visible {
+      --captured-length: var(--_gap);
+    }
+  }
+
+  &[data-expandable='fixed'] {
+    width: calc(var(--size) * var(--n) + var(--_overlap) * (var(--n) - 1));
+  }
+
+  &:empty {
+    display: none;
+  }
+
+  .ds-avatar {
+    --dsc-avatar-size: var(--size);
+    --_font-size: max(0.75rem, calc(var(--size) * 0.5));
+    mask: radial-gradient(50% 50% at calc(150% + var(--captured-length)), transparent calc(100% - 1px + var(--_gap)), #000 calc(100% + var(--_gap)));
+    &[data-variant='square'] {
+      mask: linear-gradient(to right, #000 calc(100% + var(--captured-length) - var(--_gap)), transparent calc(100% + var(--captured-length) - var(--_gap)));
+    }
+
+    &:not(:first-child) {
+      margin-left: var(--captured-length);
+    }
+    &:nth-last-child(1 of .ds-avatar) {
+      mask: none;
+    }
+
+    &[data-initials]:empty::before {
+      font-size: var(--_font-size);
+    }
+
+    > span {
+      font-size: var(--_font-size);
+    }
+    > a {
+      line-height: 0;
+    }
+    &:has(:focus-visible) {
+      mask: none;
+      @composes ds-focus--visible from './base.css';
+      z-index: 1;
+    }
+  }
+
+  &[data-additionals]::after {
+    content: '+' attr(data-additionals);
+    place-self: center;
+    margin-left: 1ch;
+    font-size: max(1rem, calc(var(--size) * 0.4));
+  }
+}
