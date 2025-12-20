@@ -79,7 +79,7 @@ export const AvatarStack = forwardRef<HTMLDivElement, AvatarStackProps>(
         : Children.toArray(children);
     const style = {
       ...(rest.style || {}),
-      '--gap': gap ? `${gap}` : undefined,
+      '--gap': gap !== undefined ? `${gap}` : undefined,
       '--size': avatarSize ? `${avatarSize}` : undefined,
       '--overlap': safeOverlap ? `${safeOverlap}` : undefined,
       '--n': childrenToShow.length || 0,
