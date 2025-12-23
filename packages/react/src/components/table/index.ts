@@ -12,6 +12,7 @@ import type { TableHeaderCellProps } from './table-header-cell';
 import { TableHeaderCell } from './table-header-cell';
 import type { TableRowProps } from './table-row';
 import { TableRow } from './table-row';
+import './table-helper';
 
 type Table = typeof TableRoot & {
   /**

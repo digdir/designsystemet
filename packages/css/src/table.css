@@ -1,5 +1,6 @@
 .ds-table {
   --dsc-table-background--hover: var(--ds-color-surface-hover);
+  --dsc-table-background--active: var(--ds-color-surface-active);
   --dsc-table-background--zebra: var(--ds-color-surface-tinted);
   --dsc-table-background: transparent;
   --dsc-table-border-color: var(--ds-color-border-subtle);
@@ -192,9 +193,26 @@
   }
 
   /**
-   * States
+   * Clickable
+   */
+  & > tbody > tr:has([data-clickable='row']) {
+    cursor: pointer;
+  }
+
+  /**
+   * States and Clickable
    */
   @media (hover: hover) and (pointer: fine) {
+    /* Hover a row, that has [data-clickable="row"], but not hovering non-data-clickable-row-button/link */
+    & > tbody:not(:has(:is(a, button, label, input, select, textarea, [role='button']):not([data-clickable='row']):hover)) {
+      & > tr:has([data-clickable='row']):hover > :is(td, th) {
+        background: var(--dsc-table-background--hover);
+      }
+      & > tr:has([data-clickable='row']):active > :is(td, th) {
+        background: var(--dsc-table-background--active);
+      }
+    }
+
     &[data-hover] > tbody > tr:hover > :is(th, td) {
       background: var(--dsc-table-background--hover);
     }
