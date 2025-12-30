@@ -2,7 +2,7 @@ ARG PORT
 ARG HOST
 ARG APP_ENV
 
-FROM node:22.21.1-slim AS base
+FROM node:22.21.1-slim@sha256:7378f5a4830ef48eb36d1abf4ef398391db562b5c41a0bded83192fbcea21cc8 AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
