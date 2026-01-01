@@ -35,7 +35,7 @@
     "ramda": "^0.32.0",
     "react-docgen-typescript": "^2.4.0",
     "storybook": "^9.1.17",
-    "storybook-addon-pseudo-states": "^9.1.17",
+    "storybook-addon-pseudo-states": "^10.1.11",
     "vitest": "4.0.15"
   }
 }
