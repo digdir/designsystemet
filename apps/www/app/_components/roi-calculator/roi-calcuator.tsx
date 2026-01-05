@@ -6,9 +6,12 @@ import {
   Textfield,
 } from '@digdir/designsystemet-react';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import classes from './roi-calculator.module.css';
 
 export default function RoiCalculator() {
+  const { t } = useTranslation();
+
   const [newSolutions, setNewSolutions] = useState(4);
   const [numberOfDevs, setNumberOfDevs] = useState(2);
   const [usageFactor, setUsageFactor] = useState(0.25);
@@ -26,61 +29,54 @@ export default function RoiCalculator() {
 
   return (
     <div className={classes.roiCalculator} data-wide-content>
-      <Heading>Hva kan din virksomhet spare?</Heading>
-      <Paragraph>
-        Generell tekst om at du kan spare ulikt basert på om du skal bruke det
-        direkte eller bygge på toppen.
-      </Paragraph>
+      <Heading>{t('roi-calculator.title')}</Heading>
+      <Paragraph>{t('roi-calculator.description')}</Paragraph>
 
       <Fieldset>
         <Radio
           name='usage'
-          label='Jeg skal bruke det direkte i løsninger'
+          label={t('roi-calculator.radios.direct')}
           value='0.25'
           onChange={() => setUsageFactor(0.25)}
           defaultChecked
         />
         <Radio
           name='usage'
-          label='Jeg skal bygge eget Designsystem på toppen av Designsystemet'
+          label={t('roi-calculator.radios.build')}
           value='0.35'
           onChange={() => setUsageFactor(0.35)}
         />
       </Fieldset>
 
-      <Paragraph>
-        Vi har utgangspunkt i at hver løsning har 1 frontend-ressurs og 1
-        designressurs, og at de sparer 25% tid på design og frontend per
-        løsning. Se grunnlaget for beregningen.
-      </Paragraph>
+      <Paragraph>{t('roi-calculator.whereDataIsFrom')}</Paragraph>
 
       <div className={classes.inputGrid}>
         <Textfield
-          label='Antall nye løsninger per år'
-          suffix='nye løsninger per år'
+          label={t('roi-calculator.inputs.newSolutions.label')}
+          suffix={t('roi-calculator.inputs.newSolutions.suffix')}
           type='number'
           defaultValue={4}
           value={newSolutions}
           onChange={(e) => setNewSolutions(Number(e.target.value))}
-          size={3}
           name='number-of-solutions'
         />
         <Textfield
-          label='Antall årsverk på design og frontend per løsning'
-          suffix='årsverk design/frontend per løsning'
+          label={t('roi-calculator.inputs.numberOfDevs.label')}
+          suffix={t('roi-calculator.inputs.numberOfDevs.suffix')}
           type='number'
           defaultValue={2}
           value={numberOfDevs}
           onChange={(e) => setNumberOfDevs(Number(e.target.value))}
-          size={3}
           name='number-of-devs-per-solution'
         />
       </div>
 
       <div className={classes.result}>
         <Heading level={3}>
-          Virksomheten får frigjort {savedHours} timer per år ({numberOfDevs}{' '}
-          årsverk)
+          {t('roi-calculator.savedHours', {
+            hours: savedHours,
+            years: numberOfDevs,
+          })}
         </Heading>
       </div>
     </div>

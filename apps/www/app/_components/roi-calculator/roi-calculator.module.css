@@ -18,8 +18,13 @@
   margin-block-start: var(--ds-size-4);
   flex-wrap: wrap;
 
+  & :global(.ds-field-affixes) {
+    width: fit-content;
+  }
+
   & input {
     font-family: monospace;
+    max-width: 5em;
   }
 }
 
