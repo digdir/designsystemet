@@ -16,7 +16,7 @@
   */
 
   --size: var(--dsc-avatar-stack-size, var(--ds-size-12));
-  --gap: var(--dsc-avatar-stack-gap, 4);
+  --gap: var(--dsc-avatar-stack-gap, 2);
   --overlap: var(--dsc-avatar-stack-overlap, 50);
   --n: var(--dsc-avatar-count, initial);
 
