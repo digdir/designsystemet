@@ -264,5 +264,6 @@ export default {
       'Vi har utgangspunkt i at hver løsning har 1 frontend-ressurs og 1 designressurs, og at de sparer 25% tid på design og frontend per løsning. Se grunnlaget for beregningen.',
     savedHours:
       'Virksomheten får frigjort {{hours}} timer per år ({{years}} årsverk)',
+    usageLegend: 'Hvordan vil du bruke Designsystemet?',
   },
 };

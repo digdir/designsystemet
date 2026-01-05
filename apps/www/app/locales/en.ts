@@ -265,5 +265,6 @@ export default {
       'The calculation is based on each solution having 1 frontend resource and 1 design resource, saving 25% time on design and frontend per solution. See the basis for the calculation.',
     savedHours:
       'The business frees up {{hours}} hours per year ({{years}} full-time equivalents).',
+    usageLegend: 'How will you use Designsystemet?',
   },
 } satisfies typeof no;

@@ -33,6 +33,7 @@ export default function RoiCalculator() {
       <Paragraph>{t('roi-calculator.description')}</Paragraph>
 
       <Fieldset>
+        <Fieldset.Legend>{t('roi-calculator.usageLegend')}</Fieldset.Legend>
         <Radio
           name='usage'
           label={t('roi-calculator.radios.direct')}
