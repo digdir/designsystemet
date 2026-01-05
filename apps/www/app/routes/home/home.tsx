@@ -128,14 +128,14 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
             <img
               draggable='false'
               className={classes.decoration}
-              src='img/elements/second.svg'
+              src='/img/figures/second.svg'
               alt=''
               data-variant='1'
             />
             <img
               draggable='false'
               className={classes.decoration}
-              src='img/elements/third.svg'
+              src='/img/figures/third.svg'
               alt=''
               data-variant='2'
             />
@@ -190,7 +190,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
         <img
           draggable='false'
           className={classes.decoration}
-          src='img/elements/second.svg'
+          src='/img/figures/second.svg'
           style={{ rotate: '90deg' }}
           alt=''
           data-variant='3'
@@ -214,7 +214,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
         <img
           draggable='false'
           className={classes.decoration}
-          src='img/elements/fourth.svg'
+          src='/img/figures/fourth.svg'
           alt=''
           data-variant='4'
         />
@@ -236,7 +236,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
         <img
           draggable='false'
           className={classes.decoration}
-          src='img/elements/first.svg'
+          src='/img/figures/first.svg'
           alt=''
           data-variant='5'
         />
