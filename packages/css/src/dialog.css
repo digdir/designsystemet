@@ -115,11 +115,6 @@
     }
   }
 
-  @media (max-width: 40rem) {
-    min-width: 100%;
-    max-width: 100%;
-  }
-
   /* Close button */
   & button[data-command='close']:empty::before {
     content: '';
