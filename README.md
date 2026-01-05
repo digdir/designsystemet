@@ -1,6 +1,6 @@
 <br>
 <div align="center">
-    <img alt="Designsystemet logo" src="apps/storybook/assets/img/logo.svg">
+  <img alt="Designsystemet logo" src="apps/www/public/img/Logotest.svg">
 </div>
 
 <h1 align="center">
