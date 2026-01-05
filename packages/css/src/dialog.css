@@ -85,7 +85,7 @@
 
   &[open] {
     animation:
-      ds-dialog-slide-in var(--dsc-dialog-transition-duration) ease-in-out,
+      ds-dialog-slide-up var(--dsc-dialog-transition-duration) ease-in-out,
       ds-dialog-fade-in var(--dsc-dialog-transition-duration) ease-in-out;
 
     &[data-placement='bottom'] {
@@ -175,12 +175,6 @@ body:has(.ds-dialog:modal) {
   overflow: hidden;
 }
 
-@keyframes ds-dialog-slide-in {
-  from {
-    translate: 0 3rem;
-  }
-}
-
 @keyframes ds-dialog-fade-in {
   from {
     opacity: 0;
@@ -188,21 +182,25 @@ body:has(.ds-dialog:modal) {
 }
 @keyframes ds-dialog-slide-up {
   from {
-    translate: 0 100%;
+    opacity: 0;
+    translate: 0 3rem;
   }
 }
 @keyframes ds-dialog-slide-down {
   from {
-    translate: 0 -100%;
+    opacity: 0;
+    translate: 0 -3rem;
   }
 }
 @keyframes ds-dialog-slide-left {
   from {
-    translate: -100% 0;
+    opacity: 0;
+    translate: -3rem 0;
   }
 }
 @keyframes ds-dialog-slide-right {
   from {
-    translate: 100% 0;
+    opacity: 0;
+    translate: 3rem 0;
   }
 }
