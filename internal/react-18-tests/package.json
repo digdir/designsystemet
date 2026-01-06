@@ -4,14 +4,14 @@
   "private": true,
   "dependencies": {
     "@floating-ui/react": "0.26.23",
-    "@navikt/aksel-icons": "^7.35.1",
+    "@navikt/aksel-icons": "^7.36.0",
     "@radix-ui/react-slot": "^1.2.4",
-    "@tanstack/react-virtual": "^3.13.12",
+    "@tanstack/react-virtual": "^3.13.14",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "@testing-library/react": "^16.3.0",
+    "@testing-library/react": "^16.3.1",
     "@types/react": "^18.3.27",
     "@types/react-dom": "^18.3.7"
   }

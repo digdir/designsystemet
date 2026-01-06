@@ -5,7 +5,7 @@ import { Skeleton } from './skeleton';
 type Story = StoryObj<typeof Skeleton>;
 
 export default {
-  title: 'Komponenter/Loaders/Skeleton',
+  title: 'Komponenter/Skeleton',
   component: Skeleton,
   parameters: {
     a11y: {

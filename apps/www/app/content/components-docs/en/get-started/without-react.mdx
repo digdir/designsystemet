@@ -1,0 +1,53 @@
+---
+title: Get started without React
+sidebar_title: Without React
+order: 60
+---
+
+If you want to use the Designsystem without React, you have little to fear, we offer the CSS package that is designed to be used without React.
+It is recommended that you also read about [CSS](/en/components/get-started/css).
+
+You will not get all the benefits that the React components give you, but you can still use the Designsystem's styles and themes.
+
+## Get started
+
+To use the Designsystemet CSS, you need to install `@digdir/designsystemet-css`. You can use the default theme from `@digdir/designsystemet-css/theme`, or [create your own theme](/en/fundamentals/themebuilder/own-theme). You can easily create your own theme later.
+
+```sh
+npm i @digdir/designsystemet-css
+```
+
+### Add CSS to your project
+
+You can import the CSS files directly into your main CSS file, or add them as `<link>` tags in `<head>`.
+
+#### Import in CSS file
+
+```css
+@import '@digdir/designsystemet-css/index.css';
+@import '@digdir/designsystemet-css/theme.css';
+```
+
+#### Add as `<link>` tags
+
+```html
+<link rel="stylesheet" href="path/to/node_modules/@digdir/designsystemet-css/dist/theme/designsystemet.css" />
+<link rel="stylesheet" href="path/to/node_modules/@digdir/designsystemet-css/dist/src/index.css" />
+```
+
+## Get started
+
+All components have a section for HTML at the bottom of the code pages in the documentation. Here you will find information about how you can use the components with pure HTML, and any pitfalls.
+It is also recommended that you read through the accessibility page.
+
+All examples also have the option to see the HTML code that is rendered by React. Press "View Code", and then select "HTML". You can update the code in the React panel to see how the HTML code is updated.
+
+## Example
+
+Here is a simple example of a button:
+
+```html
+<button class="ds-button" data-variant="secondary">
+Click me
+</button>
+```

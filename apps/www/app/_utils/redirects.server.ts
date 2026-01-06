@@ -80,11 +80,11 @@ const redirects = [
     to: '/en/fundamentals/design-elements/shadows',
   },
   {
-    from: '/no/fundamentals/resources/icons/',
+    from: '/no/fundamentals/resources/icons',
     to: '/no/fundamentals/design-elements/icons',
   },
   {
-    from: '/en/fundamentals/resources/icons/',
+    from: '/en/fundamentals/resources/icons',
     to: '/en/fundamentals/design-elements/icons',
   },
 ];

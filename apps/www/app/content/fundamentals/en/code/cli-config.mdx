@@ -109,6 +109,7 @@ The object for main and support contains colours, where the name is the colour's
 | colors | Object | No | Contains overrides for individual colour tokens |
 | severity | Object | No | Contains overrides for severity colours |
 | linkVisited | Object | No | Contains overrides for visited link colour |
+| focus | Object | No | Contains overrides for focus colours |
 
 #### overrides.colors
 | Name | Type | Required | Description |
@@ -158,6 +159,18 @@ The `severity` override allows you to customise the colours used for severity, w
 | ---- | ---- | ------- | ----------- |
 | light | String | No | Hex colour for visited links in light theme |
 | dark | String | No | Hex colour for visited links in dark theme |
+
+#### overrides.focus
+| Name | Type | Required | Description |
+| ---- | ---- | ------- | ----------- |
+| inner | Object | No | Contains colours for inner focus |
+| outer | Object | No | Contains colours for outer focus |
+
+##### overrides.focus.(inner|outer)
+| Name | Type | Required | Description |
+| ---- | ---- | ------- | ----------- |
+| light | String | No | Hex colour for inner focus in light theme |
+| dark | String | No | Hex colour for inner focus in dark theme |
 
 ## Complete Example
 

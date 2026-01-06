@@ -267,10 +267,15 @@ export const LiveComponent = ({
   const editorId = useId();
 
   useEffect(() => {
-    // Set initial color scheme
-    setColorScheme(
-      document?.documentElement?.getAttribute('data-color-scheme'),
-    );
+    // Set initial color scheme and inverted color scheme
+    const initialColorScheme =
+      document?.documentElement?.getAttribute('data-color-scheme');
+    setColorScheme(initialColorScheme);
+    if (initialColorScheme === 'dark') {
+      setInvertedColorScheme('light');
+    } else {
+      setInvertedColorScheme('dark');
+    }
 
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
