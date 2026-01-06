@@ -170,8 +170,9 @@ export default {
       'Learn more about Designsystemet, the basic design elements, and how to get started as a designer or developer.',
   },
   intro: {
-    title: 'Intro',
-    description: 'Learn more about Designsystemet.',
+    title: 'Introduction',
+    description:
+      'Designsystemet enables faster and more efficient development of digital solutions through a shared toolkit of UI components, guidelines, and patterns, while also contributing to coherent user experiences across products and organisations.',
   },
   'best-practices': {
     title: 'Best practices',

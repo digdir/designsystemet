@@ -3,7 +3,7 @@ title: Colors
 sidebar_title: Colors
 description: How the colours are structured and how you use them.
 date: 2024-05-30
-category: Design Elements
+category: Theme
 color: red
 icon: PaletteIcon
 published: true
@@ -40,6 +40,18 @@ These groups describe the areas of use for the colors. For example, the Text gro
 
 * `Variant` Within each group, there are variants that describe how the colors look or should be used. 
 For example, Tinted means the color has a hint of color in it, while Hover means the color is intended to be used for an interactive state.
+
+## Contrast
+The colour system is structured to meet contrast requirements. The Theme Builder ensures that contrast requirements are met through the colours generated from the brand colour. As a result, colours intended for text will always have sufficient contrast against background colours.
+
+Examples:
+
+- `Text-default` always has sufficient contrast against all `background` and `surface` colours.
+- `Text-subtle` always has sufficient contrast against all `background` colours and `surface-default`.
+- This applies regardless of which base colour you have chosen.
+
+The `Base-default` colour will always be the same as the colour you selected. This is to preserve your brand as accurately as possible. You are therefore responsible for ensuring that the colour you choose meets contrast requirements for its intended use. The [Designsystemet theme generator](https://theme.designsystemet.no) will notify you of any contrast issues.
+
 
 ## Overview and explanation of colors
 Each color scale consists of a total of 16 colors, designed to cover different needs in the design. 
