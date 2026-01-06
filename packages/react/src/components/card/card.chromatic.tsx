@@ -29,7 +29,7 @@ export const Cardception: Story = () => (
         </h2>
       </Card>
     </Card>
-    </Card>
+  </Card>
 );
 
 
