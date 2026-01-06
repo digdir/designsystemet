@@ -2,4 +2,4 @@
 "@digdir/designsystemet-css": patch
 ---
 
-Outer cards no longer gets hover styles that is intended for inner card if inner card has links inside heading
+Hover styles for cards containing `<a>` inside a heading will no longer propagate to wrapping cards
