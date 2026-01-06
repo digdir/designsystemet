@@ -43,6 +43,7 @@ export default {
     },
     'latest-news': {
       title: 'Latest news from Designsystemet',
+      seeAllPosts: 'See all blog posts',
     },
     'join-section': {
       title: 'Join us in developing Designsystemet!',

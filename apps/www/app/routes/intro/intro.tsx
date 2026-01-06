@@ -1,4 +1,4 @@
-import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Paragraph } from '@digdir/designsystemet-react';
 import * as Aksel from '@navikt/aksel-icons';
 import { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -49,7 +49,7 @@ export const meta = ({ data }: Route.MetaArgs) => {
 
 export default function Intro() {
   const { t } = useTranslation();
-  const { cats, descriptions } = useRouteLoaderData(
+  const { cats } = useRouteLoaderData(
     'layouts/intro/layout',
   ) as LayoutRoute.ComponentProps['loaderData'];
 
@@ -66,13 +66,6 @@ export default function Intro() {
       {Object.entries(cats).map(([key, value]) => {
         return (
           <Fragment key={key}>
-            <Paragraph
-              style={{
-                maxWidth: '65ch',
-              }}
-            >
-              {descriptions[key as keyof typeof descriptions]}
-            </Paragraph>
             <Grid>
               {value.map((item) => {
                 const Icon = item.icon

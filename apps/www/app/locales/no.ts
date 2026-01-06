@@ -42,6 +42,7 @@ export default {
     },
     'latest-news': {
       title: 'Siste nytt fra Designsystemet',
+      seeAllPosts: 'Se alle blogginnlegg',
     },
     'join-section': {
       title: 'Bli med å utvikle Designsystemet!',

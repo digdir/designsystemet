@@ -49,7 +49,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
       result.frontmatter.title || file.relativePath.replace('.mdx', '');
     const url =
       `/${lang}/intro/${file.relativePath.replace('.mdx', '')}`.replace(
-        '\\',
+        /\\/g,
         '/',
       );
 
@@ -80,14 +80,6 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   return {
     lang,
     cats,
-    descriptions: {
-      Introduksjon:
-        'Designsystemet inneholder grunnleggende designelementer, mønstre, god praksis og kodede komponenter som gir verdi å dele på tvers av offentlig sektor.',
-      Designelementer:
-        'Stilene i designsystemet er grunnleggende designelementer som brukes i komponentene. De finnes i flere sett for ulike identiteter og ulike behov og situasjoner. For eksempel har vi et eget sett for kompakt visning, som kan være hensiktsmessig å bruke i verktøy eller admingrensesnitt.',
-      'For designere': 'Ressurser og veiledning relevant for designere',
-      'For utviklere': 'Ressurser og veiledning relevant for utviklere',
-    },
   };
 };
 
