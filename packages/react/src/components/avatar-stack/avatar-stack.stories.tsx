@@ -381,7 +381,7 @@ export const Playground: Story = () => {
   const [size, setSize] = useState(64);
   const [max, setMax] = useState(4);
   const [overlap, setOverlap] = useState(50);
-  const [gap, setGap] = useState(4);
+  const [gap, setGap] = useState(2);
   const labelStyle = {
     display: 'flex',
     flexDirection: 'column',
@@ -453,7 +453,7 @@ export const Playground: Story = () => {
         <Label style={labelStyle}>
           Overlap {`${overlap}%`}
           <input
-            min='0'
+            min='-10'
             max='100'
             step='1'
             type='range'

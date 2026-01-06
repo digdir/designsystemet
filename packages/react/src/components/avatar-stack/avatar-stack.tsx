@@ -22,7 +22,7 @@ export type AvatarStackProps = {
    */
   avatarSize?: string;
   /**
-   *  A number between 0 and 100 which represents the percentage value of how much avatars should overlap.
+   *  A number which represents the percentage value of how much avatars should overlap. 
    *  @default 50
    */
   overlap?: number;
@@ -68,11 +68,6 @@ export const AvatarStack = forwardRef<HTMLDivElement, AvatarStackProps>(
     ref,
   ) {
     const overflow = Math.max(Children.count(children) - max, 0);
-    /*overlap can not be exactly 0. @Todo: can it be solved in css?*/
-    const safeOverlap =
-      overlap !== undefined
-        ? Math.min(Math.max(overlap, 0.01), 100)
-        : undefined;
     const childrenToShow =
       overflow > 0
         ? Children.toArray(children).slice(0, max)
@@ -81,7 +76,7 @@ export const AvatarStack = forwardRef<HTMLDivElement, AvatarStackProps>(
       ...(rest.style || {}),
       '--gap': gap !== undefined ? `${gap}` : undefined,
       '--size': avatarSize ? `${avatarSize}` : undefined,
-      '--overlap': safeOverlap ? `${safeOverlap}` : undefined,
+      '--overlap': overlap !== undefined ? `${overlap}` : undefined,
       '--n': childrenToShow.length || 0,
     } as React.CSSProperties;
     return (
