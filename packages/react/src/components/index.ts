@@ -1,3 +1,5 @@
+import '../utilities/click-delegate';
+
 export type { AlertProps } from './alert/alert';
 export { Alert } from './alert/alert';
 

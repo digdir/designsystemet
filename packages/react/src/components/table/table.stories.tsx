@@ -418,9 +418,9 @@ export const WithClickableRows: Story = (args) => {
         </Table.Row>
       </Table.Head>
       <Table.Body>
-        <Table.Row>
+        <Table.Row data-clickdelegate='checkbox-1'>
           <Table.Cell>
-            <Checkbox aria-label='Velg Kari Nordmann' data-clickable='row' />
+            <Checkbox aria-label='Velg Kari Nordmann' id='checkbox-1' />
           </Table.Cell>
           <Table.Cell>Kari Nordmann</Table.Cell>
           <Table.Cell>Rådgiver</Table.Cell>
@@ -428,9 +428,9 @@ export const WithClickableRows: Story = (args) => {
             <Textfield data-size='sm' aria-label='Textfield 1' />
           </Table.Cell>
         </Table.Row>
-        <Table.Row>
+        <Table.Row data-clickdelegate='button-1'>
           <Table.Cell>
-            <Button data-clickable='row' onClick={() => alert('Knappeklikk')}>
+            <Button id='button-1' onClick={() => alert('Knappeklikk')}>
               Knapp
             </Button>
           </Table.Cell>
@@ -440,9 +440,9 @@ export const WithClickableRows: Story = (args) => {
             <Textfield data-size='sm' aria-label='Textfield 2' />
           </Table.Cell>
         </Table.Row>
-        <Table.Row>
+        <Table.Row data-clickdelegate='link-1'>
           <Table.Cell>
-            <Link href='https://designsystemet.no' data-clickable='row'>
+            <Link href='https://designsystemet.no' id='link-1'>
               Lenke
             </Link>
           </Table.Cell>

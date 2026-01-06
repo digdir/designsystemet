@@ -203,20 +203,13 @@
    * States and Clickable
    */
   @media (hover: hover) and (pointer: fine) {
-    /* Hover a row, that has [data-clickable="row"], but not hovering non-data-clickable-row-button/link */
-    & > tbody:not(:has(:is(a, button, label, input, select, textarea, [role='button']):not([data-clickable='row']):hover)) {
-      & > tr:has([data-clickable='row']):hover > :is(td, th) {
-        background: var(--dsc-table-background--hover);
-      }
-      & > tr:has([data-clickable='row']):active > :is(td, th) {
-        background: var(--dsc-table-background--active);
-      }
-    }
-
+    & > tbody > tr:has(.\:click-delegate-hover),
     &[data-hover] > tbody > tr:hover > :is(th, td) {
       background: var(--dsc-table-background--hover);
     }
-
+    & > tbody > tr:has(.\:click-delegate-active) {
+      background: var(--dsc-table-background--active);
+    }
     & > thead > tr > [aria-sort]:hover button {
       background: var(--dsc-table-header-background--hover);
     }
