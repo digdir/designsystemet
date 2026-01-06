@@ -25,15 +25,14 @@ export const Cardception: Story = () => (
     <Card>
       <Card>
         <h2>
-          <a href="#">Nested Card Link</a>
+          <a href='#'>Nested Card Link</a>
         </h2>
       </Card>
     </Card>
   </Card>
 );
 
-
 export const Snapshots = createSingleStory(
   { ...CardStories, Cardception },
-  meta
+  meta,
 );

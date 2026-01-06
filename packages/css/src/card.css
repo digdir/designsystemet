@@ -69,9 +69,7 @@
   /* Add states when Card is a anchor, button, or when containing a anchor in heading */
   &:where(a, button, [role='button']),
   /* Match cards containing heading with a link, but exclude outer cards  */
-  &:where(:has(:is(h1, h2, h3, h4, h5, h6) a)):where(
-      :not(:has(&))
-  ) {
+    &:where(:has(:is(h1, h2, h3, h4, h5, h6) a)):where(:not(:has(&))) {
     cursor: pointer;
     text-decoration: none;
 
@@ -108,7 +106,7 @@
     margin-block: 0;
   }
 
- & > * + * {
+  & > * + * {
     margin-block: var(--dsc-card-content-margin-block); /* https://every-layout.dev/layouts/stack/ */
   }
 }
