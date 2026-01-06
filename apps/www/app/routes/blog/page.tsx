@@ -83,14 +83,14 @@ export default function Blog({
       <img
         draggable='false'
         className={classes.decoration}
-        src='/img/elements/third.svg'
+        src='/img/figures/third.svg'
         alt=''
         data-variant='1'
       />
       <img
         draggable='false'
         className={classes.decoration}
-        src='/img/elements/third.svg'
+        src='/img/figures/third.svg'
         alt=''
         data-variant='2'
       />
@@ -121,14 +121,14 @@ export default function Blog({
       <img
         draggable='false'
         className={classes.decoration}
-        src='/img/elements/third.svg'
+        src='/img/figures/third.svg'
         alt=''
         data-variant='3'
       />
       <img
         draggable='false'
         className={classes.decoration}
-        src='/img/elements/third.svg'
+        src='/img/figures/third.svg'
         alt=''
         data-variant='4'
       />
