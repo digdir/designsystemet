@@ -195,7 +195,7 @@
   /**
    * Clickable
    */
-  & > tbody > tr:has([data-clickable='row']) {
+  & > tbody > tr[data-clickdelegate] {
     cursor: pointer;
   }
 
