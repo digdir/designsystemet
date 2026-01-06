@@ -1,0 +1,26 @@
+.header {
+  grid-area: header;
+  width: 100%;
+  max-width: var(--short-content-width);
+  margin-bottom: var(--ds-size-10);
+  [data-size='xs'] {
+    margin-bottom: var(--ds-size-3);
+    color: var(--ds-color-neutral-text-subtle);
+  }
+}
+
+.headerText {
+  color: inherit;
+}
+
+.date {
+  margin-top: var(--ds-size-6);
+  background-color: var(--ds-color-neutral-background-tinted);
+  border-radius: var(--ds-border-radius-md);
+  padding: var(--ds-size-4);
+  font-size: var(--ds-body-long-sm-font-size);
+}
+
+.content {
+  grid-area: content;
+}

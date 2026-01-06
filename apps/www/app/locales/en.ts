@@ -108,6 +108,7 @@ export default {
     sidebar: 'sidebar',
   },
   navigation: {
+    intro: 'Intro',
     fundamentals: 'Get Started',
     'best-practices': 'Best Practices',
     patterns: 'Patterns',
@@ -166,6 +167,10 @@ export default {
     title: 'Getting started',
     description:
       'Learn more about Designsystemet, the basic design elements, and how to get started as a designer or developer.',
+  },
+  intro: {
+    title: 'Intro',
+    description: 'Learn more about Designsystemet.',
   },
   'best-practices': {
     title: 'Best practices',

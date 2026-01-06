@@ -68,6 +68,10 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 
   const menu = [
     {
+      name: 'navigation.intro',
+      href: `https://designsystemet.no/${lang}/intro`,
+    },
+    {
       name: 'navigation.fundamentals',
       href: `https://designsystemet.no/${lang}/fundamentals`,
     },
@@ -78,10 +82,6 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     {
       name: 'navigation.patterns',
       href: `https://designsystemet.no/${lang}/patterns`,
-    },
-    {
-      name: 'navigation.blog',
-      href: `https://designsystemet.no/${lang}/blog`,
     },
     {
       name: 'navigation.components',

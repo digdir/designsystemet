@@ -1,0 +1,161 @@
+---
+title: About Designsystemet
+sidebar_title: About Designsystemet
+description: Why it exists, what it solves, what it consists of and who uses it.
+date: 2025-06-27
+category: Introduction
+color: blue
+icon: ComponentIcon
+published: true
+order: 10
+---
+
+## What is Designsystemet?
+Designsystemet is a shared toolbox of foundational UI components, guidelines, and patterns. It helps create cohesive user experiences and supports efficient product development.
+
+Designsystemet is a public good offered as open source, and anyone is welcome to use it to the extent they wish.
+
+<video controls preload="metadata" width="100%">
+  <source src="/videos/designsystemet/designsystemet-info.mp4" type="video/mp4" />
+  <track
+    label="Norwegian"
+    kind="subtitles"
+    srcLang="nb"
+    src="/videos/designsystemet/designsystemet-info-no.vtt"
+    default 
+  />
+  <track
+    label="English"
+    kind="subtitles"
+    srcLang="en"
+    src="/videos/designsystemet/designsystemet-info-en.vtt"
+  />
+  Your browser does not support the video tag.
+</video>
+
+## Why a _shared_ design system?
+More than 1 million people in Norway struggle to use digital services. One reason is that components and interaction patterns behave differently across services. We want to make it easier to create accessible, consistent, and user-friendly services across the public sector. We achieve this by sharing guidelines, interaction patterns, and basic components that can be used alongside each organization’s visual identity. The goal of Designsystemet is not that all services should look exactly the same, but that components should behave the same—for example, in screen readers and assistive technologies. This promotes recognizable and predictable interactions, even across visually distinct services.
+
+Three key reasons for having a shared design system:
+
+1. **Coherent services across sectors**  
+By collaborating on a shared design system, we can provide more consistent, accessible, and recognizable user experiences across government services. The Norwegian government aims for _“public digital services to have user-friendly and consistent design across agencies, so that citizens with low digital skills can use them”._ <sup>1</sup>
+
+2. **Less duplicated work**  
+Instead of creating the same foundational components repeatedly, we can build them properly once—with high quality, accessibility, and testing in place. Best of all, we only have one place to maintain them as technologies, standards, and needs evolve. This leads to optimized use of resources, reduced development costs, and more time to solve actual user problems.
+
+3. **Accessibility by default**  
+By providing components that meet accessibility standards—along with WCAG-aligned guidance—we make it easier for everyone to build inclusive services. Universal design often requires detailed technical and design decisions. Components may need specific HTML and ARIA attributes, correct focus handling, and screen reader announcements. On top of that, developers must account for how different browsers and screen readers interpret these combinations. These are complex challenges no one should solve alone. When we solve them together, everyone can benefit. Any bugs or improvements are shared with all who use Designsystemet.
+
+## What does Designsystemet solve?
+Designsystemet provides a shared foundation, but we know every service has its own needs. The goal is not to cover everything—but to offer flexible building blocks that work across services and agencies. When something more specialized is needed, each organization can build it themselves or extend the system.
+
+Designsystemet is made to work with your own visual identity and specific service needs. It offers a shared structure for design and development—while allowing local customization.
+
+By reusing common building blocks, we avoid solving the same problems over and over again. This saves time, strengthens quality, and frees up resources to address more specialized challenges.
+
+## What does Designsystemet include?
+
+Designsystemet consists of multiple building blocks and tools. You can use what you need, to the extent it makes sense for you:
+
+- **Design Tokens**  
+  [Design Tokens](/en/fundamentals/design-elements/variables) are variables for colors, typography, spacing, sizes, and shapes. They are theme-based, meaning they reflect your brand via the preferences you set in the [Theme Builder](/en/fundamentals/themebuilder/own-theme). The color system ensures text and background always have sufficient contrast—no matter your brand colors. Token structure supports multiple themes and modes (light, dark, contrast, etc.). Tokens keep design and code in sync—this is where the magic happens.
+
+- **UI components**  
+  Designsystemet offers essential components worth sharing across services. They are available in [Figma](https://www.figma.com/@designsystemet), [CSS](https://www.npmjs.com/package/@digdir/designsystemet-css), and [React](https://www.npmjs.com/package/@digdir/designsystemet-react). Usage guidelines are included and continuously updated as we learn more.
+
+- **Theme Builder**  
+  The [Theme Builder](https://theme.designsystemet.no/en) helps you customize Designsystemet to match your organization’s brand. After configuration, you copy a code snippet and paste it into your terminal or Figma. In just minutes, all components reflect your brand colors in both design and code.
+
+- **Command-line interface (CLI)**  
+  The [CLI](https://www.npmjs.com/package/@digdir/designsystemet) helps you set up new projects, generate structure, configure themes, and install dependencies.
+
+- **Patterns and best practices**  
+  Designsystemet is also a collaboration space for developing shared [patterns](/en/patterns) and [recommendations](/en/best-practices). Patterns include layout, navigation, error handling, and repeated user tasks. We can collaborate on patterns even if we don’t use the same tools or technologies.
+
+- **Blog**  
+  The blog is where we share updates and stories. We encourage contributions—tell us how you use Designsystemet!
+
+- **Community**  
+  Join the discussion on [Slack](https://designsystemet.no/slack) and [GitHub](https://github.com/digdir/designsystemet/discussions/categories/samarbeid-m%C3%B8nster-for-innbyggertjenester). Designsystemet aims to foster shared learning and collaboration across sectors.
+
+## How do we work with Designsystemet?
+
+### Organisation and collaboration
+
+Designsystemet is established as a product in Digdir within the product group [Portaler og brukeropplevelse](https://baksia.digdir.no/produktgrupper/portaler-og-brukeropplevelse/). The product group has an associated product council with thirteen different organisations.
+
+The development team consists of designers and developers from Digdir, the Brønnøysund Register Centre, the Norwegian Food Safety Authority, the Norwegian Directorate for Education and Training and KS Digital. In addition, we collaborate with the design system teams at NAV, the Norwegian Tax Administration, the City of Oslo, the Police and Entur to establish [shared interaction patterns](/no/patterns) across organisations.
+
+Designsystemet aims to facilitate an active and inclusive community where everyone who wishes to contribute can do so, share experiences and learn from one another. The goal is to create an environment where both designers and developers can discuss challenges, share solutions and help improve Designsystemet. You can take part in the community through [Slack](http://designsystemet.no/slack) and [GitHub](https://github.com/digdir/designsystemet/discussions/categories/samarbeid-m%C3%B8nster-for-innbyggertjenester). Read more about the [collaboration](/no/fundamentals/introduction/collaboration).
+
+### Values
+Our values openness, quality, coherence and trust guide our work.
+
+<Card data-color='neutral' style={{ marginBottom: 'var(--ds-size-10)' }}>
+  <Details>
+    <DetailsSummary>Openness</DetailsSummary>
+    <DetailsContent>
+Designsystemet is built on a philosophy of collaboration. It must be developed openly and in interaction between public and private actors. Openness is an important guiding principle in everything we do. When we share our work along the way, including the unfinished parts, we always take a step forward. It should be easy for everyone to contribute and give input through open discussions, and the threshold for making changes should be low when proposals lead to better solutions. By collaborating openly we avoid unnecessary duplication of work and develop solutions that more people can reuse. In this way, we contribute to the sustainable development of digital services.
+</DetailsContent>
+  </Details>
+  <Details>
+    <DetailsSummary>Quality</DetailsSummary>
+    <DetailsContent>
+Designsystemet must maintain high quality and make it efficient to create digital products of good quality. By quality we mean both a good user experience and a solid technical foundation. All components must meet statutory requirements such as accessibility. Yet the requirements are only a minimum. We aim higher to create [accessible](/no/fundamentals/introduction/accessibility) solutions that work as well as possible for everyone. When something works for people with disabilities, it improves the experience for all users.
+</DetailsContent>
+  </Details>
+  <Details>
+    <DetailsSummary>Coherence</DetailsSummary>
+    <DetailsContent>
+The goal is for Designsystemet to contribute to coherent and consistent user experiences across solutions and organisations. Shared building blocks and recognisable patterns provide predictability and more intuitive solutions, and can also reduce digital exclusion. Designsystemet should accommodate different visual profiles while ensuring that components and interaction patterns behave consistently for screen readers and other assistive technologies.
+</DetailsContent>
+  </Details>
+  <Details>
+    <DetailsSummary>Trust</DetailsSummary>
+    <DetailsContent>
+Designsystemet must handle challenges and changes in a safe and predictable way to ensure high trust among users. The components must function reliably and behave as expected. Users should be confident that Designsystemet is well maintained and updated in line with new requirements and needs. Our aim is mutual trust, where trust in contributors is also essential.
+</DetailsContent>
+  </Details>
+</Card>
+
+In addition to these four values, we emphasise that Designsystemet should be easy to use for both developers and designers. It should be simple to navigate, understand what a component does and know when it should be used. The components must be adaptable and flexible enough to function as building blocks in more complex solutions. The technical solution must be predictable and easy to work with. If there are known challenges related to a component, these should be made visible and documented.
+
+## Who can use Designsystemet?
+
+Anyone building digital services can use Designsystemet. It’s open source, and we welcome your help to make it better. [Let us know](https://github.com/digdir/designsystemet/issues/new/choose) if you find a bug or have a suggestion. You can also ask questions in our [Slack channel](https://designsystemet.no/slack)—we help each other there.
+
+## Who uses Designsystemet today?
+
+Designsystemet is integrated into [Altinn Studio](https://altinn.studio/), used by over 70 agencies to build digital services. If you’re building services in Altinn Studio, you’re already using components from Designsystemet.
+
+Several other organizations also use Designsystemet in their services:
+
+<Card data-color='neutral' style={{ marginBottom: 'var(--ds-size-18)' }}>
+  <Details>
+    <DetailsSummary>Examples of use</DetailsSummary>
+    <DetailsContent>
+- [Mattilsynet](https://www.mattilsynet.no/) builds its design system on top of Designsystemet  
+- [Utdanningsdirektoratet](https://www.udir.no/) builds its design system on top of Designsystemet  
+- [Brønnøysundregistrene](https://www.brreg.no/) uses Designsystemet in [Virksomhetsopplysninger](https://virksomhet.brreg.no/nb/oppslag/enheter) and [Støtteregister](https://stotte.brreg.no/nb/oppslag/stoettetildeling)  
+- [Data.norge.no](https://data.norge.no) uses tokens, components, and patterns from Designsystemet  
+- [Tolletaten](https://www.toll.no/) uses Designsystemet on their website  
+- [KS Digital](https://ksdigital.no/) uses Designsystemet in services like [ledsagerbevis.no](https://ledsagerbevis.no/)  
+- [Arbeidstilsynet](https://www.arbeidstilsynet.no/) uses Designsystemet on their site  
+- [Help site for common solutions](https://eid.difi.no/nb) uses tokens and components from Designsystemet  
+- [Digdir.no](https://www.digdir.no/), [UU-tilsynet](https://www.uutilsynet.no/), [UU-status](https://uustatus.no/), and the [Collaboration portal](https://samarbeid.digdir.no/) use tokens from Designsystemet  
+
+<br/>
+
+Do you know of another service using Designsystemet?  
+We’d love to hear about it—[send us an email](mailto:designsystem@digdir.no)!
+    </DetailsContent>
+  </Details>
+</Card>
+
+---
+
+**Sources**
+
+[1] The government’s strategy [“Digital for life” (in Norwegian)](https://www.regjeringen.no/no/dokumenter/digital-hele-livet/id2870833/)  
+and the action plan for [“Increased inclusion in a digital society”](https://www.regjeringen.no/no/dokumenter/handlingsplan-for-auka-inkludering-i-eit-digitalt-samfunn/id2984233/)

@@ -107,6 +107,7 @@ export default {
     sidebar: 'sidemeny',
   },
   navigation: {
+    intro: 'Intro',
     fundamentals: 'Kom i gang',
     'best-practices': 'God praksis',
     patterns: 'Mønstre',
@@ -166,6 +167,10 @@ export default {
     title: 'Kom i gang',
     description:
       'Lær mer om Designsystemet, de grunnleggende designelementene, og hvordan du kommer i gang som designer eller utvikler.',
+  },
+  intro: {
+    title: 'Intro',
+    description: 'Lær mer om Designsystemet.',
   },
   'best-practices': {
     title: 'God praksis',

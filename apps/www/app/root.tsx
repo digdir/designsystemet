@@ -79,6 +79,10 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 
   const menu = [
     {
+      name: 'navigation.intro',
+      href: `/${lang}/intro`,
+    },
+    {
       name: 'navigation.fundamentals',
       href: `/${lang}/fundamentals`,
     },
@@ -89,10 +93,6 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     {
       name: 'navigation.patterns',
       href: `/${lang}/patterns`,
-    },
-    {
-      name: 'navigation.blog',
-      href: `/${lang}/blog`,
     },
     {
       name: 'navigation.components',
