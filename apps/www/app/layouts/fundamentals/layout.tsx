@@ -35,19 +35,17 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   } = {};
 
   if (lang === 'no') {
-    cats.Introduksjon = [];
-    cats.Tema = [];
+    cats['Start her'] = [];
     cats.Kode = [];
+    cats.Tema = [];
     cats.Figma = [];
-    cats.Designelementer = [];
   }
 
   if (lang === 'en') {
-    cats.Introduction = [];
-    cats.Theme = [];
+    cats['Start here'] = [];
     cats.Code = [];
+    cats.Theme = [];
     cats.Figma = [];
-    cats['Design Elements'] = [];
   }
 
   /* Map over files with mdx parser to get title */

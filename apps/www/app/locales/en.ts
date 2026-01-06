@@ -87,7 +87,7 @@ export default {
       'Getting Started': 'Getting Started',
       'Design Principles': 'Design Principles',
       Figma: 'Figma',
-      Code: 'Kode',
+      Code: 'Code',
       About: 'About',
       components: 'Components',
       getStarted: 'Getting Started',
