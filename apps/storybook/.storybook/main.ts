@@ -1,9 +1,13 @@
-import path, { resolve } from 'node:path';
+// This file has been automatically migrated to valid ESM format by Storybook.
+import path, { dirname as nodeDirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { StorybookConfig } from '@storybook/react-vite';
 import * as R from 'ramda';
 import type { PropItem } from 'react-docgen-typescript';
 import { defineConfig, mergeConfig } from 'vite';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = nodeDirname(__filename);
 
 const dirname =
   typeof __dirname !== 'undefined'
