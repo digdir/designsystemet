@@ -74,7 +74,13 @@ export const SuggestionList = forwardRef<
           strategy: 'fixed',
           middleware: [
             ...(autoPlacement
-              ? [flip({ fallbackAxisSideDirection: 'start' }), shift()]
+              ? [
+                  flip({
+                    fallbackAxisSideDirection: 'start',
+                    fallbackPlacements: ['top'],
+                  }),
+                  shift(),
+                ]
               : []),
             undefined,
             triggerWidth,
