@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react-vite';
+import type { Meta, StoryFn } from '@storybook/react-vite';
 import { createSingleStory } from '../../../stories/utils/create-single-story';
 import { Card } from './';
 import * as CardStories from './card.stories';
@@ -20,9 +20,9 @@ type Story = StoryFn<typeof Card>;
   regression snapshots. This story is intentionally kept out of the main
   `card.stories`
 */
-export const Cardception: Story = (args) => (
+export const Cardception: Story = () => (
   <Card>
-    <Card {...args}>
+    <Card>
       <Card>
         <h2>
           <a href="#">Nested Card Link</a>
