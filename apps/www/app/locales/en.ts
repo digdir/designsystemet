@@ -172,7 +172,7 @@ export default {
   intro: {
     title: 'Introduction',
     description:
-      'Designsystemet enables faster and more efficient development of digital solutions through a shared toolkit of UI components, guidelines, and patterns, while also contributing to coherent user experiences across products and organisations.',
+      'Designsystemet solves shared challenges in developing digital services through reuse, collaboration, and accessibility support.',
   },
   'best-practices': {
     title: 'Best practices',

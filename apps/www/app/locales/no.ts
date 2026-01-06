@@ -172,7 +172,7 @@ export default {
   intro: {
     title: 'Introduksjon',
     description:
-      'Designsystemet er en felles verktøykasse med grunnleggende UI-komponenter, retningslinjer og mønstre som effektiviserer utviklingen av digitale løsninger. Samtidig bidrar Designsystemet til helhetlige og gjenkjennelige brukeropplevelser på tvers av tjenester.',
+      'Designsystemet løser felles utfordringer i utvikling av digitale tjenester gjennom gjenbruk, samarbeid og støtte for universell utforming.',
   },
   'best-practices': {
     title: 'God praksis',
