@@ -13,4 +13,27 @@ const meta: Meta = {
 };
 export default meta;
 
-export const Snapshots = createSingleStory(CardStories, meta);
+type Story = StoryFn<typeof Card>;
+
+/* Visual-only Chromatic story.
+  Verifies rendering of nested card with link for visual
+  regression snapshots. This story is intentionally kept out of the main
+  `card.stories`
+*/
+export const Cardception: Story = (args) => (
+  <Card>
+    <Card {...args}>
+      <Card>
+        <h2>
+          <a href="#">Nested Card Link</a>
+        </h2>
+      </Card>
+    </Card>
+    </Card>
+);
+
+
+export const Snapshots = createSingleStory(
+  { ...CardStories, Cardception },
+  meta
+);
