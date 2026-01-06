@@ -38,6 +38,16 @@ Som standard kommer Designsystemet med fargeskalaene Accent, Neutral, Brand1, Br
 * `Variant` Inne i hver gruppe finnes det varianter som beskriver hvordan fargene ser ut eller skal brukes. 
 Tinted betyr for eksempel at fargen har et hint av farge i seg, mens Hover betyr at fargen er tenkt brukt for en interaktiv tilstand.
 
+## Kontrast
+Fargesystemet er strukturert for å ivareta kontrastkrav. Temabyggeren sørger for at kontrastkrav sikres gjennom fargene som genereres ut fra brand-fargen. Farger beregnet for tekst vil dermed alltid ha god nok kontrast mot bakgrunnsfarger.
+
+Eksempler:
+
+- `Text-default` har alltid god nok kontrast mot alle `background` og `surface` farger.
+- `Text-subtle` har alltid god nok kontrast mot alle `background`-farger og `surface-default`.
+- Dette vil gjelde uansett hva du har valgt som base-farge.
+
+`Base-default`-fargen vil alltid være den samme som fargen du har valgt. Dette er for å ivareta brandet ditt best mulig. Du må derfor selv passe på at fargen du velger oppfyller kontrastkravene i forhold til hvor den skal bli brukt. [Designsystemets temagenerator](https://theme.designsystemet.no) vil informere deg om eventuelle kontrastbrudd.
 
 ## Slik bruker du fargene
 Hver fargeskala består av totalt 16 farger, utformet for å dekke ulike behov i designet. Nedenfor finner du en oversikt over de forskjellige fargene og deres tiltenkte bruksområder.
