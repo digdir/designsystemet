@@ -108,7 +108,7 @@ export default {
     sidebar: 'sidebar',
   },
   navigation: {
-    fundamentals: 'Fundamentals',
+    fundamentals: 'Get Started',
     'best-practices': 'Best Practices',
     patterns: 'Patterns',
     blog: 'Blog',
@@ -163,7 +163,7 @@ export default {
       'Patterns are guidelines and recommendations for solving interactions and recurring user tasks. When the same patterns are used across services, they help create recognition and familiarity in the user experience.',
   },
   fundamentals: {
-    title: 'Fundamentals',
+    title: 'Getting started',
     description:
       'Learn more about Designsystemet, the basic design elements, and how to get started as a designer or developer.',
   },

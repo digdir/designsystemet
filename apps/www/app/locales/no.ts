@@ -107,7 +107,7 @@ export default {
     sidebar: 'sidemeny',
   },
   navigation: {
-    fundamentals: 'Grunnleggende',
+    fundamentals: 'Kom i gang',
     'best-practices': 'God praksis',
     patterns: 'Mønstre',
     blog: 'Bloggen',
@@ -163,7 +163,7 @@ export default {
       'Mønstre er retningslinjer og anbefalinger for hvordan interaksjon og gjentagende brukeroppgaver skal løses. Når de samme mønstrene brukes på tvers, skaper vi gjenkjennelighet i tjenestene.',
   },
   fundamentals: {
-    title: 'Grunnleggende',
+    title: 'Kom i gang',
     description:
       'Lær mer om Designsystemet, de grunnleggende designelementene, og hvordan du kommer i gang som designer eller utvikler.',
   },

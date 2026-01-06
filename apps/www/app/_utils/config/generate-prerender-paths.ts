@@ -11,7 +11,7 @@ const SECTIONS_WITH_INDEX_ROUTES = [
   'patterns',
   'components',
   'blog',
-  'fundamentals',
+  'get-started',
   'best-practices',
 ] as const;
 

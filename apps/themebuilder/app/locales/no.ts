@@ -4,7 +4,7 @@ import themeModal from './no/theme-modal';
 export default {
   ...no,
   navigation: {
-    fundamentals: 'Grunnleggende',
+    fundamentals: 'Kom i gang',
     'best-practices': 'God praksis',
     patterns: 'Mønstre',
     blog: 'Bloggen',
