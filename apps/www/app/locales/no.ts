@@ -249,4 +249,28 @@ export default {
   contributors: 'Bidragsytere',
   editOnGithub: 'Rediger denne siden på github.com (åpnes i ny fane)',
   updated: 'Oppdatert',
+  'roi-calculator': {
+    title: 'Hva kan din virksomhet spare?',
+    description:
+      'Generell tekst om at du kan spare ulikt basert på om du skal bruke det direkte eller bygge på toppen.',
+    radios: {
+      direct: 'Jeg skal bruke det direkte i løsninger',
+      build: 'Jeg skal bygge eget Designsystem på toppen av Designsystemet',
+    },
+    inputs: {
+      newSolutions: {
+        label: 'Antall nye løsninger per år',
+        suffix: 'nye løsninger per år',
+      },
+      numberOfDevs: {
+        label: 'Antall årsverk på design og frontend per løsning',
+        suffix: 'årsverk',
+      },
+    },
+    whereDataIsFrom:
+      'Vi har utgangspunkt i at hver løsning har 1 frontend-ressurs og 1 designressurs, og at de sparer 25% tid på design og frontend per løsning. Se grunnlaget for beregningen.',
+    savedHours:
+      'Virksomheten får frigjort {{hours}} timer per år ({{years}} årsverk)',
+    usageLegend: 'Hvordan vil du bruke Designsystemet?',
+  },
 };
