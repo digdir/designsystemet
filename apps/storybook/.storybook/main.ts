@@ -50,8 +50,6 @@ const config: StorybookConfig = {
     },
   },
   stories: [
-    '../stories/**/*.mdx',
-    '../stories/**/*.@(stories|chromatic).@(ts|tsx)',
     '../../../packages/*/!(node_modules)/**/*.mdx',
     '../../../packages/*/!(node_modules)/**/*.@(stories|chromatic).@(ts|tsx)',
   ],
