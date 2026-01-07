@@ -17,11 +17,11 @@ export {
   RovingFocusRoot,
   useCheckboxGroup,
   /** @deprecated This export is deprecated. Use utility libraries or create your own utility function. */
+  useClickDelegate,
+  /** @deprecated This export is deprecated. Use utility libraries or create your own utility function. */
   useDebounceCallback,
   /** @deprecated This export is deprecated. Use utility libraries or create your own utility function. */
   useIsomorphicLayoutEffect,
-  /** @deprecated This export is deprecated. Use utility libraries or create your own utility function. */
-  useClickDelegate,
   useMediaQuery,
   usePagination,
   useRadioGroup,
