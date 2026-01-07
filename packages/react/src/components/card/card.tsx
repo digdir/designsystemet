@@ -49,7 +49,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
     const card = cardRef.current;
     const handleClick = ({ ctrlKey, metaKey, target }: MouseEvent) => {
       const link = card?.querySelector<HTMLAnchorElement>(
-        ':is(h1,h2,h3,h4,h5,h6) a',
+        '.ds-card:not(:has(summary, u-summary)) :is(h1,h2,h3,h4,h5,h6) a:not([hidden], [aria-hidden="true"])',
       );
 
       if (!link || link?.contains(target as Node)) return; // Let links handle their own clicks

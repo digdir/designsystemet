@@ -167,6 +167,7 @@ export const WithLink: Story = (args) => (
             href='https://designsystemet.no'
             target='_blank'
             rel='noopener noreferrer'
+            aria-hidden='true'
           >
             Link Card
           </Link>

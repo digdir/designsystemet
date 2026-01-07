@@ -43,8 +43,8 @@
   }
 
   /* Style link in heading, or heading when Card is anchor */
-  :is(h1, h2, h3, h4, h5, h6) a:any-link /* Using :any-link to target both a and a:visited */,
-  &:is(a:any-link, button, [role='button']) :is(h1, h2, h3, h4, h5, h6) {
+  :not(:has(summary, u-summary)):is(h1, h2, h3, h4, h5, h6) a:any-link:not([hidden], [aria-hidden='true']) /* Using :any-link to target both a and a:visited */,
+  &:not(:has(summary, u-summary)):is(a:any-link, button, [role='button']):not([hidden], [aria-hidden='true']) :is(h1, h2, h3, h4, h5, h6) {
     color: inherit;
     outline: 0;
     text-decoration: underline;
@@ -67,8 +67,8 @@
   }
 
   /* Add states when Card is a anchor, button, or when containing a anchor in heading */
-  &:where(a, button, [role='button']),
-  &:where(:has(:is(h1, h2, h3, h4, h5, h6) a)) {
+  &:not(:has(summary, u-summary)):where(a, button, [role='button']):not([hidden], [aria-hidden='true']),
+  &:not(:has(summary, u-summary)):where(:has(:is(h1, h2, h3, h4, h5, h6) a:not([hidden], [aria-hidden='true']))) {
     cursor: pointer;
     text-decoration: none;
 
