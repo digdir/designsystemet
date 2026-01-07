@@ -135,9 +135,6 @@ importers:
       '@digdir/designsystemet-react':
         specifier: workspace:^
         version: link:../../packages/react
-      '@digdir/designsystemet-theme':
-        specifier: workspace:^
-        version: link:../../packages/theme
       '@internal/components':
         specifier: workspace:^
         version: link:../../internal/components
@@ -244,9 +241,6 @@ importers:
       '@digdir/designsystemet-react':
         specifier: workspace:^
         version: link:../../packages/react
-      '@digdir/designsystemet-theme':
-        specifier: workspace:^
-        version: link:../../packages/theme
       '@internal/components':
         specifier: workspace:^
         version: link:../../internal/components
