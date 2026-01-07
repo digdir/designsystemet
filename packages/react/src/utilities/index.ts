@@ -1,9 +1,9 @@
-export { clickDelegate } from './click-delegate';
 export type {
   UseCheckboxGroupProps,
   UsePaginationProps,
   UseRadioGroupProps,
 } from './hooks';
+export { useClickDelegate } from './click-delegate';  // TMP workaround to avoid tree-shaking
 export {
   useCheckboxGroup,
   useDebounceCallback,

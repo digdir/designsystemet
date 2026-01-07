@@ -13,7 +13,6 @@ export type {
   UseRadioGroupProps,
 } from './utilities';
 export {
-  clickDelegate,
   RovingFocusItem,
   RovingFocusRoot,
   useCheckboxGroup,
@@ -22,6 +21,7 @@ export {
   /** @deprecated This export is deprecated. Use utility libraries or create your own utility function. */
   useIsomorphicLayoutEffect,
   /** @deprecated This export is deprecated. Use utility libraries or create your own utility function. */
+  useClickDelegate,
   useMediaQuery,
   usePagination,
   useRadioGroup,
