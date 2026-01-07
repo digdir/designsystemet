@@ -252,7 +252,7 @@ export default {
   'roi-calculator': {
     title: 'Hva kan din virksomhet spare?',
     description:
-      'Hvor mye dere kan spare, avhenger av hvordan dere velger å bruke Designsystemet og hvor mange løsninger dere utvikler. Noen velger å bruke Designsystemet direkte i løsningene sine, mens andre bygger sitt eget designsystem på toppen. Begge tilnærmingene gir gevinster, men på litt ulike måter.',
+      'Bruk kalkulatoren til å se hvor mange timer din virksomhet kan spare ved å bruke Designsystemet i nye løsninger.',
     radios: {
       direct: 'Jeg skal bruke det direkte i løsninger',
       build: 'Jeg skal bygge eget Designsystem på toppen av Designsystemet',
@@ -267,8 +267,7 @@ export default {
         suffix: 'årsverk',
       },
     },
-    whereDataIsFrom:
-      'Basert på innsikt fra den samfunnsøkonomiske analysen tar vi utgangspunkt i at dere sparer 25% tid på design og frontend per løsning når dere bruker det direkte. Se grunnlaget for beregningen.',
+    whereDataIsFrom: '',
     savedHours:
       'Virksomheten får frigjort {{hours}} timer per år ({{years}} årsverk)',
     usageLegend: 'Hvordan vil du bruke Designsystemet?',
