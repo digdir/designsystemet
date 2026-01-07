@@ -72,9 +72,6 @@ importers:
       '@digdir/designsystemet-react':
         specifier: workspace:^
         version: link:../../packages/react
-      '@digdir/designsystemet-theme':
-        specifier: workspace:^
-        version: link:../../packages/theme
       '@navikt/aksel-icons':
         specifier: ^7.36.0
         version: 7.36.0(react@19.2.3)
@@ -371,9 +368,6 @@ importers:
       '@digdir/designsystemet-react':
         specifier: workspace:^
         version: link:../../packages/react
-      '@digdir/designsystemet-theme':
-        specifier: workspace:^
-        version: link:../../packages/theme
       '@navikt/aksel-icons':
         specifier: ^7.36.0
         version: 7.36.0(react@19.2.3)

@@ -19,7 +19,6 @@
   "devDependencies": {
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
-    "@digdir/designsystemet-theme": "workspace:^",
     "@navikt/aksel-icons": "^7.36.0",
     "@storybook/addon-a11y": "^10.1.11",
     "@storybook/addon-docs": "^10.1.11",
