@@ -3,8 +3,8 @@
 // and https://github.com/openui/open-ui/issues/1104#issuecomment-3151387080
 import { on, onHotReload } from './dom';
 
-const ATTR_CLICKDELEGATE = 'data-clickdelegate';
-const CSS_CLICKDELEGATE = `[${ATTR_CLICKDELEGATE}]`;
+const CLICKDELEGATE = '[data-clickdelegate]';
+const CLICKTARGET = '[data-clicktarget]';
 const SKIP =
   'a,button,label,input,select,textarea,dialog,[role="button"],[popover],[contenteditable]';
 
@@ -34,9 +34,8 @@ const handleMouseOver = (event: Event) => {
 };
 
 const getDelegateTarget = ({ target: el }: Event) => {
-  const scope = el instanceof Element ? el.closest(CSS_CLICKDELEGATE) : null;
-  const id = scope?.getAttribute(ATTR_CLICKDELEGATE);
-  const target = id && document.getElementById(id);
+  const scope = el instanceof Element ? el.closest(CLICKDELEGATE) : null;
+  const target = scope?.querySelector(CLICKTARGET);
   const skip = target && (el as Element).closest(SKIP); // Ignore if interactive
 
   return ((!skip || skip === target) && target) || undefined;
