@@ -45,3 +45,7 @@ onHotReload('click-delegate', () => [
   on(window, 'click auxclick', handleClickDelegate as EventListener, true), // Use capture to ensure we run before other click listeners
   on(document, 'mouseover', handleMouseOver, { passive: true }), // Use passive for better performance
 ]);
+
+// Temporary workaround to avoid tree-shaking of click-delegate utility
+// Remove when https://github.com/digdir/designsystemet/issues/4367 is solved
+export const avoidTreeShaking = () => {};
