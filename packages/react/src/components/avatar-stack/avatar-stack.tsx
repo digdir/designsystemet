@@ -22,7 +22,7 @@ export type AvatarStackProps = {
    */
   avatarSize?: string;
   /**
-   *  A number which represents the percentage value of how much avatars should overlap. 
+   *  A number which represents the percentage value of how much avatars should overlap.
    *  @default 50
    */
   overlap?: number;
