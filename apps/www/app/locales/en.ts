@@ -251,12 +251,12 @@ export default {
   editOnGithub: 'Edit this page on github.com (opens in a new tab)',
   updated: 'Updated',
   'roi-calculator': {
-    title: 'What can your business save?',
+    title: 'What can your organisation save?',
     description:
-      'Use the calculator to estimate how many hours your business can save annually by using Designsystemet.',
+      'Use the calculator to estimate how many hours your organisation can save by using Designsystemet in new solutions.',
     radios: {
-      direct: 'I will use it directly in solutions',
-      build: 'I will build my own Design System on top of Designsystemet',
+      direct: 'We will use it directly in solutions',
+      build: 'We will build our own design system on top of Designsystemet',
     },
     inputs: {
       newSolutions: {
@@ -268,10 +268,9 @@ export default {
         suffix: 'man-years per solution',
       },
     },
-    whereDataIsFrom:
-      'The calculation is based on each solution having 1 frontend resource and 1 design resource, saving 25% time on design and frontend per solution. See the basis for the calculation.',
+    whereDataIsFrom: '',
     savedHours:
-      'The business frees up {{hours}} hours per year ({{years}} full-time equivalents).',
+      'The organisation frees up {{hours}} hours per year ({{years}} full-time equivalents).',
     usageLegend: 'How will you use Designsystemet?',
   },
 } satisfies typeof no;

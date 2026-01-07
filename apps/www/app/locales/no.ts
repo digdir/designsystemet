@@ -254,8 +254,8 @@ export default {
     description:
       'Bruk kalkulatoren til å se hvor mange timer din virksomhet kan spare ved å bruke Designsystemet i nye løsninger.',
     radios: {
-      direct: 'Jeg skal bruke det direkte i løsninger',
-      build: 'Jeg skal bygge eget Designsystem på toppen av Designsystemet',
+      direct: 'Vi skal bruke det direkte i løsninger',
+      build: 'Vi skal bygge eget designsystem på toppen av Designsystemet',
     },
     inputs: {
       newSolutions: {
@@ -270,6 +270,6 @@ export default {
     whereDataIsFrom: '',
     savedHours:
       'Virksomheten får frigjort {{hours}} timer per år ({{years}} årsverk)',
-    usageLegend: 'Hvordan vil du bruke Designsystemet?',
+    usageLegend: 'Hvordan skal dere bruke Designsystemet?',
   },
 };
