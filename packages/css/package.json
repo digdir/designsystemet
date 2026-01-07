@@ -11,7 +11,7 @@
   "license": "MIT",
   "exports": {
     "./theme": {
-      "types": "./types.d.ts",
+      "types": "./dist/theme/types.d.ts",
       "default": "./dist/theme/designsystemet.css"
     },
     "./theme.css": "./dist/theme/designsystemet.css",
@@ -46,6 +46,9 @@
   "scripts": {
     "build": "rimraf dist && pnpm build:theme && postcss ./src/*.css --base . --dir ./dist && postcss ./dist/theme/*.css --dir ./dist/theme",
     "build:theme": "tsx ../cli/bin/designsystemet.ts tokens build -t ../../design-tokens -o ./dist/theme --experimental-tailwind"
+  },
+  "dependencies": {
+    "@digdir/designsystemet-types": "workspace:^"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.23",
