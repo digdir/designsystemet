@@ -28,7 +28,7 @@ export default function RoiCalculator() {
   );
 
   return (
-    <div className={classes.roiCalculator} data-wide-content>
+    <div className={classes.roiCalculator}>
       <Heading>{t('roi-calculator.title')}</Heading>
       <Paragraph>{t('roi-calculator.description')}</Paragraph>
 
