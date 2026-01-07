@@ -54,11 +54,11 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   const centerLinks = [
     {
       text: 'footer.about',
-      url: `https://designsystemet.no/${lang}/fundamentals/introduction/about-the-design-system`,
+      url: `https://designsystemet.no/${lang}/intro/about-the-design-system`,
     },
     {
       text: 'footer.privacy',
-      url: `https://designsystemet.no/${lang}/fundamentals/privacy-policy`,
+      url: `https://designsystemet.no/${lang}/intro/privacy-policy`,
     },
     {
       text: 'footer.accessibility',

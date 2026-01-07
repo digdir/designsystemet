@@ -37,7 +37,7 @@ const redirects = [
   },
   {
     from: '/no/fundamentals/introduction/values',
-    to: '/no/fundamentals/introduction/about-the-design-system#verdier',
+    to: '/no/intro/collaboration#values',
   },
   {
     from: '/no/fundamentals/design-tokens/variables',

@@ -65,11 +65,11 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   const centerLinks = [
     {
       text: 'footer.about',
-      url: `${lang}/fundamentals/introduction/about-the-design-system`,
+      url: `${lang}/intro/about-the-design-system`,
     },
     {
       text: 'footer.privacy',
-      url: `${lang}/fundamentals/privacy-policy`,
+      url: `${lang}/intro/privacy-policy`,
     },
     {
       text: 'footer.accessibility',
