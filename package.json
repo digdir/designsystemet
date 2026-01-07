@@ -29,7 +29,7 @@
     "publish-packages": "pnpm build && changeset publish",
     "chromatic": "pnpm --filter @web/storybook chromatic",
     "update:template": "pnpm --filter @digdir/designsystemet update:template",
-    "update:theme-digdir": "pnpm --filter @digdir/designsystemet update:theme-digdir",
+    "update:theme-digdir": "pnpm --filter @internal/digdir update:theme-digdir",
     "create:theme-tokens": "pnpm build:cli && pnpm designsystemet tokens create --config designsystemet.config.json",
     "create:tokens-preview": "pnpm --filter @digdir/designsystemet run update:preview-tokens"
   },

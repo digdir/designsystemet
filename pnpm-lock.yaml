@@ -72,6 +72,9 @@ importers:
       '@digdir/designsystemet-react':
         specifier: workspace:^
         version: link:../../packages/react
+      '@internal/digdir':
+        specifier: workspace:^
+        version: link:../../internal/digdir
       '@navikt/aksel-icons':
         specifier: ^7.36.0
         version: 7.36.0(react@19.2.3)
@@ -141,6 +144,9 @@ importers:
       '@internal/components':
         specifier: workspace:^
         version: link:../../internal/components
+      '@internal/digdir':
+        specifier: workspace:^
+        version: link:../../internal/digdir
       '@navikt/aksel-icons':
         specifier: ^7.36.0
         version: 7.36.0(react@19.2.3)
@@ -247,6 +253,9 @@ importers:
       '@internal/components':
         specifier: workspace:^
         version: link:../../internal/components
+      '@internal/digdir':
+        specifier: workspace:^
+        version: link:../../internal/digdir
       '@navikt/aksel-icons':
         specifier: ^7.36.0
         version: 7.36.0(react@19.2.3)
@@ -411,6 +420,15 @@ importers:
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
+
+  internal/digdir:
+    devDependencies:
+      '@digdir/designsystemet':
+        specifier: workspace:^
+        version: file:packages/cli
+      rimraf:
+        specifier: ^6.1.2
+        version: 6.1.2
 
   internal/react-18-tests:
     dependencies:
