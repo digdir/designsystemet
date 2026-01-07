@@ -268,7 +268,6 @@ export default {
         suffix: 'man-years per solution',
       },
     },
-    whereDataIsFrom: '',
     savedHours:
       'The organisation frees up {{hours}} hours per year ({{years}} full-time equivalents).',
     usageLegend: 'How will you use Designsystemet?',

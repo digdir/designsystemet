@@ -48,8 +48,6 @@ export default function RoiCalculator() {
         />
       </Fieldset>
 
-      <Paragraph>{t('roi-calculator.whereDataIsFrom')}</Paragraph>
-
       <div className={classes.inputGrid}>
         <Textfield
           label={t('roi-calculator.inputs.newSolutions.label')}

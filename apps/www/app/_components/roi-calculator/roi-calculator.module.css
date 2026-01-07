@@ -10,6 +10,9 @@
       margin-block-end: var(--ds-size-8);
     }
   }
+  & fieldset:first-of-type {
+    margin-block-end: var(--ds-size-6);
+  }
 }
 
 .inputGrid {

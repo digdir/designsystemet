@@ -267,7 +267,6 @@ export default {
         suffix: 'årsverk',
       },
     },
-    whereDataIsFrom: '',
     savedHours:
       'Virksomheten får frigjort {{hours}} timer per år ({{years}} årsverk)',
     usageLegend: 'Hvordan skal dere bruke Designsystemet?',
