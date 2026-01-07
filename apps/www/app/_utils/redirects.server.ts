@@ -87,4 +87,12 @@ const redirects = [
     from: '/en/fundamentals/resources/icons',
     to: '/en/fundamentals/design-elements/icons',
   },
+  {
+    from: '/en/fundamentals/themebuilder/own-theme',
+    to: '/en/fundamentals/start-here/own-theme',
+  },
+  {
+    from: '/no/fundamentals/themebuilder/own-theme',
+    to: '/no/fundamentals/start-here/own-theme',
+  },
 ];
