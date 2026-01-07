@@ -1,3 +1,4 @@
+export { clickDelegate } from './click-delegate';
 export type {
   UseCheckboxGroupProps,
   UsePaginationProps,

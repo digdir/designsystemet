@@ -13,6 +13,7 @@ export type {
   UseRadioGroupProps,
 } from './utilities';
 export {
+  clickDelegate,
   RovingFocusItem,
   RovingFocusRoot,
   useCheckboxGroup,

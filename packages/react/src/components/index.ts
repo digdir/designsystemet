@@ -1,9 +1,3 @@
-import { avoidTreeShaking } from '../utilities/click-delegate';
-
-// Temporary workaround to avoid tree-shaking of click-delegate utility
-// Remove when https://github.com/digdir/designsystemet/issues/4367 is solved
-export function _avoidTreeShaking() { avoidTreeShaking() };
-
 export type { AlertProps } from './alert/alert';
 export { Alert } from './alert/alert';
 
