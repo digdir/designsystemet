@@ -1,3 +1,6 @@
+
+>Deprecated: Use `@digdir/designsystemet-css/theme` for default theme or make your own using the [Theme builder](https://theme.designsystemet.no/)
+
 # @digdir/designsystemet-theme
 
 This package contains the following predefined Designsystemet themes for use in Digdir.
