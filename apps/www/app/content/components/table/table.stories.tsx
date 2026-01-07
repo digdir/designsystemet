@@ -1,4 +1,4 @@
-import { Table, type TableHeaderCellProps } from '@digdir/designsystemet-react';
+import { Button, Input, Table, type TableHeaderCellProps } from '@digdir/designsystemet-react';
 import { useState } from 'react';
 
 export const Preview = () => {
@@ -424,3 +424,25 @@ export const NumbersEn = () => (
     </Table.Body>
   </Table>
 );
+
+export const Clickable = () => (
+    <Table>
+      <caption>Table caption</caption>
+      <Table.Body>
+        <Table.Row data-clickdelegate>
+          <Table.Cell>
+            <Button data-clicktarget onClick={() => alert('clicked cell 1')}>Cell 1</Button>
+          </Table.Cell>
+          <Table.Cell>Cell 2</Table.Cell>
+          <Table.Cell>Cell 3</Table.Cell>
+        </Table.Row>
+        <Table.Row data-clickdelegate>
+          <Table.Cell>
+            <Input type="checkbox" aria-label="check me" data-clicktarget /> Cell 4
+          </Table.Cell>
+          <Table.Cell>Cell 5</Table.Cell>
+          <Table.Cell>Cell 6</Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
+  );
