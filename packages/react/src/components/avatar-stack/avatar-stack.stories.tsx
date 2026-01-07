@@ -210,11 +210,6 @@ export const DataSize: Story = (args) => (
     </fieldset>
   </>
 );
-DataSize.args = {
-  expandable: 'fixed',
-  gap: 3,
-  max: 3,
-};
 
 export const ShapeVariants: Story = (args) => (
   <AvatarStack {...args}>
@@ -236,7 +231,6 @@ export const ShapeVariants: Story = (args) => (
 ShapeVariants.args = {
   overlap: 50,
   expandable: 'fixed',
-  max: 4,
 };
 
 export const WithTooltip: Story = (args) => (
@@ -299,9 +293,6 @@ export const WithTooltip: Story = (args) => (
     </fieldset>
   </div>
 );
-WithTooltip.args = {
-  max: 4,
-};
 
 export const WithTooltipAndLink: Story = (args) => (
   <div
@@ -371,15 +362,11 @@ export const WithTooltipAndLink: Story = (args) => (
     </fieldset>
   </div>
 );
-WithTooltipAndLink.args = {
-  max: 4,
-};
 
 export const Playground: Story = () => {
   const [expandable, setExpandable] = useState<undefined | boolean>(undefined);
   const [square, setSquare] = useState(false);
   const [size, setSize] = useState(64);
-  const [max, setMax] = useState(4);
   const [overlap, setOverlap] = useState(50);
   const [gap, setGap] = useState(2);
   const labelStyle = {
@@ -423,19 +410,6 @@ export const Playground: Story = () => {
             checked={square}
             onChange={() => setSquare((prev) => !prev)}
           />
-          <Label style={labelStyle}>
-            Max {max}
-            <input
-              min='1'
-              max='6'
-              step='1'
-              type='range'
-              value={max}
-              onChange={(e) =>
-                setMax(Number((e.target as HTMLInputElement).value))
-              }
-            />
-          </Label>
         </div>
         <Label style={labelStyle}>
           Size {`${size}px`}
@@ -479,8 +453,8 @@ export const Playground: Story = () => {
       </fieldset>
 
       <AvatarStack
-        max={max}
         overlap={overlap}
+        data-suffix={`+10`}
         gap={gap}
         avatarSize={`${size}px`}
         expandable={expandable}
@@ -499,9 +473,6 @@ export const Playground: Story = () => {
         </Avatar>
         <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
           <img src='https://placebeard.it/100x100' alt='' />
-        </Avatar>
-        <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
-          <img src='https://i.pravatar.cc/100' alt='' />
         </Avatar>
       </AvatarStack>
     </div>

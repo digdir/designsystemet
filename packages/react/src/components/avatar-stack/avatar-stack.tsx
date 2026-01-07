@@ -27,10 +27,9 @@ export type AvatarStackProps = {
    */
   overlap?: number;
   /**
-   *  The maximum number of avatars to render, additional avatars will show as "+ (n - max)".
-   *  @default 10
+   *  Text to the right of the avatars to show a number representing additional avatars not shown such as '+5'".
    */
-  max?: number;
+  suffix?: string;
   /**
    *  Expand on hover to show full avatars.
    *  'fixed': AvatarStack physical width does not change when avatars are expanded.
@@ -58,26 +57,23 @@ export const AvatarStack = forwardRef<HTMLDivElement, AvatarStackProps>(
     {
       className,
       gap,
+      suffix,
       avatarSize,
       overlap,
-      max = 4,
       expandable,
       children,
       ...rest
     },
     ref,
   ) {
-    const overflow = Math.max(Children.count(children) - max, 0);
-    const childrenToShow =
-      overflow > 0
-        ? Children.toArray(children).slice(0, max)
-        : Children.toArray(children);
     const style = {
       ...(rest.style || {}),
-      '--gap': gap !== undefined ? `${gap}` : undefined,
-      '--size': avatarSize ? `${avatarSize}` : undefined,
-      '--overlap': overlap !== undefined ? `${overlap}` : undefined,
-      '--n': childrenToShow.length || 0,
+      '--dsc-avatar-stack-gap': gap !== undefined ? `${gap}` : undefined,
+      '--dsc-avatar-stack-size': avatarSize ? `${avatarSize}` : undefined,
+      '--dsc-avatar-stack-overlap':
+        overlap !== undefined ? `${overlap}` : undefined,
+      '--dsc-avatar-count':
+        expandable === 'fixed' ? Children.count(children) : undefined,
     } as React.CSSProperties;
     return (
       <figure
@@ -86,10 +82,10 @@ export const AvatarStack = forwardRef<HTMLDivElement, AvatarStackProps>(
         className={cl(`ds-avatar-stack`, className)}
         style={style}
         data-expandable={expandable}
-        data-additionals={overflow > 0 ? overflow : undefined}
+        data-suffix={suffix}
         {...rest}
       >
-        {childrenToShow}
+        {children}
       </figure>
     );
   },
