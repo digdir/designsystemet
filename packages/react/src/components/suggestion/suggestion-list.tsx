@@ -4,7 +4,9 @@ import '@u-elements/u-datalist';
 import {
   autoUpdate,
   computePosition,
+  flip,
   type MiddlewareState,
+  shift,
 } from '@floating-ui/dom';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
@@ -23,6 +25,11 @@ export type SuggestionListProps = MergeRight<
      * @default '%d forslag'
      */
     plural?: string;
+    /**
+     * Whether to enable auto placement.
+     * @default true
+     */
+    autoPlacement?: boolean;
   }
 >;
 
@@ -41,7 +48,14 @@ export const SuggestionList = forwardRef<
   HTMLDataListElement,
   SuggestionListProps
 >(function SuggestionList(
-  { singular = '%d forslag', plural = '%d forslag', className, id, ...rest },
+  {
+    singular = '%d forslag',
+    plural = '%d forslag',
+    className,
+    id,
+    autoPlacement = true,
+    ...rest
+  },
   ref,
 ) {
   const { handleFilter, uComboboxRef } = useContext(SuggestionContext);
@@ -58,9 +72,22 @@ export const SuggestionList = forwardRef<
         computePosition(trigger, list, {
           placement: 'bottom',
           strategy: 'fixed',
-          middleware: [triggerWidth],
-        }).then(({ x, y }) => {
-          list.style.translate = `${Math.round(x)}px calc(${Math.round(y)}px + var(--dsc-suggestion-list-gap))`;
+          middleware: [
+            ...(autoPlacement
+              ? [
+                  flip({
+                    fallbackAxisSideDirection: 'start',
+                    fallbackPlacements: ['top'],
+                  }),
+                  shift(),
+                ]
+              : []),
+            undefined,
+            triggerWidth,
+          ],
+        }).then(({ x, y, placement }) => {
+          const varOperator = placement.startsWith('top') ? '-' : '+';
+          list.style.translate = `${Math.round(x)}px calc(${Math.round(y)}px ${varOperator} var(--dsc-suggestion-list-gap))`;
         });
       });
     }
