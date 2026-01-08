@@ -11,7 +11,7 @@
   "license": "MIT",
   "exports": {
     "./theme": {
-      "types": "./types.d.ts",
+      "types": "./theme/types.d.ts",
       "default": "./dist/theme/designsystemet.css"
     },
     "./theme.css": "./dist/theme/designsystemet.css",
@@ -24,6 +24,7 @@
   },
   "files": [
     "./types.d.ts",
+    "theme/types.d.ts",
     "dist"
   ],
   "publishConfig": {
@@ -44,8 +45,11 @@
     "digdir"
   ],
   "scripts": {
-    "build": "rimraf dist && pnpm build:theme && postcss ./src/*.css --base . --dir ./dist && postcss ./dist/theme/*.css --dir ./dist/theme",
-    "build:theme": "tsx ../cli/bin/designsystemet.ts tokens build -t ../../design-tokens -o ./dist/theme --experimental-tailwind"
+    "build": "rimraf dist && pnpm build:theme && postcss ./src/*.css --base . --dir ./dist && postcss ./theme/*.css --dir ./dist/theme",
+    "build:theme": "tsx ../cli/bin/designsystemet.ts tokens build -t ../../design-tokens -o ./theme --experimental-tailwind"
+  },
+  "dependencies": {
+    "@digdir/designsystemet-types": "workspace:^"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.23",

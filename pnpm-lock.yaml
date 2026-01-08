@@ -72,9 +72,6 @@ importers:
       '@digdir/designsystemet-react':
         specifier: workspace:^
         version: link:../../packages/react
-      '@digdir/designsystemet-theme':
-        specifier: workspace:^
-        version: link:../../packages/theme
       '@navikt/aksel-icons':
         specifier: ^7.37.0
         version: 7.37.0(react@19.2.3)
@@ -138,12 +135,12 @@ importers:
       '@digdir/designsystemet-react':
         specifier: workspace:^
         version: link:../../packages/react
-      '@digdir/designsystemet-theme':
-        specifier: workspace:^
-        version: link:../../packages/theme
       '@internal/components':
         specifier: workspace:^
         version: link:../../internal/components
+      '@internal/digdir':
+        specifier: workspace:^
+        version: link:../../internal/digdir
       '@navikt/aksel-icons':
         specifier: ^7.37.0
         version: 7.37.0(react@19.2.3)
@@ -244,12 +241,12 @@ importers:
       '@digdir/designsystemet-react':
         specifier: workspace:^
         version: link:../../packages/react
-      '@digdir/designsystemet-theme':
-        specifier: workspace:^
-        version: link:../../packages/theme
       '@internal/components':
         specifier: workspace:^
         version: link:../../internal/components
+      '@internal/digdir':
+        specifier: workspace:^
+        version: link:../../internal/digdir
       '@navikt/aksel-icons':
         specifier: ^7.37.0
         version: 7.37.0(react@19.2.3)
@@ -368,12 +365,12 @@ importers:
       '@digdir/designsystemet':
         specifier: workspace:^
         version: link:../../packages/cli
+      '@digdir/designsystemet-css':
+        specifier: workspace:^
+        version: link:../../packages/css
       '@digdir/designsystemet-react':
         specifier: workspace:^
         version: link:../../packages/react
-      '@digdir/designsystemet-theme':
-        specifier: workspace:^
-        version: link:../../packages/theme
       '@navikt/aksel-icons':
         specifier: ^7.37.0
         version: 7.37.0(react@19.2.3)
@@ -414,6 +411,15 @@ importers:
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
+
+  internal/digdir:
+    devDependencies:
+      '@digdir/designsystemet':
+        specifier: workspace:^
+        version: link:../../packages/cli
+      rimraf:
+        specifier: ^6.1.2
+        version: 6.1.2
 
   internal/react-18-tests:
     dependencies:
@@ -520,6 +526,10 @@ importers:
         version: 5.9.3
 
   packages/css:
+    dependencies:
+      '@digdir/designsystemet-types':
+        specifier: workspace:^
+        version: link:../types
     devDependencies:
       autoprefixer:
         specifier: ^10.4.23
@@ -5687,7 +5697,7 @@ snapshots:
 
   '@ampproject/remapping@2.3.0':
     dependencies:
-      '@jridgewell/gen-mapping': 0.3.13
+      '@jridgewell/gen-mapping': 0.3.8
       '@jridgewell/trace-mapping': 0.3.31
 
   '@asamuzakjp/css-color@3.2.0':
@@ -6502,7 +6512,7 @@ snapshots:
       remark-mdx: 3.1.0
       remark-parse: 11.0.0
       remark-rehype: 11.1.2
-      source-map: 0.7.6
+      source-map: 0.7.4
       unified: 11.0.5
       unist-util-position-from-estree: 2.0.0
       unist-util-stringify-position: 4.0.0
@@ -8209,7 +8219,7 @@ snapshots:
     dependencies:
       '@types/estree-jsx': 1.0.5
       astring: 1.9.0
-      source-map: 0.7.6
+      source-map: 0.7.4
 
   estree-util-value-to-estree@3.3.3:
     dependencies:
