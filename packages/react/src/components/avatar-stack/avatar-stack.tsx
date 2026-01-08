@@ -12,10 +12,10 @@ import { Children, forwardRef } from 'react';
 
 export type AvatarStackProps = {
   /**
-   *  Adjusts gap-mask between avatars in the stack in px.
-   *  @default 2
+   *  Adjusts gap-mask between avatars in the stack. Must be a valid css length value (px, em, rem, var(--ds-size-1) etc.)
+   *  @default 2px
    */
-  gap?: number;
+  gap?: string;
   /**
    *  Control the size of the avatars. Must be a valid css length value (px, em, rem, var(--ds-size-12) etc.)
    *  @default 'var(--ds-size-12)'

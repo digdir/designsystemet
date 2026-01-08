@@ -6,12 +6,12 @@
 
 .ds-avatar-stack {
   --dsc-avatar-stack-size: var(--ds-size-12);
-  --dsc-avatar-stack-gap: 2;
+  --dsc-avatar-stack-gap: 2px;
   --dsc-avatar-stack-overlap: 50;
   /*--dsc-avatar-count<number> is only needed when the stack is expandable="fixed", to calculate a fixed width.*/
   --dsc-avatar-count: initial;
 
-  --_gap: calc(var(--dsc-avatar-stack-gap) * 1px);
+  --_gap: var(--dsc-avatar-stack-gap);
   --_overlap: calc(((var(--dsc-avatar-stack-size) / 100) * var(--dsc-avatar-stack-overlap)) * -1);
 
   --captured-length: var(--_overlap);

@@ -98,7 +98,7 @@ export const Expandable: Story = (args) => (
   </div>
 );
 Expandable.args = {
-  gap: 4,
+  gap: '4px',
 };
 
 export const DataSize: Story = (args) => (
@@ -453,7 +453,7 @@ export const Playground: Story = () => {
       <AvatarStack
         overlap={overlap}
         data-suffix={`+10`}
-        gap={gap}
+        gap={`${gap}px`}
         avatarSize={`${size}px`}
         expandable={expandable}
       >
