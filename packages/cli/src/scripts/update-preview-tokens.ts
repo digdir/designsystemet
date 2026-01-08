@@ -1,7 +1,7 @@
 import path from 'node:path';
 import pc from 'picocolors';
 import type { TransformedToken } from 'style-dictionary/types';
-import config from './../../configs/digdir.config.json' with { type: 'json' };
+import config from './../../../../designsystemet.config.json' with { type: 'json' };
 import { generate$Themes } from '../tokens/create/generators/$themes.js';
 import { createTokens } from '../tokens/create.js';
 import { buildOptions, processPlatform } from '../tokens/process/platform.js';
@@ -109,11 +109,11 @@ export const formatTheme = async (themeConfig: Theme) => {
 
 formatTheme({
   name: 'test',
-  borderRadius: config.themes.digdir.borderRadius,
+  borderRadius: config.themes.designsystemet.borderRadius,
   colors: {
-    main: config.themes.digdir.colors.main as Record<string, `#${string}`>,
-    support: config.themes.digdir.colors.support as Record<string, `#$string`>,
-    neutral: config.themes.digdir.colors.neutral as `#$string`,
+    main: config.themes.designsystemet.colors.main as Record<string, `#${string}`>,
+    support: config.themes.designsystemet.colors.support as Record<string, `#$string`>,
+    neutral: config.themes.designsystemet.colors.neutral as `#$string`,
   },
-  typography: config.themes.digdir.typography,
+  typography: config.themes.designsystemet.typography,
 });

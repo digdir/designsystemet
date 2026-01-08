@@ -1,0 +1,177 @@
+[
+  {
+    "id": "8b2c8cc86611a34b135cb22948666779361fd729",
+    "name": "medium",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "primitives/modes/size/medium": "source",
+      "primitives/modes/size/global": "enabled",
+      "primitives/modes/typography/size/medium": "enabled"
+    },
+    "$figmaCollectionId": "VariableCollectionId:36248:20757",
+    "$figmaModeId": "41630:1",
+    "group": "Size"
+  },
+  {
+    "id": "d49b9eebeb48a4f165a74b7261733d0a73370f0e",
+    "name": "large",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "primitives/modes/size/large": "source",
+      "primitives/modes/size/global": "enabled",
+      "primitives/modes/typography/size/large": "enabled"
+    },
+    "$figmaCollectionId": "VariableCollectionId:36248:20757",
+    "$figmaModeId": "41630:2",
+    "group": "Size"
+  },
+  {
+    "id": "fb11567729c298ca37c9da4e3a27716a23480824",
+    "name": "small",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "primitives/modes/size/small": "source",
+      "primitives/modes/size/global": "enabled",
+      "primitives/modes/typography/size/small": "enabled"
+    },
+    "$figmaCollectionId": "VariableCollectionId:36248:20757",
+    "$figmaModeId": "41630:3",
+    "group": "Size"
+  },
+  {
+    "id": "d2c17e6a1bf47a5d936b2d16dba141e9ff6a10c1",
+    "$figmaCollectionId": "VariableCollectionId:36528:61712",
+    "$figmaModeId": "40960:6",
+    "name": "digdir",
+    "selectedTokenSets": {
+      "themes/digdir": "enabled"
+    },
+    "group": "Theme"
+  },
+  {
+    "id": "d3730c55fdd71fc1258d316b86fc6bf89da07f1f",
+    "$figmaCollectionId": "VariableCollectionId:36528:61712",
+    "$figmaModeId": "40960:7",
+    "name": "altinn",
+    "selectedTokenSets": {
+      "themes/altinn": "enabled"
+    },
+    "group": "Theme"
+  },
+  {
+    "id": "9821e91b123ef00b2187f982457d2241713cc848",
+    "$figmaCollectionId": "VariableCollectionId:36528:61712",
+    "$figmaModeId": "40960:8",
+    "name": "uutilsynet",
+    "selectedTokenSets": {
+      "themes/uutilsynet": "enabled"
+    },
+    "group": "Theme"
+  },
+  {
+    "id": "23f3fd77a464cbe250150f60d785f08978d07e40",
+    "$figmaCollectionId": "VariableCollectionId:36528:61712",
+    "$figmaModeId": "40960:9",
+    "name": "portal",
+    "selectedTokenSets": {
+      "themes/portal": "enabled"
+    },
+    "group": "Theme"
+  },
+  {
+    "id": "368d753fcac4455f289500eaa42e70dc0a03522f",
+    "$figmaCollectionId": "VariableCollectionId:36248:20769",
+    "$figmaModeId": "36248:2",
+    "name": "Primary",
+    "selectedTokenSets": {
+      "primitives/modes/typography/primary/digdir": "enabled",
+      "primitives/modes/typography/primary/altinn": "enabled",
+      "primitives/modes/typography/primary/uutilsynet": "enabled",
+      "primitives/modes/typography/primary/portal": "enabled"
+    },
+    "group": "Typography"
+  },
+  {
+    "id": "264b8bd1d40b364e1ea3acf09e49795ddd4c513c",
+    "$figmaCollectionId": "VariableCollectionId:36248:20769",
+    "$figmaModeId": "36248:3",
+    "name": "Secondary",
+    "selectedTokenSets": {
+      "primitives/modes/typography/secondary/digdir": "enabled",
+      "primitives/modes/typography/secondary/altinn": "enabled",
+      "primitives/modes/typography/secondary/uutilsynet": "enabled",
+      "primitives/modes/typography/secondary/portal": "enabled"
+    },
+    "group": "Typography"
+  },
+  {
+    "name": "Dark",
+    "selectedTokenSets": {
+      "primitives/modes/color-scheme/dark/digdir": "enabled",
+      "primitives/modes/color-scheme/dark/altinn": "enabled",
+      "primitives/modes/color-scheme/dark/uutilsynet": "enabled",
+      "primitives/modes/color-scheme/dark/portal": "enabled"
+    },
+    "id": "9ebd8aed52afbffc17e2666e8b4653a53498b257",
+    "$figmaCollectionId": "VariableCollectionId:34811:5472",
+    "$figmaModeId": "34811:1",
+    "group": "Color scheme"
+  },
+  {
+    "name": "Light",
+    "selectedTokenSets": {
+      "primitives/modes/color-scheme/light/digdir": "enabled",
+      "primitives/modes/color-scheme/light/altinn": "enabled",
+      "primitives/modes/color-scheme/light/uutilsynet": "enabled",
+      "primitives/modes/color-scheme/light/portal": "enabled"
+    },
+    "id": "0daa3ca0b427b9349da7e7dc00101b5668972926",
+    "$figmaCollectionId": "VariableCollectionId:34811:5472",
+    "$figmaModeId": "34811:0",
+    "group": "Color scheme"
+  },
+  {
+    "id": "541629445ef90ad5363f9e88f52a1ccb617e6f84",
+    "name": "Semantic",
+    "selectedTokenSets": {
+      "semantic/style": "enabled",
+      "semantic/color": "enabled",
+      "primitives/globals": "source"
+    },
+    "$figmaCollectionId": "VariableCollectionId:34811:5976",
+    "$figmaModeId": "34811:5",
+    "group": "Semantic"
+  },
+  {
+    "id": "77029e975ec86efe4b92eb0be546d61959085bd1",
+    "name": "accent",
+    "selectedTokenSets": {
+      "semantic/modes/main-color/accent": "enabled"
+    },
+    "group": "Main color"
+  },
+  {
+    "id": "77270e21ea69e87b1111ab73f82f2c9501ffb509",
+    "name": "brand1",
+    "selectedTokenSets": {
+      "semantic/modes/support-color/brand1": "enabled"
+    },
+    "group": "Support color"
+  },
+  {
+    "id": "f048e6cbea788b19c6789b0d2d9307adbcb6efe9",
+    "name": "brand2",
+    "selectedTokenSets": {
+      "semantic/modes/support-color/brand2": "enabled"
+    },
+    "group": "Support color"
+  },
+  {
+    "id": "eade528bedd174a995da87bf38c35a30de0760bb",
+    "name": "brand3",
+    "selectedTokenSets": {
+      "semantic/modes/support-color/brand3": "enabled"
+    },
+    "group": "Support color"
+  }
+]

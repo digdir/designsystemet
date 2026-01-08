@@ -17,7 +17,9 @@
       "!.changeset",
       "!**/design-tokens/*",
       "!**/dist",
-      "!**/packages/theme/**/*.css",
+      "!**/packages/theme/**/*.css", // TODO delete after @digdir/designsystemet-theme is migrated
+      "!**/internal/digdir/**/*.css",
+      "!**/packages/css/theme/**/*.css",
       "!**/tsconfig.*.json", // https://github.com/biomejs/biome/issues/1151
       "!**/.react-router/",
       "!**/package.json", // changeset wants the files to be formatted differently
