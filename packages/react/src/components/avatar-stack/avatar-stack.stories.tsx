@@ -303,22 +303,22 @@ export const WithTooltipAndLink: Story = (args) => (
     >
       <legend>Link expandable</legend>
       <AvatarStack {...args} expandable='fixed'>
-        <Avatar aria-label=''>
+        <Avatar aria-label='' asChild>
           <a href='#'>
             <img src='https://placebeard.it/100x100' alt='' />
           </a>
         </Avatar>
-        <Avatar aria-label=''>
+        <Avatar aria-label='' asChild>
           <a href='#'>
             <img src='https://i.pravatar.cc/100' alt='' />
           </a>
         </Avatar>
-        <Avatar aria-label=''>
+        <Avatar aria-label='' asChild>
           <a href='#'>
             <img src='https://i.pravatar.cc/100' alt='' />
           </a>
         </Avatar>
-        <Avatar aria-label=''>
+        <Avatar aria-label='' asChild>
           <a href='#'>
             <img src='https://i.pravatar.cc/100' alt='' />
           </a>
@@ -331,31 +331,29 @@ export const WithTooltipAndLink: Story = (args) => (
       <legend>Link + Tooltip</legend>
       <AvatarStack {...args} overlap={20}>
         <Tooltip content='Ola Nordmann'>
-          <Avatar aria-label=''>
+          <Avatar aria-label='' asChild>
             <a href='#'>
               <img src='https://placebeard.it/100x100' alt='' />
             </a>
           </Avatar>
         </Tooltip>
         <Tooltip content='Kari Nordmann'>
-          <Avatar aria-label=''>
+          <Avatar aria-label='' asChild>
             <a href='#'>
               <img src='https://i.pravatar.cc/100' alt='' />
             </a>
           </Avatar>
         </Tooltip>
         <Tooltip content='Person 2'>
-          <Avatar aria-label=''>
+          <Avatar aria-label='' asChild>
             <a href='#'>
               <img src='https://i.pravatar.cc/100' alt='' />
             </a>
           </Avatar>
         </Tooltip>
         <Tooltip content='Person 3'>
-          <Avatar aria-label=''>
-            <a href='#'>
-              <img src='https://i.pravatar.cc/100' alt='' />
-            </a>
+          <Avatar aria-label='' asChild>
+            <a href='#'>BR</a>
           </Avatar>
         </Tooltip>
       </AvatarStack>
