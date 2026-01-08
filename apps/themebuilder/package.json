@@ -12,9 +12,9 @@
     "@digdir/designsystemet": "workspace:^",
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
-    "@digdir/designsystemet-theme": "workspace:^",
     "@internal/components": "workspace:^",
-    "@navikt/aksel-icons": "^7.36.0",
+    "@internal/digdir": "workspace:^",
+    "@navikt/aksel-icons": "^7.37.0",
     "@radix-ui/react-slot": "^1.2.4",
     "@react-router/express": "^7.11.0",
     "@react-router/node": "^7.11.0",
@@ -44,6 +44,6 @@
     "ramda": "^0.32.0",
     "typescript": "^5.9.3",
     "vite": "^7.3.0",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite-tsconfig-paths": "^6.0.3"
   }
 }

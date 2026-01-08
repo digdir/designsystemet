@@ -8,10 +8,11 @@ const CONTENT_BASE_PATH = join(APP_ROOT, './app/content');
 const COMPONENTS_BASE_PATH = join(CONTENT_BASE_PATH, 'components');
 
 const SECTIONS_WITH_INDEX_ROUTES = [
+  'intro',
   'patterns',
   'components',
   'blog',
-  'get-started',
+  'fundamentals',
   'best-practices',
 ] as const;
 

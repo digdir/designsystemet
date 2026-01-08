@@ -32,8 +32,6 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 
 [`@digdir/designsystemet-react`](https://www.npmjs.com/package/@digdir/designsystemet-react) - React implementation of Designsystemet components.
 
-[`@digdir/designsystemet-theme`](https://www.npmjs.com/package/@digdir/designsystemet-theme) - Digdir themes for Designsystemet.
-
 [`@digdir/designsystemet-types`](https://www.npmjs.com/package/@digdir/designsystemet-types) - Types for Designsystemet.
 
 ## 🚀 Get started
