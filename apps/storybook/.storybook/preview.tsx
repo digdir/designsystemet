@@ -80,7 +80,7 @@ const preview: Preview = {
       },
     },
     viewport: {
-      viewports,
+      options: viewports,
     },
     chromatic: {
       // Disable snapshots by default
@@ -94,7 +94,7 @@ const preview: Preview = {
       test: 'error',
     },
     backgrounds: {
-      disable: true,
+      disabled: true,
     },
     html: {
       root: '[data-storybook-decorator]', // default: #root
