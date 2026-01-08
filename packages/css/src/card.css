@@ -94,9 +94,21 @@
 
   & > .ds-details:first-child {
     border-top: 0;
+
+    & > summary,
+    & > u-summary {
+      border-top-left-radius: var(--dsc-card-border-radius);
+      border-top-right-radius: var(--dsc-card-border-radius);
+    }
   }
   & > .ds-details:last-child {
     border-bottom: 0;
+
+    & > summary,
+    & > u-summary {
+      border-bottom-left-radius: var(--dsc-card-border-radius);
+      border-bottom-right-radius: var(--dsc-card-border-radius);
+    }
   }
 }
 
