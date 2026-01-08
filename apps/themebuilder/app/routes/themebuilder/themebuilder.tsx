@@ -6,11 +6,11 @@ import { ThemePages } from './_components/theme-pages';
 import classes from './page.module.css';
 import 'react-color-palette/css';
 import type { ColorScheme, CssColor } from '@digdir/designsystemet';
-import themeConfig from '@digdir/designsystemet-theme/configs/designsystemet.config.json';
 import { parsePath, redirect } from 'react-router';
 import { isProduction } from '~/_utils/is-production.server';
 import { generateMetadata } from '~/_utils/metadata';
 import i18n from '~/i18next.server';
+import themeConfig from '../../../../../designsystemet.config.json';
 import {
   applyOverridesToColors,
   createColorsAndNeutralVariables,
