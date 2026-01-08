@@ -416,7 +416,7 @@ importers:
     devDependencies:
       '@digdir/designsystemet':
         specifier: workspace:^
-        version: file:packages/cli
+        version: link:../../packages/cli
       rimraf:
         specifier: ^6.1.2
         version: 6.1.2
