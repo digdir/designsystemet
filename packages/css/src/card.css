@@ -104,8 +104,8 @@
   & > .ds-details:last-child {
     border-bottom: 0;
 
-    & > summary,
-    & > u-summary {
+    &:not([open]) > summary,
+    &:not([open]) > u-summary {
       border-bottom-left-radius: var(--dsc-card-border-radius);
       border-bottom-right-radius: var(--dsc-card-border-radius);
     }
