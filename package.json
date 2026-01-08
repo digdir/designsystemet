@@ -34,7 +34,7 @@
     "web": "vite --config=packages/web/vite.config.ts --port=5174"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.10",
+    "@biomejs/biome": "2.3.11",
     "@changesets/cli": "^2.29.8",
     "@svitejs/changesets-changelog-github-compact": "^1.2.0",
     "@testing-library/jest-dom": "^6.9.1",
