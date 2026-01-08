@@ -59,19 +59,25 @@
     &:not(:first-child) {
       margin-left: var(--captured-length);
     }
+
     &:nth-last-child(1 of .ds-avatar) {
       mask: none;
     }
 
+    @supports not selector(:nth-last-child(1 of .ds-avatar)) {
+      /*Note: This selector will remove all masks if there are tooltips on avatars but will only apply to chromium browsers older than 2023*/
+      &:not(:has(+ .ds-avatar)) {
+        mask: none;
+      }
+    }
+
+    /*we have to override the default font-size for the two ways you can add initials to avatar */
     &[data-initials]:empty::before {
       font-size: var(--_font-size);
     }
 
     > span {
       font-size: var(--_font-size);
-    }
-    > a {
-      line-height: 0;
     }
     &:has(:focus-visible) {
       mask: none;
