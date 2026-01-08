@@ -1,6 +1,6 @@
 import { ParagraphIcon, RobotIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
-import themeConfig from '../../../../cli/configs/digdir.config.json';
+import { severityColors, themeColors } from '../../../stories/constants';
 import type { TagProps } from './tag';
 import { Tag } from './tag';
 
@@ -14,15 +14,7 @@ export default {
   },
 } satisfies Meta;
 
-const colorVariants = [
-  ...Object.keys(themeConfig.themes.digdir.colors.main),
-  ...Object.keys(themeConfig.themes.digdir.colors.support),
-  'neutral',
-  'success',
-  'warning',
-  'danger',
-  'info',
-];
+const _dataColors = [...themeColors, ...severityColors];
 
 export const Preview: Story = {
   args: {
@@ -55,7 +47,7 @@ Sizes.parameters = {
 export const Colors: StoryFn<typeof Tag> = ({ ...rest }) => {
   return (
     <>
-      {colorVariants.map((color) => (
+      {[...themeColors, ...severityColors].map((color) => (
         <Tag key={color} data-color={color as TagProps['data-color']} {...rest}>
           {color}
         </Tag>
@@ -123,7 +115,7 @@ Icons.parameters = {
 export const VariantOutline: StoryFn<typeof Tag> = ({ ...rest }) => {
   return (
     <>
-      {colorVariants.map((color) => (
+      {themeColors.map((color) => (
         <Tag
           key={color}
           data-color={color as TagProps['data-color']}

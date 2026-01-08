@@ -6,7 +6,6 @@ import pkg from './package.json';
 
 // These are dependencies, but are not in our package.json
 const implicitDependencies = [
-  '@digdir/designsystemet-theme',
   '@digdir/designsystemet-css',
   '@digdir/design-system-tokens',
 ];
