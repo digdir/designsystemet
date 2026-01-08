@@ -131,7 +131,7 @@ importers:
     dependencies:
       '@digdir/designsystemet':
         specifier: workspace:^
-        version: file:packages/cli
+        version: link:../../packages/cli
       '@digdir/designsystemet-css':
         specifier: workspace:^
         version: link:../../packages/css
@@ -237,7 +237,7 @@ importers:
     dependencies:
       '@digdir/designsystemet':
         specifier: workspace:^
-        version: file:packages/cli
+        version: link:../../packages/cli
       '@digdir/designsystemet-css':
         specifier: workspace:^
         version: link:../../packages/css
@@ -367,7 +367,7 @@ importers:
     dependencies:
       '@digdir/designsystemet':
         specifier: workspace:^
-        version: file:packages/cli
+        version: link:../../packages/cli
       '@digdir/designsystemet-react':
         specifier: workspace:^
         version: link:../../packages/react
@@ -461,8 +461,8 @@ importers:
         specifier: ^3.2.0
         version: 3.2.0
       colorjs.io:
-        specifier: ^0.6.0-alpha.1
-        version: 0.6.0-alpha.1
+        specifier: ^0.6.0
+        version: 0.6.0
       commander:
         specifier: ^14.0.2
         version: 14.0.2
@@ -581,7 +581,7 @@ importers:
     devDependencies:
       '@digdir/designsystemet':
         specifier: workspace:^
-        version: file:packages/cli
+        version: link:../cli
       '@digdir/designsystemet-css':
         specifier: workspace:^
         version: link:../css
@@ -648,7 +648,7 @@ importers:
     devDependencies:
       '@digdir/designsystemet':
         specifier: workspace:^
-        version: file:packages/cli
+        version: link:../cli
       rimraf:
         specifier: ^6.1.2
         version: 6.1.2
@@ -1067,6 +1067,7 @@ packages:
     peerDependencies:
       postcss-selector-parser: ^7.0.0
 
+<<<<<<< HEAD
   '@digdir/designsystemet-types@file:packages/types':
     resolution: {directory: packages/types, type: directory}
 
@@ -1084,6 +1085,8 @@ packages:
   '@emnapi/wasi-threads@1.1.0':
     resolution: {integrity: sha512-WI0DdZ8xFSbgMjR1sFsKABJ/C5OnRrjT06JXbZKexJGrDuPTzZdDYfFlsgcCXCyf+suG5QU2e/y1Wo2V/OapLQ==}
 
+=======
+>>>>>>> 41d18892d (fix(deps): update dependency colorjs.io to ^0.6.0 (#4372))
   '@epic-web/invariant@1.0.0':
     resolution: {integrity: sha512-lrTPqgvfFQtR/eY/qkIzp98OGdNJu0m5ji3q/nJI8v3SXkRKEnWiOxMmbvcSoAIzv/cGiuvRy57k4suKQSAdwA==}
 
@@ -2812,11 +2815,8 @@ packages:
   colorjs.io@0.5.2:
     resolution: {integrity: sha512-twmVoizEW7ylZSN32OgKdXRmo1qg+wT5/6C3xu5b9QsWzSFAhHLn2xd8ro0diCsKfCj1RdaTP/nrcW+vAoQPIw==}
 
-  colorjs.io@0.6.0-alpha.1:
-    resolution: {integrity: sha512-c/h/8uAmPydQcriRdX8UTAFHj6SpSHFHBA8LvMikvYWAVApPTwg/pyOXNsGmaCBd6L/EeDlRHSNhTtnIFp/qsg==}
-
-  colorjs.io@0.6.0-beta.3:
-    resolution: {integrity: sha512-LuZuWmlCc3oeGnZ9IdH6Uo0OOf1wBfLCedZEoaNsO8VYqTbsqkFp9QHcd9Yt2KilpCHJArOM3kHmG43arZ7OHw==}
+  colorjs.io@0.6.0:
+    resolution: {integrity: sha512-NgaccdK0ajJ9DPfa5OrIFRfTm4XILboOuqKV6tu9UonREcve+RUilZR3cdo7BbG+xIHFbDv4CxTE4M2vsj7nqw==}
 
   comma-separated-tokens@2.0.3:
     resolution: {integrity: sha512-Fu4hJdvzeylCfQPp9SGWidpzrMs7tTrlu6Vb8XGaRGck8QSNZJJp538Wrb60Lax4fPwR64ViY468OIUTbRlGZg==}
@@ -6234,6 +6234,7 @@ snapshots:
     dependencies:
       postcss-selector-parser: 7.1.0
 
+<<<<<<< HEAD
   '@digdir/designsystemet-types@file:packages/types': {}
 
   '@digdir/designsystemet@file:packages/cli':
@@ -6270,6 +6271,8 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
+=======
+>>>>>>> 41d18892d (fix(deps): update dependency colorjs.io to ^0.6.0 (#4372))
   '@epic-web/invariant@1.0.0': {}
 
   '@esbuild-plugins/node-resolve@0.2.2(esbuild@0.27.0)':
@@ -7857,9 +7860,7 @@ snapshots:
 
   colorjs.io@0.5.2: {}
 
-  colorjs.io@0.6.0-alpha.1: {}
-
-  colorjs.io@0.6.0-beta.3: {}
+  colorjs.io@0.6.0: {}
 
   comma-separated-tokens@2.0.3: {}
 
