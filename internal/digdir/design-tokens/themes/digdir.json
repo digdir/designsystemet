@@ -1,0 +1,666 @@
+{
+  "color": {
+    "accent": {
+      "1": {
+        "$type": "color",
+        "$value": "{digdir.accent.1}"
+      },
+      "2": {
+        "$type": "color",
+        "$value": "{digdir.accent.2}"
+      },
+      "3": {
+        "$type": "color",
+        "$value": "{digdir.accent.3}"
+      },
+      "4": {
+        "$type": "color",
+        "$value": "{digdir.accent.4}"
+      },
+      "5": {
+        "$type": "color",
+        "$value": "{digdir.accent.5}"
+      },
+      "6": {
+        "$type": "color",
+        "$value": "{digdir.accent.6}"
+      },
+      "7": {
+        "$type": "color",
+        "$value": "{digdir.accent.7}"
+      },
+      "8": {
+        "$type": "color",
+        "$value": "{digdir.accent.8}"
+      },
+      "9": {
+        "$type": "color",
+        "$value": "{digdir.accent.9}"
+      },
+      "10": {
+        "$type": "color",
+        "$value": "{digdir.accent.10}"
+      },
+      "11": {
+        "$type": "color",
+        "$value": "{digdir.accent.11}"
+      },
+      "12": {
+        "$type": "color",
+        "$value": "{digdir.accent.12}"
+      },
+      "13": {
+        "$type": "color",
+        "$value": "{digdir.accent.13}"
+      },
+      "14": {
+        "$type": "color",
+        "$value": "{digdir.accent.14}"
+      },
+      "15": {
+        "$type": "color",
+        "$value": "{digdir.accent.15}"
+      },
+      "16": {
+        "$type": "color",
+        "$value": "{digdir.accent.16}"
+      }
+    },
+    "neutral": {
+      "1": {
+        "$type": "color",
+        "$value": "{digdir.neutral.1}"
+      },
+      "2": {
+        "$type": "color",
+        "$value": "{digdir.neutral.2}"
+      },
+      "3": {
+        "$type": "color",
+        "$value": "{digdir.neutral.3}"
+      },
+      "4": {
+        "$type": "color",
+        "$value": "{digdir.neutral.4}"
+      },
+      "5": {
+        "$type": "color",
+        "$value": "{digdir.neutral.5}"
+      },
+      "6": {
+        "$type": "color",
+        "$value": "{digdir.neutral.6}"
+      },
+      "7": {
+        "$type": "color",
+        "$value": "{digdir.neutral.7}"
+      },
+      "8": {
+        "$type": "color",
+        "$value": "{digdir.neutral.8}"
+      },
+      "9": {
+        "$type": "color",
+        "$value": "{digdir.neutral.9}"
+      },
+      "10": {
+        "$type": "color",
+        "$value": "{digdir.neutral.10}"
+      },
+      "11": {
+        "$type": "color",
+        "$value": "{digdir.neutral.11}"
+      },
+      "12": {
+        "$type": "color",
+        "$value": "{digdir.neutral.12}"
+      },
+      "13": {
+        "$type": "color",
+        "$value": "{digdir.neutral.13}"
+      },
+      "14": {
+        "$type": "color",
+        "$value": "{digdir.neutral.14}"
+      },
+      "15": {
+        "$type": "color",
+        "$value": "{digdir.neutral.15}"
+      },
+      "16": {
+        "$type": "color",
+        "$value": "{digdir.neutral.16}"
+      }
+    },
+    "brand1": {
+      "1": {
+        "$type": "color",
+        "$value": "{digdir.brand1.1}"
+      },
+      "2": {
+        "$type": "color",
+        "$value": "{digdir.brand1.2}"
+      },
+      "3": {
+        "$type": "color",
+        "$value": "{digdir.brand1.3}"
+      },
+      "4": {
+        "$type": "color",
+        "$value": "{digdir.brand1.4}"
+      },
+      "5": {
+        "$type": "color",
+        "$value": "{digdir.brand1.5}"
+      },
+      "6": {
+        "$type": "color",
+        "$value": "{digdir.brand1.6}"
+      },
+      "7": {
+        "$type": "color",
+        "$value": "{digdir.brand1.7}"
+      },
+      "8": {
+        "$type": "color",
+        "$value": "{digdir.brand1.8}"
+      },
+      "9": {
+        "$type": "color",
+        "$value": "{digdir.brand1.9}"
+      },
+      "10": {
+        "$type": "color",
+        "$value": "{digdir.brand1.10}"
+      },
+      "11": {
+        "$type": "color",
+        "$value": "{digdir.brand1.11}"
+      },
+      "12": {
+        "$type": "color",
+        "$value": "{digdir.brand1.12}"
+      },
+      "13": {
+        "$type": "color",
+        "$value": "{digdir.brand1.13}"
+      },
+      "14": {
+        "$type": "color",
+        "$value": "{digdir.brand1.14}"
+      },
+      "15": {
+        "$type": "color",
+        "$value": "{digdir.brand1.15}"
+      },
+      "16": {
+        "$type": "color",
+        "$value": "{digdir.brand1.16}"
+      }
+    },
+    "brand2": {
+      "1": {
+        "$type": "color",
+        "$value": "{digdir.brand2.1}"
+      },
+      "2": {
+        "$type": "color",
+        "$value": "{digdir.brand2.2}"
+      },
+      "3": {
+        "$type": "color",
+        "$value": "{digdir.brand2.3}"
+      },
+      "4": {
+        "$type": "color",
+        "$value": "{digdir.brand2.4}"
+      },
+      "5": {
+        "$type": "color",
+        "$value": "{digdir.brand2.5}"
+      },
+      "6": {
+        "$type": "color",
+        "$value": "{digdir.brand2.6}"
+      },
+      "7": {
+        "$type": "color",
+        "$value": "{digdir.brand2.7}"
+      },
+      "8": {
+        "$type": "color",
+        "$value": "{digdir.brand2.8}"
+      },
+      "9": {
+        "$type": "color",
+        "$value": "{digdir.brand2.9}"
+      },
+      "10": {
+        "$type": "color",
+        "$value": "{digdir.brand2.10}"
+      },
+      "11": {
+        "$type": "color",
+        "$value": "{digdir.brand2.11}"
+      },
+      "12": {
+        "$type": "color",
+        "$value": "{digdir.brand2.12}"
+      },
+      "13": {
+        "$type": "color",
+        "$value": "{digdir.brand2.13}"
+      },
+      "14": {
+        "$type": "color",
+        "$value": "{digdir.brand2.14}"
+      },
+      "15": {
+        "$type": "color",
+        "$value": "{digdir.brand2.15}"
+      },
+      "16": {
+        "$type": "color",
+        "$value": "{digdir.brand2.16}"
+      }
+    },
+    "brand3": {
+      "1": {
+        "$type": "color",
+        "$value": "{digdir.brand3.1}"
+      },
+      "2": {
+        "$type": "color",
+        "$value": "{digdir.brand3.2}"
+      },
+      "3": {
+        "$type": "color",
+        "$value": "{digdir.brand3.3}"
+      },
+      "4": {
+        "$type": "color",
+        "$value": "{digdir.brand3.4}"
+      },
+      "5": {
+        "$type": "color",
+        "$value": "{digdir.brand3.5}"
+      },
+      "6": {
+        "$type": "color",
+        "$value": "{digdir.brand3.6}"
+      },
+      "7": {
+        "$type": "color",
+        "$value": "{digdir.brand3.7}"
+      },
+      "8": {
+        "$type": "color",
+        "$value": "{digdir.brand3.8}"
+      },
+      "9": {
+        "$type": "color",
+        "$value": "{digdir.brand3.9}"
+      },
+      "10": {
+        "$type": "color",
+        "$value": "{digdir.brand3.10}"
+      },
+      "11": {
+        "$type": "color",
+        "$value": "{digdir.brand3.11}"
+      },
+      "12": {
+        "$type": "color",
+        "$value": "{digdir.brand3.12}"
+      },
+      "13": {
+        "$type": "color",
+        "$value": "{digdir.brand3.13}"
+      },
+      "14": {
+        "$type": "color",
+        "$value": "{digdir.brand3.14}"
+      },
+      "15": {
+        "$type": "color",
+        "$value": "{digdir.brand3.15}"
+      },
+      "16": {
+        "$type": "color",
+        "$value": "{digdir.brand3.16}"
+      }
+    },
+    "info": {
+      "1": {
+        "$type": "color",
+        "$value": "{digdir.info.1}"
+      },
+      "2": {
+        "$type": "color",
+        "$value": "{digdir.info.2}"
+      },
+      "3": {
+        "$type": "color",
+        "$value": "{digdir.info.3}"
+      },
+      "4": {
+        "$type": "color",
+        "$value": "{digdir.info.4}"
+      },
+      "5": {
+        "$type": "color",
+        "$value": "{digdir.info.5}"
+      },
+      "6": {
+        "$type": "color",
+        "$value": "{digdir.info.6}"
+      },
+      "7": {
+        "$type": "color",
+        "$value": "{digdir.info.7}"
+      },
+      "8": {
+        "$type": "color",
+        "$value": "{digdir.info.8}"
+      },
+      "9": {
+        "$type": "color",
+        "$value": "{digdir.info.9}"
+      },
+      "10": {
+        "$type": "color",
+        "$value": "{digdir.info.10}"
+      },
+      "11": {
+        "$type": "color",
+        "$value": "{digdir.info.11}"
+      },
+      "12": {
+        "$type": "color",
+        "$value": "{digdir.info.12}"
+      },
+      "13": {
+        "$type": "color",
+        "$value": "{digdir.info.13}"
+      },
+      "14": {
+        "$type": "color",
+        "$value": "{digdir.info.14}"
+      },
+      "15": {
+        "$type": "color",
+        "$value": "{digdir.info.15}"
+      },
+      "16": {
+        "$type": "color",
+        "$value": "{digdir.info.16}"
+      }
+    },
+    "success": {
+      "1": {
+        "$type": "color",
+        "$value": "{digdir.success.1}"
+      },
+      "2": {
+        "$type": "color",
+        "$value": "{digdir.success.2}"
+      },
+      "3": {
+        "$type": "color",
+        "$value": "{digdir.success.3}"
+      },
+      "4": {
+        "$type": "color",
+        "$value": "{digdir.success.4}"
+      },
+      "5": {
+        "$type": "color",
+        "$value": "{digdir.success.5}"
+      },
+      "6": {
+        "$type": "color",
+        "$value": "{digdir.success.6}"
+      },
+      "7": {
+        "$type": "color",
+        "$value": "{digdir.success.7}"
+      },
+      "8": {
+        "$type": "color",
+        "$value": "{digdir.success.8}"
+      },
+      "9": {
+        "$type": "color",
+        "$value": "{digdir.success.9}"
+      },
+      "10": {
+        "$type": "color",
+        "$value": "{digdir.success.10}"
+      },
+      "11": {
+        "$type": "color",
+        "$value": "{digdir.success.11}"
+      },
+      "12": {
+        "$type": "color",
+        "$value": "{digdir.success.12}"
+      },
+      "13": {
+        "$type": "color",
+        "$value": "{digdir.success.13}"
+      },
+      "14": {
+        "$type": "color",
+        "$value": "{digdir.success.14}"
+      },
+      "15": {
+        "$type": "color",
+        "$value": "{digdir.success.15}"
+      },
+      "16": {
+        "$type": "color",
+        "$value": "{digdir.success.16}"
+      }
+    },
+    "warning": {
+      "1": {
+        "$type": "color",
+        "$value": "{digdir.warning.1}"
+      },
+      "2": {
+        "$type": "color",
+        "$value": "{digdir.warning.2}"
+      },
+      "3": {
+        "$type": "color",
+        "$value": "{digdir.warning.3}"
+      },
+      "4": {
+        "$type": "color",
+        "$value": "{digdir.warning.4}"
+      },
+      "5": {
+        "$type": "color",
+        "$value": "{digdir.warning.5}"
+      },
+      "6": {
+        "$type": "color",
+        "$value": "{digdir.warning.6}"
+      },
+      "7": {
+        "$type": "color",
+        "$value": "{digdir.warning.7}"
+      },
+      "8": {
+        "$type": "color",
+        "$value": "{digdir.warning.8}"
+      },
+      "9": {
+        "$type": "color",
+        "$value": "{digdir.warning.9}"
+      },
+      "10": {
+        "$type": "color",
+        "$value": "{digdir.warning.10}"
+      },
+      "11": {
+        "$type": "color",
+        "$value": "{digdir.warning.11}"
+      },
+      "12": {
+        "$type": "color",
+        "$value": "{digdir.warning.12}"
+      },
+      "13": {
+        "$type": "color",
+        "$value": "{digdir.warning.13}"
+      },
+      "14": {
+        "$type": "color",
+        "$value": "{digdir.warning.14}"
+      },
+      "15": {
+        "$type": "color",
+        "$value": "{digdir.warning.15}"
+      },
+      "16": {
+        "$type": "color",
+        "$value": "{digdir.warning.16}"
+      }
+    },
+    "danger": {
+      "1": {
+        "$type": "color",
+        "$value": "{digdir.danger.1}"
+      },
+      "2": {
+        "$type": "color",
+        "$value": "{digdir.danger.2}"
+      },
+      "3": {
+        "$type": "color",
+        "$value": "{digdir.danger.3}"
+      },
+      "4": {
+        "$type": "color",
+        "$value": "{digdir.danger.4}"
+      },
+      "5": {
+        "$type": "color",
+        "$value": "{digdir.danger.5}"
+      },
+      "6": {
+        "$type": "color",
+        "$value": "{digdir.danger.6}"
+      },
+      "7": {
+        "$type": "color",
+        "$value": "{digdir.danger.7}"
+      },
+      "8": {
+        "$type": "color",
+        "$value": "{digdir.danger.8}"
+      },
+      "9": {
+        "$type": "color",
+        "$value": "{digdir.danger.9}"
+      },
+      "10": {
+        "$type": "color",
+        "$value": "{digdir.danger.10}"
+      },
+      "11": {
+        "$type": "color",
+        "$value": "{digdir.danger.11}"
+      },
+      "12": {
+        "$type": "color",
+        "$value": "{digdir.danger.12}"
+      },
+      "13": {
+        "$type": "color",
+        "$value": "{digdir.danger.13}"
+      },
+      "14": {
+        "$type": "color",
+        "$value": "{digdir.danger.14}"
+      },
+      "15": {
+        "$type": "color",
+        "$value": "{digdir.danger.15}"
+      },
+      "16": {
+        "$type": "color",
+        "$value": "{digdir.danger.16}"
+      }
+    },
+    "link": {
+      "visited": {
+        "$type": "color",
+        "$value": "{digdir.link.visited}"
+      }
+    },
+    "focus": {
+      "inner-color": {
+        "$type": "color",
+        "$value": "{digdir.focus.inner}"
+      },
+      "outer-color": {
+        "$type": "color",
+        "$value": "{digdir.focus.outer}"
+      }
+    }
+  },
+  "font-family": {
+    "$type": "fontFamilies",
+    "$value": "{digdir.font-family}"
+  },
+  "font-weight": {
+    "medium": {
+      "$type": "fontWeights",
+      "$value": "{digdir.font-weight.medium}"
+    },
+    "semibold": {
+      "$type": "fontWeights",
+      "$value": "{digdir.font-weight.semibold}"
+    },
+    "regular": {
+      "$type": "fontWeights",
+      "$value": "{digdir.font-weight.regular}"
+    }
+  },
+  "border-radius": {
+    "1": {
+      "$type": "dimension",
+      "$value": "min({border-radius.base}*0.5,{border-radius.scale})"
+    },
+    "2": {
+      "$type": "dimension",
+      "$value": "min({border-radius.base},{border-radius.scale}*2)"
+    },
+    "3": {
+      "$type": "dimension",
+      "$value": "min({border-radius.base}*2,{border-radius.scale}*5)"
+    },
+    "4": {
+      "$type": "dimension",
+      "$value": "min({border-radius.base}*3,{border-radius.scale}*7)"
+    },
+    "5": {
+      "$type": "dimension",
+      "$value": "{border-radius.base}"
+    },
+    "6": {
+      "$type": "dimension",
+      "$value": "9999"
+    },
+    "base": {
+      "$type": "dimension",
+      "$value": "4"
+    },
+    "scale": {
+      "$type": "dimension",
+      "$value": "4"
+    }
+  }
+}
