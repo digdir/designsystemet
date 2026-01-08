@@ -1,14 +1,19 @@
 ---
 title: Deprecating the theme package in Designsystemet
-description: The theme package in Designsystemet is being deprecated. Learn about the reasons behind this decision and what it means for users of the design system.
+description: The theme package in Designsystemet is being deprecated. Learn about the reasons behind this decision.
 date: 2026-01-08
-author: Designsystem
+author: Designsystemet
 imageSrc: 
 imageAlt: 
 ---
 
-After careful consideration, we have decided to deprecate the theme package in Designsystemet. This decision was made to streamline our offerings and focus on the core components that provide the most value to our users.
+After careful consideration, we have decided to deprecate the theme package, `@digdir/designsystemet-theme` to simplify the usage of Designsystemet.
 
+The theme package was initially created to facilitate themes for the Designsystemet. However, over time with improvements to the [Theme Builder](https://theme.designsystemet.no), CLI and theming capabilities in Designsystemet, the need for a separate theme package has diminished. In addition most users created their own themes rather than using the ones provided in the package.
+
+The default theme (available under `@digdir/designsystemet-theme`) has been move to `@digdir/designsystemet-css/theme` making it easier to access and use and reducing the number of packages users need to install.
+
+Digdir themes have been moved to an internal package, if you need access to these themes please reach out to us or copy the config from the [here](https://github.com/digdir/designsystemet/tree/main/internal/digdir)
 
 <Contributors
   authors={[
