@@ -3,7 +3,6 @@ packages:
   - apps/*
   - plugins/*
   - internal/*
-  - '!internal/design-tokens'
 ignoredBuiltDependencies:
   - '@bundled-es-modules/glob'
   - sharp
