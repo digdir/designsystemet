@@ -525,7 +525,7 @@ export const InDetails: StoryFn<typeof Suggestion> = (args) => {
 
 export const AutoPlacementOnXAxis: StoryFn<typeof Suggestion> = (args) => {
   return (
-    <div style={{ paddingTop: '350px' }}>
+    <div style={{ paddingTop: '700px' }}>
       <Field>
         <Label>Velg en destinasjon</Label>
         <Suggestion {...args} autoFocus>
