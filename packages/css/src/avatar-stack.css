@@ -79,7 +79,8 @@
     > span {
       font-size: var(--_font-size);
     }
-    &:has(:focus-visible) {
+    &:has(:focus-visible),
+    &:focus-visible {
       mask: none;
       @composes ds-focus--visible from './base.css';
       z-index: 1;
