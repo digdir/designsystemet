@@ -110,11 +110,15 @@ export const Controlled: StoryFn<typeof Dropdown> = () => {
 
   return (
     <Dropdown.TriggerContext>
-      <Dropdown.Trigger onClick={() => setOpen(!open)}>
+      <Dropdown.Trigger>
         Dropdown
         {open ? <ChevronDownIcon aria-hidden /> : <ChevronUpIcon aria-hidden />}
       </Dropdown.Trigger>
-      <Dropdown open={open} onClose={() => setOpen(false)}>
+      <Dropdown
+        open={open}
+        onClose={() => setOpen(false)}
+        onOpen={() => setOpen(true)}
+      >
         <Dropdown.List>
           <Dropdown.Item>
             <Dropdown.Button onClick={() => setOpen(false)}>
@@ -129,6 +133,28 @@ export const Controlled: StoryFn<typeof Dropdown> = () => {
         </Dropdown.List>
       </Dropdown>
     </Dropdown.TriggerContext>
+  );
+};
+
+export const ControlledExternalTrigger: StoryFn<typeof Dropdown> = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button popovertarget='dropdown'>Dropdown</Button>
+      <Dropdown
+        id='dropdown'
+        open={open}
+        onClose={() => setOpen(false)}
+        onOpen={() => setOpen(true)}
+      >
+        <Dropdown.List>
+          <Dropdown.Item>
+            <Dropdown.Button>Item</Dropdown.Button>
+          </Dropdown.Item>
+        </Dropdown.List>
+      </Dropdown>
+    </>
   );
 };
 
