@@ -31,6 +31,13 @@ export async function loader({ params }: Route.LoaderArgs) {
   const dirname = cwd();
   const basePath = join(dirname, './app/content');
 
+  if (!file) {
+    throw new Response('Not Found', {
+      status: 404,
+      statusText: 'Not Found',
+    });
+  }
+
   // Read the file content
   const fileContent = getFileFromContentDir(
     join('components-docs', lang, `${file}.mdx`),
