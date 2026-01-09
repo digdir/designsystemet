@@ -14,8 +14,6 @@ const connectSrc = [
 
 export const app = express();
 
-app.set('strict routing', true);
-
 app.use((req, res, next) => {
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader(

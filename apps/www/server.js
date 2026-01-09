@@ -11,6 +11,7 @@ const app = express();
 
 app.use(compression());
 app.disable('x-powered-by');
+app.set('strict routing', true);
 
 if (DEVELOPMENT) {
   console.log('Starting development server');
