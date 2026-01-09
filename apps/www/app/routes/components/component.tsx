@@ -63,7 +63,7 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   // Validate page type - redirect to overview if invalid or missing
   const validPages = ['overview', 'code', 'accessibility'];
   if (!compPage || !validPages.includes(compPage)) {
-    return redirect(`/${lang}/components/docs/${component}/overview`);
+    return redirect(`/${lang}/components/docs/${component}/overview/`);
   }
 
   const componentDocs = getComponentDocs(component);
