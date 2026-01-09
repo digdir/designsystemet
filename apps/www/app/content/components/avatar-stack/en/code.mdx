@@ -1,0 +1,55 @@
+<Story story="Preview" />
+
+<ReactComponentDocs />
+
+## Usage
+
+```tsx
+import { AvatarStack, Avatar } from '@digdir/designsystemet-react';
+
+<AvatarStack aria-label="contributors">
+    <Avatar aria-label="Ola Nordmann">ON</Avatar>
+    <Avatar aria-label="Ola Nordmann" data-initials="ON" />
+    <Avatar aria-label="Ola Nordmann">
+        <img src="..." />
+    </Avatar>
+</AvatarStack>
+```
+
+## Examples
+
+### Customizability
+
+### "Additional avatars"
+
+### Sizing
+
+### Tooltip
+
+### Link
+
+
+## HTML
+
+AvatarStack uses the class name `ds-avatar-stack` on a `<figure>`.
+
+```html
+<!-- With default user icon -->
+<span class="ds-avatar" role="img" aria-label="Ola Nordmann"></span>
+
+<!-- With initials -->
+<span class="ds-avatar" role="img" aria-label="Ola Nordmann">ON</span>
+<!-- or -->
+<span class="ds-avatar" role="img" aria-label="Ola Nordmann" data-initials="ON"></span>
+
+<!-- With image -->
+<span class="ds-avatar" role="img" aria-label="Ola Nordmann">
+<img src="..." aria-hidden="true" />
+</span>
+
+<!-- Together with visible text -->
+<span class="ds-avatar" aria-hidden="true">ON</span>
+<span>Ola Nordmann</span>
+```
+
+## CSS variables and data attributes
