@@ -52,6 +52,8 @@ with Firefox as the last browser to add it. In some cases, you may find that use
 
 If you submit `open`, then you use `Dropdown` controlled. You can use `onClose` to get notified when `Dropdown` wants to close.
 
+Note that we do not use `onClick` on the trigger, the dropdown handles this internally and sends to `onOpen` and `onClose`.
+
 <Story story="ControlledEn" />
 
 ### Without `TriggerContext`

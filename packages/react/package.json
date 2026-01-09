@@ -30,7 +30,6 @@
   "scripts": {
     "build": "pnpm run clean && tsc -b tsconfig.lib.json --emitDeclarationOnly false && rollup -c --bundleConfigAsCjs",
     "clean": "rimraf dist && rimraf tsc-build && rimraf --glob \"*.tsbuildinfo\"",
-    "copy-css-to-build": "copyfiles -u 1 ./src/**/*.css ./tsc-build/",
     "types": "tsc --noEmit"
   },
   "peerDependencies": {
@@ -44,9 +43,9 @@
     "@digdir/designsystemet-types": "workspace:^",
     "@floating-ui/dom": "^1.7.4",
     "@floating-ui/react": "0.26.23",
-    "@navikt/aksel-icons": "^7.36.0",
+    "@navikt/aksel-icons": "^7.37.0",
     "@radix-ui/react-slot": "^1.2.4",
-    "@tanstack/react-virtual": "^3.13.14",
+    "@tanstack/react-virtual": "^3.13.16",
     "@u-elements/u-combobox": "^1.0.5",
     "@u-elements/u-datalist": "^1.0.14",
     "@u-elements/u-details": "^0.1.5",

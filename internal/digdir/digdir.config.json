@@ -1,6 +1,6 @@
 {
-  "$schema": "../dist/config.schema.json",
-  "outDir": "./temp/digdir/design-tokens",
+  "$schema": "../../packages/cli/dist/config.schema.json",
+  "outDir": "./design-tokens",
   "clean": true,
   "themes": {
     "digdir": {
