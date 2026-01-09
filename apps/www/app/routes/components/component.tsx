@@ -55,25 +55,16 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
   }
 
-  if (
-    !request.url.includes('code') &&
-    !request.url.includes('overview') &&
-    !request.url.includes('accessibility')
-  ) {
-    if (
-      request.url.endsWith(`/${component}`) ||
-      request.url.endsWith(`/${component}/`)
-    ) {
-      return redirect(`/${lang}/components/docs/${component}/overview`);
-    }
-
-    throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
-  }
-
   const trimmedUrl = request.url.endsWith('/')
     ? request.url.slice(0, -1)
     : request.url;
   const compPage = trimmedUrl.split('/').pop();
+
+  // Validate page type - redirect to overview if invalid or missing
+  const validPages = ['overview', 'code', 'accessibility'];
+  if (!compPage || !validPages.includes(compPage)) {
+    return redirect(`/${lang}/components/docs/${component}/overview`);
+  }
 
   const componentDocs = getComponentDocs(component);
 
