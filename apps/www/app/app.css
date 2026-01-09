@@ -11,11 +11,9 @@
       --circle-wipe-progress: 150vmax;
     }
   }
-  /* biome-ignore lint/correctness/noUnknownTypeSelector: new feature */
   ::view-transition-old(root) {
     animation: none;
   }
-  /* biome-ignore lint/correctness/noUnknownTypeSelector: new feature */
   &::view-transition-new(root) {
     mask-image: radial-gradient(circle var(--circle-wipe-progress) at var(--_theme-x, 50%) var(--_theme-y, 50%), black 70%, transparent 100%);
     animation: 0.6s ease-in both --circle-wipe;
