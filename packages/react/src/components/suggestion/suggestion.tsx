@@ -192,11 +192,16 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
     );
     const selectedItems = selected ? sanitizeItems(selected) : defaultItems;
     const onSelectedChangeRef = useRef(onSelectedChange);
+    const selectedItemsRef = useRef(selectedItems);
 
     // Keep the ref updated with the latest callback
     useEffect(() => {
       onSelectedChangeRef.current = onSelectedChange;
     }, [onSelectedChange]);
+
+    useEffect(() => {
+      selectedItemsRef.current = selectedItems;
+    }, [selectedItems]);
 
     /**
      * Listerners and handling of adding/removing
@@ -207,7 +212,7 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
         event.preventDefault();
         const multiple = combobox?.multiple;
         const data = event.detail;
-        const nextItem = nextItems(data, selectedItems, multiple);
+        const nextItem = nextItems(data, selectedItemsRef.current, multiple);
 
         onSelectedChangeRef.current?.(
           (nextItem as SuggestionItem & SuggestionItem[]) || null,
@@ -219,7 +224,7 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
       combobox?.addEventListener('comboboxbeforeselect', beforeChange);
       return () =>
         combobox?.removeEventListener('comboboxbeforeselect', beforeChange);
-    }, [selectedItems, isControlled]);
+    }, [isControlled]);
 
     // Before match event listener
     useEffect(() => {
