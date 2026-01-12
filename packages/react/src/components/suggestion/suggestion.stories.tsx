@@ -242,7 +242,7 @@ ControlledMultiple.play = async ({ canvasElement, step }) => {
 export const ControlledIndependentLabelValue: StoryFn<SuggestionSingleProps> = (
   args,
 ) => {
-  const [item, setItem] = useState<SuggestionItem | undefined>(DATA_PEOPLE[0]);
+  const [item, setItem] = useState<SuggestionItem | null>(DATA_PEOPLE[0]);
 
   return (
     <>
