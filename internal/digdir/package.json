@@ -1,6 +1,7 @@
 {
   "name": "@internal/digdir",
   "version": "1.0.0",
+  "private": true,
   "description": "Internal resources for Digdir",
     "exports": {
     "./themes/*": {

@@ -71,11 +71,15 @@ export const Controlled = () => {
 
   return (
     <Dropdown.TriggerContext>
-      <Dropdown.Trigger onClick={() => setOpen(!open)}>
+      <Dropdown.Trigger>
         Dropdown
         {open ? <ChevronDownIcon aria-hidden /> : <ChevronUpIcon aria-hidden />}
       </Dropdown.Trigger>
-      <Dropdown open={open} onClose={() => setOpen(false)}>
+      <Dropdown
+        open={open}
+        onClose={() => setOpen(false)}
+        onOpen={() => setOpen(true)}
+      >
         <Dropdown.List>
           <Dropdown.Item>
             <Dropdown.Button onClick={() => setOpen(false)}>
