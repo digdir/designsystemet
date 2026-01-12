@@ -12,12 +12,34 @@
       integrity="sha384-OcHzc/By/OPw9uJREawUCjP2inbOGKtKb4A/I2iXxmknUfog2H8Adx71tWVZRscD"
       crossorigin="anonymous"
     />
-
-    <script src="./dist/esm/index.js" type="module" crossorigin="anonymous"></script>
+    <script src="./src/index.ts" type="module"></script>
   </head>
-  <body data-color-scheme="dark" style="display:flex; flex-direction:column; gap:20px; padding:20px;font-family: Inter;">
-
+  <body data-color-scheme="dark" style="padding:20px;font-family: Inter;">
     <h1 class="ds-heading">Test webcomponents</h1>
+
+    <ds-breadcrumbs class="ds-breadcrumbs" data-label="Du er her:">
+      <a href="#none" aria-label="Tilbake til Nivå 3">
+        Nivå 3
+      </a>
+      <ol>
+        <li><a href="#none">Nivå 1</a></li>
+        <li><a href="#none">Nivå 2</a></li>
+        <li><a href="#none">Nivå 3</a></li>
+        <li><a href="#none">Nivå 4</a></li>
+      </ol>
+    </ds-breadcrumbs>
+
+    <ds-pagination class="ds-pagination" aria-label="Du er her:" data-current="1" data-total="100">
+      <ol>
+        <li><a href="#none">&larr;</a></li>
+        <li><a href="#none"></a></li>
+        <li><a href="#none"></a></li>
+        <li><a href="#none"></a></li>
+        <li><a href="#none"></a></li>
+        <li><a href="#none"></a></li>
+        <li><a href="#none">&rarr;</a></li>
+      </ol>
+    </ds-pagination>
 
     <ds-field class="ds-field">
       <label>Label</label>
@@ -27,46 +49,37 @@
     <br>
     <br>
     <br>
-
-    <ds-tooltip content="eg forklarer" anchor="tlp">
-      <button class="ds-button" id="tlp">forklar meg</button>
-    </ds-tooltip>
-
+    <div style="display: flex; gap: 1em">
+      <button class="ds-button" data-tooltip="eg forklarer">
+        <svg aria-hidden="true" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"></path></svg>
+      </button>
+      <button class="ds-button" data-tooltip="eg forklarer">forklar meg</button>
+    </div>
     <p>
       Eg ligger i tekst, men trenger ein
-      <ds-tooltip content="eg forklarer" anchor="tlp2">
-        <span id="tlp2" style="text-decoration:underline dotted">forklaring</span>
-      </ds-tooltip>
+      <span id="tlp2" style="text-decoration:underline dotted" data-tooltip="eg forklarer">forklaring</span>
       på dette ordet.
     </p>
-
     <br>
     <br>
     <br>
-
-    <ds-popover anchor="p-anc" placement="left">
-      <button class="ds-button" id="p-anc" style="margin:200px">Open popover</button>
-      <div popover="manual" id="popover">
+      <button class="ds-button" id="p-anc" popovertarget="popover" style="margin: 200px">Open popover</button>
+      <div class="ds-popover" popover id="popover" data-placement="left">
         This is some popover content. It can be very long, but it will wrap and
         stay within the viewport.
 
-        <ds-popover anchor="p-anc1" placement="right">
-          <button class="ds-button" id="p-anc1">Open nested popover</button>
-          <div popover="manual">
-            This is some nested popover content. It can be very long, but it will wrap and
-            stay within the viewport.
-          </div>
-        </ds-popover>
+        <button class="ds-button" popovertarget="p-anc1">Open nested popover</button>
+        <div class="ds-popover" popover id="p-anc1" data-placement="right">
+          This is some nested popover content. It can be very long, but it will wrap and
+          stay within the viewport.
+        </div>
       </div>
-    </ds-popover>
-    <ds-popover anchor="p-anc2" placement="bottom-end">
-      <button class="ds-button" id="p-anc2">Open dropdown</button>
-      <div class="ds-dropdown" popover="manual">
+      <button class="ds-button" popovertarget="p-anc2">Open dropdown</button>
+      <div id="p-anc2" class="ds-dropdown" popover>
         <h2 class="ds-heading">First heading</h2>
         <ul><li><button class="ds-button" data-variant="tertiary" type="button">Button 1.1</button></li><li><button class="ds-button" data-variant="tertiary" type="button">Button 1.2</button></li></ul>
         <h2 class="ds-heading">Second heading</h2>
         <ul><li><button class="ds-button" data-variant="tertiary" type="button">Button 2.1</button></li><li><button class="ds-button" data-variant="tertiary" type="button">Button 2.2</button></li></ul>
       </div>
-    </ds-popover>
   </body>
 </html>

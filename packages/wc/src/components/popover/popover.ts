@@ -1,235 +1,95 @@
-import type { MiddlewareState, Placement } from '@floating-ui/dom';
 import {
   autoUpdate,
   computePosition,
   flip,
   offset,
   shift,
-} from '@floating-ui/dom';
+  // @ts-expect-error Using CDN during POC
+} from 'https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.7.4/+esm';
+import { attr, on, onHotReload, QUICK_EVENT } from '../../utils';
 
-declare global {
-  interface HTMLElementTagNameMap {
-    'ds-popover': DsPopover;
-  }
-}
+const PLACEMENT = 'data-placement';
+const FLOATING = 'data-floating';
+const POPOVERS = new Map<HTMLElement, () => void>();
 
-const arrowPseudoElement = {
-  name: 'ArrowPseudoElement',
-  fn(data: MiddlewareState) {
-    const { elements, rects, placement } = data;
-
-    let arrowX = `${Math.round(rects.reference.width / 2 + rects.reference.x - data.x)}px`;
-    let arrowY = `${Math.round(rects.reference.height / 2 + rects.reference.y - data.y)}px`;
-
-    if (rects.reference.width > rects.floating.width) {
-      arrowX = `${Math.round(rects.floating.width / 2)}px`;
-    }
-
-    if (rects.reference.height > rects.floating.height) {
-      arrowY = `${Math.round(rects.floating.height / 2)}px`;
-    }
-
-    switch (placement.split('-')[0]) {
-      case 'top':
-        arrowY = '100%';
-        break;
-      case 'right':
-        arrowX = '0';
-        break;
-      case 'bottom':
-        arrowY = '0';
-        break;
-      case 'left':
-        arrowX = '100%';
-        break;
-    }
-
-    elements.floating.setAttribute('data-placement', placement.split('-')[0]); // We only need top/left/right/bottom
-    elements.floating.style.setProperty('--ds-popover-arrow-x', arrowX);
-    elements.floating.style.setProperty('--ds-popover-arrow-y', arrowY);
-    return data;
-  },
+// Sometimes use "ds-toggle" event while waiting for better support of
+// event.source (https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/source)
+type DSToggleEvent = Partial<ToggleEvent> & {
+  detail?: HTMLElement;
+  source?: HTMLElement;
 };
 
-export class DsPopover extends HTMLElement {
-  private cleanupAutoUpdate?: () => void;
-  private handleClick?: (event: MouseEvent) => void;
-  private handleKeydown?: (event: KeyboardEvent) => void;
-  private handleBeforeToggle?: (event: Event) => void;
-  private handleToggle?: () => void;
+const handleToggle = (event: DSToggleEvent) => {
+  const { newState, target, source = event.detail } = event;
+  if (!isDSFloating(target)) return;
+  if (newState === 'closed') return POPOVERS.get(target)?.(); // Cleanup on close
+  if (!source || source === target) return; // No need to update
+  const options = {
+    strategy: 'absolute',
+    placement: attr(target, PLACEMENT) || getDSFloating(target),
+    middleware: [
+      // TODO: data-overscroll="contain" behavior?
+      shift(),
+      flip({ fallbackAxisSideDirection: 'start' }),
+      offset(
+        ({ elements: { floating } }: any) =>
+          parseFloat(getComputedStyle(floating, '::before').height) || 0,
+      ),
+      arrowPseudo(),
+    ],
+  };
+  const unfloat = autoUpdate(source, target, async () => {
+    if (!source?.isConnected) return POPOVERS.get(target)?.(); // Cleanup if source element is removed
+    const { x, y } = await computePosition(source, target, options);
+    target.style.translate = `${x}px ${y}px`;
+  });
+  POPOVERS.set(target, () => POPOVERS.delete(target) && unfloat()); // TODO: Could we use CSS anchor positioning when 'anchorName' in document.documentElement.style?
+};
 
-  constructor() {
-    super();
-    if (!this.shadowRoot) {
-      this.attachShadow({ mode: 'open' }).appendChild(
-        document.createElement('slot'),
-      );
+// Make manual to prevent closing when clicking scrollbar
+const handleBeforeToggle = ({ target: el, newState }: Partial<ToggleEvent>) =>
+  newState === 'open' && isDSFloating(el) && attr(el, 'popover', 'manual');
+
+// Since we use manual popover, we also manually need to close on outside click
+const handleClickOutside = ({ target: el }: Event) => {
+  for (const [popover] of POPOVERS)
+    if (!popover.contains(el as Node)) {
+      const id = popover.id;
+      const trigger = `button[popovertarget="${id}"],button[commandfor="${id}"]`;
+      if (!(el as Element)?.closest?.(trigger)) popover.hidePopover();
     }
-  }
+};
 
-  get anchor() {
-    return this.querySelector(`#${this.getAttribute('anchor') || ''}`) || null;
-  }
+const handleKeydown = (event: Partial<KeyboardEvent>) => {
+  const last = event.key === 'Escape' && Array.from(POPOVERS.keys()).pop();
+  if (last) last.hidePopover();
+  if (last) event.preventDefault?.(); // Prevent minimize fullscreen Safari
+};
 
-  get popoverElement() {
-    return this.querySelector('[popover]') || null;
-  }
+onHotReload('floating-popover', () => [
+  on(document, 'beforetoggle', handleBeforeToggle, QUICK_EVENT), // Use capture since toggle does not bubble
+  on(document, 'click', handleClickOutside, QUICK_EVENT), // Close open popovers on outside click
+  on(document, 'keydown', handleKeydown),
+  on(document, 'toggle ds-toggle-source', handleToggle, QUICK_EVENT), // Use capture since the toggle event does not bubble
+]);
 
-  get placement(): Placement {
-    return (this.getAttribute('placement') as Placement) || 'top';
-  }
+const getDSFloating = (el: Element) =>
+  getComputedStyle(el).getPropertyValue('--_ds-is-floating');
 
-  get autoPlacement(): boolean {
-    return this.hasAttribute('auto-placement')
-      ? this.getAttribute('auto-placement') !== 'false'
-      : true;
-  }
+const isDSFloating = (el?: EventTarget | null): el is HTMLElement =>
+  el instanceof HTMLElement && !!getDSFloating(el);
 
-  static observedAttributes = ['placement', 'auto-placement', 'anchor'];
+const arrowPseudo = () => ({
+  name: 'arrowPseudo',
+  fn(data: any) {
+    const target = data.elements.floating;
+    const source = data.rects.reference;
+    const x = `${Math.round(source.width / 2 + source.x - data.x)}px`;
+    const y = `${Math.round(source.height / 2 + source.y - data.y)}px`;
 
-  private updatePosition() {
-    const trigger = this.anchor;
-    const popover = this.popoverElement as HTMLElement;
-
-    if (!trigger || !popover) return;
-
-    return computePosition(trigger, popover, {
-      placement: this.placement,
-      strategy: 'fixed',
-      middleware: [
-        offset((data) => {
-          // get pseudo element arrow size
-          const styles = getComputedStyle(data.elements.floating, '::before');
-          return parseFloat(styles.height);
-        }),
-        ...(this.autoPlacement
-          ? [flip({ fallbackAxisSideDirection: 'start' }), shift()]
-          : []),
-        arrowPseudoElement,
-      ],
-    }).then(({ x, y }) => {
-      popover.style.translate = `${x}px ${y}px`;
-    });
-  }
-
-  private startAutoUpdate() {
-    this.stopAutoUpdate();
-
-    const trigger = this.anchor;
-    const popover = this.popoverElement as HTMLElement;
-
-    if (!trigger || !popover) return;
-
-    this.cleanupAutoUpdate = autoUpdate(trigger, popover, () =>
-      this.updatePosition(),
-    );
-  }
-
-  private stopAutoUpdate() {
-    if (this.cleanupAutoUpdate) {
-      this.cleanupAutoUpdate();
-      this.cleanupAutoUpdate = undefined;
-    }
-  }
-
-  connectedCallback() {
-    if (!(this.popoverElement && this.anchor)) {
-      throw new Error('Popover and anchor elements must be present');
-    }
-
-    const popover = this.popoverElement as HTMLElement;
-    popover.classList.add('ds-popover');
-
-    if (!popover.id) {
-      popover.id = `popover-${Math.random().toString(36).slice(2)}`;
-    }
-
-    this.anchor.setAttribute('popovertarget', popover.id);
-
-    // Set up event handlers
-    this.handleClick = (event: MouseEvent) => {
-      const el = event.target as Element | null;
-      const isTrigger = el?.closest?.(`[popovertarget="${popover?.id}"]`);
-      const isOutside = !isTrigger && !popover?.contains(el as Node);
-
-      if (isTrigger) {
-        event.preventDefault(); // Prevent native Popover API
-        popover.togglePopover?.();
-      }
-      if (isOutside && popover.matches(':popover-open')) {
-        popover.togglePopover?.();
-      }
-    };
-
-    this.handleKeydown = (event: KeyboardEvent) => {
-      if (event.key !== 'Escape' || !popover.matches(':popover-open')) return;
-      event.preventDefault(); // Prevent closing fullscreen in Safari
-      popover.togglePopover?.();
-    };
-
-    this.handleBeforeToggle = (event: Event) => {
-      const toggleEvent = event as ToggleEvent;
-      if (toggleEvent.newState === 'open') {
-        void this.updatePosition();
-      }
-    };
-
-    this.handleToggle = () => {
-      if (popover.matches(':popover-open')) {
-        this.startAutoUpdate();
-      } else {
-        this.stopAutoUpdate();
-      }
-    };
-
-    addEventListener('click', this.handleClick);
-    addEventListener('keydown', this.handleKeydown);
-    popover.addEventListener('beforetoggle', this.handleBeforeToggle);
-    popover.addEventListener('toggle', this.handleToggle);
-  }
-
-  disconnectedCallback() {
-    this.stopAutoUpdate();
-
-    if (this.handleClick) {
-      removeEventListener('click', this.handleClick);
-    }
-    if (this.handleKeydown) {
-      removeEventListener('keydown', this.handleKeydown);
-    }
-    if (this.popoverElement) {
-      if (this.handleBeforeToggle) {
-        this.popoverElement.removeEventListener(
-          'beforetoggle',
-          this.handleBeforeToggle,
-        );
-      }
-      if (this.handleToggle) {
-        this.popoverElement.removeEventListener('toggle', this.handleToggle);
-      }
-    }
-  }
-
-  attributeChangedCallback(name: string, oldValue: string, newValue: string) {
-    if (oldValue === newValue) return;
-
-    if (
-      (name === 'placement' || name === 'auto-placement') &&
-      this.popoverElement?.matches(':popover-open')
-    ) {
-      this.updatePosition();
-    }
-
-    if (name === 'anchor') {
-      const popover = this.popoverElement;
-      if (popover && this.anchor) {
-        this.anchor.setAttribute('popovertarget', popover.id);
-        if (popover.matches(':popover-open')) {
-          this.startAutoUpdate();
-        }
-      }
-    }
-  }
-}
-
-customElements.define('ds-popover', DsPopover);
+    target.style.setProperty('--_dsc-arrow-x', x);
+    target.style.setProperty('--_dsc-arrow-y', y);
+    attr(target, FLOATING, data.placement);
+    return data;
+  },
+});

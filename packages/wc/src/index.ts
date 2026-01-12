@@ -1,3 +1,5 @@
 export { DsField } from './components/field/field';
-export { DsPopover } from './components/popover/popover';
-export { DSTooltip } from './components/tooltip/tooltip';
+import './components/breadcrumbs/breadcrumbs';
+import './components/pagination/pagination';
+import './components/popover/popover';
+import './components/tooltip/tooltip';

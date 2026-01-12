@@ -957,35 +957,50 @@
     max-width: var(--dsc-popover-max-width);
     overflow: visible;
     padding: var(--dsc-popover-padding);
-    position: fixed;
+
+    --_ds-is-floating: bottom;
+		position: absolute; /* Using absolute for smoother scroll-following on mobile */
+		transition-behavior: allow-discrete;
+		transition-duration: 0.2s;
+		transition-property: display, opacity, transform, visibility;
+
+    @starting-style {
+			opacity: 0;
+			transform: translateY(2px);
+			visibility: hidden;
+		}
   }
   .ds-popover,
   .ds-popover:before {
     background: var(--dsc-popover-background);
     box-sizing: border-box;
   }
-  .ds-popover:before {
+  .ds-popover::before {
     border: inherit;
     border-left-color: transparent;
     border-top-color: transparent;
     content: '';
     height: var(--dsc-popover-arrow-size);
-    left: var(--ds-popover-arrow-x);
+    left: var(--_dsc-arrow-x);
     position: absolute;
-    top: var(--ds-popover-arrow-y);
+    top: var(--_dsc-arrow-y);
     translate: -50% -50%;
     width: var(--dsc-popover-arrow-size);
   }
-  .ds-popover[data-placement='top']:before {
+  .ds-popover[data-floating='top']::before {
+    top: 100%;
     rotate: 45deg;
   }
-  .ds-popover[data-placement='left']:before {
+  .ds-popover[data-floating='left']::before {
+    left: 100%;
     rotate: -45deg;
   }
-  .ds-popover[data-placement='right']:before {
+  .ds-popover[data-floating='right']::before {
+    left: 0;
     rotate: 135deg;
   }
-  .ds-popover[data-placement='bottom']:before {
+  .ds-popover[data-floating='bottom']::before {
+    top: 0;
     rotate: -135deg;
   }
   .ds-popover[data-variant='default'] {
@@ -1596,6 +1611,10 @@
     list-style: none;
     min-width: 15em;
     padding: var(--dsc-dropdown-padding);
+
+    --_ds-is-floating: bottom;
+    position: absolute; /* Using absolute for smoother scroll-following on mobile */
+    inset: 0 auto auto 0;
   }
   .ds-dropdown:before {
     display: none;
@@ -2174,12 +2193,18 @@
     opacity: 0;
     overflow: visible;
     padding: var(--dsc-tooltip-padding);
-    position: fixed;
-    transition-delay: var(--dsc-tooltip-transition-delay);
-    transition-duration: var(--dsc-tooltip-transition-duration);
-    transition-property: opacity, visibility;
-    transition-timing-function: ease-in-out;
-    visibility: hidden;
+
+    --_ds-is-floating: top;
+    position: absolute; /* Using absolute for smoother scroll-following on mobile */
+    transition-behavior: allow-discrete;
+		transition-duration: 0.2s;
+		transition-property: display, opacity, transform, visibility;
+
+    @starting-style {
+			opacity: 0;
+			transform: translateY(2px);
+			visibility: hidden;
+		}
   }
   .ds-tooltip:popover-open {
     opacity: 1;
@@ -2189,6 +2214,9 @@
     opacity: 1;
     visibility: visible;
   }
+
+
+  /* This arrow logic can become a composed "mixin" used both in tooltip and popover */
   .ds-tooltip:before {
     background: var(--dsc-tooltip-background);
     height: var(--dsc-tooltip-arrow-size);
@@ -2196,19 +2224,45 @@
     translate: -50% -50%;
     width: var(--dsc-tooltip-arrow-size);
   }
-  .ds-tooltip:after,
-  .ds-tooltip:before {
+  .ds-tooltip::after,
+  .ds-tooltip::before {
     box-sizing: border-box;
     content: '';
-    left: var(--dsc-tooltip-arrow-x, 50%);
+    left: var(--_dsc-arrow-x, 50%);
     position: absolute;
-    top: var(--dsc-tooltip-arrow-y, 100%);
+    top: var(--_dsc-arrow-y, 100%);
   }
-  .ds-tooltip:after {
-    background: transparent;
-    height: var(--_dsc-tooltip-safearea-height, 0);
-    translate: var(--_dsc-tooltip-safearea-translate);
-    width: var(--_dsc-tooltip-safearea-width, 0);
+  .ds-tooltip[data-floating="top"]::before {
+    top: 100%;
+  }
+  .ds-tooltip[data-floating="right"]::before {
+    left: 0;
+  }
+  .ds-tooltip[data-floating="bottom"]::before {
+    top: 0;
+  }
+  .ds-tooltip[data-floating="left"]::before {
+    left: 100%;
+  }
+  .ds-tooltip[data-floating="top"]::after,
+  .ds-tooltip[data-floating="bottom"]::after {
+    height: var(--dsc-tooltip-arrow-size);
+    left: 0;
+    top: 100%;
+    width: 100%;
+  }
+  .ds-tooltip[data-floating="left"]::after,
+  .ds-tooltip[data-floating="right"]::after {
+    height: 100%;
+    left: 100%;
+    top: 0;
+    width: var(--dsc-tooltip-arrow-size);
+  }
+  .ds-tooltip[data-floating="bottom"]::after {
+    top: calc(var(--dsc-tooltip-arrow-size) * -1);
+  }
+  .ds-tooltip[data-floating="right"]::after {
+    left: calc(var(--dsc-tooltip-arrow-size) * -1);
   }
   @media (forced-colors: active) {
     .ds-tooltip {
