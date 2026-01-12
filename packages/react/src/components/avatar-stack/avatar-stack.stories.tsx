@@ -1,7 +1,13 @@
 import { BriefcaseIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
-import { Avatar, AvatarStack, Checkbox, Label, Tooltip } from '../';
+import {
+  Avatar,
+  EXPERIMENTAL_AvatarStack as AvatarStack,
+  Checkbox,
+  Label,
+  Tooltip,
+} from '../';
 
 type Story = StoryFn<typeof AvatarStack>;
 

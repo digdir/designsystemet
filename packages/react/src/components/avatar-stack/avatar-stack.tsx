@@ -2,14 +2,6 @@ import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { Children, forwardRef } from 'react';
 
-/* @TODO:
- * a11y
- * rightAligned?
- * vertical??
- * support Badge?
- * design for +n indicator
- */
-
 export type AvatarStackProps = {
   /**
    *  Adjusts gap-mask between avatars in the stack. Must be a valid css length value (px, em, rem, var(--ds-size-1) etc.)
@@ -42,7 +34,7 @@ export type AvatarStackProps = {
  * Use `AvatarStack` to constrain Avatars into a stack.
  *
  * @example
- * <AvatarStack>
+ * <EXPERIMENTAL_AvatarStack>
  *   <Avatar aria-label='name'>
  *     <img src={cat1} alt='' />
  *   </Avatar>
@@ -50,43 +42,44 @@ export type AvatarStackProps = {
  *     <BriefcaseIcon />
  *   </Avatar>
  *   <Avatar aria-label='name' initials='sm' />
- * </AvatarStack>
+ * </EXPERIMENTAL_AvatarStack>
  */
-export const AvatarStack = forwardRef<HTMLDivElement, AvatarStackProps>(
-  function AvatarStack(
-    {
-      className,
-      gap,
-      suffix,
-      avatarSize,
-      overlap,
-      expandable,
-      children,
-      ...rest
-    },
-    ref,
-  ) {
-    const style = {
-      ...(rest.style || {}),
-      '--dsc-avatar-stack-gap': gap !== undefined ? `${gap}` : undefined,
-      '--dsc-avatar-stack-size': avatarSize ? `${avatarSize}` : undefined,
-      '--dsc-avatar-stack-overlap':
-        overlap !== undefined ? `${overlap}` : undefined,
-      '--dsc-avatar-count':
-        expandable === 'fixed' ? Children.count(children) : undefined,
-    } as React.CSSProperties;
-    return (
-      <figure
-        tabIndex={expandable ? 0 : -1}
-        ref={ref}
-        className={cl(`ds-avatar-stack`, className)}
-        style={style}
-        data-expandable={expandable}
-        data-suffix={suffix}
-        {...rest}
-      >
-        {children}
-      </figure>
-    );
+export const EXPERIMENTAL_AvatarStack = forwardRef<
+  HTMLDivElement,
+  AvatarStackProps
+>(function AvatarStack(
+  {
+    className,
+    gap,
+    suffix,
+    avatarSize,
+    overlap,
+    expandable,
+    children,
+    ...rest
   },
-);
+  ref,
+) {
+  const style = {
+    ...(rest.style || {}),
+    '--dsc-avatar-stack-gap': gap !== undefined ? `${gap}` : undefined,
+    '--dsc-avatar-stack-size': avatarSize ? `${avatarSize}` : undefined,
+    '--dsc-avatar-stack-overlap':
+      overlap !== undefined ? `${overlap}` : undefined,
+    '--dsc-avatar-count':
+      expandable === 'fixed' ? Children.count(children) : undefined,
+  } as React.CSSProperties;
+  return (
+    <figure
+      tabIndex={expandable ? 0 : -1}
+      ref={ref}
+      className={cl(`ds-avatar-stack`, className)}
+      style={style}
+      data-expandable={expandable}
+      data-suffix={suffix}
+      {...rest}
+    >
+      {children}
+    </figure>
+  );
+});

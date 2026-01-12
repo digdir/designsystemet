@@ -1,6 +1,6 @@
 import {
   Avatar,
-  AvatarStack,
+  EXPERIMENTAL_AvatarStack as AvatarStack,
   Checkbox,
   Label,
   Tooltip,
@@ -10,7 +10,7 @@ import { BriefcaseIcon } from '@navikt/aksel-icons';
 export const Preview = () => (
   <AvatarStack>
     <Avatar aria-label=''>
-      <img src='https://placebeard.it/100x100' alt='' />
+      <img src='/img/component-docs/cats/cat1.webp' alt='' />
     </Avatar>
     <Avatar aria-label=''>
       <BriefcaseIcon />
