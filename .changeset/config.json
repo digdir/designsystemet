@@ -24,6 +24,7 @@
     "@web/www",
     "@web/themebuilder",
     "@web/storybook",
-    "@internal/components"
+    "@internal/components",
+    "@internal/digdir"
   ]
 }
