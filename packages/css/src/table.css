@@ -207,7 +207,7 @@
     &[data-hover] > tbody > tr:hover > :is(th, td) {
       background: var(--dsc-table-background--hover);
     }
-    & > tbody > tr:has(.\:click-delegate-active) {
+    & > tbody > tr:has(.\:click-delegate-hover):active {
       background: var(--dsc-table-background--active);
     }
     & > thead > tr > [aria-sort]:hover button {

@@ -5,6 +5,7 @@
 import { useEffect } from 'react';
 import { on, onHotReload } from './dom';
 
+const CLASS_HOVER = ':click-delegate-hover';
 const ATTR_CLICKDELEGATEFOR = 'data-clickdelegatefor';
 const CSS_CLICKDELEGATEFOR = `[${ATTR_CLICKDELEGATEFOR}]`;
 const SKIP =
@@ -30,8 +31,8 @@ let HOVER: Element | undefined;
 const handleMouseOver = (event: Event) => {
   const delegateTarget = getDelegateTarget(event);
   if (HOVER === delegateTarget) return; // No change
-  if (HOVER) HOVER.classList.remove(':click-delegate-hover');
-  if (delegateTarget) delegateTarget.classList.add(':click-delegate-hover');
+  if (HOVER) HOVER.classList.remove(CLASS_HOVER);
+  if (delegateTarget) delegateTarget.classList.add(CLASS_HOVER);
   HOVER = delegateTarget;
 };
 
