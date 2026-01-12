@@ -1,4 +1,4 @@
-import { handleClickDelegate } from './click-delegate';
+import { handleClickDelegateFor } from './click-delegatefor';
 
 // Create a mock MouseEvent-like object since isTrusted cannot be set in real browser tests
 const createMockEvent = (
@@ -40,8 +40,8 @@ describe('handleClickDelegate', () => {
 
   it('should delegate click to target element', () => {
     container.innerHTML = `
-      <div data-clickdelegate>
-        <a href="#test" data-clicktarget>Link</a>
+      <div data-clickdelegatefor="my-target">
+        <a href="#test" id="my-target">Link</a>
         <span class="content">Click me</span>
       </div>
     `;
@@ -51,15 +51,15 @@ describe('handleClickDelegate', () => {
     const clickSpy = vi.fn();
     link.addEventListener('click', clickSpy);
 
-    handleClickDelegate(createMockEvent(content, { button: 0 }));
+    handleClickDelegateFor(createMockEvent(content, { button: 0 }));
 
     expect(clickSpy).toHaveBeenCalled();
   });
 
   it('should not delegate click when clicking on interactive elements', () => {
     container.innerHTML = `
-      <div data-clickdelegate>
-        <a href="#test" data-clicktarget>Link</a>
+      <div data-clickdelegatefor="my-target">
+        <a href="#test" id="my-target">Link</a>
         <button>Button inside</button>
       </div>
     `;
@@ -69,15 +69,15 @@ describe('handleClickDelegate', () => {
     const linkClickSpy = vi.fn();
     link.addEventListener('click', linkClickSpy);
 
-    handleClickDelegate(createMockEvent(button, { button: 0 }));
+    handleClickDelegateFor(createMockEvent(button, { button: 0 }));
 
     expect(linkClickSpy).not.toHaveBeenCalled();
   });
 
   it('should not delegate click when clicking directly on the target', () => {
     container.innerHTML = `
-      <div data-clickdelegate>
-        <a href="#test" data-clicktarget>Link</a>
+      <div data-clickdelegatefor="my-target">
+        <a href="#test" id="my-target">Link</a>
       </div>
     `;
 
@@ -85,7 +85,7 @@ describe('handleClickDelegate', () => {
     const clickSpy = vi.fn();
     link.addEventListener('click', clickSpy);
 
-    handleClickDelegate(createMockEvent(link, { button: 0 }));
+    handleClickDelegateFor(createMockEvent(link, { button: 0 }));
 
     // Should not trigger an extra click since target contains event.target
     expect(clickSpy).not.toHaveBeenCalled();
@@ -93,8 +93,8 @@ describe('handleClickDelegate', () => {
 
   it('should not delegate right clicks (button: 2)', () => {
     container.innerHTML = `
-      <div data-clickdelegate>
-        <a href="#test" data-clicktarget>Link</a>
+      <div data-clickdelegatefor="my-target">
+        <a href="#test" id="my-target">Link</a>
         <span class="content">Click me</span>
       </div>
     `;
@@ -104,15 +104,15 @@ describe('handleClickDelegate', () => {
     const clickSpy = vi.fn();
     link.addEventListener('click', clickSpy);
 
-    handleClickDelegate(createMockEvent(content, { button: 2 }));
+    handleClickDelegateFor(createMockEvent(content, { button: 2 }));
 
     expect(clickSpy).not.toHaveBeenCalled();
   });
 
   it('should not delegate click to nested interactive elements', () => {
     container.innerHTML = `
-      <div data-clickdelegate>
-        <a href="#test" data-clicktarget>Link</a>
+      <div data-clickdelegatefor="my-target">
+        <a href="#test" id="my-target">Link</a>
         <input type="text" />
       </div>
     `;
@@ -122,15 +122,15 @@ describe('handleClickDelegate', () => {
     const clickSpy = vi.fn();
     link.addEventListener('click', clickSpy);
 
-    handleClickDelegate(createMockEvent(input, { button: 0 }));
+    handleClickDelegateFor(createMockEvent(input, { button: 0 }));
 
     expect(clickSpy).not.toHaveBeenCalled();
   });
 
   it('should work with button as target', () => {
     container.innerHTML = `
-      <div data-clickdelegate>
-        <button data-clicktarget>Click Target</button>
+      <div data-clickdelegatefor="my-target">
+        <button id="my-target">Click Target</button>
         <span class="content">Click me</span>
       </div>
     `;
@@ -140,14 +140,14 @@ describe('handleClickDelegate', () => {
     const clickSpy = vi.fn();
     button.addEventListener('click', clickSpy);
 
-    handleClickDelegate(createMockEvent(content, { button: 0 }));
+    handleClickDelegateFor(createMockEvent(content, { button: 0 }));
 
     expect(clickSpy).toHaveBeenCalled();
   });
 
   it('should not delegate when no clicktarget is present', () => {
     container.innerHTML = `
-      <div data-clickdelegate>
+      <div data-clickdelegatefor="my-target">
         <a href="#test">Link without target attribute</a>
         <span class="content">Click me</span>
       </div>
@@ -158,15 +158,15 @@ describe('handleClickDelegate', () => {
     const clickSpy = vi.fn();
     link.addEventListener('click', clickSpy);
 
-    handleClickDelegate(createMockEvent(content, { button: 0 }));
+    handleClickDelegateFor(createMockEvent(content, { button: 0 }));
 
     expect(clickSpy).not.toHaveBeenCalled();
   });
 
   it('should call stopImmediatePropagation when delegating', () => {
     container.innerHTML = `
-      <div data-clickdelegate>
-        <a href="#test" data-clicktarget>Link</a>
+      <div data-clickdelegatefor="my-target">
+        <a href="#test" id="my-target">Link</a>
         <span class="content">Click me</span>
       </div>
     `;
@@ -174,7 +174,7 @@ describe('handleClickDelegate', () => {
     const content = container.querySelector('.content')!;
     const event = createMockEvent(content, { button: 0 });
 
-    handleClickDelegate(event);
+    handleClickDelegateFor(event);
 
     expect(event.stopImmediatePropagation).toHaveBeenCalled();
   });
@@ -186,15 +186,15 @@ describe('handleClickDelegate', () => {
         .mockImplementation(() => null);
 
       container.innerHTML = `
-        <div data-clickdelegate>
-          <a href="https://example.com/page" rel="noopener" data-clicktarget>Link</a>
+        <div data-clickdelegatefor="my-target">
+          <a href="https://example.com/page" rel="noopener" id="my-target">Link</a>
           <span class="content">Click me</span>
         </div>
       `;
 
       const content = container.querySelector('.content')!;
 
-      handleClickDelegate(createMockEvent(content, { button: 1 }));
+      handleClickDelegateFor(createMockEvent(content, { button: 1 }));
 
       expect(windowOpenSpy).toHaveBeenCalledWith(
         'https://example.com/page',
@@ -211,15 +211,15 @@ describe('handleClickDelegate', () => {
         .mockImplementation(() => null);
 
       container.innerHTML = `
-        <div data-clickdelegate>
-          <a href="https://example.com/page" rel="noopener" data-clicktarget>Link</a>
+        <div data-clickdelegatefor="my-target">
+          <a href="https://example.com/page" rel="noopener" id="my-target">Link</a>
           <span class="content">Click me</span>
         </div>
       `;
 
       const content = container.querySelector('.content')!;
 
-      handleClickDelegate(
+      handleClickDelegateFor(
         createMockEvent(content, { button: 0, ctrlKey: true }),
       );
 
@@ -238,15 +238,15 @@ describe('handleClickDelegate', () => {
         .mockImplementation(() => null);
 
       container.innerHTML = `
-        <div data-clickdelegate>
-          <a href="https://example.com/page" rel="noopener" data-clicktarget>Link</a>
+        <div data-clickdelegatefor="my-target">
+          <a href="https://example.com/page" rel="noopener" id="my-target">Link</a>
           <span class="content">Click me</span>
         </div>
       `;
 
       const content = container.querySelector('.content')!;
 
-      handleClickDelegate(
+      handleClickDelegateFor(
         createMockEvent(content, { button: 0, metaKey: true }),
       );
 
@@ -277,18 +277,18 @@ describe('handleClickDelegate', () => {
     interactiveElements.forEach(({ tag, attrs, name }) => {
       it(`should not delegate click from ${name} element`, () => {
         container.innerHTML = `
-          <div data-clickdelegate>
-            <button data-clicktarget>Target</button>
+          <div data-clickdelegatefor="my-target">
+            <button id="my-target">Target</button>
             <${tag} ${attrs} class="interactive">Interactive</${tag}>
           </div>
         `;
 
-        const target = container.querySelector('[data-clicktarget]')!;
+        const target = container.querySelector('[id="my-target"]')!;
         const interactive = container.querySelector('.interactive')!;
         const clickSpy = vi.fn();
         target.addEventListener('click', clickSpy);
 
-        handleClickDelegate(createMockEvent(interactive, { button: 0 }));
+        handleClickDelegateFor(createMockEvent(interactive, { button: 0 }));
 
         expect(clickSpy).not.toHaveBeenCalled();
       });

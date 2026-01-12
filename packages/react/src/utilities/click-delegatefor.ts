@@ -5,12 +5,12 @@
 import { useEffect } from 'react';
 import { on, onHotReload } from './dom';
 
-const CLICKDELEGATE = '[data-clickdelegate]';
-const CLICKTARGET = '[data-clicktarget]';
+const ATTR_CLICKDELEGATEFOR = 'data-clickdelegatefor';
+const CSS_CLICKDELEGATEFOR = `[${ATTR_CLICKDELEGATEFOR}]`;
 const SKIP =
   'a,button,label,input,select,textarea,dialog,[role="button"],[popover],[contenteditable]';
 
-export const handleClickDelegate = (event: MouseEvent) => {
+export const handleClickDelegateFor = (event: MouseEvent) => {
   const isNewTab = event.button === 1 || event.metaKey || event.ctrlKey;
   const isUserLeftOrMiddleClick = event.isTrusted && event.button < 2;
   const delegateTarget = isUserLeftOrMiddleClick && getDelegateTarget(event);
@@ -36,23 +36,24 @@ const handleMouseOver = (event: Event) => {
 };
 
 const getDelegateTarget = ({ target: el }: Event) => {
-  const scope = el instanceof Element ? el.closest(CLICKDELEGATE) : null;
-  const target = scope?.querySelector(CLICKTARGET);
+  const scope = el instanceof Element ? el.closest(CSS_CLICKDELEGATEFOR) : null;
+  const id = scope?.getAttribute(ATTR_CLICKDELEGATEFOR);
+  const target = document.getElementById(id || '');
   const skip = target && (el as Element).closest(SKIP); // Ignore if interactive
 
   return ((!skip || skip === target) && target) || undefined;
 };
 
-// Temporary "useClickDelegate" workaround to avoid tree-shaking of click-delegate utility
-// When https://github.com/digdir/designsystemet/issues/4367 is solved, we can add onHotReload directly in this file without calling useClickDelegate from components
-export function useClickDelegate() {
+// Temporary "useClickDelegateFor" workaround to avoid tree-shaking of click-delegate utility
+// When https://github.com/digdir/designsystemet/issues/4367 is solved, we can add onHotReload directly in this file without calling useClickDelegateFor from components
+export function useClickDelegateFor() {
   useEffect(
     () =>
-      onHotReload('click-delegate', () => [
+      onHotReload('clickdelegatefor', () => [
         on(
           window,
           'click auxclick',
-          handleClickDelegate as EventListener,
+          handleClickDelegateFor as EventListener,
           true,
         ), // Use capture to ensure we run before other click listeners
         on(document, 'mouseover', handleMouseOver, { passive: true }), // Use passive for better performance

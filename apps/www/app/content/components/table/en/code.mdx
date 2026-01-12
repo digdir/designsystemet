@@ -50,7 +50,7 @@ This is especially useful in tables with pagination or other dynamically updated
 <Story story='FixedTable' />
 
 ### Clickable rows
-By adding `data-clickdelegate` on a `<tr>` and `data-clicktarget` on a `<Button>`, `<Link>` or `<Input type="checkout">`, you can "forward" clicks on the row down to the chosen interactive element.
+By adding `data-clickdelegatefor="ID"` on a `<tr>` and related `id="ID"` on a `<Button>`, `<Link>` or `<Input type="checkout">`, you can "forward" clicks on the row down to the chosen interactive element.
 
 <Story story='Clickable' />
 
@@ -86,14 +86,14 @@ Note that we apply `type="button"` to avoid the button behaving like a submit bu
 ```
 
 ### Clickable rows
-By adding `data-clickdelegate` on a `<tr>` and `data-clicktarget` on a `<Button>`, `<Link>` or `<Input type="checkout">`, you can "forward" clicks on the row down to the chosen interactive element.
+By adding `data-clickdelegatefor="ID"` on a `<tr>` and related `id="ID"` on a `<Button>`, `<Link>` or `<Input type="checkout">`, you can "forward" clicks on the row down to the chosen interactive element.
 
 ```html
 <table class="ds-table">
   <tbody>
-    <tr data-clickdelegate>
+    <tr data-clickdelegatefor="my-button">
       <td>
-        <button type="button" data-clicktarget>Header 1</button>
+        <button type="button" id="my-button">Header 1</button>
       </td>
     </tr>
   </tbody>

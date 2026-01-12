@@ -50,7 +50,7 @@ Det er spesielt nyttig i tabeller med paginering eller annen dynamisk oppdaterin
 <Story story='FixedTable' />
 
 ### Klikkbare rader
-Ved å legge `data-clickdelegate` på en `<tr>` og `data-clicktarget` på `<Button>`, `<Link>` eller `<Input type="checkout">`, kan du "videresende" klikk på rad til det valgte interaktive elementet.
+Ved å legge `data-clickdelegatefor="ID"` på en `<tr>` og tilhørende `id="ID"` på `<Button>`, `<Link>` eller `<Input type="checkout">`, kan du "videresende" klikk på rad til det valgte interaktive elementet.
 
 <Story story='Clickable' />
 
@@ -85,14 +85,14 @@ Merk at vi legger på `type="button"` for å unngå at knappen oppfører seg som
 ```
 
 ### Klikkbare rader
-Ved å legge `data-clickdelegate` på en `<tr>` og `data-clicktarget` på `<button>`, `<a>` eller `<input type="checkout">`, kan du "videresende" klikk på rad til det valgte interaktive elementet.
+Ved å legge `data-clickdelegatefor="ID"` på en `<tr>` og tilhørende `id="ID"` på `<Button>`, `<Link>` eller `<Input type="checkout">`, kan du "videresende" klikk på rad til det valgte interaktive elementet.
 
 ```html
 <table class="ds-table">
   <tbody>
-    <tr data-clickdelegate>
+    <tr data-clickdelegatefor="my-button">
       <td>
-        <button type="button" data-clicktarget>Header 1</button>
+        <button type="button" id="my-button">Header 1</button>
       </td>
     </tr>
   </tbody>

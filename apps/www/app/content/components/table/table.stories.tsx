@@ -434,18 +434,18 @@ export const Clickable = () => (
   <Table>
     <caption>Table caption</caption>
     <Table.Body>
-      <Table.Row data-clickdelegate>
+      <Table.Row data-clickdelegatefor='my-button'>
         <Table.Cell>
-          <Button data-clicktarget onClick={() => alert('clicked cell 1')}>
+          <Button id='my-button' onClick={() => alert('clicked cell 1')}>
             Cell 1
           </Button>
         </Table.Cell>
         <Table.Cell>Cell 2</Table.Cell>
         <Table.Cell>Cell 3</Table.Cell>
       </Table.Row>
-      <Table.Row data-clickdelegate>
+      <Table.Row data-clickdelegatefor='my-checkbox'>
         <Table.Cell>
-          <Input type='checkbox' aria-label='check me' data-clicktarget /> Cell
+          <Input type='checkbox' aria-label='check me' id='my-checkbox' /> Cell
           4
         </Table.Cell>
         <Table.Cell>Cell 5</Table.Cell>

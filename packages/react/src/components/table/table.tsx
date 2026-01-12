@@ -2,7 +2,7 @@ import cl from 'clsx/lite';
 import type { TableHTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
-import { useClickDelegate } from '../../utilities'; // TMP workaround to avoid tree-shaking
+import { useClickDelegateFor } from '../../utilities'; // TMP workaround to avoid tree-shaking
 
 export type TableProps = {
   /**
@@ -65,7 +65,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
   },
   ref,
 ) {
-  useClickDelegate(); // TMP workaround to avoid tree-shaking
+  useClickDelegateFor(); // TMP workaround to avoid tree-shaking
 
   return (
     <table

@@ -195,7 +195,7 @@
   /**
    * Clickable
    */
-  & > tbody > tr[data-clickdelegate] {
+  & > tbody > tr[data-clickdelegatefor] {
     cursor: pointer;
   }
 
