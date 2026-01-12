@@ -109,7 +109,7 @@ type SuggestionValueProps<T extends { multiple: boolean }> = {
    *
    * Using this makes the component controlled and it must be used in combination with `onSelectedChange`.
    */
-  selected?: SuggestionValue<T>;
+  selected?: SuggestionValue<T> | null;
   /**
    * Default selected item when uncontrolled
    */
