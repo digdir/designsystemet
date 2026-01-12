@@ -120,7 +120,7 @@ type SuggestionValueProps<T extends { multiple: boolean }> = {
   onSelectedChange?: (
     value: T['multiple'] extends true
       ? SuggestionItem[]
-      : SuggestionItem | undefined,
+      : SuggestionItem | null,
   ) => void;
 };
 
