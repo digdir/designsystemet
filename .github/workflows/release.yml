@@ -43,7 +43,7 @@ jobs:
           echo "name=${NAME}" >> $GITHUB_OUTPUT
       - name: Create Snapshot Release
         run: |
-          pnpm run version-packages --snapshot "${{ steps.snapshot.outputs.name }}"
+          changeset version --snapshot "${{ steps.snapshot.outputs.name }}"
           echo '---'
           echo 'Detected Changes:'
           git diff
