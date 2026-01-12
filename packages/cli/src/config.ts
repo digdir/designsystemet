@@ -183,6 +183,7 @@ const themeSchema = z
     typography: z
       .object({
         fontFamily: z.string().meta({ description: 'Sets the font-family for this theme' }),
+        secondaryFontFamily: z.string().meta({ description: 'Sets the font-family for secondary typography' }).optional(),
       })
       .describe('Defines the typography for a given theme')
       .optional(),
