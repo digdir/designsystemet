@@ -1,16 +1,42 @@
 <Story story="Preview" />
 
 **Bruk `AvatarStack` når**
+- En gruppe personer eller enheter skal vises sammen, men det er begrenset plass.
 
 **Unngå `AvatarStack` når**
+- Det alltid er bare én avatar som skal vises.
 
 
 ## Eksempel
 
 ### Størrelser
+Størrelse på avatarer i en `AvatarStack` styres via `avatarSize` og kan oppgis i hvilket som helst gyldig css størrelses-enhet for maksimum fleksibilitet.
+<Story story="DataSize" layout='block' />
+
+### Gap
+Det synlige mellomrommet mellom avatarene kan tilpasses med `gap` 
+<Story story="Gap" layout='block' />
+
+### Expandable
+I noen tilfeller kan det være ønskelig å utvide stabelen ved hover og fokus. Denne funksjonaliteten er av som standard.
+<Story story="Expandable" layout='block' />
 
 ### Varianter
+`AvatarStack` støtter både rund og kvadratisk variant men bare en variant per stack.
+<Story story="ShapeVariants" layout='block' />
+
+### Indikere avatarer som ikke vises
+Når det er flere avatarer enn det er plass til å vise i stacken, er det to ulike måter å indikere dette på.
+<Story story="AdditionalAvatars" layout='block' />
+
+### Tooltip og lenker
+Avatarer i AvatarStack kan ha tooltip og være lenker, men vær obs på tilgjengelighetshensyn.
+<Story story="WithTooltipAndLink" layout='block' />
 
 ## Retningslinjer
+`AvatarStack` bør brukes med forsiktighet, da det kan være utfordrende for brukere å identifisere individuelle avatarer i en tettpakket stabel. Sørg for at bruken av `AvatarStack` gir mening i konteksten av brukeropplevelsen og at det ikke går på bekostning av tilgjengelighet eller brukervennlighet.
+
+AvatarStack støtter ikke "wrapping" over flere linjer. Dersom det er flere avatarer enn det er plass til i stacken, kan man bruke `suffix` eller en ekstra `Avatar` med `+xx` for å indikere antall skjulte avatarer.
 
 ## tekst
+`aria-label` eller `aria-description` kan brukes på `AvatarStack` for å gi kontekst til skjermlesere om hva stabelen representerer, for eksempel "Deltakere i møtet" eller "Medlemmer av teamet".
