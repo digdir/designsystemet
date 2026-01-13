@@ -1,7 +1,8 @@
 import cat1 from '@assets/img/cats/Cat 1.jpg';
 import cat5 from '@assets/img/cats/Cat 5.jpg';
 import type { Meta, StoryFn } from '@storybook/react-vite';
-import themeConfig from '../../../../cli/configs/digdir.config.json';
+import { severityColors, themeColors } from '../../../stories/constants';
+
 import { Card, Heading, Link, Paragraph } from '../';
 
 import type { CardProps } from './';
@@ -24,12 +25,6 @@ export default {
   },
 } satisfies Meta;
 
-const colorVariants = [
-  ...Object.keys(themeConfig.themes.digdir.colors.main),
-  ...Object.keys(themeConfig.themes.digdir.colors.support),
-  'neutral',
-];
-
 export const Preview: Story = (args) => (
   <Card {...args} style={{ maxWidth: '320px' }}>
     <Heading>Card</Heading>
@@ -50,7 +45,7 @@ const variants = ['default', 'tinted'];
 export const Variants: StoryFn<typeof Card> = () => (
   <>
     {variants.map((variant) =>
-      colorVariants.map((color) => (
+      [...themeColors, ...severityColors].map((color) => (
         <Card
           key={`${variant}-${color}`}
           data-variant={variant}

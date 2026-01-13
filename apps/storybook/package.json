@@ -19,23 +19,22 @@
   "devDependencies": {
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
-    "@digdir/designsystemet-theme": "workspace:^",
-    "@navikt/aksel-icons": "^7.35.2",
-    "@storybook/addon-a11y": "^9.1.17",
-    "@storybook/addon-docs": "^9.1.17",
-    "@storybook/addon-themes": "^9.1.17",
-    "@storybook/addon-vitest": "^9.1.17",
-    "@storybook/react-vite": "^9.1.17",
+    "@navikt/aksel-icons": "^7.37.0",
+    "@storybook/addon-a11y": "^10.1.11",
+    "@storybook/addon-docs": "^10.1.11",
+    "@storybook/addon-themes": "^10.1.11",
+    "@storybook/addon-vitest": "^10.1.11",
+    "@storybook/react-vite": "^10.1.11",
     "@types/ramda": "^0.31.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
-    "@vitest/browser": "4.0.15",
+    "@vitest/browser": "4.0.16",
     "axe-playwright": "^2.2.2",
     "playwright": "^1.57.0",
     "ramda": "^0.32.0",
     "react-docgen-typescript": "^2.4.0",
-    "storybook": "^9.1.17",
-    "storybook-addon-pseudo-states": "^9.1.17",
-    "vitest": "4.0.15"
+    "storybook": "^10.1.11",
+    "storybook-addon-pseudo-states": "^10.1.11",
+    "vitest": "4.0.16"
   }
 }

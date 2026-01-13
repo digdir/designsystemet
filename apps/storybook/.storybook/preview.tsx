@@ -1,7 +1,7 @@
 import './style.css';
 /* We use relative imports to get HMR updates when developing */
 import '../../../packages/css/src/index.css';
-import '../../../packages/theme/brand/digdir.css';
+import '../../../packages/css/theme/designsystemet.css';
 
 import { DocsContainer } from '@storybook/addon-docs/blocks';
 import type { Preview } from '@storybook/react-vite';
@@ -80,7 +80,7 @@ const preview: Preview = {
       },
     },
     viewport: {
-      viewports,
+      options: viewports,
     },
     chromatic: {
       // Disable snapshots by default
@@ -94,7 +94,7 @@ const preview: Preview = {
       test: 'error',
     },
     backgrounds: {
-      disable: true,
+      disabled: true,
     },
     html: {
       root: '[data-storybook-decorator]', // default: #root

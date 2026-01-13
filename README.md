@@ -1,6 +1,6 @@
 <br>
 <div align="center">
-    <img alt="Designsystemet logo" src="apps/storybook/assets/img/logo.svg">
+  <img alt="Designsystemet logo" src="apps/www/public/img/Logotest.svg" width="200" />
 </div>
 
 <h1 align="center">
@@ -31,8 +31,6 @@ Our goal is to create consistent and user-friendly experiences in digital soluti
 [`@digdir/designsystemet-css`](https://www.npmjs.com/package/@digdir/designsystemet-css) - CSS implementation of Designsystemet components. Used by the React package. Contains a default theme.
 
 [`@digdir/designsystemet-react`](https://www.npmjs.com/package/@digdir/designsystemet-react) - React implementation of Designsystemet components.
-
-[`@digdir/designsystemet-theme`](https://www.npmjs.com/package/@digdir/designsystemet-theme) - Digdir themes for Designsystemet.
 
 [`@digdir/designsystemet-types`](https://www.npmjs.com/package/@digdir/designsystemet-types) - Types for Designsystemet.
 

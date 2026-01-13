@@ -1,8 +1,8 @@
 {
-  "altinn": {
+  "digdir": {
     "font-family": {
       "$type": "fontFamilies",
-      "$value": "IBM Plex Mono"
+      "$value": "Inter"
     },
     "font-weight": {
       "medium": {
@@ -11,7 +11,7 @@
       },
       "semibold": {
         "$type": "fontWeights",
-        "$value": "SemiBold"
+        "$value": "Semi bold"
       },
       "regular": {
         "$type": "fontWeights",
