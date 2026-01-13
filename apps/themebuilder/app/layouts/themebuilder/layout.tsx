@@ -1,3 +1,4 @@
+import { ColorTokensTable } from '@internal/components';
 import cl from 'clsx/lite';
 import { ColorContrasts } from '~/_components/color-contrasts/color-contrasts';
 import { ColorPreview } from '~/_components/color-preview/color-preview';
@@ -67,7 +68,13 @@ export const ThemePages = () => {
           data-color-scheme={colorScheme}
           hidden={!(tab === 'variables')}
         >
-          Variable page is under construction.
+          <ColorTokensTable
+            colorNames={[
+              ...colors.main.flatMap((color) => color.name),
+              ...colors.support.flatMap((color) => color.name),
+              'neutral',
+            ]}
+          />
         </div>
       );
     default:
