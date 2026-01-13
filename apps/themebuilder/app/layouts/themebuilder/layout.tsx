@@ -1,10 +1,10 @@
-import { ColorTokensTable } from '@internal/components';
 import cl from 'clsx/lite';
 import { ColorContrasts } from '~/_components/color-contrasts/color-contrasts';
 import { ColorPreview } from '~/_components/color-preview/color-preview';
 import { ColorTokens } from '~/_components/color-tokens/color-tokens';
 import { Colors } from '~/_components/colors/colors';
 import { OverviewComponents } from '~/_components/overview-components/overview-components';
+import { OverviewVariables } from '~/_components/overview-variables/overview-variables';
 import { useThemebuilder } from '../../routes/themebuilder/_utils/use-themebuilder';
 import classes from './layout.module.css';
 
@@ -68,13 +68,7 @@ export const ThemePages = () => {
           data-color-scheme={colorScheme}
           hidden={!(tab === 'variables')}
         >
-          <ColorTokensTable
-            colorNames={[
-              ...colors.main.flatMap((color) => color.name),
-              ...colors.support.flatMap((color) => color.name),
-              'neutral',
-            ]}
-          />
+          <OverviewVariables />
         </div>
       );
     default:

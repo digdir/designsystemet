@@ -2,7 +2,7 @@ import { Heading, Table } from '@digdir/designsystemet-react';
 import * as R from 'ramda';
 import type { HTMLAttributes } from 'react';
 import { useTranslation } from 'react-i18next';
-import { capitalizeString } from '~/_utils/string-helpers';
+import { capitalizeString } from '../../_utils';
 import {
   FontFamily,
   FontSize,

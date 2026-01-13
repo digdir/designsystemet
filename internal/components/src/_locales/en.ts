@@ -61,12 +61,11 @@ export default {
     semantic: 'Semantic tokens',
     'no-results': 'No results found',
     table: {
-      variable: 'Variable',
-      value: 'Value',
-      name: 'Name',
+      caption: 'Color variables',
+      description:
+        'The table provides an overview of color variables in the design system for the selected `data-color` color.',
+      name: 'Variable name',
       preview: 'Preview',
-      light: 'Light',
-      dark: 'Dark',
     },
   },
 } satisfies typeof no;

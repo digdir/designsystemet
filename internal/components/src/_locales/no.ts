@@ -1,3 +1,5 @@
+import { description } from '../color-modal/color-modal.module.css';
+
 export default {
   footer: {
     about: 'Om designsystemet',
@@ -58,12 +60,11 @@ export default {
     semantic: 'Semantiske',
     'no-results': 'Ingen resultater funnet',
     table: {
-      name: 'Navn',
-      value: 'Verdi',
-      variable: 'Variabel',
+      caption: 'Farge variabler',
+      description:
+        'Tabellen viser en oversikt over fargevariabler i designsystemet for valgt `data-color` farge.',
+      name: 'Variabel navn',
       preview: 'Forhåndsvisning',
-      light: 'Lys',
-      dark: 'Mørk',
     },
   },
 };

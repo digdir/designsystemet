@@ -1,8 +1,4 @@
-import {
-  type ColorScheme,
-  type CssColor,
-  generateColorSchemes,
-} from '@digdir/designsystemet';
+import type { ColorScheme, CssColor } from '@digdir/designsystemet';
 import {
   Avatar,
   Button,
@@ -18,10 +14,7 @@ import {
 } from '@digdir/designsystemet-react';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import {
-  generateColorVars,
-  generateNeutralColorVars,
-} from '~/_utils/generate-color-vars';
+import { styleColorVars } from '~/_utils/generate-color-vars';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import classes from './overview-components.module.css';
 import { SettingsCard } from './settings-card/settings-card';
@@ -60,6 +53,7 @@ export const OverviewComponents = ({
   const ref = useRef<HTMLDivElement>(null);
   const { colors } = useThemebuilder();
 
+  const neutralColor = colors?.neutral[0]?.hex || '';
   const [previewColor, setPreviewColor] = useState(
     colors?.main[0].hex || color,
   );
@@ -87,27 +81,6 @@ export const OverviewComponents = ({
     }
   }, [borderRadius]);
 
-  const style = () => {
-    if (!color) return {};
-
-    const vars = {} as Record<string, string>;
-
-    /* neutral */
-    Object.assign(
-      vars,
-      generateNeutralColorVars(generateColorSchemes('#1E2B3C'), colorScheme),
-    );
-    Object.assign(
-      vars,
-      generateColorVars(
-        generateColorSchemes(previewColor as CssColor),
-        colorScheme,
-      ),
-    );
-
-    return vars;
-  };
-
   useEffect(() => {
     setPreviewColor(color);
   }, [color]);
@@ -120,6 +93,11 @@ export const OverviewComponents = ({
       setPreviewColor(colors.main[0].hex || color);
     }
   }, [colors]);
+
+  const style = {
+    ...styleColorVars(neutralColor as CssColor, colorScheme, 'neutral'),
+    ...styleColorVars(previewColor as CssColor, colorScheme),
+  };
 
   return (
     <>
@@ -159,7 +137,7 @@ export const OverviewComponents = ({
         </>
       ) : null}
 
-      <div ref={ref} style={style()}>
+      <div ref={ref} style={style}>
         <div className={classes.inner}>
           <div className={classes.card}>
             <Heading data-size='2xs'>{t('overview.login-title')}</Heading>

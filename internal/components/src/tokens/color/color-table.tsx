@@ -1,17 +1,13 @@
-import {
-  Field,
-  Heading,
-  Label,
-  Select,
-  Table,
-} from '@digdir/designsystemet-react';
+import { Heading, Paragraph, Table } from '@digdir/designsystemet-react';
 import { type HTMLAttributes, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { capitalizeString } from '../../_utils';
+import { ClipboardButton } from '../../clipboard-button/clipboard-button';
 import colorTokens from '../design-tokens/color.json';
-import { ColorDark, ColorLight } from './color-previews';
+import classes from './color.module.css';
+import { ColorLight } from './color-previews';
 
-const _colorStructure = colorTokens.primary;
+const colorStructure = colorTokens.primary;
 
 type TokenTableProps = {
   colorNames: string[];
@@ -19,60 +15,43 @@ type TokenTableProps = {
 
 export const ColorTokensTable = ({ colorNames }: TokenTableProps) => {
   const { t } = useTranslation();
-  const [selectedColor, setSelectedColor] =
-    useState<(typeof colorNames)[number]>('neutral');
+  const [_selectedColor] = useState<(typeof colorNames)[number]>(
+    colorNames[0] || 'neutral',
+  );
 
   return (
-    <div data-color={selectedColor}>
-      <Field>
-        <Label>{t('token-preview.color.select-label')}</Label>
-        <Select
-          value={selectedColor || ''}
-          onChange={(e) =>
-            setSelectedColor(e.target.value as (typeof colorNames)[number])
-          }
-        >
-          {colorNames.map((color) => (
-            <Select.Option key={color} value={color}>
-              {color}
-            </Select.Option>
-          ))}
-        </Select>
-      </Field>
-      <Table data-color='neutral' data-colors={colorNames} key={selectedColor}>
-        <caption>
-          <Heading level={4} data-size='md'>
-            {capitalizeString(selectedColor)}
-          </Heading>
-        </caption>
-        <Table.Head>
-          <Table.Row>
-            <Table.HeaderCell>{t('token-preview.table.name')}</Table.HeaderCell>
-            <Table.HeaderCell>
-              {t('token-preview.table.light')}
-            </Table.HeaderCell>
-            <Table.HeaderCell>{t('token-preview.table.dark')}</Table.HeaderCell>
+    <Table data-size='sm'>
+      <caption>
+        <Heading level={4} data-size='md'>
+          {t('token-preview.table.caption')}
+        </Heading>
+        <Paragraph data-size='sm'>
+          {t('token-preview.table.description')}
+        </Paragraph>
+      </caption>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell>{t('token-preview.table.name')}</Table.HeaderCell>
+          <Table.HeaderCell>
+            {t('token-preview.table.preview')}
+          </Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        {colorStructure.map(({ variable }) => (
+          <Table.Row key={variable}>
+            <Table.Cell>
+              <span className={classes.colorVariable}>
+                <code>{variable}</code>
+                <ClipboardButton value={variable} />
+              </span>
+            </Table.Cell>
+            <Table.Cell>
+              <ColorLight colorVariable={`var(${variable})`} />
+            </Table.Cell>
           </Table.Row>
-        </Table.Head>
-        <Table.Body>
-          {_colorStructure.map((token) => {
-            const name = token.variable;
-            return (
-              <Table.Row key={name}>
-                <Table.Cell>
-                  <code>{name}</code>
-                </Table.Cell>
-                <Table.Cell>
-                  <ColorLight colorVariable={`var(${name})`} />
-                </Table.Cell>
-                <Table.Cell>
-                  <ColorDark colorVariable={`var(${name})`} />
-                </Table.Cell>
-              </Table.Row>
-            );
-          })}
-        </Table.Body>
-      </Table>
-    </div>
+        ))}
+      </Table.Body>
+    </Table>
   );
 };
