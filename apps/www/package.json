@@ -45,7 +45,7 @@
     "@types/express-serve-static-core": "^5.1.0",
     "@types/hast": "^3.0.4",
     "@types/morgan": "^1.9.10",
-    "@types/node": "^22.19.3",
+    "@types/node": "^24.10.7",
     "@types/ramda": "^0.31.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
