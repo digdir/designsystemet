@@ -3,7 +3,7 @@ import { Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import * as R from 'ramda';
 import { forwardRef } from 'react';
-import classes from './color.module.css';
+import classes from './color-button.module.css';
 
 type ColorButtonProps = {
   colorName: ColorNames;
