@@ -10,7 +10,7 @@ import cl from 'clsx/lite';
 import { Fragment } from 'react';
 import { useColorModalContext } from '~/_utils/color-modal-context';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
-import { ColorButton } from '../color/color';
+import { ColorButton } from '../color-button/color-button';
 import classes from './color-group.module.css';
 
 type ColorGroupProps = {
