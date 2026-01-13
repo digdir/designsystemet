@@ -72,12 +72,15 @@
     }
 
     /*we have to override the default font-size for the two ways you can add initials to avatar */
-    &[data-initials]:empty::before {
-      font-size: var(--_font-size);
-    }
+    &:not([data-size]) {
+      --dsc-avatar-font-size: var(--_font-size);
+      /*     &[data-initials]:empty::before {
+        font-size: var(--_font-size);
+      }
 
-    > span {
-      font-size: var(--_font-size);
+      & > span {
+        font-size: var(--_font-size);
+      } */
     }
     &:has(:focus-visible),
     &:focus-visible {
