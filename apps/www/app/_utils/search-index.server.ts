@@ -60,8 +60,12 @@ function stripMdxSyntax(content: string): string {
   text = text.replace(/<[A-Z][^>]*>[\s\S]*?<\/[A-Z][^>]*>/g, '');
   text = text.replace(/<[A-Z][^>]*\/>/g, '');
 
-  // Remove HTML comments
-  text = text.replace(/<!--[\s\S]*?-->/g, '');
+  // Remove HTML comments (repeat until fully removed to avoid incomplete multi-character sanitization)
+  let prevText: string;
+  do {
+    prevText = text;
+    text = text.replace(/<!--[\s\S]*?-->/g, '');
+  } while (text !== prevText);
 
   // Remove code blocks
   text = text.replace(/```[\s\S]*?```/g, '');
