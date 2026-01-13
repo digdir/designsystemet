@@ -62,7 +62,7 @@ export default {
     table: {
       caption: 'Fargevariabler',
       description:
-        'Tabellen viser en oversikt over fargevariabler i designsystemet for valgt farge.',
+        'Tabellen viser en forhåndsvisning av fargevariabler i Designsystemet for valgt farge.',
       name: 'Variabel navn',
       preview: 'Forhåndsvisning',
     },
