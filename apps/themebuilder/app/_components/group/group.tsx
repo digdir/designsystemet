@@ -21,7 +21,7 @@ type GroupProps = {
   namespace: string;
 };
 
-export const Group = ({
+export const ColorGroup = ({
   header,
   colorNames,
   names,
