@@ -1,4 +1,4 @@
-import type { CssColor } from '@digdir/designsystemet';
+import type { ColorScheme, CssColor } from '@digdir/designsystemet';
 import {
   Avatar,
   Button,
@@ -38,18 +38,25 @@ const users = [
   },
 ];
 
-export const OverviewComponents = () => {
+type OverviewComponentsProps = {
+  colorScheme?: ColorScheme;
+  color?: CssColor;
+  borderRadius?: number;
+};
+
+export const OverviewComponents = ({
+  colorScheme = 'light',
+  color = '#0062BA',
+  borderRadius = 4,
+}: OverviewComponentsProps) => {
   const { t } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
-  const {
-    colors,
-    colorScheme,
-    baseBorderRadius: borderRadius,
-  } = useThemebuilder();
+  const { colors } = useThemebuilder();
 
-  const color = colors?.main[0]?.hex || '';
-  const neutralColor = colors?.neutral[0]?.hex || '';
-  const [previewColor, setPreviewColor] = useState(color);
+  const neutralColor = colors?.neutral[0].hex || '#F5F7FA';
+  const [previewColor, setPreviewColor] = useState(
+    colors?.main[0].hex || color,
+  );
 
   useEffect(() => {
     // we need to set these properties on the preview element because they are immutable on :root
@@ -83,7 +90,7 @@ export const OverviewComponents = () => {
     const allColors = [...colors.main, ...colors.support];
     /* if select colors is gone, set to default */
     if (!allColors.find((c) => c.hex === previewColor)) {
-      setPreviewColor(colors.main[0].hex || color);
+      setPreviewColor(color);
     }
   }, [colors]);
 
