@@ -10,21 +10,23 @@ import classes from './layout.module.css';
 export const ThemePages = () => {
   const { colorScheme, colors, baseBorderRadius, tab } = useThemebuilder();
 
-  return (
-    <>
-      <div
-        className={classes.basicPanel}
-        data-color-scheme={colorScheme}
-        hidden={!(tab === 'overview')}
-      >
-        <OverviewComponents
-          colorScheme={colorScheme}
-          color={colors.main[0]?.colors.light[11].hex}
-          borderRadius={baseBorderRadius}
-        />
-      </div>
-
-      {tab === 'colorsystem' ? (
+  switch (tab) {
+    case 'overview':
+      return (
+        <div
+          className={classes.basicPanel}
+          data-color-scheme={colorScheme}
+          hidden={!(tab === 'overview')}
+        >
+          <OverviewComponents
+            colorScheme={colorScheme}
+            color={colors.main[0]?.colors.light[11].hex}
+            borderRadius={baseBorderRadius}
+          />
+        </div>
+      );
+    case 'colorsystem':
+      return (
         <>
           <div
             className={cl(classes.basicPanel, classes.colorsContainer)}
@@ -57,7 +59,18 @@ export const ThemePages = () => {
             <ColorContrasts />
           </div>
         </>
-      ) : null}
-    </>
-  );
+      );
+    case 'variables':
+      return (
+        <div
+          className={classes.basicPanel}
+          data-color-scheme={colorScheme}
+          hidden={!(tab === 'variables')}
+        >
+          Variable page is under construction.
+        </div>
+      );
+    default:
+      return null;
+  }
 };

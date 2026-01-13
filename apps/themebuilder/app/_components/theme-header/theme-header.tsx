@@ -4,6 +4,7 @@ import { ChevronLeftIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import { useRouteLoaderData, useSearchParams } from 'react-router';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
+import type { ThemebuilderTabs } from '~/routes/themebuilder/themebuilder';
 import classes from './theme-header.module.css';
 
 export const ThemeHeader = () => {
@@ -14,10 +15,11 @@ export const ThemeHeader = () => {
 
   const tabs: {
     name: string;
-    value: 'overview' | 'colorsystem';
+    value: ThemebuilderTabs;
   }[] = [
     { name: t('tabs.overview'), value: 'overview' },
     { name: t('tabs.colorsystem'), value: 'colorsystem' },
+    { name: t('tabs.variables'), value: 'variables' },
   ];
 
   return (

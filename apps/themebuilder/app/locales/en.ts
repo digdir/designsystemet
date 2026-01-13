@@ -65,6 +65,7 @@ export default {
     colorsystem: 'Colour system',
     colors: 'Colours',
     dimensions: 'Dimensions',
+    variables: 'Variables',
   },
   colorPreview: {
     title: 'See your colours in use',

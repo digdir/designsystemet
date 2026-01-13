@@ -64,6 +64,7 @@ export default {
     colorsystem: 'Fargesystem',
     colors: 'Farger',
     dimensions: 'Dimensjoner',
+    variables: 'Variabler',
   },
   colorPreview: {
     title: 'Se fargene dine i bruk',

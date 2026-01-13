@@ -31,6 +31,8 @@ const MAIN_COLORS = toQueryString(THEME.main);
 const SUPPORT_COLORS = toQueryString(THEME.support);
 const NEUTRAL_COLOR = THEME.neutral;
 
+export type ThemebuilderTabs = 'overview' | 'colorsystem' | 'variables';
+
 export const loader = async ({
   params: { lang },
   request,
@@ -94,7 +96,7 @@ export const loader = async ({
     overrides: overridesMap,
     colorScheme: (urlParams.get('appearance') || 'light') as ColorScheme,
     baseBorderRadius: parseInt(urlParams.get('border-radius') || '4', 10),
-    tab: urlParams.get('tab') || 'overview',
+    tab: (urlParams.get('tab') || 'overview') as unknown as ThemebuilderTabs,
     lang,
     metadata: generateMetadata({
       title: t('meta.title'),
