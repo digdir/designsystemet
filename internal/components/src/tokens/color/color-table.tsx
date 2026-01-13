@@ -1,7 +1,6 @@
 import { Heading, Paragraph, Table } from '@digdir/designsystemet-react';
 import { type HTMLAttributes, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { capitalizeString } from '../../_utils';
 import { ClipboardButton } from '../../clipboard-button/clipboard-button';
 import colorTokens from '../design-tokens/color.json';
 import classes from './color.module.css';
