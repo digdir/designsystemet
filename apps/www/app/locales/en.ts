@@ -210,33 +210,6 @@ export default {
     copy: 'Copy',
     reset: 'Reset',
   },
-  'token-preview': {
-    size: {
-      description:
-        'The value of size variables is set by the `data-size` attribute.',
-      'select-label': 'Select size (data-size)',
-    },
-    color: {
-      description:
-        'The value of color variables is set by the `data-color` attribute.',
-      'select-label': 'Select color (data-color)',
-    },
-    'search-in-design-tokens': 'Search in design tokens',
-    'search-input-aria-label':
-      'Search for variable names in CSS for design tokens',
-    colors: 'Colors',
-    typography: 'Typography',
-    semantic: 'Semantic tokens',
-    'no-results': 'No results found',
-    table: {
-      variable: 'Variable',
-      value: 'Value',
-      name: 'Name',
-      preview: 'Preview',
-      light: 'Light',
-      dark: 'Dark',
-    },
-  },
   toc: {
     title: 'On this page',
     feedback: {
