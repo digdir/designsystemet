@@ -1,6 +1,6 @@
 import { Divider } from '@digdir/designsystemet-react';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
-import { Scale } from '../scale/scale';
+import { Scale } from '../scale/color-scale';
 import classes from './colors.module.css';
 
 export const Colors = () => {

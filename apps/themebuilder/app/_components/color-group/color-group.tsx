@@ -13,7 +13,7 @@ import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import { Color as ColorPreview } from '../color/color';
 import classes from './group.module.css';
 
-type GroupProps = {
+type ColorGroupProps = {
   header: string;
   colorNames: ColorNames[];
   colorScale: ThemeInfo;
@@ -27,7 +27,7 @@ export const ColorGroup = ({
   names,
   colorScale,
   namespace,
-}: GroupProps) => {
+}: ColorGroupProps) => {
   const { colorScheme } = useThemebuilder();
   const { openColorModal } = useColorModalContext();
 
