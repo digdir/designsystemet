@@ -2,7 +2,7 @@ import { AppearanceToggle } from '~/_components/appearance-toggle/appearance-tog
 import { Sidebar } from '~/_components/sidebar/sidebar';
 import { ThemeHeader } from '~/_components/theme-header/theme-header';
 import { ColorModalProvider } from '~/_utils/color-modal-context';
-import { ThemePages } from './_components/theme-pages';
+import { ThemePages } from '../../layouts/themebuilder/layout';
 import classes from './page.module.css';
 import 'react-color-palette/css';
 import type { ColorScheme, CssColor } from '@digdir/designsystemet';
