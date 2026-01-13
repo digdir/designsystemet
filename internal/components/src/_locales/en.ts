@@ -63,7 +63,7 @@ export default {
     table: {
       caption: 'Color variables',
       description:
-        'The table provides an overview of color variables in the design system for the selected `data-color` color.',
+        'The table provides an overview of color variables in Designsystemet for the selected color.',
       name: 'Variable name',
       preview: 'Preview',
     },

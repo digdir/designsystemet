@@ -1,5 +1,5 @@
 import { Heading, Paragraph, Table } from '@digdir/designsystemet-react';
-import { type HTMLAttributes, useState } from 'react';
+import type { HTMLAttributes } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ClipboardButton } from '../../clipboard-button/clipboard-button';
 import colorTokens from '../design-tokens/color.json';
@@ -9,14 +9,11 @@ import { ColorLight } from './color-previews';
 const colorStructure = colorTokens.primary;
 
 type TokenTableProps = {
-  colorNames: string[];
+  color: string;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const ColorTokensTable = ({ colorNames }: TokenTableProps) => {
+export const ColorTokensTable = ({ color }: TokenTableProps) => {
   const { t } = useTranslation();
-  const [_selectedColor] = useState<(typeof colorNames)[number]>(
-    colorNames[0] || 'neutral',
-  );
 
   return (
     <Table data-size='sm'>
@@ -27,6 +24,10 @@ export const ColorTokensTable = ({ colorNames }: TokenTableProps) => {
         <Paragraph data-size='sm'>
           {t('token-preview.table.description')}
         </Paragraph>
+        <span data-size='sm' className={classes.codeCopy}>
+          <code>data-color="{color}"</code>
+          <ClipboardButton value={`data-color="${color}"`} />
+        </span>
       </caption>
       <Table.Head>
         <Table.Row>
@@ -40,7 +41,7 @@ export const ColorTokensTable = ({ colorNames }: TokenTableProps) => {
         {colorStructure.map(({ variable }) => (
           <Table.Row key={variable}>
             <Table.Cell>
-              <span className={classes.colorVariable}>
+              <span className={classes.codeCopy}>
                 <code>{variable}</code>
                 <ClipboardButton value={variable} />
               </span>

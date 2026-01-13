@@ -1,6 +1,6 @@
 import type { CssColor } from '@digdir/designsystemet';
 import { Divider, Field, Label, Select } from '@digdir/designsystemet-react';
-import { ColorTokensTable } from '@internal/components';
+import { ClipboardButton, ColorTokensTable } from '@internal/components';
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { styleColorVars } from '~/_utils/generate-color-vars';
@@ -12,11 +12,11 @@ export const OverviewVariables = () => {
   const { colors, colorScheme } = useThemebuilder();
 
   const neutralColor = colors?.neutral[0]?.hex || '';
-  const [previewColor, setPreviewColor] = useState(colors?.main[0].hex || '');
+  const [previewColor, setPreviewColor] = useState(colors?.main[0] || '');
 
   const style = {
     ...styleColorVars(neutralColor as CssColor, colorScheme, 'neutral'),
-    ...styleColorVars(previewColor as CssColor, colorScheme),
+    ...styleColorVars(previewColor.hex as CssColor, colorScheme),
   };
 
   return (
@@ -26,18 +26,18 @@ export const OverviewVariables = () => {
           <Field>
             <Label>{t('overview.select-color')}</Label>
             <Select
-              value={previewColor}
+              value={previewColor.hex}
               onChange={(v) => {
                 if (!colors) return;
                 const allColors = [...colors.main, ...colors.support];
                 /* find the selected color */
-                let selected = allColors.find(
+                let selectedColor = allColors.find(
                   (c) => c.hex === v.target.value,
-                )?.hex;
-                if (!selected) {
-                  selected = colors.main[0].hex;
+                );
+                if (!selectedColor) {
+                  selectedColor = colors.main[0];
                 }
-                setPreviewColor(selected as CssColor);
+                setPreviewColor(selectedColor);
               }}
             >
               {colors.main.map((color) => (
@@ -58,13 +58,7 @@ export const OverviewVariables = () => {
       ) : null}
 
       <div ref={ref} style={style}>
-        <ColorTokensTable
-          colorNames={[
-            ...colors.main.flatMap((color) => color.name),
-            ...colors.support.flatMap((color) => color.name),
-            'neutral',
-          ]}
-        />
+        <ColorTokensTable color={previewColor.name} />
       </div>
     </>
   );

@@ -60,9 +60,9 @@ export default {
     semantic: 'Semantiske',
     'no-results': 'Ingen resultater funnet',
     table: {
-      caption: 'Farge variabler',
+      caption: 'Fargevariabler',
       description:
-        'Tabellen viser en oversikt over fargevariabler i designsystemet for valgt `data-color` farge.',
+        'Tabellen viser en oversikt over fargevariabler i designsystemet for valgt farge.',
       name: 'Variabel navn',
       preview: 'Forhåndsvisning',
     },
