@@ -1,4 +1,4 @@
-import type { ColorScheme, CssColor } from '@digdir/designsystemet';
+import type { CssColor } from '@digdir/designsystemet';
 import {
   Avatar,
   Button,
@@ -38,25 +38,18 @@ const users = [
   },
 ];
 
-type OverviewComponentsProps = {
-  colorScheme: ColorScheme;
-  color: CssColor;
-  borderRadius?: number;
-};
-
-export const OverviewComponents = ({
-  colorScheme = 'light',
-  color = '#0062BA',
-  borderRadius = 4,
-}: OverviewComponentsProps) => {
+export const OverviewComponents = () => {
   const { t } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
-  const { colors } = useThemebuilder();
+  const {
+    colors,
+    colorScheme,
+    baseBorderRadius: borderRadius,
+  } = useThemebuilder();
 
+  const color = colors?.main[0]?.hex || '';
   const neutralColor = colors?.neutral[0]?.hex || '';
-  const [previewColor, setPreviewColor] = useState(
-    colors?.main[0].hex || color,
-  );
+  const [previewColor, setPreviewColor] = useState(color);
 
   useEffect(() => {
     // we need to set these properties on the preview element because they are immutable on :root

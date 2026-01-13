@@ -9,7 +9,7 @@ import { useThemebuilder } from '../../routes/themebuilder/_utils/use-themebuild
 import classes from './layout.module.css';
 
 export const ThemePages = () => {
-  const { colorScheme, colors, baseBorderRadius, tab } = useThemebuilder();
+  const { colorScheme, tab } = useThemebuilder();
 
   switch (tab) {
     case 'overview':
@@ -19,11 +19,7 @@ export const ThemePages = () => {
           data-color-scheme={colorScheme}
           hidden={!(tab === 'overview')}
         >
-          <OverviewComponents
-            colorScheme={colorScheme}
-            color={colors.main[0]?.colors.light[11].hex}
-            borderRadius={baseBorderRadius}
-          />
+          <OverviewComponents />
         </div>
       );
     case 'colorsystem':

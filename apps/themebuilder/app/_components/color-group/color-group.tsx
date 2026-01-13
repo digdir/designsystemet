@@ -10,7 +10,7 @@ import cl from 'clsx/lite';
 import { Fragment } from 'react';
 import { useColorModalContext } from '~/_utils/color-modal-context';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
-import { Color as ColorPreview } from '../color/color';
+import { ColorButton } from '../color/color';
 import classes from './color-group.module.css';
 
 type ColorGroupProps = {
@@ -54,7 +54,7 @@ export const ColorGroup = ({
           return (
             <Fragment key={index + 'fragment' + namespace}>
               <RovingFocusItem value={namespace + number} asChild>
-                <ColorPreview
+                <ColorButton
                   color={hex}
                   colorName={colorName}
                   aria-label={`Se mer om ${namespace} ${color?.displayName}`}
