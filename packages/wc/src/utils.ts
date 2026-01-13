@@ -24,7 +24,7 @@ export function debounce<T extends unknown[]>(
 /**
  * attr
  * @description Utility to quickly get, set and remove attributes
- * @param el The Element to use as EventTarget
+ * @param el The Element to read/write attributes from
  * @param name The attribute name to get, set or remove, or a object to set multiple attributes
  * @param value A valid attribute value or null to remove attribute
  */
@@ -37,6 +37,17 @@ export const attr = (
   if (value === null) el.removeAttribute(name);
   else if (el.getAttribute(name) !== value) el.setAttribute(name, value);
   return null;
+};
+
+/**
+ * attrRequire
+ * @description Warn if element is missing attribute
+ * @param el The Element to read/write attributes from
+ * @param ...names The attribute name(s) check
+ */
+export const attrRequiredWarning = (el: Element, ...names: string[]) => {
+  for (const name of names)
+    el.hasAttribute(name) || console.warn(el, `is missing a ${name} attribute`);
 };
 
 /**
@@ -104,20 +115,20 @@ export const onMutation = (
   options: MutationObserverInit,
 ) => {
   let queue = 0;
-  const onFrame = () => setTimeout(onTimer, 200); // Use both requestAnimationFrame and setTimeout to debounce and only run when visible
   const onTimer = () => {
     if (!isBrowser()) return cleanup(); // If using JSDOM, the document might have been removed
     callback(observer);
     observer.takeRecords(); // Clear records to avoid running callback multiple times
     queue = 0;
   };
+  const onFrame = debounce(onTimer, 200); // Use both requestAnimationFrame and setTimeout to debounce and only run when visible
   const cleanup = () => observer?.disconnect?.();
   const observer = new MutationObserver(() => {
     if (!queue) queue = requestAnimationFrame(onFrame); // requestAnimationFrame only runs when page is not visible
   });
 
   observer.observe(elem, options);
-  callback(observer); // Initial run
+  onFrame(); // Initial run
   return cleanup;
 };
 
@@ -155,3 +166,14 @@ export const customElements = {
     window.customElements.get(name) ||
     window.customElements.define(name, instance),
 };
+
+/**
+ * useId
+ * @return A generated unique ID
+ */
+let id = 0;
+const hash = `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 5)}`;
+export function useId(el: Element) {
+  if (!el.id) el.id = `${hash}${++id}`;
+  return el.id;
+}

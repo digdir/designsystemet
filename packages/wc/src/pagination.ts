@@ -1,14 +1,23 @@
-import { attr, customElements, DSElement, onMutation } from '../../utils';
+import {
+  attr,
+  attrRequiredWarning,
+  customElements,
+  DSElement,
+  onMutation,
+} from './utils';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'ds-pagination': DsPaginationElement;
+    'ds-pagination': DSPaginationElement;
   }
 }
 
 const CURRENT = 'data-current';
+const HREF = 'data-href';
+const LABEL = 'aria-label';
 const TOTAL = 'data-total';
 
+// Expose pagination logic if wanting to do custom rendering (i.e. in React/Vue/etc)
 export const pagination = ({ current = 1, total = 10, show = 7 }) => ({
   prev: current > 1 ? current - 1 : 0,
   next: current < total ? current + 1 : 0,
@@ -19,40 +28,45 @@ export const pagination = ({ current = 1, total = 10, show = 7 }) => ({
   })),
 });
 
-export class DsPaginationElement extends DSElement {
-  _items?: HTMLCollectionOf<HTMLAnchorElement>; // Using underscore instead of private fields for backwards compatibility
+export class DSPaginationElement extends DSElement {
   _unmutate?: () => void;
 
   static get observedAttributes() {
     return [CURRENT, TOTAL]; // Using ES2015 syntax for backwards compatibility
   }
   connectedCallback() {
-    this._items = this.getElementsByTagName('a'); // Speed up by caching HTMLCollection
-    this._unmutate = onMutation(this, () => this.render(), {
+    attrRequiredWarning(this, LABEL, CURRENT, TOTAL);
+    this._unmutate = onMutation(this, this.render.bind(this), {
       childList: true,
       subtree: true,
     });
-
-    if (!attr(this, CURRENT))
-      console.warn(this, `is missing a ${CURRENT} attribute`);
-    if (!attr(this, TOTAL))
-      console.warn(this, `is missing a ${TOTAL} attribute`);
   }
   disconnectedCallback() {
     this._unmutate?.();
     this._unmutate = undefined;
   }
   render() {
+    const items = this.querySelectorAll('button,a');
+    const href = attr(this, HREF);
     const { next, prev, pages } = pagination({
       current: parseInt(attr(this, CURRENT) || '1', 10),
       total: parseInt(attr(this, TOTAL) || '10', 10),
-      show: this._items?.length || 7,
+      show: items.length - 2,
     });
-    console.log(next, prev, pages);
+
+    items.forEach((item, i) => {
+      const page = i ? (items[i + 1] ? pages[i - 1]?.page : next) : prev; // First is prev, last is next
+      attr(item, 'aria-current', pages[i - 1]?.current ? 'true' : null);
+      attr(item, 'aria-disabled', page ? null : 'true');
+      attr(item, 'aria-hidden', page ? null : 'true');
+      attr(item, 'data-page', `${page}`);
+      attr(item, 'tabindex', page ? null : '-1');
+      if (href) attr(item, 'href', href.replace('$page', `${page}`));
+    });
   }
 }
 
-customElements.define('ds-pagination', DsPaginationElement);
+customElements.define('ds-pagination', DSPaginationElement);
 
 function getSteps(now: number, max: number, show = Number.POSITIVE_INFINITY) {
   const offset = (show - 1) / 2;

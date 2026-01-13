@@ -5,7 +5,7 @@ import {
   onHotReload,
   onMutation,
   QUICK_EVENT,
-} from '../../utils';
+} from './utils';
 
 let SOURCE: Element | undefined;
 let HOVER_TIMER: number | ReturnType<typeof setTimeout> = 0;
@@ -19,15 +19,15 @@ const TIP =
     popover: 'manual',
   });
 
-const handleAriaAttributes = () => {
+function handleAriaAttributes() {
   for (const el of document.querySelectorAll('[data-tooltip]')) {
     const hasText = el.textContent?.trim();
     const tooltip = attr(el, 'data-tooltip');
     attr(el, hasText ? 'aria-description' : 'aria-label', tooltip); // TODO: Warn if non-interactive element lacks tabindex="0"?
   }
-};
+}
 
-const handleInterest = ({ type, target }: Event) => {
+function handleInterest({ type, target }: Event) {
   clearTimeout(HOVER_TIMER);
 
   if (!TIP || target === TIP) return; // Allow tooltip to be hovered, following https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus
@@ -46,13 +46,13 @@ const handleInterest = ({ type, target }: Event) => {
   TIP.showPopover();
   TIP.dispatchEvent(new CustomEvent('ds-toggle-source', { detail: source })); // Since showPopover({ source }) is not supported in all browsers yet
   SOURCE = source;
-};
+}
 
-const handleClose = (event?: Partial<ToggleEvent>) => {
+function handleClose(event?: Partial<ToggleEvent>) {
   if (!event) SOURCE = undefined;
   else if (event.target === TIP && event.newState === 'closed')
     SKIP_TIMER = setTimeout(handleClose, SKIP_DELAY);
-};
+}
 
 onHotReload('tooltip', () => [
   on(document, 'blur focus mouseover', handleInterest, QUICK_EVENT),

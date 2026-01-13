@@ -17,7 +17,7 @@
   <body data-color-scheme="dark" style="padding:20px;font-family: Inter;">
     <h1 class="ds-heading">Test webcomponents</h1>
 
-    <ds-breadcrumbs class="ds-breadcrumbs" data-label="Du er her:">
+    <ds-breadcrumbs class="ds-breadcrumbs" aria-label="Du er her:">
       <a href="#none" aria-label="Tilbake til Nivå 3">
         Nivå 3
       </a>
@@ -29,22 +29,53 @@
       </ol>
     </ds-breadcrumbs>
 
-    <ds-pagination class="ds-pagination" aria-label="Du er her:" data-current="1" data-total="100">
+    <ds-errorsummary class="ds-error-summary">
+      <h2>Oppsummering</h2>
+      <ul>
+        <li><a href="#none">Feil 1</a></li>
+        <li><a href="#none">Feil 2</a></li>
+        <li><a href="#none">Feil 3</a></li>
+      </ul>
+    </ds-errorsummary>
+
+    <ds-pagination class="ds-pagination" aria-label="Du er her:" data-href="?page=$page" data-current="1" data-total="100">
       <ol>
-        <li><a href="#none">&larr;</a></li>
-        <li><a href="#none"></a></li>
-        <li><a href="#none"></a></li>
-        <li><a href="#none"></a></li>
-        <li><a href="#none"></a></li>
-        <li><a href="#none"></a></li>
-        <li><a href="#none">&rarr;</a></li>
+        <li><a class="ds-button" data-variant="tertiary" href="#none"></a></li>
+        <li><a class="ds-button" data-variant="tertiary" href="#none"></a></li>
+        <li><a class="ds-button" data-variant="tertiary" href="#none"></a></li>
+        <li><a class="ds-button" data-variant="tertiary" href="#none"></a></li>
+        <li><a class="ds-button" data-variant="tertiary" href="#none"></a></li>
+        <li><a class="ds-button" data-variant="tertiary" href="#none"></a></li>
+        <li><a class="ds-button" data-variant="tertiary" href="#none"></a></li>
       </ol>
     </ds-pagination>
 
     <ds-field class="ds-field">
       <label>Label</label>
       <input type="text" placeholder="Placeholder" class="ds-input" />
+      <div class="ds-validation-message" data-field="validation">
+        Dette er ein feilmelding
+      </div>
     </ds-field>
+
+    <fieldset class="ds-togglegroup" data-togglegroup="Tekstjustering">
+      <label class="ds-button">
+        <input type="radio" name="alignment" value="left" checked />
+        Venstestilt
+      </label>
+      <label class="ds-button">
+        <input type="radio" name="alignment" value="center" />
+        Midtstilt
+      </label>
+      <label class="ds-button">
+        <input type="radio" name="alignment" value="right" />
+        Høyrestilt
+      </label>
+      <label class="ds-button">
+        <input type="radio" name="alignment" value="justify" />
+        Utfallende
+      </label>
+    </fieldset>
 
     <br>
     <br>

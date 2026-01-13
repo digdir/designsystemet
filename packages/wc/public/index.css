@@ -271,7 +271,8 @@
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
-  .ds-validation-message:before {
+  .ds-validation-message::before {
+    animation: ds-validation-message 1ms;
     background: currentcolor;
     content: '';
     height: var(--dsc-validation-message-icon-size);
@@ -299,6 +300,7 @@
     --dsc-validation-message-icon-url: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M3.25 4A.75.75 0 0 1 4 3.25h16a.75.75 0 0 1 .75.75v16a.75.75 0 0 1-.75.75H4a.75.75 0 0 1-.75-.75zM11 7.75a1 1 0 1 1 2 0 1 1 0 0 1-2 0m-1.25 3a.75.75 0 0 1 .75-.75H12a.75.75 0 0 1 .75.75v4.75h.75a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1 0-1.5h.75v-4h-.75a.75.75 0 0 1-.75-.75'/%3E%3C/svg%3E");
     --dsc-validation-message-color: var(--ds-color-info-text-subtle);
   }
+  @keyframes ds-validation-message { from { opacity: 0 } }
 }
 @layer ds.components {
   [data-size]:is(.ds-avatar, .ds-heading, .ds-paragraph, .ds-spinner) {
@@ -1953,6 +1955,16 @@
     min-width: var(--ds-size-12);
     text-align: center;
   }
+
+  .ds-pagination > :is(ol, ul) > li:not(:first-child, :last-child) > [data-page]:empty { 
+    &::before { content: attr(data-page) }
+    &[data-page="0"]::before { content: '...' }
+    &[data-page="0"] {
+      color: inherit;
+      pointer-events: none;
+      text-decoration: none;
+    }
+  }
 }
 @layer ds.components {
   .ds-skeleton {
@@ -2063,6 +2075,9 @@
   }
 }
 @layer ds.components {
+  .ds-error-summary:not([hidden]) {
+    display: block;
+  }
   .ds-error-summary {
     --dsc-errorsummary-background: var(--ds-color-danger-surface-tinted);
     --dsc-errorsummary-border-radius: var(--ds-border-radius-md);
@@ -2093,6 +2108,12 @@
   .ds-error-summary li:last-of-type {
     margin-bottom: 0;
   }
+
+  .ds-error-summary::after {
+    content: '';
+    animation: ds-error-summary 1ms;
+  }
+  @keyframes ds-error-summary { from { opacity: 0 } }
 }
 @layer ds.components {
   .ds-toggle-group,
@@ -2131,44 +2152,46 @@
     outline: var(--dsc-togglegroup-border-width) var(--dsc-togglegroup-border-style) var(--dsc-togglegroup-border-color);
     outline-offset: calc(var(--dsc-togglegroup-border-width) * -1);
   }
-  [data-variant='secondary']:is(.ds-toggle-group, .ds-togglegroup) button {
+  [data-variant='secondary']:is(.ds-toggle-group, .ds-togglegroup) label {
     --dsc-button-color: var(--ds-color-text-default);
     --dsc-button-color--hover: var(--ds-color-text-default);
     border-radius: inherit;
     min-height: calc(var(--dsc-togglegroup-button-size) + var(--dsc-togglegroup-border-width) * 2);
   }
-  [data-variant='secondary']:is(.ds-toggle-group, .ds-togglegroup) button[aria-checked='true'] {
+  [data-variant='secondary']:is(.ds-toggle-group, .ds-togglegroup) label:has(input:checked) {
     background-color: var(--ds-color-surface-default);
     isolation: isolate;
   }
-  :is(.ds-toggle-group, .ds-togglegroup) button {
+  :is(.ds-toggle-group, .ds-togglegroup) input {
+    position: absolute;
+    opacity: 0;
+  }
+  :is(.ds-toggle-group, .ds-togglegroup) label {
     border-radius: calc(var(--dsc-togglegroup-border-radius) - var(--dsc-togglegroup-border-width));
     min-height: var(--dsc-togglegroup-button-size);
     min-width: -moz-fit-content;
     min-width: fit-content;
   }
-  :is(:is(.ds-toggle-group, .ds-togglegroup) button):not([aria-checked='true']) {
+  :is(.ds-toggle-group, .ds-togglegroup) label:not(:has(input:checked)) {
+    --dsc-button-background: transparent;
     --dsc-button-color: var(--ds-color-text-default);
     --dsc-button-color--hover: var(--ds-color-text-default);
   }
-  :is(:is(.ds-toggle-group, .ds-togglegroup) button):focus-visible {
+  :is(.ds-toggle-group, .ds-togglegroup) label:has(input:focus-visible) {
     box-shadow: var(--_ds--focus, var(--dsc-focus-boxShadow-inset));
     outline: var(--_ds--focus, var(--dsc-focus-outline));
     outline-offset: calc(var(--_ds--focus, var(--ds-border-width-focus)) * -1);
   }
-  :is(:is(.ds-toggle-group, .ds-togglegroup) button):focus-visible * {
-    --_ds--focus: ;
-  }
-  [data-icon]:is(:is(.ds-toggle-group, .ds-togglegroup) button) {
+  [data-icon]:is(:is(.ds-toggle-group, .ds-togglegroup) label) {
     height: var(--dsc-togglegroup-button-size);
     width: var(--dsc-togglegroup-button-size);
   }
   @media (forced-colors: active) {
-    [aria-checked='true']:is(:is(.ds-toggle-group, .ds-togglegroup) button) {
+    [aria-checked='true']:is(:is(.ds-toggle-group, .ds-togglegroup) label) {
       background: ButtonText;
       color: CanvasText;
     }
-    [aria-checked='true']:is(:is(.ds-toggle-group, .ds-togglegroup) button) svg {
+    [aria-checked='true']:is(:is(.ds-toggle-group, .ds-togglegroup) label) svg {
       color: CanvasText;
     }
   }

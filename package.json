@@ -31,7 +31,7 @@
     "update:template": "pnpm --filter @digdir/designsystemet update:template",
     "update:theme-digdir": "pnpm --filter @digdir/designsystemet update:theme-digdir",
     "update:theme": "pnpm build:cli && pnpm --filter @digdir/designsystemet-theme update:theme",
-    "wc": "vite --config=packages/wc/vite.config.ts"
+    "wc": "vite --config=packages/wc/vite.config.ts --port=5174"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.10",

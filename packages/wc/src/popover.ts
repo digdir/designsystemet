@@ -1,12 +1,12 @@
+import type { ComputePositionConfig, MiddlewareState } from '@floating-ui/dom';
 import {
   autoUpdate,
   computePosition,
   flip,
   offset,
   shift,
-  // @ts-expect-error Using CDN during POC
-} from 'https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.7.4/+esm';
-import { attr, on, onHotReload, QUICK_EVENT } from '../../utils';
+} from '@floating-ui/dom';
+import { attr, on, onHotReload, QUICK_EVENT } from './utils';
 
 const PLACEMENT = 'data-placement';
 const FLOATING = 'data-floating';
@@ -19,7 +19,7 @@ type DSToggleEvent = Partial<ToggleEvent> & {
   source?: HTMLElement;
 };
 
-const handleToggle = (event: DSToggleEvent) => {
+function handleToggle(event: DSToggleEvent) {
   const { newState, target, source = event.detail } = event;
   if (!isDSFloating(target)) return;
   if (newState === 'closed') return POPOVERS.get(target)?.(); // Cleanup on close
@@ -32,41 +32,42 @@ const handleToggle = (event: DSToggleEvent) => {
       shift(),
       flip({ fallbackAxisSideDirection: 'start' }),
       offset(
-        ({ elements: { floating } }: any) =>
+        ({ elements: { floating } }: MiddlewareState) =>
           parseFloat(getComputedStyle(floating, '::before').height) || 0,
       ),
       arrowPseudo(),
     ],
-  };
+  } as ComputePositionConfig;
   const unfloat = autoUpdate(source, target, async () => {
     if (!source?.isConnected) return POPOVERS.get(target)?.(); // Cleanup if source element is removed
     const { x, y } = await computePosition(source, target, options);
     target.style.translate = `${x}px ${y}px`;
   });
   POPOVERS.set(target, () => POPOVERS.delete(target) && unfloat()); // TODO: Could we use CSS anchor positioning when 'anchorName' in document.documentElement.style?
-};
+}
 
 // Make manual to prevent closing when clicking scrollbar
-const handleBeforeToggle = ({ target: el, newState }: Partial<ToggleEvent>) =>
-  newState === 'open' && isDSFloating(el) && attr(el, 'popover', 'manual');
+function handleBeforeToggle({ target: el, newState }: Partial<ToggleEvent>) {
+  if (newState === 'open' && isDSFloating(el)) attr(el, 'popover', 'manual');
+}
 
 // Since we use manual popover, we also manually need to close on outside click
-const handleClickOutside = ({ target: el }: Event) => {
+function handleClickOutside({ target: el }: Event) {
   for (const [popover] of POPOVERS)
     if (!popover.contains(el as Node)) {
       const id = popover.id;
       const trigger = `button[popovertarget="${id}"],button[commandfor="${id}"]`;
       if (!(el as Element)?.closest?.(trigger)) popover.hidePopover();
     }
-};
+}
 
-const handleKeydown = (event: Partial<KeyboardEvent>) => {
+function handleKeydown(event: Partial<KeyboardEvent>) {
   const last = event.key === 'Escape' && Array.from(POPOVERS.keys()).pop();
   if (last) last.hidePopover();
   if (last) event.preventDefault?.(); // Prevent minimize fullscreen Safari
-};
+}
 
-onHotReload('floating-popover', () => [
+onHotReload('popover', () => [
   on(document, 'beforetoggle', handleBeforeToggle, QUICK_EVENT), // Use capture since toggle does not bubble
   on(document, 'click', handleClickOutside, QUICK_EVENT), // Close open popovers on outside click
   on(document, 'keydown', handleKeydown),
@@ -81,7 +82,7 @@ const isDSFloating = (el?: EventTarget | null): el is HTMLElement =>
 
 const arrowPseudo = () => ({
   name: 'arrowPseudo',
-  fn(data: any) {
+  fn(data: MiddlewareState) {
     const target = data.elements.floating;
     const source = data.rects.reference;
     const x = `${Math.round(source.width / 2 + source.x - data.x)}px`;

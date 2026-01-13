@@ -1,0 +1,28 @@
+{
+  "name": "@digdir/designsystemet-web",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Javascript for Designsystemet",
+  "author": "Designsystemet team",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digdir/designsystemet.git"
+  },
+  "homepage": "https://github.com/digdir/designsystemet/tree/main/packages/web",
+  "license": "MIT",
+  "scripts": {
+    "start": "vite --config=./vite.config.ts --port=5174"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "dependencies": {
+    "@floating-ui/dom": "^1.7.4",
+    "@u-elements/u-combobox": "^1.0.5",
+    "@u-elements/u-datalist": "^1.0.14",
+    "@u-elements/u-details": "^0.1.5",
+    "@u-elements/u-progress": "^0.0.6",
+    "@u-elements/u-tabs": "^0.0.12"
+  }
+}

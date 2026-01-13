@@ -1,0 +1,65 @@
+import {
+  attr,
+  attrRequiredWarning,
+  customElements,
+  DSElement,
+  debounce,
+  on,
+  onMutation,
+} from './utils';
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'ds-breadcrumbs': DSBreadcrumbsElement;
+  }
+}
+
+const LABEL = 'aria-label';
+const LABEL_HIDDEN = 'data-label'; // Used to hide label on mobile when only showing back link
+
+export class DSBreadcrumbsElement extends DSElement {
+  _items?: HTMLCollectionOf<HTMLAnchorElement>; // Using underscore instead of private fields for backwards compatibility
+  _unresize?: () => void;
+  _unmutate?: () => void;
+
+  static get observedAttributes() {
+    return [LABEL]; // Using ES2015 syntax for backwards compatibility
+  }
+  connectedCallback() {
+    if (!attr(this, LABEL_HIDDEN)) attrRequiredWarning(this, LABEL); // aria-label can allready have been hidden by attributeChangedCallback
+    const render = debounce(() => this.attributeChangedCallback(), 100);
+    this._items = this.getElementsByTagName('a'); // Speed up by caching HTMLCollection
+    this._unresize = on(window, 'resize', render);
+    this._unmutate = onMutation(this, render, {
+      childList: true,
+      subtree: true,
+    });
+  }
+  attributeChangedCallback() {
+    const last = this._items?.[this._items.length - 1];
+    const lastInList = last?.parentElement === this ? null : last;
+    const isListHidden = !lastInList?.offsetHeight;
+    const labelHidden = attr(this, LABEL_HIDDEN);
+    const label = attr(this, LABEL);
+
+    // Only labels if needed to prevent infinite attribute update loop
+    attr(this, 'role', isListHidden ? null : 'navigation');
+    if (isListHidden && !labelHidden && label) {
+      attr(this, LABEL_HIDDEN, label);
+      attr(this, LABEL, null);
+    } else if (!isListHidden && labelHidden && !label) {
+      attr(this, LABEL, labelHidden);
+      attr(this, LABEL_HIDDEN, null);
+    }
+
+    for (const item of this._items || [])
+      attr(item, 'aria-current', item === lastInList ? 'page' : null);
+  }
+  disconnectedCallback() {
+    this._unresize?.();
+    this._unmutate?.();
+    this._unresize = this._unmutate = this._items = undefined;
+  }
+}
+
+customElements.define('ds-breadcrumbs', DSBreadcrumbsElement);
