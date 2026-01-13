@@ -23,7 +23,7 @@ export const Preview = () => (
 );
 
 export const Playground = () => {
-  const [expandable, setExpandable] = useState<undefined | boolean>(undefined);
+  const [expandable, setExpandable] = useState<undefined | true>(undefined);
   const [square, setSquare] = useState(false);
   const [size, setSize] = useState(64);
   const [overlap, setOverlap] = useState(50);
