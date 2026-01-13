@@ -2,7 +2,7 @@ import type { ThemeInfo } from '@digdir/designsystemet/color';
 import { RovingFocusRoot } from '@digdir/designsystemet-react';
 import { ColorGroup } from '../color-group/color-group';
 
-import classes from './scale.module.css';
+import classes from './color-scale.module.css';
 
 type ScaleProps = {
   colorScale: ThemeInfo;

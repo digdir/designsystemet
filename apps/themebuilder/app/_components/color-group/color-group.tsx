@@ -11,7 +11,7 @@ import { Fragment } from 'react';
 import { useColorModalContext } from '~/_utils/color-modal-context';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 import { Color as ColorPreview } from '../color/color';
-import classes from './group.module.css';
+import classes from './color-group.module.css';
 
 type ColorGroupProps = {
   header: string;
