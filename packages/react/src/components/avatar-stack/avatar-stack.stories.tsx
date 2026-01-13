@@ -34,7 +34,7 @@ export const Preview: Story = (args) => (
     </Avatar>
     <Avatar aria-label='' initials='sm' />
     <Avatar aria-label=''>md</Avatar>
-    <Avatar aria-label='' initials='lg' />
+    <Avatar aria-label='' initials='ON' />
   </AvatarStack>
 );
 
@@ -368,7 +368,7 @@ export const WithTooltipAndLink: Story = (args) => (
 );
 
 export const Playground: Story = () => {
-  const [expandable, setExpandable] = useState<undefined | boolean>(undefined);
+  const [expandable, setExpandable] = useState<undefined | true>(undefined);
   const [square, setSquare] = useState(false);
   const [size, setSize] = useState(64);
   const [overlap, setOverlap] = useState(50);

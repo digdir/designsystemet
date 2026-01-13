@@ -25,9 +25,9 @@ export type AvatarStackProps = {
   /**
    *  Expand on hover to show full avatars.
    *  'fixed': AvatarStack physical width does not change when avatars are expanded.
-   *  @default false
+   *  @default undefined
    */
-  expandable?: 'fixed' | boolean;
+  expandable?: 'fixed' | true;
 } & HTMLAttributes<HTMLDivElement>;
 
 /**
