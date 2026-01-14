@@ -71,7 +71,9 @@ export const EXPERIMENTAL_AvatarStack = forwardRef<
   } as React.CSSProperties;
   return (
     <figure
-      tabIndex={expandable ? 0 : -1}
+      tabIndex={
+        rest.tabIndex !== undefined ? rest.tabIndex : expandable ? 0 : -1
+      }
       ref={ref}
       className={cl(`ds-avatar-stack`, className)}
       style={style}
