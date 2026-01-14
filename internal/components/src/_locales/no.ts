@@ -1,5 +1,3 @@
-import { description } from '../color-modal/color-modal.module.css';
-
 export default {
   footer: {
     about: 'Om designsystemet',
@@ -62,7 +60,7 @@ export default {
     table: {
       caption: 'Fargevariabler',
       description:
-        'Tabellen viser en forhåndsvisning av fargevariabler i Designsystemet for valgt farge.',
+        'Tabellen under viser hvilke fargevariabler som vil blir endret når `data-color` blir endret.',
       name: 'Variabel navn',
       preview: 'Forhåndsvisning',
     },

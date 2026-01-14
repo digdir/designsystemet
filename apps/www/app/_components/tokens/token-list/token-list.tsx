@@ -5,11 +5,10 @@ import {
   Paragraph,
   Search,
 } from '@digdir/designsystemet-react';
-import { useDebounceCallback } from '@internal/components';
+import { ColorTokensTable, useDebounceCallback } from '@internal/components';
 import { Fragment, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { capitalizeString } from '~/_utils/string-helpers';
-import { ColorTokensTable } from '../color/color-table';
 import colorTokens from '../design-tokens/color.json';
 import semanticTokens from '../design-tokens/semantic.json';
 import sizeTokens from '../design-tokens/size.json';
@@ -81,19 +80,13 @@ export const TokenList = () => {
 
       <div className={classes.tokens}>
         {colorTokensCount.length > 0 && (
-          <>
-            <Heading level={3} data-size='lg'>
-              {t('token-preview.colors')}
-            </Heading>
-            <Paragraph>{t('token-preview.color.description')}</Paragraph>
-            <div className={classes.section}>
-              <ColorTokensTable colorTokens={filteredColorTokens} />
-            </div>
-          </>
+          <div className={classes.section}>
+            <ColorTokensTable />
+          </div>
         )}
 
         {filteredTypographyTokens.length > 0 &&
-          filteredTypographyTokens.map(([name, tokens]) => {
+          filteredTypographyTokens.map(([name, _tokens]) => {
             return (
               <Fragment key={name}>
                 <Heading level={3} data-size='lg'>
@@ -103,7 +96,7 @@ export const TokenList = () => {
                   <Heading level={4} data-size='md'>
                     {capitalizeString(name)}
                   </Heading>
-                  <TypographyTable tokens={[...tokens, ...typeScaleTokens]} />
+                  {/* <TypographyTable tokens={[...tokens, ...typeScaleTokens]} /> */}
                 </div>
               </Fragment>
             );
@@ -115,8 +108,8 @@ export const TokenList = () => {
             </Heading>
             <Paragraph>{t('token-preview.size.description')}</Paragraph>
             <div className={classes.section}>
-              <SemanticTokensTable tokens={sizeTokens} />
-              <SemanticTokensTable tokens={filteredSemanticTokens} />
+              {/* <SemanticTokensTable tokens={sizeTokens} />
+              <SemanticTokensTable tokens={filteredSemanticTokens} /> */}
             </div>
           </>
         )}

@@ -58,7 +58,7 @@ export const OverviewVariables = () => {
       ) : null}
 
       <div ref={ref} style={style}>
-        <ColorTokensTable />
+        <ColorTokensTable withPreview />
       </div>
     </>
   );

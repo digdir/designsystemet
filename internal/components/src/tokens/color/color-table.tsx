@@ -5,8 +5,13 @@ import colorTokens from '../design-tokens/color.json';
 import classes from './color.module.css';
 
 const colorStructure = colorTokens.primary;
+type ColorTokensTableProps = {
+  withPreview?: boolean;
+};
 
-export const ColorTokensTable = () => {
+export const ColorTokensTable = ({
+  withPreview = false,
+}: ColorTokensTableProps) => {
   const { t } = useTranslation();
 
   return (
@@ -22,9 +27,11 @@ export const ColorTokensTable = () => {
       <Table.Head>
         <Table.Row>
           <Table.HeaderCell>{t('token-preview.table.name')}</Table.HeaderCell>
-          <Table.HeaderCell>
-            {t('token-preview.table.preview')}
-          </Table.HeaderCell>
+          {withPreview && (
+            <Table.HeaderCell>
+              {t('token-preview.table.preview')}
+            </Table.HeaderCell>
+          )}
         </Table.Row>
       </Table.Head>
       <Table.Body>
@@ -36,12 +43,14 @@ export const ColorTokensTable = () => {
                 <code>{variable}</code>
               </span>
             </Table.Cell>
-            <Table.Cell>
-              <div
-                className={classes.color}
-                style={{ backgroundColor: `var(${variable})` }}
-              ></div>
-            </Table.Cell>
+            {withPreview && (
+              <Table.Cell>
+                <div
+                  className={classes.color}
+                  style={{ backgroundColor: `var(${variable})` }}
+                ></div>
+              </Table.Cell>
+            )}
           </Table.Row>
         ))}
       </Table.Body>
