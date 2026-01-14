@@ -1,5 +1,5 @@
-<Alert data-color="warning">
-AvatarStack er under utvikling. Finner du feil eller mangler, meld fra på [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) eller i [Slack](https://designsystemet.no/slack).
+<Alert data-color="info">
+AvatarStack er under utvikling. Har du tilbakemelding eller innspill, meld fra på [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) eller i [Slack](https://designsystemet.no/slack).
 </Alert>
 
 <Story story="Preview" />
@@ -51,10 +51,16 @@ Avatarer i AvatarStack kan ha tooltip og være lenker, men vær obs på tilgjeng
 
 ## HTML
 
-For å lage en `AvatarStack` i ren html brukes klassen `ds-avatar-stack` på en `<figure>`. Inne i denne plasseres elementer med klassen `ds-avatar`. Merk at dersom du vil bruke `data-expandable="fixed"` må antallet avatarer være oppgitt via `--dsc-avatar-count: <number>` for å korrekt kalkulere den faste bredden.
+For å lage en `AvatarStack` i ren html brukes klassen `ds-avatar-stack` på en `<figure>`. Inne i denne plasseres elementer med klassen `ds-avatar`. Merk at dersom du vil bruke `data-expandable="fixed"` må antallet avatarer være oppgitt via `--dsc-avatar-count: <number>` for å korrekt kalkulere den faste bredden. Bruk data-suffix for å legge til en tekst-indikator for skjulte avatarer.
 
 ```html
-<figure class="ds-avatar-stack" data-expandable="fixed" style="--dsc-avatar-count: 3;">
+<figure 
+  class="ds-avatar-stack" 
+  data-expandable="fixed" 
+  style="--dsc-avatar-count: 3;" 
+  tabindex="0" 
+  aria-label="contributors" 
+  data-suffix="+4">
   <span
     class="ds-avatar"
     data-variant="circle"
@@ -80,6 +86,18 @@ For å lage en `AvatarStack` i ren html brukes klassen `ds-avatar-stack` på en 
   </span>
 </figure>
 ```
+
+Dersom du vil overstyre standard gap/size/overlap gjøres det via disse css variablene:
+
+```css
+.ds-avatar-stack {
+  --dsc-avatar-stack-gap: 4px; /* standard er 2px */
+  --dsc-avatar-stack-avatar-size: 3rem; /* standard er var(--ds-size-12) */
+  --dsc-avatar-stack-overlap: 30; /* standard er 50 */
+  }
+  ```
+
+
 
 ## CSS variabler og data atributter
 <CssVariables />
