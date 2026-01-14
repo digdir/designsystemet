@@ -41,7 +41,7 @@ export const Playground = () => {
         display: 'flex',
         flexDirection: 'column',
         gap: 'var(--ds-size-8)',
-        minHeight: '395px',
+        minHeight: '370px',
       }}
     >
       <fieldset

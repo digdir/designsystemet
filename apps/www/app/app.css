@@ -437,6 +437,17 @@
       font-size: 0.875rem /*14px*/;
     }
   }
+
+  [data-live='true'] {
+    fieldset:not([class]) {
+      border-color: var(--ds-color-neutral-border-subtle);
+      border-radius: 4px;
+
+      legend:not([class]) {
+        font-size: 1rem;
+      }
+    }
+  }
 }
 @layer site.overrides {
   :root {
