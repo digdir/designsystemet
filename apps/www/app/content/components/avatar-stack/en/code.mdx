@@ -1,12 +1,12 @@
 <Alert data-color="info">
-`AvatarStack` er under utvikling. Har du tilbakemelding eller innspill, meld fra på [Github](https://github.com/digdir/designsystemet/issues/new?template=BLANK_ISSUE&title=Feedback:%20AvatarStack) eller i [Slack](https://designsystemet.no/slack).
+`AvatarStack` is under development. If you have feedback or suggestions, please report them on [Github](https://github.com/digdir/designsystemet/issues/new?template=BLANK_ISSUE&title=Feedback:%20AvatarStack) or in [Slack](https://designsystemet.no/slack).
 </Alert>
 
 <Story story="Preview" />
 
 <ReactComponentDocs />
 
-## Bruk
+## Usage
 
 ```tsx
 import { EXPERIMENTAL_AvatarStack as AvatarStack, Avatar } from '@digdir/designsystemet-react';
@@ -20,38 +20,38 @@ import { EXPERIMENTAL_AvatarStack as AvatarStack, Avatar } from '@digdir/designs
 </AvatarStack>
 ```
 
-## Eksempel
+## Examples
 
-### Tilpassbarhet
-`AvatarStack` er laget for å være fleksibel nok til å dekke mange ulike behov og brukstilfeller.
+### Customization
+`AvatarStack` is designed to be flexible enough to cover many different needs and use cases.
 <Story story="Playground" layout='block' />
 
 ### Expandable
- `expandable` animerer overlap til 0 ved hover eller fokus. Bruk `expandable="fixed"` for å utvide med overflow uten å endre den fysiske bredden.
+ `expandable` animates overlap to 0 on hover or focus. Use `expandable="fixed"` to expand with overflow without changing the physical width.
 <Story story="Expandable" layout='block' />
 
-### Indikere avatarer som ikke vises
-`AvatarStack` støtter ikke "wrapping" over flere linjer. Dersom det er flere avatarer enn det er plass til i stacken, kan man bruke  `suffix` for å indikere dette i form av tekst til høyre for stabelen. Denne skalerer seg automatisk med avatar-størrelsen.
-Det er også mulig å bruke en `Avatar` med `+xx` som `initials` eller child, men da bør du overstyre tekst-størrelsen på denne avataren med `--dsc-avatar-font-size` dersom det skal være plass til to-sifret eller høyere tall.
+### Indicating avatars not shown
+`AvatarStack` does not support wrapping across multiple lines. If there are more avatars than can fit in the stack, you can use `suffix` to indicate this as text to the right of the stack. This automatically scales with the avatar size.
+You can also use an `Avatar` with `+xx` as `initials` or child, but you should override the font size on this avatar with `--dsc-avatar-font-size` if there is to be room for two-digit or higher numbers.
 <Story story="AdditionalAvatars" layout='block' />
 
-### Størrelser
-Du kan ikke bruke `data-size` for å endre størrelsen på avatarer i en `AvatarStack`. I stedet styres størrelsen via `avatarSize` prop på `AvatarStack`. Denne må oppgis i en gyldig css lengde-enhet (`px`, `em`, `rem`, `var(--ds-size-6)` osv.).
+### Sizes
+You cannot use `data-size` to change the size of avatars in an `AvatarStack`. Instead, the size is controlled via the `avatarSize` prop on `AvatarStack`. This must be specified in a valid CSS length unit (`px`, `em`, `rem`, `var(--ds-size-6)`, etc.).
 <Story story="DataSize" layout='block' />
 
 ### Gap
-AvatarStack bruker css `mask` for å lage det synlige mellomrommet mellom avatarene. Standard er 2px men kan tilpasses med `gap` 
+AvatarStack uses CSS `mask` to create the visible space between avatars. The default is 2px but can be customized with `gap` 
 <Story story="Gap" layout='block' />
 
 
-### Link og Tooltip
-Avatarer i AvatarStack kan ha tooltip og være lenker, men vær obs på tilgjengelighetshensyn. Bruk `asChild` for å gjøre en Avatar til en lenke.
+### Links and Tooltips
+Avatars in AvatarStack can have tooltips and be links, but be aware of accessibility considerations. Use `asChild` to make an Avatar a link.
 <Story story="WithTooltipAndLink" layout='block' />
 
 
 ## HTML
 
-For å lage en `AvatarStack` i ren html brukes klassen `ds-avatar-stack` på en `<figure>`. Inne i denne plasseres elementer med klassen `ds-avatar`. Merk at dersom du vil bruke `data-expandable="fixed"` må antallet avatarer være oppgitt via `--dsc-avatar-count: <number>` for å korrekt kalkulere den faste bredden. Bruk `data-suffix` for å legge til en tekst-indikator for skjulte avatarer.
+To create an `AvatarStack` in plain HTML, use the `ds-avatar-stack` class on a `<figure>`. Inside this, place elements with the `ds-avatar` class. Note that if you want to use `data-expandable="fixed"`, the number of avatars must be specified via `--dsc-avatar-count: <number>` to correctly calculate the fixed width. Use `data-suffix` to add a text indicator for hidden avatars.
 
 ```html
 <figure 
@@ -87,19 +87,19 @@ For å lage en `AvatarStack` i ren html brukes klassen `ds-avatar-stack` på en 
 </figure>
 ```
 
-Dersom du vil overstyre standard gap/size/overlap gjøres det via disse css variablene:
+To override the default gap/size/overlap, use these CSS variables:
 
 ```css
 .ds-avatar-stack {
-  --dsc-avatar-stack-gap: 4px; /* standard er 2px */
-  --dsc-avatar-stack-avatar-size: 3rem; /* standard er var(--ds-size-12) */
-  --dsc-avatar-stack-overlap: 30; /* standard er 50 */
+  --dsc-avatar-stack-gap: 4px; /* default is 2px */
+  --dsc-avatar-stack-avatar-size: 3rem; /* default is var(--ds-size-12) */
+  --dsc-avatar-stack-overlap: 30; /* default is 50 */
   }
   ```
 
 
 
-## CSS variabler og data atributter
+## CSS variables and data attributes
 <CssVariables />
 
 <CssAttributes />
