@@ -16,12 +16,28 @@ Designsystemet ønsker å legge til rette for et aktivt og inkluderende fellessk
 
 Bli med i nettverket for å få med deg nyheter og invitasjoner til arrangementer og demoer. Den enkleste måten å bli med på er gjennom vår åpne Slack. Over 230 virksomheter og mer enn 1100 personer er allerede med!
 
-<Card data-color='brand2' variant="tinted">
-    <Link href='https://designsystemet.no/slack'>
-      <Chat2Icon aria-hidden fontSize={24} />
-      <span>Bli med i Slack</span>
-    </Link>
+<Card data-color='success' variant="tinted">
+  <Link
+    href='https://designsystemet.no/slack'
+    style={{
+      display: "flex",
+      alignItems: "center",
+      gap: "0.75rem",
+    }}
+  >
+    <Chat2Icon aria-hidden style={{ width: 44, height: 44 }} />
+    <span data-size='lg' data-color='success'>
+      Bli med i Slack
+    </span>
+  </Link>
 </Card>
+
+<style>{`
+  [data-color='success'] a:visited {
+    color: var(--ds-color-success-text);
+  }
+`}</style>
+
 
 ## Hvem er dette for?
 

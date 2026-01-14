@@ -16,12 +16,28 @@ Designsystemet aims to foster an active and inclusive community where everyone i
 
 Join the community to stay informed about updates and receive invitations to events and demos. The easiest way to take part is through our open Slack. More than 230 organisations and over 1,100 people have already joined.
 
-<Card data-color='brand2' variant="tinted">
-  <Link href='https://designsystemet.no/slack'>
-    <Chat2Icon aria-hidden fontSize={24} />
-    <span>Join us in Slack</span>
+<Card data-color='success' variant="tinted">
+  <Link
+    href='https://designsystemet.no/slack'
+    style={{
+      display: "flex",
+      alignItems: "center",
+      gap: "0.75rem",
+    }}
+  >
+    <Chat2Icon aria-hidden style={{ width: 44, height: 44 }} />
+    <span data-size='lg' data-color='success'>
+      Join us in Slack
+    </span>
   </Link>
 </Card>
+
+<style>{`
+  [data-color='success'] a:visited {
+    color: var(--ds-color-success-text);
+  }
+`}</style>
+
 
 ## Who is this for?
 
