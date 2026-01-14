@@ -2,19 +2,88 @@
 title: Store samfunnsgevinster med Designsystemet
 description: En ny samfunnsøkonomisk analyse viser at verdien langt overstiger kostnadene, både i form av frigjort tid i virksomhetene og gjennom viktige, langsiktige kvalitetsgevinster for samfunnet.
 date: 2025-12-17
-author: Designsystemet
-imageSrc: /img/blog/designsystemet-themebuilder.png
-imageAlt: Illustrasjon av webkomponentar
+author: Digdir
+imageSrc: /img/blog/cba-frontimg.webp
+imageAlt: Bærbar PC på et skrivebord som viser en søylediagram fra en samfunnsøkonomisk analyse. Grafen sammenligner kostnader og nytte for konsept 1 og konsept 2, og viser positiv netto nåverdi for begge konseptene.
 ---
 
-Den prissatte gevinsten er frigjort tid i virksomhetene som tar Designsystemet i bruk. I tillegg ser vi tydelige, ikke-prissatte gevinster: økt etterlevelse av regelverket, økt rettighets og pliktoppfyllelse for digitalt sårbare og spart tid for brukerne. 
+import { CalculatorIcon, FileTextIcon } from '@navikt/aksel-icons';
 
-## Standardar er bra for alle
+import { CardBlock } from '@digdir/designsystemet'
+
+Den største prissatte gevinsten er tid spart i design- og utviklingsarbeid. I tillegg ser vi klare, ikke-prissatte gevinster som:
+- Bedre etterlevelse av regelverk
+- Mer tilgjengelige og forståelige digitale tjenester
+- Spart tid og lavere belastning for innbyggerne
+
+Samlet peker analysen på at Designsystemet er en lønnsom felles investering.
+
+## Frigjort tid i virksomhetene
+
+Den største prissatte gevinsten er **frigjort tid**. Når virksomheter tar i bruk Designsystemet, bruker teamene mindre tid på å lage og vedlikeholde grunnleggende komponenter og mønstre. Det gir færre avklaringer, mer parallelt arbeid mellom design og utvikling og mindre tid på testing og forvaltning.
+
+I analysen er det lagt til grunn et **konservativt anslag på 25 prosent tidsbesparelse** for virksomheter som tar Designsystemet i bruk. I tillegg kommer spart tid fordi oppdateringer, feilretting, sikkerhetsforbedringer og tilpasninger til nye krav i større grad kan håndteres felles.
+
+Resultatet er **klart positiv netto nåverdi** i de vurderte satsingsalternativene.
+
+
+<Card data-color='success' variant="tinted">
+    <Link href='/no/intro/gains' style={{
+      display: "flex",
+      alignItems: "center",
+      gap: "0.75rem",
+    }}>
+      <CalculatorIcon aria-hidden 
+      style={{ width: 74, height: 74 }}/>
+      <span data-size='lg' data-color='success'>Estimer gevinster for din virksomhet \
+      \- Prøv vår kalkulator</span>
+    </Link>
+</Card>
+
+
+## Gevinster som ikke kan prises, men som betyr mye
+
+Noen av de viktigste effektene lar seg ikke tallfeste i kroner, men er avgjørende for kvaliteten i offentlige tjenester.
+
+### Økt etterlevelse av regelverk 
+Når flere løsninger bygger på samme tilgjengelige komponenter og mønstre, øker etterlevelsen av krav til universell utforming og klarspråk. Det anslås at et godt designsystem bidrar til økt etterlevelse av mellom 30 – 50 % av kravene i WCAG. 
+
+### Spart tid for innbyggerne
+Gjenkjennelige oppførsler og konsistente interaksjonsmønstre gjør at brukerne raskere forstår løsningene, bruker mindre tid på å orientere seg og slipper å “lære systemet på nytt” hver gang de møter en ny offentlig tjeneste. Dette reduserer både tidsbruk og kognitiv belastning, og bidrar til mer effektive møter mellom innbygger og forvaltning.
+
+### Økt rettighets og pliktoppfyllelse 
+Når løsninger blir mer tilgjengelige og forståelige, kan flere digitalt sårbare få reell tilgang til informasjon og tjenester som er nødvendige for å ivareta egne rettigheter og oppfylle plikter overfor offentlig sektor. Dette kan bidra til økt selvstendighet og redusert behov for bistand i møte med digitale tjenester. Samtidig er det viktig å understreke at Designsystemet alene ikke vil være tilstrekkelig. For mange digitalt sårbare vil det fortsatt være behov for supplerende tiltak for å sikre full rettighets- og pliktoppfyllelse.
+
+
+<Card data-color='brand3' variant="tinted">
+**Vil du dykke dypere?** 
+Hele rapporten med metode, tall og vurderinger ligger åpent tilgjengelig. Analysen er utført av Agenda Kaupang på oppdrag fra Digdir høsten 2025.
+    <Link href='/no/intro/cba' style={{
+      display: "flex",
+      alignItems: "center",
+      gap: "0.45rem",
+    }}>
+      <FileTextIcon aria-hidden 
+      style={{ width: 96, height: 96 }}/>
+      <span data-size='lg' data-color='success'> Samfunnsøkonomisk analyse:
+      \
+      Designsystemet som en fellesløsning </span>
+    </Link>
+</Card>
+
+
+
+Har du innspill eller vil bidra? [Bli med i fellesskapet](/no/intro/join-the-community), test komponenter i egne tjenester, og del erfaringene tilbake. Slik bygger vi bedre digitale tjenester for alle. 
 
 
 <Contributors
   authors={[
-    'Tobias Barsnes',
-    'Eirik Backer',
+    'Anne Merete Crosby (Agenda Kaupang)',
+    'Sarah Eidsmo (Agenda Kaupang)',
+    'Lis Lonning (Digdir)',
+    'Hanne Christine Hofsæth Fredheim (Digdir)',
+    'Marianne Røsvik (Digdir)',
+    'Vidar Tilrem (Digdir)',
+    'Hilde Kristin Storvig (Digdir)',
   ]}
 />
