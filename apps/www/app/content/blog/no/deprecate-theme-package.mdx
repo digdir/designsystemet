@@ -1,0 +1,25 @@
+---
+title: Temapakken utgår i Designsystemet
+description: Temapakken i Designsystemet utgår. Les om årsakene bak denne beslutningen.
+date: 2026-01-08
+author: Designsystemet
+imageSrc: /img/blog/deprecate-theme-package.webp
+imageAlt: Pakken @digdir/designsystemet-theme utgår
+---
+
+Etter nøye vurdering har vi besluttet å avvikle temapakken (`@digdir/designsystemet-theme`) for å forenkle bruken av Designsystemet.
+
+Temapakken ble opprinnelig opprettet for deling av temaer i Designsystemet. Forbedringer i [Temabyggeren](https://theme.designsystemet.no), CLI og tematiseringsmuligheter i Designsystemet, har behovet for en egen temapakke blitt mindre. 
+
+De fleste brukere i dag, lager og bygger sine egne temaer i stedet for å bruke de som tilbys i pakken, som er framgangsmåten vi anbefaler å bruke. Les mer om hvordan du kan lage ditt eget tema i vår [dokumentasjon](/no/fundamentals/themebuilder/own-theme).
+
+Vi har flyttet standardtemaet (tilgjengelig under `@digdir/designsystemet-theme`) til `@digdir/designsystemet-css/theme`, for å gjøre det enklere å bruke, samt redusere antall pakker brukerne trenger å installere.
+
+Digdir temaer er flyttet til en intern pakke, hvis du trenger tilgang til disse temaene vennligst ta kontakt med oss eller kopier konfigurasjonen fra [her](https://github.com/digdir/designsystemet/tree/main/internal/digdir).
+
+<Contributors
+  authors={[
+    'Tobias Barsnes',
+    'Michael Marszalek',
+  ]}
+/>
