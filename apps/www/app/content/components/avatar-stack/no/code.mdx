@@ -31,7 +31,7 @@ import { EXPERIMENTAL_AvatarStack as AvatarStack, Avatar } from '@digdir/designs
 <Story story="Expandable" layout='block' />
 
 ### Indikere avatarer som ikke vises
-`suffix` legger til tekst til høyre for stabelen. Denne skalerer seg automatisk med avatar-størrelsen og kan brukes til å indikere antall avatarer som ikke vises i stabelen.
+`AvatarStack` støtter ikke "wrapping" over flere linjer. Dersom det er flere avatarer enn det er plass til i stacken, kan man bruke  `suffix` for å indikere dette i form av tekst til høyre for stabelen. Denne skalerer seg automatisk med avatar-størrelsen.
 Det er også mulig å bruke en `Avatar` med `+xx` som `initials` eller child, men da bør du overstyre tekst-størrelsen på denne avataren med `--dsc-avatar-font-size` dersom det skal være plass til to-sifret eller høyere tall.
 <Story story="AdditionalAvatars" layout='block' />
 

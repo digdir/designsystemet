@@ -6,12 +6,18 @@ AvatarStack er under utvikling. Finner du feil eller mangler, meld fra på [Gith
 
 **Bruk `AvatarStack` når**
 - En gruppe personer eller enheter skal vises sammen, men det er begrenset plass.
+- Du skal signalisere at flere er involvert, uten å vise alle i full størrelse.
 
 **Unngå `AvatarStack` når**
 - Det alltid er bare én avatar som skal vises.
+- Hver person eller enhet må være tydelig identifiserbar med navn eller rolle samtidig.
 
 
 ## Eksempel
+
+### Tilpassbarhet
+`AvatarStack` er laget for å være fleksibel nok til å dekke mange ulike behov og brukstilfeller.
+<Story story="Playground" layout='block' />
 
 ### Størrelser
 Størrelse på avatarer i en `AvatarStack` styres via `avatarSize` og kan oppgis i hvilket som helst gyldig css størrelses-enhet for maksimum fleksibilitet.
@@ -42,5 +48,5 @@ Avatarer i AvatarStack kan ha tooltip og være lenker, men vær obs på tilgjeng
 
 AvatarStack støtter ikke "wrapping" over flere linjer. Dersom det er flere avatarer enn det er plass til i stacken, kan man bruke `suffix` eller en ekstra `Avatar` med `+xx` for å indikere antall skjulte avatarer.
 
-## tekst
+## Tekst
 `aria-label` eller `aria-description` kan brukes på `AvatarStack` for å gi kontekst til skjermlesere om hva stabelen representerer, for eksempel "Deltakere i møtet" eller "Medlemmer av teamet".
