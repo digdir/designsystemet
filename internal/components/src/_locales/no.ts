@@ -60,9 +60,10 @@ export default {
     table: {
       caption: 'Fargevariabler',
       description:
-        'Tabellen under viser hvilke fargevariabler som vil blir endret når `data-color` blir endret.',
+        'Tabellen under viser hvilke fargevariabler som vil blir endret når du bytter farge på et element ved hjelp av `data-color`-attributtet.',
       name: 'Variabel navn',
       preview: 'Forhåndsvisning',
+      value: 'Verdi',
     },
   },
 };

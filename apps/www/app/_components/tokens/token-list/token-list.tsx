@@ -5,7 +5,11 @@ import {
   Paragraph,
   Search,
 } from '@digdir/designsystemet-react';
-import { ColorTokensTable, useDebounceCallback } from '@internal/components';
+import {
+  ColorTokensTable,
+  SizeVariablesTable,
+  useDebounceCallback,
+} from '@internal/components';
 import { Fragment, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { capitalizeString } from '~/_utils/string-helpers';
@@ -108,8 +112,7 @@ export const TokenList = () => {
             </Heading>
             <Paragraph>{t('token-preview.size.description')}</Paragraph>
             <div className={classes.section}>
-              {/* <SemanticTokensTable tokens={sizeTokens} />
-              <SemanticTokensTable tokens={filteredSemanticTokens} /> */}
+              <SizeVariablesTable />
             </div>
           </>
         )}

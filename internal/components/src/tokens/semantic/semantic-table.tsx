@@ -2,6 +2,7 @@ import {
   Field,
   Heading,
   Label,
+  Paragraph,
   Select,
   Table,
 } from '@digdir/designsystemet-react';
@@ -10,6 +11,7 @@ import { groupBy } from 'ramda';
 import { type HTMLAttributes, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { capitalizeString } from '../../_utils';
+import sizeTokens from '../design-tokens/size.json';
 
 import type { PreviewToken } from '../types';
 import {
@@ -104,19 +106,21 @@ const DefaultSemanticTable = ({
   );
 };
 
-const SemanticSizeTable = ({
-  tokens,
-  title,
+export const SizeVariablesTable = ({
+  heading = 'size',
+  withPreview = false,
+  description,
 }: {
-  tokens: PreviewToken[];
-  title: string;
+  heading?: string;
+  description?: string;
+  withPreview?: boolean;
 }) => {
   const { t } = useTranslation();
   const sizes: Size[] = ['sm', 'md', 'lg'];
   const [selectedSize, setSelectedSize] = useState<Size>('md');
 
   return (
-    <div key={title}>
+    <div key={heading}>
       <Field>
         <Label>{t('token-preview.size.select-label')}</Label>
         <Select
@@ -132,12 +136,15 @@ const SemanticSizeTable = ({
           ))}
         </Select>
       </Field>
-      <div key={title} className={classes['overflow-table']}>
-        <Table data-color='accent'>
+      <div key={heading} className={classes['overflow-table']}>
+        <Table data-size='sm'>
           <caption>
             <Heading level={5} data-size='sm'>
-              {capitalizeString(title)}
+              {capitalizeString(heading)}
             </Heading>
+            <Paragraph data-size='sm'>
+              {description ?? t('token-preview.size.description')}
+            </Paragraph>
           </caption>
           <Table.Head>
             <Table.Row>
@@ -147,13 +154,15 @@ const SemanticSizeTable = ({
               <Table.HeaderCell>
                 {t('token-preview.table.value')}
               </Table.HeaderCell>
-              <Table.HeaderCell>
-                {t('token-preview.table.variable')}
-              </Table.HeaderCell>
+              {withPreview && (
+                <Table.HeaderCell>
+                  {t('token-preview.table.preview')}
+                </Table.HeaderCell>
+              )}
             </Table.Row>
           </Table.Head>
           <Table.Body>
-            {tokens?.map(({ variable, value }) => (
+            {sizeTokens?.map(({ variable, value }) => (
               <Table.Row key={variable}>
                 <Table.Cell>
                   <code>{variable}</code>
@@ -161,9 +170,11 @@ const SemanticSizeTable = ({
                 <Table.Cell>
                   {getValueRender(variable, value, selectedSize)}
                 </Table.Cell>
-                <Table.Cell>
-                  {getValuePreview(variable, value, selectedSize)}
-                </Table.Cell>
+                {withPreview && (
+                  <Table.Cell>
+                    {getValuePreview(variable, value, selectedSize)}
+                  </Table.Cell>
+                )}
               </Table.Row>
             ))}
           </Table.Body>
@@ -184,13 +195,7 @@ export const SemanticTokensTable = ({ tokens }: TokenTableProps) => {
     const prettyPath = path.replace(/_/g, ''); // Remove underscores from size tokens
 
     if (prettyPath === 'size') {
-      return (
-        <SemanticSizeTable
-          key={prettyPath}
-          tokens={tokens}
-          title={prettyPath}
-        />
-      );
+      return <SizeVariablesTable key={prettyPath} heading={prettyPath} />;
     }
 
     return (

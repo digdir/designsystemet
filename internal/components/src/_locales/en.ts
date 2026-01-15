@@ -63,9 +63,10 @@ export default {
     table: {
       caption: 'Color variables',
       description:
-        'The table below shows which color variables will be changed when `data-color` is changed.',
+        'The table below shows which color variables will be changed when you change the color of an element using the `data-color` attribute.',
       name: 'Variable name',
       preview: 'Preview',
+      value: 'Value',
     },
   },
 } satisfies typeof no;

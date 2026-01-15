@@ -1,3 +1,4 @@
+import { SizeVariablesTable } from '@internal/components';
 import cl from 'clsx/lite';
 import { ColorContrasts } from '~/_components/color-contrasts/color-contrasts';
 import { ColorPreview } from '~/_components/color-preview/color-preview';
@@ -59,13 +60,22 @@ export const ThemePages = () => {
       );
     case 'variables':
       return (
-        <div
-          className={classes.basicPanel}
-          data-color-scheme={colorScheme}
-          hidden={!(tab === 'variables')}
-        >
-          <OverviewVariables />
-        </div>
+        <>
+          <div
+            className={classes.basicPanel}
+            data-color-scheme={colorScheme}
+            hidden={!(tab === 'variables')}
+          >
+            <OverviewVariables />
+          </div>
+          <div
+            className={classes.basicPanel}
+            data-color-scheme={colorScheme}
+            hidden={!(tab === 'variables')}
+          >
+            <SizeVariablesTable heading='size' withPreview />
+          </div>
+        </>
       );
     default:
       return null;

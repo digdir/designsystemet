@@ -7,10 +7,14 @@ import classes from './color.module.css';
 const colorStructure = colorTokens.primary;
 type ColorTokensTableProps = {
   withPreview?: boolean;
+  heading?: string;
+  description?: string;
 };
 
 export const ColorTokensTable = ({
   withPreview = false,
+  heading,
+  description,
 }: ColorTokensTableProps) => {
   const { t } = useTranslation();
 
@@ -18,10 +22,10 @@ export const ColorTokensTable = ({
     <Table data-size='sm'>
       <caption>
         <Heading level={4} data-size='md'>
-          {t('token-preview.table.caption')}
+          {heading ?? t('token-preview.table.caption')}
         </Heading>
         <Paragraph data-size='sm'>
-          {t('token-preview.table.description')}
+          {description ?? t('token-preview.table.description')}
         </Paragraph>
       </caption>
       <Table.Head>

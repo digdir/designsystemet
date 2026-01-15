@@ -10,3 +10,4 @@ export { Footer } from './footer/footer';
 export { Header } from './header/header';
 export * from './logos';
 export { ColorTokensTable } from './tokens/color/color-table';
+export { SizeVariablesTable } from './tokens/semantic/semantic-table';
