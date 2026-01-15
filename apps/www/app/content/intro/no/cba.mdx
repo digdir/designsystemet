@@ -628,7 +628,7 @@ Det er lagt til grunn en effektiviseringsgevinst i vedlikehold på 2,5 prosent f
 <Table>
   <TableHead>
     <TableRow>
-      <TableHeaderCell scope="col">Effektivitetsgevinst</TableHeaderCell>
+      <TableHeaderCell scope="col">Gevinstområder</TableHeaderCell>
       <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 0</TableHeaderCell>
       <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 1</TableHeaderCell>
       <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 2</TableHeaderCell>
@@ -1030,7 +1030,7 @@ Tabellen under viser hvor stor effektiviseringsgevinst som kreves, gitt utbredel
 <caption>Sensitivitetstest effektiviseringsgevinst, NNV = 0</caption>
   <TableHead>
     <TableRow>
-      <TableHeaderCell scope="col">Effektivitetsgevinst</TableHeaderCell>
+      <TableHeaderCell scope="col">Gevinstområder</TableHeaderCell>
       <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 0</TableHeaderCell>
       <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 1</TableHeaderCell>
       <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 2</TableHeaderCell>
@@ -1074,7 +1074,7 @@ Tabellen under viser hvor stor effektiviseringsgevinst som kreves for at konsept
 <caption>Sensitivitetstest effektiviseringsgevinst, NNV = Nullalternativet</caption>
   <TableHead>
     <TableRow>
-      <TableHeaderCell scope="col">Effektivitetsgevinst</TableHeaderCell>
+      <TableHeaderCell scope="col">Gevinstområder</TableHeaderCell>
       <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 1</TableHeaderCell>
       <TableHeaderCell scope="col" style={{ textAlign: 'right' }}>Konsept 2</TableHeaderCell>
     </TableRow>
@@ -1645,8 +1645,8 @@ Vi benytter verdimatrisemetoden for å anslå de ikke-prissatte virkningene. Det
     }}
   >
     <TableRow>
-      <TableHeaderCell scope="col"></TableHeaderCell>
-      <TableHeaderCell scope="colgroup" colSpan={3}>
+      <TableHeaderCell scope="col" data-color="neutral" style={{ backgroundColor: 'var(--ds-color-background-default)' }}/>
+      <TableHeaderCell scope="colgroup" colSpan={3} style={{ textAlign: 'center' }}>
         Enhetsverdi
       </TableHeaderCell>
     </TableRow>
