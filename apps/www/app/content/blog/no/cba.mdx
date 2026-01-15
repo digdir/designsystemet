@@ -9,8 +9,6 @@ imageAlt: Bærbar PC på et skrivebord som viser en søylediagram fra en samfunn
 
 import { CalculatorIcon, FileTextIcon } from '@navikt/aksel-icons';
 
-import { CardBlock } from '@digdir/designsystemet'
-
 Den prissatte gevinsten i analysen er tid spart i design- og utviklingsarbeid. I tillegg ser vi klare, ikke-prissatte gevinster som:
 - Bedre etterlevelse av regelverk
 - Mer tilgjengelige og forståelige digitale tjenester
@@ -25,7 +23,7 @@ Når virksomheter tar i bruk Designsystemet, bruker teamene mindre tid på å la
 I analysen er det lagt til grunn et konservativt anslag på 25 prosent tidsbesparelse i design- og utviklingsarbeid for virksomheter som tar Designsystemet i bruk. Virksomheter som bygger eget designsystem basert på Designsystemet, kan oppnå ytterligere gevinster. I tillegg kommer spart tid fordi oppdateringer, feilretting, sikkerhetsforbedringer og tilpasninger til nye krav i større grad kan håndteres felles.
 
 
-<Card data-color='success' variant="tinted">
+<Card data-color='success' variant="tinted" asChild>
     <Link href='/no/intro/gains' style={{
       display: "flex",
       alignItems: "center",
@@ -37,13 +35,6 @@ I analysen er det lagt til grunn et konservativt anslag på 25 prosent tidsbespa
       Regn på gevinsten i vår kalkulator</span>
     </Link>
 </Card>
-
-<style>{`
-  [data-color='success'] a:visited {
-    color: var(--ds-color-success-text);
-  }
-`}</style>
-
 
 ## Gevinster som ikke kan prises, men som betyr mye
 
@@ -74,14 +65,6 @@ Hele rapporten med metode, tall og vurderinger ligger åpent tilgjengelig. Analy
       Designsystemet som en fellesløsning </span>
     </Link>
 </Card>
-
-<style>{`
-  [data-color='brand3'] a:visited {
-    color: var(--ds-color-success-text);
-  }
-`}</style>
-
-
 
 Har du innspill eller vil bidra? [Bli med i fellesskapet](/no/intro/join-the-community), test komponenter i egne tjenester, og del erfaringene tilbake. Slik bygger vi bedre digitale tjenester for alle. 
 
