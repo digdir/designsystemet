@@ -1,0 +1,105 @@
+<Alert data-color="info">
+`AvatarStack` is under development. If you have feedback or suggestions, please report them on [Github](https://github.com/digdir/designsystemet/issues/new?template=BLANK_ISSUE&title=Feedback:%20AvatarStack) or in [Slack](https://designsystemet.no/slack).
+</Alert>
+
+<Story story="Preview" />
+
+<ReactComponentDocs />
+
+## Usage
+
+```tsx
+import { EXPERIMENTAL_AvatarStack as AvatarStack, Avatar } from '@digdir/designsystemet-react';
+
+<AvatarStack aria-label="contributors" avatarSize="2rem" overlap={40}>
+    <Avatar aria-label="Ola Nordmann">ON</Avatar>
+    <Avatar aria-label="Ola Nordmann" data-initials="ON" />
+    <Avatar aria-label="Ola Nordmann">
+        <img src="..." />
+    </Avatar>
+</AvatarStack>
+```
+
+## Examples
+
+### Customization
+`AvatarStack` is designed to be flexible enough to cover many different needs and use cases.
+<Story story="Playground" layout='block' />
+
+### Expandable
+ `expandable` animates overlap to 0 on hover or focus. Use `expandable="fixed"` to expand with overflow without changing the physical width.
+<Story story="Expandable" layout='block' />
+
+### Indicating avatars not shown
+`AvatarStack` does not support wrapping across multiple lines. If there are more avatars than can fit in the stack, you can use `suffix` to indicate this as text to the right of the stack. This automatically scales with the avatar size.
+You can also use an `Avatar` with `+xx` as `initials` or child, but you should override the font size on this avatar with `--dsc-avatar-font-size` if there is to be room for two-digit or higher numbers.
+<Story story="AdditionalAvatars" layout='block' />
+
+### Sizes
+You cannot use `data-size` to change the size of avatars in an `AvatarStack`. Instead, the size is controlled via the `avatarSize` prop on `AvatarStack`. This must be specified in a valid CSS length unit (`px`, `em`, `rem`, `var(--ds-size-6)`, etc.).
+<Story story="DataSize" layout='block' />
+
+### Gap
+AvatarStack uses CSS `mask` to create the visible space between avatars. The default is 2px but can be customized with `gap` 
+<Story story="Gap" layout='block' />
+
+
+### Links and Tooltips
+Avatars in AvatarStack can have tooltips and be links, but be aware of accessibility considerations. Use `asChild` to make an Avatar a link.
+<Story story="WithTooltipAndLink" layout='block' />
+
+
+## HTML
+
+To create an `AvatarStack` in plain HTML, use the `ds-avatar-stack` class on a `<figure>`. Inside this, place elements with the `ds-avatar` class. Note that if you want to use `data-expandable="fixed"`, the number of avatars must be specified via `--dsc-avatar-count: <number>` to correctly calculate the fixed width. Use `data-suffix` to add a text indicator for hidden avatars.
+
+```html
+<figure 
+  class="ds-avatar-stack" 
+  data-expandable="fixed" 
+  style="--dsc-avatar-count: 3;" 
+  tabindex="0" 
+  aria-label="contributors" 
+  data-suffix="+4">
+  <span
+    class="ds-avatar"
+    data-variant="circle"
+    role="img"
+    aria-label=""
+  >
+    <img alt="" aria-hidden="true" src="...">
+  </span>
+  <span
+    class="ds-avatar"
+    data-variant="circle"
+    data-initials="ON"
+    role="img"
+    aria-label=""
+  ></span>
+  <span
+    class="ds-avatar"
+    data-variant="circle"
+    role="img"
+    aria-label=""
+  >
+    <span>ON</span>
+  </span>
+</figure>
+```
+
+To override the default gap/size/overlap, use these CSS variables:
+
+```css
+.ds-avatar-stack {
+  --dsc-avatar-stack-gap: 4px; /* default is 2px */
+  --dsc-avatar-stack-avatar-size: 3rem; /* default is var(--ds-size-12) */
+  --dsc-avatar-stack-overlap: 30; /* default is 50 */
+  }
+  ```
+
+
+
+## CSS variables and data attributes
+<CssVariables />
+
+<CssAttributes />
