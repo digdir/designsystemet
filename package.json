@@ -38,7 +38,7 @@
     "@changesets/cli": "^2.29.8",
     "@svitejs/changesets-changelog-github-compact": "^1.2.0",
     "@testing-library/jest-dom": "^6.9.1",
-    "@types/node": "^22.19.3",
+    "@types/node": "^24.10.7",
     "@vitejs/plugin-react-swc": "^4.2.2",
     "@vitest/coverage-v8": "4.0.16",
     "@vitest/browser-playwright": "4.0.16",
