@@ -2,6 +2,7 @@ import {
   Alert,
   Badge,
   Card,
+  CardBlock,
   Details,
   DetailsContent,
   DetailsSummary,
@@ -44,6 +45,7 @@ const defaultComponents = {
   DetailsContent,
   DetailsSummary,
   Card,
+  CardBlock,
   Divider,
   Table: (props: TableProps) => (
     <div className={classes.tableWrapper}>
