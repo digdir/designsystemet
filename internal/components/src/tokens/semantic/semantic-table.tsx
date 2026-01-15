@@ -120,7 +120,7 @@ export const SemanticVariablesTable = ({
 };
 
 export const SizeVariablesTable = ({
-  heading = 'size',
+  heading,
   withPreview = false,
   description,
 }: {

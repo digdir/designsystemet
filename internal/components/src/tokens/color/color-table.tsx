@@ -42,10 +42,7 @@ export const ColorTokensTable = ({
         {colorStructure.map(({ variable }) => (
           <Table.Row key={variable}>
             <Table.Cell>
-              <span className={classes.codeCopy}>
-                <ClipboardButton value={variable} />
-                <code>{variable}</code>
-              </span>
+              <code>{variable}</code>
             </Table.Cell>
             {withPreview && (
               <Table.Cell>
