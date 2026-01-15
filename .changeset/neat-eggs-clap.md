@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": minor
 ---
 
-**AvatarStack**: New component
+**AvatarStack**: New experimental component
