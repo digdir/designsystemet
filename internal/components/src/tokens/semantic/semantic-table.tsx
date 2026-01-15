@@ -10,7 +10,7 @@ import type { Size } from '@digdir/designsystemet-types';
 import { groupBy } from 'ramda';
 import { type HTMLAttributes, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { capitalizeString } from '../../_utils';
+import semanticTokens from '../design-tokens/semantic.json';
 import sizeTokens from '../design-tokens/size.json';
 
 import type { PreviewToken } from '../types';
@@ -62,42 +62,55 @@ const getValueRender = (variable: string, value: string, size?: string) => {
   return <code>{value}</code>;
 };
 
-const DefaultSemanticTable = ({
-  tokens,
-  title,
+export const SemanticVariablesTable = ({
+  heading,
+  withPreview = false,
+  description,
 }: {
-  tokens: PreviewToken[];
-  title: string;
+  heading?: string;
+  withPreview?: boolean;
+  description?: string;
 }) => {
   const { t } = useTranslation();
 
   return (
-    <div key={title} className={classes['overflow-table']}>
+    <div key={heading} className={classes['overflow-table']}>
       <Table data-color='accent'>
         <caption>
-          <Heading level={5} data-size='sm'>
-            {capitalizeString(title)}
+          <Heading level={4} data-size='md'>
+            {heading ?? t('token-preview.semantic.heading')}
           </Heading>
+          <Paragraph data-size='sm'>
+            {description ?? t('token-preview.semantic.description')}
+          </Paragraph>
         </caption>
         <Table.Head>
           <Table.Row>
             <Table.HeaderCell>{t('token-preview.table.name')}</Table.HeaderCell>
-            <Table.HeaderCell>
-              {t('token-preview.table.value')}
-            </Table.HeaderCell>
-            <Table.HeaderCell>
-              {t('token-preview.table.variable')}
-            </Table.HeaderCell>
+            {withPreview && (
+              <>
+                <Table.HeaderCell>
+                  {t('token-preview.table.value')}
+                </Table.HeaderCell>
+                <Table.HeaderCell>
+                  {t('token-preview.table.preview')}
+                </Table.HeaderCell>
+              </>
+            )}
           </Table.Row>
         </Table.Head>
         <Table.Body>
-          {tokens?.map(({ variable, value }) => (
+          {semanticTokens?.map(({ variable, value }) => (
             <Table.Row key={variable}>
               <Table.Cell>
                 <code>{variable}</code>
               </Table.Cell>
-              <Table.Cell>{getValueRender(variable, value)}</Table.Cell>
-              <Table.Cell>{getValuePreview(variable, value)}</Table.Cell>
+              {withPreview && (
+                <>
+                  <Table.Cell>{getValueRender(variable, value)}</Table.Cell>
+                  <Table.Cell>{getValuePreview(variable, value)}</Table.Cell>
+                </>
+              )}
             </Table.Row>
           ))}
         </Table.Body>
@@ -139,8 +152,8 @@ export const SizeVariablesTable = ({
       <div key={heading} className={classes['overflow-table']}>
         <Table data-size='sm'>
           <caption>
-            <Heading level={5} data-size='sm'>
-              {capitalizeString(heading)}
+            <Heading level={4} data-size='md'>
+              {heading ?? t('token-preview.size.heading')}
             </Heading>
             <Paragraph data-size='sm'>
               {description ?? t('token-preview.size.description')}
@@ -151,13 +164,15 @@ export const SizeVariablesTable = ({
               <Table.HeaderCell>
                 {t('token-preview.table.name')}
               </Table.HeaderCell>
-              <Table.HeaderCell>
-                {t('token-preview.table.value')}
-              </Table.HeaderCell>
               {withPreview && (
-                <Table.HeaderCell>
-                  {t('token-preview.table.preview')}
-                </Table.HeaderCell>
+                <>
+                  <Table.HeaderCell>
+                    {t('token-preview.table.value')}
+                  </Table.HeaderCell>
+                  <Table.HeaderCell>
+                    {t('token-preview.table.preview')}
+                  </Table.HeaderCell>
+                </>
               )}
             </Table.Row>
           </Table.Head>
@@ -167,13 +182,16 @@ export const SizeVariablesTable = ({
                 <Table.Cell>
                   <code>{variable}</code>
                 </Table.Cell>
-                <Table.Cell>
-                  {getValueRender(variable, value, selectedSize)}
-                </Table.Cell>
+
                 {withPreview && (
-                  <Table.Cell>
-                    {getValuePreview(variable, value, selectedSize)}
-                  </Table.Cell>
+                  <>
+                    <Table.Cell>
+                      {getValueRender(variable, value, selectedSize)}
+                    </Table.Cell>
+                    <Table.Cell>
+                      {getValuePreview(variable, value, selectedSize)}
+                    </Table.Cell>
+                  </>
                 )}
               </Table.Row>
             ))}
@@ -198,12 +216,6 @@ export const SemanticTokensTable = ({ tokens }: TokenTableProps) => {
       return <SizeVariablesTable key={prettyPath} heading={prettyPath} />;
     }
 
-    return (
-      <DefaultSemanticTable
-        key={prettyPath}
-        tokens={tokens}
-        title={prettyPath}
-      />
-    );
+    return <SemanticVariablesTable key={prettyPath} heading={prettyPath} />;
   });
 };

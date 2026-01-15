@@ -22,10 +22,10 @@ export const ColorTokensTable = ({
     <Table data-size='sm'>
       <caption>
         <Heading level={4} data-size='md'>
-          {heading ?? t('token-preview.table.caption')}
+          {heading ?? t('token-preview.color.heading')}
         </Heading>
         <Paragraph data-size='sm'>
-          {description ?? t('token-preview.table.description')}
+          {description ?? t('token-preview.color.description')}
         </Paragraph>
       </caption>
       <Table.Head>

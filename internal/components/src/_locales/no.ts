@@ -42,25 +42,26 @@ export default {
   },
   'token-preview': {
     size: {
+      'select-label': 'Velg størrelse',
+      heading: 'Størrelsevariabler',
       description:
-        'Verdien til størrelsevariabler settes av `data-size`-attributtet.',
-      'select-label': 'Velg størrelse (data-size)',
+        'Tabellen under viser hvilke størrelsevariabler som vil blir endret når du bytter størrelse på et element ved hjelp av `data-size`-attributtet.',
     },
     color: {
+      heading: 'Fargevariabler',
       description:
-        'Verdien til fargevariabler settes av `data-color`-attributtet.',
-      'select-label': 'Velg farge (data-color)',
+        'Tabellen under viser hvilke fargevariabler som vil blir endret når du bytter farge på et element ved hjelp av `data-color`-attributtet.',
+    },
+    semantic: {
+      heading: 'Semantiskevariabler',
+      description: 'Tabellen under viser hvilke semantiske variabler',
     },
     'search-in-design-tokens': 'Søk i design tokens',
     'search-input-aria-label': 'Søk på variabel navn i CSS for design tokens',
     colors: 'Farger',
     typography: 'Typografi',
-    semantic: 'Semantiske',
     'no-results': 'Ingen resultater funnet',
     table: {
-      caption: 'Fargevariabler',
-      description:
-        'Tabellen under viser hvilke fargevariabler som vil blir endret når du bytter farge på et element ved hjelp av `data-color`-attributtet.',
       name: 'Variabel navn',
       preview: 'Forhåndsvisning',
       value: 'Verdi',

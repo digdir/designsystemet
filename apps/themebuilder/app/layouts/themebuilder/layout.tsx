@@ -1,4 +1,7 @@
-import { SizeVariablesTable } from '@internal/components';
+import {
+  SemanticVariablesTable,
+  SizeVariablesTable,
+} from '@internal/components';
 import cl from 'clsx/lite';
 import { ColorContrasts } from '~/_components/color-contrasts/color-contrasts';
 import { ColorPreview } from '~/_components/color-preview/color-preview';
@@ -60,7 +63,7 @@ export const ThemePages = () => {
       );
     case 'variables':
       return (
-        <>
+        <div className={classes.variablesPanel}>
           <div
             className={classes.basicPanel}
             data-color-scheme={colorScheme}
@@ -73,9 +76,16 @@ export const ThemePages = () => {
             data-color-scheme={colorScheme}
             hidden={!(tab === 'variables')}
           >
-            <SizeVariablesTable heading='size' withPreview />
+            <SizeVariablesTable withPreview />
           </div>
-        </>
+          <div
+            className={classes.basicPanel}
+            data-color-scheme={colorScheme}
+            hidden={!(tab === 'variables')}
+          >
+            <SemanticVariablesTable withPreview />
+          </div>
+        </div>
       );
     default:
       return null;
