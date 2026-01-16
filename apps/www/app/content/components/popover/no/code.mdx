@@ -40,7 +40,10 @@ Du kan bruke Popover inline i tekst med stiplet understrek:
 <Story story="DottedUnderline" />
 
 ### Kontrollert
-Du kan kontrollere når popover er åpen eller lukket:
+Du kan kontrollere når popover er åpen eller lukket.
+
+Merk at vi ikke bruker `onClick` på triggeren, dropdownen håndterer dette internt on sendet til `onOpen` og `onClose`.
+
 <Story story="Controlled" />
 
 ### Uten TriggerContext

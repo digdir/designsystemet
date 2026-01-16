@@ -109,7 +109,7 @@ type SuggestionValueProps<T extends { multiple: boolean }> = {
    *
    * Using this makes the component controlled and it must be used in combination with `onSelectedChange`.
    */
-  selected?: SuggestionValue<T>;
+  selected?: SuggestionValue<T> | null;
   /**
    * Default selected item when uncontrolled
    */
@@ -120,7 +120,7 @@ type SuggestionValueProps<T extends { multiple: boolean }> = {
   onSelectedChange?: (
     value: T['multiple'] extends true
       ? SuggestionItem[]
-      : SuggestionItem | undefined,
+      : SuggestionItem | null,
   ) => void;
 };
 
@@ -192,11 +192,16 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
     );
     const selectedItems = selected ? sanitizeItems(selected) : defaultItems;
     const onSelectedChangeRef = useRef(onSelectedChange);
+    const selectedItemsRef = useRef(selectedItems);
 
     // Keep the ref updated with the latest callback
     useEffect(() => {
       onSelectedChangeRef.current = onSelectedChange;
     }, [onSelectedChange]);
+
+    useEffect(() => {
+      selectedItemsRef.current = selectedItems;
+    }, [selectedItems]);
 
     /**
      * Listerners and handling of adding/removing
@@ -207,19 +212,19 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
         event.preventDefault();
         const multiple = combobox?.multiple;
         const data = event.detail;
-        const nextItem = nextItems(data, selectedItems, multiple);
+        const nextItem = nextItems(data, selectedItemsRef.current, multiple);
 
-        if (isControlled)
-          onSelectedChangeRef.current?.(
-            nextItem as SuggestionItem & SuggestionItem[],
-          );
-        else setDefaultItems(sanitizeItems(nextItem));
+        onSelectedChangeRef.current?.(
+          (nextItem as SuggestionItem & SuggestionItem[]) || null,
+        );
+
+        if (!isControlled) setDefaultItems(sanitizeItems(nextItem));
       };
 
       combobox?.addEventListener('comboboxbeforeselect', beforeChange);
       return () =>
         combobox?.removeEventListener('comboboxbeforeselect', beforeChange);
-    }, [selectedItems, isControlled]);
+    }, [isControlled]);
 
     // Before match event listener
     useEffect(() => {

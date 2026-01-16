@@ -39,7 +39,9 @@ In some cases, you may find that users are locked to older browser versions for 
 <Story story="DottedUnderlineEn" />
 
 ### Controlled
-You can control when the popover is opened or closed:
+You can control when the popover is opened or closed.
+
+Note that we do not use `onClick` on the trigger, the dropdown handles this internally and sends to `onOpen` and `onClose`.
 
 <Story story="ControlledEn" />
 
