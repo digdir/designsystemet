@@ -54,9 +54,20 @@ export default {
       description:
         'The table below shows which color variables will be changed when you change the color of an element using the `data-color` attribute.',
     },
-    semantic: {
-      heading: 'Semantic variables',
-      description: 'The table below shows which semantic variables',
+    'border-radius': {
+      heading: 'Border radius variables',
+      description:
+        'The table below shows the border radius variables in Designsystemet.',
+    },
+    opacity: {
+      heading: 'Opacity variables',
+      description:
+        'The table below shows the opacity variables in Designsystemet.',
+    },
+    shadow: {
+      heading: 'Shadow variables',
+      description:
+        'The table below shows the shadow variables in Designsystemet.',
     },
     'search-in-design-tokens': 'Search in design tokens',
     'search-input-aria-label':

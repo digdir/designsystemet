@@ -52,9 +52,18 @@ export default {
       description:
         'Tabellen under viser hvilke fargevariabler som vil blir endret når du bytter farge på et element ved hjelp av `data-color`-attributtet.',
     },
-    semantic: {
-      heading: 'Semantiskevariabler',
-      description: 'Tabellen under viser hvilke semantiske variabler',
+    'border-radius': {
+      heading: 'Border radius variabler',
+      description:
+        'Tabellen under viser border radius variablene i Designsystemet.',
+    },
+    opacity: {
+      heading: 'Opacity variabler',
+      description: 'Tabellen under viser opacity variablene i Designsystemet.',
+    },
+    shadow: {
+      heading: 'Shadow variabler',
+      description: 'Tabellen under viser shadow variablene i Designsystemet.',
     },
     'search-in-design-tokens': 'Søk i design tokens',
     'search-input-aria-label': 'Søk på variabel navn i CSS for design tokens',

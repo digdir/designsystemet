@@ -1,10 +1,10 @@
-import { Heading, Paragraph, Table } from '@digdir/designsystemet-react';
+import { Heading, Table } from '@digdir/designsystemet-react';
 import { useTranslation } from 'react-i18next';
-import { ClipboardButton } from '../../clipboard-button/clipboard-button';
 import colorTokens from '../design-tokens/color.json';
 import classes from './color.module.css';
 
 const colorStructure = colorTokens.primary;
+
 type ColorTokensTableProps = {
   withPreview?: boolean;
   heading?: string;
@@ -14,7 +14,6 @@ type ColorTokensTableProps = {
 export const ColorTokensTable = ({
   withPreview = false,
   heading,
-  description,
 }: ColorTokensTableProps) => {
   const { t } = useTranslation();
 
@@ -24,9 +23,6 @@ export const ColorTokensTable = ({
         <Heading level={4} data-size='md'>
           {heading ?? t('token-preview.color.heading')}
         </Heading>
-        <Paragraph data-size='sm'>
-          {description ?? t('token-preview.color.description')}
-        </Paragraph>
       </caption>
       <Table.Head>
         <Table.Row>

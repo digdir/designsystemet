@@ -5,9 +5,3 @@
   display: flex;
   border: 1px solid var(--ds-color-neutral-border-default);
 }
-
-.codeCopy {
-  display: flex;
-  align-items: center;
-  gap: var(--ds-size-1);
-}

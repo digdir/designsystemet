@@ -9,8 +9,18 @@ export type { FooterLinkListItemProps } from './footer/footer';
 export { Footer } from './footer/footer';
 export { Header } from './header/header';
 export * from './logos';
+export {
+  BorderRadiusVariablesTable,
+  styleBorderRadiusVars,
+} from './tokens/border-radius-table';
 export { ColorTokensTable } from './tokens/color/color-table';
 export {
-  SemanticVariablesTable,
-  SizeVariablesTable,
-} from './tokens/semantic/semantic-table';
+  OpacityVariablesTable,
+  styleOpacityVars,
+} from './tokens/opacity-table';
+export { SemanticVariablesTable } from './tokens/semantic-table';
+export {
+  ShadowVariablesTable,
+  styleShadowVars,
+} from './tokens/shadow-table';
+export { SizeVariablesTable } from './tokens/size-table';

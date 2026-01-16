@@ -12,6 +12,7 @@ import {
   Tag,
   Textfield,
 } from '@digdir/designsystemet-react';
+import { styleBorderRadiusVars } from '@internal/components';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { styleColorVars } from '~/_utils/generate-color-vars';
@@ -59,20 +60,6 @@ export const OverviewComponents = ({
   );
 
   useEffect(() => {
-    // we need to set these properties on the preview element because they are immutable on :root
-    for (const key in borderRadiuses) {
-      const borderRadius = borderRadiuses[key as keyof typeof borderRadiuses];
-
-      if (ref.current) {
-        ref.current.style.setProperty(
-          borderRadius.variable,
-          borderRadius.value,
-        );
-      }
-    }
-  }, []);
-
-  useEffect(() => {
     if (ref.current) {
       ref.current.style.setProperty(
         '--ds-border-radius-base',
@@ -97,6 +84,7 @@ export const OverviewComponents = ({
   const style = {
     ...styleColorVars(neutralColor as CssColor, colorScheme, 'neutral'),
     ...styleColorVars(previewColor as CssColor, colorScheme),
+    ...styleBorderRadiusVars,
   };
 
   return (
@@ -221,41 +209,4 @@ export const OverviewComponents = ({
       </div>
     </>
   );
-};
-
-// TODO get this token data from @digdir/designsystemet (use json from --preview or something)
-const borderRadiuses = {
-  sm: {
-    name: 'sm',
-    value:
-      'min(var(--ds-border-radius-base)*0.5,var(--ds-border-radius-scale))',
-    variable: '--ds-border-radius-sm',
-  },
-  md: {
-    name: 'md',
-    value: 'min(var(--ds-border-radius-base),var(--ds-border-radius-scale)*2)',
-    variable: '--ds-border-radius-md',
-  },
-  lg: {
-    name: 'lg',
-    value:
-      'min(var(--ds-border-radius-base)*2,var(--ds-border-radius-scale)*5)',
-    variable: '--ds-border-radius-lg',
-  },
-  xl: {
-    name: 'xl',
-    value:
-      'min(var(--ds-border-radius-base)*3,var(--ds-border-radius-scale)*7)',
-    variable: '--ds-border-radius-xl',
-  },
-  default: {
-    name: 'default',
-    value: 'var(--ds-border-radius-base)',
-    variable: '--ds-border-radius-default',
-  },
-  full: {
-    name: 'full',
-    value: '624.9375rem',
-    variable: '--ds-border-radius-full',
-  },
 };

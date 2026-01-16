@@ -1,5 +1,8 @@
+import { Heading } from '@digdir/designsystemet-react';
 import {
-  SemanticVariablesTable,
+  BorderRadiusVariablesTable,
+  OpacityVariablesTable,
+  ShadowVariablesTable,
   SizeVariablesTable,
 } from '@internal/components';
 import cl from 'clsx/lite';
@@ -13,7 +16,7 @@ import { useThemebuilder } from '../../routes/themebuilder/_utils/use-themebuild
 import classes from './layout.module.css';
 
 export const ThemePages = () => {
-  const { colorScheme, tab } = useThemebuilder();
+  const { colorScheme, baseBorderRadius, tab } = useThemebuilder();
 
   switch (tab) {
     case 'overview':
@@ -23,7 +26,10 @@ export const ThemePages = () => {
           data-color-scheme={colorScheme}
           hidden={!(tab === 'overview')}
         >
-          <OverviewComponents />
+          <OverviewComponents
+            colorScheme={colorScheme}
+            borderRadius={baseBorderRadius}
+          />
         </div>
       );
     case 'colorsystem':
@@ -63,27 +69,28 @@ export const ThemePages = () => {
       );
     case 'variables':
       return (
-        <div className={classes.variablesPanel}>
-          <div
-            className={classes.basicPanel}
-            data-color-scheme={colorScheme}
-            hidden={!(tab === 'variables')}
-          >
+        <div
+          className={classes.variablesPanel}
+          data-color-scheme={colorScheme}
+          hidden={!(tab === 'variables')}
+        >
+          <Heading level={2} data-size='lg' className={classes['rainbow-box']}>
+            Mia
+          </Heading>
+          <div className={classes.basicPanel}>
             <OverviewVariables />
           </div>
-          <div
-            className={classes.basicPanel}
-            data-color-scheme={colorScheme}
-            hidden={!(tab === 'variables')}
-          >
+          <div className={classes.basicPanel}>
             <SizeVariablesTable withPreview />
           </div>
-          <div
-            className={classes.basicPanel}
-            data-color-scheme={colorScheme}
-            hidden={!(tab === 'variables')}
-          >
-            <SemanticVariablesTable withPreview />
+          <div className={classes.basicPanel}>
+            <BorderRadiusVariablesTable withPreview />
+          </div>
+          <div className={classes.basicPanel}>
+            <ShadowVariablesTable withPreview />
+          </div>
+          <div className={classes.basicPanel}>
+            <OpacityVariablesTable withPreview />
           </div>
         </div>
       );

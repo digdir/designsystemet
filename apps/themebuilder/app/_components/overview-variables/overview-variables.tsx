@@ -1,6 +1,6 @@
 import type { CssColor } from '@digdir/designsystemet';
 import { Divider, Field, Label, Select } from '@digdir/designsystemet-react';
-import { ClipboardButton, ColorTokensTable } from '@internal/components';
+import { ColorTokensTable } from '@internal/components';
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { styleColorVars } from '~/_utils/generate-color-vars';

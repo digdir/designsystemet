@@ -17,6 +17,6 @@
   }
 }
 
-.section {
+.tokens > * {
   margin-block-end: var(--ds-size-22);
 }
