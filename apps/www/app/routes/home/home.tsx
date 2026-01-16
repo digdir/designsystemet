@@ -2,7 +2,6 @@ import { join } from 'node:path';
 import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
 import {
   BranchingIcon,
-  ChevronRightIcon,
   ComponentIcon,
   EnvelopeClosedIcon,
   PaletteIcon,
@@ -114,9 +113,7 @@ export const meta: Route.MetaFunction = ({ data }: Route.MetaArgs) => {
   return data.metadata;
 };
 
-export default function Home({
-  loaderData: { posts, lang },
-}: Route.ComponentProps) {
+export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
   const { t } = useTranslation();
 
   return (
@@ -259,10 +256,6 @@ export default function Home({
             date={post.date}
           />
         ))}
-        <Link href={`${lang}/blog`} style={{ width: 'fit-content' }}>
-          {t('frontpage.latest-news.seeAllPosts')}{' '}
-          <ChevronRightIcon aria-hidden='true' />
-        </Link>
       </Section>
       <div className='l-content-container'>
         <div className={classes.collaborators}>

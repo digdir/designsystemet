@@ -7,7 +7,7 @@ export default {
     fundamentals: 'Kom i gang',
     'best-practices': 'God praksis',
     patterns: 'Mønstre',
-    blog: 'Bloggen',
+    blog: 'Blogg',
     components: 'Komponenter',
     'theme-builder': 'Temabygger',
   },

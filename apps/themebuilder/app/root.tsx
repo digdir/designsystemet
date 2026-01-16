@@ -76,16 +76,20 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
       href: `https://designsystemet.no/${lang}/fundamentals`,
     },
     {
-      name: 'navigation.best-practices',
-      href: `https://designsystemet.no/${lang}/best-practices`,
+      name: 'navigation.components',
+      href: `https://designsystemet.no/${lang}/components`,
     },
     {
       name: 'navigation.patterns',
       href: `https://designsystemet.no/${lang}/patterns`,
     },
     {
-      name: 'navigation.components',
-      href: `https://designsystemet.no/${lang}/components`,
+      name: 'navigation.best-practices',
+      href: `https://designsystemet.no/${lang}/best-practices`,
+    },
+    {
+      name: 'navigation.blog',
+      href: `https://designsystemet.no/${lang}/blog`,
     },
     {
       name: 'navigation.theme-builder',

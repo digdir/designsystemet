@@ -87,16 +87,20 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
       href: `/${lang}/fundamentals`,
     },
     {
-      name: 'navigation.best-practices',
-      href: `/${lang}/best-practices`,
+      name: 'navigation.components',
+      href: `/${lang}/components`,
     },
     {
       name: 'navigation.patterns',
       href: `/${lang}/patterns`,
     },
     {
-      name: 'navigation.components',
-      href: `/${lang}/components`,
+      name: 'navigation.best-practices',
+      href: `/${lang}/best-practices`,
+    },
+    {
+      name: 'navigation.blog',
+      href: `/${lang}/blog`,
     },
     {
       name: 'navigation.theme-builder',
