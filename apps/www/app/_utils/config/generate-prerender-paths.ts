@@ -198,6 +198,8 @@ export function generatePrerenderPaths(): string[] {
   const basePaths = ['/no/components', '/en/components'];
 
   return [
+    '/no',
+    '/en',
     ...basePaths,
     ...contentPaths,
     '/no/components/changelog',
