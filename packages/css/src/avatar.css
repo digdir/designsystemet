@@ -4,9 +4,11 @@
   --dsc-avatar-color: var(--ds-color-base-contrast-default);
   --dsc-avatar-size: 2.625em; /* Fallback if not supporting round() */
   --dsc-avatar-padding: 0.45em; /* Fallback if not supporting round() */
+  --dsc-avatar-font-size: 1.3em;
   @supports (width: round(down, 0.1em, 1px)) {
     --dsc-avatar-size: round(up, 2.625em, 1px);
     --dsc-avatar-padding: round(down, 0.45em, 1px);
+    --dsc-avatar-font-size: round(down, 1.3em, 1px);
   }
 
   align-items: center;
@@ -40,18 +42,12 @@
     height: 100%;
   }
   > span {
-    font-size: 1.3em; /* Fallback if not supporting round() */
-    @supports (font-size: round(down, 0.1em, 1px)) {
-      font-size: round(down, 1.3em, 1px); /* Default to 130% */
-    }
+    font-size: var(--dsc-avatar-font-size);
   }
 
   &[data-initials]:empty::before {
     content: attr(data-initials);
-    font-size: 1.3em; /* Fallback if not supporting round() */
-    @supports (font-size: round(down, 0.1em, 1px)) {
-      font-size: round(down, 1.3em, 1px); /* Default to 130% */
-    }
+    font-size: var(--dsc-avatar-font-size);
   }
 
   &:not([data-initials]):empty::before {
