@@ -1,4 +1,4 @@
-import { Heading, Table } from '@digdir/designsystemet-react';
+import { Table } from '@digdir/designsystemet-react';
 import type { HTMLAttributes } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getValuePreview, getValueRender } from './common';

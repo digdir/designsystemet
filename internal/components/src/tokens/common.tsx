@@ -41,7 +41,7 @@ const Shadow = ({ value }: { value: string }) => {
 
 const BorderRadius = ({ value }: { value: string }) => {
   return (
-    <div className={classes.radius}>
+    <div className={classes['border-radius']}>
       <div className={classes.bar} style={{ borderRadius: value }}></div>
     </div>
   );

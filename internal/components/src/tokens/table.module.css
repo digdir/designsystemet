@@ -28,7 +28,7 @@
   }
 }
 
-.radius {
+.border-radius {
   display: flex;
   align-items: center;
   height: var(--ds-size-6);

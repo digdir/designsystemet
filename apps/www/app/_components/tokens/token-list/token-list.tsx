@@ -13,10 +13,10 @@ export const TokenList = () => {
   return (
     <div className={classes.tokens}>
       <ColorTokensTable />
-      <SizeVariablesTable />
-      <BorderRadiusVariablesTable />
-      <ShadowVariablesTable />
-      <OpacityVariablesTable />
+      <SizeVariablesTable withPreview />
+      <BorderRadiusVariablesTable withPreview />
+      <ShadowVariablesTable withPreview />
+      <OpacityVariablesTable withPreview />
       <TypographyVariablesTable />
     </div>
   );
