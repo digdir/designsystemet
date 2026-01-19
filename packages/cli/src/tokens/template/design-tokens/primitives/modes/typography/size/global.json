@@ -1,0 +1,96 @@
+{
+  "line-height": {
+    "sm": {
+      "$type": "lineHeights",
+      "$value": "130%"
+    },
+    "md": {
+      "$type": "lineHeights",
+      "$value": "150%"
+    },
+    "lg": {
+      "$type": "lineHeights",
+      "$value": "170%"
+    }
+  },
+  "font-size": {
+    "1": {
+      "$type": "fontSizes",
+      "$value": "roundTo({font-scale._base} / pow({font-scale._ratio}, 3), 0)"
+    },
+    "2": {
+      "$type": "fontSizes",
+      "$value": "roundTo({font-scale._base} / pow({font-scale._ratio}, 2), 0)"
+    },
+    "3": {
+      "$type": "fontSizes",
+      "$value": "roundTo({font-scale._base} / pow({font-scale._ratio}, 1), 0)"
+    },
+    "4": {
+      "$type": "fontSizes",
+      "$value": "roundTo({font-scale._base} * pow({font-scale._ratio}, 0), 0)"
+    },
+    "5": {
+      "$type": "fontSizes",
+      "$value": "roundTo({font-scale._base} * pow({font-scale._ratio}, 1), 0)"
+    },
+    "6": {
+      "$type": "fontSizes",
+      "$value": "roundTo({font-scale._base} * pow({font-scale._ratio}, 2), 0)"
+    },
+    "7": {
+      "$type": "fontSizes",
+      "$value": "roundTo({font-scale._base} * pow({font-scale._ratio}, 3), 0)"
+    },
+    "8": {
+      "$type": "fontSizes",
+      "$value": "roundTo({font-scale._base} * pow({font-scale._ratio}, 5), 0)"
+    },
+    "9": {
+      "$type": "fontSizes",
+      "$value": "roundTo({font-scale._base} * pow({font-scale._ratio}, 7), 0)"
+    },
+    "10": {
+      "$type": "fontSizes",
+      "$value": "roundTo({font-scale._base} * pow({font-scale._ratio}, 9), 0)"
+    }
+  },
+  "letter-spacing": {
+    "1": {
+      "$type": "letterSpacing",
+      "$value": "-1%"
+    },
+    "2": {
+      "$type": "letterSpacing",
+      "$value": "-0.5%"
+    },
+    "3": {
+      "$type": "letterSpacing",
+      "$value": "-0.25%"
+    },
+    "4": {
+      "$type": "letterSpacing",
+      "$value": "-0.15%"
+    },
+    "5": {
+      "$type": "letterSpacing",
+      "$value": "0%"
+    },
+    "6": {
+      "$type": "letterSpacing",
+      "$value": "0.15%"
+    },
+    "7": {
+      "$type": "letterSpacing",
+      "$value": "0.25%"
+    },
+    "8": {
+      "$type": "letterSpacing",
+      "$value": "0.5%"
+    },
+    "9": {
+      "$type": "letterSpacing",
+      "$value": "1.5%"
+    }
+  }
+}
