@@ -1,5 +1,6 @@
 import {
   attr,
+  attrRequiredWarning,
   isBrowser,
   on,
   onHotReload,
@@ -10,12 +11,13 @@ import {
 let SOURCE: Element | undefined;
 let HOVER_TIMER: number | ReturnType<typeof setTimeout> = 0;
 let SKIP_TIMER: number | ReturnType<typeof setTimeout> = 0;
-const HOVER_DELAY = 300;
-const SKIP_DELAY = 300;
+const SELECTOR_INTERACTIVE = 'a,button,input,select,textarea,[tabindex]';
+const DELAY_HOVER = 300;
+const DELAY_SKIP = 300;
 const TIP =
   isBrowser() &&
   Object.assign(document.createElement('div'), {
-    className: 'ds-tooltip', // TODO: Should the the consumer be able to add their own tooltip element, for more flexibility?
+    className: 'ds-tooltip', // TODO: The consumer should be able to provide their own tooltip element
     popover: 'manual',
   });
 
@@ -23,7 +25,10 @@ function handleAriaAttributes() {
   for (const el of document.querySelectorAll('[data-tooltip]')) {
     const hasText = el.textContent?.trim();
     const tooltip = attr(el, 'data-tooltip');
-    attr(el, hasText ? 'aria-description' : 'aria-label', tooltip); // TODO: Warn if non-interactive element lacks tabindex="0"?
+
+    attr(el, hasText ? 'aria-description' : 'aria-label', tooltip);
+    if (!el.matches(SELECTOR_INTERACTIVE))
+      attrRequiredWarning(el, 'tabindex="0"');
   }
 }
 
@@ -32,7 +37,7 @@ function handleInterest({ type, target }: Event) {
 
   if (!TIP || target === TIP) return; // Allow tooltip to be hovered, following https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus
   if (type === 'mouseover' && !SOURCE) {
-    HOVER_TIMER = setTimeout(handleInterest, HOVER_DELAY, { target }); // Delay mouse showing tooltip if not already shown
+    HOVER_TIMER = setTimeout(handleInterest, DELAY_HOVER, { target }); // Delay mouse showing tooltip if not already shown
     return;
   }
 
@@ -51,13 +56,13 @@ function handleInterest({ type, target }: Event) {
 function handleClose(event?: Partial<ToggleEvent>) {
   if (!event) SOURCE = undefined;
   else if (event.target === TIP && event.newState === 'closed')
-    SKIP_TIMER = setTimeout(handleClose, SKIP_DELAY);
+    SKIP_TIMER = setTimeout(handleClose, DELAY_SKIP);
 }
 
 onHotReload('tooltip', () => [
   on(document, 'blur focus mouseover', handleInterest, QUICK_EVENT),
   on(document, 'toggle', handleClose, QUICK_EVENT),
-  onMutation(document.body, handleAriaAttributes, {
+  onMutation(document, handleAriaAttributes, {
     attributeFilter: ['data-tooltip'],
     attributes: true,
     childList: true,

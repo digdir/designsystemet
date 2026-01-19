@@ -5,8 +5,8 @@ import { on, onHotReload, QUICK_EVENT } from './utils';
 
 const CLASS_HOVER = ':click-delegate-hover';
 const ATTR_CLICKDELEGATEFOR = 'data-clickdelegatefor';
-const CSS_CLICKDELEGATEFOR = `[${ATTR_CLICKDELEGATEFOR}]`;
-const SKIP =
+const SELECTOR_CLICKDELEGATEFOR = `[${ATTR_CLICKDELEGATEFOR}]`;
+const SELECTOR_SKIP =
   'a,button,label,input,select,textarea,dialog,[role="button"],[popover],[contenteditable]';
 
 export const handleClickDelegateFor = (event: MouseEvent) => {
@@ -35,10 +35,11 @@ const handleMouseOver = (event: Event) => {
 };
 
 const getDelegateTarget = ({ target: el }: Event) => {
-  const scope = el instanceof Element ? el.closest(CSS_CLICKDELEGATEFOR) : null;
+  const scope =
+    el instanceof Element ? el.closest(SELECTOR_CLICKDELEGATEFOR) : null;
   const id = scope?.getAttribute(ATTR_CLICKDELEGATEFOR);
   const target = document.getElementById(id || '');
-  const skip = target && (el as Element).closest(SKIP); // Ignore if interactive
+  const skip = target && (el as Element).closest(SELECTOR_SKIP); // Ignore if interactive
 
   return ((!skip || skip === target) && target) || undefined;
 };

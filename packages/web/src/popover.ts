@@ -8,8 +8,9 @@ import {
 } from '@floating-ui/dom';
 import { attr, on, onHotReload, QUICK_EVENT } from './utils';
 
-const PLACEMENT = 'data-placement';
-const FLOATING = 'data-floating';
+const ATTR_PLACEMENT = 'data-placement';
+const ATTR_FLOATING = 'data-floating';
+const CSS_PROP_FLOATING = '--_ds-is-floating';
 const POPOVERS = new Map<HTMLElement, () => void>();
 
 // Sometimes use "ds-toggle" event while waiting for better support of
@@ -26,7 +27,7 @@ function handleToggle(event: DSToggleEvent) {
   if (!source || source === target) return; // No need to update
   const options = {
     strategy: 'absolute',
-    placement: attr(target, PLACEMENT) || getDSFloating(target),
+    placement: attr(target, ATTR_PLACEMENT) || getDSFloating(target),
     middleware: [
       // TODO: data-overscroll="contain" behavior?
       shift(),
@@ -43,7 +44,7 @@ function handleToggle(event: DSToggleEvent) {
     const { x, y } = await computePosition(source, target, options);
     target.style.translate = `${x}px ${y}px`;
   });
-  POPOVERS.set(target, () => POPOVERS.delete(target) && unfloat()); // TODO: Could we use CSS anchor positioning when 'anchorName' in document.documentElement.style?
+  POPOVERS.set(target, () => POPOVERS.delete(target) && unfloat());
 }
 
 // Make manual to prevent closing when clicking scrollbar
@@ -75,7 +76,7 @@ onHotReload('popover', () => [
 ]);
 
 const getDSFloating = (el: Element) =>
-  getComputedStyle(el).getPropertyValue('--_ds-is-floating');
+  getComputedStyle(el).getPropertyValue(CSS_PROP_FLOATING).trim();
 
 const isDSFloating = (el?: EventTarget | null): el is HTMLElement =>
   el instanceof HTMLElement && !!getDSFloating(el);
@@ -90,7 +91,7 @@ const arrowPseudo = () => ({
 
     target.style.setProperty('--_dsc-arrow-x', x);
     target.style.setProperty('--_dsc-arrow-y', y);
-    attr(target, FLOATING, data.placement);
+    attr(target, ATTR_FLOATING, data.placement);
     return data;
   },
 });

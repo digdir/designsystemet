@@ -1,17 +1,17 @@
 import { attr, on, onHotReload, onMutation } from './utils';
 
-const ATTR_TOGGLEGROUP = 'data-togglegroup'; // TODO: Use another identifier?
-const CSS_TOGGLEGROUP = `[${ATTR_TOGGLEGROUP}]`;
+const ATTR_TOGGLEGROUP = 'data-togglegroup';
+const SELECTOR_TOGGLEGROUP = `[${ATTR_TOGGLEGROUP}]`;
 
 function handleAriaAttributes() {
-  for (const group of document.querySelectorAll(CSS_TOGGLEGROUP))
+  for (const group of document.querySelectorAll(SELECTOR_TOGGLEGROUP))
     attr(group, 'aria-label', attr(group, ATTR_TOGGLEGROUP));
 }
 
 function handleKeydown(event: Partial<KeyboardEvent>) {
   const group =
     event.target instanceof HTMLInputElement &&
-    event.target.closest(CSS_TOGGLEGROUP);
+    event.target.closest(SELECTOR_TOGGLEGROUP);
 
   if (!group) return;
   if (event.key === 'Enter') event.target.click(); // Forward Enter, but no need to listen for space key, as this is handled by the browser
@@ -26,7 +26,7 @@ function handleKeydown(event: Partial<KeyboardEvent>) {
 
 onHotReload('togglegroup', () => [
   on(document, 'keydown', handleKeydown),
-  onMutation(document.body, handleAriaAttributes, {
+  onMutation(document, handleAriaAttributes, {
     attributeFilter: [ATTR_TOGGLEGROUP],
     attributes: true,
     childList: true,

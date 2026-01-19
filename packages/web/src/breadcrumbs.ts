@@ -14,8 +14,8 @@ declare global {
   }
 }
 
-const LABEL = 'aria-label';
-const LABEL_HIDDEN = 'data-label'; // Used to hide label on mobile when only showing back link
+const ATTR_LABEL = 'aria-label';
+const ATTR_LABEL_HIDDEN = 'data-label'; // Used to hide label on mobile when only showing back link
 
 export class DSBreadcrumbsElement extends DSElement {
   _items?: HTMLCollectionOf<HTMLAnchorElement>; // Using underscore instead of private fields for backwards compatibility
@@ -23,11 +23,11 @@ export class DSBreadcrumbsElement extends DSElement {
   _unmutate?: () => void;
 
   static get observedAttributes() {
-    return [LABEL]; // Using ES2015 syntax for backwards compatibility
+    return [ATTR_LABEL]; // Using ES2015 syntax for backwards compatibility
   }
   connectedCallback() {
-    if (!attr(this, LABEL_HIDDEN)) attrRequiredWarning(this, LABEL); // aria-label can allready have been hidden by attributeChangedCallback
-    const render = debounce(() => this.attributeChangedCallback(), 100);
+    if (!attr(this, ATTR_LABEL_HIDDEN)) attrRequiredWarning(this, ATTR_LABEL); // aria-label can allready have been hidden by attributeChangedCallback
+    const render = debounce(this.attributeChangedCallback.bind(this), 100);
     this._items = this.getElementsByTagName('a'); // Speed up by caching HTMLCollection
     this._unresize = on(window, 'resize', render);
     this._unmutate = onMutation(this, render, {
@@ -39,17 +39,17 @@ export class DSBreadcrumbsElement extends DSElement {
     const last = this._items?.[this._items.length - 1];
     const lastInList = last?.parentElement === this ? null : last;
     const isListHidden = !lastInList?.offsetHeight;
-    const labelHidden = attr(this, LABEL_HIDDEN);
-    const label = attr(this, LABEL);
+    const labelHidden = attr(this, ATTR_LABEL_HIDDEN);
+    const label = attr(this, ATTR_LABEL);
 
     // Only labels if needed to prevent infinite attribute update loop
     attr(this, 'role', isListHidden ? null : 'navigation');
     if (isListHidden && !labelHidden && label) {
-      attr(this, LABEL_HIDDEN, label);
-      attr(this, LABEL, null);
+      attr(this, ATTR_LABEL_HIDDEN, label);
+      attr(this, ATTR_LABEL, null);
     } else if (!isListHidden && labelHidden && !label) {
-      attr(this, LABEL, labelHidden);
-      attr(this, LABEL_HIDDEN, null);
+      attr(this, ATTR_LABEL, labelHidden);
+      attr(this, ATTR_LABEL_HIDDEN, null);
     }
 
     for (const item of this._items || [])

@@ -1,17 +1,18 @@
-// Ensure polyfills are loaded in browser environment only
-// import { isBrowser } from './utils';
-// if (isBrowser()) {
-// 	import("invokers-polyfill");
-// 	import("dialog-closedby-polyfill");
-// }
+import { isBrowser } from './utils';
 
+// Ensure polyfill is loaded in browser environment only
+if (isBrowser()) import('invokers-polyfill');
+
+export * from '@u-elements/u-datalist'; // Re-export u-datalist since this is a pure polyfill and not custom Designsystemet elements
+export * from '@u-elements/u-details'; // Re-export u-details since this is a pure polyfill and not custom Designsystemet elements
 export * from './breadcrumbs';
-export * from './details';
 export * from './errorsummary';
 export * from './field';
 export * from './pagination';
+export * from './suggestion';
 export * from './tabs';
 import './clickdelegatefor';
+import './dialog';
 import './popover';
 import './togglegroup';
 import './tooltip';

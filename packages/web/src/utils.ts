@@ -1,5 +1,6 @@
 export const QUICK_EVENT = { passive: true, capture: true };
 
+// Using function instead of constant to support evnironments where DOM can be unloaded (like Vitest with jsdom)
 export const isBrowser = () =>
   typeof window !== 'undefined' && typeof document !== 'undefined';
 
@@ -40,15 +41,14 @@ export const attr = (
 };
 
 /**
- * attrRequire
+ * attrRequiredWarning
  * @description Warn if element is missing attribute
  * @param el The Element to read/write attributes from
  * @param ...names The attribute name(s) check
  */
-export const attrRequiredWarning = (el: Element, ...names: string[]) => {
-  for (const name of names)
-    el.hasAttribute(name) || console.warn(el, `is missing a ${name} attribute`);
-};
+// TODO: Should this test what environment we are in, and only warn in development?
+export const attrRequiredWarning = (el: Element, name: string) =>
+  el.hasAttribute(name) || console.warn(el, `is missing a ${name} attribute`);
 
 /**
  * on
@@ -110,7 +110,7 @@ export const onHotReload = (key: string, setup: () => Array<() => void>) => {
  * @return new MutaionObserver
  */
 export const onMutation = (
-  elem: HTMLElement,
+  el: Node,
   callback: (observer: MutationObserver) => void,
   options: MutationObserverInit,
 ) => {
@@ -127,7 +127,7 @@ export const onMutation = (
     if (!queue) queue = requestAnimationFrame(onFrame); // requestAnimationFrame only runs when page is not visible
   });
 
-  observer.observe(elem, options);
+  observer.observe(el, options);
   onFrame(); // Initial run
   return cleanup;
 };

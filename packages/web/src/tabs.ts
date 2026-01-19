@@ -1,6 +1,15 @@
 import * as UTabs from '@u-elements/u-tabs';
 import { customElements } from './utils';
 
+declare global {
+  interface HTMLElementTagNameMap {
+    'ds-tabs': DSTabsElement;
+    'ds-tablist': DSTabListElement;
+    'ds-tab': DSTabElement;
+    'ds-tabpanel': DSTabPanelElement;
+  }
+}
+
 export class DSTabsElement extends UTabs.UHTMLTabsElement {}
 export class DSTabListElement extends UTabs.UHTMLTabListElement {}
 export class DSTabElement extends UTabs.UHTMLTabElement {}

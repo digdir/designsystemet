@@ -12,10 +12,10 @@ declare global {
   }
 }
 
-const CURRENT = 'data-current';
-const HREF = 'data-href';
-const LABEL = 'aria-label';
-const TOTAL = 'data-total';
+const ATTR_LABEL = 'aria-label';
+const ATTR_CURRENT = 'data-current';
+const ATTR_TOTAL = 'data-total';
+const ATTR_HREF = 'data-href';
 
 // Expose pagination logic if wanting to do custom rendering (i.e. in React/Vue/etc)
 export const pagination = ({ current = 1, total = 10, show = 7 }) => ({
@@ -32,10 +32,13 @@ export class DSPaginationElement extends DSElement {
   _unmutate?: () => void;
 
   static get observedAttributes() {
-    return [CURRENT, TOTAL]; // Using ES2015 syntax for backwards compatibility
+    return [ATTR_CURRENT, ATTR_TOTAL]; // Using ES2015 syntax for backwards compatibility
   }
   connectedCallback() {
-    attrRequiredWarning(this, LABEL, CURRENT, TOTAL);
+    attrRequiredWarning(this, ATTR_LABEL);
+    if (attr(this, ATTR_TOTAL)) attrRequiredWarning(this, ATTR_CURRENT);
+    if (attr(this, ATTR_CURRENT)) attrRequiredWarning(this, ATTR_TOTAL);
+
     this._unmutate = onMutation(this, this.render.bind(this), {
       childList: true,
       subtree: true,
@@ -47,20 +50,23 @@ export class DSPaginationElement extends DSElement {
   }
   render() {
     const items = this.querySelectorAll('button,a');
-    const href = attr(this, HREF);
+    const href = attr(this, ATTR_HREF);
     const { next, prev, pages } = pagination({
-      current: parseInt(attr(this, CURRENT) || '1', 10),
-      total: parseInt(attr(this, TOTAL) || '10', 10),
+      current: parseInt(attr(this, ATTR_CURRENT) || '1', 10),
+      total: parseInt(attr(this, ATTR_TOTAL) || '10', 10),
       show: items.length - 2,
     });
 
     items.forEach((item, i) => {
       const page = i ? (items[i + 1] ? pages[i - 1]?.page : next) : prev; // First is prev, last is next
+      const variant = pages[i - 1]?.current ? 'primary' : 'tertiary';
+      attr(item, 'data-variant', variant); // TODO Should we really do this?
       attr(item, 'aria-current', pages[i - 1]?.current ? 'true' : null);
       attr(item, 'aria-disabled', page ? null : 'true');
       attr(item, 'aria-hidden', page ? null : 'true');
       attr(item, 'data-page', `${page}`);
       attr(item, 'tabindex', page ? null : '-1');
+      if (item instanceof HTMLButtonElement) attr(item, 'value', `${page}`);
       if (href) attr(item, 'href', href.replace('$page', `${page}`));
     });
   }

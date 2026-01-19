@@ -15,6 +15,13 @@ declare global {
   }
 }
 
+const ATTR_FIELD = 'data-field';
+const ATTR_FIELDSET = 'data-fieldset';
+const SELECTOR_FIELDSET = `[${ATTR_FIELDSET}]`;
+const CSS_PROP_FIELD_SIZE = '--_ds-field-sizing';
+const TYPE_DESCRIPTION = 'description';
+const TYPE_VALIDATION = 'validation';
+
 export class DSFieldElement extends DSElement {
   _elements?: HTMLCollection;
   _unevents?: () => void;
@@ -30,26 +37,50 @@ export class DSFieldElement extends DSElement {
     });
   }
   render() {
-    let input: HTMLInputElement | undefined;
     const descs: Element[] = [];
     const labels: HTMLLabelElement[] = [];
+    const fieldset = this.closest('fieldset');
+    let input: HTMLInputElement | undefined;
+    let valid = true;
 
     for (const el of this._elements || []) {
       if (el instanceof HTMLLabelElement) labels.push(el);
       else if (isInputLike(el)) input = el;
-      else if (el instanceof Element && el.hasAttribute('data-field')) {
-        if (attr(el, 'data-field') === 'validation') descs.unshift(el);
-        else descs.push(el);
+      else {
+        const type = el.getAttribute(ATTR_FIELD); // Using getAttribute not attr for best performance
+        if (type === TYPE_VALIDATION) {
+          if (isValidationInvalid(el)) valid = false;
+          descs.unshift(el);
+        } else if (type !== null) descs.push(el);
       }
     }
 
     if (!input) return;
     for (const label of labels) attr(label, 'for', useId(input));
+    if (input instanceof HTMLTextAreaElement) {
+      input.style.setProperty(CSS_PROP_FIELD_SIZE, 'auto');
+      input.style.setProperty(CSS_PROP_FIELD_SIZE, `${input.scrollHeight}px`); // Polyfill field-sizing for iOS
+    }
 
-    // TODO renderCounter(input); ?
-    // TODO attr(input, "aria-invalid", `${!valid}`); ?
+    // Set attributes on fieldset if present
+    // TODO: Should this be a separate component as toggling validation on fieldset now has no effect on ds-field? Or should DS-field be just a mutationobserver?
+    if (fieldset) {
+      const legend = fieldset.querySelector('legend');
+      const labelledby: Element[] = legend ? [legend] : [];
+      for (const el of fieldset.querySelectorAll(SELECTOR_FIELDSET)) {
+        const type = el.getAttribute(ATTR_FIELDSET); // Using getAttribute not attr for best performance
+        if (type === TYPE_DESCRIPTION) labelledby.push(el);
+        if (type === TYPE_VALIDATION) {
+          if (isValidationInvalid(el)) valid = false;
+          descs.unshift(el);
+        }
+      }
+      attr(fieldset, 'aria-labelledby', labelledby.map(useId).join(' '));
+    }
+
     attr(input, 'aria-describedby', descs.map(useId).join(' '));
-    console.log(input, descs, labels);
+    attr(input, 'aria-invalid', `${!valid}`);
+    // TODO renderCounter(input)?
   }
   disconnectedCallback() {
     this._unevents?.();
@@ -70,3 +101,6 @@ const isInputLike = (el: unknown): el is HTMLInputElement =>
   el instanceof HTMLElement &&
   'validity' in el &&
   !(el instanceof HTMLButtonElement);
+
+const isValidationInvalid = (el: Element): boolean =>
+  attr(el, 'data-color') !== 'success' && !!el.clientHeight;
