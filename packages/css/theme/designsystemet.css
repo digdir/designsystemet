@@ -1,23 +1,29 @@
 @charset "UTF-8";
 /*
 build: v1.10.0
-design-tokens: v1.9.0
+design-tokens: v1.10.0
 */
 
 @layer ds.theme.size-mode {
 :root /* small */ {
+  --ds-font-scale-base--sm: 1;
+  --ds-font-scale-ratio--sm: 1.131;
   --ds-size-mode-font-size--sm: 1;
 }
 }
 
 @layer ds.theme.size-mode {
 :root /* medium */ {
+  --ds-font-scale-base--md: 1.125;
+  --ds-font-scale-ratio--md: 1.143;
   --ds-size-mode-font-size--md: 1.125;
 }
 }
 
 @layer ds.theme.size-mode {
 :root /* large */ {
+  --ds-font-scale-base--lg: 1.3125;
+  --ds-font-scale-ratio--lg: 1.146;
   --ds-size-mode-font-size--lg: 1.3125;
 }
 }
@@ -40,18 +46,43 @@ design-tokens: v1.9.0
 }
 
 @layer ds.theme.type-scale {
+:root {
+  --ds-font-size-1: calc(1rem * var(--ds-font-scale-base) / pow(var(--ds-font-scale-ratio), 3));
+  --ds-font-size-2: calc(1rem * var(--ds-font-scale-base) / pow(var(--ds-font-scale-ratio), 2));
+  --ds-font-size-3: calc(1rem * var(--ds-font-scale-base) / pow(var(--ds-font-scale-ratio), 1));
+  --ds-font-size-4: calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 0));
+  --ds-font-size-5: calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 1));
+  --ds-font-size-6: calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 2));
+  --ds-font-size-7: calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 3));
+  --ds-font-size-8: calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 5));
+  --ds-font-size-9: calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 7));
+  --ds-font-size-10: calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 9));
+
+  @supports (width: round(down, .1em, 1px)) {
+    --ds-font-size-1: round(calc(1rem * var(--ds-font-scale-base) / pow(var(--ds-font-scale-ratio), 3)), 1px);
+    --ds-font-size-2: round(calc(1rem * var(--ds-font-scale-base) / pow(var(--ds-font-scale-ratio), 2)), 1px);
+    --ds-font-size-3: round(calc(1rem * var(--ds-font-scale-base) / pow(var(--ds-font-scale-ratio), 1)), 1px);
+    --ds-font-size-4: round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 0)), 1px);
+    --ds-font-size-5: round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 1)), 1px);
+    --ds-font-size-6: round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 2)), 1px);
+    --ds-font-size-7: round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 3)), 1px);
+    --ds-font-size-8: round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 5)), 1px);
+    --ds-font-size-9: round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 7)), 1px);
+    --ds-font-size-10: round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 9)), 1px);
+  }
+}
+}
+
+@layer ds.theme.type-scale {
 :root, [data-size] {
-  --_ds-font-size-factor: calc(var(--ds-size-mode-font-size) / (var(--ds-size-base) / 16));
-  --ds-font-size-1: calc(0.75rem * var(--_ds-font-size-factor));
-  --ds-font-size-2: calc(0.875rem * var(--_ds-font-size-factor));
-  --ds-font-size-3: calc(1rem * var(--_ds-font-size-factor));
-  --ds-font-size-4: calc(1.125rem * var(--_ds-font-size-factor));
-  --ds-font-size-5: calc(1.3125rem * var(--_ds-font-size-factor));
-  --ds-font-size-6: calc(1.5rem * var(--_ds-font-size-factor));
-  --ds-font-size-7: calc(1.875rem * var(--_ds-font-size-factor));
-  --ds-font-size-8: calc(2.25rem * var(--_ds-font-size-factor));
-  --ds-font-size-9: calc(3rem * var(--_ds-font-size-factor));
-  --ds-font-size-10: calc(3.75rem * var(--_ds-font-size-factor));
+  --ds-font-scale-base:
+    var(--ds-size--sm, var(--ds-font-scale-base--sm))
+    var(--ds-size--md, var(--ds-font-scale-base--md))
+    var(--ds-size--lg, var(--ds-font-scale-base--lg));
+  --ds-font-scale-ratio:
+    var(--ds-size--sm, var(--ds-font-scale-ratio--sm))
+    var(--ds-size--md, var(--ds-font-scale-ratio--md))
+    var(--ds-size--lg, var(--ds-font-scale-ratio--lg));
   --ds-heading-2xl-font-size: var(--ds-font-size-10);
   --ds-heading-xl-font-size: var(--ds-font-size-9);
   --ds-heading-lg-font-size: var(--ds-font-size-8);
@@ -74,21 +105,9 @@ design-tokens: v1.9.0
   --ds-body-long-md-font-size: var(--ds-font-size-4);
   --ds-body-long-sm-font-size: var(--ds-font-size-3);
   --ds-body-long-xs-font-size: var(--ds-font-size-2);
+}
+}
 
-  @supports (width: round(down, .1em, 1px)) {
-    --ds-font-size-1: round(calc(0.75rem * var(--_ds-font-size-factor)), 1px);
-    --ds-font-size-2: round(calc(0.875rem * var(--_ds-font-size-factor)), 1px);
-    --ds-font-size-3: round(calc(1rem * var(--_ds-font-size-factor)), 1px);
-    --ds-font-size-4: round(calc(1.125rem * var(--_ds-font-size-factor)), 1px);
-    --ds-font-size-5: round(calc(1.3125rem * var(--_ds-font-size-factor)), 1px);
-    --ds-font-size-6: round(calc(1.5rem * var(--_ds-font-size-factor)), 1px);
-    --ds-font-size-7: round(calc(1.875rem * var(--_ds-font-size-factor)), 1px);
-    --ds-font-size-8: round(calc(2.25rem * var(--_ds-font-size-factor)), 1px);
-    --ds-font-size-9: round(calc(3rem * var(--_ds-font-size-factor)), 1px);
-    --ds-font-size-10: round(calc(3.75rem * var(--_ds-font-size-factor)), 1px);
-  }
-}
-}
 @layer ds.theme.color-scheme.light {
 :root, [data-color-scheme="light"] {
   --ds-color-accent-background-default: #ffffff;

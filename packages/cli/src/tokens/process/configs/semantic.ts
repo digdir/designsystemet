@@ -30,7 +30,7 @@ export const semanticVariables: GetStyleDictionaryConfig = ({ theme }) => {
               const isUwantedToken = R.anyPass([R.includes('primitives/global')])(token.filePath);
               const isPrivateToken = R.includes('_', token.path);
               const unwantedPaths = pathStartsWithOneOf(
-                ['size', '_size', 'font-size', 'line-height', 'letter-spacing'],
+                ['size', '_size', 'font-scale', 'font-size', 'line-height', 'letter-spacing'],
                 token,
               );
               const unwantedTypes = typeEquals(['color', 'fontWeight', 'fontFamily', 'typography'], token);
