@@ -14,7 +14,7 @@
     />
     <script src="./src/index.ts" type="module"></script>
   </head>
-  <body data-color-scheme="dark" style="padding:20px;font-family: Inter;">
+  <body data-color-scheme="auto" style="padding:20px;font-family: Inter;">
     <h1 class="ds-heading">Test webcomponents</h1>
 
     <br>
@@ -88,25 +88,28 @@
     <br>
     <br>
 
-    <fieldset class="ds-fieldset">
-      <legend>Velg Alternativ</legend>
-      <p data-fieldset="description">Introtekst</p>
-      <ds-field class="ds-field">
-        <input class="ds-input" type="radio" name="radios" value="1" checked />
-        <label>Alternativ 1</label>
-      </ds-field>
-      <ds-field class="ds-field">
-        <input class="ds-input" type="radio" name="radios" value="2" />
-        <label>Alternativ 2</label>
-      </ds-field>
-      <ds-field class="ds-field">
-        <input class="ds-input" type="radio" name="radios" value="3" />
-        <label>Alternativ 3</label>
-      </ds-field>
-      <div class="ds-validation-message" data-fieldset="validation">
-        Dette er ein feilmelding
-      </div>
-    </fieldset>
+    <div style="border: 1px solid">
+      <fieldset class="ds-fieldset">
+        <legend>Velg Alternativ</legend>
+        <p data-fieldset="description">Introtekst</p>
+        <ds-field class="ds-field">
+          <input class="ds-input" type="radio" name="radios" value="1" checked />
+          <label>Alternativ 1</label>
+        </ds-field>
+        <ds-field class="ds-field">
+          <input class="ds-input" type="radio" name="radios" value="2" />
+          <label>Alternativ 2</label>
+          <!-- <p>Description<br />Description</p> -->
+        </ds-field>
+        <ds-field class="ds-field">
+          <input class="ds-input" type="radio" name="radios" value="3" />
+          <label>Alternativ 3</label>
+        </ds-field>
+        <!-- <div class="ds-validation-message" data-fieldset="validation">
+          Dette er ein feilmelding
+        </div> -->
+      </fieldset>
+    </div>
 
     <br>
     <br>

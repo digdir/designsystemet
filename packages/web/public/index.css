@@ -700,20 +700,6 @@
     margin-top: var(--dsc-field-content-spacing);
   }
 
-  /* Expand click surface of ds-field */
-  .ds-field {
-    position: relative;
-    z-index: 1;
-  }
-  .ds-field::before {
-    min-height: var(--ds-size-10);
-    content: '';
-    inset: 50% 0;
-    position: absolute;
-    translate: 0 -50%;
-    z-index: -1;
-  }
-
   .ds-field [data-field='description'] {
     color: var(--ds-color-neutral-text-subtle); /* TODO: Remove? We have chatted about this */
   }
@@ -749,6 +735,7 @@
     }
   }
   .ds-field:has(input:is([type='radio'], [type='checkbox'])) {
+    cursor: pointer; /* Since we use [data-clickdelegatefor=""] */
     border-radius: var(--ds-border-radius-md);
     grid-template-areas: 'input content';
     grid-template-columns: auto 1fr;
@@ -884,14 +871,15 @@
     }
   }
   .ds-fieldset > * + * {
-    margin-block-start: var(--ds-size-4);
+    padding-block-start: var(--ds-size-4); /* Create gaps and expand click surface of ds-field */
   }
   .ds-fieldset > legend + p {
     color: var(--ds-color-neutral-text-subtle);
     margin-block: var(--ds-size-1) 0;
+    padding-block: 0;
   }
   .ds-fieldset > .ds-sr-only + * {
-    margin-block-start: 0;
+    padding-block-start: 0;
   }
   .ds-fieldset:disabled > legend,
   .ds-fieldset:disabled > legend + p {
