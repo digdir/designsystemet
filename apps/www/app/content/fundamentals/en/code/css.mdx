@@ -9,7 +9,7 @@ published: true
 order: 10
 ---
 
-### Layers
+## Layers
 
 We use [css layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) to get the lowest possible specificity in our css.
 This means that you can easily override it with your own styling.
@@ -23,11 +23,11 @@ You do this by first putting your reset in a layer, and then sorting this layer 
 @layer my-reset, ds;
 ```
 
-### Data attributes
+## Data attributes
 
 We offer several data attributes that can be used to change the theme of the components.
 
-#### `data-color-scheme`
+### `data-color-scheme`
 
 Used to change the color mode of the components. Possible values are `light`, `dark` and `auto`.
 
@@ -36,7 +36,7 @@ If `auto` is selected, the color mode will change based on the user's preference
 
 You can read more about this at "[Colors in code](/en/fundamentals/code/colors)".
 
-#### `data-typography`
+### `data-typography`
 
 Used to change the typography of the components. Possible values ​​are `primary` and `secondary`.
 
@@ -60,18 +60,18 @@ This can be solved by, for example, using [attribute selector](https://developer
 </table>
 ```
 
-### Helper classes
+## Helper classes
 
 We use some helper classes that can be used more generally across components.
 
-#### `ds-sr-only`
+### `ds-sr-only`
 Visually hides an element while still being accessible to screen readers.
 
-#### `ds-print-preserve`
+### `ds-print-preserve`
 Preserves appearance, including background color, in print.
 
-#### `ds-focus` / `ds-focus--inset`
+### `ds-focus` / `ds-focus--inset`
 Adds the design system focus ring around the element _when it gains focus with keyboard navigation_ (`:focus-visible`).
 
-#### `ds-focus--visible` / `ds-focus--visible--inset`
+### `ds-focus--visible` / `ds-focus--visible--inset`
 Static "always-on" classes that add the design system focus ring around the element. <span className='ds-focus--visible'>Example.</span>
