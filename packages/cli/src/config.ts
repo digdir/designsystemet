@@ -181,7 +181,7 @@ const fontSizeMode = z.object({
   overrides: fontSizeOverrides
     .optional()
     .describe(
-      'Override one or more steps in this scale to specific pixel values. Will force globalTypography.size.cssGeneration to be "static".',
+      'Override one or more steps in this scale to specific pixel values. Will force build.typographySizeValues to be "static".',
     ),
 });
 const typographySizeModes = z.partialRecord(z.enum(['small', 'medium', 'large']), fontSizeMode);
