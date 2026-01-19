@@ -300,7 +300,11 @@
     --dsc-validation-message-icon-url: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M3.25 4A.75.75 0 0 1 4 3.25h16a.75.75 0 0 1 .75.75v16a.75.75 0 0 1-.75.75H4a.75.75 0 0 1-.75-.75zM11 7.75a1 1 0 1 1 2 0 1 1 0 0 1-2 0m-1.25 3a.75.75 0 0 1 .75-.75H12a.75.75 0 0 1 .75.75v4.75h.75a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1 0-1.5h.75v-4h-.75a.75.75 0 0 1-.75-.75'/%3E%3C/svg%3E");
     --dsc-validation-message-color: var(--ds-color-info-text-subtle);
   }
-  @keyframes ds-validation-message { from { opacity: 0 } }
+  @keyframes ds-validation-message {
+    from {
+      opacity: 0;
+    }
+  }
 }
 @layer ds.components {
   [data-size]:is(.ds-avatar, .ds-heading, .ds-paragraph, .ds-spinner) {
@@ -685,14 +689,33 @@
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
+  .ds-field:not([hidden]) {
+    display: block;
+  }
+
   .ds-field > * {
     margin-block: 0;
   }
   .ds-field > * + * {
     margin-top: var(--dsc-field-content-spacing);
   }
+
+  /* Expand click surface of ds-field */
+  .ds-field {
+    position: relative;
+    z-index: 1;
+  }
+  .ds-field::before {
+    min-height: var(--ds-size-10);
+    content: '';
+    inset: 50% 0;
+    position: absolute;
+    translate: 0 -50%;
+    z-index: -1;
+  }
+
   .ds-field [data-field='description'] {
-    color: var(--ds-color-neutral-text-subtle);
+    color: var(--ds-color-neutral-text-subtle); /* TODO: Remove? We have chatted about this */
   }
   .ds-field .ds-input:not([hidden]),
   .ds-field input:not([hidden]),
@@ -960,17 +983,17 @@
     overflow: visible;
     padding: var(--dsc-popover-padding);
 
-    --_ds-is-floating: bottom;
-		position: absolute; /* Using absolute for smoother scroll-following on mobile */
-		transition-behavior: allow-discrete;
-		transition-duration: 0.2s;
-		transition-property: display, opacity, transform, visibility;
+    --_ds-floating: bottom;
+    position: absolute; /* Using absolute for smoother scroll-following on mobile */
+    transition-behavior: allow-discrete;
+    transition-duration: 0.2s;
+    transition-property: display, opacity, transform, visibility;
 
     @starting-style {
-			opacity: 0;
-			transform: translateY(2px);
-			visibility: hidden;
-		}
+      opacity: 0;
+      transform: translateY(2px);
+      visibility: hidden;
+    }
   }
   .ds-popover,
   .ds-popover:before {
@@ -1614,9 +1637,15 @@
     min-width: 15em;
     padding: var(--dsc-dropdown-padding);
 
-    --_ds-is-floating: bottom;
+    --_ds-floating: bottom;
     position: absolute; /* Using absolute for smoother scroll-following on mobile */
     inset: 0 auto auto 0;
+  }
+  /* TODO: Add to popover as well */
+  .ds-dropdown[data-overscroll='contain'] {
+    --_ds-floating-overscroll: contain;
+    overscroll-behavior: contain;
+    overflow: auto;
   }
   .ds-dropdown:before {
     display: none;
@@ -1956,10 +1985,14 @@
     text-align: center;
   }
 
-  .ds-pagination > :is(ol, ul) > li:not(:first-child, :last-child) > [data-page]:empty { 
-    &::before { content: attr(data-page) }
-    &[data-page="0"]::before { content: '...' }
-    &[data-page="0"] {
+  .ds-pagination > :is(ol, ul) > li:not(:first-child, :last-child) > [data-page]:empty {
+    &::before {
+      content: attr(data-page);
+    }
+    &[data-page='0']::before {
+      content: '...';
+    }
+    &[data-page='0'] {
       color: inherit;
       pointer-events: none;
       text-decoration: none;
@@ -2113,7 +2146,11 @@
     content: '';
     animation: ds-error-summary 1ms;
   }
-  @keyframes ds-error-summary { from { opacity: 0 } }
+  @keyframes ds-error-summary {
+    from {
+      opacity: 0;
+    }
+  }
 }
 @layer ds.components {
   .ds-toggle-group,
@@ -2217,17 +2254,17 @@
     overflow: visible;
     padding: var(--dsc-tooltip-padding);
 
-    --_ds-is-floating: top;
+    --_ds-floating: top;
     position: absolute; /* Using absolute for smoother scroll-following on mobile */
     transition-behavior: allow-discrete;
-		transition-duration: 0.2s;
-		transition-property: display, opacity, transform, visibility;
+    transition-duration: 0.2s;
+    transition-property: display, opacity, transform, visibility;
 
     @starting-style {
-			opacity: 0;
-			transform: translateY(2px);
-			visibility: hidden;
-		}
+      opacity: 0;
+      transform: translateY(2px);
+      visibility: hidden;
+    }
   }
   .ds-tooltip:popover-open {
     opacity: 1;
@@ -2237,7 +2274,6 @@
     opacity: 1;
     visibility: visible;
   }
-
 
   /* This arrow logic can become a composed "mixin" used both in tooltip and popover */
   .ds-tooltip:before {
@@ -2255,36 +2291,36 @@
     position: absolute;
     top: var(--_dsc-arrow-y, 100%);
   }
-  .ds-tooltip[data-floating="top"]::before {
+  .ds-tooltip[data-floating='top']::before {
     top: 100%;
   }
-  .ds-tooltip[data-floating="right"]::before {
+  .ds-tooltip[data-floating='right']::before {
     left: 0;
   }
-  .ds-tooltip[data-floating="bottom"]::before {
+  .ds-tooltip[data-floating='bottom']::before {
     top: 0;
   }
-  .ds-tooltip[data-floating="left"]::before {
+  .ds-tooltip[data-floating='left']::before {
     left: 100%;
   }
-  .ds-tooltip[data-floating="top"]::after,
-  .ds-tooltip[data-floating="bottom"]::after {
+  .ds-tooltip[data-floating='top']::after,
+  .ds-tooltip[data-floating='bottom']::after {
     height: var(--dsc-tooltip-arrow-size);
     left: 0;
     top: 100%;
     width: 100%;
   }
-  .ds-tooltip[data-floating="left"]::after,
-  .ds-tooltip[data-floating="right"]::after {
+  .ds-tooltip[data-floating='left']::after,
+  .ds-tooltip[data-floating='right']::after {
     height: 100%;
     left: 100%;
     top: 0;
     width: var(--dsc-tooltip-arrow-size);
   }
-  .ds-tooltip[data-floating="bottom"]::after {
+  .ds-tooltip[data-floating='bottom']::after {
     top: calc(var(--dsc-tooltip-arrow-size) * -1);
   }
-  .ds-tooltip[data-floating="right"]::after {
+  .ds-tooltip[data-floating='right']::after {
     left: calc(var(--dsc-tooltip-arrow-size) * -1);
   }
   @media (forced-colors: active) {
@@ -2878,12 +2914,13 @@
     max-height: 200px;
     overflow-y: auto;
     padding: 0;
-    position: fixed;
+    position: absolute;
+    --_ds-floating: bottom;
+    --_ds-floating-overscroll: fit;
   }
   :is(.ds-suggestion u-datalist):not([popover]) {
     inset: 100% 0 auto 0;
     margin-top: var(--dsc-suggestion-list-gap);
-    position: absolute;
     z-index: 1600;
   }
   :is(.ds-suggestion u-datalist):empty {

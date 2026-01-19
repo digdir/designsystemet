@@ -18,7 +18,7 @@ declare global {
 const ATTR_FIELD = 'data-field';
 const ATTR_FIELDSET = 'data-fieldset';
 const SELECTOR_FIELDSET = `[${ATTR_FIELDSET}]`;
-const CSS_PROP_FIELD_SIZE = '--_ds-field-sizing';
+const CSS_FIELD_SIZE = '--_ds-field-sizing';
 const TYPE_DESCRIPTION = 'description';
 const TYPE_VALIDATION = 'validation';
 
@@ -58,8 +58,8 @@ export class DSFieldElement extends DSElement {
     if (!input) return;
     for (const label of labels) attr(label, 'for', useId(input));
     if (input instanceof HTMLTextAreaElement) {
-      input.style.setProperty(CSS_PROP_FIELD_SIZE, 'auto');
-      input.style.setProperty(CSS_PROP_FIELD_SIZE, `${input.scrollHeight}px`); // Polyfill field-sizing for iOS
+      input.style.setProperty(CSS_FIELD_SIZE, 'auto');
+      input.style.setProperty(CSS_FIELD_SIZE, `${input.scrollHeight}px`); // Polyfill field-sizing for iOS
     }
 
     // Set attributes on fieldset if present
@@ -78,6 +78,8 @@ export class DSFieldElement extends DSElement {
       attr(fieldset, 'aria-labelledby', labelledby.map(useId).join(' '));
     }
 
+    const isBoolish = input.type === 'radio' || input.type === 'checkbox';
+    attr(this, 'data-clickdelegatefor', isBoolish ? useId(input) : null); // Expand click area to ds-field if radio/checkbox
     attr(input, 'aria-describedby', descs.map(useId).join(' '));
     attr(input, 'aria-invalid', `${!valid}`);
     // TODO renderCounter(input)?

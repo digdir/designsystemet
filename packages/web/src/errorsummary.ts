@@ -1,4 +1,4 @@
-import { attr, DSElement, on, QUICK_EVENT, useId } from './utils';
+import { attr, DSElement, off, on, QUICK_EVENT, useId } from './utils';
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -7,10 +7,8 @@ declare global {
 }
 
 export class DSErrorSummaryElement extends DSElement {
-  _unevents?: () => void; // Using underscore instead of private fields for backwards compatibility
-
   connectedCallback() {
-    this._unevents = on(this, 'animationend', this, QUICK_EVENT); // Using animationend to detect when element is visible
+    on(this, 'animationend', this, QUICK_EVENT); // Using animationend to detect when element is visible
     requestAnimationFrame(() => this.handleEvent({ target: this })); // Initial setup when children has rendered
   }
   handleEvent({ target }: Partial<Event>) {
@@ -21,8 +19,7 @@ export class DSErrorSummaryElement extends DSElement {
     this.focus();
   }
   disconnectedCallback() {
-    this._unevents?.();
-    this._unevents = undefined;
+    off(this, 'animationend', this, QUICK_EVENT);
   }
 }
 
