@@ -2,14 +2,53 @@
 title: Design Tokens
 sidebar_title: Design Tokens
 description: Alle variablene som blir generert av kommandolinjeverktøyet.
+<<<<<<< HEAD:apps/www/app/content/fundamentals/no/theme/variables.mdx
 date: 2025-09-02
 category: 
+=======
+date: 2026-01-19
+category: Designelementer
+>>>>>>> da40de0b8 (cleaning up and added text):apps/www/app/content/fundamentals/no/design-elements/variables.mdx
 color: red
 icon: TokenIcon
 published: true
 order: 10
 ---
 
-Design Tokens er fleksible variabler som kan benyttes uavhengig av teknologi eller designverktøy. Denne oversikten viser alle variablene som blir generert av [Designsystemet sitt kommandolinjeverktøy](/no/fundamentals/code/cli-config). Mer konkret viser vi her verdiene til Digdir-temaet, som er det vi bruker på denne nettsiden.
+Design Tokens er fleksible variabler som kan benyttes uavhengig av teknologi eller designverktøy. Denne oversikten viser alle variablene som blir generert av [Designsystemet sitt kommandolinjeverktøy](/no/fundamentals/code/cli-config).
 
-<TokenList />
+## Farger
+
+Fargevariabler som brukes til å definere fargepaletten i temaet. Bruk attributtet `data-color` for å endre farge eller `data-color-scheme` for å endre fargescheme på HTML-elementer.
+
+<ColorTokensTable />
+
+## Størrelser
+
+Størrelsevariabler som brukes til å definere avstander og størrelser. Disse variablene tilpasser seg basert på størrelsesmodusen satt ved bruk av `data-size` attributtet eller variablene `--ds-size-base` og `--ds-size-step`.
+
+<SizeVariablesTable withPreview />
+
+## Border-radius
+
+Border radius variabler som brukes til å definere border radius på komponenter og former. Bruk variablene `--ds-border-radius-base` og `--ds-border-radius-step` for å justere intensiteten på border radius.
+
+<BorderRadiusVariablesTable withPreview />
+
+## Skygger
+
+Skyggevariabler som brukes til å definere skygger på komponenter og elementer.
+
+<ShadowVariablesTable withPreview />
+
+## Opasitet
+
+Opasitetsvariabler som brukes til å definere opasitetsnivåer på komponenter og elementer.
+
+<OpacityVariablesTable withPreview />
+
+## Typografi
+
+Typografivariabler som brukes til å definere skriftstiler, størrelser og vekter.
+
+<TypographyVariablesTable />
