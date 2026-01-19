@@ -40,7 +40,7 @@
     },
     "7": {
       "$type": "fontSizes",
-      "$value": "roundTo({font-scale._base} * pow({font-scale._ratio}, 3), 0)"
+      "$value": "roundTo({font-scale._base} * pow({font-scale._ratio}, 4), 0)"
     },
     "8": {
       "$type": "fontSizes",
@@ -53,6 +53,18 @@
     "10": {
       "$type": "fontSizes",
       "$value": "roundTo({font-scale._base} * pow({font-scale._ratio}, 9), 0)"
+    },
+    "6-half": {
+      "$type": "fontSizes",
+      "$value": "roundTo({font-scale._base} * pow({font-scale._ratio}, 3), 0)"
+    },
+    "8-half": {
+      "$type": "fontSizes",
+      "$value": "roundTo({font-scale._base} * pow({font-scale._ratio}, 6), 0)"
+    },
+    "9-half": {
+      "$type": "fontSizes",
+      "$value": "roundTo({font-scale._base} * pow({font-scale._ratio}, 8), 0)"
     }
   },
   "letter-spacing": {
