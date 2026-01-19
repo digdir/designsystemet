@@ -23,7 +23,7 @@ export const OpacityVariablesTable = (props: SemanticTableProps) => {
   return (
     <SemanticVariablesTable
       tokens={opacityTokens}
-      heading={t('token-preview.opacity.heading')}
+      caption={t('token-preview.opacity.caption')}
       {...props}
     />
   );

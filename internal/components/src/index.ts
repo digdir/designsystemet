@@ -13,7 +13,11 @@ export {
   BorderRadiusVariablesTable,
   styleBorderRadiusVars,
 } from './tokens/border-radius-table';
-export { ColorTokensTable } from './tokens/color/color-table';
+export {
+  BorderWidthVariablesTable,
+  styleBorderWidthVars,
+} from './tokens/border-width-table';
+export { ColorTokensTable } from './tokens/color-table';
 export {
   OpacityVariablesTable,
   styleOpacityVars,
@@ -24,3 +28,4 @@ export {
   styleShadowVars,
 } from './tokens/shadow-table';
 export { SizeVariablesTable } from './tokens/size-table';
+export { TypographyVariablesTable } from './tokens/typography-table';

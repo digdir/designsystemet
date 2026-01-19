@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getValuePreview, getValueRender } from './common';
 import sizeTokens from './design-tokens/size.json';
-import classes from './semantic.module.css';
+import classes from './table.module.css';
 
 export const SizeVariablesTable = ({
   heading,
@@ -45,7 +45,7 @@ export const SizeVariablesTable = ({
         <Table data-size='sm'>
           <caption>
             <Heading level={4} data-size='md'>
-              {heading ?? t('token-preview.size.heading')}
+              {heading ?? t('token-preview.size.caption')}
             </Heading>
           </caption>
           <Table.Head>

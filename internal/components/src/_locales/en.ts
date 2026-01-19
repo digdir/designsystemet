@@ -45,29 +45,34 @@ export default {
   'token-preview': {
     size: {
       'select-label': 'Select size',
-      heading: 'Size variables',
+      caption: 'Size variables',
       description:
         'The table below shows which size variables will be changed when you change the size of an element using the `data-size` attribute.',
     },
     color: {
-      heading: 'Color variables',
+      caption: 'Color variables',
       description:
         'The table below shows which color variables will be changed when you change the color of an element using the `data-color` attribute.',
     },
     'border-radius': {
-      heading: 'Border radius variables',
+      caption: 'Border-radius variables',
       description:
-        'The table below shows the border radius variables in Designsystemet.',
+        'The table below shows the border-radius variables in Designsystemet.',
     },
     opacity: {
-      heading: 'Opacity variables',
+      caption: 'Opacity variables',
       description:
         'The table below shows the opacity variables in Designsystemet.',
     },
     shadow: {
-      heading: 'Shadow variables',
+      caption: 'Shadow variables',
       description:
         'The table below shows the shadow variables in Designsystemet.',
+    },
+    'border-width': {
+      caption: 'Border-width variables',
+      description:
+        'The table below shows the border-width variables in Designsystemet.',
     },
     'search-in-design-tokens': 'Search in design tokens',
     'search-input-aria-label':

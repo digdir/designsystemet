@@ -4,6 +4,7 @@ import {
   OpacityVariablesTable,
   ShadowVariablesTable,
   SizeVariablesTable,
+  TypographyVariablesTable,
 } from '@internal/components';
 
 import classes from './token-list.module.css';
@@ -16,6 +17,7 @@ export const TokenList = () => {
       <BorderRadiusVariablesTable />
       <ShadowVariablesTable />
       <OpacityVariablesTable />
+      <TypographyVariablesTable />
     </div>
   );
 };

@@ -22,7 +22,7 @@ export const ShadowVariablesTable = (props: SemanticTableProps) => {
   return (
     <SemanticVariablesTable
       tokens={shadowTokens}
-      heading={t('token-preview.shadow.heading')}
+      caption={t('token-preview.shadow.caption')}
       {...props}
     />
   );

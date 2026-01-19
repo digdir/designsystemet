@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import classes from './semantic.module.css';
+import classes from './table.module.css';
 
 const getComputedValue = (value: string, size?: string) => {
   const elm = document.createElement('div');

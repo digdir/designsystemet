@@ -5,11 +5,11 @@ import {
   SemanticVariablesTable,
 } from './semantic-table';
 
-const borderRadiusTokens = semanticTokens.filter(({ variable }) =>
-  /^--ds-border-radius/.test(variable),
+const borderWidthTokens = semanticTokens.filter(({ variable }) =>
+  /^--ds-border-width/.test(variable),
 );
 
-export const styleBorderRadiusVars = borderRadiusTokens.reduce(
+export const styleBorderWidthVars = borderWidthTokens.reduce(
   (acc, token) => {
     acc[token.variable] = token.value;
     return acc;
@@ -17,14 +17,14 @@ export const styleBorderRadiusVars = borderRadiusTokens.reduce(
   {} as Record<string, string>,
 );
 
-export const BorderRadiusVariablesTable = (props: SemanticTableProps) => {
+export const BorderWidthVariablesTable = (props: SemanticTableProps) => {
   const { t } = useTranslation();
 
   return (
     <SemanticVariablesTable
-      tokens={borderRadiusTokens}
-      style={styleBorderRadiusVars}
-      caption={t('token-preview.border-radius.caption')}
+      tokens={borderWidthTokens}
+      style={styleBorderWidthVars}
+      caption={t('token-preview.border-width.caption')}
       {...props}
     />
   );

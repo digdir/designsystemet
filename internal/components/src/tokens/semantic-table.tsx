@@ -3,31 +3,27 @@ import type { HTMLAttributes } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getValuePreview, getValueRender } from './common';
 import semanticTokens from './design-tokens/semantic.json';
-import classes from './semantic.module.css';
+import classes from './table.module.css';
 import type { PreviewToken } from './types';
 
 export type SemanticTableProps = {
   tokens?: PreviewToken[];
-  heading?: string;
+  caption?: string;
   withPreview?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const SemanticVariablesTable = ({
   tokens,
-  heading,
+  caption,
   withPreview = false,
 }: SemanticTableProps) => {
   const { t } = useTranslation();
   const previewTokens = tokens ?? semanticTokens;
 
   return (
-    <div key={heading} className={classes['overflow-table']}>
+    <div key={caption} className={classes['overflow-table']}>
       <Table data-color='accent'>
-        <caption>
-          <Heading level={4} data-size='md'>
-            {heading ?? t('token-preview.semantic.heading')}
-          </Heading>
-        </caption>
+        <caption>{caption ?? t('token-preview.semantic.caption')}</caption>
         <Table.Head>
           <Table.Row>
             <Table.HeaderCell>{t('token-preview.table.name')}</Table.HeaderCell>

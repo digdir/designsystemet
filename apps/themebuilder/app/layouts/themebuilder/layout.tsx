@@ -1,6 +1,7 @@
-import { Heading } from '@digdir/designsystemet-react';
+import { Card } from '@digdir/designsystemet-react';
 import {
   BorderRadiusVariablesTable,
+  BorderWidthVariablesTable,
   OpacityVariablesTable,
   ShadowVariablesTable,
   SizeVariablesTable,
@@ -69,29 +70,50 @@ export const ThemePages = () => {
       );
     case 'variables':
       return (
-        <div
-          className={classes.variablesPanel}
-          data-color-scheme={colorScheme}
-          hidden={!(tab === 'variables')}
-        >
-          <Heading level={2} data-size='lg' className={classes['rainbow-box']}>
-            Mia
-          </Heading>
-          <div className={classes.basicPanel}>
+        <div className={classes.variablesPanel} hidden={!(tab === 'variables')}>
+          <Card
+            data-color='neutral'
+            data-variant='tinted'
+            data-color-scheme={colorScheme}
+          >
             <OverviewVariables />
-          </div>
-          <div className={classes.basicPanel}>
+          </Card>
+          <Card
+            data-color='neutral'
+            data-variant='tinted'
+            data-color-scheme={colorScheme}
+          >
             <SizeVariablesTable withPreview />
-          </div>
-          <div className={classes.basicPanel}>
-            <BorderRadiusVariablesTable withPreview />
-          </div>
-          <div className={classes.basicPanel}>
+          </Card>
+
+          <Card
+            data-color='neutral'
+            data-variant='tinted'
+            data-color-scheme={colorScheme}
+          >
             <ShadowVariablesTable withPreview />
-          </div>
-          <div className={classes.basicPanel}>
+          </Card>
+          <Card
+            data-color='neutral'
+            data-variant='tinted'
+            data-color-scheme={colorScheme}
+          >
+            <BorderRadiusVariablesTable withPreview />
+          </Card>
+          <Card
+            data-color='neutral'
+            data-variant='tinted'
+            data-color-scheme={colorScheme}
+          >
+            <BorderWidthVariablesTable withPreview />
+          </Card>
+          <Card
+            data-color='neutral'
+            data-variant='tinted'
+            data-color-scheme={colorScheme}
+          >
             <OpacityVariablesTable withPreview />
-          </div>
+          </Card>
         </div>
       );
     default:

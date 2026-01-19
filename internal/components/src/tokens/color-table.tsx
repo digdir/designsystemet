@@ -1,29 +1,25 @@
-import { Heading, Table } from '@digdir/designsystemet-react';
+import { Table } from '@digdir/designsystemet-react';
 import { useTranslation } from 'react-i18next';
-import colorTokens from '../design-tokens/color.json';
-import classes from './color.module.css';
+import colorTokens from './design-tokens/color.json';
+import classes from './table.module.css';
 
 const colorStructure = colorTokens.primary;
 
 type ColorTokensTableProps = {
   withPreview?: boolean;
-  heading?: string;
+  caption?: string;
   description?: string;
 };
 
 export const ColorTokensTable = ({
   withPreview = false,
-  heading,
+  caption,
 }: ColorTokensTableProps) => {
   const { t } = useTranslation();
 
   return (
     <Table data-size='sm'>
-      <caption>
-        <Heading level={4} data-size='md'>
-          {heading ?? t('token-preview.color.heading')}
-        </Heading>
-      </caption>
+      <caption>{caption ?? t('token-preview.color.caption')}</caption>
       <Table.Head>
         <Table.Row>
           <Table.HeaderCell>{t('token-preview.table.name')}</Table.HeaderCell>
