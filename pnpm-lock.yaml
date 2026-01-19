@@ -655,7 +655,7 @@ importers:
 
   packages/types: {}
 
-  packages/wc:
+  packages/web:
     dependencies:
       '@floating-ui/dom':
         specifier: ^1.7.4
