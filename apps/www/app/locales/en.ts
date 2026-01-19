@@ -22,7 +22,7 @@ export default {
     toolbox: {
       title: 'A common design system',
       description:
-        'Designsystemet is a shared toolbox of foundational UI components, guidelines, and patterns to support the development of digital services. It helps teams build efficiently while ensuring consistent and user-friendly experiences.',
+        'Designsystemet is a shared toolkit of UI components and guidelines for developing digital services. It is free to use, designed to be used with an organisation’s own visual identity, and supports efficient product development and coherent user experiences.',
       link: 'Read more about Designsystemet',
     },
     'components-section': {
