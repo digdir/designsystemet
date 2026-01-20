@@ -121,6 +121,57 @@ body,
   }
 }
 
+/**
+ * Used in JS to detect visibility, but with ::after to allow custom animation on the component itself
+ */
+.ds-visibility-detection::after {
+  content: '';
+  animation: _is-visible 1ms;
+}
+@keyframes _is-visible {
+  from {
+    opacity: 0;
+  }
+}
+
+/**
+ * Used to position floating elements like dropdowns, popovers and tooltips
+ */
+.ds-floating {
+  --_ds-floating: bottom;
+  overflow: visible;
+  inset: 0 auto auto 0;
+  position: absolute; /* Using absolute for smoother scroll-following on mobile */
+  transition-property: display, opacity, transform, visibility;
+  transition-duration: 0.2s;
+  transition-behavior: allow-discrete;
+
+  @starting-style {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &[data-overscroll='contain'] {
+    --_ds-floating-overscroll: contain;
+    overscroll-behavior: contain;
+    overflow: auto;
+  }
+
+  /* Move arrow element */
+  &[data-floating='top']::before {
+    top: 100%;
+  }
+  &[data-floating='right']::before {
+    left: 0;
+  }
+  &[data-floating='bottom']::before {
+    top: 0;
+  }
+  &[data-floating='left']::before {
+    left: 100%;
+  }
+}
+
 /* Setting default font on <body> not :root/<html> to ensure 1rem is still 16px */
 body {
   font-weight: var(--ds-body-md-font-weight);

@@ -11,6 +11,7 @@
   padding: var(--dsc-errorsummary-padding);
 
   @composes ds-focus from './base.css';
+  @composes ds-visibility-detection from './base.css';
 
   &:not([hidden]) {
     display: block;

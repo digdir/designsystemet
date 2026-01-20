@@ -1,4 +1,5 @@
 /* TODO: ds-togglegroup can be removed in the next major version */
+
 .ds-toggle-group,
 .ds-togglegroup {
   --dsc-togglegroup-background: var(--ds-color-surface-default);
@@ -25,36 +26,45 @@
   overflow-x: auto;
   width: auto;
 
+  /* TODO: Style label as button teriary */
+
   &:not([hidden]) {
     display: grid;
   }
+
+  & label input {
+    position: absolute;
+    opacity: 0;
+  }
+
   &[data-variant='secondary'] {
     --dsc-togglegroup-background: var(--ds-color-surface-tinted);
     --dsc-togglegroup-border-color: var(--ds-color-border-subtle);
     border: none;
     outline: var(--dsc-togglegroup-border-width) var(--dsc-togglegroup-border-style) var(--dsc-togglegroup-border-color);
     outline-offset: calc(var(--dsc-togglegroup-border-width) * -1);
-    button {
+    label {
       --dsc-button-color: var(--ds-color-text-default);
       --dsc-button-color--hover: var(--ds-color-text-default);
       border-radius: inherit;
     }
-    button[aria-checked='true'] {
+    label:has(input:checked) {
       isolation: isolate; /*creates a new stacking context so button shows above the parent's overlapping outline*/
       background-color: var(--ds-color-surface-default);
       --dsc-button-border-color: var(--ds-color-text-default);
     }
   }
 
-  button {
+  label {
     border-radius: calc(var(--dsc-togglegroup-border-radius) - var(--dsc-togglegroup-border-width));
     height: 100%;
     min-height: unset;
     white-space: nowrap;
     min-width: fit-content;
-    &:not([aria-checked='true']) {
+    &:not(:has(input:checked)) {
       --dsc-button-color: var(--ds-color-text-default);
       --dsc-button-color--hover: var(--ds-color-text-default);
+      --dsc-button-background: transparent;
     }
 
     @composes ds-focus--inset from './base.css';
@@ -65,7 +75,7 @@
     }
 
     @media (forced-colors: active) {
-      &[aria-checked='true'] {
+      &:has(input:checked) {
         background: ButtonText;
         color: CanvasText;
 

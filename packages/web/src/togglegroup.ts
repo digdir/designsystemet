@@ -1,6 +1,6 @@
 import { attr, on, onHotReload, onMutation } from './utils';
 
-const ATTR_TOGGLEGROUP = 'data-togglegroup';
+const ATTR_TOGGLEGROUP = 'data-toggle-group';
 const SELECTOR_TOGGLEGROUP = `[${ATTR_TOGGLEGROUP}]`;
 
 function handleAriaAttributes() {

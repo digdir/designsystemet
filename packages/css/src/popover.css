@@ -18,28 +18,11 @@
   box-shadow: var(--dsc-popover-box-shadow);
   box-sizing: border-box;
   color: var(--dsc-popover-color);
-  inset: 0 auto auto 0;
   max-width: var(--dsc-popover-max-width);
-  overflow: visible;
   padding: var(--dsc-popover-padding);
 
   /* TODO: Make generic compose file */
-  --_ds-floating: bottom;
-  position: absolute; /* Using absolute for smoother scroll-following on mobile */
-  transition-property: display, opacity, transform, visibility;
-  transition-duration: 0.2s;
-  transition-behavior: allow-discrete;
-
-  &[data-overscroll='contain'] {
-    --_ds-floating-overscroll: contain;
-    overscroll-behavior: contain;
-    overflow: auto;
-  }
-
-  @starting-style {
-    opacity: 0;
-    visibility: hidden;
-  }
+  @composes ds-floating from './base.css';
 
   &::before {
     background: var(--dsc-popover-background);

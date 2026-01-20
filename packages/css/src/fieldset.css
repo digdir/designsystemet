@@ -23,7 +23,7 @@
 
   & > legend + p {
     color: var(--ds-color-neutral-text-subtle);
-    /* margin-block: 0; */
+    margin-block: 0; /* Reset margin for description */
   }
 
   /* & > *.ds-sr-only + * {
