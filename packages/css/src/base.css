@@ -125,8 +125,9 @@ body,
  * Used in JS to detect visibility, but with ::after to allow custom animation on the component itself
  */
 .ds-visibility-detection::after {
-  content: '';
+  --_ds-visibility-detection: true;
   animation: _is-visible 1ms;
+  content: '';
 }
 @keyframes _is-visible {
   from {

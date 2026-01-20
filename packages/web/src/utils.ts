@@ -112,22 +112,23 @@ export const onHotReload = (key: string, setup: () => Array<() => void>) => {
 export const onMutation = (
   el: Node,
   callback: (observer: MutationObserver) => void,
-  options: MutationObserverInit,
+  options: MutationObserverInit & { debounce?: number | false },
 ) => {
   let queue = 0;
+  const { debounce: ms = 200, ...opts } = options;
   const onTimer = () => {
     if (!isBrowser()) return cleanup(); // If using JSDOM, the document might have been removed
     callback(observer);
     observer.takeRecords(); // Clear records to avoid running callback multiple times
     queue = 0;
   };
-  const onFrame = debounce(onTimer, 200); // Use both requestAnimationFrame and setTimeout to debounce and only run when visible
+  const onFrame = ms ? debounce(onTimer, ms) : onTimer; // Use both requestAnimationFrame and setTimeout to debounce and only run when visible
   const cleanup = () => observer?.disconnect?.();
   const observer = new MutationObserver(() => {
     if (!queue) queue = requestAnimationFrame(onFrame); // requestAnimationFrame only runs when page is not visible
   });
 
-  observer.observe(el, options);
+  observer.observe(el, opts);
   onFrame(); // Initial run
   return cleanup;
 };
@@ -173,7 +174,7 @@ export const customElements = {
  */
 let id = 0;
 const hash = `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 5)}`;
-export function useId(el: Element) {
-  if (!el.id) el.id = `${hash}${++id}`;
-  return el.id;
+export function useId(el?: Element | null) {
+  if (el && !el.id) el.id = `${hash}${++id}`;
+  return el?.id || '';
 }
