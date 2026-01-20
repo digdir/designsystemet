@@ -122,20 +122,6 @@ body,
 }
 
 /**
- * Used in JS to detect visibility, but with ::after to allow custom animation on the component itself
- */
-.ds-visibility-detection::after {
-  --_ds-visibility-detection: true;
-  animation: _is-visible 1ms;
-  content: '';
-}
-@keyframes _is-visible {
-  from {
-    opacity: 0;
-  }
-}
-
-/**
  * Used to position floating elements like dropdowns, popovers and tooltips
  */
 .ds-floating {

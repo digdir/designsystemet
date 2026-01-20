@@ -4,10 +4,8 @@ import {
   DSElement,
   debounce,
   isBrowser,
-  on,
   onHotReload,
   onMutation,
-  QUICK_EVENT,
   useId,
 } from './utils';
 
@@ -19,39 +17,28 @@ declare global {
 
 const ATTR_FIELD = 'data-field';
 const CSS_FIELD_SIZE = '--_ds-field-sizing';
-const CSS_VISIBILITY = '--_ds-visibility-detection';
 const TYPE_DESCRIPTION = 'description';
 const TYPE_VALIDATION = 'validation';
-const SELECTOR_DESCRIPTION = `[${ATTR_FIELD}="${TYPE_DESCRIPTION}"]`;
-const SELECTOR_VALIDATION = `[${ATTR_FIELD}="${TYPE_VALIDATION}"]`;
+const SELECTOR_FIELDSET_DESCRIPTION = `:scope > [${ATTR_FIELD}="${TYPE_DESCRIPTION}"]`;
+const SELECTOR_FIELDSET_VALIDATION = `:scope > [${ATTR_FIELD}="${TYPE_VALIDATION}"]`;
 const FIELDS = new Set<DSFieldElement>();
 const FILEDSETS = isBrowser() ? document.getElementsByTagName('fieldset') : [];
 
-const handleVisibility = (event: Partial<AnimationEvent>) => {
-  if (
-    event.target instanceof Element &&
-    getComputedStyle(event.target, event.pseudoElement).getPropertyValue(
-      CSS_VISIBILITY,
-    )
-  )
-    handleMutations();
-};
-
+// TODO: Document that Validation must be hidden with "hidden" attribute (or completely removed from DOM), not display: none
 const handleMutations = debounce(() => {
-  console.log('wire it up!');
   setupFieldsets();
   setupFields();
-}, 200); // Debounce to avoid excessive calculations on multiple mutations
+}, 100); // Debounce to avoid excessive calculations on multiple mutations
 
 // Connect fieldset legend and descriptions
 const setupFieldsets = () => {
   for (const fieldset of FILEDSETS) {
-    const legend = fieldset.querySelector('legend');
-    const description = fieldset.querySelector(
-      `:scope > ${SELECTOR_DESCRIPTION}`,
-    ); // TODO Allow nested description elements
-    const labelledby = [legend, description].map(useId).join(' ');
-    attr(fieldset, 'aria-labelledby', labelledby);
+    const labelledby = [
+      fieldset.querySelector('legend'),
+      fieldset.querySelector(SELECTOR_FIELDSET_DESCRIPTION),
+    ].filter(isVisible);
+
+    attr(fieldset, 'aria-labelledby', labelledby.map(useId).join(' '));
   }
 };
 
@@ -63,32 +50,36 @@ const setupFields = () => {
 
     for (const el of field.getElementsByTagName('*')) {
       if (el instanceof HTMLLabelElement) labels.push(el);
-      else if (isInputLike(el)) input = el;
-      else {
+      else if (isInputLike(el)) {
+        if (input)
+          console.warn(
+            field,
+            `should only have one input element.Use <fieldset> to group multiple <${field.nodeName.toLowerCase()}> elements`,
+          );
+        input = el;
+      } else if (isVisible(el)) {
         const type = el.getAttribute(ATTR_FIELD); // Using getAttribute not attr for best performance
-        if (type === TYPE_VALIDATION && isVisible(el)) descs.unshift(el);
-        else if (type === TYPE_DESCRIPTION && isVisible(el)) descs.push(el);
+        if (type === TYPE_VALIDATION) descs.unshift(el);
+        else if (type === TYPE_DESCRIPTION) descs.push(el);
       }
     }
 
-    if (!input) return;
+    if (!input) return console.error(field, 'is missing input element');
     for (const label of labels) attr(label, 'for', useId(input));
     if (input instanceof HTMLTextAreaElement) {
       input.style.setProperty(CSS_FIELD_SIZE, 'auto');
       input.style.setProperty(CSS_FIELD_SIZE, `${input.scrollHeight}px`); // Polyfill field-sizing for iOS
     }
 
-    // Add fieldset validation
-    const validation = field
+    const fieldsetValidation = field
       .closest('fieldset')
-      ?.querySelector(SELECTOR_VALIDATION); // TODO Allow nested validation elements
-    if (isVisible(validation)) descs.unshift(validation);
+      ?.querySelector(SELECTOR_FIELDSET_VALIDATION);
+    if (isVisible(fieldsetValidation)) descs.unshift(fieldsetValidation);
 
     const isBoolish = input.type === 'radio' || input.type === 'checkbox';
     attr(field, 'data-clickdelegatefor', isBoolish ? useId(input) : null); // Expand click area to ds-field if radio/checkbox
     attr(input, 'aria-describedby', descs.map(useId).join(' '));
-    attr(input, 'aria-invalid', `${!descs.some(isInvalid)}`);
-    // TODO renderCounter(input)?
+    attr(input, 'aria-invalid', `${descs.some(isInvalid)}`);
   }
 };
 
@@ -98,16 +89,18 @@ const isInputLike = (el: unknown): el is HTMLInputElement =>
   !(el instanceof HTMLButtonElement); // But skip <button> elements
 
 const isVisible = (el?: Element | null): el is Element =>
-  el instanceof Element && !!el.clientHeight;
+  !!el && !el.hasAttribute('hidden');
 
 const isInvalid = (el: Element): boolean =>
+  el.getAttribute(ATTR_FIELD) === TYPE_VALIDATION &&
   attr(el, 'data-color') !== 'success';
 
-// Used to keep track of active fields on the page
+// Custom element is used to performantly keep track of fields on the page
 export class DSFieldElement extends DSElement {
   connectedCallback() {
     FIELDS.add(this);
     handleMutations();
+    // TODO renderCounter(input)?
   }
   disconnectedCallback() {
     FIELDS.delete(this);
@@ -117,10 +110,9 @@ export class DSFieldElement extends DSElement {
 customElements.define('ds-field', DSFieldElement);
 
 onHotReload('field', () => [
-  on(document, 'animationend', handleVisibility, QUICK_EVENT),
   onMutation(document, handleMutations, {
     debounce: false, // No need to timeout debounce here as we handle it ourselves
-    attributeFilter: [ATTR_FIELD],
+    attributeFilter: ['hidden', ATTR_FIELD], // Listen for hidden to detect hidden validations
     attributes: true,
     childList: true,
     subtree: true,

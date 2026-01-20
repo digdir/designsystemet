@@ -11,7 +11,6 @@
   padding-inline-start: calc(var(--dsc-validation-message-icon-size) + var(--dsc-validation-message-spacing));
 
   @composes ds-print-preserve from './base.css';
-  @composes ds-visibility-detection from './base.css';
 
   &::before {
     background: currentcolor;

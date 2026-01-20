@@ -25,14 +25,19 @@
     margin-block-end: calc(var(--_dsc-fieldset-gap--half) * -1);
   }
 
-  & > legend + p {
+  & > legend + p /* Kept for backawrds compatibility */,
+  & > [data-field='description'] {
     color: var(--ds-color-neutral-text-subtle);
+  }
+  & > legend + p /* Kept for backawrds compatibility */,
+  & > legend + [data-field='description'] {
     padding-block-start: 0;
     margin-block: 0; /* Reset margin for description */
   }
 
   &:disabled > legend,
-  &:disabled > legend + p {
+  &:disabled > legend + p /* Kept for backawrds compatibility */,
+  &:disabled > [data-field='description'] {
     opacity: var(--ds-opacity-disabled);
   }
 }
