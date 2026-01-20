@@ -1,8 +1,8 @@
 ARG PORT
 ARG HOST
 ARG APP_ENV
-
-FROM node:24.12.0-slim@sha256:6d8047885b91084ceff824c02950be237dafcbfd3d1b6e69d49c919868e806be AS base
+# find sha for image on https://hub.docker.com/_/node/tags
+FROM node:24.13.0-slim@sha256:bf22df20270b654c4e9da59d8d4a3516cce6ba2852e159b27288d645b7a7eedc AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
