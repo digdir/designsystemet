@@ -26,8 +26,6 @@
   overflow-x: auto;
   width: auto;
 
-  /* TODO: Style label as button teriary */
-
   &:not([hidden]) {
     display: grid;
   }
@@ -35,6 +33,17 @@
   & label input {
     position: absolute;
     opacity: 0;
+  }
+
+  & label {
+    @composes ds-button from './button.css';
+    &:not(:has(input:checked)) {
+      --dsc-button-background: transparent;
+      --dsc-button-background--active: var(--ds-color-surface-active);
+      --dsc-button-background--hover: var(--ds-color-surface-hover);
+      --dsc-button-color: var(--ds-color-text-subtle);
+      --dsc-button-color--hover: var(--ds-color-text-default);
+    }
   }
 
   &[data-variant='secondary'] {
