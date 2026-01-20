@@ -184,7 +184,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
         imgWidth='1195'
         link={{
           text: t('frontpage.toolbox.link'),
-          href: 'fundamentals/introduction/about-the-design-system',
+          href: 'intro/about-the-design-system',
         }}
       >
         <img

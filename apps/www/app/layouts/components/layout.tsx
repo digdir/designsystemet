@@ -32,14 +32,17 @@ export const loader = async ({
       url: string;
       order?: number;
     }[];
-  } = {};
+  } = {
+    ' ': [],
+  };
 
-  // Add changelog as first item in get-started
   const changelogItem = {
     title: t('components.changelog.title'),
     url: `/${lang}/components/changelog`,
     order: 1,
   };
+  // Add changelog to an empty category
+  cats[' '].push(changelogItem);
 
   // Get all folders in components-docs/{lang}
   const docsFolders = getFoldersInContentDir(join('components-docs', lang));
@@ -71,11 +74,6 @@ export const loader = async ({
 
     // Sort items within the category by order
     cats[categoryKey].sort((a, b) => (a.order || 9999) - (b.order || 9999));
-  }
-
-  // Add changelog to get-started if it exists
-  if (cats.getStarted) {
-    cats.getStarted.unshift(changelogItem);
   }
 
   /* read all folders in content/components */
@@ -127,9 +125,9 @@ export const loader = async ({
   // Reorder cats: getStarted first, then component categories, then other doc categories
   const orderedCats: typeof cats = {};
 
-  // 1. Add getStarted first
-  if (cats.getStarted) {
-    orderedCats.getStarted = cats.getStarted;
+  // 1. Add empty category (for changelog)
+  if (cats[' ']) {
+    orderedCats[' '] = cats[' '];
   }
 
   // 2. Add component categories
@@ -137,11 +135,9 @@ export const loader = async ({
     orderedCats[key] = value;
   });
 
-  // 3. Add other doc categories (from components-docs, excluding getStarted)
+  // 3. Add other doc categories
   Object.entries(cats).forEach(([key, value]) => {
-    if (key !== 'getStarted') {
-      orderedCats[key] = value;
-    }
+    orderedCats[key] = value;
   });
 
   const trimmedUrl = request.url.endsWith('/')

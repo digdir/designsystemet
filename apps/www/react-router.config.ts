@@ -7,7 +7,10 @@ import { generateSitemap } from './app/_utils/config/generate-sitemap';
 const config: Config = {
   ssr: true,
   buildDirectory: 'dist',
-  prerender: generatePrerenderPaths(),
+  prerender: {
+    paths: generatePrerenderPaths(),
+    unstable_concurrency: 10,
+  },
   presets: [],
   future: {
     unstable_trailingSlashAwareDataRequests: true,

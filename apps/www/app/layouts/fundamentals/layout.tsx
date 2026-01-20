@@ -35,18 +35,16 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   } = {};
 
   if (lang === 'no') {
-    cats.Introduksjon = [];
-    cats.Designelementer = [];
-    cats.Temabygger = [];
+    cats['Start her'] = [];
     cats.Kode = [];
+    cats.Tema = [];
     cats.Figma = [];
   }
 
   if (lang === 'en') {
-    cats.Introduction = [];
-    cats['Design Elements'] = [];
-    cats['Theme Builder'] = [];
+    cats['Start here'] = [];
     cats.Code = [];
+    cats.Theme = [];
     cats.Figma = [];
   }
 

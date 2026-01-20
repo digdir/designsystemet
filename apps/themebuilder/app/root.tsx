@@ -54,11 +54,11 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   const centerLinks = [
     {
       text: 'footer.about',
-      url: `https://designsystemet.no/${lang}/fundamentals/introduction/about-the-design-system`,
+      url: `https://designsystemet.no/${lang}/intro/about-the-design-system`,
     },
     {
       text: 'footer.privacy',
-      url: `https://designsystemet.no/${lang}/fundamentals/privacy-policy`,
+      url: `https://designsystemet.no/${lang}/intro/privacy-policy`,
     },
     {
       text: 'footer.accessibility',
@@ -68,24 +68,28 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 
   const menu = [
     {
+      name: 'navigation.intro',
+      href: `https://designsystemet.no/${lang}/intro`,
+    },
+    {
       name: 'navigation.fundamentals',
       href: `https://designsystemet.no/${lang}/fundamentals`,
     },
     {
-      name: 'navigation.best-practices',
-      href: `https://designsystemet.no/${lang}/best-practices`,
+      name: 'navigation.components',
+      href: `https://designsystemet.no/${lang}/components`,
     },
     {
       name: 'navigation.patterns',
       href: `https://designsystemet.no/${lang}/patterns`,
     },
     {
-      name: 'navigation.blog',
-      href: `https://designsystemet.no/${lang}/blog`,
+      name: 'navigation.best-practices',
+      href: `https://designsystemet.no/${lang}/best-practices`,
     },
     {
-      name: 'navigation.components',
-      href: `https://designsystemet.no/${lang}/components`,
+      name: 'navigation.blog',
+      href: `https://designsystemet.no/${lang}/blog`,
     },
     {
       name: 'navigation.theme-builder',
