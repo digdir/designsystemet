@@ -33,11 +33,28 @@
   & label input {
     position: absolute;
     opacity: 0;
+    pointer-events: none;
   }
 
   & label {
     @composes ds-button from './button.css';
+
     &:not(:has(input:checked)) {
+      --dsc-button-background: transparent;
+      --dsc-button-background--active: var(--ds-color-surface-active);
+      --dsc-button-background--hover: var(--ds-color-surface-hover);
+      --dsc-button-color: var(--ds-color-text-subtle);
+      --dsc-button-color--hover: var(--ds-color-text-default);
+    }
+    &:has(input:focus-visible) {
+      @composes ds-focus--visible--inset from './base.css';
+    }
+  }
+
+  & button {
+    @composes ds-focus--inset from './base.css';
+
+    &:not([aria-checked='true']) {
       --dsc-button-background: transparent;
       --dsc-button-background--active: var(--ds-color-surface-active);
       --dsc-button-background--hover: var(--ds-color-surface-hover);
@@ -52,31 +69,28 @@
     border: none;
     outline: var(--dsc-togglegroup-border-width) var(--dsc-togglegroup-border-style) var(--dsc-togglegroup-border-color);
     outline-offset: calc(var(--dsc-togglegroup-border-width) * -1);
-    label {
+
+    label,
+    button {
       --dsc-button-color: var(--ds-color-text-default);
       --dsc-button-color--hover: var(--ds-color-text-default);
       border-radius: inherit;
     }
-    label:has(input:checked) {
+    label:has(input:checked),
+    button[aria-checked='true'] {
       isolation: isolate; /*creates a new stacking context so button shows above the parent's overlapping outline*/
       background-color: var(--ds-color-surface-default);
       --dsc-button-border-color: var(--ds-color-text-default);
     }
   }
 
-  label {
+  label,
+  button {
     border-radius: calc(var(--dsc-togglegroup-border-radius) - var(--dsc-togglegroup-border-width));
     height: 100%;
     min-height: unset;
     white-space: nowrap;
     min-width: fit-content;
-    &:not(:has(input:checked)) {
-      --dsc-button-color: var(--ds-color-text-default);
-      --dsc-button-color--hover: var(--ds-color-text-default);
-      --dsc-button-background: transparent;
-    }
-
-    @composes ds-focus--inset from './base.css';
 
     &[data-icon] {
       height: 100%;
