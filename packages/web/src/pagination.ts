@@ -59,8 +59,6 @@ export class DSPaginationElement extends DSElement {
 
     items.forEach((item, i) => {
       const page = i ? (items[i + 1] ? pages[i - 1]?.page : next) : prev; // First is prev, last is next
-      const variant = pages[i - 1]?.current ? 'primary' : 'tertiary';
-      attr(item, 'data-variant', variant); // TODO Should we really do this?
       attr(item, 'aria-current', pages[i - 1]?.current ? 'true' : null);
       attr(item, 'aria-hidden', page ? null : 'true');
       attr(item, 'data-page', `${page}`);

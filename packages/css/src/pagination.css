@@ -18,7 +18,7 @@
 
     & > li > :is(a, button) {
       @composes ds-button from './button.css';
-      &:not([data-variant]) {
+      &:not([data-variant], [aria-current='true']) {
         --dsc-button-background: transparent;
         --dsc-button-background--active: var(--ds-color-surface-active);
         --dsc-button-background--hover: var(--ds-color-surface-hover);
