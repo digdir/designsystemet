@@ -1,6 +1,6 @@
 import { attr, on, onHotReload, QUICK_EVENT } from './utils';
 
-// Polyfill closedby in Safari functionaliy in Safari
+// Polyfill closedby functionaliy in Safari
 // Also in Safari 26.2 where `closedBy` property is supported natively,
 // but no corresponding functionality/behavior is implemented.
 let DOWN_INSIDE = false; // Prevent close if selecting text inside dialog
