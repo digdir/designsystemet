@@ -1,3 +1,4 @@
+a /* Intentionally styling <a> since the browser agent CSS anyway has opinionated styling for linke */,
 .ds-link {
   --dsc-link-background--active: var(--ds-color-surface-tinted);
   --dsc-link-color--active: var(--ds-color-text-default);

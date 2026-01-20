@@ -62,7 +62,6 @@ export class DSPaginationElement extends DSElement {
       const variant = pages[i - 1]?.current ? 'primary' : 'tertiary';
       attr(item, 'data-variant', variant); // TODO Should we really do this?
       attr(item, 'aria-current', pages[i - 1]?.current ? 'true' : null);
-      attr(item, 'aria-disabled', page ? null : 'true');
       attr(item, 'aria-hidden', page ? null : 'true');
       attr(item, 'data-page', `${page}`);
       attr(item, 'tabindex', page ? null : '-1');
