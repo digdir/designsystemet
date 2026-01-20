@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-Enable `sideEffects`
+Removed `sideEffects:false` property used by some bundlers to help tree-shake cjs files.
