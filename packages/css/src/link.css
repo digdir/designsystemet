@@ -1,4 +1,5 @@
-a /* Intentionally styling <a> since the browser agent CSS anyway has opinionated styling for linke */,
+/* Intentionally styling <a> since the browser agent CSS anyway has opinionated styling for linke */
+a,
 .ds-link {
   --dsc-link-background--active: var(--ds-color-surface-tinted);
   --dsc-link-color--active: var(--ds-color-text-default);
@@ -57,7 +58,7 @@ a /* Intentionally styling <a> since the browser agent CSS anyway has opinionate
   /**
    * States
    */
-  &:visited {
+  &:where(:visited) {
     color: var(--dsc-link-color--visited);
   }
 
