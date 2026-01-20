@@ -13,6 +13,7 @@
     "test:coverage": "vitest run --coverage",
     "storybook": "pnpm --filter @web/storybook dev",
     "www": "pnpm --filter @web/www dev",
+    "web": "pnpm --filter @digdir/designsystemet-web start",
     "themebuilder": "pnpm --filter @web/themebuilder dev",
     "build": "pnpm --filter @digdir/* build",
     "build:all": "pnpm -r build",
