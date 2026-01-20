@@ -38,6 +38,7 @@
     "invokers-polyfill": "^0.6.1"
   },
   "devDependencies": {
+    "concurrently": "^9.2.1",
     "rimraf": "^6.1.2",
     "rolldown": "1.0.0-beta.60",
     "rollup": "^4.54.0"

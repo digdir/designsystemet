@@ -1,7 +1,3 @@
-// TODO: Remove when publishing
-import '../public/theme.css';
-import '../../css/src/index.css';
-
 import { isBrowser } from './utils';
 
 // Ensure polyfill is loaded in browser environment only
