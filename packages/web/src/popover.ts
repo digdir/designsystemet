@@ -11,6 +11,7 @@ import { attr, on, onHotReload, QUICK_EVENT } from './utils';
 
 const ATTR_PLACEMENT = 'data-placement';
 const ATTR_FLOATING = 'data-floating';
+const ATTR_AUTOPLACEMENT = 'data-autoplacement';
 const CSS_FLOATING = '--_ds-floating';
 const CSS_OVERSCROLL = '--_ds-floating-overscroll';
 const POPOVERS = new Map<HTMLElement, () => void>();
@@ -31,6 +32,7 @@ function handleToggle(event: DSToggleEvent) {
   if (newState === 'closed') return POPOVERS.get(target)?.(); // Cleanup on close
   if (!source || source === target) return; // No need to update
   const padding = 10; // TODO: Make configurable?
+  const autoPlacement = attr(target, ATTR_AUTOPLACEMENT) !== 'false';
   const overscroll = getCSSProp(target, CSS_OVERSCROLL);
   // TODO: Prevent flip through CSS
   const fallbackAxisSideDirection = overscroll ? 'none' : 'start'; // Prevent flipping axis when using overscroll
@@ -38,8 +40,9 @@ function handleToggle(event: DSToggleEvent) {
     strategy: 'absolute',
     placement: attr(target, ATTR_PLACEMENT) || getCSSProp(target, CSS_FLOATING),
     middleware: [
-      shift({ padding }), // TODO: Discuss with Tobias
-      flip({ padding, fallbackAxisSideDirection }),
+      ...(autoPlacement
+        ? [shift({ padding }), flip({ padding, fallbackAxisSideDirection })]
+        : []),
       offset(parseFloat(getComputedStyle(target, '::before').height) || 0),
       arrowPseudo(),
       ...(overscroll
