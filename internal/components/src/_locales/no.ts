@@ -70,10 +70,14 @@ export default {
       description:
         'Tabellen under viser border width variablene i Designsystemet.',
     },
+    typography: {
+      caption: 'Typografi variabler',
+      description:
+        'Tabellen under viser typografi variablene i Designsystemet.',
+    },
     'search-in-design-tokens': 'Søk i design tokens',
     'search-input-aria-label': 'Søk på variabel navn i CSS for design tokens',
     colors: 'Farger',
-    typography: 'Typografi',
     'no-results': 'Ingen resultater funnet',
     table: {
       name: 'Variabel navn',

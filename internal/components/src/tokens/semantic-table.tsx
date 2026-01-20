@@ -23,7 +23,7 @@ export const SemanticVariablesTable = ({
   return (
     <div key={caption} className={classes['overflow-table']}>
       <Table data-color='accent'>
-        <caption>{caption ?? t('token-preview.semantic.caption')}</caption>
+        <caption>{caption}</caption>
         <Table.Head>
           <Table.Row>
             <Table.HeaderCell>{t('token-preview.table.name')}</Table.HeaderCell>

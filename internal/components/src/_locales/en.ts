@@ -74,11 +74,15 @@ export default {
       description:
         'The table below shows the border-width variables in Designsystemet.',
     },
+    typography: {
+      caption: 'Typography variables',
+      description:
+        'The table below shows the typography variables in Designsystemet.',
+    },
     'search-in-design-tokens': 'Search in design tokens',
     'search-input-aria-label':
       'Search for variable names in CSS for design tokens',
     colors: 'Colors',
-    typography: 'Typography',
     'no-results': 'No results found',
     table: {
       name: 'Variable name',
