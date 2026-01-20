@@ -24,7 +24,6 @@
       "types": "./dist/react-types.d.ts"
     }
   },
-  "sideEffects": false,
   "files": [
     "dist/**"
   ],
