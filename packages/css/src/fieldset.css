@@ -1,4 +1,7 @@
 .ds-fieldset {
+  --dsc-fieldset-gap: var(--ds-size-4);
+  --_dsc-fieldset-gap--half: calc(var(--dsc-fieldset-gap) / 2);
+
   border: 0;
   margin: 0;
   min-width: 0;
@@ -15,17 +18,17 @@
 
   /* Stack everything that is not directly after legend */
   & > * + * {
-    margin-block-start: var(--ds-size-4);
+    padding-block: var(--_dsc-fieldset-gap--half);
   }
 
   & > legend + p {
     color: var(--ds-color-neutral-text-subtle);
-    margin-block: 0;
+    /* margin-block: 0; */
   }
 
-  & > *.ds-sr-only + * {
+  /* & > *.ds-sr-only + * {
     margin-block-start: 0;
-  }
+  } */
 
   &:disabled > legend,
   &:disabled > legend + p {

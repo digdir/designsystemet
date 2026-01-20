@@ -12,6 +12,10 @@
 
   @composes ds-focus from './base.css';
 
+  &:not([hidden]) {
+    display: block;
+  }
+
   & :is(h1, h2, h3, h4, h5, h6) {
     color: var(--dsc-errorsummary-heading-color);
     font-size: var(--ds-font-size-plus-1);

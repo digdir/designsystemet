@@ -13,21 +13,15 @@
   & [data-field='description'] {
     color: var(
       --ds-color-neutral-text-subtle
-    ); /* TODO: Change to opacity or color-mix(currentColor, trasparent) to ensure contrast when parent element color changes? */
+    ); /* TODO: Change to opacity or color-mix(currentColor, transparent) to ensure contrast when parent element color changes? */
     margin-top: 0; /* Line-height removes the need for this */
     margin-block: 0;
   }
 
-  & input:not([hidden]),
-  & select:not([hidden]),
-  & textarea:not([hidden]),
-  & .ds-input:not([hidden]) {
-    display: block; /* Ensure input is not placed on same line as label/description/validation */
-  }
-
-  /* Respect hidden attribute and make overwrites easy */
-  & label:where(:not([hidden])) {
-    display: block;
+  /* Using pure HTML elements in selector to make this work if consumer changes name of .ds-input */
+  &:not([hidden]),
+  & :is(label, input, select, textarea, .ds-input):where(:not([hidden])) {
+    display: block; /* Ensure input is not placed on same line as label/description/validation, but respect [hidden] attribute */
   }
 
   /**
@@ -45,6 +39,9 @@
   /**
    * Toggle inputs
    */
+  &[data-clickdelegatefor] {
+    cursor: pointer;
+  }
   &:has(input:is([type='radio'], [type='checkbox'])) {
     border-radius: var(--ds-border-radius-md);
     grid-template-areas: 'input content';
