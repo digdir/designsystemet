@@ -30,6 +30,7 @@ function handleToggle(event: DSToggleEvent) {
   if (!source || source === target) return; // No need to update
   const padding = 10; // TODO: Make configurable?
   const overscroll = getCSSProp(target, CSS_OVERSCROLL);
+  // TODO: Prevent flip through CSS
   const fallbackAxisSideDirection = overscroll ? 'none' : 'start'; // Prevent flipping axis when using overscroll
   const options = {
     strategy: 'absolute',

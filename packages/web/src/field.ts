@@ -76,6 +76,7 @@ export class DSFieldElement extends DSElement {
         }
       }
       attr(fieldset, 'aria-labelledby', labelledby.map(useId).join(' '));
+      // TODO Warn about field without, or with multiple inputs and warn about fieldset without fields
     }
 
     const isBoolish = input.type === 'radio' || input.type === 'checkbox';
