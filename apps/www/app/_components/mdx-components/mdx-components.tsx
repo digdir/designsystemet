@@ -118,16 +118,13 @@ const defaultComponents = {
     </div>
   ),
   CssVariables,
-<<<<<<< HEAD
   RoiCalculator,
-=======
   BorderRadiusVariablesTable,
   ColorTokensTable,
   OpacityVariablesTable,
   ShadowVariablesTable,
   SizeVariablesTable,
   TypographyVariablesTable,
->>>>>>> da40de0b8 (cleaning up and added text)
 };
 
 export const MDXComponents = ({
