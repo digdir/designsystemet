@@ -46,7 +46,6 @@ export const attr = (
  * @param el The Element to read/write attributes from
  * @param ...names The attribute name(s) check
  */
-// TODO: Should this test what environment we are in, and only warn in development?
 export const attrRequiredWarning = (el: Element, name: string) =>
   el.hasAttribute(name) || console.warn(el, `is missing a ${name} attribute`);
 

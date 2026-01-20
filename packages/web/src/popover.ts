@@ -15,6 +15,8 @@ const CSS_FLOATING = '--_ds-floating';
 const CSS_OVERSCROLL = '--_ds-floating-overscroll';
 const POPOVERS = new Map<HTMLElement, () => void>();
 
+// TODO: fix the popover closing animation(?) making closing laggy
+
 // Sometimes use "ds-toggle" event while waiting for better support of
 // event.source (https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/source)
 type DSToggleEvent = Partial<ToggleEvent> & {
