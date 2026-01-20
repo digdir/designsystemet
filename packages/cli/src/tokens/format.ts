@@ -1,4 +1,6 @@
 import * as R from 'ramda';
+import type { TypographySizeSchema } from '../config.js';
+import type { ConfigSchema } from '../index.js';
 import { generate$Themes } from './create/generators/$themes.js';
 import { createTokens } from './create.js';
 import { createThemeCSSFiles } from './process/output/theme.js';
@@ -16,8 +18,8 @@ export const formatTokens = async (options: Omit<FormatOptions, 'type' | 'buildT
   return processedBuilds;
 };
 
-export const formatTheme = async (themeConfig: Theme) => {
-  const { tokenSets } = await createTokens(themeConfig);
+export const formatTheme = async (themeConfig: Theme, typographySize: TypographySizeSchema | undefined) => {
+  const { tokenSets } = await createTokens(themeConfig, typographySize);
 
   const $themes = await generate$Themes(['dark', 'light'], [themeConfig.name], themeConfig.colors);
   const processed$themes = $themes.map(processThemeObject);
@@ -40,8 +42,8 @@ export const formatTheme = async (themeConfig: Theme) => {
  * @param themeConfig - The theme configuration object to be formatted.
  * @returns A promise that resolves to the generated CSS string.
  */
-export const formatThemeCSS = async (themeConfig: Theme) => {
-  const processedBuilds = await formatTheme(themeConfig);
+export const formatThemeCSS = async (themeConfig: Theme, globalTypography?: ConfigSchema['globalTypography']) => {
+  const processedBuilds = await formatTheme(themeConfig, globalTypography?.size);
   const themeCSSFiles = createThemeCSSFiles({ processedBuilds });
   return R.head(themeCSSFiles)?.output ?? '';
 };
