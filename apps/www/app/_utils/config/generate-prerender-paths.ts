@@ -8,6 +8,7 @@ const CONTENT_BASE_PATH = join(APP_ROOT, './app/content');
 const COMPONENTS_BASE_PATH = join(CONTENT_BASE_PATH, 'components');
 
 const SECTIONS_WITH_INDEX_ROUTES = [
+  'intro',
   'patterns',
   'components',
   'blog',
@@ -197,6 +198,8 @@ export function generatePrerenderPaths(): string[] {
   const basePaths = ['/no/components', '/en/components'];
 
   return [
+    '/no',
+    '/en',
     ...basePaths,
     ...contentPaths,
     '/no/components/changelog',

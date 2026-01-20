@@ -1,0 +1,154 @@
+---
+title: Bygg ditt tema
+sidebar_title: Bygg ditt tema
+description: Slik setter du opp ditt tema i Designsystemet med Design Tokens for design og kode.
+date: 2026-01-07
+category: Start her
+color: yellow
+icon: PencilBoardIcon
+published: true
+order: 10
+---
+
+Designsystemet er laget for å kunne brukes sammen med din egen visuelle profil - inkludert farger og andre preferanser. Med [Designsystemets Temabygger](https://theme.designsystemet.no) kan du sette opp ditt tema og generere Design Tokens som kan brukes både i designverktøy og i kode. Design Tokens sørger for at det er de samme verdiene vi jobber etter i design og kode. 
+
+<Alert data-color="info">
+Vi anbefaler at både utvikler og designer er med i prosessen når dere setter opp deres eget tema.
+</Alert>
+
+
+## Slik går du frem:
+
+1. Bruk [Designsystemets Temabygger](https://theme.designsystemet.no) til å sette opp ditt tema og ta i bruk, eller bruk eksempelet under som utgangspunkt. 
+Config filen må være lagret som en `json` fil, vi anbfaler f.eks `designsystemet.config.json` eller `<din-organisasjon>.config.json`.
+
+```json
+{
+  "outDir": "./design-tokens",
+  "clean": true,
+  "themes": {
+    "theme": {
+      "colors": {
+        "main": { "primary": "#0062BA" },
+        "neutral": "#1E2B3C",
+        "support": { "extra1": "#F45F63" }
+      },
+      "borderRadius": 4
+    }
+  }
+}
+```
+
+2. Finn et Git repository du kan lagre Design Tokens i. Legg `designsystemet.config.json`-fila i roten av repoet.
+
+3. Klon repoet lokalt på din maskin, åpne en terminal og naviger til mappen med repoet.
+
+4. Pass på at du har node.js installert med en versjon høyere enn 20.
+
+5. Kjør denne kommandoen i terminalen:
+```bash
+npx @digdir/designsystemet@latest tokens create --config designsystemet.config.json
+```
+Dette vil generere Design Tokens basert på config-fila og lagre dem i en mappe som heter `design-tokens`. Push endringene til ditt repo.
+
+<Alert data-color="info">
+Nå skal vi inn i Figma. Pass på at du bruker desktop-appen til Figma, ikke nettleserversjonen.
+</Alert>
+
+6. Hent komponentbiblioteket fra [Figma Community (figma.com)](https://www.figma.com/community/file/1322138390374166141/designsystemet-core-ui-kit) (Trykk "Open in Figma") til din organisasjon som har mimimum pro-lisens. Merk at dette blir en kopi av komponentbiblioteket uten noen kobling mot hovedfilen. 
+
+7. Installer pluginen [Tokens Studio (figma.com)](https://www.figma.com/community/plugin/843461159747178978/Tokens-Studio-for-Figma-(Figma-Tokens)). Den sørger for kobling mellom Figma og kode. Du trenger *ikke* pro-lisens. 
+
+<Image
+  src='/img/tokenstudio.png'
+  alt='Skjermbilde av Figma som vise hvor du finner plugins'
+  boxShadow={false}
+/>
+
+  - I pluginen skal du nå sette opp kobling til ditt Git repo. Se Tokens Studio sin guide "[Sync your Design Tokens with code (tokens.studio)](https://docs.tokens.studio/token-storage-and-sync/sync-provider-overview)" som forklarer hvordan du gjør dette for ulike Git Providers. 
+  - Husk å sette "Token storage location" til `design-tokens` (eller det du har valgt å kalle mappen din med Design Tokens).
+
+<Alert data-color="info">
+Vi anbefaler å *ikke* pushe endringer i Design Tokens via Tokens Studio, da dette kan føre til at du mister overstyringene dine når du oppdatererer.
+</Alert>
+
+8. Gå til [Temabyggeren](https://theme.designsystemet.no) og generer fargeskalaer ut fra dine profilfarger. Klikk "Ta i bruk tema". Kopier config-filen og lim inn i `designsystemet.config.json`-fila i ditt repo. Kjør kommandoen under og push endringene.
+
+```bash
+npx @digdir/designsystemet@latest tokens create --config designsystemet.config.json
+```
+**Husk at du må kjøre denne kommandoen hver gang du gjør endringer i config-filen.**
+
+
+9. I Tokens Studio velg "Pull"-ikonet for å hente de nye tokenene inn i Figma.
+
+<Image
+  src='/img/fundamentals/themebuilder/own-theme/tokens-studio-pull-button.png'
+  alt='Skjermbilde av Tokens Studio og hvor du finner pull knappen'
+  boxShadow={false}
+/>
+
+Velg `Styles & variables` og `Export styles & variables to Figma`. 
+
+<Image
+  src='/img/fundamentals/themebuilder/own-theme/tokens-export.png'
+  alt='Skjermbilde av Tokens Studio og hvor du finner export knappen'
+  boxShadow={false}
+/>
+
+Pass på at du har disse innstillingene før du trykker `Confirm`: 
+
+<Image
+  src='/img/fundamentals/themebuilder/own-theme/tokens-export-options.png'
+  alt='Skjermbilde av Tokens Studio og hvilke innstillinger du skal bruke når du eksporterer tokens til Figma'
+  boxShadow={false}
+/>
+
+Velg `Themes`, `Select All` og `Export to Figma`:
+
+<Image
+  src='/img/fundamentals/themebuilder/own-theme/tokens-export-themes-select.png'
+  alt='Skjermbilde av Tokens Studio som viser at du må velge Themes og deretter Select All'
+  boxShadow={false}
+/>
+
+Nå skal du se alle komponentene med dine egne profilfarger i Figma. NB: Dersom du endret navn på fargene i Temabyggeren, må du inn i Figma Variabler og slette de gamle fargene manuelt. 
+
+Ønsker du flere tema, kan du generere et nytt tema i Temabyggeren og oppdatere config-fila i ditt repo. Kjør kommandoen for å generere Design Tokens på nytt, push endringene og bruk "Pull"-knappen i Tokens Studio for å hente inn de nye temaene i Figma.
+
+```json
+{
+  "outDir": "./design-tokens",
+  "clean": true,
+  "themes": {
+    "theme-one": {
+      "colors": {
+        "main": { "primary": "#0062BA" },
+        "neutral": "#1E2B3C",
+        "support": { "extra1": "#F45F63" }
+      },
+      "borderRadius": 4
+    },
+    "theme-two": {
+      "colors": {
+        "main": { "primary": "#0062BA" },
+        "neutral": "#1E2B3C",
+        "support": { "extra1": "#F45F63" }
+      },
+      "borderRadius": 4
+    }
+  }
+}
+```
+
+<Alert data-color="info">
+Når Design Tokens oppdateres i koden, kan du enkelt hente de nye verdiene inn i Figma ved å bruke "Pull"-knappen i Tokens Studio igjen.
+</Alert>
+
+10. For å generere CSS fra temaet ditt, kjør denne kommandoen: 
+
+```bash
+npx @digdir/designsystemet@latest tokens build --config designsystemet.config.json
+```
+
+Husk at dette må gjøres når tokens blir oppdatert også. 

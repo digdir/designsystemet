@@ -48,6 +48,16 @@ export default [
           }),
         ]),
       ]),
+      ...prefix('/intro', [
+        layout('./layouts/intro/layout.tsx', [
+          route('/', 'routes/intro/intro.tsx', {
+            id: 'intro-index',
+          }),
+          route('/*', 'routes/intro/page.tsx', {
+            id: 'intro-page',
+          }),
+        ]),
+      ]),
       ...prefix('/best-practices', [
         layout('./layouts/best-practices/layout.tsx', [
           route('/', 'routes/best-practices/best-practices.tsx', {
