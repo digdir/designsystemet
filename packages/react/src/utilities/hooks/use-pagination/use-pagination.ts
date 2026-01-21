@@ -105,7 +105,7 @@ export const usePagination = ({
            */
           buttonProps: (page
             ? {
-                'aria-current': page === currentPage ? 'page' : undefined,
+                'aria-current': page === currentPage ? 'true' : undefined,
                 onClick: handleClick(page),
                 variant: page === currentPage ? 'primary' : 'tertiary',
               }
