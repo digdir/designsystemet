@@ -14,6 +14,14 @@ export type PaginationProps = MergeRight<
      */
     'aria-label'?: string;
     /**
+     * Current page number
+     */
+    'data-current'?: string;
+    /**
+     * Total number of pages
+     */
+    'data-total'?: string;
+    /**
      * Change the default rendered element for the one passed as a child, merging their props and behavior.
      * @default false
      *

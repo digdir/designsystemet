@@ -13,10 +13,7 @@ export const Preview: StoryFn<typeof Pagination> = () => {
     <Pagination>
       <Pagination.List>
         <Pagination.Item>
-          <Pagination.Button
-            aria-label='Forrige side'
-            data-variant='tertiary'
-          />
+          <Pagination.Button />
         </Pagination.Item>
 
         <Pagination.Item>
@@ -24,21 +21,19 @@ export const Preview: StoryFn<typeof Pagination> = () => {
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button data-variant='primary' />
-        </Pagination.Item>
-
-        <Pagination.Item />
-
-        <Pagination.Item>
-          <Pagination.Button data-variant='tertiary' />
+          <Pagination.Button />
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button data-variant='tertiary' />
+          <Pagination.Button />
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button data-variant='tertiary' />
+          <Pagination.Button />
+        </Pagination.Item>
+
+        <Pagination.Item>
+          <Pagination.Button />
         </Pagination.Item>
       </Pagination.List>
     </Pagination>
