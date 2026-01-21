@@ -1,21 +1,22 @@
 ---
 title: Temapakken utgår i Designsystemet
-description: Temapakken i Designsystemet utgår. Les om årsakene bak denne beslutningen.
+description: Vi avvikler temapakken fordi Designsystemet nå tilbyr bedre og mer fleksible løsninger for egne temaer.
 date: 2026-01-08
 author: Designsystemet
 imageSrc: /img/blog/deprecate-theme-package.webp
 imageAlt: Pakken @digdir/designsystemet-theme utgår
 ---
 
-Etter nøye vurdering har vi besluttet å avvikle temapakken (`@digdir/designsystemet-theme`) for å forenkle bruken av Designsystemet.
+Etter nøye vurdering har vi besluttet å avvikle temapakken (`@digdir/designsystemet-theme`) for å forenkle bruken av Designsystemet. 
 
-Temapakken ble opprinnelig opprettet for deling av temaer i Designsystemet. Forbedringer i [Temabyggeren](https://theme.designsystemet.no), CLI og tematiseringsmuligheter i Designsystemet, har behovet for en egen temapakke blitt mindre. 
+Temapakken ble opprinnelig opprettet for deling av temaer internt i Digdir. Forbedringer i [Temabyggeren](https://theme.designsystemet.no), CLI og øvrige tematiseringsmuligheter i Designsystemet har redusert behovet for en egen temapakke.
 
-De fleste brukere i dag, lager og bygger sine egne temaer i stedet for å bruke de som tilbys i pakken, som er framgangsmåten vi anbefaler å bruke. Les mer om hvordan du kan lage ditt eget tema i vår [dokumentasjon](/no/fundamentals/themebuilder/own-theme).
+De fleste brukere lager i dag sine egne temaer, fremfor å bruke ferdigdefinerte temaer fra en egen pakke. Å lage og vedlikeholde egne temaer er også framgangsmåten vi anbefaler. Les mer om hvordan du kan [lage ditt eget tema](/no/fundamentals/themebuilder/own-theme).
 
 Vi har flyttet standardtemaet (tilgjengelig under `@digdir/designsystemet-theme`) til `@digdir/designsystemet-css/theme`, for å gjøre det enklere å bruke, samt redusere antall pakker brukerne trenger å installere.
 
-Digdir temaer er flyttet til en intern pakke, hvis du trenger tilgang til disse temaene vennligst ta kontakt med oss eller kopier konfigurasjonen fra [her](https://github.com/digdir/designsystemet/tree/main/internal/digdir).
+Digdir-temaer er flyttet til en intern pakke. Hvis du trenger tilgang til disse temaene, kan du ta kontakt med oss eller kopiere [konfigurasjonen fra GitHub (github.com)](https://github.com/digdir/designsystemet/tree/main/internal/digdir).
+
 
 <Contributors
   authors={[
