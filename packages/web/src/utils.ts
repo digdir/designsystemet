@@ -47,7 +47,8 @@ export const attr = (
  * @param ...names The attribute name(s) check
  */
 export const attrRequiredWarning = (el: Element, name: string) =>
-  el.hasAttribute(name) || console.warn(el, `is missing a ${name} attribute`);
+  el.hasAttribute(name) ||
+  console.warn(`Designsystemet: Missing a ${name} attribute`, el);
 
 /**
  * on
