@@ -1,4 +1,5 @@
 import {
+  Divider,
   Field,
   Heading,
   Label,
@@ -13,10 +14,10 @@ import sizeTokens from './design-tokens/size.json';
 import classes from './table.module.css';
 
 export const SizeVariablesTable = ({
-  heading,
+  caption,
   withPreview = false,
 }: {
-  heading?: string;
+  caption?: string;
   description?: string;
   withPreview?: boolean;
 }) => {
@@ -25,7 +26,7 @@ export const SizeVariablesTable = ({
   const [selectedSize, setSelectedSize] = useState<Size>('md');
 
   return (
-    <div key={heading}>
+    <div key={caption}>
       <Field>
         <Label>{t('token-preview.size.select-label')}</Label>
         <Select
@@ -41,11 +42,12 @@ export const SizeVariablesTable = ({
           ))}
         </Select>
       </Field>
-      <div key={heading} className={classes['overflow-table']}>
+      <Divider />
+      <div key={caption} className={classes['overflow-table']}>
         <Table data-size='sm'>
           <caption>
             <Heading level={4} data-size='md'>
-              {heading ?? t('token-preview.size.caption')}
+              {caption ?? t('token-preview.size.caption')}
             </Heading>
           </caption>
           <Table.Head>
