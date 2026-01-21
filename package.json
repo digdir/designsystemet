@@ -11,6 +11,7 @@
     "test:cli": "pnpm --filter @digdir/designsystemet test --verbose",
     "test:storybook": "pnpm --filter @web/storybook test-storybook",
     "test:coverage": "vitest run --coverage",
+    "test:www-links": "node scripts/search-broken-links.js",
     "storybook": "pnpm --filter @web/storybook dev",
     "www": "pnpm --filter @web/www dev",
     "themebuilder": "pnpm --filter @web/themebuilder dev",
