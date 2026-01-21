@@ -19,6 +19,8 @@ export const OverviewVariables = () => {
     ...styleColorVars(previewColor.hex as CssColor, colorScheme),
   };
 
+  const allColors = [...colors.main, ...colors.support];
+
   return (
     <>
       {colors ? (
@@ -29,30 +31,19 @@ export const OverviewVariables = () => {
               value={previewColor.hex}
               onChange={(v) => {
                 if (!colors) return;
-                const allColors = [...colors.main, ...colors.support];
-                /* find the selected color */
-                let selectedColor = allColors.find(
-                  (c) => c.hex === v.target.value,
+                const selectedColor = allColors.find(
+                  (c) => c.name === v.target.value,
                 );
-                if (!selectedColor) {
-                  selectedColor = colors.main[0];
-                }
-                setPreviewColor(selectedColor);
+                setPreviewColor(selectedColor ?? colors.main[0]);
               }}
             >
-              {colors.main.map((color) => (
-                <Select.Option key={color.name} value={color.hex}>
-                  {color.name}
-                </Select.Option>
-              ))}
-              {colors.support.map((color) => (
-                <Select.Option key={color.name} value={color.hex}>
+              {allColors.map((color) => (
+                <Select.Option key={color.name} value={color.name}>
                   {color.name}
                 </Select.Option>
               ))}
             </Select>
           </Field>
-
           <Divider />
         </>
       ) : null}
