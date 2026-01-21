@@ -1,0 +1,70 @@
+---
+title: Variables in Figma
+description: How variables are used in Figma and how to find the right variable.
+date: 2026-01-21
+category: Figma
+color: yellow
+icon: PaletteIcon
+published: true
+order: 30
+---
+## Size Variables
+
+Size variables are used to set both spacing and sizes. 
+
+Sizes can define the width and height of an element, while spacing defines the space between different elements. You set spacing under _**"Auto Layout"**_ in Figma. There you can define spacing above, below, beside, or between elements.
+
+<Image
+  src='/img/size.png'
+  alt='Screenshot showing where you can use Size variables in Figma'
+  boxShadow={false}
+/>
+
+## Color Variables in Figma
+
+Color variables are named based on what they are intended to be used for: `background`, `surface`, `border` and `text`.
+
+- If you're looking for a `border` color, it can be efficient to search for "border" to see all available colors.
+- If you're looking for a `fill` color on an element, it can be efficient to search for "surface" to see all available colors.
+- If you're looking for a color for text or icon, it can be efficient to search for "text" to see all available colors.
+
+<ResponsiveIframe
+  src='/img/color-variables.mp4'
+  title='Screen recording of Figma showing how to set color variables on "fill" and "border".'
+  frameBorder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+  allowFullScreen
+  aspectRatio='16-9'
+/>
+
+Read more about [color tokens](/en/fundamentals/theme/colors) and what they are used for.
+
+To set up your own color variables, see the guide "[Design System with Custom Theme](/en/fundamentals/start-here/own-theme)"
+
+<ResponsiveIframe
+  src='/img/brand-variables.mp4'
+  title='Screen recording of Figma showing how to switch between different brands in Figma'
+  frameBorder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+  allowFullScreen
+  aspectRatio='16-9'
+/>
+
+
+### What is main and support?
+Main and Support are separate modes in Figma that simulate the functionality of data-color from code. They only exist in Figma and allow you to control which colors components should use, based on context.
+
+In Figma without an enterprise license, you can use 4 colors per mode, meaning 8 colors total distributed between main and support.
+
+Read more about how these are used in [modes in Figma](/en/fundamentals/figma/modes-in-figma)
+
+This gives you two important advantages:
+1. You can use custom names for the colors \
+If you had used the color variables directly in the components, it would have caused errors every time someone imported or replaced colors. By using main/support, the components refer to an abstract color, and you can change the content without affecting the structure.
+2. You don't have to create one variant per color \
+Instead of creating separate components for blue, red, green, etc., the same component can change color based on which mode (main or support) is set. This provides less maintenance and makes it easier to keep the file organized.
+
+### Colors in Figma Dev Mode
+In Figma Dev Mode, colors are displayed in two ways:
+- Main / Support: Used for flexible colors, equivalent to [data-color in code](/en/fundamentals/code/colors). You set a mode like main/border-default, and the component inherits the correct color. This makes it easier to reuse components without creating new variants. The modes are cascading - you can set them on page, frame or element.
+- Explicit color: Used when a color should always be the same, regardless of mode. The display in Dev Mode will then show a specific variable, just as in code.
