@@ -26,6 +26,7 @@ export default {
     const button = canvas.getByRole('button');
     await userEvent.click(button);
     const popover = ctx.canvasElement.querySelector('[popover]');
+    await new Promise((r) => setTimeout(r, 300)); // Wait for animation mutation
     await expect(popover).toBeVisible();
   },
 } satisfies Meta;

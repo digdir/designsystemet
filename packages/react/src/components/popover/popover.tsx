@@ -92,13 +92,25 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     ref,
   ) {
     const Component = asChild ? Slot : 'div';
-
     const popoverRef = useRef<HTMLDivElement>(null);
     const mergedRefs = useMergeRefs([popoverRef, ref]);
     const { popoverId, setPopoverId } = useContext(Context);
-    // TODO
+
+    // TODO: Controlled popover respecting forced true or false state
+    useEffect(() => {
+      const handleToggle = ({ newState }: Partial<ToggleEvent>) => {
+        newState === 'open' ? onOpen?.() : onClose?.();
+      };
+
+      if (open !== undefined)
+        requestAnimationFrame(() => popoverRef.current?.togglePopover(open)); // Sync state if controlled, with requestAnimationFrame to avoid conflict with React state
+
+      document.addEventListener('toggle', handleToggle, true); // Use capture as beforetogle does not bubble
+      return () => document.removeEventListener('toggle', handleToggle, true);
+    }, [open]);
+
+    // useEffect(() => {}, [open]);
     // const [internalOpen, setInternalOpen] = useState(false);
-    // const controlledOpen = open ?? internalOpen;
 
     // NOTE: This code is purely to add React controlled component ability to Popover API
     // useEffect(() => {
