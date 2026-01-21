@@ -33,6 +33,9 @@ export type TooltipProps = MergeRight<
     /**
      * Whether the tooltip is open or not.
      * This overrides the internal state of the tooltip.
+     *
+     * @deprecated This should not be used on Tooltip. Use a Popover instead
+     * @TODO Look at this prop
      */
     open?: boolean;
     /**
@@ -61,13 +64,18 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
     { content, placement = 'top', autoPlacement = true, ...rest },
     _ref,
   ) {
+    /* check if children is a string */
+    const isString = typeof rest.children === 'string';
+
     return (
       <Slot
         data-tooltip={content}
         data-placement={placement}
         data-autoplacement={autoPlacement}
         {...rest}
-      />
+      >
+        {isString ? <span>{rest.children}</span> : rest.children}
+      </Slot>
     );
   },
 );
