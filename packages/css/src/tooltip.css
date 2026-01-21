@@ -7,7 +7,6 @@
   --dsc-tooltip-transition-duration: 0.2s;
   --dsc-tooltip-transition-delay: 150ms;
 
-  inset: 0 auto auto 0;
   background: var(--dsc-tooltip-background);
   border-radius: var(--dsc-tooltip-border-radius);
   box-sizing: border-box;
@@ -16,11 +15,6 @@
   color: var(--dsc-tooltip-color);
   line-height: var(--ds-line-height-sm);
   padding: var(--dsc-tooltip-padding);
-  margin: 0; /* Needed to place tooltip correctly, since popover adds margin */
-  /* transition-property: opacity, visibility;
-  transition-delay: var(--dsc-tooltip-transition-delay);
-  transition-duration: var(--dsc-tooltip-transition-duration);
-  transition-timing-function: ease-in-out; */
   opacity: 0;
   visibility: hidden;
 

@@ -156,6 +156,23 @@ if (isBrowser()) {
 }
 
 /**
+ * tag
+ * @description creates element and assigns properties
+ * @param tagName The tagname of element to create
+ * @param attrs Optional attributes to add to the element
+ * @param text Optional text content to add to the element
+ * @return HTMLElement with props
+ */
+export const tag = <TagName extends keyof HTMLElementTagNameMap>(
+  tagName: TagName,
+  attrs?: Record<string, string | null> | null,
+): HTMLElementTagNameMap[TagName] => {
+  const el = document.createElement(tagName);
+  if (attrs) for (const [key, val] of Object.entries(attrs)) attr(el, key, val);
+  return el;
+};
+
+/**
  * customElements.define
  * @description Defines a customElement if running in browser and if not already registered
  * Scoped/named "customElements.define" so @custom-elements-manifest/analyzer can find tag names

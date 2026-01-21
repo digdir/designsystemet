@@ -1,25 +1,23 @@
 import {
   attr,
   attrRequiredWarning,
-  isBrowser,
   on,
   onHotReload,
   onMutation,
   QUICK_EVENT,
+  tag,
 } from './utils';
 
+let TIP: HTMLElement;
 let SOURCE: Element | undefined;
 let HOVER_TIMER: number | ReturnType<typeof setTimeout> = 0;
 let SKIP_TIMER: number | ReturnType<typeof setTimeout> = 0;
+const SELECTOR_TOOLTIP = '[data-tooltip-element]';
 const SELECTOR_INTERACTIVE = 'a,button,input,select,textarea,[tabindex]';
 const DELAY_HOVER = 300;
 const DELAY_SKIP = 300;
-const TIP =
-  isBrowser() &&
-  Object.assign(document.createElement('div'), {
-    className: 'ds-tooltip', // TODO: The consumer should be able to provide their own tooltip element
-    popover: 'manual',
-  });
+
+// TODO: Document using data-tooltip-element to set custom tooltip element
 
 function handleAriaAttributes() {
   for (const el of document.querySelectorAll('[data-tooltip]')) {
@@ -35,6 +33,11 @@ function handleAriaAttributes() {
 function handleInterest({ type, target }: Event) {
   clearTimeout(HOVER_TIMER);
 
+  if (!TIP)
+    TIP =
+      document.querySelector<HTMLElement>(SELECTOR_TOOLTIP) ||
+      tag('div', { class: 'ds-tooltip' });
+
   if (!TIP || target === TIP) return; // Allow tooltip to be hovered, following https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus
   if (type === 'mouseover' && !SOURCE) {
     HOVER_TIMER = setTimeout(handleInterest, DELAY_HOVER, { target }); // Delay mouse showing tooltip if not already shown
@@ -43,8 +46,9 @@ function handleInterest({ type, target }: Event) {
 
   const source = (target as Element)?.closest?.('[data-tooltip]');
   if (source === SOURCE) return; // No need to update
-  if (!source) return TIP?.hidePopover(); // If no new anchor, cleanup previous autoUpdate
   if (!TIP.isConnected) document.body.appendChild(TIP); // Ensure connected
+  if (!TIP.hasAttribute('popover')) attr(TIP, 'popover', 'manual'); // Ensure popover behavior
+  if (!source) return TIP?.hidePopover(); // If no new anchor, cleanup previous autoUpdate
 
   clearTimeout(SKIP_TIMER);
   TIP.textContent = attr(source, 'data-tooltip');

@@ -126,6 +126,7 @@ body,
  */
 .ds-floating {
   --_ds-floating: bottom;
+  margin: 0; /* Needed to place popovers correctly, since popover adds margin */
   overflow: visible;
   inset: 0 auto auto 0;
   position: absolute; /* Using absolute for smoother scroll-following on mobile */
