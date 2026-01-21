@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "@digdir/designsystemet-types": "workspace:^",
+    "@digdir/designsystemet-web": "workspace:^",
     "@floating-ui/dom": "^1.7.4",
     "@floating-ui/react": "0.26.23",
     "@navikt/aksel-icons": "^7.38.0",

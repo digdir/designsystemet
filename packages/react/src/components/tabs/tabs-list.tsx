@@ -22,15 +22,9 @@ export const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
     const mergedRefs = useMergeRefs([ref, tablistRef]);
 
     return (
-      <RovingFocusRoot
-        role='tablist'
-        activeValue={value}
-        orientation='ambiguous'
-        ref={mergedRefs}
-        {...rest}
-      >
+      <ds-tablist ref={mergedRefs} {...rest}>
         {children}
-      </RovingFocusRoot>
+      </ds-tablist>
     );
   },
 );

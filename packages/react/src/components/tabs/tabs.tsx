@@ -86,7 +86,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
         setPanelButtonMap,
       }}
     >
-      <div className={cl('ds-tabs', className)} ref={ref} {...rest} />
+      <ds-tabs class={cl('ds-tabs', className)} ref={ref} {...rest} />
     </Context.Provider>
   );
 });

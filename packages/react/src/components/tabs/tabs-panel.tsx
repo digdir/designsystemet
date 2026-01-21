@@ -37,20 +37,10 @@ export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
     const generatedId = useId();
     const panelId = id ?? `tabpanel-${generatedId}`;
 
-    const [hasTabbableElement, setHasTabbableElement] = useState(false);
-    const [labelledBy, setLabelledBy] = useState<string | undefined>(undefined);
+    const [tabId, setTabId] = useState<string | undefined>(undefined);
 
     const internalRef = useRef<HTMLDivElement>(null);
     const mergedRef = useMergeRefs([ref, internalRef]);
-
-    /* Check if the panel has any tabbable elements */
-    useEffect(() => {
-      if (!internalRef.current) return;
-      const tabbableElements = internalRef.current.querySelectorAll(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-      );
-      setHasTabbableElement(tabbableElements.length > 0);
-    }, [children]);
 
     /* get associated button */
     useEffect(() => {
@@ -59,7 +49,7 @@ export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
       const button = tablistRef.current?.querySelector(
         `[role="tab"][data-value="${value}"]`,
       );
-      setLabelledBy(button ? button.id : undefined);
+      setTabId(button ? button.id : undefined);
 
       if (button) {
         setPanelButtonMap?.((prev) => new Map(prev).set(button.id, panelId));
@@ -67,17 +57,9 @@ export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
     }, [tablistRef]);
 
     return (
-      <div
-        ref={mergedRef}
-        id={panelId}
-        role='tabpanel'
-        tabIndex={hasTabbableElement ? undefined : 0}
-        aria-labelledby={labelledBy}
-        hidden={!active}
-        {...rest}
-      >
+      <ds-tabpanel ref={mergedRef} id={tabId} hidden={!active} {...rest}>
         {children}
-      </div>
+      </ds-tabpanel>
     );
   },
 );

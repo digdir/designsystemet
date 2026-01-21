@@ -1,5 +1,6 @@
 import type { HTMLAttributes } from 'react';
-import { forwardRef, useContext, useId } from 'react';
+import { forwardRef, useContext, useId, useRef } from 'react';
+import { useMergeRefs } from '../../utilities/hooks';
 import { RovingFocusItem } from '../../utilities/roving-focus/roving-focus-item';
 import { Context } from './tabs';
 
@@ -19,26 +20,25 @@ export type TabsTabProps = {
 export const TabsTab = forwardRef<HTMLButtonElement, TabsTabProps>(
   function TabsTab({ value, id, onClick, ...rest }, ref) {
     const tabs = useContext(Context);
+    const localRef = useRef(null);
     const generatedId = useId();
     const buttonId = id ?? `tab-${generatedId}`;
 
+    const mergedRefs = useMergeRefs([ref, localRef]);
+
     return (
-      <RovingFocusItem value={value} {...rest} asChild>
-        <button
-          ref={ref}
-          id={buttonId}
-          aria-selected={tabs.value === value}
-          data-value={value}
-          role='tab'
-          type='button'
-          onClick={(e) => {
-            tabs.onChange?.(value);
-            onClick?.(e);
-          }}
-          aria-controls={tabs.panelButtonMap?.get(buttonId)}
-          {...rest}
-        />
-      </RovingFocusItem>
+      <ds-tab
+        ref={mergedRefs}
+        onClick={(e) => {
+          tabs.onChange?.(value);
+          onClick?.(e);
+        }}
+        aria-controls={value ? buttonId : undefined}
+        aria-selected={localRef.current?.selected}
+        {...rest}
+      >
+        {rest.children}
+      </ds-tab>
     );
   },
 );

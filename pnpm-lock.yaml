@@ -564,6 +564,9 @@ importers:
       '@digdir/designsystemet-types':
         specifier: workspace:^
         version: link:../types
+      '@digdir/designsystemet-web':
+        specifier: workspace:^
+        version: link:../web
       '@floating-ui/dom':
         specifier: ^1.7.4
         version: 1.7.4
