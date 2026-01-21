@@ -29,4 +29,18 @@ declare global {
       'data-color-scheme'?: ColorScheme | (string & {});
     }
   }
+  /* @TODO: Generate these in -web */
+  namespace React.JSX {
+    interface IntrinsicElements {
+      'ds-tabs': DSTabsElement;
+      'ds-tablist': DSTabListElement;
+      'ds-tab': DSTabElement;
+      'ds-tabpanel': DSTabPanelElement;
+      'ds-breadcrumbs': DSBreadcrumbsElement;
+      'ds-error-summary': DSErrorSummaryElement;
+      'ds-pagination': DSPaginationElement;
+      'ds-suggestion': DSSuggestionElement;
+      'ds-field': DSFieldElement;
+    }
+  }
 }

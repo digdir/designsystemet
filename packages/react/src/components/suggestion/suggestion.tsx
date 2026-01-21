@@ -264,7 +264,7 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
       <SuggestionContext.Provider
         value={{ isEmpty, handleFilter, uComboboxRef }}
       >
-        <ds-sugestion
+        <ds-suggestion
           data-multiple={multiple || undefined}
           data-creatable={creatable || undefined}
           class={cl('ds-suggestion', className)} // Using "class" since React does not translate className on custom elements
@@ -281,7 +281,7 @@ export const Suggestion = forwardRef<UHTMLComboboxElement, SuggestionProps>(
           {!!name && (
             <select name={name} multiple hidden id={selectId}></select>
           )}
-        </ds-sugestion>
+        </ds-suggestion>
       </SuggestionContext.Provider>
     );
   },
