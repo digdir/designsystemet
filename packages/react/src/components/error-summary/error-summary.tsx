@@ -15,6 +15,9 @@ export const ErrorSummaryContext = createContext<ErrorSummaryContextType>({
 });
 
 export type ErrorSummaryProps = {
+  /**
+   * @deprecated This is not supported anymore, as the element needs to be `ds-error-summary`
+   */
   asChild?: React.ReactNode;
 } & Omit<HTMLAttributes<HTMLDivElement> & DefaultProps, 'data-color'>;
 
@@ -39,14 +42,16 @@ export const ErrorSummary = forwardRef<HTMLDivElement, ErrorSummaryProps>(
     const randomId = useId();
     const [headingId, setHeadingId] = useState<string>(randomId);
 
-    const Component = asChild ? Slot : 'div';
+    const Component = asChild ? Slot : 'ds-error-summary';
 
     return (
       <ErrorSummaryContext.Provider value={{ headingId, setHeadingId }}>
         <Component
           tabIndex={-1}
           aria-labelledby={headingId}
-          className={cl('ds-error-summary', className)}
+          {...(asChild
+            ? { className: cl('ds-error-summary', className) }
+            : { class: cl('ds-error-summary', className) })}
           ref={ref}
           {...rest}
         />
