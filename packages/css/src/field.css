@@ -18,6 +18,14 @@
     margin-block: 0;
   }
 
+  & [data-field='validation'],
+  & [data-field='counter'][data-color='danger'] {
+    @composes ds-validation-message from './validation-message.css';
+  }
+  & [data-field='counter']::after {
+    content: attr(data-counter-text) / attr(data-counter-aria);
+  }
+
   /* Using pure HTML elements in selector to make this work if consumer changes name of .ds-input */
   &:not([hidden]),
   & :is(label, input, select, textarea, .ds-input):where(:not([hidden])) {

@@ -19,14 +19,22 @@ declare global {
   }
 }
 
-const ATTR_FIELD = 'data-field';
 const CSS_FIELD_SIZE = '--_ds-field-sizing';
-const TYPE_COUNTER = 'counter';
+const ATTR_COUNTER_TEXT = 'data-counter-text';
+const ATTR_COUNTER_ARIA = 'data-counter-aria';
+const ATTR_FIELD = 'data-field';
 const TYPE_DESCRIPTION = 'description';
 const TYPE_VALIDATION = 'validation';
+const COUNTER = {
+  over: '%d tegn for mye',
+  under: '%d tegn for mye',
+  hint: 'Maks %d tegn tillatt.',
+};
+
 const SELECTOR_FIELD_COUNTER = '[data-field="counter"]';
 const SELECTOR_FIELDSET_DESCRIPTION = `:scope > [${ATTR_FIELD}="${TYPE_DESCRIPTION}"],:scope > legend + p`; // legend + p is kept for backwards compatibility
 const SELECTOR_FIELDSET_VALIDATION = `:scope > [${ATTR_FIELD}="${TYPE_VALIDATION}"]`;
+
 const FIELDS = new Set<DSFieldElement>();
 const FILEDSETS = isBrowser() ? document.getElementsByTagName('fieldset') : [];
 const STYLE_SR_ONLY = `position:absolute;clip:rect(0 0 0 0);overflow:hidden;width:1px;height:1px;white-space:nowrap;pointer-events:none`;
@@ -60,19 +68,19 @@ const setupFields = () => {
       else if (isInputLike(el)) {
         if (input)
           console.warn(
+            `Designsystemet: Fields should only have one input element. Use <fieldset> to group multiple fields:`,
             field,
-            ` should only have one input element. Use <fieldset> to group multiple fields.`,
           );
         input = el;
       } else if (isVisible(el)) {
         const type = el.getAttribute(ATTR_FIELD); // Using getAttribute not attr for best performance
         if (type === TYPE_VALIDATION) descs.unshift(el);
-        else if (type === TYPE_DESCRIPTION) descs.push(el);
-        else if (type === TYPE_COUNTER) descs.push(el);
+        else if (type) descs.push(el);
       }
     }
 
-    if (!input) console.warn(field, ` is missing input element`);
+    if (!input)
+      console.warn(`Designsystemet: Field is missing input element:`, field);
     else {
       for (const label of labels) attr(label, 'for', useId(input));
 
@@ -90,14 +98,8 @@ const setupFields = () => {
   }
 };
 
-const TEXTS = {
-  over: '%d tegn for mye',
-  under: '%d tegn for mye',
-  hint: 'Maks %d tegn tillatt.',
-};
-
-const label = (el: Element, key: keyof typeof TEXTS, num: number) =>
-  (attr(el, `data-${key}`) || TEXTS[key]).replace('%d', `${Math.abs(num)}`);
+const getCounterText = (el: Element, key: keyof typeof COUNTER, num: number) =>
+  (attr(el, `data-${key}`) || COUNTER[key]).replace('%d', `${Math.abs(num)}`);
 
 const setupCounter = (field: DSFieldElement, target: EventTarget | null) => {
   const el =
@@ -106,17 +108,19 @@ const setupCounter = (field: DSFieldElement, target: EventTarget | null) => {
 
   if (el) {
     const live = field.shadowRoot?.lastElementChild as HTMLElement;
-    const limit = Number(attr(el, 'data-limit')) || 0;
-    const length = target.value.length;
-    const count = limit - length;
-    // const hasExceededLimit = count > limit;
+    const count = Number(attr(el, 'data-limit') || 0) - target.value.length;
+    const text = getCounterText(el, count < 0 ? 'over' : 'under', count);
 
-    el.style.setProperty('--_ds-field-over', label(el, 'over', count));
-    el.style.setProperty('--_ds-field-under', label(el, 'under', count));
-    el.style.setProperty('--_ds-field-hint', label(el, 'hint', count));
-    live.textContent = `${target.value.length}`; // Clear live region to avoid duplicate announcements
+    attr(el, ATTR_COUNTER_TEXT, text);
+    attr(el, ATTR_COUNTER_ARIA, getCounterText(el, 'hint', count));
+    attr(el, 'data-color', count < 0 ? 'danger' : null);
+    setupCounterLiveRegion(live, text); // Debounce live region to avoid NVDA interupting announcing typed text
   }
 };
+
+const setupCounterLiveRegion = debounce((live: Element, text: string) => {
+  live.textContent = text;
+}, 200); // TODO: Test this timeout in NVDA
 
 // iOS does not support field-sizing: content, so we need to manually resize
 const setupTextareaFieldSizingiOS = (target: EventTarget | null) => {
