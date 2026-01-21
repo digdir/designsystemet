@@ -689,8 +689,8 @@ importers:
         specifier: ^0.0.6
         version: 0.0.6
       '@u-elements/u-tabs':
-        specifier: ^0.0.12
-        version: 0.0.12
+        specifier: ^0.1.2
+        version: 0.1.2
       invokers-polyfill:
         specifier: ^0.6.1
         version: 0.6.1
@@ -2479,8 +2479,8 @@ packages:
   '@u-elements/u-progress@0.0.6':
     resolution: {integrity: sha512-WJUxmHPgkgi/hKaOsjSJc5XGbfSg1/fgTs9SynmLRFn+1Dxaq7JPu98JqKPQLMDCVLaSY+Iz4EKJawgmNolbvA==}
 
-  '@u-elements/u-tabs@0.0.12':
-    resolution: {integrity: sha512-C1mCJuicseh05dg6itBJVhWWfQ83NGLlYq7RBhHeJ8BrrmiOvwdCbdZykPozmxVd3n8Lt4Vw8sBf4B/DEDtHoQ==}
+  '@u-elements/u-tabs@0.1.2':
+    resolution: {integrity: sha512-KVYJFDPZdo+LXrW+mCMPEUen4wXi8VfSMDKWLt2+q6VgYqWBcAIZcaWBRWxIjXFzGfXQSJqD0amnYGaL1RGZ/w==}
 
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
@@ -7497,7 +7497,7 @@ snapshots:
 
   '@u-elements/u-progress@0.0.6': {}
 
-  '@u-elements/u-tabs@0.0.12': {}
+  '@u-elements/u-tabs@0.1.2': {}
 
   '@ungap/structured-clone@1.3.0': {}
 

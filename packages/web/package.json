@@ -34,7 +34,7 @@
     "@u-elements/u-datalist": "^1.0.14",
     "@u-elements/u-details": "^0.1.5",
     "@u-elements/u-progress": "^0.0.6",
-    "@u-elements/u-tabs": "^0.0.12",
+    "@u-elements/u-tabs": "^0.1.2",
     "invokers-polyfill": "^0.6.1"
   },
   "devDependencies": {

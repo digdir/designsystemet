@@ -32,12 +32,10 @@ export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
       tablistRef,
       setPanelButtonMap,
     } = useContext(Context);
-    const active = value === tabsValue;
-
     const generatedId = useId();
-    const panelId = id ?? `tabpanel-${generatedId}`;
+    const panelId = id ?? `tab-${generatedId}`;
 
-    const [tabId, setTabId] = useState<string | undefined>(undefined);
+    const [_tabId, setTabId] = useState<string | undefined>(undefined);
 
     const internalRef = useRef<HTMLDivElement>(null);
     const mergedRef = useMergeRefs([ref, internalRef]);
@@ -57,7 +55,7 @@ export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
     }, [tablistRef]);
 
     return (
-      <ds-tabpanel ref={mergedRef} id={tabId} hidden={!active} {...rest}>
+      <ds-tabpanel ref={mergedRef} id={panelId} {...rest}>
         {children}
       </ds-tabpanel>
     );

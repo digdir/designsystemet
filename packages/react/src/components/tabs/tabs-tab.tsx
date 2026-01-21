@@ -1,3 +1,4 @@
+import type { DSTabElement } from '@digdir/designsystemet-web';
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext, useId, useRef } from 'react';
 import { useMergeRefs } from '../../utilities/hooks';
@@ -34,7 +35,7 @@ export const TabsTab = forwardRef<HTMLButtonElement, TabsTabProps>(
           onClick?.(e);
         }}
         aria-controls={value ? buttonId : undefined}
-        aria-selected={localRef.current?.selected}
+        data-value={value}
         {...rest}
       >
         {rest.children}
