@@ -73,6 +73,8 @@ my dialog
 </dialog>
 ```
 
+See [Polyfills](#polyfills) for how to open and close the dialog with commands.
+
 ### `ds-error-summary`
 Only implements basic functionality. No API.
 
@@ -191,3 +193,6 @@ This will be added automatically when you import the package.
 ```html
 <button data-placement="left" data-tooltip="venstre" class="ds-button">venstre</button>
 ```
+
+### Polyfills
+We automatically attach [invokers-polyfill](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2), which means that you get support for `command` and `commandfor`.
