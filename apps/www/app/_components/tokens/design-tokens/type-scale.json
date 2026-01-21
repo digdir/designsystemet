@@ -53,7 +53,7 @@
       "7"
     ],
     "variable": "--ds-font-size-7",
-    "value": "round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 3)), 1px)"
+    "value": "round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 4)), 1px)"
   },
   {
     "path": [
@@ -78,6 +78,30 @@
     ],
     "variable": "--ds-font-size-10",
     "value": "round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 9)), 1px)"
+  },
+  {
+    "path": [
+      "font-size",
+      "6-half"
+    ],
+    "variable": "--ds-font-size-6-half",
+    "value": "round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 3)), 1px)"
+  },
+  {
+    "path": [
+      "font-size",
+      "8-half"
+    ],
+    "variable": "--ds-font-size-8-half",
+    "value": "round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 6)), 1px)"
+  },
+  {
+    "path": [
+      "font-size",
+      "9-half"
+    ],
+    "variable": "--ds-font-size-9-half",
+    "value": "round(calc(1rem * var(--ds-font-scale-base) * pow(var(--ds-font-scale-ratio), 8)), 1px)"
   },
   {
     "path": [

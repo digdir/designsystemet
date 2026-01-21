@@ -5,15 +5,15 @@ import type { Token } from '../../types.js';
 const defaults = {
   small: {
     base: 16,
-    ratio: 1.131,
+    ratio: 1.14234,
   },
   medium: {
     base: 18,
-    ratio: 1.143,
+    ratio: 1.143136,
   },
   large: {
     base: 21,
-    ratio: 1.146,
+    ratio: 1.143136,
   },
 };
 

@@ -38,17 +38,29 @@
       "$type": "fontSizes",
       "$value": "roundTo({font-scale._base} * pow({font-scale._ratio}, 2), 0)"
     },
-    "7": {
+    "6-half": {
       "$type": "fontSizes",
       "$value": "roundTo({font-scale._base} * pow({font-scale._ratio}, 3), 0)"
+    },
+    "7": {
+      "$type": "fontSizes",
+      "$value": "roundTo({font-scale._base} * pow({font-scale._ratio}, 4), 0)"
     },
     "8": {
       "$type": "fontSizes",
       "$value": "roundTo({font-scale._base} * pow({font-scale._ratio}, 5), 0)"
     },
+    "8-half": {
+      "$type": "fontSizes",
+      "$value": "roundTo({font-scale._base} * pow({font-scale._ratio}, 6), 0)"
+    },
     "9": {
       "$type": "fontSizes",
       "$value": "roundTo({font-scale._base} * pow({font-scale._ratio}, 7), 0)"
+    },
+    "9-half": {
+      "$type": "fontSizes",
+      "$value": "roundTo({font-scale._base} * pow({font-scale._ratio}, 8), 0)"
     },
     "10": {
       "$type": "fontSizes",
