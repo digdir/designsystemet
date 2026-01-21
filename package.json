@@ -25,7 +25,7 @@
     "build:themebuilder": "pnpm --filter @web/themebuilder build",
     "types": "pnpm -r types",
     "types:react": "pnpm --filter @digdir/designsystemet-react types",
-    "version-packages": "changeset version && node scripts/sync-changelogs.js && pnpm build:types && pnpm build:cli && node scripts/sync-cli-schema.js && update:theme && pnpm update:theme-digdir && git add . && git commit -m \"sync www changelogs, schema and tokens\" || true",
+    "version-packages": "changeset version && node scripts/sync-changelogs.js && pnpm build:types && pnpm build:cli && node scripts/sync-cli-schema.js && pnpm update:theme && pnpm update:theme-digdir && git add . && git commit -m \"sync www changelogs, schema and tokens\" || true",
     "publish-packages": "pnpm build && changeset publish",
     "chromatic": "pnpm --filter @web/storybook chromatic",
     "update:template": "pnpm --filter @digdir/designsystemet update:template",
