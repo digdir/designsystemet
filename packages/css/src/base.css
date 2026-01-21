@@ -125,7 +125,7 @@ body,
  * Used to position floating elements like dropdowns, popovers and tooltips
  */
 .ds-floating {
-  --_ds-floating: bottom;
+  --_ds-floating: top;
   --_ds-floating-arrow-size: 0;
   animation: ds-fade-in 0.15s ease-in-out forwards;
   inset: 0 auto auto 0;
@@ -176,7 +176,9 @@ body,
 }
 
 @keyframes ds-fade-in {
-  from {opacity: 0;}
+  from {
+    opacity: 0;
+  }
 }
 
 /* Setting default font on <body> not :root/<html> to ensure 1rem is still 16px */

@@ -20,7 +20,6 @@
   visibility: hidden;
 
   @composes ds-floating from './base.css';
-  --_ds-floating: top;
   --_ds-floating-arrow-size: var(--dsc-tooltip-arrow-size);
 
   &:popover-open {
