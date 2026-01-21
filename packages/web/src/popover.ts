@@ -32,13 +32,18 @@ function handleToggle(event: DSToggleEvent) {
   if (newState === 'closed') return POPOVERS.get(target)?.(); // Cleanup on close
   if (!source || source === target) return; // No need to update
   const padding = 10; // TODO: Make configurable?
-  const autoPlacement = attr(target, ATTR_AUTOPLACEMENT) !== 'false';
+  const autoPlacement =
+    (attr(target, ATTR_AUTOPLACEMENT) || attr(source, ATTR_AUTOPLACEMENT)) !==
+    'false';
   const overscroll = getCSSProp(target, CSS_OVERSCROLL);
   // TODO: Prevent flip through CSS
   const fallbackAxisSideDirection = overscroll ? 'none' : 'start'; // Prevent flipping axis when using overscroll
   const options = {
     strategy: 'absolute',
-    placement: attr(target, ATTR_PLACEMENT) || getCSSProp(target, CSS_FLOATING),
+    placement:
+      attr(target, ATTR_PLACEMENT) ||
+      attr(source, ATTR_PLACEMENT) ||
+      getCSSProp(target, CSS_FLOATING),
     middleware: [
       ...(autoPlacement
         ? [shift({ padding }), flip({ padding, fallbackAxisSideDirection })]
