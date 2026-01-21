@@ -1,6 +1,6 @@
+import type { DSTabElement } from '@digdir/designsystemet-web';
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useEffect, useRef, useState } from 'react';
-
 import { useMergeRefs } from '../../utilities/hooks';
 
 export type TabsPanelProps = {
@@ -17,11 +17,11 @@ export type TabsPanelProps = {
  * @example
  * <TabsPanel value='1'>content 1</TabsPanel>
  */
-export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
+export const TabsPanel = forwardRef<DSTabElement, TabsPanelProps>(
   function TabsPanel({ children, value, id, ...rest }, ref) {
     const [tabId, setTabId] = useState<string | undefined>(undefined);
 
-    const internalRef = useRef<HTMLDivElement>(null);
+    const internalRef = useRef<DSTabElement>(null);
     const mergedRef = useMergeRefs([ref, internalRef]);
 
     /* get associated button */
