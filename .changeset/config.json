@@ -13,7 +13,8 @@
       "@digdir/designsystemet-css",
       "@digdir/designsystemet-theme",
       "@digdir/designsystemet-types",
-      "@digdir/designsystemet-react"
+      "@digdir/designsystemet-react",
+      "@digdir/designsystemet-web"
     ]
   ],
   "linked": [],
