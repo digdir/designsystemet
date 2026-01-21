@@ -126,17 +126,28 @@ body,
  */
 .ds-floating {
   --_ds-floating: bottom;
+  --_ds-floating-arrow-size: 0;
+  animation: ds-fade-in 0.15s ease-in-out forwards;
+  inset: 0 auto auto 0;
   margin: 0; /* Needed to place popovers correctly, since popover adds margin */
   overflow: visible;
-  inset: 0 auto auto 0;
   position: absolute; /* Using absolute for smoother scroll-following on mobile */
-  transition-property: display, opacity, transform, visibility;
-  transition-duration: 0.2s;
-  transition-behavior: allow-discrete;
 
-  @starting-style {
-    opacity: 0;
-    visibility: hidden;
+  /* Render arrow element */
+  &::before {
+    background: inherit;
+    box-sizing: border-box;
+    content: '';
+    height: var(--_ds-floating-arrow-size);
+    left: var(--_ds-floating-arrow-x, 50%);
+    position: absolute;
+    rotate: 45deg;
+    border: inherit;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    top: var(--_ds-floating-arrow-y, 100%);
+    translate: -50% -50%;
+    width: var(--_ds-floating-arrow-size);
   }
 
   &[data-overscroll='contain'] {
@@ -148,16 +159,24 @@ body,
   /* Move arrow element */
   &[data-floating='top']::before {
     top: 100%;
+    rotate: 45deg;
   }
   &[data-floating='right']::before {
     left: 0;
+    rotate: 135deg;
   }
   &[data-floating='bottom']::before {
     top: 0;
+    rotate: -135deg;
   }
   &[data-floating='left']::before {
     left: 100%;
+    rotate: -45deg;
   }
+}
+
+@keyframes ds-fade-in {
+  from {opacity: 0;}
 }
 
 /* Setting default font on <body> not :root/<html> to ensure 1rem is still 16px */

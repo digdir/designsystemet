@@ -18,10 +18,7 @@
   min-width: 15em;
   padding: var(--dsc-dropdown-padding);
 
-  /* Remove popover arrow */
-  &::before {
-    display: none;
-  }
+  @composes ds-floating from './base.css';
 
   & :is(h2, h3, h4, h5, h6) {
     align-items: center;

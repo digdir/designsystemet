@@ -9,52 +9,40 @@
 
   background: var(--dsc-tooltip-background);
   border-radius: var(--dsc-tooltip-border-radius);
-  box-sizing: border-box;
-  border: none;
   border-width: 0;
+  border: none;
+  box-sizing: border-box;
   color: var(--dsc-tooltip-color);
   line-height: var(--ds-line-height-sm);
-  padding: var(--dsc-tooltip-padding);
   opacity: 0;
+  padding: var(--dsc-tooltip-padding);
+  view-transition-name: ds-tooltip; /* Prevent being part of other view-transitions */
   visibility: hidden;
 
   @composes ds-floating from './base.css';
   --_ds-floating: top;
+  --_ds-floating-arrow-size: var(--dsc-tooltip-arrow-size);
 
   &:popover-open {
     opacity: 1;
     visibility: visible;
   }
-  /*for polyfill*/
+  /* For polyfill */
   .\:popover-open {
     opacity: 1;
     visibility: visible;
   }
 
-  &::before {
-    content: '';
-    background: var(--dsc-tooltip-background);
-    box-sizing: border-box;
-    height: var(--dsc-tooltip-arrow-size);
-    width: var(--dsc-tooltip-arrow-size);
-    position: absolute;
-    left: var(--dsc-tooltip-arrow-x, 50%);
-    top: var(--dsc-tooltip-arrow-y, 100%);
-    translate: -50% -50%;
-    rotate: 45deg;
-  }
-
   /* Transparent box to make tooltip stay open when mouse is over it */
   &::after {
     content: '';
-    background: transparent;
     box-sizing: border-box;
     height: var(--_dsc-tooltip-safearea-height, 0px);
     width: var(--_dsc-tooltip-safearea-width, 0px);
     translate: var(--_dsc-tooltip-safearea-translate);
     position: absolute;
-    left: var(--dsc-tooltip-arrow-x, 50%);
-    top: var(--dsc-tooltip-arrow-y, 100%);
+    left: var(--_ds-floating-arrow-x, 50%);
+    top: var(--_ds-floating-arrow-y, 100%);
   }
   &[data-floating='top']::after,
   &[data-floating='bottom']::after {

@@ -13,7 +13,9 @@ const ATTR_PLACEMENT = 'data-placement';
 const ATTR_FLOATING = 'data-floating';
 const ATTR_AUTOPLACEMENT = 'data-autoplacement';
 const CSS_FLOATING = '--_ds-floating';
-const CSS_OVERSCROLL = '--_ds-floating-overscroll';
+const CSS_FLOATING_ARROW_X = '--_ds-floating-arrow-x';
+const CSS_FLOATING_ARROW_Y = '--_ds-floating-arrow-y';
+const CSS_FLOATING_OVERSCROLL = '--_ds-floating-overscroll';
 const POPOVERS = new Map<HTMLElement, () => void>();
 
 // TODO: fix the popover closing animation(?) making closing laggy
@@ -35,7 +37,7 @@ function handleToggle(event: DSToggleEvent) {
   const autoPlacement =
     (attr(target, ATTR_AUTOPLACEMENT) || attr(source, ATTR_AUTOPLACEMENT)) !==
     'false';
-  const overscroll = getCSSProp(target, CSS_OVERSCROLL);
+  const overscroll = getCSSProp(target, CSS_FLOATING_OVERSCROLL);
   // TODO: Prevent flip through CSS
   const fallbackAxisSideDirection = overscroll ? 'none' : 'start'; // Prevent flipping axis when using overscroll
   const options = {
@@ -112,8 +114,8 @@ const arrowPseudo = () => ({
     const x = `${Math.round(source.width / 2 + source.x - data.x)}px`;
     const y = `${Math.round(source.height / 2 + source.y - data.y)}px`;
 
-    target.style.setProperty('--_dsc-arrow-x', x);
-    target.style.setProperty('--_dsc-arrow-y', y);
+    target.style.setProperty(CSS_FLOATING_ARROW_X, x);
+    target.style.setProperty(CSS_FLOATING_ARROW_Y, y);
     attr(target, ATTR_FLOATING, data.placement);
     return data;
   },
