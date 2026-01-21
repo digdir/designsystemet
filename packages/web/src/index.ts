@@ -4,7 +4,6 @@ import { isBrowser } from './utils';
 if (isBrowser()) import('invokers-polyfill');
 
 export * from '@u-elements/u-datalist'; // Re-export u-datalist since this is a pure polyfill and not custom Designsystemet elements
-export * from '@u-elements/u-details'; // Re-export u-details since this is a pure polyfill and not custom Designsystemet elements
 export * from './breadcrumbs';
 export * from './error-summary';
 export * from './field';

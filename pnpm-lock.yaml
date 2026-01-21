@@ -682,9 +682,6 @@ importers:
       '@u-elements/u-datalist':
         specifier: ^1.0.14
         version: 1.0.14
-      '@u-elements/u-details':
-        specifier: ^0.1.5
-        version: 0.1.5
       '@u-elements/u-progress':
         specifier: ^0.0.6
         version: 0.0.6
