@@ -54,6 +54,25 @@ Only implements basic functionality. No API.
 </ds-breadcrumbs>
 ```
 
+### `details` and `summary`
+Use native elements. We polyfill a bug in firefox on android where the state and role is not announced properly.
+
+```html
+<details class="ds-details">
+  <summary>More info</summary>
+  <div>Lorem ipsum dolor sit amet.</div>
+</details>
+```
+
+### `dialog`
+Use the native `<dialog>` element. We add support for `closedby="any"`.
+
+```html
+<dialog class="ds-dialog" closedby="any" id="my-dialog">
+my dialog
+</dialog>
+```
+
 ### `ds-error-summary`
 Only implements basic functionality. No API.
 
@@ -163,4 +182,12 @@ An observer will look for `[data-toggle-group]` and add proper arrow navigation 
     Høyrestilt
   </label>
 </fieldset>
+```
+
+### `tooltip`
+The tooltip is always one element for all tooltips.
+This will be added automatically when you import the package.
+
+```html
+<button data-placement="left" data-tooltip="venstre" class="ds-button">venstre</button>
 ```
