@@ -105,34 +105,6 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
 
     useEffect(() => {
       const dialog = dialogRef.current;
-      const handleClosedby = (event: Event) => {
-        if (event.defaultPrevented) return; // Skip if default action is prevented
-        const { clientY: y, clientX: x, target } = event as MouseEvent;
-        /* Check if clicked element or its closest parent has data-command='close' */
-        if (target instanceof Element && event.type === 'click') {
-          const closeElement = target.closest('[data-command="close"]');
-          if (closeElement) return dialog?.close();
-        }
-
-        // if the browser supports closedBy, we let the browser handle it
-        // see https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy
-        if (dialog && 'closedBy' in dialog) return;
-
-        if (event instanceof KeyboardEvent)
-          return (
-            closedby === 'none' &&
-            event.key === 'Escape' &&
-            event.preventDefault()
-          ); // Skip ESC-key if closedby="none"
-
-        if (window.getSelection()?.toString()) return; // Fix bug where if you select text spanning two divs it thinks you clicked outside
-        if (dialog && target === dialog && closedby === 'any') {
-          const { top, left, right, bottom } = dialog.getBoundingClientRect();
-          const isInDialog = top <= y && y <= bottom && left <= x && x <= right;
-
-          if (!isInDialog) dialog?.close(); // Both <dialog> and ::backdrop is considered same event.target
-        }
-      };
 
       const handleAutoFocus = () => {
         const autofocus = dialog?.querySelector<HTMLElement>('[autofocus]');
@@ -140,12 +112,8 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
       };
 
       dialog?.addEventListener('animationend', handleAutoFocus);
-      dialog?.addEventListener('click', handleClosedby);
-      dialog?.addEventListener('keydown', handleClosedby);
       return () => {
         dialog?.removeEventListener('animationend', handleAutoFocus);
-        dialog?.removeEventListener('click', handleClosedby);
-        dialog?.removeEventListener('keydown', handleClosedby);
       };
     }, [closedby]);
 
