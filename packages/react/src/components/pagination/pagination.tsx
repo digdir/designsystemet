@@ -16,6 +16,8 @@ export type PaginationProps = MergeRight<
     /**
      * Change the default rendered element for the one passed as a child, merging their props and behavior.
      * @default false
+     *
+     * @deprecated This is not supported anymore, as the element needs to be `ds-pagination`
      */
     asChild?: boolean;
   }
@@ -44,12 +46,14 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
     { 'aria-label': ariaLabel = 'Sidenavigering', asChild, className, ...rest },
     ref,
   ) {
-    const Component = asChild ? Slot : 'nav';
+    const Component = asChild ? Slot : 'ds-pagination';
 
     return (
       <Component
         aria-label={ariaLabel}
-        className={cl('ds-pagination', className)}
+        {...(asChild
+          ? { className: cl('ds-pagination', className) }
+          : { class: cl('ds-pagination', className) })}
         ref={ref}
         {...rest}
       />

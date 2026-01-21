@@ -13,41 +13,32 @@ export const Preview: StoryFn<typeof Pagination> = () => {
     <Pagination>
       <Pagination.List>
         <Pagination.Item>
-          <Pagination.Button aria-label='Forrige side' data-variant='tertiary'>
-            Forrige
-          </Pagination.Button>
+          <Pagination.Button
+            aria-label='Forrige side'
+            data-variant='tertiary'
+          />
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Side 1' data-variant='tertiary'>
-            1
-          </Pagination.Button>
+          <Pagination.Button />
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Side 2' data-variant='primary'>
-            2
-          </Pagination.Button>
+          <Pagination.Button data-variant='primary' />
         </Pagination.Item>
 
         <Pagination.Item />
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Side 9' data-variant='tertiary'>
-            9
-          </Pagination.Button>
+          <Pagination.Button data-variant='tertiary' />
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Side 10' data-variant='tertiary'>
-            10
-          </Pagination.Button>
+          <Pagination.Button data-variant='tertiary' />
         </Pagination.Item>
 
         <Pagination.Item>
-          <Pagination.Button aria-label='Neste side' data-variant='tertiary'>
-            Neste
-          </Pagination.Button>
+          <Pagination.Button data-variant='tertiary' />
         </Pagination.Item>
       </Pagination.List>
     </Pagination>

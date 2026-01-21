@@ -42,6 +42,7 @@ export class DSPaginationElement extends DSElement {
     this._unmutate = onMutation(this, this.render.bind(this), {
       childList: true,
       subtree: true,
+      debounce: 0,
     });
   }
   disconnectedCallback() {
@@ -51,9 +52,14 @@ export class DSPaginationElement extends DSElement {
   render() {
     const items = this.querySelectorAll('button,a');
     const href = attr(this, ATTR_HREF);
+    const CURRENT = attr(this, ATTR_CURRENT) || undefined;
+    const TOTAL = attr(this, ATTR_TOTAL) || undefined;
+
+    if (!CURRENT || !TOTAL) return;
+
     const { next, prev, pages } = pagination({
-      current: parseInt(attr(this, ATTR_CURRENT) || '1', 10),
-      total: parseInt(attr(this, ATTR_TOTAL) || '10', 10),
+      current: parseInt(CURRENT, 10),
+      total: parseInt(TOTAL, 10),
       show: items.length - 2,
     });
 
