@@ -2,7 +2,7 @@ import { attr, DSElement, off, on, QUICK_EVENT, useId } from './utils';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'ds-errorsummary': DSErrorSummaryElement;
+    'ds-error-summary': DSErrorSummaryElement;
   }
 }
 
@@ -23,4 +23,4 @@ export class DSErrorSummaryElement extends DSElement {
   }
 }
 
-customElements.define('ds-errorsummary', DSErrorSummaryElement);
+customElements.define('ds-error-summary', DSErrorSummaryElement);

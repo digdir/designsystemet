@@ -24,7 +24,7 @@ function handleKeydown(event: Partial<KeyboardEvent>) {
   }
 }
 
-onHotReload('togglegroup', () => [
+onHotReload('toggle-group', () => [
   on(document, 'keydown', handleKeydown),
   onMutation(document, handleAriaAttributes, {
     attributeFilter: [ATTR_TOGGLEGROUP],
