@@ -11,6 +11,7 @@ export * from './pagination';
 export * from './suggestion';
 export * from './tabs';
 import './clickdelegatefor';
+import './details';
 import './dialog';
 import './popover';
 import './toggle-group';
