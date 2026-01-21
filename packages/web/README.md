@@ -5,29 +5,10 @@
 ## `@digdir/designsystemet-web`
 
 ### Types
-We have simple types for our web components that can be used in TypeScript projects.
+We have simple DOM types for our web components that can be used in TypeScript projects.
 Types should be automatically included when you install the package.
 
-We **do not** have types from frameworks yet. 
-If you wish to use web components in react, you need to add this:
-
-```ts
-declare global {
-  namespace React.JSX {
-    interface IntrinsicElements {
-      'ds-tabs': DSTabsElement;
-      'ds-tablist': DSTabListElement;
-      'ds-tab': DSTabElement;
-      'ds-tabpanel': DSTabPanelElement;
-      'ds-breadcrumbs': DSBreadcrumbsElement;
-      'ds-error-summary': DSErrorSummaryElement;
-      'ds-pagination': DSPaginationElement;
-      'ds-suggestion': DSSuggestionElement;
-      'ds-field': DSFieldElement;
-    }
-  }
-}
-```
+We **do not** have types from frameworks _yet_.
 
 ### Get started
 
@@ -39,7 +20,7 @@ import '@digdir/designsystemet-web';
 This will register all web components and observers globally, so you only need to do this once.
 
 ### `ds-breadcrumbs`
-Only implements basic functionality. No API.
+Automatically hides/shows `aria-label` on desktop/mobile and `aria-current="page"` on last link in list. No API.
 
 ```html
 <ds-breadcrumbs class="ds-breadcrumbs" aria-label="You are here:">
@@ -55,7 +36,7 @@ Only implements basic functionality. No API.
 ```
 
 ### `details` and `summary`
-Use native elements. We polyfill a bug in firefox on android where the state and role is not announced properly.
+Use native elements. We polyfill a bug in Firefox when combined with Android Talkback screen reader to announce state and role properly.
 
 ```html
 <details class="ds-details">
@@ -65,7 +46,7 @@ Use native elements. We polyfill a bug in firefox on android where the state and
 ```
 
 ### `dialog`
-Use the native `<dialog>` element. We add support for `closedby="any"`.
+Use the native `<dialog>` element. We polyfill support for `closedby="any"`.
 
 ```html
 <dialog class="ds-dialog" closedby="any" id="my-dialog">
@@ -76,7 +57,7 @@ my dialog
 See [Polyfills](#polyfills) for how to open and close the dialog with commands.
 
 ### `ds-error-summary`
-Only implements basic functionality. No API.
+Automatically takes focus when visible and sets `aria-labelledby` to the first child heading. No API.
 
 ```html
 <ds-errorsummary class="ds-error-summary">
@@ -129,16 +110,16 @@ If you don't pass any attributes you can implement your own logic for current pa
 ```html
 <ds-pagination class="ds-pagination" aria-label="Bla i sider:" data-href="?page=$page" data-current="2" data-total="100">
   <ol>
-    <li><a href="#none"></a></li>
-    <li><a href="#none"></a></li>
-    <li><a href="#none"></a></li>
-    <li><a href="#none"></a></li>
+    <li><a></a></li>
+    <li><a></a></li>
+    <li><a></a></li>
+    <li><a></a></li>
   </ol>
 </ds-pagination>
 ```
 
-### popover
-We use native popover functionality, but we attach an observer that places the popover where you want it.
+### `popover`
+We use native popover functionality, but we attach an event listener that fixes placement of designsystem components.
 
 ```html
 <button class="ds-button" popovertarget="popover">Open popover</button>
@@ -157,11 +138,11 @@ We use native popover functionality, but we attach an observer that places the p
 **If you don't use the class `ds-popover` you need to add the CSS property `--_ds-floating` to the popover element.** This can be `top`, `bottom`, `left` or `right`.
 
 ### `ds-suggestion`
-See u-elements for documentation:
+Extends `u-combobox` from u-elements. See u-elements for documentation:
 [https://u-elements.github.io/u-elements/elements/u-combobox](https://u-elements.github.io/u-elements/elements/u-combobox)
 
 ### `ds-tabs`
-See u-elements for documentation:
+Extends `u-tabs` from u-elements. See u-elements for documentation:
 [https://u-elements.github.io/u-elements/elements/u-tabs](https://u-elements.github.io/u-elements/elements/u-tabs)
 
 ### `ds-toggle-group`
@@ -186,9 +167,9 @@ An observer will look for `[data-toggle-group]` and add proper arrow navigation 
 </fieldset>
 ```
 
-### `tooltip`
-The tooltip is always one element for all tooltips.
-This will be added automatically when you import the package.
+### `data-tooltip`
+Using a single element for rendering next to elements with `data-tooltip` attribute.
+Also automatically sets `aria-label` or `aria-description` as needed.
 
 ```html
 <button data-placement="left" data-tooltip="venstre" class="ds-button">venstre</button>
