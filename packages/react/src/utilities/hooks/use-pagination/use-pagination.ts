@@ -107,7 +107,6 @@ export const usePagination = ({
             ? {
                 'aria-current': page === currentPage ? 'true' : undefined,
                 onClick: handleClick(page),
-                variant: page === currentPage ? 'primary' : 'tertiary',
               }
             : null) as PaginationButtonProps | null,
         }),

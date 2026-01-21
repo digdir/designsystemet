@@ -15,6 +15,7 @@ export type FieldProps = {
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    * @default false
+   * @deprecated This is not supported anymore, as the element needs to be `ds-field`
    */
   asChild?: boolean;
 } & HTMLAttributes<HTMLDivElement> &
@@ -35,14 +36,15 @@ export const Field = forwardRef<HTMLDivElement, FieldProps>(function Field(
   { className, position, asChild, ...rest },
   ref,
 ) {
-  const Component = asChild ? Slot : 'div';
+  const Component = asChild ? Slot : 'ds-field';
   const fieldRef = useRef<HTMLDivElement>(null);
   const mergedRefs = useMergeRefs([fieldRef, ref]);
-  useEffect(() => fieldObserver(fieldRef.current), []);
 
   return (
     <Component
-      className={cl('ds-field', className)}
+      {...(asChild
+        ? { className: cl('ds-field', className) }
+        : { class: cl('ds-field', className) })}
       data-position={position}
       ref={mergedRefs}
       {...rest}
