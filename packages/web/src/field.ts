@@ -53,7 +53,7 @@ const setupFieldsets = () => {
     const labelledby = [
       fieldset.querySelector('legend'),
       fieldset.querySelector(SELECTOR_FIELDSET_DESCRIPTION),
-    ].filter(isVisible);
+    ].filter(isNotHidden);
 
     attr(fieldset, 'aria-labelledby', labelledby.map(useId).join(' '));
   }
@@ -74,7 +74,7 @@ const setupFields = () => {
             field,
           );
         input = el;
-      } else if (isVisible(el)) {
+      } else if (isNotHidden(el)) {
         const type = el.getAttribute(ATTR_FIELD); // Using getAttribute not attr for best performance
         if (type === TYPE_VALIDATION) descs.unshift(el);
         else if (type) descs.push(el);
@@ -90,7 +90,7 @@ const setupFields = () => {
       const fieldsetValidation = field
         .closest('fieldset')
         ?.querySelector(SELECTOR_FIELDSET_VALIDATION);
-      if (isVisible(fieldsetValidation)) descs.unshift(fieldsetValidation);
+      if (isNotHidden(fieldsetValidation)) descs.unshift(fieldsetValidation);
 
       field.handleEvent({ target: input }); // Run counter and textrarea resize
       attr(field, 'data-clickdelegatefor', isBoolish ? useId(input) : null); // Expand click area to ds-field if radio/checkbox
@@ -138,7 +138,7 @@ const isInputLike = (el: unknown): el is HTMLInputElement =>
   'validity' in el && // Adds support for custom elements implemeted with attachInternals()
   !(el instanceof HTMLButtonElement); // But skip <button> elements
 
-const isVisible = (el?: Element | null): el is Element =>
+const isNotHidden = (el?: Element | null): el is Element =>
   !!el && !(el as HTMLElement).hidden;
 
 const isInvalid = (el: Element): boolean =>

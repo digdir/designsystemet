@@ -31,6 +31,7 @@ export class DSBreadcrumbsElement extends DSElement {
     this._items = this.getElementsByTagName('a'); // Speed up by caching HTMLCollection
     this._unresize = on(window, 'resize', render);
     this._unmutate = onMutation(this, render, {
+      debounce: 0, // No debounce, as we already debounce render
       childList: true,
       subtree: true,
     });

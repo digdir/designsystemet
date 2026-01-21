@@ -1,7 +1,6 @@
 import { attr, isBrowser, onHotReload, onMutation } from './utils';
 
 // Polyfill for Android Firefox not supporting details/summary accessibility properly
-
 const IS_ANDROID_FIREFOX =
   isBrowser() &&
   /android/i.test(navigator.userAgent) &&
