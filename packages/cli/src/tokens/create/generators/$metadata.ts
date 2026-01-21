@@ -9,10 +9,11 @@ export function generate$Metadata(schemes: ColorScheme[], themes: string[], colo
   return {
     tokenSetOrder: [
       'primitives/globals',
+      'primitives/modes/size/global',
       'primitives/modes/size/small',
       'primitives/modes/size/medium',
       'primitives/modes/size/large',
-      'primitives/modes/size/global',
+      'primitives/modes/typography/size/global',
       'primitives/modes/typography/size/small',
       'primitives/modes/typography/size/medium',
       'primitives/modes/typography/size/large',

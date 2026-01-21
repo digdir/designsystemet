@@ -1,9 +1,11 @@
 import type { ColorScheme } from '../colors/types.js';
+import type { TypographySizeSchema } from '../config.js';
 import { getDefaultToken, getDefaultTokens } from './create/defaults.js';
 import { generateColorScheme } from './create/generators/color.js';
 import { generateSemantic } from './create/generators/semantic.js';
 import { generateTheme } from './create/generators/theme.js';
 import { generateTypography } from './create/generators/typography.js';
+import { generateTypographySizeMode } from './create/generators/typographySize.js';
 
 import type { Theme, TokenSet, TokenSets } from './types.js';
 
@@ -24,8 +26,8 @@ export const cliOptions = {
   },
 } as const;
 
-export const createTokens = async (opts: Theme) => {
-  const { colors, typography, name, borderRadius, overrides } = opts;
+export const createTokens = async (theme: Theme, typographySize: TypographySizeSchema | undefined) => {
+  const { colors, typography, name, borderRadius, overrides } = theme;
   const colorSchemes: ColorScheme[] = ['light', 'dark'];
 
   const semantic = generateSemantic(colors, name);
@@ -33,14 +35,15 @@ export const createTokens = async (opts: Theme) => {
   const tokenSets: TokenSets = new Map([
     ...getDefaultTokens([
       'primitives/globals',
+      'primitives/modes/size/global',
       'primitives/modes/size/small',
       'primitives/modes/size/medium',
       'primitives/modes/size/large',
-      'primitives/modes/size/global',
-      'primitives/modes/typography/size/small',
-      'primitives/modes/typography/size/medium',
-      'primitives/modes/typography/size/large',
+      'primitives/modes/typography/size/global',
     ]),
+    ['primitives/modes/typography/size/small', generateTypographySizeMode('small', typographySize)],
+    ['primitives/modes/typography/size/medium', generateTypographySizeMode('medium', typographySize)],
+    ['primitives/modes/typography/size/large', generateTypographySizeMode('large', typographySize)],
     [`primitives/modes/typography/primary/${name}`, generateTypography(name, typography)],
     [`primitives/modes/typography/secondary/${name}`, generateTypography(name, typography)],
     ...colorSchemes.flatMap((scheme): [string, TokenSet][] => [

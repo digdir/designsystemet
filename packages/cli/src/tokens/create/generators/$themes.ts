@@ -45,7 +45,8 @@ function generateSizeGroup(): ThemeObject_[] {
       selectedTokenSets: {
         'primitives/modes/size/medium': TokenSetStatus.SOURCE,
         'primitives/modes/size/global': TokenSetStatus.ENABLED,
-        'primitives/modes/typography/size/medium': TokenSetStatus.ENABLED,
+        'primitives/modes/typography/size/medium': TokenSetStatus.SOURCE,
+        'primitives/modes/typography/size/global': TokenSetStatus.ENABLED,
       },
       $figmaCollectionId: 'VariableCollectionId:36248:20757',
       $figmaModeId: '41630:1',
@@ -58,7 +59,8 @@ function generateSizeGroup(): ThemeObject_[] {
       selectedTokenSets: {
         'primitives/modes/size/large': TokenSetStatus.SOURCE,
         'primitives/modes/size/global': TokenSetStatus.ENABLED,
-        'primitives/modes/typography/size/large': TokenSetStatus.ENABLED,
+        'primitives/modes/typography/size/large': TokenSetStatus.SOURCE,
+        'primitives/modes/typography/size/global': TokenSetStatus.ENABLED,
       },
       $figmaCollectionId: 'VariableCollectionId:36248:20757',
       $figmaModeId: '41630:2',
@@ -71,7 +73,8 @@ function generateSizeGroup(): ThemeObject_[] {
       selectedTokenSets: {
         'primitives/modes/size/small': TokenSetStatus.SOURCE,
         'primitives/modes/size/global': TokenSetStatus.ENABLED,
-        'primitives/modes/typography/size/small': TokenSetStatus.ENABLED,
+        'primitives/modes/typography/size/small': TokenSetStatus.SOURCE,
+        'primitives/modes/typography/size/global': TokenSetStatus.ENABLED,
       },
       $figmaCollectionId: 'VariableCollectionId:36248:20757',
       $figmaModeId: '41630:3',

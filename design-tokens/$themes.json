@@ -6,7 +6,8 @@
     "selectedTokenSets": {
       "primitives/modes/size/medium": "source",
       "primitives/modes/size/global": "enabled",
-      "primitives/modes/typography/size/medium": "enabled"
+      "primitives/modes/typography/size/medium": "source",
+      "primitives/modes/typography/size/global": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:36248:20757",
     "$figmaModeId": "41630:1",
@@ -19,7 +20,8 @@
     "selectedTokenSets": {
       "primitives/modes/size/large": "source",
       "primitives/modes/size/global": "enabled",
-      "primitives/modes/typography/size/large": "enabled"
+      "primitives/modes/typography/size/large": "source",
+      "primitives/modes/typography/size/global": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:36248:20757",
     "$figmaModeId": "41630:2",
@@ -32,7 +34,8 @@
     "selectedTokenSets": {
       "primitives/modes/size/small": "source",
       "primitives/modes/size/global": "enabled",
-      "primitives/modes/typography/size/small": "enabled"
+      "primitives/modes/typography/size/small": "source",
+      "primitives/modes/typography/size/global": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:36248:20757",
     "$figmaModeId": "41630:3",
