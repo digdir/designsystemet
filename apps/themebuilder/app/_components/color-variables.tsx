@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { styleColorVars } from '~/_utils/generate-color-vars';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
 
-export const OverviewVariables = () => {
+export const ColorVariables = () => {
   const { t } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
   const { colors, colorScheme } = useThemebuilder();
