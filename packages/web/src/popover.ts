@@ -2,6 +2,7 @@ import type { ComputePositionConfig, MiddlewareState } from '@floating-ui/dom';
 import {
   autoUpdate,
   computePosition,
+  limitShift,
   flip,
   offset,
   shift,
@@ -18,8 +19,6 @@ const CSS_FLOATING_ARROW_Y = '--_ds-floating-arrow-y';
 const CSS_FLOATING_OVERSCROLL = '--_ds-floating-overscroll';
 const POPOVERS = new Map<HTMLElement, () => void>();
 
-// TODO: fix the popover closing animation(?) making closing laggy
-
 // Sometimes use "ds-toggle" event while waiting for better support of
 // event.source (https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/source)
 type DSToggleEvent = Partial<ToggleEvent> & {
@@ -33,25 +32,22 @@ function handleToggle(event: DSToggleEvent) {
   if (!isDSFloating(target)) return;
   if (newState === 'closed') return POPOVERS.get(target)?.(); // Cleanup on close
   if (!source || source === target) return; // No need to update
-  const padding = 10; // TODO: Make configurable?
-  const autoPlacement =
-    (attr(target, ATTR_AUTOPLACEMENT) || attr(source, ATTR_AUTOPLACEMENT)) !==
-    'false';
+  const padding = 10;
   const overscroll = getCSSProp(target, CSS_FLOATING_OVERSCROLL);
-  // TODO: Prevent flip through CSS
-  const fallbackAxisSideDirection = overscroll ? 'none' : 'start'; // Prevent flipping axis when using overscroll
+  const placement = attr(target, ATTR_PLACEMENT) || attr(source, ATTR_PLACEMENT) || getCSSProp(target, CSS_FLOATING);
+  const shiftOffset = placement.match(/left|right/gi) ? source.offsetHeight : source.offsetWidth;
+  const autoPlacement = attr(target, ATTR_AUTOPLACEMENT) || attr(source, ATTR_AUTOPLACEMENT);
   const options = {
     strategy: 'absolute',
-    placement:
-      attr(target, ATTR_PLACEMENT) ||
-      attr(source, ATTR_PLACEMENT) ||
-      getCSSProp(target, CSS_FLOATING),
+    placement,
     middleware: [
-      ...(autoPlacement
-        ? [shift({ padding }), flip({ padding, fallbackAxisSideDirection })]
-        : []),
       offset(parseFloat(getComputedStyle(target, '::before').height) || 0),
+      shift({
+        padding,
+        limiter: limitShift({ offset: { mainAxis: shiftOffset } }) // Prevent from shifing away from source
+      }),
       arrowPseudo(),
+      ...(autoPlacement !== 'false' ? [flip({ padding, crossAxis: false })] : []),
       ...(overscroll
         ? [
             size({
