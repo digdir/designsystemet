@@ -1,8 +1,7 @@
 {
   "name": "@digdir/designsystemet-web",
   "type": "module",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.0.1",
   "description": "Javascript for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -21,12 +20,15 @@
       "require": "./dist/cjs/index.cjs"
     }
   },
+  "files": [
+    "dist/**"
+  ],
   "scripts": {
     "start": "vite --config=./vite.config.ts --port=5174",
     "build": "rimraf dist && tsc && rolldown -c"
   },
   "publishConfig": {
-    "access": "restricted"
+    "access": "public"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.7.4",
