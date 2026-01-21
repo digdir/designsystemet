@@ -1,8 +1,9 @@
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
-import { createContext, forwardRef, useRef, useState } from 'react';
+import { createContext, forwardRef, useEffect, useRef, useState } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
+import { useMergeRefs } from '../../utilities/hooks';
 
 export type TabsProps = MergeRight<
   DefaultProps & Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'value'>,
@@ -56,6 +57,8 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
   const [uncontrolledValue, setUncontrolledValue] = useState<
     string | undefined
   >(defaultValue);
+  const tabsRef = useRef<HTMLDivElement>(null);
+  const mergedRefs = useMergeRefs([ref, tabsRef]);
 
   let onValueChange = onChange;
   if (!isControlled) {
@@ -66,6 +69,24 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
     value = uncontrolledValue;
   }
 
+  useEffect(() => {
+    if (!isControlled || !tabsRef.current || value === undefined) return;
+
+    const tabsElement = tabsRef.current;
+    const tabs = tabsElement.querySelectorAll('ds-tab');
+
+    let targetIndex = -1;
+    tabs.forEach((tab, index) => {
+      if (tab.getAttribute('data-value') === value) {
+        targetIndex = index;
+      }
+    });
+
+    if (targetIndex !== -1 && 'selectedIndex' in tabsElement) {
+      (tabsElement as any).selectedIndex = targetIndex;
+    }
+  }, [value, isControlled]);
+
   return (
     <Context.Provider
       value={{
@@ -74,7 +95,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
         onChange: onValueChange,
       }}
     >
-      <ds-tabs class={cl('ds-tabs', className)} ref={ref} {...rest} />
+      <ds-tabs class={cl('ds-tabs', className)} ref={mergedRefs} {...rest} />
     </Context.Provider>
   );
 });
