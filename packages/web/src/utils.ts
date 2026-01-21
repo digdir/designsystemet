@@ -4,6 +4,11 @@ export const QUICK_EVENT = { passive: true, capture: true };
 export const isBrowser = () =>
   typeof window !== 'undefined' && typeof document !== 'undefined';
 
+export const isWindows = () =>
+  isBrowser() &&
+  // @ts-expect-error Typescript has not implemented userAgentData yet https://stackoverflow.com/a/71392474
+  /^Win/i.test(navigator.userAgentData?.platform || navigator.platform);
+
 // Make sure we have a HTMLElement to extend (for server side rendering)
 export const DSElement =
   typeof HTMLElement === 'undefined'

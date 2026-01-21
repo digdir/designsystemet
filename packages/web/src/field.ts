@@ -11,6 +11,7 @@ import {
   QUICK_EVENT,
   tag,
   useId,
+  isWindows,
 } from './utils';
 
 declare global {
@@ -25,15 +26,16 @@ const ATTR_COUNTER_ARIA = 'data-counter-aria';
 const ATTR_FIELD = 'data-field';
 const TYPE_DESCRIPTION = 'description';
 const TYPE_VALIDATION = 'validation';
-const COUNTER = {
+const COUNTER_DEBOUNCE = isWindows() ? 800 : 200; // Longer debounce on Windows due to NVDA performance
+const COUNTER_TEXT = {
   over: '%d tegn for mye',
   under: '%d tegn for mye',
   hint: 'Maks %d tegn tillatt.',
 };
 
-const SELECTOR_FIELD_COUNTER = '[data-field="counter"]';
 const SELECTOR_FIELDSET_DESCRIPTION = `:scope > [${ATTR_FIELD}="${TYPE_DESCRIPTION}"],:scope > legend + p`; // legend + p is kept for backwards compatibility
 const SELECTOR_FIELDSET_VALIDATION = `:scope > [${ATTR_FIELD}="${TYPE_VALIDATION}"]`;
+const SELECTOR_FIELD_COUNTER = '[data-field="counter"]';
 
 const FIELDS = new Set<DSFieldElement>();
 const FILEDSETS = isBrowser() ? document.getElementsByTagName('fieldset') : [];
@@ -98,8 +100,8 @@ const setupFields = () => {
   }
 };
 
-const getCounterText = (el: Element, key: keyof typeof COUNTER, num: number) =>
-  (attr(el, `data-${key}`) || COUNTER[key]).replace('%d', `${Math.abs(num)}`);
+const getCounterText = (el: Element, key: keyof typeof COUNTER_TEXT, num: number) =>
+  (attr(el, `data-${key}`) || COUNTER_TEXT[key]).replace('%d', `${Math.abs(num)}`);
 
 const setupCounter = (field: DSFieldElement, target: EventTarget | null) => {
   const el =
@@ -121,7 +123,7 @@ const setupCounter = (field: DSFieldElement, target: EventTarget | null) => {
 
 const setupCounterLiveRegion = debounce((live: Element, text: string) => {
   live.textContent = text;
-}, 200); // TODO: Test this timeout in NVDA
+}, COUNTER_DEBOUNCE);
 
 // iOS does not support field-sizing: content, so we need to manually resize
 const setupTextareaFieldSizingiOS = (target: EventTarget | null) => {
@@ -149,7 +151,7 @@ export class DSFieldElement extends DSElement {
     super();
     this.attachShadow({ mode: 'open' }).append(
       tag('slot'),
-      tag('div', { 'aria-live': 'polite', style: STYLE_SR_ONLY }),
+      tag('div', { 'aria-live': 'polite', style: STYLE_SR_ONLY }), // Used to announce counter updates
     );
   }
   connectedCallback() {
