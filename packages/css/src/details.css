@@ -108,6 +108,7 @@
     interpolate-size: allow-keywords;
   }
 
+  &::details-content,
   &::part(details-content) {
     block-size: 0;
     overflow-y: hidden; /* Using hidden instead of clip to contain margins */
@@ -116,6 +117,7 @@
       height 400ms;
   }
 
+  &[open]::details-content,
   &[open]::part(details-content) {
     height: auto;
   }
