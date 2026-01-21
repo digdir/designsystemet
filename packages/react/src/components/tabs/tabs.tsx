@@ -28,10 +28,7 @@ export type TabsProps = MergeRight<
 export type ContextProps = {
   value?: string;
   defaultValue?: string;
-  panelButtonMap?: Map<string, string>;
-  setPanelButtonMap?: React.Dispatch<React.SetStateAction<Map<string, string>>>;
   onChange?: (value: string) => void;
-  tablistRef?: React.RefObject<HTMLDivElement | null>;
 };
 
 export const Context = createContext<ContextProps>({});
@@ -55,16 +52,10 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
   { value, defaultValue, className, onChange, ...rest },
   ref,
 ) {
-  const tablistRef = useRef<HTMLDivElement | null>(null);
-
   const isControlled = value !== undefined;
   const [uncontrolledValue, setUncontrolledValue] = useState<
     string | undefined
   >(defaultValue);
-
-  const [panelButtonMap, setPanelButtonMap] = useState<Map<string, string>>(
-    new Map(),
-  );
 
   let onValueChange = onChange;
   if (!isControlled) {
@@ -81,9 +72,6 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
         value,
         defaultValue,
         onChange: onValueChange,
-        tablistRef,
-        panelButtonMap,
-        setPanelButtonMap,
       }}
     >
       <ds-tabs class={cl('ds-tabs', className)} ref={ref} {...rest} />

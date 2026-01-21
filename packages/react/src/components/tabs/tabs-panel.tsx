@@ -1,15 +1,7 @@
 import type { HTMLAttributes } from 'react';
-import {
-  forwardRef,
-  useContext,
-  useEffect,
-  useId,
-  useRef,
-  useState,
-} from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 
 import { useMergeRefs } from '../../utilities/hooks';
-import { Context } from './tabs';
 
 export type TabsPanelProps = {
   /**
@@ -27,8 +19,6 @@ export type TabsPanelProps = {
  */
 export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
   function TabsPanel({ children, value, id, ...rest }, ref) {
-    const { tablistRef } = useContext(Context);
-
     const [tabId, setTabId] = useState<string | undefined>(undefined);
 
     const internalRef = useRef<HTMLDivElement>(null);
@@ -36,16 +26,16 @@ export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
 
     /* get associated button */
     useEffect(() => {
-      if (!tablistRef) return;
+      const tabsElement = internalRef.current?.tabsElement;
 
-      const button = tablistRef.current?.querySelector(
-        `[data-value="${value}"]`,
-      );
+      if (!tabsElement) return;
+
+      const button = tabsElement.querySelector(`[data-value="${value}"]`);
 
       setTabId(
         button ? button.getAttribute('aria-controls') || undefined : undefined,
       );
-    }, [tablistRef]);
+    }, []);
 
     return (
       <ds-tabpanel ref={mergedRef} id={tabId} {...rest}>

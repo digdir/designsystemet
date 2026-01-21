@@ -1,7 +1,5 @@
 import type { HTMLAttributes } from 'react';
-import { forwardRef, useContext } from 'react';
-import { useMergeRefs } from '../../utilities/hooks';
-import { Context } from './tabs';
+import { forwardRef } from 'react';
 
 export type TabsListProps = HTMLAttributes<HTMLDivElement>;
 
@@ -16,12 +14,8 @@ export type TabsListProps = HTMLAttributes<HTMLDivElement>;
  */
 export const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
   function TabsList({ children, ...rest }, ref) {
-    const { tablistRef } = useContext(Context);
-
-    const mergedRefs = useMergeRefs([ref, tablistRef]);
-
     return (
-      <ds-tablist ref={mergedRefs} {...rest}>
+      <ds-tablist ref={ref} {...rest}>
         {children}
       </ds-tablist>
     );
