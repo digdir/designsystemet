@@ -1,13 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext, useEffect } from 'react';
-import '@u-elements/u-datalist';
-import {
-  autoUpdate,
-  computePosition,
-  flip,
-  type MiddlewareState,
-  shift,
-} from '@floating-ui/dom';
+import '@digdir/designsystemet-web'; // Load u-datalist polyfill
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { SuggestionContext } from './suggestion';
@@ -58,59 +51,20 @@ export const SuggestionList = forwardRef<
   },
   ref,
 ) {
-  const { handleFilter, uComboboxRef } = useContext(SuggestionContext);
+  const { handleFilter } = useContext(SuggestionContext);
 
   useEffect(handleFilter); // Must run on every render
 
-  // Position with floating-ui
-  useEffect(() => {
-    const trigger = uComboboxRef?.current?.control;
-    const list = uComboboxRef?.current?.list;
-
-    if (list && trigger) {
-      return autoUpdate(trigger, list, () => {
-        computePosition(trigger, list, {
-          placement: 'bottom',
-          strategy: 'fixed',
-          middleware: [
-            ...(autoPlacement
-              ? [
-                  flip({
-                    fallbackAxisSideDirection: 'start',
-                    fallbackPlacements: ['top'],
-                  }),
-                  shift(),
-                ]
-              : []),
-            undefined,
-            triggerWidth,
-          ],
-        }).then(({ x, y, placement }) => {
-          const varOperator = placement.startsWith('top') ? '-' : '+';
-          list.style.translate = `${Math.round(x)}px calc(${Math.round(y)}px ${varOperator} var(--dsc-suggestion-list-gap))`;
-        });
-      });
-    }
-  }, []);
-
   return (
     <u-datalist
-      data-nofilter
-      data-sr-singular={singular}
-      data-sr-plural={plural}
       class={className} // Using "class" since React does not translate className on custom elements
-      ref={ref}
+      data-nofilter
+      data-sr-plural={plural}
+      data-sr-singular={singular}
       popover='manual'
+      ref={ref}
+      suppressHydrationWarning // Since <u-datalist> adds attributes
       {...rest}
     />
   );
 });
-
-const triggerWidth = {
-  name: 'TriggerWidth',
-  fn(data: MiddlewareState) {
-    const { elements, rects } = data;
-    elements.floating.style.width = `${rects.reference.width}px`;
-    return data;
-  },
-};

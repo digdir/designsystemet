@@ -28,5 +28,11 @@ export const PaginationButton = forwardRef<
 >(function PaginationButton({ asChild, ...rest }, ref) {
   const Component = asChild ? Slot : 'button';
 
-  return <Component ref={ref} {...rest} />;
+  return (
+    <Component
+      suppressHydrationWarning // Since <ds-pagination> adds data-page and aria-attributes
+      ref={ref}
+      {...rest}
+    />
+  );
 });

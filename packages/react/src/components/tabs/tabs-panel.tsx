@@ -1,7 +1,8 @@
-import type { DSTabElement } from '@digdir/designsystemet-web';
+import type { DSTabPanelElement } from '@digdir/designsystemet-web';
 import type { HTMLAttributes } from 'react';
-import { forwardRef, useEffect, useRef, useState } from 'react';
-import { useMergeRefs } from '../../utilities/hooks';
+import '@digdir/designsystemet-web'; // Import ds-tabpanel custom element
+import { forwardRef, useContext } from 'react';
+import { Context } from './tabs';
 
 export type TabsPanelProps = {
   /**
@@ -9,7 +10,7 @@ export type TabsPanelProps = {
    * Must match the `value` of a `Tabs.Tab` component.
    */
   value: string;
-} & Omit<HTMLAttributes<HTMLDivElement>, 'value'>;
+} & Omit<HTMLAttributes<DSTabPanelElement>, 'value'>;
 
 /**
  * A single content item in a Tabs component.
@@ -17,28 +18,17 @@ export type TabsPanelProps = {
  * @example
  * <TabsPanel value='1'>content 1</TabsPanel>
  */
-export const TabsPanel = forwardRef<DSTabElement, TabsPanelProps>(
+export const TabsPanel = forwardRef<DSTabPanelElement, TabsPanelProps>(
   function TabsPanel({ children, value, id, ...rest }, ref) {
-    const [tabId, setTabId] = useState<string | undefined>(undefined);
-
-    const internalRef = useRef<DSTabElement>(null);
-    const mergedRef = useMergeRefs([ref, internalRef]);
-
-    /* get associated button */
-    useEffect(() => {
-      const tabsElement = internalRef.current?.tabsElement;
-
-      if (!tabsElement) return;
-
-      const button = tabsElement.querySelector(`[data-value="${value}"]`);
-
-      setTabId(
-        button ? button.getAttribute('aria-controls') || undefined : undefined,
-      );
-    }, []);
+    const { getPrefixedValue } = useContext(Context);
 
     return (
-      <ds-tabpanel ref={mergedRef} id={tabId} {...rest}>
+      <ds-tabpanel
+        suppressHydrationWarning // Since <ds-tablist> adds attributes
+        ref={ref}
+        id={id ?? getPrefixedValue?.(value)}
+        {...rest}
+      >
         {children}
       </ds-tabpanel>
     );

@@ -55,6 +55,7 @@ export const SuggestionInput = forwardRef<
         onInput?.(event); // Should run first
         handleFilter?.(); // Filter if uncontrolled value
       }}
+      suppressHydrationWarning // Since <ds-suggestion> adds attributes
       {...rest}
     />
   );

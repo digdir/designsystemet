@@ -582,15 +582,6 @@ importers:
       '@tanstack/react-virtual':
         specifier: ^3.13.18
         version: 3.13.18(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      '@u-elements/u-combobox':
-        specifier: ^1.0.5
-        version: 1.0.5
-      '@u-elements/u-datalist':
-        specifier: ^1.0.14
-        version: 1.0.14
-      '@u-elements/u-details':
-        specifier: ^0.1.5
-        version: 0.1.5
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -2469,9 +2460,6 @@ packages:
 
   '@u-elements/u-datalist@1.0.14':
     resolution: {integrity: sha512-wgh7BMLySzPF3xcfxeNnZgy/JmFZOQVJVY+XwAiIBgDYkCWQqERJrHjxRHv8C6t4h2PWnO7mwDIqdLQHEq12XQ==}
-
-  '@u-elements/u-details@0.1.5':
-    resolution: {integrity: sha512-08sBhbc4u3VFlXIvH//m2yCDBHOJlQigs8QiKVLAVk2hMSg+fcRPggcgeBmtVPuy7iN3u/VURP6G2Ajlfbr6xg==}
 
   '@u-elements/u-progress@0.0.6':
     resolution: {integrity: sha512-WJUxmHPgkgi/hKaOsjSJc5XGbfSg1/fgTs9SynmLRFn+1Dxaq7JPu98JqKPQLMDCVLaSY+Iz4EKJawgmNolbvA==}
@@ -7489,8 +7477,6 @@ snapshots:
   '@u-elements/u-combobox@1.0.5': {}
 
   '@u-elements/u-datalist@1.0.14': {}
-
-  '@u-elements/u-details@0.1.5': {}
 
   '@u-elements/u-progress@0.0.6': {}
 

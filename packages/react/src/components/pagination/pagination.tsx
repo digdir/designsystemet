@@ -1,3 +1,5 @@
+import type { DSPaginationElement } from '@digdir/designsystemet-web';
+import '@digdir/designsystemet-web'; // Import ds-breadcrumbs custom element
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
@@ -6,7 +8,7 @@ import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
 export type PaginationProps = MergeRight<
-  DefaultProps & HTMLAttributes<HTMLElement>,
+  DefaultProps & HTMLAttributes<DSPaginationElement>,
   {
     /**
      * Sets the screen reader label for the Pagination area
@@ -49,7 +51,7 @@ export type PaginationProps = MergeRight<
  *   </Pagination.List>
  * </Pagination>
  */
-export const Pagination = forwardRef<HTMLElement, PaginationProps>(
+export const Pagination = forwardRef<DSPaginationElement, PaginationProps>(
   function Pagination(
     { 'aria-label': ariaLabel = 'Sidenavigering', asChild, className, ...rest },
     ref,

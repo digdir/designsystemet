@@ -1,10 +1,12 @@
+import type { DSBreadcrumbsElement } from '@digdir/designsystemet-web';
+import '@digdir/designsystemet-web'; // Import ds-breadcrumbs custom element
 import cl from 'clsx/lite';
 import { forwardRef, type HTMLAttributes } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
 export type BreadcrumbsProps = MergeRight<
-  DefaultProps & HTMLAttributes<HTMLElement>,
+  DefaultProps & HTMLAttributes<DSBreadcrumbsElement>,
   {
     /**
      * Sets the screen reader label for the Breadcrumbs area
@@ -32,7 +34,7 @@ export type BreadcrumbsProps = MergeRight<
  *  </Breadcrumbs.List>
  * </Breadcrumbs>
  */
-export const Breadcrumbs = forwardRef<HTMLElement, BreadcrumbsProps>(
+export const Breadcrumbs = forwardRef<DSBreadcrumbsElement, BreadcrumbsProps>(
   ({ 'aria-label': ariaLabel = 'Du er her:', className, ...rest }, ref) => (
     <ds-breadcrumbs
       aria-label={ariaLabel}

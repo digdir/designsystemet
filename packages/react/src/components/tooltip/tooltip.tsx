@@ -1,8 +1,7 @@
 import { Slot } from '@radix-ui/react-slot';
-
+import '@digdir/designsystemet-web'; // Import _ds-floating functionality
 import type { HTMLAttributes, ReactElement, RefAttributes } from 'react';
 import { forwardRef } from 'react';
-
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
@@ -72,6 +71,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         data-tooltip={content}
         data-placement={placement}
         data-autoplacement={autoPlacement}
+        suppressHydrationWarning // Since data-tooltip adds aria-label/aria-description
         {...rest}
       >
         {isString ? <span>{rest.children}</span> : rest.children}

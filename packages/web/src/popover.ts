@@ -2,8 +2,8 @@ import type { ComputePositionConfig, MiddlewareState } from '@floating-ui/dom';
 import {
   autoUpdate,
   computePosition,
-  limitShift,
   flip,
+  limitShift,
   offset,
   shift,
   size,
@@ -34,9 +34,15 @@ function handleToggle(event: DSToggleEvent) {
   if (!source || source === target) return; // No need to update
   const padding = 10;
   const overscroll = getCSSProp(target, CSS_FLOATING_OVERSCROLL);
-  const placement = attr(target, ATTR_PLACEMENT) || attr(source, ATTR_PLACEMENT) || getCSSProp(target, CSS_FLOATING);
-  const shiftOffset = placement.match(/left|right/gi) ? source.offsetHeight : source.offsetWidth;
-  const autoPlacement = attr(target, ATTR_AUTOPLACEMENT) || attr(source, ATTR_AUTOPLACEMENT);
+  const placement =
+    attr(target, ATTR_PLACEMENT) ||
+    attr(source, ATTR_PLACEMENT) ||
+    getCSSProp(target, CSS_FLOATING);
+  const shiftOffset = placement.match(/left|right/gi)
+    ? source.offsetHeight
+    : source.offsetWidth;
+  const autoPlacement =
+    attr(target, ATTR_AUTOPLACEMENT) || attr(source, ATTR_AUTOPLACEMENT);
   const options = {
     strategy: 'absolute',
     placement,
@@ -44,10 +50,12 @@ function handleToggle(event: DSToggleEvent) {
       offset(parseFloat(getComputedStyle(target, '::before').height) || 0),
       shift({
         padding,
-        limiter: limitShift({ offset: { mainAxis: shiftOffset } }) // Prevent from shifing away from source
+        limiter: limitShift({ offset: { mainAxis: shiftOffset } }), // Prevent from shifing away from source
       }),
       arrowPseudo(),
-      ...(autoPlacement !== 'false' ? [flip({ padding, crossAxis: false })] : []),
+      ...(autoPlacement !== 'false'
+        ? [flip({ padding, crossAxis: false })]
+        : []),
       ...(overscroll
         ? [
             size({

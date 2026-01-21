@@ -52,6 +52,7 @@ export const FieldCounter = forwardRef<HTMLParagraphElement, FieldCounterProps>(
   ) {
     return (
       <p
+        suppressHydrationWarning // Since <ds-field> adds attributes
         data-field='counter'
         data-limit={limit}
         data-under={under}

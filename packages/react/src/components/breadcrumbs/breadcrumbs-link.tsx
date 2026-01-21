@@ -7,5 +7,11 @@ export const BreadcrumbsLink = forwardRef<
   HTMLAnchorElement,
   BreadcrumbsLinkProps
 >(function BreadcrumbsLink(rest, ref) {
-  return <Link ref={ref} {...rest} />;
+  return (
+    <Link
+      suppressHydrationWarning // Since <ds-breadcrumbs> adds aria-current="page"
+      ref={ref}
+      {...rest}
+    />
+  );
 });

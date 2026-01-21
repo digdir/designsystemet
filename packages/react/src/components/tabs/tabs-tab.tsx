@@ -1,7 +1,7 @@
 import type { DSTabElement } from '@digdir/designsystemet-web';
 import type { HTMLAttributes } from 'react';
-import { forwardRef, useContext, useId, useRef } from 'react';
-import { useMergeRefs } from '../../utilities/hooks';
+import '@digdir/designsystemet-web'; // Import ds-tab custom element
+import { forwardRef, useContext } from 'react';
 import { Context } from './tabs';
 
 export type TabsTabProps = {
@@ -18,26 +18,22 @@ export type TabsTabProps = {
  * <TabsTab value='1'>Tab 1</TabsTab>
  */
 export const TabsTab = forwardRef<DSTabElement, TabsTabProps>(function TabsTab(
-  { value, id, onClick, ...rest },
+  { value, onClick, ...rest },
   ref,
 ) {
-  const tabs = useContext(Context);
-  const localRef = useRef(null);
-  const generatedId = useId();
-  const buttonId = id ?? `tab-${generatedId}`;
-
-  const mergedRefs = useMergeRefs([ref, localRef]);
+  const { onChange, getPrefixedValue } = useContext(Context);
 
   return (
     // biome-ignore lint/a11y/noStaticElementInteractions: ds-tabs IS interactive
     <ds-tab
-      ref={mergedRefs}
+      aria-controls={rest['aria-controls'] ?? getPrefixedValue?.(value)}
+      data-value={value}
+      ref={ref}
+      suppressHydrationWarning // Since <ds-tablist> adds attributes
       onClick={(e: React.MouseEvent<DSTabElement>) => {
-        tabs.onChange?.(value);
+        if (e.isTrusted) onChange?.(value); // Only call onChange is user actually clicked, not when programmatically clicked/controlled
         onClick?.(e);
       }}
-      aria-controls={value ? buttonId : undefined}
-      data-value={value}
       {...rest}
     >
       {rest.children}

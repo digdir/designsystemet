@@ -4,6 +4,7 @@ import {
   DSElement,
   debounce,
   isBrowser,
+  isWindows,
   off,
   on,
   onHotReload,
@@ -11,7 +12,6 @@ import {
   QUICK_EVENT,
   tag,
   useId,
-  isWindows,
 } from './utils';
 
 declare global {
@@ -29,7 +29,7 @@ const TYPE_VALIDATION = 'validation';
 const COUNTER_DEBOUNCE = isWindows() ? 800 : 200; // Longer debounce on Windows due to NVDA performance
 const COUNTER_TEXT = {
   over: '%d tegn for mye',
-  under: '%d tegn for mye',
+  under: '%d tegn igjen',
   hint: 'Maks %d tegn tillatt.',
 };
 
@@ -100,8 +100,15 @@ const setupFields = () => {
   }
 };
 
-const getCounterText = (el: Element, key: keyof typeof COUNTER_TEXT, num: number) =>
-  (attr(el, `data-${key}`) || COUNTER_TEXT[key]).replace('%d', `${Math.abs(num)}`);
+const getCounterText = (
+  el: Element,
+  key: keyof typeof COUNTER_TEXT,
+  num: number,
+) =>
+  (attr(el, `data-${key}`) || COUNTER_TEXT[key]).replace(
+    '%d',
+    `${Math.abs(num)}`,
+  );
 
 const setupCounter = (field: DSFieldElement, target: EventTarget | null) => {
   const el =
