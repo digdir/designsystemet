@@ -1,0 +1,53 @@
+---
+title: "@digdir/designsystemet-web prerelease 1"
+description: First prerelease of the @digdir/designsystemet-web package, which provides the ability to use the Designsystemet without React.
+date: 2026-01-21
+author: Designsystemet
+imageSrc: /img/blog/ds-web-pre1.webp
+imageAlt: First prerelease of the @digdir/designsystemet-web package
+---
+
+We are happy that the work is finally underway, and are now looking for ongoing feedback.
+In this blog post, we will go over the components that have been changed, and how you can test.
+
+<Alert>
+You can install all `@digdir/designsystemet-*` packages with version `FILL IN`.
+</Alert>
+
+## Test in existing application
+
+We have updated the react package to use `@digdir/designsystemet-web` as the underlying framework-independent component library.
+This means that some components that are currently implemented in react may be experienced differently since they now come from the web package.
+Feel free to test these and provide feedback.
+
+These are:
+- Popover
+- Dropdown
+- Tooltip
+- Dialog
+- Pagination
+- Breadcrumbs
+- Tabs
+- Field
+
+## Test in other frameworks or pure HTML/JS
+
+To test the package without react, you can install `@digdir/designsystemet-web` and `@digdir/designsystemet-css` in your project.
+Then use the components and functionality directly.
+
+## Documentation
+
+The documentation will be continuously changed in the [README for the package](https://www.npmjs.com/package/@digdir/designsystemet-web), which you can read on NPM.
+When the full release of the package is out, we will update the relevant documentation on designsystemet.no.
+
+## Give feedback
+
+We are very interested in hearing from you as a user!
+If you discover errors, or have suggestions for improvements, you can create an issue in our [GitHub repo](https://github.com/digdir/designsystemet/issues/new) or on [Slack](/slack).
+
+<Contributors
+  authors={[
+    'Tobias Barsnes',
+    'Eirik Backer',
+  ]}
+/>
