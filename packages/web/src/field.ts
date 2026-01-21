@@ -108,11 +108,12 @@ const setupCounter = (field: DSFieldElement, target: EventTarget | null) => {
 
   if (el) {
     const live = field.shadowRoot?.lastElementChild as HTMLElement;
-    const count = Number(attr(el, 'data-limit') || 0) - target.value.length;
+    const limit = Number(attr(el, 'data-limit')) || 0;
+    const count = limit - target.value.length;
     const text = getCounterText(el, count < 0 ? 'over' : 'under', count);
 
     attr(el, ATTR_COUNTER_TEXT, text);
-    attr(el, ATTR_COUNTER_ARIA, getCounterText(el, 'hint', count));
+    attr(el, ATTR_COUNTER_ARIA, getCounterText(el, 'hint', limit));
     attr(el, 'data-color', count < 0 ? 'danger' : null);
     setupCounterLiveRegion(live, text); // Debounce live region to avoid NVDA interupting announcing typed text
   }
