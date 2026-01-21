@@ -1,11 +1,5 @@
-import { forwardRef, useEffect, useRef, useState } from 'react';
-import { useDebounceCallback } from '../../utilities';
-import { Paragraph } from '../paragraph/paragraph';
-import {
-  ValidationMessage,
-  type ValidationMessageProps,
-} from '../validation-message/validation-message';
-import { isInputLike } from './field-observer';
+import { forwardRef } from 'react';
+import type { ValidationMessageProps } from '../validation-message/validation-message';
 
 export type FieldCounterProps = {
   /**
