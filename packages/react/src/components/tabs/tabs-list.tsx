@@ -1,7 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext } from 'react';
 import { useMergeRefs } from '../../utilities/hooks';
-import { RovingFocusRoot } from '../../utilities/roving-focus/roving-focus-root';
 import { Context } from './tabs';
 
 export type TabsListProps = HTMLAttributes<HTMLDivElement>;
@@ -17,7 +16,7 @@ export type TabsListProps = HTMLAttributes<HTMLDivElement>;
  */
 export const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
   function TabsList({ children, ...rest }, ref) {
-    const { value, tablistRef } = useContext(Context);
+    const { tablistRef } = useContext(Context);
 
     const mergedRefs = useMergeRefs([ref, tablistRef]);
 

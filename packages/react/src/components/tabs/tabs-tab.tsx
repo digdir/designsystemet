@@ -1,8 +1,6 @@
-import type { DSTabElement } from '@digdir/designsystemet-web';
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext, useId, useRef } from 'react';
 import { useMergeRefs } from '../../utilities/hooks';
-import { RovingFocusItem } from '../../utilities/roving-focus/roving-focus-item';
 import { Context } from './tabs';
 
 export type TabsTabProps = {
@@ -28,6 +26,7 @@ export const TabsTab = forwardRef<HTMLButtonElement, TabsTabProps>(
     const mergedRefs = useMergeRefs([ref, localRef]);
 
     return (
+      // biome-ignore lint/a11y/noStaticElementInteractions: ds-tabs IS interactive
       <ds-tab
         ref={mergedRefs}
         onClick={(e) => {
