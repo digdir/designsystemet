@@ -1,29 +1,64 @@
 /// <reference types="@testing-library/jest-dom" />
-import '../index';
+import { describe, expect, it, test, vi } from 'vitest';
 
-import { describe, expect, it, test } from 'vitest';
+const waitForField = async () => {
+  vi.runAllTimers();
+};
 
-test('renders name', () => {
+const renderDefault = async () => {
   document.body.innerHTML = `<ds-field class="ds-field">
       <label>Label</label>
       <input type="text" placeholder="Placeholder" class="ds-input" />
       <div class="ds-validation-message" data-field="validation">
         Dette er ein feilmelding
-      </div>
+      </div>  
     </ds-field>`;
-
-  const element = document.querySelector('ds-field');
-  expect(element).toBeInTheDocument();
-});
+  await waitForField();
+};
 
 describe('Field component', () => {
-  it('should add id and connect label and input', () => {
+  it('should add id and connect label and input', async () => {
+    await renderDefault();
+
     const label = document.querySelector('label');
     const input = document.querySelector('input');
+
+    expect(input).toBeInTheDocument();
+    expect(label).toBeInTheDocument();
+
     expect(label).toHaveAttribute('for', input?.id);
     expect(input).toHaveAttribute(
       'aria-describedby',
       expect.stringContaining(''),
     );
+  });
+
+  it('should set aria-invalid when validation message is present', async () => {
+    await renderDefault();
+
+    const input = document.querySelector('input');
+
+    expect(input).toBeInTheDocument();
+    expect(input).toHaveAttribute('aria-invalid', 'true');
+  });
+
+  test('should update counter live region', async () => {
+    document.body.innerHTML = `<ds-field class="ds-field">
+      <label>Label</label>
+      <textarea class="ds-input">Dette er ein test som er for lang</textarea>
+      <p class="ds-validation-message" data-field="counter" data-limit="20" data-over="%d tegn for mye" data-under="%d tegn igjen"></p>
+    </ds-field>`;
+    await waitForField();
+
+    const textarea = document.querySelector('textarea');
+    const counter = document.querySelector('[data-field="counter"]');
+    expect(textarea).toBeInTheDocument();
+    expect(counter).toBeInTheDocument();
+
+    textarea?.dispatchEvent(new Event('input', { bubbles: true }));
+    vi.advanceTimersByTime(150); // Advance past debounce time
+
+    const LABEL_ATTR = counter?.getAttribute('aria-label') || '';
+    expect(LABEL_ATTR).toBe('13 tegn for mye');
   });
 });
