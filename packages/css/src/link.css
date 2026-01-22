@@ -8,7 +8,7 @@ a,
   --dsc-link-color--visited: var(--ds-link-color-visited);
   --dsc-link-text-decoration-thickness--hover: 0.125em; /* 2px ish */
   --dsc-link-text-decoration-thickness: 0.0625em; /* 1px ish */
-  --dsc-link-border-radius: var(--ds-border-radius-md);
+  --dsc-link-border-radius: 0;
 
   color: var(--dsc-link-color);
   outline: none;

@@ -56,3 +56,8 @@
     background: CanvasText;
   }
 }
+
+/* Hide custom tooltip element until acitvated with JS */
+[data-tooltip-element]:not([popover]) {
+  display: none;
+}

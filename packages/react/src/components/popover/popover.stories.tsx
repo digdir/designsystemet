@@ -185,14 +185,14 @@ Variants.parameters = {
 };
 
 export const Controlled: StoryFn<typeof Popover> = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   return (
     <Popover.TriggerContext>
       <Popover.Trigger>Slett</Popover.Trigger>
       <Popover
         open={open}
-        onOpen={() => setOpen(false)}
+        onOpen={() => setOpen(true)}
         onClose={() => setOpen(false)}
         data-color='neutral'
       >

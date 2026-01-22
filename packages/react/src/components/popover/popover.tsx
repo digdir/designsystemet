@@ -75,6 +75,7 @@ export type PopoverProps = MergeRight<
  *   Content
  * </Popover>
  */
+
 export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
   function Popover(
     {
@@ -96,80 +97,38 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     const mergedRefs = useMergeRefs([popoverRef, ref]);
     const { popoverId, setPopoverId } = useContext(Context);
 
-    // TODO: Controlled popover respecting forced true or false state
     // useEffect(() => {
-    //   let IGNORE_OPEN_EVENT = false;
+    //   let timeout: number | ReturnType<typeof setTimeout> | undefined;
+    //   const el = popoverRef.current;
     //   const isControlled = open !== undefined;
-    //   const isOpen = popoverRef.current?.matches(
-    //     ':popover-open,.\\:popover-open',
-    //   );
+    //   const isOpen = el?.matches(':popover-open,.\\:popover-open');
     //   const handleToggle = (event: Event & Partial<ToggleEvent>) => {
-    //     const nextOpen = event.newState === 'open';
-    //     console.log({
-    //       IGNORE_OPEN_EVENT,
-    //       type: event.type,
-    //       nextOpen,
-    //       isOpen,
-    //       open,
-    //     });
-    //     if (IGNORE_OPEN_EVENT) return;
-    //     if (isControlled && nextOpen !== open) event.preventDefault();
+    //     if (isControlled) event.preventDefault();
     //     if (event.type !== 'beforetoggle') onClose?.();
     //     else if (event.newState === 'open') onOpen?.();
     //   };
 
-    //   console[open === isOpen ? 'log' : 'warn']({ open, isOpen });
-    //   if (isControlled && open !== isOpen)
-    //     requestAnimationFrame(() => {
-    //       IGNORE_OPEN_EVENT = true;
-    //       capture('beforetoggle', handleToggle, false); // Ignore the next open event since we are controlling it
-    //       popoverRef.current?.togglePopover(open);
-    //       requestAnimationFrame(() => {
-    //         IGNORE_OPEN_EVENT = false; // Listen for events again
-    //       });
-    //     }); // Sync state if controlled, but with requestAnimationFrame to avoid conflict with React render loop
+    //   // Sync if controlled and state differs, but with setTimeout to avoid conflict with React render loop
+    //   if (isControlled && el && open !== isOpen)
+    //     timeout = setTimeout(() => {
+    //       el.removeEventListener('beforetoggle', handleToggle); // Stop listening "beforetoggle" event during programmatic toggling
+    //       const source = `[popovertarget="${el.id}"],[command="${el.id}"]`;
+    //       const options = { detail: document.querySelector(source) };
+    //       el.togglePopover(open);
+    //       el.dispatchEvent(new CustomEvent('ds-toggle-source', options)); // Since togglePopover({ source }) is not supported in all browsers yet
+    //       requestAnimationFrame(
+    //         () => el.addEventListener('beforetoggle', handleToggle), // Listen for "beforetoggle" event again when done toggling
+    //       );
+    //     });
 
-    //   return capture('beforetoggle ds-toggle-close', handleToggle);
-    // }, [open]);
-
-    // useEffect(() => {}, [open]);
-    // const [internalOpen, setInternalOpen] = useState(false);
-
-    // NOTE: This code is purely to add React controlled component ability to Popover API
-    // useEffect(() => {
-    //   const popover = popoverRef.current;
-    //   const handleClick = (event: MouseEvent) => {
-    //     const el = event.target as Element | null;
-    //     const isTrigger = el?.closest?.(`[popovertarget="${popover?.id}"]`);
-    //     const isOutside = !isTrigger && !popover?.contains(el as Node);
-
-    //     if (isTrigger) {
-    //       event.preventDefault(); // Prevent native Popover API
-    //     }
-    //     if (controlledOpen && (isTrigger || isOutside)) {
-    //       setInternalOpen(false);
-    //       onClose?.();
-    //     } else if (!controlledOpen && isTrigger) {
-    //       setInternalOpen(true);
-    //       onOpen?.();
-    //     }
-    //   };
-
-    //   const handleKeydown = (event: KeyboardEvent) => {
-    //     if (event.key !== 'Escape' || !controlledOpen) return;
-    //     event.preventDefault(); // Prevent closing fullscreen in Safari
-    //     setInternalOpen(false);
-    //     onClose?.();
-    //   };
-
-    //   popover?.togglePopover?.(controlledOpen);
-    //   document.addEventListener('click', handleClick, true); // Use capture to execute before React event API
-    //   document.addEventListener('keydown', handleKeydown);
+    //   el?.addEventListener('beforetoggle', handleToggle);
+    //   el?.addEventListener('ds-toggle-close', handleToggle);
     //   return () => {
-    //     document.removeEventListener('click', handleClick, true);
-    //     document.removeEventListener('keydown', handleKeydown);
+    //     clearTimeout(timeout);
+    //     el?.removeEventListener('beforetoggle', handleToggle);
+    //     el?.removeEventListener('ds-toggle-close', handleToggle);
     //   };
-    // }, [controlledOpen]);
+    // }, [open]);
 
     // Update context with id
     useEffect(() => {
@@ -191,21 +150,29 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
   },
 );
 
-/**
- * capture
- * @param el The Element to use as EventTarget
- * @param types A space separated string of event types
- * @param fn An function to trigger on listeners
- * @param add Whether to add or remove the event listener
- * @returns A function to remove the event listeners
- */
-export const capture = (
-  types: string,
-  fn: (event: Event) => void,
-  add = true,
-): (() => void) => {
-  console.log(types, add);
-  for (const type of types.split(' '))
-    document[`${add ? 'add' : 'remove'}EventListener`](type, fn, true); // Use capture to catch all events
-  return () => capture(types, fn, false);
-};
+// function handleBeforeToggle({ target: el, newState }: Partial<ToggleEvent>) {
+//   if (newState === 'open' && el instanceof HTMLElement && getDSFloating(el))
+//     attr(el, 'popover', 'manual'); // Make manual to prevent closing when clicking scrollbar
+// }
+
+// Since we use manual popover, we also manually need to close on outside click
+// function handleClick(event: Event) {
+//   for (const [popover] of POPOVERS)
+//     if (!popover.contains(event.target as Node)) {
+//       const trigger = `[popovertarget="${popover.id}"],[commandfor="${popover.id}"]`;
+//       const isTriggerElement = (event.target as Element)?.closest?.(trigger);
+//       if (isTriggerElement) event.preventDefault(); // Prevent native Popover API so we can trigger our own, cancelable close event
+//       const options = { cancelable: true, detail: popover };
+//       const close = new CustomEvent('ds-toggle-close', options);
+//       if (popover.dispatchEvent(close)) popover.hidePopover(); // Allowing preventDefault to stop closing
+//     }
+// }
+
+// function handleKeydown(event: Partial<KeyboardEvent>) {
+//   const last = event.key === 'Escape' && Array.from(POPOVERS.keys()).pop();
+//   if (last) last.hidePopover();
+//   if (last) event.preventDefault?.(); // Prevent minimize fullscreen Safari
+// }
+// on(document, 'beforetoggle', handleBeforeToggle, QUICK_EVENT), // Use capture since toggle does not bubble
+// on(document, 'click', handleClick, true), // Close open popovers on outside click
+// on(document, 'keydown', handleKeydown),

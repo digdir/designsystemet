@@ -58,7 +58,9 @@ const handleInterest = ({ type, target }: Event) => {
   SOURCE = source;
 };
 
-const handleClose = (event?: Partial<ToggleEvent>) => {
+const handleClose = (event?: Partial<ToggleEvent & KeyboardEvent>) => {
+  if (event?.type === 'keydown')
+    return event?.key === 'Escape' && TIP.hidePopover();
   if (!event) SOURCE = undefined;
   else if (event.target === TIP && event.newState === 'closed')
     SKIP_TIMER = setTimeout(handleClose, DELAY_SKIP);
@@ -66,7 +68,7 @@ const handleClose = (event?: Partial<ToggleEvent>) => {
 
 onHotReload('tooltip', () => [
   on(document, 'blur focus mouseover', handleInterest, QUICK_EVENT),
-  on(document, 'toggle', handleClose, QUICK_EVENT),
+  on(document, 'toggle keydown', handleClose, QUICK_EVENT),
   onMutation(document, handleAriaAttributes, {
     attributeFilter: ['data-tooltip'],
     attributes: true,
