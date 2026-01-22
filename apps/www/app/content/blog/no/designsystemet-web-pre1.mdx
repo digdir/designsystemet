@@ -1,0 +1,55 @@
+---
+title: "@digdir/designsystemet-web prerelease 1"
+description: Første prerelease av @digdir/designsystemet-web pakken, som gir muligheit for å bruke Designsystemet utan React.
+date: 2026-01-21
+author: Designsystemet
+imageSrc: /img/blog/ds-web-pre1.webp
+imageAlt: Første prerelease av @digdir/designsystemet-web pakken
+---
+
+Me er glade for at arbeidet endelig er i gang, og er no på jakt etter fortløpande tilbakemeldingar.
+I dette blogginnlegget vil me gå over komponentar som har blitt endra på, og korleis du kan teste.
+
+<Alert>
+Alle `@digdir/designsystemet-*` pakkar kan du installere med versjon `0.0.0-fix-designsystemet-web-20260121152531`.
+</Alert>
+
+## Teste i eksisterande applikasjon
+
+Me har oppdatert React-pakken til å bruke `@digdir/designsystemet-web` som underliggande rammeverkuavhengig komponentbibliotek.
+Dette betyr at nokre komponentar som i dag er implementert i React, kan opplevast annleis sidan dei no kjem frå web-pakken.
+Gjerne test desse og kom med tilbakemeldingar.
+
+Desse er:
+- Popover (kontrollert kan ha problen her)
+- Dropdown
+- Tooltip
+- Dialog
+- Pagination
+- Breadcrumbs
+- Tabs
+- Field
+
+## Teste i andre rammeverk eller rein HTML/JS
+
+For å teste pakken utan React kan du installere `@digdir/designsystemet-web` og `@digdir/designsystemet-css` i ditt prosjekt.
+Deretter brukar du komponentane og funksjonaliteten direkte.
+
+Me genererer endå ikkje rammeverkspesifikke typar.
+
+## Dokumentasjon
+
+Dokumentasjonen vil fortløpande bli endra i [README for pakken](https://www.npmjs.com/package/@digdir/designsystemet-web), den kan du lese på NPM.
+Når fullstendig release av pakken er ute, vil me oppdatere relevant dokumentasjon på designsystemet.no.
+
+## Gi tilbakemelding
+
+Me er veldig interessert i å høyre frå deg som brukar!
+Dersom du oppdagar feil, eller har forslag til forbetringar, kan du opprette sak i [GitHub repoet vårt](https://github.com/digdir/designsystemet/issues/new) eller på [Slack](/slack).
+
+<Contributors
+  authors={[
+    'Tobias Barsnes',
+    'Eirik Backer',
+  ]}
+/>
