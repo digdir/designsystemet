@@ -1,5 +1,8 @@
 import { forwardRef } from 'react';
-import type { ValidationMessageProps } from '../validation-message/validation-message';
+import {
+  ValidationMessage,
+  type ValidationMessageProps,
+} from '../validation-message/validation-message';
 
 export type FieldCounterProps = {
   /**
@@ -17,10 +20,7 @@ export type FieldCounterProps = {
    */
   under?: string;
   /**
-   * Text for screen readers of how many characters are allowed.
-   * Only read when entering the field.
-   *
-   * @default 'Maks %d tegn tillatt.'
+   * @deprecated The hint attribute is deprecated.
    */
   hint?: string;
   /**
@@ -41,23 +41,20 @@ export type FieldCounterProps = {
  */
 export const FieldCounter = forwardRef<HTMLParagraphElement, FieldCounterProps>(
   function FieldCounter(
-    {
-      limit,
-      under = '%d tegn igjen',
-      over = '%d tegn for mye',
-      hint = 'Maks %d tegn tillatt.',
-      ...rest
-    },
+    { limit, under = '%d tegn igjen', over = '%d tegn for mye', hint, ...rest },
     _ref,
   ) {
+    if (hint)
+      console.warn(
+        'Designsystemet: hint attribute is deprecated on Field.Counter',
+      );
     return (
-      <p
+      <ValidationMessage
         suppressHydrationWarning // Since <ds-field> adds attributes
         data-field='counter'
         data-limit={limit}
         data-under={under}
         data-over={over}
-        data-hint={hint}
         {...rest}
       />
     );
