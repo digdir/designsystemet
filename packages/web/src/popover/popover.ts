@@ -23,20 +23,17 @@ function handleToggle(
   },
 ) {
   const { newState, oldState, target: el, source = event.detail } = event;
-  const floating =
-    el instanceof HTMLElement && getCSSProp(el, '--_ds-floating');
+  const float = el instanceof HTMLElement && getCSSProp(el, '--_ds-floating');
 
-  if (!floating) return;
+  if (!float) return;
   if (newState === 'closed') return POPOVERS.get(el)?.(); // Cleanup on close
-  if (!source || source === el || oldState === newState) return; // No need to update
+  if (!source || source === el || (oldState && oldState === newState)) return; // No need to update
   const padding = 10;
   const overscroll = getCSSProp(el, '--_ds-floating-overscroll');
-  const placement =
-    attr(el, ATTR_PLACE) || attr(source, ATTR_PLACE) || floating;
-
+  const placement = attr(el, ATTR_PLACE) || attr(source, ATTR_PLACE) || float;
+  const auto = attr(el, ATTR_AUTO) || attr(source, ATTR_AUTO);
   const shiftLimit =
     source[`offset${placement.match(/left|right/gi) ? 'Height' : 'Width'}`];
-  const auto = attr(el, ATTR_AUTO) || attr(source, ATTR_AUTO);
 
   const options = {
     strategy: 'absolute',
