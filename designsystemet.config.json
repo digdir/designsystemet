@@ -16,7 +16,83 @@
       },
       "borderRadius": 4,
       "typography": {
-        "fontFamily": "Inter"
+        "components": {
+          "heading": {
+            "font": "secondary"
+          },
+          "body": {
+            "font": "primary"
+          }
+        },
+        "fonts": {
+          "primary": {
+            "fontFamily": "Inter",
+            "fontWeight": {
+              "regular": "Regular",
+              "medium": "Medium",
+              "semibold": "Semi bold"
+            }
+          },
+          "secondary": {
+            "fontFamily": "Playfair Display",
+            "fontWeight": {
+              "regular": "Regular",
+              "medium": "Medium",
+              "semibold": "SemiBold"
+            },
+            "size": {
+              "small": { "base": 13 },
+              "medium": { "base": 15 },
+              "large": { "base": 18 }
+            }
+          }
+        }
+      }
+    },
+    "different-fonts": {
+      "colors": {
+        "main": {
+          "accent": "#0062BA"
+        },
+        "support": {
+          "brand1": "#0D7A5F",
+          "brand2": "#5B3FA0"
+        },
+        "neutral": "#24272B"
+      },
+      "borderRadius": 4,
+      "typography": {
+        "components": {
+          "heading": {
+            "font": "primary"
+          },
+          "body": {
+            "font": "secondary"
+          }
+        },
+        "fonts": {
+          "primary": {
+            "fontFamily": "Karantina",
+            "fontWeight": {
+              "regular": "Light",
+              "medium": "Regular",
+              "semibold": "Bold"
+            }
+          },
+          "secondary": {
+            "fontFamily": "Playpen Sans",
+            "fontWeight": {
+              "regular": "Regular",
+              "medium": "Medium",
+              "semibold": "SemiBold"
+            },
+            "size": {
+              "small": { "base": 14 },
+              "medium": { "base": 16 },
+              "large": { "base": 18 }
+            }
+          }
+        }
       }
     }
   }

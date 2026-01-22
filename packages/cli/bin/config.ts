@@ -101,7 +101,6 @@ export async function parseCreateConfig(
         {
           [theme]: getThemeOptions(getCliOption),
         }) as CreateConfigSchema['themes'],
-    globalTypography: configParsed.globalTypography,
   } satisfies CreateConfigSchema);
 
   return validateConfig<CreateConfigSchema>(configFileCreateSchema, unvalidatedConfig, configPath);

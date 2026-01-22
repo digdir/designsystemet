@@ -3,7 +3,7 @@ import type { ThemeObject } from '@tokens-studio/types';
 import pc from 'picocolors';
 import * as R from 'ramda';
 import { mkdir, readFile, writeFile } from '../../utils.js';
-import type { Theme, TokenSets } from '../types.js';
+import type { Theme, TokenSetDimensions, TokenSets } from '../types.js';
 import { generate$Designsystemet } from './generators/$designsystemet.js';
 import { generate$Metadata } from './generators/$metadata.js';
 import { generate$Themes } from './generators/$themes.js';
@@ -13,6 +13,7 @@ export const stringify = (data: unknown) => JSON.stringify(data, null, 2);
 type WriteTokensOptions = {
   outDir: string;
   theme: Theme;
+  tokenSetDimensions: TokenSetDimensions;
   /** Dry run, no files will be written */
   dry?: boolean;
   tokenSets: TokenSets;
@@ -23,6 +24,7 @@ export const writeTokens = async (options: WriteTokensOptions) => {
     outDir,
     tokenSets,
     theme: { name: themeName, colors },
+    tokenSetDimensions,
     dry,
   } = options;
   const targetDir = path.resolve(process.cwd(), String(outDir));
@@ -54,8 +56,8 @@ export const writeTokens = async (options: WriteTokensOptions) => {
   console.log(`\nThemes: ${pc.blue(themes.join(', '))}`);
 
   // Create metadata and themes json for Token Studio and build script
-  const $themes = await generate$Themes(['dark', 'light'], themes, colors);
-  const $metadata = generate$Metadata(['dark', 'light'], themes, colors);
+  const $themes = await generate$Themes(tokenSetDimensions, themes, colors);
+  const $metadata = generate$Metadata(tokenSetDimensions, themes, colors);
   const $designsystemet = generate$Designsystemet();
 
   await writeFile($themesPath, stringify($themes), dry);

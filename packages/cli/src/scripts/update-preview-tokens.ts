@@ -2,7 +2,6 @@ import path from 'node:path';
 import pc from 'picocolors';
 import type { TransformedToken } from 'style-dictionary/types';
 import config from './../../../../designsystemet.config.json' with { type: 'json' };
-import type { TypographySizeSchema } from '../config.js';
 import { generate$Themes } from '../tokens/create/generators/$themes.js';
 import { createTokens } from '../tokens/create.js';
 import { buildOptions, processPlatform } from '../tokens/process/platform.js';
@@ -37,11 +36,11 @@ const toPreviewToken = (tokens: { token: TransformedToken; formatted: string }[]
 
 type PreviewToken = { variable: string; value: string };
 
-export const formatTheme = async (themeConfig: Theme, typographySize?: TypographySizeSchema) => {
-  const { tokenSets } = await createTokens(themeConfig, typographySize);
+export const formatTheme = async (themeConfig: Theme) => {
+  const { tokenSets, themeDimensions } = await createTokens(themeConfig);
   const outDir = '../../apps/www/app/_components/tokens/design-tokens';
 
-  const $themes = await generate$Themes(['dark', 'light'], [themeConfig.name], themeConfig.colors);
+  const $themes = await generate$Themes(themeDimensions, [themeConfig.name], themeConfig.colors);
   const processed$themes = $themes.map(processThemeObject);
 
   // We run this to populate the `buildOptions.buildTokenFormats` with transformed tokens

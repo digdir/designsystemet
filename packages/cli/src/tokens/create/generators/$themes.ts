@@ -1,7 +1,7 @@
 import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
 
 import type { ColorScheme } from '../../../colors/types.js';
-import type { Colors } from '../../types.js';
+import type { Colors, TokenSetDimensions } from '../../types.js';
 
 const capitalize = (word: string) => word.charAt(0).toUpperCase() + word.slice(1);
 
@@ -21,14 +21,14 @@ type ThemeObject_ = ThemeObject & {
 };
 
 export async function generate$Themes(
-  colorSchemes: ColorSchemes,
+  tokenSetDimensions: TokenSetDimensions,
   themes: string[],
   colors: Colors,
 ): Promise<ThemeObject_[]> {
+  const { colorSchemes, fontNames, sizeModes } = tokenSetDimensions;
   return [
-    ...generateSizeGroup(),
-    ...(await generateThemesGroup(themes)),
-    ...generateTypographyGroup(themes),
+    ...generateSizeGroup(themes, fontNames, sizeModes),
+    ...(await generateThemesGroup(themes, fontNames)),
     ...generateColorSchemesGroup(colorSchemes, themes),
     generateSemanticGroup(),
     ...(await generateColorGroup('main', colors)),
@@ -36,51 +36,54 @@ export async function generate$Themes(
   ];
 }
 
-function generateSizeGroup(): ThemeObject_[] {
-  return [
-    {
+type SizeModes = TokenSetDimensions['sizeModes'];
+
+function generateSizeGroup(themes: string[], fontNames: string[], sizeModes: SizeModes): ThemeObject_[] {
+  const defaultSize = 'medium';
+  const sizesWithDefaultFirst = [
+    ...sizeModes.filter((x) => x === defaultSize),
+    ...sizeModes.filter((x) => x !== defaultSize),
+  ];
+  const existingFigmaIds = {
+    small: {
       id: '8b2c8cc86611a34b135cb22948666779361fd729',
-      name: 'medium',
-      $figmaStyleReferences: {},
-      selectedTokenSets: {
-        'primitives/modes/size/medium': TokenSetStatus.SOURCE,
-        'primitives/modes/size/global': TokenSetStatus.ENABLED,
-        'primitives/modes/typography/size/global': TokenSetStatus.ENABLED,
-        'primitives/modes/typography/size/medium': TokenSetStatus.ENABLED,
-      },
-      $figmaCollectionId: 'VariableCollectionId:36248:20757',
-      $figmaModeId: '41630:1',
-      group: 'Size',
-    },
-    {
-      id: 'd49b9eebeb48a4f165a74b7261733d0a73370f0e',
-      name: 'large',
-      $figmaStyleReferences: {},
-      selectedTokenSets: {
-        'primitives/modes/size/large': TokenSetStatus.SOURCE,
-        'primitives/modes/size/global': TokenSetStatus.ENABLED,
-        'primitives/modes/typography/size/global': TokenSetStatus.ENABLED,
-        'primitives/modes/typography/size/large': TokenSetStatus.ENABLED,
-      },
-      $figmaCollectionId: 'VariableCollectionId:36248:20757',
-      $figmaModeId: '41630:2',
-      group: 'Size',
-    },
-    {
-      id: 'fb11567729c298ca37c9da4e3a27716a23480824',
-      name: 'small',
-      $figmaStyleReferences: {},
-      selectedTokenSets: {
-        'primitives/modes/size/small': TokenSetStatus.SOURCE,
-        'primitives/modes/size/global': TokenSetStatus.ENABLED,
-        'primitives/modes/typography/size/global': TokenSetStatus.ENABLED,
-        'primitives/modes/typography/size/small': TokenSetStatus.ENABLED,
-      },
       $figmaCollectionId: 'VariableCollectionId:36248:20757',
       $figmaModeId: '41630:3',
-      group: 'Size',
     },
-  ];
+    medium: {
+      id: 'fb11567729c298ca37c9da4e3a27716a23480824',
+      $figmaCollectionId: 'VariableCollectionId:36248:20757',
+      $figmaModeId: '41630:1',
+    },
+    large: {
+      id: 'd49b9eebeb48a4f165a74b7261733d0a73370f0e',
+      $figmaCollectionId: 'VariableCollectionId:36248:20757',
+      $figmaModeId: '41630:2',
+    },
+  };
+  return sizesWithDefaultFirst.map((size) => ({
+    name: size,
+    group: 'Size',
+    selectedTokenSets: {
+      [`primitives/modes/size/${size}`]: TokenSetStatus.SOURCE,
+      'primitives/modes/size/global': TokenSetStatus.ENABLED,
+      ...fontNames
+        .flatMap((font) =>
+          themes.map((theme) => ({
+            [`primitives/modes/fonts/${font}/size/global/${theme}`]: TokenSetStatus.ENABLED,
+            [`primitives/modes/fonts/${font}/size/${size}/${theme}`]: TokenSetStatus.ENABLED,
+          })),
+        )
+        .reduce((prev, curr) => {
+          Object.entries(curr).forEach(([key, val]) => {
+            prev[key] = val;
+          });
+          return prev;
+        }),
+    },
+    ...existingFigmaIds[size],
+    $figmaStyleReferences: {},
+  }));
 }
 
 const colorSchemeDefaults: Record<ColorScheme, ThemeObject_> = {
@@ -119,7 +122,13 @@ function generateColorSchemesGroup(colorSchemes: ColorSchemes, themes: string[])
   );
 }
 
-async function generateThemesGroup(themes: string[]): Promise<ThemeObject_[]> {
+async function generateThemesGroup(themes: string[], fonts: string[]): Promise<ThemeObject_[]> {
+  const fontSets = Object.fromEntries(
+    themes.flatMap((theme) =>
+      fonts.map((font) => [`primitives/fonts/${font}/${theme}`, TokenSetStatus.ENABLED] as const),
+    ),
+  );
+
   return Promise.all(
     themes.map(
       async (theme, index): Promise<ThemeObject_> => ({
@@ -128,6 +137,7 @@ async function generateThemesGroup(themes: string[]): Promise<ThemeObject_[]> {
         $figmaModeId: `40960:${index + 6}`, // Start on 6 in Token Studio and Community file for some reason
         name: theme,
         selectedTokenSets: {
+          ...fontSets,
           [`themes/${theme}`]: TokenSetStatus.ENABLED,
         },
         group: 'Theme',
@@ -164,29 +174,4 @@ async function generateColorGroup(group: 'main' | 'support', colors: Colors): Pr
       }),
     ),
   );
-}
-
-function generateTypographyGroup(themes: string[]): ThemeObject_[] {
-  return [
-    {
-      id: '368d753fcac4455f289500eaa42e70dc0a03522f',
-      $figmaCollectionId: 'VariableCollectionId:36248:20769',
-      $figmaModeId: '36248:2',
-      name: 'Primary',
-      selectedTokenSets: Object.fromEntries(
-        themes.map((theme) => [`primitives/modes/typography/primary/${theme}`, TokenSetStatus.ENABLED]),
-      ),
-      group: 'Typography',
-    },
-    {
-      id: '264b8bd1d40b364e1ea3acf09e49795ddd4c513c',
-      $figmaCollectionId: 'VariableCollectionId:36248:20769',
-      $figmaModeId: '36248:3',
-      name: 'Secondary',
-      selectedTokenSets: Object.fromEntries(
-        themes.map((theme) => [`primitives/modes/typography/secondary/${theme}`, TokenSetStatus.ENABLED]),
-      ),
-      group: 'Typography',
-    },
-  ];
 }

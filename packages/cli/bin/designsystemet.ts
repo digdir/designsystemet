@@ -58,9 +58,13 @@ function makeTokenCommands() {
 
       const { configFile, configPath } = await getConfigFile(opts.config);
 
-      // Hacky: get the globalTypography from the create config.
+      // Hacky: Find any font size overrides from the create config.
       // This only works because these settings can't be passed as CLI options
-      const globalTypographyConfig = parseConfig<CreateConfigSchema>(configFile, configPath).globalTypography;
+      const typographySizeOverrides = Object.values(parseConfig<CreateConfigSchema>(configFile, configPath).themes)
+        .flatMap((x) => x.typography)
+        .flatMap((x) => Object.values(x?.fonts ?? []))
+        .flatMap((x) => Object.values(x.size ?? []))
+        .flatMap((x) => Object.values(x.overrides ?? []));
 
       const config = await parseBuildConfig(configFile, { configPath });
 
@@ -72,11 +76,7 @@ function makeTokenCommands() {
         await cleanDir(outDir, dry);
       }
 
-      if (
-        Object.values(globalTypographyConfig?.size?.modes ?? []).some(
-          (x) => Object.values(x.overrides ?? {}).length > 0,
-        )
-      ) {
+      if (typographySizeOverrides.length > 0) {
         // If typography sizes have been overridden with explicit values, we can't use modular formulae
         config.build = config.build ?? {};
         config.build.typographySizeValues = 'static';
@@ -133,8 +133,14 @@ function makeTokenCommands() {
           // Casting as missing properties should be validated by `getDefaultOrExplicitOption` to default values
           const theme = { name, ...themeWithoutName } as Theme;
 
-          const { tokenSets } = await createTokens(theme, config.globalTypography?.size);
-          await writeTokens({ outDir: config.outDir, theme, dry: opts.dry, tokenSets });
+          const { tokenSets, themeDimensions } = await createTokens(theme);
+          await writeTokens({
+            outDir: config.outDir,
+            theme,
+            dry: opts.dry,
+            tokenSets,
+            tokenSetDimensions: themeDimensions,
+          });
         }
       }
     });

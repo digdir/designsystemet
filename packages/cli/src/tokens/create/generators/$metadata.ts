@@ -1,25 +1,25 @@
-import type { ColorScheme } from '../../../colors/types.js';
-import type { Colors } from '../../types.js';
+import type { Colors, TokenSetDimensions } from '../../types.js';
 
 type Metadata = {
   tokenSetOrder: string[];
 };
 
-export function generate$Metadata(schemes: ColorScheme[], themes: string[], colors: Colors): Metadata {
+export function generate$Metadata(dimensions: TokenSetDimensions, themes: string[], colors: Colors): Metadata {
+  const { colorSchemes, sizeModes, fontNames } = dimensions;
+  const sizesAndGlobal = ['global', ...sizeModes];
   return {
     tokenSetOrder: [
       'primitives/globals',
-      'primitives/modes/size/global',
-      'primitives/modes/size/small',
-      'primitives/modes/size/medium',
-      'primitives/modes/size/large',
-      'primitives/modes/typography/size/global',
-      'primitives/modes/typography/size/small',
-      'primitives/modes/typography/size/medium',
-      'primitives/modes/typography/size/large',
-      ...themes.map((theme) => `primitives/modes/typography/primary/${theme}`),
-      ...themes.map((theme) => `primitives/modes/typography/secondary/${theme}`),
-      ...schemes.flatMap((scheme) => [...themes.map((theme) => `primitives/modes/color-scheme/${scheme}/${theme}`)]),
+      ...sizesAndGlobal.map((size) => `primitives/modes/size/${size}`),
+      ...themes.flatMap((theme) =>
+        fontNames.flatMap((font) =>
+          sizesAndGlobal.map((size) => `primitives/modes/fonts/${font}/size/${size}/${theme}`),
+        ),
+      ),
+      ...themes.flatMap((theme) => fontNames.map((font) => `primitives/fonts/${font}/${theme}`)),
+      ...colorSchemes.flatMap((scheme) => [
+        ...themes.map((theme) => `primitives/modes/color-scheme/${scheme}/${theme}`),
+      ]),
       ...themes.map((theme) => `themes/${theme}`),
       'semantic/color',
       ...Object.entries(colors.main).map(([color]) => `semantic/modes/main-color/${color}`),

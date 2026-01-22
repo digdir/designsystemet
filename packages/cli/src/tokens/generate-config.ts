@@ -233,7 +233,6 @@ export async function generateConfigFromTokens(options: GenerateConfigOptions): 
   const config: CreateConfigSchema = {
     outDir: tokensDir,
     themes: {},
-    globalTypography: {},
   };
 
   for (const themeName of themes) {

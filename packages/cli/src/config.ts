@@ -184,10 +184,30 @@ const fontSizeMode = z.object({
       'Override one or more steps in this scale to specific pixel values. Will force build.typographySizeValues to be "static".',
     ),
 });
-const typographySizeModes = z.partialRecord(z.enum(['small', 'medium', 'large']), fontSizeMode);
 
-const typographySizeSchema = z.object({
-  modes: typographySizeModes.optional(),
+const typographySizeSchema = z
+  .partialRecord(z.enum(['small', 'medium', 'large']), fontSizeMode)
+  .describe('Sizing configuration for the individual size modes');
+
+const typographyComponentsSchema = z.object({
+  heading: z
+    .object({
+      font: z
+        .string()
+        .describe(
+          'Define which font to use for heading styles. Must be one of the under theme.<name>.typography.fonts',
+        ),
+    })
+    .optional(),
+  body: z
+    .object({
+      font: z
+        .string()
+        .describe(
+          'Define which font to use for body text styles. Must be one of the under theme.<name>.typography.fonts',
+        ),
+    })
+    .optional(),
 });
 
 const overridesSchema = z
@@ -200,6 +220,17 @@ const overridesSchema = z
   .describe('Overrides for generated design tokens. Currently only supports colors defined in your theme')
   .optional();
 
+const typographyFontSchema = z.object({
+  fontFamily: z.string().describe('Sets the font-family for this font'),
+  fontWeight: z
+    .record(
+      z.enum(['regular', 'medium', 'semibold']),
+      z.string().describe('The name of the weight as displayed in Figma'),
+    )
+    .describe('Sets the font-weights for this font'),
+  size: typographySizeSchema.optional().describe('Configure sizing for this font'),
+});
+
 const themeSchema = z
   .object({
     colors: z
@@ -211,7 +242,14 @@ const themeSchema = z
       .meta({ description: 'Defines the colors for this theme' }),
     typography: z
       .object({
-        fontFamily: z.string().meta({ description: 'Sets the font-family for this theme' }),
+        fontFamily: z.string().describe('DEPRECATED! Use fonts.<name>.fontFamily instead.').optional(),
+        fonts: z
+          .record(z.string(), typographyFontSchema)
+          .describe('Define fonts that can be used in the theme')
+          .optional(),
+        components: typographyComponentsSchema
+          .describe('Define which fonts to use for each typography style')
+          .optional(),
       })
       .describe('Defines the typography for a given theme')
       .optional(),
@@ -230,12 +268,6 @@ const _configFileCreateSchema = z.object({
     description:
       'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name.',
   }),
-  globalTypography: z
-    .object({
-      size: typographySizeSchema.optional(),
-    })
-    .optional()
-    .describe('Global typography settings that apply to all themes'),
 });
 
 const _configFileBuildSchema = z.object({
@@ -264,3 +296,4 @@ export type CreateConfigSchema = z.infer<typeof configFileCreateSchema>;
 export type ConfigSchemaTheme = z.infer<typeof themeSchema>;
 export type ColorOverrideSchema = z.infer<typeof overridesSchema>;
 export type TypographySizeSchema = z.infer<typeof typographySizeSchema>;
+export type TypographyFontSchema = z.infer<typeof typographyFontSchema>;
