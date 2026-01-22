@@ -18,7 +18,7 @@ export type TabsTabProps = {
  * <TabsTab value='1'>Tab 1</TabsTab>
  */
 export const TabsTab = forwardRef<DSTabElement, TabsTabProps>(function TabsTab(
-  { value, onClick, ...rest },
+  { value, className, onClick, ...rest },
   ref,
 ) {
   const { onChange, getPrefixedValue } = useContext(Context);
@@ -34,6 +34,7 @@ export const TabsTab = forwardRef<DSTabElement, TabsTabProps>(function TabsTab(
         if (e.isTrusted) onChange?.(value); // Only call onChange is user actually clicked, not when programmatically clicked/controlled
         onClick?.(e);
       }}
+      class={className}
       {...rest}
     >
       {rest.children}

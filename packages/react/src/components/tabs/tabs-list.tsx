@@ -15,11 +15,12 @@ export type TabsListProps = HTMLAttributes<DSTabListElement>;
  * </TabsList>
  */
 export const TabsList = forwardRef<DSTabListElement, TabsListProps>(
-  function TabsList({ children, ...rest }, ref) {
+  function TabsList({ className, children, ...rest }, ref) {
     return (
       <ds-tablist
         suppressHydrationWarning // Since <ds-tablist> adds attributes
         ref={ref}
+        class={className}
         {...rest}
       >
         {children}

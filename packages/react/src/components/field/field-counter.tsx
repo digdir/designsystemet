@@ -40,10 +40,7 @@ export type FieldCounterProps = {
  * </Field>
  */
 export const FieldCounter = forwardRef<HTMLParagraphElement, FieldCounterProps>(
-  function FieldCounter(
-    { limit, under = '%d tegn igjen', over = '%d tegn for mye', hint, ...rest },
-    _ref,
-  ) {
+  function FieldCounter({ limit, under, over, hint, ...rest }, _ref) {
     if (hint)
       console.warn(
         'Designsystemet: hint attribute is deprecated on Field.Counter',

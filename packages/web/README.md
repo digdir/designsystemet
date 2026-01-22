@@ -4,12 +4,6 @@
 
 ## `@digdir/designsystemet-web`
 
-### Types
-We have simple DOM types for our web components that can be used in TypeScript projects.
-Types should be automatically included when you install the package.
-
-We **do not** have types from frameworks _yet_.
-
 ### Get started
 
 To get everything at once, you simply import the package:
@@ -18,6 +12,16 @@ import '@digdir/designsystemet-web';
 ```
 
 This will register all web components and observers globally, so you only need to do this once.
+
+#### Types
+In you tsconfig, add:
+```json
+{
+  "compilerOptions": {
+    "types": ["@digdir/designsystemet-web"]
+  }
+}
+```
 
 ### `ds-breadcrumbs`
 Automatically hides/shows `aria-label` on desktop/mobile and `aria-current="page"` on last link in list. No API.
@@ -96,10 +100,9 @@ You can add a counter to inputs and textareas by adding the `data-field="counter
 
 | attribute  | type   | default               | required |
 |------------|--------|-----------------------|----------|
-| data-limit | number | undefined             | false    |
+| data-limit | number | undefined             | true     |
 | data-over  | string | %d tegn for mye       | false    |
 | data-under | string | %d tegn igjen         | false    |
-| data-hint  | string | Maks %d tegn tillatt. | false    |
 
 ### `ds-pagination`
 Implements pagination, fills buttons with text.

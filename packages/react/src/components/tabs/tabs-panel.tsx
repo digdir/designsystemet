@@ -19,7 +19,7 @@ export type TabsPanelProps = {
  * <TabsPanel value='1'>content 1</TabsPanel>
  */
 export const TabsPanel = forwardRef<DSTabPanelElement, TabsPanelProps>(
-  function TabsPanel({ children, value, id, ...rest }, ref) {
+  function TabsPanel({ children, value, id, className, ...rest }, ref) {
     const { getPrefixedValue } = useContext(Context);
 
     return (
@@ -27,6 +27,7 @@ export const TabsPanel = forwardRef<DSTabPanelElement, TabsPanelProps>(
         suppressHydrationWarning // Since <ds-tablist> adds attributes
         ref={ref}
         id={id ?? getPrefixedValue?.(value)}
+        class={className}
         {...rest}
       >
         {children}
