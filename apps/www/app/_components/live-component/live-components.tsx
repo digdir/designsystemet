@@ -84,7 +84,12 @@ const Editor = ({ live, html, id, hidden }: EditorProps) => {
   const [resetCount, setResetCount] = useState(0);
   const [showHTML, setShowHTML] = useState(false);
   const [copied, setCopied] = useState('');
-  const rawHtml = prettify(html || 'Unable to parse html', {
+  // Truncate SVGs to <svg></svg> to reduce noise
+  const truncatedHtml = (html || 'Unable to parse html').replace(
+    /<svg[^>]*>[\s\S]*?<\/svg>/gi,
+    '<svg></svg>',
+  );
+  const rawHtml = prettify(truncatedHtml, {
     tag_wrap: 63,
     content_wrap: 70,
   });
