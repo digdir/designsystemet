@@ -71,17 +71,16 @@ function handleToggle(
 }
 
 // Prevent closing when mouse interacts with scrollbar
-const RESET = new Set<HTMLElement>();
-const handleScrollbar = ({ clientX = 0, type }: Partial<MouseEvent>) => {
-  if (type === 'mouseup') {
-    for (const popover of RESET) popover.showPopover(); // Immediately show again to prevent flicker
-    RESET.clear();
-  } else if (clientX >= document.documentElement.clientWidth)
-    for (const [popover] of POPOVERS) RESET.add(popover);
+let IS_SCROLL: boolean | undefined;
+const handleScrollbar = ({ type }: Event) => {
+  if (type === 'mousedown') IS_SCROLL = false;
+  if (type === 'scroll' && IS_SCROLL === false) IS_SCROLL = true;
+  if (type === 'mouseup' && IS_SCROLL)
+    for (const [popover] of POPOVERS) popover.showPopover(); // Immediately show again to prevent flicker
 };
 
 onHotReload('popover', () => [
-  on(document, 'mousedown mouseup', handleScrollbar),
+  on(document, 'mousedown scroll mouseup', handleScrollbar, true),
   on(document, 'toggle ds-toggle-source', handleToggle, QUICK_EVENT), // Use capture since the toggle event does not bubble
 ]);
 
