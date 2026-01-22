@@ -32,18 +32,4 @@ declare global {
       popover?: '' | 'auto' | 'manual' | 'hint';
     }
   }
-  /* @TODO: Generate these in -web */
-  namespace React.JSX {
-    interface IntrinsicElements {
-      'ds-tabs': DSTabsElement;
-      'ds-tablist': DSTabListElement;
-      'ds-tab': DSTabElement;
-      'ds-tabpanel': DSTabPanelElement;
-      'ds-breadcrumbs': DSBreadcrumbsElement;
-      'ds-error-summary': DSErrorSummaryElement;
-      'ds-pagination': DSPaginationElement;
-      'ds-suggestion': DSSuggestionElement;
-      'ds-field': DSFieldElement;
-    }
-  }
 }

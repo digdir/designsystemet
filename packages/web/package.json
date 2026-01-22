@@ -12,10 +12,10 @@
   "license": "MIT",
   "main": "./dist/cjs/index.cjs",
   "module": "./dist/esm/index.js",
-  "types": "./dist/esm/index.d.ts",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/esm/src/index.d.ts",
+      "types": "./dist/index.d.ts",
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.cjs"
     }
@@ -25,7 +25,7 @@
   ],
   "scripts": {
     "start": "vite --config=./vite.config.ts --port=5174",
-    "build": "rimraf dist && tsc && rolldown -c",
+    "build": "rimraf dist && tsup && rolldown -c",
     "test": "vitest --config=vitest.browser.config.ts"
   },
   "publishConfig": {
@@ -41,11 +41,14 @@
     "invokers-polyfill": "^0.6.1"
   },
   "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.11.0",
     "@testing-library/dom": "^10.4.1",
     "@vitest/browser-playwright": "4.0.16",
+    "custom-element-vs-code-integration": "^1.5.0",
     "rimraf": "^6.1.2",
     "rolldown": "1.0.0-beta.60",
     "rollup": "^4.55.3",
+    "tsup": "^8.5.1",
     "vitest": "4.0.16"
   }
 }
