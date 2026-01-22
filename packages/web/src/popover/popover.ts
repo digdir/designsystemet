@@ -32,14 +32,15 @@ function handleToggle(
   const overscroll = getCSSProp(el, '--_ds-floating-overscroll');
   const placement = attr(el, ATTR_PLACE) || attr(source, ATTR_PLACE) || float;
   const auto = attr(el, ATTR_AUTO) || attr(source, ATTR_AUTO);
-  const shiftLimit =
-    source[`offset${placement.match(/left|right/gi) ? 'Height' : 'Width'}`];
+  const arrowSize = parseFloat(getComputedStyle(el, '::before').height) || 0;
+  const shiftProp = placement.match(/left|right/gi) ? 'Height' : 'Width';
+  const shiftLimit = source[`offset${shiftProp}`] / 2 + arrowSize;
 
   const options = {
     strategy: 'absolute',
     placement,
     middleware: [
-      offset(parseFloat(getComputedStyle(el, '::before').height) || 0),
+      offset(arrowSize),
       shift({
         padding,
         limiter: limitShift({ offset: { mainAxis: shiftLimit } }), // Prevent from shifing away from source
