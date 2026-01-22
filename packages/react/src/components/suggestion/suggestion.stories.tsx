@@ -542,3 +542,26 @@ export const AutoPlacementOnXAxis: StoryFn<typeof Suggestion> = (args) => {
     </div>
   );
 };
+
+export const Creatable: StoryFn<typeof Suggestion> = (args) => {
+  return (
+    <Field>
+      <Label>Velg eller legg til en destinasjon</Label>
+      <Suggestion {...args}>
+        <Suggestion.Input />
+        <Suggestion.Clear />
+        <Suggestion.List>
+          <Suggestion.Empty>Tomt</Suggestion.Empty>
+          {DATA_PLACES.map((place) => (
+            <Suggestion.Option key={place}>{place}</Suggestion.Option>
+          ))}
+        </Suggestion.List>
+      </Suggestion>
+    </Field>
+  );
+};
+
+Creatable.args = {
+  multiple: true,
+  creatable: true,
+};
