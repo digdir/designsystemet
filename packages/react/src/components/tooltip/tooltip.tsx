@@ -74,7 +74,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         suppressHydrationWarning // Since data-tooltip adds aria-label/aria-description
         {...rest}
       >
-        {isString ? <span>{rest.children}</span> : rest.children}
+        {isString ? <span tabIndex={0}>{rest.children}</span> : rest.children}
       </Slot>
     );
   },

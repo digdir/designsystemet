@@ -97,35 +97,40 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     const { popoverId, setPopoverId } = useContext(Context);
 
     // TODO: Controlled popover respecting forced true or false state
-    useEffect(() => {
-      let IGNORE_OPEN_EVENT = false;
-      const isControlled = open !== undefined;
-      const handleToggleBefore = (event: Event & Partial<ToggleEvent>) => {
-        console.log('handleToggleBefore');
-        if (IGNORE_OPEN_EVENT) if (isControlled) event.preventDefault();
-        // if (event.newState === 'open') onOpen?.();
-      };
-      const handleToggleClose = (event: Event) => {
-        if (isControlled) event.preventDefault();
-        onClose?.();
-      };
+    // useEffect(() => {
+    //   let IGNORE_OPEN_EVENT = false;
+    //   const isControlled = open !== undefined;
+    //   const isOpen = popoverRef.current?.matches(
+    //     ':popover-open,.\\:popover-open',
+    //   );
+    //   const handleToggle = (event: Event & Partial<ToggleEvent>) => {
+    //     const nextOpen = event.newState === 'open';
+    //     console.log({
+    //       IGNORE_OPEN_EVENT,
+    //       type: event.type,
+    //       nextOpen,
+    //       isOpen,
+    //       open,
+    //     });
+    //     if (IGNORE_OPEN_EVENT) return;
+    //     if (isControlled && nextOpen !== open) event.preventDefault();
+    //     if (event.type !== 'beforetoggle') onClose?.();
+    //     else if (event.newState === 'open') onOpen?.();
+    //   };
 
-      if (isControlled) {
-        IGNORE_OPEN_EVENT = true;
-        popoverRef.current?.togglePopover(open); // Sync state if controlled, with requestAnimationFrame to avoid conflict with React state
-      }
+    //   console[open === isOpen ? 'log' : 'warn']({ open, isOpen });
+    //   if (isControlled && open !== isOpen)
+    //     requestAnimationFrame(() => {
+    //       IGNORE_OPEN_EVENT = true;
+    //       capture('beforetoggle', handleToggle, false); // Ignore the next open event since we are controlling it
+    //       popoverRef.current?.togglePopover(open);
+    //       requestAnimationFrame(() => {
+    //         IGNORE_OPEN_EVENT = false; // Listen for events again
+    //       });
+    //     }); // Sync state if controlled, but with requestAnimationFrame to avoid conflict with React render loop
 
-      document.addEventListener('beforetoggle', handleToggleBefore, true); // Use capture as beforetogle does not bubble
-      document.addEventListener('ds-toggle-close', handleToggleClose, true); // Use capture as beforetogle does not bubble
-      return () => {
-        document.removeEventListener('beforetoggle', handleToggleBefore, true);
-        document.removeEventListener(
-          'ds-toggle-close',
-          handleToggleClose,
-          true,
-        );
-      };
-    }, [open]);
+    //   return capture('beforetoggle ds-toggle-close', handleToggle);
+    // }, [open]);
 
     // useEffect(() => {}, [open]);
     // const [internalOpen, setInternalOpen] = useState(false);
@@ -185,3 +190,22 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     );
   },
 );
+
+/**
+ * capture
+ * @param el The Element to use as EventTarget
+ * @param types A space separated string of event types
+ * @param fn An function to trigger on listeners
+ * @param add Whether to add or remove the event listener
+ * @returns A function to remove the event listeners
+ */
+export const capture = (
+  types: string,
+  fn: (event: Event) => void,
+  add = true,
+): (() => void) => {
+  console.log(types, add);
+  for (const type of types.split(' '))
+    document[`${add ? 'add' : 'remove'}EventListener`](type, fn, true); // Use capture to catch all events
+  return () => capture(types, fn, false);
+};

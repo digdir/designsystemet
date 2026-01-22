@@ -21,6 +21,14 @@
       visibility: hidden;
     }
 
+    /* Style active if ds-button */
+    & > li > [aria-current='true'] {
+      --dsc-button-background--active: var(--ds-color-base-active);
+      --dsc-button-background--hover: var(--ds-color-base-hover);
+      --dsc-button-background: var(--ds-color-base-default);
+      --dsc-button-color: var(--ds-color-base-contrast-default);
+    }
+
     & > li > [data-page]:empty::before {
       content: attr(data-page);
     }

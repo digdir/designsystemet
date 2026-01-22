@@ -49,6 +49,7 @@ export const WithString: Story = {
   args: {
     content: 'Organisasjonsnummer',
     children: 'Org.nr.',
+    tabIndex: 0,
   },
 };
 

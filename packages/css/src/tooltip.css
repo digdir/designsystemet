@@ -8,29 +8,17 @@
   --dsc-tooltip-transition-delay: 150ms;
 
   background: var(--dsc-tooltip-background);
+  border: none;
   border-radius: var(--dsc-tooltip-border-radius);
   border-width: 0;
-  border: none;
   box-sizing: border-box;
   color: var(--dsc-tooltip-color);
   line-height: var(--ds-line-height-sm);
-  opacity: 0;
   padding: var(--dsc-tooltip-padding);
   view-transition-name: ds-tooltip; /* Prevent being part of other view-transitions */
-  visibility: hidden;
 
   @composes ds-floating from './base.css';
   --_ds-floating-arrow-size: var(--dsc-tooltip-arrow-size);
-
-  &:popover-open {
-    opacity: 1;
-    visibility: visible;
-  }
-  /* For polyfill */
-  .\:popover-open {
-    opacity: 1;
-    visibility: visible;
-  }
 
   /* Transparent box to make tooltip stay open when mouse is over it */
   &::after {

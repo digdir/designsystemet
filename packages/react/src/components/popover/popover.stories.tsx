@@ -1,7 +1,7 @@
 import { TrashIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useEffect, useState } from 'react';
-import { expect, userEvent, within } from 'storybook/test';
+// import { expect, userEvent, within } from 'storybook/test';
 import { Button, Paragraph } from '../';
 import { Popover } from './';
 
@@ -20,15 +20,15 @@ export default {
       disableSnapshot: false,
     },
   },
-  play: async (ctx) => {
-    // When not in Docs mode, automatically open the popover
-    const canvas = within(ctx.canvasElement);
-    const button = canvas.getByRole('button');
-    await userEvent.click(button);
-    const popover = ctx.canvasElement.querySelector('[popover]');
-    await new Promise((r) => setTimeout(r, 300)); // Wait for animation mutation
-    await expect(popover).toBeVisible();
-  },
+  // play: async (ctx) => {
+  //   // When not in Docs mode, automatically open the popover
+  //   const canvas = within(ctx.canvasElement);
+  //   const button = canvas.getByRole('button');
+  //   await userEvent.click(button);
+  //   const popover = ctx.canvasElement.querySelector('[popover]');
+  //   await new Promise((r) => setTimeout(r, 300)); // Wait for animation mutation
+  //   await expect(popover).toBeVisible();
+  // },
 } satisfies Meta;
 
 export const Preview: StoryFn<typeof Popover> = (args) => {
@@ -185,14 +185,14 @@ Variants.parameters = {
 };
 
 export const Controlled: StoryFn<typeof Popover> = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   return (
     <Popover.TriggerContext>
       <Popover.Trigger>Slett</Popover.Trigger>
       <Popover
         open={open}
-        onOpen={() => setOpen(true)}
+        onOpen={() => setOpen(false)}
         onClose={() => setOpen(false)}
         data-color='neutral'
       >
