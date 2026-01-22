@@ -20,6 +20,7 @@
     "build:react": "pnpm --filter @digdir/designsystemet-react build",
     "build:css": "pnpm --filter @digdir/designsystemet-css build",
     "build:cli": "pnpm --filter @digdir/designsystemet build",
+    "build:web": "pnpm --filter @digdir/designsystemet-web build",
     "build:types": "pnpm --filter @digdir/designsystemet-types build",
     "build:storybook": "pnpm --filter @web/storybook build",
     "build:www": "pnpm --filter @web/www build",
