@@ -12,7 +12,7 @@ import {
   QUICK_EVENT,
   tag,
   useId,
-} from './utils';
+} from '../utils/utils';
 
 // TODO: Document that Validation must be hidden with "hidden" attribute (or completely removed from DOM), not display: none
 declare global {

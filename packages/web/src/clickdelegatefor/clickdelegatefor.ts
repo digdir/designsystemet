@@ -1,7 +1,7 @@
 // Adding support for click deletagtion, following
 // https://open-ui.org/components/link-area-delegation-explainer/
 // and https://github.com/openui/open-ui/issues/1104#issuecomment-3151387080
-import { on, onHotReload, QUICK_EVENT } from './utils';
+import { on, onHotReload, QUICK_EVENT } from '../utils/utils';
 
 const CLASS_HOVER = ':click-delegate-hover';
 const ATTR_CLICKDELEGATEFOR = 'data-clickdelegatefor';

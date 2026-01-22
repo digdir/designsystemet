@@ -4,7 +4,7 @@ import {
   customElements,
   DSElement,
   onMutation,
-} from './utils';
+} from '../utils/utils';
 
 declare global {
   interface HTMLElementTagNameMap {

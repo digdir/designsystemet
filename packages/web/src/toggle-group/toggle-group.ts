@@ -1,4 +1,4 @@
-import { attr, debounce, on, onHotReload, onMutation } from './utils';
+import { attr, debounce, on, onHotReload, onMutation } from '../utils/utils';
 
 const ATTR_TOGGLEGROUP = 'data-toggle-group';
 const SELECTOR_TOGGLEGROUP = `[${ATTR_TOGGLEGROUP}]`;

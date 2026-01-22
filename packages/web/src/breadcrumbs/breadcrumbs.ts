@@ -6,7 +6,7 @@ import {
   debounce,
   on,
   onMutation,
-} from './utils';
+} from '../utils/utils';
 
 declare global {
   interface HTMLElementTagNameMap {

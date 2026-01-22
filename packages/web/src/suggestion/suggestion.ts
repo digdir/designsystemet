@@ -1,5 +1,5 @@
 import { UHTMLComboboxElement } from '@u-elements/u-combobox';
-import { customElements, off, on, QUICK_EVENT } from './utils';
+import { customElements, off, on, QUICK_EVENT } from '../utils/utils';
 
 declare global {
   interface HTMLElementTagNameMap {

@@ -1,4 +1,4 @@
-import { attr, on, onHotReload, QUICK_EVENT } from './utils';
+import { attr, on, onHotReload, QUICK_EVENT } from '../utils/utils';
 
 // Polyfill closedby functionaliy in Safari
 // Also in Safari 26.2 where `closedBy` property is supported natively,

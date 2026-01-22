@@ -7,7 +7,7 @@ import {
   onMutation,
   QUICK_EVENT,
   tag,
-} from './utils';
+} from '../utils/utils';
 
 let TIP: HTMLElement;
 let SOURCE: Element | undefined;

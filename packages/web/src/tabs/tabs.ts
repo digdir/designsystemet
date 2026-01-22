@@ -1,5 +1,5 @@
 import * as UTabs from '@u-elements/u-tabs';
-import { customElements } from './utils';
+import { customElements } from '../utils/utils';
 
 declare global {
   interface HTMLElementTagNameMap {

@@ -8,7 +8,7 @@ import {
   shift,
   size,
 } from '@floating-ui/dom';
-import { attr, on, onHotReload, QUICK_EVENT } from './utils';
+import { attr, on, onHotReload, QUICK_EVENT } from '../utils/utils';
 
 const ATTR_PLACEMENT = 'data-placement';
 const ATTR_FLOATING = 'data-floating';

@@ -6,7 +6,7 @@ import {
   on,
   QUICK_EVENT,
   useId,
-} from './utils';
+} from '../utils/utils';
 
 declare global {
   interface HTMLElementTagNameMap {
