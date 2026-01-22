@@ -1,5 +1,7 @@
+/// <reference types="@testing-library/jest-dom" />
 import '../index';
-import { expect, test } from 'vitest';
+
+import { describe, expect, it, test } from 'vitest';
 
 test('renders name', () => {
   document.body.innerHTML = `<ds-field class="ds-field">
@@ -12,4 +14,16 @@ test('renders name', () => {
 
   const element = document.querySelector('ds-field');
   expect(element).toBeInTheDocument();
+});
+
+describe('Field component', () => {
+  it('should add id and connect label and input', () => {
+    const label = document.querySelector('label');
+    const input = document.querySelector('input');
+    expect(label).toHaveAttribute('for', input?.id);
+    expect(input).toHaveAttribute(
+      'aria-describedby',
+      expect.stringContaining(''),
+    );
+  });
 });
