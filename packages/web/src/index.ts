@@ -10,8 +10,8 @@ export * from './field';
 export * from './pagination';
 export * from './suggestion';
 export * from './tabs';
+import '@u-elements/u-details/polyfill'; // Polyfill for <details> element for Android Firefox + Talkback
 import './clickdelegatefor';
-import './details';
 import './dialog';
 import './popover';
 import './toggle-group';

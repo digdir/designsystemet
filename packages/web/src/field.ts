@@ -14,56 +14,33 @@ import {
   useId,
 } from './utils';
 
+// TODO: Document that Validation must be hidden with "hidden" attribute (or completely removed from DOM), not display: none
 declare global {
   interface HTMLElementTagNameMap {
     'ds-field': DSFieldElement;
   }
 }
 
-const CSS_FIELD_SIZE = '--_ds-field-sizing';
-const ATTR_COUNTER_TEXT = 'data-counter-text';
-const ATTR_COUNTER_ARIA = 'data-counter-aria';
-const ATTR_FIELD = 'data-field';
-const TYPE_DESCRIPTION = 'description';
-const TYPE_VALIDATION = 'validation';
+const FIELDS = new Map<DSFieldElement, Element | null>(); // Map of Field => Counter | null
+const FILEDSETS = isBrowser() ? document.getElementsByTagName('fieldset') : [];
+const HAS_FIELD_SIZING = isBrowser() && CSS.supports('field-sizing', 'content');
 const COUNTER_DEBOUNCE = isWindows() ? 800 : 200; // Longer debounce on Windows due to NVDA performance
-const COUNTER_TEXT = {
+const COUNTER_STATE = {
   over: '%d tegn for mye',
   under: '%d tegn igjen',
-  hint: 'Maks %d tegn tillatt.',
 };
 
-const SELECTOR_FIELDSET_DESCRIPTION = `:scope > [${ATTR_FIELD}="${TYPE_DESCRIPTION}"],:scope > legend + p`; // legend + p is kept for backwards compatibility
-const SELECTOR_FIELDSET_VALIDATION = `:scope > [${ATTR_FIELD}="${TYPE_VALIDATION}"]`;
-const SELECTOR_FIELD_COUNTER = '[data-field="counter"]';
-
-const FIELDS = new Set<DSFieldElement>();
-const FILEDSETS = isBrowser() ? document.getElementsByTagName('fieldset') : [];
-const STYLE_SR_ONLY = `position:absolute;clip:rect(0 0 0 0);overflow:hidden;width:1px;height:1px;white-space:nowrap;pointer-events:none`;
-
-// TODO: Document that Validation must be hidden with "hidden" attribute (or completely removed from DOM), not display: none
 const handleMutations = debounce(() => {
-  setupFieldsets();
-  setupFields();
-}, 100); // Debounce to avoid excessive calculations on multiple mutations
-
-// Connect fieldset legend and descriptions
-const setupFieldsets = () => {
-  for (const fieldset of FILEDSETS) {
-    const labelledby = [
-      fieldset.querySelector('legend'),
-      fieldset.querySelector(SELECTOR_FIELDSET_DESCRIPTION),
-    ].filter(isNotHidden);
-
-    attr(fieldset, 'aria-labelledby', labelledby.map(useId).join(' '));
+  for (const el of FILEDSETS) {
+    const labelledby = `${useId(el.querySelector('legend'))} ${useId(el.querySelector(':scope > :is([data-field="description"],legend + p)'))}`;
+    attr(el, 'aria-labelledby', labelledby.trim());
   }
-};
-
-const setupFields = () => {
-  for (const field of FIELDS) {
+  for (const [field] of FIELDS) {
     const descs: Element[] = [];
     const labels: HTMLLabelElement[] = [];
     let input: HTMLInputElement | undefined;
+    let counter: Element | undefined;
+    let invalid = false;
 
     for (const el of field.getElementsByTagName('*')) {
       if (el instanceof HTMLLabelElement) labels.push(el);
@@ -75,12 +52,16 @@ const setupFields = () => {
           );
         input = el;
       } else if (isNotHidden(el)) {
-        const type = el.getAttribute(ATTR_FIELD); // Using getAttribute not attr for best performance
-        if (type === TYPE_VALIDATION) descs.unshift(el);
-        else if (type) descs.push(el);
+        const type = el.getAttribute('data-field'); // Using getAttribute not attr for best performance
+        if (type === 'counter') counter = el;
+        if (type === 'validation') {
+          descs.unshift(el);
+          invalid = invalid || isInvalid(el);
+        } else if (type) descs.push(el); // Adds both counter and descriptions
       }
     }
 
+    FIELDS.set(field, counter || null); // Update counter reference
     if (!input)
       console.warn(`Designsystemet: Field is missing input element:`, field);
     else {
@@ -89,68 +70,36 @@ const setupFields = () => {
       const isBoolish = input.type === 'radio' || input.type === 'checkbox';
       const fieldsetValidation = field
         .closest('fieldset')
-        ?.querySelector(SELECTOR_FIELDSET_VALIDATION);
-      if (isNotHidden(fieldsetValidation)) descs.unshift(fieldsetValidation);
+        ?.querySelector(':scope > [data-field="validation"]');
+      if (isNotHidden(fieldsetValidation)) {
+        invalid = invalid || isInvalid(fieldsetValidation);
+        descs.unshift(fieldsetValidation);
+      }
 
-      field.handleEvent({ target: input }); // Run counter and textrarea resize
+      field.handleEvent(input); // Update counter and textarea sizing
       attr(field, 'data-clickdelegatefor', isBoolish ? useId(input) : null); // Expand click area to ds-field if radio/checkbox
       attr(input, 'aria-describedby', descs.map(useId).join(' '));
-      attr(input, 'aria-invalid', `${descs.some(isInvalid)}`);
+      attr(input, 'aria-invalid', `${invalid}`);
     }
   }
-};
+}, 100); // Debounce to avoid excessive calculations on multiple mutations
 
-const getCounterText = (
-  el: Element,
-  key: keyof typeof COUNTER_TEXT,
-  num: number,
-) =>
-  (attr(el, `data-${key}`) || COUNTER_TEXT[key]).replace(
-    '%d',
-    `${Math.abs(num)}`,
-  );
+const debouncedCounterLiveRegion = debounce(
+  (text: string, live?: Element | null) => {
+    if (live) live.textContent = text;
+  },
+  COUNTER_DEBOUNCE,
+);
 
-const setupCounter = (field: DSFieldElement, target: EventTarget | null) => {
-  const el =
-    isInputLike(target) &&
-    field.querySelector<HTMLElement>(SELECTOR_FIELD_COUNTER);
+const isInvalid = (el: Element) => attr(el, 'data-color') !== 'success';
 
-  if (el) {
-    const live = field.shadowRoot?.lastElementChild as HTMLElement;
-    const limit = Number(attr(el, 'data-limit')) || 0;
-    const count = limit - target.value.length;
-    const text = getCounterText(el, count < 0 ? 'over' : 'under', count);
-
-    attr(el, ATTR_COUNTER_TEXT, text);
-    attr(el, ATTR_COUNTER_ARIA, getCounterText(el, 'hint', limit));
-    attr(el, 'data-color', count < 0 ? 'danger' : null);
-    setupCounterLiveRegion(live, text); // Debounce live region to avoid NVDA interupting announcing typed text
-  }
-};
-
-const setupCounterLiveRegion = debounce((live: Element, text: string) => {
-  live.textContent = text;
-}, COUNTER_DEBOUNCE);
-
-// iOS does not support field-sizing: content, so we need to manually resize
-const setupTextareaFieldSizingiOS = (target: EventTarget | null) => {
-  if (target instanceof HTMLTextAreaElement) {
-    target.style.setProperty(CSS_FIELD_SIZE, 'auto');
-    target.style.setProperty(CSS_FIELD_SIZE, `${target.scrollHeight}px`);
-  }
-};
+const isNotHidden = (el?: Element | null): el is Element =>
+  !!el && !(el as HTMLElement).hidden;
 
 const isInputLike = (el: unknown): el is HTMLInputElement =>
   el instanceof HTMLElement &&
   'validity' in el && // Adds support for custom elements implemeted with attachInternals()
   !(el instanceof HTMLButtonElement); // But skip <button> elements
-
-const isNotHidden = (el?: Element | null): el is Element =>
-  !!el && !(el as HTMLElement).hidden;
-
-const isInvalid = (el: Element): boolean =>
-  el.getAttribute(ATTR_FIELD) === TYPE_VALIDATION &&
-  attr(el, 'data-color') !== 'success';
 
 // Custom element is used to performantly keep track of fields on the page
 export class DSFieldElement extends DSElement {
@@ -158,17 +107,39 @@ export class DSFieldElement extends DSElement {
     super();
     this.attachShadow({ mode: 'open' }).append(
       tag('slot'),
-      tag('div', { 'aria-live': 'polite', style: STYLE_SR_ONLY }), // Used to announce counter updates
+      tag('div', {
+        'aria-live': 'polite', // Used to announce counter updates
+        style: `position:fixed;white-space:nowrap;clip:rect(0 0 0 0)`, // "sr-only"
+      }),
     );
   }
   connectedCallback() {
-    FIELDS.add(this);
+    FIELDS.set(this, null); // Register field, but let mutation observer find counter
     on(this, 'input', this, QUICK_EVENT);
     handleMutations(); // Initial setup
   }
-  handleEvent({ target }: { target: EventTarget | null }) {
-    setupCounter(this, target);
-    setupTextareaFieldSizingiOS(target);
+  handleEvent(eventOrTarget: Event | HTMLInputElement) {
+    const el = (eventOrTarget as Event).target || eventOrTarget;
+    const counter = isInputLike(el) && FIELDS.get(this);
+
+    if (counter) {
+      const live = this.shadowRoot?.lastElementChild;
+      const limit = Number(attr(counter, 'data-limit')) || 0;
+      const count = limit - el.value.length;
+      const state = count < 0 ? 'over' : 'under';
+      const label = (
+        attr(counter, `data-${state}`) || COUNTER_STATE[state]
+      ).replace('%d', `${Math.abs(count)}`);
+
+      attr(counter, 'aria-label', label);
+      attr(counter, 'data-state', state);
+      attr(counter, 'data-color', count < 0 ? 'danger' : null);
+      debouncedCounterLiveRegion(label, live); // Debounce live region to avoid NVDA interupting announcing typed text
+    }
+    if (!HAS_FIELD_SIZING && el instanceof HTMLTextAreaElement) {
+      el.style.setProperty('--_ds-field-sizing', 'auto');
+      el.style.setProperty('--_ds-field-sizing', `${el.scrollHeight}px`);
+    }
   }
   disconnectedCallback() {
     off(this, 'input', this, QUICK_EVENT);
@@ -180,8 +151,7 @@ customElements.define('ds-field', DSFieldElement);
 
 onHotReload('field', () => [
   onMutation(document, handleMutations, {
-    debounce: false, // No need to timeout debounce here as we handle it ourselves
-    attributeFilter: ['hidden', ATTR_FIELD], // Listen for hidden to detect hidden validations
+    attributeFilter: ['hidden', 'data-field'], // Listen for hidden to detect hidden validations
     attributes: true,
     childList: true,
     subtree: true,

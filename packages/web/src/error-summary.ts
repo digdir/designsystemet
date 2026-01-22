@@ -1,4 +1,12 @@
-import { attr, DSElement, off, on, QUICK_EVENT, useId } from './utils';
+import {
+  attr,
+  customElements,
+  DSElement,
+  off,
+  on,
+  QUICK_EVENT,
+  useId,
+} from './utils';
 
 declare global {
   interface HTMLElementTagNameMap {

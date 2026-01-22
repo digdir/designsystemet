@@ -18,12 +18,16 @@
     margin-block: 0;
   }
 
-  & [data-field='validation'],
-  & [data-field='counter'][data-color='danger'] {
-    @composes ds-validation-message from './validation-message.css';
+  /* Reset validation styling if counter limit is not exceeded */
+  & [data-field='counter'][data-state='under'] {
+    color: inherit;
+    padding-left: 0;
+  }
+  & [data-field='counter'][data-state='under']::before {
+    display: none;
   }
   & [data-field='counter']::after {
-    content: attr(data-counter-text) / attr(data-counter-aria);
+    content: attr(aria-label); /* Render counter text through attribute to avoid hydration errors */
   }
 
   /* Using pure HTML elements in selector to make this work if consumer changes name of .ds-input */

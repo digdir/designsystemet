@@ -98,15 +98,33 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
 
     // TODO: Controlled popover respecting forced true or false state
     useEffect(() => {
-      const handleToggle = ({ newState }: Partial<ToggleEvent>) => {
-        newState === 'open' ? onOpen?.() : onClose?.();
+      let IGNORE_OPEN_EVENT = false;
+      const isControlled = open !== undefined;
+      const handleToggleBefore = (event: Event & Partial<ToggleEvent>) => {
+        console.log('handleToggleBefore');
+        if (IGNORE_OPEN_EVENT) if (isControlled) event.preventDefault();
+        // if (event.newState === 'open') onOpen?.();
+      };
+      const handleToggleClose = (event: Event) => {
+        if (isControlled) event.preventDefault();
+        onClose?.();
       };
 
-      if (open !== undefined)
-        requestAnimationFrame(() => popoverRef.current?.togglePopover(open)); // Sync state if controlled, with requestAnimationFrame to avoid conflict with React state
+      if (isControlled) {
+        IGNORE_OPEN_EVENT = true;
+        popoverRef.current?.togglePopover(open); // Sync state if controlled, with requestAnimationFrame to avoid conflict with React state
+      }
 
-      document.addEventListener('toggle', handleToggle, true); // Use capture as beforetogle does not bubble
-      return () => document.removeEventListener('toggle', handleToggle, true);
+      document.addEventListener('beforetoggle', handleToggleBefore, true); // Use capture as beforetogle does not bubble
+      document.addEventListener('ds-toggle-close', handleToggleClose, true); // Use capture as beforetogle does not bubble
+      return () => {
+        document.removeEventListener('beforetoggle', handleToggleBefore, true);
+        document.removeEventListener(
+          'ds-toggle-close',
+          handleToggleClose,
+          true,
+        );
+      };
     }, [open]);
 
     // useEffect(() => {}, [open]);

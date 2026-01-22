@@ -16,17 +16,6 @@
       display: flex;
     }
 
-    & > li > :is(a, button) {
-      @composes ds-button from './button.css';
-      &:not([data-variant], [aria-current='true']) {
-        --dsc-button-background: transparent;
-        --dsc-button-background--active: var(--ds-color-surface-active);
-        --dsc-button-background--hover: var(--ds-color-surface-hover);
-        --dsc-button-color: var(--ds-color-text-subtle);
-        --dsc-button-color--hover: var(--ds-color-text-default);
-      }
-    }
-
     & > li:first-child > [aria-hidden='true'],
     & > li:last-child > [aria-hidden='true'] {
       visibility: hidden;

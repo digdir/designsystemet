@@ -42,7 +42,6 @@ export class DSPaginationElement extends DSElement {
     this._unmutate = onMutation(this, this.render.bind(this), {
       childList: true,
       subtree: true,
-      debounce: 0,
     });
   }
   disconnectedCallback() {
@@ -52,26 +51,23 @@ export class DSPaginationElement extends DSElement {
   render() {
     const items = this.querySelectorAll('button,a');
     const href = attr(this, ATTR_HREF);
-    const CURRENT = attr(this, ATTR_CURRENT) || undefined;
-    const TOTAL = attr(this, ATTR_TOTAL) || undefined;
+    const current = Number(attr(this, ATTR_CURRENT));
+    const total = Number(attr(this, ATTR_TOTAL));
+    const show = items.length - 2;
 
-    if (!CURRENT || !TOTAL) return;
-
-    const { next, prev, pages } = pagination({
-      current: parseInt(CURRENT, 10),
-      total: parseInt(TOTAL, 10),
-      show: items.length - 2,
-    });
-
-    items.forEach((item, i) => {
-      const page = i ? (items[i + 1] ? pages[i - 1]?.page : next) : prev; // First is prev, last is next
-      attr(item, 'aria-current', pages[i - 1]?.current ? 'true' : null);
-      attr(item, 'aria-hidden', page ? null : 'true');
-      attr(item, 'data-page', `${page}`);
-      attr(item, 'tabindex', page ? null : '-1');
-      if (item instanceof HTMLButtonElement) attr(item, 'value', `${page}`);
-      if (href) attr(item, 'href', href.replace('$page', `${page}`));
-    });
+    if (current && total) {
+      const { next, prev, pages } = pagination({ current, total, show });
+      items.forEach((item, i) => {
+        const page = i ? (items[i + 1] ? pages[i - 1]?.page : next) : prev; // First is prev, last is next
+        attr(item, 'aria-current', pages[i - 1]?.current ? 'true' : null);
+        attr(item, 'aria-hidden', page ? null : 'true');
+        attr(item, 'data-page', `${page}`);
+        attr(item, 'role', page ? null : 'none'); // Prevent validation errors for aria-hidden buttons
+        attr(item, 'tabindex', page ? null : '-1');
+        if (item instanceof HTMLButtonElement) attr(item, 'value', `${page}`);
+        if (href) attr(item, 'href', href.replace('$page', `${page}`));
+      });
+    }
   }
 }
 

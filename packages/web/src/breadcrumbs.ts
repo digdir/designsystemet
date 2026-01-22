@@ -31,7 +31,6 @@ export class DSBreadcrumbsElement extends DSElement {
     this._items = this.getElementsByTagName('a'); // Speed up by caching HTMLCollection
     this._unresize = on(window, 'resize', render);
     this._unmutate = onMutation(this, render, {
-      debounce: 0, // No debounce, as we already debounce render
       childList: true,
       subtree: true,
     });
@@ -43,7 +42,7 @@ export class DSBreadcrumbsElement extends DSElement {
     const labelHidden = attr(this, ATTR_LABEL_HIDDEN);
     const label = attr(this, ATTR_LABEL);
 
-    // Only labels if needed to prevent infinite attribute update loop
+    // Only update labels if needed to prevent infinite attribute update loop
     attr(this, 'role', isListHidden ? null : 'navigation');
     if (isListHidden && !labelHidden && label) {
       attr(this, ATTR_LABEL_HIDDEN, label);

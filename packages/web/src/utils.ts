@@ -117,23 +117,20 @@ export const onHotReload = (key: string, setup: () => Array<() => void>) => {
 export const onMutation = (
   el: Node,
   callback: (observer: MutationObserver) => void,
-  options: MutationObserverInit & { debounce?: number | false },
+  options: MutationObserverInit,
 ) => {
   let queue = 0;
-  const { debounce: ms = 200, ...opts } = options;
-  const onTimer = () => {
+  const onFrame = () => {
     if (!isBrowser()) return cleanup(); // If using JSDOM, the document might have been removed
     callback(observer);
-    observer.takeRecords(); // Clear records to avoid running callback multiple times
     queue = 0;
   };
-  const onFrame = ms ? debounce(onTimer, ms) : onTimer; // Use both requestAnimationFrame and setTimeout to debounce and only run when visible
   const cleanup = () => observer?.disconnect?.();
   const observer = new MutationObserver(() => {
     if (!queue) queue = requestAnimationFrame(onFrame); // requestAnimationFrame only runs when page is not visible
   });
 
-  observer.observe(el, opts);
+  observer.observe(el, options);
   onFrame(); // Initial run
   return cleanup;
 };

@@ -87,7 +87,11 @@ function handleClickOutside({ target: el }: Event) {
     if (!popover.contains(el as Node)) {
       const id = popover.id;
       const trigger = `[popovertarget="${id}"],[commandfor="${id}"]`;
-      if (!(el as Element)?.closest?.(trigger)) popover.hidePopover();
+      if (!(el as Element)?.closest?.(trigger)) {
+        const options = { bubbles: true, cancelable: true, detail: popover };
+        const event = new CustomEvent('ds-toggle-close', options);
+        if (popover.dispatchEvent(event)) popover.hidePopover(); // Allowing preventDefault to stop closing
+      }
     }
 }
 

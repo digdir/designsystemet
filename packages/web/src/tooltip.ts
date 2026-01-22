@@ -1,6 +1,7 @@
 import {
   attr,
   attrRequiredWarning,
+  debounce,
   on,
   onHotReload,
   onMutation,
@@ -19,7 +20,7 @@ const DELAY_SKIP = 300;
 
 // TODO: Document using data-tooltip-element to set custom tooltip element
 
-function handleAriaAttributes() {
+const handleAriaAttributes = debounce(() => {
   for (const el of document.querySelectorAll('[data-tooltip]')) {
     const hasText = el.textContent?.trim();
     const tooltip = attr(el, 'data-tooltip');
@@ -28,9 +29,9 @@ function handleAriaAttributes() {
     if (!el.matches(SELECTOR_INTERACTIVE))
       attrRequiredWarning(el, 'tabindex="0"');
   }
-}
+}, 200);
 
-function handleInterest({ type, target }: Event) {
+const handleInterest = ({ type, target }: Event) => {
   clearTimeout(HOVER_TIMER);
 
   if (!TIP)
@@ -55,13 +56,13 @@ function handleInterest({ type, target }: Event) {
   TIP.showPopover();
   TIP.dispatchEvent(new CustomEvent('ds-toggle-source', { detail: source })); // Since showPopover({ source }) is not supported in all browsers yet
   SOURCE = source;
-}
+};
 
-function handleClose(event?: Partial<ToggleEvent>) {
+const handleClose = (event?: Partial<ToggleEvent>) => {
   if (!event) SOURCE = undefined;
   else if (event.target === TIP && event.newState === 'closed')
     SKIP_TIMER = setTimeout(handleClose, DELAY_SKIP);
-}
+};
 
 onHotReload('tooltip', () => [
   on(document, 'blur focus mouseover', handleInterest, QUICK_EVENT),

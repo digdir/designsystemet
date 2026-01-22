@@ -48,6 +48,13 @@
     --dsc-button-border-color: var(--ds-color-border-strong);
   }
 
+  &[aria-current]:not([aria-current='false']) {
+    --dsc-button-background--active: var(--ds-color-base-active);
+    --dsc-button-background--hover: var(--ds-color-base-hover);
+    --dsc-button-background: var(--ds-color-base-default);
+    --dsc-button-color: var(--ds-color-base-contrast-default);
+  }
+
   &:not([data-size]) {
     font-size: inherit; /* Ensure inheriting font-size when <button> */
   }
