@@ -2,10 +2,8 @@
   overflow-x: clip;
 }
 .header {
-  height: 37.5rem;
   margin-top: -6.625rem;
   position: relative;
-  margin-bottom: 2.5rem;
   /*--breakpoint-mobile: 600px*/
   @media (max-width: 600px) {
     margin-top: -7.625rem;
@@ -33,6 +31,9 @@
   padding-top: 8.875rem;
   padding-bottom: 1.25rem;
   overflow-x: hidden;
+}
+.firstBanner {
+  margin-top: 5rem;
 }
 .decoration {
   position: absolute;
@@ -87,7 +88,7 @@
   display: grid;
   grid-row-gap: var(--grid-gap);
   grid-column-gap: var(--grid-gap);
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
   width: 100%;
 }
 
