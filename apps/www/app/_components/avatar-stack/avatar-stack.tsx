@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react';
+import { Avatar, EXPERIMENTAL_AvatarStack } from '@digdir/designsystemet-react';
 import classes from './avatar-stack.module.css';
 
 type AvatarStackProps = {
@@ -43,18 +43,18 @@ export const AvatarStack = ({ authors }: AvatarStackProps) => {
   }
 
   return (
-    <span
-      className={classes.avatarStack}
-      style={{ '--n': matchedAvatars.length } as CSSProperties}
-      aria-hidden
+    <EXPERIMENTAL_AvatarStack
+      className={classes.avatarStackOverrides}
+      avatarSize='30px'
+      gap='4px'
+      expandable='fixed'
+      overlap={40}
     >
       {matchedAvatars.map((avatarKey) => (
-        <img
-          key={avatarKey}
-          src={`/img/avatars/${avatarMap[avatarKey]}`}
-          alt=''
-        />
+        <Avatar aria-hidden key={avatarKey}>
+          <img src={`/img/avatars/${avatarMap[avatarKey]}`} alt='' />
+        </Avatar>
       ))}
-    </span>
+    </EXPERIMENTAL_AvatarStack>
   );
 };
