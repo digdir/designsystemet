@@ -126,6 +126,67 @@ function generateFonts(theme: string, fonts: string[]): TokenSet {
   );
 }
 
+function generateBackwardCompatibilityFontTokens(defaultFont: string) {
+  const lineHeights = ['sm', 'md', 'lg'];
+  const fontWeights = ['medium', 'semibold', 'regular'];
+  const fontSizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+  const letterSpacings = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  return {
+    'line-height': Object.fromEntries(
+      lineHeights.map(
+        (lineHeight) =>
+          [
+            lineHeight,
+            {
+              $type: 'lineHeights',
+              $value: `{fonts.${defaultFont}.line-height.${lineHeight}}`,
+            },
+          ] as const,
+      ),
+    ),
+    'font-family': {
+      $type: 'fontFamilies',
+      $value: `{fonts.${defaultFont}.font-family}`,
+    },
+    'font-weight': Object.fromEntries(
+      fontWeights.map(
+        (weight) =>
+          [
+            weight,
+            {
+              $type: 'fontWeights',
+              $value: `{fonts.${defaultFont}.font-weight.${weight}}`,
+            },
+          ] as const,
+      ),
+    ),
+    'font-size': Object.fromEntries(
+      fontSizes.map(
+        (size) =>
+          [
+            size,
+            {
+              $type: 'fontSizes',
+              $value: `{fonts.${defaultFont}.font-size.${size}}`,
+            },
+          ] as const,
+      ),
+    ),
+    'letter-spacing': Object.fromEntries(
+      letterSpacings.map(
+        (letterSpacing) =>
+          [
+            letterSpacing,
+            {
+              $type: 'letterSpacing',
+              $value: `{fonts.${defaultFont}.letter-spacing.${letterSpacing}}`,
+            },
+          ] as const,
+      ),
+    ),
+  };
+}
+
 export const generateTheme = (
   colors: Colors,
   themeName: string,
@@ -136,6 +197,8 @@ export const generateTheme = (
   const mainColorNames = Object.keys(colors.main);
   const supportColorNames = Object.keys(colors.support);
   const customColors = [...mainColorNames, 'neutral', ...supportColorNames, ...baseColorNames];
+  // TODO handle default font name somewhere else
+  const defaultFont = Object.keys(typography.fonts ?? {}).at(0) ?? 'primary';
 
   const themeColorTokens = Object.fromEntries(
     customColors.map(
@@ -170,6 +233,8 @@ export const generateTheme = (
       },
     },
     fonts: generateFonts(themeName, fontNames),
+    // Generate a backward-compatibility layer for the old "font-size", "line-height" etc tokens
+    ...generateBackwardCompatibilityFontTokens(defaultFont),
     // The mapping from typography to fonts can't be in the typography tokens themself due
     // to how Figma generates typography styles. Therefore we have this extra layer.
     'typography-mapping': generateThemeTypography(typography),

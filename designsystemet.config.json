@@ -71,14 +71,6 @@
           }
         },
         "fonts": {
-          "primary": {
-            "fontFamily": "Karantina",
-            "fontWeight": {
-              "regular": "Light",
-              "medium": "Regular",
-              "semibold": "Bold"
-            }
-          },
           "secondary": {
             "fontFamily": "Playpen Sans",
             "fontWeight": {
@@ -90,6 +82,14 @@
               "small": { "base": 14 },
               "medium": { "base": 16 },
               "large": { "base": 18 }
+            }
+          },
+          "primary": {
+            "fontFamily": "Karantina",
+            "fontWeight": {
+              "regular": "Light",
+              "medium": "Regular",
+              "semibold": "Bold"
             }
           }
         }

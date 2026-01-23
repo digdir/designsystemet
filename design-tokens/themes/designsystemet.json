@@ -775,6 +775,118 @@
       }
     }
   },
+  "line-height": {
+    "sm": {
+      "$type": "lineHeights",
+      "$value": "{fonts.primary.line-height.sm}"
+    },
+    "md": {
+      "$type": "lineHeights",
+      "$value": "{fonts.primary.line-height.md}"
+    },
+    "lg": {
+      "$type": "lineHeights",
+      "$value": "{fonts.primary.line-height.lg}"
+    }
+  },
+  "font-family": {
+    "$type": "fontFamilies",
+    "$value": "{fonts.primary.font-family}"
+  },
+  "font-weight": {
+    "medium": {
+      "$type": "fontWeights",
+      "$value": "{fonts.primary.font-weight.medium}"
+    },
+    "semibold": {
+      "$type": "fontWeights",
+      "$value": "{fonts.primary.font-weight.semibold}"
+    },
+    "regular": {
+      "$type": "fontWeights",
+      "$value": "{fonts.primary.font-weight.regular}"
+    }
+  },
+  "font-size": {
+    "1": {
+      "$type": "fontSizes",
+      "$value": "{fonts.primary.font-size.1}"
+    },
+    "2": {
+      "$type": "fontSizes",
+      "$value": "{fonts.primary.font-size.2}"
+    },
+    "3": {
+      "$type": "fontSizes",
+      "$value": "{fonts.primary.font-size.3}"
+    },
+    "4": {
+      "$type": "fontSizes",
+      "$value": "{fonts.primary.font-size.4}"
+    },
+    "5": {
+      "$type": "fontSizes",
+      "$value": "{fonts.primary.font-size.5}"
+    },
+    "6": {
+      "$type": "fontSizes",
+      "$value": "{fonts.primary.font-size.6}"
+    },
+    "7": {
+      "$type": "fontSizes",
+      "$value": "{fonts.primary.font-size.7}"
+    },
+    "8": {
+      "$type": "fontSizes",
+      "$value": "{fonts.primary.font-size.8}"
+    },
+    "9": {
+      "$type": "fontSizes",
+      "$value": "{fonts.primary.font-size.9}"
+    },
+    "10": {
+      "$type": "fontSizes",
+      "$value": "{fonts.primary.font-size.10}"
+    }
+  },
+  "letter-spacing": {
+    "1": {
+      "$type": "letterSpacing",
+      "$value": "{fonts.primary.letter-spacing.1}"
+    },
+    "2": {
+      "$type": "letterSpacing",
+      "$value": "{fonts.primary.letter-spacing.2}"
+    },
+    "3": {
+      "$type": "letterSpacing",
+      "$value": "{fonts.primary.letter-spacing.3}"
+    },
+    "4": {
+      "$type": "letterSpacing",
+      "$value": "{fonts.primary.letter-spacing.4}"
+    },
+    "5": {
+      "$type": "letterSpacing",
+      "$value": "{fonts.primary.letter-spacing.5}"
+    },
+    "6": {
+      "$type": "letterSpacing",
+      "$value": "{fonts.primary.letter-spacing.6}"
+    },
+    "7": {
+      "$type": "letterSpacing",
+      "$value": "{fonts.primary.letter-spacing.7}"
+    },
+    "8": {
+      "$type": "letterSpacing",
+      "$value": "{fonts.primary.letter-spacing.8}"
+    },
+    "9": {
+      "$type": "letterSpacing",
+      "$value": "{fonts.primary.letter-spacing.9}"
+    }
+  },
   "typography-mapping": {
     "heading": {
       "2xl": {
