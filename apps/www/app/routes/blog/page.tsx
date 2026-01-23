@@ -103,7 +103,7 @@ export default function Blog({
         </Paragraph>
         <Paragraph data-size='sm' className={classes.meta}>
           <a href='#article-contributors' aria-label={t('contributors')}>
-            <AvatarStack authors={author} />
+            <AvatarStack authors={author} expandable='fixed' />
           </a>
           <span className={classes.authors}>{author}</span>
           <span className={classes.date}>{formatDate(date, lang)}</span>

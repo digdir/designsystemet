@@ -3,6 +3,7 @@ import classes from './avatar-stack.module.css';
 
 type AvatarStackProps = {
   authors: string;
+  expandable?: 'fixed';
 };
 
 const avatarMap = {
@@ -21,7 +22,7 @@ const avatarMap = {
 
 type AvatarKey = keyof typeof avatarMap;
 
-export const AvatarStack = ({ authors }: AvatarStackProps) => {
+export const AvatarStack = ({ authors, expandable }: AvatarStackProps) => {
   const authorsLowercase = authors.toLowerCase();
 
   // Split authors string on common delimiters
@@ -47,7 +48,7 @@ export const AvatarStack = ({ authors }: AvatarStackProps) => {
       className={classes.avatarStackOverrides}
       avatarSize='30px'
       gap='4px'
-      expandable='fixed'
+      expandable={expandable}
       overlap={40}
     >
       {matchedAvatars.map((avatarKey) => (
