@@ -7,7 +7,7 @@ const CLASS_HOVER = ':click-delegate-hover';
 const ATTR_CLICKDELEGATEFOR = 'data-clickdelegatefor';
 const SELECTOR_CLICKDELEGATEFOR = `[${ATTR_CLICKDELEGATEFOR}]`;
 const SELECTOR_SKIP =
-  'a,button,label,input,select,textarea,dialog,[role="button"],[popover],[contenteditable]';
+  'a,button,label,input,select,textarea,details,dialog,[role="button"],[popover],[contenteditable]';
 
 export const handleClickDelegateFor = (event: MouseEvent) => {
   const isNewTab = event.button === 1 || event.metaKey || event.ctrlKey;

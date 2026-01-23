@@ -1,11 +1,12 @@
 /* Intentionally styling <a> since the browser agent CSS anyway has opinionated styling for linke */
 a,
 .ds-link {
-  --dsc-link-background--active: var(--ds-color-surface-tinted);
-  --dsc-link-color--active: var(--ds-color-text-default);
-  --dsc-link-color--hover: var(--ds-color-text-default);
+  /* TODO: Changeset for visited color and active background and border-radius styling */
   --dsc-link-color: var(--ds-color-text-subtle);
-  --dsc-link-color--visited: var(--ds-link-color-visited);
+  --dsc-link-color--hover: var(--ds-color-text-default);
+  --dsc-link-color--active: var(--ds-color-text-default);
+  --dsc-link-color--visited: var(--dsc-link-color);
+  --dsc-link-background--active: transparent; /* Kept for backwards compatibility */
   --dsc-link-text-decoration-thickness--hover: 0.125em; /* 2px ish */
   --dsc-link-text-decoration-thickness: 0.0625em; /* 1px ish */
   --dsc-link-border-radius: 0;
@@ -29,22 +30,19 @@ a,
     text-align: inherit;
   }
 
-  & :is(img, svg) {
+  & > :is(img, svg) {
     vertical-align: middle; /* Align img or svg icon with text */
   }
 
   /*
-   * Ensure proper spacing if there are any svg or img.
+   * Ensure proper spacing if there is svg or img and span.
    */
-  &:has(> span) {
-    & > :is(img, svg) {
-      margin-inline: var(--ds-size-1);
-      &:first-child {
-        margin-inline-start: 0;
-      }
-      &:last-child {
-        margin-inline-end: 0;
-      }
+  &:has(> span):has(> :is(img, svg)) {
+    &:first-child {
+      margin-inline-start: var(--ds-size-1);
+    }
+    &:last-child {
+      margin-inline-end: var(--ds-size-1);
     }
   }
 
@@ -56,7 +54,7 @@ a,
   }
 
   /**
-   * States
+   * States (using :where to allow all components to easily overwrite)
    */
   &:where(:visited) {
     color: var(--dsc-link-color--visited);
@@ -64,7 +62,7 @@ a,
 
   /* Only use hover for non-touch devices to prevent sticky-hovering */
   @media (hover: hover) and (pointer: fine) {
-    &:hover {
+    &:where(:hover) {
       color: var(--dsc-link-color--hover);
       text-decoration-thickness: var(--dsc-link-text-decoration-thickness--hover);
     }
@@ -72,7 +70,7 @@ a,
 
   @composes ds-focus from './base.css';
 
-  &:active {
+  &:where(:active) {
     background: var(--dsc-link-background--active);
     color: var(--dsc-link-color--active);
   }

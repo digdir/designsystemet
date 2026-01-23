@@ -20,8 +20,8 @@
   border-color: var(--dsc-card-border-color);
   box-sizing: border-box;
   color: var(--dsc-card-color);
-  font-family: inherit;
-  margin: 0;
+  font: inherit; /* In case used as <button> */
+  margin: 0; /* In case used as <button> */
   overflow: clip; /* Needed to clip media elements and and Card.Block */
   padding: var(--dsc-card-padding);
   text-align: inherit;
@@ -38,53 +38,33 @@
     display: block;
   }
 
-  &:not([data-size]) {
-    font-size: inherit; /* Ensure inheriting font-size when <button> */
-  }
-
-  /* Style link in heading, or heading when Card is anchor */
-  :is(h1, h2, h3, h4, h5, h6) a:any-link /* Using :any-link to target both a and a:visited */,
-  &:is(a:any-link, button, [role='button']) :is(h1, h2, h3, h4, h5, h6) {
-    color: inherit;
-    outline: 0;
-    text-decoration: underline;
-    text-decoration-thickness: max(1px, 0.0625rem, 0.1025em);
-    text-underline-offset: max(6px, 0.25rem, 0.22em);
-
-    /* reset .ds-link focus styles */
-    &.ds-link {
-      &:focus-visible {
-        background: none;
-        color: inherit;
-        outline: 0;
-      }
-
-      &:active {
-        background: none;
-        color: inherit;
-      }
-    }
-  }
-
   /* Add states when Card is a anchor, button, or when containing a anchor in heading */
-  &:where(a, button, [role='button']),
-  /* Match cards containing heading with a link, but exclude outer cards  */
-    &:where(:has(:is(h1, h2, h3, h4, h5, h6) a)):where(:not(:has(&))) {
+  &:where(a, button, [role='button'], [data-clickdelegatefor]) {
     cursor: pointer;
     text-decoration: none;
 
-    @media (hover: hover) and (pointer: fine) {
-      &:hover {
-        background: var(--dsc-card-background--hover);
+    & > :is(h1, h2, h3, h4, h5, h6),
+    & > .ds-card__block > :is(h1, h2, h3, h4, h5, h6) {
+      text-decoration-line: underline;
+      text-decoration-style: solid;
+      text-decoration-thickness: 0.0625em; /* 1px ish */
+      text-underline-offset: 0.27em; /* 5px ish */
+
+      & > a {
+        text-decoration: none;
+        color: inherit;
       }
     }
+  }
 
-    &:where(:focus-visible, :has(:focus-visible)) {
-      @composes ds-focus--visible from './base.css';
-    }
+  @media (hover: hover) and (pointer: fine) {
+    &:where(a, button, [role='button']):hover,
+    &[data-clickdelegatefor]:has(.\:click-delegate-hover) {
+      background: var(--dsc-card-background--hover);
 
-    &:active {
-      background: var(--dsc-card-background--active);
+      &:active {
+        background: var(--dsc-card-background--active);
+      }
     }
   }
 
@@ -113,14 +93,12 @@
 }
 
 /* Using :where to overwrite user agent CSS, but not our own CSS */
-:where(.ds-card, .ds-card__block) {
-  & > :first-child {
-    margin-block: 0;
-  }
+:where(.ds-card, .ds-card__block) > :first-child {
+  margin-block: 0;
+}
 
-  & > * + * {
-    margin-block: var(--dsc-card-content-margin-block); /* https://every-layout.dev/layouts/stack/ */
-  }
+:where(.ds-card, .ds-card__block) > * + * {
+  margin-block: var(--dsc-card-content-margin-block); /* https://every-layout.dev/layouts/stack/ */
 }
 
 .ds-card__block {
