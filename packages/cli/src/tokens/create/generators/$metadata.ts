@@ -17,7 +17,7 @@ export function generate$Metadata(
       ...sizesAndGlobal.map((size) => `primitives/modes/size/${size}`),
       ...sizesAndGlobal.flatMap((size) =>
         themes.flatMap((theme) =>
-          fontNamesPerTheme[theme].map((font) => `primitives/modes/size/${size}/${theme}/${font}`),
+          fontNamesPerTheme[theme].map((font) => `primitives/modes/size/${size}/${theme}/font-${font}`),
         ),
       ),
       ...themes.flatMap((theme) => fontNamesPerTheme[theme].map((font) => `primitives/fonts/${theme}/${font}`)),

@@ -71,8 +71,8 @@ function generateSizeGroup(themes: string[], fonts: FontsPerTheme, sizeModes: Si
       ...Object.fromEntries(
         themes.flatMap((theme) =>
           fonts[theme].flatMap((font) => [
-            [`primitives/modes/size/global/${theme}/${font}`, TokenSetStatus.ENABLED],
-            [`primitives/modes/size/${size}/${theme}/${font}`, TokenSetStatus.ENABLED],
+            [`primitives/modes/size/global/${theme}/font-${font}`, TokenSetStatus.ENABLED],
+            [`primitives/modes/size/${size}/${theme}/font-${font}`, TokenSetStatus.ENABLED],
           ]),
         ),
       ),

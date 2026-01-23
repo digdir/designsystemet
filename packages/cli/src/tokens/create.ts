@@ -55,12 +55,12 @@ export const createTokens = async (theme: Theme) => {
       ...sizeModes.map((size) => `primitives/modes/size/${size}`),
     ]),
     ...fontNames.map((font): [string, TokenSet] => [
-      `primitives/modes/size/global/${name}/${font}`,
+      `primitives/modes/size/global/${name}/font-${font}`,
       generateFontSizeGlobal(name, font),
     ]),
     ...fontNames.flatMap((font): [string, TokenSet][] =>
       sizeModes.map((size) => [
-        `primitives/modes/size/${size}/${name}/${font}`,
+        `primitives/modes/size/${size}/${name}/font-${font}`,
         generateFontSizeMode(size, name, font, typography.fonts?.[font]?.size),
       ]),
     ),
