@@ -674,8 +674,8 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0
       '@u-elements/u-details':
-        specifier: ^0.2.1
-        version: 0.2.1
+        specifier: ^0.2.2
+        version: 0.2.2
       '@u-elements/u-progress':
         specifier: ^0.0.7
         version: 0.0.7
@@ -2878,8 +2878,8 @@ packages:
   '@u-elements/u-datalist@1.1.0':
     resolution: {integrity: sha512-t8H3OddziXmq0YBuXodVWnvRi56WW4sfbJEIO1fx4i39sZ0s/0xjHBsoAsTZkb9mXJEtpgrsH8IkDYP0ZSgSXQ==}
 
-  '@u-elements/u-details@0.2.1':
-    resolution: {integrity: sha512-ugzflbOjHQgst07IoTFzikYmvVEILQQvrayd+N29XxIbpabIoRbYLr6h389PG9dIg4tRO3Lw/qT4uTcDWX+Syg==}
+  '@u-elements/u-details@0.2.2':
+    resolution: {integrity: sha512-8EJH3ajS34IjX4bauUi7z16FNZOLa3GNxfS6QReO1dck4nGNsHT25GYSyDaoQOQX7ZMxlsWADWrUJ9AGLgDO7w==}
 
   '@u-elements/u-progress@0.0.7':
     resolution: {integrity: sha512-T2Q6jwWL60we4qiZCOPqnhEfoI2lOaUP3EmYYvnVpZ+iA8HVuqT+kgdQgACiVymfGWgIzapTcP6xaM02AvPa/A==}
@@ -8384,7 +8384,7 @@ snapshots:
 
   '@u-elements/u-datalist@1.1.0': {}
 
-  '@u-elements/u-details@0.2.1': {}
+  '@u-elements/u-details@0.2.2': {}
 
   '@u-elements/u-progress@0.0.7': {}
 
