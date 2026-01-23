@@ -72,7 +72,6 @@ export const createTokens = async (theme: Theme) => {
       `primitives/fonts/${name}/${font}`,
       generateFont(name, font, fontDefinitions[font]),
     ]),
-    // TODO: Take font-mapping config (heading -> typography.secondary) etc
     [`themes/${name}`, generateTheme(colors, name, fontNames, borderRadius, typography)],
     ['semantic/color', semantic.color],
     // maps out semantic modes, ieg 'semantic/modes/main-color/accent', and 'semantic/modes/support-color/brand1'
