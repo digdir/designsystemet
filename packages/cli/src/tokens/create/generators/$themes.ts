@@ -67,19 +67,14 @@ function generateSizeGroup(themes: string[], fontNames: string[], sizeModes: Siz
     selectedTokenSets: {
       [`primitives/modes/size/${size}`]: TokenSetStatus.SOURCE,
       'primitives/modes/size/global': TokenSetStatus.ENABLED,
-      ...fontNames
-        .flatMap((font) =>
-          themes.map((theme) => ({
-            [`primitives/modes/fonts/${font}/size/global/${theme}`]: TokenSetStatus.ENABLED,
-            [`primitives/modes/fonts/${font}/size/${size}/${theme}`]: TokenSetStatus.ENABLED,
-          })),
-        )
-        .reduce((prev, curr) => {
-          Object.entries(curr).forEach(([key, val]) => {
-            prev[key] = val;
-          });
-          return prev;
-        }),
+      ...Object.fromEntries(
+        fontNames.flatMap((font) =>
+          themes.flatMap((theme) => [
+            [`primitives/modes/fonts/${font}/size/global/${theme}`, TokenSetStatus.ENABLED],
+            [`primitives/modes/fonts/${font}/size/${size}/${theme}`, TokenSetStatus.ENABLED],
+          ]),
+        ),
+      ),
     },
     ...existingFigmaIds[size],
     $figmaStyleReferences: {},
@@ -124,9 +119,7 @@ function generateColorSchemesGroup(colorSchemes: ColorSchemes, themes: string[])
 
 async function generateThemesGroup(themes: string[], fonts: string[]): Promise<ThemeObject_[]> {
   const fontSets = Object.fromEntries(
-    themes.flatMap((theme) =>
-      fonts.map((font) => [`primitives/fonts/${font}/${theme}`, TokenSetStatus.ENABLED] as const),
-    ),
+    themes.flatMap((theme) => fonts.map((font) => [`primitives/fonts/${font}/${theme}`, TokenSetStatus.ENABLED])),
   );
 
   return Promise.all(
