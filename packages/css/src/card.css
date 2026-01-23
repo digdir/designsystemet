@@ -1,4 +1,5 @@
 .ds-card {
+  /* TODO: Changeset for only styling headings that are direct child of ds-card or ds-card__block */
   --dsc-card-background--active: var(--ds-color-surface-active);
   --dsc-card-background--hover: var(--ds-color-surface-hover);
   --dsc-card-background: var(--ds-color-surface-default);
