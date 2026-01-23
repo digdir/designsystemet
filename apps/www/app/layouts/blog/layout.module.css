@@ -2,7 +2,7 @@
   padding-top: var(--ds-size-18);
   padding-bottom: var(--ds-size-18);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(18.75rem, 100%), 1fr));
   gap: var(--ds-size-10);
 }
 .header {
