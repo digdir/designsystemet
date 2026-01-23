@@ -55,12 +55,12 @@ export const createTokens = async (theme: Theme) => {
       ...sizeModes.map((size) => `primitives/modes/size/${size}`),
     ]),
     ...fontNames.map((font): [string, TokenSet] => [
-      `primitives/modes/fonts/${font}/size/global/${name}`,
+      `primitives/modes/size/global/${name}/${font}`,
       generateFontSizeGlobal(name, font),
     ]),
     ...fontNames.flatMap((font): [string, TokenSet][] =>
       sizeModes.map((size) => [
-        `primitives/modes/fonts/${font}/size/${size}/${name}`,
+        `primitives/modes/size/${size}/${name}/${font}`,
         generateFontSizeMode(size, name, font, typography.fonts?.[font]?.size),
       ]),
     ),
@@ -69,7 +69,7 @@ export const createTokens = async (theme: Theme) => {
       generateColorScheme(name, scheme, colors, overrides),
     ]),
     ...fontNames.map((font): [string, TokenSet] => [
-      `primitives/fonts/${font}/${name}`,
+      `primitives/fonts/${name}/${font}`,
       generateFont(name, font, fontDefinitions[font]),
     ]),
     // TODO: Take font-mapping config (heading -> typography.secondary) etc

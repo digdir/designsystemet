@@ -15,12 +15,12 @@ export function generate$Metadata(
     tokenSetOrder: [
       'primitives/globals',
       ...sizesAndGlobal.map((size) => `primitives/modes/size/${size}`),
-      ...themes.flatMap((theme) =>
-        fontNamesPerTheme[theme].flatMap((font) =>
-          sizesAndGlobal.map((size) => `primitives/modes/fonts/${font}/size/${size}/${theme}`),
+      ...sizesAndGlobal.flatMap((size) =>
+        themes.flatMap((theme) =>
+          fontNamesPerTheme[theme].map((font) => `primitives/modes/size/${size}/${theme}/${font}`),
         ),
       ),
-      ...themes.flatMap((theme) => fontNamesPerTheme[theme].map((font) => `primitives/fonts/${font}/${theme}`)),
+      ...themes.flatMap((theme) => fontNamesPerTheme[theme].map((font) => `primitives/fonts/${theme}/${font}`)),
       ...colorSchemes.flatMap((scheme) => [
         ...themes.map((theme) => `primitives/modes/color-scheme/${scheme}/${theme}`),
       ]),
