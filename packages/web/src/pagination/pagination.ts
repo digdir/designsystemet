@@ -30,7 +30,7 @@ export const pagination = ({ current = 1, total = 10, show = 7 }) => ({
 });
 
 export class DSPaginationElement extends DSElement {
-  _unmutate?: () => void;
+  _unmutate?: () => void; // Using underscore instead of private fields for backwards compatibility
 
   static get observedAttributes() {
     return [ATTR_CURRENT, ATTR_TOTAL]; // Using ES2015 syntax for backwards compatibility
