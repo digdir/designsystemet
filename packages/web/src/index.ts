@@ -1,7 +1,11 @@
+import { isSupported, apply as polyfillInvokers } from 'invokers-polyfill/fn';
 import { isBrowser } from './utils/utils';
-
-// Ensure polyfill is loaded in browser environment only
-if (isBrowser()) import('invokers-polyfill');
+import '@u-elements/u-details/polyfill'; // Polyfill for <details> element for Android Firefox + Talkback
+import './tooltip/tooltip';
+import './toggle-group/toggle-group';
+import './popover/popover';
+import './dialog/dialog';
+import './clickdelegatefor/clickdelegatefor';
 
 export * from '@u-elements/u-datalist'; // Re-export u-datalist since this is a pure polyfill and not custom Designsystemet elements
 export * from './breadcrumbs/breadcrumbs';
@@ -10,9 +14,5 @@ export * from './field/field';
 export * from './pagination/pagination';
 export * from './suggestion/suggestion';
 export * from './tabs/tabs';
-import '@u-elements/u-details/polyfill'; // Polyfill for <details> element for Android Firefox + Talkback
-import './clickdelegatefor/clickdelegatefor';
-import './dialog/dialog';
-import './popover/popover';
-import './toggle-group/toggle-group';
-import './tooltip/tooltip';
+
+if (isBrowser() && !isSupported()) polyfillInvokers(); // Ensure invoker commands polyfill is loaded in browser environment only
