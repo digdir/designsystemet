@@ -1,8 +1,8 @@
 import {
   attr,
-  attrRequiredWarning,
   customElements,
   DSElement,
+  isNorwegian,
   onMutation,
 } from '../utils/utils';
 
@@ -16,6 +16,7 @@ const ATTR_LABEL = 'aria-label';
 const ATTR_CURRENT = 'data-current';
 const ATTR_TOTAL = 'data-total';
 const ATTR_HREF = 'data-href';
+const NB_LABEL = 'Bla i sider';
 
 // Expose pagination logic if wanting to do custom rendering (i.e. in React/Vue/etc)
 export const pagination = ({ current = 1, total = 10, show = 7 }) => ({
@@ -35,9 +36,15 @@ export class DSPaginationElement extends DSElement {
     return [ATTR_CURRENT, ATTR_TOTAL]; // Using ES2015 syntax for backwards compatibility
   }
   connectedCallback() {
-    attrRequiredWarning(this, ATTR_LABEL);
-    if (attr(this, ATTR_TOTAL)) attrRequiredWarning(this, ATTR_CURRENT);
-    if (attr(this, ATTR_CURRENT)) attrRequiredWarning(this, ATTR_TOTAL);
+    // Check for required attributes
+    const total = attr(this, ATTR_TOTAL);
+    const current = attr(this, ATTR_CURRENT);
+    if (current && !total) attrWarn(ATTR_TOTAL, this);
+    if (total && !current) attrWarn(ATTR_CURRENT, this);
+    if (!attr(this, ATTR_LABEL)) {
+      if (isNorwegian(this)) attr(this, ATTR_LABEL, NB_LABEL);
+      else attrWarn(ATTR_LABEL, this);
+    }
 
     this._unmutate = onMutation(this, this.render.bind(this), {
       childList: true,
@@ -71,9 +78,11 @@ export class DSPaginationElement extends DSElement {
   }
 }
 
-customElements.define('ds-pagination', DSPaginationElement);
-
-function getSteps(now: number, max: number, show = Number.POSITIVE_INFINITY) {
+const getSteps = (
+  now: number,
+  max: number,
+  show = Number.POSITIVE_INFINITY,
+) => {
   const offset = (show - 1) / 2;
   const start = Math.max(Math.min(now - Math.floor(offset), max - show + 1), 1);
   const end = Math.min(Math.max(now + Math.ceil(offset), show), max);
@@ -82,4 +91,9 @@ function getSteps(now: number, max: number, show = Number.POSITIVE_INFINITY) {
   if (show > 4 && start > 1) pages.splice(0, 2, 1, 0);
   if (show > 3 && end < max) pages.splice(-2, 2, 0, max);
   return pages;
-}
+};
+
+const attrWarn = (name: string, el: Element) =>
+  console.warn(`Designsystemet: Missing ${name} attribute on:`, el);
+
+customElements.define('ds-pagination', DSPaginationElement);

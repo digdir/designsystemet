@@ -19,11 +19,12 @@
   }
 
   /* Reset validation styling if counter limit is not exceeded */
-  & [data-field='counter'][data-state='under'] {
+  /* Using :not([data-state='over']) instead of [data-state='under'] to style before JS has loaded */
+  & [data-field='counter']:not([data-state='over']) {
     color: inherit;
     padding-left: 0;
   }
-  & [data-field='counter'][data-state='under']::before {
+  & [data-field='counter']:not([data-state='over'])::before {
     display: none;
   }
   & [data-field='counter']::after {

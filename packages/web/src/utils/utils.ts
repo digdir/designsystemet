@@ -46,14 +46,19 @@ export const attr = (
 };
 
 /**
- * attrRequiredWarning
- * @description Warn if element is missing attribute
- * @param el The Element to read/write attributes from
- * @param ...names The attribute name(s) check
+ * isNorwegian
+ * @description Checks if element is placed on a website with Norwegian language
+ * @param el The Element to check
+ * @return boolean
  */
-export const attrRequiredWarning = (el: Element, name: string) =>
-  el.hasAttribute(name) ||
-  console.warn(`Designsystemet: Missing a ${name} attribute`, el);
+export const isNorwegian = (el: Element) => {
+  const root = el.closest('[lang]') || document.documentElement; // Fallback to <html> element if inside shadow DOM
+  const lang = root?.getAttribute('lang')?.toLowerCase().split('-')[0] || '';
+
+  if (!lang)
+    console.warn('Designsystemet: Missing lang attribute on <html> element');
+  return lang === 'nb' || lang === 'nn' || lang === 'no';
+};
 
 /**
  * on

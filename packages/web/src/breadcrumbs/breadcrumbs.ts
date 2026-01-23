@@ -1,9 +1,9 @@
 import {
   attr,
-  attrRequiredWarning,
   customElements,
   DSElement,
   debounce,
+  isNorwegian,
   on,
   onMutation,
 } from '../utils/utils';
@@ -16,6 +16,7 @@ declare global {
 
 const ATTR_LABEL = 'aria-label';
 const ATTR_LABEL_HIDDEN = 'data-label'; // Used to hide label on mobile when only showing back link
+const NB_LABEL = 'Du er her';
 
 export class DSBreadcrumbsElement extends DSElement {
   _items?: HTMLCollectionOf<HTMLAnchorElement>; // Using underscore instead of private fields for backwards compatibility
@@ -26,7 +27,11 @@ export class DSBreadcrumbsElement extends DSElement {
     return [ATTR_LABEL]; // Using ES2015 syntax for backwards compatibility
   }
   connectedCallback() {
-    if (!attr(this, ATTR_LABEL_HIDDEN)) attrRequiredWarning(this, ATTR_LABEL); // aria-label can allready have been hidden by attributeChangedCallback
+    // aria-label can allready have been hidden by attributeChangedCallback
+    if (!attr(this, ATTR_LABEL_HIDDEN) && !attr(this, ATTR_LABEL)) {
+      if (isNorwegian(this)) attr(this, ATTR_LABEL, NB_LABEL);
+      else console.warn('Designsystemet: Missing aria-label on:', this);
+    }
     const render = debounce(this.attributeChangedCallback.bind(this), 100);
     this._items = this.getElementsByTagName('a'); // Speed up by caching HTMLCollection
     this._unresize = on(window, 'resize', render);

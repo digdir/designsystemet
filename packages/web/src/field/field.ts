@@ -25,7 +25,7 @@ const FIELDS = new Map<DSFieldElement, Element | null>(); // Map of Field => Cou
 const FILEDSETS = isBrowser() ? document.getElementsByTagName('fieldset') : [];
 const HAS_FIELD_SIZING = isBrowser() && CSS.supports('field-sizing', 'content');
 const COUNTER_DEBOUNCE = isWindows() ? 800 : 200; // Longer debounce on Windows due to NVDA performance
-const COUNTER_STATE = {
+const NB_COUNTER = {
   over: '%d tegn for mye',
   under: '%d tegn igjen',
 };
@@ -128,7 +128,7 @@ export class DSFieldElement extends DSElement {
       const count = limit - el.value.length;
       const state = count < 0 ? 'over' : 'under';
       const label = (
-        attr(counter, `data-${state}`) || COUNTER_STATE[state]
+        attr(counter, `data-${state}`) || NB_COUNTER[state]
       ).replace('%d', `${Math.abs(count)}`);
 
       attr(counter, 'aria-label', label);

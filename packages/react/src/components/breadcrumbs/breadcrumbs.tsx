@@ -35,9 +35,8 @@ export type BreadcrumbsProps = MergeRight<
  * </Breadcrumbs>
  */
 export const Breadcrumbs = forwardRef<DSBreadcrumbsElement, BreadcrumbsProps>(
-  ({ 'aria-label': ariaLabel = 'Du er her:', className, ...rest }, ref) => (
+  ({ className, ...rest }, ref) => (
     <ds-breadcrumbs
-      aria-label={ariaLabel}
       class={cl('ds-breadcrumbs', className)}
       ref={ref}
       {...rest}

@@ -1,6 +1,5 @@
 import {
   attr,
-  attrRequiredWarning,
   debounce,
   on,
   onHotReload,
@@ -27,7 +26,7 @@ const handleAriaAttributes = debounce(() => {
 
     attr(el, hasText ? 'aria-description' : 'aria-label', tooltip);
     if (!el.matches(SELECTOR_INTERACTIVE))
-      attrRequiredWarning(el, 'tabindex="0"');
+      console.log('Designsystemet: Missing tabindex="0" attribute on: ', el);
   }
 }, 200);
 

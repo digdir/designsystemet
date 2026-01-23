@@ -12,7 +12,7 @@ export type PaginationProps = MergeRight<
   {
     /**
      * Sets the screen reader label for the Pagination area
-     * @default Sidenavigering
+     * @default 'Bla i sider'
      */
     'aria-label'?: string;
     /**
@@ -52,15 +52,11 @@ export type PaginationProps = MergeRight<
  * </Pagination>
  */
 export const Pagination = forwardRef<DSPaginationElement, PaginationProps>(
-  function Pagination(
-    { 'aria-label': ariaLabel = 'Sidenavigering', asChild, className, ...rest },
-    ref,
-  ) {
+  function Pagination({ asChild, className, ...rest }, ref) {
     const Component = asChild ? Slot : 'ds-pagination';
 
     return (
       <Component
-        aria-label={ariaLabel}
         {...(asChild
           ? { className: cl('ds-pagination', className) }
           : { class: cl('ds-pagination', className) })}
