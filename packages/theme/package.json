@@ -3,7 +3,6 @@
   "version": "1.11.0",
   "description": "Predefined themes for Designsystemet",
   "author": "Designsystemet team",
-  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/digdir/designsystemet.git"
