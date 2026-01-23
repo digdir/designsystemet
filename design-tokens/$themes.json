@@ -5,14 +5,14 @@
     "selectedTokenSets": {
       "primitives/modes/size/medium": "source",
       "primitives/modes/size/global": "enabled",
-      "primitives/modes/fonts/secondary/size/global/designsystemet": "enabled",
-      "primitives/modes/fonts/secondary/size/medium/designsystemet": "enabled",
-      "primitives/modes/fonts/secondary/size/global/different-fonts": "enabled",
-      "primitives/modes/fonts/secondary/size/medium/different-fonts": "enabled",
       "primitives/modes/fonts/primary/size/global/designsystemet": "enabled",
       "primitives/modes/fonts/primary/size/medium/designsystemet": "enabled",
-      "primitives/modes/fonts/primary/size/global/different-fonts": "enabled",
-      "primitives/modes/fonts/primary/size/medium/different-fonts": "enabled"
+      "primitives/modes/fonts/secondary/size/global/designsystemet": "enabled",
+      "primitives/modes/fonts/secondary/size/medium/designsystemet": "enabled",
+      "primitives/modes/fonts/main/size/global/different-fonts": "enabled",
+      "primitives/modes/fonts/main/size/medium/different-fonts": "enabled",
+      "primitives/modes/fonts/headings/size/global/different-fonts": "enabled",
+      "primitives/modes/fonts/headings/size/medium/different-fonts": "enabled"
     },
     "id": "fb11567729c298ca37c9da4e3a27716a23480824",
     "$figmaCollectionId": "VariableCollectionId:36248:20757",
@@ -25,14 +25,14 @@
     "selectedTokenSets": {
       "primitives/modes/size/small": "source",
       "primitives/modes/size/global": "enabled",
-      "primitives/modes/fonts/secondary/size/global/designsystemet": "enabled",
-      "primitives/modes/fonts/secondary/size/small/designsystemet": "enabled",
-      "primitives/modes/fonts/secondary/size/global/different-fonts": "enabled",
-      "primitives/modes/fonts/secondary/size/small/different-fonts": "enabled",
       "primitives/modes/fonts/primary/size/global/designsystemet": "enabled",
       "primitives/modes/fonts/primary/size/small/designsystemet": "enabled",
-      "primitives/modes/fonts/primary/size/global/different-fonts": "enabled",
-      "primitives/modes/fonts/primary/size/small/different-fonts": "enabled"
+      "primitives/modes/fonts/secondary/size/global/designsystemet": "enabled",
+      "primitives/modes/fonts/secondary/size/small/designsystemet": "enabled",
+      "primitives/modes/fonts/main/size/global/different-fonts": "enabled",
+      "primitives/modes/fonts/main/size/small/different-fonts": "enabled",
+      "primitives/modes/fonts/headings/size/global/different-fonts": "enabled",
+      "primitives/modes/fonts/headings/size/small/different-fonts": "enabled"
     },
     "id": "8b2c8cc86611a34b135cb22948666779361fd729",
     "$figmaCollectionId": "VariableCollectionId:36248:20757",
@@ -45,14 +45,14 @@
     "selectedTokenSets": {
       "primitives/modes/size/large": "source",
       "primitives/modes/size/global": "enabled",
-      "primitives/modes/fonts/secondary/size/global/designsystemet": "enabled",
-      "primitives/modes/fonts/secondary/size/large/designsystemet": "enabled",
-      "primitives/modes/fonts/secondary/size/global/different-fonts": "enabled",
-      "primitives/modes/fonts/secondary/size/large/different-fonts": "enabled",
       "primitives/modes/fonts/primary/size/global/designsystemet": "enabled",
       "primitives/modes/fonts/primary/size/large/designsystemet": "enabled",
-      "primitives/modes/fonts/primary/size/global/different-fonts": "enabled",
-      "primitives/modes/fonts/primary/size/large/different-fonts": "enabled"
+      "primitives/modes/fonts/secondary/size/global/designsystemet": "enabled",
+      "primitives/modes/fonts/secondary/size/large/designsystemet": "enabled",
+      "primitives/modes/fonts/main/size/global/different-fonts": "enabled",
+      "primitives/modes/fonts/main/size/large/different-fonts": "enabled",
+      "primitives/modes/fonts/headings/size/global/different-fonts": "enabled",
+      "primitives/modes/fonts/headings/size/large/different-fonts": "enabled"
     },
     "id": "d49b9eebeb48a4f165a74b7261733d0a73370f0e",
     "$figmaCollectionId": "VariableCollectionId:36248:20757",
@@ -65,10 +65,10 @@
     "$figmaModeId": "40960:6",
     "name": "designsystemet",
     "selectedTokenSets": {
-      "primitives/fonts/secondary/designsystemet": "enabled",
       "primitives/fonts/primary/designsystemet": "enabled",
-      "primitives/fonts/secondary/different-fonts": "enabled",
-      "primitives/fonts/primary/different-fonts": "enabled",
+      "primitives/fonts/secondary/designsystemet": "enabled",
+      "primitives/fonts/main/different-fonts": "enabled",
+      "primitives/fonts/headings/different-fonts": "enabled",
       "themes/designsystemet": "enabled"
     },
     "group": "Theme"
@@ -79,10 +79,10 @@
     "$figmaModeId": "40960:7",
     "name": "different-fonts",
     "selectedTokenSets": {
-      "primitives/fonts/secondary/designsystemet": "enabled",
       "primitives/fonts/primary/designsystemet": "enabled",
-      "primitives/fonts/secondary/different-fonts": "enabled",
-      "primitives/fonts/primary/different-fonts": "enabled",
+      "primitives/fonts/secondary/designsystemet": "enabled",
+      "primitives/fonts/main/different-fonts": "enabled",
+      "primitives/fonts/headings/different-fonts": "enabled",
       "themes/different-fonts": "enabled"
     },
     "group": "Theme"

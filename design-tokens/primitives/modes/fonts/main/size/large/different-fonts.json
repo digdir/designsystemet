@@ -1,11 +1,11 @@
 {
   "different-fonts": {
     "fonts": {
-      "secondary": {
+      "main": {
         "font-scale": {
           "_base": {
             "$type": "number",
-            "$value": "16"
+            "$value": "18"
           },
           "_ratio": {
             "$type": "number",

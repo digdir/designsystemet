@@ -546,255 +546,255 @@
     }
   },
   "fonts": {
-    "secondary": {
+    "main": {
       "font-family": {
         "$type": "fontFamilies",
-        "$value": "{different-fonts.fonts.secondary.font-family}"
+        "$value": "{different-fonts.fonts.main.font-family}"
       },
       "font-weight": {
         "medium": {
           "$type": "fontWeights",
-          "$value": "{different-fonts.fonts.secondary.font-weight.medium}"
+          "$value": "{different-fonts.fonts.main.font-weight.medium}"
         },
         "semibold": {
           "$type": "fontWeights",
-          "$value": "{different-fonts.fonts.secondary.font-weight.semibold}"
+          "$value": "{different-fonts.fonts.main.font-weight.semibold}"
         },
         "regular": {
           "$type": "fontWeights",
-          "$value": "{different-fonts.fonts.secondary.font-weight.regular}"
+          "$value": "{different-fonts.fonts.main.font-weight.regular}"
         }
       },
       "font-size": {
         "1": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.secondary.font-size.1}"
+          "$value": "{different-fonts.fonts.main.font-size.1}"
         },
         "2": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.secondary.font-size.2}"
+          "$value": "{different-fonts.fonts.main.font-size.2}"
         },
         "3": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.secondary.font-size.3}"
+          "$value": "{different-fonts.fonts.main.font-size.3}"
         },
         "4": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.secondary.font-size.4}"
+          "$value": "{different-fonts.fonts.main.font-size.4}"
         },
         "5": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.secondary.font-size.5}"
+          "$value": "{different-fonts.fonts.main.font-size.5}"
         },
         "6": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.secondary.font-size.6}"
+          "$value": "{different-fonts.fonts.main.font-size.6}"
         },
         "7": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.secondary.font-size.7}"
+          "$value": "{different-fonts.fonts.main.font-size.7}"
         },
         "8": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.secondary.font-size.8}"
+          "$value": "{different-fonts.fonts.main.font-size.8}"
         },
         "9": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.secondary.font-size.9}"
+          "$value": "{different-fonts.fonts.main.font-size.9}"
         },
         "10": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.secondary.font-size.10}"
+          "$value": "{different-fonts.fonts.main.font-size.10}"
         },
         "11": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.secondary.font-size.11}"
+          "$value": "{different-fonts.fonts.main.font-size.11}"
         },
         "12": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.secondary.font-size.12}"
+          "$value": "{different-fonts.fonts.main.font-size.12}"
         },
         "13": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.secondary.font-size.13}"
+          "$value": "{different-fonts.fonts.main.font-size.13}"
         }
       },
       "line-height": {
         "sm": {
           "$type": "lineHeights",
-          "$value": "{different-fonts.fonts.secondary.line-height.sm}"
+          "$value": "{different-fonts.fonts.main.line-height.sm}"
         },
         "md": {
           "$type": "lineHeights",
-          "$value": "{different-fonts.fonts.secondary.line-height.md}"
+          "$value": "{different-fonts.fonts.main.line-height.md}"
         },
         "lg": {
           "$type": "lineHeights",
-          "$value": "{different-fonts.fonts.secondary.line-height.lg}"
+          "$value": "{different-fonts.fonts.main.line-height.lg}"
         }
       },
       "letter-spacing": {
         "1": {
           "$type": "letterSpacing",
-          "$value": "{different-fonts.fonts.secondary.letter-spacing.1}"
+          "$value": "{different-fonts.fonts.main.letter-spacing.1}"
         },
         "2": {
           "$type": "letterSpacing",
-          "$value": "{different-fonts.fonts.secondary.letter-spacing.2}"
+          "$value": "{different-fonts.fonts.main.letter-spacing.2}"
         },
         "3": {
           "$type": "letterSpacing",
-          "$value": "{different-fonts.fonts.secondary.letter-spacing.3}"
+          "$value": "{different-fonts.fonts.main.letter-spacing.3}"
         },
         "4": {
           "$type": "letterSpacing",
-          "$value": "{different-fonts.fonts.secondary.letter-spacing.4}"
+          "$value": "{different-fonts.fonts.main.letter-spacing.4}"
         },
         "5": {
           "$type": "letterSpacing",
-          "$value": "{different-fonts.fonts.secondary.letter-spacing.5}"
+          "$value": "{different-fonts.fonts.main.letter-spacing.5}"
         },
         "6": {
           "$type": "letterSpacing",
-          "$value": "{different-fonts.fonts.secondary.letter-spacing.6}"
+          "$value": "{different-fonts.fonts.main.letter-spacing.6}"
         },
         "7": {
           "$type": "letterSpacing",
-          "$value": "{different-fonts.fonts.secondary.letter-spacing.7}"
+          "$value": "{different-fonts.fonts.main.letter-spacing.7}"
         },
         "8": {
           "$type": "letterSpacing",
-          "$value": "{different-fonts.fonts.secondary.letter-spacing.8}"
+          "$value": "{different-fonts.fonts.main.letter-spacing.8}"
         },
         "9": {
           "$type": "letterSpacing",
-          "$value": "{different-fonts.fonts.secondary.letter-spacing.9}"
+          "$value": "{different-fonts.fonts.main.letter-spacing.9}"
         }
       }
     },
-    "primary": {
+    "headings": {
       "font-family": {
         "$type": "fontFamilies",
-        "$value": "{different-fonts.fonts.primary.font-family}"
+        "$value": "{different-fonts.fonts.headings.font-family}"
       },
       "font-weight": {
         "medium": {
           "$type": "fontWeights",
-          "$value": "{different-fonts.fonts.primary.font-weight.medium}"
+          "$value": "{different-fonts.fonts.headings.font-weight.medium}"
         },
         "semibold": {
           "$type": "fontWeights",
-          "$value": "{different-fonts.fonts.primary.font-weight.semibold}"
+          "$value": "{different-fonts.fonts.headings.font-weight.semibold}"
         },
         "regular": {
           "$type": "fontWeights",
-          "$value": "{different-fonts.fonts.primary.font-weight.regular}"
+          "$value": "{different-fonts.fonts.headings.font-weight.regular}"
         }
       },
       "font-size": {
         "1": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.primary.font-size.1}"
+          "$value": "{different-fonts.fonts.headings.font-size.1}"
         },
         "2": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.primary.font-size.2}"
+          "$value": "{different-fonts.fonts.headings.font-size.2}"
         },
         "3": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.primary.font-size.3}"
+          "$value": "{different-fonts.fonts.headings.font-size.3}"
         },
         "4": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.primary.font-size.4}"
+          "$value": "{different-fonts.fonts.headings.font-size.4}"
         },
         "5": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.primary.font-size.5}"
+          "$value": "{different-fonts.fonts.headings.font-size.5}"
         },
         "6": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.primary.font-size.6}"
+          "$value": "{different-fonts.fonts.headings.font-size.6}"
         },
         "7": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.primary.font-size.7}"
+          "$value": "{different-fonts.fonts.headings.font-size.7}"
         },
         "8": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.primary.font-size.8}"
+          "$value": "{different-fonts.fonts.headings.font-size.8}"
         },
         "9": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.primary.font-size.9}"
+          "$value": "{different-fonts.fonts.headings.font-size.9}"
         },
         "10": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.primary.font-size.10}"
+          "$value": "{different-fonts.fonts.headings.font-size.10}"
         },
         "11": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.primary.font-size.11}"
+          "$value": "{different-fonts.fonts.headings.font-size.11}"
         },
         "12": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.primary.font-size.12}"
+          "$value": "{different-fonts.fonts.headings.font-size.12}"
         },
         "13": {
           "$type": "fontSizes",
-          "$value": "{different-fonts.fonts.primary.font-size.13}"
+          "$value": "{different-fonts.fonts.headings.font-size.13}"
         }
       },
       "line-height": {
         "sm": {
           "$type": "lineHeights",
-          "$value": "{different-fonts.fonts.primary.line-height.sm}"
+          "$value": "{different-fonts.fonts.headings.line-height.sm}"
         },
         "md": {
           "$type": "lineHeights",
-          "$value": "{different-fonts.fonts.primary.line-height.md}"
+          "$value": "{different-fonts.fonts.headings.line-height.md}"
         },
         "lg": {
           "$type": "lineHeights",
-          "$value": "{different-fonts.fonts.primary.line-height.lg}"
+          "$value": "{different-fonts.fonts.headings.line-height.lg}"
         }
       },
       "letter-spacing": {
         "1": {
           "$type": "letterSpacing",
-          "$value": "{different-fonts.fonts.primary.letter-spacing.1}"
+          "$value": "{different-fonts.fonts.headings.letter-spacing.1}"
         },
         "2": {
           "$type": "letterSpacing",
-          "$value": "{different-fonts.fonts.primary.letter-spacing.2}"
+          "$value": "{different-fonts.fonts.headings.letter-spacing.2}"
         },
         "3": {
           "$type": "letterSpacing",
-          "$value": "{different-fonts.fonts.primary.letter-spacing.3}"
+          "$value": "{different-fonts.fonts.headings.letter-spacing.3}"
         },
         "4": {
           "$type": "letterSpacing",
-          "$value": "{different-fonts.fonts.primary.letter-spacing.4}"
+          "$value": "{different-fonts.fonts.headings.letter-spacing.4}"
         },
         "5": {
           "$type": "letterSpacing",
-          "$value": "{different-fonts.fonts.primary.letter-spacing.5}"
+          "$value": "{different-fonts.fonts.headings.letter-spacing.5}"
         },
         "6": {
           "$type": "letterSpacing",
-          "$value": "{different-fonts.fonts.primary.letter-spacing.6}"
+          "$value": "{different-fonts.fonts.headings.letter-spacing.6}"
         },
         "7": {
           "$type": "letterSpacing",
-          "$value": "{different-fonts.fonts.primary.letter-spacing.7}"
+          "$value": "{different-fonts.fonts.headings.letter-spacing.7}"
         },
         "8": {
           "$type": "letterSpacing",
-          "$value": "{different-fonts.fonts.primary.letter-spacing.8}"
+          "$value": "{different-fonts.fonts.headings.letter-spacing.8}"
         },
         "9": {
           "$type": "letterSpacing",
-          "$value": "{different-fonts.fonts.primary.letter-spacing.9}"
+          "$value": "{different-fonts.fonts.headings.letter-spacing.9}"
         }
       }
     }
@@ -802,113 +802,113 @@
   "line-height": {
     "sm": {
       "$type": "lineHeights",
-      "$value": "{fonts.secondary.line-height.sm}"
+      "$value": "{fonts.main.line-height.sm}"
     },
     "md": {
       "$type": "lineHeights",
-      "$value": "{fonts.secondary.line-height.md}"
+      "$value": "{fonts.main.line-height.md}"
     },
     "lg": {
       "$type": "lineHeights",
-      "$value": "{fonts.secondary.line-height.lg}"
+      "$value": "{fonts.main.line-height.lg}"
     }
   },
   "font-family": {
     "$type": "fontFamilies",
-    "$value": "{fonts.secondary.font-family}"
+    "$value": "{fonts.main.font-family}"
   },
   "font-weight": {
     "medium": {
       "$type": "fontWeights",
-      "$value": "{fonts.secondary.font-weight.medium}"
+      "$value": "{fonts.main.font-weight.medium}"
     },
     "semibold": {
       "$type": "fontWeights",
-      "$value": "{fonts.secondary.font-weight.semibold}"
+      "$value": "{fonts.main.font-weight.semibold}"
     },
     "regular": {
       "$type": "fontWeights",
-      "$value": "{fonts.secondary.font-weight.regular}"
+      "$value": "{fonts.main.font-weight.regular}"
     }
   },
   "font-size": {
     "1": {
       "$type": "fontSizes",
-      "$value": "{fonts.secondary.font-size.1}"
+      "$value": "{fonts.main.font-size.1}"
     },
     "2": {
       "$type": "fontSizes",
-      "$value": "{fonts.secondary.font-size.2}"
+      "$value": "{fonts.main.font-size.2}"
     },
     "3": {
       "$type": "fontSizes",
-      "$value": "{fonts.secondary.font-size.3}"
+      "$value": "{fonts.main.font-size.3}"
     },
     "4": {
       "$type": "fontSizes",
-      "$value": "{fonts.secondary.font-size.4}"
+      "$value": "{fonts.main.font-size.4}"
     },
     "5": {
       "$type": "fontSizes",
-      "$value": "{fonts.secondary.font-size.5}"
+      "$value": "{fonts.main.font-size.5}"
     },
     "6": {
       "$type": "fontSizes",
-      "$value": "{fonts.secondary.font-size.6}"
+      "$value": "{fonts.main.font-size.6}"
     },
     "7": {
       "$type": "fontSizes",
-      "$value": "{fonts.secondary.font-size.8}"
+      "$value": "{fonts.main.font-size.8}"
     },
     "8": {
       "$type": "fontSizes",
-      "$value": "{fonts.secondary.font-size.9}"
+      "$value": "{fonts.main.font-size.9}"
     },
     "9": {
       "$type": "fontSizes",
-      "$value": "{fonts.secondary.font-size.11}"
+      "$value": "{fonts.main.font-size.11}"
     },
     "10": {
       "$type": "fontSizes",
-      "$value": "{fonts.secondary.font-size.13}"
+      "$value": "{fonts.main.font-size.13}"
     }
   },
   "letter-spacing": {
     "1": {
       "$type": "letterSpacing",
-      "$value": "{fonts.secondary.letter-spacing.1}"
+      "$value": "{fonts.main.letter-spacing.1}"
     },
     "2": {
       "$type": "letterSpacing",
-      "$value": "{fonts.secondary.letter-spacing.2}"
+      "$value": "{fonts.main.letter-spacing.2}"
     },
     "3": {
       "$type": "letterSpacing",
-      "$value": "{fonts.secondary.letter-spacing.3}"
+      "$value": "{fonts.main.letter-spacing.3}"
     },
     "4": {
       "$type": "letterSpacing",
-      "$value": "{fonts.secondary.letter-spacing.4}"
+      "$value": "{fonts.main.letter-spacing.4}"
     },
     "5": {
       "$type": "letterSpacing",
-      "$value": "{fonts.secondary.letter-spacing.5}"
+      "$value": "{fonts.main.letter-spacing.5}"
     },
     "6": {
       "$type": "letterSpacing",
-      "$value": "{fonts.secondary.letter-spacing.6}"
+      "$value": "{fonts.main.letter-spacing.6}"
     },
     "7": {
       "$type": "letterSpacing",
-      "$value": "{fonts.secondary.letter-spacing.7}"
+      "$value": "{fonts.main.letter-spacing.7}"
     },
     "8": {
       "$type": "letterSpacing",
-      "$value": "{fonts.secondary.letter-spacing.8}"
+      "$value": "{fonts.main.letter-spacing.8}"
     },
     "9": {
       "$type": "letterSpacing",
-      "$value": "{fonts.secondary.letter-spacing.9}"
+      "$value": "{fonts.main.letter-spacing.9}"
     }
   },
   "typography-mapping": {
@@ -916,155 +916,155 @@
       "2xl": {
         "font-family": {
           "$type": "fontFamilies",
-          "$value": "{fonts.primary.font-family}"
+          "$value": "{fonts.headings.font-family}"
         },
         "font-weight": {
           "$type": "fontWeights",
-          "$value": "{fonts.primary.font-weight.medium}"
+          "$value": "{fonts.headings.font-weight.medium}"
         },
         "line-height": {
           "$type": "lineHeights",
-          "$value": "{fonts.primary.line-height.sm}"
+          "$value": "{fonts.headings.line-height.sm}"
         },
         "font-size": {
           "$type": "fontSizes",
-          "$value": "{fonts.primary.font-size.13}"
+          "$value": "{fonts.headings.font-size.13}"
         },
         "letter-spacing": {
           "$type": "letterSpacing",
-          "$value": "{fonts.primary.letter-spacing.1}"
+          "$value": "{fonts.headings.letter-spacing.1}"
         }
       },
       "xl": {
         "font-family": {
           "$type": "fontFamilies",
-          "$value": "{fonts.primary.font-family}"
+          "$value": "{fonts.headings.font-family}"
         },
         "font-weight": {
           "$type": "fontWeights",
-          "$value": "{fonts.primary.font-weight.medium}"
+          "$value": "{fonts.headings.font-weight.medium}"
         },
         "line-height": {
           "$type": "lineHeights",
-          "$value": "{fonts.primary.line-height.sm}"
+          "$value": "{fonts.headings.line-height.sm}"
         },
         "font-size": {
           "$type": "fontSizes",
-          "$value": "{fonts.primary.font-size.11}"
+          "$value": "{fonts.headings.font-size.11}"
         },
         "letter-spacing": {
           "$type": "letterSpacing",
-          "$value": "{fonts.primary.letter-spacing.1}"
+          "$value": "{fonts.headings.letter-spacing.1}"
         }
       },
       "lg": {
         "font-family": {
           "$type": "fontFamilies",
-          "$value": "{fonts.primary.font-family}"
+          "$value": "{fonts.headings.font-family}"
         },
         "font-weight": {
           "$type": "fontWeights",
-          "$value": "{fonts.primary.font-weight.medium}"
+          "$value": "{fonts.headings.font-weight.medium}"
         },
         "line-height": {
           "$type": "lineHeights",
-          "$value": "{fonts.primary.line-height.sm}"
+          "$value": "{fonts.headings.line-height.sm}"
         },
         "font-size": {
           "$type": "fontSizes",
-          "$value": "{fonts.primary.font-size.9}"
+          "$value": "{fonts.headings.font-size.9}"
         },
         "letter-spacing": {
           "$type": "letterSpacing",
-          "$value": "{fonts.primary.letter-spacing.2}"
+          "$value": "{fonts.headings.letter-spacing.2}"
         }
       },
       "md": {
         "font-family": {
           "$type": "fontFamilies",
-          "$value": "{fonts.primary.font-family}"
+          "$value": "{fonts.headings.font-family}"
         },
         "font-weight": {
           "$type": "fontWeights",
-          "$value": "{fonts.primary.font-weight.medium}"
+          "$value": "{fonts.headings.font-weight.medium}"
         },
         "line-height": {
           "$type": "lineHeights",
-          "$value": "{fonts.primary.line-height.sm}"
+          "$value": "{fonts.headings.line-height.sm}"
         },
         "font-size": {
           "$type": "fontSizes",
-          "$value": "{fonts.primary.font-size.8}"
+          "$value": "{fonts.headings.font-size.8}"
         },
         "letter-spacing": {
           "$type": "letterSpacing",
-          "$value": "{fonts.primary.letter-spacing.3}"
+          "$value": "{fonts.headings.letter-spacing.3}"
         }
       },
       "sm": {
         "font-family": {
           "$type": "fontFamilies",
-          "$value": "{fonts.primary.font-family}"
+          "$value": "{fonts.headings.font-family}"
         },
         "font-weight": {
           "$type": "fontWeights",
-          "$value": "{fonts.primary.font-weight.medium}"
+          "$value": "{fonts.headings.font-weight.medium}"
         },
         "line-height": {
           "$type": "lineHeights",
-          "$value": "{fonts.primary.line-height.sm}"
+          "$value": "{fonts.headings.line-height.sm}"
         },
         "font-size": {
           "$type": "fontSizes",
-          "$value": "{fonts.primary.font-size.6}"
+          "$value": "{fonts.headings.font-size.6}"
         },
         "letter-spacing": {
           "$type": "letterSpacing",
-          "$value": "{fonts.primary.letter-spacing.5}"
+          "$value": "{fonts.headings.letter-spacing.5}"
         }
       },
       "xs": {
         "font-family": {
           "$type": "fontFamilies",
-          "$value": "{fonts.primary.font-family}"
+          "$value": "{fonts.headings.font-family}"
         },
         "font-weight": {
           "$type": "fontWeights",
-          "$value": "{fonts.primary.font-weight.medium}"
+          "$value": "{fonts.headings.font-weight.medium}"
         },
         "line-height": {
           "$type": "lineHeights",
-          "$value": "{fonts.primary.line-height.sm}"
+          "$value": "{fonts.headings.line-height.sm}"
         },
         "font-size": {
           "$type": "fontSizes",
-          "$value": "{fonts.primary.font-size.5}"
+          "$value": "{fonts.headings.font-size.5}"
         },
         "letter-spacing": {
           "$type": "letterSpacing",
-          "$value": "{fonts.primary.letter-spacing.6}"
+          "$value": "{fonts.headings.letter-spacing.6}"
         }
       },
       "2xs": {
         "font-family": {
           "$type": "fontFamilies",
-          "$value": "{fonts.primary.font-family}"
+          "$value": "{fonts.headings.font-family}"
         },
         "font-weight": {
           "$type": "fontWeights",
-          "$value": "{fonts.primary.font-weight.medium}"
+          "$value": "{fonts.headings.font-weight.medium}"
         },
         "line-height": {
           "$type": "lineHeights",
-          "$value": "{fonts.primary.line-height.sm}"
+          "$value": "{fonts.headings.line-height.sm}"
         },
         "font-size": {
           "$type": "fontSizes",
-          "$value": "{fonts.primary.font-size.4}"
+          "$value": "{fonts.headings.font-size.4}"
         },
         "letter-spacing": {
           "$type": "letterSpacing",
-          "$value": "{fonts.primary.letter-spacing.6}"
+          "$value": "{fonts.headings.letter-spacing.6}"
         }
       }
     },
@@ -1072,222 +1072,222 @@
       "xl": {
         "font-family": {
           "$type": "fontFamilies",
-          "$value": "{fonts.secondary.font-family}"
+          "$value": "{fonts.main.font-family}"
         },
         "font-weight": {
           "$type": "fontWeights",
-          "$value": "{fonts.secondary.font-weight.regular}"
+          "$value": "{fonts.main.font-weight.regular}"
         },
         "line-height": {
           "$type": "lineHeights",
-          "$value": "{fonts.secondary.line-height.md}"
+          "$value": "{fonts.main.line-height.md}"
         },
         "font-size": {
           "$type": "fontSizes",
-          "$value": "{fonts.secondary.font-size.6}"
+          "$value": "{fonts.main.font-size.6}"
         },
         "letter-spacing": {
           "$type": "letterSpacing",
-          "$value": "{fonts.secondary.letter-spacing.8}"
+          "$value": "{fonts.main.letter-spacing.8}"
         }
       },
       "lg": {
         "font-family": {
           "$type": "fontFamilies",
-          "$value": "{fonts.secondary.font-family}"
+          "$value": "{fonts.main.font-family}"
         },
         "font-weight": {
           "$type": "fontWeights",
-          "$value": "{fonts.secondary.font-weight.regular}"
+          "$value": "{fonts.main.font-weight.regular}"
         },
         "line-height": {
           "$type": "lineHeights",
-          "$value": "{fonts.secondary.line-height.md}"
+          "$value": "{fonts.main.line-height.md}"
         },
         "font-size": {
           "$type": "fontSizes",
-          "$value": "{fonts.secondary.font-size.5}"
+          "$value": "{fonts.main.font-size.5}"
         },
         "letter-spacing": {
           "$type": "letterSpacing",
-          "$value": "{fonts.secondary.letter-spacing.8}"
+          "$value": "{fonts.main.letter-spacing.8}"
         }
       },
       "md": {
         "font-family": {
           "$type": "fontFamilies",
-          "$value": "{fonts.secondary.font-family}"
+          "$value": "{fonts.main.font-family}"
         },
         "font-weight": {
           "$type": "fontWeights",
-          "$value": "{fonts.secondary.font-weight.regular}"
+          "$value": "{fonts.main.font-weight.regular}"
         },
         "line-height": {
           "$type": "lineHeights",
-          "$value": "{fonts.secondary.line-height.md}"
+          "$value": "{fonts.main.line-height.md}"
         },
         "font-size": {
           "$type": "fontSizes",
-          "$value": "{fonts.secondary.font-size.4}"
+          "$value": "{fonts.main.font-size.4}"
         },
         "letter-spacing": {
           "$type": "letterSpacing",
-          "$value": "{fonts.secondary.letter-spacing.8}"
+          "$value": "{fonts.main.letter-spacing.8}"
         }
       },
       "sm": {
         "font-family": {
           "$type": "fontFamilies",
-          "$value": "{fonts.secondary.font-family}"
+          "$value": "{fonts.main.font-family}"
         },
         "font-weight": {
           "$type": "fontWeights",
-          "$value": "{fonts.secondary.font-weight.regular}"
+          "$value": "{fonts.main.font-weight.regular}"
         },
         "line-height": {
           "$type": "lineHeights",
-          "$value": "{fonts.secondary.line-height.md}"
+          "$value": "{fonts.main.line-height.md}"
         },
         "font-size": {
           "$type": "fontSizes",
-          "$value": "{fonts.secondary.font-size.3}"
+          "$value": "{fonts.main.font-size.3}"
         },
         "letter-spacing": {
           "$type": "letterSpacing",
-          "$value": "{fonts.secondary.letter-spacing.7}"
+          "$value": "{fonts.main.letter-spacing.7}"
         }
       },
       "xs": {
         "font-family": {
           "$type": "fontFamilies",
-          "$value": "{fonts.secondary.font-family}"
+          "$value": "{fonts.main.font-family}"
         },
         "font-weight": {
           "$type": "fontWeights",
-          "$value": "{fonts.secondary.font-weight.regular}"
+          "$value": "{fonts.main.font-weight.regular}"
         },
         "line-height": {
           "$type": "lineHeights",
-          "$value": "{fonts.secondary.line-height.md}"
+          "$value": "{fonts.main.line-height.md}"
         },
         "font-size": {
           "$type": "fontSizes",
-          "$value": "{fonts.secondary.font-size.2}"
+          "$value": "{fonts.main.font-size.2}"
         },
         "letter-spacing": {
           "$type": "letterSpacing",
-          "$value": "{fonts.secondary.letter-spacing.6}"
+          "$value": "{fonts.main.letter-spacing.6}"
         }
       },
       "short": {
         "xl": {
           "font-family": {
             "$type": "fontFamilies",
-            "$value": "{fonts.secondary.font-family}"
+            "$value": "{fonts.main.font-family}"
           },
           "font-weight": {
             "$type": "fontWeights",
-            "$value": "{fonts.secondary.font-weight.regular}"
+            "$value": "{fonts.main.font-weight.regular}"
           },
           "line-height": {
             "$type": "lineHeights",
-            "$value": "{fonts.secondary.line-height.sm}"
+            "$value": "{fonts.main.line-height.sm}"
           },
           "font-size": {
             "$type": "fontSizes",
-            "$value": "{fonts.secondary.font-size.6}"
+            "$value": "{fonts.main.font-size.6}"
           },
           "letter-spacing": {
             "$type": "letterSpacing",
-            "$value": "{fonts.secondary.letter-spacing.8}"
+            "$value": "{fonts.main.letter-spacing.8}"
           }
         },
         "lg": {
           "font-family": {
             "$type": "fontFamilies",
-            "$value": "{fonts.secondary.font-family}"
+            "$value": "{fonts.main.font-family}"
           },
           "font-weight": {
             "$type": "fontWeights",
-            "$value": "{fonts.secondary.font-weight.regular}"
+            "$value": "{fonts.main.font-weight.regular}"
           },
           "line-height": {
             "$type": "lineHeights",
-            "$value": "{fonts.secondary.line-height.sm}"
+            "$value": "{fonts.main.line-height.sm}"
           },
           "font-size": {
             "$type": "fontSizes",
-            "$value": "{fonts.secondary.font-size.5}"
+            "$value": "{fonts.main.font-size.5}"
           },
           "letter-spacing": {
             "$type": "letterSpacing",
-            "$value": "{fonts.secondary.letter-spacing.8}"
+            "$value": "{fonts.main.letter-spacing.8}"
           }
         },
         "md": {
           "font-family": {
             "$type": "fontFamilies",
-            "$value": "{fonts.secondary.font-family}"
+            "$value": "{fonts.main.font-family}"
           },
           "font-weight": {
             "$type": "fontWeights",
-            "$value": "{fonts.secondary.font-weight.regular}"
+            "$value": "{fonts.main.font-weight.regular}"
           },
           "line-height": {
             "$type": "lineHeights",
-            "$value": "{fonts.secondary.line-height.sm}"
+            "$value": "{fonts.main.line-height.sm}"
           },
           "font-size": {
             "$type": "fontSizes",
-            "$value": "{fonts.secondary.font-size.4}"
+            "$value": "{fonts.main.font-size.4}"
           },
           "letter-spacing": {
             "$type": "letterSpacing",
-            "$value": "{fonts.secondary.letter-spacing.8}"
+            "$value": "{fonts.main.letter-spacing.8}"
           }
         },
         "sm": {
           "font-family": {
             "$type": "fontFamilies",
-            "$value": "{fonts.secondary.font-family}"
+            "$value": "{fonts.main.font-family}"
           },
           "font-weight": {
             "$type": "fontWeights",
-            "$value": "{fonts.secondary.font-weight.regular}"
+            "$value": "{fonts.main.font-weight.regular}"
           },
           "line-height": {
             "$type": "lineHeights",
-            "$value": "{fonts.secondary.line-height.sm}"
+            "$value": "{fonts.main.line-height.sm}"
           },
           "font-size": {
             "$type": "fontSizes",
-            "$value": "{fonts.secondary.font-size.3}"
+            "$value": "{fonts.main.font-size.3}"
           },
           "letter-spacing": {
             "$type": "letterSpacing",
-            "$value": "{fonts.secondary.letter-spacing.7}"
+            "$value": "{fonts.main.letter-spacing.7}"
           }
         },
         "xs": {
           "font-family": {
             "$type": "fontFamilies",
-            "$value": "{fonts.secondary.font-family}"
+            "$value": "{fonts.main.font-family}"
           },
           "font-weight": {
             "$type": "fontWeights",
-            "$value": "{fonts.secondary.font-weight.regular}"
+            "$value": "{fonts.main.font-weight.regular}"
           },
           "line-height": {
             "$type": "lineHeights",
-            "$value": "{fonts.secondary.line-height.sm}"
+            "$value": "{fonts.main.line-height.sm}"
           },
           "font-size": {
             "$type": "fontSizes",
-            "$value": "{fonts.secondary.font-size.2}"
+            "$value": "{fonts.main.font-size.2}"
           },
           "letter-spacing": {
             "$type": "letterSpacing",
-            "$value": "{fonts.secondary.letter-spacing.6}"
+            "$value": "{fonts.main.letter-spacing.6}"
           }
         }
       },
@@ -1295,111 +1295,111 @@
         "xl": {
           "font-family": {
             "$type": "fontFamilies",
-            "$value": "{fonts.secondary.font-family}"
+            "$value": "{fonts.main.font-family}"
           },
           "font-weight": {
             "$type": "fontWeights",
-            "$value": "{fonts.secondary.font-weight.regular}"
+            "$value": "{fonts.main.font-weight.regular}"
           },
           "line-height": {
             "$type": "lineHeights",
-            "$value": "{fonts.secondary.line-height.lg}"
+            "$value": "{fonts.main.line-height.lg}"
           },
           "font-size": {
             "$type": "fontSizes",
-            "$value": "{fonts.secondary.font-size.6}"
+            "$value": "{fonts.main.font-size.6}"
           },
           "letter-spacing": {
             "$type": "letterSpacing",
-            "$value": "{fonts.secondary.letter-spacing.8}"
+            "$value": "{fonts.main.letter-spacing.8}"
           }
         },
         "lg": {
           "font-family": {
             "$type": "fontFamilies",
-            "$value": "{fonts.secondary.font-family}"
+            "$value": "{fonts.main.font-family}"
           },
           "font-weight": {
             "$type": "fontWeights",
-            "$value": "{fonts.secondary.font-weight.regular}"
+            "$value": "{fonts.main.font-weight.regular}"
           },
           "line-height": {
             "$type": "lineHeights",
-            "$value": "{fonts.secondary.line-height.lg}"
+            "$value": "{fonts.main.line-height.lg}"
           },
           "font-size": {
             "$type": "fontSizes",
-            "$value": "{fonts.secondary.font-size.5}"
+            "$value": "{fonts.main.font-size.5}"
           },
           "letter-spacing": {
             "$type": "letterSpacing",
-            "$value": "{fonts.secondary.letter-spacing.8}"
+            "$value": "{fonts.main.letter-spacing.8}"
           }
         },
         "md": {
           "font-family": {
             "$type": "fontFamilies",
-            "$value": "{fonts.secondary.font-family}"
+            "$value": "{fonts.main.font-family}"
           },
           "font-weight": {
             "$type": "fontWeights",
-            "$value": "{fonts.secondary.font-weight.regular}"
+            "$value": "{fonts.main.font-weight.regular}"
           },
           "line-height": {
             "$type": "lineHeights",
-            "$value": "{fonts.secondary.line-height.lg}"
+            "$value": "{fonts.main.line-height.lg}"
           },
           "font-size": {
             "$type": "fontSizes",
-            "$value": "{fonts.secondary.font-size.4}"
+            "$value": "{fonts.main.font-size.4}"
           },
           "letter-spacing": {
             "$type": "letterSpacing",
-            "$value": "{fonts.secondary.letter-spacing.8}"
+            "$value": "{fonts.main.letter-spacing.8}"
           }
         },
         "sm": {
           "font-family": {
             "$type": "fontFamilies",
-            "$value": "{fonts.secondary.font-family}"
+            "$value": "{fonts.main.font-family}"
           },
           "font-weight": {
             "$type": "fontWeights",
-            "$value": "{fonts.secondary.font-weight.regular}"
+            "$value": "{fonts.main.font-weight.regular}"
           },
           "line-height": {
             "$type": "lineHeights",
-            "$value": "{fonts.secondary.line-height.lg}"
+            "$value": "{fonts.main.line-height.lg}"
           },
           "font-size": {
             "$type": "fontSizes",
-            "$value": "{fonts.secondary.font-size.3}"
+            "$value": "{fonts.main.font-size.3}"
           },
           "letter-spacing": {
             "$type": "letterSpacing",
-            "$value": "{fonts.secondary.letter-spacing.7}"
+            "$value": "{fonts.main.letter-spacing.7}"
           }
         },
         "xs": {
           "font-family": {
             "$type": "fontFamilies",
-            "$value": "{fonts.secondary.font-family}"
+            "$value": "{fonts.main.font-family}"
           },
           "font-weight": {
             "$type": "fontWeights",
-            "$value": "{fonts.secondary.font-weight.regular}"
+            "$value": "{fonts.main.font-weight.regular}"
           },
           "line-height": {
             "$type": "lineHeights",
-            "$value": "{fonts.secondary.line-height.lg}"
+            "$value": "{fonts.main.line-height.lg}"
           },
           "font-size": {
             "$type": "fontSizes",
-            "$value": "{fonts.secondary.font-size.2}"
+            "$value": "{fonts.main.font-size.2}"
           },
           "letter-spacing": {
             "$type": "letterSpacing",
-            "$value": "{fonts.secondary.letter-spacing.6}"
+            "$value": "{fonts.main.letter-spacing.6}"
           }
         }
       }

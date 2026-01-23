@@ -1,7 +1,10 @@
 import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
 
 import type { ColorScheme } from '../../../colors/types.js';
-import type { Colors, TokenSetDimensions } from '../../types.js';
+import type { Colors, TokenSetDimensionsForAllThemes } from '../../types.js';
+
+type FontsPerTheme = TokenSetDimensionsForAllThemes['fontNamesPerTheme'];
+type SizeModes = TokenSetDimensionsForAllThemes['sizeModes'];
 
 const capitalize = (word: string) => word.charAt(0).toUpperCase() + word.slice(1);
 
@@ -21,14 +24,14 @@ type ThemeObject_ = ThemeObject & {
 };
 
 export async function generate$Themes(
-  tokenSetDimensions: TokenSetDimensions,
+  tokenSetDimensions: TokenSetDimensionsForAllThemes,
   themes: string[],
   colors: Colors,
 ): Promise<ThemeObject_[]> {
-  const { colorSchemes, fontNames, sizeModes } = tokenSetDimensions;
+  const { colorSchemes, fontNamesPerTheme, sizeModes } = tokenSetDimensions;
   return [
-    ...generateSizeGroup(themes, fontNames, sizeModes),
-    ...(await generateThemesGroup(themes, fontNames)),
+    ...generateSizeGroup(themes, fontNamesPerTheme, sizeModes),
+    ...(await generateThemesGroup(themes, fontNamesPerTheme)),
     ...generateColorSchemesGroup(colorSchemes, themes),
     generateSemanticGroup(),
     ...(await generateColorGroup('main', colors)),
@@ -36,9 +39,7 @@ export async function generate$Themes(
   ];
 }
 
-type SizeModes = TokenSetDimensions['sizeModes'];
-
-function generateSizeGroup(themes: string[], fontNames: string[], sizeModes: SizeModes): ThemeObject_[] {
+function generateSizeGroup(themes: string[], fonts: FontsPerTheme, sizeModes: SizeModes): ThemeObject_[] {
   const defaultSize = 'medium';
   const sizesWithDefaultFirst = [
     ...sizeModes.filter((x) => x === defaultSize),
@@ -68,8 +69,8 @@ function generateSizeGroup(themes: string[], fontNames: string[], sizeModes: Siz
       [`primitives/modes/size/${size}`]: TokenSetStatus.SOURCE,
       'primitives/modes/size/global': TokenSetStatus.ENABLED,
       ...Object.fromEntries(
-        fontNames.flatMap((font) =>
-          themes.flatMap((theme) => [
+        themes.flatMap((theme) =>
+          fonts[theme].flatMap((font) => [
             [`primitives/modes/fonts/${font}/size/global/${theme}`, TokenSetStatus.ENABLED],
             [`primitives/modes/fonts/${font}/size/${size}/${theme}`, TokenSetStatus.ENABLED],
           ]),
@@ -117,9 +118,11 @@ function generateColorSchemesGroup(colorSchemes: ColorSchemes, themes: string[])
   );
 }
 
-async function generateThemesGroup(themes: string[], fonts: string[]): Promise<ThemeObject_[]> {
+async function generateThemesGroup(themes: string[], fonts: FontsPerTheme): Promise<ThemeObject_[]> {
   const fontSets = Object.fromEntries(
-    themes.flatMap((theme) => fonts.map((font) => [`primitives/fonts/${font}/${theme}`, TokenSetStatus.ENABLED])),
+    themes.flatMap((theme) =>
+      fonts[theme].map((font) => [`primitives/fonts/${font}/${theme}`, TokenSetStatus.ENABLED]),
+    ),
   );
 
   return Promise.all(

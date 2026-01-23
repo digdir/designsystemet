@@ -1,7 +1,7 @@
 {
   "different-fonts": {
     "fonts": {
-      "secondary": {
+      "main": {
         "font-family": {
           "$type": "fontFamilies",
           "$value": "Playpen Sans"

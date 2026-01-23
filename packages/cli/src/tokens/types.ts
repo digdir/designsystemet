@@ -53,6 +53,14 @@ export type TokenSetDimensions = {
   fontNames: string[];
 };
 
+/**
+ * `colorSchemes` and `sizeModes` have to be the same across all themes,
+ * but `fontNames` can be completely unique per theme
+ */
+export type TokenSetDimensionsForAllThemes = Omit<TokenSetDimensions, 'fontNames'> & {
+  fontNamesPerTheme: Record<string, string[]>;
+};
+
 export type GetSDConfigOptions = {
   tokensDir?: string;
   dry?: boolean;

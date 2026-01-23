@@ -1,7 +1,7 @@
 {
   "different-fonts": {
     "fonts": {
-      "secondary": {
+      "headings": {
         "font-scale": {
           "_base": {
             "$type": "number",

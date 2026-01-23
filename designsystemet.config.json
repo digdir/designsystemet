@@ -16,14 +16,6 @@
       },
       "borderRadius": 4,
       "typography": {
-        "components": {
-          "heading": {
-            "font": "secondary"
-          },
-          "body": {
-            "font": "primary"
-          }
-        },
         "fonts": {
           "primary": {
             "fontFamily": "Inter",
@@ -46,6 +38,14 @@
               "large": { "base": 18 }
             }
           }
+        },
+        "components": {
+          "heading": {
+            "font": "secondary"
+          },
+          "body": {
+            "font": "primary"
+          }
         }
       }
     },
@@ -62,16 +62,8 @@
       },
       "borderRadius": 4,
       "typography": {
-        "components": {
-          "heading": {
-            "font": "primary"
-          },
-          "body": {
-            "font": "secondary"
-          }
-        },
         "fonts": {
-          "secondary": {
+          "main": {
             "fontFamily": "Playpen Sans",
             "fontWeight": {
               "regular": "Regular",
@@ -84,13 +76,21 @@
               "large": { "base": 18 }
             }
           },
-          "primary": {
+          "headings": {
             "fontFamily": "Karantina",
             "fontWeight": {
               "regular": "Light",
               "medium": "Regular",
               "semibold": "Bold"
             }
+          }
+        },
+        "components": {
+          "heading": {
+            "font": "headings"
+          },
+          "body": {
+            "font": "main"
           }
         }
       }
