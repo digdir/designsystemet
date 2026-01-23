@@ -44,36 +44,24 @@ export default {
     size: {
       'select-label': 'Velg størrelse',
       caption: 'Størrelsevariabler',
-      description:
-        'Tabellen under viser hvilke størrelsevariabler som vil blir endret når du bytter størrelse på et element ved hjelp av `data-size`-attributtet.',
     },
     color: {
       caption: 'Fargevariabler',
-      description:
-        'Tabellen under viser hvilke fargevariabler som vil blir endret når du bytter farge på et element ved hjelp av `data-color`-attributtet.',
     },
     'border-radius': {
       caption: 'Border-radius variabler',
-      description:
-        'Tabellen under viser border radius variablene i Designsystemet.',
     },
     opacity: {
       caption: 'Opacity variabler',
-      description: 'Tabellen under viser opacity variablene i Designsystemet.',
     },
     shadow: {
       caption: 'Shadow variabler',
-      description: 'Tabellen under viser shadow variablene i Designsystemet.',
     },
     'border-width': {
       caption: 'Border-width variabler',
-      description:
-        'Tabellen under viser border width variablene i Designsystemet.',
     },
     typography: {
       caption: 'Typografi variabler',
-      description:
-        'Tabellen under viser typografi variablene i Designsystemet.',
     },
     'search-in-design-tokens': 'Søk i design tokens',
     'search-input-aria-label': 'Søk på variabel navn i CSS for design tokens',

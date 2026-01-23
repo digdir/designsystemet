@@ -46,38 +46,24 @@ export default {
     size: {
       'select-label': 'Select size',
       caption: 'Size variables',
-      description:
-        'The table below shows which size variables will be changed when you change the size of an element using the `data-size` attribute.',
     },
     color: {
       caption: 'Color variables',
-      description:
-        'The table below shows which color variables will be changed when you change the color of an element using the `data-color` attribute.',
     },
     'border-radius': {
       caption: 'Border-radius variables',
-      description:
-        'The table below shows the border-radius variables in Designsystemet.',
     },
     opacity: {
       caption: 'Opacity variables',
-      description:
-        'The table below shows the opacity variables in Designsystemet.',
     },
     shadow: {
       caption: 'Shadow variables',
-      description:
-        'The table below shows the shadow variables in Designsystemet.',
     },
     'border-width': {
       caption: 'Border-width variables',
-      description:
-        'The table below shows the border-width variables in Designsystemet.',
     },
     typography: {
       caption: 'Typography variables',
-      description:
-        'The table below shows the typography variables in Designsystemet.',
     },
     'search-in-design-tokens': 'Search in design tokens',
     'search-input-aria-label':
