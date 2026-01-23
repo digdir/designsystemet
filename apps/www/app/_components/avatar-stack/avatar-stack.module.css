@@ -1,8 +1,7 @@
 .avatarStackOverrides {
   --outline-color: light-dark(transparent, white);
   filter: drop-shadow(0 0 0.5px var(--outline-color)) drop-shadow(0 0 0.5px var(--outline-color)) drop-shadow(0 0 0.5px var(--outline-color));
-  margin: 0;
-  :global(.ds-avatar) {
+  > * {
     --dsc-avatar-background: transparent;
   }
 }
