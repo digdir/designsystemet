@@ -29,31 +29,31 @@
           },
           "7": {
             "$type": "fontSizes",
-            "$value": "roundTo({different-fonts.fonts.secondary.font-scale._base} * pow({different-fonts.fonts.secondary.font-scale._ratio}, 4), 0)"
+            "$value": "roundTo({different-fonts.fonts.secondary.font-scale._base} * pow({different-fonts.fonts.secondary.font-scale._ratio}, 3), 0)"
           },
           "8": {
             "$type": "fontSizes",
-            "$value": "roundTo({different-fonts.fonts.secondary.font-scale._base} * pow({different-fonts.fonts.secondary.font-scale._ratio}, 5), 0)"
+            "$value": "roundTo({different-fonts.fonts.secondary.font-scale._base} * pow({different-fonts.fonts.secondary.font-scale._ratio}, 4), 0)"
           },
           "9": {
             "$type": "fontSizes",
-            "$value": "roundTo({different-fonts.fonts.secondary.font-scale._base} * pow({different-fonts.fonts.secondary.font-scale._ratio}, 7), 0)"
+            "$value": "roundTo({different-fonts.fonts.secondary.font-scale._base} * pow({different-fonts.fonts.secondary.font-scale._ratio}, 5), 0)"
           },
           "10": {
             "$type": "fontSizes",
-            "$value": "roundTo({different-fonts.fonts.secondary.font-scale._base} * pow({different-fonts.fonts.secondary.font-scale._ratio}, 9), 0)"
-          },
-          "6-half": {
-            "$type": "fontSizes",
-            "$value": "roundTo({different-fonts.fonts.secondary.font-scale._base} * pow({different-fonts.fonts.secondary.font-scale._ratio}, 3), 0)"
-          },
-          "8-half": {
-            "$type": "fontSizes",
             "$value": "roundTo({different-fonts.fonts.secondary.font-scale._base} * pow({different-fonts.fonts.secondary.font-scale._ratio}, 6), 0)"
           },
-          "9-half": {
+          "11": {
+            "$type": "fontSizes",
+            "$value": "roundTo({different-fonts.fonts.secondary.font-scale._base} * pow({different-fonts.fonts.secondary.font-scale._ratio}, 7), 0)"
+          },
+          "12": {
             "$type": "fontSizes",
             "$value": "roundTo({different-fonts.fonts.secondary.font-scale._base} * pow({different-fonts.fonts.secondary.font-scale._ratio}, 8), 0)"
+          },
+          "13": {
+            "$type": "fontSizes",
+            "$value": "roundTo({different-fonts.fonts.secondary.font-scale._base} * pow({different-fonts.fonts.secondary.font-scale._ratio}, 9), 0)"
           }
         }
       }

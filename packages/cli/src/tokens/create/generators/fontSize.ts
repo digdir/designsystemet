@@ -47,31 +47,31 @@ export function generateFontSizeGlobal(themeName: string, fontName: string) {
               $type: 'fontSizes',
               $value: `roundTo({${themeName}.fonts.${fontName}.font-scale._base} * pow({${themeName}.fonts.${fontName}.font-scale._ratio}, 2), 0)`,
             },
-            '6-half': {
+            '7': {
               $type: 'fontSizes',
               $value: `roundTo({${themeName}.fonts.${fontName}.font-scale._base} * pow({${themeName}.fonts.${fontName}.font-scale._ratio}, 3), 0)`,
             },
-            '7': {
+            '8': {
               $type: 'fontSizes',
               $value: `roundTo({${themeName}.fonts.${fontName}.font-scale._base} * pow({${themeName}.fonts.${fontName}.font-scale._ratio}, 4), 0)`,
             },
-            '8': {
+            '9': {
               $type: 'fontSizes',
               $value: `roundTo({${themeName}.fonts.${fontName}.font-scale._base} * pow({${themeName}.fonts.${fontName}.font-scale._ratio}, 5), 0)`,
             },
-            '8-half': {
+            '10': {
               $type: 'fontSizes',
               $value: `roundTo({${themeName}.fonts.${fontName}.font-scale._base} * pow({${themeName}.fonts.${fontName}.font-scale._ratio}, 6), 0)`,
             },
-            '9': {
+            '11': {
               $type: 'fontSizes',
               $value: `roundTo({${themeName}.fonts.${fontName}.font-scale._base} * pow({${themeName}.fonts.${fontName}.font-scale._ratio}, 7), 0)`,
             },
-            '9-half': {
+            '12': {
               $type: 'fontSizes',
               $value: `roundTo({${themeName}.fonts.${fontName}.font-scale._base} * pow({${themeName}.fonts.${fontName}.font-scale._ratio}, 8), 0)`,
             },
-            '10': {
+            '13': {
               $type: 'fontSizes',
               $value: `roundTo({${themeName}.fonts.${fontName}.font-scale._base} * pow({${themeName}.fonts.${fontName}.font-scale._ratio}, 9), 0)`,
             },

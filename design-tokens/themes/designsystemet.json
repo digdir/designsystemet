@@ -605,6 +605,18 @@
         "10": {
           "$type": "fontSizes",
           "$value": "{designsystemet.fonts.primary.font-size.10}"
+        },
+        "11": {
+          "$type": "fontSizes",
+          "$value": "{designsystemet.fonts.primary.font-size.11}"
+        },
+        "12": {
+          "$type": "fontSizes",
+          "$value": "{designsystemet.fonts.primary.font-size.12}"
+        },
+        "13": {
+          "$type": "fontSizes",
+          "$value": "{designsystemet.fonts.primary.font-size.13}"
         }
       },
       "line-height": {
@@ -719,6 +731,18 @@
         "10": {
           "$type": "fontSizes",
           "$value": "{designsystemet.fonts.secondary.font-size.10}"
+        },
+        "11": {
+          "$type": "fontSizes",
+          "$value": "{designsystemet.fonts.secondary.font-size.11}"
+        },
+        "12": {
+          "$type": "fontSizes",
+          "$value": "{designsystemet.fonts.secondary.font-size.12}"
+        },
+        "13": {
+          "$type": "fontSizes",
+          "$value": "{designsystemet.fonts.secondary.font-size.13}"
         }
       },
       "line-height": {
@@ -834,19 +858,19 @@
     },
     "7": {
       "$type": "fontSizes",
-      "$value": "{fonts.primary.font-size.7}"
+      "$value": "{fonts.primary.font-size.8}"
     },
     "8": {
       "$type": "fontSizes",
-      "$value": "{fonts.primary.font-size.8}"
+      "$value": "{fonts.primary.font-size.9}"
     },
     "9": {
       "$type": "fontSizes",
-      "$value": "{fonts.primary.font-size.9}"
+      "$value": "{fonts.primary.font-size.11}"
     },
     "10": {
       "$type": "fontSizes",
-      "$value": "{fonts.primary.font-size.10}"
+      "$value": "{fonts.primary.font-size.13}"
     }
   },
   "letter-spacing": {
@@ -904,7 +928,7 @@
         },
         "font-size": {
           "$type": "fontSizes",
-          "$value": "{fonts.secondary.font-size.10}"
+          "$value": "{fonts.secondary.font-size.13}"
         },
         "letter-spacing": {
           "$type": "letterSpacing",
@@ -926,7 +950,7 @@
         },
         "font-size": {
           "$type": "fontSizes",
-          "$value": "{fonts.secondary.font-size.9}"
+          "$value": "{fonts.secondary.font-size.11}"
         },
         "letter-spacing": {
           "$type": "letterSpacing",
@@ -948,7 +972,7 @@
         },
         "font-size": {
           "$type": "fontSizes",
-          "$value": "{fonts.secondary.font-size.8}"
+          "$value": "{fonts.secondary.font-size.9}"
         },
         "letter-spacing": {
           "$type": "letterSpacing",
@@ -970,7 +994,7 @@
         },
         "font-size": {
           "$type": "fontSizes",
-          "$value": "{fonts.secondary.font-size.7}"
+          "$value": "{fonts.secondary.font-size.8}"
         },
         "letter-spacing": {
           "$type": "letterSpacing",

@@ -4,7 +4,11 @@ import themeBase from '../../template/design-tokens/themes/theme.base.template.j
 import themeColorTemplate from '../../template/design-tokens/themes/theme.template.json' with { type: 'json' };
 import type { Colors, TokenSet, Typography } from '../../types.js';
 
+const countFromToInclusive = (fromInclusive: number, toInclusive: number) => R.range(fromInclusive, toInclusive + 1);
+
 function generateFonts(theme: string, fonts: string[]): TokenSet {
+  const fontSizes = countFromToInclusive(1, 13);
+  const letterSpacings = countFromToInclusive(1, 9);
   return Object.fromEntries(
     fonts.map((font) => [
       font,
@@ -27,48 +31,16 @@ function generateFonts(theme: string, fonts: string[]): TokenSet {
             $value: `{${theme}.fonts.${font}.font-weight.regular}`,
           },
         },
-        'font-size': {
-          '1': {
-            $type: 'fontSizes',
-            $value: `{${theme}.fonts.${font}.font-size.1}`,
-          },
-          '2': {
-            $type: 'fontSizes',
-            $value: `{${theme}.fonts.${font}.font-size.2}`,
-          },
-          '3': {
-            $type: 'fontSizes',
-            $value: `{${theme}.fonts.${font}.font-size.3}`,
-          },
-          '4': {
-            $type: 'fontSizes',
-            $value: `{${theme}.fonts.${font}.font-size.4}`,
-          },
-          '5': {
-            $type: 'fontSizes',
-            $value: `{${theme}.fonts.${font}.font-size.5}`,
-          },
-          '6': {
-            $type: 'fontSizes',
-            $value: `{${theme}.fonts.${font}.font-size.6}`,
-          },
-          '7': {
-            $type: 'fontSizes',
-            $value: `{${theme}.fonts.${font}.font-size.7}`,
-          },
-          '8': {
-            $type: 'fontSizes',
-            $value: `{${theme}.fonts.${font}.font-size.8}`,
-          },
-          '9': {
-            $type: 'fontSizes',
-            $value: `{${theme}.fonts.${font}.font-size.9}`,
-          },
-          '10': {
-            $type: 'fontSizes',
-            $value: `{${theme}.fonts.${font}.font-size.10}`,
-          },
-        },
+        'font-size': Object.fromEntries(
+          fontSizes.map((number) => [
+            number,
+            {
+              $type: 'fontSizes',
+              $value: `{${theme}.fonts.${font}.font-size.${number}}`,
+            },
+          ]),
+        ),
+
         'line-height': {
           sm: {
             $type: 'lineHeights',
@@ -83,44 +55,15 @@ function generateFonts(theme: string, fonts: string[]): TokenSet {
             $value: `{${theme}.fonts.${font}.line-height.lg}`,
           },
         },
-        'letter-spacing': {
-          '1': {
-            $type: 'letterSpacing',
-            $value: `{${theme}.fonts.${font}.letter-spacing.1}`,
-          },
-          '2': {
-            $type: 'letterSpacing',
-            $value: `{${theme}.fonts.${font}.letter-spacing.2}`,
-          },
-          '3': {
-            $type: 'letterSpacing',
-            $value: `{${theme}.fonts.${font}.letter-spacing.3}`,
-          },
-          '4': {
-            $type: 'letterSpacing',
-            $value: `{${theme}.fonts.${font}.letter-spacing.4}`,
-          },
-          '5': {
-            $type: 'letterSpacing',
-            $value: `{${theme}.fonts.${font}.letter-spacing.5}`,
-          },
-          '6': {
-            $type: 'letterSpacing',
-            $value: `{${theme}.fonts.${font}.letter-spacing.6}`,
-          },
-          '7': {
-            $type: 'letterSpacing',
-            $value: `{${theme}.fonts.${font}.letter-spacing.7}`,
-          },
-          '8': {
-            $type: 'letterSpacing',
-            $value: `{${theme}.fonts.${font}.letter-spacing.8}`,
-          },
-          '9': {
-            $type: 'letterSpacing',
-            $value: `{${theme}.fonts.${font}.letter-spacing.9}`,
-          },
-        },
+        'letter-spacing': Object.fromEntries(
+          letterSpacings.map((number) => [
+            number,
+            {
+              $type: 'letterSpacing',
+              $value: `{${theme}.fonts.${font}.letter-spacing.${number}}`,
+            },
+          ]),
+        ),
       },
     ]),
   );
@@ -129,7 +72,19 @@ function generateFonts(theme: string, fonts: string[]): TokenSet {
 function generateBackwardCompatibilityFontTokens(defaultFont: string) {
   const lineHeights = ['sm', 'md', 'lg'];
   const fontWeights = ['medium', 'semibold', 'regular'];
-  const fontSizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+  const fontSizes = {
+    // mapping from old to new font scale
+    '1': '1',
+    '2': '2',
+    '3': '3',
+    '4': '4',
+    '5': '5',
+    '6': '6',
+    '7': '8',
+    '8': '9',
+    '9': '11',
+    '10': '13',
+  };
   const letterSpacings = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
   return {
     'line-height': Object.fromEntries(
@@ -161,13 +116,13 @@ function generateBackwardCompatibilityFontTokens(defaultFont: string) {
       ),
     ),
     'font-size': Object.fromEntries(
-      fontSizes.map(
-        (size) =>
+      Object.entries(fontSizes).map(
+        ([oldSize, newSize]) =>
           [
-            size,
+            oldSize,
             {
               $type: 'fontSizes',
-              $value: `{fonts.${defaultFont}.font-size.${size}}`,
+              $value: `{fonts.${defaultFont}.font-size.${newSize}}`,
             },
           ] as const,
       ),
@@ -282,7 +237,7 @@ function generateThemeTypography(typography: Typography) {
         },
         'font-size': {
           $type: 'fontSizes',
-          $value: `{fonts.${headingFont}.font-size.10}`,
+          $value: `{fonts.${headingFont}.font-size.13}`,
         },
         'letter-spacing': {
           $type: 'letterSpacing',
@@ -304,7 +259,7 @@ function generateThemeTypography(typography: Typography) {
         },
         'font-size': {
           $type: 'fontSizes',
-          $value: `{fonts.${headingFont}.font-size.9}`,
+          $value: `{fonts.${headingFont}.font-size.11}`,
         },
         'letter-spacing': {
           $type: 'letterSpacing',
@@ -326,7 +281,7 @@ function generateThemeTypography(typography: Typography) {
         },
         'font-size': {
           $type: 'fontSizes',
-          $value: `{fonts.${headingFont}.font-size.8}`,
+          $value: `{fonts.${headingFont}.font-size.9}`,
         },
         'letter-spacing': {
           $type: 'letterSpacing',
@@ -348,7 +303,7 @@ function generateThemeTypography(typography: Typography) {
         },
         'font-size': {
           $type: 'fontSizes',
-          $value: `{fonts.${headingFont}.font-size.7}`,
+          $value: `{fonts.${headingFont}.font-size.8}`,
         },
         'letter-spacing': {
           $type: 'letterSpacing',
