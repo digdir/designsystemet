@@ -101,12 +101,14 @@ export default function Blog({
         <Paragraph className={classes.ingress} data-size='lg' variant='long'>
           {description}
         </Paragraph>
-        <Paragraph data-size='sm' className={classes.meta}>
-          <a href='#article-contributors' aria-label={t('contributors')}>
-            <AvatarStack authors={author} expandable='fixed' />
-          </a>
-          <span className={classes.authors}>{author}</span>
-          <span className={classes.date}>{formatDate(date, lang)}</span>
+        <Paragraph data-size='sm' className={classes.meta} asChild>
+          <span>
+            <a href='#article-contributors' aria-label={t('contributors')}>
+              <AvatarStack authors={author} expandable='fixed' />
+            </a>
+            <span className={classes.authors}>{author}</span>
+            <span className={classes.date}>{formatDate(date, lang)}</span>
+          </span>
         </Paragraph>
       </div>
       <Image
