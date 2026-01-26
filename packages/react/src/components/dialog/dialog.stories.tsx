@@ -191,7 +191,12 @@ export const DialogWithForm: StoryFn<typeof Dialog> = () => {
   return (
     <Dialog.TriggerContext>
       <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-      <Dialog ref={dialogRef} onClose={() => setInput('')} closedby='any'>
+      <Dialog
+        ref={dialogRef}
+        onClose={() => setInput('')}
+        closedby='any'
+        id='my-dialog'
+      >
         <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
           Dialog med skjema
         </Heading>
@@ -217,7 +222,7 @@ export const DialogWithForm: StoryFn<typeof Dialog> = () => {
           >
             Send inn skjema
           </Button>
-          <Button variant='secondary' data-command='close'>
+          <Button variant='secondary' command='close' commandfor='my-dialog'>
             Avbryt
           </Button>
         </div>
@@ -257,7 +262,7 @@ export const DialogWithSuggestion: StoryFn<typeof Dialog> = () => {
   return (
     <Dialog.TriggerContext>
       <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-      <Dialog style={{ overflow: 'visible' }} ref={dialogRef}>
+      <Dialog style={{ overflow: 'visible' }} ref={dialogRef} id='my-dialog'>
         <Dialog.Block>
           <Heading>Dialog med suggestion</Heading>
         </Dialog.Block>
@@ -280,7 +285,7 @@ export const DialogWithSuggestion: StoryFn<typeof Dialog> = () => {
           </Field>
         </Dialog.Block>
         <Dialog.Block>
-          <Button variant='secondary' data-command='close'>
+          <Button variant='secondary' command='close' commandfor='my-dialog'>
             Avbryt
           </Button>
         </Dialog.Block>

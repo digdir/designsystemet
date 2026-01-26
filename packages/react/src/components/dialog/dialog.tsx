@@ -1,7 +1,7 @@
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { DialogHTMLAttributes } from 'react';
-import { forwardRef, useContext, useEffect, useRef } from 'react';
+import { forwardRef, useContext, useEffect, useId, useRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { useMergeRefs } from '../../utilities/hooks';
@@ -85,12 +85,14 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
       asChild,
       children,
       className,
-      placement = 'center',
       closeButton = 'Lukk dialogvindu',
-      closedby = 'closerequest',
+      id,
       modal = true,
+      onAnimationEnd,
+      onClick,
       onClose,
       open,
+      placement = 'center',
       ...rest
     },
     ref,
@@ -100,39 +102,25 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
     const Component = asChild ? Slot : 'dialog';
     const mergedRefs = useMergeRefs([contextRef, ref, dialogRef]);
     const showProp = modal ? 'showModal' : 'show';
+    const autoId = useId();
 
-    useEffect(() => dialogRef.current?.[open ? showProp : 'close'](), [open]); // Toggle open based on prop
-
-    useEffect(() => {
-      const dialog = dialogRef.current;
-
-      const handleAutoFocus = () => {
-        const autofocus = dialog?.querySelector<HTMLElement>('[autofocus]');
-        if (document.activeElement !== autofocus) autofocus?.focus();
-      };
-
-      dialog?.addEventListener('animationend', handleAutoFocus);
-      return () => {
-        dialog?.removeEventListener('animationend', handleAutoFocus);
-      };
-    }, [closedby]);
-
-    /* handle closing */
-    useEffect(() => {
-      const handleClose = (event: Event) => onClose?.(event);
-
-      const currentRef = dialogRef.current;
-      currentRef?.addEventListener('close', handleClose);
-      return () => currentRef?.removeEventListener('close', handleClose);
-    }, [onClose]);
+    // Toggle open based on prop
+    useEffect(() => dialogRef.current?.[open ? showProp : 'close'](), [open]);
 
     return (
       <Component
         className={cl('ds-dialog', className)}
-        ref={mergedRefs}
-        data-placement={placement}
         data-modal={modal}
-        closedby={closedby}
+        data-placement={placement}
+        id={id ?? autoId}
+        onClose={(event) => onClose?.(event.nativeEvent)} // Backward compatibility: expose native event
+        onAnimationEnd={(event: React.AnimationEvent<HTMLDialogElement>) => {
+          const { currentTarget: dialog } = event;
+          const autofocus = dialog.querySelector<HTMLElement>('[autofocus]');
+          if (document.activeElement !== autofocus) autofocus?.focus(); // Handle autofocus on open
+          onAnimationEnd?.(event);
+        }}
+        ref={mergedRefs}
         {...rest}
       >
         {closeButton !== false && (
@@ -141,7 +129,8 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
             data-color='neutral'
             icon
             variant='tertiary'
-            data-command='close'
+            command='close'
+            commandfor={id ?? autoId}
           />
         )}
         {children}

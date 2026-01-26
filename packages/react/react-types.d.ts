@@ -27,9 +27,15 @@ declare global {
        * - `'auto'`: Automatically select the color scheme based on system preferences.
        */
       'data-color-scheme'?: ColorScheme | (string & {});
-      // Make React 18 support popovertarget attribute https://github.com/facebook/react/issues/27479
+      // Make React 18 support popover attributes https://github.com/facebook/react/issues/27479
       popovertarget?: string;
       popover?: '' | 'auto' | 'manual' | 'hint';
+    }
+    // Make React support command attributes https://github.com/facebook/react/issues/27479
+    interface ButtonHTMLAttributes<T> extends React.HTMLAttributes<T> {
+      command?: string;
+      commandfor?: string;
+      commandFor?: string;
     }
   }
 }
