@@ -105,28 +105,33 @@ describe('Tabs', () => {
   it('has tabindex 0 on tabpanel', () => {
     render(
       <Tabs defaultValue='value1'>
-        <Tabs.Panel value='value1'>content 1</Tabs.Panel>
+        <Tabs.List>
+          <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
+        </Tabs.List>
+        <Tabs.Panel value='value1' data-testid='panel'>
+          content 1
+        </Tabs.Panel>
       </Tabs>,
     );
 
-    const panel = screen.getByRole('tabpanel');
+    const panel = screen.getByTestId('panel');
     expect(panel).toHaveAttribute('tabindex', '0');
   });
 
   it('has no tabindex when tabpanel has focusable element', () => {
     render(
       <Tabs defaultValue='value1'>
-        <Tabs.Panel value='value1'>
+        <Tabs.Panel value='value1' data-testid='panel'>
           <input type='text' />
         </Tabs.Panel>
       </Tabs>,
     );
 
-    const panel = screen.getByRole('tabpanel');
+    const panel = screen.getByTestId('panel');
     expect(panel).not.toHaveAttribute('tabindex', '0');
   });
 
-  it('panel is aria-labelledby button', () => {
+  it('panel is aria-labelledby button', async () => {
     render(
       <Tabs defaultValue='value1'>
         <Tabs.List>
@@ -151,6 +156,8 @@ describe('Tabs', () => {
     const panelOne = screen.getByTestId('panel-1');
     expect(panelOne).toHaveAttribute('aria-labelledby', 'custom-id');
 
+    await user.click(testButton); // Activate tab 2 to render its panel
+
     const panelTwo = screen.getByTestId('panel-2');
     expect(panelTwo).toHaveAttribute('aria-labelledby', testButton.id);
   });
@@ -166,10 +173,10 @@ describe('Tabs', () => {
             Tab 2
           </Tabs.Tab>
         </Tabs.List>
-        <Tabs.Panel value='value1' data-testid='panel'>
+        <Tabs.Panel value='value1' data-testid='panel-1'>
           content 1
         </Tabs.Panel>
-        <Tabs.Panel value='value2' id='panel2'>
+        <Tabs.Panel value='value2' data-testid='panel-2'>
           content 2
         </Tabs.Panel>
       </Tabs>,
@@ -177,9 +184,10 @@ describe('Tabs', () => {
 
     const buttonOne = screen.getByTestId('button-1');
     const buttonTwo = screen.getByTestId('button-2');
-    const panel = screen.getByTestId('panel');
+    const panelOne = screen.getByTestId('panel-1');
+    const panelTwo = screen.getByTestId('panel-2');
 
-    expect(buttonOne).toHaveAttribute('aria-controls', panel.id);
-    expect(buttonTwo).toHaveAttribute('aria-controls', 'panel2');
+    expect(buttonOne).toHaveAttribute('aria-controls', panelOne.id);
+    expect(buttonTwo).toHaveAttribute('aria-controls', panelTwo.id);
   });
 });
