@@ -23,6 +23,16 @@ In you tsconfig, add:
 }
 ```
 
+### Warnings:
+
+`@digdir/designsystemet-web` will warn you about deprecations and missing attributes.
+This can come in handy while developing, but can also easily be hidden, for example in production:
+
+```
+if (typeof window !== 'undefined' && isProduction()) window.dsWarnings = false;
+import `@digdir/designsystemet-web`;
+```
+
 ### `ds-breadcrumbs`
 Automatically hides/shows `aria-label` on desktop/mobile and `aria-current="page"` on last link in list. No API.
 
