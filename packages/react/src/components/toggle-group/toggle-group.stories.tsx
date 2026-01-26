@@ -45,17 +45,17 @@ export const OnlyIcons: StoryFn<typeof ToggleGroup> = (args) => {
   return (
     <ToggleGroup {...args} defaultValue='option-1'>
       <Tooltip content='Venstrestilt'>
-        <ToggleGroup.Item value='option-1' icon>
+        <ToggleGroup.Item value='option-1'>
           <AlignLeftIcon title='AlignLeftIcon' />
         </ToggleGroup.Item>
       </Tooltip>
       <Tooltip content='Midtstilt'>
-        <ToggleGroup.Item value='option-2' icon>
+        <ToggleGroup.Item value='option-2'>
           <AlignCenterIcon title='AlignCenterIcon' />
         </ToggleGroup.Item>
       </Tooltip>
       <Tooltip content='Høyrestilt'>
-        <ToggleGroup.Item value='option-3' icon>
+        <ToggleGroup.Item value='option-3'>
           <AlignRightIcon title='AlignRightIcon' />
         </ToggleGroup.Item>
       </Tooltip>

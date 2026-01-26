@@ -13,7 +13,7 @@ let SOURCE: Element | undefined;
 let HOVER_TIMER: number | ReturnType<typeof setTimeout> = 0;
 let SKIP_TIMER: number | ReturnType<typeof setTimeout> = 0;
 const SELECTOR_TOOLTIP = '[data-tooltip-element]';
-const SELECTOR_INTERACTIVE = 'a,button,input,select,textarea,[tabindex]';
+const SELECTOR_INTERACTIVE = 'a,button,input,label,select,textarea,[tabindex]';
 const DELAY_HOVER = 300;
 const DELAY_SKIP = 300;
 

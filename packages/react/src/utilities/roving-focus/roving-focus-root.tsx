@@ -104,6 +104,8 @@ export const RovingFocusRoot = forwardRef<
       setFocusableValue(activeValueOrNull);
     }, [activeValueOrNull]);
 
+    console.warn('Designsystemet: RovingFocusRoot is deprecated.');
+
     return (
       <RovingFocusContext.Provider
         value={{

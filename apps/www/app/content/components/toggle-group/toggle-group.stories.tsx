@@ -42,17 +42,17 @@ export const OnlyIcons = () => {
   return (
     <ToggleGroup defaultValue='option-1'>
       <Tooltip content='Venstrestilt'>
-        <ToggleGroup.Item value='option-1' icon>
+        <ToggleGroup.Item value='option-1'>
           <AlignLeftIcon aria-hidden />
         </ToggleGroup.Item>
       </Tooltip>
       <Tooltip content='Midtstilt'>
-        <ToggleGroup.Item value='option-2' icon>
+        <ToggleGroup.Item value='option-2'>
           <AlignCenterIcon aria-hidden />
         </ToggleGroup.Item>
       </Tooltip>
       <Tooltip content='Høyrestilt'>
-        <ToggleGroup.Item value='option-3' icon>
+        <ToggleGroup.Item value='option-3'>
           <AlignRightIcon aria-hidden />
         </ToggleGroup.Item>
       </Tooltip>
@@ -64,17 +64,17 @@ export const OnlyIconsEn = () => {
   return (
     <ToggleGroup defaultValue='option-1'>
       <Tooltip content='Left aligned'>
-        <ToggleGroup.Item value='option-1' icon>
+        <ToggleGroup.Item value='option-1'>
           <AlignLeftIcon aria-hidden />
         </ToggleGroup.Item>
       </Tooltip>
       <Tooltip content='Center aligned'>
-        <ToggleGroup.Item value='option-2' icon>
+        <ToggleGroup.Item value='option-2'>
           <AlignCenterIcon aria-hidden />
         </ToggleGroup.Item>
       </Tooltip>
       <Tooltip content='Right aligned'>
-        <ToggleGroup.Item value='option-3' icon>
+        <ToggleGroup.Item value='option-3'>
           <AlignRightIcon aria-hidden />
         </ToggleGroup.Item>
       </Tooltip>

@@ -68,7 +68,7 @@ describe('ToggleGroup', () => {
     const item = screen.getByRole<HTMLButtonElement>('radio', {
       name: 'test2',
     });
-    expect(item).toHaveAttribute('aria-checked', 'true');
+    expect(item).toHaveProperty('checked', true);
   });
   test('has passed clicked ToggleGroupItem value to onChange', async () => {
     const onChangeMock = vi.fn();
@@ -84,12 +84,12 @@ describe('ToggleGroup', () => {
       name: 'test2',
     });
 
-    expect(item).toHaveAttribute('aria-checked', 'false');
+    expect(item).toHaveProperty('checked', false);
 
     await user.click(item);
 
     expect(onChangeMock).toHaveBeenCalledWith('test2value');
-    expect(item).toHaveAttribute('aria-checked', 'true');
+    expect(item).toHaveProperty('checked', true);
   });
   test('has correct aria-checked on correct ToggleGroupItem when clicked', async () => {
     const onChangeMock = vi.fn();
@@ -108,13 +108,13 @@ describe('ToggleGroup', () => {
       name: 'test2',
     });
 
-    expect(item1).toHaveAttribute('aria-checked', 'true');
-    expect(item2).toHaveAttribute('aria-checked', 'false');
+    expect(item1).toHaveProperty('checked', true);
+    expect(item2).toHaveProperty('checked', false);
 
     await user.click(item2);
 
     expect(onChangeMock).toHaveBeenCalledWith('test2');
-    expect(item2).toHaveAttribute('aria-checked', 'true');
+    expect(item2).toHaveProperty('checked', true);
   });
 
   test('if we pass a name, we should have a hidden input with that name', () => {

@@ -1,10 +1,10 @@
-import { readdirSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { defineConfig } from 'rolldown';
-import { dependencies } from './package.json';
 
 // Mark all dependencies as external
-const external = Object.keys(dependencies);
+const pkg = JSON.parse(readFileSync('./package.json', 'utf-8'));
+const external = Object.keys(pkg.dependencies);
 
 // Get all .ts files in src directory for individual file outputs
 const srcDir = './src';

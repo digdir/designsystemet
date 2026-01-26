@@ -3,7 +3,6 @@ import type { HTMLAttributes } from 'react';
 import { createContext, forwardRef, useId, useState } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
-import { RovingFocusRoot } from '../../utilities/roving-focus/roving-focus-root';
 
 export type ToggleGroupContextProps = {
   variant?: 'primary' | 'secondary';
@@ -16,7 +15,8 @@ export type ToggleGroupContextProps = {
 export const ToggleGroupContext = createContext<ToggleGroupContextProps>({});
 
 export type ToggleGroupProps = MergeRight<
-  DefaultProps & Omit<HTMLAttributes<HTMLDivElement>, 'value' | 'onChange'>,
+  DefaultProps &
+    Omit<HTMLAttributes<HTMLFieldSetElement>, 'value' | 'onChange'>,
   {
     /**
      * Specify which variant to use
@@ -39,6 +39,10 @@ export type ToggleGroupProps = MergeRight<
      * Form element name
      */
     name?: string;
+    /**
+     * Toggle group label for accessibility
+     */
+    'data-toogle-group'?: string;
   }
 >;
 
@@ -52,16 +56,17 @@ export type ToggleGroupProps = MergeRight<
  *   <ToggleGroup.Item value='3'>Toggle 3</ToggleGroup.Item>
  * </ToggleGroup>
  */
-export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
+export const ToggleGroup = forwardRef<HTMLFieldSetElement, ToggleGroupProps>(
   function ToggleGroup(
     {
+      'data-toogle-group': label = '', // Default to empty string so data-toggle-group attribute is always set
       children,
-      variant = 'primary',
-      value,
-      defaultValue,
-      onChange,
-      name,
       className,
+      defaultValue,
+      name,
+      onChange,
+      value,
+      variant = 'primary',
       ...rest
     },
     ref,
@@ -81,28 +86,30 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
       value = uncontrolledValue;
     }
 
+    if (!label)
+      console.warn(
+        'Designsystemet: ToggleGroup should have data-toggle-group attribute, providing an accesible label for screen readers.',
+      );
+
     return (
       <ToggleGroupContext.Provider
         value={{
-          variant,
-          value,
           defaultValue,
           name: name ?? `togglegroup-name-${nameId}`,
           onChange: onValueChange,
+          value,
+          variant,
         }}
       >
-        <RovingFocusRoot asChild activeValue={value} orientation='ambiguous'>
-          <div
-            className={cl('ds-toggle-group', className)}
-            role='radiogroup'
-            data-variant={variant}
-            ref={ref}
-            {...rest}
-          >
-            {name && <input type='hidden' name={name} value={value} />}
-            {children}
-          </div>
-        </RovingFocusRoot>
+        <fieldset
+          className={cl('ds-toggle-group', className)}
+          data-toggle-group={label}
+          data-variant={variant}
+          ref={ref}
+          {...rest}
+        >
+          {children}
+        </fieldset>
       </ToggleGroupContext.Provider>
     );
   },
