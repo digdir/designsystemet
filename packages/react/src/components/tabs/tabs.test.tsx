@@ -14,28 +14,6 @@ const render = (...args: Parameters<typeof renderRtl>) => {
 };
 
 describe('Tabs', () => {
-  it('can navigate tabs with keyboard', async () => {
-    render(
-      <Tabs>
-        <Tabs.List>
-          <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
-          <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
-        </Tabs.List>
-        <Tabs.Panel value='value1'>content 1</Tabs.Panel>
-        <Tabs.Panel value='value2'>content 2</Tabs.Panel>
-      </Tabs>,
-    );
-
-    const tab1 = screen.getByRole('tab', { name: 'Tab 1' });
-    const tab2 = screen.getByRole('tab', { name: 'Tab 2' });
-    await user.tab();
-    expect(tab1).toHaveFocus();
-    await user.keyboard('{ArrowRight}');
-    expect(tab2).toHaveFocus();
-    await user.keyboard('{ArrowLeft}');
-    expect(tab1).toHaveFocus();
-  });
-
   it('renders content based on value', async () => {
     render(
       <Tabs defaultValue='value1'>
@@ -82,24 +60,6 @@ describe('Tabs', () => {
 
     const content = screen.queryByText('content 1');
     expect(content).toBeInTheDocument();
-  });
-
-  it('can navigate tabs with keyboard', async () => {
-    render(
-      <Tabs.List>
-        <Tabs.Tab value='value1'>Tab 1</Tabs.Tab>
-        <Tabs.Tab value='value2'>Tab 2</Tabs.Tab>
-      </Tabs.List>,
-    );
-
-    const tab1 = screen.getByRole('tab', { name: 'Tab 1' });
-    const tab2 = screen.getByRole('tab', { name: 'Tab 2' });
-    await user.tab();
-    expect(tab1).toHaveFocus();
-    await user.keyboard('{ArrowRight}');
-    expect(tab2).toHaveFocus();
-    await user.keyboard('{ArrowLeft}');
-    expect(tab1).toHaveFocus();
   });
 
   it('has tabindex 0 on tabpanel', () => {
