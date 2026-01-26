@@ -1,5 +1,5 @@
 ---
-"@digdir/designsystemet-css": minor
+"@digdir/designsystemet-css": patch
 ---
 
-Removed postcss `autoprefixer`. We recommend users adding this to their own build step if needed for browser support
+Removed browserlist `"cover 90% in NO"` due to an apparent bug causing excessive irrelevant prefixing 
