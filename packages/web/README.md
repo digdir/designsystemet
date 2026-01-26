@@ -111,7 +111,7 @@ You can use both `<a>` and `<button>` elements inside the pagination.
 If you don't pass any attributes you can implement your own logic for current page and total pages.
 
 ```html
-<ds-pagination class="ds-pagination" aria-label="Bla i sider:" data-href="?page=$page" data-current="2" data-total="100">
+<ds-pagination class="ds-pagination" aria-label="Bla i sider:" data-href="?page=%d" data-current="2" data-total="100">
   <ol>
     <li><a></a></li>
     <li><a></a></li>

@@ -73,7 +73,7 @@ export class DSPaginationElement extends DSElement {
         attr(item, 'role', page ? null : 'none'); // Prevent validation errors for aria-hidden buttons
         attr(item, 'tabindex', page ? null : '-1');
         if (item instanceof HTMLButtonElement) attr(item, 'value', `${page}`);
-        if (href) attr(item, 'href', href.replace('$page', `${page}`));
+        if (href) attr(item, 'href', href.replace('%d', `${page}`));
       });
     }
   }

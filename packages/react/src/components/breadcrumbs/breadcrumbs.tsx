@@ -37,6 +37,7 @@ export type BreadcrumbsProps = MergeRight<
 export const Breadcrumbs = forwardRef<DSBreadcrumbsElement, BreadcrumbsProps>(
   ({ className, ...rest }, ref) => (
     <ds-breadcrumbs
+      suppressHydrationWarning
       class={cl('ds-breadcrumbs', className)}
       ref={ref}
       {...rest}

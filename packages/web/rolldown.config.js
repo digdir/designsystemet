@@ -1,11 +1,15 @@
 import { readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { defineConfig } from 'rolldown';
+import { dependencies } from './package.json';
+
+// Mark all dependencies as external
+const external = Object.keys(dependencies);
 
 // Get all .ts files in src directory for individual file outputs
 const srcDir = './src';
 const files = readdirSync(srcDir).filter((file) => file.endsWith('.ts'));
-const inputs = files.reduce((acc, file) => {
+const input = files.reduce((acc, file) => {
   const name = file.replace('.ts', '');
   acc[name] = join(srcDir, file);
   return acc;
@@ -14,7 +18,7 @@ const inputs = files.reduce((acc, file) => {
 export default defineConfig([
   // ES Module build with individual files
   {
-    input: inputs,
+    input,
     output: {
       dir: 'dist/esm',
       format: 'esm',
@@ -23,19 +27,11 @@ export default defineConfig([
       preserveModules: true,
       preserveModulesRoot: 'src',
     },
-    external: [
-      '@floating-ui/dom',
-      '@u-elements/u-combobox',
-      '@u-elements/u-datalist',
-      '@u-elements/u-details',
-      '@u-elements/u-progress',
-      '@u-elements/u-tabs',
-      'invokers-polyfill',
-    ],
+    external,
   },
   // CommonJS build with individual files
   {
-    input: inputs,
+    input,
     output: {
       dir: 'dist/cjs',
       format: 'cjs',
@@ -45,14 +41,6 @@ export default defineConfig([
       preserveModulesRoot: 'src',
       exports: 'named',
     },
-    external: [
-      '@floating-ui/dom',
-      '@u-elements/u-combobox',
-      '@u-elements/u-datalist',
-      '@u-elements/u-details',
-      '@u-elements/u-progress',
-      '@u-elements/u-tabs',
-      'invokers-polyfill',
-    ],
+    external,
   },
 ]);
