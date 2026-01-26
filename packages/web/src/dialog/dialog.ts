@@ -25,19 +25,6 @@ const handleClosedbyAny = ({
   }
 };
 
-// Handle data-command="close" for backward compatibility
-const handleDataCommand = ({ defaultPrevented, target: el }: Event) => {
-  const dialog = !defaultPrevented && (el as Element)?.closest?.('dialog');
-  const close = dialog && (el as Element)?.closest?.('[data-command="close"]');
-  if (close) {
-    dialog.close();
-    console.warn(
-      'Designsystemet: data-command="close" is deprecated. Use command="close" and commandfor="DIALOG-ID" instead.',
-    );
-  }
-};
-
 onHotReload('dialog-closedby', () => [
   on(document, 'pointerdown pointerup', handleClosedbyAny, QUICK_EVENT),
-  on(document, 'click', handleDataCommand, { passive: true }),
 ]);

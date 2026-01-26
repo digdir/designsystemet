@@ -114,6 +114,17 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
         data-placement={placement}
         id={id ?? autoId}
         onClose={(event) => onClose?.(event.nativeEvent)} // Backward compatibility: expose native event
+        onClick={(event) => {
+          onClick?.(event);
+          const { currentTarget: dialog, target: el, defaultPrevented } = event;
+          const isClose = (el as Element)?.closest?.('[data-command="close"]');
+          if (!defaultPrevented && isClose) {
+            dialog.close();
+            console.warn(
+              'Designsystemet: data-command="close" is deprecated. Use command="close" and commandfor="DIALOG-ID" instead.',
+            );
+          }
+        }}
         onAnimationEnd={(event: React.AnimationEvent<HTMLDialogElement>) => {
           const { currentTarget: dialog } = event;
           const autofocus = dialog.querySelector<HTMLElement>('[autofocus]');
