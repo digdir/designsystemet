@@ -15,8 +15,8 @@ Alle prereleasar vil også vere under `test` taggen på NPM.
 
 ## Teste i eksisterande applikasjon
 
-Me har oppdatert React-pakken til å bruke `@digdir/designsystemet-web` som underliggande rammeverkuavhengig komponentbibliotek.
-Dette betyr at nokre komponentar som i dag er implementert i React, kan opplevast annleis sidan dei no kjem frå web-pakken.
+Me har oppdatert`@digdir/designsystemet-react` til å bruke `@digdir/designsystemet-web` som underliggande pakke for rammeverkuavhengig interaktivitet.
+Ingen React komponentar har breaking changes, men _kan_ opplevast litt annleis sidan dei no kjem frå web-pakken. Derfor treng vi at du testar og kjem med tilbakemeldingar:
 Gjerne test desse og kom med tilbakemeldingar.
 
 Desse er:
@@ -32,7 +32,7 @@ Desse er:
 
 Gjerne sjekk alt av tester og konsoll for å sjå etter feil eller uventa oppførsel. 
 
-`ToggleGroup` har fått ny intern struktur, slik at den no ikkje brukar `<button>`.
+`ToggleGroup` brukar fortsatt `ToggleGroup.Item` i React, men lagar no internt ikkje`<button>` lengre.
 Den nye strukturen er:
 ```html
 <fieldset class="ds-toggle-group" data-toggle-group="Tekstjustering">
