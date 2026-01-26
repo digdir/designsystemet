@@ -107,7 +107,7 @@
   display: flex;
   align-items: center;
   margin-top: var(--ds-size-5);
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 500;
   width: fit-content;
 }
