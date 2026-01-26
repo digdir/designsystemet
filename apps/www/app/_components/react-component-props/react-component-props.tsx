@@ -11,7 +11,7 @@ type ReactComponentProps = {
 export const ReactComponentDocs = forwardRef<
   HTMLTableElement,
   ReactComponentProps
->(function CssVariables({ docs, ...rest }, ref) {
+>(function ReactComponentDocs({ docs, ...rest }, ref) {
   if (!docs || docs.length === 0) {
     return null;
   }

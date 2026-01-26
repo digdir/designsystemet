@@ -2,7 +2,7 @@ import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { createContext, forwardRef, useId, useState } from 'react';
 import type { DefaultProps } from '../../types';
-import type { MergeRight } from '../../utilities';
+import { type MergeRight, warn } from '../../utilities';
 
 export type ToggleGroupContextProps = {
   variant?: 'primary' | 'secondary';
@@ -87,8 +87,8 @@ export const ToggleGroup = forwardRef<HTMLFieldSetElement, ToggleGroupProps>(
     }
 
     if (!label)
-      console.warn(
-        'Designsystemet: ToggleGroup should have data-toggle-group attribute, providing an accesible label for screen readers.',
+      warn(
+        'ToggleGroup should have data-toggle-group attribute, providing an accesible label for screen readers.',
       );
 
     return (

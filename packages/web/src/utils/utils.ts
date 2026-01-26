@@ -28,6 +28,23 @@ export function debounce<T extends unknown[]>(
 }
 
 /**
+ * warn
+ * @description Utility to console.warn, but can be silenced in production with window.dsWarnings = false;
+ */
+declare global {
+  interface Window {
+    dsWarnings?: boolean;
+  }
+}
+export const warn = (
+  message: string,
+  ...args: Parameters<typeof console.warn>
+) =>
+  typeof window === 'undefined' ||
+  window.dsWarnings === false ||
+  console.warn(`Designsystemet: ${message}`, ...args);
+
+/**
  * attr
  * @description Utility to quickly get, set and remove attributes
  * @param el The Element to read/write attributes from

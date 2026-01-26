@@ -4,6 +4,7 @@ import {
   DSElement,
   isNorwegian,
   onMutation,
+  warn,
 } from '../utils/utils';
 
 declare global {
@@ -39,11 +40,11 @@ export class DSPaginationElement extends DSElement {
     // Check for required attributes
     const total = attr(this, ATTR_TOTAL);
     const current = attr(this, ATTR_CURRENT);
-    if (current && !total) attrWarn(ATTR_TOTAL, this);
-    if (total && !current) attrWarn(ATTR_CURRENT, this);
+    if (current && !total) warn(`Missing ${ATTR_TOTAL} attribute on:`, this);
+    if (total && !current) warn(`Missing ${ATTR_CURRENT} attribute on:`, this);
     if (!attr(this, ATTR_LABEL)) {
       if (isNorwegian(this)) attr(this, ATTR_LABEL, NB_LABEL);
-      else attrWarn(ATTR_LABEL, this);
+      else warn(`Missing ${ATTR_LABEL} attribute on:`, this);
     }
 
     attr(this, 'role', 'navigation');
@@ -93,8 +94,5 @@ const getSteps = (
   if (show > 3 && end < max) pages.splice(-2, 2, 0, max);
   return pages;
 };
-
-const attrWarn = (name: string, el: Element) =>
-  console.warn(`Designsystemet: Missing ${name} attribute on:`, el);
 
 customElements.define('ds-pagination', DSPaginationElement);

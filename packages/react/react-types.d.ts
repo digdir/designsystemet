@@ -35,7 +35,6 @@ declare global {
     interface ButtonHTMLAttributes<T> extends React.HTMLAttributes<T> {
       command?: string;
       commandfor?: string;
-      commandFor?: string;
     }
   }
 }

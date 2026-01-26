@@ -12,6 +12,7 @@ import {
   QUICK_EVENT,
   tag,
   useId,
+  warn,
 } from '../utils/utils';
 
 // TODO: Document that Validation must be hidden with "hidden" attribute (or completely removed from DOM), not display: none
@@ -46,8 +47,8 @@ const handleMutations = debounce(() => {
       if (el instanceof HTMLLabelElement) labels.push(el);
       else if (isInputLike(el)) {
         if (input)
-          console.warn(
-            `Designsystemet: Fields should only have one input element. Use <fieldset> to group multiple fields:`,
+          warn(
+            `Fields should only have one input element. Use <fieldset> to group multiple fields:`,
             field,
           );
         input = el;
@@ -62,8 +63,7 @@ const handleMutations = debounce(() => {
     }
 
     FIELDS.set(field, counter || null); // Update counter reference
-    if (!input)
-      console.warn(`Designsystemet: Field is missing input element:`, field);
+    if (!input) warn(`Field is missing input element:`, field);
     else {
       for (const label of labels) attr(label, 'for', useId(input));
 

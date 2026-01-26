@@ -6,6 +6,7 @@ import {
   isNorwegian,
   on,
   onMutation,
+  warn,
 } from '../utils/utils';
 
 declare global {
@@ -30,7 +31,7 @@ export class DSBreadcrumbsElement extends DSElement {
     // aria-label can allready have been hidden by attributeChangedCallback
     if (!attr(this, ATTR_LABEL_HIDDEN) && !attr(this, ATTR_LABEL)) {
       if (isNorwegian(this)) attr(this, ATTR_LABEL, NB_LABEL);
-      else console.warn('Designsystemet: Missing aria-label on:', this);
+      else warn('Missing aria-label on:', this);
     }
     const render = debounce(this.attributeChangedCallback.bind(this), 100);
     this._items = this.getElementsByTagName('a'); // Speed up by caching HTMLCollection

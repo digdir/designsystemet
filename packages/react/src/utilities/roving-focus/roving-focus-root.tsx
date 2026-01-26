@@ -9,6 +9,7 @@ import type {
   ReactNode,
 } from 'react';
 import { createContext, forwardRef, useEffect, useRef, useState } from 'react';
+import { warn } from '..';
 import { useMergeRefs } from '../hooks';
 
 type RovingFocusRootBaseProps = {
@@ -104,7 +105,7 @@ export const RovingFocusRoot = forwardRef<
       setFocusableValue(activeValueOrNull);
     }, [activeValueOrNull]);
 
-    console.warn('Designsystemet: RovingFocusRoot is deprecated.');
+    warn('RovingFocusRoot is deprecated.');
 
     return (
       <RovingFocusContext.Provider
