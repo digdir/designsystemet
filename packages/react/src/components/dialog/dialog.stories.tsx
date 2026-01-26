@@ -68,7 +68,7 @@ export const Preview: StoryFn<typeof Dialog> = (args) => (
     >
       Open Dialog
     </Dialog.Trigger>
-    <Dialog {...args}>
+    <Dialog {...args} onClose={console.log}>
       <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
         Dialog header
       </Heading>
