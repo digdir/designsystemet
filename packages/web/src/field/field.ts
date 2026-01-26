@@ -118,7 +118,7 @@ export class DSFieldElement extends DSElement {
     on(this, 'input', this, QUICK_EVENT);
     handleMutations(); // Initial setup
   }
-  handleEvent(eventOrTarget: Event | HTMLInputElement) {
+  handleEvent(eventOrTarget: Event | Element) {
     const el = (eventOrTarget as Event).target || eventOrTarget;
     const counter = isInputLike(el) && FIELDS.get(this);
 

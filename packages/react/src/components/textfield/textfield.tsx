@@ -1,5 +1,11 @@
-import { type ForwardedRef, forwardRef, type ReactNode } from 'react';
-
+import type { DSFieldElement } from '@digdir/designsystemet-web';
+import {
+  type ForwardedRef,
+  forwardRef,
+  type ReactNode,
+  useEffect,
+  useRef,
+} from 'react';
 import type { DefaultProps, LabelRequired } from '../../types';
 import {
   Field,
@@ -109,8 +115,17 @@ export const Textfield = forwardRef<
   },
   ref,
 ) {
+  const fieldRef = useRef<DSFieldElement>(null);
+
+  // Trigger refresh of DSFieldElement counter and field-size if value changes
+  useEffect(() => {
+    const field = fieldRef.current;
+    const input = field?.querySelector('input,textarea');
+    if (input) field?.handleEvent?.(input);
+  }, [rest.value]);
+
   return (
-    <Field className={className} data-size={size} style={style}>
+    <Field className={className} data-size={size} style={style} ref={fieldRef}>
       {!!label && <Label>{label}</Label>}
       {!!description && <FieldDescription>{description}</FieldDescription>}
       <FieldAffixes>
