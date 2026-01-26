@@ -120,7 +120,13 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
 
       const handleKeydown = (event: KeyboardEvent) => {
         if (event.key !== 'Escape' || !controlledOpen) return;
+        const isOpen =
+          popoverRef.current?.matches(':popover-open') ||
+          popoverRef.current?.classList.contains(':popover-open'); // Polyfill support
+
+        if (!isOpen) return;
         event.preventDefault(); // Prevent closing fullscreen in Safari
+        document.querySelector<HTMLElement>(trigger)?.focus?.(); // Move focus back to trigger since `popoover="manual"` doesn't do this
         setInternalOpen(false);
         onClose?.();
       };
