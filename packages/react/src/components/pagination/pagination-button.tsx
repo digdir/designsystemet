@@ -30,6 +30,8 @@ export const PaginationButton = forwardRef<
 
   return (
     <Component
+      className='ds-button'
+      data-variant='tertiary'
       suppressHydrationWarning // Since <ds-pagination> adds data-page and aria-attributes
       ref={ref}
       {...rest}

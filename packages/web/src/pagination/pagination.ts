@@ -46,6 +46,7 @@ export class DSPaginationElement extends DSElement {
       else attrWarn(ATTR_LABEL, this);
     }
 
+    attr(this, 'role', 'navigation');
     this._unmutate = onMutation(this, this.render.bind(this), {
       childList: true,
       subtree: true,

@@ -60,6 +60,7 @@ export const Pagination = forwardRef<DSPaginationElement, PaginationProps>(
         {...(asChild
           ? { className: cl('ds-pagination', className) }
           : { class: cl('ds-pagination', className) })}
+        suppressHydrationWarning // Since ds-pagination will change aria-label and role after hydration
         ref={ref}
         {...rest}
       />
