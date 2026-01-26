@@ -551,7 +551,9 @@ export const Creatable: StoryFn<typeof Suggestion> = (args) => {
         <Suggestion.Input />
         <Suggestion.Clear />
         <Suggestion.List>
-          <Suggestion.Empty>Tomt</Suggestion.Empty>
+          <Suggestion.Empty>
+            Ingen treff, trykk enter for å legge til
+          </Suggestion.Empty>
           {DATA_PLACES.map((place) => (
             <Suggestion.Option key={place}>{place}</Suggestion.Option>
           ))}

@@ -307,15 +307,13 @@ export const Creatable = () => {
   return (
     <Field>
       <Label>Velg destinasjon</Label>
-      <Field.Description>
-        Du kan legge til egne destinasjoner ved å skrive inn tekst og trykke
-        enter.
-      </Field.Description>
       <EXPERIMENTAL_Suggestion creatable multiple>
         <EXPERIMENTAL_Suggestion.Input />
         <EXPERIMENTAL_Suggestion.Clear />
         <EXPERIMENTAL_Suggestion.List>
-          <EXPERIMENTAL_Suggestion.Empty>Tomt</EXPERIMENTAL_Suggestion.Empty>
+          <EXPERIMENTAL_Suggestion.Empty>
+            Ingen treff, trykk enter for å legge til
+          </EXPERIMENTAL_Suggestion.Empty>
           {DATA_PLACES.map((place) => (
             <EXPERIMENTAL_Suggestion.Option key={place}>
               {place}
@@ -339,14 +337,13 @@ export const CreatableEn = () => {
   return (
     <Field>
       <Label>Select destination</Label>
-      <Field.Description>
-        You can add your own destinations by typing text and pressing enter.
-      </Field.Description>
       <EXPERIMENTAL_Suggestion creatable multiple>
         <EXPERIMENTAL_Suggestion.Input />
         <EXPERIMENTAL_Suggestion.Clear />
         <EXPERIMENTAL_Suggestion.List>
-          <EXPERIMENTAL_Suggestion.Empty>Tomt</EXPERIMENTAL_Suggestion.Empty>
+          <EXPERIMENTAL_Suggestion.Empty>
+            No results found, press enter to add
+          </EXPERIMENTAL_Suggestion.Empty>
           {DATA_PLACES.map((place) => (
             <EXPERIMENTAL_Suggestion.Option key={place}>
               {place}
