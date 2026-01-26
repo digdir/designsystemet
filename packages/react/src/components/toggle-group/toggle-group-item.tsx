@@ -1,3 +1,4 @@
+import cl from 'clsx/lite';
 import { forwardRef, type LabelHTMLAttributes, useContext, useId } from 'react';
 import type { DefaultProps } from '../../types';
 import { ToggleGroupContext } from './toggle-group';
@@ -23,14 +24,17 @@ export type ToggleGroupItemProps = {
 export const ToggleGroupItem = forwardRef<
   HTMLLabelElement,
   ToggleGroupItemProps
->(function ToggleGroupItem({ children, icon, value: rawValue, ...rest }, ref) {
+>(function ToggleGroupItem(
+  { className, children, icon, value: rawValue, ...rest },
+  ref,
+) {
   const genValue = useId();
   const toggleGroup = useContext(ToggleGroupContext);
   const value = rawValue ?? genValue;
   const active = toggleGroup.value === value;
 
   return (
-    <label ref={ref} {...rest}>
+    <label ref={ref} {...rest} className={cl('ds-button', className)}>
       <input
         checked={active}
         name={toggleGroup.name}

@@ -36,19 +36,15 @@
     pointer-events: none;
   }
 
-  & label {
-    @composes ds-button from './button.css';
-
-    &:not(:has(input:checked)) {
-      --dsc-button-background: transparent;
-      --dsc-button-background--active: var(--ds-color-surface-active);
-      --dsc-button-background--hover: var(--ds-color-surface-hover);
-      --dsc-button-color: var(--ds-color-text-subtle);
-      --dsc-button-color--hover: var(--ds-color-text-default);
-    }
-    &:has(input:focus-visible) {
-      @composes ds-focus--visible--inset from './base.css';
-    }
+  & label:not(:has(input:checked)) {
+    --dsc-button-background: transparent;
+    --dsc-button-background--active: var(--ds-color-surface-active);
+    --dsc-button-background--hover: var(--ds-color-surface-hover);
+    --dsc-button-color: var(--ds-color-text-subtle);
+    --dsc-button-color--hover: var(--ds-color-text-default);
+  }
+  & label:has(input:focus-visible) {
+    @composes ds-focus--visible--inset from './base.css';
   }
 
   & button {
