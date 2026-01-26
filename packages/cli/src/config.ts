@@ -161,7 +161,7 @@ const focusOverrideSchema = z
   })
   .describe('Overrides for the focus colors');
 
-const fontSizeSteps = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'] as const;
+const fontSizeSteps = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'] as const;
 const fontSizeStepOverrideSchema = z
   .number()
   .describe('Number in pixels to use as a font size for this step in the scale');
