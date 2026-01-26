@@ -1,21 +1,7 @@
+import { pagination } from '@digdir/designsystemet-web';
 import type { MouseEvent } from 'react';
 import { useMemo } from 'react';
 import type { PaginationButtonProps } from '../../../components';
-
-const getSteps = (now: number, max: number, show: number) => {
-  const offset = (show - 1) / 2;
-  const start = Math.max(
-    1,
-    Math.min(Math.max(now - Math.floor(offset), 1), max - show + 1),
-  );
-  const end = Math.min(Math.max(now + Math.ceil(offset), show), max);
-  const pages = Array.from({ length: end + 1 - start }, (_, i) => i + start);
-
-  if (show > 4 && start > 1) pages.splice(0, 2, 1, 0);
-  if (show > 3 && end < max) pages.splice(-2, 2, 0, max);
-
-  return pages;
-};
 
 export type UsePaginationProps = {
   /**
@@ -73,59 +59,56 @@ export type UsePaginationProps = {
  * </Pagination>
  **/
 export const usePagination = ({
-  currentPage = 1,
+  currentPage: current = 1,
   setCurrentPage,
   onChange,
-  totalPages = 1,
-  showPages = 7,
+  totalPages: total = 1,
+  showPages: show = 7,
 }: UsePaginationProps) =>
   useMemo(() => {
-    const hasNext = currentPage < totalPages;
-    const hasPrev = currentPage !== 1;
+    const { next, prev, pages } = pagination({ current, total, show });
     const handleClick = (page: number) => (event: MouseEvent<HTMLElement>) => {
-      if (page < 1 || page > totalPages) return event.preventDefault(); // Prevent out of bounds navigation
+      if (page < 1 || page > total) return event.preventDefault(); // Prevent out of bounds navigation
       onChange?.(event, page);
       if (!event.defaultPrevented) setCurrentPage?.(page); // Allow stopping change by calling event.preventDefault() in onChange
     };
 
     return {
       /** Number of steps */
-      pages: getSteps(currentPage, totalPages, showPages).map(
-        (page, index) => ({
-          /**
-           * Page number or "ellipsis" for the ellipsis item
-           */
-          page: page || 'ellipsis',
-          /**
-           * Unique key for the item
-           */
-          itemKey: page ? `page-${page}` : `ellipsis-${index}`, // React key utility
-          /**
-           * Properties to spread on Pagination.Button
-           */
-          buttonProps: (page
-            ? {
-                'aria-current': page === currentPage ? 'true' : undefined,
-                onClick: handleClick(page),
-              }
-            : null) as PaginationButtonProps | null,
-        }),
-      ),
+      pages: pages.map(({ page, current }, index) => ({
+        /**
+         * Page number or "ellipsis" for the ellipsis item
+         */
+        page: page || 'ellipsis',
+        /**
+         * Unique key for the item
+         */
+        itemKey: page ? `page-${page}` : `ellipsis-${index}`, // React key utility
+        /**
+         * Properties to spread on Pagination.Button
+         */
+        buttonProps: (page
+          ? {
+              'aria-current': current ? 'true' : undefined,
+              onClick: handleClick(page),
+            }
+          : null) as PaginationButtonProps | null,
+      })),
       /** Properties to spread on Pagination.Button used for previous naviagation */
       prevButtonProps: {
-        'aria-hidden': !hasPrev, // Using aria-hidden to support all HTML elements because of potential asChild
-        onClick: handleClick(currentPage - 1),
+        'aria-hidden': !prev, // Using aria-hidden to support all HTML elements because of potential asChild
+        onClick: handleClick(prev),
         variant: 'tertiary',
       } as PaginationButtonProps,
       /** Properties to spread on Pagination.Button used for next naviagation */
       nextButtonProps: {
-        'aria-hidden': !hasNext, // Using aria-hidden to support all HTML elements because of potential asChild
-        onClick: handleClick(currentPage + 1),
+        'aria-hidden': !next, // Using aria-hidden to support all HTML elements because of potential asChild
+        onClick: handleClick(next),
         variant: 'tertiary',
       } as PaginationButtonProps,
       /** Indication if previous page action should be shown or not */
-      hasPrev,
+      hasPrev: !!prev,
       /** Indication if next page action should be shown or not */
-      hasNext,
+      hasNext: !!next,
     };
-  }, [currentPage, totalPages, showPages]);
+  }, [current, total, show]);
