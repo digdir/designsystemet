@@ -29,4 +29,13 @@ if (expectedVersion) {
   throw new Error('VITE_REACT_VERSION is not defined');
 }
 
+await Promise.all([
+  customElements.whenDefined('ds-field'),
+  customElements.whenDefined('ds-tabs'),
+  customElements.whenDefined('ds-breadcrumbs'),
+  customElements.whenDefined('ds-pagination'),
+  customElements.whenDefined('ds-suggestion'),
+  customElements.whenDefined('ds-error-summary'),
+]);
+
 configure({ reactStrictMode: true });

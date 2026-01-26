@@ -5,16 +5,16 @@ import { act } from 'react';
 import { Switch } from './switch';
 
 describe('Switch', () => {
-  test('has correct value and label', () => {
+  test('has correct value and label', async () => {
     render(<Switch label='label' value='test' />);
-    expect(screen.getByLabelText('label')).toBeDefined();
+    expect(await screen.findByLabelText('label')).toBeDefined();
     expect(screen.getByDisplayValue('test')).toBeDefined();
   });
 
-  test('has correct description', () => {
+  test('has correct description', async () => {
     render(<Switch label='test' value='test' description='description' />);
     expect(
-      screen.getByRole('switch', { description: 'description' }),
+      await screen.findByRole('switch', { description: 'description' }),
     ).toBeDefined();
   });
   it('calls onChange and onClick when user clicks', async () => {
