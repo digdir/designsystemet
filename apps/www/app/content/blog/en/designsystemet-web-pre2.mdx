@@ -15,9 +15,9 @@ All prereleases will also be under the `test` tag on NPM.
 
 ## Test in existing application
 
-We have updated the React package to use `@digdir/designsystemet-web` as the underlying framework-independent component library.
-This means that some components that are currently implemented in React may be experienced differently since they now come from the web package.
-Feel free to test these and provide feedback.
+We have updated `@digdir/designsystemet-react` to use `@digdir/designsystemet-web` as the underlying package for framework-independent interactivity.
+No React components have breaking changes, but _may_ be experienced a little differently since they now come from the web package. That's why we need you to test and provide feedback:
+Please test these and provide feedback.
 
 These are:
 - Popover
@@ -30,9 +30,9 @@ These are:
 - ToggleGroup
 - Field
 
-Please check all tests and console for errors or unexpected behavior.
+Please check all tests and console to look for errors or unexpected behavior.
 
-`ToggleGroup` has been given a new internal structure, so that it no longer uses `<button>`.
+`ToggleGroup` still uses `ToggleGroup.Item` in React, but now internally does not create `<button>` anymore.
 The new structure is:
 ```html
 <fieldset class="ds-toggle-group" data-toggle-group="Text alignment">
@@ -61,9 +61,9 @@ You can get these by adding them to your `tsconfig.json`:
 
 ```json
 {
-"compilerOptions": {
-"types": ["@digdir/designsystemet-web"]
-}
+  "compilerOptions": {
+    "types": ["@digdir/designsystemet-web"]
+  }
 }
 ```
 
@@ -81,8 +81,8 @@ We are very interested in hearing from you as a user!
 If you discover errors, or have suggestions for improvements, you can create an issue in our [GitHub repo](https://github.com/digdir/designsystemet/issues/new) or on [Slack](/slack).
 
 <Contributors
-authors={[
-'Tobias Barsnes',
-'Eirik Backer',
-]}
+  authors={[
+    'Tobias Barsnes',
+    'Eirik Backer',
+  ]}
 />
