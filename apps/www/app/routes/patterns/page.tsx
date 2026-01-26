@@ -87,7 +87,10 @@ export default function Patterns({
                     href='#article-contributors'
                     aria-label={t('contributors')}
                   >
-                    <AvatarStack authors={frontmatter.partners} />
+                    <AvatarStack
+                      authors={frontmatter.partners}
+                      expandable='fixed'
+                    />
                   </a>
                   <span className={classes.partners}>
                     {frontmatter.partners}
