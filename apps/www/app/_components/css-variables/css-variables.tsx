@@ -1,4 +1,8 @@
-import { Paragraph, Table } from '@digdir/designsystemet-react';
+import {
+  Paragraph,
+  Table,
+  type TableProps,
+} from '@digdir/designsystemet-react';
 import cl from 'clsx';
 import { forwardRef } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -7,7 +11,7 @@ type CssVariablesProps = {
   vars: {
     [key: string]: string;
   };
-} & React.HTMLAttributes<HTMLTableElement>;
+} & TableProps;
 
 export const CssVariables = forwardRef<HTMLTableElement, CssVariablesProps>(
   function CssVariables({ vars, className, ...rest }, ref) {

@@ -13,8 +13,8 @@
     "types": [
       "node",
       "vite/client",
-      "../../packages/theme/brand/types.d.ts",
-      "../../packages/react/react-types.d.ts"
+      "@digdir/designsystemet-react/react-types",
+      "../../internal/digdir/themes/types.d.ts"
     ],
     "target": "ES2022",
     "module": "ES2022",
