@@ -2,13 +2,11 @@
   overflow-x: clip;
 }
 .header {
-  height: 600px;
-  margin-top: -106px;
+  margin-top: -6.625rem;
   position: relative;
-  margin-bottom: 40px;
   /*--breakpoint-mobile: 600px*/
   @media (max-width: 600px) {
-    margin-top: -122px;
+    margin-top: -7.625rem;
   }
 }
 
@@ -20,7 +18,7 @@
   height: 200vh;
   width: 300vw;
   left: -100vw;
-  bottom: 120px;
+  bottom: 7.5rem;
   border-radius: 50%;
 }
 
@@ -30,9 +28,12 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding-top: 142px;
-  padding-bottom: 20px;
+  padding-top: 8.875rem;
+  padding-bottom: 1.25rem;
   overflow-x: hidden;
+}
+.firstBanner {
+  margin-top: 5rem;
 }
 .decoration {
   position: absolute;
@@ -68,7 +69,7 @@
 }
 
 .text {
-  width: 550px;
+  width: 34.375rem;
   text-align: center;
   margin-bottom: 38px;
   margin-top: var(--ds-size-12);
@@ -87,7 +88,7 @@
   display: grid;
   grid-row-gap: var(--grid-gap);
   grid-column-gap: var(--grid-gap);
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
   width: 100%;
 }
 

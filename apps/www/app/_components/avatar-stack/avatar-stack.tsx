@@ -1,8 +1,9 @@
-import type { CSSProperties } from 'react';
+import { Avatar, EXPERIMENTAL_AvatarStack } from '@digdir/designsystemet-react';
 import classes from './avatar-stack.module.css';
 
 type AvatarStackProps = {
   authors: string;
+  expandable?: 'fixed';
 };
 
 const avatarMap = {
@@ -21,7 +22,7 @@ const avatarMap = {
 
 type AvatarKey = keyof typeof avatarMap;
 
-export const AvatarStack = ({ authors }: AvatarStackProps) => {
+export const AvatarStack = ({ authors, expandable }: AvatarStackProps) => {
   const authorsLowercase = authors.toLowerCase();
 
   // Split authors string on common delimiters
@@ -43,18 +44,18 @@ export const AvatarStack = ({ authors }: AvatarStackProps) => {
   }
 
   return (
-    <span
-      className={classes.avatarStack}
-      style={{ '--n': matchedAvatars.length } as CSSProperties}
-      aria-hidden
+    <EXPERIMENTAL_AvatarStack
+      className={classes.avatarStackOverrides}
+      avatarSize='30px'
+      gap='4px'
+      expandable={expandable}
+      overlap={40}
     >
       {matchedAvatars.map((avatarKey) => (
-        <img
-          key={avatarKey}
-          src={`/img/avatars/${avatarMap[avatarKey]}`}
-          alt=''
-        />
+        <Avatar aria-hidden key={avatarKey}>
+          <img src={`/img/avatars/${avatarMap[avatarKey]}`} alt='' />
+        </Avatar>
       ))}
-    </span>
+    </EXPERIMENTAL_AvatarStack>
   );
 };
