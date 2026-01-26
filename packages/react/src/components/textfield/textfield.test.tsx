@@ -148,7 +148,7 @@ const render = (
   },
 ) => {
   vi.useFakeTimers();
-  renderRtl(
+  const result = renderRtl(
     <Textfield
       {...{
         onChange: vi.fn(),
@@ -158,4 +158,5 @@ const render = (
   );
   vi.runAllTimers();
   vi.useRealTimers();
+  return result;
 };

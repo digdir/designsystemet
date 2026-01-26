@@ -1,9 +1,17 @@
-import { render, screen } from '@testing-library/react';
+import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { Tabs } from './';
 
 const user = userEvent.setup();
+
+const render = (...args: Parameters<typeof renderRtl>) => {
+  vi.useFakeTimers();
+  const result = renderRtl(...args);
+  vi.runAllTimers(); // Flush any pending timers to setup tags properly
+  vi.useRealTimers();
+  return result;
+};
 
 describe('Tabs', () => {
   it('can navigate tabs with keyboard', async () => {
