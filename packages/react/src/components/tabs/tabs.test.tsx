@@ -30,9 +30,9 @@ describe('Tabs', () => {
     const tab2 = screen.getByRole('tab', { name: 'Tab 2' });
     await user.tab();
     expect(tab1).toHaveFocus();
-    await user.type(tab1, '{arrowright}');
+    await user.keyboard('{ArrowRight}');
     expect(tab2).toHaveFocus();
-    await user.type(tab2, '{arrowleft}');
+    await user.keyboard('{ArrowLeft}');
     expect(tab1).toHaveFocus();
   });
 
@@ -96,9 +96,9 @@ describe('Tabs', () => {
     const tab2 = screen.getByRole('tab', { name: 'Tab 2' });
     await user.tab();
     expect(tab1).toHaveFocus();
-    await user.type(tab1, '{arrowright}');
+    await user.keyboard('{ArrowRight}');
     expect(tab2).toHaveFocus();
-    await user.type(tab2, '{arrowleft}');
+    await user.keyboard('{ArrowLeft}');
     expect(tab1).toHaveFocus();
   });
 

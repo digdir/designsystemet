@@ -49,11 +49,11 @@ describe('ToggleGroup', () => {
     });
     await user.tab();
     expect(item1).toHaveFocus();
-    await user.type(item1, '{arrowright}');
+    await user.keyboard('{ArrowRight}');
     expect(item2).toHaveFocus();
-    await user.type(item2, '{arrowright}');
+    await user.keyboard('{ArrowRight}');
     expect(item3).toHaveFocus();
-    await user.type(item3, '{arrowleft}');
+    await user.keyboard('{ArrowLeft}');
     expect(item2).toHaveFocus();
   });
   test('has correct ToggleGroupItem defaultChecked & checked when defaultValue is used', () => {
