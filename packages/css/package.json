@@ -57,7 +57,7 @@
     "postcss": "^8.5.6",
     "postcss-cli": "^11.0.1",
     "postcss-import": "^16.1.1",
-    "postcss-nesting": "^13.0.2",
+    "postcss-nesting": "^14.0.0",
     "rimraf": "^6.1.2",
     "tsx": "^4.21.0"
   }

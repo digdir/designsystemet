@@ -177,6 +177,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
       </div>
 
       <ImageBanner
+        className={classes.firstBanner}
         title={t('frontpage.toolbox.title')}
         description={t('frontpage.toolbox.description')}
         imgSrc='/img/Toolbox.svg'
