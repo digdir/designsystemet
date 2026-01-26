@@ -21,7 +21,7 @@ const config: Config = {
     const robotsPath = join(dirname, 'public', 'robots.txt');
     const robotsContent =
       process.env.APP_ENV === 'production'
-        ? `User-agent: *\nAllow: /`
+        ? `User-agent: *\nAllow: /\nDisallow: /no/intro/cba\nDisallow: /en/intro/cba`
         : `User-agent: *\nDisallow: /`;
 
     console.log(`Writing robots.txt to ${robotsPath}`);
