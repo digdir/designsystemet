@@ -100,35 +100,35 @@ describe('Textfield', () => {
     expect(screen.getByRole('textbox')).toHaveAttribute('type', type);
   });
 
-  it('updates counter when value prop changes programmatically', () => {
+  it('updates counter when value prop changes programmatically', async () => {
     const { rerender } = renderRtl(
       <Textfield label='Test' counter={5} value='' onChange={() => {}} />,
     );
 
-    expect(screen.getByText('5 tegn igjen')).toBeInTheDocument();
+    expect(await screen.findByLabelText('5 tegn igjen')).toBeInTheDocument();
 
     rerender(
       <Textfield label='Test' counter={5} value='123' onChange={() => {}} />,
     );
 
-    expect(screen.getByText('2 tegn igjen')).toBeInTheDocument();
+    expect(await screen.findByLabelText('2 tegn igjen')).toBeInTheDocument();
   });
 
-  it('shows over limit message when value exceeds limit via prop change', () => {
+  it('shows over limit message when value exceeds limit via prop change', async () => {
     const { rerender } = renderRtl(
       <Textfield label='Test' counter={3} value='' onChange={() => {}} />,
     );
 
-    expect(screen.getByText('3 tegn igjen')).toBeInTheDocument();
+    expect(await screen.findByLabelText('3 tegn igjen')).toBeInTheDocument();
 
     rerender(
       <Textfield label='Test' counter={3} value={'abcd'} onChange={() => {}} />,
     );
 
-    expect(screen.getAllByText('1 tegn for mye')[0]).toBeInTheDocument();
+    expect(await screen.findByLabelText('1 tegn for mye')).toBeInTheDocument();
   });
 
-  it('Render counter before error validation messages', () => {
+  it('Render counter before error validation messages', async () => {
     render({
       value: 'lorem',
       label: 'test',
@@ -136,7 +136,7 @@ describe('Textfield', () => {
       error: 'Other invalid condition',
     });
 
-    const countText = screen.getAllByText('3 tegn for mye')[0];
+    const countText = await screen.findByLabelText('3 tegn for mye');
     const errorText = screen.getByText('Other invalid condition');
     expect(countText.compareDocumentPosition(errorText)).toBe(4);
   });
@@ -146,7 +146,8 @@ const render = (
   props: TextfieldProps = {
     'aria-label': 'label',
   },
-) =>
+) => {
+  vi.useFakeTimers();
   renderRtl(
     <Textfield
       {...{
@@ -155,3 +156,6 @@ const render = (
       }}
     />,
   );
+  vi.runAllTimers();
+  vi.useRealTimers();
+};
