@@ -9,7 +9,7 @@ const SELECTOR_CLICKDELEGATEFOR = `[${ATTR_CLICKDELEGATEFOR}]`;
 const SELECTOR_SKIP =
   'a,button,label,input,select,textarea,details,dialog,[role="button"],[popover],[contenteditable]';
 
-export const handleClickDelegateFor = (event: MouseEvent) => {
+const handleClickDelegateFor = (event: MouseEvent) => {
   const isNewTab = event.button === 1 || event.metaKey || event.ctrlKey;
   const isUserLeftOrMiddleClick = event.isTrusted && event.button < 2;
   const delegateTarget = isUserLeftOrMiddleClick && getDelegateTarget(event);

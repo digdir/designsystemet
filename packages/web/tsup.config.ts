@@ -117,10 +117,10 @@ export type Svelte${type} = SvelteTypes.HTMLAttributes<${domInterface}> & { ${ev
       .join('; ')} }
 export type Solid${type} = SolidJSX.HTMLAttributes<${domInterface}>
 
-// Augmenting @vue/runtime-dom instead of vue directly to avoid interfering with React JSX
 declare global { namespace React.JSX { interface IntrinsicElements { '${tag}': React${type} } } }
 declare global { namespace preact.JSX { interface IntrinsicElements { '${tag}': Preact${type} } } }
 declare module '@builder.io/qwik/jsx-runtime' { export namespace JSX { export interface IntrinsicElements { '${tag}': Qwik${type} } } }
+// Augmenting @vue/runtime-dom instead of vue directly to avoid interfering with React JSX
 declare module '@vue/runtime-dom' { export interface GlobalComponents { '${tag}': Vue${type} } }
 declare module 'svelte/elements' { interface SvelteHTMLElements { '${tag}': Svelte${type} } }
 declare module 'solid-js' {

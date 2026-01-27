@@ -14,5 +14,6 @@ export * from './field/field';
 export * from './pagination/pagination';
 export * from './suggestion/suggestion';
 export * from './tabs/tabs';
+export * from './tooltip/tooltip';
 
 if (isBrowser() && !isSupported()) polyfillInvokers(); // Ensure invoker commands polyfill is loaded in browser environment only
