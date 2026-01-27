@@ -20,12 +20,12 @@ export const ThemePages = () => {
   const { colorScheme, baseBorderRadius, tab } = useThemebuilder();
 
   switch (tab) {
-    case 'overview':
+    case 'examples':
       return (
         <div
           className={classes.basicPanel}
           data-color-scheme={colorScheme}
-          hidden={!(tab === 'overview')}
+          hidden={!(tab === 'examples')}
         >
           <OverviewComponents
             colorScheme={colorScheme}

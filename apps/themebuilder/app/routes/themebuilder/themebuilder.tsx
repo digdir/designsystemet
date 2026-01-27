@@ -31,7 +31,7 @@ const MAIN_COLORS = toQueryString(THEME.main);
 const SUPPORT_COLORS = toQueryString(THEME.support);
 const NEUTRAL_COLOR = THEME.neutral;
 
-export type ThemebuilderTabs = 'overview' | 'colorsystem' | 'variables';
+export type ThemebuilderTabs = 'examples' | 'colorsystem' | 'variables';
 
 const DEFAULT_TAB: ThemebuilderTabs = 'colorsystem';
 

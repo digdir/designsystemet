@@ -61,7 +61,7 @@ export default {
     'import-config': 'Import config',
   },
   tabs: {
-    overview: 'Overview',
+    examples: 'Examples',
     colorsystem: 'Colour system',
     colors: 'Colours',
     dimensions: 'Dimensions',

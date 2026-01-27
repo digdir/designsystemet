@@ -18,7 +18,7 @@ export const ThemeHeader = () => {
     value: ThemebuilderTabs;
   }[] = [
     { name: t('tabs.colorsystem'), value: 'colorsystem' },
-    { name: t('tabs.overview'), value: 'overview' },
+    { name: t('tabs.examples'), value: 'examples' },
     // { name: t('tabs.variables'), value: 'variables' }, // hide variables tab for now
   ];
 
