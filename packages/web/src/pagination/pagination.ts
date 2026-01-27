@@ -49,6 +49,8 @@ export class DSPaginationElement extends DSElement {
 
     attr(this, 'role', 'navigation');
     this._unmutate = onMutation(this, this.render.bind(this), {
+      attributeFilter: [ATTR_CURRENT, ATTR_TOTAL, ATTR_HREF],
+      attributes: true,
       childList: true,
       subtree: true,
     });
