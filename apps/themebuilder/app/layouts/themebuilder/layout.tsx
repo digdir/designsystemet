@@ -12,7 +12,7 @@ import { ColorPreview } from '~/_components/color-preview/color-preview';
 import { ColorTokens } from '~/_components/color-tokens/color-tokens';
 import { ColorVariables } from '~/_components/color-variables';
 import { Colors } from '~/_components/colors/colors';
-import { OverviewComponents } from '~/_components/overview-components/overview-components';
+import { OverviewComponents } from '~/_components/examples-components/examples-components';
 import { useThemebuilder } from '../../routes/themebuilder/_utils/use-themebuilder';
 import classes from './layout.module.css';
 
