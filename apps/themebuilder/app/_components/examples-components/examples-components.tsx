@@ -17,7 +17,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { styleColorVars } from '~/_utils/generate-color-vars';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
-import classes from './overview-components.module.css';
+import classes from './examples-components.module.css';
 import { SettingsCard } from './settings-card/settings-card';
 import { TableCard } from './table-card/table-card';
 
@@ -39,17 +39,17 @@ const users = [
   },
 ];
 
-type OverviewComponentsProps = {
+type ExamplesComponentsProps = {
   colorScheme?: ColorScheme;
   color?: CssColor;
   borderRadius?: number;
 };
 
-export const OverviewComponents = ({
+export const ExamplesComponents = ({
   colorScheme = 'light',
   color = '#0062BA',
   borderRadius = 4,
-}: OverviewComponentsProps) => {
+}: ExamplesComponentsProps) => {
   const { t } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
   const { colors } = useThemebuilder();
