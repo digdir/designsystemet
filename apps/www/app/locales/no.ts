@@ -21,7 +21,7 @@ export default {
     toolbox: {
       title: 'En felles digital verktøykasse',
       description:
-        'Designsystemet er en felles verktøykasse med grunnleggende UI-komponenter, retningslinjer og mønstre, som du kan bruke når du utvikler digitale tjenester. Designsystemet bidrar til effektiv produktutvikling og helhetlige brukeropplevelser.',
+        'Designsystemet er en felles verktøykasse med UI-komponenter og retningslinjer for utvikling av digitale tjenester. Det er gratis, brukes sammen med virksomhetens egen visuelle profil og bidrar til effektiv produktutvikling og helhetlige brukeropplevelser.',
       link: 'Les mer om Designsystemet',
     },
     'components-section': {
@@ -42,6 +42,7 @@ export default {
     },
     'latest-news': {
       title: 'Siste nytt fra Designsystemet',
+      seeAllPosts: 'Se alle blogginnlegg',
     },
     'join-section': {
       title: 'Bli med å utvikle Designsystemet!',
@@ -107,10 +108,11 @@ export default {
     sidebar: 'sidemeny',
   },
   navigation: {
-    fundamentals: 'Grunnleggende',
+    intro: 'Intro',
+    fundamentals: 'Kom i gang',
     'best-practices': 'God praksis',
     patterns: 'Mønstre',
-    blog: 'Bloggen',
+    blog: 'Blogg',
     components: 'Komponenter',
     'theme-builder': 'Temabygger',
   },
@@ -163,9 +165,14 @@ export default {
       'Mønstre er retningslinjer og anbefalinger for hvordan interaksjon og gjentagende brukeroppgaver skal løses. Når de samme mønstrene brukes på tvers, skaper vi gjenkjennelighet i tjenestene.',
   },
   fundamentals: {
-    title: 'Grunnleggende',
+    title: 'Kom i gang',
     description:
       'Lær mer om Designsystemet, de grunnleggende designelementene, og hvordan du kommer i gang som designer eller utvikler.',
+  },
+  intro: {
+    title: 'Introduksjon',
+    description:
+      'Designsystemet løser felles utfordringer i utvikling av digitale tjenester gjennom gjenbruk, samarbeid og støtte for universell utforming.',
   },
   'best-practices': {
     title: 'God praksis',
@@ -258,4 +265,26 @@ export default {
   contributors: 'Bidragsytere',
   editOnGithub: 'Rediger denne siden på github.com (åpnes i ny fane)',
   updated: 'Oppdatert',
+  'roi-calculator': {
+    title: 'Hva kan din virksomhet spare?',
+    description:
+      'Bruk kalkulatoren til å se hvor mange timer din virksomhet kan spare ved å bruke Designsystemet i nye løsninger.',
+    radios: {
+      direct: 'Vi skal bruke det direkte i løsninger',
+      build: 'Vi skal bygge eget designsystem på toppen av Designsystemet',
+    },
+    inputs: {
+      newSolutions: {
+        label: 'Antall nye løsninger per år',
+        suffix: 'nye løsninger per år',
+      },
+      numberOfDevs: {
+        label: 'Antall årsverk på design og frontend per løsning',
+        suffix: 'årsverk',
+      },
+    },
+    savedHours:
+      'Virksomheten får frigjort {{hours}} timer per år ({{years}} årsverk)',
+    usageLegend: 'Hvordan skal dere bruke Designsystemet?',
+  },
 };

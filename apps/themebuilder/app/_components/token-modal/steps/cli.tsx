@@ -63,7 +63,7 @@ export default function Cli({
           {t('themeModal.to-update')}{' '}
           <Link
             target='_blank'
-            href='https://www.designsystemet.no/no/fundamentals/themebuilder/own-theme'
+            href='https://www.designsystemet.no/no/fundamentals/start-here/own-theme'
           >
             {t('themeModal.own-theme')}
           </Link>{' '}

@@ -2,6 +2,7 @@ import {
   Alert,
   Badge,
   Card,
+  CardBlock,
   Details,
   DetailsContent,
   DetailsSummary,
@@ -32,6 +33,7 @@ import { Image } from '~/_components/image/image';
 import { ResponsiveIframe } from '~/_components/responsive-iframe/responsive-iframe';
 import { TokenList } from '~/_components/tokens/token-list/token-list';
 import { CssVariables } from '../css-variables/css-variables';
+import RoiCalculator from '../roi-calculator/roi-calcuator';
 import { VideoCard } from '../video-card/video-card';
 import classes from './mdx-components.module.css';
 
@@ -43,6 +45,7 @@ const defaultComponents = {
   DetailsContent,
   DetailsSummary,
   Card,
+  CardBlock,
   Divider,
   Table: (props: TableProps) => (
     <div className={classes.tableWrapper}>
@@ -109,6 +112,7 @@ const defaultComponents = {
     </div>
   ),
   CssVariables,
+  RoiCalculator,
 };
 
 export const MDXComponents = ({

@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "1.9.0",
+  "version": "1.11.0",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "engines": {
@@ -63,7 +63,7 @@
     "@digdir/designsystemet-types": "workspace:^",
     "@tokens-studio/sd-transforms": "2.0.3",
     "chroma-js": "^3.2.0",
-    "colorjs.io": "^0.6.0",
+    "colorjs.io": "^0.6.1",
     "commander": "^14.0.2",
     "fast-glob": "^3.3.3",
     "hsluv": "^1.0.1",
@@ -71,14 +71,14 @@
     "picocolors": "^1.1.1",
     "postcss": "^8.5.6",
     "ramda": "^0.32.0",
-    "style-dictionary": "^5.1.1",
+    "style-dictionary": "^5.1.4",
     "zod": "^4.3.5",
-    "zod-validation-error": "^4.0.2"
+    "zod-validation-error": "^5.0.0"
   },
   "devDependencies": {
     "@tokens-studio/types": "0.5.2",
     "@types/chroma-js": "^3.1.2",
-    "@types/node": "^22.19.3",
+    "@types/node": "^24.10.9",
     "@types/object-hash": "^3.0.6",
     "@types/ramda": "^0.31.1",
     "tsup": "^8.5.1",

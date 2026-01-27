@@ -1,0 +1,63 @@
+---
+title: Andre rammeverk
+description: Bruk av Designsystemet med andre rammeverk og rein HTML.
+date: 2026-01-08
+category: Kode
+color: blue
+icon: CodeIcon
+published: true
+order: 30
+---
+
+Ingen React? Ingen problem! Designsystemet har som mål å vere teknologiuavhengig.
+Sjølv om vi tilbyr React-komponentar, er det ikkje eit krav for å bruke Designsystemet.
+Sidan vi nyttar standard `data-`-attributt i HTML, er allereie store delar av Designsystemet rein `HTML` + `CSS`, 
+og kan brukast saman med andre rammeverk som Vue, Angular, Svelte eller liknande.
+
+Det er berre nokre få delar av funksjonaliteten som kun er tilgjengeleg i React, som for eksempel automatisk handtering av tilgjengelegheit og plassering av popovers. 
+Dette arbeider vi med å løfte ut av React og gjere tilgjengeleg for alle teknologiar i starten av 2026. [Følg arbeidet på GitHub](https://github.com/digdir/designsystemet/issues/1044)
+
+## Kom i gang
+
+For å bruke Designsystemets uten React, trenger du CSS pakka. Du kan [lage ditt eget tema](/no/fundamentals/start-here/own-theme), eller bruke standardtemaet fra `@digdir/designsystemet-css/theme`. Du kan lett lage ditt eget tema senere.
+
+```sh
+npm i @digdir/designsystemet-css
+```
+
+### Legg til CSS i prosjektet ditt
+
+Du kan importere CSS filene direkte i din hoved CSS fil, eller legge de til som `<link>` tagger i `<head>`.
+
+#### Import i CSS fil
+
+```css
+@import '@digdir/designsystemet-css/index.css';
+@import '@digdir/designsystemet-css/theme.css';
+```
+
+#### Import i JS fil
+
+Hvis du har støtte for å importere CSS i JavaScript filer, kan du bruke denne metoden:
+
+```js
+import '@digdir/designsystemet-css';
+import '@digdir/designsystemet-css/theme';
+```
+
+## Ta i bruk
+
+Alle komponentar har ein seksjon for HTML nederst på kode-sidene i dokumentasjonen. Her får du info om korleis du kan bruke komponentane med rein HTML, og eventuelle fallgruver.
+Det er også anbefalt at du leser gjennom tilgjengeligheits-sida.
+
+Alle eksempel har også muligheit for å sjå HTML-koden som blir rendra ut av React. Trykk på "Vis kode", og deretter velg "HTML". Du kan oppdatere koden i React panelet for å sjå korleis HTML-koden blir oppdatert.
+
+## Eksempel
+
+Her er eit enkelt eksempel på ein knapp:
+
+```html
+<button class="ds-button" data-variant="secondary">
+  Klikk meg
+</button>
+```

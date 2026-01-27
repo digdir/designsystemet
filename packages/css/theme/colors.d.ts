@@ -1,5 +1,5 @@
 /* This file is deprecated and will be removed in a future release. Use types.d.ts instead */
-/* build: v1.9.0 */
+/* build: v1.11.0 */
 import type {} from '@digdir/designsystemet-types';
 
 // Augment types based on theme

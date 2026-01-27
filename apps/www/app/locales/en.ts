@@ -22,7 +22,7 @@ export default {
     toolbox: {
       title: 'A common design system',
       description:
-        'Designsystemet is a shared toolbox of foundational UI components, guidelines, and patterns to support the development of digital services. It helps teams build efficiently while ensuring consistent and user-friendly experiences.',
+        'Designsystemet is a shared toolkit of UI components and guidelines for developing digital services. It is free to use, designed to be used with an organisation’s own visual identity, and supports efficient product development and coherent user experiences.',
       link: 'Read more about Designsystemet',
     },
     'components-section': {
@@ -43,6 +43,7 @@ export default {
     },
     'latest-news': {
       title: 'Latest news from Designsystemet',
+      seeAllPosts: 'See all blog posts',
     },
     'join-section': {
       title: 'Join us in developing Designsystemet!',
@@ -87,7 +88,7 @@ export default {
       'Getting Started': 'Getting Started',
       'Design Principles': 'Design Principles',
       Figma: 'Figma',
-      Code: 'Kode',
+      Code: 'Code',
       About: 'About',
       components: 'Components',
       getStarted: 'Getting Started',
@@ -108,7 +109,8 @@ export default {
     sidebar: 'sidebar',
   },
   navigation: {
-    fundamentals: 'Fundamentals',
+    intro: 'Intro',
+    fundamentals: 'Get Started',
     'best-practices': 'Best Practices',
     patterns: 'Patterns',
     blog: 'Blog',
@@ -163,9 +165,14 @@ export default {
       'Patterns are guidelines and recommendations for solving interactions and recurring user tasks. When the same patterns are used across services, they help create recognition and familiarity in the user experience.',
   },
   fundamentals: {
-    title: 'Fundamentals',
+    title: 'Getting started',
     description:
       'Learn more about Designsystemet, the basic design elements, and how to get started as a designer or developer.',
+  },
+  intro: {
+    title: 'Introduction',
+    description:
+      'Designsystemet solves shared challenges in developing digital services through reuse, collaboration, and accessibility support.',
   },
   'best-practices': {
     title: 'Best practices',
@@ -259,4 +266,26 @@ export default {
   contributors: 'Contributors',
   editOnGithub: 'Edit this page on github.com (opens in a new tab)',
   updated: 'Updated',
+  'roi-calculator': {
+    title: 'What can your organisation save?',
+    description:
+      'Use the calculator to estimate how many hours your organisation can save by using Designsystemet in new solutions.',
+    radios: {
+      direct: 'We will use it directly in solutions',
+      build: 'We will build our own design system on top of Designsystemet',
+    },
+    inputs: {
+      newSolutions: {
+        label: 'Number of new solutions per year',
+        suffix: 'new solutions per year',
+      },
+      numberOfDevs: {
+        label: 'Number of developers/designers per solution',
+        suffix: 'man-years per solution',
+      },
+    },
+    savedHours:
+      'The organisation frees up {{hours}} hours per year ({{years}} full-time equivalents).',
+    usageLegend: 'How will you use Designsystemet?',
+  },
 } satisfies typeof no;

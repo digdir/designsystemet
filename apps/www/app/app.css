@@ -11,11 +11,9 @@
       --circle-wipe-progress: 150vmax;
     }
   }
-  /* biome-ignore lint/correctness/noUnknownTypeSelector: new feature */
   ::view-transition-old(root) {
     animation: none;
   }
-  /* biome-ignore lint/correctness/noUnknownTypeSelector: new feature */
   &::view-transition-new(root) {
     mask-image: radial-gradient(circle var(--circle-wipe-progress) at var(--_theme-x, 50%) var(--_theme-y, 50%), black 70%, transparent 100%);
     animation: 0.6s ease-in both --circle-wipe;
@@ -272,7 +270,7 @@
     > * {
       max-width: var(--short-content-width);
     }
-    :where(div:not([class]), img, section, figure, table, video, iframe, [data-iframe-video], .u-long-content, .dodont-row) {
+    :where(div:not([class]), img, section, figure, table, video, iframe, [data-iframe-video], .u-long-content, .dodont-row, [data-wide-content]) {
       max-width: var(--long-content-width);
     }
     :where(.u-short-content) {
@@ -437,6 +435,17 @@
     }
     tbody {
       font-size: 0.875rem /*14px*/;
+    }
+  }
+
+  [data-live='true'] {
+    fieldset:not([class]) {
+      border-color: var(--ds-color-neutral-border-subtle);
+      border-radius: 4px;
+
+      legend:not([class]) {
+        font-size: 1rem;
+      }
     }
   }
 }

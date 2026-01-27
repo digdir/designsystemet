@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "description": "Internal resources for Digdir",
-    "exports": {
+  "exports": {
     "./themes/*": {
       "default": "./themes/*"
     }
   },
-  "files": ["themes"],
+  "files": [
+    "themes"
+  ],
   "scripts": {
     "build:tokens": "pnpm designsystemet tokens build -t design-tokens -o themes --clean --experimental-tailwind",
     "create:tokens": "pnpm designsystemet tokens create --config digdir.config.json",
@@ -17,7 +19,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.27.0",
+  "packageManager": "pnpm@10.28.0",
   "devDependencies": {
     "rimraf": "^6.1.2",
     "@digdir/designsystemet": "workspace:^"
