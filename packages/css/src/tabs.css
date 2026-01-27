@@ -8,13 +8,17 @@
   --dsc-tabs-list-border-bottom-width: var(--ds-border-width-default);
   --dsc-tabs-list-border-bottom-style: solid;
 
-  & :is([role='tabpanel'], u-tabpanel, ds-tabpanel) {
+  & [role='tabpanel'],
+  & ds-tabpanel,
+  & u-tabpanel {
     padding: var(--dsc-tabs-content-padding);
 
     @composes ds-focus from './base.css';
   }
 
-  & :is([role='tablist'], u-tablist, ds-tablist) {
+  & [role='tablist'],
+  & ds-tablist,
+  & u-tablist {
     flex-direction: row;
     border-bottom-width: var(--dsc-tabs-list-border-bottom-width);
     border-bottom-style: var(--dsc-tabs-list-border-bottom-style);
@@ -26,7 +30,9 @@
       display: flex;
     }
 
-    & > :is([role='tab'], u-tab, ds-tab) {
+    & > [role='tab'] /* Using role= instead og <button> to allow non-tab-buttons in same parent */,
+    & > ds-tab,
+    & > u-tab {
       align-items: center;
       background: none;
       border: 0;
