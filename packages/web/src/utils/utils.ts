@@ -145,6 +145,7 @@ export const onMutation = (
   const onFrame = () => {
     if (!isBrowser()) return cleanup(); // If using JSDOM, the document might have been removed
     callback(observer);
+    observer.takeRecords(); // Clear records in case mutations happened during callback
     queue = 0;
   };
   const cleanup = () => observer?.disconnect?.();
