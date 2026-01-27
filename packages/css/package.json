@@ -31,7 +31,6 @@
     "access": "public"
   },
   "browserslist": [
-    "cover 90% in NO",
     "last 2 versions",
     "Firefox ESR",
     "not dead",
