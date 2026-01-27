@@ -1,13 +1,23 @@
 <Story story="Preview" />
 
-**Use `Dialog` when** 
-- the user needs to focus on a specific task
-- you need to ensure that the user notices important information
+**Use a modal `Dialog` when**
+- users need to confirm a critical action, such as deleting something that cannot be undone
+- users must see a specific dialog and are required to respond to it
+- you need to ensure that users notice important information
 
-**Avoid `Dialog` when**
+**Avoid a modal `Dialog` when**
 - the content is extensive or complex
-- the process contains several steps
-- interrupting the user’s workflow may be problematic, use [`Alert`](/en/components/docs/alert/overview), [`Popover`](/en/components/docs/popover/overview) or a non-modal `Dialog` instead
+- the content is one of several steps in a process
+- you need to notify users about something that does not require action. Use [`Alert`](/no/components/docs/alert/overview) or a non-modal `Dialog` instead
+- you want to provide brief information that users can choose whether to view. Use [`Popover`](/no/components/docs/popover/overview)
+
+See also the [system notifications pattern](/en/patterns/systemnotifications#when-do-we-use-modals) for more information about when a modal `Dialog` should be used.
+
+<Card data-color="info">
+  Many refer to this component simply as a modal. In Designsystemet, we use `Dialog`, which is based on the built-in HTML `<dialog>` element, and distinguish between modal and non-modal dialogs based on how they behave.
+</Card>
+
+
 
 ## Example
 
