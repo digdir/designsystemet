@@ -28,9 +28,6 @@
     "configs/**",
     "src/themes/**"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "designsystemet:tokens-create": "pnpm designsystemet tokens create --config ./configs/designsystemet.config.json",
     "designsystemet:tokens-build": "pnpm designsystemet tokens build --config ./configs/designsystemet.config.json -t ../../design-tokens -o ./src/themes --clean --experimental-tailwind",
