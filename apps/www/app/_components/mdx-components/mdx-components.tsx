@@ -32,6 +32,7 @@ import { Contributors } from '~/_components/contributors/contributors';
 import { Image } from '~/_components/image/image';
 import { ResponsiveIframe } from '~/_components/responsive-iframe/responsive-iframe';
 import { TokenList } from '~/_components/tokens/token-list/token-list';
+import { Blockquote } from '../blockquote/blockquote';
 import { CssVariables } from '../css-variables/css-variables';
 import RoiCalculator from '../roi-calculator/roi-calcuator';
 import { VideoCard } from '../video-card/video-card';
@@ -58,6 +59,9 @@ const defaultComponents = {
   TableBody,
   TableFoot,
   TableCell,
+  blockquote: (props: JSX.IntrinsicElements['blockquote']) => (
+    <Blockquote {...props} />
+  ),
   h1: (props: JSX.IntrinsicElements['h1']) => (
     <Heading className={classes.heading} level={1} data-size='xl' {...props} />
   ),
