@@ -2,7 +2,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
 // Use tsup (not Vite) for building, as it has better dts support out of the box
-// @ts-expect-error (Since @custom-elements-manifest/analyzer does not provide Typescript types)
 import * as manifest from '@custom-elements-manifest/analyzer/src/browser-entrypoint.js';
 import { customElementVsCodePlugin } from 'custom-element-vs-code-integration';
 import { defineConfig } from 'tsup';
@@ -48,7 +47,6 @@ export default defineConfig({
   entry: ['./src/index.ts'],
   format: ['esm'],
   dts: {
-    only: true,
     footer: modules.map(getFrameworkTypes).join(''),
     compilerOptions: {
       composite: false,
@@ -61,7 +59,7 @@ export default defineConfig({
       modules: modules.map(tsToSource),
       plugins: [manifestVSCode],
     });
-
+    console.log(manifestData);
     fs.writeFileSync(manifestFile, JSON.stringify(manifestData, null, ' '));
   },
 });

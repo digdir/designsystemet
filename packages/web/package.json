@@ -18,16 +18,19 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.cjs"
-    }
+    },
+    "./custom-elements.json": "./dist/custom-elements.json",
+    "./vscode.html-custom-data.json": "./dist/vscode.html-custom-data.json"
   },
   "files": [
     "dist/**"
   ],
   "scripts": {
     "start": "vite --config=./vite.config.ts --port=5174",
-    "build": "rimraf dist && tsup && rolldown -c",
+    "build": "rimraf dist && tsup && rolldown -c && cem analyze",
     "test": "vitest --config=vitest.browser.config.ts"
   },
+  "customElements": "dist/custom-elements.json",
   "publishConfig": {
     "access": "public"
   },
