@@ -34,7 +34,7 @@ export const ColorVariables = () => {
           <Field>
             <Label>{t('overview.select-color')}</Label>
             <Select
-              value={previewColor.hex}
+              value={previewColor.name}
               onChange={(v) => {
                 if (!colors) return;
                 const selectedColor = allColors.find(
