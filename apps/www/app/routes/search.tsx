@@ -1,9 +1,6 @@
 import { data } from 'react-router';
+import { getSearchIndex, searchIndex } from '~/_utils/search-index.server';
 import type { Route } from './+types/search';
-import {
-  getSearchIndex,
-  searchIndex,
-} from '~/_utils/search-index.server';
 
 export const loader = async ({ request }: Route.LoaderArgs) => {
   const url = new URL(request.url);

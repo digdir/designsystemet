@@ -1,14 +1,14 @@
+import { Dialog, Search, Tag } from '@digdir/designsystemet-react';
 import {
+  type KeyboardEvent,
   useCallback,
   useEffect,
   useRef,
   useState,
-  type KeyboardEvent,
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router';
 import classes from './search-dialog.module.css';
-import { Dialog, Search, Tag } from '@digdir/designsystemet-react';
 
 type SearchResult = {
   id: string;
@@ -147,7 +147,7 @@ export function SearchDialog({ isOpen, onClose, lang }: SearchDialogProps) {
       closeButton={false}
       closedby='any'
     >
-      <Dialog.Block data-color="neutral">
+      <Dialog.Block data-color='neutral'>
         <Search>
           <Search.Input
             ref={inputRef}
@@ -162,7 +162,6 @@ export function SearchDialog({ isOpen, onClose, lang }: SearchDialogProps) {
         </Search>
       </Dialog.Block>
       <Dialog.Block className={classes.content}>
-
         <div className={classes.results} role='listbox'>
           {isLoading ? (
             <div className={classes.loading}>{t('search.loading')}</div>

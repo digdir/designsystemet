@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
+import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { cwd } from 'node:process';
 
@@ -35,8 +35,10 @@ function extractFrontmatter(content: string): Record<string, string> {
       const key = line.slice(0, colonIndex).trim();
       let value = line.slice(colonIndex + 1).trim();
       // Remove surrounding quotes if present
-      if ((value.startsWith('"') && value.endsWith('"')) || 
-          (value.startsWith("'") && value.endsWith("'"))) {
+      if (
+        (value.startsWith('"') && value.endsWith('"')) ||
+        (value.startsWith("'") && value.endsWith("'"))
+      ) {
         value = value.slice(1, -1);
       }
       frontmatter[key] = value;
@@ -52,7 +54,7 @@ function extractFrontmatter(content: string): Record<string, string> {
 function stripMdxSyntax(content: string): string {
   // Normalize line endings
   let text = content.replace(/\r\n/g, '\n');
-  
+
   // Remove frontmatter
   text = text.replace(/^---\n[\s\S]*?\n---\n?/, '');
 
@@ -172,9 +174,7 @@ function indexComponents(): SearchIndexItem[] {
               componentDir.charAt(0).toUpperCase() + componentDir.slice(1);
 
             const description =
-              frontmatter.description ||
-              metadata?.[lang]?.subtitle ||
-              '';
+              frontmatter.description || metadata?.[lang]?.subtitle || '';
 
             items.push({
               id: `component-${componentDir}-${lang}-${pageType}`,
@@ -396,7 +396,9 @@ export function searchIndex(
           score += 500;
         } else if (titleLower.includes(term)) {
           // Title contains term as a word
-          const wordBoundaryMatch = new RegExp(`\\b${term}\\b`).test(titleLower);
+          const wordBoundaryMatch = new RegExp(`\\b${term}\\b`).test(
+            titleLower,
+          );
           score += wordBoundaryMatch ? 200 : 100;
         }
 

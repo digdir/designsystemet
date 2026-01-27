@@ -24,10 +24,6 @@ export function SearchTrigger({ onClick }: SearchTriggerProps) {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [onClick]);
 
-  const isMac =
-    typeof navigator !== 'undefined' &&
-    navigator.platform.toUpperCase().indexOf('MAC') >= 0;
-
   return (
     <Button
       type='button'

@@ -2,7 +2,7 @@ import { SkipLink } from '@digdir/designsystemet-react';
 import type { FooterLinkListItemProps } from '@internal/components';
 import { Error404, Footer, Header } from '@internal/components';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
-import { useState, useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { isRouteErrorResponse, Outlet, useRouteLoaderData } from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
