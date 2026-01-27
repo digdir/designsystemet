@@ -28,16 +28,17 @@ Sorter svaralternativene alfabetisk hvis det ikke er en god grunn til å gjøre 
 ### Plassering
 Plasser helst radioknapper vertikalt. Da blir det lettere å skanne listen og lese alternativene. For brukere som må forstørre teksten, er horisontale lister utfordrende. 
 
-Hvis du har kun to alternativer med korte tekster som "Ja" og "Nei", kan du vurdere om de bør plasseres ved siden av hverandre. Ved horisontal visning må det være klart hvilken tekst som hører til hvilken knapp. Du kan bruke horisontal visning når det bare er to alternativer med korte tekster, eller i en vurderingsskala som går fra «helt uenig» til «helt enig» [likert-skala (snl.no)](https://snl.no/Likert-skala). 
+Ved horisontal visning må det være klart hvilken tekst som hører til hvilken knapp. Du kan bruke horisontal visning når det bare er to alternativer med korte tekster som "Ja" og "Nei", eller i en vurderingsskala som går fra «helt uenig» til «helt enig». [Likert-skala (snl.no)](https://snl.no/Likert-skala).
 
 <Story story="Inline" />
 
-### Unngå forhåndsvalgt alternativ
-Tenk nøye over om du virkelig trenger å ha et forhåndsvalgt alternativ.
-Det kan ha motsatt effekt av det du ønsker, for eksempel at brukeren føler seg manipulert til å ta ett bestemt valg, eller ikke klarer å ta et bevisst valg selv.
+### Vær forsiktig med forhåndsvalgt alternativ
+Vurder ut fra konteksten om det er riktig å ha et forhåndsvalgt alternativ. Et forhåndsvalgt alternativ kan påvirke brukerens mulighet til å ta et bevisst valg, og noen kan oppleve det som manipulerende eller diskriminerende.
 
 ## Tekst
-En gruppe med flere alternativer bør alltid ha ledetekst (`<legend>`) og eventuelt en beskrivelse (`description`) for mer forklaring. Beskrivelsen skal komme like etter ledeteksten og gi brukeren nødvendig informasjon før de tar et valg.
+En gruppe med flere alternativer bør alltid ha ledetekst (`legend`) og svaralternativ (`label`). Begge kan ha en beskrivelse (`description`) for mer forklaring. Beskrivelsen skal komme like etter ledeteksten når den skal hjelpe brukerne med å forstå spørsmålet og gi brukeren nødvendig informasjon før de tar et valg.
+
+Beskrivelsen etter label skal hjelpe brukerne å forstå svaralternativet.
 
 <div className="dodont-row">
   <DoDont story="DoIcon">
@@ -47,9 +48,6 @@ En gruppe med flere alternativer bør alltid ha ledetekst (`<legend>`) og eventu
     Her kommer viktig og relevant informasjon etter valget, og er lite synlig for brukerne. Det bryter den logiske rekkefølgen og kan gjøre at brukerne velger feil.
   </DoDont>
 </div>
-
-
-Hvis en eller flere av radioknappene skal ha beskrivelse, skal den ligge rett under svaralternativet (`<label>`). 
 
 Svaralternativene skal være så korte som mulig, og hvert alternativ bør ha samme språklige form. 
 
