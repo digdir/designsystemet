@@ -1,17 +1,37 @@
 .dialog {
-  --dsc-dialog-max-width: 600px;
-  --dsc-dialog-width: 90vw;
-  --dsc-dialog-padding: 0;
-
-  max-height: 80vh;
-  overflow: hidden;
+  --dsc-dialog-background: var(--ds-color-neutral-surface-default);
+  --this-border: var(--ds-border-width-default) solid var(--ds-color-neutral-border-subtle);
+  width: min(77ch, 90vw);
+  max-width: unset;
+  max-height: 90vh;
+  overflow: visible;
   flex-direction: column;
+  border-radius: var(--ds-border-radius-md);
+  border: var(--this-border);
+  padding: 0;
+  box-shadow: var(--ds-shadow-lg);
+  top: 5vh;
+  margin-top: 0;
+  &::backdrop {
+    opacity: 0.8;
+    /* always use the dark version of these colors but loose single source of truth */
+    --ds-color-accent-surface-tinted: #172f4b;
+    --ds-color-accent-background-default: #0c1927;
+    background-image: linear-gradient(180deg, var(--ds-color-accent-surface-tinted), var(--ds-color-accent-background-default));
+  }
+  &[open] {
+    display: flex;
+  }
+}
+
+.title {
+  margin-bottom: var(--ds-size-6);
 }
 
 .searchBlock {
   flex-shrink: 0;
   padding: var(--ds-size-4);
-  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
+  border-bottom: var(--this-border);
 }
 
 .content {
@@ -29,7 +49,7 @@
   gap: var(--ds-size-2);
   padding: var(--ds-size-2) var(--ds-size-3);
   background: var(--ds-color-neutral-surface-default);
-  border: 1px solid var(--ds-color-neutral-border-default);
+  border: var(--this-border);
   border-radius: var(--ds-border-radius-md);
 }
 
@@ -46,7 +66,6 @@
   flex: 1;
   overflow-y: auto;
   min-height: 0;
-  max-height: 50vh;
   &:has(.resultItem) {
     padding: var(--ds-size-2) 0;
   }

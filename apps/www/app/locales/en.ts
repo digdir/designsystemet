@@ -246,7 +246,7 @@ export default {
     },
   },
   search: {
-    placeholder: 'Search...',
+    placeholder: 'Search for components, guidelines, and more...',
     label: 'Search the documentation',
     loading: 'Searching...',
     'no-results': 'No results found',

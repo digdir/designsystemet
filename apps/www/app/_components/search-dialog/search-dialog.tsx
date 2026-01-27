@@ -1,4 +1,4 @@
-import { Dialog, Search, Tag } from '@digdir/designsystemet-react';
+import { Dialog, Heading, Search, Tag } from '@digdir/designsystemet-react';
 import {
   type KeyboardEvent,
   useCallback,
@@ -9,6 +9,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router';
 import classes from './search-dialog.module.css';
+import cl from 'clsx';
 
 type SearchResult = {
   id: string;
@@ -143,11 +144,14 @@ export function SearchDialog({ isOpen, onClose, lang }: SearchDialogProps) {
   return (
     <Dialog
       ref={dialogRef}
-      className={classes.dialog}
+      className={cl(classes.dialog, 'search-dialog')}
       closeButton={false}
       closedby='any'
     >
       <Dialog.Block data-color='neutral'>
+        <Heading data-size='xs' className={classes.title}>
+          {t('search.title', 'Hva leter du etter?')}
+        </Heading>
         <Search>
           <Search.Input
             ref={inputRef}

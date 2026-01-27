@@ -245,7 +245,7 @@ export default {
     },
   },
   search: {
-    placeholder: 'Søk...',
+    placeholder: 'Søk etter komponenter, retningslinjer og mer...',
     label: 'Søk i dokumentasjonen',
     loading: 'Søker...',
     'no-results': 'Ingen resultater funnet',
