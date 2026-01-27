@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 // Use tsup (not Vite) for building, as it has better dts support out of the box
+// @ts-ignore
 import * as manifest from '@custom-elements-manifest/analyzer/src/browser-entrypoint.js';
 import { customElementVsCodePlugin } from 'custom-element-vs-code-integration';
 import { defineConfig } from 'tsup';
