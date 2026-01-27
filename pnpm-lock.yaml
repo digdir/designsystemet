@@ -668,8 +668,8 @@ importers:
         specifier: ^1.7.4
         version: 1.7.4
       '@u-elements/u-combobox':
-        specifier: ^1.0.6
-        version: 1.0.6
+        specifier: ^1.0.7
+        version: 1.0.7
       '@u-elements/u-datalist':
         specifier: ^1.1.0
         version: 1.1.0
@@ -2872,8 +2872,8 @@ packages:
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
 
-  '@u-elements/u-combobox@1.0.6':
-    resolution: {integrity: sha512-ayZHWbn5XexcBbk4PHU4R7srVG8fWAywooD/MCOyYj1nPIeH9C/fPVC3/2pS8doNhVVegaCqLepQ+kV4C0+TEA==}
+  '@u-elements/u-combobox@1.0.7':
+    resolution: {integrity: sha512-rueG+Wof9ycmbjIW2omS4bLite5BkH87SWfkBrvSjrR1GWn4wgpjnUQ1lORDRalYcPYlgFWy2uGFEqqKPx3Yqw==}
 
   '@u-elements/u-datalist@1.1.0':
     resolution: {integrity: sha512-t8H3OddziXmq0YBuXodVWnvRi56WW4sfbJEIO1fx4i39sZ0s/0xjHBsoAsTZkb9mXJEtpgrsH8IkDYP0ZSgSXQ==}
@@ -8384,7 +8384,7 @@ snapshots:
 
   '@types/unist@3.0.3': {}
 
-  '@u-elements/u-combobox@1.0.6': {}
+  '@u-elements/u-combobox@1.0.7': {}
 
   '@u-elements/u-datalist@1.1.0': {}
 

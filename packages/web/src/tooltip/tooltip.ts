@@ -8,16 +8,29 @@ import {
   tag,
 } from '../utils/utils';
 
-let TIP: HTMLElement;
+let TIP: HTMLElement | undefined;
 let SOURCE: Element | undefined;
 let HOVER_TIMER: number | ReturnType<typeof setTimeout> = 0;
 let SKIP_TIMER: number | ReturnType<typeof setTimeout> = 0;
+const ATTR_COLOR = 'data-color';
+const SELECTOR_COLOR = `[${ATTR_COLOR}]`;
+const ATTR_SCHEME = 'data-color-scheme';
+const SELECTOR_SCHEME = `[${ATTR_SCHEME}]`;
 const SELECTOR_TOOLTIP = '[data-tooltip-element]';
 const SELECTOR_INTERACTIVE = 'a,button,input,label,select,textarea,[tabindex]';
 const DELAY_HOVER = 300;
 const DELAY_SKIP = 300;
 
 // TODO: Document using data-tooltip-element to set custom tooltip element
+
+/**
+ * setTooltipElement
+ * @description Allows setting a custom tooltip element. It does not need to, and should not, be injected to document.body, as we inject on hover to ensure React hydration works as expected.
+ * @param el The HTMLElement to use as tooltip
+ */
+export const setTooltipElement = (el?: HTMLElement | null) => {
+  TIP = el || undefined;
+};
 
 const handleAriaAttributes = debounce(() => {
   for (const el of document.querySelectorAll('[data-tooltip]')) {
@@ -47,10 +60,14 @@ const handleInterest = ({ type, target }: Event) => {
   const source = (target as Element)?.closest?.('[data-tooltip]');
   if (source === SOURCE) return; // No need to update
   if (!TIP.isConnected) document.body.appendChild(TIP); // Ensure connected
-  if (!TIP.hasAttribute('popover')) attr(TIP, 'popover', 'manual'); // Ensure popover behavior
+  attr(TIP, 'popover', 'manual'); // Ensure popover behavior
   if (!source) return TIP?.hidePopover(); // If no new anchor, cleanup previous autoUpdate
 
+  const color = source.closest(SELECTOR_COLOR)?.getAttribute(ATTR_COLOR); // Match source color of source element
+  const scheme = source.closest(SELECTOR_SCHEME)?.getAttribute(ATTR_SCHEME); // Match source color-scheme of source element
   clearTimeout(SKIP_TIMER);
+  attr(TIP, ATTR_COLOR, color);
+  attr(TIP, ATTR_SCHEME, scheme);
   TIP.textContent = attr(source, 'data-tooltip');
   TIP.showPopover();
   TIP.dispatchEvent(new CustomEvent('ds-toggle-source', { detail: source })); // Since showPopover({ source }) is not supported in all browsers yet
@@ -59,7 +76,7 @@ const handleInterest = ({ type, target }: Event) => {
 
 const handleClose = (event?: Partial<ToggleEvent & KeyboardEvent>) => {
   if (event?.type === 'keydown')
-    return event?.key === 'Escape' && TIP.hidePopover();
+    return event?.key === 'Escape' && TIP?.hidePopover();
   if (!event) SOURCE = undefined;
   else if (event.target === TIP && event.newState === 'closed')
     SKIP_TIMER = setTimeout(handleClose, DELAY_SKIP);

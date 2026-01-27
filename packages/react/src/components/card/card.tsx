@@ -25,10 +25,10 @@ export type CardProps = MergeRight<
   }
 >;
 
+const ATTR_CLICKDELEGATE = 'data-clickdelegatefor';
+const SELECTOR_LINK = `:is(h1,h2,h3,h4,h5,h6) a`;
 const SELECTOR_SKIP =
   'a,button,label,details,dialog,[role="button"],[popover],[contenteditable]';
-const SELECTOR_LINK = `:not(${SELECTOR_SKIP}) :is(h1,h2,h3,h4,h5,h6) a`;
-const ATTR_CLICKDELEGATE = 'data-clickdelegatefor';
 
 /**
  * Card component to present content in a structured way.
@@ -54,9 +54,10 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
   useEffect(() => {
     const card = cardRef.current;
     const link = card?.querySelector(SELECTOR_LINK);
+    const skip = !link || link.closest(SELECTOR_SKIP);
     const id = link?.id;
 
-    if (card?.hasAttribute(ATTR_CLICKDELEGATE) || !link) return; // Already delegated
+    if (card?.hasAttribute(ATTR_CLICKDELEGATE) || skip) return; // Already delegated or skipped
     link.id = id || linkGeneratedId;
     card?.setAttribute(ATTR_CLICKDELEGATE, link.id);
 
