@@ -51,7 +51,7 @@ const handleMutations = debounce(() => {
             `Fields should only have one input element. Use <fieldset> to group multiple fields:`,
             field,
           );
-        input = el;
+        if (isNotHidden(el)) input = el; // Only register if visible input
       } else if (isNotHidden(el)) {
         const type = el.getAttribute('data-field'); // Using getAttribute not attr for best performance
         if (type === 'counter') counter = el;
