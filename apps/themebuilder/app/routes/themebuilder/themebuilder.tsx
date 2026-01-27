@@ -33,6 +33,8 @@ const NEUTRAL_COLOR = THEME.neutral;
 
 export type ThemebuilderTabs = 'overview' | 'colorsystem' | 'variables';
 
+const DEFAULT_TAB: ThemebuilderTabs = 'colorsystem';
+
 export const loader = async ({
   params: { lang },
   request,
@@ -50,7 +52,7 @@ export const loader = async ({
       support: SUPPORT_COLORS,
       appearance: 'light',
       'border-radius': '4',
-      tab: 'overview',
+      tab: DEFAULT_TAB,
     });
 
     return redirect(`/${lang}/themebuilder?${newParams.toString()}`);
@@ -96,7 +98,7 @@ export const loader = async ({
     overrides: overridesMap,
     colorScheme: (urlParams.get('appearance') || 'light') as ColorScheme,
     baseBorderRadius: parseInt(urlParams.get('border-radius') || '4', 10),
-    tab: (urlParams.get('tab') || 'overview') as unknown as ThemebuilderTabs,
+    tab: (urlParams.get('tab') || DEFAULT_TAB) as unknown as ThemebuilderTabs,
     lang,
     metadata: generateMetadata({
       title: t('meta.title'),
