@@ -1,4 +1,7 @@
 .ds-dropdown {
+  @composes ds-floating from './base.css';
+  --_ds-floating: bottom;
+
   --dsc-dropdown-padding: var(--ds-size-3) var(--ds-size-2);
   --dsc-dropdown-item-padding: var(--ds-size-2) var(--ds-size-4);
   --dsc-dropdown-item-size: var(--ds-size-12);
@@ -17,9 +20,6 @@
   list-style: none;
   min-width: 15em;
   padding: var(--dsc-dropdown-padding);
-
-  @composes ds-floating from './base.css';
-  --_ds-floating: bottom;
 
   & :is(h2, h3, h4, h5, h6) {
     align-items: center;

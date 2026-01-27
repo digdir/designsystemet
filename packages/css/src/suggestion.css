@@ -35,6 +35,10 @@
   }
 
   & :is(u-datalist, datalist) {
+    @composes ds-floating from './base.css';
+    --_ds-floating: bottom;
+    --_ds-floating-overscroll: fit;
+
     background: var(--ds-color-neutral-surface-default);
     border-radius: var(--ds-border-radius-md);
     border-width: var(--dsc-suggestion-border-width);
@@ -44,13 +48,10 @@
     box-sizing: border-box;
     color: var(--ds-color-neutral-text-default);
     overflow-y: auto;
+    overscroll-behavior: contain;
     max-height: 200px;
     inset: 0 auto auto 0;
     padding: 0;
-
-    @composes ds-floating from './base.css';
-    --_ds-floating: bottom;
-    --_ds-floating-overscroll: fit;
 
     /* If not using popover for the list */
     &:not([popover]) {

@@ -1,4 +1,7 @@
 .ds-tooltip {
+  @composes ds-floating from './base.css';
+  --_ds-floating-arrow-size: var(--dsc-tooltip-arrow-size);
+
   --dsc-tooltip-background: var(--ds-color-neutral-text-default);
   --dsc-tooltip-color: var(--ds-color-neutral-background-default);
   --dsc-tooltip-border-radius: var(--ds-border-radius-default);
@@ -16,9 +19,6 @@
   line-height: var(--ds-line-height-sm);
   padding: var(--dsc-tooltip-padding);
   view-transition-name: ds-tooltip; /* Prevent being part of other view-transitions */
-
-  @composes ds-floating from './base.css';
-  --_ds-floating-arrow-size: var(--dsc-tooltip-arrow-size);
 
   /* Transparent box to make tooltip stay open when mouse is over it */
   &::after {
