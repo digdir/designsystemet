@@ -5,6 +5,7 @@ import type no from './no';
 export default {
   ...en,
   navigation: {
+    intro: 'Intro',
     fundamentals: 'Get Started',
     'best-practices': 'Best Practices',
     patterns: 'Patterns',

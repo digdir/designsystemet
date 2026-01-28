@@ -1,7 +1,7 @@
 {
   "name": "@digdir/designsystemet-react",
   "type": "module",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "description": "React components for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -24,7 +24,6 @@
       "types": "./dist/react-types.d.ts"
     }
   },
-  "sideEffects": false,
   "files": [
     "dist/**"
   ],
@@ -44,7 +43,7 @@
     "@digdir/designsystemet-types": "workspace:^",
     "@floating-ui/dom": "^1.7.4",
     "@floating-ui/react": "0.26.23",
-    "@navikt/aksel-icons": "^7.38.0",
+    "@navikt/aksel-icons": "^7.40.0",
     "@radix-ui/react-slot": "^1.2.4",
     "@tanstack/react-virtual": "^3.13.18",
     "@u-elements/u-combobox": "^1.0.5",
@@ -61,14 +60,14 @@
     "@storybook/addon-vitest": "^10.1.11",
     "@storybook/react-vite": "^10.1.11",
     "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.1",
+    "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
     "@types/react": "^19.2.8",
     "@types/react-dom": "^19.2.3",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "rimraf": "^6.1.2",
-    "rollup": "^4.55.1",
+    "rollup": "^4.55.2",
     "rollup-plugin-copy": "^3.5.0",
     "storybook": "^10.1.11",
     "tsx": "4.21.0",
