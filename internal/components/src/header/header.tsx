@@ -265,7 +265,7 @@ const Header = ({
                 lang='en'
               >
                 <LanguageIcon aria-hidden />
-                Language
+                <span>Language</span>
               </Dropdown.Trigger>
 
               <Dropdown open={langOpen} onClose={() => setLangOpen(false)}>
