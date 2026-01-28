@@ -147,7 +147,7 @@ export const NonModalDialog = () => {
         style={{
           zIndex: '10',
           top: 'calc(100vh - 290px)',
-          left: 'calc(100vw - 370px)',
+          left: 'calc(100vw - 385px)',
           margin: 0,
           maxWidth: '350px',
         }}
@@ -182,7 +182,7 @@ export const NonModalDialogEn = () => {
         style={{
           zIndex: '10',
           top: 'calc(100vh - 290px)',
-          left: 'calc(100vw - 370px)',
+          left: 'calc(100vw - 385px)',
           margin: 0,
           maxWidth: '350px',
         }}
