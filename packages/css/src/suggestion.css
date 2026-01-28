@@ -49,7 +49,6 @@
     color: var(--ds-color-neutral-text-default);
     overflow-y: auto;
     overscroll-behavior: contain;
-    max-height: 200px;
     inset: 0 auto auto 0;
     padding: 0;
 
