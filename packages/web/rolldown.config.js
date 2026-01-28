@@ -4,7 +4,9 @@ import { defineConfig } from 'rolldown';
 
 // Mark all dependencies as external
 const pkg = JSON.parse(readFileSync('./package.json', 'utf-8'));
-const external = Object.keys(pkg.dependencies);
+const external = Object.keys(pkg.dependencies).map(
+  (name) => new RegExp(`^${name}(/.*)?`),
+);
 
 // Get all .ts files in src directory for individual file outputs
 const srcDir = './src';
