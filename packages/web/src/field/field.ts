@@ -26,7 +26,7 @@ declare global {
 
 const FIELDS = new Set<DSFieldElement>(); // Set of Field
 const COUNTS = new WeakMap<HTMLInputElement, Element>(); // Using WeakMap so removed inputs/counts does not cause memory leaks
-const FILEDSETS = isBrowser() ? document.getElementsByTagName('fieldset') : [];
+const FIELDSETS = isBrowser() ? document.getElementsByTagName('fieldset') : [];
 const HAS_FIELD_SIZING = isBrowser() && CSS.supports('field-sizing', 'content');
 const COUNTER_DEBOUNCE = isWindows() ? 800 : 200; // Longer debounce on Windows due to NVDA performance
 const NB_COUNTER = {
@@ -35,7 +35,7 @@ const NB_COUNTER = {
 };
 
 const handleMutations = debounce(() => {
-  for (const el of FILEDSETS) {
+  for (const el of FIELDSETS) {
     const labelledby = `${useId(el.querySelector('legend'))} ${useId(el.querySelector(':scope > :is([data-field="description"],legend + p)'))}`;
     attr(el, 'aria-labelledby', labelledby.trim());
   }

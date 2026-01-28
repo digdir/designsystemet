@@ -7,6 +7,7 @@ import {
   on,
   onMutation,
   QUICK_EVENT,
+  useId,
 } from '../utils/utils';
 
 declare global {
@@ -39,6 +40,7 @@ export class DSSuggestionElement extends UHTMLComboboxElement {
 // A non-empty placeholder attribute is required to activate the :placeholder-shown pseudo selector used in our chevron styling
 const renderSuggestion = ({ control, list }: DSSuggestionElement) => {
   if (control && !control.placeholder) attr(control, 'placeholder', ' '); // .control comes from UHTMLComboboxElement
+  if (control) attr(control, 'popovertarget', useId(list) || null);
   if (list) attr(list, 'popover', 'manual'); // Ensure popover attribute is set on the list
 };
 
