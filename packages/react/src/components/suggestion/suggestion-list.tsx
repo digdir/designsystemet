@@ -61,7 +61,6 @@ export const SuggestionList = forwardRef<
       data-nofilter
       data-sr-plural={plural}
       data-sr-singular={singular}
-      popover='manual'
       ref={ref}
       suppressHydrationWarning // Since <u-datalist> adds attributes
       {...rest}

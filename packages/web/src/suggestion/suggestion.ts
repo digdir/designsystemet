@@ -20,12 +20,13 @@ export class DSSuggestionElement extends UHTMLComboboxElement {
 
   connectedCallback() {
     super.connectedCallback();
-    const render = debounce(() => polyfillPlaceholderShown(this), 100);
+    const render = debounce(() => renderSuggestion(this), 100);
     this._unmutate = onMutation(this, render, {
       childList: true,
       subtree: true,
     });
     on(this, 'toggle', polyfillToggleSource, QUICK_EVENT);
+    render(); // Initial render when chilren is mounted
   }
   disconnectedCallback() {
     super.disconnectedCallback();
@@ -36,8 +37,10 @@ export class DSSuggestionElement extends UHTMLComboboxElement {
 }
 
 // A non-empty placeholder attribute is required to activate the :placeholder-shown pseudo selector used in our chevron styling
-const polyfillPlaceholderShown = ({ control }: DSSuggestionElement) =>
-  !control || control.placeholder || attr(control, 'placeholder', ' '); // .control comes from UHTMLComboboxElement
+const renderSuggestion = ({ control, list }: DSSuggestionElement) => {
+  if (control && !control.placeholder) attr(control, 'placeholder', ' '); // .control comes from UHTMLComboboxElement
+  if (list) attr(list, 'popover', 'manual'); // Ensure popover attribute is set on the list
+};
 
 // Since showPopover({ source }) is not supported in all browsers yet:
 const polyfillToggleSource = (event: Partial<ToggleEvent>) => {
