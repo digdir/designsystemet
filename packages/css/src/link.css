@@ -1,5 +1,3 @@
-/* Intentionally styling <a> since the browser agent CSS anyway has opinionated styling for linke */
-a,
 .ds-link {
   /* TODO: Changeset for visited color and active background and border-radius styling */
   --dsc-link-color: var(--ds-color-text-subtle);
