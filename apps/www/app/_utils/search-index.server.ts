@@ -16,6 +16,7 @@ export type SearchIndexItem = {
     | 'best-practices'
     | 'patterns';
   lang: 'en' | 'no';
+  keywords: string;
 };
 
 export type SearchIndex = SearchIndexItem[];
@@ -190,6 +191,7 @@ function indexComponents(): SearchIndexItem[] {
               url: `/${lang}/components/docs/${componentDir}/${pageType}`,
               type: 'component',
               lang,
+              keywords: frontmatter.search_terms || '',
             });
           }
         } catch {
@@ -230,6 +232,7 @@ function indexBlog(): SearchIndexItem[] {
           url: `/${lang}/blog/${slug}`,
           type: 'blog',
           lang,
+          keywords: frontmatter.search_terms || '',
         });
       } catch {
         // Skip files we can't read
@@ -267,6 +270,7 @@ function indexIntro(): SearchIndexItem[] {
           url: `/${lang}/intro/${slug}`,
           type: 'intro',
           lang,
+          keywords: frontmatter.search_terms || '',
         });
       } catch {
         // Skip files we can't read
@@ -304,6 +308,7 @@ function indexFundamentals(): SearchIndexItem[] {
           url: `/${lang}/fundamentals/${slug}`,
           type: 'fundamentals',
           lang,
+          keywords: frontmatter.search_terms || '',
         });
       } catch {
         // Skip files we can't read
@@ -340,6 +345,7 @@ function indexBestPractices(): SearchIndexItem[] {
           url: `/${lang}/best-practices/${slug}`,
           type: 'best-practices',
           lang,
+          keywords: frontmatter.search_terms || '',
         });
       } catch {
         // Skip files we can't read
@@ -376,6 +382,7 @@ function indexPatterns(): SearchIndexItem[] {
           url: `/${lang}/patterns/${slug}`,
           type: 'patterns',
           lang,
+          keywords: frontmatter.search_terms || '',
         });
       } catch {
         // Skip files we can't read
@@ -416,6 +423,7 @@ export function searchIndex(
   // Type priority multipliers (blog is deprioritized)
   const typePriority: Record<string, number> = {
     component: 1.0,
+    intro: 1.0,
     fundamentals: 1.0,
     patterns: 1.0,
     'best-practices': 1.0,
@@ -429,8 +437,11 @@ export function searchIndex(
       const titleLower = item.title.toLowerCase();
       const descLower = item.description.toLowerCase();
       const contentLower = item.content.toLowerCase();
+      const keywordsLower = item.keywords.toLowerCase();
 
       for (const term of searchTerms) {
+        // Keyword matches (heavily prioritized)
+        if (keywordsLower.includes(term)) score += 1000;
         // Title matches (heavily prioritized)
         if (titleLower === term) {
           // Exact title match
