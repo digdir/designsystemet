@@ -58,6 +58,7 @@ export const SuggestionList = forwardRef<
   return (
     <u-datalist
       class={className} // Using "class" since React does not translate className on custom elements
+      popover='manual' // Is also set by field.ts, but is nice to have in case focus runs before toggle event
       data-nofilter
       data-sr-plural={plural}
       data-sr-singular={singular}

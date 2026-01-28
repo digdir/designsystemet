@@ -72,8 +72,7 @@ export const isNorwegian = (el: Element) => {
   const root = el.closest('[lang]') || document.documentElement; // Fallback to <html> element if inside shadow DOM
   const lang = root?.getAttribute('lang')?.toLowerCase().split('-')[0] || '';
 
-  if (!lang)
-    console.warn('Designsystemet: Missing lang attribute on <html> element');
+  if (!lang) warn('Missing lang attribute on <html> element');
   return lang === 'nb' || lang === 'nn' || lang === 'no';
 };
 

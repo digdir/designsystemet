@@ -48,20 +48,21 @@ const handleMutations = debounce(() => {
 
     for (const el of field.getElementsByTagName('*')) {
       if (el instanceof HTMLLabelElement) labels.push(el);
-      else if (isInputLike(el)) {
+      if ((el as HTMLElement).hidden) continue; // Skip hidden elements except labels
+      if (isInputLike(el)) {
         if (input)
           warn(
             `Fields should only have one input element. Use <fieldset> to group multiple fields:`,
             field,
           );
-        if (isNotHidden(el) && el.type !== 'hidden') input = el; // Only register if visible input
-      } else if (isNotHidden(el)) {
-        const type = el.getAttribute('data-field'); // Using getAttribute not attr for best performance
+        else input = el; // Only register if visible input
+      } else {
+        const type = el.getAttribute('data-field'); // Using getAttribute instead of attr for best performance
         if (type === 'counter') counter = el;
-        if (type === 'validation') {
+        else if (type === 'validation') {
           descs.unshift(el);
           invalid = invalid || isInvalid(el);
-        } else if (type) descs.push(el); // Adds both counter and descriptions
+        } else if (type) descs.push(el); // Adds both counter and descriptions}
       }
     }
 
@@ -73,8 +74,8 @@ const handleMutations = debounce(() => {
       const isBoolish = input.type === 'radio' || input.type === 'checkbox';
       const fieldsetValidation = field
         .closest('fieldset')
-        ?.querySelector(':scope > [data-field="validation"]');
-      if (isNotHidden(fieldsetValidation)) {
+        ?.querySelector<HTMLElement>(':scope > [data-field="validation"]');
+      if (fieldsetValidation && !fieldsetValidation?.hidden) {
         invalid = invalid || isInvalid(fieldsetValidation);
         descs.unshift(fieldsetValidation);
       }
@@ -126,15 +127,12 @@ const debouncedCounterLiveRegion = debounce((input: Element, text: string) => {
   if (SR_LIVE && root?.activeElement === input) SR_LIVE.textContent = text; // Only announce if input is still focused
 }, COUNTER_DEBOUNCE);
 
-const isInvalid = (el: Element) => attr(el, 'data-color') !== 'success';
-
-const isNotHidden = (el?: Element | null): el is Element =>
-  !!el && !(el as HTMLElement).hidden;
-
+const isInvalid = (el: Element) => el.getAttribute('data-color') !== 'success';
 const isInputLike = (el: unknown): el is HTMLInputElement =>
   el instanceof HTMLElement &&
   'validity' in el && // Adds support for custom elements implemeted with attachInternals()
-  !(el instanceof HTMLButtonElement); // But skip <button> elements
+  !(el instanceof HTMLButtonElement) && // But skip <button> elements
+  (el as HTMLInputElement).type !== 'hidden'; // And skip input type="hidden"
 
 // Custom element is used to performantly keep track of fields on the page
 export class DSFieldElement extends DSElement {

@@ -6,6 +6,7 @@ import {
   onMutation,
   QUICK_EVENT,
   tag,
+  warn,
 } from '../utils/utils';
 
 let TIP: HTMLElement | undefined;
@@ -39,7 +40,7 @@ const handleAriaAttributes = debounce(() => {
 
     attr(el, hasText ? 'aria-description' : 'aria-label', tooltip);
     if (!el.matches(SELECTOR_INTERACTIVE))
-      console.log('Designsystemet: Missing tabindex="0" attribute on: ', el);
+      warn('Missing tabindex="0" attribute on: ', el);
   }
 }, 200);
 
