@@ -47,4 +47,15 @@ export default defineConfig([
     },
     external,
   },
+  // UMD format for browsers
+  {
+    input: './src/index.ts',
+    output: {
+      file: 'dist/umd/index.js',
+      format: 'umd',
+      name: 'Designsystemet',
+      sourcemap: true,
+      minify: true,
+    },
+  },
 ]);
