@@ -8,7 +8,13 @@ export type SearchIndexItem = {
   description: string;
   content: string;
   url: string;
-  type: 'component' | 'blog' | 'fundamentals' | 'best-practices' | 'patterns';
+  type:
+    | 'intro'
+    | 'component'
+    | 'blog'
+    | 'fundamentals'
+    | 'best-practices'
+    | 'patterns';
   lang: 'en' | 'no';
 };
 
@@ -237,6 +243,43 @@ function indexBlog(): SearchIndexItem[] {
 /**
  * Build search index for fundamentals
  */
+function indexIntro(): SearchIndexItem[] {
+  const items: SearchIndexItem[] = [];
+  const introPath = join(basePath, 'intro');
+
+  for (const lang of ['en', 'no'] as const) {
+    const langPath = join(introPath, lang);
+    const mdxFiles = findMdxFiles(langPath);
+
+    for (const { path, relativePath } of mdxFiles) {
+      try {
+        const content = readFileSync(path, 'utf-8');
+        const frontmatter = extractFrontmatter(content);
+
+        // Convert file path to URL path
+        const slug = relativePath.replace('.mdx', '').replace(/\\/g, '/');
+
+        items.push({
+          id: `intro-${lang}-${slug}`,
+          title: frontmatter.title || slug.split('/').pop() || slug,
+          description: frontmatter.description || '',
+          content: stripMdxSyntax(content),
+          url: `/${lang}/intro/${slug}`,
+          type: 'intro',
+          lang,
+        });
+      } catch {
+        // Skip files we can't read
+      }
+    }
+  }
+
+  return items;
+}
+
+/**
+ * Build search index for fundamentals
+ */
 function indexFundamentals(): SearchIndexItem[] {
   const items: SearchIndexItem[] = [];
   const fundamentalsPath = join(basePath, 'fundamentals');
@@ -349,6 +392,7 @@ function indexPatterns(): SearchIndexItem[] {
 export function buildSearchIndex(): SearchIndex {
   return [
     ...indexComponents(),
+    ...indexIntro(),
     ...indexBlog(),
     ...indexFundamentals(),
     ...indexBestPractices(),

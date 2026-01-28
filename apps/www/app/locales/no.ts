@@ -253,9 +253,10 @@ export default {
     close: 'Lukk søk',
     results: 'Søkeresultater',
     type: {
+      intro: 'Intro',
       component: 'Komponent',
       blog: 'Bloggen',
-      fundamentals: 'Grunnleggende',
+      fundamentals: 'Kom i gang',
       'best-practices': 'God praksis',
       patterns: 'Mønstre',
     },

@@ -254,9 +254,10 @@ export default {
     close: 'Close search',
     results: 'Search results',
     type: {
+      intro: 'Intro',
       component: 'Component',
       blog: 'Blog',
-      fundamentals: 'Fundamentals',
+      fundamentals: 'Get started',
       'best-practices': 'Best practices',
       patterns: 'Patterns',
     },

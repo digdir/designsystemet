@@ -9,7 +9,7 @@ import {
   Skeleton,
   Tag,
 } from '@digdir/designsystemet-react';
-import { useDebounceCallback } from '@internal/components/src/_hooks/use-debounce-callback/use-debounce-callback';
+import { useDebounceCallback } from '@internal/components';
 import { FileSearchIcon } from '@navikt/aksel-icons';
 import cl from 'clsx';
 import type { CSSProperties } from 'react';
@@ -84,7 +84,6 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
         `/api/search?q=${encodeURIComponent(query)}&lang=${lang}`,
         { signal: controller.signal },
       );
-      console.log(response);
       const data = await response.json();
       setQuickResults(data.results || []);
     } catch (error) {
@@ -99,6 +98,7 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
 
   const getTypeLabel = (type: string) => {
     const labels: Record<string, string> = {
+      intro: t('search.type.intro'),
       component: t('search.type.component'),
       blog: t('search.type.blog'),
       fundamentals: t('search.type.fundamentals'),
@@ -109,6 +109,7 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
   };
   const getTypeColor = (type: string) => {
     const labels: Record<string, keyof ColorDefinitions> = {
+      intro: 'brand3',
       component: 'brand3',
       blog: 'neutral',
       fundamentals: 'brand2',
