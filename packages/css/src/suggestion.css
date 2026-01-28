@@ -119,7 +119,7 @@
       display: none;
     }
 
-    & > :is(u-option) {
+    & > u-option {
       padding: var(--dsc-suggestion-option-padding);
       padding-inline-start: var(--dsc-suggestion-option-checkmark-size);
       border: none;
