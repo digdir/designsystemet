@@ -58,7 +58,7 @@ export const ModalDialog = () => {
 
   return (
     <Dialog.TriggerContext>
-      <Dialog.Trigger>Open modal Dialog</Dialog.Trigger>
+      <Dialog.Trigger>Åpne modal Dialog</Dialog.Trigger>
       <Dialog>
         <Dialog.Block>
           <Paragraph data-size='sm'>Bekreft endring</Paragraph>
@@ -92,13 +92,54 @@ export const ModalDialog = () => {
   );
 };
 
+export const ModalDialogEn = () => {
+  const _dialogRef = useRef<HTMLDialogElement>(null);
+  const [_input, _setInput] = useState('');
+
+  return (
+    <Dialog.TriggerContext>
+      <Dialog.Trigger>Open modal dialog</Dialog.Trigger>
+      <Dialog>
+        <Dialog.Block>
+          <Paragraph data-size='sm'>Confirm change</Paragraph>
+          <Heading>Are you sure you want to change the application?</Heading>
+        </Dialog.Block>
+        <Dialog.Block>
+          <Paragraph>
+            Note: You should not change the application after the deadline has
+            passed. If you change the application now, you will no longer be
+            included in the upcoming admission round. Please contact the service
+            centre on +00 00 00 00 if you need guidance.
+          </Paragraph>
+        </Dialog.Block>
+        <Dialog.Block>
+          <div
+            style={{
+              display: 'flex',
+              gap: 'var(--ds-size-4)',
+              marginTop: 'var(--ds-size-4)',
+            }}
+          >
+            <Button variant='primary' data-color='danger' data-command='close'>
+              Yes, change
+            </Button>
+            <Button variant='secondary' data-command='close'>
+              Cancel
+            </Button>
+          </div>
+        </Dialog.Block>
+      </Dialog>
+    </Dialog.TriggerContext>
+  );
+};
+
 export const NonModalDialog = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [_input, setInput] = useState('');
 
   return (
     <Dialog.TriggerContext>
-      <Dialog.Trigger>Open non-modal Dialog</Dialog.Trigger>
+      <Dialog.Trigger>Åpne ikke-modal Dialog</Dialog.Trigger>
       <Dialog
         ref={dialogRef}
         onClose={() => setInput('')}
@@ -122,6 +163,41 @@ export const NonModalDialog = () => {
           }}
         />
         <Button>Send inn</Button>
+      </Dialog>
+    </Dialog.TriggerContext>
+  );
+};
+
+export const NonModalDialogEn = () => {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const [_input, setInput] = useState('');
+
+  return (
+    <Dialog.TriggerContext>
+      <Dialog.Trigger>Open non-modal dialog</Dialog.Trigger>
+      <Dialog
+        ref={dialogRef}
+        onClose={() => setInput('')}
+        modal={false}
+        style={{
+          zIndex: '10',
+          top: 'calc(100vh - 290px)',
+          left: 'calc(100vw - 370px)',
+          margin: 0,
+          maxWidth: '350px',
+        }}
+      >
+        <Heading style={{ marginBottom: 'var(--ds-size-4)' }}>
+          We would like your feedback
+        </Heading>
+        <Label htmlFor='my-textarea'>How was your experience?</Label>
+        <Textarea
+          id='my-textarea'
+          style={{
+            marginBottom: 'var(--ds-size-6)',
+          }}
+        />
+        <Button>Submit</Button>
       </Dialog>
     </Dialog.TriggerContext>
   );
