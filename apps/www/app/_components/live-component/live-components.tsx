@@ -133,7 +133,9 @@ const Editor = ({ live, html, id, hidden }: EditorProps) => {
 
   const copy = async () => {
     try {
-      await navigator.clipboard.writeText(showHTML ? rawHtml : live.code);
+      await navigator.clipboard.writeText(
+        showHTML ? rawHtml : live.newCode ? live.newCode : live.code,
+      );
       setCopied(classes.copied);
     } catch (error) {
       throw Error(String(error));
