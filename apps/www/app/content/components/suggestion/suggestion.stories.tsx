@@ -293,3 +293,64 @@ export const ControlledMultipleEn = () => {
     </>
   );
 };
+
+export const Creatable = () => {
+  const DATA_PLACES = [
+    'Sogndal',
+    'Oslo',
+    'Brønnøysund',
+    'Stavanger',
+    'Trondheim',
+    'Bergen',
+    'Lillestrøm',
+  ];
+  return (
+    <Field>
+      <Label>Velg destinasjon</Label>
+      <EXPERIMENTAL_Suggestion creatable multiple>
+        <EXPERIMENTAL_Suggestion.Input />
+        <EXPERIMENTAL_Suggestion.Clear />
+        <EXPERIMENTAL_Suggestion.List>
+          <EXPERIMENTAL_Suggestion.Empty>
+            Ingen treff, trykk enter for å legge til
+          </EXPERIMENTAL_Suggestion.Empty>
+          {DATA_PLACES.map((place) => (
+            <EXPERIMENTAL_Suggestion.Option key={place}>
+              {place}
+            </EXPERIMENTAL_Suggestion.Option>
+          ))}
+        </EXPERIMENTAL_Suggestion.List>
+      </EXPERIMENTAL_Suggestion>
+    </Field>
+  );
+};
+export const CreatableEn = () => {
+  const DATA_PLACES = [
+    'Sogndal',
+    'Oslo',
+    'Brønnøysund',
+    'Stavanger',
+    'Trondheim',
+    'Bergen',
+    'Lillestrøm',
+  ];
+  return (
+    <Field>
+      <Label>Select destination</Label>
+      <EXPERIMENTAL_Suggestion creatable multiple>
+        <EXPERIMENTAL_Suggestion.Input />
+        <EXPERIMENTAL_Suggestion.Clear />
+        <EXPERIMENTAL_Suggestion.List>
+          <EXPERIMENTAL_Suggestion.Empty>
+            No results found, press enter to add
+          </EXPERIMENTAL_Suggestion.Empty>
+          {DATA_PLACES.map((place) => (
+            <EXPERIMENTAL_Suggestion.Option key={place}>
+              {place}
+            </EXPERIMENTAL_Suggestion.Option>
+          ))}
+        </EXPERIMENTAL_Suggestion.List>
+      </EXPERIMENTAL_Suggestion>
+    </Field>
+  );
+};

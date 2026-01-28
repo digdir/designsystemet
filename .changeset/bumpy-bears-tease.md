@@ -2,4 +2,4 @@
 "@digdir/designsystemet": patch
 ---
 
-Remove `change-case` as dependency
+update dependency colorjs.io to ^0.6.1

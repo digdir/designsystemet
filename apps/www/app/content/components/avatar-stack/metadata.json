@@ -7,6 +7,6 @@
     "title": "AvatarStack",
     "subtitle": "`AvatarStack` stacks a collection of `Avatar` elements"
   },
-  "image": "Avatar.svg",
+  "image": "AvatarStack.svg",
   "cssFile": "avatar-stack.css"
 }

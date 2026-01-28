@@ -63,20 +63,22 @@ export const BlogCard = ({
             <Link to={href}>{title}</Link>
           </Heading>
           <Paragraph data-size={featured ? 'md' : 'sm'}>{desc}</Paragraph>
-          <Paragraph data-size={'md'} className={classes.meta}>
-            <AvatarStack authors={author || ''} />
-            {author ||
-              (date && (
-                <>
-                  <span>{date}</span>
-                  {author && (
-                    <>
-                      <span aria-hidden className={classes.metaSquare} />
-                      <span>{author}</span>
-                    </>
-                  )}
-                </>
-              ))}
+          <Paragraph data-size={'md'} className={classes.meta} asChild>
+            <span>
+              <AvatarStack authors={author || ''} />
+              {author ||
+                (date && (
+                  <>
+                    <span>{date}</span>
+                    {author && (
+                      <>
+                        <span aria-hidden className={classes.metaSquare} />
+                        <span>{author}</span>
+                      </>
+                    )}
+                  </>
+                ))}
+            </span>
           </Paragraph>
         </CardBlock>
       </article>
