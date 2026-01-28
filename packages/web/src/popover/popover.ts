@@ -10,6 +10,12 @@ import {
 } from '@floating-ui/dom';
 import { attr, on, onHotReload, QUICK_EVENT } from '../utils/utils';
 
+declare global {
+  interface GlobalEventHandlersEventMap {
+    'ds-toggle-source': CustomEvent<Element>;
+  }
+}
+
 const ATTR_PLACE = 'data-placement';
 const ATTR_AUTO = 'data-autoplacement';
 const POPOVERS = new Map<HTMLElement, () => void>();

@@ -117,11 +117,10 @@ export const Textfield = forwardRef<
 ) {
   const fieldRef = useRef<DSFieldElement>(null);
 
-  // Trigger refresh of DSFieldElement counter and field-size if value changes
+  // Trigger update of counter and field-size if value changes
   useEffect(() => {
-    const field = fieldRef.current;
-    const input = field?.querySelector('input,textarea');
-    if (input) field?.handleEvent?.(input);
+    const input = fieldRef.current?.querySelector('input,textarea');
+    input?.dispatchEvent(new CustomEvent('ds-field-update'));
   }, [rest.value]);
 
   return (

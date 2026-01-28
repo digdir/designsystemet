@@ -10,9 +10,6 @@ import {
 } from '../utils/utils';
 
 declare global {
-  interface GlobalEventHandlersEventMap {
-    'ds-toggle-source': CustomEvent<Element>;
-  }
   interface HTMLElementTagNameMap {
     'ds-suggestion': DSSuggestionElement;
   }

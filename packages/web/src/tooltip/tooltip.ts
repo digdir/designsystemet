@@ -8,12 +8,6 @@ import {
   tag,
 } from '../utils/utils';
 
-declare global {
-  interface GlobalEventHandlersEventMap {
-    'ds-toggle-source': CustomEvent<Element>;
-  }
-}
-
 let TIP: HTMLElement | undefined;
 let SOURCE: Element | undefined;
 let HOVER_TIMER: number | ReturnType<typeof setTimeout> = 0;
