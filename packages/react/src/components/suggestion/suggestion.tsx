@@ -12,7 +12,6 @@ import {
   useState,
 } from 'react';
 import { useMergeRefs } from '../../utilities/hooks';
-import { Chip } from '../chip';
 
 export type SuggestionItem = { label: string; value: string };
 
@@ -272,9 +271,9 @@ export const Suggestion = forwardRef<DSSuggestionElement, SuggestionProps>(
           {...rest}
         >
           {selectedItems.map((item) => (
-            <Chip.Removable key={item.value} value={item.value} asChild>
-              <data>{renderSelected(item)}</data>
-            </Chip.Removable>
+            <data key={item.value} value={item.value}>
+              {renderSelected(item)}
+            </data>
           ))}
           {children}
           {/* Hidden select so it will be sent with a form */}
