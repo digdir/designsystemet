@@ -188,7 +188,7 @@ export const NonModalDialogEn = () => {
         }}
       >
         <Heading style={{ marginBottom: 'var(--ds-size-4)' }}>
-          We would like your feedback
+          Let us know
         </Heading>
         <Label htmlFor='my-textarea'>How was your experience?</Label>
         <Textarea
