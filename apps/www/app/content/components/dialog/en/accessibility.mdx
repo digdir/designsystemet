@@ -2,5 +2,13 @@
 We are working to improve the accessibility documentation for this component. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
 </Alert>
 
+### Non-modal dialogs
+When using non-modal dialogs, you must ensure that elements receiving focus through keyboard navigation do not end up behind the dialog and become hidden. See criteria [2.4.11 (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html) (AA) and [2.4.12 (w3.org)](https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-enhanced.html) (AAA).
+
+For non-modal dialogs, this means you must:
+- Ensure that focusable elements are never completely covered by the dialog when users navigate the page using the Tab key.
+- Ensure that the focus order is logical and that focus is always visible, so users navigating with a keyboard or screen reader can understand where focus is located.
+
+
 ### Keyboard navigation
 * <kbd>Esc</kbd> closes the dialog (focus returns to the trigger)

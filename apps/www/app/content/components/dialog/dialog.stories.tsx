@@ -5,8 +5,10 @@ import {
   type DialogProps,
   Fieldset,
   Heading,
+  Label,
   Paragraph,
   Radio,
+  Textarea,
   Textfield,
 } from '@digdir/designsystemet-react';
 import { type ChangeEvent, useRef, useState } from 'react';
@@ -47,6 +49,81 @@ export const WithRef = () => {
         </Paragraph>
       </Dialog>
     </>
+  );
+};
+
+export const ModalDialog = () => {
+  const _dialogRef = useRef<HTMLDialogElement>(null);
+  const [_input, _setInputt] = useState('');
+
+  return (
+    <Dialog.TriggerContext>
+      <Dialog.Trigger>Open modal Dialog</Dialog.Trigger>
+      <Dialog>
+        <Dialog.Block>
+          <Paragraph data-size='sm'>Bekreft endring</Paragraph>
+          <Heading>Er du sikker på at du vil endre søknaden? </Heading>
+        </Dialog.Block>
+        <Dialog.Block>
+          <Paragraph>
+            OBS! Du bør ikke endre søknaden etter at fristen har gått ut. Hvis
+            du endrer søknaden nå, er du ikke lenger med i kommende opptak. Ring
+            kontaktsenteret på telefon 00 00 00 00 hvis du trenger veiledning.
+          </Paragraph>
+        </Dialog.Block>
+        <Dialog.Block>
+          <div
+            style={{
+              display: 'flex',
+              gap: 'var(--ds-size-4)',
+              marginTop: 'var(--ds-size-4)',
+            }}
+          >
+            <Button variant='primary' data-color='danger' data-command='close'>
+              Ja, endre
+            </Button>
+            <Button variant='secondary' data-command='close'>
+              Avbryt
+            </Button>
+          </div>
+        </Dialog.Block>
+      </Dialog>
+    </Dialog.TriggerContext>
+  );
+};
+
+export const NonModalDialog = () => {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const [_input, setInput] = useState('');
+
+  return (
+    <Dialog.TriggerContext>
+      <Dialog.Trigger>Open non-modal Dialog</Dialog.Trigger>
+      <Dialog
+        ref={dialogRef}
+        onClose={() => setInput('')}
+        modal={false}
+        style={{
+          zIndex: '10',
+          top: 'calc(100vh - 290px)',
+          left: 'calc(100vw - 370px)',
+          margin: 0,
+          maxWidth: '350px',
+        }}
+      >
+        <Heading style={{ marginBottom: 'var(--ds-size-4)' }}>
+          Vi ønsker din mening
+        </Heading>
+        <Label htmlFor='my-textarea'>Hvordan var din opplevelse?</Label>
+        <Textarea
+          id='my-textarea'
+          style={{
+            marginBottom: 'var(--ds-size-6)',
+          }}
+        />
+        <Button>Send inn</Button>
+      </Dialog>
+    </Dialog.TriggerContext>
   );
 };
 
