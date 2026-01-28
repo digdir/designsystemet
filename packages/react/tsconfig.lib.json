@@ -11,6 +11,7 @@
     "types": [
       "./declarations.d.ts",
       "./react-types.d.ts",
+      "@digdir/designsystemet-web"
     ]
   },
   "include": [

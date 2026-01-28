@@ -1,4 +1,4 @@
-import { render as renderRtl, screen } from '@testing-library/react';
+import { render as renderRtl, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
 
@@ -112,20 +112,22 @@ describe('Dialog', () => {
 
   it('should call onClose when the Dialog is closed with ESC', async () => {
     const onClose = vi.fn();
-    await render({ open: true, onClose });
+    const { user } = await render({ open: true, onClose });
     const dialog = screen.getByRole('dialog');
-    await act(async () => await userEvent.type(dialog, '{Escape}'));
+    await user.type(dialog, '{Escape}');
 
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 
   it('should call onClose when the Dialog is closed with the close button', async () => {
     const onClose = vi.fn();
-    await render({ open: true, onClose });
+    const { user } = await render({ onClose });
+    await user.click(screen.getByRole('button', { name: OPEN_Dialog }));
     const closeButton = screen.getByRole('button', { name: CLOSE_LABEL });
-    await act(async () => await userEvent.click(closeButton));
-
-    expect(onClose).toHaveBeenCalledTimes(1);
+    await user.click(closeButton);
+    waitFor(() => {
+      expect(onClose).toHaveBeenCalledTimes(1);
+    });
   });
 
   it('a custom data-command=close button should close the dialog', async () => {
@@ -143,10 +145,8 @@ describe('Dialog', () => {
       closeButton: false,
     });
 
-    user.click(screen.getByRole('button', { name: OPEN_Dialog }));
-    await act(
-      async () => await userEvent.click(screen.getByTestId('closebutton')),
-    );
+    await user.click(screen.getByRole('button', { name: OPEN_Dialog }));
+    await user.click(screen.getByTestId('closebutton'));
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 });

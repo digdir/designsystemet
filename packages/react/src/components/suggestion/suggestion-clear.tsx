@@ -33,6 +33,7 @@ export const SuggestionClear = forwardRef<
       icon
       hidden
       ref={ref}
+      suppressHydrationWarning // Since <ds-suggestion> adds attributes
       variant='tertiary'
       {...rest}
     >

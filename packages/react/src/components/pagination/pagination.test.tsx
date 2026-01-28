@@ -1,9 +1,9 @@
-import { render as renderRtl, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { Pagination } from './';
 import type { PaginationProps } from './pagination';
 
 const renderWithRoot = (props: PaginationProps) => {
-  renderRtl(
+  render(
     <Pagination {...props}>
       <Pagination.List>
         <Pagination.Item>
@@ -65,7 +65,7 @@ describe('Pagination', () => {
 
 describe('Pagination.Button', () => {
   it('should render correctly with default props', () => {
-    renderRtl(
+    render(
       <Pagination aria-label='Pagination'>
         <Pagination.Button>1</Pagination.Button>
       </Pagination>,
@@ -75,7 +75,7 @@ describe('Pagination.Button', () => {
   });
 
   it('should render as anchor when asChild is true', () => {
-    renderRtl(
+    render(
       <Pagination aria-label='Pagination'>
         <Pagination.Button asChild>
           <a href='#1'>1</a>

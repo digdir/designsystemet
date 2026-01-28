@@ -1,3 +1,5 @@
+import '@digdir/designsystemet-web';
+
 export type { AlertProps } from './alert/alert';
 export { Alert } from './alert/alert';
 

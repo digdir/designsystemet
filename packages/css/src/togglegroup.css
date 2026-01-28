@@ -26,14 +26,19 @@
     display: grid;
   }
 
-  button {
+  & label input {
+    position: absolute;
+    opacity: 0;
+  }
+
+  label {
     border-radius: calc(var(--dsc-togglegroup-border-radius) - calc(var(--dsc-togglegroup-spacing) / 2));
     min-height: var(--dsc-togglegroup-button-size);
     min-width: fit-content;
 
     @composes ds-focus--inset from './base.css';
 
-    &:focus-visible {
+    &:has(input:focus-visible) {
       border-radius: var(--dsc-togglegroup-border-radius);
     }
 
@@ -43,7 +48,7 @@
     }
 
     @media (forced-colors: active) {
-      &[aria-checked='true'] {
+      &:has(input:checked) {
         background: ButtonText;
         color: CanvasText;
 

@@ -8,9 +8,13 @@ import {
   DetailsSummary,
   Divider,
   Heading,
+  type HeadingProps,
   Link,
+  type LinkProps,
   ListOrdered,
+  type ListOrderedProps,
   ListUnordered,
+  type ListUnorderedProps,
   Paragraph,
   type ParagraphProps,
   Table,
@@ -58,26 +62,26 @@ const defaultComponents = {
   TableBody,
   TableFoot,
   TableCell,
-  h1: (props: JSX.IntrinsicElements['h1']) => (
+  h1: (props: HeadingProps) => (
     <Heading className={classes.heading} level={1} data-size='xl' {...props} />
   ),
-  h2: (props: JSX.IntrinsicElements['h2']) => (
+  h2: (props: HeadingProps) => (
     <Heading className={classes.heading} level={2} data-size='md' {...props} />
   ),
-  h3: (props: JSX.IntrinsicElements['h3']) => (
+  h3: (props: HeadingProps) => (
     <Heading className={classes.heading} level={3} data-size='sm' {...props} />
   ),
-  h4: (props: JSX.IntrinsicElements['h4']) => (
+  h4: (props: HeadingProps) => (
     <Heading className={classes.heading} level={4} data-size='xs' {...props} />
   ),
-  h5: (props: JSX.IntrinsicElements['h5']) => (
+  h5: (props: HeadingProps) => (
     <Heading className={classes.heading} level={5} data-size='xs' {...props} />
   ),
-  h6: (props: JSX.IntrinsicElements['h6']) => (
+  h6: (props: HeadingProps) => (
     <Heading className={classes.heading} level={6} data-size='xs' {...props} />
   ),
-  ol: (props: JSX.IntrinsicElements['ol']) => <ListOrdered {...props} />,
-  ul: (props: JSX.IntrinsicElements['ul']) => <ListUnordered {...props} />,
+  ol: (props: ListOrderedProps) => <ListOrdered {...props} />,
+  ul: (props: ListUnorderedProps) => <ListUnordered {...props} />,
   hr: (props: JSX.IntrinsicElements['hr']) => <Divider {...props} />,
   Image,
   ResponsiveIframe,
@@ -85,12 +89,12 @@ const defaultComponents = {
   TokenList,
   ColorInfoTable,
   p: (props: ParagraphProps) => <Paragraph {...props} />,
-  Link: ({ href, ...props }: JSX.IntrinsicElements['a']) => (
+  Link: ({ href, ...props }: LinkProps) => (
     <Link {...props} asChild>
       <RRLink to={href || ''}>{props.children}</RRLink>
     </Link>
   ),
-  a: ({ href, ...props }: JSX.IntrinsicElements['a']) => (
+  a: ({ href, ...props }: LinkProps) => (
     <Link {...props} asChild>
       <RRLink to={href || ''}>{props.children}</RRLink>
     </Link>

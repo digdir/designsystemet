@@ -126,6 +126,7 @@
 
     &:not([rows]) {
       field-sizing: content;
+      height: var(--_ds-field-sizing); /* Support iOS field-sizing, but through CSS custom property for easier overwrite */
     }
   }
   &:not([type='button'], [type='radio'], [type='checkbox'], [type='color'], [type='file'], textarea, select) {

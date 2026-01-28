@@ -1,6 +1,7 @@
+import type { DSTabElement } from '@digdir/designsystemet-web';
 import type { HTMLAttributes } from 'react';
-import { forwardRef, useContext, useId } from 'react';
-import { RovingFocusItem } from '../../utilities/roving-focus/roving-focus-item';
+import '@digdir/designsystemet-web'; // Import ds-tab custom element
+import { forwardRef, useContext } from 'react';
 import { Context } from './tabs';
 
 export type TabsTabProps = {
@@ -8,7 +9,7 @@ export type TabsTabProps = {
    * Unique value that will be set in the `Tabs` components state when the tab is activated
    */
   value: string;
-} & Omit<HTMLAttributes<HTMLButtonElement>, 'value'>;
+} & Omit<HTMLAttributes<DSTabElement>, 'value'>;
 
 /**
  * A single item in a Tabs component.
@@ -16,29 +17,27 @@ export type TabsTabProps = {
  * @example
  * <TabsTab value='1'>Tab 1</TabsTab>
  */
-export const TabsTab = forwardRef<HTMLButtonElement, TabsTabProps>(
-  function TabsTab({ value, id, onClick, ...rest }, ref) {
-    const tabs = useContext(Context);
-    const generatedId = useId();
-    const buttonId = id ?? `tab-${generatedId}`;
+export const TabsTab = forwardRef<DSTabElement, TabsTabProps>(function TabsTab(
+  { value, className, onClick, ...rest },
+  ref,
+) {
+  const { onChange, getPrefixedValue } = useContext(Context);
 
-    return (
-      <RovingFocusItem value={value} {...rest} asChild>
-        <button
-          ref={ref}
-          id={buttonId}
-          aria-selected={tabs.value === value}
-          data-value={value}
-          role='tab'
-          type='button'
-          onClick={(e) => {
-            tabs.onChange?.(value);
-            onClick?.(e);
-          }}
-          aria-controls={tabs.panelButtonMap?.get(buttonId)}
-          {...rest}
-        />
-      </RovingFocusItem>
-    );
-  },
-);
+  return (
+    // biome-ignore lint/a11y/noStaticElementInteractions: ds-tabs IS interactive
+    <ds-tab
+      aria-controls={rest['aria-controls'] ?? getPrefixedValue?.(value)}
+      data-value={value}
+      ref={ref}
+      suppressHydrationWarning // Since <ds-tablist> adds attributes
+      onClick={(e: React.MouseEvent<DSTabElement>) => {
+        if (e.isTrusted) onChange?.(value); // Only call onChange is user actually clicked, not when programmatically clicked/controlled
+        onClick?.(e);
+      }}
+      class={className}
+      {...rest}
+    >
+      {rest.children}
+    </ds-tab>
+  );
+});
