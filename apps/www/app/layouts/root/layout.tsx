@@ -73,7 +73,7 @@ export default function RootLayout() {
         themeSwitcher
         search={{ onSearchClick: openSearch }}
       />
-      <SearchDialog isOpen={isSearchOpen} onClose={closeSearch} lang={lang} />
+      <SearchDialog open={isSearchOpen} onClose={closeSearch} lang={lang} />
       <main>
         <Outlet />
       </main>

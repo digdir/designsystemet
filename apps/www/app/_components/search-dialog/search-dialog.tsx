@@ -1,15 +1,22 @@
-import { Dialog, Heading, Search, Tag } from '@digdir/designsystemet-react';
+import type { ColorDefinitions } from '@digdir/designsystemet/types';
 import {
-  type KeyboardEvent,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
-import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router';
-import classes from './search-dialog.module.css';
+  Button,
+  Chip,
+  Dialog,
+  Heading,
+  Paragraph,
+  Search,
+  Skeleton,
+  Tag,
+} from '@digdir/designsystemet-react';
+import { useDebounceCallback } from '@internal/components/src/_hooks/use-debounce-callback/use-debounce-callback';
+import { FileSearchIcon } from '@navikt/aksel-icons';
 import cl from 'clsx';
+import type { CSSProperties } from 'react';
+import { useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { RRLink as Link } from '../link';
+import classes from './search-dialog.module.css';
 
 type SearchResult = {
   id: string;
@@ -20,111 +27,75 @@ type SearchResult = {
 };
 
 type SearchDialogProps = {
-  isOpen: boolean;
+  open: boolean;
   onClose: () => void;
   lang: string;
 };
 
-export function SearchDialog({ isOpen, onClose, lang }: SearchDialogProps) {
+export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
   const { t } = useTranslation();
-  const dialogRef = useRef<HTMLDialogElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<SearchResult[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const navigate = useNavigate();
+  const [quickResults, setQuickResults] = useState<SearchResult[]>([]);
+  const [isQuickLoading, setIsQuickLoading] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
+  const latestQueryRef = useRef<string>('');
 
-  // Handle dialog close event (ESC, backdrop click, etc.)
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-
-    const handleClose = () => {
-      setQuery('');
-      setResults([]);
-      setSelectedIndex(0);
-      onClose();
-    };
-
-    dialog.addEventListener('close', handleClose);
-    return () => dialog.removeEventListener('close', handleClose);
-  }, [onClose]);
-
-  // Open dialog when isOpen changes to true
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-
-    if (isOpen && !dialog.open) {
-      dialog.showModal();
-      inputRef.current?.focus();
-    }
-  }, [isOpen]);
-
-  // Debounced search
-  useEffect(() => {
-    if (!query.trim()) {
-      setResults([]);
-      setIsLoading(false);
+  const performSearch = async (searchQuery: string) => {
+    if (!searchQuery.trim()) {
+      setQuickResults([]);
+      setIsQuickLoading(false);
       return;
     }
 
-    setIsLoading(true);
-    const controller = new AbortController();
-
-    const timer = setTimeout(async () => {
-      try {
-        const response = await fetch(
-          `/api/search?q=${encodeURIComponent(query)}&lang=${lang}`,
-          { signal: controller.signal },
-        );
-        const data = await response.json();
-        setResults(data.results || []);
-        setSelectedIndex(0);
-      } catch (error) {
-        if ((error as Error).name !== 'AbortError') {
-          console.error('Search error:', error);
-        }
-      } finally {
-        setIsLoading(false);
-      }
-    }, 200);
-
-    return () => {
-      clearTimeout(timer);
-      controller.abort();
-    };
-  }, [query, lang]);
-
-  // Keyboard navigation
-  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    switch (e.key) {
-      case 'ArrowDown':
-        e.preventDefault();
-        setSelectedIndex((prev) => Math.min(prev + 1, results.length - 1));
-        break;
-      case 'ArrowUp':
-        e.preventDefault();
-        setSelectedIndex((prev) => Math.max(prev - 1, 0));
-        break;
-      case 'Enter':
-        e.preventDefault();
-        if (results[selectedIndex]) {
-          navigate(results[selectedIndex].url);
-          dialogRef.current?.close();
-        }
-        break;
-    }
+    latestQueryRef.current = searchQuery;
+    await handleSearch(searchQuery);
   };
 
-  // Scroll selected item into view
-  useEffect(() => {
-    const selected = document.querySelector(
-      `[data-search-index="${selectedIndex}"]`,
-    );
-    selected?.scrollIntoView({ block: 'nearest' });
-  }, [selectedIndex]);
+  const debouncedCallback = useDebounceCallback((value: string) => {
+    performSearch(value);
+    setIsTyping(false);
+  }, 500);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setIsTyping(true);
+    setQuery(value);
+    debouncedCallback(value);
+  };
+
+  const handleClear = () => {
+    setQuery('');
+    setQuickResults([]);
+    setIsQuickLoading(false);
+  };
+
+  const handleClose = () => {
+    setQuery('');
+    setQuickResults([]);
+    setIsQuickLoading(false);
+    onClose();
+  };
+
+  const handleSearch = async (query: string) => {
+    setIsQuickLoading(true);
+    const controller = new AbortController();
+    try {
+      const response = await fetch(
+        `/api/search?q=${encodeURIComponent(query)}&lang=${lang}`,
+        { signal: controller.signal },
+      );
+      console.log(response);
+      const data = await response.json();
+      setQuickResults(data.results || []);
+    } catch (error) {
+      if ((error as Error).name !== 'AbortError') {
+        console.error('Search error:', error);
+        if (latestQueryRef.current === query) setQuickResults([]);
+      }
+    } finally {
+      if (latestQueryRef.current === query) setIsQuickLoading(false);
+    }
+  };
 
   const getTypeLabel = (type: string) => {
     const labels: Record<string, string> = {
@@ -136,93 +107,160 @@ export function SearchDialog({ isOpen, onClose, lang }: SearchDialogProps) {
     };
     return labels[type] || type;
   };
-
-  const closeDialog = useCallback(() => {
-    dialogRef.current?.close();
-  }, []);
+  const getTypeColor = (type: string) => {
+    const labels: Record<string, keyof ColorDefinitions> = {
+      component: 'brand3',
+      blog: 'neutral',
+      fundamentals: 'brand2',
+      'best-practices': 'brand1',
+      patterns: 'brand3',
+    };
+    return labels[type] || 'neutral';
+  };
 
   return (
     <Dialog
-      ref={dialogRef}
+      closedby='any'
+      open={open}
+      onClose={handleClose}
       className={cl(classes.dialog, 'search-dialog')}
       closeButton={false}
-      closedby='any'
     >
-      <Dialog.Block data-color='neutral'>
-        <Heading data-size='xs' className={classes.title}>
-          {t('search.title', 'Hva leter du etter?')}
-        </Heading>
-        <Search>
-          <Search.Input
-            ref={inputRef}
-            className={classes.input}
-            placeholder={t('search.placeholder')}
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            onKeyDown={handleKeyDown}
-            aria-label={t('search.label')}
-          />
-          <Search.Clear onClick={() => setQuery('')} />
-        </Search>
-      </Dialog.Block>
-      <Dialog.Block className={classes.content}>
-        <div className={classes.results} role='listbox'>
-          {isLoading ? (
-            <div className={classes.loading}>{t('search.loading')}</div>
-          ) : results.length === 0 && query.trim() ? (
-            <div className={classes.noResults}>{t('search.no-results')}</div>
-          ) : (
-            results.map((result, index) => (
-              <Link
-                key={result.id}
-                to={result.url}
-                className={classes.resultItem}
-                onClick={closeDialog}
-                data-search-index={index}
-                data-selected={index === selectedIndex}
-                role='option'
-                aria-selected={index === selectedIndex}
-                style={
-                  index === selectedIndex
-                    ? {
-                        backgroundColor:
-                          'var(--ds-color-neutral-surface-hover)',
-                      }
-                    : undefined
-                }
-              >
-                <p className={classes.resultTitle}>{result.title}</p>
-                {result.description && (
-                  <p className={classes.resultDescription}>
-                    {result.description}
-                  </p>
-                )}
-                <Tag className={classes.resultType}>
-                  {getTypeLabel(result.type)}
-                </Tag>
-              </Link>
-            ))
-          )}
-        </div>
+      <Button
+        aria-label={t('search.close')}
+        data-color='neutral'
+        icon
+        variant='tertiary'
+        data-command='close'
+      />
+      <div className={classes.aboveScroll}>
+        <Dialog.Block className={classes.searchBlock}>
+          <Heading data-size='xs' className={classes.title}>
+            {t('search.title')}
+          </Heading>
+          <Search>
+            <Search.Input
+              className={classes.input}
+              autoFocus={true}
+              aria-label={t('search.label')}
+              placeholder={t('search.placeholder')}
+              value={query}
+              onChange={handleInputChange}
+            />
+            <Search.Clear onClick={handleClear} />
+          </Search>
+        </Dialog.Block>
+      </div>
 
-        <div className={classes.footer}>
-          <div className={classes.shortcuts}>
-            <span className={classes.shortcut}>
-              <kbd className={classes.kbd}>↑</kbd>
-              <kbd className={classes.kbd}>↓</kbd>
-              {t('search.navigate')}
-            </span>
-            <span className={classes.shortcut}>
-              <kbd className={classes.kbd}>↵</kbd>
-              {t('search.select')}
-            </span>
-            <span className={classes.shortcut}>
-              <kbd className={classes.kbd}>esc</kbd>
-              {t('search.close')}
-            </span>
+      <div className={classes.resultsContainer}>
+        {query && (
+          <div className={classes.results}>
+            {isQuickLoading && quickResults.length === 0 && (
+              <section className={classes.resultsBlock}>
+                <div className={classes.quickResult}>
+                  <Skeleton variant='text' width={30} />
+                  <Skeleton variant='rectangle' height={80} />
+                </div>
+                <div className={classes.quickResult}>
+                  <Skeleton variant='text' width={40} />
+                  <Skeleton variant='rectangle' height={80} />
+                </div>
+              </section>
+            )}
+            {quickResults.length > 0 && (
+              <section className={classes.resultsBlock}>
+                <Heading className={classes.iconHeading} data-size='xs'>
+                  <FileSearchIcon /> {t('search.results')}
+                </Heading>
+                {quickResults.map((result, index) => (
+                  <div
+                    key={result.id}
+                    style={{ '--i': `${index}` } as CSSProperties}
+                    className={classes.quickResult}
+                  >
+                    <div className={classes.resultHeader}>
+                      <h3 className={classes.resultTitle}>
+                        <Link
+                          to={result.url}
+                          className={classes.quickResultLink}
+                          onClick={handleClose}
+                        >
+                          {result.title}
+                        </Link>
+                      </h3>
+                      <Tag
+                        data-size='sm'
+                        data-color={getTypeColor(result.type)}
+                      >
+                        {getTypeLabel(result.type)}
+                      </Tag>
+                    </div>
+                    <Paragraph className={classes.quickResultContent}>
+                      {result.description}
+                    </Paragraph>
+                    <Paragraph
+                      className={classes.quickResultUrl}
+                      data-size='xs'
+                    >
+                      https://designsystemet.no{result.url}
+                    </Paragraph>
+                  </div>
+                ))}
+              </section>
+            )}
           </div>
-        </div>
-      </Dialog.Block>
+        )}
+
+        {!query && (
+          <div className={classes.resultsBlock}>
+            <Paragraph className={classes.suggestionsTitle}>
+              {t('search.suggestions-title')}
+            </Paragraph>
+            <div className={classes.suggestionsList}>
+              <Chip.Button
+                onClick={() => {
+                  setQuery('Button');
+                  performSearch('Button');
+                }}
+              >
+                Button
+              </Chip.Button>
+
+              <Chip.Button
+                onClick={() => {
+                  setQuery('Design tokens');
+                  performSearch('Design tokens');
+                }}
+              >
+                Design tokens
+              </Chip.Button>
+
+              <Chip.Button
+                onClick={() => {
+                  setQuery(t('search.suggestions.external'));
+                  performSearch(t('search.suggestions.external'));
+                }}
+              >
+                {t('search.suggestions.external')}
+              </Chip.Button>
+              <Chip.Button
+                onClick={() => {
+                  setQuery(t('search.suggestions.no-react'));
+                  performSearch(t('search.suggestions.no-react'));
+                }}
+              >
+                {t('search.suggestions.no-react')}
+              </Chip.Button>
+            </div>
+          </div>
+        )}
+
+        {query && !isTyping && !isQuickLoading && quickResults.length === 0 && (
+          <div className={classes.noResults}>
+            {t('search.no-results')} "{query}"
+          </div>
+        )}
+      </div>
     </Dialog>
   );
-}
+};
