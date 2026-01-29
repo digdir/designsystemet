@@ -59,7 +59,10 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
           </Paragraph>
           <Paragraph data-size='sm' className={classes.copyright}>
             © {getCurrentYear()} {t('footer.copyright')}
-            <Link href='https://www.digitalpublicgoods.net/r/designsystemet'>
+            <Link
+              href='https://www.digitalpublicgoods.net/r/designsystemet'
+              aria-label={t('footer.dpg-aria-label')}
+            >
               <DpgBadgeWhite className={classes.dpgBadge} />
             </Link>
           </Paragraph>
