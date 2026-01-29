@@ -19,6 +19,7 @@ export const cliOptions = {
     },
     typography: {
       fontFamily: 'font-family',
+      secondaryFontFamily: 'secondary-font-family',
     },
     borderRadius: 'border-radius',
   },
@@ -42,7 +43,7 @@ export const createTokens = async (opts: Theme) => {
       'primitives/modes/typography/size/large',
     ]),
     [`primitives/modes/typography/primary/${name}`, generateTypography(name, typography)],
-    [`primitives/modes/typography/secondary/${name}`, generateTypography(name, typography)],
+    [`primitives/modes/typography/secondary/${name}`, generateTypography(name, { fontFamily: typography.secondaryFontFamily || typography.fontFamily })],
     ...colorSchemes.flatMap((scheme): [string, TokenSet][] => [
       [`primitives/modes/color-scheme/${scheme}/${name}`, generateColorScheme(name, scheme, colors, overrides)],
     ]),
