@@ -20,7 +20,7 @@
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@radix-ui/react-slot": "^1.2.4",
-    "@navikt/aksel-icons": "^7.40.0",
+    "@navikt/aksel-icons": "^8.1.0",
     "clsx": "^2.1.1",
     "prism-react-renderer": "^2.4.1",
     "prettier": "^3.8.0",
