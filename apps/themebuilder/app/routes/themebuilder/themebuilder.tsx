@@ -35,6 +35,14 @@ export type ThemebuilderTabs = 'examples' | 'colorsystem' | 'variables';
 
 const DEFAULT_TAB: ThemebuilderTabs = 'colorsystem';
 
+const getTabUrlParam = (urlParams: URLSearchParams) => {
+  const tab = urlParams.get('tab') || DEFAULT_TAB;
+  if (tab === 'overview') {
+    return DEFAULT_TAB;
+  }
+  return tab as ThemebuilderTabs;
+};
+
 export const loader = async ({
   params: { lang },
   request,
@@ -98,7 +106,7 @@ export const loader = async ({
     overrides: overridesMap,
     colorScheme: (urlParams.get('appearance') || 'light') as ColorScheme,
     baseBorderRadius: parseInt(urlParams.get('border-radius') || '4', 10),
-    tab: (urlParams.get('tab') || DEFAULT_TAB) as unknown as ThemebuilderTabs,
+    tab: getTabUrlParam(urlParams),
     lang,
     metadata: generateMetadata({
       title: t('meta.title'),
