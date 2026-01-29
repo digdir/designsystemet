@@ -57,15 +57,6 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
           >
             {t('footer.description')}
           </Paragraph>
-          <Paragraph data-size='sm' className={classes.copyright}>
-            © {getCurrentYear()} {t('footer.copyright')}
-            <Link
-              href='https://www.digitalpublicgoods.net/r/designsystemet'
-              aria-label={t('footer.dpg-aria-label')}
-            >
-              <DpgBadgeWhite className={classes.dpgBadge} />
-            </Link>
-          </Paragraph>
         </div>
         <div>
           <Heading data-size='2xs' level={2} className={classes.title}>
@@ -78,6 +69,19 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
             {t('footer.contact-us')}
           </Heading>
           {LinkList(rightLinks)}
+        </div>
+      </div>
+      <div className={classes.bottom}>
+        <div className={classes.bottomContainer}>
+          <Paragraph data-size='sm' className={classes.copyright}>
+            © {getCurrentYear()} {t('footer.copyright')}
+          </Paragraph>
+          <Link
+            href='https://www.digitalpublicgoods.net/r/designsystemet'
+            aria-label={t('footer.dpg-aria-label')}
+          >
+            <DpgBadgeWhite className={classes.dpgBadge} />
+          </Link>
         </div>
       </div>
     </footer>
