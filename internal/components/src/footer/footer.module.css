@@ -37,7 +37,7 @@
   gap: var(--ds-size-3);
 }
 .dpgBadge {
-  width: 70px;
+  width: 3.75rem;
   height: auto;
 }
 
