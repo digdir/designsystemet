@@ -101,7 +101,8 @@
 
 /* Quick search result styles */
 .quickResult {
-  --transition: 0.3s;
+  /*Uncomment to enable transitions*/
+  /*   --transition: 0.3s;
   --delay: 0.1s;
   @media (prefers-reduced-motion: reduce) {
     --transition: 0s;
@@ -114,7 +115,7 @@
   @starting-style {
     opacity: 0;
     translate: -16px 0;
-  }
+  } */
   :global(.ds-skeleton) {
     --dsc-skeleton-background: var(--ds-color-neutral-surface-active);
   }

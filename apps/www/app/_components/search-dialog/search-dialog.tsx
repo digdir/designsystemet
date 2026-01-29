@@ -54,7 +54,7 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
   const debouncedCallback = useDebounceCallback((value: string) => {
     performSearch(value);
     setIsTyping(false);
-  }, 500);
+  }, 1);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;

@@ -499,3 +499,61 @@ export function getSearchIndex(): SearchIndex {
 export function clearSearchIndexCache(): void {
   cachedIndex = null;
 }
+
+//Meili synonym setup from ai-search branch
+// Convert grouped synonyms to Meilisearch "mutual association format":
+// https://www.meilisearch.com/docs/learn/relevancy/synonyms#mutual-association
+/* function createMutualAssociations(groups) {
+  const synonyms = {};
+  Object.values(groups).forEach((group) => {
+    group.forEach((term) => {
+      synonyms[term] = group.filter((synonym) => synonym !== term);
+    });
+  });
+  return synonyms;
+}
+
+const synonymGroups = {
+  alert: ['alert', 'notification', 'message', 'toast', 'banner'],
+  avatar: ['avatar', 'profile picture', 'user image'],
+  badge: ['badge', 'label', 'status indicator'],
+  breadcrumbs: ['breadcrumbs', 'breadcrumb', 'navigation path'],
+  button: ['button', 'cta', 'call-to-action', 'call to action', 'action'],
+  card: ['card', 'tile', 'panel'],
+  checkbox: ['checkbox', 'check', 'checkmark'],
+  chip: ['chip', 'tag', 'pill'],
+  details: ['details', 'accordion', 'collapsible', 'expandable'],
+  dialog: ['dialog', 'modal', 'overlay'],
+  divider: ['divider', 'separator', 'line'],
+  dropdown: ['dropdown', 'menu'],
+  errorsummary: ['errorsummary', 'error summary', 'validation errors'],
+  field: ['field', 'form field'],
+  fieldset: ['fieldset', 'form group', 'field group'],
+  input: ['input', 'textfield', 'text field', 'inputfield'],
+  link: ['link', 'anchor', 'hyperlink'],
+  list: ['list', 'menu', 'items'],
+  loaders: ['loaders', 'spinner', 'loading', 'progress'],
+  pagination: ['pagination', 'pager', 'page navigation'],
+  popover: ['popover', 'popup'],
+  radio: ['radio', 'radio button', 'option'],
+  search: ['search', 'search box', 'filter'],
+  select: ['select', 'dropdown', 'picker'],
+  skiplink: ['skiplink', 'skip link', 'accessibility link'],
+  suggestion: [
+    'suggestion',
+    'autocomplete',
+    'combobox',
+    'typeahead',
+    'multiselect',
+    'multi select',
+  ],
+  switch: ['switch', 'toggle'],
+  table: ['table', 'datagrid', 'data table'],
+  tabs: ['tabs', 'tab', 'tabpanel'],
+  textarea: ['textarea', 'text area', 'multiline input'],
+  togglegroup: ['togglegroup', 'toggle group', 'button group'],
+  tooltip: ['tooltip', 'hint', 'help text'],
+};
+
+// Generate proper Meilisearch synonym format
+const synonyms = createMutualAssociations(synonymGroups); */
