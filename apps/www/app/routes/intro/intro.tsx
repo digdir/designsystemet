@@ -1,4 +1,3 @@
-import { Paragraph } from '@digdir/designsystemet-react';
 import * as Aksel from '@navikt/aksel-icons';
 import { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
