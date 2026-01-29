@@ -89,6 +89,11 @@
     }
   }
 
+  /* Hide u-datalist custom element when not initialized yet */
+  &:is(u-datalist):not(:defined) {
+    display: none;
+  }
+
   & :is(u-datalist, datalist) {
     @composes ds-floating from './base.css';
     --_ds-floating: bottom;
