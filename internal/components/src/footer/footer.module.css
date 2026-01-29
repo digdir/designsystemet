@@ -31,6 +31,15 @@
     fill: var(--text);
   }
 }
+.copyright {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-size-3);
+}
+.dpgBadge {
+  width: 70px;
+  height: auto;
+}
 
 .title {
   margin-bottom: var(--ds-size-4);

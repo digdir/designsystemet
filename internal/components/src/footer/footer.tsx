@@ -1,9 +1,10 @@
-import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Heading, Link, Paragraph } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import { forwardRef, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { RRLink } from '../link';
 import { DsFullNeutralLogo } from '../logos/designsystemet';
+import { DpgBadgeWhite } from '../logos/dpg';
 import classes from './footer.module.css';
 
 export type FooterLinkListItemProps = {
@@ -56,8 +57,11 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
           >
             {t('footer.description')}
           </Paragraph>
-          <Paragraph data-size='sm'>
+          <Paragraph data-size='sm' className={classes.copyright}>
             © {getCurrentYear()} {t('footer.copyright')}
+            <Link href='https://www.digitalpublicgoods.net/r/designsystemet'>
+              <DpgBadgeWhite className={classes.dpgBadge} />
+            </Link>
           </Paragraph>
         </div>
         <div>
