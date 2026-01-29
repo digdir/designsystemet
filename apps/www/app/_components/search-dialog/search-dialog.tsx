@@ -136,7 +136,7 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
       />
       <div className={classes.aboveScroll}>
         <Dialog.Block className={classes.searchBlock}>
-          <Heading data-size='xs' className={classes.title}>
+          <Heading data-size='sm' className={classes.title}>
             {t('search.title')}
           </Heading>
           <Search>
@@ -170,7 +170,7 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
             )}
             {quickResults.length > 0 && (
               <section className={classes.resultsBlock}>
-                <Heading className={classes.iconHeading} data-size='xs'>
+                <Heading className={classes.iconHeading} data-size='sm'>
                   <FileSearchIcon /> {t('search.results')}
                 </Heading>
                 {quickResults.map((result, index) => (
