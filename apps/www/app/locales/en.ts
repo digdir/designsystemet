@@ -262,8 +262,8 @@ export default {
       patterns: 'Patterns',
     },
     suggestions: {
-      external: 'External links',
-      'no-react': 'Designsystemet without react',
+      '1': 'External links',
+      '2': 'Web components',
     },
   },
   do: 'Do',

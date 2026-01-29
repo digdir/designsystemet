@@ -261,8 +261,8 @@ export default {
       patterns: 'Mønstre',
     },
     suggestions: {
-      external: 'Eksterne lenker',
-      'no-react': 'Designsystemet uten react',
+      '1': 'Eksterne lenker',
+      '2': 'Webkomponenter',
     },
   },
   do: 'Gjør slik',

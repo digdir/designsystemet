@@ -440,8 +440,8 @@ export function searchIndex(
       const keywordsLower = item.keywords.toLowerCase();
 
       for (const term of searchTerms) {
-        // Keyword matches (heavily prioritized)
-        if (keywordsLower.includes(term)) score += 1000;
+        // Keyword matches (highly prioritized)
+        if (keywordsLower.includes(term)) score += 300;
         // Title matches (heavily prioritized)
         if (titleLower === term) {
           // Exact title match

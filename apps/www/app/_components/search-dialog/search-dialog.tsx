@@ -238,19 +238,19 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
 
               <Chip.Button
                 onClick={() => {
-                  setQuery(t('search.suggestions.external'));
-                  performSearch(t('search.suggestions.external'));
+                  setQuery(t('search.suggestions.1'));
+                  performSearch(t('search.suggestions.1'));
                 }}
               >
-                {t('search.suggestions.external')}
+                {t('search.suggestions.1')}
               </Chip.Button>
               <Chip.Button
                 onClick={() => {
-                  setQuery(t('search.suggestions.no-react'));
-                  performSearch(t('search.suggestions.no-react'));
+                  setQuery(t('search.suggestions.2'));
+                  performSearch(t('search.suggestions.2'));
                 }}
               >
-                {t('search.suggestions.no-react')}
+                {t('search.suggestions.2')}
               </Chip.Button>
             </div>
           </div>
