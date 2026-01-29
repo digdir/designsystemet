@@ -1,8 +1,4 @@
-import {
-  type ColorScheme,
-  type CssColor,
-  generateColorSchemes,
-} from '@digdir/designsystemet';
+import type { ColorScheme, CssColor } from '@digdir/designsystemet';
 import {
   Avatar,
   Button,
@@ -16,14 +12,12 @@ import {
   Tag,
   Textfield,
 } from '@digdir/designsystemet-react';
+import { styleBorderRadiusVars } from '@internal/components';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import {
-  generateColorVars,
-  generateNeutralColorVars,
-} from '~/_utils/generate-color-vars';
+import { styleColorVars } from '~/_utils/generate-color-vars';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
-import classes from './overview-components.module.css';
+import classes from './examples-components.module.css';
 import { SettingsCard } from './settings-card/settings-card';
 import { TableCard } from './table-card/table-card';
 
@@ -45,38 +39,25 @@ const users = [
   },
 ];
 
-type OverviewComponentsProps = {
-  colorScheme: ColorScheme;
-  color: CssColor;
+type ExamplesComponentsProps = {
+  colorScheme?: ColorScheme;
+  color?: CssColor;
   borderRadius?: number;
 };
 
-export const OverviewComponents = ({
+export const ExamplesComponents = ({
   colorScheme = 'light',
   color = '#0062BA',
   borderRadius = 4,
-}: OverviewComponentsProps) => {
+}: ExamplesComponentsProps) => {
   const { t } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
   const { colors } = useThemebuilder();
 
+  const neutralColor = colors?.neutral[0].hex || '#F5F7FA';
   const [previewColor, setPreviewColor] = useState(
     colors?.main[0].hex || color,
   );
-
-  useEffect(() => {
-    // we need to set these properties on the preview element because they are immutable on :root
-    for (const key in borderRadiuses) {
-      const borderRadius = borderRadiuses[key as keyof typeof borderRadiuses];
-
-      if (ref.current) {
-        ref.current.style.setProperty(
-          borderRadius.variable,
-          borderRadius.value,
-        );
-      }
-    }
-  }, []);
 
   useEffect(() => {
     if (ref.current) {
@@ -87,27 +68,6 @@ export const OverviewComponents = ({
     }
   }, [borderRadius]);
 
-  const style = () => {
-    if (!color) return {};
-
-    const vars = {} as Record<string, string>;
-
-    /* neutral */
-    Object.assign(
-      vars,
-      generateNeutralColorVars(generateColorSchemes('#1E2B3C'), colorScheme),
-    );
-    Object.assign(
-      vars,
-      generateColorVars(
-        generateColorSchemes(previewColor as CssColor),
-        colorScheme,
-      ),
-    );
-
-    return vars;
-  };
-
   useEffect(() => {
     setPreviewColor(color);
   }, [color]);
@@ -117,9 +77,15 @@ export const OverviewComponents = ({
     const allColors = [...colors.main, ...colors.support];
     /* if select colors is gone, set to default */
     if (!allColors.find((c) => c.hex === previewColor)) {
-      setPreviewColor(colors.main[0].hex || color);
+      setPreviewColor(color);
     }
   }, [colors]);
+
+  const style = {
+    ...styleColorVars(neutralColor as CssColor, colorScheme, 'neutral'),
+    ...styleColorVars(previewColor as CssColor, colorScheme),
+    ...styleBorderRadiusVars,
+  };
 
   return (
     <>
@@ -159,7 +125,7 @@ export const OverviewComponents = ({
         </>
       ) : null}
 
-      <div ref={ref} style={style()}>
+      <div ref={ref} style={style}>
         <div className={classes.inner}>
           <div className={classes.card}>
             <Heading data-size='2xs'>{t('overview.login-title')}</Heading>
@@ -243,41 +209,4 @@ export const OverviewComponents = ({
       </div>
     </>
   );
-};
-
-// TODO get this token data from @digdir/designsystemet (use json from --preview or something)
-const borderRadiuses = {
-  sm: {
-    name: 'sm',
-    value:
-      'min(var(--ds-border-radius-base)*0.5,var(--ds-border-radius-scale))',
-    variable: '--ds-border-radius-sm',
-  },
-  md: {
-    name: 'md',
-    value: 'min(var(--ds-border-radius-base),var(--ds-border-radius-scale)*2)',
-    variable: '--ds-border-radius-md',
-  },
-  lg: {
-    name: 'lg',
-    value:
-      'min(var(--ds-border-radius-base)*2,var(--ds-border-radius-scale)*5)',
-    variable: '--ds-border-radius-lg',
-  },
-  xl: {
-    name: 'xl',
-    value:
-      'min(var(--ds-border-radius-base)*3,var(--ds-border-radius-scale)*7)',
-    variable: '--ds-border-radius-xl',
-  },
-  default: {
-    name: 'default',
-    value: 'var(--ds-border-radius-base)',
-    variable: '--ds-border-radius-default',
-  },
-  full: {
-    name: 'full',
-    value: '624.9375rem',
-    variable: '--ds-border-radius-full',
-  },
 };

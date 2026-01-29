@@ -128,11 +128,18 @@ body {
   animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
 }
 
-/* code {
-  background-color: #e9e9e9;
-  padding: 1px 5px;
-  border-radius: 2px;
-} */
+& code:not(pre > code) {
+  padding: 2px 5px;
+  font-size: 0.9em;
+  line-height: 1;
+  white-space: break-spaces;
+  background-color: var(--ds-color-neutral-background-tinted);
+  border-radius: var(--ds-border-radius-md);
+  display: inline;
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
 
 .panelContainer {
   --panel-padding: var(--ds-size-8);

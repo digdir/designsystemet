@@ -5,10 +5,7 @@ import {
 } from '@digdir/designsystemet';
 import { baseColors, type GlobalColors } from '@digdir/designsystemet/color';
 import { useLoaderData } from 'react-router';
-import {
-  generateColorVars,
-  generateNeutralColorVars,
-} from '~/_utils/generate-color-vars';
+import { generateColorVars } from '~/_utils/generate-color-vars';
 import type { Route } from '../+types/themebuilder';
 
 export type ColorTheme = {
@@ -87,8 +84,8 @@ export function createColorsAndNeutralVariables(color: CssColor) {
   return {
     colors,
     variables: {
-      light: generateNeutralColorVars(colors, 'light'),
-      dark: generateNeutralColorVars(colors, 'dark'),
+      light: generateColorVars(colors, 'light', 'neutral'),
+      dark: generateColorVars(colors, 'dark', 'neutral'),
     },
   };
 }

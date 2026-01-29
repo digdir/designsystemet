@@ -16,8 +16,19 @@
   width: 100%;
   max-width: 1390px;
   padding: var(--ds-size-6);
+  align-self: flex-start;
 }
 
 .colorsContainer {
   overflow: auto;
+}
+
+.variablesPanel {
+  display: grid;
+  gap: var(--ds-size-4);
+  justify-content: center;
+
+  > * > * {
+    max-width: 600px;
+  }
 }

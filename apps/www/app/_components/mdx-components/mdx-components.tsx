@@ -22,7 +22,15 @@ import {
   type TableProps,
   TableRow,
 } from '@digdir/designsystemet-react';
-import { CodeBlock } from '@internal/components';
+import {
+  BorderRadiusVariablesTable,
+  CodeBlock,
+  ColorTokensTable,
+  OpacityVariablesTable,
+  ShadowVariablesTable,
+  SizeVariablesTable,
+  TypographyVariablesTable,
+} from '@internal/components';
 import { getMDXComponent } from 'mdx-bundler/dist/client';
 import { type ComponentType, type JSX, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -31,7 +39,6 @@ import { ColorInfoTable } from '~/_components/color-info-table/color-info-table'
 import { Contributors } from '~/_components/contributors/contributors';
 import { Image } from '~/_components/image/image';
 import { ResponsiveIframe } from '~/_components/responsive-iframe/responsive-iframe';
-import { TokenList } from '~/_components/tokens/token-list/token-list';
 import { CssVariables } from '../css-variables/css-variables';
 import RoiCalculator from '../roi-calculator/roi-calcuator';
 import { VideoCard } from '../video-card/video-card';
@@ -82,7 +89,6 @@ const defaultComponents = {
   Image,
   ResponsiveIframe,
   Contributors,
-  TokenList,
   ColorInfoTable,
   p: (props: ParagraphProps) => <Paragraph {...props} />,
   Link: ({ href, ...props }: JSX.IntrinsicElements['a']) => (
@@ -113,6 +119,12 @@ const defaultComponents = {
   ),
   CssVariables,
   RoiCalculator,
+  BorderRadiusVariablesTable,
+  ColorTokensTable,
+  OpacityVariablesTable,
+  ShadowVariablesTable,
+  SizeVariablesTable,
+  TypographyVariablesTable,
 };
 
 export const MDXComponents = ({

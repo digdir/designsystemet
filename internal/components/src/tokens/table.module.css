@@ -28,7 +28,7 @@
   }
 }
 
-.radius {
+.border-radius {
   display: flex;
   align-items: center;
   height: var(--ds-size-6);
@@ -62,4 +62,12 @@
 .overflow-table {
   max-width: 100%;
   overflow-x: auto;
+}
+
+.color {
+  height: 2.6em;
+  width: 100%;
+  border-radius: var(--ds-border-radius-md);
+  display: flex;
+  border: 1px solid var(--ds-color-neutral-border-default);
 }

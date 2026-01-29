@@ -62,7 +62,7 @@ export const ColorPreview = () => {
           >
             <ToggleGroup.Item value='grid'>Grid</ToggleGroup.Item>
             <ToggleGroup.Item value='list'>
-              {t('tabs.overview')}
+              {t('tabs.examples')}
             </ToggleGroup.Item>
           </ToggleGroup>
         </div>
