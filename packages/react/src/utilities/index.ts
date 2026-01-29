@@ -1,3 +1,4 @@
+export { useClickDelegateFor } from './click-delegatefor'; // TMP workaround to avoid tree-shaking
 export type {
   UseCheckboxGroupProps,
   UsePaginationProps,

@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import type { TableHeaderCellProps } from '../../';
 
-import { Checkbox, Table, Textfield } from '../../';
+import { Button, Checkbox, Link, Table, Textfield } from '../../';
 import { useCheckboxGroup } from '../../utilities';
 
 type Story = StoryFn<typeof Table>;
@@ -404,4 +404,62 @@ WithBorder.args = {
 
 WithBorder.parameters = {
   customStyles: { display: 'grid', gap: '1rem' },
+};
+
+export const WithClickableRows: Story = (args) => {
+  return (
+    <Table {...args}>
+      <Table.Head>
+        <Table.Row>
+          <Table.HeaderCell aria-label='Valg' />
+          <Table.HeaderCell>Navn</Table.HeaderCell>
+          <Table.HeaderCell>Stilling</Table.HeaderCell>
+          <Table.HeaderCell>Kommentar</Table.HeaderCell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        <Table.Row data-clickdelegatefor='my-checkbox'>
+          <Table.Cell>
+            <Checkbox aria-label='Velg Kari Nordmann' id='my-checkbox' />
+          </Table.Cell>
+          <Table.Cell>Kari Nordmann</Table.Cell>
+          <Table.Cell>Rådgiver</Table.Cell>
+          <Table.Cell>
+            <Textfield data-size='sm' aria-label='Textfield 1' />
+          </Table.Cell>
+        </Table.Row>
+        <Table.Row data-clickdelegatefor='my-button'>
+          <Table.Cell>
+            <Button id='my-button' onClick={() => alert('Knappeklikk')}>
+              Knapp
+            </Button>
+          </Table.Cell>
+          <Table.Cell>Ola Nordmann</Table.Cell>
+          <Table.Cell>Rådgiver</Table.Cell>
+          <Table.Cell>
+            <Textfield data-size='sm' aria-label='Textfield 2' />
+          </Table.Cell>
+        </Table.Row>
+        <Table.Row data-clickdelegatefor='my-link'>
+          <Table.Cell>
+            <Link href='https://designsystemet.no' id='my-link'>
+              Lenke
+            </Link>
+          </Table.Cell>
+          <Table.Cell>Jens Nordmann</Table.Cell>
+          <Table.Cell>Rådgiver</Table.Cell>
+          <Table.Cell>
+            <Textfield data-size='sm' aria-label='Textfield 3' />
+          </Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
+  );
+};
+WithClickableRows.parameters = {
+  docs: {
+    source: {
+      type: 'code',
+    },
+  },
 };
