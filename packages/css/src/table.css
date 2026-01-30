@@ -1,5 +1,6 @@
 .ds-table {
   --dsc-table-background--hover: var(--ds-color-surface-hover);
+  --dsc-table-background--active: var(--ds-color-surface-active);
   --dsc-table-background--zebra: var(--ds-color-surface-tinted);
   --dsc-table-background: transparent;
   --dsc-table-border-color: var(--ds-color-border-subtle);
@@ -192,13 +193,23 @@
   }
 
   /**
-   * States
+   * Clickable
+   */
+  & > tbody > tr[data-clickdelegatefor] {
+    cursor: pointer;
+  }
+
+  /**
+   * States and Clickable
    */
   @media (hover: hover) and (pointer: fine) {
+    & > tbody > tr:has(.\:click-delegate-hover),
     &[data-hover] > tbody > tr:hover > :is(th, td) {
       background: var(--dsc-table-background--hover);
     }
-
+    & > tbody > tr:has(.\:click-delegate-hover):active {
+      background: var(--dsc-table-background--active);
+    }
     & > thead > tr > [aria-sort]:hover button {
       background: var(--dsc-table-header-background--hover);
     }
