@@ -34,7 +34,12 @@ export const ToggleGroupItem = forwardRef<
   const active = toggleGroup.value === value;
 
   return (
-    <label ref={ref} {...rest} className={cl('ds-button', className)}>
+    <label
+      ref={ref}
+      {...rest}
+      className={cl('ds-button', className)}
+      data-variant='tertiary'
+    >
       <input
         checked={active}
         name={toggleGroup.name}

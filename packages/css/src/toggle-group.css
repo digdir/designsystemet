@@ -1,7 +1,5 @@
-/* TODO: ds-togglegroup can be removed in the next major version */
-
-.ds-toggle-group,
-.ds-togglegroup {
+.ds-togglegroup,
+.ds-toggle-group {
   --dsc-togglegroup-background: var(--ds-color-surface-default);
   --dsc-togglegroup-border-width: var(--ds-border-width-default);
   --dsc-togglegroup-border-style: solid;
@@ -28,7 +26,7 @@
   width: auto;
 
   &:not([hidden]) {
-    display: grid;
+    display: flex;
   }
 
   & label:not(:has(input:checked)),
@@ -38,6 +36,7 @@
 
   & label,
   & button {
+    isolation: isolate; /*creates a new stacking context so button shows above the parent's overlapping outline*/
     border-radius: calc(var(--dsc-togglegroup-border-radius) - var(--dsc-togglegroup-border-width));
     height: 100%;
     min-height: unset;
@@ -67,13 +66,16 @@
     pointer-events: none;
   }
 
-  & label:not(:has(input:checked)) {
-    --dsc-button-background: transparent;
-    --dsc-button-background--active: var(--ds-color-surface-active);
-    --dsc-button-background--hover: var(--ds-color-surface-hover);
-    --dsc-button-color: var(--ds-color-text-subtle);
-    --dsc-button-color--hover: var(--ds-color-text-default);
+  /* Style active if ds-button */
+  & label:has(input:checked) {
+    --dsc-button-background--active: var(--ds-color-base-active);
+    --dsc-button-background--hover: var(--ds-color-base-hover);
+    --dsc-button-background: var(--ds-color-base-default);
+    --dsc-button-color--active: var(--ds-color-base-contrast-default);
+    --dsc-button-color--hover: var(--ds-color-base-contrast-default);
+    --dsc-button-color: var(--ds-color-base-contrast-default);
   }
+
   & label:has(input:focus-visible) {
     @composes ds-focus--visible--inset from './base.css';
   }
@@ -105,9 +107,13 @@
     }
     label:has(input:checked),
     button[aria-checked='true'] {
-      isolation: isolate; /*creates a new stacking context so button shows above the parent's overlapping outline*/
-      background-color: var(--ds-color-surface-default);
-      --dsc-button-border-color: var(--ds-color-text-default);
+      --dsc-button-border-color: var(--ds-color-border-default);
+      --dsc-button-background--active: var(--ds-color-surface-default);
+      --dsc-button-background--hover: var(--ds-color-surface-default);
+      --dsc-button-background: var(--ds-color-surface-default);
+      --dsc-button-color--active: var(--ds-color-text-default);
+      --dsc-button-color--hover: var(--ds-color-text-default);
+      --dsc-button-color: var(--ds-color-text-default);
     }
   }
 }
