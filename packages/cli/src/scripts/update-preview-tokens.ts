@@ -37,10 +37,14 @@ const toPreviewToken = (tokens: { token: TransformedToken; formatted: string }[]
 type PreviewToken = { variable: string; value: string };
 
 export const formatTheme = async (themeConfig: Theme) => {
-  const { tokenSets } = await createTokens(themeConfig);
+  const { tokenSets, themeDimensions } = await createTokens(themeConfig);
   const outDir = '../../apps/www/app/_components/tokens/design-tokens';
 
-  const $themes = await generate$Themes(['dark', 'light'], [themeConfig.name], themeConfig.colors);
+  const $themes = await generate$Themes(
+    { ...themeDimensions, fontNamesPerTheme: { [themeConfig.name]: themeDimensions.fontNames } },
+    [themeConfig.name],
+    themeConfig.colors,
+  );
   const processed$themes = $themes.map(processThemeObject);
 
   // We run this to populate the `buildOptions.buildTokenFormats` with transformed tokens

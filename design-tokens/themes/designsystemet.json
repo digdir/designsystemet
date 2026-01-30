@@ -545,22 +545,610 @@
       }
     }
   },
+  "line-height": {
+    "sm": {
+      "$type": "lineHeights",
+      "$value": "{designsystemet.fonts.primary.line-height.sm}"
+    },
+    "md": {
+      "$type": "lineHeights",
+      "$value": "{designsystemet.fonts.primary.line-height.md}"
+    },
+    "lg": {
+      "$type": "lineHeights",
+      "$value": "{designsystemet.fonts.primary.line-height.lg}"
+    }
+  },
   "font-family": {
     "$type": "fontFamilies",
-    "$value": "{designsystemet.font-family}"
+    "$value": "{designsystemet.fonts.primary.font-family}"
   },
   "font-weight": {
     "medium": {
       "$type": "fontWeights",
-      "$value": "{designsystemet.font-weight.medium}"
+      "$value": "{designsystemet.fonts.primary.font-weight.medium}"
     },
     "semibold": {
       "$type": "fontWeights",
-      "$value": "{designsystemet.font-weight.semibold}"
+      "$value": "{designsystemet.fonts.primary.font-weight.semibold}"
     },
     "regular": {
       "$type": "fontWeights",
-      "$value": "{designsystemet.font-weight.regular}"
+      "$value": "{designsystemet.fonts.primary.font-weight.regular}"
+    }
+  },
+  "font-size": {
+    "1": {
+      "$type": "fontSizes",
+      "$value": "{designsystemet.fonts.primary.font-size.1}"
+    },
+    "2": {
+      "$type": "fontSizes",
+      "$value": "{designsystemet.fonts.primary.font-size.2}"
+    },
+    "3": {
+      "$type": "fontSizes",
+      "$value": "{designsystemet.fonts.primary.font-size.3}"
+    },
+    "4": {
+      "$type": "fontSizes",
+      "$value": "{designsystemet.fonts.primary.font-size.4}"
+    },
+    "5": {
+      "$type": "fontSizes",
+      "$value": "{designsystemet.fonts.primary.font-size.5}"
+    },
+    "6": {
+      "$type": "fontSizes",
+      "$value": "{designsystemet.fonts.primary.font-size.6}"
+    },
+    "7": {
+      "$type": "fontSizes",
+      "$value": "{designsystemet.fonts.primary.font-size.8}"
+    },
+    "8": {
+      "$type": "fontSizes",
+      "$value": "{designsystemet.fonts.primary.font-size.9}"
+    },
+    "9": {
+      "$type": "fontSizes",
+      "$value": "{designsystemet.fonts.primary.font-size.11}"
+    },
+    "10": {
+      "$type": "fontSizes",
+      "$value": "{designsystemet.fonts.primary.font-size.13}"
+    }
+  },
+  "letter-spacing": {
+    "1": {
+      "$type": "letterSpacing",
+      "$value": "{designsystemet.fonts.primary.letter-spacing.1}"
+    },
+    "2": {
+      "$type": "letterSpacing",
+      "$value": "{designsystemet.fonts.primary.letter-spacing.2}"
+    },
+    "3": {
+      "$type": "letterSpacing",
+      "$value": "{designsystemet.fonts.primary.letter-spacing.3}"
+    },
+    "4": {
+      "$type": "letterSpacing",
+      "$value": "{designsystemet.fonts.primary.letter-spacing.4}"
+    },
+    "5": {
+      "$type": "letterSpacing",
+      "$value": "{designsystemet.fonts.primary.letter-spacing.5}"
+    },
+    "6": {
+      "$type": "letterSpacing",
+      "$value": "{designsystemet.fonts.primary.letter-spacing.6}"
+    },
+    "7": {
+      "$type": "letterSpacing",
+      "$value": "{designsystemet.fonts.primary.letter-spacing.7}"
+    },
+    "8": {
+      "$type": "letterSpacing",
+      "$value": "{designsystemet.fonts.primary.letter-spacing.8}"
+    },
+    "9": {
+      "$type": "letterSpacing",
+      "$value": "{designsystemet.fonts.primary.letter-spacing.9}"
+    }
+  },
+  "typography-mapping": {
+    "heading": {
+      "2xl": {
+        "font-family": {
+          "$type": "fontFamilies",
+          "$value": "{designsystemet.fonts.secondary.font-family}"
+        },
+        "font-weight": {
+          "$type": "fontWeights",
+          "$value": "{designsystemet.fonts.secondary.font-weight.medium}"
+        },
+        "line-height": {
+          "$type": "lineHeights",
+          "$value": "{designsystemet.fonts.secondary.line-height.sm}"
+        },
+        "font-size": {
+          "$type": "fontSizes",
+          "$value": "{designsystemet.fonts.secondary.font-size.13}"
+        },
+        "letter-spacing": {
+          "$type": "letterSpacing",
+          "$value": "{designsystemet.fonts.secondary.letter-spacing.1}"
+        }
+      },
+      "xl": {
+        "font-family": {
+          "$type": "fontFamilies",
+          "$value": "{designsystemet.fonts.secondary.font-family}"
+        },
+        "font-weight": {
+          "$type": "fontWeights",
+          "$value": "{designsystemet.fonts.secondary.font-weight.medium}"
+        },
+        "line-height": {
+          "$type": "lineHeights",
+          "$value": "{designsystemet.fonts.secondary.line-height.sm}"
+        },
+        "font-size": {
+          "$type": "fontSizes",
+          "$value": "{designsystemet.fonts.secondary.font-size.11}"
+        },
+        "letter-spacing": {
+          "$type": "letterSpacing",
+          "$value": "{designsystemet.fonts.secondary.letter-spacing.1}"
+        }
+      },
+      "lg": {
+        "font-family": {
+          "$type": "fontFamilies",
+          "$value": "{designsystemet.fonts.secondary.font-family}"
+        },
+        "font-weight": {
+          "$type": "fontWeights",
+          "$value": "{designsystemet.fonts.secondary.font-weight.medium}"
+        },
+        "line-height": {
+          "$type": "lineHeights",
+          "$value": "{designsystemet.fonts.secondary.line-height.sm}"
+        },
+        "font-size": {
+          "$type": "fontSizes",
+          "$value": "{designsystemet.fonts.secondary.font-size.9}"
+        },
+        "letter-spacing": {
+          "$type": "letterSpacing",
+          "$value": "{designsystemet.fonts.secondary.letter-spacing.2}"
+        }
+      },
+      "md": {
+        "font-family": {
+          "$type": "fontFamilies",
+          "$value": "{designsystemet.fonts.secondary.font-family}"
+        },
+        "font-weight": {
+          "$type": "fontWeights",
+          "$value": "{designsystemet.fonts.secondary.font-weight.medium}"
+        },
+        "line-height": {
+          "$type": "lineHeights",
+          "$value": "{designsystemet.fonts.secondary.line-height.sm}"
+        },
+        "font-size": {
+          "$type": "fontSizes",
+          "$value": "{designsystemet.fonts.secondary.font-size.8}"
+        },
+        "letter-spacing": {
+          "$type": "letterSpacing",
+          "$value": "{designsystemet.fonts.secondary.letter-spacing.3}"
+        }
+      },
+      "sm": {
+        "font-family": {
+          "$type": "fontFamilies",
+          "$value": "{designsystemet.fonts.secondary.font-family}"
+        },
+        "font-weight": {
+          "$type": "fontWeights",
+          "$value": "{designsystemet.fonts.secondary.font-weight.medium}"
+        },
+        "line-height": {
+          "$type": "lineHeights",
+          "$value": "{designsystemet.fonts.secondary.line-height.sm}"
+        },
+        "font-size": {
+          "$type": "fontSizes",
+          "$value": "{designsystemet.fonts.secondary.font-size.6}"
+        },
+        "letter-spacing": {
+          "$type": "letterSpacing",
+          "$value": "{designsystemet.fonts.secondary.letter-spacing.5}"
+        }
+      },
+      "xs": {
+        "font-family": {
+          "$type": "fontFamilies",
+          "$value": "{designsystemet.fonts.secondary.font-family}"
+        },
+        "font-weight": {
+          "$type": "fontWeights",
+          "$value": "{designsystemet.fonts.secondary.font-weight.medium}"
+        },
+        "line-height": {
+          "$type": "lineHeights",
+          "$value": "{designsystemet.fonts.secondary.line-height.sm}"
+        },
+        "font-size": {
+          "$type": "fontSizes",
+          "$value": "{designsystemet.fonts.secondary.font-size.5}"
+        },
+        "letter-spacing": {
+          "$type": "letterSpacing",
+          "$value": "{designsystemet.fonts.secondary.letter-spacing.6}"
+        }
+      },
+      "2xs": {
+        "font-family": {
+          "$type": "fontFamilies",
+          "$value": "{designsystemet.fonts.secondary.font-family}"
+        },
+        "font-weight": {
+          "$type": "fontWeights",
+          "$value": "{designsystemet.fonts.secondary.font-weight.medium}"
+        },
+        "line-height": {
+          "$type": "lineHeights",
+          "$value": "{designsystemet.fonts.secondary.line-height.sm}"
+        },
+        "font-size": {
+          "$type": "fontSizes",
+          "$value": "{designsystemet.fonts.secondary.font-size.4}"
+        },
+        "letter-spacing": {
+          "$type": "letterSpacing",
+          "$value": "{designsystemet.fonts.secondary.letter-spacing.6}"
+        }
+      }
+    },
+    "body": {
+      "xl": {
+        "font-family": {
+          "$type": "fontFamilies",
+          "$value": "{designsystemet.fonts.primary.font-family}"
+        },
+        "font-weight": {
+          "$type": "fontWeights",
+          "$value": "{designsystemet.fonts.primary.font-weight.regular}"
+        },
+        "line-height": {
+          "$type": "lineHeights",
+          "$value": "{designsystemet.fonts.primary.line-height.md}"
+        },
+        "font-size": {
+          "$type": "fontSizes",
+          "$value": "{designsystemet.fonts.primary.font-size.6}"
+        },
+        "letter-spacing": {
+          "$type": "letterSpacing",
+          "$value": "{designsystemet.fonts.primary.letter-spacing.8}"
+        }
+      },
+      "lg": {
+        "font-family": {
+          "$type": "fontFamilies",
+          "$value": "{designsystemet.fonts.primary.font-family}"
+        },
+        "font-weight": {
+          "$type": "fontWeights",
+          "$value": "{designsystemet.fonts.primary.font-weight.regular}"
+        },
+        "line-height": {
+          "$type": "lineHeights",
+          "$value": "{designsystemet.fonts.primary.line-height.md}"
+        },
+        "font-size": {
+          "$type": "fontSizes",
+          "$value": "{designsystemet.fonts.primary.font-size.5}"
+        },
+        "letter-spacing": {
+          "$type": "letterSpacing",
+          "$value": "{designsystemet.fonts.primary.letter-spacing.8}"
+        }
+      },
+      "md": {
+        "font-family": {
+          "$type": "fontFamilies",
+          "$value": "{designsystemet.fonts.primary.font-family}"
+        },
+        "font-weight": {
+          "$type": "fontWeights",
+          "$value": "{designsystemet.fonts.primary.font-weight.regular}"
+        },
+        "line-height": {
+          "$type": "lineHeights",
+          "$value": "{designsystemet.fonts.primary.line-height.md}"
+        },
+        "font-size": {
+          "$type": "fontSizes",
+          "$value": "{designsystemet.fonts.primary.font-size.4}"
+        },
+        "letter-spacing": {
+          "$type": "letterSpacing",
+          "$value": "{designsystemet.fonts.primary.letter-spacing.8}"
+        }
+      },
+      "sm": {
+        "font-family": {
+          "$type": "fontFamilies",
+          "$value": "{designsystemet.fonts.primary.font-family}"
+        },
+        "font-weight": {
+          "$type": "fontWeights",
+          "$value": "{designsystemet.fonts.primary.font-weight.regular}"
+        },
+        "line-height": {
+          "$type": "lineHeights",
+          "$value": "{designsystemet.fonts.primary.line-height.md}"
+        },
+        "font-size": {
+          "$type": "fontSizes",
+          "$value": "{designsystemet.fonts.primary.font-size.3}"
+        },
+        "letter-spacing": {
+          "$type": "letterSpacing",
+          "$value": "{designsystemet.fonts.primary.letter-spacing.7}"
+        }
+      },
+      "xs": {
+        "font-family": {
+          "$type": "fontFamilies",
+          "$value": "{designsystemet.fonts.primary.font-family}"
+        },
+        "font-weight": {
+          "$type": "fontWeights",
+          "$value": "{designsystemet.fonts.primary.font-weight.regular}"
+        },
+        "line-height": {
+          "$type": "lineHeights",
+          "$value": "{designsystemet.fonts.primary.line-height.md}"
+        },
+        "font-size": {
+          "$type": "fontSizes",
+          "$value": "{designsystemet.fonts.primary.font-size.2}"
+        },
+        "letter-spacing": {
+          "$type": "letterSpacing",
+          "$value": "{designsystemet.fonts.primary.letter-spacing.6}"
+        }
+      },
+      "short": {
+        "xl": {
+          "font-family": {
+            "$type": "fontFamilies",
+            "$value": "{designsystemet.fonts.primary.font-family}"
+          },
+          "font-weight": {
+            "$type": "fontWeights",
+            "$value": "{designsystemet.fonts.primary.font-weight.regular}"
+          },
+          "line-height": {
+            "$type": "lineHeights",
+            "$value": "{designsystemet.fonts.primary.line-height.sm}"
+          },
+          "font-size": {
+            "$type": "fontSizes",
+            "$value": "{designsystemet.fonts.primary.font-size.6}"
+          },
+          "letter-spacing": {
+            "$type": "letterSpacing",
+            "$value": "{designsystemet.fonts.primary.letter-spacing.8}"
+          }
+        },
+        "lg": {
+          "font-family": {
+            "$type": "fontFamilies",
+            "$value": "{designsystemet.fonts.primary.font-family}"
+          },
+          "font-weight": {
+            "$type": "fontWeights",
+            "$value": "{designsystemet.fonts.primary.font-weight.regular}"
+          },
+          "line-height": {
+            "$type": "lineHeights",
+            "$value": "{designsystemet.fonts.primary.line-height.sm}"
+          },
+          "font-size": {
+            "$type": "fontSizes",
+            "$value": "{designsystemet.fonts.primary.font-size.5}"
+          },
+          "letter-spacing": {
+            "$type": "letterSpacing",
+            "$value": "{designsystemet.fonts.primary.letter-spacing.8}"
+          }
+        },
+        "md": {
+          "font-family": {
+            "$type": "fontFamilies",
+            "$value": "{designsystemet.fonts.primary.font-family}"
+          },
+          "font-weight": {
+            "$type": "fontWeights",
+            "$value": "{designsystemet.fonts.primary.font-weight.regular}"
+          },
+          "line-height": {
+            "$type": "lineHeights",
+            "$value": "{designsystemet.fonts.primary.line-height.sm}"
+          },
+          "font-size": {
+            "$type": "fontSizes",
+            "$value": "{designsystemet.fonts.primary.font-size.4}"
+          },
+          "letter-spacing": {
+            "$type": "letterSpacing",
+            "$value": "{designsystemet.fonts.primary.letter-spacing.8}"
+          }
+        },
+        "sm": {
+          "font-family": {
+            "$type": "fontFamilies",
+            "$value": "{designsystemet.fonts.primary.font-family}"
+          },
+          "font-weight": {
+            "$type": "fontWeights",
+            "$value": "{designsystemet.fonts.primary.font-weight.regular}"
+          },
+          "line-height": {
+            "$type": "lineHeights",
+            "$value": "{designsystemet.fonts.primary.line-height.sm}"
+          },
+          "font-size": {
+            "$type": "fontSizes",
+            "$value": "{designsystemet.fonts.primary.font-size.3}"
+          },
+          "letter-spacing": {
+            "$type": "letterSpacing",
+            "$value": "{designsystemet.fonts.primary.letter-spacing.7}"
+          }
+        },
+        "xs": {
+          "font-family": {
+            "$type": "fontFamilies",
+            "$value": "{designsystemet.fonts.primary.font-family}"
+          },
+          "font-weight": {
+            "$type": "fontWeights",
+            "$value": "{designsystemet.fonts.primary.font-weight.regular}"
+          },
+          "line-height": {
+            "$type": "lineHeights",
+            "$value": "{designsystemet.fonts.primary.line-height.sm}"
+          },
+          "font-size": {
+            "$type": "fontSizes",
+            "$value": "{designsystemet.fonts.primary.font-size.2}"
+          },
+          "letter-spacing": {
+            "$type": "letterSpacing",
+            "$value": "{designsystemet.fonts.primary.letter-spacing.6}"
+          }
+        }
+      },
+      "long": {
+        "xl": {
+          "font-family": {
+            "$type": "fontFamilies",
+            "$value": "{designsystemet.fonts.primary.font-family}"
+          },
+          "font-weight": {
+            "$type": "fontWeights",
+            "$value": "{designsystemet.fonts.primary.font-weight.regular}"
+          },
+          "line-height": {
+            "$type": "lineHeights",
+            "$value": "{designsystemet.fonts.primary.line-height.lg}"
+          },
+          "font-size": {
+            "$type": "fontSizes",
+            "$value": "{designsystemet.fonts.primary.font-size.6}"
+          },
+          "letter-spacing": {
+            "$type": "letterSpacing",
+            "$value": "{designsystemet.fonts.primary.letter-spacing.8}"
+          }
+        },
+        "lg": {
+          "font-family": {
+            "$type": "fontFamilies",
+            "$value": "{designsystemet.fonts.primary.font-family}"
+          },
+          "font-weight": {
+            "$type": "fontWeights",
+            "$value": "{designsystemet.fonts.primary.font-weight.regular}"
+          },
+          "line-height": {
+            "$type": "lineHeights",
+            "$value": "{designsystemet.fonts.primary.line-height.lg}"
+          },
+          "font-size": {
+            "$type": "fontSizes",
+            "$value": "{designsystemet.fonts.primary.font-size.5}"
+          },
+          "letter-spacing": {
+            "$type": "letterSpacing",
+            "$value": "{designsystemet.fonts.primary.letter-spacing.8}"
+          }
+        },
+        "md": {
+          "font-family": {
+            "$type": "fontFamilies",
+            "$value": "{designsystemet.fonts.primary.font-family}"
+          },
+          "font-weight": {
+            "$type": "fontWeights",
+            "$value": "{designsystemet.fonts.primary.font-weight.regular}"
+          },
+          "line-height": {
+            "$type": "lineHeights",
+            "$value": "{designsystemet.fonts.primary.line-height.lg}"
+          },
+          "font-size": {
+            "$type": "fontSizes",
+            "$value": "{designsystemet.fonts.primary.font-size.4}"
+          },
+          "letter-spacing": {
+            "$type": "letterSpacing",
+            "$value": "{designsystemet.fonts.primary.letter-spacing.8}"
+          }
+        },
+        "sm": {
+          "font-family": {
+            "$type": "fontFamilies",
+            "$value": "{designsystemet.fonts.primary.font-family}"
+          },
+          "font-weight": {
+            "$type": "fontWeights",
+            "$value": "{designsystemet.fonts.primary.font-weight.regular}"
+          },
+          "line-height": {
+            "$type": "lineHeights",
+            "$value": "{designsystemet.fonts.primary.line-height.lg}"
+          },
+          "font-size": {
+            "$type": "fontSizes",
+            "$value": "{designsystemet.fonts.primary.font-size.3}"
+          },
+          "letter-spacing": {
+            "$type": "letterSpacing",
+            "$value": "{designsystemet.fonts.primary.letter-spacing.7}"
+          }
+        },
+        "xs": {
+          "font-family": {
+            "$type": "fontFamilies",
+            "$value": "{designsystemet.fonts.primary.font-family}"
+          },
+          "font-weight": {
+            "$type": "fontWeights",
+            "$value": "{designsystemet.fonts.primary.font-weight.regular}"
+          },
+          "line-height": {
+            "$type": "lineHeights",
+            "$value": "{designsystemet.fonts.primary.line-height.lg}"
+          },
+          "font-size": {
+            "$type": "fontSizes",
+            "$value": "{designsystemet.fonts.primary.font-size.2}"
+          },
+          "letter-spacing": {
+            "$type": "letterSpacing",
+            "$value": "{designsystemet.fonts.primary.letter-spacing.6}"
+          }
+        }
+      }
     }
   },
   "border-radius": {

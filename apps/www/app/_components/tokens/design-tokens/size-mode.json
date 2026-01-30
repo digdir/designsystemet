@@ -7,6 +7,22 @@
       ],
       "variable": "--ds-size-mode-font-size",
       "value": "1.125"
+    },
+    {
+      "path": [
+        "font-scale",
+        "_base"
+      ],
+      "variable": "--ds-font-scale-base",
+      "value": "1.125"
+    },
+    {
+      "path": [
+        "font-scale",
+        "_ratio"
+      ],
+      "variable": "--ds-font-scale-ratio",
+      "value": "1.143136"
     }
   ],
   "large": [
@@ -17,6 +33,22 @@
       ],
       "variable": "--ds-size-mode-font-size",
       "value": "1.3125"
+    },
+    {
+      "path": [
+        "font-scale",
+        "_base"
+      ],
+      "variable": "--ds-font-scale-base",
+      "value": "1.3125"
+    },
+    {
+      "path": [
+        "font-scale",
+        "_ratio"
+      ],
+      "variable": "--ds-font-scale-ratio",
+      "value": "1.143136"
     }
   ],
   "small": [
@@ -27,6 +59,22 @@
       ],
       "variable": "--ds-size-mode-font-size",
       "value": "1"
+    },
+    {
+      "path": [
+        "font-scale",
+        "_base"
+      ],
+      "variable": "--ds-font-scale-base",
+      "value": "1"
+    },
+    {
+      "path": [
+        "font-scale",
+        "_ratio"
+      ],
+      "variable": "--ds-font-scale-ratio",
+      "value": "1.14234"
     }
   ]
 }

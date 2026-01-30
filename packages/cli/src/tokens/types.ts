@@ -1,8 +1,15 @@
 import type { Config as SDConfig } from 'style-dictionary/types';
+import type { ColorScheme } from '../colors/types.js';
 import type { ConfigSchemaTheme } from '../config.js';
 import type { GetStyleDictionaryConfig } from './process/configs/shared.js';
 
-export type Token = { $value: string | Record<string, string>[]; $type: string };
+export type Token =
+  | { $type: string; $value: string }
+  | { $type: 'boxShadow'; $value: Record<'x' | 'y' | 'blur' | 'spread' | 'color', string>[] }
+  | {
+      $type: 'typography';
+      $value: Record<'fontFamily' | 'fontWeight' | 'lineHeight' | 'fontSize' | 'letterSpacing', string>;
+    };
 export type TokenSet = {
   [key: string]: Token | TokenSet;
 };
@@ -39,6 +46,20 @@ export type ThemePermutation = {
 };
 
 export type ThemeDimension = keyof ThemePermutation;
+
+export type TokenSetDimensions = {
+  colorSchemes: ColorScheme[];
+  sizeModes: ('small' | 'medium' | 'large')[];
+  fontNames: string[];
+};
+
+/**
+ * `colorSchemes` and `sizeModes` have to be the same across all themes,
+ * but `fontNames` can be completely unique per theme
+ */
+export type TokenSetDimensionsForAllThemes = Omit<TokenSetDimensions, 'fontNames'> & {
+  fontNamesPerTheme: Record<string, string[]>;
+};
 
 export type GetSDConfigOptions = {
   tokensDir?: string;

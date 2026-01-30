@@ -4,6 +4,7 @@ import pc from 'picocolors';
 import * as R from 'ramda';
 import { convertToHex } from '../src/colors/index.js';
 import type { CssColor } from '../src/colors/types.js';
+import { type CreateConfigSchema, parseConfig } from '../src/config.js';
 import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
 import { writeTokens } from '../src/tokens/create/write.js';
@@ -56,6 +57,15 @@ function makeTokenCommands() {
       const outDir = typeof opts.outDir === 'string' ? opts.outDir : './dist/tokens';
 
       const { configFile, configPath } = await getConfigFile(opts.config);
+
+      // Hacky: Find any font size overrides from the create config.
+      // This only works because these settings can't be passed as CLI options
+      const typographySizeOverrides = Object.values(parseConfig<CreateConfigSchema>(configFile, configPath).themes)
+        .flatMap((x) => x.typography)
+        .flatMap((x) => Object.values(x?.fonts ?? []))
+        .flatMap((x) => Object.values(x.size ?? []))
+        .flatMap((x) => Object.values(x.overrides ?? []));
+
       const config = await parseBuildConfig(configFile, { configPath });
 
       if (dry) {
@@ -66,7 +76,13 @@ function makeTokenCommands() {
         await cleanDir(outDir, dry);
       }
 
-      await buildTokens({ tokensDir, outDir, verbose, dry, tailwind: experimentalTailwind, ...config });
+      if (typographySizeOverrides.length > 0) {
+        // If typography sizes have been overridden with explicit values, we can't use modular formulae
+        config.build = config.build ?? {};
+        config.build.typographySizeValues = 'static';
+      }
+
+      await buildTokens({ tokensDir, outDir, verbose, dry, tailwind: experimentalTailwind, ...config.build });
 
       return Promise.resolve();
     });
@@ -117,8 +133,14 @@ function makeTokenCommands() {
           // Casting as missing properties should be validated by `getDefaultOrExplicitOption` to default values
           const theme = { name, ...themeWithoutName } as Theme;
 
-          const { tokenSets } = await createTokens(theme);
-          await writeTokens({ outDir: config.outDir, theme, dry: opts.dry, tokenSets });
+          const { tokenSets, themeDimensions } = await createTokens(theme);
+          await writeTokens({
+            outDir: config.outDir,
+            theme,
+            dry: opts.dry,
+            tokenSets,
+            tokenSetDimensions: themeDimensions,
+          });
         }
       }
     });
