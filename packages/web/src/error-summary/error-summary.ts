@@ -22,7 +22,7 @@ export class DSErrorSummaryElement extends DSElement {
   handleEvent({ target }: Partial<Event>) {
     if (target !== this) return; // Ignore if animation event was triggered by child
     const heading = this.querySelector('h2,h3,h4,h5,h6');
-    if (heading) attr(heading, 'aria-labelledby', useId(heading));
+    if (heading) attr(this, 'aria-labelledby', useId(heading));
     attr(this, 'tabindex', '-1');
     this.focus();
   }
