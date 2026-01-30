@@ -1,8 +1,8 @@
 import type { ThemeInfo } from '@digdir/designsystemet/color';
 import { RovingFocusRoot } from '@digdir/designsystemet-react';
-import { Group } from '../group/group';
+import { ColorGroup } from '../color-group/color-group';
 
-import classes from './scale.module.css';
+import classes from './color-scale.module.css';
 
 type ScaleProps = {
   colorScale: ThemeInfo;
@@ -15,14 +15,14 @@ export const Scale = ({ colorScale, showHeader, namespace }: ScaleProps) => {
     <div className={classes.themes}>
       <RovingFocusRoot activeValue={namespace + '1'} asChild>
         <div className={classes.test}>
-          <Group
+          <ColorGroup
             header={showHeader ? 'Background' : ''}
             colorNames={['background-default', 'background-tinted']}
             colorScale={colorScale}
             names={['Default', 'Tinted']}
             namespace={namespace}
           />
-          <Group
+          <ColorGroup
             header={showHeader ? 'Surface' : ''}
             colorNames={[
               'surface-default',
@@ -34,21 +34,21 @@ export const Scale = ({ colorScale, showHeader, namespace }: ScaleProps) => {
             names={['Default', 'Tinted', 'Hover', 'Active']}
             namespace={namespace}
           />
-          <Group
+          <ColorGroup
             header={showHeader ? 'Border' : ''}
             colorNames={['border-subtle', 'border-default', 'border-strong']}
             colorScale={colorScale}
             names={['Subtle', 'Default', 'Strong']}
             namespace={namespace}
           />
-          <Group
+          <ColorGroup
             header={showHeader ? 'Text' : ''}
             colorNames={['text-subtle', 'text-default']}
             colorScale={colorScale}
             names={['Subtle', 'Default']}
             namespace={namespace}
           />
-          <Group
+          <ColorGroup
             header={showHeader ? 'Base' : ''}
             colorNames={[
               'base-default',

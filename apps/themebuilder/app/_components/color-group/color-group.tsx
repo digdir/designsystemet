@@ -10,10 +10,10 @@ import cl from 'clsx/lite';
 import { Fragment } from 'react';
 import { useColorModalContext } from '~/_utils/color-modal-context';
 import { useThemebuilder } from '~/routes/themebuilder/_utils/use-themebuilder';
-import { Color as ColorPreview } from '../color/color';
-import classes from './group.module.css';
+import { ColorButton } from '../color-button/color-button';
+import classes from './color-group.module.css';
 
-type GroupProps = {
+type ColorGroupProps = {
   header: string;
   colorNames: ColorNames[];
   colorScale: ThemeInfo;
@@ -21,13 +21,13 @@ type GroupProps = {
   namespace: string;
 };
 
-export const Group = ({
+export const ColorGroup = ({
   header,
   colorNames,
   names,
   colorScale,
   namespace,
-}: GroupProps) => {
+}: ColorGroupProps) => {
   const { colorScheme } = useThemebuilder();
   const { openColorModal } = useColorModalContext();
 
@@ -54,7 +54,7 @@ export const Group = ({
           return (
             <Fragment key={index + 'fragment' + namespace}>
               <RovingFocusItem value={namespace + number} asChild>
-                <ColorPreview
+                <ColorButton
                   color={hex}
                   colorName={colorName}
                   aria-label={`Se mer om ${namespace} ${color?.displayName}`}

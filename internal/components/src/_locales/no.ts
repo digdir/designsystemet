@@ -41,4 +41,37 @@ export default {
       'base-colors': 'Base fargene',
     },
   },
+  'token-preview': {
+    size: {
+      'select-label': 'Velg størrelse',
+      caption: 'Størrelsevariabler',
+    },
+    color: {
+      caption: 'Fargevariabler',
+    },
+    'border-radius': {
+      caption: 'Border-radius variabler',
+    },
+    opacity: {
+      caption: 'Opacity variabler',
+    },
+    shadow: {
+      caption: 'Shadow variabler',
+    },
+    'border-width': {
+      caption: 'Border-width variabler',
+    },
+    typography: {
+      caption: 'Typografi variabler',
+    },
+    'search-in-design-tokens': 'Søk i design tokens',
+    'search-input-aria-label': 'Søk på variabel navn i CSS for design tokens',
+    colors: 'Farger',
+    'no-results': 'Ingen resultater funnet',
+    table: {
+      name: 'Variabel navn',
+      preview: 'Forhåndsvisning',
+      value: 'Verdi',
+    },
+  },
 };

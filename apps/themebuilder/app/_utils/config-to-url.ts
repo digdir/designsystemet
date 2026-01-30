@@ -70,7 +70,7 @@ export function configThemeToUrl(
 
   // Set default appearance
   params.set('appearance', 'light');
-  params.set('tab', 'overview');
+  params.set('tab', 'colorsystem');
 
   return `/${lang}/themebuilder?${params.toString()}`;
 }

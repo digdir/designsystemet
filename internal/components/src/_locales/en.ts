@@ -43,4 +43,38 @@ export default {
       'base-colors': 'Base colors',
     },
   },
+  'token-preview': {
+    size: {
+      'select-label': 'Select size',
+      caption: 'Size variables',
+    },
+    color: {
+      caption: 'Color variables',
+    },
+    'border-radius': {
+      caption: 'Border-radius variables',
+    },
+    opacity: {
+      caption: 'Opacity variables',
+    },
+    shadow: {
+      caption: 'Shadow variables',
+    },
+    'border-width': {
+      caption: 'Border-width variables',
+    },
+    typography: {
+      caption: 'Typography variables',
+    },
+    'search-in-design-tokens': 'Search in design tokens',
+    'search-input-aria-label':
+      'Search for variable names in CSS for design tokens',
+    colors: 'Colors',
+    'no-results': 'No results found',
+    table: {
+      name: 'Variable name',
+      preview: 'Preview',
+      value: 'Value',
+    },
+  },
 } satisfies typeof no;
