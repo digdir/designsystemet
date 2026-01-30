@@ -11,6 +11,7 @@ export default {
     'about-site': 'About this site',
     'contact-us': 'Get in touch with us',
     copyright: 'Designsystemet',
+    'dpg-aria-label': 'Digital Public Goods Designsystemet page',
   },
   header: {
     'home-link': 'Designsystemet home page',
