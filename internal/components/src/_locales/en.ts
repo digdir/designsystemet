@@ -23,6 +23,7 @@ export default {
     dark: 'dark',
     'language-toggle': 'Switch language',
     'back-to-home': 'Go back to the home page',
+    search: 'Search',
   },
   'clipboard-button': {
     copy: 'Copy',

@@ -10,6 +10,9 @@ export default [
   route('/slack', 'routes/slack.tsx', {
     id: 'slack-redirect',
   }),
+  route('/api/search', 'routes/search.tsx', {
+    id: 'api-search',
+  }),
   ...prefix('/schemas', [
     route('/cli/:version', 'routes/cli-schema.tsx', {
       id: 'schemas-cli',
