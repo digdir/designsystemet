@@ -23,15 +23,15 @@
     "@navikt/aksel-icons": "^8.1.0",
     "clsx": "^2.1.1",
     "prism-react-renderer": "^2.4.1",
-    "prettier": "^3.8.0",
+    "prettier": "^3.8.1",
     "react-code-block": "^1.1.3",
     "react": "^19.2.3",
     "react-i18next": "^16.5.3",
-    "react-router": "^7.12.0",
+    "react-router": "^7.13.0",
     "react-dom": "^19.2.3"
   },
   "devDependencies": {
-    "@types/react": "^19.2.8",
+    "@types/react": "^19.2.9",
     "@types/react-dom": "^19.2.3",
     "typescript": "^5.9.3"
   }
