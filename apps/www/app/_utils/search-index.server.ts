@@ -418,7 +418,8 @@ export function searchIndex(
 ): SearchIndexItem[] {
   if (!query.trim()) return [];
 
-  const searchTerms = query.toLowerCase().split(/\s+/).filter(Boolean);
+  const queryLower = query.toLowerCase();
+  const searchTerms = queryLower.split(/\s+/).filter(Boolean);
 
   // Type priority multipliers (blog is deprioritized)
   const typePriority: Record<string, number> = {
@@ -438,6 +439,12 @@ export function searchIndex(
       const descLower = item.description.toLowerCase();
       const contentLower = item.content.toLowerCase();
       const keywordsLower = item.keywords.toLowerCase();
+
+      // Exact match search when query has more than 2 words
+      if (searchTerms.length > 2) {
+        if (descLower.includes(queryLower)) score += 1000;
+        if (contentLower.includes(queryLower)) score += 1000;
+      }
 
       for (const term of searchTerms) {
         // Keyword matches (highly prioritized)
