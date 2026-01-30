@@ -28,11 +28,16 @@ function handleToggle(
     source?: HTMLElement;
   },
 ) {
-  const { newState, oldState, target: el, source = event.detail } = event;
+  let { newState, oldState, target: el, source = event.detail } = event;
   const float = el instanceof HTMLElement && getCSSProp(el, '--_ds-floating');
 
   if (!float) return;
   if (newState === 'closed') return POPOVERS.get(el)?.(); // Cleanup on close
+  if (!source) {
+    const root = el.getRootNode() as Document; // Support shadow DOM
+    const css = `[popovertarget="${el.id}"],[commandfor="${el.id}"]`;
+    source = (el.id && root?.querySelector?.<HTMLElement>(css)) || undefined; // Polyfill ToggleEvent .source for older browsers
+  }
   if (!source || source === el || (oldState && oldState === newState)) return; // No need to update
   const padding = 10;
   const overscroll = getCSSProp(el, '--_ds-floating-overscroll');

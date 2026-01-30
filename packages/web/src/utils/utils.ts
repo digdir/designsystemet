@@ -157,29 +157,6 @@ export const onMutation = (
   return cleanup;
 };
 
-// Polyfill for ToggleEvent.source for browsers that do not support it yet
-if (isBrowser()) {
-  let isSupported = false;
-  const dialog = document.createElement('dialog');
-  dialog.addEventListener('beforetoggle', (e) => {
-    isSupported = 'source' in e;
-  });
-  dialog.show();
-
-  if (!isSupported) {
-    Object.defineProperty(ToggleEvent.prototype, 'source', {
-      configurable: true,
-      enumerable: true,
-      get() {
-        const id = this.target.id;
-        const root = this.target.getRootNode(); // Support shadow DOM
-        const css = `[popovertarget="${id}"],[commandfor="${id}"]`;
-        return id ? root?.querySelector?.(css) : null;
-      },
-    });
-  }
-}
-
 /**
  * tag
  * @description creates element and assigns properties

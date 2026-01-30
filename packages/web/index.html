@@ -104,10 +104,52 @@
     <br>
     <br>
 
+     <ds-field class="ds-field">
+      <label>Label</label>
+      <select class="ds-input" readonly>
+        <option value="option-1">Option 1</option>
+        <option value="option-2">Option 2</option>
+        <option value="option-3">Option 3</option>
+      </select>
+      <p data-field="counter" data-limit="20" data-over="%d tegn for mye" data-under="%d tegn igjen"></p>
+    </ds-field>
+
+    <br>
+    <br>
+
+    <ds-field class="ds-field">
+      <input class="ds-input" type="checkbox" readonly />
+      <label>Label</label>
+    </ds-field>
+
+    <br>
+    <br>
+
+    <fieldset class="ds-fieldset">
+      <legend>Velg readonly alternativ</legend>
+      <ds-field class="ds-field">
+        <input class="ds-input" type="radio" name="reads" value="1" readonly />
+        <label>Alternativ 1</label>
+      </ds-field>
+      <ds-field class="ds-field">
+        <input class="ds-input" type="radio" name="reads" value="2" readonly />
+        <label>Alternativ 2</label>
+        <p data-field="description">Description<br />Description</p>
+      </ds-field>
+      <ds-field class="ds-field">
+        <input class="ds-input" type="radio" name="reads" value="3" readonly />
+        <label>Alternativ 3</label>
+      </ds-field>
+    </fieldset>
+
+    <br>
+    <br>
+
     <ds-field class="ds-field" style="width: 200px">
       <label>Label</label>
       <ds-suggestion class="ds-suggestion" data-multiple>
         <input type="search" class="ds-input" />
+        <del aria-label="Fjern innhold"></del>
         <u-datalist>
           <u-option value="option-1">Option 1</u-option>
           <u-option value="option-2">Option 2</u-option>
@@ -119,28 +161,26 @@
     <br>
     <br>
 
-    <div>
-      <fieldset class="ds-fieldset">
-        <legend>Velg Alternativ</legend>
-        <p data-field="description">Introtekst</p>
-        <ds-field class="ds-field">
-          <input class="ds-input" type="radio" name="radios" value="1" checked />
-          <label>Alternativ 1</label>
-        </ds-field>
-        <ds-field class="ds-field">
-          <input class="ds-input" type="radio" name="radios" value="2" />
-          <label>Alternativ 2</label>
-          <p data-field="description">Description<br />Description</p>
-        </ds-field>
-        <ds-field class="ds-field">
-          <input class="ds-input" type="radio" name="radios" value="3" />
-          <label>Alternativ 3</label>
-        </ds-field>
-        <div class="ds-validation-message" data-field="validation">
-          Dette er ein feilmelding
-        </div>
-      </fieldset>
-    </div>
+    <fieldset class="ds-fieldset">
+      <legend>Velg Alternativ</legend>
+      <p data-field="description">Introtekst</p>
+      <ds-field class="ds-field">
+        <input class="ds-input" type="radio" name="radios" value="1" checked />
+        <label>Alternativ 1</label>
+      </ds-field>
+      <ds-field class="ds-field">
+        <input class="ds-input" type="radio" name="radios" value="2" />
+        <label>Alternativ 2</label>
+        <p data-field="description">Description<br />Description</p>
+      </ds-field>
+      <ds-field class="ds-field">
+        <input class="ds-input" type="radio" name="radios" value="3" />
+        <label>Alternativ 3</label>
+      </ds-field>
+      <div class="ds-validation-message" data-field="validation">
+        Dette er ein feilmelding
+      </div>
+    </fieldset>
 
     <br>
     <br>

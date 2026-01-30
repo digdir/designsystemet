@@ -37,15 +37,6 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
         className={cl('ds-input', className)}
         data-width={width}
         ref={ref}
-        onKeyDown={(event) => {
-          if (event.key === 'Tab') return;
-          if (rest.readOnly) event.preventDefault(); // Make readonly work for select
-          onKeyDown?.(event);
-        }}
-        onMouseDown={(event) => {
-          if (rest.readOnly) event.preventDefault(); // Make readonly work for select
-          onMouseDown?.(event);
-        }}
         {...rest}
       />
     );
