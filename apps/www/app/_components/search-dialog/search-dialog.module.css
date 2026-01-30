@@ -11,6 +11,10 @@
   box-shadow: var(--ds-shadow-lg);
   margin-top: 0;
   top: 5vh;
+  ::highlight(custom-highlight) {
+    background-color: var(--ds-color-success-base-default, #ff0066);
+    color: white;
+  }
   &::backdrop {
     opacity: 0.8;
     /* always use the dark version of these colors but loose single source of truth */

@@ -13,10 +13,11 @@ import { useDebounceCallback } from '@internal/components';
 import { FileSearchIcon } from '@navikt/aksel-icons';
 import cl from 'clsx';
 import type { CSSProperties } from 'react';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { RRLink as Link } from '../link';
 import classes from './search-dialog.module.css';
+import { highlightText } from '~/_utils/highlight';
 
 type SearchResult = {
   id: string;
@@ -39,6 +40,13 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
   const [isQuickLoading, setIsQuickLoading] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
   const latestQueryRef = useRef<string>('');
+  const resultsRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (resultsRef.current && quickResults.length > 0 && query.length > 1) {
+      highlightText(query, resultsRef.current);
+    }
+  }, [quickResults]);
 
   const performSearch = async (searchQuery: string) => {
     if (!searchQuery.trim()) {
@@ -169,7 +177,7 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
               </section>
             )}
             {quickResults.length > 0 && (
-              <section className={classes.resultsBlock}>
+              <section className={classes.resultsBlock} ref={resultsRef}>
                 <Heading className={classes.iconHeading} data-size='sm'>
                   <FileSearchIcon /> {t('search.results')}
                 </Heading>
