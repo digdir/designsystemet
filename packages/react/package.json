@@ -48,7 +48,7 @@
     "@tanstack/react-virtual": "^3.13.18",
     "@u-elements/u-combobox": "^1.0.5",
     "@u-elements/u-datalist": "^1.0.14",
-    "@u-elements/u-details": "^0.1.5",
+    "@u-elements/u-details": "^0.2.2",
     "clsx": "^2.1.1"
   },
   "devDependencies": {
