@@ -60,8 +60,8 @@
   @composes ds-focus from './base.css';
 
   /* only hover effect on input, but with label if it is a radio or checkbox */
-  :has(label):not(:has(label:hover)) &:not(:focus-visible, :disabled, :read-only:not(select:not([readonly]))):hover,
-  &:is([type='radio'], [type='checkbox']):not(:focus-visible, :disabled, [readonly]):hover {
+  :has(label):not(:has(label:hover)) &:not(:focus-visible, :disabled, [readonly], [aria-readonly='true']):hover,
+  &:is([type='radio'], [type='checkbox']):not(:focus-visible, :disabled, [readonly], [aria-readonly='true']):hover {
     outline-color: var(--dsc-input-outline-color--hover);
     outline-width: var(--dsc-input-outline-width--hover);
     outline-style: var(--dsc-input-outline-style--hover);
@@ -81,6 +81,7 @@
 
     &:disabled,
     &[aria-disabled='true'],
+    &[aria-readonly='true'],
     &[readonly] {
       border-color: GrayText;
     }
@@ -126,6 +127,7 @@
 
     &:not([rows]) {
       field-sizing: content;
+      height: var(--_ds-field-sizing); /* Support iOS field-sizing, but through CSS custom property for easier overwrite */
     }
   }
   &:not([type='button'], [type='radio'], [type='checkbox'], [type='color'], [type='file'], textarea, select) {
@@ -172,6 +174,7 @@
   }
 
   /* Using attribute [readonly] since pseudo selector :read-only is always true for checkbox, radio and select */
+  &[aria-readonly='true'],
   &[readonly] {
     background: var(--dsc-input-background--readonly);
     border-color: var(--dsc-input-border-color--readonly);
@@ -185,7 +188,7 @@
   /**
    * Toggle inputs and select
    */
-  &:read-only:not([readonly], [aria-disabled='true'], :disabled) {
+  &:read-only:not([readonly], [aria-readonly='true'], [aria-disabled='true'], :disabled) {
     cursor: pointer;
   }
 
@@ -207,6 +210,7 @@
 
       &:disabled,
       &[aria-disabled='true'],
+      &[aria-readonly='true'],
       &[readonly] {
         border-color: GrayText;
       }
@@ -299,12 +303,14 @@
       color: GrayText;
 
       forced-color-adjust: none; /* To be able to draw switch */
+      &[aria-readonly='true'],
       &[readonly] {
         color: GrayText;
       }
 
       &:disabled,
       &[aria-disabled='true'],
+      &[aria-readonly='true'],
       &[readonly] {
         border-color: GrayText;
       }

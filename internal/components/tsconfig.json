@@ -11,7 +11,11 @@
     "noEmit": false,
     "incremental": true,
     "moduleResolution": "Bundler",
-    "types": ["@digdir/designsystemet-css/theme", "./declarations.d.ts"]
+    "types": [
+      "@digdir/designsystemet-css/theme",
+      "./declarations.d.ts",
+      "../../packages/react/react-types.d.ts"
+    ]
   },
   "include": ["./src", "./stories", "declarations.d.ts"]
 }

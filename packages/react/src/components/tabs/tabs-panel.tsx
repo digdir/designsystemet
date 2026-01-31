@@ -1,14 +1,7 @@
+import type { DSTabPanelElement } from '@digdir/designsystemet-web';
 import type { HTMLAttributes } from 'react';
-import {
-  forwardRef,
-  useContext,
-  useEffect,
-  useId,
-  useRef,
-  useState,
-} from 'react';
-
-import { useMergeRefs } from '../../utilities/hooks';
+import '@digdir/designsystemet-web'; // Import ds-tabpanel custom element
+import { forwardRef, useContext } from 'react';
 import { Context } from './tabs';
 
 export type TabsPanelProps = {
@@ -17,7 +10,7 @@ export type TabsPanelProps = {
    * Must match the `value` of a `Tabs.Tab` component.
    */
   value: string;
-} & Omit<HTMLAttributes<HTMLDivElement>, 'value'>;
+} & Omit<HTMLAttributes<DSTabPanelElement>, 'value'>;
 
 /**
  * A single content item in a Tabs component.
@@ -25,59 +18,20 @@ export type TabsPanelProps = {
  * @example
  * <TabsPanel value='1'>content 1</TabsPanel>
  */
-export const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(
-  function TabsPanel({ children, value, id, ...rest }, ref) {
-    const {
-      value: tabsValue,
-      tablistRef,
-      setPanelButtonMap,
-    } = useContext(Context);
-    const active = value === tabsValue;
-
-    const generatedId = useId();
-    const panelId = id ?? `tabpanel-${generatedId}`;
-
-    const [hasTabbableElement, setHasTabbableElement] = useState(false);
-    const [labelledBy, setLabelledBy] = useState<string | undefined>(undefined);
-
-    const internalRef = useRef<HTMLDivElement>(null);
-    const mergedRef = useMergeRefs([ref, internalRef]);
-
-    /* Check if the panel has any tabbable elements */
-    useEffect(() => {
-      if (!internalRef.current) return;
-      const tabbableElements = internalRef.current.querySelectorAll(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-      );
-      setHasTabbableElement(tabbableElements.length > 0);
-    }, [children]);
-
-    /* get associated button */
-    useEffect(() => {
-      if (!tablistRef) return;
-
-      const button = tablistRef.current?.querySelector(
-        `[role="tab"][data-value="${value}"]`,
-      );
-      setLabelledBy(button ? button.id : undefined);
-
-      if (button) {
-        setPanelButtonMap?.((prev) => new Map(prev).set(button.id, panelId));
-      }
-    }, [tablistRef]);
+export const TabsPanel = forwardRef<DSTabPanelElement, TabsPanelProps>(
+  function TabsPanel({ children, value, id, className, ...rest }, ref) {
+    const { getPrefixedValue } = useContext(Context);
 
     return (
-      <div
-        ref={mergedRef}
-        id={panelId}
-        role='tabpanel'
-        tabIndex={hasTabbableElement ? undefined : 0}
-        aria-labelledby={labelledBy}
-        hidden={!active}
+      <ds-tabpanel
+        suppressHydrationWarning // Since <ds-tablist> adds attributes
+        ref={ref}
+        id={id ?? getPrefixedValue?.(value)}
+        class={className}
         {...rest}
       >
         {children}
-      </div>
+      </ds-tabpanel>
     );
   },
 );

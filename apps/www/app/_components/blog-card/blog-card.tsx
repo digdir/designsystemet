@@ -1,6 +1,7 @@
 import {
   Card,
   CardBlock,
+  type CardProps,
   Heading,
   Paragraph,
   Tag,
@@ -21,7 +22,7 @@ type BlogCardProps = {
   tagText?: string;
   tagColor?: 'brand1' | 'brand2' | 'brand3';
   level?: 2 | 3;
-} & Omit<React.HTMLAttributes<HTMLDivElement>, 'color'>;
+} & Omit<CardProps, 'color' | 'children'>;
 
 export const BlogCard = ({
   title,

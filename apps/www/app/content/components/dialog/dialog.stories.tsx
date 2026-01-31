@@ -210,7 +210,12 @@ export const WithForm = () => {
   return (
     <Dialog.TriggerContext>
       <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-      <Dialog ref={dialogRef} onClose={() => setInput('')} closedby='any'>
+      <Dialog
+        ref={dialogRef}
+        onClose={() => setInput('')}
+        closedby='any'
+        id='my-dialog-form'
+      >
         <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
           Dialog med skjema
         </Heading>
@@ -236,7 +241,12 @@ export const WithForm = () => {
           >
             Send inn skjema
           </Button>
-          <Button variant='secondary' data-color='danger' data-command='close'>
+          <Button
+            variant='secondary'
+            data-color='danger'
+            command='close'
+            commandfor='my-dialog-form'
+          >
             Avbryt
           </Button>
         </div>
@@ -252,7 +262,12 @@ export const WithFormEn = () => {
   return (
     <Dialog.TriggerContext>
       <Dialog.Trigger>Open dialog</Dialog.Trigger>
-      <Dialog ref={dialogRef} onClose={() => setInput('')} closedby='any'>
+      <Dialog
+        ref={dialogRef}
+        onClose={() => setInput('')}
+        closedby='any'
+        id='my-dialog-form-en'
+      >
         <Heading style={{ marginBottom: 'var(--ds-size-2)' }}>
           Dialog with form
         </Heading>
@@ -278,7 +293,12 @@ export const WithFormEn = () => {
           >
             Submit form
           </Button>
-          <Button variant='secondary' data-color='danger' data-command='close'>
+          <Button
+            variant='secondary'
+            data-color='danger'
+            command='close'
+            commandfor='my-dialog-form-en'
+          >
             Cancel
           </Button>
         </div>
@@ -291,7 +311,7 @@ export const WithBlocks = () => {
   return (
     <Dialog.TriggerContext>
       <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-      <Dialog>
+      <Dialog id='my-dialog-blocks'>
         <Dialog.Block>
           <Paragraph data-size='sm'>Dialog subtitle</Paragraph>
           <Heading>Dialog with dividers</Heading>
@@ -303,7 +323,11 @@ export const WithBlocks = () => {
           </Paragraph>
         </Dialog.Block>
         <Dialog.Block>
-          <Button variant='secondary' data-command='close'>
+          <Button
+            variant='secondary'
+            command='close'
+            commandfor='my-dialog-blocks'
+          >
             Lukk
           </Button>
         </Dialog.Block>

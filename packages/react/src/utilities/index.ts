@@ -20,3 +20,16 @@ export {
 export { RovingFocusRoot } from './roving-focus/roving-focus-root';
 export { useRovingFocus } from './roving-focus/use-roving-focus';
 export type { MergeRight } from './types';
+
+declare global {
+  interface Window {
+    dsWarnings?: boolean;
+  }
+}
+export const warn = (
+  message: string,
+  ...args: Parameters<typeof console.warn>
+) =>
+  typeof window === 'undefined' ||
+  window.dsWarnings === false ||
+  console.warn(`Designsystemet: ${message}`, ...args);

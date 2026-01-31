@@ -1,16 +1,20 @@
-const postcss = require('postcss');
-const fs = require('node:fs');
-const path = require('node:path');
+import fs from 'node:fs';
+import path from 'node:path';
+import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
+import postcss from 'postcss';
+import postcssImport from 'postcss-import';
+import postcssNesting from 'postcss-nesting';
 
-module.exports = {
+export default {
   plugins: [
-    require('postcss-import'),
+    postcssImport,
     postcssComposes(),
-    require('postcss-nesting'),
-    require('cssnano')({
+    postcssNesting,
+    cssnano({
       preset: 'default',
     }),
-    require('autoprefixer'),
+    autoprefixer,
   ],
 };
 

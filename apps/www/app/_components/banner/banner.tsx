@@ -1,4 +1,7 @@
-import type { HeadingProps } from '@digdir/designsystemet-react';
+import type {
+  HeadingProps,
+  ParagraphProps,
+} from '@digdir/designsystemet-react';
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
@@ -33,7 +36,7 @@ const BannerHeading = ({ className, ...props }: BannerHeadingProps) => {
   );
 };
 
-type BannerIngressProps = HTMLAttributes<HTMLParagraphElement>;
+type BannerIngressProps = ParagraphProps;
 
 const BannerIngress = ({ className, ...props }: BannerIngressProps) => {
   return (
