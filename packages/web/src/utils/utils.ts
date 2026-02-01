@@ -149,7 +149,7 @@ export const onMutation = (
   };
   const cleanup = () => observer?.disconnect?.();
   const observer = new MutationObserver(() => {
-    if (!queue) queue = requestAnimationFrame(onFrame); // requestAnimationFrame only runs when page is not visible
+    if (!queue) queue = requestAnimationFrame(onFrame); // requestAnimationFrame only runs when page is visible
   });
 
   observer.observe(el, options);
