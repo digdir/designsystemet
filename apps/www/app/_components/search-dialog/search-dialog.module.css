@@ -45,7 +45,6 @@
 
 .aboveScroll {
   border-bottom: var(--this-border);
-  background-color: var(--dsc-dialog-background);
 }
 
 .searchBlock {
