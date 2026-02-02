@@ -14,14 +14,14 @@
   --dsc-suggestion-clear-background--hover: var(--ds-color-surface-hover);
   --dsc-suggestion-clear-background--active: var(--ds-color-surface-active);
 
-  --dsc-suggestion-list-background: var(--ds-color-neutral-surface-default);
+  --dsc-suggestion-list-background: var(--ds-color-surface-default);
   --dsc-suggestion-list-border-radius: var(--ds-border-radius-md);
   --dsc-suggestion-list-box-shadow: var(--ds-shadow-md);
-  --dsc-suggestion-list-color: var(--ds-color-neutral-text-default);
+  --dsc-suggestion-list-color: var(--ds-color-text-default);
   --dsc-suggestion-list-gap: var(--ds-size-2);
   --dsc-suggestion-border-width: var(--ds-border-width-default); /* TODO: Should have been prefixed, but kept like this for compatibility */
   --dsc-suggestion-border-style: solid;
-  --dsc-suggestion-border-color: var(--ds-color-neutral-border-default);
+  --dsc-suggestion-border-color: var(--ds-color-border-default);
 
   --dsc-suggestion-chip-gap: var(--ds-size-1);
   --dsc-suggestion-chip-background: var(--ds-color-base-default);
