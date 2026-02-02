@@ -90,7 +90,7 @@
 
 .resultHeader {
   display: flex;
-  justify-content: normal;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--ds-size-3);
   margin-bottom: var(--ds-size-2);
@@ -142,6 +142,7 @@
 .quickResultUrl {
   margin-top: var(--ds-size-3);
   color: var(--ds-color-neutral-text-subtle);
+  overflow-wrap: anywhere;
 }
 
 .noResults {
