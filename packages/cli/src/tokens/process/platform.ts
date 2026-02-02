@@ -2,6 +2,7 @@ import pc from 'picocolors';
 import * as R from 'ramda';
 import StyleDictionary from 'style-dictionary';
 import type { TransformedToken } from 'style-dictionary/types';
+import type { BuildConfigSchema } from '../../config.js';
 import type { OutputFile, TokenSet } from '../types.js';
 import { type BuildConfig, colorCategories, type ThemePermutation } from '../types.js';
 import { configs, getConfigsForThemeDimensions } from './configs.js';
@@ -24,7 +25,7 @@ type SharedOptions = {
   colorGroups?: string[];
   /** Build token format map */
   buildTokenFormats: Record<string, { token: TransformedToken; formatted: string }[]>;
-};
+} & BuildConfigSchema['build'];
 
 export type BuildOptions = {
   type: 'build';
@@ -44,7 +45,7 @@ export type FormatOptions = {
 
 export type ProcessOptions = BuildOptions | FormatOptions;
 
-type ProcessedBuildConfigs<T> = Record<keyof typeof buildConfigs, T>;
+type ProcessedBuildConfigs<T> = Record<keyof ReturnType<typeof buildConfigs>, T>;
 
 export type ProcessReturn = ProcessedBuildConfigs<BuildResult[]>;
 
@@ -79,44 +80,48 @@ const sd = new StyleDictionary();
 /*
  * Declarative configuration of the build output
  */
-const buildConfigs = {
-  typography: { getConfig: configs.typographyVariables, dimensions: ['typography'] },
-  sizeMode: { getConfig: configs.sizeModeVariables, dimensions: ['size'] },
-  size: { getConfig: configs.sizeVariables, dimensions: ['semantic'] },
-  typeScale: { getConfig: configs.typeScaleVariables, dimensions: ['semantic'] },
-  'color-scheme': { getConfig: configs.colorSchemeVariables, dimensions: ['color-scheme'] },
-  'main-color': { getConfig: configs.mainColorVariables, dimensions: ['main-color'] },
-  'support-color': { getConfig: configs.supportColorVariables, dimensions: ['support-color'] },
-  'neutral-color': {
-    getConfig: configs.neutralColorVariables,
-    dimensions: ['semantic'],
-    log: ({ permutation: { theme } }) => `${theme} - neutral`,
-  },
-  'success-color': {
-    getConfig: configs.successColorVariables,
-    dimensions: ['semantic'],
-    log: ({ permutation: { theme } }) => `${theme} - success`,
-  },
-  'danger-color': {
-    getConfig: configs.dangerColorVariables,
-    dimensions: ['semantic'],
-    log: ({ permutation: { theme } }) => `${theme} - danger`,
-  },
-  'warning-color': {
-    getConfig: configs.warningColorVariables,
-    dimensions: ['semantic'],
-    log: ({ permutation: { theme } }) => `${theme} - warning`,
-  },
-  'info-color': {
-    getConfig: configs.infoColorVariables,
-    dimensions: ['semantic'],
-    log: ({ permutation: { theme } }) => `${theme} - info`,
-  },
-  semantic: { getConfig: configs.semanticVariables, dimensions: ['semantic'] },
-} satisfies Record<string, BuildConfig>;
+const buildConfigs = (typographySizeValues: 'modular' | 'static') =>
+  ({
+    typography: { getConfig: configs.typographyVariables, dimensions: ['typography'] },
+    sizeMode: { getConfig: configs.sizeModeVariables(typographySizeValues), dimensions: ['size'] },
+    size: { getConfig: configs.sizeVariables, dimensions: ['semantic'] },
+    typeScale: {
+      getConfig: configs.typeScaleVariables(typographySizeValues),
+      dimensions: typographySizeValues === 'modular' ? ['semantic'] : ['semantic', 'size'],
+    },
+    'color-scheme': { getConfig: configs.colorSchemeVariables, dimensions: ['color-scheme'] },
+    'main-color': { getConfig: configs.mainColorVariables, dimensions: ['main-color'] },
+    'support-color': { getConfig: configs.supportColorVariables, dimensions: ['support-color'] },
+    'neutral-color': {
+      getConfig: configs.neutralColorVariables,
+      dimensions: ['semantic'],
+      log: ({ permutation: { theme } }) => `${theme} - neutral`,
+    },
+    'success-color': {
+      getConfig: configs.successColorVariables,
+      dimensions: ['semantic'],
+      log: ({ permutation: { theme } }) => `${theme} - success`,
+    },
+    'danger-color': {
+      getConfig: configs.dangerColorVariables,
+      dimensions: ['semantic'],
+      log: ({ permutation: { theme } }) => `${theme} - danger`,
+    },
+    'warning-color': {
+      getConfig: configs.warningColorVariables,
+      dimensions: ['semantic'],
+      log: ({ permutation: { theme } }) => `${theme} - warning`,
+    },
+    'info-color': {
+      getConfig: configs.infoColorVariables,
+      dimensions: ['semantic'],
+      log: ({ permutation: { theme } }) => `${theme} - info`,
+    },
+    semantic: { getConfig: configs.semanticVariables, dimensions: ['semantic'] },
+  }) satisfies Record<string, BuildConfig>;
 
 export async function processPlatform(options: ProcessOptions): Promise<ProcessReturn> {
-  const { type, processed$themes } = options;
+  const { type, processed$themes, typographySizeValues } = options;
   const platform = 'css';
   const tokenSets = type === 'format' ? options.tokenSets : undefined;
   const tokensDir = type === 'build' ? options.tokensDir : undefined;
@@ -168,27 +173,30 @@ export async function processPlatform(options: ProcessOptions): Promise<ProcessR
     console.log(`\n📏 Using ${pc.blue(buildOptions.defaultSize)} as default size`);
   }
 
-  const buildAndSdConfigs = R.map((buildConfig: BuildConfig) => {
-    const sdConfigs = getConfigsForThemeDimensions(buildConfig.getConfig, processed$themes, buildConfig.dimensions, {
-      tokensDir,
-      tokenSets,
-    });
+  const buildAndSdConfigs = R.map(
+    (buildConfig: BuildConfig) => {
+      const sdConfigs = getConfigsForThemeDimensions(buildConfig.getConfig, processed$themes, buildConfig.dimensions, {
+        tokensDir,
+        tokenSets,
+      });
 
-    // Disable build if all sdConfigs dimensions permutation are unknown
-    const unknownConfigs = buildConfig.dimensions.map((dimension) =>
-      sdConfigs.filter((x) => x.permutation[dimension] === 'unknown'),
-    );
-    for (const unknowns of unknownConfigs) {
-      if (unknowns.length === sdConfigs.length) {
-        buildConfig.enabled = () => false;
+      // Disable build if all sdConfigs dimensions permutation are unknown
+      const unknownConfigs = buildConfig.dimensions.map((dimension) =>
+        sdConfigs.filter((x) => x.permutation[dimension] === 'unknown'),
+      );
+      for (const unknowns of unknownConfigs) {
+        if (unknowns.length === sdConfigs.length) {
+          buildConfig.enabled = () => false;
+        }
       }
-    }
 
-    return {
-      buildConfig,
-      sdConfigs,
-    };
-  }, buildConfigs);
+      return {
+        buildConfig,
+        sdConfigs,
+      };
+    },
+    buildConfigs(typographySizeValues ?? 'modular'),
+  );
 
   const processedBuilds: ProcessedBuildConfigs<Array<BuildResult>> = {
     'color-scheme': [initResult],

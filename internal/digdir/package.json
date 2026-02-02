@@ -12,7 +12,7 @@
     "themes"
   ],
   "scripts": {
-    "build:tokens": "pnpm designsystemet tokens build -t design-tokens -o themes --clean --experimental-tailwind",
+    "build:tokens": "pnpm designsystemet tokens build --config digdir.config.json -t design-tokens -o themes --experimental-tailwind",
     "create:tokens": "pnpm designsystemet tokens create --config digdir.config.json",
     "update:theme-digdir": "pnpm run create:tokens && pnpm run build:tokens"
   },

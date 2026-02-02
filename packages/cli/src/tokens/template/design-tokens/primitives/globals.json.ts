@@ -1,4 +1,6 @@
-{
+import { TokenSet } from "../../../types.js";
+
+export default {
   "border-width": {
     "1": {
       "$type": "borderWidth",
@@ -140,4 +142,4 @@
       "$value": "30%"
     }
   }
-}
+} satisfies TokenSet

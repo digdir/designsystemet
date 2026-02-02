@@ -1,0 +1,78 @@
+{
+  "different-fonts": {
+    "fonts": {
+      "headings": {
+        "font-family": {
+          "$type": "fontFamilies",
+          "$value": "Karantina"
+        },
+        "font-weight": {
+          "medium": {
+            "$type": "fontWeights",
+            "$value": "Regular"
+          },
+          "semibold": {
+            "$type": "fontWeights",
+            "$value": "Bold"
+          },
+          "regular": {
+            "$type": "fontWeights",
+            "$value": "Light"
+          }
+        },
+        "line-height": {
+          "sm": {
+            "$type": "lineHeights",
+            "$value": "130%"
+          },
+          "md": {
+            "$type": "lineHeights",
+            "$value": "150%"
+          },
+          "lg": {
+            "$type": "lineHeights",
+            "$value": "170%"
+          }
+        },
+        "letter-spacing": {
+          "1": {
+            "$type": "letterSpacing",
+            "$value": "-1%"
+          },
+          "2": {
+            "$type": "letterSpacing",
+            "$value": "-0.5%"
+          },
+          "3": {
+            "$type": "letterSpacing",
+            "$value": "-0.25%"
+          },
+          "4": {
+            "$type": "letterSpacing",
+            "$value": "-0.15%"
+          },
+          "5": {
+            "$type": "letterSpacing",
+            "$value": "0%"
+          },
+          "6": {
+            "$type": "letterSpacing",
+            "$value": "0.15%"
+          },
+          "7": {
+            "$type": "letterSpacing",
+            "$value": "0.25%"
+          },
+          "8": {
+            "$type": "letterSpacing",
+            "$value": "0.5%"
+          },
+          "9": {
+            "$type": "letterSpacing",
+            "$value": "1.5%"
+          }
+        }
+      }
+    }
+  }
+}

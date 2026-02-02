@@ -2,6 +2,7 @@ import path from 'node:path';
 import type { ThemeObject } from '@tokens-studio/types';
 import pc from 'picocolors';
 import * as R from 'ramda';
+import type { BuildConfigSchema } from '../config.js';
 import { mkdir, readFile, writeFile } from '../utils.js';
 import { createTypeDeclarationFiles } from './process/output/declarations.js';
 import { createTailwindCSSFiles } from './process/output/tailwind.js';

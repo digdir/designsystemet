@@ -161,6 +161,55 @@ const focusOverrideSchema = z
   })
   .describe('Overrides for the focus colors');
 
+const fontSizeSteps = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'] as const;
+const fontSizeStepOverrideSchema = z
+  .number()
+  .describe('Number in pixels to use as a font size for this step in the scale');
+const fontSizeOverrides = z.partialRecord(z.enum(fontSizeSteps), fontSizeStepOverrideSchema);
+
+const fontSizeMode = z.object({
+  base: z
+    .number()
+    .optional()
+    .describe('The font size (in px) to use as the basis for the scale. Is used as font-size.4.'),
+  ratio: z
+    .number()
+    .optional()
+    .describe(
+      'The ratio used to calculate each step in the scale. Must be larger than 1 (a ratio of 1 would make all font sizes the same, while a number between 0 and 1 effectively inverts the scale). Larger numbers result in a larger font-size.10 and a smaller font-size.1.',
+    ),
+  overrides: fontSizeOverrides
+    .optional()
+    .describe(
+      'Override one or more steps in this scale to specific pixel values. Will force build.typographySizeValues to be "static".',
+    ),
+});
+
+const typographySizeSchema = z
+  .partialRecord(z.enum(['small', 'medium', 'large']), fontSizeMode)
+  .describe('Sizing configuration for the individual size modes');
+
+const typographyComponentsSchema = z.object({
+  heading: z
+    .object({
+      font: z
+        .string()
+        .describe(
+          'Define which font to use for heading styles. Must be one of the under theme.<name>.typography.fonts',
+        ),
+    })
+    .optional(),
+  body: z
+    .object({
+      font: z
+        .string()
+        .describe(
+          'Define which font to use for body text styles. Must be one of the under theme.<name>.typography.fonts',
+        ),
+    })
+    .optional(),
+});
+
 const overridesSchema = z
   .object({
     colors: semanticColorOverrideSchema.optional(),
@@ -170,6 +219,17 @@ const overridesSchema = z
   })
   .describe('Overrides for generated design tokens. Currently only supports colors defined in your theme')
   .optional();
+
+const typographyFontSchema = z.object({
+  fontFamily: z.string().describe('Sets the font-family for this font'),
+  fontWeight: z
+    .record(
+      z.enum(['regular', 'medium', 'semibold']),
+      z.string().describe('The name of the weight as displayed in Figma'),
+    )
+    .describe('Sets the font-weights for this font'),
+  size: typographySizeSchema.optional().describe('Configure sizing for this font'),
+});
 
 const themeSchema = z
   .object({
@@ -182,7 +242,14 @@ const themeSchema = z
       .meta({ description: 'Defines the colors for this theme' }),
     typography: z
       .object({
-        fontFamily: z.string().meta({ description: 'Sets the font-family for this theme' }),
+        fontFamily: z.string().describe('DEPRECATED! Use fonts.<name>.fontFamily instead.').optional(),
+        fonts: z
+          .record(z.string(), typographyFontSchema)
+          .describe('Define fonts that can be used in the theme')
+          .optional(),
+        components: typographyComponentsSchema
+          .describe('Define which fonts to use for each typography style')
+          .optional(),
       })
       .describe('Defines the typography for a given theme')
       .optional(),
@@ -191,26 +258,42 @@ const themeSchema = z
   })
   .meta({ description: 'An object defining a theme. The property name holding the object becomes the theme name.' });
 
-export const commonConfig = z.object({
+const commonConfig = z.object({
   clean: z.boolean().meta({ description: 'Delete the output directory before building or creating tokens' }).optional(),
 });
 
-const _configFileCreateSchema = z
-  .object({
-    outDir: z.string().meta({ description: 'Path to the output directory for the created design tokens' }),
-    themes: z.record(z.string(), themeSchema).meta({
-      description:
-        'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name.',
-    }),
-  })
-  .required();
+const _configFileCreateSchema = z.object({
+  outDir: z.string().meta({ description: 'Path to the output directory for the created design tokens' }),
+  themes: z.record(z.string(), themeSchema).meta({
+    description:
+      'An object with one or more themes. Each property defines a theme, and the property name is used as the theme name.',
+  }),
+});
 
+const _configFileBuildSchema = z.object({
+  build: z
+    .object({
+      typographySizeValues: z
+        .enum(['modular', 'static'])
+        .optional()
+        .describe(
+          'Changes how CSS values are generated. "modular" is the default, and will output css formulae which can be changed using --ds-font-scale-base and --ds-font-scale-ratio in code. "static" will output static values for each size mode. If you have overridden any steps in the font size scales with specific values, "static" will always be used.',
+        ),
+    })
+    .optional()
+    .describe('Options that only affect build'),
+});
+
+export const configFileCreateSchema = _configFileCreateSchema.extend(commonConfig.shape);
+export const configFileBuildSchema = _configFileBuildSchema.extend(commonConfig.shape);
 /**
  * This defines the structure of the final configuration file
  */
-export const configFileCreateSchema = _configFileCreateSchema.extend(commonConfig.shape);
+export const configFileSchema = configFileCreateSchema.extend(configFileBuildSchema.shape);
 export type CommonConfigSchema = z.infer<typeof commonConfig>;
-export type BuildConfigSchema = z.infer<typeof commonConfig>;
+export type BuildConfigSchema = z.infer<typeof configFileBuildSchema>;
 export type CreateConfigSchema = z.infer<typeof configFileCreateSchema>;
 export type ConfigSchemaTheme = z.infer<typeof themeSchema>;
 export type ColorOverrideSchema = z.infer<typeof overridesSchema>;
+export type TypographySizeSchema = z.infer<typeof typographySizeSchema>;
+export type TypographyFontSchema = z.infer<typeof typographyFontSchema>;
