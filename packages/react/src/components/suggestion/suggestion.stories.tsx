@@ -35,10 +35,20 @@ export default {
       disableSnapshot: false,
     },
     a11y: {
-      // TODO: this rule should be enabled after https://github.com/dequelabs/axe-core/issues/4672 have propagated to @storybook/addon-a11y.
       config: {
         rules: [
+          // Axe can't find listbox inside shadow-dom, and thus thinks <data> elements
+          // (chips for selected items) don't have an appropriate parent element
           {
+            id: 'aria-required-parent',
+            matches: (element: HTMLElement) =>
+              !(
+                element instanceof HTMLDataElement &&
+                element.className === 'ds-chip'
+              ),
+          },
+          {
+            // TODO: this rule should be enabled after https://github.com/dequelabs/axe-core/issues/4672 have propagated to @storybook/addon-a11y.
             id: 'aria-allowed-role',
             enabled: false,
           },
