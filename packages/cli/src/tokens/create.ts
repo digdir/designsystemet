@@ -2,7 +2,7 @@ import type { ColorScheme } from '../colors/types.js';
 import { getDefaultTokens } from './create/defaults.js';
 import { generateColorScheme } from './create/generators/primitives/color-scheme.js';
 import globals from './create/generators/primitives/globals.js';
-import { generateTypography } from './create/generators/primitives/typography.js';
+import { generateFontSizes, generateTypography } from './create/generators/primitives/typography.js';
 import { generateSemanticColors } from './create/generators/semantic/color.js';
 import { generateColorModes } from './create/generators/semantic/color-modes.js';
 import { generateSemanticStyle } from './create/generators/semantic/style.js';
@@ -33,10 +33,10 @@ export const createTokens = async (theme: Theme) => {
 
   const tokenSets: TokenSets = new Map([
     ['primitives/globals', globals],
-    ...getDefaultTokens([
-      ...sizeModes.map((size) => `primitives/modes/size/${size}`),
-      'primitives/modes/size/global',
-      ...sizeModes.map((size) => `primitives/modes/typography/size/${size}`),
+    ...getDefaultTokens([...sizeModes.map((size) => `primitives/modes/size/${size}`), 'primitives/modes/size/global']),
+    ...sizeModes.map((size): [string, TokenSet] => [
+      `primitives/modes/typography/size/${size}`,
+      generateFontSizes(size),
     ]),
     [`primitives/modes/typography/primary/${name}`, generateTypography(name, typography)],
     [`primitives/modes/typography/secondary/${name}`, generateTypography(name, typography)],
