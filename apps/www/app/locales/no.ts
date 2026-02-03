@@ -252,6 +252,8 @@ export default {
     'suggestions-title': 'Prøv å søke etter…',
     close: 'Lukk søk',
     results: 'Søkeresultater',
+    srA: 'fant',
+    srB: 'resultater for',
     type: {
       intro: 'Intro',
       component: 'Komponent',
