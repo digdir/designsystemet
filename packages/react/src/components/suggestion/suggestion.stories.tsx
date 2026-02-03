@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react-vite';
-import { type ChangeEvent, useState } from 'react';
+import { type InputEventHandler, useState } from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import { useDebounceCallback } from '../../utilities';
 import {
@@ -405,9 +405,9 @@ export const FetchExternal: StoryFn<typeof Suggestion> = (args) => {
   const [value, setValue] = useState('');
   const [options, setOptions] = useState<string[] | null>(null);
 
-  const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
-    const value = encodeURIComponent(event.target.value.trim());
-    setValue(event.target.value);
+  const handleInput: InputEventHandler<HTMLInputElement> = (event) => {
+    const value = encodeURIComponent(event.currentTarget.value.trim());
+    setValue(event.currentTarget.value);
     setOptions(null); // Clear options
 
     if (!value) return;
