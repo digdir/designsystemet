@@ -1,8 +1,8 @@
-import typographyTemplate from '../../template/design-tokens/primitives/modes/typography/typography.template.json' with {
+import typographyTemplate from '../../../template/design-tokens/primitives/modes/typography/typography.template.json' with {
   type: 'json',
 };
 
-import type { TokenSet, Typography } from '../../types.js';
+import type { TokenSet, Typography } from '../../../types.js';
 
 export const generateTypography = (themeName: string, { fontFamily }: Typography): TokenSet => {
   return JSON.parse(
