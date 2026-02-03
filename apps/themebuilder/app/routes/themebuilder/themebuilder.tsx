@@ -59,7 +59,7 @@ export const loader = async ({
   }
 
   if (urlParams.get('tab') === 'overview') {
-    urlParams.set('tab', DEFAULT_TAB);
+    urlParams.set('tab', 'examples' as ThemebuilderTabs);
     return redirect(`/${lang}/themebuilder?${urlParams.toString()}`);
   }
 
