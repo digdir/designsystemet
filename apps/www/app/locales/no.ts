@@ -126,7 +126,7 @@ export default {
     },
     '404': {
       title: '404 - Vi finner ikke siden',
-      details: 'Det kan hende siden har blit flyttet eller slettet.',
+      details: 'Det kan hende siden har blitt flyttet eller slettet.',
     },
     generic: {
       title: 'Feil',

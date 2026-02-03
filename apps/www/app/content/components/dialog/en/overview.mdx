@@ -1,54 +1,53 @@
 <Story story="Preview" />
 
-**Use `Dialog` when** 
-- the user needs to focus on a specific task
-- you need to ensure that the user notices important information
+**Use a modal `Dialog` when**
+- users need to confirm a critical action, such as deleting something that cannot be undone  
+- users must see a specific dialog and are required to respond to it  
+- you need to ensure that users notice important information  
 
-**Avoid `Dialog` when**
-- the content is extensive or complex
-- the process contains several steps
-- interrupting the user’s workflow may be problematic, use [`Alert`](/en/components/docs/alert/overview), [`Popover`](/en/components/docs/popover/overview) or a non-modal `Dialog` instead
+**Avoid using a modal `Dialog` when**
+- the content is extensive or complex  
+- the content is one of several steps in a process  
+- you need to notify users about something that does not require action. Use [`Alert`](/en/components/docs/alert/overview) or a non-modal `Dialog` instead  
+- you want to provide short, optional information, use [`Popover`](/en/components/docs/popover/overview)  
 
-## Example
+See also the [system notifications pattern](/en/patterns/systemnotifications#when-do-we-use-modals) for more guidance on when a modal `Dialog` should be used.
 
-### With blocks
+<Card data-color="info">
+  Many people refer to this component simply as a “modal”. In Designsystemet, we use `Dialog`, which is based on the native HTML `<dialog>` element, and distinguish between [modal and non-modal dialogs (nngroup.com)](https://www.nngroup.com/articles/modal-nonmodal-dialog/) based on how they behave.
+</Card>
 
-`Dialog` can be divided with visual separators to keep the content clearly structured.
+## Examples
 
-<Story story="WithBlocks" />
+### Modal `Dialog`
+An example of a modal dialog that requires users to make a decision before they can continue using the page.
 
-### With form
+<Story story="ModalDialogEn" />
 
-When a `Dialog` contains form elements, it is helpful to move focus directly to the first field, unless other important content should be read first.
+### Non-modal `Dialog`
+Non-modal dialogs are useful when users should be able to continue working while the dialog remains open.  
+[Note: Make sure that elements receiving focus are not hidden behind the dialog](accessibility#non-modal-dialogs).
 
-<Story story="WithFormEn" />
+<Story story="NonModalDialogEn" />
 
-### Placement
+### `Dialog` as a drawer
+Using `placement`, `Dialog` can behave like a so-called “drawer” from the position you specify.
 
-With `placement`, `Dialog` will behave like a so-called "drawer" from the position you specify.
 <Story story="Drawer" layout="block" />
 
 ## Guidelines
-
-Use `Dialog` to present important content that requires the user’s attention or action. We avoid calling the component “modal”, since it can also function as non-modal.
-
-`Dialog` can be used as both **modal** and **non-modal**.
-
-### Modal Dialog
-A modal `Dialog` is a temporary window that opens above the rest of the page. It captures the user’s attention and prevents interaction with other content, while still preserving the context of the page.
-
-Use of modal `Dialog` should generally be limited, but it can be helpful when the user must consider information, confirm an action, or focus on a specific task without navigating away from the page.
-
-### Non-modal Dialog
-A non-modal `Dialog` allows the user to continue interacting with the rest of the page while the dialog is open. It should be used with care and is most suitable for providing supplementary information or extra functionality that does not require full attention.
+Limit the use of `Dialog` as it breaks the flow and interrupts users. Do not interrupt users unless it is necessary. Interruptions disrupt the workflow and should only be used when the content is important enough or can prevent users from making mistakes. Users may not understand why the dialog appears, how to close it, or whether they need to take action. This is particularly challenging for users with concentration difficulties, low vision, or those using screen readers.
 
 ### Closing a `Dialog`
-Ensure that users always have a clear and simple way to close a `Dialog`. The most common solution is a close button (X) in the top right corner. It must remain visible even when the dialog contains a lot of content and scrolling is required.
+Always ensure that users have a visible and simple way to close a `Dialog`. The most common approach is a close button (X) in the top right corner. It should remain visible even when the dialog contains a lot of content and the user needs to scroll. If this is not suitable, provide another way to close the dialog, such as a Cancel button.
 
-If placing a close button (X) in the top right corner is not appropriate, the dialog must include a clear close action within the content, for example a Cancel button. This gives users control and prevents them from getting stuck in the dialog.
+Carefully consider whether the dialog can be closed by clicking outside it. For critical choices, users should close the dialog through an explicit action.
 
+When users close the dialog without making an active choice, this should correspond to the least critical or least destructive option.
 
 ## Text
-- Use a short and concise heading. The heading must make it clear to the user that the context has changed.  
-- Avoid long blocks of text.  
-- Ensure that the purpose is clear and that all necessary information is available within the dialog.
+The heading should clearly indicate that users need to take action. Using a question as the heading can be effective.
+
+The content should be brief, while still providing the information users need to make a decision. Use buttons to give users a clear path forward.
+
+Make it clear what will happen when users choose an option, especially if the action cannot be undone.
