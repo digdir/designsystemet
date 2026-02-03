@@ -1,6 +1,6 @@
 import type { TokenSet } from '../../../types.js';
 
-export default {
+const globals: TokenSet = {
   'border-width': {
     '1': {
       $type: 'borderWidth',
@@ -143,3 +143,5 @@ export default {
     },
   },
 } satisfies TokenSet;
+
+export const generateGlobals = () => globals;
