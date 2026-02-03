@@ -29,7 +29,7 @@ export const updateTemplates = async () => {
   await cp(...argsFromToPaths('primitives/globals.json'));
   await cp(...argsFromToPaths('primitives/modes/size'));
   await cp(...argsFromToPaths('primitives/modes/typography/size'));
-  await cp(...argsFromToPaths('semantic/style.json'));
+  // await cp(...argsFromToPaths('semantic/style.json'));
 
   // await convertJsonToEsm(
   //   designTokensPath('primitives/globals.json'),

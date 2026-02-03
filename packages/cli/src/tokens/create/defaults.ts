@@ -13,7 +13,6 @@ import typgraphyMedium from '../template/design-tokens/primitives/modes/typograp
 import typgraphySmall from '../template/design-tokens/primitives/modes/typography/size/small.json' with {
   type: 'json',
 };
-import semanticStyle from '../template/design-tokens/semantic/style.json' with { type: 'json' };
 import type { TokenSet } from '../types.js';
 
 const defaultTokens: Record<string, TokenSet> = {
@@ -25,14 +24,9 @@ const defaultTokens: Record<string, TokenSet> = {
   'primitives/modes/typography/size/small': typgraphySmall,
   'primitives/modes/typography/size/medium': typgraphyMedium,
   'primitives/modes/typography/size/large': typgraphyLarge,
-  'semantic/style': semanticStyle as unknown as TokenSet,
 };
 
 type DefaultToken = keyof typeof defaultTokens;
 
 export const getDefaultTokens = (tokenSets: readonly DefaultToken[]): [DefaultToken, TokenSet][] =>
   Object.entries(R.pick(tokenSets, defaultTokens));
-
-export const getDefaultToken = (tokenPath: DefaultToken): [DefaultToken, TokenSet] => {
-  return [tokenPath, defaultTokens[tokenPath]];
-};

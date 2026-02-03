@@ -1,11 +1,11 @@
 import type { ColorScheme } from '../colors/types.js';
-import { getDefaultToken, getDefaultTokens } from './create/defaults.js';
+import { getDefaultTokens } from './create/defaults.js';
 import { generateColorScheme } from './create/generators/color.js';
+import { generateSemanticStyle } from './create/generators/semantic/style.js';
 import { generateSemantic } from './create/generators/semantic.js';
 import { generateTheme } from './create/generators/theme.js';
 import { generateTypography } from './create/generators/typography.js';
-
-import type { Theme, TokenSet, TokenSets } from './types.js';
+import type { SizeModes, Theme, TokenSet, TokenSets } from './types.js';
 
 export const cliOptions = {
   outDir: 'out-dir',
@@ -24,22 +24,19 @@ export const cliOptions = {
   },
 } as const;
 
-export const createTokens = async (opts: Theme) => {
-  const { colors, typography, name, borderRadius, overrides } = opts;
+export const createTokens = async (theme: Theme) => {
+  const { colors, typography, name, borderRadius, overrides } = theme;
   const colorSchemes: ColorScheme[] = ['light', 'dark'];
+  const sizeModes: SizeModes[] = ['small', 'medium', 'large'];
 
   const semantic = generateSemantic(colors, name);
 
   const tokenSets: TokenSets = new Map([
     ...getDefaultTokens([
       'primitives/globals',
-      'primitives/modes/size/small',
-      'primitives/modes/size/medium',
-      'primitives/modes/size/large',
+      ...sizeModes.map((size) => `primitives/modes/size/${size}`),
       'primitives/modes/size/global',
-      'primitives/modes/typography/size/small',
-      'primitives/modes/typography/size/medium',
-      'primitives/modes/typography/size/large',
+      ...sizeModes.map((size) => `primitives/modes/typography/size/${size}`),
     ]),
     [`primitives/modes/typography/primary/${name}`, generateTypography(name, typography)],
     [`primitives/modes/typography/secondary/${name}`, generateTypography(name, typography)],
@@ -52,7 +49,7 @@ export const createTokens = async (opts: Theme) => {
     ...Object.entries(semantic.modes).flatMap(([mode, colors]): [string, TokenSet][] =>
       Object.entries(colors).map(([key, colorSet]): [string, TokenSet] => [`semantic/modes/${mode}/${key}`, colorSet]),
     ),
-    getDefaultToken('semantic/style'),
+    [`semantic/style`, generateSemanticStyle()],
   ]);
 
   return { tokenSets };
