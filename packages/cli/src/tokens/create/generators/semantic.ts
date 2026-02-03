@@ -1,78 +1,122 @@
 import * as R from 'ramda';
 import { baseColorNames } from '../../../colors/colorMetadata.js';
-import semanticColorBase from '../../template/design-tokens/semantic/color.base.template.json' with { type: 'json' };
-import semanticColorTemplate from '../../template/design-tokens/semantic/color.template.json' with { type: 'json' };
-import categoryColorTemplate from '../../template/design-tokens/semantic/modes/color.template.json' with {
-  type: 'json',
-};
+import type { ColorMetadataByName } from '../../../colors/types.js';
+import type { Colors, Token, TokenSet } from '../../types.js';
 
-import type { Colors, TokenSet } from '../../types.js';
-
-type SemanticModes = {
-  'main-color': Record<string, TokenSet>;
-  'support-color': Record<string, TokenSet>;
-};
-
-export const generateSemantic = (colors: Colors, _themeName: string) => {
+export const generateSemanticColors = (colors: Colors, _themeName: string) => {
   const mainColorNames = Object.keys(colors.main);
   const supportColorNames = Object.keys(colors.support);
-
-  const modes: SemanticModes = {
-    'main-color': {},
-    'support-color': {},
-  };
-
-  const categories = [
-    ['main-color', mainColorNames],
-    ['support-color', supportColorNames],
-  ] as const;
-
-  // Create main-color and support-color modes for the custom colors
-  for (const [colorCategory, colorNames] of categories) {
-    for (const colorName of colorNames) {
-      const category = colorCategory.replace('-color', '');
-      const customColorTokens = {
-        color: {
-          [category]: JSON.parse(
-            JSON.stringify(
-              categoryColorTemplate,
-              (key, value) => {
-                if (key === '$value') {
-                  return (value as string).replace('<color>', colorName);
-                }
-                return value;
-              },
-              2,
-            ),
-          ) as TokenSet,
-        },
-      };
-      modes[colorCategory][colorName] = customColorTokens;
-    }
-  }
 
   const customColors = [...mainColorNames, 'neutral', ...supportColorNames];
 
   const allColors = [...customColors, ...baseColorNames];
 
-  const semanticColorTokens = allColors.map(
-    (colorName) =>
-      [
-        colorName,
-        R.map((x) => ({ ...x, $value: x.$value.replace('<color>', colorName) }), semanticColorTemplate),
-      ] as const,
-  );
-
-  const color = {
-    ...semanticColorBase,
-    color: {
-      ...Object.fromEntries(semanticColorTokens),
-      ...semanticColorBase.color,
-    },
-  };
+  const semanticColorTokens = allColors.map((colorName) => [
+    colorName,
+    R.map(
+      (x) => ({
+        $type: x.$type,
+        $value: typeof x.$value === 'string' ? x.$value.replace('<color>', colorName) : x.$value,
+      }),
+      colorTemplate,
+    ),
+  ]);
 
   return {
-    modes,
-    color,
+    ...baseColorTemplate,
+    color: {
+      ...Object.fromEntries(semanticColorTokens),
+      ...baseColorTemplate.color,
+    },
   };
+};
+
+const baseColorTemplate: TokenSet = {
+  color: {
+    focus: {
+      inner: {
+        $type: 'color',
+        $value: '{color.focus.inner-color}',
+      },
+      outer: {
+        $type: 'color',
+        $value: '{color.focus.outer-color}',
+      },
+    },
+  },
+  link: {
+    color: {
+      visited: {
+        $type: 'color',
+        $value: '{color.link.visited}',
+      },
+    },
+  },
+};
+
+const colorTemplate: Record<keyof ColorMetadataByName, Token> = {
+  'background-default': {
+    $type: 'color',
+    $value: '{color.<color>.1}',
+  },
+  'background-tinted': {
+    $type: 'color',
+    $value: '{color.<color>.2}',
+  },
+  'surface-default': {
+    $type: 'color',
+    $value: '{color.<color>.3}',
+  },
+  'surface-tinted': {
+    $type: 'color',
+    $value: '{color.<color>.4}',
+  },
+  'surface-hover': {
+    $type: 'color',
+    $value: '{color.<color>.5}',
+  },
+  'surface-active': {
+    $type: 'color',
+    $value: '{color.<color>.6}',
+  },
+  'border-subtle': {
+    $type: 'color',
+    $value: '{color.<color>.7}',
+  },
+  'border-default': {
+    $type: 'color',
+    $value: '{color.<color>.8}',
+  },
+  'border-strong': {
+    $type: 'color',
+    $value: '{color.<color>.9}',
+  },
+  'text-subtle': {
+    $type: 'color',
+    $value: '{color.<color>.10}',
+  },
+  'text-default': {
+    $type: 'color',
+    $value: '{color.<color>.11}',
+  },
+  'base-default': {
+    $type: 'color',
+    $value: '{color.<color>.12}',
+  },
+  'base-hover': {
+    $type: 'color',
+    $value: '{color.<color>.13}',
+  },
+  'base-active': {
+    $type: 'color',
+    $value: '{color.<color>.14}',
+  },
+  'base-contrast-subtle': {
+    $type: 'color',
+    $value: '{color.<color>.15}',
+  },
+  'base-contrast-default': {
+    $type: 'color',
+    $value: '{color.<color>.16}',
+  },
 };

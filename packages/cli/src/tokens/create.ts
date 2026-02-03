@@ -1,8 +1,9 @@
 import type { ColorScheme } from '../colors/types.js';
 import { getDefaultTokens } from './create/defaults.js';
 import { generateColorScheme } from './create/generators/color.js';
+import { generateColorModes } from './create/generators/semantic/modes-color.js';
 import { generateSemanticStyle } from './create/generators/semantic/style.js';
-import { generateSemantic } from './create/generators/semantic.js';
+import { generateSemanticColors } from './create/generators/semantic.js';
 import { generateTheme } from './create/generators/theme.js';
 import { generateTypography } from './create/generators/typography.js';
 import type { SizeModes, Theme, TokenSet, TokenSets } from './types.js';
@@ -29,8 +30,6 @@ export const createTokens = async (theme: Theme) => {
   const colorSchemes: ColorScheme[] = ['light', 'dark'];
   const sizeModes: SizeModes[] = ['small', 'medium', 'large'];
 
-  const semantic = generateSemantic(colors, name);
-
   const tokenSets: TokenSets = new Map([
     ...getDefaultTokens([
       'primitives/globals',
@@ -44,9 +43,9 @@ export const createTokens = async (theme: Theme) => {
       [`primitives/modes/color-scheme/${scheme}/${name}`, generateColorScheme(name, scheme, colors, overrides)],
     ]),
     [`themes/${name}`, generateTheme(colors, name, borderRadius)],
-    ['semantic/color', semantic.color],
+    ['semantic/color', generateSemanticColors(colors, name)],
     // maps out semantic modes, ieg 'semantic/modes/main-color/accent', and 'semantic/modes/support-color/brand1'
-    ...Object.entries(semantic.modes).flatMap(([mode, colors]): [string, TokenSet][] =>
+    ...Object.entries(generateColorModes(colors, name)).flatMap(([mode, colors]): [string, TokenSet][] =>
       Object.entries(colors).map(([key, colorSet]): [string, TokenSet] => [`semantic/modes/${mode}/${key}`, colorSet]),
     ),
     [`semantic/style`, generateSemanticStyle()],
