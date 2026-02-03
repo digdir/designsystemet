@@ -76,15 +76,15 @@ Content
 
 <!-- with division -->
 <dialog class="ds-dialog">
-<div class="ds-dialog__block">
-Header
-</div>
-<div class="ds-dialog__block">
-Content
-</div>
-<div class="ds-dialog__block">
-Footer
-</div>
+  <div class="ds-dialog__block">
+    Header
+  </div>
+  <div class="ds-dialog__block">
+    Content
+  </div>
+  <div class="ds-dialog__block">
+    Footer
+  </div>
 </dialog>
 ```
 
@@ -95,8 +95,8 @@ In HTML, you have to connect the `<dialog>` element to a trigger yourself, and h
 ```html
 <button id="openDialog" aria-haspopup="dialog" type="button">Open Dialog</button>
 <dialog id="myDialog" class="ds-dialog">
-<div>Content</div>
-<button id="closeDialog">Close</button>
+  <div>Content</div>
+  <button id="closeDialog">Close</button>
 </dialog>
 
 <script>
@@ -118,7 +118,7 @@ We have extended `Dialog` in React to support `data-command` for close button, a
 
 This must be implemented in HTML/JavaScript yourself if you are not using React component.
 
-[`closedby` is supported in some browsers (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy)
+We add polyfill for `closedby="any"`.
 
 ## CSS variables and data attributes
 All CSS variables used by `ds-dialog__block` are set to `ds-dialog`.

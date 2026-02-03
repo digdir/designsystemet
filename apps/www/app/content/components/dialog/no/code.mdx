@@ -111,9 +111,8 @@ I HTML må du selv koble `<dialog>`-elementet til en trigger, og håndtere åpni
 ```
 
 Vi har utvidet `Dialog` i React til å støtte `data-command` for lukk-knapp, og `closedby`-attributtet for å lukke dialogen ved klikk utenfor.
-Dette må selv implementeres i HTML/JavaScript dersom du ikke bruker React-komponenten.
 
-[`closedby` er støtta i nokre nettlesarar (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy)
+Vi legger til polyfill for `closedby="any"`.
 
 
 ## CSS variabler og data-attributter

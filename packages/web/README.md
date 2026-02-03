@@ -74,14 +74,14 @@ See [Polyfills](#polyfills) for how to open and close the dialog with commands.
 Automatically takes focus when visible and sets `aria-labelledby` to the first child heading. No API.
 
 ```html
-<ds-errorsummary class="ds-error-summary">
+<ds-error-summary class="ds-error-summary">
   <h2>Oppsummering</h2>
   <ul>
     <li><a href="#none">Feil 1</a></li>
     <li><a href="#none">Feil 2</a></li>
     <li><a href="#none">Feil 3</a></li>
   </ul>
-</ds-errorsummary>
+</ds-error-summary>
 ```
 
 ### `ds-field`
