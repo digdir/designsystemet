@@ -1,6 +1,7 @@
 import type { ColorScheme } from '../colors/types.js';
 import { getDefaultTokens } from './create/defaults.js';
 import { generateColorScheme } from './create/generators/primitives/color-scheme.js';
+import globals from './create/generators/primitives/globals.js';
 import { generateTypography } from './create/generators/primitives/typography.js';
 import { generateSemanticColors } from './create/generators/semantic/color.js';
 import { generateColorModes } from './create/generators/semantic/color-modes.js';
@@ -31,8 +32,8 @@ export const createTokens = async (theme: Theme) => {
   const sizeModes: SizeModes[] = ['small', 'medium', 'large'];
 
   const tokenSets: TokenSets = new Map([
+    ['primitives/globals', globals],
     ...getDefaultTokens([
-      'primitives/globals',
       ...sizeModes.map((size) => `primitives/modes/size/${size}`),
       'primitives/modes/size/global',
       ...sizeModes.map((size) => `primitives/modes/typography/size/${size}`),

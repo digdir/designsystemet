@@ -1,5 +1,4 @@
 import * as R from 'ramda';
-import globals from '../template/design-tokens/primitives/globals.json' with { type: 'json' };
 import sizeGlobal from '../template/design-tokens/primitives/modes/size/global.json' with { type: 'json' };
 import sizeLarge from '../template/design-tokens/primitives/modes/size/large.json' with { type: 'json' };
 import sizeMedium from '../template/design-tokens/primitives/modes/size/medium.json' with { type: 'json' };
@@ -16,7 +15,6 @@ import typgraphySmall from '../template/design-tokens/primitives/modes/typograph
 import type { TokenSet } from '../types.js';
 
 const defaultTokens: Record<string, TokenSet> = {
-  'primitives/globals': globals,
   'primitives/modes/size/small': sizeSmall,
   'primitives/modes/size/medium': sizeMedium,
   'primitives/modes/size/large': sizeLarge,
