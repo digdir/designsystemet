@@ -1,6 +1,6 @@
 import type { Token, TokenSet } from '../../../types.js';
 
-export function generateSemanticStyle() {
+export function generateSemanticStyle(): TokenSet {
   return {
     typography: {
       heading: {
