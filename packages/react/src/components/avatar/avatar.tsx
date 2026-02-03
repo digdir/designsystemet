@@ -84,11 +84,11 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
       className={cl('ds-avatar', className)}
       data-variant={variant}
       data-initials={initials}
-      role='img'
+      role={asChild ? undefined : 'img'}
       aria-label={ariaLabel}
       {...rest}
     >
-      <Component {...(useSlot ? { 'aria-hidden': true } : {})}>
+      <Component {...(useSlot && !asChild ? { 'aria-hidden': true } : {})}>
         {textChild ? <span>{children}</span> : children}
       </Component>
     </OuterComponent>
