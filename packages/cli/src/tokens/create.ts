@@ -1,6 +1,6 @@
 import type { ColorScheme } from '../colors/types.js';
 import { getDefaultTokens } from './create/defaults.js';
-import { generateColorScheme } from './create/generators/color.js';
+import { generateColorScheme } from './create/generators/primitives/color.js';
 import { generateTypography } from './create/generators/primitives/typography.js';
 import { generateSemanticColors } from './create/generators/semantic/color.js';
 import { generateColorModes } from './create/generators/semantic/color-modes.js';
