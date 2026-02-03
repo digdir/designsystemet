@@ -23,23 +23,12 @@ Use the `placement` prop to adjust the placement of the `Tooltip`.
 <Story story="PlacementEn" />
 
 ## HTML
-`Tooltip` uses a manual [popover (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover).
-You must enable hover to open, focus to open, and close again on loss of focus, hover, or <kbd>Esc</kbd>.
-
-In React we use [`floating-ui` (floating-ui.com)](https://floating-ui.com/) for placement, and this is a library that can also be used in pure JavaScript applications.
-
-To style the popover as a `Tooltip`, the `ds-tooltip` class is used.
+Use the `@digdir/designsystemet-web` package to implement `Tooltip`.
+You only need to add the `data-tooltip` attribute to the element that will trigger the tooltip
 
 ```html
-<button popovertarget="my-tooltip">Trigger</button>
-<span id="my-tooltip" popover="manual" class="ds-tooltip">
-  Help text
-</span>
+<button data-placement="left" data-tooltip="left" class="ds-button">left</button>
 ```
-
-`data-placement` is used to position the arrow correctly.
-This attribute is related to a `plugin` we have created for `floating-ui`.
-It is portable to others using `floating-ui`, and you can find [the code on github.com](https://github.com/digdir/designsystemet/blob/f6bf5a2c84baa2bfd92207510cb6c0a00573ea61/packages/react/src/components/popover/popover.tsx#L209).
 
 ## CSS variables and data attributes
 <CssVariables />
