@@ -580,7 +580,7 @@ importers:
         specifier: ^3.13.18
         version: 3.13.18(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@u-elements/u-combobox':
-        specifier: ^1.0.6
+        specifier: ^1.0.7
         version: 1.0.7
       '@u-elements/u-datalist':
         specifier: ^1.1.0
