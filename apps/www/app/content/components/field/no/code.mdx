@@ -45,7 +45,7 @@ Legg klassenavnet `ds-field` på `<ds-field>` elementet.
 
 ```html
 <ds-field class="ds-field">
-  <label>Label</label>
+  <label class="ds-label">Label</label>
   <input type="text" placeholder="Placeholder" class="ds-input" />
   <div class="ds-validation-message" data-field="validation">
     Dette er ein feilmelding
@@ -59,7 +59,7 @@ For å få en teller på inout og textarea, legg til en `<p>` med attributtet `d
 
 ```html
 <ds-field class="ds-field">
-  <label>Label</label>
+  <label class="ds-label">Label</label>
   <textarea class="ds-input"></textarea>
   <p data-field="counter" data-limit="20" data-over="%d tegn for mye" data-under="%d tegn igjen" data-hint="Maks %d tegn tillatt."></p>
 </ds-field>

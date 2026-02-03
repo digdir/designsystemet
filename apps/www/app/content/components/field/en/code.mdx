@@ -45,7 +45,7 @@ Add the class name `ds-field` to the `<ds-field>` element.
 
 ```html
 <ds-field class="ds-field">
-  <label>Label</label>
+  <label class="ds-label">Label</label>
   <input type="text" placeholder="Placeholder" class="ds-input" />
   <div class="ds-validation-message" data-field="validation">
     This is an error message
@@ -59,7 +59,7 @@ To get a counter on input and textarea, add a `<p>` with the attribute `data-fie
 
 ```html
 <ds-field class="ds-field">
-  <label>Label</label>
+  <label class="ds-label">Label</label>
   <textarea class="ds-input"></textarea>
   <p data-field="counter" data-limit="20" data-over="%d characters too many" data-under="%d characters left" data-hint="Max %d characters allowed."></p>
 </ds-field>
