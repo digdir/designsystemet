@@ -12,7 +12,7 @@ import {
 import { useDebounceCallback } from '@internal/components';
 import { FileSearchIcon } from '@navikt/aksel-icons';
 import cl from 'clsx';
-import type { CSSProperties } from 'react';
+import type { ChangeEvent, CSSProperties } from 'react';
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { highlightText } from '~/_utils/highlight';
@@ -39,12 +39,14 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
   const [quickResults, setQuickResults] = useState<SearchResult[]>([]);
   const [isQuickLoading, setIsQuickLoading] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
+  const [resultAnnounce, setresultAnnounce] = useState('');
   const latestQueryRef = useRef<string>('');
 
   const performSearch = async (searchQuery: string) => {
     if (!searchQuery.trim()) {
       setQuickResults([]);
       setIsQuickLoading(false);
+      debouncedAnnounce('');
       return;
     }
 
@@ -57,7 +59,12 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
     setIsTyping(false);
   }, 1);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  /*delay screen reader announce text so it is not interrupted by input (apple voiceover)*/
+  const debouncedAnnounce = useDebounceCallback((value: string) => {
+    setresultAnnounce(value);
+  }, 1000);
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setIsTyping(true);
     setQuery(value);
@@ -87,6 +94,9 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
       );
       const data = await response.json();
       setQuickResults(data.results || []);
+      debouncedAnnounce(
+        `${t('search.srA')} ${data.results.length} ${t('search.srB')} ${query}`,
+      );
     } catch (error) {
       if ((error as Error).name !== 'AbortError') {
         console.error('Search error:', error);
@@ -151,6 +161,14 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
             />
             <Search.Clear onClick={handleClear} />
           </Search>
+          <div
+            className='ds-sr-only'
+            aria-live='assertive'
+            aria-atomic='true'
+            aria-relevant='text'
+          >
+            {resultAnnounce}
+          </div>
         </Dialog.Block>
       </div>
 

@@ -253,6 +253,8 @@ export default {
     'suggestions-title': 'Try searching for…',
     close: 'Close search',
     results: 'Search results',
+    srA: 'found',
+    srB: 'results for',
     type: {
       intro: 'Intro',
       component: 'Component',
