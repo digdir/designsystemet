@@ -9,6 +9,7 @@ export default {
     'about-site': 'Om nettstedet',
     'contact-us': 'Kom i kontakt med oss',
     copyright: 'Designsystemet',
+    'dpg-aria-label': 'Digital Public Goods Designsystemet side',
   },
   header: {
     'home-link': 'Designsystem forside',
