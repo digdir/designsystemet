@@ -6,6 +6,7 @@
     "dev": "storybook dev -p 6006 --disable-telemetry",
     "build": "storybook build -o ./dist --stats-json --disable-telemetry",
     "test-storybook": "pnpm exec playwright install --with-deps chromium && vitest",
+    "vitest": "vitest",
     "chromatic": "pnpx chromatic",
     "types": "tsc --noEmit -p ../../packages/react/tsconfig.stories.json --emitDeclarationOnly false"
   },
