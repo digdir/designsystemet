@@ -374,6 +374,9 @@ importers:
       '@digdir/designsystemet-react':
         specifier: workspace:^
         version: link:../../packages/react
+      '@digdir/designsystemet-types':
+        specifier: workspace:^
+        version: link:../../packages/types
       '@navikt/aksel-icons':
         specifier: ^8.1.0
         version: 8.1.0(react@19.2.3)
@@ -389,6 +392,9 @@ importers:
       prism-react-renderer:
         specifier: ^2.4.1
         version: 2.4.1(react@19.2.3)
+      ramda:
+        specifier: ^0.32.0
+        version: 0.32.0
       react:
         specifier: ^19.2.3
         version: 19.2.3
@@ -405,6 +411,9 @@ importers:
         specifier: ^7.13.0
         version: 7.13.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
     devDependencies:
+      '@types/ramda':
+        specifier: ^0.31.1
+        version: 0.31.1
       '@types/react':
         specifier: ^19.2.9
         version: 19.2.10

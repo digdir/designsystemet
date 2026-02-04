@@ -60,10 +60,11 @@ export default {
     'import-config': 'Importer config',
   },
   tabs: {
-    overview: 'Oversikt',
+    examples: 'Eksempler',
     colorsystem: 'Fargesystem',
     colors: 'Farger',
     dimensions: 'Dimensjoner',
+    variables: 'Variabler',
   },
   colorPreview: {
     title: 'Se fargene dine i bruk',
