@@ -119,35 +119,35 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
     const labels: Record<string, ReactNode> = {
       intro: (
         <>
-          <InformationIcon /> {t('search.type.intro')}
+          <InformationIcon aria-hidden='true' /> {t('search.type.intro')}
         </>
       ),
       component: (
         <>
-          <ComponentFillIcon /> {t('search.type.component')}
+          <ComponentFillIcon aria-hidden='true' /> {t('search.type.component')}
         </>
       ),
       blog: (
         <>
-          <NewspaperIcon />
+          <NewspaperIcon aria-hidden='true' />
           {t('search.type.blog')}
         </>
       ),
       fundamentals: (
         <>
-          <TasklistIcon />
+          <TasklistIcon aria-hidden='true' />
           {t('search.type.fundamentals')}
         </>
       ),
       'best-practices': (
         <>
-          <HandShakeHeartIcon />
+          <HandShakeHeartIcon aria-hidden='true' />
           {t('search.type.best-practices')}
         </>
       ),
       patterns: (
         <>
-          <HexagonGridIcon />
+          <HexagonGridIcon aria-hidden='true' />
           {t('search.type.patterns')}
         </>
       ),
