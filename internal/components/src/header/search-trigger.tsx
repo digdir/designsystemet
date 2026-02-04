@@ -32,6 +32,8 @@ export function SearchTrigger({ onClick }: SearchTriggerProps) {
       data-color='neutral'
       variant='secondary'
       className={classes.triggerButton}
+      aria-keyshortcuts='Control+k'
+      aria-haspopup='dialog'
     >
       <MagnifyingGlassIcon aria-hidden='true' />
       <span className={classes.triggerText}>{t('header.search')}</span>
