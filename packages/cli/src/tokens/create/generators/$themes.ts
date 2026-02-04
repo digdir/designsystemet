@@ -1,7 +1,7 @@
 import { type ThemeObject, TokenSetStatus } from '@tokens-studio/types';
 
 import type { ColorScheme } from '../../../colors/types.js';
-import type { Colors } from '../../types.js';
+import type { Colors, SizeModes } from '../../types.js';
 
 const capitalize = (word: string) => word.charAt(0).toUpperCase() + word.slice(1);
 
@@ -20,13 +20,29 @@ type ThemeObject_ = ThemeObject & {
   $figmaVariableReferences?: Record<string, string>;
 };
 
+/**
+
+* Generates the `$themes.json` file which is used by Token Studio to update Figma variable collections and modes.
+
+* **IMPORTANT:**
+
+* We use existing Figma variable ids to update existing collections/modes fetched from our published Figma community file.
+
+* These are important for maintaining existing variables in user files when updating tokens.
+
+* Omitting these ids results will result in the following bugs:
+ - New collections/modes being created which may cause ghost variables in Figma.
+ - New collections/modes may cause users hitting the cap on Figma variable modes which is at time of writing 4 (or unlimited for enterprise).
+
+*/
 export async function generate$Themes(
   colorSchemes: ColorSchemes,
   themes: string[],
   colors: Colors,
+  sizeModess: SizeModes[],
 ): Promise<ThemeObject_[]> {
   return [
-    ...generateSizeGroup(),
+    ...generateSizeGroup(sizeModess),
     ...(await generateThemesGroup(themes)),
     ...generateTypographyGroup(themes),
     ...generateColorSchemesGroup(colorSchemes, themes),
@@ -36,7 +52,7 @@ export async function generate$Themes(
   ];
 }
 
-function generateSizeGroup(): ThemeObject_[] {
+function generateSizeGroup(_sizes: SizeModes[]): ThemeObject_[] {
   return [
     {
       id: '8b2c8cc86611a34b135cb22948666779361fd729',

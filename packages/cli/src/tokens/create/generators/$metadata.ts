@@ -5,9 +5,12 @@ type Metadata = {
   tokenSetOrder: string[];
 };
 
-const sizeModes: SizeModes[] = ['small', 'medium', 'large'];
-
-export function generate$Metadata(schemes: ColorScheme[], themes: string[], colors: Colors): Metadata {
+export function generate$Metadata(
+  schemes: ColorScheme[],
+  themes: string[],
+  colors: Colors,
+  sizeModes: SizeModes[],
+): Metadata {
   return {
     tokenSetOrder: [
       'primitives/globals',
