@@ -170,7 +170,7 @@
 .toggleButton svg {
   font-size: 1.5em;
 }
-@media (max-width: 576px) {
+@media (max-width: 600px) {
   .toggleButton span {
     display: none;
   }

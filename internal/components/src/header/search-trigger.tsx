@@ -30,7 +30,8 @@ export function SearchTrigger({ onClick }: SearchTriggerProps) {
       onClick={onClick}
       aria-label={t('header.search')}
       data-color='neutral'
-      variant='tertiary'
+      variant='secondary'
+      className={classes.triggerButton}
     >
       <MagnifyingGlassIcon aria-hidden='true' />
       <span className={classes.triggerText}>{t('header.search')}</span>

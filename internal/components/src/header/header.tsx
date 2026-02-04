@@ -227,6 +227,31 @@ const Header = ({
             {searchConfig && (
               <SearchTrigger onClick={searchConfig.onSearchClick} />
             )}
+            <Dropdown.TriggerContext>
+              <Dropdown.Trigger
+                variant='tertiary'
+                data-color='neutral'
+                className={classes.toggleButton}
+                onClick={() => setLangOpen(!langOpen)}
+                lang='en'
+              >
+                <LanguageIcon aria-hidden />
+                <span>Language</span>
+              </Dropdown.Trigger>
+
+              <Dropdown open={langOpen} onClose={() => setLangOpen(false)}>
+                <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
+                  <Link to={langPaths.no} lang='no' hrefLang='no'>
+                    Norsk
+                  </Link>
+                </Dropdown.Button>
+                <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
+                  <Link to={langPaths.en} lang='en' hrefLang='en'>
+                    English
+                  </Link>
+                </Dropdown.Button>
+              </Dropdown>
+            </Dropdown.TriggerContext>
             {themeSwitcher && (
               <Tooltip
                 content={t('header.theme-toggle', {
@@ -256,31 +281,6 @@ const Header = ({
                 </Button>
               </Tooltip>
             )}
-            <Dropdown.TriggerContext>
-              <Dropdown.Trigger
-                variant='tertiary'
-                data-color='neutral'
-                className={classes.toggleButton}
-                onClick={() => setLangOpen(!langOpen)}
-                lang='en'
-              >
-                <LanguageIcon aria-hidden />
-                <span>Language</span>
-              </Dropdown.Trigger>
-
-              <Dropdown open={langOpen} onClose={() => setLangOpen(false)}>
-                <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
-                  <Link to={langPaths.no} lang='no' hrefLang='no'>
-                    Norsk
-                  </Link>
-                </Dropdown.Button>
-                <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
-                  <Link to={langPaths.en} lang='en' hrefLang='en'>
-                    English
-                  </Link>
-                </Dropdown.Button>
-              </Dropdown>
-            </Dropdown.TriggerContext>
             {isHamburger && (
               <>
                 <Button
