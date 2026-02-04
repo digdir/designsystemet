@@ -231,7 +231,7 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
                 }}
               >
                 <Heading className={classes.iconHeading} data-size='sm'>
-                  <FileSearchIcon /> {t('search.results')}
+                  <FileSearchIcon aria-hidden='true' /> {t('search.results')}
                 </Heading>
                 {quickResults.map((result, index) => (
                   <div

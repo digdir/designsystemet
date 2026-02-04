@@ -33,11 +33,6 @@
     align-self: flex-end;
     margin: 0;
   }
-
-  @media (max-width: 768px) {
-    width: 100%;
-    border-radius: 0;
-  }
 }
 .input::placeholder {
   color: var(--ds-color-neutral-text-subtle);
@@ -165,4 +160,19 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--ds-size-3);
+}
+@media (max-width: 768px) {
+  .dialog {
+    width: 100%;
+    border-radius: 0;
+  }
+  .resultsBlock {
+    padding-left: var(--ds-size-6);
+  }
+  .iconHeading {
+    margin-left: 0;
+  }
+  .iconHeading svg {
+    display: none;
+  }
 }
