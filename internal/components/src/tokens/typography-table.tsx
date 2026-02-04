@@ -2,14 +2,8 @@ import { Heading, Table } from '@digdir/designsystemet-react';
 import * as R from 'ramda';
 import type { HTMLAttributes } from 'react';
 import { useTranslation } from 'react-i18next';
-import { capitalizeString } from '~/_utils/string-helpers';
-import {
-  FontFamily,
-  FontSize,
-  FontWeight,
-  LetterSpacing,
-  LineHeight,
-} from './typography-previews';
+import { capitalizeString } from '../_utils';
+import typographyTokens from './design-tokens/typography.json';
 
 type TokenTableProps = {
   tokens: PreviewToken[];
@@ -19,6 +13,37 @@ type PreviewToken = { variable: string; value: string; path: string[] };
 
 const groupedByPathIndex = (index = 0) =>
   R.groupBy((token: PreviewToken) => token.path[index] || 'rest');
+
+export const LineHeight = ({ value }: { value: string }) => {
+  return (
+    <div style={{ lineHeight: value }} lang='en'>
+      line <br /> height
+    </div>
+  );
+};
+
+export const FontSize = ({ value }: { value: string }) => {
+  return <div style={{ fontSize: value }}>Aa</div>;
+};
+
+export const FontWeight = ({ value }: { value: string; text: string }) => {
+  return (
+    <div style={{ fontWeight: value }} lang='en'>
+      weight
+    </div>
+  );
+};
+export const FontFamily = ({ value }: { value: string }) => {
+  return <div style={{ fontFamily: value }}>{value}</div>;
+};
+
+export const LetterSpacing = ({ value }: { value: string }) => {
+  return (
+    <div style={{ letterSpacing: value }} lang='en'>
+      letter spacing
+    </div>
+  );
+};
 
 const getValuePreview = (variable: string, value: string) => {
   if (variable.includes('font-size')) {
@@ -157,3 +182,7 @@ export const TypographyTable = ({ tokens }: TokenTableProps) => {
     );
   });
 };
+
+export const TypographyVariablesTable = () => (
+  <TypographyTable tokens={typographyTokens.primary} />
+);

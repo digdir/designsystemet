@@ -2,7 +2,7 @@ import { AppearanceToggle } from '~/_components/appearance-toggle/appearance-tog
 import { Sidebar } from '~/_components/sidebar/sidebar';
 import { ThemeHeader } from '~/_components/theme-header/theme-header';
 import { ColorModalProvider } from '~/_utils/color-modal-context';
-import { ThemePages } from './_components/theme-pages';
+import { ThemePages } from '../../layouts/themebuilder/layout';
 import classes from './page.module.css';
 import 'react-color-palette/css';
 import type { ColorScheme, CssColor } from '@digdir/designsystemet';
@@ -31,6 +31,10 @@ const MAIN_COLORS = toQueryString(THEME.main);
 const SUPPORT_COLORS = toQueryString(THEME.support);
 const NEUTRAL_COLOR = THEME.neutral;
 
+export type ThemebuilderTabs = 'examples' | 'colorsystem' | 'variables';
+
+const DEFAULT_TAB: ThemebuilderTabs = 'colorsystem';
+
 export const loader = async ({
   params: { lang },
   request,
@@ -48,10 +52,15 @@ export const loader = async ({
       support: SUPPORT_COLORS,
       appearance: 'light',
       'border-radius': '4',
-      tab: 'overview',
+      tab: DEFAULT_TAB,
     });
 
     return redirect(`/${lang}/themebuilder?${newParams.toString()}`);
+  }
+
+  if (urlParams.get('tab') === 'overview') {
+    urlParams.set('tab', 'examples' as ThemebuilderTabs);
+    return redirect(`/${lang}/themebuilder?${urlParams.toString()}`);
   }
 
   const colors = {
@@ -94,7 +103,7 @@ export const loader = async ({
     overrides: overridesMap,
     colorScheme: (urlParams.get('appearance') || 'light') as ColorScheme,
     baseBorderRadius: parseInt(urlParams.get('border-radius') || '4', 10),
-    tab: urlParams.get('tab') || 'overview',
+    tab: urlParams.get('tab') || DEFAULT_TAB,
     lang,
     metadata: generateMetadata({
       title: t('meta.title'),

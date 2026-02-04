@@ -25,7 +25,7 @@ const meta: Meta<typeof AvatarStack> = {
 export default meta;
 
 export const Preview: Story = (args) => (
-  <AvatarStack {...args}>
+  <AvatarStack {...args} aria-hidden>
     <Avatar aria-label=''>
       <img src='https://placebeard.it/100x100' alt='' />
     </Avatar>
@@ -52,16 +52,16 @@ export const Expandable: Story = (args) => (
     >
       <legend>expandable</legend>
       <AvatarStack {...args} expandable>
-        <Avatar aria-label=''>
+        <Avatar aria-label='profile picture a'>
           <img src='https://placebeard.it/100x100' alt='' />
         </Avatar>
-        <Avatar aria-label=''>
+        <Avatar aria-label='profile picture b'>
           <img src='https://i.pravatar.cc/100' alt='' />
         </Avatar>
-        <Avatar aria-label=''>
+        <Avatar aria-label='profile picture c'>
           <img src='https://i.pravatar.cc/100' alt='' />
         </Avatar>
-        <Avatar aria-label=''>
+        <Avatar aria-label='profile picture d'>
           <img src='https://i.pravatar.cc/100' alt='' />
         </Avatar>
       </AvatarStack>
@@ -71,16 +71,16 @@ export const Expandable: Story = (args) => (
     >
       <legend>expandable="fixed"</legend>
       <AvatarStack {...args} expandable='fixed'>
-        <Avatar aria-label=''>
+        <Avatar aria-label='profile picture a'>
           <img src='https://placebeard.it/100x100' alt='' />
         </Avatar>
-        <Avatar aria-label=''>
+        <Avatar aria-label='profile picture b'>
           <img src='https://i.pravatar.cc/100' alt='' />
         </Avatar>
-        <Avatar aria-label=''>
+        <Avatar aria-label='profile picture c'>
           <img src='https://i.pravatar.cc/100' alt='' />
         </Avatar>
-        <Avatar aria-label=''>
+        <Avatar aria-label='profile picture d'>
           <img src='https://i.pravatar.cc/100' alt='' />
         </Avatar>
       </AvatarStack>
@@ -89,7 +89,7 @@ export const Expandable: Story = (args) => (
       style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
     >
       <legend>not expandable</legend>
-      <AvatarStack {...args}>
+      <AvatarStack {...args} aria-hidden>
         <Avatar aria-label=''>
           <img src='https://placebeard.it/100x100' alt='' />
         </Avatar>
@@ -113,7 +113,12 @@ export const DataSize: Story = (args) => (
       style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
     >
       <legend>avatarSize='var(--ds-size-12)'</legend>
-      <AvatarStack avatarSize='var(--ds-size-12)' data-size='sm' {...args}>
+      <AvatarStack
+        avatarSize='var(--ds-size-12)'
+        data-size='sm'
+        {...args}
+        aria-hidden
+      >
         <Avatar aria-label=''>
           <img src='https://placebeard.it/100x100' alt='' />
         </Avatar>
@@ -123,7 +128,12 @@ export const DataSize: Story = (args) => (
         <Avatar aria-label=''>sm</Avatar>
         <Avatar aria-label='' initials='sm' />
       </AvatarStack>
-      <AvatarStack avatarSize={'var(--ds-size-12)'} data-size='md' {...args}>
+      <AvatarStack
+        avatarSize={'var(--ds-size-12)'}
+        data-size='md'
+        {...args}
+        aria-hidden
+      >
         <Avatar aria-label=''>
           <img src='https://placebeard.it/100x100' alt='' />
         </Avatar>
@@ -133,7 +143,12 @@ export const DataSize: Story = (args) => (
         <Avatar aria-label=''>md</Avatar>
         <Avatar aria-label='' initials='md' />
       </AvatarStack>
-      <AvatarStack avatarSize={'var(--ds-size-12)'} data-size='lg' {...args}>
+      <AvatarStack
+        avatarSize={'var(--ds-size-12)'}
+        data-size='lg'
+        {...args}
+        aria-hidden
+      >
         <Avatar aria-label=''>
           <img src='https://placebeard.it/100x100' alt='' />
         </Avatar>
@@ -148,7 +163,7 @@ export const DataSize: Story = (args) => (
       style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
     >
       <legend>avatarSize='3em'</legend>
-      <AvatarStack avatarSize='3em' data-size='sm' {...args}>
+      <AvatarStack avatarSize='3em' data-size='sm' {...args} aria-hidden>
         <Avatar aria-label=''>
           <img src='https://placebeard.it/100x100' alt='' />
         </Avatar>
@@ -158,7 +173,7 @@ export const DataSize: Story = (args) => (
         <Avatar aria-label=''>sm</Avatar>
         <Avatar aria-label='' initials='sm' />
       </AvatarStack>
-      <AvatarStack avatarSize='3em' data-size='md' {...args}>
+      <AvatarStack avatarSize='3em' data-size='md' {...args} aria-hidden>
         <Avatar aria-label=''>
           <img src='https://placebeard.it/100x100' alt='' />
         </Avatar>
@@ -168,7 +183,7 @@ export const DataSize: Story = (args) => (
         <Avatar aria-label=''>md</Avatar>
         <Avatar aria-label='' initials='md' />
       </AvatarStack>
-      <AvatarStack avatarSize='3em' data-size='lg' {...args}>
+      <AvatarStack avatarSize='3em' data-size='lg' {...args} aria-hidden>
         <Avatar aria-label=''>
           <img src='https://placebeard.it/100x100' alt='' />
         </Avatar>
@@ -183,7 +198,7 @@ export const DataSize: Story = (args) => (
       style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'center' }}
     >
       <legend>avatarSize='3rem'</legend>
-      <AvatarStack avatarSize='3rem' data-size='sm' {...args}>
+      <AvatarStack avatarSize='3rem' data-size='sm' {...args} aria-hidden>
         <Avatar aria-label=''>
           <img src='https://placebeard.it/100x100' alt='' />
         </Avatar>
@@ -193,7 +208,7 @@ export const DataSize: Story = (args) => (
         <Avatar aria-label=''>sm</Avatar>
         <Avatar aria-label='' initials='sm' />
       </AvatarStack>
-      <AvatarStack avatarSize='3rem' data-size='md' {...args}>
+      <AvatarStack avatarSize='3rem' data-size='md' {...args} aria-hidden>
         <Avatar aria-label=''>
           <img src='https://placebeard.it/100x100' alt='' />
         </Avatar>
@@ -203,7 +218,7 @@ export const DataSize: Story = (args) => (
         <Avatar aria-label=''>md</Avatar>
         <Avatar aria-label='' initials='md' />
       </AvatarStack>
-      <AvatarStack avatarSize='3rem' data-size='lg' {...args}>
+      <AvatarStack avatarSize='3rem' data-size='lg' {...args} aria-hidden>
         <Avatar aria-label=''>
           <img src='https://placebeard.it/100x100' alt='' />
         </Avatar>
@@ -309,22 +324,22 @@ export const WithTooltipAndLink: Story = (args) => (
     >
       <legend>Link expandable</legend>
       <AvatarStack {...args} expandable='fixed'>
-        <Avatar aria-label='' asChild>
+        <Avatar aria-label='profile picture a' asChild>
           <a href='#'>
             <img src='https://placebeard.it/100x100' alt='' />
           </a>
         </Avatar>
-        <Avatar aria-label='' asChild>
+        <Avatar aria-label='profile picture b' asChild>
           <a href='#'>
             <img src='https://i.pravatar.cc/100' alt='' />
           </a>
         </Avatar>
-        <Avatar aria-label='' asChild>
+        <Avatar aria-label='profile picture c' asChild>
           <a href='#'>
             <img src='https://i.pravatar.cc/100' alt='' />
           </a>
         </Avatar>
-        <Avatar aria-label='' asChild>
+        <Avatar aria-label='profile picture d' asChild>
           <a href='#'>
             <img src='https://i.pravatar.cc/100' alt='' />
           </a>
@@ -337,28 +352,28 @@ export const WithTooltipAndLink: Story = (args) => (
       <legend>Link + Tooltip</legend>
       <AvatarStack {...args} overlap={20}>
         <Tooltip content='Ola Nordmann'>
-          <Avatar aria-label='' asChild>
+          <Avatar aria-label='profile picture a' asChild>
             <a href='#'>
-              <img src='https://placebeard.it/100x100' alt='' />
+              <img src='https://placebeard.it/100x100' alt='profile a' />
             </a>
           </Avatar>
         </Tooltip>
         <Tooltip content='Kari Nordmann'>
-          <Avatar aria-label='' asChild>
+          <Avatar aria-label='profile picture b' asChild>
             <a href='#'>
-              <img src='https://i.pravatar.cc/100' alt='' />
+              <img src='https://i.pravatar.cc/100' alt='profile b' />
             </a>
           </Avatar>
         </Tooltip>
         <Tooltip content='Person 2'>
-          <Avatar aria-label='' asChild>
+          <Avatar aria-label='profile picture c' asChild>
             <a href='#'>
-              <img src='https://i.pravatar.cc/100' alt='' />
+              <img src='https://i.pravatar.cc/100' alt='profile c' />
             </a>
           </Avatar>
         </Tooltip>
         <Tooltip content='Person 3'>
-          <Avatar aria-label='' asChild>
+          <Avatar aria-label='profile picture d' asChild>
             <a href='#'>BR</a>
           </Avatar>
         </Tooltip>
@@ -463,19 +478,19 @@ export const Playground: Story = () => {
         avatarSize={`${size}px`}
         expandable={expandable}
       >
-        <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
+        <Avatar aria-label='profile a' variant={square ? 'square' : 'circle'}>
           <img src='https://placebeard.it/100x100' alt='' />
         </Avatar>
-        <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
+        <Avatar aria-label='profile b' variant={square ? 'square' : 'circle'}>
           <img src='https://i.pravatar.cc/100' alt='' />
         </Avatar>
-        <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
+        <Avatar aria-label='profile c' variant={square ? 'square' : 'circle'}>
           md
         </Avatar>
-        <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
+        <Avatar aria-label='profile d' variant={square ? 'square' : 'circle'}>
           <img src='https://i.pravatar.cc/100' alt='' />
         </Avatar>
-        <Avatar aria-label='' variant={square ? 'square' : 'circle'}>
+        <Avatar aria-label='profile e' variant={square ? 'square' : 'circle'}>
           <img src='https://placebeard.it/100x100' alt='' />
         </Avatar>
       </AvatarStack>
