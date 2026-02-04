@@ -56,7 +56,7 @@ export default function Intro() {
     <>
       <Banner
         style={{ marginBottom: 'var(--page-spacing-top)' }}
-        data-color='brand3'
+        data-color='brand2'
         icon={<Aksel.InformationIcon />}
       >
         <BannerHeading level={1}>{t('intro.title')}</BannerHeading>
