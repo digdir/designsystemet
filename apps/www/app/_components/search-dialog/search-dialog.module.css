@@ -128,6 +128,12 @@
 .quickResultLink {
   margin-bottom: var(--ds-size-3);
 }
+.resultTag {
+  padding-inline-start: var(--ds-size-1);
+  svg {
+    margin-inline-end: var(--ds-size-1);
+  }
+}
 
 .quickResultContent {
   margin: 0;

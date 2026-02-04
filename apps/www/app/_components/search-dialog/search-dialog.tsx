@@ -1,4 +1,4 @@
-import type { ColorDefinitions } from '@digdir/designsystemet/types';
+import type { Color, SeverityColors } from '@digdir/designsystemet/types';
 import {
   Button,
   Chip,
@@ -10,9 +10,17 @@ import {
   Tag,
 } from '@digdir/designsystemet-react';
 import { useDebounceCallback } from '@internal/components';
-import { FileSearchIcon } from '@navikt/aksel-icons';
+import {
+  ComponentFillIcon,
+  FileSearchIcon,
+  HandShakeHeartIcon,
+  HexagonGridIcon,
+  InformationIcon,
+  NewspaperIcon,
+  TasklistIcon,
+} from '@navikt/aksel-icons';
 import cl from 'clsx';
-import type { ChangeEvent, CSSProperties } from 'react';
+import type { ChangeEvent, CSSProperties, ReactNode } from 'react';
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { highlightText } from '~/_utils/highlight';
@@ -108,24 +116,52 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
   };
 
   const getTypeLabel = (type: string) => {
-    const labels: Record<string, string> = {
-      intro: t('search.type.intro'),
-      component: t('search.type.component'),
-      blog: t('search.type.blog'),
-      fundamentals: t('search.type.fundamentals'),
-      'best-practices': t('search.type.best-practices'),
-      patterns: t('search.type.patterns'),
+    const labels: Record<string, ReactNode> = {
+      intro: (
+        <>
+          <InformationIcon /> {t('search.type.intro')}
+        </>
+      ),
+      component: (
+        <>
+          <ComponentFillIcon /> {t('search.type.component')}
+        </>
+      ),
+      blog: (
+        <>
+          <NewspaperIcon />
+          {t('search.type.blog')}
+        </>
+      ),
+      fundamentals: (
+        <>
+          <TasklistIcon />
+          {t('search.type.fundamentals')}
+        </>
+      ),
+      'best-practices': (
+        <>
+          <HandShakeHeartIcon />
+          {t('search.type.best-practices')}
+        </>
+      ),
+      patterns: (
+        <>
+          <HexagonGridIcon />
+          {t('search.type.patterns')}
+        </>
+      ),
     };
     return labels[type] || type;
   };
   const getTypeColor = (type: string) => {
-    const labels: Record<string, keyof ColorDefinitions> = {
-      intro: 'brand3',
+    const labels: Record<string, Color | SeverityColors> = {
+      intro: 'brand2',
       component: 'brand3',
-      blog: 'neutral',
+      blog: 'success',
       fundamentals: 'brand2',
       'best-practices': 'brand1',
-      patterns: 'brand3',
+      patterns: 'brand1',
     };
     return labels[type] || 'neutral';
   };
@@ -216,6 +252,7 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
                       <Tag
                         data-size='sm'
                         data-color={getTypeColor(result.type)}
+                        className={classes.resultTag}
                       >
                         {getTypeLabel(result.type)}
                       </Tag>
