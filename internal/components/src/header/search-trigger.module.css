@@ -4,10 +4,9 @@
 }
 
 @media (max-width: 668px) {
-  /*   .triggerButton {
+  .triggerButton {
     --dsc-button-padding: var(--ds-size-2) var(--ds-size-2);
-    border-radius: var(--ds-border-radius-default);
-  } */
+  }
   .triggerText {
     display: none;
   }
