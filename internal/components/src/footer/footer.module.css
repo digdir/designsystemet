@@ -3,32 +3,78 @@
   --text: light-dark(var(--ds-color-neutral-base-contrast-default), var(--ds-color-neutral-text-default));
   --text-muted: light-dark(var(--ds-color-neutral-base-contrast-subtle), var(--ds-color-neutral-text-subtle));
   background-color: var(--bg);
-  display: flex;
-  align-items: center;
-  padding-block: 64px;
+  --_max-content-width: 1300px;
+  --_content-inline-padding: var(--ds-size-7);
+  --_mw: calc(var(--max-content-width, var(--_max-content-width)) + (var(--content-inline-padding, var(--_content-inline-padding)) * 2));
+  --_pi: var(--content-inline-padding, var(--_content-inline-padding));
   color: var(--text-muted);
 }
 
 .container {
-  /*fallbacks*/
-  --_max-content-width: 1300px;
-  --_content-inline-padding: var(--ds-size-7);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  /* grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); */
   column-gap: var(--ds-size-8);
   row-gap: var(--ds-size-8);
-  max-width: calc(var(--max-content-width, var(--_max-content-width)) + (var(--content-inline-padding, var(--_content-inline-padding)) * 2));
-  width: 100%;
-  padding-inline: var(--content-inline-padding, var(--_content-inline-padding));
+  max-width: var(--_mw);
+  padding-inline: var(--_pi);
+  padding-block: 64px 50px;
   margin: 0 auto;
+}
+
+.bottom {
+  background-color: light-dark(var(--ds-color-neutral-base-hover), var(--ds-color-neutral-surface-default));
+}
+.bottomContainer {
+  display: flex;
+  align-items: center;
+  max-width: var(--_mw);
+  padding-inline: var(--_pi);
+  margin: 0 auto;
+  padding-block: 21px;
+  > * {
+    padding-inline: 23px;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      width: 1px;
+      height: 1.5rem;
+      top: 50%;
+      translate: 0 -50%;
+      background-color: var(--ds-color-neutral-border-subtle);
+    }
+    &:first-child {
+      padding-inline-start: 0;
+    }
+    &:last-child {
+      padding-inline-end: 0;
+      &::after {
+        content: none;
+      }
+    }
+  }
 }
 
 .logo {
   margin-bottom: var(--ds-size-3);
   & g {
     fill: var(--text);
+  }
+}
+.copyright {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-size-3);
+}
+.dpgBadge {
+  width: 3.75rem;
+  height: auto;
+  --dpg-fill: var(--text-muted);
+  &:hover {
+    --dpg-fill: var(--text);
+    cursor: pointer;
   }
 }
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import classes from './semantic.module.css';
+import classes from './table.module.css';
 
 const getComputedValue = (value: string, size?: string) => {
   const elm = document.createElement('div');
@@ -14,7 +14,7 @@ const getComputedValue = (value: string, size?: string) => {
   return computedValue;
 };
 
-export const Size = ({ value, size }: { value: string; size?: string }) => {
+const Size = ({ value, size }: { value: string; size?: string }) => {
   // This is a temp solution to get the computed value of the token. Find a better way to do this in https://github.com/digdir/designsystemet/issues/2946
   const [computedValue, setComputedValue] = useState<string>('');
 
@@ -31,7 +31,7 @@ export const Size = ({ value, size }: { value: string; size?: string }) => {
   );
 };
 
-export const Shadow = ({ value }: { value: string }) => {
+const Shadow = ({ value }: { value: string }) => {
   return (
     <div className={classes.shadow}>
       <div style={{ boxShadow: value }} className={classes.color}></div>
@@ -39,15 +39,15 @@ export const Shadow = ({ value }: { value: string }) => {
   );
 };
 
-export const BorderRadius = ({ value }: { value: string }) => {
+const BorderRadius = ({ value }: { value: string }) => {
   return (
-    <div className={classes.radius}>
+    <div className={classes['border-radius']}>
       <div className={classes.bar} style={{ borderRadius: value }}></div>
     </div>
   );
 };
 
-export const Opacity = ({ value }: { value: string }) => {
+const Opacity = ({ value }: { value: string }) => {
   return (
     <div style={{ opacity: value }} lang='en'>
       opacity
@@ -55,7 +55,7 @@ export const Opacity = ({ value }: { value: string }) => {
   );
 };
 
-export const BorderWidth = ({ value }: { value: string }) => {
+const BorderWidth = ({ value }: { value: string }) => {
   return (
     <div className={classes['border-width']}>
       <div className={classes.bar} style={{ borderWidth: value }}></div>
@@ -80,4 +80,43 @@ export const ComputedValue = ({
   }, [value, size]);
 
   return <code>{computedValue}</code>;
+};
+
+export const getValuePreview = (
+  variable: string,
+  value: string,
+  size?: string,
+) => {
+  if (/^--ds-size.*(\d+|unit)$/.test(variable)) {
+    return <Size value={value} size={size} />;
+  }
+  if (/^--ds-border-radius(?!.*(scale|base)$)/.test(variable)) {
+    return <BorderRadius value={value} />;
+  }
+
+  if (/^--ds-shadow/.test(variable)) {
+    return <Shadow value={value} />;
+  }
+
+  if (/^--ds-opacity/.test(variable)) {
+    return <Opacity value={value} />;
+  }
+
+  if (/^--ds-border-width/.test(variable)) {
+    return <BorderWidth value={value} />;
+  }
+
+  return <code>{value}</code>;
+};
+
+export const getValueRender = (
+  variable: string,
+  value: string,
+  size?: string,
+) => {
+  if (!/opacity|shadow|size-base|size-step/.test(variable)) {
+    return <ComputedValue value={value} size={size} />;
+  }
+
+  return <code>{value}</code>;
 };
