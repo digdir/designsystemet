@@ -3,15 +3,15 @@ import { Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import * as R from 'ramda';
 import { forwardRef } from 'react';
-import classes from './color.module.css';
+import classes from './color-button.module.css';
 
-type ColorProps = {
+type ColorButtonProps = {
   colorName: ColorNames;
   color: string;
   featured?: boolean;
 } & Omit<React.HTMLAttributes<HTMLButtonElement>, 'color'>;
 
-export const Color = forwardRef<HTMLButtonElement, ColorProps>(
+export const ColorButton = forwardRef<HTMLButtonElement, ColorButtonProps>(
   ({ color, featured, ...rest }, ref) => {
     return (
       <Slottable>
