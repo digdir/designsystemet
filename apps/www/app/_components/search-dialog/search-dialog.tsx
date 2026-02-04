@@ -210,7 +210,7 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
 
       <div className={classes.resultsContainer}>
         {query && (
-          <div className={classes.results}>
+          <>
             {isQuickLoading && quickResults.length === 0 && (
               <section className={classes.resultsBlock}>
                 <div className={classes.quickResult}>
@@ -224,53 +224,55 @@ export const SearchDialog = ({ open, onClose, lang }: SearchDialogProps) => {
               </section>
             )}
             {quickResults.length > 0 && (
-              <section
-                className={classes.resultsBlock}
-                ref={(el) => {
-                  query.length > 1 && el && highlightText(query, el);
-                }}
-              >
+              <>
                 <Heading className={classes.iconHeading} data-size='sm'>
                   <FileSearchIcon aria-hidden='true' /> {t('search.results')}
                 </Heading>
-                {quickResults.map((result, index) => (
-                  <div
-                    key={result.id}
-                    style={{ '--i': `${index}` } as CSSProperties}
-                    className={classes.quickResult}
-                  >
-                    <div className={classes.resultHeader}>
-                      <h3 className={classes.resultTitle}>
-                        <Link
-                          to={result.url}
-                          className={classes.quickResultLink}
-                          onClick={handleClose}
-                        >
-                          {result.title}
-                        </Link>
-                      </h3>
-                      <Tag
-                        data-size='sm'
-                        data-color={getTypeColor(result.type)}
-                        className={classes.resultTag}
-                      >
-                        {getTypeLabel(result.type)}
-                      </Tag>
-                    </div>
-                    <Paragraph className={classes.quickResultContent}>
-                      {result.description}
-                    </Paragraph>
-                    <Paragraph
-                      className={classes.quickResultUrl}
-                      data-size='xs'
+                <section
+                  className={classes.resultsBlock}
+                  ref={(el) => {
+                    query.length > 1 && el && highlightText(query, el);
+                  }}
+                >
+                  {quickResults.map((result, index) => (
+                    <div
+                      key={result.id}
+                      style={{ '--i': `${index}` } as CSSProperties}
+                      className={classes.quickResult}
                     >
-                      https://designsystemet.no{result.url}
-                    </Paragraph>
-                  </div>
-                ))}
-              </section>
+                      <div className={classes.resultHeader}>
+                        <h3 className={classes.resultTitle}>
+                          <Link
+                            to={result.url}
+                            className={classes.quickResultLink}
+                            onClick={handleClose}
+                          >
+                            {result.title}
+                          </Link>
+                        </h3>
+                        <Tag
+                          data-size='sm'
+                          data-color={getTypeColor(result.type)}
+                          className={classes.resultTag}
+                        >
+                          {getTypeLabel(result.type)}
+                        </Tag>
+                      </div>
+                      <Paragraph className={classes.quickResultContent}>
+                        {result.description}
+                      </Paragraph>
+                      <Paragraph
+                        className={classes.quickResultUrl}
+                        data-size='xs'
+                      >
+                        https://designsystemet.no{result.url}
+                      </Paragraph>
+                    </div>
+                  ))}
+                </section>
+              </>
             )}
-          </div>
+          </>
         )}
 
         {!query && (

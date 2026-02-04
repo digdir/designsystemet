@@ -52,13 +52,11 @@
 .iconHeading {
   --icon-size: 24px;
   --gap: var(--ds-size-2);
-  margin-left: calc((var(--icon-size) + var(--gap)) * -1);
-  position: relative;
+  margin-left: calc(var(--ds-size-14) - (var(--icon-size) + var(--gap)));
+  padding: var(--ds-size-6) var(--ds-size-6) 0 0;
   display: flex;
   align-items: center;
-  width: fit-content;
   gap: var(--gap);
-  margin-bottom: var(--ds-size-6);
   > svg {
     font-size: var(--icon-size);
   }
@@ -66,12 +64,6 @@
 
 .resultsContainer {
   overflow-y: auto;
-}
-
-.results {
-  display: flex;
-  flex-direction: column;
-  gap: var(--ds-size-4);
 }
 
 .resultsBlock {
@@ -100,21 +92,6 @@
 /* Quick search result styles */
 .quickResult {
   margin-bottom: var(--ds-size-6);
-  /*Uncomment to enable transitions*/
-  /*   --transition: 0.3s;
-  --delay: 0.1s;
-  @media (prefers-reduced-motion: reduce) {
-    --transition: 0s;
-    --delay: 0s;
-  }
-  transition: var(--transition) ease;
-  transition-property: opacity, translate;
-  transition-delay: calc(var(--i) * var(--delay));
-  margin-bottom: var(--ds-size-6);
-  @starting-style {
-    opacity: 0;
-    translate: -16px 0;
-  } */
   :global(.ds-skeleton) {
     --dsc-skeleton-background: var(--ds-color-neutral-surface-active);
   }
@@ -170,7 +147,7 @@
     padding-left: var(--ds-size-6);
   }
   .iconHeading {
-    margin-left: 0;
+    margin-left: var(--ds-size-6);
   }
   .iconHeading svg {
     display: none;
