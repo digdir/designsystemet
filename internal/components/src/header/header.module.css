@@ -29,7 +29,7 @@
         padding: 0;
         max-width: 100%;
         align-items: center;
-        margin-right: var(--ds-size-6);
+        margin-right: var(--ds-size-14);
 
         li {
           list-style: none;
