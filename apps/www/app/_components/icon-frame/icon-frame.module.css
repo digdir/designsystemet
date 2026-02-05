@@ -1,0 +1,58 @@
+.iconFrame {
+  width: 100%;
+  aspect-ratio: 52 / 19;
+  display: grid;
+  place-items: center;
+  position: relative;
+  container-type: size;
+
+  border-radius: 16px;
+  background-color: var(--ds-color-background-tinted);
+  overflow: clip;
+  img,
+  svg {
+    isolation: isolate;
+    height: 60cqh;
+  }
+  svg {
+    width: unset;
+    > path {
+      fill: var(--ds-color-base-default);
+    }
+  }
+}
+.decorator {
+  --sq-border-w: 3cqh;
+  --sq-w: 56cqh;
+  --sq-spacing: 15cqh;
+  transform-origin: top left;
+  position: absolute;
+  rotate: 45deg;
+  top: 13cqh;
+  left: calc(var(--sq-border-w) * -1);
+  width: var(--sq-w);
+  aspect-ratio: 1;
+  outline: var(--sq-border-w) solid var(--ds-color-surface-hover);
+  border-radius: 3cqh;
+  &::after {
+    position: absolute;
+    top: 0;
+    left: calc(100% + var(--sq-spacing));
+    content: '';
+    width: var(--sq-w);
+    outline: inherit;
+    border-radius: inherit;
+    aspect-ratio: inherit;
+  }
+  &:nth-of-type(2) {
+    transform-origin: bottom right;
+    left: unset;
+    top: unset;
+    bottom: 13cqh;
+    right: calc(var(--sq-border-w) * -1);
+    &::after {
+      right: calc(100% + var(--sq-spacing));
+      left: unset;
+    }
+  }
+}

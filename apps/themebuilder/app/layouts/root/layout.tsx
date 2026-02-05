@@ -55,9 +55,8 @@ export default function RootLayout() {
       <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
       <Header
         menu={menu}
-        logoLink={`/${lang}`}
+        logoLink={`https://designsystemet.no/${lang}`}
         themeSwitcher
-        transparentBackground
       />
       <Outlet />
       <Footer
@@ -98,7 +97,11 @@ const ErrorWrapperRoot = ({
   return (
     <>
       <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
-      <Header menu={menu} logoLink={`/${lang}`} themeSwitcher />
+      <Header
+        menu={menu}
+        logoLink={`https://designsystemet.no/${lang}`}
+        themeSwitcher
+      />
       <main id='main'>
         <ContentContainer>{children}</ContentContainer>
       </main>

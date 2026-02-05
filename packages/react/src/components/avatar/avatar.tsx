@@ -1,4 +1,4 @@
-import type { Size } from '@digdir/designsystemet/types';
+import type { Size } from '@digdir/designsystemet-types';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
@@ -32,6 +32,11 @@ export type AvatarProps = MergeRight<
      */
     initials?: string;
     /**
+     * Change the default rendered element for the one passed as a child, merging their props and behavior.
+     * @default false
+     */
+    asChild?: boolean;
+    /**
      * Image, icon or initials to display inside the avatar.
      *
      * Gets `aria-hidden="true"`
@@ -63,28 +68,30 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
     className,
     children,
     initials,
+    asChild,
     ...rest
   },
   ref,
 ) {
+  const OuterComponent = asChild ? Slot : 'span';
   const useSlot = children && typeof children !== 'string';
   const textChild = children && typeof children === 'string';
   const Component = useSlot ? Slot : Fragment;
 
   return (
-    <span
+    <OuterComponent
       ref={ref}
       className={cl('ds-avatar', className)}
       data-variant={variant}
       data-initials={initials}
-      role='img'
+      role={asChild ? undefined : 'img'}
       aria-label={ariaLabel}
       {...rest}
     >
-      <Component {...(useSlot ? { 'aria-hidden': true } : {})}>
+      <Component {...(useSlot && !asChild ? { 'aria-hidden': true } : {})}>
         {textChild ? <span>{children}</span> : children}
       </Component>
-    </span>
+    </OuterComponent>
   );
 });
 

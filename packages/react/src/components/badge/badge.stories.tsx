@@ -9,7 +9,7 @@ import {
 } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import type { CSSProperties } from 'react';
-import { Badge, Button, Tabs } from '../';
+import { Badge, Button, Paragraph, Tabs } from '../';
 
 type Story = StoryFn<typeof Badge>;
 
@@ -232,3 +232,10 @@ Variants.parameters = {
     width: '100%',
   },
 };
+
+export const Bullet: Story = () => (
+  <Paragraph>
+    <Badge data-color='success' />
+    Aktiv
+  </Paragraph>
+);

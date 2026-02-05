@@ -1,5 +1,4 @@
 import { Heading } from '@digdir/designsystemet-react';
-import { ContentContainer } from '@internal/components';
 import cl from 'clsx/lite';
 import type * as React from 'react';
 import classes from './section.module.css';
@@ -23,7 +22,7 @@ const Section = ({
       className={cl(classes.section, classes[backgroundColor])}
       {...props}
     >
-      <ContentContainer>
+      <div className='l-content-container'>
         <div className={classes.header}>
           {title && (
             <Heading level={2} data-size='md'>
@@ -44,7 +43,7 @@ const Section = ({
           )}
         </div>
         <div className={classes.content}>{children}</div>
-      </ContentContainer>
+      </div>
     </section>
   );
 };

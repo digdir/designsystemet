@@ -1,46 +1,46 @@
 .table-of-contents {
+  --padding-left: 14px;
   position: sticky;
-  top: var(--ds-size-6);
-  max-width: 220px;
-  padding: var(--ds-size-4);
-  background-color: var(--ds-color-neutral-background-tinted);
+  top: calc(var(--ds-size-6) + var(--header-height, 75px));
   border-radius: var(--ds-border-radius-lg);
 
   > h2 {
-    font-weight: 500;
-    margin-bottom: var(--ds-size-4);
+    font-weight: 600;
+    margin-bottom: var(--ds-size-2);
+    padding-inline-start: var(--padding-left);
+    color: var(--ds-color-neutral-text-subtle);
   }
   > ol {
     margin: 0;
     padding: 0;
     list-style-type: none;
-    border-inline-start: 1px solid var(--ds-color-neutral-border-subtle);
     display: flex;
     flex-direction: column;
-    gap: var(--ds-size-2);
+    gap: var(--ds-size-1);
     > li {
       > a {
         color: inherit;
         display: block;
         position: relative;
         text-decoration: none;
-        padding-inline-start: var(--ds-size-4);
-        border-radius: var(--ds-border-radius-md);
+        padding-inline-start: var(--padding-left);
+        border-radius: var(--ds-border-radius-sm);
+        padding-block: 3px;
 
         /*It needs to be decided if level 3 should be included
         and if so, how to style it. This is just placeholder*/
         &[data-level='3'] {
-          color: var(--ds-color-neutral-text-subtle);
-          padding-inline-start: var(--ds-size-6);
+          padding-inline-start: 22px;
         }
 
         &:focus-visible {
-          color: var(--ds-color-neutral-base-contrast-default);
+          outline-offset: calc(-1 * var(--ds-border-width-focus));
         }
 
         &[aria-current='true'] {
           font-weight: 500;
-          margin-inline-end: -3px; /*prevents line break due to bolder text*/
+          margin-inline-end: -2px; /*prevents line break due to bolder text*/
+          background-color: var(--ds-color-neutral-background-tinted);
           &::before {
             content: '';
             width: 3px;
@@ -54,5 +54,20 @@
         }
       }
     }
+  }
+  &:has(ol) :global(.toc-feedback) {
+    border-top: 1px solid var(--ds-color-neutral-border-subtle);
+  }
+}
+:global(.toc-feedback) {
+  font-weight: var(--ds-font-weight-medium);
+  margin-top: var(--ds-size-4);
+  padding-top: var(--ds-size-4);
+  padding-inline: var(--ds-size-4);
+  > p {
+    margin-bottom: var(--ds-size-4);
+  }
+  a {
+    width: fit-content;
   }
 }

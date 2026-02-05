@@ -1,0 +1,23 @@
+<Alert data-color="info">
+Vi jobber med å forbedre dokumentasjonen for tilgjengelighet på denne komponenten. Har du spørsmål eller ser noe som bør prioriteres, ta gjerne kontakt med oss på [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) eller [Slack](https://designsystemet.no/slack).
+</Alert>
+
+`ToggleGroup` har standard fokusindikator (ramme).  
+Vi brukar `roving tabindex` for å handtere fokusbevegelse mellom knappane.
+
+### Tastaturinteraksjon 
+
+- <kbd>Tab</kbd> flytter fokuset til den aktive toggle-knappen.
+- <kbd>Shift</kbd>+<kbd>Tab</kbd> flytter fokuset til elementet før `ToggleGroup` i tabindex.
+- <kbd>Space</kbd> velger en knapp.
+- <kbd>Enter</kbd> velger en knapp.
+- <kbd data-icon>↑</kbd> flytter fokuset til forrige knapp i gruppa.
+- <kbd data-icon>←</kbd> flytter fokuset til forrige knapp i gruppa.
+- <kbd data-icon>↓</kbd> flytter fokuset til neste knapp i gruppa.
+- <kbd data-icon>→</kbd> flytter fokuset til neste knapp i gruppa.
+- <kbd>Home</kbd> går til første knapp i gruppa.
+- <kbd>End</kbd> går til siste knapp i gruppa.
+
+### Tastaturnavigasjon
+* <kbd data-icon>←</kbd>/<kbd data-icon>→</kbd> går til forrige/neste (enkeltvalg)
+* <kbd>Space</kbd> eller <kbd>Enter</kbd> aktiverer/toggler valgt element

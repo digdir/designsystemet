@@ -1,0 +1,49 @@
+---
+title: Design Tokens
+sidebar_title: Design Tokens
+description: Alle variablene som blir generert av kommandolinjeverktøyet.
+date: 2025-09-02
+category: Tema
+color: red
+icon: TokenIcon
+published: true
+order: 101
+---
+
+Design Tokens er fleksible variabler som kan benyttes uavhengig av teknologi eller designverktøy. Denne oversikten viser alle variablene som blir generert av [Designsystemet sitt kommandolinjeverktøy](/no/fundamentals/code/cli-config).
+
+## Farger
+
+Fargevariabler som brukes til å definere fargepaletten i temaet. Bruk attributtet `data-color` for å endre farge eller `data-color-scheme` for å bytte mellom mørk og lys fargemodus.
+
+<ColorTokensTable />
+
+## Størrelser
+
+Størrelsevariabler som brukes til å definere avstander og størrelser. Disse variablene tilpasser seg basert på størrelsesmodusen satt ved bruk av `data-size` attributtet eller variablene `--ds-size-base` og `--ds-size-step`. Merk at tabellen under viser utregnede verdier i `px`, mens i kode kommer dette fra en formel med basis i `rem`, slik at størrelsene også påvirkes av brukerens preferanse i nettleseren.
+
+<SizeVariablesTable withPreview />
+
+## Border-radius
+
+Border radius variabler som brukes til å definere border radius på komponenter og former. Bruk variablene `--ds-border-radius-base` og `--ds-border-radius-step` for å justere intensiteten på border radius.
+
+<BorderRadiusVariablesTable withPreview />
+
+## Skygger
+
+Skyggevariabler som brukes til å definere skygger på komponenter og elementer.
+
+<ShadowVariablesTable withPreview />
+
+## Opasitet
+
+Opasitetsvariabler som brukes til å definere opasitetsnivåer på komponenter og elementer.
+
+<OpacityVariablesTable withPreview />
+
+## Typografi
+
+Typografivariabler som brukes til å definere skriftstiler, størrelser og vekter.
+
+<TypographyVariablesTable />

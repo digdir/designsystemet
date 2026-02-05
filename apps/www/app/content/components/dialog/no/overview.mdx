@@ -1,0 +1,53 @@
+<Story story="Preview" />
+
+**Bruk modal `Dialog` når** 
+- brukerne skal bekrefte en kritisk handling, som å slette noe de ikke kan angre  
+- brukerne skal se en bestemt dialog og må forholde seg til den
+- du skal sikre at brukeren får med seg viktig informasjon
+
+**Unngå modal `Dialog` når**
+- innholdet er omfattende eller komplekst
+- innholdet er ett av flere steg i en prosess 
+- du skal varsle om noe som ikke krever at brukerne gjør noe, bruk heller [`Alert`](/no/components/docs/alert/overview) eller "ikke-modal" `Dialog`
+- du vil gi kort informasjon som brukerne kan velge om de vil se, bruk [`Popover`](/no/components/docs/popover/overview)
+
+Se også [mønsteret om systemvarsler](/no/patterns/systemnotifications#når-bruker-vi-modaler) for mer informasjon om når modal `Dialog` bør brukes.
+
+<Card data-color="info">
+  Mange kaller denne komponenten bare for «modal». I Designsystemet bruker vi `Dialog`, som er basert på det innebygde HTML-elementet `<dialog>`, og skiller mellom [modale og ikke-modale dialoger (nngroup.com)](https://www.nngroup.com/articles/modal-nonmodal-dialog/) basert på hvordan de oppfører seg.
+</Card>
+
+## Eksempel
+
+### Modal `Dialog`
+Eksempel på en modal dialog som tvinger brukerne til å ta stilling til noe før de kan fortsette å bruke siden. 
+
+<Story story="ModalDialog" />
+
+### Ikke-modal `Dialog`
+Ikke-modale dialoger er nyttige når brukerne skal kunne fortsette å jobbe samtidig som vinduet er åpent. [NB: Sørg for at elementer som får fokus ikke skjules bak dialogen](accessibility#ikke-modale-dialoger). 
+
+<Story story="NonModalDialog" />
+
+### `Dialog` som drawer
+
+Med `placement` vil `Dialog` oppføre seg som en såkalt "drawer" fra den posisjonen du setter.
+
+<Story story="Drawer" layout="block" />
+
+## Retningslinjer
+Begrens bruk av `Dialog` fordi det bryter flyten og forstyrrer brukerne. Ikke avbryt brukerne med mindre det er nødvendig. Avbrytelser forstyrrer arbeidsflyten og bør bare brukes når innholdet er viktig nok eller kan forhindre at brukerne gjør feil. Brukerne forstår kanskje ikke hvorfor dialogen dukker opp, hvordan den lukkes eller om de må gjøre noe. Dette gjelder særlig for brukere med konsentrasjonsvansker, nedsatt syn eller skjermleser.
+
+### Lukking av `Dialog`
+Sørg for at brukeren alltid har en synlig og enkel måte å lukke en `Dialog` på. Det vanligste er en lukkeknapp (X) øverst til høyre. Den skal være synlig selv om dialogen inneholder mye innhold og brukeren må scrolle. Hvis det ikke passer må du ha en annen knapp som kan lukke dialogen, for eksempel en avbryt-knapp.
+
+Vurder nøye om dialogen kan lukkes ved å klikke utenfor. For kritiske valg bør brukeren lukke dialogen aktivt.
+
+Når brukeren lukker dialogen uten å ta et aktivt valg, skal dette tilsvare det minst kritiske eller minst destruktive alternativet.
+
+## Tekst
+Overskriften skal gjøre det tydelig for brukerne at de må gjøre noe. Det kan være lurt at overskriften er et spørsmål.
+
+Innholdet må være kort, men ha informasjonen brukerne trenger for å ta et valg.  Bruk knappene til å gi brukerne en tydelig vei videre.  
+
+Gjør det tydelig hva som skjer når brukeren velger et alternativ, særlig hvis handlingen ikke kan angres.

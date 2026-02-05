@@ -52,6 +52,11 @@ export type TooltipProps = MergeRight<
      * This overrides the internal state of the tooltip.
      */
     open?: boolean;
+    /**
+     * Override if `aria-describedby` or `aria-labelledby` is used.
+     * By default, if the trigger element has no inner text, `aria-labelledby` is used.
+     */
+    type?: 'describedby' | 'labelledby';
   }
 >;
 
@@ -78,6 +83,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       autoPlacement = true,
       open,
       className,
+      type,
       ...rest
     },
     ref,
@@ -91,6 +97,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
     const mergedRefs = useMergeRefs([tooltipRef, ref]);
 
     const controlledOpen = open ?? internalOpen;
+    const tooltipId = id ?? randomTooltipId;
 
     const setOpen = () => {
       setInternalOpen(true);
@@ -129,7 +136,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
               safeAreaElement,
             ],
           }).then(({ x, y }) => {
-            tooltip.style.translate = `${x}px ${y}px`;
+            tooltip.style.translate = `${Math.round(x)}px ${Math.round(y)}px`;
           });
         });
       }
@@ -181,12 +188,13 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
     }
 
     const popoverProps = {
-      [version.startsWith('19') ? 'popoverTarget' : 'popovertarget']:
-        id ?? randomTooltipId,
+      [version.startsWith('19') ? 'popoverTarget' : 'popovertarget']: tooltipId,
       [version.startsWith('19')
         ? 'popoverTargetAction'
         : 'popovertargetaction']: 'show',
     };
+
+    const autoType = `aria-${triggerRef.current?.innerText?.trim() ? 'describedby' : 'labelledby'}`;
 
     return (
       <>
@@ -197,6 +205,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
           onMouseLeave={setClose}
           onFocus={setOpen}
           onBlur={setClose}
+          {...{ [type ? 'aria-' + type : autoType]: tooltipId }}
         >
           {children}
         </ChildContainer>
@@ -206,7 +215,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
           ref={mergedRefs}
           role='tooltip'
           className={cl('ds-tooltip', className)}
-          id={id ?? randomTooltipId}
+          id={tooltipId}
           popover='manual'
           {...rest}
         >

@@ -1,16 +1,19 @@
-import { Dialog, Heading, Tabs } from '@digdir/designsystemet-react';
+import { Button, Dialog, Heading, Tabs } from '@digdir/designsystemet-react';
 import { useMediaQuery } from '@internal/components';
 import { CogIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BorderRadiusInput } from '../border-radius-input/border-radius-input';
+import { ConfigPaste } from '../config-paste/config-paste';
 import { TokenModal } from '../token-modal/token-modal';
 import { ColorPage } from './color-page/color-page';
 import classes from './sidebar.module.css';
 
 export const Sidebar = () => {
   const { t } = useTranslation();
+  const configPasteDialogRef = useRef<HTMLDialogElement>(null);
+
   const [activePage, setActivePage] = useState<'colors' | 'dimensions'>(
     'colors',
   );
@@ -81,9 +84,14 @@ export const Sidebar = () => {
           </Tabs>
 
           <div className={classes.bottom} data-size='sm'>
-            <div>
-              <TokenModal />
-            </div>
+            <TokenModal />
+            <Button
+              onClick={() => configPasteDialogRef.current?.showModal()}
+              className={classes.configButton}
+              variant='secondary'
+            >
+              {t('configPaste.import-config')}
+            </Button>
           </div>
         </div>
       </div>
@@ -116,10 +124,29 @@ export const Sidebar = () => {
             </Tabs>
             <div className={classes.modalBottom}>
               <TokenModal />
+              <Button
+                onClick={() => configPasteDialogRef.current?.showModal()}
+                className={classes.configButton}
+                variant='secondary'
+              >
+                {t('configPaste.import-config')}
+              </Button>
             </div>
           </Dialog.Block>
         </Dialog>
       )}
+      <Dialog
+        ref={configPasteDialogRef}
+        closedby='any'
+        className={classes.configDialog}
+      >
+        <Dialog.Block>
+          <Heading level={2}>{t('configPaste.import-config')}</Heading>
+        </Dialog.Block>
+        <Dialog.Block>
+          <ConfigPaste />
+        </Dialog.Block>
+      </Dialog>
     </>
   );
 };

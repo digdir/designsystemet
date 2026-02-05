@@ -1,0 +1,94 @@
+<Story story="Preview" />
+
+<ReactComponentDocs />
+
+## Bruk
+
+```tsx
+import { Chip } from '@digdir/designsystemet-react';
+
+// som radio
+<Chip.Radio name="my-chip">Radio</Chip.Radio>;
+
+// som checkbox
+<Chip.Checkbox name="my-chip">Checkbox</Chip.Checkbox>;
+
+// som removable
+<Chip.Removable>Renovable</Chip.Removable>;
+
+// som button
+<Chip.Button>Button</Chip.Button>;
+```
+
+## Eksempel
+
+### `Chip.Checkbox`
+
+<Story story="CheckboxVariant" />
+
+### `Chip.Removable`
+
+Hugs `aria-label` dersom innhaldet i `Chip` ikkje forklarer at den kan fjernes.
+
+<Story story="Removable" />
+
+### `Chip.Button`
+
+<Story story="AsButton" />
+
+## HTML
+`Chip` bruker to forskjellige HTML-strukturer, men begge har klassenavnet `ds-chip`.
+
+### Som radio eller checkbox
+
+Legg merke til at vi legger `<input>` inni `<label>`, dette betyr at du ikke trenger å koble de sammen med `for` og `id`.
+
+```html
+<!-- radio -->
+<label class="ds-chip">
+  <input
+    class="ds-input"
+    type="radio"
+    value="bokmål"
+    name="my-radio"
+  >
+  Bokmål
+</label>
+
+<!-- checkbox -->
+<label class="ds-chip">
+  <input
+    class="ds-input"
+    type="checkbox"
+    value="value"
+    name="my-checkbox"
+  >
+  Checkbox
+</label>
+```
+
+### Som removable eller button
+
+En removable `Chip` bruker et `<button>` element, men det er lagt til `data-removable="true"` for å indikere at det er en removable `Chip`.
+Da vil et kryss vises til høyre i `Chip`, dette tegnes med CSS.
+
+```html
+<!-- button -->
+<button class="ds-chip" type="button">Tøm alle filtre</button>
+
+<!-- removable -->
+<button
+  class="ds-chip"
+  type="button"
+  data-removable="true"
+  aria-label="Slett Norge"
+>Norge</button>
+```
+
+## CSS variablar og data-attributter
+
+`Chip` bruker også `ds-input` internt når det er radio eller checkbox.
+
+<CssVariables />
+
+<CssAttributes />

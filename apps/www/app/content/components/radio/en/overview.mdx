@@ -1,0 +1,57 @@
+<Story story="Preview" />
+
+**Use `Radio` when**
+- the user must choose one of several options in a form
+
+**Avoid `Radio` when**
+- the user should be able to choose more than one option, use [`Checkbox`](/en/components/docs/checkbox/overview) instead
+
+## Example
+
+### Grouping
+
+Use a legend to ask the question, and include a description if additional explanation is needed.
+
+<Story story="GroupEn" />
+
+### With error
+
+If the user attempts to continue without answering a required question, the error message should apply to the entire group of options.
+
+<Story story="WithErrorEn" />
+
+## Guidelines
+
+Use `Radio` when users must select only one option. If they need to select more, use [`Checkbox`](/en/components/docs/checkbox/overview).
+
+There should not be more than seven options in one group. If users need more choices, consider using [`Suggestion`](/en/components/docs/suggestion/overview) or [`Select`](/en/components/docs/select/overview). If there is only one choice to make, a [`Switch`](/en/components/docs/switch/overview) or a [`Checkbox`](/en/components/docs/checkbox/overview) may be more suitable.
+
+### Sorting
+
+Sort options alphabetically unless there is a clear reason not to. Be careful about placing the most common option first if the question is personal or value-based, such as sexual orientation or political affiliation.
+
+### Placement
+
+Place radio buttons vertically whenever possible. This makes the list easier to scan and the options easier to read. For users who need to zoom in, horizontal layouts can be challenging.
+
+When using a horizontal layout, it must be clear which text belongs to which button. You can use a horizontal layout when there are only two options with short labels, such as “Yes” and “No”, or in a rating scale ranging from “strongly disagree” to “strongly agree”. [Likert scale (snl.no)](https://snl.no/Likert-skala).
+
+<Story story="InlineEn" />
+
+### Be cautious with preselected options
+Consider whether a preselected option is appropriate for the context. A preselected option can influence the user's ability to make an informed choice, and some users may experience it as manipulative or discriminatory.
+
+## Text
+A group with multiple options should always have a `legend` and option `labels`. Both can include a `description` to provide additional explanation. When the description is intended to help users understand the question and provide necessary information before they make a choice, it should be placed directly after the legend.
+
+
+<div className="dodont-row">
+  <DoDont story="DoIconEn">
+    Here, users receive all important and relevant information *before* making a choice. This follows a logical reading order and helps them feel confident in choosing the correct option.
+  </DoDont>
+  <DoDont story="DontIconEn">
+    Here, important and relevant information appears *after* the choice and is less visible to users. This breaks the logical reading order and may lead to incorrect selections.
+  </DoDont>
+</div>
+
+Answer options should be as short as possible, and each option should follow the same linguistic form.

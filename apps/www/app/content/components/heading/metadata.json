@@ -1,0 +1,13 @@
+{
+  "category": "typography",
+  "no": {
+    "title": "Heading",
+    "subtitle": "`Heading` brukes til å strukturere innhold og skape hierarki på siden."
+  },
+  "en": {
+    "title": "Heading",
+    "subtitle": "`Heading` is used to structure content and create hierarchy on a page."
+  },
+  "image": "Heading.svg",
+  "cssFile": "heading.css"
+}

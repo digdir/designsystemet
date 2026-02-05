@@ -2,12 +2,14 @@
 title: Systemvarsler
 sidebar_title: Systemvarsler
 category: Ferdig
-description: Systemvarsler brukes for å varsle brukeren enten om feil i systemet eller holde dem informert om viktige ting de bør få med seg.
+description: Slik hjelper du brukerne å forstå situasjoner i tjenesten som ikke skyldes deres egne handlinger.
+partners: Digdir, Nav, Skatteetaten ++
 date: 2024-12-10
+order: 40
 ---
 
 ## Innledning
-Vi bruker systemvarsler for å informere brukerne om feil i systemet, eller viktige hendelser de bør være oppmerksomme på. Systemvarsler er ikke knyttet til brukernes handlinger, slik valideringer er. Du finner informasjon om valideringsfeil i [artikkelen om brukerutløste feil](/no/patterns/errors). Denne artikkelen fokuserer på feil og varsler i systemet. 
+Vi bruker systemvarsler for å informere brukerne om feil i systemet, eller viktige hendelser de bør være oppmerksomme på. Systemvarsler er *ikke* knyttet til brukernes handlinger, slik valideringer er. Du finner informasjon om valideringsfeil i [artikkelen om brukerutløste feil](/no/patterns/errors). 
 
 Systemvarsler kan komme i ulike former, for eksempel som `alert` eller `modal`. Måten vi kommuniserer systemvarslene på avhenger av svaret på disse spørsmålene:
 - Hvilken type informasjon er det? 
@@ -113,9 +115,9 @@ Når en bruker prøver å få tilgang til en side som ikke eksisterer, kan vi og
 
 ### Når bruker vi modaler?
 
-Med en modal kan vi fange brukernes oppmerksomhet, samtidig som de fortsatt ser hvor de er. Men modaler forstyrrer også arbeidsflyten brukerne er i, så vi bør bare bruke dem når det er helt nødvendig. 
+Med en modal [`Dialog`](/no/components/docs/dialog/overview) kan vi fange brukernes oppmerksomhet, samtidig som de fortsatt ser hvor de er. Men modaler forstyrrer også arbeidsflyten brukerne er i, så vi bør bare bruke dem når det er helt nødvendig. 
 
-Vi anbefaler modal til systemvarsler som krever at brukerne må gjøre noe med en gang. Det kan for eksempel være når systemet av sikkerhetsgrunner ikke kan la deg være innlogget mer enn en viss tid når du ikke er aktiv. Modalen gir brukeren et valg om å fortsatt være innlogget.
+Vi anbefaler modal `Dialog` til systemvarsler som krever at brukerne må gjøre noe med en gang. Det kan for eksempel være når systemet av sikkerhetsgrunner ikke kan la deg være innlogget mer enn en viss tid når du ikke er aktiv. Modalen gir brukeren et valg om å fortsatt være innlogget.
 
 **Vi kan også bruke modal når**
 - det uansett er viktig at brukerne får med seg informasjonen 
@@ -137,7 +139,7 @@ Vi anbefaler modal til systemvarsler som krever at brukerne må gjøre noe med e
 
 
 ### Når bruker vi alert?
-`Alert` er laget for å gi en beskjed til brukerne. Den er ofte delt inn i ulike varianter ut fra hvor viktig beskjeden er. Vi kan vise alert øverst i grensesnittet (global kontekst), eller de kan vises nær feilen (lokal kontekst).  
+[`Alert`](/no/components/docs/alert/overview) er laget for å gi en beskjed til brukerne. Den er ofte delt inn i ulike varianter ut fra hvor viktig beskjeden er. Vi kan vise alert øverst i grensesnittet (global kontekst), eller de kan vises nær feilen (lokal kontekst).  
 
 **Vi kan bruke `alert` når**
 - feilen kun påvirker én del av systemet eller en mindre funksjon som ikke stopper brukerens mulighet til å fortsette andre oppgaver
@@ -203,7 +205,7 @@ Les mer på [uu-tilsynet](https://www.uutilsynet.no/wcag-standarden/413-statusbe
 
 
 ### Modaler
-Når en [dialog](https://storybook.designsystemet.no/?path=/docs/komponenter-dialog--docs) åpnes, er det viktig at den får fokus, slik at brukere umiddelbart kan interagere med innholdet. Ofte er det naturlig å sette fokus til det første interaktive elementet. I noen tilfeller kan det passe å fokusere på et annet element, for eksempel overskriften. Da må du bruke `tabindex="-1" `for å sikre at fokus kan settes på et ikke-interaktivt element. 
+Når en [dialog](/no/components/docs/dialog/overview) åpnes, er det viktig at den får fokus, slik at brukere umiddelbart kan interagere med innholdet. Ofte er det naturlig å sette fokus til det første interaktive elementet. I noen tilfeller kan det passe å fokusere på et annet element, for eksempel overskriften. Da må du bruke `tabindex="-1" `for å sikre at fokus kan settes på et ikke-interaktivt element. 
 
 **Eksempel:**
 

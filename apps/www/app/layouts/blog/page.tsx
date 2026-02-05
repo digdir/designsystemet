@@ -1,14 +1,10 @@
-import { ContentContainer, Error404 } from '@internal/components';
+import { Error404 } from '@internal/components';
 import { useTranslation } from 'react-i18next';
 import { isRouteErrorResponse, Outlet } from 'react-router';
 import type { Route } from './+types/layout';
 
 export default function BlogLayout() {
-  return (
-    <ContentContainer>
-      <Outlet />
-    </ContentContainer>
-  );
+  return <Outlet />;
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
@@ -27,7 +23,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <ContentContainer>
+    <div className='l-content-container' id='main'>
       <h1>{message}</h1>
       <p>{details}</p>
       {stack && (
@@ -35,6 +31,6 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
           <code>{stack}</code>
         </pre>
       )}
-    </ContentContainer>
+    </div>
   );
 }

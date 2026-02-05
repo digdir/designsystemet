@@ -1,0 +1,44 @@
+<Story story="Preview" />
+
+**Use the `Switch` when**
+- the choice controls a function or setting that can be turned on or off
+- the change takes effect immediately when the user toggles the switch
+
+**Avoid using the `Switch` when**
+- users are answering questions in forms, use [`Radio`](/en/components/docs/radio/overview) or [`Checkbox`](/en/components/docs/checkbox/overview) instead
+- content should switch between two categories, use [`ToggleGroup`](/en/components/docs/toggle-group/overview) instead
+- content should be filtered, use [`Chip`](/en/components/docs/chip/overview) instead
+
+## Example
+
+### Grouping
+Use [Fieldset](/en/components/docs/fieldset/overview) to group multiple `Switch` components together.
+
+<Story story="GroupEn" />
+
+### Right aligned
+Sometimes it can be useful to right-align a `Switch`, for example when it is placed in a table or within a fixed layout.
+
+<Story story="RightAligned2En" />
+
+## Guidelines
+Use the `Switch` to turn settings, functions, or notifications on or off. It provides users with a clear visual indication of state.
+
+## Text
+
+The text for a `Switch` must be short and precise, often just one or two words. It should make sense when you read the label aloud and add “on/off” afterwards.
+
+If you have several `Switch` components in a group, make sure the wording is consistent. Do not phrase them differently.
+
+The text should describe what the function relates to, not whether it is on or off. If the state is written directly in the label, it can become confusing and make it harder to understand the actual position of the switch.
+
+<div className="dodont-row">
+  <DoDont story="DoIconEn">
+    Describe what the function applies to.
+  </DoDont>
+  <DoDont story="DontIconEn">
+    Do not mention whether it is on or off.
+  </DoDont>
+</div>
+
+

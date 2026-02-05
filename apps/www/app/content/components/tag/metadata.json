@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "Tag",
+    "subtitle": "`Tag` er en merkelapp som kan brukes til å kategorisere elementer eller kommunisere fremdrift, status eller prosess. Tags kan gi brukeren et raskere overblikk over innholdet."
+  },
+  "en": {
+    "title": "Tag",
+    "subtitle": "`Tag` is a label that can be used to categorize items or communicate progress, status, or process. Tags can provide users with a quicker overview of content."
+  },
+  "image": "Tag.svg",
+  "cssFile": "tag.css"
+}

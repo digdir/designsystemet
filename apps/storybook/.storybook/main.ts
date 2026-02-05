@@ -1,10 +1,12 @@
-import path, { resolve } from 'node:path';
+import path, { dirname as nodeDirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { StorybookConfig } from '@storybook/react-vite';
 import * as R from 'ramda';
 import type { PropItem } from 'react-docgen-typescript';
-import remarkGfm from 'remark-gfm';
 import { defineConfig, mergeConfig } from 'vite';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = nodeDirname(__filename);
 
 const dirname =
   typeof __dirname !== 'undefined'
@@ -24,8 +26,6 @@ const config: StorybookConfig = {
         resolve: {
           alias: resolveAliases({
             '@assets': 'apps/storybook/assets',
-            '@doc-components': 'apps/storybook/docs-components',
-            '@story-utils': 'apps/storybook/story-utils',
           }),
         },
       }),
@@ -49,8 +49,6 @@ const config: StorybookConfig = {
     },
   },
   stories: [
-    '../stories/**/*.mdx',
-    '../stories/**/*.@(stories|chromatic).@(ts|tsx)',
     '../../../packages/*/!(node_modules)/**/*.mdx',
     '../../../packages/*/!(node_modules)/**/*.@(stories|chromatic).@(ts|tsx)',
   ],
@@ -76,19 +74,11 @@ const config: StorybookConfig = {
   },
   addons: [
     '@storybook/addon-a11y',
-    '@storybook/addon-links',
     '@storybook/addon-themes',
     'storybook-addon-pseudo-states',
     '@storybook/addon-vitest',
     {
       name: '@storybook/addon-docs',
-      options: {
-        mdxPluginOptions: {
-          mdxCompileOptions: {
-            remarkPlugins: [remarkGfm],
-          },
-        },
-      },
     },
   ],
   staticDirs: ['../assets'],
@@ -112,6 +102,9 @@ const config: StorybookConfig = {
         ...tagOptions?.chromatic,
       },
     };
+  },
+  core: {
+    disableTelemetry: true,
   },
 };
 

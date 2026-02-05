@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet-css",
-  "version": "1.6.0",
+  "version": "1.11.1",
   "description": "CSS for Designsystemet",
   "author": "Designsystemet team",
   "repository": {
@@ -10,6 +10,12 @@
   "homepage": "https://github.com/digdir/designsystemet/tree/main/packages/css",
   "license": "MIT",
   "exports": {
+    "./theme": {
+      "types": "./theme/types.d.ts",
+      "default": "./dist/theme/designsystemet.css"
+    },
+    "./theme.css": "./dist/theme/designsystemet.css",
+    "./theme/*": "./dist/theme/*",
     ".": {
       "types": "./types.d.ts",
       "default": "./dist/src/index.css"
@@ -18,13 +24,13 @@
   },
   "files": [
     "./types.d.ts",
+    "theme/types.d.ts",
     "dist"
   ],
   "publishConfig": {
     "access": "public"
   },
   "browserslist": [
-    "cover 90% in NO",
     "last 2 versions",
     "Firefox ESR",
     "not dead",
@@ -38,15 +44,20 @@
     "digdir"
   ],
   "scripts": {
-    "build": "rimraf dist && postcss ./src/*.css --base . --dir ./dist"
+    "build": "rimraf dist && pnpm build:theme && postcss ./src/*.css --base . --dir ./dist && postcss ./theme/*.css --dir ./dist/theme",
+    "build:theme": "tsx ../cli/bin/designsystemet.ts tokens build -t ../../design-tokens -o ./theme --experimental-tailwind"
+  },
+  "dependencies": {
+    "@digdir/designsystemet-types": "workspace:^"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.21",
-    "cssnano": "^7.1.1",
+    "autoprefixer": "^10.4.24",
+    "cssnano": "^7.1.2",
     "postcss": "^8.5.6",
     "postcss-cli": "^11.0.1",
     "postcss-import": "^16.1.1",
-    "postcss-nesting": "^13.0.2",
-    "rimraf": "^6.0.1"
+    "postcss-nesting": "^14.0.0",
+    "rimraf": "^6.1.2",
+    "tsx": "^4.21.0"
   }
 }

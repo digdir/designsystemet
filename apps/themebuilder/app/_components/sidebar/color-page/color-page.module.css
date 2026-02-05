@@ -1,6 +1,5 @@
-.group {
-  margin-bottom: 24px;
-  margin-top: -8px;
+.container hr {
+  margin-block: var(--ds-size-5);
 }
 
 .group:last-child {
@@ -22,7 +21,7 @@
 .colors {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: var(--ds-size-4);
 }
 
 .desc {
@@ -59,9 +58,12 @@
   font-weight: 500;
 }
 
-.separator {
-  margin-bottom: 20px;
-  height: 1px;
+.overridesSection {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.overridesBtn {
   width: 100%;
-  background-color: var(--ds-color-neutral-border-subtle);
 }

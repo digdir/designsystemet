@@ -1,0 +1,47 @@
+<Story story="Preview" />
+<ReactComponentDocs />
+
+## Bruk
+
+```tsx
+import { Tooltip, Button } from '@digdir/designsystemet-react';
+
+<Tooltip content="Hjelpetekst">
+  <Button>Hover meg</Button>
+</Tooltip>
+```
+
+## Eksempel
+
+### Med tekst
+
+<Story story="WithString" />
+
+### Plassering
+Bruk `placement`-prop'en for å justere plasseringen av `Tooltip`.
+
+<Story story="Placement" />
+
+## HTML
+`Tooltip` bruker en manuell [popover (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover).
+Du må selv koble på at hover åpner, fokusering åpner og at den lukkes igjen ved tap av fokus, hover eller <kbd>Esc</kbd>.
+
+I React bruker vi [`floating-ui` (floating-ui.com)](https://floating-ui.com/) for plassering, og dette er et bibliotek som også kan brukes i rene JavaScript-applikasjoner.
+
+For å style popoveren som en `Tooltip`, brukes klassen `ds-tooltip`.
+
+```html
+<button popovertarget="my-tooltip">Trigger</button>
+<span id="my-tooltip" popover="manual" class="ds-tooltip">
+  Hjelpetekst
+</span>
+```
+
+`data-placement` er brukt for å plassere pila riktig.
+Dette attributtet henger sammen med en "plugin" vi har laget for `floating-ui`.
+Den er portabel til andre som bruker `floating-ui`, og du finner [koden på github.com](https://github.com/digdir/designsystemet/blob/f6bf5a2c84baa2bfd92207510cb6c0a00573ea61/packages/react/src/components/popover/popover.tsx#L209).
+
+## CSS variablar og data-attributter
+<CssVariables />
+
+<CssAttributes />

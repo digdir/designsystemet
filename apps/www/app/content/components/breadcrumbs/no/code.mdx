@@ -1,0 +1,102 @@
+<Story story="Preview" />
+
+## Bruk
+
+Den siste lenka i `Breadcrumbs` blir automatisk markert med `aria-current="page"`.
+
+```tsx
+<Breadcrumbs aria-label="Du er her:">
+  <Breadcrumbs.Link aria-label="Tilbake til nivå 3">Nivå 3</Breadcrumbs.Link>
+  <Breadcrumbs.List>
+    <Breadcrumbs.Item>
+      <Breadcrumbs.Link href="https://designsystemet.no/">Nivå 1</Breadcrumbs.Link>
+    </Breadcrumbs.Item>
+    <Breadcrumbs.Item>
+      <Breadcrumbs.Link href="https://designsystemet.no/niva-2/">Nivå 2</Breadcrumbs.Link>
+    </Breadcrumbs.Item>
+  </Breadcrumbs.List>
+</Breadcrumbs>
+```
+
+## Eksempel
+
+### Tilbake-knapp
+
+Om du legg ein `Breadcrumbs.Link` direkte i `Breadcrumbs`, vil lenka visast som ein tilbake-knapp. Det er viktig at du er konsistent i løysinga di, og bruker anten tilbake-knapp eller sti, ikkje begge delar.
+
+<Story story="BackOnly" />
+
+### Berre sti
+
+Om du kun legg `Breadcrumbs.List` direkte i `Breadcrumbs`, vil denne alltid visast som ein sti.
+Dette betyr at du får lik visning på både mobil og desktop.
+
+<Story story="ListOnly" />
+
+### Sti eller tilbake-knapp basert på skjermbreidde
+
+Om du legg både ein `Breadcrumbs.Link` og ein `Breadcrumbs.List` direkte i `Breadcrumbs`, vil tilbake-knappen visast på skjermar smalare enn 650px, og stien visast på breiare skjermar.
+
+<Story story="MobileViewport" />
+
+## HTML
+
+Klassenavnet `ds-breadcrumbs` blir lagt på et `<nav>`-element.
+Dette elementet burde også ha ein `aria-label` som forklarer funksjonen til navigasjonen, til dømes "Du er her:".
+Du treng ikkje `aria-label` dersom du har ein synleg overskrift som forklarer funksjonen til navigasjonen.
+
+Dersom du kun vil vise sti, legg du `<ol>` direkte i `<nav>`-elementet. Chevron mellom elementa blir lagt til automatisk.
+
+**Det er viktig at siste side blir markert med `aria-current="page"`.**
+
+```html
+<nav class="ds-breadcrumbs" aria-label="Du er her:">
+  <ol>
+    <li>
+      <a href="#" class="ds-link">Nivå 1</a>
+    </li>
+    <li>
+      <a href="#" class="ds-link">Nivå 2</a>
+    </li>
+    <li>
+      <a href="#" aria-current="page" class="ds-link">Nivå 3</a>
+    </li>
+  </ol>
+</nav>
+```
+
+### Kun tilbake-knapp
+
+```html
+<nav class="ds-breadcrumbs" aria-label="Du er her:">
+  <a href="#" class="ds-link">Tilbake til nivå 2</a>
+</nav>
+```
+
+### Sti eller tilbake-knapp basert på skjermbreidde
+
+```html
+<nav aria-label="Du er her:" class="ds-breadcrumbs">
+  <a class="ds-link" href="#" aria-label="Tilbake til Nivå 3">Nivå 3</a>
+  <ol>
+    <li>
+      <a class="ds-link" href="#">Nivå 1</a>
+    </li>
+    <li>
+      <a class="ds-link" href="#">Nivå 2</a>
+    </li>
+    <li>
+      <a class="ds-link" href="#">Nivå 3</a>
+    </li>
+    <li>
+      <a class="ds-link" href="#" aria-current="page">Nivå 4</a>
+    </li>
+  </ol>
+</nav>
+```
+
+## CSS variablar og data-attributt
+
+<CssVariables />
+
+<CssAttributes />

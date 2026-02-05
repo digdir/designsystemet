@@ -1,12 +1,14 @@
 import no from '@internal/components/src/_locales/no';
+import themeModal from './no/theme-modal';
 
 export default {
   ...no,
   navigation: {
-    fundamentals: 'Grunnleggende',
+    intro: 'Intro',
+    fundamentals: 'Kom i gang',
     'best-practices': 'God praksis',
     patterns: 'Mønstre',
-    blog: 'Bloggen',
+    blog: 'Blogg',
     components: 'Komponenter',
     'theme-builder': 'Temabygger',
   },
@@ -42,11 +44,27 @@ export default {
     'build-theme': 'Bygg tema',
     documentation: 'Dokumentasjon',
   },
+  configPaste: {
+    title: 'Importer fra konfigurasjonsfil',
+    description:
+      'Har du allerede en konfigurasjonsfil? Lim den inn her for å velge og redigere et tema.',
+    placeholder: 'Lim inn innholdet fra designsystemet.config.json her...',
+    validate: 'Valider konfigurasjon',
+    'select-theme': 'Velg et tema å redigere',
+    'validation-error': 'Ugyldig konfigurasjonsfil',
+    'validation-success': 'Konfigurasjonen er gyldig! Velg et tema nedenfor.',
+    'no-themes': 'Ingen temaer funnet i konfigurasjonen',
+    'edit-theme': 'Rediger tema',
+    button: 'Fortsett fra konfigurasjonsfil',
+    'dialog-heading': 'Lim inn config',
+    'import-config': 'Importer config',
+  },
   tabs: {
-    overview: 'Oversikt',
+    examples: 'Eksempler',
     colorsystem: 'Fargesystem',
     colors: 'Farger',
     dimensions: 'Dimensjoner',
+    variables: 'Variabler',
   },
   colorPreview: {
     title: 'Se fargene dine i bruk',
@@ -97,34 +115,10 @@ export default {
     settings: 'Innstillinger',
     'admin-display': 'Her kan du administrere visning',
     'dark-mode': 'Mørk modus',
-    'display-mode': 'Visnigsmodus',
+    'display-mode': 'Visningsmodus',
+    'select-color': 'Velg farge',
   },
-  themeModal: {
-    'use-theme': 'Ta i bruk tema',
-    'theme-name': 'Gi temaet ditt et navn',
-    'theme-name-description':
-      'Navnet bør representere virksomheter eller produktet du skal profilere.',
-    'theme-name-label': 'Navn på tema',
-    'generate-css': 'Generer CSS',
-    'generating-css': 'Genererer CSS...',
-    'step-one':
-      'Kopier kodesnutten og kjør den på maskinen din for å generere design tokens (json-filer), eller lim den inn i Designsystemet sin',
-    'figma-plugin': 'Figma plugin (åpnes i ny fane)',
-    in: 'i',
-    'core-ui-kit': 'Core UI Kit (åpnes i ny fane)',
-    'to-update':
-      'for å oppdatere et tema direkte i Figma. Les mer om disse alternativene på',
-    'own-theme': 'eget tema (åpnes i ny fane)',
-    page: 'siden.',
-    format: 'Formatering for Windows',
-    'step-two': 'Kjør kodesnutten for å generere CSS variabler til kode.',
-    'help-heading': 'Noe som ikke fungerer?',
-    'help-description': 'Send oss en melding på',
-    slack: 'Slack (åpnes i ny fane)',
-    or: 'eller lag et',
-    'github-issue': 'Github issue (åpnes i ny fane)',
-    color: 'Farge',
-  },
+  themeModal,
   examples: {
     'example-1': 'Eksempel 1',
     'example-2': 'Eksempel 2',
@@ -138,6 +132,7 @@ export default {
     cancel: 'Avbryt',
     'remove-color': 'Fjern farge',
     'neutral-info': 'Neutral fargen kan ikke fjernes eller endres navn på.',
+    'severity-info': 'Severity fargen kan ikke fjernes eller endres navn på.',
     name: 'Navn',
     'name-placeholder': 'Skriv navnet her...',
     'name-description': 'Bruk kun bokstavene a-z, tall og bindestrek',
@@ -181,5 +176,10 @@ export default {
     medium: 'Medium',
     large: 'Large',
     full: 'Full',
+  },
+  overrides: {
+    heading: 'Fargeoverstyringer',
+    description:
+      'Overstyr spesifikke tokenfarger for lys og mørk modus. Sørg for å sjekke kontraster etter endringer.',
   },
 };

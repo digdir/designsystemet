@@ -1,0 +1,65 @@
+<Story story="Preview" layout="column" />
+<ReactComponentDocs />
+
+
+## Usage
+
+```tsx
+import { Textfield } from '@digdir/designsystemet-react';
+
+<Textfield label="Label" />
+```
+
+## Examples
+
+### With rows
+
+<Story story="WithRows" />
+
+### With prefix and suffix
+
+<Story story="WithAffixEn" />
+
+### With counter
+
+<Story story="WithCounterEn" />
+
+## HTML
+
+This is a composite component, which uses [`Field`](/en/components/docs/field/code), [`Input`](/en/components/docs/input/code) or [`Textarea`](/en/components/docs/textarea/code) and [`Label`](/en/components/docs/label/code) under the hood.
+
+Since this component is built from multiple components, we recommend reading the documentation for the underlying components to get a full overview of the HTML structure.
+
+```html
+<!-- input -->
+<div class="ds-field"> 
+<label 
+class="ds-label" 
+data-weight="medium" 
+for="my-input" 
+>Label</label> 
+<div class="ds-field-affixes"> 
+<input class="ds-input" type="text" id="my-input"> 
+</div>
+</div>
+
+<!-- textarea -->
+<div class="ds-field"> 
+<label 
+class="ds-label" 
+data-weight="medium" 
+for="my-textarea" 
+>Label</label> 
+<div class="ds-field-affixes"> 
+<textarea class="ds-input" type="text" id="my-textarea"> 
+</div>
+</div>
+```
+
+## CSS variables and data attributes
+`Textfield` is a composite component, with [`Field`](/en/components/docs/field/code), [`Input`](/en/components/docs/input/code) or [`Textarea`](/en/components/docs/textarea/code) and [`Label`](/en/components/docs/label/code).
+
+Here we only show `ds-input`'s variables and data attributes.
+<CssVariables />
+
+<CssAttributes />

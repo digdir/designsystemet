@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "Details",
+    "subtitle": "`Details` er en sammenleggbar komponent som lar brukeren vise eller skjule innhold."
+  },
+  "en": {
+    "title": "Details",
+    "subtitle": "`Details` is a collapsible component that allows the user to show or hide content."
+  },
+  "image": "Details.svg",
+  "cssFile": "details.css"
+}

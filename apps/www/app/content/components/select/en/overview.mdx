@@ -1,0 +1,42 @@
+<Story story="PreviewEn" />
+
+**Use `Select` when**
+* you need to display many options and the user can choose only one  
+* you need a compact way of presenting a long list of options
+
+**Avoid `Select` when**
+* you have only a few options and enough space — use [`Radio`](/en/components/docs/radio/overview) instead  
+* you are navigating between pages or sections in an application  
+* the user must select multiple options. Although HTML select supports this through the `multiple` attribute, it is not user-friendly, especially on mobile. We recommend `Checkbox` or `Suggestion` for a clearer and more accessible solution.
+
+## Example
+
+### Grouping
+
+Grouping helps organise options into categories, making long lists easier to understand and navigate.
+
+<Story story="WithOptgroupEn" />
+
+### Disabled
+
+Avoid disabling `Select` if you can. It may be difficult for users to understand why the field cannot be used. Read more about [why disabled states are problematic (nav.no)](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) and which alternatives exist.
+
+<Story story="DisabledEn" />
+
+### ReadOnly
+
+Use `readOnly` when you want to show a preselected value in a Select component without allowing the user to change it. This can be useful when the value is determined by the system or by an earlier step in a process and should not be editable.
+
+<Story story="ReadOnlyEn" />
+
+## Guidelines
+
+Use `Select` when there are 7 or more options. For fewer options, radio buttons may be easier for users. `Select` is especially user-friendly on mobile and provides good accessibility, as it follows the operating system’s native behaviour. It works well when the user must choose one option from a list. If users need to select multiple options or filter the list, consider using `Suggestion`.
+
+**Note:** [Gov.uk recommends avoiding `select`](https://design-system.service.gov.uk/components/select) in public digital services. Their user research shows that people often find the component difficult to use correctly. It may be better to ask additional questions to reduce the number of options. If you ask the right questions first, radio buttons may be a better choice.
+
+## Text
+
+The `Select` component must always have a label. Place the label and any description above the field to ensure good visibility on small screens and to avoid issues when error messages appear. Keep the label short, preferably on a single line.
+
+If a `Select` is placed inside a table and receives its label from the table header, you may hide the visual label. However, ensure the label text still makes sense, as screen readers will announce it.

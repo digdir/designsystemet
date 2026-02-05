@@ -1,5 +1,64 @@
 # Change Log
 
+## 1.11.0
+
+### Minor Changes
+
+- **Version `1.10.0` was released by accident, and we are skipping to `1.11.0`** ([#4392](https://github.com/digdir/designsystemet/pull/4392))
+  - Version `1.10.0` is deprecated on npm, and not accessible on Github. Use `1.11.0` or newer.
+
+- > ⚠️ **THIS PACKAGE IS DEPRECATED** ⚠️ ([#4366](https://github.com/digdir/designsystemet/pull/4366))
+  > Use `@digdir/designsystemet-css/theme` for default theme or make your own using the [Theme builder](https://theme.designsystemet.no/)
+
+### Patch Changes
+
+- Updated dependencies [[`4d48a81`](https://github.com/digdir/designsystemet/commit/4d48a815c67114f4ff3d102b7b271a343cd491c4)]:
+  - @digdir/designsystemet-types@1.11.0
+
+## 1.9.0
+
+### Patch Changes
+
+- Export `designsystemet.css` under `@digdir/designsystemet-theme/index.css` ([#4291](https://github.com/digdir/designsystemet/pull/4291))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.9.0
+
+## 1.8.0
+
+### Minor Changes
+
+- Move submodule `@digdir/designsystemet/types` to a new package `@digdir/designsystemet-types` and change all references. ([#4241](https://github.com/digdir/designsystemet/pull/4241))
+
+  After re-running `tokens build` downstream, this removes transitive dependencies on runtime dependencies on CLI tools like `commander` and `style-dictionary` which are never used in runtime, but are required for the CLI to function. It also makes code which doesn't use the CLI unaffected by our node version limitations (currently >= 22 due to `style-dictionary`).
+
+  `@digdir/designsystemet/types` is preserved for now as a deprecated re-export of `@digdir/designsystemet-types` to avoid breaking people's builds.
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4262](https://github.com/digdir/designsystemet/pull/4262))
+
+- Updated dependencies [[`c2faf2e`](https://github.com/digdir/designsystemet/commit/c2faf2ee545628ca03fef0409c7b5811edd22d74)]:
+  - @digdir/designsystemet-types@1.8.0
+
+## 1.7.3
+
+## 1.7.2
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4214](https://github.com/digdir/designsystemet/pull/4214))
+
+## 1.7.1
+
+## 1.7.0
+
+### Patch Changes
+
+- Update design-tokens to reflect changes made in `@digdir/designsystemet`. See changelog for changes ([#4105](https://github.com/digdir/designsystemet/pull/4105))
+
+## 1.6.1
+
 ## 1.6.0
 
 ### Patch Changes

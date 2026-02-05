@@ -1,0 +1,76 @@
+<Story story="Preview" />
+
+**Bruk `Checkbox` når**
+- brukerne skal kunne velge ett eller flere alternativer
+- brukerne skal bekrefte eller avkrefte noe, for eksempel at innholdet er lest og forstått
+
+**Unngå `Checkbox` når**
+- brukerne kun skal velge ett alternativ, bruk heller en [`Radio`](/no/components/docs/radio/overview)
+- brukerne har mange alternativer å velge mellom, bruk heller en [`Select`](/no/components/docs/select/overview) eller [`Suggestion`](/no/components/docs/suggestion/overview)
+- brukerne skal slå noe av eller på, bruk heller en [`Switch`](/no/components/docs/switch/overview)
+
+## Eksempel
+
+### Bekrefting med `Checkbox`
+
+Hvis brukerne skal bekrefte noe, men ikke velge noe, kan en `Checkbox` stå alene. For eksempel når brukerne skal bekrefte at noe er riktig, eller samtykke til vilkår.
+
+En `Checkbox` for samtykke skal alltid kreve en aktiv handling, du skal aldri forhåndsvelge boksen. Dette sikrer at samtykket er gitt frivillig.
+
+<Story story="OneOption" />
+
+### Gruppering
+
+De aller fleste ganger brukes `Checkbox` i grupper, der brukerne kan velge flere alternativer. `<fieldset>` som er rundt gruppen burde ha en tittel som forklarer hva valgene handler om.
+
+<Story story="Group" />
+
+### Med feil
+
+Når `Checkbox` brukes i grupper, skal feilmeldingen vises på `Fieldset`, så den blir samlet for hele gruppen.
+
+<Story story="WithError" />
+
+### Skrivebeskyttet Checkbox
+
+`Checkbox` støtter `readOnly`-attributtet for å gjøre feltet skrivebeskyttet, og gir en visuell indikasjon som skiller seg fra redigerbare felter. Selv om de ikke kan redigeres, er felter med `readOnly`-attributtet med i tabrekkefølgen, og informasjon blir med når skjemaet sendes inn.
+
+Vi unngår `readOnly` så langt det lar seg gjøre, fordi slike felter kan være forvirrende for noen brukere. Ikke alle vil forstå hvorfor de ikke får til å endre innholdet i feltet.
+
+<Story story="ReadOnly" />
+
+### Disabled
+
+Vi bør unngå at `Checkbox` er deaktivert (`disabled`) fordi det kan være vanskelig å oppfatte. Noen brukere vil ikke forstå hva valget sier eller hvorfor det ikke er klikkbart.
+Hvis en `Checkbox` eller gruppe med `Checkbox` ikke er relevant, bør du helst fjerne valgene fremfor å deaktivere dem. Tilby gjerne brukerne informasjon om hvorfor valgene ikke er tilgjengelige.
+
+Nav har en god forklaring på [hvorfor deaktiverte tilstander er problematisk (nav.no)](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) og hvilke alternativer som finnes.
+
+<Story story="Disabled" />
+
+## Retningslinjer
+
+Bruk `Checkbox` når brukerne kan velge ett eller flere alternativer.
+
+### Sorter alternativene
+
+Sorter svaralternativene alfabetisk hvis det ikke er en god grunn til å gjøre noe annet. Vær forsiktig med å la det mest brukte svaralternativet stå først hvis det er et personlig spørsmål eller et verdispørsmål, som for eksempel legning eller partitilhørighet.
+
+### Plassering
+
+Plasser helst svaralternativene vertikalt. Da blir det lettere å skanne listen og lese alternativene. For brukere som må forstørre teksten, er horisontale lister utfordrende.
+
+<div className="dodont-row">
+  <DoDont story="DoPlacement">
+    Plasser `Checkbox` vertikalt for bedre lesbarhet.
+  </DoDont>
+  <DoDont story="DontPlacement">
+    Unngå å plassere `Checkbox` horisontalt, da det reduserer lesbarheten.
+  </DoDont>
+</div>
+
+## Tekst 
+
+- Ledeteksten skal henge godt sammen med svaralternativene. Tenk på teksten som en samtale, og bruk du-form i ledeteksten og jeg-form i alternativene.
+- Få frem at brukerne kan velge flere alternativer, og presiser det hvis de bare kan velge et begrenset antall alternativer.
+- Svaralternativene skal alltid ha stor forbokstav. 

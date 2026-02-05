@@ -1,6 +1,5 @@
 import type { ButtonProps } from '@digdir/designsystemet-react';
 import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
-import { ContentContainer } from '@internal/components';
 import { PauseFillIcon, PlayFillIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import type React from 'react';
@@ -24,6 +23,7 @@ type ImageBannerProps = {
   buttons?: ImageBannerButtonProps[];
   link?: { text: string; href: string; prefix?: React.ReactNode };
   imgPosition?: 'left' | 'right';
+  imgFetchPriority?: 'high' | 'low' | 'auto';
   region?: React.ReactNode;
   regionPosition?: 'topLeft' | 'bottomLeft' | 'topRight' | 'bottomRight';
   fallbackImgSrc?: string;
@@ -51,6 +51,7 @@ const ImageBanner = ({
   link,
   imgPosition = 'left',
   imgAlt = '',
+  imgFetchPriority,
   headingLevel = 'h1',
   fallbackImgSrc,
   fallbackImgAlt,
@@ -77,9 +78,10 @@ const ImageBanner = ({
       className={cl(classes[backgroundColor], classes.section, className)}
       {...rest}
     >
-      <ContentContainer
+      <div
         className={cl(
           classes.container,
+          'l-content-container',
           imgPosition === 'right' ? classes.reverseContainer : '',
         )}
       >
@@ -122,13 +124,19 @@ const ImageBanner = ({
             </>
           )}
           {imgSrc && (
-            <img className={cl(classes.img)} src={imgSrc} alt={imgAlt} />
+            <img
+              className={cl(classes.img)}
+              src={imgSrc}
+              alt={imgAlt}
+              fetchPriority={imgFetchPriority}
+            />
           )}
           {fallbackImgSrc && (
             <img
               className={cl(classes.img, classes.fallbackImg)}
               src={fallbackImgSrc}
               alt={fallbackImgAlt}
+              fetchPriority={imgFetchPriority}
             />
           )}
         </div>
@@ -168,7 +176,7 @@ const ImageBanner = ({
 
           {children}
         </div>
-      </ContentContainer>
+      </div>
     </section>
   );
 };

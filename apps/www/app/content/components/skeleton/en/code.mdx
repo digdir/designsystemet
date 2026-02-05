@@ -1,0 +1,67 @@
+<Story story="Preview" />
+<ReactComponentDocs />
+
+## Usage
+
+```tsx
+import { Skeleton } from '@digdir/designsystemet-react';
+
+<Skeleton width={200} height={100} />
+```
+
+## Examples
+
+### Variants
+
+<Story story="Components" />
+
+### Usage Example
+
+<Story story="UsageExample" layout="column" />
+
+### Text Variant
+
+<Story story="TextEn" />
+
+## HTML
+
+Put the class name `ds-skeleton` on a `<span>` with `aria-hidden="true"`.
+
+You change the variant with `data-variant`.
+
+If you have the text variant, set `data-text` with as much text as you want it to imitate.
+In react we use a hyphen ("-") in `data-text`.
+The text variant should be in a `<p>` or heading element to get the correct font size.
+
+If you want to set the size you can do this with the `style` attribute, or with CSS.
+
+```html
+<span
+aria-hidden="true"
+class="ds-skeleton"
+data-variant="circle"
+style="width: 50px; height: 50px;"
+></span>
+
+<span
+aria-hidden="true"
+class="ds-skeleton"
+data-variant="rectangle"
+style="width: 100px; height: 50px;"
+></span>
+
+<p class="ds-paragraph" data-variant="default"> 
+  <span 
+  aria-hidden="true" 
+  class="ds-skeleton" 
+  data-text="----------" 
+  data-variant="text" 
+  ></span>
+</p>
+```
+
+## CSS variables and data attributes
+
+<CssVariables />
+
+<CssAttributes />

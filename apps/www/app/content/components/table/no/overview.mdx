@@ -1,0 +1,57 @@
+<Story story="Preview" />
+
+**Bruk `Table` når**
+- målet er å gjøre det enkelt for brukerne å sammenligne informasjon
+- data trenger en tydelig struktur i rader og kolonner
+- innholdet består av informasjon som kan sorteres
+
+**Unngå `Table` når**
+- formålet er å lage layout eller organisere innhold visuelt på en side
+- informasjonen passer bedre i liste- eller kortvisning
+- innholdet er svært begrenset, for eksempel bare én kolonne eller få datapunkter uten behov for sammenligning
+- tabellen blir vanskelig å lese på mobil fordi datamengden er stor
+
+## Eksempel
+
+### Zebra striper
+
+<Story story="Zebra" />
+
+### Med border
+Bruk `border` for å legge til en synlig kant rundt tabellen.
+Dette kan hjelpe brukerne med å skille tabellen fra annet innhold på siden, og gir en mer strukturert visning av dataene.
+
+<Story story="Border" />
+
+### Sortering
+Du kan vise at tabellen kan sorteres etter innholdet i en kolonne.
+
+- Du kan sortere i 3 retninger:
+  - `"none"` - ingen sortering
+  - `"ascending"` - stigende rekkefølge
+  - `"descending"` - synkende rekkefølge
+
+Dette gir brukeren visuell tilbakemelding på sorteringsstatus og gjør det mulig å implementere egendefinert sorteringslogikk.
+
+<Story story="Sortable" />
+
+### Fast kolonnebredde
+Fast bredde på kolonner er spesielt nyttig i tabeller med paginering eller annen dynamisk oppdatering av innhold, der stabil kolonnebredde gir bedre brukeropplevelse.
+
+<Story story='FixedTable' />
+
+### Tall i en tabell
+Når det er tall i en tabell som skal sammenlignes, plasser tallene til høyre i tabellfeltet.
+
+<Story story='Numbers' />
+
+## Retningslinjer
+Bruk `Table` når du skal organisere og vise data strukturert i rader og kolonner.
+- Innhold i tabeller bør være venstrejustert, med unntak av tall, som bør høyrejusteres for å gjøre det lettere å sammenligne tallverdier.
+- Bruk `<Table.HeaderCell>` i overskriftceller, ikke `<Table.Cell>`. En celle regnes som en overskrift dersom den beskriver innholdet i samme rad eller kolonne.
+- For å spare plass i tabellrader med flere handlinger, kan du bruke en meny dersom handlingene ikke må være synlige hele tiden.
+
+## Tekst 
+Unngå lange tekster i tabellceller. Hold innholdet kort og presist, slik at det er lett å skanne på tvers av rader og kolonner. Hvis du trenger å vise mer informasjon, kan du vurdere å lenke til en detaljside. Bruk overskrifter til å fortelle brukerne hva slags innhold de finner i radene og kolonnene.
+
+Som hovedregel skal innhold i celler være venstrejustert, slik at det blir lettere å lese og skanne informasjon. Unntaket er tall og valuta, og noen ganger skjemaelementer og knapper. 

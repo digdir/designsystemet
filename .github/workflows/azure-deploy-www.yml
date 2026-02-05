@@ -23,6 +23,8 @@ on:
         required: true
       AZURE_SUBSCRIPTION_ID:
         required: true
+      SLACK_INVITE_URL:
+        required: true
 
 permissions:
   id-token: write
@@ -47,7 +49,7 @@ jobs:
     outputs:
       fqdn: ${{ steps.fqdn.outputs.fqdn }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: az login (oidc)
         uses: azure/login@a457da9ea143d694b1b9c7c869ebb04ebe844ef5 # v2.3.0
@@ -60,7 +62,7 @@ jobs:
         run: az acr login --name ${{ env.ACR_NAME }}
 
       - name: build & push image
-        uses: docker/build-push-action@ca052bb54ab0790a636c9b5f226502c73d547a25 # v5
+        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6
         with:
           context: .
           file: ./Dockerfile
@@ -87,7 +89,7 @@ jobs:
           echo "pass=${PASS}" >> "$GITHUB_OUTPUT"
 
       - name: deploy (no mi; use registry creds)
-        uses: azure/container-apps-deploy-action@29ee19866ec987ededd70b8412d9ee241a9102d1 # v1
+        uses: azure/container-apps-deploy-action@8dff69dac3367c32ceb2690d8f13adbeab462703 # v2
         with:
           resourceGroup: ${{ env.RESOURCE_GROUP }}
           containerAppEnvironment: ${{ env.CONTAINERAPPS_ENV }}
@@ -98,7 +100,8 @@ jobs:
           registryPassword: ${{ steps.acr.outputs.pass }}
           targetPort: ${{ env.PORT }}
           ingress: external
-          environmentVariables: "PORT=${{ env.PORT }} HOST=0.0.0.0 APP_ENV=${{ inputs.environment }}"
+          environmentVariables: "PORT=${{ env.PORT }} HOST=0.0.0.0 APP_ENV=${{ inputs.environment }} SLACK_INVITE_URL=${{ secrets.SLACK_INVITE_URL }}"
+          location: "norwayeast"
 
       - name: fetch fqdn
         id: fqdn

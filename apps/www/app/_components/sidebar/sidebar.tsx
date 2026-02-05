@@ -1,6 +1,7 @@
 import { Button, Link, Paragraph } from '@digdir/designsystemet-react';
+import { ChevronRightLastIcon, XMarkIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { type HTMLAttributes, useState } from 'react';
+import { type HTMLAttributes, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router';
 import classes from './sidebar.module.css';
@@ -13,30 +14,62 @@ export type SidebarProps = {
     }[];
   };
   title: string;
+  hideCatTitle?: boolean;
+  /**
+   * mapped list of suffixes to it's category key
+   */
+  suffix?: {
+    [categoryKey: string]: string;
+  };
 } & HTMLAttributes<HTMLDivElement>;
 
-export const Sidebar = ({ cats, title, ...props }: SidebarProps) => {
+export const Sidebar = ({
+  cats,
+  title,
+  hideCatTitle = false,
+  suffix = {},
+  className,
+  ...props
+}: SidebarProps) => {
   const { t } = useTranslation();
-  const [showMenu, setShowMenu] = useState(false);
+  const closeMenuRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <div {...props}>
+    <div
+      className={cl(className, 'l-sidebar-left', classes.sidebar)}
+      {...props}
+    >
       <Button
         className={classes.toggleBtn}
         data-size='md'
         data-color='neutral'
         variant='secondary'
-        onClick={() => setShowMenu(!showMenu)}
-        aria-expanded={showMenu}
+        popoverTarget='sidebar-nav'
+        popoverTargetAction='show'
       >
-        {showMenu ? t('sidebar.hide') : t('sidebar.show')}{' '}
-        {t(`sidebar.sidebar`)}
+        {t('sidebar.show')} {t(`sidebar.sidebar`)}
+        <ChevronRightLastIcon aria-hidden fontSize={26} />
       </Button>
 
-      <nav className={cl(classes.menu, showMenu && classes.activeMenu)}>
-        <Paragraph data-size='md' className={classes.title}>
-          {t(`sidebar.${title}`, title)}
-        </Paragraph>
+      <nav popover='auto' id='sidebar-nav' className={cl(classes.menu)}>
+        <Button
+          data-color='neutral'
+          ref={closeMenuRef}
+          icon={true}
+          popoverTarget='sidebar-nav'
+          popoverTargetAction='hide'
+          variant='secondary'
+          aria-label={t('header.close-menu')}
+          className={classes.closeButton}
+        >
+          <XMarkIcon aria-hidden fontSize={26} />
+          {/* {t('sidebar.hide')} {t(`sidebar.sidebar`)} */}
+        </Button>
+        {hideCatTitle ? null : (
+          <Paragraph data-size='md' className={classes.title}>
+            {t(`sidebar.${title}`, title)}
+          </Paragraph>
+        )}
         <ul className={classes.list}>
           {Object.entries(cats).map(([key, value]) => {
             if (!value.length) {
@@ -44,7 +77,7 @@ export const Sidebar = ({ cats, title, ...props }: SidebarProps) => {
             }
             return (
               <li key={key} className={classes.listGroup}>
-                <Paragraph asChild data-size='md'>
+                <Paragraph asChild>
                   <div className={classes.innerTitle}>
                     {t(`sidebar.categories.${key}`, key)}
                   </div>
@@ -58,9 +91,9 @@ export const Sidebar = ({ cats, title, ...props }: SidebarProps) => {
                         <Paragraph asChild data-size='sm'>
                           <Link asChild>
                             <NavLink
-                              to={url}
+                              to={url + (suffix[key] || '')}
                               className={cl(classes.link)}
-                              onClick={() => setShowMenu(false)}
+                              onClick={() => closeMenuRef.current?.click()}
                             >
                               {t(`sidebar.items.${item.title}`, item.title)}
                             </NavLink>

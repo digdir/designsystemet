@@ -1,0 +1,23 @@
+{
+  "$schema": "packages/cli/dist/config.schema.json",
+  "outDir": "design-tokens",
+  "clean": true,
+  "themes": {
+    "designsystemet": {
+      "colors": {
+        "main": {
+          "accent": "#0062BA"
+        },
+        "support": {
+          "brand1": "#0D7A5F",
+          "brand2": "#5B3FA0"
+        },
+        "neutral": "#24272B"
+      },
+      "borderRadius": 4,
+      "typography": {
+        "fontFamily": "Inter"
+      }
+    }
+  }
+}

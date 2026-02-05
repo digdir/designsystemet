@@ -1,0 +1,114 @@
+<Story story="Preview" />
+<ReactComponentDocs />
+
+## Bruk
+
+`Dropdown` bruker [`Popover`](/no/components/docs/popover/code) internt.
+
+```tsx
+import { Dropdown } from '@digdir/designsystemet-react';
+
+<>
+{/* med context */}
+<Dropdown.TriggerContext> 
+  <Dropdown.Trigger>Trigger</Dropdown.Trigger> 
+  <Dropdown> 
+    <Dropdown.Heading>Heading</Dropdown.Heading> 
+    <Dropdown.List> 
+      <Dropdown.Item> 
+        <Dropdown.Button>Item</Dropdown.Button> 
+      </Dropdown.Item> 
+    </Dropdown.List> 
+  </Dropdown>
+</Dropdown.TriggerContext>
+
+{/* uten context */}
+<Button popovertarget="my-dropdown">Trigger</Button>
+<Dropdown id="my-dropdown"> 
+  <Dropdown.Heading>Heading</Dropdown.Heading> 
+  <Dropdown.List> 
+    <Dropdown.Item> 
+      <Dropdown.Button>Item</Dropdown.Button>
+    </Dropdown.Item> 
+  </Dropdown.List>
+</Dropdown>
+</>
+```
+
+### React og `popovertarget`
+
+Når du bruker `popover` uten `Dropdown.TriggerContext`, kobler du selv sammen utløseren og `popover`.
+Da brukes `popovertarget` i små bokstaver, slik at alle versjoner av React korrekt gjengir attributtet.
+Når du bruker `@digdir/designsystemet-react` utvider vi `@types/react-dom` til å akseptere dette.
+
+### Polyfill
+
+`Dropdown` bruker [Popover API (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover). Dette apiet er klassifisert som [Baseline: 
+Newly available (mozilla.org)](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) fra april 2024, 
+med Firefox som siste nettleser la det til. I noen tilfeller kan en oppleve at brukere av ulike grunner er låst til eldre nettleserversjoner, og da kan det være aktuelt å legge til en [Popover-Polyfill (github.com)](https://github.com/oddbird/popover-polyfill) for å sikre at `Dropdown` fungerer for alle.
+
+## Eksempel
+
+### Kontrollert
+
+Dersom du sender inn `open`, så bruker du `Dropdown` kontrollert. Du kan bruke `onClose` for å få beskjed når `Dropdown` vil lukkes.
+
+Merk at vi ikke bruker `onClick` på triggeren, dropdownen håndterer dette internt on sendet til `onOpen` og `onClose`.
+
+<Story story="Controlled" />
+
+### Uten `TriggerContext`
+
+`Dropdown` bruker popover APIet, så du kan bruke `Dropdown` uten `Dropdown.Trigger`.
+Du må da legge til `popovertarget={id}` på `Dropdown`, og `id` på `Dropdown`.
+
+<Story story="WithoutTrigger" />
+
+## HTML
+
+Du kan bruke native popover-api direkte i HTML.
+Dette kan brukes uten JavaScript, dersom du ikke vil polyfille.
+
+Merk deg at elementet med `popover="manual"` bruker to klasser, `ds-popover` og `ds-dropdown`.
+Du velger selv om du vil bruke `popover="manual"` eller bare `popover` for å åpne dropdownen.
+
+[Popover API (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using)
+
+```html
+<button
+  class="ds-button"
+  data-variant="primary"
+  type="button"
+  popovertarget="dropdown"
+>Dropdown</button>
+<div
+  class="ds-popover ds-dropdown"
+  id="dropdown"
+  popover="manual"
+  data-variant="default"
+>
+  <ul>
+    <li>
+      <button
+        class="ds-button"
+        data-variant="tertiary"
+        type="button"
+      >Item</button>
+    </li>
+  </ul>
+</div>
+```
+
+
+## CSS variabler og data-attributter
+
+<CssVariables />
+
+<CssAttributes />
+
+### Referanser
+
+Vi bruker `ul` og `li` tags i dropdownen, valget er basert på disse:
+
+- [https://www.w3.org/WAI/tutorials/menus/flyout/#flyoutnavkbbtn](https://www.w3.org/WAI/tutorials/menus/flyout/#flyoutnavkbbtn)
+- [https://www.w3.org/WAI/ARIA/apg/patterns/menu-button](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button)

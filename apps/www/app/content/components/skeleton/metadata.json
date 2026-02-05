@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "Skeleton",
+    "subtitle": "`Skeleton` brukes for å vise at innhold på en side er i ferd med å lastes inn. Den gir brukeren et visuelt hint om hvordan innholdet til slutt vil se ut."
+  },
+  "en": {
+    "title": "Skeleton",
+    "subtitle": "`Skeleton` is used to indicate that content on a page is loading. It provides the user with a visual hint of what the content will eventually look like."
+  },
+  "image": "Skeleton.svg",
+  "cssFile": "skeleton.css"
+}

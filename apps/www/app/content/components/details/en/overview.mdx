@@ -1,0 +1,37 @@
+<Story layout="block" story="Preview" />
+
+**Use `Details` when**
+
+- you want to provide information that is only relevant to some users
+- you want to give examples or answer frequently asked questions
+- it should be up to the user whether they choose to read the content
+
+**Avoid `Details` when**
+- you need to show important content that everyone should see
+- you need to display an action button
+- you need to summarise error messages, use [`ErrorSummary`](/en/components/docs/error-summary/overview) instead
+
+<Card data-color="info">
+  `Details` is the same pattern that many know as an *accordion*. The name comes from the built-in HTML `<details>` element, which provides good accessibility and semantics without additional JavaScript.
+</Card>
+
+## Example
+
+You can use `Details` inside a card to give the content a framed appearance. This works well when `Details` does not span the full width of the page, or when it contains only a single line.
+
+<Story layout="block" story="InCardWithColorEn" />
+
+## Guidelines
+Large amounts of text can be demanding for many users. The `Details` component allows users to decide for themselves what is relevant to read. However, you should not use `Details` to hide content just to make the page look tidier. When content is hidden, there is a risk that users will not notice it at all. Carefully consider whether the content really needs to be hidden, and be clear about why you are doing so.
+
+### Avoid nested lists
+
+Do not place one `Details` inside another. Nested lists can make it difficult for users to understand what is open and what is closed, especially when several levels can be expanded at once.
+
+## Text
+
+Make sure the heading clearly describes what the `Details` contains.  Headings can strongly influence whether users find what they need, whether the content is read, and whether it is considered accessible to all.
+
+“Show more” or “Read more here” are not good enough headings. If you have many expandable sections, consider adding a main heading or thematic heading above the entire list.
+
+Keep the content inside `Details` short so it is easy to relate to the heading. If the content is too long, divide it into several `Details`. For very large amounts of content, it may be better to create separate pages.

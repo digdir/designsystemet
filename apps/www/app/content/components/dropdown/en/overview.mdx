@@ -1,0 +1,26 @@
+<Story story="Preview" />
+
+**Use `Dropdown` when**
+- you want to offer multiple options without taking up much space in the interface
+- the options are secondary but should still be easily accessible
+
+**Avoid `Dropdown` when**
+- an action is primary or frequently used; use a visible [`Button`](/en/components/docs/button/overview) instead
+- there is only one option, as a dropdown adds unnecessary complexity
+
+## Example
+
+### With icons
+
+You can use icons together with text in the dropdown items:
+
+<Story story="Icons" />
+
+## Guidelines
+
+`Dropdown` does not create a semantic menu, but provides the foundation for building one yourself. Read the ["Menu and Menubar Pattern" on w3.org](https://www.w3.org/WAI/ARIA/apg/patterns/menubar/) for more information on how to create accessible menus.
+
+- Use `Dropdown` for actions or navigation that do not need to be visible at all times  
+- Keep the number of items manageable  
+- Use headings to group related items  
+- Avoid multiple levels of dropdowns (nested menus)

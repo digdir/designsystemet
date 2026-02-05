@@ -1,0 +1,52 @@
+<Story story="Preview" />
+<ReactComponentDocs />
+
+## Use
+
+```tsx
+import { Tabs } from '@digdir/designsystemet-react';
+
+<Tabs defaultValue="tab1">
+  <Tabs.List>
+    <Tabs.Tab value="tab1">Tab 1</Tabs.Tab>
+    <Tabs.Tab value="tab2">Tab 2</Tabs.Tab>
+  </Tabs.List>
+  <Tabs.Panel value="tab1">Content 1</Tabs.Panel>
+  <Tabs.Panel value="tab2">Content 2</Tabs.Panel>
+</Tabs>
+```
+
+## Example
+
+### Icons only
+
+In the example below, we have added [`Tooltip`](/en/components/docs/tooltip/code) around `Tabs.Tab` to provide descriptive text for the icons.
+
+<Story story="IconsOnlyEn" />
+
+### Controlled
+
+<Story story="Controlled" />
+
+### HTML
+You can use [u-tabs (u-elements.github.io)](https://u-elements.github.io/u-elements/elements/u-tabs), which is a web component that implements tabs.
+Add the class name `ds-tabs`.
+
+```html
+<u-tabs class="ds-tabs">
+  <u-tablist>
+    <u-tab>Tab 1</u-tab>
+    <u-tab>Tab 2</u-tab>
+  </u-tablist>
+  <u-tabpanel>Panel 1</u-tabpanel>
+  <u-tabpanel>Panel 2</u-tabpanel>
+</u-tabs>
+```
+
+We recommend using `<u-tabs>`, and not building your own tabs from scratch, to ensure good accessibility and functionality.
+
+## CSS variables and data attributes
+
+<CssVariables />
+
+<CssAttributes />

@@ -1,0 +1,47 @@
+<Story story="Preview" />
+<ReactComponentDocs />
+
+## Bruk
+
+```tsx
+import { List } from '@digdir/designsystemet-react';
+
+<List.Unordered>
+  <List.Item>Item</List.Item>
+</List.Unordered>
+```
+
+## Eksempel
+
+### Usortert liste
+
+<Story story="Unordered" layout="column" />
+
+### Sortert liste
+
+<Story story="Ordered" layout="column" />
+
+## HTML
+
+Du bruker enten `<ul>` eller `<ol>` med klassenavnet `ds-list`.
+`<li>` brukes for hvert listepunkt, og trenger ingen klassenavn.
+
+```html
+<!-- usortert liste -->
+<ul class="ds-list">
+  <li>Item</li>
+  <li>Item</li>
+</ul>
+
+<!-- sortert liste -->
+<ol class="ds-list">
+  <li>Item</li>
+  <li>Item</li>
+</ol>
+```
+
+## CSS variabler og data-attributter
+
+<CssVariables />
+
+<CssAttributes />

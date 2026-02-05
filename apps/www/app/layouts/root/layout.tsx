@@ -1,11 +1,6 @@
 import { SkipLink } from '@digdir/designsystemet-react';
 import type { FooterLinkListItemProps } from '@internal/components';
-import {
-  ContentContainer,
-  Error404,
-  Footer,
-  Header,
-} from '@internal/components';
+import { Error404, Footer, Header } from '@internal/components';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
 import { isRouteErrorResponse, Outlet, useRouteLoaderData } from 'react-router';
@@ -71,7 +66,7 @@ export default function RootLayout() {
         logoLink={`/${lang === 'no' ? 'no' : lang === 'en' ? 'en' : 'no'}`}
         themeSwitcher
       />
-      <main id='main'>
+      <main>
         <Outlet />
       </main>
       <Footer
@@ -118,7 +113,7 @@ const ErrorWrapperRoot = ({
         themeSwitcher
       />
       <main id='main'>
-        <ContentContainer>{children}</ContentContainer>
+        <div className='l-content-container'>{children}</div>
       </main>
       <Footer centerLinks={centerLinks} rightLinks={rightLinks} />
     </>

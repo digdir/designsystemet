@@ -1,0 +1,40 @@
+<Story story="Preview" />
+
+**Use `Chip` when**
+- users need to filter information, for example in lists or tables
+- active filters should be displayed
+
+**Avoid `Chip` when**
+- you need to show status or numbers, use [`Badge`](/en/components/docs/badge/overview) instead
+- content should be labelled with a non-interactive category or topic, use [`Tag`](/en/components/docs/tag/overview) instead
+- you are creating menus or navigation elements
+
+## Example
+
+### `Chip.Checkbox`
+
+`Chip.Checkbox` can be used as an alternative to `Checkbox`.
+
+<Story story="CheckboxVariant" />
+
+### `Chip.Removable`
+
+`Chip.Removable` includes a cross icon indicating that the filter can be removed.  
+
+<Story story="Removable" />
+
+### `Chip.Button`
+
+`Chip.Button` can be used as an alternative to `Button`.
+
+<Story story="AsButton" />
+
+## Guidelines
+
+`Chip` allows users to control how they want to display content.
+
+Avoid placing `Chip` vertically. If you need to show options stacked vertically, use [`Checkbox`](/en/components/docs/checkbox/overview) or [`Radio`](/en/components/docs/radio/overview) instead. A group of `Chip` components may wrap across multiple lines.
+
+## Text
+
+`Chip` should contain as few words as possible, preferably just one or two.

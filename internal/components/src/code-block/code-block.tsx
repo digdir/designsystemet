@@ -1,8 +1,12 @@
-import { Button } from '@digdir/designsystemet-react';
+import { Button, Skeleton } from '@digdir/designsystemet-react';
+import { ClipboardCheckmarkIcon, FilesIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
-import { useState } from 'react';
+import { themes } from 'prism-react-renderer';
+import { Suspense, use, useEffect, useMemo, useState } from 'react';
 import { CodeBlock as ReactCodeBlock } from 'react-code-block';
+import { useTranslation } from 'react-i18next';
 import classes from './code-block.module.css';
+import { isPrettifySupported, prettifyCode } from './prettify';
 
 export type CodeBlockProps = {
   children: string;
@@ -36,37 +40,103 @@ export type CodeBlockProps = {
     | string;
 };
 
-export const CodeBlock = ({
+/* This component uses "use", it needs to be wrapped in Suspense */
+const CodeBlockContent = ({
   children,
   className,
   language = 'text',
 }: CodeBlockProps) => {
+  // Initial prettify promise for Suspense (only runs once on mount)
+  const prettifyPromise = useMemo(() => {
+    if (isPrettifySupported(language)) {
+      return prettifyCode(children, language);
+    }
+    return Promise.resolve(children);
+  }, []);
+
+  const initialText = use(prettifyPromise);
+
+  const [text, setText] = useState(initialText);
+  const [colorScheme, setColorScheme] = useState<string | null>('dark');
+
+  useEffect(() => {
+    if (isPrettifySupported(language)) {
+      prettifyCode(children, language).then((pretty) => {
+        setText(pretty);
+      });
+    } else {
+      setText(children);
+    }
+  }, [children, language]);
+
+  useEffect(() => {
+    // Set initial color scheme
+    setColorScheme(
+      document?.documentElement?.getAttribute('data-color-scheme'),
+    );
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        const currentColorScheme = (
+          mutation.target as HTMLElement
+        ).getAttribute('data-color-scheme');
+        setColorScheme(currentColorScheme);
+      });
+    });
+
+    // Observe document.documentElement for data-color-scheme changes
+    if (document?.documentElement) {
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['data-color-scheme'],
+      });
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <ReactCodeBlock code={children} language={language}>
-      <div className={classes.codeBlockWrapper}>
-        <ReactCodeBlock.Code
-          data-color-scheme='dark'
-          className={cl(classes.codeBlock, className)}
-        >
+    <ReactCodeBlock
+      code={text}
+      language={language}
+      theme={colorScheme === 'dark' ? themes.vsDark : themes.vsLight}
+    >
+      <div className={classes.codeBlockWrapper} data-color-scheme={colorScheme}>
+        <div className={classes.toolbar}>
+          <CopyButton text={text} />
+        </div>
+        <ReactCodeBlock.Code className={cl(classes.codeBlock, className)}>
           <code>
             <ReactCodeBlock.LineContent>
               <ReactCodeBlock.Token />
             </ReactCodeBlock.LineContent>
           </code>
         </ReactCodeBlock.Code>
-        <div data-color-scheme='dark' className={classes.toolbar}>
-          <CopyButton text={children} />
-        </div>
       </div>
     </ReactCodeBlock>
   );
 };
 
+export const CodeBlock = ({
+  children,
+  className,
+  language = 'text',
+}: CodeBlockProps) => {
+  return (
+    <Suspense fallback={<Skeleton height={120} />}>
+      <CodeBlockContent className={className} language={language}>
+        {children}
+      </CodeBlockContent>
+    </Suspense>
+  );
+};
+
 const CopyButton = ({ text }: { text: string }) => {
-  const [toolTipText, setToolTipText] = useState('Kopier');
+  const { t } = useTranslation();
+  const [copied, setCopied] = useState('');
 
   const onButtonClick = () => {
-    setToolTipText('Kopiert!');
+    setCopied(classes.copied);
     navigator.clipboard.writeText(text).catch((reason) => {
       throw Error(String(reason));
     });
@@ -75,14 +145,18 @@ const CopyButton = ({ text }: { text: string }) => {
     <>
       {/* @ts-ignore */}
       <Button
-        onMouseEnter={() => setToolTipText('Kopier')}
+        onMouseLeave={() => setCopied('')}
         onClick={() => onButtonClick()}
         className={classes.copyButton}
-        aria-label='Kopier kodesnutt'
         data-color='neutral'
-        data-size='2xs'
+        data-size='sm'
+        variant='tertiary'
       >
-        {toolTipText}
+        <span className={cl(classes.stack, copied)}>
+          <FilesIcon aria-hidden />
+          <ClipboardCheckmarkIcon aria-hidden />
+        </span>
+        {t('live-component.copy', 'Copy')}
       </Button>
     </>
   );

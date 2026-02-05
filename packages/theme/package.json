@@ -1,8 +1,9 @@
 {
   "name": "@digdir/designsystemet-theme",
-  "version": "1.6.0",
+  "version": "1.11.0",
   "description": "Predefined themes for Designsystemet",
   "author": "Designsystemet team",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/digdir/designsystemet.git"
@@ -17,6 +18,7 @@
     "./tailwind": {
       "default": "./src/themes/designsystemet.tailwind.css"
     },
+    "./index.css": "./src/themes/designsystemet.css",
     "./*": "./brand/*",
     "./digdir/*": "./brand/*",
     "./configs/*": "./configs/*"
@@ -27,17 +29,17 @@
     "configs/**",
     "src/themes/**"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "designsystemet:tokens-create": "pnpm designsystemet tokens create --config ./configs/designsystemet.config.json",
     "designsystemet:tokens-build": "pnpm designsystemet tokens build --config ./configs/designsystemet.config.json -t ../../design-tokens -o ./src/themes --clean --experimental-tailwind",
     "designsystemet:tokens-preview": "pnpm --filter @digdir/designsystemet run update:preview-tokens",
     "update:theme": "pnpm designsystemet:tokens-create && pnpm designsystemet:tokens-build && pnpm designsystemet:tokens-preview"
   },
+  "dependencies": {
+    "@digdir/designsystemet-types": "workspace:^"
+  },
   "devDependencies": {
-    "rimraf": "^6.0.1",
+    "rimraf": "^6.1.2",
     "@digdir/designsystemet": "workspace:^"
   }
 }

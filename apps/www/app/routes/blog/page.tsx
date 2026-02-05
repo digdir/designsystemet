@@ -2,6 +2,7 @@ import { join } from 'node:path';
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import cl from 'clsx';
 import { useTranslation } from 'react-i18next';
+import { AvatarStack } from '~/_components/avatar-stack/avatar-stack';
 import { Image } from '~/_components/image/image';
 import { RRLink } from '~/_components/link';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
@@ -78,41 +79,75 @@ export default function Blog({
   const { t } = useTranslation();
 
   return (
-    <div className={classes.main}>
+    <div className={cl('l-breakout-grid u-rich-text', classes.content)}>
+      <img
+        draggable='false'
+        className={classes.decoration}
+        src='/img/figures/third.svg'
+        alt=''
+        data-variant='1'
+      />
+      <img
+        draggable='false'
+        className={classes.decoration}
+        src='/img/figures/third.svg'
+        alt=''
+        data-variant='2'
+      />
       <div className={classes.intro}>
-        <Heading level={1} data-size='xl'>
+        <Heading level={1} data-size='lg'>
           {title}
         </Heading>
-        <Paragraph variant='long'>{description}</Paragraph>
-        <Paragraph data-size='sm' className={classes.meta}>
-          <span>{formatDate(date, lang)}</span>
-          <span aria-hidden className={classes.metaSquare} />
-          <span>{author}</span>
+        <Paragraph className={classes.ingress} data-size='lg' variant='long'>
+          {description}
+        </Paragraph>
+        <Paragraph data-size='sm' className={classes.meta} asChild>
+          <span>
+            <a href='#article-contributors' aria-label={t('contributors')}>
+              <AvatarStack authors={author} expandable='fixed' />
+            </a>
+            <span className={classes.authors}>{author}</span>
+            <span className={classes.date}>{formatDate(date, lang)}</span>
+          </span>
         </Paragraph>
       </div>
       <Image
+        className={classes.featuredImage}
         src={imageSrc}
         alt={imageAlt}
         caption={imageCaption}
         boxShadow={false}
       />
-      <div className={cl(classes.content, 'u-rich-text')}>
-        <MDXComponents code={code} />
-        <div className={classes.wantToWrite} data-color='brand3'>
-          <Heading level={3} data-size='xs'>
-            {t('blog.write.title')}
-          </Heading>
-          <Paragraph data-size='sm'>
-            {t('blog.write.description')}
-            <RRLink to='https://designsystemet.no/slack' target='_blank'>
-              {t('blog.write.slack')}
-            </RRLink>{' '}
-            {t('blog.write.or')}{' '}
-            <RRLink to='mailto:designsystem@digdir.no' target='_blank'>
-              {t('blog.write.email')}
-            </RRLink>
-          </Paragraph>
-        </div>
+
+      <MDXComponents code={code} />
+      <img
+        draggable='false'
+        className={classes.decoration}
+        src='/img/figures/third.svg'
+        alt=''
+        data-variant='3'
+      />
+      <img
+        draggable='false'
+        className={classes.decoration}
+        src='/img/figures/third.svg'
+        alt=''
+        data-variant='4'
+      />
+      <div className={classes.wantToWrite} data-color='brand1'>
+        <Heading level={3} data-size='xs'>
+          {t('blog.write.title')}
+        </Heading>
+        <Paragraph data-size='sm'>
+          {t('blog.write.description')}
+          <RRLink to='https://designsystemet.no/slack' target='_blank'>
+            {t('blog.write.slack')}
+          </RRLink>{' '}
+          {t('blog.write.or')}{' '}
+          <RRLink to='mailto:designsystem@digdir.no' target='_blank'>
+            {t('blog.write.email')}
+          </RRLink>
+        </Paragraph>
       </div>
     </div>
   );

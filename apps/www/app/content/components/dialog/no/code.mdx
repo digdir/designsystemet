@@ -1,0 +1,124 @@
+<Story story="Preview" />
+
+<ReactComponentDocs />
+
+## Bruk
+
+For å legge til egen lukk knapp, kan du enten bruke `ref` og `Dialog.close()` på en knapp du lager selv, eller legge på `data-command="close"` på en knapp inni dialogen.
+Dersom knappen er tom vil den få et ikon.
+Dersom knappen er direkte barn av dialogen og første element, vil den flyte til topp høyre.
+
+`data-command` er inspirert av [Invoker Commands (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API).
+
+```tsx
+import { Dialog, Heading, Paragraph } from '@digdir/designsystemet-react';
+
+/* med context */
+<Dialog.TriggerContext>
+  <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+  <Dialog>
+    Dialog content
+  </Dialog>
+</Dialog.TriggerContext>
+
+/* uten context */
+const dialogRef = useRef<HTMLDialogElement>(null);
+
+<Button onClick={() => dialogRef.current?.showModal()}>Open Dialog</Button>
+<Dialog ref={dialogRef}>
+  Dialog content
+</Dialog>
+```
+
+## Eksempel
+
+### Med ref og uten context
+
+Dersom du ikke vil bruke `Dialog.TriggerContext`, kan du bruke `ref` for å åpne dialogen fra en ekstern trigger.
+Du bruker da native metoder på `<dialog>`-elementet, som `showModal()` eller `show()`.
+
+<Story story="WithRef" />
+
+### Med skjema og fokus
+
+Dersom du vil at et felt i et skjema inni dialogen skal få fokus når dialogen åpnes, kan du bruke native `autofocus`-attributtet på input-elementet.
+
+Når du bruker dette med React, må du skrive det med små bokstaver som `autofocus`, ikke `autoFocus`.
+Denne prop-en eksistere ikke i React sine typedefinisjoner, så vi har ignorert feilen med en `@ts-expect-error`-kommentar i eksempelet under.
+
+<Story story="WithForm" />
+
+### Med blokker
+
+Bruk flere `Dialog.Block` hvis du vil dele opp dialogen med skillelinjer til for eksempel topp- og bunn-område. Merk at innhold kan ikke plasseres direkte i `Dialog` dersom du bruker `Dialog.Block`; da burde alt innholdet være inni en av av dialogens `Dialog.Block`-seksjoner.
+
+<Story story="WithBlocks" />
+
+### Lukk ved klikk utenfor
+
+Vi bruker `closedby="any"` for å lukke dialogen når brukeren klikker utenfor.
+Dette fungerer kun når `modal={true}`, fordi en ikke-modal dialog ikke har noe `:backdrop`.
+
+<Story story="CloseWithClickOutside" />
+
+## HTML
+
+Hovedklassenavnet er `ds-dialog`, som blir plassert på `<dialog>`-elementet.
+Blokker inne i dialogen får klassenavn som `ds-dialog__block`.
+```html
+<dialog class="ds-dialog">
+  Content
+</dialog>
+
+<!-- med inndeling -->
+<dialog class="ds-dialog">
+  <div class="ds-dialog__block">
+    Header
+  </div>
+  <div class="ds-dialog__block">
+    Content
+  </div>
+  <div class="ds-dialog__block">
+    Footer
+  </div>
+</dialog>
+```
+
+I HTML må du selv koble `<dialog>`-elementet til en trigger, og håndtere åpning og lukking av dialogen med JavaScript.
+
+**Merk at knappen som åpner dialogen bør ha `aria-haspopup="dialog"`-attributtet.**
+
+```html
+<button id="openDialog" aria-haspopup="dialog" type="button">Open Dialog</button>
+<dialog id="myDialog" class="ds-dialog">
+  <div>Content</div>
+  <button id="closeDialog">Close</button>
+</dialog>
+
+<script>
+  const dialog = document.getElementById('myDialog');
+  const openButton = document.getElementById('openDialog');
+  const closeButton = document.getElementById('closeDialog');
+
+  openButton.addEventListener('click', () => {
+    dialog.showModal(); // eller dialog.show() for ikke-modal
+  });
+
+  closeButton.addEventListener('click', () => {
+    dialog.close();
+  });
+</script>
+```
+
+Vi har utvidet `Dialog` i React til å støtte `data-command` for lukk-knapp, og `closedby`-attributtet for å lukke dialogen ved klikk utenfor.
+Dette må selv implementeres i HTML/JavaScript dersom du ikke bruker React-komponenten.
+
+[`closedby` er støtta i nokre nettlesarar (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy)
+
+
+## CSS variabler og data-attributter
+Alle CSS variabler brukt av `ds-dialog__block` er satt på `ds-dialog`.
+
+<CssVariables />
+
+<CssAttributes />

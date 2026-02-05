@@ -9,7 +9,7 @@ import {
   ScrollRestoration,
 } from 'react-router';
 import type { Route } from './+types/root';
-import '@digdir/designsystemet-theme/digdir.css';
+import '@internal/digdir/themes/digdir.css';
 import '@digdir/designsystemet-css';
 import './app.css';
 import { Error404 } from '@internal/components';
@@ -65,11 +65,11 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
   const centerLinks = [
     {
       text: 'footer.about',
-      url: `${lang}/fundamentals/introduction/about-the-design-system`,
+      url: `${lang}/intro/about-the-design-system`,
     },
     {
       text: 'footer.privacy',
-      url: `${lang}/fundamentals/privacy-policy`,
+      url: `${lang}/intro/privacy-policy`,
     },
     {
       text: 'footer.accessibility',
@@ -79,24 +79,28 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 
   const menu = [
     {
+      name: 'navigation.intro',
+      href: `/${lang}/intro`,
+    },
+    {
       name: 'navigation.fundamentals',
       href: `/${lang}/fundamentals`,
     },
     {
-      name: 'navigation.best-practices',
-      href: `/${lang}/best-practices`,
+      name: 'navigation.components',
+      href: `/${lang}/components`,
     },
     {
       name: 'navigation.patterns',
       href: `/${lang}/patterns`,
     },
     {
-      name: 'navigation.blog',
-      href: `/${lang}/blog`,
+      name: 'navigation.best-practices',
+      href: `/${lang}/best-practices`,
     },
     {
-      name: 'navigation.components',
-      href: `/${lang}/components`,
+      name: 'navigation.blog',
+      href: `/${lang}/blog`,
     },
     {
       name: 'navigation.theme-builder',

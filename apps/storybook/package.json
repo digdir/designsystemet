@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "storybook dev -p 6006",
+    "dev": "storybook dev -p 6006 --disable-telemetry",
     "build": "storybook build -o ./dist --stats-json --disable-telemetry",
     "test-storybook": "pnpm exec playwright install --with-deps chromium && vitest",
+    "vitest": "vitest",
     "chromatic": "pnpx chromatic",
     "types": "tsc --noEmit -p ../../packages/react/tsconfig.stories.json --emitDeclarationOnly false"
   },
@@ -13,35 +14,28 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "clsx": "^2.1.1",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
-    "@digdir/designsystemet-theme": "workspace:^",
-    "@internal/components": "workspace:^",
-    "@navikt/aksel-icons": "^7.30.1",
-    "@storybook/addon-a11y": "^9.1.7",
-    "@storybook/addon-docs": "^9.1.7",
-    "@storybook/addon-links": "^9.1.7",
-    "@storybook/addon-themes": "^9.1.7",
-    "@storybook/addon-vitest": "^9.1.7",
-    "@storybook/react-vite": "^9.1.7",
+    "@navikt/aksel-icons": "^8.2.0",
+    "@storybook/addon-a11y": "^10.2.3",
+    "@storybook/addon-docs": "^10.2.3",
+    "@storybook/addon-themes": "^10.2.3",
+    "@storybook/addon-vitest": "^10.2.3",
+    "@storybook/react-vite": "^10.2.3",
     "@types/ramda": "^0.31.1",
-    "@types/react": "^19.1.13",
-    "@types/react-dom": "^19.1.9",
-    "@vitest/browser": "3.2.4",
-    "@vitest/coverage-v8": "3.2.4",
+    "@types/react": "^19.2.10",
+    "@types/react-dom": "^19.2.3",
+    "@vitest/browser": "4.0.18",
     "axe-playwright": "^2.2.2",
-    "playwright": "^1.55.0",
-    "prettier": "^3.6.2",
-    "ramda": "^0.31.3",
+    "playwright": "^1.58.1",
+    "ramda": "^0.32.0",
     "react-docgen-typescript": "^2.4.0",
-    "remark-gfm": "^4.0.1",
-    "storybook": "^9.1.7",
-    "storybook-addon-pseudo-states": "^9.1.7",
-    "vitest": "3.2.4"
+    "storybook": "^10.2.3",
+    "storybook-addon-pseudo-states": "^10.2.3",
+    "vitest": "4.0.18"
   }
 }
