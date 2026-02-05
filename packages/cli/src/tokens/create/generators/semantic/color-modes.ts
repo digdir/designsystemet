@@ -26,7 +26,7 @@ export const generateColorModes = (colors: Colors, _themeName: string) => {
       const category = colorCategory.replace('-color', '');
       const customColorTokens = {
         color: {
-          [category]: generateNamedColorScale(colorName),
+          [category]: generateColorScale(colorName),
         },
       };
       modes[colorCategory][colorName] = customColorTokens;
@@ -36,7 +36,7 @@ export const generateColorModes = (colors: Colors, _themeName: string) => {
   return modes;
 };
 
-const generateNamedColorScale = (colorName: string): Record<keyof ColorMetadataByName, Token> => {
+const generateColorScale = (colorName: string): Record<keyof ColorMetadataByName, Token> => {
   const steps: Array<keyof ColorMetadataByName> = [
     'background-default',
     'background-tinted',
@@ -56,7 +56,7 @@ const generateNamedColorScale = (colorName: string): Record<keyof ColorMetadataB
     'base-contrast-default',
   ];
 
-  const colorScale: Record<keyof ColorMetadataByName, Token> = {} as Record<keyof ColorMetadataByName, Token>;
+  const colorScale = {} as Record<keyof ColorMetadataByName, Token>;
 
   for (const step of steps) {
     colorScale[step] = {

@@ -5,7 +5,7 @@ export type ColorNames = keyof SemanticColorNumberMap;
 export type GlobalColors = 'danger' | 'info' | 'success' | 'warning';
 export type ColorError = 'none' | 'decorative' | 'interaction';
 
-type SemanticColorNumberMap = {
+export type SemanticColorNumberMap = {
   'background-default': 1;
   'background-tinted': 2;
   'surface-default': 3;
