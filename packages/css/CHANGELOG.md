@@ -1,5 +1,20 @@
 # Change Log
 
+## 1.11.1
+
+### Patch Changes
+
+- update npm non-major dependencies ([#4469](https://github.com/digdir/designsystemet/pull/4469))
+
+- **AvatarStack**: override user-agent margins on figure ([#4431](https://github.com/digdir/designsystemet/pull/4431))
+
+- update dependency postcss-nesting to v14 ([#4424](https://github.com/digdir/designsystemet/pull/4424))
+
+- Removed browserlist entry `"cover 90% in NO"` due to an apparent error in the dataset causing excessive irrelevant prefixing. This reduces the size of `index.css` from 157 to 113kb. ([#4434](https://github.com/digdir/designsystemet/pull/4434))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.11.1
+
 ## 1.11.0
 
 ### Minor Changes
