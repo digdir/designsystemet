@@ -51,9 +51,7 @@ function makeTokenCommands() {
     .option('--experimental-tailwind', 'Generate Tailwind CSS classes for tokens', false)
     .action(async (opts) => {
       console.log(figletAscii);
-      const { verbose, clean, dry, experimentalTailwind } = opts;
-      const tokensDir = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_CREATE_DIR;
-      const outDir = typeof opts.outDir === 'string' ? opts.outDir : './dist/tokens';
+      const { verbose, clean, dry, experimentalTailwind, outDir, tokens } = opts;
 
       const { configFile, configPath } = await getConfigFile(opts.config);
       const config = await parseBuildConfig(configFile, { configPath });
@@ -66,7 +64,7 @@ function makeTokenCommands() {
         await cleanDir(outDir, dry);
       }
 
-      await buildTokens({ tokensDir, outDir, verbose, dry, tailwind: experimentalTailwind, ...config });
+      await buildTokens({ tokensDir: tokens, outDir, verbose, dry, tailwind: experimentalTailwind, ...config });
 
       return Promise.resolve();
     });
