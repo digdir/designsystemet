@@ -80,18 +80,18 @@ describe('ToggleGroup', () => {
       </ToggleGroup>,
     );
 
-    const item = screen.getByRole<HTMLButtonElement>('radio', {
+    const item = screen.getByRole('radio', {
       name: 'test2',
     });
 
     expect(item).toHaveProperty('checked', false);
 
-    await user.click(item);
+    await user.click(item.parentElement as HTMLLabelElement);
 
     expect(onChangeMock).toHaveBeenCalledWith('test2value');
     expect(item).toHaveProperty('checked', true);
   });
-  test('has correct aria-checked on correct ToggleGroupItem when clicked', async () => {
+  test('has correct checked on correct ToggleGroupItem when clicked', async () => {
     const onChangeMock = vi.fn();
 
     render(
@@ -101,17 +101,17 @@ describe('ToggleGroup', () => {
       </ToggleGroup>,
     );
 
-    const item1 = screen.getByRole<HTMLButtonElement>('radio', {
+    const item1 = screen.getByRole('radio', {
       name: 'test1',
     });
-    const item2 = screen.getByRole<HTMLButtonElement>('radio', {
+    const item2 = screen.getByRole('radio', {
       name: 'test2',
     });
 
     expect(item1).toHaveProperty('checked', true);
     expect(item2).toHaveProperty('checked', false);
 
-    await user.click(item2);
+    await user.click(item2.parentElement as HTMLLabelElement);
 
     expect(onChangeMock).toHaveBeenCalledWith('test2');
     expect(item2).toHaveProperty('checked', true);

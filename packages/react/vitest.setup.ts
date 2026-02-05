@@ -1,7 +1,20 @@
 import { configure } from '@testing-library/react';
 import { version as reactVersion } from 'react';
 import { version as reactDomVersion } from 'react-dom';
+import '@digdir/designsystemet-css'; // Load CSS as some components rely on CSS custom properties for default texts
 import '@digdir/designsystemet-web';
+
+// Speed up by using instant animations/transitions during testing
+document.head.appendChild(
+  Object.assign(document.createElement('style'), {
+    textContent: `*, *::before, *::after {
+    transition-duration: 0ms !important;
+    animation-duration: 0ms !important;
+    transition-delay: 0ms !important;
+    animation-delay: 0ms !important;
+  }`,
+  }),
+);
 
 interface ImportMetaEnv {
   VITE_REACT_VERSION?: string;
