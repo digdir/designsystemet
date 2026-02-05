@@ -1,6 +1,6 @@
 {
   "name": "@digdir/designsystemet",
-  "version": "1.11.0",
+  "version": "1.11.1",
   "description": "CLI for Designsystemet",
   "author": "Designsystemet team",
   "engines": {
@@ -63,7 +63,7 @@
     "@tokens-studio/sd-transforms": "2.0.3",
     "chroma-js": "^3.2.0",
     "colorjs.io": "^0.6.1",
-    "commander": "^14.0.2",
+    "commander": "^14.0.3",
     "fast-glob": "^3.3.3",
     "hsluv": "^1.0.1",
     "object-hash": "^3.0.0",
