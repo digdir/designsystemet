@@ -85,10 +85,10 @@ export const Placement: Story = {
 export const Aria: StoryFn<typeof Tooltip> = () => {
   return (
     <>
-      <Tooltip content='Eg er aria-describedby'>
-        <Button>Eg er aria-describedby</Button>
+      <Tooltip content='Eg er aria-description'>
+        <Button>Eg er aria-description</Button>
       </Tooltip>
-      <Tooltip content='Eg er aria-labelledby'>
+      <Tooltip content='Eg er aria-label'>
         <Button icon>
           <FilesIcon aria-hidden />
         </Button>
