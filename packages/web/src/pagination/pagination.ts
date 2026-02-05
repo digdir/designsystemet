@@ -38,8 +38,8 @@ export class DSPaginationElement extends DSElement {
   }
   connectedCallback() {
     // Check for required attributes
-    const total = attrOrCSS(this, ATTR_TOTAL);
-    const current = attrOrCSS(this, ATTR_CURRENT);
+    const total = attr(this, ATTR_TOTAL);
+    const current = attr(this, ATTR_CURRENT);
     if (current && !total) warn(`Missing ${ATTR_TOTAL} attribute on:`, this);
     if (total && !current) warn(`Missing ${ATTR_CURRENT} attribute on:`, this);
     if (!attrOrCSS(this, ATTR_LABEL)) warn(`Missing label on:`, this);
