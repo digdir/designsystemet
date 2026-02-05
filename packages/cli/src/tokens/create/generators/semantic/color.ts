@@ -45,7 +45,7 @@ const baseColorTemplate: TokenSet = {
 };
 
 const generateColorScale = (colorName: string): Record<keyof ColorMetadataByName, Token> => {
-  const steps: SemanticColorNumberMap = {
+  const colorMap: SemanticColorNumberMap = {
     'background-default': 1,
     'background-tinted': 2,
     'surface-default': 3,
@@ -66,10 +66,10 @@ const generateColorScale = (colorName: string): Record<keyof ColorMetadataByName
 
   const colorScale = {} as Record<keyof ColorMetadataByName, Token>;
 
-  for (const [step, number] of Object.entries(steps) as [keyof ColorMetadataByName, ColorNumber][]) {
-    colorScale[step] = {
+  for (const [colorSemantic, colorNumber] of Object.entries(colorMap) as [keyof ColorMetadataByName, ColorNumber][]) {
+    colorScale[colorSemantic] = {
       $type: 'color',
-      $value: `{color.${colorName}.${number}}`,
+      $value: `{color.${colorName}.${colorNumber}}`,
     };
   }
 

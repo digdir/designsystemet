@@ -37,7 +37,7 @@ export const generateColorModes = (colors: Colors, _themeName: string) => {
 };
 
 const generateColorScale = (colorName: string): Record<keyof ColorMetadataByName, Token> => {
-  const steps: Array<keyof ColorMetadataByName> = [
+  const colorSemantics: Array<keyof ColorMetadataByName> = [
     'background-default',
     'background-tinted',
     'surface-default',
@@ -58,10 +58,10 @@ const generateColorScale = (colorName: string): Record<keyof ColorMetadataByName
 
   const colorScale = {} as Record<keyof ColorMetadataByName, Token>;
 
-  for (const step of steps) {
-    colorScale[step] = {
+  for (const colorSemantic of colorSemantics) {
+    colorScale[colorSemantic] = {
       $type: 'color',
-      $value: `{color.${colorName}.${step}}`,
+      $value: `{color.${colorName}.${colorSemantic}}`,
     };
   }
 
