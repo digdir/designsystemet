@@ -31,7 +31,7 @@
     "chromatic": "pnpm --filter @web/storybook chromatic",
     "update:template": "pnpm --filter @digdir/designsystemet update:template",
     "update:theme-digdir": "pnpm --filter @internal/digdir update:theme-digdir",
-    "update:theme": "pnpm build:cli && pnpm designsystemet tokens create --config designsystemet.config.json",
+    "update:theme": "pnpm build:cli && designsystemet tokens create --config designsystemet.config.json",
     "update:preview-tokens": "pnpm --filter @digdir/designsystemet run update:preview-tokens"
   },
   "devDependencies": {
