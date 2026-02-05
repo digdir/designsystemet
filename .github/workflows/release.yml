@@ -35,6 +35,9 @@ jobs:
       - uses: ./.github/actions/gh-setup
       - name: Build
         run: pnpm build
+      - name: Install ## running install again for designsystemt bin to be registered
+        run: pnpm install --frozen-lockfile
+        shell: bash
       - id: snapshot
         name: Set Snapshot Name
         run: |
