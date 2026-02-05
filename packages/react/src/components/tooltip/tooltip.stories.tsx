@@ -19,6 +19,7 @@ export default {
     // When not in Docs mode, automatically open the tooltip
     const canvas = within(ctx.canvasElement);
     const button = canvas.getByRole('button');
+
     /* wait 1s for tooltip to show */
     await userEvent.hover(button);
     await new Promise((resolve) => {
@@ -26,7 +27,7 @@ export default {
         resolve(true);
       }, 1000);
     });
-    const tooltip = canvas.getByRole('tooltip');
+    const tooltip = await within(document.body).findByText(ctx.args.content);
     await expect(tooltip).toBeInTheDocument();
     await expect(tooltip).toBeVisible();
   },
