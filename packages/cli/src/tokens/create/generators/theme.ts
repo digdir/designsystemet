@@ -1,7 +1,6 @@
 import * as R from 'ramda';
 import { baseColorNames } from '../../../colors/colorMetadata.js';
-import type { ColorNumber } from '../../../colors/types.js';
-
+import type { ColorMetadataByName, ColorNumber, SemanticColorNumberMap } from '../../../colors/types.js';
 import type { Colors, Token, TokenSet } from '../../types.js';
 
 export const generateTheme = (colors: Colors, themeName: string, borderRadius: number) => {
@@ -10,22 +9,10 @@ export const generateTheme = (colors: Colors, themeName: string, borderRadius: n
   const customColors = [...mainColorNames, 'neutral', ...supportColorNames, ...baseColorNames];
 
   const themeColorTokens = Object.fromEntries(
-    customColors.map(
-      (colorName) =>
-        [
-          colorName,
-          R.map(
-            (x) => ({
-              $type: x.$type,
-              $value: typeof x.$value === 'string' ? x.$value.replace('<color>', colorName) : x.$value,
-            }),
-            themeColorTemplate,
-          ),
-        ] as const,
-    ),
+    customColors.map((colorName) => [colorName, generateColorScale(colorName, themeName)]),
   );
 
-  const { color: themeBaseFileColor, ...remainingThemeFile } = themeBase;
+  const { color: themeBaseFileColor, ...remainingThemeFile } = generateBase(themeName);
   const themeFile = {
     color: {
       ...themeColorTokens,
@@ -69,24 +56,24 @@ export const generateTheme = (colors: Colors, themeName: string, borderRadius: n
   return token;
 };
 
-const themeBase: TokenSet = {
+const generateBase = (themeName: string): TokenSet => ({
   color: {},
   'font-family': {
     $type: 'fontFamilies',
-    $value: '{<theme>.font-family}',
+    $value: `{${themeName}.font-family}`,
   },
   'font-weight': {
     medium: {
       $type: 'fontWeights',
-      $value: '{<theme>.font-weight.medium}',
+      $value: `{${themeName}.font-weight.medium}`,
     },
     semibold: {
       $type: 'fontWeights',
-      $value: '{<theme>.font-weight.semibold}',
+      $value: `{${themeName}.font-weight.semibold}`,
     },
     regular: {
       $type: 'fontWeights',
-      $value: '{<theme>.font-weight.regular}',
+      $value: `{${themeName}.font-weight.regular}`,
     },
   },
   'border-radius': {
@@ -123,71 +110,36 @@ const themeBase: TokenSet = {
       $value: '4',
     },
   },
-};
+});
 
-const themeColorTemplate: Record<ColorNumber, Token> = {
-  '1': {
-    $type: 'color',
-    $value: '{<theme>.<color>.1}',
-  },
-  '2': {
-    $type: 'color',
-    $value: '{<theme>.<color>.2}',
-  },
-  '3': {
-    $type: 'color',
-    $value: '{<theme>.<color>.3}',
-  },
-  '4': {
-    $type: 'color',
-    $value: '{<theme>.<color>.4}',
-  },
-  '5': {
-    $type: 'color',
-    $value: '{<theme>.<color>.5}',
-  },
-  '6': {
-    $type: 'color',
-    $value: '{<theme>.<color>.6}',
-  },
-  '7': {
-    $type: 'color',
-    $value: '{<theme>.<color>.7}',
-  },
-  '8': {
-    $type: 'color',
-    $value: '{<theme>.<color>.8}',
-  },
-  '9': {
-    $type: 'color',
-    $value: '{<theme>.<color>.9}',
-  },
-  '10': {
-    $type: 'color',
-    $value: '{<theme>.<color>.10}',
-  },
-  '11': {
-    $type: 'color',
-    $value: '{<theme>.<color>.11}',
-  },
-  '12': {
-    $type: 'color',
-    $value: '{<theme>.<color>.12}',
-  },
-  '13': {
-    $type: 'color',
-    $value: '{<theme>.<color>.13}',
-  },
-  '14': {
-    $type: 'color',
-    $value: '{<theme>.<color>.14}',
-  },
-  '15': {
-    $type: 'color',
-    $value: '{<theme>.<color>.15}',
-  },
-  '16': {
-    $type: 'color',
-    $value: '{<theme>.<color>.16}',
-  },
+const generateColorScale = (colorName: string, themeName: string): Record<ColorNumber, Token> => {
+  const colorMap: SemanticColorNumberMap = {
+    'background-default': 1,
+    'background-tinted': 2,
+    'surface-default': 3,
+    'surface-tinted': 4,
+    'surface-hover': 5,
+    'surface-active': 6,
+    'border-subtle': 7,
+    'border-default': 8,
+    'border-strong': 9,
+    'text-subtle': 10,
+    'text-default': 11,
+    'base-default': 12,
+    'base-hover': 13,
+    'base-active': 14,
+    'base-contrast-subtle': 15,
+    'base-contrast-default': 16,
+  };
+
+  const colorScale = {} as Record<ColorNumber, Token>;
+
+  for (const [_, colorNumber] of Object.entries(colorMap) as [keyof ColorMetadataByName, ColorNumber][]) {
+    colorScale[colorNumber] = {
+      $type: 'color',
+      $value: `{${themeName}.${colorName}.${colorNumber}}`,
+    };
+  }
+
+  return colorScale;
 };
