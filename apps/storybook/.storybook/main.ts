@@ -52,6 +52,9 @@ const config: StorybookConfig = {
     '../../../packages/*/!(node_modules)/**/*.mdx',
     '../../../packages/*/!(node_modules)/**/*.@(stories|chromatic).@(ts|tsx)',
   ],
+  features: {
+    developmentModeForBuild: true, // Make axe not run too early (see https://storybook.js.org/docs/writing-tests/accessibility-testing#the-addon-panel-does-not-show-expected-violations)
+  },
   experimental_indexers: (existingIndexers) => {
     /*
      * The following is required in order to process .chromatic.tsx with the default indexer

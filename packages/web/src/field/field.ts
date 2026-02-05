@@ -83,7 +83,7 @@ const handleMutations = debounce(() => {
       if (indeterminate) input.indeterminate = indeterminate === 'true';
 
       attr(field, 'data-clickdelegatefor', isBoolish ? useId(input) : null); // Expand click area to ds-field if radio/checkbox
-      attr(input, 'aria-describedby', descs.map(useId).join(' '));
+      attr(input, 'aria-describedby', descs.map(useId).join(' ') || null);
       attr(input, 'aria-invalid', `${invalid}`);
       updateField(input); // Update counter and textarea sizing
     }
