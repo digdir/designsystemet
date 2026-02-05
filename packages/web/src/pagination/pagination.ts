@@ -42,8 +42,8 @@ export class DSPaginationElement extends DSElement {
     const current = attr(this, ATTR_CURRENT);
     if (current && !total) warn(`Missing ${ATTR_TOTAL} attribute on:`, this);
     if (total && !current) warn(`Missing ${ATTR_CURRENT} attribute on:`, this);
-    if (!attrOrCSS(this, ATTR_LABEL)) warn(`Missing label on:`, this);
 
+    attrOrCSS(this, ATTR_LABEL);
     attr(this, 'role', 'navigation');
     this._unmutate = onMutation(this, () => render(this), {
       childList: true,
