@@ -1,4 +1,4 @@
-import path, { dirname as nodeDirname, resolve } from 'node:path';
+import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { StorybookConfig } from '@storybook/react-vite';
 import * as R from 'ramda';
@@ -6,7 +6,7 @@ import type { PropItem } from 'react-docgen-typescript';
 import { defineConfig, mergeConfig } from 'vite';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = nodeDirname(__filename);
+const __dirname = path.dirname(__filename);
 
 const dirname =
   typeof __dirname !== 'undefined'
@@ -35,7 +35,7 @@ const config: StorybookConfig = {
     /* If in prod, use docgen-typescript, locally use docgen */
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
-      include: [resolve(dirname, '../../../packages/react/**/**.tsx')], // <- This is the important line.
+      include: [path.resolve(dirname, '../../../packages/react/**/**.tsx')], // <- This is the important line.
       shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
       propFilter: (prop: PropItem) => {
@@ -90,7 +90,7 @@ const config: StorybookConfig = {
     options: {
       strictMode: true,
       builder: {
-        viteConfigPath: resolve(dirname, '../../../vite.config.ts'),
+        viteConfigPath: path.resolve(dirname, '../../../vite.config.ts'),
       },
     },
   },

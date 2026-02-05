@@ -22,11 +22,6 @@ export default {
 
     /* wait 1s for tooltip to show */
     await userEvent.hover(button);
-    await new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(true);
-      }, 1000);
-    });
     const tooltip = await within(document.body).findByText(ctx.args.content);
     await expect(tooltip).toBeInTheDocument();
     await expect(tooltip).toBeVisible();
@@ -59,13 +54,7 @@ WithString.play = async (ctx) => {
   const canvas = within(ctx.canvasElement);
   const button = canvas.getByText('Org.nr.');
   await userEvent.hover(button);
-  /* wait 1s for tooltip to show */
-  await new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(true);
-    }, 1000);
-  });
-  const tooltip = canvas.getByRole('tooltip');
+  const tooltip = await within(document.body).findByText(ctx.args.content);
   await expect(tooltip).toBeInTheDocument();
   await expect(tooltip).toBeVisible();
 };

@@ -9,7 +9,7 @@ const user = userEvent.setup();
 describe('ToggleGroup', () => {
   test('has generated name for ToggleGroupItem children', () => {
     render(
-      <ToggleGroup>
+      <ToggleGroup data-toggle-group='Label'>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
       </ToggleGroup>,
     );
@@ -20,7 +20,7 @@ describe('ToggleGroup', () => {
 
   test('has passed name to ToggleGroupItem children', (): void => {
     render(
-      <ToggleGroup name='my name'>
+      <ToggleGroup data-toggle-group='Label' name='my name'>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
       </ToggleGroup>,
     );
@@ -31,7 +31,7 @@ describe('ToggleGroup', () => {
 
   test('can navigate with tab and arrow keys', async () => {
     render(
-      <ToggleGroup>
+      <ToggleGroup data-toggle-group='Label'>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
         <ToggleGroup.Item value='test2'>test2</ToggleGroup.Item>
         <ToggleGroup.Item value='test3'>test3</ToggleGroup.Item>
@@ -58,7 +58,7 @@ describe('ToggleGroup', () => {
   });
   test('has correct ToggleGroupItem defaultChecked & checked when defaultValue is used', () => {
     render(
-      <ToggleGroup defaultValue='test2'>
+      <ToggleGroup data-toggle-group='Label' defaultValue='test2'>
         <ToggleGroup.Item value='test1'>test1</ToggleGroup.Item>
         <ToggleGroup.Item value='test2'>test2</ToggleGroup.Item>
         <ToggleGroup.Item value='test3'>test3</ToggleGroup.Item>
@@ -74,7 +74,7 @@ describe('ToggleGroup', () => {
     const onChangeMock = vi.fn();
 
     render(
-      <ToggleGroup onChange={onChangeMock}>
+      <ToggleGroup data-toggle-group='Label' onChange={onChangeMock}>
         <ToggleGroup.Item value='test1'>test1</ToggleGroup.Item>
         <ToggleGroup.Item value='test2value'>test2</ToggleGroup.Item>
       </ToggleGroup>,
@@ -95,7 +95,11 @@ describe('ToggleGroup', () => {
     const onChangeMock = vi.fn();
 
     render(
-      <ToggleGroup defaultValue='test1' onChange={onChangeMock}>
+      <ToggleGroup
+        data-toggle-group='Label'
+        defaultValue='test1'
+        onChange={onChangeMock}
+      >
         <ToggleGroup.Item value='test1'>test1</ToggleGroup.Item>
         <ToggleGroup.Item value='test2'>test2</ToggleGroup.Item>
       </ToggleGroup>,
@@ -120,7 +124,7 @@ describe('ToggleGroup', () => {
   test('if we pass a name, we should have a hidden input with that name', () => {
     const name = 'my-name';
     const { container } = render(
-      <ToggleGroup name={name}>
+      <ToggleGroup data-toggle-group='Label' name={name}>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
       </ToggleGroup>,
     );
@@ -132,7 +136,7 @@ describe('ToggleGroup', () => {
   test('if we pass a name, we should have a hidden input with that name and value', () => {
     const name = 'my-name';
     const { container } = render(
-      <ToggleGroup name='my-name' defaultValue='test'>
+      <ToggleGroup data-toggle-group='Label' name='my-name' defaultValue='test'>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
       </ToggleGroup>,
     );
@@ -150,7 +154,11 @@ describe('ToggleGroup', () => {
 
       render(
         <form onSubmit={handleSubmit}>
-          <ToggleGroup name='test' defaultValue='test2'>
+          <ToggleGroup
+            data-toggle-group='Label'
+            name='test'
+            defaultValue='test2'
+          >
             <ToggleGroup.Item value='test1'>test1</ToggleGroup.Item>
             <ToggleGroup.Item value='test2'>test2</ToggleGroup.Item>
           </ToggleGroup>
@@ -168,7 +176,7 @@ describe('ToggleGroup', () => {
 
   test('if we dont pass a name, we should not have a hidden input', () => {
     render(
-      <ToggleGroup>
+      <ToggleGroup data-toggle-group='Label'>
         <ToggleGroup.Item value='test'>test</ToggleGroup.Item>
       </ToggleGroup>,
     );

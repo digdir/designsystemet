@@ -9,7 +9,7 @@
   border-radius: var(--dsc-errorsummary-border-radius);
   box-sizing: border-box;
   padding: var(--dsc-errorsummary-padding);
-  animation: _is-visible 1ms; /* Used in JS to detect visibility */
+  animation: _is-visible 0ms; /* Used in JS to detect visibility */
 
   @composes ds-focus from './base.css';
 

@@ -10,7 +10,7 @@ type AriaLabel = {
   /**
    * The name of the person the avatar represents.
    */
-  'aria-label': string;
+  'aria-label'?: string;
 };
 type AriaHidden = Partial<AriaLabel> & { 'aria-hidden': true | 'true' };
 

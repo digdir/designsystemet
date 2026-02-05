@@ -127,13 +127,8 @@ export const onHotReload = (key: string, setup: () => Array<() => void>) => {
   if (!isBrowser()) return; // Skip if not in modern browser environment, but on each call as Vitest might have unloaded jsdom between tests
   if (!window._dsHotReloadCleanup) window._dsHotReloadCleanup = new Map(); // Hot reload cleanup support supporting all build tools
 
-  const run = () => {
-    window._dsHotReloadCleanup?.get(key)?.map((cleanup) => cleanup()); // Run previous cleanup
-    window._dsHotReloadCleanup?.set(key, setup()); // Store new cleanup
-  };
-
-  if (document.readyState !== 'complete') on(window, 'load', run);
-  else document.fonts?.ready?.then(run) || setTimeout(run, 0); // Prefer fonts ready promise if available, but fallback to setTimeout
+  window._dsHotReloadCleanup?.get(key)?.map((cleanup) => cleanup()); // Run previous cleanup
+  window._dsHotReloadCleanup?.set(key, setup()); // Store new cleanup
 };
 
 /**
@@ -159,7 +154,7 @@ export const onMutation = (
   });
 
   observer.observe(el, options);
-  requestAnimationFrame(onFrame); // Initial run when page is visible and children has mounted
+  onFrame(); // Initial run when page is visible and children has mounted
   return cleanup;
 };
 

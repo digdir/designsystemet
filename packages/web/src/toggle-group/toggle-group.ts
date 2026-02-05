@@ -13,7 +13,7 @@ const SELECTOR_TOGGLEGROUP = `[${ATTR_TOGGLEGROUP}]`;
 const handleAriaAttributes = debounce(() => {
   for (const group of document.querySelectorAll(SELECTOR_TOGGLEGROUP))
     attr(group, 'aria-label', attrOrCSS(group, ATTR_TOGGLEGROUP));
-}, 200);
+}, 0); // Debounce to merge multiple mutations
 
 const handleKeydown = (event: Partial<KeyboardEvent>) => {
   const group =

@@ -49,7 +49,7 @@ const handleAriaAttributes = debounce(() => {
         warn('Missing tabindex="0" attribute on: ', el);
     }
   }
-}, 200);
+}, 0); // Debounce to merge multiple mutations
 
 const handleInterest = ({ type, target }: Event) => {
   clearTimeout(HOVER_TIMER);

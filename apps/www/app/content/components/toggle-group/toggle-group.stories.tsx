@@ -18,7 +18,7 @@ import { useState } from 'react';
 
 export const Preview = () => {
   return (
-    <ToggleGroup defaultValue='innboks'>
+    <ToggleGroup data-toggle-group='Filter' defaultValue='innboks'>
       <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
       <ToggleGroup.Item value='utkast'>Utkast</ToggleGroup.Item>
       <ToggleGroup.Item value='arkiv'>Arkiv</ToggleGroup.Item>
@@ -29,7 +29,7 @@ export const Preview = () => {
 
 export const PreviewEn = () => {
   return (
-    <ToggleGroup defaultValue='inbox'>
+    <ToggleGroup data-toggle-group='Filter' defaultValue='inbox'>
       <ToggleGroup.Item value='inbox'>Inbox</ToggleGroup.Item>
       <ToggleGroup.Item value='drafts'>Drafts</ToggleGroup.Item>
       <ToggleGroup.Item value='archive'>Archive</ToggleGroup.Item>
@@ -40,7 +40,7 @@ export const PreviewEn = () => {
 
 export const OnlyIcons = () => {
   return (
-    <ToggleGroup defaultValue='option-1'>
+    <ToggleGroup data-toggle-group='Tekstjustering' defaultValue='option-1'>
       <Tooltip content='Venstrestilt'>
         <ToggleGroup.Item value='option-1'>
           <AlignLeftIcon aria-hidden />
@@ -62,7 +62,7 @@ export const OnlyIcons = () => {
 
 export const OnlyIconsEn = () => {
   return (
-    <ToggleGroup defaultValue='option-1'>
+    <ToggleGroup data-toggle-group='Textalignment' defaultValue='option-1'>
       <Tooltip content='Left aligned'>
         <ToggleGroup.Item value='option-1'>
           <AlignLeftIcon aria-hidden />
@@ -86,7 +86,7 @@ export const Controlled = () => {
   const [value, setValue] = useState<string>('utkast');
   return (
     <>
-      <ToggleGroup value={value} onChange={setValue}>
+      <ToggleGroup data-toggle-group='Filter' value={value} onChange={setValue}>
         <ToggleGroup.Item value='innboks'>
           <EnvelopeClosedIcon aria-hidden />
           Innboks
@@ -117,7 +117,7 @@ export const ControlledEn = () => {
   const [value, setValue] = useState<string>('drafts');
   return (
     <>
-      <ToggleGroup value={value} onChange={setValue}>
+      <ToggleGroup data-toggle-group='Filter' value={value} onChange={setValue}>
         <ToggleGroup.Item value='inbox'>
           <EnvelopeClosedIcon aria-hidden />
           Inbox
@@ -146,7 +146,11 @@ export const ControlledEn = () => {
 
 export const Secondary = () => {
   return (
-    <ToggleGroup defaultValue='innboks' variant='secondary'>
+    <ToggleGroup
+      data-toggle-group='Filter'
+      defaultValue='innboks'
+      variant='secondary'
+    >
       <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
       <ToggleGroup.Item value='utkast'>Utkast</ToggleGroup.Item>
       <ToggleGroup.Item value='arkiv'>Arkiv</ToggleGroup.Item>
@@ -157,7 +161,11 @@ export const Secondary = () => {
 
 export const SecondaryEn = () => {
   return (
-    <ToggleGroup defaultValue='inbox' variant='secondary'>
+    <ToggleGroup
+      data-toggle-group='Filter'
+      defaultValue='inbox'
+      variant='secondary'
+    >
       <ToggleGroup.Item value='inbox'>Inbox</ToggleGroup.Item>
       <ToggleGroup.Item value='drafts'>Drafts</ToggleGroup.Item>
       <ToggleGroup.Item value='archive'>Archive</ToggleGroup.Item>

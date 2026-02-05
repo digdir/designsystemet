@@ -36,7 +36,7 @@
     display: none;
   }
   & [data-field='counter']::after {
-    content: attr(aria-label); /* Render counter text through attribute to avoid hydration errors */
+    content: attr(data-label); /* Render counter text through attribute to avoid hydration errors */
   }
 
   /* Using pure HTML elements in selector to make this work if consumer changes name of .ds-input */

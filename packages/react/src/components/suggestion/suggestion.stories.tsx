@@ -42,10 +42,7 @@ export default {
           {
             id: 'aria-required-parent',
             matches: (element: HTMLElement) =>
-              !(
-                element instanceof HTMLDataElement &&
-                element.className === 'ds-chip'
-              ),
+              !(element instanceof HTMLDataElement),
           },
           {
             // TODO: this rule should be enabled after https://github.com/dequelabs/axe-core/issues/4672 have propagated to @storybook/addon-a11y.

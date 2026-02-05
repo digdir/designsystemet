@@ -68,6 +68,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 
     return (
       <Slot
+        aria-label={content} // designsystemet-web will re-evaulate if this should be an aria-label or aria-description, but kept here for better SSR
         data-tooltip={content}
         data-placement={placement}
         data-autoplacement={autoPlacement}

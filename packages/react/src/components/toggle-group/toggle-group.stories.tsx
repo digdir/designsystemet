@@ -44,7 +44,11 @@ Preview.args = {
 
 export const OnlyIcons: StoryFn<typeof ToggleGroup> = (args) => {
   return (
-    <ToggleGroup {...args} defaultValue='option-1'>
+    <ToggleGroup
+      {...args}
+      data-toggle-group='Tekstjustering'
+      defaultValue='option-1'
+    >
       <Tooltip content='Venstrestilt'>
         <ToggleGroup.Item value='option-1'>
           <AlignLeftIcon title='AlignLeftIcon' />
@@ -69,8 +73,8 @@ export const Kontrollert: StoryFn<typeof ToggleGroup> = () => {
   return (
     <>
       <ToggleGroup
-        value={value}
         data-toggle-group='Filtering'
+        value={value}
         onChange={setValue}
       >
         <ToggleGroup.Item value='innboks'>

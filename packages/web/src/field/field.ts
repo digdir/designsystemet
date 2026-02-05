@@ -88,7 +88,7 @@ const handleMutations = debounce(() => {
       updateField(input); // Update counter and textarea sizing
     }
   }
-}, 100); // Debounce to avoid excessive calculations on multiple mutations
+}, 0); // Debounce to merge multiple mutations
 
 const SR_ONLY = 'position:fixed;white-space:nowrap;clip:rect(0 0 0 0)';
 const SR_LIVE = isBrowser()
@@ -108,7 +108,7 @@ const updateField = (e: Event | Element) => {
       `${Math.abs(count)}`,
     );
 
-    attr(counter, 'aria-label', label);
+    attr(counter, 'data-label', label); // Using aria label as this does not cause hydation errors
     attr(counter, 'data-state', state);
     attr(counter, 'data-color', count < 0 ? 'danger' : null);
 
