@@ -69,12 +69,13 @@ export const attr = (
  * @param name Attribute or CSS property to get
  * @return string attribute or CSS property value
  */
+const STRIP_SURROUNDING_QUOTES = /^["']|["']$/g; // Matches surrounding single or double quotes
 export const attrOrCSS = (el: Element, name: string) => {
   let value = attr(el, name);
   if (!value) {
     const prop = getComputedStyle(el).getPropertyValue(`--_ds-${name}`);
-    value = prop.replace(/^["']|["']$/g, '').trim() || null; // Strings can be wrapped in quotes
-    attr(el, name, value); // Cache value as attribute for faster access and to trigger attribute observers
+    value = prop.replace(STRIP_SURROUNDING_QUOTES, '').trim() || null;
+    attr(el, name, value); // Cache as attribute for faster next access
   }
   if (!value) warn(`Missing ${name} on:`, el);
   return value;

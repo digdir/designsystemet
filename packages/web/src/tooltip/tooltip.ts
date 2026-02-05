@@ -18,7 +18,7 @@ const ATTR_COLOR = 'data-color';
 const SELECTOR_COLOR = `[${ATTR_COLOR}]`;
 const ATTR_SCHEME = 'data-color-scheme';
 const SELECTOR_SCHEME = `[${ATTR_SCHEME}]`;
-const SELECTOR_TOOLTIP = '[data-tooltip-element]';
+const SELECTOR_NEEDS_ARIA = `[data-tooltip]:not([aria-description], [aria-label])`;
 const SELECTOR_INTERACTIVE = 'a,button,input,label,select,textarea,[tabindex]';
 const DELAY_HOVER = 300;
 const DELAY_SKIP = 300;
@@ -35,7 +35,7 @@ export const setTooltipElement = (el?: HTMLElement | null) => {
 };
 
 const handleAriaAttributes = debounce(() => {
-  for (const el of document.querySelectorAll('[data-tooltip]')) {
+  for (const el of document.querySelectorAll(SELECTOR_NEEDS_ARIA)) {
     const hasText = el.textContent?.trim();
     const tooltip = attrOrCSS(el, 'data-tooltip');
 
@@ -48,11 +48,7 @@ const handleAriaAttributes = debounce(() => {
 const handleInterest = ({ type, target }: Event) => {
   clearTimeout(HOVER_TIMER);
 
-  if (!TIP)
-    TIP =
-      document.querySelector<HTMLElement>(SELECTOR_TOOLTIP) ||
-      tag('div', { class: 'ds-tooltip' });
-
+  if (!TIP) TIP = tag('div', { class: 'ds-tooltip' });
   if (!TIP || target === TIP) return; // Allow tooltip to be hovered, following https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus
   if (type === 'mouseover' && !SOURCE) {
     HOVER_TIMER = setTimeout(handleInterest, DELAY_HOVER, { target }); // Delay mouse showing tooltip if not already shown

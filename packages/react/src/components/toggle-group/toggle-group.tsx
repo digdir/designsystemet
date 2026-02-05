@@ -2,7 +2,7 @@ import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { createContext, forwardRef, useId, useState } from 'react';
 import type { DefaultProps } from '../../types';
-import { type MergeRight, warn } from '../../utilities';
+import type { MergeRight } from '../../utilities';
 
 export type ToggleGroupContextProps = {
   variant?: 'primary' | 'secondary';
@@ -42,7 +42,7 @@ export type ToggleGroupProps = MergeRight<
     /**
      * Toggle group label for accessibility
      */
-    'data-toogle-group'?: string;
+    'data-toggle-group'?: string;
   }
 >;
 
@@ -59,7 +59,6 @@ export type ToggleGroupProps = MergeRight<
 export const ToggleGroup = forwardRef<HTMLFieldSetElement, ToggleGroupProps>(
   function ToggleGroup(
     {
-      'data-toogle-group': label = '', // Default to empty string so data-toggle-group attribute is always set
       children,
       className,
       defaultValue,
@@ -86,11 +85,6 @@ export const ToggleGroup = forwardRef<HTMLFieldSetElement, ToggleGroupProps>(
       value = uncontrolledValue;
     }
 
-    if (!label)
-      warn(
-        'ToggleGroup should have data-toggle-group attribute, providing an accesible label for screen readers.',
-      );
-
     return (
       <ToggleGroupContext.Provider
         value={{
@@ -103,7 +97,7 @@ export const ToggleGroup = forwardRef<HTMLFieldSetElement, ToggleGroupProps>(
       >
         <fieldset
           className={cl('ds-toggle-group', className)}
-          data-toggle-group={label}
+          data-toggle-group='' // Default to empty string to ensure attribute is present
           data-variant={variant}
           ref={ref}
           {...rest}

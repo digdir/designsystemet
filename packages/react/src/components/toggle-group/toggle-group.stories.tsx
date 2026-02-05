@@ -37,6 +37,7 @@ export const Preview: StoryFn<typeof ToggleGroup> = (args) => {
 };
 
 Preview.args = {
+  'data-toggle-group': 'Filtering', // Set data-toggle-group attribute for accessibility
   defaultValue: 'innboks',
   name: 'toggle-group-nuts',
 };
@@ -67,7 +68,11 @@ export const Kontrollert: StoryFn<typeof ToggleGroup> = () => {
   const [value, setValue] = useState<string>('utkast');
   return (
     <>
-      <ToggleGroup value={value} onChange={setValue}>
+      <ToggleGroup
+        value={value}
+        data-toggle-group='Filtering'
+        onChange={setValue}
+      >
         <ToggleGroup.Item value='innboks'>
           <EnvelopeClosedIcon aria-hidden />
           Innboks
@@ -94,7 +99,14 @@ export const Kontrollert: StoryFn<typeof ToggleGroup> = () => {
   );
 };
 export const Secondary = Preview.bind({});
-Secondary.args = { defaultValue: 'innboks', variant: 'secondary' };
+Secondary.args = {
+  'data-toggle-group': 'Filtering', // Set data-toggle-group attribute for accessibility
+  defaultValue: 'innboks',
+  variant: 'secondary',
+};
 
 export const SecondaryOnlyIcons = OnlyIcons.bind({});
-SecondaryOnlyIcons.args = { variant: 'secondary' };
+SecondaryOnlyIcons.args = {
+  'data-toggle-group': 'Filtering', // Set data-toggle-group attribute for accessibility
+  variant: 'secondary',
+};
