@@ -39,10 +39,10 @@ export async function generate$Themes(
   colorSchemes: ColorSchemes,
   themes: string[],
   colors: Colors,
-  sizeModess: SizeModes[],
+  sizeModes: SizeModes[],
 ): Promise<ThemeObject_[]> {
   return [
-    ...generateSizeGroup(sizeModess),
+    ...generateSizeGroup(sizeModes),
     ...(await generateThemesGroup(themes)),
     ...generateTypographyGroup(themes),
     ...generateColorSchemesGroup(colorSchemes, themes),
