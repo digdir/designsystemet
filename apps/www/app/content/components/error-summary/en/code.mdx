@@ -1,0 +1,73 @@
+<Story story="PreviewEn" />
+<ReactComponentDocs />
+
+## Usage
+
+`ErrorSummary` consists of several subcomponents:
+- `ErrorSummary.Heading` defines the heading.
+- `ErrorSummary.List` defines the list of errors.
+- Each error is represented as an `ErrorSummary.Item` containing an `ErrorSummary.Link`.
+- Each `ErrorSummary.Link` must have an `href` to the unique identifier for a form field, so that the user can navigate to the correct place in the form.
+
+```tsx
+import { ErrorSummary } from '@digdir/designsystemet-react';
+
+<ErrorSummary>
+  <ErrorSummary.Heading>Heading</ErrorSummary.Heading>
+  <ErrorSummary.List>
+    <ErrorSummary.Item>
+      <ErrorSummary.Link href='#some-field-id'>Item</ErrorSummary.Link>
+    </ErrorSummary.Item>
+  </ErrorSummary.List>
+</ErrorSummary>
+```
+
+## Examples
+
+### Use with text fields
+
+In order for `ErrorSummary.Link` to navigate to the fields with errors, the fields must have a unique `id` that matches the `href` in the link.
+
+<Story story="WithFormEn" layout="column" />
+
+### Moving focus
+
+Below is an example where we move focus to `ErrorSummary` when it becomes visible.
+
+<Story story="ShowHideEn" layout="column" />
+
+## HTML
+
+The class name `ds-error-summary` is used on a container, the default for React is `<div>`.
+
+As a child, you must have a heading (preferably `<h2>`) that has an `id` that can be referenced with `aria-labelledby` on the container.
+
+We add a `ds-list` after the heading that contains a list of errors.
+Each error is a `<li>` with a link (`<a>`) that has the class `ds-link` and an `href` to the relevant field with errors.
+
+```html
+<div
+tabindex="-1"
+aria-labelledby="error-heading"
+class="ds-error-summary"
+>
+  <h2 class="ds-heading" id="error-heading">To continue, you must correct the following errors:</h2>
+  <ul class="ds-list">
+    <li>
+      <a class="ds-link" data-color="neutral" href="#">Date of birth cannot be after 2005</a>
+    </li>
+    <li>
+      <a class="ds-link" data-color="neutral" href="#">Phone number can only contain digits</a>
+    </li>
+    <li>
+      <a class="ds-link" data-color="neutral" href="#">Email must be valid</a>
+    </li>
+  </ul>
+</div>
+```
+
+## CSS variables and data attributes
+
+<CssVariables />
+
+<CssAttributes />

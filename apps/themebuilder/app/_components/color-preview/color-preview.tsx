@@ -26,10 +26,16 @@ const CardWrapper = ({ color, view, ...rest }: CardProps) =>
 
 export const ColorPreview = () => {
   const { t } = useTranslation();
-  const { colorScheme, colors } = useThemebuilder();
+  const { colorScheme, colors, severityColors, severityEnabled } =
+    useThemebuilder();
   const [view, setView] = useState<ViewType>(DEFAULT_VIEW);
 
-  const allColors = [...colors.main, ...colors.neutral, ...colors.support];
+  const allColors = [
+    ...colors.main,
+    ...colors.neutral,
+    ...colors.support,
+    ...(severityEnabled ? severityColors : []),
+  ];
 
   const prepVariables = (variables: Record<string, string>) => {
     const prepped: Record<string, string> = {};
@@ -56,7 +62,7 @@ export const ColorPreview = () => {
           >
             <ToggleGroup.Item value='grid'>Grid</ToggleGroup.Item>
             <ToggleGroup.Item value='list'>
-              {t('tabs.overview')}
+              {t('tabs.examples')}
             </ToggleGroup.Item>
           </ToggleGroup>
         </div>
@@ -68,14 +74,14 @@ export const ColorPreview = () => {
         )}
       >
         {allColors.map((color, index) => {
+          const variables =
+            color.variables?.[colorScheme as keyof typeof color.variables];
           return (
             <CardWrapper
               view={view}
               key={`${color.name}-${index}`}
               color={color}
-              style={prepVariables(
-                color.variables[colorScheme as keyof typeof color.variables],
-              )}
+              style={variables ? prepVariables(variables) : {}}
             />
           );
         })}

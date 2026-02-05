@@ -1,4 +1,5 @@
 import * as R from 'ramda';
+import { baseColorNames } from '../../../colors/colorMetadata.js';
 import themeBase from '../../template/design-tokens/themes/theme.base.template.json' with { type: 'json' };
 import themeColorTemplate from '../../template/design-tokens/themes/theme.template.json' with { type: 'json' };
 
@@ -7,7 +8,7 @@ import type { Colors, TokenSet } from '../../types.js';
 export const generateTheme = (colors: Colors, themeName: string, borderRadius: number) => {
   const mainColorNames = Object.keys(colors.main);
   const supportColorNames = Object.keys(colors.support);
-  const customColors = [...mainColorNames, 'neutral', ...supportColorNames];
+  const customColors = [...mainColorNames, 'neutral', ...supportColorNames, ...baseColorNames];
 
   const themeColorTokens = Object.fromEntries(
     customColors.map(
@@ -24,6 +25,22 @@ export const generateTheme = (colors: Colors, themeName: string, borderRadius: n
     color: {
       ...themeColorTokens,
       ...themeBaseFileColor,
+      link: {
+        visited: {
+          $type: 'color',
+          $value: `{${themeName}.link.visited}`,
+        },
+      },
+      focus: {
+        'inner-color': {
+          $type: 'color',
+          $value: `{${themeName}.focus.inner}`,
+        },
+        'outer-color': {
+          $type: 'color',
+          $value: `{${themeName}.focus.outer}`,
+        },
+      },
     },
     ...remainingThemeFile,
   };

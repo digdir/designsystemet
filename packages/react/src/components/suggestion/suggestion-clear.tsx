@@ -25,10 +25,7 @@ export type SuggestionClearProps = Omit<ButtonProps, 'variant' | 'children'> & {
 export const SuggestionClear = forwardRef<
   HTMLButtonElement,
   SuggestionClearProps
->(function SuggestionClear(
-  { 'aria-label': label = 'Tøm', onClick, ...rest },
-  ref,
-) {
+>(function SuggestionClear({ 'aria-label': label = 'Tøm', ...rest }, ref) {
   return (
     <Button
       aria-label={label}

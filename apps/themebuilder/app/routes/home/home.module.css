@@ -21,11 +21,12 @@ div[data-color-scheme='dark'][data-theme='two'] .main {
   width: 600px;
   margin: 0 auto;
   text-align: center;
-  margin-top: var(--ds-size-8);
+  margin-top: var(--ds-size-14);
 
   @media screen and (max-width: 768px) {
     width: 100%;
     padding: 0 var(--ds-size-6);
+    margin-top: var(--ds-size-8);
   }
 }
 
@@ -43,6 +44,7 @@ div[data-color-scheme='dark'][data-theme='two'] .main {
   align-items: center;
   justify-content: center;
   margin-top: var(--ds-size-7);
+  flex-wrap: wrap;
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
@@ -52,4 +54,13 @@ div[data-color-scheme='dark'][data-theme='two'] .main {
 .headerText {
   color: var(--ds-color-accent-base-default);
   font-weight: 600;
+}
+
+.configButton {
+  display: block;
+}
+
+.configDialog {
+  width: 90vw;
+  max-width: 1200px;
 }

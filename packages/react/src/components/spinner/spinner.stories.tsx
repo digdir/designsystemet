@@ -1,11 +1,12 @@
 import type { Meta, StoryFn } from '@storybook/react-vite';
-import themeConfig from '../../../../cli/configs/digdir.config.json';
+import { severityColors, themeColors } from '../../../stories/constants';
+
 import { Spinner } from './spinner';
 
 type Story = StoryFn<typeof Spinner>;
 
 export default {
-  title: 'Komponenter/Loaders/Spinner',
+  title: 'Komponenter/Spinner',
   component: Spinner,
   parameters: {
     customStyles: {
@@ -18,12 +19,6 @@ export default {
   },
 } as Meta;
 
-const colorVariants = [
-  ...Object.keys(themeConfig.themes.digdir.colors.main),
-  ...Object.keys(themeConfig.themes.digdir.colors.support),
-  'neutral',
-];
-
 export const Preview: Story = (args) => <Spinner {...args} />;
 
 Preview.args = {
@@ -32,7 +27,7 @@ Preview.args = {
 
 export const Variants: Story = () => (
   <>
-    {colorVariants.map((color) => (
+    {[...themeColors, ...severityColors].map((color) => (
       <Spinner
         key={color}
         aria-label={`Henter ${color} kaffi`}

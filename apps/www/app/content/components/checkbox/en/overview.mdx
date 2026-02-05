@@ -1,0 +1,78 @@
+<Story story="Preview" />
+
+**Use `Checkbox` when**
+- the user should be able to select one or more options within the same context
+- the user needs to accept terms and conditions
+
+**Avoid using `Checkbox` when**
+- the user should choose only one option; use a [`Radio`](/en/components/docs/radio/overview) instead
+- the user must choose from more than seven options; use a [`Select`](/en/components/docs/select/overview) or [`Suggestion`](/en/components/docs/suggestion/overview) instead
+- something should be turned on or off; use a [`Switch`](/en/components/docs/switch/overview) instead
+
+## Example
+
+### Confirmation with `Checkbox`
+
+If the user must confirm something rather than choose between alternatives, a single `Checkbox` can stand alone. For example, when the user needs to confirm that something is correct or give consent to terms and conditions.
+
+A `Checkbox` for consent must always require an active action, and you should never preselect the box. This ensures that the consent is given voluntarily.
+
+<Story story="OneOption" />
+
+### Grouping
+
+Most of the time, `Checkbox` is used in groups where the user can select more than one option. The `<fieldset>` around the group should have a legend that explains what the options relate to.
+
+<Story story="Group" />
+
+### With error
+
+When `Checkbox` is used in groups, the error message should be placed on the `Fieldset`, so it applies to the entire group.
+
+<Story story="WithError" />
+
+### Read-only checkbox
+
+`Checkbox` supports the `readOnly` attribute to make the field non-editable and gives a visual indication that distinguishes it from editable fields. Although they cannot be changed, fields with `readOnly` are still part of the tab order, and the information is included when the form is submitted.
+
+We avoid using `readOnly` whenever possible because such fields can be confusing. Not all users will understand why they cannot change the content.
+
+<Story story="ReadOnly" />
+
+### Disabled
+
+We should avoid disabling (`disabled`) `Checkbox`, because it can be difficult to perceive.  
+Some users will not understand what the option means or why it is not clickable. If a `Checkbox` or group of `Checkbox` options is not relevant, it is usually better to remove them rather than disable them. If possible, give users an explanation of why options are unavailable.
+
+Nav has a helpful explanation of [why disabled states are problematic (nav.no)](https://aksel.nav.no/god-praksis/artikler/deaktiverte-tilstander) and which alternatives exist.
+
+<Story story="Disabled" />
+
+## Guidelines
+
+Use `Checkbox` when the user can select one or more options.
+
+### Sort the options
+
+Sort the answer options alphabetically unless there is a good reason to do otherwise. Be careful about placing the most common answer option first if the question is personal or value-based, such as sexual orientation or party affiliation.
+
+### Placement
+
+Preferably place the response options vertically. This makes it easier to scan the list and read the options. For users who need to enlarge the text, horizontal lists can be challenging.
+
+<div className="dodont-row">
+  <DoDont story="DoPlacement">
+    Place `Checkbox` vertically for improved readability.
+  </DoDont>
+  <DoDont story="DontPlacement">
+    Avoid placing `Checkbox` horizontally, as it reduces readability.
+  </DoDont>
+</div>
+
+## Text
+
+- The question should connect well with the response options. Think of the text as a conversation, and use “you” in the question and “I” in the options.
+
+- Make it clear that users can choose multiple options, and specify it if they can only choose a limited number of options.
+
+- Response options should always start with a capital letter.

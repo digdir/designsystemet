@@ -1,0 +1,52 @@
+<Story story="Preview" />
+<ReactComponentDocs />
+
+## Bruk
+
+```tsx
+import { Select, Label } from '@digdir/designsystemet-react';
+<>
+<Label>Velg et fjell</Label>
+<Select>
+  <Select.Option value="everest">Mount Everest</Select.Option>
+</Select>
+</>
+```
+
+## Eksempel
+
+### Gruppering
+Du kan bruke `Select.Optgroup` for å gruppere alternativer i kategorier, noe som gjør lange lister mer oversiktlige og enklere å navigere.
+
+<Story story="WithOptgroup" />
+
+### Disabled
+
+<Story story="Disabled" />
+
+### ReadOnly
+
+`<select>` er alltid `:read-only`, og støtter ikke dette på samme måte som input-typer du kan skrive i. Hvis du setter `readOnly` på en select, sørger vi for at den oppfører seg som om den kun har lese-tilgang, ved å stoppe `onKeyDown` og `onMouseDown`. Brukeren vil fortsatt kunne fokusere på elementet.
+
+<Story story="ReadOnly" />
+
+## HTML
+Legg klassenavnet `ds-select` på `<select>`.
+
+```html
+<select class="ds-select">
+  <option value="1">Alternativ 1</option>
+  <option value="2">Alternativ 2</option>
+  <option value="3">Alternativ 3</option>
+</select>
+```
+
+Dersom du vil ha `readonly` på en select, må du selv stoppe `onKeyDown` og `onMouseDown` for å forhindre endring av tilstanden.
+
+## CSS variabler og data-attributter
+
+Klassen `ds-input` kan bli brukt for å style [`Input`](/no/components/docs/input/overview) og [`Textarea`](/no/components/docs/textarea/overview) også.
+
+<CssVariables />
+
+<CssAttributes />

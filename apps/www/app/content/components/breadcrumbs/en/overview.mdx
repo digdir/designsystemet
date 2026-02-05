@@ -1,0 +1,32 @@
+<Story story="PreviewEn" />
+
+**Use `Breadcrumbs` when**
+- users may want to navigate back to previous levels
+- users need help understanding where they are in the structure
+
+**Avoid `Breadcrumbs` when**
+- the navigation is linear, for example across steps in a workflow or a form
+
+## Examples
+
+### Back button only
+
+Using only a back button can be helpful on mobile or on pages with deep navigation. It is important to stay consistent in your solution and use either a back button or a breadcrumb trail, not both.
+
+<Story story="BackOnlyEn" />
+
+Below is an example of what long navigation can look like.
+
+<Story story="LongItemsEn" />
+
+## Guidelines
+`Breadcrumbs` are only needed when there are three or more levels on a website.
+
+### Placement
+`Breadcrumbs` should always be placed at the top left of the page when using left-to-right text. They should appear below the menu and main navigation, but above the page title.
+
+### Hiding breadcrumbs on mobile
+For deep navigation, you can configure the component to show only the first and last parts of the trail on mobile. This can happen automatically on screens narrower than 650px, where only the link one level down is shown. An implementation example is available in the code tab.
+
+## Text
+Use short and clear names in the breadcrumb trail so that users can quickly understand where they are. The text should match the page headings or navigation labels so that each level is easy to recognise.

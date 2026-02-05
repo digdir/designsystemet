@@ -1,5 +1,117 @@
 # Change Log
 
+## 1.11.0
+
+### Minor Changes
+
+- **Version `1.10.0` was released by accident, and we are skipping to `1.11.0`** ([#4392](https://github.com/digdir/designsystemet/pull/4392))
+  - Version `1.10.0` is deprecated on npm, and not accessible on Github. Use `1.11.0` or newer.
+
+- **avatar-stack**: New experimental component ([#4331](https://github.com/digdir/designsystemet/pull/4331))
+
+### Patch Changes
+
+- **avatar**: added `--dsc-avatar-font-size` to easier override font size ([#4331](https://github.com/digdir/designsystemet/pull/4331))
+
+- Hover styles for cards containing `<a>` inside a heading will no longer propagate to wrapping cards ([#4360](https://github.com/digdir/designsystemet/pull/4360))
+
+- update npm non-major dependencies ([#4336](https://github.com/digdir/designsystemet/pull/4336))
+
+- **card**: Fix focus being clipped on nested `<summary>` ([#4379](https://github.com/digdir/designsystemet/pull/4379))
+
+- **Dialog**: removed media-query that forces 100% width under 640px ([#4345](https://github.com/digdir/designsystemet/pull/4345))
+
+- **dialog**: More gentle animations when using `data-placement` ([#4350](https://github.com/digdir/designsystemet/pull/4350))
+
+- Updated dependencies [[`4d48a81`](https://github.com/digdir/designsystemet/commit/4d48a815c67114f4ff3d102b7b271a343cd491c4)]:
+  - @digdir/designsystemet-types@1.11.0
+
+## 1.9.0
+
+### Minor Changes
+
+- **Dialog**: `data-placement` selector styles the Dialog as a "drawer"-component from the direction given (`left | right | top | bottom` or `center` which is the default) ([#4323](https://github.com/digdir/designsystemet/pull/4323))
+  Added 3 new local variables:
+  - `--dsc-dialog-placement-inline-max-width` (max-width when placement="left | right")
+  - `--dsc-dialog-placement-block-max-width` (max-width when placement="top | bottom")
+  - `--dsc-dialog-transition-duration` (duration for the slide in animations)
+
+### Patch Changes
+
+- **Input, Search, Suggestion, Textfield**: Uppercase Å was cut off at the top in Chrome and Safari, making it look like Ă ([#4301](https://github.com/digdir/designsystemet/pull/4301))
+
+- **link**: Style background, border, and padding regardless of default browser styles ([#4231](https://github.com/digdir/designsystemet/issues/4231)) ([#4302](https://github.com/digdir/designsystemet/pull/4302))
+
+- Add export for a default theme under `/theme`. ([#4328](https://github.com/digdir/designsystemet/pull/4328))
+  If you are using the default theme from `@digdir/designsystemet-theme`, we recommend importing the CSS from `@digdir/designsystemet-css/theme.css` and removing `@digdir/designsystemet-theme` from your dependencies.
+
+## 1.8.0
+
+### Patch Changes
+
+- **badge**: Set `display: inline-flex` on `.ds-badge` ([#4269](https://github.com/digdir/designsystemet/pull/4269))
+
+- Update npm non-major dependencies ([#4242](https://github.com/digdir/designsystemet/pull/4242))
+
+- **select**: Fix `:hover` on `<label>` adding border to `<select>` ([#4248](https://github.com/digdir/designsystemet/pull/4248))
+
+- Update npm non-major dependencies ([#4262](https://github.com/digdir/designsystemet/pull/4262))
+
+## 1.7.3
+
+## 1.7.2
+
+### Patch Changes
+
+- **input**: Remove hover effect when `<label>` is hovered ([#4196](https://github.com/digdir/designsystemet/pull/4196))
+
+- **tag**: Add new variant, `[data-variant="outline"]`. ([#4173](https://github.com/digdir/designsystemet/pull/4173))
+  - To use the old variant, either don't set `data-variant`, or set it to `default`.
+
+- Update npm non-major dependencies ([#4214](https://github.com/digdir/designsystemet/pull/4214))
+
+- **card**: Add support for `<picture>` ([#4137](https://github.com/digdir/designsystemet/pull/4137))
+
+- **search**: Don't set `position: relative`, but use `isolation: isolate` on `.ds-search` ([#4212](https://github.com/digdir/designsystemet/pull/4212))
+  - This removes `z-index` on `button[type="reset"]`
+
+- **tag**: New css variables to go with `[data-variant="outline"]`: ([#4173](https://github.com/digdir/designsystemet/pull/4173))
+  - `--dsc-tag-border-width`
+  - `--dsc-tag-border-color`
+  - `--dsc-tag-border-style`
+
+## 1.7.1
+
+## 1.7.0
+
+### Patch Changes
+
+- **Field**: Set `display: block` on `<label>` ([#4134](https://github.com/digdir/designsystemet/pull/4134))
+
+- **ToggleGroup**: ensure ToggleGroup has same height as Button, and that individual buttons within the group never wrap their text ([#4139](https://github.com/digdir/designsystemet/pull/4139))
+
+- **ToggleGroup**: use correct border-color (`--ds-color-text-default`) to match text/icon color on selected button in secondary variant ([#4139](https://github.com/digdir/designsystemet/pull/4139))
+
+- **Label**: Use `line-height: var(--ds-body-md-line-height);` ([#4134](https://github.com/digdir/designsystemet/pull/4134))
+
+- **Field**: `data-field="description"` no longer gets `margin-top` ([#4134](https://github.com/digdir/designsystemet/pull/4134))
+
+- **chip**: Remove hover effect on `.ds-input` ([#4165](https://github.com/digdir/designsystemet/pull/4165))
+
+## 1.6.1
+
+### Patch Changes
+
+- **pagination**: If direct child of `li` has `aria-hidden="true"` it sets `visibility: hidden;` ([#4123](https://github.com/digdir/designsystemet/pull/4123))
+
+- **input**: Add outline on `:hover` when not `:focus-visible`, `:disabled` or `[readonly]`. This adds a few new CSS variables: ([#4125](https://github.com/digdir/designsystemet/pull/4125))
+  - `--dsc-input-outline-color--hover`
+  - `--dsc-input-outline-color--toggle--hover`
+  - `--dsc-input-outline-width--hover`
+  - `--dsc-input-outline-style--hover`
+
+- **Chip, Tag**: Ensure font size scales correctly with the current size mode by using the token `--ds-body-sm-font-size`. Note: there might be a small visual change for `Chip` used without explicit `data-size`, since it used to have `font-size: 90%`. ([#4098](https://github.com/digdir/designsystemet/pull/4098))
+
 ## 1.6.0
 
 ### Minor Changes
@@ -417,7 +529,7 @@
 - 95f67ce: `ds-input` will now by default fill width.
 - 36cefe3: Rename `Accordion` to `Details`
 - 5a77def: SkipLink: Remove ds-sr-only class
-- 03d776b: Skeleton: Replace Skeleton.Text, Skeleton.Circle and Skeleton.Rectangle with <Skeleton variant="">
+- 03d776b: Skeleton: Replace Skeleton.Text, Skeleton.Circle and Skeleton.Rectangle with `<Skeleton variant="">`
 - 5d1c506: Accordion: Now uses details and summary HTML elements
 - 2238293: Combobox: fix overflow on screens narrower than ~340px
 - c43a438: Label: Fix icon abandoning parent in scroll container
@@ -832,7 +944,7 @@
 
 - Badge: Only use single DOM element for rendering ([#2422](https://github.com/digdir/designsystemet/pull/2422))
 
-- Skeleton: Replace Skeleton.Text, Skeleton.Circle and Skeleton.Rectangle with <Skeleton variant=""> ([#2435](https://github.com/digdir/designsystemet/pull/2435))
+- Skeleton: Replace Skeleton.Text, Skeleton.Circle and Skeleton.Rectangle with `<Skeleton variant="">` ([#2435](https://github.com/digdir/designsystemet/pull/2435))
 
 - Breadcrumbs: Rename `Breadcrumbs.Root` to `Breadcrumbs` and remove `Breadcrumbs.Nav` ([#2428](https://github.com/digdir/designsystemet/pull/2428))
 

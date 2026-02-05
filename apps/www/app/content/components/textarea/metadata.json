@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "Textarea",
+    "subtitle": "`Textarea` brukes når brukeren skal kunne skrive inn tekst som går over flere linjer. "
+  },
+  "en": {
+    "title": "Textarea",
+    "subtitle": "`Textarea` is used when the user needs to enter text that spans multiple lines. "
+  },
+  "image": "Textarea.svg",
+  "cssFile": "input.css"
+}

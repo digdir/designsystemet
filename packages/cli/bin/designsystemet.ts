@@ -8,9 +8,21 @@ import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
 import { writeTokens } from '../src/tokens/create/write.js';
 import { cliOptions, createTokens } from '../src/tokens/create.js';
+import { generateConfigFromTokens } from '../src/tokens/generate-config.js';
 import type { Theme } from '../src/tokens/types.js';
 import { cleanDir } from '../src/utils.js';
 import { parseBuildConfig, parseCreateConfig, readConfigFile } from './config.js';
+
+export const figletAscii = `
+ _____            _                           _                      _
+|  __ \\          (_)                         | |                    | |
+| |  | | ___  ___ _  __ _ _ __  ___ _   _ ___| |_ ___ _ __ ___   ___| |_
+| |  | |/ _ \\/ __| |/ _\` | '_ \\/ __| | | / __| __/ _ \\ '_ \` _ \\ / _ \\ __|
+| |__| |  __/\\__ \\ | (_| | | | \\__ \\ |_| \\__ \\ ||  __/ | | | | |  __/ |_
+|_____/ \\___||___/_|\\__, |_| |_|___/\\__, |___/\\__\\___|_| |_| |_|\\___|\\__|
+                     __/ |           __/ |
+                    |___/           |___/
+`;
 
 program.name('designsystemet').description('CLI for working with Designsystemet').showHelpAfterError();
 
@@ -37,8 +49,8 @@ function makeTokenCommands() {
     .option('--verbose', 'Enable verbose output', false)
     .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILE}")`)
     .option('--experimental-tailwind', 'Generate Tailwind CSS classes for tokens', false)
-
     .action(async (opts) => {
+      console.log(figletAscii);
       const { verbose, clean, dry, experimentalTailwind } = opts;
       const tokensDir = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_CREATE_DIR;
       const outDir = typeof opts.outDir === 'string' ? opts.outDir : './dist/tokens';
@@ -82,6 +94,7 @@ function makeTokenCommands() {
     .option('--theme <string>', 'Theme name (ignored when using JSON config file)', DEFAULT_THEME_NAME)
     .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILE}")`)
     .action(async (opts, cmd) => {
+      console.log(figletAscii);
       if (opts.dry) {
         console.log(`Performing dry run, no files will be written`);
       }
@@ -116,12 +129,44 @@ function makeTokenCommands() {
 program.addCommand(makeTokenCommands());
 
 program
+  .command('generate-config-from-tokens')
+  .description('Generate a config file from existing design tokens. Will not include overrides.')
+  .option('-d, --dir <string>', 'Path to design tokens directory', DEFAULT_TOKENS_CREATE_DIR)
+  .option('-o, --out <string>', 'Output path for config file', DEFAULT_CONFIG_FILE)
+  .option('--dry [boolean]', 'Dry run - show config without writing file', parseBoolean, false)
+  .action(async (opts) => {
+    console.log(figletAscii);
+    const { dry } = opts;
+    const tokensDir = typeof opts.dir === 'string' ? opts.dir : DEFAULT_TOKENS_CREATE_DIR;
+    const outFile = typeof opts.out === 'string' ? opts.out : DEFAULT_CONFIG_FILE;
+
+    try {
+      const config = await generateConfigFromTokens({
+        tokensDir,
+        outFile: dry ? undefined : outFile,
+        dry,
+      });
+
+      if (dry) {
+        console.log();
+        console.log('Generated config (dry run):');
+        console.log(JSON.stringify(config, null, 2));
+      }
+    } catch (error) {
+      console.error(pc.redBright('Error generating config:'));
+      console.error(error instanceof Error ? error.message : String(error));
+      process.exit(1);
+    }
+  });
+
+program
   .command('migrate')
   .description('run a Designsystemet migration')
   .addArgument(new Argument('[migration]', 'Available migrations').choices(Object.keys(migrations)))
   .option('-l --list', 'List available migrations')
   .option('-g --glob <glob>', 'Glob for files upon which to apply the migration', './**/*.(tsx|css)')
   .action((migrationKey, opts) => {
+    console.log(figletAscii);
     const { glob, list } = opts;
 
     if (list) {

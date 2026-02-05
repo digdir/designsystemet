@@ -1,0 +1,62 @@
+<Story story="Preview" />
+
+
+**Bruk `Card` når**
+- innhold skal grupperes
+- funksjonalitet skal skilles ut fra resten av innholdet
+
+**Unngå `Card` når**
+- lange tekstblokker eller detaljerte forklaringer skal vises
+- det er viktige meldinger som bør presenteres som varsler (bruk heller [`Alert`](/no/components/docs/alert/overview))
+
+
+## Eksempel
+
+### Farger
+
+`Card` kommer i alle temafarger, og variantene default og tinted.
+
+<Story story="Variants" />
+
+### Med inndeling
+
+Du kan dele kortet opp i seksjoner. Disse får skillelinjer mellom seg, og kan inneholde bilder eller video som går ut i kanten.
+
+<Story story="Media" />
+
+### Lenkekort
+
+`Card` kan brukes som navigasjonskort for å ta brukerne videre til en annen side. Utvikler må passe på å bruke kortet på rett måte på. Dette er dokumentert i kodeeksemplene.
+
+<Story story="WithLink" />
+
+
+### Kort som er en knapp
+
+I dette eksempelet rendrer `Card` som en knapp.
+Dette er nyttig når `Card` inneholder lite tekst, og skal åpne en dialog eller utføre annen handling på samme side.
+
+**Når kortet er en knapp mister innholdet inni all semantikk, så bruk dette forsiktig.**
+
+<Story story="AsButton" />
+
+### Horisontalt
+
+Du kan endre visningsmodus på kortet, slik at det vises horisontalt i stedet for vertikalt.
+
+<Story story="AsGrid" />
+
+<Story story="AsGridImage" />
+
+## Retningslinjer
+
+`Card` er en fleksibel komponent som brukes til å strukturere og presentere innhold på en tydelig og visuelt avgrenset måte.
+Kortet kan inneholde ulike typer innhold, som tekst, media og lenker, og brukes ofte i oversikter, navigasjon eller for å fremheve enkeltemner.
+
+## Tekst
+
+Teksten i et `Card` skal være tydelig, relevant og gi brukeren nok informasjon til å forstå hva kortet handler om.
+
+Hvordan du utformer teksten kommer an på konteksten. Kortet kan være en inngang til en ny side, et valg i en prosess eller en del av en informasjonsoversikt. Teksten bør gjenspeile det.
+
+Unngå unødvendige detaljer, og sørg for at tittel og beskrivelse henger sammen og gir mening i sammenheng med resten av innholdet.

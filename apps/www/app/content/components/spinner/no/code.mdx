@@ -1,0 +1,54 @@
+<Story story="Preview" />
+<ReactComponentDocs />
+
+## Bruk
+
+```tsx
+import { Spinner } from '@digdir/designsystemet-react';
+
+<Spinner aria-label="Laster" />
+```
+
+## Eksempel
+
+### Størrelser
+
+<Story story="Sizes" />
+
+## HTML
+Legg klassenavnet `ds-spinner` på ein `<svg>`-tagg for å lage ein spinner.
+`<svg>`-en skal ha to `<circle>`-element inni seg for å lage spinneren.
+
+Sjekk kodesnutten under for komplett HTML-struktur.
+
+```html
+<svg
+  aria-label="Henter kaffi"
+  class="ds-spinner"
+  role="img"
+  viewBox="0 0 50 50"
+>
+  <circle
+    class="ds-spinner__background"
+    cx="25"
+    cy="25"
+    r="20"
+    fill="none"
+    stroke-width="5"
+  ></circle>
+  <circle
+    class="ds-spinner__circle"
+    cx="25"
+    cy="25"
+    r="20"
+    fill="none"
+    stroke-width="5"
+  ></circle>
+</svg>
+```
+
+## CSS variabler og data-attributter
+
+<CssVariables />
+
+<CssAttributes />

@@ -22,7 +22,7 @@ export default {
     toolbox: {
       title: 'A common design system',
       description:
-        'Designsystemet is a shared toolbox of foundational UI components, guidelines, and patterns to support the development of digital services. It helps teams build efficiently while ensuring consistent and user-friendly experiences.',
+        'Designsystemet is a shared toolkit of UI components and guidelines for developing digital services. It is free to use, designed to be used with an organisation’s own visual identity, and supports efficient product development and coherent user experiences.',
       link: 'Read more about Designsystemet',
     },
     'components-section': {
@@ -43,6 +43,7 @@ export default {
     },
     'latest-news': {
       title: 'Latest news from Designsystemet',
+      seeAllPosts: 'See all blog posts',
     },
     'join-section': {
       title: 'Join us in developing Designsystemet!',
@@ -54,6 +55,11 @@ export default {
         email: 'Send an email',
       },
     },
+    'collaborators-section': {
+      title: 'Created across services',
+      description:
+        'A joint effort to improve user experiences across public services. Together we develop a common foundation for good, accessible and holistic digital solutions.',
+    },
     meta: {
       title: 'A common digital toolbox',
       description:
@@ -64,7 +70,7 @@ export default {
     tag: 'Blog',
     title: 'Blog',
     description:
-      'The blog features articles about Designsystemet, design, and development. It’s a space for sharing knowledge and experiences across teams.',
+      'Here you will find stories, experiences, and updates from Designsystemet. A place to learn from each other and stay up to date.',
     write: {
       title: 'Want to write for the blog?',
       description:
@@ -82,8 +88,12 @@ export default {
       'Getting Started': 'Getting Started',
       'Design Principles': 'Design Principles',
       Figma: 'Figma',
-      Code: 'Kode',
+      Code: 'Code',
       About: 'About',
+      components: 'Components',
+      getStarted: 'Getting Started',
+      typography: 'Typography',
+      utilities: 'Utilities',
     },
     items: {
       Introduction: 'Introduction',
@@ -99,7 +109,8 @@ export default {
     sidebar: 'sidebar',
   },
   navigation: {
-    fundamentals: 'Fundamentals',
+    intro: 'Intro',
+    fundamentals: 'Get Started',
     'best-practices': 'Best Practices',
     patterns: 'Patterns',
     blog: 'Blog',
@@ -127,6 +138,22 @@ export default {
     title: 'Components',
     description:
       'Designsystemet contains basic components that can be combined in many different ways and in various patterns.',
+    changelog: {
+      title: 'Changelog',
+    },
+    'css-variables': {
+      caption: 'CSS Variables',
+      name: 'Name',
+      value: 'Value',
+    },
+    'no-relevant-data-attributes': 'No relevant data attributes found.',
+    'no-relevant-css-variables': 'No relevant css variables found.',
+    'data-attributes': 'Data Attributes',
+  },
+  component: {
+    overview: 'Overview',
+    code: 'Code',
+    accessibility: 'Accessibility',
   },
   patterns: {
     meta: {
@@ -138,9 +165,14 @@ export default {
       'Patterns are guidelines and recommendations for solving interactions and recurring user tasks. When the same patterns are used across services, they help create recognition and familiarity in the user experience.',
   },
   fundamentals: {
-    title: 'Fundamentals',
+    title: 'Getting started',
     description:
       'Learn more about Designsystemet, the basic design elements, and how to get started as a designer or developer.',
+  },
+  intro: {
+    title: 'Introduction',
+    description:
+      'Designsystemet solves shared challenges in developing digital services through reuse, collaboration, and accessibility support.',
   },
   'best-practices': {
     title: 'Best practices',
@@ -168,36 +200,49 @@ export default {
     'play-video': 'Play video',
     'pause-video': 'Pause video',
   },
-  'token-preview': {
-    size: {
-      description:
-        'The value of size variables is set by the `data-size` attribute.',
-      'select-label': 'Select size (data-size)',
-    },
-    color: {
-      description:
-        'The value of color variables is set by the `data-color` attribute.',
-      'select-label': 'Select color (data-color)',
-    },
-    'search-in-design-tokens': 'Search in design tokens',
-    'search-input-aria-label':
-      'Search for variable names in CSS for design tokens',
-    colors: 'Colors',
-    typography: 'Typography',
-    semantic: 'Semantic tokens',
-    'no-results': 'No results found',
-    table: {
-      variable: 'Variable',
-      value: 'Value',
-      name: 'Name',
-      preview: 'Preview',
-      light: 'Light',
-      dark: 'Dark',
-    },
+  'live-component': {
+    activateA: 'Press',
+    activateB: 'Enter',
+    activateC: 'to start editing',
+    'show-code': 'Show code',
+    'hide-code': 'Hide code',
+    'invert-color-scheme': 'invert color scheme',
+    copy: 'Copy',
+    reset: 'Reset',
   },
   toc: {
-    title: 'Contents',
+    title: 'On this page',
+    feedback: {
+      link: 'Feedback on GitHub',
+      page: 'Do you have any feedback for this page?',
+      component: 'Do you have any feedback for this component?',
+    },
   },
+  do: 'Do',
+  dont: "Don't",
   contributors: 'Contributors',
   editOnGithub: 'Edit this page on github.com (opens in a new tab)',
+  updated: 'Updated',
+  'roi-calculator': {
+    title: 'What can your organisation save?',
+    description:
+      'Use the calculator to estimate how many hours your organisation can save by using Designsystemet in new solutions.',
+    radios: {
+      direct: 'We will use it directly in solutions',
+      build: 'We will build our own design system on top of Designsystemet',
+    },
+    inputs: {
+      newSolutions: {
+        label: 'Number of new solutions per year',
+        suffix: 'new solutions per year',
+      },
+      numberOfDevs: {
+        label: 'Number of developers/designers per solution',
+        suffix: 'man-years per solution',
+      },
+    },
+    savedHours:
+      'The organisation frees up {{hours}} hours per year ({{years}} full-time equivalents).',
+    usageLegend: 'How will you use Designsystemet?',
+  },
 } satisfies typeof no;

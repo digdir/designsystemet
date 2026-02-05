@@ -3,8 +3,8 @@
 React implementation of the Designsystemet components
 
 - Uses `@digdir/designsystemet-css` for styling.
-- Uses `@digdir/designsystemet-theme` or CSS file generated from `@digdir/designsystemet tokens build` for theming.
-  - Build your own theme on https://theme.designsystemet.no/
+- Uses `@digdir/designsystemet-css/theme` or CSS file generated from `@digdir/designsystemet tokens build` for theming.
+  - Build your own theme on https://theme.designsystemet.no/en
 - All components support `ref`.
 - All components support SSR.
   - Use full component name, e.g. `CardBlock` instead of `Card.Block`

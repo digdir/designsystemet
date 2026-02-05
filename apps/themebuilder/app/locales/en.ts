@@ -1,10 +1,12 @@
 import en from '@internal/components/src/_locales/en';
+import themeModal from './en/theme-modal';
 import type no from './no';
 
 export default {
   ...en,
   navigation: {
-    fundamentals: 'Fundamentals',
+    intro: 'Intro',
+    fundamentals: 'Get Started',
     'best-practices': 'Best Practices',
     patterns: 'Patterns',
     blog: 'Blog',
@@ -43,11 +45,27 @@ export default {
     'build-theme': 'Build theme',
     documentation: 'Documentation',
   },
+  configPaste: {
+    title: 'Import from config file',
+    description:
+      'Already have a config file? Paste it here to select and edit a theme.',
+    placeholder: 'Paste your designsystemet.config.json content here...',
+    validate: 'Validate config',
+    'select-theme': 'Select a theme to edit',
+    'validation-error': 'Invalid config file',
+    'validation-success': 'Config is valid! Select a theme below.',
+    'no-themes': 'No themes found in config',
+    'edit-theme': 'Edit theme',
+    button: 'Continue from config file',
+    'dialog-heading': 'Paste config',
+    'import-config': 'Import config',
+  },
   tabs: {
-    overview: 'Overview',
+    examples: 'Examples',
     colorsystem: 'Colour system',
     colors: 'Colours',
     dimensions: 'Dimensions',
+    variables: 'Variables',
   },
   colorPreview: {
     title: 'See your colours in use',
@@ -99,33 +117,9 @@ export default {
     'admin-display': 'Here you can manage display',
     'dark-mode': 'Dark mode',
     'display-mode': 'Display mode',
+    'select-color': 'Choose colour',
   },
-  themeModal: {
-    'use-theme': 'Use theme',
-    'theme-name': 'Give your theme a name',
-    'theme-name-description':
-      'The name should represent the organisation or product you are profiling.',
-    'theme-name-label': 'Theme name',
-    'generate-css': 'Generate CSS',
-    'generating-css': 'Generating CSS...',
-    'step-one':
-      "Copy the code snippet and run it on your machine to generate design tokens (JSON files), or paste it into the Designsystemet's",
-    'figma-plugin': 'Figma plugin (opens in new tab)',
-    in: 'in',
-    'core-ui-kit': 'Core UI Kit (opens in new tab)',
-    'to-update':
-      'to update a theme directly in Figma. Read more about these options on',
-    'own-theme': 'your own theme (opens in new tab)',
-    page: 'page.',
-    format: 'Format for Windows',
-    'step-two': 'Run the code snippet to generate CSS variables for code.',
-    'help-heading': 'Something not working?',
-    'help-description': 'Send us a message on',
-    slack: 'Slack (opens in new tab)',
-    or: 'or create a',
-    'github-issue': 'Github issue (opens in new tab)',
-    color: 'Colour',
-  },
+  themeModal,
   examples: {
     'example-1': 'Example 1',
     'example-2': 'Example 2',
@@ -139,6 +133,7 @@ export default {
     cancel: 'Cancel',
     'remove-color': 'Remove colour',
     'neutral-info': 'The neutral colour cannot be removed or renamed.',
+    'severity-info': 'The severity colour cannot be removed or renamed.',
     name: 'Name',
     'name-placeholder': 'Write the name here...',
     'name-description': 'Use only letters a-z, numbers and hyphens',
@@ -182,5 +177,10 @@ export default {
     medium: 'Medium',
     large: 'Large',
     full: 'Full',
+  },
+  overrides: {
+    heading: 'Color Overrides',
+    description:
+      'Override specific token colors for light and dark modes. Make sure to check contrasts after changes.',
   },
 } satisfies typeof no;

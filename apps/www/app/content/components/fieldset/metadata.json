@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "Fieldset",
+    "subtitle": "`Fieldset` brukes til å gruppere og navngi felt som naturlig hører sammen, for eksempel datofelt eller adressefelt. Komponenten hjelper med å organisere informasjon, gjøre skjemaer mer oversiktlige og forbedre tilgjengeligheten for skjermlesere."
+  },
+  "en": {
+    "title": "Fieldset",
+    "subtitle": "`Fieldset` is used to group and label fields that naturally belong together, such as date fields or address fields. The component helps organize information, make forms more manageable, and improve accessibility for screen readers."
+  },
+  "image": "Fieldset.svg",
+  "cssFile": "fieldset.css"
+}

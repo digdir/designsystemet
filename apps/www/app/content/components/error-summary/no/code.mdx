@@ -1,0 +1,73 @@
+<Story story="Preview" />
+<ReactComponentDocs />
+
+## Bruk
+
+`ErrorSummary` består av flere delkomponenter:
+  - `ErrorSummary.Heading` definerer for overskriften.
+  - `ErrorSummary.List` definerer listen med feil.
+  - Hver feil representeres som en `ErrorSummary.Item` som inneholder en `ErrorSummary.Link`.
+  - Hver `ErrorSummary.Link` må ha en `href` til den unike identifikatoren for et skjemafelt, slik at brukeren kan navigere til riktig sted i skjemaet.
+
+```tsx
+import { ErrorSummary } from '@digdir/designsystemet-react';
+
+<ErrorSummary>
+  <ErrorSummary.Heading>Heading</ErrorSummary.Heading>
+  <ErrorSummary.List>
+    <ErrorSummary.Item>
+      <ErrorSummary.Link href='#some-field-id'>Item</ErrorSummary.Link>
+    </ErrorSummary.Item>
+  </ErrorSummary.List>
+</ErrorSummary>
+```
+
+## Eksempler
+
+### Bruk med tekstfelt
+
+For å at `ErrorSummary.Link` skal navigere til feltene med feil, må feltene ha en unik `id` som samsvarer med `href` i lenken.
+
+<Story story="WithForm" layout="column" />
+
+### Flytte fokus
+
+Under er et eksempel der vi flytter fokus til `ErrorSummary` når den blir synlig.
+
+<Story story="ShowHide" layout="column" />
+
+## HTML
+
+Klassenavnet `ds-error-summary` brukes på en kontainer, standard for React er `<div>`.
+
+Som barn må du ha en heading (gjerne `<h2>`) som har en `id` som kan refereres til med `aria-labelledby` på kontaineren.
+
+Vi legger en `ds-list` etter heading som inneholder en liste med feil.
+Hver feil er en `<li>` med en lenke (`<a>`) som har klassen `ds-link` og et `href` til det aktuelle feltet med feil.
+
+```html
+<div
+  tabindex="-1"
+  aria-labelledby="error-heading"
+  class="ds-error-summary"
+>
+  <h2 class="ds-heading" id="error-heading">For å gå videre må du rette opp følgende feil:</h2>
+  <ul class="ds-list">
+    <li>
+      <a class="ds-link" data-color="neutral" href="#">Fødselsdato kan ikke være etter år 2005</a>
+    </li>
+    <li>
+      <a class="ds-link" data-color="neutral" href="#">Telefonnummer kan kun inneholde siffer</a>
+    </li>
+    <li>
+      <a class="ds-link" data-color="neutral" href="#">E-post må være gyldig</a>
+    </li>
+  </ul>
+</div>
+```
+
+## CSS variabler og data-attributter
+
+<CssVariables />
+
+<CssAttributes />

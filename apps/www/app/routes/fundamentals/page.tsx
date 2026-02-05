@@ -1,10 +1,11 @@
 import { join } from 'node:path';
-import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { Error404 } from '@internal/components';
-import * as Aksel from '@navikt/aksel-icons';
+import { PencilLineIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { useTranslation } from 'react-i18next';
 import { isRouteErrorResponse } from 'react-router';
+import { ColorScaleTable } from '~/_components/color-scale-table/color-scale-table';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { TableOfContents } from '~/_components/table-of-contents/toc';
@@ -60,40 +61,52 @@ export const meta = ({ data }: Route.MetaArgs) => {
 export default function Fundamentals({
   loaderData: { code, frontmatter, lang, toc },
 }: Route.ComponentProps) {
-  const Icon = frontmatter.icon
-    ? // biome-ignore lint/performance/noDynamicNamespaceImportAccess: this should be safe because we prerender the page
-      Aksel[frontmatter.icon as keyof typeof Aksel]
-    : Aksel.LayersIcon;
-
+  const { t } = useTranslation();
+  const feedbackUrl = `https://github.com/digdir/designsystemet/issues/new?template=BLANK_ISSUE&title=Feedback: Fundamentals - ${frontmatter.title}`;
   return (
     <>
       <div className={classes.header}>
         <div className={classes.headerText}>
+          <Heading data-size='xs' asChild>
+            <p>{t('fundamentals.title')}</p>
+          </Heading>
           <Heading data-size='lg' level={1}>
             {frontmatter.title}
           </Heading>
+          {frontmatter.description && (
+            <Paragraph data-size='lg' style={{ marginTop: '12px' }}>
+              {frontmatter.description}
+            </Paragraph>
+          )}
           {frontmatter.date && (
             <div className={classes.date}>
-              {formatDate(frontmatter.date, lang)}
+              {`${t('updated')} ${formatDate(frontmatter.date, lang)}`}
             </div>
           )}
         </div>
-        <div
-          className={cl(
-            classes.iconContainer,
-            classes[frontmatter.color as keyof typeof classes],
-          )}
-        >
-          <Icon fontSize='4rem' aria-hidden='true' />
-        </div>
       </div>
-      <TableOfContents
-        className={classes.tableOfContents}
-        title={frontmatter.title}
-        items={toc}
-      />
+      <TableOfContents items={toc}>
+        <div className='toc-feedback'>
+          <Paragraph data-size='sm'>{t('toc.feedback.page')}</Paragraph>
+          <Button
+            data-color='neutral'
+            data-size='sm'
+            variant='secondary'
+            asChild
+          >
+            <a href={feedbackUrl}>
+              <PencilLineIcon aria-hidden /> {t('toc.feedback.link')}
+            </a>
+          </Button>
+        </div>
+      </TableOfContents>
       <div className={cl(classes.content, 'u-rich-text')}>
-        <MDXComponents code={code} />
+        <MDXComponents
+          code={code}
+          components={{
+            ColorScaleTable: ColorScaleTable as React.ComponentType<unknown>,
+          }}
+        />
         <EditPageOnGithub />
       </div>
     </>

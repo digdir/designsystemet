@@ -1,0 +1,43 @@
+<Alert data-color="warning">
+Suggestion is under development. If you find any issues or missing functionality, please report them on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or in [Slack](/slack).
+</Alert>
+
+<Story story="PreviewEn" />
+
+**Use `Suggestion` when**
+- users need to choose one or several options from a large list  
+- it is helpful that the list is filtered based on what the user types  
+- searching is faster than scrolling  
+
+**Avoid `Suggestion` when**
+- users need to choose between only a few options — use [`Radio`](/en/components/docs/radio/overview) or [`Checkbox`](/en/components/docs/checkbox/overview) instead  
+- users expect an operating-system-native experience — in that case, use a native `<select>` element  
+
+## Example
+
+### Multiple selection
+You can allow users to select several options. Removable `Chip`s will appear after the `<label>` and before the input field.
+
+<Story story='MultipleEn' />
+
+### Filtering
+Filtering is enabled by default, and it searches based on the text in the input field. You can provide your own filter logic. The example below shows how to turn filtering off entirely.
+
+<Story story='Filter' />
+
+## Guidelines
+`Suggestion` works best when users need to find the right option within a large list. The strength of the component lies in its ability to filter as the user types, making it easier to navigate many choices.
+
+## Text
+Use a clear label that explains what the user is expected to choose.
+
+<div className="dodont-row">
+  <DoDont story="DoIcon">
+    Use a clear and descriptive label that states what the user should select.
+  </DoDont>
+  <DoDont story="DontIcon">
+    The label should describe the information, not how the field is used.
+  </DoDont>
+</div>
+
+Each option should be short — ideally one word or a brief phrase. If no results are found, show a concise message such as “No results”.

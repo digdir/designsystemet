@@ -68,7 +68,8 @@
 
   /* Add states when Card is a anchor, button, or when containing a anchor in heading */
   &:where(a, button, [role='button']),
-  &:where(:has(:is(h1, h2, h3, h4, h5, h6) a)) {
+  /* Match cards containing heading with a link, but exclude outer cards  */
+    &:where(:has(:is(h1, h2, h3, h4, h5, h6) a)):where(:not(:has(&))) {
     cursor: pointer;
     text-decoration: none;
 
@@ -93,9 +94,21 @@
 
   & > .ds-details:first-child {
     border-top: 0;
+
+    & > summary,
+    & > u-summary {
+      border-top-left-radius: var(--dsc-card-border-radius);
+      border-top-right-radius: var(--dsc-card-border-radius);
+    }
   }
   & > .ds-details:last-child {
     border-bottom: 0;
+
+    &:not([open]) > summary,
+    &:not([open]) > u-summary {
+      border-bottom-left-radius: var(--dsc-card-border-radius);
+      border-bottom-right-radius: var(--dsc-card-border-radius);
+    }
   }
 }
 
@@ -137,10 +150,11 @@
     translate: -100%;
   }
 
-  &:has(> :is(audio, figure, iframe, img, video):only-child) {
+  &:has(> :is(audio, figure, iframe, img, picture, video):only-child) {
     padding: 0;
 
-    & > :not([hidden]) {
+    & > :not([hidden]),
+    & > picture img:not([hidden]) {
       border: 0;
       display: block;
       height: auto;

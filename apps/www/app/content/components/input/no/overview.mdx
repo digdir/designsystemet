@@ -1,0 +1,43 @@
+<Story story="Preview" />
+
+**Bruk `Input` når**
+- du trenger et grunnleggende inputfelt uten ekstra funksjonalitet
+- du skal bygge spesialtilpassede felt eller sammensatte komponenter
+- du vil styre egen logikk for feilvisning og hjelpetekster
+
+**Unngå `Input` når**
+- du trenger et komplett skjemafelt med label, hjelpetekst og valideringsmelding, bruk heller [`Textfield`](/no/components/docs/textfield/overview)
+- feltet krever tilleggslogikk som allerede finnes i høyere komponenter som [`Textfield`](/no/components/docs/textfield/overview)
+
+## Eksempel
+
+Dette er en komponent som blir brukt for å bygge opp andre komponenter, som for eksempel `Textfield`. Av den grunn vil ikke denne komponenten ha mange eksempler og tilhørende tekst.
+
+### Med label
+
+<Story story="WithLabel" />
+
+### Med feil
+
+<Story story="WithError" />
+
+### Disabled
+
+Unngå bruk av `disabled` der det er mulig. Vurder heller å bruke `readOnly`.
+
+<Story story="Disabled" />
+
+### ReadOnly
+
+<Story story="ReadOnly" />
+
+## Retningslinjer
+
+Se retningslinjer for [`Textfield`](/no/components/docs/textfield/overview).
+
+### Plassering av ledeteksten
+
+Ledeteksten og eventuell beskrivelse skal alltid stå over tekstfeltet. Dette gjør dem lette å se på små skjermer og hindres ikke av eventuelle feilmeldinger.
+
+
+I spesielle tilfeller kan vi skjule ledeteksten ved å ikke bruke `Label`. Det kan for eksempel være i tabeller, hvis feltet får ledeteksten fra tabelloverskriften. Selv om vi har tenkt å skjule ledeteksten, må vi alltid skrive en ledetekst som gir mening, siden den leses opp av skjermlesere. Det kan gjøres i en `aria-label` eller `aria-labelledby`.

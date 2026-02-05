@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "Dropdown",
+    "subtitle": "`Dropdown` er en generisk nedtrekksliste. Den legger grunnmuren for å bygge menyer og lister. "
+  },
+  "en": {
+    "title": "Dropdown",
+    "subtitle": "`Dropdown` is a generic dropdown list. It lays the foundation for building menus and lists."
+  },
+  "image": "Dropdown.svg",
+  "cssFile": "dropdown.css"
+}

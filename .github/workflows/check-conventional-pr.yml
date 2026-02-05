@@ -18,10 +18,8 @@ jobs:
   lint-pr:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       # check for the most recent release: https://github.com/CondeNast/conventional-pull-request-action/releases
       - uses: CondeNast/conventional-pull-request-action@3ce30fdb4d2beef8b941f23a1114dd8188eba082 # v0.2.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          commitlintRulesPath: './commitlint.rules.js'

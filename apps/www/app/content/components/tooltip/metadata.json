@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "Tooltip",
+    "subtitle": "`Tooltip` viser kort informasjon når brukeren holder musepekeren over eller fokuserer på et element. Den brukes til sekundær informasjon, for eksempel til å forklare hva et symbol betyr."
+  },
+  "en": {
+    "title": "Tooltip",
+    "subtitle": "`Tooltip` displays brief information when the user hovers over or focuses on an element. It is used for secondary information, such as explaining the meaning of an icon."
+  },
+  "image": "Tooltip.svg",
+  "cssFile": "tooltip.css"
+}

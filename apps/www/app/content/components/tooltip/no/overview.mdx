@@ -1,0 +1,35 @@
+<Story story="Preview" />
+
+**Bruk `Tooltip` når**
+* et symbol trenger en kort forklaring  
+* handlingen til et interaktivt element skal beskrives
+* du skal vise tastatursnarveier
+
+**Unngå `Tooltip` når**
+* teksten allerede er synlig på siden
+* forklaringen er lengre enn fire ord, bruk heller [`Popover`](/no/components/docs/popover/overview) 
+* innholdet inneholder lenker eller andre interaktive elementer, bruk heller [`Popover`](/no/components/docs/popover/overview)  
+
+## Eksempel
+
+### Med tekst
+
+<Story story="WithString" />
+
+### Plassering
+Vurder om `Tooltip` skal plasseres over, under eller ved siden av elementet. 
+
+<Story story="Placement" />
+
+## Retningslinjer
+`Tooltip` gir kort tilleggsinformasjon uten å forstyrre hovedinnholdet.`Tooltip` er ikke ment for informasjon som er essensiell for å fullføre oppgaven.
+Viktig innhold bør i stedet plasseres som brødtekst eller hjelpetekst på selve siden.
+
+Hvis det er behov for å vise rikt innhold, for eksempel lengre tekster, bilder eller knapper, kan vi i stedet bruke en [`Popover`](/no/components/docs/popover/overview).
+
+`Tooltip` skal aldri brukes som erstatning for `alt`-tekst eller `title`.
+
+## Tekst
+En `Tooltip` skal ikke inneholde mer enn en setning eller maks fire ord, for å unngå at de blokkerer annet viktig innhold på skjermen.
+
+`Tooltip` skal ikke gjenta tekst som allerede finnes på siden. Den skal tilby ekstra hjelp eller forklaringer som ikke er åpenbare ved første øyekast.

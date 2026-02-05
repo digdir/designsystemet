@@ -3,9 +3,9 @@
   box-shadow: var(--ds-shadow-sm);
   border: none;
   border-radius: 8px;
+  padding: var(--ds-size-8);
 
   position: relative;
-  z-index: 2;
   height: 100%;
   @media (prefers-reduced-motion: no-preference) {
     transition:
@@ -83,9 +83,11 @@
   margin-top: var(--ds-size-5);
   margin-bottom: var(--ds-size-5);
   text-align: center;
-  text-decoration: underline;
-  text-underline-offset: 7px;
   line-height: 1.4em;
+  a {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
 }
 
 .desc {

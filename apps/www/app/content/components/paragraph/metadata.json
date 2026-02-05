@@ -1,0 +1,13 @@
+{
+  "category": "typography",
+  "no": {
+    "title": "Paragraph",
+    "subtitle": "`Paragraph` brukes til løpende tekst og benyttes typisk i artikler, komponenter, hjelpetekster og lignende."
+  },
+  "en": {
+    "title": "Paragraph",
+    "subtitle": "`Paragraph` is used for continuous text and is typically applied in articles, components, help text, and similar content."
+  },
+  "image": "Paragraph.svg",
+  "cssFile": "paragraph.css"
+}

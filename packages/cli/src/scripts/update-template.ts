@@ -1,16 +1,17 @@
 import path from 'node:path';
 import pc from 'picocolors';
 import * as R from 'ramda';
-import semanticColorJson from '../../../../internal/design-tokens/semantic/color.json' with { type: 'json' };
-import accentColorCategoryJson from '../../../../internal/design-tokens/semantic/modes/main-color/accent.json' with {
+import semanticColorJson from '../../../../design-tokens/semantic/color.json' with { type: 'json' };
+import accentColorCategoryJson from '../../../../design-tokens/semantic/modes/main-color/accent.json' with {
   type: 'json',
 };
-import digdirThemeJson from '../../../../internal/design-tokens/themes/digdir.json' with { type: 'json' };
+import designsystemetThemeJson from '../../../../design-tokens/themes/designsystemet.json' with { type: 'json' };
 import { cleanDir, cp, mkdir, readFile, writeFile } from '../utils.js';
 
 const DIRNAME: string = import.meta.dirname || __dirname;
 
-const SOURCE_FILES_PATH = path.join(DIRNAME, '../../../../internal/design-tokens');
+const themeName = 'designsystemet';
+const SOURCE_FILES_PATH = path.join(DIRNAME, '../../../../design-tokens');
 const TEMPLATE_FILES_PATH = path.join(DIRNAME, '../tokens/template/design-tokens');
 
 const designTokensPath = (_path: string) => path.join(SOURCE_FILES_PATH, _path);
@@ -40,18 +41,20 @@ export const updateTemplates = async () => {
    */
 
   // primitives/modes/typography/<theme>.json
-  const digdirTypographyJson = await readFile(designTokensPath('primitives/modes/typography/primary/digdir.json'));
+  const designsystemetTypographyJson = await readFile(
+    designTokensPath(`primitives/modes/typography/primary/${themeName}.json`),
+  );
 
   const typographyTemplate = R.set(
-    R.lensPath(['digdir', 'font-family', '$value']),
+    R.lensPath([themeName, 'font-family', '$value']),
     '<font-family>',
-    JSON.parse(digdirTypographyJson),
+    JSON.parse(designsystemetTypographyJson),
   );
   const typographyDir = path.join(TEMPLATE_FILES_PATH, 'primitives/modes/typography/');
   await mkdir(typographyDir);
   await writeFile(
     path.join(typographyDir, 'typography.template.json'),
-    JSON.stringify(typographyTemplate, null, 2).replaceAll('digdir', '<theme>'),
+    JSON.stringify(typographyTemplate, null, 2).replaceAll(themeName, '<theme>'),
   );
 
   // semantic/modes/<category>-color/<color>.json
@@ -66,9 +69,18 @@ export const updateTemplates = async () => {
   // semantic/color.json
   const colorBaseFile = {
     ...semanticColorJson,
-    // Remove custom colors as they are defined from by theme
-    color: R.omit(['accent', 'neutral', 'brand1', 'brand2', 'brand3'], semanticColorJson.color),
+    // Remove custom colors and severity colors as they are defined by theme
+    color: R.pick(['focus'], semanticColorJson.color),
+    link: {
+      color: {
+        visited: {
+          $type: 'color',
+          $value: '{color.link.visited}',
+        },
+      },
+    },
   };
+
   await writeFile(
     path.join(TEMPLATE_FILES_PATH, `semantic/color.base.template.json`),
     JSON.stringify(colorBaseFile, null, 2),
@@ -83,19 +95,19 @@ export const updateTemplates = async () => {
   // themes/<theme>.json
   const themeBaseFile = {
     color: {},
-    ...R.omit(['color'], digdirThemeJson),
+    ...R.omit(['color'], designsystemetThemeJson),
   };
 
   await mkdir(path.join(TEMPLATE_FILES_PATH, 'themes'));
   await writeFile(
     path.join(TEMPLATE_FILES_PATH, `themes/theme.base.template.json`),
-    JSON.stringify(themeBaseFile, null, 2).replaceAll('digdir', '<theme>'),
+    JSON.stringify(themeBaseFile, null, 2).replaceAll(themeName, '<theme>'),
   );
 
-  const themeColorTemplate = digdirThemeJson.color.accent;
+  const themeColorTemplate = designsystemetThemeJson.color.accent;
   await writeFile(
     path.join(TEMPLATE_FILES_PATH, `themes/theme.template.json`),
-    JSON.stringify(themeColorTemplate, null, 2).replaceAll('digdir.accent', '<theme>.<color>'),
+    JSON.stringify(themeColorTemplate, null, 2).replaceAll(`${themeName}.accent`, '<theme>.<color>'),
   );
 
   console.log(pc.green('Templates updated'));

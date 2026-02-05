@@ -1,5 +1,171 @@
 # Change Log
 
+## 1.11.0
+
+### Minor Changes
+
+- **Version `1.10.0` was released by accident, and we are skipping to `1.11.0`** ([#4392](https://github.com/digdir/designsystemet/pull/4392))
+  - Version `1.10.0` is deprecated on npm, and not accessible on Github. Use `1.11.0` or newer.
+
+### Patch Changes
+
+- update npm non-major dependencies ([#4373](https://github.com/digdir/designsystemet/pull/4373))
+
+- Update dependency zod-validation-error to v5 ([#4401](https://github.com/digdir/designsystemet/pull/4401))
+
+- Update dependency colorjs.io to ^0.6.0 ([#4372](https://github.com/digdir/designsystemet/pull/4372))
+
+- Remove `change-case` as dependency ([#4343](https://github.com/digdir/designsystemet/pull/4343))
+
+- Update `@types/node` to `24.10.7` ([#4396](https://github.com/digdir/designsystemet/pull/4396))
+  - This does not affect the node versions we support
+
+- update npm non-major dependencies ([#4336](https://github.com/digdir/designsystemet/pull/4336))
+
+- update npm non-major dependencies ([#4398](https://github.com/digdir/designsystemet/pull/4398))
+
+- Update npm non-major dependencies ([#4347](https://github.com/digdir/designsystemet/pull/4347))
+
+- Updated dependencies [[`4d48a81`](https://github.com/digdir/designsystemet/commit/4d48a815c67114f4ff3d102b7b271a343cd491c4)]:
+  - @digdir/designsystemet-types@1.11.0
+
+## 1.9.0
+
+### Minor Changes
+
+- Add ability to override focus colors from config: ([#4320](https://github.com/digdir/designsystemet/pull/4320))
+
+  ```json
+  {
+    "overrides": {
+      "focus": {
+        "inner": { "light": "HEX", "dark": "HEX" },
+        "outer": { "light": "HEX", "dark": "HEX" }
+      }
+    }
+  }
+  ```
+
+  This comes with a change to you design tokens, where focus colors are now on the theme layer.
+  Make sure you rebuild your tokens: `npx @digdir/designsystemet tokens create <options> --clean`
+
+### Patch Changes
+
+- Update `@tokens-studio/sd-transforms` to `2.0.3` ([#4315](https://github.com/digdir/designsystemet/pull/4315))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.9.0
+
+## 1.8.0
+
+### Minor Changes
+
+- Move submodule `@digdir/designsystemet/types` to a new package `@digdir/designsystemet-types` and change all references. ([#4241](https://github.com/digdir/designsystemet/pull/4241))
+
+  After re-running `tokens build` downstream, this removes transitive dependencies on runtime dependencies on CLI tools like `commander` and `style-dictionary` which are never used in runtime, but are required for the CLI to function. It also makes code which doesn't use the CLI unaffected by our node version limitations (currently >= 22 due to `style-dictionary`).
+
+  `@digdir/designsystemet/types` is preserved for now as a deprecated re-export of `@digdir/designsystemet-types` to avoid breaking people's builds.
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4275](https://github.com/digdir/designsystemet/pull/4275))
+
+- Update npm non-major dependencies ([#4242](https://github.com/digdir/designsystemet/pull/4242))
+
+- Update npm non-major dependencies ([#4262](https://github.com/digdir/designsystemet/pull/4262))
+
+- Update dependency @tokens-studio/sd-transforms to v2 ([#4271](https://github.com/digdir/designsystemet/pull/4271))
+
+- Updated dependencies [[`c2faf2e`](https://github.com/digdir/designsystemet/commit/c2faf2ee545628ca03fef0409c7b5811edd22d74)]:
+  - @digdir/designsystemet-types@1.8.0
+
+## 1.7.3
+
+## 1.7.2
+
+### Patch Changes
+
+- Add option to override `linkVisited` color in config: ([#4182](https://github.com/digdir/designsystemet/pull/4182))
+
+  ```json
+  "theme": {
+    "overrides": {
+      "linkVisited": {
+        "light": "#ff1234",
+        "dark": "#1234ff"
+      }
+    }
+  }
+  ```
+
+- New command that lets you generate a config file from your design tokens: ([#4207](https://github.com/digdir/designsystemet/pull/4207))
+  `npx @digdir/designsystemet generate-config-from-tokens --dir <path to design tokens>`
+  - This command does not include any overrides you may have done.
+
+- Update npm non-major dependencies ([#4193](https://github.com/digdir/designsystemet/pull/4193))
+
+- Update npm non-major dependencies ([#4214](https://github.com/digdir/designsystemet/pull/4214))
+
+- For your config file, you can now get the schema file from designsystemet.no ([#4195](https://github.com/digdir/designsystemet/pull/4195))
+  ```json
+  "$schema": "https://designsystemet.no/schemas/cli/[VERSION].json"
+  ```
+
+## 1.7.1
+
+## 1.7.0
+
+### Minor Changes
+
+- Restructure design tokens: ([#4105](https://github.com/digdir/designsystemet/pull/4105))
+  - Removes `primitives/modes/color-scheme/[dark/light]/global.json`
+  - Removes global colors (red, green, blue, orange, purple)
+  - Moved severity colors directly to your theme file
+  - `"link.color.visited"` now references `"$value": "color.link.visited"` from your theme file
+
+  Make sure to regenerate your design tokens: `npx @digdir/designsystemet tokens create <options> --clean`
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4147](https://github.com/digdir/designsystemet/pull/4147))
+
+- Export zod schema and type for config file: ([#4170](https://github.com/digdir/designsystemet/pull/4170))
+  - `configSchema`
+  - `type ConfigSchema`
+
+- Add option override severity colors from config. ([#4105](https://github.com/digdir/designsystemet/pull/4105))
+  You can override the base-hexcode, as well as individual steps:
+
+  ```json
+  "theme": {
+    "overrides": {
+      "colors": {
+        "danger": {
+          "background-default": {
+            "light": "#0000ff",
+            "dark": "#0000ff"
+          }
+        }
+      },
+      "severity": {
+        "danger": "#ff00ff"
+      }
+    }
+  }
+  ```
+
+- Update npm non-major dependencies ([#4167](https://github.com/digdir/designsystemet/pull/4167))
+
+- Update dependency ramda to ^0.32.0 ([#4146](https://github.com/digdir/designsystemet/pull/4146))
+
+## 1.6.1
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4129](https://github.com/digdir/designsystemet/pull/4129))
+
+- Update npm non-major dependencies ([#4110](https://github.com/digdir/designsystemet/pull/4110))
+
 ## 1.6.0
 
 ### Patch Changes
@@ -7,17 +173,19 @@
 - Add possiblity to override colors in config: ([#4073](https://github.com/digdir/designsystemet/pull/4073))
 
   ```json
-  "theme": {
-    "overrides": {
-      "colors": {
-        "dominant": {
-          "background-default": {
-            "light": "#ff0000",
-            "dark": "#000fff"
-          },
-          "background-tinted": {
-            "light": "#f0ff00",
-            "dark": "#ff00ff"
+  {
+    "theme": {
+      "overrides": {
+        "colors": {
+          "dominant": {
+            "background-default": {
+              "light": "#ff0000",
+              "dark": "#000fff"
+            },
+            "background-tinted": {
+              "light": "#f0ff00",
+              "dark": "#ff00ff"
+            }
           }
         }
       }
@@ -29,7 +197,7 @@
 
 - Update npm non-major dependencies ([#4093](https://github.com/digdir/designsystemet/pull/4093))
 
-- Update supported engines. Now supports node >=20 <25 ([#3925](https://github.com/digdir/designsystemet/pull/3925))
+- Update supported engines. Now supports node `>=20 <25` ([#3925](https://github.com/digdir/designsystemet/pull/3925))
 
 ## 1.5.1
 

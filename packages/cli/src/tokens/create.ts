@@ -1,6 +1,6 @@
 import type { ColorScheme } from '../colors/types.js';
 import { getDefaultToken, getDefaultTokens } from './create/defaults.js';
-import { generateColorGlobal, generateColorScheme } from './create/generators/color.js';
+import { generateColorScheme } from './create/generators/color.js';
 import { generateSemantic } from './create/generators/semantic.js';
 import { generateTheme } from './create/generators/theme.js';
 import { generateTypography } from './create/generators/typography.js';
@@ -28,7 +28,7 @@ export const createTokens = async (opts: Theme) => {
   const { colors, typography, name, borderRadius, overrides } = opts;
   const colorSchemes: ColorScheme[] = ['light', 'dark'];
 
-  const semantic = generateSemantic(colors);
+  const semantic = generateSemantic(colors, name);
 
   const tokenSets: TokenSets = new Map([
     ...getDefaultTokens([
@@ -44,7 +44,6 @@ export const createTokens = async (opts: Theme) => {
     [`primitives/modes/typography/primary/${name}`, generateTypography(name, typography)],
     [`primitives/modes/typography/secondary/${name}`, generateTypography(name, typography)],
     ...colorSchemes.flatMap((scheme): [string, TokenSet][] => [
-      [`primitives/modes/color-scheme/${scheme}/global`, generateColorGlobal(scheme)],
       [`primitives/modes/color-scheme/${scheme}/${name}`, generateColorScheme(name, scheme, colors, overrides)],
     ]),
     [`themes/${name}`, generateTheme(colors, name, borderRadius)],

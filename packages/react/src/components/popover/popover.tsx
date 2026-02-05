@@ -1,4 +1,4 @@
-import type { Color, SeverityColors } from '@digdir/designsystemet/types';
+import type { Color, SeverityColors } from '@digdir/designsystemet-types';
 import type { MiddlewareState, Placement } from '@floating-ui/dom';
 import {
   autoUpdate,
@@ -131,12 +131,13 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
 
         if (isTrigger) {
           event.preventDefault(); // Prevent native Popover API
-          setInternalOpen((open) => !open);
-          onOpen?.();
         }
-        if (isOutside && internalOpen) {
+        if (controlledOpen && (isTrigger || isOutside)) {
           setInternalOpen(false);
           onClose?.();
+        } else if (!controlledOpen && isTrigger) {
+          setInternalOpen(true);
+          onOpen?.();
         }
       };
 
@@ -183,7 +184,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
               arrowPseudoElement,
             ],
           }).then(({ x, y }) => {
-            popover.style.translate = `${x}px ${y}px`;
+            popover.style.translate = `${Math.round(x)}px ${Math.round(y)}px`;
           });
         });
     }, [controlledOpen, placement, id, autoPlacement]);

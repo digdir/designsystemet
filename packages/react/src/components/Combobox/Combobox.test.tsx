@@ -372,6 +372,6 @@ describe('Combobox', () => {
     });
     const combobox = screen.getByRole('combobox');
 
-    expect(combobox).toHaveAccessibleName('CSS (Cascading Style Sheets)');
+    expect(combobox).toHaveAccessibleName('CSS(Cascading Style Sheets)');
   });
 });

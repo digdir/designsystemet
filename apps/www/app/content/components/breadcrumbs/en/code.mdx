@@ -1,0 +1,102 @@
+<Story story="PreviewEn" />
+
+## Usage
+
+The last link in `Breadcrumbs` is automatically marked with `aria-current="page"`.
+
+```tsx
+<Breadcrumbs aria-label="You are here:">
+<Breadcrumbs.Link aria-label="Back to level 3">Level 3</Breadcrumbs.Link>
+<Breadcrumbs.List>
+<Breadcrumbs.Item>
+<Breadcrumbs.Link href="https://designsystemet.no/">Level 1</Breadcrumbs.Link>
+</Breadcrumbs.Item>
+<Breadcrumbs.Item>
+<Breadcrumbs.Link href="https://designsystemet.no/niva-2/">Level 2</Breadcrumbs.Link>
+</Breadcrumbs.Item>
+</Breadcrumbs.List>
+</Breadcrumbs>
+```
+
+## Examples
+
+### Back button only
+
+If you place a `Breadcrumbs.Link` directly in `Breadcrumbs`, the link will be displayed as a back button. It is important that you are consistent in your solution, and use either the back button or the path, not both.
+
+<Story story="BackOnlyEn" />
+
+### Path only
+
+If you only put `Breadcrumbs.List` directly in `Breadcrumbs`, it will always be displayed as a path.
+This means that you will get the same display on both mobile and desktop.
+
+<Story story="ListOnlyEn" />
+
+### Path or back button based on screen width
+
+If you put both a `Breadcrumbs.Link` and a `Breadcrumbs.List` directly in `Breadcrumbs`, the back button will be displayed on screens narrower than 650px, and the path will be displayed on wider screens.
+
+<Story story="MobileViewportEn" />
+
+## HTML
+
+The class name `ds-breadcrumbs` is placed on a `<nav>` element.
+This element should also have an `aria-label` that explains the function of the navigation, for example "You are here:".
+You do not need an `aria-label` if you have a visible heading that explains the function of the navigation.
+
+If you only want to display the path, put `<ol>` directly inside the `<nav>` element. The chevron between the elements is added automatically.
+
+**It is important that the last page is marked with `aria-current="page"`.**
+
+```html
+<nav class="ds-breadcrumbs" aria-label="You are here:">
+<ol>
+<li>
+<a href="#" class="ds-link">Level 1</a>
+</li>
+<li>
+<a href="#" class="ds-link">Level 2</a>
+</li>
+<li>
+<a href="#" class="ds-link">Level 3</a>
+</li>
+</ol>
+</nav>
+```
+
+### Back button only
+
+```html
+<nav class="ds-breadcrumbs" aria-label="You are here:">
+<a href="#" class="ds-link">Back to level 2</a>
+</nav>
+```
+
+### Path or back button based on screen width
+
+```html
+<nav aria-label="You are here:" class="ds-breadcrumbs">
+<a class="ds-link" href="#" aria-label="Back to Level 3">Level 3</a>
+<ol>
+<li>
+<a class="ds-link" href="#">Level 1</a>
+</li>
+<li>
+<a class="ds-link" href="#">Level 2</a>
+</li>
+<li>
+<a class="ds-link" href="#">Level 3</a>
+</li>
+<li>
+<a class="ds-link" href="#" aria-current="page">Level 4</a>
+</li>
+</ol>
+</nav>
+```
+
+## CSS variables and data attributes
+
+<CssVariables />
+
+<CssAttributes />

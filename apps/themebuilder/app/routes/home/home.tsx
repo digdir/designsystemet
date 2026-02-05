@@ -1,9 +1,15 @@
-import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
+import {
+  Button,
+  Dialog,
+  Heading,
+  Paragraph,
+} from '@digdir/designsystemet-react';
 import { ContentContainer } from '@internal/components';
 import { BookIcon, PaletteIcon } from '@navikt/aksel-icons';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
+import { ConfigPaste } from '~/_components/config-paste/config-paste';
 import { Previews } from '~/_components/previews/previews';
 import { generateMetadata } from '~/_utils/metadata';
 import i18n from '~/i18next.server';
@@ -35,6 +41,8 @@ export const meta: Route.MetaFunction = ({ data }: Route.MetaArgs) => {
 
 export default function Home({ params: { lang } }: Route.ComponentProps) {
   const { t } = useTranslation();
+
+  const configPasteDialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
     window.addEventListener('scroll', isSticky);
@@ -75,15 +83,34 @@ export default function Home({ params: { lang } }: Route.ComponentProps) {
             </Button>
             <Button data-color='neutral' variant='secondary' asChild>
               <Link
-                to={`https://www.designsystemet.no/${lang}/fundamentals/themebuilder/own-theme`}
+                to={`https://www.designsystemet.no/${lang}/fundamentals/start-here/own-theme`}
               >
                 <BookIcon fontSize='1.5rem' aria-hidden />
                 {t('themeBuilder.documentation')}
               </Link>
             </Button>
+            <Button
+              onClick={() => configPasteDialogRef.current?.showModal()}
+              className={classes.configButton}
+              variant='tertiary'
+            >
+              {t('configPaste.button')}
+            </Button>
           </div>
         </div>
         <Previews />
+        <Dialog
+          ref={configPasteDialogRef}
+          closedby='any'
+          className={classes.configDialog}
+        >
+          <Dialog.Block>
+            <Heading level={2}>{t('configPaste.dialog-heading')}</Heading>
+          </Dialog.Block>
+          <Dialog.Block>
+            <ConfigPaste />
+          </Dialog.Block>
+        </Dialog>
       </ContentContainer>
     </main>
   );

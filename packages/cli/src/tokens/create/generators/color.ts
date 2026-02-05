@@ -1,9 +1,9 @@
 import * as R from 'ramda';
-import { colorMetadata } from '../../../colors/colorMetadata.js';
-import { baseColors, generateColorScale } from '../../../colors/index.js';
+import { baseColors, colorMetadata, dsLinkColor } from '../../../colors/colorMetadata.js';
+import { generateColorScale } from '../../../colors/index.js';
 import type { Color, ColorScheme } from '../../../colors/types.js';
 import type { ColorOverrideSchema } from '../../../config.js';
-import type { Colors, TokenSet } from '../../types.js';
+import type { Colors, Token, TokenSet } from '../../types.js';
 
 const generateColor = (colorArray: Color[], overrides?: Record<number, string>): TokenSet => {
   const obj: TokenSet = {};
@@ -65,31 +65,51 @@ export const generateColorScheme = (
     colors.support,
   );
 
-  const neutral = generateColor(generateColorScale(colors.neutral, colorScheme), createColorOverrides('neutral'));
+  const neutralColorScale = generateColorScale(colors.neutral, colorScheme);
+  const neutral = generateColor(neutralColorScale, createColorOverrides('neutral'));
+
+  const baseColorsWithOverrides = {
+    ...baseColors,
+    ...overrides?.severity,
+  };
+
+  const globalColors = R.mapObjIndexed(
+    (color, colorName) => generateColor(generateColorScale(color, colorScheme), createColorOverrides(colorName)),
+    baseColorsWithOverrides,
+  );
+
+  const linkColor = generateColor(generateColorScale(dsLinkColor, colorScheme));
+  const defaultLinkVisited = linkColor[12];
+  const linkOverride: Token | undefined = overrides?.linkVisited?.[colorScheme as 'light' | 'dark']
+    ? ({ $type: 'color', $value: overrides.linkVisited[colorScheme as 'light' | 'dark'] } as Token)
+    : undefined;
+
+  /* Default focus-inner is position 1 (background-default), focus-outer is position 11 (text-default) */
+  const defaultFocusInner = neutralColorScale[0].hex;
+  const defaultFocusOuter = neutralColorScale[10].hex;
+
+  const focusInnerOverride = overrides?.focus?.inner?.[colorScheme as 'light' | 'dark'];
+  const focusOuterOverride = overrides?.focus?.outer?.[colorScheme as 'light' | 'dark'];
 
   return {
     [themeName]: {
       ...main,
       ...support,
       neutral,
-    },
-  };
-};
-
-export const generateColorGlobal = (colorScheme: ColorScheme): TokenSet => {
-  const blueScale = generateColorScale(baseColors.blue, colorScheme);
-  const greenScale = generateColorScale(baseColors.green, colorScheme);
-  const orangeScale = generateColorScale(baseColors.orange, colorScheme);
-  const purpleScale = generateColorScale(baseColors.purple, colorScheme);
-  const redScale = generateColorScale(baseColors.red, colorScheme);
-
-  return {
-    global: {
-      blue: generateColor(blueScale),
-      green: generateColor(greenScale),
-      orange: generateColor(orangeScale),
-      purple: generateColor(purpleScale),
-      red: generateColor(redScale),
+      ...globalColors,
+      link: {
+        visited: linkOverride || defaultLinkVisited,
+      },
+      focus: {
+        inner: {
+          $type: 'color',
+          $value: focusInnerOverride || defaultFocusInner,
+        } as Token,
+        outer: {
+          $type: 'color',
+          $value: focusOuterOverride || defaultFocusOuter,
+        } as Token,
+      },
     },
   };
 };

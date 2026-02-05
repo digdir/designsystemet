@@ -1,0 +1,51 @@
+<Story story="Preview" />
+
+**Bruk `Tabs` når** 
+* innhold skal struktureres uten å laste en ny side
+* informasjonen med fordel kan deles opp i tydelig merkede seksjoner
+* navigasjonen blir enklere ved at brukeren slipper å se alt innhold samtidig
+
+**Unngå `Tabs` når**
+* det er viktig å gi en umiddelbar oversikt over innholdet
+* innhold må kunne sammenlignes på tvers av seksjoner
+* brukeren skal gjennom en stegvis prosess der rekkefølgen er viktig
+* store mengder innhold gjør at siden kan bli treg å laste
+* innholdet like godt kan vises samlet på én side eller fordeles på flere sider
+
+## Eksempel
+
+### Kun ikoner
+`Tabs` kan vises med bare ikoner for et mer kompakt utseende.
+Sørg for at ikonene er intuitive og har beskrivende titler for skjermlesere.
+I eksempelet under har vi lagt [`Tooltip`](/no/components/docs/tooltip/code) rundt `Tabs.Tab` for å gi beskrivende tekst til ikonene.
+
+<Story story="IconsOnly" />
+
+### Ikoner med tekst
+Kombinasjonen av ikoner og tekst gir både visuell og tekstlig beskrivelse av innholdet.
+Ikonene bør være dekorative og markeres med `aria-hidden`.
+
+<Story story="IconsWithText" />
+
+## Retningslinjer
+
+`Tabs` skal brukes til å organisere relatert innhold i separate seksjoner.
+
+### Alternativer til Tabs
+Før du velger `Tabs`, vurder om det er bedre å:
+- Forenkle og redusere mengden innhold
+- Fordele innholdet på flere sider
+- Beholde alt på én side, med tydelige overskrifter
+- Bruke en innholdsfortegnelse for enklere navigasjon
+
+### Beste praksis
+- **Begrens antall `Tabs`** - for mange skaper dårlig oversikt, særlig på små skjermer
+- **Bruk tydelig navn på `Tabs`** - Den skjuler innhold, så det er viktig å indikere hva som ligger bak
+- **Plasser viktigst innhold først** - organiser `Tabs` etter brukerens behov
+- **Hold `Tabs` på én linje** - Lange `Tabs` eller for mange `Tabs` kan gjøre navigasjonen vanskelig
+- **Unngå deaktiverte `Tabs`** - Fjern deaktiverte `Tabs` eller forklar hvorfor de er tomme
+
+## Tekst
+`Tabs` bør være korte og beskrivende, slik at brukeren lett forstår hva de vil se når de klikker. Hvis det er vanskelig å lage presise `Tabs`, kan det tyde på at innholdet ikke er godt strukturert.
+
+Hvis det er behov for å gi en overordnet kontekst, kan en felles tittel plasseres over `Tabs`-komponenten. Dette kan fungere som en "catchall"-beskrivelse som gir brukeren rask oversikt over innholdet i `Tabs`.

@@ -21,7 +21,7 @@ export default {
     toolbox: {
       title: 'En felles digital verktøykasse',
       description:
-        'Designsystemet er en felles verktøykasse med grunnleggende UI-komponenter, retningslinjer og mønstre, som du kan bruke når du utvikler digitale tjenester. Designsystemet bidrar til effektiv produktutvikling og helhetlige brukeropplevelser.',
+        'Designsystemet er en felles verktøykasse med UI-komponenter og retningslinjer for utvikling av digitale tjenester. Det er gratis, brukes sammen med virksomhetens egen visuelle profil og bidrar til effektiv produktutvikling og helhetlige brukeropplevelser.',
       link: 'Les mer om Designsystemet',
     },
     'components-section': {
@@ -42,6 +42,7 @@ export default {
     },
     'latest-news': {
       title: 'Siste nytt fra Designsystemet',
+      seeAllPosts: 'Se alle blogginnlegg',
     },
     'join-section': {
       title: 'Bli med å utvikle Designsystemet!',
@@ -53,6 +54,11 @@ export default {
         email: 'Send en epost',
       },
     },
+    'collaborators-section': {
+      title: 'Lages på tvers av virksomheter',
+      description:
+        'Et felles løft for bedre brukeropplevelser på tvers. Sammen utvikler vi et felles fundament for gode, tilgjengelige og helhetlige digitale løsninger.',
+    },
     meta: {
       title: 'En felles digital verktøykasse',
       description:
@@ -63,7 +69,7 @@ export default {
     tag: 'Bloggen',
     title: 'Bloggen',
     description:
-      'Her deler vi nyheter, tips og erfaringer fra utviklingen av Designsystemet. Vi ønsker å dele kunnskap og erfaringer med hverandre, og bidra til å gjøre det enklere å lage gode digitale tjenester.',
+      'Her finner du historier, erfaringer og oppdateringer fra designsystemet. Et sted for å lære av hverandre og holde deg oppdatert.',
     write: {
       title: 'Vil du skrive for bloggen?',
       description:
@@ -83,6 +89,10 @@ export default {
       Figma: 'Figma',
       Code: 'Kode',
       About: 'Om',
+      components: 'Komponenter',
+      getStarted: 'Kom i gang',
+      typography: 'Typografi',
+      utilities: 'Hjelpeverktøy',
     },
     items: {
       Introduction: 'Introduksjon',
@@ -98,10 +108,11 @@ export default {
     sidebar: 'sidemeny',
   },
   navigation: {
-    fundamentals: 'Grunnleggende',
+    intro: 'Intro',
+    fundamentals: 'Kom i gang',
     'best-practices': 'God praksis',
     patterns: 'Mønstre',
-    blog: 'Bloggen',
+    blog: 'Blogg',
     components: 'Komponenter',
     'theme-builder': 'Temabygger',
   },
@@ -115,7 +126,7 @@ export default {
     },
     '404': {
       title: '404 - Vi finner ikke siden',
-      details: 'Det kan hende siden har blit flyttet eller slettet.',
+      details: 'Det kan hende siden har blitt flyttet eller slettet.',
     },
     generic: {
       title: 'Feil',
@@ -126,6 +137,22 @@ export default {
     title: 'Komponenter',
     description:
       'Designsystemet inneholder grunnleggende komponenter som kan settes sammen på mange ulike måter og i forskjellige mønstre.',
+    changelog: {
+      title: 'Endringslogg',
+    },
+    'css-variables': {
+      caption: 'CSS-variabler',
+      name: 'Navn',
+      value: 'Verdi',
+    },
+    'no-relevant-data-attributes': 'Ingen relevante data-attributter funnet.',
+    'no-relevant-css-variables': 'Ingen relevante css-variabler funnet.',
+    'data-attributes': 'Data-attributter',
+  },
+  component: {
+    overview: 'Oversikt',
+    code: 'Kode',
+    accessibility: 'Tilgjengelighet',
   },
   patterns: {
     meta: {
@@ -138,9 +165,14 @@ export default {
       'Mønstre er retningslinjer og anbefalinger for hvordan interaksjon og gjentagende brukeroppgaver skal løses. Når de samme mønstrene brukes på tvers, skaper vi gjenkjennelighet i tjenestene.',
   },
   fundamentals: {
-    title: 'Grunnleggende',
+    title: 'Kom i gang',
     description:
       'Lær mer om Designsystemet, de grunnleggende designelementene, og hvordan du kommer i gang som designer eller utvikler.',
+  },
+  intro: {
+    title: 'Introduksjon',
+    description:
+      'Designsystemet løser felles utfordringer i utvikling av digitale tjenester gjennom gjenbruk, samarbeid og støtte for universell utforming.',
   },
   'best-practices': {
     title: 'God praksis',
@@ -168,35 +200,49 @@ export default {
     'play-video': 'Spill av video',
     'pause-video': 'Sett video på pause',
   },
-  'token-preview': {
-    size: {
-      description:
-        'Verdien til størrelsevariabler settes av `data-size`-attributtet.',
-      'select-label': 'Velg størrelse (data-size)',
-    },
-    color: {
-      description:
-        'Verdien til fargevariabler settes av `data-color`-attributtet.',
-      'select-label': 'Velg farge (data-color)',
-    },
-    'search-in-design-tokens': 'Søk i design tokens',
-    'search-input-aria-label': 'Søk på variabel navn i CSS for design tokens',
-    colors: 'Farger',
-    typography: 'Typografi',
-    semantic: 'Semantiske',
-    'no-results': 'Ingen resultater funnet',
-    table: {
-      name: 'Navn',
-      value: 'Verdi',
-      variable: 'Variabel',
-      preview: 'Forhåndsvisning',
-      light: 'Lys',
-      dark: 'Mørk',
-    },
+  'live-component': {
+    activateA: 'Trykk',
+    activateB: 'Enter',
+    activateC: 'for å redigere',
+    'show-code': 'Vis kode',
+    'hide-code': 'Skjul kode',
+    'invert-color-scheme': 'flipp mellom mørk og lys modus',
+    copy: 'Kopier',
+    reset: 'Nullstill',
   },
   toc: {
-    title: 'Innhold',
+    title: 'På denne siden',
+    feedback: {
+      link: 'Send innspill på GitHub',
+      page: 'Har du innspill til denne siden?',
+      component: 'Har du innspill til komponenten?',
+    },
   },
+  do: 'Gjør slik',
+  dont: 'Unngå dette',
   contributors: 'Bidragsytere',
   editOnGithub: 'Rediger denne siden på github.com (åpnes i ny fane)',
+  updated: 'Oppdatert',
+  'roi-calculator': {
+    title: 'Hva kan din virksomhet spare?',
+    description:
+      'Bruk kalkulatoren til å se hvor mange timer din virksomhet kan spare ved å bruke Designsystemet i nye løsninger.',
+    radios: {
+      direct: 'Vi skal bruke det direkte i løsninger',
+      build: 'Vi skal bygge eget designsystem på toppen av Designsystemet',
+    },
+    inputs: {
+      newSolutions: {
+        label: 'Antall nye løsninger per år',
+        suffix: 'nye løsninger per år',
+      },
+      numberOfDevs: {
+        label: 'Antall årsverk på design og frontend per løsning',
+        suffix: 'årsverk',
+      },
+    },
+    savedHours:
+      'Virksomheten får frigjort {{hours}} timer per år ({{years}} årsverk)',
+    usageLegend: 'Hvordan skal dere bruke Designsystemet?',
+  },
 };

@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "Switch",
+    "subtitle": "`Switch` gir brukerne et valg mellom to alternativer. Bryteren kan enten slås av eller på og skal alltid være innstilt med et standardvalg."
+  },
+  "en": {
+    "title": "Switch",
+    "subtitle": "`Switch` gives users a choice between two alternatives. The switch can either be turned off or on and must always be set with a default choice."
+  },
+  "image": "Switch.svg",
+  "cssFile": "input.css"
+}

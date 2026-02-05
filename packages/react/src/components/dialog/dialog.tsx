@@ -19,13 +19,21 @@ export type DialogProps = MergeRight<
     /**
      * Light dismiss behavior, allowing to close on backdrop click  by setting `closedby="any"`.
      *
+     * @see [mdn closedBy](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy)
+     *
      * @default 'closerequest'
      */
     closedby?: 'none' | 'closerequest' | 'any';
     /**
+     * When not center, displays dialog as a "drawer" from the specified side.
+     *
+     * @default 'center'
+     */
+    placement?: 'center' | 'left' | 'right' | 'top' | 'bottom';
+    /**
      * Toogle modal and non-modal dialog.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#creating_a_modal_dialog
+     * @see [mdn modal dialog](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#creating_a_modal_dialog)
      *
      * @default true
      */
@@ -77,6 +85,7 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
       asChild,
       children,
       className,
+      placement = 'center',
       closeButton = 'Lukk dialogvindu',
       closedby = 'closerequest',
       modal = true,
@@ -99,6 +108,15 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
       const handleClosedby = (event: Event) => {
         if (event.defaultPrevented) return; // Skip if default action is prevented
         const { clientY: y, clientX: x, target } = event as MouseEvent;
+        /* Check if clicked element or its closest parent has data-command='close' */
+        if (target instanceof Element && event.type === 'click') {
+          const closeElement = target.closest('[data-command="close"]');
+          if (closeElement) return dialog?.close();
+        }
+
+        // if the browser supports closedBy, we let the browser handle it
+        // see https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy
+        if (dialog && 'closedBy' in dialog) return;
 
         if (event instanceof KeyboardEvent)
           return (
@@ -106,12 +124,6 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
             event.key === 'Escape' &&
             event.preventDefault()
           ); // Skip ESC-key if closedby="none"
-
-        /* Check if clicked element or its closest parent has data-command='close' */
-        if (target instanceof Element) {
-          const closeElement = target.closest('[data-command="close"]');
-          if (closeElement) return dialog?.close();
-        }
 
         if (window.getSelection()?.toString()) return; // Fix bug where if you select text spanning two divs it thinks you clicked outside
         if (dialog && target === dialog && closedby === 'any') {
@@ -150,13 +162,14 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
       <Component
         className={cl('ds-dialog', className)}
         ref={mergedRefs}
+        data-placement={placement}
         data-modal={modal}
+        closedby={closedby}
         {...rest}
       >
         {closeButton !== false && (
           <Button
             aria-label={closeButton}
-            autoFocus
             data-color='neutral'
             icon
             variant='tertiary'

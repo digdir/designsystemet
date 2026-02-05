@@ -1,0 +1,45 @@
+<Story story="Preview" />
+
+**Bruk `Switch` når**
+- valget styrer en funksjon eller innstilling som kan være av eller på
+- endringen trer i kraft umiddelbart når brukeren slår bryteren av eller på
+
+**Unngå `Switch` når**
+- brukerne skal svare på spørsmål i skjemaer, bruk heller [`Radio`](/no/components/docs/radio/overview) eller [`Checkbox`](/no/components/docs/checkbox/overview) 
+- innhold skal endre visning mellom to kategorier, bruk heller [`ToggleGroup`](/no/components/docs/toggle-group/overview)
+- innhold skal filtreres, bruk heller [`Chip`](/no/components/docs/chip/overview)
+
+## Eksempel
+
+### Gruppering
+Bruk [Fieldset](/no/components/docs/fieldset/overview) for å gruppere flere `Switch`-komponenter sammen.
+
+<Story story="Group" />
+
+### Høyrejustert
+Noen ganger kan det være nyttig å høyrejustere `Switch`, for eksempel når den er plassert i en tabell eller et fast oppsett.
+
+<Story story="RightAligned2" />
+
+## Retningslinjer
+`Switch` skal brukes til å slå av eller på innstillinger, funksjoner eller varsler. Den gir brukeren en visuell bekreftelse på en tilstand.
+
+## Tekst
+
+Teksten til en `Switch` må være kort og presis, ofte betyr det bare ett eller to ord. Det skal gi mening når du sier ledeteksten høyt og legger til av/på etterpå. 
+
+Hvis du har flere `Switch` i en gruppe, må du passe på at du er konsekvent med hvordan du formulerer tekstene til hver av dem, ikke formulerer dem forskjellig.
+
+Teksten skal beskrive hva funksjonen gjelder, ikke om den er på eller av. Hvis statusen skrives inn i labelen, kan det bli forvirrende og vanskelig å vite hvilken tilstand switchen faktisk er i.
+
+<div className="dodont-row">
+  <DoDont story="DoIcon">
+    Beskriv hva funksjonen gjelder.
+  </DoDont>
+  <DoDont story="DontIcon">
+    Ikke si noe om av eller på.
+  </DoDont>
+</div>
+
+
+

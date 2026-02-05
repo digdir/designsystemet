@@ -3,14 +3,13 @@ export default {
     about: 'Om designsystemet',
     privacy: 'Personvernerklæring',
     accessibility: 'Tilgjengelighetserklæring',
-    slack: 'Bli invitert til slack',
-    agencies: {
-      title: 'Lages på tvers av offentlige etater:',
-      contact: 'Din etat? Ta kontakt!',
-    },
+    slack: 'Bli med på Slack',
+    description:
+      'Designsystemet er en felles verktøykasse med grunnleggende UI-komponenter, retningslinjer og mønstre du kan bruke når du utvikler digitale løsninger. Det er åpent og gratis for alle.',
     'about-site': 'Om nettstedet',
     'contact-us': 'Kom i kontakt med oss',
     copyright: 'Designsystemet',
+    'dpg-aria-label': 'Digital Public Goods Designsystemet side',
   },
   header: {
     'home-link': 'Designsystem forside',
@@ -40,6 +39,39 @@ export default {
       'background-colors-and-surface-colors':
         'Background fargene og Surface fargene',
       'base-colors': 'Base fargene',
+    },
+  },
+  'token-preview': {
+    size: {
+      'select-label': 'Velg størrelse',
+      caption: 'Størrelsevariabler',
+    },
+    color: {
+      caption: 'Fargevariabler',
+    },
+    'border-radius': {
+      caption: 'Border-radius variabler',
+    },
+    opacity: {
+      caption: 'Opacity variabler',
+    },
+    shadow: {
+      caption: 'Shadow variabler',
+    },
+    'border-width': {
+      caption: 'Border-width variabler',
+    },
+    typography: {
+      caption: 'Typografi variabler',
+    },
+    'search-in-design-tokens': 'Søk i design tokens',
+    'search-input-aria-label': 'Søk på variabel navn i CSS for design tokens',
+    colors: 'Farger',
+    'no-results': 'Ingen resultater funnet',
+    table: {
+      name: 'Variabel navn',
+      preview: 'Forhåndsvisning',
+      value: 'Verdi',
     },
   },
 };

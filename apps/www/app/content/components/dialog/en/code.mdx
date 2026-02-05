@@ -1,0 +1,128 @@
+<Story story="Preview" />
+
+<ReactComponentDocs />
+
+## Usage
+
+To add your own close button, you can either use `ref` and `Dialog.close()` on a button you create yourself, or add `data-command="close"` to a button inside the dialog.
+
+If the button is empty, it will get an icon.
+
+If the button is a direct child of the dialog and the first element, it will float to the top right.
+
+`data-command` is inspired by [Invoker Commands (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API).
+
+```tsx
+import { Dialog, Heading, Paragraph } from '@digdir/designsystemet-react';
+
+/* with context */
+<Dialog.TriggerContext>
+<Dialog.Trigger>Open Dialog</Dialog.Trigger>
+<Dialog>
+Dialog content
+</Dialog>
+</Dialog.TriggerContext>
+
+/* without context */
+const dialogRef = useRef<HTMLDialogElement>(null);
+
+<Button onClick={() => dialogRef.current?.showModal()}>Open Dialog</Button>
+<Dialog ref={dialogRef}>
+Dialog content
+</Dialog>
+```
+
+## Examples
+
+### With ref and without context
+
+If you don't want to use `Dialog.TriggerContext`, you can use `ref` to open the dialog from an external trigger.
+You then use native methods on the `<dialog>` element, such as `showModal()` or `show()`.
+
+<Story story="WithRef" />
+
+### With form and focus
+
+If you want a field in a form inside the dialog to get focus when the dialog opens, you can use the native `autofocus` attribute on the input element.
+
+When using this with React, you must write it in lowercase as `autofocus`, not `autoFocus`.
+
+This prop does not exist in React's type definitions, so we have ignored the error with an `@ts-expect-error` comment in the example below.
+
+<Story story="WithForm" />
+
+### With blocks
+
+Use multiple `Dialog.Block` if you want to divide the dialog with dividers into, for example, a top and bottom area. Note that content cannot be placed directly in `Dialog` if you use `Dialog.Block`; then all content should be inside one of the dialog's `Dialog.Block` sections.
+
+<Story story="WithBlocks" />
+
+### Close on click outside
+
+We use `closedby="any"` to close the dialog when the user clicks outside.
+
+This only works when `modal={true}`, because a non-modal dialog has no `:backdrop`.
+
+<Story story="CloseWithClickOutside" />
+
+## HTML
+
+The main class name is `ds-dialog`, which is placed on the `<dialog>` element.
+Blocks inside the dialog are given class names like `ds-dialog__block`.
+```html
+<dialog class="ds-dialog">
+Content
+</dialog>
+
+<!-- with division -->
+<dialog class="ds-dialog">
+<div class="ds-dialog__block">
+Header
+</div>
+<div class="ds-dialog__block">
+Content
+</div>
+<div class="ds-dialog__block">
+Footer
+</div>
+</dialog>
+```
+
+In HTML, you have to connect the `<dialog>` element to a trigger yourself, and handle opening and closing the dialog with JavaScript.
+
+**Note that the button that opens the dialog should have the `aria-haspopup="dialog"` attribute.**
+
+```html
+<button id="openDialog" aria-haspopup="dialog" type="button">Open Dialog</button>
+<dialog id="myDialog" class="ds-dialog">
+<div>Content</div>
+<button id="closeDialog">Close</button>
+</dialog>
+
+<script>
+const dialog = document.getElementById('myDialog');
+const openButton = document.getElementById('openDialog');
+const closeButton = document.getElementById('closeDialog');
+
+openButton.addEventListener('click', () => {
+dialog.showModal(); // or dialog.show() for non-modal
+});
+
+closeButton.addEventListener('click', () => {
+dialog.close();
+});
+</script>
+```
+
+We have extended `Dialog` in React to support `data-command` for close button, and `closedby` attribute to close dialog on click outside.
+
+This must be implemented in HTML/JavaScript yourself if you are not using React component.
+
+[`closedby` is supported in some browsers (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy)
+
+## CSS variables and data attributes
+All CSS variables used by `ds-dialog__block` are set to `ds-dialog`.
+
+<CssVariables />
+
+<CssAttributes />

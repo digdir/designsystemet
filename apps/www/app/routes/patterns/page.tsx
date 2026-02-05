@@ -1,12 +1,14 @@
 import { join } from 'node:path';
-import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Button, Heading, Paragraph } from '@digdir/designsystemet-react';
 import { Error404 } from '@internal/components';
-import { ComponentIcon } from '@navikt/aksel-icons';
+import { PencilLineIcon } from '@navikt/aksel-icons';
 import cl from 'clsx/lite';
 import { useTranslation } from 'react-i18next';
 import { isRouteErrorResponse } from 'react-router';
+import { AvatarStack } from '~/_components/avatar-stack/avatar-stack';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
+import { TableOfContents } from '~/_components/table-of-contents/toc';
 import { formatDate } from '~/_utils/date';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
@@ -37,6 +39,7 @@ export async function loader({ params }: Route.LoaderArgs) {
     code: result.code,
     frontmatter: result.frontmatter,
     lang: params.lang,
+    toc: result.toc,
   };
 }
 
@@ -57,25 +60,69 @@ export const meta = ({ data }: Route.MetaArgs) => {
 };
 
 export default function Patterns({
-  loaderData: { lang, frontmatter, code },
+  loaderData: { lang, frontmatter, code, toc },
 }: Route.ComponentProps) {
+  const { t } = useTranslation();
+  const feedbackUrl = `https://github.com/digdir/designsystemet/issues/new?template=BLANK_ISSUE&title=Feedback: Patterns - ${frontmatter.title}`;
   return (
     <>
       <div className={classes.header}>
         <div className={classes.headerText}>
+          <Heading data-size='xs' asChild>
+            <p>{t('patterns.title')}</p>
+          </Heading>
           <Heading data-size='lg' level={1}>
             {frontmatter.title}
           </Heading>
-          {frontmatter.date && (
-            <div className={classes.date}>
-              {formatDate(frontmatter.date, lang)}
-            </div>
+          {frontmatter.description && (
+            <Paragraph data-size='lg' style={{ marginTop: '12px' }}>
+              {frontmatter.description}
+            </Paragraph>
           )}
-        </div>
-        <div className={cl(classes.iconContainer)}>
-          <ComponentIcon fontSize='4rem' aria-hidden='true' />
+          <Paragraph variant='short' asChild>
+            <div className={classes.meta}>
+              {frontmatter.partners && (
+                <>
+                  <a
+                    href='#article-contributors'
+                    aria-label={t('contributors')}
+                  >
+                    <AvatarStack
+                      authors={frontmatter.partners}
+                      expandable='fixed'
+                    />
+                  </a>
+                  <span className={classes.partners}>
+                    {frontmatter.partners}
+                  </span>
+                </>
+              )}
+              <span>
+                {frontmatter.date && (
+                  <span
+                    className={classes.date}
+                  >{`${t('updated')} ${formatDate(frontmatter.date, lang)}`}</span>
+                )}
+              </span>
+            </div>
+          </Paragraph>
         </div>
       </div>
+      <TableOfContents title={frontmatter.title} items={toc}>
+        <div className='toc-feedback'>
+          <Paragraph data-size='sm'>{t('toc.feedback.page')}</Paragraph>
+          <Button
+            data-color='neutral'
+            data-size='sm'
+            variant='secondary'
+            asChild
+          >
+            <a href={feedbackUrl}>
+              <PencilLineIcon aria-hidden /> {t('toc.feedback.link')}
+            </a>
+          </Button>
+        </div>
+      </TableOfContents>
       <div className={cl(classes.content, 'u-rich-text')}>
         <MDXComponents code={code} />
         <EditPageOnGithub />
@@ -99,7 +146,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <div>
+    <div id='main'>
       <Heading level={1}>{message}</Heading>
       <Paragraph>{details}</Paragraph>
     </div>

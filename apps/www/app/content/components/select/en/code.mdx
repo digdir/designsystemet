@@ -1,0 +1,54 @@
+<Story story="PreviewEn" />
+<ReactComponentDocs />
+
+## Use
+
+```tsx
+import { Select, Label } from '@digdir/designsystemet-react';
+
+<>
+  <Label>Select a mountain</Label>
+  <Select>
+    <Select.Option value="everest">Mount Everest</Select.Option>
+  </Select>
+</>
+```
+
+## Example
+
+### Grouping
+
+You can use `Select.Optgroup` to group options into categories, making long lists more manageable and easier to navigate.
+
+<Story story="WithOptgroupEn" />
+
+### Disabled
+
+<Story story="DisabledEn" />
+
+### ReadOnly
+
+`<select>` is always `:read-only`, and does not support this in the same way as input types you can type into. If you set `readOnly` on a select, we ensure that it behaves as if it has read-only access, by preventing `onKeyDown` and `onMouseDown`. The user will still be able to focus on the element.
+
+<Story story="ReadOnlyEn" />
+
+## HTML
+Append the class name `ds-select` to `<select>`.
+
+```html
+<select class="ds-select">
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+  <option value="3">Option 3</option>
+</select>
+```
+
+If you want `readonly` on a select, you must stop `onKeyDown` and `onMouseDown` yourself to prevent changing the state.
+
+## CSS variables and data attributes
+
+The `ds-input` class can be used to style [`Input`](/en/components/docs/input/overview) and [`Textarea`](/en/components/docs/textarea/overview) as well.
+
+<CssVariables />
+
+<CssAttributes />

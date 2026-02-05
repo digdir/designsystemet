@@ -1,0 +1,52 @@
+.card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  background-color: var(--ds-color-neutral-surface-default);
+  border: 1px solid var(--ds-color-neutral-border-subtle);
+  outline: 1px solid transparent;
+  color: var(--ds-color-neutral-text-default);
+  border-radius: var(--ds-border-radius-lg);
+  padding: var(--ds-size-4);
+  padding-bottom: var(--ds-size-6);
+  gap: var(--ds-size-4);
+  transition: 0.2s ease;
+  transition-property: border-color, outline;
+  &:hover {
+    border-color: var(--ds-color-neutral-border-strong);
+    outline: 1px solid var(--ds-color-neutral-border-strong);
+  }
+  &:has(:focus-visible) {
+    box-shadow: var(--dsc-focus-boxShadow);
+    outline: var(--dsc-focus-outline);
+    outline-offset: var(--ds-border-width-focus);
+  }
+  :has(:focus-visible) & {
+    transition: none;
+  }
+}
+
+.iconContainer {
+  width: 56px;
+  aspect-ratio: 1;
+}
+.iconContainer svg {
+  width: 100%;
+  height: auto;
+}
+.iconContainer path {
+  fill: var(--ds-color-border-default);
+}
+
+.title {
+  margin-top: 0px;
+  margin-bottom: var(--ds-size-3);
+  a {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
+}
+
+.desc {
+  color: var(--ds-color-neutral-text-subtle);
+  text-wrap: pretty;
+}

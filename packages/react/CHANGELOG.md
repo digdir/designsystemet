@@ -1,5 +1,146 @@
 # Change Log
 
+## 1.11.0
+
+### Minor Changes
+
+- **Version `1.10.0` was released by accident, and we are skipping to `1.11.0`** ([#4392](https://github.com/digdir/designsystemet/pull/4392))
+  - Version `1.10.0` is deprecated on npm, and not accessible on Github. Use `1.11.0` or newer.
+
+- **Avatar**: added `asChild` prop ([#4331](https://github.com/digdir/designsystemet/pull/4331))
+
+- **AvatarStack**: New experimental component ([#4331](https://github.com/digdir/designsystemet/pull/4331))
+
+- **Suggestion**: Add new prop `autoPlacement`, which is by default `true` ([#4359](https://github.com/digdir/designsystemet/pull/4359))
+  - This means that `Suggestion` will now try to stay within the viewport on the y-axis
+
+### Patch Changes
+
+- update npm non-major dependencies ([#4373](https://github.com/digdir/designsystemet/pull/4373))
+
+- Removed `sideEffects:false` property used by some bundlers to help tree-shake cjs files. ([#4376](https://github.com/digdir/designsystemet/pull/4376))
+
+- update npm non-major dependencies ([#4336](https://github.com/digdir/designsystemet/pull/4336))
+
+- update npm non-major dependencies ([#4398](https://github.com/digdir/designsystemet/pull/4398))
+
+- **Suggestion**: Always call `onSelectedChange`, and return `null` instead of `undefined` ([#4388](https://github.com/digdir/designsystemet/pull/4388))
+
+- Update npm non-major dependencies ([#4347](https://github.com/digdir/designsystemet/pull/4347))
+
+- Updated dependencies [[`4d48a81`](https://github.com/digdir/designsystemet/commit/4d48a815c67114f4ff3d102b7b271a343cd491c4)]:
+  - @digdir/designsystemet-types@1.11.0
+
+## 1.9.0
+
+### Minor Changes
+
+- **Dialog**: added `placement` prop. This will set `data-placement` and style the `Dialog` as a "drawer"-component from the direction given: `left | right | top | bottom` or `center` (default) ([#4323](https://github.com/digdir/designsystemet/pull/4323))
+
+### Patch Changes
+
+- **SuggestionClear**: send `onClick`. In earlier versions `onClick` was never called ([#4327](https://github.com/digdir/designsystemet/pull/4327))
+
+- **Popover**: Fix controlled open state going out of sync ([#4314](https://github.com/digdir/designsystemet/pull/4314))
+
+- Update npm non-major dependencies ([#4308](https://github.com/digdir/designsystemet/pull/4308))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.9.0
+
+## 1.8.0
+
+### Minor Changes
+
+- Move submodule `@digdir/designsystemet/types` to a new package `@digdir/designsystemet-types` and change all references. ([#4241](https://github.com/digdir/designsystemet/pull/4241))
+
+  After re-running `tokens build` downstream, this removes transitive dependencies on runtime dependencies on CLI tools like `commander` and `style-dictionary` which are never used in runtime, but are required for the CLI to function. It also makes code which doesn't use the CLI unaffected by our node version limitations (currently >= 22 due to `style-dictionary`).
+
+  `@digdir/designsystemet/types` is preserved for now as a deprecated re-export of `@digdir/designsystemet-types` to avoid breaking people's builds.
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4275](https://github.com/digdir/designsystemet/pull/4275))
+
+- Update npm non-major dependencies ([#4242](https://github.com/digdir/designsystemet/pull/4242))
+
+- **Popover**: Fix unnecesary call of `onOpen` and missing call of `onClose` ([#4230](https://github.com/digdir/designsystemet/pull/4230))
+  - Don't call `onOpen` when clicking `Popover.Trigger` when `Popover` is already open.
+  - Call `onClose` when a controlled `Popover` is closed by clicking on `Popover.Trigger`.
+
+- Update npm non-major dependencies ([#4262](https://github.com/digdir/designsystemet/pull/4262))
+
+- Update `react` and `react-dom` to `19.2.1` ([#4276](https://github.com/digdir/designsystemet/pull/4276))
+
+- Updated dependencies [[`c2faf2e`](https://github.com/digdir/designsystemet/commit/c2faf2ee545628ca03fef0409c7b5811edd22d74)]:
+  - @digdir/designsystemet-types@1.8.0
+
+## 1.7.3
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4233](https://github.com/digdir/designsystemet/pull/4233))
+
+- **Tooltip**: Check if `trim()` is available ([#4239](https://github.com/digdir/designsystemet/pull/4239))
+  - Fixes if `Tooltip` has `<svg>` as a child
+
+## 1.7.2
+
+### Patch Changes
+
+- Update `@u-elements/combobox` to v1.0.4 ([#4226](https://github.com/digdir/designsystemet/pull/4226))
+
+- **Dialog**: If the browser supports `closedBy` on `<dialog>`, we let the browser handle it ([#4210](https://github.com/digdir/designsystemet/pull/4210))
+
+- **Tooltip**: Tooltip is now automatically `aria-describedby` or `aria-labelledby` based on the content of the trigger component. ([#4202](https://github.com/digdir/designsystemet/pull/4202))
+  - This can be overridden with the new `type`-prop that accepts `decribedby` or `labelledby`.
+
+- Update npm non-major dependencies ([#4193](https://github.com/digdir/designsystemet/pull/4193))
+
+- Update npm non-major dependencies ([#4214](https://github.com/digdir/designsystemet/pull/4214))
+
+- **Tag**: Add new prop `variant` ([#4173](https://github.com/digdir/designsystemet/pull/4173))
+  - Accepts `default|outline`. `default` is the default value.
+
+## 1.7.1
+
+### Patch Changes
+
+- **Suggestion**: Fix `onSelectedChange` not always calling the latest callback ([#4176](https://github.com/digdir/designsystemet/pull/4176))
+
+## 1.7.0
+
+### Patch Changes
+
+- Update npm non-major dependencies ([#4147](https://github.com/digdir/designsystemet/pull/4147))
+
+- **Suggestion, Tooltip, Popover**: Positioning of floating elements rounded to nearest pixel ([#4142](https://github.com/digdir/designsystemet/pull/4142))
+
+- Update npm non-major dependencies ([#4167](https://github.com/digdir/designsystemet/pull/4167))
+
+- **Dialog**: Removed the autofocus attribute from built in closeButton, which prevented setting autofocus on other elements in Dialog. ([#4159](https://github.com/digdir/designsystemet/pull/4159))
+
+- **Field.Counter**: Adjustments to how it works internally. ([#4140](https://github.com/digdir/designsystemet/pull/4140))
+  Now, none of the validation messages underneath are `aria-described` on the input/textarea. This is done by an `aria-live` region only for screenreaders.
+
+  A new `hint` prop has been added, to announce how many characters are allowed when entering the input/textarea. Default value is `'Maks %d tegn tillatt.'`.
+
+## 1.6.1
+
+### Patch Changes
+
+- **Button**: For `icon`-buttons, dont render children if loading is true ([#4023](https://github.com/digdir/designsystemet/pull/4023))
+
+- Update npm non-major dependencies ([#4129](https://github.com/digdir/designsystemet/pull/4129))
+
+- **Suggestion**: Updated u-combobox to 1.0.2 to fix a bug where input would not clear in conrolled mode ([#4119](https://github.com/digdir/designsystemet/pull/4119))
+
+- Update npm non-major dependencies ([#4110](https://github.com/digdir/designsystemet/pull/4110))
+
+- **usePagination**: Hide prev/next buttons with `aria-hidden="true"` and `visibility: hidden;` instead of disabling ([#4123](https://github.com/digdir/designsystemet/pull/4123))
+
+- **Textfield**: Move counter error message before error ([#4104](https://github.com/digdir/designsystemet/pull/4104))
+
 ## 1.6.0
 
 ### Minor Changes
@@ -504,7 +645,7 @@
 - ce23f32: Chip: Use correct `32px` height to align nicely with `<Tag>`
 - 36cefe3: Rename `Accordion` to `Details`
 - 5a77def: SkipLink: Remove ds-sr-only class
-- 03d776b: Skeleton: Replace Skeleton.Text, Skeleton.Circle and Skeleton.Rectangle with <Skeleton variant="">
+- 03d776b: Skeleton: Replace Skeleton.Text, Skeleton.Circle and Skeleton.Rectangle with `<Skeleton variant="">`
 - 5d1c506: Accordion: Now uses details and summary HTML elements
 - 529d942: **Popover**: Add `data-variant="default/tinted"`, `default` is default
 - 1afa5c5: Spinner: Style using data attributes
@@ -889,7 +1030,7 @@
 
 - Badge: Only use single DOM element for rendering ([#2422](https://github.com/digdir/designsystemet/pull/2422))
 
-- Skeleton: Replace Skeleton.Text, Skeleton.Circle and Skeleton.Rectangle with <Skeleton variant=""> ([#2435](https://github.com/digdir/designsystemet/pull/2435))
+- Skeleton: Replace Skeleton.Text, Skeleton.Circle and Skeleton.Rectangle with `<Skeleton variant="">` ([#2435](https://github.com/digdir/designsystemet/pull/2435))
 
 - Breadcrumbs: Rename `Breadcrumbs.Root` to `Breadcrumbs` and remove `Breadcrumbs.Nav` ([#2428](https://github.com/digdir/designsystemet/pull/2428))
 

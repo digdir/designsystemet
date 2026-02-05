@@ -1,0 +1,26 @@
+{
+  "name": "@digdir/designsystemet-types",
+  "version": "1.11.0",
+  "description": "Types used by Designsystemet themes",
+  "author": "Designsystemet team",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digdir/designsystemet.git"
+  },
+  "homepage": "https://github.com/digdir/designsystemet/tree/main/packages/types",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.ts"
+    }
+  },
+  "files": [
+    "./dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc"
+  }
+}

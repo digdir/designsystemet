@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "ErrorSummary",
+    "subtitle": "`ErrorSummary` er en oppsummering av feil. Den gir brukeren oversikt over feil eller mangler som må rettes på en side eller trinn, for å komme videre."
+  },
+  "en": {
+    "title": "ErrorSummary",
+    "subtitle": "`ErrorSummary` is a summary of errors. It provides the user with an overview of errors or issues that need to be addressed on a page or step in order to proceed."
+  },
+  "image": "ErrorSummary.svg",
+  "cssFile": "error-summary.css"
+}

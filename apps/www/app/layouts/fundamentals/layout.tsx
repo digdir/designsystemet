@@ -1,14 +1,6 @@
 import { join } from 'node:path';
-import { ContentContainer } from '@internal/components';
-import { LayersIcon } from '@navikt/aksel-icons';
 import { useTranslation } from 'react-i18next';
-import { Outlet, useMatches } from 'react-router';
-import {
-  Banner,
-  BannerHeading,
-  BannerIcon,
-  BannerIngress,
-} from '~/_components/banner/banner';
+import { Outlet } from 'react-router';
 import { Sidebar } from '~/_components/sidebar/sidebar';
 import {
   getFileFromContentDir,
@@ -43,21 +35,17 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   } = {};
 
   if (lang === 'no') {
-    cats.Introduksjon = [];
-    cats['Design Tokens'] = [];
-    cats.Temabygger = [];
+    cats['Start her'] = [];
     cats.Kode = [];
+    cats.Tema = [];
     cats.Figma = [];
-    cats.Ressurser = [];
   }
 
   if (lang === 'en') {
-    cats.Introduction = [];
-    cats['Design Tokens'] = [];
-    cats['Theme Builder'] = [];
+    cats['Start here'] = [];
     cats.Code = [];
+    cats.Theme = [];
     cats.Figma = [];
-    cats.Resources = [];
   }
 
   /* Map over files with mdx parser to get title */
@@ -118,39 +106,13 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
 };
 
 export default function Layout({ loaderData: { cats } }: Route.ComponentProps) {
-  const matches = useMatches();
   const { t } = useTranslation();
-
-  /* if we have id fundamentals-page, hide banner */
-  const isGrunnleggendePage = matches.some(
-    (match) => match.id === 'fundamentals-page',
-  );
-
   return (
-    <>
-      {!isGrunnleggendePage ? (
-        <Banner color='yellow'>
-          <BannerIcon>
-            <LayersIcon />
-          </BannerIcon>
-          <BannerHeading level={1}>{t('fundamentals.title')}</BannerHeading>
-          <BannerIngress>{t('fundamentals.description')}</BannerIngress>
-        </Banner>
-      ) : null}
-      <ContentContainer
-        className={classes['sidebar-container']}
-        data-color='neutral'
-        data-is-main={!isGrunnleggendePage}
-      >
-        <Sidebar
-          cats={cats}
-          title={t('fundamentals.title')}
-          className={classes.sidebar}
-        />
-        <div className={classes.content}>
-          <Outlet />
-        </div>
-      </ContentContainer>
-    </>
+    <div className={'l-content-container'}>
+      <Sidebar cats={cats} hideCatTitle title={t('fundamentals.title')} />
+      <div className={classes.content} id='main'>
+        <Outlet />
+      </div>
+    </div>
   );
 }

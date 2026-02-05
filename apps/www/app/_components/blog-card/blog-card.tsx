@@ -6,8 +6,8 @@ import {
   Tag,
 } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
-
 import { Link } from 'react-router';
+import { AvatarStack } from '~/_components/avatar-stack/avatar-stack';
 import classes from './blog-card.module.css';
 
 type BlogCardProps = {
@@ -58,27 +58,27 @@ export const BlogCard = ({
           <Heading
             className={classes.heading}
             level={level}
-            data-size={featured ? 'lg' : 'sm'}
+            data-size={featured ? 'md' : 'xs'}
           >
             <Link to={href}>{title}</Link>
           </Heading>
-          <Paragraph data-size={featured ? 'lg' : 'sm'}>{desc}</Paragraph>
-          <Paragraph
-            data-size={featured ? 'md' : 'xs'}
-            className={classes.meta}
-          >
-            {author ||
-              (date && (
-                <>
-                  <span>{date}</span>
-                  {author && (
-                    <>
-                      <span aria-hidden className={classes.metaSquare} />
-                      <span>{author}</span>
-                    </>
-                  )}
-                </>
-              ))}
+          <Paragraph data-size={featured ? 'md' : 'sm'}>{desc}</Paragraph>
+          <Paragraph data-size={'md'} className={classes.meta} asChild>
+            <span>
+              <AvatarStack authors={author || ''} />
+              {author ||
+                (date && (
+                  <>
+                    <span>{date}</span>
+                    {author && (
+                      <>
+                        <span aria-hidden className={classes.metaSquare} />
+                        <span>{author}</span>
+                      </>
+                    )}
+                  </>
+                ))}
+            </span>
           </Paragraph>
         </CardBlock>
       </article>

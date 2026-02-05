@@ -1,0 +1,86 @@
+<Story story="Preview" />
+<ReactComponentDocs />
+
+## Bruk
+
+```tsx
+import { Table } from '@digdir/designsystemet-react';
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.HeaderCell>Header</Table.HeaderCell>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell>Cell</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
+```
+
+## Eksempel
+
+### Zebrastriper
+
+<Story story="Zebra" />
+
+### Med border
+
+<Story story="Border" />
+
+### Sortering
+Du kan bruke props på `Table.HeaderCell` for å vise at tabellen kan sorteres etter innholdet i en kolonne.
+
+- Bruk `sort`-prop'en for å indikere sorteringsretningen:
+  - `"none"` - ingen sortering
+  - `"ascending"` - stigende rekkefølge
+  - `"descending"` - synkende rekkefølge
+- Bruk `onClick` for å håndtere hva som skal skje når brukeren klikker på kolonneoverskriften.
+
+<Story story="Sortable" />
+
+### Fast kolonnebredde
+Du kan bruke `table-layout: fixed` for å hindre at kolonnebreddene endrer seg når innholdet i tabellen oppdateres.
+Dette gir jevnere layout, og hjelper nettleseren med å tegne tabellen raskere.
+
+Det er spesielt nyttig i tabeller med paginering eller annen dynamisk oppdatering av innhold, der stabil kolonnebredde gir bedre brukeropplevelse.
+
+<Story story='FixedTable' />
+
+## HTML
+Det anbefales å lese om [`<table>` på MDN (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/table) for en grundig gjennomgang av HTML-tabeller og deres semantikk.
+
+Klassenavnet `ds-table` legges på `<table>`-elementet.
+
+```html
+<table class="ds-table">
+  ...
+</table>
+```
+
+### Sortering
+Ved å legge `<button>` i en `<th>` med `aria-sort="*"` for du en visuell knapp for sortering.
+
+Du kobler selv logikken for sortering på knappen.
+Merk at vi legger på `type="button"` for å unngå at knappen oppfører seg som en submit-knapp.
+
+```html
+<table class="ds-table">
+  <thead>
+    <tr>
+      <th aria-sort="ascending">
+        <button type="button">Header 1</button>
+      </th>
+    </tr>
+  </thead>
+  ...
+</table>
+```
+
+## CSS variabler og data-attributter
+
+<CssVariables />
+
+<CssAttributes />

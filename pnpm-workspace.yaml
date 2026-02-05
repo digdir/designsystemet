@@ -3,7 +3,6 @@ packages:
   - apps/*
   - plugins/*
   - internal/*
-  - '!internal/design-tokens'
 ignoredBuiltDependencies:
   - '@bundled-es-modules/glob'
   - sharp
@@ -13,7 +12,7 @@ onlyBuiltDependencies:
   - esbuild
   - just-pnpm
   - style-dictionary
-useNodeVersion: 22.19.0
+useNodeVersion: 24.13.0
 packageExtensions:
   '@navikt/aksel-icons':
     peerDependencies:
@@ -22,7 +21,11 @@ packageExtensions:
       react:
         optional: true
 syncInjectedDepsAfterScripts:
-  - dist
+  - build
+  - build:all
+  - build:www
+  - build:themebuilder
+  - build:storybook
 injectWorkspacePackages: true
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:

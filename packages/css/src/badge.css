@@ -7,7 +7,13 @@
   --dsc-badge-bottom: inherit;
   --dsc-badge-left: inherit;
   --dsc-badge-right: inherit;
+
+  vertical-align: middle;
   @composes ds-print-preserve from './base.css';
+
+  &:not([hidden]) {
+    display: inline-flex;
+  }
 
   &::before {
     content: attr(data-count);

@@ -1,4 +1,5 @@
 import { resolve } from 'node:path';
+import { playwright } from '@vitest/browser-playwright';
 import { parse } from 'tsconfck';
 /// <reference types="vitest" />
 import { defineProject } from 'vitest/config';
@@ -16,15 +17,20 @@ export default defineProject({
   },
   test: {
     env: {
-      REACT_VERSION: '19',
+      VITE_REACT_VERSION: '19',
     },
     typecheck: {
       tsconfig: resolve(import.meta.dirname, 'tsconfig.tests.json'),
     },
     globals: true,
-    environment: 'jsdom',
     setupFiles: ['../../test/vitest.setup.ts', './vitest.setup.ts'].map(
       (path) => resolve(import.meta.dirname, path),
     ),
+    browser: {
+      enabled: true,
+      instances: [{ browser: 'chromium' }],
+      provider: playwright(),
+      headless: true,
+    },
   },
 });

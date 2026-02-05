@@ -1,5 +1,4 @@
 name: azure preview storybook
-
 on:
   workflow_dispatch:
   pull_request:
@@ -7,6 +6,10 @@ on:
     paths:
       - 'apps/storybook/**'
       - 'internal/components/**'
+      - 'packages/**'
+      - '.github/workflows/azure-preview-storybook.yml'
+      - '.github/workflows/azure-deploy-storybook.yml'
+      - 'Dockerfile'
 
 permissions:
   id-token: write

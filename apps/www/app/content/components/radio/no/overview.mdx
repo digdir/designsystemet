@@ -1,0 +1,55 @@
+<Story story="Preview" />
+
+**Bruk `Radio` når**
+- brukeren skal velge ett av flere alternativer i skjemaer
+
+**Unngå `Radio` når**
+- brukeren skal kunne velge flere alternativer, bruk heller [`Checkbox`](/en/components/docs/checkbox/overview)
+
+## Eksempel
+
+### Gruppering
+Bruk ledetekst til å stille spørsmålet og legg eventuelt ved beskrivelse der det er nødvendig.
+
+<Story story="Group" />
+
+### Med feil
+Hvis brukeren prøver å gå videre uten å svare på et obligatorisk spørsmål, skal feilmeldingen gjelde for hele gruppen med alternativer.
+<Story story="WithError" />
+
+## Retningslinjer
+Vi bruker `Radio` når vi skal gi brukerne mulighet til å velge kun ett alternativ. Skal de kunne velge flere, bruker du [`Checkbox`](/en/components/docs/checkbox/overview).
+
+Vi bør ikke ha mer enn syv alternativer i en gruppe. Trenger vi å gi brukerne flere valg, bør vi heller bruke [`Suggestion`](/no/components/docs/suggestion/overview) eller [`Select`](/no/components/docs/select/overview). Hvis vi bare skal gi brukerne ett valg, kan en [`Switch`](/no/components/docs/switch/overview) eller [`Checkbox`](/no/components/docs/checkbox/overview) passe bedre.
+
+### Sortering
+Sorter svaralternativene alfabetisk hvis det ikke er en god grunn til å gjøre noe annet. Vær forsiktig med å la det mest brukte svaralternativet stå først hvis det er et personlig spørsmål eller et verdispørsmål, som for eksempel legning eller partitilhørighet. 
+
+### Plassering
+Plasser helst radioknapper vertikalt. Da blir det lettere å skanne listen og lese alternativene. For brukere som må forstørre teksten, er horisontale lister utfordrende. 
+
+Ved horisontal visning må det være klart hvilken tekst som hører til hvilken knapp. Du kan bruke horisontal visning når det bare er to alternativer med korte tekster som "Ja" og "Nei", eller i en vurderingsskala som går fra «helt uenig» til «helt enig». [Likert-skala (snl.no)](https://snl.no/Likert-skala).
+
+<Story story="Inline" />
+
+### Vær forsiktig med forhåndsvalgt alternativ
+Vurder ut fra konteksten om det er riktig å ha et forhåndsvalgt alternativ. Et forhåndsvalgt alternativ kan påvirke brukerens mulighet til å ta et bevisst valg, og noen kan oppleve det som manipulerende eller diskriminerende.
+
+## Tekst
+En gruppe med flere alternativer bør alltid ha ledetekst (`legend`) og svaralternativ (`label`). Begge kan ha en beskrivelse (`description`) for mer forklaring. Beskrivelsen skal komme like etter ledeteksten når den skal hjelpe brukerne med å forstå spørsmålet og gi brukeren nødvendig informasjon før de tar et valg.
+
+Beskrivelsen etter label skal hjelpe brukerne å forstå svaralternativet.
+
+<div className="dodont-row">
+  <DoDont story="DoIcon">
+    Her får brukerne all viktig og relevant informasjon før valget. Det følger den logiske rekkefølgen og gjør brukerne tryggere på at de velger riktig.
+  </DoDont>
+  <DoDont story="DontIcon">
+    Her kommer viktig og relevant informasjon etter valget, og er lite synlig for brukerne. Det bryter den logiske rekkefølgen og kan gjøre at brukerne velger feil.
+  </DoDont>
+</div>
+
+Svaralternativene skal være så korte som mulig, og hvert alternativ bør ha samme språklige form. 
+
+
+

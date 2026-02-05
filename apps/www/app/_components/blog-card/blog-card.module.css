@@ -2,6 +2,29 @@
   aspect-ratio: 16 / 9;
   object-fit: cover;
 }
+.card {
+  background-color: var(--ds-color-surface-default);
+  transition: 0.2s ease;
+  transition-property: border-color, outline;
+  outline: 1px solid transparent;
+
+  &:hover {
+    border-color: var(--ds-color-border-strong);
+    outline: 1px solid var(--ds-color-border-strong);
+  }
+  &:has(:focus-visible) {
+    box-shadow: var(--dsc-focus-boxShadow);
+    outline: var(--dsc-focus-outline);
+    outline-offset: var(--ds-border-width-focus);
+  }
+  :has(:focus-visible) & {
+    transition: none;
+  }
+}
+.heading a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
 
 @media screen and (min-width: 1024px) {
   .card[data-featured='true'] {
@@ -16,6 +39,14 @@
     padding: var(--ds-size-8) var(--ds-size-10);
   }
 }
+@media screen and (max-width: 768px) {
+  .heading {
+    font-size: var(--ds-font-size-4);
+  }
+  p {
+    font-size: var(--ds-font-size-3);
+  }
+}
 
 .heading:not(:first-child) {
   margin-block-start: var(--ds-size-4);
@@ -24,14 +55,14 @@
 .tag {
   margin-bottom: 0;
   padding: 3px 9px;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .meta {
   display: flex;
   gap: 10px;
   color: var(--ds-color-neutral-text-subtle);
-  font-size: 14px !important;
+  align-items: center;
 }
 
 .metaSquare {

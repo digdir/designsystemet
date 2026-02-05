@@ -34,7 +34,7 @@ export default {
 
 export const Preview: StoryFn<typeof Tooltip> = (args) => (
   <Tooltip {...args}>
-    <Button icon aria-label='Kopier'>
+    <Button icon>
       <FilesIcon aria-hidden />
     </Button>
   </Tooltip>
@@ -73,9 +73,36 @@ export const Placement: Story = {
     content: 'Kopier',
     placement: 'bottom',
     children: (
-      <Button icon aria-label='Kopier'>
+      <Button icon>
         <FilesIcon aria-hidden />
       </Button>
     ),
   },
 };
+
+export const Aria: StoryFn<typeof Tooltip> = () => {
+  return (
+    <>
+      <Tooltip content='Eg er aria-describedby'>
+        <Button>Eg er aria-describedby</Button>
+      </Tooltip>
+      <Tooltip content='Eg er aria-labelledby'>
+        <Button icon>
+          <FilesIcon aria-hidden />
+        </Button>
+      </Tooltip>
+    </>
+  );
+};
+
+Aria.decorators = [
+  (Story) => (
+    <div
+      style={{ display: 'flex', gap: 'var(--ds-size-2)', alignItems: 'center' }}
+    >
+      <Story />
+    </div>
+  ),
+];
+
+Aria.play = async () => {};

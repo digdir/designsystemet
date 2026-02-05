@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react-vite';
-import { type ChangeEvent, useState } from 'react';
+import { type InputEventHandler, useState } from 'react';
 import { expect, userEvent, waitFor, within } from 'storybook/test';
 import { useDebounceCallback } from '../../utilities';
 import {
@@ -35,10 +35,20 @@ export default {
       disableSnapshot: false,
     },
     a11y: {
-      // TODO: this rule should be enabled after https://github.com/dequelabs/axe-core/issues/4672 have propagated to @storybook/addon-a11y.
       config: {
         rules: [
+          // Axe can't find listbox inside shadow-dom, and thus thinks <data> elements
+          // (chips for selected items) don't have an appropriate parent element
           {
+            id: 'aria-required-parent',
+            matches: (element: HTMLElement) =>
+              !(
+                element instanceof HTMLDataElement &&
+                element.className === 'ds-chip'
+              ),
+          },
+          {
+            // TODO: this rule should be enabled after https://github.com/dequelabs/axe-core/issues/4672 have propagated to @storybook/addon-a11y.
             id: 'aria-allowed-role',
             enabled: false,
           },
@@ -242,7 +252,7 @@ ControlledMultiple.play = async ({ canvasElement, step }) => {
 export const ControlledIndependentLabelValue: StoryFn<SuggestionSingleProps> = (
   args,
 ) => {
-  const [item, setItem] = useState<SuggestionItem | undefined>(DATA_PEOPLE[0]);
+  const [item, setItem] = useState<SuggestionItem | null>(DATA_PEOPLE[0]);
 
   return (
     <>
@@ -275,7 +285,6 @@ export const ControlledIndependentLabelValue: StoryFn<SuggestionSingleProps> = (
             fontSize: 14,
             height: 100,
             whiteSpace: 'pre-wrap',
-            width: 400,
           }}
         >
           {JSON.stringify(item)}
@@ -406,9 +415,9 @@ export const FetchExternal: StoryFn<typeof Suggestion> = (args) => {
   const [value, setValue] = useState('');
   const [options, setOptions] = useState<string[] | null>(null);
 
-  const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
-    const value = encodeURIComponent(event.target.value.trim());
-    setValue(event.target.value);
+  const handleInput: InputEventHandler<HTMLInputElement> = (event) => {
+    const value = encodeURIComponent(event.currentTarget.value.trim());
+    setValue(event.currentTarget.value);
     setOptions(null); // Clear options
 
     if (!value) return;
@@ -522,4 +531,49 @@ export const InDetails: StoryFn<typeof Suggestion> = (args) => {
       </Details.Content>
     </Details>
   );
+};
+
+export const AutoPlacementOnXAxis: StoryFn<typeof Suggestion> = (args) => {
+  return (
+    <div style={{ paddingTop: '700px' }}>
+      <Field>
+        <Label>Velg en destinasjon</Label>
+        <Suggestion {...args} autoFocus>
+          <Suggestion.Input />
+          <Suggestion.Clear />
+          <Suggestion.List>
+            <Suggestion.Empty>Tomt</Suggestion.Empty>
+            {DATA_PLACES.map((place) => (
+              <Suggestion.Option key={place}>{place}</Suggestion.Option>
+            ))}
+          </Suggestion.List>
+        </Suggestion>
+      </Field>
+    </div>
+  );
+};
+
+export const Creatable: StoryFn<typeof Suggestion> = (args) => {
+  return (
+    <Field>
+      <Label>Velg eller legg til en destinasjon</Label>
+      <Suggestion {...args}>
+        <Suggestion.Input />
+        <Suggestion.Clear />
+        <Suggestion.List>
+          <Suggestion.Empty>
+            Ingen treff, trykk enter for å legge til
+          </Suggestion.Empty>
+          {DATA_PLACES.map((place) => (
+            <Suggestion.Option key={place}>{place}</Suggestion.Option>
+          ))}
+        </Suggestion.List>
+      </Suggestion>
+    </Field>
+  );
+};
+
+Creatable.args = {
+  multiple: true,
+  creatable: true,
 };

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.3.12/schema.json",
   "assist": {
     "actions": { "source": { "organizeImports": "on" } }
   },
@@ -17,10 +17,14 @@
       "!.changeset",
       "!**/design-tokens/*",
       "!**/dist",
-      "!**/packages/theme/**/*.css",
+      "!**/packages/theme/**/*.css", // TODO delete after @digdir/designsystemet-theme is migrated
+      "!**/internal/digdir/**/*.css",
+      "!**/packages/css/theme/**/*.css",
       "!**/tsconfig.*.json", // https://github.com/biomejs/biome/issues/1151
       "!**/.react-router/",
-      "!**/package.json" // changeset wants the files to be formatted differently
+      "!**/package.json", // changeset wants the files to be formatted differently
+      "!**/wc/public",
+      "!**/content/schemas/**/*.json"
     ]
   },
   "formatter": {
@@ -111,6 +115,9 @@
     "formatter": {
       "enabled": true,
       "quoteStyle": "single"
+    },
+    "parser": {
+      "cssModules": true
     }
   },
   "overrides": [

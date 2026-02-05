@@ -6,8 +6,6 @@ export function KsDigital({ ...rest }: KsDigitalProps) {
       xmlns='http://www.w3.org/2000/svg'
       version='1.1'
       viewBox='0 0 1035 244'
-      width='1035'
-      height='244'
       {...rest}
     >
       <title>KS digital logo</title>

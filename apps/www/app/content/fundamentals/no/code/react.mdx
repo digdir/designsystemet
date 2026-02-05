@@ -1,0 +1,85 @@
+---
+title: React
+description: Kom i gang med React, inkludert oppsett og bruk av komponenter.
+date: 2026-01-08
+category: Kode
+color: blue
+icon: CodeIcon
+published: true
+order: 20
+---
+
+
+Følg disse stegene for å komme i gang med React-komponentene.
+Det anbefales at du også leser om [CSS](/no/fundamentals/code/css).
+
+## 1. Installer pakkene
+
+```sh
+npm i @digdir/designsystemet-react @digdir/designsystemet-css
+```
+
+Dersom du ikke [lager ditt eget tema](/no/fundamentals/start-here/own-theme) kan du bruke et standardtema fra `@digdir/designsystemet-css/theme`.
+Du kan lett lage ditt eget tema senere.
+
+### Typescript
+
+Dersom du bruker Typescript, sørg for at du har typescript >= 3.8 og installerer `@digdir/designsystemet-types`:
+
+```sh
+npm i typescript @digdir/designsystemet-types --save-dev
+```
+
+## 2. Font
+
+Komponentene er designet og utviklet med [Inter fonten](https://github.com/rsms/inter), så variasjoner kan forekomme dersom du bruker en annen font.
+Dersom du velger å installere fonten på en annen måte, husk å inkludere fontvektene `400`, `500` og `600`.
+
+### Legg til Inter fonten (valgfritt)
+
+Legg til `<link>` taggen under i `<head>`, og sett `font-family` til `Inter` i din globale css fil.
+
+#### HTML
+
+Du kan bruke denne koden for å legge til fonten:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://altinncdn.no/fonts/inter/v4.1/inter.css"
+  integrity="sha384-OcHzc/By/OPw9uJREawUCjP2inbOGKtKb4A/I2iXxmknUfog2H8Adx71tWVZRscD"
+  crossorigin="anonymous"
+/>
+```
+
+#### CSS
+
+Vi anbefaler sterkt at du legger til følgende i din globale css fil.
+`font-feature-settings` legger til en hale på små `L`'er.
+
+```css
+body {
+  font-family: 'Inter', sans-serif;
+  font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */
+}
+```
+
+## 3. Bruk en React-komponent
+
+```tsx
+import '@digdir/designsystemet-css'; /* importeres kun en gang */
+import '@digdir/designsystemet-css/theme'; /* eller ditt tema */
+
+import { Button } from '@digdir/designsystemet-react';
+
+<Button variant='secondary'>Jeg er en knapp!</Button>;
+```
+
+`@digdir/designsystemet-css` og `@digdir/designsystemet-css/theme` må kun importeres én gang i applikasjonen.
+
+## Eksta
+
+### Polyfill
+
+Designsystemet bruker [popover](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover) i enkelte komponenter. Dette apiet er klassifisert som [Baseline: Newly available](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) fra april 2024, da Firefox som siste nettleser la det til. I noen tilfeller kan en oppleve at brukere av ulike grunner er låst til eldre nettleserversjoner, og da kan det være aktuelt å legge til en polyfill for å sikre at `popover` fungerer for alle.
+* [Popover-Polyfill](https://github.com/oddbird/popover-polyfill)

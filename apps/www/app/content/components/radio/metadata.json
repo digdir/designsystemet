@@ -1,0 +1,12 @@
+{
+  "no": {
+    "title": "Radio",
+    "subtitle": "`Radio` er et alternativ brukeren kan velge. Bruk flere `Radio` for å vise en liste med alternativer. Brukerne kan bytte mellom alternativene, men kan kun velge ett."
+  },
+  "en": {
+    "title": "Radio",
+    "subtitle": "A `Radio` is an option the user can select. Use multiple `Radio` to show a list of options. Users can switch between the options, but can only select one."
+  },
+  "image": "Radio.svg",
+  "cssFile": "input.css"
+}
