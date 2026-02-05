@@ -154,7 +154,7 @@ export const onMutation = (
   });
 
   observer.observe(el, options);
-  onFrame(); // Initial run when page is visible and children has mounted
+  requestAnimationFrame(onFrame); // Initial run when page is visible and children has mounted
   return cleanup;
 };
 
