@@ -25,8 +25,6 @@ const SELECTOR_INTERACTIVE = 'a,button,input,label,select,textarea,[tabindex]';
 const DELAY_HOVER = 300;
 const DELAY_SKIP = 300;
 
-// TODO: Document using setTooltipElement to set custom tooltip element
-
 /**
  * setTooltipElement
  * @description Allows setting a custom tooltip element. It does not need to, and should not, be injected to document.body, as we inject on hover to ensure React hydration works as expected.

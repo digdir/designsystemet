@@ -30,6 +30,18 @@ You only need to add the `data-tooltip` attribute to the element that will trigg
 <button data-placement="left" data-tooltip="left" class="ds-button">left</button>
 ```
 
+## Custom element
+Use the `setTooltipElement` function to set a custom tooltip element.
+The element will auto automatically be added do `document.body` if it is not already in the document.
+
+```js
+import { setTooltipElement } from @digdir/designsystemet-web
+
+const myTooltip = document.createElement('div');
+myTooltip.className = 'ds-tooltip my-custom-tooltip';
+setTooltipElement(myTooltip);
+```
+
 ## CSS variables and data attributes
 <CssVariables />
 

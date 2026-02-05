@@ -30,6 +30,18 @@ Du trenger kun å legge på `data-tooltip`-attributtet på elementet som skal tr
 <button data-placement="left" data-tooltip="venstre" class="ds-button">venstre</button>
 ```
 
+## Egendefinert element
+Bruk funksjonen `setTooltipElement` for å sette et egendefinert tooltip-element.
+Elementet vil automatisk bli lagt til i `document.body` hvis det ikke allerede er i dokumentet.
+
+```js
+import { setTooltipElement } from @digdir/designsystemet-web
+
+const myTooltip = document.createElement('div');
+myTooltip.className = 'ds-tooltip my-custom-tooltip';
+setTooltipElement(myTooltip);
+```
+
 ## CSS variablar og data-attributter
 <CssVariables />
 
