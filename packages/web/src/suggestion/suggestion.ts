@@ -2,7 +2,6 @@ import { UHTMLComboboxElement } from '@u-elements/u-combobox';
 import {
   attr,
   customElements,
-  debounce,
   off,
   on,
   onMutation,
@@ -21,13 +20,8 @@ export class DSSuggestionElement extends UHTMLComboboxElement {
 
   connectedCallback() {
     super.connectedCallback();
-    const render = debounce(() => renderSuggestion(this), 100);
-    this._unmutate = onMutation(this, render, {
-      childList: true,
-      subtree: true,
-    });
+    this._unmutate = onMutation(this, () => render(this), { childList: true }); // .control and .list are direct children of the custom element
     on(this, 'toggle', polyfillToggleSource, QUICK_EVENT);
-    render(); // Initial render when chilren is mounted
   }
   disconnectedCallback() {
     super.disconnectedCallback();
@@ -38,7 +32,7 @@ export class DSSuggestionElement extends UHTMLComboboxElement {
 }
 
 // A non-empty placeholder attribute is required to activate the :placeholder-shown pseudo selector used in our chevron styling
-const renderSuggestion = ({ control, list }: DSSuggestionElement) => {
+const render = ({ control, list }: DSSuggestionElement) => {
   if (control && !control.placeholder) attr(control, 'placeholder', ' '); // .control comes from UHTMLComboboxElement
   if (control) attr(control, 'popovertarget', useId(list) || null);
   if (list) attr(list, 'popover', 'manual'); // Ensure popover attribute is set on the list

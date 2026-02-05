@@ -8,6 +8,8 @@
   --dsc-togglegroup-spacing: 0;
   --dsc-togglegroup-border-radius: var(--ds-border-radius-default);
   --dsc-togglegroup-button-size: var(--ds-size-12);
+  --dsc-togglegroup-label: '';
+  --_ds-data-toggle-group: var(--dsc-togglegroup-label); /* "proxy" so attrOrCSS works even if changing --ds- prefix */
 
   background: var(--dsc-togglegroup-background);
   border-radius: var(--dsc-togglegroup-border-radius);

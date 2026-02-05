@@ -1,3 +1,7 @@
+[data-tooltip] {
+  --ds-tooltip: '';
+  --_ds-data-tooltip: var(--ds-tooltip);
+}
 .ds-tooltip {
   @composes ds-floating from './base.css';
   --_ds-floating-arrow-size: var(--dsc-tooltip-arrow-size);
@@ -51,13 +55,12 @@
   &[data-floating='right']::after {
     left: calc(var(--dsc-tooltip-arrow-size) * -1);
   }
+  /* Hide custom tooltip element until acitvated with JS */
+  &:not([popover]) {
+    display: none;
+  }
 
   @media (forced-colors: active) {
     background: CanvasText;
   }
-}
-
-/* Hide custom tooltip element until acitvated with JS */
-[data-tooltip-element]:not([popover]) {
-  display: none;
 }

@@ -37,7 +37,7 @@ const NB_COUNTER = {
 const handleMutations = debounce(() => {
   for (const el of FIELDSETS) {
     const labelledby = `${useId(el.querySelector('legend'))} ${useId(el.querySelector(':scope > :is([data-field="description"],legend + p)'))}`;
-    attr(el, 'aria-labelledby', labelledby.trim());
+    attr(el, 'aria-labelledby', labelledby.trim() || null);
   }
   for (const field of FIELDS) {
     const descs: Element[] = [];

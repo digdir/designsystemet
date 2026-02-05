@@ -1,8 +1,9 @@
 import {
   attr,
+  attrOrCSS,
   customElements,
   DSElement,
-  isNorwegian,
+  debounce,
   onMutation,
   warn,
 } from '../utils/utils';
@@ -17,7 +18,6 @@ const ATTR_LABEL = 'aria-label';
 const ATTR_CURRENT = 'data-current';
 const ATTR_TOTAL = 'data-total';
 const ATTR_HREF = 'data-href';
-const NB_LABEL = 'Bla i sider';
 
 // Expose pagination logic if wanting to do custom rendering (i.e. in React/Vue/etc)
 export const pagination = ({ current = 1, total = 10, show = 7 }) => ({
@@ -34,53 +34,53 @@ export class DSPaginationElement extends DSElement {
   _unmutate?: () => void; // Using underscore instead of private fields for backwards compatibility
 
   static get observedAttributes() {
-    return [ATTR_CURRENT, ATTR_TOTAL]; // Using ES2015 syntax for backwards compatibility
+    return [ATTR_LABEL, ATTR_CURRENT, ATTR_TOTAL, ATTR_HREF]; // Using ES2015 syntax for backwards compatibility
   }
   connectedCallback() {
     // Check for required attributes
-    const total = attr(this, ATTR_TOTAL);
-    const current = attr(this, ATTR_CURRENT);
+    const total = attrOrCSS(this, ATTR_TOTAL);
+    const current = attrOrCSS(this, ATTR_CURRENT);
     if (current && !total) warn(`Missing ${ATTR_TOTAL} attribute on:`, this);
     if (total && !current) warn(`Missing ${ATTR_CURRENT} attribute on:`, this);
-    if (!attr(this, ATTR_LABEL)) {
-      if (isNorwegian(this)) attr(this, ATTR_LABEL, NB_LABEL);
-      else warn(`Missing ${ATTR_LABEL} attribute on:`, this);
-    }
+    if (!attrOrCSS(this, ATTR_LABEL)) warn(`Missing label on:`, this);
 
     attr(this, 'role', 'navigation');
-    this._unmutate = onMutation(this, this.render.bind(this), {
-      attributeFilter: [ATTR_CURRENT, ATTR_TOTAL, ATTR_HREF],
-      attributes: true,
+    this._unmutate = onMutation(this, () => render(this), {
       childList: true,
       subtree: true,
     });
+  }
+  attributeChangedCallback() {
+    render(this);
   }
   disconnectedCallback() {
     this._unmutate?.();
     this._unmutate = undefined;
   }
-  render() {
-    const items = this.querySelectorAll('button,a');
-    const href = attr(this, ATTR_HREF);
-    const current = Number(attr(this, ATTR_CURRENT));
-    const total = Number(attr(this, ATTR_TOTAL));
-    const show = items.length - 2;
-
-    if (current && total) {
-      const { next, prev, pages } = pagination({ current, total, show });
-      items.forEach((item, i) => {
-        const page = i ? (items[i + 1] ? pages[i - 1]?.page : next) : prev; // First is prev, last is next
-        attr(item, 'aria-current', pages[i - 1]?.current ? 'true' : null);
-        attr(item, 'aria-hidden', page ? null : 'true');
-        attr(item, 'data-page', `${page}`);
-        attr(item, 'role', page ? null : 'none'); // Prevent validation errors for aria-hidden buttons
-        attr(item, 'tabindex', page ? null : '-1');
-        if (item instanceof HTMLButtonElement) attr(item, 'value', `${page}`);
-        if (href) attr(item, 'href', href.replace('%d', `${page}`));
-      });
-    }
-  }
 }
+
+const render = debounce((self: DSPaginationElement) => {
+  const current = Number(attr(self, ATTR_CURRENT));
+  const total = Number(attr(self, ATTR_TOTAL));
+
+  // Allowing server side generated pagination, buy only doing client side updates if total/current attributes are provided
+  if (current && total) {
+    const items = self.querySelectorAll('button,a');
+    const show = items.length - 2;
+    const href = attr(self, ATTR_HREF);
+    const { next, prev, pages } = pagination({ current, total, show });
+    items.forEach((item, i) => {
+      const page = i ? (items[i + 1] ? pages[i - 1]?.page : next) : prev; // First is prev, last is next
+      attr(item, 'aria-current', pages[i - 1]?.current ? 'true' : null);
+      attr(item, 'aria-hidden', page ? null : 'true');
+      attr(item, 'data-page', `${page}`);
+      attr(item, 'role', page ? null : 'none'); // Prevent validation errors for aria-hidden buttons
+      attr(item, 'tabindex', page ? null : '-1');
+      if (item instanceof HTMLButtonElement) attr(item, 'value', `${page}`);
+      if (href) attr(item, 'href', href.replace('%d', `${page}`));
+    });
+  }
+}, 0); // Debounce groups mutation observer calls and attributeChangedCallback calls
 
 const getSteps = (
   now: number,

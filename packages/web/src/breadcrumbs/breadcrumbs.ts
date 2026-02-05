@@ -1,12 +1,11 @@
 import {
   attr,
+  attrOrCSS,
   customElements,
   DSElement,
   debounce,
-  isNorwegian,
   on,
   onMutation,
-  warn,
 } from '../utils/utils';
 
 declare global {
@@ -17,7 +16,6 @@ declare global {
 
 const ATTR_LABEL = 'aria-label';
 const ATTR_LABEL_HIDDEN = 'data-label'; // Used to hide label on mobile when only showing back link
-const NB_LABEL = 'Du er her';
 
 export class DSBreadcrumbsElement extends DSElement {
   _items?: HTMLCollectionOf<HTMLAnchorElement>; // Using underscore instead of private fields for backwards compatibility
@@ -29,37 +27,16 @@ export class DSBreadcrumbsElement extends DSElement {
   }
   connectedCallback() {
     // aria-label can allready have been hidden by attributeChangedCallback
-    if (!attr(this, ATTR_LABEL_HIDDEN) && !attr(this, ATTR_LABEL)) {
-      if (isNorwegian(this)) attr(this, ATTR_LABEL, NB_LABEL);
-      else warn('Missing aria-label on:', this);
-    }
-    const render = debounce(this.attributeChangedCallback.bind(this), 100);
+    if (!attr(this, ATTR_LABEL_HIDDEN)) attrOrCSS(this, ATTR_LABEL);
     this._items = this.getElementsByTagName('a'); // Speed up by caching HTMLCollection
-    this._unresize = on(window, 'resize', render);
-    this._unmutate = onMutation(this, render, {
+    this._unresize = on(window, 'resize', () => render(this));
+    this._unmutate = onMutation(this, () => render(this), {
       childList: true,
       subtree: true,
     });
   }
   attributeChangedCallback() {
-    const last = this._items?.[this._items.length - 1];
-    const lastInList = last?.parentElement === this ? null : last;
-    const isListHidden = !lastInList?.offsetHeight;
-    const labelHidden = attr(this, ATTR_LABEL_HIDDEN);
-    const label = attr(this, ATTR_LABEL);
-
-    // Only update labels if needed to prevent infinite attribute update loop
-    attr(this, 'role', isListHidden ? null : 'navigation');
-    if (isListHidden && !labelHidden && label) {
-      attr(this, ATTR_LABEL_HIDDEN, label);
-      attr(this, ATTR_LABEL, null);
-    } else if (!isListHidden && labelHidden && !label) {
-      attr(this, ATTR_LABEL, labelHidden);
-      attr(this, ATTR_LABEL_HIDDEN, null);
-    }
-
-    for (const item of this._items || [])
-      attr(item, 'aria-current', item === lastInList ? 'page' : null);
+    render(this);
   }
   disconnectedCallback() {
     this._unresize?.();
@@ -67,5 +44,25 @@ export class DSBreadcrumbsElement extends DSElement {
     this._unresize = this._unmutate = this._items = undefined;
   }
 }
+
+const render = debounce((self: DSBreadcrumbsElement) => {
+  const last = self._items?.[self._items.length - 1];
+  const lastInList = last?.parentElement === self ? null : last;
+  const isListHidden = !lastInList?.offsetHeight;
+  const labelHidden = attr(self, ATTR_LABEL_HIDDEN);
+  const label = attr(self, ATTR_LABEL);
+
+  // Only update labels if needed to prevent infinite attribute update loop
+  attr(self, 'role', isListHidden ? null : 'navigation');
+  if (!isListHidden && !label && labelHidden)
+    attr(self, ATTR_LABEL, labelHidden);
+  else if (isListHidden && label) {
+    attr(self, ATTR_LABEL_HIDDEN, label);
+    attr(self, ATTR_LABEL, null);
+  }
+
+  for (const item of self._items || [])
+    attr(item, 'aria-current', item === lastInList ? 'page' : null);
+}, 100); // Debounce groups mutation observer calls and attributeChangedCallback calls, and ensures not too many calls during resize
 
 customElements.define('ds-breadcrumbs', DSBreadcrumbsElement);

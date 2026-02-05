@@ -63,17 +63,21 @@ export const attr = (
 };
 
 /**
- * isNorwegian
- * @description Checks if element is placed on a website with Norwegian language
- * @param el The Element to check
- * @return boolean
+ * attrOrCSS
+ * @description Retrieves and updates attribute based on attribute or CSS property value
+ * @param el The Element to read attributes/CSS from
+ * @param name Attribute or CSS property to get
+ * @return string attribute or CSS property value
  */
-export const isNorwegian = (el: Element) => {
-  const root = el.closest('[lang]') || document.documentElement; // Fallback to <html> element if inside shadow DOM
-  const lang = root?.getAttribute('lang')?.toLowerCase().split('-')[0] || '';
-
-  if (!lang) warn('Missing lang attribute on <html> element');
-  return lang === 'nb' || lang === 'nn' || lang === 'no';
+export const attrOrCSS = (el: Element, name: string) => {
+  let value = attr(el, name);
+  if (!value) {
+    const prop = getComputedStyle(el).getPropertyValue(`--_ds-${name}`);
+    value = prop.replace(/^["']|["']$/g, '').trim() || null; // Strings can be wrapped in quotes
+    attr(el, name, value); // Cache value as attribute for faster access and to trigger attribute observers
+  }
+  if (!value) warn(`Missing ${name} on:`, el);
+  return value;
 };
 
 /**
@@ -153,7 +157,7 @@ export const onMutation = (
   });
 
   observer.observe(el, options);
-  onFrame(); // Initial run
+  requestAnimationFrame(onFrame); // Initial run when page is visible and children has mounted
   return cleanup;
 };
 

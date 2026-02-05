@@ -1,11 +1,18 @@
-import { attr, debounce, on, onHotReload, onMutation } from '../utils/utils';
+import {
+  attr,
+  attrOrCSS,
+  debounce,
+  on,
+  onHotReload,
+  onMutation,
+} from '../utils/utils';
 
 const ATTR_TOGGLEGROUP = 'data-toggle-group';
 const SELECTOR_TOGGLEGROUP = `[${ATTR_TOGGLEGROUP}]`;
 
 const handleAriaAttributes = debounce(() => {
   for (const group of document.querySelectorAll(SELECTOR_TOGGLEGROUP))
-    attr(group, 'aria-label', attr(group, ATTR_TOGGLEGROUP));
+    attr(group, 'aria-label', attrOrCSS(group, ATTR_TOGGLEGROUP));
 }, 200);
 
 const handleKeydown = (event: Partial<KeyboardEvent>) => {

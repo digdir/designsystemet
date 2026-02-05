@@ -1,5 +1,6 @@
 import {
   attr,
+  attrOrCSS,
   debounce,
   on,
   onHotReload,
@@ -22,7 +23,7 @@ const SELECTOR_INTERACTIVE = 'a,button,input,label,select,textarea,[tabindex]';
 const DELAY_HOVER = 300;
 const DELAY_SKIP = 300;
 
-// TODO: Document using data-tooltip-element to set custom tooltip element
+// TODO: Document using setTooltipElement to set custom tooltip element
 
 /**
  * setTooltipElement
@@ -36,7 +37,7 @@ export const setTooltipElement = (el?: HTMLElement | null) => {
 const handleAriaAttributes = debounce(() => {
   for (const el of document.querySelectorAll('[data-tooltip]')) {
     const hasText = el.textContent?.trim();
-    const tooltip = attr(el, 'data-tooltip');
+    const tooltip = attrOrCSS(el, 'data-tooltip');
 
     attr(el, hasText ? 'aria-description' : 'aria-label', tooltip);
     if (!el.matches(SELECTOR_INTERACTIVE))

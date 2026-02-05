@@ -46,9 +46,8 @@ With `creatable` on `Suggestion`, a user can create new selected options by ente
 <Story story='CreatableEn' layout='column' />
 
 ## HTML
-We extend u-elements' elements.
-
-You can find general documentation on using `ds-combobox` at u-elements:
+`ds-suggestion` is an extension of `u-combobox` from u-elements.
+You can find general documentation on using `u-combobox` at u-elements:
 [https://u-elements.github.io/u-elements/elements/u-combobox](https://u-elements.github.io/u-elements/elements/u-combobox).
 
 To get the Design System styling, add the class name `ds-suggestion` to the `<ds-combobox>` element.
@@ -57,14 +56,14 @@ To get the Design System styling, add the class name `ds-suggestion` to the `<ds
 If you enable multiple choice, `<data>` should have the class name `ds-chip` and the data attribute `data-removable="true"`.
 
 ```html
-<ds-combobox class="ds-suggestion" ...>
+<ds-suggestion class="ds-suggestion" ...>
   <data class="ds-chip" data-removable="true" ...>Selected option</data>
   <input class="ds-input" ... />
   <ds-datalist>
     <ds-option label="Sogndal" value="sogndal">Sogndal</ds-option>
     <ds-option label="Oslo" value="oslo">Oslo</ds-option>
   </ds-datalist>
-</ds-combobox>
+</ds-suggestion>
 ```
 
 ## CSS variables and data attributes
