@@ -1,18 +1,10 @@
 import type { SizeModes, TokenSet, Typography } from '../../../types.js';
 
-export const generateTypography = (themeName: string, { fontFamily }: Typography): TokenSet => {
-  return JSON.parse(
-    JSON.stringify(typographyTemplate)
-      .replaceAll(/<font-family>/g, fontFamily)
-      .replaceAll(/<theme>/g, themeName),
-  ) as TokenSet;
-};
-
-const typographyTemplate: TokenSet = {
-  '<theme>': {
+export const generateTypography = (themeName: string, { fontFamily }: Typography): TokenSet => ({
+  [themeName]: {
     'font-family': {
       $type: 'fontFamilies',
-      $value: '<font-family>',
+      $value: fontFamily,
     },
     'font-weight': {
       medium: {
@@ -29,7 +21,7 @@ const typographyTemplate: TokenSet = {
       },
     },
   },
-};
+});
 
 export const generateFontSizes = (size: SizeModes): TokenSet => fontSizes[size];
 
