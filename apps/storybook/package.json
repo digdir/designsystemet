@@ -14,28 +14,28 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
-    "@navikt/aksel-icons": "^8.1.0",
-    "@storybook/addon-a11y": "^10.2.0",
-    "@storybook/addon-docs": "^10.2.0",
-    "@storybook/addon-themes": "^10.2.0",
-    "@storybook/addon-vitest": "^10.2.0",
-    "@storybook/react-vite": "^10.2.0",
+    "@navikt/aksel-icons": "^8.2.0",
+    "@storybook/addon-a11y": "^10.2.3",
+    "@storybook/addon-docs": "^10.2.3",
+    "@storybook/addon-themes": "^10.2.3",
+    "@storybook/addon-vitest": "^10.2.3",
+    "@storybook/react-vite": "^10.2.3",
     "@types/ramda": "^0.31.1",
-    "@types/react": "^19.2.9",
+    "@types/react": "^19.2.10",
     "@types/react-dom": "^19.2.3",
     "@vitest/browser": "4.0.18",
     "axe-playwright": "^2.2.2",
-    "playwright": "^1.58.0",
+    "playwright": "^1.58.1",
     "ramda": "^0.32.0",
     "react-docgen-typescript": "^2.4.0",
-    "storybook": "^10.2.0",
-    "storybook-addon-pseudo-states": "^10.2.0",
+    "storybook": "^10.2.3",
+    "storybook-addon-pseudo-states": "^10.2.3",
     "vitest": "4.0.18"
   }
 }
