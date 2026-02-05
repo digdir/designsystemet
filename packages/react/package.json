@@ -42,7 +42,7 @@
   "dependencies": {
     "@digdir/designsystemet-types": "workspace:^",
     "@floating-ui/dom": "^1.7.5",
-    "@floating-ui/react": "0.26.23",
+    "@floating-ui/react": "0.27.17",
     "@navikt/aksel-icons": "^8.2.0",
     "@radix-ui/react-slot": "^1.2.4",
     "@tanstack/react-virtual": "^3.13.18",
