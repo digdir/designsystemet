@@ -6,6 +6,7 @@ import {
   onHotReload,
   onMutation,
   QUICK_EVENT,
+  setTextWithoutMutation,
   tag,
   warn,
 } from '../utils/utils';
@@ -15,10 +16,11 @@ let SOURCE: Element | undefined;
 let HOVER_TIMER: number | ReturnType<typeof setTimeout> = 0;
 let SKIP_TIMER: number | ReturnType<typeof setTimeout> = 0;
 const ATTR_COLOR = 'data-color';
+const ARIA_LABEL = 'aria-label';
+const ARIA_DESC = 'aria-description';
 const SELECTOR_COLOR = `[${ATTR_COLOR}]`;
 const ATTR_SCHEME = 'data-color-scheme';
 const SELECTOR_SCHEME = `[${ATTR_SCHEME}]`;
-const SELECTOR_NEEDS_ARIA = `[data-tooltip]:not([aria-description], [aria-label])`;
 const SELECTOR_INTERACTIVE = 'a,button,input,label,select,textarea,[tabindex]';
 const DELAY_HOVER = 300;
 const DELAY_SKIP = 300;
@@ -35,13 +37,17 @@ export const setTooltipElement = (el?: HTMLElement | null) => {
 };
 
 const handleAriaAttributes = debounce(() => {
-  for (const el of document.querySelectorAll(SELECTOR_NEEDS_ARIA)) {
-    const hasText = el.textContent?.trim();
-    const tooltip = attrOrCSS(el, 'data-tooltip');
+  for (const el of document.querySelectorAll('[data-tooltip]')) {
+    const aria = el.getAttribute(ARIA_LABEL) || el.getAttribute(ARIA_DESC); // Using getAttribute for best performance
+    const text = attrOrCSS(el, 'data-tooltip');
 
-    attr(el, hasText ? 'aria-description' : 'aria-label', tooltip);
-    if (!el.matches(SELECTOR_INTERACTIVE))
-      warn('Missing tabindex="0" attribute on: ', el);
+    if (aria !== text) {
+      const hasText = el.textContent?.trim();
+      attr(el, ARIA_LABEL, hasText ? null : text); // Set aria-label if element does not have text
+      attr(el, ARIA_DESC, hasText ? text : null); // Set aria-description if element has text
+      if (!el.matches(SELECTOR_INTERACTIVE))
+        warn('Missing tabindex="0" attribute on: ', el);
+    }
   }
 }, 200);
 
@@ -67,7 +73,7 @@ const handleInterest = ({ type, target }: Event) => {
   clearTimeout(SKIP_TIMER);
   attr(TIP, ATTR_SCHEME, scheme?.getAttribute(ATTR_SCHEME));
   attr(TIP, ATTR_COLOR, isSchemeReset ? null : color?.getAttribute(ATTR_COLOR));
-  TIP.textContent = attr(source, 'data-tooltip');
+  setTextWithoutMutation(TIP, attr(source, 'data-tooltip'));
   TIP.showPopover();
   TIP.dispatchEvent(new CustomEvent('ds-toggle-source', { detail: source })); // Since showPopover({ source }) is not supported in all browsers yet
   SOURCE = source;

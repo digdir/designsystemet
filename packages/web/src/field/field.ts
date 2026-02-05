@@ -1,5 +1,6 @@
 import {
   attr,
+  attrOrCSS,
   customElements,
   DSElement,
   debounce,
@@ -9,6 +10,7 @@ import {
   onHotReload,
   onMutation,
   QUICK_EVENT,
+  setTextWithoutMutation,
   tag,
   useId,
   warn,
@@ -24,15 +26,12 @@ declare global {
   }
 }
 
+const INDETERMINATE = 'data-indeterminate';
 const FIELDS = new Set<DSFieldElement>(); // Set of Field
 const COUNTS = new WeakMap<HTMLInputElement, Element>(); // Using WeakMap so removed inputs/counts does not cause memory leaks
 const FIELDSETS = isBrowser() ? document.getElementsByTagName('fieldset') : [];
 const HAS_FIELD_SIZING = isBrowser() && CSS.supports('field-sizing', 'content');
 const COUNTER_DEBOUNCE = isWindows() ? 800 : 200; // Longer debounce on Windows due to NVDA performance
-const NB_COUNTER = {
-  over: '%d tegn for mye',
-  under: '%d tegn igjen',
-};
 
 const handleMutations = debounce(() => {
   for (const el of FIELDSETS) {
@@ -80,6 +79,9 @@ const handleMutations = debounce(() => {
         descs.unshift(fieldsetValidation);
       }
 
+      const indeterminate = attr(input, INDETERMINATE);
+      if (indeterminate) input.indeterminate = indeterminate === 'true';
+
       attr(field, 'data-clickdelegatefor', isBoolish ? useId(input) : null); // Expand click area to ds-field if radio/checkbox
       attr(input, 'aria-describedby', descs.map(useId).join(' '));
       attr(input, 'aria-invalid', `${invalid}`);
@@ -101,7 +103,7 @@ const updateField = (e: Event | Element) => {
     const limit = Number(attr(counter, 'data-limit')) || 0;
     const count = limit - input.value.length;
     const state = count < 0 ? 'over' : 'under';
-    const label = (attr(counter, `data-${state}`) || NB_COUNTER[state]).replace(
+    const label = attrOrCSS(counter, `data-${state}`)?.replace(
       '%d',
       `${Math.abs(count)}`,
     );
@@ -111,7 +113,7 @@ const updateField = (e: Event | Element) => {
     attr(counter, 'data-color', count < 0 ? 'danger' : null);
 
     // Only update live region when user is actually typing
-    if ((e as Event).type === 'input' && SR_LIVE) {
+    if ((e as Event).type === 'input' && SR_LIVE && label) {
       if (!SR_LIVE?.isConnected) document.body.appendChild(SR_LIVE); // Prepare live region
       debouncedCounterLiveRegion(input, label); // Debounce live region to avoid NVDA interupting announcing typed text
     }
@@ -123,8 +125,8 @@ const updateField = (e: Event | Element) => {
 };
 
 const debouncedCounterLiveRegion = debounce((input: Element, text: string) => {
-  const root = input.getRootNode() as Document | ShadowRoot; // Support if fields is placed inside shadow DOM
-  if (SR_LIVE && root?.activeElement === input) SR_LIVE.textContent = text; // Only announce if input is still focused
+  const hasFocus = document.activeElement === input; // Only announce if input is still focused
+  if (SR_LIVE?.isConnected && hasFocus) setTextWithoutMutation(SR_LIVE, text);
 }, COUNTER_DEBOUNCE);
 
 const isInvalid = (el: Element) => el.getAttribute('data-color') !== 'success';
@@ -150,7 +152,7 @@ customElements.define('ds-field', DSFieldElement);
 onHotReload('field', () => [
   on(document, 'input ds-field-update', updateField, QUICK_EVENT),
   onMutation(document, handleMutations, {
-    attributeFilter: ['hidden', 'data-field'], // Listen for hidden to detect hidden validations
+    attributeFilter: ['hidden', 'data-field', INDETERMINATE], // Listen for hidden to detect hidden validations
     attributes: true,
     childList: true,
     subtree: true,

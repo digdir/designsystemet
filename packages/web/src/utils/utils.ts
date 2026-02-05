@@ -140,6 +140,7 @@ export const onHotReload = (key: string, setup: () => Array<() => void>) => {
  * Speed up MutationObserver by debouncing and only running when page is visible
  * @return new MutaionObserver
  */
+let SKIP_MUTATIONS = false;
 export const onMutation = (
   el: Node,
   callback: (observer: MutationObserver) => void,
@@ -154,12 +155,25 @@ export const onMutation = (
   };
   const cleanup = () => observer?.disconnect?.();
   const observer = new MutationObserver(() => {
-    if (!queue) queue = requestAnimationFrame(onFrame); // requestAnimationFrame only runs when page is visible
+    if (!SKIP_MUTATIONS && !queue) queue = requestAnimationFrame(onFrame); // requestAnimationFrame only runs when page is visible
   });
 
   observer.observe(el, options);
   requestAnimationFrame(onFrame); // Initial run when page is visible and children has mounted
   return cleanup;
+};
+
+/**
+ * Many mutation observers need to watch childNodes, thus running on all `textContent` changes
+ * This utility allows skipping mutation observers while updating textContent
+ */
+export const setTextWithoutMutation = (el: Element, text: string | null) => {
+  SKIP_MUTATIONS = true;
+  el.textContent = text;
+  requestAnimationFrame(enableMutations); // Let all mutationobservers run before enabling again
+};
+const enableMutations = () => {
+  SKIP_MUTATIONS = false;
 };
 
 /**

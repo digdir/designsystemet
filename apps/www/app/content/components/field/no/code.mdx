@@ -72,6 +72,18 @@ Du kan styre teksten i telleren ved å bruke følgende attributter:
 | data-over  | string | %d tegn for mye       | false    |
 | data-under | string | %d tegn igjen         | false    |
 
+
+### Ubestemt
+
+For å sette en `checkbox` til ubestemt, legg til `data-indeterminate="true"` på `<input>` elementet.
+
+```html
+<ds-field class="ds-field">
+  <label class="ds-label">Label</label>
+  <input class="ds-input" type="checkbox" data-indeterminate="true" />
+</ds-field>
+```
+
 ### Plassering
 
 For å endre plassering av elementer i `Field`, som for eksempel en `Switch`, kan du legge til `data-position="end|start"` på samme element som `ds-field`.

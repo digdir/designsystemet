@@ -215,12 +215,6 @@ Radio.args = {
 };
 
 export const Checkbox: StoryFn<typeof Input> = function Render(args) {
-  useEffect(() => {
-    for (const input of document.getElementsByTagName('input')) {
-      if (input.hasAttribute('data-indeterminate')) input.indeterminate = true;
-    }
-  }); // Intentionally run on every render
-
   const states = [
     { label: 'Default', props: {} },
     { label: 'Checked', props: { defaultChecked: true } },

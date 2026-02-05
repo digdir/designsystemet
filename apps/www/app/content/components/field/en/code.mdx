@@ -72,6 +72,17 @@ You can control the text in the counter using the following attributes:
 | data-over  | string | %d tegn for mye       | false    |
 | data-under | string | %d tegn igjen         | false    |
 
+### Indeterminate
+
+To make a `checkbox` indeterminate, add `data-indeterminate="true"` on the `<input>` element.
+
+```html
+<ds-field class="ds-field">
+  <label class="ds-label">Label</label>
+  <input class="ds-input" type="checkbox" data-indeterminate="true" />
+</ds-field>
+```
+
 ### Position
 
 To change the position of elements in `Field`, such as a `Switch`, you can add `data-position="end|start"` to the same element as `ds-field`.
