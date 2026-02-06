@@ -1,9 +1,9 @@
 import * as R from 'ramda';
-import { baseColors, colorMetadata, dsLinkColor } from '../../../colors/colorMetadata.js';
-import { generateColorScale } from '../../../colors/index.js';
-import type { Color, ColorScheme } from '../../../colors/types.js';
-import type { ColorOverrideSchema } from '../../../config.js';
-import type { Colors, Token, TokenSet } from '../../types.js';
+import { baseColors, colorMetadata, dsLinkColor } from '../../../../colors/colorMetadata.js';
+import { generateColorScale } from '../../../../colors/index.js';
+import type { Color, ColorScheme } from '../../../../colors/types.js';
+import type { ColorOverrideSchema } from '../../../../config.js';
+import type { Colors, Token, TokenSet } from '../../../types.js';
 
 const generateColor = (colorArray: Color[], overrides?: Record<number, string>): TokenSet => {
   const obj: TokenSet = {};
