@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import path from 'node:path';
 import { Argument, createCommand, program } from '@commander-js/extra-typings';
 import pc from 'picocolors';
 import * as R from 'ramda';
@@ -53,18 +54,30 @@ function makeTokenCommands() {
       console.log(figletAscii);
       const { verbose, clean, dry, experimentalTailwind, outDir, tokens } = opts;
 
-      const { configFile, configPath } = await getConfigFile(opts.config);
+      const configFilePath = opts.config;
+      const workingDir = configFilePath ? path.dirname(configFilePath) : process.cwd();
+
+      const { configFile, configPath } = await getConfigFile(configFilePath);
       const config = await parseBuildConfig(configFile, { configPath });
+
+      const writeDir = path.resolve(workingDir, outDir);
 
       if (dry) {
         console.log(`Performing dry run, no files will be written`);
       }
 
       if (clean) {
-        await cleanDir(outDir, dry);
+        await cleanDir(writeDir, dry);
       }
 
-      await buildTokens({ tokensDir: tokens, outDir, verbose, dry, tailwind: experimentalTailwind, ...config });
+      await buildTokens({
+        tokensDir: tokens,
+        outDir: writeDir,
+        verbose,
+        dry,
+        tailwind: experimentalTailwind,
+        ...config,
+      });
 
       return Promise.resolve();
     });
@@ -96,17 +109,23 @@ function makeTokenCommands() {
       if (opts.dry) {
         console.log(`Performing dry run, no files will be written`);
       }
+      const themeName = opts.theme;
+      const configFilePath = opts.config;
+      const workingDir = configFilePath ? path.dirname(configFilePath) : process.cwd();
 
-      const { configFile, configPath } = await getConfigFile(opts.config);
+      const { configFile, configPath } = await getConfigFile(configFilePath);
       const config = await parseCreateConfig(configFile, {
-        theme: opts.theme,
+        theme: themeName,
         cmd,
         configPath,
       });
 
+      const writeDir = path.resolve(workingDir, config.outDir);
+
       if (config.clean) {
-        await cleanDir(config.outDir, opts.dry);
+        await cleanDir(writeDir, opts.dry);
       }
+
       /*
        * Create and write tokens for each theme
        */
@@ -116,7 +135,7 @@ function makeTokenCommands() {
           const theme = { name, ...themeWithoutName } as Theme;
 
           const { tokenSets } = await createTokens(theme);
-          await writeTokens({ outDir: config.outDir, theme, dry: opts.dry, tokenSets });
+          await writeTokens({ outDir: writeDir, theme, dry: opts.dry, tokenSets });
         }
       }
     });
@@ -203,5 +222,6 @@ async function getConfigFile(config: string | undefined) {
   const allowFileNotFound = R.isNil(config) || config === DEFAULT_CONFIG_FILE;
   const configPath = config ?? DEFAULT_CONFIG_FILE;
   const configFile = await readConfigFile(configPath, allowFileNotFound);
+
   return { configFile, configPath };
 }
