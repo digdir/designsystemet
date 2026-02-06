@@ -25,14 +25,14 @@ export const writeTokens = async (options: WriteTokensOptions) => {
     theme: { name: themeName, colors },
     dry,
   } = options;
-  const targetDir = path.resolve(process.cwd(), String(outDir));
-  const $themesPath = path.join(targetDir, '$themes.json');
-  const $metadataPath = path.join(targetDir, '$metadata.json');
-  const $designsystemetPath = path.join(targetDir, '$designsystemet.jsonc');
+
+  const $themesPath = path.join(outDir, '$themes.json');
+  const $metadataPath = path.join(outDir, '$metadata.json');
+  const $designsystemetPath = path.join(outDir, '$designsystemet.jsonc');
   let themeObjects: ThemeObject[] = [];
   const sizeModes: SizeModes[] = ['small', 'medium', 'large'];
 
-  await mkdir(targetDir, dry);
+  await mkdir(outDir, dry);
 
   try {
     // Fetch existing themes
@@ -65,10 +65,10 @@ export const writeTokens = async (options: WriteTokensOptions) => {
 
   for (const [set, tokens] of tokenSets) {
     // Remove last part of the path to get the directory
-    const fileDir = path.join(targetDir, path.dirname(set));
+    const fileDir = path.join(outDir, path.dirname(set));
     await mkdir(fileDir, dry);
 
-    const filePath = path.join(targetDir, `${set}.json`);
+    const filePath = path.join(outDir, `${set}.json`);
     await writeFile(filePath, stringify(tokens), dry);
   }
 
