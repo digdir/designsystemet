@@ -74,8 +74,8 @@ export type DialogProps = MergeRight<
  *
  * ...
  *
- * <Button onClick={() => dialogRef.current?.showModal()}>Open Dialog</Button>
- * <Dialog ref={dialogRef}>
+ * <Button command="show-modal" commandfor="my-dialog">Open Dialog</Button>
+ * <Dialog id="my-dialog">
  *   Content
  * </Dialog>
  */
@@ -97,22 +97,25 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
     },
     ref,
   ) {
-    const contextRef = useContext(Context);
+    const { setContext } = useContext(Context);
     const dialogRef = useRef<HTMLDialogElement>(null); // This local ref is used to make sure the dialog works without a DialogTriggerContext
     const Component = asChild ? Slot : 'dialog';
-    const mergedRefs = useMergeRefs([contextRef, ref, dialogRef]);
+    const mergedRefs = useMergeRefs([ref, dialogRef]);
     const showProp = modal ? 'showModal' : 'show';
     const autoId = useId();
+    const usedId = id ?? autoId;
 
     // Toggle open based on prop
     useEffect(() => dialogRef.current?.[open ? showProp : 'close'](), [open]);
 
+    // Store context for DialogTrigger to consume, so it can open the dialog when the trigger is clicked
+    useEffect(() => setContext?.({ id: usedId, modal }), [usedId, modal]);
+
     return (
       <Component
         className={cl('ds-dialog', className)}
-        data-modal={modal}
         data-placement={placement}
-        id={id ?? autoId}
+        id={usedId}
         onClose={(event) => onClose?.(event.nativeEvent)} // Backward compatibility: expose native event
         onClick={(event) => {
           onClick?.(event);

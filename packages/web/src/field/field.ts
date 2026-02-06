@@ -108,7 +108,7 @@ const updateField = (e: Event | Element) => {
       `${Math.abs(count)}`,
     );
 
-    attr(counter, 'data-label', label); // Using aria label as this does not cause hydation errors
+    attr(counter, 'data-label', label); // Using attribute as this does not cause hydation errors
     attr(counter, 'data-state', state);
     attr(counter, 'data-color', count < 0 ? 'danger' : null);
 

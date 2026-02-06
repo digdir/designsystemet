@@ -58,7 +58,7 @@ export default {
     // Refactored out the play function for easier reuse in the InModal story
     await testSuggestion(storyRoot);
   },
-} as Meta;
+} satisfies Meta;
 
 async function testSuggestion(el: HTMLElement) {
   /* wait for role to be added */

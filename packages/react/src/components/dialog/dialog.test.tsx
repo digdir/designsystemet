@@ -42,14 +42,11 @@ describe('Dialog', () => {
         </>
       ),
     });
-    const spy = vi.spyOn(HTMLDialogElement.prototype, 'showModal');
 
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
 
     const button = screen.getByRole('button', { name: OPEN_Dialog });
     await act(async () => await user.click(button));
-
-    expect(spy).toHaveBeenCalledTimes(1);
 
     expect(screen.queryByRole('dialog')).toBeInTheDocument();
   });

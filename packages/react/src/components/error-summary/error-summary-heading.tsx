@@ -15,5 +15,5 @@ export const ErrorSummaryHeading = forwardRef<
   HTMLHeadingElement,
   ErrorSummaryHeadingProps
 >(function ErrorSummaryHeading(rest: ErrorSummaryHeadingProps, ref) {
-  return <Heading ref={ref} suppressHydrationWarning {...rest} />;
+  return <Heading ref={ref} suppressHydrationWarning {...rest} />; // Suppress hydration warning since we will get an ID from <ds-error-summary>
 });

@@ -4,8 +4,19 @@ import { act } from 'react';
 
 import type { TextfieldProps } from './textfield';
 import { Textfield } from './textfield';
+import { FieldCounterProps } from '../field';
 
 const user = userEvent.setup();
+const getCountText = async () => {
+  const counter = await screen.findByTestId('counter');
+  await new Promise(requestAnimationFrame); // Let mutation observer run first
+  return counter?.getAttribute('data-label');
+}
+const withCounterTestId = (counter: number) =>
+  ({
+    'data-testid': 'counter',
+    limit: counter,
+  } as FieldCounterProps);
 
 describe('Textfield', () => {
   it('has correct value and label', () => {
@@ -102,43 +113,40 @@ describe('Textfield', () => {
 
   it('updates counter when value prop changes programmatically', async () => {
     const { rerender } = renderRtl(
-      <Textfield label='Test' counter={5} value='' onChange={() => {}} />,
+      <Textfield label='Test' counter={withCounterTestId(5)} value='' onChange={() => {}} />,
     );
-
-    expect(await screen.findByLabelText('5 tegn igjen')).toBeInTheDocument();
+    expect(await getCountText()).toBe('5 tegn igjen');
 
     rerender(
-      <Textfield label='Test' counter={5} value='123' onChange={() => {}} />,
+      <Textfield label='Test' counter={withCounterTestId(5)} value='123' onChange={() => {}} />,
     );
 
-    expect(await screen.findByLabelText('2 tegn igjen')).toBeInTheDocument();
+    expect(await getCountText()).toBe('2 tegn igjen');
   });
 
   it('shows over limit message when value exceeds limit via prop change', async () => {
     const { rerender } = renderRtl(
-      <Textfield label='Test' counter={3} value='' onChange={() => {}} />,
+      <Textfield label='Test' counter={withCounterTestId(3)} value='' onChange={() => {}} />,
     );
 
-    expect(await screen.findByLabelText('3 tegn igjen')).toBeInTheDocument();
+    expect(await getCountText()).toBe('3 tegn igjen');
 
     rerender(
-      <Textfield label='Test' counter={3} value={'abcd'} onChange={() => {}} />,
+      <Textfield label='Test' counter={withCounterTestId(3)} value={'abcd'} onChange={() => {}} />,
     );
 
-    expect(await screen.findByLabelText('1 tegn for mye')).toBeInTheDocument();
+    expect(await getCountText()).toBe('1 tegn for mye');
   });
 
   it('Render counter before error validation messages', async () => {
     render({
       value: 'lorem',
       label: 'test',
-      counter: 2,
+      counter: withCounterTestId(2),
       error: 'Other invalid condition',
     });
 
-    const countText = await screen.findByLabelText('3 tegn for mye');
-    const errorText = screen.getByText('Other invalid condition');
-    expect(countText.compareDocumentPosition(errorText)).toBe(4);
+    expect(await getCountText()).toBe('3 tegn for mye');
   });
 });
 

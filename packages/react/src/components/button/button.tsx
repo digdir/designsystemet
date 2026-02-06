@@ -75,6 +75,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     // Fallbacks to undefined to prevent rendering attribute="false"
     return (
       <Component
+        suppressHydrationWarning // Might get augmented through designsystemet-web with aria-haspopup etc.
         aria-busy={Boolean(loading) || undefined}
         aria-disabled={Boolean(loading) || undefined}
         className={cl('ds-button', className)}

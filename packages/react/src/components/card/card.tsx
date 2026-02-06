@@ -54,7 +54,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
   useEffect(() => {
     const card = cardRef.current;
     const link = card?.querySelector(SELECTOR_LINK);
-    const skip = !link || link.closest(SELECTOR_SKIP);
+    const skip = !link || link.parentElement?.closest(SELECTOR_SKIP); // Using parentElement as link variable will always match a selector
     const id = link?.id;
 
     if (card?.hasAttribute(ATTR_CLICKDELEGATE) || skip) return; // Already delegated or skipped

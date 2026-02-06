@@ -29,7 +29,6 @@ export default {
         width: '100cqw',
       },
     },
-
     chromatic: {
       disableSnapshot: false,
       modes: {
@@ -48,12 +47,7 @@ export default {
     const button = canvas.getByRole('button');
     await userEvent.click(button);
     // Wait for dialog to fade in before running tests
-    const dialog = canvas.getByRole('dialog');
-    await new Promise<void>((resolve) => {
-      dialog.addEventListener('animationend', () => {
-        resolve();
-      });
-    });
+    const dialog = await canvas.findByRole('dialog');
 
     await expect(dialog).toBeInTheDocument();
     await expect(dialog).toHaveAttribute('open');
@@ -216,7 +210,7 @@ export const DialogWithForm: StoryFn<typeof Dialog> = () => {
         >
           <Button
             onClick={() => {
-              window.alert(`Du har sendt inn skjema med navn: ${input}`);
+              alert(`Du har sendt inn skjema med navn: ${input}`);
               dialogRef.current?.close();
             }}
           >
