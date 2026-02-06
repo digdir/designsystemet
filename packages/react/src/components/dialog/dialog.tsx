@@ -1,7 +1,7 @@
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { DialogHTMLAttributes } from 'react';
-import { forwardRef, useContext, useEffect, useRef } from 'react';
+import { forwardRef, useContext, useEffect, useId, useRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { useMergeRefs } from '../../utilities/hooks';
@@ -74,8 +74,8 @@ export type DialogProps = MergeRight<
  *
  * ...
  *
- * <Button onClick={() => dialogRef.current?.showModal()}>Open Dialog</Button>
- * <Dialog ref={dialogRef}>
+ * <Button command="show-modal" commandfor="my-dialog">Open Dialog</Button>
+ * <Dialog id="my-dialog">
  *   Content
  * </Dialog>
  */
@@ -85,86 +85,56 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
       asChild,
       children,
       className,
-      placement = 'center',
       closeButton = 'Lukk dialogvindu',
-      closedby = 'closerequest',
+      id,
       modal = true,
+      onAnimationEnd,
+      onClick,
       onClose,
       open,
+      placement = 'center',
       ...rest
     },
     ref,
   ) {
-    const contextRef = useContext(Context);
+    const { setContext } = useContext(Context);
     const dialogRef = useRef<HTMLDialogElement>(null); // This local ref is used to make sure the dialog works without a DialogTriggerContext
     const Component = asChild ? Slot : 'dialog';
-    const mergedRefs = useMergeRefs([contextRef, ref, dialogRef]);
+    const mergedRefs = useMergeRefs([ref, dialogRef]);
     const showProp = modal ? 'showModal' : 'show';
+    const autoId = useId();
+    const usedId = id ?? autoId;
 
-    useEffect(() => dialogRef.current?.[open ? showProp : 'close'](), [open]); // Toggle open based on prop
+    // Toggle open based on prop
+    useEffect(() => dialogRef.current?.[open ? showProp : 'close'](), [open]);
 
-    useEffect(() => {
-      const dialog = dialogRef.current;
-      const handleClosedby = (event: Event) => {
-        if (event.defaultPrevented) return; // Skip if default action is prevented
-        const { clientY: y, clientX: x, target } = event as MouseEvent;
-        /* Check if clicked element or its closest parent has data-command='close' */
-        if (target instanceof Element && event.type === 'click') {
-          const closeElement = target.closest('[data-command="close"]');
-          if (closeElement) return dialog?.close();
-        }
-
-        // if the browser supports closedBy, we let the browser handle it
-        // see https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy
-        if (dialog && 'closedBy' in dialog) return;
-
-        if (event instanceof KeyboardEvent)
-          return (
-            closedby === 'none' &&
-            event.key === 'Escape' &&
-            event.preventDefault()
-          ); // Skip ESC-key if closedby="none"
-
-        if (window.getSelection()?.toString()) return; // Fix bug where if you select text spanning two divs it thinks you clicked outside
-        if (dialog && target === dialog && closedby === 'any') {
-          const { top, left, right, bottom } = dialog.getBoundingClientRect();
-          const isInDialog = top <= y && y <= bottom && left <= x && x <= right;
-
-          if (!isInDialog) dialog?.close(); // Both <dialog> and ::backdrop is considered same event.target
-        }
-      };
-
-      const handleAutoFocus = () => {
-        const autofocus = dialog?.querySelector<HTMLElement>('[autofocus]');
-        if (document.activeElement !== autofocus) autofocus?.focus();
-      };
-
-      dialog?.addEventListener('animationend', handleAutoFocus);
-      dialog?.addEventListener('click', handleClosedby);
-      dialog?.addEventListener('keydown', handleClosedby);
-      return () => {
-        dialog?.removeEventListener('animationend', handleAutoFocus);
-        dialog?.removeEventListener('click', handleClosedby);
-        dialog?.removeEventListener('keydown', handleClosedby);
-      };
-    }, [closedby]);
-
-    /* handle closing */
-    useEffect(() => {
-      const handleClose = (event: Event) => onClose?.(event);
-
-      const currentRef = dialogRef.current;
-      currentRef?.addEventListener('close', handleClose);
-      return () => currentRef?.removeEventListener('close', handleClose);
-    }, [onClose]);
+    // Store context for DialogTrigger to consume, so it can open the dialog when the trigger is clicked
+    useEffect(() => setContext?.({ id: usedId, modal }), [usedId, modal]);
 
     return (
       <Component
         className={cl('ds-dialog', className)}
-        ref={mergedRefs}
         data-placement={placement}
-        data-modal={modal}
-        closedby={closedby}
+        id={usedId}
+        onClose={(event) => onClose?.(event.nativeEvent)} // Backward compatibility: expose native event
+        onClick={(event) => {
+          onClick?.(event);
+          const { currentTarget: dialog, target: el, defaultPrevented } = event;
+          const isClose = (el as Element)?.closest?.('[data-command="close"]');
+          if (!defaultPrevented && isClose) {
+            dialog.close();
+            console.warn(
+              'Designsystemet: data-command="close" is deprecated. Use command="close" and commandfor="DIALOG-ID" instead.',
+            );
+          }
+        }}
+        onAnimationEnd={(event: React.AnimationEvent<HTMLDialogElement>) => {
+          const { currentTarget: dialog } = event;
+          const autofocus = dialog.querySelector<HTMLElement>('[autofocus]');
+          if (document.activeElement !== autofocus) autofocus?.focus(); // Handle autofocus on open
+          onAnimationEnd?.(event);
+        }}
+        ref={mergedRefs}
         {...rest}
       >
         {closeButton !== false && (
@@ -173,7 +143,8 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
             data-color='neutral'
             icon
             variant='tertiary'
-            data-command='close'
+            command='close'
+            commandfor={id ?? autoId}
           />
         )}
         {children}

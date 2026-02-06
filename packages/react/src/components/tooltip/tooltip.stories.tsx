@@ -19,14 +19,10 @@ export default {
     // When not in Docs mode, automatically open the tooltip
     const canvas = within(ctx.canvasElement);
     const button = canvas.getByRole('button');
+
     /* wait 1s for tooltip to show */
     await userEvent.hover(button);
-    await new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(true);
-      }, 1000);
-    });
-    const tooltip = canvas.getByRole('tooltip');
+    const tooltip = await within(document.body).findByText(ctx.args.content);
     await expect(tooltip).toBeInTheDocument();
     await expect(tooltip).toBeVisible();
   },
@@ -49,6 +45,7 @@ export const WithString: Story = {
   args: {
     content: 'Organisasjonsnummer',
     children: 'Org.nr.',
+    tabIndex: 0,
   },
 };
 
@@ -57,13 +54,7 @@ WithString.play = async (ctx) => {
   const canvas = within(ctx.canvasElement);
   const button = canvas.getByText('Org.nr.');
   await userEvent.hover(button);
-  /* wait 1s for tooltip to show */
-  await new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(true);
-    }, 1000);
-  });
-  const tooltip = canvas.getByRole('tooltip');
+  const tooltip = await within(document.body).findByText(ctx.args.content);
   await expect(tooltip).toBeInTheDocument();
   await expect(tooltip).toBeVisible();
 };
@@ -83,10 +74,10 @@ export const Placement: Story = {
 export const Aria: StoryFn<typeof Tooltip> = () => {
   return (
     <>
-      <Tooltip content='Eg er aria-describedby'>
-        <Button>Eg er aria-describedby</Button>
+      <Tooltip content='Eg er aria-description'>
+        <Button>Eg er aria-description</Button>
       </Tooltip>
-      <Tooltip content='Eg er aria-labelledby'>
+      <Tooltip content='Eg er aria-label'>
         <Button icon>
           <FilesIcon aria-hidden />
         </Button>

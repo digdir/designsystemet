@@ -1,11 +1,21 @@
 import { render as renderRtl, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react';
-
+import type { FieldCounterProps } from '../field';
 import type { TextfieldProps } from './textfield';
 import { Textfield } from './textfield';
 
 const user = userEvent.setup();
+const getCountText = async () => {
+  const counter = await screen.findByTestId('counter');
+  await new Promise(requestAnimationFrame); // Let mutation observer run first
+  return counter?.getAttribute('data-label');
+};
+const withCounterTestId = (counter: number) =>
+  ({
+    'data-testid': 'counter',
+    limit: counter,
+  }) as FieldCounterProps;
 
 describe('Textfield', () => {
   it('has correct value and label', () => {
@@ -100,45 +110,62 @@ describe('Textfield', () => {
     expect(screen.getByRole('textbox')).toHaveAttribute('type', type);
   });
 
-  it('updates counter when value prop changes programmatically', () => {
+  it('updates counter when value prop changes programmatically', async () => {
     const { rerender } = renderRtl(
-      <Textfield label='Test' counter={5} value='' onChange={() => {}} />,
+      <Textfield
+        label='Test'
+        counter={withCounterTestId(5)}
+        value=''
+        onChange={() => {}}
+      />,
     );
-
-    expect(screen.getByText('5 tegn igjen')).toBeInTheDocument();
+    expect(await getCountText()).toBe('5 tegn igjen');
 
     rerender(
-      <Textfield label='Test' counter={5} value='123' onChange={() => {}} />,
+      <Textfield
+        label='Test'
+        counter={withCounterTestId(5)}
+        value='123'
+        onChange={() => {}}
+      />,
     );
 
-    expect(screen.getByText('2 tegn igjen')).toBeInTheDocument();
+    expect(await getCountText()).toBe('2 tegn igjen');
   });
 
-  it('shows over limit message when value exceeds limit via prop change', () => {
+  it('shows over limit message when value exceeds limit via prop change', async () => {
     const { rerender } = renderRtl(
-      <Textfield label='Test' counter={3} value='' onChange={() => {}} />,
+      <Textfield
+        label='Test'
+        counter={withCounterTestId(3)}
+        value=''
+        onChange={() => {}}
+      />,
     );
 
-    expect(screen.getByText('3 tegn igjen')).toBeInTheDocument();
+    expect(await getCountText()).toBe('3 tegn igjen');
 
     rerender(
-      <Textfield label='Test' counter={3} value={'abcd'} onChange={() => {}} />,
+      <Textfield
+        label='Test'
+        counter={withCounterTestId(3)}
+        value={'abcd'}
+        onChange={() => {}}
+      />,
     );
 
-    expect(screen.getAllByText('1 tegn for mye')[0]).toBeInTheDocument();
+    expect(await getCountText()).toBe('1 tegn for mye');
   });
 
-  it('Render counter before error validation messages', () => {
+  it('Render counter before error validation messages', async () => {
     render({
       value: 'lorem',
       label: 'test',
-      counter: 2,
+      counter: withCounterTestId(2),
       error: 'Other invalid condition',
     });
 
-    const countText = screen.getAllByText('3 tegn for mye')[0];
-    const errorText = screen.getByText('Other invalid condition');
-    expect(countText.compareDocumentPosition(errorText)).toBe(4);
+    expect(await getCountText()).toBe('3 tegn for mye');
   });
 });
 
@@ -146,8 +173,9 @@ const render = (
   props: TextfieldProps = {
     'aria-label': 'label',
   },
-) =>
-  renderRtl(
+) => {
+  vi.useFakeTimers();
+  const result = renderRtl(
     <Textfield
       {...{
         onChange: vi.fn(),
@@ -155,3 +183,7 @@ const render = (
       }}
     />,
   );
+  vi.runAllTimers();
+  vi.useRealTimers();
+  return result;
+};

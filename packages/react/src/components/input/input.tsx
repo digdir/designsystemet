@@ -53,6 +53,12 @@ export type InputProps = MergeRight<
      * Set role, i.e. `switch` when `checkbox` or `radio`
      **/
     role?: InputAttr['role'];
+    /**
+     * Indeterminate state for checkbox inputs
+     * Only works when used inside `Field` component
+     * @default false
+     **/
+    'data-indeterminate'?: boolean;
   }
 >;
 
@@ -63,19 +69,19 @@ export type InputProps = MergeRight<
  * <Input />
  */
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-  { type = 'text', className, onChange, onClick, ...rest },
+  { className, onChange, onClick, ...rest },
   ref,
 ) {
   return (
     <input
       className={cl(`ds-input`, className)}
-      ref={ref}
-      type={type}
       onChange={(event) => rest.readOnly || onChange?.(event)} // Make readonly work for checkbox / radio / switch
       onClick={(event) => {
         if (rest.readOnly) event.preventDefault(); // Make readonly work for checkbox / radio / switch
         onClick?.(event);
       }}
+      ref={ref}
+      type='text' // Will be overwritten by rest if defined
       {...rest}
     />
   );

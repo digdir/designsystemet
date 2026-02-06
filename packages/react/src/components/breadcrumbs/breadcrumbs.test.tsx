@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import type { BreadcrumbsProps } from '../';
 import { Breadcrumbs } from '../';
 
@@ -26,27 +26,34 @@ const renderWithRoot = (props?: BreadcrumbsProps) =>
   );
 
 describe('Breadcrumbs', () => {
-  it('should render correctly with default props', () => {
+  it('should render correctly with default props', async () => {
     renderWithRoot();
 
-    expect(screen.getByRole('navigation')).toBeInTheDocument();
+    expect(await screen.findByRole('navigation')).toBeInTheDocument();
   });
 });
 
 describe('Breadcrumbs.List', () => {
-  it('should render with aria-current on last item', () => {
+  it('should render with aria-current on last item', async () => {
     renderWithRoot();
+
+    await waitFor(() => {
+      const links = screen.getAllByRole('link');
+      expect(links.at(-1)).toHaveAttribute('aria-current', 'page');
+    });
     const links = screen.getAllByRole('link');
     expect(links.at(0)).not.toHaveAttribute('aria-current', 'page');
     expect(links.at(1)).not.toHaveAttribute('aria-current', 'page');
     expect(links.at(2)).not.toHaveAttribute('aria-current', 'page');
-    expect(links.at(-1)).toHaveAttribute('aria-current', 'page');
   });
 
-  it('should move aria-current to item when re-rendering', () => {
+  it('should move aria-current to item when re-rendering', async () => {
     renderWithRoot();
-    const links = screen.getAllByRole('link');
-    expect(links.at(-1)).toHaveAttribute('aria-current', 'page');
+
+    await waitFor(() => {
+      const links = screen.getAllByRole('link');
+      expect(links.at(-1)).toHaveAttribute('aria-current', 'page');
+    });
 
     // Re-render with additional level
     render(
@@ -74,7 +81,11 @@ describe('Breadcrumbs.List', () => {
       </Breadcrumbs>,
     );
 
+    await waitFor(() => {
+      const links = screen.getAllByRole('link');
+      expect(links.at(-1)).toHaveAttribute('aria-current', 'page');
+    });
+    const links = screen.getAllByRole('link');
     expect(links.at(-2)).not.toHaveAttribute('aria-current', 'page');
-    expect(links.at(-1)).toHaveAttribute('aria-current', 'page');
   });
 });

@@ -28,18 +28,14 @@ const Image = ({
   };
 
   const closeFullImage = () => {
-    if (dialogRef.current) {
-      dialogRef.current.close();
-    }
+    dialogRef.current?.close();
   };
 
   useEffect(() => {
     const dialog = dialogRef.current;
 
     if (dialog) {
-      const handleClick = () => {
-        dialog.close();
-      };
+      const handleClick = () => dialog.close();
 
       dialog.addEventListener('click', handleClick);
 

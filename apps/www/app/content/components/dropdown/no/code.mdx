@@ -72,6 +72,14 @@ Dette kan brukes uten JavaScript, dersom du ikke vil polyfille.
 Merk deg at elementet med `popover="manual"` bruker to klasser, `ds-popover` og `ds-dropdown`.
 Du velger selv om du vil bruke `popover="manual"` eller bare `popover` for å åpne dropdownen.
 
+Når du bruker `@digdir/designsystemet-web` legger vi på en listener som automatisk plasserer popoveren riktig ved hjelp av `floating-ui`. 
+Du kan styre plassering med attributt på selve popoveren.
+| attribute     | type   | default    | required |
+|---------------|--------|------------|----------|
+| data-placement | string | top        | false    |
+| data-overscroll | `'contain' \| undefined` | undefined | undefined       | false    |
+| data-autoplacement | boolean | true          | false    |
+
 [Popover API (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using)
 
 ```html

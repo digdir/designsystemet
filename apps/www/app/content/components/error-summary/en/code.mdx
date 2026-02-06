@@ -38,20 +38,15 @@ Below is an example where we move focus to `ErrorSummary` when it becomes visibl
 
 ## HTML
 
-The class name `ds-error-summary` is used on a container, the default for React is `<div>`.
+The class name `ds-error-summary` is used on the `<ds-error-summary>` element.
+The web component handles focus when it becomes visible and `aria-labelledby` automatically.
 
-As a child, you must have a heading (preferably `<h2>`) that has an `id` that can be referenced with `aria-labelledby` on the container.
-
-We add a `ds-list` after the heading that contains a list of errors.
-Each error is a `<li>` with a link (`<a>`) that has the class `ds-link` and an `href` to the relevant field with errors.
+We add a `<ul class="ds-list">` after the heading which contains a list of errors.
+Each error is a `<li>` with a link (`<a>`) that has the class `ds-link` and an `href` to the relevant field with the error.
 
 ```html
-<div
-tabindex="-1"
-aria-labelledby="error-heading"
-class="ds-error-summary"
->
-  <h2 class="ds-heading" id="error-heading">To continue, you must correct the following errors:</h2>
+<ds-error-summary class="ds-error-summary">
+  <h2 class="ds-heading">To continue, you must correct the following errors:</h2>
   <ul class="ds-list">
     <li>
       <a class="ds-link" data-color="neutral" href="#">Date of birth cannot be after 2005</a>
@@ -63,7 +58,7 @@ class="ds-error-summary"
       <a class="ds-link" data-color="neutral" href="#">Email must be valid</a>
     </li>
   </ul>
-</div>
+</ds-error-summary>
 ```
 
 ## CSS variables and data attributes

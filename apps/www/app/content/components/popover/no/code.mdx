@@ -55,7 +55,15 @@ Du kan også bruke Popover uten TriggerContext ved å bruke `popovertarget`:
 Du kan bruke `popover` i ren HTML ved å bruke `popover`-attributtet på et element og koble det til en trigger med `popovertarget`.
 Klassenvnet `ds-popover` blir brukt på elementet som er popoveren.
 
-I React bruker vi [`floating-ui` (floating-ui.com)](https://floating-ui.com/) for plassering, og dette er et bibliotek som også kan brukes i rene JavaScript-applikasjoner.
+Når du bruker `@digdir/designsystemet-web` legger vi på en listener som automatisk plasserer popoveren riktig ved hjelp av `floating-ui`. 
+Du kan styre plassering med attributt på selve popoveren.
+| attribute     | type   | default    | required |
+|---------------|--------|------------|----------|
+| data-placement | string | top        | false    |
+| data-overscroll | `'contain' \| undefined` | undefined | undefined       | false    |
+| data-autoplacement | boolean | true          | false    |
+
+**Dersom du ikke bruker klassen `ds-popover` må du legge til CSS-egenskapen `--_ds-floating` på popover-elementet.** Dette kan være `top`, `bottom`, `left` eller `right`.
 
 Vi anbefaler å lese om [popover (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover).
 
@@ -66,16 +74,12 @@ Vi anbefaler å lese om [popover (mozilla.org)](https://developer.mozilla.org/en
 </div>
 ```
 
-`data-placement` er brukt for å plassere pila riktig.
-Dette attributtet henger sammen med en "plugin" vi har laget for `floating-ui`.
-Den er portabel til andre som bruker `floating-ui`, og du finner [koden på github.com](https://github.com/digdir/designsystemet/blob/f6bf5a2c84baa2bfd92207510cb6c0a00573ea61/packages/react/src/components/popover/popover.tsx#L209).
-
 ### Inline popover
 
 Dersom du vil ha triggeren inline i tekst må du fortsatt bruke `<button>`, men du kan legge på `data-popover="inline"` for å få riktig styling.
 
 ```html
-<p class="ds-paragraph">
+<p>
   Vi bruker
   <button popovertarget="my-popover" data-popover="inline">design tokens</button>
   for å sikre at vi har en konsistent design.
@@ -85,8 +89,7 @@ Dersom du vil ha triggeren inline i tekst må du fortsatt bruke `<button>`, men 
   id="my-popover"
   popover="manual"
 >
-  <p class="ds-paragraph">
-    <strong style="display: block;">Design tokens</strong>
+  <p>
     Design tokens er en samling av variabler som definerer designet i et
     designsystem.
   </p>

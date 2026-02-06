@@ -65,58 +65,21 @@ There is no built-in mobile support in `Pagination`, but you can show fewer page
 
 ## HTML
 
-You use the class name `ds-pagination` on a `<nav>` element.
+Add the class name `ds-pagination` to the `<ds-pagination>` element.
+The web component automatically fills the buttons or anchors based on the data attributes `data-current` and `data-total`.
 
-Then you use a `<ul>` with `<li>` that has `<button>` or `<a>` with class name `ds-button` as a child.
-
-If you add an empty `<li>` it will be displayed as an ellipsis (`\2026`).
-
-The first and last `<li>` children will get an arrow icon based on whether it is the first or last `<li>`.
-
-Note that you must add `data-variant` to `<button>` or `<a>` to get the correct style.
-
-**Each button should also have a descriptive `aria-label` for screen readers.**
+If you wish to use your own buttons you can add them inside `<a>` or `<button>` elements inside `<ds-pagination>`.
+If you fill these with text, and do not send any attributes, the web component will not change the buttons.
 
 ```html
-<nav aria-label="Page navigation" class="ds-pagination">
-  <ul>
-    <li>
-      <button
-      class="ds-button"
-      data-variant="tertiary"
-      type="button"
-      aria-label="Previous page"
-      ></button>
-    </li>
-    <li>
-      <button
-      class="ds-button"
-      data-variant="tertiary"
-      type="button"
-      aria-label="Page 3"
-      >3</button>
-    </li>
-
-    <li></li>
-
-    <li>
-      <button
-      class="ds-button"
-      data-variant="tertiary"
-      type="button"
-      aria-label="Page 10"
-      >10</button>
-    </li>
-    <li>
-      <button
-      class="ds-button"
-      data-variant="tertiary"
-      type="button"
-      aria-label="Next page"
-      ></button>
-    </li>
-  </ul>
-</nav>
+<ds-pagination class="ds-pagination" aria-label="Pagination" data-href="?page=%d" data-current="2" data-total="100">
+  <ol>
+    <li><a></a></li>
+    <li><a></a></li>
+    <li><a></a></li>
+    <li><a></a></li>
+  </ol>
+</ds-pagination>
 ```
 
 ## CSS variables and data attributes

@@ -29,7 +29,27 @@ Use [`Tooltip`](/en/components/docs/tooltip/code) to explain the actions when us
 <Story story="SecondaryEn" />
 
 ## HTML
-**JavaScript is also needed to handle focus.**
+If you are using `@digdir/designsystemet-web`, you can implement `ToggleGroup` by using the `data-toggle-group` attribute.
+
+```html
+<fieldset class="ds-toggle-group" data-toggle-group="Text alignment" data-variant="secondary">
+  <label>
+    <input type="radio" name="alignment-two" value="left" checked />
+    Leftadjusted
+  </label>
+  <label>
+    <input type="radio" name="alignment-two" value="center" />
+    Centered
+  </label>
+  <label>
+    <input type="radio" name="alignment-two" value="right" />
+    Rightadjusted
+  </label>
+</fieldset>
+```
+
+### Old way with `<button>`
+**With this approach, you need to handle keyboard navigation and ARIA roles yourself.**
 You can read about what you need to do to implement this in the [accessibility documentation](/en/components/docs/toggle-group/accessibility).
 
 The class name `ds-toggle-group` is placed on a `<div>` with `role="radiogroup"`.

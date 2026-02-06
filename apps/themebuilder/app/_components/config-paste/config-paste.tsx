@@ -74,14 +74,14 @@ export function ConfigPaste() {
         </Button>
         {configText && (
           <Button
-            onClick={() => {
+            onClick={(event) => {
               setConfigText('');
               setValidatedConfig(null);
               setError(null);
+              event.currentTarget.closest('dialog')?.close();
             }}
             variant='secondary'
             data-size='sm'
-            data-command='close'
           >
             {t('colorPane.cancel')}
           </Button>

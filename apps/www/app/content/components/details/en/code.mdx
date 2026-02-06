@@ -8,8 +8,8 @@
 import { Details } from '@digdir/designsystemet-react';
 
 <Details> 
-<Details.Summary>Details heading text</Details.Summary> 
-<Details.Content>Details content</Details.Content>
+  <Details.Summary>Details heading text</Details.Summary> 
+  <Details.Content>Details content</Details.Content>
 </Details>
 
 /* With frame */
@@ -17,10 +17,10 @@ import { Details } from '@digdir/designsystemet-react';
 import { Details, Card } from '@digdir/designsystemet-react';
 
 <Card> 
-<Details> 
-<Details.Summary>Details heading text</Details.Summary> 
-<Details.Content>Details content</Details.Content> 
-</Details>
+  <Details> 
+    <Details.Summary>Details heading text</Details.Summary> 
+    <Details.Content>Details content</Details.Content> 
+  </Details>
 </Card>
 ```
 
@@ -41,47 +41,32 @@ You can also use `variant="tinted"` on either `Details` or `Card` to get a light
 
 ## HTML
 
-`Details` is built on the web component [u-details (github.io)](https://u-elements.github.io/u-elements/elements/u-details), which you can use.
-It is built functionally similar to the native element `<details>`, but with better accessibility.
+`Details` is a native `<details>` element.
 
-You use the class name `.ds-details` on the main element.
-
-You can choose not to have a nested `<div>` around the main content, but if you have this, it gets `margin`.
-
-If you want to use tinted variant, add the attribute `data-variant="tinted"` to the main element or `.ds-card`.
+We polyfill a bug in Firefox when used with Android Talkback screen reader to announce state and role correctly.
 
 ```html
 <!-- without frame -->
-<u-details class="ds-details"> 
-<u-summary> 
-Details heading text 
-</u-summary> 
-<div> 
-Details content 
-</div>
-</u-details>
+<details class="ds-details">
+  <summary>
+  Details heading text
+  </summary>
+  <div>
+  Details content
+  </div>
+</details>
 
 <!-- with frame -->
-<div class="ds-card"> 
-<u-details class="ds-details"> 
-<u-summary> 
-Details heading text 
-</u-summary> 
-<div> 
-Details content 
-</div> 
-</u-details>
+<div class="ds-card">
+  <details class="ds-details">
+    <summary>
+    Details heading text
+    </summary>
+    <div>
+    Details content
+    </div>
+  </details>
 </div>
-
-<!-- without u-elements -->
-<details class="ds-details"> 
-<summary> 
-Details heading text 
-</summary> 
-<div> 
-Details content 
-</div>
-</details>
 ```
 
 ## CSS variables and data attributes

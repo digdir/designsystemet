@@ -64,55 +64,20 @@ Det er ikke noe innebygget mobilstøtte i `Pagination`, men du kan vise færre s
 
 ## HTML
 
-Du bruker klassenavnet `ds-pagination` på et `<nav>`-element.
-Deretter bruker du en `<ul>` med `<li>` som har `<button>` eller `<a>` med klassenavn `ds-button` som barn.
+Legg klassenavnet `ds-pagination` på `<ds-pagination>` elementet.
+Web komponenten fyller automatisk knappene med tekst basert på attributtene `data-current` og `data-total`.
 
-Dersom du legger en tom `<li>` vil denne vises som en ellipsis (`\2026`).
-
-Første og siste `<li>` sitt barn vil få et pil-ikon basert på om det først eller siste `<li>`.
-
-Merk at du må legge `data-variant` på `<button>` eller `<a>` for å få riktig stil.
-
-**Hver knapp burde også ha en beskrivende `aria-label` for skjermlesere.**
+Dersom du ønsker å lage dine egne knapper kan du legge inn `<a>` eller `<button>` elementer inni `<ds-pagination>`. Dersom du fyller disse med tekst, og ikke sender noen attributter, vil ikke web komponenten endre på knappene.
 
 ```html
-<nav aria-label="Sidenavigering" class="ds-pagination">
-  <ul>
-    <li>
-      <button
-        class="ds-button"
-        data-variant="tertiary"
-        type="button"
-        aria-label="Forrige side"
-      ></button>
-    </li>
-    <li>
-      <button
-        class="ds-button"
-        data-variant="tertiary"
-        type="button"
-        aria-label="Side 3"
-      >3</button>
-    </li>
-    <li></li>
-    <li>
-      <button
-        class="ds-button"
-        data-variant="tertiary"
-        type="button"
-        aria-label="Side 10"
-      >10</button>
-    </li>
-    <li>
-      <button
-        class="ds-button"
-        data-variant="tertiary"
-        type="button"
-        aria-label="Neste side"
-      ></button>
-    </li>
-  </ul>
-</nav>
+<ds-pagination class="ds-pagination" aria-label="Bla i sider:" data-href="?page=%d" data-current="2" data-total="100">
+  <ol>
+    <li><a></a></li>
+    <li><a></a></li>
+    <li><a></a></li>
+    <li><a></a></li>
+  </ol>
+</ds-pagination>
 ```
 
 ## CSS variabler og data-attributter

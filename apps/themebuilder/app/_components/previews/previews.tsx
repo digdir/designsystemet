@@ -36,6 +36,7 @@ export const Previews = () => {
     <>
       <div className={classes.toolbar} data-size='sm'>
         <ToggleGroup
+          data-toggle-group='Tema'
           value={theme as string}
           onChange={(v) => setTheme(v as keyof typeof themes)}
         >
@@ -47,6 +48,7 @@ export const Previews = () => {
           </ToggleGroup.Item>
         </ToggleGroup>
         <ToggleGroup
+          data-toggle-group='Modus'
           value={colorScheme}
           onChange={(v) => setColorScheme(v as ColorScheme)}
         >
