@@ -1,5 +1,5 @@
 import { join } from 'node:path';
-import { LayersIcon } from '@navikt/aksel-icons';
+import { HexagonGridIcon } from '@navikt/aksel-icons';
 import cl from 'clsx';
 import { useTranslation } from 'react-i18next';
 import {
@@ -60,8 +60,8 @@ export default function Patterns({
     <>
       <Banner
         style={{ marginBottom: 'var(--page-spacing-top)' }}
-        data-color='brand3'
-        icon={<LayersIcon />}
+        data-color='brand1'
+        icon={<HexagonGridIcon />}
       >
         <BannerHeading level={1}>{t('patterns.title')}</BannerHeading>
         <BannerIngress>{t('patterns.description')}</BannerIngress>
