@@ -1,7 +1,7 @@
 ---
-title: Slots in Figma
-description: Learn how to use slots in Figma to customise components without detaching them.
-date: 2025-08-21
+title: Swap content using "swap"
+description: Learn how to use the swap feature in Figma to customise components without detaching them.
+date: 2026-02-06
 category: Figma
 color: yellow
 icon: LayersPlusIcon
@@ -9,27 +9,38 @@ published: true
 order: 20
 ---
 
-When working with components in Figma, you may often need to customise the content without breaking the connection to the main component. Many solve this by *detaching* the component, but that means you lose the benefits of inheriting changes and improvements from the library.  
+When working with components in Figma, you will often want to customise content without losing the connection to Designsystemet. Detaching a component solves this quickly, but means you miss out on future updates from the library.
 
-With **slots**, you can instead keep the connection while adding your own content. Slots act as open areas within a component where you can place other components. If you need more complex compositions of content and different components, you can combine them into a separate component and then insert that component into the slot.  
+With **swap**, you can keep the connection and replace content when needed. This provides flexibility while the structure and styling remain unchanged.
 
-Several of our components are built with slots, allowing you to customise what content to place inside them. This applies to `Card`, `Details`, and `Dialog`.  
+## What is swap?
+Swap lets you replace one component with another directly in an instance. When a component is selected, you will find the instance menu in the right-hand panel in Figma.
 
-## Why use slots?
-- **Keeps the connection to the library.** You do not need to update manually when the main component changes.  
-- **More flexible use.** You can insert content that varies from case to case, without altering the component itself.  
-- **Consistency and control.** The structure and style come from Desigsystemet, while you have the freedom to add your own content.  
+In the video below, we replace the `body` in the `Alert` component with a custom component containing text, `details`, and buttons.
 
-## How does it work in practice?
-Let’s take an example with a `Dialog` component. A `Dialog` can have different content depending on the need – everything from a simple text message to more complex user interfaces.
+<ResponsiveIframe
+  src='/img/swap-alert.mp4'
+  title='Screen recording showing how to swap one component with another in Figma.'
+  frameBorder='0'
+  allow='autoplay; fullscreen; picture-in-picture'
+  allowFullScreen
+  aspectRatio='16-9'
+/>
 
-1. Insert the `Dialog` from the library.  
-2. Instead of *detaching*, use the slot area that is available inside the component.  
-3. Add the content you need, for example, a table or a list.  
-4. If the content consists of several elements, you can create a new component of that content and place it inside the slot.  
+## Why use swap?
+- **Keeps the connection to the library.** Changes to the main component are inherited automatically.  
+- **Provides flexibility.** You can vary content without changing the structure.  
+- **Ensures consistency.** Design and behaviour are defined by Designsystemet.
 
-[VIDEO]
+## Slot areas in components
+Several of our components include built-in **slots**, as we cannot anticipate every type of content you may need. This applies to components such as `Card`, `Details`, and `Dialog`.
 
-<br/>
+A slot is an open area within a component where you can place your own content. This can range from simple text to more complex combinations of components.
 
-<br/>
+If the content consists of multiple elements, we recommend grouping them into a separate component and placing it in the slot using swap, as shown in the video above.
+
+<Card data-color='brand3' variant="tinted">
+**Slots in Figma are coming**
+
+Figma has announced support for [built-in slot functionality (figma.com)](https://help.figma.com/hc/en-us/articles/35794667554839-What-s-new-from-Schema-2025#h_01K84PB569NTFMXBDS36C8DCPV). When this becomes available, we will update the Community file and this article on an ongoing basis.
+</Card>
