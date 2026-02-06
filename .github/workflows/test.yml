@@ -37,7 +37,7 @@ jobs:
         run: echo "version=$(pnpm --filter @web/storybook list playwright --depth=0 --json | jq -r '.[0].devDependencies.playwright.version')" >> $GITHUB_OUTPUT
 
       - name: Cache Playwright browsers
-        uses: actions/cache@8b402f58fbc84540c8b491a91e594a4576fec3d7 # v5.0.2
+        uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5.0.3
         id: playwright-cache
         with:
           path: ~/.cache/ms-playwright
@@ -69,7 +69,7 @@ jobs:
         with:
           comment-on: none
       - name: Publish unit test report
-        uses: mikepenz/action-junit-report@a294a61c909bd8a4b563024a2faa28897fd53ebc # v6.1.0
+        uses: mikepenz/action-junit-report@74626db7353a25a20a72816467ebf035f674c5f8 # v6.2.0
         if: success() || failure()
         with:
           report_paths: 'test-report.xml'
@@ -90,7 +90,7 @@ jobs:
           replace: ''
           regex: false
       - name: Publish Storybook test report
-        uses: mikepenz/action-junit-report@a294a61c909bd8a4b563024a2faa28897fd53ebc # v6.1.0
+        uses: mikepenz/action-junit-report@74626db7353a25a20a72816467ebf035f674c5f8 # v6.2.0
         if: success() || failure()
         with:
           report_paths: 'apps/storybook/test-report.xml'
