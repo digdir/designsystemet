@@ -1,4 +1,4 @@
-import { attr, on, onHotReload, QUICK_EVENT } from '../utils/utils';
+import { attr, on, onHotReload, onMutation, QUICK_EVENT } from '../utils/utils';
 
 // Polyfill closedby functionaliy in Safari
 // Also in Safari 26.2 where `closedBy` property is supported natively,
@@ -25,6 +25,18 @@ const handleClosedbyAny = ({
   }
 };
 
-onHotReload('dialog-closedby', () => [
+// Ensure buttons that trigger a modeal dialog has aria-haspopup="dialog" for better screen reader experience
+const handleAriaAttributes = () => {
+  for (const btn of document.querySelectorAll('button[command="show-modal"]'))
+    attr(btn, 'aria-haspopup', 'dialog');
+};
+
+onHotReload('dialog', () => [
   on(document, 'pointerdown pointerup', handleClosedbyAny, QUICK_EVENT),
+  onMutation(document, handleAriaAttributes, {
+    attributeFilter: ['command'],
+    attributes: true,
+    childList: true,
+    subtree: true,
+  }),
 ]);
