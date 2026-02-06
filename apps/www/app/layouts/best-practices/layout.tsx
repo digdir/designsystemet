@@ -31,15 +31,15 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
   } = {};
 
   if (lang === 'no') {
-    cats.Brukerinnsikt = [];
     cats.Tilgjengelighet = [];
     cats.Innholdsarbeid = [];
+    cats.Brukerinnsikt = [];
   }
 
   if (lang === 'en') {
-    cats['User insight'] = [];
     cats.Accessibility = [];
     cats['Content work'] = [];
+    cats['User insight'] = [];
   }
 
   /* Map over files with mdx parser to get title */

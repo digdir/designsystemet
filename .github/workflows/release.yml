@@ -4,13 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       snapshot:
-        description: 'Create snapshot release'
+        description: "Create snapshot release"
         type: boolean
         default: false
       tag:
-        description: 'npm tag (for snapshot releases)'
+        description: "npm tag (for snapshot releases)"
         type: choice
-        default: 'test'
+        default: "test"
         options:
           - next
           - test
@@ -35,6 +35,9 @@ jobs:
       - uses: ./.github/actions/gh-setup
       - name: Build
         run: pnpm build
+      - name: Install ## running install again for designsystemt bin to be registered
+        run: pnpm install --frozen-lockfile
+        shell: bash
       - id: snapshot
         name: Set Snapshot Name
         run: |
@@ -51,7 +54,7 @@ jobs:
           pnpm run publish-packages --tag "${{ github.event.inputs.tag }}" --no-git-tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ''
+          NPM_TOKEN: ""
 
   release:
     name: Release
@@ -68,6 +71,11 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - uses: ./.github/actions/gh-setup
+      - name: Build Designsystemet CLI
+        run: pnpm build:types && pnpm build:cli
+      - name: Install ## running install again for designsystemt bin to be registered
+        run: pnpm install --frozen-lockfile
+        shell: bash
       - name: Store release version for changeset
         id: release_version
         run: echo "VALUE=$(bash ./scripts/print_release_version.sh)" >> $GITHUB_OUTPUT
@@ -81,15 +89,15 @@ jobs:
         with:
           publish: pnpm publish-packages
           version: pnpm version-packages
-          commit: 'chore: new release'
-          title: 'chore: new release'
+          commit: "chore: new release"
+          title: "chore: new release"
           createGithubReleases: aggregate
           githubReleaseName: v${{ steps.release_version.outputs.value }}
           githubTagName: v${{ steps.release_version.outputs.value }}
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: '' # https://github.com/changesets/changesets/issues/1152#issuecomment-3190884868
+          NPM_TOKEN: "" # https://github.com/changesets/changesets/issues/1152#issuecomment-3190884868
 
   deploy-www:
     permissions:
@@ -100,7 +108,7 @@ jobs:
     if: ${{ needs.release.outputs.published == 'true' }}
     uses: ./.github/workflows/azure-deploy-www.yml
     with:
-      environment: 'production'
+      environment: "production"
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
@@ -115,21 +123,21 @@ jobs:
     if: ${{ needs.release.outputs.published == 'true' }}
     uses: ./.github/workflows/azure-deploy-themebuilder.yml
     with:
-      environment: 'production'
+      environment: "production"
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
   deploy-storybook:
     permissions:
-        id-token: write
-        contents: read
-        pull-requests: write
+      id-token: write
+      contents: read
+      pull-requests: write
     needs: release
     if: ${{ needs.release.outputs.published == 'true' }}
     uses: ./.github/workflows/azure-deploy-storybook.yml
     with:
-      environment: 'production'
+      environment: "production"
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
