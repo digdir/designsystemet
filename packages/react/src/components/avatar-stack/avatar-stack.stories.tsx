@@ -291,22 +291,22 @@ export const WithTooltip: Story = (args) => (
       <legend>not expandable</legend>
       <AvatarStack {...args}>
         <Tooltip content='Ola Nordmann'>
-          <Avatar aria-label='Navn'>
+          <Avatar aria-label='Navn' tabIndex={0}>
             <img src='https://placebeard.it/100x100' alt='' />
           </Avatar>
         </Tooltip>
         <Tooltip content='Kari Nordmann'>
-          <Avatar aria-label='Navn'>
+          <Avatar aria-label='Navn' tabIndex={0}>
             <img src='https://i.pravatar.cc/100' alt='' />
           </Avatar>
         </Tooltip>
         <Tooltip content='Person 2'>
-          <Avatar aria-label='Navn'>
+          <Avatar aria-label='Navn' tabIndex={0}>
             <img src='https://i.pravatar.cc/100' alt='' />
           </Avatar>
         </Tooltip>
         <Tooltip content='Person 3'>
-          <Avatar aria-label='Navn'>
+          <Avatar aria-label='Navn' tabIndex={0}>
             <img src='https://i.pravatar.cc/100' alt='' />
           </Avatar>
         </Tooltip>
