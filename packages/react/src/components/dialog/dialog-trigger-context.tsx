@@ -23,9 +23,7 @@ export const DialogTriggerContext = (rest: DialogTriggerContextProps) => {
   const [state, setState] = useState<DialogContext>({});
   const setContext = (next: DialogContext) => setState({ ...state, ...next });
 
-  return (
-    <Context.Provider value={{ ...state, setContext }} {...rest} />
-  );
+  return <Context.Provider value={{ ...state, setContext }} {...rest} />;
 };
 
 DialogTriggerContext.displayName = 'DialogTriggerContext';
