@@ -52,9 +52,8 @@
     "test:tokens-build-config-tailwind": "pnpm run designsystemet tokens build -t ./temp/config/design-tokens -o ./temp/config/build --clean --experimental-tailwind",
     "test:tokens-create-and-build-options": "pnpm test:tokens-create-options && pnpm test:tokens-build",
     "test:tokens-create-and-build-config": "pnpm test:tokens-create-config && pnpm test:tokens-build-config",
-    "test:generate-config-from-tokens": "pnpm run designsystemet generate-config-from-tokens -d ../../internal/digdir/design-tokens --dry",
+    "test:generate-config-from-tokens": "pnpm run designsystemet generate-config-from-tokens -d ../../design-tokens --dry",
     "test": "node -v && pnpm test:tokens-create-and-build-options && pnpm test:generate-config-from-tokens && pnpm test:tokens-create-and-build-config",
-    "update:template": "tsx ./src/scripts/update-template.ts",
     "update:preview-tokens": "tsx ./src/scripts/update-preview-tokens.ts",
     "verify": "pnpm test && pnpm update:template && pnpm --filter @internal/digdir update:theme-digdir"
   },

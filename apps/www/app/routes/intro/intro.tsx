@@ -1,4 +1,3 @@
-import { Paragraph } from '@digdir/designsystemet-react';
 import * as Aksel from '@navikt/aksel-icons';
 import { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -57,7 +56,7 @@ export default function Intro() {
     <>
       <Banner
         style={{ marginBottom: 'var(--page-spacing-top)' }}
-        data-color='brand3'
+        data-color='brand2'
         icon={<Aksel.InformationIcon />}
       >
         <BannerHeading level={1}>{t('intro.title')}</BannerHeading>
