@@ -1,5 +1,6 @@
+import * as R from 'ramda';
 import { baseColorNames } from '../../../../colors/colorMetadata.js';
-import type { ColorMetadataByName, ColorNumber, SemanticColorNumberMap } from '../../../../colors/types.js';
+import { type ColorNames, semanticColorMap } from '../../../../colors/types.js';
 import type { Colors, Token, TokenSet } from '../../../types.js';
 
 export const generateSemanticColors = (colors: Colors, _themeName: string) => {
@@ -10,7 +11,7 @@ export const generateSemanticColors = (colors: Colors, _themeName: string) => {
 
   const allColors = [...customColors, ...baseColorNames];
 
-  const semanticColorTokens = allColors.map((colorName) => [colorName, generateColorScale(colorName)]);
+  const semanticColorTokens = allColors.map((colorName) => [colorName, generateColorScaleTokens(colorName)]);
 
   return {
     ...baseColorTemplate,
@@ -44,29 +45,10 @@ const baseColorTemplate: TokenSet = {
   },
 };
 
-const generateColorScale = (colorName: string): Record<keyof ColorMetadataByName, Token> => {
-  const colorMap: SemanticColorNumberMap = {
-    'background-default': 1,
-    'background-tinted': 2,
-    'surface-default': 3,
-    'surface-tinted': 4,
-    'surface-hover': 5,
-    'surface-active': 6,
-    'border-subtle': 7,
-    'border-default': 8,
-    'border-strong': 9,
-    'text-subtle': 10,
-    'text-default': 11,
-    'base-default': 12,
-    'base-hover': 13,
-    'base-active': 14,
-    'base-contrast-subtle': 15,
-    'base-contrast-default': 16,
-  };
+const generateColorScaleTokens = (colorName: string): Record<ColorNames, Token> => {
+  const colorScale = {} as Record<ColorNames, Token>;
 
-  const colorScale = {} as Record<keyof ColorMetadataByName, Token>;
-
-  for (const [colorSemantic, colorNumber] of Object.entries(colorMap) as [keyof ColorMetadataByName, ColorNumber][]) {
+  for (const [colorSemantic, colorNumber] of R.toPairs(semanticColorMap)) {
     colorScale[colorSemantic] = {
       $type: 'color',
       $value: `{color.${colorName}.${colorNumber}}`,

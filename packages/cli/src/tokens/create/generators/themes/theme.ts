@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 import { baseColorNames } from '../../../../colors/colorMetadata.js';
-import type { ColorMetadataByName, ColorNumber, SemanticColorNumberMap } from '../../../../colors/types.js';
+import { type ColorNumber, semanticColorMap } from '../../../../colors/types.js';
 import type { Colors, Token, TokenSet } from '../../../types.js';
 
 export const generateTheme = (colors: Colors, themeName: string, borderRadius: number) => {
@@ -9,7 +9,7 @@ export const generateTheme = (colors: Colors, themeName: string, borderRadius: n
   const customColors = [...mainColorNames, 'neutral', ...supportColorNames, ...baseColorNames];
 
   const themeColorTokens = Object.fromEntries(
-    customColors.map((colorName) => [colorName, generateColorScale(colorName, themeName)]),
+    customColors.map((colorName) => [colorName, generateColorScaleTokens(colorName, themeName)]),
   );
 
   const { color: themeBaseFileColor, ...remainingThemeFile } = generateBase(themeName);
@@ -112,29 +112,10 @@ const generateBase = (themeName: string): TokenSet => ({
   },
 });
 
-const generateColorScale = (colorName: string, themeName: string): Record<ColorNumber, Token> => {
-  const colorMap: SemanticColorNumberMap = {
-    'background-default': 1,
-    'background-tinted': 2,
-    'surface-default': 3,
-    'surface-tinted': 4,
-    'surface-hover': 5,
-    'surface-active': 6,
-    'border-subtle': 7,
-    'border-default': 8,
-    'border-strong': 9,
-    'text-subtle': 10,
-    'text-default': 11,
-    'base-default': 12,
-    'base-hover': 13,
-    'base-active': 14,
-    'base-contrast-subtle': 15,
-    'base-contrast-default': 16,
-  };
-
+const generateColorScaleTokens = (colorName: string, themeName: string): Record<ColorNumber, Token> => {
   const colorScale = {} as Record<ColorNumber, Token>;
 
-  for (const [_, colorNumber] of Object.entries(colorMap) as [keyof ColorMetadataByName, ColorNumber][]) {
+  for (const [_, colorNumber] of R.toPairs(semanticColorMap)) {
     colorScale[colorNumber] = {
       $type: 'color',
       $value: `{${themeName}.${colorName}.${colorNumber}}`,

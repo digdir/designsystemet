@@ -1,4 +1,4 @@
-import type { ColorMetadataByName } from '../../../../colors/types.js';
+import { type ColorNames, semanticColorNames } from '../../../../colors/types.js';
 import type { Colors, Token, TokenSet } from '../../../types.js';
 
 type SemanticModes = {
@@ -26,7 +26,7 @@ export const generateColorModes = (colors: Colors, _themeName: string) => {
       const category = colorCategory.replace('-color', '');
       const customColorTokens = {
         color: {
-          [category]: generateColorScale(colorName),
+          [category]: generateColorScaleTokens(colorName),
         },
       };
       modes[colorCategory][colorName] = customColorTokens;
@@ -36,29 +36,10 @@ export const generateColorModes = (colors: Colors, _themeName: string) => {
   return modes;
 };
 
-const generateColorScale = (colorName: string): Record<keyof ColorMetadataByName, Token> => {
-  const colorSemantics: Array<keyof ColorMetadataByName> = [
-    'background-default',
-    'background-tinted',
-    'surface-default',
-    'surface-tinted',
-    'surface-hover',
-    'surface-active',
-    'border-subtle',
-    'border-default',
-    'border-strong',
-    'text-subtle',
-    'text-default',
-    'base-default',
-    'base-hover',
-    'base-active',
-    'base-contrast-subtle',
-    'base-contrast-default',
-  ];
+const generateColorScaleTokens = (colorName: string): Record<ColorNames, Token> => {
+  const colorScale = {} as Record<ColorNames, Token>;
 
-  const colorScale = {} as Record<keyof ColorMetadataByName, Token>;
-
-  for (const colorSemantic of colorSemantics) {
+  for (const colorSemantic of semanticColorNames) {
     colorScale[colorSemantic] = {
       $type: 'color',
       $value: `{color.${colorName}.${colorSemantic}}`,
