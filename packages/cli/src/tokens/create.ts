@@ -6,7 +6,7 @@ import { generateFontSizes, generateTypography } from './create/generators/primi
 import { generateSemanticColors } from './create/generators/semantic/color.js';
 import { generateColorModes } from './create/generators/semantic/color-modes.js';
 import { generateSemanticStyle } from './create/generators/semantic/style.js';
-import { generateTheme } from './create/generators/theme.js';
+import { generateTheme } from './create/generators/themes/theme.js';
 import type { SizeModes, Theme, TokenSet, TokenSets } from './types.js';
 
 export const cliOptions = {

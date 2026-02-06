@@ -1,7 +1,7 @@
 import * as R from 'ramda';
-import { baseColorNames } from '../../../colors/colorMetadata.js';
-import type { ColorMetadataByName, ColorNumber, SemanticColorNumberMap } from '../../../colors/types.js';
-import type { Colors, Token, TokenSet } from '../../types.js';
+import { baseColorNames } from '../../../../colors/colorMetadata.js';
+import type { ColorMetadataByName, ColorNumber, SemanticColorNumberMap } from '../../../../colors/types.js';
+import type { Colors, Token, TokenSet } from '../../../types.js';
 
 export const generateTheme = (colors: Colors, themeName: string, borderRadius: number) => {
   const mainColorNames = Object.keys(colors.main);
