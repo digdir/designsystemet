@@ -20,16 +20,14 @@ export default {
       '[data-tooltip]',
     ) as HTMLElement;
 
-    await userEvent.hover(button);
-    /* wait 300ms */
-    await new Promise((resolve) => setTimeout(resolve, 300));
+    await new Promise((resolve) => {
+      document.addEventListener('animationend', resolve, true); // <== Merk at vi binder event-listener før vi gjør hover
+      userEvent.hover(button);
+    });
 
-    const tooltip = await within(document.body).findByText(ctx.args.content);
-    await expect(tooltip).toBeInTheDocument();
-    await new Promise((resolve) =>
-      tooltip.addEventListener('animationend', resolve),
-    );
-    await waitFor(() => expect(tooltip).toBeVisible());
+    const tooltip = await within(document.body).findByText(ctx.args.content); // <== trenger ikke sjekke toBeInDocument siden denne testen krever det
+    expect(tooltip).toBeVisible();
+    tooltip.remove(); // Reset to run next test without waiting for tooltip to disappear // <== Må "nullstille"/fjerne tooltip mellom hver test
   },
 } satisfies Meta;
 
