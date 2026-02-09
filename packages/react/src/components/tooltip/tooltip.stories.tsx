@@ -1,6 +1,6 @@
 import { FilesIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
-import { expect, within } from 'storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 import { Button } from '../../';
 import { Tooltip } from './tooltip';
 
@@ -21,7 +21,10 @@ export default {
       '[data-tooltip]',
     ) as HTMLElement;
 
-    button.focus();
+    await new Promise((resolve) => {
+      document.addEventListener('animationend', resolve, true); // <== Merk at vi binder event-listener før vi gjør hover
+      button.focus();
+    });
 
     const tooltip = await within(document.body).findByText(ctx.args.content); // <== trenger ikke sjekke toBeInDocument siden denne testen krever det
     expect(tooltip).toBeVisible();
