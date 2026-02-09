@@ -60,7 +60,7 @@ jobs:
         run: pnpm types:react
 
       - name: Run Storybook tests
-        run: pnpm --filter @web/storybook vitest --testTimeout=5000
+        run: pnpm --filter @web/storybook vitest
       - name: Test
         run: pnpm test
       - name: 'Report Coverage'
