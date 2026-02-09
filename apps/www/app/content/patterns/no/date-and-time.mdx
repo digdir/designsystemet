@@ -17,10 +17,9 @@ Når du spør om kjente datoer, som fødselsdato eller bryllupsdato, fungerer en
 Del gjerne datoen opp i separate felt for dag, måned og år.
 
 <Image
-  src='/img/date-and-time/example1.png'
-  alt='Skjermbilde av skjema med en feilmelding. Brukeren har skrevet "fdgdfgfdg" inn i et felt for fødselsnummer. Feilmeldingen sier at Fødselsnummer  skal inneholde 11 siffer.'
+  src='/img/date-and-time/example1.webp'
+  alt='...'
   boxShadow={false}
- 
 />
 
 Når du ber brukeren om en dato slik den står i et bankkort, pass eller annet dokument, bør feltene samsvare med formatet i dokumentet. Det gjør det enklere for brukeren å overføre datoen korrekt. 
@@ -29,7 +28,11 @@ Når du ber brukeren om en dato slik den står i et bankkort, pass eller annet d
 
 I noen tilfeller skal brukeren velge en konkret dato tett opp mot dagens dato, for eksempel ved bestilling av time eller valg av frist. Da kan det være nyttig med visuell støtte. Et [`Textfield`](link) med `type="date"` lar brukeren enten skrive datoen direkte eller bruke nettleserens innebygde datovelger. Merk at utseende og interaksjon vil variere mellom nettlesere og enheter.
 
-[Eksempel tekstfelt med type date]
+<Image
+  src='/img/date-and-time/example2.webp'
+  alt='...'
+  boxShadow={false}
+/>
 
 ## Startdato og sluttdato
 
@@ -37,23 +40,34 @@ I noen tilfeller skal brukeren velge en konkret dato tett opp mot dagens dato, f
 
 ## Klokkeslett - start og slutt
 
-[Eksempel med to sidestilte tekstfelt med type time (start time og end time) Når starter skoledagen, når slutter skoledagen]
+<Image
+  src='/img/date-and-time/example4.webp'
+  alt='...'
+  boxShadow={false}
+/>
 
 ## Omtrentlig tidspunkt
 
 Gi brukeren mulighet til å oppgi en omtrentlig dato når du ber om informasjon de ikke nødvendigvis vet, eller kan ha vansker med å huske. For eksempel kan du la brukeren skrive «desember 2017» i et felt som spør etter «datoen du mistet passet».
 
-[Eksempel med to tekstfelt, et for måned, et for år]
+<Image
+  src='/img/date-and-time/example5.png'
+  alt='...'
+  boxShadow={false}
+  imageCaption='Hvis brukeren bare trenger å oppgi måned og år, bør det være mulig å gjøre nettopp det.'
+/>
 
-Hvis brukeren bare trenger å oppgi måned og år, bør det være mulig å gjøre nettopp det.
 
 ## Dato relativt til en annen dato
 
 I noen situasjoner er det mer naturlig å spørre om datoer relativt til i dag eller til en annen dato, for eksempel når brukeren setter opp en påminnelse. Da kan det være bedre å bruke en [`Select`](link) for å gi brukeren valg om «i morgen», «om 3 dager» eller «1 dag før». Hvis ukedag er viktig for oppgaven, bør denne vises tydelig i tillegg.
 
-[Eksempel departure time, med tre select for today/tomorrow/monday/tuesday, time, og minutt i select]
-eller
-[Eksempel Påminnelse med tre select for 5 minutter før/10 minutter før/1 time før/ 1 dag før]
+<Image
+  src='/img/date-and-time/example6.png'
+  alt='...'
+  boxShadow={false}
+  imageCaption='...'
+/>
 
 ## Dato fra et forhåndsdefinert utvalg
 Hvis du vet at brukeren skal velge en dato fra et begrenset utvalg, for eksempel en av de neste 7 dagene, kan det være mer effektivt å tilby disse datoene som valg i en [`Select`](link) eller som [`Radio`](link). Dette gjør det raskt og enkelt for brukeren å velge riktig dato uten å måtte skrive den inn.
