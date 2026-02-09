@@ -24,6 +24,9 @@ export default {
     await userEvent.hover(button);
     const tooltip = await within(document.body).findByText(ctx.args.content);
     await expect(tooltip).toBeInTheDocument();
+    await new Promise((resolve) =>
+      tooltip.addEventListener('animationend', resolve),
+    );
     await waitFor(() => expect(tooltip).toBeVisible());
   },
 } satisfies Meta;
