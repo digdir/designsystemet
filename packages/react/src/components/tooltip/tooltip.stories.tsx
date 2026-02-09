@@ -16,6 +16,7 @@ export default {
     },
   },
   play: async (ctx) => {
+    document.querySelector('ds-tooltip')?.remove(); // Reset to run next test without waiting for tooltip to disappear // <== Må "nullstille"/fjerne tooltip mellom hver test
     const button = ctx.canvasElement.querySelector(
       '[data-tooltip]',
     ) as HTMLElement;
