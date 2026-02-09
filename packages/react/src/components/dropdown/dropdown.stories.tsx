@@ -29,7 +29,10 @@ export default {
   play: async (ctx) => {
     // When not in Docs mode, automatically open the dropdown
     const button = within(ctx.canvasElement).getByRole('button');
-    await userEvent.click(button);
+    await new Promise((resolve) => {
+      document.addEventListener('animationend', resolve, true); // <== Merk at vi binder event-listener før vi gjør hover
+      userEvent.click(button);
+    });
     const dropdown = ctx.canvasElement.querySelector('.ds-dropdown');
     await expect(dropdown).toBeInTheDocument();
     await waitFor(() => expect(dropdown).toBeVisible());
