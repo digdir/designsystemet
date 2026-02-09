@@ -2,12 +2,14 @@ import { SkipLink } from '@digdir/designsystemet-react';
 import type { FooterLinkListItemProps } from '@internal/components';
 import { Error404, Footer, Header } from '@internal/components';
 import { EnvelopeClosedIcon } from '@navikt/aksel-icons';
+import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { isRouteErrorResponse, Outlet, useRouteLoaderData } from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
 import { Figma } from '~/_components/logos/figma';
 import { Github } from '~/_components/logos/github';
 import { Slack } from '~/_components/logos/slack';
+import { SearchDialog } from '~/_components/search-dialog';
 import i18n from '~/i18n';
 import type { Route as RootRoute } from './../../+types/root';
 import type { Route } from './+types/layout';
@@ -58,6 +60,10 @@ export default function RootLayout() {
 
   useChangeLanguage(lang);
 
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const openSearch = useCallback(() => setIsSearchOpen(true), []);
+  const closeSearch = useCallback(() => setIsSearchOpen(false), []);
+
   return (
     <>
       <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
@@ -65,7 +71,9 @@ export default function RootLayout() {
         menu={menu}
         logoLink={`/${lang === 'no' ? 'no' : lang === 'en' ? 'en' : 'no'}`}
         themeSwitcher
+        search={{ onSearchClick: openSearch }}
       />
+      <SearchDialog open={isSearchOpen} onClose={closeSearch} lang={lang} />
       <main>
         <Outlet />
       </main>

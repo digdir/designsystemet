@@ -1,21 +1,22 @@
 import type { ColorScheme } from '../../../colors/types.js';
-import type { Colors } from '../../types.js';
+import type { Colors, SizeModes } from '../../types.js';
 
 type Metadata = {
   tokenSetOrder: string[];
 };
 
-export function generate$Metadata(schemes: ColorScheme[], themes: string[], colors: Colors): Metadata {
+export function generate$Metadata(
+  schemes: ColorScheme[],
+  themes: string[],
+  colors: Colors,
+  sizeModes: SizeModes[],
+): Metadata {
   return {
     tokenSetOrder: [
       'primitives/globals',
-      'primitives/modes/size/small',
-      'primitives/modes/size/medium',
-      'primitives/modes/size/large',
+      ...sizeModes.map((size) => `primitives/modes/size/${size}`),
       'primitives/modes/size/global',
-      'primitives/modes/typography/size/small',
-      'primitives/modes/typography/size/medium',
-      'primitives/modes/typography/size/large',
+      ...sizeModes.map((size) => `primitives/modes/typography/size/${size}`),
       ...themes.map((theme) => `primitives/modes/typography/primary/${theme}`),
       ...themes.map((theme) => `primitives/modes/typography/secondary/${theme}`),
       ...schemes.flatMap((scheme) => [...themes.map((theme) => `primitives/modes/color-scheme/${scheme}/${theme}`)]),
