@@ -22,7 +22,7 @@ export default {
 
     await new Promise((resolve) => {
       document.addEventListener('animationend', resolve, true); // <== Merk at vi binder event-listener før vi gjør hover
-      userEvent.hover(button);
+      button.focus();
     });
 
     const tooltip = await within(document.body).findByText(ctx.args.content); // <== trenger ikke sjekke toBeInDocument siden denne testen krever det
