@@ -32,9 +32,6 @@ export default {
     await userEvent.click(button);
     const dropdown = ctx.canvasElement.querySelector('.ds-dropdown');
     await expect(dropdown).toBeInTheDocument();
-    await new Promise((resolve) =>
-      dropdown?.addEventListener('animationend', resolve),
-    );
     await waitFor(() => expect(dropdown).toBeVisible());
   },
 } satisfies Meta;
