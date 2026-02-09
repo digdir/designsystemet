@@ -164,6 +164,11 @@
         }
       }
     }
+
+    /* remove zero height arrow */
+    &:before {
+      display: none;
+    }
   }
 
   &:has(input:placeholder-shown) input {
