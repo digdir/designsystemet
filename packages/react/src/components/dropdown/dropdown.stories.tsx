@@ -28,10 +28,8 @@ export default {
   },
   play: async (ctx) => {
     // When not in Docs mode, automatically open the dropdown
-    const button = ctx.canvasElement.querySelector(
-      '[data-tooltip]',
-    ) as HTMLElement;
-    await userEvent.hover(button);
+    const button = within(ctx.canvasElement).getByRole('button');
+    await userEvent.click(button);
     const dropdown = ctx.canvasElement.querySelector('.ds-dropdown');
     await expect(dropdown).toBeInTheDocument();
     await new Promise((resolve) =>

@@ -16,14 +16,13 @@ export default {
     },
   },
   play: async (ctx) => {
-    // When not in Docs mode, automatically open the tooltip
-    const canvas = within(ctx.canvasElement);
-    const button = canvas.getByRole('button');
+    const button = ctx.canvasElement.querySelector(
+      '[data-tooltip]',
+    ) as HTMLElement;
 
-    /* wait 1s for tooltip to show */
     await userEvent.hover(button);
-    /* wait 150ms */
-    await new Promise((resolve) => setTimeout(resolve, 150));
+    /* wait 300ms */
+    await new Promise((resolve) => setTimeout(resolve, 300));
 
     const tooltip = await within(document.body).findByText(ctx.args.content);
     await expect(tooltip).toBeInTheDocument();
