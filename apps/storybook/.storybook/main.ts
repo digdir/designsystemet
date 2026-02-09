@@ -102,6 +102,7 @@ const config: StorybookConfig = {
       chromatic: {
         excludeFromDocsStories: true,
         excludeFromSidebar: options.configType === 'PRODUCTION',
+        exitOnceUploaded: true, // Exit Storybook once Chromatic stories are uploaded, to speed up CI builds.
         ...tagOptions?.chromatic,
       },
     };
