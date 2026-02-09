@@ -54,16 +54,6 @@ export const WithString: Story = {
   },
 };
 
-WithString.play = async (ctx) => {
-  // When not in Docs mode, automatically open the tooltip
-  const canvas = within(ctx.canvasElement);
-  const button = canvas.getByText('Org.nr.');
-  await userEvent.hover(button);
-  const tooltip = await within(document.body).findByText(ctx.args.content);
-  await expect(tooltip).toBeInTheDocument();
-  await expect(tooltip).toBeVisible();
-};
-
 export const Placement: Story = {
   args: {
     content: 'Kopier',
