@@ -8,55 +8,65 @@ date: 2026-02-05
 order: 10
 ---
 
-Hvordan du ber brukeren om en dato, bør ta utgangspunkt i hvilken informasjon du faktisk trenger. Noen datoer er enkle å huske, som fødselsdato, mens andre må leses fra dokumenter eller kort. I noen situasjoner holder det med en omtrentlig dato, som «desember 2017», eller en dato i forhold til i dag, som «4 dager fra nå». Andre ganger skal brukeren velge en dato fra et forhåndsdefinert utvalg.
+Hvordan du ber brukeren om dato og klokkeslett, bør ta utgangspunkt i hvilken informasjon du faktisk trenger. Noen datoer er enkle å huske, som fødselsdato, mens andre må leses fra dokumenter eller kort. I noen situasjoner holder det med en omtrentlig dato, som «desember 2017», eller en dato i forhold til i dag, som «4 dager fra nå». Andre ganger skal brukeren velge en dato eller et tidspunkt fra et forhåndsdefinert utvalg.
+
+Unngå å gjøre oppgaven mer komplisert enn nødvendig. Avanserte datovelgere gir ofte lavere tilgjengelighet og mer friksjon enn enkle tekstfelt.
 
 ## Kjente datoer
 
 Når du spør om kjente datoer, som fødselsdato eller bryllupsdato, fungerer enkle tekstfelt godt. Brukeren vet allerede svaret og ønsker ofte å skrive det direkte, uten å måtte navigere i en kalender.
 
-Del gjerne datoen opp i separate felt for dag, måned og år.
+Del gjerne datoen opp i separate felt for dag, måned og år. Det gjør det enklere å skrive inn datoen korrekt og gir bedre støtte for hjelpemidler.
 
 <Image
   src='/img/date-and-time/example1.webp'
-  alt='...'
+  alt='Tre separate felt for dag, måned og år'
   boxShadow={false}
 />
 
-Når du ber brukeren om en dato slik den står i et bankkort, pass eller annet dokument, bør feltene samsvare med formatet i dokumentet. Det gjør det enklere for brukeren å overføre datoen korrekt. 
+Når du ber brukeren om en dato slik den står i et bankkort, pass eller annet dokument, bør feltene samsvare med formatet i dokumentet. Det gjør det enklere å overføre datoen korrekt og reduserer risikoen for feil.
 
 ## Konkret dato i nær fremtid eller fortid
 
-I noen tilfeller skal brukeren velge en konkret dato tett opp mot dagens dato, for eksempel ved bestilling av time eller valg av frist. Da kan det være nyttig med visuell støtte. Et [`Textfield`](link) med `type="date"` lar brukeren enten skrive datoen direkte eller bruke nettleserens innebygde datovelger. Merk at utseende og interaksjon vil variere mellom nettlesere og enheter.
+I noen tilfeller skal brukeren velge en konkret dato tett opp mot dagens dato, for eksempel ved bestilling av time eller valg av frist. Da kan det være nyttig med visuell støtte. Et [`Textfield`](link) med `type="date"` lar brukeren enten skrive datoen direkte eller bruke nettleserens innebygde datovelger. Dette gir ofte en god balanse mellom fleksibilitet og støtte. Merk at utseende og interaksjon vil variere mellom nettlesere og enheter.
 
 <Image
   src='/img/date-and-time/example2.webp'
-  alt='...'
+  alt='Tekstfelt med innebygd datovelger'
   boxShadow={false}
 />
 
-## Startdato og sluttdato
+## Start- og sluttdato
+
+Når brukeren skal oppgi en periode, bør startdato og sluttdato vises tydelig sammen. Bruk to separate felt, og gjør det klart hvilken dato som er hvilken.
+
+Plasser feltene i logisk rekkefølge, og valider at sluttdato ikke er før startdato. Hvis datoene avhenger av hverandre, bør feilmeldinger forklare hva som er galt og hvordan brukeren kan rette det.
 
 [Eksempel med to sidestilte tekstfelt med type date (start date og end date)]
 
-## Klokkeslett - start og slutt
+## Klokkeslett – start og slutt
+
+Når brukeren skal oppgi et tidsintervall, som åpningstid eller varighet på et møte, fungerer et [`Textfield`](link) med `type="time"` godt. Det lar brukeren skrive klokkeslettet direkte, samtidig som nettleseren kan tilby passende hjelp.
+
+Bruk separate felt for start- og sluttid, og vis dem tydelig sammen.
 
 <Image
   src='/img/date-and-time/example4.webp'
-  alt='...'
+  alt='To tekstfelt for start- og sluttid'
   boxShadow={false}
 />
 
 ## Omtrentlig tidspunkt
+Gi brukeren mulighet til å oppgi en omtrentlig dato eller et tidspunkt når de ikke nødvendigvis vet eller husker nøyaktig. Dette er særlig relevant når hendelsen ligger lengre tilbake i tid.
 
-Gi brukeren mulighet til å oppgi en omtrentlig dato når du ber om informasjon de ikke nødvendigvis vet, eller kan ha vansker med å huske. For eksempel kan du la brukeren skrive «desember 2017» i et felt som spør etter «datoen du mistet passet».
+For eksempel kan du la brukeren skrive «desember 2025» i et felt som spør etter når ulykken skjedde, eller tilby egne felt for måned og år.
 
 <Image
   src='/img/date-and-time/example5.png'
-  alt='...'
+  alt='Felt for måned og år'
   boxShadow={false}
-  imageCaption='Hvis brukeren bare trenger å oppgi måned og år, bør det være mulig å gjøre nettopp det.'
 />
-
+Hvis brukeren bare trenger å oppgi måned og år, bør det være mulig å gjøre nettopp det.
 
 ## Dato relativt til en annen dato
 
@@ -64,19 +74,20 @@ I noen situasjoner er det mer naturlig å spørre om datoer relativt til i dag e
 
 <Image
   src='/img/date-and-time/example6.png'
-  alt='...'
+  alt='Valg av relative datoer'
   boxShadow={false}
-  imageCaption='...'
 />
 
 ## Dato fra et forhåndsdefinert utvalg
-Hvis du vet at brukeren skal velge en dato fra et begrenset utvalg, for eksempel en av de neste 7 dagene, kan det være mer effektivt å tilby disse datoene som valg i en [`Select`](link) eller som [`Radio`](link). Dette gjør det raskt og enkelt for brukeren å velge riktig dato uten å måtte skrive den inn.
+
+Hvis du vet at brukeren skal velge en dato eller et tidspunkt fra et begrenset utvalg, for eksempel ledige timer den kommende uken, kan det være mer effektivt å tilby disse som ferdige valg.
+
+Bruk en [`Select`](link) eller [`Radio`](link) når antallet valg er lavt. Det gjør det raskt og enkelt å velge riktig alternativ uten å måtte skrive noe selv.
 
 [Eksempel Den kommente uken har vi fire ledige tidspunkt, med fire radio for hver av de fire dagene med klokkeslett]
 
 
 ## Kilder og relevant informasjon
-- [1] [Tilgjengelighetsutfordrninger med native date picker (github.io)](https://russmaxdesign.github.io/accessible-forms/01-input-date.html)
-- [2] [Who needs a JavaScript date picker? (dbushell.com)](https://pikaday.dbushell.com/)
-- [3] [Maybe You Don’t Need a Date Picker (adrianroselli.com)](https://adrianroselli.com/2019/07/maybe-you-dont-need-a-date-picker.html)
-- [4] [Ask users for dates (gov.uk)](https://design-system.service.gov.uk/patterns/dates/)
+- [Who needs a JavaScript date picker? (dbushell.com)](https://pikaday.dbushell.com/)
+- [Maybe You Don’t Need a Date Picker (adrianroselli.com)](https://adrianroselli.com/2019/07/maybe-you-dont-need-a-date-picker.html)
+- [Ask users for dates (gov.uk)](https://design-system.service.gov.uk/patterns/dates/)
