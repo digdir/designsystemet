@@ -1,8 +1,8 @@
-import fs from 'node:fs/promises';
 import path from 'node:path';
 import pc from 'picocolors';
 import type { CssColor } from '../colors/types.js';
 import type { CreateConfigSchema } from '../config.js';
+import fs from '../utils/filesystem.js';
 
 type TokenValue = {
   $type: string;
@@ -18,7 +18,7 @@ type TokenObject = {
  */
 async function readJsonFile(filePath: string): Promise<TokenObject> {
   try {
-    const content = await fs.readFile(filePath, 'utf-8');
+    const content = await fs.readFile(filePath);
     return JSON.parse(content) as TokenObject;
   } catch (err) {
     throw new Error(`Failed to read token file at ${filePath}: ${err instanceof Error ? err.message : String(err)}`);
@@ -209,14 +209,13 @@ function categorizeColors(
 export type GenerateConfigOptions = {
   tokensDir: string;
   outFile?: string;
-  dry?: boolean;
 };
 
 /**
  * Generates a config file from existing design tokens
  */
 export async function generateConfigFromTokens(options: GenerateConfigOptions): Promise<CreateConfigSchema> {
-  const { tokensDir, dry = false } = options;
+  const { tokensDir } = options;
 
   console.log(`\nReading tokens from ${pc.blue(tokensDir)}`);
 
@@ -291,9 +290,9 @@ export async function generateConfigFromTokens(options: GenerateConfigOptions): 
     }
   }
 
-  if (!dry && options.outFile) {
+  if (options.outFile) {
     const configJson = JSON.stringify(config, null, 2);
-    await fs.writeFile(options.outFile, configJson, 'utf-8');
+    await fs.writeFile(options.outFile, configJson);
     console.log();
     console.log(`\n✅ Config file written to ${pc.blue(options.outFile)}`);
   }

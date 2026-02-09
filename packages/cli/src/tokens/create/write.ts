@@ -2,7 +2,7 @@ import path from 'node:path';
 import type { ThemeObject } from '@tokens-studio/types';
 import pc from 'picocolors';
 import * as R from 'ramda';
-import { mkdir, readFile, writeFile } from '../../utils.js';
+import fs from '../../utils/filesystem.js';
 import type { SizeModes, Theme, TokenSets } from '../types.js';
 import { generate$Designsystemet } from './generators/$designsystemet.js';
 import { generate$Metadata } from './generators/$metadata.js';
@@ -13,8 +13,6 @@ export const stringify = (data: unknown) => JSON.stringify(data, null, 2);
 type WriteTokensOptions = {
   outDir: string;
   theme: Theme;
-  /** Dry run, no files will be written */
-  dry?: boolean;
   tokenSets: TokenSets;
 };
 
@@ -23,7 +21,6 @@ export const writeTokens = async (options: WriteTokensOptions) => {
     outDir,
     tokenSets,
     theme: { name: themeName, colors },
-    dry,
   } = options;
 
   const $themesPath = path.join(outDir, '$themes.json');
@@ -32,11 +29,11 @@ export const writeTokens = async (options: WriteTokensOptions) => {
   let themeObjects: ThemeObject[] = [];
   const sizeModes: SizeModes[] = ['small', 'medium', 'large'];
 
-  await mkdir(outDir, dry);
+  await fs.mkdir(outDir);
 
   try {
     // Fetch existing themes
-    const $themes = await readFile($themesPath);
+    const $themes = await fs.readFile($themesPath);
     if ($themes) {
       themeObjects = JSON.parse($themes) as ThemeObject[];
     }
@@ -59,17 +56,17 @@ export const writeTokens = async (options: WriteTokensOptions) => {
   const $metadata = generate$Metadata(['dark', 'light'], themes, colors, sizeModes);
   const $designsystemet = generate$Designsystemet();
 
-  await writeFile($themesPath, stringify($themes), dry);
-  await writeFile($metadataPath, stringify($metadata), dry);
-  await writeFile($designsystemetPath, stringify($designsystemet), dry);
+  await fs.writeFile($themesPath, stringify($themes));
+  await fs.writeFile($metadataPath, stringify($metadata));
+  await fs.writeFile($designsystemetPath, stringify($designsystemet));
 
   for (const [set, tokens] of tokenSets) {
     // Remove last part of the path to get the directory
     const fileDir = path.join(outDir, path.dirname(set));
-    await mkdir(fileDir, dry);
+    await fs.mkdir(fileDir);
 
     const filePath = path.join(outDir, `${set}.json`);
-    await writeFile(filePath, stringify(tokens), dry);
+    await fs.writeFile(filePath, stringify(tokens));
   }
 
   console.log(`Finished creating Designsystem design tokens in ${pc.green(outDir)} for theme ${pc.blue(themeName)}`);

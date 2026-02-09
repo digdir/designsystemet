@@ -16,8 +16,6 @@ type SharedOptions = {
   defaultSize?: string;
   /** Set the available size modes */
   sizeModes?: string[];
-  /** Dry run, no files will be written */
-  dry?: boolean;
   /** Token Studio `$themes.json` content */
   processed$themes: ProcessedThemeObject[];
   /** Color groups */
