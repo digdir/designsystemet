@@ -49,4 +49,9 @@
     width: 100%;
     font-weight: var(--ds-font-weight-regular);
   }
+
+  /* remove popover arrow */
+  &:before {
+    display: none;
+  }
 }
