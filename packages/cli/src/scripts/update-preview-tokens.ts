@@ -6,7 +6,7 @@ import { generate$Themes } from '../tokens/create/generators/$themes.js';
 import { createTokens } from '../tokens/create.js';
 import { buildOptions, processPlatform } from '../tokens/process/platform.js';
 import { processThemeObject } from '../tokens/process/utils/getMultidimensionalThemes.js';
-import type { OutputFile, Theme } from '../tokens/types.js';
+import type { OutputFile, SizeModes, Theme } from '../tokens/types.js';
 import { cleanDir, mkdir, writeFile } from '../utils.js';
 
 const OUTDIR = '../../internal/components/src/tokens/design-tokens';
@@ -41,7 +41,9 @@ type PreviewToken = { variable: string; value: string };
 export const formatTheme = async (themeConfig: Theme) => {
   const { tokenSets } = await createTokens(themeConfig);
 
-  const $themes = await generate$Themes(['dark', 'light'], [themeConfig.name], themeConfig.colors);
+  const sizeModes: SizeModes[] = ['small', 'medium', 'large'];
+
+  const $themes = await generate$Themes(['dark', 'light'], [themeConfig.name], themeConfig.colors, sizeModes);
   const processed$themes = $themes.map(processThemeObject);
 
   // We run this to populate the `buildOptions.buildTokenFormats` with transformed tokens

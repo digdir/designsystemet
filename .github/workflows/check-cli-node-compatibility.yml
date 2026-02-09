@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
+      - 'design-tokens/**'
       - 'packages/cli/**'
       - 'pnpm-lock.yaml'
       - '.github/workflows/check-cli-node-compatibility.yml'

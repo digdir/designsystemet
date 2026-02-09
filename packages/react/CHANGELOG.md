@@ -1,5 +1,22 @@
 # Change Log
 
+## 1.11.1
+
+### Patch Changes
+
+- update npm non-major dependencies ([#4469](https://github.com/digdir/designsystemet/pull/4469))
+
+- **Avatar**: fix - removed aria-hidden and role=img when asChild ([#4445](https://github.com/digdir/designsystemet/pull/4445))
+
+- update npm non-major dependencies ([#4445](https://github.com/digdir/designsystemet/pull/4445))
+
+- update dependency @navikt/aksel-icons to v8 ([#4447](https://github.com/digdir/designsystemet/pull/4447))
+
+- update npm non-major dependencies ([#4423](https://github.com/digdir/designsystemet/pull/4423))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.11.1
+
 ## 1.11.0
 
 ### Minor Changes
