@@ -25,6 +25,7 @@ Bruk `placement`-prop'en for å justere plasseringen av `Tooltip`.
 ## HTML
 Bruk pakken `@digdir/designsystemet-web` for å implementere `Tooltip`.
 Du trenger kun å legge på `data-tooltip`-attributtet på elementet som skal trigge tooltipen.
+For tilgjengelighet vil elementet automatisk få `aria-label` eller `aria-description`, avhengig av om det inneholder tekstinnhold.
 
 ```html
 <button data-placement="left" data-tooltip="venstre" class="ds-button">venstre</button>
