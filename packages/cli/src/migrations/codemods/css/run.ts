@@ -1,9 +1,7 @@
-import fs from 'node:fs';
-
 import glob from 'fast-glob';
 import type { AcceptedPlugin } from 'postcss';
 import postcss from 'postcss';
-import { readFile } from '../../../utils.js';
+import fs from '../../../../src/utils/filesystem.js';
 
 type CssCodemodProps = {
   plugins: AcceptedPlugin[];
@@ -25,10 +23,10 @@ export const runCssCodemod = async ({ plugins = [], globPattern = './**/*.css' }
         // console.log(`Skipping ${file}`);
         return;
       }
-      const contents = readFile(file).toString();
-      const result = await processor.process(contents, { from: file });
+      const contents = await fs.readFile(file);
+      const result = await processor.process(contents.toString(), { from: file });
 
-      fs.writeFileSync(file, result.css);
+      await fs.writeFile(file, result.css);
     });
 
     await Promise.all(filePromises);
