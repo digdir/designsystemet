@@ -7,11 +7,11 @@ import { createTokens } from '../tokens/create.js';
 import { buildOptions, processPlatform } from '../tokens/process/platform.js';
 import { processThemeObject } from '../tokens/process/utils/getMultidimensionalThemes.js';
 import type { OutputFile, SizeModes, Theme } from '../tokens/types.js';
-import { cleanDir, mkdir, writeFile } from '../utils.js';
+import fs from '../utils/filesystem.js';
 
 const OUTDIR = '../../internal/components/src/tokens/design-tokens';
 
-async function write(files: OutputFile[], outDir: string, dry?: boolean) {
+async function write(files: OutputFile[], outDir: string) {
   for (const { destination, output } of files) {
     if (destination) {
       const filePath = path.join(outDir, destination);
@@ -19,8 +19,8 @@ async function write(files: OutputFile[], outDir: string, dry?: boolean) {
 
       console.log(`Writing file: ${pc.green(filePath)}`);
 
-      await mkdir(fileDir, dry);
-      await writeFile(filePath, output, dry);
+      await fs.mkdir(fileDir);
+      await fs.writeFile(filePath, output);
     }
   }
 }
@@ -55,7 +55,7 @@ export const formatTheme = async (themeConfig: Theme) => {
     buildTokenFormats: {},
   });
 
-  await cleanDir(OUTDIR, false);
+  await fs.cleanDir(OUTDIR);
 
   console.log(
     buildOptions?.buildTokenFormats
@@ -103,7 +103,6 @@ export const formatTheme = async (themeConfig: Theme) => {
           },
         ],
         OUTDIR,
-        false,
       );
     }
     console.log(`\n✅ Finished building preview tokens for ${pc.blue('Designsystemet')}`);

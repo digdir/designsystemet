@@ -1,4 +1,3 @@
-import path from 'node:path';
 import type { Command, OptionValues } from '@commander-js/extra-typings';
 import pc from 'picocolors';
 import * as R from 'ramda';
@@ -10,14 +9,14 @@ import {
   parseConfig,
   validateConfig,
 } from '../src/config.js';
-import { readFile } from '../src/utils.js';
+import fs from '../src/utils/filesystem.js';
 import { getCliOption, getDefaultCliOption, getSuppliedCliOption, type OptionGetter } from './options.js';
 
 export async function readConfigFile(configPath: string, allowFileNotFound = true): Promise<string> {
   let configFile: string;
 
   try {
-    configFile = await readFile(configPath, false, allowFileNotFound);
+    configFile = await fs.readFile(configPath, allowFileNotFound);
   } catch (err) {
     if (allowFileNotFound) {
       return '';

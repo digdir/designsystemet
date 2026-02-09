@@ -11,7 +11,7 @@ import { writeTokens } from '../src/tokens/create/write.js';
 import { cliOptions, createTokens } from '../src/tokens/create.js';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.js';
 import type { Theme } from '../src/tokens/types.js';
-import { cleanDir } from '../src/utils.js';
+import fs from '../src/utils/filesystem.js';
 import { parseBuildConfig, parseCreateConfig, readConfigFile } from './config.js';
 
 export const figletAscii = `
@@ -60,21 +60,17 @@ function makeTokenCommands() {
       const { configFile, configPath } = await getConfigFile(configFilePath);
       const config = await parseBuildConfig(configFile, { configPath });
 
-      const writeDir = path.resolve(workingDir, outDir);
-
-      if (dry) {
-        console.log(`Performing dry run, no files will be written`);
-      }
+      const writeDir = path.resolve(workingDir, outDir); // TODO read output directory from config or CLI options
+      fs.init({ dry, writeDir });
 
       if (clean) {
-        await cleanDir(writeDir, dry);
+        await fs.cleanDir(writeDir);
       }
 
       await buildTokens({
         tokensDir: tokens,
         outDir: writeDir,
         verbose,
-        dry,
         tailwind: experimentalTailwind,
         ...config,
       });
@@ -119,11 +115,12 @@ function makeTokenCommands() {
         cmd,
         configPath,
       });
-
       const writeDir = path.resolve(workingDir, config.outDir);
 
+      fs.init({ dry: opts.dry, writeDir });
+
       if (config.clean) {
-        await cleanDir(writeDir, opts.dry);
+        await fs.cleanDir(writeDir);
       }
 
       /*
@@ -135,7 +132,7 @@ function makeTokenCommands() {
           const theme = { name, ...themeWithoutName } as Theme;
 
           const { tokenSets } = await createTokens(theme);
-          await writeTokens({ outDir: writeDir, theme, dry: opts.dry, tokenSets });
+          await writeTokens({ outDir: writeDir, theme, tokenSets });
         }
       }
     });
