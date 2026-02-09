@@ -10,22 +10,7 @@ import { type BuildOptions, processPlatform } from './process/platform.js';
 import { processThemeObject } from './process/utils/getMultidimensionalThemes.js';
 import type { DesignsystemetObject, OutputFile } from './types.js';
 
-async function write(files: OutputFile[], outDir: string) {
-  for (const { destination, output } of files) {
-    if (destination) {
-      const filePath = path.join(outDir, destination);
-      const fileDir = path.dirname(filePath);
-
-      console.log(destination);
-
-      await fs.mkdir(fileDir);
-      await fs.writeFile(filePath, output);
-    }
-  }
-}
-
 export const buildTokens = async (options: Omit<BuildOptions, 'type' | 'processed$themes' | 'buildTokenFormats'>) => {
-  const outDir = path.resolve(options.outDir);
   const tokensDir = path.resolve(options.tokensDir);
   const $themes = JSON.parse(await fs.readFile(`${tokensDir}/$themes.json`)) as ThemeObject[];
   const processed$themes = $themes.map(processThemeObject);
@@ -40,7 +25,6 @@ export const buildTokens = async (options: Omit<BuildOptions, 'type' | 'processe
 
   const processedBuilds = await processPlatform({
     ...options,
-    outDir: outDir,
     tokensDir: tokensDir,
     type: 'build',
     processed$themes,
@@ -64,10 +48,19 @@ export const buildTokens = async (options: Omit<BuildOptions, 'type' | 'processe
     files = files.concat(tailwindFiles.filter(Boolean) as OutputFile[]);
   }
 
-  console.log(`\n💾 Writing build to ${pc.green(outDir)}`);
-
-  await write(files, outDir);
-
-  console.log(`\n✅ Finished building tokens!`);
-  return processedBuilds;
+  return files;
 };
+
+export async function writeFiles(files: OutputFile[], outDir: string) {
+  for (const { destination: filename, output } of files) {
+    if (filename) {
+      const filePath = path.join(outDir, filename);
+      const fileDir = path.dirname(filePath);
+
+      console.log(filename);
+
+      await fs.mkdir(fileDir);
+      await fs.writeFile(filePath, output);
+    }
+  }
+}

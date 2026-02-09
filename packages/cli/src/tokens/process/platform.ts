@@ -28,8 +28,6 @@ export type BuildOptions = {
   type: 'build';
   /** Design tokens path */
   tokensDir: string;
-  /** Output directory for built tokens */
-  outDir: string;
   /** Tailwind CSS configuration */
   tailwind?: boolean;
 } & SharedOptions;

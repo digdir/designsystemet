@@ -70,6 +70,7 @@ export type BuildConfig = {
 
 export type SDConfigForThemePermutation = { permutation: ThemePermutation; config: SDConfig };
 
+/** This type is taken from Style Dictionary `formatPlatform` */
 export type OutputFile = {
   output: string;
   destination: string;

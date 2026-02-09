@@ -68,6 +68,4 @@ export const writeTokens = async (options: WriteTokensOptions) => {
     const filePath = path.join(outDir, `${set}.json`);
     await fs.writeFile(filePath, stringify(tokens));
   }
-
-  console.log(`Finished creating Designsystem design tokens in ${pc.green(outDir)} for theme ${pc.blue(themeName)}`);
 };

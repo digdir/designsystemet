@@ -6,7 +6,7 @@ import * as R from 'ramda';
 import { convertToHex } from '../src/colors/index.js';
 import type { CssColor } from '../src/colors/types.js';
 import migrations from '../src/migrations/index.js';
-import { buildTokens } from '../src/tokens/build.js';
+import { buildTokens, writeFiles } from '../src/tokens/build.js';
 import { writeTokens } from '../src/tokens/create/write.js';
 import { cliOptions, createTokens } from '../src/tokens/create.js';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.js';
@@ -52,7 +52,7 @@ function makeTokenCommands() {
     .option('--experimental-tailwind', 'Generate Tailwind CSS classes for tokens', false)
     .action(async (opts) => {
       console.log(figletAscii);
-      const { verbose, clean, dry, experimentalTailwind, outDir, tokens } = opts;
+      const { verbose, clean, dry, experimentalTailwind, tokens } = opts;
 
       const configFilePath = opts.config;
       const workingDir = configFilePath ? path.dirname(configFilePath) : process.cwd();
@@ -60,20 +60,26 @@ function makeTokenCommands() {
       const { configFile, configPath } = await getConfigFile(configFilePath);
       const config = await parseBuildConfig(configFile, { configPath });
 
-      const writeDir = path.resolve(workingDir, outDir); // TODO read output directory from config or CLI options
-      fs.init({ dry, writeDir });
+      const outDir = path.resolve(workingDir, opts.outDir); // TODO read output directory from config or CLI options
+
+      fs.init({ dry });
 
       if (clean) {
-        await fs.cleanDir(writeDir);
+        await fs.cleanDir(outDir);
       }
 
-      await buildTokens({
+      const files = await buildTokens({
         tokensDir: tokens,
-        outDir: writeDir,
         verbose,
         tailwind: experimentalTailwind,
         ...config,
       });
+
+      console.log(`\n💾 Writing build to ${pc.green(outDir)}`);
+
+      await writeFiles(files, outDir);
+
+      console.log(`\n✅ Finished building tokens in ${pc.green(outDir)}`);
 
       return Promise.resolve();
     });
@@ -115,12 +121,12 @@ function makeTokenCommands() {
         cmd,
         configPath,
       });
-      const writeDir = path.resolve(workingDir, config.outDir);
 
-      fs.init({ dry: opts.dry, writeDir });
+      const outDir = path.resolve(workingDir, config.outDir);
+      fs.init({ dry: opts.dry });
 
       if (config.clean) {
-        await fs.cleanDir(writeDir);
+        await fs.cleanDir(outDir);
       }
 
       /*
@@ -132,9 +138,13 @@ function makeTokenCommands() {
           const theme = { name, ...themeWithoutName } as Theme;
 
           const { tokenSets } = await createTokens(theme);
-          await writeTokens({ outDir: writeDir, theme, tokenSets });
+          await writeTokens({ outDir, theme, tokenSets });
         }
       }
+
+      console.log(`\n✅ Finished creating tokens in ${pc.green(outDir)} for theme: ${pc.blue(themeName)}`);
+
+      return Promise.resolve();
     });
 
   return tokenCmd;
@@ -154,11 +164,12 @@ program
     const tokensDir = typeof opts.dir === 'string' ? opts.dir : DEFAULT_TOKENS_CREATE_DIR;
     const outFile = typeof opts.out === 'string' ? opts.out : DEFAULT_CONFIG_FILE;
 
+    fs.init({ dry });
+
     try {
       const config = await generateConfigFromTokens({
         tokensDir,
-        outFile: dry ? undefined : outFile,
-        dry,
+        outFile,
       });
 
       if (dry) {
