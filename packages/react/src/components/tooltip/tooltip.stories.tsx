@@ -1,6 +1,6 @@
 import { FilesIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
-import { expect, userEvent, within } from 'storybook/test';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 import { Button } from '../../';
 import { Tooltip } from './tooltip';
 
@@ -24,7 +24,7 @@ export default {
     await userEvent.hover(button);
     const tooltip = await within(document.body).findByText(ctx.args.content);
     await expect(tooltip).toBeInTheDocument();
-    await expect(tooltip).toBeVisible();
+    await waitFor(() => expect(tooltip).toBeVisible());
   },
 } satisfies Meta;
 
