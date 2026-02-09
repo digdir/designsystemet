@@ -22,6 +22,9 @@ export default {
 
     /* wait 1s for tooltip to show */
     await userEvent.hover(button);
+    /* wait 150ms */
+    await new Promise((resolve) => setTimeout(resolve, 150));
+
     const tooltip = await within(document.body).findByText(ctx.args.content);
     await expect(tooltip).toBeInTheDocument();
     await new Promise((resolve) =>

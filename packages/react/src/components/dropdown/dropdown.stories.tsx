@@ -31,7 +31,7 @@ export default {
     const button = ctx.canvasElement.querySelector(
       '[data-tooltip]',
     ) as HTMLElement;
-    await userEvent.click(button);
+    await userEvent.hover(button);
     const dropdown = ctx.canvasElement.querySelector('.ds-dropdown');
     await expect(dropdown).toBeInTheDocument();
     await new Promise((resolve) =>
