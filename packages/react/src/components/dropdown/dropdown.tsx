@@ -12,7 +12,7 @@ export type DropdownProps = MergeRight<
      * The placement of the dropdown
      * @default bottom-end
      */
-    placement?: Placement;
+    placement?: Placement | 'none';
   }
 >;
 

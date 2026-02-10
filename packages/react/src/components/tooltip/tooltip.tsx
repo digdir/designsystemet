@@ -23,7 +23,7 @@ export type TooltipProps = MergeRight<
      * Placement of the tooltip on the trigger.
      * @default 'top'
      */
-    placement?: 'top' | 'right' | 'bottom' | 'left';
+    placement?: 'top' | 'right' | 'bottom' | 'left' | 'none';
     /**
      * Whether to enable auto placement.
      * @default true

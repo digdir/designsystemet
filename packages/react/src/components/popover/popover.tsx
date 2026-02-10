@@ -21,7 +21,7 @@ export type PopoverProps = MergeRight<
      * Placement of the popover on the trigger.
      * @default 'top'
      */
-    placement?: Placement;
+    placement?: Placement | 'none';
     /**
      * When a boolean is provided, the popover will be controlled.
      * @default undefined
