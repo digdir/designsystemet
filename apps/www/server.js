@@ -42,9 +42,24 @@ if (DEVELOPMENT) {
     '/.well-known',
     express.static('dist/client/.well-known', { maxAge: '1y' }),
   );
-  app.use(express.static('dist/client', { redirect: false }));
   app.use(express.static('dist/client/img', { maxAge: '30d' }));
   app.use(express.static('dist/client/animations', { maxAge: '30d' }));
+
+  /* Serve prerendered HTML files for clean URLs (e.g., /no/intro -> /no/intro/index.html) */
+  app.use((req, res, next) => {
+    if (req.path.includes('.') || req.path.startsWith('/assets')) {
+      return next();
+    }
+
+    const indexPath = `dist/client${req.path}/index.html`;
+    res.sendFile(indexPath, { root: '.' }, (err) => {
+      if (err) {
+        next();
+      }
+    });
+  });
+
+  app.use(express.static('dist/client', { redirect: false }));
   app.use(await import(BUILD_PATH).then((mod) => mod.app));
 }
 
