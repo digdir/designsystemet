@@ -26,7 +26,7 @@ export const ThemeHeader = () => {
     <div className={classes.header}>
       <div className={classes.textContainer}>
         <RRLink data-size='sm' className={classes.backLink} to={`/${lang}/`}>
-          <ChevronLeftIcon aria-hidden height='1.5rem' width='auto' />
+          <ChevronLeftIcon aria-hidden height='1.5rem' width='1.5rem' />
           {t('header.back-to-home')}
         </RRLink>
         <Heading data-size='md' level={1}>

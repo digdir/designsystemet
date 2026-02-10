@@ -47,7 +47,7 @@ export const InTextEn = () => {
 export const WithIcon = () => {
   return (
     <Link href='https://designsystemet.no/slack'>
-      <Chat2Icon aria-hidden height={24} width='auto' />
+      <Chat2Icon aria-hidden height={24} width={24} />
       <span>Snakk med oss på Slack</span>
     </Link>
   );
@@ -56,7 +56,7 @@ export const WithIcon = () => {
 export const WithIconEn = () => {
   return (
     <Link href='https://designsystemet.no/slack'>
-      <Chat2Icon aria-hidden height={24} width='auto' />
+      <Chat2Icon aria-hidden height={24} width={24} />
       <span>Talk to us on Slack</span>
     </Link>
   );

@@ -46,28 +46,28 @@ export const InText: StoryFn = (args) => (
 
 export const WithIcon: StoryFn = (args) => (
   <Link href='mailto:designsystem@digdir.no' {...args}>
-    <EnvelopeClosedIcon aria-hidden height={24} width='auto' />
+    <EnvelopeClosedIcon aria-hidden height={24} width={24} />
     <span>Kontakt oss</span>
   </Link>
 );
 export const WithIconRight: StoryFn = (args) => (
   <Link href='mailto:designsystem@digdir.no' {...args}>
     <span>Kontakt oss</span>
-    <EnvelopeClosedIcon aria-hidden height={24} width='auto' />
+    <EnvelopeClosedIcon aria-hidden height={24} width={24} />
   </Link>
 );
 export const WithMultipleIcons: StoryFn = (args) => (
   <Link href={designsystemetLink} {...args}>
-    <ComponentIcon aria-hidden height={24} width='auto' />
+    <ComponentIcon aria-hidden height={24} width={24} />
     <span>Komponenter og</span>
-    <BookIcon aria-hidden height={24} width='auto' />
+    <BookIcon aria-hidden height={24} width={24} />
     <span>dokumentasjon på designsystemet.no</span>
-    <ExternalLinkIcon aria-hidden height={24} width='auto' />
+    <ExternalLinkIcon aria-hidden height={24} width={24} />
   </Link>
 );
 export const WithOnlyIcon: StoryFn = (args) => (
   <Link href={designsystemetLink} {...args}>
-    <ComponentIcon title='Designsystemet' height={52} width='auto' />
+    <ComponentIcon title='Designsystemet' height={52} width={52} />
   </Link>
 );
 

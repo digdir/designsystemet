@@ -11,7 +11,7 @@ export const DoIcon = () => {
 export const DontIcon = () => {
   return (
     <Link href='https://arbeidsplassen.nav.no/stillinger'>
-      <ExternalLinkIcon aria-hidden height={24} width='auto' />
+      <ExternalLinkIcon aria-hidden height={24} width={24} />
       <span>Finn ledige stillinger</span>
     </Link>
   );
@@ -28,7 +28,7 @@ export const DoIconEn = () => {
 export const DontIconEn = () => {
   return (
     <Link href='https://arbeidsplassen.nav.no/stillinger'>
-      <ExternalLinkIcon aria-hidden height={24} width='auto' />
+      <ExternalLinkIcon aria-hidden height={24} width={24} />
       <span>Find available jobs</span>
     </Link>
   );

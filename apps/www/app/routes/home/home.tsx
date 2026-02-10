@@ -150,9 +150,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
                 description={t('frontpage.get-started.description')}
                 color='blue'
                 url='fundamentals/introduction/get-started'
-                icon={
-                  <PaletteIcon height={36} width='auto' aria-hidden='true' />
-                }
+                icon={<PaletteIcon height={36} width={36} aria-hidden='true' />}
                 level={2}
               />
 
@@ -162,7 +160,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
                 color='red'
                 url='components'
                 icon={
-                  <ComponentIcon height={34} width='auto' aria-hidden='true' />
+                  <ComponentIcon height={34} width={34} aria-hidden='true' />
                 }
                 level={2}
               />
@@ -172,9 +170,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
                 description={t('frontpage.patterns.description')}
                 color='yellow'
                 url='patterns'
-                icon={
-                  <WrenchIcon height={36} width='auto' aria-hidden='true' />
-                }
+                icon={<WrenchIcon height={36} width={36} aria-hidden='true' />}
                 level={2}
               />
             </div>
@@ -302,14 +298,14 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
             <div data-links>
               <Link href='/slack'>
                 <span>
-                  <PersonChatIcon height={24} width='auto' aria-hidden='true' />
+                  <PersonChatIcon height={24} width={24} aria-hidden='true' />
                 </span>
 
                 {t('frontpage.join-section.buttons.slack')}
               </Link>
               <Link href='https://github.com/digdir/designsystemet'>
                 <span>
-                  <BranchingIcon height={24} width='auto' aria-hidden='true' />
+                  <BranchingIcon height={24} width={24} aria-hidden='true' />
                 </span>
                 {t('frontpage.join-section.buttons.github')}
               </Link>
@@ -317,7 +313,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
                 <span>
                   <EnvelopeClosedIcon
                     height={24}
-                    width='auto'
+                    width={24}
                     aria-hidden='true'
                   />
                 </span>
