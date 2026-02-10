@@ -55,14 +55,13 @@ function makeTokenCommands() {
       const { verbose, clean, dry, experimentalTailwind, tokens } = opts;
 
       const configFilePath = opts.config;
-      const workingDir = configFilePath ? path.dirname(configFilePath) : process.cwd();
 
       const { configFile, configPath } = await getConfigFile(configFilePath);
       const config = await parseBuildConfig(configFile, { configPath });
 
-      const outDir = path.resolve(workingDir, opts.outDir); // TODO read output directory from config or CLI options
+      fs.init({ dry, configFilePath });
 
-      fs.init({ dry });
+      const outDir = fs.getOutdir(opts.outDir); // TODO read output directory from config or CLI options
 
       if (clean) {
         await fs.cleanDir(outDir);
@@ -113,7 +112,6 @@ function makeTokenCommands() {
       }
       const themeName = opts.theme;
       const configFilePath = opts.config;
-      const workingDir = configFilePath ? path.dirname(configFilePath) : process.cwd();
 
       const { configFile, configPath } = await getConfigFile(configFilePath);
       const config = await parseCreateConfig(configFile, {
@@ -122,8 +120,9 @@ function makeTokenCommands() {
         configPath,
       });
 
-      const outDir = path.resolve(workingDir, config.outDir);
-      fs.init({ dry: opts.dry });
+      fs.init({ dry: opts.dry, configFilePath });
+
+      const outDir = fs.getOutdir(config.outDir);
 
       if (config.clean) {
         await fs.cleanDir(outDir);
@@ -162,14 +161,14 @@ program
     console.log(figletAscii);
     const { dry } = opts;
     const tokensDir = path.resolve(opts.dir);
-    const outFile = path.resolve(opts.out);
+    const configFilePath = path.resolve(opts.out);
 
-    fs.init({ dry });
+    fs.init({ dry, configFilePath });
 
     try {
       const config = await generateConfigFromTokens({
         tokensDir,
-        outFile,
+        outFile: configFilePath,
       });
 
       if (dry) {
@@ -178,11 +177,11 @@ program
         console.log(JSON.stringify(config, null, 2));
       }
 
-      if (outFile) {
+      if (configFilePath) {
         const configJson = JSON.stringify(config, null, 2);
-        await fs.writeFile(outFile, configJson);
+        await fs.writeFile(configFilePath, configJson);
         console.log();
-        console.log(`\n✅ Config file written to ${pc.blue(outFile)}`);
+        console.log(`\n✅ Config file written to ${pc.blue(configFilePath)}`);
       }
     } catch (error) {
       console.error(pc.redBright('Error generating config:'));
