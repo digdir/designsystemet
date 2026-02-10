@@ -6,11 +6,11 @@ import * as R from 'ramda';
 import { convertToHex } from '../src/colors/index.js';
 import type { CssColor } from '../src/colors/types.js';
 import migrations from '../src/migrations/index.js';
-import { buildTokens, writeFiles } from '../src/tokens/build.js';
+import { buildTokens } from '../src/tokens/build.js';
 import { writeTokens } from '../src/tokens/create/write.js';
 import { cliOptions, createTokens } from '../src/tokens/create.js';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.js';
-import type { Theme } from '../src/tokens/types.js';
+import type { OutputFile, Theme } from '../src/tokens/types.js';
 import fs from '../src/utils/filesystem.js';
 import { parseBuildConfig, parseCreateConfig, readConfigFile } from './config.js';
 
@@ -77,7 +77,7 @@ function makeTokenCommands() {
 
       console.log(`\n💾 Writing build to ${pc.green(outDir)}`);
 
-      await writeFiles(files, outDir);
+      await fs.writeFiles(files, outDir, true);
 
       console.log(`\n✅ Finished building tokens in ${pc.green(outDir)}`);
 
@@ -129,18 +129,18 @@ function makeTokenCommands() {
         await fs.cleanDir(outDir);
       }
 
-      /*
-       * Create and write tokens for each theme
-       */
+      let files: OutputFile[] = [];
       if (config.themes) {
         for (const [name, themeWithoutName] of Object.entries(config.themes)) {
           // Casting as missing properties should be validated by `getDefaultOrExplicitOption` to default values
           const theme = { name, ...themeWithoutName } as Theme;
 
           const { tokenSets } = await createTokens(theme);
-          await writeTokens({ outDir, theme, tokenSets });
+          files = files.concat(await writeTokens({ outDir, theme, tokenSets }));
         }
       }
+
+      await fs.writeFiles(files, outDir);
 
       console.log(`\n✅ Finished creating tokens in ${pc.green(outDir)} for theme: ${pc.blue(themeName)}`);
 
@@ -161,8 +161,8 @@ program
   .action(async (opts) => {
     console.log(figletAscii);
     const { dry } = opts;
-    const tokensDir = typeof opts.dir === 'string' ? opts.dir : DEFAULT_TOKENS_CREATE_DIR;
-    const outFile = typeof opts.out === 'string' ? opts.out : DEFAULT_CONFIG_FILE;
+    const tokensDir = path.resolve(opts.dir);
+    const outFile = path.resolve(opts.out);
 
     fs.init({ dry });
 
@@ -176,6 +176,13 @@ program
         console.log();
         console.log('Generated config (dry run):');
         console.log(JSON.stringify(config, null, 2));
+      }
+
+      if (outFile) {
+        const configJson = JSON.stringify(config, null, 2);
+        await fs.writeFile(outFile, configJson);
+        console.log();
+        console.log(`\n✅ Config file written to ${pc.blue(outFile)}`);
       }
     } catch (error) {
       console.error(pc.redBright('Error generating config:'));

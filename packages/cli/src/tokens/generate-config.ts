@@ -290,12 +290,5 @@ export async function generateConfigFromTokens(options: GenerateConfigOptions): 
     }
   }
 
-  if (options.outFile) {
-    const configJson = JSON.stringify(config, null, 2);
-    await fs.writeFile(options.outFile, configJson);
-    console.log();
-    console.log(`\n✅ Config file written to ${pc.blue(options.outFile)}`);
-  }
-
   return config;
 }
