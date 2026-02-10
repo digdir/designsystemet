@@ -4,7 +4,7 @@
   "private": true,
   "author": "Designsystemet team",
   "main": "src/index.ts",
-  "sideEffects": false,
+  "type": "module",
   "files": [
     "src/**"
   ],
