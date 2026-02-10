@@ -8,10 +8,10 @@ class FileSystem {
   private isInitialized = false;
   private dry = false;
   /** Resolved write directory */
-  writeDir = process.cwd();
+  workingDir = process.cwd();
 
   /** Initialize the file system */
-  init({ dry, writeDir }: { dry?: boolean; writeDir?: string }) {
+  init({ dry, configFilePath }: { dry?: boolean; configFilePath?: string }) {
     if (this.isInitialized) {
       console.warn(pc.yellow('FileSystem is already initialized. Ignoring subsequent init call.'));
       return;
@@ -22,8 +22,16 @@ class FileSystem {
     }
 
     this.dry = dry ?? false;
-    this.writeDir = writeDir ?? process.cwd();
+    this.workingDir = configFilePath ? path.dirname(configFilePath) : process.cwd();
     this.isInitialized = true;
+  }
+
+  getOutdir(outDir?: string) {
+    if (outDir) {
+      return path.isAbsolute(outDir) ? outDir : path.join(this.workingDir, outDir);
+    }
+
+    return this.workingDir;
   }
 
   /**
