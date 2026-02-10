@@ -303,6 +303,23 @@ DialogWithSuggestion.parameters = {
 };
 
 export const DialogNonModal: StoryFn<typeof Dialog> = () => {
+  return (
+    <>
+      <Button command='--show-non-modal' commandfor='my-non-modal'>
+        Open Dialog
+      </Button>
+      <Dialog id='my-non-modal'>
+        <Heading>Non-modal dialog</Heading>
+        <Paragraph>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis
+          doloremque obcaecati assumenda odio ducimus sunt et.
+        </Paragraph>
+      </Dialog>
+    </>
+  );
+};
+
+export const DialogNonModalRef: StoryFn<typeof Dialog> = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   return (

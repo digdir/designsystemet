@@ -31,8 +31,14 @@ const handleAriaAttributes = () => {
     attr(btn, 'aria-haspopup', 'dialog');
 };
 
+const handleCommand = ({ command, target }: Event & { command?: string }) =>
+  command === '--show-non-modal' &&
+  target instanceof HTMLDialogElement &&
+  target.show();
+
 onHotReload('dialog', () => [
   on(document, 'pointerdown pointerup', handleClosedbyAny, QUICK_EVENT),
+  on(document, 'command', handleCommand, true),
   onMutation(document, handleAriaAttributes, {
     attributeFilter: ['command'],
     attributes: true,

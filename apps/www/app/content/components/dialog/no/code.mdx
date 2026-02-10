@@ -30,7 +30,7 @@ Dialog content
 
 ### Med command og uten context
 
-Dersom du ikke vil bruke `Dialog.TriggerContext`, kan du bruke `command="show"` eller `command="show-modal"` og `commandfor="DIALOG-ID"` for å åpne dialogen fra en ekstern trigger.
+Dersom du ikke vil bruke `Dialog.TriggerContext`, kan du bruke `command="show-modal"` eller `command="--show-non-modal"` og `commandfor="DIALOG-ID"` for å åpne dialogen fra en ekstern trigger.
 
 <Story story="WithCommand" />
 
@@ -87,7 +87,7 @@ Blokker inne i dialogen får klassenavn som `ds-dialog__block`.
 </dialog>
 ```
 
-I HTML må du selv koble `<dialog>`-elementet til en trigger via `command="show"` eller `command="show-modal"` og `commandfor="DIALOG-ID"`.
+I HTML må du selv koble `<dialog>`-elementet til en trigger via `command="show-modal"` eller `command="--show-non-modal"` og `commandfor="DIALOG-ID"`.
 
 ```html
 <button command="show-dialog" commandfor="my-dialog" type="button">Open Dialog</button>

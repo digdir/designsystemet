@@ -32,7 +32,7 @@ Dialog content
 
 ### Med command og uten context
 
-If you don't want to use `Dialog.TriggerContext`, you can use `command="show"` or `command="show-modal"` and `commandfor="DIALOG-ID"` to open the dialog from an external trigger.
+If you don't want to use `Dialog.TriggerContext`, you can use `command="show-modal"` or `command="--show-non-modal"` and `commandfor="DIALOG-ID"` to open the dialog from an external trigger.
 
 <Story story="WithCommand" />
 
@@ -91,7 +91,7 @@ Content
 </dialog>
 ```
 
-In HTML, you have to connect the `<dialog>` element to a trigger yourself through `command="show"` or `command="show-modal"` and `commandfor="DIALOG-ID"`.
+In HTML, you have to connect the `<dialog>` element to a trigger yourself through `command="show-modal"` or `command="--show-non-modal"` and `commandfor="DIALOG-ID"`.
 
 ```html
 <button command="show-dialog" commandfor="my-dialog" type="button">Open Dialog</button>
