@@ -1,5 +1,5 @@
-import { colorMetadata } from '@digdir/designsystemet';
 import { Table } from '@digdir/designsystemet-react';
+import { colorMetadata } from '../../../../../packages/cli/src/colors/colorMetadata';
 
 export const ColorInfoTable = () => {
   return (
