@@ -26,7 +26,8 @@
 
   & :where(img, svg) {
     flex-shrink: 0;
-    font-size: 1.25em;
+    height: 1.25em;
+    width: auto;
   }
 
   &:not([hidden]) {
