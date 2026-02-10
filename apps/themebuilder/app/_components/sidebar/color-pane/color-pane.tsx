@@ -90,7 +90,7 @@ export const ColorPane = ({
           }}
           className={classes.back}
         >
-          <ChevronLeftIcon aria-hidden fontSize='1.5rem' />
+          <ChevronLeftIcon aria-hidden />
           {t('colorPane.save')}
         </Button>
         <Button
@@ -120,7 +120,7 @@ export const ColorPane = ({
           }
         >
           {t('colorPane.remove-color')}
-          <TrashIcon title='trash' fontSize='1.5rem' />
+          <TrashIcon title='trash' />
         </Button>
       </div>
       <Heading data-size='xs' className={classes.title}>

@@ -216,7 +216,7 @@ export const ColorPage = () => {
                   aria-label={`${t('colorPane.add')} ${t('colorPane.main-color')}`}
                 >
                   {t('colorPane.add')} {t('themeModal.color')}
-                  <PlusIcon aria-hidden fontSize='1.5rem' />
+                  <PlusIcon aria-hidden />
                 </Button>
               )}{' '}
               {colors.main.length >= 40 && (
@@ -262,7 +262,7 @@ export const ColorPage = () => {
                   aria-label={`${t('colorPane.add')} ${t('colorPane.support-color')}`}
                 >
                   {t('colorPane.add')} {t('themeModal.color')}
-                  <PlusIcon aria-hidden fontSize='1.5rem' />
+                  <PlusIcon aria-hidden />
                 </Button>
               )}{' '}
               {colors.support.length >= 40 && (
@@ -334,7 +334,7 @@ export const ColorPage = () => {
                   data-size='sm'
                   className={classes.overridesBtn}
                 >
-                  <PencilIcon aria-hidden fontSize='1.25rem' />
+                  <PencilIcon aria-hidden />
                   Token Overrides
                 </Button>
               }

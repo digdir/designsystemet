@@ -11,7 +11,8 @@
   }
 
   & a svg {
-    font-size: 1.5rem;
+    height: 1.5rem;
+    width: auto;
     margin-inline-end: var(--ds-size-1);
   }
 

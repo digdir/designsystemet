@@ -77,7 +77,7 @@ export default function Home({ params: { lang } }: Route.ComponentProps) {
           <div className={classes.btnGroup}>
             <Button data-color='neutral' asChild>
               <Link to={`/${lang}/themebuilder`}>
-                <PaletteIcon fontSize='1.5rem' aria-hidden />
+                <PaletteIcon aria-hidden />
                 {t('themeBuilder.build-theme')}
               </Link>
             </Button>
@@ -85,7 +85,7 @@ export default function Home({ params: { lang } }: Route.ComponentProps) {
               <Link
                 to={`https://www.designsystemet.no/${lang}/fundamentals/start-here/own-theme`}
               >
-                <BookIcon fontSize='1.5rem' aria-hidden />
+                <BookIcon aria-hidden />
                 {t('themeBuilder.documentation')}
               </Link>
             </Button>

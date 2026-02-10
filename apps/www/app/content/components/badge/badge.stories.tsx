@@ -16,7 +16,10 @@ export const Floating = () => (
   <>
     <Badge.Position placement='top-right'>
       <Badge data-color='danger' count={2}></Badge>
-      <EnvelopeClosedFillIcon title='Meldinger' style={{ fontSize: '2rem' }} />
+      <EnvelopeClosedFillIcon
+        title='Meldinger'
+        style={{ height: '2rem', width: 'auto' }}
+      />
     </Badge.Position>
   </>
 );
