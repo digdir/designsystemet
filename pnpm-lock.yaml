@@ -362,9 +362,6 @@ importers:
 
   internal/components:
     dependencies:
-      '@digdir/designsystemet':
-        specifier: workspace:^
-        version: link:../../packages/cli
       '@digdir/designsystemet-css':
         specifier: workspace:^
         version: link:../../packages/css
