@@ -10,13 +10,13 @@ import { generate$Themes } from './generators/$themes.js';
 
 export const stringify = (data: unknown) => JSON.stringify(data, null, 2);
 
-type WriteTokensOptions = {
+type CreateTokenFilesOptions = {
   outDir: string;
   theme: Theme;
   tokenSets: TokenSets;
 };
 
-export const writeTokens = async (options: WriteTokensOptions) => {
+export const createTokenFiles = async (options: CreateTokenFilesOptions) => {
   const {
     outDir,
     tokenSets,
