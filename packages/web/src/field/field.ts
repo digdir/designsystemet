@@ -32,6 +32,7 @@ const COUNTS = new WeakMap<HTMLInputElement, Element>(); // Using WeakMap so rem
 const FIELDSETS = isBrowser() ? document.getElementsByTagName('fieldset') : [];
 const HAS_FIELD_SIZING = isBrowser() && CSS.supports('field-sizing', 'content');
 const COUNTER_DEBOUNCE = isWindows() ? 800 : 200; // Longer debounce on Windows due to NVDA performance
+const HAS_VALIDATION = new WeakSet<HTMLInputElement>(); // Used to store inputs that have/had validation elements to manage aria-invalid
 
 const handleMutations = debounce(() => {
   for (const el of FIELDSETS) {
@@ -87,7 +88,10 @@ const handleMutations = debounce(() => {
 
       attr(field, 'data-clickdelegatefor', isBoolish ? useId(input) : null); // Expand click area to ds-field if radio/checkbox
       attr(input, 'aria-describedby', descs.map(useId).join(' ') || null);
-      if (hasValidation) attr(input, 'aria-invalid', `${invalid}`); // Only manage aria-invalid when field has validation elements
+      if (hasValidation || HAS_VALIDATION.has(input)) {
+        HAS_VALIDATION[hasValidation ? 'add' : 'delete'](input); // Track if field has validation elements to avoid managing aria-invalid on every mutation
+        attr(input, 'aria-invalid', `${invalid}`); // Only manage aria-invalid when field has validation elements
+      }
       updateField(input); // Update counter and textarea sizing
     }
   }
