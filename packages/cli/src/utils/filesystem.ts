@@ -1,6 +1,8 @@
-import type { CopyOptions } from 'node:fs';
+import type { CopyOptions, PathLike } from 'node:fs';
 import fs from 'node:fs/promises';
+import path from 'node:path';
 import pc from 'picocolors';
+import type { OutputFile } from '../tokens/types.js';
 
 class FileSystem {
   private isInitialized = false;
@@ -32,7 +34,7 @@ class FileSystem {
    * @returns A promise that resolves when the operation is complete.
    * If the directory already exists or `dry` is `true`, the promise resolves immediately.
    */
-  mkdir = async (dir: string) => {
+  mkdir = async (dir: PathLike) => {
     if (this.dry) {
       console.log(`${pc.blue('mkdir')} ${dir}`);
       return Promise.resolve();
@@ -50,7 +52,7 @@ class FileSystem {
     return fs.mkdir(dir, { recursive: true });
   };
 
-  writeFile = async (path: string, data: string) => {
+  writeFile = async (path: PathLike, data: string) => {
     if (this.dry) {
       console.log(`${pc.blue('writeFile')} ${path}`);
       return Promise.resolve();
@@ -72,7 +74,7 @@ class FileSystem {
     return fs.cp(src, dest, { recursive: true, filter });
   };
 
-  copyFile = async (src: string, dest: string) => {
+  copyFile = async (src: PathLike, dest: PathLike) => {
     if (this.dry) {
       console.log(`${pc.blue('copyFile')} ${src} to ${dest}`);
       return Promise.resolve();
@@ -92,10 +94,9 @@ class FileSystem {
     return fs.rm(dir, { recursive: true, force: true });
   };
 
-  readFile = async (path: string, allowFileNotFound?: boolean) => {
+  readFile = async (path: PathLike, allowFileNotFound?: boolean) => {
     if (this.dry) {
       console.log(`${pc.blue('readFile')} ${path}`);
-      return Promise.resolve('');
     }
 
     try {
@@ -107,10 +108,9 @@ class FileSystem {
       throw error;
     }
   };
-  readdir = async (path: string) => {
+  readdir = async (path: PathLike) => {
     if (this.dry) {
       console.log(`${pc.blue('readdir')} ${path}`);
-      return Promise.resolve([]);
     }
 
     try {
@@ -122,10 +122,25 @@ class FileSystem {
       throw error;
     }
   };
+  writeFiles = async (files: OutputFile[], outDir: string, log?: boolean) => {
+    for (const { destination: filename, output } of files) {
+      if (filename) {
+        const filePath = path.join(outDir, filename);
+        const fileDir = path.dirname(filePath);
+
+        if (log) {
+          console.log(filename);
+        }
+
+        await this.mkdir(fileDir);
+        await this.writeFile(filePath, output);
+      }
+    }
+  };
 }
 
 /**
- * An abstraction of Node's file system API for how CLI should interact with Files system.
+ * An abstraction of Node's file system API and helper functions for CLI interaction with the file system.
  *
  * Allows dry-running destructive operations, logging and store relevant file system state.
  */
