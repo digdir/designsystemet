@@ -12,7 +12,7 @@ import classes from './roi-calculator.module.css';
 
 const MAN_HOURS_PER_YEAR = 1695;
 
-export default function RoiCalculator() {
+export const RoiCalculator = () => {
   const { t } = useTranslation();
   const { lang } = useRouteLoaderData('root');
 
@@ -53,7 +53,6 @@ export default function RoiCalculator() {
           label={t('roi-calculator.inputs.newSolutions.label')}
           suffix={t('roi-calculator.inputs.newSolutions.suffix')}
           type='number'
-          defaultValue={4}
           value={newSolutions}
           onChange={(e) => setNewSolutions(Number(e.target.value))}
           name='number-of-solutions'
@@ -62,7 +61,6 @@ export default function RoiCalculator() {
           label={t('roi-calculator.inputs.numberOfDevs.label')}
           suffix={t('roi-calculator.inputs.numberOfDevs.suffix')}
           type='number'
-          defaultValue={2}
           value={numberOfDevs}
           onChange={(e) => setNumberOfDevs(Number(e.target.value))}
           name='number-of-devs-per-solution'
@@ -82,4 +80,4 @@ export default function RoiCalculator() {
       </div>
     </div>
   );
-}
+};

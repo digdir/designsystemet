@@ -1,6 +1,6 @@
 import { join } from 'node:path';
 import { bundleMDX } from 'mdx-bundler';
-import BlogCard from '~/_components/blog-card/blog-card';
+import { BlogCard } from '~/_components/blog-card/blog-card';
 import {
   getFileFromContentDir,
   getFilesFromContentDir,
