@@ -156,20 +156,20 @@ body,
     overflow: auto;
   }
 
-  /* Move arrow element */
-  &[data-floating='top']::before {
+  /* Move arrow element, using |= selector as we want to match both i.e. "bottom" and "bottom-end", "bottom-start" and "bottom-center" */
+  &[data-floating|='top']::before {
     top: 100%;
     rotate: 45deg;
   }
-  &[data-floating='right']::before {
+  &[data-floating|='right']::before {
     left: 0;
     rotate: 135deg;
   }
-  &[data-floating='bottom']::before {
+  &[data-floating|='bottom']::before {
     top: 0;
     rotate: -135deg;
   }
-  &[data-floating='left']::before {
+  &[data-floating|='left']::before {
     left: 100%;
     rotate: -45deg;
   }
