@@ -12,7 +12,7 @@ import classes from './roi-calculator.module.css';
 
 const MAN_HOURS_PER_YEAR = 1695;
 
-export default function RoiCalculator() {
+export const RoiCalculator = () => {
   const { t } = useTranslation();
   const { lang } = useRouteLoaderData('root');
 
@@ -80,4 +80,4 @@ export default function RoiCalculator() {
       </div>
     </div>
   );
-}
+};
