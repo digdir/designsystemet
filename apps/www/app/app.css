@@ -452,15 +452,18 @@
       }
     }
   }
-  /*this can be used to translate text in stories in some cases instead of a seperate english story*/
+  /*
+  this can be used to translate text in stories in some cases instead of a seperate english story. 
+  Wrap text in <span data-lang="en">text only visible for english</span>
+  */
   [data-lang] {
     display: none;
   }
   :lang(en) [data-lang='en']  {
-    display: initial;
+    display: contents;
   }
   :lang(no) [data-lang='no'] {
-    display: initial;
+    display: contents;
   }
 }
 @layer site.overrides {
