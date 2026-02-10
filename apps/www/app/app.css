@@ -459,7 +459,7 @@
   [data-lang] {
     display: none;
   }
-  :lang(en) [data-lang='en']  {
+  :lang(en) [data-lang='en'] {
     display: contents;
   }
   :lang(no) [data-lang='no'] {

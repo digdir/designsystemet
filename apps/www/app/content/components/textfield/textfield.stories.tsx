@@ -1,6 +1,13 @@
-import { Tag, Textfield, Field, Label, Select, type TextfieldProps } from '@digdir/designsystemet-react';
-import { useState } from 'react';
+import {
+  Field,
+  Label,
+  Select,
+  Tag,
+  Textfield,
+  type TextfieldProps,
+} from '@digdir/designsystemet-react';
 import { ArrowRightIcon } from '@navikt/aksel-icons';
+import { useState } from 'react';
 
 export const Preview = () => {
   return <Textfield label='Label' />;
@@ -76,15 +83,27 @@ export const RequiredEn = () => (
   />
 );
 
-
 export const InputType = () => {
-  const [type, setType] = useState<TextfieldProps['type'] >('text');
+  const [type, setType] = useState<TextfieldProps['type']>('text');
 
   return (
-    <div style={{ display: 'flex', gap: 'var(--ds-size-4)', alignItems: 'end', flexWrap: 'wrap' }}>
+    <div
+      style={{
+        display: 'flex',
+        gap: 'var(--ds-size-4)',
+        alignItems: 'end',
+        flexWrap: 'wrap',
+      }}
+    >
       <Field>
-        <Label><span data-lang='no'>Velg</span><span data-lang='en'>Choose</span> type</Label>
-        <Select defaultValue='text' onChange={(e) => setType(e.target.value as TextfieldProps['type'])}>
+        <Label>
+          <span data-lang='no'>Velg</span>
+          <span data-lang='en'>Choose</span> type
+        </Label>
+        <Select
+          defaultValue='text'
+          onChange={(e) => setType(e.target.value as TextfieldProps['type'])}
+        >
           <Select.Option value='text'>text</Select.Option>
           <Select.Option value='color'>color</Select.Option>
           <Select.Option value='date'>date</Select.Option>
@@ -102,7 +121,7 @@ export const InputType = () => {
           <Select.Option value='week'>week</Select.Option>
         </Select>
       </Field>
-      <ArrowRightIcon aria-hidden fontSize={48}/>
+      <ArrowRightIcon aria-hidden fontSize={48} />
       <Textfield label={`type="${type}"`} type={type} />
     </div>
   );
