@@ -1,4 +1,3 @@
-import path from 'node:path';
 import type { ThemeObject } from '@tokens-studio/types';
 import pc from 'picocolors';
 import * as R from 'ramda';
@@ -11,7 +10,7 @@ import { processThemeObject } from './process/utils/getMultidimensionalThemes.js
 import type { DesignsystemetObject, OutputFile } from './types.js';
 
 export const buildTokens = async (options: Omit<BuildOptions, 'type' | 'processed$themes' | 'buildTokenFormats'>) => {
-  const tokensDir = path.resolve(options.tokensDir);
+  const tokensDir = options.tokensDir;
   const $themes = JSON.parse(await fs.readFile(`${tokensDir}/$themes.json`)) as ThemeObject[];
   const processed$themes = $themes.map(processThemeObject);
   let $designsystemet: DesignsystemetObject | undefined;
@@ -50,17 +49,3 @@ export const buildTokens = async (options: Omit<BuildOptions, 'type' | 'processe
 
   return files;
 };
-
-export async function writeFiles(files: OutputFile[], outDir: string) {
-  for (const { destination: filename, output } of files) {
-    if (filename) {
-      const filePath = path.join(outDir, filename);
-      const fileDir = path.dirname(filePath);
-
-      console.log(filename);
-
-      await fs.mkdir(fileDir);
-      await fs.writeFile(filePath, output);
-    }
-  }
-}
