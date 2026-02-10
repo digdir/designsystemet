@@ -452,6 +452,16 @@
       }
     }
   }
+  /*this can be used to translate text in stories in some cases instead of a seperate english story*/
+  [data-lang] {
+    display: none;
+  }
+  :lang(en) [data-lang='en']  {
+    display: initial;
+  }
+  :lang(no) [data-lang='no'] {
+    display: initial;
+  }
 }
 @layer site.overrides {
   :root {
