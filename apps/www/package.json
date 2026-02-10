@@ -21,6 +21,7 @@
     "compression": "^1.8.1",
     "cross-env": "^10.1.0",
     "express": "^5.2.1",
+    "express-rate-limit": "^8.2.1",
     "htmlfy": "^1.0.1",
     "i18next": "^25.8.0",
     "isbot": "^5.1.34",
