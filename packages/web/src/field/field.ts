@@ -43,6 +43,7 @@ const handleMutations = debounce(() => {
     const labels: HTMLLabelElement[] = [];
     let input: HTMLInputElement | undefined;
     let counter: Element | undefined;
+    let hasValidation = false;
     let invalid = false;
 
     for (const el of field.getElementsByTagName('*')) {
@@ -60,6 +61,7 @@ const handleMutations = debounce(() => {
         if (type === 'counter') counter = el;
         else if (type === 'validation') {
           descs.unshift(el);
+          hasValidation = true;
           invalid = invalid || isInvalid(el);
         } else if (type) descs.push(el); // Adds both counter and descriptions}
       }
@@ -75,6 +77,7 @@ const handleMutations = debounce(() => {
         .closest('fieldset')
         ?.querySelector<HTMLElement>(':scope > [data-field="validation"]');
       if (fieldsetValidation && !fieldsetValidation?.hidden) {
+        hasValidation = true;
         invalid = invalid || isInvalid(fieldsetValidation);
         descs.unshift(fieldsetValidation);
       }
@@ -84,7 +87,7 @@ const handleMutations = debounce(() => {
 
       attr(field, 'data-clickdelegatefor', isBoolish ? useId(input) : null); // Expand click area to ds-field if radio/checkbox
       attr(input, 'aria-describedby', descs.map(useId).join(' ') || null);
-      attr(input, 'aria-invalid', `${invalid}`);
+      if (hasValidation) attr(input, 'aria-invalid', `${invalid}`); // Only manage aria-invalid when field has validation elements
       updateField(input); // Update counter and textarea sizing
     }
   }
