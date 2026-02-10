@@ -244,9 +244,6 @@ importers:
       '@internal/components':
         specifier: workspace:^
         version: link:../../internal/components
-      '@internal/digdir':
-        specifier: workspace:^
-        version: link:../../internal/digdir
       '@navikt/aksel-icons':
         specifier: ^8.2.0
         version: 8.2.2(react@19.2.4)

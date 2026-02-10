@@ -12,7 +12,6 @@
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
     "@internal/components": "workspace:^",
-    "@internal/digdir": "workspace:^",
     "@navikt/aksel-icons": "^8.2.0",
     "@react-router/express": "^7.13.0",
     "@react-router/node": "^7.13.0",
