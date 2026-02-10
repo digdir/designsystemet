@@ -31,7 +31,7 @@ function handleToggle(
   let { newState, oldState, target: el, source = event.detail } = event;
   const float = el instanceof HTMLElement && getCSSProp(el, '--_ds-floating');
 
-  if (!float) return;
+  if (!float || float === 'none') return;
   if (newState === 'closed') return POPOVERS.get(el)?.(); // Cleanup on close
   if (!source) {
     const root = el.getRootNode() as Document; // Support shadow DOM
@@ -51,7 +51,7 @@ function handleToggle(
     strategy: 'absolute',
     placement,
     middleware: [
-      offset(arrowSize || 8), // Add space for arrow or default to 8px
+      offset(arrowSize || 0), // Add space for arrow or default to 8px
       shift({
         padding,
         limiter: limitShift({ offset: { mainAxis: shiftLimit } }), // Prevent from shifing away from source

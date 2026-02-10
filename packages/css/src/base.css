@@ -127,6 +127,7 @@ body,
 .ds-floating {
   --_ds-floating: top;
   --_ds-floating-arrow-size: 0;
+  --_ds-floating-arrow-visibility: visible;
   animation: ds-fade-in 0.15s ease-in-out forwards;
   inset: 0 auto auto 0;
   margin: 0; /* Needed to place popovers correctly, since popover adds margin */
@@ -136,17 +137,18 @@ body,
   /* Render arrow element */
   &::before {
     background: inherit;
+    border: inherit;
+    border-left-color: transparent;
+    border-top-color: transparent;
     box-sizing: border-box;
     content: '';
     height: var(--_ds-floating-arrow-size);
     left: var(--_ds-floating-arrow-x, 50%);
     position: absolute;
     rotate: 45deg;
-    border: inherit;
-    border-left-color: transparent;
-    border-top-color: transparent;
     top: var(--_ds-floating-arrow-y, 100%);
     translate: -50% -50%;
+    visibility: var(--_ds-floating-arrow-visibility);
     width: var(--_ds-floating-arrow-size);
   }
 

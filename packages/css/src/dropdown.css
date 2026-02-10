@@ -1,6 +1,8 @@
 .ds-dropdown {
   @composes ds-floating from './base.css';
-  --_ds-floating: bottom;
+  --_ds-floating: var(--dsc-dropdown-placement); /* "proxy" so popover.ts works even if changing --ds- prefix */
+  --_ds-floating-arrow-size: var(--dsc-dropdown-arrow-size);
+  --_ds-floating-arrow-visibility: hidden;
 
   --dsc-dropdown-padding: var(--ds-size-3) var(--ds-size-2);
   --dsc-dropdown-item-padding: var(--ds-size-2) var(--ds-size-4);
@@ -9,7 +11,8 @@
   --dsc-dropdown-border-width: var(--ds-border-width-default);
   --dsc-dropdown-border-style: solid;
   --dsc-dropdown-border-color: var(--ds-color-neutral-border-subtle);
-  --dsc-popover-arrow-size: var(--ds-size-2);
+  --dsc-dropdown-placement: bottom;
+  --dsc-dropdown-arrow-size: var(--ds-size-2);
 
   background: var(--dsc-dropdown-background);
   border-radius: var(--ds-border-radius-md);
@@ -48,10 +51,5 @@
     min-height: var(--dsc-dropdown-item-size);
     width: 100%;
     font-weight: var(--ds-font-weight-regular);
-  }
-
-  /* remove popover arrow */
-  &:before {
-    display: none;
   }
 }

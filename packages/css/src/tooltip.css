@@ -4,6 +4,7 @@
 }
 .ds-tooltip {
   @composes ds-floating from './base.css';
+  --_ds-floating: var(--dsc-tooltip-placement); /* "proxy" so popover.ts works even if changing --ds- prefix */
   --_ds-floating-arrow-size: var(--dsc-tooltip-arrow-size);
 
   --dsc-tooltip-background: var(--ds-color-neutral-text-default);
@@ -13,6 +14,7 @@
   --dsc-tooltip-arrow-size: var(--ds-size-2);
   --dsc-tooltip-transition-duration: 0.2s;
   --dsc-tooltip-transition-delay: 150ms;
+  --dsc-tooltip-placement: top;
 
   background: var(--dsc-tooltip-background);
   border: none;

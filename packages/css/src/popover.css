@@ -1,7 +1,6 @@
 .ds-popover {
   @composes ds-floating from './base.css';
-  --_ds-floating: top;
-  --_ds-floating-arrow-background: var(--dsc-popover-arrow-size);
+  --_ds-floating: var(--dsc-popover-placement); /* "proxy" so popover.ts works even if changing --ds- prefix */
   --_ds-floating-arrow-size: var(--dsc-popover-arrow-size);
 
   --dsc-popover-background: var(--ds-color-surface-default);
@@ -14,6 +13,7 @@
   --dsc-popover-max-width: 300px;
   --dsc-popover-padding: var(--ds-size-3) var(--ds-size-4);
   --dsc-popover-box-shadow: var(--ds-shadow-md);
+  --dsc-popover-placement: top;
 
   background: var(--dsc-popover-background);
   border-radius: var(--dsc-popover-border-radius);
