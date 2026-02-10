@@ -31,7 +31,7 @@ function handleToggle(
   let { newState, oldState, target: el, source = event.detail } = event;
   const float = el instanceof HTMLElement && getCSSProp(el, '--_ds-floating');
 
-  if (!float || float === 'none') return;
+  if (!float) return;
   if (newState === 'closed') return POPOVERS.get(el)?.(); // Cleanup on close
   if (!source) {
     const root = el.getRootNode() as Document; // Support shadow DOM
