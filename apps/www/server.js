@@ -1,6 +1,6 @@
 import compression from 'compression';
 import express from 'express';
-import rateLimit from 'express-rate-limit';
+//import rateLimit from 'express-rate-limit';
 import morgan from 'morgan';
 
 // Short-circuit the type-checking of the built output.
@@ -46,13 +46,13 @@ if (DEVELOPMENT) {
   app.use(express.static('dist/client/img', { maxAge: '30d' }));
   app.use(express.static('dist/client/animations', { maxAge: '30d' }));
 
-  const htmlRateLimiter = rateLimit({
+  /*   const htmlRateLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
     max: 100, // limit each IP to 100 requests per windowMs for prerendered HTML
-  });
+  }); */
 
   /* Serve prerendered HTML files for clean URLs (e.g., /no/intro -> /no/intro/index.html) */
-  app.use(htmlRateLimiter, (req, res, next) => {
+  app.use((req, res, next) => {
     if (req.path.includes('.') || req.path.startsWith('/assets')) {
       return next();
     }
