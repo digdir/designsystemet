@@ -7,7 +7,7 @@ import { convertToHex } from '../src/colors/index.js';
 import type { CssColor } from '../src/colors/types.js';
 import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
-import { createTokenFiles } from '../src/tokens/create/write.js';
+import { createTokenFiles } from '../src/tokens/create/files.js';
 import { cliOptions, createTokens } from '../src/tokens/create.js';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.js';
 import type { OutputFile, Theme } from '../src/tokens/types.js';
