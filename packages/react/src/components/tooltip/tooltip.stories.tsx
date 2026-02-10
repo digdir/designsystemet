@@ -1,6 +1,6 @@
 import { FilesIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
-import { expect, userEvent, within } from 'storybook/test';
+import { expect, within } from 'storybook/test';
 import { Button } from '../../';
 import { Tooltip } from './tooltip';
 
@@ -16,7 +16,7 @@ export default {
     },
   },
   play: async (ctx) => {
-    document.querySelector('ds-tooltip')?.remove(); // Reset to run next test without waiting for tooltip to disappear // <== Må "nullstille"/fjerne tooltip mellom hver test
+    document.querySelector('.ds-tooltip')?.remove(); // Reset to run next test without waiting for tooltip to disappear // <== Må "nullstille"/fjerne tooltip mellom hver test
     const button = ctx.canvasElement.querySelector(
       '[data-tooltip]',
     ) as HTMLElement;
