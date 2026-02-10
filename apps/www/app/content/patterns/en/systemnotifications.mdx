@@ -4,6 +4,7 @@ sidebar_title: System notifications
 category: Completed
 description: How to help users understand situations in the service that are not caused by their own actions.
 partners: Digdir, Nav, Skatteetaten ++
+search_terms: alert, modal
 date: 2024-12-10
 order: 40
 ---
@@ -115,7 +116,7 @@ When a user tries to access a page that doesn't exist, we can also use a full er
 
 ### When do we use modals?
 
-With a modal, we can capture users' attention while they still see where they are. But modals also disrupt the workflow users are in, so we should only use them when absolutely necessary.
+With a modal [`Dialog`](/no/components/docs/dialog/overview), we can capture users' attention while they still see where they are. But modals also disrupt the workflow users are in, so we should only use them when absolutely necessary.
 
 We recommend modals for system notifications that require users to do something right away. For example, when the system for security reasons cannot let you stay logged in for more than a certain amount of time when you're not active. The modal gives the user a choice to remain logged in.
 
@@ -139,7 +140,7 @@ We recommend modals for system notifications that require users to do something 
 
 
 ### When do we use alert?
-`Alert` is designed to give a message to users. It's often divided into different variants depending on how important the message is. We can show alerts at the top of the interface (global context), or they can be shown near the error (local context).
+[`Alert`](/no/components/docs/alert/overview) is designed to give a message to users. It's often divided into different variants depending on how important the message is. We can show alerts at the top of the interface (global context), or they can be shown near the error (local context).
 
 **We can use `alert` when**
 - the error only affects one part of the system or a smaller function that doesn't stop the user's ability to continue other tasks

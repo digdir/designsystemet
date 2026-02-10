@@ -23,11 +23,23 @@ import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router';
 import { DsEmbledLogo, DsFullLogo } from '../logos/designsystemet';
 import classes from './header.module.css';
+import { SearchTrigger } from './search-trigger';
+
+export type HeaderSearchConfig = {
+  /**
+   * Callback when search is triggered
+   */
+  onSearchClick: () => void;
+};
 
 type HeaderProps = {
   menu: { name: TemplateStringsArray; href: string }[];
   themeSwitcher?: boolean;
   logoLink?: string;
+  /**
+   * Search configuration. If provided, shows a search trigger in the header.
+   */
+  search?: HeaderSearchConfig;
 } & React.HTMLAttributes<HTMLElement>;
 
 /**
@@ -61,6 +73,7 @@ const Header = ({
   menu,
   themeSwitcher = false,
   logoLink = '/',
+  search: searchConfig,
   className,
   ...props
 }: HeaderProps) => {
@@ -211,6 +224,34 @@ const Header = ({
                 </li>
               ))}
             </ul>
+            {searchConfig && (
+              <SearchTrigger onClick={searchConfig.onSearchClick} />
+            )}
+            <Dropdown.TriggerContext>
+              <Dropdown.Trigger
+                variant='tertiary'
+                data-color='neutral'
+                className={classes.toggleButton}
+                onClick={() => setLangOpen(!langOpen)}
+                lang='en'
+              >
+                <LanguageIcon aria-hidden />
+                <span>Language</span>
+              </Dropdown.Trigger>
+
+              <Dropdown open={langOpen} onClose={() => setLangOpen(false)}>
+                <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
+                  <Link to={langPaths.no} lang='no' hrefLang='no'>
+                    Norsk
+                  </Link>
+                </Dropdown.Button>
+                <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
+                  <Link to={langPaths.en} lang='en' hrefLang='en'>
+                    English
+                  </Link>
+                </Dropdown.Button>
+              </Dropdown>
+            </Dropdown.TriggerContext>
             {themeSwitcher && (
               <Tooltip
                 content={t('header.theme-toggle', {
@@ -240,31 +281,6 @@ const Header = ({
                 </Button>
               </Tooltip>
             )}
-            <Dropdown.TriggerContext>
-              <Dropdown.Trigger
-                variant='tertiary'
-                data-color='neutral'
-                className={classes.toggleButton}
-                onClick={() => setLangOpen(!langOpen)}
-                lang='en'
-              >
-                <LanguageIcon aria-hidden />
-                Language
-              </Dropdown.Trigger>
-
-              <Dropdown open={langOpen} onClose={() => setLangOpen(false)}>
-                <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
-                  <Link to={langPaths.no} lang='no' hrefLang='no'>
-                    Norsk
-                  </Link>
-                </Dropdown.Button>
-                <Dropdown.Button asChild onClick={() => setLangOpen(false)}>
-                  <Link to={langPaths.en} lang='en' hrefLang='en'>
-                    English
-                  </Link>
-                </Dropdown.Button>
-              </Dropdown>
-            </Dropdown.TriggerContext>
             {isHamburger && (
               <>
                 <Button

@@ -1,15 +1,23 @@
+---
+search_terms: accordion, expand, collapse, expandable, reveal, hide, toggle
+---
+
 <Story layout="block" story="Preview" />
 
 **Use `Details` when**
 
-- less important content should be optional to open
-- additional information may be useful for some users
-- you need to provide examples or answer frequently asked questions
+- you want to provide information that is only relevant to some users
+- you want to give examples or answer frequently asked questions
+- it should be up to the user whether they choose to read the content
 
 **Avoid `Details` when**
+- you need to show important content that everyone should see
+- you need to display an action button
+- you need to summarise error messages, use [`ErrorSummary`](/en/components/docs/error-summary/overview) instead
 
-- important content needs to be visible as soon as users arrive on the page
-- error messages must be summarised, use [`ErrorSummary`](/en/components/docs/error-summary/overview) instead
+<Card data-color="info">
+  `Details` is the same pattern that many know as an *accordion*. The name comes from the built-in HTML `<details>` element, which provides good accessibility and semantics without additional JavaScript.
+</Card>
 
 ## Example
 

@@ -1,3 +1,7 @@
+---
+search_terms: lenke, url, lenketekst, adresse, navigasjon
+---
+
 <Story story="Preview" />
 
 **Bruk `Link` når**
@@ -6,8 +10,8 @@
 - en fil skal lastes ned
 
 **Unngå `Link` når**
-- brukeren skal utføre en handling, for eksempel «Lagre» eller «Logg inn», bruk heller [`Button`](/no/components/docs/button/overview).
-- tilstanden i løsningen påvirkes, som å åpne en dialog, starte en prosess eller lagre data, bruk heller [`Button`](/no/components/docs/button/overview).
+- brukeren skal utføre en handling, for eksempel «Lagre» eller «Logg inn», bruk heller [`Button`](/no/components/docs/button/overview)
+- handlingen setter i gang noe i løsningen, for eksempel åpner en dialog eller starter en prosess, bruk heller [`Button`](/no/components/docs/button/overview)
 
 ## Eksempel
 
@@ -51,8 +55,8 @@ Ikonet kan lett misforstås og gi en dårlig brukeropplevelse. Mange tolker det 
 Både interne og eksterne lenker skal åpnes i samme fane eller vindu. Dette sikrer en forutsigbar brukeropplevelse. 
 
 Det finnes likevel noen unntak, der lenken bør åpnes i ny fane:
-- Hvis systemet må logge ut brukeren når det navigeres til en annen side, og det er hensiktsmessig å unngå utlogging.
-- Når brukeren er midt i en prosess og risikerer å miste innhold ved å klikke på lenken. Ny fane bør vurderes hvis systemet ikke klarer å lagre brukerens inndata.
+- Hvis systemet må logge ut brukerne når de navigerer til en annen side, og det er hensiktsmessig å unngå at brukerne blir logget ut.
+- Når brukeren er i en prosess og risikerer å miste innhold ved å klikke på lenken. Vurder ny fane hvis systemet ikke klarer å lagre brukerens inndata.
 - Hvis du lenker til innhold som brukerne trenger når de utfører en oppgave, for eksempel veiledning
 
 I disse tilfellene anbefaler vi å skrive “åpnes i ny fane” som en del av lenketeksten, slik at det er tydelig for brukeren.

@@ -4,6 +4,7 @@ sidebar_title: Systemvarsler
 category: Ferdig
 description: Slik hjelper du brukerne å forstå situasjoner i tjenesten som ikke skyldes deres egne handlinger.
 partners: Digdir, Nav, Skatteetaten ++
+search_terms: alert, modal, systemvarsel, systemmelding
 date: 2024-12-10
 order: 40
 ---
@@ -115,9 +116,9 @@ Når en bruker prøver å få tilgang til en side som ikke eksisterer, kan vi og
 
 ### Når bruker vi modaler?
 
-Med en modal kan vi fange brukernes oppmerksomhet, samtidig som de fortsatt ser hvor de er. Men modaler forstyrrer også arbeidsflyten brukerne er i, så vi bør bare bruke dem når det er helt nødvendig. 
+Med en modal [`Dialog`](/no/components/docs/dialog/overview) kan vi fange brukernes oppmerksomhet, samtidig som de fortsatt ser hvor de er. Men modaler forstyrrer også arbeidsflyten brukerne er i, så vi bør bare bruke dem når det er helt nødvendig. 
 
-Vi anbefaler modal til systemvarsler som krever at brukerne må gjøre noe med en gang. Det kan for eksempel være når systemet av sikkerhetsgrunner ikke kan la deg være innlogget mer enn en viss tid når du ikke er aktiv. Modalen gir brukeren et valg om å fortsatt være innlogget.
+Vi anbefaler modal `Dialog` til systemvarsler som krever at brukerne må gjøre noe med en gang. Det kan for eksempel være når systemet av sikkerhetsgrunner ikke kan la deg være innlogget mer enn en viss tid når du ikke er aktiv. Modalen gir brukeren et valg om å fortsatt være innlogget.
 
 **Vi kan også bruke modal når**
 - det uansett er viktig at brukerne får med seg informasjonen 
@@ -139,7 +140,7 @@ Vi anbefaler modal til systemvarsler som krever at brukerne må gjøre noe med e
 
 
 ### Når bruker vi alert?
-`Alert` er laget for å gi en beskjed til brukerne. Den er ofte delt inn i ulike varianter ut fra hvor viktig beskjeden er. Vi kan vise alert øverst i grensesnittet (global kontekst), eller de kan vises nær feilen (lokal kontekst).  
+[`Alert`](/no/components/docs/alert/overview) er laget for å gi en beskjed til brukerne. Den er ofte delt inn i ulike varianter ut fra hvor viktig beskjeden er. Vi kan vise alert øverst i grensesnittet (global kontekst), eller de kan vises nær feilen (lokal kontekst).  
 
 **Vi kan bruke `alert` når**
 - feilen kun påvirker én del av systemet eller en mindre funksjon som ikke stopper brukerens mulighet til å fortsette andre oppgaver

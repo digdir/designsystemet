@@ -126,7 +126,7 @@ export default {
     },
     '404': {
       title: '404 - Vi finner ikke siden',
-      details: 'Det kan hende siden har blit flyttet eller slettet.',
+      details: 'Det kan hende siden har blitt flyttet eller slettet.',
     },
     generic: {
       title: 'Feil',
@@ -210,38 +210,35 @@ export default {
     copy: 'Kopier',
     reset: 'Nullstill',
   },
-  'token-preview': {
-    size: {
-      description:
-        'Verdien til størrelsevariabler settes av `data-size`-attributtet.',
-      'select-label': 'Velg størrelse (data-size)',
-    },
-    color: {
-      description:
-        'Verdien til fargevariabler settes av `data-color`-attributtet.',
-      'select-label': 'Velg farge (data-color)',
-    },
-    'search-in-design-tokens': 'Søk i design tokens',
-    'search-input-aria-label': 'Søk på variabel navn i CSS for design tokens',
-    colors: 'Farger',
-    typography: 'Typografi',
-    semantic: 'Semantiske',
-    'no-results': 'Ingen resultater funnet',
-    table: {
-      name: 'Navn',
-      value: 'Verdi',
-      variable: 'Variabel',
-      preview: 'Forhåndsvisning',
-      light: 'Lys',
-      dark: 'Mørk',
-    },
-  },
   toc: {
     title: 'På denne siden',
     feedback: {
       link: 'Send innspill på GitHub',
       page: 'Har du innspill til denne siden?',
       component: 'Har du innspill til komponenten?',
+    },
+  },
+  search: {
+    title: 'Hva leter du etter?',
+    placeholder: 'Søk etter komponenter, retningslinjer og mer…',
+    label: 'Søk i dokumentasjonen',
+    'no-results': 'Ingen resultater funnet for',
+    'suggestions-title': 'Prøv å søke etter…',
+    close: 'Lukk søk',
+    results: 'Søkeresultater',
+    srA: 'fant',
+    srB: 'resultater for',
+    type: {
+      intro: 'Intro',
+      component: 'Komponent',
+      blog: 'Bloggen',
+      fundamentals: 'Kom i gang',
+      'best-practices': 'God praksis',
+      patterns: 'Mønstre',
+    },
+    suggestions: {
+      '1': 'Eksterne lenker',
+      '2': 'Webkomponenter',
     },
   },
   do: 'Gjør slik',

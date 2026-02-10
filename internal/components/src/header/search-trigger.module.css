@@ -1,0 +1,12 @@
+.triggerButton {
+  margin-inline-end: var(--ds-size-2);
+}
+
+@media (max-width: 668px) {
+  .triggerButton {
+    --dsc-button-padding: var(--ds-size-2) var(--ds-size-2);
+  }
+  .triggerText {
+    display: none;
+  }
+}

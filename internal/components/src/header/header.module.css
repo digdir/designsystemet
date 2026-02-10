@@ -29,7 +29,7 @@
         padding: 0;
         max-width: 100%;
         align-items: center;
-        margin-right: var(--ds-size-6);
+        margin-right: var(--ds-size-14);
 
         li {
           list-style: none;
@@ -169,4 +169,9 @@
 
 .toggleButton svg {
   font-size: 1.5em;
+}
+@media (max-width: 600px) {
+  .toggleButton span {
+    display: none;
+  }
 }

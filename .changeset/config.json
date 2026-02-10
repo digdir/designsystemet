@@ -11,7 +11,6 @@
     [
       "@digdir/designsystemet",
       "@digdir/designsystemet-css",
-      "@digdir/designsystemet-theme",
       "@digdir/designsystemet-types",
       "@digdir/designsystemet-react"
     ]
@@ -25,6 +24,7 @@
     "@web/themebuilder",
     "@web/storybook",
     "@internal/components",
-    "@internal/digdir"
+    "@internal/digdir",
+    "@digdir/designsystemet-theme"
   ]
 }

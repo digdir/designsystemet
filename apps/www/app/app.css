@@ -53,6 +53,10 @@
     @media screen and (max-width: 600px) {
       --header-height: 68px;
     }
+
+    &:has(.search-dialog:open) {
+      scrollbar-gutter: stable;
+    }
   }
   body {
     min-height: 100%;

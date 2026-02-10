@@ -6,8 +6,10 @@ import { generate$Themes } from '../tokens/create/generators/$themes.js';
 import { createTokens } from '../tokens/create.js';
 import { buildOptions, processPlatform } from '../tokens/process/platform.js';
 import { processThemeObject } from '../tokens/process/utils/getMultidimensionalThemes.js';
-import type { OutputFile, Theme } from '../tokens/types.js';
+import type { OutputFile, SizeModes, Theme } from '../tokens/types.js';
 import { cleanDir, mkdir, writeFile } from '../utils.js';
+
+const OUTDIR = '../../internal/components/src/tokens/design-tokens';
 
 async function write(files: OutputFile[], outDir: string, dry?: boolean) {
   for (const { destination, output } of files) {
@@ -38,9 +40,10 @@ type PreviewToken = { variable: string; value: string };
 
 export const formatTheme = async (themeConfig: Theme) => {
   const { tokenSets } = await createTokens(themeConfig);
-  const outDir = '../../apps/www/app/_components/tokens/design-tokens';
 
-  const $themes = await generate$Themes(['dark', 'light'], [themeConfig.name], themeConfig.colors);
+  const sizeModes: SizeModes[] = ['small', 'medium', 'large'];
+
+  const $themes = await generate$Themes(['dark', 'light'], [themeConfig.name], themeConfig.colors, sizeModes);
   const processed$themes = $themes.map(processThemeObject);
 
   // We run this to populate the `buildOptions.buildTokenFormats` with transformed tokens
@@ -52,7 +55,7 @@ export const formatTheme = async (themeConfig: Theme) => {
     buildTokenFormats: {},
   });
 
-  await cleanDir(outDir, false);
+  await cleanDir(OUTDIR, false);
 
   console.log(
     buildOptions?.buildTokenFormats
@@ -99,7 +102,7 @@ export const formatTheme = async (themeConfig: Theme) => {
             output: JSON.stringify(tokens, null, 2),
           },
         ],
-        outDir,
+        OUTDIR,
         false,
       );
     }
@@ -111,9 +114,11 @@ formatTheme({
   name: 'test',
   borderRadius: config.themes.designsystemet.borderRadius,
   colors: {
-    main: config.themes.designsystemet.colors.main as Record<string, `#${string}`>,
-    support: config.themes.designsystemet.colors.support as Record<string, `#$string`>,
-    neutral: config.themes.designsystemet.colors.neutral as `#$string`,
+    main: {
+      primary: config.themes.designsystemet.colors.main.accent as `#${string}`,
+    },
+    support: {},
+    neutral: config.themes.designsystemet.colors.neutral as `#${string}`,
   },
   typography: config.themes.designsystemet.typography,
 });

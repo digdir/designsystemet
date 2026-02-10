@@ -6,6 +6,7 @@
     "dev": "storybook dev -p 6006 --disable-telemetry",
     "build": "storybook build -o ./dist --stats-json --disable-telemetry",
     "test-storybook": "pnpm exec playwright install --with-deps chromium && vitest",
+    "vitest": "vitest",
     "chromatic": "pnpx chromatic",
     "types": "tsc --noEmit -p ../../packages/react/tsconfig.stories.json --emitDeclarationOnly false"
   },
@@ -13,28 +14,28 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
     "@digdir/designsystemet-css": "workspace:^",
     "@digdir/designsystemet-react": "workspace:^",
-    "@navikt/aksel-icons": "^7.40.0",
-    "@storybook/addon-a11y": "^10.1.11",
-    "@storybook/addon-docs": "^10.1.11",
-    "@storybook/addon-themes": "^10.1.11",
-    "@storybook/addon-vitest": "^10.1.11",
-    "@storybook/react-vite": "^10.1.11",
+    "@navikt/aksel-icons": "^8.2.0",
+    "@storybook/addon-a11y": "^10.2.3",
+    "@storybook/addon-docs": "^10.2.3",
+    "@storybook/addon-themes": "^10.2.3",
+    "@storybook/addon-vitest": "^10.2.3",
+    "@storybook/react-vite": "^10.2.3",
     "@types/ramda": "^0.31.1",
-    "@types/react": "^19.2.8",
+    "@types/react": "^19.2.10",
     "@types/react-dom": "^19.2.3",
-    "@vitest/browser": "4.0.17",
+    "@vitest/browser": "4.0.18",
     "axe-playwright": "^2.2.2",
-    "playwright": "^1.57.0",
+    "playwright": "^1.58.1",
     "ramda": "^0.32.0",
     "react-docgen-typescript": "^2.4.0",
-    "storybook": "^10.1.11",
-    "storybook-addon-pseudo-states": "^10.1.11",
-    "vitest": "4.0.17"
+    "storybook": "^10.2.3",
+    "storybook-addon-pseudo-states": "^10.2.3",
+    "vitest": "4.0.18"
   }
 }

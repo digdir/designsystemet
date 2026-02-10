@@ -2,7 +2,14 @@ import type { Config as SDConfig } from 'style-dictionary/types';
 import type { ConfigSchemaTheme } from '../config.js';
 import type { GetStyleDictionaryConfig } from './process/configs/shared.js';
 
-export type Token = { $value: string | Record<string, string>[]; $type: string };
+export type Token =
+  | { $value: string | Record<string, string>[]; $type: string }
+  | { $type: 'boxShadow'; $value: Record<'x' | 'y' | 'blur' | 'spread' | 'color', string>[] }
+  | {
+      $type: 'typography';
+      $value: Record<'fontFamily' | 'fontWeight' | 'lineHeight' | 'fontSize' | 'letterSpacing', string>;
+    };
+
 export type TokenSet = {
   [key: string]: Token | TokenSet;
 };
@@ -24,6 +31,8 @@ export const colorCategories = {
 export type ColorCategories = keyof typeof colorCategories;
 
 export type BuiltInColors = 'neutral' | 'success' | 'warning' | 'danger' | 'info';
+
+export type SizeModes = 'small' | 'medium' | 'large';
 
 /**
  * A multi-dimensional theme is a concrete permutation of the possible theme dimensions

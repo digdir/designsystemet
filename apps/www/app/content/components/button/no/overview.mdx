@@ -1,13 +1,17 @@
+---
+search_terms: knapp, handlingsknapp, primærknapp, sekundærknapp, hovudknapp, hovedknapp, handlingsknapp, send, lagre, avbryt, handling, action, cta, submit, save, cancel, confirm
+---
+
 <Story story="Preview" />
 
 **Bruk `Button` når**
-- ei konkret handling skal utførast, for eksempel å lagre eller sende inn eit skjema 
-- tilstanden i løysinga vert påverka, for eksempel når ein dialog skal opnast eller ein prosess skal startast
+- brukarane skal utføre ei konkret handling, for eksempel å lagre eller sende inn eit skjema 
+- handlinga set i gang noko i løysinga, for eksempel når ein dialog skal opnast eller ein prosess skal startast
 
 **Unngå `Button` når**
-- det skal navigerast til andre sider eller ut av tenesta, bruk heller [`Link`](/no/components/docs/link/overview)
-- det skal filtrerast informasjon, bruk heller [`Chip`](/no/components/docs/chip/overview)
-- vise kva for filter som er valde, bruk heller [`Chip`](/no/components/docs/chip/overview)
+- brukarane skal gå til andre sider, bruk heller [`Link`](/no/components/docs/link/overview)
+- brukarane skal filtrere informasjon, bruk heller [`Chip`](/no/components/docs/chip/overview)
+- du vil vise brukarane kva filter de har valt, bruk heller [`Chip`](/no/components/docs/chip/overview)
 
 ## Eksempel
 
@@ -79,10 +83,11 @@ Når vi skal vise brukaren at knappen held på å laste noko, kan vi kombinere k
 ## Retningslinjer
 Knappar har ein viktig funksjon og er direkte knytte til ei handling. Dei gjev brukaren moglegheit til å utføre oppgåver.
 
+Gje relevant informasjon før brukaren skal trykkje på knappen.
+
 ### Plassering av knappar
 
-Når vi legg fleire knappar ved sida av kvarandre, skal primærknappen stå først.  
-Unntaket er «Forrige» og «Neste» - då skal den sekundære knappen «Forrige» stå først.
+Når vi legg fleire knappar ved sida av kvarandre, skal primærknappen stå først. Unntaket er «Forrige» og «Neste» - då skal den sekundære knappen «Forrige» stå først.
 
 ### Éi handling per knapp
 
@@ -118,3 +123,6 @@ Vel verb i oppfordringsform (imperativ) på knappar for å vise brukarane at dei
     Unngå ulike skrivemåtar.
   </DoDont>
 </div>
+
+### Vær konsekvent
+Hugs å bruke dei same begrepa på knappetekstar som går igjen i tenesta di. Les om kva [begrep vi anbefalar](/no/best-practices/content-work/terms#dette-er-begrepene-vi-har-laget-anbefalinger-for).

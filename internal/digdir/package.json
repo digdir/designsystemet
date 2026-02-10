@@ -12,14 +12,14 @@
     "themes"
   ],
   "scripts": {
-    "build:tokens": "pnpm designsystemet tokens build -t design-tokens -o themes --clean --experimental-tailwind",
+    "build:tokens": "pnpm designsystemet tokens build -t ignore/design-tokens -o themes --clean --config digdir.config.json",
     "create:tokens": "pnpm designsystemet tokens create --config digdir.config.json",
     "update:theme-digdir": "pnpm run create:tokens && pnpm run build:tokens"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.28.0",
+  "packageManager": "pnpm@10.28.2",
   "devDependencies": {
     "rimraf": "^6.1.2",
     "@digdir/designsystemet": "workspace:^"
