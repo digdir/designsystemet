@@ -39,7 +39,7 @@ but with a dark footer. You can then set `data-color-scheme="dark"` on the foote
 
 `data-color-scheme` can be set to `light`, `dark`, or `auto`. `auto` will follow the user's system settings.
 
-`color` and `background-color` are redeclared to default values on the element with `data-color-scheme`. This is necessary as the variables are not inherited past the point where they are redefined.
+`color` and `background-color` are redeclared to default values on the element with `data-color-scheme`. This is necessary to ensure good color contrast, as `color` is otherwise inherited.
 
 ```css
 /*@digdir/designsystemet-css*/
