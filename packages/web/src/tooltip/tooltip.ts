@@ -52,8 +52,7 @@ const handleAriaAttributes = debounce(() => {
 const handleInterest = ({ type, target }: Event) => {
   clearTimeout(HOVER_TIMER);
 
-  if (!TIP) TIP = tag('div', { class: 'ds-tooltip' });
-  if (!TIP || target === TIP) return; // Allow tooltip to be hovered, following https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus
+  if (target === TIP) return; // Allow tooltip to be hovered, following https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus
   if (type === 'mouseover' && !SOURCE) {
     HOVER_TIMER = setTimeout(handleInterest, DELAY_HOVER, { target }); // Delay mouse showing tooltip if not already shown
     return;
@@ -61,14 +60,15 @@ const handleInterest = ({ type, target }: Event) => {
 
   const source = (target as Element)?.closest?.('[data-tooltip]');
   if (source === SOURCE) return; // No need to update
+  if (!source) return hideTooltip(); // If no new anchor, cleanup previous autoUpdate
+  if (!TIP) TIP = tag('div', { class: 'ds-tooltip' });
   if (!TIP.isConnected) document.body.appendChild(TIP); // Ensure connected
-  attr(TIP, 'popover', 'manual'); // Ensure popover behavior
-  if (!source) return TIP?.hidePopover(); // If no new anchor, cleanup previous autoUpdate
 
   const color = source.closest(SELECTOR_COLOR); // Match source color of source element
   const scheme = source.closest(SELECTOR_SCHEME); // Match source color-scheme of source element
   const isSchemeReset = color !== scheme && color?.contains(scheme as Node);
   clearTimeout(SKIP_TIMER);
+  attr(TIP, 'popover', 'manual'); // Ensure popover behavior
   attr(TIP, ATTR_SCHEME, scheme?.getAttribute(ATTR_SCHEME));
   attr(TIP, ATTR_COLOR, isSchemeReset ? null : color?.getAttribute(ATTR_COLOR));
   setTextWithoutMutation(TIP, attr(source, 'data-tooltip'));
@@ -76,6 +76,8 @@ const handleInterest = ({ type, target }: Event) => {
   TIP.dispatchEvent(new CustomEvent('ds-toggle-source', { detail: source })); // Since showPopover({ source }) is not supported in all browsers yet
   SOURCE = source;
 };
+
+const hideTooltip = () => TIP?.isConnected && TIP.popover && TIP.hidePopover(); // Only hide if connected and activated
 
 const handleClose = (event?: Partial<ToggleEvent & KeyboardEvent>) => {
   if (event?.type === 'keydown')
