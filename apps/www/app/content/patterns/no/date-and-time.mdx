@@ -88,11 +88,15 @@ Hvis du vet at brukeren skal velge en dato eller et tidspunkt fra et begrenset u
 
 Bruk en [`Select`](link) eller [`Radio`](link) når antallet valg er lavt. Det gjør det raskt og enkelt å velge riktig alternativ uten å måtte skrive noe selv.
 
+Når utvalget er svært begrenset, for eksempel noen få datoer eller tidspunkter, kan [`Radio`](link) være et godt valg. Brukerne ser alle alternativene samtidig og kan raskt sammenligne dem før de velger.
+
 <Image
   src='/img/date-and-time/example7.webp'
   alt='Forhåndsdefinert utvalg datoer eksempel 1'
   boxShadow={false}
 />
+
+Når antall valg øker, kan en Select for å begrense utvalget være nyttig først. Den tar mindre plass og gjør det enklere å håndtere flere alternativer uten at siden blir uoversiktlig.
 
 <Image
   src='/img/date-and-time/example8.webp'
@@ -100,13 +104,17 @@ Bruk en [`Select`](link) eller [`Radio`](link) når antallet valg er lavt. Det g
   boxShadow={false}
 />
 
-Når antallet mulige datoer eller tidspunkter er høyt, bør du hjelpe brukeren å snevre inn valgene før de må ta en beslutning. Unngå lange lister med valg som er vanskelige å skanne og forstå.
+Når det finnes mange mulige datoer eller tidspunkter, bør du hjelpe brukeren med å avgrense valgene før de presenteres. Dette kan gjøres på mange måter, for eksempel med Select slik som i eksempelet under.
 
 <Image
   src='/img/date-and-time/example9.webp'
   alt='Forhåndsdefinert utvalg datoer eksempel 3'
   boxShadow={false}
 />
+
+Du bør kun vise tidspunkter som faktisk kan velges, og forklare hvorfor de andre datoene ikke vises.
+
+[Eksempel på datoer som kan og ikke kan velges. En kalender vises]
 
 ## Kilder og relevant informasjon
 - [Who needs a JavaScript date picker? (dbushell.com)](https://pikaday.dbushell.com/)
