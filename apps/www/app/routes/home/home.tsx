@@ -11,7 +11,7 @@ import {
 import cl from 'clsx/lite';
 import { bundleMDX } from 'mdx-bundler';
 import { useTranslation } from 'react-i18next';
-import BlogCard from '~/_components/blog-card/blog-card';
+import { BlogCard } from '~/_components/blog-card/blog-card';
 import { ImageBanner } from '~/_components/image-banner/image-banner';
 import { Bronnoysund } from '~/_components/logos/bronnoysund';
 import { Digdir } from '~/_components/logos/digdir';

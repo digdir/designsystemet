@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "types": ["../../packages/theme/brand/types.d.ts"]
+    "types": ["../../packages/css/theme/types.d.ts"]
   },
   "include": [
     ".",

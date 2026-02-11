@@ -86,5 +86,3 @@ export const BlogCard = ({
     </Card>
   );
 };
-
-export default BlogCard;

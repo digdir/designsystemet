@@ -1,4 +1,4 @@
-import { colorMetadata } from '@digdir/designsystemet';
+import { colorMetadata } from '@digdir/designsystemet/color';
 import { Table } from '@digdir/designsystemet-react';
 
 export const ColorInfoTable = () => {
