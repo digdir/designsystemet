@@ -24,11 +24,25 @@ Du kan lett lage ditt eget tema senere.
 
 ### Typescript
 
-Dersom du bruker Typescript, sørg for at du har typescript >= 3.8 og installerer `@digdir/designsystemet-types`:
+Dersom du bruker Typescript, sørg for at du har typescript >= 3.8.
 
-```sh
-npm i typescript @digdir/designsystemet-types --save-dev
+#### Typer for data-attributer i React
+
+Designsystemet tilbyder typesikkerhet for `data-color` og `data-size` på React JSX elementer. 
+Vi må mutere Reacts innebygde typer for å legge til disse, og det er derfor valgfritt.
+For å aktivere dette, legg til følgende i din `tsconfig.json`:
+
+```jsonc
+{
+  "compilerOptions": {
+    "types": [
+      '<ditt-tema>/types.d.ts', // inneholder typer for farger og størrelser i ditt tema (den du lager med @digdir/designsystemet)
+      "@digdir/designsystemet-react/react-types", // legger til typer på data-color og data-size på React JSX elementer
+      ]
+  },
+}
 ```
+
 
 ## 2. Font
 
