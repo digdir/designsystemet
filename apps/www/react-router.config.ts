@@ -1,8 +1,10 @@
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Config } from '@react-router/dev/config';
+import { generateFeeds } from './app/_utils/config/generate-feeds';
 import { generatePrerenderPaths } from './app/_utils/config/generate-prerender-paths';
 import { generateSitemap } from './app/_utils/config/generate-sitemap';
+import i18n from './app/i18n';
 
 const config: Config = {
   ssr: true,
@@ -36,6 +38,7 @@ const config: Config = {
       throw new Error(`Failed to write robots.txt file: ${error}`);
     }
     await generateSitemap(allPages);
+    await Promise.all(i18n.supportedLngs.map((lang) => generateFeeds(lang)));
   },
 };
 

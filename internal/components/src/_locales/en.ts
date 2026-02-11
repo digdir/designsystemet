@@ -25,6 +25,9 @@ export default {
     'back-to-home': 'Go back to the home page',
     search: 'Search',
   },
+  meta: {
+    'meta-cover': "Designsystemet's logo",
+  },
   'clipboard-button': {
     copy: 'Copy',
     copied: 'Copied',
