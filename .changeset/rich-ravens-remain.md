@@ -2,4 +2,4 @@
 "@digdir/designsystemet-css": patch
 ---
 
-**tooltip**: add `--dsc-tooltip-placemen` with default value `top`
+**tooltip**: add `--dsc-tooltip-placement` with default value `top`
