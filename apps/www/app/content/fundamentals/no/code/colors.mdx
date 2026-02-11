@@ -40,6 +40,19 @@ men med ei mørk botnlinje (footer). Du kan då setje `data-color-scheme="dark"`
 
 `data-color-scheme` kan bli satt til `light`, `dark` eller `auto`. `auto` vil følgje systeminnstillingane til brukaren.
 
+`color` og `background-color` blir redeklarert til standard verdiar på elementet med `data-color-scheme`. Dette er nødvendig fordi variablane ikkje blir arva forbi det punktet dei blir redefinert. 
+
+```css
+/*@digdir/designsystemet-css*/
+body,
+[data-color-scheme] {
+  color: var(--ds-color-neutral-text-default);
+  background: var(--ds-color-neutral-background-default);
+}
+```
+
+Du kan overstyra dette med å setje eigne verdiar for `color` og `background-color` på elementet.
+
 ## `data-color`
 
 Dette data-attributtet blir brukt for å endre fargen til ein komponent. Du kan bruke alle fargane som finst i temaet ditt.
