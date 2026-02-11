@@ -19,6 +19,7 @@
   --dsc-suggestion-list-box-shadow: var(--ds-shadow-md);
   --dsc-suggestion-list-color: var(--ds-color-text-default);
   --dsc-suggestion-list-gap: var(--ds-size-2);
+  --dsc-suggestion-list-placement: bottom;
   --dsc-suggestion-border-width: var(--ds-border-width-default); /* TODO: Should have been prefixed, but kept like this for compatibility */
   --dsc-suggestion-border-style: solid;
   --dsc-suggestion-border-color: var(--ds-color-border-default);
@@ -105,8 +106,10 @@
 
   & :is(u-datalist, datalist) {
     @composes ds-floating from './base.css';
-    --_ds-floating: bottom;
+    --_ds-floating: var(--dsc-suggestion-list-placement);
     --_ds-floating-overscroll: fit;
+    --_ds-floating-arrow-visibility: hidden;
+    --_ds-floating-arrow-size: var(--ds-size-2);
 
     background: var(--dsc-suggestion-list-background);
     border-color: var(--dsc-suggestion-border-color);
@@ -163,11 +166,6 @@
           background: var(--dsc-suggestion-option-background--selected);
         }
       }
-    }
-
-    /* remove zero height arrow */
-    &:before {
-      display: none;
     }
   }
 
