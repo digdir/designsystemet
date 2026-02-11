@@ -1,11 +1,10 @@
 import type { Color, SeverityColors } from '@digdir/designsystemet-types';
-import type { Placement } from '@floating-ui/dom';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext, useEffect, useRef, useState } from 'react';
 import '@digdir/designsystemet-web'; // Import _ds-floating functionality
-import type { DefaultProps } from '../../types';
+import type { DefaultProps, Placement } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { useMergeRefs } from '../../utilities/hooks';
 import { Context } from './popover-trigger-context';
@@ -21,7 +20,7 @@ export type PopoverProps = MergeRight<
      * Placement of the popover on the trigger.
      * @default 'top'
      */
-    placement?: Placement | 'none';
+    placement?: Placement;
     /**
      * When a boolean is provided, the popover will be controlled.
      * @default undefined

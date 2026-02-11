@@ -2,7 +2,7 @@ import { Slot } from '@radix-ui/react-slot';
 import '@digdir/designsystemet-web'; // Import _ds-floating functionality
 import type { HTMLAttributes, ReactElement, RefAttributes } from 'react';
 import { forwardRef } from 'react';
-import type { DefaultProps } from '../../types';
+import type { DefaultProps, Placement } from '../../types';
 import type { MergeRight } from '../../utilities';
 
 export type TooltipProps = MergeRight<
@@ -23,7 +23,7 @@ export type TooltipProps = MergeRight<
      * Placement of the tooltip on the trigger.
      * @default 'top'
      */
-    placement?: 'top' | 'right' | 'bottom' | 'left' | 'none';
+    placement?: Placement;
     /**
      * Whether to enable auto placement.
      * @default true
