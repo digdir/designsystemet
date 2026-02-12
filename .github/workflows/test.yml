@@ -58,7 +58,8 @@ jobs:
 
       - name: Types
         run: pnpm types:react
-
+      - name: Test Web
+        run: pnpm test:web
       - name: Run Storybook tests
         run: pnpm --filter @web/storybook vitest
       - name: Test
