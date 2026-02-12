@@ -148,6 +148,11 @@ export default {
     'set-to': 'Set to',
     view: 'view',
   },
+  ColorTokens: {
+    title: 'Color Tokens',
+    description:
+      'Here you can see which tokens have been used to create the cards in the section above.',
+  },
   colorContrasts: {
     title: 'Contrasts between colours',
     description:

@@ -1,16 +1,15 @@
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
+import { useTranslation } from 'react-i18next';
 import classes from './color-tokens.module.css';
 export const ColorTokens = () => {
+  const { t } = useTranslation();
   return (
     <div className='panelContainer'>
       <div className='panelLeft'>
         <div className='panelTop'>
-          <Heading data-size='xs'>Se fargetokens</Heading>
-          <Paragraph data-size='sm'>
-            Her ser du hvilke tokens som er brukt for å lage kortene i seksjonen
-            over.
-          </Paragraph>
+          <Heading data-size='xs'>{t('ColorTokens.title')}</Heading>
+          <Paragraph data-size='sm'>{t('ColorTokens.description')}</Paragraph>
         </div>
       </div>
       <div className={cl('panelRight', classes.right)}>
