@@ -40,11 +40,11 @@ export const SuggestionInput = forwardRef<
   useEffect(handleFilter, [value]); // Filter if controlled value
   if (onChange)
     console.warn(
-      'SuggestionInput: Avoid using onChange, as Suggestion controls the Input. Use onSelectedChange on Suggest instead, or onInput if fetching API results',
+      'SuggestionInput: Avoid using onChange, as Suggestion controls the Input. Use onSelectedChange on Suggestion instead, or onInput if fetching API results',
     );
   if (value)
     console.warn(
-      'SuggestionInput: Avoid using value, as Suggestion controls the Input. Use selected on Suggest instead.',
+      'SuggestionInput: Avoid using value, as Suggestion controls the Input. Use selected on Suggestion instead.',
     );
 
   return (
