@@ -11,7 +11,7 @@ const renderDefault = async () => {
       <input type="text" placeholder="Placeholder" class="ds-input" />
       <div class="ds-validation-message" data-field="validation">
         Dette er ein feilmelding
-      </div>  
+      </div>
     </ds-field>`;
   await waitForField();
 };
@@ -58,7 +58,7 @@ describe('Field component', () => {
     textarea?.dispatchEvent(new Event('input', { bubbles: true }));
     vi.advanceTimersByTime(150); // Advance past debounce time
 
-    const LABEL_ATTR = counter?.getAttribute('aria-label') || '';
+    const LABEL_ATTR = counter?.getAttribute('data-label') || '';
     expect(LABEL_ATTR).toBe('13 tegn for mye');
   });
 });
