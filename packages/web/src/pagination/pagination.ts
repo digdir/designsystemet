@@ -74,7 +74,7 @@ const render = (self: DSPaginationElement) => {
     items.forEach((item, i) => {
       const page = i ? (items[i + 1] ? pages[i - 1]?.page : next) : prev; // First is prev, last is next
       attr(item, 'aria-current', pages[i - 1]?.current ? 'true' : null);
-      attr(item, 'data-page', `${page ?? 'hidden'}`); // Used for CSS content and to hide if more items than pages
+      attr(item, 'aria-label', `${page ?? 'hidden'}`); // Used for CSS content and to hide if more items than pages, using aria-label to make Axe tests and VoiceOver rotor happy
       attr(item, 'role', page ? null : 'none'); // Prevent validation errors for aria-hidden buttons
       attr(item, 'tabindex', page ? null : '-1');
       if (item instanceof HTMLButtonElement) attr(item, 'value', `${page}`);

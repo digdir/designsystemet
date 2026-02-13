@@ -35,21 +35,21 @@
       --dsc-button-color: var(--ds-color-base-contrast-default);
     }
 
-    & > li:has([data-page='hidden']) {
+    & > li:has([aria-label='hidden']) {
       display: none; /* Hide list item if no page is linkable */
     }
 
-    & > li > [data-page]:empty::before {
-      content: attr(data-page);
+    & > li > [aria-label]:empty::before {
+      content: attr(aria-label);
     }
-    /* data-page="0" is used for ellipsis */
-    & > li > [data-page='0']:empty {
+    /* aria-label="0" is used for ellipsis */
+    & > li > [aria-label='0']:empty {
       color: inherit;
       pointer-events: none;
       text-decoration: none;
     }
-    & > li > [data-page='0']:empty::before {
-      content: var(--dsc-pagination-ellipsis);
+    & > li > [aria-label='0']:empty::before {
+      content: var(--dsc-pagination-ellipsis) / '';
     }
 
     & > li:first-child > ::before,
