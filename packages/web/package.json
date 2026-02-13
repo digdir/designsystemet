@@ -46,6 +46,7 @@
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.11.0",
     "@testing-library/dom": "^10.4.1",
+    "@testing-library/user-event": "^14.6.1",
     "@vitest/browser-playwright": "4.0.16",
     "custom-element-vs-code-integration": "^1.5.0",
     "rimraf": "^6.1.2",
