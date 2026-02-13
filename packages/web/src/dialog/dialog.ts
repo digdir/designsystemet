@@ -37,8 +37,8 @@ const handleCommand = ({ command, target }: Event & { command?: string }) =>
   target.show();
 
 onHotReload('dialog', () => [
+  on(document, 'command', handleCommand, QUICK_EVENT),
   on(document, 'pointerdown pointerup', handleClosedbyAny, QUICK_EVENT),
-  on(document, 'command', handleCommand, true),
   onMutation(document, handleAriaAttributes, {
     attributeFilter: ['command'],
     attributes: true,
