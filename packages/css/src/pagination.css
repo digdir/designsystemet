@@ -35,6 +35,10 @@
       --dsc-button-color: var(--ds-color-base-contrast-default);
     }
 
+    & > li:has(> [hidden]) {
+      display: none; /* Hide list item if no page is linkable */
+    }
+
     & > li > [data-page]:empty::before {
       content: attr(data-page);
     }

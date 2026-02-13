@@ -16,17 +16,19 @@ declare global {
 }
 
 export class DSSuggestionElement extends UHTMLComboboxElement {
-  _unmutate?: () => void; // Using underscore instead of private fields for backwards compatibility
+  _unmutate?: ReturnType<typeof onMutation>; // Using underscore instead of private fields for backwards compatibility
+  _render?: () => void;
 
   connectedCallback() {
     super.connectedCallback();
-    this._unmutate = onMutation(this, () => render(this), { childList: true }); // .control and .list are direct children of the custom element
+    this._render = () => render(this);
+    this._unmutate = onMutation(this, this._render, { childList: true }); // .control and .list are direct children of the custom element
     on(this, 'toggle', polyfillToggleSource, QUICK_EVENT);
   }
   disconnectedCallback() {
     super.disconnectedCallback();
     this._unmutate?.();
-    this._unmutate = undefined;
+    this._unmutate = this._render = undefined;
     off(this, 'toggle', polyfillToggleSource, QUICK_EVENT);
   }
 }

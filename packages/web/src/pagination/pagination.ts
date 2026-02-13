@@ -32,6 +32,7 @@ export const pagination = ({ current = 1, total = 10, show = 7 }) => ({
 
 export class DSPaginationElement extends DSElement {
   _unmutate?: () => void; // Using underscore instead of private fields for backwards compatibility
+  _render?: () => void;
 
   static get observedAttributes() {
     return [ATTR_LABEL, ATTR_CURRENT, ATTR_TOTAL, ATTR_HREF]; // Using ES2015 syntax for backwards compatibility
@@ -45,21 +46,22 @@ export class DSPaginationElement extends DSElement {
 
     attrOrCSS(this, ATTR_LABEL);
     attr(this, 'role', 'navigation');
-    this._unmutate = onMutation(this, () => render(this), {
+    this._render = debounce(() => render(this), 0); // Debounce groups mutation observer calls and attributeChangedCallback calls
+    this._unmutate = onMutation(this, this._render, {
       childList: true,
       subtree: true,
     });
   }
   attributeChangedCallback() {
-    render(this);
+    this._render?.();
   }
   disconnectedCallback() {
     this._unmutate?.();
-    this._unmutate = undefined;
+    this._unmutate = this._render = undefined;
   }
 }
 
-const render = debounce((self: DSPaginationElement) => {
+const render = (self: DSPaginationElement) => {
   const current = Number(attr(self, ATTR_CURRENT));
   const total = Number(attr(self, ATTR_TOTAL));
 
@@ -71,8 +73,8 @@ const render = debounce((self: DSPaginationElement) => {
     const { next, prev, pages } = pagination({ current, total, show });
     items.forEach((item, i) => {
       const page = i ? (items[i + 1] ? pages[i - 1]?.page : next) : prev; // First is prev, last is next
+      attr(item, 'hidden', page === undefined ? '' : null); // Hide if page is undefined
       attr(item, 'aria-current', pages[i - 1]?.current ? 'true' : null);
-      attr(item, 'aria-hidden', page ? null : 'true');
       attr(item, 'data-page', `${page}`);
       attr(item, 'role', page ? null : 'none'); // Prevent validation errors for aria-hidden buttons
       attr(item, 'tabindex', page ? null : '-1');
@@ -80,7 +82,7 @@ const render = debounce((self: DSPaginationElement) => {
       if (href) attr(item, 'href', href.replace('%d', `${page}`));
     });
   }
-}, 0); // Debounce groups mutation observer calls and attributeChangedCallback calls
+};
 
 const getSteps = (
   now: number,
