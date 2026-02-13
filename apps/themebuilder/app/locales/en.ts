@@ -148,7 +148,7 @@ export default {
     'set-to': 'Set to',
     view: 'view',
   },
-  ColorTokens: {
+  'color-tokens': {
     title: 'Color Tokens',
     description:
       'Here you can see which tokens have been used to create the cards in the section above.',
