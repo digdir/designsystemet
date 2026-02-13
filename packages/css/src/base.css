@@ -127,7 +127,7 @@ body,
 .ds-floating {
   --_ds-floating: top;
   --_ds-floating-arrow-size: 0;
-  --_ds-floating-arrow-visibility: visible;
+  --_ds-floating-arrow-visibility: inherit; /* Using inherit instead of `visible` as default to respect parent visibility */
   animation: ds-fade-in 0.15s ease-in-out forwards;
   inset: 0 auto auto 0;
   margin: 0; /* Needed to place popovers correctly, since popover adds margin */
