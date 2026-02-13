@@ -4,8 +4,8 @@ on:
   pull_request:
     paths:
       - .github/workflows/test.yml
-      - 'packages/**'
-      - 'apps/storybook/**'
+      - "packages/**"
+      - "apps/storybook/**"
 
 permissions:
   checks: write
@@ -45,12 +45,12 @@ jobs:
 
       - name: Install Playwright browsers
         if: steps.playwright-cache.outputs.cache-hit != 'true'
-        run: pnpm exec playwright install --with-deps chromium
+        run: pnpm exec playwright install --with-deps chromium firefox webkit
         working-directory: apps/storybook
 
       - name: Install Playwright system dependencies (if cached)
         if: steps.playwright-cache.outputs.cache-hit == 'true'
-        run: pnpm exec playwright install-deps chromium
+        run: pnpm exec playwright install-deps chromium firefox webkit
         working-directory: apps/storybook
 
       - name: Build
@@ -64,7 +64,7 @@ jobs:
         run: pnpm --filter @web/storybook vitest
       - name: Test
         run: pnpm test
-      - name: 'Report Coverage'
+      - name: "Report Coverage"
         if: success() || failure()
         uses: davelosert/vitest-coverage-report-action@15b5b41bb7d36796d89f4bf482b09529c53f3446 # v2.9.2
         with:
@@ -73,11 +73,11 @@ jobs:
         uses: mikepenz/action-junit-report@74626db7353a25a20a72816467ebf035f674c5f8 # v6.2.0
         if: success() || failure()
         with:
-          report_paths: 'test-report.xml'
+          report_paths: "test-report.xml"
           detailed_summary: true
           check_name: Unit Test Report
           check_annotations: true
-          check_title_template: '{{FILE_NAME}} / {{TEST_NAME}}'
+          check_title_template: "{{FILE_NAME}} / {{TEST_NAME}}"
 
       - name: Test CLI (create tokens, then build the theme)
         run: pnpm test:cli
@@ -86,16 +86,16 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@f1069b438f125e5395d84d1c6fd3b559a7880cb5 # v3.0.5
         if: success() || failure()
         with:
-          include: 'apps/storybook/test-report.xml'
-          find: '../../'
-          replace: ''
+          include: "apps/storybook/test-report.xml"
+          find: "../../"
+          replace: ""
           regex: false
       - name: Publish Storybook test report
         uses: mikepenz/action-junit-report@74626db7353a25a20a72816467ebf035f674c5f8 # v6.2.0
         if: success() || failure()
         with:
-          report_paths: 'apps/storybook/test-report.xml'
+          report_paths: "apps/storybook/test-report.xml"
           detailed_summary: true
           check_name: Storybook Test Report
           check_annotations: true
-          check_title_template: '{{FILE_NAME}} / {{TEST_NAME}}'
+          check_title_template: "{{FILE_NAME}} / {{TEST_NAME}}"
