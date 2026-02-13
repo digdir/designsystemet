@@ -147,7 +147,7 @@ export default {
     'set-to': 'Sett til',
     view: 'visning',
   },
-  'color_tokens': {
+  'color-tokens': {
     title: 'Fargetokens',
     description:
       'Her ser du hvilke tokens som er brukt for å lage kortene i seksjonen over.',
