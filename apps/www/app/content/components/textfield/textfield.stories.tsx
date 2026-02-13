@@ -102,6 +102,7 @@ export const InputType = () => {
         </Label>
         <Select
           defaultValue='text'
+          lang='en'
           onChange={(e) => setType(e.target.value as TextfieldProps['type'])}
         >
           <Select.Option value='text'>text</Select.Option>
