@@ -147,6 +147,11 @@ export default {
     'set-to': 'Sett til',
     view: 'visning',
   },
+  'color-tokens': {
+    title: 'Fargetokens',
+    description:
+      'Her ser du hvilke tokens som er brukt for å lage kortene i seksjonen over.',
+  },
   colorContrasts: {
     title: 'Kontraster mellom farger',
     description:
