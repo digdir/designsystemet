@@ -2,6 +2,7 @@
   "name": "@internal/digdir",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "Internal resources for Digdir",
   "exports": {
     "./themes/*": {
@@ -19,7 +20,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.28.2",
+  "packageManager": "pnpm@10.29.2",
   "devDependencies": {
     "rimraf": "^6.1.2",
     "@digdir/designsystemet": "workspace:^"
