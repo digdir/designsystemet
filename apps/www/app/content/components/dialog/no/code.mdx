@@ -8,6 +8,10 @@ For å legge til egen lukk knapp, kan du enten bruke `command="close" commandfor
 Dersom knappen er tom vil den få et ikon.
 Dersom knappen er direkte barn av dialogen og første element, vil den flyte til topp høyre.
 
+<Card data-color="info">
+  Attributtene [`command` (developer.mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/command) og `commandfor` er en relativt ny del av web-standarden som lar knapper utføre handlinger på andre elementer deklarativt. Vi legger automatisk til [invokers-polyfill (npmjs.com)](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2) for å støtte eldre nettlesere.
+</Card>
+
 ```tsx
 import { Dialog, Heading, Paragraph } from '@digdir/designsystemet-react';
 

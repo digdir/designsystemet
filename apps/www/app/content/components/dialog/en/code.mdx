@@ -10,6 +10,10 @@ If the button is empty, it will get an icon.
 
 If the button is a direct child of the dialog and the first element, it will float to the top right.
 
+<Card data-color="info">
+  The attributes [`command` (developer.mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/command) and `commandfor` are a relatively new part of the web-platform. They allow buttons to perform actions on other elements declaratively. We automatically add [invokers-polyfill (npmjs.com)](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2) to support older browsers.
+</Card>
+
 ```tsx
 import { Dialog, Heading, Paragraph } from '@digdir/designsystemet-react';
 
