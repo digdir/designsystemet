@@ -8,8 +8,8 @@ export const ColorTokens = () => {
     <div className='panelContainer'>
       <div className='panelLeft'>
         <div className='panelTop'>
-          <Heading data-size='xs'>{t('ColorTokens.title')}</Heading>
-          <Paragraph data-size='sm'>{t('ColorTokens.description')}</Paragraph>
+          <Heading data-size='xs'>{t('color-tokens.title')}</Heading>
+          <Paragraph data-size='sm'>{t('color-tokens.description')}</Paragraph>
         </div>
       </div>
       <div className={cl('panelRight', classes.right)}>
