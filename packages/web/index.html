@@ -17,7 +17,20 @@
     </script>
   </head>
   <body data-color-scheme="auto" style="padding:20px;font-family: Inter;">
-    <h1 class="ds-heading">Test webcomponents</h1>
+    <h1 class="ds-heading" data-size="lg">Test webcomponents</h1>
+
+    <br>
+    <br>
+
+    <h2 class="ds-heading">data-clickdelegatefor</h2>
+    <div class="ds-card" data-clickdelegatefor="target">
+      <input id="target" class="ds-input" type="checkbox"/>
+      <span>Clicking this card will toggle the checkbox</span>
+    </div>
+    <div class="ds-card" data-clickdelegatefor="target2">
+      <a id="target2" href="https://example.com" rel="noopener">Go to example</a>
+      <span>Clicking this card will open example in a new tab</span>
+    </div>
 
     <br>
     <br>
