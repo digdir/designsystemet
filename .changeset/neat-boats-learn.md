@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-**pagination**: use `<ds-pagination>` internally
+**Pagination**: Now uses `<ds-pagination>` internally.

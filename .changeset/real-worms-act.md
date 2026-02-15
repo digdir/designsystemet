@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-**field**: use `<ds-field>` internally
+**Field**: Deprecated `asChild` as this component now uses `<ds-field>` internally.

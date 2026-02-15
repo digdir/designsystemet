@@ -3,4 +3,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-**card**: fix issues with deeply nested heading links
+**Card**: fix issues with deeply nested heading links. Now uses web observer `data-clickdelegatefor` internally.

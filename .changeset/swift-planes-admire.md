@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-**details**: use `<details>` and `<summary>` internally
+**Details**: Use `<details>` and `<summary>` internally.

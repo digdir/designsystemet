@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-**Tabs**: use `<ds-tabs>` and related web components internally
+**Tabs**: Now uses `<ds-tabs>` and related web components internally

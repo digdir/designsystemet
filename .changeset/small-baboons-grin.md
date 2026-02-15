@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-**RovingFocus**: deprecate component. This will be removed in the next major version
+**RovingFocus**: Deprecate component. This will be removed in the next major version

@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-**tooltip**: use `[data-tooltip]` from `@digdir/designsystemet-web` internally
+**Tooltip**: Now uses web `data-tooltip` from `@digdir/designsystemet-web` internally

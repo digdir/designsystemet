@@ -2,4 +2,4 @@
 "@digdir/designsystemet-react": patch
 ---
 
-**breadcrumbs**: use `<ds-breadcrumbs>` internally
+**Breadcrumbs**: Now uses `<ds-breadcrumbs>` internally.
