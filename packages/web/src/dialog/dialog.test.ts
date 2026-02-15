@@ -1,7 +1,7 @@
 /// <reference types="@testing-library/jest-dom" />
 
-import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
+import { userEvent } from 'vitest/browser';
 
 const user = userEvent.setup();
 const flushTimers = async () => {
