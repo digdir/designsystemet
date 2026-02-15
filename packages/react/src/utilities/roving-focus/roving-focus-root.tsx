@@ -58,6 +58,7 @@ export const RovingFocusContext = createContext<RovingFocusProps>({
   orientation: 'horizontal',
 });
 
+/** @deprecated RovingFocusRoot is deprecated. */
 export const RovingFocusRoot = forwardRef<
   HTMLElement,
   RovingFocusRootBaseProps
