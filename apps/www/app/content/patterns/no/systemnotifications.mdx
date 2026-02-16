@@ -57,19 +57,19 @@ Det er viktig å bruke riktige virkemidler for å kommunisere alvorlighetsgrad. 
 En annen viktig ting å huske på, er at systemvarsler aldri må overskygge varsler som gjelder innbyggernes liv og helse. For eksempel dersom du skal varsle om at vannet ikke kan drikkes. Slike varsler skal alltid ha prioritet over tekniske systemvarsler, uansett hvor alvorlig vi tenker systemvarselet er. På denne måten passer vi på at livsviktig informasjon alltid når fram til innbyggerne. Hvis du skal varsle om alvorlige hendelser som ikke er relatert til systemet, bør du altså *ikke* bruke komponentene som er tiltenkt systemvarsler.
 
 ### A) Kritiske systemfeil
-Når vi har feil som påvirker hele eller store deler av systemet, bør brukerne få varsel om det tidlig. Hvis systemet er nede, skal varselet være tydelig på det. Vi kan si fra om dette på flere måter, for eksempel kan vi endre startsiden til å ha en annen tekstplakat enn den som er der til vanlig, eller vi kan vise en `modal` som forteller brukerne om de kritiske feilene. 
+Når vi har feil som påvirker hele eller store deler av systemet, bør brukerne få varsel om det tidlig. Hvis systemet er nede, skal varselet være tydelig på det. Vi kan si fra om dette på flere måter, for eksempel kan vi endre startsiden til å ha en annen tekstplakat enn den som er der til vanlig, eller vi kan vise en modal [`Dialog`](/no/components/docs/dialog/overview) som forteller brukerne om de kritiske feilene. 
 
 ### B) Viktig melding om systemet
-Ikke alle feil er kritiske, men noen ganger påvirker midlertidige feil hvordan brukerne opplever tjenesten. La oss si at vi må varsle om lengre behandlingstid på søknader. Da kan vi legge en global `alert` øverst på siden. Hvis meldingen bare gjelder deler av tjenesten, bør vi heller gi varselet der feilen gjelder. Hvis brukeren må ta et aktivt valg, kan det være bedre å bruke en `modal`. For eksempel for å varsle om at du snart blir logget ut, hvis du ikke tar et aktivt valg om å forbli innlogget.
+Ikke alle feil er kritiske, men noen ganger påvirker midlertidige feil hvordan brukerne opplever tjenesten. La oss si at vi må varsle om lengre behandlingstid på søknader. Da kan vi legge en global [`Alert`](/no/components/docs/alert/overview) øverst på siden. Hvis meldingen bare gjelder deler av tjenesten, bør vi heller gi varselet der feilen gjelder. Hvis brukeren må ta et aktivt valg, kan det være bedre å bruke en modal [`Dialog`](/no/components/docs/dialog/overview). For eksempel for å varsle om at du snart blir logget ut, hvis du ikke tar et aktivt valg om å forbli innlogget.
 
 ### C) Informasjon om systemet 
-Brukerne kan også trenge å få mindre viktige systemvarsler. Det kan for eksempel være informasjon om planlagt vedlikehold eller beskjed om at en ny versjon er tilgjengelig. Slike meldinger kan vi vise med en `alert`.
+Brukerne kan også trenge å få mindre viktige systemvarsler. Det kan for eksempel være informasjon om planlagt vedlikehold eller beskjed om at en ny versjon er tilgjengelig. Slike meldinger kan vi vise med en [`Alert`](/no/components/docs/alert/overview).
 
 
 ## Design og opplevelse
 Det finnes flere ulike måter å presentere systemvarsler til brukerne på. Vi bør velge den presentasjonsmåten som gjør at brukerne oppfatter varselet som nyttig. Varselet må ikke skape forvirring eller frustrasjon.  
 
-Vi skal se nærmere på feilsider og komponentene `modal` og `alert`. Når og hvordan skal vi bruke dem? 
+Vi skal se nærmere på feilsider og komponentene modal [`Dialog`](/no/components/docs/dialog/overview) og [`Alert`](/no/components/docs/alert/overview). Når og hvordan skal vi bruke dem? 
 
 ### Når bruker vi feilsider?
 En full feilside er ofte hensiktsmessig når det oppstår alvorlige tekniske feil som hindrer brukeren i å fortsette å bruke tjenesten. Fordelen med feilsider er at de ikke krangler om oppmerksomheten med andre elementer på siden. 
@@ -148,18 +148,18 @@ Vi anbefaler modal `Dialog` til systemvarsler som krever at brukerne må gjøre 
 
 **Det passer ikke med `alert` når**
 - feilen hindrer all videre bruk av tjenesten (bruk feilside i stedet)
-- du skal gjøre brukeren oppmerksom på feil i enkeltfelt (bruk `ValidationMessage`)
-- varslene er statiske infobokser (bruk `card`)
+- du skal gjøre brukeren oppmerksom på feil i enkeltfelt (bruk [`ValidationMessage`](/no/components/docs/validation-message/overview))
+- varslene er statiske infobokser (bruk [`Card`](/no/components/docs/card/overview))
 - det er eneste innhold på en side
 
-I eksempelet under ser vi en global `alert` som fyller hele bredden øverst på siden. Denne typen varsel anbefales for problemer som gjelder hele tjenesten. Vi bruker gul `alert` (warning) når brukerne fortsatt kan finne informasjon og navigere på nettsidene, men der noen av delene på siden er utilgjengelige. 
+I eksempelet under ser vi en global `Alert` som fyller hele bredden øverst på siden. Denne typen varsel anbefales for problemer som gjelder hele tjenesten. Vi bruker gul `Alert` (warning) når brukerne fortsatt kan finne informasjon og navigere på nettsidene, men der noen av delene på siden er utilgjengelige. 
 
 <Image
   src='/img/alert-global.png'
   alt='Skjermbilde av global alert.'
 />
 
-Det neste eksempelet viser en lokal `alert` som er plassert i nærheten av der feilen oppsto. Vi bruker en rød `alert` (danger) i tilfeller der brukerne ikke kan fortsette arbeidet. Den står så lenge feilen finnes. 
+Det neste eksempelet viser en lokal `Alert` som er plassert i nærheten av der feilen oppsto. Vi bruker en rød `Alert` (danger) i tilfeller der brukerne ikke kan fortsette arbeidet. Den står så lenge feilen finnes. 
 
 <Image
   src='/img/alert-lokal.png'
@@ -189,7 +189,7 @@ Varsler som dukker opp etter at siden er lastet, kalles dynamiske varsler. Disse
 </script>
 ```
 
-Ved å bruke en tom `alert` som kan fylles med innhold dynamisk, sikrer vi at skjermlesere oppfatter varselet så snart det fylles med tekst.
+Ved å bruke en tom `Alert` som kan fylles med innhold dynamisk, sikrer vi at skjermlesere oppfatter varselet så snart det fylles med tekst.
 
 
 ### Nivåer for dynamiske varsler
