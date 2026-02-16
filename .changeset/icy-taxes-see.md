@@ -22,11 +22,11 @@ New package with custom elements and observers for Designsystemet.
 | `data-toggle-group` | Used for adding arrow navigation plus Enter-key support |
 | `data-tooltip`| Used for adding tooltip text on element |
 | `readonly` | Used for fixing `readonly` support on `select` and `input` elements |
+| `popover`| Event listnener on `popovertarget` for placement of `ds-floating` elements. |
 
 | Polyfill | |
 | --- | --- |
 | `details` & `summary` | Bugfix for Firefox. |
 | `dialog` | Support for [closedby="any"](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy#any). |
-| `popover`| Event listnener on `popovertarget` for placement of `ds-floating` elements. |
 | `command` & `commandfor` | Support for [invokers](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2). |
 
