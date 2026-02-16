@@ -10,19 +10,15 @@ const SELECTOR_SKIP =
   'a,button,label,input,select,textarea,details,dialog,[role="button"],[popover],[contenteditable]';
 
 const handleClickDelegateFor = (event: MouseEvent) => {
-  const isNewTab = event.button === 1 || event.metaKey || event.ctrlKey;
-  const isUserLeftOrMiddleClick = event.isTrusted && event.button < 2;
+  const isNewTab = event.button === 1 || event.metaKey || event.ctrlKey; // Middle click or cmd/ctrl + click should open in new tab
+  const isUserLeftOrMiddleClick = (event.isTrusted && event.button < 2) || null; // Only accept left or middle clicks, and ignore the programatic .click() we're about to trigger
   const delegateTarget = isUserLeftOrMiddleClick && getDelegateTarget(event);
 
-  if (delegateTarget instanceof HTMLAnchorElement && isNewTab)
-    window.open(delegateTarget.href, undefined, delegateTarget.rel); // If middle click or cmd/ctrl click on link, open in new tab
-  else if (
-    delegateTarget instanceof HTMLElement &&
-    !delegateTarget.contains(event.target as Node) // Only proxy event if delegated target isn't the original target
-  ) {
-    event.stopImmediatePropagation(); // We'll trigger a new click event anyway, so prevent actions on this one
-    delegateTarget.click(); // Forward click to the clickable element
-  }
+  if (delegateTarget?.contains(event.target as Node)) return; // Only proxy event if delegated target isn't part of the original target
+  if (isNewTab && delegateTarget instanceof HTMLAnchorElement)
+    return window.open(delegateTarget.href, undefined, delegateTarget.rel); // If middle click or cmd/ctrl click on link, open in new tab
+  event.stopImmediatePropagation(); // We'll trigger a new click event anyway, so prevent actions on this one
+  delegateTarget?.click(); // Forward click to the clickable element
 };
 
 let HOVER: Element | undefined;
