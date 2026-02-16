@@ -66,11 +66,11 @@ const handleInterest = ({ type, target }: Event) => {
 
   const color = source.closest(SELECTOR_COLOR); // Match source color of source element
   const scheme = source.closest(SELECTOR_SCHEME); // Match source color-scheme of source element
-  const isSchemeReset = color !== scheme && color?.contains(scheme as Node);
+  const isReset = color !== scheme && color?.contains(scheme as Node); // If data-scheme is closer to target, it will reset data-color
   clearTimeout(SKIP_TIMER);
   attr(TIP, 'popover', 'manual'); // Ensure popover behavior
-  attr(TIP, ATTR_SCHEME, scheme?.getAttribute(ATTR_SCHEME));
-  attr(TIP, ATTR_COLOR, isSchemeReset ? null : color?.getAttribute(ATTR_COLOR));
+  attr(TIP, ATTR_SCHEME, scheme?.getAttribute(ATTR_SCHEME) || null); // Fallback to null to reset if not scheme found
+  attr(TIP, ATTR_COLOR, (isReset && color?.getAttribute(ATTR_COLOR)) || null); // Fallback to null to reset if not scheme found
   setTextWithoutMutation(TIP, attr(source, 'data-tooltip'));
   TIP.showPopover();
   TIP.dispatchEvent(new CustomEvent('ds-toggle-source', { detail: source })); // Since showPopover({ source }) is not supported in all browsers yet
