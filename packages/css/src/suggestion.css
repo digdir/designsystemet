@@ -210,6 +210,11 @@
     padding-inline-end: calc(var(--dsc-suggestion-clear-size) + var(--dsc-suggestion-clear-gap));
   }
 
+  /* Hide x native icon of input type="search" since we have a custom x-component */
+  &:has(del) input[type='search']::-webkit-search-cancel-button {
+    display: none;
+  }
+
   & del {
     --dsc-button-size: var(--dsc-suggestion-clear-size);
 
