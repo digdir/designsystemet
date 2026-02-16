@@ -21,9 +21,6 @@ declare global {
   interface HTMLElementTagNameMap {
     'ds-field': DSFieldElement;
   }
-  interface GlobalEventHandlersEventMap {
-    'ds-field-update': CustomEvent; // Allow manually triggering update when i.e. React changes value prop
-  }
 }
 
 const INDETERMINATE = 'data-indeterminate';
@@ -60,11 +57,11 @@ const handleMutations = debounce(() => {
       } else {
         const type = el.getAttribute('data-field'); // Using getAttribute instead of attr for best performance
         if (type === 'counter') counter = el;
-        else if (type === 'validation') {
+        if (type === 'validation') {
           descs.unshift(el);
           hasValidation = true;
           invalid = invalid || isInvalid(el);
-        } else if (type) descs.push(el); // Adds both counter and descriptions}
+        } else if (type) descs.push(el); // Adds both counter and descriptions
       }
     }
 
@@ -156,10 +153,11 @@ export class DSFieldElement extends DSElement {
 
 customElements.define('ds-field', DSFieldElement);
 
+// Listen for hidden to detect hidden validations, and listen for value to detect controlled React inputs
 onHotReload('field', () => [
-  on(document, 'input ds-field-update', updateField, QUICK_EVENT),
+  on(document, 'input', updateField, QUICK_EVENT),
   onMutation(document, handleMutations, {
-    attributeFilter: ['hidden', 'data-field', INDETERMINATE], // Listen for hidden to detect hidden validations
+    attributeFilter: ['value', 'hidden', 'data-field', INDETERMINATE],
     attributes: true,
     childList: true,
     subtree: true,

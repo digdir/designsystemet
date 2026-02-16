@@ -8,7 +8,7 @@ import { Textfield } from './textfield';
 const user = userEvent.setup();
 const getCountText = async () => {
   const counter = await screen.findByTestId('counter');
-  await new Promise(requestAnimationFrame); // Let mutation observer run first
+  await new Promise((resolve) => setTimeout(resolve, 10)); // Let mutation observer run first
   return counter?.getAttribute('data-label');
 };
 const withCounterTestId = (counter: number) =>
