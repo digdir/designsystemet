@@ -78,7 +78,8 @@ const render = (self: DSPaginationElement) => {
       attr(item, 'role', page ? null : 'none'); // Prevent validation errors for aria-hidden buttons
       attr(item, 'tabindex', page ? null : '-1');
       if (item instanceof HTMLButtonElement) attr(item, 'value', `${page}`);
-      if (href && item instanceof HTMLAnchorElement) attr(item, 'href', href.replace('%d', `${page}`));
+      if (href && item instanceof HTMLAnchorElement)
+        attr(item, 'href', href.replace('%d', `${page}`));
     });
   }
 };
