@@ -1,4 +1,4 @@
-.cookieBanner {
+.consentBanner {
   background-color: var(--ds-color-accent-background-tinted);
   padding-block: var(--ds-size-7) var(--ds-size-8);
 }

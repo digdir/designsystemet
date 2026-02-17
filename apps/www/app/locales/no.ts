@@ -119,7 +119,7 @@ export default {
   accessibility: {
     'skip-link': 'Hopp til hovedinnhold',
   },
-  'cookie-banner': {
+  'consent-banner': {
     heading: 'Vil du godta at vi samler inn data?',
     all: 'Godta alle',
     'all-desc': 'Vi skrur på analyseverktøyet Siteimprove.',

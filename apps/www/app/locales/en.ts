@@ -120,7 +120,7 @@ export default {
   accessibility: {
     'skip-link': 'Skip to main content',
   },
-  'cookie-banner': {
+  'consent-banner': {
     heading: 'Do you consent to data collection?',
     all: 'Accept all',
     'all-desc': 'We enable the analytics tool Siteimprove.',
