@@ -111,22 +111,24 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 
   const cookieHeader = request.headers.get('Cookie');
   const consent = await userConsent.parse(cookieHeader);
-  console.log('User consent:', consent);
   const showConsentBanner = !consent || consent.version !== CONSENT_VERSION;
+  const includeSiteimprove = consent && consent.choice === 'all';
 
   return data({
     lang: params.lang || 'no',
     menu,
     centerLinks,
     showConsentBanner,
+    includeSiteimprove,
   });
 };
 
 type DocumentProps = {
   children: React.ReactNode;
+  includeSiteimprove?: boolean;
 };
 
-function Document({ children }: DocumentProps) {
+function Document({ children, includeSiteimprove }: DocumentProps) {
   const { i18n } = useTranslation();
 
   return (
@@ -153,7 +155,7 @@ function Document({ children }: DocumentProps) {
         {/* This uses sessionStorage, but we deem it necessary to make navigation work as expected */}
         <ScrollRestoration />
         <Scripts />
-        {process.env.NODE_ENV === 'production' && (
+        {process.env.NODE_ENV === 'production' && includeSiteimprove && (
           <script
             src='https://siteimproveanalytics.com/js/siteanalyze_6255470.js'
             crossOrigin='anonymous'
@@ -164,11 +166,13 @@ function Document({ children }: DocumentProps) {
   );
 }
 
-export default function App({ loaderData: { lang } }: Route.ComponentProps) {
+export default function App({
+  loaderData: { lang, includeSiteimprove },
+}: Route.ComponentProps) {
   useChangeLanguage(lang);
 
   return (
-    <Document>
+    <Document includeSiteimprove={includeSiteimprove}>
       <Outlet />
     </Document>
   );
