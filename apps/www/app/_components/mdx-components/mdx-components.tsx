@@ -34,11 +34,7 @@ import {
 import { getMDXComponent } from 'mdx-bundler/dist/client';
 import { type ComponentType, type JSX, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import {
-  Link as RRLink,
-  useLoaderData,
-  useRouteLoaderData,
-} from 'react-router';
+import { Link as RRLink, useLoaderData } from 'react-router';
 import { ColorInfoTable } from '~/_components/color-info-table/color-info-table';
 import { Contributors } from '~/_components/contributors/contributors';
 import { Image } from '~/_components/image/image';
@@ -155,8 +151,8 @@ export const MDXComponents = ({
         <Component
           components={{
             ...defaultComponents,
-            ...components,
             Story: Story,
+            ...components,
           }}
         />
       ) : (
@@ -170,7 +166,9 @@ const Story = ({ story, layout }: LiveComponentProps) => {
   const { stories } = useLoaderData();
   if (!stories) return null;
 
-  const foundStory = stories.find((s) => s.name === story);
+  const foundStory = stories.find(
+    (s: { name: string; code: string }) => s.name === story,
+  );
   if (!foundStory) return <Alert lang='en'>Story not found: {story}</Alert>;
   return (
     <LiveComponent
