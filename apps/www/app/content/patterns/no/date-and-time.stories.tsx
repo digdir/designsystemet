@@ -3,7 +3,7 @@ import { Fieldset, Textfield } from '@digdir/designsystemet-react';
 export const KnownDates = () => {
   return (
     <Fieldset>
-      <Fieldset.Legend>Når ble du født?</Fieldset.Legend>
+      <Fieldset.Legend data-size='lg'>Når ble du født?</Fieldset.Legend>
       <Fieldset.Description>For eksempel 24 7 1987</Fieldset.Description>
 
       <div style={{ display: 'flex', gap: 'var(--ds-size-4)' }}>
