@@ -27,7 +27,7 @@ export class DSBreadcrumbsElement extends DSElement {
     return [ATTR_LABEL]; // Using ES2015 syntax for backwards compatibility
   }
   connectedCallback() {
-    // aria-label can allready have been hidden by attributeChangedCallback
+    // aria-label can already have been hidden by attributeChangedCallback
     if (!attr(this, ATTR_LABEL_HIDDEN)) attrOrCSS(this, ATTR_LABEL);
     this._items = this.getElementsByTagName('a'); // Speed up by caching HTMLCollection
     this._render = debounce(() => render(this), 100); // Debounce render to prevent multiple calls during resize and mutation observer calls
