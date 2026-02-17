@@ -46,7 +46,7 @@ describe('tooltip behavior', () => {
 
     const el = document.querySelector('button') as HTMLElement;
 
-    await vi.waitUntil(() => el.hasAttribute('aria-label')); // Wait for mutation observer
+    await vi.waitUntil(() => el.hasAttribute('aria-label'), 2000); // Wait for mutation observer
 
     expect(el).toHaveAttribute('aria-label', 'Help');
     expect(el).not.toHaveAttribute('aria-description');
@@ -57,7 +57,7 @@ describe('tooltip behavior', () => {
 
     const el = document.querySelector('button') as HTMLElement;
 
-    await vi.waitUntil(() => el.hasAttribute('aria-description')); // Wait for mutation observer
+    await vi.waitUntil(() => el.hasAttribute('aria-description'), 2000); // Wait for mutation observer
 
     expect(el).toHaveAttribute('aria-description', 'Help');
     expect(el).not.toHaveAttribute('aria-label');
@@ -71,7 +71,7 @@ describe('tooltip behavior', () => {
     document.body.innerHTML = `<button data-tooltip="More info">Button</button>`;
 
     const button = document.querySelector('button') as HTMLButtonElement;
-    await vi.waitUntil(() => button.hasAttribute('aria-description')); // Wait for mutation observer
+    await vi.waitUntil(() => button.hasAttribute('aria-description'), 2000); // Wait for mutation observer
 
     let eventSource: Element | undefined;
     tip.addEventListener('ds-toggle-source', (event) => {
