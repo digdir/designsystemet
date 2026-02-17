@@ -28,7 +28,7 @@ Når du ber brukeren om en dato slik den står i et bankkort, pass eller annet d
 
 ## Konkret dato i nær fremtid eller fortid
 
-I noen tilfeller skal brukeren velge en konkret dato tett opp mot dagens dato, for eksempel ved bestilling av time eller valg av frist. Da kan det være nyttig med visuell støtte. Et [`Textfield`](link) med `type="date"` lar brukeren enten skrive datoen direkte eller bruke nettleserens innebygde datovelger. Dette gir ofte en god balanse mellom fleksibilitet og støtte. Merk at utseende og interaksjon vil variere mellom nettlesere og enheter.
+I noen tilfeller skal brukeren velge en konkret dato tett opp mot dagens dato, for eksempel ved bestilling av time eller valg av frist. Da kan det være nyttig med visuell støtte. En [`Input`](/no/components/docs/input/overview) med `type="date"` lar brukeren enten skrive datoen direkte eller bruke nettleserens innebygde datovelger. Dette gir ofte en god balanse mellom fleksibilitet og støtte. Merk at utseende og interaksjon vil variere mellom nettlesere og enheter.
 
 <Image
   src='/img/date-and-time/example2.webp'
@@ -50,7 +50,7 @@ Plasser feltene i logisk rekkefølge, og valider at sluttdato ikke er før start
 
 ## Klokkeslett – start og slutt
 
-Når brukeren skal oppgi et tidsintervall, som åpningstid eller varighet på et møte, fungerer et [`Textfield`](link) med `type="time"` godt. Det lar brukeren skrive klokkeslettet direkte, samtidig som nettleseren kan tilby passende hjelp.
+Når brukeren skal oppgi et tidsintervall, som åpningstid eller varighet på et møte, fungerer en [`Input`](/no/components/docs/input/overview) med `type="time"` godt. Det lar brukeren skrive klokkeslettet direkte, samtidig som nettleseren tilbyr støtte.
 
 Bruk separate felt for start- og sluttid, og vis dem tydelig sammen.
 
@@ -61,20 +61,20 @@ Bruk separate felt for start- og sluttid, og vis dem tydelig sammen.
 />
 
 ## Omtrentlig tidspunkt
-Gi brukeren mulighet til å oppgi en omtrentlig dato eller et tidspunkt når de ikke nødvendigvis vet eller husker nøyaktig. Dette er særlig relevant når hendelsen ligger lengre tilbake i tid.
+Hvis brukeren bare trenger å oppgi måned og år, bør det være mulig å gjøre nettopp det. Dette er særlig relevant når hendelsen ligger lengre tilbake i tid, og brukerne ikke nødvendigvis vet nøyaktig tidspunkt. 
 
-For eksempel kan du la brukeren skrive «desember 2025» i et felt som spør etter når ulykken skjedde, eller tilby egne felt for måned og år.
+For eksempel kan du la brukeren oppgi omtredlig tid i et fritekstfelt, eller tilby egne felt for kun måned og år slik som i eksempelet under.
 
 <Image
   src='/img/date-and-time/example5.png'
   alt='Felt for måned og år'
   boxShadow={false}
 />
-Hvis brukeren bare trenger å oppgi måned og år, bør det være mulig å gjøre nettopp det.
+
 
 ## Dato relativt til en annen dato
 
-I noen situasjoner er det mer naturlig å spørre om datoer relativt til i dag eller til en annen dato, for eksempel når brukeren setter opp en påminnelse. Da kan det være bedre å bruke en [`Select`](link) for å gi brukeren valg om «i morgen», «om 3 dager» eller «1 dag før». Hvis ukedag er viktig for oppgaven, bør denne vises tydelig i tillegg.
+I noen situasjoner er det mer naturlig å spørre om datoer relativt til i dag eller til en annen dato, for eksempel når brukeren setter opp en påminnelse. Da kan det være bedre å bruke en [`Select`](/no/components/docs/select/overview) for å gi brukeren valg om «i morgen», «om 3 dager» eller «1 dag før». Hvis ukedag er viktig for oppgaven, bør denne vises tydelig i tillegg.
 
 <Image
   src='/img/date-and-time/example6.png'
@@ -86,9 +86,7 @@ I noen situasjoner er det mer naturlig å spørre om datoer relativt til i dag e
 
 Hvis du vet at brukeren skal velge en dato eller et tidspunkt fra et begrenset utvalg, for eksempel ledige timer den kommende uken, kan det være mer effektivt å tilby disse som ferdige valg.
 
-Bruk en [`Select`](link) eller [`Radio`](link) når antallet valg er lavt. Det gjør det raskt og enkelt å velge riktig alternativ uten å måtte skrive noe selv.
-
-Når utvalget er svært begrenset, for eksempel noen få datoer eller tidspunkter, kan [`Radio`](link) være et godt valg. Brukerne ser alle alternativene samtidig og kan raskt sammenligne dem før de velger.
+Når utvalget er svært begrenset, for eksempel noen få datoer eller tidspunkter, kan [`Radio`](/no/components/docs/radio/overview) være et godt valg. Det gjør det raskt og enkelt å velge et alternativ uten å måtte skrive noe selv.
 
 <Image
   src='/img/date-and-time/example7.webp'
@@ -96,7 +94,7 @@ Når utvalget er svært begrenset, for eksempel noen få datoer eller tidspunkte
   boxShadow={false}
 />
 
-Når antall valg øker, kan en Select for å begrense utvalget være nyttig først. Den tar mindre plass og gjør det enklere å håndtere flere alternativer uten at siden blir uoversiktlig.
+Når antall valg øker, kan en [`Select`](/no/components/docs/select/overview) for å begrense utvalget være nyttig. Da kan brukeren for eksempel først velge en uke, og deretter velge blant de tilgjengelige tidspunktene i den uken. Du bør kun vise uker som har ledige tidspunkt, og unngå å deaktivere uker som ikke har det, da det kan skape forvirring. Forklar i forkant at det kun er uker med ledige tidspunkt som vises, slik at brukeren forstår hvorfor noen uker ikke er tilgjengelige å velge.
 
 <Image
   src='/img/date-and-time/example8.webp'
@@ -104,7 +102,7 @@ Når antall valg øker, kan en Select for å begrense utvalget være nyttig før
   boxShadow={false}
 />
 
-Når det finnes mange mulige datoer eller tidspunkter, bør du hjelpe brukeren med å avgrense valgene før de presenteres. Dette kan gjøres på mange måter, for eksempel med Select slik som i eksempelet under.
+Finnes det mange ledige tidspunkt den uken, bør valget kunne begrenses ytterligere, for eksempel ved å la brukeren velge en dag, og deretter velge blant de tilgjengelige tidspunktene den dagen.
 
 <Image
   src='/img/date-and-time/example9.webp'
@@ -112,15 +110,7 @@ Når det finnes mange mulige datoer eller tidspunkter, bør du hjelpe brukeren m
   boxShadow={false}
 />
 
-Du bør kun vise tidspunkter som faktisk kan velges, og forklare hvorfor de andre datoene ikke vises.
-
-<Image
-  src='/img/date-and-time/example10.webp'
-  alt='Forhåndsdefinert utvalg datoer eksempel 4'
-  boxShadow={false}
-/>
-
-Alternativ løsning med radioknapper, kan noen ganger være bedre slik at brukeren ser alle ledige tidspunkt med en gang uke eller dag er valgt.
+Når brukerne har valgt en dag, bør de se alle tilgjengelige tidspunkter på den dagen. [`Radio`](/no/components/docs/radio/overview) fungerer godt for dette, da det gjør det raskt og enkelt å velge et tidspunkt uten å måtte skrive noe selv.
 
 <Image
   src='/img/date-and-time/example11.webp'
