@@ -22,10 +22,22 @@ You can easily create your own theme later.
 
 ### Typescript
 
-If you are using Typescript, make sure you have typescript >= 3.8 and install `@digdir/designsystemet-types`:
+If you are using Typescript, make sure you have typescript >= 3.8.
 
-```sh
-npm i typescript @digdir/designsystemet-types --save-dev
+#### Types for data attributes in React
+Designsystemet provides type safety for `data-color` and `data-size` on React JSX elements.
+We need to mutate React's built-in types to add these, and is why this is optional.
+To enable this, add the following to your `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "types": [
+      '<your-theme>/types.d.ts', // contains types for colors and sizes in your theme (the one you create with @digdir/designsystemet)
+      "@digdir/designsystemet-react/react-types", // adds types for data-color and data-size on React JSX elements
+      ]
+  },
+}
 ```
 
 ## 2. Font
