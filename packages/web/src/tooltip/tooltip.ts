@@ -15,6 +15,7 @@ let TIP: HTMLElement | undefined;
 let SOURCE: Element | undefined;
 let HOVER_TIMER: number | ReturnType<typeof setTimeout> = 0;
 let SKIP_TIMER: number | ReturnType<typeof setTimeout> = 0;
+const ATTR_TOOLTIP = 'data-tooltip';
 const ATTR_COLOR = 'data-color';
 const ARIA_LABEL = 'aria-label';
 const ARIA_DESC = 'aria-description';
@@ -35,9 +36,9 @@ export const setTooltipElement = (el?: HTMLElement | null) => {
 };
 
 const handleAriaAttributes = debounce(() => {
-  for (const el of document.querySelectorAll('[data-tooltip]')) {
+  for (const el of document.querySelectorAll(`[${ATTR_TOOLTIP}]`)) {
     const aria = el.getAttribute(ARIA_LABEL) || el.getAttribute(ARIA_DESC); // Using getAttribute for best performance
-    const text = attrOrCSS(el, 'data-tooltip');
+    const text = attrOrCSS(el, ATTR_TOOLTIP);
 
     if (aria !== text) {
       const hasText = el.textContent?.trim();
@@ -58,7 +59,7 @@ const handleInterest = ({ type, target }: Event) => {
     return;
   }
 
-  const source = (target as Element)?.closest?.('[data-tooltip]');
+  const source = (target as Element)?.closest?.(`[${ATTR_TOOLTIP}]`);
   if (source === SOURCE) return; // No need to update
   if (!source) return hideTooltip(); // If no new anchor, cleanup previous autoUpdate
   if (!TIP) TIP = tag('div', { class: 'ds-tooltip' });
@@ -71,7 +72,7 @@ const handleInterest = ({ type, target }: Event) => {
   attr(TIP, 'popover', 'manual'); // Ensure popover behavior
   attr(TIP, ATTR_SCHEME, scheme?.getAttribute(ATTR_SCHEME) || null); // Fallback to null to reset if not scheme found
   attr(TIP, ATTR_COLOR, (isReset && color?.getAttribute(ATTR_COLOR)) || null); // Fallback to null to reset if not scheme found
-  setTextWithoutMutation(TIP, attr(source, 'data-tooltip'));
+  setTextWithoutMutation(TIP, attr(source, ATTR_TOOLTIP));
   TIP.showPopover();
   TIP.dispatchEvent(new CustomEvent('ds-toggle-source', { detail: source })); // Since showPopover({ source }) is not supported in all browsers yet
   SOURCE = source;
@@ -91,7 +92,7 @@ onHotReload('tooltip', () => [
   on(document, 'blur focus mouseover', handleInterest, QUICK_EVENT),
   on(document, 'toggle keydown', handleClose, QUICK_EVENT),
   onMutation(document, handleAriaAttributes, {
-    attributeFilter: ['data-tooltip'],
+    attributeFilter: [ATTR_TOOLTIP],
     attributes: true,
     childList: true,
     subtree: true,
