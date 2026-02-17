@@ -6,6 +6,7 @@ import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { isRouteErrorResponse, Outlet, useRouteLoaderData } from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
+import { ConsentBanner } from '~/_components/consent-banner/consent-banner';
 import { Figma } from '~/_components/logos/figma';
 import { Github } from '~/_components/logos/github';
 import { Slack } from '~/_components/logos/slack';
@@ -47,10 +48,9 @@ const rightLinks: FooterLinkListItemProps[] = [
 
 export default function RootLayout() {
   const { t } = useTranslation();
-  const { lang, centerLinks, menu } = useRouteLoaderData('root') as Omit<
-    RootRoute.ComponentProps['loaderData'],
-    'centerLinks'
-  > & {
+  const { lang, centerLinks, menu, showConsentBanner } = useRouteLoaderData(
+    'root',
+  ) as Omit<RootRoute.ComponentProps['loaderData'], 'centerLinks'> & {
     centerLinks: FooterLinkListItemProps[];
     menu: {
       name: TemplateStringsArray;
@@ -66,7 +66,10 @@ export default function RootLayout() {
 
   return (
     <>
-      <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
+      <div>
+        {showConsentBanner && <ConsentBanner lang={lang} />}
+        <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
+      </div>
       <Header
         menu={menu}
         logoLink={`/${lang === 'no' ? 'no' : lang === 'en' ? 'en' : 'no'}`}

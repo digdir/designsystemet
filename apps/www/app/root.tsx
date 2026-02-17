@@ -15,6 +15,7 @@ import './app.css';
 import { Error404 } from '@internal/components';
 import { useTranslation } from 'react-i18next';
 import { useChangeLanguage } from 'remix-i18next/react';
+import { CONSENT_VERSION, userConsent } from '~/_utils/cookies';
 import { designsystemetRedirects } from './_utils/redirects.server';
 
 export const links = () => {
@@ -108,10 +109,16 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     },
   ];
 
+  const cookieHeader = request.headers.get('Cookie');
+  const consent = await userConsent.parse(cookieHeader);
+  console.log('User consent:', consent);
+  const showConsentBanner = !consent || consent.version !== CONSENT_VERSION;
+
   return data({
     lang: params.lang || 'no',
     menu,
     centerLinks,
+    showConsentBanner,
   });
 };
 
