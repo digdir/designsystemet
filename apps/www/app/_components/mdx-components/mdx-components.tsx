@@ -34,12 +34,20 @@ import {
 import { getMDXComponent } from 'mdx-bundler/dist/client';
 import { type ComponentType, type JSX, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link as RRLink } from 'react-router';
+import {
+  Link as RRLink,
+  useLoaderData,
+  useRouteLoaderData,
+} from 'react-router';
 import { ColorInfoTable } from '~/_components/color-info-table/color-info-table';
 import { Contributors } from '~/_components/contributors/contributors';
 import { Image } from '~/_components/image/image';
 import { ResponsiveIframe } from '~/_components/responsive-iframe/responsive-iframe';
 import { CssVariables } from '../css-variables/css-variables';
+import {
+  LiveComponent,
+  type LiveComponentProps,
+} from '../live-component/live-components';
 import { RoiCalculator } from '../roi-calculator/roi-calcuator';
 import { VideoCard } from '../video-card/video-card';
 import classes from './mdx-components.module.css';
@@ -135,6 +143,7 @@ export const MDXComponents = ({
   code?: string;
 }) => {
   const { t } = useTranslation();
+
   const Component = useMemo(() => {
     if (!code) return null;
     return getMDXComponent(code);
@@ -147,11 +156,26 @@ export const MDXComponents = ({
           components={{
             ...defaultComponents,
             ...components,
+            Story: Story,
           }}
         />
       ) : (
         t('mdx.error.loading')
       )}
     </>
+  );
+};
+
+const Story = ({ story, layout }: LiveComponentProps) => {
+  const { stories } = useLoaderData();
+  if (!stories) return null;
+
+  const foundStory = stories.find((s) => s.name === story);
+  if (!foundStory) return <Alert lang='en'>Story not found: {story}</Alert>;
+  return (
+    <LiveComponent
+      story={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
+      layout={layout}
+    />
   );
 };

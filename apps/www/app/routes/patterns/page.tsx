@@ -13,6 +13,7 @@ import { formatDate } from '~/_utils/date';
 import { getFileFromContentDir } from '~/_utils/files.server';
 import { generateFromMdx } from '~/_utils/generate-from-mdx';
 import { generateMetadata } from '~/_utils/metadata';
+import { getStories } from '../../_utils/get-stories.server';
 import type { Route } from './+types/page';
 import classes from './page.module.css';
 
@@ -31,6 +32,10 @@ export async function loader({ params }: Route.LoaderArgs) {
     });
   }
 
+  const stories = await getStories({
+    path: join('patterns', params.lang, `${file}.stories.tsx`),
+  });
+
   // Bundle the MDX content
   const result = await generateFromMdx(fileContent);
 
@@ -40,6 +45,7 @@ export async function loader({ params }: Route.LoaderArgs) {
     frontmatter: result.frontmatter,
     lang: params.lang,
     toc: result.toc,
+    stories,
   };
 }
 
