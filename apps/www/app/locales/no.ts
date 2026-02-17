@@ -119,6 +119,16 @@ export default {
   accessibility: {
     'skip-link': 'Hopp til hovedinnhold',
   },
+  'cookie-banner': {
+    heading: 'Vil du godta at vi samler inn data?',
+    all: 'Godta alle',
+    'all-desc': 'Vi skrur på analyseverktøyet Siteimprove.',
+    required: 'Bare nødvendige',
+    'required-desc':
+      'Sikrer at nettsiden fungerer som den skal. Kan ikke velges bort.',
+    declaration1: 'Du kan når som helst endre valget ditt på siden om',
+    declaration2: 'personvernerklæring',
+  },
   errors: {
     default: {
       title: 'Oops!',

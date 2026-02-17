@@ -1,0 +1,24 @@
+.cookieBanner {
+  background-color: var(--ds-color-accent-background-tinted);
+  padding-block: var(--ds-size-7) var(--ds-size-8);
+}
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: var(--max-page-width);
+  padding: 0 var(--content-inline-padding);
+  h2 {
+    font-weight: 500;
+    margin-bottom: var(--ds-size-3);
+  }
+  span {
+    font-weight: 600;
+  }
+  p:last-of-type {
+    margin-block: var(--ds-size-8);
+  }
+}
+.buttons {
+  display: flex;
+  gap: var(--ds-size-4);
+}

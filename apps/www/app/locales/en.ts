@@ -120,6 +120,16 @@ export default {
   accessibility: {
     'skip-link': 'Skip to main content',
   },
+  'cookie-banner': {
+    heading: 'Do you consent to data collection?',
+    all: 'Accept all',
+    'all-desc': 'We enable the analytics tool Siteimprove.',
+    required: 'Only necessary',
+    'required-desc':
+      'Ensures the website functions properly. Cannot be opted out of.',
+    declaration1: 'You can change your choice at any time on the page about',
+    declaration2: 'privacy policy',
+  },
   errors: {
     default: {
       title: 'Oops!',
