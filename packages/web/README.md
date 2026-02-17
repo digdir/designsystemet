@@ -104,7 +104,7 @@ You can add a counter to inputs and textareas by adding the `data-field="counter
 <ds-field class="ds-field">
   <label>Label</label>
   <textarea class="ds-input"></textarea>
-  <p data-field="counter" data-limit="20" data-over="%d tegn for mye" data-under="%d tegn igjen" data-hint="Maks %d tegn tillatt."></p>
+  <p data-field="counter" data-limit="20" data-over="%d tegn for mye" data-under="%d tegn igjen"></p>
 </ds-field>
 ```
 
