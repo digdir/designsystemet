@@ -94,6 +94,5 @@ describe('Breadcrumbs component', () => {
     await vi.waitUntil(() => breadcrumbs.hasAttribute('aria-label')); // Wait for mutation observer
 
     expect(breadcrumbs).toHaveAttribute('aria-label', 'Breadcrumbs');
-    // expect(breadcrumbs).not.toHaveAttribute('data-label'); TODO - data-label is not removed when aria-label is restored, should it be?
   });
 });
