@@ -24,10 +24,7 @@ import {
 import { DoDont } from '~/_components/do-dont/do-dont';
 import { EditPageOnGithub } from '~/_components/edit-page-on-github/edit-page-on-github';
 import { IconFrame } from '~/_components/icon-frame/icon-frame';
-import {
-  LiveComponent,
-  type LiveComponentProps,
-} from '~/_components/live-component/live-components';
+import { LiveComponent } from '~/_components/live-component/live-components';
 import { MDXComponents } from '~/_components/mdx-components/mdx-components';
 import { ReactComponentDocs } from '~/_components/react-component-props/react-component-props';
 import { TableOfContents } from '~/_components/table-of-contents/toc';
@@ -228,7 +225,6 @@ export default function Components({
           <MDXComponents
             code={mdxCode}
             components={{
-              Story: Story as unknown as ComponentType<unknown>,
               DoDont: DoDontComponent as unknown as ComponentType<unknown>,
               ReactComponentDocs:
                 PropsTable as unknown as ComponentType<unknown>,
@@ -249,23 +245,6 @@ export default function Components({
     </>
   );
 }
-
-const Story = ({ story, layout }: LiveComponentProps) => {
-  const data =
-    useRouteLoaderData<Route.ComponentProps['loaderData']>('components-page');
-  if (!data) return null;
-
-  const { stories } = data;
-
-  const foundStory = stories.find((s) => s.name === story);
-  if (!foundStory) return <Alert lang='en'>Story not found: {story}</Alert>;
-  return (
-    <LiveComponent
-      story={`${foundStory.code}\n\nrender(<${foundStory.name} />)`}
-      layout={layout}
-    />
-  );
-};
 
 const DoDontComponent = ({
   story,
