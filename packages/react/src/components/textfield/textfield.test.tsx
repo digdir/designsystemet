@@ -6,10 +6,9 @@ import type { TextfieldProps } from './textfield';
 import { Textfield } from './textfield';
 
 const user = userEvent.setup();
-const getCountText = async () => {
+const getCountText = async (text: string) => {
   const counter = await screen.findByTestId('counter');
-  await new Promise((resolve) => setTimeout(resolve, 10)); // Let mutation observer run first
-  return counter?.getAttribute('data-label');
+  return await vi.waitUntil(() => counter?.getAttribute('data-label') === text);
 };
 const withCounterTestId = (counter: number) =>
   ({
@@ -119,7 +118,7 @@ describe('Textfield', () => {
         onChange={() => {}}
       />,
     );
-    expect(await getCountText()).toBe('5 tegn igjen');
+    expect(await getCountText('5 tegn igjen')).toBeTruthy();
 
     rerender(
       <Textfield
@@ -130,7 +129,7 @@ describe('Textfield', () => {
       />,
     );
 
-    expect(await getCountText()).toBe('2 tegn igjen');
+    expect(await getCountText('2 tegn igjen')).toBeTruthy();
   });
 
   it('shows over limit message when value exceeds limit via prop change', async () => {
@@ -143,7 +142,7 @@ describe('Textfield', () => {
       />,
     );
 
-    expect(await getCountText()).toBe('3 tegn igjen');
+    expect(await getCountText('3 tegn igjen')).toBeTruthy();
 
     rerender(
       <Textfield
@@ -154,7 +153,7 @@ describe('Textfield', () => {
       />,
     );
 
-    expect(await getCountText()).toBe('1 tegn for mye');
+    expect(await getCountText('1 tegn for mye')).toBeTruthy();
   });
 
   it('Render counter before error validation messages', async () => {
@@ -165,7 +164,7 @@ describe('Textfield', () => {
       error: 'Other invalid condition',
     });
 
-    expect(await getCountText()).toBe('3 tegn for mye');
+    expect(await getCountText('3 tegn for mye')).toBeTruthy();
   });
 });
 
