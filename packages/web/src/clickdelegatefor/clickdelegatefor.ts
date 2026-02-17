@@ -34,10 +34,12 @@ const getDelegateTarget = ({ target: el }: Event) => {
   const scope =
     el instanceof Element ? el.closest(SELECTOR_CLICKDELEGATEFOR) : null;
   const id = scope?.getAttribute(ATTR_CLICKDELEGATEFOR);
-  const target = id && document.getElementById(id);
+  const target = (id && document.getElementById(id)) || undefined;
   const skip = target && (el as Element).closest(SELECTOR_SKIP); // Ignore if interactive
 
-  return ((!skip || skip === target) && target) || undefined;
+  return (!skip || skip === target) && !(target as HTMLInputElement)?.disabled
+    ? target
+    : undefined; // Skip disabled inputs
 };
 
 onHotReload('clickdelegatefor', () => [
