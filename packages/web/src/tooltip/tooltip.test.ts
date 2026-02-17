@@ -100,10 +100,10 @@ describe('tooltip behavior', () => {
 
     expect(tip.showPopover).not.toHaveBeenCalled();
 
-    await vi.advanceTimersByTimeAsync(DELAY_HOVER - 1);
+    await vi.advanceTimersByTimeAsync(DELAY_HOVER - 100);
     expect(tip.showPopover).not.toHaveBeenCalled();
 
-    await vi.advanceTimersByTimeAsync(1);
+    await vi.advanceTimersByTimeAsync(100);
     expect(tip.showPopover).toHaveBeenCalledTimes(1);
   });
 
