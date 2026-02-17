@@ -43,15 +43,15 @@ jobs:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}
 
-      - name: Install Playwright browsers
+      - name: Install Playwright browsers with dependencies (if not cached)
         if: steps.playwright-cache.outputs.cache-hit != 'true'
-        run: pnpm exec playwright install --with-deps chromium firefox webkit
-        working-directory: apps/storybook
-
-      - name: Install Playwright system dependencies (if cached)
-        if: steps.playwright-cache.outputs.cache-hit == 'true'
         run: pnpm exec playwright install-deps chromium firefox webkit
         working-directory: apps/storybook
+
+      # - name: Install Playwright system dependencies (if cached)
+      #   if: steps.playwright-cache.outputs.cache-hit != 'true'
+      #   run: pnpm exec playwright install-deps chromium firefox webkit
+      #   working-directory: apps/storybook
 
       - name: Build
         run: pnpm build
