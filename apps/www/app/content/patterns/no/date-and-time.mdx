@@ -10,7 +10,7 @@ order: 10
 
 Hvordan du ber brukeren om dato og klokkeslett, bør ta utgangspunkt i hvilken informasjon du faktisk trenger. Noen datoer er enkle å huske, som fødselsdato, mens andre må leses fra dokumenter eller kort. I noen situasjoner holder det med en omtrentlig dato, som «desember 2017», eller en dato i forhold til i dag, som «4 dager fra nå». Andre ganger skal brukeren velge en dato eller et tidspunkt fra et forhåndsdefinert utvalg.
 
-Unngå å gjøre oppgaven mer komplisert enn nødvendig. Avanserte datovelgere gir ofte lavere tilgjengelighet og mer friksjon enn enkle tekstfelt.
+Unngå å gjøre oppgaven mer komplisert enn nødvendig. Egenbygde datovelgere gir ofte lavere tilgjengelighet og mer friksjon enn enkle tekstfelt. De kan være vanskelige å bruke med tastatur, gi dårlig støtte for skjermleser og kreve unødvendig navigering når brukeren allerede kjenner datoen.
 
 ## Kjente datoer
 
@@ -28,7 +28,7 @@ Når du ber brukeren om en dato slik den står i et bankkort, pass eller annet d
 
 ## Konkret dato i nær fremtid eller fortid
 
-I noen tilfeller skal brukeren velge en konkret dato tett opp mot dagens dato, for eksempel ved bestilling av time eller valg av frist. Da kan det være nyttig med visuell støtte. En [`Input`](/no/components/docs/input/overview) med `type="date"` lar brukeren enten skrive datoen direkte eller bruke nettleserens innebygde datovelger. Dette gir ofte en god balanse mellom fleksibilitet og støtte. Merk at utseende og interaksjon vil variere mellom nettlesere og enheter.
+I noen tilfeller skal brukeren velge en konkret dato tett opp mot dagens dato, for eksempel ved bestilling av time eller valg av frist. Da kan det være nyttig med visuell støtte. En [`Input`](/no/components/docs/input/overview) med `type="date"` lar brukeren enten skrive datoen direkte eller bruke nettleserens innebygde datovelger. Dette gir ofte en god balanse mellom fleksibilitet og støtte. Støtten varierer mellom nettlesere og enheter, både når det gjelder funksjonalitet, utseende og interaksjon, men løsningen er ofte mer tilgjengelig og robust enn egenbygde alternativer.
 
 <Image
   src='/img/date-and-time/example2.webp'
@@ -61,9 +61,9 @@ Bruk separate felt for start- og sluttid, og vis dem tydelig sammen.
 />
 
 ## Omtrentlig tidspunkt
-Hvis brukeren bare trenger å oppgi måned og år, bør det være mulig å gjøre nettopp det. Dette er særlig relevant når hendelsen ligger lengre tilbake i tid, og brukerne ikke nødvendigvis vet nøyaktig tidspunkt. 
+Hvis brukeren bare trenger å oppgi måned og år, bør det være mulig å gjøre nettopp det. Dette er særlig relevant når hendelsen ligger langt tilbake i tid, og brukerne ikke nødvendigvis vet nøyaktig tidspunkt. 
 
-For eksempel kan du la brukeren oppgi omtredlig tid i et fritekstfelt, eller tilby egne felt for kun måned og år slik som i eksempelet under.
+For eksempel kan du la brukeren oppgi omtrentlig tid i et fritekstfelt, eller tilby egne felt for kun måned og år slik som i eksempelet under.
 
 <Image
   src='/img/date-and-time/example5.png'
@@ -94,7 +94,7 @@ Når utvalget er svært begrenset, for eksempel noen få datoer eller tidspunkte
   boxShadow={false}
 />
 
-Når antall valg øker, kan en [`Select`](/no/components/docs/select/overview) for å begrense utvalget være nyttig. Da kan brukeren for eksempel først velge en uke, og deretter velge blant de tilgjengelige tidspunktene i den uken. Du bør kun vise uker som har ledige tidspunkt, og unngå å deaktivere uker som ikke har det, da det kan skape forvirring. Forklar i forkant at det kun er uker med ledige tidspunkt som vises, slik at brukeren forstår hvorfor noen uker ikke er tilgjengelige å velge.
+Når antall valg øker, kan en [`Select`](/no/components/docs/select/overview) være nyttig for å begrense utvalget. Da kan brukeren for eksempel først velge en uke, og deretter velge blant de tilgjengelige tidspunktene i den uken. Du bør kun vise uker som har ledige tidspunkt, og unngå å deaktivere uker som ikke har det, da det kan skape forvirring. Forklar i forkant at det kun er uker med ledige tidspunkt som vises, slik at brukeren forstår hvorfor noen uker ikke er tilgjengelige å velge.
 
 <Image
   src='/img/date-and-time/example8.webp'
@@ -117,6 +117,15 @@ Når brukerne har valgt en dag, bør de se alle tilgjengelige tidspunkter på de
   alt='Forhåndsdefinert utvalg datoer eksempel 5'
   boxShadow={false}
 />
+
+## Oppsummering
+
+Start med behovet, og velg den løsningen som lar brukeren løse oppgaven raskest mulig. Ofte er vanlige tekstfelt mer tilgjengelige og raskere å bruke enn avanserte datovelgere. 
+
+- Vis ferdige valg når alternativene er begrensede
+- La brukeren skrive når svaret er kjent
+- Spør bare om så presis dato og tid som situasjonen krever
+- Bruk innebygd nettleserstøtte fremfor egenbygde løsninger
 
 ## Kilder og relevant informasjon
 - [Who needs a JavaScript date picker? (dbushell.com)](https://pikaday.dbushell.com/)
