@@ -18,12 +18,6 @@ Når du spør om kjente datoer, som fødselsdato eller bryllupsdato, fungerer en
 
 Del gjerne datoen opp i separate felt for dag, måned og år. Det gjør det enklere å skrive inn datoen korrekt og gir bedre støtte for hjelpemidler.
 
-<Image
-  src='/img/date-and-time/example1.webp'
-  alt='Tre separate felt for dag, måned og år'
-  boxShadow={false}
-/>
-
 <Story story="KnownDates" />
 
 Når du ber brukeren om en dato slik den står i et bankkort, pass eller annet dokument, bør feltene samsvare med formatet i dokumentet. Det gjør det enklere å overføre datoen korrekt og reduserer risikoen for feil.
@@ -32,11 +26,7 @@ Når du ber brukeren om en dato slik den står i et bankkort, pass eller annet d
 
 I noen tilfeller skal brukeren velge en konkret dato tett opp mot dagens dato, for eksempel ved bestilling av time eller valg av frist. Da kan det være nyttig med visuell støtte. En [`Input`](/no/components/docs/input/overview) med `type="date"` lar brukeren enten skrive datoen direkte eller bruke nettleserens innebygde datovelger. Dette gir ofte en god balanse mellom fleksibilitet og støtte. Støtten varierer mellom nettlesere og enheter, både når det gjelder funksjonalitet, utseende og interaksjon, men løsningen er ofte mer tilgjengelig og robust enn egenbygde alternativer.
 
-<Image
-  src='/img/date-and-time/example2.webp'
-  alt='Tekstfelt med innebygd datovelger'
-  boxShadow={false}
-/>
+<Story story="NearFuturePast" />
 
 ## Start- og sluttdato
 
@@ -44,11 +34,7 @@ Når brukeren skal oppgi en periode, bør startdato og sluttdato vises tydelig s
 
 Plasser feltene i logisk rekkefølge, og valider at sluttdato ikke er før startdato. Hvis datoene avhenger av hverandre, bør feilmeldinger forklare hva som er galt og hvordan brukeren kan rette det.
 
-<Image
-  src='/img/date-and-time/example3.webp'
-  alt='Tekstfelt for startdato og sluttdato'
-  boxShadow={false}
-/>
+<Story story="StartEndDate" />
 
 ## Klokkeslett – start og slutt
 
@@ -56,11 +42,7 @@ Når brukeren skal oppgi et tidsintervall, som åpningstid eller varighet på et
 
 Bruk separate felt for start- og sluttid, og vis dem tydelig sammen.
 
-<Image
-  src='/img/date-and-time/example4.webp'
-  alt='To tekstfelt for start- og sluttid'
-  boxShadow={false}
-/>
+<Story story="StartEndTime" />
 
 ## Omtrentlig tidspunkt
 Hvis brukeren bare trenger å oppgi måned og år, bør det være mulig å gjøre nettopp det. Dette er særlig relevant når hendelsen ligger langt tilbake i tid, og brukerne ikke nødvendigvis vet nøyaktig tidspunkt. 
