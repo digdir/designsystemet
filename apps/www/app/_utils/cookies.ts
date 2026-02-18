@@ -7,5 +7,5 @@ export const userConsent = createCookie('designsystemet-consent', {
   path: '/',
   httpOnly: true,
   secure: process.env.NODE_ENV === 'production',
-  sameSite: 'lax',
+  sameSite: 'none',
 });
