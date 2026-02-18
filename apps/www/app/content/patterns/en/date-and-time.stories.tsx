@@ -232,23 +232,29 @@ export const PredefinedOptions2EN = () => {
             <Select.Option value='' disabled>
               Select a week …
             </Select.Option>
+            <Select.Option value='week8'>
+              Week 8 (16 Feb – 22 Feb)
+            </Select.Option>
+            <Select.Option value='week9'>
+              Week 9 (23 Feb – 1 March)
+            </Select.Option>
             <Select.Option value='week10'>
-              Week 10 (2 March - 8 March)
+              Week 10 (2 March – 8 March)
             </Select.Option>
             <Select.Option value='week11'>
-              Week 11 (9 March - 15 March)
+              Week 11 (9 March – 15 March)
             </Select.Option>
             <Select.Option value='week12'>
-              Week 12 (16 March - 22 March)
+              Week 12 (16 March – 22 March)
             </Select.Option>
             <Select.Option value='week14'>
-              Week 14 (30 March - 5 April)
+              Week 14 (30 March – 5 April)
             </Select.Option>
             <Select.Option value='week15'>
-              Week 15 (6 April - 12 April)
+              Week 15 (6 April – 12 April)
             </Select.Option>
             <Select.Option value='week16'>
-              Week 16 (13 April - 19 April)
+              Week 16 (13 April – 19 April)
             </Select.Option>
           </Select>
         </Field>

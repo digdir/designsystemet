@@ -228,6 +228,8 @@ export const PredefinedOptions2 = () => {
             <Select.Option value='' disabled>
               Velg en uke …
             </Select.Option>
+            <Select.Option value='uke8'>Uke 8 (16.feb - 22.feb)</Select.Option>
+            <Select.Option value='uke9'>Uke 9 (23.feb - 1.mars)</Select.Option>
             <Select.Option value='uke10'>
               Uke 10 (2.mars - 8.mars)
             </Select.Option>
