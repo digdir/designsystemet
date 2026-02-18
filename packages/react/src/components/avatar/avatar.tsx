@@ -6,14 +6,17 @@ import { Fragment, forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
+type AriaHidden = HTMLAttributes<HTMLSpanElement>['aria-hidden'];
 type AriaAttributes =
   | {
       'aria-label': string; // Require aria-label if no data-tooltip
       'data-tooltip'?: never;
+      'aria-hidden'?: AriaHidden;
     }
   | {
       'aria-label'?: never;
       'data-tooltip': string; // Require data-tooltip if no aria-label
+      'aria-hidden'?: AriaHidden;
     }
   | {
       'aria-label'?: string; // Make both optional if aria-hidden
