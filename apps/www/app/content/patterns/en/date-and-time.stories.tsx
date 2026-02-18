@@ -223,7 +223,9 @@ export const PredefinedOptions2EN = () => {
         forward.
       </Fieldset.Description>
 
-      <div style={{ display: 'flex', gap: 'var(--ds-size-6)' }}>
+      <div
+        style={{ display: 'flex', gap: 'var(--ds-size-6)', flexWrap: 'wrap' }}
+      >
         <Field>
           <Label>Select preferred week</Label>
           <Select defaultValue=''>
