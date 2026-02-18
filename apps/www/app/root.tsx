@@ -109,18 +109,11 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     },
   ];
 
-  return data(
-    {
-      lang: params.lang || 'no',
-      menu,
-      centerLinks,
-    },
-    {
-      headers: {
-        'Cache-Control': 'no-store, must-revalidate',
-      },
-    },
-  );
+  return data({
+    lang: params.lang || 'no',
+    menu,
+    centerLinks,
+  });
 };
 
 type DocumentProps = {
