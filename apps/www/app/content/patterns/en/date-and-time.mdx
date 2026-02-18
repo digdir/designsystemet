@@ -10,11 +10,11 @@ order: 10
 
 How you ask users for date and time should be based on the information you actually need. Some dates are easy to remember, such as a date of birth, while others must be read from documents or cards. In some situations, an approximate date is sufficient, such as “December 2017”, or a date relative to today, such as “4 days from now”. In other cases, users need to choose a date or time from a predefined set of options.
 
-Avoid making the task more complicated than necessary. Custom-built date pickers often result in lower accessibility and more friction than simple text inputs. They can be difficult to use with a keyboard, provide poor screen reader support, and require unnecessary navigation when the user already knows the date.
+Avoid making the task more complicated than necessary. Custom-built date pickers often result in lower accessibility and more friction than simple text fields. They can be difficult to use with a keyboard, provide poor support for screen readers, and require unnecessary navigation when the user already knows the date.
 
 ## Known dates
 
-When asking for known dates, such as date of birth or wedding date, simple text inputs work well. Users already know the answer and often prefer to type it directly instead of navigating a calendar.
+When asking for known dates, such as a date of birth or wedding date, simple text fields work well. Users already know the answer and often prefer to type it directly instead of navigating a calendar.
 
 Consider splitting the date into separate fields for day, month and year. This makes it easier to enter the date correctly and provides better support for assistive technologies.
 
@@ -22,47 +22,9 @@ Consider splitting the date into separate fields for day, month and year. This m
 
 When asking users for a date as it appears on a bank card, passport or other document, the fields should match the format shown in the document. This makes it easier to transfer the date correctly and reduces the risk of errors.
 
-## Specific date in the near future or past
-
-In some cases, users need to choose a specific date close to today, for example when booking an appointment or setting a deadline. In these situations, visual support can be helpful. An [`Input`](/en/components/docs/input/overview) with `type="date"` allows users to either type the date directly or use the browser’s built-in date picker. This often provides a good balance between flexibility and support.
-
-Support varies between browsers and devices in terms of functionality, appearance and interaction, but the solution is often more accessible and robust than custom-built alternatives.
-
-<Story story="NearFuturePastEN" />
-
-## Start and end date
-
-When users need to provide a period, the start date and end date should be clearly shown together. Use two separate fields and make it clear which date is which.
-
-Place the fields in a logical order and validate that the end date is not earlier than the start date. If the dates depend on each other, error messages should clearly explain what is wrong and how the user can fix it.
-
-<Story story="StartEndDateEN" />
-
-## Time – start and end
-
-When users need to provide a time interval, such as opening hours or the duration of a meeting, an [`Input`](/en/components/docs/input/overview) with `type="time"` works well. It allows users to type the time directly while also benefiting from browser support.
-
-Use separate fields for start and end time, and display them clearly together.
-
-<Story story="StartEndTimeEN" />
-
-## Approximate date
-
-If users only need to provide month and year, they should be able to do exactly that. This is particularly relevant when the event took place a long time ago and users may not know the exact date.
-
-For example, you can allow users to provide an approximate date in a free text field, or offer separate fields for month and year only, as shown in the example below.
-
-<Story story="ApproximateDateEN" />
-
-## Date relative to another date
-
-In some situations, it is more natural to ask for dates relative to another date, for example when setting up a reminder. In these cases, it may be better to use a [`Select`](/en/components/docs/select/overview) to offer options such as “tomorrow”, “in 3 days” or “1 day before”. If the day of the week is important for the task, it should also be clearly displayed.
-
-<Story story="RelativeDateEN" />
-
 ## Date from a predefined set of options
 
-If you know that users need to choose a date or time from a limited set of options, for example available appointment slots in the coming week, it may be more efficient to present these as ready-made choices.
+If you know that users need to choose a date or time from a limited set of options, for example available appointments in the coming week, it may be more efficient to present these as ready-made choices.
 
 When the number of options is very limited, such as a few dates or times, [`Radio`](/en/components/docs/radio/overview) can be a good choice. It allows users to quickly select an option without having to type anything.
 
@@ -72,22 +34,60 @@ When the number of options is very limited, such as a few dates or times, [`Radi
 
 When the number of options increases, a [`Select`](/en/components/docs/select/overview) can be useful to narrow down the list. Users can choose preferred weeks, days or time ranges, and then see the available options based on that selection.
 
-Note: The example below is not connected to an actual data source. It illustrates how users can narrow down the options before seeing the available appointment slots.
+Note: The example below is not connected to an actual data source. It illustrates how users can narrow down the options before seeing the available appointments.
 
 <Story story="PredefinedOptions2EN" />
 
-You should only show options that have available appointments, and avoid disabling weeks without availability, as this may create confusion. Explain in advance that only weeks with available slots are shown, so users understand why some weeks are not available.
+You should only show options that have available appointments, and avoid disabling weeks without availability, as this may create confusion. Explain in advance that only weeks with available times are shown, so users understand why some weeks are not available to select.
+
+## Specific date in the near future or past
+
+In some cases, when users need to choose a specific date close to today, visual support can be helpful. An [`Input`](/en/components/docs/input/overview) with `type="date"` allows users to either enter the date directly or use the browser’s built-in date picker. This often provides a good balance between flexibility and support.
+
+Support varies between browsers and devices in terms of functionality, appearance and interaction, but the solution is often more accessible and robust than custom-built alternatives.
+
+<Story story="NearFuturePastEN" />
+
+## Start and end date
+
+When users need to provide a period, the start date and end date should be clearly shown together. Use two separate fields and make it clear which date is which.
+
+Place the fields in a logical order and validate that the end date is not earlier than the start date. If the dates depend on each other, error messages should explain what is wrong and how the user can correct it.
+
+<Story story="StartEndDateEN" />
+
+## Time – start and end
+
+When users need to provide a time interval, such as opening hours or the duration of a meeting, an [`Input`](/en/components/docs/input/overview) with `type="time"` can be used. It allows users to enter the time directly, while the browser provides additional support.
+
+Use separate fields for start and end time, and display them clearly together.
+
+<Story story="StartEndTimeEN" />
+
+## Approximate date
+
+If users only need to provide month and year, they should be able to do exactly that. This is particularly relevant when the event took place a long time ago and users may not know the exact date.
+
+For example, you can allow users to enter an approximate date in a free text field, or provide separate fields for month and year only, as shown in the example below.
+
+<Story story="ApproximateDateEN" />
+
+## Date relative to another date
+
+In some situations, it is more natural to ask for dates relative to another date, for example when setting up a reminder. In these cases, it may be better to use a [`Select`](/en/components/docs/select/overview) to offer options such as “tomorrow”, “in 3 days” or “1 day before”. If the day of the week is important for the task, it should also be clearly displayed.
+
+<Story story="RelativeDateEN" />
 
 ## Summary
 
-Start with the user’s need and choose the solution that allows them to complete the task as quickly as possible. Standard input fields are often more accessible and faster to use than advanced date pickers.
+Start with the need and choose the solution that allows users to complete the task as quickly as possible. Standard text fields are often more accessible and faster to use than advanced date pickers.
 
-- Show predefined options when the alternatives are limited  
+- Show ready-made options when the alternatives are limited  
 - Let users type when the answer is known  
 - Only ask for as precise a date and time as the situation requires  
 - Use built-in browser support rather than custom-built solutions  
 
-## Sources and further reading
+## Sources and relevant information
 
 - [Who needs a JavaScript date picker? (dbushell.com)](https://pikaday.dbushell.com/)
 - [Maybe You Don’t Need a Date Picker (adrianroselli.com)](https://adrianroselli.com/2019/07/maybe-you-dont-need-a-date-picker.html)
