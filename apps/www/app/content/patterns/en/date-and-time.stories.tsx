@@ -19,16 +19,25 @@ export const KnownDatesEN = () => {
           label='Day'
           style={{ maxWidth: '3.5em' }}
           autoComplete='bday-day'
+          inputMode='numeric'
+          pattern='[0-9]*'
+          maxLength={2}
         />
         <Textfield
           label='Month'
           style={{ maxWidth: '3.5em' }}
           autoComplete='bday-month'
+          inputMode='numeric'
+          pattern='[0-9]*'
+          maxLength={2}
         />
         <Textfield
           label='Year'
           style={{ maxWidth: '6.5em' }}
           autoComplete='bday-year'
+          inputMode='numeric'
+          pattern='[0-9]*'
+          maxLength={4}
         />
       </div>
     </Fieldset>
