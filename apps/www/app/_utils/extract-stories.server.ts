@@ -7,6 +7,49 @@ type StoryEntry = {
   file: string;
 };
 
+/**
+ * Extracts exported functions from a given source code string. It looks for both named and default exports of functions.
+ *
+ * @param source - The source code string to extract exported functions from.
+ * @returns An array of objects with the name and code of each exported function.
+ */
+export const extractExportedFunctions = (
+  source: string,
+): { name: string; code: string }[] => {
+  const results: { name: string; code: string }[] = [];
+
+  // Get all positions where exports start
+  const exportStarts: Array<{ index: number; name: string }> = [];
+  const exportRegex = /export\s+(const|function)\s+([A-Za-z0-9_]+)/g;
+  let match = exportRegex.exec(source);
+
+  while (match !== null) {
+    exportStarts.push({
+      index: match.index,
+      name: match[2],
+    });
+    match = exportRegex.exec(source);
+  }
+
+  // Process each export by looking at the text between this export and the next one
+  for (let i = 0; i < exportStarts.length; i++) {
+    const currentExport = exportStarts[i];
+    const nextExport = exportStarts[i + 1];
+
+    // Get the text from this export to either the next export or end of file
+    const startPos = currentExport.index;
+    const endPos = nextExport ? nextExport.index : source.length;
+    const code = source.slice(startPos, endPos).trim();
+
+    results.push({
+      name: currentExport.name,
+      code: code.replace(/^\s*export\s+/, '').trim(),
+    });
+  }
+
+  return results;
+};
+
 // Extract exported story functions from *.stories.tsx and *.dodont.tsx
 export const extractStories = (
   componentPath: string,
@@ -33,43 +76,6 @@ export const extractStories = (
     }
 
     if (files.length === 0) return [];
-
-    const extractExportedFunctions = (
-      source: string,
-    ): { name: string; code: string }[] => {
-      const results: { name: string; code: string }[] = [];
-
-      // Get all positions where exports start
-      const exportStarts: Array<{ index: number; name: string }> = [];
-      const exportRegex = /export\s+(const|function)\s+([A-Za-z0-9_]+)/g;
-      let match = exportRegex.exec(source);
-
-      while (match !== null) {
-        exportStarts.push({
-          index: match.index,
-          name: match[2],
-        });
-        match = exportRegex.exec(source);
-      }
-
-      // Process each export by looking at the text between this export and the next one
-      for (let i = 0; i < exportStarts.length; i++) {
-        const currentExport = exportStarts[i];
-        const nextExport = exportStarts[i + 1];
-
-        // Get the text from this export to either the next export or end of file
-        const startPos = currentExport.index;
-        const endPos = nextExport ? nextExport.index : source.length;
-        const code = source.slice(startPos, endPos).trim();
-
-        results.push({
-          name: currentExport.name,
-          code: code.replace(/^\s*export\s+/, '').trim(),
-        });
-      }
-
-      return results;
-    };
 
     return files.flatMap((file) => {
       const full = join(baseDir, file);
