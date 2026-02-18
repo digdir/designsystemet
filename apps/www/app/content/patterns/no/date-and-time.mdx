@@ -49,22 +49,13 @@ Hvis brukeren bare trenger å oppgi måned og år, bør det være mulig å gjør
 
 For eksempel kan du la brukeren oppgi omtrentlig tid i et fritekstfelt, eller tilby egne felt for kun måned og år slik som i eksempelet under.
 
-<Image
-  src='/img/date-and-time/example5.png'
-  alt='Felt for måned og år'
-  boxShadow={false}
-/>
-
+<Story story="ApproximateDate" />
 
 ## Dato relativt til en annen dato
 
-I noen situasjoner er det mer naturlig å spørre om datoer relativt til i dag eller til en annen dato, for eksempel når brukeren setter opp en påminnelse. Da kan det være bedre å bruke en [`Select`](/no/components/docs/select/overview) for å gi brukeren valg om «i morgen», «om 3 dager» eller «1 dag før». Hvis ukedag er viktig for oppgaven, bør denne vises tydelig i tillegg.
+I noen situasjoner er det mer naturlig å spørre om tidspunkter relativt til en annen dato, for eksempel når brukeren setter opp en påminnelse. Da kan det være bedre å bruke en [`Select`](/no/components/docs/select/overview) for å gi brukeren valg om «i morgen», «om 3 dager» eller «1 dag før». Hvis ukedag er viktig for oppgaven, bør denne vises tydelig i tillegg.
 
-<Image
-  src='/img/date-and-time/example6.png'
-  alt='Valg av relative datoer'
-  boxShadow={false}
-/>
+<Story story="RelativeDate" />
 
 ## Dato fra et forhåndsdefinert utvalg
 
@@ -72,11 +63,7 @@ Hvis du vet at brukeren skal velge en dato eller et tidspunkt fra et begrenset u
 
 Når utvalget er svært begrenset, for eksempel noen få datoer eller tidspunkter, kan [`Radio`](/no/components/docs/radio/overview) være et godt valg. Det gjør det raskt og enkelt å velge et alternativ uten å måtte skrive noe selv.
 
-<Image
-  src='/img/date-and-time/example7.webp'
-  alt='Forhåndsdefinert utvalg datoer eksempel 1'
-  boxShadow={false}
-/>
+<Story story="PredefinedOptions1" />
 
 Når antall valg øker, kan en [`Select`](/no/components/docs/select/overview) være nyttig for å begrense utvalget. Da kan brukeren for eksempel først velge en uke, og deretter velge blant de tilgjengelige tidspunktene i den uken. Du bør kun vise uker som har ledige tidspunkt, og unngå å deaktivere uker som ikke har det, da det kan skape forvirring. Forklar i forkant at det kun er uker med ledige tidspunkt som vises, slik at brukeren forstår hvorfor noen uker ikke er tilgjengelige å velge.
 
