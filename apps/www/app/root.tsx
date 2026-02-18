@@ -111,16 +111,26 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 
   const cookieHeader = request.headers.get('Cookie');
   const consent = await userConsent.parse(cookieHeader);
+  /*   console.log('cookieHeader:', cookieHeader);
+  console.log('parsed consent:', consent);
+  console.log('CONSENT_VERSION:', CONSENT_VERSION); */
   const showConsentBanner = !consent || consent.version !== CONSENT_VERSION;
   const includeSiteimprove = consent && consent.choice === 'all';
 
-  return data({
-    lang: params.lang || 'no',
-    menu,
-    centerLinks,
-    showConsentBanner,
-    includeSiteimprove,
-  });
+  return data(
+    {
+      lang: params.lang || 'no',
+      menu,
+      centerLinks,
+      showConsentBanner,
+      includeSiteimprove,
+    },
+    /*     {
+      headers: {
+        'Cache-Control': 'no-store, must-revalidate',
+      },
+    }, */
+  );
 };
 
 type DocumentProps = {
