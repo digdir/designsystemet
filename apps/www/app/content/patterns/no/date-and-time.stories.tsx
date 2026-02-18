@@ -214,9 +214,9 @@ export const PredefinedOptions2 = () => {
       <Fieldset.Legend data-size='lg'>Når vil du ha time?</Fieldset.Legend>
       <Fieldset.Description>
         Dersom noen uker ikke er tilgjengelige å velge, betyr det at det ikke
-        finnes ledige tidspunkt i den uken. Foretrekker du fredager, kan du
-        velge en fast ukedag i stedet for uke. Da vises alle ledige tidspunkt på
-        fredager fremover.
+        finnes ledige tidspunkt i den uken. Foretrekker du tirsdager, kan du
+        velge en bestemt ukedag i stedet for uke. Da vises alle ledige tidspunkt
+        på tirsdager fremover.
       </Fieldset.Description>
 
       {/* Filtrering */}

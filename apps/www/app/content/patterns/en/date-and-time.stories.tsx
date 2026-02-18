@@ -218,8 +218,8 @@ export const PredefinedOptions2EN = () => {
       </Fieldset.Legend>
       <Fieldset.Description>
         If some weeks are not available, it means there are no free appointments
-        that week. If you prefer Fridays, you can choose a fixed weekday instead
-        of a week. You will then see all available appointments on Fridays going
+        that week. If you prefer Tuesdays, you can choose a weekday instead of a
+        week. You will then see all available appointments on Tuesdays going
         forward.
       </Fieldset.Description>
 
