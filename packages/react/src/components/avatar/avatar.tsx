@@ -6,17 +6,24 @@ import { Fragment, forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
-type AriaLabel = {
-  /**
-   * The name of the person the avatar represents.
-   */
-  'aria-label'?: string;
-};
-type AriaHidden = Partial<AriaLabel> & { 'aria-hidden': true | 'true' };
+type AriaAttributes =
+  | {
+      'aria-label': string; // Require aria-label if no data-tooltip
+      'data-tooltip'?: never;
+    }
+  | {
+      'aria-label'?: never;
+      'data-tooltip': string; // Require data-tooltip if no aria-label
+    }
+  | {
+      'aria-label'?: string; // Make both optional if aria-hidden
+      'data-tooltip'?: string;
+      'aria-hidden': true | 'true';
+    };
 
 export type AvatarProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLSpanElement>,
-  (AriaLabel | AriaHidden) & {
+  AriaAttributes & {
     /**
      * The size of the avatar.
      */
