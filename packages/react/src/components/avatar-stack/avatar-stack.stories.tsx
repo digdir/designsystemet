@@ -263,26 +263,18 @@ export const WithTooltip: Story = (args) => (
     >
       <legend>expandable</legend>
       <AvatarStack {...args} expandable='fixed'>
-        <Tooltip content='Ola Nordmann'>
-          <Avatar tabIndex={0}>
-            <img src='https://placebeard.it/100x100' alt='' />
-          </Avatar>
-        </Tooltip>
-        <Tooltip content='Kari Nordmann'>
-          <Avatar tabIndex={0}>
-            <img src='https://i.pravatar.cc/100' alt='' />
-          </Avatar>
-        </Tooltip>
-        <Tooltip content='Person 2'>
-          <Avatar tabIndex={0}>
-            <img src='https://i.pravatar.cc/100' alt='' />
-          </Avatar>
-        </Tooltip>
-        <Tooltip content='Person 3'>
-          <Avatar tabIndex={0}>
-            <img src='https://i.pravatar.cc/100' alt='' />
-          </Avatar>
-        </Tooltip>
+        <Avatar tabIndex={0} data-tooltip='Ola Nordmann'>
+          <img src='https://placebeard.it/100x100' alt='' />
+        </Avatar>
+        <Avatar tabIndex={0} data-tooltip='Kari Nordmann'>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+        <Avatar tabIndex={0} data-tooltip='Person 2'>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
+        <Avatar tabIndex={0} data-tooltip='Person 3'>
+          <img src='https://i.pravatar.cc/100' alt='' />
+        </Avatar>
       </AvatarStack>
     </fieldset>
     <fieldset
