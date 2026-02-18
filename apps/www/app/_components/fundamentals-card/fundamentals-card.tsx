@@ -2,7 +2,7 @@ import { Card, Heading, Paragraph } from '@digdir/designsystemet-react';
 import cl from 'clsx/lite';
 import type * as React from 'react';
 
-import { Link } from 'react-router';
+import { RRLink } from '../link';
 import classes from './fundamentals-card.module.css';
 
 export interface FundamentalsCardProps {
@@ -37,7 +37,7 @@ const FundamentalsCard = ({
         </div>
         <div>
           <Heading level={level} data-size='xs' className={classes.title}>
-            <Link to={url}>{title}</Link>
+            <RRLink to={url}>{title}</RRLink>
           </Heading>
           <Paragraph data-size='sm' variant='long' className={classes.desc}>
             {description}

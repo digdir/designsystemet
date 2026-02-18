@@ -9,8 +9,13 @@
   border-radius: var(--dsc-errorsummary-border-radius);
   box-sizing: border-box;
   padding: var(--dsc-errorsummary-padding);
+  animation: _is-visible 0ms; /* Used in JS to detect visibility */
 
   @composes ds-focus from './base.css';
+
+  &:not([hidden]) {
+    display: block;
+  }
 
   & :is(h1, h2, h3, h4, h5, h6) {
     color: var(--dsc-errorsummary-heading-color);
@@ -24,5 +29,10 @@
 
   & li:last-of-type {
     margin-bottom: 0;
+  }
+}
+@keyframes _is-visible {
+  from {
+    opacity: 0;
   }
 }

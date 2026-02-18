@@ -2,6 +2,7 @@ import type { OptionHTMLAttributes } from 'react';
 import { forwardRef, useContext } from 'react';
 import type { DefaultProps } from '../../types';
 import { SuggestionContext } from './suggestion';
+import '@digdir/designsystemet-web'; // Load u-option polyfill
 
 export type SuggestionEmptyProps = DefaultProps &
   OptionHTMLAttributes<HTMLOptionElement>;
@@ -21,5 +22,13 @@ export const SuggestionEmpty = forwardRef<
   SuggestionEmptyProps
 >(function SuggestionEmpty(rest, ref) {
   const { isEmpty } = useContext(SuggestionContext);
-  return isEmpty ? <u-option data-empty value='' ref={ref} {...rest} /> : null;
+  return isEmpty ? (
+    <u-option
+      data-empty
+      ref={ref}
+      suppressHydrationWarning // Since <u-option> adds attributes
+      value=''
+      {...rest}
+    />
+  ) : null;
 });

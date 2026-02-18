@@ -41,58 +41,42 @@ If you put both a `Breadcrumbs.Link` and a `Breadcrumbs.List` directly in `Bread
 
 ## HTML
 
-The class name `ds-breadcrumbs` is placed on a `<nav>` element.
-This element should also have an `aria-label` that explains the function of the navigation, for example "You are here:".
-You do not need an `aria-label` if you have a visible heading that explains the function of the navigation.
+The class name `ds-breadcrumbs` is added to a `<ds-breadcrumbs>`.
+The web component automatically handles `aria-current="page"` on the last link in the list.
 
-If you only want to display the path, put `<ol>` directly inside the `<nav>` element. The chevron between the elements is added automatically.
-
-**It is important that the last page is marked with `aria-current="page"`.**
+If you want to do this yourself, you can use `<nav class="ds-breadcrumbs" aria-label="You are here:">`.
 
 ```html
-<nav class="ds-breadcrumbs" aria-label="You are here:">
-<ol>
-<li>
-<a href="#" class="ds-link">Level 1</a>
-</li>
-<li>
-<a href="#" class="ds-link">Level 2</a>
-</li>
-<li>
-<a href="#" class="ds-link">Level 3</a>
-</li>
-</ol>
-</nav>
+<ds-breadcrumbs class="ds-breadcrumbs" aria-label="You are here:">
+  <ol>
+    <li><a href="#none">level 1</a></li>
+    <li><a href="#none">level 2</a></li>
+    <li><a href="#none">level 3</a></li>
+  </ol>
+</ds-breadcrumbs>
 ```
 
 ### Back button only
 
 ```html
-<nav class="ds-breadcrumbs" aria-label="You are here:">
-<a href="#" class="ds-link">Back to level 2</a>
-</nav>
+<ds-breadcrumbs class="ds-breadcrumbs" aria-label="You are here:">
+  <a href="#none" aria-label="Back to level 2">Back to level 2</a>
+</ds-breadcrumbs>
 ```
 
 ### Path or back button based on screen width
 
 ```html
-<nav aria-label="You are here:" class="ds-breadcrumbs">
-<a class="ds-link" href="#" aria-label="Back to Level 3">Level 3</a>
-<ol>
-<li>
-<a class="ds-link" href="#">Level 1</a>
-</li>
-<li>
-<a class="ds-link" href="#">Level 2</a>
-</li>
-<li>
-<a class="ds-link" href="#">Level 3</a>
-</li>
-<li>
-<a class="ds-link" href="#" aria-current="page">Level 4</a>
-</li>
-</ol>
-</nav>
+<ds-breadcrumbs class="ds-breadcrumbs" aria-label="You are here:">
+  <a href="#none" aria-label="Back to level 3">
+    level 3
+  </a>
+  <ol>
+    <li><a href="#none">level 1</a></li>
+    <li><a href="#none">level 2</a></li>
+    <li><a href="#none">level 3</a></li>
+  </ol>
+</ds-breadcrumbs>
 ```
 
 ## CSS variables and data attributes

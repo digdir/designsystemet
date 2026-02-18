@@ -56,7 +56,16 @@ You can use `popover` in plain HTML by using the `popover` attribute on an eleme
 
 The class name `ds-popover` is applied to the element that is the popover.
 
-In React, we use [`floating-ui` (floating-ui.com)](https://floating-ui.com/) for positioning, and this is a library that can also be used in pure JavaScript applications.
+When you use `@digdir/designsystemet-web`, we add a listener that automatically positions the popover correctly using `floating-ui`.
+You can control positioning with attributes on the popover itself.
+| attribute     | type   | default    | required |
+|---------------|--------|------------|----------|
+| data-placement | string | top        | false    |
+| data-overscroll | `'contain' \| undefined` | undefined | undefined       | false    |
+| data-autoplacement | boolean | true          | false    |
+
+
+**If you don't use the class `ds-popover` you need to add the CSS property `--_ds-floating` to the popover element.** This can be `top`, `bottom`, `left` or `right`.
 
 We recommend reading about [popover (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover).
 
@@ -76,7 +85,7 @@ It is portable to others who use `floating-ui`, and you can find [the code on gi
 If you want the trigger inline in text, you still have to use `<button>`, but you can add `data-popover="inline"` to get the correct styling.
 
 ```html
-<p class="ds-paragraph">
+<p>
   We use
   <button popovertarget="my-popover" data-popover="inline">design tokens</button>
   to ensure that we have a consistent design.
@@ -86,8 +95,7 @@ class="ds-popover"
 id="my-popover"
 popover="manual"
 >
-  <p class="ds-paragraph">
-  <strong style="display: block;">Design tokens</strong>
+  <p>
   Design tokens are a collection of variables that define the design in a
   design system.
   </p>

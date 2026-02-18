@@ -2,7 +2,7 @@ import type { Color, SeverityColors } from '@digdir/designsystemet-types';
 import { Slot, Slottable } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
-import { forwardRef } from 'react';
+import { forwardRef, version } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { Spinner } from '../spinner/spinner';
@@ -60,15 +60,22 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       icon = false,
       loading = false,
       variant = 'primary',
+      popoverTarget,
+      popovertarget,
       ...rest
     },
     ref,
   ) {
     const Component = asChild ? Slot : 'button';
+    const popoverVal = popoverTarget ?? popovertarget;
+    const popoverKey = version.startsWith('19')
+      ? 'popoverTarget'
+      : 'popovertarget';
 
     // Fallbacks to undefined to prevent rendering attribute="false"
     return (
       <Component
+        suppressHydrationWarning // Might get augmented through designsystemet-web with aria-haspopup etc.
         aria-busy={Boolean(loading) || undefined}
         aria-disabled={Boolean(loading) || undefined}
         className={cl('ds-button', className)}
@@ -78,7 +85,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         /* don't set type when we use `asChild` */
         type={asChild ? undefined : 'button'}
         /* if consumers set type, our default does not set anything, as `rest` contains this */
-        {...rest}
+        {...{ [popoverKey]: popoverVal, ...rest }}
       >
         {loading === true ? (
           <Spinner aria-hidden='true' />

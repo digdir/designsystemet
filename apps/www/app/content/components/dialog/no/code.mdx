@@ -4,11 +4,13 @@
 
 ## Bruk
 
-For å legge til egen lukk knapp, kan du enten bruke `ref` og `Dialog.close()` på en knapp du lager selv, eller legge på `data-command="close"` på en knapp inni dialogen.
+For å legge til egen lukk knapp, kan du enten bruke `command="close" commandfor="DIALOG-ID"` ellr `ref` og `Dialog.close()` på en knapp du lager selv.
 Dersom knappen er tom vil den få et ikon.
 Dersom knappen er direkte barn av dialogen og første element, vil den flyte til topp høyre.
 
-`data-command` er inspirert av [Invoker Commands (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API).
+<Card data-color="info">
+  Attributtene [`command` (developer.mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/command) og `commandfor` er en relativt ny del av web-standarden som lar knapper utføre handlinger på andre elementer deklarativt. Vi legger automatisk til [invokers-polyfill (npmjs.com)](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2) for å støtte eldre nettlesere.
+</Card>
 
 ```tsx
 import { Dialog, Heading, Paragraph } from '@digdir/designsystemet-react';
@@ -22,20 +24,25 @@ import { Dialog, Heading, Paragraph } from '@digdir/designsystemet-react';
 </Dialog.TriggerContext>
 
 /* uten context */
-const dialogRef = useRef<HTMLDialogElement>(null);
-
-<Button onClick={() => dialogRef.current?.showModal()}>Open Dialog</Button>
-<Dialog ref={dialogRef}>
-  Dialog content
+<Button command="show-modal" commandfor="my-dialog">Open Dialog</Button>
+<Dialog id="my-dialog">
+Dialog content
 </Dialog>
 ```
 
 ## Eksempel
 
+### Med command og uten context
+
+Dersom du ikke vil bruke `Dialog.TriggerContext`, kan du bruke `command="show-modal"` eller `command="--show-non-modal"` og `commandfor="DIALOG-ID"` for å åpne dialogen fra en ekstern trigger.
+
+<Story story="WithCommand" />
+
 ### Med ref og uten context
 
 Dersom du ikke vil bruke `Dialog.TriggerContext`, kan du bruke `ref` for å åpne dialogen fra en ekstern trigger.
 Du bruker da native metoder på `<dialog>`-elementet, som `showModal()` eller `show()`.
+Merk at knappen som åpner dialogen da bør ha `aria-haspopup="dialog"`-attributtet.
 
 <Story story="WithRef" />
 
@@ -57,7 +64,7 @@ Bruk flere `Dialog.Block` hvis du vil dele opp dialogen med skillelinjer til for
 ### Lukk ved klikk utenfor
 
 Vi bruker `closedby="any"` for å lukke dialogen når brukeren klikker utenfor.
-Dette fungerer kun når `modal={true}`, fordi en ikke-modal dialog ikke har noe `:backdrop`.
+Vi legger til polyfill så `closedby="any"` også fungerer i eldre Safari.
 
 <Story story="CloseWithClickOutside" />
 
@@ -84,37 +91,15 @@ Blokker inne i dialogen får klassenavn som `ds-dialog__block`.
 </dialog>
 ```
 
-I HTML må du selv koble `<dialog>`-elementet til en trigger, og håndtere åpning og lukking av dialogen med JavaScript.
-
-**Merk at knappen som åpner dialogen bør ha `aria-haspopup="dialog"`-attributtet.**
+I HTML må du selv koble `<dialog>`-elementet til en trigger via `command="show-modal"` eller `command="--show-non-modal"` og `commandfor="DIALOG-ID"`.
 
 ```html
-<button id="openDialog" aria-haspopup="dialog" type="button">Open Dialog</button>
-<dialog id="myDialog" class="ds-dialog">
+<button command="show-dialog" commandfor="my-dialog" type="button">Open Dialog</button>
+<dialog id="my-dialog" class="ds-dialog">
   <div>Content</div>
-  <button id="closeDialog">Close</button>
+  <button command="close" commandfor="my-dialog">Close</button>
 </dialog>
-
-<script>
-  const dialog = document.getElementById('myDialog');
-  const openButton = document.getElementById('openDialog');
-  const closeButton = document.getElementById('closeDialog');
-
-  openButton.addEventListener('click', () => {
-    dialog.showModal(); // eller dialog.show() for ikke-modal
-  });
-
-  closeButton.addEventListener('click', () => {
-    dialog.close();
-  });
-</script>
 ```
-
-Vi har utvidet `Dialog` i React til å støtte `data-command` for lukk-knapp, og `closedby`-attributtet for å lukke dialogen ved klikk utenfor.
-Dette må selv implementeres i HTML/JavaScript dersom du ikke bruker React-komponenten.
-
-[`closedby` er støtta i nokre nettlesarar (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy)
-
 
 ## CSS variabler og data-attributter
 Alle CSS variabler brukt av `ds-dialog__block` er satt på `ds-dialog`.

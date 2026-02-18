@@ -9,10 +9,10 @@ A good rule of thumb is that **`Fieldset` is a set of `Field`**
 
 ```tsx
 <Field>
-<Label>Short description</Label>
-<Field.Description>Description</Field.Description>
-<Input />
-<ValidationMessage>Error message</ValidationMessage>
+  <Label>Short description</Label>
+  <Field.Description>Description</Field.Description>
+  <Input />
+  <ValidationMessage>Error message</ValidationMessage>
 </Field>
 ```
 
@@ -40,62 +40,65 @@ You can change the text by submitting props, which you can see at the top of the
 
 ## HTML
 
-You can get styling from `Field` with the class name `ds-field`.
-On the description you must set `data-field="description"` to get correct styling.
-
-Also, there is some javascript that `Field` runs internally, so this must be connected yourself.
-
-The code we use is not react-specific, so you can copy our code until we have a better alternative outside of React.
-
-[`fieldObserver` (github.com)](https://github.com/digdir/designsystemet/blob/main/packages/react/src/components/field/field-observer.ts)
+Add the class name `ds-field` to the `<ds-field>` element.
+`<ds-field>` links together label, input and validation message.
 
 ```html
-<div class="ds-field">
-  <label
-  class="ds-label"
-  data-weight="medium"
-  for="field-input"
-  >Last name</label>
-  <div data-field="description" id="field-description">Last name cannot contain spaces</div>
-  <input
-  class="ds-input"
-  type="text"
-  value="Nordic Swedish"
-  id="field-input"
-  aria-describedby="field-error field-description"
-  >
-  <p
-  class="ds-validation-message"
-  data-field="validation"
-  id="field-error"
-  >You cannot have spaces in your last name</p>
-</div>
-
+<ds-field class="ds-field">
+  <label class="ds-label">Label</label>
+  <input type="text" placeholder="Placeholder" class="ds-input" />
+  <div class="ds-validation-message" data-field="validation">
+    This is an error message
+  </div>
+</ds-field>
 ```
 
-**Make sure the form field has `aria-describedby` which refers to both description and validation message.**.
-Error should be placed first in `aria-describedby` so that screen readers read the error message first.
+### Number of characters
 
-`data-field="validation"` is only needed if you connect `fieldObserver`.
+To get a counter on input and textarea, add a `<p>` with the attribute `data-field="counter"` inside the `ds-field`.
+
+```html
+<ds-field class="ds-field">
+  <label class="ds-label">Label</label>
+  <textarea class="ds-input"></textarea>
+  <p class="ds-validation-message" data-field="counter" data-limit="20" data-over="%d characters too many" data-under="%d characters left"></p>
+</ds-field>
+```
+
+You can control the text in the counter using the following attributes:
+| attribute  | type   | default               | required |
+|------------|--------|-----------------------|----------|
+| data-limit | number | undefined             | true     |
+| data-over  | string | %d tegn for mye       | false    |
+| data-under | string | %d tegn igjen         | false    |
+
+### Indeterminate
+
+To make a `checkbox` indeterminate, add `data-indeterminate="true"` on the `<input>` element.
+
+```html
+<ds-field class="ds-field">
+  <label class="ds-label">Label</label>
+  <input class="ds-input" type="checkbox" data-indeterminate="true" />
+</ds-field>
+```
 
 ### Position
 
 To change the position of elements in `Field`, such as a `Switch`, you can add `data-position="end|start"` to the same element as `ds-field`.
 
 ```html
-<div class="ds-field" data-position="end">
+<ds-field class="ds-field" data-position="end">
   <label
-  class="ds-label"
-  data-weight="medium"
-  for=":mhxbylqzlb8"
+    class="ds-label"
+    data-weight="medium"
   >Flightmode</label>
   <input
-  class="ds-input"
-  role="switch"
-  type="checkbox"
-  id=":mhxbylqzlb8"
+    class="ds-input"
+    role="switch"
+    type="checkbox"
   >
-</div>
+</ds-field>
 ```
 
 ## CSS variables and data attributes

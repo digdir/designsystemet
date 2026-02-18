@@ -1,7 +1,7 @@
 import { ChevronDownIcon, ChevronUpIcon, LinkIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn } from '@storybook/react-vite';
 import { useState } from 'react';
-import { expect, userEvent, within } from 'storybook/test';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 import { Button } from '../';
 import { Dropdown } from './';
 
@@ -29,9 +29,13 @@ export default {
   play: async (ctx) => {
     // When not in Docs mode, automatically open the dropdown
     const button = within(ctx.canvasElement).getByRole('button');
-    await userEvent.click(button);
-    const dropdown = ctx.canvasElement.querySelector('[popover]');
-    await expect(dropdown).toBeVisible();
+    await new Promise((resolve) => {
+      document.addEventListener('animationend', resolve, true); // <== Merk at vi binder event-listener før vi gjør click
+      userEvent.click(button);
+    });
+    const dropdown = ctx.canvasElement.querySelector('.ds-dropdown');
+    await expect(dropdown).toBeInTheDocument();
+    await waitFor(() => expect(dropdown).toBeVisible());
   },
 } satisfies Meta;
 

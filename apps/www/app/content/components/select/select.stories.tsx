@@ -70,7 +70,7 @@ export const ReadOnly = () => {
   return (
     <Field>
       <Label>Velg et fjell</Label>
-      <Select readOnly value='everest'>
+      <Select aria-readonly value='everest'>
         <Select.Option value='everest'>Mount Everest</Select.Option>
       </Select>
     </Field>
@@ -81,7 +81,7 @@ export const ReadOnlyEn = () => {
   return (
     <Field>
       <Label>Select a mountain</Label>
-      <Select readOnly value='everest'>
+      <Select aria-readonly value='everest'>
         <Select.Option value='everest'>Mount Everest</Select.Option>
       </Select>
     </Field>

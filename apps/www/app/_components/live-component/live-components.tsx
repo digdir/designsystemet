@@ -6,12 +6,14 @@ import { prettify } from 'htmlfy';
 import { themes } from 'prism-react-renderer';
 import {
   type ComponentType,
+  createElement,
   type KeyboardEvent,
   useEffect,
   useId,
   useRef,
   useState,
 } from 'react';
+import { renderToString } from 'react-dom/server';
 import { useTranslation } from 'react-i18next';
 import {
   LiveEditor,
@@ -70,7 +72,7 @@ type ContextValue = {
 
 type EditorProps = {
   live: ContextValue;
-  html: HTMLElement | null;
+  html: string;
   id?: string;
   hidden?: boolean;
 };
@@ -82,13 +84,15 @@ const Editor = ({ live, html, id, hidden }: EditorProps) => {
   const [resetCount, setResetCount] = useState(0);
   const [showHTML, setShowHTML] = useState(false);
   const [copied, setCopied] = useState('');
-  const rawHtml = prettify(
-    html?.innerHTML.toString() || 'Unable to parse html',
-    {
-      tag_wrap: 63,
-      content_wrap: 70,
-    },
+  // Truncate SVGs to <svg></svg> to reduce noise
+  const truncatedHtml = (html || 'Unable to parse html').replace(
+    /<svg[^>]*>[\s\S]*?<\/svg>/gi,
+    '<svg></svg>',
   );
+  const rawHtml = prettify(truncatedHtml, {
+    tag_wrap: 63,
+    content_wrap: 70,
+  });
 
   const setupEditorTabIndex = () => {
     const preEl = wrapperRef.current?.querySelector(
@@ -248,9 +252,40 @@ const Editor = ({ live, html, id, hidden }: EditorProps) => {
   );
 };
 const EditorWithLive = withLive(Editor) as ComponentType<{
-  html: HTMLElement | null;
+  html: string;
   id?: string;
   hidden?: boolean;
+}>;
+
+/**
+ * Hidden component that captures the SSR HTML using renderToString.
+ * This gives us the HTML that React produces before hydration,
+ * rather than the DOM after client-side rendering.
+ */
+type HtmlCaptureProps = {
+  live: ContextValue;
+  onHtmlCapture: (html: string) => void;
+};
+
+const HtmlCapture = ({ live, onHtmlCapture }: HtmlCaptureProps) => {
+  const Element = live.element;
+
+  useEffect(() => {
+    if (Element) {
+      try {
+        const html = renderToString(createElement(Element));
+        onHtmlCapture(html);
+      } catch {
+        onHtmlCapture('Unable to render HTML');
+      }
+    }
+  }, [Element, onHtmlCapture]);
+
+  return null;
+};
+
+const HtmlCaptureWithLive = withLive(HtmlCapture) as ComponentType<{
+  onHtmlCapture: (html: string) => void;
 }>;
 
 export const LiveComponent = ({
@@ -265,7 +300,7 @@ export const LiveComponent = ({
     'light',
   );
   const [useInverted, setUseInverted] = useState(false);
-  const [html, setHtml] = useState<HTMLElement | null>(null);
+  const [html, setHtml] = useState<string>('');
   const previewColorScheme = useInverted ? invertedColorScheme : colorScheme;
   const editorId = useId();
 
@@ -312,6 +347,8 @@ export const LiveComponent = ({
       noInline
       theme={colorScheme === 'dark' ? themes.vsDark : themes.vsLight}
     >
+      {/* Hidden component that captures SSR HTML using renderToString */}
+      <HtmlCaptureWithLive onHtmlCapture={setHtml} />
       <div
         className={cl(classes.preview, 'u-long-content')}
         data-color='accent'
@@ -321,7 +358,6 @@ export const LiveComponent = ({
         <LivePreview
           data-color-scheme={previewColorScheme}
           className={classes['live-preview']}
-          ref={setHtml}
         />
         <LiveError className={cl('ds-alert', classes['live-preview-error'])} />
         <ds.Button

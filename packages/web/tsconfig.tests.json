@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./tsc-build",
+    "allowSyntheticDefaultImports": true,
+    "composite": true,
+    "noEmit": true,
+    "types": ["@testing-library/jest-dom", "vitest/globals"]
+  },
+  "include": ["src/**/*.test.ts*", "../../test/vitest.d.ts"],
+  "references": [{ "path": "tsconfig.json" }]
+}
