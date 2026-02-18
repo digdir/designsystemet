@@ -15,7 +15,7 @@ import './app.css';
 import { Error404 } from '@internal/components';
 import { useTranslation } from 'react-i18next';
 import { useChangeLanguage } from 'remix-i18next/react';
-import { CONSENT_VERSION, userConsent } from '~/_utils/cookies';
+import { SiteimproveScript } from './_components/siteimprove-script';
 import { designsystemetRedirects } from './_utils/redirects.server';
 
 export const links = () => {
@@ -109,21 +109,11 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
     },
   ];
 
-  const cookieHeader = request.headers.get('Cookie');
-  const consent = await userConsent.parse(cookieHeader);
-  /*   console.log('cookieHeader:', cookieHeader);
-  console.log('parsed consent:', consent);
-  console.log('CONSENT_VERSION:', CONSENT_VERSION); */
-  const showConsentBanner = !consent || consent.version !== CONSENT_VERSION;
-  const includeSiteimprove = consent && consent.choice === 'all';
-
   return data(
     {
       lang: params.lang || 'no',
       menu,
       centerLinks,
-      showConsentBanner,
-      includeSiteimprove,
     },
     {
       headers: {
@@ -135,10 +125,9 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
 
 type DocumentProps = {
   children: React.ReactNode;
-  includeSiteimprove?: boolean;
 };
 
-function Document({ children, includeSiteimprove }: DocumentProps) {
+function Document({ children }: DocumentProps) {
   const { i18n } = useTranslation();
 
   return (
@@ -165,24 +154,17 @@ function Document({ children, includeSiteimprove }: DocumentProps) {
         {/* This uses sessionStorage, but we deem it necessary to make navigation work as expected */}
         <ScrollRestoration />
         <Scripts />
-        {process.env.NODE_ENV === 'production' && includeSiteimprove && (
-          <script
-            src='https://siteimproveanalytics.com/js/siteanalyze_6255470.js'
-            crossOrigin='anonymous'
-          />
-        )}
+        <SiteimproveScript />
       </body>
     </html>
   );
 }
 
-export default function App({
-  loaderData: { lang, includeSiteimprove },
-}: Route.ComponentProps) {
+export default function App({ loaderData: { lang } }: Route.ComponentProps) {
   useChangeLanguage(lang);
 
   return (
-    <Document includeSiteimprove={includeSiteimprove}>
+    <Document>
       <Outlet />
     </Document>
   );

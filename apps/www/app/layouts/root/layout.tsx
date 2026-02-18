@@ -11,6 +11,7 @@ import { Figma } from '~/_components/logos/figma';
 import { Github } from '~/_components/logos/github';
 import { Slack } from '~/_components/logos/slack';
 import { SearchDialog } from '~/_components/search-dialog';
+import { useShowConsentBanner } from '~/_hooks/use-show-consent-banner';
 import i18n from '~/i18n';
 import type { Route as RootRoute } from './../../+types/root';
 import type { Route } from './+types/layout';
@@ -48,16 +49,17 @@ const rightLinks: FooterLinkListItemProps[] = [
 
 export default function RootLayout() {
   const { t } = useTranslation();
-  const { lang, centerLinks, menu, showConsentBanner } = useRouteLoaderData(
-    'root',
-  ) as Omit<RootRoute.ComponentProps['loaderData'], 'centerLinks'> & {
+  const { lang, centerLinks, menu } = useRouteLoaderData('root') as Omit<
+    RootRoute.ComponentProps['loaderData'],
+    'centerLinks'
+  > & {
     centerLinks: FooterLinkListItemProps[];
     menu: {
       name: TemplateStringsArray;
       href: string;
     }[];
-    showConsentBanner: boolean;
   };
+  const { showBanner } = useShowConsentBanner();
 
   useChangeLanguage(lang);
 
@@ -68,7 +70,7 @@ export default function RootLayout() {
   return (
     <>
       <div>
-        {showConsentBanner && <ConsentBanner lang={lang} />}
+        {showBanner && <ConsentBanner lang={lang} />}
         <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
       </div>
       <Header
