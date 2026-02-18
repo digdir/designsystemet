@@ -39,7 +39,7 @@ export const loader = async ({ params: { lang } }: Route.LoaderArgs) => {
 
   if (lang === 'no') {
     cats['Grunnleggende mønstre'] = [];
-    cats['Spør brukeren om...'] = [];
+    cats['Spør brukerne om...'] = [];
     cats['Kommende mønstre'] = [];
   }
 

@@ -219,8 +219,9 @@ export const PredefinedOptions2 = () => {
         på tirsdager fremover.
       </Fieldset.Description>
 
-      {/* Filtrering */}
-      <div style={{ display: 'flex', gap: 'var(--ds-size-6)' }}>
+      <div
+        style={{ display: 'flex', gap: 'var(--ds-size-6)', flexWrap: 'wrap' }}
+      >
         <Field>
           <Label>Velg foretrukket uke</Label>
           <Select defaultValue=''>
@@ -268,10 +269,10 @@ export const PredefinedOptions2 = () => {
             <Select.Option value='' disabled>
               Velg et klokkeslett …
             </Select.Option>
-            <Select.Option value='08-11'>08:00 og 11:00</Select.Option>
-            <Select.Option value='11-14'>11:00 og 14:00</Select.Option>
-            <Select.Option value='14-17'>14:00 og 17:00</Select.Option>
-            <Select.Option value='17-20'>17:00 og 20:00</Select.Option>
+            <Select.Option value='08-11'>Mellom 08:00 og 11:00</Select.Option>
+            <Select.Option value='11-14'>Mellom 11:00 og 14:00</Select.Option>
+            <Select.Option value='14-17'>Mellom 14:00 og 17:00</Select.Option>
+            <Select.Option value='17-20'>Mellom 17:00 og 20:00</Select.Option>
           </Select>
         </Field>
       </div>
