@@ -56,6 +56,7 @@ export default function RootLayout() {
       name: TemplateStringsArray;
       href: string;
     }[];
+    showConsentBanner: boolean;
   };
 
   useChangeLanguage(lang);
