@@ -2,7 +2,7 @@
  * Client-side consent utility - reads the designsystemet-consent cookie
  */
 
-import { userConsent } from './cookies';
+import { CONSENT_VERSION, userConsent } from './cookies';
 
 export type ConsentChoice = 'all' | 'required' | null;
 
@@ -24,10 +24,14 @@ export async function getConsentFromCookie(): Promise<{
 
 export async function hasConsent(): Promise<boolean> {
   const consent = await getConsentFromCookie();
-  return consent !== null;
+  return consent !== null && consent.version === CONSENT_VERSION;
 }
 
 export async function shouldIncludeSiteimprove(): Promise<boolean> {
   const consent = await getConsentFromCookie();
-  return consent !== null && consent.choice === 'all';
+  return (
+    consent !== null &&
+    consent.choice === 'all' &&
+    consent.version === CONSENT_VERSION
+  );
 }
