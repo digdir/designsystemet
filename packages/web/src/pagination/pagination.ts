@@ -44,7 +44,7 @@ export class DSPaginationElement extends DSElement {
     if (current && !total) warn(`Missing ${ATTR_TOTAL} attribute on:`, this);
     if (total && !current) warn(`Missing ${ATTR_CURRENT} attribute on:`, this);
 
-    attrOrCSS(this, ATTR_LABEL);
+    attr(this, ATTR_LABEL, attrOrCSS(this, ATTR_LABEL));
     attr(this, 'role', 'navigation');
     this._render = debounce(() => render(this), 0); // Debounce groups mutation observer calls and attributeChangedCallback calls
     this._unmutate = onMutation(this, this._render, {

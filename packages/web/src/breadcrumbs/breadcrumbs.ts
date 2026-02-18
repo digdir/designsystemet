@@ -15,10 +15,10 @@ declare global {
 }
 
 const ATTR_LABEL = 'aria-label';
-const ATTR_LABEL_HIDDEN = 'data-label'; // Used to hide label on mobile when only showing back link
 
 export class DSBreadcrumbsElement extends DSElement {
   _items?: HTMLCollectionOf<HTMLAnchorElement>; // Using underscore instead of private fields for backwards compatibility
+  _label: string | null = null;
   _render?: () => void;
   _unresize?: () => void;
   _unmutate?: () => void;
@@ -27,8 +27,7 @@ export class DSBreadcrumbsElement extends DSElement {
     return [ATTR_LABEL]; // Using ES2015 syntax for backwards compatibility
   }
   connectedCallback() {
-    // aria-label can already have been hidden by attributeChangedCallback
-    if (!attr(this, ATTR_LABEL_HIDDEN)) attrOrCSS(this, ATTR_LABEL);
+    this._label = attrOrCSS(this, ATTR_LABEL); // Cache label for when list is hidden to prevent expensive DOM reads during resize
     this._items = this.getElementsByTagName('a'); // Speed up by caching HTMLCollection
     this._render = debounce(() => render(this), 100); // Debounce render to prevent multiple calls during resize and mutation observer calls
     this._unresize = on(window, 'resize', this._render);
@@ -37,7 +36,8 @@ export class DSBreadcrumbsElement extends DSElement {
       subtree: true,
     });
   }
-  attributeChangedCallback() {
+  attributeChangedCallback(_name: string, _prev?: string, next?: string) {
+    if (next) this._label = next; // Update cacheed label if aria-label attribute changes
     this._render?.();
   }
   disconnectedCallback() {
@@ -48,23 +48,15 @@ export class DSBreadcrumbsElement extends DSElement {
 }
 
 const render = (self: DSBreadcrumbsElement) => {
-  const last = self._items?.[self._items.length - 1];
-  const lastInList = last?.parentElement === self ? null : last;
-  const isListHidden = !lastInList?.offsetHeight;
-  const labelHidden = attr(self, ATTR_LABEL_HIDDEN);
-  const label = attr(self, ATTR_LABEL);
+  const lastItem = self._items?.[self._items.length - 1];
+  const lastItemInList = lastItem?.parentElement === self ? null : lastItem;
+  const isListHidden = !lastItemInList?.offsetHeight;
 
-  // Only update labels if needed to prevent infinite attribute update loop
   attr(self, 'role', isListHidden ? null : 'navigation');
-  if (!isListHidden && !label && labelHidden)
-    attr(self, ATTR_LABEL, labelHidden);
-  else if (isListHidden && label) {
-    attr(self, ATTR_LABEL_HIDDEN, label);
-    attr(self, ATTR_LABEL, null);
-  }
+  attr(self, ATTR_LABEL, isListHidden ? null : self._label); // Remove aria-label if list is hidden to prevent screen readers from announcing as breadcrumbs
 
   for (const item of self._items || [])
-    attr(item, 'aria-current', item === lastInList ? 'page' : null);
+    attr(item, 'aria-current', item === lastItemInList ? 'page' : null);
 };
 
 customElements.define('ds-breadcrumbs', DSBreadcrumbsElement);

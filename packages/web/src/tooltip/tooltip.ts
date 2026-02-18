@@ -20,6 +20,7 @@ const ATTR_COLOR = 'data-color';
 const ARIA_LABEL = 'aria-label';
 const ARIA_DESC = 'aria-description';
 const SELECTOR_COLOR = `[${ATTR_COLOR}]`;
+const SELECTOR_TOOLTIP = `[${ATTR_TOOLTIP}]`;
 const ATTR_SCHEME = 'data-color-scheme';
 const SELECTOR_SCHEME = `[${ATTR_SCHEME}]`;
 const SELECTOR_INTERACTIVE = 'a,button,input,label,select,textarea,[tabindex]';
@@ -36,9 +37,9 @@ export const setTooltipElement = (el?: HTMLElement | null) => {
 };
 
 const handleAriaAttributes = debounce(() => {
-  for (const el of document.querySelectorAll(`[${ATTR_TOOLTIP}]`)) {
+  for (const el of document.querySelectorAll(SELECTOR_TOOLTIP)) {
     const aria = el.getAttribute(ARIA_LABEL) || el.getAttribute(ARIA_DESC); // Using getAttribute for best performance
-    const text = attrOrCSS(el, ATTR_TOOLTIP);
+    const text = el.getAttribute(ATTR_TOOLTIP) || attrOrCSS(el, ATTR_TOOLTIP); // Only parse CSS if attribute is empty for better performance
 
     if (aria !== text) {
       const hasText = el.textContent?.trim();

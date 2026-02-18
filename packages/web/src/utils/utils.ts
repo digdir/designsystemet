@@ -75,7 +75,6 @@ export const attrOrCSS = (el: Element, name: string) => {
   if (!value) {
     const prop = getComputedStyle(el).getPropertyValue(`--_ds-${name}`);
     value = prop.replace(STRIP_SURROUNDING_QUOTES, '').trim() || null;
-    attr(el, name, value); // Cache as attribute for faster next access
   }
   if (!value) warn(`Missing ${name} on:`, el);
   return value;

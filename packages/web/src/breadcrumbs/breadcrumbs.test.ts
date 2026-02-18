@@ -18,11 +18,10 @@ describe('Breadcrumbs component', () => {
       </ds-breadcrumbs>
     `;
 
-    const breadcrumbs = document.querySelector('ds-breadcrumbs') as HTMLElement;
-    const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('a'));
-    const last = links[links.length - 1];
+    const breadcrumbs = document.querySelector('ds-breadcrumbs');
+    const lastLink = [...(breadcrumbs?.querySelectorAll('a') || [])].pop();
 
-    Object.defineProperty(last, 'offsetHeight', {
+    Object.defineProperty(lastLink, 'offsetHeight', {
       value: 10,
       configurable: true,
     });
@@ -30,11 +29,11 @@ describe('Breadcrumbs component', () => {
     await renderAndResize();
 
     expect(breadcrumbs).toHaveAttribute('role', 'navigation');
-    expect(links[0]).not.toHaveAttribute('aria-current');
-    expect(last).toHaveAttribute('aria-current', 'page');
+    expect(breadcrumbs?.querySelector('a')).not.toHaveAttribute('aria-current');
+    expect(lastLink).toHaveAttribute('aria-current', 'page');
   });
 
-  it('moves aria-label to data-label when list is hidden', async () => {
+  it('moves aria-label to _label when list is hidden', async () => {
     document.body.innerHTML = `
       <ds-breadcrumbs aria-label="Breadcrumbs">
         <ol>
@@ -44,25 +43,23 @@ describe('Breadcrumbs component', () => {
       </ds-breadcrumbs>
     `;
 
-    const breadcrumbs = document.querySelector('ds-breadcrumbs') as HTMLElement;
-    const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('a'));
-    const last = links[links.length - 1];
+    const breadcrumbs = document.querySelector('ds-breadcrumbs');
+    const lastLink = [...(breadcrumbs?.querySelectorAll('a') || [])].pop();
 
-    Object.defineProperty(last, 'offsetHeight', {
+    // Fake window resized
+    Object.defineProperty(lastLink, 'offsetHeight', {
       value: 0,
       configurable: true,
     });
-
     await renderAndResize();
-    await vi.waitUntil(() => breadcrumbs.hasAttribute('data-label')); // Wait for mutation observer
 
+    expect(await vi.waitUntil(() => breadcrumbs?._label)).toBeTruthy();
     expect(breadcrumbs).not.toHaveAttribute('aria-label', 'Breadcrumbs');
-    expect(breadcrumbs).toHaveAttribute('data-label', 'Breadcrumbs');
   });
 
   it('restores aria-label when list becomes visible again', async () => {
     document.body.innerHTML = `
-      <ds-breadcrumbs data-label="Breadcrumbs">
+      <ds-breadcrumbs aria-label="Breadcrumbs">
         <ol>
           <li><a href="/a">A</a></li>
           <li><a href="/b">B</a></li>
@@ -70,28 +67,27 @@ describe('Breadcrumbs component', () => {
       </ds-breadcrumbs>
     `;
 
-    const breadcrumbs = document.querySelector('ds-breadcrumbs') as HTMLElement;
-    const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('a'));
-    const last = links[links.length - 1];
+    const breadcrumbs = document.querySelector('ds-breadcrumbs');
+    const lastLink = [...(breadcrumbs?.querySelectorAll('a') || [])].pop();
 
-    Object.defineProperty(last, 'offsetHeight', {
+    Object.defineProperty(lastLink, 'offsetHeight', {
       value: 0,
       configurable: true,
     });
 
     await renderAndResize();
-    await vi.waitUntil(() => breadcrumbs.hasAttribute('data-label')); // Wait for mutation observer
+    await vi.waitUntil(() => breadcrumbs?._label); // Wait for mutation observer
 
     expect(breadcrumbs).not.toHaveAttribute('aria-label', 'Breadcrumbs');
-    expect(breadcrumbs).toHaveAttribute('data-label', 'Breadcrumbs');
+    expect(breadcrumbs?._label).toBe('Breadcrumbs');
 
-    Object.defineProperty(last, 'offsetHeight', {
+    Object.defineProperty(lastLink, 'offsetHeight', {
       value: 10,
       configurable: true,
     });
 
     await renderAndResize();
-    await vi.waitUntil(() => breadcrumbs.hasAttribute('aria-label')); // Wait for mutation observer
+    await vi.waitUntil(() => breadcrumbs?.hasAttribute('aria-label')); // Wait for mutation observer
 
     expect(breadcrumbs).toHaveAttribute('aria-label', 'Breadcrumbs');
   });
