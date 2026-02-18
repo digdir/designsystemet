@@ -97,6 +97,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
       data-initials={initials}
       role={asChild ? undefined : 'img'}
       aria-label={ariaLabel || dataTooltip}
+      tabIndex={dataTooltip ? 0 : undefined} // Tooltips require focusability for accessibility
       {...rest}
     >
       <Component {...(useSlot && !asChild ? { 'aria-hidden': true } : {})}>

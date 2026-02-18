@@ -33,6 +33,8 @@ const DELAY_SKIP = 300;
  * @param el The HTMLElement to use as tooltip
  */
 export const setTooltipElement = (el?: HTMLElement | null) => {
+  if (el && !(el instanceof HTMLElement))
+    warn('setTooltipElement expects an HTMLElement, got: ', el);
   TIP = el || undefined;
 };
 
@@ -42,7 +44,8 @@ const handleAriaAttributes = debounce(() => {
     const text = el.getAttribute(ATTR_TOOLTIP) || attrOrCSS(el, ATTR_TOOLTIP); // Only parse CSS if attribute is empty for better performance
 
     if (aria !== text) {
-      const hasText = el.textContent?.trim();
+      const hasText = attr(el, 'role') !== 'img' && el.textContent?.trim(); // If role="img", ignore text
+      attr(el, ATTR_TOOLTIP, text); // Set data-tooltip attribute to speed up future mutations
       attr(el, ARIA_LABEL, hasText ? null : text); // Set aria-label if element does not have text
       attr(el, ARIA_DESC, hasText ? text : null); // Set aria-description if element has text
       if (!el.matches(SELECTOR_INTERACTIVE))

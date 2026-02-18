@@ -263,16 +263,14 @@ export const WithTooltip: Story = (args) => (
     >
       <legend>expandable</legend>
       <AvatarStack {...args} expandable='fixed'>
-        <Avatar tabIndex={0} data-tooltip='Ola Nordmann'>
+        <Avatar data-tooltip='Ola Nordmann'>
           <img src='https://placebeard.it/100x100' alt='' />
         </Avatar>
-        <Avatar tabIndex={0} data-tooltip='Kari Nordmann'>
+        <Avatar data-tooltip='Kari Nordmann'>
           <img src='https://i.pravatar.cc/100' alt='' />
         </Avatar>
-        <Avatar tabIndex={0} data-tooltip='Person 2'>
-          <img src='https://i.pravatar.cc/100' alt='' />
-        </Avatar>
-        <Avatar tabIndex={0} data-tooltip='Person 3'>
+        <Avatar data-tooltip='Person 2'>Hei</Avatar>
+        <Avatar data-tooltip='Person 3'>
           <img src='https://i.pravatar.cc/100' alt='' />
         </Avatar>
       </AvatarStack>
@@ -283,22 +281,22 @@ export const WithTooltip: Story = (args) => (
       <legend>not expandable</legend>
       <AvatarStack {...args}>
         <Tooltip content='Ola Nordmann'>
-          <Avatar aria-label='Navn' tabIndex={0}>
+          <Avatar aria-label='Navn'>
             <img src='https://placebeard.it/100x100' alt='' />
           </Avatar>
         </Tooltip>
         <Tooltip content='Kari Nordmann'>
-          <Avatar aria-label='Navn' tabIndex={0}>
+          <Avatar aria-label='Navn'>
             <img src='https://i.pravatar.cc/100' alt='' />
           </Avatar>
         </Tooltip>
         <Tooltip content='Person 2'>
-          <Avatar aria-label='Navn' tabIndex={0}>
+          <Avatar aria-label='Navn'>
             <img src='https://i.pravatar.cc/100' alt='' />
           </Avatar>
         </Tooltip>
         <Tooltip content='Person 3'>
-          <Avatar aria-label='Navn' tabIndex={0}>
+          <Avatar aria-label='Navn'>
             <img src='https://i.pravatar.cc/100' alt='' />
           </Avatar>
         </Tooltip>
