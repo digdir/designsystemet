@@ -125,11 +125,11 @@ export const loader = async ({ params, request }: Route.LoaderArgs) => {
       showConsentBanner,
       includeSiteimprove,
     },
-    /*     {
+    {
       headers: {
         'Cache-Control': 'no-store, must-revalidate',
       },
-    }, */
+    },
   );
 };
 
