@@ -1,7 +1,3 @@
-> ⚠️ **WARNING** ⚠️  
-> This package is not fully released yet.
-> It is still under development, and feedback is welcome.
-
 ## `@digdir/designsystemet-web`
 
 ### Get started
