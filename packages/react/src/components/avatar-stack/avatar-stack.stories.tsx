@@ -307,6 +307,10 @@ export const WithTooltip: Story = (args) => (
   </div>
 );
 
+WithTooltip.beforeEach = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 350));
+};
+
 export const WithTooltipAndLink: Story = (args) => (
   <div
     style={{ display: 'flex', flexDirection: 'row', gap: 'var(--ds-size-4)' }}
