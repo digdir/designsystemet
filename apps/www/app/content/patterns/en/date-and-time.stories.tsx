@@ -2,6 +2,7 @@ import {
   Field,
   Fieldset,
   Label,
+  Link,
   Radio,
   Select,
   Textfield,
@@ -190,12 +191,12 @@ export const PredefinedOptions1EN = () => {
         name='appointmentTime'
       />
 
-      <a
-        href='#let-users-narrow-down-the-options'
+      <Link
+        href='#la-brukeren-begrense-utvalget'
         style={{ display: 'flex', marginTop: 'var(--ds-size-6)' }}
       >
         Find available appointments further ahead
-      </a>
+      </Link>
     </Fieldset>
   );
 };
