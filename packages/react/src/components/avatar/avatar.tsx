@@ -74,7 +74,7 @@ export type AvatarProps = MergeRight<
 export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
   {
     'aria-label': ariaLabel,
-    'data-tooltip': tooltip,
+    'data-tooltip': dataTooltip,
     variant = 'circle',
     className,
     children,
@@ -96,7 +96,7 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
       data-variant={variant}
       data-initials={initials}
       role={asChild ? undefined : 'img'}
-      aria-label={ariaLabel || tooltip}
+      aria-label={ariaLabel || dataTooltip}
       {...rest}
     >
       <Component {...(useSlot && !asChild ? { 'aria-hidden': true } : {})}>
