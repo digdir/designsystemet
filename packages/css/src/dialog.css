@@ -116,6 +116,7 @@
   }
 
   /* Close button */
+  & button[command='close']:empty::before,
   & button[data-command='close']:empty::before {
     content: '';
     background: currentcolor;
@@ -128,6 +129,7 @@
     }
   }
 
+  & > button[command='close']:first-child,
   & > button[data-command='close']:first-child {
     float: inline-end;
     margin-block-start: var(--_dsc-dialog-icon-top-right-margin);

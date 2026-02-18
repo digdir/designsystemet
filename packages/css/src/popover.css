@@ -1,4 +1,8 @@
 .ds-popover {
+  @composes ds-floating from './base.css';
+  --_ds-floating: var(--dsc-popover-placement); /* "proxy" so popover.ts works even if changing --ds- prefix */
+  --_ds-floating-arrow-size: var(--dsc-popover-arrow-size);
+
   --dsc-popover-background: var(--ds-color-surface-default);
   --dsc-popover-border-width: var(--ds-border-width-default);
   --dsc-popover-border-style: solid;
@@ -9,6 +13,7 @@
   --dsc-popover-max-width: 300px;
   --dsc-popover-padding: var(--ds-size-3) var(--ds-size-4);
   --dsc-popover-box-shadow: var(--ds-shadow-md);
+  --dsc-popover-placement: top;
 
   background: var(--dsc-popover-background);
   border-radius: var(--dsc-popover-border-radius);
@@ -18,42 +23,8 @@
   box-shadow: var(--dsc-popover-box-shadow);
   box-sizing: border-box;
   color: var(--dsc-popover-color);
-  inset: 0 auto auto 0;
   max-width: var(--dsc-popover-max-width);
-  overflow: visible;
   padding: var(--dsc-popover-padding);
-  position: fixed;
-
-  &::before {
-    background: var(--dsc-popover-background);
-    border: inherit;
-    border-left-color: transparent;
-    border-top-color: transparent;
-    box-sizing: border-box;
-    content: '';
-    height: var(--dsc-popover-arrow-size);
-    left: var(--ds-popover-arrow-x);
-    position: absolute;
-    top: var(--ds-popover-arrow-y);
-    translate: -50% -50%;
-    width: var(--dsc-popover-arrow-size);
-  }
-
-  &[data-placement='top']::before {
-    rotate: 45deg;
-  }
-
-  &[data-placement='left']::before {
-    rotate: -45deg;
-  }
-
-  &[data-placement='right']::before {
-    rotate: 135deg;
-  }
-
-  &[data-placement='bottom']::before {
-    rotate: -135deg;
-  }
 
   &[data-variant='default'] {
     --dsc-popover-background: var(--ds-color-surface-default);

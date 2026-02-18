@@ -4,13 +4,15 @@
 
 ## Usage
 
-To add your own close button, you can either use `ref` and `Dialog.close()` on a button you create yourself, or add `data-command="close"` to a button inside the dialog.
+To add your own close button, you can either use `command="close" commandfor="DIALOG-ID"` or `ref` and `Dialog.close()` on a button you create yourself.
 
 If the button is empty, it will get an icon.
 
 If the button is a direct child of the dialog and the first element, it will float to the top right.
 
-`data-command` is inspired by [Invoker Commands (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API).
+<Card data-color="info">
+  The attributes [`command` (developer.mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/command) and `commandfor` are a relatively new part of the web-platform. They allow buttons to perform actions on other elements declaratively. We automatically add [invokers-polyfill (npmjs.com)](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2) to support older browsers.
+</Card>
 
 ```tsx
 import { Dialog, Heading, Paragraph } from '@digdir/designsystemet-react';
@@ -24,20 +26,25 @@ Dialog content
 </Dialog.TriggerContext>
 
 /* without context */
-const dialogRef = useRef<HTMLDialogElement>(null);
-
-<Button onClick={() => dialogRef.current?.showModal()}>Open Dialog</Button>
-<Dialog ref={dialogRef}>
+<Button command="show-modal" commandfor="my-dialog">Open Dialog</Button>
+<Dialog id="my-dialog">
 Dialog content
 </Dialog>
 ```
 
 ## Examples
 
+### Med command og uten context
+
+If you don't want to use `Dialog.TriggerContext`, you can use `command="show-modal"` or `command="--show-non-modal"` and `commandfor="DIALOG-ID"` to open the dialog from an external trigger.
+
+<Story story="WithCommand" />
+
 ### With ref and without context
 
 If you don't want to use `Dialog.TriggerContext`, you can use `ref` to open the dialog from an external trigger.
 You then use native methods on the `<dialog>` element, such as `showModal()` or `show()`.
+Note that you should add `aria-haspopup="dialog"` to the button that opens the dialog for better accessibility.
 
 <Story story="WithRef" />
 
@@ -61,7 +68,7 @@ Use multiple `Dialog.Block` if you want to divide the dialog with dividers into,
 
 We use `closedby="any"` to close the dialog when the user clicks outside.
 
-This only works when `modal={true}`, because a non-modal dialog has no `:backdrop`.
+We add polyfill so `closedby="any"` also works in older Safari.
 
 <Story story="CloseWithClickOutside" />
 
@@ -76,49 +83,27 @@ Content
 
 <!-- with division -->
 <dialog class="ds-dialog">
-<div class="ds-dialog__block">
-Header
-</div>
-<div class="ds-dialog__block">
-Content
-</div>
-<div class="ds-dialog__block">
-Footer
-</div>
+  <div class="ds-dialog__block">
+    Header
+  </div>
+  <div class="ds-dialog__block">
+    Content
+  </div>
+  <div class="ds-dialog__block">
+    Footer
+  </div>
 </dialog>
 ```
 
-In HTML, you have to connect the `<dialog>` element to a trigger yourself, and handle opening and closing the dialog with JavaScript.
-
-**Note that the button that opens the dialog should have the `aria-haspopup="dialog"` attribute.**
+In HTML, you have to connect the `<dialog>` element to a trigger yourself through `command="show-modal"` or `command="--show-non-modal"` and `commandfor="DIALOG-ID"`.
 
 ```html
-<button id="openDialog" aria-haspopup="dialog" type="button">Open Dialog</button>
-<dialog id="myDialog" class="ds-dialog">
-<div>Content</div>
-<button id="closeDialog">Close</button>
+<button command="show-dialog" commandfor="my-dialog" type="button">Open Dialog</button>
+<dialog id="my-dialog" class="ds-dialog">
+  <div>Content</div>
+  <button command="close" commandfor="my-dialog">Close</button>
 </dialog>
-
-<script>
-const dialog = document.getElementById('myDialog');
-const openButton = document.getElementById('openDialog');
-const closeButton = document.getElementById('closeDialog');
-
-openButton.addEventListener('click', () => {
-dialog.showModal(); // or dialog.show() for non-modal
-});
-
-closeButton.addEventListener('click', () => {
-dialog.close();
-});
-</script>
 ```
-
-We have extended `Dialog` in React to support `data-command` for close button, and `closedby` attribute to close dialog on click outside.
-
-This must be implemented in HTML/JavaScript yourself if you are not using React component.
-
-[`closedby` is supported in some browsers (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy)
 
 ## CSS variables and data attributes
 All CSS variables used by `ds-dialog__block` are set to `ds-dialog`.

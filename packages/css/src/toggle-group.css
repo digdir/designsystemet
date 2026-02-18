@@ -1,20 +1,22 @@
-/* TODO: ds-togglegroup can be removed in the next major version */
-.ds-toggle-group,
-.ds-togglegroup {
+.ds-togglegroup,
+.ds-toggle-group {
   --dsc-togglegroup-background: var(--ds-color-surface-default);
   --dsc-togglegroup-border-width: var(--ds-border-width-default);
   --dsc-togglegroup-border-style: solid;
   --dsc-togglegroup-border-color: var(--ds-color-border-default);
-  --dsc-togglegroup-text-color: var(--ds-color-text-default);
+  --dsc-togglegroup-color: var(--ds-color-text-default);
   --dsc-togglegroup-spacing: 0;
   --dsc-togglegroup-border-radius: var(--ds-border-radius-default);
   --dsc-togglegroup-button-size: var(--ds-size-12);
+  --dsc-togglegroup-label: '';
+  --_ds-data-toggle-group: var(--dsc-togglegroup-label); /* "proxy" so attrOrCSS works even if changing --ds- prefix */
 
   background: var(--dsc-togglegroup-background);
   border-radius: var(--dsc-togglegroup-border-radius);
   border-width: var(--dsc-togglegroup-border-width);
   border-style: var(--dsc-togglegroup-border-style);
   border-color: var(--dsc-togglegroup-border-color);
+  color: var(--dsc-togglegroup-color);
   gap: var(--dsc-togglegroup-spacing);
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
@@ -26,38 +28,22 @@
   width: auto;
 
   &:not([hidden]) {
-    display: grid;
-  }
-  &[data-variant='secondary'] {
-    --dsc-togglegroup-background: var(--ds-color-surface-tinted);
-    --dsc-togglegroup-border-color: var(--ds-color-border-subtle);
-    border: none;
-    outline: var(--dsc-togglegroup-border-width) var(--dsc-togglegroup-border-style) var(--dsc-togglegroup-border-color);
-    outline-offset: calc(var(--dsc-togglegroup-border-width) * -1);
-    button {
-      --dsc-button-color: var(--ds-color-text-default);
-      --dsc-button-color--hover: var(--ds-color-text-default);
-      border-radius: inherit;
-    }
-    button[aria-checked='true'] {
-      isolation: isolate; /*creates a new stacking context so button shows above the parent's overlapping outline*/
-      background-color: var(--ds-color-surface-default);
-      --dsc-button-border-color: var(--ds-color-text-default);
-    }
+    display: flex;
   }
 
-  button {
+  & label:not(:has(input:checked)),
+  & button:not([aria-checked='true']) {
+    color: inherit;
+  }
+
+  & label,
+  & button {
+    isolation: isolate; /*creates a new stacking context so button shows above the parent's overlapping outline*/
     border-radius: calc(var(--dsc-togglegroup-border-radius) - var(--dsc-togglegroup-border-width));
     height: 100%;
     min-height: unset;
     white-space: nowrap;
     min-width: fit-content;
-    &:not([aria-checked='true']) {
-      --dsc-button-color: var(--ds-color-text-default);
-      --dsc-button-color--hover: var(--ds-color-text-default);
-    }
-
-    @composes ds-focus--inset from './base.css';
 
     &[data-icon] {
       height: 100%;
@@ -65,7 +51,7 @@
     }
 
     @media (forced-colors: active) {
-      &[aria-checked='true'] {
+      &:has(input:checked) {
         background: ButtonText;
         color: CanvasText;
 
@@ -73,6 +59,63 @@
           color: CanvasText;
         }
       }
+    }
+  }
+
+  & label input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Style active if ds-button */
+  & label:has(input:checked) {
+    --dsc-button-background--active: var(--ds-color-base-active);
+    --dsc-button-background--hover: var(--ds-color-base-hover);
+    --dsc-button-background: var(--ds-color-base-default);
+    --dsc-button-color--active: var(--ds-color-base-contrast-default);
+    --dsc-button-color--hover: var(--ds-color-base-contrast-default);
+    --dsc-button-color: var(--ds-color-base-contrast-default);
+  }
+
+  & label:has(input:focus-visible) {
+    @composes ds-focus--visible--inset from './base.css';
+  }
+
+  & button {
+    @composes ds-focus--inset from './base.css';
+
+    &:not([aria-checked='true']) {
+      --dsc-button-background: transparent;
+      --dsc-button-background--active: var(--ds-color-surface-active);
+      --dsc-button-background--hover: var(--ds-color-surface-hover);
+      --dsc-button-color: var(--ds-color-text-subtle);
+      --dsc-button-color--hover: var(--ds-color-text-default);
+    }
+  }
+
+  &[data-variant='secondary'] {
+    --dsc-togglegroup-background: var(--ds-color-surface-tinted);
+    --dsc-togglegroup-border-color: var(--ds-color-border-subtle);
+    border: none;
+    outline: var(--dsc-togglegroup-border-width) var(--dsc-togglegroup-border-style) var(--dsc-togglegroup-border-color);
+    outline-offset: calc(var(--dsc-togglegroup-border-width) * -1);
+
+    label,
+    button {
+      --dsc-button-color: var(--ds-color-text-default);
+      --dsc-button-color--hover: var(--ds-color-text-default);
+      border-radius: inherit;
+    }
+    label:has(input:checked),
+    button[aria-checked='true'] {
+      --dsc-button-border-color: var(--ds-color-border-default);
+      --dsc-button-background--active: var(--ds-color-surface-default);
+      --dsc-button-background--hover: var(--ds-color-surface-default);
+      --dsc-button-background: var(--ds-color-surface-default);
+      --dsc-button-color--active: var(--ds-color-text-default);
+      --dsc-button-color--hover: var(--ds-color-text-default);
+      --dsc-button-color: var(--ds-color-text-default);
     }
   }
 }

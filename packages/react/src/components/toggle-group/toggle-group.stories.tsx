@@ -37,25 +37,30 @@ export const Preview: StoryFn<typeof ToggleGroup> = (args) => {
 };
 
 Preview.args = {
+  'data-toggle-group': 'Filtering', // Set data-toggle-group attribute for accessibility
   defaultValue: 'innboks',
   name: 'toggle-group-nuts',
 };
 
 export const OnlyIcons: StoryFn<typeof ToggleGroup> = (args) => {
   return (
-    <ToggleGroup {...args} defaultValue='option-1'>
+    <ToggleGroup
+      {...args}
+      data-toggle-group='Tekstjustering'
+      defaultValue='option-1'
+    >
       <Tooltip content='Venstrestilt'>
-        <ToggleGroup.Item value='option-1' icon>
+        <ToggleGroup.Item value='option-1'>
           <AlignLeftIcon title='AlignLeftIcon' />
         </ToggleGroup.Item>
       </Tooltip>
       <Tooltip content='Midtstilt'>
-        <ToggleGroup.Item value='option-2' icon>
+        <ToggleGroup.Item value='option-2'>
           <AlignCenterIcon title='AlignCenterIcon' />
         </ToggleGroup.Item>
       </Tooltip>
       <Tooltip content='Høyrestilt'>
-        <ToggleGroup.Item value='option-3' icon>
+        <ToggleGroup.Item value='option-3'>
           <AlignRightIcon title='AlignRightIcon' />
         </ToggleGroup.Item>
       </Tooltip>
@@ -67,7 +72,11 @@ export const Kontrollert: StoryFn<typeof ToggleGroup> = () => {
   const [value, setValue] = useState<string>('utkast');
   return (
     <>
-      <ToggleGroup value={value} onChange={setValue}>
+      <ToggleGroup
+        data-toggle-group='Filtering'
+        value={value}
+        onChange={setValue}
+      >
         <ToggleGroup.Item value='innboks'>
           <EnvelopeClosedIcon aria-hidden />
           Innboks
@@ -94,7 +103,14 @@ export const Kontrollert: StoryFn<typeof ToggleGroup> = () => {
   );
 };
 export const Secondary = Preview.bind({});
-Secondary.args = { defaultValue: 'innboks', variant: 'secondary' };
+Secondary.args = {
+  'data-toggle-group': 'Filtering', // Set data-toggle-group attribute for accessibility
+  defaultValue: 'innboks',
+  variant: 'secondary',
+};
 
 export const SecondaryOnlyIcons = OnlyIcons.bind({});
-SecondaryOnlyIcons.args = { variant: 'secondary' };
+SecondaryOnlyIcons.args = {
+  'data-toggle-group': 'Filtering', // Set data-toggle-group attribute for accessibility
+  variant: 'secondary',
+};

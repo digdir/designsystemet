@@ -38,42 +38,27 @@ describe('Tooltip', () => {
   });
 
   it('should render tooltip on hover', async () => {
-    const { user } = await render();
+    const content = 'Unique content for hover-test';
+    const { user } = await render({ content });
     const tooltipTrigger = screen.getByRole('button');
 
-    expect(screen.getByText('Tooltip text')).not.toBeVisible();
+    expect(screen.queryByText(content)).not.toBeInTheDocument();
 
     await act(async () => await user.hover(tooltipTrigger));
 
-    const tooltip = await screen.findByText('Tooltip text');
+    const tooltip = await screen.findByText(content);
     expect(tooltip).toBeVisible();
-    expect(screen.getByText('Tooltip text')).toBeVisible();
+    expect(screen.getByText(content)).toBeVisible();
   });
 
   it('should render tooltip on focus', async () => {
-    const { user } = await render();
+    const content = 'Unique content for focus-test';
+    const { user } = await render({ content });
 
-    expect(screen.queryByText('Tooltip text')).not.toBeVisible();
+    expect(screen.queryByText(content)).not.toBeInTheDocument();
     await user.click(screen.getByTestId('button'));
-    const tooltip = await screen.findByText('Tooltip text');
-    expect(tooltip).toBeInTheDocument();
-    expect(screen.queryByRole('tooltip')).toBeVisible();
-  });
-
-  it('should render open when we pass open prop', async () => {
-    await render({ open: true });
-
-    expect(screen.getByRole('tooltip')).toBeVisible();
-  });
-
-  it('should have correct id and popovertarget attributes', async () => {
-    await render({
-      id: 'my-tooltip',
-    });
-    const trigger = screen.getByRole('button');
-    const popover = screen.getByText('Tooltip text');
-
-    expect(trigger.getAttribute('popovertarget')).toBe(popover.id);
+    const tooltip = await screen.findByText(content);
+    expect(tooltip).toBeVisible();
   });
 
   it('should render span when children is a string', async () => {

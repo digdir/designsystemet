@@ -41,14 +41,12 @@
   },
   "dependencies": {
     "@digdir/designsystemet-types": "workspace:^",
+    "@digdir/designsystemet-web": "workspace:^",
     "@floating-ui/dom": "^1.7.5",
     "@floating-ui/react": "0.26.23",
     "@navikt/aksel-icons": "^8.3.0",
     "@radix-ui/react-slot": "^1.2.4",
     "@tanstack/react-virtual": "^3.13.18",
-    "@u-elements/u-combobox": "^1.0.7",
-    "@u-elements/u-datalist": "^1.1.0",
-    "@u-elements/u-details": "^0.1.5",
     "clsx": "^2.1.1"
   },
   "devDependencies": {

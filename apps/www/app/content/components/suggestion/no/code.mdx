@@ -46,23 +46,24 @@ Med `creatable` på `Suggestion` kan en bruker opprette nye valgte alternativer 
 <Story story='Creatable' layout='column' />
 
 ## HTML
-Du finner generell dokumentasjon på bruk av `u-combobox` hos u-elements:
+`ds-suggetion` er en utvidelse av `u-combobox` fra u-elements.
+Du finner generell dokumentasjon på bruk av `ds-combobox` hos u-elements:
 [https://u-elements.github.io/u-elements/elements/u-combobox](https://u-elements.github.io/u-elements/elements/u-combobox).
 
-For å få Designsystemet styling, legger du klassenavnet `ds-suggestion` på `<u-combobox>` elementet.
+For å få Designsystemet styling, legger du klassenavnet `ds-suggestion` på `<ds-combobox>` elementet.
 `<input>` skal ha `ds-input` klassen.
 
 Dersom du skrur på flervalg, skal `<data>` ha klassenavnet `ds-chip` og data attributtet `data-removable="true"`.
 
 ```html
-<u-combobox class="ds-suggestion" ...>
+<ds-suggestion class="ds-suggestion" ...>
   <data class="ds-chip" data-removable="true" ...>Valgt alternativ</data>
   <input class="ds-input" ... />
-  <u-datalist>
-    <u-option label="Sogndal" value="sogndal">Sogndal</u-option>
-    <u-option label="Oslo" value="oslo">Oslo</u-option>
-  </u-datalist>
-</u-combobox>
+  <ds-datalist>
+    <ds-option label="Sogndal" value="sogndal">Sogndal</ds-option>
+    <ds-option label="Oslo" value="oslo">Oslo</ds-option>
+  </ds-datalist>
+</ds-suggestion>
 ```
 
 ## CSS variabler og data-attributter

@@ -10,6 +10,7 @@ export type SelectProps = MergeRight<
   {
     /**
      * Defines if the select is readOnly
+     * @deprecated Use `aria-readonly` instead.
      * @default false
      */
     readOnly?: boolean;
@@ -31,21 +32,16 @@ export type SelectProps = MergeRight<
  * </Select>
  */
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
-  function Select({ className, onKeyDown, onMouseDown, width, ...rest }, ref) {
+  function Select(
+    { className, onKeyDown, onMouseDown, width, readOnly, ...rest },
+    ref,
+  ) {
     return (
       <select
         className={cl('ds-input', className)}
+        aria-readonly={rest['aria-readonly'] ?? readOnly}
         data-width={width}
         ref={ref}
-        onKeyDown={(event) => {
-          if (event.key === 'Tab') return;
-          if (rest.readOnly) event.preventDefault(); // Make readonly work for select
-          onKeyDown?.(event);
-        }}
-        onMouseDown={(event) => {
-          if (rest.readOnly) event.preventDefault(); // Make readonly work for select
-          onMouseDown?.(event);
-        }}
         {...rest}
       />
     );

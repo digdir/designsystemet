@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>test-app</title>
+    <link
+      rel="stylesheet"
+      href="https://altinncdn.no/fonts/inter/v4.1/inter.css"
+      integrity="sha384-OcHzc/By/OPw9uJREawUCjP2inbOGKtKb4A/I2iXxmknUfog2H8Adx71tWVZRscD"
+      crossorigin="anonymous"
+    />
+    <script type="module">
+      import '../css/src/index.css';
+      import '../css/theme/designsystemet.css';
+      import './src/index.ts';
+    </script>
+  </head>
+  <body data-color-scheme="auto" style="padding:20px;font-family: Inter;">
+    <h1 class="ds-heading" data-size="lg">Test webcomponents</h1>
+
+    <br>
+    <br>
+
+    <h2 class="ds-heading">data-clickdelegatefor</h2>
+    <ds-field class="ds-card" data-clickdelegatefor="target">
+      <input id="target" class="ds-input" type="checkbox" />
+      <label>Clicking this card will toggle the checkbox</label>
+    </ds-field>
+    <ds-field class="ds-card" data-clickdelegatefor="target-disabled">
+      <input id="target-disabled" class="ds-input" type="checkbox" disabled />
+      <label>Clicking this card will not toggle or hover due to disabled checkbox</label>
+    </ds-field>
+    <div class="ds-card" data-clickdelegatefor="target2">
+      <a id="target2" href="https://example.com" rel="noopener">Go to example</a>
+      <span>Clicking this card will open example in a new tab</span>
+    </div>
+
+    <br>
+    <br>
+
+    <button class="ds-button" type="button" command="show-modal" commandfor="my-dialog">
+      Open dialog
+    </button>
+    <dialog id="my-dialog" class="ds-dialog">
+      <h2 class="ds-heading">Dialog title</h2>
+      <p>Dialog content</p>
+      <button class="ds-button" command="close" commandfor="my-dialog">Close</button>
+    </dialog>
+    <br>
+    <br>
+
+    <ds-breadcrumbs class="ds-breadcrumbs">
+      <a href="#none" aria-label="Tilbake til Nivå 3" class="ds-link">
+        Nivå 3
+      </a>
+      <ol>
+        <li><a href="#none" class="ds-link">Nivå 1</a></li>
+        <li><a href="#none" class="ds-link">Nivå 2</a></li>
+        <li><a href="#none" class="ds-link">Nivå 3</a></li>
+        <li><a href="#none" class="ds-link">Nivå 4</a></li>
+      </ol>
+    </ds-breadcrumbs>
+
+    <br>
+    <br>
+
+    <!-- <ds-breadcrumbs class="ds-breadcrumbs">
+      <a href="#none" aria-label="Tilbake til Nivå 3" class="ds-link">
+        Nivå 3
+      </a>
+    </ds-breadcrumbs> -->
+
+    <br>
+    <br>
+
+    <ds-errorsummary class="ds-error-summary">
+      <h2>Oppsummering</h2>
+      <ul>
+        <li><a href="#none" class="ds-link">Feil 1</a></li>
+        <li><a href="#none" class="ds-link">Feil 2</a></li>
+        <li><a href="#none" class="ds-link">Feil 3</a></li>
+      </ul>
+    </ds-errorsummary>
+
+    <br>
+    <br>
+
+    <ds-pagination class="ds-pagination" data-href="?page=%d" data-current="2" data-total="5">
+      <ol>
+        <li><a class="ds-button" data-variant="tertiary" href="#none"></a></li>
+        <li><a class="ds-button" data-variant="tertiary" href="#none"></a></li>
+        <li><a class="ds-button" data-variant="tertiary" href="#none"></a></li>
+        <li><a class="ds-button" data-variant="tertiary" href="#none"></a></li>
+        <li><a class="ds-button" data-variant="tertiary" href="#none"></a></li>
+        <li><a class="ds-button" data-variant="tertiary" href="#none"></a></li>
+        <li><a class="ds-button" data-variant="tertiary" href="#none"></a></li>
+        <li><a class="ds-button" data-variant="tertiary" href="#none"></a></li>
+        <li><a class="ds-button" data-variant="tertiary" href="#none"></a></li>
+        <li><a class="ds-button" data-variant="tertiary" href="#none"></a></li>
+        <li><a class="ds-button" data-variant="tertiary" href="#none"></a></li>
+        <li><a class="ds-button" data-variant="tertiary" href="#none"></a></li>
+        <li><a class="ds-button" data-variant="tertiary" href="#none"></a></li>
+        <li><a class="ds-button" data-variant="tertiary" href="#none"></a></li>
+        <li><a class="ds-button" data-variant="tertiary" href="#none"></a></li>
+        <li><a class="ds-button" data-variant="tertiary" href="#none"></a></li>
+      </ol>
+    </ds-pagination>
+
+    <br>
+    <br>
+
+    <ds-pagination class="ds-pagination" data-current="10" data-total="100">
+      <ol>
+        <li><button class="ds-button" data-variant="tertiary"></button></li>
+        <li><button class="ds-button" data-variant="tertiary"></button></li>
+        <li><button class="ds-button" data-variant="tertiary"></button></li>
+        <li><button class="ds-button" data-variant="tertiary"></button></li>
+        <li><button class="ds-button" data-variant="tertiary"></button></li>
+        <li><button class="ds-button" data-variant="tertiary"></button></li>
+        <li><button class="ds-button" data-variant="tertiary"></button></li>
+      </ol>
+    </ds-pagination>
+
+    <br>
+    <br>
+
+    <ds-field class="ds-field">
+      <label>Label</label>
+      <textarea class="ds-input">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque neque nunc, aliquam vel bibendum nec, vestibulum ac dolor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed molestie justo sed tortor venenatis, sed consectetur nisi pharetra. Sed et felis ac felis porttitor gravida a eu arcu. In in dui justo. Aenean elementum tortor quam, at ullamcorper purus pharetra eu. Vivamus ac eros gravida, luctus ipsum a, faucibus mi. Nunc tempus sem ullamcorper faucibus dapibus. Morbi sed aliquam lectus, ut laoreet felis. Praesent vel vulputate sapien. Cras ut consequat turpis. Integer sit amet egestas enim, id accumsan sem. Ut sit amet euismod justo. Nam interdum sit amet nunc vel dapibus.</textarea>
+      <p class="ds-validation-message" data-field="counter" data-limit="20"></p>
+    </ds-field>
+
+    <br>
+    <br>
+
+    <ds-field class="ds-field">
+      <label>Label</label>
+      <input type="text" placeholder="Placeholder" class="ds-input" aria-readonly="true" value="hei" />
+      <div class="ds-validation-message" data-field="validation">
+        Dette er ein feilmelding
+      </div>
+    </ds-field>
+
+    <br>
+    <br>
+
+    <ds-field class="ds-field">
+      <label>Label</label>
+      <textarea class="ds-input">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque neque nunc, aliquam vel bibendum nec, vestibulum ac dolor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed molestie justo sed tortor venenatis, sed consectetur nisi pharetra. Sed et felis ac felis porttitor gravida a eu arcu. In in dui justo. Aenean elementum tortor quam, at ullamcorper purus pharetra eu. Vivamus ac eros gravida, luctus ipsum a, faucibus mi. Nunc tempus sem ullamcorper faucibus dapibus. Morbi sed aliquam lectus, ut laoreet felis. Praesent vel vulputate sapien. Cras ut consequat turpis. Integer sit amet egestas enim, id accumsan sem. Ut sit amet euismod justo. Nam interdum sit amet nunc vel dapibus.</textarea>
+      <p class="ds-validation-message" data-field="counter" data-limit="20"></p>
+    </ds-field>
+
+    <br>
+    <br>
+
+     <ds-field class="ds-field">
+      <label>Label</label>
+      <select class="ds-input" readonly>
+        <option value="option-1">Option 1</option>
+        <option value="option-2">Option 2</option>
+        <option value="option-3">Option 3</option>
+      </select>
+      <p class="ds-validation-message" data-field="counter" data-limit="20"></p>
+    </ds-field>
+
+    <br>
+    <br>
+
+    <ds-field class="ds-field">
+      <input class="ds-input" type="checkbox" readonly />
+      <label>Label</label>
+    </ds-field>
+
+    <br>
+    <br>
+
+    <fieldset class="ds-fieldset">
+      <legend>Velg readonly alternativ</legend>
+      <ds-field class="ds-field">
+        <input class="ds-input" type="radio" name="reads" value="1" readonly />
+        <label>Alternativ 1</label>
+      </ds-field>
+      <ds-field class="ds-field">
+        <input class="ds-input" type="radio" name="reads" value="2" readonly />
+        <label>Alternativ 2</label>
+        <p data-field="description">Description<br />Description</p>
+      </ds-field>
+      <ds-field class="ds-field">
+        <input class="ds-input" type="radio" name="reads" value="3" readonly />
+        <label>Alternativ 3</label>
+      </ds-field>
+    </fieldset>
+
+    <br>
+    <br>
+
+    <ds-field class="ds-field" style="width: 200px">
+      <label>Label</label>
+      <ds-suggestion class="ds-suggestion" data-multiple>
+        <input type="search" class="ds-input" />
+        <del aria-label="Fjern innhold"></del>
+        <u-datalist>
+          <u-option value="option-1">Option 1</u-option>
+          <u-option value="option-2">Option 2</u-option>
+          <u-option value="option-3">Option 3</u-option>
+        </u-datalist>
+      </ds-suggestion>
+    </ds-field>
+
+    <br>
+    <br>
+
+    <fieldset class="ds-fieldset">
+      <legend>Velg Alternativ</legend>
+      <p data-field="description">Introtekst</p>
+      <ds-field class="ds-field">
+        <input class="ds-input" type="radio" name="radios" value="1" checked />
+        <label>Alternativ 1</label>
+      </ds-field>
+      <ds-field class="ds-field">
+        <input class="ds-input" type="radio" name="radios" value="2" />
+        <label>Alternativ 2</label>
+        <p data-field="description">Description<br />Description</p>
+      </ds-field>
+      <ds-field class="ds-field">
+        <input class="ds-input" type="radio" name="radios" value="3" />
+        <label>Alternativ 3</label>
+      </ds-field>
+      <div class="ds-validation-message" data-field="validation">
+        Dette er ein feilmelding
+      </div>
+    </fieldset>
+
+    <br>
+    <br>
+
+    <fieldset class="ds-toggle-group" data-toggle-group="Tekstjusering">
+      <label class="ds-button" data-variant="tertiary">
+        <input type="radio" name="alignment" value="left" checked />
+        Venstestilt
+      </label>
+      <label class="ds-button" data-variant="tertiary">
+        <input type="radio" name="alignment" value="center" />
+        Midtstilt
+      </label>
+      <label class="ds-button" data-variant="tertiary">
+        <input type="radio" name="alignment" value="right" />
+        Høyrestilt
+      </label>
+      <label class="ds-button" data-variant="tertiary">
+        <input type="radio" name="alignment" value="justify" />
+        Utfallende
+      </label>
+    </fieldset>
+    <br>
+    <fieldset class="ds-togglegroup" data-toggle-group="Tekstjustering" data-variant="secondary">
+      <label class="ds-button" data-variant="tertiary">
+        <input type="radio" name="alignment-two" value="left" checked />
+        Venstestilt
+      </label>
+      <label class="ds-button" data-variant="tertiary">
+        <input type="radio" name="alignment-two" value="center" />
+        Midtstilt
+      </label>
+      <label class="ds-button" data-variant="tertiary">
+        <input type="radio" name="alignment-two" value="right" />
+        Høyrestilt
+      </label>
+      <label class="ds-button" data-variant="tertiary">
+        <input type="radio" name="alignment-two" value="justify" />
+        Utfallende
+      </label>
+    </fieldset>
+
+    <br>
+    <br>
+
+    <details class="ds-details">
+      <summary>More info</summary>
+      <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac fringilla turpis. Mauris interdum velit at posuere pulvinar. Cras ut tristique nisi, et efficitur magna. Vestibulum ac iaculis nibh. Phasellus semper at enim non lobortis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus dignissim eros sed nisi posuere scelerisque eu quis nibh.</div>
+    </details>
+
+    <br>
+    <br>
+
+    <div style="display: flex; gap: 1em">
+      <button class="ds-button" data-tooltip="eg forklarer">
+        <svg aria-hidden="true" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"></path></svg>
+      </button>
+      <button class="ds-button" data-tooltip="eg forklarer" data-color="danger">forklar meg</button>
+    </div>
+    <p>
+      Eg ligger i tekst, men trenger ein
+      <span id="tlp2" style="text-decoration:underline dotted" tabindex="0" data-tooltip="eg forklarer">forklaring</span>
+      på dette ordet.
+    </p>
+
+    <button data-placement="top" data-tooltip style="--ds-tooltip: Tooltip fra CSS" class="ds-button">CSS</button>
+    <button data-placement="left" data-tooltip="venstre" class="ds-button">venstre</button>
+    <button data-placement="bottom" data-tooltip="bunn" class="ds-button">bunn</button>
+
+    <br>
+    <br>
+
+    <ds-tabs class="ds-tabs">
+      <ds-tablist>
+        <ds-tab>Tab 1</ds-tab>
+        <ds-tab>Tab 2</ds-tab>
+        <ds-tab>Tab 3</ds-tab>
+      </ds-tablist>
+      <ds-tabpanel>Panel 1</ds-tabpanel>
+      <ds-tabpanel>Panel 2</ds-tabpanel>
+      <ds-tabpanel>Panel 3</ds-tabpanel>
+    </ds-tabs>
+
+    <br>
+    <br>
+
+    <button class="ds-button" id="p-anc" popovertarget="popover" style="margin: 200px">Open popover</button>
+    <div class="ds-popover" popover id="popover" data-placement="left">
+      This is some popover content. It can be very long, but it will wrap and
+      stay within the viewport.
+
+      <button class="ds-button" popovertarget="p-anc1" data-placement="bottom-end">Open nested popover</button>
+      <div class="ds-popover" popover id="p-anc1" data-autoplacement="false">
+        This is some nested popover content. It can be very long, but it will wrap and
+        stay within the viewport.
+      </div>
+    </div>
+
+    <br>
+    <br>
+
+    <button class="ds-button" popovertarget="p-anc3">Open loooong dropdown</button>
+    <div id="p-anc3" class="ds-dropdown" popover data-overscroll="contain">
+      <ul>
+        <li><button class="ds-button" data-variant="tertiary" type="button">Button 1</button></li>
+        <li><button class="ds-button" data-variant="tertiary" type="button">Button 2</button></li>
+        <li><button class="ds-button" data-variant="tertiary" type="button">Button 3</button></li>
+        <li><button class="ds-button" data-variant="tertiary" type="button">Button 4</button></li>
+        <li><button class="ds-button" data-variant="tertiary" type="button">Button 5</button></li>
+        <li><button class="ds-button" data-variant="tertiary" type="button">Button 6</button></li>
+        <li><button class="ds-button" data-variant="tertiary" type="button">Button 7</button></li>
+        <li><button class="ds-button" data-variant="tertiary" type="button">Button 8</button></li>
+        <li><button class="ds-button" data-variant="tertiary" type="button">Button 9</button></li>
+        <li><button class="ds-button" data-variant="tertiary" type="button">Button 10</button></li>
+        <li><button class="ds-button" data-variant="tertiary" type="button">Button 11</button></li>
+        <li><button class="ds-button" data-variant="tertiary" type="button">Button 12</button></li>
+        <li><button class="ds-button" data-variant="tertiary" type="button">Button 13</button></li>
+        <li><button class="ds-button" data-variant="tertiary" type="button">Button 14</button></li>
+        <li><button class="ds-button" data-variant="tertiary" type="button">Button 15</button></li>
+        <li><button class="ds-button" data-variant="tertiary" type="button">Button 16</button></li>
+        <li><button class="ds-button" data-variant="tertiary" type="button">Button 17</button></li>
+        <li><button class="ds-button" data-variant="tertiary" type="button">Button 18</button></li>
+        <li><button class="ds-button" data-variant="tertiary" type="button">Button 19</button></li>
+        <li><button class="ds-button" data-variant="tertiary" type="button">Button 20</button></li>
+      </ul>
+    </div>
+
+    <br>
+    <br>
+
+    <button class="ds-button" popovertarget="p-anc2">Open dropdown</button>
+    <div id="p-anc2" class="ds-dropdown" popover>
+      <h2 class="ds-heading">First heading</h2>
+      <ul><li><button class="ds-button" data-variant="tertiary" type="button">Button 1.1</button></li><li><button class="ds-button" data-variant="tertiary" type="button">Button 1.2</button></li></ul>
+      <!-- <h2 class="ds-heading">Second heading</h2>
+      <ul><li><button class="ds-button" data-variant="tertiary" type="button">Button 2.1</button></li><li><button class="ds-button" data-variant="tertiary" type="button">Button 2.2</button></li></ul> -->
+    </div>
+
+    <div style="height:900px"></div>
+  </body>
+</html>

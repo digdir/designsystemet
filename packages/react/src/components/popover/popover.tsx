@@ -1,36 +1,13 @@
 import type { Color, SeverityColors } from '@digdir/designsystemet-types';
-import type { MiddlewareState, Placement } from '@floating-ui/dom';
-import {
-  autoUpdate,
-  computePosition,
-  flip,
-  offset,
-  shift,
-} from '@floating-ui/dom';
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useContext, useEffect, useRef, useState } from 'react';
-import type { DefaultProps } from '../../types';
+import '@digdir/designsystemet-web'; // Import _ds-floating functionality
+import type { DefaultProps, Placement } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { useMergeRefs } from '../../utilities/hooks';
 import { Context } from './popover-trigger-context';
-
-// Make React support popovertarget attribute
-// https://github.com/facebook/react/issues/27479
-declare global {
-  namespace React.JSX {
-    interface IntrinsicAttributes {
-      popovertarget?: string;
-    }
-  }
-  namespace React {
-    // biome-ignore lint/correctness/noUnusedVariables: we overwrite React's HTMLAttributes to add custom attributes
-    interface HTMLAttributes<T> {
-      popovertarget?: string;
-    }
-  }
-}
 
 export type PopoverProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLDivElement>,
@@ -97,6 +74,7 @@ export type PopoverProps = MergeRight<
  *   Content
  * </Popover>
  */
+
 export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
   function Popover(
     {
@@ -114,7 +92,6 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     ref,
   ) {
     const Component = asChild ? Slot : 'div';
-
     const popoverRef = useRef<HTMLDivElement>(null);
     const mergedRefs = useMergeRefs([popoverRef, ref]);
     const { popoverId, setPopoverId } = useContext(Context);
@@ -124,14 +101,13 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     // NOTE: This code is purely to add React controlled component ability to Popover API
     useEffect(() => {
       const popover = popoverRef.current;
+      const trigger = `[popovertarget="${popover?.id}"],[commandfor="${popover?.id}"]`;
       const handleClick = (event: MouseEvent) => {
         const el = event.target as Element | null;
-        const isTrigger = el?.closest?.(`[popovertarget="${popover?.id}"]`);
+        const isTrigger = el?.closest?.(trigger);
         const isOutside = !isTrigger && !popover?.contains(el as Node);
 
-        if (isTrigger) {
-          event.preventDefault(); // Prevent native Popover API
-        }
+        if (isTrigger) event.preventDefault(); // Prevent native Popover API
         if (controlledOpen && (isTrigger || isOutside)) {
           setInternalOpen(false);
           onClose?.();
@@ -143,12 +119,23 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
 
       const handleKeydown = (event: KeyboardEvent) => {
         if (event.key !== 'Escape' || !controlledOpen) return;
+        const isOpen =
+          popoverRef.current?.matches(':popover-open') ||
+          popoverRef.current?.classList.contains(':popover-open'); // Polyfill support
+
+        if (!isOpen) return;
         event.preventDefault(); // Prevent closing fullscreen in Safari
+        document.querySelector<HTMLElement>(trigger)?.focus?.(); // Move focus back to trigger since `popoover="manual"` doesn't do this
         setInternalOpen(false);
         onClose?.();
       };
 
       popover?.togglePopover?.(controlledOpen);
+      if (controlledOpen) {
+        const options = { detail: document.querySelector(trigger) };
+        popover?.dispatchEvent(new CustomEvent('ds-toggle-source', options)); // Since togglePopover({ source }) is not supported in all browsers yet
+      }
+
       document.addEventListener('click', handleClick, true); // Use capture to execute before React event API
       document.addEventListener('keydown', handleKeydown);
       return () => {
@@ -156,38 +143,6 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         document.removeEventListener('keydown', handleKeydown);
       };
     }, [controlledOpen]);
-
-    // Position with floating-ui
-    useEffect(() => {
-      const popover = popoverRef.current;
-      const trigger = document.querySelector(
-        `[popovertarget="${popover?.id}"]`,
-      );
-
-      if (popover && trigger && controlledOpen)
-        return autoUpdate(trigger, popover, () => {
-          computePosition(trigger, popover, {
-            placement,
-            strategy: 'fixed',
-            middleware: [
-              offset((data) => {
-                // get pseudo element arrow size
-                const styles = getComputedStyle(
-                  data.elements.floating,
-                  '::before',
-                );
-                return parseFloat(styles.height);
-              }),
-              ...(autoPlacement
-                ? [flip({ fallbackAxisSideDirection: 'start' }), shift()]
-                : []),
-              arrowPseudoElement,
-            ],
-          }).then(({ x, y }) => {
-            popover.style.translate = `${Math.round(x)}px ${Math.round(y)}px`;
-          });
-        });
-    }, [controlledOpen, placement, id, autoPlacement]);
 
     // Update context with id
     useEffect(() => {
@@ -199,48 +154,12 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         className={cl('ds-popover', className)}
         id={id || popoverId}
         popover='manual'
+        data-placement={placement}
         data-variant={variant}
         ref={mergedRefs}
+        suppressHydrationWarning // Since _ds-floating adds attributes
         {...rest}
       />
     );
   },
 );
-
-const arrowPseudoElement = {
-  name: 'ArrowPseudoElement',
-  fn(data: MiddlewareState) {
-    const { elements, rects, placement } = data;
-
-    let arrowX = `${Math.round(rects.reference.width / 2 + rects.reference.x - data.x)}px`;
-    let arrowY = `${Math.round(rects.reference.height / 2 + rects.reference.y - data.y)}px`;
-
-    if (rects.reference.width > rects.floating.width) {
-      arrowX = `${Math.round(rects.floating.width / 2)}px`;
-    }
-
-    if (rects.reference.height > rects.floating.height) {
-      arrowY = `${Math.round(rects.floating.height / 2)}px`;
-    }
-
-    switch (placement.split('-')[0]) {
-      case 'top':
-        arrowY = '100%';
-        break;
-      case 'right':
-        arrowX = '0';
-        break;
-      case 'bottom':
-        arrowY = '0';
-        break;
-      case 'left':
-        arrowX = '100%';
-        break;
-    }
-
-    elements.floating.setAttribute('data-placement', placement.split('-')[0]); // We only need top/left/right/bottom
-    elements.floating.style.setProperty('--ds-popover-arrow-x', arrowX);
-    elements.floating.style.setProperty('--ds-popover-arrow-y', arrowY);
-    return data;
-  },
-};
