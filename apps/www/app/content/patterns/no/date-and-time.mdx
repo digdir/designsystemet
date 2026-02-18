@@ -65,29 +65,12 @@ Når utvalget er svært begrenset, for eksempel noen få datoer eller tidspunkte
 
 <Story story="PredefinedOptions1" />
 
-Når antall valg øker, kan en [`Select`](/no/components/docs/select/overview) være nyttig for å begrense utvalget. Da kan brukeren for eksempel først velge en uke, og deretter velge blant de tilgjengelige tidspunktene i den uken. Du bør kun vise uker som har ledige tidspunkt, og unngå å deaktivere uker som ikke har det, da det kan skape forvirring. Forklar i forkant at det kun er uker med ledige tidspunkt som vises, slik at brukeren forstår hvorfor noen uker ikke er tilgjengelige å velge.
+### La brukeren begrense utvalget
+Når antall valg øker, kan en [`Select`](/no/components/docs/select/overview) være nyttig for å begrense utvalget. Da kan brukeren velge blant foretrukne uker, dager eller klokkeslett, og deretter se de tilgjengelige alternativene for det valget. NB: Eksempelet under er ikke fungerende, da det ikke er koblet til et faktisk utvalg av datoer eller klokkeslett, men illustrerer hvordan du kan la brukeren begrense utvalget før de ser de tilgjengelige alternativene.
 
-<Image
-  src='/img/date-and-time/example8.webp'
-  alt='Forhåndsdefinert utvalg datoer eksempel 2'
-  boxShadow={false}
-/>
+<Story story="PredefinedOptions2" />
 
-Finnes det mange ledige tidspunkt den uken, bør valget kunne begrenses ytterligere, for eksempel ved å la brukeren velge en dag, og deretter velge blant de tilgjengelige tidspunktene den dagen.
-
-<Image
-  src='/img/date-and-time/example9.webp'
-  alt='Forhåndsdefinert utvalg datoer eksempel 3'
-  boxShadow={false}
-/>
-
-Når brukerne har valgt en dag, bør de se alle tilgjengelige tidspunkter på den dagen. [`Radio`](/no/components/docs/radio/overview) fungerer godt for dette, da det gjør det raskt og enkelt å velge et tidspunkt uten å måtte skrive noe selv.
-
-<Image
-  src='/img/date-and-time/example11.webp'
-  alt='Forhåndsdefinert utvalg datoer eksempel 5'
-  boxShadow={false}
-/>
+Du bør kun vise valg som har ledige timer, og unngå å for eksempel deaktivere uker som ikke har ledige timer, da det kan skape forvirring. Forklar i forkant at det kun er uker med ledige tidspunkt som vises, slik at brukeren forstår hvorfor noen uker ikke er tilgjengelige å velge.
 
 ## Oppsummering
 

@@ -188,9 +188,117 @@ export const PredefinedOptions1 = () => {
         name='appointmentTime'
       />
 
-      <a href='...' style={{ display: 'flex', marginTop: 'var(--ds-size-6)' }}>
+      <a
+        href='#la-brukeren-begrense-utvalget'
+        style={{ display: 'flex', marginTop: 'var(--ds-size-6)' }}
+      >
         Finn ledige timer lengre frem i tid
       </a>
+    </Fieldset>
+  );
+};
+
+export const PredefinedOptions2 = () => {
+  return (
+    <Fieldset>
+      <Fieldset.Legend data-size='lg'>Når vil du ha time?</Fieldset.Legend>
+      <Fieldset.Description>
+        Dersom noen uker ikke er tilgjengelige å velge, betyr det at det ikke
+        finnes ledige tidspunkt i den uken. Foretrekker du fredager, kan du
+        velge en fast ukedag i stedet for uke. Da vises alle ledige tidspunkt på
+        fredager fremover.
+      </Fieldset.Description>
+
+      {/* Filtrering */}
+      <div style={{ display: 'flex', gap: 'var(--ds-size-6)' }}>
+        <Field>
+          <Label>Velg foretrukket uke</Label>
+          <Select defaultValue=''>
+            <Select.Option value='' disabled>
+              Velg en uke …
+            </Select.Option>
+            <Select.Option value='uke10'>
+              Uke 10 (2.mars - 8.mars)
+            </Select.Option>
+            <Select.Option value='uke11'>
+              Uke 11 (9.mars - 15.mars)
+            </Select.Option>
+            <Select.Option value='uke12'>
+              Uke 12 (16.mars - 22.mars)
+            </Select.Option>
+            <Select.Option value='uke14'>
+              Uke 14 (30.mars - 5.april)
+            </Select.Option>
+            <Select.Option value='uke15'>
+              Uke 15 (6.april - 12.april)
+            </Select.Option>
+            <Select.Option value='uke16'>
+              Uke 16 (13.april - 19.april)
+            </Select.Option>
+          </Select>
+        </Field>
+
+        <Field>
+          <Label>Velg foretrukket dag</Label>
+          <Select defaultValue='Tirsdag'>
+            <Select.Option value='' disabled>
+              Velg en dag …
+            </Select.Option>
+            <Select.Option value='Mandag'>Mandag</Select.Option>
+            <Select.Option value='Tirsdag'>Tirsdag</Select.Option>
+            <Select.Option value='Onsdag'>Onsdag</Select.Option>
+            <Select.Option value='Torsdag'>Torsdag</Select.Option>
+            <Select.Option value='Fredag'>Fredag</Select.Option>
+          </Select>
+        </Field>
+
+        <Field>
+          <Label>Velg foretrukket klokkeslett</Label>
+          <Select defaultValue=''>
+            <Select.Option value='' disabled>
+              Velg et klokkeslett …
+            </Select.Option>
+            <Select.Option value='08-11'>08:00 og 11:00</Select.Option>
+            <Select.Option value='11-14'>11:00 og 14:00</Select.Option>
+            <Select.Option value='14-17'>14:00 og 17:00</Select.Option>
+            <Select.Option value='17-20'>17:00 og 20:00</Select.Option>
+          </Select>
+        </Field>
+      </div>
+
+      <Fieldset style={{ marginTop: 'var(--ds-size-6)' }}>
+        <Fieldset.Legend>Velg et av de ledige tidspunktene</Fieldset.Legend>
+
+        <Radio
+          label='Tirsdag 17. feb kl. 10:00'
+          value='2026-02-17T10:00'
+          name='appointmentTime'
+        />
+
+        <Radio
+          label='Tirsdag 17. feb kl. 14:00'
+          value='2026-02-17T14:00'
+          name='appointmentTime'
+        />
+
+        <Radio
+          label='Tirsdag 24. feb kl. 08:00'
+          value='2026-02-24T08:00'
+          name='appointmentTime'
+        />
+
+        <Radio
+          label='Tirsdag 24. feb kl. 09:30'
+          value='2026-02-24T09:30'
+          name='appointmentTime'
+        />
+
+        <Radio
+          label='Tirsdag 3. mars kl. 12:30'
+          value='2026-03-03T12:30'
+          name='appointmentTime'
+        />
+      </Fieldset>
     </Fieldset>
   );
 };
