@@ -122,7 +122,8 @@ export default {
   'consent-banner': {
     heading: 'Vil du godta at vi samler inn data?',
     all: 'Godta alle',
-    'all-desc': 'Vi skrur på analyseverktøyet Siteimprove.',
+    'all-desc':
+      'Med ditt samtykke lagrer og analyserer vi hvordan du bruker nettsidene våre slik at vi kan forbedre dem.',
     required: 'Bare nødvendige',
     'required-desc':
       'Sikrer at nettsiden fungerer som den skal. Kan ikke velges bort.',
