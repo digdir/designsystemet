@@ -14,6 +14,7 @@ const lng = url.startsWith('/no') ? 'no' : url.startsWith('/en') ? 'en' : 'no';
 async function hydrate() {
   await i18next.use(initReactI18next).init({
     ...i18n,
+    showSupportNotice: false,
     lng,
     resources: {
       en: {
