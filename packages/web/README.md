@@ -1,5 +1,31 @@
 ## `@digdir/designsystemet-web`
 
+### Table of contents
+
+- [`@digdir/designsystemet-web`](#digdirdesignsystemet-web)
+  - [Table of contents](#table-of-contents)
+  - [Get started](#get-started)
+    - [Types](#types)
+  - [Warnings:](#warnings)
+- [`<ds-breadcrumbs>`](#ds-breadcrumbs)
+- [`<ds-error-summary>`](#ds-error-summary)
+- [`<ds-field>`](#ds-field)
+  - [Counter](#counter)
+- [`<ds-pagination>`](#ds-pagination)
+- [`<ds-suggestion>`](#ds-suggestion)
+- [`<ds-tabs>`](#ds-tabs)
+- [`data-toggle-group`](#data-toggle-group)
+- [`data-tooltip`](#data-tooltip)
+- [`data-clickdelegatefor`](#data-clickdelegatefor)
+- [`readonly`](#readonly)
+- [Polyfills](#polyfills)
+  - [invokers-polyfill](#invokers-polyfill)
+  - [`<dialog>`](#dialog)
+    - [open \& close](#open--close)
+  - [`details` and `summary`](#details-and-summary)
+  - [`popover`](#popover)
+
+
 ### Get started
 
 We recommend to import the whole package.

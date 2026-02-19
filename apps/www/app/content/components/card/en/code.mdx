@@ -82,6 +82,25 @@ You can switch between `display: flex` and `display: grid` to place `Card.Block`
 </div>
 ```
 
+### Link card with data attribute
+
+You can make the entire card clickable by adding `data-clickdelegatefor` and pointing to the id of a link inside the card.
+
+```html
+<div
+  class="ds-card"
+  data-clickdelegatefor="lenke"
+>
+  <a
+    id="lenke"
+    class="ds-link"
+    href="https://designsystemet.no"
+    target="_blank"
+    rel="noopener noreferrer"
+  >Myrkheim Museum</a>
+</div>
+```
+
 ## CSS variables and data attributes
 
 `Card` has two CSS classes, but all CSS variables are attached to the main class `ds-card`.
