@@ -126,8 +126,8 @@ export default {
     required: 'Bare nødvendige',
     'required-desc':
       'Sikrer at nettsiden fungerer som den skal. Kan ikke velges bort.',
-    declaration1: 'Du kan når som helst endre valget ditt på siden om',
-    declaration2: 'personvernerklæring',
+    declaration:
+      'Du kan når som helst endre valget ditt nederst på våre sider.',
   },
   errors: {
     default: {

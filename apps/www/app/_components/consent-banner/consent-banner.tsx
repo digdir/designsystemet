@@ -17,18 +17,25 @@ export const ConsentBanner = forwardRef<HTMLDivElement, BannerProps>(
             {t('consent-banner.heading')}
           </Heading>
           <Paragraph>
-            <span>{t('consent-banner.all')}:</span>{' '}
+            <span>
+              <Link to={`/${lang}/intro/privacy-policy#${lang === 'no' ? 'valgfrie-informasjonskapsler' : 'optional-cookies'}`}>
+                {t('consent-banner.all')}
+              </Link>
+              :
+            </span>{' '}
             {t('consent-banner.all-desc')}
           </Paragraph>
           <Paragraph>
-            <span>{t('consent-banner.required')}:</span>{' '}
+            <span>
+              <Link to={`/${lang}/intro/privacy-policy#${lang === 'no' ? 'nødvendige-informasjonskapsler' : 'necessary-cookies'}`}>
+                {t('consent-banner.required')}
+              </Link>
+              :
+            </span>{' '}
             {t('consent-banner.required-desc')}
           </Paragraph>
           <Paragraph>
-            {t('consent-banner.declaration1')}{' '}
-            <Link to={`/${lang}/intro/privacy-policy`}>
-              {t('consent-banner.declaration2')}
-            </Link>
+            {t('consent-banner.declaration')}{' '}
           </Paragraph>
           <form method='post' action='/api/consent' className={classes.buttons}>
             <Button

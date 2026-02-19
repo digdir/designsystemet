@@ -127,8 +127,7 @@ export default {
     required: 'Only necessary',
     'required-desc':
       'Ensures the website functions properly. Cannot be opted out of.',
-    declaration1: 'You can change your choice at any time on the page about',
-    declaration2: 'privacy policy',
+    declaration: 'You can change your choice at any time from the footer.',
   },
   errors: {
     default: {
