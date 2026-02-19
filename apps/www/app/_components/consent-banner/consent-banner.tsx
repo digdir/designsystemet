@@ -34,18 +34,18 @@ export const ConsentBanner = forwardRef<HTMLDivElement, BannerProps>(
             <Button
               type='submit'
               name='consent'
-              value='all'
-              data-color='neutral'
-            >
-              {t('consent-banner.all')}
-            </Button>
-            <Button
-              type='submit'
-              name='consent'
               value='required'
               data-color='neutral'
             >
               {t('consent-banner.required')}
+            </Button>
+            <Button
+              type='submit'
+              name='consent'
+              value='all'
+              data-color='neutral'
+            >
+              {t('consent-banner.all')}
             </Button>
           </form>
         </div>
