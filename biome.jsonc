@@ -120,6 +120,11 @@
       "cssModules": true
     }
   },
+  "html": {
+    "formatter": {
+      "enabled": true
+    }
+  },
   "overrides": [
     {
       "includes": ["**/*.css"],
