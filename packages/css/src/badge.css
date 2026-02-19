@@ -62,7 +62,7 @@
     bottom: var(--dsc-badge-bottom);
     left: var(--dsc-badge-left);
     right: var(--dsc-badge-right);
-    z-index: 1;
+    z-index: 1; /*prevent focus-ring overlaying badge in certain cases*/
   }
 
   & :where(img, svg) {
