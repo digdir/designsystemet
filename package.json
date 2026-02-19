@@ -37,7 +37,7 @@
     "update:preview-tokens": "pnpm --filter @digdir/designsystemet run update:preview-tokens"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.0",
+    "@biomejs/biome": "2.4.2",
     "@changesets/cli": "^2.29.8",
     "@digdir/designsystemet": "workspace:",
     "@svitejs/changesets-changelog-github-compact": "^1.2.0",
