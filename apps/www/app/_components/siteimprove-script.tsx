@@ -1,7 +1,5 @@
-'use client';
-
 import { useEffect } from 'react';
-import { shouldIncludeSiteimprove } from '~/_utils/consent-client';
+import { shouldIncludeSiteimprove } from '~/_utils/consent.client';
 
 export function SiteimproveScript() {
   useEffect(() => {

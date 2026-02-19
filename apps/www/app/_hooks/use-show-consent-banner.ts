@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { hasConsent } from '~/_utils/consent-client';
+import { hasConsent } from '~/_utils/consent.client';
 
 export function useShowConsentBanner() {
   const [showBanner, setShowBanner] = useState(false);
