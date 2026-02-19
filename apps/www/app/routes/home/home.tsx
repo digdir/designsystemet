@@ -24,7 +24,7 @@ import {
   getFileFromContentDir,
   getFilesFromContentDir,
 } from '~/_utils/files.server';
-import { generateMetadata } from '~/_utils/metadata';
+import { generateMetadata, logoPath } from '~/_utils/metadata';
 import i18nConf from '~/i18n';
 import i18n from '~/i18next.server';
 import type { Route } from './+types/home';
@@ -285,7 +285,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
           </div>
         </div>
         <div className={classes.joinCard}>
-          <img src='/img/Logotest.svg' alt='' />
+          <img src={logoPath} alt='' />
           <div>
             <Heading level={2} data-size='md'>
               {t('frontpage.join-section.title')}
