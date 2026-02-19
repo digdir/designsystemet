@@ -1,6 +1,7 @@
 .consentBanner {
   background-color: var(--ds-color-accent-background-tinted);
   padding-block: var(--ds-size-7) var(--ds-size-8);
+  border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
   position: relative; /*firefox fix*/
   z-index: 1; /*firefox fix*/
 }
