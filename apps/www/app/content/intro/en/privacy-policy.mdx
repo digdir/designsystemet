@@ -22,9 +22,15 @@ Designsystemet.no uses React as a tool to build web pages and handle user choice
 Optional cookies are only activated if you provide consent. If you choose “Accept all”, we use the analytics tool Siteimprove to collect anonymised usage statistics. This information is used to improve our services and better understand users’ needs.
 
 ## My choices
-Choose which cookies you want to store on designsystemet.no
-
-- [RADIO] Necessary only [/RADIO]
-- [RADIO] Accept all [/RADIO]
-
-[BUTTON] Save [/BUTTON]
+Press the button below to delete your cookie choices and to manage your preferences again.
+<form method='post' action='/api/consent'>
+    <button
+        type='submit'
+        name='action'
+        value='delete'
+        data-color='neutral'
+        className='ds-button'
+    >
+        Clear my cookie preferences
+    </button>
+</form>

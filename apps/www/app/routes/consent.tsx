@@ -8,13 +8,20 @@ export async function action({ request }: Route.ActionArgs) {
   }
 
   const formData = await request.formData();
-  const choice = formData.get('consent');
+  const choice = formData.get('action');
   const referrer = request.headers.get('referer') || '/';
 
-  const cookieHeader = await userConsent.serialize({
-    choice,
-    version: CONSENT_VERSION,
-  });
+  let cookieHeader: string;
+  if (choice === 'delete') {
+    cookieHeader = await userConsent.serialize('', {
+      maxAge: 0,
+    });
+  } else {
+    cookieHeader = await userConsent.serialize({
+      choice,
+      version: CONSENT_VERSION,
+    });
+  }
 
   return redirect(referrer, {
     headers: {

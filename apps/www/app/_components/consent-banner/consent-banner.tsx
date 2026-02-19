@@ -42,7 +42,7 @@ export const ConsentBanner = forwardRef<HTMLDivElement, BannerProps>(
           <form method='post' action='/api/consent' className={classes.buttons}>
             <Button
               type='submit'
-              name='consent'
+              name='action'
               value='required'
               data-color='neutral'
             >
@@ -50,7 +50,7 @@ export const ConsentBanner = forwardRef<HTMLDivElement, BannerProps>(
             </Button>
             <Button
               type='submit'
-              name='consent'
+              name='action'
               value='all'
               data-color='neutral'
             >

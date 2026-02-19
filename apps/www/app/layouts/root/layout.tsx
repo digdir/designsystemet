@@ -84,6 +84,7 @@ export default function RootLayout() {
         <Outlet />
       </main>
       <Footer
+        resetCookies
         centerLinks={centerLinks}
         rightLinks={rightLinks as FooterLinkListItemProps[]}
       />

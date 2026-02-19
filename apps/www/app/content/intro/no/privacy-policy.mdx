@@ -22,9 +22,15 @@ Designsystemet.no bruker React som verktøy for å produsere nettsider og følge
 Valgfrie informasjonskapsler aktiveres kun dersom du gir samtykke. Dersom du velger «Godkjenn alle», tar vi i bruk analyseverktøyet Siteimprove for å samle inn anonymisert bruksstatistikk som benyttes til å forbedre tjenestene våre og forstå brukernes behov bedre.
 
 ## Mine valg 
-Velg hvilke informasjonskapsler du vil lagre på designsystemet.no
-
-- [RADIO] Bare nødvendige [/RADIO]
-- [RADIO] Godkjenn alle [/RADIO]
-
-[KNAPP] Lagre [/KNAPP] 
+Trykk på knappen under for å slette dine valg for informasjonskapsler, og for å administrere dine preferanser på nytt.
+<form method='post' action='/api/consent'>
+    <button
+        type='submit'
+        name='action'
+        value='delete'
+        data-color='neutral'
+        className='ds-button'
+    >
+        Slett mine valg for informasjonskapsler
+    </button>
+</form>
