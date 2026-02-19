@@ -101,7 +101,10 @@ const CodeBlockContent = ({
       language={language}
       theme={colorScheme === 'dark' ? themes.vsDark : themes.vsLight}
     >
-      <div className={classes.codeBlockWrapper} data-color-scheme={colorScheme}>
+      <div
+        className={classes.codeBlockWrapper}
+        data-color-scheme={colorScheme ?? undefined}
+      >
         <div className={classes.toolbar}>
           <CopyButton text={text} />
         </div>

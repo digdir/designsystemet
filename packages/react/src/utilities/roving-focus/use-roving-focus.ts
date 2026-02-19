@@ -6,7 +6,9 @@ import { useContext } from 'react';
 
 import { RovingFocusContext } from './roving-focus-root';
 
-/** Handles props for `RovingFocus` in context with `RovingFocusRoot` */
+/**
+@deprecated useRovingFocus is deprecated.
+Handles props for `RovingFocus` in context with `RovingFocusRoot` */
 export const useRovingFocus = (value: string) => {
   const {
     elements,

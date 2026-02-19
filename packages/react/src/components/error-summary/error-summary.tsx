@@ -1,20 +1,13 @@
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes } from 'react';
-import { createContext, forwardRef, useId, useState } from 'react';
+import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 
-type ErrorSummaryContextType = {
-  headingId?: string;
-  setHeadingId: (id: string) => void;
-};
-
-export const ErrorSummaryContext = createContext<ErrorSummaryContextType>({
-  headingId: 'heading',
-  setHeadingId: () => {},
-});
-
 export type ErrorSummaryProps = {
+  /**
+   * @deprecated This is not supported anymore, as the element needs to be `ds-error-summary`
+   */
   asChild?: React.ReactNode;
 } & Omit<HTMLAttributes<HTMLDivElement> & DefaultProps, 'data-color'>;
 
@@ -36,21 +29,17 @@ export type ErrorSummaryProps = {
  */
 export const ErrorSummary = forwardRef<HTMLDivElement, ErrorSummaryProps>(
   function ErrorSummary({ asChild, className, ...rest }, ref) {
-    const randomId = useId();
-    const [headingId, setHeadingId] = useState<string>(randomId);
-
-    const Component = asChild ? Slot : 'div';
+    const Component = asChild ? Slot : 'ds-error-summary';
 
     return (
-      <ErrorSummaryContext.Provider value={{ headingId, setHeadingId }}>
-        <Component
-          tabIndex={-1}
-          aria-labelledby={headingId}
-          className={cl('ds-error-summary', className)}
-          ref={ref}
-          {...rest}
-        />
-      </ErrorSummaryContext.Provider>
+      <Component
+        {...(asChild
+          ? { className: cl('ds-error-summary', className) }
+          : { class: cl('ds-error-summary', className) })}
+        ref={ref}
+        suppressHydrationWarning
+        {...rest}
+      />
     );
   },
 );

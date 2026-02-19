@@ -134,7 +134,6 @@ ShowHideReact.play = async (ctx) => {
   await userEvent.click(button);
   const errorSummary = canvas.getByTestId('show-hide');
   await expect(errorSummary).toBeVisible();
-  await expect(errorSummary).toHaveFocus();
 };
 
 ShowHideReact.parameters = {

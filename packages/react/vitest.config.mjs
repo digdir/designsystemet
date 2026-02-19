@@ -29,6 +29,7 @@ export default defineProject({
     browser: {
       enabled: true,
       instances: [{ browser: 'chromium' }],
+      viewport: { width: 1280, height: 720 }, // Ensure desktop size viewport for consistent test results
       provider: playwright(),
       headless: true,
     },

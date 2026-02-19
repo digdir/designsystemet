@@ -41,58 +41,42 @@ Om du legg både ein `Breadcrumbs.Link` og ein `Breadcrumbs.List` direkte i `Bre
 
 ## HTML
 
-Klassenavnet `ds-breadcrumbs` blir lagt på et `<nav>`-element.
-Dette elementet burde også ha ein `aria-label` som forklarer funksjonen til navigasjonen, til dømes "Du er her:".
-Du treng ikkje `aria-label` dersom du har ein synleg overskrift som forklarer funksjonen til navigasjonen.
+Klassenavnet `ds-breadcrumbs` blir lagt på et `<ds-breadcrumbs>`.
+Web komponenten håndterer automatisk `aria-current="page"` på siste lenke i lista.
 
-Dersom du kun vil vise sti, legg du `<ol>` direkte i `<nav>`-elementet. Chevron mellom elementa blir lagt til automatisk.
-
-**Det er viktig at siste side blir markert med `aria-current="page"`.**
+Dersom du vil gjøre dette selv kan du bruke `<nav class="ds-breadcrumbs" aria-label="Du er her:">`.
 
 ```html
-<nav class="ds-breadcrumbs" aria-label="Du er her:">
+<ds-breadcrumbs class="ds-breadcrumbs" aria-label="Du er her:">
   <ol>
-    <li>
-      <a href="#" class="ds-link">Nivå 1</a>
-    </li>
-    <li>
-      <a href="#" class="ds-link">Nivå 2</a>
-    </li>
-    <li>
-      <a href="#" aria-current="page" class="ds-link">Nivå 3</a>
-    </li>
+    <li><a href="#none">Nivå 1</a></li>
+    <li><a href="#none">Nivå 2</a></li>
+    <li><a href="#none">Nivå 3</a></li>
   </ol>
-</nav>
+</ds-breadcrumbs>
 ```
 
 ### Kun tilbake-knapp
 
 ```html
-<nav class="ds-breadcrumbs" aria-label="Du er her:">
+<ds-breadcrumbs class="ds-breadcrumbs" aria-label="Du er her:">
   <a href="#" class="ds-link">Tilbake til nivå 2</a>
-</nav>
+</ds-breadcrumbs>
 ```
 
 ### Sti eller tilbake-knapp basert på skjermbreidde
 
 ```html
-<nav aria-label="Du er her:" class="ds-breadcrumbs">
-  <a class="ds-link" href="#" aria-label="Tilbake til Nivå 3">Nivå 3</a>
+<ds-breadcrumbs class="ds-breadcrumbs" aria-label="Du er her:">
+  <a href="#none" aria-label="Tilbake til Nivå 3">
+    Nivå 3
+  </a>
   <ol>
-    <li>
-      <a class="ds-link" href="#">Nivå 1</a>
-    </li>
-    <li>
-      <a class="ds-link" href="#">Nivå 2</a>
-    </li>
-    <li>
-      <a class="ds-link" href="#">Nivå 3</a>
-    </li>
-    <li>
-      <a class="ds-link" href="#" aria-current="page">Nivå 4</a>
-    </li>
+    <li><a href="#none">Nivå 1</a></li>
+    <li><a href="#none">Nivå 2</a></li>
+    <li><a href="#none">Nivå 3</a></li>
   </ol>
-</nav>
+</ds-breadcrumbs>
 ```
 
 ## CSS variablar og data-attributt

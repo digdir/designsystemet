@@ -1,0 +1,57 @@
+{
+  "name": "@digdir/designsystemet-web",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Javascript for Designsystemet",
+  "author": "Designsystemet team",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digdir/designsystemet.git"
+  },
+  "homepage": "https://github.com/digdir/designsystemet/tree/main/packages/web",
+  "license": "MIT",
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.cjs"
+    },
+    "./custom-elements.json": "./dist/custom-elements.json",
+    "./vscode.html-custom-data.json": "./dist/vscode.html-custom-data.json"
+  },
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "start": "vite --config=./vite.config.ts --port=5174",
+    "build": "rimraf dist && tsup && rolldown -c && cem analyze",
+    "test": "vitest --config=vitest.browser.config.ts"
+  },
+  "customElements": "dist/custom-elements.json",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@floating-ui/dom": "^1.7.4",
+    "@u-elements/u-combobox": "^1.0.7",
+    "@u-elements/u-datalist": "^1.1.0",
+    "@u-elements/u-details": "^0.2.2",
+    "@u-elements/u-progress": "^0.0.7",
+    "@u-elements/u-tabs": "^0.1.2",
+    "invokers-polyfill": "^0.6.1"
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.11.0",
+    "@testing-library/dom": "^10.4.1",
+    "@vitest/browser-playwright": "4.0.16",
+    "custom-element-vs-code-integration": "^1.5.0",
+    "rimraf": "^6.1.2",
+    "rolldown": "1.0.0-rc.4",
+    "rollup": "^4.55.3",
+    "tsup": "^8.5.1",
+    "vitest": "4.0.16"
+  }
+}

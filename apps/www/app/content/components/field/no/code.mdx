@@ -40,60 +40,66 @@ Du kan endre teksten ved å sende inn props, som du kan se øverst på siden. Sp
 
 ## HTML
 
-Du kan få styling fra `Field` med klassenavnet `ds-field`.
-På beskrivelse må du sette `data-field="description"` for å få korrekt styling.
-
-Diverre er det ein del javascript som `Field` køyrer internt, så dette må koblest opp selv.
-Koden vi bruker er ikke react-spesifikk, så du kan kopiere koden vår inntil vi har et bedre alternativ utenfor React.
-
-[`fieldObserver` (github.com)](https://github.com/digdir/designsystemet/blob/main/packages/react/src/components/field/field-observer.ts)
+Legg klassenavnet `ds-field` på `<ds-field>` elementet.
+`<ds-field>` kobler sammen label, input og valideringsmelding.
 
 ```html
-<div class="ds-field">
-  <label
-    class="ds-label"
-    data-weight="medium"
-    for="field-input"
-  >Etternavn</label>
-  <div data-field="description" id="field-description">Etternavn kan ikke inneholde mellomrom</div>
-  <input
-    class="ds-input"
-    type="text"
-    value="Nordmann Svenske"
-    id="field-input"
-    aria-describedby="field-error field-description"
-  >
-  <p
-    class="ds-validation-message"
-    data-field="validation"
-    id="field-error"
-  >Du kan ikke ha mellomrom i etternavnet ditt</p>
-</div>
+<ds-field class="ds-field">
+  <label class="ds-label">Label</label>
+  <input type="text" placeholder="Placeholder" class="ds-input" />
+  <div class="ds-validation-message" data-field="validation">
+    Dette er ein feilmelding
+  </div>
+</ds-field>
 ```
 
-**Pass på at skjemafeltet har `aria-describedby` som refererer til både beskrivelse og valideringsmelding.**.
-Error skal ligge først i `aria-describedby` slik at skjermlesere leser opp feilmeldingen først.
+### Antall tegn
 
-`data-field="validation"` trengst kun dersom du kobler opp `fieldObserver`.
+For å få en teller på inout og textarea, legg til en `<p>` med attributtet `data-field="counter"` inne i `ds-field`.
+
+```html
+<ds-field class="ds-field">
+  <label class="ds-label">Label</label>
+  <textarea class="ds-input"></textarea>
+  <p class="ds-validation-message" data-field="counter" data-limit="20" data-over="%d tegn for mye" data-under="%d tegn igjen"></p>
+</ds-field>
+```
+
+Du kan styre teksten i telleren ved å bruke følgende attributter:
+| attribute  | type   | default               | required |
+|------------|--------|-----------------------|----------|
+| data-limit | number | undefined             | true     |
+| data-over  | string | %d tegn for mye       | false    |
+| data-under | string | %d tegn igjen         | false    |
+
+
+### Ubestemt
+
+For å sette en `checkbox` til ubestemt, legg til `data-indeterminate="true"` på `<input>` elementet.
+
+```html
+<ds-field class="ds-field">
+  <label class="ds-label">Label</label>
+  <input class="ds-input" type="checkbox" data-indeterminate="true" />
+</ds-field>
+```
 
 ### Plassering
 
 For å endre plassering av elementer i `Field`, som for eksempel en `Switch`, kan du legge til `data-position="end|start"` på samme element som `ds-field`.
 
 ```html
-<div class="ds-field" data-position="end">
+<ds-field class="ds-field" data-position="end">
   <label
     class="ds-label"
     data-weight="medium"
-    for=":mhxbylqzlb8"
   >Flymodus</label>
   <input
     class="ds-input"
     role="switch"
     type="checkbox"
-    id=":mhxbylqzlb8"
   >
-</div>
+</ds-field>
 ```
 
 ## CSS variabler og data-attributter

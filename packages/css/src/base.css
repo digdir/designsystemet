@@ -121,6 +121,68 @@ body,
   }
 }
 
+/**
+ * Used to position floating elements like dropdowns, popovers and tooltips
+ */
+.ds-floating {
+  --_ds-floating: top;
+  --_ds-floating-arrow-size: 0;
+  --_ds-floating-arrow-visibility: inherit; /* Using inherit instead of `visible` as default to respect parent visibility */
+  animation: ds-fade-in 0.15s ease-in-out forwards;
+  inset: 0 auto auto 0;
+  margin: 0; /* Needed to place popovers correctly, since popover adds margin */
+  overflow: visible;
+  position: absolute; /* Using absolute for smoother scroll-following on mobile */
+
+  /* Render arrow element */
+  &::before {
+    background: inherit;
+    border: inherit;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    box-sizing: border-box;
+    content: '';
+    height: var(--_ds-floating-arrow-size);
+    left: var(--_ds-floating-arrow-x, 50%);
+    position: absolute;
+    rotate: 45deg;
+    top: var(--_ds-floating-arrow-y, 100%);
+    translate: -50% -50%;
+    visibility: var(--_ds-floating-arrow-visibility);
+    width: var(--_ds-floating-arrow-size);
+  }
+
+  &[data-overscroll='contain'] {
+    --_ds-floating-overscroll: contain;
+    overscroll-behavior: contain;
+    overflow: auto;
+  }
+
+  /* Move arrow element, using |= selector as we want to match both i.e. "bottom" and "bottom-end", "bottom-start" and "bottom-center" */
+  &[data-floating|='top']::before {
+    top: 100%;
+    rotate: 45deg;
+  }
+  &[data-floating|='right']::before {
+    left: 0;
+    rotate: 135deg;
+  }
+  &[data-floating|='bottom']::before {
+    top: 0;
+    rotate: -135deg;
+  }
+  &[data-floating|='left']::before {
+    left: 100%;
+    rotate: -45deg;
+  }
+}
+
+@keyframes ds-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
 /* Setting default font on <body> not :root/<html> to ensure 1rem is still 16px */
 body {
   font-weight: var(--ds-body-md-font-weight);
