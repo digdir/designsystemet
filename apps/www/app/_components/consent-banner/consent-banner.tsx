@@ -18,16 +18,9 @@ export const ConsentBanner = forwardRef<HTMLDivElement, BannerProps>(
           </Heading>
           <Paragraph>
             <span>
-              <Link to={`/${lang}/intro/privacy-policy#${lang === 'no' ? 'valgfrie-informasjonskapsler' : 'optional-cookies'}`}>
-                {t('consent-banner.all')}
-              </Link>
-              :
-            </span>{' '}
-            {t('consent-banner.all-desc')}
-          </Paragraph>
-          <Paragraph>
-            <span>
-              <Link to={`/${lang}/intro/privacy-policy#${lang === 'no' ? 'nødvendige-informasjonskapsler' : 'necessary-cookies'}`}>
+              <Link
+                to={`/${lang}/intro/privacy-policy#${lang === 'no' ? 'nødvendige-informasjonskapsler' : 'necessary-cookies'}`}
+              >
                 {t('consent-banner.required')}
               </Link>
               :
@@ -35,8 +28,17 @@ export const ConsentBanner = forwardRef<HTMLDivElement, BannerProps>(
             {t('consent-banner.required-desc')}
           </Paragraph>
           <Paragraph>
-            {t('consent-banner.declaration')}{' '}
+            <span>
+              <Link
+                to={`/${lang}/intro/privacy-policy#${lang === 'no' ? 'valgfrie-informasjonskapsler' : 'optional-cookies'}`}
+              >
+                {t('consent-banner.all')}
+              </Link>
+              :
+            </span>{' '}
+            {t('consent-banner.all-desc')}
           </Paragraph>
+          <Paragraph>{t('consent-banner.declaration')} </Paragraph>
           <form method='post' action='/api/consent' className={classes.buttons}>
             <Button
               type='submit'
