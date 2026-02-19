@@ -14,13 +14,13 @@ Avoid making the task more complicated than necessary. Custom-built date pickers
 
 ## Known dates
 
-When asking for known dates, such as a date of birth or wedding date, simple text fields work well. Users already know the answer and often prefer to type it directly instead of navigating a calendar.
+When asking for well-known dates, such as a date of birth or wedding date, simple text inputs work well. Users already know the answer and often prefer to type it directly, rather than navigating through a calendar.
 
-Consider splitting the date into separate fields for day, month and year. This makes it easier to enter the date correctly and provides better support for assistive technologies.
+Consider splitting the date into separate fields for day, month and year. This makes it easier to enter the date correctly and provides better support for assistive technologies. When asking users to enter a date exactly as it appears on a bank card, passport or other document, the fields should match the format shown in that document. This makes it easier to transfer the date accurately and reduces the risk of errors.
 
-<Story story="KnownDatesEN" />
+<Story story="KnownDates" />
 
-When asking users for a date as it appears on a bank card, passport or other document, the fields should match the format shown in the document. This makes it easier to transfer the date correctly and reduces the risk of errors.
+We use `inputmode="numeric"` to provide a numeric keyboard on mobile phones and tablets. We deliberately avoid using `type="number"` for day, month and year fields. `type="number"` is designed for numeric values that can be incremented or decremented, and introduces functionality such as spin buttons and automatic validation that is not always appropriate for dates. It can also create [accessibility issues (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/number#accessibility), including problems for screen reader users and unintended value changes.
 
 ## Date from a predefined set of options
 
@@ -42,11 +42,13 @@ You should only show options that have available appointments, and avoid disabli
 
 ## Specific date in the near future or past
 
-In some cases, when users need to choose a specific date close to today, visual support can be helpful. An [`Input`](/en/components/docs/input/overview) with `type="date"` allows users to either enter the date directly or use the browser’s built-in date picker. This often provides a good balance between flexibility and support.
+In some cases, when users need to choose a specific date close to today, visual support can be helpful. An [`Input`](/en/components/docs/input/overview) with `type="date"` allows users to either enter the date directly or use the browser's built-in date picker. This often provides a good balance between flexibility and support.
 
 Support varies between browsers and devices in terms of functionality, appearance and interaction, but the solution is often more accessible and robust than custom-built alternatives.
 
 <Story story="NearFuturePastEN" />
+
+Be aware that `type="date"` is controlled by the user's operating system and regional settings, not by the language of the website. This can result in the date being displayed in a format the user does not expect. Consider whether additional clarity is needed, for example by displaying the selected date in plain text with the month written out in words, or by otherwise asking the user to confirm the date before it is saved.
 
 ## Start and end date
 
@@ -56,7 +58,7 @@ Place the fields in a logical order and validate that the end date is not earlie
 
 <Story story="StartEndDateEN" />
 
-## Time – start and end
+## Time - start and end
 
 When users need to provide a time interval, such as opening hours or the duration of a meeting, an [`Input`](/en/components/docs/input/overview) with `type="time"` can be used. It allows users to enter the time directly, while the browser provides additional support.
 
@@ -90,7 +92,7 @@ Start with the need and choose the solution that allows users to complete the ta
 ## Sources and relevant information
 
 - [Who needs a JavaScript date picker? (dbushell.com)](https://pikaday.dbushell.com/)
-- [Maybe You Don’t Need a Date Picker (adrianroselli.com)](https://adrianroselli.com/2019/07/maybe-you-dont-need-a-date-picker.html)
+- [Maybe You Don't Need a Date Picker (adrianroselli.com)](https://adrianroselli.com/2019/07/maybe-you-dont-need-a-date-picker.html)
 - [Ask users for dates (gov.uk)](https://design-system.service.gov.uk/patterns/dates/)
 
 <Contributors

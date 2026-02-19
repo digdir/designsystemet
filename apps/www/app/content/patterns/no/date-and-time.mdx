@@ -16,11 +16,11 @@ Unngå å gjøre oppgaven mer komplisert enn nødvendig. Egenbygde datovelgere g
 
 Når du spør om kjente datoer, som fødselsdato eller bryllupsdato, fungerer enkle tekstfelt godt. Brukerne vet allerede svaret og ønsker ofte å skrive det direkte, uten å måtte navigere i en kalender.
 
-Del gjerne datoen opp i separate felt for dag, måned og år. Det gjør det enklere å skrive inn datoen korrekt og gir bedre støtte for hjelpemidler.
+Del gjerne datoen opp i separate felt for dag, måned og år. Det gjør det enklere å skrive inn datoen korrekt og gir bedre støtte for hjelpemidler. Når du ber brukerne om en dato slik den står i et bankkort, pass eller annet dokument, bør feltene samsvare med formatet i dokumentet. Det gjør det enklere å overføre datoen korrekt og reduserer risikoen for feil.
 
 <Story story="KnownDates" />
 
-Når du ber brukerne om en dato slik den står i et bankkort, pass eller annet dokument, bør feltene samsvare med formatet i dokumentet. Det gjør det enklere å overføre datoen korrekt og reduserer risikoen for feil.
+Vi bruker `inputmode="numeric"` for å gi brukeren numerisk tastatur på mobil og nettbrett. Vi velger bevisst å ikke bruke `type="number"` for dag, måned og år. `type="number"` er utviklet for numeriske verdier som kan økes og reduseres, og gir funksjonalitet som spinnknapper og automatisk validering som ikke alltid er hensiktsmessig for datoer. Det kan også skape [tilgjengelighetsutfordringer (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/number#accessibility), blant annet for skjermlesere og ved utilsiktet endring av verdi. 
 
 ## Dato fra et forhåndsdefinert utvalg
 
@@ -42,6 +42,8 @@ Du bør kun vise valg som har ledige timer, og unngå å for eksempel deaktivere
 I noen tilfeller når brukerne skal velge en konkret dato tett opp mot dagens dato kan det være nyttig med visuell støtte. En [`Input`](/no/components/docs/input/overview) med `type="date"` lar brukerne enten skrive datoen direkte eller bruke nettleserens innebygde datovelger. Dette gir ofte en god balanse mellom fleksibilitet og støtte. Støtten varierer mellom nettlesere og enheter, både når det gjelder funksjonalitet, utseende og interaksjon, men løsningen er ofte mer tilgjengelig og robust enn egenbygde alternativer.
 
 <Story story="NearFuturePast" />
+
+Vær oppmerksom på at `type="date"` styres av brukerens operativsystem og regionale innstillinger, ikke av språket på nettsiden. Det kan føre til at datoen vises i et annet format enn brukeren forventer. Vurder om det er behov for ekstra tydelighet, for eksempel ved å vise valgt dato i klartekst med måned skrevet med bokstaver, eller på annen måte bekrefte datoen før den lagres.
 
 ## Start- og sluttdato
 
