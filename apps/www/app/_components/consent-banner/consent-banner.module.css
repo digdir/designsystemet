@@ -13,9 +13,16 @@
   h2 {
     font-weight: 500;
     margin-bottom: var(--ds-size-3);
+    text-wrap: pretty;
   }
   span {
     font-weight: 600;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  p:first-of-type {
+    margin-bottom: var(--ds-size-2);
   }
   p:last-of-type {
     margin-block: var(--ds-size-8);
