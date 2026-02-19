@@ -38,20 +38,15 @@ Under er et eksempel der vi flytter fokus til `ErrorSummary` når den blir synli
 
 ## HTML
 
-Klassenavnet `ds-error-summary` brukes på en kontainer, standard for React er `<div>`.
+Klassenavnet `ds-error-summary` brukes på `<ds-error-summary>`-elementet.
+Webkomponenten håndterer fokus når den blir synlig og `aria-labelledby` automatisk.
 
-Som barn må du ha en heading (gjerne `<h2>`) som har en `id` som kan refereres til med `aria-labelledby` på kontaineren.
-
-Vi legger en `ds-list` etter heading som inneholder en liste med feil.
+Vi legger en `<ul class="ds-list">` etter heading som inneholder en liste med feil.
 Hver feil er en `<li>` med en lenke (`<a>`) som har klassen `ds-link` og et `href` til det aktuelle feltet med feil.
 
 ```html
-<div
-  tabindex="-1"
-  aria-labelledby="error-heading"
-  class="ds-error-summary"
->
-  <h2 class="ds-heading" id="error-heading">For å gå videre må du rette opp følgende feil:</h2>
+<ds-error-summary class="ds-error-summary">
+  <h2 class="ds-heading">For å gå videre må du rette opp følgende feil:</h2>
   <ul class="ds-list">
     <li>
       <a class="ds-link" data-color="neutral" href="#">Fødselsdato kan ikke være etter år 2005</a>
@@ -63,7 +58,7 @@ Hver feil er en `<li>` med en lenke (`<a>`) som har klassen `ds-link` og et `hre
       <a class="ds-link" data-color="neutral" href="#">E-post må være gyldig</a>
     </li>
   </ul>
-</div>
+</ds-error-summary>
 ```
 
 ## CSS variabler og data-attributter

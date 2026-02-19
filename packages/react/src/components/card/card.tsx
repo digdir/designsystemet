@@ -1,7 +1,7 @@
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
 import type { HTMLAttributes, ReactNode } from 'react';
-import { forwardRef, useEffect, useRef } from 'react';
+import { forwardRef, useEffect, useId, useRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 import { useMergeRefs } from '../../utilities/hooks';
@@ -25,6 +25,11 @@ export type CardProps = MergeRight<
   }
 >;
 
+const ATTR_CLICKDELEGATE = 'data-clickdelegatefor';
+const SELECTOR_LINK = `:is(h1,h2,h3,h4,h5,h6) a`;
+const SELECTOR_SKIP =
+  'a,button,label,details,dialog,[role="button"],[popover],[contenteditable]';
+
 /**
  * Card component to present content in a structured way.
  *
@@ -41,24 +46,26 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
 ) {
   const Component = asChild ? Slot : 'div';
   const cardRef = useRef<HTMLDivElement>(null);
+  const linkGeneratedId = useId();
   const mergedRefs = useMergeRefs([cardRef, ref]);
 
   // Forward click on card to heading links for better accessibility
   // https://adrianroselli.com/2020/02/block-links-cards-clickable-regions-etc.html
   useEffect(() => {
     const card = cardRef.current;
-    const handleClick = ({ ctrlKey, metaKey, target }: MouseEvent) => {
-      const link = card?.querySelector<HTMLAnchorElement>(
-        ':is(h1,h2,h3,h4,h5,h6) a',
-      );
+    const link = card?.querySelector(SELECTOR_LINK);
+    const skip = !link || link.parentElement?.closest(SELECTOR_SKIP); // Using parentElement as link variable will always match a selector
+    const id = link?.id;
 
-      if (!link || link?.contains(target as Node)) return; // Let links handle their own clicks
-      if (ctrlKey || metaKey) window.open(link.href, '', 'noreferrer');
-      else link.click(); // Using link.click instead of window.location.href as this will trigger the browser's handling of rel=, target=, etc.
+    if (card?.hasAttribute(ATTR_CLICKDELEGATE) || skip) return; // Already delegated or skipped
+    link.id = id || linkGeneratedId;
+    card?.setAttribute(ATTR_CLICKDELEGATE, link.id);
+
+    return () => {
+      if (id && link) link.id = id;
+      else link?.removeAttribute('id');
+      card?.removeAttribute(ATTR_CLICKDELEGATE);
     };
-
-    card?.addEventListener('click', handleClick);
-    return () => card?.removeEventListener('click', handleClick);
   }, []);
 
   return (

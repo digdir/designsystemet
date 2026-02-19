@@ -20,20 +20,14 @@ export type DialogTriggerProps = ComponentPropsWithRef<typeof Button>;
  */
 export const DialogTrigger = forwardRef<HTMLButtonElement, DialogTriggerProps>(
   function DialogTrigger({ asChild, ...rest }, ref) {
-    const contextRef = useContext(Context);
+    const { id, modal } = useContext(Context);
     const Component = asChild ? Slot : Button;
-
-    const openDialog = () => {
-      /* check if element has `data-modal`, it it has, use `showModal` */
-      contextRef.current?.getAttribute('data-modal') === 'true'
-        ? contextRef.current?.showModal()
-        : contextRef.current?.show();
-    };
 
     return (
       <Component
-        aria-haspopup='dialog'
-        onClick={openDialog}
+        suppressHydrationWarning // Might get augmented through designsystemet-web with aria-haspopup
+        command={modal ? 'show-modal' : 'show'}
+        commandfor={id}
         ref={ref}
         {...rest}
       />

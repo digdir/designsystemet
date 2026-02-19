@@ -1,4 +1,4 @@
-import path, { dirname as nodeDirname, resolve } from 'node:path';
+import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { StorybookConfig } from '@storybook/react-vite';
 import * as R from 'ramda';
@@ -6,7 +6,7 @@ import type { PropItem } from 'react-docgen-typescript';
 import { defineConfig, mergeConfig } from 'vite';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = nodeDirname(__filename);
+const __dirname = path.dirname(__filename);
 
 const dirname =
   typeof __dirname !== 'undefined'
@@ -35,7 +35,7 @@ const config: StorybookConfig = {
     /* If in prod, use docgen-typescript, locally use docgen */
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
-      include: [resolve(dirname, '../../../packages/react/**/**.tsx')], // <- This is the important line.
+      include: [path.resolve(dirname, '../../../packages/react/**/**.tsx')], // <- This is the important line.
       shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
       propFilter: (prop: PropItem) => {
@@ -52,6 +52,9 @@ const config: StorybookConfig = {
     '../../../packages/*/!(node_modules)/**/*.mdx',
     '../../../packages/*/!(node_modules)/**/*.@(stories|chromatic).@(ts|tsx)',
   ],
+  features: {
+    developmentModeForBuild: true, // Make axe not run too early (see https://storybook.js.org/docs/writing-tests/accessibility-testing#the-addon-panel-does-not-show-expected-violations)
+  },
   experimental_indexers: (existingIndexers) => {
     /*
      * The following is required in order to process .chromatic.tsx with the default indexer
@@ -87,7 +90,7 @@ const config: StorybookConfig = {
     options: {
       strictMode: true,
       builder: {
-        viteConfigPath: resolve(dirname, '../../../vite.config.ts'),
+        viteConfigPath: path.resolve(dirname, '../../../vite.config.ts'),
       },
     },
   },
@@ -99,6 +102,7 @@ const config: StorybookConfig = {
       chromatic: {
         excludeFromDocsStories: true,
         excludeFromSidebar: options.configType === 'PRODUCTION',
+        exitOnceUploaded: true, // Exit Storybook once Chromatic stories are uploaded, to speed up CI builds.
         ...tagOptions?.chromatic,
       },
     };

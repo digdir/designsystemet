@@ -10,9 +10,11 @@ expect.extend(matchers);
 HTMLDialogElement.prototype.close = vi.fn(function mock(
   this: HTMLDialogElement,
 ) {
-  this.open = false;
-  /* dispatch close event */
-  this.dispatchEvent(new Event('close'));
+  /* Only dispatch close event if dialog was open (matching browser behavior) */
+  if (this.open) {
+    this.open = false;
+    this.dispatchEvent(new Event('close'));
+  }
 });
 
 /* add support for checking ESC key */

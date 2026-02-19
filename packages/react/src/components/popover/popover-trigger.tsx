@@ -50,21 +50,22 @@ export type PopoverTriggerProps =
 export const PopoverTrigger = forwardRef<
   HTMLButtonElement,
   PopoverTriggerProps
->(function PopoverTrigger({ id, inline, asChild, ...rest }, ref) {
+>(function PopoverTrigger(
+  { id, inline, asChild, popovertarget, popoverTarget, ...rest },
+  ref,
+) {
   const { popoverId } = useContext(Context);
   const Component = asChild ? Slot : inline ? 'button' : Button;
+  const popoverVal = popoverTarget ?? popovertarget ?? popoverId;
+  const popoverKey = version.startsWith('19')
+    ? 'popoverTarget'
+    : 'popovertarget';
 
-  const popoverProps = Object.assign(
-    {
-      [version.startsWith('19') ? 'popoverTarget' : 'popovertarget']: popoverId,
-      ...(inline
-        ? {
-            'data-popover': 'inline',
-          }
-        : {}),
-    },
-    rest,
+  return (
+    <Component
+      ref={ref}
+      data-popover={inline ? 'inline' : undefined}
+      {...{ [popoverKey]: popoverVal, ...rest }}
+    />
   );
-
-  return <Component ref={ref} {...popoverProps} />;
 });

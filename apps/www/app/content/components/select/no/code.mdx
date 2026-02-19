@@ -26,7 +26,7 @@ Du kan bruke `Select.Optgroup` for å gruppere alternativer i kategorier, noe so
 
 ### ReadOnly
 
-`<select>` er alltid `:read-only`, og støtter ikke dette på samme måte som input-typer du kan skrive i. Hvis du setter `readOnly` på en select, sørger vi for at den oppfører seg som om den kun har lese-tilgang, ved å stoppe `onKeyDown` og `onMouseDown`. Brukeren vil fortsatt kunne fokusere på elementet.
+`<select>` er alltid `:read-only`, og støtter ikke dette på samme måte som input-typer du kan skrive i. Hvis du setter `aria-readonly` på en `<select>`, sørger vi for at den oppfører seg som om den kun har lese-tilgang, ved å stoppe `onKeyDown` og `onMouseDown`. Brukeren vil fortsatt kunne fokusere på elementet.
 
 <Story story="ReadOnly" />
 

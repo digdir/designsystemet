@@ -6,17 +6,27 @@ import { Fragment, forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
-type AriaLabel = {
-  /**
-   * The name of the person the avatar represents.
-   */
-  'aria-label': string;
-};
-type AriaHidden = Partial<AriaLabel> & { 'aria-hidden': true | 'true' };
+type AriaHidden = HTMLAttributes<HTMLSpanElement>['aria-hidden'];
+type AriaAttributes =
+  | {
+      'aria-label': string; // Require aria-label if no data-tooltip
+      'data-tooltip'?: never;
+      'aria-hidden'?: AriaHidden;
+    }
+  | {
+      'aria-label'?: never;
+      'data-tooltip': string; // Require data-tooltip if no aria-label
+      'aria-hidden'?: AriaHidden;
+    }
+  | {
+      'aria-label'?: string; // Make both optional if aria-hidden
+      'data-tooltip'?: string;
+      'aria-hidden': true | 'true';
+    };
 
 export type AvatarProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLSpanElement>,
-  (AriaLabel | AriaHidden) & {
+  AriaAttributes & {
     /**
      * The size of the avatar.
      */
@@ -64,6 +74,7 @@ export type AvatarProps = MergeRight<
 export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
   {
     'aria-label': ariaLabel,
+    'data-tooltip': dataTooltip,
     variant = 'circle',
     className,
     children,
@@ -85,7 +96,8 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(function Avatar(
       data-variant={variant}
       data-initials={initials}
       role={asChild ? undefined : 'img'}
-      aria-label={ariaLabel}
+      aria-label={ariaLabel || dataTooltip}
+      tabIndex={dataTooltip ? 0 : undefined} // Tooltips require focusability for accessibility
       {...rest}
     >
       <Component {...(useSlot && !asChild ? { 'aria-hidden': true } : {})}>

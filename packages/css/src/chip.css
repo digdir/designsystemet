@@ -1,3 +1,4 @@
+/* NOTE: This styling should be reflected in suggestion.css for <data> elements */
 .ds-chip {
   --dsc-chip-background: var(--ds-color-surface-tinted);
   --dsc-chip-background--hover: var(--ds-color-surface-hover);

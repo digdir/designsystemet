@@ -39,6 +39,7 @@ export const ValidationMessage = forwardRef<
       className={cl('ds-validation-message', className)}
       data-field='validation'
       ref={ref}
+      suppressHydrationWarning // Since <ds-field> adds attributes
       {...rest}
     />
   );
