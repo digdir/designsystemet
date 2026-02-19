@@ -16,13 +16,15 @@ export function useShowConsentBanner() {
 
     // Listen for consent changes (in case user updates consent in another tab)
     const handleStorageChange = async () => {
+      console.log('Cookie store changed, checking consent...');
       if (!(await hasConsent())) {
         setShowBanner(true);
       }
     };
 
-    window.addEventListener('storage', handleStorageChange);
-    return () => window.removeEventListener('storage', handleStorageChange);
+    window.cookieStore?.addEventListener('change', handleStorageChange);
+    return () =>
+      window.cookieStore?.removeEventListener('change', handleStorageChange);
   }, []);
 
   const hideBanner = () => setShowBanner(false);
