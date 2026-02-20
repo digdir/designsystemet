@@ -13,6 +13,9 @@ export default [
   route('/api/search', 'routes/search.tsx', {
     id: 'api-search',
   }),
+  route('/api/consent', 'routes/consent.tsx', {
+    id: 'consent-action',
+  }),
   ...prefix('/schemas', [
     route('/cli/:version', 'routes/cli-schema.tsx', {
       id: 'schemas-cli',

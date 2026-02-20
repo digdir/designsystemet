@@ -3,6 +3,7 @@ export default {
     about: 'Om designsystemet',
     privacy: 'Personvernerklæring',
     accessibility: 'Tilgjengelighetserklæring',
+    cookies: 'Administrer informasjonskapsler',
     slack: 'Bli med på Slack',
     description:
       'Designsystemet er en felles verktøykasse med grunnleggende UI-komponenter, retningslinjer og mønstre du kan bruke når du utvikler digitale løsninger. Det er åpent og gratis for alle.',

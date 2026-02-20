@@ -15,6 +15,7 @@ import './app.css';
 import { Error404 } from '@internal/components';
 import { useTranslation } from 'react-i18next';
 import { useChangeLanguage } from 'remix-i18next/react';
+import { SiteimproveScript } from './_components/siteimprove-script';
 import { designsystemetRedirects } from './_utils/redirects.server';
 
 export const links = () => {
@@ -146,12 +147,7 @@ function Document({ children }: DocumentProps) {
         {/* This uses sessionStorage, but we deem it necessary to make navigation work as expected */}
         <ScrollRestoration />
         <Scripts />
-        {process.env.NODE_ENV === 'production' && (
-          <script
-            src='https://siteimproveanalytics.com/js/siteanalyze_6255470.js'
-            crossOrigin='anonymous'
-          />
-        )}
+        <SiteimproveScript />
       </body>
     </html>
   );
