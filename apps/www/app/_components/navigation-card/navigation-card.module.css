@@ -84,10 +84,6 @@
   margin-bottom: var(--ds-size-5);
   text-align: center;
   line-height: 1.4em;
-  a {
-    text-decoration-thickness: 1px;
-    text-underline-offset: 4px;
-  }
 }
 
 .desc {
