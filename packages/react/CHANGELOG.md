@@ -1,5 +1,51 @@
 # Change Log
 
+## 1.11.2
+
+### Patch Changes
+
+- **Breadcrumbs**: Now uses `<ds-breadcrumbs>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Card**: Fix deeply nested anchors in headings causing navigation ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Input** Support for new attribute `data-indeterminate` to toggle indeterminate state when `type="checkbox"` inside `Field`/`ds-field`. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- Support for new package with custom elements and observers for Designsystemet. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **ToggleGroup**: Updated DOM structure and now uses new web observer `data-toggle-group`. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Card**: fix issues with deeply nested heading links. Now uses web observer `data-clickdelegatefor` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Pagination**: Now uses `<ds-pagination>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- Add `suppressHydrationWarning` to various components. This is to support `@digdir/designsystemet-web` being used internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- update npm non-major dependencies ([#4497](https://github.com/digdir/designsystemet/pull/4497))
+
+- **Field.Counter**: Deprecate `hint` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Field**: Deprecated `asChild` as this component now uses `<ds-field>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Tabs**: Now uses `<ds-tabs>` and related web components internally ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **ErrorSummary**: Deprecate `asChild` as this component now uses `<ds-error-summary>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Select**: Deprecate `readOnly`. Use `aria-readonly` instead. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **RovingFocus**: Deprecate component. This will be removed in the next major version ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Tooltip**: Deprecate `open`. This should not be used on Tooltip. Use a `Popover` instead. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Tooltip**: Now uses `data-tooltip` from `@digdir/designsystemet-web` internally ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Details**: Use `<details>` and `<summary>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Dialog**: Deprecate `data-command="close"`. Use `command="close"` and `commandfor="DIALOG-ID"` instead. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- Updated dependencies [[`6bde739`](https://github.com/digdir/designsystemet/commit/6bde739dee0adc79ac7a275ec00e0287bb4c2891)]:
+  - @digdir/designsystemet-web@1.11.2
+  - @digdir/designsystemet-types@1.11.2
+
 ## 1.11.1
 
 ### Patch Changes
