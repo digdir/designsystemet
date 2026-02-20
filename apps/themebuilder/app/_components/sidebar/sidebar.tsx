@@ -54,7 +54,7 @@ export const Sidebar = () => {
           aria-label='Toggle sidebar'
           aria-expanded={showSidebar}
         >
-          <CogIcon aria-hidden fontSize='1.5rem' />
+          <CogIcon aria-hidden height='1.5rem' width='1.5rem' />
         </button>
         <div
           className={cl(
