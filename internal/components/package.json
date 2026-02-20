@@ -20,7 +20,7 @@
     "@digdir/designsystemet-react": "workspace:^",
     "@digdir/designsystemet-types": "workspace:^",
     "@radix-ui/react-slot": "^1.2.4",
-    "@navikt/aksel-icons": "^8.3.0",
+    "@navikt/aksel-icons": "^8.4.1",
     "clsx": "^2.1.1",
     "prism-react-renderer": "^2.4.1",
     "prettier": "^3.8.1",
@@ -32,7 +32,7 @@
     "ramda": "^0.32.0"
   },
   "devDependencies": {
-    "@types/react": "^19.2.13",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "typescript": "^5.9.3",
     "@types/ramda": "^0.31.1"

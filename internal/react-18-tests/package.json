@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@floating-ui/react": "0.26.23",
-    "@navikt/aksel-icons": "^8.3.0",
+    "@navikt/aksel-icons": "^8.4.1",
     "@radix-ui/react-slot": "^1.2.4",
     "@tanstack/react-virtual": "^3.13.18",
     "react": "18.3.1",
