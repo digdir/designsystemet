@@ -1,7 +1,175 @@
 ---
 title: "Changelog"
-latestVersion: 1.11.1
+latestVersion: 1.12.0
 ---
+
+<div style={{
+  border: "1px solid var(--ds-color-neutral-border-subtle)",
+  borderRadius: "var(--ds-border-radius-md)",
+  padding: "var(--ds-size-5)",
+  marginBottom: "var(--ds-size-4)"
+  }}
+>
+
+## 1.12.0
+
+<Divider/>
+
+### @digdir/designsystemet
+
+#### Patch Changes
+
+- update npm non-major dependencies ([#4517](https://github.com/digdir/designsystemet/pull/4517))
+
+- update npm non-major dependencies ([#4497](https://github.com/digdir/designsystemet/pull/4497))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.12.0
+
+<Divider/>
+
+### @digdir/designsystemet-css
+
+#### Minor Changes
+
+- **input**: add support for `[aria-readonly='true']` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **field**: add new css variables: ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+  `--dsc-field-counter-over: '%d tegn for mye';`
+  `--dsc-field-counter-under: '%d tegn igjen';`
+
+- Support for new package with custom elements and observers for Designsystemet. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **popover**: add `--dsc-popover-placement` with default value `top` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **fieldset**: add `--dsc-fieldset-gap` with default value `var(--ds-size-4)` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **tooltip**: add `--dsc-tooltip-placement` with default value `top` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **dropdown**: add `--dsc-dropdown-placement` with default value `bottom` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **pagination**: ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+  - add `--dsc-pagination-ellipsis` with default value `'\2026'`
+  - set `--dsc-pagination-label: 'Bla i sider';` if language is `'nn'`, `'nb'` or `'no'`
+
+#### Patch Changes
+
+- **suggestion**: various changes to chip styling. You no longer need to pass a class to `<data>` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **link**: don't set `:visited` color and set default `border-radius` to 0 ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **dialog**: style `.ds-dialog button[command='close']:empty::before` with X-icon ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **toggle-group**: remove `--dsc-togglegroup-text-color`, as this was not used ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- update npm non-major dependencies ([#4517](https://github.com/digdir/designsystemet/pull/4517))
+
+- **Card**: fix issues with deeply nested heading links. Now uses web observer `data-clickdelegatefor` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **toggle-group**: add styling for new DOM structure introduced in `@digdir/designsystemet-web` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **field**: add styling for `<ds-field>` counter. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **tabs**: add support for `<ds-tabs>` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **breadcrumbs**: don't remove underline on `a[aria-current='page']`, but on `li:last-child a` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- added class `ds-floating`, which is used on floating elements internally ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.12.0
+
+<Divider/>
+
+### @digdir/designsystemet-react
+
+#### Minor Changes
+
+- **Input** Support for new attribute `data-indeterminate` to toggle indeterminate state when `type="checkbox"` inside `Field`/`ds-field`. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- Support for new package with custom elements and observers for Designsystemet. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **ToggleGroup**: Updated DOM structure and now uses new web observer `data-toggle-group`. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- Add `suppressHydrationWarning` to various components. This is to support `@digdir/designsystemet-web` being used internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Field.Counter**: Deprecate `hint` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Field**: Deprecated `asChild` as this component now uses `<ds-field>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **ErrorSummary**: Deprecate `asChild` as this component now uses `<ds-error-summary>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Select**: Deprecate `readOnly`. Use `aria-readonly` instead. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **RovingFocus**: Deprecate component. This will be removed in the next major version ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Tooltip**: Deprecate `open`. This should not be used on Tooltip. Use a `Popover` instead. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Dialog**: Deprecate `data-command="close"`. Use `command="close"` and `commandfor="DIALOG-ID"` instead. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+#### Patch Changes
+
+- **Breadcrumbs**: Now uses `<ds-breadcrumbs>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Card**: Fix deeply nested anchors in headings causing navigation ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- update npm non-major dependencies ([#4517](https://github.com/digdir/designsystemet/pull/4517))
+
+- **Card**: fix issues with deeply nested heading links. Now uses web observer `data-clickdelegatefor` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Pagination**: Now uses `<ds-pagination>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- update npm non-major dependencies ([#4497](https://github.com/digdir/designsystemet/pull/4497))
+
+- **Tabs**: Now uses `<ds-tabs>` and related web components internally ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Tooltip**: Now uses `data-tooltip` from `@digdir/designsystemet-web` internally ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **Details**: Use `<details>` and `<summary>` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- Updated dependencies [[`6bde739`](https://github.com/digdir/designsystemet/commit/6bde739dee0adc79ac7a275ec00e0287bb4c2891), [`34c1ca7`](https://github.com/digdir/designsystemet/commit/34c1ca739c9bfaa5d7219c5f5df29aa610281100)]:
+  - @digdir/designsystemet-web@1.12.0
+  - @digdir/designsystemet-types@1.12.0
+
+<Divider/>
+
+### @digdir/designsystemet-web
+
+#### Minor Changes
+
+- New package with custom elements and observers for Designsystemet. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+  | Custom elements    |
+  | ------------------ |
+  | `ds-breadcrumbs`   |
+  | `ds-error-summary` |
+  | `ds-field`         |
+  | `ds-pagination`    |
+  | `ds-suggestion`    |
+  | `ds-tabs`          |
+  | `ds-tablist`       |
+  | `ds-tab`           |
+  | `ds-tabpanel`      |
+
+  | Observer                |                                                                             |
+  | ----------------------- | --------------------------------------------------------------------------- |
+  | `data-clickdelegatefor` | Used for delegating click event                                             |
+  | `data-toggle-group`     | Used for adding arrow navigation plus Enter-key support                     |
+  | `data-tooltip`          | Used for adding tooltip text on element                                     |
+  | `readonly`              | Used for fixing `readonly` support on `select` and `input` elements         |
+  | `popover`               | Event listnener on `popovertarget` for placement of `ds-floating` elements. |
+
+  | Polyfill                 |                                                                                                                |
+  | ------------------------ | -------------------------------------------------------------------------------------------------------------- |
+  | `details` & `summary`    | Bugfix for Firefox.                                                                                            |
+  | `dialog`                 | Support for [closedby="any"](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy#any). |
+  | `command` & `commandfor` | Support for [invokers](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2).                               |
+
+#### Patch Changes
+
+- update npm non-major dependencies ([#4517](https://github.com/digdir/designsystemet/pull/4517))
+
+</div>
 
 <div style={{
   border: "1px solid var(--ds-color-neutral-border-subtle)",
