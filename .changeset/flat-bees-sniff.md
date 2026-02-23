@@ -1,6 +1,6 @@
 ---
-"@digdir/designsystemet-css": patch
-"@digdir/designsystemet-react": patch
+"@digdir/designsystemet-css": minor
+"@digdir/designsystemet-react": minor
 ---
 
 Support for new package with custom elements and observers for Designsystemet.

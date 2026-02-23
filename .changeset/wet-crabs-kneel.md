@@ -1,5 +1,5 @@
 ---
-"@digdir/designsystemet-css": patch
+"@digdir/designsystemet-css": minor
 ---
 
 **pagination**:
