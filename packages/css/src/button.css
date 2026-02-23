@@ -54,7 +54,8 @@
 
   & :where(img, svg) {
     flex-shrink: 0;
-    font-size: 1.3em;
+    height: 1.3em;
+    width: auto;
   }
 
   &:focus-visible {
@@ -71,7 +72,8 @@
     padding: 0;
 
     & :where(img, svg) {
-      font-size: 1.5em;
+      height: 1.5em;
+      width: auto;
     }
   }
 
@@ -82,7 +84,7 @@
 
   /* Style spinner when in button */
   & .ds-spinner {
-    font-size: 1.4em;
+    height: 1.4em;
   }
 
   /**

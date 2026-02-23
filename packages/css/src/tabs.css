@@ -57,7 +57,8 @@
 
       & :where(img, svg) {
         flex-shrink: 0; /* Never shrink icon */
-        font-size: 1.25em; /* Auto scale icon based on font-size */
+        height: 1.25em; /* Auto scale icon based on font-size */
+        width: auto;
       }
 
       &::after {
