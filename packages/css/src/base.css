@@ -197,7 +197,7 @@ body {
 }
 
 /* Capture a length value, e.g. 1em, at the element where the variable is set */
-@property --captured-length {
+@property --ds-captured-length {
   syntax: '<length>';
   inherits: true;
   initial-value: 0px;

@@ -26,8 +26,8 @@
 
   & :where(img, svg) {
     flex-shrink: 0;
-    /* using --captured-length fixes svg not scaling with zoom in Safari */
-    font-size: calc(var(--captured-length) * 1.25);
+    /* using --ds-captured-length fixes svg not scaling with zoom in Safari */
+    font-size: calc(var(--ds-captured-length) * 1.25);
   }
 
   &:not([hidden]) {

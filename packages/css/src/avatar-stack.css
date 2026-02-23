@@ -8,14 +8,14 @@
   --_gap: var(--dsc-avatar-stack-gap);
   --_overlap: calc(((var(--dsc-avatar-stack-size) / 100) * var(--dsc-avatar-stack-overlap)) * -1);
 
-  --captured-length: var(--_overlap);
+  --ds-captured-length: var(--_overlap);
   display: flex;
   align-items: center;
   isolation: isolate;
   padding-block: 1px;
   width: max-content;
   margin: 0; /*remove user-agent default for figure*/
-  transition: --captured-length 0.2s ease;
+  transition: --ds-captured-length 0.2s ease;
 
   &:focus-visible {
     @composes ds-focus--visible from './base.css';
@@ -24,7 +24,7 @@
   &[data-expandable] {
     &:hover,
     &:focus-visible {
-      --captured-length: var(--_gap);
+      --ds-captured-length: var(--_gap);
     }
   }
 
@@ -46,13 +46,17 @@
   .ds-avatar {
     --dsc-avatar-size: var(--dsc-avatar-stack-size);
     --_font-size: max(0.75rem, calc(var(--dsc-avatar-stack-size) * 0.5));
-    mask: radial-gradient(50% 50% at calc(150% + var(--captured-length)), transparent calc(100% - 1px + var(--_gap)), #000 calc(100% + var(--_gap)));
+    mask: radial-gradient(50% 50% at calc(150% + var(--ds-captured-length)), transparent calc(100% - 1px + var(--_gap)), #000 calc(100% + var(--_gap)));
     &[data-variant='square'] {
-      mask: linear-gradient(to right, #000 calc(100% + var(--captured-length) - var(--_gap)), transparent calc(100% + var(--captured-length) - var(--_gap)));
+      mask: linear-gradient(
+        to right,
+        #000 calc(100% + var(--ds-captured-length) - var(--_gap)),
+        transparent calc(100% + var(--ds-captured-length) - var(--_gap))
+      );
     }
 
     &:not(:first-child) {
-      margin-left: var(--captured-length);
+      margin-left: var(--ds-captured-length);
     }
 
     &:nth-last-child(1 of .ds-avatar) {
