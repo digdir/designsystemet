@@ -64,15 +64,31 @@ body {
 
 Importer `@digdir/designsystemet-css`.
 
-Direkte i din hoved CSS fil, eller legge de til som `<link>` tagger i `<head>`. Du kan også importere CSS i JavaScript filer hvis du har støtte for det.
-
 Dersom du ikke [lager ditt eget tema](/no/fundamentals/start-here/own-theme) kan du bruke et standardtema fra `@digdir/designsystemet-css/theme`.
 Du kan lett bytte til ditt eget tema senere.
 
+<ds-tabs class="ds-tabs">
+    <ds-tablist>
+    <ds-tab >CSS</ds-tab>
+    <ds-tab >JavaScript</ds-tab>
+    </ds-tablist>
+    <ds-tabpanel>
 ```css
 @import '@digdir/designsystemet-css/index.css';
 @import '@digdir/designsystemet-css/theme.css'; /* eller din tema fil */
+```     
+    </ds-tabpanel>
+    <ds-tabpanel>
+```js
+import '@digdir/designsystemet-css';
+import '@digdir/designsystemet-css/theme'; /* eller din tema fil */
 ```
+    </ds-tabpanel>
+    </ds-tabs>
+
+
+
+
 
 <Alert data-color='warning'>
 <h3 class="ds-heading" data-size='xs'>Merk: `background` og `color` blir satt på `<body>`</h3>
@@ -153,7 +169,7 @@ For å aktivere dette, legg til følgende i din `tsconfig.json` (i tillegg til d
 ```
 
 
-### Polyfill
+## Polyfill
 
 Designsystemet bruker [popover](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover) i enkelte komponenter. Dette apiet er klassifisert som [Baseline: Newly available](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) fra april 2024, da Firefox som siste nettleser la det til. I noen tilfeller kan en oppleve at brukere av ulike grunner er låst til eldre nettleserversjoner, og da kan det være aktuelt å legge til en polyfill for å sikre at `popover` fungerer for alle.
 * [Popover-Polyfill](https://github.com/oddbird/popover-polyfill)
