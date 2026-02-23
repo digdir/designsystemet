@@ -437,11 +437,11 @@ export const HTMLClickableRows = () => {
         </tr>
       </thead>
       <tbody>
-        <tr data-clickdelegatefor={`row-link`}>
+        <tr data-clickdelegatefor='row-link'>
           <td>
             <a
               className='ds-link'
-              id={`row-link`}
+              id='row-link'
               href='https://designsystemet.no'
               target='_blank'
               rel='noopener noreferrer'
