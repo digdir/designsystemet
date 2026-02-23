@@ -83,6 +83,25 @@ Du kan endre mellom `display: flex` og `display: grid` for å legge `Card.Block`
 </div>
 ```
 
+### Lenkekort med data-attributt 
+
+Du kan gjøre hele kortet klikkbart ved å legge til `data-clickdelegatefor` og peke på id-en til en lenke inne i kortet.
+
+```html
+<div
+  class="ds-card"
+  data-clickdelegatefor="lenke"
+>
+  <a
+    id="lenke"
+    class="ds-link"
+    href="https://designsystemet.no"
+    target="_blank"
+    rel="noopener noreferrer"
+  >Myrkheim Museum</a>
+</div>
+```
+
 ## CSS variabler og data-attributter
 `Card` har to css klasser, men alle css variabler er knyttet til hovedklassen `ds-card`.
 
