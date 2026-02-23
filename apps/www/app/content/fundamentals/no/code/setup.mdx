@@ -1,0 +1,159 @@
+---
+title: Oppsett
+description: Kom i gang med Designsystemet i kode
+date: 2026-02-23
+category: Kode
+color: blue
+icon: CodeIcon
+published: true
+order: 0
+search_terms: setup, oppsett, installasjon, installation, getting started, komme i gang
+---
+
+
+Designsystemet består av flere kodepakker som du kan fritt velge mellom, avhengig av dine behov og preferanser. 
+
+
+Følg disse stegene for å komme i gang med det grunnleggende for bruk av Designsystemet i kode første gang.
+
+
+Det anbefales at du også leser om [CSS](/no/fundamentals/code/css) og [bygg ditt tema](/no/fundamentals/start-here/own-theme).
+
+
+
+## 1. Installer pakkene
+
+```sh
+npm i @digdir/designsystemet-web @digdir/designsystemet-css
+```
+
+
+## 2. Font
+
+Komponentene er designet og utviklet med [Inter fonten](https://github.com/rsms/inter), så variasjoner kan forekomme dersom du bruker en annen font.
+Dersom du velger å installere fonten på en annen måte, husk å inkludere fontvektene `400`, `500` og `600`.
+
+### Legg til Inter fonten (valgfritt)
+
+Legg til `<link>` taggen under i `<head>`, og sett `font-family` til `Inter` i din globale css fil.
+
+Du kan bruke denne koden for å legge til fonten i `<head>`:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://altinncdn.no/fonts/inter/v4.1/inter.css"
+  integrity="sha384-OcHzc/By/OPw9uJREawUCjP2inbOGKtKb4A/I2iXxmknUfog2H8Adx71tWVZRscD"
+  crossorigin="anonymous"
+/>
+```
+
+### Konfigurasjon av fonten
+
+Vi anbefaler sterkt at du legger til følgende i din globale CSS fil.
+`font-feature-settings` legger til en hale på små `L`'er.
+
+```css
+body {
+  font-family: 'Inter', sans-serif;
+  font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */
+}
+```
+
+## 3. Importer CSS
+
+Importer `@digdir/designsystemet-css`.
+
+Direkte i din hoved CSS fil, eller legge de til som `<link>` tagger i `<head>`. Du kan også importere CSS i JavaScript filer hvis du har støtte for det.
+
+Dersom du ikke [lager ditt eget tema](/no/fundamentals/start-here/own-theme) kan du bruke et standardtema fra `@digdir/designsystemet-css/theme`.
+Du kan lett bytte til ditt eget tema senere.
+
+```css
+@import '@digdir/designsystemet-css/index.css';
+@import '@digdir/designsystemet-css/theme.css'; /* eller din tema fil */
+```
+
+<Alert data-color='warning'>
+<h3 class="ds-heading" data-size='xs'>Merk: `background` og `color` blir satt på `<body>`</h3>
+<p>
+`background` og `color` blir automatisk definert på `body`-elementet, slik at vi ivaretar [universell utforming](https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html) og får samme font og farge på tvers.
+Dette kan lett overstyres i ditt eget tema, eller i din globale CSS fil.
+</p>
+</Alert>
+
+
+
+## 4. Importer Javascript
+
+Importer `@digdir/designsystemet-web` i din hoved JavaScript fil.
+
+Dette vil registrere alle web-komponenter og observatører globalt, så du trenger bare å gjøre dette en gang.
+
+
+```jsx
+import '@digdir/designsystemet-web';
+```
+
+## 5. Bruk
+
+Nå er du klar til å bruke Designsystemet i kode! 
+
+Alle komponenter har egen side i [komponent-dokumentasjonen](/no/components), vi anbefaler at du leser gjennom disse for å se hvordan du kan bruke komponentene.
+Det er også anbefalt at du leser gjennom tilgjengelighets-sida.
+
+```html
+<button class="ds-button" data-variant="secondary">Jeg er en knapp!</button>;
+<ds-field class="ds-field">
+    <input class="ds-input" type="radio" name="reads" value="1" readonly>
+    <label>Alternativ 1</label>
+</ds-field>
+```
+
+## Typescript
+
+Designsystemet tilbyr typesikkerhet for flere data-attributter.
+For å aktivere dette, legg til følgende i din `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "types": [
+      "@digdir/designsystemet-web",
+      "@digdir/designsystemet-css/theme" /* eller din tema typefil, <ditt-tema>/types.d.ts */
+      ]
+  },
+}
+```
+
+
+
+## React
+
+Ønsker du å bruke React, kan du installere `@digdir/designsystemet-react` istedenfor `@digdir/designsystemet-web`.
+
+```sh
+npm i @digdir/designsystemet-react
+``` 
+
+### Typescript
+
+React pakken tilbyr også typesikkerhet for `data-color` og `data-size` på React JSX elementer.
+For å aktivere dette, legg til følgende i din `tsconfig.json` (i tillegg til det som er nevnt over):
+
+```json
+{
+  "compilerOptions": {
+    "types": [
+      ...
+      "@digdir/designsystemet-react/react-types", 
+      ]
+  },
+}
+```
+
+
+### Polyfill
+
+Designsystemet bruker [popover](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover) i enkelte komponenter. Dette apiet er klassifisert som [Baseline: Newly available](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) fra april 2024, da Firefox som siste nettleser la det til. I noen tilfeller kan en oppleve at brukere av ulike grunner er låst til eldre nettleserversjoner, og da kan det være aktuelt å legge til en polyfill for å sikre at `popover` fungerer for alle.
+* [Popover-Polyfill](https://github.com/oddbird/popover-polyfill)
