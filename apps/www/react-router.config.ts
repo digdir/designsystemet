@@ -1,8 +1,10 @@
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Config } from '@react-router/dev/config';
+import { generateFeeds } from './app/_utils/config/generate-feeds';
 import { generatePrerenderPaths } from './app/_utils/config/generate-prerender-paths';
 import { generateSitemap } from './app/_utils/config/generate-sitemap';
+import i18n from './app/i18n';
 
 const config: Config = {
   ssr: true,
@@ -21,8 +23,8 @@ const config: Config = {
     const robotsPath = join(dirname, 'public', 'robots.txt');
     const robotsContent =
       process.env.APP_ENV === 'production'
-        ? `User-agent: *\nAllow: /`
-        : `User-agent: *\nDisallow: /`;
+        ? `User-agent: *\nAllow: /\nSitemap: https://designsystemet.no/sitemap.xml`
+        : `User-agent: *\nDisallow: /\nSitemap: https://designsystemet.no/sitemap.xml`;
 
     console.log(`Writing robots.txt to ${robotsPath}`);
     try {
@@ -36,6 +38,7 @@ const config: Config = {
       throw new Error(`Failed to write robots.txt file: ${error}`);
     }
     await generateSitemap(allPages);
+    await Promise.all(i18n.supportedLngs.map((lang) => generateFeeds(lang)));
   },
 };
 

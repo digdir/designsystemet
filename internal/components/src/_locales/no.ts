@@ -23,6 +23,9 @@ export default {
     'back-to-home': 'Gå tilbake til forsiden',
     search: 'Søk',
   },
+  meta: {
+    'meta-cover': 'Designsystemet logo',
+  },
   'clipboard-button': {
     copy: 'Kopier',
     copied: 'Kopiert',
