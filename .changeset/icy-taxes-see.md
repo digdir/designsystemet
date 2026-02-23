@@ -1,5 +1,5 @@
 ---
-"@digdir/designsystemet-web": patch
+"@digdir/designsystemet-web": minor
 ---
 
 New package with custom elements and observers for Designsystemet.
