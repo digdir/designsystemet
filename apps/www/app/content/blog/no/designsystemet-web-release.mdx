@@ -12,28 +12,28 @@ Nå kan du bruke Designsystemet - uavhengig av teknologi, i både nye og gamle p
 
 Med lansering av pakken `@digdir/designsystemet-web`, er det endelig blitt mulig få alle fordelene med Designsystemet, uten å måtte binde seg til React som teknologivalg. Dette betyr både større frihet og rom for eksperimentering og innovasjon i nye produkter, men også at eldre applikasjoner kan dra nytte av Designsystemet uten store omskrivinger.
 
-Som vanlig er all funksjonalitet skrevet isolert, slik at du og ditt team både kan velge hva dere ønsker å bruke og ikke, eller gradvis kan ta i bruk Designsystemet uten behov for én stor omskrivingsperiode.
+All funksjonalitet er skrevet isolert, slik at du og ditt team kan velge hva dere ønsker å bruke og ikke bruke, eller gradvis ta i bruk Designsystemet uten behov for én stor omskrivingsperiode.
 
 For dere som benytter `@digdir/designsystemet-react` pakken, er det ingen breaking changes; alt fungerer som før, men er under panseret bygget oppå web-pakken.
 
-Og ikke bare det.. web-pakken kan brukes uavhengig av CSS-pakken, så du kan for eksempel bygge helt egne knappe-komponenter, men fortsatt dra nytte av Designsystemets pagineringslogikk.
+Og ikke bare det, web-pakken kan brukes uavhengig av CSS-pakken, så du kan bygge helt egne knappe-komponenter, men fortsatt dra nytte av Designsystemets funksjonalitet.
 
 ## Hva er inkludert?
 
 Web-pakken sørger for at all interaktivitet og automatisert universell utforming som før ble gjort av React-pakken, nå er tilgjengelig for alle. 
 Mye av Designsystemet løses allerede med ren web-standard HTML og CSS, mens andre interaksjoner krever litt ekstra javascript:
 
-- `<ds-breadcrumbs>` - [Breadcrumbs](/no/components/docs/breadcrumbs/code#html)
-- `<ds-error-summary>` - [Error Summary](/no/components/docs/error-summary/code#html)
-- `<ds-field>` - [Field](/no/components/docs/field/code#html)
-- `<ds-pagination>` - [Pagination](/no/components/docs/pagination/code#html)
-- `<ds-suggestion>` - [Suggestion](/no/components/docs/suggestion/code#html)
-- `<ds-tabs>` - [Tabs](/no/components/docs/tabs/code#html)
-- `data-toggle-group` - [ToggleGroup](/no/components/docs/toggle-group/code#html)
-- `data-tooltip` - [Tooltip](/no/components/docs/tooltip/code#html)
-- `data-clickdelegatefor` - [Table](/no/components/docs/table/code#klikkbar-rad) og [Card](/no/components/docs/card/code#lenkekort-med-data-attributt)
-- `popover` - [Popover](/no/components/docs/popover/code#html), [Dropdown](/no/components/docs/dropdown/code#html)
-- `command` -  [Invokers Command API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API)
+- `<ds-breadcrumbs>` - brukes av [Breadcrumbs](/no/components/docs/breadcrumbs/code#html)
+- `<ds-error-summary>` - brukes av [Error Summary](/no/components/docs/error-summary/code#html)
+- `<ds-field>` - brukes av [Field](/no/components/docs/field/code#html)
+- `<ds-pagination>` - brukes av [Pagination](/no/components/docs/pagination/code#html)
+- `<ds-suggestion>` - brukes av [Suggestion](/no/components/docs/suggestion/code#html)
+- `<ds-tabs>` - brukes av [Tabs](/no/components/docs/tabs/code#html)
+- `data-toggle-group` - brukes av [ToggleGroup](/no/components/docs/toggle-group/code#html)
+- `data-tooltip` - brukes av [Tooltip](/no/components/docs/tooltip/code#html)
+- `data-clickdelegatefor` - brukes av [Table](/no/components/docs/table/code#klikkbar-rad) og [Card](/no/components/docs/card/code#lenkekort-med-data-attributt)
+- `popover` - brukes av [Popover](/no/components/docs/popover/code#html), [Dropdown](/no/components/docs/dropdown/code#html)
+- `command` - aka. [Invokers Command API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API) brukes av [Dialog](/no/components/docs/dialog/code#html) og [Popover](/no/components/docs/popover/code#html)
 
 ## Hvorfor ikke web-komponenter for alt?
 
