@@ -1,5 +1,56 @@
 # Change Log
 
+## 1.12.0
+
+### Minor Changes
+
+- **input**: add support for `[aria-readonly='true']` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **field**: add new css variables: ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+  `--dsc-field-counter-over: '%d tegn for mye';`
+  `--dsc-field-counter-under: '%d tegn igjen';`
+
+- Support for new package with custom elements and observers for Designsystemet. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **popover**: add `--dsc-popover-placement` with default value `top` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **fieldset**: add `--dsc-fieldset-gap` with default value `var(--ds-size-4)` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **tooltip**: add `--dsc-tooltip-placement` with default value `top` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **dropdown**: add `--dsc-dropdown-placement` with default value `bottom` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **pagination**: ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+  - add `--dsc-pagination-ellipsis` with default value `'\2026'`
+  - set `--dsc-pagination-label: 'Bla i sider';` if language is `'nn'`, `'nb'` or `'no'`
+
+### Patch Changes
+
+- **suggestion**: various changes to chip styling. You no longer need to pass a class to `<data>` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **link**: don't set `:visited` color and set default `border-radius` to 0 ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **dialog**: style `.ds-dialog button[command='close']:empty::before` with X-icon ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **toggle-group**: remove `--dsc-togglegroup-text-color`, as this was not used ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- update npm non-major dependencies ([#4517](https://github.com/digdir/designsystemet/pull/4517))
+
+- **Card**: fix issues with deeply nested heading links. Now uses web observer `data-clickdelegatefor` internally. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **toggle-group**: add styling for new DOM structure introduced in `@digdir/designsystemet-web` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **field**: add styling for `<ds-field>` counter. ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **tabs**: add support for `<ds-tabs>` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- **breadcrumbs**: don't remove underline on `a[aria-current='page']`, but on `li:last-child a` ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- added class `ds-floating`, which is used on floating elements internally ([#4409](https://github.com/digdir/designsystemet/pull/4409))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.12.0
+
 ## 1.11.1
 
 ### Patch Changes
