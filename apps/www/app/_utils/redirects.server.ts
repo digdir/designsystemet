@@ -14,7 +14,12 @@ export const designsystemetRedirects = (pathname: string) => {
   return null;
 };
 
-const redirects = [
+type Redirect = {
+  from: string;
+  to: string;
+};
+
+const redirects: Redirect[] = [
   {
     from: '/komponenter',
     to: '/no/components',
@@ -201,5 +206,21 @@ const redirects = [
   {
     from: '/no/fundamentals/figma/get-started',
     to: '/no/fundamentals/start-here/preparations#figma',
+  },
+  {
+    from: '/no/fundamentals/code/react',
+    to: '/no/fundamentals/code/setup',
+  },
+  {
+    from: '/no/fundamentals/code/other-frameworks',
+    to: '/no/fundamentals/code/setup',
+  },
+  {
+    from: '/en/fundamentals/code/react',
+    to: '/en/fundamentals/code/setup',
+  },
+  {
+    from: '/en/fundamentals/code/other-frameworks',
+    to: '/en/fundamentals/code/setup',
   },
 ];
