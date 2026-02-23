@@ -53,12 +53,8 @@ export const AppearanceToggle = ({
           role='radio'
         >
           {' '}
-          {scheme.value === 'light' && (
-            <SunIcon aria-hidden fontSize='1.5rem' />
-          )}
-          {scheme.value === 'dark' && (
-            <MoonIcon aria-hidden fontSize='1.5rem' />
-          )}
+          {scheme.value === 'light' && <SunIcon aria-hidden />}
+          {scheme.value === 'dark' && <MoonIcon aria-hidden />}
           {scheme.name}
           {showLabel && <>{scheme.name}</>}
         </Button>

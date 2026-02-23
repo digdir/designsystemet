@@ -46,28 +46,28 @@ export const InText: StoryFn = (args) => (
 
 export const WithIcon: StoryFn = (args) => (
   <Link href='mailto:designsystem@digdir.no' {...args}>
-    <EnvelopeClosedIcon aria-hidden fontSize={24} />
+    <EnvelopeClosedIcon aria-hidden height={24} width='auto' />
     <span>Kontakt oss</span>
   </Link>
 );
 export const WithIconRight: StoryFn = (args) => (
   <Link href='mailto:designsystem@digdir.no' {...args}>
     <span>Kontakt oss</span>
-    <EnvelopeClosedIcon aria-hidden fontSize={24} />
+    <EnvelopeClosedIcon aria-hidden height={24} width='auto' />
   </Link>
 );
 export const WithMultipleIcons: StoryFn = (args) => (
   <Link href={designsystemetLink} {...args}>
-    <ComponentIcon aria-hidden fontSize={24} />
+    <ComponentIcon aria-hidden height={24} width='auto' />
     <span>Komponenter og</span>
-    <BookIcon aria-hidden fontSize={24} />
+    <BookIcon aria-hidden height={24} width='auto' />
     <span>dokumentasjon på designsystemet.no</span>
-    <ExternalLinkIcon aria-hidden fontSize={24} />
+    <ExternalLinkIcon aria-hidden height={24} width='auto' />
   </Link>
 );
 export const WithOnlyIcon: StoryFn = (args) => (
   <Link href={designsystemetLink} {...args}>
-    <ComponentIcon title='Designsystemet' fontSize={52} />
+    <ComponentIcon title='Designsystemet' height={52} width='auto' />
   </Link>
 );
 

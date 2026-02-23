@@ -31,7 +31,7 @@ export const TokenModal = () => {
           return modalRef.current?.showModal();
         }}
       >
-        <StarIcon aria-hidden fontSize='1.5rem' />
+        <StarIcon aria-hidden width='1.5rem' height='auto' />
         {t('themeModal.use-theme')}
       </Dialog.Trigger>
       <Dialog
@@ -94,7 +94,11 @@ export const TokenModal = () => {
               <Divider />
               <div className={classes.contact}>
                 <div className={classes.contact__icon}>
-                  <InformationSquareIcon aria-hidden='true' fontSize='1.5rem' />
+                  <InformationSquareIcon
+                    aria-hidden='true'
+                    height='1.5rem'
+                    width='auto'
+                  />
                 </div>
                 <div className={classes.contact__content}>
                   <Heading data-size='2xs'>
