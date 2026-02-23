@@ -97,7 +97,7 @@ export const TokenModal = () => {
                   <InformationSquareIcon
                     aria-hidden='true'
                     height='1.5rem'
-                    width='auto'
+                    width='1.5rem'
                   />
                 </div>
                 <div className={classes.contact__content}>

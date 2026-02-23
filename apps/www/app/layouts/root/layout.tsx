@@ -27,7 +27,7 @@ const rightLinks: FooterLinkListItemProps[] = [
     text: 'designsystem@digdir.no' as unknown as FooterLinkListItemProps['text'],
     url: 'mailto:designsystem@digdir.no',
     prefix: (
-      <EnvelopeClosedIcon aria-hidden='true' height='1.5em' width='auto' />
+      <EnvelopeClosedIcon aria-hidden='true' height='1.5em' width='1.5em' />
     ),
   },
   {

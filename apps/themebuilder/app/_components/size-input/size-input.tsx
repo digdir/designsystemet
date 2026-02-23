@@ -16,7 +16,7 @@ export const SizeInput = ({ onChange, size, name }: SizeInputProps) => {
         <PencilIcon
           aria-hidden
           height='1.4rem'
-          width='auto'
+          width='1.4rem'
           className={classes.icon}
         />
       </button>
