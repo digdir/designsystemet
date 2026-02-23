@@ -424,3 +424,35 @@ export const NumbersEn = () => (
     </Table.Body>
   </Table>
 );
+
+export const HTMLClickableRows = () => {
+  return (
+    <table className='ds-table'>
+      <caption>Click anywhere on a row to navigate</caption>
+      <thead>
+        <tr>
+          <th>Header 1</th>
+          <th>Header 2</th>
+          <th>Header 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-clickdelegatefor='row-link'>
+          <td>
+            <a
+              className='ds-link'
+              id='row-link'
+              href='https://designsystemet.no'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              Go to website
+            </a>
+          </td>
+          <td>Cell 2</td>
+          <td>Cell 3</td>
+        </tr>
+      </tbody>
+    </table>
+  );
+};

@@ -1,0 +1,60 @@
+---
+title: Now you can use Designsystemet regardless of framework
+description: '@digdir/designsystemet-web package is now released'
+date: 2026-02-19
+author: Designsystemet
+imageSrc: /img/blog/designsystemet-web-release-en.webp
+imageAlt: Release of @digdir/designsystemet-web package
+search_terms: webcomponents, framework-independent, designsystemet-web, webcomponents, web components, technology-independent, vue, angular, svelte, css, html
+---
+
+
+You can now use Designsystemet - regardless of technology, in both new and old projects!
+
+With the launch of the `@digdir/designsystemet-web` package, it has finally become possible to get all the benefits of Designsystemet without having to commit to React as a technology choice. This means both greater freedom and room for experimentation and innovation in new products, but also that older applications can benefit from Designsystemet without major rewrites.
+
+All functionality is written in isolation, so you and your team can both choose what you want to use and not, or gradually adopt Designsystemet without the need for one big rewrite period.
+
+For those of you using the `@digdir/designsystemet-react` package, there are no breaking changes; everything works as before, but under the hood, it is now built on the web package.
+
+And not only that, the web package can be used independently of the CSS package, so you can build your own button components, and still take advantage of Designsystemet's functionality.
+
+## What's included?
+The web package ensures that all interactivity and automated universal design that was previously done by the React package is now available to everyone.
+Much of Designsystemet is already solved with pure web-standard HTML and CSS, while other interactions require a little extra javascript.
+
+- `<ds-breadcrumbs>` - used by [Breadcrumbs](/en/components/docs/breadcrumbs/code#html)
+- `<ds-error-summary>` - used by [Error Summary](/en/components/docs/error-summary/code#html)
+- `<ds-field>` - used by [Field](/en/components/docs/field/code#html)
+- `<ds-pagination>` - used by [Pagination](/en/components/docs/pagination/code#html)
+- `<ds-suggestion>` - used by [Suggestion](/en/components/docs/suggestion/code#html)
+- `<ds-tabs>` - used by [Tabs](/en/components/docs/tabs/code#html)
+- `data-toggle-group` - used by [ToggleGroup](/en/components/docs/toggle-group/code#html)
+- `data-tooltip` - used by [Tooltip](/en/components/docs/tooltip/code#html)
+- `data-clickdelegatefor` - used by [Table](/en/components/docs/table/code#clickable-row) and [Card](/en/components/docs/card/code#link-card-with-data-attribute)
+- `popover` - used by [Popover](/en/components/docs/popover/code#html), [Dropdown](/en/components/docs/dropdown/code#html)
+- `command` -  aka. [Invokers Command API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API) used by [Dialog](/en/components/docs/dialog/code#html) and [Popover](/en/components/docs/popover/code#html)
+
+## Why not web components for everything?
+Designsystemet emphasizes using web standards. Introducing web components for everything would mean that we lose built-in flexibility and accessibility that pure HTML gives us for free, in addition to worse performance with dependency on Javascript.
+Modern CSS with class and attribute selectors will in many cases provide better flexibility and performance.
+
+Read more about why we have chosen not to create web components for all components in Designsystemet in [this blog post](/blog/en/designsystemet-web-webcomponents).
+
+## Documentation
+
+We are in the process of updating the documentation on designsystemet.no, but in the meantime, you can find temporary documentation for `@digdir/designsystemet-web` in the [README on Github](https://github.com/digdir/designsystemet/tree/main/packages/web).
+
+## Feedback
+
+We are very interested in hearing from you as a user!
+If you discover any issues or have suggestions for improvements, you can create an issue in our [GitHub repository](https://github.com/digdir/designsystemet/issues/new) or on [Slack](/slack).
+
+<Contributors
+  authors={[
+    'Tobias Barsnes',
+    'Eirik Backer',
+    'Michael Marszalek',
+    'Oddbjørn Overnes',
+  ]}
+/>
