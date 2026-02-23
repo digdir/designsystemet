@@ -1,9 +1,3 @@
-@property --captured-length {
-  syntax: '<length>';
-  inherits: true;
-  initial-value: 0px;
-}
-
 .ds-avatar-stack {
   --dsc-avatar-stack-size: var(--ds-size-12);
   --dsc-avatar-stack-gap: 2px;
