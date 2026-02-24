@@ -7,6 +7,8 @@
   --dsc-tag-border-color: transparent;
   --dsc-tag-border-style: solid;
 
+  --ds-captured-length: 1em;
+
   align-items: center;
   background: var(--dsc-tag-background);
   border-radius: var(--ds-border-radius-sm);
