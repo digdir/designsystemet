@@ -39,7 +39,7 @@
     "@digdir/designsystemet-types": "workspace:^"
   },
   "devDependencies": {
-    "rimraf": "^6.1.2",
+    "rimraf": "^6.1.3",
     "@digdir/designsystemet": "workspace:^"
   }
 }

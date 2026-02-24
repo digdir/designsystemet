@@ -1,20 +1,40 @@
-> ⚠️ **WARNING** ⚠️  
-> This package is not fully released yet.
-> It is still under development, and feedback is welcome.
-
 ## `@digdir/designsystemet-web`
+
+### Table of contents
+
+- [`@digdir/designsystemet-web`](#digdirdesignsystemet-web)
+  - [Table of contents](#table-of-contents)
+  - [Get started](#get-started)
+    - [Types](#types)
+  - [Warnings:](#warnings)
+- [`<ds-breadcrumbs>`](#ds-breadcrumbs)
+- [`<ds-error-summary>`](#ds-error-summary)
+- [`<ds-field>`](#ds-field)
+  - [Counter](#counter)
+- [`<ds-pagination>`](#ds-pagination)
+- [`<ds-suggestion>`](#ds-suggestion)
+- [`<ds-tabs>`](#ds-tabs)
+- [`data-toggle-group`](#data-toggle-group)
+- [`data-tooltip`](#data-tooltip)
+- [`data-clickdelegatefor`](#data-clickdelegatefor)
+- [`readonly`](#readonly)
+- [Polyfills](#polyfills)
+  - [invokers-polyfill](#invokers-polyfill)
+  - [`<dialog>`](#dialog)
+    - [open \& close](#open--close)
+  - [`details` and `summary`](#details-and-summary)
+  - [`popover`](#popover)
+
 
 ### Get started
 
-To get everything at once, you simply import the package:
+We recommend to import the whole package.
+This will register all web components and observers globally, so you only need to do this once.
 ```ts
 import '@digdir/designsystemet-web';
 ```
-
-This will register all web components and observers globally, so you only need to do this once.
-
 #### Types
-In you tsconfig, add:
+Add the package to your `types` for types:
 ```json
 {
   "compilerOptions": {
@@ -29,62 +49,43 @@ In you tsconfig, add:
 This can come in handy while developing, but can also easily be hidden, for example in production:
 
 ```
-if (typeof window !== 'undefined' && isProduction()) window.dsWarnings = false;
 import `@digdir/designsystemet-web`;
+if (typeof window !== 'undefined' && isProduction()) window.dsWarnings = false;
 ```
 
-### `ds-breadcrumbs`
+
+
+## `<ds-breadcrumbs>`
 Automatically hides/shows `aria-label` on desktop/mobile and `aria-current="page"` on last link in list. No API.
 
 ```html
 <ds-breadcrumbs class="ds-breadcrumbs" aria-label="You are here:">
-  <a href="#none" aria-label="Tilbake til Nivå 3">
-    Nivå 3
+  <a href="#none" aria-label="Back to level 3">
+    Level 3
   </a>
   <ol>
-    <li><a href="#none">Nivå 1</a></li>
-    <li><a href="#none">Nivå 2</a></li>
-    <li><a href="#none">Nivå 3</a></li>
+    <li><a href="#none">Level 1</a></li>
+    <li><a href="#none">Level 2</a></li>
+    <li><a href="#none">Level 3</a></li>
   </ol>
 </ds-breadcrumbs>
 ```
 
-### `details` and `summary`
-Use native elements. We polyfill a bug in Firefox when combined with Android Talkback screen reader to announce state and role properly.
-
-```html
-<details class="ds-details">
-  <summary>More info</summary>
-  <div>Lorem ipsum dolor sit amet.</div>
-</details>
-```
-
-### `dialog`
-Use the native `<dialog>` element. We polyfill support for `closedby="any"`.
-
-```html
-<dialog class="ds-dialog" closedby="any" id="my-dialog">
-my dialog
-</dialog>
-```
-
-See [Polyfills](#polyfills) for how to open and close the dialog with commands.
-
-### `ds-error-summary`
+## `<ds-error-summary>`
 Automatically takes focus when visible and sets `aria-labelledby` to the first child heading. No API.
 
 ```html
 <ds-error-summary class="ds-error-summary">
-  <h2>Oppsummering</h2>
+  <h2>Summary</h2>
   <ul>
-    <li><a href="#none">Feil 1</a></li>
-    <li><a href="#none">Feil 2</a></li>
-    <li><a href="#none">Feil 3</a></li>
+    <li><a href="#none">Error 1</a></li>
+    <li><a href="#none">Error 2</a></li>
+    <li><a href="#none">Error 3</a></li>
   </ul>
 </ds-error-summary>
 ```
 
-### `ds-field`
+## `<ds-field>`
 Connects inputs, labels and error messages.
 
 ```html
@@ -92,12 +93,12 @@ Connects inputs, labels and error messages.
   <label>Label</label>
   <input type="text" placeholder="Placeholder" class="ds-input" />
   <div class="ds-validation-message" data-field="validation">
-    Dette er ein feilmelding
+    This is a validation message.
   </div>
 </ds-field>
 ```
 
-#### Counter
+### Counter
 You can add a counter to inputs and textareas by adding the `data-field="counter"` attribute to a `<p>` element inside a `ds-field`.
 
 ```html
@@ -114,7 +115,7 @@ You can add a counter to inputs and textareas by adding the `data-field="counter
 | data-over  | string | %d tegn for mye       | false    |
 | data-under | string | %d tegn igjen         | false    |
 
-### `ds-pagination`
+## `<ds-pagination>`
 Implements pagination, fills buttons with text.
 You can use both `<a>` and `<button>` elements inside the pagination.
 
@@ -123,13 +124,136 @@ If you don't pass any attributes you can implement your own logic for current pa
 ```html
 <ds-pagination class="ds-pagination" aria-label="Bla i sider:" data-href="?page=%d" data-current="2" data-total="100">
   <ol>
-    <li><a></a></li>
-    <li><a></a></li>
-    <li><a></a></li>
-    <li><a></a></li>
+    <li><a>1</a></li>
+    <li><a>2</a></li>
+    <li><a>3</a></li>
+    <li><a>4</a></li>
   </ol>
 </ds-pagination>
 ```
+
+## `<ds-suggestion>`
+Extends `u-combobox` from u-elements. See documentation for [u-combobox](https://u-elements.github.io/u-elements/elements/u-combobox).
+
+```html
+<ds-field class="ds-field">
+  <label>Label</label>
+  <ds-suggestion class="ds-suggestion">
+    <input type="search" class="ds-input" />
+    <del aria-label="Fjern innhold"></del>
+    <u-datalist>
+      <u-option value="option-1">Option 1</u-option>
+      <u-option value="option-2">Option 2</u-option>
+      <u-option value="option-3">Option 3</u-option>
+    </u-datalist>
+  </ds-suggestion>
+</ds-field>
+```
+
+
+## `<ds-tabs>`
+Extends `u-tabs` from u-elements. See documentation for [u-tabs](https://u-elements.github.io/u-elements/elements/u-tabs).
+
+```html
+<ds-tabs class="ds-tabs">
+  <ds-tablist>
+    <ds-tab>Tab 1</ds-tab>
+    <ds-tab>Tab 2</ds-tab>
+    <ds-tab>Tab 3</ds-tab>
+  </ds-tablist>
+  <ds-tabpanel>Panel 1</ds-tabpanel>
+  <ds-tabpanel>Panel 2</ds-tabpanel>
+  <ds-tabpanel>Panel 3</ds-tabpanel>
+</ds-tabs>
+```
+
+## `data-toggle-group`
+This is implemented differently from `ToggleGroup` in the react package.
+
+An observer will look for `[data-toggle-group]` and add proper arrow navigation plus Enter-key support.
+
+```html
+<fieldset class="ds-toggle-group" data-toggle-group="Text alignment" data-variant="secondary">
+  <label>
+    <input type="radio" name="alignment-two" value="left" checked />
+    Left aligned
+  </label>
+  <label>
+    <input type="radio" name="alignment-two" value="center" />
+    Center aligned
+  </label>
+  <label>
+    <input type="radio" name="alignment-two" value="right" />
+    Right aligned
+  </label>
+</fieldset>
+```
+
+## `data-tooltip`
+Using a single element for rendering next to elements with `data-tooltip` attribute.
+Also automatically sets `aria-label` or `aria-description` as needed.
+
+```html
+<button data-placement="left" data-tooltip="left" class="ds-button">left</button>
+```
+## `data-clickdelegatefor`
+Used for delegating click event. For example, you can use this to delegate click events from a parent element to child elements that are added dynamically.
+
+```html
+<div class="ds-card" data-clickdelegatefor="target">
+  <a id="target" href="https://example.com" rel="noopener">Go to example</a>
+  <span>Clicking this card will open example in a new tab</span>
+</div>
+```
+
+## `readonly`
+Used for fixing `readonly` support on `select` and `input` elements. Add `aria-readonly="true"` to make the element behave as readonly, which means that it will not be editable by the user or call any change events.
+
+```html
+<select aria-readonly="true">
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+  <option value="3">Option 3</option>
+</select>
+```
+
+
+## Polyfills
+
+### invokers-polyfill
+We automatically attach [invokers-polyfill](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2), which means that you get support for `command` and `commandfor`.
+
+### `<dialog>`
+Use the native `<dialog>` element. We polyfill support for [`closedby="any"`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy#any). 
+
+```html
+<dialog class="ds-dialog" closedby="any" id="my-dialog">
+my dialog
+</dialog>
+```
+
+#### open & close
+
+Use invokers  `command` and `commandfor`, to open and close dialog.
+```html
+<button class="ds-button" type="button" command="show-modal" commandfor="my-dialog">
+  Open dialog
+</button>
+<dialog id="my-dialog" class="ds-dialog">
+  <button class="ds-button" command="close" commandfor="my-dialog">Close</button>
+</dialog>
+```
+
+### `details` and `summary`
+Use native elements. We polyfill a bug in Firefox when combined with Android Talkback screen reader to announce state and role properly.
+
+```html
+<details class="ds-details">
+  <summary>More info</summary>
+  <div>Lorem ipsum dolor sit amet.</div>
+</details>
+```
+
 
 ### `popover`
 We use native popover functionality, but we attach an event listener that fixes placement of designsystem components.
@@ -150,43 +274,4 @@ We use native popover functionality, but we attach an event listener that fixes 
 
 **If you don't use the class `ds-popover` you need to add the CSS property `--_ds-floating` to the popover element.** This can be `top`, `bottom`, `left` or `right`.
 
-### `ds-suggestion`
-Extends `u-combobox` from u-elements. See u-elements for documentation:
-[https://u-elements.github.io/u-elements/elements/u-combobox](https://u-elements.github.io/u-elements/elements/u-combobox)
 
-### `ds-tabs`
-Extends `u-tabs` from u-elements. See u-elements for documentation:
-[https://u-elements.github.io/u-elements/elements/u-tabs](https://u-elements.github.io/u-elements/elements/u-tabs)
-
-### `ds-toggle-group`
-This is implemented differently from `ToggleGroup` in the react package.
-
-An observer will look for `[data-toggle-group]` and add proper arrow navigation plus Enter-key support.
-
-```html
-<fieldset class="ds-toggle-group" data-toggle-group="Tekstjustering" data-variant="secondary">
-  <label>
-    <input type="radio" name="alignment-two" value="left" checked />
-    Venstestilt
-  </label>
-  <label>
-    <input type="radio" name="alignment-two" value="center" />
-    Midtstilt
-  </label>
-  <label>
-    <input type="radio" name="alignment-two" value="right" />
-    Høyrestilt
-  </label>
-</fieldset>
-```
-
-### `data-tooltip`
-Using a single element for rendering next to elements with `data-tooltip` attribute.
-Also automatically sets `aria-label` or `aria-description` as needed.
-
-```html
-<button data-placement="left" data-tooltip="venstre" class="ds-button">venstre</button>
-```
-
-### Polyfills
-We automatically attach [invokers-polyfill](https://www.npmjs.com/package/invokers-polyfill/v/0.5.2), which means that you get support for `command` and `commandfor`.

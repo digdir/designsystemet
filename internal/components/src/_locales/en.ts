@@ -5,6 +5,7 @@ export default {
     about: 'About Designsystemet',
     privacy: 'Privacy policy',
     accessibility: 'Accessibility statement',
+    cookies: 'Manage cookie preferences',
     slack: 'Join us on Slack',
     description:
       'Designsystemet is a shared toolbox of basic UI components, guidelines, and patterns that you can use when developing digital solutions. It is open and free for everyone.',

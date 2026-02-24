@@ -86,7 +86,7 @@ const hideTooltip = () => TIP?.isConnected && TIP.popover && TIP.hidePopover(); 
 
 const handleClose = (event?: Partial<ToggleEvent & KeyboardEvent>) => {
   if (event?.type === 'keydown')
-    return event?.key === 'Escape' && TIP?.hidePopover();
+    return event?.key === 'Escape' && hideTooltip();
   if (!event) SOURCE = undefined;
   else if (event.target === TIP && event.newState === 'closed')
     SKIP_TIMER = setTimeout(handleClose, DELAY_SKIP);

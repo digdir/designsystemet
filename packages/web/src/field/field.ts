@@ -157,7 +157,13 @@ customElements.define('ds-field', DSFieldElement);
 onHotReload('field', () => [
   on(document, 'input', updateField, QUICK_EVENT),
   onMutation(document, handleMutations, {
-    attributeFilter: ['value', 'hidden', 'data-field', INDETERMINATE],
+    attributeFilter: [
+      'data-field',
+      'data-limit',
+      'hidden',
+      'value',
+      INDETERMINATE,
+    ],
     attributes: true,
     childList: true,
     subtree: true,
