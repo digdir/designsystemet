@@ -1,5 +1,13 @@
 # @digdir/designsystemet-web
 
+## 1.12.1
+
+### Patch Changes
+
+- **tooltip:** prevent errors when pressing esc before tooltip is mounted ([#4535](https://github.com/digdir/designsystemet/pull/4535))
+
+- **field**: update counter when `data-limit` attribute changes ([#4535](https://github.com/digdir/designsystemet/pull/4535))
+
 ## 1.12.0
 
 ### Minor Changes
