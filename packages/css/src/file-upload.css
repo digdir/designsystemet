@@ -1,0 +1,34 @@
+.ds-file-upload {
+  border: 2px dashed var(--ds-color-border-default);
+  width: auto;
+  border-radius: var(--ds-border-radius-md);
+  padding-block: var(--ds-size-8);
+  padding-inline: var(--ds-size-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--ds-color-surface-default);
+  &:hover {
+    border-style: solid;
+    background-color: var(--ds-color-surface-tinted);
+  }
+  > * + * {
+    margin-top: var(--ds-size-4);
+  }
+  input {
+    display: none;
+  }
+  svg {
+    color: var(--ds-color-text-subtle);
+    height: var(--ds-size-8);
+    width: auto;
+  }
+  .ds-file-upload__label {
+    margin-top: var(--ds-size-2);
+    color: var(--ds-color-text-default);
+  }
+  .ds-file-upload__description {
+    color: var(--ds-color-neutral-text-subtle);
+    margin-top: 0;
+  }
+}
