@@ -8,9 +8,12 @@ export type FileUploadButtonProps = Pick<ButtonProps, 'variant'> &
 export const FileUploadButton = forwardRef<
   HTMLSpanElement,
   FileUploadButtonProps
->(function FileUploadButton({ className, children, ...rest }, ref) {
+>(function FileUploadButton(
+  { className, variant = 'secondary', children, ...rest },
+  ref,
+) {
   return (
-    <Button variant='secondary' asChild>
+    <Button variant={variant} asChild>
       <span className={className} ref={ref} {...rest}>
         {children}
       </span>

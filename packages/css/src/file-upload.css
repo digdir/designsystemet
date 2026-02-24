@@ -11,6 +11,12 @@
   &:hover {
     border-style: solid;
     background-color: var(--ds-color-surface-tinted);
+    cursor: pointer;
+    .ds-button {
+      /*link or not link hover to button?*/
+      --dsc-button-background: var(--dsc-button-background--hover);
+      --dsc-button-color: var(--dsc-button-color--hover);
+    }
   }
   > * + * {
     margin-top: var(--ds-size-4);
