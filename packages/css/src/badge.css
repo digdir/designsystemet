@@ -7,7 +7,6 @@
   --dsc-badge-bottom: inherit;
   --dsc-badge-left: inherit;
   --dsc-badge-right: inherit;
-  --ds-captured-length: 1em;
 
   vertical-align: middle;
   @composes ds-print-preserve from './base.css';
@@ -52,6 +51,7 @@
   position: relative;
   height: fit-content;
   width: fit-content;
+  --ds-captured-length: 1em;
 
   &:not([hidden]) {
     display: inline-flex;
