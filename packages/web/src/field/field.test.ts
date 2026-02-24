@@ -58,7 +58,30 @@ describe('Field component', () => {
     textarea?.dispatchEvent(new Event('input', { bubbles: true }));
     vi.advanceTimersByTime(150); // Advance past debounce time
 
-    const LABEL_ATTR = counter?.getAttribute('data-label') || '';
-    expect(LABEL_ATTR).toBe('13 tegn for mye');
+    expect(counter?.getAttribute('data-label')).toBe('13 tegn for mye');
+  });
+
+  test('should update counter text based on data-limit', async () => {
+    document.body.innerHTML = `<ds-field class="ds-field">
+      <label>Label</label>
+      <textarea class="ds-input">Dette er ein test som er for lang</textarea>
+      <p class="ds-validation-message" data-field="counter" data-limit="20" data-over="%d tegn for mye" data-under="%d tegn igjen"></p>
+    </ds-field>`;
+    await waitForField();
+
+    const textarea = document.querySelector('textarea');
+    const counter = document.querySelector('[data-field="counter"]');
+    expect(textarea).toBeInTheDocument();
+    expect(counter).toBeInTheDocument();
+    expect(counter?.getAttribute('data-label')).toBe('13 tegn for mye');
+
+    counter?.setAttribute('data-limit', '10');
+
+    expect(
+      vi.waitUntil(
+        () => counter?.getAttribute('data-label') === '23 tegn for mye',
+        2000,
+      ),
+    ).toBeTruthy();
   });
 });
