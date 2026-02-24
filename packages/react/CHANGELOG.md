@@ -1,5 +1,15 @@
 # Change Log
 
+## 1.12.1
+
+### Patch Changes
+
+- **Avatar**: fixed an issue where tooltip could not be set ([#4534](https://github.com/digdir/designsystemet/pull/4534))
+
+- Updated dependencies [[`d81048f`](https://github.com/digdir/designsystemet/commit/d81048f3bb31f5537f9c132582bbefb9144eb387), [`d81048f`](https://github.com/digdir/designsystemet/commit/d81048f3bb31f5537f9c132582bbefb9144eb387)]:
+  - @digdir/designsystemet-web@1.12.1
+  - @digdir/designsystemet-types@1.12.1
+
 ## 1.12.0
 
 ### Minor Changes
