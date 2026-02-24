@@ -1,6 +1,6 @@
+import cl from 'clsx/lite';
 import { forwardRef, type HTMLAttributes } from 'react';
 import { Paragraph, type ParagraphProps } from '../paragraph/paragraph';
-import cl from 'clsx/lite';
 
 export type FileUploadLabelProps = ParagraphProps &
   HTMLAttributes<HTMLParagraphElement>;
