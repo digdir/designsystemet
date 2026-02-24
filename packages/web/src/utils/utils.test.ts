@@ -30,12 +30,8 @@ describe('utils', () => {
 
   it('attrOrCSS reads from CSS custom property and strips quotes', async () => {
     const el = document.createElement('div');
-    el.setAttribute('data-test', '');
+    document.body.appendChild(el); // Needed for getComputedStyle to work, which is used by attrOrCSS
     el.style.setProperty('--_ds-test', '"property-value"');
-
-    await vi.waitUntil(
-      () => el.style.getPropertyValue('--_ds-test') === '"property-value"',
-    );
 
     expect(attrOrCSS(el, 'test')).toBe('property-value');
   });
