@@ -27,6 +27,10 @@ export const Preview: Story = {
     return (
       <FileUpload {...args}>
         <CloudUpIcon aria-hidden='true' />
+        <FileUpload.Label>Drop file here</FileUpload.Label>
+        <FileUpload.Description>
+          File must be in csv format and less than 2MB
+        </FileUpload.Description>
         <FileUpload.Button>Upload file</FileUpload.Button>
       </FileUpload>
     );
@@ -34,12 +38,22 @@ export const Preview: Story = {
 };
 
 export const Variants: StoryFn<typeof FileUpload> = () => (
-  <FileUpload>
-    <CloudUpIcon aria-hidden='true' />
-    <FileUpload.Label>Drop file here</FileUpload.Label>
-    <FileUpload.Description>
-      File must be in csv format and less than 2MB
-    </FileUpload.Description>
-    <FileUpload.Button>Upload file</FileUpload.Button>
-  </FileUpload>
+  <>
+    <FileUpload>
+      <CloudUpIcon aria-hidden='true' />
+      <FileUpload.Label>Drop file here</FileUpload.Label>
+      <FileUpload.Description>
+        File must be in csv format and less than 2MB
+      </FileUpload.Description>
+      <FileUpload.Button>Upload file</FileUpload.Button>
+    </FileUpload>
+    <FileUpload data-color='neutral'>
+      <CloudUpIcon aria-hidden='true' />
+      <FileUpload.Label>Drop file here</FileUpload.Label>
+      <FileUpload.Description>
+        File must be in csv format and less than 2MB
+      </FileUpload.Description>
+      <FileUpload.Button>Upload file</FileUpload.Button>
+    </FileUpload>
+  </>
 );
