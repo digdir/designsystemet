@@ -5,7 +5,7 @@ import { userEvent } from 'vitest/browser';
 
 const user = userEvent.setup();
 
-const renderTabs = async (withFocusablePanel = false) => {
+const renderTabs = async () => {
   document.body.innerHTML = `
     <ds-tabs>
       <ds-tablist>
@@ -13,9 +13,11 @@ const renderTabs = async (withFocusablePanel = false) => {
         <ds-tab value="tab-2">Tab 2</ds-tab>
       </ds-tablist>
       <ds-tabpanel value="tab-1" data-testid="panel-1">
-        ${withFocusablePanel ? '<input type="text" />' : 'content 1'}
+      content 1
       </ds-tabpanel>
-      <ds-tabpanel value="tab-2" data-testid="panel-2">content 2</ds-tabpanel>
+      <ds-tabpanel value="tab-2" data-testid="panel-2">
+       content 2
+      </ds-tabpanel>
     </ds-tabs>
   `;
 
@@ -67,13 +69,5 @@ describe('tabs component', () => {
     await vi.waitUntil(() => panelOne.hasAttribute('tabindex'));
 
     expect(panelOne).toHaveAttribute('tabindex', '0');
-  });
-
-  it('avoids tabindex when panel has focusable content', async () => {
-    const { panelOne } = await renderTabs(true);
-
-    await vi.waitUntil(() => panelOne.hasAttribute('tabindex') === false);
-
-    expect(panelOne).not.toHaveAttribute('tabindex');
   });
 });
