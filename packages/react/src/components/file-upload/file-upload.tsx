@@ -5,7 +5,7 @@ import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
 export type FileUploadProps = MergeRight<
-  DefaultProps & HTMLAttributes<HTMLLabelElement>,
+  DefaultProps & HTMLAttributes<HTMLInputElement>,
   {
     /** Instances of `FileUpload.Button`, `FileUpload.label` or other React nodes */
     children: ReactNode;
@@ -25,12 +25,27 @@ export type FileUploadProps = MergeRight<
  *    <FileUpload.Button>Upload file</FileUpload.Button>
  *  </FileUpload>
  */
-export const FileUpload = forwardRef<HTMLLabelElement, FileUploadProps>(
-  function FileUpload({ className, children, ...rest }, ref) {
+export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
+  function FileUpload(
+    {
+      className,
+      style,
+      'data-size': size,
+      'data-color': color,
+      children,
+      ...rest
+    },
+    ref,
+  ) {
     return (
-      <label ref={ref} className={cl(`ds-file-upload`, className)} {...rest}>
+      <label
+        className={cl(`ds-file-upload`, className)}
+        style={style}
+        data-size={size}
+        data-color={color}
+      >
         {children}
-        <input type='file' className='ds-sr-only' />
+        <input ref={ref} type='file' className='ds-sr-only' {...rest} />
       </label>
     );
   },
