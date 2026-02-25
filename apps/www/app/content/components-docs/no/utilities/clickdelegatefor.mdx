@@ -1,0 +1,27 @@
+---
+title: clickdelegatefor
+sidebar_title: clickdelegatefor
+order: 60
+---
+
+For å delegere klikk til et annet element. Dette er nyttig for å kunne gjøre elementer som ikke kan fokuseres, som for eksempel en `<div>`, klikkbare uten å endre deres semantiske betydning.
+
+Baserer ser på disse:
+- [https://open-ui.org/components/link-area-delegation-explainer/](https://open-ui.org/components/link-area-delegation-explainer/)
+- [https://github.com/openui/open-ui/issues/1104](https://github.com/openui/open-ui/issues/1104)
+
+## Bruk
+
+Du legger til `data-clickdelegatefor` på et element, og setter verdien til id-en til elementet du vil delegere klikket til.
+
+```html
+<div class="ds-card" data-clickdelegatefor="target">
+  <a id="target" href="https://example.com" rel="noopener">Gå til example.com</a>
+  <span>Trykk på kortet for å åpne eksemplet i en ny fane</span>
+</div>
+```
+
+### Når bør jeg bruke `data-clickdelegatefor`?
+Bruk `data-clickdelegatefor` når du har et element som ikke kan fokuseres, men du ønsker at det skal kunne klikkes på og utføre en handling. Dette er spesielt nyttig for elementer som `<div>`, `<span>`, eller andre ikke-interaktive elementer som du vil gjøre interaktive uten å endre deres semantiske betydning.
+
+I eksempelet ovenfor gjør vi et kort (`<div>`) klikkbart ved å delegere klikket til en lenke (`<a>`). Dette betyr at skjermleserbrukere får standard fokus på lenka, men hele kortet vil være klikkbart, noe som forbedrer brukeropplevelsen uten å gå på bekostning av tilgjengeligheten.

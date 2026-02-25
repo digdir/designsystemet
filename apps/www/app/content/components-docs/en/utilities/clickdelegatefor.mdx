@@ -1,0 +1,27 @@
+---
+title: clickdelegatefor
+sidebar_title: clickdelegatefor
+order: 60
+---
+
+Used to delegate click to another element. This is useful to make elements that cannot be focused, such as a `<div>`, clickable without changing their semantic meaning.
+
+Based on these:
+- [https://open-ui.org/components/link-area-delegation-explainer/](https://open-ui.org/components/link-area-delegation-explainer/)
+- [https://github.com/openui/open-ui/issues/1104](https://github.com/openui/open-ui/issues/1104)
+
+## Usage
+
+You add `data-clickdelegatefor` to an element, and set the value to the id of the element you want to delegate the click to.
+
+```html
+<div class="ds-card" data-clickdelegatefor="target">
+  <a id="target" href="https://example.com" rel="noopener">Go to example.com</a>
+  <span>Clicking this card will open example in a new tab</span>
+</div>
+```
+
+### When should I use `data-clickdelegatefor`?
+Use `data-clickdelegatefor` when you have an element that cannot be focused, but you want it to be clickable and perform an action. This is especially useful for elements like `<div>`, `<span>`, or other non-interactive elements that you want to make interactive without changing their semantic meaning.
+
+In the example above, we make a card (`<div>`) clickable by delegating the click to a link (`<a>`). This means that screen reader users get standard focus on the link, but the entire card will be clickable, improving the user experience without compromising accessibility.
