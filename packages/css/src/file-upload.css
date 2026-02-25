@@ -1,5 +1,6 @@
 /*double class to increase specificity above .ds-field :is() (0.2.0 + order)*/
 .ds-file-upload.ds-file-upload {
+  /*todo: component variables*/
   border: 2px dashed var(--ds-color-border-default);
   width: auto;
   border-radius: var(--ds-border-radius-md);
