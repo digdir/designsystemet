@@ -7,11 +7,12 @@ import type { OutputFile } from '../tokens/types.js';
 class FileSystem {
   private isInitialized = false;
   private dry = false;
-  /** Resolved write directory */
+  /** Default working directory is where the process was started */
   workingDir = process.cwd();
+  outDir = this.workingDir;
 
   /** Initialize the file system */
-  init({ dry, configFilePath }: { dry?: boolean; configFilePath?: string }) {
+  init({ dry, configFilePath, outdir }: { dry?: boolean; configFilePath?: string; outdir?: string }) {
     if (this.isInitialized) {
       console.warn(pc.yellow('FileSystem is already initialized. Ignoring subsequent init call.'));
       return;
@@ -22,16 +23,11 @@ class FileSystem {
     }
 
     this.dry = dry ?? false;
-    this.workingDir = configFilePath ? path.dirname(configFilePath) : process.cwd();
+    // If a config file path is provided, set the working directory to the config file's directory. This allows relative paths in the config file to be resolved correctly. If no config file path is provided, use the current working directory.
+    this.workingDir = configFilePath ? path.dirname(configFilePath) : this.workingDir;
+    // If an output directory is provided, resolve it relative to the working directory. Otherwise, use the working directory as the output directory.
+    this.outDir = outdir ? (path.isAbsolute(outdir) ? outdir : path.join(this.workingDir, outdir)) : this.workingDir;
     this.isInitialized = true;
-  }
-
-  getOutdir(outDir?: string) {
-    if (outDir) {
-      return path.isAbsolute(outDir) ? outDir : path.join(this.workingDir, outDir);
-    }
-
-    return this.workingDir;
   }
 
   /**

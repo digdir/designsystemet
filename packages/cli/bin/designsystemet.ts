@@ -54,14 +54,12 @@ function makeTokenCommands() {
       console.log(figletAscii);
       const { verbose, clean, dry, experimentalTailwind, tokens } = opts;
 
-      const configFilePath = opts.config;
+      const { configFile, configFilePath } = await getConfigFile(opts.config);
+      const config = await parseBuildConfig(configFile, { configFilePath });
 
-      const { configFile, configPath } = await getConfigFile(configFilePath);
-      const config = await parseBuildConfig(configFile, { configPath });
+      fs.init({ dry, configFilePath, outdir: opts.outDir });
 
-      fs.init({ dry, configFilePath });
-
-      const outDir = fs.getOutdir(opts.outDir); // TODO read output directory from config or CLI options
+      const outDir = fs.outDir;
 
       if (clean) {
         await fs.cleanDir(outDir);
@@ -111,18 +109,23 @@ function makeTokenCommands() {
         console.log(`Performing dry run, no files will be written`);
       }
       const themeName = opts.theme;
-      const configFilePath = opts.config;
 
-      const { configFile, configPath } = await getConfigFile(configFilePath);
+      const { configFile, configFilePath } = await getConfigFile(opts.config);
       const config = await parseCreateConfig(configFile, {
         theme: themeName,
         cmd,
-        configPath,
+        configFilePath,
       });
 
-      fs.init({ dry: opts.dry, configFilePath });
+      fs.init({
+        dry: opts.dry,
+        configFilePath,
+        outdir: opts.outDir !== DEFAULT_TOKENS_CREATE_DIR ? opts.outDir : config.outDir,
+      });
 
-      const outDir = fs.getOutdir(config.outDir);
+      console.log('initialized file system with config:', { workingDir: fs.workingDir, outDir: fs.outDir });
+
+      const outDir = fs.outDir;
 
       if (config.clean) {
         await fs.cleanDir(outDir);
@@ -163,7 +166,7 @@ program
     const tokensDir = path.resolve(opts.dir);
     const configFilePath = path.resolve(opts.out);
 
-    fs.init({ dry, configFilePath });
+    fs.init({ dry, configFilePath, outdir: path.dirname(configFilePath) });
 
     try {
       const config = await generateConfigFromTokens({
@@ -232,10 +235,10 @@ function parseBoolean(value: string | boolean): boolean {
   return value === 'true' || value === true;
 }
 
-async function getConfigFile(config: string | undefined) {
-  const allowFileNotFound = R.isNil(config) || config === DEFAULT_CONFIG_FILE;
-  const configPath = config ?? DEFAULT_CONFIG_FILE;
-  const configFile = await readConfigFile(configPath, allowFileNotFound);
+async function getConfigFile(userConfigFilePath: string | undefined) {
+  const allowFileNotFound = R.isNil(userConfigFilePath) || userConfigFilePath === DEFAULT_CONFIG_FILE;
+  const configFilePath = userConfigFilePath ?? DEFAULT_CONFIG_FILE;
+  const configFile = await readConfigFile(configFilePath, allowFileNotFound);
 
-  return { configFile, configPath };
+  return { configFile, configFilePath };
 }
