@@ -30,7 +30,7 @@ export const FileUpload = forwardRef<HTMLLabelElement, FileUploadProps>(
     return (
       <label ref={ref} className={cl(`ds-file-upload`, className)} {...rest}>
         {children}
-        <input type='file' />
+        <input type='file' hidden />
       </label>
     );
   },

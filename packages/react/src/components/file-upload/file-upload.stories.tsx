@@ -1,5 +1,6 @@
 import { CloudUpIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
+import { Field, Label, ValidationMessage } from '../';
 import { FileUpload } from './';
 
 type Story = StoryObj<typeof FileUpload>;
@@ -66,4 +67,20 @@ export const LinkAlt: StoryFn<typeof FileUpload> = () => (
       File must be in csv format and less than 2MB
     </FileUpload.Description>
   </FileUpload>
+);
+
+export const FieldTest: StoryFn<typeof FileUpload> = () => (
+  <Field>
+    <Label>Upload files</Label>
+    <Field.Description>Some description</Field.Description>
+    <FileUpload>
+      <CloudUpIcon aria-hidden='true' />
+      <FileUpload.Label>Drop file here</FileUpload.Label>
+      <FileUpload.Description>
+        File must be in csv format and less than 2MB
+      </FileUpload.Description>
+      <FileUpload.Button>Upload file</FileUpload.Button>
+    </FileUpload>
+    <ValidationMessage>Invalid file format</ValidationMessage>
+  </Field>
 );
