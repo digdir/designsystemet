@@ -51,12 +51,12 @@ function makeFriendlyError(err: unknown) {
 export function validateConfig<T>(
   schema: z.ZodType<T>,
   unvalidatedConfig: Record<string, unknown>,
-  configPath: string,
+  configFilePath: string,
 ): T {
   try {
     return schema.parse(unvalidatedConfig) as T;
   } catch (err) {
-    console.error(pc.redBright(`Invalid config file at ${pc.red(configPath)}`));
+    console.error(pc.redBright(`Invalid config file at ${pc.red(configFilePath)}`));
 
     const validationError = makeFriendlyError(err);
     console.error(validationError?.toString());
@@ -64,7 +64,7 @@ export function validateConfig<T>(
   }
 }
 
-export function parseConfig<T>(configFile: string, configPath: string): T {
+export function parseConfig<T>(configFile: string, configFilePath: string): T {
   if (!configFile) {
     return {} as T;
   }
@@ -72,7 +72,7 @@ export function parseConfig<T>(configFile: string, configPath: string): T {
   try {
     return JSON.parse(configFile) as T;
   } catch (err) {
-    console.error(pc.redBright(`Failed parsing config file at ${pc.red(configPath)}`));
+    console.error(pc.redBright(`Failed parsing config file at ${pc.red(configFilePath)}`));
 
     const validationError = makeFriendlyError(err);
     console.error(validationError?.toString());
