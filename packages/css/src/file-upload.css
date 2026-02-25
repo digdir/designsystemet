@@ -1,4 +1,4 @@
-/*double class to increase specificity above .ds-field*/
+/*double class to increase specificity above .ds-field :is() (0.2.0 + order)*/
 .ds-file-upload.ds-file-upload {
   border: 2px dashed var(--ds-color-border-default);
   width: auto;
@@ -9,12 +9,18 @@
   flex-direction: column;
   align-items: center;
   background-color: var(--ds-color-surface-default);
+  @composes ds-print-preserve from './base.css';
+
+  &:focus-within {
+    @composes ds-focus--visible from './base.css';
+  }
+
   &:hover {
     border-style: solid;
     background-color: var(--ds-color-surface-tinted);
     cursor: pointer;
     .ds-button {
-      /*link or not link hover to button?*/
+      /*link hover to button*/
       --dsc-button-background: var(--dsc-button-background--hover);
       --dsc-button-color: var(--dsc-button-color--hover);
     }
