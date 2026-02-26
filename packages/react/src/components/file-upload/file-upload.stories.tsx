@@ -138,3 +138,19 @@ export const Disabled: StoryFn<typeof FileUpload> = () => (
     </FileUpload>
   </>
 );
+
+export const WorkingExample: StoryFn<typeof FileUpload> = () => {
+  return (
+    <div>
+      <FileUpload accept='.svg'>
+        <CloudUpIcon aria-hidden='true' />
+        <FileUpload.Label>Drop file here</FileUpload.Label>
+        <FileUpload.Description>
+          File must be in svg format
+        </FileUpload.Description>
+        <FileUpload.Button>Upload file</FileUpload.Button>
+      </FileUpload>
+      <ul>{/* list uploaded files */}</ul>
+    </div>
+  );
+};
