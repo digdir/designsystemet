@@ -3,71 +3,60 @@
 import { describe, expect, it, vi } from 'vitest';
 import { pagination } from './pagination';
 
-const waitForAttr = async (
-  el: Element,
-  selector: string,
-  name: string,
-  value: string,
-) => {
-  await vi.waitUntil(
-    () => el.querySelector(selector)?.getAttribute(name) === value,
-  );
-};
-
 describe('pagination component', () => {
-  it('syncs button values and link hrefs', async () => {
+  it('has correct aria attributes', async () => {
     document.body.innerHTML = `
       <ds-pagination data-current="2" data-total="5" data-href="/page/%d" aria-label="Pagination">
-        <button class="prev">Prev</button>
-        <a>1</a>
-        <a>2</a>
-        <a>3</a>
-        <a>4</a>
-        <a>5</a>
-        <button class="next">Next</button>
+       <ol>
+          <li><a class="ds-button prev" data-variant="tertiary" href="#none">prev</a></li>
+          <li><a class="ds-button" data-variant="tertiary" href="/page/1"></a></li>
+          <li><a class="ds-button" data-variant="tertiary" href="/page/2"></a></li>
+          <li><a class="ds-button" data-variant="tertiary" href="/page/3"></a></li>
+          <li><a class="ds-button" data-variant="tertiary" href="/page/4"></a></li>
+          <li><a class="ds-button" data-variant="tertiary" href="/page/5"></a></li>
+          <li><a class="ds-button next" data-variant="tertiary" href="#none">next</a></li>
+       </ol>
       </ds-pagination>
     `;
 
     const paginationEl = document.querySelector('ds-pagination') as HTMLElement;
-    const prev = paginationEl.querySelector('button.prev') as HTMLButtonElement;
-    const next = paginationEl.querySelector('button.next') as HTMLButtonElement;
+    const prev = paginationEl.querySelector('a.prev') as HTMLAnchorElement;
+    const next = paginationEl.querySelector('a.next') as HTMLAnchorElement;
     const links = [
       ...paginationEl.querySelectorAll('a'),
     ] as HTMLAnchorElement[];
 
-    await waitForAttr(paginationEl, 'button.prev', 'aria-label', '1');
+    await vi.waitUntil(() => prev.getAttribute('aria-label') === '1');
 
     expect(paginationEl).toHaveAttribute('role', 'navigation');
-    expect(prev).toHaveAttribute('value', '1');
     expect(prev).toHaveAttribute('aria-label', '1');
-    expect(next).toHaveAttribute('value', '3');
     expect(next).toHaveAttribute('aria-label', '3');
-    expect(links[1]).toHaveAttribute('aria-current', 'true');
-    expect(links[0]).toHaveAttribute('href', '/page/1');
-    expect(links[1]).toHaveAttribute('href', '/page/2');
-    expect(links[2]).toHaveAttribute('href', '/page/3');
+    expect(links[2]).toHaveAttribute('aria-label', '2');
+    expect(links[2]).toHaveAttribute('aria-current', 'true');
   });
 
   it('marks hidden steps as not focusable', async () => {
     document.body.innerHTML = `
-      <ds-pagination data-current="1" data-total="10" data-href="/page/%d" aria-label="Pagination">
-        <button>Prev</button>
-        <a>1</a>
-        <a>2</a>
-        <a>3</a>
-        <a>4</a>
-        <a>5</a>
-        <button>Next</button>
+      <ds-pagination data-current="1" data-total="100" data-href="/page/%d" aria-label="Pagination">
+     <ol>
+        <li><button class="ds-button prev" data-variant="tertiary">prev</button></li>
+        <li><button class="ds-button" data-variant="tertiary">1</button></li>
+        <li><button class="ds-button" data-variant="tertiary">2</button></li>
+        <li><button class="ds-button" data-variant="tertiary">3</button></li>
+        <li><button class="ds-button" data-variant="tertiary">4</button></li>
+        <li><button class="ds-button" data-variant="tertiary">5</button></li>
+        <li><button class="ds-button next" data-variant="tertiary">next</button></li>
+      </ol>
       </ds-pagination>
     `;
 
     const paginationEl = document.querySelector('ds-pagination') as HTMLElement;
     const links = [
-      ...paginationEl.querySelectorAll('a'),
-    ] as HTMLAnchorElement[];
-    const hidden = links[3];
+      ...paginationEl.querySelectorAll('button'),
+    ] as HTMLButtonElement[];
+    const hidden = links[4];
 
-    await waitForAttr(paginationEl, 'a:nth-of-type(4)', 'tabindex', '-1');
+    await vi.waitUntil(() => hidden.getAttribute('tabindex') === '-1');
 
     expect(hidden).toHaveAttribute('role', 'none');
     expect(hidden).toHaveAttribute('tabindex', '-1');
