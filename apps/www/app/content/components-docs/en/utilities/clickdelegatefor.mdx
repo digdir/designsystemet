@@ -25,3 +25,24 @@ You add `data-clickdelegatefor` to an element, and set the value to the id of th
 Use `data-clickdelegatefor` when you have an element that cannot be focused, but you want it to be clickable and perform an action. This is especially useful for elements like `<div>`, `<span>`, or other non-interactive elements that you want to make interactive without changing their semantic meaning.
 
 In the example above, we make a card (`<div>`) clickable by delegating the click to a link (`<a>`). This means that screen reader users get standard focus on the link, but the entire card will be clickable, improving the user experience without compromising accessibility.
+
+### Nested clickable elements
+If you add other clickable elements inside the card, such as a button, `data-clickdelegatefor` will not delegate the click when you click on the button. This applies to all interactive elements.
+
+```html
+<div class="ds-card" data-clickdelegatefor="target">
+  <a id="target" href="https://example.com" rel="noopener">Go to example.com</a>
+  <span>Clicking this card will open example in a new tab</span>
+  <button>button</button>
+</div>
+```
+
+### CSS
+
+The element that receives the delegated click will get the class `.\:click-delegate-hover` when you hover over the element with `data-clickdelegatefor`. This allows you to style what should be clickable, for example by adding a hover effect.
+
+```css
+.\:click-delegate-hover {
+  /* Add your own styles here */
+}
+```
