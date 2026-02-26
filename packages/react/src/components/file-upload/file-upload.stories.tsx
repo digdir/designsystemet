@@ -72,7 +72,7 @@ export const LinkAlt: StoryFn<typeof FileUpload> = () => (
 export const FieldTest: StoryFn<typeof FileUpload> = () => (
   <Field>
     <Label>Upload files</Label>
-    <Field.Description>Some description</Field.Description>
+    <Field.Description>Inside Field</Field.Description>
     <FileUpload>
       <CloudUpIcon aria-hidden='true' />
       <FileUpload.Label>Drop file here</FileUpload.Label>
@@ -83,4 +83,58 @@ export const FieldTest: StoryFn<typeof FileUpload> = () => (
     </FileUpload>
     <ValidationMessage>Invalid file format</ValidationMessage>
   </Field>
+);
+
+export const ReadOnly: StoryFn<typeof FileUpload> = () => (
+  <>
+    <Field>
+      <Label>Upload files</Label>
+      <Field.Description>Inside Field</Field.Description>
+      <FileUpload readOnly={true}>
+        <CloudUpIcon aria-hidden='true' />
+        <FileUpload.Label>Drop file here</FileUpload.Label>
+        <FileUpload.Description>
+          File must be in csv format and less than 2MB
+        </FileUpload.Description>
+        <FileUpload.Button>Upload file</FileUpload.Button>
+      </FileUpload>
+      <ValidationMessage>Invalid file format</ValidationMessage>
+    </Field>
+    <FileUpload readOnly={true}>
+      <CloudUpIcon aria-hidden='true' />
+      <FileUpload.Label>
+        Drop files or <span className='ds-link'>click to browse</span>
+      </FileUpload.Label>
+      <FileUpload.Description>
+        File must be in csv format and less than 2MB
+      </FileUpload.Description>
+    </FileUpload>
+  </>
+);
+
+export const Disabled: StoryFn<typeof FileUpload> = () => (
+  <>
+    <Field>
+      <Label>Upload files</Label>
+      <Field.Description>Inside Field</Field.Description>
+      <FileUpload disabled={true}>
+        <CloudUpIcon aria-hidden='true' />
+        <FileUpload.Label>Drop file here</FileUpload.Label>
+        <FileUpload.Description>
+          File must be in csv format and less than 2MB
+        </FileUpload.Description>
+        <FileUpload.Button>Upload file</FileUpload.Button>
+      </FileUpload>
+      <ValidationMessage>Invalid file format</ValidationMessage>
+    </Field>
+    <FileUpload disabled={true}>
+      <CloudUpIcon aria-hidden='true' />
+      <FileUpload.Label>
+        Drop files or <span className='ds-link'>click to browse</span>
+      </FileUpload.Label>
+      <FileUpload.Description>
+        File must be in csv format and less than 2MB
+      </FileUpload.Description>
+    </FileUpload>
+  </>
 );

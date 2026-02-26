@@ -15,6 +15,8 @@ export type FileUploadProps = MergeRight<
     multiple?: boolean;
     /** Disable file input */
     disabled?: boolean;
+    /** Readonly file input */
+    readOnly?: boolean;
     /** Capture attribute for file input */
     capture?: boolean | 'user' | 'environment';
   }
@@ -44,6 +46,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
       accept,
       multiple,
       disabled,
+      readOnly,
       capture,
       ...rest
     },
@@ -66,6 +69,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
           multiple={multiple}
           disabled={disabled}
           capture={capture}
+          readOnly={readOnly}
         />
       </label>
     );
