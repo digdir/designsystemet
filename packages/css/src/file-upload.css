@@ -17,7 +17,8 @@
     @composes ds-focus--visible from './base.css';
   }
 
-  &:hover {
+  &:hover,
+  &:has([readonly]) {
     border-style: solid;
     background-color: var(--ds-color-surface-tinted);
     cursor: pointer;
@@ -27,6 +28,10 @@
       --dsc-button-color: var(--dsc-button-color--hover);
     }
   }
+  &:has([readonly]) {
+    cursor: not-allowed;
+  }
+
   > * + * {
     margin-top: var(--ds-size-4);
   }
