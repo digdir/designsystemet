@@ -11,11 +11,7 @@ search_terms: setup, oppsett, installasjon, installation, getting started, komme
 ---
 
 
-
 Følg disse stegene for å komme i gang med det grunnleggende for bruk av Designsystemet i kode første gang.
-
-Det anbefales at du også leser om [bygg ditt tema](/no/fundamentals/start-here/own-theme).
-
 
 ## 1. Installer pakkene
 
@@ -40,7 +36,6 @@ npm i @digdir/designsystemet-css @digdir/designsystemet-react
 ```
   </ds-tabpanel>
 </ds-tabs>
-
 
 
 ## 2. Importer Javascript
@@ -69,14 +64,9 @@ import { Button } from '@digdir/designsystemet-react';
 </ds-tabs>
 
 
-
-
 ## 3. Importer CSS
 
 Importer `@digdir/designsystemet-css`.
-
-Dersom du ikke [lager ditt eget tema](/no/fundamentals/start-here/own-theme) kan du bruke et standardtema fra `@digdir/designsystemet-css/theme`.
-Du kan lett bytte til ditt eget tema senere.
 
 Les mer om [CSS](/no/fundamentals/code/css).
 
@@ -88,13 +78,11 @@ Les mer om [CSS](/no/fundamentals/code/css).
   <ds-tabpanel>
   ```css
   @import '@digdir/designsystemet-css/index.css';
-  @import '@digdir/designsystemet-css/theme.css'; /* eller din tema fil */
   ```     
   </ds-tabpanel>
   <ds-tabpanel>
   ```js
   import '@digdir/designsystemet-css';
-  import '@digdir/designsystemet-css/theme'; /* eller din tema fil */
   ```
   </ds-tabpanel>
 </ds-tabs>
@@ -108,6 +96,32 @@ Dette kan lett overstyres i ditt eget tema, eller i din globale CSS fil.
 </p>
 </Alert>
 
+
+## Importer temaet
+
+Designsystemet er laget for å være tematiserbart, og det er derfor viktig at du importerer ditt tema etter at du har importert `@digdir/designsystemet-css`.
+
+[Bygg ditt eget tema](/no/fundamentals/start-here/own-theme) eller bruke standardtemaet; `@digdir/designsystemet-css/theme`.
+
+
+<ds-tabs class="ds-tabs" data-wide-content>
+  <ds-tablist>
+  <ds-tab >Eget tema</ds-tab>
+  <ds-tab >Standardtema</ds-tab>
+  </ds-tablist>
+  <ds-tabpanel>
+  ```css
+  @import '@digdir/designsystemet-css/index.css';
+  @import 'design-tokens-build/<ditt-tema>.css';
+  ```     
+  </ds-tabpanel>
+  <ds-tabpanel>
+  ```js
+  import '@digdir/designsystemet-css';
+  import '@digdir/designsystemet-css/theme';
+  ```
+  </ds-tabpanel>
+</ds-tabs>
 
 
 ## 4. Bruk
@@ -152,7 +166,12 @@ Det er også anbefalt at du leser gjennom tilgjengelighets-sida.
 ## Typescript
 
 Designsystemet tilbyr typesikkerhet for flere data-attributter.
-For å aktivere dette, legg til følgende i din `tsconfig.json`:
+
+Installer type pakken og legg til typefilene i `tsconfig.json` for å få tilgang til disse.
+
+```sh
+npm i -D @digdir/designsystemet-types
+```
 
 <ds-tabs class="ds-tabs" data-wide-content>
   <ds-tablist>
@@ -165,7 +184,8 @@ For å aktivere dette, legg til følgende i din `tsconfig.json`:
   "compilerOptions": {
     "types": [
       "@digdir/designsystemet-web",
-      "@digdir/designsystemet-css/theme" /* eller din tema typefil, <ditt-tema>/types.d.ts */
+      "@digdir/designsystemet-types",
+      "@digdir/designsystemet-css/theme" /* eller din tema typefil, design-tokens-build/types.d.ts */
       ]
   },
 }
@@ -176,8 +196,8 @@ For å aktivere dette, legg til følgende i din `tsconfig.json`:
 {
   "compilerOptions": {
     "types": [
-      "@digdir/designsystemet-react/react-types",
-      "@digdir/designsystemet-css/theme" /* eller din tema typefil, <ditt-tema>/types.d.ts */
+      "@digdir/designsystemet-react/react-types", /** importerer @digdir/designsystemet-types for deg */
+      "@digdir/designsystemet-css/theme" /* eller din tema typefil, design-tokens-build/types.d.ts */
       ]
   },
 }
@@ -190,7 +210,7 @@ For å aktivere dette, legg til følgende i din `tsconfig.json`:
 ## Font
 
 Komponentene er designet og utviklet med [Inter fonten (github.com)](https://github.com/rsms/inter), så variasjoner kan forekomme dersom du bruker en annen font.
-Dersom du velger å installere fonten på en annen måte, husk å inkludere fontvektene `400`, `500` og `600`.
+Dersom du velger å installere fonten på en annen måte enn altinncdn.no, husk å inkludere fontvektene `400`, `500` og `600`.
 
 ### Legg til Inter fonten (valgfritt)
 
