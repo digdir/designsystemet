@@ -49,7 +49,7 @@
     "@vitest/browser-playwright": "4.0.18",
     "custom-element-vs-code-integration": "^1.5.0",
     "rimraf": "^6.1.3",
-    "rolldown": "1.0.0-rc.4",
+    "rolldown": "1.0.0-rc.5",
     "rollup": "^4.57.1",
     "tsup": "^8.5.1",
     "vitest": "4.0.18"
