@@ -66,7 +66,7 @@
     z-index: 1; /*prevent focus-ring overlaying badge in certain cases*/
   }
 
-  & :where(img, svg) {
+  > :where(img, svg) {
     flex-shrink: 0; /* Never shrink icon */
     /* using --ds-captured-length fixes svg not scaling with zoom in Safari */
     font-size: calc(var(--ds-captured-length) * 1.25); /* Auto scale icon based on font-size */
