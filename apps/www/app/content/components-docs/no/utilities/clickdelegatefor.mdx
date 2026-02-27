@@ -1,0 +1,49 @@
+---
+title: clickdelegatefor
+sidebar_title: clickdelegatefor
+order: 60
+---
+
+Dette er nyttig når du for eksempel vil gjøre en helt tabellrad klikkbar, eller et kort klikkbart uten at hele kortets innhold blir lenketeksten for skjermlesere.
+
+Baserer ser på disse:
+- [https://open-ui.org/components/link-area-delegation-explainer/](https://open-ui.org/components/link-area-delegation-explainer/)
+- [https://github.com/openui/open-ui/issues/1104](https://github.com/openui/open-ui/issues/1104)
+
+## Bruk
+
+Legg til `data-clickdelegatefor` på et element, og sett verdien til id-en på elementet du vil delegere klikket til.
+
+```html
+<div class="ds-card" data-clickdelegatefor="target">
+  <a id="target" href="https://example.com" rel="noopener">Gå til example.com</a>
+  <span>Trykk på kortet for å åpne eksemplet i en ny fane</span>
+</div>
+```
+
+### Når bør jeg bruke `data-clickdelegatefor`?
+Bruk `data-clickdelegatefor` når du har et interaktivt element som `a`, `button` eller `input[type="checked"]`, men du ønsker å utvide klikkflaten. Dette er spesielt nyttig for for tabellrader (`<tr>`) og cards(`<div>`).
+
+I eksempelet ovenfor gjør vi et kort (`<div>`) klikkbart ved å delegere klikket til en lenke (`<a>`). Dette betyr at skjermleserbrukere får standard fokus på lenka, men hele kortet vil være klikkbart, noe som forbedrer brukeropplevelsen uten å gå på bekostning av tilgjengeligheten.
+
+### Nøsta klikkbare elementer
+
+Dersom du legger andre klikkbare elementer inne i kortet, som for eksempel en knapp, vil `data-clickdelegatefor` ikke delegere klikket når du klikker på knappen. Dette gjelder alle interaktive elementer.
+
+```html
+<div class="ds-card" data-clickdelegatefor="target">
+  <a id="target" href="https://example.com" rel="noopener">Gå til example.com</a>
+  <span>Trykk på kortet for å åpne eksemplet i en ny fane</span>
+  <button>knapp</button>
+</div>
+```
+
+### CSS
+
+Elementet som får delegert klikk vil få klassen `.\:click-delegate-hover` når du hover over elementet med `data-clickdelegatefor`. Dette gjør at du kan style det som skal være klikkbart, for eksempel ved å legge til en hover-effekt.
+
+```css
+.\:click-delegate-hover {
+  /* Legg til dine egne stiler her */
+}
+```
