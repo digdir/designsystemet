@@ -44,7 +44,7 @@
     "@digdir/designsystemet-web": "workspace:^",
     "@floating-ui/dom": "^1.7.5",
     "@floating-ui/react": "0.26.23",
-    "@navikt/aksel-icons": "^8.4.1",
+    "@navikt/aksel-icons": "^8.5.2",
     "@radix-ui/react-slot": "^1.2.4",
     "@tanstack/react-virtual": "^3.13.18",
     "clsx": "^2.1.1"

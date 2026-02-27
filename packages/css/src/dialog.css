@@ -56,7 +56,6 @@
     border-radius: 0;
     border-block-width: 0;
     height: 100%;
-    /* biome-ignore lint/suspicious/noDuplicateProperties: <fallback> */
     height: -webkit-fill-available;
     height: stretch;
     max-height: unset;
