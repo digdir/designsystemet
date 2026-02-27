@@ -44,7 +44,6 @@ body,
   content: '';
   display: inline-block;
   height: calc(1em * var(--ds-line-height-md)); /* Fallback for browsers not supporting lh unit */
-  /* biome-ignore lint/suspicious/noDuplicateProperties: preferred if supported */
   height: 1lh;
   margin-inline-end: 0.25ch; /* Fake a space character */
   mask: center / contain no-repeat var(--ds-readonly-icon-url);

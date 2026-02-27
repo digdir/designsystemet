@@ -37,10 +37,11 @@ const LinkList = (links: FooterLinkListItemProps[]) => {
 type FooterProps = {
   centerLinks: FooterLinkListItemProps[];
   rightLinks: FooterLinkListItemProps[];
+  resetCookies?: boolean;
 } & React.HTMLAttributes<HTMLElement>;
 
 export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
-  { centerLinks, rightLinks, className, ...rest },
+  { centerLinks, rightLinks, resetCookies, className, ...rest },
   ref,
 ) {
   const { t } = useTranslation();
@@ -63,6 +64,21 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(function Footer(
             {t('footer.about-site')}
           </Heading>
           {LinkList(centerLinks)}
+          {resetCookies && (
+            <form method='post' action='/api/consent'>
+              <Link asChild className={classes.link}>
+                <button
+                  type='submit'
+                  name='action'
+                  value='delete'
+                  data-color='neutral'
+                  style={{ marginTop: 'var(--ds-size-5)' }}
+                >
+                  {t('footer.cookies')}
+                </button>
+              </Link>
+            </form>
+          )}
         </div>
         <div>
           <Heading data-size='2xs' level={2} className={classes.title}>

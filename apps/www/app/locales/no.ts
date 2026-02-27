@@ -119,6 +119,17 @@ export default {
   accessibility: {
     'skip-link': 'Hopp til hovedinnhold',
   },
+  'consent-banner': {
+    heading: 'Vil du godta at vi samler inn data?',
+    all: 'Godta alle',
+    'all-desc':
+      'Med ditt samtykke lagrer og analyserer vi hvordan du bruker nettsidene våre slik at vi kan forbedre dem.',
+    required: 'Bare nødvendige',
+    'required-desc':
+      'Sikrer at nettsiden fungerer som den skal. Kan ikke velges bort.',
+    declaration:
+      'Du kan når som helst endre valget ditt nederst på våre sider.',
+  },
   errors: {
     default: {
       title: 'Oops!',

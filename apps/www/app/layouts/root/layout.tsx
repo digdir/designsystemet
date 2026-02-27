@@ -6,10 +6,12 @@ import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { isRouteErrorResponse, Outlet, useRouteLoaderData } from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
+import { ConsentBanner } from '~/_components/consent-banner/consent-banner';
 import { Figma } from '~/_components/logos/figma';
 import { Github } from '~/_components/logos/github';
 import { Slack } from '~/_components/logos/slack';
 import { SearchDialog } from '~/_components/search-dialog';
+import { useShowConsentBanner } from '~/_hooks/use-show-consent-banner';
 import i18n from '~/i18n';
 import type { Route as RootRoute } from './../../+types/root';
 import type { Route } from './+types/layout';
@@ -59,6 +61,7 @@ export default function RootLayout() {
       href: string;
     }[];
   };
+  const { showBanner } = useShowConsentBanner();
 
   useChangeLanguage(lang);
 
@@ -68,7 +71,10 @@ export default function RootLayout() {
 
   return (
     <>
-      <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
+      <div>
+        {showBanner && <ConsentBanner lang={lang} />}
+        <SkipLink href='#main'>{t('accessibility.skip-link')}</SkipLink>
+      </div>
       <Header
         menu={menu}
         logoLink={`/${lang === 'no' ? 'no' : lang === 'en' ? 'en' : 'no'}`}
@@ -80,6 +86,7 @@ export default function RootLayout() {
         <Outlet />
       </main>
       <Footer
+        resetCookies
         centerLinks={centerLinks}
         rightLinks={rightLinks as FooterLinkListItemProps[]}
       />
