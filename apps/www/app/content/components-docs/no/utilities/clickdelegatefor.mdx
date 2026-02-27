@@ -4,7 +4,7 @@ sidebar_title: clickdelegatefor
 order: 60
 ---
 
-Brukes til å delegere klikk fra et HTML element til et annet. Dette er nyttig for å kunne gjøre elementer som ikke kan fokuseres klikkbare uten å endre deres semantiske betydning.
+Dette er nyttig når du for eksempel vil gjøre en helt tabellrad klikkbar, eller et kort klikkbart uten at hele kortets innhold blir lenketeksten for skjermlesere.
 
 Baserer ser på disse:
 - [https://open-ui.org/components/link-area-delegation-explainer/](https://open-ui.org/components/link-area-delegation-explainer/)
@@ -40,7 +40,7 @@ Dersom du legger andre klikkbare elementer inne i kortet, som for eksempel en kn
 
 ### CSS
 
-Elementet som får delegelt klikk vil få klassen `.\:click-delegate-hover` når du hover over elementet med `data-clickdelegatefor`. Dette gjør at du kan style det som skal være klikkbart, for eksempel ved å legge til en hover-effekt.
+Elementet som får delegert klikk vil få klassen `.\:click-delegate-hover` når du hover over elementet med `data-clickdelegatefor`. Dette gjør at du kan style det som skal være klikkbart, for eksempel ved å legge til en hover-effekt.
 
 ```css
 .\:click-delegate-hover {
