@@ -62,6 +62,7 @@ export const attr = (
   return null;
 };
 
+const STRIP_SURROUNDING_QUOTES = /^["']|["']$/g; // Matches surrounding single or double quotes
 /**
  * attrOrCSS
  * @description Retrieves and updates attribute based on attribute or CSS property value
@@ -69,7 +70,6 @@ export const attr = (
  * @param name Attribute or CSS property to get
  * @return string attribute or CSS property value
  */
-const STRIP_SURROUNDING_QUOTES = /^["']|["']$/g; // Matches surrounding single or double quotes
 export const attrOrCSS = (el: Element, name: string) => {
   let value = attr(el, name);
   if (!value) {
