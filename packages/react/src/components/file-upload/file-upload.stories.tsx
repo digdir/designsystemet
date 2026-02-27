@@ -1,6 +1,7 @@
-import { CloudUpIcon } from '@navikt/aksel-icons';
+import { CircleSlashIcon, CloudUpIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
-import { Field, Label, ValidationMessage } from '../';
+import { type ChangeEvent, type DragEvent, useRef, useState } from 'react';
+import { Button, Field, Label, ValidationMessage } from '../';
 import { FileUpload } from './';
 
 type Story = StoryObj<typeof FileUpload>;
@@ -140,17 +141,88 @@ export const Disabled: StoryFn<typeof FileUpload> = () => (
 );
 
 export const WorkingExample: StoryFn<typeof FileUpload> = () => {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isReadOnly, setIsReadOnly] = useState(false);
+
+  const addFiles = (files: FileList) => {
+    setUploadedFiles((prev) => [...prev, ...Array.from(files)]);
+    setIsReadOnly(true);
+  };
+
+  const handleDrop = (event: DragEvent<HTMLLabelElement>) => {
+    event.preventDefault();
+    setIsDragging(false);
+    if (event.dataTransfer.files.length > 0) {
+      addFiles(event.dataTransfer.files);
+    }
+  };
+
+  const handleChange = (event: ChangeEvent<HTMLLabelElement>) => {
+    const target = event.target;
+    if (!(target instanceof HTMLInputElement)) {
+      return;
+    }
+
+    if (target.files && target.files.length > 0) {
+      addFiles(target.files);
+    }
+  };
+
+  const handleReset = () => {
+    setUploadedFiles([]);
+    setIsReadOnly(false);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
   return (
     <div>
-      <FileUpload accept='.svg'>
-        <CloudUpIcon aria-hidden='true' />
-        <FileUpload.Label>Drop file here</FileUpload.Label>
-        <FileUpload.Description>
-          File must be in svg format
-        </FileUpload.Description>
-        <FileUpload.Button>Upload file</FileUpload.Button>
+      <FileUpload
+        ref={fileInputRef}
+        accept='.svg'
+        readOnly={isReadOnly}
+        onDragOver={(event) => {
+          event.preventDefault();
+          setIsDragging(true);
+        }}
+        onDragLeave={() => setIsDragging(false)}
+        onDrop={handleDrop}
+        onChange={handleChange}
+      >
+        {isReadOnly && (
+          <>
+            <CircleSlashIcon aria-hidden='true' />
+            <FileUpload.Label>You can not upload more files</FileUpload.Label>
+          </>
+        )}
+        {!isReadOnly && (
+          <>
+            <CloudUpIcon aria-hidden='true' />
+            <FileUpload.Label>
+              {isDragging ? 'Drop file to upload' : 'Drop file here'}
+            </FileUpload.Label>
+            <FileUpload.Description>
+              File must be in svg format
+            </FileUpload.Description>
+            <FileUpload.Button>Upload file</FileUpload.Button>
+          </>
+        )}
       </FileUpload>
-      <ul>{/* list uploaded files */}</ul>
+      {uploadedFiles.length > 0 && (
+        <>
+          <ul>
+            {uploadedFiles.map((file, index) => (
+              <li key={`${file.name}-${file.lastModified}-${index}`}>
+                {file.name}
+              </li>
+            ))}
+          </ul>
+          <Button onClick={handleReset}>Clear file</Button>
+        </>
+      )}
     </div>
   );
 };
