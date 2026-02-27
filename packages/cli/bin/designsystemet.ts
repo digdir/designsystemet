@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import path from 'node:path';
 import { Argument, createCommand, program } from '@commander-js/extra-typings';
 import pc from 'picocolors';
 import * as R from 'ramda';
@@ -6,11 +7,11 @@ import { convertToHex } from '../src/colors/index.js';
 import type { CssColor } from '../src/colors/types.js';
 import migrations from '../src/migrations/index.js';
 import { buildTokens } from '../src/tokens/build.js';
-import { writeTokens } from '../src/tokens/create/write.js';
+import { createTokenFiles } from '../src/tokens/create/files.js';
 import { cliOptions, createTokens } from '../src/tokens/create.js';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.js';
-import type { Theme } from '../src/tokens/types.js';
-import { cleanDir } from '../src/utils.js';
+import type { OutputFile, Theme } from '../src/tokens/types.js';
+import fs from '../src/utils/filesystem.js';
 import { parseBuildConfig, parseCreateConfig, readConfigFile } from './config.js';
 
 export const figletAscii = `
@@ -51,22 +52,31 @@ function makeTokenCommands() {
     .option('--experimental-tailwind', 'Generate Tailwind CSS classes for tokens', false)
     .action(async (opts) => {
       console.log(figletAscii);
-      const { verbose, clean, dry, experimentalTailwind } = opts;
-      const tokensDir = typeof opts.tokens === 'string' ? opts.tokens : DEFAULT_TOKENS_CREATE_DIR;
-      const outDir = typeof opts.outDir === 'string' ? opts.outDir : './dist/tokens';
+      const { verbose, clean, dry, experimentalTailwind, tokens } = opts;
 
-      const { configFile, configPath } = await getConfigFile(opts.config);
-      const config = await parseBuildConfig(configFile, { configPath });
+      const { configFile, configFilePath } = await getConfigFile(opts.config);
+      const config = await parseBuildConfig(configFile, { configFilePath });
 
-      if (dry) {
-        console.log(`Performing dry run, no files will be written`);
-      }
+      fs.init({ dry, configFilePath, outdir: opts.outDir });
+
+      const outDir = fs.outDir;
 
       if (clean) {
-        await cleanDir(outDir, dry);
+        await fs.cleanDir(outDir);
       }
 
-      await buildTokens({ tokensDir, outDir, verbose, dry, tailwind: experimentalTailwind, ...config });
+      const files = await buildTokens({
+        tokensDir: tokens,
+        verbose,
+        tailwind: experimentalTailwind,
+        ...config,
+      });
+
+      console.log(`\n💾 Writing build to ${pc.green(outDir)}`);
+
+      await fs.writeFiles(files, outDir, true);
+
+      console.log(`\n✅ Finished building tokens in ${pc.green(outDir)}`);
 
       return Promise.resolve();
     });
@@ -98,29 +108,45 @@ function makeTokenCommands() {
       if (opts.dry) {
         console.log(`Performing dry run, no files will be written`);
       }
+      const themeName = opts.theme;
 
-      const { configFile, configPath } = await getConfigFile(opts.config);
+      const { configFile, configFilePath } = await getConfigFile(opts.config);
       const config = await parseCreateConfig(configFile, {
-        theme: opts.theme,
+        theme: themeName,
         cmd,
-        configPath,
+        configFilePath,
       });
 
+      fs.init({
+        dry: opts.dry,
+        configFilePath,
+        outdir: opts.outDir !== DEFAULT_TOKENS_CREATE_DIR ? opts.outDir : config.outDir,
+      });
+
+      console.log('initialized file system with config:', { workingDir: fs.workingDir, outDir: fs.outDir });
+
+      const outDir = fs.outDir;
+
       if (config.clean) {
-        await cleanDir(config.outDir, opts.dry);
+        await fs.cleanDir(outDir);
       }
-      /*
-       * Create and write tokens for each theme
-       */
+
+      let files: OutputFile[] = [];
       if (config.themes) {
         for (const [name, themeWithoutName] of Object.entries(config.themes)) {
           // Casting as missing properties should be validated by `getDefaultOrExplicitOption` to default values
           const theme = { name, ...themeWithoutName } as Theme;
 
           const { tokenSets } = await createTokens(theme);
-          await writeTokens({ outDir: config.outDir, theme, dry: opts.dry, tokenSets });
+          files = files.concat(await createTokenFiles({ outDir, theme, tokenSets }));
         }
       }
+
+      await fs.writeFiles(files, outDir);
+
+      console.log(`\n✅ Finished creating tokens in ${pc.green(outDir)} for theme: ${pc.blue(themeName)}`);
+
+      return Promise.resolve();
     });
 
   return tokenCmd;
@@ -137,20 +163,28 @@ program
   .action(async (opts) => {
     console.log(figletAscii);
     const { dry } = opts;
-    const tokensDir = typeof opts.dir === 'string' ? opts.dir : DEFAULT_TOKENS_CREATE_DIR;
-    const outFile = typeof opts.out === 'string' ? opts.out : DEFAULT_CONFIG_FILE;
+    const tokensDir = path.resolve(opts.dir);
+    const configFilePath = path.resolve(opts.out);
+
+    fs.init({ dry, configFilePath, outdir: path.dirname(configFilePath) });
 
     try {
       const config = await generateConfigFromTokens({
         tokensDir,
-        outFile: dry ? undefined : outFile,
-        dry,
+        outFile: configFilePath,
       });
 
       if (dry) {
         console.log();
         console.log('Generated config (dry run):');
         console.log(JSON.stringify(config, null, 2));
+      }
+
+      if (configFilePath) {
+        const configJson = JSON.stringify(config, null, 2);
+        await fs.writeFile(configFilePath, configJson);
+        console.log();
+        console.log(`\n✅ Config file written to ${pc.blue(configFilePath)}`);
       }
     } catch (error) {
       console.error(pc.redBright('Error generating config:'));
@@ -201,9 +235,10 @@ function parseBoolean(value: string | boolean): boolean {
   return value === 'true' || value === true;
 }
 
-async function getConfigFile(config: string | undefined) {
-  const allowFileNotFound = R.isNil(config) || config === DEFAULT_CONFIG_FILE;
-  const configPath = config ?? DEFAULT_CONFIG_FILE;
-  const configFile = await readConfigFile(configPath, allowFileNotFound);
-  return { configFile, configPath };
+async function getConfigFile(userConfigFilePath: string | undefined) {
+  const allowFileNotFound = R.isNil(userConfigFilePath) || userConfigFilePath === DEFAULT_CONFIG_FILE;
+  const configFilePath = userConfigFilePath ?? DEFAULT_CONFIG_FILE;
+  const configFile = await readConfigFile(configFilePath, allowFileNotFound);
+
+  return { configFile, configFilePath };
 }

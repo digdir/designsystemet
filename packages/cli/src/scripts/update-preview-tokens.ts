@@ -1,4 +1,3 @@
-import path from 'node:path';
 import pc from 'picocolors';
 import type { TransformedToken } from 'style-dictionary/types';
 import config from './../../../../designsystemet.config.json' with { type: 'json' };
@@ -6,24 +5,10 @@ import { generate$Themes } from '../tokens/create/generators/$themes.js';
 import { createTokens } from '../tokens/create.js';
 import { buildOptions, processPlatform } from '../tokens/process/platform.js';
 import { processThemeObject } from '../tokens/process/utils/getMultidimensionalThemes.js';
-import type { OutputFile, SizeModes, Theme } from '../tokens/types.js';
-import { cleanDir, mkdir, writeFile } from '../utils.js';
+import type { SizeModes, Theme } from '../tokens/types.js';
+import fs from '../utils/filesystem.js';
 
 const OUTDIR = '../../internal/components/src/tokens/design-tokens';
-
-async function write(files: OutputFile[], outDir: string, dry?: boolean) {
-  for (const { destination, output } of files) {
-    if (destination) {
-      const filePath = path.join(outDir, destination);
-      const fileDir = path.dirname(filePath);
-
-      console.log(`Writing file: ${pc.green(filePath)}`);
-
-      await mkdir(fileDir, dry);
-      await writeFile(filePath, output, dry);
-    }
-  }
-}
 
 const toPreviewToken = (tokens: { token: TransformedToken; formatted: string }[]): PreviewToken[] =>
   tokens.map(({ token, formatted }) => {
@@ -55,7 +40,7 @@ export const formatTheme = async (themeConfig: Theme) => {
     buildTokenFormats: {},
   });
 
-  await cleanDir(OUTDIR, false);
+  await fs.cleanDir(OUTDIR);
 
   console.log(
     buildOptions?.buildTokenFormats
@@ -95,7 +80,7 @@ export const formatTheme = async (themeConfig: Theme) => {
     console.log(`\n💾 Writing preview tokens`);
 
     for (const [type, tokens] of Object.entries(tokensGroupedByType)) {
-      write(
+      fs.writeFiles(
         [
           {
             destination: `${type}.json`,
@@ -103,7 +88,6 @@ export const formatTheme = async (themeConfig: Theme) => {
           },
         ],
         OUTDIR,
-        false,
       );
     }
     console.log(`\n✅ Finished building preview tokens for ${pc.blue('Designsystemet')}`);

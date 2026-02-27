@@ -1,4 +1,3 @@
-import path from 'node:path';
 import type { Command, OptionValues } from '@commander-js/extra-typings';
 import pc from 'picocolors';
 import * as R from 'ramda';
@@ -10,25 +9,24 @@ import {
   parseConfig,
   validateConfig,
 } from '../src/config.js';
-import { readFile } from '../src/utils.js';
+import fs from '../src/utils/filesystem.js';
 import { getCliOption, getDefaultCliOption, getSuppliedCliOption, type OptionGetter } from './options.js';
 
-export async function readConfigFile(configPath: string, allowFileNotFound = true): Promise<string> {
-  const resolvedPath = path.resolve(process.cwd(), configPath);
+export async function readConfigFile(configFilePath: string, allowFileNotFound = true): Promise<string> {
   let configFile: string;
 
   try {
-    configFile = await readFile(resolvedPath, false, allowFileNotFound);
+    configFile = await fs.readFile(configFilePath, allowFileNotFound);
   } catch (err) {
     if (allowFileNotFound) {
       return '';
     }
-    console.error(pc.redBright(`Could not read config file at ${pc.blue(resolvedPath)}`));
+    console.error(pc.redBright(`Could not read config file at ${pc.blue(configFilePath)}`));
     throw err;
   }
 
   if (configFile) {
-    console.log(`Found config file: ${pc.green(resolvedPath)}`);
+    console.log(`Found config file: ${pc.green(configFilePath)}`);
   }
 
   return configFile;
@@ -36,11 +34,11 @@ export async function readConfigFile(configPath: string, allowFileNotFound = tru
 
 export async function parseCreateConfig(
   configFile: string,
-  options: { theme: string; cmd: Command<unknown[], OptionValues>; configPath: string },
+  options: { theme: string; cmd: Command<unknown[], OptionValues>; configFilePath: string },
 ): Promise<CreateConfigSchema> {
-  const { cmd, theme = 'theme', configPath } = options;
+  const { cmd, theme = 'theme', configFilePath } = options;
 
-  const configParsed: CreateConfigSchema = parseConfig<CreateConfigSchema>(configFile, configPath);
+  const configParsed: CreateConfigSchema = parseConfig<CreateConfigSchema>(configFile, configFilePath);
 
   /*
    * Check that we're not creating multiple themes with different color names.
@@ -101,14 +99,14 @@ export async function parseCreateConfig(
         },
   });
 
-  return validateConfig<CreateConfigSchema>(configFileCreateSchema, unvalidatedConfig, configPath);
+  return validateConfig<CreateConfigSchema>(configFileCreateSchema, unvalidatedConfig, configFilePath);
 }
 
 export async function parseBuildConfig(
   configFile: string,
-  { configPath }: { configPath: string },
+  { configFilePath }: { configFilePath: string },
 ): Promise<BuildConfigSchema> {
-  const configParsed: BuildConfigSchema = parseConfig<BuildConfigSchema>(configFile, configPath);
+  const configParsed: BuildConfigSchema = parseConfig<BuildConfigSchema>(configFile, configFilePath);
 
-  return validateConfig<BuildConfigSchema>(commonConfig, configParsed, configPath);
+  return validateConfig<BuildConfigSchema>(commonConfig, configParsed, configFilePath);
 }
