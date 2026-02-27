@@ -1,0 +1,245 @@
+---
+title: Oppsett
+description: Kom i gang med Designsystemet i kode
+date: 2026-02-27
+category: Kode
+color: blue
+icon: CodeIcon
+published: true
+order: 0
+search_terms: setup, oppsett, installasjon, installation, getting started, komme i gang
+---
+
+
+Følg disse stegene for å komme i gang med bruk av Designsystemet i kode første gang.
+
+## 1. Installer pakkene
+
+Designsystemet består av flere kodepakker som du kan fritt velge mellom, avhengig av dine behov og preferanser.
+
+Vi anbefaler at du starter med `@digdir/designsystemet-web` og `@digdir/designsystemet-css`, som er de mest grunnleggende pakkene for å komme i gang.
+
+
+<ds-tabs class="ds-tabs" data-wide-content>
+  <ds-tablist>
+  <ds-tab >HTML</ds-tab>
+  <ds-tab >React</ds-tab>
+  </ds-tablist>
+  <ds-tabpanel>
+```sh
+npm i @digdir/designsystemet-css @digdir/designsystemet-web 
+```
+  </ds-tabpanel>
+  <ds-tabpanel>
+```sh
+npm i @digdir/designsystemet-css @digdir/designsystemet-react
+```
+  </ds-tabpanel>
+</ds-tabs>
+
+
+## 2. Importer Javascript
+
+<ds-tabs class="ds-tabs" data-wide-content>
+  <ds-tablist>
+  <ds-tab >HTML</ds-tab>
+  <ds-tab >React</ds-tab>
+  </ds-tablist>
+  <ds-tabpanel>
+Importer `@digdir/designsystemet-web` i din hoved JavaScript fil.
+<br/>
+Dette vil registrere alle web-komponenter og observers globalt, så du trenger bare å gjøre dette en gang.
+
+```jsx
+import '@digdir/designsystemet-web';
+```
+  </ds-tabpanel>
+  <ds-tabpanel>
+Importer `@digdir/designsystemet-react` ved bruk av komponenter.
+
+```js
+import { Button } from '@digdir/designsystemet-react';
+```
+  </ds-tabpanel>
+</ds-tabs>
+
+
+## 3. Importer CSS
+
+Importer `@digdir/designsystemet-css`.
+
+Les mer om [CSS](/no/fundamentals/code/css).
+
+<ds-tabs class="ds-tabs" data-wide-content>
+  <ds-tablist>
+  <ds-tab >CSS</ds-tab>
+  <ds-tab >JavaScript</ds-tab>
+  </ds-tablist>
+  <ds-tabpanel>
+  ```css
+  @import '@digdir/designsystemet-css/index.css';
+  ```     
+  </ds-tabpanel>
+  <ds-tabpanel>
+  ```js
+  import '@digdir/designsystemet-css';
+  ```
+  </ds-tabpanel>
+</ds-tabs>
+
+
+<Alert data-color='info'>
+<h3 class="ds-heading" data-size='xs'>Merk: `background` og `color` blir satt på `<body>`</h3>
+<p>
+`background` og `color` blir automatisk definert på `body`-elementet og ellers der `data-color-scheme` blir satt, slik at vi ivaretar [universell utforming (w3.org)](https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html) og får samme font og farge på tvers.
+Dette kan lett overstyres i ditt eget tema, eller i din globale CSS fil.
+</p>
+</Alert>
+
+
+## 4. Importer temaet
+
+Designsystemet er laget for å være tematiserbart, og det er derfor viktig at du importerer ditt tema etter at du har importert `@digdir/designsystemet-css`.
+
+[Bygg ditt eget tema](/no/fundamentals/start-here/own-theme) eller bruke standardtemaet; `@digdir/designsystemet-css/theme`.
+
+
+<ds-tabs class="ds-tabs" data-wide-content>
+  <ds-tablist>
+  <ds-tab >Eget tema</ds-tab>
+  <ds-tab >Standardtema</ds-tab>
+  </ds-tablist>
+  <ds-tabpanel>
+  ```css
+  @import '@digdir/designsystemet-css/index.css';
+  @import 'design-tokens-build/<ditt-tema>.css';
+  ```     
+  </ds-tabpanel>
+  <ds-tabpanel>
+  ```js
+  import '@digdir/designsystemet-css';
+  import '@digdir/designsystemet-css/theme';
+  ```
+  </ds-tabpanel>
+</ds-tabs>
+
+
+## 5. Bruk
+
+Nå er du klar til å bruke Designsystemet i kode! 
+
+
+Alle komponenter har egen side i [komponent-dokumentasjonen](/no/components), vi anbefaler at du leser gjennom disse for å se hvordan du kan bruke komponentene.
+
+Det er også anbefalt at du leser gjennom tilgjengelighets-sida.
+
+- Bruk `data-color-scheme="light | dark | auto"` for å sette dark/light mode.
+- Bruk `data-size="sm | md | lg"` for å sette størrelse på komponentene.
+- Bruk `data-color` for å sette farge på komponentene som du har definert for ditt tema.
+
+
+<ds-tabs class="ds-tabs" data-wide-content>
+  <ds-tablist>
+  <ds-tab >HTML</ds-tab>
+  <ds-tab >React</ds-tab>
+  </ds-tablist>
+  <ds-tabpanel>
+```html
+<button class="ds-button" data-variant="secondary">Jeg er en knapp!</button>
+<ds-field class="ds-field">
+    <label>Alternativ 1</label>
+    <input class="ds-input">
+</ds-field>
+```  
+  </ds-tabpanel>
+  <ds-tabpanel>
+  ```js
+<Button data-variant="secondary">Jeg er en knapp!</Button>;
+<Field>
+  <Label>Alternativ 1</Label>
+  <Input />
+</Field>
+  ```
+  </ds-tabpanel>
+</ds-tabs>
+
+## Typescript
+
+Designsystemet tilbyr typesikkerhet for flere data-attributter.
+
+Installer type pakken og legg til typefilene i `tsconfig.json` for å få tilgang til disse.
+
+```sh
+npm i -D @digdir/designsystemet-types
+```
+
+<ds-tabs class="ds-tabs" data-wide-content>
+  <ds-tablist>
+  <ds-tab >HTML</ds-tab>
+  <ds-tab >React</ds-tab>
+  </ds-tablist>
+  <ds-tabpanel>
+```json
+{
+  "compilerOptions": {
+    "types": [
+      "@digdir/designsystemet-web",
+      "@digdir/designsystemet-types",
+      "@digdir/designsystemet-css/theme" /* eller din tema typefil, design-tokens-build/types.d.ts */
+      ]
+  },
+}
+```
+  </ds-tabpanel>
+  <ds-tabpanel>
+```json
+{
+  "compilerOptions": {
+    "types": [
+      "@digdir/designsystemet-react/react-types", /** importerer @digdir/designsystemet-types for deg */
+      "@digdir/designsystemet-css/theme" /* eller din tema typefil, design-tokens-build/types.d.ts */
+      ]
+  },
+}
+```
+  </ds-tabpanel>
+</ds-tabs>
+
+
+
+## Font
+
+Komponentene er designet og utviklet med [Inter fonten (github.com)](https://github.com/rsms/inter), så variasjoner kan forekomme dersom du bruker en annen font.
+Dersom du velger å installere fonten på en annen måte enn altinncdn.no, husk å inkludere fontvektene `400`, `500` og `600`.
+
+### Legg til Inter fonten (valgfritt)
+
+Legg til `<link>` taggen under i `<head>`, og sett `font-family` til `Inter` i din globale css fil.
+
+Du kan bruke denne koden for å legge til fonten i `<head>`:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://altinncdn.no/fonts/inter/v4.1/inter.css"
+  integrity="sha384-OcHzc/By/OPw9uJREawUCjP2inbOGKtKb4A/I2iXxmknUfog2H8Adx71tWVZRscD"
+  crossorigin="anonymous"
+/>
+```
+### Konfigurasjon av fonten
+
+Vi anbefaler sterkt at du legger til følgende i din globale CSS fil.
+`font-feature-settings` legger til en hale på små `L`'er.
+
+```css
+body {
+  font-family: var(--ds-font-family), sans-serif;
+  font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */
+}
+```
+
+
+## Polyfill
+
+Designsystemet bruker [popover (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover) i enkelte komponenter. Dette apiet er klassifisert som [Baseline: Newly available (mozilla.org)](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) fra april 2024, da Firefox som siste nettleser la det til. I noen tilfeller kan en oppleve at brukere av ulike grunner er låst til eldre nettleserversjoner, og da kan det være aktuelt å legge til en polyfill for å sikre at `popover` fungerer for alle.
+* [Popover-Polyfill (github.com)](https://github.com/oddbird/popover-polyfill)
