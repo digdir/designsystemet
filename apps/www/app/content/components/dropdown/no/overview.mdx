@@ -28,3 +28,12 @@ Du kan bruke ikoner sammen med tekst i dropdown-elementene:
 - Hold antall elementer på et overkommelig nivå
 - Bruk overskrifter for å gruppere relaterte elementer
 - Unngå flere nivåer av dropdowns (nøstede menyer)
+
+## Anmerkninger
+
+### Piltast-navigasjon
+
+Piltast-navigasjon i `Dropdown` er noe vi ikke anbefaler; helt vanlig Tab-navigasjon er innenfor.
+
+Årsaken er; dersom du implementerer piltast-navigasjon, bør du også bruke `role="menu"` på `Dropdown` og `role="menuitem"` på valgene. Dette påvirker skjermleserbrukere ved at navigasjonsmodus endres (for eksempel «browse/scanning mode» i NVDA, «forms mode» i JAWS og «quick nav» i VoiceOver).
+Selv om spesifikasjonen og intensjonen bak dette mønsteret er god, kan det oppleves uvant og i noen tilfeller forstyrrende for sluttbrukere.

@@ -28,3 +28,11 @@ You can use icons together with text in the dropdown items:
 - Keep the number of items manageable  
 - Use headings to group related items  
 - Avoid multiple levels of dropdowns (nested menus)
+
+## Notes
+
+### Arrow key navigation
+Arrow key navigation in `Dropdown` is something we do not recommend; regular Tab navigation is sufficient.
+
+The reason is; if you implement arrow key navigation, you should also use `role="menu"` on the `Dropdown` and `role="menuitem"` on the options. This affects screen reader users as the navigation mode changes (for example "browse/scanning mode" in NVDA, "forms mode" in JAWS, and "quick nav" in VoiceOver).
+While the specification and intention behind this pattern is good, it can feel unfamiliar and in some cases disruptive for end users.
