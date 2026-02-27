@@ -2,10 +2,12 @@ import {
   attr,
   attrOrCSS,
   debounce,
+  isBrowser,
   on,
   onHotReload,
   onMutation,
   QUICK_EVENT,
+  SR_ONLY_STYLES,
   setTextWithoutMutation,
   tag,
   warn,
@@ -26,6 +28,30 @@ const SELECTOR_SCHEME = `[${ATTR_SCHEME}]`;
 const SELECTOR_INTERACTIVE = 'a,button,input,label,select,textarea,[tabindex]';
 const DELAY_HOVER = 300;
 const DELAY_SKIP = 300;
+const SR_LIVE_SELECTOR = '[data-ds-live="tooltip"]';
+const SR_LIVE = isBrowser()
+  ? document.querySelector<HTMLElement>(SR_LIVE_SELECTOR) ||
+    tag('div', {
+      'aria-live': 'polite',
+      'aria-atomic': 'true',
+      'data-ds-live': 'tooltip',
+      style: SR_ONLY_STYLES,
+    })
+  : null;
+
+const mountTooltipLiveRegion = () => {
+  if (SR_LIVE && !SR_LIVE.isConnected) document.body.appendChild(SR_LIVE);
+};
+
+const announceTooltipUpdate = (source: Element, text: string | null) => {
+  if (!SR_LIVE || !text || document.activeElement !== source) return;
+  mountTooltipLiveRegion();
+  setTextWithoutMutation(SR_LIVE, '');
+  requestAnimationFrame(() => {
+    if (SR_LIVE.isConnected && document.activeElement === source)
+      setTextWithoutMutation(SR_LIVE, text);
+  });
+};
 
 /**
  * setTooltipElement
@@ -41,7 +67,7 @@ export const setTooltipElement = (el?: HTMLElement | null) => {
 const handleAriaAttributes = debounce(() => {
   for (const el of document.querySelectorAll(SELECTOR_TOOLTIP)) {
     const aria = el.getAttribute(ARIA_LABEL) || el.getAttribute(ARIA_DESC); // Using getAttribute for best performance
-    const text = el.getAttribute(ATTR_TOOLTIP) || attrOrCSS(el, ATTR_TOOLTIP); // Only parse CSS if attribute is empty for better performance
+    const text = el.getAttribute(ATTR_TOOLTIP) || attrOrCSS(el, ATTR_TOOLTIP);
 
     if (aria !== text) {
       const hasText = attr(el, 'role') !== 'img' && el.textContent?.trim(); // If role="img", ignore text
@@ -51,8 +77,14 @@ const handleAriaAttributes = debounce(() => {
       if (!el.matches(SELECTOR_INTERACTIVE))
         warn('Missing tabindex="0" attribute on: ', el);
     }
+
+    // If changing an existing tooltip programmatically
+    if (el === SOURCE && TIP?.matches(':popover-open')) {
+      setTextWithoutMutation(TIP, text);
+      announceTooltipUpdate(el, text);
+    }
   }
-}, 0); // Debounce to merge multiple mutations
+}, 0);
 
 const handleInterest = ({ type, target }: Event) => {
   clearTimeout(HOVER_TIMER);
@@ -92,13 +124,16 @@ const handleClose = (event?: Partial<ToggleEvent & KeyboardEvent>) => {
     SKIP_TIMER = setTimeout(handleClose, DELAY_SKIP);
 };
 
-onHotReload('tooltip', () => [
-  on(document, 'blur focus mouseover', handleInterest, QUICK_EVENT),
-  on(document, 'toggle keydown', handleClose, QUICK_EVENT),
-  onMutation(document, handleAriaAttributes, {
-    attributeFilter: [ATTR_TOOLTIP],
-    attributes: true,
-    childList: true,
-    subtree: true,
-  }),
-]);
+onHotReload('tooltip', () => {
+  mountTooltipLiveRegion();
+  return [
+    on(document, 'blur focus mouseover', handleInterest, QUICK_EVENT),
+    on(document, 'toggle keydown', handleClose, QUICK_EVENT),
+    onMutation(document, handleAriaAttributes, {
+      attributeFilter: [ATTR_TOOLTIP],
+      attributes: true,
+      childList: true,
+      subtree: true,
+    }),
+  ];
+});

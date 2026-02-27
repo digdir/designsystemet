@@ -209,3 +209,6 @@ export function useId(el?: Element | null) {
   if (el && !el.id) el.id = `${hash}${++id}`;
   return el?.id || '';
 }
+
+export const SR_ONLY_STYLES =
+  'position:fixed;white-space:nowrap;clip:rect(0 0 0 0)';
