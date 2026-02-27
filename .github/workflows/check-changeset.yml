@@ -6,7 +6,6 @@ on:
       - "packages/cli/**"
       - "packages/css/**"
       - "packages/react/**"
-      - "packages/theme/**"
       - "packages/web/**"
       - "!packages/**/README.md"
       - "!packages/**/*.stories.tsx"
