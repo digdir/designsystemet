@@ -1,0 +1,51 @@
+/*double class to increase specificity above .ds-field :is() (0.2.0 + order)*/
+.ds-file-upload.ds-file-upload {
+  /*todo: component variables*/
+  border: 2px dashed var(--ds-color-border-default);
+  width: auto;
+  border-radius: var(--ds-border-radius-md);
+  padding-block: var(--ds-size-8);
+  padding-inline: var(--ds-size-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--ds-color-surface-default);
+  user-select: none;
+  @composes ds-print-preserve from './base.css';
+
+  &:focus-within {
+    @composes ds-focus--visible from './base.css';
+  }
+
+  &:hover,
+  &:has([readonly]) {
+    border-style: solid;
+    background-color: var(--ds-color-surface-tinted);
+    cursor: pointer;
+    .ds-button {
+      /*link hover to button*/
+      --dsc-button-background: var(--dsc-button-background--hover);
+      --dsc-button-color: var(--dsc-button-color--hover);
+    }
+  }
+  &:has([readonly]) {
+    cursor: not-allowed;
+  }
+
+  > * + * {
+    margin-top: var(--ds-size-4);
+  }
+  svg {
+    color: var(--ds-color-text-subtle);
+    height: var(--ds-size-8);
+    width: auto;
+  }
+  .ds-file-upload__label {
+    margin-top: var(--ds-size-2);
+    color: var(--ds-color-text-default);
+  }
+  .ds-file-upload__description {
+    color: var(--ds-color-neutral-text-subtle);
+    margin-top: 0;
+  }
+}
