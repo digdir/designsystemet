@@ -1,5 +1,14 @@
 # Change Log
 
+## 1.12.2
+
+### Patch Changes
+
+- **badge**: ensure badge is positioned above focus-ring when using `.ds-badge--position` ([#4511](https://github.com/digdir/designsystemet/pull/4511))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.12.2
+
 ## 1.12.1
 
 ### Patch Changes
