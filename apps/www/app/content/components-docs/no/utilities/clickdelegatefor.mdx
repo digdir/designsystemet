@@ -22,7 +22,7 @@ Legg til `data-clickdelegatefor` på et element, og sett verdien til id-en på e
 ```
 
 ### Når bør jeg bruke `data-clickdelegatefor`?
-Bruk `data-clickdelegatefor` når du har et element som ikke kan fokuseres, men du ønsker at det skal kunne klikkes på og utføre en handling. Dette er spesielt nyttig for elementer som `<div>`, `<span>`, eller andre ikke-interaktive elementer som du vil gjøre interaktive uten å endre deres semantiske betydning.
+Bruk `data-clickdelegatefor` når du har et interaktivt element som `a`, `button` eller `input[type="checked"]`, men du ønsker å utvide klikkflaten til for å utføre en handling. Dette er spesielt nyttig for for tabellrader (`<tr>`) og cards(`<div>`).
 
 I eksempelet ovenfor gjør vi et kort (`<div>`) klikkbart ved å delegere klikket til en lenke (`<a>`). Dette betyr at skjermleserbrukere får standard fokus på lenka, men hele kortet vil være klikkbart, noe som forbedrer brukeropplevelsen uten å gå på bekostning av tilgjengeligheten.
 
