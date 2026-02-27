@@ -179,7 +179,7 @@ export const WorkingExample: StoryFn<typeof FileUpload> = () => {
   };
 
   return (
-    <div>
+    <div style={{ minWidth: 'max(50vw, 300px)' }}>
       <FileUpload
         ref={fileInputRef}
         accept='.svg'
