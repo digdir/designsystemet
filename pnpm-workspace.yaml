@@ -30,3 +30,5 @@ injectWorkspacePackages: true
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
   - "@u-elements/*"
+  # Renovate security update: rollup@4.59.0
+  - rollup@4.59.0
