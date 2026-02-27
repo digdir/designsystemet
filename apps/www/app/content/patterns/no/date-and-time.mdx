@@ -1,0 +1,102 @@
+---
+title: Spør brukerne om dato og klokkeslett
+sidebar_title: Dato og klokkeslett
+category: Spør brukerne om...
+description: Å spørre brukerne om dato og klokkeslett blir ofte løst mer komplisert enn nødvendig. I mange situasjoner er vanlige input-felt både raskere å bruke og lettere å forstå enn egenbygde datovelgere. 
+partners: Digdir, Brønnøysundregistrene
+date: 2026-02-18
+order: 10
+---
+
+Hvordan du ber brukerne om dato og klokkeslett, bør ta utgangspunkt i hvilken informasjon du faktisk trenger. Noen datoer er enkle å huske, som fødselsdato, mens andre må leses fra dokumenter eller kort. I noen situasjoner holder det med en omtrentlig dato, eller et tidspunkt i forhold til i dag. Andre ganger skal brukerne velge en dato eller et tidspunkt fra et forhåndsdefinert utvalg.
+
+Unngå å gjøre oppgaven mer komplisert enn nødvendig. Egenbygde datovelgere gir ofte lavere tilgjengelighet og mer friksjon enn enkle tekstfelt. De kan være vanskelige å bruke med tastatur, gi dårlig støtte for skjermleser og kreve unødvendig navigering når brukerne allerede kjenner datoen.
+
+## Kjente datoer
+
+Når du spør om kjente datoer, som fødselsdato eller bryllupsdato, fungerer enkle tekstfelt godt. Brukerne vet allerede svaret og ønsker ofte å skrive det direkte, uten å måtte navigere i en kalender.
+
+Del gjerne datoen opp i separate felt for dag, måned og år. Det gjør det enklere å skrive inn datoen korrekt og gir bedre støtte for hjelpemidler. Når du ber brukerne om en dato slik den står i et bankkort, pass eller annet dokument, bør feltene samsvare med formatet i dokumentet. Det gjør det enklere å overføre datoen korrekt og reduserer risikoen for feil.
+
+<Story story="KnownDates" />
+
+I eksempelet over bruker vi `inputmode="numeric"` for å gi brukeren numerisk tastatur på mobil og nettbrett. Vi velger bevisst å ikke bruke `type="number"` for dag, måned og år. `type="number"` er utviklet for numeriske verdier som kan økes og reduseres, og gir funksjonalitet som spinnknapper og automatisk validering som ikke alltid er hensiktsmessig for datoer. Det kan også skape [tilgjengelighetsutfordringer (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/number#accessibility), blant annet for skjermlesere og ved utilsiktet endring av verdi. 
+
+## Dato fra et forhåndsdefinert utvalg
+
+Hvis du vet at brukerne skal velge en dato eller et tidspunkt fra et begrenset utvalg, for eksempel ledige timer den kommende uken, kan det være mer effektivt å tilby disse som ferdige valg.
+
+Når utvalget er svært begrenset, for eksempel noen få datoer eller tidspunkter, kan [`Radio`](/no/components/docs/radio/overview) være et godt valg. Det gjør det raskt og enkelt å velge et alternativ uten å måtte skrive noe selv.
+
+<Story story="PredefinedOptions1" />
+
+### La brukerne begrense utvalget
+Når antall valg øker, kan en [`Select`](/no/components/docs/select/overview) være nyttig for å begrense utvalget. Da kan brukerne velge blant foretrukne uker, dager eller klokkeslett, og deretter se de tilgjengelige alternativene for det valget. NB: Eksempelet under er ikke fungerende, da det ikke er koblet til et faktisk utvalg av datoer eller klokkeslett, men illustrerer hvordan du kan la brukerne begrense utvalget før de ser de tilgjengelige alternativene.
+
+<Story story="PredefinedOptions2" />
+
+Du bør kun vise valg som har ledige timer, og unngå å for eksempel deaktivere uker som ikke har ledige timer, da det kan skape forvirring. Forklar i forkant at det kun er uker med ledige tidspunkt som vises, slik at brukerne forstår hvorfor noen uker ikke er tilgjengelige å velge.
+
+## Konkret dato i nær fremtid eller fortid
+
+I noen tilfeller når brukerne skal velge en konkret dato tett opp mot dagens dato kan det være nyttig med visuell støtte. En [`Input`](/no/components/docs/input/overview) med `type="date"` lar brukerne enten skrive datoen direkte eller bruke nettleserens innebygde datovelger. Dette gir ofte en god balanse mellom fleksibilitet og støtte. Støtten varierer mellom nettlesere og enheter, både når det gjelder funksjonalitet, utseende og interaksjon, men løsningen er ofte mer tilgjengelig og robust enn egenbygde alternativer.
+
+<Story story="NearFuturePast" />
+
+Vær oppmerksom på at `type="date"` styres av brukerens operativsystem og regionale innstillinger, ikke av språket på nettsiden. Det kan føre til at datoen vises i et annet format enn brukeren forventer. Vurder om det er behov for ekstra tydelighet, for eksempel ved å vise valgt dato i klartekst med måned skrevet med bokstaver, eller på annen måte bekrefte datoen før den lagres.
+
+## Start- og sluttdato
+
+Når brukerne skal oppgi en periode, bør startdato og sluttdato vises tydelig sammen. Bruk to separate felt, og gjør det klart hvilken dato som er hvilken.
+
+Plasser feltene i logisk rekkefølge, og valider at sluttdato ikke er før startdato. Hvis datoene avhenger av hverandre, bør feilmeldinger forklare hva som er galt og hvordan brukerne kan rette det.
+
+<Story story="StartEndDate" />
+
+## Klokkeslett – start og slutt
+
+Når brukerne skal oppgi et tidsintervall, som åpningstid eller varighet på et møte, kan en [`Input`](/no/components/docs/input/overview) med `type="time"` brukes. Det lar brukerne skrive klokkeslettet direkte, samtidig som nettleseren tilbyr støtte.
+
+Bruk separate felt for start- og sluttid, og vis dem tydelig sammen.
+
+<Story story="StartEndTime" />
+
+## Omtrentlig tidspunkt
+Hvis brukerne bare trenger å oppgi måned og år, bør det være mulig å gjøre nettopp det. Dette er særlig relevant når hendelsen ligger langt tilbake i tid, og brukerne ikke nødvendigvis vet nøyaktig tidspunkt. 
+
+For eksempel kan du la brukerne oppgi omtrentlig tid i et fritekstfelt, eller tilby egne felt for kun måned og år slik som i eksempelet under.
+
+<Story story="ApproximateDate" />
+
+## Dato relativt til en annen dato
+
+I noen situasjoner er det mer naturlig å spørre om tidspunkter relativt til en annen dato, for eksempel når brukerne setter opp en påminnelse. Da kan det være bedre å bruke en [`Select`](/no/components/docs/select/overview) for å gi brukerne valg om «i morgen», «om 3 dager» eller «1 dag før». Hvis ukedag er viktig for oppgaven, bør denne vises tydelig i tillegg.
+
+<Story story="RelativeDate" />
+
+## Oppsummering
+
+Start med behovet, og velg den løsningen som lar brukerne løse oppgaven raskest mulig. Ofte er vanlige tekstfelt mer tilgjengelige og raskere å bruke enn avanserte datovelgere. 
+
+- Vis ferdige valg når alternativene er begrensede
+- La brukerne skrive når svaret er kjent
+- Spør bare om så presis dato og tid som situasjonen krever
+- Bruk innebygd nettleserstøtte fremfor egenbygde løsninger
+
+## Kilder og relevant informasjon
+- [Who needs a JavaScript date picker? (dbushell.com)](https://pikaday.dbushell.com/)
+- [Maybe You Don’t Need a Date Picker (adrianroselli.com)](https://adrianroselli.com/2019/07/maybe-you-dont-need-a-date-picker.html)
+- [Ask users for dates (gov.uk)](https://design-system.service.gov.uk/patterns/dates/)
+
+<Contributors
+  authors={[
+    'Marianne Røsvik (Digdir)',
+    'Ole Martin Tangen Vad (Brønnøysundregistrene)',
+    'Roy Halvor Frimanslund (Brønnøysundregistrene)',
+    'Lasse Febakke Straum (Digdir)',
+    'Frank Dahle (Digdir)',
+    'Tobias Barsnes (Digdir)',
+    'Oddbjørn Øvernes (Digdir)',
+    'Michael Marszalek (Digdir)',
+  ]}
+/>
