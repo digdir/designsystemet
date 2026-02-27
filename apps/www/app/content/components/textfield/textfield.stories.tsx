@@ -122,7 +122,7 @@ export const InputType = () => {
           <Select.Option value='week'>week</Select.Option>
         </Select>
       </Field>
-      <ArrowRightIcon aria-hidden fontSize={48} />
+      <ArrowRightIcon aria-hidden width='48px' height='48px' />
       <Textfield label={`type="${type}"`} type={type} />
     </div>
   );

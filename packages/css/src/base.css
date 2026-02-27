@@ -194,3 +194,10 @@ body {
 [data-size] {
   font-size: var(--ds-body-md-font-size);
 }
+
+/* Capture a length value, e.g. 1em, at the element where the variable is set */
+@property --ds-captured-length {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}

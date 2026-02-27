@@ -40,11 +40,11 @@ export const Landing = () => {
           </div>
           <div className={classes.headerRight}>
             <Button variant='tertiary'>
-              <MagnifyingGlassIcon aria-hidden fontSize='1.6rem' />
+              <MagnifyingGlassIcon aria-hidden />
               {t('overview.search')}
             </Button>
             <Button variant='tertiary'>
-              <MenuHamburgerIcon aria-hidden fontSize='1.6rem' />
+              <MenuHamburgerIcon aria-hidden />
               {t('overview.menu')}
             </Button>
           </div>

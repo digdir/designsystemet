@@ -7,6 +7,8 @@
   --dsc-tag-border-color: transparent;
   --dsc-tag-border-style: solid;
 
+  --ds-captured-length: 1em;
+
   align-items: center;
   background: var(--dsc-tag-background);
   border-radius: var(--ds-border-radius-sm);
@@ -26,7 +28,8 @@
 
   & :where(img, svg) {
     flex-shrink: 0;
-    font-size: 1.25em;
+    /* using --ds-captured-length fixes svg not scaling with zoom in Safari */
+    font-size: calc(var(--ds-captured-length) * 1.25);
   }
 
   &:not([hidden]) {

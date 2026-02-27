@@ -27,7 +27,7 @@ export const ColorInput = ({ name, color, onClick }: ColorInputProps) => {
           ></span>
           <span className={classes.hex}>{color}</span>
         </span>
-        <PencilIcon aria-hidden fontSize='1.5rem' />
+        <PencilIcon aria-hidden />
       </Button>
     </div>
   );
