@@ -1,25 +1,31 @@
 ## Implementasjonstester
 
-### 1. Hver knapp skal ha tydelig programmatisk navn (WCAG 1.1.1, 4.1.2)
+**1. Hver knapp i `ToggleGroup` skal ha tydelig programmatisk navn**
 
-- Hver knapp i en ToggleGroup skal ha et selvforklarende programmatisk navn.
+- Hver knapp i en `ToggleGroup` skal ha et selvforklarende programmatisk navn.
 - Hvis en knapp kun viser ikon, skal den ha et programmatisk navn som beskriver handlingen.
 
-### 2. ToggleGroup skal ha tydelig programmatisk navn (WCAG 4.1.2, 2.4.6)
+WCAG: [1.1.1](https://www.uutilsynet.no/wcag-standarden/111-ikke-tekstlig-innhold-niva/87), [4.1.2](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121)
 
-- ToggleGroup skal ha et programmatisk navn som beskriver hva valgene gjelder.
+**2. `ToggleGroup` skal ha tydelig programmatisk navn**
+
+- `ToggleGroup` skal ha et programmatisk navn som beskriver hva valgene gjelder.
 - Navnet kan være en synlig ledetekst eller programmessig koblet tekst.
 
-### 3. ToggleGroup skal fungere på små skjermer (WCAG 1.4.10)
+WCAG: [4.1.2](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121, [2.4.6](https://www.uutilsynet.no/wcag-standarden/246-overskrifter-og-ledetekster-niva-aa/108)
 
-- ToggleGroup skal kunne brukes på smale visninger uten at innhold forsvinner eller blir utilgjengelig.
+**3. `ToggleGroup` skal fungere på små skjermer**
+
+- `ToggleGroup` skal kunne brukes på smale visninger uten at innhold forsvinner eller blir utilgjengelig.
 - Hele komponenten skal være synlig uten horisontal scrolling.
+
+WCAG: [1.4.10](https://www.uutilsynet.no/veiledning/1410-dynamisk-tilpasning-reflow/1240)
 
 ---
 
-## God praksis
+### God praksis
 
-- Hvis ToggleGroup bruker kun ikoner, bør det i tillegg vises tooltip for å forklare handlingen visuelt.
+- Hvis `ToggleGroup` bruker kun ikoner, bør det i tillegg vises tooltip for å forklare handlingen visuelt.
 - Tooltip erstatter ikke krav om programmatisk navn.
 
 `ToggleGroup` har standard fokusindikator (ramme).  

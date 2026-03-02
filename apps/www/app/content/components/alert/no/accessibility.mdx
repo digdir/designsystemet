@@ -1,21 +1,26 @@
 ## Implementasjonstester
 
-1. Alert som vises dynamisk skal leses opp (WCAG 4.1.3)
+**1. Dynamisk vist `Alert` skal leses opp**
 
-    - En alert som vises eller oppdateres etter at siden er lastet, skal annonseres automatisk av skjermleser.
-    - Kritiske meldinger som krever umiddelbar oppmerksomhet, skal bruke `role="alert"` (assertive).
-    - Ikke-kritiske meldinger skal bruke `role="status"` (polite).
+En `Alert` som vises eller oppdateres etter at siden er lastet, skal annonseres automatisk av skjermlesere.
+- Kritiske meldinger som krever umiddelbar oppmerksomhet skal bruke `role="alert"` (assertive).
+- Ikke-kritiske meldinger skal bruke `role="status"` (polite).
 
-2. Alerten skal ligge riktig i strukturen (WCAG 1.3.1)
+WCAG: [4.1.3](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)
 
-    - Alerten skal være plassert logisk i DOM i forhold til innholdet den gjelder.
-    - Leserekkefølgen skal gi mening.
-    - Hvis alerten inneholder en overskrift, skal den bruke riktig overskriftsnivå i sidestrukturen.
+**2. `Alert` skal være plassert slik at leserekkefølgen gir mening**
 
-3. Teksten skal være tydelig og konkret (WCAG 2.4.6)
+- `Alert` skal være plassert i DOM på en måte som følger den logiske leserekkefølgen på siden.
+- Hvis `Alert` inneholder en overskrift, skal den bruke riktig overskriftsnivå i sidestrukturen.
 
-    - Alertens tekst skal tydelig beskrive hva meldingen gjelder og hva konsekvensen er.
-    - Generiske formuleringer som «Feil» eller «Advarsel» alene er ikke tilstrekkelig.
+WCAG: [1.3.1](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
+
+**3. Teksten skal være tydelig og konkret**
+
+- `Alert` tekst skal tydelig beskrive hva meldingen gjelder og hva konsekvensen er.
+- Generiske formuleringer som «Feil» eller «Advarsel» alene er ikke tilstrekkelig.
+
+WCAG: [2.4.6](https://www.uutilsynet.no/wcag-standarden/246-overskrifter-og-ledetekster-niva-aa/108)
 
 ## Alert i live region
 

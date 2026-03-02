@@ -1,27 +1,36 @@
 ## Implementasjonstester
 
-### 1. Informativ badge skal inngå i programmatiskt navn (WCAG 1.3.1, 4.1.2, 2.4.4)
+**1. Informativ `Badge` skal inngå i programmatiskt navn**
 
-- En badge som formidler viktig informasjon (for eksempel antall uleste meldinger) skal inngå i det programmatiske navnet til det interaktive elementet den tilhører.
+- En `Badge` som formidler viktig informasjon (for eksempel antall uleste meldinger) skal inngå i det programmatiske navnet til det interaktive elementet den tilhører.
 
-### 2. Informasjon i badge skal være programmessig koblet til kontrollen (WCAG 1.3.1, 4.1.2)
+WCAG: [1.3.1](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90), [4.1.2](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121), [2.4.4](https://www.uutilsynet.no/wcag-standarden/244-formal-med-lenke-i-kontekst-niva/106)
 
-- Hvis badgen plasseres utenfor det interaktive elementet, skal informasjonen være programmessig koblet til kontrollen.
-- Løsninger der badge ikke inngår i kontrollens programmatiske navn bør unngås.
+**2. Informasjon i `Badge` skal være programmessig koblet til kontrollen**
 
-### 3. Dekorativ badge skal skjules for skjermleser (WCAG 1.1.1)
+- Hvis `Badge` er plassert utenfor det interaktive elementet, skal informasjonen være programmessig koblet til kontrollen.
+- Løsninger der `Badge` ikke inngår i kontrollens programmatiske navn bør unngås.
 
-- En badge som kun er visuell dekorasjon skal skjules for skjermleser.
+WCAG: [1.3.1](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90), [4.1.2](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121)
 
-### 4. Dynamisk oppdatert badge skal annonseres (WCAG 4.1.3)
+**3. Dekorativ `Badge` skal skjules for skjermleser**
 
-- Hvis en badge oppdateres dynamisk (for eksempel fra 1 til 2), skal endringen annonseres til skjermleser på en hensiktsmessig måte.
+- En `Badge` som kun er visuell dekorasjon skal skjules for skjermleser (`aria-hidden="true"`).
 
-### 5. Badge skal ikke formidle informasjon kun med farge (WCAG 1.4.1)
+WCAG: [1.1.1](https://www.uutilsynet.no/wcag-standarden/111-ikke-tekstlig-innhold-niva/87)
 
-- Informasjon i en badge skal være forståelig uten at brukeren må tolke kun farge eller plassering.
+**4. Dynamisk oppdatert `Badge` skal annonseres**
+
+- Hvis en `Badge` oppdateres dynamisk (for eksempel fra 1 til 2), skal endringen annonseres til skjermleser på en hensiktsmessig måte.
+
+WCAG: [4.1.3](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)
+
+**5. `Badge` skal ikke formidle informasjon kun med farge**
+
+- Informasjon i en `Badge` skal være forståelig uten at brukeren må tolke kun farge eller plassering.
 - En visuell indikator (for eksempel en rød prikk) alene er ikke tilstrekkelig.
 
+WCAG: [1.4.1](https://www.uutilsynet.no/wcag-standarden/141-bruk-av-farge-niva/93)
 
 ## Relevante kjelder
 - [1] [1.1.1 Ikkje-tekstleg innhald](https://www.uutilsynet.no/wcag-standarden/111-ikke-tekstlig-innhold-niva/87)

@@ -1,25 +1,31 @@
 ## Implementation tests
 
-### 1. Each segment must have a clear programmatic name (WCAG 1.1.1, 4.1.2)
+**1. Each segment in `ToggleGroup` must have a clear programmatic name**
 
-- Each button in a ToggleGroup must have a self-explanatory programmatic name.
+- Each button in a `ToggleGroup` must have a self-explanatory programmatic name.
 - If a button displays only an icon, it must have a programmatic name that describes the action.
 
-### 2. ToggleGroup must have a clear programmatic name (WCAG 4.1.2, 2.4.6)
+WCAG: [1.1.1](https://www.uutilsynet.no/wcag-standarden/111-ikke-tekstlig-innhold-niva/87), [4.1.2](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121)
 
-- The ToggleGroup must have a programmatic name that describes what the options relate to.
+**2. `ToggleGroup` must have a clear programmatic name**
+
+- A `ToggleGroup` must have a programmatic name that describes what the options relate to.
 - The name may be a visible label or programmatically associated text.
 
-### 3. ToggleGroup must function on small screens (WCAG 1.4.10)
+WCAG: [4.1.2](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121), [2.4.6](https://www.uutilsynet.no/wcag-standarden/246-overskrifter-og-ledetekster-niva-aa/108)
 
-- The ToggleGroup must be usable at narrow viewports without content disappearing or becoming inaccessible.
+**3. `ToggleGroup` must function on small screens**
+
+- A `ToggleGroup` must be usable at narrow viewports without content disappearing or becoming inaccessible.
 - The entire component must be visible without horizontal scrolling.
+
+WCAG: [1.4.10](https://www.uutilsynet.no/veiledning/1410-dynamisk-tilpasning-reflow/1240)
 
 ---
 
-## Good practice
+### Good practice
 
-- If the ToggleGroup uses icons only, a tooltip should also be provided to visually clarify the action.
+- If the `ToggleGroup` uses icons only, a tooltip should also be provided to visually clarify the action.
 - A tooltip does not replace the requirement for a programmatic name.
 
 

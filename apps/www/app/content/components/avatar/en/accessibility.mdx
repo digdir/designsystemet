@@ -1,21 +1,29 @@
 ## Implementation tests
 
-### 1. Informative avatar must have a programmatic name (WCAG 1.1.1, 1.3.1)
+**1. Informative `Avatar` must have a programmatic name**
 
-- An avatar that represents an identity must have a programmatic name that corresponds to that identity.
-- If multiple avatars are displayed together, each informative avatar must have a unique programmatic name.
+- An `Avatar` that represents an identity must have a programmatic name that corresponds to that identity.
+- If multiple avatars are displayed together, each informative `Avatar` must have a unique programmatic name.
 
-### 2. Decorative avatar must be hidden from screen readers (WCAG 1.1.1)
+WCAG: [1.1.1](https://www.uutilsynet.no/veiledning/111-ikke-tekstlig-innhold/1231), [1.3.1](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
 
-- An avatar that does not convey unique information must be hidden from screen readers.
+**2. Decorative `Avatar` must be hidden from screen readers**
 
-### 3. Clickable avatar must have a clear programmatic name (WCAG 4.1.2, 2.4.4)
+- A `Avatar` that does not convey unique information must be hidden from screen readers (`aria-hidden="true"`).
 
-- A clickable avatar must have a programmatic name that clearly describes the action.
+WCAG: [1.1.1](https://www.uutilsynet.no/veiledning/111-ikke-tekstlig-innhold/1231)
 
-### 4. Clickable avatar with initials must support voice control (WCAG 2.5.3 – to be clarified)
+**3. Clickable `Avatar` must have a clear programmatic name**
 
-- If a clickable avatar visually displays initials, those initials should be included in the programmatic name.
+- A clickable `Avatar` must have a programmatic name that clearly describes the action (for example “Profile for User Name”).
+
+WCAG: [4.1.2](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121), [2.4.4](https://www.uutilsynet.no/wcag-standarden/244-formal-med-lenke-i-kontekst-niva/106)
+
+**4. Clickable `Avatar` with initials must support voice control**
+
+- If a clickable `Avatar` visually displays initials, those initials should be included in the programmatic name.
+
+WCAG: [2.5.3](https://www.uutilsynet.no/wcag-standarden/253-ledetekst-i-navn-niva/150)
 
 ## How to describe `Avatar` for screen readers
 

@@ -1,21 +1,26 @@
 ## Implementation tests
 
-### 1. Dynamically displayed alerts must be announced (WCAG 4.1.3)
+**1. Dynamically displayed `Alert` must be announced**
 
-    - An alert that appears or updates after the page has loaded must be automatically announced by screen readers.
-    - Critical messages that require immediate attention must use `role="alert"` (assertive).
-    - Non-critical messages must use `role="status"` (polite).
+- An `Alert` that appears or updates after the page has loaded must be automatically announced by screen readers.
+- Critical messages that require immediate attention must use `role="alert"` (assertive).
+- Non-critical messages must use `role="status"` (polite).
 
-### 2. The alert must be correctly placed in the structure (WCAG 1.3.1)
+WCAG: [4.1.3](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)
 
-    - The alert must be placed logically in the DOM in relation to the content it applies to.
-    - The reading order must make sense.
-    - If the alert contains a heading, it must use the correct heading level in the page structure.
+**2. `Alert` must be placed so that the reading order makes sense**
 
-### 3. The text must be clear and specific (WCAG 2.4.6)
+- `Alert` must be placed in the DOM in a way that follows the logical reading sequence of the page.
+- If the `Alert` contains a heading, it must use the correct heading level in the page structure.
 
-    - The alert text must clearly describe what the message concerns and what the consequence is.
-    - Generic wording such as “Error” or “Warning” alone is not sufficient.
+WCAG: [1.3.1](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
+
+**3. `Alert` text must be clear and specific**
+
+- The `Alert` text must clearly describe what the message concerns and what the consequence is.
+- Generic wording such as “Error” or “Warning” alone is not sufficient.
+
+WCAG: [2.4.6](https://www.uutilsynet.no/wcag-standarden/246-overskrifter-og-ledetekster-niva-aa/108)
 
 ## Alert in a live region
 
