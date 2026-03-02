@@ -1,5 +1,5 @@
 import cl from 'clsx/lite';
-import type { HTMLAttributes } from 'react';
+import type { CSSProperties, HTMLAttributes } from 'react';
 import { Children, forwardRef } from 'react';
 
 export type AvatarStackProps = {
@@ -68,7 +68,7 @@ export const EXPERIMENTAL_AvatarStack = forwardRef<
       overlap !== undefined ? `${overlap}` : undefined,
     '--dsc-avatar-count':
       expandable === 'fixed' ? Children.count(children) : undefined,
-  } as React.CSSProperties;
+  } as CSSProperties;
   return (
     <figure
       tabIndex={

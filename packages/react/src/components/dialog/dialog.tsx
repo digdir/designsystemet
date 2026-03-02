@@ -1,6 +1,6 @@
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
-import type { DialogHTMLAttributes } from 'react';
+import type { AnimationEvent, DialogHTMLAttributes } from 'react';
 import { forwardRef, useContext, useEffect, useId, useRef } from 'react';
 import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
@@ -128,7 +128,7 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(
             );
           }
         }}
-        onAnimationEnd={(event: React.AnimationEvent<HTMLDialogElement>) => {
+        onAnimationEnd={(event: AnimationEvent<HTMLDialogElement>) => {
           const { currentTarget: dialog } = event;
           const autofocus = dialog.querySelector<HTMLElement>('[autofocus]');
           if (document.activeElement !== autofocus) autofocus?.focus(); // Handle autofocus on open
