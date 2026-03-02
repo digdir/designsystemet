@@ -1,5 +1,5 @@
 import cl from 'clsx/lite';
-import type { HTMLAttributes, ReactNode } from 'react';
+import type { DetailsHTMLAttributes, ReactNode } from 'react';
 import { forwardRef, useEffect, useRef } from 'react';
 import { useMergeRefs } from '../../utilities/hooks';
 import '@digdir/designsystemet-web'; // Load details polyfill
@@ -7,7 +7,7 @@ import type { DefaultProps } from '../../types';
 import type { MergeRight } from '../../utilities';
 
 export type DetailsProps = MergeRight<
-  DefaultProps & HTMLAttributes<HTMLDetailsElement>,
+  DefaultProps & DetailsHTMLAttributes<HTMLDetailsElement>,
   {
     /**
      * Change the background color of the details.
