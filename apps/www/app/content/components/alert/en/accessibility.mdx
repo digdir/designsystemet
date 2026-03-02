@@ -1,6 +1,21 @@
-<Alert data-color="info">
-We are working to improve the accessibility documentation for this component. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
-</Alert>
+## Implementation tests
+
+### 1. Dynamically displayed alerts must be announced (WCAG 4.1.3)
+
+    - An alert that appears or updates after the page has loaded must be automatically announced by screen readers.
+    - Critical messages that require immediate attention must use `role="alert"` (assertive).
+    - Non-critical messages must use `role="status"` (polite).
+
+### 2. The alert must be correctly placed in the structure (WCAG 1.3.1)
+
+    - The alert must be placed logically in the DOM in relation to the content it applies to.
+    - The reading order must make sense.
+    - If the alert contains a heading, it must use the correct heading level in the page structure.
+
+### 3. The text must be clear and specific (WCAG 2.4.6)
+
+    - The alert text must clearly describe what the message concerns and what the consequence is.
+    - Generic wording such as “Error” or “Warning” alone is not sufficient.
 
 ## Alert in a live region
 

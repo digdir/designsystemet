@@ -1,6 +1,21 @@
-<Alert data-color="info">
-We are working to improve the accessibility documentation for this component. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
-</Alert>
+## Implementation tests
+
+### 1. Informative avatar must have a programmatic name (WCAG 1.1.1, 1.3.1)
+
+- An avatar that represents an identity must have a programmatic name that corresponds to that identity.
+- If multiple avatars are displayed together, each informative avatar must have a unique programmatic name.
+
+### 2. Decorative avatar must be hidden from screen readers (WCAG 1.1.1)
+
+- An avatar that does not convey unique information must be hidden from screen readers.
+
+### 3. Clickable avatar must have a clear programmatic name (WCAG 4.1.2, 2.4.4)
+
+- A clickable avatar must have a programmatic name that clearly describes the action.
+
+### 4. Clickable avatar with initials must support voice control (WCAG 2.5.3 – to be clarified)
+
+- If a clickable avatar visually displays initials, those initials should be included in the programmatic name.
 
 ## How to describe `Avatar` for screen readers
 
