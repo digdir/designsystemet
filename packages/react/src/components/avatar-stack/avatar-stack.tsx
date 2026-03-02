@@ -28,7 +28,7 @@ export type AvatarStackProps = {
    *  @default undefined
    */
   expandable?: 'fixed' | true;
-} & HTMLAttributes<HTMLDivElement>;
+} & HTMLAttributes<HTMLElement>;
 
 /**
  * Use `AvatarStack` to constrain Avatars into a stack.
@@ -45,7 +45,7 @@ export type AvatarStackProps = {
  * </EXPERIMENTAL_AvatarStack>
  */
 export const EXPERIMENTAL_AvatarStack = forwardRef<
-  HTMLDivElement,
+  HTMLElement,
   AvatarStackProps
 >(function AvatarStack(
   {
