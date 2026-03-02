@@ -5,6 +5,7 @@ import {
   forwardRef,
   type HTMLAttributes,
   type ReactNode,
+  type RefObject,
   useCallback,
   useEffect,
   useId,
@@ -52,7 +53,7 @@ type Filter = (args: {
 type SuggestionContextType = {
   handleFilter: (input?: HTMLInputElement | null) => void;
   isEmpty?: boolean;
-  dsSuggestionRef?: React.RefObject<DSSuggestionElement | null>;
+  dsSuggestionRef?: RefObject<DSSuggestionElement | null>;
 };
 
 type SuggestionValue<T extends { multiple: boolean }> =
