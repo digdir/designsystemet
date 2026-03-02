@@ -31,7 +31,7 @@ export const TokenModal = () => {
           return modalRef.current?.showModal();
         }}
       >
-        <StarIcon aria-hidden width='1.5rem' height='auto' />
+        <StarIcon aria-hidden height='auto' />
         {t('themeModal.use-theme')}
       </Dialog.Trigger>
       <Dialog
