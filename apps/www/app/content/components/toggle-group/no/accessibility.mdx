@@ -1,6 +1,26 @@
-<Alert data-color="info">
-Vi jobber med å forbedre dokumentasjonen for tilgjengelighet på denne komponenten. Har du spørsmål eller ser noe som bør prioriteres, ta gjerne kontakt med oss på [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) eller [Slack](https://designsystemet.no/slack).
-</Alert>
+## Implementasjonstester
+
+### 1. Hver knapp skal ha tydelig programmatisk navn (WCAG 1.1.1, 4.1.2)
+
+- Hver knapp i en ToggleGroup skal ha et selvforklarende programmatisk navn.
+- Hvis en knapp kun viser ikon, skal den ha et programmatisk navn som beskriver handlingen.
+
+### 2. ToggleGroup skal ha tydelig programmatisk navn (WCAG 4.1.2, 2.4.6)
+
+- ToggleGroup skal ha et programmatisk navn som beskriver hva valgene gjelder.
+- Navnet kan være en synlig ledetekst eller programmessig koblet tekst.
+
+### 3. ToggleGroup skal fungere på små skjermer (WCAG 1.4.10)
+
+- ToggleGroup skal kunne brukes på smale visninger uten at innhold forsvinner eller blir utilgjengelig.
+- Hele komponenten skal være synlig uten horisontal scrolling.
+
+---
+
+## God praksis
+
+- Hvis ToggleGroup bruker kun ikoner, bør det i tillegg vises tooltip for å forklare handlingen visuelt.
+- Tooltip erstatter ikke krav om programmatisk navn.
 
 `ToggleGroup` har standard fokusindikator (ramme).  
 Vi brukar `roving tabindex` for å handtere fokusbevegelse mellom knappane.

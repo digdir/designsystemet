@@ -1,6 +1,27 @@
-<Alert data-color="info">
-We are working to improve the accessibility documentation for this component. If you have questions or see something that should be prioritised, please contact us on [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) or [Slack](https://designsystemet.no/slack).
-</Alert>
+## Implementation tests
+
+### 1. Each segment must have a clear programmatic name (WCAG 1.1.1, 4.1.2)
+
+- Each button in a ToggleGroup must have a self-explanatory programmatic name.
+- If a button displays only an icon, it must have a programmatic name that describes the action.
+
+### 2. ToggleGroup must have a clear programmatic name (WCAG 4.1.2, 2.4.6)
+
+- The ToggleGroup must have a programmatic name that describes what the options relate to.
+- The name may be a visible label or programmatically associated text.
+
+### 3. ToggleGroup must function on small screens (WCAG 1.4.10)
+
+- The ToggleGroup must be usable at narrow viewports without content disappearing or becoming inaccessible.
+- The entire component must be visible without horizontal scrolling.
+
+---
+
+## Good practice
+
+- If the ToggleGroup uses icons only, a tooltip should also be provided to visually clarify the action.
+- A tooltip does not replace the requirement for a programmatic name.
+
 
 `ToggleGroup` uses the standard focus indicator (outline).  
 We use `roving tabindex` to manage focus movement between the buttons.
