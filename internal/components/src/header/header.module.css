@@ -168,7 +168,7 @@
 }
 
 .toggleButton svg {
-  height: 1.5em;
+  font-size: calc(var(--_ds-captured-length) * 1.5);
 }
 @media (max-width: 600px) {
   .toggleButton span {
