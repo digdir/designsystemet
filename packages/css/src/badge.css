@@ -51,7 +51,7 @@
   position: relative;
   height: fit-content;
   width: fit-content;
-  --ds-captured-length: 1em;
+  --_ds-captured-length: 1em;
 
   &:not([hidden]) {
     display: inline-flex;
@@ -68,8 +68,8 @@
 
   > :where(img, svg) {
     flex-shrink: 0; /* Never shrink icon */
-    /* using --ds-captured-length fixes svg not scaling with zoom in Safari */
-    font-size: calc(var(--ds-captured-length) * 1.25); /* Auto scale icon based on font-size */
+    /* using --_ds-captured-length fixes svg not scaling with zoom in Safari */
+    font-size: calc(var(--_ds-captured-length) * 1.25); /* Auto scale icon based on font-size */
   }
 
   &[data-placement='top-right'] .ds-badge::before {

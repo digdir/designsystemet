@@ -10,7 +10,7 @@
   --dsc-button-gap: var(--ds-size-2);
   --dsc-button-padding: var(--ds-size-2) var(--ds-size-4);
   --dsc-button-size: var(--ds-size-12);
-  --ds-captured-length: 1em;
+  --_ds-captured-length: 1em;
 
   align-items: center;
   background: var(--dsc-button-background);
@@ -55,8 +55,8 @@
 
   & :where(img, svg):not(.ds-spinner) {
     flex-shrink: 0;
-    /* using --ds-captured-length fixes svg not scaling with zoom in Safari */
-    font-size: calc(var(--ds-captured-length) * 1.3);
+    /* using --_ds-captured-length fixes svg not scaling with zoom in Safari */
+    font-size: calc(var(--_ds-captured-length) * 1.3);
   }
 
   &:focus-visible {
@@ -73,8 +73,8 @@
     padding: 0;
 
     & :where(img, svg):not(.ds-spinner) {
-      /* using --ds-captured-length fixes svg not scaling with zoom in Safari */
-      font-size: calc(var(--ds-captured-length) * 1.5);
+      /* using --_ds-captured-length fixes svg not scaling with zoom in Safari */
+      font-size: calc(var(--_ds-captured-length) * 1.5);
     }
   }
 
