@@ -1,5 +1,6 @@
 import { FilesIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
+import { useState } from 'react';
 import { expect, within } from 'storybook/test';
 import { Button } from '../../';
 import { Tooltip } from './tooltip';
@@ -72,6 +73,26 @@ export const Aria: StoryFn<typeof Tooltip> = () => {
       </Tooltip>
       <Tooltip content='Eg er aria-label'>
         <Button icon>
+          <FilesIcon aria-hidden />
+        </Button>
+      </Tooltip>
+    </>
+  );
+};
+
+
+
+export const WithDynamicTooltipText: StoryFn<typeof Tooltip> = () => {
+  const [content, setContent] = useState('Kopier');
+
+  return (
+    <>
+      <Tooltip content={content}>
+        <Button
+          icon
+          onClick={() => setContent('Kopiert')}
+          onBlur={() => setContent('Kopier')}
+        >
           <FilesIcon aria-hidden />
         </Button>
       </Tooltip>
