@@ -1,4 +1,5 @@
 import {
+  announce,
   attr,
   attrOrCSS,
   debounce,
