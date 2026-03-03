@@ -80,23 +80,19 @@ export const Aria: StoryFn<typeof Tooltip> = () => {
   );
 };
 
-
-
 export const WithDynamicTooltipText: StoryFn<typeof Tooltip> = () => {
   const [content, setContent] = useState('Kopier');
 
   return (
-    <>
-      <Tooltip content={content}>
-        <Button
-          icon
-          onClick={() => setContent('Kopiert')}
-          onBlur={() => setContent('Kopier')}
-        >
-          <FilesIcon aria-hidden />
-        </Button>
-      </Tooltip>
-    </>
+    <Tooltip content={content}>
+      <Button
+        icon
+        onClick={() => setContent('Kopiert')}
+        onBlur={() => setContent('Kopier')}
+      >
+        <FilesIcon aria-hidden />
+      </Button>
+    </Tooltip>
   );
 };
 
