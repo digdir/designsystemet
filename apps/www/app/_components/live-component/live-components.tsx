@@ -52,9 +52,12 @@ const scopes = {
   SyncedBox,
 };
 
+type Language = 'react' | 'html';
+
 export type LiveComponentProps = {
   story: string;
   layout?: 'row' | 'column' | 'centered' | 'block';
+  language?: Language;
 };
 
 //copied from https://github.com/FormidableLabs/react-live/blob/master/packages/react-live/src/components/Live/LiveContext.ts
@@ -75,14 +78,15 @@ type EditorProps = {
   html: string;
   id?: string;
   hidden?: boolean;
+  language?: Language;
 };
 
-const Editor = ({ live, html, id, hidden }: EditorProps) => {
+const Editor = ({ live, html, id, hidden, language }: EditorProps) => {
   const { t } = useTranslation();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const activateEditorRef = useRef<HTMLDivElement>(null);
   const [resetCount, setResetCount] = useState(0);
-  const [showHTML, setShowHTML] = useState(false);
+  const [showHTML, setShowHTML] = useState(language === 'html');
   const [copied, setCopied] = useState('');
   // Truncate SVGs to <svg></svg> to reduce noise
   const truncatedHtml = (html || 'Unable to parse html').replace(
@@ -255,6 +259,7 @@ const EditorWithLive = withLive(Editor) as ComponentType<{
   html: string;
   id?: string;
   hidden?: boolean;
+  language?: Language;
 }>;
 
 /**
@@ -291,6 +296,7 @@ const HtmlCaptureWithLive = withLive(HtmlCapture) as ComponentType<{
 export const LiveComponent = ({
   story,
   layout = 'centered',
+  language = 'react',
 }: LiveComponentProps) => {
   const location = useLocation();
   const { t } = useTranslation();
@@ -391,7 +397,12 @@ export const LiveComponent = ({
             : t('live-component.show-code')}
         </ds.Button>
       </div>
-      <EditorWithLive id={editorId} html={html} hidden={!showEditor} />
+      <EditorWithLive
+        id={editorId}
+        html={html}
+        hidden={!showEditor}
+        language={language}
+      />
     </LiveProvider>
   );
 };

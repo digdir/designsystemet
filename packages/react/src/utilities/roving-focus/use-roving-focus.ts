@@ -1,7 +1,7 @@
 // Logic from: https://www.joshuawootonn.com/react-roving-tabindex
 // Inspired by: https://github.com/radix-ui/primitives/tree/main/packages/react/roving-focus/src
 
-import type { HTMLAttributes } from 'react';
+import type { FocusEvent, HTMLAttributes, KeyboardEvent } from 'react';
 import { useContext } from 'react';
 
 import { RovingFocusContext } from './roving-focus-root';
@@ -32,14 +32,14 @@ export const useRovingFocus = (value: string) => {
           elements.current.delete(value);
         }
       },
-      onKeyDown: (e: React.KeyboardEvent<T>) => {
+      onKeyDown: (e: KeyboardEvent<T>) => {
         props?.onKeyDown?.(e);
         if (e.shiftKey && e.key === 'Tab') {
           onShiftTab();
           return;
         }
       },
-      onFocus: (e: React.FocusEvent<T>) => {
+      onFocus: (e: FocusEvent<T>) => {
         props?.onFocus?.(e);
         setFocusableValue(value);
       },

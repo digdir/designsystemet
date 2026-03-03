@@ -30,6 +30,7 @@
     height: 100%;
     overscroll-behavior: none;
     -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: none; /* https://kilianvalkhof.com/2022/css-html/your-css-reset-needs-text-size-adjust-probably/ */
     --logo-red: #f05f63;
     --logo-blue: #1e98f5;
     --logo-yellow: #e5aa20;

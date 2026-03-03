@@ -1,0 +1,61 @@
+---
+title: Nå kan du bruke Designsystemet uavhengig av rammeverk
+description: '@digdir/designsystemet-web er lansert.'
+date: 2026-02-23
+author: Designsystemet
+imageSrc: /img/blog/designsystemet-web-release-no.webp
+imageAlt: Release av @digdir/designsystemet-web pakken
+search_terms: webcomponents, rammeverkuavhengig, designsystemet-web, webkomponentar, webkomponenter, teknologiuavhengig, vue, angular, svelte, css, html
+---
+
+Nå kan du bruke Designsystemet - uavhengig av teknologi, i både nye og gamle prosjekter!
+
+Med lansering av pakken `@digdir/designsystemet-web`, er det endelig blitt mulig få alle fordelene med Designsystemet, uten å måtte binde seg til React som teknologivalg. Dette betyr både større frihet og rom for eksperimentering og innovasjon i nye produkter, men også at eldre applikasjoner kan dra nytte av Designsystemet uten store omskrivinger.
+
+All funksjonalitet er skrevet isolert, slik at du og ditt team kan velge hva dere ønsker å bruke og ikke bruke, eller gradvis ta i bruk Designsystemet uten behov for én stor omskrivingsperiode.
+
+For dere som benytter `@digdir/designsystemet-react` pakken, er det ingen breaking changes; alt fungerer som før, men er under panseret bygget oppå web-pakken.
+
+Og ikke bare det, web-pakken kan brukes uavhengig av CSS-pakken, så du kan bygge helt egne knappe-komponenter, men fortsatt dra nytte av Designsystemets funksjonalitet.
+
+## Hva er inkludert?
+
+Web-pakken sørger for at all interaktivitet og automatisert universell utforming som før ble gjort av React-pakken, nå er tilgjengelig for alle. 
+Mye av Designsystemet løses allerede med ren web-standard HTML og CSS, mens andre interaksjoner krever litt ekstra javascript:
+
+- `<ds-breadcrumbs>` - brukes av [Breadcrumbs](/no/components/docs/breadcrumbs/code#html)
+- `<ds-error-summary>` - brukes av [Error Summary](/no/components/docs/error-summary/code#html)
+- `<ds-field>` - brukes av [Field](/no/components/docs/field/code#html)
+- `<ds-pagination>` - brukes av [Pagination](/no/components/docs/pagination/code#html)
+- `<ds-suggestion>` - brukes av [Suggestion](/no/components/docs/suggestion/code#html)
+- `<ds-tabs>` - brukes av [Tabs](/no/components/docs/tabs/code#html)
+- `data-toggle-group` - brukes av [ToggleGroup](/no/components/docs/toggle-group/code#html)
+- `data-tooltip` - brukes av [Tooltip](/no/components/docs/tooltip/code#html)
+- `data-clickdelegatefor` - brukes av [Table](/no/components/docs/table/code#klikkbar-rad) og [Card](/no/components/docs/card/code#lenkekort-med-data-attributt)
+- `popover` - brukes av [Popover](/no/components/docs/popover/code#html), [Dropdown](/no/components/docs/dropdown/code#html)
+- `command` - aka. [Invokers Command API](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API) brukes av [Dialog](/no/components/docs/dialog/code#html) og [Popover](/no/components/docs/popover/code#html)
+
+## Hvorfor ikke web-komponenter for alt?
+
+Designsystemet legger vekt på å bruke webstandarder. Å innføre web-komponenter for alt ville betydd at vi mister innebygd fleksibilitet og tilgjengelighet som ren HTML gir oss gratis, i tillegg til dårligere ytelse med avhengighet til Javascript.
+Moderne CSS med klasse og attributt-selektorer gir i mange tilfeller bedre fleksiblitet og ytelse.
+
+Les mer om hvorfor vi har valgt å ikke lage web-komponenter for alle komponentene i Designsystemet i [dette blogginnlegget](/no/blog/web-components-and-designsystemet-without-react).
+
+## Dokumentasjon
+
+Vi er i gang med å oppdatere dokumentasjonen på designsystemet.no, men i mellomtiden kan du finne midlertidig dokumentasjon for `@digdir/designsystemet-web` i [README på Github](https://github.com/digdir/designsystemet/tree/main/packages/web).
+
+## Gi tilbakemelding
+
+Vi er veldig interessert i å høre fra deg som bruker web-pakken.
+Dersom du oppdager feil, eller har forslag til forbedringer, kan du opprette en sak i [GitHub repoet vårt](https://github.com/digdir/designsystemet/issues/new) eller på [Slack](/slack).
+
+<Contributors
+  authors={[
+    'Tobias Barsnes',
+    'Eirik Backer',
+    'Michael Marszalek',
+    'Oddbjørn Overnes',
+  ]}
+/>

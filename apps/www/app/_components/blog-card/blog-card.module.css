@@ -21,10 +21,6 @@
     transition: none;
   }
 }
-.heading a {
-  text-decoration-thickness: 1px;
-  text-underline-offset: 4px;
-}
 
 @media screen and (min-width: 1024px) {
   .card[data-featured='true'] {

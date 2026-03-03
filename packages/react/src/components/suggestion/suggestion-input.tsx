@@ -13,7 +13,6 @@ declare global {
     }
   }
   namespace React {
-    // biome-ignore lint/correctness/noUnusedVariables: we overwrite React's HTMLAttributes to add custom attributes
     interface HTMLAttributes<T> {
       popovertarget?: string;
     }
