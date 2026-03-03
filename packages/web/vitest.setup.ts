@@ -23,5 +23,5 @@ afterEach(async () => {
   // Flush pending requestAnimationFrames before switching to real timers
   await vi.advanceTimersByTimeAsync(100);
   vi.useRealTimers();
-  document.body.innerHTML = '';
+  document.body.innerHTML = ''; // Clean up DOM between tests
 });
