@@ -35,7 +35,10 @@ beforeEach(() => {
   window.dsWarnings = false;
 });
 
-afterEach(() => {
+afterEach(async () => {
+  // Flush pending rAFs (e.g. enableMutations from setTextWithoutMutation)
+  // before vitest.setup.ts afterEach calls vi.useRealTimers() which discards them
+  await vi.advanceTimersByTimeAsync(100);
   delete (window as Window & { dsWarnings?: boolean }).dsWarnings;
   setTooltipElement(null);
 });
@@ -125,5 +128,41 @@ describe('tooltip behavior', () => {
     );
 
     expect(tip.hidePopover).toHaveBeenCalledTimes(1);
+  });
+
+  it('updates tooltip text and announces when data-tooltip changes programmatically', async () => {
+    const tooltip = createTooltip();
+    // Mock :popover-open so the update path is triggered
+    const originalMatches = tooltip.matches.bind(tooltip);
+    tooltip.matches = (selector: string) =>
+      selector === ':popover-open' ? true : originalMatches(selector);
+
+    setTooltipElement(tooltip);
+    await resetTooltipState(tooltip);
+
+    document.body.innerHTML = `<button data-tooltip="Original">Label</button>`;
+
+    const button = document.querySelector('button') as HTMLButtonElement;
+    await vi.waitUntil(() => button.hasAttribute('aria-description'), 2000);
+
+    button.dispatchEvent(new FocusEvent('focus'));
+    expect(tooltip.textContent).toBe('Original');
+
+    button.focus();
+
+    await vi.advanceTimersByTimeAsync(100);
+
+    // Change tooltip text programmatically
+    button.setAttribute('data-tooltip', 'Updated');
+
+    await vi.advanceTimersByTimeAsync(100);
+
+    expect(tooltip.textContent).toBe('Updated');
+    expect(button).toHaveAttribute('aria-description', 'Updated');
+
+    // Should exist a live region with the updated text to announce the change
+    const liveRegion = document.querySelector('[aria-live="assertive"]');
+    expect(liveRegion).toBeInTheDocument();
+    expect(liveRegion?.textContent).toContain('Updated');
   });
 });
