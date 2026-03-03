@@ -229,3 +229,15 @@ export const announce = (text?: string) => {
   if (!LIVE.isConnected) document.body.appendChild(LIVE);
   if (text) LIVE.textContent = `${text}${LIVE_FIX++ % 2 ? '\u00A0' : ''}`; // Non-breaking space to ensure screen reader announces
 };
+
+/**
+ * Mount live region on first user interaction so its ready to be used.
+ */
+if (isBrowser()) {
+  const USER_EVENTS = 'focusin mouseover pointerdown keydown';
+  const mount = () => {
+    announce(); // Creates and appends the element without announcing
+    off(document, USER_EVENTS, mount, QUICK_EVENT);
+  };
+  on(document, USER_EVENTS, mount, QUICK_EVENT);
+}
