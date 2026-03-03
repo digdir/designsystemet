@@ -54,13 +54,11 @@ const handleAriaAttributes = debounce(() => {
     }
 
     // If an existing tooltip has changed programmatically, update tooltip text and announce change
-    if (
-      el === SOURCE &&
-      TIP?.matches(':popover-open') &&
-      TIP.textContent !== text
-    ) {
-      setTextWithoutMutation(TIP, text);
-      if (document.activeElement === el) announce(text || undefined);
+    const isCurrent = el === SOURCE && TIP?.matches(':popover-open');
+    const isChanged = isCurrent && text && TIP?.textContent !== text; // Only update if mutation is on source element and tooltip is open to avoid unnecessary updates
+    if (isCurrent && isChanged) {
+      if (TIP) setTextWithoutMutation(TIP, text);
+      if (document.activeElement === el) announce(text); // Only announce if focus is on the button
     }
   }
 }, 0); // Debounce to merge multiple mutations

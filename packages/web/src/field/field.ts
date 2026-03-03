@@ -111,9 +111,8 @@ const updateField = (e: Event | Element) => {
     attr(counter, 'data-color', count < 0 ? 'danger' : null);
 
     // Only update live region when user is actually typing
-    if ((e as Event).type === 'input' && label) {
+    if ((e as Event).type === 'input' && label)
       debouncedCounterLiveRegion(input, label); // Debounce live region to avoid NVDA interupting announcing typed text
-    }
   }
   if (!HAS_FIELD_SIZING && input instanceof HTMLTextAreaElement) {
     input.style.setProperty('--_ds-field-sizing', 'auto');

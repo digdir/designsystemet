@@ -210,34 +210,32 @@ export function useId(el?: Element | null) {
   return el?.id || '';
 }
 
-const SR_ONLY_STYLES = 'position:fixed;white-space:nowrap;clip:rect(0 0 0 0)';
-
 /**
  * @description Based off speak function from [U-elements](https://github.com/u-elements/u-elements/blob/main/packages/utils.ts#L210)
  * @param text The text to announce
  */
-let LIVE: HTMLElement | undefined;
+let LIVE_EL: HTMLElement | undefined;
 let LIVE_FIX = 0;
-
-export const announce = (text?: string) => {
-  if (!LIVE) {
-    LIVE = tag('div', {
-      'aria-live': 'assertive',
-      style: SR_ONLY_STYLES,
-    });
-  }
-  if (!LIVE.isConnected) document.body.appendChild(LIVE);
-  if (text) LIVE.textContent = `${text}${LIVE_FIX++ % 2 ? '\u00A0' : ''}`; // Non-breaking space to ensure screen reader announces
+let LIVE_CLEAR: ReturnType<typeof setTimeout> | number = 0;
+export const announce = (text: string) => {
+  clearTimeout(LIVE_CLEAR);
+  if (LIVE_EL)
+    setTextWithoutMutation(LIVE_EL, `${text}${LIVE_FIX++ % 2 ? '\u00A0' : ''}`); // Non-breaking space to ensure screen reader announces
+  if (text) LIVE_CLEAR = setTimeout(announce, 2000, ''); // Clear prevent old announcements being found by screen readers, with 2 seconds brace period to avoid cutting of Android Talkback
 };
 
-/**
- * Mount live region on first user interaction so its ready to be used.
- */
-if (isBrowser()) {
-  const USER_EVENTS = 'focusin mouseover pointerdown keydown';
-  const mount = () => {
-    announce(); // Creates and appends the element without announcing
-    off(document, USER_EVENTS, mount, QUICK_EVENT);
-  };
-  on(document, USER_EVENTS, mount, QUICK_EVENT);
-}
+// Mount live region on first focus so its ready to be used
+const announceMount = () => {
+  if (document.readyState !== 'complete') return; // Ensure page is loaded trying to avoid issues with React hydration
+  if (!LIVE_EL) {
+    LIVE_EL = tag('div', { 'aria-live': 'assertive' });
+    LIVE_EL.style.overflow = 'hidden'; // Settings styles individually to prevent issues with CSP
+    LIVE_EL.style.position = 'fixed';
+    LIVE_EL.style.whiteSpace = 'nowrap';
+    LIVE_EL.style.width = '1px';
+  }
+  if (!LIVE_EL.isConnected) document.body.appendChild(LIVE_EL);
+};
+onHotReload('announce', () => [
+  on(document, 'focus mouseover', announceMount, QUICK_EVENT),
+]);
