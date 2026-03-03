@@ -1,6 +1,6 @@
 /// <reference types="@testing-library/jest-dom" />
 
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi } from 'vitest';
 import {
   announce,
   attr,
@@ -14,94 +14,94 @@ import {
   tag,
   useId,
   warn,
-} from "./utils";
-import { userEvent } from "vitest/browser";
+} from './utils';
+import { userEvent } from 'vitest/browser';
 
 const user = userEvent.setup();
 
-describe("utils", () => {
-  it("attr gets, sets, and removes attributes", () => {
-    const el = document.createElement("div");
+describe('utils', () => {
+  it('attr gets, sets, and removes attributes', () => {
+    const el = document.createElement('div');
 
-    expect(attr(el, "data-test")).toBeNull();
+    expect(attr(el, 'data-test')).toBeNull();
 
-    attr(el, "data-test", "value");
-    expect(el).toHaveAttribute("data-test", "value");
+    attr(el, 'data-test', 'value');
+    expect(el).toHaveAttribute('data-test', 'value');
 
-    attr(el, "data-test", null);
-    expect(el).not.toHaveAttribute("data-test");
+    attr(el, 'data-test', null);
+    expect(el).not.toHaveAttribute('data-test');
   });
 
-  it("attrOrCSS reads from CSS custom property and strips quotes", async () => {
-    const el = document.createElement("div");
+  it('attrOrCSS reads from CSS custom property and strips quotes', async () => {
+    const el = document.createElement('div');
     document.body.appendChild(el); // Needed for getComputedStyle to work, which is used by attrOrCSS
-    el.style.setProperty("--_ds-test", '"property-value"');
+    el.style.setProperty('--_ds-test', '"property-value"');
 
-    expect(attrOrCSS(el, "test")).toBe("property-value");
+    expect(attrOrCSS(el, 'test')).toBe('property-value');
   });
 
-  it("warn respects dsWarnings flag", () => {
+  it('warn respects dsWarnings flag', () => {
     const warnSpy = vi
-      .spyOn(console, "warn")
+      .spyOn(console, 'warn')
       .mockImplementation(() => undefined);
 
     (window as Window & { dsWarnings?: boolean }).dsWarnings = false;
-    warn("Hidden warning");
+    warn('Hidden warning');
     expect(warnSpy).not.toHaveBeenCalled();
 
     (window as Window & { dsWarnings?: boolean }).dsWarnings = true;
-    warn("Visible warning");
+    warn('Visible warning');
     expect(warnSpy).toHaveBeenCalledTimes(1);
 
     delete (window as Window & { dsWarnings?: boolean }).dsWarnings;
   });
 
-  it("debounce runs only once for rapid calls", async () => {
+  it('debounce runs only once for rapid calls', async () => {
     const spy = vi.fn();
     const debounced = debounce(spy, 100);
 
-    debounced("first");
-    debounced("second");
+    debounced('first');
+    debounced('second');
 
     await vi.advanceTimersByTimeAsync(99);
     expect(spy).not.toHaveBeenCalled();
 
     await vi.advanceTimersByTimeAsync(1);
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith("second");
+    expect(spy).toHaveBeenCalledWith('second');
   });
 
-  it("on/off attaches and removes multiple event types", () => {
-    const el = document.createElement("button");
+  it('on/off attaches and removes multiple event types', () => {
+    const el = document.createElement('button');
     const handler = vi.fn();
 
-    const cleanup = on(el, "focus blur", handler);
+    const cleanup = on(el, 'focus blur', handler);
 
-    el.dispatchEvent(new FocusEvent("focus"));
-    el.dispatchEvent(new FocusEvent("blur"));
+    el.dispatchEvent(new FocusEvent('focus'));
+    el.dispatchEvent(new FocusEvent('blur'));
     expect(handler).toHaveBeenCalledTimes(2);
 
     cleanup();
 
-    el.dispatchEvent(new FocusEvent("focus"));
+    el.dispatchEvent(new FocusEvent('focus'));
     expect(handler).toHaveBeenCalledTimes(2);
   });
 
-  it("onHotReload runs cleanup for same key", () => {
+  it('onHotReload runs cleanup for same key', () => {
     const cleanup = vi.fn();
 
-    onHotReload("test-key", () => [cleanup]);
-    onHotReload("test-key", () => [() => undefined]);
+    onHotReload('test-key', () => [cleanup]);
+    onHotReload('test-key', () => [() => undefined]);
 
     expect(cleanup).toHaveBeenCalledTimes(1);
   });
 
-  it("onMutation invokes callback and supports cleanup", async () => {
-    const el = document.createElement("div");
+  it('onMutation invokes callback and supports cleanup', async () => {
+    const el = document.createElement('div');
     document.body.appendChild(el);
 
     const rafSpy = vi
-      .spyOn(window, "requestAnimationFrame")
+      .spyOn(window, 'requestAnimationFrame')
       .mockImplementation((callback) => {
         callback(0);
         return 0;
@@ -110,7 +110,7 @@ describe("utils", () => {
     const callback = vi.fn();
     const cleanup = onMutation(el, callback, { childList: true });
 
-    el.appendChild(document.createElement("span"));
+    el.appendChild(document.createElement('span'));
 
     await vi.waitUntil(() => callback.mock.calls.length > 0);
 
@@ -120,32 +120,32 @@ describe("utils", () => {
     rafSpy.mockRestore();
   });
 
-  it("setTextWithoutMutation updates text and restores mutation processing", () => {
-    const el = document.createElement("div");
+  it('setTextWithoutMutation updates text and restores mutation processing', () => {
+    const el = document.createElement('div');
     const rafSpy = vi
-      .spyOn(window, "requestAnimationFrame")
+      .spyOn(window, 'requestAnimationFrame')
       .mockImplementation((callback) => {
         callback(0);
         return 0;
       });
 
-    setTextWithoutMutation(el, "Updated");
+    setTextWithoutMutation(el, 'Updated');
 
-    expect(el.textContent).toBe("Updated");
+    expect(el.textContent).toBe('Updated');
 
     rafSpy.mockRestore();
   });
 
-  it("tag creates elements with attributes", () => {
-    const el = tag("button", { type: "button", "data-test": "ok" });
+  it('tag creates elements with attributes', () => {
+    const el = tag('button', { type: 'button', 'data-test': 'ok' });
 
     expect(el).toBeInstanceOf(HTMLButtonElement);
-    expect(el).toHaveAttribute("type", "button");
-    expect(el).toHaveAttribute("data-test", "ok");
+    expect(el).toHaveAttribute('type', 'button');
+    expect(el).toHaveAttribute('data-test', 'ok');
   });
 
-  it("customElements.define skips duplicate registration", () => {
-    const name = "ds-utils-test";
+  it('customElements.define skips duplicate registration', () => {
+    const name = 'ds-utils-test';
 
     customElements.define(name, class extends HTMLElement {});
     customElements.define(name, class extends HTMLElement {});
@@ -153,67 +153,67 @@ describe("utils", () => {
     expect(window.customElements.get(name)).toBeDefined();
   });
 
-  it("useId assigns and reuses ids", () => {
-    const el = document.createElement("div");
+  it('useId assigns and reuses ids', () => {
+    const el = document.createElement('div');
     const id = useId(el);
 
     expect(id).toBeTruthy();
     expect(el.id).toBe(id);
     expect(useId(el)).toBe(id);
 
-    const other = document.createElement("div");
+    const other = document.createElement('div');
     const otherId = useId(other);
 
     expect(otherId).not.toBe(id);
   });
 
-  describe("announce", () => {
-    it("should mount live region on first user interaction", async () => {
+  describe('announce', () => {
+    it('should mount live region on first user interaction', async () => {
       // Reset by removing any existing live region
       document.querySelector('[aria-live="assertive"]')?.remove();
 
-      document.body.innerHTML = "<button>Click me</button>";
-      const button = document.querySelector("button") as HTMLButtonElement;
+      document.body.innerHTML = '<button>Click me</button>';
+      const button = document.querySelector('button') as HTMLButtonElement;
 
       await user.click(button);
 
       const live = document.querySelector('[aria-live="assertive"]');
       expect(live).toBeInTheDocument();
     });
-    it("should create and mount a live region on first call", () => {
-      announce("Hello");
+    it('should create and mount a live region on first call', () => {
+      announce('Hello');
       const live = document.querySelector('[aria-live="assertive"]');
       expect(live).toBeInTheDocument();
-      expect(live).toHaveTextContent("Hello");
+      expect(live).toHaveTextContent('Hello');
     });
 
-    it("should reuse the same live region element", () => {
-      announce("First");
-      announce("Second");
+    it('should reuse the same live region element', () => {
+      announce('First');
+      announce('Second');
       const regions = document.querySelectorAll('[aria-live="assertive"]');
       expect(regions).toHaveLength(1);
-      expect(regions[0]).toHaveTextContent("Second");
+      expect(regions[0]).toHaveTextContent('Second');
     });
 
-    it("should alternate non-breaking space to force re-announcement", () => {
-      announce("Same");
+    it('should alternate non-breaking space to force re-announcement', () => {
+      announce('Same');
       const live = document.querySelector('[aria-live="assertive"]');
       const first = live?.textContent;
 
-      announce("Same");
+      announce('Same');
       const second = live?.textContent;
 
       expect(first).not.toBe(second);
-      expect([first, second]).toContain("Same");
-      expect([first, second]).toContain("Same\u00A0");
+      expect([first, second]).toContain('Same');
+      expect([first, second]).toContain('Same\u00A0');
     });
 
-    it("should not set text content when called without text", () => {
-      announce("Existing");
+    it('should not set text content when called without text', () => {
+      announce('Existing');
       const live = document.querySelector('[aria-live="assertive"]');
       announce();
       // textContent unchanged from previous call
-      expect(live?.textContent).toContain("Existing");
+      expect(live?.textContent).toContain('Existing');
     });
   });
 });
