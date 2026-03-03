@@ -1,34 +1,22 @@
 ## Implementation tests
 
-**1. Informative `Badge` must be included in the programmatic name**
+**1. An informative `Badge` showing important information (for example a count) must be included in the interactive element’s accessible name**
 
-- A `Badge` that conveys important information (for example the number of unread messages) must be included in the programmatic name of the interactive element it belongs to.
+WCAG: [1.3.1](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90), [4.1.2](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva-a/98), [2.4.4](https://www.uutilsynet.no/wcag-standarden/244-formal-med-lenker-niva-aa/112)
 
-WCAG: [1.3.1](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90), [4.1.2](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121), [2.4.4](hhttps://www.uutilsynet.no/wcag-standarden/244-formal-med-lenke-i-kontekst-niva/106)
+**2. If a `Badge` is placed outside the element, the badge information must be included in the element’s accessible name.** 
 
-**2. Badge information must be programmatically associated with the control**
+WCAG: [1.3.1](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90), [4.1.2](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva-a/98)
 
-- If a `Badge` is placed outside the interactive element, the information must be programmatically associated with the control.
-- Solutions where a `Badge` is not part of the control’s programmatic name should be avoided.
+**3. A decorative `Badge` that conveys no information must be hidden from screen readers**
 
-WCAG: [1.3.1](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90), [4.1.2](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121)
+WCAG: [1.1.1](https://www.uutilsynet.no/wcag-standarden/111-ikke-tekstinnhold-niva/22)
 
-**3. Decorative `Badge` must be hidden from screen readers**
-
-- A `Badge` that is purely decorative must be hidden from screen readers (`aria-hidden="true"`).
-
-WCAG: [1.1.1](https://www.uutilsynet.no/wcag-standarden/111-ikke-tekstlig-innhold-niva/87)
-
-**4. Dynamically updated `Badge` must be announced**
-
-- If a `Badge` is updated dynamically (for example from 1 to 2), the change must be announced to screen readers in an appropriate manner.
+**4. A `Badge` that changes value (for example 1 → 2) must be announced to screen readers**
 
 WCAG: [4.1.3](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)
 
-**5. `Badge` must not rely on color alone**
-
-- Information conveyed by a `Badge` must be understandable without relying solely on color or position.
-- A visual indicator (for example a red dot) alone is not sufficient.
+**5. A `Badge` must not rely solely on color or position to convey information**
 
 WCAG: [1.4.1](https://www.uutilsynet.no/wcag-standarden/141-bruk-av-farge-niva/93)
 

@@ -1,24 +1,20 @@
 ## Implementasjonstester
 
-**1. Dynamisk vist `Alert` skal leses opp**
+**1. En `Alert` som vises eller oppdateres etter at siden er lastet, må bli kunngjort automatisk av skjermlesere**
 
-En `Alert` som vises eller oppdateres etter at siden er lastet, skal annonseres automatisk av skjermlesere.
-- Kritiske meldinger som krever umiddelbar oppmerksomhet skal bruke `role="alert"` (assertive).
-- Ikke-kritiske meldinger skal bruke `role="status"` (polite).
+- Bruk `role="alert"` for kritiske meldinger som krever umiddelbar oppmerksomhet, og `role="status"` for mindre kritiske meldinger.
 
 WCAG: [4.1.3](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)
 
-**2. `Alert` skal være plassert slik at leserekkefølgen gir mening**
+**2. En `Alert` skal være plassert slik at den følger leserekkefølgen**
 
-- `Alert` skal være plassert i DOM på en måte som følger den logiske leserekkefølgen på siden.
-- Hvis `Alert` inneholder en overskrift, skal den bruke riktig overskriftsnivå i sidestrukturen.
+- Hvis `Alert` har en overskrift, skal overskriftsnivået være korrekt i sidestrukturen.
 
 WCAG: [1.3.1](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
 
-**3. Teksten skal være tydelig og konkret**
+**3. `Alert`-teksten må forklare hva som har skjedd og hva det betyr for brukeren**
 
-- `Alert` tekst skal tydelig beskrive hva meldingen gjelder og hva konsekvensen er.
-- Generiske formuleringer som «Feil» eller «Advarsel» alene er ikke tilstrekkelig.
+- Tekst som bare sier «Feil» eller «Advarsel» er ikke god nok.
 
 WCAG: [2.4.6](https://www.uutilsynet.no/wcag-standarden/246-overskrifter-og-ledetekster-niva-aa/108)
 

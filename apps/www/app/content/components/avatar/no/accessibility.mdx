@@ -1,29 +1,23 @@
 ## Implementasjonstester
 
-**1. Informativ `Avatar` skal ha programmatisk navn**
+**1. Informativ `Avatar` skal ha et programmatisk navn, og hvert navn må være unikt hvis flere vises**
 
-- En `Avatar` som representerer en identitet skal ha et programmatisk navn som tilsvarer denne identiteten.
-- Hvis flere avatarer vises sammen, skal hver informativ `Avatar` ha et unikt programmatisk navn.
+- Hvis flere avatarer vises sammen, må hvert programmatisk navn være unikt.
 
-WCAG: [1.1.1](https://www.uutilsynet.no/veiledning/111-ikke-tekstlig-innhold/1231), [1.3.1](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
+WCAG: [1.1.1](https://www.uutilsynet.no/wcag-standarden/111-ikke-tekstinnhold-niva/22), [1.3.1](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
 
-**2. Dekorativ `Avatar` skal skjules for skjermleser**
+**2. Dekorativ `Avatar` som kun er dekorasjon og ikke gir informasjon skal skjules for skjermleser**
 
-- En `Avatar` som ikke formidler unik informasjon skal skjules for skjermleser (`aria-hidden="true"`).
+WCAG: [1.1.1](https://www.uutilsynet.no/wcag-standarden/111-ikke-tekstinnhold-niva/22)
 
-WCAG: [1.1.1](https://www.uutilsynet.no/veiledning/111-ikke-tekstlig-innhold/1231))
+**3. Klikkbar `Avatar` skal ha et tydelig programmatisk navn**
 
-**3. Klikkbar `Avatar` skal ha tydelig programmatisk navn**
+WCAG: [4.1.2](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva-a/98), [2.4.4](https://www.uutilsynet.no/wcag-standarden/244-formal-med-lenker-niva-aa/112)
 
-- En klikkbar `Avatar` skal ha et programmatisk navn som tydelig beskriver handlingen (for eksempel “Profil for bruker”).
+**4. Klikkbar `Avatar` med initialer (for eksempel “ON” for Ola Nordmann) må inkludere initialene i det programmatiske navnet**
 
-WCAG: [4.1.2](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121), [2.4.4](https://www.uutilsynet.no/wcag-standarden/244-formal-med-lenke-i-kontekst-niva/106)
+WCAG: [2.5.3](https://www.uutilsynet.no/wcag-standarden/253-ledetekst-i-navn-niva-aa/126)
 
-**4. Klikkbar `Avatar` med initialer skal støtte stemmestyring**
-
-- Hvis en klikkbar `Avatar` viser initialer visuelt, bør disse inngå i det programmatiske navnet.
-
-WCAG: [2.5.3](https://www.uutilsynet.no/wcag-standarden/253-ledetekst-i-navn-niva/150)
 
 ## Hvordan beskrive `Avatar` for skjermlesere
 

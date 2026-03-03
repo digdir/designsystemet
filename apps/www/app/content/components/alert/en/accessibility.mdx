@@ -1,24 +1,20 @@
 ## Implementation tests
 
-**1. Dynamically displayed `Alert` must be announced**
+**1. An `Alert` that appears or updates after the page has loaded must be announced to screen readers**
 
-- An `Alert` that appears or updates after the page has loaded must be automatically announced by screen readers.
-- Critical messages that require immediate attention must use `role="alert"` (assertive).
-- Non-critical messages must use `role="status"` (polite).
+- Use `role="alert"` for critical messages requiring immediate attention and `role="status"` for less critical ones.
 
 WCAG: [4.1.3](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)
 
-**2. `Alert` must be placed so that the reading order makes sense**
+**2. An `Alert` must be placed so that it follows the reading order**
 
-- `Alert` must be placed in the DOM in a way that follows the logical reading sequence of the page.
-- If the `Alert` contains a heading, it must use the correct heading level in the page structure.
+- If the `Alert` has a heading, it must use the correct heading level in the page structure.
 
 WCAG: [1.3.1](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
 
-**3. `Alert` text must be clear and specific**
+**3. The `Alert` text must explain what happened and what it means for the user**
 
-- The `Alert` text must clearly describe what the message concerns and what the consequence is.
-- Generic wording such as “Error” or “Warning” alone is not sufficient.
+- Text that only says “Error” or “Warning” is not sufficient.
 
 WCAG: [2.4.6](https://www.uutilsynet.no/wcag-standarden/246-overskrifter-og-ledetekster-niva-aa/108)
 
