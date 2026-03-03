@@ -223,7 +223,6 @@ export const announce = (text?: string) => {
   if (!LIVE) {
     LIVE = tag('div', {
       'aria-live': 'assertive',
-      'aria-atomic': 'true',
       style: SR_ONLY_STYLES,
     });
   }
