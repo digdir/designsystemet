@@ -35,10 +35,7 @@ beforeEach(() => {
   window.dsWarnings = false;
 });
 
-afterEach(async () => {
-  // Flush pending rAFs (e.g. enableMutations from setTextWithoutMutation)
-  // before vitest.setup.ts afterEach calls vi.useRealTimers() which discards them
-  await vi.advanceTimersByTimeAsync(100);
+afterEach(() => {
   delete (window as Window & { dsWarnings?: boolean }).dsWarnings;
   setTooltipElement(null);
 });
