@@ -159,9 +159,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
                 description={t('frontpage.components.description')}
                 color='red'
                 url='components'
-                icon={
-                  <ComponentIcon aria-hidden='true' />
-                }
+                icon={<ComponentIcon aria-hidden='true' />}
                 level={2}
               />
 
