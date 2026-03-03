@@ -150,7 +150,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
                 description={t('frontpage.get-started.description')}
                 color='blue'
                 url='fundamentals/introduction/get-started'
-                icon={<PaletteIcon height={36} width={36} aria-hidden='true' />}
+                icon={<PaletteIcon aria-hidden='true' />}
                 level={2}
               />
 
@@ -160,7 +160,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
                 color='red'
                 url='components'
                 icon={
-                  <ComponentIcon height={34} width={34} aria-hidden='true' />
+                  <ComponentIcon aria-hidden='true' />
                 }
                 level={2}
               />
@@ -170,7 +170,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
                 description={t('frontpage.patterns.description')}
                 color='yellow'
                 url='patterns'
-                icon={<WrenchIcon height={36} width={36} aria-hidden='true' />}
+                icon={<WrenchIcon aria-hidden='true' />}
                 level={2}
               />
             </div>
