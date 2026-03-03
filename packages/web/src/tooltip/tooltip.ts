@@ -53,8 +53,12 @@ const handleAriaAttributes = debounce(() => {
         warn('Missing tabindex="0" attribute on: ', el);
     }
 
-    // If changing an existing tooltip programmatically
-    if (el === SOURCE && TIP?.matches(':popover-open')) {
+    // If an existing tooltip has changed programmatically, update tooltip text and announce change
+    if (
+      el === SOURCE &&
+      TIP?.matches(':popover-open') &&
+      TIP.textContent !== text
+    ) {
       setTextWithoutMutation(TIP, text);
       if (document.activeElement === el) announce(text || undefined);
     }
