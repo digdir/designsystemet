@@ -1,5 +1,4 @@
 import {
-  announce,
   attr,
   attrOrCSS,
   customElements,
@@ -92,8 +91,6 @@ const handleMutations = debounce(() => {
     }
   }
 }, 0); // Debounce to merge multiple mutations
-
-
 
 const updateField = (e: Event | Element) => {
   const input = ((e as Event).target || e) as HTMLInputElement;

@@ -1,5 +1,4 @@
 import {
-  announce,
   attr,
   attrOrCSS,
   debounce,
@@ -56,7 +55,7 @@ const handleAriaAttributes = debounce(() => {
     // If changing an existing tooltip programmatically
     if (el === SOURCE && TIP?.matches(':popover-open')) {
       setTextWithoutMutation(TIP, text);
-      if (document.activeElement === el) announce(text);
+      if (document.activeElement === el) announce(text || undefined);
     }
   }
 }, 0);

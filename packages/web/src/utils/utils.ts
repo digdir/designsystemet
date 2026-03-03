@@ -210,57 +210,23 @@ export function useId(el?: Element | null) {
   return el?.id || '';
 }
 
-export const SR_ONLY_STYLES =
-  'position:fixed;white-space:nowrap;clip:rect(0 0 0 0)';
+const SR_ONLY_STYLES = 'position:fixed;white-space:nowrap;clip:rect(0 0 0 0)';
 
 /**
- * announce
- * @description Global live-region announcer for screen readers.
- * Uses a single shared element pre-mounted to document.body, switching aria-live per call.
- * Clears then re-sets text with a 100ms timeout to reliably trigger re-announcements.
+ * @description Based off speak function from [U-elements](https://github.com/u-elements/u-elements/blob/main/packages/utils.ts#L210)
  * @param text The text to announce
- * @param politeness 'polite' (default) or 'assertive'
  */
-const SR_LIVE_SELECTOR = '[data-ds-live]';
-let SR_LIVE: HTMLElement | null = null;
-let SR_LIVE_TIMER: ReturnType<typeof setTimeout> | undefined;
+let LIVE: HTMLElement | undefined;
+let LIVE_FIX = 0;
 
-const getLiveRegion = (): HTMLElement | null => {
-  if (!isBrowser()) return null;
-  if (!SR_LIVE) {
-    SR_LIVE =
-      document.querySelector<HTMLElement>(SR_LIVE_SELECTOR) ||
-      tag('div', {
-        'aria-live': 'polite',
-        'aria-atomic': 'true',
-        'data-ds-live': '',
-        style: SR_ONLY_STYLES,
-      });
+export const announce = (text?: string) => {
+  if (!LIVE) {
+    LIVE = tag('div', {
+      'aria-live': 'assertive',
+      'aria-atomic': 'true',
+      style: SR_ONLY_STYLES,
+    });
   }
-  if (!SR_LIVE.isConnected) document.body.appendChild(SR_LIVE);
-  return SR_LIVE;
+  if (!LIVE.isConnected) document.body.appendChild(LIVE);
+  if (text) LIVE.textContent = `${text}${LIVE_FIX++ % 2 ? '\u00A0' : ''}`; // Non-breaking space to ensure screen reader announces
 };
-
-export const announce = (
-  text: string | null,
-  politeness: 'polite' | 'assertive' = 'polite',
-) => {
-  const el = getLiveRegion();
-  if (!el || !text) return;
-  clearTimeout(SR_LIVE_TIMER);
-  el.textContent = '';
-  attr(el, 'aria-live', politeness);
-  // I think 100ms timeout needed for some browser + screen readers combination.
-  // This may be outdated advice though, will verify
-  SR_LIVE_TIMER = setTimeout(() => {
-    if (el.isConnected) setTextWithoutMutation(el, text);
-  }, 100);
-};
-
-// Pre-mount live region so it exists before any announcement
-if (isBrowser()) {
-  const mount = () => getLiveRegion();
-  if (document.readyState === 'loading')
-    document.addEventListener('DOMContentLoaded', mount, { once: true });
-  else mount();
-}
