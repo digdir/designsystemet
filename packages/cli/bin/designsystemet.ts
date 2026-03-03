@@ -31,7 +31,7 @@ const DEFAULT_TOKENS_CREATE_DIR = './design-tokens';
 const DEFAULT_TOKENS_BUILD_DIR = './design-tokens-build';
 const DEFAULT_FONT = 'Inter';
 const DEFAULT_THEME_NAME = 'theme';
-const DEFAULT_CONFIG_FILE = 'designsystemet.config.json';
+const DEFAULT_CONFIG_FILEPATH = 'designsystemet.config.json';
 
 function makeTokenCommands() {
   const tokenCmd = createCommand('tokens');
@@ -48,7 +48,7 @@ function makeTokenCommands() {
     .option(`--${cliOptions.clean} [boolean]`, 'Clean output directory before building tokens', parseBoolean, false)
     .option('--dry [boolean]', `Dry run for built ${pc.blue('design-tokens')}`, parseBoolean, false)
     .option('--verbose', 'Enable verbose output', false)
-    .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILE}")`)
+    .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILEPATH}")`)
     .option('--experimental-tailwind', 'Generate Tailwind CSS classes for tokens', false)
     .action(async (opts) => {
       console.log(figletAscii);
@@ -57,7 +57,7 @@ function makeTokenCommands() {
       const { configFile, configFilePath } = await getConfigFile(opts.config);
       const config = await parseBuildConfig(configFile, { configFilePath });
 
-      fs.init({ dry, configFilePath, outdir: opts.outDir });
+      fs.init({ dry, configFilePath, outdir: opts.outDir, verbose }); // TODO - add outdir eqivalent to config option when parsing config, so that it can be set in the config file as well. buildDir?
 
       const outDir = fs.outDir;
 
@@ -102,7 +102,7 @@ function makeTokenCommands() {
       4,
     )
     .option('--theme <string>', 'Theme name (ignored when using JSON config file)', DEFAULT_THEME_NAME)
-    .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILE}")`)
+    .option('--config <string>', `Path to config file (default: "${DEFAULT_CONFIG_FILEPATH}")`)
     .action(async (opts, cmd) => {
       console.log(figletAscii);
       if (opts.dry) {
@@ -120,7 +120,7 @@ function makeTokenCommands() {
       fs.init({
         dry: opts.dry,
         configFilePath,
-        outdir: opts.outDir !== DEFAULT_TOKENS_CREATE_DIR ? opts.outDir : config.outDir,
+        outdir: config.outDir,
       });
 
       console.log('initialized file system with config:', { workingDir: fs.workingDir, outDir: fs.outDir });
@@ -158,7 +158,7 @@ program
   .command('generate-config-from-tokens')
   .description('Generate a config file from existing design tokens. Will not include overrides.')
   .option('-d, --dir <string>', 'Path to design tokens directory', DEFAULT_TOKENS_CREATE_DIR)
-  .option('-o, --out <string>', 'Output path for config file', DEFAULT_CONFIG_FILE)
+  .option('-o, --out <string>', 'Output path for config file', DEFAULT_CONFIG_FILEPATH)
   .option('--dry [boolean]', 'Dry run - show config without writing file', parseBoolean, false)
   .action(async (opts) => {
     console.log(figletAscii);
@@ -236,8 +236,8 @@ function parseBoolean(value: string | boolean): boolean {
 }
 
 async function getConfigFile(userConfigFilePath: string | undefined) {
-  const allowFileNotFound = R.isNil(userConfigFilePath) || userConfigFilePath === DEFAULT_CONFIG_FILE;
-  const configFilePath = userConfigFilePath ?? DEFAULT_CONFIG_FILE;
+  const allowFileNotFound = R.isNil(userConfigFilePath) || userConfigFilePath === DEFAULT_CONFIG_FILEPATH;
+  const configFilePath = userConfigFilePath ?? DEFAULT_CONFIG_FILEPATH;
   const configFile = await readConfigFile(configFilePath, allowFileNotFound);
 
   return { configFile, configFilePath };

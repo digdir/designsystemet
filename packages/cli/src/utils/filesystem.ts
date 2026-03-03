@@ -12,7 +12,17 @@ class FileSystem {
   outDir = this.workingDir;
 
   /** Initialize the file system */
-  init({ dry, configFilePath, outdir }: { dry?: boolean; configFilePath?: string; outdir?: string }) {
+  init({
+    dry,
+    configFilePath,
+    outdir,
+    verbose,
+  }: {
+    dry?: boolean;
+    configFilePath?: string;
+    outdir?: string;
+    verbose?: boolean;
+  }) {
     if (this.isInitialized) {
       console.warn(pc.yellow('FileSystem is already initialized. Ignoring subsequent init call.'));
       return;
@@ -27,6 +37,11 @@ class FileSystem {
     this.workingDir = configFilePath ? path.dirname(configFilePath) : this.workingDir;
     // If an output directory is provided, resolve it relative to the working directory. Otherwise, use the working directory as the output directory.
     this.outDir = outdir ? (path.isAbsolute(outdir) ? outdir : path.join(this.workingDir, outdir)) : this.workingDir;
+    if (verbose) {
+      console.log(
+        `FileSystem initialized with workingDir: ${pc.green(this.workingDir)}, outDir: ${pc.green(this.outDir)}`,
+      );
+    }
     this.isInitialized = true;
   }
 
