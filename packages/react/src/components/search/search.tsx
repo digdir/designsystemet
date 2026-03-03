@@ -1,9 +1,9 @@
 import cl from 'clsx/lite';
-import { forwardRef } from 'react';
+import { forwardRef, type HTMLAttributes } from 'react';
 
 import type { DefaultProps } from '../../types';
 
-export type SearchProps = DefaultProps & React.HTMLAttributes<HTMLDivElement>;
+export type SearchProps = DefaultProps & HTMLAttributes<HTMLDivElement>;
 
 /**
  * Search component, use to display different variations of a search input

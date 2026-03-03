@@ -1,0 +1,246 @@
+---
+title: Setup
+description: Get started with the Designsystemet in code
+date: 2026-02-27
+category: Code
+color: blue
+icon: CodeIcon
+published: true
+order: 0
+search_terms: setup, oppsett, installasjon, installation, getting started, komme i gang
+---
+
+
+Follow these steps to get started with using Designsystemet in code for the first time.
+
+## 1. Install the packages
+
+Designsystemet consists of several code packages that you can freely choose from, depending on your needs and preferences.
+
+We recommend starting with `@digdir/designsystemet-web` and `@digdir/designsystemet-css` which are the most basic packages to get started.
+
+
+<ds-tabs class="ds-tabs" data-wide-content>
+  <ds-tablist>
+  <ds-tab >HTML</ds-tab>
+  <ds-tab >React</ds-tab>
+  </ds-tablist>
+  <ds-tabpanel>
+```sh
+npm i @digdir/designsystemet-css @digdir/designsystemet-web 
+```
+  </ds-tabpanel>
+  <ds-tabpanel>
+```sh
+npm i @digdir/designsystemet-css @digdir/designsystemet-react
+```
+  </ds-tabpanel>
+</ds-tabs>
+
+
+## 2. Import Javascript
+
+<ds-tabs class="ds-tabs" data-wide-content>
+  <ds-tablist>
+  <ds-tab >HTML</ds-tab>
+  <ds-tab >React</ds-tab>
+  </ds-tablist>
+  <ds-tabpanel>
+Import `@digdir/designsystemet-web` in your main JavaScript file.
+<br/>
+This will register all web components and observers globally, so you only need to do this once.
+
+```jsx
+import '@digdir/designsystemet-web';
+```
+  </ds-tabpanel>
+  <ds-tabpanel>
+Import `@digdir/designsystemet-react` when using components.
+
+```js
+import { Button } from '@digdir/designsystemet-react';
+```
+  </ds-tabpanel>
+</ds-tabs>
+
+
+## 3. Import CSS
+
+Import `@digdir/designsystemet-css`.
+
+Read more about [CSS](/no/fundamentals/code/css).
+
+<ds-tabs class="ds-tabs" data-wide-content>
+  <ds-tablist>
+  <ds-tab >CSS</ds-tab>
+  <ds-tab >JavaScript</ds-tab>
+  </ds-tablist>
+  <ds-tabpanel>
+  ```css
+  @import '@digdir/designsystemet-css/index.css';
+  ```     
+  </ds-tabpanel>
+  <ds-tabpanel>
+  ```js
+  import '@digdir/designsystemet-css';
+  ```
+  </ds-tabpanel>
+</ds-tabs>
+
+
+<Alert data-color='info'>
+<h3 class="ds-heading" data-size='xs'>Note: `background` and `color` are set on `<body>`</h3>
+<p>
+`background` and `color` are automatically defined on the `body` element and where `data-color-scheme` is set. 
+This is to ensure [universal design (w3.org)](https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html) and consistent font and color across the application.
+This can be easily overridden in your own theme or in your global CSS file.
+</p>
+</Alert>
+
+
+## 4. Import the theme
+
+The Designsystemet is designed to be themable, so it is important to import your theme after importing `@digdir/designsystemet-css`.
+
+[Build your own theme](/no/fundamentals/start-here/own-theme) or use the default theme; `@digdir/designsystemet-css/theme`.
+
+
+<ds-tabs class="ds-tabs" data-wide-content>
+  <ds-tablist>
+  <ds-tab >Custom theme</ds-tab>
+  <ds-tab >Default theme</ds-tab>
+  </ds-tablist>
+  <ds-tabpanel>
+  ```css
+  @import '@digdir/designsystemet-css/index.css';
+  @import 'design-tokens-build/<your-theme>.css';
+  ```     
+  </ds-tabpanel>
+  <ds-tabpanel>
+  ```js
+  import '@digdir/designsystemet-css';
+  import '@digdir/designsystemet-css/theme';
+  ```
+  </ds-tabpanel>
+</ds-tabs>
+
+
+## 5. Usage
+
+You are now ready to use the Designsystemet in code! 
+
+
+All components have their own page in the [component documentation](/no/components), we recommend that you read through these to see how you can use the components.
+
+It is also recommended that you read through the accessibility page.
+
+- Use `data-color-scheme="light | dark | auto"` to set dark/light mode.
+- Use `data-size="sm | md | lg"` to set the size of the components.
+- Use `data-color` to set the color of the components.
+
+
+<ds-tabs class="ds-tabs" data-wide-content>
+  <ds-tablist>
+  <ds-tab >HTML</ds-tab>
+  <ds-tab >React</ds-tab>
+  </ds-tablist>
+  <ds-tabpanel>
+```html
+<button class="ds-button" data-variant="secondary">Button</button>
+<ds-field class="ds-field">
+    <label>Label</label>
+    <input class="ds-input">
+</ds-field>
+```  
+  </ds-tabpanel>
+  <ds-tabpanel>
+  ```js
+<Button data-variant="secondary">Button</Button>;
+<Field>
+  <Label>Label</Label>
+  <Input />
+</Field>
+  ```
+  </ds-tabpanel>
+</ds-tabs>
+
+## Typescript
+
+Designsystemet provides type safety for its data attributes.
+
+Install the type package and add the type files to `tsconfig.json` to access them.
+
+```sh
+npm i -D @digdir/designsystemet-types
+```
+
+<ds-tabs class="ds-tabs" data-wide-content>
+  <ds-tablist>
+  <ds-tab >HTML</ds-tab>
+  <ds-tab >React</ds-tab>
+  </ds-tablist>
+  <ds-tabpanel>
+```json
+{
+  "compilerOptions": {
+    "types": [
+      "@digdir/designsystemet-web",
+      "@digdir/designsystemet-types",
+      "@digdir/designsystemet-css/theme" /* or your theme type file, design-tokens-build/types.d.ts */
+      ]
+  },
+}
+```
+  </ds-tabpanel>
+  <ds-tabpanel>
+```json
+{
+  "compilerOptions": {
+    "types": [
+      "@digdir/designsystemet-react/react-types", /** imports @digdir/designsystemet-types for you */
+      "@digdir/designsystemet-css/theme" /* or your theme type file, design-tokens-build/types.d.ts */
+      ]
+  },
+}
+```
+  </ds-tabpanel>
+</ds-tabs>
+
+
+
+## Font
+
+The components are designed and developed with the [Inter font (github.com)](https://github.com/rsms/inter), so variations may occur if you use a different font.
+If you choose to install the font in a way other than altinncdn.no, remember to include the font weights `400`, `500`, and `600`.
+
+### Add the Inter font (optional)
+
+Add the `<link>` tag below in the `<head>`, and set `font-family` to `Inter` in your global CSS file.
+
+You can use this code to add the font in `<head>`:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://altinncdn.no/fonts/inter/v4.1/inter.css"
+  integrity="sha384-OcHzc/By/OPw9uJREawUCjP2inbOGKtKb4A/I2iXxmknUfog2H8Adx71tWVZRscD"
+  crossorigin="anonymous"
+/>
+```
+### Font configuration
+
+We strongly recommend adding the following to your global CSS file.
+`font-feature-settings` adds a tail to lowercase `l`s.
+
+```css
+body {
+  font-family: var(--ds-font-family), sans-serif;
+  font-feature-settings: 'cv05' 1; /* Enable lowercase l with tail */
+}
+```
+
+
+## Polyfill
+
+The design system uses [popover](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover) in some components. This api is classified as [Baseline: Newly available](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility) as of April 2024, when Firefox was the last browser to add it. In some cases, you may find that users are locked to older browser versions for various reasons, and then it may be appropriate to add a polyfill to ensure that `popover` works for everyone.
+* [Popover-Polyfill](https://github.com/oddbird/popover-polyfill)
