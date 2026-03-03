@@ -12,7 +12,7 @@ import { cliOptions, createTokens } from '../src/tokens/create.js';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.js';
 import type { OutputFile, Theme } from '../src/tokens/types.js';
 import fs from '../src/utils/filesystem.js';
-import { parseBuildConfig, parseCreateConfig, readConfigFile } from './config.js';
+import { parseCreateConfig, readConfigFile } from './config.js';
 
 export const figletAscii = `
  _____            _                           _                      _
@@ -54,10 +54,11 @@ function makeTokenCommands() {
       console.log(figletAscii);
       const { verbose, clean, dry, experimentalTailwind, tokens } = opts;
 
-      const { configFile, configFilePath } = await getConfigFile(opts.config);
-      const config = await parseBuildConfig(configFile, { configFilePath });
+      const { configFilePath } = await getConfigFile(opts.config);
 
-      fs.init({ dry, configFilePath, outdir: opts.outDir, verbose }); // TODO - add outdir eqivalent to config option when parsing config, so that it can be set in the config file as well. buildDir?
+      // TODO - add outdir eqivalent to config option when parsing config, so that it can be set in the config file as well. buildDir?
+
+      fs.init({ dry, configFilePath, outdir: opts.outDir, verbose });
 
       const outDir = fs.outDir;
 
@@ -69,7 +70,6 @@ function makeTokenCommands() {
         tokensDir: tokens,
         verbose,
         tailwind: experimentalTailwind,
-        ...config,
       });
 
       console.log(`\n💾 Writing build to ${pc.green(outDir)}`);
@@ -122,8 +122,6 @@ function makeTokenCommands() {
         configFilePath,
         outdir: config.outDir,
       });
-
-      console.log('initialized file system with config:', { workingDir: fs.workingDir, outDir: fs.outDir });
 
       const outDir = fs.outDir;
 
