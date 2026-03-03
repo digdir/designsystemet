@@ -296,22 +296,30 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
             <div data-links>
               <Link href='/slack'>
                 <span>
-                  <PersonChatIcon height={24} width={24} aria-hidden='true' />
+                  <PersonChatIcon
+                    height={'1.5rem'}
+                    width={'1.5rem'}
+                    aria-hidden='true'
+                  />
                 </span>
 
                 {t('frontpage.join-section.buttons.slack')}
               </Link>
               <Link href='https://github.com/digdir/designsystemet'>
                 <span>
-                  <BranchingIcon height={24} width={24} aria-hidden='true' />
+                  <BranchingIcon
+                    height={'1.5rem'}
+                    width={'1.5rem'}
+                    aria-hidden='true'
+                  />
                 </span>
                 {t('frontpage.join-section.buttons.github')}
               </Link>
               <Link href='mailto:designsystem@digdir.no'>
                 <span>
                   <EnvelopeClosedIcon
-                    height={24}
-                    width={24}
+                    height={'1.5rem'}
+                    width={'1.5rem'}
                     aria-hidden='true'
                   />
                 </span>
