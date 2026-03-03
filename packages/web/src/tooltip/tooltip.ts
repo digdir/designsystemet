@@ -59,7 +59,7 @@ const handleAriaAttributes = debounce(() => {
       if (document.activeElement === el) announce(text || undefined);
     }
   }
-}, 0);
+}, 0); // Debounce to merge multiple mutations
 
 const handleInterest = ({ type, target }: Event) => {
   clearTimeout(HOVER_TIMER);
