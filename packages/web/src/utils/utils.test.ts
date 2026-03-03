@@ -1,6 +1,7 @@
 /// <reference types="@testing-library/jest-dom" />
 
 import { describe, expect, it, vi } from 'vitest';
+import { userEvent } from 'vitest/browser';
 import {
   announce,
   attr,
@@ -15,7 +16,6 @@ import {
   useId,
   warn,
 } from './utils';
-import { userEvent } from 'vitest/browser';
 
 const user = userEvent.setup();
 
