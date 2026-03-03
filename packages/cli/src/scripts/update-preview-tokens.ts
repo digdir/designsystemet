@@ -6,7 +6,7 @@ import { createTokens } from '../tokens/create.js';
 import { buildOptions, processPlatform } from '../tokens/process/platform.js';
 import { processThemeObject } from '../tokens/process/utils/getMultidimensionalThemes.js';
 import type { SizeModes, Theme } from '../tokens/types.js';
-import fs from '../utils/filesystem.js';
+import { dsfs } from '../utils/filesystem.js';
 
 const OUTDIR = '../../internal/components/src/tokens/design-tokens';
 
@@ -40,7 +40,7 @@ export const formatTheme = async (themeConfig: Theme) => {
     buildTokenFormats: {},
   });
 
-  await fs.cleanDir(OUTDIR);
+  await dsfs.cleanDir(OUTDIR);
 
   console.log(
     buildOptions?.buildTokenFormats
@@ -80,7 +80,7 @@ export const formatTheme = async (themeConfig: Theme) => {
     console.log(`\n💾 Writing preview tokens`);
 
     for (const [type, tokens] of Object.entries(tokensGroupedByType)) {
-      fs.writeFiles(
+      dsfs.writeFiles(
         [
           {
             destination: `${type}.json`,

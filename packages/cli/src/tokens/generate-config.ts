@@ -2,7 +2,7 @@ import path from 'node:path';
 import pc from 'picocolors';
 import type { CssColor } from '../colors/types.js';
 import type { CreateConfigSchema } from '../config.js';
-import fs from '../utils/filesystem.js';
+import { dsfs } from '../utils/filesystem.js';
 
 type TokenValue = {
   $type: string;
@@ -18,7 +18,7 @@ type TokenObject = {
  */
 async function readJsonFile(filePath: string): Promise<TokenObject> {
   try {
-    const content = await fs.readFile(filePath);
+    const content = await dsfs.readFile(filePath);
     return JSON.parse(content) as TokenObject;
   } catch (err) {
     throw new Error(`Failed to read token file at ${filePath}: ${err instanceof Error ? err.message : String(err)}`);
@@ -45,7 +45,7 @@ async function discoverThemes(tokensDir: string): Promise<string[]> {
   const lightModePath = path.join(tokensDir, 'themes');
 
   try {
-    const files = await fs.readdir(lightModePath);
+    const files = await dsfs.readdir(lightModePath);
     const themes = files.filter((file) => file.endsWith('.json')).map((file) => file.replace('.json', ''));
 
     return themes;

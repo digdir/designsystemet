@@ -1,7 +1,7 @@
 import type { ThemeObject } from '@tokens-studio/types';
 import pc from 'picocolors';
 import * as R from 'ramda';
-import fs from '../utils/filesystem.js';
+import { dsfs } from '../utils/filesystem.js';
 import { createTypeDeclarationFiles } from './process/output/declarations.js';
 import { createTailwindCSSFiles } from './process/output/tailwind.js';
 import { createThemeCSSFiles, defaultFileHeader } from './process/output/theme.js';
@@ -11,12 +11,12 @@ import type { DesignsystemetObject, OutputFile } from './types.js';
 
 export const buildTokens = async (options: Omit<BuildOptions, 'type' | 'processed$themes' | 'buildTokenFormats'>) => {
   const tokensDir = options.tokensDir;
-  const $themes = JSON.parse(await fs.readFile(`${tokensDir}/$themes.json`)) as ThemeObject[];
+  const $themes = JSON.parse(await dsfs.readFile(`${tokensDir}/$themes.json`)) as ThemeObject[];
   const processed$themes = $themes.map(processThemeObject);
   let $designsystemet: DesignsystemetObject | undefined;
 
   try {
-    const $designsystemetContent = await fs.readFile(`${tokensDir}/$designsystemet.jsonc`);
+    const $designsystemetContent = await dsfs.readFile(`${tokensDir}/$designsystemet.jsonc`);
     $designsystemet = JSON.parse($designsystemetContent) as DesignsystemetObject;
   } catch (_error) {}
 

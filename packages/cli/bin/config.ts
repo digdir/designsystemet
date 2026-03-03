@@ -9,14 +9,14 @@ import {
   parseConfig,
   validateConfig,
 } from '../src/config.js';
-import fs from '../src/utils/filesystem.js';
+import { dsfs } from '../src/utils/filesystem.js';
 import { getCliOption, getDefaultCliOption, getSuppliedCliOption, type OptionGetter } from './options.js';
 
 export async function readConfigFile(configFilePath: string, allowFileNotFound = true): Promise<string> {
   let configFile: string;
 
   try {
-    configFile = await fs.readFile(configFilePath, allowFileNotFound);
+    configFile = await dsfs.readFile(configFilePath, allowFileNotFound);
   } catch (err) {
     if (allowFileNotFound) {
       return '';

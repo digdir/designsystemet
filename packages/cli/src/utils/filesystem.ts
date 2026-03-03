@@ -7,6 +7,7 @@ import type { OutputFile } from '../tokens/types.js';
 class FileSystem {
   private isInitialized = false;
   private dry = false;
+  private verbose = false;
   /** Default working directory is where the process was started */
   workingDir = process.cwd();
   outDir = this.workingDir;
@@ -33,11 +34,12 @@ class FileSystem {
     }
 
     this.dry = dry ?? false;
+    this.verbose = verbose ?? false;
     // If a config file path is provided, set the working directory to the config file's directory. This allows relative paths in the config file to be resolved correctly. If no config file path is provided, use the current working directory.
     this.workingDir = configFilePath ? path.dirname(configFilePath) : this.workingDir;
     // If an output directory is provided, resolve it relative to the working directory. Otherwise, use the working directory as the output directory.
     this.outDir = outdir ? (path.isAbsolute(outdir) ? outdir : path.join(this.workingDir, outdir)) : this.workingDir;
-    if (verbose) {
+    if (this.verbose) {
       console.log(
         `FileSystem initialized with workingDir: ${pc.green(this.workingDir)}, outDir: ${pc.green(this.outDir)}`,
       );
@@ -159,8 +161,8 @@ class FileSystem {
 }
 
 /**
- * An abstraction of Node's file system API and helper functions for CLI interaction with the file system.
+ * An abstraction of Node's file system API and helper functions for Designsystemet CLI interaction with the file system.
  *
  * Allows dry-running destructive operations, logging and store relevant file system state.
  */
-export default new FileSystem();
+export const dsfs = new FileSystem();

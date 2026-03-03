@@ -2,7 +2,7 @@ import path from 'node:path';
 import type { ThemeObject } from '@tokens-studio/types';
 import pc from 'picocolors';
 import * as R from 'ramda';
-import fs from '../../utils/filesystem.js';
+import { dsfs } from '../../utils/filesystem.js';
 import type { OutputFile, SizeModes, Theme, TokenSets } from '../types.js';
 import { generate$Designsystemet } from './generators/$designsystemet.js';
 import { generate$Metadata } from './generators/$metadata.js';
@@ -29,11 +29,11 @@ export const createTokenFiles = async (options: CreateTokenFilesOptions) => {
   let themeObjects: ThemeObject[] = [];
   const sizeModes: SizeModes[] = ['small', 'medium', 'large'];
 
-  await fs.mkdir(outDir);
+  await dsfs.mkdir(outDir);
 
   try {
     // Fetch existing themes
-    const $themes = await fs.readFile(path.join(outDir, $themesPath));
+    const $themes = await dsfs.readFile(path.join(outDir, $themesPath));
     if ($themes) {
       themeObjects = JSON.parse($themes) as ThemeObject[];
     }

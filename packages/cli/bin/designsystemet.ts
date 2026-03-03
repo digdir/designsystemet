@@ -11,7 +11,7 @@ import { createTokenFiles } from '../src/tokens/create/files.js';
 import { cliOptions, createTokens } from '../src/tokens/create.js';
 import { generateConfigFromTokens } from '../src/tokens/generate-config.js';
 import type { OutputFile, Theme } from '../src/tokens/types.js';
-import fs from '../src/utils/filesystem.js';
+import { dsfs } from '../src/utils/filesystem.js';
 import { parseCreateConfig, readConfigFile } from './config.js';
 
 export const figletAscii = `
@@ -58,12 +58,12 @@ function makeTokenCommands() {
 
       // TODO - add outdir eqivalent to config option when parsing config, so that it can be set in the config file as well. buildDir?
 
-      fs.init({ dry, configFilePath, outdir: opts.outDir, verbose });
+      dsfs.init({ dry, configFilePath, outdir: opts.outDir, verbose });
 
-      const outDir = fs.outDir;
+      const outDir = dsfs.outDir;
 
       if (clean) {
-        await fs.cleanDir(outDir);
+        await dsfs.cleanDir(outDir);
       }
 
       const files = await buildTokens({
@@ -74,7 +74,7 @@ function makeTokenCommands() {
 
       console.log(`\n💾 Writing build to ${pc.green(outDir)}`);
 
-      await fs.writeFiles(files, outDir, true);
+      await dsfs.writeFiles(files, outDir, true);
 
       console.log(`\n✅ Finished building tokens in ${pc.green(outDir)}`);
 
@@ -117,16 +117,16 @@ function makeTokenCommands() {
         configFilePath,
       });
 
-      fs.init({
+      dsfs.init({
         dry: opts.dry,
         configFilePath,
         outdir: config.outDir,
       });
 
-      const outDir = fs.outDir;
+      const outDir = dsfs.outDir;
 
       if (config.clean) {
-        await fs.cleanDir(outDir);
+        await dsfs.cleanDir(outDir);
       }
 
       let files: OutputFile[] = [];
@@ -140,7 +140,7 @@ function makeTokenCommands() {
         }
       }
 
-      await fs.writeFiles(files, outDir);
+      await dsfs.writeFiles(files, outDir);
 
       console.log(`\n✅ Finished creating tokens in ${pc.green(outDir)} for theme: ${pc.blue(themeName)}`);
 
@@ -164,7 +164,7 @@ program
     const tokensDir = path.resolve(opts.dir);
     const configFilePath = path.resolve(opts.out);
 
-    fs.init({ dry, configFilePath, outdir: path.dirname(configFilePath) });
+    dsfs.init({ dry, configFilePath, outdir: path.dirname(configFilePath) });
 
     try {
       const config = await generateConfigFromTokens({
@@ -180,7 +180,7 @@ program
 
       if (configFilePath) {
         const configJson = JSON.stringify(config, null, 2);
-        await fs.writeFile(configFilePath, configJson);
+        await dsfs.writeFile(configFilePath, configJson);
         console.log();
         console.log(`\n✅ Config file written to ${pc.blue(configFilePath)}`);
       }
