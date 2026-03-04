@@ -271,7 +271,11 @@ export const ReactDropZoneExample: StoryFn<typeof FileUpload> = () => {
         )}
         {!isReadOnly && (
           <>
-            <CloudUpIcon aria-hidden='true' />
+            {isDragReject ? (
+              <CircleSlashIcon aria-hidden='true' />
+            ) : (
+              <CloudUpIcon aria-hidden='true' />
+            )}
             <FileUpload.Label aria-hidden='true'>
               {isDragReject
                 ? 'File type not accepted'
@@ -287,7 +291,11 @@ export const ReactDropZoneExample: StoryFn<typeof FileUpload> = () => {
           </>
         )}
 
-        <FileUpload.Input {...getInputProps()} readOnly={isReadOnly} />
+        <FileUpload.Input
+          {...getInputProps()}
+          readOnly={isReadOnly}
+          aria-invalid={isDragReject}
+        />
       </FileUpload>
       {files.length > 0 && (
         <>
