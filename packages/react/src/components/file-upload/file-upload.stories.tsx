@@ -280,7 +280,8 @@ export const ReactDropZoneExample: StoryFn<typeof FileUpload> = () => {
                   : 'Drop file(s) or click to upload'}
             </FileUpload.Label>
             <FileUpload.Description>
-              SVG only, {MAX_FILES - files.length} of {MAX_FILES} files remaining
+              File must be <code>.svg</code>, {MAX_FILES - files.length} of{' '}
+              {MAX_FILES} files remaining
             </FileUpload.Description>
             <FileUpload.Button>Upload files</FileUpload.Button>
           </>
