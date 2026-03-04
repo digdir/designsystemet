@@ -1,15 +1,25 @@
 /*double class to increase specificity above .ds-field :is() (0.2.0 + order)*/
 .ds-file-upload.ds-file-upload {
-  /*todo: component variables*/
-  border: 2px dashed var(--ds-color-border-default);
+  --dsc-file-upload-background: var(--ds-color-surface-default);
+  --dsc-file-upload-background--hover: var(--ds-color-surface-tinted);
+  --dsc-file-upload-icon-color: var(--ds-color-text-subtle);
+  --dsc-file-upload-label-color: var(--ds-color-text-default);
+  --dsc-file-upload-description-color: var(--ds-color-neutral-text-subtle);
+  --dsc-file-upload-border-color: var(--ds-color-border-default);
+  --dsc-file-upload-border-radius: var(--ds-border-radius-md);
+  --dsc-file-upload-border-width: max(2px, 0.125rem);
+  --dsc-file-upload-border-style: dashed;
+  --dsc-file-upload-border-style--hover: solid;
+  --dsc-file-upload-padding: var(--ds-size-8) var(--ds-size-6);
+
+  border: var(--dsc-file-upload-border-width) var(--dsc-file-upload-border-style) var(--dsc-file-upload-border-color);
   width: auto;
-  border-radius: var(--ds-border-radius-md);
-  padding-block: var(--ds-size-8);
-  padding-inline: var(--ds-size-6);
+  border-radius: var(--dsc-file-upload-border-radius);
+  padding: var(--dsc-file-upload-padding);
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--ds-color-surface-default);
+  background-color: var(--dsc-file-upload-background);
   user-select: none;
   @composes ds-print-preserve from './base.css';
 
@@ -19,8 +29,8 @@
 
   &:hover,
   &:has([readonly]) {
-    border-style: solid;
-    background-color: var(--ds-color-surface-tinted);
+    border-style: var(--dsc-file-upload-border-style--hover);
+    background-color: var(--dsc-file-upload-background--hover);
     cursor: pointer;
     .ds-button {
       /*link hover to button*/
@@ -31,21 +41,24 @@
   &:has([readonly]) {
     cursor: not-allowed;
   }
+  &:has([aria-invalid='true']) {
+    border-color: var(--ds-color-danger-border-default);
+  }
 
   > * + * {
     margin-top: var(--ds-size-4);
   }
   svg {
-    color: var(--ds-color-text-subtle);
+    color: var(--dsc-file-upload-icon-color);
     height: var(--ds-size-8);
     width: auto;
   }
   .ds-file-upload__label {
     margin-top: var(--ds-size-2);
-    color: var(--ds-color-text-default);
+    color: var(--dsc-file-upload-label-color);
   }
   .ds-file-upload__description {
-    color: var(--ds-color-neutral-text-subtle);
+    color: var(--dsc-file-upload-description-color);
     margin-top: 0;
   }
 }
