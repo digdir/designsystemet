@@ -20,7 +20,57 @@
       "require": "./dist/cjs/index.cjs"
     },
     "./custom-elements.json": "./dist/custom-elements.json",
-    "./vscode.html-custom-data.json": "./dist/vscode.html-custom-data.json"
+    "./vscode.html-custom-data.json": "./dist/vscode.html-custom-data.json",
+    "./ds-breadcrumbs": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/breadcrumbs/index.js",
+      "require": "./dist/cjs/breadcrumbs/index.cjs"
+    },
+    "./ds-error-summary": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/error-summary/index.js",
+      "require": "./dist/cjs/error-summary/index.cjs"
+    },
+    "./ds-field": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/field/index.js",
+      "require": "./dist/cjs/field/index.cjs"
+    },
+    "./ds-pagination": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/pagination/index.js",
+      "require": "./dist/cjs/pagination/index.cjs"
+    },
+    "./ds-suggestion": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/suggestion/index.js",
+      "require": "./dist/cjs/suggestion/index.cjs"
+    },
+    "./ds-tabs": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/tabs/index.js",
+      "require": "./dist/cjs/tabs/index.cjs"
+    },
+    "./toggle-group": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/toggle-group/index.js",
+      "require": "./dist/cjs/toggle-group/index.cjs"
+    },
+    "./tooltip": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/tooltip/index.js",
+      "require": "./dist/cjs/tooltip/index.cjs"
+    },
+    "./clickdelegatefor": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/clickdelegatefor/index.js",
+      "require": "./dist/cjs/clickdelegatefor/index.cjs"
+    },
+    "./popover": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/popover/index.js",
+      "require": "./dist/cjs/popover/index.cjs"
+    }
   },
   "files": [
     "dist/**"
