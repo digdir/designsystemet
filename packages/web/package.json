@@ -51,6 +51,11 @@
       "import": "./dist/esm/tabs/index.js",
       "require": "./dist/cjs/tabs/index.cjs"
     },
+    "./dialog": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/dialog/index.js",
+      "require": "./dist/cjs/dialog/index.cjs"
+    },
     "./toggle-group": {
       "types": "./dist/index.d.ts",
       "import": "./dist/esm/toggle-group/index.js",
