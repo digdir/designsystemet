@@ -1,21 +1,23 @@
 ## Implementasjonstester
 
-**1. Hver knapp i `ToggleGroup` skal ha et tydelig programmatisk navn**
+- Hver knapp i `ToggleGroup` skal ha et tydelig tilgjengelig navn
+  - Hvis en knapp kun viser ikon, skal navnet beskrive hva valget betyr.
+  - Eksempel: “Listevisning” eller “Rutenettvisning”.
+  - [4.1.2 Navn, rolle, verdi](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121)
 
-WCAG: [1.1.1](https://www.uutilsynet.no/wcag-standarden/111-ikke-tekstinnhold-niva/22), [4.1.2](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva-a/98)
+- `ToggleGroup` skal ha et tilgjengelig navn som forklarer hva valgene gjelder
+  - Dette kan være en synlig ledetekst eller et programmatisk navn (for eksempel `aria-label`).
+  - Eksempel: “Visning”.
+  - [4.1.2 Navn, rolle, verdi](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121)
 
-**2. `ToggleGroup` skal ha et programmatisk navn som beskriver hva valgene gjelder**
-
-WCAG: [4.1.2](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva-a/98), [2.4.6](https://www.uutilsynet.no/wcag-standarden/246-overskrifter-og-ledetekster-niva-aa/108)
-
-**3. `ToggleGroup` skal fungere på små skjermer uten at innhold forsvinner**
-
-WCAG: [1.4.10](https://www.uutilsynet.no/wcag-standarden/1410-omstilling-niva-aa/260)
+- `ToggleGroup` skal fungere på små skjermer uten at innhold forsvinner
+  - Hele komponenten skal være synlig uten horisontal scrolling.
+  - Test ved smal viewport eller høy zoom (for eksempel 320px bredde eller 400 % zoom).
+  - [1.4.10 Dynamisk tilpasning (Reflow)](https://www.uutilsynet.no/wcag-standarden/1410-dynamisk-tilpasning-reflow-niva-aa/144)
 
 ### God praksis
 
-- Hvis `ToggleGroup` bruker kun ikoner, bør det i tillegg vises tooltip for å forklare handlingen visuelt.
-- Tooltip erstatter ikke krav om programmatisk navn.
+- Hvis `ToggleGroup` bruker kun ikoner, bør det i tillegg vises `Tooltip` for å forklare handlingen visuelt. `Tooltip` erstatter ikke krav om programmatisk navn.
 
 `ToggleGroup` har standard fokusindikator (ramme).  
 Vi brukar `roving tabindex` for å handtere fokusbevegelse mellom knappane.

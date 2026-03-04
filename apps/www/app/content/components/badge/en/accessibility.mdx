@@ -1,24 +1,23 @@
 ## Implementation tests
 
-**1. An informative `Badge` showing important information (for example a count) must be included in the interactive element’s accessible name**
+- Informative `Badge` that shows important information (for example a count) must be included in the interactive element’s accessible name
+  - If `Badge` is placed inline (inside the element), its content automatically becomes part of the accessible name.
+  - Example: `Button` with the text "Inbox" and a `Badge` with "2" is announced as "Inbox 2".
+  - [1.3.1 Info and relationships](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
 
-WCAG: [1.3.1](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90), [4.1.2](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva-a/98), [2.4.4](https://www.uutilsynet.no/wcag-standarden/244-formal-med-lenker-niva-aa/112)
+- If a `Badge` is placed outside the interactive element, the badge information must be added to the element’s accessible name
+  - This often applies when the `Badge` is displayed in the corner of a button or icon.
+  - In these cases, the badge value must be added manually to the element’s accessible name (for example via `aria-label`).
+  - [1.3.1 Info and relationships](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
 
-**2. If a `Badge` is placed outside the element, the badge information must be included in the element’s accessible name.** 
+- Decorative `Badge` must be hidden from screen readers
+  - [1.1.1 Non-text content](https://www.uutilsynet.no/wcag-standarden/111-ikke-tekstlig-innhold-niva/87)
 
-WCAG: [1.3.1](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90), [4.1.2](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva-a/98)
+- `Badge` that changes value (for example 1 → 2) must be announced to screen readers
+  - [4.1.3 Status messages](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)
 
-**3. A decorative `Badge` that conveys no information must be hidden from screen readers**
-
-WCAG: [1.1.1](https://www.uutilsynet.no/wcag-standarden/111-ikke-tekstinnhold-niva/22)
-
-**4. A `Badge` that changes value (for example 1 → 2) must be announced to screen readers**
-
-WCAG: [4.1.3](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)
-
-**5. A `Badge` must not rely solely on color or position to convey information**
-
-WCAG: [1.4.1](https://www.uutilsynet.no/wcag-standarden/141-bruk-av-farge-niva/93)
+- `Badge` must not convey information using only color or position
+  - [1.4.1 Use of color](https://www.uutilsynet.no/wcag-standarden/141-bruk-av-farge-niva/93)
 
 ## Relevant sources
 - [1] [1.1.1 Non-text content](https://www.uutilsynet.no/wcag-standarden/111-ikke-tekstlig-innhold-niva/87)

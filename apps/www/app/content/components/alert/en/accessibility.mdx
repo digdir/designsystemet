@@ -1,23 +1,18 @@
 ## Implementation tests
 
-**1. An `Alert` that appears or updates after the page has loaded must be announced to screen readers**
+- `Alert` that appears or updates after the page has loaded must be automatically announced by screen readers
+  - Use `role="alert"` for critical messages that require immediate attention.
+  - Use `role="status"` for less critical messages.
+  - [4.1.3 Status messages](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)
 
-- Use `role="alert"` for critical messages requiring immediate attention and `role="status"` for less critical ones.
+- `Alert` must be placed so that it follows the reading order
+  - If the `Alert` has a heading, the heading level must be correct in the page structure.
+  - [1.3.1 Info and relationships](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
 
-WCAG: [4.1.3](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)
-
-**2. An `Alert` must be placed so that it follows the reading order**
-
-- If the `Alert` has a heading, it must use the correct heading level in the page structure.
-
-WCAG: [1.3.1](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
-
-**3. The `Alert` text must explain what happened and what it means for the user**
-
-- Text that only says “Error” or “Warning” is not sufficient.
-
-WCAG: [2.4.6](https://www.uutilsynet.no/wcag-standarden/246-overskrifter-og-ledetekster-niva-aa/108)
-
+- `Alert` text must explain what happened and what it means for the user
+  - Example: “You must enter an email address”.
+  - Not just: “Error” or “Warning”.
+  - [2.4.6 Headings and labels](https://www.uutilsynet.no/wcag-standarden/246-overskrifter-og-ledetekster-niva-aa/108)
 ## Alert in a live region
 
 If you want the alert to be read out dynamically, you must place the `Alert` inside a live region. The region **must wrap around** the `Alert` component, not be placed on the component itself.
