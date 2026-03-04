@@ -1,4 +1,10 @@
-import type { ChangeEvent, ReactNode } from 'react';
+import type {
+  ChangeEvent,
+  Dispatch,
+  ForwardedRef,
+  ReactNode,
+  SetStateAction,
+} from 'react';
 import { useEffect, useId, useRef, useState } from 'react';
 import type { CheckboxProps } from '../../../components';
 
@@ -59,7 +65,7 @@ export type GetCheckboxProps = Omit<
 > & {
   /** Enables indeterminate handling for this `Checkbox` and `CheckboxGroup` */
   allowIndeterminate?: boolean;
-  ref?: React.ForwardedRef<HTMLInputElement>; // Use this to match Ref from `Checkbox`, remove when `Checkbox` no longer uses `forwardRef`
+  ref?: ForwardedRef<HTMLInputElement>; // Use this to match Ref from `Checkbox`, remove when `Checkbox` no longer uses `forwardRef`
   checked?: boolean;
   value?: string;
 };
@@ -80,7 +86,7 @@ const toggleIndeterminate = (
 
 type useCheckboxGroupReturn = {
   value: string[];
-  setValue: React.Dispatch<React.SetStateAction<string[]>>;
+  setValue: Dispatch<SetStateAction<string[]>>;
   getCheckboxProps: (
     propsOrValue?: string | GetCheckboxProps,
   ) => GetCheckboxProps;

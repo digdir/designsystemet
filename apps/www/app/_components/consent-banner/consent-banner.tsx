@@ -13,7 +13,7 @@ export const ConsentBanner = forwardRef<HTMLDivElement, BannerProps>(
     return (
       <div className={classes.consentBanner} {...rest} ref={ref}>
         <div className={classes.container}>
-          <Heading level={2} data-size='lg'>
+          <Heading level={2} data-size='sm'>
             {t('consent-banner.heading')}
           </Heading>
           <Paragraph>
@@ -45,6 +45,7 @@ export const ConsentBanner = forwardRef<HTMLDivElement, BannerProps>(
               name='action'
               value='required'
               data-color='neutral'
+              data-size='sm'
             >
               {t('consent-banner.required')}
             </Button>
@@ -53,6 +54,7 @@ export const ConsentBanner = forwardRef<HTMLDivElement, BannerProps>(
               name='action'
               value='all'
               data-color='neutral'
+              data-size='sm'
             >
               {t('consent-banner.all')}
             </Button>
