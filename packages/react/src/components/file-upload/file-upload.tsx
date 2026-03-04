@@ -7,18 +7,8 @@ import type { MergeRight } from '../../utilities';
 export type FileUploadProps = MergeRight<
   DefaultProps & HTMLAttributes<HTMLLabelElement>,
   {
-    /** Instances of `FileUpload.Button`, `FileUpload.Label`, `FileUpload.Description` or other React nodes */
+    /** Instances of `FileUpload.Button`, `FileUpload.Label`, `FileUpload.Description`, `FileUpload.Input` or other React nodes */
     children: ReactNode;
-    /** File input accept attribute */
-    accept?: string;
-    /** Allow multiple file selection */
-    multiple?: boolean;
-    /** Disable file input */
-    disabled?: boolean;
-    /** Readonly file input */
-    readOnly?: boolean;
-    /** Capture attribute for file input */
-    capture?: boolean | 'user' | 'environment';
   }
 >;
 
@@ -28,14 +18,15 @@ export type FileUploadProps = MergeRight<
  * @example
  * <FileUpload>
  *    <CloudUpIcon aria-hidden='true' />
- *    <FileUpload.Label>Drop file here</FileUpload.Label>
+ *    <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
  *    <FileUpload.Description>
  *      File must be in csv format and less than 2MB
  *    </FileUpload.Description>
  *    <FileUpload.Button>Upload file</FileUpload.Button>
+ *    <FileUpload.Input />
  *  </FileUpload>
  */
-export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
+export const FileUpload = forwardRef<HTMLLabelElement, FileUploadProps>(
   function FileUpload(
     {
       className,
@@ -43,17 +34,14 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
       'data-size': size,
       'data-color': color,
       children,
-      accept,
-      multiple,
-      disabled,
-      readOnly,
-      capture,
       ...rest
     },
     ref,
   ) {
     return (
+      // biome-ignore lint/a11y/noLabelWithoutControl: input is provided via the FileUpload.Input subcomponent
       <label
+        ref={ref}
         className={cl(`ds-file-upload`, className)}
         style={style}
         data-size={size}
@@ -61,16 +49,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
         {...rest}
       >
         {children}
-        <input
-          ref={ref}
-          type='file'
-          className='ds-sr-only'
-          accept={accept}
-          multiple={multiple}
-          disabled={disabled}
-          capture={capture}
-          readOnly={readOnly}
-        />
       </label>
     );
   },

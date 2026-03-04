@@ -1,6 +1,6 @@
 import { CircleSlashIcon, CloudUpIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
-import { type ChangeEvent, type DragEvent, useRef, useState } from 'react';
+import { type DragEvent, useRef, useState } from 'react';
 import { Button, Field, Label, ValidationMessage } from '../';
 import { FileUpload } from './';
 
@@ -28,11 +28,12 @@ export const Preview: Story = {
     return (
       <FileUpload {...args}>
         <CloudUpIcon aria-hidden='true' />
-        <FileUpload.Label>Drop file here</FileUpload.Label>
+        <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
         <FileUpload.Description>
           File must be in csv format and less than 2MB
         </FileUpload.Description>
         <FileUpload.Button>Upload file</FileUpload.Button>
+        <FileUpload.Input />
       </FileUpload>
     );
   },
@@ -42,19 +43,21 @@ export const Variants: StoryFn<typeof FileUpload> = () => (
   <>
     <FileUpload>
       <CloudUpIcon aria-hidden='true' />
-      <FileUpload.Label>Drop file here</FileUpload.Label>
+      <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
       <FileUpload.Description>
         File must be in csv format and less than 2MB
       </FileUpload.Description>
       <FileUpload.Button>Upload file</FileUpload.Button>
+      <FileUpload.Input />
     </FileUpload>
     <FileUpload data-color='neutral'>
       <CloudUpIcon aria-hidden='true' />
-      <FileUpload.Label>Drop file here</FileUpload.Label>
+      <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
       <FileUpload.Description>
         File must be in csv format and less than 2MB
       </FileUpload.Description>
       <FileUpload.Button>Upload file</FileUpload.Button>
+      <FileUpload.Input />
     </FileUpload>
   </>
 );
@@ -67,6 +70,7 @@ export const LinkAlt: StoryFn<typeof FileUpload> = () => (
     <FileUpload.Description>
       File must be in csv format and less than 2MB
     </FileUpload.Description>
+    <FileUpload.Input />
   </FileUpload>
 );
 
@@ -76,11 +80,12 @@ export const FieldTest: StoryFn<typeof FileUpload> = () => (
     <Field.Description>Inside Field</Field.Description>
     <FileUpload>
       <CloudUpIcon aria-hidden='true' />
-      <FileUpload.Label>Drop file here</FileUpload.Label>
+      <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
       <FileUpload.Description>
         File must be in csv format and less than 2MB
       </FileUpload.Description>
       <FileUpload.Button>Upload file</FileUpload.Button>
+      <FileUpload.Input />
     </FileUpload>
     <ValidationMessage>Invalid file format</ValidationMessage>
   </Field>
@@ -91,17 +96,18 @@ export const ReadOnly: StoryFn<typeof FileUpload> = () => (
     <Field>
       <Label>Upload files</Label>
       <Field.Description>Inside Field</Field.Description>
-      <FileUpload readOnly={true}>
+      <FileUpload>
         <CloudUpIcon aria-hidden='true' />
-        <FileUpload.Label>Drop file here</FileUpload.Label>
+        <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
         <FileUpload.Description>
           File must be in csv format and less than 2MB
         </FileUpload.Description>
         <FileUpload.Button>Upload file</FileUpload.Button>
+        <FileUpload.Input readOnly={true} />
       </FileUpload>
       <ValidationMessage>Invalid file format</ValidationMessage>
     </Field>
-    <FileUpload readOnly={true}>
+    <FileUpload>
       <CloudUpIcon aria-hidden='true' />
       <FileUpload.Label>
         Drop files or <span className='ds-link'>click to browse</span>
@@ -109,6 +115,7 @@ export const ReadOnly: StoryFn<typeof FileUpload> = () => (
       <FileUpload.Description>
         File must be in csv format and less than 2MB
       </FileUpload.Description>
+      <FileUpload.Input readOnly={true} />
     </FileUpload>
   </>
 );
@@ -118,24 +125,26 @@ export const Disabled: StoryFn<typeof FileUpload> = () => (
     <Field>
       <Label>Upload files</Label>
       <Field.Description>Inside Field</Field.Description>
-      <FileUpload disabled={true}>
+      <FileUpload>
         <CloudUpIcon aria-hidden='true' />
-        <FileUpload.Label>Drop file here</FileUpload.Label>
+        <FileUpload.Label aria-hidden='true'>Drop file here</FileUpload.Label>
         <FileUpload.Description>
           File must be in csv format and less than 2MB
         </FileUpload.Description>
         <FileUpload.Button>Upload file</FileUpload.Button>
+        <FileUpload.Input disabled={true} />
       </FileUpload>
       <ValidationMessage>Invalid file format</ValidationMessage>
     </Field>
-    <FileUpload disabled={true}>
+    <FileUpload>
       <CloudUpIcon aria-hidden='true' />
-      <FileUpload.Label>
+      <FileUpload.Label aria-hidden='true'>
         Drop files or <span className='ds-link'>click to browse</span>
       </FileUpload.Label>
       <FileUpload.Description>
         File must be in csv format and less than 2MB
       </FileUpload.Description>
+      <FileUpload.Input disabled={true} />
     </FileUpload>
   </>
 );
@@ -159,20 +168,17 @@ export const WorkingExample: StoryFn<typeof FileUpload> = () => {
     }
   };
 
-  const handleChange = (event: ChangeEvent<HTMLLabelElement>) => {
-    const target = event.target;
-    if (!(target instanceof HTMLInputElement)) {
-      return;
-    }
-
-    if (target.files && target.files.length > 0) {
-      addFiles(target.files);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files.length > 0) {
+      addFiles(event.target.files);
+      event.target.value = '';
     }
   };
 
   const handleReset = () => {
     setUploadedFiles([]);
     setIsReadOnly(false);
+    setIsDragging(false);
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
     }
@@ -181,16 +187,12 @@ export const WorkingExample: StoryFn<typeof FileUpload> = () => {
   return (
     <div style={{ minWidth: 'max(50vw, 300px)' }}>
       <FileUpload
-        ref={fileInputRef}
-        accept='.svg'
-        readOnly={isReadOnly}
         onDragOver={(event) => {
           event.preventDefault();
           setIsDragging(true);
         }}
         onDragLeave={() => setIsDragging(false)}
         onDrop={handleDrop}
-        onChange={handleChange}
       >
         {isReadOnly && (
           <>
@@ -201,7 +203,7 @@ export const WorkingExample: StoryFn<typeof FileUpload> = () => {
         {!isReadOnly && (
           <>
             <CloudUpIcon aria-hidden='true' />
-            <FileUpload.Label>
+            <FileUpload.Label aria-hidden='true'>
               {isDragging ? 'Drop file to upload' : 'Drop file here'}
             </FileUpload.Label>
             <FileUpload.Description>
@@ -210,6 +212,12 @@ export const WorkingExample: StoryFn<typeof FileUpload> = () => {
             <FileUpload.Button>Upload file</FileUpload.Button>
           </>
         )}
+        <FileUpload.Input
+          ref={fileInputRef}
+          accept='.svg'
+          readOnly={isReadOnly}
+          onChange={handleChange}
+        />
       </FileUpload>
       {uploadedFiles.length > 0 && (
         <>
