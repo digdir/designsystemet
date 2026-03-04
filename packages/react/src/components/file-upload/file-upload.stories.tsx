@@ -1,6 +1,8 @@
 import { CircleSlashIcon, CloudUpIcon } from '@navikt/aksel-icons';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react-vite';
 import { type DragEvent, useRef, useState } from 'react';
+import type { FileRejection } from 'react-dropzone';
+import { useDropzone } from 'react-dropzone';
 import { Button, Field, Label, ValidationMessage } from '../';
 import { FileUpload } from './';
 
@@ -229,6 +231,83 @@ export const WorkingExample: StoryFn<typeof FileUpload> = () => {
             ))}
           </ul>
           <Button onClick={handleReset}>Clear file</Button>
+        </>
+      )}
+    </div>
+  );
+};
+
+export const ReactDropZoneExample: StoryFn<typeof FileUpload> = () => {
+  const MAX_FILES = 3;
+  const [files, setFiles] = useState<File[]>([]);
+  const [rejected, setRejected] = useState<FileRejection[]>([]);
+  const isReadOnly = files.length >= MAX_FILES;
+  const { getRootProps, getInputProps, isDragActive, isDragReject } =
+    useDropzone({
+      onDropAccepted: (newFiles) => {
+        setFiles((prev) => {
+          const remaining = MAX_FILES - prev.length;
+          return [...prev, ...newFiles.slice(0, remaining)];
+        });
+      },
+      onDropRejected: (rej) => {
+        setRejected((prev) => [...prev, ...rej]);
+      },
+      accept: {
+        'image/svg+xml': ['.svg'],
+      },
+      maxFiles: MAX_FILES,
+      disabled: isReadOnly,
+    });
+
+  return (
+    <div style={{ minWidth: 'max(50vw, 300px)' }}>
+      <FileUpload {...getRootProps()}>
+        {isReadOnly && (
+          <>
+            <CircleSlashIcon aria-hidden='true' />
+            <FileUpload.Label>You can not upload more files</FileUpload.Label>
+          </>
+        )}
+        {!isReadOnly && (
+          <>
+            <CloudUpIcon aria-hidden='true' />
+            <FileUpload.Label aria-hidden='true'>
+              {isDragReject
+                ? 'File type not accepted'
+                : isDragActive
+                  ? 'Drop file(s) here'
+                  : 'Drop file(s) or click to upload'}
+            </FileUpload.Label>
+            <FileUpload.Description>
+              SVG only, {MAX_FILES - files.length} of {MAX_FILES} files remaining
+            </FileUpload.Description>
+            <FileUpload.Button>Upload files</FileUpload.Button>
+          </>
+        )}
+
+        <FileUpload.Input {...getInputProps()} readOnly={isReadOnly} />
+      </FileUpload>
+      {files.length > 0 && (
+        <>
+          <p>Accepted files</p>
+          <ul>
+            {files.map((file) => (
+              <li key={`${file.name}-${file.lastModified}`}>{file.name}</li>
+            ))}
+          </ul>
+        </>
+      )}
+      {rejected.length > 0 && (
+        <>
+          <p>Rejected files</p>
+          <ul>
+            {rejected.map(({ file, errors }) => (
+              <li key={`${file.name}-${file.lastModified}`}>
+                {file.name} — {errors.map((e) => e.message).join(', ')}
+              </li>
+            ))}
+          </ul>
         </>
       )}
     </div>
