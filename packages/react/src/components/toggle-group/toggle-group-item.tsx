@@ -21,8 +21,22 @@ export type ToggleGroupItemProps = {
    **/
   icon?: boolean;
 } & DefaultProps &
-  LabelHTMLAttributes<HTMLLabelElement> &
-  Omit<ButtonHTMLAttributes<HTMLLabelElement>, 'type'>;
+  LabelHTMLAttributes<HTMLLabelElement> & {
+    /** @deprecated Internal DOM structure has been changed to use label+input element */
+    disabled?: ButtonHTMLAttributes<HTMLButtonElement>['disabled'];
+    /** @deprecated Internal DOM structure has been changed to use label+input element */
+    formAction?: ButtonHTMLAttributes<HTMLButtonElement>['formAction'];
+    /** @deprecated Internal DOM structure has been changed to use label+input element */
+    formEncType?: ButtonHTMLAttributes<HTMLButtonElement>['formEncType'];
+    /** @deprecated Internal DOM structure has been changed to use label+input element */
+    formMethod?: ButtonHTMLAttributes<HTMLButtonElement>['formMethod'];
+    /** @deprecated Internal DOM structure has been changed to use label+input element */
+    formNoValidate?: ButtonHTMLAttributes<HTMLButtonElement>['formNoValidate'];
+    /** @deprecated Internal DOM structure has been changed to use label+input element */
+    formTarget?: ButtonHTMLAttributes<HTMLButtonElement>['formTarget'];
+    /** @deprecated Internal DOM structure has been changed to use label+input element */
+    name?: ButtonHTMLAttributes<HTMLButtonElement>['name'];
+  };
 
 /**
  * A single item in a ToggleGroup.
@@ -52,6 +66,7 @@ export const ToggleGroupItem = forwardRef<
     name,
     ...labelProps
   } = rest;
+
   // Add backwards compatibility for `button` props that were previously allowed on ToggleGroupItem #
   const inputProps: InputHTMLAttributes<HTMLInputElement> = {
     disabled,
