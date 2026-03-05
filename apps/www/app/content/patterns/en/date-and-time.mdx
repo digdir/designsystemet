@@ -4,9 +4,17 @@ sidebar_title: Date and time
 category: Ask users for...
 description: Asking users for date and time is often solved in a more complicated way than necessary. In many situations, standard input fields are both faster to use and easier to understand than custom-built date pickers.
 partners: Digdir, Brønnøysundregistrene
-date: 2026-02-18
+date: 2026-03-05
 order: 10
 ---
+
+<Card
+  data-color='warning'
+  variant="tinted"
+>
+This article has been developed by the design system team at The Norwegian Digitalisation Agency in collaboration with Brønnøysundregistrene. It has *not* gone through the same collaborative process as the patterns in the [Pattern collaboration](/en/intro/collaboration#3-cross-agency-pattern-collaboration). We would like feedback on the article. Please share it in [Slack](https://designsystemet.no/slack) or in this [discussion thread on github.com](https://github.com/digdir/designsystemet/discussions/1681).
+
+</Card>
 
 How you ask users for date and time should be based on the information you actually need. Some dates are easy to remember, such as a date of birth, while others must be read from documents or cards. In some situations, an approximate date is sufficient, or a date relative to today. In other cases, users need to choose a date or time from a predefined set of options.
 
@@ -18,7 +26,7 @@ When asking for well-known dates, such as a date of birth or wedding date, simpl
 
 Consider splitting the date into separate fields for day, month and year. This makes it easier to enter the date correctly and provides better support for assistive technologies. When asking users to enter a date exactly as it appears on a bank card, passport or other document, the fields should match the format shown in that document. This makes it easier to transfer the date accurately and reduces the risk of errors.
 
-<Story story="KnownDates" />
+<Story story="KnownDatesEN" />
 
 In the example above, we use `inputmode="numeric"` to provide a numeric keyboard on mobile phones and tablets. We deliberately avoid using `type="number"` for day, month and year fields. `type="number"` is designed for numeric values that can be incremented or decremented, and introduces functionality such as spin buttons and automatic validation that is not always appropriate for dates. It can also create [accessibility issues (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/number#accessibility), including problems for screen reader users and unintended value changes.
 
