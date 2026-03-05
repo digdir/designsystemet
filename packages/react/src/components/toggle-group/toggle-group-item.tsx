@@ -21,22 +21,19 @@ export type ToggleGroupItemProps = {
    **/
   icon?: boolean;
 } & DefaultProps &
-  LabelHTMLAttributes<HTMLLabelElement> & {
-    /** @deprecated Internal DOM structure has been changed to use label+input element */
-    disabled?: ButtonHTMLAttributes<HTMLButtonElement>['disabled'];
-    /** @deprecated Internal DOM structure has been changed to use label+input element */
-    formAction?: ButtonHTMLAttributes<HTMLButtonElement>['formAction'];
-    /** @deprecated Internal DOM structure has been changed to use label+input element */
-    formEncType?: ButtonHTMLAttributes<HTMLButtonElement>['formEncType'];
-    /** @deprecated Internal DOM structure has been changed to use label+input element */
-    formMethod?: ButtonHTMLAttributes<HTMLButtonElement>['formMethod'];
-    /** @deprecated Internal DOM structure has been changed to use label+input element */
-    formNoValidate?: ButtonHTMLAttributes<HTMLButtonElement>['formNoValidate'];
-    /** @deprecated Internal DOM structure has been changed to use label+input element */
-    formTarget?: ButtonHTMLAttributes<HTMLButtonElement>['formTarget'];
-    /** @deprecated Internal DOM structure has been changed to use label+input element */
-    name?: ButtonHTMLAttributes<HTMLButtonElement>['name'];
-  };
+  LabelHTMLAttributes<HTMLLabelElement> &
+  Pick<
+    InputHTMLAttributes<HTMLInputElement>,
+    | 'disabled'
+    | 'formAction'
+    | 'formEncType'
+    | 'formTarget'
+    | 'formMethod'
+    | 'required'
+    | 'formNoValidate'
+    | 'readOnly'
+    | 'value'
+  >;
 
 /**
  * A single item in a ToggleGroup.
@@ -63,7 +60,8 @@ export const ToggleGroupItem = forwardRef<
     formMethod,
     formNoValidate,
     formTarget,
-    name,
+    required,
+    readOnly,
     ...labelProps
   } = rest;
 
@@ -76,7 +74,8 @@ export const ToggleGroupItem = forwardRef<
     formMethod,
     formNoValidate,
     formTarget,
-    name,
+    required,
+    readOnly,
   };
 
   return (
