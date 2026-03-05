@@ -2,7 +2,6 @@ import type { Color, ColorScheme, Size } from '@digdir/designsystemet-types';
 
 declare global {
   namespace React {
-    // biome-ignore lint/correctness/noUnusedVariables: we overwrite React's HTMLAttributes to add custom attributes
     interface HTMLAttributes<T> {
       /**
        * Represents the recommended size options for the Designsystemet variables.

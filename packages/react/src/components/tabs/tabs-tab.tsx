@@ -1,5 +1,5 @@
 import type { DSTabElement } from '@digdir/designsystemet-web';
-import type { HTMLAttributes } from 'react';
+import type { HTMLAttributes, MouseEvent } from 'react';
 import '@digdir/designsystemet-web'; // Import ds-tab custom element
 import { forwardRef, useContext } from 'react';
 import { Context } from './tabs';
@@ -30,7 +30,7 @@ export const TabsTab = forwardRef<DSTabElement, TabsTabProps>(function TabsTab(
       data-value={value}
       ref={ref}
       suppressHydrationWarning // Since <ds-tablist> adds attributes
-      onClick={(e: React.MouseEvent<DSTabElement>) => {
+      onClick={(e: MouseEvent<DSTabElement>) => {
         if (e.isTrusted) onChange?.(value); // Only call onChange is user actually clicked, not when programmatically clicked/controlled
         onClick?.(e);
       }}

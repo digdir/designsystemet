@@ -1,9 +1,9 @@
-import { forwardRef } from 'react';
+import { forwardRef, type InputHTMLAttributes } from 'react';
 import type { DefaultProps } from '../../types';
 import { Input } from '../input/input';
 
 export type SearchInputProps = DefaultProps &
-  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'readOnly' | 'type'>;
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'readOnly' | 'type'>;
 
 /**
  * SearchInput component, used to display a search input within the Search component.
