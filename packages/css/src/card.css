@@ -69,7 +69,7 @@
     }
   }
 
-  &:has(> .ds-card__block, .ds-details) {
+  &:has(> .ds-card__block, > .ds-details) {
     padding: 0; /* Let Card.Block own the padding */
   }
 
