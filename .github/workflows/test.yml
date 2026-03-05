@@ -66,11 +66,11 @@ jobs:
         run: pnpm test
       - name: "Report Coverage"
         if: success() || failure()
-        uses: davelosert/vitest-coverage-report-action@15b5b41bb7d36796d89f4bf482b09529c53f3446 # v2.9.2
+        uses: davelosert/vitest-coverage-report-action@2500dafcee7dd64f85ab689c0b83798a8359770e # v2.9.3
         with:
           comment-on: none
       - name: Publish unit test report
-        uses: mikepenz/action-junit-report@74626db7353a25a20a72816467ebf035f674c5f8 # v6.2.0
+        uses: mikepenz/action-junit-report@49b2ca06f62aa7ef83ae6769a2179271e160d8e4 # v6.3.1
         if: success() || failure()
         with:
           report_paths: "test-report.xml"
@@ -91,7 +91,7 @@ jobs:
           replace: ""
           regex: false
       - name: Publish Storybook test report
-        uses: mikepenz/action-junit-report@74626db7353a25a20a72816467ebf035f674c5f8 # v6.2.0
+        uses: mikepenz/action-junit-report@49b2ca06f62aa7ef83ae6769a2179271e160d8e4 # v6.3.1
         if: success() || failure()
         with:
           report_paths: "apps/storybook/test-report.xml"

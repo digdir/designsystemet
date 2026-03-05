@@ -1,6 +1,6 @@
 import { Slot } from '@radix-ui/react-slot';
 import cl from 'clsx/lite';
-import type { HTMLAttributes } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import type { DefaultProps } from '../../types';
 
@@ -8,7 +8,7 @@ export type ErrorSummaryProps = {
   /**
    * @deprecated This is not supported anymore, as the element needs to be `ds-error-summary`
    */
-  asChild?: React.ReactNode;
+  asChild?: ReactNode;
 } & Omit<HTMLAttributes<HTMLDivElement> & DefaultProps, 'data-color'>;
 
 /**

@@ -155,9 +155,9 @@ const ComboboxInput = ({
         {/* Arrow for combobox. Click is handled by the wrapper */}
         <div className={'ds-combobox__arrow'}>
           {open ? (
-            <ChevronUpIcon title='arrow up' fontSize='1.5em' />
+            <ChevronUpIcon title='arrow up' height='1.5em' width='1.5em' />
           ) : (
-            <ChevronDownIcon title='arrow down' fontSize='1.5em' />
+            <ChevronDownIcon title='arrow down' height='1.5em' width='1.5em' />
           )}
         </div>
       </div>
