@@ -28,7 +28,7 @@ Del gjerne datoen opp i separate felt for dag, måned og år. Det gjør det enkl
 
 <Story story="KnownDates" />
 
-I eksempelet over bruker vi `inputmode="numeric"` for å gi brukeren numerisk tastatur på mobil og nettbrett. Vi velger bevisst å ikke bruke `type="number"` for dag, måned og år. `type="number"` er utviklet for numeriske verdier som kan økes og reduseres, og gir funksjonalitet som spinnknapper og automatisk validering som ikke alltid er hensiktsmessig for datoer. Det kan også skape [tilgjengelighetsutfordringer (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/number#accessibility), blant annet for skjermlesere og ved utilsiktet endring av verdi. 
+I eksempelet over bruker vi `inputmode="numeric"` for å gi brukeren numerisk tastatur på mobil og nettbrett. Vi velger bevisst å ikke bruke `type="number"` for dag, måned og år. `type="number"` er utviklet for numeriske verdier som kan økes og reduseres. Det gir funksjonalitet som spinnknapper og automatisk validering. Dette er ikke alltid hensiktsmessig når brukeren skal skrive inn en dato, og kan gi [tilgjengelighetsutfordringer (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/number#accessibility).
 
 ## Dato fra et forhåndsdefinert utvalg
 
