@@ -54,11 +54,9 @@ function makeTokenCommands() {
       console.log(figletAscii);
       const { verbose, clean, dry, experimentalTailwind, tokens } = opts;
 
-      const { configFilePath } = await getConfigFile(opts.config);
-
       // TODO - add outdir eqivalent to config option when parsing config, so that it can be set in the config file as well. buildDir?
 
-      dsfs.init({ dry, configFilePath, outdir: opts.outDir, verbose });
+      dsfs.init({ dry, outdir: opts.outDir, verbose });
 
       const outDir = dsfs.outDir;
 
@@ -117,11 +115,7 @@ function makeTokenCommands() {
         configFilePath,
       });
 
-      dsfs.init({
-        dry: opts.dry,
-        configFilePath,
-        outdir: config.outDir,
-      });
+      dsfs.init({ dry: opts.dry, outdir: config.outDir });
 
       const outDir = dsfs.outDir;
 
@@ -164,7 +158,7 @@ program
     const tokensDir = path.resolve(opts.dir);
     const configFilePath = path.resolve(opts.out);
 
-    dsfs.init({ dry, configFilePath, outdir: path.dirname(configFilePath) });
+    dsfs.init({ dry, outdir: path.dirname(configFilePath) });
 
     try {
       const config = await generateConfigFromTokens({

@@ -13,17 +13,7 @@ class FileSystem {
   outDir = this.workingDir;
 
   /** Initialize the file system */
-  init({
-    dry,
-    configFilePath,
-    outdir,
-    verbose,
-  }: {
-    dry?: boolean;
-    configFilePath?: string;
-    outdir?: string;
-    verbose?: boolean;
-  }) {
+  init({ dry, outdir, verbose }: { dry?: boolean; outdir?: string; verbose?: boolean }) {
     if (this.isInitialized) {
       console.warn(pc.yellow('FileSystem is already initialized. Ignoring subsequent init call.'));
       return;
@@ -36,7 +26,7 @@ class FileSystem {
     this.dry = dry ?? false;
     this.verbose = verbose ?? false;
     // If a config file path is provided, set the working directory to the config file's directory. This allows relative paths in the config file to be resolved correctly. If no config file path is provided, use the current working directory.
-    this.workingDir = configFilePath ? path.dirname(configFilePath) : this.workingDir;
+    // this.workingDir = configFilePath ? path.dirname(configFilePath) : this.workingDir;
     // If an output directory is provided, resolve it relative to the working directory. Otherwise, use the working directory as the output directory.
     this.outDir = outdir ? (path.isAbsolute(outdir) ? outdir : path.join(this.workingDir, outdir)) : this.workingDir;
     if (this.verbose) {
