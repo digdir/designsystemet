@@ -67,7 +67,7 @@ export const ToggleGroupItem = forwardRef<
     ...labelProps
   } = rest;
 
-  // Add backwards compatibility for `button` props that were previously allowed on ToggleGroupItem #
+  /** Add backwards compatibility for `button` props that were previously allowed on `ToggleGroupItem` but are passeable to `input`*/
   const inputProps: InputHTMLAttributes<HTMLInputElement> = {
     disabled,
     form,
