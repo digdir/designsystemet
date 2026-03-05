@@ -27,8 +27,8 @@
 }
 
 .iconContainer {
-  height: 54px;
-  width: 54px;
+  height: 3.375rem;
+  width: 3.375rem;
   border-radius: var(--ds-border-radius-sm);
   transform: rotate(45deg);
   margin: 0 auto;
@@ -37,12 +37,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32px;
 }
 
 .iconContainer svg,
 .iconContainer img {
   transform: rotate(-45deg);
+  height: 2.125rem;
+  width: auto;
 }
 
 .red {

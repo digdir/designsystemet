@@ -34,7 +34,8 @@
     }
     svg {
       color: var(--ds-color-base-default);
-      font-size: 2rem;
+      height: 2rem;
+      width: auto;
     }
   }
   .footer {

@@ -110,7 +110,8 @@
   --dsc-link-color: var(--text-muted);
 
   & svg {
-    max-width: 24px;
+    height: 1.5rem;
+    width: auto;
     margin-right: 8px;
 
     & * {
