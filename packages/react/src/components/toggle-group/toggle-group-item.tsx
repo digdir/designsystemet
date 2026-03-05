@@ -1,5 +1,12 @@
 import cl from 'clsx/lite';
-import { forwardRef, type LabelHTMLAttributes, useContext, useId } from 'react';
+import {
+  type ButtonHTMLAttributes,
+  forwardRef,
+  type InputHTMLAttributes,
+  type LabelHTMLAttributes,
+  useContext,
+  useId,
+} from 'react';
 import type { DefaultProps } from '../../types';
 import { ToggleGroupContext } from './toggle-group';
 
@@ -14,7 +21,8 @@ export type ToggleGroupItemProps = {
    **/
   icon?: boolean;
 } & DefaultProps &
-  LabelHTMLAttributes<HTMLLabelElement>;
+  LabelHTMLAttributes<HTMLLabelElement> &
+  Omit<ButtonHTMLAttributes<HTMLLabelElement>, 'type'>;
 
 /**
  * A single item in a ToggleGroup.
@@ -33,14 +41,38 @@ export const ToggleGroupItem = forwardRef<
   const value = rawValue ?? genValue;
   const active = toggleGroup.value === value;
 
+  const {
+    disabled,
+    form,
+    formAction,
+    formEncType,
+    formMethod,
+    formNoValidate,
+    formTarget,
+    name,
+    ...labelProps
+  } = rest;
+
+  const inputProps: InputHTMLAttributes<HTMLInputElement> = {
+    disabled,
+    form,
+    formAction,
+    formEncType,
+    formMethod,
+    formNoValidate,
+    formTarget,
+    name,
+  };
+
   return (
     <label
       ref={ref}
-      {...rest}
+      {...labelProps}
       className={cl('ds-button', className)}
       data-variant='tertiary'
     >
       <input
+        {...inputProps}
         checked={active}
         name={toggleGroup.name}
         onChange={() => toggleGroup.onChange?.(value)}
