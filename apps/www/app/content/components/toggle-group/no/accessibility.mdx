@@ -1,40 +1,47 @@
 ## Implementasjonstester
+<style>{`
+    .ds-divider { margin-top: var(--ds-size-10); }
+    `}</style>
+    
+**Hver knapp i `ToggleGroup` skal ha et tydelig tilgjengelig navn.**
 
-- Hver knapp i `ToggleGroup` skal ha et tydelig tilgjengelig navn
-  - Hvis en knapp kun viser ikon, skal navnet beskrive hva valget betyr.
-  - Eksempel: “Listevisning” eller “Rutenettvisning”.
-  - [4.1.2 Navn, rolle, verdi](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121)
+Hvis en knapp kun viser ikon, må navnet beskrive hva valget betyr.  
+Eksempel: “Listevisning” eller “Rutenettvisning”.
 
-- `ToggleGroup` skal ha et tilgjengelig navn som forklarer hva valgene gjelder
-  - Dette kan være en synlig ledetekst eller et programmatisk navn (for eksempel `aria-label`).
-  - Eksempel: “Visning”.
-  - [4.1.2 Navn, rolle, verdi](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121)
+<span data-size="sm"> 
+(WCAG: [4.1.2 Navn, rolle, verdi](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121))
+</span> 
 
-- `ToggleGroup` skal fungere på små skjermer uten at innhold forsvinner
-  - Hele komponenten skal være synlig uten horisontal scrolling.
-  - Test ved smal viewport eller høy zoom (for eksempel 320px bredde eller 400 % zoom).
-  - [1.4.10 Dynamisk tilpasning (Reflow)](https://www.uutilsynet.no/wcag-standarden/1410-dynamisk-tilpasning-reflow-niva-aa/144)
+
+<Divider/>
+\
+**`ToggleGroup` skal ha et tilgjengelig navn som forklarer hva valgene gjelder.**
+
+Dette kan være en synlig ledetekst eller et programmatisk navn (for eksempel `aria-label`).  
+Eksempel: “Visning”.
+
+<span data-size="sm"> 
+(WCAG: [4.1.2 Navn, rolle, verdi](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121))
+</span> 
+
+
+<Divider/>
+\
+**`ToggleGroup` skal brukes på en måte som gjør at innhold eller funksjonalitet ikke går tapt på små skjermer.**
+
+For mange valg eller lange tekster kan føre til at komponenten bryter layouten.  
+Kontroller at alle valg fortsatt er synlige og brukbare ved smal viewport eller høy zoom.  
+Hele komponenten skal være synlig uten horisontal scrolling.  
+Test ved smal viewport eller høy zoom (for eksempel 320px bredde eller 400 % zoom).
+
+<span data-size="sm"> 
+(WCAG: [1.4.10 Dynamisk tilpasning (Reflow)](https://www.uutilsynet.no/wcag-standarden/1410-dynamisk-tilpasning-reflow-niva-aa/144))
+</span> 
+
+<Divider/>
 
 ### God praksis
 
 - Hvis `ToggleGroup` bruker kun ikoner, bør det i tillegg vises `Tooltip` for å forklare handlingen visuelt. `Tooltip` erstatter ikke krav om programmatisk navn.
 
-`ToggleGroup` har standard fokusindikator (ramme).  
-Vi brukar `roving tabindex` for å handtere fokusbevegelse mellom knappane.
 
-### Tastaturinteraksjon 
-
-- <kbd>Tab</kbd> flytter fokuset til den aktive toggle-knappen.
-- <kbd>Shift</kbd>+<kbd>Tab</kbd> flytter fokuset til elementet før `ToggleGroup` i tabindex.
-- <kbd>Space</kbd> velger en knapp.
-- <kbd>Enter</kbd> velger en knapp.
-- <kbd data-icon>↑</kbd> flytter fokuset til forrige knapp i gruppa.
-- <kbd data-icon>←</kbd> flytter fokuset til forrige knapp i gruppa.
-- <kbd data-icon>↓</kbd> flytter fokuset til neste knapp i gruppa.
-- <kbd data-icon>→</kbd> flytter fokuset til neste knapp i gruppa.
-- <kbd>Home</kbd> går til første knapp i gruppa.
-- <kbd>End</kbd> går til siste knapp i gruppa.
-
-### Tastaturnavigasjon
-* <kbd data-icon>←</kbd>/<kbd data-icon>→</kbd> går til forrige/neste (enkeltvalg)
-* <kbd>Space</kbd> eller <kbd>Enter</kbd> aktiverer/toggler valgt element

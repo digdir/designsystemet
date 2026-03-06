@@ -1,19 +1,44 @@
 ## Implementation tests
+<style>{`
+    .ds-divider { margin-top: var(--ds-size-10); }
+    `}</style>
 
-- Each button in a `ToggleGroup` must have a clear accessible name
-  - If a button only shows an icon, the name must describe what the option means.
-  - Example: “List view” or “Grid view”.
-  - [4.1.2 Name, role, value](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121)
+**Each button in `ToggleGroup` must have a clear accessible name.**
 
-- `ToggleGroup` must have an accessible name that explains what the options relate to
-  - This can be a visible label or a programmatic name (for example `aria-label`).
-  - Example: “View”.
-  - [4.1.2 Name, role, value](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121)
+If a button only shows an icon, the name must describe what the option means.  
+Example: “List view” or “Grid view”.
 
-- `ToggleGroup` must work on small screens without content disappearing
-  - The entire component must be visible without horizontal scrolling.
-  - Test at a narrow viewport or high zoom (for example 320px width or 400% zoom).
-  - [1.4.10 Reflow](https://www.uutilsynet.no/wcag-standarden/1410-dynamisk-tilpasning-reflow-niva-aa/144)
+<span data-size="sm"> 
+(WCAG: [4.1.2 Name, role, value](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121))
+</span> 
+
+
+<Divider/>
+\
+**`ToggleGroup` must have an accessible name that explains what the options relate to.**
+
+This can be a visible label or a programmatic name (for example `aria-label`).  
+Example: “View”.
+
+<span data-size="sm"> 
+(WCAG: [4.1.2 Name, role, value](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121))
+</span> 
+
+
+<Divider/>
+\
+**`ToggleGroup` must be used in a way that prevents loss of content or functionality on small screens.**
+
+Too many options or long labels can cause the component to break the layout.  
+Check that all options remain visible and usable at a narrow viewport or high zoom.  
+The entire component must be visible without horizontal scrolling.  
+Test at a narrow viewport or high zoom (for example 320px width or 400% zoom).
+
+<span data-size="sm"> 
+(WCAG: [1.4.10 Dynamisk tilpasning (Reflow)](https://www.uutilsynet.no/wcag-standarden/1410-dynamisk-tilpasning-reflow-niva-aa/144))
+</span> 
+
+<Divider/>
 
 ### Good practice
 
@@ -21,22 +46,5 @@
 - A tooltip does not replace the requirement for a programmatic name.
 
 
-`ToggleGroup` uses the standard focus indicator (outline).  
-We use `roving tabindex` to manage focus movement between the buttons.
 
-### Keyboard interaction
 
-- <kbd>Tab</kbd> moves focus to the active toggle button.
-- <kbd>Shift</kbd>+<kbd>Tab</kbd> moves focus to the element before the `ToggleGroup` in the tabindex.
-- <kbd>Space</kbd> selects a button.
-- <kbd>Enter</kbd> selects a button.
-- <kbd data-icon>↑</kbd> moves focus to the previous button in the group.
-- <kbd data-icon>←</kbd> moves focus to the previous button in the group.
-- <kbd data-icon>↓</kbd> moves focus to the next button in the group.
-- <kbd data-icon>→</kbd> moves focus to the next button in the group.
-- <kbd>Home</kbd> moves to the first button in the group.
-- <kbd>End</kbd> moves to the last button in the group.
-
-### Keyboard navigation
-* <kbd data-icon>←</kbd>/<kbd data-icon>→</kbd> moves to the previous/next option (single select)
-* <kbd>Space</kbd> or <kbd>Enter</kbd> activates/toggles the selected option

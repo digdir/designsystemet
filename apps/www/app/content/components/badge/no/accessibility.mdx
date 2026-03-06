@@ -1,23 +1,51 @@
 ## Implementasjonstester
-- Informativ `Badge` som viser viktig informasjon (for eksempel antall) skal inngå i det interaktive elementets tilgjengelige navn
-  - Hvis `Badge` plasseres inline (inni elementet), blir innholdet automatisk en del av det tilgjengelige navnet.
-  - Eksempel: `Button` med teksten "Innboks" og `Badge` med "2" leses opp som "Innboks 2".
-  - [1.3.1 Informasjon og relasjoner](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
+<style>{`
+    .ds-divider { margin-top: var(--ds-size-10); }
+    `}</style>
 
-- Hvis `Badge` er plassert utenfor det interaktive elementet, skal badge-informasjonen legges til i elementets tilgjengelige navn
-  - Dette gjelder ofte når `Badge` vises i hjørnet av en knapp eller ikon.
-  - I slike tilfeller skal badge-verdien legges til manuelt i elementets tilgjengelige navn (for eksempel via `aria-label`).
-  - [1.3.1 Informasjon og relasjoner](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
+**`Badge` som viser viktig informasjon skal inngå i det interaktive elementets tilgjengelige navn.**
 
-- Dekorativ `Badge` skal skjules for skjermlesere
-  - [1.1.1 Ikke-tekstlig innhold](https://www.uutilsynet.no/wcag-standarden/111-ikke-tekstlig-innhold-niva/87)
+Hvis `Badge` plasseres inline (inni elementet), blir innholdet en del av det tilgjengelige navnet. Eksempel: `Button` med teksten "Innboks" og `Badge` med "2" leses opp som "Innboks 2".
 
-- `Badge` som endrer verdi (for eksempel 1 → 2) skal annonseres til skjermlesere
-  - [4.1.3 Statusbeskjeder](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)
+<span data-size="sm"> 
+(WCAG: [1.3.1 informasjon og relasjoner](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90))
+</span> 
 
-- `Badge` skal ikke formidle informasjon kun med farge eller plassering
-  - [1.4.1 Bruk av farge](https://www.uutilsynet.no/wcag-standarden/141-bruk-av-farge-niva/93)
 
-## Relevante kjelder
-- [1] [1.1.1 Ikkje-tekstleg innhald](https://www.uutilsynet.no/wcag-standarden/111-ikke-tekstlig-innhold-niva/87)
-- [1] [1.3.3 Sensoriske eigenskapar (Nivå A)](https://www.uutilsynet.no/wcag-standarden/133-sensoriske-egenskaper-niva/92)
+<Divider/>
+\
+**Hvis `Badge` er plassert utenfor det interaktive elementet, skal badge-informasjonen legges til i elementets tilgjengelige navn.**
+
+Dette gjelder ofte når `Badge` vises i hjørnet av en knapp eller ikon. I slike tilfeller skal badge-verdien legges til manuelt i elementets tilgjengelige navn (for eksempel via `aria-label`).
+
+<span data-size="sm"> 
+(WCAG: [1.3.1 informasjon og relasjoner](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90))
+</span> 
+
+
+<Divider/>
+\
+**Dekorativ `Badge` skal skjules for skjermlesere**
+
+<span data-size="sm"> 
+(WCAG: [1.1.1 Ikke-tekstlig innhold](https://www.uutilsynet.no/wcag-standarden/111-ikke-tekstlig-innhold-niva/87))
+</span> 
+
+
+<Divider/>
+\
+**`Badge` som endrer verdi (for eksempel 1 → 2) skal annonseres til skjermlesere**
+
+<span data-size="sm"> 
+(WCAG: [4.1.3 Statusbeskjeder](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152))
+</span> 
+
+<Divider/>
+\
+**`Badge` skal ikke formidle informasjon kun med farge eller plassering**
+
+<span data-size="sm"> 
+(WCAG: [1.4.1 Bruk av farge](https://www.uutilsynet.no/veiledning/141-bruk-av-farge/1239))
+</span> 
+
+<Divider/>
