@@ -1,6 +1,5 @@
 import cl from 'clsx/lite';
 import {
-  type ButtonHTMLAttributes,
   forwardRef,
   type InputHTMLAttributes,
   type LabelHTMLAttributes,
