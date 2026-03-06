@@ -30,3 +30,5 @@ injectWorkspacePackages: true
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
   - "@u-elements/*"
+  # Renovate security update: express-rate-limit@8.2.2
+  - express-rate-limit@8.2.2
