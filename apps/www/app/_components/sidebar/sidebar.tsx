@@ -48,7 +48,7 @@ export const Sidebar = ({
         popoverTargetAction='show'
       >
         {t('sidebar.show')} {t(`sidebar.sidebar`)}
-        <ChevronRightLastIcon aria-hidden fontSize={26} />
+        <ChevronRightLastIcon aria-hidden />
       </Button>
 
       <nav popover='auto' id='sidebar-nav' className={cl(classes.menu)}>
@@ -62,7 +62,7 @@ export const Sidebar = ({
           aria-label={t('header.close-menu')}
           className={classes.closeButton}
         >
-          <XMarkIcon aria-hidden fontSize={26} />
+          <XMarkIcon aria-hidden />
           {/* {t('sidebar.hide')} {t(`sidebar.sidebar`)} */}
         </Button>
         {hideCatTitle ? null : (

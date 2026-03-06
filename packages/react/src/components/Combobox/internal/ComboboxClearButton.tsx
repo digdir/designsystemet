@@ -39,7 +39,7 @@ const ComboboxClearButton = forwardRef<
       type='button'
       aria-label={clearButtonLabel}
     >
-      <XMarkIcon fontSize='1.5em' title='Clear selection' />
+      <XMarkIcon height='1.5em' width='1.5em' title='Clear selection' />
     </button>
   );
 });

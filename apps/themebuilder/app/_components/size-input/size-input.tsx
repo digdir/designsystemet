@@ -13,7 +13,12 @@ export const SizeInput = ({ onChange, size, name }: SizeInputProps) => {
       <div className={classes.label}>{name}</div>
       <button className={classes.box} onClick={() => onChange(size)}>
         {size}
-        <PencilIcon aria-hidden fontSize='1.4rem' className={classes.icon} />
+        <PencilIcon
+          aria-hidden
+          height='1.4rem'
+          width='1.4rem'
+          className={classes.icon}
+        />
       </button>
     </div>
   );
