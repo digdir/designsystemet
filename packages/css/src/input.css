@@ -176,7 +176,7 @@
   /* Using attribute [readonly] since pseudo selector :read-only is always true for checkbox, radio and select */
   &[aria-readonly='true'],
   &[readonly] {
-    background: var(--dsc-input-background--readonly);
+    background-color: var(--dsc-input-background--readonly);
     border-color: var(--dsc-input-border-color--readonly);
     color: var(--dsc-input-color--readonly);
 
