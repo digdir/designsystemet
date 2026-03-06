@@ -187,7 +187,7 @@ export const WorkingExample: StoryFn<typeof FileUpload> = () => {
   };
 
   return (
-    <div style={{ minWidth: 'max(50vw, 300px)' }}>
+    <div style={{ minWidth: '300px' }}>
       <FileUpload
         onDragOver={(event) => {
           event.preventDefault();
@@ -261,7 +261,7 @@ export const ReactDropZoneExample: StoryFn<typeof FileUpload> = () => {
     });
 
   return (
-    <div style={{ minWidth: 'max(50vw, 300px)' }}>
+    <div style={{ minWidth: '300px' }}>
       <FileUpload {...getRootProps()}>
         {isReadOnly && (
           <>
