@@ -30,6 +30,8 @@ export type ToggleGroupItemProps = {
     | 'required'
     | 'formNoValidate'
     | 'value'
+    | 'disabled'
+    | 'readOnly'
   >;
 
 /**
@@ -41,7 +43,7 @@ export const ToggleGroupItem = forwardRef<
   HTMLLabelElement,
   ToggleGroupItemProps
 >(function ToggleGroupItem(
-  { className, children, icon, value: rawValue, ...rest },
+  { className, children, icon, value: rawValue, readOnly, disabled, ...rest },
   ref,
 ) {
   const genValue = useId();
@@ -69,11 +71,14 @@ export const ToggleGroupItem = forwardRef<
     formNoValidate,
     formTarget,
     required,
+    disabled,
+    readOnly,
   };
 
   return (
     <label
       ref={ref}
+      aria-disabled={disabled ?? toggleGroup.disabled}
       {...labelProps}
       className={cl('ds-button', className)}
       data-variant='tertiary'
@@ -82,7 +87,9 @@ export const ToggleGroupItem = forwardRef<
         {...inputProps}
         checked={active}
         name={toggleGroup.name}
-        onChange={() => toggleGroup.onChange?.(value)}
+        onChange={() =>
+          toggleGroup.readOnly || readOnly || toggleGroup.onChange?.(value)
+        }
         type='radio'
         value={value}
       />
