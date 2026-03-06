@@ -209,3 +209,33 @@ export function useId(el?: Element | null) {
   if (el && !el.id) el.id = `${hash}${++id}`;
   return el?.id || '';
 }
+
+/**
+ * @description Based off speak function from [U-elements](https://github.com/u-elements/u-elements/blob/main/packages/utils.ts#L210)
+ * @param text The text to announce
+ */
+let LIVE_EL: HTMLElement | undefined;
+let LIVE_FIX = 0;
+let LIVE_CLEAR: ReturnType<typeof setTimeout> | number = 0;
+export const announce = (text: string) => {
+  clearTimeout(LIVE_CLEAR);
+  if (LIVE_EL)
+    setTextWithoutMutation(LIVE_EL, `${text}${LIVE_FIX++ % 2 ? '\u00A0' : ''}`); // Non-breaking space to ensure screen reader announces
+  if (text) LIVE_CLEAR = setTimeout(announce, 2000, ''); // Clear prevent old announcements being found by screen readers, with 2 seconds brace period to avoid cutting of Android Talkback
+};
+
+// Mount live region on first focus so its ready to be used
+const announceMount = () => {
+  if (document.readyState !== 'complete') return; // Ensure page is loaded trying to avoid issues with React hydration
+  if (!LIVE_EL) {
+    LIVE_EL = tag('div', { 'aria-live': 'assertive' });
+    LIVE_EL.style.overflow = 'hidden'; // Settings styles individually to prevent issues with CSP
+    LIVE_EL.style.position = 'fixed';
+    LIVE_EL.style.whiteSpace = 'nowrap';
+    LIVE_EL.style.width = '1px';
+  }
+  if (!LIVE_EL.isConnected) document.body.appendChild(LIVE_EL);
+};
+onHotReload('announce', () => [
+  on(document, 'focus mouseover', announceMount, QUICK_EVENT),
+]);

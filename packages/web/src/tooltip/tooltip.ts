@@ -1,4 +1,5 @@
 import {
+  announce,
   attr,
   attrOrCSS,
   debounce,
@@ -50,6 +51,14 @@ const handleAriaAttributes = debounce(() => {
       attr(el, ARIA_DESC, hasText ? text : null); // Set aria-description if element has text
       if (!el.matches(SELECTOR_INTERACTIVE))
         warn('Missing tabindex="0" attribute on: ', el);
+    }
+
+    // If an existing tooltip has changed programmatically, update tooltip text and announce change
+    const isCurrent = el === SOURCE && TIP?.matches(':popover-open');
+    const isChanged = isCurrent && text && TIP?.textContent !== text; // Only update if mutation is on source element and tooltip is open to avoid unnecessary updates
+    if (isCurrent && isChanged) {
+      if (TIP) setTextWithoutMutation(TIP, text);
+      if (document.activeElement === el) announce(text); // Only announce if focus is on the button
     }
   }
 }, 0); // Debounce to merge multiple mutations

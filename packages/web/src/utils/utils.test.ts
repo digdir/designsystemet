@@ -1,7 +1,9 @@
 /// <reference types="@testing-library/jest-dom" />
 
 import { describe, expect, it, vi } from 'vitest';
+import { userEvent } from 'vitest/browser';
 import {
+  announce,
   attr,
   attrOrCSS,
   customElements,
@@ -14,6 +16,8 @@ import {
   useId,
   warn,
 } from './utils';
+
+const user = userEvent.setup();
 
 describe('utils', () => {
   it('attr gets, sets, and removes attributes', () => {
@@ -161,5 +165,55 @@ describe('utils', () => {
     const otherId = useId(other);
 
     expect(otherId).not.toBe(id);
+  });
+
+  describe('announce', () => {
+    it('should mount live region on first user interaction', async () => {
+      // Reset by removing any existing live region
+      document.querySelector('[aria-live="assertive"]')?.remove();
+
+      document.body.innerHTML = '<button>Click me</button>';
+      const button = document.querySelector('button') as HTMLButtonElement;
+
+      await user.click(button);
+
+      const live = document.querySelector('[aria-live="assertive"]');
+      expect(live).toBeInTheDocument();
+    });
+    it('should create and mount a live region on first call', () => {
+      announce('Hello');
+      const live = document.querySelector('[aria-live="assertive"]');
+      expect(live).toBeInTheDocument();
+      expect(live).toHaveTextContent('Hello');
+    });
+
+    it('should reuse the same live region element', () => {
+      announce('First');
+      announce('Second');
+      const regions = document.querySelectorAll('[aria-live="assertive"]');
+      expect(regions).toHaveLength(1);
+      expect(regions[0]).toHaveTextContent('Second');
+    });
+
+    it('should alternate non-breaking space to force re-announcement', () => {
+      announce('Same');
+      const live = document.querySelector('[aria-live="assertive"]');
+      const first = live?.textContent;
+
+      announce('Same');
+      const second = live?.textContent;
+
+      expect(first).not.toBe(second);
+      expect([first, second]).toContain('Same');
+      expect([first, second]).toContain('Same\u00A0');
+    });
+
+    it('should not set text content when called without text', () => {
+      announce('Existing');
+      const live = document.querySelector('[aria-live="assertive"]');
+      announce();
+      // textContent unchanged from previous call
+      expect(live?.textContent).toContain('Existing');
+    });
   });
 });
