@@ -13,6 +13,20 @@ export type ToggleGroupItemProps = {
    * @deprecated Icon prop is deprecated
    **/
   icon?: boolean;
+  /**
+   * The **`readOnly`** property of the HTMLInputElement interface indicates that the user cannot modify the value of the input.
+   *
+   * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/readOnly)
+   */
+  readOnly?: boolean;
+  /**
+   * The **`HTMLInputElement.disabled`** property is a boolean value that reflects the `disabled` HTML attribute, which indicates whether the control is disabled.
+   *
+   * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/disabled)
+   *
+   * @note Avoid using if possible for accessibility purposes
+   */
+  disabled?: boolean;
 } & DefaultProps &
   LabelHTMLAttributes<HTMLLabelElement>;
 
@@ -25,7 +39,7 @@ export const ToggleGroupItem = forwardRef<
   HTMLLabelElement,
   ToggleGroupItemProps
 >(function ToggleGroupItem(
-  { className, children, icon, value: rawValue, ...rest },
+  { className, children, icon, value: rawValue, readOnly, disabled, ...rest },
   ref,
 ) {
   const genValue = useId();
@@ -36,6 +50,7 @@ export const ToggleGroupItem = forwardRef<
   return (
     <label
       ref={ref}
+      aria-disabled={disabled ?? toggleGroup.disabled}
       {...rest}
       className={cl('ds-button', className)}
       data-variant='tertiary'
@@ -43,9 +58,12 @@ export const ToggleGroupItem = forwardRef<
       <input
         checked={active}
         name={toggleGroup.name}
-        onChange={() => toggleGroup.onChange?.(value)}
+        onChange={() =>
+          toggleGroup.readOnly || readOnly || toggleGroup.onChange?.(value)
+        }
         type='radio'
         value={value}
+        disabled={disabled ?? toggleGroup.disabled}
       />
       {children}
     </label>

@@ -121,6 +121,132 @@ describe('ToggleGroup', () => {
     expect(item2).toHaveProperty('checked', true);
   });
 
+  test('not checked when disabled ToggleGroup', async () => {
+    const onChangeMock = vi.fn();
+
+    render(
+      <ToggleGroup
+        data-toggle-group='Label'
+        defaultValue='test1'
+        onChange={onChangeMock}
+        disabled
+      >
+        <ToggleGroup.Item value='test1'>test1</ToggleGroup.Item>
+        <ToggleGroup.Item value='test2'>test2</ToggleGroup.Item>
+      </ToggleGroup>,
+    );
+
+    const item1 = screen.getByRole('radio', {
+      name: 'test1',
+    });
+    const item2 = screen.getByRole('radio', {
+      name: 'test2',
+    });
+
+    expect(item1).toHaveProperty('checked', true);
+    expect(item2).toHaveProperty('checked', false);
+
+    await user.click(item2.parentElement as HTMLLabelElement);
+
+    expect(onChangeMock).toBeCalledTimes(0);
+    expect(item2).toHaveProperty('checked', false);
+  });
+
+  test('not checked when disabled ToggleGroupItem', async () => {
+    const onChangeMock = vi.fn();
+
+    render(
+      <ToggleGroup
+        data-toggle-group='Label'
+        defaultValue='test1'
+        onChange={onChangeMock}
+      >
+        <ToggleGroup.Item value='test1'>test1</ToggleGroup.Item>
+        <ToggleGroup.Item disabled value='test2'>
+          test2
+        </ToggleGroup.Item>
+      </ToggleGroup>,
+    );
+
+    const item1 = screen.getByRole('radio', {
+      name: 'test1',
+    });
+    const item2 = screen.getByRole('radio', {
+      name: 'test2',
+    });
+
+    expect(item1).toHaveProperty('checked', true);
+    expect(item2).toHaveProperty('checked', false);
+
+    await user.click(item2.parentElement as HTMLLabelElement);
+
+    expect(onChangeMock).toBeCalledTimes(0);
+    expect(item2).toHaveProperty('checked', false);
+  });
+
+  test('not checked when readOnly ToggleGroup', async () => {
+    const onChangeMock = vi.fn();
+
+    render(
+      <ToggleGroup
+        data-toggle-group='Label'
+        defaultValue='test1'
+        onChange={onChangeMock}
+        readOnly
+      >
+        <ToggleGroup.Item value='test1'>test1</ToggleGroup.Item>
+        <ToggleGroup.Item value='test2'>test2</ToggleGroup.Item>
+      </ToggleGroup>,
+    );
+
+    const item1 = screen.getByRole('radio', {
+      name: 'test1',
+    });
+    const item2 = screen.getByRole('radio', {
+      name: 'test2',
+    });
+
+    expect(item1).toHaveProperty('checked', true);
+    expect(item2).toHaveProperty('checked', false);
+
+    await user.click(item2.parentElement as HTMLLabelElement);
+
+    expect(onChangeMock).toBeCalledTimes(0);
+    expect(item2).toHaveProperty('checked', false);
+  });
+
+  test('not checked when disabled ToggleGroupItem', async () => {
+    const onChangeMock = vi.fn();
+
+    render(
+      <ToggleGroup
+        data-toggle-group='Label'
+        defaultValue='test1'
+        onChange={onChangeMock}
+      >
+        <ToggleGroup.Item value='test1'>test1</ToggleGroup.Item>
+        <ToggleGroup.Item readOnly value='test2'>
+          test2
+        </ToggleGroup.Item>
+      </ToggleGroup>,
+    );
+
+    const item1 = screen.getByRole('radio', {
+      name: 'test1',
+    });
+    const item2 = screen.getByRole('radio', {
+      name: 'test2',
+    });
+
+    expect(item1).toHaveProperty('checked', true);
+    expect(item2).toHaveProperty('checked', false);
+
+    await user.click(item2.parentElement as HTMLLabelElement);
+
+    expect(onChangeMock).toBeCalledTimes(0);
+    expect(item2).toHaveProperty('checked', false);
+  });
+
   test('if we pass a name, we should have a hidden input with that name', () => {
     const name = 'my-name';
     const { container } = render(

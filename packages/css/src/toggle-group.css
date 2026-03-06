@@ -68,6 +68,10 @@
     pointer-events: none;
   }
 
+  &[data-readonly] label {
+    cursor: default;
+  }
+
   /* Style active if ds-button */
   & label:has(input:checked) {
     --dsc-button-background--active: var(--ds-color-base-active);

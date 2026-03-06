@@ -173,3 +173,52 @@ export const SecondaryEn = () => {
     </ToggleGroup>
   );
 };
+
+export const Disabled = () => {
+  return (
+    <ToggleGroup
+      data-toggle-group='Filter'
+      defaultValue='innboks'
+      variant='secondary'
+      disabled
+    >
+      <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
+      <ToggleGroup.Item value='utkast'>Utkast</ToggleGroup.Item>
+      <ToggleGroup.Item value='arkiv'>Arkiv</ToggleGroup.Item>
+      <ToggleGroup.Item value='sendt'>Sendt</ToggleGroup.Item>
+    </ToggleGroup>
+  );
+};
+
+export const DisabledEn = () => {
+  return (
+    <ToggleGroup data-toggle-group='Filter' defaultValue='inbox' disabled>
+      <ToggleGroup.Item value='inbox'>Inbox</ToggleGroup.Item>
+      <ToggleGroup.Item value='drafts'>Drafts</ToggleGroup.Item>
+      <ToggleGroup.Item value='archive'>Archive</ToggleGroup.Item>
+      <ToggleGroup.Item value='sent'>Sent</ToggleGroup.Item>
+    </ToggleGroup>
+  );
+};
+
+export const Readonly = () => {
+  return (
+    <ToggleGroup data-toggle-group='Filter' defaultValue='innboks' readOnly>
+      <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
+      <ToggleGroup.Item value='utkast'>Utkast</ToggleGroup.Item>
+      <ToggleGroup.Item value='arkiv'>Arkiv</ToggleGroup.Item>
+      <ToggleGroup.Item value='sendt'>Sendt</ToggleGroup.Item>
+    </ToggleGroup>
+  );
+};
+
+export const ReadonlyEn = () => {
+  return (
+    <ToggleGroup data-toggle-group='Filter' defaultValue='inbox' readOnly>
+      <ToggleGroup.Item value='inbox'>Inbox</ToggleGroup.Item>
+      <ToggleGroup.Item value='drafts'>Drafts</ToggleGroup.Item>
+      <ToggleGroup.Item value='archive'>Archive</ToggleGroup.Item>
+      <ToggleGroup.Item value='sent'>Sent</ToggleGroup.Item>
+    </ToggleGroup>
+  );
+};

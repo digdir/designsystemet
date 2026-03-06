@@ -114,3 +114,46 @@ SecondaryOnlyIcons.args = {
   'data-toggle-group': 'Filtering', // Set data-toggle-group attribute for accessibility
   variant: 'secondary',
 };
+
+export const Disabled = Preview.bind({});
+Disabled.args = {
+  'data-toggle-group': 'Filtering', // Set data-toggle-group attribute for accessibility
+  defaultValue: 'innboks',
+  disabled: true,
+};
+
+export const Readonly = Preview.bind({});
+Readonly.args = {
+  'data-toggle-group': 'Filtering', // Set data-toggle-group attribute for accessibility
+  defaultValue: 'innboks',
+  readOnly: true,
+};
+
+export const OnlyOneDisabled: StoryFn<typeof ToggleGroup> = ({
+  readOnly,
+  disabled,
+  ...args
+}) => {
+  return (
+    <ToggleGroup {...args}>
+      <ToggleGroup.Item value='innboks'>Innboks</ToggleGroup.Item>
+      <ToggleGroup.Item value='utkast'>Utkast</ToggleGroup.Item>
+      <ToggleGroup.Item readOnly={readOnly} disabled={disabled} value='arkiv'>
+        Arkiv
+      </ToggleGroup.Item>
+      <ToggleGroup.Item value='sendt'>Sendt</ToggleGroup.Item>
+    </ToggleGroup>
+  );
+};
+OnlyOneDisabled.args = {
+  'data-toggle-group': 'Filtering', // Set data-toggle-group attribute for accessibility
+  defaultValue: 'innboks',
+  disabled: true,
+};
+
+export const OnlyOneReadonly = OnlyOneDisabled.bind({});
+OnlyOneReadonly.args = {
+  'data-toggle-group': 'Filtering', // Set data-toggle-group attribute for accessibility
+  defaultValue: 'innboks',
+  readOnly: true,
+};

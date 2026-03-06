@@ -10,6 +10,8 @@ export type ToggleGroupContextProps = {
   defaultValue?: string;
   onChange?: (value: string) => void;
   name?: string;
+  readOnly?: boolean;
+  disabled?: boolean;
 };
 
 export const ToggleGroupContext = createContext<ToggleGroupContextProps>({});
@@ -43,6 +45,17 @@ export type ToggleGroupProps = MergeRight<
      * Toggle group label for accessibility
      */
     'data-toggle-group'?: string;
+    /**
+     * The **`readOnly`** property is a boolean value that reflects the fieldset element's `readOnly` attribute, which indicates whether the control is readOnly.
+     * This property gets passed to all ToggleGroupItem
+     */
+    readOnly?: boolean;
+    /**
+     * The **`disabled`** property of the HTMLFieldSetElement interface is a boolean value that reflects the fieldset element's `disabled` attribute, which indicates whether the control is disabled.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/disabled)
+     */
+    disabled?: boolean;
   }
 >;
 
@@ -66,6 +79,8 @@ export const ToggleGroup = forwardRef<HTMLFieldSetElement, ToggleGroupProps>(
       onChange,
       value,
       variant = 'primary',
+      readOnly,
+      disabled,
       ...rest
     },
     ref,
@@ -93,6 +108,8 @@ export const ToggleGroup = forwardRef<HTMLFieldSetElement, ToggleGroupProps>(
           onChange: onValueChange,
           value,
           variant,
+          readOnly,
+          disabled,
         }}
       >
         <fieldset
@@ -100,6 +117,8 @@ export const ToggleGroup = forwardRef<HTMLFieldSetElement, ToggleGroupProps>(
           data-toggle-group='' // Default to empty string to ensure attribute is present
           data-variant={variant}
           ref={ref}
+          disabled={disabled}
+          data-readonly={readOnly}
           {...rest}
         >
           {children}
