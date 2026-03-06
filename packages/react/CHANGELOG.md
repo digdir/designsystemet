@@ -1,5 +1,21 @@
 # Change Log
 
+## 1.12.2
+
+### Patch Changes
+
+- **Badge, Button, Spinner, Tabs, Tag**: Icons now scale in Safari when zooming ([#4484](https://github.com/digdir/designsystemet/pull/4484))
+
+- update npm non-major dependencies ([#4548](https://github.com/digdir/designsystemet/pull/4548))
+
+- update npm non-major dependencies ([#4573](https://github.com/digdir/designsystemet/pull/4573))
+
+- **Details**: use `DetailsHTMLAttributes` type to allow `name` attribute ([#4557](https://github.com/digdir/designsystemet/pull/4557))
+
+- Updated dependencies []:
+  - @digdir/designsystemet-types@1.12.2
+  - @digdir/designsystemet-web@1.12.2
+
 ## 1.12.1
 
 ### Patch Changes
