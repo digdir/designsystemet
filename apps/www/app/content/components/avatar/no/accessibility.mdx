@@ -1,9 +1,50 @@
-<Alert data-color="info">
-Vi jobber med å forbedre dokumentasjonen for tilgjengelighet på denne komponenten. Har du spørsmål eller ser noe som bør prioriteres, ta gjerne kontakt med oss på [Github](https://github.com/digdir/designsystemet/issues/new?template=1bug_report.yml) eller [Slack](https://designsystemet.no/slack).
-</Alert>
+## Implementasjonstester
+<style>{`
+    .ds-divider { margin-top: var(--ds-size-10); }
+    `}</style>
 
-## Hvordan beskrive `Avatar` for skjermlesere
+**Informativ `Avatar` skal ha et tilgjengelig navn.**
 
-`Avatar` må enten ha en `aria-label` som beskriver hvem eller hva avataren representerer, eller settes til `aria-hidden` og ha synlig tekst som formidler den samme informasjonen. Ikke oppgi i `aria-label` at det er et bilde - skjermlesere formidler dette automatisk. Det holder å bruke navnet, for eksempel `aria-label="Ola Nordmann"`.
+Hvis flere avatarer vises sammen, skal hvert tilgjengelige navn være unikt.
 
-Bilder og andre `children` blir automatisk satt til `aria-hidden="true"` for å unngå at informasjonen gjentas.
+<span data-size="sm"> 
+(WCAG: [1.3.1 Informasjon og relasjoner](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90))
+</span> 
+
+
+<Divider/>
+\
+**Dekorativ `Avatar` skal skjules for skjermlesere.**
+
+Dette gjelder når `Avatar` kun er dekorasjon og ikke formidler informasjon.
+
+<span data-size="sm"> 
+(WCAG: [1.1.1 Ikke-tekstlig innhold](https://www.uutilsynet.no/wcag-standarden/111-ikke-tekstlig-innhold-niva/87))
+</span> 
+
+
+<Divider/>
+\
+**Klikkbar `Avatar` skal ha et tydelig tilgjengelig navn.**
+
+Eksempel: “Profil for Ola Nordmann”.  
+Ikke bare: “ON” eller “Avatar”.
+
+<span data-size="sm"> 
+(WCAG: [4.1.2 Navn, rolle, verdi](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121))
+</span> 
+
+
+<Divider/>
+\
+**Klikkbar `Avatar` med synlig tekst (for eksempel initialer) skal inkludere den samme teksten i det tilgjengelige navnet.**
+
+Eksempel: En `Avatar` som viser “ON” bør ha tilgjengelig navn “ON – Profil for Ola Nordmann”.
+
+<span data-size="sm"> 
+(WCAG: [2.5.3 Ledetekst i navn](https://www.uutilsynet.no/wcag-standarden/253-ledetekst-i-navn-niva/150))
+</span> 
+
+<Divider/>
+
+
