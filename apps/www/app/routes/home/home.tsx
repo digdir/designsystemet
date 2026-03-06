@@ -150,7 +150,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
                 description={t('frontpage.get-started.description')}
                 color='blue'
                 url='fundamentals/introduction/get-started'
-                icon={<PaletteIcon fontSize={36} aria-hidden='true' />}
+                icon={<PaletteIcon aria-hidden='true' />}
                 level={2}
               />
 
@@ -159,7 +159,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
                 description={t('frontpage.components.description')}
                 color='red'
                 url='components'
-                icon={<ComponentIcon fontSize={34} aria-hidden='true' />}
+                icon={<ComponentIcon aria-hidden='true' />}
                 level={2}
               />
 
@@ -168,7 +168,7 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
                 description={t('frontpage.patterns.description')}
                 color='yellow'
                 url='patterns'
-                icon={<WrenchIcon fontSize={36} aria-hidden='true' />}
+                icon={<WrenchIcon aria-hidden='true' />}
                 level={2}
               />
             </div>
@@ -296,20 +296,32 @@ export default function Home({ loaderData: { posts } }: Route.ComponentProps) {
             <div data-links>
               <Link href='/slack'>
                 <span>
-                  <PersonChatIcon fontSize={24} aria-hidden='true' />
+                  <PersonChatIcon
+                    height={'1.5rem'}
+                    width={'1.5rem'}
+                    aria-hidden='true'
+                  />
                 </span>
 
                 {t('frontpage.join-section.buttons.slack')}
               </Link>
               <Link href='https://github.com/digdir/designsystemet'>
                 <span>
-                  <BranchingIcon fontSize={24} aria-hidden='true' />
+                  <BranchingIcon
+                    height={'1.5rem'}
+                    width={'1.5rem'}
+                    aria-hidden='true'
+                  />
                 </span>
                 {t('frontpage.join-section.buttons.github')}
               </Link>
               <Link href='mailto:designsystem@digdir.no'>
                 <span>
-                  <EnvelopeClosedIcon fontSize={24} aria-hidden='true' />
+                  <EnvelopeClosedIcon
+                    height={'1.5rem'}
+                    width={'1.5rem'}
+                    aria-hidden='true'
+                  />
                 </span>
                 {t('frontpage.join-section.buttons.email')}
               </Link>

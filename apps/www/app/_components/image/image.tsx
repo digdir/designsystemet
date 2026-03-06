@@ -73,7 +73,7 @@ const Image = ({
             icon
             variant='tertiary'
           >
-            <XMarkIcon fontSize='1.5rem' />
+            <XMarkIcon />
           </Button>
           <div className={classes.dialogMessage}>
             {t('image.enlarged-text')}
