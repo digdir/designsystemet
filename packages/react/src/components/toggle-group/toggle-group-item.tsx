@@ -1,5 +1,11 @@
 import cl from 'clsx/lite';
-import { forwardRef, type LabelHTMLAttributes, useContext, useId } from 'react';
+import {
+  forwardRef,
+  type InputHTMLAttributes,
+  type LabelHTMLAttributes,
+  useContext,
+  useId,
+} from 'react';
 import type { DefaultProps } from '../../types';
 import { ToggleGroupContext } from './toggle-group';
 
@@ -14,7 +20,19 @@ export type ToggleGroupItemProps = {
    **/
   icon?: boolean;
 } & DefaultProps &
-  LabelHTMLAttributes<HTMLLabelElement>;
+  LabelHTMLAttributes<HTMLLabelElement> &
+  Pick<
+    InputHTMLAttributes<HTMLInputElement>,
+    | 'disabled'
+    | 'formAction'
+    | 'formEncType'
+    | 'formTarget'
+    | 'formMethod'
+    | 'required'
+    | 'formNoValidate'
+    | 'readOnly'
+    | 'value'
+  >;
 
 /**
  * A single item in a ToggleGroup.
@@ -33,14 +51,41 @@ export const ToggleGroupItem = forwardRef<
   const value = rawValue ?? genValue;
   const active = toggleGroup.value === value;
 
+  const {
+    disabled,
+    form,
+    formAction,
+    formEncType,
+    formMethod,
+    formNoValidate,
+    formTarget,
+    required,
+    readOnly,
+    ...labelProps
+  } = rest;
+
+  /** Add backwards compatibility for `button` props that were previously allowed on `ToggleGroupItem` but are passeable to `input`*/
+  const inputProps: InputHTMLAttributes<HTMLInputElement> = {
+    disabled,
+    form,
+    formAction,
+    formEncType,
+    formMethod,
+    formNoValidate,
+    formTarget,
+    required,
+    readOnly,
+  };
+
   return (
     <label
       ref={ref}
-      {...rest}
+      {...labelProps}
       className={cl('ds-button', className)}
       data-variant='tertiary'
     >
       <input
+        {...inputProps}
         checked={active}
         name={toggleGroup.name}
         onChange={() => toggleGroup.onChange?.(value)}
