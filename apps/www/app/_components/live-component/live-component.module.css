@@ -15,6 +15,7 @@
     display: flex;
     gap: var(--ds-size-2);
     flex-wrap: wrap;
+    overflow-x: auto;
     [data-layout='block'] & {
       display: block;
     }
@@ -146,6 +147,11 @@
   font-weight: var(--ds-font-weight-regular);
   z-index: 1;
   --dsc-button-padding: var(--ds-size-2);
+}
+.resetText {
+  @media screen and (max-width: 380px) {
+    display: none;
+  }
 }
 .copy {
   border-top-right-radius: var(--_br);
