@@ -47,7 +47,7 @@ function handleToggle(
   const shiftProp = placement.match(/left|right/gi) ? 'Height' : 'Width';
   const shiftLimit = source[`offset${shiftProp}`] / 2 + arrowSize;
 
-  if (placement === 'none') return; // No need to position in this case
+  if (placement === 'none') return; // No need to position
 
   const options = {
     strategy: 'absolute',
