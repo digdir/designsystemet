@@ -23,14 +23,12 @@ export type ToggleGroupItemProps = {
   LabelHTMLAttributes<HTMLLabelElement> &
   Pick<
     InputHTMLAttributes<HTMLInputElement>,
-    | 'disabled'
     | 'formAction'
     | 'formEncType'
     | 'formTarget'
     | 'formMethod'
     | 'required'
     | 'formNoValidate'
-    | 'readOnly'
     | 'value'
   >;
 
@@ -52,7 +50,6 @@ export const ToggleGroupItem = forwardRef<
   const active = toggleGroup.value === value;
 
   const {
-    disabled,
     form,
     formAction,
     formEncType,
@@ -60,13 +57,11 @@ export const ToggleGroupItem = forwardRef<
     formNoValidate,
     formTarget,
     required,
-    readOnly,
     ...labelProps
   } = rest;
 
   /** Add backwards compatibility for `button` props that were previously allowed on `ToggleGroupItem` but are passeable to `input`*/
   const inputProps: InputHTMLAttributes<HTMLInputElement> = {
-    disabled,
     form,
     formAction,
     formEncType,
@@ -74,7 +69,6 @@ export const ToggleGroupItem = forwardRef<
     formNoValidate,
     formTarget,
     required,
-    readOnly,
   };
 
   return (
