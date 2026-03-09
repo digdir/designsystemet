@@ -202,7 +202,7 @@ const Editor = ({ live, html, id, hidden, language }: EditorProps) => {
         type='button'
       >
         <aksel.ArrowsCirclepathIcon />
-        {t('live-component.reset')}
+        <span className={classes.resetText}>{t('live-component.reset')}</span>
       </ds.Button>
       <ds.Button
         data-color='neutral'
@@ -217,7 +217,7 @@ const Editor = ({ live, html, id, hidden, language }: EditorProps) => {
           <aksel.FilesIcon aria-hidden />
           <aksel.ClipboardCheckmarkIcon aria-hidden />
         </span>
-        {t('live-component.copy')}
+        <span>{t('live-component.copy')}</span>
       </ds.Button>
       {/* biome-ignore lint/a11y/noStaticElementInteractions: <need to manage keyboard events from here> */}
       <div

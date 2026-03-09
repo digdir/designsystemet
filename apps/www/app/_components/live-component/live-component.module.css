@@ -148,6 +148,11 @@
   z-index: 1;
   --dsc-button-padding: var(--ds-size-2);
 }
+.resetText {
+  @media screen and (max-width: 380px) {
+    display: none;
+  }
+}
 .copy {
   border-top-right-radius: var(--_br);
   padding-inline-end: var(--ds-size-4);
